@@ -6,23 +6,23 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 05/24/2017
 ms.author: guybo
-ms.openlocfilehash: 1ad1a66d67be7aefe4d9a7acae993e8788cbb193
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79e2bc04a32755413625b3fb4b2b4de2ad12ad7f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80066739"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502703"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Vytvoření a nahrání image OpenBSD disku do Azure
 V tomto článku se dozvíte, jak vytvořit a nahrát virtuální pevný disk (VHD), který obsahuje operační systém OpenBSD. Po nahrání ji můžete použít jako vlastní image k vytvoření virtuálního počítače v Azure prostřednictvím rozhraní příkazového řádku Azure CLI.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 V tomto článku se předpokládá, že máte následující položky:
 
 * **Předplatné Azure** – Pokud účet nemáte, můžete si ho vytvořit během několika minut. Pokud máte předplatné MSDN, podívejte se na [měsíční kredit Azure pro předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). V opačném případě se dozvíte, jak [vytvořit bezplatný zkušební účet](https://azure.microsoft.com/pricing/free-trial/).  
 * **Azure CLI** – Ujistěte se, že máte nainstalované nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) a přihlásili jste se k účtu Azure pomocí [AZ Login](/cli/azure/reference-index).
-* **OpenBSD operační systém nainstalovaný v souboru. VHD** – na virtuální pevný disk musí být nainstalovaný podporovaný operační systém OpenBSD ([6,6 verze amd64](https://ftp.openbsd.org/pub/OpenBSD/6.6/amd64/)). Pro vytváření souborů. VHD existuje víc nástrojů. Například můžete použít virtualizační řešení, jako je Hyper-V, a vytvořit soubor. VHD a nainstalovat operační systém. Pokyny k instalaci a používání technologie Hyper-V najdete v tématu [instalace technologie Hyper-v a vytvoření virtuálního počítače](https://technet.microsoft.com/library/hh846766.aspx).
+* **OpenBSD operační systém nainstalovaný v souboru. VHD** – na virtuální pevný disk musí být nainstalovaný podporovaný operační systém OpenBSD ([6,6 verze amd64](https://ftp.openbsd.org/pub/OpenBSD/6.6/amd64/)). Pro vytváření souborů. VHD existuje víc nástrojů. Například můžete použít virtualizační řešení, jako je Hyper-V, a vytvořit soubor. VHD a nainstalovat operační systém. Pokyny k instalaci a používání technologie Hyper-V najdete v tématu [instalace technologie Hyper-v a vytvoření virtuálního počítače](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11)).
 
 
 ## <a name="prepare-openbsd-image-for-azure"></a>Příprava image OpenBSD pro Azure
@@ -87,7 +87,7 @@ Nyní můžete virtuální počítač vypnout.
 
 
 ## <a name="prepare-the-vhd"></a>Příprava virtuálního pevného disku
-Formát VHDX není v Azure podporovaný, jenom **pevný virtuální pevný disk**. Disk můžete převést na pevný formát VHD pomocí Správce technologie Hyper-V nebo rutiny [Convert-VHD](https://technet.microsoft.com/itpro/powershell/windows/hyper-v/convert-vhd) prostředí PowerShell. Příklad je následující.
+Formát VHDX není v Azure podporovaný, jenom **pevný virtuální pevný disk**. Disk můžete převést na pevný formát VHD pomocí Správce technologie Hyper-V nebo rutiny [Convert-VHD](/powershell/module/hyper-v/convert-vhd?view=win10-ps) prostředí PowerShell. Příklad je následující.
 
 ```powershell
 Convert-VHD OpenBSD61.vhdx OpenBSD61.vhd -VHDType Fixed

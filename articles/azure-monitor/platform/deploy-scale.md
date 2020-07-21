@@ -4,11 +4,12 @@ description: Nasaďte Azure Monitor funkce ve velkém měřítku pomocí Azure P
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 4be403f8efc8e328548b6ef38b36be78a8fb96d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbfc0cafe83f53bd7cab2b93899e9c2cb02d52e3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678694"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505206"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Nasazení Azure Monitor ve velkém měřítku pomocí Azure Policy
 I když jsou některé funkce Azure Monitor nakonfigurované jednou nebo omezeným počtem časů, musí se pro každý prostředek, který chcete monitorovat, opakovat jiné. Tento článek popisuje metody použití Azure Policy k implementaci Azure Monitor škálování, aby se zajistilo, že monitorování je konzistentně a správně nakonfigurované pro všechny prostředky Azure.
@@ -23,14 +24,14 @@ Pomocí Azure Policy můžete zadat požadavky na konfiguraci pro všechny vytvo
 
 Azure Policy se skládá z objektů v následující tabulce. Podrobnější vysvětlení jednotlivých objektů naleznete v tématu [Azure Policy objekty](../../governance/policy/overview.md#azure-policy-objects) .
 
-| Položka | Description |
+| Položka | Popis |
 |:---|:---|
 | Definice zásady | Popisuje podmínky dodržování předpisů a postup, který se má provést, pokud je splněna podmínka. Může se jednat o všechny prostředky určitého typu nebo pouze prostředky, které odpovídají určitým vlastnostem. Efekt může být jednoduše označovat, že prostředek má splňovat předpisy nebo nasadit související prostředek. Definice zásad jsou napsány pomocí formátu JSON, jak je popsáno v tématu [Struktura definice Azure Policy](../../governance/policy/concepts/definition-structure.md). Účinky jsou popsány v tématu [principy Azure Policych efektů](../../governance/policy/concepts/effects.md).
 | Iniciativa zásad | Skupina definic zásad, které by se měly použít společně. Například můžete mít jednu definici zásady pro posílání protokolů prostředků do pracovního prostoru Log Analytics a další pro posílání protokolů prostředků do Center událostí. Vytvořte iniciativu, která zahrnuje definice zásad, a místo definice jednotlivých zásad aplikujte iniciativu na prostředky. Iniciativy jsou zapisovány pomocí formátu JSON, jak je popsáno v tématu [struktura Azure Policy iniciativ](../../governance/policy/concepts/initiative-definition-structure.md). |
 | Přiřazení | Definice zásady nebo podnět se neprojeví, dokud není přiřazena k oboru. Přiřaďte například zásadu ke skupině prostředků, kterou použijete pro všechny prostředky vytvořené v tomto prostředku, nebo ji použijte u předplatného, aby ji bylo možné použít u všech prostředků v tomto předplatném.  Další podrobnosti najdete v tématu [Struktura přiřazení Azure Policy](../../governance/policy/concepts/assignment-structure.md). |
 
 ## <a name="built-in-policy-definitions-for-azure-monitor"></a>Předdefinované definice zásad pro Azure Monitor
-Azure Policy obsahuje několik předem sestavených definic souvisejících s Azure Monitor. Tyto definice zásad můžete přiřadit k existujícímu předplatnému nebo je použít jako základ pro vytvoření vlastních definicí. Úplný seznam integrovaných politika v kategorii **monitorování** najdete v tématu [Azure Policy předdefinované definice zásad pro Azure monitor](../policy-samples.md).
+Azure Policy obsahuje několik předem sestavených definic souvisejících s Azure Monitor. Tyto definice zásad můžete přiřadit k existujícímu předplatnému nebo je použít jako základ pro vytvoření vlastních definicí. Úplný seznam integrovaných politika v kategorii **monitorování** najdete v tématu [Azure Policy předdefinované definice zásad pro Azure monitor](../samples/policy-samples.md).
 
 Pokud chcete zobrazit integrované definice zásad související s monitorováním, udělejte toto:
 
@@ -59,7 +60,7 @@ U typů prostředků, které nemají vestavěnou zásadu, je nutné vytvořit vl
 Skript [Create-AzDiagPolicy](https://www.powershellgallery.com/packages/Create-AzDiagPolicy) vytvoří soubory zásad pro konkrétní typ prostředku, který můžete nainstalovat pomocí PowerShellu nebo rozhraní příkazového řádku. Pomocí následujícího postupu můžete vytvořit vlastní definici zásad pro nastavení diagnostiky.
 
 
-1. Ujistěte se, že máte nainstalovanou [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) .
+1. Ujistěte se, že máte nainstalovanou [Azure PowerShell](/powershell/azure/install-az-ps) .
 2. Nainstalujte skript pomocí následujícího příkazu:
   
     ```azurepowershell
@@ -112,7 +113,7 @@ Pomocí parametrů iniciativy můžete pro všechny definice zásad v iniciativ�
 
 ![Parametry iniciativ](media/deploy-scale/initiative-parameters.png)
 
-### <a name="remediation"></a>Odstranění rizika
+### <a name="remediation"></a>Náprava
 Iniciativa bude platit pro každý virtuální počítač při jeho vytvoření. [Úloha nápravy](../../governance/policy/how-to/remediate-resources.md) nasadí definice zásad v iniciativě do stávajících prostředků, takže vám to umožní vytvořit diagnostické nastavení pro všechny prostředky, které už byly vytvořeny. Když vytváříte přiřazení pomocí Azure Portal, máte možnost vytvořit úlohu nápravy ve stejnou dobu. Podrobnosti o nápravě najdete v tématu [napravení nevyhovujících prostředků pomocí Azure Policy](../../governance/policy/how-to/remediate-resources.md) .
 
 ![Náprava v iniciativě](media/deploy-scale/initiative-remediation.png)

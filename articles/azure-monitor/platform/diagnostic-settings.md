@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: a037eddb13645036fcbe501ecba33923733b6d03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a9eaeb9b77c7b4dd7e0b2347c66de3a325a66ee
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84944368"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505172"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Vytvoření nastavení diagnostiky pro odesílání protokolů a metrik platforem do různých umístění
 [Protokoly platforem](platform-logs-overview.md) v Azure, včetně protokolů aktivit Azure a protokolů prostředků, poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé. [Metriky platformy](data-platform-metrics.md) se ve výchozím nastavení shromažďují a obvykle se ukládají do databáze Azure monitor metrik. Tento článek poskytuje podrobné informace o vytváření a konfiguraci nastavení diagnostiky pro odesílání metrik platforem a protokolů platforem do různých umístění.
@@ -27,6 +27,9 @@ Každý prostředek Azure vyžaduje vlastní nastavení diagnostiky, které defi
 
 Jedno diagnostické nastavení může definovat více než jedno z cílů. Pokud chcete odesílat data do více než jednoho konkrétního cílového typu (například dvou různých Log Analytics pracovních prostorů), vytvořte více nastavení. Každý prostředek může mít až 5 nastavení diagnostiky.
 
+Následující video vás provede protokoly platformy směrování s nastavením diagnostiky.
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4AvVO]
+
 > [!NOTE]
 > [Metriky platformy](metrics-supported.md) se odesílají automaticky, aby se [Azure monitor metriky](data-platform-metrics.md). Nastavení diagnostiky se dá použít k posílání metrik pro určité služby Azure do protokolů Azure Monitor pro analýzu s dalšími daty monitorování pomocí [dotazů protokolu](../log-query/log-query-overview.md) s určitými omezeními. 
 >  
@@ -34,21 +37,21 @@ Jedno diagnostické nastavení může definovat více než jedno z cílů. Pokud
 > Odesílání vícedimenzionálních metrik přes nastavení diagnostiky se v současné době nepodporuje. Metriky s dimenzemi se exportují jako ploché jednodimenzionální metriky agregované napříč hodnotami dimenzí. *Například*: metrika ' IOReadBytes ' na blockchain lze prozkoumat a vytvořit graf na úrovni jednotlivých uzlů. Při exportu pomocí nastavení diagnostiky ale vyexportovaná metrika představuje všechny bajty čtení pro všechny uzly. Kromě interních omezení nejsou všechny metriky exportovatelné do Azure Monitor protokolů/Log Analytics. Další informace najdete v [seznamu exportovatelné metriky](metrics-supported-export-diagnostic-settings.md). 
 >  
 >  
-> Pokud chcete získat tato omezení pro konkrétní metriky, doporučujeme je ručně extrahovat pomocí [metrik REST API](https://docs.microsoft.com/rest/api/monitor/metrics/list) a importovat je do protokolů Azure monitor pomocí [rozhraní API pro Azure monitor kolektor dat](data-collector-api.md).  
+> Pokud chcete získat tato omezení pro konkrétní metriky, doporučujeme je ručně extrahovat pomocí [metrik REST API](/rest/api/monitor/metrics/list) a importovat je do protokolů Azure monitor pomocí [rozhraní API pro Azure monitor kolektor dat](data-collector-api.md).  
 
 
 ## <a name="destinations"></a>Cíle
 
 Protokoly a metriky platformy je možné odeslat do cílových umístění v následující tabulce. Podrobnosti o odesílání dat do tohoto cíle získáte podle každého odkazu v následující tabulce.
 
-| Cíl | Description |
+| Cíl | Popis |
 |:---|:---|
-| [Pracovní prostor služby Log Analytics](#log-analytics-workspace) | Odesílání protokolů a metrik do Log Analyticsového pracovního prostoru vám umožní je analyzovat s dalšími daty monitorování shromážděnými pomocí Azure Monitor pomocí výkonných dotazů protokolu a také využívat jiné Azure Monitor funkce, jako jsou výstrahy a vizualizace. |
+| [Pracovní prostor Log Analytics](#log-analytics-workspace) | Odesílání protokolů a metrik do Log Analyticsového pracovního prostoru vám umožní je analyzovat s dalšími daty monitorování shromážděnými pomocí Azure Monitor pomocí výkonných dotazů protokolu a také využívat jiné Azure Monitor funkce, jako jsou výstrahy a vizualizace. |
 | [Centrum událostí](#event-hub) | Odesílání protokolů a metrik do Event Hubs umožňuje streamování dat do externích systémů, jako jsou systémů Siem třetích stran a další řešení Log Analytics. |
 | [Účet úložiště Azure](#azure-storage) | Archivace protokolů a metrik do účtu služby Azure Storage je užitečná pro audit, statickou analýzu nebo zálohování. V porovnání s protokoly Azure Monitor a pracovním prostorem Log Analytics je úložiště Azure levnější a protokoly se můžou uchovávat po neomezenou dobu. |
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Všechna cílová umístění pro nastavení diagnostiky musí být vytvořena s požadovanými oprávněními. V níže uvedených částech najdete požadavky na požadované součásti pro jednotlivé cíle.
 
 ### <a name="log-analytics-workspace"></a>Pracovní prostor služby Log Analytics
@@ -86,7 +89,7 @@ Nastavení diagnostiky můžete nakonfigurovat v Azure Portal, a to buď z nabí
 
       ![Nastavení diagnostiky](media/diagnostic-settings/menu-monitor.png)
 
-   - V části Protokol aktivit klikněte na **Protokol aktivit** v nabídce **Azure monitor** a pak na **nastavení diagnostiky**. Ujistěte se, že jste zakázali všechny starší konfigurace protokolu aktivit. Podrobnosti najdete v tématu [zakázání existujících nastavení](/azure/azure-monitor/platform/activity-log-collect#collecting-activity-log) .
+   - V části Protokol aktivit klikněte na **Protokol aktivit** v nabídce **Azure monitor** a pak na **nastavení diagnostiky**. Ujistěte se, že jste zakázali všechny starší konfigurace protokolu aktivit. Podrobnosti najdete v tématu [zakázání existujících nastavení](./activity-log.md#legacy-collection-methods) .
 
         ![Nastavení diagnostiky](media/diagnostic-settings/menu-activity-log.png)
 
@@ -141,7 +144,7 @@ Po chvíli se nové nastavení objeví v seznamu nastavení tohoto prostředku a
 
 ## <a name="create-using-powershell"></a>Vytvoření s použitím PowerShellu
 
-Pomocí rutiny [set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) vytvořte nastavení diagnostiky s [Azure PowerShell](powershell-quickstart-samples.md). Popis jeho parametrů naleznete v dokumentaci k této rutině.
+Pomocí rutiny [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) vytvořte nastavení diagnostiky s [Azure PowerShell](../samples/powershell-samples.md). Popis jeho parametrů naleznete v dokumentaci k této rutině.
 
 > [!IMPORTANT]
 > Tuto metodu nelze použít pro protokol aktivit Azure. Místo toho použijte [Vytvoření nastavení diagnostiky v Azure monitor pomocí šablony Správce prostředků](diagnostic-settings-template.md) k vytvoření šablony Správce prostředků a jejím nasazením pomocí prostředí PowerShell.
@@ -154,7 +157,7 @@ Set-AzDiagnosticSetting -Name KeyVault-Diagnostics -ResourceId /subscriptions/xx
 
 ## <a name="create-using-azure-cli"></a>Vytvoření pomocí Azure CLI
 
-Pomocí příkazu [AZ monitor Diagnostic-Settings Create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) vytvořte nastavení diagnostiky pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest). Popis jeho parametrů naleznete v dokumentaci k tomuto příkazu.
+Pomocí příkazu [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) vytvořte nastavení diagnostiky pomocí [Azure CLI](/cli/azure/monitor?view=azure-cli-latest). Popis jeho parametrů naleznete v dokumentaci k tomuto příkazu.
 
 > [!IMPORTANT]
 > Tuto metodu nelze použít pro protokol aktivit Azure. Místo toho použijte možnost [vytvořit nastavení diagnostiky v Azure monitor pomocí šablony Správce prostředků](diagnostic-settings-template.md) k vytvoření šablony Správce prostředků a nasaďte ji pomocí rozhraní příkazového řádku.
@@ -176,7 +179,7 @@ az monitor diagnostic-settings create  \
 V tématu [Správce prostředků ukázek šablon pro nastavení diagnostiky v Azure monitor](../samples/resource-manager-diagnostic-settings.md) můžete vytvořit nebo aktualizovat nastavení diagnostiky se šablonou správce prostředků.
 
 ## <a name="create-using-rest-api"></a>Vytvoření s použitím REST API
-Pokud chcete vytvořit nebo aktualizovat nastavení diagnostiky pomocí [REST API Azure monitor](https://docs.microsoft.com/rest/api/monitor/), přečtěte si téma [nastavení diagnostiky](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings) .
+Pokud chcete vytvořit nebo aktualizovat nastavení diagnostiky pomocí [REST API Azure monitor](/rest/api/monitor/), přečtěte si téma [nastavení diagnostiky](/rest/api/monitor/diagnosticsettings) .
 
 ## <a name="create-using-azure-policy"></a>Vytvořit pomocí Azure Policy
 Vzhledem k tomu, že pro každý prostředek Azure je třeba vytvořit diagnostické nastavení, Azure Policy lze použít k automatickému vytvoření nastavení diagnostiky při vytvoření každého prostředku. Podrobnosti najdete v tématu [nasazení Azure monitor ve velkém rozsahu pomocí Azure Policy](deploy-scale.md) .

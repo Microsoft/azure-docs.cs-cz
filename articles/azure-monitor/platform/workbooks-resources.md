@@ -9,11 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: cc2cde7932f783f63ee2783f0589ce4f88f248a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5822c1af4f3bc5d9519af93054a01c3cdc82001
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77658098"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504987"
 ---
 # <a name="workbook-resource-parameters"></a>Parametry prostředku sešitu
 
@@ -60,7 +61,7 @@ Hodnoty z výběrů prostředků můžou pocházet z kontextu sešitu, statické
 > [!NOTE]
 > Graf prostředků Azure ještě není k dispozici ve všech cloudech. Pokud zvolíte tento přístup, ujistěte se, že je podporovaný v cílovém cloudu.
 
-[Dokumentace ke službě Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview)
+[Dokumentace ke službě Azure Resource Graph](../../governance/resource-graph/overview.md)
 
 ## <a name="creating-a-resource-parameter--json-list"></a>Vytvoření parametru prostředku (seznam JSON)
 1. Začněte s prázdným sešitem v režimu úprav.

@@ -9,11 +9,12 @@ ms.subservice: visual-studio
 ms.date: 09/09/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 826dc1858984508e54e160675dd10f6dfad88af8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2db281f1b3278e37deca8486971a7f7a83f85ccf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83124359"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503077"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Jak vytvořit sadu škálování virtuálního počítače pomocí sady Visual Studio
 
@@ -21,9 +22,9 @@ V tomto článku se dozvíte, jak nasadit sadu škálování virtuálních poč�
 
 [Azure Virtual Machine Scale Sets](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview/) je výpočetní prostředek Azure pro nasazení a správu kolekce podobných virtuálních počítačů s využitím automatického škálování a vyrovnávání zatížení. Pomocí [šablon Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates)můžete zřídit a nasadit Virtual Machine Scale Sets. Šablony Azure Resource Manager můžete nasadit pomocí Azure CLI, PowerShellu, REST a také přímo ze sady Visual Studio. Sada Visual Studio poskytuje sadu ukázkových šablon, které můžete nasadit v rámci projektu nasazení skupiny prostředků Azure.
 
-Nasazení skupiny prostředků Azure je způsob, jak seskupit a publikovat sadu souvisejících prostředků Azure v rámci jediné operace nasazení. Další informace najdete v tématu [Vytvoření a nasazení skupin prostředků Azure pomocí sady Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+Nasazení skupiny prostředků Azure je způsob, jak seskupit a publikovat sadu souvisejících prostředků Azure v rámci jediné operace nasazení. Další informace najdete v tématu [Vytvoření a nasazení skupin prostředků Azure pomocí sady Visual Studio](../azure-resource-manager/templates/create-visual-studio-deployment-project.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít nasazovat Virtual Machine Scale Sets v aplikaci Visual Studio, potřebujete následující požadavky:
 

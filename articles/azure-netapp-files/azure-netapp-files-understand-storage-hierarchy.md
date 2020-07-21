@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 02/27/2020
+ms.date: 07/15/2020
 ms.author: b-juche
-ms.openlocfilehash: 70d3a2a501952a5e20b1ff8e99f48f4d7aefce8d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0b150491fff953434062cc583566e1113947a679
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78163960"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504899"
 ---
 # <a name="what-is-the-storage-hierarchy-of-azure-netapp-files"></a>Jaká je hierarchie úložiště Azure NetApp Files
 
@@ -52,7 +52,6 @@ Před vytvořením svazku ve službě Azure NetApp Files musíte zakoupit a nast
 - Každý svazek patří jenom do jednoho fondu, ale fond může obsahovat několik svazků. 
 - Svazek se nedá přesunout mezi fondy kapacit. <!--Within the same NetApp account, you can move a volume across pools.  -->   
   Například v [koncepčním diagramu hierarchie úložiště](#conceptual_diagram_of_storage_hierarchy) můžete přesunout svazky z fondu kapacity 1 do fondu kapacity 2.
-- Svazek se nedá odstranit, dokud se neodstraní všechny jeho snímky.
 
 ## <a name="conceptual-diagram-of-storage-hierarchy"></a><a name="conceptual_diagram_of_storage_hierarchy"></a>Konceptuální diagram hierarchie úložiště 
 Následující příklad znázorňuje vztahy předplatného Azure, účtů NetApp, fondů kapacity a svazků.   
@@ -61,5 +60,5 @@ Následující příklad znázorňuje vztahy předplatného Azure, účtů NetAp
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Omezení prostředků pro Azure NetApp Files](azure-netapp-files-resource-limits.md)
-- [Registrace pro Azure NetApp Files](azure-netapp-files-register.md)
+- [Omezení prostředků pro službu Azure NetApp Files](azure-netapp-files-resource-limits.md)
+- [Registrace služby Azure NetApp Files](azure-netapp-files-register.md)

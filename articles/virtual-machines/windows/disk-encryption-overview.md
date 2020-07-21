@@ -8,11 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5648dc1a915f2d38dc7811e6fe23ec76d0aa6f23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1934470413ef1b0c757820e6539adcd43783acd2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82857278"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500646"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Azure Disk Encryption pro virtuální počítače s Windows 
 
@@ -32,7 +33,7 @@ Základní informace o Azure Disk Encryption pro Windows během několika minut 
 
 ### <a name="supported-vms"></a>Podporované virtuální počítače
 
-Virtuální počítače s Windows jsou dostupné v [různých velikostech](sizes-general.md). Azure Disk Encryption není k dispozici pro virtuální počítače [Basic, a-Series](https://azure.microsoft.com/pricing/details/virtual-machines/series/)nebo na virtuálních počítačích s méně než 2 GB paměti.
+Virtuální počítače s Windows jsou dostupné v [různých velikostech](../sizes-general.md). Azure Disk Encryption není k dispozici pro virtuální počítače [Basic, a-Series](https://azure.microsoft.com/pricing/details/virtual-machines/series/)nebo na virtuálních počítačích s méně než 2 GB paměti.
 
 Azure Disk Encryption je k dispozici také pro virtuální počítače s Premium Storage.
 
@@ -78,7 +79,7 @@ Následující tabulka popisuje některé běžné výrazy používané v dokume
 | --- | --- |
 | Azure Key Vault | Key Vault je kryptografická služba pro správu klíčů založená na modulech zabezpečení hardwaru FIPS (Federal Information Processing Standards) ověřené. Tyto standardy usnadňují ochranu kryptografických klíčů a citlivých tajných klíčů. Další informace najdete v dokumentaci [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) a [vytváření a konfiguraci trezoru klíčů pro Azure Disk Encryption](disk-encryption-key-vault.md). |
 | Azure CLI | [Azure CLI](/cli/azure/install-azure-cli) je optimalizováno pro správu a správu prostředků Azure z příkazového řádku.|
-| BitLocker |[BitLocker](https://technet.microsoft.com/library/hh831713.aspx) je rozpoznaná technologie pro šifrování svazků Windows, která se používá k povolení šifrování disku na virtuálních počítačích s Windows. |
+| BitLocker |[BitLocker](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831713(v=ws.11)) je rozpoznaná technologie pro šifrování svazků Windows, která se používá k povolení šifrování disku na virtuálních počítačích s Windows. |
 | Klíč šifrování klíče (KEK) | Asymetrický klíč (RSA 2048), který můžete použít k ochraně nebo zabalení tajného klíče. Můžete poskytnout klíč chráněný modulem hardwarového zabezpečení (HSM) nebo klíč chráněný softwarem. Další informace najdete v dokumentaci [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) a [vytváření a konfiguraci trezoru klíčů pro Azure Disk Encryption](disk-encryption-key-vault.md). |
 | Rutiny prostředí PowerShell | Další informace najdete v tématu [rutiny Azure PowerShell](/powershell/azure/overview). |
 
@@ -91,5 +92,3 @@ Následující tabulka popisuje některé běžné výrazy používané v dokume
 - [Skript CLI pro Azure Disk Encryption předpoklady](https://github.com/ejarvi/ade-cli-getting-started)
 - [Skript prostředí PowerShell pro Azure Disk Encryption předpoklady](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
 - [Vytvoření a konfigurace trezoru klíčů pro službu Azure Disk Encryption](disk-encryption-key-vault.md)
-
-

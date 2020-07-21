@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 07/08/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 2d0030549acdb55ce2be94534ec59bb07b11869d
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: c2dffe576bfb52981b331c02b3f24ec2507ec349
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221628"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501950"
 ---
 Galerie sdílených imagí je služba, která pomáhá sestavovat strukturu a organizaci kolem imagí. Galerie sdílených imagí poskytují:
 
@@ -83,7 +83,7 @@ Specializované virtuální počítače neprošly procesem odebrání informací
 
 ## <a name="regional-support"></a>Místní podpora
 
-Všechny veřejné oblasti můžou být cílové oblasti, ale pokud je chcete replikovat do Austrálie Central a Austrálie – střed 2, musíte mít své předplatné na seznamu povolených. Pokud chcete požádat o seznam povolených, navštivte:https://azure.microsoft.com/global-infrastructure/australia/contact/
+Všechny veřejné oblasti můžou být cílové oblasti, ale replikovat do Austrálie Central a Austrálie – střed 2 potřebujete, aby bylo vaše předplatné přidané do seznamu povolených. Chcete-li požádat o přidání předplatných do seznamu povolených, použijte následující:https://azure.microsoft.com/global-infrastructure/australia/contact/
 
 ## <a name="limits"></a>Omezení 
 
@@ -130,7 +130,7 @@ Vzhledem k tomu, že je galerie sdílených imagí, definice obrázku a verze im
 | Sdíleno s uživatelem     | Sdílená galerie obrázků | Definice image | Verze image |
 |----------------------|----------------------|--------------|----------------------|
 | Sdílená galerie obrázků | Ano                  | Ano          | Ano                  |
-| Definice image     | Ne                   | Ano          | Ano                  |
+| Definice image     | No                   | Ano          | Ano                  |
 
 Pro nejlepší prostředí doporučujeme sdílení na úrovni galerie. Nedoporučujeme sdílet jednotlivé verze imagí. Další informace o RBAC najdete v tématu [Správa přístupu k prostředkům Azure pomocí RBAC](../articles/role-based-access-control/role-assignments-portal.md).
 
@@ -202,7 +202,7 @@ Prostředek Galerie sdílených imagí můžete vytvořit pomocí šablon. K dis
 
 Pokud chcete zobrazit seznam všech prostředků Galerie sdílených imagí v rámci předplatných, ke kterým máte přístup v Azure Portal, postupujte podle následujících kroků:
 
-1. Otevřete [Azure Portal](https://portal.azure.com).
+1. Otevřete web [Azure Portal](https://portal.azure.com).
 1. Posuňte se dolů na stránku a vyberte **všechny prostředky**.
 1. Vyberte všechna předplatná, pod kterými chcete zobrazit seznam všech prostředků.
 1. Vyhledejte prostředky pro galerii typu **sdílená image**.
@@ -217,7 +217,7 @@ Další informace najdete v tématu **Správa prostředků Galerie** pomocí [Az
 
 ### <a name="can-i-move-my-existing-image-to-the-shared-image-gallery"></a>Můžu existující image přesunout do galerie sdílených imagí?
  
-Ano. Existují tři scénáře založené na typech imagí, které máte pravděpodobně k dispozici.
+Yes. Existují tři scénáře založené na typech imagí, které máte pravděpodobně k dispozici.
 
  Scénář 1: Pokud máte spravovanou bitovou kopii, můžete z ní vytvořit definici image a její verzi. Další informace najdete v tématu **migrace ze spravované image na verzi image** pomocí [Azure CLI](../articles/virtual-machines/image-version-managed-image-cli.md) nebo [PowerShellu](../articles/virtual-machines/image-version-managed-image-powershell.md).
 

@@ -10,11 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: d8309a69c9c38610fa7bea3fee202a60d836980c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8aa2b936f97b037bdc62a01f607945ad270faa13
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78945058"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502329"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale v Azure
 
@@ -66,7 +67,7 @@ Tato architektura spouští aplikaci, úložiště a datovou vrstvu na virtuáln
 
 -   Cluster DB2 pureScale Typ výpočetních prostředků, které v Azure potřebujete, závisí na nastavení. Obecně platí, že můžete použít dva přístupy:
 
-    -   Použijte síť s více uzly a vysoce výkonným výpočetním prostředím (HPC), ve které se v malých až středně velkých instancích přistupuje ke sdílenému úložišti. Pro tento typ HPC konfigurace Azure paměťově optimalizované E-series nebo úložiště s podporou [úložišť řady L](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) -Series poskytují potřebný výpočetní výkon.
+    -   Použijte síť s více uzly a vysoce výkonným výpočetním prostředím (HPC), ve které se v malých až středně velkých instancích přistupuje ke sdílenému úložišti. Pro tento typ HPC konfigurace Azure paměťově optimalizované E-series nebo úložiště s podporou [úložišť řady L](../windows/sizes.md) -Series poskytují potřebný výpočetní výkon.
 
     -   Pro datové moduly použijte méně velkých instancí virtuálních počítačů. U velkých instancí jsou největší virtuální počítače optimalizované pro paměť [řady M-Series](https://azure.microsoft.com/pricing/details/virtual-machines/series/) ideální pro náročné úlohy v paměti. V závislosti na velikosti logického oddílu (LPAR), který se používá ke spuštění DB2, budete možná potřebovat vyhrazenou instanci.
 
@@ -95,11 +96,11 @@ Velký cluster pureScale DB2 může vyžadovat 200 terabajtů (TB) nebo více sd
 
 Společnost IBM doporučuje InfiniBand sítě pro všechny členy v clusteru DB2 pureScale. DB2 pureScale také používá přímý přístup do paměti vzdáleného počítače (RDMA), pokud je k dispozici pro CFs.
 
-Během instalace vytvoříte [skupinu prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) Azure, která bude obsahovat všechny virtuální počítače. Obecně platí, že se prostředky seskupují na základě jejich životnosti a kteří je spravují. Virtuální počítače v této architektuře vyžadují [urychlené síťové služby](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Jedná se o funkci Azure, která poskytuje konzistentní a extrémně nízkou latenci sítě prostřednictvím rozhraní SR-IOV (single-root I/O Virtualization) k virtuálnímu počítači.
+Během instalace vytvoříte [skupinu prostředků](../../azure-resource-manager/management/overview.md) Azure, která bude obsahovat všechny virtuální počítače. Obecně platí, že se prostředky seskupují na základě jejich životnosti a kteří je spravují. Virtuální počítače v této architektuře vyžadují [urychlené síťové služby](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Jedná se o funkci Azure, která poskytuje konzistentní a extrémně nízkou latenci sítě prostřednictvím rozhraní SR-IOV (single-root I/O Virtualization) k virtuálnímu počítači.
 
-Každý virtuální počítač Azure je nasazený do virtuální sítě, která má podsítě: Main, front-end Gluster FS (gfsfe), Gluster FS back-end (bfsbe), DB2 pureScale (db2be) a DB2 pureScale front-end (db2fe). Instalační skript také vytvoří primární [síťové adaptéry](https://docs.microsoft.com/azure/virtual-machines/linux/multiple-nics) na virtuálních počítačích v hlavní podsíti.
+Každý virtuální počítač Azure je nasazený do virtuální sítě, která má podsítě: Main, front-end Gluster FS (gfsfe), Gluster FS back-end (bfsbe), DB2 pureScale (db2be) a DB2 pureScale front-end (db2fe). Instalační skript také vytvoří primární [síťové adaptéry](./multiple-nics.md) na virtuálních počítačích v hlavní podsíti.
 
-[Skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) použijte k omezení síťového provozu v rámci virtuální sítě a k izolaci podsítí.
+[Skupiny zabezpečení sítě](../../virtual-network/virtual-network-vnet-plan-design-arm.md) použijte k omezení síťového provozu v rámci virtuální sítě a k izolaci podsítí.
 
 V Azure pureScale potřebuje jako síťové připojení pro úložiště používat protokol TCP/IP.
 

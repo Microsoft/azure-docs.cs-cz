@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 40d028ade5429c89ce40b718c90c601dfcb0e470
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: aa372d4e1b377ecdcbeb49b47f0f9a3a217ee7ad
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85308143"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502176"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Zavedení a vytváření imagí pro Linux v Azure
 
@@ -25,7 +25,7 @@ V tomto článku se seznámíte s rozhodovacími body a požadavky na image, vys
 ## <a name="difference-between-managed-disks-and-images"></a>Rozdíl mezi spravovanými disky a obrázky
 
 
-Azure umožňuje převést virtuální pevný disk na platformu, použít ho jako [spravovaný disk](https://docs.microsoft.com/azure/virtual-machines/windows/faq-for-disks#managed-disks)nebo použít jako zdroj pro image. 
+Azure umožňuje převést virtuální pevný disk na platformu, použít ho jako [spravovaný disk](../windows/faq-for-disks.md#managed-disks)nebo použít jako zdroj pro image. 
 
 Azure Managed disks jsou jediné virtuální pevné disky. Můžete buď převzít existující virtuální pevný disk a vytvořit z něj spravovaný disk, nebo vytvořit prázdný spravovaný disk od začátku. Virtuální počítače můžete vytvořit ze spravovaných disků tak, že disk připojíte k virtuálnímu počítači, ale můžete použít jenom virtuální pevný disk s jedním virtuálním počítačem. Nemůžete změnit žádné vlastnosti operačního systému, Azure se jenom pokusí zapnout virtuální počítač a spustit ho pomocí tohoto disku. 
 
@@ -49,16 +49,16 @@ Azure nabízí dva hlavní typy obrázků, generalizované a specializované. V�
 Zobecněná Image je image, která vyžaduje, aby se instalace dokončila při prvním spuštění. Při prvním spuštění například nastavíte název hostitele, správce a další konfigurace specifické pro virtuální počítače. To je užitečné, pokud chcete, aby se obrázek opakovaně používal několikrát a když chcete při vytváření předat parametry. Pokud zobecněná bitová kopie obsahuje agenta Azure, agent zpracuje parametry a signál vrátí zpět na platformu, kterou dokončila počáteční konfigurace. Tento proces se nazývá **zřizování**. 
 
 Zřizování vyžaduje, aby byl v imagi zahrnutý zřizovací modul. Existují dva zřídí:
-- [Agent Azure Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)
-- [Cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)
+- [Agent Azure Linux](../extensions/agent-linux.md)
+- [Cloud-init](./using-cloud-init.md)
 
-Jedná se o [předpoklady](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic) pro vytvoření image.
+Jedná se o [předpoklady](./create-upload-generic.md) pro vytvoření image.
 
 
 ### <a name="specialized-images"></a>Specializované obrázky
 Jedná se o zcela nakonfigurované image, které nevyžadují virtuální počítače a speciální parametry. platforma bude jenom zapnout virtuální počítač. v rámci tohoto virtuálního počítače je potřeba zpracovat jedinečnost, jako je třeba nastavení názvu hostitele, aby nedocházelo ke konfliktům DNS ve stejné virtuální síti. 
 
-Zřizovací agenti se pro tyto image nevyžadují, ale možná budete chtít mít funkce pro zpracování rozšíření. Můžete nainstalovat agenta pro Linux, ale zakázat možnost zřizování. I když nepotřebujete zřizovacího agenta, image musí splňovat [požadavky](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic) pro Image Azure.
+Zřizovací agenti se pro tyto image nevyžadují, ale možná budete chtít mít funkce pro zpracování rozšíření. Můžete nainstalovat agenta pro Linux, ale zakázat možnost zřizování. I když nepotřebujete zřizovacího agenta, image musí splňovat [požadavky](./create-upload-generic.md) pro Image Azure.
 
 
 ## <a name="image-storage-options"></a>Možnosti úložiště obrázků
@@ -94,13 +94,14 @@ Na nejvyšší úrovni vytvoříte SIG a skládá se z těchto:
 
 ## <a name="hyper-v-generation"></a>Generace technologie Hyper-V
 
-Azure podporuje technologie Hyper-V Generation 1 (Gen1) a generaci 2 (Gen2), Gen2 je nejnovější generace a nabízí další funkce oproti Gen1. Například: zvýšená paměť, rozšíření Intel software Guard (Intel SGX) a virtualizovaná trvalá paměť (vPMEM). Virtuální počítače generace 2 s místním prostředím obsahují některé funkce, které ještě nejsou v Azure podporované. Další informace najdete v části funkce a možnosti. Další informace najdete v tomto [článku](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2). Vytvářejte image Gen2, pokud požadujete další funkce.
+Azure podporuje technologie Hyper-V Generation 1 (Gen1) a generaci 2 (Gen2), Gen2 je nejnovější generace a nabízí další funkce oproti Gen1. Například: zvýšená paměť, rozšíření Intel software Guard (Intel SGX) a virtualizovaná trvalá paměť (vPMEM). Virtuální počítače generace 2 s místním prostředím obsahují některé funkce, které ještě nejsou v Azure podporované. Další informace najdete v části funkce a možnosti. Další informace najdete v tomto [článku](../windows/generation-2.md). Vytvářejte image Gen2, pokud požadujete další funkce.
 
-Pokud stále potřebujete vytvořit vlastní image, ujistěte se, že splňuje požadavky na [Image](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic)a nahrává do Azure. Požadavky na distribuci specifické pro distribuci:
+Pokud stále potřebujete vytvořit vlastní image, ujistěte se, že splňuje požadavky na [Image](./create-upload-generic.md)a nahrává do Azure. Požadavky na distribuci specifické pro distribuci:
 
 
-- [Distribuce na základě CentOS](create-upload-centos.md)
+- [Distribuce založené na CentOS](create-upload-centos.md)
 - [Debian Linux](debian-create-upload-vhd.md)
+- [Flatcar Container Linux](flatcar-create-upload-vhd.md)
 - [Oracle Linux](oracle-create-upload-vhd.md)
 - [Red Hat Enterprise Linux](redhat-create-upload-vhd.md)
 - [SLES a openSUSE](suse-create-upload-vhd.md)
@@ -110,6 +111,3 @@ Pokud stále potřebujete vytvořit vlastní image, ujistěte se, že splňuje p
 ## <a name="next-steps"></a>Další kroky
 
 Naučte se vytvořit [sdílenou galerii imagí](tutorial-custom-images.md).
-
-
-

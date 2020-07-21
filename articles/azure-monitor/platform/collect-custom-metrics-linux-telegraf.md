@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 06c344130156ae5f72f6e65baa519c11adff2bae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 57eb005109b97a423f9218ee6a47ce5bb06c3853
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82186437"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505342"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Shromažďování vlastních metrik pro virtuální počítač se systémem Linux pomocí agenta InfluxData telegraf
 
@@ -25,7 +25,7 @@ Pomocí Azure Monitor můžete shromažďovat vlastní metriky prostřednictvím
  ![Přehled telegrafního agenta](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
 
 > [!NOTE]  
-> Vlastní metriky se ve všech oblastech nepodporují. [Tady](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#supported-regions) jsou uvedené podporované oblasti.
+> Vlastní metriky se ve všech oblastech nepodporují. [Tady](./metrics-custom-overview.md#supported-regions) jsou uvedené podporované oblasti.
 
 ## <a name="send-custom-metrics"></a>Odeslat vlastní metriky 
 
@@ -111,7 +111,7 @@ Agent nyní bude shromažďovat metriky ze všech zadaných vstupních modulů p
 
 ## <a name="plot-your-telegraf-metrics-in-the-azure-portal"></a>Vykreslení metriky telegraf v Azure Portal 
 
-1. Otevřete [Azure Portal](https://portal.azure.com). 
+1. Otevřete web [Azure Portal](https://portal.azure.com). 
 
 1. Přejděte na kartu nové **monitorování** . Pak vyberte **metriky**.  
 
@@ -137,6 +137,3 @@ Pokud už je nepotřebujete, můžete odstranit skupinu prostředků, virtuáln�
 
 ## <a name="next-steps"></a>Další kroky
 - Přečtěte si další informace o [vlastních metrikách](metrics-custom-overview.md).
-
-
-

@@ -1,15 +1,16 @@
 ---
 title: Vytvoření členu služby Azure blockchain – Azure Portal
 description: Vytvoření členu služby Azure blockchain pro konsorcium blockchain pomocí Azure Portal.
-ms.date: 03/30/2020
+ms.date: 07/16/2020
 ms.topic: quickstart
 ms.reviewer: ravastra
-ms.openlocfilehash: 9fb013960da5b7cb8ba44f129eab73565f5b5362
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: references_regions
+ms.openlocfilehash: 5632c8a17c5ac25c8b4b436297d0dd5a0071df26
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82115240"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503417"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>Rychlý Start: Vytvoření člena blockchain služby Azure blockchain pomocí Azure Portal
 
@@ -17,17 +18,17 @@ V tomto rychlém startu nasadíte nového člena blockchain a konsorcia ve služ
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Žádné.
+Žádné
 
 ## <a name="create-a-blockchain-member"></a>Vytvoření členu blockchain
 
 Člen služby Azure Blockchain je blockchain uzel v privátní síti konsorcia blockchain. Při zřizování člena můžete vytvořit nebo připojit se k síti konsorcia. Pro síť konsorcia potřebujete alespoň jednoho člena. Počet členů blockchain, které účastníci potřebují, závisí na vašem scénáři. Účastníci konsorcia mohou mít jednoho nebo více členů blockchain nebo mohou sdílet členy s ostatními účastníky. Další informace o konsorciích najdete v článku [konsorcium služby Azure blockchain](consortium.md).
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek**.
-1. Vyberte **blockchain** > **Azure blockchain Service (Preview)**.
+1. Vyberte **blockchain**  >  **Azure blockchain Service (Preview)**.
 
     ![Vytvořit službu](./media/create-member/create-member.png)
 
@@ -35,8 +36,8 @@ V tomto rychlém startu nasadíte nového člena blockchain a konsorcia ve služ
     --------|------------
     Předplatné | Vyberte předplatné Azure, které chcete použít pro vaši službu. Pokud máte více předplatných, zvolte předplatné, ve kterém se vám prostředek účtuje.
     Skupina prostředků | Vytvořte nový název skupiny prostředků nebo vyberte existující v rámci svého předplatného.
-    Oblast | Vyberte oblast, ve které se má člen vytvořit. Všichni členové konsorcia musí být ve stejném umístění.
-    Protocol (Protokol) | V současné době verze Preview služby Azure blockchain podporuje protokol kvora.
+    Oblast | Vyberte oblast, ve které se má člen vytvořit. Všichni členové konsorcia musí být ve stejném umístění. Funkce nemusí být k dispozici v některých oblastech. Azure blockchain Data Manager je k dispozici v následujících oblastech Azure: Východní USA a Západní Evropa.
+    Protokol | V současné době verze Preview služby Azure blockchain podporuje protokol kvora.
     Konsorcium | Pro nového konsorcia zadejte jedinečný název. Pokud se připojujete k konsorciu prostřednictvím pozvánky, vyberte konsorcium, ke které se připojujete. Další informace o konsorciích najdete v článku [konsorcium služby Azure blockchain](consortium.md).
     Název | Vyberte jedinečný název členu služby Azure blockchain. Název členu blockchain může obsahovat jenom malá písmena a číslice. Prvním znakem musí být písmeno. Hodnota musí být dlouhá 2 až 20 znaků.
     Heslo pro členský účet | Heslo pro členský účet slouží k šifrování privátního klíče pro účet Ethereem, který je vytvořen pro vašeho člena. Použijete členský účet a heslo členského účtu pro správu konsorcia.
@@ -53,7 +54,7 @@ Vyberte **Přehled**. můžete si zobrazit základní informace o vaší služb�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Můžete použít člena, kterého jste vytvořili pro další rychlý Start nebo kurz. Pokud už je nepotřebujete, můžete prostředky odstranit odstraněním skupiny `myResourceGroup` prostředků, kterou jste vytvořili pro rychlý Start.
+Můžete použít člena, kterého jste vytvořili pro další rychlý Start nebo kurz. Pokud už je nepotřebujete, můžete prostředky odstranit odstraněním `myResourceGroup` skupiny prostředků, kterou jste vytvořili pro rychlý Start.
 
 Odstranění skupiny prostředků:
 

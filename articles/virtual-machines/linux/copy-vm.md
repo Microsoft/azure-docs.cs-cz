@@ -7,21 +7,22 @@ ms.topic: article
 ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: 406eda6902ae451c7fdf79e1bd1215c035a66750
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8532c0da7d9977b12a4d1099e430584de1e17fe0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82792220"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502737"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Vytvoření kopie virtuálního počítače se systémem Linux pomocí rozhraní příkazového řádku Azure a Managed Disks
 
-V tomto článku se dozvíte, jak vytvořit kopii virtuálního počítače Azure s operačním systémem Linux pomocí rozhraní příkazového řádku Azure CLI. Pokud chcete kopírovat, vytvářet, ukládat a sdílet image virtuálních počítačů ve velkém měřítku, přečtěte si téma [Galerie sdílených imagí](shared-images.md).
+V tomto článku se dozvíte, jak vytvořit kopii virtuálního počítače Azure s operačním systémem Linux pomocí rozhraní příkazového řádku Azure CLI. Pokud chcete kopírovat, vytvářet, ukládat a sdílet image virtuálních počítačů ve velkém měřítku, přečtěte si téma [Galerie sdílených imagí](../shared-images-cli.md).
 
 [Virtuální počítač můžete také nahrát a vytvořit z virtuálního pevného disku](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
--   Nainstalujte [rozhraní příkazového řádku Azure CLI](/cli/azure/install-az-cli2).
+-   Nainstalujte rozhraní příkazového [řádku Azure CLI](/cli/azure/install-az-cli2).
 
 -   Přihlaste se k účtu Azure pomocí [AZ Login](/cli/azure/reference-index#az-login).
 
@@ -125,4 +126,4 @@ az vm create --resource-group myResourceGroup \
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučte se používat [sdílenou galerii imagí](shared-images.md) ke správě imagí virtuálních počítačů.
+Naučte se používat [sdílenou galerii imagí](../shared-images-cli.md) ke správě imagí virtuálních počítačů.

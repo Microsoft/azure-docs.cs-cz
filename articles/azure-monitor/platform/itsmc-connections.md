@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: c09d8d9fd2ef22aeaf791ae44d877a87033318cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7baabe455128bf420a3c3e11ea83bb5357ed35c8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83655913"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505155"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Propojení produktů nebo služeb ITSM s využitím ITSM konektoru
 Tento článek poskytuje informace o tom, jak nakonfigurovat připojení mezi ITSM produktem/službou a konektorem Service Management Connector (ITSMC) v Log Analytics pro centrální správu vašich pracovních položek. Další informace o ITSMC najdete v tématu [Přehled](../../azure-monitor/platform/itsmc-overview.md).
@@ -30,7 +31,7 @@ Podporují se tyto ITSM produkty nebo služby. Výběrem produktu zobrazíte pod
 
 Následující části obsahují podrobné informace o tom, jak připojit System Center Service Manager produkt k ITSMC v Azure.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Ujistěte se, že jsou splněné následující předpoklady:
 
@@ -38,7 +39,7 @@ Ujistěte se, že jsou splněné následující předpoklady:
 - Webová aplikace Service Manager (webová aplikace) je nasazená a nakonfigurovaná. [Tady](#create-and-deploy-service-manager-web-app-service)jsou informace o webové aplikaci.
 - Hybridní připojení se vytvořilo a nakonfigurovalo. Další informace: [Konfigurace hybridního připojení](#configure-the-hybrid-connection).
 - Podporované verze Service Manager: 2012 R2 nebo 2016.
-- Role uživatele: [operátor pokročilý](https://technet.microsoft.com/library/ff461054.aspx)
+- Role uživatele: [operátor pokročilý](/previous-versions/system-center/service-manager-2010-sp1/ff461054(v=technet.10))
 
 ### <a name="connection-procedure"></a>Postup připojení
 
@@ -175,7 +176,7 @@ Následující vzorový obrázek ukazuje podrobné informace o úspěšném při
 
 Následující části obsahují podrobné informace o tom, jak připojit produkt ServiceNow k ITSMC v Azure.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 Ujistěte se, že jsou splněné následující předpoklady:
 - ITSMC je nainstalovaný. Další informace: [Přidání řešení IT Service Management Connector](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution).
 - Podporované verze ServiceNow: New York, Madrid, Londýn, Kingston, Jakarta, Istanbul, Helsinky, Ženeva.
@@ -200,12 +201,12 @@ Ujistěte se, že jsou splněné následující předpoklady:
 > Na konci klikněte na aktualizovat.
 > 2) Doporučujeme, abyste **navázali interní postup, který zajistí, že připojení zůstane aktivní:** Podle životnosti obnovovacího tokenu aktualizujte token. Ujistěte se prosím, že jste provedli následující operace: předchozí doba platnosti tokenu obnovení (několik dní, než vyprší platnost životnosti obnovovacího tokenu, doporučujeme):
 >
-> 1. [Dokončení procesu ruční synchronizace pro konfiguraci konektoru ITSM](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-resync-servicenow)
+> 1. [Dokončení procesu ruční synchronizace pro konfiguraci konektoru ITSM](./itsmc-resync-servicenow.md)
 > 2. Odvolat starý obnovovací token, protože nedoporučujeme z z bezpečnostních důvodů zachovat staré klíče. V okně ServiceNow vyhledejte systém OAuth, než vyberte Spravovat tokeny. Ze seznamu vyberte starý token podle názvu OAuth a data vypršení platnosti.
 > ![SNĚH – definice OAuth systému](media/itsmc-connections/snow-system-oauth.png)
 > 3. Klikněte na odvolat přístup a než na odvolat.
 
-- Nainstalujte uživatelskou aplikaci pro Microsoft Log Analytics Integration (aplikace ServiceNow). [Další informace](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
+- Nainstalujte uživatelskou aplikaci pro Microsoft Log Analytics Integration (aplikace ServiceNow). [Přečtěte si další informace](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
 - Vytvoření role uživatele integrace pro uživatelskou aplikaci nainstalovanou. [Tady najdete](#create-integration-user-role-in-servicenow-app)informace o tom, jak vytvořit roli uživatele Integration.
 
 ### <a name="connection-procedure"></a>**Postup připojení**
@@ -229,7 +230,7 @@ K vytvoření připojení ServiceNow použijte následující postup:
 | --- | --- |
 | **Název připojení**   | Zadejte název instance ServiceNow, ke které se chcete připojit pomocí ITSMC.  Tento název použijete později v Log Analytics, když konfigurujete pracovní položky v tomto ITSM/zobrazení podrobné Log Analytics. |
 | **Typ partnera**   | Vyberte **ServiceNow**. |
-| **Jmen**   | Zadejte uživatelské jméno pro integraci, které jste vytvořili v aplikaci ServiceNow, aby se podporovalo připojení k ITSMC. Další informace: [vytvoření role uživatele aplikace ServiceNow](#create-integration-user-role-in-servicenow-app)|
+| **Uživatelské jméno**   | Zadejte uživatelské jméno pro integraci, které jste vytvořili v aplikaci ServiceNow, aby se podporovalo připojení k ITSMC. Další informace: [vytvoření role uživatele aplikace ServiceNow](#create-integration-user-role-in-servicenow-app)|
 | **Heslo**   | Zadejte heslo přidružené k tomuto uživatelskému jménu. **Poznámka**: uživatelské jméno a heslo se používají jenom k vytváření tokenů ověřování a nejsou uložené kdekoli v rámci služby ITSMC.  |
 | **Adresa URL serveru**   | Zadejte adresu URL instance ServiceNow, ke které se chcete připojit ITSMC. Adresa URL by měla ukazovat na podporovanou verzi SaaS s příponou. servicenow.com.|
 | **ID klienta**   | Zadejte ID klienta, které chcete použít pro OAuth2 ověřování, které jste vygenerovali dříve.  Další informace o generování ID klienta a tajného klíče: [instalace OAuth](https://wiki.servicenow.com/index.php?title=OAuth_Setup). |
@@ -247,6 +248,10 @@ K vytvoření připojení ServiceNow použijte následující postup:
 - Můžete vytvářet incidenty z výstrah Log Analytics nebo ze záznamů protokolů nebo z výstrah Azure v této instanci ServiceNow.
 
 Další informace: [vytvoření pracovních položek ITSM z výstrah Azure](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
+
+
+> [!NOTE]
+> V ServiceNow platí omezení přenosové rychlosti pro žádosti za hodinu. Pokud chcete omezení nakonfigurovat, použijte k tomu definování "omezení rychlosti příchozího REST API" v instanci ServiceNow.
 
 ### <a name="create-integration-user-role-in-servicenow-app"></a>Vytvoření role uživatele integrace v aplikaci ServiceNow
 
@@ -293,7 +298,7 @@ Po úspěšném vytvoření uživatele se stav **kontrolního seznamu kontroly i
 Následující části obsahují podrobné informace o tom, jak připojit produkt pro prokázání do ITSMC v Azure.
 
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Ujistěte se, že jsou splněné následující předpoklady:
 
@@ -324,7 +329,7 @@ Pomocí následujícího postupu vytvořte připojení k prokázání:
 | --- | --- |
 | **Název připojení**   | Zadejte název instance pro prov, ke kterému se chcete připojit pomocí ITSMC.  Tento název použijete později při konfiguraci pracovních položek v tomto ITSM/zobrazení podrobné Log Analytics. |
 | **Typ partnera**   | Vyberte **prov**. |
-| **Jmen**   | Zadejte uživatelské jméno, které se může připojit k ITSMC.    |
+| **Uživatelské jméno**   | Zadejte uživatelské jméno, které se může připojit k ITSMC.    |
 | **Heslo**   | Zadejte heslo přidružené k tomuto uživatelskému jménu. **Poznámka:** Uživatelské jméno a heslo slouží pouze k vytváření tokenů ověřování a nejsou uloženy kdekoli v rámci služby ITSMC. _|
 | **Adresa URL serveru**   | Zadejte adresu URL vaší instance prov, ke které se chcete připojit ITSMC. |
 | **ID klienta**   | Zadejte ID klienta pro ověřování tohoto připojení, které jste vygenerovali v instanci prokázání.  Další informace o ID klienta najdete v tématu [Konfigurace ověřování služby Active Directory](../../app-service/configure-authentication-provider-aad.md). |
@@ -346,7 +351,7 @@ Další informace: [vytvoření pracovních položek ITSM z výstrah Azure](../.
 
 Následující části obsahují podrobné informace o tom, jak připojit produkt Cherwell k ITSMC v Azure.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Ujistěte se, že jsou splněné následující předpoklady:
 
@@ -375,7 +380,7 @@ Pomocí následujícího postupu vytvořte připojení k prokázání:
 | --- | --- |
 | **Název připojení**   | Zadejte název instance Cherwell, ke které se chcete připojit ITSMC.  Tento název použijete později při konfiguraci pracovních položek v tomto ITSM/zobrazení podrobné Log Analytics. |
 | **Typ partnera**   | Vyberte **Cherwell.** |
-| **Jmen**   | Zadejte uživatelské jméno Cherwell, které se může připojit k ITSMC. |
+| **Uživatelské jméno**   | Zadejte uživatelské jméno Cherwell, které se může připojit k ITSMC. |
 | **Heslo**   | Zadejte heslo přidružené k tomuto uživatelskému jménu. **Poznámka:** Uživatelské jméno a heslo slouží pouze k vytváření tokenů ověřování a nejsou uloženy kdekoli v rámci služby ITSMC.|
 | **Adresa URL serveru**   | Zadejte adresu URL instance Cherwell, ke které se chcete připojit ITSMC. |
 | **ID klienta**   | Zadejte ID klienta pro ověřování tohoto připojení, které jste vygenerovali v instanci Cherwell.   |

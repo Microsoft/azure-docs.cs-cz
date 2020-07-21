@@ -9,11 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: d05902f47dff3dd2f8a63ae240c0b8825a5c441f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 443751ee974dae3c426f36cbc262bc1a3af65bd0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77658026"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504933"
 ---
 # <a name="azure-monitor-workbook-visualizations"></a>Vizualizace sešitu Azure Monitor
 
@@ -50,7 +51,7 @@ Pracovní sešity podporují grafy pro protokoly i zdroje dat metriky.
 1. Kliknutím na položku panelu nástrojů pro **Úpravy** přepněte sešit do režimu úprav.
 2. K přidání ovládacího prvku dotaz na protokol do sešitu použijte odkaz **Přidat dotaz** .
 3. Vyberte typ dotazu jako **protokol**, typ prostředku (například Application Insights) a prostředky k cíli.
-4. Pomocí Editoru dotazů zadejte [KQL](https://docs.microsoft.com/azure/kusto/query/) pro analýzu (například trend požadavků).
+4. Pomocí Editoru dotazů zadejte [KQL](/azure/kusto/query/) pro analýzu (například trend požadavků).
 5. Nastavte vizualizaci na jednu z těchto: **oblast**, **pruhový**, **pruhový (kategorií)**, **spojnicový**, **výsečový**, **bodový**nebo **čas**.
 6. V případě potřeby nastavte další parametry jako časový rozsah, vizualizaci, velikost, paletu barev a legendu.
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 5541dec748f31818a0e9485fc0c56b7926ccaae7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a9ced48295fa4c396ed6c72fe021ed1e1be484b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758484"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501887"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Použití sériové konzoly pro volání nemaskovaných přerušení a SysRq
 
@@ -23,11 +23,11 @@ Po doručení sekvence SysRq bude konfigurace jádra řídit, jak systém reaguj
 
 Pomocí ikony klávesnice na panelu příkazů, která se zobrazuje níže, můžete k odeslání SysRq na virtuální počítač Azure použít konzolu Azure Serial.
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
+![Snímek obrazovky s konzolou sériového rozhraní Azure Ikona klávesnice se zvýrazní a její nabídka se zobrazí. Tato nabídka obsahuje položku příkazu Odeslat SysRq.](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
 
 Když vyberete příkaz Odeslat SysRq, otevře se dialogové okno, ve kterém budou uvedeny běžné možnosti SysRq, nebo přijmout sekvenci SysRq příkazů zadaných do dialogového okna.  To umožňuje řadě SysRq provádět operace vysoké úrovně, jako je bezpečné restartování pomocí: `REISUB` .
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
+![Snímek obrazovky dialogového okna Odeslat příkaz SysRq do hosta Je vybrána možnost pro zadání příkazů a pole obsahuje REISUB.](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
 
 Příkaz SysRq se nedá použít na virtuálních počítačích, které jsou zastavené nebo jejichž jádro je v nereagující stavu. (například nouzové jádro jádra).
 
@@ -96,7 +96,7 @@ Nemaskovatelné přerušení (NMI) je navržené k vytvoření signálu, který 
 
 Pomocí ikony klávesnice na panelu příkazů, která je uvedená níže, se dá použít Konzola sériového portu k odeslání NMI virtuálnímu počítači Azure. Po doručení NMI bude konfigurace virtuálního počítače řídit, jak systém reaguje.  Operační systémy Linux se dají nakonfigurovat tak, aby selhaly, a vytvoří výpis paměti. operační systém obdrží NMI.
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
+![Snímek obrazovky s konzolou sériového portu Ikona klávesnice se zvýrazní a její nabídka se zobrazí. Tato nabídka obsahuje položku pro odeslání nemaskované položky přerušení.](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
 
 Pro systémy Linux, které podporují sysctl pro konfiguraci parametrů jádra, můžete povolit nenouzové při příjmu tohoto NMI pomocí následujících kroků:
 1. Přidání tohoto řádku do */etc/sysctl.conf* <br>
@@ -121,7 +121,7 @@ Další informace o konfiguracích jádra systému Linux, včetně `unknown_nmi_
 - [Shromažďování protokolů selhání](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
 ## <a name="next-steps"></a>Další kroky
-* Hlavní stránka dokumentace pro Linux na sériové konzole se nachází [tady](serial-console.md).
+* Hlavní stránka dokumentace pro Linux na sériové konzole se nachází [tady](../troubleshooting/serial-console-linux.md).
 * Pomocí sériové konzoly spusťte [grub a zadejte režim single user](serial-console-grub-single-user-mode.md) .
-* Pro virtuální počítače s [Windows](../windows/serial-console.md) je dostupná taky konzola sériového portu.
-* Další informace o [diagnostice spouštění](boot-diagnostics.md)
+* Pro virtuální počítače s [Windows](../troubleshooting/serial-console-windows.md) je dostupná taky konzola sériového portu.
+* Další informace o [diagnostice spouštění](../troubleshooting/boot-diagnostics.md)

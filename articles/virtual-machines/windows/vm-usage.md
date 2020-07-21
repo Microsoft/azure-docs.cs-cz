@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: 62880542e2cc4a93585011837b4cc962c8e79c0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d480b9309c9028d8f55ab50c72a86889f320810b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83773776"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500111"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Principy využití virtuálních počítačů Azure
 Analýzou dat o využití Azure je možné získat výkonné přehledy o spotřebě – přehledy, které umožňují lepší správu nákladů a přidělování v celé organizaci. Tento dokument poskytuje podrobné podrobně k podrobnostem o spotřebě Azure Compute. Další informace o obecném využití Azure najdete v podrobnostech k [porozumění vaší faktuře](../../cost-management-billing/understand/review-individual-bill.md).
@@ -21,7 +22,7 @@ Analýzou dat o využití Azure je možné získat výkonné přehledy o spotře
 Začněte [stažením podrobností o použití](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md). Následující tabulka poskytuje definice a příklady hodnot použití Virtual Machines nasazených prostřednictvím Azure Resource Manager. Tento dokument neobsahuje podrobné informace o virtuálních počítačích nasazených prostřednictvím našeho klasického modelu.
 
 
-| Fields (Pole)             | Význam                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Příklady hodnot                                                                                                                                                                                                                                                                                                                                                   |
+| Pole             | Význam                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Příklady hodnot                                                                                                                                                                                                                                                                                                                                                   |
 |--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Datum využití         | Datum, kdy byl prostředek použit.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |  "11/23/2017"                                                                                                                                                                                                                                                                                                                                                     |
 | Meter ID           | Identifikuje službu nejvyšší úrovně, pro kterou toto použití patří.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | "Virtual Machines"                                                                                                                                                                                                                                                                                                                                               |
@@ -37,7 +38,7 @@ Začněte [stažením podrobností o použití](../../cost-management-billing/ma
 | Značky               | Značka, kterou přiřadíte prostředku. Značky můžete použít k seskupení fakturačních záznamů. Naučte se, jak [označit Virtual Machines.](tag.md) To je dostupné jenom pro Správce prostředků virtuální počítače.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | "{" myDepartment ":" RD "," myUser ":" jmeno "}"                                                                                                                                                                                                                                                                                                                        |
 | Další informace    | Metadata konkrétních služeb. V případě virtuálních počítačů v poli Další informace vyplníme následující: <ul><li>Obrázek konkrétního typu obrázku, který jste spustili. Úplný seznam podporovaných řetězců najdete níže v části typy imagí.</li><li>Typ služby: velikost, kterou jste nasadili.</li><li>VMName: název vašeho virtuálního počítače. Tato hodnota se naplní jenom pro virtuální počítače sady škálování. Pokud potřebujete název virtuálního počítače pro virtuální počítače sady škálování, najdete ho ve výše uvedeném řetězci ID instance.</li><li>Položku UsageType: Určuje typ použití, který představuje.<ul><li>ComputeHR je využití výpočetních hodin pro příslušný virtuální počítač, jako je Standard_D1_v2.</li><li>ComputeHR_SW je poplatek za software Premium, pokud virtuální počítač používá software Premium, například Microsoft R Server.</li></ul></li></ul>    | Virtual Machines {"ImageType": "kanonické", "ServiceType": "Standard_DS1_v2", "VMName": "", "položku UsageType": "ComputeHR"}<br><br>Virtual Machine Scale Sets {"ImageType": "kanonické", "ServiceType": "Standard_DS1_v2", "VMName": "myVM1", "položku UsageType": "ComputeHR"}<br><br>Premium software {"ImageType": "", "ServiceType": "Standard_DS1_v2", "VMName": "", "položku UsageType": "ComputeHR_SW"} |
 
-## <a name="image-type"></a>Typ image
+## <a name="image-type"></a>Typ obrázku
 V případě některých imagí v galerii Azure se typ obrázku vyplní v poli Další informace. To umožňuje uživatelům pochopit a sledovat, co mají na svém virtuálním počítači nasazené. Hodnoty, které jsou vyplněny v tomto poli na základě bitové kopie, kterou jste nasadili, jsou následující:
   - BitRock 
   - Canonical 
@@ -70,11 +71,11 @@ Název oblasti naplněný v poli umístění prostředku v podrobnostech o použ
 |    CanadaCentral         |    Kanada – střed                            |
 |    CanadaEast            |    Kanada – východ                               |
 |    CentralIndia          |    Indie – střed                            |
-|    centralus             |    USA – střed                            |
+|    centralus             |    Střední USA                            |
 |    chinaeast             |    Čína – východ                            |
 |    chinanorth            |    Čína – sever                           |
 |    eastasia              |    Východní Asie                             |
-|    eastus                |    USA – východ                               |
+|    eastus                |    East US                               |
 |    eastus2               |    USA – východ 2                             |
 |    GermanyCentral        |    Německo – střed                            |
 |    GermanyNortheast      |    DE severovýchod                          |
@@ -84,8 +85,8 @@ Název oblasti naplněný v poli umístění prostředku v podrobnostech o použ
 |    KoreaSouth            |    Korea – jih                              |
 |    northcentralus        |    USA – středosever                      |
 |    northeurope           |    Severní Evropa                          |
-|    southcentralus        |    USA – středojih                      |
-|    Jihovýchodní Asie         |    Jihovýchodní Asie                        |
+|    southcentralus        |    Středojižní USA                      |
+|    southeastasia         |    Jihovýchodní Asie                        |
 |    SouthIndia            |    Indie – jih                              |
 |    UKNorth               |    USA – sever                              |
 |    uksouth               |    Spojené království – jih                              |
@@ -137,10 +138,9 @@ Virtuální počítače podporující Prémiové úložiště se účtují stejn
 
 Rozhraní API obsahují 3 možná místa, která můžou vracet operační systém, který běží na virtuálním počítači:
 
-1) Spuštění virtuálních počítačů, které zahrnují agenta hosta (všechny virtuální počítače se systémem Linux a většina virtuálních počítačů s Windows), zobrazí název operačního systému a verzi operačního systému v zobrazení instance virtuálních počítačů. To je prakticky přesné, ale z důvodu faktu, že informace pocházejí od agenta hosta, nebudou k dispozici pro všechny virtuální počítače. Dokumentaci k rozhraní API [najdete tady](https://docs.microsoft.com/rest/api/compute/virtualmachines/instanceview#virtualmachineagentinstanceview).
-2) Virtuální počítače nasazené z image platformy budou obsahovat podrobnosti o imagi, které mohou označovat verzi operačního systému v vydavateli vybrané názvy pro nabídku nebo SKU. Jsou však vybrány Vydavatel, takže není zaručeno, že operační systém bude moci být v pojmenování zjistitelný. Dokumentaci k rozhraní API [najdete tady](https://docs.microsoft.com/rest/api/compute/images/get#operatingsystemtypes).
-3) Každý disk s operačním systémem bude mít zadanou hodnotu Windows nebo Linux. Tato hodnota se dědí z image, když se z image vytvoří disk s operačním systémem. Pokud se disk s operačním systémem nahraje přímo do platformy, pak se hodnota OS nastaví při vytvoření disku s operačním systémem. Tato hodnota je vždy přítomna, ale platforma Azure nezajišťuje správné ověření. Dokumentaci k rozhraní API [najdete tady](https://docs.microsoft.com/rest/api/compute/virtualmachineimages/get#operatingsystemtypes).
+1) Spuštění virtuálních počítačů, které zahrnují agenta hosta (všechny virtuální počítače se systémem Linux a většina virtuálních počítačů s Windows), zobrazí název operačního systému a verzi operačního systému v zobrazení instance virtuálních počítačů. To je prakticky přesné, ale z důvodu faktu, že informace pocházejí od agenta hosta, nebudou k dispozici pro všechny virtuální počítače. Dokumentaci k rozhraní API [najdete tady](/rest/api/compute/virtualmachines/instanceview#virtualmachineagentinstanceview).
+2) Virtuální počítače nasazené z image platformy budou obsahovat podrobnosti o imagi, které mohou označovat verzi operačního systému v vydavateli vybrané názvy pro nabídku nebo SKU. Jsou však vybrány Vydavatel, takže není zaručeno, že operační systém bude moci být v pojmenování zjistitelný. Dokumentaci k rozhraní API [najdete tady](/rest/api/compute/images/get#operatingsystemtypes).
+3) Každý disk s operačním systémem bude mít zadanou hodnotu Windows nebo Linux. Tato hodnota se dědí z image, když se z image vytvoří disk s operačním systémem. Pokud se disk s operačním systémem nahraje přímo do platformy, pak se hodnota OS nastaví při vytvoření disku s operačním systémem. Tato hodnota je vždy přítomna, ale platforma Azure nezajišťuje správné ověření. Dokumentaci k rozhraní API [najdete tady](/rest/api/compute/virtualmachineimages/get#operatingsystemtypes).
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o vašich podrobnostech o využití najdete v tématu [vysvětlení faktury za Microsoft Azure.](../../cost-management-billing/understand/review-individual-bill.md)
-

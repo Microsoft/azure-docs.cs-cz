@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 81dfac2a1623253a110833a96fddd1b41bd11b26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4fc411d3833fcd47477e7e0fe11c6da9e2114143
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390223"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502023"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Použití klíčů SSH s Windows v Azure
 
@@ -26,7 +26,7 @@ Tento článek popisuje způsoby generování a použití klíčů protokolu SSH
 ## <a name="windows-packages-and-ssh-clients"></a>Balíčky Windows a klienti SSH
 Pomocí *klienta ssh*se připojujete k virtuálním počítačům Linux a spravujete je v Azure. Počítače se systémem Linux nebo macOS obvykle mají sadu příkazů SSH pro generování a správu klíčů SSH a k vytváření připojení SSH. 
 
-Na počítačích s Windows nejsou vždycky nainstalované srovnatelné příkazy SSH. Poslední verze Windows 10 poskytují [příkazy klienta OpenSSH](https://blogs.msdn.microsoft.com/commandline/2018/03/07/windows10v1803/) k vytváření a správě klíčů ssh a vytvářejí připojení SSH z příkazového řádku. Poslední verze Windows 10 také zahrnují [podsystém Windows pro Linux](https://docs.microsoft.com/windows/wsl/about) pro spouštění a přístup k nástrojům, jako je klient SSH nativně v rámci prostředí bash. 
+Na počítačích s Windows nejsou vždycky nainstalované srovnatelné příkazy SSH. Poslední verze Windows 10 poskytují [příkazy klienta OpenSSH](https://devblogs.microsoft.com/commandline/windows10v1803/) k vytváření a správě klíčů ssh a vytvářejí připojení SSH z příkazového řádku. Poslední verze Windows 10 také zahrnují [podsystém Windows pro Linux](/windows/wsl/about) pro spouštění a přístup k nástrojům, jako je klient SSH nativně v rámci prostředí bash. 
 
 Další běžné klienty Windows SSH, které můžete nainstalovat místně, jsou zahrnuté v následujících balíčcích:
 
@@ -123,4 +123,4 @@ Pokud jste nainstalovali [balíček pro stažení](https://www.chiark.greenend.o
 
 * PowerShell můžete také použít v Azure Cloud Shell k vygenerování klíčů SSH a k vytvoření připojení SSH k virtuálním počítačům se systémem Linux. Další informace najdete v tématu [rychlý Start prostředí PowerShell](../../cloud-shell/quickstart-powershell.md#ssh).
 
-* Pokud máte potíže s použitím protokolu SSH pro připojení k virtuálním počítačům se systémem Linux, přečtěte si téma [řešení potíží s připojením SSH k virtuálnímu počítači Azure Linux](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Pokud máte potíže s použitím protokolu SSH pro připojení k virtuálním počítačům se systémem Linux, přečtěte si téma [řešení potíží s připojením SSH k virtuálnímu počítači Azure Linux](../troubleshooting/troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json).

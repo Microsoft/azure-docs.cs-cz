@@ -5,29 +5,33 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/10/2020
+ms.date: 07/14/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 2589c2abf13edc19b930d597a4d75a2be823f45d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: cafde6ed66e5b636be60533abafcd6f221fe33a1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86277732"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502503"
 ---
-Sdílené disky Azure (Preview) je nová funkce pro služby Azure Managed disks, která umožňuje připojení spravovaného disku k několika virtuálním počítačům současně. Připojení spravovaného disku k několika virtuálním počítačům vám umožní nasadit do Azure nové nebo migrovat existující clusterové aplikace.
+Azure Shared disks je nová funkce pro služby Azure Managed disks, která umožňuje současně připojit spravovaný disk k několika virtuálním počítačům (VM). Připojení spravovaného disku k několika virtuálním počítačům vám umožní nasadit do Azure nové nebo migrovat existující clusterové aplikace.
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Virtuální počítače v clusteru můžou číst nebo zapisovat do připojeného disku na základě rezervace, kterou vybrala Clusterová aplikace, pomocí [trvalých rezervací SCSI](https://www.t10.org/members/w_spc3.htm) (SCSI PR). SCSI PR je průmyslový standard, který využívají aplikace běžící v síti SAN (Storage Area Network) místně. Povolení SCSI PR na spravovaném disku vám umožní migrovat tyto aplikace do Azure tak, jak jsou.
+Virtuální počítače v clusteru můžou číst nebo zapisovat na jejich připojený disk na základě rezervace zvolené clusterovou aplikací pomocí [trvalých rezervací SCSI](https://www.t10.org/members/w_spc3.htm) (PR SCSI). SCSI PR je průmyslový standard, který využívají aplikace běžící v síti SAN (Storage Area Network) místně. Povolení SCSI PR na spravovaném disku vám umožní migrovat tyto aplikace do Azure tak, jak jsou.
 
-Sdílení spravovaných disků nabízí sdílené blokové úložiště, které je přístupné z více virtuálních počítačů. tyto služby se zveřejňují jako logická čísla jednotek (LUN). Logické jednotky (LUN) se pak prezentují iniciátoru (virtuálnímu počítači) z cíle (disku). Tyto logické jednotky (LUN) vypadají jako přímo připojené úložiště (DAS) nebo místní disk k virtuálnímu počítači.
+Sdílené spravované disky nabízejí sdílené blokové úložiště, ke kterému se dá dostat z víc virtuálních počítačů. tyto služby se zveřejňují jako logická čísla jednotek (LUN). Logické jednotky (LUN) se pak prezentují iniciátoru (virtuálnímu počítači) z cíle (disku). Tyto logické jednotky (LUN) vypadají jako přímo připojené úložiště (DAS) nebo místní disk k virtuálnímu počítači.
 
-Sdílené spravované disky nativně nenabízejí plně spravovaný systém souborů, ke kterému se dá dostat pomocí protokolu SMB/NFS. Musíte použít Správce clusterů, jako je cluster Windows Server failover cluster (WSFC) nebo Pacemaker, který zpracovává komunikaci uzlu clusteru i uzamykání zápisu.
+Sdílené spravované disky nativně nenabízejí plně spravovaný systém souborů, ke kterému se dá dostat pomocí protokolu SMB/NFS. Musíte použít Správce clusteru, jako je Windows Server failover cluster (WSFC) nebo Pacemaker, který zpracovává komunikaci uzlu clusteru a uzamykání zápisu.
 
 ## <a name="limitations"></a>Omezení
 
 [!INCLUDE [virtual-machines-disks-shared-limitations](virtual-machines-disks-shared-limitations.md)]
+
+### <a name="operating-system-requirements"></a>Požadavky na operační systém
+
+Sdílené disky podporují více operačních systémů. Podporované operační systémy najdete v oddílech [Windows](#windows) a [Linux](#linux) .
 
 ## <a name="disk-sizes"></a>Velikosti disků
 
@@ -37,23 +41,25 @@ Sdílené spravované disky nativně nenabízejí plně spravovaný systém soub
 
 ### <a name="windows"></a>Windows
 
-Většina clusterů založených na Windows využívá službu WSFC, která zajišťuje veškerou základní infrastrukturu pro komunikaci mezi uzly clusteru a umožňuje aplikacím využívat vzory paralelního přístupu. Služba WSFC v závislosti na vaší verzi Windows Serveru umožňuje variantu založenou na sdílených svazcích clusteru i variantu bez nich. Podrobnosti najdete v tématu [Vytvoření clusteru s podporou převzetí služeb při selhání](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster).
+Sdílené disky Azure jsou podporované na Windows serveru 2008 a novějších verzích. Většina sestavení clusteringu založeného na systému Windows ve službě WSFC, která zpracovává veškerou základní infrastrukturu pro komunikaci uzlu clusteru, umožňuje aplikacím využívat vzorce paralelního přístupu. Služba WSFC v závislosti na vaší verzi Windows Serveru umožňuje variantu založenou na sdílených svazcích clusteru i variantu bez nich. Podrobnosti najdete v tématu [Vytvoření clusteru s podporou převzetí služeb při selhání](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster).
 
 Mezi některé oblíbené aplikace využívající službu WSFC patří:
 
 - [Vytvoření FCI se sdílenými disky Azure (SQL Server na virtuálních počítačích Azure)](../articles/azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md)
-- Souborový server se škálováním na více systémů (SoFS)
+- Souborový server se škálováním na více instancí (SoFS) [Šablona] (https://aka.ms/azure-shared-disk-sofs-template)
+- SAP ASCS/SCS [Šablona] (https://aka.ms/azure-shared-disk-sapacs-template)
 - Souborový server pro obecné použití (úloha IW)
 - Disk profilu uživatele na serveru vzdálené plochy (RDS UPD)
-- SAP ASCS/SCS
 
 ### <a name="linux"></a>Linux
 
-Clustery se systémem Linux můžou využívat Správce clusterů, jako je [Pacemaker](https://wiki.clusterlabs.org/wiki/Pacemaker). Pacemaker se vytváří na [Corosync](http://corosync.github.io/corosync/)a povoluje komunikaci clusteru pro aplikace nasazené v prostředích s vysokou dostupností. Mezi běžné Clusterové systémy souborů patří [OCFS2](https://oss.oracle.com/projects/ocfs2/) a [GFS2](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/global_file_system_2/ch-overview-gfs2). Pomocí nástrojů, jako jsou [fence_scsi](http://manpages.ubuntu.com/manpages/eoan/man8/fence_scsi.8.html) a [sg_persist](https://linux.die.net/man/8/sg_persist), můžete manipulovat s rezervacemi a registrací.
+Sdílené disky Azure jsou podporované na:
+- [SUSE SLE for SAP and SUSE SLE HA 15 SP1 a vyšší](https://documentation.suse.com/sle-ha/15-SP1/single-html/SLE-HA-guide/index.html)
+- [Ubuntu 18,04 a novější](https://discourse.ubuntu.com/t/ubuntu-high-availability-corosync-pacemaker-shared-disk-environments/14874)
+- [RHEL Developer Preview na všech RHEL ve verzi 8](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_high_availability_clusters/index)
+- [Oracle Enterprise Linux] (https://docs.oracle.com/en/operating-systems/oracle-linux/8/availability/hacluster-1.html)
 
-#### <a name="ubuntu"></a>Ubuntu
-
-Informace o tom, jak nastavit vysokou dostupnost Ubuntu pomocí Corosync a Pacemaker na sdílených discích Azure, najdete v tématu věnovaném [Ubuntu komunitě](https://discourse.ubuntu.com/t/ubuntu-high-availability-corosync-pacemaker-shared-disk-environments/14874).
+Clustery se systémem Linux můžou využívat Správce clusterů, jako je [Pacemaker](https://wiki.clusterlabs.org/wiki/Pacemaker). Pacemaker se vytváří na [Corosync](http://corosync.github.io/corosync/)a povoluje komunikaci clusteru pro aplikace nasazené v prostředích s vysokou dostupností. Mezi běžné Clusterové systémy souborů patří [OCFS2](https://oss.oracle.com/projects/ocfs2/) a [GFS2](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/global_file_system_2/ch-overview-gfs2). Pro arbitrating přístup k disku můžete použít modely clusteringu založené na trvalé rezervaci (SCSI PR) nebo STONITH Block Device (SBD). Při použití SCSI PR můžete manipulovat s rezervacemi a registrací pomocí nástrojů, jako jsou [fence_scsi](http://manpages.ubuntu.com/manpages/eoan/man8/fence_scsi.8.html) a [sg_persist](https://linux.die.net/man/8/sg_persist).
 
 ## <a name="persistent-reservation-flow"></a>Trvalý tok rezervace
 
@@ -85,12 +91,13 @@ Tok je následující:
 
 Disky Ultra nabízejí dodatečné omezení pro celkový počet dvou omezení. Z tohoto důvodu může tok rezervací Ultra discích fungovat jak je popsáno v předchozí části, nebo může lépe omezit a distribuovat výkon.
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="Obrázek tabulky, která znázorňuje přístup jen pro čtení nebo čtení/zápis pro rezervovaného držitele, registraci a další.":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="Obrázek tabulky, která znázorňuje přístup "ReadOnly" nebo "čtení/zápisu" pro rezervovaného držitele, registraci a další.":::
 
 ## <a name="performance-throttles"></a>Omezení výkonu
 
-### <a name="premium-ssd-performance-throttles"></a>Omezení výkonu úrovně Premium SSD
-U jednotky SSD úrovně Premium je pevný počet vstupně-výstupních operací disku a propustnost, například IOPS P30, 5000. Tato hodnota zůstává bez ohledu na to, jestli se disk sdílí mezi 2 virtuálními počítači nebo 5 virtuálními počítači. Omezení disku můžete dosáhnout z jednoho virtuálního počítače nebo rozdělit na dva nebo více virtuálních počítačů. 
+### <a name="premium-ssd-performance-throttles"></a>SSD úrovně Premium omezení výkonu
+
+U jednotky SSD úrovně Premium je pevným počtem vstupně-výstupních operací disku a propustností například IOPS P30 5000. Tato hodnota zůstává bez ohledu na to, jestli se disk sdílí mezi 2 virtuálními počítači nebo 5 virtuálními počítači. Omezení disku můžete dosáhnout z jednoho virtuálního počítače nebo rozdělit na dva nebo více virtuálních počítačů. 
 
 ### <a name="ultra-disk-performance-throttles"></a>Omezení výkonu Ultra disk
 
@@ -101,8 +108,8 @@ Disky Ultra mají jedinečnou schopnost nastavit svůj výkon vyplněním upravi
 |---------|---------|
 |DiskIOPSReadWrite     |Celkový počet vstupně-výstupních operací povolených ve všech virtuálních počítačích, které namontují sdílený disk s přístupem pro zápis.         |
 |DiskMBpsReadWrite     |Celková propustnost (MB/s) povolená napříč všemi virtuálními počítači, které namontují sdílený disk s přístupem pro zápis.         |
-|DiskIOPSReadOnly*     |Celkový počet vstupně-výstupních operací povolených napříč všemi virtuálními počítači, které sdílí sdílený disk jako jen pro čtení.         |
-|DiskMBpsReadOnly*     |Celková propustnost (MB/s) povolená napříč všemi virtuálními počítači, které sdílený disk namontují jako jen pro čtení.         |
+|DiskIOPSReadOnly*     |Celkový počet vstupně-výstupních operací povolených ve všech virtuálních počítačích, ve kterých se sdílený disk připojuje `ReadOnly` .         |
+|DiskMBpsReadOnly*     |Celková propustnost (MB/s) povolená napříč všemi virtuálními počítači, které sdílí sdílený disk `ReadOnly` .         |
 
 \*Platí jenom pro sdílené disky jen pro Ultra
 
@@ -122,18 +129,22 @@ V následujících příkladech je znázorněno několik scénářů, které uka
 
 ##### <a name="two-nodes-cluster-using-cluster-shared-volumes"></a>Cluster se dvěma uzly pomocí sdílených svazků clusteru
 
-Následuje příklad dvou uzlů služby WSFC pomocí clusterovaných sdílených svazků. V této konfiguraci mají oba virtuální počítače souběžný přístup pro zápis na disk, což vede k rozdělení omezení pro čtení do dvou virtuálních počítačů a omezení jen pro čtení, které se nepoužívá.
+Následuje příklad dvou uzlů služby WSFC pomocí clusterovaných sdílených svazků. V této konfiguraci mají oba virtuální počítače souběžný přístup pro zápis na disk. Výsledkem je, že se `ReadWrite` omezení rozděluje mezi tyto dva virtuální počítače a `ReadOnly` omezení se nepoužívá.
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="Ultra example v CSV – dva uzly":::
 
 ##### <a name="two-node-cluster-without-cluster-share-volumes"></a>Cluster se dvěma uzly bez sdílených svazků clusteru
 
-Níže je uveden příklad služby WSFC se dvěma uzly, který nepoužívá clusterované sdílené svazky. V této konfiguraci má disk přístup pro zápis jenom na jednom virtuálním počítači. Výsledkem je omezení pro čtení a použití výhradně pro primární virtuální počítač a omezení jen pro čtení, které používá sekundární.
+Níže je uveden příklad služby WSFC se dvěma uzly, který nepoužívá clusterované sdílené svazky. V této konfiguraci má disk přístup pro zápis jenom na jednom virtuálním počítači. Výsledkem je `ReadWrite` omezení používané výhradně pro primární virtuální počítač a omezení, které `ReadOnly` používá sekundární.
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="Sdílený svazek clusteru – dva uzly žádný příklad CSV Ultra disk":::
 
 ##### <a name="four-node-linux-cluster"></a>Cluster se čtyřmi uzly Linux
 
-Následuje příklad clusteru se čtyřmi uzly v systému Linux s jedním zapisovačem a třemi čtecími nástroji pro horizontální navýšení kapacity. V této konfiguraci má disk přístup pro zápis jenom na jednom virtuálním počítači. To vede k tomu, že se omezení pro čtení a čtení používá výhradně pro primární virtuální počítač a omezení jen pro čtení, které jsou rozdělené do sekundárních virtuálních počítačů.
+Následuje příklad clusteru se čtyřmi uzly v systému Linux s jedním zapisovačem a třemi čtecími nástroji pro horizontální navýšení kapacity. V této konfiguraci má disk přístup pro zápis jenom na jednom virtuálním počítači. To vede k tomu, že se `ReadWrite` omezení používá výhradně pro primární virtuální počítač a `ReadOnly` omezuje se jejich rozdělení na sekundární virtuální počítače.
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-four-node-example.png" alt-text="Příklad omezení míry Ultra na čtyři uzly":::
+
+#### <a name="ultra-pricing"></a>Ceny pro Ultra
+
+Ceny za Ultra Share se účtují na základě zřízené kapacity, celkových zřizovacích IOPS (diskIOPSReadWrite + diskIOPSReadOnly) a celkové zajištěné propustnosti MB/s (diskMBpsReadWrite + diskMBpsReadOnly). Pro každé další připojení virtuálního počítače se neúčtují žádné další poplatky. Například Ultra Shared disk s následující konfigurací (diskSizeGB: 1024, DiskIOPSReadWrite: 10000, DiskMBpsReadWrite: 600, DiskIOPSReadOnly: 100, DiskMBpsReadOnly: 1) se účtuje pomocí 1024 GiB, 10100 IOPS a 601 MB/s, bez ohledu na to, jestli je připojený ke dvěma virtuálním počítačům nebo pěti virtuálním počítačům.

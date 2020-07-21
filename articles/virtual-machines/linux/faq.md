@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: cda729779c333064c91152e8427ce1a05227396e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 09f34eec84deeaf76d62ae0aff881e53bf5dd13f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201965"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502397"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Nejčastější dotazy týkající se Linux Virtual Machines
 Tento článek popisuje některé běžné otázky týkající se virtuálních počítačů s Linux vytvořenými v Azure pomocí modelu nasazení Správce prostředků. Verzi tohoto tématu pro Windows najdete v části [Nejčastější dotazy týkající se Windows Virtual Machines](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -30,13 +30,13 @@ Azure Managed Disks jsou doporučené nabídky diskového úložiště pro použ
 ## <a name="how-can-i-access-my-virtual-machine"></a>Jak můžu získat přístup k virtuálnímu počítači?
 Navažte vzdálené připojení pro přihlášení k virtuálnímu počítači pomocí Secure Shell (SSH). Přečtěte si pokyny k připojení [ze systému Windows](ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo [Linux a Mac](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). SSH ve výchozím nastavení umožňuje maximálně 10 souběžných připojení. Toto číslo můžete navýšit upravením konfiguračního souboru.
 
-Pokud máte problémy, podívejte se na [řešení potíží s připojením Secure Shell (SSH)](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Pokud máte problémy, podívejte se na [řešení potíží s připojením Secure Shell (SSH)](../troubleshooting/troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json).
 
 ## <a name="can-i-use-the-temporary-disk-devsdb1-to-store-data"></a>Můžu k ukládání dat použít dočasný disk (adresář/dev/sdb1)?
 Nepoužívejte dočasný disk (adresář/dev/sdb1) k ukládání dat. Pouze pro dočasné úložiště. Nehrozí riziko ztráty dat, která se nedají obnovit.
 
 ## <a name="can-i-copy-or-clone-an-existing-azure-vm"></a>Můžu zkopírovat nebo naklonovat stávající virtuální počítač Azure?
-Ano. Pokyny najdete v tématu [Postup vytvoření kopie virtuálního počítače se systémem Linux v modelu nasazení Správce prostředků](copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Yes. Pokyny najdete v tématu [Postup vytvoření kopie virtuálního počítače se systémem Linux v modelu nasazení Správce prostředků](copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="why-am-i-not-seeing-canada-central-and-canada-east-regions-through-azure-resource-manager"></a>Proč se mi nezobrazuje oblast Kanada – střed a Kanada – východní Azure Resource Manager?
 Pro vytváření virtuálních počítačů v existujících předplatných Azure se neregistrují automaticky dvě nové oblasti Kanady – střed a Kanada – východ. Tato registrace se provádí automaticky, když se virtuální počítač nasadí prostřednictvím Azure Portal do jakékoli jiné oblasti pomocí Azure Resource Manager. Po nasazení virtuálního počítače do jakékoli jiné oblasti Azure by měly být nové oblasti dostupné pro další virtuální počítače.
@@ -45,10 +45,10 @@ Pro vytváření virtuálních počítačů v existujících předplatných Azur
 Ano, teď je to možné. Nejdřív je potřeba zastavit navráceného virtuálního počítače. Pak můžete přidat nebo odebrat síťovou kartu (Pokud se nejedná o poslední síťovou kartu na VIRTUÁLNÍm počítači). 
 
 ## <a name="are-there-any-computer-name-requirements"></a>Existují nějaké požadavky na název počítače?
-Ano. Název počítače může mít délku maximálně 64 znaků. Další informace o pojmenování prostředků najdete v tématu [pravidla a omezení konvence pojmenování](/azure/architecture/best-practices/resource-naming) .
+Yes. Název počítače může mít délku maximálně 64 znaků. Další informace o pojmenování prostředků najdete v tématu [pravidla a omezení konvence pojmenování](/azure/architecture/best-practices/resource-naming) .
 
 ## <a name="are-there-any-resource-group-name-requirements"></a>Existují nějaké požadavky na název skupiny prostředků?
-Ano. Název skupiny prostředků může mít délku maximálně 90 znaků. Další informace o skupinách prostředků najdete v tématu [pravidla a omezení konvence pojmenování](/azure/architecture/best-practices/resource-naming) .
+Yes. Název skupiny prostředků může mít délku maximálně 90 znaků. Další informace o skupinách prostředků najdete v tématu [pravidla a omezení konvence pojmenování](/azure/architecture/best-practices/resource-naming) .
 
 ## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>Jaké jsou požadavky na uživatelské jméno při vytváření virtuálního počítače?
 

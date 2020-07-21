@@ -1,16 +1,17 @@
 ---
-title: Obnovitelné odstranění pro virtuální počítače
+title: Obnovitelné odstranění u virtuálních počítačů
 description: Přečtěte si, jak obnovitelné odstranění pro virtuální počítače zajišťuje větší zabezpečení záloh.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: ba00b235ea70bcc2dabbd5a91a3f7003f9bbed49
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: e447db2c3f862d2f577a9e7d8767946375abf4e0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82765770"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503536"
 ---
-# <a name="soft-delete-for-virtual-machines"></a>Obnovitelné odstranění pro virtuální počítače
+# <a name="soft-delete-for-virtual-machines"></a>Obnovitelné odstranění u virtuálních počítačů
 
 Obnovitelné odstranění pro virtuální počítače chrání zálohy virtuálních počítačů před nezamýšleným odstraněním. I po odstranění záloh jsou zachovány stav obnovitelného odstranění po dobu 14 dalších dnů.
 
@@ -67,7 +68,7 @@ Jak je uvedeno výše pro Azure Portal, sekvence kroků je stejná i při použi
 
 ### <a name="delete-the-backup-item-using-azure-powershell"></a>Odstraňte zálohovanou položku pomocí Azure PowerShell
 
-Odstraňte zálohovanou položku pomocí rutiny [Disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) PS.
+Odstraňte zálohovanou položku pomocí rutiny [Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PS.
 
 ```powershell
 Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
@@ -94,7 +95,7 @@ VM;iaasvmcontainerv2;selfhostrg;AppVM1    AzureVM             iaasvmcontainerv2;
 $myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID -Name AppVM1
 ```
 
-Pak proveďte operaci vrácení zpět se změnami pomocí rutiny [Undo-AzRecoveryServicesBackupItemDeletion](https://docs.microsoft.com/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion?view=azps-3.1.0) PS.
+Pak proveďte operaci vrácení zpět se změnami pomocí rutiny [Undo-AzRecoveryServicesBackupItemDeletion](/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion) PS.
 
 ```powershell
 Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force
@@ -104,7 +105,7 @@ WorkloadName     Operation            Status               StartTime            
 AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM     12/5/2019 12:47:40 PM     65311982-3755-46b5-8e53-c82ea4f0d2a2
 ```
 
-' DeleteState ' zálohované položky se vrátí na ' NotDeleted '. Ochrana se ale pořád zastaví. [Obnovte zálohu](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#change-policy-for-backup-items) pro opětovné povolení ochrany.
+' DeleteState ' zálohované položky se vrátí na ' NotDeleted '. Ochrana se ale pořád zastaví. [Obnovte zálohu](./backup-azure-vms-automation.md#change-policy-for-backup-items) pro opětovné povolení ochrany.
 
 ## <a name="soft-delete-for-vms-using-rest-api"></a>Obnovitelné odstranění pro virtuální počítače pomocí REST API
 

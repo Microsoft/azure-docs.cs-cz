@@ -4,11 +4,12 @@ description: Vyřazení metrik a automatické škálování klasických rozhran�
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: d9b6118bc165a9b0a78ae9c4da895719249b22b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65ce7a5c876c7a8e96f945d9d4db871c84f86a4e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114227"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505427"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Monitor vyřazení rozhraní API modelu nasazení Classic pro metriky a automatické škálování
 
@@ -28,9 +29,9 @@ Tento článek se týká, pokud používáte následující součásti:
 
 - **Klasická sada Azure Insights SDK** – Pokud používáte [klasickou sadu Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/), přepněte se na použití nové sady Azure monitor SDK pro [.NET](https://github.com/azure/azure-libraries-for-net#download) nebo [Java](https://github.com/azure/azure-libraries-for-java#download). Stáhněte [balíček NuGet sady Azure monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/).
 
-- **Klasické automatické škálování** – Pokud voláte [rozhraní API klasického nastavení automatického škálování](https://msdn.microsoft.com/library/azure/mt348562.aspx) ze svých vlastních nástrojů nebo pomocí [klasické sady Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/), měli byste přepnout na použití [Správce prostředků Azure monitor REST API](https://docs.microsoft.com/rest/api/monitor/autoscalesettings).
+- **Klasické automatické škálování** – Pokud voláte [rozhraní API klasického nastavení automatického škálování](/previous-versions/azure/reference/mt348562(v=azure.100)) ze svých vlastních nástrojů nebo pomocí [klasické sady Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/), měli byste přepnout na použití [Správce prostředků Azure monitor REST API](/rest/api/monitor/autoscalesettings).
 
-- **Klasické metriky** – Pokud pracujete s metrikami pomocí [klasických rozhraní REST API](https://msdn.microsoft.com/library/azure/dn510374.aspx) nebo [sady Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) od vlastních nástrojů, měli byste přepnout na použití [Správce prostředků Azure monitor REST API](https://docs.microsoft.com/rest/api/monitor/autoscalesettings). 
+- **Klasické metriky** – Pokud pracujete s metrikami pomocí [klasických rozhraní REST API](/previous-versions/azure/reference/dn510374(v=azure.100)) nebo [sady Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) od vlastních nástrojů, měli byste přepnout na použití [Správce prostředků Azure monitor REST API](/rest/api/monitor/autoscalesettings). 
 
 Pokud si nejste jistí, jestli váš kód nebo vlastní nástroje volají rozhraní API Classic, podívejte se na následující:
 
@@ -42,11 +43,11 @@ Pokud si nejste jistí, jestli váš kód nebo vlastní nástroje volají rozhra
 
 - Pokud používáte volání odkazovaná v dokumentaci na jakémkoli z následujících odkazů, používáte starší rozhraní API Classic.
 
-  - [Knihovna tříd Windows. Azure. Management. Monitoring](https://docs.microsoft.com/previous-versions/azure/dn510414(v=azure.100))
+  - [Knihovna tříd Windows. Azure. Management. Monitoring](/previous-versions/azure/dn510414(v=azure.100))
 
-  - [Monitorování (klasické rozhraní) .NET](https://docs.microsoft.com/previous-versions/azure/reference/mt348562(v%3dazure.100))
+  - [Monitorování (klasické rozhraní) .NET](/previous-versions/azure/reference/mt348562(v%3dazure.100))
 
-  - [Rozhraní IMetricOperations](https://docs.microsoft.com/previous-versions/azure/reference/dn802395(v%3dazure.100))
+  - [Rozhraní IMetricOperations](/previous-versions/azure/reference/dn802395(v%3dazure.100))
 
 ## <a name="why-you-should-switch"></a>Proč byste měli přepnout
 
@@ -86,5 +87,5 @@ Pokud máte nějaké dotazy, kontaktujte nás na adrese MonitorClassicAPIhelp@mi
 
 ## <a name="references"></a>Reference
 
-- [Novější rozhraní REST API pro Azure Monitor](https://docs.microsoft.com/rest/api/monitor/) 
+- [Novější rozhraní REST API pro Azure Monitor](/rest/api/monitor/) 
 - [Novější sada Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)

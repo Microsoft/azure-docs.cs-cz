@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 46716cf5bd810225cbfc3b54d246917c9559f78f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ff76ea3bd39f31880d0140e182ad99f293689e6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124455"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505359"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Odeslat metriky hostovaného operačního systému do Azure Monitor klasický Cloud Services úložiště metrik 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Pomocí rozšíření Azure Monitor [Diagnostics](diagnostics-extension-overview.md)můžete shromažďovat metriky a protokoly z hostovaného operačního systému (hostovaného operačního systému) spuštěného jako součást virtuálního počítače, cloudové služby nebo clusteru Service Fabric. Rozšíření může odesílat telemetrii do [mnoha různých umístění.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
+Pomocí rozšíření Azure Monitor [Diagnostics](diagnostics-extension-overview.md)můžete shromažďovat metriky a protokoly z hostovaného operačního systému (hostovaného operačního systému) spuštěného jako součást virtuálního počítače, cloudové služby nebo clusteru Service Fabric. Rozšíření může odesílat telemetrii do [mnoha různých umístění.](./data-platform.md?toc=/azure/azure-monitor/toc.json)
 
 Tento článek popisuje proces odeslání metrik výkonu hostovaného operačního systému pro Azure Classic Cloud Services do úložiště metrik Azure Monitor. Počínaje diagnostikou verze 1,11 můžete zapisovat metriky přímo do úložiště metrik Azure Monitor, kde jsou již shromažďovány standardní metriky platforem. 
 
@@ -26,13 +26,13 @@ Ukládání do tohoto umístění vám umožní přístup ke stejným akcím, kt
 
 Proces, který je popsaný v tomto článku, funguje jenom pro čítače výkonu v Azure Cloud Services. Nefunguje pro jiné vlastní metriky. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Musíte být [správcem služeb nebo spolusprávcem](../../cost-management-billing/manage/add-change-subscription-administrator.md) svého předplatného Azure. 
 
-- Vaše předplatné musí být zaregistrované ve službě [Microsoft. Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
+- Vaše předplatné musí být zaregistrované ve službě [Microsoft. Insights](../../azure-resource-manager/management/resource-providers-and-types.md). 
 
-- Musíte mít nainstalované buď [Azure PowerShell](/powershell/azure) , nebo [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) .
+- Musíte mít nainstalované buď [Azure PowerShell](/powershell/azure) , nebo [Azure Cloud Shell](../../cloud-shell/overview.md) .
 
 - Vaše cloudová služba musí být v [oblasti, která podporuje vlastní metriky](metrics-custom-overview.md#supported-regions).
 
@@ -46,7 +46,7 @@ Proces, který je popsaný v tomto článku, funguje jenom pro čítače výkonu
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu 
 
-Vytvořte instanční objekt ve vašem Azure Active Directorym tenantovi pomocí pokynů na webu [použití portálu k vytvoření Azure Active Directory aplikace a instančního objektu, který má přístup k prostředkům](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Během tohoto procesu mějte na paměti následující: 
+Vytvořte instanční objekt ve vašem Azure Active Directorym tenantovi pomocí pokynů na webu [použití portálu k vytvoření Azure Active Directory aplikace a instančního objektu, který má přístup k prostředkům](../../active-directory/develop/howto-create-service-principal-portal.md). Během tohoto procesu mějte na paměti následující: 
 
 - Pro přihlašovací adresu URL můžete umístit libovolnou adresu URL.  
 - Vytvoří nový tajný klíč klienta pro tuto aplikaci.  
@@ -171,7 +171,7 @@ Set-AzureServiceDiagnosticsExtension -ServiceName <classicCloudServiceName> -Sto
 
 ## <a name="plot-metrics-in-the-azure-portal"></a>Vykreslení metrik v Azure Portal 
 
-1. Přejděte na web Azure Portal. 
+1. Přejděte na Azure Portal. 
 
    ![Azure Portal metriky](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/navigate-metrics.png)
 
@@ -192,4 +192,3 @@ K zobrazení celkové paměti, kterou používá konkrétní role nebo instance 
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o [vlastních metrikách](metrics-custom-overview.md).
-

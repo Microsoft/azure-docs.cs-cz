@@ -3,11 +3,13 @@ title: Přehled zálohování offline
 description: Přečtěte si informace o komponentách offline zálohování. Zahrnují zálohování offline na základě Azure Data Box a offline zálohování založeného na službě Azure import/export.
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 84f79efe10f867b37d1e3bb21363be4b12156615
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: c5e0f4e722e2dd15b7277a484af2a101844344e6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84628337"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503621"
 ---
 # <a name="overview-of-offline-backup"></a>Přehled zálohování offline
 
@@ -43,7 +45,7 @@ Pokud chcete použít offline zálohování na základě Azure Data Box, přečt
 
 ## <a name="offline-backup-based-on-the-azure-importexport-service"></a>Zálohování offline na základě služby Azure import/export
 
-Tuto možnost podporuje Microsoft Azure Backup Server (MABS), aplikace System Center Data Protection Manager (DPM) DPM-A a Agent MARS. Používá [službu Azure import/export](https://docs.microsoft.com/azure/storage/common/storage-import-export-service). Data počátečního zálohování můžete přenést do Azure pomocí vlastních disků a konektorů, které jsou kompatibilní s Azure. Tento přístup vyžaduje zřízení dočasného úložiště označovaného jako pracovní umístění a použití předem připravených nástrojů k formátování a zkopírování zálohovaných dat na disky vlastněné zákazníkem.
+Tuto možnost podporuje Microsoft Azure Backup Server (MABS), aplikace System Center Data Protection Manager (DPM) DPM-A a Agent MARS. Používá [službu Azure import/export](../storage/common/storage-import-export-service.md). Data počátečního zálohování můžete přenést do Azure pomocí vlastních disků a konektorů, které jsou kompatibilní s Azure. Tento přístup vyžaduje zřízení dočasného úložiště označovaného jako pracovní umístění a použití předem připravených nástrojů k formátování a zkopírování zálohovaných dat na disky vlastněné zákazníkem.
 
 Zde je uvedena architektura, která popisuje přesun zálohovaných dat pomocí této možnosti.
 
@@ -57,9 +59,9 @@ Tady je souhrn architektury:
 4. V datovém centru Azure se data na discích zkopírují do účtu služby Azure Storage.
 5. Azure Backup zkopíruje zálohovaná data z účtu úložiště do trezoru Recovery Services. Přírůstkové zálohování je naplánováno.
 
-Pokud chcete použít offline zálohování založené na službě Azure import/export s agentem MARS, přečtěte si téma [pracovní postup offline zálohování v Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-backup-import-export).
+Pokud chcete použít offline zálohování založené na službě Azure import/export s agentem MARS, přečtěte si téma [pracovní postup offline zálohování v Azure Backup](./backup-azure-backup-import-export.md).
 
-Chcete-li použít stejné společně s MABS nebo DPM-A, přečtěte si [pracovní postup offline zálohování pro DPM a Azure Backup Server](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export).
+Chcete-li použít stejné společně s MABS nebo DPM-A, přečtěte si [pracovní postup offline zálohování pro DPM a Azure Backup Server](./backup-azure-backup-server-import-export.md).
 
 ## <a name="offline-backup-support-summary"></a>Souhrn podpory offline zálohování
 
@@ -68,11 +70,11 @@ Následující tabulka porovnává dvě dostupné možnosti, abyste mohli vhodn�
 | **Aspekty**                                            | **Zálohování offline na základě Azure Data Box**                     | **Zálohování offline na základě služby Azure import/export**                |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Azure Backup modely nasazení                              | Agent MARS (Preview)                                              | Agent MARS, MABS, DPM-A                                           |
-| Maximální počet zálohovaných dat na server (MARS) nebo na skupinu ochrany (MABS, DPM-A) | [Azure Data box disk](https://docs.microsoft.com/azure/databox/data-box-disk-overview) – 7,2 TB <br> [Azure Data box](https://docs.microsoft.com/azure/databox/data-box-overview) – 80 TB       | 80 TB (až 10 disků o 8 TB)                          |
-| Zabezpečení (data, zařízení a služba)                           | [Data](https://docs.microsoft.com/azure/databox/data-box-security#data-box-data-protection) -AES 256-bit šifrováno <br> [Zařízení](https://docs.microsoft.com/azure/databox/data-box-security#data-box-device-protection) – robustní – proprietární, rozhraní založené na přihlašovacích údajích ke kopírování dat <br> Funkce zabezpečení Azure, které jsou chráněné [službou](https://docs.microsoft.com/azure/databox/data-box-security#data-box-service-protection) | Data – šifrovaný BitLocker                                 |
-| Dočasné zřízení pracovního umístění                     | Není požadováno                                                | Větší než nebo rovna odhadované velikosti zálohovaných dat        |
-| Podporované oblasti                                           | [Azure Data Box oblasti disku](https://docs.microsoft.com/azure/databox/data-box-disk-overview#region-availability) <br> [Azure Data Box oblasti](https://docs.microsoft.com/azure/databox/data-box-disk-overview#region-availability) | [Oblasti služeb importu a exportu v Azure](https://docs.microsoft.com/azure/storage/common/storage-import-export-service#region-availability) |
-| Expedice mezi země                                     | Nepodporuje se  <br>    Zdrojová adresa a cílové datacentrum Azure musí být ve stejné zemi nebo oblasti *. | Podporuje se                                                    |
+| Maximální počet zálohovaných dat na server (MARS) nebo na skupinu ochrany (MABS, DPM-A) | [Azure Data box disk](../databox/data-box-disk-overview.md) – 7,2 TB <br> [Azure Data box](../databox/data-box-overview.md) – 80 TB       | 80 TB (až 10 disků o 8 TB)                          |
+| Zabezpečení (data, zařízení a služba)                           | [Data](../databox/data-box-security.md#data-box-data-protection) -AES 256-bit šifrováno <br> [Zařízení](../databox/data-box-security.md#data-box-device-protection) – robustní – proprietární, rozhraní založené na přihlašovacích údajích ke kopírování dat <br> Funkce zabezpečení Azure, které jsou chráněné [službou](../databox/data-box-security.md#data-box-service-protection) | Data – šifrovaný BitLocker                                 |
+| Dočasné zřízení pracovního umístění                     | Nevyžadováno                                                | Větší než nebo rovna odhadované velikosti zálohovaných dat        |
+| Podporované oblasti                                           | [Azure Data Box oblasti disku](../databox/data-box-disk-overview.md#region-availability) <br> [Azure Data Box oblasti](../databox/data-box-disk-overview.md#region-availability) | [Oblasti služeb importu a exportu v Azure](../storage/common/storage-import-export-service.md#region-availability) |
+| Expedice mezi země                                     | Nepodporováno  <br>    Zdrojová adresa a cílové datacentrum Azure musí být ve stejné zemi nebo oblasti *. | Podporováno                                                    |
 | Logistika přenosů (doručení, přeprava, vyzvednutí)           | Plně spravované Microsoftem                                     | Spravované zákazníkem                                            |
 | Ceny                                                      | [Ceny Azure Data Box](https://azure.microsoft.com/pricing/details/databox/) <br> [Ceny Azure Data Box disku](https://azure.microsoft.com/pricing/details/databox/disk/) | [Ceny za službu import/export v Azure](https://azure.microsoft.com/pricing/details/storage-import-export/) |
 

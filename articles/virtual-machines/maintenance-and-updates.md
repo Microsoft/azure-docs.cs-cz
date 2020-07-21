@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.author: shants
-ms.openlocfilehash: 3caf8b63cbd86338bbef653e9be9916907578627
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5dcf4ad7acb3becd2ca04407bc8e5b3ac45701f1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675875"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501700"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Údržba virtuálních počítačů v Azure
 
@@ -76,7 +77,7 @@ Pokud se rozhodnete počkat do plánované fáze údržby, měli byste zvážit 
 
 #### <a name="paired-regions"></a>Spárované oblasti
 
-Každá oblast Azure je spárovaná s jinou oblastí v rámci stejného geografického okolí. Dohromady vytvářejí pár oblastí. V průběhu plánované fáze údržby Azure aktualizuje jenom virtuální počítače v jedné oblasti páru oblastí. Když například aktualizujete virtuální počítač v Střed USA – sever, Azure neaktualizuje žádný virtuální počítač ve Střed USA – jih ve stejnou dobu. V ostatních oblastech, jako je Severní Evropa, však může údržba probíhat ve stejnou dobu jako v oblasti USA – východ. Porozumět způsobu, jakým dvojice oblastí fungují, vám pomůžou lépe distribuovat vaše virtuální počítače do různých oblastí. Další informace najdete v tématu [dvojice oblastí Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Každá oblast Azure je spárovaná s jinou oblastí v rámci stejného geografického okolí. Dohromady vytvářejí pár oblastí. V průběhu plánované fáze údržby Azure aktualizuje jenom virtuální počítače v jedné oblasti páru oblastí. Když například aktualizujete virtuální počítač v Střed USA – sever, Azure neaktualizuje žádný virtuální počítač ve Střed USA – jih ve stejnou dobu. V ostatních oblastech, jako je Severní Evropa, však může údržba probíhat ve stejnou dobu jako v oblasti USA – východ. Porozumět způsobu, jakým dvojice oblastí fungují, vám pomůžou lépe distribuovat vaše virtuální počítače do různých oblastí. Další informace najdete v tématu [dvojice oblastí Azure](../best-practices-availability-paired-regions.md).
 
 #### <a name="availability-sets-and-scale-sets"></a>Sady dostupnosti a sady škálování
 

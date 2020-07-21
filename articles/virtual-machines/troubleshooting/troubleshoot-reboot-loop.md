@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
-ms.openlocfilehash: 3fd0a8bf6bacfec5e2be6dfa52ca51e46c7025f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c336fe9a65d7bcc44790a4bfb02bed44f028733
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75443581"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500918"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Smyčka restartování Windows na virtuálním počítači Azure
 Tento článek popisuje smyčku restartování, se kterou se můžete setkat na virtuálním počítači s Windows v Microsoft Azure.
@@ -49,7 +50,7 @@ Může to způsobit poškození systému souborů. Je ale obtížné diagnostiko
 
 ## <a name="solution"></a>Řešení
 
-Pokud chcete tento problém vyřešit, [zazálohujte disk s operačním systémem](../windows/snapshot-copy-managed-disk.md)a [Připojte disk s operačním systémem k záchrannému virtuálnímu počítači](../windows/troubleshoot-recovery-disks-portal.md)a podle toho, jaké možnosti řešení chcete použít, nebo zkuste řešení jednu po jedné.
+Pokud chcete tento problém vyřešit, [zazálohujte disk s operačním systémem](../windows/snapshot-copy-managed-disk.md)a [Připojte disk s operačním systémem k záchrannému virtuálnímu počítači](./troubleshoot-recovery-disks-portal-windows.md)a podle toho, jaké možnosti řešení chcete použít, nebo zkuste řešení jednu po jedné.
 
 ### <a name="solution-for-cause-1"></a>Řešení 1. příčiny
 
@@ -93,7 +94,7 @@ Pokud chcete tento problém vyřešit, [zazálohujte disk s operačním systéme
 
 16. [Vytvořte nový virtuální počítač z disku s operačním systémem](../windows/create-vm-specialized.md).
 
-17. Pokud je problém vyřešen, bude pravděpodobně nutné přeinstalovat [RDAgent](https://blogs.msdn.microsoft.com/mast/2014/04/07/install-the-vm-agent-on-an-existing-azure-vm/) (WaAppAgent.exe).
+17. Pokud je problém vyřešen, bude pravděpodobně nutné přeinstalovat [RDAgent](/archive/blogs/mast/install-the-vm-agent-on-an-existing-azure-vm) (WaAppAgent.exe).
 
 ### <a name="solution-for-cause-2"></a>Řešení 2. příčiny
 
@@ -112,5 +113,3 @@ Obnovte virtuální počítač do poslední známé funkční konfigurace, postu
 4. Odeberte disk z virtuálního počítače pro řešení potíží a počkejte 2 minuty, než Azure uvolní tento disk.
 
 5. [Vytvořte nový virtuální počítač z disku s operačním systémem](../windows/create-vm-specialized.md).
-
-

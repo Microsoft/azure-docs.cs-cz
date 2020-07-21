@@ -1,6 +1,6 @@
 ---
-title: Použití Node. js k dotazování databáze
-description: Jak pomocí Node. js vytvořit program, který se připojí k databázi ve službě Azure SQL Database nebo Azure SQL Managed instance, a dotazuje se pomocí příkazů T-SQL.
+title: Použití Node.js k dotazování databáze
+description: Jak pomocí Node.js vytvořit program, který se připojuje k databázi v Azure SQL Database nebo spravované instanci SQL Azure a dotazuje se pomocí příkazů T-SQL.
 titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
@@ -12,25 +12,25 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 05/29/2020
 ms.custom: seo-javascript-september2019, seo-javascript-october2019, sqldbrb=2 
-ms.openlocfilehash: 6860aa07d7547df6eeebf5d35fa9a921f0f9dada
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 7135b3630d7b780d2c5d18f22b2a05ee6aedf8ed
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267371"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504529"
 ---
-# <a name="quickstart-use-nodejs-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: použití Node. js k dotazování databáze ve službě Azure SQL Database nebo spravované instanci Azure SQL
+# <a name="quickstart-use-nodejs-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: použití Node.js k dotazování databáze v Azure SQL Database nebo spravované instanci SQL Azure
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-V tomto rychlém startu použijete Node. js k připojení k databázi a dotazování na data.
+V tomto rychlém startu použijete Node.js pro připojení k databázi a dotazování na data.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto rychlého startu je potřeba:
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-  || Databáze SQL | Spravovaná instance SQL | SQL Server na virtuálním počítači Azure |
+  | Akce | Databáze SQL | Spravovaná instance SQL | SQL Server na virtuálním počítači Azure |
   |:--- |:--- |:---|:---|
   | Vytvořit| [Azure Portal](single-database-create-quickstart.md) | [Azure Portal](../managed-instance/instance-create-quickstart.md) | [Azure Portal](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
   || [Rozhraní příkazového řádku](scripts/create-and-configure-database-cli.md) | [Rozhraní příkazového řádku](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
@@ -42,19 +42,19 @@ K dokončení tohoto rychlého startu je potřeba:
   |||
 
 
-- Software související s [Node. js](https://nodejs.org)
+- Software související s [Node.js](https://nodejs.org)
 
   # <a name="macos"></a>[macOS](#tab/macos)
 
-  Nainstalujte homebrew a Node. js a potom nainstalujte ovladač ODBC a SQLCMD pomocí kroků **1,2** a **1,3** v části [vytváření aplikací Node. js pomocí SQL Server v MacOS](https://www.microsoft.com/sql-server/developer-get-started/node/mac/).
+  Nainstalujte homebrew a Node.js a potom nainstalujte ovladač ODBC a SQLCMD pomocí kroků **1,2** a **1,3** v části [Vytvoření Node.js aplikací pomocí SQL Server na MacOS](https://www.microsoft.com/sql-server/developer-get-started/node/mac/).
 
   # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
 
-  Nainstalujte Node. js a potom nainstalujte ovladač ODBC a SQLCMD pomocí kroků **1,2** a **1,3** v části [vytváření aplikací Node. js pomocí SQL Server v Ubuntu](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/).
+  Nainstalujte Node.js a potom nainstalujte ovladač ODBC a nástroj SQLCMD pomocí kroků **1,2** a **1,3** v části [vytváření Node.jsch aplikací pomocí SQL Server na Ubuntu](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/).
 
   # <a name="windows"></a>[Windows](#tab/windows)
 
-  Nainstalujte čokolády a Node. js a potom nainstalujte ovladač ODBC a SQLCMD pomocí kroků **1,2** a **1,3** v části [vytváření aplikací Node. js pomocí SQL Server ve Windows](https://www.microsoft.com/sql-server/developer-get-started/node/windows/).
+  Nainstalujte čokolády a Node.js a potom nainstalujte ovladač ODBC a nástroj SQLCMD pomocí kroků **1,2** a **1,3** při [vytváření aplikací Node.js pomocí SQL Server ve Windows](https://www.microsoft.com/sql-server/developer-get-started/node/windows/).
 
   ---
 
@@ -72,7 +72,7 @@ K dokončení tohoto rychlého startu je potřeba:
 
 Získejte informace o připojení, které potřebujete pro připojení k databázi v Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 2. Přejít na stránku **databáze SQL** nebo **spravované instance SQL** .
 
@@ -92,7 +92,7 @@ Otevřete příkazový řádek a vytvořte složku *sqltest*. Otevřete složku,
 
 ## <a name="add-code-to-query-the-database"></a>Přidání kódu pro dotaz do databáze
 
-1. V oblíbeném textovém editoru vytvořte nový soubor *sqltest. js*.
+1. V oblíbeném textovém editoru vytvořte nový soubor *sqltest.js*.
 
 1. Nahraďte jeho obsah následujícím kódem. Pak přidejte příslušné hodnoty pro váš server, databázi, uživatele a heslo.
 

@@ -6,16 +6,17 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 02/14/2019
 ms.author: cynthn
-ms.openlocfilehash: 434a3ef8c9bc1738252d59a5dca5bec16d85e45e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a56ad3fd5999600dfc576f0a0e34ff7221267934
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78970310"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502448"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Začínáme s Docker a seznámení s definováním a spuštěním aplikace s více kontejnery v Azure
 Při [psaní](https://github.com/docker/compose)použijete jednoduchý textový soubor k definování aplikace sestávající z více kontejnerů Docker. Pak aplikaci vyvoláte v jediném příkazu, který provede všechno k nasazení definovaného prostředí. V tomto článku se dozvíte, jak rychle vytvořit blog WordPress s back-end MariaDB SQL Database na virtuálním počítači s Ubuntu. K nastavení složitějších aplikací můžete použít také možnost vytvořit.
 
-Tento článek byl naposledy testován na 2/14/2019 pomocí [Azure Cloud Shell](https://shell.azure.com/bash) a [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) verze 2.0.58.
+Tento článek byl naposledy testován na 2/14/2019 pomocí [Azure Cloud Shell](https://shell.azure.com/bash) a [Azure CLI](/cli/azure/install-azure-cli) verze 2.0.58.
 
 ## <a name="create-docker-host-with-azure-cli"></a>Vytvoření hostitele Docker pomocí Azure CLI
 Nainstalujte si nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-az-cli2) a přihlaste se k účtu Azure pomocí [AZ Login](/cli/azure/reference-index).
@@ -108,7 +109,7 @@ Creating wordpress_wordpress_1...
 ```
 
 
-Chcete-li ověřit, zda jsou kontejnery v seznamu, zadejte `sudo docker-compose ps` . Měli byste vidět přibližně toto:
+Chcete-li ověřit, zda jsou kontejnery v seznamu, zadejte `sudo docker-compose ps` . Mělo by se vám zobrazit přibližně toto:
 
 ```
         Name                       Command               State         Ports
@@ -125,4 +126,3 @@ Nyní se můžete připojit k WordPress přímo na VIRTUÁLNÍm počítači na p
 * Další příklady sestavování a nasazování aplikací s více kontejnery najdete v příručce k [příkazovému řádku pro psaní](https://docs.docker.com/compose/reference/) a v [uživatelské příručce](https://docs.docker.com/compose/) .
 * K nasazení virtuálního počítače Azure s využitím Docker a aplikace nastavenou v sestavách použijte šablonu Azure Resource Manager, kterou vlastníte, nebo jednu z [komunit](https://azure.microsoft.com/documentation/templates/). Například [blog pro nasazení WordPress s použitím šablony Docker](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-wordpress-mysql) používá Docker a napsat k rychlému nasazení WordPressu s back-endu MySQL na virtuálním počítači s Ubuntu.
 * Zkuste integraci Docker Compose s clusterem Docker Swarm. Scénáře najdete v tématu [použití Swarm](https://docs.docker.com/compose/swarm/) .
-

@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2019
-ms.openlocfilehash: 8ff24d508eb35c4f2a04c7d024254fa6f1875da8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b9624313716081a039b12c73e54b9f7afc2a323
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77659279"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505308"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Importovat data protokolu Azure Monitor do Power BI
 
@@ -20,12 +21,12 @@ ms.locfileid: "77659279"
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="overview"></a>Přehled
-Chcete-li importovat data z [pracovního prostoru Log Analytics](manage-access.md) v Azure Monitor do Power BI, vytvořte datovou sadu v Power BI na základě [dotazu protokolu](../log-query/log-query-overview.md) v Azure monitor.  Dotaz se spustí pokaždé, když se datová sada aktualizuje.  Potom můžete vytvořit sestavy Power BI, které používají data z datové sady.  Chcete-li vytvořit datovou sadu v Power BI, exportujte dotaz z Log Analytics do [jazyka Power Query (M)](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification).  Pak použijete tuto akci k vytvoření dotazu v Power BI Desktop a pak ho publikujete do Power BI jako datovou sadu.  Podrobnosti o tomto procesu jsou popsány níže.
+Chcete-li importovat data z [pracovního prostoru Log Analytics](manage-access.md) v Azure Monitor do Power BI, vytvořte datovou sadu v Power BI na základě [dotazu protokolu](../log-query/log-query-overview.md) v Azure monitor.  Dotaz se spustí pokaždé, když se datová sada aktualizuje.  Potom můžete vytvořit sestavy Power BI, které používají data z datové sady.  Chcete-li vytvořit datovou sadu v Power BI, exportujte dotaz z Log Analytics do [jazyka Power Query (M)](/powerquery-m/power-query-m-language-specification).  Pak použijete tuto akci k vytvoření dotazu v Power BI Desktop a pak ho publikujete do Power BI jako datovou sadu.  Podrobnosti o tomto procesu jsou popsány níže.
 
 ![Log Analytics Power BI](media/powerbi/overview.png)
 
 ## <a name="export-query"></a>Exportovat dotaz
-Začněte vytvořením [dotazu protokolu](../log-query/log-query-overview.md) , který vrátí data, která chcete vyplnit Power BI datovou sadu.  Pak tento dotaz exportujte do [jazyka Power Query (M)](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification) , který lze použít v Power BI Desktop.
+Začněte vytvořením [dotazu protokolu](../log-query/log-query-overview.md) , který vrátí data, která chcete vyplnit Power BI datovou sadu.  Pak tento dotaz exportujte do [jazyka Power Query (M)](/powerquery-m/power-query-m-language-specification) , který lze použít v Power BI Desktop.
 
 1. [Vytvořte dotaz protokolu v Log Analytics](../log-query/get-started-portal.md) pro extrakci dat pro datovou sadu.
 2. Vyberte **exportovat**  >  **Power BI dotaz (M)**.  Tím se dotaz exportuje do textového souboru s názvem **PowerBIQuery.txt**. 
@@ -38,7 +39,7 @@ Začněte vytvořením [dotazu protokolu](../log-query/log-query-overview.md) , 
 Power BI Desktop je desktopová aplikace, která umožňuje vytvořit datové sady a sestavy, které se dají publikovat do Power BI.  Můžete ji také použít k vytvoření dotazu pomocí Power Queryho jazyka exportovaného z Azure Monitor. 
 
 1. Nainstalujte [Power BI Desktop](https://powerbi.microsoft.com/desktop/) , pokud ho ještě nemáte, a pak aplikaci otevřete.
-2. Vyberte **načíst data**  >  **prázdný dotaz** pro otevření nového dotazu.  Pak vyberte **Rozšířený editor** a vložte obsah exportovaného souboru do dotazu. Klikněte na **Done** (Hotovo).
+2. Vyberte **načíst data**  >  **prázdný dotaz** pro otevření nového dotazu.  Pak vyberte **Rozšířený editor** a vložte obsah exportovaného souboru do dotazu. Klikněte na **Hotovo**.
 
     ![Power BI Desktop dotaz](media/powerbi/desktop-new-query.png)
 
@@ -52,7 +53,7 @@ Power BI Desktop je desktopová aplikace, která umožňuje vytvořit datové sa
 ## <a name="publish-to-power-bi"></a>Publikovat do Power BI
 Když publikujete do Power BI, vytvoří se datová sada a sestava.  Pokud vytvoříte sestavu v Power BI Desktop, bude tato zpráva publikována s Vašimi daty.  V takovém případě se vytvoří prázdná sestava.  Sestavu můžete upravit v Power BI nebo vytvořit novou v závislosti na datové sadě.
 
-1. Vytvořte sestavu na základě vašich dat.  Pokud s ním nejste obeznámeni, použijte [dokumentaci Power BI Desktop](https://docs.microsoft.com/power-bi/desktop-report-view) .  
+1. Vytvořte sestavu na základě vašich dat.  Pokud s ním nejste obeznámeni, použijte [dokumentaci Power BI Desktop](/power-bi/desktop-report-view) .  
 1. Až budete připraveni ho odeslat Power BI, klikněte na **publikovat**.  
 1. Po zobrazení výzvy vyberte cíl v účtu Power BI.  Pokud nemáte na mysli konkrétní cíl, použijte **pracovní prostor**.
 

@@ -4,11 +4,12 @@ description: Naučte se používat akce automatického škálování pro volán�
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: autoscale
-ms.openlocfilehash: c82b170bb3801bdc701ed84230db57f5691523ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b1f13fd1ce8bedcbe58385d4cee321f1d1405df
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77120684"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505515"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Použití akcí automatického škálování k odesílání oznámení o výstrahách e-mailu a Webhooku v Azure Monitor
 V tomto článku se dozvíte, jak nastavit triggery, abyste mohli volat konkrétní webové adresy URL nebo posílat e-maily na základě akcí automatického škálování v Azure.  
@@ -28,7 +29,7 @@ Pro Cloud Services a serverové farmy (App Services) se můžete přihlásit z A
 
 ## <a name="virtual-machine-scale-sets"></a>Škálovací sady virtuálních počítačů
 Pro novější Virtual Machines vytvořené pomocí Správce prostředků (Virtual Machine Scale Sets) ho můžete nakonfigurovat pomocí REST API, šablon Správce prostředků, PowerShellu a rozhraní příkazového řádku. Rozhraní portálu ještě není k dispozici.
-Při použití šablony REST API nebo Správce prostředků zahrňte do [autoscalesettings](https://docs.microsoft.com/azure/templates/microsoft.insights/2015-04-01/autoscalesettings) element Notifications s následujícími možnostmi.
+Při použití šablony REST API nebo Správce prostředků zahrňte do [autoscalesettings](/azure/templates/microsoft.insights/2015-04-01/autoscalesettings) element Notifications s následujícími možnostmi.
 
 ```
 "notifications": [
@@ -55,7 +56,7 @@ Při použití šablony REST API nebo Správce prostředků zahrňte do [autosca
     ]
 ```
 
-| Pole | Závaznou? | Description |
+| Pole | Závaznou? | Popis |
 | --- | --- | --- |
 | NázevOperace |ano |hodnota musí být Scale (škálovat). |
 | sendToSubscriptionAdministrator |ano |hodnota musí být true nebo false. |
@@ -98,22 +99,21 @@ Když se vygeneruje oznámení automatického škálování, do datové části 
 ```
 
 
-| Pole | Závaznou? | Description |
+| Pole | Závaznou? | Popis |
 | --- | --- | --- |
 | status |ano |Stav, který indikuje, že se vygenerovala akce automatického škálování. |
 | NázevOperace |ano |U zvýšení instancí se bude "horizontální navýšení kapacity" a snížení počtu instancí bude "škálovat". |
 | kontext |ano |Kontext akce automatického škálování |
 | časové razítko |ano |Časové razítko, kdy se aktivovala akce automatického škálování |
-| id |Yes |ID Správce prostředků nastavení automatického škálování |
-| name |Yes |Název nastavení automatického škálování |
-| zobrazí |Yes |Vysvětlení akce, kterou služba automatického škálování trvala, a změny počtu instancí |
-| subscriptionId |Yes |ID předplatného cílového prostředku, který se škáluje |
-| resourceGroupName |Yes |Název skupiny prostředků cílového prostředku, který se škáluje |
-| resourceName |Yes |Název cílového prostředku, který se škáluje |
-| resourceType |Yes |Tři podporované hodnoty: Microsoft. classiccompute/DomainNames/sloty/Roles – role cloudových služeb, Microsoft. COMPUTE/virtualmachinescalesets "-Virtual Machine Scale Sets a" Microsoft. Web/serverových farem "-Web App |
-| resourceId |Yes |Správce prostředků ID cílového prostředku, který se škáluje |
-| portalLink |Yes |Azure Portal odkaz na stránku souhrnu cílového prostředku |
-| oldCapacity |Yes |Aktuální (starý) počet instancí, když automatické škálování trvalo akci škálování |
-| newCapacity |Yes |Nový počet instancí, na které se má znovu škálovat prostředek |
+| id |Ano |ID Správce prostředků nastavení automatického škálování |
+| name |Ano |Název nastavení automatického škálování |
+| zobrazí |Ano |Vysvětlení akce, kterou služba automatického škálování trvala, a změny počtu instancí |
+| subscriptionId |Ano |ID předplatného cílového prostředku, který se škáluje |
+| resourceGroupName |Ano |Název skupiny prostředků cílového prostředku, který se škáluje |
+| resourceName |Ano |Název cílového prostředku, který se škáluje |
+| resourceType |Ano |Tři podporované hodnoty: Microsoft. classiccompute/DomainNames/sloty/Roles – role cloudových služeb, Microsoft. COMPUTE/virtualmachinescalesets "-Virtual Machine Scale Sets a" Microsoft. Web/serverových farem "-Web App |
+| resourceId |Ano |Správce prostředků ID cílového prostředku, který se škáluje |
+| portalLink |Ano |Azure Portal odkaz na stránku souhrnu cílového prostředku |
+| oldCapacity |Ano |Aktuální (starý) počet instancí, když automatické škálování trvalo akci škálování |
+| newCapacity |Ano |Nový počet instancí, na které se má znovu škálovat prostředek |
 | properties |No |Nepovinný parametr. Sada <klíč, hodnota> páry (například slovník <řetězec, řetězec>). Pole vlastností je volitelné. Ve vlastním uživatelském rozhraní nebo pracovním postupu založeném na aplikaci logiky můžete zadat klíče a hodnoty, které lze předat pomocí datové části. Alternativní způsob, jak předat vlastní vlastnosti zpátky odchozímu volání Webhooku, je použití samotného identifikátoru URI Webhooku (jako parametrů dotazu). |
-

@@ -7,11 +7,12 @@ ms.topic: article
 ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
-ms.openlocfilehash: 413f53feedc4fee0877694e3f3a3a509c4d38001
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ce816aba6bee36cd20eed6d31b0642dc8931e0b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783607"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503026"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>Velikosti virtuálních počítačů Azure bez místního dočasného disku 
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se velikostí virtuálních počítačů Azure, které nemají místní dočasný disk (tj. žádná místní dočasná plocha). Další informace o těchto velikostech virtuálních počítačů najdete v tématu [specifikace pro dv4 a Dsv4-Series (pro obecné účely úlohy)](dv4-dsv4-series.md) nebo [specifikace pro Ev4 a Esv4-Series (paměťově optimalizované úlohy)](ev4-esv4-series.md).
@@ -22,7 +23,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se velik
 ## <a name="what-does-no-local-temp-disk-mean"></a>Co neznamená žádný místní dočasný disk? 
 Tradičně jsme měli velikost virtuálních počítačů (např. Standard_D2s_v3, Standard_E48_v3), které zahrnují malý místní disk (tj. a D: Drive). Teď s těmito novými velikostmi virtuálních počítačů už neexistuje tento malý místní disk. Můžete však stále připojit HDD úrovně Standard, SSD úrovně Premium nebo SSD úrovně Ultra.
 
-## <a name="what-if-i-still-want-local-temp-disk"></a>Co když stále chci místní dočasný disk?
+## <a name="what-if-i-still-want-a-local-temp-disk"></a>Co když stále chci místní dočasný disk?
 Pokud vaše úloha vyžaduje místní dočasný disk, máme také k dispozici nové velikosti virtuálních počítačů [s Ddv4 a Ddsv4](ddv4-ddsv4-series.md) nebo [Edv4 a Edsv4](edv4-edsv4-series.md) . Tyto velikosti nabízejí 50% větší dočasný disk v porovnání s předchozími velikostmi v3.
 
 > [!NOTE]
@@ -46,7 +47,7 @@ Ne. Pro změnu velikosti jsou povolené jenom tyto kombinace:
 > Pokud bitová kopie závisí na disku prostředků nebo na místním dočasném disku existuje stránkovací soubor nebo swapfile, image bez disků nebudou fungovat – místo toho použijte alternativu "s diskem". 
 
 ## <a name="do-these-vm-sizes-support-both-linux-and-windows-operating-systems-os"></a>Podporují tyto velikosti virtuálních počítačů operační systémy Linux i Windows (OS)?
-Ano.
+Yes.
 
 ## <a name="will-this-break-my-custom-scripts-custom-images-or-os-images-that-have-scratch-files-or-page-files-on-a-local-temp-disk"></a>Budou se tato přerušení vlastní skripty, vlastní image nebo image operačních systémů, které mají soubory nebo soubory stránky na místním dočasném disku?
 Pokud vlastní image operačního systému odkazuje na místní dočasný disk, bitová kopie nemusí pracovat správně s touto bezdiskovou velikostí.

@@ -6,14 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: ce7edf4dd5ae52f3ea604fe4b8d88d1a29de5a69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6bd45324313ebc44bd4c59cd6f09e2eaab28d32
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84608362"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505138"
 ---
 # <a name="log-analytics-agent-overview"></a>Přehled agenta Log Analytics
-Agent Azure Log Analytics byl vyvinut pro komplexní správu napříč virtuálními počítači v jakémkoli cloudu, v místních počítačích a monitorované pomocí [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/). Agenti systému Windows a Linux odesílají shromážděná data z různých zdrojů do vašeho pracovního prostoru Log Analytics v Azure Monitor a také všechny jedinečné protokoly nebo metriky, jak jsou definovány v řešení monitorování. Agent Log Analytics také podporuje přehledy a další služby v Azure Monitor, jako jsou [Azure monitor pro virtuální počítače](../insights/vminsights-enable-overview.md), [Azure Security Center](/azure/security-center/)a [Azure Automation](../../automation/automation-intro.md).
+Agent Azure Log Analytics byl vyvinut pro komplexní správu napříč virtuálními počítači v jakémkoli cloudu, v místních počítačích a monitorované pomocí [System Center Operations Manager](/system-center/scom/). Agenti systému Windows a Linux odesílají shromážděná data z různých zdrojů do vašeho pracovního prostoru Log Analytics v Azure Monitor a také všechny jedinečné protokoly nebo metriky, jak jsou definovány v řešení monitorování. Agent Log Analytics také podporuje přehledy a další služby v Azure Monitor, jako jsou [Azure monitor pro virtuální počítače](../insights/vminsights-enable-overview.md), [Azure Security Center](../../security-center/index.yml)a [Azure Automation](../../automation/automation-intro.md).
 
 Tento článek poskytuje podrobný přehled požadavků na agenty, systém a síť a různé metody nasazení.
 
@@ -30,7 +31,7 @@ Mezi hlavní rozdíly, které je potřeba vzít v úvahu, patří:
 
 - Rozšíření Azure Diagnostics se dá použít jenom s virtuálními počítači Azure. Agent Log Analytics se dá použít s virtuálními počítači v Azure, jinými cloudy a místním prostředím.
 - Rozšíření Azure Diagnostics odesílá data do Azure Storage, [Azure monitor metriky](data-platform-metrics.md) (pouze Windows) a Event Hubs. Agent Log Analytics shromažďuje data do [protokolů Azure monitor](data-platform-logs.md).
-- Agent Log Analytics je vyžadován pro [řešení](../monitor-reference.md#insights-and-core-solutions), [Azure monitor pro virtuální počítače](../insights/vminsights-overview.md)a další služby, jako je například [Azure Security Center](/azure/security-center/).
+- Agent Log Analytics je vyžadován pro [řešení](../monitor-reference.md#insights-and-core-solutions), [Azure monitor pro virtuální počítače](../insights/vminsights-overview.md)a další služby, jako je například [Azure Security Center](../../security-center/index.yml).
 
 ## <a name="costs"></a>Náklady
 Pro agenta Log Analytics se neúčtují žádné náklady, ale za ingestování dat vám můžou být účtovány poplatky. Podrobné informace o cenách shromažďovaných v pracovním prostoru Log Analytics najdete v části [Správa využití a nákladů pomocí protokolů Azure monitor](manage-cost-storage.md) .
@@ -38,7 +39,7 @@ Pro agenta Log Analytics se neúčtují žádné náklady, ale za ingestování 
 ## <a name="data-collected"></a>Shromažďovaná data
 Následující tabulka uvádí typy dat, které můžete nakonfigurovat Log Analytics pracovní prostor pro shromažďování ze všech připojených agentů. Podívejte se na téma [co je monitorované pomocí Azure monitor?](../monitor-reference.md) v seznamu přehledů, řešení a dalších řešení, která používají agenta Log Analytics ke shromažďování dalších typů dat.
 
-| Zdroj dat | Description |
+| Zdroj dat | Popis |
 | --- | --- |
 | [Protokoly událostí systému Windows](data-sources-windows-events.md) | Informace odesílané systému protokolování událostí systému Windows. |
 | [Syslog](data-sources-syslog.md)                     | Informace odesílané systému protokolování událostí pro Linux. |
@@ -58,7 +59,7 @@ Při použití agentů Log Analytics ke shromažďování dat je potřeba pochop
 
 * Chcete-li shromažďovat data z agentů systému Windows, můžete [nakonfigurovat každého agenta tak, aby se nahlásily do jednoho nebo více pracovních prostorů](agent-windows.md), a to i v případě, že se hlásí do skupiny pro správu System Center Operations Manager Agent pro Windows může hlásit až čtyři pracovní prostory.
 * Agent pro Linux nepodporuje více domovských stránek a může nahlásit pouze jeden pracovní prostor.
-* Agent systému Windows podporuje [Standard FIPS 140](https://docs.microsoft.com/windows/security/threat-protection/fips-140-validation)a Agent pro Linux ho nepodporuje.  
+* Agent systému Windows podporuje [Standard FIPS 140](/windows/security/threat-protection/fips-140-validation)a Agent pro Linux ho nepodporuje.  
 
 Pokud používáte System Center Operations Manager 2012 R2 nebo novější:
 
@@ -69,7 +70,7 @@ Pokud používáte System Center Operations Manager 2012 R2 nebo novější:
 
 Existuje několik metod, jak nainstalovat agenta Log Analytics a připojit počítač k Azure Monitor v závislosti na vašich požadavcích. Následující tabulka zvýrazňuje jednotlivé metody, abyste zjistili, které funkce ve vaší organizaci nejlépe vyhovuje.
 
-|Zdroj | Metoda | Description|
+|Zdroj | Metoda | Popis|
 |-------|-------------|-------------|
 |Virtuální počítač Azure| [Ručně z Azure Portal](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json) | Zadejte virtuální počítače, které chcete nasadit z pracovního prostoru Log Analytics. |
 | | Log Analytics rozšíření virtuálního počítače pro [Windows](../../virtual-machines/extensions/oms-windows.md) nebo [Linux](../../virtual-machines/extensions/oms-linux.md) pomocí Azure CLI nebo šablony Azure Resource Manager | Rozšíření nainstaluje agenta Log Analytics na virtuální počítače Azure a zaregistruje je do existujícího pracovního prostoru Azure Monitor. |
@@ -124,7 +125,7 @@ Od verzí vydaných po srpna 2018 provedeme následující změny modelu podpory
 Spustitelný soubor python2 musí mít alias na Python, a to pomocí následujícího příkazu:
 
 ```
-alternatives --set python /usr/sbin/python2
+alternatives --set python `which python2`
 ```
 
 ### <a name="supported-distros"></a>Podporované distribuce
@@ -147,7 +148,7 @@ Pro agenta pro Linux jsou oficiálně podporované následující verze operačn
 
 V následující tabulce jsou vysvětlené balíčky požadované pro podporované distribuce Linux, na které se agent nainstaluje.
 
-|Požadovaný balíček |Description |Minimální verze |
+|Požadovaný balíček |Popis |Minimální verze |
 |-----------------|------------|----------------|
 |Glibc |    Knihovna GNU C | 2.5-12 
 |Openssl    | Knihovny OpenSSL | 1,0. x nebo 1.1. x |
@@ -187,12 +188,12 @@ Následující tabulka uvádí informace o konfiguraci proxy serveru a brány fi
 
 |Prostředek agenta|Porty |Směr |Obejít kontrolu protokolu HTTPS|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Port 443 |Odchozí|Yes |  
-|*.oms.opinsights.azure.com |Port 443 |Odchozí|Yes |  
-|*.blob.core.windows.net |Port 443 |Odchozí|Yes |
-|*.azure-automation.net |Port 443 |Odchozí|Yes |
+|*.ods.opinsights.azure.com |Port 443 |Odchozí|Ano |  
+|*.oms.opinsights.azure.com |Port 443 |Odchozí|Ano |  
+|*.blob.core.windows.net |Port 443 |Odchozí|Ano |
+|*.azure-automation.net |Port 443 |Odchozí|Ano |
 
-Informace o bráně firewall požadované pro Azure Government najdete v tématu [správa Azure Government](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs). 
+Informace o bráně firewall požadované pro Azure Government najdete v tématu [správa Azure Government](../../azure-government/compare-azure-government-global-azure.md#azure-monitor-logs). 
 
 Pokud plánujete použít Azure Automation Hybrid Runbook Worker k připojení a registraci ve službě Automation pro použití sad Runbook nebo řešení správy ve vašem prostředí, musí mít přístup k číslu portu a adresám URL popsaným v tématu [Konfigurace sítě pro Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md#network-planning). 
 
@@ -209,7 +210,7 @@ V případě agenta pro Linux je proxy server zadáno během instalace nebo [po 
 
 |Vlastnost| Popis |
 |--------|-------------|
-|Protocol (Protokol) | HTTPS |
+|Protokol | HTTPS |
 |uživatel | Volitelné uživatelské jméno pro ověřování proxy |
 |heslo | Volitelné heslo pro ověřování proxy serveru |
 |proxyhost | Adresa nebo plně kvalifikovaný název domény brány proxy server/Log Analytics |

@@ -3,18 +3,18 @@ title: Obnovení databází SAP HANA na virtuálních počítačích Azure
 description: V tomto článku zjistíte, jak obnovit SAP HANA databáze, které běží na Azure Virtual Machines.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: a3db88ca3c995c3c190da051dbf9df6ae5e29530
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: c62ea68683355fc703a5258e6e5fa0f3795f7e34
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851435"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503587"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>Obnovení databází SAP HANA na virtuálních počítačích Azure
 
 Tento článek popisuje, jak obnovit SAP HANA databáze běžící na virtuálním počítači Azure, který je službou Azure Backup zálohovaný do trezoru služby Recovery Services. Obnovení lze použít k vytvoření kopií dat pro scénáře vývoje a testování nebo k návratu do předchozího stavu.
 
-Další informace o tom, jak zálohovat SAP HANA databáze, najdete v tématu [zálohování databází SAP HANA na virtuálních počítačích Azure](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database).
+Další informace o tom, jak zálohovat SAP HANA databáze, najdete v tématu [zálohování databází SAP HANA na virtuálních počítačích Azure](./backup-azure-sap-hana-database.md).
 
 ## <a name="restore-to-a-point-in-time-or-to-a-recovery-point"></a>Obnovení k určitému bodu v čase nebo na bod obnovení
 
@@ -24,7 +24,7 @@ Azure Backup může obnovit databáze SAP HANA, které běží na virtuálních 
 
 * Obnovení do konkrétního úplného nebo rozdílového zálohování pro obnovení do konkrétního bodu obnovení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před obnovením databáze mějte na paměti následující:
 

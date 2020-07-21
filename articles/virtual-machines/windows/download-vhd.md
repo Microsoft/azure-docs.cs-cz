@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 01/13/2019
 ms.author: cynthn
-ms.openlocfilehash: e87f2436f69abed4c0d0ee415226f99b52f2e804
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 20236ccf1ec8e1f8d8113f0597d37c20e2788987
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82085361"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500425"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Stažení virtuálního pevného disku s Windows z Azure
 
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak stáhnout soubor virtuálního pevného disku 
 
 ## <a name="optional-generalize-the-vm"></a>Volitelné: generalizace virtuálního počítače
 
-Pokud chcete virtuální pevný disk použít jako [Image](tutorial-custom-images.md) k vytvoření dalších virtuálních počítačů, měli byste k generalizaci operačního systému použít [Nástroj Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation) . 
+Pokud chcete virtuální pevný disk použít jako [Image](tutorial-custom-images.md) k vytvoření dalších virtuálních počítačů, měli byste k generalizaci operačního systému použít [Nástroj Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation) . 
 
 Pokud chcete virtuální pevný disk použít jako image k vytvoření dalších virtuálních počítačů, proveďte generalizaci virtuálního počítače.
 
@@ -45,7 +45,7 @@ Virtuální pevný disk se nedá stáhnout z Azure, pokud je připojený ke spu�
 
 ## <a name="generate-download-url"></a>Generovat adresu URL pro stažení
 
-Pokud chcete stáhnout soubor VHD, musíte vygenerovat adresu URL [sdíleného přístupového podpisu (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) . Po vygenerování adresy URL se adresa URL přiřadí čas vypršení platnosti.
+Pokud chcete stáhnout soubor VHD, musíte vygenerovat adresu URL [sdíleného přístupového podpisu (SAS)](../../storage/common/storage-sas-overview.md?toc=/azure/virtual-machines/windows/toc.json) . Po vygenerování adresy URL se adresa URL přiřadí čas vypršení platnosti.
 
 1. Na stránce pro virtuální počítač klikněte v levé nabídce na **disky** .
 1. Vyberte disk operačního systému pro virtuální počítač.
@@ -68,4 +68,3 @@ Pokud chcete stáhnout soubor VHD, musíte vygenerovat adresu URL [sdíleného p
 - Přečtěte si, jak [nahrát soubor VHD do Azure](upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 - [Vytvořte spravované disky z nespravovaných disků v účtu úložiště](attach-disk-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 - [Spravujte disky Azure pomocí PowerShellu](tutorial-manage-data-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-

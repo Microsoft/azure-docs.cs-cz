@@ -12,25 +12,26 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: amverma
-ms.openlocfilehash: 7f7907482da886d9da17ef1e7844b205f3e4b906
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de61403b62f80bea7872d5ab3561567ae2109590
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74196772"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500064"
 ---
 # <a name="enable-infiniband-with-sr-iov"></a>Povolit InfiniBand s rozhraním SR-IOV
 
-Řada virtuálních počítačů Azure NC, ND a H-Series je zajištěná vyhrazenou InfiniBand sítí. Všechny velikosti podporující RDMA jsou schopné využití této sítě pomocí Intel MPI. Některé řady virtuálních počítačů mají rozšířenou podporu pro všechny implementace MPI a akce RDMA prostřednictvím rozhraní SR-IOV. Virtuální počítače s podporou RDMA zahrnují [optimalizované grafické procesory](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) a virtuální počítače [HPC (High Performance COMPUTE)](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) .
+Řada virtuálních počítačů Azure NC, ND a H-Series je zajištěná vyhrazenou InfiniBand sítí. Všechny velikosti podporující RDMA jsou schopné využití této sítě pomocí Intel MPI. Některé řady virtuálních počítačů mají rozšířenou podporu pro všechny implementace MPI a akce RDMA prostřednictvím rozhraní SR-IOV. Virtuální počítače s podporou RDMA zahrnují [optimalizované grafické procesory](../../sizes-gpu.md) a virtuální počítače [HPC (High Performance COMPUTE)](../../sizes-hpc.md) .
 
 ## <a name="choose-your-installation-path"></a>Zvolit cestu instalace
 
 Chcete-li začít, nejjednodušší možností je použít bitovou kopii platformy, která je předem nakonfigurovaná pro InfiniBand, pokud je k dispozici:
 
-- **Virtuální počítače HPC IaaS** – Pokud chcete začít s virtuálními počítači IaaS pro HPC, nejjednodušší řešení je použít [bitovou kopii operačního systému CentOS-HPC 7,6](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557), která je už nakonfigurovaná s InfiniBand. Vzhledem k tomu, že je tato image už nakonfigurovaná pomocí InfiniBand, nemusíte ji konfigurovat ručně. Kompatibilní verze systému Windows najdete v tématu [instance podporující Windows RDMA](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances).
+- **Virtuální počítače HPC IaaS** – Pokud chcete začít s virtuálními počítači IaaS pro HPC, nejjednodušší řešení je použít [bitovou kopii operačního systému CentOS-HPC 7,6](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557), která je už nakonfigurovaná s InfiniBand. Vzhledem k tomu, že je tato image už nakonfigurovaná pomocí InfiniBand, nemusíte ji konfigurovat ručně. Kompatibilní verze systému Windows najdete v tématu [instance podporující Windows RDMA](../../sizes-hpc.md#rdma-capable-instances).
 
 - **Virtuální počítače IaaS GPU** – pro virtuální počítače optimalizované pro GPU se momentálně nenakonfigurovaly žádné image platforem, s výjimkou [image operačního systému CentOS-HPC 7,6](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557). Pokud chcete nakonfigurovat vlastní image pomocí InfiniBand, přečtěte si téma [Ruční instalace Mellanox OFED](#manually-install-mellanox-ofed).
 
-Pokud používáte vlastní image virtuálního počítače nebo virtuální počítač s [optimalizovaným grafickým procesorem](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) , měli byste ho nakonfigurovat pomocí InfiniBand přidáním rozšíření virtuálního počítače InfiniBandDriverLinux nebo InfiniBandDriverWindows do svého nasazení. Naučte se používat tato rozšíření virtuálních počítačů se systémy [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances) a [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances).
+Pokud používáte vlastní image virtuálního počítače nebo virtuální počítač s [optimalizovaným grafickým procesorem](../../sizes-gpu.md) , měli byste ho nakonfigurovat pomocí InfiniBand přidáním rozšíření virtuálního počítače InfiniBandDriverLinux nebo InfiniBandDriverWindows do svého nasazení. Naučte se používat tato rozšíření virtuálních počítačů se systémy [Linux](../../sizes-hpc.md#rdma-capable-instances) a [Windows](../../sizes-hpc.md#rdma-capable-instances).
 
 ## <a name="manually-install-mellanox-ofed"></a>Ruční instalace Mellanox OFED
 
@@ -65,4 +66,4 @@ sudo systemctl restart waagent
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) v Azure.
+Přečtěte si další informace o [HPC](/azure/architecture/topics/high-performance-computing/) v Azure.

@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: 92b6737f48d8d8704f461c9adac92284b323b05f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 62d16bc9ca6c4238ff7c6304c5e1964c2956c898
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847393"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505291"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Připojit Operations Manager k Azure Monitor
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Pokud chcete zachovat stávající investice do [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) a využívat rozšířené možnosti s Azure monitor, můžete Operations Manager s pracovním prostorem Log Analytics integrovat. Díky tomu můžete využívat možnosti protokolů v Azure Monitor a přitom dál používat Operations Manager k těmto akcím:
+Pokud chcete zachovat stávající investice do [System Center Operations Manager](/system-center/scom/key-concepts?view=sc-om-1807) a využívat rozšířené možnosti s Azure monitor, můžete Operations Manager s pracovním prostorem Log Analytics integrovat. Díky tomu můžete využívat možnosti protokolů v Azure Monitor a přitom dál používat Operations Manager k těmto akcím:
 
 * Monitorování stavu vašich IT služeb pomocí nástroje Operations Manager
 * Údržba integrace s vašimi řešeními ITSM pro podporu správy incidentů a problémů
@@ -33,7 +33,7 @@ Následující diagram znázorňuje připojení mezi servery pro správu a agent
 
 Pokud vaše zásady zabezpečení IT neumožňují, aby se počítače ve vaší síti připojovaly k Internetu, servery pro správu je možné nakonfigurovat tak, aby se připojovaly k bráně Log Analytics a přijímaly informace o konfiguraci a odesílali shromážděná data v závislosti na povolených řešeních. Další informace a postup konfigurace skupiny pro správu Operations Manager pro komunikaci prostřednictvím Log Analytics brány k Azure Monitor najdete v tématu [připojení počítačů k Azure monitor pomocí brány Log Analytics](../../azure-monitor/platform/gateway.md).  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, přečtěte si následující požadavky.
 
@@ -47,13 +47,13 @@ Než začnete, přečtěte si následující požadavky.
     - USA – středozápad
     - Austrálie – jihovýchod
     - Západní Evropa
-    - USA – východ
+    - East US
     - Jihovýchodní Asie
-    - Japonsko – východ
+    - Japan East
     - Spojené království – jih
-    - Indie – střed
+    - Central India
     - Střední Kanada
-    - USA – západ 2
+    - Západní USA 2
 
 >[!NOTE]
 >Nedávné změny rozhraní API Azure znemožní zákazníkům úspěšně konfigurovat integraci mezi skupinou pro správu a Azure Monitor pro první spuštění. Pro zákazníky, kteří již mají integrovanou skupinu pro správu se službou, nebudete mít vliv na to, pokud nebudete muset překonfigurovat existující připojení.  
@@ -71,16 +71,16 @@ Níže uvedené informace uvádějí informace o konfiguraci proxy serveru a br�
 
 |Prostředek | Číslo portu| Obejití kontroly protokolu HTTP|  
 |---------|------|-----------------------|  
-|**Agenta**|||  
-|\*.ods.opinsights.azure.com| 443 |Yes|  
-|\*.oms.opinsights.azure.com| 443|Yes|  
-|\*.blob.core.windows.net| 443|Yes|  
-|\*.azure-automation.net| 443|Yes|  
+|**Agent**|||  
+|\*.ods.opinsights.azure.com| 443 |Ano|  
+|\*.oms.opinsights.azure.com| 443|Ano|  
+|\*.blob.core.windows.net| 443|Ano|  
+|\*.azure-automation.net| 443|Ano|  
 |**Server pro správu**|||  
 |\*.service.opinsights.azure.com| 443||  
-|\*.blob.core.windows.net| 443| Yes|  
-|\*.ods.opinsights.azure.com| 443| Yes|  
-|*.azure-automation.net | 443| Yes|  
+|\*.blob.core.windows.net| 443| Ano|  
+|\*.ods.opinsights.azure.com| 443| Ano|  
+|*.azure-automation.net | 443| Ano|  
 |**Operations Manager konzolu pro Azure Monitor**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  
@@ -154,7 +154,7 @@ Pokud vaše proxy server vyžaduje ověření, proveďte následující kroky, a
 1. Otevřete konzolu nástroje Operations Manager a vyberte pracovní prostor **Správa**.
 1. V části **Konfigurace RunAs** vyberte **Profily**.
 1. Otevřete profil **Proxy server profilu Spustit jako služby System Center Advisor**.
-1. Pokud chcete použít účet Spustit jako, klikněte v Průvodci profilem Spustit jako na Přidat. [Účet Spustit jako](https://technet.microsoft.com/library/hh321655.aspx) můžete vytvořit, případně použít existující účet. Tento účet musí mít dostatečná oprávnění k průchodu proxy serverem.
+1. Pokud chcete použít účet Spustit jako, klikněte v Průvodci profilem Spustit jako na Přidat. [Účet Spustit jako](/previous-versions/system-center/system-center-2012-R2/hh321655(v=sc.12)) můžete vytvořit, případně použít existující účet. Tento účet musí mít dostatečná oprávnění k průchodu proxy serverem.
 1. Pokud chcete nastavit účet k provedení správy, zvolte **Vybraná třída, skupina nebo objekt**, klikněte na **Vybrat** a potom na **Skupina**, čímž otevřete okno **Hledání skupiny**.
 1. Vyhledejte a pak vyberte **Skupina monitorovacích serverů služby Microsoft System Center Advisor**. Po výběru skupiny zavřete kliknutím na **OK** okno **Hledání skupiny**.
 1. Kliknutím na tlačítko **OK** zavřete pole **Přidat účet Spustit jako** .
@@ -173,7 +173,7 @@ Po dokončení konfigurace Operations Manager skupina pro správu naváže spoje
 * **Microsoft.SystemCenter. Advisor. MPUpdate** – aktualizuje základní sady management Pack Azure monitor. Ve výchozím nastavení se spouští každých 12 hodin.
 * **Microsoft.SystemCenter.Advisor.Core.GetIntelligencePacksRule** – Aktualizuje sady Management Pack řešení, které jsou povolené ve vašem pracovním prostoru. Ve výchozím nastavení se spouští každých pět (5) minut.
 
-Tato dvě pravidla můžete přepsat tak, aby se zabránilo automatickému stahování, a to tak, že je zakážete nebo upravíte frekvenci, jak často se management server synchronizuje s Azure Monitor, abyste zjistili, jestli je k dispozici nový Management Pack a že se má stáhnout. Podle kroků [pro přepsání pravidla nebo monitorování](https://technet.microsoft.com/library/hh212869.aspx) změňte parametr **Frekvence** na jinou hodnotou v sekundách (pokud chcete změnit plán synchronizace) nebo přepněte parametr **Povoleno** (pokud chcete pravidla zakázat). Přepsané hodnoty zacilte na všechny objekty třídy Skupina správy nástroje Operations Manager.
+Tato dvě pravidla můžete přepsat tak, aby se zabránilo automatickému stahování, a to tak, že je zakážete nebo upravíte frekvenci, jak často se management server synchronizuje s Azure Monitor, abyste zjistili, jestli je k dispozici nový Management Pack a že se má stáhnout. Podle kroků [pro přepsání pravidla nebo monitorování](/previous-versions/system-center/system-center-2012-R2/hh212869(v=sc.12)) změňte parametr **Frekvence** na jinou hodnotou v sekundách (pokud chcete změnit plán synchronizace) nebo přepněte parametr **Povoleno** (pokud chcete pravidla zakázat). Přepsané hodnoty zacilte na všechny objekty třídy Skupina správy nástroje Operations Manager.
 
 Chcete-li pokračovat podle stávajícího procesu řízení změn pro řízení Management Packch verzí ve skupině pro správu produkčního prostředí, můžete pravidla zakázat a povolit je v určitých časech, pokud jsou povoleny aktualizace. Pokud máte ve svém prostředí skupiny pro správu určenou pro vývoj nebo kontrolu kvality a ta má připojení k internetu, můžete pro podporu tohoto scénáře u této skupiny nakonfigurovat pracovní prostor služby Log Analytics. To vám umožní zkontrolovat a vyhodnotit iterativní verze Azure Monitor sad Management Pack před jejich uvolněním do produkční skupiny pro správu.
 

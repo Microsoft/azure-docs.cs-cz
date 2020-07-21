@@ -8,17 +8,18 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 7488ef45d665d95a28f69b7af887b98dd5a76376
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c3e55d13c0b5fbf5b813f1669587836bf8b5e2d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678371"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503009"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>Migrace prostředků IaaS do Azure Resource Manager do 1. března 2023 
 
 V 2014 jsme na Azure Resource Manager spustili IaaS a vylepšili jsme možnosti, které se od verze nezměnily. Vzhledem k tomu, že [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) nyní má úplné možnosti IaaS a další zálohy, zakázali jsme správu virtuálních počítačů s IaaS prostřednictvím Azure Service Manager od 28. února 2020 a tato funkce bude plně vyřazena 1. března 2023. 
 
-V dnešní době se o 90% virtuálních počítačů s IaaS používají Azure Resource Manager. Pokud používáte prostředky IaaS prostřednictvím služby Azure Service Manager (ASM), zahajte vám plánování migrace hned a od 1. března 2023, abyste mohli využít [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/).
+V dnešní době se o 90% virtuálních počítačů s IaaS používají Azure Resource Manager. Pokud používáte prostředky IaaS prostřednictvím služby Azure Service Manager (ASM), zahajte vám plánování migrace hned a od 1. března 2023, abyste mohli využít [Azure Resource Manager](../azure-resource-manager/management/index.yml).
 
 Klasické virtuální počítače budou za [moderní zásady životního cyklu](https://support.microsoft.com/help/30881/modern-lifecycle-policy) pro vyřazení.
 
@@ -38,10 +39,10 @@ Tyto služby a funkce **Azure nebudou** ovlivněny tímto vyřazením:
 
 - Začněte plánovat migraci na Azure Resource Manager dnes. 
 
-- [Přečtěte si další informace](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview) o migraci klasických virtuálních počítačů se systémy [Linux](./linux/migration-classic-resource-manager-plan.md) a [Windows](./windows/migration-classic-resource-manager-plan.md) do Azure Resource Manager.
+- [Přečtěte si další informace](./windows/migration-classic-resource-manager-overview.md) o migraci klasických virtuálních počítačů se systémy [Linux](./linux/migration-classic-resource-manager-plan.md) a [Windows](./windows/migration-classic-resource-manager-plan.md) do Azure Resource Manager.
 
-- Další informace najdete v [nejčastějších dotazech k migraci z modelu Classic na Azure Resource Manager](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq)
+- Další informace najdete v [nejčastějších dotazech k migraci z modelu Classic na Azure Resource Manager](./windows/migration-classic-resource-manager-faq.md)
 
-- V případě technických otázek, problémů a povolených předplatných se [obraťte na podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+- V případě technických otázek, problémů a přidávání předplatných do seznamu povolených [kontaktů se obraťte na podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 - Další otázky nejsou součástí NEJČASTĚJŠÍch dotazů a zpětná vazba, komentář níže.

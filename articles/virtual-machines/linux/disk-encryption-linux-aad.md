@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: c1349052488cb520f5866b5b0d238a223f2ceb68
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 274dda338fca1dae1940dd4a0fe66df617195544
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135086"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502618"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>Povolení Azure Disk Encryption s Azure AD na virtuálních počítačích se systémem Linux (předchozí verze)
 
@@ -209,7 +209,7 @@ Doporučujeme LVM instalaci. Pro všechny následující příklady nahraďte za
 - Přidejte datové disky, které budou tvořit virtuální počítač.
 - Naformátujte, připojte a přidejte tyto disky do souboru fstab.
 
-    1. Naformátujte nově přidaný disk. Symbolických odkazů vygenerované v Azure používáme tady. Použití symbolických odkazů zabraňuje problémům souvisejícím se změnou názvů zařízení. Další informace najdete v tématu [řešení potíží s názvy zařízení](troubleshoot-device-names-problems.md).
+    1. Naformátujte nově přidaný disk. Symbolických odkazů vygenerované v Azure používáme tady. Použití symbolických odkazů zabraňuje problémům souvisejícím se změnou názvů zařízení. Další informace najdete v tématu [řešení potíží s názvy zařízení](../troubleshooting/troubleshoot-device-names-problems.md).
     
         ```console
         mkfs -t ext4 /dev/disk/azure/scsi1/lun0
@@ -265,7 +265,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 Nový datový disk můžete přidat pomocí příkazem [AZ VM disk Attach](add-disk.md) nebo [prostřednictvím Azure Portal](attach-disk-portal.md). Než budete moct šifrování, musíte nejdřív připojit nově připojený datový disk. Musíte požádat o šifrování datové jednotky, protože jednotku nebude možné použít, když probíhá šifrování. 
 
 ### <a name="enable-encryption-on-a-newly-added-disk-with-the-azure-cli"></a>Povolení šifrování u nově přidaného disku pomocí Azure CLI
- Pokud byl virtuální počítač dříve zašifrován pomocí "All", parametr--Volume-Type by měl zůstat všechny. Vše zahrnuje operační systém i datové disky. Pokud byl virtuální počítač dříve zašifrován pomocí typu svazku "OS", pak by měl být parametr--Volume-Type změněn na hodnotu All, aby byl operační systém i nový datový disk zahrnut. Pokud byl virtuální počítač zašifrovaný pouze s typem svazku "data", pak může zůstat data, jak je znázorněno zde. Přidání a připojení nového datového disku k virtuálnímu počítači nemá dostatečnou přípravu na šifrování. Předtím, než povolíte šifrování, musí být nově připojený disk ve virtuálním počítači naformátovaný a správně připojený. V systému Linux musí být disk připojen v/etc/fstab s [názvem trvalého blokování zařízení](troubleshoot-device-names-problems.md). 
+ Pokud byl virtuální počítač dříve zašifrován pomocí "All", parametr--Volume-Type by měl zůstat všechny. Vše zahrnuje operační systém i datové disky. Pokud byl virtuální počítač dříve zašifrován pomocí typu svazku "OS", pak by měl být parametr--Volume-Type změněn na hodnotu All, aby byl operační systém i nový datový disk zahrnut. Pokud byl virtuální počítač zašifrovaný pouze s typem svazku "data", pak může zůstat data, jak je znázorněno zde. Přidání a připojení nového datového disku k virtuálnímu počítači nemá dostatečnou přípravu na šifrování. Předtím, než povolíte šifrování, musí být nově připojený disk ve virtuálním počítači naformátovaný a správně připojený. V systému Linux musí být disk připojen v/etc/fstab s [názvem trvalého blokování zařízení](../troubleshooting/troubleshoot-device-names-problems.md). 
 
 Na rozdíl od syntaxe PowerShellu rozhraní příkazového řádku nevyžaduje, abyste při povolování šifrování zadali jedinečnou verzi sekvence. Rozhraní příkazového řádku automaticky vygeneruje a použije svou vlastní jedinečnou hodnotu verze sekvence.
 

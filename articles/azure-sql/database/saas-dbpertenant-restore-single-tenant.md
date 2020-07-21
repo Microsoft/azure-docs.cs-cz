@@ -11,11 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 65331136b5b137c44577fd09f3914e8869cc2dcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1567d38f8e582c062aa024b40cf0ede1d8b691f6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84042796"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504322"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Obnovení jednoho tenanta s aplikací SaaS Database na tenanta
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,7 +29,7 @@ V tomto kurzu se seznámíte se dvěma vzory obnovení dat:
 > * Obnovení databáze do paralelní databáze (vedle sebe).
 > * Obnovte databázi na místě a nahraďte stávající databázi.
 
-|||
+| Vzor | Popis |
 |:--|:--|
 | Obnovení do paralelní databáze | Tento model se dá použít pro úlohy, jako je například kontrola, auditování a dodržování předpisů, aby mohl tenant prozkoumat data z dřívějšího bodu. Aktuální databáze tenanta zůstane online a nezměněná. |
 | Obnovení na místě | Tento model se obvykle používá k obnovení tenanta do dřívějšího bodu, poté, co tenant omylem odstraní nebo poškodí data. Původní databáze je mimo řádek a nahrazuje obnovenou databází. |

@@ -5,19 +5,23 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/08/2020
+ms.date: 07/14/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0df74b82c847c9738d97d2001573666714c17672
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29a90b94db5e6e5791361bad004efcf649e1950b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81008324"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500586"
 ---
 ## <a name="limitations"></a>Omezení
 
 [!INCLUDE [virtual-machines-disks-shared-limitations](virtual-machines-disks-shared-limitations.md)]
+
+## <a name="supported-operating-systems"></a>Podporované operační systémy
+
+Sdílené disky podporují více operačních systémů. Podporované operační systémy najdete v částech [Windows](../articles/virtual-machines/windows/disks-shared.md#windows) a [Linux](../articles/virtual-machines/linux/disks-shared.md#linux) článku konceptu.
 
 ## <a name="disk-sizes"></a>Velikosti disků
 
@@ -32,6 +36,23 @@ Pokud chcete nasadit spravovaný disk s povolenou funkcí sdíleného disku, pou
 > [!IMPORTANT]
 > Hodnotu `maxShares` lze nastavit nebo změnit pouze v případě, že je disk odpojen ze všech virtuálních počítačů. Podívejte se na [velikosti disků](#disk-sizes) pro povolené hodnoty pro `maxShares` .
 
+#### <a name="cli"></a>Rozhraní příkazového řádku
+```azurecli
+
+az disk create -g myResourceGroup -n mySharedDisk --size-gb 1024 -l westcentralus --sku PremiumSSD_LRS --max-shares 2
+
+```
+
+#### <a name="powershell"></a>PowerShell
+```azurepowershell-interactive
+
+$datadiskconfig = New-AzDiskConfig -Location 'WestCentralUS' -DiskSizeGB 1024 -AccountType PremiumSSD_LRS -CreateOption Empty
+
+New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $datadiskconfig
+
+```
+
+#### <a name="azure-resource-manager"></a>Azure Resource Manager
 Než použijete následující šablonu, nahraďte `[parameters('dataDiskName')]` , `[resourceGroup().location]` , a `[parameters('dataDiskSizeGB')]` `[parameters('maxShares')]` vlastními hodnotami.
 
 ```json
@@ -75,13 +96,12 @@ Než použijete následující šablonu, nahraďte `[parameters('dataDiskName')]
 
 ### <a name="deploy-an-ultra-disk-as-a-shared-disk"></a>Nasazení Ultra disku jako sdíleného disku
 
-#### <a name="cli"></a>Rozhraní příkazového řádku
-
 Pokud chcete nasadit spravovaný disk s povolenou funkcí sdíleného disku, změňte `maxShares` parametr na hodnotu větší než 1. To umožňuje sdílet disk napříč několika virtuálními počítači.
 
 > [!IMPORTANT]
 > Hodnotu `maxShares` lze nastavit nebo změnit pouze v případě, že je disk odpojen ze všech virtuálních počítačů. Podívejte se na [velikosti disků](#disk-sizes) pro povolené hodnoty pro `maxShares` .
 
+#### <a name="cli"></a>Rozhraní příkazového řádku
 ```azurecli
 #Creating an Ultra shared Disk 
 az disk create -g rg1 -n clidisk --size-gb 1024 -l westus --sku UltraSSD_LRS --max-shares 5 --disk-iops-read-write 2000 --disk-mbps-read-write 200 --disk-iops-read-only 100 --disk-mbps-read-only 1
@@ -91,6 +111,15 @@ az disk update -g rg1 -n clidisk --disk-iops-read-write 3000 --disk-mbps-read-wr
 
 #Show shared disk properties:
 az disk show -g rg1 -n clidisk
+```
+
+#### <a name="powershell"></a>PowerShell
+```azurepowershell-interactive
+
+$datadiskconfig = New-AzDiskConfig -Location 'WestCentralUS' -DiskSizeGB 1024 -AccountType UltraSSD_LRS -CreateOption Empty -DiskIOPSReadWrite 2000 -DiskMBpsReadWrite 200 -DiskIOPSReadOnly 100 -DiskMBpsReadOnly 1
+
+New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $datadiskconfig
+
 ```
 
 #### <a name="azure-resource-manager"></a>Azure Resource Manager
@@ -172,21 +201,12 @@ Než použijete následující šablonu, nahraďte `[parameters('dataDiskName')]
 
 Po nasazení sdíleného disku pomocí nástroje `maxShares>1` můžete disk připojit k jednomu nebo více virtuálním počítačům.
 
-> [!IMPORTANT]
-> Všechny virtuální počítače sdílející disk musí být nasazené ve stejné [skupině umístění blízkosti](../articles/virtual-machines/windows/proximity-placement-groups.md).
-
 ```azurepowershell-interactive
 
 $resourceGroup = "myResourceGroup"
 $location = "WestCentralUS"
-$ppgName = "myPPG"
-$ppg = New-AzProximityPlacementGroup `
-   -Location $location `
-   -Name $ppgName `
-   -ResourceGroupName $resourceGroup `
-   -ProximityPlacementGroupType Standard
 
-$vm = New-AzVm -ResourceGroupName $resourceGroup -Name "myVM" -Location $location -VirtualNetworkName "myVnet" -SubnetName "mySubnet" -SecurityGroupName "myNetworkSecurityGroup" -PublicIpAddressName "myPublicIpAddress" -ProximityPlacementGroup $ppg.Id
+$vm = New-AzVm -ResourceGroupName $resourceGroup -Name "myVM" -Location $location -VirtualNetworkName "myVnet" -SubnetName "mySubnet" -SecurityGroupName "myNetworkSecurityGroup" -PublicIpAddressName "myPublicIpAddress"
 
 $dataDisk = Get-AzDisk -ResourceGroupName $resourceGroup -DiskName "mySharedDisk"
 
@@ -239,5 +259,3 @@ Při použití PR_RESERVE, PR_REGISTER_AND_IGNORE, PR_REGISTER_KEY, PR_PREEMPT_R
 
 
 ## <a name="next-steps"></a>Další kroky
-
-Pokud vás zajímá, jak sdílet sdílené disky, [Zaregistrujte si verzi Preview](https://aka.ms/AzureSharedDiskPreviewSignUp).

@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/10/2019
-ms.openlocfilehash: 9a7521f61dc59bd954629a05638c159ab0e70556
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e351abeede6d1057a9b37ab1f1cfb9021ccd06e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77658485"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505086"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Vytváření vlastních zobrazení pomocí návrháře zobrazení v Azure Monitor
 Pomocí návrháře zobrazení v Azure Monitor můžete v Azure Portal vytvořit nejrůznější vlastní zobrazení, která vám pomůžou vizualizovat data v pracovním prostoru Log Analytics. Tento článek obsahuje přehled návrháře zobrazení a postupy pro vytváření a úpravy vlastních zobrazení.
@@ -31,7 +32,7 @@ Zobrazení se zobrazí na stránce **přehled** Azure Monitor v Azure Portal. Tu
 
 Zobrazení, která vytvoříte pomocí návrháře zobrazení, obsahují prvky, které jsou popsány v následující tabulce:
 
-| Část | Description |
+| Část | Popis |
 |:--- |:--- |
 | Dlaždice | Se zobrazí na stránce s **přehledem** Azure monitor. Každá dlaždice zobrazuje vizuální souhrn vlastního zobrazení, které představuje. Každý typ dlaždice poskytuje jinou vizualizaci záznamů. Výběrem dlaždice zobrazíte vlastní zobrazení. |
 | Vlastní zobrazení | Zobrazí se při výběru dlaždice. Každé zobrazení obsahuje jednu nebo více částí vizualizace. |
@@ -48,10 +49,10 @@ Zobrazení, která byla vytvořena pomocí návrháře zobrazení, zobrazují n�
 
 Možnosti jsou popsány v následující tabulce:
 
-| Možnost | Description |
+| Možnost | Popis |
 |:--|:--|
 | Aktualizovat   | Aktualizuje zobrazení o nejnovější data. | 
-| Protokoly      | Otevře [Log Analytics](../log-query/portals.md) pro analýzu dat pomocí dotazů protokolu. |
+| Protokoly      | Otevře [Log Analytics](../log-query/log-query-overview.md) pro analýzu dat pomocí dotazů protokolu. |
 | Upravit       | Otevře zobrazení v Návrháři zobrazení, kde můžete upravit jeho obsah a konfiguraci.  |
 | Klonování      | Vytvoří nové zobrazení a otevře ho v Návrháři zobrazení. Název nového zobrazení je stejný jako původní název, ale s připojeným *kopírováním* . |
 | Rozsah dat | U dat obsažených v zobrazení nastavte filtr rozsahu data a času. Tento rozsah kalendářních dat se použije před všemi rozsahy dat nastavenými v dotazech v zobrazení.  |
@@ -94,7 +95,7 @@ Možnosti pro práci se zobrazeními v režimu úprav jsou popsány v následuj�
 
 ![Nabídka upravit](media/view-designer/edit-menu.png)
 
-| Možnost | Description |
+| Možnost | Popis |
 |:--|:--|
 | Uložit        | Uloží změny a zavře zobrazení. |
 | Zrušit      | Zahodí vaše změny a zavře zobrazení. |

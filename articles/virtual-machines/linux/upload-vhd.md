@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 3306647078c46a7c66b3d7b257b213c7a48e690d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 854421452228a54833da4b0f05669c6d5f1c842f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81460422"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501734"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Vytvoření virtuálního počítače se systémem Linux z vlastního disku pomocí Azure CLI
 
@@ -40,10 +40,10 @@ K provedení následujících kroků budete potřebovat:
 - Virtuální počítač se systémem Linux připravený pro použití v Azure. Část [Příprava virtuálního počítače](#prepare-the-vm) v tomto článku popisuje, jak najít informace specifické pro distribuce k instalaci agenta Azure Linux (waagent), který je potřeba pro připojení k virtuálnímu počítači pomocí SSH.
 - Soubor VHD z existující distribuce systému [Linux schváleného službou Azure](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (nebo zobrazit [informace o neschválených distribucích](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) na virtuální disk ve formátu VHD. Existuje několik nástrojů, které slouží k vytvoření virtuálního počítače a virtuálního pevného disku:
   - Nainstalujte a nakonfigurujte [qemu](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) nebo [KVM](https://www.linux-kvm.org/page/RunningKVM), přičemž se ujistěte, že jako formát obrázku použijete VHD. V případě potřeby můžete [obrázek převést](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) pomocí `qemu-img convert` .
-  - Můžete také použít Hyper-V [ve Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) nebo [Windows Serveru 2012/2012 R2](https://technet.microsoft.com/library/hh846766.aspx).
+  - Můžete také použít Hyper-V [ve Windows 10](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) nebo [Windows Serveru 2012/2012 R2](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11)).
 
 > [!NOTE]
-> Novější formát VHDX se v Azure nepodporuje. Když vytváříte virtuální počítač, zadejte jako formát VHD. V případě potřeby můžete disky VHDX převést na VHD pomocí rutiny Convert- [img qemu-img](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) nebo rutiny [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) prostředí PowerShell. Azure nepodporuje nahrávání dynamických virtuálních pevných disků, takže před odesláním budete muset tyto disky převést na statické virtuální pevné disky. Pomocí nástrojů, jako jsou například [nástroje Azure VHD](https://github.com/Microsoft/azure-vhd-utils-for-go) Tools, můžete na cestách převést dynamické disky během procesu jejich nahrávání do Azure.
+> Novější formát VHDX se v Azure nepodporuje. Když vytváříte virtuální počítač, zadejte jako formát VHD. V případě potřeby můžete disky VHDX převést na VHD pomocí rutiny Convert- [img qemu-img](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) nebo rutiny [Convert-VHD](/powershell/module/hyper-v/convert-vhd?view=win10-ps) prostředí PowerShell. Azure nepodporuje nahrávání dynamických virtuálních pevných disků, takže před odesláním budete muset tyto disky převést na statické virtuální pevné disky. Pomocí nástrojů, jako jsou například [nástroje Azure VHD](https://github.com/Microsoft/azure-vhd-utils-for-go) Tools, můžete na cestách převést dynamické disky během procesu jejich nahrávání do Azure.
 > 
 > 
 
@@ -117,7 +117,7 @@ az disk create \
     --source $snapshotId
 ```
 
-## <a name="create-the-vm"></a>Vytvořte virtuální počítač.
+## <a name="create-the-vm"></a>Vytvoření virtuálního počítače
 
 Vytvořte virtuální počítač pomocí [AZ VM Create](/cli/azure/vm#az-vm-create) a Attach (--Attach-OS-disk) spravovaného disku jako disku s operačním systémem. Následující příklad vytvoří virtuální počítač s názvem *myNewVM* pomocí spravovaného disku, který jste vytvořili z nahraného VHD:
 

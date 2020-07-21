@@ -9,11 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: 76ecc3ee17353ebd0bbead1bba959f85d521d0df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2463c2ea4044af0b20a1dee91b30870639dc7ce
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82982135"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504916"
 ---
 # <a name="programmatically-manage-workbooks"></a>Správa sešitů prostřednictvím kódu programu
 
@@ -77,7 +78,7 @@ Existují dva typy prostředků sešitu, které lze spravovat prostřednictvím 
     }
     ```
 1. V `galleries` objektu vyplňte `name` `category` pomocí vašich hodnot klíče a. Další informace o [parametrech](#parameters) najdete v další části.
-2. Tuto šablonu Azure Resource Manager nasaďte buď pomocí [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template), [rozhraní příkazového řádku](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli), [PowerShellu](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell)atd.
+2. Tuto šablonu Azure Resource Manager nasaďte buď pomocí [Azure Portal](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template), [rozhraní příkazového řádku](../../azure-resource-manager/templates/deploy-cli.md), [PowerShellu](../../azure-resource-manager/templates/deploy-powershell.md)atd.
 3. Otevřete Azure Portal a přejděte do galerie sešitů zvolené v šabloně Azure Resource Manager. V ukázkové šabloně přejděte do galerie Azure Monitorového sešitu:
     1. Otevřete Azure Portal a přejděte do Azure Monitor
     2. Otevřít `Workbooks` z obsahu
@@ -200,7 +201,7 @@ V této šabloně se dozvíte, jak nasadit jednoduchý sešit, který zobrazuje 
 | `serializedData` | Obsahuje obsah nebo datovou část, která se má použít v sešitu. K získání hodnoty použijte šablonu Správce prostředků z uživatelského rozhraní sešity. |
 
 ### <a name="workbook-types"></a>Typy sešitů
-Typy sešitu: Určete, v jakém typu Galerie sešitů se bude nová instance sešitu zobrazovat. Mezi možnosti patří:
+Typy sešitu: Určete, v jakém typu Galerie sešitů se bude nová instance sešitu zobrazovat. Vaše možnosti jsou:
 
 | Typ | Umístění galerie |
 | :------------- |:-------------|

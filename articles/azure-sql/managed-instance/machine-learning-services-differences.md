@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: carlrab, davidph
 manager: cgronlun
 ms.date: 05/27/2020
-ms.openlocfilehash: da97938736e7a3719da9d280e60e6a636b86e0e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f267b155fe21e5dee1a7c488c999fe194ed38eb1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254744"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504114"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-managed-instance-and-sql-server"></a>Klíčové rozdíly mezi Machine Learning Services ve službách Azure SQL Managed Instance a SQL Server
 
@@ -43,7 +43,7 @@ Machine Learning Services ve spravované instanci SQL a SQL Server podporují [a
 
 - Počáteční verze Pythonu a R se liší od Machine Learning Services spravované instance SQL a SQL Server:
 
-  |                      | Python | R     |
+  | Systém               | Python | R     |
   |----------------------|--------|-------|
   | Spravovaná instance SQL | 3.7.1  | bodu |
   | SQL Server           | bodu  | body |
