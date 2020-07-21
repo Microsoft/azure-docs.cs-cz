@@ -1,25 +1,28 @@
 ---
-title: Integrace Azure Active Directory se službou Azure Kubernetes Service
-description: Naučte se používat Azure CLI k vytvoření a Azure Active Directory clusteru Azure Kubernetes Service (AKS) s povoleným použitím.
+title: Integrace Azure Active Directory se službou Azure Kubernetes (starší verze)
+description: Naučte se používat Azure CLI k vytvoření a Azure Active Directory clusteru Azure Kubernetes Service (AKS) s povoleným provozem (starší verze).
 services: container-service
 author: TomGeske
 ms.topic: article
-ms.date: 07/08/2020
+ms.date: 07/20/2020
 ms.author: thomasge
-ms.openlocfilehash: 0bbaca733eb9c1fffbc5c6781b51429edd73fb46
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: dfc3a546f4845d5eb2e4e144b66b5d97e4a68829
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252075"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518024"
 ---
-# <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Integrace Azure Active Directory se službou Azure Kubernetes pomocí Azure CLI
+# <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>Integrace Azure Active Directory se službou Azure Kubernetes pomocí Azure CLI (starší verze)
 
 Službu Azure Kubernetes Service (AKS) je možné nakonfigurovat tak, aby pro ověřování uživatelů používala Azure Active Directory (AD). V této konfiguraci se můžete přihlásit ke clusteru AKS pomocí ověřovacího tokenu Azure AD. Operátoři clusteru můžou taky nakonfigurovat Kubernetes řízení přístupu na základě role (RBAC) na základě identity uživatele nebo členství ve skupině adresáře.
 
 V tomto článku se dozvíte, jak vytvořit požadované součásti Azure AD a pak nasadit cluster s podporou Azure AD a vytvořit v clusteru AKS základní roli RBAC.
 
 Kompletní vzorový skript použitý v tomto článku najdete v tématu [ukázky v Azure CLI – integrace AKS s Azure AD][complete-script].
+
+> [!Important]
+> AKS má nové vylepšené prostředí [Azure AD spravované v AKS][managed-aad] , které nevyžaduje správu serverové nebo klientské aplikace. Pokud chcete provést migraci, postupujte podle pokynů uvedených [tady][managed-aad-migrate].
 
 ## <a name="the-following-limitations-apply"></a>Platí následující omezení:
 
@@ -280,3 +283,5 @@ Osvědčené postupy týkající se identit a řízení prostředků najdete v t
 [rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-controls-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
+[managed-aad]: managed-aad.md
+[managed-aad-migrate]: managed-aad.md#upgrading-to-aks-managed-azure-ad-integration

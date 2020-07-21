@@ -3,12 +3,12 @@ title: Řešení potíží s chybějícími daty v nástroji Application Insight
 description: Nezobrazuje se data v Azure Application Insights? Zkuste to prosím tady.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 3f1c4a741bf092ab89638fdca130a52d96318157
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 351ef145ab65fee8397034912f9a6ce295f1f909
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221030"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517164"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Řešení potíží bez Application Insights dat pro .NET/.NET Core
 
@@ -42,7 +42,7 @@ ms.locfileid: "86221030"
 *Když kliknu pravým tlačítkem na existující projekt v Průzkumník řešení, nevidím žádné možnosti Application Insights.*
 
 * V nástrojích nejsou podporovány všechny typy projektů .NET. Webové a WCF projekty jsou podporovány. Pro jiné typy projektů, jako jsou například aplikace pro stolní nebo služby, můžete [Přidat sadu Application Insights SDK do projektu ručně](../../azure-monitor/app/windows-desktop.md).
-* Ujistěte se, že máte [Visual Studio 2013 Update 3 nebo novější](https://docs.microsoft.com/visualstudio/releasenotes/vs2013-update3-rtm-vs). Je součástí předinstalovaného nástroje pro vývojáře, které poskytují sadu Application Insights SDK.
+* Ujistěte se, že máte [Visual Studio 2013 Update 3 nebo novější](/visualstudio/releasenotes/vs2013-update3-rtm-vs). Je součástí předinstalovaného nástroje pro vývojáře, které poskytují sadu Application Insights SDK.
 * Vyberte **nástroje**, **rozšíření a aktualizace** a ověřte, že je nainstalovaná a povolená **Developer Analytics Tools** . Pokud ano, kliknutím na **aktualizace** ověřte, zda je k dispozici aktualizace.
 * Otevřete dialogové okno Nový projekt a vyberte ASP.NET webová aplikace. Pokud se zobrazí možnost Application Insights, jsou nástroje nainstalovány. V takovém případě zkuste odinstalovat a znovu nainstalovat Developer Analytics Tools.
 
@@ -132,7 +132,7 @@ Opravit
   * V aplikaci Visual Studio Průzkumník řešení klikněte pravým tlačítkem myši na projekt a vyberte možnost Application Insights, konfigurovat. Resetujte aplikaci, aby odesílala telemetrii do správného prostředku.
   * Pokud nemůžete najít odpovídající klíče, ověřte, že používáte stejné přihlašovací údaje pro přihlášení v aplikaci Visual Studio jako v portálu.
 * Na [řídicím panelu domů Microsoft Azure](https://portal.azure.com)se podívejte na mapu Service Health. Pokud se zobrazí upozornění, počkejte, až se vrátí do OK, a pak zavřete a znovu otevřete okno aplikace Application Insights.
-* Projděte si také [náš stavový blog](https://blogs.msdn.microsoft.com/servicemap-status/).
+* Projděte si také [náš stavový blog](https://techcommunity.microsoft.com/t5/azure-monitor-status/bg-p/AzureMonitorStatusBlog).
 * Napsali jste jakýkoliv kód pro [sadu SDK na straně serveru](../../azure-monitor/app/api-custom-events-metrics.md) , která by mohla změnit klíč instrumentace v `TelemetryClient` instancích nebo v `TelemetryContext` ? Nebo jste napsali [konfiguraci filtru nebo vzorkování](../../azure-monitor/app/api-filtering-sampling.md) , které by mohly vyfiltrovat příliš mnoho?
 * Pokud jste ApplicationInsights.config upravovali, pečlivě zkontrolujte konfiguraci [TelemetryInitializers a TelemetryProcessors](../../azure-monitor/app/api-filtering-sampling.md). Nesprávně pojmenovaný typ nebo parametr může způsobit, že sada SDK neposílá žádná data.
 
@@ -154,7 +154,7 @@ Viz [telemetrie závislostí](../../azure-monitor/app/asp-net-dependencies.md) a
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>Žádná data (serveru) od publikování aplikace na mém serveru
 * Ověřte, že jste ve skutečnosti zkopírovali všechny společnosti Microsoft. ApplicationInsights knihovny DLL do serveru společně s Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll
 * V bráně firewall možná budete muset [otevřít některé porty TCP](../../azure-monitor/app/ip-addresses.md).
-* Pokud k odeslání z vaší podnikové sítě používáte proxy server, nastavte [defaultProxy](https://msdn.microsoft.com/library/aa903360.aspx) v Web.config
+* Pokud k odeslání z vaší podnikové sítě používáte proxy server, nastavte [defaultProxy](/previous-versions/dotnet/netframework-1.1/aa903360(v=vs.71)) v Web.config
 * Windows Server 2008: Ujistěte se, že máte nainstalované následující aktualizace: [KB2468871](https://support.microsoft.com/kb/2468871), [KB2533523](https://support.microsoft.com/kb/2533523), [KB2600217](https://support.microsoft.com/kb/2600217).
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>Zobrazil (a) jsem data, ale zastavila se
@@ -170,7 +170,7 @@ Můžete ho zakázat, ale nedoporučuje se to. Vzorkování je navrženo tak, ab
 Od února 5 2018 jsme oznámili, že jsme odebrali protokolování IP adresy klienta. To nemá vliv na geografickou polohu.
 
 > [!NOTE]
-> Pokud potřebujete první 3 oktety IP adresy, můžete k přidání vlastního atributu použít [inicializátor telemetrie](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#addmodify-properties-itelemetryinitializer) .
+> Pokud potřebujete první 3 oktety IP adresy, můžete k přidání vlastního atributu použít [inicializátor telemetrie](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) .
 > Toto nemá vliv na data shromážděná před 5. únorem 2018.
 
 ## <a name="wrong-geographical-data-in-user-telemetry"></a>Nesprávná geografická data v telemetrie uživatelů
@@ -206,9 +206,9 @@ Podle těchto pokynů zaznamenejte protokoly řešení potíží pro vaše rozhr
 
 ### <a name="net-core"></a>.NET Core
 
-1. Nainstalujte balíček [Microsoft. ASPNET. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) z NuGet. Verze, kterou nainstalujete, se musí shodovat s aktuálně nainstalovanou verzí nástroje.`Microsoft.ApplicationInsights`
+1. Nainstalujte [balíček NuGet sady Application Insights SDK pro ASP.NET Core](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) balíček z NuGet. Verze, kterou nainstalujete, musí odpovídat aktuální nainstalované verzi nástroje `Microsoft.ApplicationInsights` .
 
-Nejnovější verze Microsoft. ApplicationInsights. AspNetCore je ve verzi 2.8.2 a odkazuje na Microsoft. ApplicationInsights verze 2.11.2. Proto by měla být nainstalovaná verze Microsoft. AspNet. ApplicationInsights. HostingStartup 2.11.2
+   Nejnovější verze Microsoft. ApplicationInsights. AspNetCore je 2.14.0 a odkazuje na Microsoft. ApplicationInsights verze 2.14.0. Proto by měla být verze Microsoft. ApplicationInsights. AspNetCore, která se má nainstalovat, 2.14.0.
 
 2. Upravte `ConfigureServices` metodu ve `Startup.cs` třídě.:
 
@@ -249,7 +249,7 @@ Další informace
 
 ## <a name="collect-logs-with-dotnet-trace"></a>Shromažďování protokolů pomocí dotnet – trasování
 
-Alternativním způsobem shromažďování protokolů pro řešení potíží, které mohou být zvláště užitečné pro prostředí založená na systému Linux, je[`dotnet-trace`](https://docs.microsoft.com/dotnet/core/diagnostics/dotnet-trace)
+Alternativním způsobem shromažďování protokolů pro řešení potíží, které mohou být zvláště užitečné pro prostředí založená na systému Linux, je[`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace)
 
 ```bash
 dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsights-Core,Microsoft-ApplicationInsights-Data,Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,Microsoft-ApplicationInsights-Extensibility-DependencyCollector,Microsoft-ApplicationInsights-Extensibility-HostingStartup,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,Microsoft-ApplicationInsights-Extensibility-Web,Microsoft-ApplicationInsights-Extensibility-WindowsServer,Microsoft-ApplicationInsights-WindowsServer-Core,Microsoft-ApplicationInsights-Extensibility-EventSourceListener,Microsoft-ApplicationInsights-AspNetCore
@@ -260,4 +260,4 @@ dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsight
 Naučte se, jak odebrat Application Insights v aplikaci Visual Studio podle kroků uvedených v [článku](../../azure-monitor/app/remove-application-insights.md)o odebrání.
 
 ## <a name="still-not-working"></a>Pořád nepracujeme...
-* [Microsoft Q&Stránka s otázkou pro Application Insights](https://docs.microsoft.com/answers/topics/azure-monitor.html)
+* [Microsoft Q&Stránka s otázkou pro Application Insights](/answers/topics/azure-monitor.html)

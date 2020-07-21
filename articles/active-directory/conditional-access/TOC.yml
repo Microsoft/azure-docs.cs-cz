@@ -47,8 +47,6 @@
       href: controls.md
     - name: Migrace klasických zásad
       href: policy-migration.md
-    - name: Zásady základní ochrany
-      href: concept-baseline-protection.md
 - name: Návody
   expanded: true
   items:

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: c98ae7c95ac3fc186786612dd3d8d8bd55fa816f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52488eb43377978d7f936ba0aa452cc872f8d899
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82024876"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519350"
 ---
 # <a name="working-with-security-policies"></a>Práce se zásadami zabezpečení
 
@@ -32,7 +33,7 @@ Azure Security Center provedla doporučení zabezpečení založená na zvolený
 
 Security Center nabízí následující možnosti pro práci se zásadami zabezpečení:
 
-* **Zobrazit a upravit předdefinované výchozí zásady** – Pokud povolíte Security Center, automaticky se přiřadí předdefinovaná iniciativa "ASC default" všem Security Center registrovaným předplatným (úrovně Free nebo Standard). Pokud chcete tento podnět přizpůsobit, můžete v něm povolit nebo zakázat jednotlivé zásady. V seznamu [integrovaných zásad zabezpečení](security-center-policy-definitions.md) se dozvíte, jaké možnosti jsou dostupné předem.
+* **Zobrazit a upravit předdefinované výchozí zásady** – Pokud povolíte Security Center, automaticky se přiřadí předdefinovaná iniciativa "ASC default" všem Security Center registrovaným předplatným (cenové úrovně Free nebo Standard). Pokud chcete tento podnět přizpůsobit, můžete v něm povolit nebo zakázat jednotlivé zásady. V seznamu [integrovaných zásad zabezpečení](security-center-policy-definitions.md) se dozvíte, jaké možnosti jsou dostupné předem.
 
 * **Přidat vlastní zásady** – Pokud chcete přizpůsobit iniciativy zabezpečení použité pro vaše předplatné, můžete to udělat v rámci Security Center. Pak se dostanou doporučení, pokud vaše počítače nevyhovují vytvořeným zásadám. Pokyny k sestavování a přiřazování vlastních zásad najdete v tématu [použití vlastních zásad zabezpečení](custom-security-policies.md).
 
@@ -85,14 +86,18 @@ Zobrazení zásad zabezpečení ve službě Security Center:
 
 Zásady zabezpečení můžete upravovat prostřednictvím Azure Policyového portálu prostřednictvím REST API nebo pomocí Windows PowerShellu.
 
-Security Center používá řízení přístupu na základě rolí (RBAC). To poskytuje předdefinované role, které se dají v Azure přiřadit uživatelům, skupinám a službám. Když uživatelé otevřou Security Center, uvidí jenom informace, které souvisejí s prostředky, ke kterým mají přístup. To znamená, že uživatelé mají přiřazenou roli *vlastník*, *Přispěvatel*nebo *Čtenář* k předplatnému prostředku. I tyto role jsou dvě konkrétní role Security Center:
+Security Center používá Access Control na základě rolí (RBAC), která poskytuje předdefinované role, které můžete přiřadit uživatelům, skupinám a službám Azure. Když uživatelé otevřou Security Center, uvidí jenom informace související s prostředky, ke kterým mají přístup. To znamená, že uživatelé mají přiřazenou roli *vlastník*, *Přispěvatel*nebo *Čtenář* k předplatnému prostředku. K dispozici jsou také dvě konkrétní role Security Center:
 
-- **Čtecí modul zabezpečení**: má práva k zobrazení Security Center, což zahrnuje doporučení, výstrahy, zásady a stav, ale nemůže provádět změny.
-- **Správce zabezpečení**: mají stejná oprávnění k zobrazení jako *Čtenář zabezpečení*a můžou také aktualizovat zásady zabezpečení a zrušit doporučení a upozornění.
+- **Čtecí modul zabezpečení**: má práva k zobrazení Security Centerch položek, jako jsou doporučení, výstrahy, zásady a stav. Nelze provést změny.
+- **Správce zabezpečení**: má stejná oprávnění k zobrazení jako *čtecí modul zabezpečení*. Může také aktualizovat zásady zabezpečení a zrušit výstrahy.
 
 
-## <a name="disable-security-policies"></a>Zakázat zásady zabezpečení
-Pokud výchozí zásady zabezpečení generují doporučení, které není pro vaše prostředí relevantní, můžete je zastavit tím, že zakážete definici zásady, která posílá doporučení.
+## <a name="disable-security-policies-and-disable-recommendations"></a>Zakázání zásad zabezpečení a zakázání doporučení
+
+Pokud vaše iniciativa zabezpečení spustí doporučení, které je pro vaše prostředí nedůležité, můžete se znovu vyhnout zobrazování tohoto doporučení. Chcete-li zakázat doporučení, zakažte konkrétní zásadu, která vygeneruje doporučení.
+
+Doporučení, které chcete zakázat, se pořád objeví, pokud se vyžaduje regulativní Standard, který jste použili s nástroji pro dodržování předpisů v Security Center. I v případě, že jste zásady zakázali v předdefinované iniciativě, zásada v iniciativě na základě regulativního standardu bude i přesto aktivovat doporučení, pokud je to nezbytné pro dodržování předpisů. Zásady nemůžete zakázat ze zákonných standardních iniciativ.
+
 Další informace o doporučeních najdete v tématu [Správa doporučení zabezpečení](security-center-recommendations.md).
 
 1. V Security Center v části **zásady & dodržování předpisů** vyberte **zásady zabezpečení**.
@@ -124,7 +129,7 @@ Další informace o doporučeních najdete v tématu [Správa doporučení zabez
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto článku jste se dozvěděli o zásadách zabezpečení. Související informace najdete v následujících článcích:
+Tento článek vysvětluje zásady zabezpečení. Související informace najdete v následujících článcích:
 
 * Pokyny k nastavení zásad pomocí prostředí PowerShell najdete v tématu [rychlý Start: vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, pomocí modulu Azure PowerShell](../governance/policy/assign-policy-powershell.md)
 

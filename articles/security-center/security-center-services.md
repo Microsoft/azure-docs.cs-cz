@@ -11,28 +11,27 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/27/2020
+ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 060db99cf0163876b68eeee2cff8ef2d03e2b5b9
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 95b514999d7c38140bd3dd275b8ba103ee9af20e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187009"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519222"
 ---
 # <a name="feature-coverage-for-machines"></a>Pokrytí funkcí pro počítače
 
-Následující tabulky ukazují Azure Security Center funkce, které jsou k dispozici pro virtuální počítače a servery.
+Následující dvě karty ukazují funkce Azure Security Center, které jsou dostupné pro virtuální počítače a servery s Windows a Linux.
 
 ## <a name="supported-features-for-virtual-machines-and-servers"></a>Podporované funkce pro virtuální počítače a servery<a name="vm-server-features"></a>
 
-### <a name="windows-machines"></a>[Počítače s Windows](#tab/features-windows)
+### <a name="windows-machines"></a>[**Počítače s Windows**](#tab/features-windows)
 
-|||||||||
-|----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 |**Funkce**|**Azure Virtual Machines**|**Škálovací sady virtuálních počítačů Azure**|**Počítače mimo Azure**|**Ceny**
+|----|:----:|:----:|:----:|:----:|
 |[Integrace ATP v programu Microsoft Defender](security-center-wdatp.md)|✔</br>(na podporovaných verzích)|✔</br>(na podporovaných verzích)|✔|Standard|
-|[Analýza chování virtuálního počítače (a výstrahy zabezpečení)](threat-protection.md)|✔|✔|✔|Doporučení (zdarma) </br></br> Výstrahy zabezpečení (Standard)|
+|[Analýza chování virtuálního počítače (a výstrahy zabezpečení)](threat-protection.md)|✔|✔|✔|Standard|
 |[Výstrahy zabezpečení nesouborového souboru](alerts-reference.md#alerts-windows)|✔|✔|✔|Standard|
 |[Výstrahy zabezpečení založené na síti](threat-protection.md#network-layer)|✔|✔|-|Standard|
 |[Přístup k virtuálnímu počítači za běhu](security-center-just-in-time.md)|✔|-|-|Standard|
@@ -43,21 +42,20 @@ Následující tabulky ukazují Azure Security Center funkce, které jsou k disp
 |[Adaptivní posílení zabezpečení sítě](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
 |[Řídicí panel dodržování předpisů & sestavy](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
 |Doporučení a ochrana před hrozbami v kontejnerech IaaS hostovaných v Docker|-|-|-|Standard|
-|Chybí posouzení oprav operačního systému|✔|✔|✔|Zdarma|
-|Vyhodnocení nezabezpečených konfigurací zabezpečení|✔|✔|✔|Zdarma|
-|[Posouzení služby Endpoint Protection](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Zdarma|
-|Vyhodnocení šifrování disku|✔|✔|-|Zdarma|
-|Posouzení ohrožení zabezpečení třetí strany|✔|-|-|Zdarma|
-|[Posouzení zabezpečení sítě](security-center-network-recommendations.md)|✔|✔|-|Zdarma|
+|Chybí posouzení oprav operačního systému|✔|✔|✔|Azure: zdarma<br><br>Mimo Azure: Standard|
+|Vyhodnocení nezabezpečených konfigurací zabezpečení|✔|✔|✔|Azure: zdarma<br><br>Mimo Azure: Standard|
+|[Posouzení služby Endpoint Protection](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: zdarma<br><br>Mimo Azure: Standard|
+|Vyhodnocení šifrování disku|✔|✔|-|Free|
+|Posouzení ohrožení zabezpečení třetí strany|✔|-|-|Free|
+|[Posouzení zabezpečení sítě](security-center-network-recommendations.md)|✔|✔|-|Free|
 
 
-### <a name="linux-machines"></a>[Počítače se systémem Linux](#tab/features-linux)
+### <a name="linux-machines"></a>[**Počítače se systémem Linux**](#tab/features-linux)
 
-|||||||||
-|----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 |**Funkce**|**Azure Virtual Machines**|**Škálovací sady virtuálních počítačů Azure**|**Počítače mimo Azure**|**Ceny**
+|----|:----:|:----:|:----:|:----:|
 |[Integrace ATP v programu Microsoft Defender](security-center-wdatp.md)|-|-|-|Standard|
-|[Analýza chování virtuálního počítače (a výstrahy zabezpečení)](security-center-alerts-iaas.md)|✔</br>(na podporovaných verzích)|✔</br>(na podporovaných verzích)|✔|Doporučení (zdarma) </br></br> Výstrahy zabezpečení (Standard)|
+|[Analýza chování virtuálního počítače (a výstrahy zabezpečení)](security-center-alerts-iaas.md)|✔</br>(na podporovaných verzích)|✔</br>(na podporovaných verzích)|✔|Standard|
 |[Výstrahy zabezpečení nesouborového souboru](alerts-reference.md#alerts-windows)|-|-|-|Standard|
 |[Výstrahy zabezpečení založené na síti](threat-protection.md#network-layer)|✔|✔|-|Standard|
 |[Přístup k virtuálnímu počítači za běhu](security-center-just-in-time.md)|✔|-|-|Standard|
@@ -66,15 +64,14 @@ Následující tabulky ukazují Azure Security Center funkce, které jsou k disp
 |[Adaptivní řízení aplikací](security-center-adaptive-application.md)|✔|-|✔|Standard|
 |[Mapa sítě](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|
 |[Adaptivní posílení zabezpečení sítě](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
-|Adaptivní ovládací prvky sítě|✔|✔|-|Standard|
 |[Řídicí panel dodržování předpisů & sestavy](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
 |Doporučení a ochrana před hrozbami v kontejnerech IaaS hostovaných v Docker|✔|✔|✔|Standard|
-|Chybí posouzení oprav operačního systému|✔|✔|✔|Zdarma|
-|Vyhodnocení nezabezpečených konfigurací zabezpečení|✔|✔|✔|Zdarma|
-|[Posouzení služby Endpoint Protection](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Zdarma|
-|Vyhodnocení šifrování disku|✔|✔|-|Zdarma|
-|Posouzení ohrožení zabezpečení třetí strany|✔|-|-|Zdarma|
-|[Posouzení zabezpečení sítě](security-center-network-recommendations.md)|✔|✔|-|Zdarma|
+|Chybí posouzení oprav operačního systému|✔|✔|✔|Azure: zdarma<br><br>Mimo Azure: Standard|
+|Vyhodnocení nezabezpečených konfigurací zabezpečení|✔|✔|✔|Azure: zdarma<br><br>Mimo Azure: Standard|
+|[Posouzení služby Endpoint Protection](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Free|
+|Vyhodnocení šifrování disku|✔|✔|-|Free|
+|Posouzení ohrožení zabezpečení třetí strany|✔|-|-|Free|
+|[Posouzení zabezpečení sítě](security-center-network-recommendations.md)|✔|✔|-|Free|
 
 --- 
 
@@ -96,11 +93,11 @@ Informace o tom, kdy jsou pro každou z těchto ochran vygenerována doporučen�
 |------|------|-----|-----|
 | Windows Defender (antimalware Microsoftu)| Windows Server 2016| Ne, součást operačního systému| Ano |
 | Ochrana koncových bodů System Center (antimalware Microsoftu) | Windows Server 2012 R2, 2012, 2008 R2 (viz poznámka níže) | Prostřednictvím rozšíření | Ano |
-| Trend Micro – hluboké zabezpečení | Řada Windows Serverů  | Ne | Ano |
-| Symantec v12.1.1100+| Řada Windows Serverů  | Ne | Ano |
-| McAfee v10+ | Řada Windows Serverů  | Ne | Ano |
-| McAfee v10+ | Řada Linux serverů  | Ne | Ano**\*** |
-| Sophos v9 +| Řada Linux serverů  | Ne | Ano**\***  |
+| Trend Micro – hluboké zabezpečení | Řada Windows Serverů  | No | Ano |
+| Symantec v12.1.1100+| Řada Windows Serverů  | No | Ano |
+| McAfee v10+ | Řada Windows Serverů  | No | Ano |
+| McAfee v10+ | Řada Linux serverů  | No | Ano**\*** |
+| Sophos v9 +| Řada Linux serverů  | No | Ano**\***  |
 
  **\*** Stav pokrytí a podpůrná data jsou v tuto chvíli k dispozici pouze v pracovním prostoru Log Analytics přidruženém k vašim chráněným předplatným. Neprojeví se na portálu Azure Security Center.
 

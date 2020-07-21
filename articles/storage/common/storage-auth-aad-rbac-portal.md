@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/06/2020
+ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: b22c653d25dc23bbcb249344affaf83a07f190af
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 77eb3ddfdbf2525aa031c462a38df5dcb8d31217
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024878"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518754"
 ---
 # <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Přiřazení role RBAC pro přístup k datům BLOB a Queue pomocí Azure Portal
 
@@ -83,7 +83,7 @@ Pokud uživatelé potřebují mít přístup k objektům blob v Azure Portal, p�
 
 Pomocí těchto kroků přiřaďte roli **Čtenář** , aby uživatel mohl získat přístup k objektům blob z Azure Portal. V tomto příkladu je přiřazení vymezené pro účet úložiště:
 
-1. V [Azure Portal](https://portal.azure.com)přejděte do svého účtu úložiště.
+1. Na webu [Azure Portal](https://portal.azure.com) přejděte ke svému účtu úložiště.
 1. Vyberte **řízení přístupu (IAM)** a zobrazte nastavení řízení přístupu pro účet úložiště. Vyberte kartu **přiřazení rolí** a zobrazte seznam přiřazení rolí.
 1. V okně **Přidat přiřazení role** vyberte roli **Čtenář** . 
 1. V poli **přiřadit přístup k** vyberte možnost **uživatel, skupina nebo instanční objekt služby Azure AD**.

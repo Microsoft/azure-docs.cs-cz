@@ -4,12 +4,12 @@ description: Informujte prostřednictvím SMS, Webhooku, SMS, e-mailu a dalšíc
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 1a932aba55ec9bd5d92c60338a3c1fc4bb481c1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ed73678e0df1e068782c2a094846132be58cfe2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82137701"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516120"
 ---
 # <a name="alerts-on-activity-log"></a>Upozornění na protokol aktivit
 
@@ -25,11 +25,11 @@ Obvykle vytváříte výstrahy protokolu aktivit pro příjem oznámení v těch
 * K určitým operacím dochází u prostředků ve vašem předplatném Azure, které jsou často vymezeny na konkrétní skupiny prostředků nebo prostředky. Například může být vhodné upozornit, když se odstraní libovolný virtuální počítač v myProductionResourceGroup. Nebo můžete chtít být upozorněni, pokud jsou nové role přiřazeny uživateli v rámci vašeho předplatného.
 * Dojde k události služby Health Service. Události služby Service Health zahrnují oznámení o incidentech a událostech údržby, které se vztahují na prostředky v rámci vašeho předplatného.
 
-Jednoduchá analogie pro porozumění podmínkám, na kterých je možné vytvořit pravidla výstrah v protokolu aktivit, je prozkoumat nebo filtrovat události prostřednictvím [protokolu aktivit v Azure Portal](activity-log-view.md#azure-portal). V protokolu Azure Monitor-Activity může jedna filtrovat nebo najít nezbytnou událost a pak vytvořit výstrahu pomocí tlačítka **Přidat upozornění protokolu aktivit** .
+Jednoduchá analogie pro porozumění podmínkám, na kterých je možné vytvořit pravidla výstrah v protokolu aktivit, je prozkoumat nebo filtrovat události prostřednictvím [protokolu aktivit v Azure Portal](./activity-log.md#view-the-activity-log). V protokolu Azure Monitor-Activity může jedna filtrovat nebo najít nezbytnou událost a pak vytvořit výstrahu pomocí tlačítka **Přidat upozornění protokolu aktivit** .
 
 V obou případech se výstraha protokolu aktivit monitoruje jenom pro události v předplatném, ve kterém je tato výstraha vytvořená.
 
-Výstrahu protokolu aktivit můžete nakonfigurovat na základě libovolné vlastnosti nejvyšší úrovně v objektu JSON pro událost protokolu aktivit. Další informace najdete v tématu [kategorie v protokolu aktivit](activity-log-view.md#categories-in-the-activity-log). Další informace o událostech stavu služby najdete v tématu [příjem výstrah protokolu aktivit v oznámeních o službě](alerts-activity-log-service-notifications.md). 
+Výstrahu protokolu aktivit můžete nakonfigurovat na základě libovolné vlastnosti nejvyšší úrovně v objektu JSON pro událost protokolu aktivit. Další informace najdete v tématu [kategorie v protokolu aktivit](./activity-log.md#view-the-activity-log). Další informace o událostech stavu služby najdete v tématu [příjem výstrah protokolu aktivit v oznámeních o službě](../../service-health/alerts-activity-log-service-notifications-portal.md). 
 
 Výstrahy protokolu aktivit mají několik běžných možností:
 
@@ -61,4 +61,4 @@ Další informace o skupinách akcí naleznete v tématu [Create and Manage Acti
 - Získejte [Přehled výstrah](alerts-overview.md).
 - Přečtěte si o [vytváření a úpravách výstrah protokolu aktivit](alerts-activity-log.md).
 - Zkontrolujte [schéma Webhooku upozornění protokolu aktivit](activity-log-alerts-webhook.md).
-- Přečtěte si o [oznámeních o stavu služby](service-notifications.md).
+- Přečtěte si o [oznámeních o stavu služby](../../service-health/service-notifications.md).

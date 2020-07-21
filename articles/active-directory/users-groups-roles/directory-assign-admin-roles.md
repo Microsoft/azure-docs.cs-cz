@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd0d17732991fd97b2406c9c5f182408f4746d96
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: a8b94d195ea1f31d228505f01c2a77a299e63c0a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223869"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518092"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -798,13 +798,10 @@ Může číst a spravovat konfiguraci a sestavy dodržování předpisů v Azure
 | --- | --- |
 | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 | Microsoft. Office 365. complianceManager/allEntities/allTasks | Správa všech aspektů správce dodržování předpisů pro Office 365 |
-| Microsoft. Office 365. Exchange/allEntities/allTasks | Spravujte všechny aspekty Exchange Online. |
 | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečtěte si a nakonfigurujte Office 365 Service Health. |
-| Microsoft. Office 365. SharePoint/allEntities/allTasks | Vytvořit a odstranit všechny prostředky a číst a aktualizovat standardní vlastnosti v Microsoft. Office 365. SharePoint. |
-| Microsoft. Office 365. skypeForBusiness/allEntities/allTasks | Umožňuje spravovat všechny aspekty Online Skypu pro firmy. |
 | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="compliance-data-administrator-permissions"></a>Oprávnění správce dat dodržování předpisů
 
@@ -817,17 +814,14 @@ Vytvoří a spravuje obsah dodržování předpisů.
 
 | **Akce** | **Popis** |
 | --- | --- |
-| Microsoft. aad. cloudAppSecurity/allEntities/allTasks | Čtení a konfigurace Microsoft Cloud App Security. |
+| Microsoft. Directory. cloudAppSecurity/allEntities/allTasks | Čtení a konfigurace Microsoft Cloud App Security. |
 | Microsoft. Azure. informationProtection/allEntities/allTasks | Umožňuje spravovat všechny aspekty Azure Information Protection. |
 | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 | Microsoft. Office 365. complianceManager/allEntities/allTasks | Správa všech aspektů správce dodržování předpisů pro Office 365 |
-| Microsoft. Office 365. Exchange/allEntities/allTasks | Spravujte všechny aspekty Exchange Online. |
 | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečtěte si a nakonfigurujte Office 365 Service Health. |
-| Microsoft. Office 365. SharePoint/allEntities/allTasks | Vytvořit a odstranit všechny prostředky a číst a aktualizovat standardní vlastnosti v Microsoft. Office 365. SharePoint. |
-| Microsoft. Office 365. skypeForBusiness/allEntities/allTasks | Umožňuje spravovat všechny aspekty Online Skypu pro firmy. |
 | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="conditional-access-administrator-permissions"></a>Oprávnění správce podmíněného přístupu
 
@@ -1937,12 +1931,12 @@ Správci zařízení | Zastaralé | [Dokumentace k zastaralým rolím](directory
 Uživatelé zařízení | Zastaralé | [Dokumentace k zastaralým rolím](directory-assign-admin-roles.md#deprecated-roles)
 Účty synchronizace adresářů | Nezobrazeno, protože by neměl být použit | [Dokumentace k účtům synchronizace adresářů](directory-assign-admin-roles.md#directory-synchronization-accounts)
 Zapisovače adresářů | Nezobrazeno, protože by neměl být použit | [Dokumentace k modulům pro zápis adresářů](directory-assign-admin-roles.md#directory-writers)
-Uživatel typu host | Nezobrazeno, protože nemůže být použit  | NA
+Uživatel typu host | Nezobrazeno, protože nemůže být použit  | Není k dispozici
 Správce služby Lync | Správce Skypu pro firmy | [Odráží aktuální značku produktu.](directory-assign-admin-roles.md#role-template-ids)
 Podpora partnerské vrstvy 1 | Nezobrazeno, protože by neměl být použit | [Dokumentace k podpoře partnerů Tier1](directory-assign-admin-roles.md#partner-tier1-support)
 Podpora partnerské úrovně 2 | Nezobrazeno, protože by neměl být použit | [Dokumentace k podpoře partnerů 2](directory-assign-admin-roles.md#partner-tier2-support)
-Omezený uživatel typu Host | Nezobrazeno, protože nemůže být použit | NA
-Uživatel | Nezobrazeno, protože nemůže být použit | NA
+Omezený uživatel typu Host | Nezobrazeno, protože nemůže být použit | Není k dispozici
+Uživatel | Nezobrazeno, protože nemůže být použit | Není k dispozici
 Připojení zařízení na pracovišti | Zastaralé | [Dokumentace k zastaralým rolím](directory-assign-admin-roles.md#deprecated-roles)
 
 ## <a name="next-steps"></a>Další kroky

@@ -3,15 +3,19 @@ title: Monitorování webu SharePointu pomocí Application Insights
 description: Zahájení monitorování nové aplikace s novým klíčem instrumentace
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.openlocfilehash: b9b31a715b19d6c06cbddb91c0bd9279088c4447
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: a545a24b5a9af883200f25cc83486e3c5621bd78
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221047"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516885"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>Monitorování webu SharePointu pomocí Application Insights
+
 Služba Azure Application Insights monitoruje dostupnost, výkon a využití vaší aplikace. Zde se dozvíte, jak připravit prostředí pro web SharePointu.
+
+> [!NOTE]
+> Kvůli problémům se zabezpečením nemůžete přímo přidat skript, který je popsaný v tomto článku, na vaše webové stránky v moderním uživatelském prostředí SharePointu. Alternativně můžete použít [SharePoint Framework (SPFx)](/sharepoint/dev/spfx/extensions/overview-extensions) k sestavení vlastního rozšíření, které můžete použít k instalaci Application Insights na webech služby SharePoint. Další informace najdete v tématu [Postup vytvoření řešení rozšíření SPFx s AppInsights nainstalovanou od začátku](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO#how-to-create-a-spfx-extension-solution-with-appinsights-installed-from-scratch) nebo [zobrazení ukázky](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO/AppInsightsExtensionSolutionSample). 
 
 ## <a name="create-an-application-insights-resource"></a>Vytvořte prostředek Application Insights
 Na webu [Azure Portal](https://portal.azure.com) vytvořte nový prostředek Application Insights. Vyberte jako typ aplikace ASP.NET.
@@ -137,5 +141,3 @@ function onRequestFail(sender, args) {
 * [Application Insights](../../azure-monitor/app/app-insights-overview.md) pro jiné typy aplikace.
 
 <!--Link references-->
-
-

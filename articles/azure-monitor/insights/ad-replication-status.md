@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: 30b0c7c87f6d55586b931be1445b175ce58565d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65ced5021305dce15236ded59cf79a6578e7372a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80055901"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516783"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Monitorovat stav replikace služby Active Directory pomocí Azure Monitor
 
@@ -26,7 +26,7 @@ Active Directory je klíčová součást podnikového IT prostředí. Pro zajiš
 ## <a name="installing-and-configuring-the-solution"></a>Instalace a konfigurace řešení
 K instalaci a konfiguraci řešení můžete použít následující informace.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 * Řešení AD Replication Status vyžaduje, aby na každém počítači, který má Log Analytics agenta pro Windows, byla nainstalovaná podporovaná verze .NET Framework 4.6.2 nebo novější (označovaná taky jako Microsoft Monitoring Agent (MMA)).  Agent používá System Center 2016-Operations Manager, Operations Manager 2012 R2 a Azure Monitor.
 * Řešení podporuje řadiče domény se systémy Windows Server 2008 a 2008 R2, Windows Server 2012 a 2012 R2 a Windows Server 2016.
@@ -62,7 +62,7 @@ V následující tabulce jsou uvedeny metody shromažďování dat a další pod
 
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
-Na dlaždici AD Replication Status se zobrazuje počet chyb replikace, které aktuálně máte. **Kritické chyby replikace** jsou chyby, které jsou v doménové struktuře služby Active Directory nebo jsou vyšší než 75% [doby platnosti označení za neplatné](https://technet.microsoft.com/library/cc784932%28v=ws.10%29.aspx) .
+Na dlaždici AD Replication Status se zobrazuje počet chyb replikace, které aktuálně máte. **Kritické chyby replikace** jsou chyby, které jsou v doménové struktuře služby Active Directory nebo jsou vyšší než 75% [doby platnosti označení za neplatné](/previous-versions/windows/it-pro/windows-server-2003/cc784932(v=ws.10)) .
 
 ![Dlaždice AD Replication Status](./media/ad-replication-status/oms-ad-replication-tile.png)
 

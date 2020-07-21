@@ -5,20 +5,22 @@ description: Naučte se vytvářet a používat statickou veřejnou IP adresu pr
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: f66a33f49d856abde97756a2b4b483cfa6050d0a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: f7ea25c3348b96ec6d8818e8e1db4660b308dabc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205788"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517769"
 ---
-# <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Použití statické veřejné IP adresy pro odchozí přenosy ve službě Azure Kubernetes (AKS)
+# <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Použití statické veřejné IP adresy pro odchozí přenosy se *základní* službou pro vyrovnávání zatížení ve službě Azure Kubernetes Service (AKS)
 
-Ve výchozím nastavení je odchozí IP adresa z clusteru Azure Kubernetes Service (AKS) náhodně přiřazená. Tato konfigurace není ideální, pokud potřebujete identifikovat IP adresu pro přístup k externím službám, například. Místo toho možná budete muset přiřadit statickou IP adresu, která může být povolená pro přístup k službě.
+Ve výchozím nastavení je odchozí IP adresa z clusteru Azure Kubernetes Service (AKS) náhodně přiřazená. Tato konfigurace není ideální, pokud potřebujete identifikovat IP adresu pro přístup k externím službám, například. Místo toho možná budete muset přiřadit statickou IP adresu, kterou chcete přidat do seznamu povolených adres pro přístup k službě.
 
 V tomto článku se dozvíte, jak vytvořit a používat statickou veřejnou IP adresu pro použití s odchozími přenosy v clusteru AKS.
 
 ## <a name="before-you-begin"></a>Než začnete
+
+V tomto článku se předpokládá, že používáte Azure Basic Load Balancer.  Doporučujeme používat [Standard Load Balancer Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)a můžete využít pokročilejší funkce pro [řízení odchozího provozu AKS](https://docs.microsoft.com/azure/aks/limit-egress-traffic).
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
@@ -105,7 +107,7 @@ Pokud chcete ověřit, že se používá statická veřejná IP adresa, můžete
 Začněte a připojte se k základnímu *Debian* pod:
 
 ```console
-kubectl run -it --rm aks-ip --image=debian --generator=run-pod/v1
+kubectl run -it --rm aks-ip --image=debian
 ```
 
 Chcete-li získat přístup k webu z kontejneru, použijte příkaz `apt-get` pro instalaci `curl` do kontejneru.

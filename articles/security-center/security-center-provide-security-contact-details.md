@@ -11,61 +11,50 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/09/2019
+ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: 08ad761e81909e6ab23c7c07f5ce05865136bc47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 661d3845365778f7ef23cdd05b81b98c3bf84259
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82204096"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519277"
 ---
-# <a name="provide-security-contact-details-in-azure-security-center"></a>Zadání podrobností o kontaktu zabezpečení v Azure Security Center
-Azure Security Center vám doporučí, abyste ve svém předplatném Azure uvedli podrobnosti o kontaktu zabezpečení, pokud jste to zatím neudělali. Prostřednictvím tohoto kontaktu se na vás společnost Microsoft obrátí, pokud středisko Microsoft Security Response Center (MSRC) zjistí, že k datům zákazníka nezákonně nebo neoprávněně přistupovala třetí strana. Středisko MSRC provádí vybraný monitoring zabezpečení sítě a infrastruktury Azure a přijímá analytické informace o hrozbách a stížnosti na zneužití od třetích stran.
+# <a name="set-up-email-notifications-for-security-alerts"></a>Nastavení e-mailových oznámení pro výstrahy zabezpečení 
 
-E-mailové oznámení se odešle při prvním výskytu výstrahy během dne a pouze u výstrah s vysokou závažností. Předvolby e-mailu lze konfigurovat pouze pro zásady předplatného. Skupiny prostředků v rámci předplatného zdědí tato nastavení. Výstrahy jsou k dispozici pouze na úrovni Standard Azure Security Center.
+Pokud chcete zajistit, aby se do vašeho prostředí zobrazovaly informace o výstrahách zabezpečení ve vaší organizaci, zadejte na stránce nastavení **e-mailových oznámení** jejich e-mailové adresy.
 
-E-mailová oznámení o upozornění se posílají:
-- Jednomu příjemci e-mailu na typ výstrahy a den.  
-- Jednomu příjemci v jednom dni se neposílá více než 3 e-mailové zprávy.
-- Každá e-mailová zpráva obsahuje upozornění, nikoli souhrn upozornění.
-- Pouze pro výstrahy s vysokou závažností.
+Při nastavování oznámení můžete nakonfigurovat e-maily, které se mají posílat konkrétním jednotlivcům, nebo komukoli s určitou rolí RBAC pro předplatné. 
 
-> [!TIP]
-> Pro výstrahy s dalšími úrovněmi závažnosti vytvořte [automatizaci pracovního postupu](workflow-automation.md) , která bude používat aplikaci logiky, která odešle e-mail příslušným pracovníkům.
- 
-Pokud vám například byla odeslána e-mailová zpráva s upozorněním na útok RDP, nedostanete další e-mailovou zprávu o útoku RDP ve stejný den, i když se aktivuje další upozornění. 
+Aby nedošlo k únavě výstrah, Security Center omezí objem odchozích e-mailů. U každého předplatného Security Center odesílá:
 
-> [!IMPORTANT]
-> Tento dokument vám tuto službu představí formou ukázkového nasazení.  Není to podrobný průvodce.
+- maximálně **čtyři** e-maily za den pro výstrahy **s vysokou závažností**
+- maximálně **dva** e-maily za den pro upozornění **středních závažnosti**
+- maximálně **jeden** e-mail za den pro upozornění **s nízkou závažností**
+
+## <a name="availability"></a>Dostupnost
+
+- Stav verze: **všeobecně dostupné**
+- Požadované role: **Správce zabezpečení** nebo **vlastník předplatného** 
+- Cloudy: komerční cloudy ✔ ✔ US Gov (částečně) ✘ National/svrchovaná (Čína gov, ostatní gov)
+
 
 ## <a name="set-up-email-notifications-for-alerts"></a>Nastavení e-mailových oznámení pro výstrahy<a name="email"></a>
 
-1. Jako uživatel s rolí správce zabezpečení nebo vlastníka předplatného otevřete stránku **e-mailová oznámení** :
+Můžete posílat e-mailová oznámení jednotlivcům nebo všem uživatelům s konkrétními rolemi RBAC.
 
-    - V okně výstrahy otevřete **Nastavení cenové &**, vyberte příslušné předplatné a zvolte **e-mailová oznámení**.
+1. Z oblasti **Nastavení cenové &** Security Center, relevantní předplatné a vybrat **e-mailová oznámení**.
 
-    - Pokud implementujete doporučení, vyberte v části **doporučení**možnost **zadat podrobnosti kontaktu zabezpečení**, vyberte předplatné Azure, na které chcete zadat kontaktní údaje. Tím se otevřou **e-mailová oznámení**.
+1. Zadejte příjemce oznámení:
 
-   ![Poskytnutí podrobností kontaktů zabezpečení][2]
-
-1. Zadejte kontaktní e-mailovou adresu nebo adresy zabezpečení oddělené čárkami. Počet e-mailových adres, které můžete zadat, není nijak omezený.
-
-1. Pokud chcete dostávat e-maily s výstrahami s vysokou závažností, zapněte možnost **Odeslat e-maily o výstrahách**. Pro jiné úrovně závažnosti použijte aplikaci logiky, jak je vysvětleno v tématu [automatizace pracovních postupů](workflow-automation.md).
-
-1. Můžete posílat e-mailová oznámení vlastníkům předplatného (klasický správce služeb a spolusprávci a role vlastníka RBAC v oboru předplatného).
+    - V rozevíracím seznamu vyberte z dostupných rolí.
+    - A zadejte konkrétní e-mailové adresy oddělené čárkami. Počet e-mailových adres, které můžete zadat, není nijak omezený.
 
 1. Pokud chcete u svého předplatného použít kontaktní informace zabezpečení, vyberte **Uložit**.
 
-## <a name="see-also"></a>Viz také:
-Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
-* [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
-* [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) – Přečtěte si, jak doporučení vám pomůžou chránit vaše prostředky Azure.
-* [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se monitorovat stav svých prostředků Azure.
+## <a name="see-also"></a>Viz také
+Další informace o výstrahách zabezpečení najdete v následujících tématech:
+
+* [Výstrahy zabezpečení – referenční průvodce](alerts-reference.md) – Přečtěte si o výstrahách zabezpečení, které se můžou zobrazit v modulu Azure Security Center ochrany před internetovými útoky.
 * [Správa a reakce na výstrahy zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Přečtěte si, jak spravovat výstrahy zabezpečení a reagovat na ně.
-* [Monitorování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – Zjistěte, jak monitorovat stav vašich partnerských řešení.
-
-<!--Image references-->
-[1]: ./media/security-center-provide-security-contacts/provide-contacts.png
-[2]:./media/security-center-provide-security-contacts/provide-contact-details.png

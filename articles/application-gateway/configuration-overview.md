@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 07/20/2020
 ms.author: absha
-ms.openlocfilehash: 1e3ef1133628f0470ee92237abf20d3bb0a9e21a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0245a23e46770840295904685c913826950c0642
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254663"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517837"
 ---
 # <a name="application-gateway-configuration-overview"></a>Přehled konfigurace Application Gateway
 
@@ -25,7 +25,7 @@ Tento obrázek znázorňuje aplikaci, která má tři naslouchací procesy. Prvn
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="azure-virtual-network-and-dedicated-subnet"></a>Virtuální síť Azure a vyhrazená podsíť
 
@@ -146,7 +146,7 @@ Při vytváření nového naslouchacího procesu si zvolíte mezi [ *základním
 
 - Pokud chcete, aby všechny vaše žádosti (pro libovolnou doménu) byly přijaty a předány do fondů back-endu, vyberte základní. Přečtěte si, [jak vytvořit Aplikační bránu s využitím základního naslouchacího procesu](https://docs.microsoft.com/azure/application-gateway/quick-create-portal).
 
-- Pokud chcete překládat požadavky na různé back-endové fondy na základě hlavičky *hostitele* nebo názvu hostitele, zvolte možnost naslouchací proces více webů, kde musíte zadat také název hostitele, který odpovídá příchozímu požadavku. Důvodem je to, že Application Gateway spoléhá na hlavičky hostitele HTTP 1,1 k hostování více než jednoho webu na stejné veřejné IP adrese a portu.
+- Pokud chcete překládat požadavky na různé back-endové fondy na základě hlavičky *hostitele* nebo názvů hostitelů, zvolte možnost naslouchací proces pro více webů, kde musíte zadat také název hostitele, který se shoduje s příchozím požadavkem. Důvodem je to, že Application Gateway spoléhá na hlavičky hostitele HTTP 1,1 k hostování více než jednoho webu na stejné veřejné IP adrese a portu. Další informace najdete v tématu [hostování více lokalit pomocí Application Gateway](multiple-site-overview.md).
 
 #### <a name="order-of-processing-listeners"></a>Pořadí naslouchacího procesu zpracování
 
@@ -162,7 +162,7 @@ Vyberte front-end IP adresu, kterou plánujete přidružit k tomuto naslouchací
 
 Vyberte front-end port. Vyberte existující port nebo vytvořte nový. Vyberte libovolnou hodnotu z [povoleného rozsahu portů](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#ports). Můžete použít nejen známé porty, například 80 a 443, ale kterýkoli povolený vlastní port je vhodný. Port lze použít pro veřejné naslouchací procesy nebo privátní naslouchací procesy.
 
-### <a name="protocol"></a>Protocol (Protokol)
+### <a name="protocol"></a>Protokol
 
 Vyberte HTTP nebo HTTPS:
 
@@ -279,12 +279,16 @@ Další informace o přesměrování najdete v tématu:
 - [Přesměrování provozu na externí web pomocí prostředí PowerShell](redirect-external-site-powershell.md)
 - [Přesměrování provozu na externí web pomocí rozhraní příkazového řádku](redirect-external-site-cli.md)
 
-#### <a name="rewrite-the-http-header-setting"></a>Přepsání nastavení záhlaví HTTP
+### <a name="rewrite-http-headers-and-url"></a>Přepsat hlavičky a adresu URL protokolu HTTP
 
-Toto nastavení přidá, odebere nebo aktualizuje hlavičku požadavku a odpovědi HTTP, zatímco pakety požadavků a odpovědí přecházejí mezi klienty klienta a back-endové fondy. Další informace naleznete v tématech:
+Pomocí pravidel pro přepsání můžete přidat, odebrat nebo aktualizovat žádosti a hlavičky odpovědí HTTP (S) a také cestu URL a parametry řetězce dotazu, protože pakety požadavků a odpovědí se pohybují mezi klienty klienta a back-endu přes Aplikační bránu.
 
- - [Přehled hlaviček protokolu HTTP přepisu](rewrite-http-headers.md)
+Parametry hlaviček a adres URL lze nastavit na statické hodnoty nebo na jiné hlavičky a proměnné serveru. To pomáhá s důležitými případy použití, jako je například extrakce IP adres klientů, odebrání citlivých informací o back-endu, přidání dalších zabezpečení atd.
+Další informace najdete tady:
+
+ - [Přehled hlaviček protokolu HTTP přepisu](rewrite-http-headers-url.md)
  - [Konfigurace přepsání hlaviček HTTP](rewrite-http-headers-portal.md)
+ - [Konfigurace přepsání adresy URL](rewrite-url-portal.md)
 
 ## <a name="http-settings"></a>Nastavení HTTP
 
@@ -309,7 +313,7 @@ Všimněte si, že výchozí název souboru cookie spřažení je *ApplicationGa
 
 Vyprazdňování připojení pomáhá řádně odebrat členy fondu back-end během plánovaných aktualizací služby. Toto nastavení můžete použít pro všechny členy fondu back-end tím, že v nastavení HTTP povolíte vyprazdňování připojení. Zajišťuje, aby všechny odregistrované instance back-end fondu nadále udržovaly stávající připojení a poskytovaly žádosti o konfigurovatelný časový limit a nedostaly žádné nové žádosti nebo připojení. Jedinou výjimkou jsou požadavky vázané na zrušení registrace instancí z důvodu spřažení relace spravované bránou a budou nadále předány do odregistrování instancí. Vyprazdňování připojení se vztahuje na instance back-endu, které jsou explicitně odebrány z fondu back-end.
 
-### <a name="protocol"></a>Protocol (Protokol)
+### <a name="protocol"></a>Protokol
 
 Application Gateway podporuje HTTP i HTTPS pro požadavky směrování na back-endové servery. Pokud zvolíte protokol HTTP, přenosy na back-endové servery budou nešifrované. Pokud nešifrovaná komunikace není přijatelná, vyberte HTTPS.
 
@@ -357,7 +361,7 @@ Toto nastavení přidruží [vlastní test](application-gateway-probe-overview.m
 > [!NOTE]
 > Vlastní test nemonitoruje stav fondu back-end, pokud není odpovídající nastavení HTTP explicitně přidruženo k naslouchacímu procesu.
 
-### <a name="pick-host-name-from-back-end-address"></a><a id="pick"/></a>Vybrat název hostitele z back-endové adresy
+### <a name="pick-host-name-from-back-end-address"></a><a name="pick"></a>Vybrat název hostitele z back-endové adresy
 
 Tato funkce dynamicky nastaví hlavičku *hostitele* v požadavku na název hostitele back-end fondu. Používá IP adresu nebo plně kvalifikovaný název domény.
 

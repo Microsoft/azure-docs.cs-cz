@@ -11,14 +11,14 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ef482804c80602771963633bcc46feaf014c363
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efcf2df4e472d022fcdec0c9b7c69c73192c503f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85373824"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518466"
 ---
-# <a name="azure-active-directory-connect-faq"></a>Nejčastější dotazy k Azure Active Directory Connect
+# <a name="azure-active-directory-connect-cloud-provisioning-faq"></a>Nejčastější dotazy k zřizování cloudu Azure Active Directory Connect
 
 Přečtěte si o nejčastějších dotazech ke službě Azure Active Directory (Azure AD) Connect Provisioning pro Cloud.
 
@@ -42,7 +42,7 @@ Při Azure AD Connect synchronizaci se zřizování spouští na místním serve
 
 **Otázka: můžu použít zřizování cloudu pro synchronizaci z více doménových struktur služby Active Directory?**
 
-Ano. Zřizování cloudu se dá použít k synchronizaci z několika doménových struktur služby Active Directory. V prostředí s více doménovými strukturami musí být všechny odkazy (například správce) v doméně.  
+Yes. Zřizování cloudu se dá použít k synchronizaci z několika doménových struktur služby Active Directory. V prostředí s více doménovými strukturami musí být všechny odkazy (například správce) v doméně.  
 
 **Otázka: jak se Agent aktualizuje?**
 

@@ -4,11 +4,12 @@ description: Přečtěte si o schématu JSON, které se pošle na adresu URL Web
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
-ms.openlocfilehash: c076b8dcea350f9ddd66977e89ce99b81f377b17
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1db12f352ec79a3112eada68d82279c9e0343a04
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669042"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516154"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhooky pro výstrahy protokolu aktivit Azure
 V rámci definice skupiny akcí můžete nakonfigurovat koncové body Webhooku tak, aby přijímaly oznámení o výstrahách protokolu aktivit. Pomocí webhooků můžete tato oznámení směrovat do jiných systémů pro následné zpracování nebo vlastní akce. V tomto článku se dozvíte, jak se datová část příspěvku HTTP na Webhook líbí.
@@ -56,7 +57,7 @@ Datová část JSON obsažená v operaci POST se liší v závislosti na poli da
 }
 ```
 
-### <a name="administrative"></a>Správa
+### <a name="administrative"></a>Správcovské
 
 ```json
 {
@@ -213,7 +214,7 @@ Datová část JSON obsažená v operaci POST se liší v závislosti na poli da
 }
 ```
 
-Podrobnosti o konkrétním schématu pro výstrahy protokolu aktivit oznámení o stavu služby najdete v tématu [Upozornění na stav služby](../../azure-monitor/platform/service-notifications.md). Kromě toho se dozvíte, jak [nakonfigurovat oznámení Webhooku služby Health Service pomocí stávajících řešení pro správu problémů](../../service-health/service-health-alert-webhook-guide.md).
+Podrobnosti o konkrétním schématu pro výstrahy protokolu aktivit oznámení o stavu služby najdete v tématu [Upozornění na stav služby](../../service-health/service-notifications.md). Kromě toho se dozvíte, jak [nakonfigurovat oznámení Webhooku služby Health Service pomocí stávajících řešení pro správu problémů](../../service-health/service-health-alert-webhook-guide.md).
 
 ### <a name="resourcehealth"></a>ResourceHealth
 
@@ -253,7 +254,7 @@ Podrobnosti o konkrétním schématu pro výstrahy protokolu aktivit oznámení 
 }
 ```
 
-| Název elementu | Description |
+| Název elementu | Popis |
 | --- | --- |
 | status |Používá se pro výstrahy metriky. Pro výstrahy protokolu aktivit vždycky nastavte na aktivované. |
 | kontext |Kontext události |
@@ -261,7 +262,7 @@ Podrobnosti o konkrétním schématu pro výstrahy protokolu aktivit oznámení 
 | conditionType |Vždy "Event" |
 | name |Název pravidla výstrahy. |
 | id |ID prostředku výstrahy |
-| description |Popis výstrahy nastavený při vytvoření výstrahy |
+| Popis |Popis výstrahy nastavený při vytvoření výstrahy |
 | subscriptionId |ID předplatného Azure. |
 | časové razítko |Čas, kdy byla událost vygenerována službou Azure, která zpracovala požadavek. |
 | resourceId |ID prostředku ovlivněného prostředku |
@@ -291,4 +292,3 @@ Konkrétní podrobnosti o schématu pro všechny ostatní výstrahy protokolu ak
 * [Pomocí aplikace logiky můžete poslat SMS přes Twilio z výstrahy Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app). Tento příklad je pro výstrahy metrik, ale dá se upravit tak, aby fungoval s upozorněním protokolu aktivit.
 * [Pomocí aplikace logiky odešlete zprávu o časové rezervě z výstrahy Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app). Tento příklad je pro výstrahy metrik, ale dá se upravit tak, aby fungoval s upozorněním protokolu aktivit.
 * [Použijte aplikaci logiky k odeslání zprávy do fronty Azure z výstrahy Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app). Tento příklad je pro výstrahy metrik, ale dá se upravit tak, aby fungoval s upozorněním protokolu aktivit.
-

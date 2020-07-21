@@ -4,12 +4,12 @@ description: Odesílat přizpůsobená oznámení o událostech služby Service 
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 3/27/2018
-ms.openlocfilehash: 2609a267bd151354f83482ab16c4b9345aa88cc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05b0572c89a29fddc881f9977ee437d1319e6254
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80062860"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518924"
 ---
 # <a name="use-a-webhook-to-configure-health-notifications-for-problem-management-systems"></a>Použití Webhooku ke konfiguraci oznámení o stavu pro systémy správy problémů
 
@@ -96,7 +96,7 @@ Tento příklad ukazuje problémy pro:
 
 ## <a name="test-your-webhook-integration-via-an-http-post-request"></a>Otestujte integraci Webhooku přes požadavek HTTP POST.
 
-Postupujte následovně:
+Postupujte takto:
 
 1. Vytvořte datovou část stavu služby, kterou chcete odeslat. Podívejte se na příklad datové části Webhooku Webhooku u [webhooků pro výstrahy protokolu aktivit Azure](../azure-monitor/platform/activity-log-alerts-webhook.md).
 
@@ -115,5 +115,5 @@ Postupujte následovně:
 
 ## <a name="next-steps"></a>Další kroky
 - Zkontrolujte [schéma Webhooku upozornění protokolu aktivit](../azure-monitor/platform/activity-log-alerts-webhook.md). 
-- Přečtěte si o [oznámeních o stavu služby](../azure-monitor/platform/service-notifications.md).
+- Přečtěte si o [oznámeních o stavu služby](./service-notifications.md).
 - Přečtěte si další informace o [skupinách akcí](../azure-monitor/platform/action-groups.md).

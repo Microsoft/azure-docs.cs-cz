@@ -1,34 +1,34 @@
 ---
 title: Zabránit anonymnímu veřejnému přístupu pro čtení kontejnerů a objektů BLOB
 titleSuffix: Azure Storage
-description: ''
+description: Naučte se analyzovat anonymní požadavky na účet úložiště a zabránit anonymnímu přístupu pro celý účet úložiště nebo pro jednotlivé kontejnery.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/06/2020
+ms.date: 07/13/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 90d7cd65bbc07524391f34fe0efce2b044664cef
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 24d726f7600c3ba80833640be8036bf0daa2c014
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209413"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518720"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>Zabránit anonymnímu veřejnému přístupu pro čtení kontejnerů a objektů BLOB
 
-Anonymní veřejný přístup pro čtení kontejnerů a objektů BLOB v Azure Storage je pohodlný způsob, jak sdílet data, ale může také představovat bezpečnostní riziko. Je důležité, abyste anonymní přístup povolili uvážlivě a pochopili, jak vyhodnocovat anonymní přístup k datům. Provozní složitost, lidská chyba nebo škodlivý útok na data, která jsou veřejně přístupná, můžou vést k nákladným porušením dat. Společnost Microsoft doporučuje povolit anonymní přístup pouze v případě, že je to nutné pro váš scénář aplikace.
+Anonymní veřejný přístup pro čtení kontejnerů a objektů BLOB v Azure Storage je pohodlný způsob, jak sdílet data, ale může také představovat bezpečnostní riziko. Je důležité spravovat anonymní přístup v rozumném zájmu a pochopit, jak vyhodnocovat anonymní přístup k datům. Provozní složitost, lidská chyba nebo škodlivý útok na data, která jsou veřejně přístupná, můžou vést k nákladným porušením dat. Společnost Microsoft doporučuje povolit anonymní přístup pouze v případě, že je to nutné pro váš scénář aplikace.
 
-Ve výchozím nastavení účet úložiště umožňuje uživateli s příslušnými oprávněními konfigurovat veřejný přístup k kontejnerům a objektům blob. Tuto funkci můžete zakázat na úrovni účtu úložiště, aby kontejnery a objekty BLOB v účtu nemohly být nakonfigurované pro veřejný přístup.
+Ve výchozím nastavení může uživatel s příslušnými oprávněními nakonfigurovat veřejný přístup k kontejnerům a objektům blob. Můžete zabránit veškerému veřejnému přístupu na úrovni účtu úložiště. Když zakážete přístup k veřejnému objektu BLOB pro účet úložiště, pak kontejnery v účtu nejde nakonfigurovat pro veřejný přístup. Všechny kontejnery, které již byly nakonfigurovány pro veřejný přístup, již nebudou přijímat anonymní požadavky. Další informace najdete v tématu [Konfigurace anonymního veřejného přístupu pro čtení pro kontejnery a objekty blob](anonymous-read-access-configure.md).
 
 Tento článek popisuje, jak analyzovat anonymní požadavky na účet úložiště a jak zabránit anonymnímu přístupu pro celý účet úložiště nebo pro jednotlivé kontejnery.
 
 ## <a name="detect-anonymous-requests-from-client-applications"></a>Detekovat anonymní požadavky z klientských aplikací
 
-Když zakážete veřejný přístup pro čtení účtu úložiště, riskujete tím zamítnutí žádostí na kontejnery a objekty blob, které jsou aktuálně nakonfigurované pro veřejný přístup. Zakázání veřejného přístupu pro účet úložiště přepíše nastavení veřejného přístupu pro všechny kontejnery v tomto účtu úložiště. Když je pro účet úložiště zakázaný veřejný přístup, všechny budoucí anonymní požadavky na daný účet selžou.
+Když zakážete veřejný přístup pro čtení pro účet úložiště, riskujete tím odmítnutí požadavků na kontejnery a objekty blob, které jsou aktuálně nakonfigurované pro veřejný přístup. Nepovolení veřejného přístupu pro účet úložiště přepíše nastavení veřejného přístupu pro všechny kontejnery v tomto účtu úložiště. Pokud pro účet úložiště není povolený veřejný přístup, všechny budoucí anonymní požadavky na daný účet selžou.
 
-Aby bylo možné pochopit, jakým způsobem může mít veřejný přístup vliv na klientské aplikace, společnost Microsoft doporučuje, abyste povolili protokolování a metriky pro tento účet a mohli analyzovat vzory anonymních požadavků za časové období. Pomocí metrik určete počet anonymních požadavků na účet úložiště a pomocí protokolů určete, ke kterým kontejnerům se má anonymní přístup.
+Aby bylo možné pochopit, jakým způsobem může mít veřejný přístup vliv na klientské aplikace, společnost Microsoft doporučuje povolit protokolování a metriky pro tento účet a analyzovat vzory anonymních požadavků během časového intervalu. Pomocí metrik určete počet anonymních požadavků na účet úložiště a pomocí protokolů určete, ke kterým kontejnerům se má anonymní přístup.
 
 ### <a name="monitor-anonymous-requests-with-metrics-explorer"></a>Monitorování anonymních požadavků pomocí Průzkumník metrik
 
@@ -92,7 +92,7 @@ Odkaz na pole, která jsou k dispozici v Azure Storage protokoly v Azure Monitor
 
 Protokoly Azure Storage v Azure Monitor zahrnují typ ověřování, který se použil k vytvoření požadavku na účet úložiště. V dotazu protokolu vyfiltrujte vlastnost **AuthenticationType** , aby se zobrazily anonymní požadavky.
 
-Pokud chcete pro anonymní požadavky na úložiště objektů BLOB načíst protokoly za posledních 7 dní, otevřete pracovní prostor Log Analytics. Dále vložte následující dotaz do nového dotazu protokolu a spusťte jej. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
+Pokud chcete pro anonymní požadavky na úložiště objektů BLOB načíst protokoly za posledních 7 dní, otevřete pracovní prostor Log Analytics. Dále vložte následující dotaz do nového dotazu protokolu a spusťte ho:
 
 ```kusto
 StorageBlobLogs
@@ -106,13 +106,13 @@ Můžete také nakonfigurovat pravidlo výstrahy na základě tohoto dotazu, kte
 
 Po vyhodnocení anonymních požadavků na kontejnery a objekty blob ve vašem účtu úložiště můžete provést akci pro omezení nebo zabránění veřejnému přístupu. Pokud můžou být některé kontejnery v účtu úložiště dostupné pro veřejný přístup, můžete nakonfigurovat nastavení veřejného přístupu pro každý kontejner v účtu úložiště. Tato možnost poskytuje nejpřesnější kontrolu nad veřejným přístupem. Další informace najdete v tématu [Nastavení úrovně veřejného přístupu pro kontejner](anonymous-read-access-configure.md#set-the-public-access-level-for-a-container).
 
-Pro zvýšení zabezpečení můžete zakázat veřejný přístup pro celý účet úložiště. Nastavení veřejného přístupu pro účet úložiště přepíše jednotlivá nastavení kontejnerů v daném účtu. Když zakážete veřejný přístup k účtu úložiště, všechny kontejnery, které jsou nakonfigurované tak, aby povolovaly veřejný přístup, už nebudou přístupné anonymně. Další informace najdete v tématu [Povolení nebo zakázání veřejného přístupu pro čtení pro účet úložiště](anonymous-read-access-configure.md#enable-or-disable-public-read-access-for-a-storage-account).
+Pro zvýšení zabezpečení můžete zakázat veřejný přístup pro celý účet úložiště. Nastavení veřejného přístupu pro účet úložiště přepíše jednotlivá nastavení kontejnerů v daném účtu. Když zakážete veřejný přístup k účtu úložiště, všechny kontejnery, které jsou nakonfigurované tak, aby povolovaly veřejný přístup, už nebudou přístupné anonymně. Další informace najdete v tématu [Povolení nebo zakázání veřejného přístupu pro čtení pro účet úložiště](anonymous-read-access-configure.md#allow-or-disallow-public-read-access-for-a-storage-account).
 
-Pokud váš scénář vyžaduje, aby byly k dispozici určité kontejnery pro veřejný přístup, může být vhodné přesunout tyto kontejnery a jejich objekty blob do účtů úložiště, které jsou vyhrazené pro veřejný přístup. Pak můžete zakázat veřejný přístup pro všechny ostatní účty úložiště.
+Pokud váš scénář vyžaduje, aby určité kontejnery byly dostupné pro veřejný přístup, může být vhodné přesunout tyto kontejnery a jejich objekty blob do účtů úložiště, které jsou vyhrazené pro veřejný přístup. Pak můžete zakázat veřejný přístup pro všechny ostatní účty úložiště.
 
 ### <a name="verify-that-public-access-to-a-blob-is-not-permitted"></a>Ověřte, že veřejný přístup k objektu BLOB není povolený.
 
-Pokud chcete ověřit, jestli je veřejný přístup k určitému objektu BLOB odepřený, můžete se pokusit o stažení objektu BLOB přes jeho adresu URL. Pokud se stahování podaří, je objekt BLOB stále veřejně dostupný. Pokud objekt BLOB není veřejně přístupný, protože je pro účet úložiště zakázaný veřejný přístup, zobrazí se chybová zpráva s oznámením, že v tomto účtu úložiště není povolený veřejný přístup.
+Pokud chcete ověřit, jestli je veřejný přístup k určitému objektu BLOB zakázaný, můžete se pokusit o stažení objektu BLOB přes jeho adresu URL. Pokud se stahování podaří, je objekt BLOB stále veřejně dostupný. Pokud objekt BLOB není veřejně přístupný, protože pro účet úložiště je povolený veřejný přístup, zobrazí se chybová zpráva s oznámením, že v tomto účtu úložiště není povolený veřejný přístup.
 
 Následující příklad ukazuje, jak použít PowerShell k pokusu o stažení objektu BLOB prostřednictvím jeho adresy URL. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
 
@@ -124,7 +124,7 @@ Invoke-WebRequest -Uri $url -OutFile $downloadTo -ErrorAction Stop
 
 ### <a name="verify-that-modifying-the-containers-public-access-setting-is-not-permitted"></a>Ověřte, že změna nastavení veřejného přístupu kontejneru není povolená.
 
-Pokud chcete ověřit, že nastavení veřejného přístupu kontejneru se nedá změnit, když je pro účet úložiště zakázaný veřejný přístup, můžete se pokusit změnit nastavení. Změna nastavení veřejného přístupu kontejneru se nezdaří, pokud je pro účet úložiště zakázaný veřejný přístup.
+Pokud chcete ověřit, že nastavení veřejného přístupu kontejneru se nedá změnit, když je pro účet úložiště zakázaný veřejný přístup, můžete se pokusit změnit nastavení. Změna nastavení veřejného přístupu kontejneru se nezdaří, pokud pro účet úložiště není povolený veřejný přístup.
 
 Následující příklad ukazuje, jak použít PowerShell k pokusu o změnu nastavení veřejného přístupu kontejneru. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
 
@@ -141,10 +141,10 @@ Set-AzStorageContainerAcl -Context $ctx -Container $containerName -Permission Bl
 
 ### <a name="verify-that-creating-a-container-with-public-access-enabled-is-not-permitted"></a>Ověřte, že vytvoření kontejneru s povoleným veřejným přístupem není povolené.
 
-Pokud je pro účet úložiště zakázaný veřejný přístup, nebudete moct vytvořit nový kontejner s povoleným veřejným přístupem. K ověření se můžete pokusit vytvořit kontejner s povoleným veřejným přístupem.
+Pokud pro účet úložiště není povolený veřejný přístup, nebudete moct vytvořit nový kontejner s povoleným veřejným přístupem. K ověření se můžete pokusit vytvořit kontejner s povoleným veřejným přístupem.
 
 Následující příklad ukazuje, jak použít PowerShell k pokusu o vytvoření kontejneru s povoleným veřejným přístupem. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
- 
+
 ```powershell
 $rgName = "<resource-group>"
 $accountName = "<storage-account>"

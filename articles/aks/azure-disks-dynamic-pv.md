@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Zjistěte, jak dynamicky vytvořit trvalý svazek s disky Azure ve službě Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 03/01/2019
-ms.openlocfilehash: 44741452f95995327914978bbfd5b0a49566faa5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/10/2020
+ms.openlocfilehash: 0e7bc057d756215b1aa155f0e227c75c99c8737c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751362"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518007"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Dynamické vytvoření a použití trvalého svazku s disky Azure ve službě Azure Kubernetes Service (AKS)
 
@@ -31,14 +31,14 @@ Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2
 
 Třída úložiště se používá k definování způsobu, jakým se jednotka úložiště dynamicky vytvoří s trvalým svazkem. Další informace o třídách úložiště Kubernetes naleznete v tématu [třídy úložiště Kubernetes][kubernetes-storage-classes].
 
-Každý cluster AKS obsahuje dvě předem vytvořené třídy úložiště, které jsou nakonfigurovány pro práci s disky Azure:
+Každý cluster AKS obsahuje čtyři předem vytvořené třídy úložiště, dva z nich jsou nakonfigurovány pro práci s disky Azure:
 
-* *Výchozí* třída úložiště zřídí standardní disk Azure.
-    * Služba Storage úrovně Standard je založená na HDD a poskytuje nákladově efektivní úložiště, které se pořád vykonává. Disky Standard jsou ideální pro cenově výhodné úlohy vývoje a testování.
+* *Výchozí* třída úložiště zřídí standardní disk SSD Azure.
+    * Služba Storage úrovně Standard je založená na standardu SSD a poskytuje nákladově efektivní úložiště, a přitom stále poskytuje spolehlivý výkon. 
 * Třída úložiště *Managed-Premium* zřídí disk Azure úrovně Premium.
     * Disky Premium jsou založené na vysoce výkonných discích SSD s nízkou latencí. Jsou ideální pro virtuální počítače s produkčními úlohami. Pokud uzly AKS v clusteru používají Storage úrovně Premium, vyberte třídu *Managed-Premium* .
     
-Pokud používáte jednu z výchozích tříd úložiště, nemůžete po vytvoření třídy úložiště aktualizovat velikost svazku. Aby bylo možné aktualizovat velikost svazku po vytvoření třídy úložiště, přidejte řádek `allowVolumeExpansion: true` do jedné z výchozích tříd úložiště, nebo můžete vytvořit vlastní třídu úložiště. Existující třídu úložiště můžete upravit pomocí `kubectl edit sc` příkazu. 
+Pokud používáte jednu z výchozích tříd úložiště, nemůžete po vytvoření třídy úložiště aktualizovat velikost svazku. Aby bylo možné aktualizovat velikost svazku po vytvoření třídy úložiště, přidejte řádek `allowVolumeExpansion: true` do jedné z výchozích tříd úložiště, nebo můžete vytvořit vlastní třídu úložiště. Počítejte s tím, že není podporováno snížení velikosti trvalého virtuálního počítače (aby nedošlo ke ztrátě dat). Existující třídu úložiště můžete upravit pomocí `kubectl edit sc` příkazu. 
 
 Pokud například chcete použít disk o velikosti 4 TiB, musíte vytvořit třídu úložiště, která definuje, `cachingmode: None` protože [ukládání disku do mezipaměti není podporováno pro disky 4 TIB a větší](../virtual-machines/windows/premium-storage-performance.md#disk-caching).
 
@@ -151,6 +151,9 @@ Events:
   Normal  SuccessfulMountVolume  1m    kubelet, aks-nodepool1-79590246-0  MountVolume.SetUp succeeded for volume "pvc-faf0f176-8b8d-11e8-923b-deb28c58d242"
 [...]
 ```
+
+## <a name="use-ultra-disks"></a>Použít disky Ultra
+Pokud chcete využít Ultra disk, přečtěte si téma [použití Ultra Discs ve službě Azure Kubernetes Service (AKS)](use-ultra-disks.md).
 
 ## <a name="back-up-a-persistent-volume"></a>Zálohování trvalého svazku
 
@@ -284,3 +287,11 @@ Přečtěte si další informace o Kubernetes trvalých svazcích pomocí disků
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register

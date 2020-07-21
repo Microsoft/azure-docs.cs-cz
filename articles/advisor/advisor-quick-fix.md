@@ -4,11 +4,12 @@ description: Provést hromadnou nápravu pomocí rychlé opravy v Advisoru
 ms.topic: article
 ms.date: 03/13/2020
 ms.author: sagupt
-ms.openlocfilehash: 3c3ac27f04aa516fbef1bfff30e3392659b58919
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ebd993733c1aca9cd4f7d92f0a75e22d68a87ffe
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79502487"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518058"
 ---
 # <a name="quick-fix-remediation-for-advisor"></a>Rychlá oprava nápravy pro poradce
 **Rychlá oprava** umožňuje rychlejší a snazší způsob nápravy doporučení na více prostředků. Poskytuje možnost pro hromadné nápravy prostředků a pomáhá optimalizovat vaše předplatné rychleji díky nápravě ve velkém rozsahu pro vaše prostředky.
@@ -49,4 +50,4 @@ Další informace o doporučeních služby Advisor najdete v těchto tématech:
 * [Doporučení pro výkon Advisoru](advisor-performance-recommendations.md)
 * [Doporučení pro zabezpečení Advisoru](advisor-security-recommendations.md)
 * [Doporučení provozní kvality Advisoru](advisor-operational-excellence-recommendations.md)
-* [REST API Advisoru](https://docs.microsoft.com/rest/api/advisor/)
+* [REST API Advisoru](/rest/api/advisor/)

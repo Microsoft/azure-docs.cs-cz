@@ -3,12 +3,12 @@ title: Odesílání upozornění na Azure Service Health pomocí ServiceNow
 description: Získejte přizpůsobená oznámení o událostech služby Service Health do vaší instance ServiceNow.
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 5cd17af080714fdf2e9e5b168e72f975c8d3a3f6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 96c181991fc962b08e777a55d891b881fc1bdba3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260197"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519062"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>Odesílání upozornění na Azure Service Health s ServiceNow pomocí webhooků
 
@@ -147,7 +147,7 @@ V tomto článku se dozvíte, jak integrovat upozornění služby Azure Service 
 
 ## <a name="create-an-alert-using-servicenow-in-the-azure-portal"></a>Vytvoření upozornění pomocí ServiceNow v Azure Portal
 ### <a name="for-a-new-action-group"></a>Pro novou skupinu akcí:
-1. Postupujte podle kroků 1 až 8 v [tomto článku](../azure-monitor/platform/alerts-activity-log-service-notifications.md) a vytvořte upozornění s novou skupinou akcí.
+1. Postupujte podle kroků 1 až 8 v [tomto článku](./alerts-activity-log-service-notifications-portal.md) a vytvořte upozornění s novou skupinou akcí.
 
 1. V seznamu akcí definujte tyto **Akce**:
 
@@ -195,5 +195,5 @@ V tomto článku se dozvíte, jak integrovat upozornění služby Azure Service 
 ## <a name="next-steps"></a>Další kroky
 - Naučte se [Konfigurovat oznámení Webhooku pro stávající systémy správy problémů](service-health-alert-webhook-guide.md).
 - Zkontrolujte [schéma Webhooku upozornění protokolu aktivit](../azure-monitor/platform/activity-log-alerts-webhook.md). 
-- Přečtěte si o [oznámeních o stavu služby](../azure-monitor/platform/service-notifications.md).
+- Přečtěte si o [oznámeních o stavu služby](./service-notifications.md).
 - Přečtěte si další informace o [skupinách akcí](../azure-monitor/platform/action-groups.md).

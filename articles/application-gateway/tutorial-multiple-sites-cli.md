@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 0a559ec7f9138810611841eed4a035f30662bc39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79a239148647467185e407e1e07fdea658a7be40
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806265"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517892"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Vytvoření aplikační brány, která hostuje několik webů pomocí Azure CLI
 
@@ -24,13 +24,13 @@ V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Nastavit síť
-> * Vytvoření služby Application Gateway
+> * Vytvoření brány Application Gateway
 > * Vytvořit back-endové naslouchací procesy
 > * Vytvořit pravidla směrování
 > * Vytvořit z back-endových fondů škálovací sadu virtuálních počítačů
 > * Vytvoření záznamu CNAME v doméně
 
-![Příklad směrování na více webů](./media/tutorial-multiple-sites-cli/scenario.png)
+:::image type="content" source="./media/tutorial-multiple-sites-cli/scenario.png" alt-text="Application Gateway více lokalit":::
 
 Pokud budete chtít, můžete tento postup dokončit pomocí [Azure PowerShell](tutorial-multiple-sites-powershell.md).
 
@@ -119,9 +119,13 @@ az network application-gateway address-pool create \
   --name fabrikamPool
 ```
 
-### <a name="add-backend-listeners"></a>Přidání back-endových naslouchacích procesů
+### <a name="add-listeners"></a>Přidání naslouchacích procesů
 
-Přidejte back-endové naslouchací procesy, které jsou potřeba ke směrování provozu, příkazem [az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create).
+Přidejte naslouchací procesy, které jsou potřeba ke směrování provozu pomocí [AZ Network Application-Gateway http-Listener Create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create).
+
+>[!NOTE]
+> Pomocí Application Gateway nebo WAF v2 SKU můžete také nakonfigurovat až 5 názvů hostitelů na naslouchací proces a v názvu hostitele můžete použít zástupné znaky. Další informace najdete [v tématu názvy hostitelů se zástupnými znaky v naslouchací](multiple-site-overview.md#wildcard-host-names-in-listener-preview) službě.
+>Chcete-li použít více názvů hostitelů a zástupných znaků v naslouchací službě pomocí Azure CLI, je nutné použít `--host-names` místo `--host-name` . U názvů hostitelů můžete uvést až 5 názvů hostitelů jako hodnoty oddělené čárkami. Například `--host-names "*.contoso.com,*.fabrikam.com"`.
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -234,7 +238,7 @@ az network public-ip show \
 
 Použití záznamů A se nedoporučuje, protože virtuální IP adresa se může změnit při restartování služby Application Gateway.
 
-## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
+## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
 Do adresního řádku prohlížeče zadejte název domény. Například http: \/ /www.contoso.com.
 

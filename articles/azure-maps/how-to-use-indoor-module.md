@@ -8,19 +8,20 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: c0b043bdb20cad508950a11853403958340acadf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e7b6c7ddb33d42cca66698c87c82477f3e55621
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84434197"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517463"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>Použití modulu Azure Mapsch vnitřních map
 
 Sada Azure Maps Web SDK obsahuje modul *Azure Maps interiéru* . Modul *vnitřních Azure Maps* umožňuje vykreslit vnitřní mapy vytvořené v programu Azure Maps Creator.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-1. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-account-with-azure-maps)
+1. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Vytvoření prostředku autora](how-to-manage-creator.md)
 3. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného.
 4. Získejte `tilesetId` a a `statesetId` doplněním [kurzu vytváření vnitřních map](tutorial-creator-indoor-maps.md).

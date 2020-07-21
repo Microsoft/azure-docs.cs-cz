@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: yelevin
-ms.openlocfilehash: d76f8e2d750b8ab2d82e9424f929d8b8353ac25a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 596d0f4870d9331a332dfb81bd7d2d224964a593
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84816455"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519009"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Rozšíření Azure Sentinelu napříč pracovními prostory a tenanty
 
@@ -29,7 +29,7 @@ Azure Sentinel je postavená na Log Analytics pracovním prostoru. Všimněte si
 
 Pokud používáte jeden pracovní prostor, můžete získat plnou výhodu prostředí Sentinel Azure. I tak existují některé okolnosti, které mohou vyžadovat, abyste měli více pracovních prostorů. V následující tabulce jsou uvedeny některé z těchto situací a pokud je to možné, navrhuje, jak může být požadavek splněn s jedním pracovním prostorem:
 
-| Požadavek | Description | Způsoby omezení počtu pracovních prostorů |
+| Požadavek | Popis | Způsoby omezení počtu pracovních prostorů |
 |-------------|-------------|--------------------------------|
 | Suverenita a dodržování předpisů | Pracovní prostor je vázaný na konkrétní oblast. Pokud se data musí uchovávat v různých [zeměpisných oblastech Azure](https://azure.microsoft.com/global-infrastructure/geographies/) , aby splňovaly zákonné požadavky, musí být rozdělené do samostatných pracovních prostorů. |  |
 | Vlastnictví dat | Hranice vlastnictví dat, například dceřinými společnostmi nebo přidruženými společnostmi, jsou lépe vymezeny pomocí samostatných pracovních prostorů. |  |
@@ -37,7 +37,7 @@ Pokud používáte jeden pracovní prostor, můžete získat plnou výhodu prost
 | Podrobné řízení přístupu k datům | Organizace může pro přístup k některým datům shromažďovaných službou Azure Sentinel vyžadovat v rámci organizace nebo mimo ni jiné skupiny. Příklad:<br><ul><li>Vlastníci prostředků mají přístup k datům, která se týkají jejich prostředků.</li><li>Regionální nebo dceřiné Socy – přístup k datům relevantním pro jejich části organizace</li></ul> | Použití RBAC nebo na [úrovni tabulky](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) pro práci s [prostředky](https://techcommunity.microsoft.com/t5/azure-sentinel/controlling-access-to-azure-sentinel-data-resource-rbac/ba-p/1301463) |
 | Podrobné nastavení uchovávání informací | Historicky bylo několik pracovních prostorů jediným způsobem, jak nastavit různá období uchovávání pro různé datové typy. Díky zavedení nastavení uchování na úrovni tabulky už to v mnoha případech nepotřebujeme. | Použití [Nastavení uchování na úrovni tabulky](https://techcommunity.microsoft.com/t5/azure-sentinel/new-per-data-type-retention-is-now-available-for-azure-sentinel/ba-p/917316) nebo automatizace [odstranění dat](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data) |
 | Rozdělit fakturaci | Když umístíte pracovní prostory do samostatných předplatných, můžou se fakturovat různým stranám. | Vytváření sestav využití a vzájemné zpoplatnění |
-| Starší verze architektury | Použití několika pracovních prostorů může vyrazit z historických návrhů, které vzaly v úvahu omezení nebo osvědčené postupy, které už nedrží hodnotu true. Může to být také libovolná volba návrhu, která se dá upravit tak, aby lépe vyhovovala službě Azure Sentinel.<br><br>Mezi příklady patří:<br><ul><li>Použití výchozího pracovního prostoru pro každé předplatné při nasazení Azure Security Center</li><li>Nutnost podrobnějšího řízení přístupu nebo nastavení uchovávání, řešení, pro která jsou relativně nová</li></ul> | Nové architekty pracovních prostorů |
+| Starší verze architektury | Použití několika pracovních prostorů může vyrazit z historických návrhů, které vzaly v úvahu omezení nebo osvědčené postupy, které už nedrží hodnotu true. Může to být také libovolná volba návrhu, která se dá upravit tak, aby lépe vyhovovala službě Azure Sentinel.<br><br>Příklady:<br><ul><li>Použití výchozího pracovního prostoru pro každé předplatné při nasazení Azure Security Center</li><li>Nutnost podrobnějšího řízení přístupu nebo nastavení uchovávání, řešení, pro která jsou relativně nová</li></ul> | Nové architekty pracovních prostorů |
 
 ### <a name="managed-security-service-provider-mssp"></a>Spravovaný poskytovatel služby zabezpečení (MSSP)
 
@@ -103,12 +103,18 @@ Pracovní [panely poskytují řídicí](./overview.md#workbooks) panely a aplika
 
 Sešity můžou obsahovat dotazy pro více pracovních prostorů v jedné ze tří metod, z nichž každý má stejný způsob, jakým má platforma pro koncové uživatele různé úrovně znalostí:
 
-| Metoda  | Description | Kdy mám použít? |
+| Metoda  | Popis | Kdy mám použít? |
 |---------|-------------|--------------------|
 | Zápis dotazů mezi pracovními prostory | Tvůrce sešitu může v sešitu zapsat dotazy mezi pracovními prostory (popsané výše). | Tato možnost umožňuje autorům sešitu chránit uživatele ze struktury pracovního prostoru. |
 | Přidat selektor pracovního prostoru do sešitu | Tvůrce sešitu může jako součást sešitu implementovat selektor pracovního prostoru, jak je popsáno [zde](https://techcommunity.microsoft.com/t5/azure-sentinel/making-your-azure-sentinel-workbooks-multi-tenant-or-multi/ba-p/1402357). | Tato možnost poskytuje uživateli kontrolu nad pracovními prostory, které jsou uvedeny v sešitu, prostřednictvím snadno použitelného rozevíracího pole. |
 | Interaktivní úprava sešitu | Pokročilý uživatel, který upravuje existující sešit, může upravit dotazy v něm, vybrat cílové pracovní prostory pomocí výběru pracovního prostoru v editoru. | Tato možnost umožňuje uživateli snadno upravit existující sešity pro práci s více pracovními prostory. |
 |
+
+### <a name="cross-workspace-hunting"></a>Lov mezi pracovními prostory
+
+Azure Sentinel poskytuje předem načtené Ukázky dotazů, které vám pomohou začít a seznámit s tabulkami a dotazovacím jazykem. Tyto integrované lovecké dotazy jsou vyvíjené výzkumnými pracovníky Microsoftu, a to tak, že se přidávají nové dotazy a doladí existující dotazy. získáte tak vstupní bod, který bude hledat nové detekce a identifikovat známky vniknutí, které se v nástrojích zabezpečení už nerozpoznaly.  
+
+Lovecké možnosti mezi pracovními prostory umožňují, aby se vaše hrozba Hunters vytvářet nové lovecké dotazy nebo přizpůsobily stávajícím, aby pokryly několik pracovních prostorů, a to pomocí operátoru Union a výrazu pracovního prostoru (), jak je uvedeno
 
 ## <a name="cross-workspace-management-using-automation"></a>Správa mezi jednotlivými pracovními prostory pomocí automatizace
 
@@ -122,8 +128,6 @@ Viz také [nasazení a Správa služby Azure Sentinel jako kódu](https://techco
 V pracovních prostorech nejsou podporovány následující funkce:
 
 - Naplánované pravidlo upozornění nemůže běžet mezi pracovními prostory pomocí dotazu mezi pracovními prostory.
-
-- Lovecké dotazy nepodporují dotazy mezi jednotlivými pracovními prostory.
 
 ## <a name="managing-workspaces-across-tenants-using-azure-lighthouse"></a>Správa pracovních prostorů napříč klienty pomocí Azure Lighthouse
 

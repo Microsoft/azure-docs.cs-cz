@@ -1,18 +1,18 @@
 ---
-title: Monitorování prostředku Azure pomocí Azure Monitor
-description: Naučte se shromažďovat a analyzovat data pro prostředek Azure v Azure Monitor.
+title: Monitorování virtuálního počítače Azure pomocí Azure Monitor
+description: Naučte se shromažďovat a analyzovat data pro virtuální počítač Azure v Azure Monitor.
 ms.service: azure-monitor
 ms. subservice: logs
 ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: 99e8afa0a92ba8bb53505e2519efec7baafbcf48
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 40c7b9e5a8b7c38c9468d54e69ca7a73c5f2d46b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84805107"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516392"
 ---
 # <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>Rychlý Start: monitorování virtuálního počítače Azure pomocí Azure Monitor
 [Azure monitor](../overview.md) spustí shromažďování dat z virtuálních počítačů Azure a okamžik jejich vytvoření. V tomto rychlém startu se dozvíte, jak se budou automaticky shromažďovat data pro virtuální počítač Azure a jak je zobrazit v Azure Portal. Pak povolíte [Azure monitor pro virtuální počítače](../insights/vminsights-overview.md) pro váš virtuální počítač, který umožní agentům na virtuálním počítači shromažďovat a analyzovat data z hostovaného operačního systému, včetně procesů a jejich závislostí.
@@ -107,4 +107,4 @@ Když vytváříte nový pracovní prostor Log Analytics, musí být nakonfiguro
 V tomto rychlém startu jste povolili Azure Monitor pro virtuální počítače pro virtuální počítač a nakonfigurovali Log Analytics pracovní prostor pro shromažďování událostí pro hostovaný operační systém. Pokud chcete zjistit, jak zobrazit a analyzovat data, pokračujte k následujícímu kurzu.
 
 > [!div class="nextstepaction"]
-> [Zobrazení nebo analýza dat v Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md)
+> [Zobrazení nebo analýza dat v Log Analytics](../log-query/get-started-portal.md)

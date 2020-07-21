@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 214d379525f2ee534415d713aa298ec858a84c92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1fab15cade2ce23e053bc73028e6420692c3d8a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81868841"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518270"
 ---
 # <a name="protected-web-api-app-registration"></a>Chráněné webové rozhraní API: registrace aplikace
 
@@ -28,15 +29,15 @@ Běžné kroky k registraci aplikace najdete v tématu [rychlý Start: registrac
 
 Koncový bod platformy Microsoft Identity může vydávat tokeny v 1.0 a tokeny v 2.0. Další informace o těchto tokenech najdete v tématu [přístupové tokeny](access-tokens.md).
 
-Přijatá verze tokenu závisí na hodnotě **podporované typy účtů** , které zvolíte při vytváření aplikace.
+Verze tokenu, kterou vaše rozhraní API může přijmout, závisí na **podporovaných typech účtů** při vytváření registrace aplikace webového rozhraní api v Azure Portal.
 
-- Pokud je hodnota **podporovaných typů účtů** **účty v libovolném organizačním adresáři a osobních účtech Microsoft (např. Skype, Xbox, Outlook.com)**, verze přijatého tokenu je v 2.0.
-- V opačném případě je verze přijatého tokenu v 1.0.
+- Pokud je hodnota **podporovaných typů účtů** **účty v jakémkoli adresáři organizace a na osobních účtech Microsoft (např. Skype, Xbox, Outlook.com)**, musí být přijatý token verze v 2.0.
+- V opačném případě může verze přijatého tokenu v 1.0.
 
 Po vytvoření aplikace můžete zjistit nebo změnit verzi přijatého tokenu pomocí následujících kroků:
 
 1. V Azure Portal vyberte svou aplikaci a pak vyberte **manifest**.
-1. V manifestu Najděte vlastnost **accessTokenAcceptedVersion** . Výchozí hodnota vlastnosti je 2.
+1. V manifestu Najděte vlastnost **accessTokenAcceptedVersion** .
 1. Hodnota určuje Azure Active Directory (Azure AD), která verze tokenu přijímá webové rozhraní API.
     - Pokud je hodnota 2, webové rozhraní API akceptuje tokeny verze 2.0.
     - Pokud je hodnota **null**, webové rozhraní API akceptuje tokeny v 1.0.
@@ -51,7 +52,7 @@ Webová rozhraní API nepotřebují registrovat identifikátor URI přesměrová
 
 ## <a name="exposed-api"></a>Vystavené rozhraní API
 
-Další nastavení specifická pro webová rozhraní API jsou vystavená rozhraní API a exponované obory.
+Další nastavení specifická pro webová rozhraní API jsou vystavená rozhraní API a exponované obory nebo aplikační role.
 
 ### <a name="application-id-uri-and-scopes"></a>Identifikátor URI a obory ID aplikace
 
@@ -63,7 +64,7 @@ Během registrace aplikace je potřeba definovat tyto parametry:
 - Jeden nebo více oborů
 - Jedna nebo více aplikačních rolí
 
-Portál pro registraci aplikací standardně doporučuje použít identifikátor URI prostředku `api://{clientId}` . Tento identifikátor URI je jedinečný, ale není čitelný pro lidské čtení. Pokud identifikátor URI změníte, ujistěte se, že je nová hodnota jedinečná.
+Portál pro registraci aplikací standardně doporučuje použít identifikátor URI prostředku `api://{clientId}` . Tento identifikátor URI je jedinečný, ale není čitelný pro lidské čtení. Pokud identifikátor URI změníte, ujistěte se, že je nová hodnota jedinečná. Portál pro registraci aplikací bude mít jistotu, že používáte [nakonfigurovanou doménu vydavatele](howto-configure-publisher-domain.md) .
 
 Pro klientské aplikace se obory zobrazují jako *delegovaná oprávnění* a role aplikace se jako oprávnění aplikace pro vaše webové rozhraní API zobrazují jako *oprávnění aplikace* .
 
@@ -71,6 +72,8 @@ Obory se také zobrazí v okně pro vyjádření souhlasu, které jsou prezentov
 
 - Jak je vidět uživatel.
 - Jak je vidět správce klienta, který může udělit souhlas správce.
+
+Na role aplikace nemůže uživatel zasílat (protože je používá aplikace, která volá webové rozhraní API jménem sebe). Správce tenanta bude muset souhlasit s klientskými aplikacemi vašeho webového rozhraní API, aby vystavoval role aplikací. Podrobnosti najdete v tématu o [souhlasu správce](v2-admin-consent.md) .
 
 ### <a name="exposing-delegated-permissions-scopes"></a>Vystavení delegovaných oprávnění (rozsahy)
 

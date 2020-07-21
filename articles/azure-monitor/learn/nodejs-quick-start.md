@@ -1,42 +1,42 @@
 ---
-title: 'Rychlý Start: monitorování Node. js pomocí Azure Monitor Application Insights'
-description: Poskytuje pokyny pro rychlé nastavení webové aplikace Node. js pro monitorování pomocí Azure Monitor Application Insights
+title: 'Rychlý Start: monitorování Node.js pomocí Azure Monitor Application Insights'
+description: Poskytuje pokyny pro rychlé nastavení Node.js webové aplikace pro monitorování pomocí Azure Monitor Application Insights
 ms.subservice: application-insights
 ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 694d2ae529202223869fcbb2a084e32bccaedbf1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2e50daf3d94d30e4799bf7a645f46bb70fd6750c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77660219"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516494"
 ---
-# <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Rychlý Start: spuštění sledování webové aplikace v Node. js pomocí Azure Application Insights
+# <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Rychlý Start: zahájení monitorování webové aplikace v Node.js s využitím Azure Application Insights
 
-V tomto rychlém startu přidáte sadu Application Insights SDK verze 0,22 pro Node. js do existující webové aplikace Node. js.
+V tomto rychlém startu přidáte sadu Application Insights SDK verze 0,22 pro Node.js do existující Node.js webové aplikace.
 
 Služba Azure Application Insights umožňuje monitorovat webové aplikace z hlediska dostupnosti, výkonu a využití. Můžete také rychle identifikovat a diagnostikovat chyby ve vaší aplikaci a nečekat na to, až je nahlásí uživatelé. Pomocí sady SDK verze 0.20 a novější můžete monitorovat běžné balíčky třetích stran, včetně MongoDB, MySQL a Redis.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-* Funkční aplikace Node. js.
+* Funkční aplikace Node.js.
 
 ## <a name="enable-application-insights"></a>Povolení Application Insights
 
 Application Insights můžou shromažďovat data telemetrie z jakékoli aplikace připojené k Internetu, ať už běží místně nebo v cloudu. Pokud chcete tato data začít zobrazovat, použijte následující kroky.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
-2. Vyberte **vytvořit prostředek** > **pro vývojáře** > **Application Insights**.
+2. Vyberte **vytvořit prostředek pro**  >  **vývojáře**  >  **Application Insights**.
 
    ![Přidání prostředku Azure Application Insights](./media/nodejs-quick-start/azure-app-insights-create-resource.png)
 
    > [!NOTE]
-   >Pokud Application Insights prostředek vytvoříte poprvé, můžete si o tom přečíst další informace v dokumentu [vytvoření prostředku Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) .
+   >Pokud Application Insights prostředek vytvoříte poprvé, můžete si o tom přečíst další informace v dokumentu [vytvoření prostředku Application Insights](../app/create-new-resource.md) .
 
    Zobrazí se stránka konfigurace; k vyplnění vstupních polí použijte následující tabulku. 
 
@@ -44,7 +44,7 @@ Application Insights můžou shromažďovat data telemetrie z jakékoli aplikace
    | ------------- |:-------------|:-----|
    | **Název**      | Globálně jedinečná hodnota | Název, který identifikuje aplikaci, kterou sledujete |
    | **Skupina prostředků**     | myResourceGroup      | Název nové skupiny prostředků, která bude hostovat data AppInsights. Můžete vytvořit novou skupinu prostředků nebo použít existující. |
-   | **Umístění** | USA – východ | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
+   | **Umístění** | East US | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
 
 3. Vyberte **Vytvořit**.
 
@@ -60,7 +60,7 @@ Application Insights můžou shromažďovat data telemetrie z jakékoli aplikace
    npm install applicationinsights --save
    ```
 
-3. Upravte první soubor *. js* aplikace a přidejte dva řádky níže do nejvyšší části skriptu. Pokud používáte [aplikaci pro rychlý Start Node. js](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-nodejs), upravili byste soubor *index. js* . Nahraďte `<instrumentation_key>` klíčem instrumentace vaší aplikace. 
+3. Upravte první soubor *. js* aplikace a přidejte dva řádky níže do nejvyšší části skriptu. Pokud používáte [aplikaciNode.js pro rychlý Start](../../app-service/app-service-web-get-started-nodejs.md), upravili byste soubor *index.js* . Nahraďte `<instrumentation_key>` klíčem instrumentace vaší aplikace. 
 
    ```JavaScript
    const appInsights = require('applicationinsights');
@@ -82,7 +82,7 @@ Application Insights můžou shromažďovat data telemetrie z jakékoli aplikace
 
    ![Application Insights mapa aplikace](./media/nodejs-quick-start/azure-app-insights-application-map.png)
 
-3. Vyberte ![ikonu **Analýza** aplikace ikona mapa](./media/nodejs-quick-start/azure-app-insights-analytics-icon.png) aplikace **Zobrazit v části analýzy**.  Tato akce otevře **Application Insights Analytics**, která poskytuje bohatý dotazovací jazyk pro analýzu všech dat shromážděných pomocí Application Insights. V tomto případě jsme za vás vytvořili dotaz, který vykreslí počet požadavků ve formě grafu. Můžete psát své vlastní dotazy pro analýzu dalších dat.
+3. Vyberte ikonu **Analýza** aplikace ikona ![ Mapa aplikace ](./media/nodejs-quick-start/azure-app-insights-analytics-icon.png) **Zobrazit v části analýzy**.  Tato akce otevře **Application Insights Analytics**, která poskytuje bohatý dotazovací jazyk pro analýzu všech dat shromážděných pomocí Application Insights. V tomto případě jsme za vás vytvořili dotaz, který vykreslí počet požadavků ve formě grafu. Můžete psát své vlastní dotazy pro analýzu dalších dat.
 
    ![Grafy Application Insights Analytics](./media/nodejs-quick-start/azure-app-insights-analytics-queries.png)
 
@@ -116,7 +116,7 @@ Application Insights můžou shromažďovat data telemetrie z jakékoli aplikace
 
    ![Graf metrik Application Insights serveru](./media/nodejs-quick-start/azure-app-insights-server-metrics.png)
 
-Další informace o monitorování Node. js najdete v [další dokumentaci k AppInsights Node. js](../../azure-monitor/app/nodejs.md).
+Další informace o monitorování Node.js najdete v [další dokumentaci k Node.js AppInsights](../../azure-monitor/app/nodejs.md).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -131,4 +131,4 @@ Až budete s testováním hotovi, můžete odstranit skupinu prostředků a vše
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vyhledání a diagnostika potíží s výkonem](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)
+> [Vyhledání a diagnostika potíží s výkonem](../log-query/log-query-overview.md)

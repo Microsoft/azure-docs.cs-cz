@@ -16,12 +16,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bd19093034b4427d9e1b637a653a90e0568cddf
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 11d5c1bb133f0aea241fbc55f96ab5f8818e5ed6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223920"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518109"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Požadavky pro Azure AD Connect
 Toto téma popisuje předpoklady a požadavky na hardware pro Azure AD Connect.
@@ -34,7 +34,7 @@ Než nainstalujete Azure AD Connect, budete potřebovat několik věcí.
   * [Azure Portal](https://portal.azure.com).
   * [Portál Office](https://portal.office.com).  
 * [Přidejte a ověřte doménu](../active-directory-domains-add-azure-portal.md) , kterou plánujete použít ve službě Azure AD. Pokud například plánujete používat contoso.com pro uživatele, ujistěte se, že je tato doména ověřená a že nepoužíváte pouze výchozí doménu contoso.onmicrosoft.com.
-* Tenant Azure AD umožňuje standardně 50 tis objekty. Při ověřování domény se tento limit zvyšuje na 300k objekty. Pokud potřebujete ještě více objektů v Azure AD, musíte otevřít případ podpory, aby se tento limit ještě dál zvýšil. Pokud potřebujete více než 500 000 objekty, budete potřebovat licenci, jako je například Office 365, Azure AD Basic, Azure AD Premium nebo Enterprise mobility and Security.
+* Tenant Azure AD umožňuje standardně 50 tis objekty. Při ověřování domény se tento limit zvyšuje na 300k objekty. Pokud potřebujete ještě více objektů v Azure AD, musíte otevřít případ podpory, aby se tento limit ještě dál zvýšil. Pokud potřebujete více než 500 000 objekty, budete potřebovat licenci, jako je například Office 365, Azure AD Premium nebo Enterprise mobility and Security.
 
 ### <a name="prepare-your-on-premises-data"></a>Příprava místních dat
 * Použijte [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) k identifikaci chyb, jako jsou duplicity a problémy s formátováním v adresáři, ještě než se synchronizujete do Azure AD a Office 365.
@@ -56,7 +56,7 @@ Další informace o zabezpečení prostředí Active Directory najdete v tématu
 
 #### <a name="installation-prerequisites"></a>Instalační požadavky 
 
-- Azure AD Connect musí být nainstalované v doméně, která je připojená na Windows Serveru 2012 nebo novější. Důrazně doporučujeme, aby tento server byl řadič domény. 
+- Azure AD Connect musí být nainstalované v doméně, která je připojená na Windows Serveru 2012 nebo novější. 
 - Azure AD Connect nejde nainstalovat na Small Business Server nebo Windows Server Essentials před 2019 (podporuje se Windows Server Essentials 2019). Server musí používat Windows Server Standard nebo vyšší.  
 - Azure AD Connect Server musí mít nainstalované úplné grafické rozhraní (GUI). Instalace Azure AD Connect v jádru serveru Windows není podporovaná. 
 - Pokud ke správě konfigurace služby ADFS používáte Průvodce Azure AD Connect, Azure AD Connect Server nesmí mít povolený Zásady skupiny prostředí PowerShell přepis. Pokud ke správě konfigurace synchronizace používáte Azure AD Connect průvodce, můžete povolit PowerShellový přepis. 
@@ -130,7 +130,7 @@ Společnost Microsoft doporučuje posílit Azure AD Connect Server, aby se sní�
 Další informace najdete v tématu MSDN o [výchozím elementu proxy serveru](https://msdn.microsoft.com/library/kd3cf2ex.aspx).  
 Další informace o potížích s připojením najdete v tématu [řešení problémů s připojením](tshoot-connect-connectivity.md).
 
-### <a name="other"></a>Jiné
+### <a name="other"></a>Další
 * Volitelné: testovací uživatelský účet pro ověření synchronizace.
 
 ## <a name="component-prerequisites"></a>Předpoklady součásti

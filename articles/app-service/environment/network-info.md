@@ -4,15 +4,15 @@ description: Přečtěte si informace o síťovém provozu s MECHANISMem zabezpe
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 06/29/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 4aec7fa78292f224952dd2ae929d2b8bfd97ab9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10cb1149880c70d991dd5ab49acceab3283372a7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80477684"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517849"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Důležité aspekty sítí pro službu App Service Environment #
 
@@ -53,7 +53,7 @@ Při horizontálním navýšení nebo snížení kapacity se přidají nové rol
 
 K fungování pomocného mechanismu pro zpracování vyžaduje jenom následující porty, které se dají otevřít:
 
-| Použití | From | Akce |
+| Použití | Z | Záměr |
 |-----|------|----|
 | Správa | Adresy pro správu App Service | Podsíť pomocného mechanismu: 454, 455 |
 |  Interní komunikace prostřednictvím pomocného mechanismu | Podsíť pomocného mechanismu: všechny porty | Podsíť pomocného mechanismu: všechny porty
@@ -90,7 +90,7 @@ Služba pomocného mechanismu oznamuje přístup k Internetu adres na těchto po
 | NTP | 123 |
 | CRL, aktualizace Windows, závislosti Linux, služby Azure | 80/443 |
 | Azure SQL | 1433 | 
-| Sledování | 12000 |
+| Monitorování | 12000 |
 
 Odchozí závislosti jsou uvedené v dokumentu, který popisuje [uzamykání App Service Environment odchozích přenosů](./firewall-integration.md). Pokud přístupový modul pro přístup ztratí přístup k jeho závislostem, přestane fungovat. Pokud k tomu dojde dostatečně dlouho, pozastaví se pomocného mechanismu. 
 
@@ -109,7 +109,7 @@ Pokud změníte nastavení DNS virtuální sítě, ve které je váš přihláš
 Kromě funkčních závislostí pomocného mechanismu je několik dalších položek, které se týkají prostředí portálu. Některé funkce v Azure Portal závisí na přímém přístupu k _webu SCM_. Pro každou aplikaci v Azure App Service jsou k dispozici dvě adresy URL. První adresa URL má přístup k vaší aplikaci. Druhá adresa URL má přístup k webu SCM, který se také nazývá _Konzola Kudu_. K funkcím, které používají web SCM, patří:
 
 -   Web Jobs
--   Functions
+-   Funkce
 -   Streamování protokolů
 -   Kudu
 -   Rozšíření
@@ -153,18 +153,20 @@ Skupin zabezpečení sítě se dá nakonfigurovat přes Azure Portal nebo přes 
 Požadované položky v NSG, aby mohl funkce pomocného mechanismu provozu fungovat:
 
 **Příchozí**
-* ze značky služby IP AppServiceManagement na portech 454 455
-* z nástroje pro vyrovnávání zatížení na portu 16001
+* TCP ze značky služby IP AppServiceManagement na portech 454 455
+* TCP z nástroje pro vyrovnávání zatížení na portu 16001
 * z podsítě služby přihlašování do podsítě pomocného mechanismu na všech portech
 
 **Odchozí**
-* na všechny IP adresy na portu 123
-* na všechny IP adresy na portech 80, 443
-* na porty služby IP AzureSQL na portech 1433
-* na všechny IP adresy na portu 12000
+* UDP na všechny IP adresy na portu 123
+* TCP na všechny IP adresy na portech 80, 443
+* TCP ke značce služby IP AzureSQL na portech 1433
+* TCP na všechny IP adresy na portu 12000
 * do podsítě pomocného mechanismu pro všechny porty
 
-Port DNS není nutné přidávat, protože provoz do služby DNS není ovlivněn NSG pravidly. Tyto porty nezahrnují porty, které vaše aplikace vyžadují pro úspěšné použití. Standardní porty pro přístup k aplikacím:
+Tyto porty nezahrnují porty, které vaše aplikace vyžadují pro úspěšné použití. V takovém případě může být třeba, že vaše aplikace bude muset volat Server MySQL na portu 3306. port DNS, port 53, není nutné přidávat do služby DNS, protože není ovlivněný provoz NSG pravidly. Protokol NTP (Network Time Protocol) na portu 123 je protokol synchronizace času používaný operačním systémem. Koncové body NTP nejsou specifické pro App Services, se můžou lišit v závislosti na operačním systému a nejsou v dobře definovaném seznamu adres. Aby nedocházelo k problémům s synchronizací času, je nutné povolený provoz UDP na všechny adresy na portu 123. Odchozí přenos TCP na port 12000 je určen pro podporu a analýzu systému. Koncové body jsou dynamické a nejsou v dobře definované sadě adres.
+
+Standardní porty pro přístup k aplikacím:
 
 | Použití | Porty |
 |----------|-------------|
@@ -194,7 +196,7 @@ Vynucené tunelování je při nastavování tras ve virtuální síti, aby odch
 Při vytváření pomocného mechanismu na portálu vytvoříme také sadu směrovacích tabulek v podsíti, která je vytvořená pomocí pomocného mechanismu služby.  Tyto trasy jednoduše říkají odeslání odchozího provozu přímo na Internet.  
 Chcete-li vytvořit stejné trasy ručně, postupujte podle následujících kroků:
 
-1. Přejděte na web Azure Portal. Vyberte **sítě**  >  **směrovací tabulky**.
+1. Přejděte na Azure Portal. Vyberte **sítě**  >  **směrovací tabulky**.
 
 2. Vytvořte novou směrovací tabulku ve stejné oblasti, ve které je vaše virtuální síť.
 

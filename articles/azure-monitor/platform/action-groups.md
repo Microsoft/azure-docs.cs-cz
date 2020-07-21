@@ -1,18 +1,19 @@
 ---
-title: Vytváření a Správa skupin akcí v Azure Portal
+title: Vytváření a správa skupin akcí na webu Azure Portal
 description: Naučte se vytvářet a spravovat skupiny akcí v Azure Portal.
 author: dkamstra
 ms.topic: conceptual
-ms.date: 6/5/2020
+ms.date: 07/15/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: dbc810ad7227d9d47099fe85e89a92c8fa750302
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e88d51e014244892fc3ac9e2cca242dacdfd9997
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465248"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516171"
 ---
-# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytváření a Správa skupin akcí v Azure Portal
+# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytváření a správa skupin akcí na webu Azure Portal
 Skupina akcí je kolekce předvoleb oznámení definovaných vlastníkem předplatného Azure. Výstrahy Azure Monitor a Service Health pomocí skupin akcí upozorní uživatele na aktivaci výstrahy. Různé výstrahy můžou v závislosti na požadavcích uživatele používat stejnou skupinu akcí nebo různé skupiny akcí. V rámci předplatného můžete nakonfigurovat až 2 000 skupin akcí.
 
 Nakonfigurujete akci, která upozorní uživatele e-mailem nebo SMS, obdrží potvrzení oznamující, že byly přidány do skupiny akcí.
@@ -69,7 +70,7 @@ Po vytvoření skupiny akcí můžete zobrazit **skupiny akcí** tak, že vybere
 ## <a name="action-specific-information"></a>Informace specifické pro akci
 
 > [!NOTE]
-> V tématu [omezení služby předplatného pro monitorování](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-monitor-limits) pro číselná omezení u každé z níže uvedených položek.  
+> V tématu [omezení služby předplatného pro monitorování](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-monitor-limits) pro číselná omezení u každé z níže uvedených položek.  
 
 ### <a name="automation-runbook"></a>Runbook služby Automation
 Omezení pro datové části sady Runbook najdete v části [omezení služby předplatného Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md) .
@@ -87,7 +88,7 @@ E-maily budou odeslány z následujících e-mailových adres. Ujistěte se, že
 
 Ve skupině akcí můžete mít omezený počet e-mailových akcí. Podívejte se na článek [o omezení rychlosti](./../../azure-monitor/platform/alerts-rate-limiting.md) .
 
-### <a name="email-azure-resource-manager-role"></a>Poslání e-mailu roli Azure Resource Manageru
+### <a name="email-azure-resource-manager-role"></a>Poslat e-mail roli Azure Resource Manageru
 Odešlete e-mail členům role předplatného. E-mail se pošle jenom do členů této role pro **uživatele Azure AD** . E-mail se nepošle skupinám ani instančním objektům Azure AD.
 
 Ve skupině akcí můžete mít omezený počet e-mailových akcí. Podívejte se na článek [o omezení rychlosti](./../../azure-monitor/platform/alerts-rate-limiting.md) .
@@ -106,21 +107,21 @@ Ve skupině akcí můžete mít omezený počet ITSM akcí.
 Ve skupině akcí můžete mít omezený počet akcí aplikace logiky.
 
 ### <a name="secure-webhook"></a>Zabezpečený webhook
-Akce Webhooku skupin akcí vám umožní využít výhod Azure Active Directory k zabezpečení připojení mezi skupinou akcí a vaším chráněným webovým rozhraním API (koncový bod Webhooku). Celkový pracovní postup pro využití této funkce je popsaný níže. Přehled aplikací a instančních objektů služby Azure AD najdete v tématu [Přehled Microsoft Identity Platform (v 2.0)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview).
+Akce Webhooku skupin akcí vám umožní využít výhod Azure Active Directory k zabezpečení připojení mezi skupinou akcí a vaším chráněným webovým rozhraním API (koncový bod Webhooku). Celkový pracovní postup pro využití této funkce je popsaný níže. Přehled aplikací a instančních objektů služby Azure AD najdete v tématu [Přehled Microsoft Identity Platform (v 2.0)](../../active-directory/develop/v2-overview.md).
 
-1. Vytvořte aplikaci Azure AD pro vaše chráněné webové rozhraní API. Viz třída https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview.
-    - Nakonfigurujte chráněné rozhraní API, které bude volat aplikace typu démon.
+1. Vytvořte aplikaci Azure AD pro vaše chráněné webové rozhraní API. Viz [chráněné webové rozhraní API: registrace aplikace](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration).
+    - Nakonfigurujte chráněné rozhraní API, které bude [volat aplikace typu démon](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#if-your-web-api-is-called-by-a-daemon-app).
     
-1. Povolením použití skupin akcí v aplikaci Azure AD.
+2. Povolením použití skupin akcí v aplikaci Azure AD.
 
     > [!NOTE]
-    > Abyste mohli tento skript spustit, musíte být členem [role Správce aplikací Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) .
+    > Abyste mohli tento skript spustit, musíte být členem [role Správce aplikací Azure AD](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles) .
     
     - Pokud chcete použít ID tenanta Azure AD, upravte volání Connect-AzureAD skriptu PowerShellu.
     - Upravte $myAzureADApplicationObjectId proměnné skriptu PowerShellu tak, aby používala ID objektu vaší aplikace služby Azure AD.
     - Spusťte upravený skript.
     
-1. Nakonfigurujte akci zabezpečeného Webhooku skupiny akcí.
+3. Nakonfigurujte akci zabezpečeného Webhooku skupiny akcí.
     - Zkopírujte hodnotu $myApp. ObjectId ze skriptu a zadejte ji do pole ID objektu aplikace v definici akce Webhooku.
     
     ![Akce zabezpečení Webhooku](./media/action-groups/action-groups-secure-webhook.png)
@@ -252,4 +253,4 @@ Ve skupině akcí můžete mít omezený počet akcí Webhooku.
 * Přečtěte si další informace o [konektoru ITSM](../../azure-monitor/platform/itsmc-overview.md).
 * Přečtěte si další informace o [omezování četnosti](../../azure-monitor/platform/alerts-rate-limiting.md) výstrah.
 * Získejte [Přehled výstrah protokolu aktivit](../../azure-monitor/platform/alerts-overview.md)a Naučte se přijímat výstrahy.  
-* Naučte se [konfigurovat výstrahy pokaždé, když se publikuje oznámení o stavu služby](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+* Naučte se [konfigurovat výstrahy pokaždé, když se publikuje oznámení o stavu služby](../../service-health/alerts-activity-log-service-notifications-portal.md).

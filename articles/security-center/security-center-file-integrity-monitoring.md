@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: c58f70126c72a84b09f6eadc251949a0f0021657
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3006bdd0cb90c22123c8db103a12ef3c0bee75a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84628296"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519333"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Monitorování integrity souborů ve službě Azure Security Center
 Naučte se konfigurovat monitorování integrity souborů (FIM) v Azure Security Center pomocí tohoto návodu.
@@ -107,7 +108,7 @@ Pro každý pracovní prostor jsou k dispozici následující informace:
 Pro pracovní prostor můžete zobrazit také následující tlačítka:
 
 - ![Ikona povolit][3] Indikuje, že produkt FIM není pro tento pracovní prostor povolený. Výběr pracovního prostoru vám umožní povolit FIM na všech počítačích v pracovním prostoru.
-- ![Ikona plán upgradu ][4] indikuje, že pracovní prostor nebo předplatné neběží na úrovni Standard Security Center. Aby bylo možné používat funkci FIM, musí vaše předplatné běžet standardně.  Výběr pracovního prostoru vám umožní upgradovat na úroveň Standard. Další informace o úrovni Standard a o tom, jak upgradovat, najdete v tématu [upgrade na úroveň Security Center úrovně Standard pro zvýšení zabezpečení](security-center-pricing.md).
+- ![Ikona plán upgradu ][4] indikuje, že pracovní prostor nebo předplatné neběží na úrovni standard Security Center. Aby bylo možné používat funkci FIM, musí vaše předplatné běžet standardně.  Výběr pracovního prostoru vám umožní upgradovat na úroveň Standard. Další informace o úrovni Standard a o tom, jak upgradovat, najdete v tématu [upgrade na úroveň Security Center úrovně Standard pro zvýšení zabezpečení](security-center-pricing.md).
 - Prázdné (žádné tlačítko) znamená, že je v pracovním prostoru už povolený produkt FIM.
 
 V části **monitorování integrity souborů**můžete vybrat pracovní prostor, pro který chcete povolit FIM pro tento pracovní prostor, zobrazit řídicí panel monitorování integrity souborů pro daný pracovní prostor nebo [upgradovat](security-center-pricing.md) pracovní prostor na úroveň Standard.
@@ -194,7 +195,7 @@ V části **Upravit pro Change Tracking** můžete:
 
    ![Přidat novou položku, která se má monitorovat][14]
 
-3. Vyberte možnost **Přidat**. Otevře se okno **Přidat pro Change Tracking** .
+3. Vyberte **Přidat**. Otevře se okno **Přidat pro Change Tracking** .
 
    ![Zadejte požadované informace.][15]
 

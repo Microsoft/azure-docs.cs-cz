@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 7db7e64840d248b66a61ff310f9441800e1afc31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 091555bac780f3abc7089d6214d0f9a8cfbf98cd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253218"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518432"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>Použití podmínky umístění v zásadách podmíněného přístupu 
 
@@ -91,7 +91,7 @@ U mobilních a desktopových aplikací, které mají dlouhodobé životnosti rel
 
 Pokud dojde k selhání obou kroků, bude uživatel považován za již nepřipojený k důvěryhodné IP adrese.
 
-## <a name="preview-features"></a>Funkce Preview
+## <a name="preview-features"></a>Funkce ve verzi Preview
 
 Kromě všeobecně dostupné funkce pojmenovaného umístění existuje také pojmenované umístění (Preview). K tomuto ukázkovému umístění můžete přistupovat pomocí nápisu v horní části okna aktuálně pojmenovaného umístění.
 
@@ -194,7 +194,7 @@ Pokud je cloudový proxy server, je možné použít zásadu, která vyžaduje z
 
 ### <a name="api-support-and-powershell"></a>Podpora rozhraní API a prostředí PowerShell
 
-Rozhraní API a PowerShell ještě nejsou pro pojmenovaná umístění podporovaná.
+K dispozici je verze Preview Graph API pro pojmenovaná umístění, další informace najdete v tématu [rozhraní API pro namedLocation](/graph/api/resources/namedlocation?view=graph-rest-beta).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,11 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: 6829efa007e9e67866bdc0efbca4d095155c35e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f752604b86634948954dd670d0b7f4edb5b3e2be
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82889707"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517871"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Stav back-endu a diagnostické protokoly pro Application Gateway
 
@@ -155,9 +156,11 @@ Azure ve výchozím nastavení generuje protokol aktivit. Protokoly se uchováva
 
 ### <a name="access-log"></a>Přístup k protokolu
 
-Protokol přístupu se vygeneruje jenom v případě, že jste ho povolili na každé instanci Application Gateway, jak je popsáno v předchozích krocích. Data se ukládají do účtu úložiště, který jste zadali při povolování protokolování. Každý přístup k Application Gateway je protokolován ve formátu JSON, jak je znázorněno v následujícím příkladu pro V1:
+Protokol přístupu se vygeneruje jenom v případě, že jste ho povolili na každé instanci Application Gateway, jak je popsáno v předchozích krocích. Data se ukládají do účtu úložiště, který jste zadali při povolování protokolování. Každý přístup k Application Gateway je protokolován ve formátu JSON, jak je znázorněno níže. 
 
-|Hodnota  |Description  |
+#### <a name="for-application-gateway-standard-and-waf-sku-v1"></a>Pro Application Gateway Standard a WAF SKU (V1)
+
+|Hodnota  |Popis  |
 |---------|---------|
 |instanceId     | Application Gateway instance, která zpracovala požadavek.        |
 |IP adresa klienta     | Původní IP adresa pro požadavek.        |
@@ -172,7 +175,7 @@ Protokol přístupu se vygeneruje jenom v případě, že jste ho povolili na ka
 |sentBytes| Velikost odeslaného paketu (v bajtech).|
 |timeTaken| Doba (v milisekundách), kterou vyžaduje zpracování žádosti a odpověď, která má být odeslána. Počítá se jako interval od času, kdy Application Gateway přijme první bajt požadavku HTTP do doby, kdy se dokončí operace odeslání odpovědi. Je důležité si uvědomit, že časové pole obvykle zahrnuje dobu, po kterou se pakety požadavků a odpovědí cestují po síti. |
 |sslEnabled| Zda komunikace s back-end fondy používala protokol TLS/SSL. Platné hodnoty jsou zapnuté a vypnuté.|
-|host| Název hostitele, se kterým se odeslal požadavek na back-end Server. Pokud je přepsán back-end hostname, tento název bude odpovídat.|
+|Hostitel| Název hostitele, se kterým se odeslal požadavek na back-end Server. Pokud je přepsán back-end hostname, tento název bude odpovídat.|
 |originalHost| Název hostitele, se kterým Application Gateway požadavek přijal z klienta.|
 ```json
 {
@@ -199,9 +202,9 @@ Protokol přístupu se vygeneruje jenom v případě, že jste ho povolili na ka
     }
 }
 ```
-V případě Application Gateway a WAF v2 se v protokolech zobrazí další informace:
+#### <a name="for-application-gateway-and-waf-v2-sku"></a>Pro Application Gateway a SKU WAF v2
 
-|Hodnota  |Description  |
+|Hodnota  |Popis  |
 |---------|---------|
 |instanceId     | Application Gateway instance, která zpracovala požadavek.        |
 |IP adresa klienta     | Původní IP adresa pro požadavek.        |
@@ -220,7 +223,10 @@ V případě Application Gateway a WAF v2 se v protokolech zobrazí další info
 |serverRouted| Back-end Server, na který Aplikační brána směruje požadavek.|
 |serverStatus| Stavový kód HTTP back-end serveru.|
 |serverResponseLatency| Latence odpovědi ze serveru back-end.|
-|host| Adresa uvedená v hlavičce hostitele žádosti.|
+|Hostitel| Adresa uvedená v hlavičce hostitele žádosti. Pokud je přepsáno, toto pole obsahuje aktualizovaný název hostitele.|
+|originalRequestUriWithArgs| Toto pole obsahuje původní adresu URL požadavku. |
+|requestUri| Toto pole obsahuje adresu URL po operaci přepsání u Application Gateway |
+|originalHost| Toto pole obsahuje původní název hostitele žádosti.
 ```json
 {
     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
@@ -255,13 +261,13 @@ V případě Application Gateway a WAF v2 se v protokolech zobrazí další info
 Protokol výkonu je vygenerován pouze v případě, že jste jej povolili na každé instanci Application Gateway, jak je popsáno v předchozích krocích. Data se ukládají do účtu úložiště, který jste zadali při povolování protokolování. Data protokolu výkonu se generují v intervalu 1 minuty. Je k dispozici pouze pro SKU v1. Pro SKU v2 použijte [metriky](application-gateway-metrics.md) pro data výkonu. Zaprotokolují se následující data:
 
 
-|Hodnota  |Description  |
+|Hodnota  |Popis  |
 |---------|---------|
 |instanceId     |  Instance Application Gateway, pro kterou se generují údaje o výkonu. Pro aplikační bránu s více instancemi je k dispozici jeden řádek na instanci.        |
 |healthyHostCount     | Počet v nefunkčních hostitelích ve fondu back-end.        |
 |unHealthyHostCount     | Počet nezdravých hostitelů ve fondu back-end.        |
 |requestCount     | Počet zpracovaných požadavků.        |
-|latence | Průměrná latence (v milisekundách) požadavků z instance do back-endu, který obsluhuje požadavky. |
+|Latence | Průměrná latence (v milisekundách) požadavků z instance do back-endu, který obsluhuje požadavky. |
 |failedRequestCount| Počet neúspěšných žádostí|
 |throughput| Průměrná propustnost od posledního protokolu měřená v bajtech za sekundu|
 
@@ -292,7 +298,7 @@ Protokol výkonu je vygenerován pouze v případě, že jste jej povolili na ka
 Protokol brány firewall je vygenerován pouze v případě, že jste jej povolili pro každou bránu aplikace, jak je popsáno v předchozích krocích. Tento protokol také vyžaduje, aby byla na aplikační bráně nakonfigurovaná brána firewall webových aplikací. Data se ukládají do účtu úložiště, který jste zadali při povolování protokolování. Zaprotokolují se následující data:
 
 
-|Hodnota  |Description  |
+|Hodnota  |Popis  |
 |---------|---------|
 |instanceId     | Instance Application Gateway, pro kterou se generují data brány firewall. Pro aplikační bránu s více instancemi je k dispozici jeden řádek na instanci.         |
 |IP adresa klienta     |   Původní IP adresa pro požadavek.      |
@@ -302,7 +308,7 @@ Protokol brány firewall je vygenerován pouze v případě, že jste jej povoli
 |ruleSetVersion     | Použitá verze sady pravidel Dostupné hodnoty jsou 2.2.9 a 3,0.     |
 |ruleId     | ID pravidla události triggeru        |
 |zpráva     | Uživatelsky přívětivá zpráva pro aktivační událost. Další podrobnosti najdete v části Podrobnosti.        |
-|action     |  Akce prováděná na žádosti Dostupné hodnoty se shodují a zablokují.      |
+|akce     |  Akce prováděná na žádosti Dostupné hodnoty se shodují a zablokují.      |
 |webovém     | Lokalita, pro kterou se protokol vygeneroval. V současné době se v seznamu zobrazí pouze globální, protože pravidla jsou globální.|
 |zobrazí     | Podrobnosti události aktivace.        |
 |Podrobnosti. zpráva     | Popis pravidla        |

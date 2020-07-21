@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: c864a9cc5dd5658bcb3205ce2cbe4f6142cf45a1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 70ffe0bb98e89babe2f5998ee66666dd5368f7f2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255485"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518041"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrace do služby Azure Kubernetes (AKS)
 
@@ -51,7 +51,7 @@ AKS je spravovaná služba, která nabízí jedinečné možnosti s nižšími n
 
 Pro zajištění funkcí, jako je [více fondů uzlů](./use-multiple-node-pools.md), [zóny dostupnosti](../availability-zones/az-overview.md), [autorizovaných rozsahů IP adres](./api-server-authorized-ip-ranges.md), [automatického škálování clusteru](./cluster-autoscaler.md), [Azure Policy pro AKS](../governance/policy/concepts/policy-for-kubernetes.md)a dalších nových funkcí, doporučujeme používat clustery AKS, které jsou založené na [Virtual Machine Scale Sets](../virtual-machine-scale-sets/index.yml) a [Azure Standard Load Balancer](./load-balancer-standard.md) .
 
-AKS clustery zajištěné [sadami dostupnosti virtuálních počítačů](../virtual-machine-scale-sets/availability.md#availability-sets) neobsahují podporu pro mnohé z těchto funkcí.
+AKS clustery zajištěné [sadami dostupnosti virtuálních počítačů](../virtual-machines/availability.md#availability-sets) neobsahují podporu pro mnohé z těchto funkcí.
 
 Následující příklad vytvoří cluster AKS s jediným fondem uzlů zálohovaným sadou škálování virtuálního počítače. Používá standardní nástroj pro vyrovnávání zatížení. Povoluje taky automatické škálování clusteru ve fondu uzlů pro cluster a nastavuje minimálně *1* a maximálně *3* uzly:
 
@@ -79,7 +79,7 @@ Při migraci clusterů máte pravděpodobně připojené externí služby Azure.
 * Log Analytics
 * Application Insights
 * Traffic Manager
-* Storage Account (Účet úložiště)
+* Účet úložiště
 * Externí databáze
 
 ## <a name="ensure-valid-quotas"></a>Zajištění platných kvót
@@ -121,7 +121,7 @@ Pokud používáte Azure Managed Disks, můžete disk připojit pouze v případ
 Pokud ani jeden z těchto přístupů nefunguje, můžete použít možnosti zálohování a obnovení:
 * [Velero v Azure](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
 
-#### <a name="azure-files"></a>Azure Files
+#### <a name="azure-files"></a>Soubory Azure
 
 Na rozdíl od disků je možné soubory Azure připojit k více hostitelům současně. V clusteru AKS vám Azure a Kubernetes nebrání v vytváření pod tím, že váš cluster ACS stále používá. Aby nedošlo ke ztrátě dat a neočekávanému chování, zajistěte, aby clustery nepsaly do stejných souborů současně.
 

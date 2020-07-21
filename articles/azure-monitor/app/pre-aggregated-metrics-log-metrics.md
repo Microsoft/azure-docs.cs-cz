@@ -6,11 +6,12 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 30487eebed361e5b010df023a9b1a44f96590b14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9aba1e5b469e04c6c6d047f78cd202a073e5a769
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81271076"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516936"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Metriky založené na protokolech a předem agregované metriky ve službě Application Insights
 
@@ -22,14 +23,14 @@ Až do poslední doby, datový model telemetrie monitorování aplikací v Appli
 
 Použití protokolů k uchování kompletní sady událostí může přinést skvělou analytickou a diagnostickou hodnotu. Můžete například získat přesný počet požadavků na konkrétní adresu URL s počtem různých uživatelů, kteří provedli tato volání. Nebo můžete získat podrobné trasování diagnostiky, včetně výjimek a volání závislostí pro jakoukoli relaci uživatele. Tento typ informací může významně zlepšit viditelnost stavu a využití aplikací, což umožňuje zkrátit dobu potřebnou k diagnostice problémů s aplikací.
 
-Současně může být shromažďování kompletní sady událostí pro aplikace, které generují velký objem telemetrie, nepraktické (nebo dokonce nemožné). V situacích, kdy je objem událostí příliš vysoký, Application Insights implementuje několik technik snižování objemu telemetrie, jako je [vzorkování](https://docs.microsoft.com/azure/application-insights/app-insights-sampling) a [filtrování](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling) , které omezují počet shromážděných a uložených událostí. Snížení počtu uložených událostí ale také snižuje přesnost metrik, které se na pozadí musí provádět v agregacích událostí uložených v protokolech.
+Současně může být shromažďování kompletní sady událostí pro aplikace, které generují velký objem telemetrie, nepraktické (nebo dokonce nemožné). V situacích, kdy je objem událostí příliš vysoký, Application Insights implementuje několik technik snižování objemu telemetrie, jako je [vzorkování](./sampling.md) a [filtrování](./api-filtering-sampling.md) , které omezují počet shromážděných a uložených událostí. Snížení počtu uložených událostí ale také snižuje přesnost metrik, které se na pozadí musí provádět v agregacích událostí uložených v protokolech.
 
 > [!NOTE]
 > V Application Insights metriky založené na agregačních událostech událostí a měřeních uložených v protokolech se nazývají metriky založené na protokolech. Tyto metriky mají obvykle mnoho dimenzí z vlastností události, které jsou pro analýzu nadřazené, ale přesnost těchto metrik je negativně ovlivněna vzorkováním a filtrováním.
 
 ## <a name="pre-aggregated-metrics"></a>Předem agregované metriky
 
-Kromě metrik založených na protokolu v 2018 se tým Application Insights dodal ve verzi Public Preview metrik, které jsou uložené ve specializovaném úložišti, které je optimalizované pro časové řady. Nové metriky se už neuchovávají jako jednotlivé události s velkým množstvím vlastností. Místo toho jsou uloženy jako předem agregované časové řady a pouze s dimenzemi Key. Díky tomu jsou nové metriky nadřazené době dotazu: načítání dat je mnohem rychlejší a vyžaduje méně výpočetní výkon. V důsledku toho to umožňuje nové scénáře, jako je například [upozorňování téměř v reálném čase, u dimenzí metrik](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts), rychlejších [řídicích panelů](https://docs.microsoft.com/azure/azure-monitor/app/overview-dashboard)a dalších.
+Kromě metrik založených na protokolu v 2018 se tým Application Insights dodal ve verzi Public Preview metrik, které jsou uložené ve specializovaném úložišti, které je optimalizované pro časové řady. Nové metriky se už neuchovávají jako jednotlivé události s velkým množstvím vlastností. Místo toho jsou uloženy jako předem agregované časové řady a pouze s dimenzemi Key. Díky tomu jsou nové metriky nadřazené době dotazu: načítání dat je mnohem rychlejší a vyžaduje méně výpočetní výkon. V důsledku toho to umožňuje nové scénáře, jako je například [upozorňování téměř v reálném čase, u dimenzí metrik](../platform/alerts-metric-near-real-time.md), rychlejších [řídicích panelů](./overview-dashboard.md)a dalších.
 
 > [!IMPORTANT]
 > V Application Insights existují i předem agregované metriky založené na protokolu a. Pro odlišení těchto dvou Application Insights v uživatelském prostředí předběžně agregované metriky nyní označují "Standardní metriky (Preview)", zatímco tradiční metriky z událostí byly přejmenovány na "metriky založené na protokolu".
@@ -38,17 +39,17 @@ Novější sady SDK ([Application Insights 2,7](https://www.nuget.org/packages/M
 
 Pro sady SDK, které neimplementují předagregační (to znamená starší verze sady Application Insights SDK nebo instrumentace prohlížeče) Application Insights back-end stále naplní nové metriky agregací událostí přijatých koncovým bodem shromažďování událostí Application Insights. To znamená, že i když nebudete využívat redukovaný objem dat přenášených po síti, můžete stále používat předem agregované metriky a využívat lepší výkon a podporu pro multidimenzionální upozorňování v reálném čase pomocí sad SDK, které během shromažďování nemají předem agregované metriky.
 
-Je třeba uvést, že koncový bod kolekce před pokračováním vzorkování předem agreguje události, což znamená, že [vzorkování](https://docs.microsoft.com/azure/application-insights/app-insights-sampling) ingest nebude nikdy ovlivňovat přesnost předagregovaných metrik bez ohledu na verzi sady SDK, kterou používáte spolu s vaší aplikací.  
+Je třeba uvést, že koncový bod kolekce před pokračováním vzorkování předem agreguje události, což znamená, že [vzorkování](./sampling.md) ingest nebude nikdy ovlivňovat přesnost předagregovaných metrik bez ohledu na verzi sady SDK, kterou používáte spolu s vaší aplikací.  
 
 ## <a name="using-pre-aggregation-with-application-insights-custom-metrics"></a>Použití předagregačních s Application Insights vlastními metrikami
 
 Můžete použít předběžnou agregaci s vlastními metrikami. Tyto dvě hlavní výhody jsou možností konfigurace a upozornění na dimenzi vlastní metriky a snížení objemu dat odesílaných ze sady SDK do koncového bodu kolekce Application Insights.
 
-Existuje několik [způsobů, jak odesílat vlastní metriky ze sady SDK Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics). Pokud vaše verze sady SDK nabízí metody [getmetric a TrackValue](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#getmetric) , jedná se o preferovaný způsob, jak odesílat vlastní metriky, protože v tomto případě předagregace probíhá v rámci sady SDK, nejen zmenšuje objem dat uložených v Azure, ale také objem dat přenesených ze sady sdk do Application Insights. V opačném případě použijte metodu [trackMetric](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackmetric) , která bude během příjmu dat předem agregovat události metriky.
+Existuje několik [způsobů, jak odesílat vlastní metriky ze sady SDK Application Insights](./api-custom-events-metrics.md). Pokud vaše verze sady SDK nabízí metody [getmetric a TrackValue](./api-custom-events-metrics.md#getmetric) , jedná se o preferovaný způsob, jak odesílat vlastní metriky, protože v tomto případě předagregace probíhá v rámci sady SDK, nejen zmenšuje objem dat uložených v Azure, ale také objem dat přenesených ze sady sdk do Application Insights. V opačném případě použijte metodu [trackMetric](./api-custom-events-metrics.md#trackmetric) , která bude během příjmu dat předem agregovat události metriky.
 
 ## <a name="custom-metrics-dimensions-and-pre-aggregation"></a>Vlastní metriky dimenzí a předběžné agregace
 
-Všechny metriky, které odesíláte pomocí volání [trackMetric](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackmetric) nebo [Getmetric a TrackValue](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#getmetric) API, se automaticky ukládají do obou protokolů a úložišť metrik. Nicméně zatímco verze vlastní metriky založené na protokolech vždycky uchovává všechny dimenze, předem agregovaná verze metriky se ve výchozím nastavení uloží bez dimenzí. Můžete zapnout shromažďování dimenzí vlastních metrik na kartě [využití a odhadované náklady](https://docs.microsoft.com/azure/application-insights/app-insights-pricing) zaškrtnutím možnosti Povolit upozorňování u vlastních dimenzí metriky: 
+Všechny metriky, které odesíláte pomocí volání [trackMetric](./api-custom-events-metrics.md#trackmetric) nebo [Getmetric a TrackValue](./api-custom-events-metrics.md#getmetric) API, se automaticky ukládají do obou protokolů a úložišť metrik. Nicméně zatímco verze vlastní metriky založené na protokolech vždycky uchovává všechny dimenze, předem agregovaná verze metriky se ve výchozím nastavení uloží bez dimenzí. Můžete zapnout shromažďování dimenzí vlastních metrik na kartě [využití a odhadované náklady](./pricing.md) zaškrtnutím možnosti Povolit upozorňování u vlastních dimenzí metriky: 
 
 ![Využití a odhadované náklady](./media/pre-aggregated-metrics-log-metrics/001-cost.png)
 
@@ -64,11 +65,11 @@ Pomocí [Azure Monitor Průzkumník metrik](../platform/metrics-getting-started.
 
 ## <a name="pricing-models-for-application-insights-metrics"></a>Cenové modely pro Application Insights metriky
 
-Ingestování metrik do Application Insights, ať už na základě protokolu nebo předem agregované, vygeneruje náklady na základě velikosti přijatých dat, jak je popsáno [zde](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model). Vaše vlastní metriky, včetně všech jejích rozměrů, se vždycky ukládají do úložiště Application Insightsho protokolu. Kromě toho je ve výchozím nastavení předávána předem agregovaná verze vlastních metrik (bez dimenzí) do úložiště metrik.
+Ingestování metrik do Application Insights, ať už na základě protokolu nebo předem agregované, vygeneruje náklady na základě velikosti přijatých dat, jak je popsáno [zde](./pricing.md#pricing-model). Vaše vlastní metriky, včetně všech jejích rozměrů, se vždycky ukládají do úložiště Application Insightsho protokolu. Kromě toho je ve výchozím nastavení předávána předem agregovaná verze vlastních metrik (bez dimenzí) do úložiště metrik.
 
 Když vyberete možnost [Povolit upozorňování u vlastních dimenzí metriky](#custom-metrics-dimensions-and-pre-aggregation) a uložíte tak všechny dimenze předagregované metriky v úložišti metrik, může se vygenerovat **Další** náklady na základě [vlastních cen metrik](https://azure.microsoft.com/pricing/details/monitor/).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Upozorňování téměř v reálném čase](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts)
-* [Getmetric a TrackValue](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#getmetric)
+* [Upozorňování téměř v reálném čase](../platform/alerts-metric-near-real-time.md)
+* [Getmetric a TrackValue](./api-custom-events-metrics.md#getmetric)

@@ -3,11 +3,12 @@ title: Inteligentní zjišťování v Azure Application Insights | Microsoft Doc
 description: Application Insights provádí automatickou hloubkovou analýzu telemetrie aplikací a upozorňuje na potenciální problémy.
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: b7fecf886515780858ecc503a29be3bd76b73c3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad6580a0a62d331a7851c47d71b46d3ea6c81468
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83700837"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516868"
 ---
 # <a name="smart-detection-in-application-insights"></a>Inteligentní zjišťování v Application Insights
  Inteligentní zjišťování vás automaticky upozorní na potenciální problémy s výkonem a anomálie při selhání ve vaší webové aplikaci. Provádí proaktivní analýzu telemetrie, kterou vaše aplikace odesílá [Application Insights](../../azure-monitor/app/app-insights-overview.md). Pokud dojde k náhlému nárůstu sazeb za selhání nebo abnormálních vzorů v výkonu klienta nebo serveru, zobrazí se upozornění. Tato funkce nepotřebuje žádnou konfiguraci. Funguje, pokud vaše aplikace posílá dostatek telemetrie.
@@ -33,7 +34,7 @@ Inteligentní zjišťování detekuje a upozorňuje na nejrůznější problémy
 
 * [Inteligentní zjišťování – anomálie selhání](../../azure-monitor/app/proactive-failure-diagnostics.md). Machine Learning používáme k nastavení očekávané míry neúspěšných žádostí pro vaši aplikaci a koreluje se zatížením a dalšími faktory. Pokud je míra selhání mimo očekávanou obálku, pošleme vám upozornění.
 * [Inteligentní zjišťování – anomálie výkonu](../../azure-monitor/app/proactive-performance-diagnostics.md). Obdržíte oznámení v případě, že doba odezvy operace nebo trvání závislosti zpomaluje v porovnání s historickým směrným plánem nebo pokud identifikujeme vzor neobvyklé v době odezvy nebo v době načítání stránky.   
-* Obecné degradace a problémy, jako je například [degradace trasování](https://docs.microsoft.com/azure/azure-monitor/app/proactive-trace-severity), [nevracení paměti](https://docs.microsoft.com/azure/azure-monitor/app/proactive-potential-memory-leak), [neobvyklé zvýšení objemu výjimek](https://docs.microsoft.com/azure/azure-monitor/app/proactive-exception-volume) a [antipatterny zabezpečení](https://docs.microsoft.com/azure/azure-monitor/app/proactive-application-security-detection-pack).
+* Obecné degradace a problémy, jako je například [degradace trasování](./proactive-trace-severity.md), [nevracení paměti](./proactive-potential-memory-leak.md), [neobvyklé zvýšení objemu výjimek](./proactive-exception-volume.md) a [antipatterny zabezpečení](./proactive-application-security-detection-pack.md).
 
 (Odkazy na Help v jednotlivých oznámeních vás převezmou na příslušné články.)
 
@@ -43,7 +44,7 @@ Všechna pravidla inteligentního zjišťování s výjimkou pravidel označený
 
 Konfigurace e-mailových oznámení pro konkrétní pravidlo inteligentního zjišťování se dá udělat tak, že otevřete okno **Nastavení** inteligentního zjišťování a vyberete pravidlo, ve kterém se otevře okno **Upravit pravidlo** .
 
-Alternativně můžete změnit konfiguraci pomocí Azure Resource Manager šablon. Další podrobnosti [najdete v tématu Správa pravidel inteligentního vyhledávání Application Insights pomocí šablon Azure Resource Manager](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config) .
+Alternativně můžete změnit konfiguraci pomocí Azure Resource Manager šablon. Další podrobnosti [najdete v tématu Správa pravidel inteligentního vyhledávání Application Insights pomocí šablon Azure Resource Manager](./proactive-arm-config.md) .
 
 ## <a name="video"></a>Video
 
@@ -60,4 +61,3 @@ Inteligentní zjišťování je zcela automatické. Možná byste ale chtěli na
 
 * [Ručně nakonfigurované výstrahy metriky](../../azure-monitor/platform/alerts-log.md)
 * [Testy dostupnosti webu](../../azure-monitor/app/monitor-web-app-availability.md) 
-

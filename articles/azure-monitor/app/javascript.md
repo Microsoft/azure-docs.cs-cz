@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: f198e4aac08039eb7aed8468e6adb45b5b0d67b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b3d489477a0ee0cc201d4383b5ed960de515c7d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84464568"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517106"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
 
@@ -103,7 +104,7 @@ Každá možnost konfigurace je uvedená výše na novém řádku, pokud nechcet
 
 Dostupné možnosti konfigurace jsou 
 
-| Name | Typ | Description
+| Název | Typ | Popis
 |------|------|----------------
 | src | řetězec **[povinné]** | Úplná adresa URL, ze které se má načíst sada SDK Tato hodnota se používá pro atribut src dynamicky přidávaného &lt; skriptu nebo &gt; značky. Můžete použít veřejné umístění CDN nebo vlastní soukromý hostovaný.
 | name | řetězec *[nepovinné]* | Globální název inicializované sady SDK, výchozí hodnota je appInsights. Proto ```window.appInsights``` bude odkaz na inicializovaná instanci. Poznámka: Pokud zadáte hodnotu názvu nebo předchozí instanci, která má být přiřazena (prostřednictvím globálního názvu appInsightsSDK), bude tato hodnota názvu také definována v globálním oboru názvů jako ```window.appInsightsSDK=<name value>``` , to je vyžadováno inicializačním kódem sady SDK, aby bylo zajištěno, že se inicializuje a aktualizuje správné kostry fragmentů a metod proxy.
@@ -114,7 +115,7 @@ Dostupné možnosti konfigurace jsou
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>Posílání telemetrie do Azure Portal
 
-Ve výchozím nastavení Application Insights JavaScript SDK automaticky shromáždí řadu položek telemetrie, které jsou užitečné při určování stavu aplikace a podkladového uživatelského prostředí. Tady jsou některé z nich:
+Ve výchozím nastavení Application Insights JavaScript SDK automaticky shromáždí řadu položek telemetrie, které jsou užitečné při určování stavu aplikace a podkladového uživatelského prostředí. Mezi ně patří:
 
 - **Nezachycené výjimky** v aplikaci, včetně informací o
     - Trasování zásobníku
@@ -152,7 +153,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Konfigurace
 Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na hodnotu false. Všechna pole jsou volitelná s výjimkou `instrumentationKey` .
 
-| Name | Výchozí | Description |
+| Název | Výchozí | Popis |
 |------|---------|-------------|
 | instrumentationKey | null | **Požadováno**<br>Klíč instrumentace, který jste získali z Azure Portal. |
 | accountId | null | Volitelné ID účtu, pokud vaše aplikace seskupí uživatele na účty. Žádné mezery, čárky, středníky, rovny nebo svislé čáry |
@@ -185,14 +186,14 @@ Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na ho
 | isBeaconApiDisabled | true | Pokud má hodnotu false, SDK pošle veškerou telemetrii pomocí [rozhraní Beacon API](https://www.w3.org/TR/beacon) . |
 | onunloadDisableBeacon | false (nepravda) | Výchozí hodnota je false. Když se karta zavře, SDK pošle veškerou zbývající telemetrii pomocí [rozhraní API pro maják](https://www.w3.org/TR/beacon) . |
 | sdkExtension | null | Nastaví název rozšíření sady SDK. Jsou povoleny pouze abecední znaky. Název rozšíření se přidá jako předpona do značky AI. Internal. sdkVersion (například ' ext_javascript: 2.0.0 '). Výchozí hodnota je null. |
-| isBrowserLinkTrackingEnabled | false (nepravda) | Výchozí hodnota je false. Pokud má hodnotu true, SDK bude sledovat všechny požadavky na [propojení prohlížeče](https://docs.microsoft.com/aspnet/core/client-side/using-browserlink) . |
+| isBrowserLinkTrackingEnabled | false (nepravda) | Výchozí hodnota je false. Pokud má hodnotu true, SDK bude sledovat všechny požadavky na [propojení prohlížeče](/aspnet/core/client-side/using-browserlink) . |
 | appId | null | AppId se používá pro korelaci mezi závislostmi AJAX, které probíhají na straně klienta s požadavky na straně serveru. Pokud je zapnuté rozhraní API pro signalizaci, nedá se použít automaticky, ale v konfiguraci je možné ho nastavit ručně. Výchozí hodnota je null. |
 | enableCorsCorrelation | false (nepravda) | V případě hodnoty true SDK přidá dvě hlavičky (' Request-ID ' a ' Request-Context ') do všech požadavků CORS ke sladění odchozích závislostí AJAX s odpovídajícími požadavky na straně serveru. Výchozí hodnota je false. |
 | namePrefix | nedefinované | Volitelná hodnota, která bude použita jako přípona názvu pro localStorage a název souboru cookie.
 | enableAutoRouteTracking | false (nepravda) | Automatické sledování změn směrování v aplikacích s jednou stránkou (SPA). Pokud má hodnotu true, každá změna trasy pošle nové PageView Application Insights. Změny trasy algoritmu hash ( `example.com/foo#bar` ) jsou také zaznamenávány jako nová zobrazení stránky.
 | enableRequestHeaderTracking | false (nepravda) | Pokud je nastaveno na true, jsou sledovány hlavičky požadavku Fetch & AJAX, výchozí hodnota je false.
 | enableResponseHeaderTracking | false (nepravda) | Pokud je nastaveno na true, jsou sledovány hlavičky odpovědi požadavku načítající & AJAX, výchozí hodnota je false.
-| distributedTracingMode | `DistributedTracingModes.AI` | Nastaví režim distribuovaného trasování. Pokud je nastaven režim AI_AND_W3C nebo W3C, budou se vygenerovat hlavičky kontextu trasování W3C (traceparent/tracestate) a budou zahrnuty do všech odchozích požadavků. AI_AND_W3C se poskytuje kvůli zpětné kompatibilitě se všemi staršími službami Application Insights instrumentované služby. Viz příklad [zde](https://docs.microsoft.com/azure/azure-monitor/app/correlation#enable-w3c-distributed-tracing-support-for-web-apps).
+| distributedTracingMode | `DistributedTracingModes.AI` | Nastaví režim distribuovaného trasování. Pokud je nastaven režim AI_AND_W3C nebo W3C, budou se vygenerovat hlavičky kontextu trasování W3C (traceparent/tracestate) a budou zahrnuty do všech odchozích požadavků. AI_AND_W3C se poskytuje kvůli zpětné kompatibilitě se všemi staršími službami Application Insights instrumentované služby. Viz příklad [zde](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps).
 | enableAjaxErrorStatusText | false (nepravda) | Výchozí hodnota je false. Pokud má hodnotu true, zahrňte text chyby odezvy v události závislosti u neúspěšných požadavků AJAX.
 | enableAjaxPerfTracking | false (nepravda) | Výchozí hodnota je false. Příznak pro povolení vyhledávání a zahrnutí dalšího okna prohlížeče. časování výkonu v hlášených metrikách AJAX (XHR a Fetch) ohlásilo metriky.
 | maxAjaxPerfLookupAttempts | 3 | Výchozí hodnota je 3. Maximální počet pokusů, kolikrát se má okno Hledat. časování výkonu (Pokud je k dispozici) je vyžadováno, protože ne všechny prohlížeče naplní okno. výkon před ohlášením konce žádosti XHR a pro žádosti o načtení, které jsou přidány po dokončení.
@@ -210,36 +211,36 @@ V současné době nabízíme samostatný [modul plug-in pro reakce](#react-exte
 
 ## <a name="configuration-autotrackpagevisittime"></a>Konfigurace: autoTrackPageVisitTime
 
-Nastavením se `autoTrackPageVisitTime: true` sleduje čas strávený uživateli na každé stránce. V každém novém PageView je doba, kterou uživatel strávil na *Předchozí* stránce, odeslána jako [vlastní metrika](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview) s názvem `PageVisitTime` . Tato vlastní metrika je zobrazitelná v [Průzkumník metrik](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started) jako metrika založená na protokolu.
+Nastavením se `autoTrackPageVisitTime: true` sleduje čas strávený uživateli na každé stránce. V každém novém PageView je doba, kterou uživatel strávil na *Předchozí* stránce, odeslána jako [vlastní metrika](../platform/metrics-custom-overview.md) s názvem `PageVisitTime` . Tato vlastní metrika je zobrazitelná v [Průzkumník metrik](../platform/metrics-getting-started.md) jako metrika založená na protokolu.
 
 ## <a name="react-extensions"></a>Rozšíření reakce
 
 | Rozšíření |
 |---------------|
 | [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
-| [Reagovat nativní](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
+| [React Native](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
 
 ## <a name="explore-browserclient-side-data"></a>Prozkoumat data v prohlížeči nebo na straně klienta
 
 Data v prohlížeči nebo na straně klienta si můžete prohlédnout na základě **metrik** a přidat jednotlivé metriky, které vás zajímají:
 
-![](./media/javascript/page-view-load-time.png)
+![Snímek obrazovky se stránkou metrik v Application Insights znázorňující grafická zobrazení dat metrik pro webovou aplikaci.](./media/javascript/page-view-load-time.png)
 
 Data můžete také zobrazit ze sady JavaScript SDK prostřednictvím prostředí prohlížeče na portálu.
 
 Vyberte **prohlížeč** a pak zvolte **selhání** nebo **výkon**.
 
-![](./media/javascript/browser.png)
+![Snímek obrazovky stránky prohlížeče v Application Insights ukazuje, jak přidat selhání prohlížeče nebo výkon prohlížeče k metrikám, které můžete zobrazit pro vaši webovou aplikaci.](./media/javascript/browser.png)
 
 ### <a name="performance"></a>Výkon
 
-![](./media/javascript/performance-operations.png)
+![Snímek obrazovky se stránkou Performance (výkon) v Application Insights znázorňující grafické zobrazení metrik operací pro webovou aplikaci.](./media/javascript/performance-operations.png)
 
 ### <a name="dependencies"></a>Závislosti
 
-![](./media/javascript/performance-dependencies.png)
+![Snímek obrazovky se stránkou Performance (výkon) v Application Insights znázorňující grafické zobrazení metrik závislostí pro webovou aplikaci.](./media/javascript/performance-dependencies.png)
 
-### <a name="analytics"></a>Analýzy
+### <a name="analytics"></a>Analýza
 
 Chcete-li zadat dotaz na telemetrii shromážděnou sadou JavaScript SDK, vyberte tlačítko **Zobrazit v protokolech (Analytics)** . Přidáním `where` příkazu `client_Type == "Browser"` se zobrazí pouze data z sady JavaScript SDK a všechny telemetrie na straně serveru shromážděné jinými sadami SDK budou vyloučeny.
  
@@ -270,7 +271,7 @@ Prostředek Application Insights můžete propojit s vlastním kontejnerem Azure
 
 1. Vyberte položku telemetrie výjimek v Azure Portal, abyste zobrazili její "Podrobnosti o koncových transakcích".
 2. Určete, která zdrojová mapování odpovídají tomuto zásobníku volání. Zdrojová mapa musí odpovídat zdrojovému souboru rámce zásobníku, ale má příponu.`.map`
-3. Přetáhněte zdrojové mapy do zásobníku volání v Azure Portal![](https://i.imgur.com/Efue9nU.gif)
+3. Přetáhněte zdrojové mapy do zásobníku volání v Azure Portal ![ animovaný obrázek ukazující, jak přetahovat zdrojové soubory mapování ze složky sestavení do okna zásobník volání v Azure Portal.](https://i.imgur.com/Efue9nU.gif)
 
 ### <a name="application-insights-web-basic"></a>Application Insights web Basic
 

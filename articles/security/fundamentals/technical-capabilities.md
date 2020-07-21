@@ -2,24 +2,20 @@
 title: Technické možnosti zabezpečení v Azure – Microsoft Azure
 description: Seznámení se službami zabezpečení v Azure, které vám pomůžou chránit data, prostředky a aplikace v cloudu.
 services: security
-documentationcenter: na
-author: UnifyCloud
-manager: barbkess
-editor: TomSh
+author: terrylanfear
 ms.assetid: ''
 ms.service: security
 ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/31/2019
-ms.author: TomSh
-ms.openlocfilehash: 61afad1d9994fd703bd8df047d1861baddeae997
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/13/2020
+ms.author: terrylan
+ms.openlocfilehash: 29e6aa96ea1c435e4d734e80824e1cedcfe9a761
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76845342"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519316"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technické možnosti zabezpečení Azure
 Tento článek poskytuje Úvod do služby zabezpečení v Azure, které vám pomůžou chránit vaše data, prostředky a aplikace v cloudu a splňovat požadavky na zabezpečení vaší firmy.
@@ -72,7 +68,7 @@ Níže jsou uvedené základní možnosti správy identit Azure:
 
 - Jednotné přihlašování
 
-- Ověřování pomocí služby Multi-Factor Authentication
+- Vícefaktorové ověřování
 
 - Monitorování zabezpečení, výstrahy a sestavy založené na strojovém učení
 
@@ -94,7 +90,7 @@ Mnoho organizací spoléhá na aplikace typu software jako služba (SaaS), jako 
 
 Nejen uživatelé nepotřebují spravovat více sad uživatelských jmen a hesel, přístup k aplikaci se dá automaticky zřídit nebo zrušit na základě organizačních skupin a jejich stavu jako zaměstnanec. [Azure AD zavádí zabezpečení a přístup k řízení zásad správného řízení](../../active-directory/active-directory-enterprise-apps-manage-sso.md) , které vám umožní centrálně spravovat přístup uživatelů napříč SaaS aplikacemi.
 
-#### <a name="multi-factor-authentication"></a>Ověřování pomocí služby Multi-Factor Authentication
+#### <a name="multi-factor-authentication"></a>Vícefaktorové ověřování
 
 [Azure Multi-Factor Authentication (MFA)](../../active-directory/authentication/multi-factor-authentication.md) je metoda ověřování, která vyžaduje použití více než jedné metody ověřování a přidává kritickou druhou vrstvu zabezpečení pro přihlášení a transakce uživatelů. [Vícefaktorové ověřování pomáhá chránit](../../active-directory/authentication/concept-mfa-howitworks.md) přístup k datům a aplikacím a současně splňuje požadavky uživatelů na jednoduchý proces přihlašování. Zajišťuje silné ověřování prostřednictvím řady možností ověřování – telefonní hovor, textová zpráva nebo oznámení mobilní aplikace nebo ověřovací kód a tokeny OAuth třetích stran.
 
@@ -169,77 +165,11 @@ Pomocí řízení přístupu na základě role můžete povinnosti v rámci tým
 Jedním z klíčů k ochraně dat v cloudu je monitorování účtů možných stavů, ve kterých se data mohou vyskytnout, a to, jaké ovládací prvky jsou k dispozici pro daný stav. V případě osvědčených postupů zabezpečení a šifrování dat v Azure se doporučení týkají těchto stavů dat.
 
 - V klidovém formátu: to zahrnuje všechny informace o objektech úložiště, kontejnerech a typech, které existují staticky na fyzickém médiu, jedná se o magnetický nebo optický disk.
-
 - Při přenosu: při přenosu dat mezi součástmi, umístěními nebo programy, například přes síť, v rámci služby Service Bus (z místního prostředí do cloudu a naopak, včetně hybridních připojení, jako je ExpressRoute) nebo během vstupně-výstupního procesu, je považována za probíhající.
 
-### <a name="encryption-at-rest"></a>Šifrování v klidovém stavu
+### <a name="encryption-at-rest"></a>Šifrování neaktivních uložených dat
 
-Chcete-li zajistit šifrování v klidovém umístění, proveďte následující akce:
-
-Podpora aspoň jednoho z doporučených modelů šifrování popsaných v následující tabulce vám umožní šifrovat data.
-
-| Modely šifrování |  |  |  |
-| ----------------  | ----------------- | ----------------- | --------------- |
-| Šifrování serveru | Šifrování serveru | Šifrování serveru | Šifrování klienta
-| Šifrování na straně serveru pomocí klíčů spravovaných službou | Šifrování na straně serveru pomocí klíčů spravovaných zákazníkem v Azure Key Vault | Šifrování na straně serveru pomocí zákaznických klíčů pro místní správu |
-| • Poskytovatelé prostředků Azure provádějí operace šifrování a dešifrování. <br> • Microsoft spravuje klíče. <br>• Plná funkčnost cloudu | • Poskytovatelé prostředků Azure provádějí operace šifrování a dešifrování.<br>• Klíče řízení zákazníka prostřednictvím Azure Key Vault<br>• Plná funkčnost cloudu | • Poskytovatelé prostředků Azure provádějí operace šifrování a dešifrování. <br>• Místní klávesy pro řízení zákazníka <br> • Plná funkčnost cloudu| • Služby Azure nevidí dešifrovaná data <br>• Zákazníci uchovávají místní klíče (nebo v jiných zabezpečených úložištích). Pro služby Azure nejsou klíče k dispozici. <br>• Omezené funkce cloudu|
-
-### <a name="enabling-encryption-at-rest"></a>Povolení šifrování v klidovém umístění
-
-**Identifikujte všechna umístění, kam vaše data ukládají.**
-
-Cílem šifrování v klidovém umístění je šifrování všech dat. Tím se eliminuje možnost chybějících důležitých dat nebo všech trvalých umístění. Zobrazte výčet všech dat uložených vaší aplikací.
-
-> [!Note]
-> Nejen "data aplikace" nebo "PII", ale veškerá data týkající se aplikace včetně metadat účtu (mapování předplatných, informace o smlouvě, PII).
-
-Zvažte, jaké obchody používáte k ukládání dat. Příklad:
-
-- Externí úložiště (například SQL Azure, dokumentová databáze, HDInsights, Data Lake atd.)
-
-- Dočasné úložiště (jakákoli místní mezipaměť, která zahrnuje data tenanta)
-
-- Mezipaměť v paměti (může být vložena do stránkovacího souboru)
-
-### <a name="leverage-the-existing-encryption-at-rest-support-in-azure"></a>Využijte stávající šifrování v podpoře REST v Azure.
-
-Pro každé používané úložiště Využijte stávající šifrování při podpoře REST.
-
-- Azure Storage: Další informace najdete v tématu [šifrování služby Azure Storage pro](../../storage/common/storage-service-encryption.md)neaktivní neaktivní data.
-
-- SQL Azure: viz [transparentní šifrování dat (TDE), SQL Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx)
-
-- Virtuální počítač & úložiště na místním disku ([Azure Disk Encryption](../azure-security-disk-encryption-overview.md))
-
-Pro úložiště virtuálního počítače a místní disk použijte Azure Disk Encryption tam, kde je to podporováno:
-
-#### <a name="iaas"></a>IaaS
-
-Služby s IaaS virtuálními počítači (Windows nebo Linux) by měly používat [Azure Disk Encryption](https://microsoft.sharepoint.com/teams/AzureSecurityCompliance/Security/SitePages/Azure%20Disk%20Encryption.aspx) k šifrování svazků obsahujících zákaznická data.
-
-#### <a name="paas-v2"></a>PaaS v2
-
-Služby běžící na PaaS v2 pomocí Service Fabric můžou používat Azure Disk Encryption pro virtuální počítače s měřítkem [VMSS] k šifrování svých virtuálních počítačů PaaS v2.
-
-#### <a name="paas-v1"></a>PaaS v1
-
-Azure Disk Encryption v tuto chvíli není v PaaS v1 podporovaná. Proto je nutné použít šifrování na úrovni aplikace k šifrování uložených dat v klidovém umístění.  To zahrnuje, ale není omezené na data aplikací, dočasné soubory, protokoly a výpisy stavu systému.
-
-Většina služeb by se měla pokusit využít šifrování poskytovatele prostředků úložiště. Některé služby musí provádět explicitní šifrování, například všechny trvalé klíčové materiály (certifikáty, kořenové/hlavní klíče) musí být uloženy v Key Vault.
-
-Pokud podporujete šifrování na straně služby pomocí klíčů spravovaných zákazníkem, je třeba, aby si zákazník mohl získat klíč pro nás. Podporovaný a doporučený způsob, jak to provést integrací s Azure Key Vault (integrace). V tomto případě můžou zákazníci přidávat a spravovat svoje klíče v Azure Key Vault. Zákazník se může dozvědět, jak používat integrace prostřednictvím [Začínáme s Key Vault](https://go.microsoft.com/fwlink/?linkid=521402).
-
-Chcete-li provést integraci s Azure Key Vault, přidejte kód pro vyžádání klíče z integrace, pokud je to potřeba pro dešifrování.
-
-- Informace o tom, jak integrovat s integrace, najdete v tématu [Azure Key Vault – krok za krokem](https://blogs.technet.microsoft.com/kv/2015/06/02/azure-key-vault-step-by-step/) .
-
-Pokud podporujete spravované klíče zákazníka, musíte poskytnout uživatelské prostředí pro zákazníka, abyste určili, který Key Vault (nebo Key Vault URI) použít.
-
-Jelikož šifrování v klidovém stavu zahrnuje šifrování dat hostitele, infrastruktury a klientů, ztráta klíčů z důvodu chyby systému nebo škodlivé aktivity by mohla znamenat ztrátu všech šifrovaných dat. Proto je důležité, aby vaše řešení v klidovém řešení v klidovém stavu mohlo být odolné vůči chybám systému a škodlivým aktivitám.
-
-Služby, které implementují šifrování v klidovém stavu, jsou obvykle náchylné k šifrovacím klíčům nebo nešifrovaným datům na hostitelské jednotce (například v souboru stránky hostitelského operačního systému). Proto služby musí zajistit, aby byl svazek hostitele pro své služby zašifrovaný. Pro usnadnění tohoto výpočetního týmu je povoleno nasazení šifrování hostitele, které používá nkp [BitLocker](https://technet.microsoft.com/library/dn306081.aspx) a rozšíření pro službu DCM a agenta k zašifrování svazku hostitele.
-
-Většina služeb je implementovaná na standardních virtuálních počítačích Azure. Takové služby by měly automaticky získat [šifrování hostitele](../azure-security-disk-encryption-overview.md) , když ho služba COMPUTE umožňuje. Pro služby běžící ve službě COMPUTE Managed Clusters je šifrování hostitele zapnuté automaticky, protože je zavedený Windows Server 2016.
+Šifrování v klidovém umístění je podrobněji popsáno v tématu [šifrování dat Azure v klidovém umístění](encryption-atrest.md).
 
 ### <a name="encryption-in-transit"></a>Šifrování při přenosu
 
@@ -409,7 +339,7 @@ Tato metoda umožňuje konsolidovat data z nejrůznějších zdrojů, takže mů
 
 Služba Security Center analyzuje stav zabezpečení vašich prostředků Azure, aby identifikovala potenciální ohrožení zabezpečení. Seznam doporučení vás provede procesem konfigurace potřebných kontrol.
 
-Mezi příklady patří:
+Příklady:
 
 - Zřizování antimalwaru, aby se pomohl identifikovat a odebrat škodlivý software
 

@@ -4,11 +4,12 @@ description: Získat pravidelné Shrnutí aktivních doporučení
 ms.topic: article
 ms.date: 03/16/2020
 ms.author: sagupt
-ms.openlocfilehash: 98f1bfd42a486e005cd1e777a83f5b615a7c8304
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e446fca11e029e28e44ada884efd071f3142514c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79502461"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518075"
 ---
 # <a name="configure-periodic-summary-for-recommendations"></a>Konfigurace pravidelného Shrnutí pro doporučení
 
@@ -20,7 +21,7 @@ ms.locfileid: "79502461"
 Průvodce vytvořením hodnoty **Digest pro doporučení** vám pomůže nakonfigurovat souhrn. Pro konfigurace můžete vybrat níže uvedené parametry:
 1. Kategorie: máme Doporučené kategorie, jako jsou náklady, vysoká dostupnost, výkon a provozní kvalita. Tato funkce není zatím dostupná pro doporučení zabezpečení.
 2. Frekvence Digest: frekvence souhrnných oznámení může být týdně, týdně a měsíčně.
-3. Skupina akcí: můžete vybrat buď existující skupinu akcí, nebo vytvořit novou skupinu akcí. Další informace o skupinách akcí naleznete v tématu [Create and Manage Action Groups](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups).
+3. Skupina akcí: můžete vybrat buď existující skupinu akcí, nebo vytvořit novou skupinu akcí. Další informace o skupinách akcí naleznete v tématu [Create and Manage Action Groups](../azure-monitor/platform/action-groups.md).
 4. Jazyk pro algoritmus Digest
 5. Název výtahu doporučení: k lepšímu sledování a monitorování těchto výtahů můžete použít uživatelsky přívětivý řetězec.
 
@@ -43,7 +44,7 @@ Tady je postup pro vytvoření **vydigest doporučení:**
 
    ![Zadat vstupní podmínky Digest pro doporučení](./media/digest-2.png)
 
-* **Krok 5:** V části **Skupina akcí** vyberte **skupinu akcí** pro daný výtah. Další informace najdete tady – [Vytvoření a Správa skupin akcí](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) .
+* **Krok 5:** V části **Skupina akcí** vyberte **skupinu akcí** pro daný výtah. Další informace najdete tady – [Vytvoření a Správa skupin akcí](../azure-monitor/platform/action-groups.md) .
 
    ![Zadat vstupní skupinu akcí v případě vydigest doporučení](./media/digest-3.png)
 
@@ -59,4 +60,4 @@ Další informace o doporučeních služby Advisor najdete v těchto tématech:
 * [Doporučení pro výkon Advisoru](advisor-performance-recommendations.md)
 * [Doporučení pro zabezpečení Advisoru](advisor-security-recommendations.md)
 * [Doporučení provozní kvality Advisoru](advisor-operational-excellence-recommendations.md)
-* [REST API Advisoru](https://docs.microsoft.com/rest/api/advisor/)
+* [REST API Advisoru](/rest/api/advisor/)

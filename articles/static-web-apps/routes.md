@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: bde0db179216426c4279e5b03b416a04176430bb
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 48c05bf7b4cbecb09ef3bb113832974bee4bc6b2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056782"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518771"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Trasy ve službě Azure static Web Apps Preview
 
@@ -37,9 +37,9 @@ Následující tabulka uvádí vhodné umístění pro vložení _routes.js_ do 
 |Architektura/knihovna | Umístění  |
 |---------|----------|
 | Úhlová | _hmot_   |
-| React   | _republik_  |
-| Svelte  | _republik_   |
-| Vue     | _republik_ |
+| React   | _public_  |
+| Svelte  | _public_   |
+| Vue     | _public_ |
 
 ## <a name="defining-routes"></a>Definování tras
 
@@ -47,7 +47,7 @@ Trasy jsou definovány v _routes.jsv_ souboru jako pole pravidel směrování pr
 
 | Vlastnost pravidla  | Vyžadováno | Výchozí hodnota | Komentář                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
-| `route`        | Yes      | Není k dispozici          | Vzor trasy požadovaný volajícím.<ul><li>[Zástupné znaky](#wildcards) jsou podporovány na konci cest směrování. Například _správce tras/ \* _ odpovídá libovolné trase v cestě _správce_ .<li>Výchozí soubor trasy je _index.html_.</ul>|
+| `route`        | Ano      | Není k dispozici          | Vzor trasy požadovaný volajícím.<ul><li>[Zástupné znaky](#wildcards) jsou podporovány na konci cest směrování. Například _správce tras/ \* _ odpovídá libovolné trase v cestě _správce_ .<li>Výchozí soubor trasy je _index.html_.</ul>|
 | `serve`        | No       | Není k dispozici          | Definuje soubor nebo cestu vrácenou z požadavku. Cesta k souboru a název se mohou lišit od požadované cesty. Pokud není `serve` definována hodnota, použije se požadovaná cesta. Parametry QueryString nejsou podporovány; `serve`hodnoty musí ukazovat na skutečné soubory.  |
 | `allowedRoles` | No       | Anonymous     | Pole názvů rolí <ul><li>Mezi platné znaky patří `a-z` , `A-Z` , `0-9` a `_` .<li>Předdefinovaná role `anonymous` platí pro všechny neověřené uživatele.<li>Předdefinovaná role `authenticated` se vztahuje na všechny přihlášené uživatele.<li>Uživatelé musí patřit do alespoň jedné role.<li>Role se shodují na _nebo_ bázi. Pokud je uživatel v některé z uvedených rolí, pak je udělen přístup.<li>Jednotlivé uživatele jsou přidruženi k rolím prostřednictvím [pozvánk](authentication-authorization.md).</ul> |
 | `statusCode`   | No       | 200           | Odpověď [kódu stavu HTTP](https://wikipedia.org/wiki/List_of_HTTP_status_codes) pro požadavek. |
@@ -157,7 +157,7 @@ Uživatelé mohou narazit na řadu různých situací, které mohou mít za nás
 
 V následující tabulce jsou uvedeny potlačení dostupných chyb platformy:
 
-| Typ chyby  | Stavový kód HTTP | Description |
+| Typ chyby  | Stavový kód HTTP | Popis |
 |---------|---------|---------|
 | `NotFound` | 404  | Na serveru se nenašla stránka. |
 | `Unauthenticated` | 401 | Uživatel není přihlášený pomocí [zprostředkovatele ověřování](authentication-authorization.md). |
@@ -295,7 +295,7 @@ Následující příklady popisují, co se stane, když požadavek odpovídá pr
 | _/unknown-folder_ | Soubor _/custom-404.html_ se obsluhuje. |
 | Soubory s `.custom` příponou | Jsou obsluhovány s `text/html` typem MIME |
 
-- Všechny odpovědi obsahují `content-security-policy` záhlaví s hodnotou `default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'` .
+Všechny odpovědi obsahují `content-security-policy` záhlaví s hodnotou `default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'` .
 
 <sup>1</sup> pravidla směrování pro funkce rozhraní API podporují jenom [přesměrování](#redirects) a [zabezpečení tras s rolemi](#securing-routes-with-roles).
 

@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5350e728ad9c30a6e9258ce9c7615baf020473a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f1eae9cc067f8aa10ad49d70dfe0393f4bed6c5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83995118"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518415"
 ---
 # <a name="conditional-access-block-access-by-location"></a>Podmíněný přístup: blokovat přístup podle umístění
 
@@ -42,17 +43,15 @@ Další informace o podmínkách umístění v podmíněném přístupu najdete 
 1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
 1. V části **přiřazení**vyberte **Uživatelé a skupiny** .
    1. V části **Zahrnout**vyberte **Všichni uživatelé**.
-   1. Vyberte **Done** (Hotovo).
-1. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **všechny cloudové aplikace**a vyberte **Hotovo**.
+1. V části **cloudové aplikace nebo akce**  >  **patří**a vyberte **všechny cloudové aplikace**.
 1. V **Conditions**části  >  **umístění**podmínek.
    1. Nastavte **Konfigurovat** na **Ano** .
-   1. **Zahrnout** výběr **vybraných umístění**
+   1. V části **Zahrnout**vyberte **Vybraná umístění** .
    1. Vyberte blokované umístění, které jste vytvořili pro vaši organizaci.
-   1. Klikněte na **Vybrat**  >  **Hotovo**  >  **Done**.
-1. V části **podmínky**  >  **klientské aplikace (Preview)** nastavte **Konfigurovat** na **Ano**a vyberte **Hotovo**.
-1. V části **řízení přístupu**  >  **blokovat**a vyberte **Vybrat**.
+   1. Klikněte na **Vybrat**.
+1. V části **řízení přístupu** > vybrat **přístup k bloku**a vyberte **Vybrat**.
 1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
-1. Vyberte **vytvořit** a vytvořte tak, aby se zásady povolily.
+1. Vyberte **vytvořit** a vytvořte zásady podmíněného přístupu.
 
 ## <a name="next-steps"></a>Další kroky
 

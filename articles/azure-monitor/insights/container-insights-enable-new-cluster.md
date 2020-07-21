@@ -3,16 +3,17 @@ title: Monitorování nového clusteru Azure Kubernetes Service (AKS) | Microsof
 description: Naučte se, jak povolit monitorování pro nový cluster Azure Kubernetes Service (AKS) s předplatným Azure Monitor for Containers.
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: c731826f2780c45358730f9ce20d6a6151f6f259
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-terraform
+ms.openlocfilehash: 86ace49ea60bf1bd11633b5a883401f678ecaf8d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847217"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516630"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>Povolit monitorování nového clusteru Azure Kubernetes Service (AKS)
 
-Tento článek popisuje, jak nastavit Azure Monitor pro kontejnery pro monitorování spravovaného clusteru Kubernetes hostovaného ve [službě Azure Kubernetes](https://docs.microsoft.com/azure/aks/) , kterou jste připravili k nasazení v rámci vašeho předplatného.
+Tento článek popisuje, jak nastavit Azure Monitor pro kontejnery pro monitorování spravovaného clusteru Kubernetes hostovaného ve [službě Azure Kubernetes](../../aks/index.yml) , kterou jste připravili k nasazení v rámci vašeho předplatného.
 
 Monitorování clusteru AKS můžete povolit pomocí jedné z podporovaných metod:
 
@@ -24,7 +25,7 @@ Monitorování clusteru AKS můžete povolit pomocí jedné z podporovaných met
 Pokud chcete povolit monitorování nového clusteru AKS vytvořeného pomocí Azure CLI, postupujte podle kroků v článku rychlý Start v části [Vytvoření clusteru AKS](../../aks/kubernetes-walkthrough.md#create-aks-cluster).  
 
 >[!NOTE]
->Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat a používat rozhraní příkazového řádku (CLI). Musíte používat Azure CLI verze 2.0.74 nebo novější. Pro identifikaci vaší verze spusťte `az --version` . Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). Pokud máte nainstalovanou verzi rozšíření AKS-Preview CLI 0.4.12 nebo vyšší, odeberte všechny provedené změny, aby bylo možné povolit rozšíření verze Preview, protože funkce AKS Preview nejsou dostupné v cloudu Azure US governmnet.
+>Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat a používat rozhraní příkazového řádku (CLI). Musíte používat Azure CLI verze 2.0.74 nebo novější. Pro identifikaci vaší verze spusťte `az --version` . Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli). Pokud máte nainstalovanou verzi rozšíření AKS-Preview CLI 0.4.12 nebo vyšší, odeberte všechny provedené změny, aby bylo možné povolit rozšíření verze Preview, protože funkce AKS Preview nejsou dostupné v cloudu Azure US governmnet.
 
 ## <a name="enable-using-terraform"></a>Povolit pomocí Terraformu
 

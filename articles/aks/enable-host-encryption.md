@@ -4,12 +4,12 @@ description: Naučte se konfigurovat šifrování založené na hostiteli v clus
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 7b9d930d62d0acea30af9b5e7e12e43fa8fcd5da
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d2b34d8c3090eb6ae3f1445ff1fc663d90367977
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244306"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517718"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Šifrování založené na hostiteli ve službě Azure Kubernetes (AKS) (Preview)
 
@@ -27,18 +27,18 @@ Tato funkce se dá nastavit jenom při vytváření clusteru nebo při vytváře
 
 - Ujistěte se, že máte `aks-preview` nainstalovanou příponu CLI v 0.4.55 nebo novější verzi.
 - Ujistěte se, že je `EncryptionAtHost` v části `Microsoft.Compute` povoleno příznak funkce.
-- Ujistěte se, že je `EncryptionAtHost` v části `Microsoft.ContainerService` povoleno příznak funkce.
+- Ujistěte se, že je `EnableEncryptionAtHostPreview` v části `Microsoft.ContainerService` povoleno příznak funkce.
 
 ### <a name="register-encryptionathost--preview-features"></a>Registrace `EncryptionAtHost` funkcí ve verzi Preview
 
-Pokud chcete vytvořit cluster AKS, který používá šifrování založené na hostiteli, musíte `EncryptionAtHost` u svého předplatného povolit příznak funkce.
+Pokud chcete vytvořit cluster AKS, který používá šifrování založené na hostiteli, musíte `EnableEncryptionAtHostPreview` `EncryptionAtHost` ve svém předplatném povolit příznaky funkcí a.
 
 Zaregistrujte `EncryptionAtHost` příznak funkce pomocí příkazu [AZ Feature Register][az-feature-register] , jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.Compute" --name "EncryptionAtHost"
 
-az feature register --namespace "Microsoft.ContainerService"  --name "EncryptionAtHost"
+az feature register --namespace "Microsoft.ContainerService"  --name "EnableEncryptionAtHostPreview"
 ```
 
 Zobrazení stavu v *registraci*trvá několik minut. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list][az-feature-list] :
@@ -46,7 +46,7 @@ Zobrazení stavu v *registraci*trvá několik minut. Stav registrace můžete zj
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.Compute/EncryptionAtHost')].{Name:name,State:properties.state}"
 
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EncryptionAtHost')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEncryptionAtHostPreview')].{Name:name,State:properties.state}"
 ```
 
 Až budete připraveni, aktualizujte registraci `Microsoft.ContainerService` `Microsoft.Compute` zprostředkovatelů prostředků a pomocí příkazu [AZ Provider Register][az-provider-register] :
@@ -58,12 +58,12 @@ az provider register --namespace Microsoft.ContainerService
 ```
 
 > [!IMPORTANT]
-> Funkce služby AKS ve verzi Preview jsou samoobslužné přihlašovací. Verze Preview jsou k dispozici "tak jak jsou" a "jako dostupné" a jsou vyloučeny ze smluv o úrovni služeb a omezené záruky. AKS verze Preview jsou částečně pokryté zákaznickou podporou na základě nejlepšího úsilí. V takovém případě tyto funkce nejsou určeny pro použití v produkčním prostředí. Další informace o tom, jak se zaregistrují, najdete v následujících článcích podpory:
+> Funkce služby AKS ve verzi Preview jsou samoobslužné přihlašovací. Verze Preview jsou k dispozici "tak jak jsou" a "jako dostupné" a jsou vyloučeny ze smluv o úrovni služeb a omezené záruky. AKS verze Preview jsou částečně pokryté zákaznickou podporou na základě nejlepšího úsilí. V takovém případě tyto funkce nejsou určeny pro použití v produkčním prostředí. Další informace najdete v následujících článcích podpory:
 >
 > - [Zásady podpory AKS](support-policies.md)
 > - [Nejčastější dotazy k podpoře Azure](faq.md)
 
-### <a name="install-aks-preview-cli-extension"></a>Nainstalovat rozšíření CLI AKS-Preview
+### <a name="install-aks-preview-cli-extension"></a>Instalace rozšíření rozhraní příkazového řádku aks-preview
 
 Chcete-li vytvořit cluster AKS, který je hostitelem šifrování, budete potřebovat nejnovější rozšíření rozhraní *příkazového řádku AKS-Preview* . Nainstalujte rozšíření Azure CLI *AKS-Preview* pomocí příkazu [AZ Extension Add][az-extension-add] nebo vyhledejte všechny dostupné aktualizace pomocí příkazu [AZ Extension Update][az-extension-update] :
 

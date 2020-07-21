@@ -3,12 +3,12 @@ title: Použití PowerShellu k nastavení výstrah v Application Insights | Micr
 description: Automatizujte konfiguraci Application Insights, abyste získali e-maily o změnách metriky.
 ms.topic: conceptual
 ms.date: 10/31/2016
-ms.openlocfilehash: ea33ecfbc02bfed75a66e751ce1788474a6d0e8f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3a3d614ec57242a2ea4b29a86d6365a2efe56f94
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111299"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516953"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>Použití prostředí PowerShell k nastavení výstrahy v nástroji Application Insights
 
@@ -101,7 +101,7 @@ Add-AzMetricAlertRule -Name "poor sales" `
 Stejné pravidlo lze použít pro metriku nahlášenou pomocí [parametru měření](../../azure-monitor/app/api-custom-events-metrics.md#properties) jiného sledovacího volání, jako je například TrackEvent nebo trackPageView.
 
 ## <a name="metric-names"></a>Názvy metrik
-| Název metriky | Název obrazovky | Description |
+| Název metriky | Název obrazovky | Popis |
 | --- | --- | --- |
 | `basicExceptionBrowser.count` |Výjimky prohlížečů |Počet nezachycených výjimek vyvolaných v prohlížeči |
 | `basicExceptionServer.count` |Výjimky serveru |Počet neošetřených výjimek vyvolaných aplikací |
@@ -139,7 +139,7 @@ Metriky jsou odesílány různými moduly telemetrie:
 [Odpověď na výstrahu můžete automatizovat](../../azure-monitor/platform/alerts-webhooks.md). Když se vygeneruje výstraha, Azure zavolá webovou adresu dle vašeho výběru.
 
 ## <a name="see-also"></a>Viz také
-* [Skript pro konfiguraci Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
+* [Skript pro konfiguraci Application Insights](./create-new-resource.md#creating-a-resource-automatically)
 * [Vytvoření prostředků Application Insights a webového testu ze šablon](powershell.md)
 * [Automatizace Diagnostika Microsoft Azure Application Insights](powershell-azure-diagnostics.md)
 * [Automatizace odpovědi na výstrahu](../../azure-monitor/platform/alerts-webhooks.md)

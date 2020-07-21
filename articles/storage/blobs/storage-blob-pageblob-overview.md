@@ -9,12 +9,12 @@ ms.date: 06/15/2020
 ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
-ms.openlocfilehash: 2338c523c13b16b4a63ee9de0d966182e26c3286
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 447653cdcaeb1a0bbf891a26e8bc0af5ead87fdb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223291"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518703"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Přehled objektů blob stránky Azure
 
@@ -34,9 +34,13 @@ Služby společnosti Microsoft, jako je například Azure Site Recovery, Azure B
 * Migrace aplikací a dat z místního prostředí do cloudu za provozu: Zkopírujte místní data a pomocí rozhraní REST API zapište přímo do objektu blob stránky Azure, zatímco místní virtuální počítač pokračuje v běhu. Jakmile se cíl zachytí, můžete rychle převzít služby při selhání virtuálního počítače Azure pomocí těchto dat. Tímto způsobem můžete migrovat virtuální počítače a virtuální disky z místního prostředí do cloudu s minimálními výpadky, protože migrace dat probíhá na pozadí, zatímco budete nadále používat virtuální počítač a výpadky potřebné pro převzetí služeb při selhání budou krátké (v minutách).
 * Sdílený přístup [na základě SAS](../common/storage-sas-overview.md) , který umožňuje scénáře jako více čtenářů a jeden zapisovač s podporou pro řízení souběžnosti.
 
+## <a name="pricing"></a>Ceny
+
+Oba typy úložiště nabízené s objekty blob stránky mají svůj vlastní cenový model. Objekty blob stránky úrovně Premium se řídí cenovým modelem Managed disks, zatímco objekty blob stránky Standard se účtují podle použité velikosti a s každou transakcí. Další informace najdete na stránce s [cenami objektů blob stránky Azure](https://azure.microsoft.com/pricing/details/storage/page-blobs/).
+
 ## <a name="page-blob-features"></a>Funkce objektů blob stránky
 
-### <a name="rest-api"></a>Rozhraní REST API
+### <a name="rest-api"></a>REST API
 
 Pokud chcete začít s [vývojem pomocí objektů blob stránky](storage-dotnet-how-to-use-blobs.md), přečtěte si následující dokument. Příklad najdete v tématu Jak získat přístup k objektům blob stránky pomocí klientské knihovny pro úložiště pro .NET. 
 

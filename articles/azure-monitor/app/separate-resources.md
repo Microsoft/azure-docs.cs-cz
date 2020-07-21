@@ -3,12 +3,12 @@ title: Jak navrhnout nasazení Application Insights – jeden vs mnoho prostřed
 description: Přímá telemetrie na různé prostředky pro vývoj, testování a produkční razítka.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 53fe54d1e674a9d15cab5a3fac0c85f415e40260
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ff301887aebf64d26d0fb391a8a16adefc8a3860
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107423"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516715"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Kolik prostředků Application Insights mám nasadit
 
@@ -35,7 +35,7 @@ Každý Application Insights prostředek obsahuje metriky, které jsou k dispozi
 
 ### <a name="other-things-to-keep-in-mind"></a>Další věci, které je potřeba vzít v úvahu
 
--   Je možné, že budete muset přidat vlastní kód, abyste zajistili, že jsou smysluplné hodnoty nastaveny do atributu [Cloud_RoleName](https://docs.microsoft.com/azure/azure-monitor/app/app-map?tabs=net#set-cloud-role-name) . Bez smysluplných hodnot nastavených pro tento atribut nebudou fungovat *žádné* ze zkušeností portálu.
+-   Je možné, že budete muset přidat vlastní kód, abyste zajistili, že jsou smysluplné hodnoty nastaveny do atributu [Cloud_RoleName](./app-map.md?tabs=net#set-cloud-role-name) . Bez smysluplných hodnot nastavených pro tento atribut nebudou fungovat *žádné* ze zkušeností portálu.
 - V případě aplikací Service Fabric a klasických cloudových služeb sada SDK automaticky načte z prostředí role Azure a nastaví je. U všech ostatních typů aplikací je pravděpodobně budete muset nastavit explicitně.
 -   Prostředí živé metriky nepodporuje rozdělování podle názvu role.
 
@@ -76,7 +76,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="create-additional-application-insights-resources"></a>Vytvoření dalších prostředků Application Insights
 
-Pokud chcete vytvořit prostředek Application Insights, postupujte podle pokynů v [příručce pro vytváření prostředků](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource).
+Pokud chcete vytvořit prostředek Application Insights, postupujte podle pokynů v [příručce pro vytváření prostředků](./create-new-resource.md).
 
 ### <a name="getting-the-instrumentation-key"></a>Získávání klíče instrumentace
 Klíč instrumentace identifikuje prostředek, který jste vytvořili.

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: overview
 ms.date: 06/10/2020
 ms.author: victorh
-ms.openlocfilehash: ebb3e6ba777646d39e3732215aa6c8fdd12ca40a
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: a98a06dedf1d0ed9b92cc2028dfc208ff26df056
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186686"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517616"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Co je nového v Azure Application Gateway?
 
@@ -27,7 +27,9 @@ Azure Application Gateway se průběžně aktualizuje. V tomto článku najdete 
 
 |Funkce  |Popis  |Datum přidání  |
 |---------|---------|---------|
-| Vlastní port pro sondy stavu | SKU Application Gateway v2 nyní poskytuje možnost poskytnout vlastní port v konfiguraci sondy stavu. Další informace najdete v tématu [Přehled stavu testu](application-gateway-probe-overview.md) . | Červenec 2020
+| Názvy hostitelů se zástupnými znaky v posluchačích (Preview) | Nyní můžete definovat názvy hostitelů se zástupnými znaky v rámci naslouchacího procesu pro více webů a až 5 názvů hostitelů na naslouchací proces. Další informace najdete v tématech [názvy hostitelů se zástupnými znaky v naslouchacího procesu (Preview)](multiple-site-overview.md#wildcard-host-names-in-listener-preview) a [hostování více webů v Application Gateway pomocí Azure Portal](create-multiple-sites-portal.md) pro ste průvodce. | Červenec 2020 |
+| Přepsání adresy URL (Preview) | Nyní můžete přepsat cestu adresy URL a parametry řetězce dotazu pomocí přepsání adresy URL. Další informace najdete v tématu přepis [hlaviček a adres URL protokolu HTTP](rewrite-http-headers-url.md) a další informace najdete [v tématu adresa URL pro přepis v Application Gateway pomocí Azure Portal](rewrite-url-portal.md) pro podrobného průvodce. | Červenec 2020 |
+| Vlastní port pro sondy stavu | SKU Application Gateway v2 nyní poskytuje možnost poskytnout vlastní port v konfiguraci sondy stavu. Další informace najdete v tématu [Přehled stavu testu](application-gateway-probe-overview.md) . | Červenec 2020 |
 | Application Gateway (AGIC) AKS Controller (verze Preview) |Řadič pro příchozí Application Gateway se teď dá nasadit jako nativní doplněk AKS v jednom řádku prostřednictvím Azure CLI. AKS doplněk umožňuje, aby se AGIC stala plně spravovaná služba a pořád běžela v clusteru AKS zákazníka. Další informace najdete v tématu [AGIC – rozdíly v doplňcích](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on). |Červen 2020 |
 | Trasy definované uživatelem (UDR) ve verzi v2 (Preview) |Trasy definované uživatelem jsou nyní podporovány v některých scénářích u SKU Application Gateway v2. Další informace najdete v tématu [Přehled konfigurace Application Gateway](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet). |Březen 2020 |
 |Změny souborů cookie spřažení |Pokud je povoleno spřažení na základě souborů cookie, Application Gateway kromě existujícího souboru cookie ApplicationGatewayAffinity vloží jiný stejný soubor cookie s názvem *ApplicationGatewayAffinityCORS* . *ApplicationGatewayAffinityCORS* má přidaných dva další atributy (*SameSite = None; Secure*), aby se rychlé relace zachovaly i pro požadavky na více zdrojů. Další informace najdete v tématu [Application Gateway spřažení na základě souborů cookie](configuration-overview.md#cookie-based-affinity) . |Únor 2020 |

@@ -10,11 +10,12 @@ ms.date: 06/22/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 9502194b2020723801469b511f46d3e806290ba5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 903560f5c0400a906918f0c17eafb2e1e09bdd30
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213988"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518500"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage redundance
 
@@ -60,9 +61,9 @@ Následující tabulka uvádí, které typy účtů úložiště podporují ZRS,
 
 |    Typ účtu úložiště    |    Podporované oblasti    |    Podporované služby    |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-|    Obecné účely v2<sup>1</sup>    | Jihovýchodní Asie<br /> Austrálie – východ<br /> Evropa – sever<br />  Evropa – západ<br /> Francie – střed<br /> Japonsko – východ<br /> Jižní Afrika – sever<br /> Spojené království – jih<br /> USA – střed<br /> USA – východ<br /> USA – východ 2<br /> USA – západ 2    |    Objekty blob bloku<br /> Objekty blob stránky<sup>2</sup><br /> Sdílené složky (Standard)<br /> Tabulky<br /> Fronty<br /> |
-|    BlockBlobStorage<sup>1</sup>    | Jihovýchodní Asie<br /> Evropa – západ<br /> USA – východ    |    Pouze objekty blob bloku    |
-|    Úložiště    | Jihovýchodní Asie<br /> Evropa – západ<br /> USA – východ    |    Jenom soubory Azure    |
+|    Obecné účely v2<sup>1</sup>    | Jihovýchodní Asie<br /> Austrálie – východ<br /> Evropa – sever<br />  Evropa – západ<br /> Francie – střed<br /> Japan East<br /> Jižní Afrika – sever<br /> Spojené království – jih<br /> USA – střed<br /> USA – východ<br /> USA – východ 2<br /> USA – západ 2    |    Objekty blob bloku<br /> Objekty blob stránky<sup>2</sup><br /> Sdílené složky (Standard)<br /> Tabulky<br /> Fronty<br /> |
+|    BlockBlobStorage<sup>1</sup>    | Jihovýchodní Asie<br /> Austrálie – východ<br /> Evropa – západ<br /> USA – východ    |    Pouze objekty blob bloku    |
+|    Úložiště    | Jihovýchodní Asie<br /> Austrálie – východ<br /> Evropa – západ<br /> USA – východ    |    Jenom soubory Azure    |
 
 <sup>1</sup> úroveň archivu se v současnosti nepodporuje u účtů ZRS.<br />
 <sup>2</sup> účty úložiště, které obsahují Azure Managed disks pro virtuální počítače, vždycky používají LRS. Nespravované disky Azure by měly také používat LRS. Je možné vytvořit účet úložiště pro nespravované disky Azure, které používají GRS, ale nedoporučuje se v důsledku potenciálních problémů s konzistencí přes asynchronní geografickou replikaci. Ani spravované ani nespravované disky nepodporují ZRS nebo GZRS. Další informace o službě Managed disks najdete v tématu [ceny za službu Azure Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/).
@@ -108,7 +109,7 @@ GZRS a RA-GZRS jsou podporovány v následujících oblastech:
 - Jihovýchodní Asie
 - Evropa – sever
 - Evropa – západ
-- Japonsko – východ
+- Japan East
 - Spojené království – jih
 - USA – střed
 - USA – východ
@@ -160,7 +161,7 @@ Následující tabulka uvádí, zda jsou vaše data v daném scénáři odolná 
 | Scénář výpadku                                                                                                 | LRS                             | ZRS                              | GRS/RA – GRS                                  | GZRS/RA – GZRS                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
 | Uzel v datovém centru nebude dostupný.                                                                 | Ano                             | Ano                              | Ano                                  | Ano                                 |
-| Nebudete mít k dispozici celé datové centrum (oblast nebo mimo oblast).                                           | No                              | Ano                              | Ano<sup>1</sup>                                  | Yes                                  |
+| Nebudete mít k dispozici celé datové centrum (oblast nebo mimo oblast).                                           | No                              | Ano                              | Ano<sup>1</sup>                                  | Ano                                  |
 | V primární oblasti dojde k výpadku v rámci oblasti.                                                                                     | No                              | No                               | Ano<sup>1</sup>                                  | Ano<sup>1</sup>                                  |
 | Přístup pro čtení do sekundární oblasti je k dispozici, pokud primární oblast nebude k dispozici. | No                              | No                               | Ano (s RA-GRS)                                   | Ano (s RA-GZRS)                                 |
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2020
 ms.author: yelevin
-ms.openlocfilehash: 8da05da1b4aa9966b7743bc38b09d1c4b34c8cc8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6573237cbba8951bdd45c5b32c572b9af772ee5a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555712"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519241"
 ---
 # <a name="connect-windows-security-events"></a>Připojení událostí zabezpečení systému Windows 
 
@@ -87,7 +87,29 @@ Shromažďování událostí zabezpečení systému Windows v rámci služby Azu
 
 Může to trvat přibližně 20 minut, než se vaše protokoly začnou zobrazovat v Log Analytics. 
 
+### <a name="configure-the-security-events-connector-for-anomalous-rdp-login-detection"></a>Konfigurace konektoru události zabezpečení pro detekci přihlášení neobvyklé RDP
 
+> [!IMPORTANT]
+> Zjišťování přihlášení protokolu RDP neobvyklé je aktuálně ve verzi Public Preview.
+> Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy.
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Azure Sentinel může použít Machine Learning (ML) k datům událostí zabezpečení k identifikaci přihlašovací aktivity neobvyklé protokol RDP (Remote Desktop Protocol) (RDP). Mezi scénáře patří:
+
+- **Neobvyklá IP** adresa: v posledních 30 dnech se IP adresa vyskytuje jenom zřídka nebo nikdy nedodržena.
+
+- **Neobvyklé geografické umístění** – IP adresa, město, země a ASN se v posledních 30 dnech nezjistily zřídka nebo nikdy.
+
+- **Nový uživatel** – nový uživatel se přihlásí z IP adresy a geografického umístění, nebo z toho, z nichž se neočekávalo, že se bude zobrazovat na základě dat od 30 dní předem.
+
+**Pokyny ke konfiguraci**
+
+1. Musíte shromažďovat přihlašovací data protokolu RDP (ID události 4624) prostřednictvím konektoru dat **událostí zabezpečení** . Ujistěte se, že jste pro streamování do Azure Sentinel vybrali [sadu událostí](#event-sets) kromě možnosti žádná.
+
+1. Na portálu Sentinel Azure klikněte na **Analytics**a pak klikněte na kartu **šablony pravidel** . Zvolte pravidlo **zjišťování přihlášení RDP neobvyklé (Preview)** a přesuňte posuvník **stavu** na **povoleno**.
+
+    > [!NOTE]
+    > Vzhledem k tomu, že algoritmus strojového učení vyžaduje po dobu 30 dnů, aby se vytvořil základní profil chování uživatele, je nutné, aby bylo možné shromáždit data událostí zabezpečení před tím, než bude možné zjistit případné incidenty.
 
 ## <a name="next-steps"></a>Další kroky
 V tomto dokumentu jste zjistili, jak připojit události zabezpečení systému Windows ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:

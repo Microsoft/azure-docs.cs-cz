@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: cf0e5267885df1ace51271c53bb2d68ee5002f00
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d8c7ce62f7c592c396fa1ea7a7f5e7dc7df2dc1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335432"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517582"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Vyhledat umístění pomocí služby Azure Maps Search Services
 
@@ -27,9 +27,9 @@ V tomto článku se dozvíte, jak:
 * Chcete-li přeložit polohu souřadnic na ulici, proveďte [hledání zpětného překladu adres](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) .
 * Hledání mezi ulici pomocí [hledané adresy rozhraní API pro reverzní Meziulici](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Abyste mohli dokončit kroky v tomto článku, musíte nejdřív vytvořit účet Azure Maps a poznáte klíč předplatného účtu. Podle pokynů v části [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps) vytvořte předplatné Azure Maps účtu a podle kroků v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) Získejte primární klíč pro svůj účet. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
+Abyste mohli dokončit kroky v tomto článku, musíte nejdřív vytvořit účet Azure Maps a poznáte klíč předplatného účtu. Podle pokynů v části [Vytvoření účtu](quick-demo-map-app.md#create-an-azure-maps-account) vytvořte předplatné Azure Maps účtu a podle kroků v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) Získejte primární klíč pro svůj účet. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
 
 V tomto článku se k sestavení volání REST používá [aplikace pro publikování](https://www.getpostman.com/apps) . Můžete použít libovolné vývojové prostředí API, které dáváte přednost.
 
@@ -55,7 +55,7 @@ Pokud máte sadu adres pro INCODE, můžete k odeslání dávky dotazů v jednom
 
 ![Hledání adres](./media/how-to-search-for-address/address_search_params.png) 
 
-| Klíč | Hodnota | 
+| Key | Hodnota | 
 |------------------|-------------------------| 
 | verze-api | 1.0 | 
 | předplatné – klíč | \<your Azure Maps key\> | 
@@ -73,7 +73,7 @@ V tomto případě jste zadali kompletní dotaz na adresu a v těle odpovědi p�
 
 6. Do oddílu **param** přidejte následující dvojici klíč/hodnota a klikněte na **Odeslat**: 
 
-| Klíč | Hodnota | 
+| Key | Hodnota | 
 |-----|------------| 
 | typeahead | true | 
 
@@ -105,7 +105,7 @@ Většina vyhledávacích dotazů je ve výchozím nastavení tak, aby `maxFuzzy
 
     ![Hledání přibližných výsledků](./media/how-to-search-for-address/fuzzy_search_params.png)
 
-    | Klíč | Hodnota |
+    | Key | Hodnota |
     |------------------|-------------------------|
     | verze-api | 1.0 |
     | předplatné – klíč | \<your Azure Maps key\> |
@@ -119,7 +119,7 @@ Většina vyhledávacích dotazů je ve výchozím nastavení tak, aby `maxFuzzy
 
 5. Do oddílu **param** přidejte následující dvojici klíč/hodnota a klikněte na **Odeslat**:
 
-    | Klíč | Hodnota |
+    | Key | Hodnota |
     |------------------|-------------------------|
     | countrySet | USA |
   
@@ -131,7 +131,7 @@ Většina vyhledávacích dotazů je ve výchozím nastavení tak, aby `maxFuzzy
 
     ![Hledání přibližných výsledků](./media/how-to-search-for-address/fuzzy_search_latlon.png)
   
-    | Klíč | Hodnota |
+    | Key | Hodnota |
     |-----|------------|
     | připojí | 47,620525 |
     | lon | -122,349274 |
@@ -159,7 +159,7 @@ Pokud máte k dispozici sadu souřadnicových umístění, můžete pomocí [roz
   
     ![Parametry vyhledávání zpětné adresy](./media/how-to-search-for-address/reverse_address_search_params.png)
   
-    | Klíč | Hodnota |
+    | Key | Hodnota |
     |------------------|-------------------------|
     | verze-api | 1.0 |
     | předplatné – klíč | \<your Azure Maps key\> |
@@ -171,7 +171,7 @@ Pokud máte k dispozici sadu souřadnicových umístění, můžete pomocí [roz
   
 5. Do oddílu **param** přidejte následující dvojici klíč/hodnota a klikněte na **Odeslat**:
 
-    | Klíč | Hodnota |
+    | Key | Hodnota |
     |-----|------------|
     | číslo | true |
 
@@ -179,7 +179,7 @@ Pokud máte k dispozici sadu souřadnicových umístění, můžete pomocí [roz
   
 6. Do oddílu **param** přidejte následující dvojici klíč/hodnota a klikněte na **Odeslat**:
 
-    | Klíč | Hodnota |
+    | Key | Hodnota |
     |-----|------------|
     | returnSpeedLimit | true |
   
@@ -187,7 +187,7 @@ Pokud máte k dispozici sadu souřadnicových umístění, můžete pomocí [roz
 
 7. Do oddílu **param** přidejte následující dvojici klíč/hodnota a klikněte na **Odeslat**:
 
-    | Klíč | Hodnota |
+    | Key | Hodnota |
     |-----|------------|
     | returnRoadUse | true |
 
@@ -195,7 +195,7 @@ Pokud máte k dispozici sadu souřadnicových umístění, můžete pomocí [roz
 
 8. Do oddílu **param** přidejte následující dvojici klíč/hodnota a klikněte na **Odeslat**:
 
-    | Klíč | Hodnota |
+    | Key | Hodnota |
     |-----|------------|
     | roadUse | true |
 
@@ -217,7 +217,7 @@ Pokud máte k dispozici sadu souřadnicových umístění, můžete pomocí [roz
   
 3. Klikněte na **parametry**a zadejte následující páry klíč/hodnota, které se použijí jako parametry dotazu nebo cesty v adrese URL požadavku:
   
-    | Klíč | Hodnota |
+    | Key | Hodnota |
     |------------------|-------------------------|
     | verze-api | 1.0 |
     | předplatné – klíč | \<your Azure Maps key\> |
