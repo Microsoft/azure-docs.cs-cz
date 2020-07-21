@@ -7,22 +7,25 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 6da539ccd8ad293aed402a4a6d130b6701e7b9c2
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: b3ed5d6605097b31dfaa58a2d37e71d3a6702bee
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187111"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537484"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>O dotazovacím jazyku pro digitální vlákna Azure
 
 Odvolat, že střed digitálních vláken Azure je [**dvojitým grafem**](concepts-twins-graph.md)vytvořeným z **digitálních vláken** a **vztahů**. Tento graf se dá dotázat, aby se získaly informace o digitálních vztazích a vztazích, které obsahuje. Tyto dotazy se napíší ve vlastním dotazovacím jazyce podobném SQL s názvem **jazyk úložiště dotazů digitálních vláken Azure**.
 
-K odeslání dotazu do služby z klientské aplikace použijete **rozhraní API pro dotazování**digitálních vláken Azure. To umožňuje vývojářům psát dotazy a používat filtry pro hledání sad digitálních vláken ve dvojitých grafech a další informace o scénáři digitálních vláken Azure.
+K odeslání dotazu do služby z klientské aplikace použijete [**rozhraní API pro dotazování**](https://docs.microsoft.com/dotnet/api/azure.digitaltwins.core.digitaltwinsclient.query?view=azure-dotnet-preview)digitálních vláken Azure. To umožňuje vývojářům psát dotazy a používat filtry pro hledání sad digitálních vláken ve dvojitých grafech a další informace o scénáři digitálních vláken Azure.
 
 ## <a name="query-language-features"></a>Funkce jazyka dotazů
 
 Digitální vlákna Azure poskytuje rozsáhlé možnosti dotazování pro dvojitou graf. Dotazy jsou popsány pomocí syntaxe jako v jazyce SQL, podobně jako [dotazovací jazyk IoT Hub](../iot-hub/iot-hub-devguide-query-language.md) s mnoha srovnatelnými funkcemi.
+
+> [!NOTE]
+> U všech operací dotazů na digitální vlákna Azure se rozlišují velká a malá písmena.
 
 Tady jsou dostupné operace v jazyce úložiště dotazů digitálních vláken Azure:
 * Získejte vlákna podle vlastností digitálních vláken.
@@ -37,4 +40,4 @@ Tady jsou dostupné operace v jazyce úložiště dotazů digitálních vláken 
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučte se zapisovat dotazy a zobrazit příklady klientského kódu v tématu [Postupy: dotazování na nevlákenný graf](how-to-query-graph.md).
+Naučte se zapisovat dotazy a zobrazit příklady klientského kódu v tématu [*Postupy: dotazování na nevlákenný graf*](how-to-query-graph.md).

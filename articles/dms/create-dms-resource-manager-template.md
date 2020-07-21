@@ -1,34 +1,39 @@
 ---
 title: Vytvoření instance DMS (Azure Resource Manager šablona)
-description: Naučte se vytvářet Database Migration Service pomocí šablony Azure Resource Manager.
+description: Naučte se vytvářet Database Migration Service pomocí šablony Azure Resource Manager (šablona ARM).
 author: MashaMSFT
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: dms
-ms.openlocfilehash: 9e0d537a948e960c90737cc3f367940a0ffca74c
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: dbc09c3fa1dc1878d4feea5c5e7fd8b68e0c11f1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852515"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537441"
 ---
-# <a name="create-instance-of-azure-database-migration-service-azure-resource-manager-template"></a>Vytvoření instance Azure Database Migration Service (Azure Resource Manager šablona)
+# <a name="quickstart-create-instance-of-azure-database-migration-service-using-arm-template"></a>Rychlý Start: vytvoření instance Azure Database Migration Service pomocí šablony ARM
 
-Tuto šablonu Azure Resource Manager použijte k nasazení instance Azure Database Migration Service. 
+Tuto šablonu Azure Resource Manager (šablonu ARM) použijte k nasazení instance Azure Database Migration Service. 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
+
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-azure-database-migration-simple-deploy%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Požadavky
 
 Šablona Azure Database Migration Service ARM vyžaduje následující: 
 
-- Nejnovější verzi rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) nebo [PowerShellu](/powershell/scripting/install/installing-powershell?view=powershell-7). 
+- Nejnovější verzi rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) nebo [PowerShellu](/powershell/scripting/install/installing-powershell). 
 - Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-azure-database-migration-simple-deploy/).
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-azure-database-migration-simple-deploy/).
 
 :::code language="json" source="~/quickstart-templates/101-azure-database-migration-simple-deploy/azuredeploy.json" highlight="33-75":::
 
@@ -38,7 +43,7 @@ V šabloně jsou definovány tři prostředky Azure:
 - [Microsoft. Network/virtualNetworks/subnets](/azure/templates/microsoft.network/virtualnetworks/subnets): vytvoří podsíť. 
 - [Migrace a služby společnosti Microsoft. DataServices](/azure/templates/microsoft.datamigration/services): nasadí instanci Azure Database Migration Service. 
 
-Další šablony služby Azure Database Migration Services najdete v [galerii šablon rychlý Start](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Datamigration).
+Další šablony služby Azure Database Migration Services najdete v [galerii šablon rychlý Start](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Datamigration&pageNumber=1&sort=Popular).
 
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
@@ -104,7 +109,7 @@ Write-Host "Press [ENTER] to continue..."
 Podrobný kurz, který vás provede procesem vytvoření šablony, najdete v těchto tématech:
 
 > [!div class="nextstepaction"]
-> [Kurz: vytvoření a nasazení první šablony Azure Resource Manager](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [Kurz: vytvoření a nasazení první šablony ARM](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
 
 Další způsoby nasazení Azure Database Migration Service najdete v následujících tématech: 
 - [Azure Portal](quickstart-create-data-migration-service-portal.md)

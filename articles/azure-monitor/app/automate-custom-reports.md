@@ -4,12 +4,12 @@ description: Automatizace vlastních denních, týdenních nebo měsíčních se
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: cf251d63645efc70ee93e84827db47ae3055ae33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4eb580b90c0bf9acafc4e8f805c2eef7eaae06d3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82161441"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540073"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Automatizace vlastních sestav pomocí Azure Application Insights dat
 
@@ -31,9 +31,9 @@ Každá organizace má své jedinečné požadavky na vytváření sestav, jako 
 
 [Pomocí programového dotazování](https://dev.applicationinsights.io/) na data Application Insights můžete vytvářet vlastní sestavy podle plánu. Následující možnosti vám pomůžou rychle začít:
 
-* [Automatizace sestav pomocí Microsoft Flow](automate-with-flow.md)
+* [Automatizace sestav pomocí Microsoft Flow](../platform/logicapp-flow-connector.md)
 * [Automatizace sestav pomocí Logic Apps](automate-with-logic-apps.md)
-* V scénáři monitorování použijte šablonu [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function) "Application Insights naplánovaný výtah". Tato funkce používá SendGrid k doručování e-mailů. 
+* V scénáři monitorování použijte šablonu [Azure Functions](../../azure-functions/functions-create-first-azure-function.md) "Application Insights naplánovaný výtah". Tato funkce používá SendGrid k doručování e-mailů. 
 
     ![Šablona funkce Azure](./media/automate-custom-reports/azure-function-template.png)
 
@@ -72,7 +72,7 @@ availabilityResults
 
 1. Vytvoří Function App Azure. (Application Insights on se vyžaduje jenom _v_ případě, že chcete monitorovat nové Function App s Application Insights).
 
-   Informace o tom, jak [vytvořit aplikaci Function App](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app) , najdete v dokumentaci k Azure Functions.
+   Informace o tom, jak [vytvořit aplikaci Function App](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app) , najdete v dokumentaci k Azure Functions.
 
 2. Po dokončení nasazení nového Function App vyberte **Přejít k prostředku**.
 
@@ -83,7 +83,7 @@ availabilityResults
 4. Vyberte **_Application Insights naplánovanou šablonu Digest_**.
 
      > [!NOTE]
-     > Ve výchozím nastavení se aplikace Function App vytvoří s modulem runtime verze 3. x. Aby bylo možné použít šablonu Application Insights naplánovaného algoritmu Digest, je třeba [cílit na Azure Functions runtime verze](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) **1. x** . Chcete-li změnit verzi modulu runtime, přejděte na konfigurační > Function runtime nastavení. ![snímek obrazovky za běhu](./media/automate-custom-reports/change-runtime-v.png)
+     > Ve výchozím nastavení se aplikace Function App vytvoří s modulem runtime verze 3. x. Aby bylo možné použít šablonu Application Insights naplánovaného algoritmu Digest, je třeba [cílit na Azure Functions runtime verze](../../azure-functions/set-runtime-version.md) **1. x** . Chcete-li změnit verzi modulu runtime, přejděte na konfigurační > Function runtime nastavení. ![snímek obrazovky za běhu](./media/automate-custom-reports/change-runtime-v.png)
 
    ![Snímek nové Application Insights šablony funkce](./media/automate-custom-reports/function-app-04.png)
 
@@ -106,7 +106,7 @@ availabilityResults
    * SendGridAPI = klíč rozhraní API SendGrid
 
      > [!NOTE]
-     > Pokud nemáte účet SendGrid, můžete ho vytvořit. SendGrid dokumentace k Azure Functions je [zde](https://docs.microsoft.com/azure/azure-functions/functions-bindings-sendgrid). Pokud stačí pouze minimální vysvětlení, jak nastavit SendGrid a vygenerovat klíč rozhraní API, je k dispozici na konci tohoto článku. 
+     > Pokud nemáte účet SendGrid, můžete ho vytvořit. SendGrid dokumentace k Azure Functions je [zde](../../azure-functions/functions-bindings-sendgrid.md). Pokud stačí pouze minimální vysvětlení, jak nastavit SendGrid a vygenerovat klíč rozhraní API, je k dispozici na konci tohoto článku. 
 
 8. Vyberte možnost **integrace** a ve výstupu klikněte na **SendGrid ($Return)**.
 
@@ -152,5 +152,5 @@ Tyto kroky platí pouze v případě, že ještě nemáte nakonfigurovaný úče
 
 * Přečtěte si další informace o vytváření [analytických dotazů](../../azure-monitor/log-query/get-started-queries.md).
 * Další informace o [programovém dotazování Application Insights dat](https://dev.applicationinsights.io/)
-* Další informace o [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps).
+* Další informace o [Logic Apps](../../logic-apps/logic-apps-overview.md).
 * Přečtěte si další informace o [Microsoft Flow](https://ms.flow.microsoft.com).

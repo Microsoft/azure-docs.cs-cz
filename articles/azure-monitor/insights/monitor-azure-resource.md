@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 430b1c044ac5fc22dbf3a4f4df33ff9017e21d6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 727653314104ee1b2a27a1342de9824d8f303e23
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361951"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539733"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Monitorování prostředků Azure pomocí Azure Monitor
 Pokud máte důležité aplikace a obchodní procesy spoléhající se na prostředky Azure, budete chtít tyto prostředky sledovat pro jejich dostupnost, výkon a provoz. Tento článek popisuje data monitorování vygenerovaná prostředky Azure a o tom, jak můžete pomocí funkcí Azure Monitor analyzovat tato data a upozorňovat na ně.
@@ -79,9 +79,9 @@ Shromažďování dat do protokolů Azure Monitor vyžaduje pracovní prostor Lo
 ## <a name="diagnostic-settings"></a>Nastavení diagnostiky
 Nastavení diagnostiky definují, kam se mají odesílat protokoly prostředků a metriky pro konkrétní prostředek. Možné cíle:
 
-- [Log Analytics pracovní prostor](../platform/resource-logs-collect-workspace.md) , který umožňuje analyzovat data s dalšími daty monitorování shromážděnými pomocí Azure monitor pomocí výkonných dotazů protokolu a také využívat jiné Azure monitor funkce, jako jsou výstrahy protokolu a vizualizace. 
-- [Centra událostí](../platform/resource-logs-stream-event-hubs.md) pro streamování dat do externích systémů, jako jsou systémů Siem třetích stran a další řešení Log Analytics. 
-- [Účet služby Azure Storage](../platform/resource-logs-collect-storage.md) , který je vhodný pro audit, statickou analýzu nebo zálohování.
+- [Log Analytics pracovní prostor](../platform/resource-logs.md#send-to-log-analytics-workspace) , který umožňuje analyzovat data s dalšími daty monitorování shromážděnými pomocí Azure monitor pomocí výkonných dotazů protokolu a také využívat jiné Azure monitor funkce, jako jsou výstrahy protokolu a vizualizace. 
+- [Centra událostí](../platform/resource-logs.md#send-to-azure-event-hubs) pro streamování dat do externích systémů, jako jsou systémů Siem třetích stran a další řešení Log Analytics. 
+- [Účet služby Azure Storage](../platform/resource-logs.md#send-to-azure-storage) , který je vhodný pro audit, statickou analýzu nebo zálohování.
 
 Pomocí postupu v části [Vytvoření nastavení diagnostiky Shromážděte protokoly a metriky platforem v Azure](../platform/diagnostic-settings.md) , abyste mohli vytvořit a spravovat nastavení diagnostiky prostřednictvím Azure Portal. V tématu [Vytvoření nastavení diagnostiky v Azure použijte šablonu správce prostředků](../platform/diagnostic-settings-template.md) k jejich definování v šabloně a povolení kompletního monitorování prostředku při jeho vytvoření.
 
@@ -114,7 +114,7 @@ Analyzujte metriky v Azure Portal pomocí [Průzkumníka metrik](../platform/met
 ### <a name="activity-log"></a>Protokol aktivit 
 Umožňuje zobrazit položky v protokolu aktivit v Azure Portal pomocí počátečního filtru nastaveného na aktuální prostředek. Zkopírujte protokol aktivit do pracovního prostoru Log Analytics, abyste k němu měli přístup, abyste ho mohli použít v protokolových dotazech a sešitech. 
 
-- Podrobnosti o zobrazení protokolu aktivit a načítání položek pomocí různých metod najdete v tématu [zobrazení a načtení událostí protokolu aktivit Azure](../platform/activity-log-view.md) .
+- Podrobnosti o zobrazení protokolu aktivit a načítání položek pomocí různých metod najdete v tématu [zobrazení a načtení událostí protokolu aktivit Azure](../platform/activity-log.md#view-the-activity-log) .
 - Konkrétní události, které se protokolují, najdete v dokumentaci ke službě Azure.
 
 ![Protokol aktivit](media/monitor-azure-resource/activity-log.png)
@@ -125,8 +125,8 @@ Protokoly Azure Monitor konsolidují protokoly a metriky z několika služeb a d
 [Log Analytics](../log-query/get-started-portal.md) vám umožní pracovat s [dotazy protokolu](../log-query/log-query-overview.md), což je výkonná funkce Azure monitor, která umožňuje provádět pokročilou analýzu dat protokolu pomocí plně funkčního dotazovacího jazyka. Otevřete Log Analytics z **protokolů** v nabídce **monitorování** pro prostředek Azure pro práci s dotazy protokolu pomocí prostředku jako [oboru dotazu](../log-query/scope.md#query-scope). To vám umožní analyzovat data napříč několika tabulkami pouze pro daný prostředek. K získání přístupu k protokolům pro všechny prostředky použijte **protokoly** z nabídky Azure monitor. 
 
 - Kurz týkající se použití dotazovacího jazyka použitého k zápisu dotazů protokolu najdete v tématu Začínáme [s dotazy protokolu v Azure monitor](../log-query/get-started-queries.md) .
-- Informace o tom, jak se protokoly o prostředcích shromažďují v Azure Monitor protokolech a podrobnosti o tom, jak k nim přistupovat v dotazu, najdete v tématu [shromáždění protokolů prostředků Azure v pracovním prostoru Log Analytics v Azure monitor](../platform/resource-logs-collect-workspace.md) .
-- Vysvětlení způsobu strukturování dat protokolu prostředků v Azure Monitorch protokolech najdete v části [režim shromažďování](../platform/resource-logs-collect-workspace.md#resource-log-collection-mode) .
+- Informace o tom, jak se protokoly o prostředcích shromažďují v Azure Monitor protokolech a podrobnosti o tom, jak k nim přistupovat v dotazu, najdete v tématu [shromáždění protokolů prostředků Azure v pracovním prostoru Log Analytics v Azure monitor](../platform/resource-logs.md#send-to-log-analytics-workspace) .
+- Vysvětlení způsobu strukturování dat protokolu prostředků v Azure Monitorch protokolech najdete v části [režim shromažďování](../platform/resource-logs.md#send-to-log-analytics-workspace) .
 - Podrobnosti o své tabulce v protokolu Azure Monitor najdete v dokumentaci ke každé službě Azure.
 
 ![Protokoly](media/monitor-azure-resource/logs.png)
@@ -163,4 +163,4 @@ Pomocí **Upozornění** z nabídky prostředku můžete zobrazit výstrahy a sp
 
 ## <a name="next-steps"></a>Další kroky
 
-* Podrobnosti o protokolech prostředků pro různé služby Azure najdete v tématu [podporované služby, schémata a kategorie pro protokoly prostředků Azure](../platform/diagnostic-logs-schema.md) .  
+* Podrobnosti o protokolech prostředků pro různé služby Azure najdete v tématu [podporované služby, schémata a kategorie pro protokoly prostředků Azure](../platform/resource-logs-schema.md) .  

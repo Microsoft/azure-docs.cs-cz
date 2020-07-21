@@ -4,15 +4,15 @@ description: Automatické škálování vzorů v Azure pro Web Apps, škálován
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: a05cf87e660cc6c388ea2055bb174c47b99da4a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47da813498ef2cd4d16aeaa5ab31eff24b1db267
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846931"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539529"
 ---
 # <a name="best-practices-for-autoscale"></a>Osvědčené postupy pro automatické škálování
-Automatické škálování Azure Monitor platí jenom pro služby [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)a [API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
+Automatické škálování Azure Monitor platí jenom pro služby [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)a [API Management](../../api-management/api-management-key-concepts.md).
 
 ## <a name="autoscale-concepts"></a>Koncepty automatického škálování
 
@@ -151,4 +151,3 @@ Kromě používání výstrah protokolu aktivit můžete také nakonfigurovat oz
 ## <a name="next-steps"></a>Další kroky
 - [Vytvořením upozornění protokolu aktivit můžete monitorovat všechny operace modulu automatického škálování v rámci vašeho předplatného.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [Vytvoření upozornění protokolu aktivit pro monitorování všech neúspěšných škálování pro automatické škálování v rámci předplatného nebo horizontálního navýšení kapacity](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
-

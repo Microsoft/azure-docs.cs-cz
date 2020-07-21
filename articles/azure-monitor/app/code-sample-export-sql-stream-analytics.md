@@ -3,12 +3,12 @@ title: Export do SQL z Azure Application Insights | Microsoft Docs
 description: Průběžně exportujte Application Insights data do SQL pomocí Stream Analytics.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 3c8586e8a6950e827d1078ca7d9cc3792fa58ae0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4975d91cc20b81de302a1dd0cb7b3326878a96a1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087216"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540090"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Návod: Export do jazyka SQL z Application Insights pomocí Stream Analytics
 Tento článek popisuje, jak přesunout data telemetrie z [Azure Application Insights][start] do Azure SQL Database pomocí [průběžného exportu][export] a [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
@@ -72,7 +72,7 @@ Průběžný export vždycky ukládá data do účtu Azure Storage, takže nejd�
 
 Události se zapisují do souborů BLOB ve formátu JSON. Každý soubor může obsahovat jednu nebo více událostí. Proto bychom chtěli číst data událostí a vyfiltrovat požadovaná pole. Existují nejrůznější věci, které jsme s daty mohli dělat, ale náš plán dnes je použít Stream Analytics k přesunu dat do SQL Database. Díky tomu bude snadné spouštět spoustu zajímavých dotazů.
 
-## <a name="create-an-azure-sql-database"></a>Vytvoření databáze Azure SQL Database
+## <a name="create-an-azure-sql-database"></a>Vytvoří Azure SQL Database.
 Až se znovu rozhodnete z předplatného v [Azure Portal][portal], vytvořte databázi (a nový server, pokud jste ho ještě nezískali), na který budete data zapisovat.
 
 ![Nová data, SQL](./media/code-sample-export-sql-stream-analytics/090-sql.png)
@@ -82,7 +82,7 @@ Ujistěte se, že server umožňuje přístup ke službám Azure:
 ![Procházení, servery, server, nastavení, brána firewall, povolení přístupu k Azure](./media/code-sample-export-sql-stream-analytics/100-sqlaccess.png)
 
 ## <a name="create-a-table-in-azure-sql-database"></a>Vytvořit tabulku v Azure SQL Database
-Připojte se k databázi vytvořené v předchozí části pomocí preferovaného nástroje pro správu. V tomto návodu použijeme [SQL Server Management Tools](https://msdn.microsoft.com/ms174173.aspx) (SSMS).
+Připojte se k databázi vytvořené v předchozí části pomocí preferovaného nástroje pro správu. V tomto návodu použijeme [SQL Server Management Tools](/sql/ssms/sql-server-management-studio-ssms?view=sql-server-ver15) (SSMS).
 
 ![Připojení k Azure SQL Database](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
 
@@ -161,7 +161,7 @@ Vzor předpony cesty určuje, jak Stream Analytics najde vstupní soubory v úlo
 webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
 ```
 
-V tomto příkladu:
+V tomto příkladu:
 
 * `webapplication27`je název prostředku Application Insights, a to **vše v malých malých písmenech**. 
 * `1234...`je klíč instrumentace prostředku Application Insights **s odebranými pomlčkami**. 
@@ -255,4 +255,3 @@ FROM [dbo].[PageViewsTable]
 [metrics]: ../../azure-monitor/platform/metrics-charts.md
 [portal]: https://portal.azure.com/
 [start]: ../../azure-monitor/app/app-insights-overview.md
-

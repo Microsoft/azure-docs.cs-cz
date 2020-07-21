@@ -4,11 +4,12 @@ description: Podrobný rozpis nastavení automatického škálování a způsobu
 ms.topic: conceptual
 ms.date: 12/18/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 9a2b94208de7ce490a0e7acfbb71175b4a7c846e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03019b35a85d8d511e3ada131eff890a60fd57f6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75364301"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539376"
 ---
 # <a name="understand-autoscale-settings"></a>Vysvětlení nastavení automatického škálování
 Nastavení automatického škálování vám pomůžou zajistit, že máte správné množství prostředků, na kterých běží, aby bylo možné zvládnout kolísání vaší aplikace. Nastavení automatického škálování můžete nakonfigurovat tak, aby se aktivovalo na základě metrik, které indikují zatížení nebo výkon, nebo aktivované v naplánovaném datu a času. V tomto článku se podíváme na podrobné znalosti nastavení automatického škálování. Článek začíná schématem a vlastnostmi nastavení a pak projde různými typy profilů, které lze konfigurovat. Nakonec článek popisuje, jak funkce automatického škálování v Azure vyhodnocuje, který profil se má v daném okamžiku provést.
@@ -84,7 +85,7 @@ Pro ilustraci schématu nastavení automatického škálování se používá n�
 }
 ```
 
-| Sekce | Název elementu | Description |
+| Sekce | Název elementu | Popis |
 | --- | --- | --- |
 | Nastavení | ID | ID prostředku nastavení automatického škálování. Nastavení automatického škálování je Azure Resource Manager prostředek. |
 | Nastavení | name | Název nastavení automatického škálování. |
@@ -105,7 +106,7 @@ Pro ilustraci schématu nastavení automatického škálování se používá n�
 | metricTrigger | timeAggregation | Agregační metoda sloužící k agregaci vzorků metrik. Například **TimeAggregation = "Average"** by měl agregovat vzorkování metriky tím, že přijímá průměr. V předchozím případě Vezměte deset ukázek a průměrně. |
 | pravidlo | scaleAction | Akce, která se má provést, když se aktivuje metricTrigger pravidla |
 | scaleAction | směr | "Zvětšit" pro horizontální navýšení kapacity nebo "zmenšení" pro horizontální navýšení kapacity.|
-| scaleAction | hodnota | Kolik se má zvýšit nebo snížit kapacita prostředku. |
+| scaleAction | Hodnota | Kolik se má zvýšit nebo snížit kapacita prostředku. |
 | scaleAction | cooldown | Doba, po kterou se má počkat po operaci škálování, než se znovu změní velikost Například pokud **cooldown = "PT10M"**, automatické škálování se znovu nepokouší o horizontální navýšení kapacity po dobu dalších 10 minut. Cooldown je, aby bylo možné metriky stabilizovat po přidání nebo odebrání instancí. |
 
 ## <a name="autoscale-profiles"></a>Profily automatického škálování
@@ -304,5 +305,4 @@ Další informace o automatickém škálování najdete v následujících odkaz
 * [Azure Monitor běžné metriky automatického škálování](../../azure-monitor/platform/autoscale-common-metrics.md)
 * [Osvědčené postupy pro automatické škálování služby Azure Monitor](../../azure-monitor/platform/autoscale-best-practices.md)
 * [Použití akcí automatického škálování k odesílání oznámení o výstrahách e-mailu a Webhooku](../../azure-monitor/platform/autoscale-webhook-email.md)
-* [REST API automatického škálování](https://msdn.microsoft.com/library/dn931953.aspx)
-
+* [REST API automatického škálování](/rest/api/monitor/autoscalesettings)

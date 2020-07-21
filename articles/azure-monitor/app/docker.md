@@ -3,16 +3,17 @@ title: Monitorování aplikací Docker v Azure Application Insights | Microsoft 
 description: Čítače výkonu Docker, události a výjimky lze zobrazit v Application Insights společně s telemetrie z kontejnerových aplikací.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 5ff3d6a2b31425a3fb6857c8c6aed45f7ef18d64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6af39db68c2020e578fe6fbd39870b2e00a16e07
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669603"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539920"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>Monitorovat aplikace Docker v Application Insights (zastaralé)
 
 > [!NOTE]
-> Toto řešení je zastaralé. Pokud chcete získat další informace o našich aktuálních investicích do monitorování kontejnerů, doporučujeme rezervovat [Azure monitor pro kontejnery](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview).
+> Toto řešení je zastaralé. Pokud chcete získat další informace o našich aktuálních investicích do monitorování kontejnerů, doporučujeme rezervovat [Azure monitor pro kontejnery](../insights/container-insights-overview.md).
 
 Události životního cyklu a čítače výkonu z kontejnerů [Docker](https://www.docker.com/) lze v grafu Application Insights. Nainstalujte [Application Insights](https://hub.docker.com/r/microsoft/applicationinsights/) image do kontejneru na hostiteli a zobrazí se čítače výkonu pro hostitele a také pro ostatní image.
 

@@ -6,11 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: f31fcc07bed0287c2f86ca4fe52bf02a2a1d2a71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09db7684c84bbde038c67f9ccfb3f27f6b61bee6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114409"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539545"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Příprava aplikací logiky a runbooků na migraci klasických pravidel upozornění
 
@@ -27,12 +28,12 @@ Rozhraní API, která vytvářejí a spravují klasická pravidla upozornění (
 
 Následující tabulka je odkazem na programová rozhraní pro klasické a nové výstrahy:
 
-|         |Klasická upozornění  |Nové výstrahy metriky |
-|---------|---------|---------|
-|REST API     | [Microsoft. Insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [Microsoft. Insights/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
-|Azure CLI     | [AZ monitor Alert](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [AZ monitor Metrics Alert](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
-|PowerShell      | [Reference](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [Reference](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
-| Šablona Azure Resource Manageru | [Pro klasické výstrahy](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-enable-template)|[Nové výstrahy metriky](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)|
+| Typ skriptu nasazení | Klasická upozornění | Nové výstrahy metriky |
+| ---------------------- | -------------- | ----------------- |
+|REST API     | [Microsoft. Insights/alertrules](/rest/api/monitor/alertrules)         | [Microsoft. Insights/metricalerts](/rest/api/monitor/metricalerts)       |
+|Azure CLI     | [AZ monitor Alert](/cli/azure/monitor/alert?view=azure-cli-latest)        | [AZ monitor Metrics Alert](/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
+|PowerShell      | [Odkaz](/powershell/module/az.monitor/add-azmetricalertrule)       |  [Odkaz](/powershell/module/az.monitor/add-azmetricalertrulev2)    |
+| Šablona Azure Resource Manageru | [Pro klasické výstrahy](./alerts-enable-template.md)|[Nové výstrahy metriky](./alerts-metric-create-templates.md)|
 
 ## <a name="notification-payload-changes"></a>Změny datové části oznámení
 
@@ -40,8 +41,8 @@ Formát datové části oznámení se mírně liší mezi [pravidly upozornění
 
 Pomocí následující tabulky namapujte pole datové části Webhooku z klasického formátu do nového formátu:
 
-|  |Klasická upozornění  |Nové výstrahy metriky |
-|---------|---------|---------|
+| Typ koncového bodu oznámení | Klasická upozornění | Nové výstrahy metriky |
+| -------------------------- | -------------- | ----------------- |
 |Aktivovala se výstraha nebo se vyřešila?    | **stav**       | **data. status** |
 |Kontextové informace o výstraze     | **souvislost**        | **data. Context**        |
 |Časové razítko, u kterého se výstraha aktivovala nebo vyřešila     | **Context. timestamp**       | **data. Context. timestamp**        |
@@ -70,7 +71,7 @@ Datová část je podobná, jak vidíte. Následující část nabízí:
 
 ## <a name="modify-a-logic-app-to-receive-a-metric-alert-notification"></a>Úprava aplikace logiky pro příjem upozornění na upozornění metriky
 
-Pokud používáte Logic Apps s klasickými výstrahami, musíte upravit logiku – kód aplikace a analyzovat novou datovou část upozornění metrik. Postupujte následovně:
+Pokud používáte Logic Apps s klasickými výstrahami, musíte upravit logiku – kód aplikace a analyzovat novou datovou část upozornění metrik. Postupujte takto:
 
 1. Vytvořte novou aplikaci logiky.
 
@@ -149,11 +150,11 @@ else {
 
 ```
 
-Úplný příklad Runbooku, který zastaví virtuální počítač, když se aktivuje výstraha, najdete v [dokumentaci k Azure Automation](https://docs.microsoft.com/azure/automation/automation-create-alert-triggered-runbook).
+Úplný příklad Runbooku, který zastaví virtuální počítač, když se aktivuje výstraha, najdete v [dokumentaci k Azure Automation](../../automation/automation-create-alert-triggered-runbook.md).
 
 ## <a name="partner-integration-via-webhooks"></a>Integrace partnerů prostřednictvím webhooků
 
-Většina [našich partnerů, kteří se integrují s klasickými výstrahami,](https://docs.microsoft.com/azure/azure-monitor/platform/partners) už v rámci svých integrací podporuje novější výstrahy metriky. Známé integrace, které už fungují s novými výstrahami metriky:
+Většina [našich partnerů, kteří se integrují s klasickými výstrahami,](./partners.md) už v rámci svých integrací podporuje novější výstrahy metriky. Známé integrace, které už fungují s novými výstrahami metriky:
 
 - [PagerDuty](https://www.pagerduty.com/docs/guides/azure-integration-guide/)
 - [OpsGenie](https://docs.opsgenie.com/docs/microsoft-azure-integration)

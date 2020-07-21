@@ -3,11 +3,12 @@ title: Matice podpory pro agenta MARS
 description: Tento článek shrnuje Azure Backup podporu při zálohování počítačů, na kterých běží agent služby Microsoft Azure Recovery Services (MARS).
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6085bc647c06b5907282460a2d8706b8549e1bc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ff9510dfa31bb947d50b1a91fb7f73c2d767471
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84709874"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538645"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Matice podpory pro zálohování s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -29,7 +30,7 @@ Možnosti zálohování závisí na tom, kde je agent nainstalovaný. Další in
 **Instalace** | **Podrobnosti**
 --- | ---
 Stáhnout nejnovějšího agenta MARS | Nejnovější verzi agenta si můžete stáhnout z trezoru nebo [si ho stáhnout přímo](https://aka.ms/azurebackup_agent).
-Instalace přímo na počítač | Agenta MARS můžete nainstalovat přímo na místní Windows Server nebo na virtuální počítač s Windows, na kterém běží některý z [podporovaných operačních systémů](https://docs.microsoft.com/azure/backup/backup-support-matrix-mabs-dpm#supported-mabs-and-dpm-operating-systems).
+Instalace přímo na počítač | Agenta MARS můžete nainstalovat přímo na místní Windows Server nebo na virtuální počítač s Windows, na kterém běží některý z [podporovaných operačních systémů](./backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
 Instalace na záložní server | Když nastavíte DPM nebo MABS pro zálohování do Azure, stáhnete a nainstalujete agenta MARS na server. Agenta můžete nainstalovat v [podporovaných operačních systémech](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems) v matici podpory záložního serveru.
 
 > [!NOTE]
@@ -84,7 +85,7 @@ S partnerským vztahem Microsoftu vyberte prosím následující služby nebo ob
 - Oblast Microsoft Azure (podle umístění vašeho trezoru Recovery Services)
 - Azure Storage (podle umístění vašeho trezoru Recovery Services)
 
-Další informace najdete v tématu [požadavky na směrování ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
+Další informace najdete v tématu [požadavky na směrování ExpressRoute](../expressroute/expressroute-routing.md).
 
 >[!NOTE]
 >Veřejné partnerské vztahy se pro nové okruhy zastaraly.
@@ -116,7 +117,7 @@ Windows 8 (Enterprise, pro) | Ano | No | Ověřte odpovídající verzi serveru 
 Windows Server 2016 (Standard, Datacenter, Essentials) | Ano | Ano | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
 Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Ano | Ano | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
 Windows Server 2012 (Standard, Datacenter, základ) | Ano | Ano |– .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0 <br> – Údržba a Správa imagí nasazení (DISM.exe)
-Windows Storage Server 2016/2012 R2/2012 (Standard, pracovní skupina) | Yes | No | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
+Windows Storage Server 2016/2012 R2/2012 (Standard, pracovní skupina) | Ano | No | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
 Windows Server 2019 (Standard, Datacenter, Essentials) | Ano | Ano | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
 
 Další informace najdete v tématu [podporované MABS a operační systémy DPM](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
@@ -127,13 +128,13 @@ Následující operační systémy jsou na konci podpory a důrazně se doporuč
 
 Pokud stávající závazky brání upgradu operačního systému, zvažte migraci serverů Windows na virtuální počítače Azure a využití záloh virtuálních počítačů Azure pro pokračování v zachování ochrany. Další informace o migraci Windows serveru najdete na [stránce věnované migraci](https://azure.microsoft.com/migration/windows-server/) .
 
-U místních nebo hostovaných prostředí, kde nemůžete upgradovat operační systém ani migrovat na Azure, aktivujte u těchto počítačů rozšířené aktualizace zabezpečení, abyste mohli i nadále chránit a podporovat. Všimněte si, že pro rozšířené aktualizace zabezpečení jsou vhodné jenom konkrétní edice. Další informace najdete na [stránce s nejčastějšími dotazy](https://www.microsoft.com/cloud-platform/extended-security-updates) .
+U místních nebo hostovaných prostředí, kde nemůžete upgradovat operační systém ani migrovat na Azure, aktivujte u těchto počítačů rozšířené aktualizace zabezpečení, abyste mohli i nadále chránit a podporovat. Všimněte si, že pro rozšířené aktualizace zabezpečení jsou vhodné jenom konkrétní edice. Další informace najdete na [stránce s nejčastějšími dotazy](https://www.microsoft.com/windows-server/extended-security-updates) .
 
 | **Operační systém**                                       | **Soubory/složky** | **Stav systému** | **Požadavky na software/modul**                           |
 | ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |
-| Windows 7 (Ultimate, Enterprise, pro, Home Premium/Basic, Starter) | Yes               | No                 | Ověřte odpovídající verzi serveru pro software/modul požadavky. |
+| Windows 7 (Ultimate, Enterprise, pro, Home Premium/Basic, Starter) | Ano               | No                 | Ověřte odpovídající verzi serveru pro software/modul požadavky. |
 | Windows Server 2008 R2 (Standard, Enterprise, Datacenter, základ) | Ano               | Ano                | – .NET 3,5, .NET 4,5 <br>  – Windows PowerShell <br>  -Kompatibilní Microsoft VC + + Redistributable <br>  – Microsoft Management Console (MMC) 3,0 <br>  – Údržba a Správa imagí nasazení (DISM.exe) |
-| Windows Server 2008 SP2 (Standard, Datacenter, základ)  | Yes               | No                 | – .NET 3,5, .NET 4,5 <br>  – Windows PowerShell <br>  -Kompatibilní Microsoft VC + + Redistributable <br>  – Microsoft Management Console (MMC) 3,0 <br>  – Údržba a Správa imagí nasazení (DISM.exe) <br>  – Virtual Server 2005 Base + KB KB948515 |
+| Windows Server 2008 SP2 (Standard, Datacenter, základ)  | Ano               | No                 | – .NET 3,5, .NET 4,5 <br>  – Windows PowerShell <br>  -Kompatibilní Microsoft VC + + Redistributable <br>  – Microsoft Management Console (MMC) 3,0 <br>  – Údržba a Správa imagí nasazení (DISM.exe) <br>  – Virtual Server 2005 Base + KB KB948515 |
 
 ## <a name="backup-limits"></a>Omezení zálohování
 
@@ -161,13 +162,13 @@ Windows 7| 1 700 GB
 Komprimované | Podporuje se.
 Řídké | Podporuje se.
 Komprimované a zhuštěné |Podporuje se.
-Pevné odkazy| Není podporováno. Přeskočeno.
-Spojovací bod| Není podporováno. Přeskočeno.
-Šifrované a zhuštěné |Není podporováno. Přeskočeno.
-Komprimovaný datový proud| Není podporováno. Přeskočeno.
-Zhuštěný datový proud| Není podporováno. Přeskočeno.
-OneDrive (synchronizované soubory jsou zhuštěné streamy)| Není podporováno.
-Složky s povoleným Replikace DFS | Není podporováno.
+Pevné odkazy| Nepodporováno Přeskočeno.
+Spojovací bod| Nepodporováno Přeskočeno.
+Šifrované a zhuštěné |Nepodporováno Přeskočeno.
+Komprimovaný datový proud| Nepodporováno Přeskočeno.
+Zhuštěný datový proud| Nepodporováno Přeskočeno.
+OneDrive (synchronizované soubory jsou zhuštěné streamy)| Nepodporováno
+Složky s povoleným Replikace DFS | Nepodporováno
 
 \*Zajistěte, aby měl agent MARS přístup k požadovaným certifikátům pro přístup k šifrovaným souborům. Nedostupné soubory se přeskočí.
 
@@ -175,13 +176,13 @@ Složky s povoleným Replikace DFS | Není podporováno.
 
 **Jednotka/svazek** | **Podpora** | **Podrobnosti**
 --- | --- | ---
-Svazky jen pro čtení| Nepodporuje se | Služba Stínová kopie svazku (VSS) funguje pouze v případě, že svazek je zapisovatelný.
-Offline svazky| Nepodporuje se |Služba Stínová kopie svazku funguje jenom v případě, že je svazek online.
-Sdílená síťová složka| Nepodporuje se |Svazek musí být na serveru místní.
-Svazky zamčené nástrojem BitLocker| Nepodporuje se |Svazek musí být před zahájením zálohování odemčen.
-Identifikace systému souborů| Nepodporuje se |Podporován je pouze systém souborů NTFS.
-Vyměnitelná média| Nepodporuje se |Všechny zdroje záložních položek musí mít *pevný* stav.
-Jednotky s odstraněnými duplicitními daty | Podporuje se | Azure Backup převede data s odstraněnými duplicitními daty na normální data. Optimalizuje, šifruje, ukládá a odesílá data do trezoru.
+Svazky jen pro čtení| Nepodporováno | Služba Stínová kopie svazku (VSS) funguje pouze v případě, že svazek je zapisovatelný.
+Offline svazky| Nepodporováno |Služba Stínová kopie svazku funguje jenom v případě, že je svazek online.
+Sdílená síťová složka| Nepodporováno |Svazek musí být na serveru místní.
+Svazky zamčené nástrojem BitLocker| Nepodporováno |Svazek musí být před zahájením zálohování odemčen.
+Identifikace systému souborů| Nepodporováno |Podporován je pouze systém souborů NTFS.
+Vyměnitelná média| Nepodporováno |Všechny zdroje záložních položek musí mít *pevný* stav.
+Jednotky s odstraněnými duplicitními daty | Podporováno | Azure Backup převede data s odstraněnými duplicitními daty na normální data. Optimalizuje, šifruje, ukládá a odesílá data do trezoru.
 
 ## <a name="support-for-initial-offline-backup"></a>Podpora počátečního zálohování offline
 

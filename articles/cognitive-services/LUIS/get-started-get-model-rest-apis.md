@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: získání záměru pomocí rozhraní REST API – LUIS'
+title: 'Rychlý Start: Změna modelu pomocí rozhraní REST API – LUIS'
 titleSuffix: Azure Cognitive Services
 description: V tomto REST API rychlého startu pomocí dostupné veřejné aplikace LUIS určete záměr uživatele z konverzačního textu.
 services: cognitive-services
@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 06/03/2020
 ms.author: diberry
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: a4d84aa6dc24bc7d293200e20d60c5fe349a769d
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: cc3e0c66a018c46fcae76dea9b74735082e077aa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608566"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538101"
 ---
 # <a name="quickstart-change-model-with-rest-apis"></a>Rychlý Start: Změna modelu pomocí rozhraní REST API
 

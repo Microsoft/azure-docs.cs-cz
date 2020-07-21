@@ -6,11 +6,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 83575aa7f9b63615f453e00bd06b00a5540b9a9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9eb753981821a6b53d81b1d03e65abf68e0064dc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80892253"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539988"
 ---
 # <a name="what-is-distributed-tracing"></a>Co je distribuované trasování?
 
@@ -20,9 +21,9 @@ V architekturách monolitické jsme se seznámili s používáním ladění pomo
 
 To je místo, kde se nachází distribuované trasování.  
 
-Distribuované trasování je ekvivalentem zásobníků volání pro moderní cloudové a mikroslužby, a to s přidáním služby zjednodušený Performance profileru, která je vyvolána v. V Azure Monitor poskytujeme dvě prostředí pro využívání distribuovaných dat trasování. První je naše zobrazení [diagnostiky transakcí](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics) , což je jako zásobník volání s přidanou časovou dimenzí. Zobrazení Diagnostika transakcí poskytuje přehled o jedné transakci/žádosti a je užitečné při hledání hlavní příčiny problémů se spolehlivostí a kritických bodů výkonu na základě jednotlivých požadavků.
+Distribuované trasování je ekvivalentem zásobníků volání pro moderní cloudové a mikroslužby, a to s přidáním služby zjednodušený Performance profileru, která je vyvolána v. V Azure Monitor poskytujeme dvě prostředí pro využívání distribuovaných dat trasování. První je naše zobrazení [diagnostiky transakcí](./transaction-diagnostics.md) , což je jako zásobník volání s přidanou časovou dimenzí. Zobrazení Diagnostika transakcí poskytuje přehled o jedné transakci/žádosti a je užitečné při hledání hlavní příčiny problémů se spolehlivostí a kritických bodů výkonu na základě jednotlivých požadavků.
 
-Azure Monitor také nabízí zobrazení [mapy aplikace](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) , které agreguje mnoho transakcí, aby zobrazovalo topologické zobrazení, jak systémy pracují a jaké jsou průměrné výkonové a chybové míry. 
+Azure Monitor také nabízí zobrazení [mapy aplikace](./app-map.md) , které agreguje mnoho transakcí, aby zobrazovalo topologické zobrazení, jak systémy pracují a jaké jsou průměrné výkonové a chybové míry. 
 
 ## <a name="how-to-enable-distributed-tracing"></a>Jak povolit distribuované trasování
 
@@ -32,16 +33,16 @@ Povolení distribuovaného trasování napříč službami v aplikaci je jednodu
 
 Všechna Application Insights agenti a sady SDK pro .NET, .NET Core, Java, Node.js a JavaScript podporují nativně distribuované trasování. Pokyny k instalaci a konfiguraci každé Application Insights SDK jsou k dispozici níže:
 
-* [.NET](https://docs.microsoft.com/azure/application-insights/quick-monitor-portal)
-* [.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-dotnetcore-quick-start)
-* [Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
-* [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
-* [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
+* [.NET](../learn/quick-monitor-portal.md)
+* [.NET Core](../learn/dotnetcore-quick-start.md)
+* [Java](./java-in-process-agent.md)
+* [Node.js](../learn/nodejs-quick-start.md)
+* [JavaScript](./javascript.md)
 * [Python](opencensus-python.md)
 
-Když je nainstalovaná a nakonfigurovaná sada SDK s patřičnou Application Insights, trasovací informace se automaticky shromažďují pro oblíbené architektury, knihovny a technologie pomocí automatických kolekcí závislosti sady SDK. Úplný seznam podporovaných technologií je k dispozici v [dokumentaci k automatické kolekci závislostí](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies).
+Když je nainstalovaná a nakonfigurovaná sada SDK s patřičnou Application Insights, trasovací informace se automaticky shromažďují pro oblíbené architektury, knihovny a technologie pomocí automatických kolekcí závislosti sady SDK. Úplný seznam podporovaných technologií je k dispozici v [dokumentaci k automatické kolekci závislostí](./auto-collect-dependencies.md).
 
- Kromě toho je možné každou technologii sledovat ručně pomocí volání [TrackDependency](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) na [TelemetryClient](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics).
+ Kromě toho je možné každou technologii sledovat ručně pomocí volání [TrackDependency](./api-custom-events-metrics.md) na [TelemetryClient](./api-custom-events-metrics.md).
 
 ## <a name="enable-via-opencensus"></a>Povolit přes OpenCensus
 

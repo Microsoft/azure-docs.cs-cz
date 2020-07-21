@@ -7,20 +7,20 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: 9aa19dfa0626ff0726911815addbb03945ee36f1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e066ef1910373734d9a6607500e45e8a9ccc80b2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82144851"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539750"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Zahájení monitorování webové aplikace ASP.NET Core
 
 Služba Azure Application Insights umožňuje monitorovat webové aplikace z hlediska dostupnosti, výkonu a využití. Můžete také rychle identifikovat a diagnostikovat chyby ve vaší aplikaci a nečekat na to, až je nahlásí uživatelé. 
 
-Tento rychlý Start vás provede přidáním sady Application Insights SDK do existující webové aplikace ASP.NET Core. Další informace o konfiguraci Application Insights bez použití sady Visual Studio v tomto [článku](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core).
+Tento rychlý Start vás provede přidáním sady Application Insights SDK do existující webové aplikace ASP.NET Core. Další informace o konfiguraci Application Insights bez použití sady Visual Studio v tomto [článku](../app/asp-net-core.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
@@ -36,16 +36,16 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 ## <a name="enable-application-insights"></a>Povolení Application Insights
 
 Application Insights může shromažďovat telemetrická data ze všech aplikací připojených k internetu bez ohledu na to, jestli jsou spuštěné místně nebo v cloudu. Pokud chcete tato data začít zobrazovat, použijte následující kroky.
 
-1. Vyberte **vytvořit prostředek** > **pro vývojáře** > **Application Insights**.
+1. Vyberte **vytvořit prostředek pro**  >  **vývojáře**  >  **Application Insights**.
 
    > [!NOTE]
-   >Pokud Application Insights prostředek vytvoříte poprvé, můžete si o tom přečíst další informace v dokumentu [vytvoření prostředku Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) .
+   >Pokud Application Insights prostředek vytvoříte poprvé, můžete si o tom přečíst další informace v dokumentu [vytvoření prostředku Application Insights](../app/create-new-resource.md) .
 
     Zobrazí se konfigurační pole. K vyplnění vstupních polí použijte následující tabulku.
 
@@ -53,7 +53,7 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
    | ------------- |:-------------|:-----|
    | **Název**      | Globálně jedinečná hodnota | Název identifikující aplikaci, kterou monitorujete |
    | **Skupina prostředků**     | myResourceGroup      | Název nové skupiny prostředků pro hostování dat App Insights Můžete vytvořit novou skupinu prostředků nebo použít existující. |
-   | **Umístění** | USA – východ | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
+   | **Umístění** | East US | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
 
 2. Klikněte na **Vytvořit**.
 
@@ -69,9 +69,9 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 
 3. Vyberte svůj účet a předplatné > vyberte **existující prostředek** , který jste vytvořili v Azure Portal > klikněte na **zaregistrovat**.
 
-4. Vyberte **projekt** > **Spravovat balíčky balíčků** > NuGet**Zdroj: NuGet.org** > **aktualizujte** balíček sady SDK Application Insights na nejnovější stabilní verzi.
+4. Vyberte **projekt**  >  **Spravovat balíčky balíčků NuGet**  >  **Zdroj: NuGet.org**  >  **aktualizujte** balíček sady SDK Application Insights na nejnovější stabilní verzi.
 
-5. Pokud chcete spustit aplikaci, vyberte **ladit** > **Spustit bez ladění** (CTRL + F5).
+5. Pokud **Debug**  >  chcete spustit aplikaci, vyberte ladit**Spustit bez ladění** (CTRL + F5).
 
     ![Nabídka Přehled služby Application Insights](./media/dotnetcore-quick-start/3debug.png)
 
@@ -88,7 +88,7 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 
    ![Mapa aplikace](./media/dotnetcore-quick-start/5appmap.png)
 
-3. ![Klikněte na ikonu **Analýza** aplikace ikona mapa](./media/dotnetcore-quick-start/006.png) aplikace **Zobrazit v části analýzy**. Otevře se **Application Insights – Analytics** s bohatým dotazovacím jazykem pro analýzu všech dat shromážděných službou Application Insights. V tomto případě jsme za vás vytvořili dotaz, který vykreslí počet požadavků ve formě grafu. Můžete psát své vlastní dotazy pro analýzu dalších dat.
+3. Klikněte na ikonu **Analýza** aplikace ikona ![ Mapa aplikace ](./media/dotnetcore-quick-start/006.png) **Zobrazit v části analýzy**. Otevře se **Application Insights – Analytics** s bohatým dotazovacím jazykem pro analýzu všech dat shromážděných službou Application Insights. V tomto případě jsme za vás vytvořili dotaz, který vykreslí počet požadavků ve formě grafu. Můžete psát své vlastní dotazy pro analýzu dalších dat.
 
    ![Graf analýzy uživatelských požadavků za časové období](./media/dotnetcore-quick-start/6analytics.png)
 
@@ -112,4 +112,4 @@ Až budete s testováním hotovi, můžete odstranit skupinu prostředků a vše
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vyhledání a diagnostika běhových výjimek](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-runtime-exceptions)
+> [Vyhledání a diagnostika běhových výjimek](./tutorial-runtime-exceptions.md)

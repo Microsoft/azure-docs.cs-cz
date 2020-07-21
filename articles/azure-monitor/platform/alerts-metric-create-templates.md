@@ -1,5 +1,5 @@
 ---
-title: Vytvoření upozornění na metriku pomocí šablony Resource Manageru
+title: Vytvoření novější výstrahy metriky pomocí šablony Azure Resource Manager
 description: Naučte se používat šablonu Správce prostředků k vytvoření upozornění na metriku.
 author: harelbr
 ms.author: harelbr
@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 7/9/2020
 ms.subservice: alerts
-ms.openlocfilehash: 4d8ec0c76259a8567906e9ac415864e2cd37a9cd
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 043ecc07c521f9c1c79835bcd67ff1d81cacfa34
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187570"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539461"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Vytvoření upozornění na metriku pomocí šablony Resource Manageru
 
@@ -27,7 +27,7 @@ Základní postup je následující:
 
 1. Použijte jednu z níže uvedených šablon jako soubor JSON, který popisuje, jak vytvořit výstrahu.
 2. Upravte a použijte odpovídající soubor parametrů jako JSON pro přizpůsobení výstrahy.
-3. Pro `metricName` parametr se podívejte na dostupné metriky v [Azure monitor podporované metriky](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported).
+3. Pro `metricName` parametr se podívejte na dostupné metriky v [Azure monitor podporované metriky](./metrics-supported.md).
 4. Nasaďte šablonu pomocí [libovolné metody nasazení](../../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Šablona pro jednoduchou výstrahu metriky se statickou prahovou hodnotou
@@ -204,7 +204,7 @@ Uložte JSON níže jako simplestaticmetricalert.jspro účely tohoto Názornéh
 }
 ```
 
-Vysvětlení schématu a vlastností pro pravidlo výstrahy [jsou k dispozici zde](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate).
+Vysvětlení schématu a vlastností pro pravidlo výstrahy [jsou k dispozici zde](/rest/api/monitor/metricalerts/createorupdate).
 
 Hodnoty parametrů můžete nastavit buď na příkazovém řádku, nebo pomocí souboru parametrů. Ukázkový soubor parametrů je uveden níže.
 
@@ -477,7 +477,7 @@ Uložte JSON níže jako simpledynamicmetricalert.jspro účely tohoto Názorné
 }
 ```
 
-Vysvětlení schématu a vlastností pro pravidlo výstrahy [jsou k dispozici zde](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate).
+Vysvětlení schématu a vlastností pro pravidlo výstrahy [jsou k dispozici zde](/rest/api/monitor/metricalerts/createorupdate).
 
 Hodnoty parametrů můžete nastavit buď na příkazovém řádku, nebo pomocí souboru parametrů. Ukázkový soubor parametrů je uveden níže. 
 
@@ -1248,7 +1248,7 @@ az group deployment create \
 
 Pomocí následující šablony můžete vytvořit pokročilejší pravidlo výstrahy metriky pro metriky pro vlastní metriky.
 
-Další informace o vlastních metrikách v Azure Monitor najdete v tématu [vlastní metriky v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview).
+Další informace o vlastních metrikách v Azure Monitor najdete v tématu [vlastní metriky v Azure monitor](./metrics-custom-overview.md).
 
 Při vytváření pravidla výstrahy na vlastní metriky musíte zadat název metriky i obor názvů metriky. Ujistěte se také, že je již hlášena vlastní metrika, protože nemůžete vytvořit pravidlo upozornění pro vlastní metriku, která ještě neexistuje.
 
@@ -1504,7 +1504,7 @@ az group deployment create \
 
 >[!NOTE]
 >
-> Obor názvů metriky konkrétní vlastní metriky můžete najít [procházením vlastních metrik pomocí Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#browse-your-custom-metrics-via-the-azure-portal)
+> Obor názvů metriky konkrétní vlastní metriky můžete najít [procházením vlastních metrik pomocí Azure Portal](./metrics-custom-overview.md#browse-your-custom-metrics-via-the-azure-portal)
 
 
 ## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>Šablona výstrahy metriky, která monitoruje více prostředků

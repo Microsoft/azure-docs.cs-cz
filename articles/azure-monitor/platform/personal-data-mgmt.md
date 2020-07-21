@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 569731faffd97e816567af3f6ed1cf8cdf49f240
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d8998b450613e097230d7692a8ad1990830993b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83740446"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539325"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Doprovodné materiály k osobním údajům uloženým v Log Analytics a Application Insights
 
@@ -66,8 +67,8 @@ Log Analytics je flexibilní úložiště, které při stanovení schématu pro 
     | where timestamp > ago(1d)
     | project $table, timestamp, name, customDimensions 
     ```
-* *Data v paměti a přenosu*: Application Insights budou sledovat výjimky, požadavky, volání závislostí a trasování. Soukromá data je často možné shromažďovat na úrovni kódu a volání HTTP. Projděte si tabulky výjimky, požadavky, závislosti a trasování a Identifikujte taková data. Použijte [Inicializátory telemetrie](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling) tam, kde je to možné, k dezmatení těchto dat.
-* *Snapshot Debugger zachycení*: funkce [Snapshot Debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) v Application Insights umožňuje shromažďovat snímky ladění vždy, když je v produkční instanci aplikace zachycena výjimka. Snímky vystaví kompletní trasování zásobníku, které vede k výjimkám, a také hodnoty pro lokální proměnné v každém kroku v zásobníku. Tato funkce bohužel neumožňuje selektivní odstranění bodů přichycení nebo programový přístup k datům ve snímku. Proto pokud výchozí míra uchování snímku nesplňuje požadavky na dodržování předpisů, doporučujeme tuto funkci vypnout.
+* *Data v paměti a přenosu*: Application Insights budou sledovat výjimky, požadavky, volání závislostí a trasování. Soukromá data je často možné shromažďovat na úrovni kódu a volání HTTP. Projděte si tabulky výjimky, požadavky, závislosti a trasování a Identifikujte taková data. Použijte [Inicializátory telemetrie](../app/api-filtering-sampling.md) tam, kde je to možné, k dezmatení těchto dat.
+* *Snapshot Debugger zachycení*: funkce [Snapshot Debugger](../app/snapshot-debugger.md) v Application Insights umožňuje shromažďovat snímky ladění vždy, když je v produkční instanci aplikace zachycena výjimka. Snímky vystaví kompletní trasování zásobníku, které vede k výjimkám, a také hodnoty pro lokální proměnné v každém kroku v zásobníku. Tato funkce bohužel neumožňuje selektivní odstranění bodů přichycení nebo programový přístup k datům ve snímku. Proto pokud výchozí míra uchování snímku nesplňuje požadavky na dodržování předpisů, doporučujeme tuto funkci vypnout.
 
 ## <a name="how-to-export-and-delete-private-data"></a>Jak exportovat a odstranit soukromá data
 
@@ -100,7 +101,7 @@ Po přiřazení role Azure Resource Manager jsou k dispozici dvě nové cesty ro
 
 #### <a name="log-data"></a>Protokolování dat
 
-* [Post](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/purge) Return-převezme objekt určující parametry dat, které se mají odstranit, a vrátí identifikátor GUID odkazu. 
+* [Post](/rest/api/loganalytics/workspacepurge/purge) Return-převezme objekt určující parametry dat, které se mají odstranit, a vrátí identifikátor GUID odkazu. 
 * ZÍSKAT stav vyčištění – volání po vyprázdnění vrátí hlavičku x-MS-status-Location, která bude obsahovat adresu URL, kterou můžete zavolat k určení stavu rozhraní API pro vyprázdnění. Příklad:
 
     ```
@@ -112,7 +113,7 @@ Po přiřazení role Azure Resource Manager jsou k dispozici dvě nové cesty ro
 
 #### <a name="application-data"></a>Data aplikací
 
-* [Post](https://docs.microsoft.com/rest/api/application-insights/components/purge) Return-převezme objekt určující parametry dat, které se mají odstranit, a vrátí identifikátor GUID odkazu.
+* [Post](/rest/api/application-insights/components/purge) Return-převezme objekt určující parametry dat, které se mají odstranit, a vrátí identifikátor GUID odkazu.
 * ZÍSKAT stav vyčištění – volání po vyprázdnění vrátí hlavičku x-MS-status-Location, která bude obsahovat adresu URL, kterou můžete zavolat k určení stavu rozhraní API pro vyprázdnění. Příklad:
 
    ```

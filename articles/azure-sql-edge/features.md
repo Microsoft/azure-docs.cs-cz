@@ -8,12 +8,13 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: 34d2ba05b00ab92066bc7fa3ccd0b7b2aa59e15c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/13/2020
+ms.openlocfilehash: 70a54f52470a715df1011199d5cbd6aa5030094d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669633"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539206"
 ---
 # <a name="supported-features-of-azure-sql-edge-preview"></a>Podporované funkce Edge SQL Azure (Preview) 
 
@@ -35,15 +36,17 @@ Azure SQL Edge je k dispozici ve dvou různých edicích nebo softwarových plá
 
 ## <a name="operating-system"></a>Operační systém
 
-Kontejnery Azure SQL Edge jsou aktuálně založené na Ubuntu 16,04 a jsou podporované jenom pro spouštění v hostitelích Docker se systémem Ubuntu 16,04 (doporučeno) nebo Ubuntu 18,04. Azure SQL Edge můžete spustit taky na jiných hostitelích operačního systému. Můžete ho například spustit na jiných distribucích systému Linux nebo ve Windows (pomocí Docker CE nebo Docker EE). Upozorňujeme však, že společnost Microsoft tyto konfigurace nerozsáhle netestovala.
+Kontejnery Azure SQL Edge jsou aktuálně založené na Ubuntu 16,04 a jsou podporované jenom pro spouštění na hostitelích Docker, na kterých běží Ubuntu 16,04 LTS (doporučeno) nebo Ubuntu 18,04 LTS. Je možné spustit kontejnery Azure SQL Edge na jiných hostitelích operačního systému, například může běžet na jiných distribucích systému Linux nebo Windows (pomocí Docker CE nebo Docker EE), ale Microsoft to nedoporučuje, protože tato konfigurace nemusí být rozsáhly testována.
 
 Azure SQL Edge se momentálně podporuje jenom pro nasazení prostřednictvím Azure IoT Edge. Další informace najdete v tématu [Azure IoT Edge podporovaných systémech](https://docs.microsoft.com/azure/iot-edge/support).
 
 Doporučená konfigurace pro provoz Azure SQL Edge ve Windows je konfigurace virtuálního počítače s Ubuntu na hostiteli Windows a následném spuštění Azure SQL Edge v rámci virtuálního počítače se systémem Linux.
 
+Doporučený a podporovaný systém souborů pro Azure SQL Edge je EXT4 a XFS. Pokud se pro zálohování úložiště databáze Azure SQL Edge používají trvalé svazky, musí být podkladový systém souborů hostitele EXT4 a XFS.
+
 ## <a name="hardware-support"></a>Hardwarová podpora
 
-Azure SQL Edge vyžaduje 64 procesor, který může být od společnosti Intel, AMD nebo ARM s minimálně jedním procesorem a 1 GB paměti RAM na hostiteli. I když se nároky na paměť při spuštění v Azure SQL Edge blíží až 500 MB, je další paměť nutná pro ostatní IoT Edge moduly běžící na hraničním zařízení.
+Azure SQL Edge vyžaduje 64 procesor (buď x64 nebo ARM64), minimálně jeden procesor a jeden GB RAM na hostiteli. I když se nároky na paměť při spuštění v Azure SQL Edge blíží až 500 MB, je další paměť nutná pro ostatní IoT Edge moduly běžící na hraničním zařízení. Skutečná paměť a nároky na procesor pro Azure SQL Edge se budou lišit v závislosti na složitosti zatížení a objemu zpracovávaných dat. Při volbě hardwaru pro vaše řešení doporučuje společnost Microsoft spouštět rozsáhlé testy výkonu, abyste měli jistotu, že jsou splněné požadované charakteristiky výkonu pro vaše řešení.  
 
 ## <a name="azure-sql-edge-components"></a>Komponenty Edge Azure SQL
 

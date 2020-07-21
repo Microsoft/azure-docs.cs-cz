@@ -3,12 +3,12 @@ title: Posílání nebo přijímání událostí z Azure Event Hubs pomocí rozh
 description: Tento článek popisuje postup vytvoření aplikace .NET Core, která odesílá a přijímá události z Azure Event Hubs pomocí nejnovějšího balíčku Azure. Messaging. EventHubs.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 8752064b59030c04e409e13baf7bf58836ce7ac7
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 9e7f40b0312798667b63c6cf5d02772307dbc2b9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85320151"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537135"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>Odesílání událostí do a příjem událostí z Azure Event Hubs – .NET (Azure. Messaging. EventHubs) 
 V tomto rychlém startu se dozvíte, jak odesílat události do centra událostí a přijímat z něj události pomocí knihovny .NET **Azure. Messaging. EventHubs** . 
@@ -18,13 +18,13 @@ V tomto rychlém startu se dozvíte, jak odesílat události do centra událost�
 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud s Azure Event Hubs teprve začínáte, přečtěte si téma [přehled Event Hubs](event-hubs-about.md) před provedením tohoto rychlého startu. 
 
 K dokončení tohoto rychlého startu potřebujete následující požadavky:
 
 - **Microsoft Azure předplatné**. Pokud chcete používat služby Azure, včetně Azure Event Hubs, potřebujete předplatné.  Pokud nemáte existující účet Azure, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/) nebo využít výhody pro předplatitele MSDN při [vytváření účtu](https://azure.microsoft.com).
-- **Microsoft Visual Studio 2019**. Klientská knihovna Azure Event Hubs využívá nové funkce, které byly představeny v C# 8,0.  Knihovnu můžete dál používat s předchozími jazykovými verzemi jazyka C#, ale nová syntaxe nebude k dispozici. Chcete-li použít úplnou syntaxi, je doporučeno kompilovat s [.NET Core SDK](https://dotnet.microsoft.com/download) 3,0 nebo vyšší a [jazykové verze](https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version#override-a-default) nastavenou na `latest` . Pokud používáte Visual Studio, verze před sadou Visual Studio 2019 nejsou kompatibilní s nástroji potřebnými pro sestavení projektů v jazyce C# 8,0. Do [této](https://visualstudio.microsoft.com/vs/)části si můžete stáhnout Visual Studio 2019, včetně bezplatné edice Community.
+- **Microsoft Visual Studio 2019**. Klientská knihovna Azure Event Hubs využívá nové funkce, které byly představeny v C# 8,0.  Knihovnu můžete dál používat s předchozími jazykovými verzemi jazyka C#, ale nová syntaxe nebude k dispozici. Chcete-li použít úplnou syntaxi, je doporučeno kompilovat s [.NET Core SDK](https://dotnet.microsoft.com/download) 3,0 nebo vyšší a [jazykové verze](/dotnet/csharp/language-reference/configure-language-version#override-a-default) nastavenou na `latest` . Pokud používáte Visual Studio, verze před sadou Visual Studio 2019 nejsou kompatibilní s nástroji potřebnými pro sestavení projektů v jazyce C# 8,0. Do [této](https://visualstudio.microsoft.com/vs/)části si můžete stáhnout Visual Studio 2019, včetně bezplatné edice Community.
 - **Vytvoří obor názvů Event Hubs a centrum událostí**. Prvním krokem je použití [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centrum událostí, postupujte podle pokynů v [tomto článku](event-hubs-create.md). Pak Získejte **připojovací řetězec pro obor názvů Event Hubs** podle pokynů uvedených v článku [získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Připojovací řetězec použijete později v tomto rychlém startu.
 
 ## <a name="send-events"></a>Odesílání událostí 
@@ -109,12 +109,12 @@ V této části se dozvíte, jak napsat konzolovou aplikaci .NET Core, která p�
 
 
 > [!NOTE]
-> Pokud používáte centrum Azure Stack, může tato platforma podporovat jinou verzi sady SDK pro úložiště objektů blob, než jaké jsou běžně dostupné v Azure. Pokud například používáte [v Azure Stack centra verze 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview), nejvyšší dostupná verze služby úložiště je verze 2017-11-09. V takovém případě, kromě kroků v této části, budete také muset přidat kód pro cílení na rozhraní API služby úložiště verze 2017-11-09. Příklad cílení na konkrétní verzi rozhraní API úložiště najdete v [této ukázce na GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). Další informace o verzích služby Azure Storage podporovaných v centru Azure Stack najdete v tématu [úložiště centra pro Azure Stack: rozdíly a požadavky](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences).
+> Pokud používáte centrum Azure Stack, může tato platforma podporovat jinou verzi sady SDK pro úložiště objektů blob, než jaké jsou běžně dostupné v Azure. Pokud například používáte [v Azure Stack centra verze 2002](/azure-stack/user/event-hubs-overview), nejvyšší dostupná verze služby úložiště je verze 2017-11-09. V takovém případě, kromě kroků v této části, budete také muset přidat kód pro cílení na rozhraní API služby úložiště verze 2017-11-09. Příklad cílení na konkrétní verzi rozhraní API úložiště najdete v [této ukázce na GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). Další informace o verzích služby Azure Storage podporovaných v centru Azure Stack najdete v tématu [úložiště centra pro Azure Stack: rozdíly a požadavky](/azure-stack/user/azure-stack-acs-differences).
 
 ### <a name="create-an-azure-storage-and-a-blob-container"></a>Vytvoření Azure Storage a kontejneru objektů BLOB
 V tomto rychlém startu použijete Azure Storage jako úložiště kontrolního bodu. Pomocí těchto kroků vytvořte účet Azure Storage. 
 
-1. [Vytvoření účtu Azure Storage](/azure/storage/common/storage-account-create?tabs=azure-portal)
+1. [Vytvoření účtu Azure Storage](../storage/common/storage-account-create.md?tabs=azure-portal)
 2. [Vytvoření kontejneru objektů blob](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
 3. [Získání připojovacího řetězce k účtu úložiště](../storage/common/storage-configure-connection-string.md)
 

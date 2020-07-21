@@ -9,21 +9,22 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: accd0df2913abc4d82b6f14aaafd03f0f042ca91
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 241f107f0bb2163951104067cb82d6e6a967ad3e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83648215"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540124"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Začínáme s Azure Maps Android SDK
 
 Azure Maps Android SDK je knihovna vektorových map pro Android. Tento článek vás provede procesy instalace Azure Maps Android SDK a načtení mapy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="create-an-azure-maps-account"></a>Vytvoření účtu Azure Maps
 
-Pokud chcete dokončit postupy v tomto článku, musíte nejdřív [vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-account-with-azure-maps) v cenové úrovni S1 a získat pro svůj účet [primární klíč](quick-demo-map-app.md#get-the-primary-key-for-your-account) .
+Pokud chcete dokončit postupy v tomto článku, musíte nejdřív [vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account) v cenové úrovni S1 a získat pro svůj účet [primární klíč](quick-demo-map-app.md#get-the-primary-key-for-your-account) .
 
 Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
 

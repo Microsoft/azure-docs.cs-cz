@@ -3,18 +3,18 @@ title: Obnovitelné odstranění pro Azure Backup
 description: Naučte se používat funkce zabezpečení v Azure Backup k zajištění většího zabezpečení záloh.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 2b0d7a00bce8dfa427958f6db6d7174b9d5f7a79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79df345858d89d032b826a0fa8b677195a785df2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84116417"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538832"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Obnovitelné odstranění pro Azure Backup
 
 Problémy se zabezpečením, jako je malware, ransomwarem a vniknutí, se zvyšují. Tyto problémy se zabezpečením můžou být nákladné, s ohledem na peníze i data. Pro ochranu proti takovým útokům Azure Backup nyní poskytuje funkce zabezpečení, které vám pomůžou chránit zálohovaná data i po odstranění.
 
-Jednou z těchto funkcí je obnovitelné odstranění. Pomocí obnovitelného odstranění, a to i v případě, že škodlivý objekt actor odstraní zálohu (nebo se data záloh nechtěně odstraní), uchovávají data zálohy 14 dalších dnů, což umožňuje obnovení této zálohované položky bez ztráty dat. Další 14 dní uchovávání zálohovaných dat ve stavu "obnovitelné odstranění" neúčtují žádné náklady na zákazníka.
+Jednou z těchto funkcí je obnovitelné odstranění. Pomocí obnovitelného odstranění, a to i v případě, že škodlivý objekt actor odstraní zálohu (nebo se data záloh nechtěně odstraní), uchovávají data zálohy 14 dalších dnů, což umožňuje obnovení této zálohované položky bez ztráty dat. Další 14 dní uchovávání zálohových dat ve stavu "obnovitelné odstranění" neúčtují žádné náklady na zákazníka.
 
 Ochrana před odstraněním je k dispozici pro tyto služby:
 
@@ -29,7 +29,7 @@ Tento vývojový diagram zobrazuje různé kroky a stavy zálohované položky, 
 
 Obnovitelné odstranění je ve výchozím nastavení povolené u nově vytvořených trezorů za účelem ochrany zálohovaných dat před náhodnými nebo škodlivými odstraněními.  Zakázání této funkce se nedoporučuje. Jediným případem, kdy byste měli zvážit zakázání obnovitelného odstranění, je, že plánujete přesunutí chráněných položek do nového trezoru a nemůžete počkat 14 dní před odstraněním a obnovením ochrany (například v testovacím prostředí). Tuto funkci může zakázat pouze vlastník trezoru. Pokud tuto funkci zakážete, všechna budoucí odstranění chráněných položek budou mít za následek okamžité odebrání bez možnosti obnovení. Zálohovaná data, která existují v tichém odstraněném stavu před zakázáním této funkce, zůstanou v tichém odstraněné stavu po dobu 14 dnů. Pokud chcete tyto okamžité odstranění trvale odstranit, musíte je znovu odstranit a znovu odstranit, abyste se mohli trvale odstranit.
 
- Je důležité si uvědomit, že jakmile je obnovitelné odstranění zakázané, funkce se zakáže pro všechny typy úloh, včetně úloh SQL Server a SAP HANA. Pokud je například u předplatného povolená možnost [SQL Server/SAP HANA Preview](https://docs.microsoft.com/azure/backup/soft-delete-sql-saphana-in-azure-vm#steps-to-enroll-in-preview) , nemůžete zakázat obnovitelné odstranění jenom pro SQL Server nebo SAP HANA databáze a přitom ponechat povolený virtuální počítač ve stejném trezoru. Pro podrobné řízení můžete vytvořit samostatné trezory.
+ Je důležité si uvědomit, že jakmile je obnovitelné odstranění zakázané, funkce se zakáže pro všechny typy úloh, včetně úloh SQL Server a SAP HANA. Pokud je například u předplatného povolená možnost [SQL Server/SAP HANA Preview](./soft-delete-sql-saphana-in-azure-vm.md#steps-to-enroll-in-preview) , nemůžete zakázat obnovitelné odstranění jenom pro SQL Server nebo SAP HANA databáze a přitom ponechat povolený virtuální počítač ve stejném trezoru. Pro podrobné řízení můžete vytvořit samostatné trezory.
 
 ### <a name="disabling-soft-delete-using-azure-portal"></a>Zákaz obnovitelného odstranění pomocí Azure Portal
 
@@ -46,7 +46,7 @@ Chcete-li zakázat obnovitelné odstranění, použijte následující postup:
 > [!IMPORTANT]
 > Verze AZ. RecoveryServices, která je nutná k použití obnovitelného odstranění pomocí Azure PS, je min 2.2.0. Použijte ```Install-Module -Name Az.RecoveryServices -Force``` k získání nejnovější verze.
 
-Pokud ho chcete zakázat, použijte rutinu [set-AzRecoveryServicesVaultBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty?view=azps-3.1.0) PS.
+Pokud ho chcete zakázat, použijte rutinu [set-AzRecoveryServicesVaultBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) PS.
 
 ```powershell
 Set-AzRecoveryServicesVaultProperty -VaultId $myVaultID -SoftDeleteFeatureState Disable
@@ -69,7 +69,7 @@ Zálohovaná data v tichém odstraněném stavu před zakázáním této funkce 
 
 ### <a name="using-azure-portal"></a>Pomocí webu Azure Portal
 
-Postupujte následovně:
+Postupujte takto:
 
 1. Chcete-li [Zakázat obnovitelné odstranění](#enabling-and-disabling-soft-delete), postupujte podle pokynů.
 
@@ -87,11 +87,11 @@ Postupujte následovně:
 
 5. Chcete-li trvale odstranit data zálohy, vyberte možnost **Odstranit zálohovaná data** .
 
-   ![Zvolit odstranění zálohovaných dat](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
+   ![Zvolit odstranění zálohovaných dat](/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
 
 6. Zadejte název zálohované položky, abyste potvrdili, že chcete body obnovení odstranit.
 
-   ![Zadejte název zálohované položky.](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
+   ![Zadejte název zálohované položky.](/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
 
 7. Chcete-li odstranit data zálohy pro položku, vyberte možnost **Odstranit**. Zpráva s oznámením vám poskytne informace o odstranění zálohovaných dat.
 
@@ -160,7 +160,7 @@ Ne, chcete-li obnovit, je nutné obnovit neodstraněný prostředek. Operace zru
 
 ### <a name="will-my-snapshots-follow-the-same-lifecycle-as-my-recovery-points-in-the-vault"></a>Budou se moje snímky řídit stejným životním cyklem jako body obnovení v trezoru?
 
-Ano.
+Yes.
 
 ### <a name="how-can-i-trigger-the-scheduled-backups-again-for-a-soft-deleted-resource"></a>Jak můžu znovu aktivovat naplánované zálohy u prostředku odstraněného z nějakého obnovitelného?
 

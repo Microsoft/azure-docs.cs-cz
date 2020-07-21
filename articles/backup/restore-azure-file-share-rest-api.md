@@ -3,16 +3,16 @@ title: Obnovení sdílených složek Azure pomocí REST API
 description: Naučte se používat REST API k obnovení sdílených složek Azure nebo konkrétních souborů z bodu obnovení vytvořeného pomocí Azure Backup
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 1c3160491ef92c62745af1468556e7d5c30437fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a1f2999fa1b50507fd3d1b6f21f508ec9f82841
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710571"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538152"
 ---
 # <a name="restore-azure-file-shares-using-rest-api"></a>Obnovení sdílených složek Azure pomocí REST API
 
-Tento článek vysvětluje, jak obnovit celou sdílenou složku nebo konkrétní soubory z bodu obnovení vytvořeného nástrojem [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) pomocí REST API.
+Tento článek vysvětluje, jak obnovit celou sdílenou složku nebo konkrétní soubory z bodu obnovení vytvořeného nástrojem [Azure Backup](./backup-overview.md) pomocí REST API.
 
 Na konci tohoto článku se dozvíte, jak provádět následující operace pomocí REST API:
 
@@ -20,7 +20,7 @@ Na konci tohoto článku se dozvíte, jak provádět následující operace pomo
 * Obnovte úplnou sdílenou složku Azure.
 * Obnovte jednotlivé soubory nebo složky.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Předpokládáme, že už máte zálohovanou sdílenou složku, kterou chcete obnovit. Pokud to neuděláte, přečtěte si článek [zálohování sdílené složky Azure pomocí REST API](backup-azure-file-share-rest-api.md) , kde se dozvíte, jak ho vytvořit.
 
@@ -33,7 +33,7 @@ V tomto článku budeme používat následující zdroje:
 
 ## <a name="fetch-containername-and-protecteditemname"></a>Načíst ContainerName a ProtectedItemName
 
-Pro většinu volání rozhraní API souvisejících s obnovením je třeba předat hodnoty pro parametry identifikátoru URI {Container} a {protectedItemName}. Pomocí atributu ID v těle odpovědi operace [Get backupprotectableitems](https://docs.microsoft.com/rest/api/backup/protecteditems/get) načtěte hodnoty pro tyto parametry. V našem příkladu je ID sdílené složky, kterou chceme chránit:
+Pro většinu volání rozhraní API souvisejících s obnovením je třeba předat hodnoty pro parametry identifikátoru URI {Container} a {protectedItemName}. Pomocí atributu ID v těle odpovědi operace [Get backupprotectableitems](/rest/api/backup/protecteditems/get) načtěte hodnoty pro tyto parametry. V našem příkladu je ID sdílené složky, kterou chceme chránit:
 
 `"/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/storagecontainer;storage;azurefiles;afsaccount/protectableItems/azurefileshare;azurefiles`
 
@@ -44,7 +44,7 @@ Hodnoty se tak převádějí následujícím způsobem:
 
 ## <a name="fetch-recovery-points-for-backed-up-azure-file-share"></a>Načítají se body obnovení pro zálohované sdílení souborů Azure.
 
-Chcete-li obnovit všechny zálohované sdílené složky nebo soubory, nejprve vyberte bod obnovení pro provedení operace obnovení. Dostupné body obnovení zálohované položky mohou být uvedeny v [seznamu bodů obnovení](https://docs.microsoft.com/rest/api/site-recovery/recoverypoints/listbyreplicationprotecteditems) REST API volání. Jedná se o operaci GET se všemi relevantními hodnotami.
+Chcete-li obnovit všechny zálohované sdílené složky nebo soubory, nejprve vyberte bod obnovení pro provedení operace obnovení. Dostupné body obnovení zálohované položky mohou být uvedeny v [seznamu bodů obnovení](/rest/api/site-recovery/recoverypoints/listbyreplicationprotecteditems) REST API volání. Jedná se o operaci GET se všemi relevantními hodnotami.
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13&$filter={$filter}
@@ -144,7 +144,7 @@ Bod obnovení je identifikovaný pomocí pole {Name} v odpovědi výše.
 ## <a name="full-share-recovery-using-rest-api"></a>Úplné obnovení sdílení pomocí REST API
 
 Pomocí této možnosti obnovení obnovte úplnou sdílenou složku v původním nebo alternativním umístění.
-Spuštění obnovení je požadavek POST a tuto operaci můžete provést pomocí REST API [obnovení aktivační události](https://docs.microsoft.com/rest/api/backup/restores/trigger) .
+Spuštění obnovení je požadavek POST a tuto operaci můžete provést pomocí REST API [obnovení aktivační události](/rest/api/backup/restores/trigger) .
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
@@ -160,11 +160,11 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 Chcete-li aktivovat obnovení sdílené složky Azure, jsou zde uvedené součásti textu žádosti:
 
-Name |  Typ   |   Description
+Název |  Typ   |   Popis
 --- | ---- | ----
 Vlastnosti | AzureFileShareRestoreRequest | Vlastnosti RestoreRequestResource
 
-Úplný seznam definic těla žádosti a další podrobnosti najdete v [dokumentu Trigger Restore REST API](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body).
+Úplný seznam definic těla žádosti a další podrobnosti najdete v [dokumentu Trigger Restore REST API](/rest/api/backup/restores/trigger#request-body).
 
 ### <a name="restore-to-original-location"></a>Obnovit do původního umístění
 
@@ -219,7 +219,7 @@ Následující text žádosti obnoví sdílenou složku *azurefiles* v účtu ú
 
 ### <a name="response"></a>Odpověď
 
-Triggerem operace obnovení je [asynchronní operace](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Tato operace vytvoří další operaci, která musí být sledována samostatně.
+Triggerem operace obnovení je [asynchronní operace](../azure-resource-manager/management/async-operations.md). Tato operace vytvoří další operaci, která musí být sledována samostatně.
 Při vytvoření jiné operace vrátí dvě odpovědi: 202 (přijato) a po dokončení této operace 200 (OK).
 
 #### <a name="response-example"></a>Příklad odpovědi
@@ -350,7 +350,7 @@ V případě obnovení do alternativního umístění bude text odpovědi vypada
 }
 ```
 
-Vzhledem k tomu, že úloha zálohování je dlouhodobě spuštěná operace, měla by být sledována tak, jak je vysvětleno v tématu [Monitorování úloh pomocí REST API dokumentu](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-managejobs#tracking-the-job).
+Vzhledem k tomu, že úloha zálohování je dlouhodobě spuštěná operace, měla by být sledována tak, jak je vysvětleno v tématu [Monitorování úloh pomocí REST API dokumentu](./backup-azure-arm-userestapi-managejobs.md#tracking-the-job).
 
 ## <a name="item-level-recovery-using-rest-api"></a>Obnovení na úrovni položek pomocí REST API
 
@@ -370,11 +370,11 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 Chcete-li aktivovat obnovení sdílené složky Azure, jsou zde uvedené součásti textu žádosti:
 
-Name |  Typ   |   Description
+Název |  Typ   |   Popis
 --- | ---- | ----
 Vlastnosti | AzureFileShareRestoreRequest | Vlastnosti RestoreRequestResource
 
-Úplný seznam definic těla žádosti a další podrobnosti najdete v [dokumentu Trigger Restore REST API](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body).
+Úplný seznam definic těla žádosti a další podrobnosti najdete v [dokumentu Trigger Restore REST API](/rest/api/backup/restores/trigger#request-body).
 
 ### <a name="restore-to-original-location"></a>Obnovit do původního umístění
 

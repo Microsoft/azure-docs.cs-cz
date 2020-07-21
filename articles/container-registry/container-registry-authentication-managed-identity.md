@@ -3,12 +3,12 @@ title: Ověřování pomocí spravované identity
 description: Poskytněte přístup k obrázkům v soukromém registru kontejneru pomocí uživatelsky přiřazené spravované identity Azure, která je přiřazená uživatelem nebo systémem.
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: d3a1f0f9c9e814cabaa205fbb0abf05333fd6daf
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e5fd8ead989838c0ba74b42a9766bc63936379fa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259098"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537897"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Použití spravované identity Azure k ověření ve službě Azure Container Registry 
 
@@ -79,6 +79,7 @@ ssh azureuser@publicIpAddress
 Spusťte následující příkaz pro instalaci Docker na virtuální počítač:
 
 ```bash
+sudo apt update
 sudo apt install docker.io -y
 ```
 

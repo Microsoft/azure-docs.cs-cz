@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 6435535ee14450c590a79ea68c8855c29df8bd9a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d13a7cf87ba22dce96992c362f8b800ba79f6976
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80637871"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539631"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Shromažďování dat z počítače s Windows v hybridním prostředí pomocí Azure Monitor
 
@@ -26,7 +26,7 @@ ms.locfileid: "80637871"
 
 Další informace o podporované konfiguraci najdete v tématu [podporované operační systémy Windows](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) a [Konfigurace brány firewall sítě](../../azure-monitor/platform/log-analytics-agent.md#network-requirements).
  
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="sign-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -112,7 +112,7 @@ Azure Monitor mohou shromažďovat události, které zadáte z protokolu událos
  
 3. Vyberte **Data** a pak vyberte **Protokoly událostí systému Windows**.  
 
-4. Protokol událostí můžete přidat zadáním názvu protokolu. Zadejte **systém**a potom vyberte znaménko plus (**+**).  
+4. Protokol událostí můžete přidat zadáním názvu protokolu. Zadejte **systém**a potom vyberte znaménko plus ( **+** ).  
 
 5. V tabulce vyberte závažnost **chyby** a **varování** .
 
@@ -165,4 +165,4 @@ Teď, když shromažďujete data o provozu a výkonu z počítače s Windows, m�
 Pokud se chcete dozvědět, jak zobrazit a analyzovat data, přejděte k kurzu:
 
 > [!div class="nextstepaction"]
-> [Zobrazení nebo analýza dat v Log Analytics](tutorial-viewdata.md)
+> [Zobrazení nebo analýza dat v Log Analytics](../log-query/get-started-portal.md)

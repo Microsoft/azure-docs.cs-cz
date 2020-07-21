@@ -3,11 +3,12 @@ title: Co může zálohovat Azure Backup Server V3 RTM
 description: Tento článek obsahuje matrici ochrany, kde najdete seznam všech úloh, datových typů a instalací, které Azure Backup zajišťují ochranu pomocí v3 RTM.
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 742b43d748fbd4c1235d0555ac3bd4419880db5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aebd1d1f90a2c0b84d7a6e1cb77d0e50915b091e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84632084"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538562"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure Backup Server V3 RTM – matice ochrany
 
@@ -34,7 +35,7 @@ Následující tabulka uvádí, co se dá chránit pomocí Azure Backup Server V
 |Servery (32bitové a 64bitové)|Windows Server 2008 R2 SP1 – Standard a Enterprise|Fyzický server<br /><br />Místní virtuální počítač Hyper-V<br /> <br /> Azure Stack|V3, V2<br />Musíte používat verzi SP1 a nainstalovat [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855)|Svazek, sdílená složka, složka, soubor, stav systému/úplné obnovení systému|
 |Servery (32bitové a 64bitové)|Windows Server 2008 R2 SP1 – Standard a Enterprise|Virtuální počítač Azure (když úloha běží jako virtuální počítač Azure)<br /> <br /> Azure Stack|V3, V2<br />Musíte používat verzi SP1 a nainstalovat [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855)|Svazek, sdílená složka, složka, soubor|
 |Servery (32bitové a 64bitové)|Windows Server 2008 R2 SP1 – Standard a Enterprise|Virtuální počítač s Windows ve VMWare (chrání úlohy na virtuálním počítači s Windows ve VMWare)<br /> <br /> Azure Stack|V3, V2<br />Musíte používat verzi SP1 a nainstalovat [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855)|Svazek, sdílená složka, složka, soubor, stav systému/úplné obnovení systému|
-|Servery (32bitové a 64bitové)|Windows Server 2008 SP2|Fyzický server<br /><br />Místní virtuální počítač Hyper-V<br /> <br /> Azure Stack|Nepodporuje se|Svazek, sdílená složka, složka, soubor, stav systému/úplné obnovení systému|
+|Servery (32bitové a 64bitové)|Windows Server 2008 SP2|Fyzický server<br /><br />Místní virtuální počítač Hyper-V<br /> <br /> Azure Stack|Nepodporováno|Svazek, sdílená složka, složka, soubor, stav systému/úplné obnovení systému|
 |Servery (32bitové a 64bitové)|Windows Server 2008 SP2|Virtuální počítač s Windows ve VMWare (chrání úlohy na virtuálním počítači s Windows ve VMWare)<br /> <br /> Azure Stack|V3, V2|Svazek, sdílená složka, složka, soubor, stav systému/úplné obnovení systému|
 |Servery (32bitové a 64bitové)|Windows Storage Server 2008|Fyzický server<br /><br />Místní virtuální počítač Hyper-V<br /> <br /> Azure Stack|V3, V2|Svazek, sdílená složka, složka, soubor, stav systému/úplné obnovení systému|
 |SQL Server|SQL Server 2019|Fyzický server <br /><br /> Místní virtuální počítač Hyper-V <br /> <br /> Virtuální počítač Azure (když úloha běží jako virtuální počítač Azure) <br /><br /> Virtuální počítač s Windows ve VMWare (chrání úlohy na virtuálním počítači s Windows ve VMWare)<br /> <br /> Azure Stack|Technologie|Všechny scénáře nasazení: Databáze|
@@ -74,7 +75,7 @@ Následující tabulka uvádí, co se dá chránit pomocí Azure Backup Server V
 |Hyper-V Host – agent MABS Protection na hostitelském serveru Hyper-V, clusteru nebo virtuálním počítači|Windows Server 2012 R2 – Datacenter a Standard|Fyzický server<br /><br />Místní virtuální počítač Hyper-V|V3, V2|Ochrana: Počítače Hyper-V, sdílené svazky clusteru (CSV)<br /><br />Obnovení: Virtuální počítač, obnovení souborů a složky na úrovni položky, svazky, virtuální pevné disky|
 |Hyper-V Host – agent MABS Protection na hostitelském serveru Hyper-V, clusteru nebo virtuálním počítači|Windows Server 2012 – Datacenter a Standard|Fyzický server<br /><br />Místní virtuální počítač Hyper-V|V3, V2|Ochrana: Počítače Hyper-V, sdílené svazky clusteru (CSV)<br /><br />Obnovení: Virtuální počítač, obnovení souborů a složky na úrovni položky, svazky, virtuální pevné disky|
 |Hyper-V Host – agent MABS Protection na hostitelském serveru Hyper-V, clusteru nebo virtuálním počítači|Windows Server 2008 R2 SP1 – Enterprise a Standard|Fyzický server<br /><br />Místní virtuální počítač Hyper-V|V3, V2|Ochrana: Počítače Hyper-V, sdílené svazky clusteru (CSV)<br /><br />Obnovení: Virtuální počítač, obnovení souborů a složky na úrovni položky, svazky, virtuální pevné disky|
-|Hyper-V Host – agent MABS Protection na hostitelském serveru Hyper-V, clusteru nebo virtuálním počítači|Windows Server 2008 SP2|Fyzický server<br /><br />Místní virtuální počítač Hyper-V|Nepodporuje se|Ochrana: Počítače Hyper-V, sdílené svazky clusteru (CSV)<br /><br />Obnovení: Virtuální počítač, obnovení souborů a složky na úrovni položky, svazky, virtuální pevné disky|
+|Hyper-V Host – agent MABS Protection na hostitelském serveru Hyper-V, clusteru nebo virtuálním počítači|Windows Server 2008 SP2|Fyzický server<br /><br />Místní virtuální počítač Hyper-V|Nepodporováno|Ochrana: Počítače Hyper-V, sdílené svazky clusteru (CSV)<br /><br />Obnovení: Virtuální počítač, obnovení souborů a složky na úrovni položky, svazky, virtuální pevné disky|
 |Virtuální počítače VMware|VMware vCenter/vSphere ESX/ESXi licencovaný verze 5.5/6.0/6.5 |Fyzický server, <br/>Místní virtuální počítač Hyper-V <br/> Virtuální počítač s Windows ve VMWare|V3, V2|Virtuální počítače VMware na svazcích CSV (cluster-Shared Volume), NFS a SAN Storage<br /> Obnovení souborů a složek na úrovni položek je dostupné jenom pro virtuální počítače s Windows, ale VMware vApp se nepodporují.|
 |Virtuální počítače VMware|[VMware vSphere licencované verze 6,7](backup-azure-backup-server-vmware.md#vmware-vsphere-67) |Fyzický server, <br/>Místní virtuální počítač Hyper-V <br/> Virtuální počítač s Windows ve VMWare|Technologie|Virtuální počítače VMware na svazcích CSV (cluster-Shared Volume), NFS a SAN Storage<br /> Obnovení souborů a složek na úrovni položek je dostupné jenom pro virtuální počítače s Windows, ale VMware vApp se nepodporují.|
 |Linux|Linux spuštěný jako Hyper-V nebo host VMware|Fyzický server, <br/>Místní virtuální počítač Hyper-V <br/> Virtuální počítač s Windows ve VMWare|V3, V2|Prostředí Hyper-V musí být spuštěné v systému Windows Server 2012 R2 nebo Windows Server 2016. Ochrana: Celý virtuální počítač<br /><br />Obnovení: Celý virtuální počítač <br/><br/> Podporovány jsou pouze snímky konzistentních souborů. <br/><br/> Úplný seznam podporovaných distribucí a verzí systému Linux najdete v článku [Linux v distribucích, které jsou schváleny v Azure](../virtual-machines/linux/endorsed-distros.md).|
@@ -97,7 +98,7 @@ S partnerským vztahem Microsoftu vyberte prosím následující služby nebo ob
 * Oblast Microsoft Azure (podle umístění vašeho trezoru Recovery Services)
 * Azure Storage (podle umístění vašeho trezoru Recovery Services)
 
-Další podrobnosti najdete v tématu [požadavky na směrování ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
+Další podrobnosti najdete v tématu [požadavky na směrování ExpressRoute](../expressroute/expressroute-routing.md).
 
 >[!NOTE]
 >Veřejné partnerské vztahy se pro nové okruhy zastaraly.

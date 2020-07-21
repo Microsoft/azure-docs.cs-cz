@@ -3,11 +3,12 @@ title: Zálohování počítačů s Windows pomocí agenta MARS
 description: K zálohování počítačů s Windows použijte agenta Microsoft Azure Recovery Services (MARS).
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 4f0e605185be6db8629144e05f5f39309a3831ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34fa0906ec63eb51d37c192f9dadddc57dbf1cdf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604841"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538628"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>Zálohování souborů a složek Windows serveru do Azure
 
@@ -103,7 +104,7 @@ Postup při offline přenosu:
 1. Zápis zálohovaných dat do pracovního umístění.
 1. Pomocí nástroje AzureOfflineBackupDiskPrep zkopírujte data z pracovního umístění na jeden nebo více disků SATA.
 
-    Nástroj vytvoří úlohu importu Azure. Další informace najdete v tématu [co je služba Azure import/export](https://docs.microsoft.com/azure/storage/common/storage-import-export-service).
+    Nástroj vytvoří úlohu importu Azure. Další informace najdete v tématu [co je služba Azure import/export](../storage/common/storage-import-export-service.md).
 1. Odešlete disky SATA do datacentra Azure.
 
     V datacentru se data disku zkopírují do účtu služby Azure Storage. Azure Backup zkopíruje data z účtu úložiště do trezoru a naplánují se přírůstkové zálohy.
@@ -114,7 +115,7 @@ Další informace o tom, jak [používat Azure Data box pro offline zálohován�
 
 To, jak agent MARS používá šířku pásma sítě, můžete řídit povolením omezení sítě. Omezování je užitečné, pokud potřebujete zálohovat data během pracovní doby, ale chcete určit, jak velkou šířku pásma používá aktivita zálohování a obnovení.
 
-Omezování sítě v Azure Backup používá [technologii QoS (Quality of Service)](https://docs.microsoft.com/windows-server/networking/technologies/qos/qos-policy-top) v místním operačním systému.
+Omezování sítě v Azure Backup používá [technologii QoS (Quality of Service)](/windows-server/networking/technologies/qos/qos-policy-top) v místním operačním systému.
 
 Omezení sítě pro zálohy je k dispozici v systémech Windows Server 2012 a novějších a ve Windows 8 a novějších verzích. Operační systémy by měly používat nejnovější aktualizace Service Pack.
 

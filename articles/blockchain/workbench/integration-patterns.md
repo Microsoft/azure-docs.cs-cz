@@ -4,12 +4,12 @@ description: Přehled způsobů integrace inteligentních kontraktů ve službě
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: mmercuri
-ms.openlocfilehash: 716255f5e71ec19b5b9c5a0a32740abc39f1a40b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dae63e16356e825d3be31380df1648749e59d8bd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254629"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538316"
 ---
 # <a name="smart-contract-integration-patterns"></a>Vzory integrace inteligentních kontraktů
 
@@ -134,7 +134,7 @@ Tento model je obvykle implementován pomocí následujícího přístupu:
 -   Změna stavu je proplochá jako událost příjemci pro příjem dat.
 -   Klient pro příjem dat obdrží událost a aktivuje provádění externího kódu.
 
-![Převést ovládací prvek na externí proces](./media/integration-patterns/transition-external-process.png)
+![Diagram znázorňuje změnu stavu v rámci smlouvy, která způsobila, že událost přejde do distribuované hlavní knihy. Blockchain Workbench pak vybere událost a publikuje ji.](./media/integration-patterns/transition-external-process.png)
 
 #### <a name="return-of-control-from-the-smart-contract"></a>Vrácení ovládacího prvku z inteligentního kontraktu
 
@@ -142,7 +142,7 @@ V závislosti na možnosti přizpůsobení externího systému může nebo nemus
 
 ##### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Přímé doručování Azure blockchain Workbench v očekávaném formátu
 
-![](./media/integration-patterns/direct-delivery.png)
+![V diagramu se zobrazí zpráva o tom, že externí systém vybral blockchain Workbench prostřednictvím Service Bus. Blockchain Workbench pak pošle zprávu jako transakci do distribuované účetní knihy jménem agenta. Je předána kontraktu, kde způsobuje změnu stavu.](./media/integration-patterns/direct-delivery.png)
 
 V tomto modelu se komunikace se smlouvou a následnou stavovou změnou probíhá po předchozím procesu –
 

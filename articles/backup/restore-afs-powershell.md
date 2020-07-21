@@ -3,12 +3,12 @@ title: Obnovení souborů Azure pomocí PowerShellu
 description: V tomto článku se dozvíte, jak obnovit soubory Azure pomocí služby Azure Backup a PowerShellu.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 63c318b66ec8f876a260b3c5b8db38bb088fb862
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23de6e1e352a1b72d1435fc65d6a59ab37d838b0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83201956"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538543"
 ---
 # <a name="restore-azure-files-with-powershell"></a>Obnovení souborů Azure pomocí PowerShellu
 
@@ -24,7 +24,7 @@ Můžete obnovit celou sdílenou složku nebo konkrétní soubory ve sdílené s
 
 ## <a name="fetch-recovery-points"></a>Načíst body obnovení
 
-K vypsání všech bodů obnovení pro zálohovanou položku použijte [příkaz Get-AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint?view=azps-1.4.0) .
+K vypsání všech bodů obnovení pro zálohovanou položku použijte [příkaz Get-AzRecoveryServicesBackupRecoveryPoint](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) .
 
 V následujícím skriptu:
 
@@ -63,7 +63,7 @@ Po výběru příslušného bodu obnovení obnovte sdílenou složku nebo soubor
 
 ## <a name="restore-an-azure-file-share-to-an-alternate-location"></a>Obnovení sdílené složky Azure do alternativního umístění
 
-K obnovení do vybraného bodu obnovení použijte [příkaz Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) . Zadejte tyto parametry pro identifikaci alternativního umístění:
+K obnovení do vybraného bodu obnovení použijte [příkaz Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) . Zadejte tyto parametry pro identifikaci alternativního umístění:
 
 * **TargetStorageAccountName**: účet úložiště, do kterého se obnovil zálohovaný obsah. Cílový účet úložiště musí být ve stejném umístění jako trezor.
 * **TargetFileShareName**: sdílené složky v rámci cílového účtu úložiště, do kterého se obnoví zálohovaný obsah.
@@ -86,7 +86,7 @@ testAzureFS        Restore              InProgress           12/10/2018 9:56:38 
 
 ## <a name="restore-an-azure-file-to-an-alternate-location"></a>Obnovení souboru Azure do alternativního umístění
 
-K obnovení do vybraného bodu obnovení použijte [příkaz Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) . Určete tyto parametry k identifikaci alternativního umístění a k jedinečné identifikaci souboru, který chcete obnovit.
+K obnovení do vybraného bodu obnovení použijte [příkaz Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) . Určete tyto parametry k identifikaci alternativního umístění a k jedinečné identifikaci souboru, který chcete obnovit.
 
 * **TargetStorageAccountName**: účet úložiště, do kterého se obnovil zálohovaný obsah. Cílový účet úložiště musí být ve stejném umístění jako trezor.
 * **TargetFileShareName**: sdílené složky v rámci cílového účtu úložiště, do kterého se obnoví zálohovaný obsah.
@@ -121,7 +121,7 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -SourceFileType File 
 
 ## <a name="restore-multiple-files-or-folders-to-original-or-alternate-location"></a>Obnovení více souborů nebo složek do původního nebo alternativního umístění
 
-Použijte příkaz [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) předáním cesty všech souborů nebo složek, které chcete obnovit, jako hodnotu parametru **MultipleSourceFilePath** .
+Použijte příkaz [Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) předáním cesty všech souborů nebo složek, které chcete obnovit, jako hodnotu parametru **MultipleSourceFilePath** .
 
 ### <a name="restore-multiple-files"></a>Obnovení více souborů
 

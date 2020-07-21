@@ -3,11 +3,12 @@ title: Zálohování Azure File Share
 description: Naučte se zálohovat sdílené složky Azure v trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 0a03871b61ab00f2dae18ba11a5a9127680a646b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40cb9ca0bd34fd65ab1983af6384d617db26e996
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299226"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539087"
 ---
 # <a name="about-azure-file-share-backup"></a>Zálohování Azure File Share
 
@@ -20,7 +21,7 @@ Zálohování sdílené složky Azure je nativní cloudové řešení zálohová
 * **Integrované možnosti správy**: můžete naplánovat zálohování a zadat požadovanou dobu uchování bez další režie vyřazování dat.
 * **Okamžité obnovení**: zálohování sdílené složky Azure používá snímky sdílené složky, takže můžete vybrat jenom soubory, které se mají okamžitě obnovit.
 * **Výstrahy a vytváření sestav**: můžete nakonfigurovat výstrahy pro selhání zálohování a obnovení a použít řešení pro vytváření sestav, které poskytuje Azure Backup, abyste získali přehled o zálohách ve sdílených složkách souborů.
-* **Ochrana před náhodným odstraněním sdílených složek**: Azure Backup povoluje [funkci obnovitelného odstranění](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion) na úrovni účtu úložiště s dobou uchování 14 dní. I když škodlivý objekt actor odstraní sdílenou složku, obsah sdílené složky a body obnovení (snímky) se uchovávají pro konfigurovatelnou dobu uchování, což umožňuje úspěšné a úplné obnovení zdrojového obsahu a snímků bez ztráty dat.
+* **Ochrana před náhodným odstraněním sdílených složek**: Azure Backup povoluje [funkci obnovitelného odstranění](../storage/files/storage-files-prevent-file-share-deletion.md) na úrovni účtu úložiště s dobou uchování 14 dní. I když škodlivý objekt actor odstraní sdílenou složku, obsah sdílené složky a body obnovení (snímky) se uchovávají pro konfigurovatelnou dobu uchování, což umožňuje úspěšné a úplné obnovení zdrojového obsahu a snímků bez ztráty dat.
 
 ## <a name="architecture"></a>Architektura
 

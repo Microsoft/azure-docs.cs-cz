@@ -8,11 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
-ms.openlocfilehash: aa5e741d8578253b8b3e8e5c692873c39cec8f79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccc872b24c78fbdf6e55673f9d1f78efc0647895
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85412630"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537880"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB rozhraní Java SDK v4 pro Core (SQL) API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -53,13 +54,24 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) kombinuje asynchronní rozhraní API 
 |**Ukázky základních kódů** | [Azure Cosmos DB: Příklady jazyka Java pro rozhraní SQL API](sql-api-java-sdk-samples.md) · [Úložiště GitHub s ukázkovým kódem](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
 |**Konzolová aplikace se změněným kanálem**| [Změna kanálu – ukázka pro Java SDK v4](create-sql-api-java-changefeed.md) · [Úložiště GitHub s ukázkovým kódem](https://github.com/Azure-Samples/azure-cosmos-java-sql-app-example)| 
 |**Ukázka webové aplikace**| [Vytvoření webové aplikace pomocí Java SDK v4](sql-api-java-application.md) · [Úložiště GitHub s ukázkovým kódem](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app)|
-| **Tipy pro zvýšení výkonu**| [Tipy ke zvýšení výkonu pro Java SDK v4](performance-tips-java-sdk-v4-sql.md)| 
+| **Tipy ke zvýšení výkonu**| [Tipy ke zvýšení výkonu pro Java SDK v4](performance-tips-java-sdk-v4-sql.md)| 
 | **Řešení potíží** | [Řešení potíží se sadou Java SDK v4](troubleshoot-java-sdk-v4-sql.md) |
 | **Migrace na V4 ze starší sady SDK** | [Migrace na Java V4 SDK](migrate-java-v4-sdk.md) |
 | **Minimální podporovaná doba běhu**|[JDK 8](/java/azure/jdk/?view=azure-java-stable) | 
 | **Azure Cosmos DB semináře a cvičení** |[Domovská stránka inCosmos DBch Workshops](https://aka.ms/cosmosworkshop)
 
 ## <a name="release-history"></a>Historie verzí
+
+### <a name="420-2020-07-14"></a>4.2.0 (2020-07-14)
+* Bylo přidáno rozhraní API s povoleným protokolováním skriptů do `CosmosStoredProcedureRequestOptions` .
+* Aktualizace `DirectConnectionConfig` Default `idleEndpointTimeout` na 1H a Default `connectTimeout` na 5.
+#### <a name="key-bug-fixes"></a>Opravy chyb klíčů
+* Opravili jsme problém, kdy `GatewayConnectionConfig` `idleConnectionTimeout` došlo k přepsání `DirectConnectionConfig` `idleConnectionTimeout` .
+* Pevná `responseContinuationTokenLimitInKb` rozhraní API pro načtení a nastavení v `CosmosQueryRequestOptions` .
+* Opravili jsme problém v dotazech a změnili kanál při opětovném vytváření kolekce se stejným názvem.
+* Vyřešil se problém s ClassCastExceptionem horního vyvolání dotazu.
+* Vyřešil se problém s vyvoláním NullPointerException dotazu ORDER by.
+* Opravili jsme problémy při zpracování zrušených žádostí v přímém režimu, který způsobuje volání třídy Actor `onErrorDropped` . 
 
 ### <a name="410-2020-06-25"></a>4.1.0 (2020-06-25)
 #### <a name="new-features"></a>Nové funkce

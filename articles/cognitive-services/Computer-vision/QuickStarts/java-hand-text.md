@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: e68c56901616cfb2ea90fd67e5d08f09bb1adb92
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: bbd41c147b582eac2a28fdcf73a7d4dbc725f3b5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84987317"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538084"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-java"></a>Rychlý Start: extrakce vytištěného textu a ručního textu pomocí Počítačové zpracování obrazu REST API a Java
 
@@ -28,7 +28,7 @@ V tomto rychlém startu budete z obrázku extrahováni vytištěné a ručně ps
 
 ---
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * [Jazyk Java &trade; Platform, Standard Edition Development Kit 7 nebo 8](https://aka.ms/azure-jdks) (JDK 7 nebo 8)
@@ -65,10 +65,9 @@ Pokud chcete vytvořit a spustit ukázku, postupujte takto:
     ```
 
 1. Nahraďte `Main` veřejnou třídu následujícím kódem.
-1. V případě potřeby nahraďte hodnotu `language` jazykem, který chcete rozpoznat. Přijaté hodnoty jsou "en" pro angličtinu a "ES" pro španělštinu.
 1. V případě potřeby nahraďte hodnotu `imageToAnalyze` adresou URL jiného obrázku, ze kterého chcete extrahovat text.
 1. Uložte a sestavte projekt Java.
-1. Pokud používáte integrované vývojové prostředí, spusťte `Main`. V opačném případě otevřete okno příkazového řádku a potom pomocí příkazu `java` spusťte zkompilovanou třídu. Například, `java Main`.
+1. Pokud používáte integrované vývojové prostředí, spusťte `Main`. V opačném případě otevřete okno příkazového řádku a potom pomocí příkazu `java` spusťte zkompilovanou třídu. Například `java Main`.
 
 ```java
 
@@ -79,15 +78,10 @@ public class Main {
     private static String subscriptionKey = System.getenv("COMPUTER_VISION_SUBSCRIPTION_KEY");
     private static String endpoint = System.getenv("COMPUTER_VISION_ENDPOINT");
 
-    // Set the language that you want to recognize
-    // Accepted values are "en" for English, or "es" for Spanish
-    private static String language = "en";  
-
     private static String uriBase = endpoint + "/vision/v3.0/read/analyze";
 
     private static String imageToAnalyze =
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/" +
-                    "Cursive_Writing_on_Notebook_paper.jpg/800px-Cursive_Writing_on_Notebook_paper.jpg";
+            "https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/cognitive-services/Computer-vision/Images/readsample.jpg";
 
     public static void main(String[] args) {
         CloseableHttpClient httpTextClient = HttpClientBuilder.create().build();
@@ -95,14 +89,12 @@ public class Main {
 
         System.out.println("Endpoint:         " + endpoint);
         System.out.println("Subscription key: " + subscriptionKey);
-        System.out.println("Language:         " + language);
 
         try {
             // This operation requires two REST API calls. One to submit the image
             // for processing, the other to retrieve the text found in the image.
 
             URIBuilder builder = new URIBuilder(uriBase);
-            builder.setParameter("language", language);
 
             // Prepare the URI for the REST API method.
             URI uri = builder.build();

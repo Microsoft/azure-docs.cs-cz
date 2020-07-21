@@ -9,11 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: jingwang
-ms.openlocfilehash: 7fd8fd35ee411d929843be81a1daaa512e0b3ca1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8429f58b9b8ce1be12fea861b805084347a0e2b2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84611040"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537693"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Formát JSON v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -26,14 +27,14 @@ Formát JSON se podporuje pro následující konektory: [Amazon S3](connector-am
 
 Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datové sady](concepts-datasets-linked-services.md) . V této části najdete seznam vlastností podporovaných datovou sadou JSON.
 
-| Vlastnost         | Popis                                                  | Vyžadováno |
+| Vlastnost         | Popis                                                  | Povinné |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| typ             | Vlastnost Type datové sady musí být nastavená na **JSON**. | Yes      |
-| location         | Nastavení umístění souborů. Každý konektor založený na souborech má svůj vlastní typ umístění a podporované vlastnosti v rámci `location` . **Podrobnosti najdete v článku o konektoru – > vlastnosti datové sady**. | Yes      |
+| typ             | Vlastnost Type datové sady musí být nastavená na **JSON**. | Ano      |
+| location         | Nastavení umístění souborů. Každý konektor založený na souborech má svůj vlastní typ umístění a podporované vlastnosti v rámci `location` . **Podrobnosti najdete v článku o konektoru – > vlastnosti datové sady**. | Ano      |
 | encodingName     | Typ kódování používaný pro čtení a zápis testovacích souborů. <br>Povolené hodnoty jsou následující: UTF-8, UTF-16, "UTF-16BE", "UTF-32", "UTF-32BE", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "Shift-JIS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM500", "IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860"; "IBM861", "IBM863", "IBM864", "IBM865", "IBM869", "IBM870", "IBM01140", "IBM01141", "IBM01142", "IBM01143", "IBM01144", "IBM01145", "IBM01146", "IBM01147", "IBM01148", "IBM01149", "", "" 2022, "ISO-2022-KR", "ISO-8859-1", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "ISO-8859-13"; , "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", "WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258".| No       |
 | komprese | Skupina vlastností pro konfiguraci komprese souborů. Tuto část nakonfigurujte, pokud chcete během provádění aktivit provést kompresi nebo dekompresi. | No |
-| typ | Kompresní kodek používaný pro čtení a zápis souborů JSON. <br>Povolené hodnoty jsou **bzip2**, **gzip**, **Deflate**, **ZipDeflate**, **přichycení**nebo **LZ4**. pro použití při ukládání souboru. Výchozí hodnota není komprimovaná.<br>**Poznámka:** aktivita kopírování nepodporuje "přichycení" & "LZ4" a tok dat mapování nepodporuje "ZipDeflate".<br>**Poznámka:** při použití aktivity kopírování k dekompresi souborů **ZipDeflate** a zápisu do úložiště dat jímky založeného na souborech se ve výchozím nastavení extrahují soubory do složky: `<path specified in dataset>/<folder named as source zip file>/` pomocí `preserveZipFileNameAsFolder` [zdroje aktivity kopírování](#json-as-source) můžete určit, jestli se má zachovat název souboru ZIP jako struktura složek. | Ne.  |
-| úroveň | Kompresní poměr <br>Povolené hodnoty jsou **optimální** nebo **nejrychlejší**.<br>- **Nejrychlejší:** Kompresní operace by se měla dokončit co nejrychleji, a to i v případě, že výsledný soubor není optimálně komprimován.<br>- **Optimální**: komprese by měla být optimálně komprimována i v případě, že dokončení operace trvá delší dobu. Další informace najdete v tématu [úroveň komprese](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) . | No       |
+| typ<br/>(*pod `compression` *) | Kompresní kodek používaný pro čtení a zápis souborů JSON. <br>Povolené hodnoty jsou **bzip2**, **gzip**, **Deflate**, **ZipDeflate**, **přichycení**nebo **LZ4**. pro použití při ukládání souboru. Výchozí hodnota není komprimovaná.<br>**Poznámka:** aktivita kopírování nepodporuje "přichycení" & "LZ4" a tok dat mapování nepodporuje "ZipDeflate".<br>**Poznámka:** při použití aktivity kopírování k dekompresi souborů **ZipDeflate** a zápisu do úložiště dat jímky založeného na souborech se ve výchozím nastavení extrahují soubory do složky: `<path specified in dataset>/<folder named as source zip file>/` pomocí `preserveZipFileNameAsFolder` [zdroje aktivity kopírování](#json-as-source) můžete určit, jestli se má zachovat název souboru ZIP jako struktura složek. | Ne.  |
+| úroveň<br/>(*pod `compression` *) | Kompresní poměr <br>Povolené hodnoty jsou **optimální** nebo **nejrychlejší**.<br>- **Nejrychlejší:** Kompresní operace by se měla dokončit co nejrychleji, a to i v případě, že výsledný soubor není optimálně komprimován.<br>- **Optimální**: komprese by měla být optimálně komprimována i v případě, že dokončení operace trvá delší dobu. Další informace najdete v tématu [úroveň komprese](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) . | No       |
 
 Níže je příklad datové sady JSON v Azure Blob Storage:
 
@@ -65,21 +66,23 @@ Níže je příklad datové sady JSON v Azure Blob Storage:
 
 Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, najdete v článku [kanály](concepts-pipelines-activities.md) . V této části najdete seznam vlastností podporovaných zdrojem a jímkou JSON.
 
+Přečtěte si o tom, jak extrahovat data ze souborů JSON a mapovat je na úložiště nebo formát dat jímky nebo naopak z [mapování schématu](copy-activity-schema-and-type-mapping.md).
+
 ### <a name="json-as-source"></a>JSON jako zdroj
 
 V části *** \* zdroj \* *** aktivity kopírování jsou podporovány následující vlastnosti.
 
-| Vlastnost      | Popis                                                  | Vyžadováno |
+| Vlastnost      | Popis                                                  | Povinné |
 | ------------- | ------------------------------------------------------------ | -------- |
-| typ          | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **JSONSource**. | Yes      |
+| typ          | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **JSONSource**. | Ano      |
 | formatSettings | Skupina vlastností Další informace najdete v tabulce **nastavení čtení JSON** níže. | No       |
 | storeSettings | Skupina vlastností, jak číst data z úložiště dat. Jednotlivé konektory založené na souborech mají v rámci své vlastní podporované nastavení pro čtení `storeSettings` . **Podrobnosti najdete v článku informace o konektoru – > část kopírování vlastností aktivity**. | No       |
 
 Podporovaná **nastavení čtení JSON** v rámci `formatSettings` :
 
-| Vlastnost      | Popis                                                  | Vyžadováno |
+| Vlastnost      | Popis                                                  | Povinné |
 | ------------- | ------------------------------------------------------------ | -------- |
-| typ          | Typ formatSettings musí být nastaven na hodnotu **JsonReadSettings**. | Yes      |
+| typ          | Typ formatSettings musí být nastaven na hodnotu **JsonReadSettings**. | Ano      |
 | compressionProperties | Skupina vlastností, jak dekomprimovat data pro daný Kompresní kodek. | No       |
 | preserveZipFileNameAsFolder<br>(*pod `compressionProperties` *) | Platí v případě, že je vstupní datová sada nakonfigurovaná s **ZipDeflate** kompresí. Určuje, jestli se má při kopírování zachovat název zdrojového souboru ZIP jako struktura složek. Pokud je nastavená hodnota true (výchozí), Data Factory zapisuje soubory unzip do `<path specified in dataset>/<folder named as source zip file>/` ; při nastavení na hodnotu false Data Factory zapisuje soubory unzip přímo do `<path specified in dataset>` .  | No |
 
@@ -87,17 +90,17 @@ Podporovaná **nastavení čtení JSON** v rámci `formatSettings` :
 
 V části *** \* jímka \* *** aktivity kopírování jsou podporovány následující vlastnosti.
 
-| Vlastnost      | Popis                                                  | Vyžadováno |
+| Vlastnost      | Popis                                                  | Povinné |
 | ------------- | ------------------------------------------------------------ | -------- |
-| typ          | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **JSONSink**. | Yes      |
+| typ          | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **JSONSink**. | Ano      |
 | formatSettings | Skupina vlastností Další informace najdete v tabulce **nastavení zápisu JSON** níže. | No       |
 | storeSettings | Skupina vlastností, jak zapisovat data do úložiště dat. Každý konektor založený na souborech má vlastní podporované nastavení zápisu v rámci `storeSettings` . **Podrobnosti najdete v článku informace o konektoru – > část kopírování vlastností aktivity**. | No       |
 
 Podporovaná **nastavení zápisu JSON** v rámci `formatSettings` :
 
-| Vlastnost      | Popis                                                  | Vyžadováno                                              |
+| Vlastnost      | Popis                                                  | Povinné                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| typ          | Typ formatSettings musí být nastaven na hodnotu **JsonWriteSettings**. | Yes                                                   |
+| typ          | Typ formatSettings musí být nastaven na hodnotu **JsonWriteSettings**. | Ano                                                   |
 | filePattern |Určete vzor dat uložených v jednotlivých souborech JSON. Povolené hodnoty jsou: **setOfObjects** (řádky JSON) a **arrayOfObjects**. **Výchozí hodnota** je **setOfObjects**. Podrobné informace o těchto vzorech najdete v tématu [Vzory souborů JSON](#json-file-patterns). |No |
 
 ### <a name="json-file-patterns"></a>Vzory souborů JSON
@@ -199,16 +202,16 @@ V části mapování toků dat můžete číst a zapisovat do formátu JSON v n�
 
 V níže uvedené tabulce jsou uvedeny vlastnosti podporované zdrojem JSON. Tyto vlastnosti můžete upravit na kartě **Možnosti zdrojového kódu** .
 
-| Name | Description | Vyžadováno | Povolené hodnoty | Vlastnost skriptu toku dat |
+| Název | Popis | Povinné | Povolené hodnoty | Vlastnost skriptu toku dat |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Cesty k zástupným kartám | Budou zpracovány všechny soubory, které odpovídají zástupné cestě. Přepíše složku a cestu k souboru nastavenou v datové sadě. | ne | Řetězec [] | wildcardPaths |
 | Kořenová cesta oddílu | Pro souborová data, která jsou rozdělená na oddíly, můžete zadat kořenovou cestu oddílu, aby bylo možné číst rozdělené složky jako sloupce. | ne | Řetězec | partitionRootPath |
 | Seznam souborů | Určuje, zda váš zdroj odkazuje na textový soubor se seznamem souborů, které se mají zpracovat. | ne | `true` nebo `false` | fileList |
 | Sloupec, ve kterém se má uložit název souboru | Vytvoří nový sloupec s názvem a cestou ke zdrojovému souboru. | ne | Řetězec | rowUrlColumn |
 | Po dokončení | Odstraní nebo přesune soubory po zpracování. Cesta k souboru začíná z kořene kontejneru | ne | Odstranit: `true` nebo`false` <br> Pøesunout`['<from>', '<to>']` | purgeFiles <br> moveFiles |
-| Filtrovat podle poslední změny | Zvolit filtrování souborů podle toho, kdy se naposledy změnily | ne | Časové razítko | modifiedAfter <br> modifiedBefore |
+| Filtrovat podle poslední změny | Zvolit filtrování souborů podle toho, kdy se naposledy změnily | ne | Timestamp | modifiedAfter <br> modifiedBefore |
 | Jeden dokument | Mapování toků dat čtení jednoho dokumentu JSON z každého souboru | ne | `true` nebo `false` | singleDocument |
-| Názvy sloupců bez uvozovek | Pokud je vybraná možnost **názvy sloupců bez uvozovek** , mapování toků dat přečte sloupce JSON, které nejsou obklopené uvozovkami. | ne | `true` nebo `false` |  unquotedColumnNames
+| Názvy sloupců bez uvozovek | Pokud je vybraná možnost **názvy sloupců bez uvozovek** , mapování toků dat přečte sloupce JSON, které nejsou obklopené uvozovkami. | ne | `true` nebo `false` |  unquotedColumnNames |
 | Obsahuje komentáře | Vyberte **má komentáře** , pokud data JSON obsahují komentáře ve stylu C nebo C++. | ne | `true` nebo `false` | asComments |
 | Jednoduché v uvozovkách | Přečte sloupce JSON, které nejsou obklopené uvozovkami. | ne | `true` nebo `false` | singleQuoted |
 | Zpětné lomítko – řídicí | Vyberte **zpětné lomítko** , pokud se k řídicím znakům v datech JSON použijí zpětná lomítka. | ne | `true` nebo `false` | backslashEscape |
@@ -294,7 +297,7 @@ Vyberte **zpětné lomítko** , které se řídí zpětným lomítkem, aby se v 
 
 V níže uvedené tabulce jsou uvedeny vlastnosti, které jímka JSON podporuje. Tyto vlastnosti můžete upravit na kartě **Nastavení** .
 
-| Name | Description | Vyžadováno | Povolené hodnoty | Vlastnost skriptu toku dat |
+| Název | Popis | Povinné | Povolené hodnoty | Vlastnost skriptu toku dat |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Vymazat složku | Pokud před zápisem není cílová složka smazána | ne | `true` nebo `false` | zkrátit |
 | Možnost názvu souboru | Formát názvů zapsaných dat. Ve výchozím nastavení je jeden soubor na oddíl ve formátu`part-#####-tid-<guid>` | ne | Vzor: řetězec <br> Na oddíl: řetězec [] <br> Jako data ve sloupci: String <br> Výstup do jednoho souboru:`['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |

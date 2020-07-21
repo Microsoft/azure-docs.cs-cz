@@ -3,17 +3,18 @@ title: Detekce nevracení paměti – Azure Application Insights inteligentní z
 description: Monitorujte aplikace s využitím Azure Application Insights pro potenciální nevracení paměti.
 ms.topic: conceptual
 ms.date: 12/12/2017
-ms.openlocfilehash: 85d138518dfb1313a810657016e9fe3143887b6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3fe58cd7d61246c5565cd89fa782c8a977f09499
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671694"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539886"
 ---
 # <a name="memory-leak-detection-preview"></a>Detekce nevracení paměti (Preview)
 
 Application Insights automaticky analyzuje spotřebu paměti každého procesu ve vaší aplikaci a může upozorňovat na potenciální nevracení paměti nebo vyšší spotřebu paměti.
 
-Tato funkce nevyžaduje žádné speciální nastavení, kromě [Konfigurace čítačů výkonu](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters) pro vaši aplikaci. Je aktivní, když vaše aplikace generuje dostatek paměti při vytváření telemetrie čítačů výkonu paměti (například soukromé bajty).
+Tato funkce nevyžaduje žádné speciální nastavení, kromě [Konfigurace čítačů výkonu](./performance-counters.md) pro vaši aplikaci. Je aktivní, když vaše aplikace generuje dostatek paměti při vytváření telemetrie čítačů výkonu paměti (například soukromé bajty).
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Kdy získám tento typ oznámení inteligentního zjišťování?
 Typické oznámení bude dodržovat konzistentní zvýšení spotřeby paměti po dlouhou dobu, v jednom nebo více procesech a/nebo jednom nebo několika počítačích, které jsou součástí vaší aplikace. Algoritmy strojového učení se používají k detekci zvýšené spotřeby paměti, která odpovídá vzoru nevrácené paměti.

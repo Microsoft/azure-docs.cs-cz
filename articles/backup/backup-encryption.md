@@ -1,22 +1,23 @@
 ---
-title: Šifrování v Azure Backup
+title: Šifrování ve službě Azure Backup
 description: Přečtěte si, jak funkce šifrování v Azure Backup pomůžou chránit zálohovaná data a plnit požadavky na zabezpečení vaší firmy.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: aafb9868dfb6a63ec9b6a3ae654b88b202a1a145
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: references_regions
+ms.openlocfilehash: 099e736bfb321f0f92bd3a57f9c24e88293b42bb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171818"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538747"
 ---
-# <a name="encryption-in-azure-backup"></a>Šifrování v Azure Backup
+# <a name="encryption-in-azure-backup"></a>Šifrování ve službě Azure Backup
 
 Všechna vaše Zálohovaná data se automaticky šifrují, když se ukládají v cloudu pomocí Azure Storage šifrování, což vám pomůže splnit závazky zabezpečení a dodržování předpisů. Tato neaktivní neaktivní data jsou šifrovaná pomocí 256 šifrování AES, což je jedno z nejsilnější dostupných šifrovacích šifr a je kompatibilní se standardem FIPS 140-2.
 
 Kromě šifrování v klidovém režimu se všechna vaše Zálohovaná data přenáší přes protokol HTTPS. Vždycky zůstane v páteřní síti Azure.
 
-Další informace najdete v tématu [Azure Storage šifrování pro](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)neaktivní neaktivní data. V tématu [Azure Backup – Nejčastější dotazy](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#encryption) , které vám pomohou zodpovědět případné dotazy týkající se šifrování.
+Další informace najdete v tématu [Azure Storage šifrování pro](../storage/common/storage-service-encryption.md)neaktivní neaktivní data. V tématu [Azure Backup – Nejčastější dotazy](./backup-azure-backup-faq.md#encryption) , které vám pomohou zodpovědět případné dotazy týkající se šifrování.
 
 ## <a name="encryption-of-backup-data-using-platform-managed-keys"></a>Šifrování zálohovaných dat pomocí klíčů spravovaných platformou
 
@@ -30,7 +31,7 @@ Přečtěte si další informace o šifrování zálohovaných dat [pomocí klí
 
 ## <a name="backup-of-managed-disk-vms-encrypted-using-customer-managed-keys"></a>Zálohování virtuálních počítačů se spravovanými disky šifrovaných pomocí klíčů spravovaných zákazníkem
 
-Azure Backup taky umožňuje zálohovat virtuální počítače Azure, které používají váš klíč pro [šifrování služby Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption). Klíč, který se používá k šifrování disků, je uložený v Azure Key Vault a spravuje vám. Šifrování služby Storage (SSE) pomocí klíčů spravovaných zákazníkem se liší od Azure Disk Encryption, protože ADE využívá BitLocker (pro Windows) a DM-crypt (pro Linux) k provádění šifrování v rámci hosta, SSE šifruje data ve službě úložiště a umožňuje pro vaše virtuální počítače používat libovolný operační systém nebo Image. Další podrobnosti najdete v tématu [šifrování spravovaných disků pomocí zákaznických spravovaných klíčů](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys) .
+Azure Backup taky umožňuje zálohovat virtuální počítače Azure, které používají váš klíč pro [šifrování služby Storage](../storage/common/storage-service-encryption.md). Klíč, který se používá k šifrování disků, je uložený v Azure Key Vault a spravuje vám. Šifrování služby Storage (SSE) pomocí klíčů spravovaných zákazníkem se liší od Azure Disk Encryption, protože ADE využívá BitLocker (pro Windows) a DM-crypt (pro Linux) k provádění šifrování v rámci hosta, SSE šifruje data ve službě úložiště a umožňuje pro vaše virtuální počítače používat libovolný operační systém nebo Image. Další podrobnosti najdete v tématu [šifrování spravovaných disků pomocí zákaznických spravovaných klíčů](../virtual-machines/windows/disk-encryption.md#customer-managed-keys) .
 
 ## <a name="infrastructure-level-encryption-for-backup-data"></a>Šifrování na úrovni infrastruktury pro zálohovaná data
 
@@ -41,7 +42,7 @@ Kromě šifrování dat v úložišti Recovery Services pomocí klíčů spravov
 
 ## <a name="backup-of-vms-encrypted-using-ade"></a>Zálohování virtuálních počítačů šifrovaných pomocí ADE
 
-Pomocí Azure Backup můžete také zálohovat virtuální počítače Azure, které mají své operační systémy nebo datové disky šifrované pomocí Azure Disk Encryption. ADE pomocí nástroje BitLocker pro virtuální počítače s Windows a DM-crypt pro virtuální počítače se systémem Linux provádí šifrování v hostůch. Podrobnosti najdete v tématu [zálohování a obnovení šifrovaných virtuálních počítačů pomocí Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).
+Pomocí Azure Backup můžete také zálohovat virtuální počítače Azure, které mají své operační systémy nebo datové disky šifrované pomocí Azure Disk Encryption. ADE pomocí nástroje BitLocker pro virtuální počítače s Windows a DM-crypt pro virtuální počítače se systémem Linux provádí šifrování v hostůch. Podrobnosti najdete v tématu [zálohování a obnovení šifrovaných virtuálních počítačů pomocí Azure Backup](./backup-azure-vms-encryption.md).
 
 ## <a name="next-steps"></a>Další kroky
 

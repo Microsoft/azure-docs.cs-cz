@@ -3,12 +3,12 @@ title: Export pomocí Stream Analytics z Azure Application Insights | Microsoft 
 description: Stream Analytics může průběžně transformovat, filtrovat a směrovat data, která exportujete z Application Insights.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 71b19f0b49dec8f7176a53eeb656519c65f9c1d0
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 70f952dcd6f8d942ac272afed58a7fe0f47d8a6e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224515"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539954"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Použití Stream Analytics k zpracování exportovaných dat z Application Insights
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) je ideálním nástrojem pro zpracování dat [exportovaných z Application Insights](export-telemetry.md). Stream Analytics může vyžádat data z nejrůznějších zdrojů. Může data transformovat a filtrovat a pak je směrovat na celou řadu umyvadel.
@@ -95,7 +95,7 @@ Vzor předpony cesty určuje, kde Stream Analytics najde vstupní soubory v úlo
 
 `webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}`
 
-V tomto příkladu:
+V tomto příkladu:
 
 * `webapplication27`je název Application Insights prostředku **malými písmeny**.
 * `1234...`je klíč instrumentace prostředku Application Insights a **vynechává se pomlčky**. 
@@ -138,7 +138,7 @@ GROUP BY TumblingWindow(minute, 1), flat.ArrayValue.name
 
 * Export-vstup je alias, který jsme přiřadili vstupu datového proudu.
 * PBI-Output je výstupní alias, který jsme definovali.
-* Použijeme [vnější prvky Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) , protože název události je ve vnořeném poli JSON. Pak příkaz SELECT vybere název události spolu s počtem instancí s tímto názvem v daném časovém období. Klauzule [Group by](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) seskupuje prvky do časových období jedné minuty.
+* Použijeme [vnější prvky Apply](/stream-analytics-query/apply-azure-stream-analytics) , protože název události je ve vnořeném poli JSON. Pak příkaz SELECT vybere název události spolu s počtem instancí s tímto názvem v daném časovém období. Klauzule [Group by](/stream-analytics-query/group-by-azure-stream-analytics) seskupuje prvky do časových období jedné minuty.
 
 ### <a name="query-to-display-metric-values"></a>Dotaz pro zobrazení hodnot metriky
 
@@ -212,4 +212,3 @@ Noam Robert Zeev ukazuje, jak zpracovávat exportovaná data pomocí Stream Anal
 * [Průběžný export](export-telemetry.md)
 * [Podrobný odkaz na datový model pro typy a hodnoty vlastností.](export-data-model.md)
 * [Application Insights](../../azure-monitor/app/app-insights-overview.md)
-

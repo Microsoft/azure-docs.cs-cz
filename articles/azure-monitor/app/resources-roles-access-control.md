@@ -3,19 +3,19 @@ title: Prostředky, role a řízení přístupu v Azure Application Insights | M
 description: Vlastníci, přispěvatelé a čtenáři přehledů vaší organizace.
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: ee14fee66e3aa6f4e8d999f6f98debe361387515
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92f40961cd824925fe6ed1b67745667121a66d2f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82628227"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539971"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Prostředky, role a řízení přístupu v Application Insights
 
 Pomocí [řízení přístupu na základě rolí v Microsoft Azure](../../role-based-access-control/role-assignments-portal.md)můžete řídit, kdo má ke svým datům přístup pro čtení a aktualizace dat v Azure [Application Insights][start].
 
 > [!IMPORTANT]
-> Přiřaďte přístup uživatelům ve **skupině prostředků nebo předplatném** , ke kterému patří váš prostředek aplikace – ne do samotného prostředku. Přiřaďte roli **Přispěvatel komponent Application Insights** . Tím se zajistí jednotné řízení přístupu k webovým testům a výstrahám spolu s vaším prostředkem aplikace. [Další informace](#access).
+> Přiřaďte přístup uživatelům ve **skupině prostředků nebo předplatném** , ke kterému patří váš prostředek aplikace – ne do samotného prostředku. Přiřaďte roli **Přispěvatel komponent Application Insights** . Tím se zajistí jednotné řízení přístupu k webovým testům a výstrahám spolu s vaším prostředkem aplikace. [Přečtěte si další informace](#access).
 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -59,7 +59,7 @@ Vyberte **Přidat přiřazení role** .
 
 Zobrazení **Přidat oprávnění** níže je primárně specifické pro Application Insights prostředky. Pokud jste si prohlíželi oprávnění k řízení přístupu z vyšší úrovně, jako jsou skupiny prostředků, měli byste vidět další role orientované na jiné než Application Insights.
 
-Pokud chcete zobrazit informace o všech předdefinovaných rolích řízení přístupu na základě role Azure, použijte [oficiální referenční obsah](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+Pokud chcete zobrazit informace o všech předdefinovaných rolích řízení přístupu na základě role Azure, použijte [oficiální referenční obsah](../../role-based-access-control/built-in-roles.md).
 
 ![Snímek obrazovky seznamu rolí uživatele řízení přístupu](./media/resources-roles-access-control/0003-user-roles.png)
 
@@ -69,27 +69,27 @@ Tam, kde je to vhodné, odkazujeme na přidruženou oficiální referenční dok
 
 | Role | Ve skupině prostředků |
 | --- | --- |
-| [Vlastník](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) |Může měnit cokoli, včetně přístupu uživatelů. |
-| [Přispěvatel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) |Může upravovat cokoli, včetně všech prostředků. |
-| [Přispěvatel Application Insights komponent](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |Může upravit prostředky Application Insights. |
-| [Čtenář](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |Může zobrazovat, ale ne měnit. |
-| [Application Insights Snapshot Debugger](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-snapshot-debugger) | Udělí uživateli oprávnění použít Application Insights Snapshot Debugger funkce. Všimněte si, že tato role je zahrnutá ani v rolích vlastníka ani Přispěvatel. |
+| [Vlastník](../../role-based-access-control/built-in-roles.md#owner) |Může měnit cokoli, včetně přístupu uživatelů. |
+| [Přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) |Může upravovat cokoli, včetně všech prostředků. |
+| [Přispěvatel Application Insights komponent](../../role-based-access-control/built-in-roles.md#application-insights-component-contributor) |Může upravit prostředky Application Insights. |
+| [Čtenář](../../role-based-access-control/built-in-roles.md#reader) |Může zobrazovat, ale ne měnit. |
+| [Application Insights Snapshot Debugger](../../role-based-access-control/built-in-roles.md#application-insights-snapshot-debugger) | Udělí uživateli oprávnění použít Application Insights Snapshot Debugger funkce. Všimněte si, že tato role je zahrnutá ani v rolích vlastníka ani Přispěvatel. |
 | Přispěvatel Release Management nasazení služby Azure | Role Přispěvatel pro služby nasazování prostřednictvím Azure Service Deploy. |
-| [Nástroj pro vyprázdnění dat](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#data-purger) | Speciální role pro vyprazdňování osobních údajů Další informace najdete v našich [pokynech k osobním datům](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data) .   |
+| [Nástroj pro vyprázdnění dat](../../role-based-access-control/built-in-roles.md#data-purger) | Speciální role pro vyprazdňování osobních údajů Další informace najdete v našich [pokynech k osobním datům](../platform/personal-data-mgmt.md) .   |
 | Správce ExpressRoute | Může vytvořit odstranění a spravovat expresní trasy.|
-| [Přispěvatel Log Analytics](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor) | Přispěvatel Log Analytics může číst všechna data monitorování a upravovat nastavení monitorování. Úprava nastavení monitorování zahrnuje přidání rozšíření virtuálního počítače do virtuálních počítačů. čtení klíčů účtu úložiště, aby bylo možné konfigurovat shromažďování protokolů z Azure Storage; vytváření a konfigurace účtů služby Automation; přidávání řešení; a konfigurují se diagnostiky Azure na všech prostředcích Azure.  |
-| [Čtenář Log Analytics](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) | Log Analytics čtenář může zobrazit a vyhledat všechna data monitorování a také zobrazit nastavení monitorování, včetně zobrazení konfigurace diagnostiky Azure na všech prostředcích Azure. |
+| [Přispěvatel Log Analytics](../../role-based-access-control/built-in-roles.md#log-analytics-contributor) | Přispěvatel Log Analytics může číst všechna data monitorování a upravovat nastavení monitorování. Úprava nastavení monitorování zahrnuje přidání rozšíření virtuálního počítače do virtuálních počítačů. čtení klíčů účtu úložiště, aby bylo možné konfigurovat shromažďování protokolů z Azure Storage; vytváření a konfigurace účtů služby Automation; přidávání řešení; a konfigurují se diagnostiky Azure na všech prostředcích Azure.  |
+| [Čtenář Log Analytics](../../role-based-access-control/built-in-roles.md#log-analytics-reader) | Log Analytics čtenář může zobrazit a vyhledat všechna data monitorování a také zobrazit nastavení monitorování, včetně zobrazení konfigurace diagnostiky Azure na všech prostředcích Azure. |
 | masterreader | Umožňuje uživateli zobrazit vše, ale nemůže provádět změny. |
-| [Přispěvatel monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) | Může číst všechna data monitorování a aktualizovat nastavení monitorování.|
-| [Monitorování vydavatele metrik](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-metrics-publisher) | Povoluje publikování metrik pro prostředky Azure. |
-| [Čtečka monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) | Může číst všechna data monitorování. |
+| [Přispěvatel monitorování](../../role-based-access-control/built-in-roles.md#monitoring-contributor) | Může číst všechna data monitorování a aktualizovat nastavení monitorování.|
+| [Monitorování vydavatele metrik](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher) | Povoluje publikování metrik pro prostředky Azure. |
+| [Čtečka monitorování](../../role-based-access-control/built-in-roles.md#monitoring-reader) | Může číst všechna data monitorování. |
 | Přispěvatel zásad prostředků (Preview) | Uživatelé z EA, s právy k vytváření a úpravám zásad prostředků, vytvářejí lístek podpory a čtou prostředek/hierarchii.  |
-| [Správce uživatelského přístupu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) | Umožňuje uživateli spravovat přístup k prostředkům Azure ostatním uživatelům.|
-| [Přispěvatel webu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#website-contributor) | Umožňuje spravovat weby (nikoli webové plány), ale ne přístup k nim.|
+| [Správce uživatelského přístupu](../../role-based-access-control/built-in-roles.md#user-access-administrator) | Umožňuje uživateli spravovat přístup k prostředkům Azure ostatním uživatelům.|
+| [Přispěvatel webu](../../role-based-access-control/built-in-roles.md#website-contributor) | Umožňuje spravovat weby (nikoli webové plány), ale ne přístup k nim.|
 
 Úpravy obsahují vytváření, odstraňování a aktualizace:
 
-* Zdroje
+* Zdroje a prostředky
 * Webové testy
 * Výstrahy
 * Průběžný export

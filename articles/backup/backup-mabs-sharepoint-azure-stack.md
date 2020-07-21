@@ -3,11 +3,12 @@ title: Zálohování farmy služby SharePoint v Azure Stack
 description: Pomocí Azure Backup Server můžete zálohovat a obnovovat data služby SharePoint v Azure Stack. Tento článek poskytuje informace o konfiguraci farmy služby SharePoint, aby bylo možné ukládat požadovaná data do Azure. Chráněná data služby SharePoint můžete obnovit z disku nebo z Azure.
 ms.topic: conceptual
 ms.date: 06/07/2020
-ms.openlocfilehash: 8b9257c1d175c350df06f9421b31a9e7b8e2bb80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd94b24479631f9fbbe4070529d76fe6442faae2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84657944"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538781"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>Zálohování farmy služby SharePoint v Azure Stack
 
@@ -31,7 +32,7 @@ Před zálohováním farmy služby SharePoint do Azure je třeba potvrdit někol
 
 * MABS neposkytuje zálohu databází SharePoint SQL Server hostovaných ve sdílených složkách souborového serveru se škálováním na více systému (SOFS).
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Než budete pokračovat, ujistěte se, že jste splnili všechny [předpoklady pro použití Microsoft Azure Backup](backup-azure-dpm-introduction.md#prerequisites-and-limitations) k ochraně úloh. Mezi úlohy pro požadavky patří: vytvoření trezoru služby Backup, stažení přihlašovacích údajů trezoru, instalace agenta Azure Backup a registrace Azure Backup Server s trezorem.
 
@@ -101,7 +102,7 @@ Chcete-li zálohovat farmu služby SharePoint, nakonfigurujte ochranu pro služb
 
 1. V části **zadat zásady online uchovávání dat**můžete určit způsob, jakým se v Azure uchovávají body obnovení vytvořené z denních, týdenních, měsíčních nebo ročních záloh.
 
-1. V části **Zvolit online replikaci**určete, jak se bude provádět počáteční Úplná replikace dat. Replikaci můžete provést po síti nebo můžete provést offline zálohování (offline předvyplnění). Zálohování offline používá funkci Azure Import. [Další informace](https://azure.microsoft.com/documentation/articles/backup-azure-backup-import-export/).
+1. V části **Zvolit online replikaci**určete, jak se bude provádět počáteční Úplná replikace dat. Replikaci můžete provést po síti nebo můžete provést offline zálohování (offline předvyplnění). Zálohování offline používá funkci Azure Import. [Další informace](./backup-azure-backup-import-export.md).
 
 1. Na stránce **Souhrn** zkontrolujte nastavení. Po kliknutí na **vytvořit skupinu**dojde k počáteční replikaci dat. Po dokončení se stav skupiny ochrany na stránce **stav** zobrazí jako **OK** . Potom se provede záloha podle nastavení skupiny ochrany.
 
@@ -147,7 +148,7 @@ V následujícím příkladu bylo obnovení *položky SharePointu* omylem odstra
 5. Můžete také procházet různými body obnovení a vybrat databázi nebo položku, kterou chcete obnovit. Vyberte **datum > čas obnovení**a pak vyberte správnou **> sharepointovou farmu > bod obnovení, > položka**.
 
     ![MABS SharePoint Protection7](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection8.png)
-6. Klikněte na položku pravým tlačítkem myši a pak výběrem tlačítka **obnovit** otevřete **Průvodce obnovením**. Klikněte na **Další**.
+6. Klikněte na položku pravým tlačítkem myši a pak výběrem tlačítka **obnovit** otevřete **Průvodce obnovením**. Klikněte na **Next** (Další).
 
     ![Kontrola výběru obnovení](./media/backup-azure-backup-sharepoint/review-recovery-selection.png)
 7. Vyberte typ obnovení, který chcete provést, a potom klikněte na tlačítko **Další**.
@@ -171,7 +172,7 @@ V následujícím příkladu bylo obnovení *položky SharePointu* omylem odstra
     MABS připojí databázi obsahu, která je hostitelem položky SharePoint, do dočasné instance SQL Server. Z databáze obsahu obnoví položku a umístí ji do pracovního umístění souboru na MABS. Obnovená položka, která je v pracovním umístění, se teď musí exportovat do pracovního umístění ve farmě služby SharePoint.
 
     ![Pracovní Location2](./media/backup-azure-backup-sharepoint/staging-location2.png)
-10. Vyberte možnost **zadat možnosti obnovení**a použít nastavení zabezpečení pro farmu služby SharePoint nebo použít nastavení zabezpečení bodu obnovení. Klikněte na **Další**.
+10. Vyberte možnost **zadat možnosti obnovení**a použít nastavení zabezpečení pro farmu služby SharePoint nebo použít nastavení zabezpečení bodu obnovení. Klikněte na **Next** (Další).
 
     ![Možnosti obnovení](./media/backup-azure-backup-sharepoint/recovery-options.png)
 

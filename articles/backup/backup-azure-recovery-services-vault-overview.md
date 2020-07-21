@@ -3,11 +3,12 @@ title: Přehled trezorů služby Recovery Services
 description: Přehled a porovnání mezi trezory Recovery Services a trezory Azure Backup.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 798f49629ad1012e8cc9ac3ed43f5beddd6eefeb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11a218badfab141c41430c3f48a5e930bfa1af8b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248902"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539036"
 ---
 # <a name="recovery-services-vaults-overview"></a>Přehled trezorů služby Recovery Services
 
@@ -35,9 +36,9 @@ Trezory Recovery Services jsou založené na modelu Azure Resource Manager Azure
 
 Recovery Services trezor je entita, která ukládá zálohy a body obnovení vytvořené v průběhu času. Trezor Recovery Services obsahuje také zásady zálohování, které jsou přidruženy k chráněným virtuálním počítačům.
 
-Azure Backup automaticky zpracovává úložiště pro trezor. Podívejte se, jak [můžete změnit nastavení úložiště](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy).
+Azure Backup automaticky zpracovává úložiště pro trezor. Podívejte se, jak [můžete změnit nastavení úložiště](./backup-create-rs-vault.md#set-storage-redundancy).
 
-Další informace o redundanci úložiště najdete v těchto článcích o [geografické](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs) a [místní](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs) redundanci.
+Další informace o redundanci úložiště najdete v těchto článcích o [geografické](../storage/common/storage-redundancy.md) a [místní](../storage/common/storage-redundancy.md) redundanci.
 
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>Správa trezorů Recovery Services na portálu
 
@@ -61,7 +62,7 @@ Následující části obsahují odkazy na články, které vysvětlují použit
 ### <a name="back-up-data"></a>Zálohování dat
 
 - [Zálohování virtuálního počítače Azure](backup-azure-vms-first-look-arm.md)
-- [Zálohování Windows serveru nebo pracovní stanice Windows](backup-try-azure-backup-in-10-mins.md)
+- [Zálohování Windows serveru nebo pracovní stanice Windows](./backup-windows-with-mars-agent.md)
 - [Zálohování úloh DPM do Azure](backup-azure-dpm-introduction.md)
 - [Příprava na zálohování úloh pomocí Azure Backup Server](backup-azure-microsoft-azure-backup.md)
 
@@ -81,9 +82,9 @@ Následující části obsahují odkazy na články, které vysvětlují použit
 
 ## <a name="azure-advisor"></a>Azure Advisor
 
-[Azure Advisor](https://docs.microsoft.com/azure/advisor/) je přizpůsobený cloudový poradce, který pomáhá optimalizovat používání Azure. Analyzuje využití Azure a poskytuje včasné doporučení, které vám pomůžou optimalizovat a zabezpečit vaše nasazení. Poskytuje doporučení ve čtyřech kategoriích: vysoká dostupnost, zabezpečení, výkon a náklady.
+[Azure Advisor](../advisor/index.yml) je přizpůsobený cloudový poradce, který pomáhá optimalizovat používání Azure. Analyzuje využití Azure a poskytuje včasné doporučení, které vám pomůžou optimalizovat a zabezpečit vaše nasazení. Poskytuje doporučení ve čtyřech kategoriích: vysoká dostupnost, zabezpečení, výkon a náklady.
 
-Azure Advisor poskytuje hodinová [doporučení](https://docs.microsoft.com/azure/advisor/advisor-high-availability-recommendations#protect-your-virtual-machine-data-from-accidental-deletion) pro virtuální počítače, které nejsou zálohované, takže nikdy nebudete zálohovat důležité virtuální počítače. Doporučení můžete také ovládat tím, že je odkládáte.  Můžete kliknout na doporučení a povolit zálohování na virtuálních počítačích v řádku zadáním trezoru (kde se budou ukládat zálohy) a zásad zálohování (plán zálohování a uchovávání záložních kopií).
+Azure Advisor poskytuje hodinová [doporučení](../advisor/advisor-high-availability-recommendations.md#protect-your-virtual-machine-data-from-accidental-deletion) pro virtuální počítače, které nejsou zálohované, takže nikdy nebudete zálohovat důležité virtuální počítače. Doporučení můžete také ovládat tím, že je odkládáte.  Můžete kliknout na doporučení a povolit zálohování na virtuálních počítačích v řádku zadáním trezoru (kde se budou ukládat zálohy) a zásad zálohování (plán zálohování a uchovávání záložních kopií).
 
 ![Azure Advisor](./media/backup-azure-recovery-services-vault-overview/azure-advisor.png)
 

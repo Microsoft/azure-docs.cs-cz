@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 6d8088f537c4148f780c5f250eda3dcd5198f67f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 1ecdbaa28cad633817497f4af2091b9e38ba7db2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683918"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538050"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Vzorce zlepšují přesnost předpovědi
 Vzory jsou navržené tak, aby se zlepšila přesnost, když je několik projevy velmi podobné.  Vzor vám umožní získat větší přesnost záměru bez dalších projevy.
@@ -26,7 +26,7 @@ Vezměte v úvahu aplikaci lidských zdrojů, která v souvislosti s zaměstnanc
 
 ![Obrázek organizačního diagramu](./media/luis-concept-patterns/org-chart.png)
 
-|Projevy|Předpokládané záměr|Skóre záměru|
+|Výroky|Předpokládané záměr|Skóre záměru|
 |--|--|--|
 |Kdo je k podřízenému?|GetOrgChart|.30|
 |Kdo je podřízená?|GetOrgChart|.30|
@@ -41,7 +41,7 @@ Vzory řeší následující situace:
 ## <a name="patterns-are-not-a-guarantee-of-intent"></a>Vzory nejsou zárukou záměru.
 Vzory využívají kombinaci předpovědních technologií. Nastavení záměru pro šablonu utterance ve vzoru není zárukou předpovědi záměru, ale jedná se o silný signál.
 
-<a name="patterns-do-not-improve-entity-detection"/></a>
+<a name="patterns-do-not-improve-entity-detection"></a>
 
 ## <a name="patterns-do-not-improve-machine-learning-entity-detection"></a>Vzory nezlepšují detekci entit strojového učení
 

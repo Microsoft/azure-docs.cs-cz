@@ -5,21 +5,22 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/09/2020
-ms.openlocfilehash: 21f387a87224615ea6afbdce620c56e3ad2cc6ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3175e43a841334719de80f44a226b1c7b87690d9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83210538"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540107"
 ---
 # <a name="workspace-based-resource-changes-preview"></a>Změny prostředků na základě pracovního prostoru (Preview)
 
-Před představením [Application Insights prostředků na základě pracovního prostoru](create-workspace-resource.md)se Application Insights data v Azure monitor uložila odděleně od jiných dat protokolů. Obě jsou založené na Azure Průzkumník dat a používají stejný dotazovací jazyk KQL (Kusto Query Language). Tento postup je popsaný v tématu [protokoly v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs).
+Před představením [Application Insights prostředků na základě pracovního prostoru](create-workspace-resource.md)se Application Insights data v Azure monitor uložila odděleně od jiných dat protokolů. Obě jsou založené na Azure Průzkumník dat a používají stejný dotazovací jazyk KQL (Kusto Query Language). Tento postup je popsaný v tématu [protokoly v Azure monitor](../platform/data-platform-logs.md).
 
 Data prostředků Application Insights na základě pracovního prostoru se ukládají do pracovního prostoru Log Analytics s dalšími daty monitorování a daty aplikací. Tím se zjednoduší vaše konfigurace tím, že vám umožní snadněji analyzovat data napříč více řešeními a využívat možnosti pracovních prostorů.
 
 ## <a name="table-structure"></a>Struktura tabulky
 
-| Starší verze názvu tabulky | Název nové tabulky | Description |
+| Starší verze názvu tabulky | Název nové tabulky | Popis |
 |:---|:---|:---|
 | availabilityResults | AppAvailabilityResults |  Souhrnná data z testů dostupnosti.|
 | browserTimings | AppBrowserTimings | Data o výkonu klienta, například čas potřebný ke zpracování příchozích dat.|
@@ -57,9 +58,9 @@ Starší tabulka: dostupnost
 |client_Type|řetězec|ClientType|řetězec|
 |cloud_RoleInstance|řetězec|AppRoleInstance|řetězec|
 |cloud_RoleName|řetězec|AppRoleName|řetězec|
-|customDimensions|dynamic|Vlastnosti|Dynamická|
-|customMeasurements|dynamic|Měření|Dynamická|
-|doba trvání|real|Trvání v MS|real|
+|customDimensions|dynamické|Vlastnosti|Dynamická|
+|customMeasurements|dynamické|Měření|Dynamická|
+|doba trvání|real|DurationMs|real|
 |`id`|řetězec|`Id`|řetězec|
 |iKey|řetězec|IKey|řetězec|
 |Vlastnost ItemCount|int|Vlastnost ItemCount|int|
@@ -67,7 +68,7 @@ Starší tabulka: dostupnost
 |itemType|řetězec|Typ|Řetězec|
 |location|řetězec|Umístění|řetězec|
 |zpráva|řetězec|Zpráva|řetězec|
-|name|řetězec|Name|řetězec|
+|name|řetězec|Název|řetězec|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
 |operation_ParentId|řetězec|OperationParentId|řetězec|
@@ -76,7 +77,7 @@ Starší tabulka: dostupnost
 |sdkVersion|řetězec|SdkVersion|řetězec|
 |session_Id|řetězec|SessionId|řetězec|
 |velikost|real|Velikost|real|
-|úspěch|řetězec|Úspěch|Logická hodnota|
+|úspěch|řetězec|Success|Logická hodnota|
 |časové razítko|datetime|TimeGenerated|datetime|
 |user_AccountId|řetězec|UserAccountId|řetězec|
 |user_AuthenticatedId|řetězec|UserAuthenticatedId|řetězec|
@@ -101,13 +102,13 @@ Starší tabulka: browserTimings
 |client_Type|řetězec|ClientType|řetězec|
 |cloud_RoleInstance|řetězec|AppRoleInstance|řetězec|
 |cloud_RoleName|řetězec|AppRoleName|řetězec|
-|customDimensions|dynamic|Vlastnosti|Dynamická|
-|customMeasurements|dynamic|Měření|Dynamická|
+|customDimensions|dynamické|Vlastnosti|Dynamická|
+|customMeasurements|dynamické|Měření|Dynamická|
 |iKey|řetězec|IKey|řetězec|
 |Vlastnost ItemCount|int|Vlastnost ItemCount|int|
 |itemId|řetězec|\_ItemId|řetězec|
 |itemType|řetězec|Typ|řetězec|
-|name|řetězec|Name|datetime|
+|name|řetězec|Název|datetime|
 |networkDuration|real|NetworkDurationMs|real|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
@@ -145,16 +146,16 @@ Starší tabulka: závislosti
 |client_Type|řetězec|ClientType|řetězec|
 |cloud_RoleInstance|řetězec|AppRoleInstance|řetězec|
 |cloud_RoleName|řetězec|AppRoleName|řetězec|
-|customDimensions|dynamic|Vlastnosti|Dynamická|
-|customMeasurements|dynamic|Měření|Dynamická|
+|customDimensions|dynamické|Vlastnosti|Dynamická|
+|customMeasurements|dynamické|Měření|Dynamická|
 |data|řetězec|Data|řetězec|
-|doba trvání|real|Trvání v MS|real|
+|doba trvání|real|DurationMs|real|
 |`id`|řetězec|`Id`|řetězec|
 |iKey|řetězec|IKey|řetězec|
 |Vlastnost ItemCount|int|Vlastnost ItemCount|int|
 |itemId|řetězec|\_ItemId|řetězec|
 |itemType|řetězec|Typ|Řetězec|
-|name|řetězec|Name|řetězec|
+|name|řetězec|Název|řetězec|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
 |operation_ParentId|řetězec|OperationParentId|řetězec|
@@ -163,7 +164,7 @@ Starší tabulka: závislosti
 |resultCode|řetězec|ResultCode|řetězec|
 |sdkVersion|řetězec|SdkVersion|řetězec|
 |session_Id|řetězec|SessionId|řetězec|
-|úspěch|řetězec|Úspěch|Logická hodnota|
+|úspěch|řetězec|Success|Logická hodnota|
 |cílové|řetězec|Cíl|řetězec|
 |časové razítko|datetime|TimeGenerated|datetime|
 |typ|řetězec|DependencyType|řetězec|
@@ -190,13 +191,13 @@ Starší tabulka: customEvents
 |client_Type|řetězec|ClientType|řetězec|
 |cloud_RoleInstance|řetězec|AppRoleInstance|řetězec|
 |cloud_RoleName|řetězec|AppRoleName|řetězec|
-|customDimensions|dynamic|Vlastnosti|Dynamická|
-|customMeasurements|dynamic|Měření|Dynamická|
+|customDimensions|dynamické|Vlastnosti|Dynamická|
+|customMeasurements|dynamické|Měření|Dynamická|
 |iKey|řetězec|IKey|řetězec|
 |Vlastnost ItemCount|int|Vlastnost ItemCount|int|
 |itemId|řetězec|\_ItemId|řetězec|
 |itemType|řetězec|Typ|řetězec|
-|name|řetězec|Name|řetězec|
+|name|řetězec|Název|řetězec|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
 |operation_ParentId|řetězec|OperationParentId|řetězec|
@@ -227,11 +228,11 @@ Starší tabulka: customMetrics
 |client_Type|řetězec|ClientType|řetězec|
 |cloud_RoleInstance|řetězec|AppRoleInstance|řetězec|
 |cloud_RoleName|řetězec|AppRoleName|řetězec|
-|customDimensions|dynamic|Vlastnosti|Dynamická|
+|customDimensions|dynamické|Vlastnosti|Dynamická|
 |iKey|řetězec|IKey|řetězec|
 |itemId|řetězec|\_ItemId|řetězec|
 |itemType|řetězec|Typ|řetězec|
-|name|řetězec|Name|řetězec|
+|name|řetězec|Název|řetězec|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
 |operation_ParentId|řetězec|OperationParentId|řetězec|
@@ -242,7 +243,7 @@ Starší tabulka: customMetrics
 |user_AccountId|řetězec|UserAccountId|řetězec|
 |user_AuthenticatedId|řetězec|UserAuthenticatedId|řetězec|
 |user_Id|řetězec|UserId|řetězec|
-|hodnota|real|odstraněn||
+|Hodnota|real|odstraněn||
 |valueCount|int|ValueCount|int|
 |valueMax|real|ValueMax|real|
 |valueMin|real|ValueMin|real|
@@ -268,15 +269,15 @@ Starší tabulka: pageViews
 |client_Type|řetězec|ClientType|řetězec|
 |cloud_RoleInstance|řetězec|AppRoleInstance|řetězec|
 |cloud_RoleName|řetězec|AppRoleName|řetězec|
-|customDimensions|dynamic|Vlastnosti|Dynamická|
-|customMeasurements|dynamic|Měření|Dynamická|
-|doba trvání|real|Trvání v MS|real|
+|customDimensions|dynamické|Vlastnosti|Dynamická|
+|customMeasurements|dynamické|Měření|Dynamická|
+|doba trvání|real|DurationMs|real|
 |`id`|řetězec|`Id`|řetězec|
 |iKey|řetězec|IKey|řetězec|
 |Vlastnost ItemCount|int|Vlastnost ItemCount|int|
 |itemId|řetězec|\_ItemId|řetězec|
 |itemType|řetězec|Typ|Řetězec|
-|name|řetězec|Name|řetězec|
+|name|řetězec|Název|řetězec|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
 |operation_ParentId|řetězec|OperationParentId|řetězec|
@@ -311,12 +312,12 @@ Starší tabulka: čítače výkonu
 |cloud_RoleInstance|řetězec|AppRoleInstance|řetězec|
 |cloud_RoleName|řetězec|AppRoleName|řetězec|
 |counter|řetězec|odstraněn||
-|customDimensions|dynamic|Vlastnosti|Dynamická|
+|customDimensions|dynamické|Vlastnosti|Dynamická|
 |iKey|řetězec|IKey|řetězec|
 |případě|řetězec|Instance|řetězec|
 |itemId|řetězec|\_ItemId|řetězec|
 |itemType|řetězec|Typ|řetězec|
-|name|řetězec|Name|řetězec|
+|name|řetězec|Název|řetězec|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
 |operation_ParentId|řetězec|OperationParentId|řetězec|
@@ -327,7 +328,7 @@ Starší tabulka: čítače výkonu
 |user_AccountId|řetězec|UserAccountId|řetězec|
 |user_AuthenticatedId|řetězec|UserAuthenticatedId|řetězec|
 |user_Id|řetězec|UserId|řetězec|
-|hodnota|real|Hodnota|real|
+|Hodnota|real|Hodnota|real|
 
 ### <a name="apprequests"></a>AppRequests
 
@@ -348,15 +349,15 @@ Starší tabulka: žádosti
 |client_Type|řetězec|ClientType|řetězec|
 |cloud_RoleInstance|řetězec|AppRoleInstance|řetězec|
 |cloud_RoleName|řetězec|AppRoleName|řetězec|
-|customDimensions|dynamic|Vlastnosti|Dynamická|
-|customMeasurements|dynamic|Měření|Dynamická|
-|doba trvání|real|Trvání v MS|Skutečné|
+|customDimensions|dynamické|Vlastnosti|Dynamická|
+|customMeasurements|dynamické|Měření|Dynamická|
+|doba trvání|real|DurationMs|Skutečné|
 |`id`|řetězec|`Id`|Řetězec|
 |iKey|řetězec|IKey|řetězec|
 |Vlastnost ItemCount|int|Vlastnost ItemCount|int|
 |itemId|řetězec|\_ItemId|řetězec|
 |itemType|řetězec|Typ|Řetězec|
-|name|řetězec|Name|Řetězec|
+|name|řetězec|Název|Řetězec|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
 |operation_ParentId|řetězec|OperationParentId|řetězec|
@@ -366,7 +367,7 @@ Starší tabulka: žádosti
 |sdkVersion|řetězec|SdkVersion|řetězec|
 |session_Id|řetězec|SessionId|řetězec|
 |source|odkazy řetězců|Zdroj|Řetězec|
-|úspěch|řetězec|Úspěch|Logická hodnota|
+|úspěch|řetězec|Success|Logická hodnota|
 |časové razítko|datetime|TimeGenerated|datetime|
 |url|řetězec|URL|Řetězec|
 |user_AccountId|řetězec|UserAccountId|řetězec|
@@ -393,9 +394,9 @@ Starší tabulka: výjimky
 |client_Type|řetězec|ClientType|řetězec|
 |cloud_RoleInstance|řetězec|AppRoleInstance|řetězec|
 |cloud_RoleName|řetězec|AppRoleName|řetězec|
-|customDimensions|dynamic|Vlastnosti|dynamic|
-|customMeasurements|dynamic|Měření|dynamic|
-|zobrazí|dynamic|Podrobnosti|dynamic|
+|customDimensions|dynamické|Vlastnosti|dynamické|
+|customMeasurements|dynamické|Měření|dynamické|
+|zobrazí|dynamické|Podrobnosti|dynamické|
 |handledAt|řetězec|HandledAt|řetězec|
 |iKey|řetězec|IKey|řetězec|
 |innermostAssembly|řetězec|InnermostAssembly|řetězec|
@@ -444,8 +445,8 @@ Starší tabulka: trasování
 |client_Type|řetězec|ClientType|řetězec|
 |cloud_RoleInstance|řetězec|AppRoleInstance|řetězec|
 |cloud_RoleName|řetězec|AppRoleName|řetězec|
-|customDimensions|dynamic|Vlastnosti|dynamic|
-|customMeasurements|dynamic|Měření|dynamic|
+|customDimensions|dynamické|Vlastnosti|dynamické|
+|customMeasurements|dynamické|Měření|dynamické|
 |iKey|řetězec|IKey|řetězec|
 |Vlastnost ItemCount|int|Vlastnost ItemCount|int|
 |itemId|řetězec|\_ItemId|řetězec|
@@ -466,4 +467,4 @@ Starší tabulka: trasování
 ## <a name="next-steps"></a>Další kroky
 
 * [Zkoumání metrik](../../azure-monitor/platform/metrics-charts.md)
-* [Psaní analytických dotazů](../../azure-monitor/app/analytics.md)
+* [Psaní analytických dotazů](../log-query/log-query-overview.md)

@@ -6,17 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
-ms.openlocfilehash: 6cd2a28ddbe970385ff44deec2158c257937982e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e8e2015e7d0798542ff0c80d8eb39461918ad67
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82591648"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539597"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Přehled dotazů protokolu v Azure Monitor
 Dotazy protokolu umožňují plně využít hodnoty dat shromažďovaných v [protokolech Azure monitor](../platform/data-platform-logs.md). Výkonný dotazovací jazyk umožňuje spojit data z více tabulek, agregovat velké sady dat a provádět komplexní operace s minimálním kódem. Prakticky všechny dotazy mohou být zodpovězeny a analýzou provedeny, pokud jsou shromážděna podpůrná data a rozumíte tomu, jak vytvořit správný dotaz.
 
-Některé funkce v Azure Monitor, jako jsou [přehledy](../insights/insights-overview.md) a [řešení](../insights/solutions-inventory.md) , zpracovávají data protokolu bez odhalení základních dotazů. Abyste mohli plně využít jiné funkce Azure Monitor, měli byste pochopit, jak se vytvářejí dotazy a jak je můžete používat k interaktivní analýze dat v protokolech Azure Monitor.
+Některé funkce v Azure Monitor, jako jsou [přehledy](../insights/insights-overview.md) a [řešení](../monitor-reference.md) , zpracovávají data protokolu bez odhalení základních dotazů. Abyste mohli plně využít jiné funkce Azure Monitor, měli byste pochopit, jak se vytvářejí dotazy a jak je můžete používat k interaktivní analýze dat v protokolech Azure Monitor.
 
 V tomto článku se dozvíte, jak se naučíte používat dotazy protokolu v Azure Monitor. Odpovídá na časté otázky a poskytuje odkazy na další dokumentaci, která poskytuje další podrobnosti a lekce.
 

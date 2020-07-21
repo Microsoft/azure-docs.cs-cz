@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 07/05/2020
-ms.openlocfilehash: 4fb593f303eea0f4866dc248412af2f261993e92
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: ad2e6a05fa8459d8e5a53d9bb8b8e08790a7d8ec
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170339"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539410"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor klíč spravovaný zákazníkem 
 
@@ -21,17 +21,17 @@ Před konfigurací doporučujeme zkontrolovat níže uvedená [omezení a omezen
 
 ## <a name="customer-managed-key-cmk-overview"></a>CMK (Customer-Managed Key) – přehled
 
-[Šifrování v klidovém umístění](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)   je běžným požadavkem na ochranu osobních údajů a zabezpečení v organizacích.Azure vám umožní plně spravovat šifrování v klidovém režimu, zatímco máte k dispozici různé možnosti, jak pečlivě spravovat šifrovací a šifrovací klíče.
+[Šifrování v klidovém umístění](../../security/fundamentals/encryption-atrest.md)   je běžným požadavkem na ochranu osobních údajů a zabezpečení v organizacích.Azure vám umožní plně spravovat šifrování v klidovém režimu, zatímco máte k dispozici různé možnosti, jak pečlivě spravovat šifrovací a šifrovací klíče.
 
-Azure Monitor zajistí, že všechna data a uložené dotazy budou v klidovém stavu zašifrované pomocí klíčů spravovaných Microsoftem (MMK). Azure Monitor taky nabízí možnost šifrování pomocí vlastního klíče, který je uložený ve vaší [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) a k němuž má přístup úložiště pomocí [spravovaného ověřování identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) přiřazené systémem. Tento klíč (CMK) může být buď [software, nebo hardware-HSM Protected](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
+Azure Monitor zajistí, že všechna data a uložené dotazy budou v klidovém stavu zašifrované pomocí klíčů spravovaných Microsoftem (MMK). Azure Monitor taky nabízí možnost šifrování pomocí vlastního klíče, který je uložený ve vaší [Azure Key Vault](../../key-vault/general/overview.md) a k němuž má přístup úložiště pomocí [spravovaného ověřování identity](../../active-directory/managed-identities-azure-resources/overview.md) přiřazené systémem. Tento klíč (CMK) může být buď [software, nebo hardware-HSM Protected](../../key-vault/general/overview.md).
 
-Azure Monitor použití šifrování je stejné jako způsob, jakým [Azure Storage šifrování](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#about-azure-storage-encryption)   funguje.
+Azure Monitor použití šifrování je stejné jako způsob, jakým [Azure Storage šifrování](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption)   funguje.
 
 CMK vám umožňuje řídit přístup k vašim datům a kdykoli je kdykoli odvolat. Azure Monitor Storage vždy respektuje změny v klíčových oprávněních během hodiny. Data ingestovaná za posledních 14 dní jsou také uchovávána v Hot cache (zazálohovaně SSD) pro efektivní operaci dotazovacího stroje. Tato data zůstávají šifrovaná pomocí klíčů Microsoftu bez ohledu na konfiguraci CMK, ale vaše kontrola nad daty SSD dodržuje [odvolávání klíčů](#cmk-kek-revocation). Pracujeme na tom, aby data SSD zašifrovaná pomocí CMK byla v druhé polovině 2020.
 
 Funkce CMK se doručuje na vyhrazené Log Analytics clustery. Abychom ověřili, že ve vaší oblasti máme požadovanou kapacitu, vyžadujeme, aby vaše předplatné bylo předem povolené. Než začnete konfigurovat CMK, použijte kontakt Microsoftu, abyste si povolili předplatné.
 
- [Cenový model Log Analytics clusterů](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters)   používá rezervace kapacity počínaje úrovní 1000 GB/den.
+ [Cenový model Log Analytics clusterů](./manage-cost-storage.md#log-analytics-dedicated-clusters)   používá rezervace kapacity počínaje úrovní 1000 GB/den.
 
 ## <a name="how-cmk-works-in-azure-monitor"></a>Jak CMK funguje v Azure Monitor
 
@@ -80,7 +80,7 @@ Procedura není podporovaná v Azure Portal a zřizování se provádí přes Po
 > [!IMPORTANT]
 > Každá žádost REST musí v hlavičce požadavku zahrnovat autorizační token držitele.
 
-Zde je příklad:
+Příklad:
 
 ```rst
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
@@ -91,7 +91,7 @@ Kde *eyJ0eXAiO....* představuje úplný autorizační token.
 
 Token můžete získat pomocí jedné z těchto metod:
 
-1. Použijte metodu [Registrace aplikací](https://docs.microsoft.com/graph/auth/auth-concepts#access-tokens) .
+1. Použijte metodu [Registrace aplikací](/graph/auth/auth-concepts#access-tokens) .
 2. Na webu Azure Portal
     1. Přejít na Azure Portal v nástroji pro vývojáře (F12)
     1. V části "Batch? rozhraní API-Version" vyhledejte autorizační řetězec v části "hlavičky žádosti". Vypadá to, že: "Authorization: nosiče eyJ0eXAiO....". 
@@ -185,15 +185,16 @@ Vytvořte nebo použijte Azure Key Vault, který již máte vygenerovat, nebo im
 
 ![Obnovitelné odstranění a mazání nastavení ochrany](media/customer-managed-keys/soft-purge-protection.png)
 
-Tato nastavení jsou k dispozici prostřednictvím rozhraní příkazového řádku a prostředí PowerShell:
-- [Obnovitelné odstranění](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
-- [Vyprázdnit](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection) ochranné Guard proti vynucenému odstranění tajného nebo trezoru i po obnovitelném odstranění
+Tato nastavení se dají aktualizovat přes rozhraní příkazového řádku a PowerShellu:
+
+- [Obnovitelné odstranění](../../key-vault/general/overview-soft-delete.md)
+- [Vyprázdnit](../../key-vault/general/overview-soft-delete.md#purge-protection) ochranné Guard proti vynucenému odstranění tajného nebo trezoru i po obnovitelném odstranění
 
 ### <a name="create-cluster-resource"></a>Vytvořit prostředek *clusteru*
 
 Tento prostředek se používá jako zprostředkující připojení identity mezi Key Vault a vašimi pracovními prostory v Log Analytics. Po obdržení potvrzení, že vaše předplatná byla povolena, vytvořte prostředek *clusteru* Log Analytics v oblasti, ve které jsou umístěny vaše pracovní prostory.
 
-Při vytváření prostředku *clusteru* je nutné zadat úroveň *rezervace kapacity* (SKU). Úroveň *rezervace kapacity* může být v rozsahu 1 000 až 2 000 GB za den a můžete ji aktualizovat v krocích 100 později. Pokud potřebujete úroveň rezervace kapacity vyšší než 2 000 GB za den, kontaktujte nás na adrese LAIngestionRate@microsoft.com . [Další informace](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-clusters)
+Při vytváření prostředku *clusteru* je nutné zadat úroveň *rezervace kapacity* (SKU). Úroveň *rezervace kapacity* může být v rozsahu 1 000 až 2 000 GB za den a můžete ji aktualizovat v krocích 100 později. Pokud potřebujete úroveň rezervace kapacity vyšší než 2 000 GB za den, kontaktujte nás na adrese LAIngestionRate@microsoft.com . [Další informace](./manage-cost-storage.md#log-analytics-dedicated-clusters)
 
 Vlastnost *billingType* Určuje přidělení fakturace pro prostředek *clusteru* a jeho data:
 - *Cluster* (výchozí) – náklady na rezervaci kapacity pro váš cluster se připočítají ke zdroji *clusteru* .
@@ -210,7 +211,7 @@ Tato operace je asynchronní a její dokončení může chvíli trvat.
 > 
 
 ```powershell
-New-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -Location "region-name" -SkuCapacity "daily-ingestion-gigabyte" 
+New-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -Location "region-name" -SkuCapacity daily-ingestion-gigabyte 
 ```
 
 ```rst
@@ -408,7 +409,7 @@ Content-type: application/json
 Ingestovaná data se po operaci přidružení zašifrují pomocí spravovaného klíče, což může trvat až 90 minut. Stav přidružení pracovního prostoru můžete zjistit dvěma způsoby:
 
 1. Z odpovědi Zkopírujte hodnotu adresy URL Azure-AsyncOperation a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
-2. Odeslání [pracovních prostorů – Získejte](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) požadavek a sledujte odpověď. přidružený pracovní prostor bude mít clusterResourceId v části funkce.
+2. Odeslání [pracovních prostorů – Získejte](/rest/api/loganalytics/workspaces/get) požadavek a sledujte odpověď. přidružený pracovní prostor bude mít clusterResourceId v části funkce.
 
 ```rest
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
@@ -468,13 +469,13 @@ Dotazovací jazyk používaný v Log Analytics je výrazná a může obsahovat c
 > [!NOTE]
 > CMK pro dotazy použité v sešitech a řídicích panelech Azure se zatím nepodporují. Tyto dotazy zůstanou šifrované pomocí klíče Microsoft.  
 
-Když zadáte [vlastní úložiště](https://docs.microsoft.com/azure/azure-monitor/platform/private-storage) (BYOS) a přidružíte ho k pracovnímu prostoru, služba nahraje dotazy na *uložené výsledky hledání* a *protokolování výstrah* do vašeho účtu úložiště. To znamená, že můžete řídit účet úložiště a [zásady šifrování v REST](https://docs.microsoft.com/azure/storage/common/encryption-customer-managed-keys) buď pomocí stejného klíče, který používáte k šifrování dat v log Analyticsm clusteru, nebo v jiném klíči. Budete ale odpovědní za náklady spojené s tímto účtem úložiště. 
+Když zadáte [vlastní úložiště](./private-storage.md) (BYOS) a přidružíte ho k pracovnímu prostoru, služba nahraje dotazy na *uložené výsledky hledání* a *protokolování výstrah* do vašeho účtu úložiště. To znamená, že můžete řídit účet úložiště a [zásady šifrování v REST](../../storage/common/encryption-customer-managed-keys.md) buď pomocí stejného klíče, který používáte k šifrování dat v log Analyticsm clusteru, nebo v jiném klíči. Budete ale odpovědní za náklady spojené s tímto účtem úložiště. 
 
 **Otázky před nastavením CMK pro dotazy**
 * Musíte mít oprávnění Write k vašemu pracovnímu prostoru i účtu úložiště.
 * Ujistěte se, že jste svůj účet úložiště vytvořili ve stejné oblasti, ve které se nachází Log Analytics pracovní prostor.
 * *Uložení hledání* v úložišti se považuje za artefakty služby a jejich formát se může změnit.
-* Existující *hledání* budou odebrána z pracovního prostoru. Zkopírujte a všechna *hledání* , která budete potřebovat před konfigurací. *Uložená hledání* můžete zobrazit pomocí [prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/Get-AzOperationalInsightsSavedSearch) .
+* Existující *hledání* budou odebrána z pracovního prostoru. Zkopírujte a všechna *hledání* , která budete potřebovat před konfigurací. *Uložená hledání* můžete zobrazit pomocí [prostředí PowerShell](/powershell/module/az.operationalinsights/get-azoperationalinsightssavedsearch) .
 * Historie dotazů není podporovaná a nebudete moct zobrazit dotazy, které jste spustili.
 * K pracovnímu prostoru můžete přidružit jeden účet úložiště pro účely ukládání dotazů, ale dá se použít k dotazům na *uložená hledání* i *protokolování výstrah* .
 * Připnutí na řídicí panel se nepodporuje.
@@ -484,7 +485,7 @@ Když zadáte [vlastní úložiště](https://docs.microsoft.com/azure/azure-mon
 Přidružit účet úložiště pro *dotaz* k vašemu pracovnímu prostoru – dotazy *uložené při hledání* se ukládají do svého účtu úložiště. 
 
 ```powershell
-$storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "resource-group-name"storage-account-name"resource-group-name"
+$storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"
 New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Query -StorageAccountIds $storageAccount.Id
 ```
 
@@ -511,7 +512,7 @@ Po dokončení konfigurace budou všechny nové *uložené vyhledávací* dotazy
 Přidružte účtu úložiště *výstrahy* k vašemu pracovnímu prostoru – dotazy *protokolu výstrahy* se ukládají do svého účtu úložiště. 
 
 ```powershell
-$storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "resource-group-name"storage-account-name"resource-group-name"
+$storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"
 New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Alerts -StorageAccountIds $storageAccount.Id
 ```
 
@@ -659,7 +660,7 @@ Po dokončení konfigurace se všechny nové dotazy na upozornění uloží do �
   Ingestovaná data po uložení operace zrušení přidružení do Log Analyticsho úložiště může trvat 90 minut. Stav zrušení přidružení pracovního prostoru můžete zjistit dvěma způsoby:
 
   1. Z odpovědi Zkopírujte hodnotu adresy URL Azure-AsyncOperation a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
-  2. Odeslání [pracovních prostorů – Získejte](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) požadavek a sledujte odpověď. nepřidružený pracovní prostor nebude mít *clusterResourceId* v části *funkce*.
+  2. Odeslání [pracovních prostorů – Získejte](/rest/api/loganalytics/workspaces/get) požadavek a sledujte odpověď. nepřidružený pracovní prostor nebude mít *clusterResourceId* v části *funkce*.
 
 - **Zkontroluje stav přidružení pracovního prostoru.**
   
@@ -694,26 +695,25 @@ Po dokončení konfigurace se všechny nové dotazy na upozornění uloží do �
 
 ## <a name="limitationsandconstraints"></a>Omezení a omezení
 
-– CMK se podporuje na vyhrazeném clusteru Log Analytics a je vhodný pro zákazníky, kteří odesílají 1 TB za den.
+- CMK se podporuje na vyhrazeném clusteru Log Analytics a je vhodný pro zákazníky, kteří odesílají 1 TB za den.
 
-– Maximální počet prostředků *clusteru*   na oblast a předplatné je 2
+- Maximální počet prostředků *clusteru* na oblast a předplatné je 2
 
-– Pracovní prostor můžete přidružit k prostředku *clusteru*   a pak ho zrušit, pokud pracovní prostor CMK není potřeba.Počet přidružení pracovního prostoru na konkrétní pracovní prostor v období 30 dnů je omezený na 2.
+- Pracovní prostor můžete přidružit k prostředku *clusteru* a pak ho zrušit, pokud pracovní prostor CMK není potřeba. Počet přidružení pracovního prostoru na konkrétní pracovní prostor v období 30 dnů je omezený na 2.
 
-– Přidružení pracovního prostoru k prostředku *clusteru*   by se mělo provádět až po ověření, že se zřízení clusteru Log Analytics dokončilo.Data odesílaná do vašeho pracovního prostoru před dokončením budou vyřazena a nebude možné je obnovit.
+- Přidružení pracovního prostoru k prostředku *clusteru* by se mělo přenášet až po ověření, že se zřízení clusteru Log Analytics dokončilo. Data odesílaná do vašeho pracovního prostoru před dokončením budou vyřazena a nebude možné je obnovit.
 
--CMK šifrování platí pro nově ingestovaná data po      konfiguraci CMK.Data, která byla ingestovaná před      konfigurací CMK, zůstávají šifrovaná pomocí klíče Microsoft Key.Můžete zadávat dotazy      na data ingestovaná před a po bezproblémové konfiguraci CMK.
+- Šifrování CMK se vztahuje na nově ingestovaná data po konfiguraci CMK. Data, která byla ingestovaná před konfigurací CMK, zůstávají šifrovaná pomocí klíče Microsoft Key. Můžete zadávat dotazy na data ingestovaná před a po bezproblémové konfiguraci CMK.
 
--Azure Key Vault musí být nakonfigurované jako obnovitelné.Tyto vlastnosti nejsou ve výchozím nastavení povolené a měly by být nakonfigurované pomocí rozhraní příkazového řádku nebo PowerShellu:
+- Azure Key Vault musí být nakonfigurované jako obnovitelné. Tyto vlastnosti nejsou ve výchozím nastavení povolené a měly by být nakonfigurované pomocí rozhraní příkazového řádku nebo PowerShellu:<br>
+  - [Obnovitelné odstranění](../../key-vault/general/overview-soft-delete.md)
+  - Pro ochranu proti vynucenému odstranění tajného nebo trezoru i po obnovitelném odstranění by měla být zapnutá [ochrana vyprázdnění](../../key-vault/general/overview-soft-delete.md#purge-protection) .
 
-  - [Obnovitelné odstranění](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) 
-      musí být zapnutá    -  [ochrana vyprázdnění](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection)   , aby bylo možné chránit před vynuceným odstraněním tajného klíče nebo trezoru i po obnovitelném odstranění.
+- Prostředek *clusteru* přesunout do jiné skupiny prostředků nebo předplatného se momentálně nepodporuje.
 
-- *Cluster*   Přesun prostředku do jiné skupiny prostředků nebo předplatného se      momentálně nepodporuje.
+- Vaše Azure Key Vault, prostředek *clusteru* a přidružené pracovní prostory musí být ve stejné oblasti a v rámci stejného tenanta Azure Active Directory (Azure AD), ale můžou být v různých předplatných.
 
-– Váš Azure Key Vault, prostředek *clusteru*   a přidružené pracovní prostory musí být ve stejné oblasti a v rámci stejného tenanta Azure Active Directory (Azure AD), ale můžou být v různých předplatných.
-
-– Přidružení pracovního prostoru ke zdroji *clusteru*   selže, pokud je      přidruženo k jinému prostředku *clusteru*   .
+- Přidružení pracovního prostoru ke zdroji *clusteru* selže, pokud je přidruženo k jinému prostředku *clusteru* .
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
@@ -743,3 +743,41 @@ Po dokončení konfigurace se všechny nové dotazy na upozornění uloží do �
   2. Odešlete požadavek GET do *clusteru* nebo pracovního prostoru a sledujte odpověď. Například nepřidružený pracovní prostor nebude mít *clusterResourceId* v části *funkce*.
 
 - Pro podporu a nápovědu týkající se spravovaného klíče zákazníka použijte své kontakty do Microsoftu.
+
+- Chybové zprávy
+  
+  Vytvoření prostředku *clusteru* :
+  -  400 – název clusteru není platný. Název clusteru může obsahovat znaky a – z, A-Z, 0-9 a délku 3-63.
+  -  400 – tělo požadavku má hodnotu null nebo je v nesprávném formátu.
+  -  400--název SKU je neplatný. Nastavte název SKU na capacityReservation.
+  -  400 – byla zadána kapacita, ale SKU není capacityReservation. Nastavte název SKU na capacityReservation.
+  -  400 – chybějící kapacita v SKU V krocích po 100 (GB) nastavte hodnotu kapacity na 1000 nebo vyšší.
+  -  400 – kapacita v SKU není v rozsahu. Hodnota by měla být minimálně 1000 až do maximální povolené kapacity, která je k dispozici v pracovním prostoru v části využití a odhadované náklady.
+  -  400 – kapacita je uzamčena po dobu 30 dnů. Snížení kapacity je povolené 30 dnů od aktualizace.
+  -  400 – nebyla nastavena žádná SKU. Nastavte název SKU na capacityReservation a hodnotu kapacity na 1000 nebo vyšší v krocích po 100 (GB).
+  -  400--identita je null nebo prázdná. Nastavte identitu pomocí typu systemAssigned.
+  -  400 – KeyVaultProperties jsou nastaveny při vytváření. Aktualizujte KeyVaultProperties po vytvoření clusteru.
+  -  400 – operaci nelze nyní provést. Asynchronní operace je v jiném než úspěšném stavu. Cluster musí před provedením jakékoli operace aktualizace dokončit jeho operaci.
+
+  Aktualizace prostředku *clusteru*
+  -  400 – cluster je ve stavu odstraňování. Probíhá asynchronní operace. Cluster musí před provedením jakékoli operace aktualizace dokončit jeho operaci.
+  -  400 – KeyVaultProperties není prázdný, ale má špatný formát. Viz [aktualizace identifikátoru klíče](#update-cluster-resource-with-key-identifier-details).
+  -  400 – nepovedlo se ověřit klíč v Key Vault. Příčinou může být nedostatečná oprávnění nebo pokud klíč neexistuje. Ověřte, že jste [nastavili zásady klíče a přístupu](#grant-key-vault-permissions) v Key Vault.
+  -  400-klíč nelze obnovit. Key Vault musí být nastavené na obnovitelné odstranění a ochranu vyprázdnit. Viz [dokumentace Key Vault](../../key-vault/general/overview-soft-delete.md)
+  -  400 – operaci nelze nyní provést. Počkejte, až se operace Async dokončí, a zkuste to znovu.
+  -  400 – cluster je ve stavu odstraňování. Počkejte, až se operace Async dokončí, a zkuste to znovu.
+
+    Prostředek *clusteru* Get:
+    -  404--cluster nebyl nalezen, cluster byl pravděpodobně odstraněn. Pokud se pokusíte vytvořit cluster s tímto názvem a dojde ke konfliktu, je cluster v tichém odstranění po dobu 14 dnů. Pokud chcete vytvořit nový cluster, obraťte se na podporu, nebo použijte jiný název. 
+
+  Odstranění prostředku *clusteru*
+    -  409 – nelze odstranit cluster ve stavu zřizování. Počkejte, až se operace Async dokončí, a zkuste to znovu.
+
+  Přidružení pracovního prostoru:
+  -  404 – pracovní prostor nebyl nalezen. Pracovní prostor, který jste zadali, neexistuje nebo byl odstraněn.
+  -  409 – operace přidružení nebo zrušení přidružení pracovního prostoru v procesu.
+  -  400 – cluster nebyl nalezen, zadaný cluster neexistuje nebo byl odstraněn. Pokud se pokusíte vytvořit cluster s tímto názvem a dojde ke konfliktu, je cluster v tichém odstranění po dobu 14 dnů. Můžete se obrátit na podporu a obnovit ji.
+
+  Zrušení přidružení pracovního prostoru:
+  -  404 – pracovní prostor nebyl nalezen. Pracovní prostor, který jste zadali, neexistuje nebo byl odstraněn.
+  -  409 – operace přidružení nebo zrušení přidružení pracovního prostoru v procesu.

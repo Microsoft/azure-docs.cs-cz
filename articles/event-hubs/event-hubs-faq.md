@@ -3,12 +3,12 @@ title: Nejčastější dotazy – Azure Event Hubs | Microsoft Docs
 description: Tento článek obsahuje seznam nejčastějších dotazů pro Azure Event Hubs a jejich odpovědí.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 0094be0eef4595662477ef1c7914ae9f118b8e25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bec50da97bc826eb1bd26452e8f69f5c11f2d65d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320579"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537176"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs nejčastějších dotazech
 
@@ -33,7 +33,7 @@ Místo použití existujícího oboru názvů v jednom z následujících scén�
 * Delší doba uchovávání událostí
 * Další zprostředkovaná připojení s náklady nadlimitního využití za více než uvedené množství
 * Víc než jedna [Skupina příjemců](event-hubs-features.md#consumer-groups)
-* [Snímky](event-hubs-capture-overview.md)
+* [Zachytávání](event-hubs-capture-overview.md)
 * [Integrace Kafka](event-hubs-for-kafka-ecosystem-overview.md)
 
 Další informace o cenových úrovních, včetně Event Hubs úrovně Dedicated, najdete v článku [o cenách Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/).
@@ -64,7 +64,7 @@ K posílání a přijímání zpráv můžete použít následující protokoly 
 
 V následující tabulce najdete Odchozí porty, které musíte otevřít, abyste mohli tyto protokoly používat ke komunikaci s Azure Event Hubs. 
 
-| Protocol (Protokol) | Porty | Podrobnosti | 
+| Protokol | Porty | Podrobnosti | 
 | -------- | ----- | ------- | 
 | AMQP | 5671 a 5672 | Viz [Průvodce protokolem AMQP](../service-bus-messaging/service-bus-amqp-protocol-guide.md) . | 
 | HTTP, HTTPS | 80, 443 |  |
@@ -261,7 +261,7 @@ Event Hubs podporuje dva typy [diagnostických protokolů](event-hubs-diagnostic
 
 ### <a name="support-and-sla"></a>Podpora a smlouva SLA
 
-Technická podpora pro Event Hubs je k dispozici na [stránce s dotazem Microsoft Q&pro Azure Service Bus](https://docs.microsoft.com/answers/topics/azure-service-bus.html). Podpora fakturace a správy předplatného se poskytuje bez jakýchkoli nákladů.
+Technická podpora pro Event Hubs je k dispozici na [stránce s dotazem Microsoft Q&pro Azure Service Bus](/answers/topics/azure-service-bus.html). Podpora fakturace a správy předplatného se poskytuje bez jakýchkoli nákladů.
 
 Další informace o naší smlouvě SLA najdete na stránce [smlouvy o úrovni služeb](https://azure.microsoft.com/support/legal/sla/) .
 
@@ -269,6 +269,6 @@ Další informace o naší smlouvě SLA najdete na stránce [smlouvy o úrovni s
 
 Další informace o službě Event Hubs najdete na následujících odkazech:
 
-* [Přehled Event Hubs](event-hubs-what-is-event-hubs.md)
+* [Přehled Event Hubs](./event-hubs-about.md)
 * [Vytvoření centra událostí](event-hubs-create.md)
 * [Automaticky neplochý Event Hubs](event-hubs-auto-inflate.md)

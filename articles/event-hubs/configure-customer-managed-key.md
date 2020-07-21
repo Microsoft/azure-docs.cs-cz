@@ -3,12 +3,12 @@ title: Konfigurace vlastního klíče pro šifrování dat služby Azure Event H
 description: Tento článek poskytuje informace o tom, jak nakonfigurovat vlastní klíč pro šifrování služby Azure Event Hubs data REST.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 2d82fc8c962496246196331c7d191c0fc057694f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18a59b74897b074fea9ee56947c78635f2a3509d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479823"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537254"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování dat Azure Event Hubs v klidovém formátu pomocí Azure Portal
 Azure Event Hubs poskytuje šifrování neaktivních dat pomocí šifrování služby Azure Storage (Azure SSE). Event Hubs spoléhá na Azure Storage uložení dat a ve výchozím nastavení se všechna data uložená pomocí Azure Storage šifrují pomocí klíčů spravovaných Microsoftem. 
@@ -41,7 +41,7 @@ Pokud chcete povolit klíčům spravovaným zákazníkem v Azure Portal, postupu
 ## <a name="set-up-a-key-vault-with-keys"></a>Nastavení trezoru klíčů s klíči
 Po povolení klíčů spravovaných zákazníkem je potřeba přidružit spravovaný klíč zákazníka k vašemu oboru názvů Azure Event Hubs. Event Hubs podporuje pouze Azure Key Vault. Pokud zapnete možnost **šifrování pomocí klíče spravovaného zákazníkem** v předchozí části, je potřeba, abyste klíč importovali do Azure Key Vault. Klíče musí také obsahovat **obnovitelné odstranění** a pro tento klíč **se** neodstraňují konfigurace. Tato nastavení se dají nakonfigurovat pomocí [PowerShellu](../key-vault/general/soft-delete-powershell.md) nebo rozhraní příkazového [řádku](../key-vault/general/soft-delete-cli.md#enabling-purge-protection).
 
-1. Pokud chcete vytvořit nový trezor klíčů, postupujte podle pokynů pro [rychlý start](../key-vault/general/overview.md)Azure Key Vault. Další informace o importu existujících klíčů najdete v tématu [informace o klíčích, tajných klíčích a certifikátech](../key-vault/about-keys-secrets-and-certificates.md).
+1. Pokud chcete vytvořit nový trezor klíčů, postupujte podle pokynů pro [rychlý start](../key-vault/general/overview.md)Azure Key Vault. Další informace o importu existujících klíčů najdete v tématu [informace o klíčích, tajných klíčích a certifikátech](../key-vault/general/about-keys-secrets-certificates.md).
 1. Pokud chcete při vytváření trezoru zapnout ochranu pomocí obnovitelného odstranění i vyprázdnění, použijte příkaz [AZ datatrezor Create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) .
 
     ```azurecli-interactive
@@ -94,7 +94,7 @@ Pomocí těchto kroků povolte protokoly pro klíče spravované zákazníkem.
 ## <a name="log-schema"></a>Schéma protokolu 
 Všechny protokoly jsou uložené ve formátu JavaScript Object Notation (JSON). Každá položka má pole řetězce, která používají formát popsaný v následující tabulce. 
 
-| Name | Description |
+| Název | Popis |
 | ---- | ----------- | 
 | /TN | Popis úlohy, která selhala. |
 | ActivityId | Interní ID, které se používá ke sledování. |
@@ -395,7 +395,7 @@ V tomto kroku aktualizujete obor názvů Event Hubs s použitím informací o tr
     New-AzResourceGroupDeployment -Name UpdateEventHubNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateEventHubClusterAndNamespace.json -TemplateParameterFile ./UpdateEventHubClusterAndNamespaceParams.json 
     ```
 
-## <a name="troubleshoot"></a>Řešení potíží
+## <a name="troubleshoot"></a>Odstraňování potíží
 V rámci osvědčeného postupu doporučujeme vždy povolit protokoly, jako jsou uvedené v předchozí části. Pomáhá sledovat aktivity, když je povolené šifrování BYOK. Pomáhá také při určování rozsahu problémů.
 
 Níže jsou uvedené běžné kódy chyb, které se hledají, když je povolené šifrování BYOK.
@@ -419,7 +419,3 @@ Níže jsou uvedené běžné kódy chyb, které se hledají, když je povolené
 Viz následující články:
 - [Přehled Event Hubs](event-hubs-about.md)
 - [Přehled Key Vault](../key-vault/general/overview.md)
-
-
-
-

@@ -2,13 +2,13 @@
 title: Přesunout podporu operace podle typu prostředku
 description: Zobrazuje seznam typů prostředků Azure, které se dají přesunout do nové skupiny prostředků nebo předplatného.
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: 785243676040fc86d42e3125684239ebe6da2061
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.date: 07/13/2020
+ms.openlocfilehash: 7b7f6f05c9cae80cffb64245a3fc8a6b0890d577
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134663"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539223"
 ---
 # <a name="move-operation-support-for-resources"></a>Podpora operace přesunutí pro prostředky
 
@@ -85,7 +85,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > - [Microsoft. DBforPostgreSQL](#microsoftdbforpostgresql)
 > - [Microsoft. DeploymentManager](#microsoftdeploymentmanager)
 > - [Microsoft. DesktopVirtualization](#microsoftdesktopvirtualization)
-> - [Microsoft. Devices](#microsoftdevices)
+> - [Microsoft.Devices](#microsoftdevices)
 > - [Microsoft. DevOps](#microsoftdevops)
 > - [Microsoft. DevSpaces](#microsoftdevspaces)
 > - [Microsoft. DevTestLab](#microsoftdevtestlab)
@@ -146,7 +146,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > - [Microsoft. OperationalInsights](#microsoftoperationalinsights)
 > - [Microsoft. OperationsManagement](#microsoftoperationsmanagement)
 > - [Microsoft. peering](#microsoftpeering)
-> - [Microsoft.PolicyInsights](#microsoftpolicyinsights)
+> - [Microsoft. PolicyInsights](#microsoftpolicyinsights)
 > - [Microsoft. Portal](#microsoftportal)
 > - [Microsoft. PowerBI](#microsoftpowerbi)
 > - [Microsoft. PowerBIDedicated](#microsoftpowerbidedicated)
@@ -296,7 +296,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | checkservicenameavailability | No | No |
 > | Operace | No | No |
 > | reportfeedback | No | No |
-> | služba | Ano | Ano |
+> | service | Ano | Ano |
 > | validateservicename | No | No |
 
 > [!IMPORTANT]
@@ -725,7 +725,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- | ---------- |
 > | možnosti | No | No |
 > | checkdomainnameavailability | No | No |
-> | domainnames | Yes | No |
+> | domainnames | Ano | No |
 > | DomainNames/možnosti | No | No |
 > | domainnames / internalloadbalancers | No | No |
 > | domainnames / servicecertificates | No | No |
@@ -793,7 +793,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | osplatformimages | No | No |
 > | publicimages | No | No |
 > | quotas | No | No |
-> | storageaccounts | Yes | No |
+> | storageaccounts | Ano | No |
 > | storageaccounts/blobservices | No | No |
 > | storageaccounts/služby | No | No |
 > | storageaccounts/metricdefinitions | No | No |
@@ -1395,7 +1395,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Operace | No | No |
 > | pracovní prostory | Ano | Ano |
 
-## <a name="microsoftdevices"></a>Microsoft. Devices
+## <a name="microsoftdevices"></a>Microsoft.Devices
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
@@ -1437,10 +1437,10 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
 > | labcenters | No | No |
-> | Labs | Yes | No |
+> | Labs | Ano | No |
 > | laboratoře/prostředí | Ano | Ano |
 > | Labs/servicerunners | Ano | Ano |
-> | Labs/VirtualMachines | Yes | No |
+> | Labs/VirtualMachines | Ano | No |
 > | polohy | No | No |
 > | umístění/operace | No | No |
 > | Operace | No | No |
@@ -1866,8 +1866,8 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- | ---------- |
 > | hostingenvironments | No | No |
 > | integrationaccounts | Ano | Ano |
-> | integrationserviceenvironments | Yes | No |
-> | integrationserviceenvironments/Inspirujte | Yes | No |
+> | integrationserviceenvironments | Ano | No |
+> | integrationserviceenvironments/Inspirujte | Ano | No |
 > | isolatedenvironments | No | No |
 > | polohy | No | No |
 > | umístění/pracovní postupy | No | No |
@@ -1884,7 +1884,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | umístění/operace | No | No |
 > | umístění/operationsstatus | No | No |
 > | Operace | No | No |
-> | WebServices | Yes | No |
+> | WebServices | Ano | No |
 > | pracovní prostory | Ano | Ano |
 
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft. MachineLearningCompute
@@ -2188,16 +2188,16 @@ Přejít na obor názvů poskytovatele prostředků:
 > | umístění/použití | No | No |
 > | umístění/validateresourceownership | No | No |
 > | umístění/virtualnetworkavailableendpointservices | No | No |
-> | natgateways | Ano | Ano |
+> | natgateways | No | No |
 > | networkexperimentprofiles | No | No |
 > | networkintentpolicies | Ano | Ano |
 > | networkinterfaces | Ano | Ano |
 > | networkprofiles | No | No |
 > | networksecuritygroups | Ano | Ano |
-> | networkwatchers | Yes | No |
-> | networkwatchers / connectionmonitors | Yes | No |
-> | networkwatchers / flowlogs | Yes | No |
-> | networkwatchers / pingmeshes | Yes | No |
+> | networkwatchers | Ano | No |
+> | networkwatchers / connectionmonitors | Ano | No |
+> | networkwatchers / flowlogs | Ano | No |
+> | networkwatchers / pingmeshes | Ano | No |
 > | Operace | No | No |
 > | p2svpngateways | No | No |
 > | privatednsoperationresults | No | No |
@@ -2322,7 +2322,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | peeringserviceproviders | No | No |
 > | peeringservices | No | No |
 
-## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
+## <a name="microsoftpolicyinsights"></a>Microsoft. PolicyInsights
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
@@ -2615,7 +2615,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | dataconnectorscheckrequirements | No | No |
 > | podnikům | No | No |
 > | entityqueries | No | No |
-> | incidenty | No | No |
+> | Incidenty | No | No |
 > | officeconsents | No | No |
 > | Operace | No | No |
 > | nastavení | No | No |
@@ -3183,7 +3183,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- | ---------- |
 > | availablestacks | No | No |
 > | billingmeters | No | No |
-> | certifikáty | No | Yes |
+> | certifikáty | No | Ano |
 > | checknameavailability | No | No |
 > | connectiongateways | Ano | Ano |
 > | připojení | Ano | Ano |

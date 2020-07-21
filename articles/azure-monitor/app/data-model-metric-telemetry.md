@@ -4,11 +4,12 @@ description: Application Insights datový model pro telemetrii metrik
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 3e4a1fc3de58b8e65ab9c7a288bdf3eb37e7bae0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 44f0b070a7c0da416002d9bf7e509d643a96dc7a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671966"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540005"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>Telemetrie metrik: datový model Application Insights
 
@@ -23,7 +24,7 @@ Metrika představující systémové a procesní čítače:
 | **Název .NET**             | **Název platformy nezávislá** | **Název REST API** | **Popis**
 | ------------------------- | -------------------------- | ----------------- | ---------------- 
 | `\Processor(_Total)\% Processor Time` | Probíhá práce... | [processorCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessorCpuPercentage) | Celkový procesor počítače
-| `\Memory\Available Bytes`                 | Probíhá práce... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | Zobrazuje velikost fyzické paměti (v bajtech), která je k dispozici pro procesy běžící v počítači. Vypočítá se tak, že se sečte velikost místa v seznamech neplatných, volných a hotovostních seznamů paměti. Volná paměť je připravena k použití. s nulovou pamětí se skládají stránky z paměti vyplněné nulami, aby se předešlo pozdějším procesům v zobrazení dat využívaných předchozím procesem. pohotovostní paměť je paměť, která byla odstraněna z pracovní sady procesu (její fyzická paměť) na disk, ale je stále k dispozici pro odvolání. Zobrazit [objekt paměti](https://msdn.microsoft.com/library/ms804008.aspx)
+| `\Memory\Available Bytes`                 | Probíhá práce... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | Zobrazuje velikost fyzické paměti (v bajtech), která je k dispozici pro procesy běžící v počítači. Vypočítá se tak, že se sečte velikost místa v seznamech neplatných, volných a hotovostních seznamů paměti. Volná paměť je připravena k použití. s nulovou pamětí se skládají stránky z paměti vyplněné nulami, aby se předešlo pozdějším procesům v zobrazení dat využívaných předchozím procesem. pohotovostní paměť je paměť, která byla odstraněna z pracovní sady procesu (její fyzická paměť) na disk, ale je stále k dispozici pro odvolání. Zobrazit [objekt paměti](/previous-versions/ms804008(v=msdn.10))
 | `\Process(??APP_WIN32_PROC??)\% Processor Time` | Probíhá práce... | [processCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessCpuPercentage) | PROCESOR procesu hostujícího aplikaci
 | `\Process(??APP_WIN32_PROC??)\Private Bytes`      | Probíhá práce... | [processPrivateBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessPrivateBytes) | paměť používaná procesem hostujícím aplikaci
 | `\Process(??APP_WIN32_PROC??)\IO Data Bytes/sec` | Probíhá práce... | [processIOBytesPerSecond](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessIOBytesPerSecond) | rychlost vstupně-výstupních operací spouštěných procesem hostujícím aplikaci
@@ -32,7 +33,7 @@ Metrika představující systémové a procesní čítače:
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | Probíhá práce... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | Průměrná doba provádění požadavků
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue` | Probíhá práce... | [requestsInQueue](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsInQueue) | počet požadavků čekajících na zpracování ve frontě
 
-## <a name="name"></a>Name
+## <a name="name"></a>Název
 
 Název metriky, kterou byste chtěli vidět na portálu Application Insights a uživatelském rozhraní. 
 
@@ -40,7 +41,7 @@ Název metriky, kterou byste chtěli vidět na portálu Application Insights a u
 
 Jedna hodnota pro měření. Součet jednotlivých měření pro agregaci.
 
-## <a name="count"></a>Počet
+## <a name="count"></a>Count
 
 Váha metriky agregované metriky. Neměl by být nastaven pro měření.
 

@@ -11,11 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
-ms.openlocfilehash: 1922e92f9314e48ae4e3106a53cf750da5daf5e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ca106e076bc789e8435b9e67d6bffa20af8a635
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84049831"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539172"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Úrovně služby v nákupním modelu založeném na DTU
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -38,11 +39,11 @@ Výběr úrovně služeb závisí hlavně na požadavcích na provozní kontinui
 |Cílové zatížení|Vývoj a produkce|Vývoj a produkce|Vývoj a produkce|
 |Smlouva SLA pro dobu provozu|99,99 %|99,99 %|99,99 %|
 |Maximální uchovávání záloh|7 dní|35 dní|35 dní|
-|Procesor|Nízká|Nízká, střední, vysoká|Střední, vysoká|
+|Procesor|Nízké|Nízká, střední, vysoká|Střední, vysoká|
 |Propustnost vstupně-výstupních operací (přibližná) |1-5 IOPS na DTU| 1-5 IOPS na DTU | 25 IOPS na DTU|
 |Latence v/v (přibližná)|5 ms (čtení), 10 ms (zápis)|5 ms (čtení), 10 ms (zápis)|2 ms (čtení a zápis)|
-|Indexování columnstore |Není k dispozici|S3 a vyšší|Podporuje se|
-|OLTP v paměti|Není k dispozici|Není k dispozici|Podporuje se|
+|Indexování columnstore |–|S3 a vyšší|Podporováno|
+|OLTP v paměti|–|–|Podporováno|
 |||||
 
 > [!IMPORTANT]
@@ -58,7 +59,7 @@ Výběr úrovně služeb závisí hlavně na požadavcích na provozní kontinui
 
 Velikosti výpočetních hodnot se vyjadřují v souvislosti s jednotkami DTU (Database Transaction units) pro izolované databáze a jednotkami elastické databázové transakce (eDTU) pro elastické fondy. Další informace o DTU a eDTU najdete v tématu [nákupní model založený na DTU](purchasing-models.md#dtu-based-purchasing-model).
 
-||Basic|Standard|Premium|
+|Basic|Standard|Premium|
 | :-- | --: | --: | --: |
 | Maximální velikost úložiště | 2 GB | 1 TB | 4 TB  |
 | Maximální DTU | 5 | 3000 | 4000 | 
@@ -69,7 +70,7 @@ Velikosti výpočetních hodnot se vyjadřují v souvislosti s jednotkami DTU (D
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Omezení eDTU elastického fondu, úložiště a databáze ve fondu
 
-| | **Základní** | **Standard** | **Premium** |
+| **Basic** | **Standard** | **Premium** |
 | :-- | --: | --: | --: |
 | Maximální velikost úložiště na databázi  | 2 GB | 1 TB | 1 TB |
 | Maximální velikost úložiště na fond | 156 GB | 4 TB | 4 TB |
@@ -111,7 +112,7 @@ Databáze má velikost na základě "faktoru škálování". Faktor škálován�
 
 Zatížení se skládá z devíti typů transakcí, jak je znázorněno v následující tabulce. Každá transakce je navržena k zdůraznění konkrétní sady systémových vlastností v databázovém stroji a na systémovém hardwaru s vysokým kontrastem od ostatních transakcí. Tento přístup usnadňuje vyhodnocení dopadu různých komponent na celkový výkon. Například transakce "Read těžký" vytváří velký počet operací čtení z disku.
 
-| Transaction Type (Typ transakce) | Description |
+| Transaction Type (Typ transakce) | Popis |
 | --- | --- |
 | Přečíst Lite |VYBRALI v paměti; jen pro čtení |
 | Přečíst médium |VYBRALI hlavně v paměti; jen pro čtení |

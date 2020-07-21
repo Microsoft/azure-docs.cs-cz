@@ -6,21 +6,22 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/28/2019
-ms.openlocfilehash: 3140c0de6fbe090e3d040202cd581c455f03b6d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5984cbf8cf618a938ee85638d981f7867c6ec8b5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77655252"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539359"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Připojit Configuration Manager k Azure Monitor
 Prostředí Microsoft Endpoint Configuration Manager můžete připojit, aby se Azure Monitor synchronizovaná data kolekce zařízení a odkazovala na tyto kolekce v Azure Monitor a Azure Automation.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Azure Monitor podporuje Configuration Manager aktuální větev verze 1606 a vyšší.
 
 >[!NOTE]
->Funkce pro připojení Configuration Manager k pracovnímu prostoru Log Analytics je volitelná a není ve výchozím nastavení povolená. Tuto funkci musíte před použitím povolit. Další informace naleznete v části [Enable optional features from updates](https://docs.microsoft.com/configmgr/core/servers/manage/install-in-console-updates#bkmk_options).
+>Funkce pro připojení Configuration Manager k pracovnímu prostoru Log Analytics je volitelná a není ve výchozím nastavení povolená. Tuto funkci musíte před použitím povolit. Další informace naleznete v části [Enable optional features from updates](/configmgr/core/servers/manage/install-in-console-updates#bkmk_options).
 
 ## <a name="configuration-overview"></a>Přehled konfigurace
 
@@ -65,7 +66,7 @@ Přečtěte si článek [připojení počítačů s Windows k Azure monitor v Az
 ## <a name="connect-configuration-manager-to-log-analytics-workspace"></a>Připojení Configuration Manager k pracovnímu prostoru Log Analytics
 
 >[!NOTE]
-> Aby bylo možné přidat Log Analytics připojení, musí mít Configuration Manager prostředí pro online režim nakonfigurovaný [spojovací bod služby](https://docs.microsoft.com/configmgr/core/servers/deploy/configure/about-the-service-connection-point) .
+> Aby bylo možné přidat Log Analytics připojení, musí mít Configuration Manager prostředí pro online režim nakonfigurovaný [spojovací bod služby](/configmgr/core/servers/deploy/configure/about-the-service-connection-point) .
 
 > [!NOTE]
 > Lokalitu nejvyšší úrovně ve vaší hierarchii musíte připojit k Azure Monitor. Pokud k Azure Monitor připojíte samostatnou primární lokalitu a potom do svého prostředí přidáte lokalitu centrální správy, je nutné odstranit a znovu vytvořit připojení v rámci nové hierarchie.

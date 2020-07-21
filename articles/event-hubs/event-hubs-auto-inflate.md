@@ -3,11 +3,12 @@ title: Automatické škálování jednotek propustnosti – Azure Event Hubs | M
 description: Pokud chcete automaticky škálovat jednotky propustnosti, povolte automatickou škálu oboru názvů.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 382d407bde61a4ca24ab5833ea51d540c8904adc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1be564472011622b71b3066495748dfdbe6cc791
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322549"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537237"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automatické škálování jednotek propustnosti Azure Event Hubs
 Azure Event Hubs je vysoce škálovatelná platforma pro streamování dat. V takovém případě se Event Hubs využití často zvětšuje po zahájení používání služby. Takové použití vyžaduje zvýšení škály předem určených [jednotek propustnosti](event-hubs-scalability.md#throughput-units) pro škálování Event Hubs a zpracování větších přenosových rychlostí. Funkce automaticky **rozšířené** Event Hubs se automaticky škáluje tak, že se zvýší počet jednotek propustnosti, aby se splnily požadavky na využití. Zvýšení jednotek propustnosti zabraňuje scénářům omezování, ve kterých:
@@ -113,5 +114,4 @@ Automatickou možnost můžete povolit při nasazení šablony Azure Resource Ma
 
 Další informace o službě Event Hubs najdete na následujících odkazech:
 
-* [Přehled Event Hubs](event-hubs-what-is-event-hubs.md)
-
+* [Přehled Event Hubs](./event-hubs-about.md)

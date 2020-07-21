@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 6df27dde997bd34e86b1bb340817648bfe68f2c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb216f164e02dfa4dbc4ad11774569b2e8ea970f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797602"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539682"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Nepřetržité monitorování pomocí Azure Monitor
 
@@ -37,7 +38,7 @@ Aplikace jsou stejně spolehlivé jako základní infrastruktura. Monitorování
 - Automaticky získáte [metriky platforem, protokoly aktivit a diagnostické protokoly](platform/data-sources.md) z většiny vašich prostředků Azure bez konfigurace.
 - Povolte hlubší monitorování pro virtuální počítače s [Azure monitor pro virtuální počítače](insights/vminsights-overview.md).
 -  Povolte hlubší monitorování pro clustery AKS s [Azure monitor pro kontejnery](insights/container-insights-overview.md).
-- Přidejte do svého prostředí [řešení monitorování](insights/solutions-inventory.md) pro různé aplikace a služby.
+- Přidejte do svého prostředí [řešení monitorování](./monitor-reference.md) pro různé aplikace a služby.
 
 
 [Infrastruktura jako kód](/azure/devops/learn/what-is-infrastructure-as-code) je správa infrastruktury v popisném modelu s využitím stejné správy verzí, jakou DevOps týmy používají ke zdrojovému kódu. Zvyšuje spolehlivost a škálovatelnost vašeho prostředí a umožňuje využívat podobné procesy, které se používají ke správě vašich aplikací.

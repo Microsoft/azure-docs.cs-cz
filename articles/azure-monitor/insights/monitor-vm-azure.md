@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: e38ae07aa032e4a828c9188fd78b112f4ff0d397
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a96db0e9a834dcddbb5f247953fa1bbf0dc39ce
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945388"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539699"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Monitorování virtuálních počítačů Azure pomocí Azure Monitor
 Tento článek popisuje, jak pomocí Azure Monitor shromažďovat a analyzovat data monitorování z virtuálních počítačů Azure a udržovat jejich stav. Virtuální počítače je možné monitorovat z hlediska dostupnosti a výkonu pomocí Azure Monitor jako u jakéhokoli [jiného prostředku Azure](monitor-azure-resource.md), ale jsou jedinečné od jiných prostředků, protože potřebujete také monitorovat hostovaný operační systém a systémy a úlohy, které jsou v něm spuštěné. 
@@ -29,7 +29,7 @@ Tento článek popisuje, jak pomocí Azure Monitor shromažďovat a analyzovat d
 - Můžete vytvořit [nastavení diagnostiky](../platform/diagnostic-settings.md) pro virtuální počítač, abyste odesílali metriky platforem do jiných cílů, jako jsou úložiště a centra událostí, ale tato nastavení diagnostiky nemůžete nakonfigurovat v Azure Portal. 
 
 ## <a name="monitoring-data"></a>Data monitorování
-Virtuální počítače v Azure v Azure generují [protokoly](../platform/data-platform-logs.md) a [metriky](../platform/data-platform-metrics.md) zobrazené v následujícím diagramu.
+Virtuální počítače v Azure generují [protokoly](../platform/data-platform-logs.md) a [metriky](../platform/data-platform-metrics.md) , jak je znázorněno v následujícím diagramu.
 
 ![Přehled](media/monitor-vm-azure/logs-metrics.png)
 
@@ -130,15 +130,15 @@ Jakmile nakonfigurujete shromažďování dat monitorování pro virtuální po�
 
 ![Monitorování v Azure Portal](media/monitor-vm-azure/monitor-menu.png)
 
-| Možnost nabídky | Description |
+| Možnost nabídky | Popis |
 |:---|:---|
 | Přehled | Zobrazí [metriky platforem](../platform/data-platform-metrics.md) pro hostitele virtuálního počítače. Pokud chcete s těmito daty pracovat v [Průzkumníkovi metrik](../platform/metrics-getting-started.md), klikněte na graf. |
-| Protokol aktivit | Položky [protokolu aktivit](../platform/activity-log-view.md) filtrované pro aktuální virtuální počítač. |
+| Protokol aktivit | Položky [protokolu aktivit](../platform/activity-log.md#view-the-activity-log) filtrované pro aktuální virtuální počítač. |
 | Insights | Otevře [Azure monitor pro virtuální počítače](../insights/vminsights-overview.md) s mapou pro vybraný aktuální virtuální počítač. |
 | Výstrahy | Zobrazí [výstrahy](../platform/alerts-overview.md) pro aktuální virtuální počítač.  |
 | Metriky | Otevřete [Průzkumníka metrik](../platform/metrics-getting-started.md) s oborem nastaveným na aktuální virtuální počítač. |
 | Nastavení diagnostiky | Povolí a nakonfiguruje [diagnostické rozšíření](../platform/diagnostics-extension-overview.md) pro aktuální virtuální počítač. |
-| Doporučení Advisoru | Doporučení pro aktuální virtuální počítač z [Azure Advisor](/azure/advisor/). |
+| Doporučení Advisoru | Doporučení pro aktuální virtuální počítač z [Azure Advisor](../../advisor/index.yml). |
 | Protokoly | Otevřete [Log Analytics](../log-query/log-query-overview.md#what-is-log-analytics) s [oborem](../log-query/scope.md) nastaveným na aktuální virtuální počítač. |
 | Monitorování připojení | Otevřete [monitorování připojení Network Watcher](../../network-watcher/connection-monitor-preview.md) pro monitorování připojení mezi aktuálním virtuálním počítačem a dalšími virtuálními počítači. |
 
@@ -148,7 +148,7 @@ Metriky pro virtuální počítače můžete analyzovat otevřením **metrik** z
 
 Virtuální počítače používají tři obory názvů pro metriky:
 
-| Obor názvů | Description | Požadavek |
+| Obor názvů | Popis | Požadavek |
 |:---|:---|:---|
 | Hostitel virtuálního počítače | Metriky hostitele se automaticky shromáždily pro všechny virtuální počítače Azure. Podrobný seznam metrik v [Microsoft. COMPUTE/virtualMachines](../platform/metrics-supported.md#microsoftcomputevirtualmachines). | Shromažďováno automaticky bez nutnosti konfigurace. |
 | Host (klasický) | Omezená sada údajů o výkonu hostovaného operačního systému a aplikace. K dispozici v Průzkumníkovi metrik, ale ne jiné funkce Azure Monitor, jako jsou například výstrahy metriky.  | Bylo nainstalováno [diagnostické rozšíření](../platform/diagnostics-extension-overview.md) . Data se čtou z Azure Storage.  |
@@ -226,7 +226,7 @@ Event
 
 
 ## <a name="system-center-operations-manager"></a>System Center Operations Manager
-System Center Operations Manager (SCOM) poskytuje podrobné monitorování úloh na virtuálních počítačích. Porovnání monitorovacích platforem a různých strategií pro implementaci najdete v [Průvodci monitorováním cloudu](https://docs.microsoft.com/azure/cloud-adoption-framework/manage/monitor/) .
+System Center Operations Manager (SCOM) poskytuje podrobné monitorování úloh na virtuálních počítačích. Porovnání monitorovacích platforem a různých strategií pro implementaci najdete v [Průvodci monitorováním cloudu](/azure/cloud-adoption-framework/manage/monitor/) .
 
 Pokud máte existující prostředí SCOM, které máte v úmyslu používat, můžete ho integrovat s Azure Monitor, abyste mohli poskytovat další funkce. Agent Log Analytics používaný v Azure Monitor je stejný jako používaný pro SCOM, abyste mohli monitorovat virtuální počítače, odesílat data do obou. Stále musíte přidat agenta Azure Monitor pro virtuální počítače a nakonfigurovat pracovní prostor pro shromažďování dalších dat, jak je uvedeno výše, ale virtuální počítače mohou nadále spouštět existující sady Management Pack v prostředí SCOM bez úprav.
 
@@ -242,4 +242,3 @@ Podrobnosti o připojení existující skupiny pro správu SCOM ke svému pracov
 
 * [Naučte se analyzovat data v protokolech Azure Monitor pomocí dotazů protokolu.](../log-query/get-started-queries.md)
 * [Seznamte se s výstrahami pomocí metrik a protokolů v Azure Monitor.](../platform/alerts-overview.md)
-

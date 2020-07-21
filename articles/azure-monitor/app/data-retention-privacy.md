@@ -3,12 +3,12 @@ title: Uchovávání dat a ukládání v Azure Application Insights | Microsoft 
 description: Prohlášení o zásadách uchovávání a ochrany osobních údajů
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: acee1ad0b531f23a872d78111ccd9f0ac09bcfb1
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 16483c9417c08ea60853d7e70b7121cd0af9db71
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224481"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540056"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchovávání a ukládání dat v Application Insights
 
@@ -74,7 +74,7 @@ V případě webových stránek otevřete okno ladění v prohlížeči.
 To je možné tím, že napíšete [modul plug-in procesoru telemetrie](../../azure-monitor/app/api-filtering-sampling.md).
 
 ## <a name="how-long-is-the-data-kept"></a>Jak dlouho se data uchovávají?
-Nezpracované datové body (tj. položky, které se dají dotazovat v analýze a prohledávat ve vyhledávání) jsou zachované až 730 dnů. Můžete [vybrat dobu uchovávání dat](https://docs.microsoft.com/azure/azure-monitor/app/pricing#change-the-data-retention-period) 30, 60, 90, 120, 180, 270, 365, 550 nebo 730 dnů. Pokud potřebujete zachovat data déle než 730 dní, můžete pomocí [průběžného exportu](../../azure-monitor/app/export-telemetry.md) ji během příjmu dat zkopírovat do účtu úložiště. 
+Nezpracované datové body (tj. položky, které se dají dotazovat v analýze a prohledávat ve vyhledávání) jsou zachované až 730 dnů. Můžete [vybrat dobu uchovávání dat](./pricing.md#change-the-data-retention-period) 30, 60, 90, 120, 180, 270, 365, 550 nebo 730 dnů. Pokud potřebujete zachovat data déle než 730 dní, můžete pomocí [průběžného exportu](../../azure-monitor/app/export-telemetry.md) ji během příjmu dat zkopírovat do účtu úložiště. 
 
 Data uchovávaná déle než 90 dnů se účtují za přidání poplatků. Přečtěte si další informace o Application Insights cenách na [stránce s cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/).
 
@@ -122,7 +122,7 @@ Ano, některé kanály telemetrie budou uchovávat data místně, pokud koncový
 
 Kanály telemetrie, které využívají místní úložiště, vytvářejí dočasné soubory v adresářích TEMP nebo v adresářích, které jsou omezené na konkrétní účet, na kterém je spuštěná vaše aplikace. K tomu může dojít v případě, že koncový bod nebyl dočasně dostupný nebo pokud jste dosáhli limitu omezení. Až se tento problém vyřeší, kanál telemetrie bude pokračovat v odesílání všech nových a trvalých dat.
 
-Tato trvalá data nejsou šifrována místně. Pokud se to týká, zkontrolujte data a omezte shromažďování soukromých dat. (Další informace najdete v tématu [Jak exportovat a odstranit soukromá data](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data).)
+Tato trvalá data nejsou šifrována místně. Pokud se to týká, zkontrolujte data a omezte shromažďování soukromých dat. (Další informace najdete v tématu [Jak exportovat a odstranit soukromá data](../platform/personal-data-mgmt.md#how-to-export-and-delete-private-data).)
 
 Pokud zákazník potřebuje nakonfigurovat tento adresář s konkrétními požadavky na zabezpečení, je možné ho nakonfigurovat na rozhraní. Ujistěte se prosím, že proces, ve kterém je aplikace spuštěná, má přístup pro zápis do tohoto adresáře, ale také se ujistěte, že je tento adresář chráněný, aby nedocházelo ke čtení telemetrie nezamýšlenými uživateli.
 
@@ -204,16 +204,16 @@ Nedoporučujeme explicitně nastavit aplikaci tak, aby používala protokol TLS 
 | --- | --- | --- |
 | Azure App Services  | Podporuje se může vyžadovat konfigurace. | Podpora byla oznámena v dubnu 2018. [Podrobnosti o konfiguraci](https://azure.github.io/AppService/2018/04/17/App-Service-and-Functions-hosted-apps-can-now-update-TLS-versions!)najdete v oznámení.  |
 | Aplikace Azure Functions | Podporuje se může vyžadovat konfigurace. | Podpora byla oznámena v dubnu 2018. [Podrobnosti o konfiguraci](https://azure.github.io/AppService/2018/04/17/App-Service-and-Functions-hosted-apps-can-now-update-TLS-versions!)najdete v oznámení. |
-|.NET | Podporováno, konfigurace se liší podle verze. | Podrobné informace o konfiguraci pro .NET 4,7 a starší verze najdete v [těchto pokynech](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12).  |
-|Monitorování stavu | Podporováno, vyžaduje se konfigurace | Monitorování stavu spoléhá na [OS Configuration](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)  +  [konfiguraci rozhraní .NET](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) konfigurace operačního systému pro podporu TLS 1,2.
+|.NET | Podporováno, konfigurace se liší podle verze. | Podrobné informace o konfiguraci pro .NET 4,7 a starší verze najdete v [těchto pokynech](/dotnet/framework/network-programming/tls#support-for-tls-12).  |
+|Monitorování stavu | Podporováno, vyžaduje se konfigurace | Monitorování stavu spoléhá na [OS Configuration](/windows-server/security/tls/tls-registry-settings)  +  [konfiguraci rozhraní .NET](/dotnet/framework/network-programming/tls#support-for-tls-12) konfigurace operačního systému pro podporu TLS 1,2.
 |Node.js |  V 10.5.0 může být vyžadována konfigurace, která je podporována. | Pro jakoukoliv konfiguraci specifickou pro aplikaci použijte [oficiální Node.js dokumentaci TLS/SSL](https://nodejs.org/api/tls.html) . |
 |Java | Podpora JDK pro TLS 1,2 byla přidána do [JDK 6 aktualizace 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) a [JDK 7](https://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html). | JDK 8 používá standardně [TLS 1,2](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default).  |
 |Linux | Distribuce systému Linux se obvykle spoléhají na [OpenSSL](https://www.openssl.org) pro podporu TLS 1,2.  | Zkontrolujte [OpenSSL protokolu změn](https://www.openssl.org/news/changelog.html) a potvrďte, že je podporovaná vaše verze OpenSSL.|
-| Windows 8,0 – 10 | Podporované a povolené ve výchozím nastavení. | Potvrďte, že stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).  |
-| Windows Server 2012 – 2016 | Podporované a povolené ve výchozím nastavení. | Potvrzení, že stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
-| Windows 7 SP1 a Windows Server 2008 R2 SP1 | Podporované, ale nejsou ve výchozím nastavení povolené. | Podrobnosti o tom, jak povolit, najdete na stránce [nastavení registru TLS (Transport Layer Security)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) .  |
+| Windows 8,0 – 10 | Podporované a povolené ve výchozím nastavení. | Potvrďte, že stále používáte [výchozí nastavení](/windows-server/security/tls/tls-registry-settings).  |
+| Windows Server 2012 – 2016 | Podporované a povolené ve výchozím nastavení. | Potvrzení, že stále používáte [výchozí nastavení](/windows-server/security/tls/tls-registry-settings) |
+| Windows 7 SP1 a Windows Server 2008 R2 SP1 | Podporované, ale nejsou ve výchozím nastavení povolené. | Podrobnosti o tom, jak povolit, najdete na stránce [nastavení registru TLS (Transport Layer Security)](/windows-server/security/tls/tls-registry-settings) .  |
 | Windows Server 2008 SP2 | Podpora TLS 1,2 vyžaduje aktualizaci. | Pokud [chcete přidat podporu pro TLS 1,2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) ve Windows serveru 2008 SP2, viz aktualizace. |
-|Windows Vista | Nepodporuje se. | Nelze použít
+|Windows Vista | Nepodporuje se. | –
 
 ### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Ověřte, jakou verzi OpenSSL je vaše distribuce systému Linux spuštěná.
 
@@ -249,13 +249,13 @@ Sady SDK se mezi platformami liší a je možné nainstalovat několik součást
 | --- | --- |
 | [Přidání sady SDK Application Insights do webového projektu .NET][greenbrown] |ServerContext<br/>Odvodit<br/>Čítače výkonu<br/>Žádosti<br/>**Výjimky**<br/>Relace<br/>uživatelé |
 | [Instalace Monitorování stavu ve službě IIS][redfield] |Závislosti<br/>ServerContext<br/>Odvodit<br/>Čítače výkonu |
-| [Přidání sady SDK Application Insights do webové aplikace v jazyce Java][java] |ServerContext<br/>Odvodit<br/>Žádost<br/>Relace<br/>uživatelé |
+| [Přidání sady SDK Application Insights do webové aplikace v jazyce Java][java] |ServerContext<br/>Odvodit<br/>Request<br/>Relace<br/>uživatelé |
 | [Přidat sadu JavaScript SDK na webovou stránku][client] |Instance třídy ClientContext <br/>Odvodit<br/>stránka<br/>ClientPerf<br/>Ajax |
 | [Definovat výchozí vlastnosti][apiproperties] |**Vlastnosti** všech standardních a vlastních událostí |
 | [TrackMetric volání][api] |Číselné hodnoty<br/>**Vlastnosti** |
 | [Hovorová stopa *][api] |Název události<br/>**Vlastnosti** |
 | [TrackException volání][api] |**Výjimky**<br/>Výpis zásobníku<br/>**Vlastnosti** |
-| Sada SDK nemůže shromažďovat data. Například: <br/> – nejde získat přístup k čítačům výkonu.<br/> – výjimka v inicializátoru telemetrie |Diagnostika sady SDK |
+| Sada SDK nemůže shromažďovat data. Příklad: <br/> – nejde získat přístup k čítačům výkonu.<br/> – výjimka v inicializátoru telemetrie |Diagnostika sady SDK |
 
 Pro [sady SDK pro jiné platformy][platforms]se podívejte na jejich dokumenty.
 
@@ -286,7 +286,7 @@ Pro [sady SDK pro jiné platformy][platforms]se podívejte na jejich dokumenty.
 [Některá data můžete odpínat úpravou ApplicationInsights.config][config]
 
 > [!NOTE]
-> IP adresa klienta se používá k odvodit zeměpisnou polohu, ale ve výchozím nastavení se data IP už neukládají a do přidruženého pole se zapisují všechny nuly. Chcete-li získat další informace o zpracování osobních údajů, doporučujeme tento [článek](../../azure-monitor/platform/personal-data-mgmt.md#application-data). Pokud potřebujete ukládat údaje o IP adrese, Projděte si tyto možnosti podle [článku](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection) .
+> IP adresa klienta se používá k odvodit zeměpisnou polohu, ale ve výchozím nastavení se data IP už neukládají a do přidruženého pole se zapisují všechny nuly. Chcete-li získat další informace o zpracování osobních údajů, doporučujeme tento [článek](../../azure-monitor/platform/personal-data-mgmt.md#application-data). Pokud potřebujete ukládat údaje o IP adrese, Projděte si tyto možnosti podle [článku](./ip-collection.md) .
 
 ## <a name="credits"></a>Kredity
 Tento produkt zahrnuje data GeoLite2 vytvořená v MaxMind, která jsou dostupná z [https://www.maxmind.com](https://www.maxmind.com) .

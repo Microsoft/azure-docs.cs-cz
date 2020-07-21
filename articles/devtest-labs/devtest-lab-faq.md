@@ -2,13 +2,13 @@
 title: Nejčastější dotazy k Azure DevTest Labs | Microsoft Docs
 description: Tento článek obsahuje odpovědi na některé nejčastější dotazy týkající se Azure DevTest Labs.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: b687ae5c7b64239387dad7a51e124fa2f507f2b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: 707b66fadab482a31ac02f10460d581997931a0b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481659"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537477"
 ---
 # <a name="azure-devtest-labs-faq"></a>Nejčastější dotazy k Azure DevTest Labs
 Získejte odpovědi na některé z nejběžnějších otázek o Azure DevTest Labs.
@@ -200,7 +200,7 @@ Zkopírování stávajících virtuálních počítačů do DevTest Labs:
 Ano, k virtuálním počítačům můžete připojit několik disků.
 
 ### <a name="are-gen-2-images-supported-by-devtest-labs"></a>Jsou pro DevTest Labs podporované image Gen 2?
-Ne. Služba DevTest Labs nepodporuje [Image Gen 2](../virtual-machines/windows/generation-2.md). Pokud je pro Image k dispozici jak 1, tak i Gen 2, při vytváření virtuálního počítače se v DevTest Labs zobrazí jenom verze 1. generace. Obrázek se nezobrazí, pokud je k dispozici pouze obecná verze 2. 
+Yes. Služba DevTest Labs podporuje [Image Gen 2](../virtual-machines/windows/generation-2.md). Pokud jsou však pro Image k dispozici obě verze 1. generace a 2. DevTest Labs při vytváření virtuálního počítače zobrazuje pouze verzi 1. generace. Obrázek se zobrazí, pokud je k dispozici pouze obecná verze 2. 
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>Pokud chci pro svoje testování použít bitovou kopii operačního systému Windows, musím si koupit předplatné MSDN?
 Pokud chcete pro vývoj nebo testování v Azure použít image operačního systému Windows Client (Windows 7 nebo novější), proveďte jeden z následujících kroků:
@@ -212,7 +212,7 @@ Další informace o kreditech Azure pro jednotlivé nabídky MSDN najdete v tém
 
 
 ### <a name="how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab"></a>Návody automatizujete proces odstraňování všech virtuálních počítačů v mém testovacím prostředí?
-Jako vlastník testovacího prostředí můžete virtuální počítače z testovacího prostředí odstranit v Azure Portal. Všechny virtuální počítače v testovacím prostředí můžete také odstranit pomocí skriptu PowerShellu. V následujícím příkladu v části **hodnoty pro změnu** komentáře upravte hodnoty parametrů. Hodnoty subscriptionId, labResourceGroup a labName můžete načíst z podokna testovacího prostředí v Azure Portal.
+Jako vlastník testovacího prostředí můžete virtuální počítače z testovacího prostředí odstranit v Azure Portal. Všechny virtuální počítače v testovacím prostředí můžete také odstranit pomocí skriptu PowerShellu. V následujícím příkladu v části **hodnoty pro změnu** komentáře upravte hodnoty parametrů. `subscriptionId`Hodnoty, a můžete načíst `labResourceGroup` `labName` z podokna testovacího prostředí v Azure Portal.
 
 ```powershell
 # Delete all the VMs in a lab.
@@ -340,9 +340,9 @@ Pro jiné průběžné integrace (CI)/continuous delivery (CD) sady nástrojů m
 ## <a name="networking"></a>Sítě
 
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>Kdy je vhodné vytvořit novou virtuální síť pro prostředí DevTest Labs a použít stávající virtuální síť?
-Pokud vaše virtuální počítače potřebují pracovat se stávající infrastrukturou, zvažte použití existující virtuální sítě v prostředí DevTest Labs. Pokud používáte ExpressRoute, možná budete chtít minimalizovat množství virtuální sítě/podsítí, abyste nefragmentoval adresní prostor IP adres, který se přiřadí k použití v předplatných.
+Pokud vaše virtuální počítače potřebují pracovat se stávající infrastrukturou, zvažte použití existující virtuální sítě v prostředí DevTest Labs. Pokud používáte ExpressRoute, možná budete chtít minimalizovat počet virtuálních sítí nebo podsítí, abyste nefragmentoval adresní prostor IP adres, který se přiřadí k použití v předplatných.
 
-Zvažte také použití vzoru partnerského vztahu virtuálních sítí ([hvězdicové model](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)). Tento přístup umožňuje komunikaci mezi virtuálními sítěmi a podsítí v rámci předplatných. V opačném případě by každé prostředí DevTest Labs mohlo mít vlastní virtuální síť.
+Zvažte možnost použít také vzor partnerského vztahu virtuální sítě ([hvězdicové model](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)). Tento přístup umožňuje komunikaci mezi virtuálními sítěmi a podsítí v rámci předplatných. V opačném případě by každé prostředí DevTest Labs mohlo mít vlastní virtuální síť.
 
 Existují [omezení](../azure-resource-manager/management/azure-subscription-service-limits.md) počtu virtuálních sítí na jedno předplatné. Výchozí hodnota je 50, i když tento limit lze vystoupl na 100.
 
@@ -357,7 +357,7 @@ Při použití sdílených veřejných IP adres sdílí virtuální počítače 
 
 ### <a name="how-do-i-ensure-that-development-and-test-virtual-machines-are-unable-to-reach-the-public-internet-are-there-any-recommended-patterns-to-set-up-network-configuration"></a>Návody zajistěte, aby vývojové a testovací virtuální počítače nedokázaly získat přístup k veřejnému Internetu? Existují nějaké Doporučené vzory pro nastavení konfigurace sítě?
 
-Ano. K dispozici jsou dvě aspekty, které byste měli zvážit – příchozí a odchozí provoz.
+Yes. K dispozici jsou dvě aspekty, které byste měli zvážit – příchozí a odchozí provoz.
 
 - **Příchozí provoz** – Pokud virtuální počítač nemá veřejnou IP adresu, nepůjde k němu získat Internet. Běžným přístupem je zajistit, že jsou nastavené zásady na úrovni předplatného, takže žádný uživatel nemůže vytvořit veřejnou IP adresu.
 - **Odchozí provoz** – Pokud chcete zabránit tomu, aby virtuální počítače přistupovaly k veřejnému Internetu a vynutily provoz přes podnikovou bránu firewall, můžete směrovat provoz místně přes Express Route nebo VPN pomocí vynuceného směrování.

@@ -7,11 +7,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/02/2020
-ms.openlocfilehash: ce58aae3b1db1f0f338d353025d4f277aeb6944f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9f41a99f6cf21574c3c26950d5c9f048d85a468
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77137501"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539512"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Sjednocení více Azure Monitorch prostředků Application Insights 
 Tento článek popisuje, jak zadávat dotazy a zobrazovat všechna data protokolu Application Insights na jednom místě, i když jsou v různých předplatných Azure, jako náhrada za vyřazení Application Insights Connector. Počet prostředků Application Insights, které můžete zahrnout do jednoho dotazu, je omezený na 100.
@@ -56,7 +57,7 @@ Dotaz používá Application Insights schéma, i když se dotaz spustí v pracov
 ![Příklad výsledků mezi dotazy](media/unify-app-resource-data/app-insights-query-results.png)
 
 >[!NOTE]
->[Dotaz na více prostředků](../log-query/cross-workspace-query.md) v upozorněních protokolu se podporuje v novém [rozhraní scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Ve výchozím nastavení používá Azure Monitor [starší rozhraní api Log Analytics výstrahy](../platform/api-alerts.md) pro vytváření nových pravidel upozornění protokolu z Azure Portal, pokud nepřepnete ze [starší verze rozhraní API upozornění protokolu](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). Po přepínači se nové rozhraní API nastaví jako výchozí pro nová pravidla upozornění v Azure Portal a umožní vám vytvořit pravidla pro výstrahy protokolu dotazů mezi prostředky. Pravidla upozornění protokolu [dotazu pro více prostředků](../log-query/cross-workspace-query.md) můžete vytvořit bez toho, aby byl přepínač použit pomocí [šablony ARM pro rozhraní scheduledQueryRules API](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) , ale toto pravidlo upozornění lze spravovat i v případě, že [rozhraní scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) , nikoli z Azure Portal.
+>[Dotaz na více prostředků](../log-query/cross-workspace-query.md) v upozorněních protokolu se podporuje v novém [rozhraní scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules). Ve výchozím nastavení používá Azure Monitor [starší rozhraní api Log Analytics výstrahy](../platform/api-alerts.md) pro vytváření nových pravidel upozornění protokolu z Azure Portal, pokud nepřepnete ze [starší verze rozhraní API upozornění protokolu](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). Po přepínači se nové rozhraní API nastaví jako výchozí pro nová pravidla upozornění v Azure Portal a umožní vám vytvořit pravidla pro výstrahy protokolu dotazů mezi prostředky. Pravidla upozornění protokolu [dotazu pro více prostředků](../log-query/cross-workspace-query.md) můžete vytvořit bez toho, aby byl přepínač použit pomocí [šablony ARM pro rozhraní scheduledQueryRules API](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) , ale toto pravidlo upozornění lze spravovat i v případě, že [rozhraní scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) , nikoli z Azure Portal.
 
 ## <a name="application-insights-and-log-analytics-workspace-schema-differences"></a>Rozdíly mezi Application Insights a Log Analytics schémat pracovního prostoru
 V následující tabulce jsou uvedeny rozdíly v schématech mezi Log Analytics a Application Insights.  

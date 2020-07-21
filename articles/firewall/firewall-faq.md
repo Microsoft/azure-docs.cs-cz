@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 07/10/2020
+ms.date: 07/17/2020
 ms.author: victorh
-ms.openlocfilehash: 3174576201f0068191c2918b47fbd99eaa1ec182
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: b984bb581df54cba79a551dc870786ed228eaa43
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232079"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536965"
 ---
 # <a name="azure-firewall-faq"></a>Nejčastější dotazy k Azure Firewall
 
@@ -22,15 +22,7 @@ Azure Firewall je spravovaná cloudová služba síťového zabezpečení, kter�
 
 ## <a name="what-capabilities-are-supported-in-azure-firewall"></a>Jaké funkce jsou podporovány v Azure Firewall?
 
-* Stavová brána firewall jako služba
-* Integrovaná vysoká dostupnost s neomezenou škálovatelností cloudu
-* Filtrování FQDN
-* Značky plně kvalifikovaných názvů domén
-* Pravidla filtrování síťového provozu
-* Podpora pro odchozí SNAT
-* Podpora DNAT u příchozích přenosů
-* Centrální vytváření, prosazování a protokolování zásad pro připojení aplikací a sítí napříč předplatnými Azure a virtuální sítě
-* Plně integrovaná s Azure Monitor pro protokolování a analýzu
+Další informace o funkcích Azure Firewall najdete v tématu [Azure firewall funkce](features.md).
 
 ## <a name="what-is-the-typical-deployment-model-for-azure-firewall"></a>Jaký je typický model nasazení pro Azure Firewall?
 
@@ -121,7 +113,7 @@ Ano, Azure Firewall můžete ve virtuální síti rozbočovače použít k směr
 
 ## <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Může Azure Firewall dopředný a filtrovaný síťový provoz mezi podsítěmi ve stejné virtuální síti nebo v partnerských virtuálních sítích?
 
-Ano. Konfigurace udr pro přesměrování provozu mezi podsítěmi ve stejné virtuální síti ale vyžaduje další pozornost. Při použití rozsahu adres virtuální sítě jako cílové předpony pro UDR je to také směrování všech přenosů z jednoho počítače do jiného počítače ve stejné podsíti prostřednictvím instance Azure Firewall. Zabráníte tak, že zadáte trasu pro podsíť v UDR s typem dalšího segmentu směrování **VNet**. Správa těchto tras může být nenáročných a náchylná k chybě. Doporučenou metodou pro interní segmentaci sítě je použití skupin zabezpečení sítě, které nevyžadují udr.
+Yes. Konfigurace udr pro přesměrování provozu mezi podsítěmi ve stejné virtuální síti ale vyžaduje další pozornost. Při použití rozsahu adres virtuální sítě jako cílové předpony pro UDR je to také směrování všech přenosů z jednoho počítače do jiného počítače ve stejné podsíti prostřednictvím instance Azure Firewall. Zabráníte tak, že zadáte trasu pro podsíť v UDR s typem dalšího segmentu směrování **VNet**. Správa těchto tras může být nenáročných a náchylná k chybě. Doporučenou metodou pro interní segmentaci sítě je použití skupin zabezpečení sítě, které nevyžadují udr.
 
 ## <a name="does-azure-firewall-outbound-snat-between-private-networks"></a>Je Azure Firewall odchozí SNAT mezi privátními sítěmi?
 
@@ -137,7 +129,7 @@ Pokud vaše konfigurace vyžaduje vynucené tunelování v místní síti a mů�
 
 ## <a name="are-there-any-firewall-resource-group-restrictions"></a>Existují nějaká omezení skupiny prostředků brány firewall?
 
-Ano. Brána firewall, virtuální síť a veřejná IP adresa musí být ve stejné skupině prostředků.
+Yes. Brána firewall, virtuální síť a veřejná IP adresa musí být ve stejné skupině prostředků.
 
 ## <a name="when-configuring-dnat-for-inbound-internet-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>Když konfigurujete DNAT pro příchozí síťový provoz v Internetu, musím taky nakonfigurovat odpovídající síťové pravidlo, které povolí tento provoz?
 
@@ -160,7 +152,7 @@ V případě jakékoli plánované údržby připojení vyprázdní logiku bez p
 
 ## <a name="is-there-a-character-limit-for-a-firewall-name"></a>Je pro název brány firewall nějaký limit znaků?
 
-Ano. Pro název brány firewall je povolený limit 50 znaků.
+Yes. Pro název brány firewall je povolený limit 50 znaků.
 
 ## <a name="why-does-azure-firewall-need-a-26-subnet-size"></a>Proč Azure Firewall potřebovat velikost podsítě/26?
 
@@ -210,7 +202,7 @@ Test TCP se ve skutečnosti nepřipojuje k cílovému plně kvalifikovanému ná
 
 ## <a name="are-there-limits-for-the-number-of-ip-addresses-supported-by-ip-groups"></a>Existují omezení počtu IP adres podporovaných skupinami IP adres?
 
-Ano. Další informace najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits) .
+Yes. Další informace najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits) .
 
 ## <a name="can-i-move-an-ip-group-to-another-resource-group"></a>Můžu přesunout skupinu IP adres do jiné skupiny prostředků?
 

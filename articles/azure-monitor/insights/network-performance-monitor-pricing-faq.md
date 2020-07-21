@@ -6,20 +6,21 @@ ms.topic: conceptual
 author: agummadi
 ms.author: agummadi
 ms.date: 04/02/2018
-ms.openlocfilehash: c5a80c7ff6d08ce601a6c2bbb0db0ef866d3b425
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f44afd84c58c94c6a8d3e6145e8a4f66e0e2e782
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77654388"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539648"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Cenové změny pro Azure Network Performance Monitor
 
-Nastavili jsme vaše názory a nedávno jsme zavedli [nové cenové prostředí](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) pro různé služby monitorování v rámci Azure. Tento článek zachycuje cenové změny týkající se Azure [Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (npm) ve snadno čitelném formátu otázek a odpovědí.
+Nastavili jsme vaše názory a nedávno jsme zavedli [nové cenové prostředí](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) pro různé služby monitorování v rámci Azure. Tento článek zachycuje cenové změny týkající se Azure [Network Performance Monitor](../../networking/network-monitoring-overview.md) (npm) ve snadno čitelném formátu otázek a odpovědí.
 
 Network Performance Monitor se skládá ze tří součástí:
-* [Monitorování výkonu](https://docs.microsoft.com/azure/networking/network-monitoring-overview#performance-monitor)
-* [Monitorování koncového bodu služby](https://docs.microsoft.com/azure/networking/network-monitoring-overview)
-* [Monitorování ExpressRoute](https://docs.microsoft.com/azure/networking/network-monitoring-overview#expressroute-monitor)
+* [Monitorování výkonu](../../networking/network-monitoring-overview.md#performance-monitor)
+* [Monitorování koncového bodu služby](../../networking/network-monitoring-overview.md)
+* [Monitorování ExpressRoute](../../networking/network-monitoring-overview.md#expressroute-monitor)
 
 Následující části vysvětlují cenové změny součástí NPM.
 
@@ -111,4 +112,3 @@ Náklady na monitorování koncového bodu v celém měsíci najdete v části [
 ## <a name="references"></a>Reference
 
 [Nejčastější dotazy k log Analyticsm](https://azure.microsoft.com/pricing/details/log-analytics/)cenám: část s nejčastějšími dotazy obsahuje informace o cenách úrovně Free, ceny za uzel a další informace o cenách.
-

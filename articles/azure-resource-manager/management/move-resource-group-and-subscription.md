@@ -2,12 +2,13 @@
 title: Přesunutí prostředků do nového předplatného nebo skupiny prostředků
 description: K přesunutí prostředků do nové skupiny prostředků nebo předplatného použijte Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 03/02/2020
-ms.openlocfilehash: 036def01ef8ae5732d372dd995ad8f425c36cad9
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.date: 07/15/2020
+ms.openlocfilehash: 2fe4fc956f52ab5229469e1f230aec056295f19a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057836"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539274"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Přesun prostředků do nové skupiny prostředků nebo předplatného
 
@@ -16,6 +17,8 @@ V tomto článku se dozvíte, jak přesunout prostředky Azure do jiného předp
 Během operace přesunutí dojde ke zamčení zdrojové skupiny i cílové skupiny. Operace zápisu a odstranění jsou ve skupinách prostředků blokované, dokud se přesun nedokončí. Tento zámek znamená, že nemůžete přidat, aktualizovat nebo odstranit prostředky ve skupinách prostředků. Neznamená to, že se prostředky zmrazují. Pokud například přesunete SQL Server a jeho databázi do nové skupiny prostředků, aplikace, která využívá databázi, nebude mít žádný výpadek. Může i nadále číst a zapisovat do databáze. Zámek může být poslední po dobu maximálně čtyř hodin, ale většina přesunů se dokončí za mnohem kratší dobu.
 
 Přesunutím prostředku dojde pouze k jeho přesunu do nové skupiny prostředků nebo do nového předplatného. Umístění prostředku se nezmění.
+
+Pokud používáte centrum Azure Stack, nemůžete přesouvat prostředky mezi skupinami.
 
 ## <a name="checklist-before-moving-resources"></a>Kontrolní seznam před přesunutím prostředků
 

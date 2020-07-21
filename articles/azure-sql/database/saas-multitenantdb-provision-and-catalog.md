@@ -11,11 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 80c789f955b279e7771fe39c20087baa465b3293
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88f1e40101b807e82eaf69be6c167cd4aa2e2831
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84042621"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539189"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Zřízení a katalog nových tenantů v aplikaci SaaS s využitím víceklientské Azure SQL Database horizontálně dělené
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +30,7 @@ Tento článek obsahuje dvě hlavní části:
 - [Kurz](#goto_1_tutorial) , který zvýrazní kód skriptu PowerShellu, který provádí zřizování a vytváření katalogu.
   - V tomto kurzu se používá aplikace Wingtip Tickets SaaS, která je přizpůsobená ke vzoru databáze pro více tenantů horizontálně dělené.
 
-<a name="goto_2_conceptual"/>
+<a name="goto_2_conceptual"></a>
 
 ## <a name="database-pattern"></a>Vzor databáze
 
@@ -110,7 +111,7 @@ Skripty zřizování klientů v tomto kurzu podporují oba tyto scénáře:
 
 Data tenanta se pak inicializují a zaregistrují v mapě horizontálních oddílů katalogu. V ukázkové aplikaci se k databázím, které obsahují více tenantů, přidává obecný název, jako je například *tenants1* nebo *tenants2*. K databázím, které obsahují jednoho tenanta, se přidává název tenanta. Konkrétní konvence pojmenování používané v ukázce nejsou důležitou součástí vzoru, protože použití katalogu umožňuje přiřadit k databázi libovolný název.
 
-<a name="goto_1_tutorial"/>
+<a name="goto_1_tutorial"></a>
 
 ## <a name="tutorial-begins"></a>Začátek kurzu
 
@@ -122,7 +123,7 @@ V tomto kurzu se naučíte:
 > * Zřízení dávky tenantů do databází s více klienty a s jedním tenantům
 > * Registrace databáze a mapování tenanta v katalogu
 
-#### <a name="prerequisites"></a>Požadavky
+#### <a name="prerequisites"></a>Předpoklady
 
 Předpokladem dokončení tohoto kurzu je splnění následujících požadavků:
 

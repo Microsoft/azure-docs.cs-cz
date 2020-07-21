@@ -4,11 +4,12 @@ description: Naučte se, jak vytvořit aplikaci logiky, která využívá spole�
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/27/2019
-ms.openlocfilehash: 9042ed8ddbb698192e638fa7538f74561574c262
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05349554f4c5e076562a75d48d58e0849986d6cc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77668226"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539495"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>Jak integrovat společné schéma výstrah s Logic Apps
 
@@ -19,16 +20,16 @@ V tomto článku se dozvíte, jak vytvořit aplikaci logiky, která využívá s
 [Běžné schéma výstrah](https://aka.ms/commonAlertSchemaDocs) poskytuje standardizované a rozšiřitelné schéma JSON napříč všemi různými typy výstrah. Běžné schéma výstrah je nejužitečnější, když se využívají programově – prostřednictvím webhooků, runbooků a Logic Apps. V tomto článku ukážeme, jak může být jediná aplikace logiky vytvořená pro zpracování všech výstrah. Stejné zásady je možné použít i pro další programové metody. Aplikace logiky popsané v tomto článku vytvoří dobře definované proměnné pro [pole "Essential"](alerts-common-schema-definitions.md#essentials)a také popisuje, jak můžete zpracovat logiku specifickou pro [Typ výstrahy](alerts-common-schema-definitions.md#alert-context) .
 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 V tomto článku se předpokládá, že čtenář je známý 
-* Nastavení pravidel upozornění ([metrika](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric), [protokol](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log), [Protokol aktivit](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log))
-* Nastavení [skupin akcí](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
-* Povolení [společného schématu výstrah](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema#how-do-i-enable-the-common-alert-schema) v rámci skupin akcí
+* Nastavení pravidel upozornění ([metrika](./alerts-metric.md), [protokol](./alerts-log.md), [Protokol aktivit](./alerts-activity-log.md))
+* Nastavení [skupin akcí](./action-groups.md)
+* Povolení [společného schématu výstrah](./alerts-common-schema.md#how-do-i-enable-the-common-alert-schema) v rámci skupin akcí
 
 ## <a name="create-a-logic-app-leveraging-the-common-alert-schema"></a>Vytvoření aplikace logiky s využitím společného schématu výstrah
 
-1. Postupujte podle kroků popsaných v části [Vytvoření aplikace logiky](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups-logic-app). 
+1. Postupujte podle kroků popsaných v části [Vytvoření aplikace logiky](./action-groups-logic-app.md). 
 
 1.  Vyberte aktivační událost: **když se přijme požadavek HTTP**.
 
@@ -129,7 +130,7 @@ V tomto článku se předpokládá, že čtenář je známý
       if(equals(triggerBody()?['data']?['essentials']?['monitoringService'],'Application Insights'),triggerBody()?['data']?['alertContext']?['SearchResults'],'NA')
     ```
     
-     Přečtěte si další informace o [psaní výrazů aplikace logiky](https://docs.microsoft.com/azure/logic-apps/workflow-definition-language-functions-reference#logical-comparison-functions).
+     Přečtěte si další informace o [psaní výrazů aplikace logiky](../../logic-apps/workflow-definition-language-functions-reference.md#logical-comparison-functions).
 
     
 
@@ -138,4 +139,3 @@ V tomto článku se předpokládá, že čtenář je známý
 
 * [Přečtěte si další informace o skupinách akcí](../../azure-monitor/platform/action-groups.md).
 * [Přečtěte si další informace o běžném schématu výstrah](https://aka.ms/commonAlertSchemaDocs).
-

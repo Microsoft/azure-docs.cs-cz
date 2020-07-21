@@ -3,11 +3,12 @@ title: Datový model pro události diagnostiky Azure Backup
 description: Tento datový model se odkazuje na režim konkrétní prostředek odeslání diagnostických událostí na Log Analytics (LA).
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: af1e4159ff2794f8d4dd11480eb7f1789e034c06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46d40694da4eb025afc11da0f14b28691bf13bb8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484500"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538866"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Datový model pro události diagnostiky Azure Backup
 
@@ -219,5 +220,5 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s úložištěm.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Naučte se odesílat diagnostická data do Log Analytics](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events)
-- [Naučte se zapisovat dotazy do tabulek specifických pro prostředky.](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor#sample-kusto-queries)
+- [Naučte se odesílat diagnostická data do Log Analytics](./backup-azure-diagnostic-events.md)
+- [Naučte se zapisovat dotazy do tabulek specifických pro prostředky.](./backup-azure-monitoring-use-azuremonitor.md#sample-kusto-queries)

@@ -4,11 +4,12 @@ description: Postup přizpůsobení kanálů telemetrie v Azure Application Insi
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9c292246f947e4d3a364f79b31fe7a1deebd33d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f9e93d477efeee7e1d8a0b0d8704f9c83d2a4f7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84691947"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539784"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Kanály telemetrie v Application Insights
 
@@ -16,7 +17,7 @@ Kanály telemetrie jsou nedílnou součástí [sad Azure Application Insights SD
 
 ## <a name="what-are-telemetry-channels"></a>Co jsou kanály telemetrie?
 
-Kanály telemetrie jsou zodpovědné za ukládání položek telemetrie do vyrovnávací paměti a jejich posílání do služby Application Insights, kde jsou uložené pro dotazování a analýzu. Kanál telemetrie je libovolná třída, která implementuje [`Microsoft.ApplicationInsights.ITelemetryChannel`](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) rozhraní.
+Kanály telemetrie jsou zodpovědné za ukládání položek telemetrie do vyrovnávací paměti a jejich posílání do služby Application Insights, kde jsou uložené pro dotazování a analýzu. Kanál telemetrie je libovolná třída, která implementuje [`Microsoft.ApplicationInsights.ITelemetryChannel`](/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) rozhraní.
 
 `Send(ITelemetry item)`Metoda kanálu telemetrie se volá po volání všech inicializátorů telemetrie a procesorů telemetrie. Všechny položky vynechané procesorem telemetrie tak nedosáhnou kanálu. `Send()`obvykle neodesílá položky do back-endu okamžitě. Obvykle je ukládá do vyrovnávací paměti a odesílá je v dávkách za účelem efektivního přenosu.
 
@@ -30,7 +31,7 @@ Sady SDK Application Insights .NET a .NET Core jsou dodávány se dvěma integro
 
     Tento kanál je součástí většího balíčku NuGet Microsoft. ApplicationInsights a je výchozím kanálem, který sada SDK používá, když nic jiného není nakonfigurované.
 
-* `ServerTelemetryChannel`: Pokročilejší kanál, který má zásady opakování a možnost ukládat data na místní disk. Tento kanál pokusy o odeslání telemetrie, pokud dojde k přechodným chybám. Tento kanál taky využívá úložiště na místním disku k udržení položek na disku během výpadků sítě nebo svazků s vysokými telemetriemi. Z důvodu těchto mechanismů opakování a místního diskového úložiště se tento kanál považuje za spolehlivější a doporučuje se pro všechny produkční scénáře. Tento kanál je výchozím nastavením pro [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) a [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) aplikace, které jsou nakonfigurované podle oficiální dokumentace. Tento kanál je optimalizovaný pro scénáře serveru s dlouhotrvajícími procesy. [`Flush()`](#which-channel-should-i-use)Metoda, která je implementovaná tímto kanálem, není synchronní.
+* `ServerTelemetryChannel`: Pokročilejší kanál, který má zásady opakování a možnost ukládat data na místní disk. Tento kanál pokusy o odeslání telemetrie, pokud dojde k přechodným chybám. Tento kanál taky využívá úložiště na místním disku k udržení položek na disku během výpadků sítě nebo svazků s vysokými telemetriemi. Z důvodu těchto mechanismů opakování a místního diskového úložiště se tento kanál považuje za spolehlivější a doporučuje se pro všechny produkční scénáře. Tento kanál je výchozím nastavením pro [ASP.NET](./asp-net.md) a [ASP.NET Core](./asp-net-core.md) aplikace, které jsou nakonfigurované podle oficiální dokumentace. Tento kanál je optimalizovaný pro scénáře serveru s dlouhotrvajícími procesy. [`Flush()`](#which-channel-should-i-use)Metoda, která je implementovaná tímto kanálem, není synchronní.
 
     Tento kanál se dodává jako balíček NuGet Microsoft. ApplicationInsights. WindowsServer. TelemetryChannel a automaticky se získá, když použijete balíček NuGet Microsoft. ApplicationInsights. Web nebo Microsoft. ApplicationInsights. AspNetCore.
 

@@ -4,15 +4,16 @@ description: V tomto článku najdete odpovědi na běžné dotazy týkající s
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 5705b70dd210c336fc2baa4da07f96f2ad249f64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68f85b3d5da811f78ba398093db5a65ee5c49ab1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82800647"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538764"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Nejčastější dotazy – zálohování virtuálních počítačů Azure
 
-Tento článek obsahuje odpovědi na běžné dotazy týkající se zálohování virtuálních počítačů Azure pomocí služby [Azure Backup](backup-introduction-to-azure-backup.md) .
+Tento článek obsahuje odpovědi na běžné dotazy týkající se zálohování virtuálních počítačů Azure pomocí služby [Azure Backup](./backup-overview.md) .
 
 ## <a name="backup"></a>Backup
 
@@ -58,11 +59,11 @@ Průvodce zobrazí jenom virtuální počítače ve stejné oblasti jako trezor,
 
 ### <a name="my-vm-is-shut-down-will-an-on-demand-or-a-scheduled-backup-work"></a>Virtuální počítač je vypnutý. Bude aplikace na vyžádání nebo plánované zálohování fungovat?
 
-Ano. Zálohování se spustí při vypnutí počítače. Bod obnovení je označen jako konzistentní se selháním.
+Yes. Zálohování se spustí při vypnutí počítače. Bod obnovení je označen jako konzistentní se selháním.
 
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>Můžu zrušit probíhající úlohu zálohování?
 
-Ano. Úlohu zálohování můžete zrušit ve stavu **pořizování snímků** . Pokud probíhá přenos dat z snímku, nemůžete úlohu zrušit.
+Yes. Úlohu zálohování můžete zrušit ve stavu **pořizování snímků** . Pokud probíhá přenos dat z snímku, nemůžete úlohu zrušit.
 
 ### <a name="i-enabled-a-lock-on-the-resource-group-created-by-azure-backup-service-for-example-azurebackuprg_geo_number-will-my-backups-continue-to-work"></a>Aktivoval (a) jsem zámek pro skupinu prostředků vytvořenou službou Azure Backup (například `AzureBackupRG_<geo>_<number>` ). Budou moje zálohy stále fungovat?
 
@@ -82,7 +83,7 @@ Na disku s podporou WA se snímky nedají považovat. Služba Azure Backup však
 
 Azure Backup nemůže zálohovat disk s podporou WA, ale může ho vyloučit ze zálohy. Zálohování ale neposkytne konzistenci databáze, protože informace na disku s podporou WA se nezálohují. Disky s touto konfigurací můžete zálohovat, pokud chcete zálohovat disk s operačním systémem a zálohovat disky, u kterých není povolený režim WA.
 
-Azure Backup poskytuje řešení zálohování pro služby streamování pro databáze SAP HANA s PLÁNOVANÝm zápisem na 15 minut. Backint je certifikováno pro SAP, aby poskytoval nativní podporu zálohování s využitím nativních rozhraní API SAP HANA. Přečtěte si další informace [o zálohování SAP HANA databází na virtuálních počítačích Azure](https://docs.microsoft.com/azure/backup/sap-hana-db-about).
+Azure Backup poskytuje řešení zálohování pro služby streamování pro databáze SAP HANA s PLÁNOVANÝm zápisem na 15 minut. Backint je certifikováno pro SAP, aby poskytoval nativní podporu zálohování s využitím nativních rozhraní API SAP HANA. Přečtěte si další informace [o zálohování SAP HANA databází na virtuálních počítačích Azure](./sap-hana-db-about.md).
 
 ### <a name="what-is-the-maximum-delay-i-can-expect-in-backup-start-time-from-the-scheduled-backup-time-i-have-set-in-my-vm-backup-policy"></a>Jaká je maximální prodleva, kterou je možné očekávat v čase zahájení zálohování z naplánovaného času zálohování, který jsem nastavil v zásadách zálohování virtuálních počítačů?
 
@@ -128,9 +129,13 @@ Proces obnovení zůstává stejný. Pokud je bod obnovení k určitému bodu v 
 
 [Přečtěte si další informace](backup-azure-vms-automation.md#restore-an-azure-vm) o tom, jak to provést v PowerShellu.
 
-### <a name="can-i-restore-the-vm-thats-been-deleted"></a>Můžu obnovit odstraněný virtuální počítač?
+### <a name="if-the-restore-fails-to-create-the-vm-what-happens-to-the-disks-included-in-the-restore"></a>Pokud se při obnovení nepovede vytvořit virtuální počítač, co se stane s disky zahrnutými do obnovení?
 
-Ano. I když virtuální počítač odstraníte, můžete přejít na odpovídající zálohovanou položku v trezoru a obnovit z bodu obnovení.
+V případě obnovení spravovaného virtuálního počítače i v případě, že se virtuální počítač nepodaří vytvořit, budou disky obnoveny.
+
+### <a name="can-i-restore-a-vm-thats-been-deleted"></a>Můžu obnovit odstraněný virtuální počítač?
+
+Yes. I když virtuální počítač odstraníte, můžete přejít na odpovídající zálohovanou položku v trezoru a obnovit z bodu obnovení.
 
 ### <a name="how-do-i-restore-a-vm-to-the-same-availability-sets"></a>Návody obnovit virtuální počítač do stejných skupin dostupnosti?
 
@@ -142,13 +147,13 @@ Možnost [okamžitého obnovení](backup-instant-restore-capability.md) pomáhá
 
 ### <a name="what-happens-when-we-change-the-key-vault-settings-for-the-encrypted-vm"></a>Co se stane, když změníme nastavení trezoru klíčů pro šifrovaný virtuální počítač?
 
-Po změně nastavení trezoru klíčů pro šifrovaný virtuální počítač budou zálohy nadále fungovat s novou sadou podrobností. Po obnovení z bodu obnovení před změnou budete muset tajné klíče obnovit v trezoru klíčů předtím, než budete moct vytvořit virtuální počítač z něj. Další informace najdete v tomto [článku](https://docs.microsoft.com/azure/backup/backup-azure-restore-key-secret).
+Po změně nastavení trezoru klíčů pro šifrovaný virtuální počítač budou zálohy nadále fungovat s novou sadou podrobností. Po obnovení z bodu obnovení před změnou budete muset tajné klíče obnovit v trezoru klíčů předtím, než budete moct vytvořit virtuální počítač z něj. Další informace najdete v tomto [článku](./backup-azure-restore-key-secret.md).
 
 Operace, jako je tajný klíč nebo klíčová implementace, nevyžadují tento krok a stejný Trezor klíčů je možné použít i po obnovení.
 
 ### <a name="can-i-access-the-vm-once-restored-due-to-a-vm-having-broken-relationship-with-domain-controller"></a>Můžu k virtuálnímu počítači získat přístup po obnovení z důvodu přerušeného vztahu mezi virtuálním počítačem a řadičem domény?
 
-Ano, budete mít přístup k virtuálnímu počítači po obnovení, protože došlo k přerušení vztahu virtuálních počítačů s řadičem domény. Další informace najdete v tomto [článku](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#post-restore-steps) .
+Ano, budete mít přístup k virtuálnímu počítači po obnovení, protože došlo k přerušení vztahu virtuálních počítačů s řadičem domény. Další informace najdete v tomto [článku](./backup-azure-arm-restore-vms.md#post-restore-steps) .
 
 ## <a name="manage-vm-backups"></a>Správa záloh virtuálních počítačů
 

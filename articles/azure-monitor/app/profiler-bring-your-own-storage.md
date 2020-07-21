@@ -6,12 +6,12 @@ author: renatosalas
 ms.author: regutier
 ms.date: 04/14/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: d84010fd62d753fafd7edffab833b203657f74c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50dcd3f438645c99e0ed3cfdded7a101ee5f1852
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361934"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539852"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>Konfigurace Přineste si vlastní úložiště (BYOS) pro Application Insights Profiler a Snapshot Debugger
 
@@ -21,16 +21,16 @@ Když použijete Application Insights Profiler nebo Snapshot Debugger, artefakty
 Pomocí Přineste si vlastní úložiště se tyto artefakty nahrají do účtu úložiště, který ovládáte. To znamená, že budete řídit zásady šifrování na místě, zásady správy životního cyklu a přístup k síti. Budete ale odpovědní za náklady spojené s tímto účtem úložiště.
 
 > [!NOTE]
-> Pokud povolujete privátní propojení, je nutné použít vlastní úložiště. Další informace o privátním odkazu pro Application Insights [najdete v dokumentaci.](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)
+> Pokud povolujete privátní propojení, je nutné použít vlastní úložiště. Další informace o privátním odkazu pro Application Insights [najdete v dokumentaci.](../platform/private-link-security.md)
 >
-> Pokud povolujete klíče spravované zákazníkem, je nutné použít vlastní úložiště. Další informace o klíčích spravovaných zákazníkem pro Application Insights [najdete v dokumentaci.](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys)
+> Pokud povolujete klíče spravované zákazníkem, je nutné použít vlastní úložiště. Další informace o klíčích spravovaných zákazníkem pro Application Insights [najdete v dokumentaci.](../platform/customer-managed-keys.md)
 
 ## <a name="how-will-my-storage-account-be-accessed"></a>Jak bude k účtu úložiště přistup?
 1. Agenti, kteří jsou spuštěni ve vašem Virtual Machines nebo App Service, nahrávají artefakty (profily, snímky a symboly) do kontejnerů objektů BLOB ve vašem účtu. Tento proces zahrnuje kontaktování služby Application Insights Profiler nebo Snapshot Debugger k získání tokenu SAS (sdíleného přístupového podpisu) k novému objektu BLOB ve vašem účtu úložiště.
 1. Služba Application Insights Profiler nebo Snapshot Debugger bude analyzovat příchozí objekt BLOB a zapsat zpět výsledky analýzy a soubory protokolu do úložiště objektů BLOB. V závislosti na dostupné výpočetní kapacitě k tomuto procesu může dojít kdykoli po nahrání.
 1. Když zobrazíte trasování profileru nebo analýzu ladicího programu snímků, služba načte výsledky analýzy z úložiště objektů BLOB.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Ujistěte se, že jste svůj účet úložiště vytvořili ve stejném umístění jako prostředek Application Insights. Například Pokud je prostředek Application Insights Západní USA 2, musí být váš účet úložiště také v Západní USA 2. 
 * Udělte roli Přispěvatel dat objektů BLOB úložiště do aplikace AAD "přístup k důvěryhodnému úložišti diagnostické služby" v účtu úložiště prostřednictvím uživatelského rozhraní Access Control (IAM).
 * Pokud je povolené soukromé propojení, nakonfigurujte další nastavení tak, aby umožňovalo připojení k naší důvěryhodné službě Microsoftu z vašeho Virtual Network. 
@@ -60,7 +60,7 @@ Po přidání role se tato role zobrazí v části "přiřazení rolí", podobn�
 _ ![ Obrázek 1,1](media/profiler-bring-your-own-storage/figure-11.png)_ 
  _Obrázek 1,1_ 
 
-Pokud používáte také privátní odkaz, je vyžadována jedna další konfigurace, která umožňuje připojení k důvěryhodné službě společnosti Microsoft z vašeho Virtual Network. Informace najdete v [dokumentaci zabezpečení sítě úložiště](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services).
+Pokud používáte také privátní odkaz, je vyžadována jedna další konfigurace, která umožňuje připojení k důvěryhodné službě společnosti Microsoft z vašeho Virtual Network. Informace najdete v [dokumentaci zabezpečení sítě úložiště](../../storage/common/storage-network-security.md#trusted-microsoft-services).
 
 ### <a name="link-your-storage-account-with-your-application-insights-resource"></a>Propojte svůj účet úložiště s vaším prostředkem Application Insights
 Chcete-li nakonfigurovat BYOS pro diagnostiku na úrovni kódu (Profiler/ladicí program), jsou k dispozici dvě možnosti:
@@ -73,7 +73,7 @@ Chcete-li nakonfigurovat BYOS pro diagnostiku na úrovni kódu (Profiler/ladicí
 
 1. Ujistěte se, že máte nainstalovanou AZ PowerShell 4.2.0 nebo novější.
 
-    Pokud chcete nainstalovat Azure PowerShell, přečtěte si [oficiální dokumentaci k Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+    Pokud chcete nainstalovat Azure PowerShell, přečtěte si [oficiální dokumentaci k Azure PowerShell](/powershell/azure/install-az-ps).
 
 1. Nainstalujte Application Insights rozšíření PowerShell.
     ```powershell
@@ -85,7 +85,7 @@ Chcete-li nakonfigurovat BYOS pro diagnostiku na úrovni kódu (Profiler/ladicí
     Connect-AzAccount -Subscription "{subscription_id}"
     ```
 
-    Další informace o tom, jak se přihlásit, najdete v [dokumentaci k Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount).
+    Další informace o tom, jak se přihlásit, najdete v [dokumentaci k Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount).
 
 1. Odeberte předchozí účet úložiště propojený s vaším prostředkem Application Insights.
 
@@ -121,7 +121,7 @@ Chcete-li nakonfigurovat BYOS pro diagnostiku na úrovni kódu (Profiler/ladicí
 
 1. Ujistěte se, že máte nainstalované rozhraní příkazového řádku Azure CLI.
 
-    Pokud chcete nainstalovat rozhraní příkazového řádku Azure, přečtěte si [oficiální dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+    Pokud chcete nainstalovat rozhraní příkazového řádku Azure, přečtěte si [oficiální dokumentaci k Azure CLI](/cli/azure/install-azure-cli).
 
 1. Nainstalujte rozšíření Application Insights CLI.
     ```powershell
@@ -152,7 +152,7 @@ Chcete-li nakonfigurovat BYOS pro diagnostiku na úrovni kódu (Profiler/ladicí
     ```
 
     > [!NOTE]
-    > K provádění aktualizací v propojených účtech úložiště k vašemu Application Insights prostředku si přečtěte [dokumentaci k Application Insights CLI](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component/linked-storage).
+    > K provádění aktualizací v propojených účtech úložiště k vašemu Application Insights prostředku si přečtěte [dokumentaci k Application Insights CLI](/cli/azure/ext/application-insights/monitor/app-insights/component/linked-storage).
 
 #### <a name="configure-using-azure-resource-manager-template"></a>Konfigurace pomocí šablony Azure Resource Manager
 

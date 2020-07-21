@@ -2,19 +2,19 @@
 title: Instalace hybridního cloudového rozšíření (HCX)
 description: Nastavení řešení HCX (VMware Hybrid Cloud Extension) pro privátní cloud Azure VMware Solution (AVS)
 ms.topic: how-to
-ms.date: 05/19/2020
-ms.openlocfilehash: 3037d12ebbb036098cfc00a42521513bc2df6170
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: b897a44fb6811c4e3564c59a8ab2c064506f0a4f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367542"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539155"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>Nainstalovat HCX pro řešení VMware pro Azure
 
 V tomto článku se seznámíme s postupy pro nastavení řešení HCX (VMWare Hybrid Cloud Extension) pro privátní cloud řešení Azure VMWare (AVS). HCX umožňuje migrovat úlohy VMware do cloudu a další připojené lokality prostřednictvím různých integrovaných typů migrace HCX.
 
-HCX Advanced – výchozí instalace podporuje až tři externí weby. Pokud potřebujete víc než tři lokality, zákazníci mají možnost povolit doplněk HCX Enterprise prostřednictvím podpory. HCX Enterprise Installation pro zákazníky přináší další poplatky za obecnou dostupnost (GA), ale poskytuje [Další funkce](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/).
+HCX Advanced – výchozí instalace podporuje až tři servery vCenter. Pokud potřebujete víc než tři, zákazníci mají možnost povolit doplněk HCX Enterprise prostřednictvím podpory. HCX Enterprise Installation pro zákazníky přináší další poplatky za obecnou dostupnost (GA), ale poskytuje [Další funkce](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/).
 
 
 [Před zahájením, před začátkem](#before-you-begin), [požadavky na verzi softwaru](#software-version-requirements)a [požadavky nejprve důkladně](#prerequisites) prostudujte. 
@@ -50,7 +50,7 @@ Na součástech infrastruktury musí běžet požadovaná minimální verze.
 | NSX    | Pro HCX síťové rozšíření logických přepínačů ve zdroji: NSXv 6.2 + nebo NSX-T 2.4 +   | NSXv 6.2 + nebo NSX-T 2.4 +<br/><br/>Pro směrování blízkosti HCX: NSXv 6.4 + (směrování blízkosti se nepodporuje s NSX-T). |
 | vCloud ředitel   | Nepožadováno – bez interoperability s vCloud ředitelem ve zdrojové lokalitě | Při integraci cílového prostředí s vCloud Directorem je minimum 9.1.0.2.  |
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Globální dosah by měl být nakonfigurovaný mezi místními a SDDC ER okruhy.
 

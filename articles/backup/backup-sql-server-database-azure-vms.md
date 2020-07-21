@@ -3,12 +3,12 @@ title: Zálohování databází SQL Serveru ve virtuálních počítačích Azur
 description: V tomto článku se dozvíte, jak zálohovat SQL Server databáze na virtuálních počítačích Azure pomocí Azure Backup.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 16e24ed94d8017d9fb922193bb16a33ec7a9cdfd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cfd8233b9a696b5b4b1981eefa81aa9723f6431
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817535"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538936"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Zálohování databází SQL Serveru ve virtuálních počítačích Azure
 
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak:
 >**Obnovitelné odstranění pro SQL Server na virtuálním počítači Azure a obnovitelné odstranění pro SAP HANA v úlohách virtuálních počítačů Azure** je teď dostupné ve verzi Preview.<br>
 >Pokud si chcete zaregistrovat verzi Preview, napište nám naAskAzureBackupTeam@microsoft.com
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před zálohováním SQL Server databáze ověřte následující kritéria:
 
@@ -47,7 +47,7 @@ Pro všechny operace vyžaduje SQL Server virtuální počítač připojení ke 
 
 V následující tabulce jsou uvedeny různé alternativy, které můžete použít při navazování připojení:
 
-| **Nastavení**                        | **Výhody**                                               | **Nevýhody**                                            |
+| **Možnost**                        | **Výhody**                                               | **Nevýhody**                                            |
 | --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Soukromé koncové body                 | Povolení zálohování přes privátní IP adresy uvnitř virtuální sítě  <br><br>   Podrobné řízení na straně sítě a trezoru | Má za následek standardní [náklady](https://azure.microsoft.com/pricing/details/private-link/) na soukromý koncový bod |
 | Značky služby NSG                  | Jednodušší Správa jako změny rozsahu se sloučí automaticky.   <br><br>   Žádné další náklady | Dá se použít jenom s skupin zabezpečení sítě  <br><br>    Poskytuje přístup k celé službě. |
@@ -59,17 +59,17 @@ Další podrobnosti o použití těchto možností jsou sdílené níže:
 
 #### <a name="private-endpoints"></a>Soukromé koncové body
 
-Soukromé koncové body umožňují zabezpečené připojení ze serverů ve virtuální síti do trezoru Recovery Services. Privátní koncový bod používá IP adresu z adresního prostoru virtuální sítě pro váš trezor. Síťový provoz mezi prostředky uvnitř virtuální sítě a trezoru se přenáší přes virtuální síť a privátní odkaz na páteřní síť Microsoftu. Tím se eliminuje riziko z veřejného Internetu. [Tady](https://docs.microsoft.com/azure/backup/private-endpoints)si můžete přečíst další informace o privátních koncových bodech pro Azure Backup.
+Soukromé koncové body umožňují zabezpečené připojení ze serverů ve virtuální síti do trezoru Recovery Services. Privátní koncový bod používá IP adresu z adresního prostoru virtuální sítě pro váš trezor. Síťový provoz mezi prostředky uvnitř virtuální sítě a trezoru se přenáší přes virtuální síť a privátní odkaz na páteřní síť Microsoftu. Tím se eliminuje riziko z veřejného Internetu. [Tady](./private-endpoints.md)si můžete přečíst další informace o privátních koncových bodech pro Azure Backup.
 
 #### <a name="nsg-tags"></a>Značky NSG
 
-Pokud používáte skupiny zabezpečení sítě (NSG), pomocí značky služby *AzureBackup* povolte odchozí přístup k Azure Backup. Kromě značky Azure Backup je také potřeba, abyste umožnili připojení k ověřování a přenosu dat vytvořením podobných [pravidel NSG](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) pro *Azure AD* a *Azure Storage*.  Následující kroky popisují proces vytvoření pravidla pro Azure Backup značku:
+Pokud používáte skupiny zabezpečení sítě (NSG), pomocí značky služby *AzureBackup* povolte odchozí přístup k Azure Backup. Kromě značky Azure Backup je také potřeba, abyste umožnili připojení k ověřování a přenosu dat vytvořením podobných [pravidel NSG](../virtual-network/security-overview.md#service-tags) pro *Azure AD* a *Azure Storage*.  Následující kroky popisují proces vytvoření pravidla pro Azure Backup značku:
 
 1. Ve **všech službách**klikněte na **skupiny zabezpečení sítě** a vyberte skupinu zabezpečení sítě.
 
 1. V části **Nastavení**vyberte **odchozí pravidla zabezpečení** .
 
-1. Vyberte možnost **Přidat**. Zadejte všechny požadované podrobnosti pro vytvoření nového pravidla, jak je popsáno v [Nastavení pravidla zabezpečení](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings). Ujistěte se, že možnost **cíl** je nastavená na *příznak služby* a **cílová značka služby** je nastavená na *AzureBackup*.
+1. Vyberte **Přidat**. Zadejte všechny požadované podrobnosti pro vytvoření nového pravidla, jak je popsáno v [Nastavení pravidla zabezpečení](../virtual-network/manage-network-security-group.md#security-rule-settings). Ujistěte se, že možnost **cíl** je nastavená na *příznak služby* a **cílová značka služby** je nastavená na *AzureBackup*.
 
 1. Kliknutím na **Přidat** uložte nově vytvořené odchozí pravidlo zabezpečení.
 
@@ -77,7 +77,7 @@ Podobně můžete vytvořit NSG odchozí pravidla zabezpečení pro Azure Storag
 
 #### <a name="azure-firewall-tags"></a>Značky Azure Firewall
 
-Pokud používáte Azure Firewall, vytvořte pravidlo aplikace pomocí [značky plně kvalifikovaného názvu domény Azure firewall](https://docs.microsoft.com/azure/firewall/fqdn-tags) *AzureBackup* . To umožňuje všem odchozím přístupům Azure Backup.
+Pokud používáte Azure Firewall, vytvořte pravidlo aplikace pomocí [značky plně kvalifikovaného názvu domény Azure firewall](../firewall/fqdn-tags.md) *AzureBackup* . To umožňuje všem odchozím přístupům Azure Backup.
 
 #### <a name="allow-access-to-service-ip-ranges"></a>Povolení přístupu k rozsahům IP adres služby
 
@@ -91,7 +91,7 @@ K povolení přístupu k požadovaným službám z vašich serverů můžete pou
 | -------------- | ------------------------------------------------------------ |
 | Azure Backup  | `*.backup.windowsazure.com`                             |
 | Azure Storage | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` |
-| Služba Azure AD      | V souladu s [tímto článkem](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online) povolte přístup k plně kvalifikovanému názvu domény v oddílech 56 a 59. |
+| Služba Azure AD      | V souladu s [tímto článkem](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online) povolte přístup k plně kvalifikovanému názvu domény v oddílech 56 a 59. |
 
 #### <a name="use-an-http-proxy-server-to-route-traffic"></a>Použití proxy server HTTP ke směrování provozu
 
@@ -107,7 +107,7 @@ Vyhněte se použití následujících prvků v názvech databází:
 * Středník;
 * Lomítkem (/)
 
-Aliasing je k dispozici pro nepodporované znaky, ale doporučujeme je vyhnout. Další informace najdete v tématu [Vysvětlení datového modelu služby Table Storage](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model).
+Aliasing je k dispozici pro nepodporované znaky, ale doporučujeme je vyhnout. Další informace najdete v tématu [Vysvětlení datového modelu služby Table Storage](/rest/api/storageservices/understanding-the-table-service-data-model).
 
 >[!NOTE]
 >Operace **Konfigurace ochrany** pro databáze se speciálními znaky, jako je "+" nebo "&" v názvu není podporována. Můžete buď změnit název databáze, nebo povolit **automatickou ochranu**, která může úspěšně chránit tyto databáze.
@@ -161,11 +161,15 @@ Jak zjišťovat databáze běžící na virtuálním počítači:
 
    ![Vyberte konfigurovat zálohu.](./media/backup-azure-sql-database/backup-goal-configure-backup.png)
 
-2. V části **Vybrat položky, které se mají zálohovat**jsou všechny registrované skupiny dostupnosti a samostatné SQL Server instance. Vyberte šipku vlevo od řádku a rozbalte seznam všech nechráněných databází v této instanci nebo skupině dostupnosti Always On.  
+1. Kliknutím na **Přidat prostředky** zobrazíte všechny registrované skupiny dostupnosti a samostatné instance SQL Server.
 
-    ![Zobrazení všech instancí SQL Server se samostatnými databázemi](./media/backup-azure-sql-database/list-of-sql-databases.png)
+    ![Vyberte Přidat prostředky.](./media/backup-azure-sql-database/add-resources.png)
 
-3. Zvolte všechny databáze, které chcete chránit, a pak vyberte **OK**.
+1. Na obrazovce **Vybrat položky k zálohování** vyberte šipku vlevo od řádku a rozbalte seznam všech nechráněných databází v této instanci nebo skupině dostupnosti Always On.
+
+    ![Vyberte položky, které chcete zálohovat.](./media/backup-azure-sql-database/select-items-to-backup.png)
+
+1. Zvolte všechny databáze, které chcete chránit, a pak vyberte **OK**.
 
    ![Ochrana databáze](./media/backup-azure-sql-database/select-database-to-protect.png)
 
@@ -174,28 +178,20 @@ Jak zjišťovat databáze běžící na virtuálním počítači:
      * Chcete-li chránit více než 50 databází, nakonfigurujte více záloh.
      * Pokud chcete [Povolit](#enable-auto-protection) celou instanci nebo skupinu dostupnosti Always On, vyberte v rozevíracím seznamu automaticky **chránit** možnost **zapnuto**a pak vyberte **OK**.
 
-    > [!NOTE]
-    > Funkce [automatické ochrany](#enable-auto-protection) umožňuje nejen ochranu na všech existujících databázích najednou, ale také automaticky chrání všechny nové databáze přidané do této instance nebo do skupiny dostupnosti.  
+         > [!NOTE]
+         > Funkce [automatické ochrany](#enable-auto-protection) umožňuje nejen ochranu na všech existujících databázích najednou, ale také automaticky chrání všechny nové databáze přidané do této instance nebo do skupiny dostupnosti.  
 
-4. Výběrem **OK** otevřete **zásady zálohování**.
+1. Definujte **zásady zálohování**. Můžete provést jednu z následujících akcí:
 
-    ![Povolení automatické ochrany pro skupinu dostupnosti Always On](./media/backup-azure-sql-database/enable-auto-protection.png)
-
-5. V **zásadách zálohování**zvolte zásadu a pak vyberte **OK**.
-
-   * Jako HourlyLogBackup vyberte výchozí zásady.
+   * Jako *HourlyLogBackup*vyberte výchozí zásady.
    * Vyberte existující zásadu zálohování, která byla dříve vytvořena pro SQL.
    * Definujte novou zásadu na základě bodu RPO a rozsahu uchování.
 
      ![Vybrat zásady zálohování](./media/backup-azure-sql-database/select-backup-policy.png)
 
-6. V **zálohování**vyberte **Povolit zálohování**.
+1. Kliknutím na **Povolit zálohování** můžete odeslat operaci **Konfigurace ochrany** a sledovat průběh konfigurace v oblasti **oznámení** na portálu.
 
-    ![Povolit zvolenou zásadu zálohování](./media/backup-azure-sql-database/enable-backup-button.png)
-
-7. Sledujte průběh konfigurace v oblasti **oznámení** na portálu.
-
-    ![Oznamovací oblast](./media/backup-azure-sql-database/notifications-area.png)
+   ![Sledovat průběh konfigurace](./media/backup-azure-sql-database/track-configuration-progress.png)
 
 ### <a name="create-a-backup-policy"></a>Vytvoření zásady zálohování
 
@@ -210,22 +206,22 @@ Zásady zálohování definují, kdy se zálohují zálohy a jak dlouho se uchov
 Vytvoření zásady zálohování:
 
 1. V trezoru vyberte **zásady zálohování**  >  **Přidat**.
-2. V části **Přidat**vyberte **SQL Server na virtuálním počítači Azure** a definujte typ zásad.
+1. V části **Přidat**vyberte **SQL Server na virtuálním počítači Azure** a definujte typ zásad.
 
    ![Vyberte typ zásad pro nové zásady zálohování.](./media/backup-azure-sql-database/policy-type-details.png)
 
-3. Do pole **název zásady**zadejte název nové zásady.
-4. V **zásadách úplného zálohování**vyberte **četnost zálohování**. Vyberte možnost **denně** nebo **týdně**.
+1. Do pole **název zásady**zadejte název nové zásady.
 
-   * V **denní**době vyberte hodiny a časové pásmo, kdy se úloha zálohování spustí.
-   * V poli **týdně**vyberte den v týdnu, hodinu a časové pásmo při zahájení úlohy zálohování.
-   * Spusťte úplnou zálohu, protože nemůžete vypnout možnost **úplného zálohování** .
-   * Pro zobrazení zásady vyberte **úplné zálohování** .
-   * Pro každodenní úplné zálohování nemůžete vytvořit rozdílové zálohy.
+    ![Zadejte název zásady.](./media/backup-azure-sql-database/policy-name.png)
+
+1. Pokud chcete změnit výchozí nastavení, klikněte na odkaz **Upravit** odpovídající a na **úplná záloha**.
+
+   * Vyberte **četnost zálohování**. Vyberte možnost **denně** nebo **týdně**.
+   * V **denní**době vyberte hodiny a časové pásmo, kdy se úloha zálohování spustí. Pro každodenní úplné zálohování nemůžete vytvořit rozdílové zálohy.
 
      ![Nová pole zásad zálohování](./media/backup-azure-sql-database/full-backup-policy.png)  
 
-5. Ve výchozím nastavení je v **rozsahu uchování**vybraná možnost všechny možnosti. Vymažte všechny limity rozsahu uchovávání, které nechcete, a pak nastavte intervaly, které se mají použít.
+1. Ve výchozím nastavení je v **rozsahu uchování**vybraná možnost všechny možnosti. Vymažte všechny limity rozsahu uchovávání, které nechcete, a pak nastavte intervaly, které se mají použít.
 
     * Minimální doba uchování pro jakýkoli typ zálohy (úplný, rozdíl a protokol) je sedm dní.
     * Body obnovení jsou označeny pro uchování na základě jejich rozsahu uchovávání. Pokud například vyberete denní úplnou zálohu, spustí se každý den jenom jedno úplné zálohování.
@@ -234,28 +230,28 @@ Vytvoření zásady zálohování:
 
        ![Nastavení intervalu rozsahu uchování](./media/backup-azure-sql-database/retention-range-interval.png)
 
-6. V nabídce **zásady úplného zálohování** vyberte **OK** a přijměte nastavení.
-7. Chcete-li přidat zásady rozdílového zálohování, vyberte **rozdílové zálohování**.
+1. Výběrem **OK** přijměte nastavení pro úplné zálohování.
+1. Chcete-li změnit výchozí nastavení, klikněte na odkaz **Upravit** odpovídající **rozdílové záloze**.
 
-   ![Nastavení intervalu rozsahu uchování ](./media/backup-azure-sql-database/retention-range-interval.png)
-    ![ otevřete nabídku zásad rozdílového zálohování.](./media/backup-azure-sql-database/backup-policy-menu-choices.png)
+    * V části **rozdílová zásada zálohování**vyberte **Povolit** a otevřete tak ovládací prvky četnost a uchování.
+    * Můžete aktivovat jenom jednu rozdílovou zálohu za den. Rozdílové zálohování nejde aktivovat na stejný den jako úplná záloha.
+    * Rozdílové zálohy je možné uchovávat maximálně po dobu 180 dnů.
+    * Rozdílová záloha není pro hlavní databázi podporována.
 
-8. V části **rozdílová zásada zálohování**vyberte **Povolit** a otevřete tak ovládací prvky četnost a uchování.
+      ![Zásady rozdílového zálohování](./media/backup-azure-sql-database/differential-backup-policy.png)
 
-    * Můžete aktivovat jenom jednu rozdílovou zálohu za den.
-    * Rozdílové zálohy je možné uchovávat maximálně po dobu 180 dnů. Pro delší dobu uchování použijte úplné zálohování.
+1. Pokud chcete změnit výchozí nastavení, klikněte na odkaz **Upravit** odpovídající **zálohování protokolu**.
 
-9. Výběrem **OK** zásadu uložíte a vrátíte se do nabídky hlavní **zásady zálohování** .
+    * V části **zálohování protokolu**vyberte **Povolit**a pak nastavte četnost a ovládací prvky uchování.
+    * Zálohy protokolů se můžou provádět až po dobu 15 minut a můžou se uchovávat až 35 dní.
+    * Pokud se databáze nachází v [jednoduchém modelu obnovení](/sql/relational-databases/backup-restore/recovery-models-sql-server?view=sql-server-ver15), bude plán zálohování protokolu pro tuto databázi pozastaven, takže nebudou aktivovány žádné zálohy protokolu.
+    * Pokud se model obnovení databáze mění z **úplného** na **jednoduchý**, zálohy protokolu se pozastaví během 24 hodin od změny modelu obnovení. Podobně platí, že pokud se model obnovení změní z **jednoduchého**, je pro databázi teď možné použít zálohy protokolu, ale plány zálohování protokolů budou povolené během 24 hodin od změny modelu obnovení.
 
-10. Chcete-li přidat zásady zálohování transakčního protokolu, vyberte možnost **zálohování protokolu**.
-11. V části **zálohování protokolu**vyberte **Povolit**a pak nastavte četnost a ovládací prvky uchování. Zálohy protokolů se můžou provádět až po dobu 15 minut a můžou se uchovávat až 35 dní.
-12. Výběrem **OK** zásadu uložíte a vrátíte se do nabídky hlavní **zásady zálohování** .
+      ![Zásady zálohování protokolů](./media/backup-azure-sql-database/log-backup-policy.png)
 
-    ![Upravit zásady zálohování protokolu](./media/backup-azure-sql-database/log-backup-policy-editor.png)
+1. V nabídce **zásady zálohování** vyberte, jestli se má povolit **Komprese SQL Backup** nebo ne. Tato možnost je ve výchozím nastavení zakázána. Pokud je povoleno, SQL Server odešle komprimovaný Stream zálohování do infrastruktury virtuálních počítačů (VDI). Azure Backup přepisuje výchozí hodnoty na úrovni instance pomocí klauzule COMPRESSION/NO_COMPRESSION v závislosti na hodnotě tohoto ovládacího prvku.
 
-13. V nabídce **zásady zálohování** vyberte, jestli se má povolit **Komprese SQL Backup** nebo ne. Tato možnost je ve výchozím nastavení zakázána. Pokud je povoleno, SQL Server odešle komprimovaný Stream zálohování do infrastruktury virtuálních počítačů (VDI).  Upozorňujeme, že Azure Backup přepisuje výchozí hodnoty na úrovni instance pomocí klauzule COMPRESSION/NO_COMPRESSION v závislosti na hodnotě tohoto ovládacího prvku.
-
-14. Po dokončení úprav zásad zálohování vyberte **OK**.
+1. Po dokončení úprav zásad zálohování vyberte **OK**.
 
 > [!NOTE]
 > Každá záloha protokolu je zřetězena k předchozí úplné záloze, aby mohla tvořit řetěz obnovení. Tato úplná záloha se zachová, dokud neuplyne doba uchovávání poslední zálohy protokolu. To může znamenat, že úplná záloha se uchovává po dobu dalších let, aby se zajistilo, že se všechny protokoly mají obnovit. Předpokládejme, že uživatel má týdenní úplnou zálohu, denní rozdílovou a 2 hodinový protokol. Všechny z nich se uchovávají po dobu 30 dnů. Ale každý týden v plném rozsahu může být skutečně vyčištěný nebo odstraněný až po dokončení dalších úplných záloh, tj. po 30 až 7 dnech. Řekněme, že týdenní úplné zálohování probíhá na 16. listopadu. Podle zásad uchovávání informací by se měla uchovávat až do prosince 16. Poslední záloha protokolu pro tuto úplnou zálohu proběhne před dalším naplánovaným úplným 22. listopadu. Dokud nebude tento protokol k dispozici do prosince 22, nelze odstranit jeho plný 16. To znamená, že do prosince 22 se zachovají až do 16. listopadu.

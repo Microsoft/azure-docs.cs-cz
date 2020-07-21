@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/04/2019
-ms.openlocfilehash: 63d8d8d3701a9adca4bd01e6e061877f5d0bd245
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 540e824f301c402e1f65f6186b26ad1672e21d37
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80333359"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539342"
 ---
 # <a name="log-analytics-data-security"></a>Zabezpečení dat Log Analytics
-Účelem tohoto dokumentu je poskytnout informace, které jsou specifické pro Log Analytics, což je funkce Azure Monitor, která doplní informace na [Centrum zabezpečení Azure](../../security/fundamentals/trust-center.md).  
+Účelem tohoto dokumentu je poskytnout informace, které jsou specifické pro Log Analytics, což je funkce Azure Monitor, která doplní informace na [Centrum zabezpečení Azure](https://www.microsoft.com/en-us/trust-center?rtc=1).  
 
 Tento článek vysvětluje, jak Log Analytics shromažďuje, zpracovává a zabezpečuje data. Pomocí agentů se můžete připojit k webové službě, pomocí System Center Operations Manager shromažďovat provozní data nebo načítat data z diagnostiky Azure pro použití Log Analytics. 
 
@@ -42,9 +42,9 @@ Nedoporučujeme explicitně nastavit vašeho agenta tak, aby používal jenom TL
 |Platforma/jazyk | Podpora | Další informace |
 | --- | --- | --- |
 |Linux | Distribuce systému Linux se obvykle spoléhají na [OpenSSL](https://www.openssl.org) pro podporu TLS 1,2.  | Zkontrolujte [OpenSSL protokolu změn](https://www.openssl.org/news/changelog.html) a potvrďte, že je podporovaná vaše verze OpenSSL.|
-| Windows 8,0 – 10 | Podporované a povolené ve výchozím nastavení. | Potvrďte, že stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).  |
-| Windows Server 2012 – 2016 | Podporované a povolené ve výchozím nastavení. | Potvrzení, že stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
-| Windows 7 SP1 a Windows Server 2008 R2 SP1 | Podporované, ale nejsou ve výchozím nastavení povolené. | Podrobnosti o tom, jak povolit, najdete na stránce [nastavení registru TLS (Transport Layer Security)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) .  |
+| Windows 8,0 – 10 | Podporované a povolené ve výchozím nastavení. | Potvrďte, že stále používáte [výchozí nastavení](/windows-server/security/tls/tls-registry-settings).  |
+| Windows Server 2012 – 2016 | Podporované a povolené ve výchozím nastavení. | Potvrzení, že stále používáte [výchozí nastavení](/windows-server/security/tls/tls-registry-settings) |
+| Windows 7 SP1 a Windows Server 2008 R2 SP1 | Podporované, ale nejsou ve výchozím nastavení povolené. | Podrobnosti o tom, jak povolit, najdete na stránce [nastavení registru TLS (Transport Layer Security)](/windows-server/security/tls/tls-registry-settings) .  |
 
 ## <a name="data-segregation"></a>Oddělení dat
 Jakmile služba Log Analytics ingestuje vaše data, budou se data v každé součásti v rámci služby uchovávat logicky odděleně. Všechna data jsou označena pro jednotlivé pracovní prostory. Toto značení přetrvává v průběhu celého životního cyklu dat a je vyžadováno na každé úrovni služby. Vaše data se ukládají do vyhrazené databáze v clusteru úložiště v oblasti, kterou jste vybrali.
@@ -175,4 +175,3 @@ Pokud chcete získat přístup k pracovnímu prostoru Log Analytics, přihlaste 
 * Naučte se shromažďovat data pomocí Log Analytics pro virtuální počítače Azure po [rychlém startu virtuálního počítače Azure](../../azure-monitor/learn/quick-collect-azurevm.md).  
 
 *  Pokud chcete shromažďovat data z fyzických nebo virtuálních počítačů se systémem Windows nebo Linux ve vašem prostředí, přečtěte si [rychlý Start pro počítače](../../azure-monitor/learn/quick-collect-linux-computer.md) se systémem Linux nebo [rychlý Start pro počítače se systémem Windows](../../azure-monitor/learn/quick-collect-windows-computer.md) .
-

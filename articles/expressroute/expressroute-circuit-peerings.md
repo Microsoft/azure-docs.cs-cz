@@ -7,18 +7,18 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: mialdrid
-ms.openlocfilehash: c68ffd019937f902567c3deda8d879448dc082da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2c730906e8dcb31c3365259088240c74e416855
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847041"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537016"
 ---
 # <a name="expressroute-circuits-and-peering"></a>Okruhy ExpressRoute a peering
 
 Okruhy ExpressRoute spojují vaši místní infrastrukturu s Microsoftem prostřednictvím poskytovatele připojení. Tento článek vám pomůže pochopit okruhy ExpressRoute a směrování domén/partnerských vztahů. Následující obrázek znázorňuje logickou reprezentaci propojení mezi sítí WAN a Microsoftem.
 
-![](./media/expressroute-circuit-peerings/expressroute-basic.png)
+![Diagram znázorňující, jakým způsobem ExpressRoute okruhy připojují místní infrastrukturu k Microsoftu prostřednictvím poskytovatele připojení.](./media/expressroute-circuit-peerings/expressroute-basic.png)
 
 > [!IMPORTANT]
 > Veřejný partnerský vztah Azure se už nepoužívá a není k dispozici pro nové okruhy ExpressRoute. Nové okruhy podporují partnerský vztah Microsoftu a soukromý partnerský vztah.  
@@ -42,15 +42,15 @@ Výchozí kvóty a omezení platí pro každý okruh ExpressRoute. Aktuální in
 
 Okruh ExpressRoute má k dispozici více domén směrování/partnerských vztahů: Azure Public, Private Azure a Microsoft. Každý partnerský vztah se nakonfiguruje stejným způsobem na páru směrovačů (v konfiguraci aktivní-aktivní nebo nasdílení zátěže) pro zajištění vysoké dostupnosti. Služby Azure jsou zařazené do kategorií jako *veřejné* a *Azure Private* , které představují schémata přidělování IP adres.
 
-![](./media/expressroute-circuit-peerings/expressroute-peerings.png)
+![Diagram znázorňující, jak se v okruhu ExpressRoute konfigurují veřejné partnerské vztahy Azure a partnerské vztahy Microsoftu.](./media/expressroute-circuit-peerings/expressroute-peerings.png)
 
-### <a name="azure-private-peering"></a><a name="privatepeering"></a>Soukromý partnerský vztah Azure
+### <a name="azure-private-peering"></a><a name="privatepeering"></a>Privátní partnerský vztah s Azure
 
 Výpočetní služby Azure, konkrétně virtuální počítače (IaaS) a cloudové služby (PaaS), které jsou nasazené ve virtuální síti, se dají připojit prostřednictvím privátní domény partnerského vztahu. Doména privátního partnerského vztahu se považuje za důvěryhodné rozšíření vaší základní sítě do Microsoft Azure. Můžete nastavit obousměrné připojení mezi základní sítí a virtuálními sítěmi Azure (virtuální sítě). Tento partnerský vztah umožňuje připojit se k virtuálním počítačům a cloudovým službám přímo na jejich privátních IP adresách.  
 
 K doméně privátního partnerského vztahu můžete připojit více než jednu virtuální síť. Informace o omezeních a omezeních najdete na [stránce Nejčastější dotazy](expressroute-faqs.md) . Pro aktuální informace o omezeních můžete navštívit stránku [limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md) .  Podrobné informace o konfiguraci směrování najdete na stránce [Směrování](expressroute-routing.md) .
 
-### <a name="microsoft-peering"></a><a name="microsoftpeering"></a>Partnerský vztah Microsoftu
+### <a name="microsoft-peering"></a><a name="microsoftpeering"></a>Partnerský vztah s Microsoftem
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 

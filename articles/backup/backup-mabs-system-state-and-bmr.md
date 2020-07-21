@@ -3,12 +3,12 @@ title: Ochrana stavu systému a úplné obnovení systému
 description: Použijte Azure Backup Server k zálohování stavu systému a zajištění ochrany úplného obnovení (BMR).
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: bab55ca607e0641ea0cc597de686f3abbb387598
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5096158ca0e76ca03577347d8dd3e1419a33ca0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82192361"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538696"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-by-using-azure-backup-server"></a>Zálohování stavu systému a obnovení do holého počítače pomocí Azure Backup Server
 
@@ -25,21 +25,21 @@ Následující tabulka shrnuje, co můžete zálohovat a obnovit. Informace o ve
 
 |Backup|Problém|Obnovení ze zálohy služby Azure Backup Server|Obnovení ze zálohy stavu systému|Obnovení BMR|
 |----------|---------|---------------------------|------------------------------------|-------|
-|**Data souborů**<br /><br />Zálohování běžných dat<br /><br />BMR nebo záloha stavu systému|Ztracená data souborů|Ano|N|N|
-|**Data souborů**<br /><br />Azure Backup Server zálohování dat souborů<br /><br />BMR nebo záloha stavu systému|Ztracený nebo poškozený operační systém|N|Ano|Ano|
-|**Data souborů**<br /><br />Azure Backup Server zálohování dat souborů<br /><br />BMR nebo záloha stavu systému|Ztracený Server (datové svazky nedotčeny)|N|N|Ano|
-|**Data souborů**<br /><br />Azure Backup Server zálohování dat souborů<br /><br />BMR nebo záloha stavu systému|Ztracený server (datové svazky ztracené)|Ano|N|Ano<br /><br />BMR, následované pravidelným obnovením zálohovaných dat souborů|
-|**Data služby SharePoint**<br /><br />Azure Backup Server zálohování dat farmy<br /><br />BMR nebo záloha stavu systému|Ztracené weby, seznamy, položky seznamu, dokumenty|Ano|N|N|
-|**Data služby SharePoint**<br /><br />Azure Backup Server zálohování dat farmy<br /><br />BMR nebo záloha stavu systému|Ztracený nebo poškozený operační systém|N|Ano|Ano|
+|**Data souborů**<br /><br />Zálohování běžných dat<br /><br />BMR nebo záloha stavu systému|Ztracená data souborů|A|N|N|
+|**Data souborů**<br /><br />Azure Backup Server zálohování dat souborů<br /><br />BMR nebo záloha stavu systému|Ztracený nebo poškozený operační systém|N|A|Y|
+|**Data souborů**<br /><br />Azure Backup Server zálohování dat souborů<br /><br />BMR nebo záloha stavu systému|Ztracený Server (datové svazky nedotčeny)|N|N|A|
+|**Data souborů**<br /><br />Azure Backup Server zálohování dat souborů<br /><br />BMR nebo záloha stavu systému|Ztracený server (datové svazky ztracené)|A|N|A<br /><br />BMR, následované pravidelným obnovením zálohovaných dat souborů|
+|**Data služby SharePoint**<br /><br />Azure Backup Server zálohování dat farmy<br /><br />BMR nebo záloha stavu systému|Ztracené weby, seznamy, položky seznamu, dokumenty|A|N|N|
+|**Data služby SharePoint**<br /><br />Azure Backup Server zálohování dat farmy<br /><br />BMR nebo záloha stavu systému|Ztracený nebo poškozený operační systém|N|A|Y|
 |**Data služby SharePoint**<br /><br />Azure Backup Server zálohování dat farmy<br /><br />BMR nebo záloha stavu systému|Zotavení po havárii|N|N|N|
-|Windows Server 2012 R2 Hyper-V<br /><br />Azure Backup Server zálohování hostitele nebo hosta technologie Hyper-V<br /><br />BMR nebo záloha stavu systému hostitele|Ztracený virtuální počítač|Ano|N|N|
-|Hyper-V<br /><br />Azure Backup Server zálohování hostitele nebo hosta technologie Hyper-V<br /><br />BMR nebo záloha stavu systému hostitele|Ztracený nebo poškozený operační systém|N|Ano|Ano|
-|Hyper-V<br /><br />Azure Backup Server zálohování hostitele nebo hosta technologie Hyper-V<br /><br />BMR nebo záloha stavu systému hostitele|Ztracený hostitel Hyper-V (virtuální počítače beze změny)|N|N|Ano|
-|Hyper-V<br /><br />Azure Backup Server zálohování hostitele nebo hosta technologie Hyper-V<br /><br />BMR nebo záloha stavu systému hostitele|Ztracený hostitel Hyper-V (virtuální počítače ztracené)|N|N|Ano<br /><br />BMR, následované pravidelným obnovením Azure Backup Server|
-|SQL Server nebo Exchange<br /><br />Zálohování aplikace Azure Backup Server<br /><br />BMR nebo záloha stavu systému|Ztracená data aplikací|Ano|N|N|
-|SQL Server nebo Exchange<br /><br />Zálohování aplikace Azure Backup Server<br /><br />BMR nebo záloha stavu systému|Ztracený nebo poškozený operační systém|N|Ano|Ano|
-|SQL Server nebo Exchange<br /><br />Zálohování aplikace Azure Backup Server<br /><br />BMR nebo záloha stavu systému|Ztracený server (databáze a soubory protokolů transakcí beze změny)|N|N|Ano|
-|SQL Server nebo Exchange<br /><br />Zálohování aplikace Azure Backup Server<br /><br />BMR nebo záloha stavu systému|Ztracený server (databáze a soubory protokolu transakcí ztracené)|N|N|Ano<br /><br />BMR obnovení, následované pravidelným obnovením Azure Backup Server|
+|Windows Server 2012 R2 Hyper-V<br /><br />Azure Backup Server zálohování hostitele nebo hosta technologie Hyper-V<br /><br />BMR nebo záloha stavu systému hostitele|Ztracený virtuální počítač|A|N|N|
+|Hyper-V<br /><br />Azure Backup Server zálohování hostitele nebo hosta technologie Hyper-V<br /><br />BMR nebo záloha stavu systému hostitele|Ztracený nebo poškozený operační systém|N|A|Y|
+|Hyper-V<br /><br />Azure Backup Server zálohování hostitele nebo hosta technologie Hyper-V<br /><br />BMR nebo záloha stavu systému hostitele|Ztracený hostitel Hyper-V (virtuální počítače beze změny)|N|N|A|
+|Hyper-V<br /><br />Azure Backup Server zálohování hostitele nebo hosta technologie Hyper-V<br /><br />BMR nebo záloha stavu systému hostitele|Ztracený hostitel Hyper-V (virtuální počítače ztracené)|N|N|A<br /><br />BMR, následované pravidelným obnovením Azure Backup Server|
+|SQL Server nebo Exchange<br /><br />Zálohování aplikace Azure Backup Server<br /><br />BMR nebo záloha stavu systému|Ztracená data aplikací|A|N|N|
+|SQL Server nebo Exchange<br /><br />Zálohování aplikace Azure Backup Server<br /><br />BMR nebo záloha stavu systému|Ztracený nebo poškozený operační systém|N|A|Y|
+|SQL Server nebo Exchange<br /><br />Zálohování aplikace Azure Backup Server<br /><br />BMR nebo záloha stavu systému|Ztracený server (databáze a soubory protokolů transakcí beze změny)|N|N|A|
+|SQL Server nebo Exchange<br /><br />Zálohování aplikace Azure Backup Server<br /><br />BMR nebo záloha stavu systému|Ztracený server (databáze a soubory protokolu transakcí ztracené)|N|N|A<br /><br />BMR obnovení, následované pravidelným obnovením Azure Backup Server|
 
 ## <a name="how-system-state-backup-works"></a>Způsob fungování zálohy stavu systému
 
@@ -97,13 +97,13 @@ Po dokončení zálohování se soubor přenese na počítač se záložním ser
 
 ## <a name="before-you-begin"></a>Než začnete
 
-1. **Nasazení Azure Backup Server**. Ověřte, jestli je záložní server správně nasazený. Další informace naleznete v tématech:
-    * [Požadavky na systém pro Azure Backup Server](https://docs.microsoft.com/system-center/dpm/install-dpm#setup-prerequisites)
+1. **Nasazení Azure Backup Server**. Ověřte, jestli je záložní server správně nasazený. Další informace najdete tady:
+    * [Požadavky na systém pro Azure Backup Server](/system-center/dpm/install-dpm#setup-prerequisites)
     * [Matice ochrany záložního serveru](backup-mabs-protection-matrix.md)
 
-1. **Nastavte úložiště**. Zálohovaná data můžete ukládat na disk, na pásku a do cloudu s Azure. Další informace najdete v tématu [Příprava úložiště dat](https://docs.microsoft.com/system-center/dpm/plan-long-and-short-term-data-storage).
+1. **Nastavte úložiště**. Zálohovaná data můžete ukládat na disk, na pásku a do cloudu s Azure. Další informace najdete v tématu [Příprava úložiště dat](/system-center/dpm/plan-long-and-short-term-data-storage).
 
-1. **Nastavte agenta ochrany**. Nainstalujte agenta ochrany na počítač, který chcete zálohovat. Další informace najdete v tématu [nasazení agenta ochrany aplikace DPM](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent).
+1. **Nastavte agenta ochrany**. Nainstalujte agenta ochrany na počítač, který chcete zálohovat. Další informace najdete v tématu [nasazení agenta ochrany aplikace DPM](/system-center/dpm/deploy-dpm-protection-agent).
 
 ## <a name="back-up-system-state-and-bare-metal"></a>Zálohování stavu systému a úplné obnovení systému
 
@@ -115,7 +115,7 @@ Zálohování stavu systému a holé součásti:
 
 1. Na stránce **Vybrat členy skupiny** rozbalte počítač a pak vyberte buď **BMR** nebo **stav systému**.
 
-    Pamatujte, že nemůžete chránit BMR i stav systému pro stejný počítač v různých skupinách. I když vyberete možnost BMR, bude stav systému automaticky povolen. Další informace najdete v tématu [nasazení skupin ochrany](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups).
+    Pamatujte, že nemůžete chránit BMR i stav systému pro stejný počítač v různých skupinách. I když vyberete možnost BMR, bude stav systému automaticky povolen. Další informace najdete v tématu [nasazení skupin ochrany](/system-center/dpm/create-dpm-protection-groups).
 
 1. Na stránce **Vybrat způsob ochrany dat** vyberte, jak se má zpracovat krátkodobá záloha a dlouhodobá záloha.
 

@@ -3,12 +3,12 @@ title: Co je Language Understanding (LUIS)?
 description: Language Understanding (LUIS) je cloudová služba API, která prostřednictvím vlastních inteligentních funkcí strojového učení, které používá na konverzační text uživatele v přirozeném jazyce, předvídá celkový význam a vytahuje z něj relevantní podrobné informace.
 ms.topic: overview
 ms.date: 05/05/2020
-ms.openlocfilehash: 26e1dfd5a610be9470d05080ca1559eec47196ab
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 231a6580a6776b82173865744e9e8757c2fa08f1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83675995"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538033"
 ---
 # <a name="what-is-language-understanding-luis"></a>Co je Language Understanding (LUIS)?
 
@@ -61,7 +61,7 @@ Model LUIS začíná kategoriemi záměrů uživatele, které se označují jako
 
 ## <a name="query-prediction-endpoint"></a>Koncový bod předpovědi dotazů
 
-Po vyškolení a publikování vaší aplikace do koncového bodu pošle klientská aplikace projevy rozhraní API [koncového bodu](https://go.microsoft.com/fwlink/?linkid=2092356) předpovědi. Rozhraní API aplikuje aplikaci na utterance pro analýzu a odpoví s výsledkem předpovědi ve formátu JSON.
+Po vyškolení a publikování vaší aplikace do koncového bodu pošle klientská aplikace projevy rozhraní API [koncového bodu](https://go.microsoft.com/fwlink/?linkid=2092356) předpovědi. Rozhraní API aplikuje model na utterance pro analýzu a odpoví s výsledkem předpovědi ve formátu JSON.
 
 Odpověď koncového bodu JSON obsahuje minimálně promluvu dotazu a záměr s nejvyšším skóre. Může také extrahovat data, jako je například následující entita **typu kontakt** a celková mínění.
 

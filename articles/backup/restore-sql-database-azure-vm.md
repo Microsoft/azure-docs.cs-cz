@@ -3,11 +3,12 @@ title: Obnovení databází SQL Server na virtuálním počítači Azure
 description: Tento článek popisuje, jak obnovit SQL Server databáze, které běží na virtuálním počítači Azure a které se zálohují s Azure Backup.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 642476c98ca223da01bda5c6eb79ee9b53732468
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d7fc52aaaca0bf99955919c954cc22ab0d9d3d8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687425"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538415"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Obnovení databází SQL Server na virtuálních počítačích Azure
 
@@ -22,19 +23,19 @@ Azure Backup může obnovit databáze SQL Server, které běží na virtuálníc
 - Obnovení na konkrétní datum nebo čas (do druhé) pomocí záloh protokolu transakcí. Azure Backup automaticky určí odpovídající úplné rozdílové zálohování a řetěz záloh protokolů, které jsou nutné k obnovení na základě vybraného času.
 - Obnovení konkrétního úplného nebo rozdílového zálohování pro obnovení do konkrétního bodu obnovení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před obnovením databáze mějte na paměti následující:
 
 - Databázi můžete obnovit do instance SQL Server ve stejné oblasti Azure.
 - Cílový server musí být zaregistrován ve stejném trezoru jako zdroj.
-- Chcete-li obnovit TDE šifrovanou databázi do jiné SQL Server, je nutné nejprve [obnovit certifikát na cílový server](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server?view=sql-server-2017).
+- Chcete-li obnovit TDE šifrovanou databázi do jiné SQL Server, je nutné nejprve [obnovit certifikát na cílový server](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server).
 - Než obnovíte hlavní databázi, spusťte instanci SQL Server v jednouživatelském režimu pomocí možnosti Startup **-m AzureWorkloadBackup**.
   - Hodnota pro **-m** je název klienta.
   - Připojení může otevřít pouze zadaný název klienta.
 - Pro všechny systémové databáze (model, hlavní počítač, msdb) zastavte službu agenta SQL Server před aktivací obnovení.
 - Ukončete všechny aplikace, které se mohou pokusit připojit k některé z těchto databází.
-- Pokud máte na serveru spuštěných víc instancí, měly by být všechny instance spuštěné a spuštěné, jinak se server neobjeví v seznamu cílových serverů, na který se má obnovit databáze.
+- Pokud máte na serveru spuštěných víc instancí, musí být všechny instance spuštěné a v opačném případě se server nebude zobrazovat v seznamu cílových serverů, na které se má databáze obnovit.
 
 ## <a name="restore-a-database"></a>Obnovení databáze
 
@@ -71,23 +72,32 @@ Obnovte následujícím způsobem:
    - **Alternativní umístění**: Obnovte databázi do alternativního umístění a zachovejte původní zdrojovou databázi.
    - **Přepsat databázi**: Obnovte data do stejné instance SQL Server jako původní zdroj. Tato možnost přepíše původní databázi.
 
-    > [!IMPORTANT]
-    > Pokud vybraná databáze patří do skupiny dostupnosti Always On, SQL Server neumožní přepsání databáze. K dispozici je pouze **alternativní umístění** .
-    >
+        > [!IMPORTANT]
+        > Pokud vybraná databáze patří do skupiny dostupnosti Always On, SQL Server neumožní přepsání databáze. K dispozici je pouze **alternativní umístění** .
+        >
    - **Obnovit jako soubory**: místo obnovení jako databáze obnovte záložní soubory, které je možné obnovit jako databázi později v jakémkoli počítači, kde jsou soubory k dispozici, pomocí SQL Server Management Studio.
      ![Nabídka obnovit konfiguraci](./media/backup-azure-sql-database/restore-configuration.png)
 
 ### <a name="restore-to-an-alternate-location"></a>Obnovit do alternativního umístění
 
 1. V nabídce **obnovit konfiguraci** v části **kde se má obnovit**vyberte **alternativní umístění**.
-2. Vyberte SQL Server název a instanci, do které chcete obnovit databázi.
-3. Do pole **Název obnovené** databáze zadejte název cílové databáze.
-4. Pokud je to možné, vyberte **přepsat, pokud databáze se stejným názvem už ve vybrané instanci SQL existuje**.
-5. Vyberte **OK**.
+1. Vyberte SQL Server název a instanci, do které chcete obnovit databázi.
+1. Do pole **Název obnovené** databáze zadejte název cílové databáze.
+1. Pokud je to možné, vyberte **přepsat, pokud databáze se stejným názvem už ve vybrané instanci SQL existuje**.
+1. Vyberte **bod obnovení**a vyberte, jestli se má [obnovit do určitého bodu v čase](#restore-to-a-specific-point-in-time) , nebo jestli se má [obnovit na určitý bod obnovení](#restore-to-a-specific-restore-point).
 
-    ![Zadejte hodnoty pro nabídku obnovit konfiguraci.](./media/backup-azure-sql-database/restore-configuration.png)
+    ![Vybrat bod obnovení](./media/backup-azure-sql-database/select-restore-point.png)
 
-6. V **části vybrat bod obnovení**vyberte, jestli se má [obnovit k určitému bodu v čase](#restore-to-a-specific-point-in-time) , nebo jestli se má [obnovit na určitý bod obnovení](#restore-to-a-specific-restore-point).
+    ![Obnovení k bodu v čase](./media/backup-azure-sql-database/restore-to-point-in-time.png)
+
+1. V nabídce **Upřesnit konfiguraci** :
+
+    - Pokud chcete zachovat neprovoz databáze po obnovení, povolte **obnovení pomocí NORECOVERY**.
+    - Pokud chcete změnit umístění pro obnovení na cílovém serveru, zadejte nové cílové cesty.
+
+        ![Zadejte cílové cesty.](./media/backup-azure-sql-database/target-paths.png)
+
+1. Kliknutím na tlačítko **OK** spusťte obnovení. Sledujte průběh obnovy v **oznamovací** oblasti nebo ji Sledujte pod zobrazením **úlohy zálohování** v trezoru.
 
     > [!NOTE]
     > Obnovení k bodu v čase je k dispozici pouze pro zálohy protokolu pro databáze, které jsou v režimu úplného a hromadně protokolovaného obnovení.
@@ -105,11 +115,11 @@ Obnovte následujícím způsobem:
 
 ### <a name="restore-as-files"></a>Obnovit jako soubory
 
-Chcete-li obnovit data zálohy jako soubory. bak místo databáze, vyberte možnost **Obnovit jako soubory**. Jakmile jsou soubory v zadané cestě, můžete tyto soubory přenést do libovolného počítače, kde je chcete obnovit jako databázi. Díky možnosti přesouvat tyto soubory do libovolného počítače teď můžete data obnovit v rámci předplatných a oblastí.
+Chcete-li obnovit data zálohy jako soubory. bak místo databáze, vyberte možnost **Obnovit jako soubory**. Jakmile jsou soubory v zadané cestě, můžete tyto soubory přenést do libovolného počítače, kde je chcete obnovit jako databázi. Vzhledem k tomu, že můžete tyto soubory přesunout na libovolný počítač, teď můžete data obnovit v rámci předplatných a oblastí.
 
-1. V nabídce **obnovit konfiguraci** v části **kde se má obnovení**vybrat **Obnovit jako soubory**.
-2. Vyberte název SQL Server, pro který chcete obnovit záložní soubory.
-3. V **cílové cestě na serveru** zadejte cestu ke složce na serveru vybrané v kroku 2. Toto je umístění, ve kterém bude služba vypsat všechny nezbytné soubory zálohy. Cesta ke sdílené složce v síti, nebo cesta připojené sdílené složky Azure, pokud je zadaná jako cílová cesta, umožňuje snazší přístup k těmto souborům jiným počítačům ve stejné síti nebo se stejnou sdílenou složkou Azure, která je v nich namontovaná.<BR>
+1. V části **kde a jak obnovit**vyberte možnost **Obnovit jako soubory**.
+1. Vyberte název SQL Server, pro který chcete obnovit záložní soubory.
+1. V **cílové cestě na serveru** zadejte cestu ke složce na serveru vybrané v kroku 2. Toto je umístění, ve kterém bude služba vypsat všechny nezbytné soubory zálohy. Cesta ke sdílené složce v síti, nebo cesta připojené sdílené složky Azure, pokud je zadaná jako cílová cesta, umožňuje snazší přístup k těmto souborům jiným počítačům ve stejné síti nebo se stejnou sdílenou složkou Azure, která je v nich namontovaná.<BR>
 
     >Pokud chcete obnovit záložní soubory databáze ve sdílené složce Azure připojené k cílovému registrovanému virtuálnímu počítači, ujistěte se, že NT AUTHORITY\SYSTEM má přístup ke sdílené složce. Pomocí níže uvedených kroků můžete udělit oprávnění ke čtení a zápisu pro službu AFS připojenou k virtuálnímu počítači:
     >
@@ -119,15 +129,13 @@ Chcete-li obnovit data zálohy jako soubory. bak místo databáze, vyberte možn
     >- Aktivovat obnovení jako soubory z trezoru záloh do `\\<storageacct>.file.core.windows.net\<filesharename>` cesty<BR>
     PsExec můžete stáhnout přes<https://docs.microsoft.com/sysinternals/downloads/psexec>
 
-4. Vyberte **OK**.
+1. Vyberte **OK**.
 
     ![Vybrat obnovit jako soubory](./media/backup-azure-sql-database/restore-as-files.png)
 
-5. Vyberte **bod obnovení** odpovídající, pro který budou obnoveny všechny dostupné soubory. bak.
+1. Vyberte **bod obnovení**a vyberte, jestli se má [obnovit do určitého bodu v čase](#restore-to-a-specific-point-in-time) , nebo jestli se má [obnovit na určitý bod obnovení](#restore-to-a-specific-restore-point).
 
-    ![Vybrat bod obnovení](./media/backup-azure-sql-database/restore-point.png)
-
-6. Všechny záložní soubory přidružené k vybranému bodu obnovení jsou dumpingové do cílové cesty. Soubory můžete obnovit jako databázi na jakémkoli počítači, na kterém se nachází, pomocí SQL Server Management Studio.
+1. Všechny záložní soubory přidružené k vybranému bodu obnovení jsou dumpingové do cílové cesty. Soubory můžete obnovit jako databázi na jakémkoli počítači, na kterém se nachází, pomocí SQL Server Management Studio.
 
     ![Obnovené záložní soubory v cílové cestě](./media/backup-azure-sql-database/sql-backup-files.png)
 
@@ -143,44 +151,20 @@ Pokud jste jako typ obnovení vybrali možnost **protokoly (časový okamžik)**
 1. Po výběru data se v grafu časové osy zobrazí dostupné body obnovení v souvislém rozsahu.
 1. Zadejte čas pro obnovení na grafu časové osy nebo vyberte čas. Pak vyberte **OK**.
 
-    ![Vyberte čas obnovení.](./media/backup-azure-sql-database/recovery-point-logs-graph.png)
-
-1. Pokud chcete po obnovení zachovat databázi neprovozované v nabídce **Upřesnit konfiguraci** , povolte **obnovení pomocí NORECOVERY**.
-1. Pokud chcete změnit umístění pro obnovení na cílovém serveru, zadejte novou cílovou cestu.
-1. Vyberte **OK**.
-
-    ![Nabídka Upřesnit konfiguraci](./media/backup-azure-sql-database/restore-point-advanced-configuration.png)
-
-1. V nabídce **obnovit** vyberte **obnovit** a spusťte úlohu obnovení.
-1. Sledujte průběh obnovy v oblasti **oznámení** nebo ho Sledujte výběrem možnosti **obnovit úlohy** v nabídce databáze.
-
-    ![Průběh úlohy obnovení](./media/backup-azure-sql-database/restore-job-notification.png)
-
 ### <a name="restore-to-a-specific-restore-point"></a>Obnovit na určitý bod obnovení
 
 Pokud jste jako typ obnovení vybrali možnost **úplný & rozdíl** , udělejte toto:
 
 1. Vyberte bod obnovení ze seznamu a kliknutím na **tlačítko OK** dokončete postup bodu obnovení.
 
-    ![Zvolit úplný bod obnovení](./media/backup-azure-sql-database/choose-fd-recovery-point.png)
+    ![Zvolit úplný bod obnovení](./media/backup-azure-sql-database/choose-full-recovery-point.png)
 
     >[!NOTE]
     > Ve výchozím nastavení se zobrazí body obnovení za posledních 30 dní. Kliknutím na tlačítko **filtrovat** a vybrat vlastní rozsah můžete zobrazit body obnovení starší než 30 dní.
 
-1. Pokud chcete po obnovení zachovat databázi neprovozované v nabídce **Upřesnit konfiguraci** , povolte **obnovení pomocí NORECOVERY**.
-1. Pokud chcete změnit umístění pro obnovení na cílovém serveru, zadejte novou cílovou cestu.
-1. Vyberte **OK**.
-
-    ![Nabídka Upřesnit konfiguraci](./media/backup-azure-sql-database/restore-point-advanced-configuration.png)
-
-1. V nabídce **obnovit** vyberte **obnovit** a spusťte úlohu obnovení.
-1. Sledujte průběh obnovy v oblasti **oznámení** nebo ho Sledujte výběrem možnosti **obnovit úlohy** v nabídce databáze.
-
-    ![Průběh úlohy obnovení](./media/backup-azure-sql-database/restore-job-notification.png)
-
 ### <a name="restore-databases-with-large-number-of-files"></a>Obnovení databází s velkým počtem souborů
 
-Pokud je celková velikost řetězce souborů v databázi větší než [určitý limit](backup-sql-server-azure-troubleshoot.md#size-limit-for-files), Azure Backup ukládá seznam databázových souborů v různých součástech, takže během operace obnovení nebude možné nastavit cílovou cestu pro obnovení. Místo toho se soubory obnoví na výchozí cestu SQL.
+Pokud je celková velikost řetězce souborů v databázi větší než [určitý limit](backup-sql-server-azure-troubleshoot.md#size-limit-for-files), Azure Backup ukládá seznam databázových souborů v jiné součásti Pit, takže během operace obnovení nelze nastavit cílovou cestu pro obnovení. Místo toho se soubory obnoví na výchozí cestu SQL.
 
   ![Obnovení databáze s velkým souborem](./media/backup-azure-sql-database/restore-large-files.jpg)
 

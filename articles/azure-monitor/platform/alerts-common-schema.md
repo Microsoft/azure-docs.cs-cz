@@ -4,12 +4,12 @@ description: Princip běžných schémat výstrah, proč byste ji měli použív
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: 1445e8cf38b2694146fc8749ba5e77f2297de969
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: faf9975e2795623305583d061d1af7f5eb0cfbe0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710928"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539478"
 ---
 # <a name="common-alert-schema"></a>Běžné schéma upozornění
 
@@ -52,8 +52,8 @@ Pomocí skupin akcí na portálu i REST API můžete použít společné schéma
 > 1. Následující typy výstrah podporují standardně společné schéma (není nutné žádné výslovné povinné):
 >     * Výstrahy inteligentní detekce
 > 1. Následující typy výstrah aktuálně nepodporují společné schéma:
->     * Výstrahy generované [Azure monitor pro virtuální počítače](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview)
->     * Výstrahy generované [Azure cost management](https://docs.microsoft.com/azure/billing/billing-cost-management-budget-scenario)
+>     * Výstrahy generované [Azure monitor pro virtuální počítače](../insights/vminsights-overview.md)
+>     * Výstrahy generované [Azure cost management](../../cost-management-billing/manage/cost-management-budget-scenario.md)
 
 ### <a name="through-the-azure-portal"></a>Prostřednictvím Azure Portal
 
@@ -64,9 +64,9 @@ Pomocí skupin akcí na portálu i REST API můžete použít společné schéma
 
 ### <a name="through-the-action-groups-rest-api"></a>Prostřednictvím skupin akcí REST API
 
-Pomocí [rozhraní API skupin akcí](https://docs.microsoft.com/rest/api/monitor/actiongroups) můžete také vyjádřit výslovný souhlas s běžným schématem výstrah. Během volání funkce [vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate) REST API můžete nastavit příznak "useCommonAlertSchema" na "true" (pro výslovný souhlas) nebo "NEPRAVDA" (pro odhlášení) pro některou z následujících akcí: e-mail/Webhook/Logic App/Azure Function/Automation Runbook.
+Pomocí [rozhraní API skupin akcí](/rest/api/monitor/actiongroups) můžete také vyjádřit výslovný souhlas s běžným schématem výstrah. Během volání funkce [vytvořit nebo aktualizovat](/rest/api/monitor/actiongroups/createorupdate) REST API můžete nastavit příznak "useCommonAlertSchema" na "true" (pro výslovný souhlas) nebo "NEPRAVDA" (pro odhlášení) pro některou z následujících akcí: e-mail/Webhook/Logic App/Azure Function/Automation Runbook.
 
-Například následující text žádosti, který se v REST API pro [Vytvoření nebo aktualizaci](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate) provede, provede následující:
+Například následující text žádosti, který se v REST API pro [Vytvoření nebo aktualizaci](/rest/api/monitor/actiongroups/createorupdate) provede, provede následující:
 
 * Povolit společné schéma výstrah pro e-mailovou akci Jan Karásek
 * Zakázat běžné schéma výstrah pro e-mailovou akci Jana Novák
@@ -121,7 +121,4 @@ Například následující text žádosti, který se v REST API pro [Vytvoření
 ## <a name="next-steps"></a>Další kroky
 
 - [Běžné definice schémat výstrah pro Webhooky/Logic Apps/Azure Functions/Automation Runbooky.](https://aka.ms/commonAlertSchemaDefinitions)
-- [Naučte se, jak vytvořit aplikaci logiky, která využívá společné schéma výstrah k obsluze všech výstrah.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations) 
-
-
-
+- [Naučte se, jak vytvořit aplikaci logiky, která využívá společné schéma výstrah k obsluze všech výstrah.](./alerts-common-schema-integrations.md) 

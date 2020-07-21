@@ -3,16 +3,16 @@ title: Mapování transformace Unpivot toku dat
 description: Azure Data Factory transformace Unpivot toku dat
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/30/2019
-ms.openlocfilehash: c3e769334beb6a5739eebb8d7e8dc370533c2dc6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/14/2020
+ms.openlocfilehash: b7a05f33c199ab46508fa2b9bc0ef576f888ef27
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606247"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537710"
 ---
 # <a name="azure-data-factory-unpivot-transformation"></a>Transformace Unpivot Azure Data Factory
 
@@ -21,6 +21,8 @@ ms.locfileid: "81606247"
 Použijte Unpivot v toku dat mapování ADF jako způsob, jak změnit nenormalizovanou datovou sadu na podrobnější verzi tím, že rozbalíte hodnoty z více sloupců v jednom záznamu do několika záznamů se stejnými hodnotami v jednom sloupci.
 
 ![Transformace Unpivot](media/data-flow/unpivot1.png "Unpivot možnosti 1")
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4B1RR]
 
 ## <a name="ungroup-by"></a>Oddělit podle
 

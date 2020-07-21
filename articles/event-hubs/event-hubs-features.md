@@ -3,18 +3,18 @@ title: Přehled funkcí – Azure Event Hubs | Microsoft Docs
 description: Tento článek obsahuje podrobné informace o funkcích a terminologii Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 5b646c1a0730b046dd3e66a5d5324b659999f83a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 034983074ddc6faf324d70a18a9a49b8df659649
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320702"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537305"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Funkce a terminologie ve službě Azure Event Hubs
 
-Azure Event Hubs je škálovatelná služba pro zpracování událostí, která ingestuje a zpracovává velké objemy událostí a dat s nízkou latencí a vysokou spolehlivostí. Podrobný přehled najdete v tématu [co je Event Hubs?](event-hubs-what-is-event-hubs.md) .
+Azure Event Hubs je škálovatelná služba pro zpracování událostí, která ingestuje a zpracovává velké objemy událostí a dat s nízkou latencí a vysokou spolehlivostí. Podrobný přehled najdete v tématu [co je Event Hubs?](./event-hubs-about.md) .
 
-Tento článek sestaví informace v [článku Přehled](event-hubs-what-is-event-hubs.md)a poskytuje podrobnosti o technické a implementaci Event Hubs komponentách a funkcích.
+Tento článek sestaví informace v [článku Přehled](./event-hubs-about.md)a poskytuje podrobnosti o technické a implementaci Event Hubs komponentách a funkcích.
 
 ## <a name="namespace"></a>Obor názvů
 Obor názvů Event Hubs poskytuje jedinečný obor kontejneru, na který odkazuje jeho [plně kvalifikovaný název domény](https://en.wikipedia.org/wiki/Fully_qualified_domain_name), ve kterém můžete vytvořit jedno nebo několik témat centra událostí nebo Kafka témata. 
@@ -33,7 +33,7 @@ Každá entita, která odesílá data do centra událostí, je výrobcem událos
 
 ### <a name="publishing-an-event"></a>Publikování události
 
-Událost můžete publikovat přes AMQP 1,0, Kafka 1,0 (a novější) nebo HTTPS. Event Hubs poskytuje [klientské knihovny a třídy](event-hubs-dotnet-framework-api-overview.md) pro publikování událostí do centra událostí od klientů rozhraní .NET. Pro jiné moduly runtime a platformy můžete použít libovolného klienta protokolu AMQP 1.0, například [Apache Qpid](https://qpid.apache.org/). Události můžete publikovat samostatně nebo v dávce. Jedna publikace (instance dat události) má omezení 1 MB bez ohledu na to, zda se jedná o jednu událost nebo dávku. Publikování událostí větších než tato prahová hodnota způsobí chybu. Osvědčeným postupem je, aby vydavatelé nevěděli o oddílech v centru událostí a zadali jenom *klíč oddílu* (zavedený v další části), nebo jejich identitu prostřednictvím tokenu SAS.
+Událost můžete publikovat přes AMQP 1,0, Kafka 1,0 (a novější) nebo HTTPS. Event Hubs poskytuje [klientské knihovny a třídy](./event-hubs-dotnet-framework-getstarted-send.md) pro publikování událostí do centra událostí od klientů rozhraní .NET. Pro jiné moduly runtime a platformy můžete použít libovolného klienta protokolu AMQP 1.0, například [Apache Qpid](https://qpid.apache.org/). Události můžete publikovat samostatně nebo v dávce. Jedna publikace (instance dat události) má omezení 1 MB bez ohledu na to, zda se jedná o jednu událost nebo dávku. Publikování událostí větších než tato prahová hodnota způsobí chybu. Osvědčeným postupem je, aby vydavatelé nevěděli o oddílech v centru událostí a zadali jenom *klíč oddílu* (zavedený v další části), nebo jejich identitu prostřednictvím tokenu SAS.
 
 Volba, jestli se použije protokol AMQP nebo HTTPS, závisí na konkrétním scénáři použití. Protokol AMQP vyžaduje nejen protokol TLS (Transport Level Security) nebo SSL/TLS, ale i vytvoření trvalého obousměrného soketu. AMQP má při inicializaci relace vyšší náklady na síť, ale protokol HTTPS vyžaduje pro každý požadavek další režii TLS. AMQP má pro často používané zdroje vyšší výkon.
 
@@ -51,7 +51,7 @@ Služba Event Hubs umožňuje podrobnou kontrolu nad zdroji událostí prostřed
 
 Názvy zdrojů není potřeba vytvářet dopředu, při publikování události ale musí odpovídat tokenu SAS, aby se zajistilo, že každý zdroj bude mít nezávislou identitu. Při použití zásad zdroje se každému názvu zdroje nastaví hodnota **PartitionKey** (Klíč oddílu). Aby vše správně fungovalo, musí tyto hodnoty odpovídat.
 
-## <a name="capture"></a>Zachycování
+## <a name="capture"></a>Zachytávání
 
 Služba [Event Hubs Capture](event-hubs-capture-overview.md) vám umožní automaticky zachytit streamovaná data v Event Hubs a uložit je na základě vašeho výběru buď účtu úložiště BLOB, nebo účtu služby Azure Data Lake. Můžete povolit zachytávání z Azure Portal a zadat minimální velikost a časový interval pro provedení zachycení. Pomocí služby Event Hubs Capture zadáte vlastní účet Azure Blob Storage a kontejner nebo účet služby Azure Data Lake, z nichž jedna se používá k uložení zachycených dat. Zachycená data se zapisují ve formátu Apache Avro.
 
@@ -67,7 +67,7 @@ Event Hubs používá *sdílené přístupové podpisy*, které jsou k dispozici
 
 Každá entita, která čte data událostí z centra událostí, je *příjemce událostí*. Všichni příjemci se ve službě Event Hubs připojují pomocí relace protokolu AMQP 1.0 a události se doručují tak, jak jsou postupně dostupné. Klient se na dostupnost dat nemusí dotazovat.
 
-### <a name="consumer-groups"></a>Skupiny příjemců
+### <a name="consumer-groups"></a>Skupiny uživatelů
 
 Mechanismus publikování/odebírání ve službě Event Hubs umožňují *skupiny příjemců*. Skupina příjemců je zobrazení (stavu, pozice nebo posunu) celého centra událostí. Skupiny příjemců poskytují různým přijímajícím aplikacím oddělená zobrazení datového proudu událostí a umožňují jim nezávisle číst datový proud vlastním tempem a s použitím vlastních posunů.
 
@@ -101,7 +101,7 @@ Následující obrázek znázorňuje architekturu zpracování datového proudu 
 Pokud se čtenář z oddílu odpojí, začne při opětovném připojení číst od kontrolního bodu, který dříve zaslal poslední čtenář daného oddílu z této skupiny příjemců. Když se čtenář připojí, předá posun do centra událostí, aby určil umístění, ve kterém se má začít číst. Takto můžete vytváření kontrolních bodů použít jak k označování událostí jako „dokončených“, tak k zajištění ochrany pro případ, že nastane selhání u čtenářů spuštěných na různých strojích. Ke starším datům se je možné vrátit tak, že určíte nižší posun od tohoto kontrolního bodu. Díky tomuto mechanismu umožňuje vytváření kontrolních bodů nejen obnovu při selhání, ale i opakované přehrání datového proudu.
 
 > [!NOTE]
-> Pokud používáte Azure Blob Storage jako úložiště kontrolního bodu v prostředí, které podporuje jinou verzi sady SDK pro úložiště objektů blob, než jaké jsou běžně dostupné v Azure, budete muset použít kód ke změně verze rozhraní API služby úložiště na konkrétní verzi podporovanou tímto prostředím. Pokud například používáte [Event Hubs v centru Azure Stack verze 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview), nejvyšší dostupná verze služby úložiště je verze 2017-11-09. V takovém případě je nutné použít kód pro cílení na verzi rozhraní API služby úložiště na 2017-11-09. Příklad cílení na konkrétní verzi rozhraní API úložiště najdete v těchto ukázkách na GitHubu: 
+> Pokud používáte Azure Blob Storage jako úložiště kontrolního bodu v prostředí, které podporuje jinou verzi sady SDK pro úložiště objektů blob, než jaké jsou běžně dostupné v Azure, budete muset použít kód ke změně verze rozhraní API služby úložiště na konkrétní verzi podporovanou tímto prostředím. Pokud například používáte [Event Hubs v centru Azure Stack verze 2002](/azure-stack/user/event-hubs-overview), nejvyšší dostupná verze služby úložiště je verze 2017-11-09. V takovém případě je nutné použít kód pro cílení na verzi rozhraní API služby úložiště na 2017-11-09. Příklad cílení na konkrétní verzi rozhraní API úložiště najdete v těchto ukázkách na GitHubu: 
 > - [Rozhraní .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). 
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/)
 > - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript) nebo [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)

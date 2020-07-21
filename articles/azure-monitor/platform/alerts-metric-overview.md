@@ -1,15 +1,15 @@
 ---
 title: Pochopte, jak budou výstrahy metriky fungovat v Azure Monitor.
 description: Získejte přehled o tom, co můžete dělat s výstrahami metrik a jak fungují v Azure Monitor.
-ms.date: 07/09/2020
+ms.date: 07/16/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: cd8c28b2c26e8859eda1634d2441982336cdd460
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 05e25a67279786ef4679552503e577b1b1a382ea
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187519"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539427"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Principy fungování upozornění na metriky ve službě Azure Monitor
 
@@ -120,18 +120,27 @@ Toto pravidlo monitoruje, zda průměrné využití procesoru za posledních 5 m
 
 Zvýšení doby zpětného vyhledávání a počtu porušení může také umožňovat filtrování výstrah jenom na základě definice významné odchylky. [Přečtěte si další informace o rozšířených možnostech pro dynamické prahové hodnoty](alerts-dynamic-thresholds.md#what-do-the-advanced-settings-in-dynamic-thresholds-mean).
 
+> [!NOTE]
+>
+> Doporučujeme vybrat *členitost agregace (period)* , která je větší než *frekvence vyhodnocení*, aby se snížila pravděpodobnost chybějícího prvního vyhodnocení přidané časové řady v následujících případech:
+> - Pravidlo upozornění metriky, které monitoruje více dimenzí – když se přidá nová kombinace hodnot dimenze
+> - Pravidlo upozornění metriky, které monitoruje více prostředků – při přidání nového prostředku do oboru
+> - Pravidlo upozornění na metriku, které monitoruje metriku, která se nevysílá průběžně (zhuštěná metrika) – když se metrika vygeneruje po dobu delší než 24 hodin, kdy se neemitoval
+
+
+
 ## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Monitorování ve velkém měřítku pomocí výstrah metrik v Azure Monitor
 
 Zatím jste viděli, jak se dá jedna výstraha metriky použít k monitorování jedné nebo mnoha metrik časových řad, které souvisí s jedním prostředkem Azure. V mnoha případech možná budete chtít, aby se stejné pravidlo pro upozornění uplatnilo na mnoho prostředků. Azure Monitor také podporuje monitorování více prostředků (stejného typu) s jedním pravidlem upozornění na metriky pro prostředky, které existují ve stejné oblasti Azure. 
 
 Tato funkce se v současné době podporuje pro metriky platforem (ne pro vlastní metriky) pro následující služby v následujících cloudech Azure:
 
-| Service | Veřejné Azure | Státní správa | Čína |
+| Služba | Veřejné Azure | Státní správa | Čína |
 |:--------|:--------|:--------|:--------|
-| Virtuální počítače  | **Ano** | Ne | Ne |
-| Databáze systému SQL Server | **Ano** | **Ano** | Ne |
-| Elastické fondy SQL serveru | **Ano** | **Ano** | Ne |
-| Hraniční zařízení datového boxu | **Ano** | **Ano** | Ne |
+| Virtuální počítače  | **Ano** | No | No |
+| Databáze systému SQL Server | **Ano** | **Ano** | No |
+| Elastické fondy SQL serveru | **Ano** | **Ano** | No |
+| Hraniční zařízení datového boxu | **Ano** | **Ano** | No |
 
 Můžete určit rozsah monitorování jedním pravidlem výstrahy metriky jedním ze tří způsobů. Například u virtuálních počítačů můžete obor zadat jako:  
 

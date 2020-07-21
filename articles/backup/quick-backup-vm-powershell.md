@@ -5,16 +5,16 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 04/16/2019
 ms.custom: mvc
-ms.openlocfilehash: 8021ca553a1434c891bee911e85d351c61938594
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fa190c670c5bdcae8bcb31d2b8d5d9bd011acae9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74171948"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538577"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Zálohování virtuálního počítače v Azure pomocí PowerShellu
 
-[Azure POWERSHELL AZ](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0) Module slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech.
+[Azure POWERSHELL AZ](/powershell/azure/new-azureps-module-az) Module slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech.
 
 [Azure Backup](backup-overview.md) zálohuje místní počítače a aplikace a virtuální počítače Azure. V tomto článku se dozvíte, jak zálohovat virtuální počítač Azure pomocí modulu AZ Module. Případně můžete zálohovat virtuální počítač pomocí rozhraní příkazového [řádku Azure](quick-backup-vm-cli.md)nebo [Azure Portal](quick-backup-vm-portal.md).
 
@@ -46,7 +46,7 @@ Při vytváření trezoru postupujte takto:
 
 - Pro skupinu prostředků a umístění zadejte skupinu prostředků a umístění virtuálního počítače, který chcete zálohovat.
 - Pokud jste použili tento [ukázkový skript](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json) k vytvoření virtuálního počítače, skupina prostředků je **myResourceGroup**, virtuální počítač je ***myVM**a prostředky jsou v oblasti **WestEurope** .
-- Azure Backup automaticky zpracovává úložiště pro zálohovaná data. Ve výchozím nastavení používá trezor [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy-grs.md). Geografická redundance zajišťuje, že zálohovaná data se replikují do sekundární oblasti Azure a stovky kilometrů od primární oblasti.
+- Azure Backup automaticky zpracovává úložiště pro zálohovaná data. Ve výchozím nastavení používá trezor [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy.md). Geografická redundance zajišťuje, že zálohovaná data se replikují do sekundární oblasti Azure a stovky kilometrů od primární oblasti.
 
 Teď vytvořte Trezor:
 
@@ -66,7 +66,7 @@ Teď vytvořte Trezor:
         -Name "myRecoveryServicesVault" | Set-AzRecoveryServicesVaultContext
     ```
 
-3. Změňte konfiguraci redundance úložiště (LRS/GRS) trezoru pomocí [set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/Set-AzRecoveryServicesBackupProperty), a to následujícím způsobem:
+3. Změňte konfiguraci redundance úložiště (LRS/GRS) trezoru pomocí [set-AzRecoveryServicesBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty), a to následujícím způsobem:
 
     ```powershell
     Get-AzRecoveryServicesVault `

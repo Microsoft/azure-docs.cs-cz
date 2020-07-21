@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: yinhew
-ms.openlocfilehash: c4eb1419859d4a87e53371a266dcef52e632b6c8
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: e7bbedf253d6a64609179a8710fc9accd1f03818
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636083"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537965"
 ---
 # <a name="speech-to-text-rest-api"></a>Rozhraní REST API pro převod řeči na text
 
@@ -60,7 +60,7 @@ Tyto parametry mohou být zahrnuty do řetězce dotazu žádosti REST.
 
 Tato tabulka obsahuje seznam požadovaných a volitelných hlaviček pro žádosti o převod řeči na text.
 
-|Záhlaví| Popis | Požadováno/volitelné |
+|Hlavička| Popis | Požadováno/volitelné |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | Klíč předplatného služby Speech. | Buď toto záhlaví, nebo `Authorization` je povinné. |
 | `Authorization` | Autorizační token předchází slovu `Bearer` . Další informace najdete v tématu [Ověřování](#authentication). | Buď toto záhlaví, nebo `Ocp-Apim-Subscription-Key` je povinné. |
@@ -223,10 +223,10 @@ Objekt v `NBest` seznamu může zahrnovat:
 | `ITN` | Formát textu, který je v normalizovaném textu (kanonický), s telefonními čísly, čísly, zkratkami ("lékař Novák" na "Dr Smith") a jinými použitými transformacemi. |
 | `MaskedITN` | Formulář vytvořené s použitým maskou vulgárních výrazů, pokud je to požadováno. |
 | `Display` | Formulář pro zobrazení rozpoznaného textu s přidanými interpunkcí a velkými písmeny Tento parametr je stejný, jako `DisplayText` při nastavení Format na `simple` . |
-| `AccuracyScore` | Skóre udávající přesnost výslovnosti daného řeči. |
-| `FluencyScore` | Skóre udávající Fluency daného řeči. |
-| `CompletenessScore` | Skóre udávající úplnost daného rozpoznávání řeči výpočtem poměru slov v celém vstupu. |
-| `PronScore` | Celkové skóre udávající kvalitu výslovnosti daného řeči. Počítá se z `AccuracyScore` `FluencyScore` a `CompletenessScore` s váhou. |
+| `AccuracyScore` | Přesnost řeči v výslovnosti. Přesnost určuje, jak úzce se fonémy shoduje s výslovností nativního mluvčího. Skóre přesnosti aplikace Word a úplného textu je agregované ze foném skóre úrovně. |
+| `FluencyScore` | Fluency zadaného řeči. Fluency označuje, jak blízkoně řeč odpovídá použití tichého zalomení mezi slovy v nativním mluvčím. |
+| `CompletenessScore` | Úplnost rozpoznávání řeči určené výpočtem poměru slov, která jsou vyhodnocena jako odkaz na textové zadání. |
+| `PronScore` | Celkové skóre označující kvalitu výslovnosti daného řeči. To je agregované z `AccuracyScore` `FluencyScore` a `CompletenessScore` s váhou. |
 | `ErrorType` | Tato hodnota označuje, zda je slovo vynecháno, vloženo nebo špatně vyslovované, ve srovnání s `ReferenceText` . Možné hodnoty jsou `None` (to znamená, že toto slovo neobsahuje žádnou chybu), `Omission` `Insertion` a `Mispronunciation` . |
 
 ## <a name="sample-responses"></a>Ukázkové odpovědi

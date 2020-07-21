@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: de1c6e91a6502e3a5e03dde69c5559445628d369
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: d85cd05ee6b40b6b660958330145ed0c61b1b0a3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184544"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539665"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Nejčastější dotazy k řešení Network Performance Monitor
 
@@ -19,11 +19,11 @@ ms.locfileid: "86184544"
 
 Tento článek zachycuje Nejčastější dotazy týkající se Network Performance Monitor (NPM) v Azure.
 
-[Network Performance Monitor](/azure/networking/network-monitoring-overview) je cloudové řešení [monitorování hybridní sítě](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md) , které vám pomůže monitorovat výkon sítě mezi různými body v infrastruktuře vaší sítě. Pomůže vám taky monitorovat síťové připojení ke [koncovým bodům služby a aplikace](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md) a [monitorovat výkon Azure ExpressRoute](../../azure-monitor/insights/network-performance-monitor-expressroute.md). 
+[Network Performance Monitor](../../networking/network-monitoring-overview.md) je cloudové řešení [monitorování hybridní sítě](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md) , které vám pomůže monitorovat výkon sítě mezi různými body v infrastruktuře vaší sítě. Pomůže vám taky monitorovat síťové připojení ke [koncovým bodům služby a aplikace](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md) a [monitorovat výkon Azure ExpressRoute](../../azure-monitor/insights/network-performance-monitor-expressroute.md). 
 
 Network Performance Monitor detekuje problémy se sítí, jako jsou přenosy dat blackholing, chyby směrování a problémy, které nedokáže detekovat konvenční metody monitorování sítě. Toto řešení generuje výstrahy a upozorní vás, když u síťové linky dojde k překročení prahové hodnoty. Zajišťuje také včasné zjištění problémů s výkonem sítě a lokalizuje příčinu problému na konkrétní segment sítě nebo zařízení. 
 
-Další informace o různých funkcích podporovaných nástrojem [Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) jsou k dispozici online.
+Další informace o různých funkcích podporovaných nástrojem [Network Performance Monitor](../../networking/network-monitoring-overview.md) jsou k dispozici online.
 
 ## <a name="set-up-and-configure-agents"></a>Nastavení a konfigurace agentů
 
@@ -149,7 +149,7 @@ NetworkMonitoring
 NPM identifikuje jenom IP adresu a název hostitele pro základní síťové směrování (přepínače, směrovače, servery atd.) mezi zdrojovou a cílovou IP adresou. Také identifikuje latenci mezi těmito identifikovanými segmenty směrování. Nemonitoruje jednotlivě tyto segmenty směrování.
 
 ### <a name="can-npm-be-used-to-monitor-network-connectivity-between-azure-and-aws"></a>Dá se NPM použít k monitorování připojení k síti mezi Azure a AWS?
-Ano. Podrobnosti najdete v článku [monitorování Azure, AWS a místních sítí pomocí npm](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/) .
+Yes. Podrobnosti najdete v článku [monitorování Azure, AWS a místních sítí pomocí npm](/archive/blogs/msoms/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor) .
 
 ### <a name="is-the-expressroute-bandwidth-usage-incoming-or-outgoing"></a>Je využití šířky pásma ExpressRoute příchozí nebo odchozí?
 Využití šířky pásma je celkovým počtem příchozích a odchozích šířek pásma. Je vyjádřena v bitech/s.
@@ -188,9 +188,9 @@ NPM může monitorovat propojení mezi sítěmi v jakékoli části světa, od p
 NPM může monitorovat připojení ke službám v jakékoli části světa, od pracovního prostoru hostovaného v některé z [podporovaných oblastí](../../azure-monitor/insights/network-performance-monitor.md#supported-regions) .
 
 ### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>Které oblasti se podporují pro monitor ExpressRoute v NPM?
-NPM dokáže monitorovat vaše ExpressRoute okruhy, které jsou umístěné v libovolné oblasti Azure. K připojení do NPM budete potřebovat pracovní prostor Log Analytics, který musí být hostovaný v některé z [podporovaných oblastí](/azure/expressroute/how-to-npm) .
+NPM dokáže monitorovat vaše ExpressRoute okruhy, které jsou umístěné v libovolné oblasti Azure. K připojení do NPM budete potřebovat pracovní prostor Log Analytics, který musí být hostovaný v některé z [podporovaných oblastí](../../expressroute/how-to-npm.md) .
 
-## <a name="troubleshoot"></a>Řešení potíží
+## <a name="troubleshoot"></a>Odstraňování potíží
 
 ### <a name="why-are-some-of-the-hops-marked-as-unidentified-in-the-network-topology-view"></a>Proč jsou některé z směrování označeny jako neidentifikované v zobrazení síťové topologie?
 NPM používá upravenou verzi traceroute ke zjištění topologie ze zdrojového agenta do cíle. Neidentifikovaný skok znamená, že směrování sítě nereagovalo na žádost traceroute zdrojového agenta. Pokud tři po sobě jdoucí síťové segmenty nereagují na traceroute agenta, toto řešení označí nereagující chmel jako neidentifikovaný a nepokusí se zjistit další segmenty směrování.
@@ -231,7 +231,7 @@ K tomu může dojít, pokud hostitelská brána firewall nebo zprostředkující
 * Chcete-li ověřit, zda hostitelská brána firewall neblokuje komunikaci na požadovaném portu, zobrazte stav zdrojových a cílových uzlů z následujícího zobrazení: Network Performance Monitor-> konfigurace > uzlů. 
   Pokud nejsou v pořádku, podívejte se na pokyny a proveďte nápravné opatření. Pokud jsou uzly v pořádku, přejděte ke kroku b. níže.
 * Pokud chcete ověřit, jestli zprostředkující síťová brána firewall nebo Azure NSG neblokuje komunikaci na požadovaném portu, použijte nástroj PsPing třetí strany pomocí následujících pokynů:
-  * Nástroj psping je k dispozici ke stažení [zde](https://technet.microsoft.com/sysinternals/psping.aspx) . 
+  * Nástroj psping je k dispozici ke stažení [zde](/sysinternals/downloads/psping) . 
   * Spusťte následující příkaz ze zdrojového uzlu.
     * psping-n 15 \<destination node IPAddress\> :P Ortnumber ve výchozím nastavení npm používá port 8084. V případě, že jste to explicitně změnili pomocí skriptu EnableRules.ps1, zadejte vlastní číslo portu, které používáte). Toto je příkaz k odeslání z Azure Machine do místního počítače.
 * Ověřte, zda jsou příkazy if-Tests úspěšné. Pokud ne, znamená to, že zprostředkující síťová brána firewall nebo Azure NSG blokuje provoz na tomto portu.

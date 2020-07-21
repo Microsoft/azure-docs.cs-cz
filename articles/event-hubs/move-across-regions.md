@@ -3,12 +3,12 @@ title: Přesunutí oboru názvů Azure Event Hubs do jiné oblasti | Microsoft D
 description: V tomto článku se dozvíte, jak přesunout obor názvů Azure Event Hubs z aktuální oblasti do jiné oblasti.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: a70397772d22a65046f87877deab6263d4b2104f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51b02c34b0c28420a7e27da56b107ed3925a761b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85312969"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537067"
 ---
 # <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>Přesunutí oboru názvů Azure Event Hubs do jiné oblasti
 Existují různé scénáře, ve kterých byste chtěli přesunout existující Event Hubs obor názvů z jedné oblasti do druhé. Například můžete chtít vytvořit obor názvů se stejnou konfigurací pro testování. V rámci [Plánování zotavení po havárii](event-hubs-geo-dr.md#setup-and-failover-flow)možná budete chtít vytvořit také sekundární obor názvů v jiné oblasti.
@@ -16,7 +16,7 @@ Existují různé scénáře, ve kterých byste chtěli přesunout existující 
 > [!NOTE]
 > V tomto článku se dozvíte, jak exportovat šablonu Azure Resource Manager pro existující obor názvů Event Hubs a potom použít šablonu k vytvoření oboru názvů se stejným nastavením konfigurace v jiné oblasti. Tento proces však nepřesouvá události, které ještě nebyly zpracovány. Před odstraněním je třeba zpracovat události z původního oboru názvů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Ujistěte se, že cílová oblast podporuje služby a funkce, které váš účet využívá.
 - V případě funkcí Preview se ujistěte, že je vaše předplatné v cílové oblasti uvedené na seznamu povolených.
@@ -108,5 +108,5 @@ Odstranění oboru názvů Event Hubs (zdroj nebo cíl) pomocí Azure Portal:
 V tomto kurzu jste přesunuli obor názvů Azure Event Hubs z jedné oblasti na jiný a vyčistili zdrojové prostředky.  Další informace o přesouvání prostředků mezi oblastmi a zotavení po havárii v Azure najdete tady:
 
 
-- [Přesun prostředků do nové skupiny prostředků nebo předplatného](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [Přesun virtuálních počítačů Azure do jiné oblasti](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [Přesun prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/management/move-resource-group-and-subscription.md)
+- [Přesun virtuálních počítačů Azure do jiné oblasti](../site-recovery/azure-to-azure-tutorial-migrate.md)

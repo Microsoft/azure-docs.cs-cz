@@ -3,12 +3,12 @@ title: 'Rychlý Start: čtení zachycených dat z aplikace Python – Azure Even
 description: 'Rychlý Start: skripty, které používají sadu Azure Python SDK k předvedení funkce Event Hubs Capture.'
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 8e6174970a6821f7541387f91b226cdebe555625
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 364ca789f560dc8fdae099b09c77946bc4ad5005
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323059"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537220"
 ---
 # <a name="quickstart-event-hubs-capture-walkthrough-python-azure-eventhub-version-1"></a>Rychlý Start: návod Event Hubsho zachycení: Python (Azure-eventhub verze 1)
 
@@ -27,7 +27,7 @@ V tomto návodu:
 > * Odešlete data do centra událostí pomocí skriptu Pythonu.
 > * Čtení a zpracování souborů z Event Hubs zachytávání pomocí jiného skriptu Pythonu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Python 3,4 nebo novější s `pip` nainstalovaným a aktualizovaným.
   
@@ -45,7 +45,7 @@ V tomto návodu:
 
 Vytvořte účet úložiště a kontejner, který chcete použít pro zachytávání. 
 
-1. Přihlaste se k webu [Azure Portal][Azure portal].
+1. Přihlaste se k [portálu Azure Portal][Azure portal].
 2. V levém navigačním panelu vyberte **účty úložiště**a na obrazovce **účty úložiště** vyberte **Přidat**.
 3. Na obrazovce vytvoření účtu úložiště vyberte předplatné a skupinu prostředků a zadejte název účtu úložiště. Ostatní výběry můžete ponechat ve výchozím nastavení. Vyberte **zkontrolovat + vytvořit**, zkontrolujte nastavení a pak vyberte **vytvořit**. 
    
@@ -190,4 +190,4 @@ Další informace o Event Hubs najdete v těchto tématech:
 [1]: ./media/event-hubs-archive-python/event-hubs-python1.png
 [About Azure storage accounts]:../storage/common/storage-create-storage-account.md
 [Visual Studio Code]: https://code.visualstudio.com/
-[Event Hubs overview]: event-hubs-what-is-event-hubs.md
+[Event Hubs overview]: ./event-hubs-about.md

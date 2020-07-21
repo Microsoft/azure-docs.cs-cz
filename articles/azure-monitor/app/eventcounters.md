@@ -3,15 +3,16 @@ title: Čítače událostí v Application Insights | Microsoft Docs
 description: Monitorujte systém a vlastní .NET/.NET Core EventCounters v Application Insights.
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 37d0e1e741548986788be78860830f36add1f5a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 06bf15bf60b1ee5e2c301935a30b3981d5233a08
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83700434"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539937"
 ---
 # <a name="eventcounters-introduction"></a>Úvod do EventCounters
 
-`EventCounter`je základní mechanismus .NET/.NET pro publikování a používání čítačů nebo statistik. [Tento](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md) dokument obsahuje přehled `EventCounters` a příklady, jak je publikovat a využívat. EventCounters jsou podporované na všech platformách OS – Windows, Linux a macOS. Můžeme si představit jako ekvivalent pro [čítače výkonu](https://docs.microsoft.com/dotnet/api/system.diagnostics.performancecounter) pro různé platformy, který je podporován pouze v systémech Windows.
+`EventCounter`je základní mechanismus .NET/.NET pro publikování a používání čítačů nebo statistik. [Tento](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md) dokument obsahuje přehled `EventCounters` a příklady, jak je publikovat a využívat. EventCounters jsou podporované na všech platformách OS – Windows, Linux a macOS. Můžeme si představit jako ekvivalent pro [čítače výkonu](/dotnet/api/system.diagnostics.performancecounter) pro různé platformy, který je podporován pouze v systémech Windows.
 
 I když uživatelé mohou publikovat jakékoli vlastní `EventCounters` , aby splnili požadavky, modul runtime .NET Core 3,0 ve výchozím nastavení publikuje sadu těchto čítačů. Dokument vás provede kroky potřebnými ke shromáždění a zobrazení `EventCounters` (definované systémem nebo uživatelem) v Azure Application Insights.
 
@@ -90,14 +91,14 @@ Následující příklad ukazuje, jak přidat nebo odebrat čítače. Toto přiz
 
 ## <a name="event-counters-in-metric-explorer"></a>Čítače událostí v Průzkumníkovi metrik
 
-Pokud chcete v [Průzkumníkovi metriky](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)zobrazit EventCounter metriky, vyberte Application Insights prostředek a zvolte metriky založené na protokolu jako obor názvů metriky. Pak se metriky EventCounter zobrazí v kategorii vlastní.
+Pokud chcete v [Průzkumníkovi metriky](../platform/metrics-charts.md)zobrazit EventCounter metriky, vyberte Application Insights prostředek a zvolte metriky založené na protokolu jako obor názvů metriky. Pak se metriky EventCounter zobrazí v kategorii vlastní.
 
 > [!div class="mx-imgBorder"]
 > ![Čítače událostí hlášené v Application Insights](./media/event-counters/metrics-explorer-counter-list.png)
 
 ## <a name="event-counters-in-analytics"></a>Čítače událostí v analýzách
 
-V tabulce **customMetrics** můžete také vyhledávat a zobrazovat sestavy čítače událostí v části [analýzy](../../azure-monitor/app/analytics.md).
+V tabulce **customMetrics** můžete také vyhledávat a zobrazovat sestavy čítače událostí v části [analýzy](../log-query/log-query-overview.md).
 
 Například spuštěním následujícího dotazu zjistíte, jaké čítače jsou shromažďovány a k dispozici pro dotaz:
 
@@ -143,7 +144,7 @@ EventCounter nevyžaduje žádná zvláštní oprávnění a podporuje se na vš
 
 ### <a name="i-have-enabled-application-insights-from-azure-web-app-portal-but-i-cant-see-eventcounters"></a>Na portálu webové aplikace Azure jsem Application Insights povolit. Ale nevidím EventCounters.?
 
- [Application Insights rozšíření](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps) pro ASP.NET Core tuto funkci ještě nepodporuje. Tento dokument bude aktualizován, pokud je tato funkce podporována.
+ [Application Insights rozšíření](./azure-web-apps.md) pro ASP.NET Core tuto funkci ještě nepodporuje. Tento dokument bude aktualizován, pokud je tato funkce podporována.
 
 ## <a name="next-steps"></a><a name="next"></a>Další kroky
 

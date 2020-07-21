@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
 ms.date: 06/26/2020
-ms.openlocfilehash: 978cb7ece1f8b3e16815c1dc49e4983dc393cbfc
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: b9da3b0647d5abe60dd8f6cb21163ff21f07205b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85937536"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539716"
 ---
 # <a name="release-notes-for-azure-web-app-extension-for-application-insights"></a>Poznámky k verzi pro rozšíření webové aplikace Azure pro Application Insights
 
@@ -21,7 +21,7 @@ Tento článek obsahuje poznámky k verzím pro rozšíření Azure Web Apps pro
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
 - Jak zjistit, která verze rozšíření právě mám?
-    - Přejděte do části `https://<yoursitename>.scm.azurewebsites.net/ApplicationInsights` (Soubor > Nový > Jiné). Další informace najdete [v podrobné příručce Průvodce odstraňováním potíží s rozšířením a monitorováním na základě agentů](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=net#troubleshooting) .
+    - Přejděte na `https://<yoursitename>.scm.azurewebsites.net/ApplicationInsights`. Další informace najdete [v podrobné příručce Průvodce odstraňováním potíží s rozšířením a monitorováním na základě agentů](./azure-web-apps.md?tabs=net#troubleshooting) .
 
 - Co když používám privátní rozšíření?
     - Odinstalujte rozšíření privátních webů, protože už není podporovaná.

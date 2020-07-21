@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7c1f0c18fc8b867e16ce539a24839637e1d14379
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7d62777f73a92768b1ede3fb9b7e0cb97951823
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390784"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537500"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Směrování událostí v rámci digitálních vláken Azure a mimo ně
 
@@ -46,7 +46,7 @@ Alternativně zpráva o události obsahuje také ID zdroje dat, který zprávu o
 
 Výpočetní prostředek musí také navázat oprávnění zabezpečení a přístup nezávisle.
 
-Informace o postupu při nastavení funkce Azure pro zpracování digitálních dvojitých událostí najdete v tématu [How to: set a Azure Function for Data Processing](how-to-create-azure-function.md).
+Informace o postupu při nastavení funkce Azure pro zpracování digitálních dvojitých událostí najdete v tématu [*How to: set a Azure Function for Data Processing*](how-to-create-azure-function.md).
 
 ## <a name="create-an-endpoint"></a>Vytvoření koncového bodu
 
@@ -90,7 +90,7 @@ Různé typy událostí v IoT Hub a digitálních Vlákenách Azure vytváří r
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si, jak nastavit a spravovat postup události:
-* [Postupy: Správa koncových bodů a tras](how-to-manage-routes.md)
+* [*Postupy: Správa koncových bodů a tras*](how-to-manage-routes.md)
 
 Nebo si přečtěte téma jak použít Azure Functions ke směrování událostí v rámci digitálních vláken Azure:
-* [Postupy: nastavení funkce Azure pro zpracování dat](how-to-create-azure-function.md)
+* [*Postupy: nastavení funkce Azure pro zpracování dat*](how-to-create-azure-function.md)

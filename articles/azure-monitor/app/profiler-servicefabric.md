@@ -6,11 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 664d6eb377185613a1a5670daf6747b482c79d9d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d63d932756495584b2870c597d3332077f8e86c9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671609"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539835"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>Profilování živých aplikací Service Fabric Azure pomocí Application Insights
 
@@ -25,9 +26,9 @@ Application Insights Profiler je součástí Azure Diagnostics. Azure Diagnostic
 
 Chcete-li nastavit prostředí, proveďte následující akce:
 
-1. Profiler podporuje .NET Framework a .Net Core. Pokud používáte .NET Framework, ujistěte se, že používáte [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) nebo novější. Je dostačující ověřit, zda je nasazený operační systém `Windows Server 2012 R2` nebo novější. Profiler podporuje .NET Core 2,1 a novější aplikace.
+1. Profiler podporuje .NET Framework a .Net Core. Pokud používáte .NET Framework, ujistěte se, že používáte [.NET Framework 4.6.1](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) nebo novější. Je dostačující ověřit, zda je nasazený operační systém `Windows Server 2012 R2` nebo novější. Profiler podporuje .NET Core 2,1 a novější aplikace.
 
-1. Vyhledejte rozšíření [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) v souboru šablony nasazení.
+1. Vyhledejte rozšíření [Azure Diagnostics](../platform/diagnostics-extension-overview.md) v souboru šablony nasazení.
 
 1. Přidejte následující `SinksConfig` oddíl jako podřízený element prvku `WadCfg` . Nahraďte `ApplicationInsightsProfiler` hodnotu vlastnosti vlastním klíčem instrumentace Application Insights:  
 
@@ -42,7 +43,7 @@ Chcete-li nastavit prostředí, proveďte následující akce:
       }
       ```
 
-      Informace o přidání rozšíření diagnostiky do šablony nasazení najdete v tématu [použití monitorování a diagnostiky pomocí virtuálních počítačů s Windows a Azure Resource Manager šablon](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+      Informace o přidání rozšíření diagnostiky do šablony nasazení najdete v tématu [použití monitorování a diagnostiky pomocí virtuálních počítačů s Windows a Azure Resource Manager šablon](../../virtual-machines/extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json).
 
 1. Nasaďte Service Fabric cluster pomocí šablony Azure Resource Manager.  
   Pokud je vaše nastavení správné, Application Insights Profiler se nainstaluje a povolí při instalaci rozšíření Azure Diagnostics. 

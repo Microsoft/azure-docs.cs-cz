@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9f44cbd9b735839640702970a65de239b36b3f30
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a8f5aaa7b2a054aa31198779414387cebf0f0fbd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209362"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537033"
 ---
 # <a name="about-upgrading-expressroute-circuit-bandwidth"></a>O upgradu šířky pásma okruhu ExpressRoute
 
@@ -34,7 +34,7 @@ Pokud je kapacita k dispozici, můžete okruh upgradovat pomocí následujícíc
 
 Pokud partner ExpressRoute nemá dostatečnou kapacitu, je nutné vytvořit nový okruh nakonfigurovaný na požadovanou šířku pásma. Aby se zachovalo připojení, neodstraňujte starý okruh, dokud se nezřídí nově vytvořený okruh, nakonfigurovali se partnerský vztah a (týká se privátního partnerského vztahu) objekt připojení k bráně virtuální sítě ExpressRoute se zřídil.
 
-Pokud Váš partner ExpressRoute nemá dostatek dostupné kapacity, musíte požádat o dodatečnou kapacitu v požadovaném umístění partnerského vztahu. Po zřízení nové kapacity můžete použít kroky uvedené v článcích v části [Šířka pásma upgradu](#upgrade) , abyste vytvořili nový okruh, nakonfigurovali připojení a odstranili starý okruh:
+Pokud Váš partner ExpressRoute nemá dostatek dostupné kapacity, musíte požádat o dodatečnou kapacitu v požadovaném umístění partnerského vztahu. Po zřízení nové kapacity můžete použít kroky uvedené v článcích v části [Šířka pásma upgradu](#upgrade) , abyste vytvořili nový okruh, nakonfigurovali připojení a odstranili starý okruh.
 
 
 ### <a name="insufficient-expressroute-direct-bandwidth"></a><a name="bandwidth"></a>Nedostatečná ExpressRoute přímá šířka pásma

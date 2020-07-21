@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: b91abe282c25b161db72616d7123d7a2bf5dbc9f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 6ef67addba2bcc96cfb51f9f217d7d43e729bdf4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111061"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539903"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profil ASP.NET Core webové aplikace Azure Linux pomocí Application Insights Profiler
 
@@ -23,7 +23,7 @@ Po dokončení tohoto návodu může vaše aplikace shromažďovat trasování p
 
 ![Trasování profileru](./media/profiler-aspnetcore-linux/profiler-traces.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Následující pokyny platí pro všechna prostředí pro vývoj pro Windows, Linux a Mac:
 
 * Nainstalujte [.NET Core SDK 2.1.2 nebo novější](https://dotnet.microsoft.com/download/archives).
@@ -106,7 +106,7 @@ Následující pokyny platí pro všechna prostředí pro vývoj pro Windows, Li
 
     ![Nastavení úložiště Git](./media/profiler-aspnetcore-linux/setup-git-repo.png)
 
-Další možnosti nasazení najdete v [tomto článku](https://docs.microsoft.com/azure/app-service/containers/choose-deployment-type).
+Další možnosti nasazení najdete v [tomto článku](../../app-service/containers/choose-deployment-type.md).
 
 ## <a name="deploy-your-project"></a>Nasazení projektu
 

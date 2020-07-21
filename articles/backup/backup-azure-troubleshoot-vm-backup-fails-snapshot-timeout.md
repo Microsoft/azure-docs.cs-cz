@@ -5,11 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 3ee84c0c868f47dca1aee0401865563a326df3db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55af4bddb5a963a831c1438400a7a243cca20573
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82864398"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538815"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup Chyba: problémy s agentem nebo rozšířením
 
@@ -27,7 +28,7 @@ Agent virtuálního počítače Azure se může zastavit, zastaralá, je v nekon
 - **Otevřete Azure Portal > > nastavení virtuálního počítače > podokno vlastnosti** > zkontrolujte, že **stav** virtuálního počítače **běží** a že **Stav agenta** je **připravený**. Pokud je agent virtuálního počítače zastavený nebo je v nekonzistentním stavu, restartujte agenta.<br>
   - U virtuálních počítačů s Windows postupujte podle těchto [kroků](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) a restartujte agenta hosta.<br>
   - Pro virtuální počítače se systémem Linux pomocí následujících [kroků](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms) restartujte agenta hosta.
-- **Otevřete Azure Portal > virtuálního počítače > nastavení > rozšíření** > zajistěte, aby byla všechna rozšíření ve stavu **úspěšného zřizování** . Pokud ne, vyřešte problém podle těchto [kroků](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state) .
+- **Otevřete Azure Portal > virtuálního počítače > nastavení > rozšíření** > zajistěte, aby byla všechna rozšíření ve stavu **úspěšného zřizování** . Pokud ne, vyřešte problém podle těchto [kroků](#usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state) .
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError – Nejde komunikovat s agentem virtuálního počítače kvůli stavu snímku
 
@@ -51,7 +52,7 @@ Po registraci a naplánování virtuálního počítače pro službu Azure Backu
 **Kód chyby**: UserErrorVmProvisioningStateFailed<br>
 **Chybová zpráva**: virtuální počítač je ve stavu selhání zřizování.<br>
 
-K této chybě dojde, když se jedna z chyb rozšíření přesune virtuální počítač do stavu selhání zřizování.<br>**Otevřete Azure Portal > > nastavení virtuálního počítače > rozšíření stav rozšíření >** a ověřte, jestli jsou všechna rozšíření ve stavu **úspěšné zřizování** . Další informace najdete v tématu [stav zřizování](https://docs.microsoft.com/azure/virtual-machines/windows/states-lifecycle#provisioning-states).
+K této chybě dojde, když se jedna z chyb rozšíření přesune virtuální počítač do stavu selhání zřizování.<br>**Otevřete Azure Portal > > nastavení virtuálního počítače > rozšíření stav rozšíření >** a ověřte, jestli jsou všechna rozšíření ve stavu **úspěšné zřizování** . Další informace najdete v tématu [stav zřizování](../virtual-machines/windows/states-lifecycle.md#provisioning-states).
 
 - Pokud je rozšíření VMSnapshot ve stavu selhání, klikněte pravým tlačítkem myši na rozšíření, které selhalo, a odeberte ho. Aktivovat zálohování na vyžádání. Tato akce nainstaluje rozšíření znovu a spustí úlohu zálohování.  <br>
 - Pokud je jakékoli jiné rozšíření ve stavu selhání, může to narušit zálohování. Zajistěte, aby byly problémy s rozšířením vyřešeny, a opakujte operaci zálohování.
@@ -79,7 +80,7 @@ Pokud chcete tento problém vyřešit, odeberte zámek pro skupinu prostředků 
 **Kód chyby**: UserErrorKeyvaultPermissionsNotConfigured <br>
 **Chybová zpráva**: zálohování nemá dostatečná oprávnění k trezoru klíčů pro zálohování šifrovaných virtuálních počítačů. <br>
 
-Aby operace zálohování proběhla úspěšně na šifrovaných virtuálních počítačích, musí mít oprávnění pro přístup k trezoru klíčů. Oprávnění lze nastavit prostřednictvím [Azure Portal](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption) nebo prostřednictvím [prostředí PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection).
+Aby operace zálohování proběhla úspěšně na šifrovaných virtuálních počítačích, musí mít oprávnění pro přístup k trezoru klíčů. Oprávnění lze nastavit prostřednictvím [Azure Portal](./backup-azure-vms-encryption.md) nebo prostřednictvím [prostředí PowerShell](./backup-azure-vms-automation.md#enable-protection).
 
 ## <a name="extensionsnapshotfailednonetwork---snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a><a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork – Operace vytvoření snímku selhala, protože virtuální počítač není připojený k síti
 
@@ -129,9 +130,9 @@ Poslední úloha zálohování se nezdařila, protože probíhá existující ú
 2. V seznamu trezorů služby Recovery Services vyberte trezor, ve kterém je zálohování nakonfigurované.
 3. V nabídce řídicího panelu trezoru klikněte na **úlohy zálohování** . zobrazí se všechny úlohy zálohování.
    - Pokud úloha zálohování probíhá, počkejte, než se dokončí, nebo zrušte úlohu zálohování.
-     - Úlohu zálohování zrušíte tak, že kliknete pravým tlačítkem na úlohu zálohování a kliknete na **Zrušit** nebo použijete [PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0).
+     - Úlohu zálohování zrušíte tak, že kliknete pravým tlačítkem na úlohu zálohování a kliknete na **Zrušit** nebo použijete [PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob).
    - Pokud jste znovu nakonfigurovali zálohu v jiném trezoru, ujistěte se, že ve starém trezoru nejsou spuštěné žádné úlohy zálohování. Pokud existuje, zrušte úlohu zálohování.
-     - Pokud chcete zrušit úlohu zálohování, klikněte na ni pravým tlačítkem a pak klikněte na **Zrušit** nebo použijte [PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0).
+     - Pokud chcete zrušit úlohu zálohování, klikněte na ni pravým tlačítkem a pak klikněte na **Zrušit** nebo použijte [PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob).
 4. Opakujte operaci zálohování.
 
 Pokud naplánovaná operace zálohování trvá déle, v konfliktu s další konfigurací zálohování, Projděte si [osvědčené postupy](backup-azure-vms-introduction.md#best-practices), [výkon zálohování](backup-azure-vms-introduction.md#backup-performance)a [aspekty obnovení](backup-azure-vms-introduction.md#backup-and-restore-considerations).
@@ -166,7 +167,7 @@ Je možné, že agent virtuálního počítače je poškozený nebo se služba z
 6. Spusťte zálohování na vyžádání:
    - Na portálu vyberte **Zálohovat nyní**.
 
-Ověřte také, že na virtuálním počítači [je nainstalováno rozhraní Microsoft .net 4,5](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) . Aby agent virtuálního počítače mohl komunikovat se službou, je vyžadován .NET 4,5.
+Ověřte také, že na virtuálním počítači [je nainstalováno rozhraní Microsoft .net 4,5](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) . Aby agent virtuálního počítače mohl komunikovat se službou, je vyžadován .NET 4,5.
 
 ### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>Agent nainstalovaný na virtuálním počítači je zastaralý (pro virtuální počítače se systémem Linux).
 
@@ -174,7 +175,7 @@ Ověřte také, že na virtuálním počítači [je nainstalováno rozhraní Mic
 
 Většina selhání souvisejících s agentem nebo rozšířeními pro virtuální počítače se systémem Linux je způsobena problémy, které mají vliv na zastaralého agenta virtuálního počítače. Pokud chcete tento problém vyřešit, postupujte podle následujících obecných pokynů:
 
-1. Postupujte podle pokynů pro [aktualizaci agenta virtuálního počítače se systémem Linux](../virtual-machines/linux/update-agent.md).
+1. Postupujte podle pokynů pro [aktualizaci agenta virtuálního počítače se systémem Linux](../virtual-machines/extensions/update-linux-agent.md).
 
    > [!NOTE]
    > *Důrazně doporučujeme* , abyste agenta aktualizovali pouze prostřednictvím distribučního úložiště. Nedoporučujeme stahovat kód agenta přímo z GitHubu a aktualizovat ho. Pokud není k dispozici nejnovější agent pro distribuci, obraťte se na podporu distribuce, kde najdete pokyny k jeho instalaci. Chcete-li zjistit nejnovějšího agenta, v úložišti GitHubu, navštivte stránku [agenta Windows Azure Linux](https://github.com/Azure/WALinuxAgent/releases) .
@@ -206,7 +207,7 @@ Konfigurační soubor (/etc/waagent.conf) řídí akce waagent. Rozšíření mo
 
 ### <a name="application-control-solution-is-blocking-iaasbcdrextensionexe"></a>Řešení řízení aplikací blokuje IaaSBcdrExtension.exe
 
-Pokud používáte [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) (nebo jiné řešení řízení aplikací) a pravidla jsou založená na vydavateli nebo cestě, může **IaaSBcdrExtension.exe** spustitelný soubor zablokovat spuštění.
+Pokud používáte [AppLocker](/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) (nebo jiné řešení řízení aplikací) a pravidla jsou založená na vydavateli nebo cestě, může **IaaSBcdrExtension.exe** spustitelný soubor zablokovat spuštění.
 
 #### <a name="solution"></a>Řešení
 

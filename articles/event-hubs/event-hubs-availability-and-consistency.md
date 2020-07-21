@@ -3,12 +3,12 @@ title: Dostupnost a konzistence – Azure Event Hubs | Microsoft Docs
 description: Jak zajistit maximální možnou dostupnost a konzistenci s Azure Event Hubs pomocí oddílů.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 497a6e7430c4e6f8e29f903294ca94a4cb23012b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45ca5cc5790824d6c67a47a23691c6b0cae0b9f8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315763"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537203"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Dostupnost a konzistence ve službě Event Hubs
 
@@ -86,7 +86,7 @@ finally
 
 V případě této konfigurace Pamatujte na to, že pokud konkrétní oddíl, na který odesíláte, není k dispozici, zobrazí se chybová odpověď. Pokud nemáte spřažení k jednomu oddílu, jako bod porovnání, Služba Event Hubs odešle událost do dalšího dostupného oddílu.
 
-Jedním z možných řešení, které zajistí objednávání a zároveň maximalizovat čas, by bylo agregovat události jako součást vaší aplikace pro zpracování událostí. Nejjednodušší způsob, jak to provést, je razítko události pomocí vlastní vlastnosti pořadové číslo. Příklad ukazuje následující kód:
+Jedním z možných řešení, které zajistí objednávání a zároveň maximalizovat čas, by bylo agregovat události jako součást vaší aplikace pro zpracování událostí. Nejjednodušší způsob, jak to provést, je razítko události pomocí vlastní vlastnosti pořadové číslo. Podívejte se na ukázku kódu:
 
 #### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure. Messaging. EventHubs (5.0.0 nebo novější)](#tab/latest)
 
@@ -141,5 +141,5 @@ Tento příklad odešle událost do jednoho z dostupných oddílů v centru udá
 ## <a name="next-steps"></a>Další kroky
 Další informace o službě Event Hubs najdete na následujících odkazech:
 
-* [Přehled služby Event Hubs](event-hubs-what-is-event-hubs.md)
+* [Přehled služby Event Hubs](./event-hubs-about.md)
 * [Vytvoření centra událostí](event-hubs-create.md)

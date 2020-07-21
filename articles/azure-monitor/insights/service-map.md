@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 637db3a0749b5a0738b0ccc5136d26e435a03c7b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: bfd25c2572e91c2984f2845e08941614fff65570
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203125"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539767"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Používání řešení Service Map v Azure
 
@@ -241,7 +241,7 @@ Service Map se integruje s prohledáváním protokolů a zobrazuje počet všech
 
 ## <a name="service-desk-integration"></a>Integrace oddělení služeb
 
-Service Map integrace s konektorem pro správu služby IT je automaticky, pokud jsou obě řešení ve vašem pracovním prostoru Log Analytics povolená a nakonfigurovaná. Integrace v Service Map je označená jako oddělení služeb. Další informace najdete v tématu [centrálně spravovat pracovní položky ITSM pomocí konektoru správy služeb IT](https://docs.microsoft.com/azure/log-analytics/log-analytics-itsmc-overview).
+Service Map integrace s konektorem pro správu služby IT je automaticky, pokud jsou obě řešení ve vašem pracovním prostoru Log Analytics povolená a nakonfigurovaná. Integrace v Service Map je označená jako oddělení služeb. Další informace najdete v tématu [centrálně spravovat pracovní položky ITSM pomocí konektoru správy služeb IT](../platform/itsmc-overview.md).
 
 Podokno **Služba Machine Service** obsahuje seznam všech událostí správy služeb IT pro vybraný server ve vybraném časovém rozsahu. Server zobrazí ikonu, pokud jsou k dispozici aktuální položky a podokno služba Machine Service.
 
@@ -270,7 +270,7 @@ V podokně **výkon počítače** se zobrazí standardní metriky výkonu pro vy
 
 ![Podokno výkon počítače](media/service-map/machine-performance.png)
 
-Chcete-li zobrazit údaje o výkonu, bude pravděpodobně nutné [Povolit příslušné čítače výkonu Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters).  Čítače, které budete chtít povolit:
+Chcete-li zobrazit údaje o výkonu, bude pravděpodobně nutné [Povolit příslušné čítače výkonu Log Analytics](../platform/data-sources-performance-counters.md).  Čítače, které budete chtít povolit:
 
 Windows:
 - Procesor (*) \\ % času procesoru
@@ -540,7 +540,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 ## <a name="rest-api"></a>REST API
 
-Všechna data serveru, procesu a závislostí v Service Map jsou k dispozici prostřednictvím [REST API Service map](https://docs.microsoft.com/rest/api/servicemap/).
+Všechna data serveru, procesu a závislostí v Service Map jsou k dispozici prostřednictvím [REST API Service map](/rest/api/servicemap/).
 
 ## <a name="diagnostic-and-usage-data"></a>Diagnostika a data o používání
 

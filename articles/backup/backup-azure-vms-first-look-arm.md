@@ -3,11 +3,12 @@ title: Zálohování virtuálního počítače Azure z nastavení virtuálního 
 description: V tomto článku se dozvíte, jak zálohovat jeden virtuální počítač Azure nebo několik virtuálních počítačů Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 72d6e5657add3e815bb0d77fadbdbc716712bee5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 580cb1ad5f611991212bc8cdb48c66339f14d8e8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76705441"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538883"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Zálohování virtuálního počítače Azure z nastavení virtuálního počítače
 
@@ -25,7 +26,7 @@ Tento článek vysvětluje, jak zálohovat virtuální počítače Azure pomocí
 
 Aby bylo možné zálohovat virtuální počítače Azure, Azure Backup nainstaluje rozšíření na agenta virtuálního počítače spuštěného v počítači. Pokud byl váš virtuální počítač vytvořený z image Azure Marketplace, Agent se spustí. V některých případech například vytvoříte vlastní virtuální počítač nebo migrujete počítač z místního prostředí. je možné, že budete muset agenta nainstalovat ručně.
 
-- Pokud potřebujete agenta virtuálního počítače nainstalovat ručně, postupujte podle pokynů pro virtuální počítače se [systémem Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) nebo [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) .
+- Pokud potřebujete agenta virtuálního počítače nainstalovat ručně, postupujte podle pokynů pro virtuální počítače se [systémem Windows](../virtual-machines/extensions/agent-windows.md) nebo [Linux](../virtual-machines/extensions/agent-linux.md) .
 - Po instalaci agenta se při povolení zálohování Azure Backup nainstaluje rozšíření zálohování agenta. Aktualizuje a opraví rozšíření bez zásahu uživatele.
 
 ## <a name="back-up-from-azure-vm-settings"></a>Zálohování z nastavení virtuálního počítače Azure

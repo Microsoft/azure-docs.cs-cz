@@ -12,13 +12,14 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 2cea9cd1439bce0c55d701539471c463acb8f7e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f0d60d1f76523beca6567517ef44d50b910b221
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84020128"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537611"
 ---
-# <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
+# <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory verze 1
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](data-factory-use-custom-activities.md)
 > * [Verze 2 (aktuální verze)](../transform-data-using-dotnet-custom-activity.md)
@@ -41,7 +42,7 @@ Následující návod poskytuje podrobné pokyny k vytvoření vlastní aktivity
 > - Pro přístup k místním zdrojům dat není možné použít bránu Správa dat z vlastní aktivity. V současné době [Správa dat brána](data-factory-data-management-gateway.md) podporuje pouze aktivitu kopírovat aktivitu a uloženou proceduru v Data Factory.
 
 ## <a name="walkthrough-create-a-custom-activity"></a>Návod: Vytvoření vlastní aktivity
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 * Visual Studio 2012/2013/2015/2017
 * Stažení a instalace [sady Azure .NET SDK](https://azure.microsoft.com/downloads/)
 
