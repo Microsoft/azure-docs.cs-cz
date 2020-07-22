@@ -91,7 +91,7 @@ Tok je následující:
 
 Disky Ultra nabízejí dodatečné omezení pro celkový počet dvou omezení. Z tohoto důvodu může tok rezervací Ultra discích fungovat jak je popsáno v předchozí části, nebo může lépe omezit a distribuovat výkon.
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="Obrázek tabulky, která znázorňuje přístup "ReadOnly" nebo "čtení/zápisu" pro rezervovaného držitele, registraci a další.":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="Obrázek tabulky, která znázorňuje přístup ReadOnly nebo čtení/zápisu pro rezervovaného držitele, registraci a další.":::
 
 ## <a name="performance-throttles"></a>Omezení výkonu
 
