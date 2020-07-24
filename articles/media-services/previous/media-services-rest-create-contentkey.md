@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 373b863441eb21b52a18bbaece10779260eaeb7a
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 76717c580136d23030565c5476f8b282897784a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166191"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000410"
 ---
 # <a name="create-content-keys-with-rest"></a>Vytváření klíčů obsahu pomocí REST
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ Níže jsou uvedené obecné kroky pro generování klíčů obsahu, které při
 1. Náhodně vygenerujte 16bitový klíč AES (pro Common a šifrování obálek) nebo klíč AES 32-Byte (pro šifrování úložiště). 
    
     Toto je klíč obsahu pro váš Asset, což znamená, že všechny soubory přidružené k tomuto prostředku musí během dešifrování používat stejný klíč obsahu. 
-2. Voláním metod [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) a [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) získáte správný certifikát X. 509, který se musí použít k zašifrování klíče obsahu.
+2. Voláním metod [GetProtectionKeyId](/rest/api/media/operations/rest-api-functions#getprotectionkeyid) a [GetProtectionKey](/rest/api/media/operations/rest-api-functions#getprotectionkey) získáte správný certifikát X. 509, který se musí použít k zašifrování klíče obsahu.
 3. Zašifrujte klíč obsahu pomocí veřejného klíče certifikátu X. 509. 
    
    Media Services .NET SDK používá při šifrování RSA s výplně OAEP.  Příklad můžete vidět ve [funkci EncryptSymmetricKeyData](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
@@ -187,7 +187,7 @@ public enum ContentKeyType
 
 Následující příklad ukazuje, jak vytvořit **ContentKey** s **ContentKeyType** sadou pro šifrování úložiště ("1") a **ProtectionKeyType** nastavenou na "0", která označuje, že ID klíče ochrany je kryptografický otisk certifikátu X. 509.  
 
-Žádost
+Request
 
 ```console
 POST https://media.windows.net/api/ContentKeys HTTP/1.1
@@ -268,4 +268,3 @@ HTTP/1.1 204 No Content
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

@@ -7,13 +7,17 @@ ms.date: 05/14/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 664819b209aeb09093ce8711456b86ff4d3e8949
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d246adbf8e87d5503bc19bcd497dd00370c0a867
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84249575"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001899"
 ---
 # <a name="monitor-the-overall-health-of-the-devices-connected-to-an-iot-central-application"></a>Monitorování celkového stavu zařízení připojených k aplikaci IoT Central
+
+> [!NOTE]
+> Metriky jsou k dispozici pouze pro aplikace IoT Central verze 3. Informace o tom, jak zjistit verzi vaší aplikace, najdete v tématu [o vaší aplikaci](./howto-get-app-info.md).
 
 *Tento článek se týká operátorů a správců.*
 
@@ -34,25 +38,15 @@ Postup zobrazení IoT Centralch metrik na portálu:
 1. Na portálu přejděte na prostředek aplikace IoT Central. Ve výchozím nastavení se IoT Central prostředky nacházejí ve skupině prostředků s názvem **IOTC**.
 1. Pokud chcete vytvořit graf z metrik vaší aplikace, vyberte v části **monitorování** možnost **metriky** .
 
+![Metriky Azure](media/howto-monitor-application-health/metrics.png)
+
 ### <a name="azure-portal-permissions"></a>Azure Portal oprávnění
 
 Přístup k metrikám v Azure Portal spravuje [řízení přístupu na základě rolí Azure](../../role-based-access-control/overview.md). Pomocí Azure Portal můžete přidat uživatele do IoT Central aplikace/skupiny prostředků nebo předplatného, abyste jim udělili přístup. Na portálu je nutné přidat uživatele, i když jsou již přidány do aplikace IoT Central. Používejte [předdefinované role Azure](../../role-based-access-control/built-in-roles.md) pro jemnější řízení přístupu.
 
 ## <a name="iot-central-metrics"></a>IoT Central metriky
 
-Následující tabulka popisuje metriky, které jsou aktuálně k dispozici pro IoT Central:
-
-| Metrika | Zobrazovaný název metriky | Jednotka | Typ agregace | Description |
-|--------|---------------------|------|------------------|-------------|
-| connectedDeviceCount         | Celkem připojených zařízení                              | Počet  | Celkem             | Počet zařízení připojených k IoT Central                               |
-| C2D. Property. Read. Success    | Úspěšné čtení vlastností zařízení z IoT Central    | Počet  | Celkem             | Počet všech úspěšných čtení vlastností zahájených z IoT Central    |
-| C2D. Property. Read. Failure    | Neúspěšná čtení vlastností zařízení z IoT Central        | Počet  | Celkem             | Počet všech neúspěšných čtení vlastností zahájených z IoT Central        |
-| D2C. Property. Read. Success    | Úspěšná čtení vlastností zařízení ze zařízení        | Počet  | Celkem             | Počet všech úspěšných čtení vlastností inicializovaných ze zařízení        |
-| D2C. Property. Read. Failure    | Neúspěšná čtení vlastností zařízení ze zařízení            | Počet  | Celkem             | Počet všech neúspěšných čtení vlastností inicializovaných ze zařízení            |
-| C2D. Property. Update. Success  | Úspěšná aktualizace vlastností zařízení z IoT Central  | Počet  | Celkem             | Počet všech úspěšných aktualizací vlastností zahájených z IoT Central  |
-| C2D. Property. Update. Failure  | Neúspěšné aktualizace vlastností zařízení z IoT Central      | Počet  | Celkem             | Počet všech neúspěšných aktualizací vlastností iniciované z IoT Central      |
-| D2C. Property. Update. Success  | Úspěšná aktualizace vlastností zařízení ze zařízení      | Počet  | Celkem             | Počet všech úspěšných aktualizací vlastností inicializovaných ze zařízení      |
-| D2C. Property. Update. Failure  | Neúspěšné aktualizace vlastností zařízení ze zařízení          | Počet  | Celkem             | Počet všech neúspěšných aktualizací vlastností inicializovaných ze zařízení          |
+Seznam metrik, které jsou aktuálně k dispozici pro IoT Central, najdete v tématu [podporované metriky s Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftiotcentraliotapps).
 
 ### <a name="metrics-and-invoices"></a>Metriky a faktury
 

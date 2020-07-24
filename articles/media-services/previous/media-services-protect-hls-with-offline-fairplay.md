@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 05/07/2020
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: 618803e8e94f96a63e0c39c27b40a933acac7cb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eee718627f35154c878c717e02febe0ea7958fe6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82995532"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000546"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>Streamování FairPlay pro iOS v offline režimu 
 
@@ -28,7 +29,7 @@ ms.locfileid: "82995532"
 > * [Verze 2](media-services-protect-hls-with-offline-fairplay.md)
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 
 Azure Media Services poskytuje sadu dobře navrhovaných [služeb ochrany obsahu](https://azure.microsoft.com/services/media-services/content-protection/) , které zahrnují:
 
@@ -53,7 +54,7 @@ Před implementací offline DRM pro FairPlay na zařízení s iOS 10 +:
 * Seznámení s online ochranou obsahu pro FairPlay Další informace najdete v následujících článcích a ukázkách:
 
     - [FairPlay streaming pro Azure Media Services je všeobecně k dispozici](https://azure.microsoft.com/blog/apple-FairPlay-streaming-for-azure-media-services-generally-available/)
-    - [Chraňte svůj HLS obsah pomocí Apple FairPlay nebo Microsoft PlayReady](https://docs.microsoft.com/azure/media-services/media-services-protect-hls-with-FairPlay)
+    - [Chraňte svůj HLS obsah pomocí Apple FairPlay nebo Microsoft PlayReady](./media-services-protect-hls-with-fairplay.md)
     - [Ukázka pro streamování online snímků](https://azure.microsoft.com/resources/samples/media-services-dotnet-dynamic-encryption-with-FairPlay/)
 
 * Získejte sadu FPS SDK ze sítě Apple Developer. Sada FPS SDK obsahuje dvě komponenty:
@@ -200,17 +201,17 @@ Tři ukázkové testy v Media Services pokrývají následující tři scénář
 Tyto ukázky najdete na [tomto ukázkovém webu](https://aka.ms/poc#22)s odpovídajícím certifikátem aplikace hostovaným ve webové aplikaci Azure.
 V případě ukázky verze 3 nebo 4 sady SDK serveru FPS je v případě, že hlavní seznam testů obsahuje alternativní zvuk, v režimu offline, který přehrává jenom zvuk. Proto je potřeba obložení alternativního zvuku. Jinými slovy, druhý a třetí vzorek uvedený dříve pracuje v režimu online a offline. Ukázka uvedená jako první hraje zvuk pouze v režimu offline, zatímco online streamování funguje správně.
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 Následující nejčastější dotazy poskytují pomoc při řešení potíží:
 
 - **Proč se v režimu offline jenom zvuk hraje, ale ne video?** Zdá se, že se jedná o návrh ukázkové aplikace. Když je v režimu offline k dispozici alternativní zvuková stopa (což je případ pro HLS), v režimu offline se jako výchozí použije alternativní zvuková stopa v systému iOS 10 i iOS 11. Pokud chcete toto chování pro offline režim přechodu na více snímků, odeberte alternativní zvukovou stopu z datového proudu. Chcete-li to provést na Media Services, přidejte dynamický filtr manifestu "pouze" audio = false. " Jinými slovy, HLS adresa URL končí řetězcem. ISM/manifest (Format = M3U8-AAPL, audio-Only = false). 
 - **Proč I po přidání zvuku = false zůstane zvuk pouze bez videa v režimu offline?** V závislosti na návrhu klíče mezipaměti Content Delivery Network (CDN) může být obsah uložen do mezipaměti. Vyprázdnit mezipaměť.
-- **Podporuje se kromě iOS 10 offline režim FPS i v iOS 11?** Ano. Režim offline režimu FPS je podporován pro iOS 10 a iOS 11.
+- **Podporuje se kromě iOS 10 offline režim FPS i v iOS 11?** Yes. Režim offline režimu FPS je podporován pro iOS 10 a iOS 11.
 - **Proč v sadě SDK serveru pro FPS nejde najít dokument "offline přehrávání pomocí FairPlay streaming a HTTP Live Streaming"?** Vzhledem k tomu, že sada FPS Server SDK verze 4, tento dokument se sloučil do Průvodce programováním pro FairPlay streaming.
 - **K čemu poslední parametr v následujícím rozhraní API pro offline režim přechodu?**
 `Microsoft.WindowsAzure.MediaServices.Client.FairPlay.FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration(objX509Certificate2, pfxPassword, pfxPasswordId, askId, iv, RentalAndLeaseKeyType.PersistentUnlimited, 0x9999);`
 
-    Dokumentaci k tomuto rozhraní API najdete v tématu [Metoda FairPlayConfiguration. CreateSerializedFairPlayOptionConfiguration](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet). Parametr představuje dobu trvání pronájmu v režimu offline, přičemž sekunda jako jednotka.
+    Dokumentaci k tomuto rozhraní API najdete v tématu [Metoda FairPlayConfiguration. CreateSerializedFairPlayOptionConfiguration](/dotnet/api/microsoft.windowsazure.mediaservices.client.fairplay.fairplayconfiguration.createserializedfairplayoptionconfiguration?view=azure-dotnet). Parametr představuje dobu trvání pronájmu v režimu offline, přičemž sekunda jako jednotka.
 - **Jaká je struktura souborů ke stažení/offline na zařízeních s iOS?** Stažená struktura souborů na zařízení se systémem iOS vypadá jako na následujícím snímku obrazovky. `_keys`Složka uchovává stažené licence na FPS a jeden soubor úložiště pro každého hostitele licenční služby. `.movpkg`Složka obsahuje zvuk a video obsah. První složka s názvem, který končí spojovníkem následovaným číslem, obsahuje obsah videa. Číselná hodnota je PeakBandwidth verze videa. Druhá složka s názvem, který končí čárkou následovanou 0, obsahuje zvukový obsah. Třetí složka s názvem "data" obsahuje hlavní seznam skladeb obsahu FPS. Nakonec boot.xml poskytuje úplný popis `.movpkg` obsahu složky. 
 
 ![Struktura souborů ukázkové aplikace v režimu offline FairPlay iOS](media/media-services-protect-hls-with-offline-FairPlay/media-services-offline-FairPlay-file-structure.png)
@@ -248,7 +249,7 @@ Vzorový boot.xml soubor:
 
 * Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 Tento dokument obsahuje následující kroky a informace, které můžete použít k implementaci režimu přechodu do režimu offline:
 
 * Media Services konfigurace ochrany obsahu prostřednictvím rozhraní API Media Services .NET nakonfiguruje dynamické šifrování FairPlay a doručování licencí FairPlay v Media Services.

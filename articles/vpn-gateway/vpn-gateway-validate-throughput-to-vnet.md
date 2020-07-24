@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 05/29/2019
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: dcf86deda32069bf9711dbeb733dc9361e22a771
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d19cc4a474324ff3e88ec0c5353a47c157ec715
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80631767"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998472"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Ověření propustnosti sítě VPN do virtuální sítě
 
@@ -43,11 +43,11 @@ Následující diagram znázorňuje logické připojení místní sítě k virtu
 
 1. Určení požadavků na propustnost standardních hodnot vaší aplikace
 1. Určete omezení propustnosti Azure VPN Gateway. Nápovědu najdete v části "SKU brány" v tématu [o VPN Gateway](vpn-gateway-about-vpngateways.md#gwsku).
-1. Určete [pokyny k propustnosti virtuálních počítačů Azure](../virtual-machines/virtual-machines-windows-sizes.md) pro velikost virtuálního počítače.
+1. Určete [pokyny k propustnosti virtuálních počítačů Azure](../virtual-machines/sizes.md) pro velikost virtuálního počítače.
 1. Určete šířku pásma poskytovatele internetových služeb (ISP).
 1. Vypočítejte očekávanou propustnost tím, že vyberete minimální šířku pásma virtuálního počítače, VPN Gateway nebo poskytovatele internetových služeb. což se měří v megabajtech (/) dělených osmi (8).
 
-Pokud vypočtená propustnost nevyhovuje požadavkům na propustnost směrného plánu vaší aplikace, je nutné zvýšit šířku pásma prostředku, který jste identifikovali jako kritické místo. Pokud chcete změnit velikost VPN Gateway Azure, přečtěte si téma [Změna skladové položky brány](vpn-gateway-about-vpn-gateway-settings.md#gwsku). Pokud chcete změnit velikost virtuálního počítače, přečtěte si téma [Změna velikosti virtuálního](../virtual-machines/virtual-machines-windows-resize-vm.md)počítače. Pokud nejste u očekávané šířky pásma internetu, můžete se také obrátit na poskytovatele internetových služeb.
+Pokud vypočtená propustnost nevyhovuje požadavkům na propustnost směrného plánu vaší aplikace, je nutné zvýšit šířku pásma prostředku, který jste identifikovali jako kritické místo. Pokud chcete změnit velikost VPN Gateway Azure, přečtěte si téma [Změna skladové položky brány](vpn-gateway-about-vpn-gateway-settings.md#gwsku). Pokud chcete změnit velikost virtuálního počítače, přečtěte si téma [Změna velikosti virtuálního](../virtual-machines/windows/resize-vm.md)počítače. Pokud nejste u očekávané šířky pásma internetu, můžete se také obrátit na poskytovatele internetových služeb.
 
 > [!NOTE]
 > VPN Gateway propustnost je agregace všech Site-to-Site\VNET-to-VNET a připojení typu Point-to-site.

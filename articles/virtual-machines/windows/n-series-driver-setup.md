@@ -10,11 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: vikancha
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5dfcb4abc7a6859955bc36fad2cee893a78c79cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2dccfebed26c8064db697413e7417ae08d69a3ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84726561"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998968"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>Instalace ovladačů NVIDIA GPU pro virtuální počítače řady N-Series s Windows 
 
@@ -22,7 +23,7 @@ Pokud chcete využívat možnosti GPU pro virtuální počítače řady Azure N-
 
 Pokud se rozhodnete nainstalovat ovladače NVIDIA GPU ručně, najdete v tomto článku podporované operační systémy, ovladače a postup instalace a ověření. Pro [virtuální počítače se systémem Linux](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)jsou k dispozici také informace o ruční instalaci ovladače.
 
-Základní specifikace, kapacity úložiště a podrobnosti o discích najdete v tématu [velikosti virtuálních počítačů s Windows GPU](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Základní specifikace, kapacity úložiště a podrobnosti o discích najdete v tématu [velikosti virtuálních počítačů s Windows GPU](../sizes-gpu.md?toc=/azure/virtual-machines/windows/toc.json). 
 
 [!INCLUDE [virtual-machines-n-series-windows-support](../../../includes/virtual-machines-n-series-windows-support.md)]
 
@@ -52,19 +53,17 @@ Pokud chcete zadat dotaz na stav zařízení GPU, spusťte nástroj příkazové
 
 ## <a name="rdma-network-connectivity"></a>Připojení k síti RDMA
 
-Připojení k síti RDMA je možné povolit u virtuálních počítačů řady N-Series s podporou RDMA, jako je NC24r nasazených ve stejné skupině dostupnosti nebo do jedné skupiny umístění v sadě škálování virtuálního počítače. Aby bylo možné instalovat ovladače síťových zařízení systému Windows, které umožňují připojení RDMA, je nutné přidat rozšíření HpcVmDrivers. Pokud chcete přidat rozšíření virtuálního počítače do virtuálního počítače N-Series s povoleným RDMA, použijte pro Azure Resource Manager rutiny [Azure PowerShell](/powershell/azure/overview) .
+Připojení k síti RDMA je možné povolit u virtuálních počítačů řady N-Series s podporou RDMA, jako je NC24r nasazených ve stejné skupině dostupnosti nebo do jedné skupiny umístění v sadě škálování virtuálního počítače. Aby bylo možné instalovat ovladače síťových zařízení systému Windows, které umožňují připojení RDMA, je nutné přidat rozšíření HpcVmDrivers. Pokud chcete přidat rozšíření virtuálního počítače do virtuálního počítače N-Series s povoleným RDMA, použijte pro Azure Resource Manager rutiny [Azure PowerShell](/powershell/azure/) .
 
 K instalaci nejnovějšího rozšíření verze 1,1 HpcVMDrivers na existující virtuální počítač s podporou RDMA s názvem myVM v oblasti Západní USA:
   ```powershell
   Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "HpcVmDrivers" -Publisher "Microsoft.HpcCompute" -Type "HpcVmDrivers" -TypeHandlerVersion "1.1"
   ```
-  Další informace najdete v tématu [rozšíření virtuálních počítačů a funkce pro Windows](extensions-features.md).
+  Další informace najdete v tématu [rozšíření virtuálních počítačů a funkce pro Windows](../extensions/features-windows.md).
 
-Síť RDMA podporuje provoz rozhraní MPI (Message Passing Interface) pro aplikace běžící s [Microsoft MPI](https://docs.microsoft.com/message-passing-interface/microsoft-mpi) nebo Intel MPI 5. x. 
+Síť RDMA podporuje provoz rozhraní MPI (Message Passing Interface) pro aplikace běžící s [Microsoft MPI](/message-passing-interface/microsoft-mpi) nebo Intel MPI 5. x. 
 
 
 ## <a name="next-steps"></a>Další kroky
 
 * Vývojáři, kteří sestavují aplikace náročné na grafické PROCESORy NVIDIA Tesla, mohou také stáhnout a nainstalovat nejnovější [sadu CUDA Toolkit](https://developer.nvidia.com/cuda-downloads). Další informace najdete v příručce pro [instalaci CUDA](https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#axzz4ZcwJvqYi).
-
-

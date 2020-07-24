@@ -4,13 +4,13 @@ description: V tomto článku se dozvíte o cenách, fakturaci, fakturaci a výb
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: 653c55fa7476fa5fed077002db226297a33dfef6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/22/2020
+ms.openlocfilehash: 29fa4126d8d0b4f3419c729ee3a73ae315b13122
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119425"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001362"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Možnosti Transact-The pro komerční web Marketplace
 
@@ -95,7 +95,7 @@ V tomto scénáři vám Microsoft účtuje $1,14 za hodinu pro použití publiko
 |Microsoft udržuje 100% nákladů na využití Azure. | $0,14 za hodinu |
 ||
 
-**Přineste si vlastní licenci (BYOL)**
+**Používání vlastní licence (BYOL)**
 
 BYOL má následující nákladovou strukturu:
 
@@ -134,7 +134,7 @@ V tomto scénáři Microsoft účtuje $100,00 pro softwarovou licenci a vyplatí
 |Společnost Microsoft vám zaplatí 80% vašich licenčních nákladů. <br> \*Společnost Microsoft vám pro všechny kvalifikované aplikace SaaS zaplatí 90% nákladů na licenci.   |   $80,00 za měsíc <br> \*$90,00 za měsíc    |
 |Společnost Microsoft udržuje 20% vašich licenčních nákladů. <br> \*Pro všechny kvalifikované aplikace SaaS udržuje společnost Microsoft 10% nákladů na licenci.  |  $20,00 za měsíc <br> \*$10,00     |
 
-U některých produktů SaaS, které publikujete na komerčním webu Marketplace, společnost Microsoft sníží **poplatek za službu Marketplace** z 20% (jak je popsáno v tématu smlouva Microsoft Publisher Agreement) na 10%. Aby vaše nabídka mohla být kvalifikována, musí být alespoň jedna z vašich nabídek označena Microsoftem jako předprodejní nebo přidaným protokolem IP. Pro obdržení tohoto omezeného poplatku za služby Marketplace v měsíci musí být nárok na splnění alespoň pěti pracovních dnů před koncem předchozího kalendářního měsíce. Nižší poplatek za službu Marketplace se nebude vztahovat na virtuální počítače, spravované aplikace ani žádné jiné produkty, které jsou dostupné prostřednictvím komerčního tržiště. Tento snížený poplatek bude k dispozici pro kvalifikované nabídky s licenčními poplatky shromážděnými společností Microsoft mezi 1. května 2019 a 30. června 2020. Po uplynutí této doby se poplatek vrátí na svou normální částku.
+U některých nabídek, které publikujete na komerčním webu Marketplace, sníží společnost Microsoft svůj poplatek za službu Marketplace z 20% (jak je popsáno v tématu smlouva Microsoft Publisher Agreement) na 10%. Aby vaše nabídky získaly nárok, vaše nabídky musí být určené společností Microsoft jako spoluprodejní incetivized Azure. Nárok na získání omezeného servisního poplatku za měsíc musí být splněn nejméně pět (5) pracovních dnů před koncem každého kalendářního měsíce. Snížený poplatek za službu Marketplace se vztahuje na Azure IP spoluprodejní motivovaní SaaS, virtuální počítače, spravované aplikace a jakékoli další kvalifikované IaaSové nabídky, které jsou dostupné prostřednictvím komerčního tržiště.
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>Fakturace, platby, fakturace a kolekce zákazníků
 
@@ -180,7 +180,7 @@ Další informace o nastavení těchto účtů najdete v tématu [Správa účtu
 
 Možnost publikování v režimu Transact je k dispozici pouze pro následující typy nabídek Marketplace:
 
-- **Virtuální počítač** – vyberte si z nabídky bezplatné, vlastní licence nebo průběžné platby a předveďte jako skladové jednotky definované na úrovni nabídky. V zákaznických fakturách od zákazníka společnost Microsoft prezentuje licenční poplatky za software vydavatele odděleně od poplatků za infrastrukturu Azure. Poplatky za infrastrukturu Azure jsou založené na používání softwaru vydavatele.
+- **Virtuální počítač** – vyberte si z nabídky bezplatné, vlastní licence nebo průběžné platby a předveďte jako plány definované na úrovni nabídky. V zákaznických fakturách od zákazníka společnost Microsoft prezentuje licenční poplatky za software vydavatele odděleně od poplatků za infrastrukturu Azure. Poplatky za infrastrukturu Azure jsou založené na používání softwaru vydavatele.
 
 - **Aplikace Azure: Šablona řešení nebo spravovaná aplikace** – musí zřídit jeden nebo víc virtuálních počítačů a vyžádat si součet cen virtuálních počítačů. U spravovaných aplikací s jedním plánem je možné jako cenový model vybrat ceny za virtuální počítače paušální měsíční předplatné. V některých případech jsou poplatky za využití infrastruktury Azure předávány zákazníkovi odděleně od licenčních poplatků za software, ale na stejném výpisu fakturace. Pokud však nakonfigurujete nabídku spravované aplikace pro poplatky za infrastrukturu ISV, prostředky Azure se budou fakturovat vydavateli a zákazník obdrží paušální poplatek, který zahrnuje náklady na infrastrukturu, licence na software a služby správy.
 

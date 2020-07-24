@@ -11,11 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/17/2020
 ms.author: juliako
-ms.openlocfilehash: dbbeeb33ee46b37ec920fe598483c332d3439689
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c39b133773cbe35d78e04c4e40de9d62c4eba18
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77563138"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001107"
 ---
 # <a name="create-a-job-with-multiple-transform-outputs"></a>Vytvoření úlohy s více transformačními výstupy
 
@@ -130,7 +131,7 @@ private static async Task<Job> SubmitJobAsync(IAzureMediaServicesClient client,
 ```
 ## <a name="job-error-codes"></a>Kódy chyb úlohy
 
-Viz [kódy chyb](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
+Viz [kódy chyb](/rest/api/media/jobs/get#joberrorcode).
 
 ## <a name="next-steps"></a>Další kroky
 

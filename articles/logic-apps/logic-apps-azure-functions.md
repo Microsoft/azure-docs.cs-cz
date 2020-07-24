@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 6240b0813132f4a14dbe94b870774ebe7a0663aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ac35fde59479ffc13c17f8e63d6fccf65c3be27
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83714572"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001702"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Volání funkcí Azure Functions z Azure Logic Apps
 
@@ -25,7 +26,7 @@ Chcete-li spustit fragmenty kódu bez vytváření Azure Functions, přečtěte 
 > [!NOTE]
 > Integrace mezi Logic Apps a Azure Functions v současnosti nefunguje s povolenými sloty.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -256,7 +257,7 @@ Před zahájením této úlohy Najděte a uložte tyto hodnoty pro pozdější p
 
 * ID adresáře pro vašeho tenanta ve službě Azure Active Directory (Azure AD)
 
-  Pokud chcete získat ID adresáře vašeho tenanta, můžete spustit [`Get-AzureAccount`](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureaccount) příkaz prostředí PowerShell. Nebo v Azure Portal postupujte podle následujících kroků:
+  Pokud chcete získat ID adresáře vašeho tenanta, můžete spustit [`Get-AzureAccount`](/powershell/module/servicemanagement/azure.service/get-azureaccount) příkaz prostředí PowerShell. Nebo v Azure Portal postupujte podle následujících kroků:
 
   1. V [Azure Portal](https://portal.azure.com)Najděte aplikaci Function App a vyberte ji.
 

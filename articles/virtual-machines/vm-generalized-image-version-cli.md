@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
-ms.openlocfilehash: 5e59872a4da0136232652008a2980601428eeab6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60f5813cf5ff0d52b57f7a4b55d86195051f217f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82796782"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999067"
 ---
 # <a name="create-a-vm-from-a-generalized-image-version-using-the-cli"></a>Vytvoření virtuálního počítače z generalizované verze Image pomocí rozhraní příkazového řádku
 
-Vytvořte virtuální počítač z [zobecněné verze image](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images) uložené v galerii sdílených imagí. Pokud chcete vytvořit virtuální počítač pomocí specializované image, přečtěte si téma [Vytvoření virtuálního počítače z specializované image](vm-specialized-image-version-powershell.md). 
+Vytvořte virtuální počítač z [zobecněné verze image](./linux/shared-image-galleries.md#generalized-and-specialized-images) uložené v galerii sdílených imagí. Pokud chcete vytvořit virtuální počítač pomocí specializované image, přečtěte si téma [Vytvoření virtuálního počítače z specializované image](vm-specialized-image-version-powershell.md). 
 
 
 ## <a name="get-the-image-id"></a>Získat ID image
@@ -30,7 +30,7 @@ gallery=myGallery
 az sig image-definition list --resource-group $resourceGroup --gallery-name $gallery --query "[].[name, id]" --output tsv
 ```
 
-## <a name="create-the-vm"></a>Vytvořte virtuální počítač.
+## <a name="create-the-vm"></a>Vytvoření virtuálního počítače
 
 Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az-vm-create). Chcete-li použít nejnovější verzi obrázku, nastavte `--image` na ID definice obrázku. 
 

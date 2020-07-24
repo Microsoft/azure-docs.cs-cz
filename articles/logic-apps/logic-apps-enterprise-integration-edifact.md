@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: c9d80ccac311b02d8734663d99a37804f8280771
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfe48a1348929bbe8d4af6793d94d52514df9d74
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82115529"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001532"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Výměna zpráv EDIFACT pro podnikovou integraci B2B v Azure Logic Apps s využitím rozšíření Enterprise Integration Pack
 
@@ -36,7 +36,7 @@ Po [Vytvoření účtu pro integraci](../logic-apps/logic-apps-enterprise-integr
 
 ## <a name="create-an-edifact-agreement"></a>Vytvoření smlouvy EDIFACT 
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com "portál Azure"). 
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com "Portál Azure Portal"). 
 
 2. V hlavní nabídce Azure vyberte **všechny služby**. Do vyhledávacího pole zadejte "Integration" a pak vyberte **účty pro integraci**.
 
@@ -63,7 +63,7 @@ Po [Vytvoření účtu pro integraci](../logic-apps/logic-apps-enterprise-integr
 
    | Vlastnost | Popis |
    | --- | --- |
-   | Name |Název smlouvy |
+   | Název |Název smlouvy |
    | Typ smlouvy | By měl být EDIFACT |
    | Partner hostitele |Smlouva potřebuje hostitele i partnera hosta. Partner hostitele představuje organizaci, která konfiguruje smlouvu. |
    | Hostitelská identita |Identifikátor hostitelského partnera |
@@ -251,7 +251,7 @@ Po dokončení každého ověřovacího řádku se přidá další automaticky. 
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Další technické podrobnosti o této spojnici, jako jsou akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete na [referenční stránce konektoru](https://docs.microsoft.com/connectors/edifact/).
+Další technické podrobnosti o této spojnici, jako jsou akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete na [referenční stránce konektoru](/connectors/edifact/).
 
 > [!NOTE]
 > Pro Logic Apps v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Tato verze konektoru ISE-Label používá [omezení zpráv B2B pro ISE](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits).

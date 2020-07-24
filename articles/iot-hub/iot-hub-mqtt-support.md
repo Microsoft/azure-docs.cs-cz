@@ -10,12 +10,12 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 2f1f059f3abfd04ae78d9a2a19cff2929e84b8a4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 72c012ba9ce28c0ca5dd5a315cf94b8895558a0b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521118"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001685"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikace se službou IoT Hub pomocí protokolu MQTT
 
@@ -41,7 +41,7 @@ Port MQTT (8883) je blokován v mnoha firemních a vzdělávacích prostředích
 
 ## <a name="using-the-device-sdks"></a>Používání sad SDK pro zařízení
 
-Sady [SDK pro zařízení](https://github.com/Azure/azure-iot-sdks) , které podporují protokol MQTT, jsou k dispozici pro jazyky Java, Node.js, C, C# a Python. Sady SDK pro zařízení používají standardní připojovací řetězec IoT Hub k navázání připojení ke službě IoT Hub. Aby bylo možné používat protokol MQTT, musí být parametr klientského protokolu nastaven na hodnotu **MQTT**. V parametru protokolu klienta můžete také zadat MQTT přes webové sokety. Sady SDK pro zařízení se ve výchozím nastavení připojují k IoT Hub s příznakem **CleanSession** nastaveným na **hodnotu 0** a používají **technologii QoS 1** pro výměnu zpráv se službou IoT Hub.
+Sady [SDK pro zařízení](https://github.com/Azure/azure-iot-sdks) , které podporují protokol MQTT, jsou k dispozici pro jazyky Java, Node.js, C, C# a Python. Sady SDK pro zařízení používají standardní připojovací řetězec IoT Hub k navázání připojení ke službě IoT Hub. Aby bylo možné používat protokol MQTT, musí být parametr klientského protokolu nastaven na hodnotu **MQTT**. V parametru protokolu klienta můžete také zadat MQTT přes webové sokety. Sady SDK pro zařízení se ve výchozím nastavení připojují k IoT Hub s příznakem **CleanSession** nastaveným na **hodnotu 0** a používají **technologii QoS 1** pro výměnu zpráv se službou IoT Hub. I když je možné nakonfigurovat **technologii QoS 0** pro rychlejší výměnu zpráv, měli byste si uvědomit, že doručení není zaručené ani potvrzené. Z tohoto důvodu se **technologie QoS 0** často označuje jako "oheň" a "zapomenout".
 
 Když je zařízení připojené ke službě IoT Hub, poskytují sady SDK pro zařízení metody, které umožní zařízení vyměňovat zprávy se službou IoT Hub.
 

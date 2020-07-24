@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2018
 ms.author: alkohli
-ms.openlocfilehash: 6eb983eb5e36c5f3ac6b6eca049239d12bc01a0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8faf4ca8e27b280a60750d5f349ab0282ed593bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514617"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999492"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>Monitorování hardwarových komponent a stavů pomocí služby StorSimple Device Manager
 
@@ -49,11 +49,11 @@ Chcete-li zobrazit stav hardwaru součásti zařízení, proveďte následujíc�
 
 1. Přejděte na **zařízení**a vyberte konkrétní zařízení StorSimple. Přejít na **Monitor > stav hardwaru**.
 
-    ![](./media/storsimple-8000-monitor-hardware-status/hw-health1.png)
+    ![Snímek obrazovky zobrazující okno nastavení služby Device Manager V části monitorování se vybere stav hardwaru.](./media/storsimple-8000-monitor-hardware-status/hw-health1.png)
 
 2. Vyhledejte část **hardwarové součásti** a vyberte z dostupných součástí. Stačí kliknout na popisek součásti a seznam se rozbalí a zobrazí se stav různých součástí zařízení. Prohlédněte si [podrobný seznam komponent pro primární skříň](#component-list-for-primary-enclosure-of-storsimple-device) a [seznam podrobných součástí pro eBOD skříň](#component-list-for-ebod-enclosure-of-storsimple-device).
 
-    ![](./media/storsimple-8000-monitor-hardware-status/hw-health2.png)
+    ![Snímek obrazovky s jednou součástí vybranou v části hardwarové součásti. Sousední okno zobrazuje název a stav částí této součásti.](./media/storsimple-8000-monitor-hardware-status/hw-health2.png)
 
 3. Pomocí následujícího schématu barevného kódování můžete interpretovat stav součásti:
    
@@ -64,22 +64,22 @@ Chcete-li zobrazit stav hardwaru součásti zařízení, proveďte následujíc�
    
    Na následujícím snímku obrazovky vidíte zařízení, které obsahuje komponenty v **pořádku**, **Upozornění**a stav **selhání** .
        
-   ![](./media/storsimple-8000-monitor-hardware-status/hw-health3.png)
+   ![Snímek obrazovky se třemi součástmi v části hardwarové součásti: jeden ve stavu v pořádku, jeden ve stavu selhání a jeden ve stavu varování.](./media/storsimple-8000-monitor-hardware-status/hw-health3.png)
 
    Rozbalením **seznamu sdílených komponent**zjistíme, že paměť NVRAM a cluster jsou degradovány.
 
-   ![](./media/storsimple-8000-monitor-hardware-status/hw-health5.png)
+   ![Snímek obrazovky znázorňující vybranou položku Sdílené součásti V přilehlých oknech je N v R a M a cluster ve stavu upozornění.](./media/storsimple-8000-monitor-hardware-status/hw-health5.png)
 
    Rozbalením seznamu **součástí kontroleru 1** zjistíme, že se uzel clusteru nezdařil.  
 
-   ![](./media/storsimple-8000-monitor-hardware-status/hw-health4.png)  
+   ![Snímek obrazovky znázorňující vybranou položku součásti kontroleru 1 V přilehlých oknech je uzel clusteru ve stavu selhání.](./media/storsimple-8000-monitor-hardware-status/hw-health4.png)  
 
 4. Pokud narazíte na součást, která není v **dobrém** stavu, kontaktujte podpora Microsoftu. Pokud jsou v zařízení povolené výstrahy, obdržíte e-mailové upozornění. Pokud potřebujete vyměnit neúspěšnou hardwarovou součást, přečtěte si téma [Výměna StorSimple hardwarové součásti](storsimple-hardware-component-replacement.md).
 
 ## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>Seznam součástí pro primární skříň zařízení StorSimple
 Následující tabulka popisuje fyzické a logické komponenty obsažené v primární skříni (v 8100 a 8600) místního zařízení StorSimple.
 
-| Součást | Modul | Typ | Umístění | Přimístit jednotky (FRU) pole? | Description |
+| Komponenta | Modul | Typ | Umístění | Přimístit jednotky (FRU) pole? | Popis |
 | --- | --- | --- | --- | --- | --- |
 | Jednotka ve slotu [0-11] |Diskové jednotky |Fyzické |Shared |Yes |Jeden řádek se zobrazí pro každou jednotku SSD nebo hard jednotky v primární skříni. |
 | Senzor okolní teploty |Skříně |Fyzické |Shared |No |Měří teplotu v rámci skříně. |
@@ -93,18 +93,18 @@ Následující tabulka popisuje fyzické a logické komponenty obsažené v prim
 | Zdroj napájení [0-1] |PCM |Fyzické |Shared |Yes |Jeden řádek se zobrazí pro každou spotřebu napájení v obou PCMs, která se nachází na zadní straně zařízení. |
 | Chlazení [0-1] |PCM |Fyzické |Shared |Yes |Pro každý ze čtyř chladicích ventilátorů umístěných v obou PCMs se zobrazí jeden řádek. |
 | Baterie [0-1] |PCM |Fyzické |Shared |Yes |Jeden řádek je zobrazen pro každý z modulů záložní baterie, které jsou umístěny v PCM. |
-| Metis |Není k dispozici |Logické |Shared |Není k dispozici |Zobrazuje stav baterie: to, jestli potřebují zpoplatnění, a blíží se k ukončení životního cyklu. |
-| Cluster |Není k dispozici |Logické |Shared |Není k dispozici |Zobrazuje stav clusteru, který se vytvoří mezi dvěma integrovanými moduly řadiče. |
-| Uzel clusteru |Není k dispozici |Logické |Shared |Není k dispozici |Určuje stav kontroleru v rámci clusteru. |
-| Kvorum clusteru |Není k dispozici |Logické | |Není k dispozici |Určuje přítomnost většiny členství na disku ve fondu úložiště HDD. |
-| Datový prostor HDD |Není k dispozici |Logické |Shared |Není k dispozici |Prostor úložiště, který se používá pro data ve fondu úložiště jednotky pevného disku (HDD). |
-| Místo pro správu HDD |Není k dispozici |Logické |Shared |Není k dispozici |Rezervované místo ve fondu úložiště HDD pro úlohy správy. |
-| Místo kvora HDD |Není k dispozici |Logické |Shared |Není k dispozici |Rezervované místo ve fondu úložiště HDD pro kvorum clusteru. |
-| Místo pro nahrazení HDD |Není k dispozici |Logické |Shared |Není k dispozici |Místo vyhrazené fondem úložiště HDD pro nahrazení řadičem. |
-| Datový prostor SSD |Není k dispozici |Logické |Shared |Není k dispozici |Prostor úložiště, který se používá pro data ve fondu úložiště SSD (Solid State Drive). |
-| PAMĚŤ SSD NVRAM |Není k dispozici |Logické |Shared |Není k dispozici |Prostor úložiště ve fondu úložiště SSD, který je vyhrazený pro logiku paměti NVRAM. |
-| Fond úložiště HDD |Není k dispozici |Logické |Shared |Není k dispozici |Zobrazuje stav logického fondu úložiště, který je vytvořený ze zařízení HDD. |
-| Fond úložiště SSD |Není k dispozici |Logické |Shared |Není k dispozici |Zobrazuje stav logického fondu úložiště, který je vytvořený ze zařízení SSD. |
+| Metis |– |Logický |Shared |– |Zobrazuje stav baterie: to, jestli potřebují zpoplatnění, a blíží se k ukončení životního cyklu. |
+| Cluster |– |Logický |Shared |– |Zobrazuje stav clusteru, který se vytvoří mezi dvěma integrovanými moduly řadiče. |
+| Uzel clusteru |– |Logický |Shared |– |Určuje stav kontroleru v rámci clusteru. |
+| Kvorum clusteru |– |Logický | |– |Určuje přítomnost většiny členství na disku ve fondu úložiště HDD. |
+| Datový prostor HDD |– |Logický |Shared |– |Prostor úložiště, který se používá pro data ve fondu úložiště jednotky pevného disku (HDD). |
+| Místo pro správu HDD |– |Logický |Shared |– |Rezervované místo ve fondu úložiště HDD pro úlohy správy. |
+| Místo kvora HDD |– |Logický |Shared |– |Rezervované místo ve fondu úložiště HDD pro kvorum clusteru. |
+| Místo pro nahrazení HDD |– |Logický |Shared |– |Místo vyhrazené fondem úložiště HDD pro nahrazení řadičem. |
+| Datový prostor SSD |– |Logický |Shared |– |Prostor úložiště, který se používá pro data ve fondu úložiště SSD (Solid State Drive). |
+| PAMĚŤ SSD NVRAM |– |Logický |Shared |– |Prostor úložiště ve fondu úložiště SSD, který je vyhrazený pro logiku paměti NVRAM. |
+| Fond úložiště HDD |– |Logický |Shared |– |Zobrazuje stav logického fondu úložiště, který je vytvořený ze zařízení HDD. |
+| Fond úložiště SSD |– |Logický |Shared |– |Zobrazuje stav logického fondu úložiště, který je vytvořený ze zařízení SSD. |
 | Kontroler [0-1] [stav] |I/O |Fyzické |Kontrolér |Yes |Zobrazí stav kontroleru a zda je v rámci skříně v aktivním nebo pohotovostním režimu. |
 | Senzory teploty v kontroleru |I/O |Fyzické |Kontrolér |No |Množství senzorů teploty, jako je vstupně-výstupní modul, teplota procesoru, DIMM a senzory PCIe, mají zobrazený stav, který označuje, jestli se zjištěná teplota nachází v toleranci. |
 | Rozšíření SAS |I/O |Fyzické |Kontrolér |No |Označuje stav rozšíření SAS (Serial Attached SCSI), které se používá k připojení integrovaného úložiště k řadiči. |
@@ -114,13 +114,13 @@ Následující tabulka popisuje fyzické a logické komponenty obsažené v prim
 | Power elektroniky skříně |I/O |Fyzické |Kontrolér |No |Určuje stav systému napájení, který skříň používá. |
 | Diagnostika elektroniky skříně |I/O |Fyzické |Kontrolér |No |Určuje stav subsystémů diagnostiky, které poskytuje kontroler. |
 | Řadič pro správu základní desky (BMC) |I/O |Fyzické |Kontrolér |No |Určuje stav řadiče pro správu základní desky (BMC), což je specializovaný procesor služeb, který monitoruje hardwarové zařízení prostřednictvím senzorů a komunikuje se správcem systému prostřednictvím nezávislého připojení. |
-| Síť Ethernet |I/O |Fyzické |Kontrolér |No |Označuje stav každého síťového rozhraní, tedy porty pro správu a data, které jsou k dispozici na řadiči. |
+| Ethernet |I/O |Fyzické |Kontrolér |No |Označuje stav každého síťového rozhraní, tedy porty pro správu a data, které jsou k dispozici na řadiči. |
 | NVRAM disku |I/O |Fyzické |Kontrolér |No |Označuje stav paměti NVRAM, nestálou paměť náhodného přístupu zálohovanou baterií, která slouží k uchování informací důležitých pro aplikaci v případě výpadku napájení. |
 
 ## <a name="component-list-for-ebod-enclosure-of-storsimple-device"></a>Seznam součástí pro EBOD skříň zařízení StorSimple
 Následující tabulka popisuje fyzické a logické komponenty obsažené v EBOD skříni (k dispozici pouze v modelu 8600) místního zařízení StorSimple.
 
-| Součást | Modul | Typ | Umístění | JEDNOTKA? | Description |
+| Komponenta | Modul | Typ | Umístění | JEDNOTKA? | Popis |
 | --- | --- | --- | --- | --- | --- |
 | Jednotka ve slotu [0-11] |Diskové jednotky |Fyzické |Shared |Yes |Jeden řádek se zobrazí pro každou jednotku HDD na začátku EBOD skříně. |
 | Senzor okolní teploty |Skříně |Fyzické |Shared |No |Měří teplotu v rámci skříně. |
@@ -133,7 +133,7 @@ Následující tabulka popisuje fyzické a logické komponenty obsažené v EBOD
 | Senzory teploty v PCM |PCM |Fyzické |Shared |No |Množství senzorů teploty, jako jsou vstupní a aktivní senzory, má zobrazený stav, který označuje, zda je měřená teplota v toleranci. |
 | Zdroj napájení [0-1] |PCM |Fyzické |Shared |Yes |Jeden řádek se zobrazí pro každou spotřebu napájení v obou PCMs, která se nachází na zadní straně zařízení. |
 | Chlazení [0-1] |PCM |Fyzické |Shared |Yes |Pro každý ze čtyř chladicích ventilátorů umístěných v obou PCMs se zobrazí jeden řádek. |
-| Místní úložiště [HDD] |Není k dispozici |Logické |Shared |Není k dispozici |Zobrazuje stav logického fondu úložiště, který je vytvořený ze zařízení HDD. |
+| Místní úložiště [HDD] |– |Logický |Shared |– |Zobrazuje stav logického fondu úložiště, který je vytvořený ze zařízení HDD. |
 | Kontroler [0-1] [stav] |I/O |Fyzické |Kontrolér |Yes |Zobrazuje stav řadičů v modulu EBOD. |
 | Senzory teploty v EBOD |I/O |Fyzické |Kontrolér |No |Množství senzorů teploty od každého kontroleru se zobrazuje jejich stav, což označuje, jestli se zjištěná teplota nachází v toleranci. |
 | Rozšíření SAS |I/O |Fyzické |Kontrolér |No |Určuje stav rozšíření SAS, které se používá k připojení integrovaného úložiště k řadiči. |

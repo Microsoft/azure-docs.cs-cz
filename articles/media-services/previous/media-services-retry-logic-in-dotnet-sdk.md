@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 63715f668438519131eba5bfff7aa38fc73267d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 120b7e044452dc47126923449a3e1a6e55cfd6a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61094647"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000019"
 ---
 # <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Logika opakování v sadě Media Services SDK pro .NET  
 
@@ -40,17 +40,17 @@ Následující tabulka popisuje výjimky, které sada Media Services SDK pro .NE
 | Výjimka | Webový požadavek | Storage | Dotaz | Metody |
 | --- | --- | --- | --- | --- |
 | WebException<br/>Další informace najdete v části [stavové kódy WebException](media-services-retry-logic-in-dotnet-sdk.md#WebExceptionStatus) . |Ano |Ano |Ano |Ano |
-| DataServiceClientException<br/> Další informace najdete v tématu [stavové kódy chyb protokolu HTTP](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Ne |Ano |Ano |Ano |
-| DataServiceQueryException<br/> Další informace najdete v tématu [stavové kódy chyb protokolu HTTP](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Ne |Ano |Ano |Ano |
-| DataServiceRequestException<br/> Další informace najdete v tématu [stavové kódy chyb protokolu HTTP](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Ne |Ano |Ano |Ano |
-| DataServiceTransportException |Ne |Ne |Ano |Ano |
-| TimeoutException |Ano |Ano |Ano |Ne |
+| DataServiceClientException<br/> Další informace najdete v tématu [stavové kódy chyb protokolu HTTP](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |No |Ano |Ano |Ano |
+| DataServiceQueryException<br/> Další informace najdete v tématu [stavové kódy chyb protokolu HTTP](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |No |Ano |Ano |Ano |
+| DataServiceRequestException<br/> Další informace najdete v tématu [stavové kódy chyb protokolu HTTP](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |No |Ano |Ano |Ano |
+| DataServiceTransportException |No |No |Ano |Ano |
+| TimeoutException |Ano |Ano |Ano |No |
 | SocketException |Ano |Ano |Ano |Ano |
-| StorageException |Ne |Ano |Ne |Ne |
-| IOException |Ne |Ano |Ne |Ne |
+| StorageException |No |Yes |No |No |
+| IOException |No |Yes |No |No |
 
 ### <a name="webexception-status-codes"></a><a name="WebExceptionStatus"></a>Stavové kódy WebException
-Následující tabulka uvádí, pro které kódy chyb WebException je logika opakování implementovaná. Výčet [WebExceptionStatus rovným](https://msdn.microsoft.com/library/system.net.webexceptionstatus.aspx) definuje stavové kódy.  
+Následující tabulka uvádí, pro které kódy chyb WebException je logika opakování implementovaná. Výčet [WebExceptionStatus rovným](/dotnet/api/system.net.webexceptionstatus?view=netcore-3.1) definuje stavové kódy.  
 
 | Status | Webový požadavek | Storage | Dotaz | Metody |
 | --- | --- | --- | --- | --- |
@@ -58,13 +58,13 @@ Následující tabulka uvádí, pro které kódy chyb WebException je logika opa
 | NameResolutionFailure |Ano |Ano |Ano |Ano |
 | ProxyNameResolutionFailure |Ano |Ano |Ano |Ano |
 | SendFailure |Ano |Ano |Ano |Ano |
-| PipelineFailure |Ano |Ano |Ano |Ne |
-| ConnectionClosed |Ano |Ano |Ano |Ne |
-| KeepAliveFailure |Ano |Ano |Ano |Ne |
-| UnknownError |Ano |Ano |Ano |Ne |
-| ReceiveFailure |Ano |Ano |Ano |Ne |
-| RequestCanceled |Ano |Ano |Ano |Ne |
-| Časový limit |Ano |Ano |Ano |Ne |
+| PipelineFailure |Ano |Ano |Ano |No |
+| ConnectionClosed |Ano |Ano |Ano |No |
+| KeepAliveFailure |Ano |Ano |Ano |No |
+| UnknownError |Ano |Ano |Ano |No |
+| ReceiveFailure |Ano |Ano |Ano |No |
+| RequestCanceled |Ano |Ano |Ano |No |
+| Časový limit |Ano |Ano |Ano |No |
 | ProtocolError <br/>Opakování na ProtocolError se řídí zpracováním kódu stavu HTTP. Další informace najdete v tématu [stavové kódy chyb protokolu HTTP](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Ano |Ano |Ano |Ano |
 
 ### <a name="http-error-status-codes"></a><a name="HTTPStatusCode"></a>Stavové kódy chyb HTTP
@@ -72,14 +72,14 @@ Když operace Query a SaveChanges vyvolají DataServiceClientException, DataServ
 
 | Status | Webový požadavek | Storage | Dotaz | Metody |
 | --- | --- | --- | --- | --- |
-| 401 |Ne |Ano |Ne |Ne |
-| 403 |Ne |Ano<br/>Zpracování opakovaných pokusů s delší dobou čekání. |Ne |Ne |
+| 401 |No |Yes |No |No |
+| 403 |No |Yes<br/>Zpracování opakovaných pokusů s delší dobou čekání. |No |No |
 | 408 |Ano |Ano |Ano |Ano |
 | 429 |Ano |Ano |Ano |Ano |
-| 500 |Ano |Ano |Ano |Ne |
-| 502 |Ano |Ano |Ano |Ne |
+| 500 |Ano |Ano |Ano |No |
+| 502 |Ano |Ano |Ano |No |
 | 503 |Ano |Ano |Ano |Ano |
-| 504 |Ano |Ano |Ano |Ne |
+| 504 |Ano |Ano |Ano |No |
 
 Pokud se chcete podívat na skutečnou implementaci logiky opakování pro sadu Media Services SDK pro .NET, přečtěte si téma [Azure-SDK-for-Media-Services](https://github.com/Azure/azure-sdk-for-media-services/tree/dev/src/net/Client/TransientFaultHandling).
 
@@ -88,4 +88,3 @@ Pokud se chcete podívat na skutečnou implementaci logiky opakování pro sadu 
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

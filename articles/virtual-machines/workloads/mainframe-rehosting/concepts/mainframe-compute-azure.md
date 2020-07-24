@@ -6,11 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 97f354d0a313d58c671366dd0e5f485504823e13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c5941ec88cd793961ad66245d0dc0b5e0d7772f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76288927"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998931"
 ---
 # <a name="move-mainframe-compute-to-azure"></a>Přesunout do Azure výpočetní sálové počítače
 
@@ -93,13 +94,13 @@ Přístup je k migraci LPARs na jednotlivé virtuální počítače. Azure se pa
 
 Jednou z výhod řešení založeného na Azure je schopnost horizontálního navýšení kapacity. Škálování zpřístupňuje téměř neomezenou dostupnou výpočetní kapacitu pro aplikaci. Azure podporuje více metod pro horizontální navýšení výpočetní výkon:
 
-- **Vyrovnávání zatížení napříč clusterem.** V tomto scénáři může aplikace pomocí nástroje [pro vyrovnávání zatížení](/azure/load-balancer/load-balancer-overview) nebo správce prostředků rozložit zatížení mezi několika virtuálními počítači v clusteru. Pokud potřebujete větší výpočetní kapacitu, přidají se do clusteru další virtuální počítače.
+- **Vyrovnávání zatížení napříč clusterem.** V tomto scénáři může aplikace pomocí nástroje [pro vyrovnávání zatížení](../../../../load-balancer/load-balancer-overview.md) nebo správce prostředků rozložit zatížení mezi několika virtuálními počítači v clusteru. Pokud potřebujete větší výpočetní kapacitu, přidají se do clusteru další virtuální počítače.
 
-- **Sady škálování virtuálních počítačů.** V tomto scénáři shluku se aplikace může škálovat na další [výpočetní prostředky](/azure/virtual-machine-scale-sets/overview) na základě využití virtuálních počítačů. Pokud se poptávka napadne, může se také snížit počet virtuálních počítačů v sadě škálování, což zajistí efektivní využití výpočetního výkonu.
+- **Sady škálování virtuálních počítačů.** V tomto scénáři shluku se aplikace může škálovat na další [výpočetní prostředky](../../../../virtual-machine-scale-sets/overview.md) na základě využití virtuálních počítačů. Pokud se poptávka napadne, může se také snížit počet virtuálních počítačů v sadě škálování, což zajistí efektivní využití výpočetního výkonu.
 
-- **PaaS škálování.** Nabídky Azure PaaS škálují výpočetní prostředky. Například [Azure Service Fabric](/azure/service-fabric/service-fabric-overview) přiděluje výpočetní prostředky pro splnění zvýšení objemu požadavků.
+- **PaaS škálování.** Nabídky Azure PaaS škálují výpočetní prostředky. Například [Azure Service Fabric](../../../../service-fabric/service-fabric-overview.md) přiděluje výpočetní prostředky pro splnění zvýšení objemu požadavků.
 
-- **Clustery Kubernetes.** Aplikace v Azure můžou používat [clustery Kubernetes](/azure/aks/concepts-clusters-workloads) pro výpočetní služby pro zadané prostředky. Služba Azure Kubernetes Service (AKS) je spravovaná služba, která orchestruje uzly Kubernetes, fondy a clustery v Azure.
+- **Clustery Kubernetes.** Aplikace v Azure můžou používat [clustery Kubernetes](../../../../aks/concepts-clusters-workloads.md) pro výpočetní služby pro zadané prostředky. Služba Azure Kubernetes Service (AKS) je spravovaná služba, která orchestruje uzly Kubernetes, fondy a clustery v Azure.
 
 Pokud chcete zvolit správnou metodu pro škálování výpočetních prostředků, je důležité pochopit, jak se Azure a sálové počítače liší. Klíč je, jak nebo pokud – data se sdílejí pomocí výpočetních prostředků. V Azure nejsou data (ve výchozím nastavení) obvykle sdílená více virtuálními počítači. Pokud je sdílení dat vyžadováno více virtuálními počítači ve výpočetním clusteru se škálováním na více instancí, musí se sdílená data nacházet v prostředku, který tuto funkci podporuje. Sdílení dat v Azure zahrnuje úložiště, jak je popsáno v následující části.
 
@@ -114,7 +115,7 @@ Jednotlivé úrovně můžou také poskytovat vhodné služby pro zotavení po h
 ## <a name="next-steps"></a>Další kroky
 
 - [Migrace sálového počítače](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [Opětovné hostování sálového počítače v Azure Virtual Machines](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
+- [Opětovné hostování sálového počítače v Azure Virtual Machines](../overview.md)
 - [Přesunout sálové úložiště do Azure](mainframe-storage-Azure.md)
 
 ### <a name="ibm-resources"></a>Prostředky IBM

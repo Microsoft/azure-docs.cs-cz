@@ -14,25 +14,25 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 3adbb9471cc501861b65efd0321b3b4f72b07aea
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: e5978cff8da4697cf130e499c8d9273d75118963
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057853"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000614"
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Začínáme s klientskou sadou Java SDK pro Azure Media Services  
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 
 Tento kurz vás provede jednotlivými kroky implementace základní aplikace pro doručování videa pomocí služby Azure Media Services s využitím Java SDK.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro dokončení tohoto kurzu potřebujete následující položky:
 
-* Účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
+* Účet Azure: Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * Účet Media Services. Pokud chcete vytvořit účet Media Services, přečtěte si článek [Jak vytvořit účet Media Services](media-services-portal-create-account.md).
 * Aktuální [Azure Media Services Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-media/latest)
 
@@ -65,7 +65,7 @@ Kód se připojí k rozhraní API služby Azure Media pomocí ověřování inst
 * `clientKey`: Klíč klienta aplikace Azure AD
 * `restApiEndpoint`: Koncový bod REST API účtu Azure Media Services
 
-Můžete vytvořit aplikaci Azure AD a získat předchozí hodnoty konfigurace z webu Azure Portal. Další informace najdete v sekci **Ověřování instančních objektů** tématu [Začínáme s ověřováním Azure AD s využitím webu Azure Portal](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad).
+Můžete vytvořit aplikaci Azure AD a získat předchozí hodnoty konfigurace z webu Azure Portal. Další informace najdete v sekci **Ověřování instančních objektů** tématu [Začínáme s ověřováním Azure AD s využitím webu Azure Portal](./media-services-portal-get-started-with-aad.md).
 
 Kód také pracuje s místně uloženým videosouborem. Pokud chcete poskytnout vlastní místní soubor k odeslání, musíte tento kód upravit.
 
@@ -310,7 +310,7 @@ Kód také pracuje s místně uloženým videosouborem. Pokud chcete poskytnout 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 Další informace týkající se vývoje aplikací v jazyce Java v Azure najdete v tématech [Azure středisko pro vývojáře Java][Azure Java Developer Center] a [Azure pro vývojáře v Javě][Azure for Java developers].
 
 
@@ -320,6 +320,5 @@ Dokumentaci Media Services Javadoc najdete v tématu [Dokumentace pro knihovny A
 
 [Azure Media Services SDK Maven Package]: https://mvnrepository.com/artifact/com.microsoft.azure/azure-media/latest
 [Azure Java Developer Center]: https://azure.microsoft.com/develop/java/
-[Azure for Java developers]: https://docs.microsoft.com/java/azure/
-[Media Services Client Development]: https://msdn.microsoft.com/library/windowsazure/dn223283.aspx
-
+[Azure for Java developers]: /java/azure/
+[Media Services Client Development]: /previous-versions/azure/dn223283(v=azure.100)

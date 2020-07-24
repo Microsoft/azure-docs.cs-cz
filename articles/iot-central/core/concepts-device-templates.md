@@ -7,11 +7,12 @@ ms.date: 05/21/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 2d5009086a24a54c9a2ec4734d3c4dcbebb04475
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e90a4e9ec88e074ec7b30d78bc99cfa8bf39ba2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84418796"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002348"
 ---
 # <a name="what-are-device-templates"></a>Co jsou šablony zařízení?
 
@@ -28,7 +29,7 @@ Tvůrce řešení přidá šablony zařízení do aplikace IoT Central. Vývojá
 - _Vlastní nastavení_. Tato část šablony zařízení umožňuje vývojáři řešení přepsat některé definice v DCM. Vlastní nastavení jsou užitečná, pokud vývojář řešení chce upřesnit způsob, jakým aplikace zpracovává hodnotu, jako je například Změna zobrazovaného názvu pro vlastnost nebo barva použitou k zobrazení hodnoty telemetrie. Přizpůsobení neovlivňují kód, který vývojář zařízení zapisuje k implementaci DCM.
 - _Zobrazení_. Tato část šablony zařízení umožňuje vývojářům řešení definovat vizualizace pro zobrazení dat ze zařízení a formulářů pro správu a řízení zařízení. Zobrazení používají DCM, vlastnosti cloudu a přizpůsobení. Zobrazení neovlivňují kód, který vývojář zařízení zapisuje k implementaci DCM.
 
-## <a name="device-capability-models"></a>Modely schopností zařízení
+## <a name="device-capability-models"></a>Modely funkcí zařízení
 
 DCM definuje, jak zařízení komunikuje s vaší aplikací IoT Central. Vývojář zařízení musí zajistit, aby zařízení implementovalo chování definované v DCM, aby IoT Central mohl monitorovat a spravovat zařízení. DCM je tvořen jedním nebo více _rozhraními_a každé rozhraní může definovat kolekci typů _telemetrie_ , _vlastností zařízení_a _příkazů_. Vývojář řešení může importovat soubor JSON, který definuje DCM na šablonu zařízení, nebo použít webové uživatelské rozhraní v IoT Central k vytvoření nebo úpravě DCM. Změny v DCM provedené pomocí webového uživatelského rozhraní vyžadují, [aby byla šablona zařízení ve verzi](./howto-version-device-template.md).
 
@@ -220,6 +221,6 @@ Telemetrii, vlastnosti a příkazy, které můžete přidat do zobrazení, jsou 
 
 ## <a name="next-steps"></a>Další kroky
 
-Jako vývojář zařízení teď, když jste se seznámili se o šablonách zařízení, jste si vyzkoušeli následující [IoT Central](./concepts-get-connected.md) postup, který vám umožní získat další informace o registraci zařízení IoT Central a o tom, jak IoT Central zabezpečit připojení zařízení.
+Jako vývojář zařízení teď, když jste se dozvěděli o šablonách zařízení, je doporučený další postup čtení [telemetrie, vlastností a datových částí příkazů](./concepts-telemetry-properties-commands.md) , kde se dozvíte víc o datech, která zařízení vyměňuje pomocí IoT Central.
 
 Jako vývojář řešení je doporučeným dalším krokem čtení [definice nového typu zařízení IoT v aplikaci Azure IoT Central](./howto-set-up-template.md) , kde najdete další informace o tom, jak vytvořit šablonu zařízení.

@@ -7,11 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 49c83fab54b7188c3a3838f3162e71d8495989dd
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: cb9c851ca33aa6eeb6d0fe0576f98ecb0693be02
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037507"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999280"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Vzory řešení služby Azure Stream Analytics
 
@@ -21,7 +22,7 @@ Stejně jako v případě mnoha dalších služeb v Azure je Stream Analytics ne
 
 Pomocí Azure Stream Analytics můžete rychle vytvářet řídicí panely a výstrahy v reálném čase. Jednoduché řešení ingestuje události z Event Hubs nebo IoT Hub a [informační panel Power BI vytvoří pomocí sady streamování dat](/power-bi/service-real-time-streaming). Další informace najdete v podrobném kurzu [Analýza dat telefonního hovoru pomocí Stream Analytics a vizualizace výsledků v Power BIm řídicím panelu](stream-analytics-manage-job.md).
 
-![ASA Power BI řídicí panel](media/stream-analytics-solution-patterns/pbidashboard.png)
+![ASA Power BI řídicí panel](media/stream-analytics-solution-patterns/power-bi-dashboard.png)
 
 Toto řešení může být sestaveno během několika minut od Azure Portal. Neexistují žádné obsáhlé kódování a jazyk SQL slouží k vyjádření obchodní logiky.
 
@@ -31,7 +32,7 @@ Tento vzor řešení nabízí nejnižší latenci ze zdroje událostí na řídi
 
 Řídicí panel Power BI nabízí nízkou latenci, ale nedá se použít k tvorbě úplných sestav Power BI podrobnějším. Běžným vzorem vytváření sestav je výstup dat, který se SQL Database jako první. Pak použijte konektor SQL Power BI k dotazování SQL na nejnovější data.
 
-![Řídicí panel SQL ASA](media/stream-analytics-solution-patterns/sqldashboard.png)
+![Řídicí panel SQL ASA](media/stream-analytics-solution-patterns/sql-dashboard.png)
 
 Použití SQL Database přináší větší flexibilitu, ale za cenu mírně vyšší latence. Toto řešení je optimální pro úlohy s požadavky na latenci větší než jedna sekunda. Pomocí této metody můžete maximalizovat možnosti Power BI pro další řezy a indexy dat pro sestavy a spoustu dalších možností vizualizace. Získáte také flexibilitu při používání jiných řešení řídicích panelů, jako je například Tableau.
 
@@ -43,7 +44,7 @@ Druhým nejoblíbenějším využitím Stream Analytics je generování výstrah
 
 Pro generování výstrah v existujícím podnikovém pracovním postupu je nutné implementovat logiku příjemce událostí pro příjem dat. Vzhledem k tomu, že můžete implementovat vlastní logiku v Azure Functions, Azure Functions je nejrychlejší způsob, jakým můžete tuto integraci provést. Kurz použití funkce Azure Functions jako výstupu Stream Analytics úlohy najdete v části [spuštění Azure Functions z Azure Stream Analytics úloh](stream-analytics-with-azure-functions.md). Azure Functions také podporuje různé typy oznámení, včetně textu a e-mailu. Aplikace logiky se dá použít i pro takovou integraci s Event Hubs mezi Stream Analytics a logikou aplikaci.
 
-![Aplikace pro zasílání zpráv o událostech ASA](media/stream-analytics-solution-patterns/eventmessagingapp.png)
+![Aplikace pro zasílání zpráv o událostech ASA](media/stream-analytics-solution-patterns/event-messaging-app.png)
 
 Event Hubs, na druhé straně, nabízí nejpružnější integrační bod. Mnoho dalších služeb, jako je Azure Průzkumník dat a Time Series Insights, může zpracovávat události z Event Hubs. Služby je možné připojit přímo k Event Hubs jímky z Azure Stream Analytics a dokončit řešení. Event Hubs je také nejvyšší propustnost jako zprostředkovatel zasílání zpráv v Azure, které jsou pro tyto scénáře integrace k dispozici.
 
@@ -51,7 +52,7 @@ Event Hubs, na druhé straně, nabízí nejpružnější integrační bod. Mnoho
 
 Pomocí Azure Stream Analytics a služby signalizace Azure můžete vytvářet vlastní vizualizace v reálném čase, jako je řídicí panel nebo vizualizace mapy. Pomocí nástroje Signaler lze webové klienty aktualizovat a zobrazit dynamický obsah v reálném čase.
 
-![Dynamická aplikace ASA](media/stream-analytics-solution-patterns/dynamicapp.png)
+![Dynamická aplikace ASA](media/stream-analytics-solution-patterns/dynamic-app.png)
 
 ## <a name="incorporate-real-time-insights-into-your-application-through-data-stores"></a>Zahrnutí informací do vaší aplikace v reálném čase prostřednictvím úložišť dat
 
@@ -59,13 +60,13 @@ Většina webových služeb a webových aplikací dnes používá k obsluze prez
 
 Velký objem dat často vytváří kritická místa výkonu v systému založeném na CRUD. [Vzor řešení zdroje událostí](/azure/architecture/patterns/event-sourcing) se používá k vyřešení problémových míst výkonu. Dočasné vzorce a přehledy jsou také obtížné a neefektivní pro extrakci z tradičního úložiště dat. Moderní aplikace s vysokým objemem dat často přijímají architekturu založenou na toku dat. Azure Stream Analytics jako výpočetní modul pro data v pohybu je linchpin v této architektuře.
 
-![Aplikace pro zdroje událostí ASA](media/stream-analytics-solution-patterns/eventsourcingapp.png)
+![Aplikace pro zdroje událostí ASA](media/stream-analytics-solution-patterns/event-sourcing-app.png)
 
 V tomto vzoru řešení jsou události zpracovávány a agregovány do úložišť dat pomocí Azure Stream Analytics. Aplikační vrstva komunikuje s úložištěm dat pomocí tradičního vzoru požadavků a odpovědí. Vzhledem k tomu, že Stream Analytics ' schopnost zpracovat velký počet událostí v reálném čase, je aplikace vysoce škálovatelná, aniž by bylo potřeba hromadně nahromadit vrstvu úložiště dat. Vrstva úložiště dat je v podstatě materializované zobrazení v systému. [Azure Stream Analytics výstup do Azure Cosmos DB](stream-analytics-documentdb-output.md) popisuje, jak se Cosmos DB používá jako výstup Stream Analytics.
 
 V reálných aplikacích, kde je logika zpracování složitá a je potřeba upgradovat určité části logiky nezávisle, je možné sestavovat více úloh Stream Analytics společně s Event Hubs jako zprostředkující Zprostředkovatel událostí.
 
-![Aplikace pro komplexní zdrojové události ASA](media/stream-analytics-solution-patterns/eventsourcingapp2.png)
+![Aplikace pro komplexní zdrojové události ASA](media/stream-analytics-solution-patterns/event-sourcing-app-complex.png)
 
 Tento model zlepšuje odolnost a možnosti spravovatelnosti systému. Nicméně i když Stream Analytics garantuje, že se právě jednou zpracovává, dojde k malému pravděpodobnosti, že se v zprostředkovatelských Event Hubs můžou vycházet duplicitní události. Je důležité, aby úloha Stream Analytics pro příjem dat na odstranění duplicit pomocí logických klíčů v okně lookback. Další informace o doručování událostí najdete v tématu informace o [zárukách pro doručení událostí](/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) .
 
@@ -75,7 +76,7 @@ Funkce referenčních dat Azure Stream Analytics je navržena speciálně pro p�
 
 Tento model lze také použít k implementaci modulu pravidel, kde jsou prahové hodnoty pravidel definovány z referenčních dat. Další informace o pravidlech najdete v tématu [proces konfigurovatelného pravidla na základě prahových hodnot v Azure Stream Analytics](stream-analytics-threshold-based-rules.md).
 
-![Aplikace referenčních dat ASA](media/stream-analytics-solution-patterns/refdataapp.png)
+![Aplikace referenčních dat ASA](media/stream-analytics-solution-patterns/reference-data-app.png)
 
 ## <a name="add-machine-learning-to-your-real-time-insights"></a>Přidání Machine Learning k přehledům v reálném čase
 
@@ -83,37 +84,39 @@ Azure Stream Analytics "integrovaný [model detekce anomálií](stream-analytics
 
 Pokročilým uživatelům, kteří chtějí integrovat online školení a bodování do stejného Stream Analytics kanálu, naleznete v tomto příkladu k tomu, jak postupovat pomocí [lineární regrese](stream-analytics-high-frequency-trading.md).
 
-![Aplikace ASA Machine Learning](media/stream-analytics-solution-patterns/mlapp.png)
+![Aplikace ASA Machine Learning](media/stream-analytics-solution-patterns/machine-learning-app.png)
 
 ## <a name="near-real-time-data-warehousing"></a>Datové sklady téměř v reálném čase
 
 Dalším běžným vzorem jsou datové sklady v reálném čase, označované také jako streamování datového skladu. Kromě událostí přicházejících na Event Hubs a IoT Hub z vaší aplikace se [Azure Stream Analytics spuštěná na IoT Edge](stream-analytics-edge.md) dají použít ke splnění vyčištění dat, snížení počtu dat a uchování dat a potřebnou potřebu. Stream Analytics spuštěné v IoT Edge může řádně zvládnout omezení šířky pásma a problémy s připojením v systému. Výstupní adaptér SQL lze použít k výstupu do SQL Data Warehouse; maximální propustnost je však omezená na 10 MB/s.
 
-![Datové sklady ASA](media/stream-analytics-solution-patterns/datawarehousing.png)
+![Datové sklady ASA](media/stream-analytics-solution-patterns/data-warehousing.png)
 
 Jedním ze způsobů, jak zvýšit propustnost s určitou latencí, je archivace událostí do úložiště objektů BLOB v Azure a [jejich importování do SQL Data Warehouse s](../synapse-analytics/sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md)využitím základny. Musíte ručně spojovat výstup z Stream Analytics do úložiště objektů BLOB a vstupu z úložiště objektů blob do SQL Data Warehouse [Archivovat data podle časového razítka](stream-analytics-custom-path-patterns-blob-storage-output.md) a pravidelně importovat.
 
 V tomto vzoru použití se Azure Stream Analytics používá jako modul ETL pro ETL v reálném čase. Nově přicházející události jsou průběžně transformované a ukládají se pro využití služby analýzy pro příjem dat.
 
-![Datové sklady s vysokou propustností ASA](media/stream-analytics-solution-patterns/datawarehousing2.png)
+![Datové sklady s vysokou propustností ASA](media/stream-analytics-solution-patterns/data-warehousing-high-throughput.png)
 
 ## <a name="archiving-real-time-data-for-analytics"></a>Archivace dat v reálném čase pro analýzy
 
 Většina aktivit pro datové vědy a analýzy stále probíhá offline. Data je možné archivovat Azure Stream Analytics prostřednictvím výstupních formátů Azure Data Lake Store Gen2 a výstupu. Tato schopnost odstraní třecí data přímo do Azure Data Lake Analytics, Azure Databricks a Azure HDInsight. Azure Stream Analytics se používá jako modul ETL v reálném čase v tomto řešení. Archivovaná data můžete prozkoumat v Data Lake pomocí různých výpočetních motorů.
 
-![Offline Analýza ASA](media/stream-analytics-solution-patterns/offlineanalytics.png)
+> [!div class="mx-imgBorder"]
+> ![Offline Analýza ASA](media/stream-analytics-solution-patterns/offline-analytics.png)
 
 ## <a name="use-reference-data-for-enrichment"></a>Použít referenční data pro obohacení
 
 Rozšíření dat je často požadavkem pro moduly ETL. Azure Stream Analytics podporuje rozšíření dat pomocí [referenčních dat](stream-analytics-use-reference-data.md) z SQL Database a úložiště objektů BLOB v Azure. Rozšíření dat je možné provést pro data odpočívadla v Azure Data Lake i SQL Data Warehouse.
 
-![Offline Analýza ASA s obohacením dat](media/stream-analytics-solution-patterns/offlineanalytics.png)
+
+![Offline Analýza ASA s obohacením dat](media/stream-analytics-solution-patterns/offline-analytics-enriched.png)
 
 ## <a name="operationalize-insights-from-archived-data"></a>Zprovoznění přehledy z archivovaných dat
 
 Pokud kombinujete model offline analýzy se vzorem aplikace téměř v reálném čase, můžete vytvořit smyčku zpětné vazby. Smyčka zpětné vazby umožňuje aplikaci automaticky upravit na měnící se vzory v datech. Tato smyčka zpětné vazby může být jednoduchá jako Změna prahové hodnoty pro upozorňování nebo jako nesložitá jako přeškolování Machine Learningch modelů. Stejnou architekturu řešení lze použít pro úlohy ASA spuštěné v cloudu a na IoT Edge.
 
-![Provozní provoz ASA Insights](media/stream-analytics-solution-patterns/insightsoperationalization.png)
+![Provozní provoz ASA Insights](media/stream-analytics-solution-patterns/insights-operationalization.png)
 
 ## <a name="how-to-monitor-asa-jobs"></a>Jak monitorovat úlohy ASA
 
@@ -162,7 +165,7 @@ V extrémním scénáři, kdy jsou příchozí události zpožděny, je [možné
 
 Naštěstí můžete použít předchozí vzor archivace dat k řádnému zpracování těchto zpožděných událostí. Výsledkem je, že úloha archivace zpracovává příchozí události v čase přijetí a archivuje události do pravého časového intervalu v objektu blob Azure nebo Azure Data Lake Store s jejich časem události. Nezáleží na tom, jak pozdě událost dorazí, nebude nikdy vyřazena. Vždy se bude nakládat v pravém časovém intervalu. Během obnovení je možné znovu zpracovat archivované události a výsledky zpětně vyplnit do úložiště, které si vyberete. To je podobné jako při implementaci vzorů lambda.
 
-![Doplňování ASA](media/stream-analytics-solution-patterns/backfill.png)
+![Doplňování ASA](media/stream-analytics-solution-patterns/back-fill.png)
 
 Proces pro obnovení musí být proveden s offline systémem zpracování dávek, který má pravděpodobně jiný programovací model než Azure Stream Analytics. To znamená, že je nutné znovu implementovat celou logiku zpracování.
 

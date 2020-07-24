@@ -7,16 +7,16 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: rogarana
-ms.openlocfilehash: 0f2f0def9a23437dff57dda2d1a57950cef86275
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1ea1bfdf2c3b2dcfd49f87a5a75597a464b07913
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496124"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999577"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Přehled – místní Active Directory Domain Services ověřování pomocí protokolu SMB pro sdílené složky Azure
 
-[Soubory Azure](storage-files-introduction.md)   podporuje ověřování na základě identity přes protokol SMB (Server Message Block) prostřednictvím dvou typů doménových služeb: Azure Active Directory Domain Services (Azure služba AD DS) a místní Active Directory Domain Services (služba AD DS). Pomocí metody ověřování na základě identity můžete integrovat proces přístupu ke sdíleným složkám Azure pomocí stávajícího procesu ověřování založeného na identitě, aniž byste je museli spravovat samostatně. Tato série článků se zaměřuje na povolování a konfigurování místních služba AD DS pro ověřování pomocí sdílených složek Azure.
+[Soubory Azure](storage-files-introduction.md)   podporuje ověřování na základě identity přes protokol SMB (Server Message Block) prostřednictvím dvou typů doménových služeb: místní Active Directory Domain Services (služba AD DS) a Azure Active Directory Domain Services (Azure služba AD DS). Důrazně doporučujeme, abyste si v [části Jak funguje, jak](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works) vybrat správnou doménu služby pro authentcation. Instalace se liší v závislosti na zvolené doménové službě. Tato série článků se zaměřuje na povolování a konfigurování místních služba AD DS pro ověřování pomocí sdílených složek Azure.
 
 Pokud se sdílenými složkami Azure teprve začínáte, doporučujeme si přečíst si náš [Průvodce plánováním](storage-files-planning.md) , abyste si přečetli následující řadu článků.
 

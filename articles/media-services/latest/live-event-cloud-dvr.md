@@ -14,17 +14,18 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 05/07/2020
 ms.author: juliako
-ms.openlocfilehash: 231aeb210a7b97e8c0cfd0e21c48053c660b6128
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c5afe45ce864ba76d5d637df3534d426d39167a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82995808"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000988"
 ---
 # <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>Použití časových posunutí a živých výstupů k vytvoření přehrávání videa na vyžádání
 
-V Azure Media Services je objekt [živého výstupu](https://docs.microsoft.com/rest/api/media/liveoutputs) podobný digitálnímu záznamu videa, který zachytí a zaznamená svůj živý stream do assetu v účtu Media Services. Zaznamenaný obsah je trvale uložen do kontejneru definovaného prostředkem [assetu](https://docs.microsoft.com/rest/api/media/assets) (kontejner je v účtu Azure Storage připojeném k vašemu účtu). Živý výstup také umožňuje řídit některé vlastnosti odchozího živého streamu, například kolik dat v archivu je uchováváno (například kapacita záznamu v cloudu), nebo když můžou čtenáři začít sledovat živý datový proud. Archiv na disku je kruhový archiv "Window", který uchovává pouze množství obsahu, které je zadáno ve vlastnosti **ArchiveWindowLength** živého výstupu. Obsah, který spadá mimo toto okno, se automaticky zahodí z kontejneru úložiště a nedá se obnovit. Hodnota archiveWindowLength představuje dobu trvání časového rozmezí ISO-8601 (například PTHH: MM: SS), která určuje kapacitu souboru DVR. Hodnotu lze nastavit od nejméně jedné minuty po dobu maximálně 25 hodin.
+V Azure Media Services je objekt [živého výstupu](/rest/api/media/liveoutputs) podobný digitálnímu záznamu videa, který zachytí a zaznamená svůj živý stream do assetu v účtu Media Services. Zaznamenaný obsah je trvale uložen do kontejneru definovaného prostředkem [assetu](/rest/api/media/assets) (kontejner je v účtu Azure Storage připojeném k vašemu účtu). Živý výstup také umožňuje řídit některé vlastnosti odchozího živého streamu, například kolik dat v archivu je uchováváno (například kapacita záznamu v cloudu), nebo když můžou čtenáři začít sledovat živý datový proud. Archiv na disku je kruhový archiv "Window", který uchovává pouze množství obsahu, které je zadáno ve vlastnosti **ArchiveWindowLength** živého výstupu. Obsah, který spadá mimo toto okno, se automaticky zahodí z kontejneru úložiště a nedá se obnovit. Hodnota archiveWindowLength představuje dobu trvání časového rozmezí ISO-8601 (například PTHH: MM: SS), která určuje kapacitu souboru DVR. Hodnotu lze nastavit od nejméně jedné minuty po dobu maximálně 25 hodin.
 
-Vztah mezi živou událostí a jeho živými výstupy je podobný tradičnímu TELEVIZNÍmu vysílání, v tom, že kanál (živá událost) představuje konstantní datový proud videa a záznam (živý výstup) je vymezen na určitý časový segment (například večer zprávy z 6:17:30 až 7:13:00). Jakmile datový proud přetéká do živé události, můžete zahájit streamování událostí vytvořením assetu, živého výstupu a lokátoru streamování. Živý výstup bude archivovat datový proud a zpřístupní ho návštěvníkům prostřednictvím [koncového bodu streamování](https://docs.microsoft.com/rest/api/media/streamingendpoints). Můžete vytvořit více živých výstupů (až tří maximum) na živé události s různými délkami archivů a nastavením. Informace o pracovním postupu živého streamování najdete v části [Obecné kroky](live-streaming-overview.md#general-steps) .
+Vztah mezi živou událostí a jeho živými výstupy je podobný tradičnímu TELEVIZNÍmu vysílání, v tom, že kanál (živá událost) představuje konstantní datový proud videa a záznam (živý výstup) je vymezen na určitý časový segment (například večer zprávy z 6:17:30 až 7:13:00). Jakmile datový proud přetéká do živé události, můžete zahájit streamování událostí vytvořením assetu, živého výstupu a lokátoru streamování. Živý výstup bude archivovat datový proud a zpřístupní ho návštěvníkům prostřednictvím [koncového bodu streamování](/rest/api/media/streamingendpoints). Můžete vytvořit více živých výstupů (až tří maximum) na živé události s různými délkami archivů a nastavením. Informace o pracovním postupu živého streamování najdete v části [Obecné kroky](live-streaming-overview.md#general-steps) .
 
 ## <a name="using-a-dvr-during-an-event"></a>Použití DVR během události
 
@@ -38,13 +39,13 @@ Předpokládejme, že jste proudem fotbalového hry a máte `ArchiveWindowLength
 
 ## <a name="creating-an-archive-for-on-demand-playback"></a>Vytvoření archivu pro přehrávání na vyžádání
 
-Asset, na který živý výstup archivuje, se automaticky stal Assetem na vyžádání, když se odstraní živý výstup. Aby bylo možné zastavit živou událost, je nutné odstranit všechny živé výstupy. Pomocí volitelného příznaku [removeOutputsOnStop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body) můžete automaticky odebrat živé výstupy při zastavení.
+Asset, na který živý výstup archivuje, se automaticky stal Assetem na vyžádání, když se odstraní živý výstup. Aby bylo možné zastavit živou událost, je nutné odstranit všechny živé výstupy. Pomocí volitelného příznaku [removeOutputsOnStop](/rest/api/media/liveevents/stop#request-body) můžete automaticky odebrat živé výstupy při zastavení.
 
 I po zastavení a odstranění události můžou uživatelé streamovat archivovaný obsah jako video na vyžádání, pokud prostředek neodstraníte. Asset by neměl být odstraněn, pokud jej používá událost; nejdříve je nutné odstranit událost.
 
 Pokud jste publikovali Asset svého živého výstupu pomocí lokátoru streamování, bude se dál zobrazovat živá událost (až do délky okna DVR), dokud nevyprší platnost nebo odstranění lokátoru streamování, podle toho, co nastane dřív.
 
-Další informace naleznete v tématech:
+Další informace najdete tady:
 
 - [Přehled živého streamování](live-streaming-overview.md)
 - [Kurz živého streamování](stream-live-tutorial-with-api.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: e5523b7c39763fb53d0847b79c70d5ab8b9d3b52
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 9320677e970d9194e2cccad07522d7a63b6353d6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169319"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999968"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Postup při kódování assetu pomocí Media Encoder Standard
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "86169319"
 
 Aby bylo možné doručovat digitální video přes Internet, je nutné médium zkomprimovat. Digitální video soubory jsou velké a můžou být moc velké, aby je bylo možné doručit přes Internet, nebo aby se zařízení vašich zákazníků zobrazovalo správně. Kódování je proces komprimace videa a zvuku, aby vaši zákazníci mohli zobrazit vaše média.
 
-Úlohy kódování jsou jednou z nejběžnějších operací zpracování v Azure Media Services. Vytvoříte úlohy kódování pro převod mediálních souborů z jednoho kódování na jiný. Při kódování můžete použít Media Services integrovaný kodér (Media Encoder Standard). Můžete také použít kodér poskytovaný Media Services partnerem. Kodéry třetích stran jsou k dispozici prostřednictvím Azure Marketplace. Můžete zadat podrobnosti o úlohách kódování pomocí přednastavených řetězců definovaných pro váš kodér nebo pomocí přednastavených konfiguračních souborů. Chcete-li zobrazit typy přednastavení, které jsou k dispozici, přečtěte si téma [Předvolby úloh pro Media Encoder Standard](https://msdn.microsoft.com/library/mt269960).
+Úlohy kódování jsou jednou z nejběžnějších operací zpracování v Azure Media Services. Vytvoříte úlohy kódování pro převod mediálních souborů z jednoho kódování na jiný. Při kódování můžete použít Media Services integrovaný kodér (Media Encoder Standard). Můžete také použít kodér poskytovaný Media Services partnerem. Kodéry třetích stran jsou k dispozici prostřednictvím Azure Marketplace. Můžete zadat podrobnosti o úlohách kódování pomocí přednastavených řetězců definovaných pro váš kodér nebo pomocí přednastavených konfiguračních souborů. Chcete-li zobrazit typy přednastavení, které jsou k dispozici, přečtěte si téma [Předvolby úloh pro Media Encoder Standard](/azure/media-services/previous/media-services-mes-presets-overview).
 
 Každá úloha může mít jeden nebo více úloh v závislosti na typu zpracování, které chcete provést. Pomocí REST API můžete vytvořit úlohy a jejich související úkoly jedním ze dvou způsobů:
 
@@ -44,7 +44,7 @@ Doporučujeme, abyste zdrojové soubory vždycky zakódujíi do sady MP4 s adapt
 
 Pokud je váš výstupní prostředek zašifrovaný z úložiště, musíte nakonfigurovat zásady doručení assetu. Další informace najdete v tématu [Konfigurace zásad doručení assetu](media-services-rest-configure-asset-delivery-policy.md).
 
-## <a name="considerations"></a>Co je potřeba vzít v úvahu
+## <a name="considerations"></a>Požadavky
 
 Při přístupu k entitám v Media Services musíte nastavit konkrétní pole a hodnoty hlaviček v požadavcích HTTP. Další informace najdete v tématu [instalace Media Services REST APIm vývoji](media-services-rest-how-to-use.md).
 
@@ -65,7 +65,7 @@ Informace o tom, jak se připojit k rozhraní API AMS, najdete v tématu [přís
 >
 >
 
-Následující příklad ukazuje, jak vytvořit a publikovat úlohu s jednou nastavenou úlohou ke kódování videa v konkrétním rozlišení a kvalitě. Při kódování pomocí Media Encoder Standard můžete použít předvolby konfigurace úloh, které jsou [tady](https://msdn.microsoft.com/library/mt269960)uvedené.
+Následující příklad ukazuje, jak vytvořit a publikovat úlohu s jednou nastavenou úlohou ke kódování videa v konkrétním rozlišení a kvalitě. Při kódování pomocí Media Encoder Standard můžete použít předvolby konfigurace úloh, které jsou [tady](/azure/media-services/previous/media-services-mes-presets-overview)uvedené.
 
 Požadavek:
 
@@ -98,7 +98,7 @@ Následující příklad ukazuje, jak nastavit atribut majetku:
 { "TaskBody" : "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset assetName=\"CustomOutputAssetName\">JobOutputAsset(0)</outputAsset></taskBody>"}`
 ```
 
-## <a name="considerations"></a>Co je potřeba vzít v úvahu
+## <a name="considerations"></a>Požadavky
 * Vlastnosti TaskBody – musí použít literál XML pro definování počtu vstupních nebo výstupních prostředků, které úkol používá. Článek o úloze obsahuje definici schématu XML pro XML.
 * V definici TaskBody – je nutné, aby každá vnitřní hodnota pro `<inputAsset>` a `<outputAsset>` byla nastavena jako JobInputAsset (hodnota) nebo JobOutputAsset (hodnota).
 * Úloha může mít více výstupních prostředků. Jeden JobOutputAsset (x) lze použít pouze jednou jako výstup úkolu v úloze.
@@ -151,7 +151,7 @@ x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
 }
 ```
 
-### <a name="considerations"></a>Co je potřeba vzít v úvahu
+### <a name="considerations"></a>Požadavky
 Povolení Řetězení úloh:
 
 * Úloha musí obsahovat alespoň dvě úlohy.

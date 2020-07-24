@@ -13,19 +13,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: b25d6c33aa2bd50cbf96fb09f0de03354d24f2da
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b360e58c9349bf98e8c89fcb75a46eedea1bb8fe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86530350"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000495"
 ---
 # <a name="azure-media-services-release-notes"></a>Poznámky k verzi Azure Media Services
 
 Tyto poznámky k verzi pro Azure Media Services shrnují změny z předchozích verzí a známých problémů.
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 
 Chceme od našich zákazníků slyšet, abychom se mohli zaměřit na opravy problémů, které vás zaovlivňují. Chcete-li nahlásit problém nebo položit otázky, odešlete příspěvek na webu [Azure Media Services Fórum MSDN]. 
 
@@ -36,7 +36,7 @@ Chceme od našich zákazníků slyšet, abychom se mohli zaměřit na opravy pro
 | --- | --- |
 | V REST API není k dispozici několik běžných hlaviček protokolu HTTP. |Pokud vyvíjíte Media Services aplikace pomocí REST API, zjistíte, že některá společná pole hlaviček protokolu HTTP (včetně klienta-požadavek-ID, požadavek-ID a RETURN-CLIENT-REQUEST-ID) se nepodporují. Hlavičky budou přidány v budoucí aktualizaci. |
 | Procento – kódování není povoleno. |Media Services používá hodnotu vlastnosti IAssetFile.Name při vytváření adres URL pro obsah streamování (například `http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters` ). Z tohoto důvodu není povolena procentuální kódování. Hodnota vlastnosti Name nemůže obsahovat žádný z následujících [znaků rezervovaných v procentech](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! * ' ();: @ &= + $,/?% # [] ". Přípona názvu souboru může taky obsahovat jenom jeden znak ".". |
-| Metoda ListBlobs, která je součástí sady Azure Storage SDK verze 3. x, se nezdařila. |Media Services generuje adresy URL SAS na základě verze [2012-02-12](https://docs.microsoft.com/rest/api/storageservices/Version-2012-02-12) . Pokud chcete použít sadu SDK úložiště k vypsání objektů BLOB v kontejneru objektů blob, použijte metodu [CloudBlobContainer. ListBlobs](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobs) , která je součástí sady Storage SDK verze 2. x. |
+| Metoda ListBlobs, která je součástí sady Azure Storage SDK verze 3. x, se nezdařila. |Media Services generuje adresy URL SAS na základě verze [2012-02-12](/rest/api/storageservices/version-2012-02-12) . Pokud chcete použít sadu SDK úložiště k vypsání objektů BLOB v kontejneru objektů blob, použijte metodu [CloudBlobContainer. ListBlobs](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobs) , která je součástí sady Storage SDK verze 2. x. |
 | Mechanismus omezování Media Services omezuje využití prostředků u aplikací, které provedou nadměrné požadavky na službu. Služba může vrátit stav "služba není k dispozici" 503 HTTP kód stavu. |Další informace najdete v popisu stavového kódu HTTP 503 v tématu [Media Services kódy chyb](media-services-encoding-error-codes.md). |
 | Při dotazování entit se vrátí limit 1 000 entit najednou, protože veřejná verze REST 2 omezuje výsledky dotazu na 1 000 výsledků. |Použijte Skip a/Top (rozhraní .NET) (REST), jak je popsáno v [tomto příkladu .NET](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) a v [tomto příkladu REST API](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities). |
 | Někteří klienti můžou přijít do problému se značkou opakování v manifestu Smooth Streaming. |Další informace najdete v [této části](media-services-deliver-content-overview.md#known-issues). |
@@ -54,7 +54,7 @@ Některé procesory pro analýzu médií budou vyřazeny. Data o vyřazení najd
 
 ### <a name="deprecation-of-media-processors"></a>Vyřazení procesorů médií
 
-Oznamujeme vyřazení *Azure Media Indexer* a *Azure Media Indexer 2 ve verzi Preview*. [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) nahrazuje tyto starší verze procesorů médií.
+Oznamujeme vyřazení *Azure Media Indexer* a *Azure Media Indexer 2 ve verzi Preview*. [Azure Media Services video indexer](../video-indexer/index.yml) nahrazuje tyto starší verze procesorů médií.
 
 Informace o datech vyřazení najdete v tématu tyto [starší součásti](legacy-components.md) .
 
@@ -90,7 +90,7 @@ Nyní můžete použít Media Services k vygenerování pohyblivých souborů mi
 
 S nejnovější verzí služby jsou drobné změny v chybových zprávách, které služba vrátila, v případě, že úloha selže, s ohledem na to, jak je rozděleno na dva nebo více řádků.
 
-## <a name="may-2018"></a>May 2018 
+## <a name="may-2018"></a>Květen 2018 
 
 Od 12. května 2018 už živé kanály nebudou podporovat protokol ingestování přenosového streamu RTP/MPEG-2. Migrujte prosím z protokolu RTP/MPEG-2 na RTMP nebo fragmentujte protokoly ingesta MP4 (Smooth Streaming).
 
@@ -108,7 +108,7 @@ Od 12. května 2018 už živé kanály nebudou podporovat protokol ingestování
 * Pro zdrojové video, které je kódované pomocí kodeku videa H. 265 (HEVC), jako je video zachycené pomocí iOS11 nebo GoPro Hero 6, můžete teď k kódování těchto videí použít kodér Premium nebo standardní kodér. Informace o licencích pro patenty najdete v tématu [online služby – požadavky](https://azure.microsoft.com/support/legal/).
 * U obsahu, který obsahuje zvukové stopy ve více jazycích, musí být hodnoty jazyka správně označeny podle odpovídající specifikace formátu souboru (například ISO MP4). Pak můžete použít standardní kodér ke kódování obsahu pro streamování. Seznam výsledných audio streamování obsahuje dostupné zvukové jazyky.
 * Kodér Standard teď podporuje dvě nové předvolby systému jenom pro zvuk, "AAC zvuk" a "AAC dobré kvality zvuku". V uvedeném pořadí vyprodukuje výstup ve formátu AAC (Advanced Audio kódovací) v stereofonních rychlostech 128 kb/s a 192 KB/s.
-* Kodér Premium teď jako vstup podporuje formáty souborů QuickTime/MOV. Kodek videa musí být jedním z [typů Apple ProRes uvedených v tomto článku na GitHubu](https://docs.microsoft.com/azure/media-services/media-services-media-encoder-standard-formats). Zvuk musí být buď AAC, nebo modul pro kódování Pulse (PCM). Kodér úrovně Premium nepodporuje, například video SOUBĚŽNÁ/DVCPro zabalené do souborů QuickTime/MOV jako vstup. Standardní kodér podporuje tyto Videokodeky.
+* Kodér Premium teď jako vstup podporuje formáty souborů QuickTime/MOV. Kodek videa musí být jedním z [typů Apple ProRes uvedených v tomto článku na GitHubu](./media-services-media-encoder-standard-formats.md). Zvuk musí být buď AAC, nebo modul pro kódování Pulse (PCM). Kodér úrovně Premium nepodporuje, například video SOUBĚŽNÁ/DVCPro zabalené do souborů QuickTime/MOV jako vstup. Standardní kodér podporuje tyto Videokodeky.
 * V kodérech byly provedeny následující opravy chyb:
 
     * Nyní můžete odesílat úlohy pomocí vstupního assetu. Po dokončení těchto úloh můžete prostředek upravit (například přidat, odstranit nebo přejmenovat soubory v rámci assetu) a odeslat další úlohy.
@@ -153,7 +153,7 @@ Počínaje verzí 2,15 Media Services přidali následující vlastnosti entitě
 * FreeTrialEndTime 
 * StreamingEndpointVersion 
 
-Další informace o těchto vlastnostech naleznete v tématu [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint). 
+Další informace o těchto vlastnostech naleznete v tématu [StreamingEndpoint](/rest/api/media/operations/streamingendpoint). 
 
 ## <a name="december-2016-release"></a>Verze z prosince 2016
 
@@ -176,7 +176,7 @@ Od nejnovější verze služby se po dokončení úlohy kódování, která gene
 > 
 > 
 
-Další informace najdete v [tomto blogu](https://blogs.msdn.microsoft.com/randomnumber/2016/07/08/encoder-changes-within-azure-media-services-now-create-ismc-file/).
+Další informace najdete v [tomto blogu](/archive/blogs/randomnumber/encoder-changes-within-azure-media-services-now-create-ismc-file).
 
 ### <a name="known-issues"></a>Známé problémy
 Někteří klienti můžou přijít do problému se značkou opakování v manifestu Smooth Streaming. Další informace najdete v [této části](media-services-deliver-content-overview.md#known-issues).
@@ -309,12 +309,12 @@ Sada Media Services .NET SDK je teď verze 3.2.0.0. Byly provedeny následujíc�
 
 ## <a name="march-2015-release"></a><a id="march_changes_15"></a>Verze z března 2015
 ### <a name="general-media-services-updates"></a>Obecné aktualizace Media Services
-* Media Services nyní poskytuje Content Delivery Network integraci. Pro podporu integrace byla do StreamingEndpoint přidána vlastnost CdnEnabled. CdnEnabled se dá použít s rozhraními REST API počínaje verzí 2,9. Další informace najdete v tématu [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint). CdnEnabled se dá použít se sadou .NET SDK počínaje verzí 3.1.0.2. Další informace najdete v tématu [StreamingEndpoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.istreamingendpoint\(v=azure.10\).aspx).
+* Media Services nyní poskytuje Content Delivery Network integraci. Pro podporu integrace byla do StreamingEndpoint přidána vlastnost CdnEnabled. CdnEnabled se dá použít s rozhraními REST API počínaje verzí 2,9. Další informace najdete v tématu [StreamingEndpoint](/rest/api/media/operations/streamingendpoint). CdnEnabled se dá použít se sadou .NET SDK počínaje verzí 3.1.0.2. Další informace najdete v tématu [StreamingEndpoint](/archive/blogs/randomnumber/encoder-changes-within-azure-media-services-now-create-ismc-file).
 * Media Encoder Premium Workflow byla oznámena. Další informace najdete v tématu [představení služby Premium Encoding v Azure Media Services](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services/).
 
 ## <a name="february-2015-release"></a><a id="february_changes_15"></a>Verze z února 2015
 ### <a name="general-media-services-updates"></a>Obecné aktualizace Media Services
-REST API Media Services je teď verze 2,9. Od této verze můžete povolit integraci Content Delivery Network s koncovými body streamování. Další informace najdete v tématu [StreamingEndpoint](https://msdn.microsoft.com/library/dn783468.aspx).
+REST API Media Services je teď verze 2,9. Od této verze můžete povolit integraci Content Delivery Network s koncovými body streamování. Další informace najdete v tématu [StreamingEndpoint](/rest/api/media/operations/streamingendpoint).
 
 ## <a name="january-2015-release"></a><a id="january_changes_15"></a>Verze z ledna 2015
 ### <a name="general-media-services-updates"></a>Obecné aktualizace Media Services
@@ -333,11 +333,11 @@ TokenRestrictionTemplate template = new TokenRestrictionTemplate(TokenType.SWT);
 ## <a name="december-2014-release"></a><a id="december_changes_14"></a>Verze z prosince 2014
 ### <a name="general-media-services-updates"></a>Obecné aktualizace Media Services
 * Některé aktualizace a nové funkce byly přidány do Media Indexer. Další informace najdete v [poznámkách k verzi Azure Media Indexer verze 1.1.6.7](https://azure.microsoft.com/blog/2014/12/03/azure-media-indexer-version-1-1-6-7-release-notes/).
-* Byl přidán nový REST API, který můžete použít k aktualizaci jednotek rezervovaných pro kódování. Další informace najdete v tématu [EncodingReservedUnitType with REST](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype).
+* Byl přidán nový REST API, který můžete použít k aktualizaci jednotek rezervovaných pro kódování. Další informace najdete v tématu [EncodingReservedUnitType with REST](/rest/api/media/operations/encodingreservedunittype).
 * Byla přidána podpora CORS pro službu doručování klíčů.
 * Bylo provedeno vylepšení výkonu pro dotazování na možnosti zásad autorizace.
-* V čínském datovém centru je [Adresa URL pro doručení klíčů](https://docs.microsoft.com/rest/api/media/operations/contentkey#get_delivery_service_url) teď vázaná na zákazníka (stejně jako v jiných datových centrech).
-* Byla přidána doba trvání automatického cíle HLS. Při živém streamování je HLS vždy zabalen dynamicky. Ve výchozím nastavení Media Services automaticky vypočítá poměr segmentace segmentu HLS (FragmentsPerSegment) na základě intervalu klíčových snímků (KeyFrameInterval). Tato metoda je také označována jako skupina obrázků (skupinu GOP), která je přijímána z kodéru Live Encoder. Další informace najdete v tématu [práce s Media Services živým streamem](https://msdn.microsoft.com/library/azure/dn783466.aspx).
+* V čínském datovém centru je [Adresa URL pro doručení klíčů](/rest/api/media/operations/contentkey#get_delivery_service_url) teď vázaná na zákazníka (stejně jako v jiných datových centrech).
+* Byla přidána doba trvání automatického cíle HLS. Při živém streamování je HLS vždy zabalen dynamicky. Ve výchozím nastavení Media Services automaticky vypočítá poměr segmentace segmentu HLS (FragmentsPerSegment) na základě intervalu klíčových snímků (KeyFrameInterval). Tato metoda je také označována jako skupina obrázků (skupinu GOP), která je přijímána z kodéru Live Encoder. Další informace najdete v tématu [práce s Media Services živým streamem](/previous-versions/azure/dn783466(v=azure.100)).
 
 ### <a name="media-services-net-sdk-updates"></a>Aktualizace Media Services .NET SDK
 [Sada Media Services .NET SDK](https://www.nuget.org/packages/windowsazure.mediaservices/) je teď verze 3.1.0.0. Byly provedeny následující aktualizace:
@@ -348,7 +348,7 @@ TokenRestrictionTemplate template = new TokenRestrictionTemplate(TokenType.SWT);
 * V šabloně licence PlayReady se přidaly relativní posuny pro BeginDate a ExpirationDate.
 
 ## <a name="november-2014-release"></a><a id="november_changes_14"></a>Verze z listopadu 2014
-* Nyní můžete použít Media Services k ingestování živého obsahu Smooth Streaming (fMP4) prostřednictvím připojení TLS. Pokud chcete ingestovat přes TLS, nezapomeňte aktualizovat adresu URL ingestování na HTTPS. V současné době Media Services nepodporuje TLS s vlastními doménami. Další informace o živém streamování najdete v tématu [práce s Azure Media Services živým streamem](https://msdn.microsoft.com/library/azure/dn783466.aspx).
+* Nyní můžete použít Media Services k ingestování živého obsahu Smooth Streaming (fMP4) prostřednictvím připojení TLS. Pokud chcete ingestovat přes TLS, nezapomeňte aktualizovat adresu URL ingestování na HTTPS. V současné době Media Services nepodporuje TLS s vlastními doménami. Další informace o živém streamování najdete v tématu [práce s Azure Media Services živým streamem](/previous-versions/azure/dn783466(v=azure.100)).
 * V současné době nemůžete ingestovat živý stream RTMP přes připojení TLS.
 * Přes protokol TLS můžete streamovat pouze v případě, že koncový bod streamování, ze kterého dodáváte obsah, byl vytvořen po 10. září 2014. Pokud jsou vaše adresy URL streamování založené na koncových bodech streamování vytvořených po 10. září 2014, adresa URL obsahuje "streaming.mediaservices.windows.net" (nový formát). Adresy URL streamování obsahující "origin.mediaservices.windows.net" (starý formát) nepodporují protokol TLS. Pokud má vaše adresa URL ve starém formátu a chcete streamovat přes TLS, [vytvořte nový koncový bod streamování](media-services-portal-manage-streaming-endpoints.md). Pokud chcete streamovat obsah přes TLS, použijte adresy URL na základě nového koncového bodu streamování.
 
@@ -367,7 +367,7 @@ Sada Media Services SDK pro .NET je teď verze 3.0.0.8. Byly provedeny následuj
 Ukázky jsou k [disMedia Services v úložišti GitHub Samples](https://github.com/Azure/Azure-Media-Services-Samples).
 
 ## <a name="september-2014-release"></a><a id="september_changes_14"></a>Verze září 2014
-Metadata Media Services REST jsou nyní verze 2,7. Další informace o nejnovějších aktualizacích REST najdete v referenčních informacích k [Media Services REST API](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
+Metadata Media Services REST jsou nyní verze 2,7. Další informace o nejnovějších aktualizacích REST najdete v referenčních informacích k [Media Services REST API](/rest/api/media/operations/azure-media-services-rest-api-reference).
 
 Sada Media Services SDK pro .NET je teď verze 3.0.0.7
 
@@ -376,7 +376,7 @@ Sada Media Services SDK pro .NET je teď verze 3.0.0.7
 * Při použití Azure Portal ke kódování a publikování souborů MP4 byla provedena změna ve výchozím chování.
 
 ### <a name="new-featuresscenarios-that-are-part-of-the-general-availability-release"></a><a id="sept_14_GA_changes"></a>Nové funkce/scénáře, které jsou součástí vydání obecné dostupnosti
-* Byl zaveden procesor Media Indexer Media. Další informace najdete v tématu [indexování mediálních souborů pomocí Media Indexer](https://msdn.microsoft.com/library/azure/dn783455.aspx).
+* Byl zaveden procesor Media Indexer Media. Další informace najdete v tématu [indexování mediálních souborů pomocí Media Indexer](/previous-versions/azure/dn783455(v=azure.100)).
 * Pomocí entity [StreamingEndpoint] můžete přidat vlastní názvy domén (hostitelů).
   
     Pokud chcete jako název koncového bodu streamování Media Services použít vlastní název domény, přidejte vlastní názvy hostitelů do svého koncového bodu streamování. K přidání vlastních názvů hostitelů použijte Media Services rozhraní REST API nebo sadu .NET SDK.
@@ -387,16 +387,16 @@ Sada Media Services SDK pro .NET je teď verze 3.0.0.7
   * Vlastnictví názvu domény musí být ověřeno pomocí Media Services. Pokud chcete ověřit doménu, vytvořte záznam CName, který mapuje nadřazenou doménu MediaServicesAccountId a ověří DNS MediaServices-DNS-Zone.
   * Je nutné vytvořit jiný záznam CName, který mapuje název vlastního hostitele (například sports.contoso.com) na název hostitele StreamingEndpoint pro Media Services (například amstest.streaming.mediaservices.windows.net).
 
-    Další informace naleznete v tématu vlastnost CustomHostNames v článku [StreamingEndpoint](https://msdn.microsoft.com/library/azure/dn783468.aspx) .
+    Další informace naleznete v tématu vlastnost CustomHostNames v článku [StreamingEndpoint](/rest/api/media/operations/streamingendpoint) .
 
 ### <a name="new-featuresscenarios-that-are-part-of-the-public-preview-release"></a><a id="sept_14_preview_changes"></a>Nové funkce/scénáře, které jsou součástí verze Public Preview
-* Živý stream ve verzi Preview. Další informace najdete v tématu [práce s Media Services živým streamem](https://msdn.microsoft.com/library/azure/dn783466.aspx).
-* Služba doručení klíčů. Další informace najdete v tématu [použití dynamického šifrování AES-128 a služby doručování klíčů](https://msdn.microsoft.com/library/azure/dn783457.aspx).
-* Dynamické šifrování AES Další informace najdete v tématu [použití dynamického šifrování AES-128 a služby doručování klíčů](https://msdn.microsoft.com/library/azure/dn783457.aspx).
+* Živý stream ve verzi Preview. Další informace najdete v tématu [práce s Media Services živým streamem](/previous-versions/azure/dn783466(v=azure.100)).
+* Služba doručení klíčů. Další informace najdete v tématu [použití dynamického šifrování AES-128 a služby doručování klíčů](/previous-versions/azure/dn783457(v=azure.100)).
+* Dynamické šifrování AES Další informace najdete v tématu [použití dynamického šifrování AES-128 a služby doručování klíčů](/previous-versions/azure/dn783457(v=azure.100)).
 * Služba pro doručování licencí PlayReady. 
 * Dynamické šifrování PlayReady 
 * Media Services šablonou licence PlayReady. Další informace najdete v tématu [Přehled šablon licencí PlayReady pro Media Services].
-* Streamování – šifrované prostředky Další informace najdete v článku o [obsahu zašifrovaném úložištěm streamování](https://msdn.microsoft.com/library/azure/dn783451.aspx).
+* Streamování – šifrované prostředky Další informace najdete v článku o [obsahu zašifrovaném úložištěm streamování](/previous-versions/azure/dn783451(v=azure.100)).
 
 ## <a name="august-2014-release"></a><a id="august_changes_14"></a>Verze z srpna 2014
 Při kódování assetu se vytvoří výstupní Asset, když se úloha kódování dokončí. Do této verze Media Services kodér vytvořil metadata o výstupních prostředcích. Od této verze kodér také generuje metadata o vstupních prostředcích. Další informace najdete v tématu [vstupní metadata] a [výstupní metadata].
@@ -411,7 +411,7 @@ Pro balíček Azure Media Services a modul pro šifrování byly provedeny násl
 ### <a name="general-media-services-updates"></a><a id="may_14_changes"></a>Obecné aktualizace Media Services
 Nyní můžete použít [dynamické balení] ke streamování HLS verze 3. Pokud chcete streamovat HLS verze 3, přidejte následující formát do cesty k umístění zdroje: *. ISM/manifest (Format = M3U8-AAPL-V3). Další informace najdete v [tomto fóru](https://social.msdn.microsoft.com/Forums/en-US/13b8a776-9519-4145-b9ed-d2b632861fde/dynamic-packaging-to-hls-v3).
 
-Dynamické balení teď také podporuje doručování HLS (verze 3 a verze 4) zašifrované pomocí PlayReady na základě Smooth Streaming staticky šifrovaných pomocí PlayReady. Informace o tom, jak šifrovat Smooth Streaming pomocí PlayReady, najdete v tématu [ochrana Smooth Streaming pomocí PlayReady](https://msdn.microsoft.com/library/azure/dn189154.aspx).
+Dynamické balení teď také podporuje doručování HLS (verze 3 a verze 4) zašifrované pomocí PlayReady na základě Smooth Streaming staticky šifrovaných pomocí PlayReady. Informace o tom, jak šifrovat Smooth Streaming pomocí PlayReady, najdete v tématu [ochrana Smooth Streaming pomocí PlayReady](/previous-versions/azure/dn189154(v=azure.100)).
 
 ### <a name="media-services-net-sdk-updates"></a><a name="may_14_donnet_changes"></a>Aktualizace Media Services .NET SDK
 Sada Media Services .NET SDK je teď verze 3.0.0.5. Byly provedeny následující aktualizace:
@@ -447,7 +447,7 @@ Ve verzi 3.0.0.3 byly provedeny následující změny:
 
 Nejnovější verze sady Media Services SDK je teď 3.0.0.0. Nejnovější balíček si můžete stáhnout z NuGet nebo získat bity z [GitHubu].
 
-Počínaje verzí Media Services SDK 3.0.0.0 můžete znovu použít tokeny [Access Control Service Azure AD](https://msdn.microsoft.com/library/hh147631.aspx) . Další informace najdete v části "opakované použití Access Control Service tokeny" v tématu [připojení k Media Services pomocí sady Media Services SDK pro .NET](https://msdn.microsoft.com/library/azure/jj129571.aspx).
+Počínaje verzí Media Services SDK 3.0.0.0 můžete znovu použít tokeny [Access Control Service Azure AD](/previous-versions/azure/azure-services/hh147631(v=azure.100)) . Další informace najdete v části "opakované použití Access Control Service tokeny" v tématu [připojení k Media Services pomocí sady Media Services SDK pro .NET](/previous-versions/azure/jj129571(v=azure.100)).
 
 ### <a name="media-services-net-sdk-extensions-2000"></a><a name="dec_13_donnet_ext_changes"></a>Rozšíření Media Services .NET SDK 2.0.0.0
  Rozšíření Media Services .NET SDK jsou sada rozšiřujících metod a pomocných funkcí, které zjednodušují váš kód a usnadňují vývoj pomocí Media Services. Můžete získat nejnovější bity z [rozšíření Media Services .NET SDK](https://github.com/Azure/azure-sdk-for-media-services-extensions/tree/dev).
@@ -498,8 +498,8 @@ V červnu 2013 Media Services vydání sady SDK jsou zahrnuty následující zm�
     * Vlastnost StorageAccount
     * Vlastnost StorageAccountName
   
-      Další informace najdete v tématu [správa Media Servicesch prostředků napříč několika účty úložiště](https://msdn.microsoft.com/library/azure/dn271889.aspx).
-* Rozhraní API související s oznámeními. Počínaje verzí 2.2.0.0 můžete naslouchat oznámením ve službě Azure Queue Storage. Další informace najdete v tématu [zpracování oznámení úloh Media Services](https://msdn.microsoft.com/library/azure/dn261241.aspx).
+      Další informace najdete v tématu [správa Media Servicesch prostředků napříč několika účty úložiště](/previous-versions/azure/dn271889(v=azure.100)).
+* Rozhraní API související s oznámeními. Počínaje verzí 2.2.0.0 můžete naslouchat oznámením ve službě Azure Queue Storage. Další informace najdete v tématu [zpracování oznámení úloh Media Services](/previous-versions/azure/dn261241(v=azure.100)).
   
     * Vlastnost Microsoft. WindowsAzure. MediaServices. Client. IJob. JobNotificationSubscriptions
     * Typ Microsoft. WindowsAzure. MediaServices. Client. INotificationEndPoint
@@ -577,35 +577,34 @@ Následující funkce byly v listopadu vydání sady SDK nové:
 <!-- Images. -->
 
 <!--- URLs. --->
-[Microsoft Q&A question page for Azure Media Services]: https://docs.microsoft.com/answers/topics/azure-media-services.html
-[Odkaz na Azure Media Services REST API]: https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference
+[Microsoft Q&A question page for Azure Media Services]: /answers/topics/azure-media-services.html
+[Odkaz na Azure Media Services REST API]: /rest/api/media/operations/azure-media-services-rest-api-reference
 [Media Services pricing details]: https://azure.microsoft.com/pricing/details/media-services/
-[Vstupní metadata]: https://msdn.microsoft.com/library/azure/dn783120.aspx
-[Výstupní metadata]: https://msdn.microsoft.com/library/azure/dn783217.aspx
-[Deliver content]: https://msdn.microsoft.com/library/azure/hh973618.aspx
-[Index media files with the Azure Media Indexer]: https://msdn.microsoft.com/library/azure/dn783455.aspx
-[StreamingEndpoint]: https://msdn.microsoft.com/library/azure/dn783468.aspx
-[Work with Media Services live streaming]: https://msdn.microsoft.com/library/azure/dn783466.aspx
-[Use AES-128 dynamic encryption and the key delivery service]: https://msdn.microsoft.com/library/azure/dn783457.aspx
-[Use PlayReady dynamic encryption and the license delivery service]: https://msdn.microsoft.com/library/azure/dn783467.aspx
+[Vstupní metadata]: /azure/media-services/previous/media-services-input-metadata-schema
+[Výstupní metadata]: /azure/media-services/previous/media-services-output-metadata-schema
+[Deliver content]: /previous-versions/azure/hh973618(v=azure.100)
+[Index media files with the Azure Media Indexer]: /previous-versions/azure/dn783455(v=azure.100)
+[StreamingEndpoint]: /rest/api/media/operations/streamingendpoint
+[Work with Media Services live streaming]: /previous-versions/azure/dn783466(v=azure.100)
+[Use AES-128 dynamic encryption and the key delivery service]: /previous-versions/azure/dn783457(v=azure.100)
+[Use PlayReady dynamic encryption and the license delivery service]: /previous-versions/azure/dn783467(v=azure.100)
 [Preview features]: https://azure.microsoft.com/services/preview/
-[Přehled šablon licencí PlayReady Media Services]: https://msdn.microsoft.com/library/azure/dn783459.aspx
-[Stream storage-encrypted content]: https://msdn.microsoft.com/library/azure/dn783451.aspx
+[Přehled šablon licencí PlayReady Media Services]: /previous-versions/azure/dn783459(v=azure.100)
+[Stream storage-encrypted content]: /previous-versions/azure/dn783451(v=azure.100)
 [Azure portal]: https://portal.azure.com
-[Dynamické balení]: https://msdn.microsoft.com/library/azure/jj889436.aspx
+[Dynamické balení]: /previous-versions/azure/jj889436(v=azure.100)
 [Nick Drouin's blog]: http://blog-ndrouin.azurewebsites.net/hls-v3-new-old-thing/
-[Protect Smooth Streaming with PlayReady]: https://msdn.microsoft.com/library/azure/dn189154.aspx
-[Logika opakování v sadě Media Services SDK pro .NET]: https://msdn.microsoft.com/library/azure/dn745650.aspx
+[Protect Smooth Streaming with PlayReady]: /previous-versions/azure/dn189154(v=azure.100)
+[Logika opakování v sadě Media Services SDK pro .NET]: /azure/media-services/previous/media-services-retry-logic-in-dotnet-sdk
 [Grass Valley announces EDIUS 7 streaming through the cloud]: https://www.streamingmedia.com/Producer/Articles/ReadArticle.aspx?ArticleID=96351&utm_source=dlvr.it&utm_medium=twitter
-[Control Media Services Encoder output file names]: https://msdn.microsoft.com/library/azure/dn303341.aspx
-[Create overlays]: https://msdn.microsoft.com/library/azure/dn640496.aspx
-[Stitch video segments]: https://msdn.microsoft.com/library/azure/dn640504.aspx
+[Control Media Services Encoder output file names]: /previous-versions/azure/dn303341(v=azure.100)
+[Create overlays]: /previous-versions/azure/dn640496(v=azure.100)
+[Stitch video segments]: /previous-versions/azure/dn640504(v=azure.100)
 [Azure Media Services .NET SDK 3.0.0.1 and 3.0.0.2 releases]: http://www.gtrifonov.com/2014/02/07/windows-azure-media-services-.net-sdk-3.0.0.2-release/
-[Azure AD Access Control Service]: https://msdn.microsoft.com/library/hh147631.aspx
-[Connect to Media Services with the Media Services SDK for .NET]: https://msdn.microsoft.com/library/azure/jj129571.aspx
+[Azure AD Access Control Service]: /previous-versions/azure/azure-services/hh147631(v=azure.100)
+[Connect to Media Services with the Media Services SDK for .NET]: /previous-versions/azure/jj129571(v=azure.100)
 [Media Services .NET SDK extensions]: https://github.com/Azure/azure-sdk-for-media-services-extensions/tree/dev
 [Azure SDK tools]: https://github.com/Azure/azure-sdk-tools
 [GitHub]: https://github.com/Azure/azure-sdk-for-media-services
-[Manage Media Services assets across multiple Storage accounts]: https://msdn.microsoft.com/library/azure/dn271889.aspx
-[Handle Media Services job notifications]: https://msdn.microsoft.com/library/azure/dn261241.aspx
-
+[Manage Media Services assets across multiple Storage accounts]: /previous-versions/azure/dn271889(v=azure.100)
+[Handle Media Services job notifications]: /previous-versions/azure/dn261241(v=azure.100)

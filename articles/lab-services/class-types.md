@@ -3,11 +3,12 @@ title: Příklady typů tříd v Azure Lab Services | Microsoft Docs
 description: Poskytuje některé typy tříd, pro které můžete nastavit Labs pomocí Azure Lab Services.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8564f5ece9d6df7db852c5ac16f00f1455d013ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21159aacfcd87bb929eaeaf9884b0275c7005e1a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443753"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001619"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>Přehled typů tříd – Azure Lab Services
 
@@ -45,12 +46,7 @@ Můžete nastavit počítač šablony v Azure Lab Services s nástroji potřebn�
 
 Podrobné informace o tom, jak tento typ testovacího prostředí nastavit, najdete v tématu [Nastavení testovacího prostředí pro učení datových věd pomocí poznámkových bloků Python a Jupyter](class-type-jupyter-notebook.md).
 
-## <a name="mobile-app-development-with-android-studio"></a>Vývoj mobilních aplikací s využitím sady Android Studio
-V Azure Lab Services můžete nastavit testovací prostředí, abyste mohli naučit úvodní třídu pro vývoj mobilních aplikací. Tato třída se zaměřuje na mobilní aplikace pro Android, které mohou být publikovány na [obchod Google Play](https://play.google.com/store/apps).  Studenti se dozvíte, jak používat [Android Studio](https://developer.android.com/studio) k sestavování aplikací.  [Emulátor sady Visual Studio pro Android](https://visualstudio.microsoft.com/vs/msft-android-emulator/) slouží k místnímu testování aplikace.
-
-Podrobné informace o tom, jak tento typ testovacího prostředí nastavit, najdete v tématu [Nastavení testovacího prostředí pro učení vývoje mobilních aplikací pomocí Android Studio](class-type-mobile-dev-android-studio.md).
-
-## <a name="big-data-analytics"></a>Analýzy velkých objemů dat
+## <a name="big-data-analytics"></a>Analýzy velkého objemu dat
 Můžete nastavit testovací prostředí GPU pro výuku třídy analýzy velkých objemů dat. U tohoto typu třídy studenti zjistí, jak zpracovávat velké objemy dat, a použít algoritmy strojového a statistického učení k odvození přehledů dat. Klíčový cíl pro studenty je Naučte se používat nástroje pro analýzu dat, jako je open source softwarový balíček Apache Hadoop, který poskytuje nástroje pro ukládání, správu a zpracování velkých objemů dat. 
 
 Podrobné informace o tom, jak tento typ testovacího prostředí nastavit, najdete v tématu [Nastavení testovacího prostředí pro analýzu velkých objemů dat pomocí nasazení Docker pro datovou platformu Hortonworks](class-type-big-data-analytics.md).

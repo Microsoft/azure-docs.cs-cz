@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: bb7b641a7169c6577320f07a964d278ac1727b1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 596303223554589ef26938486ccfd2281ccd46f5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83664694"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999101"
 ---
 # <a name="troubleshoot-os-start-up--windows-update-installation-capacity"></a>Řešení potíží s startem operačního systému – web Windows Update kapacity instalace
 
@@ -48,7 +49,7 @@ V této situaci operační systém (OS) nemůže dokončit instalaci web Windows
 
 ### <a name="create-and-access-a-repair-vm"></a>Vytvoření a přístup k opravnému virtuálnímu počítači
 
-1. Pomocí kroků 1-3 příkazů pro [opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) Připravte opravný virtuální počítač.
+1. Pomocí kroků 1-3 příkazů pro [opravu virtuálního počítače](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) Připravte opravný virtuální počítač.
 1. Pomocí Připojení ke vzdálené ploše se připojte k opravnému virtuálnímu počítači.
 
 ### <a name="free-up-space-on-the-disk"></a>Uvolněte místo na disku.
@@ -59,10 +60,10 @@ V této situaci operační systém (OS) nemůže dokončit instalaci web Windows
 - Proveďte Vyčištění disku.
 - Zrušte fragmentaci jednotky.
 
-1. Ověřte, zda je disk plný. Pokud je velikost disku menší než 1 TB, rozbalte ji do velikosti až 1 TB [pomocí PowerShellu](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk).
+1. Ověřte, zda je disk plný. Pokud je velikost disku menší než 1 TB, rozbalte ji do velikosti až 1 TB [pomocí PowerShellu](../windows/expand-os-disk.md).
 1. Pokud je disk již 1 TB, bude nutné provést vyčištění disku.
-   1. Odpojte datový disk [od poškozeného virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk).
-   1. Připojte datový disk [k fungujícímu virtuálnímu počítači](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps#attach-an-existing-data-disk-to-a-vm).
+   1. Odpojte datový disk [od poškozeného virtuálního počítače](../windows/detach-disk.md).
+   1. Připojte datový disk [k fungujícímu virtuálnímu počítači](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm).
    1. Uvolněte místo pomocí [nástroje Vyčištění disku](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) .
 1. Po dokončení změny velikosti a vyčištění pomocí tohoto příkazu zrušte fragmentaci jednotky:
 
@@ -122,4 +123,4 @@ V závislosti na úrovni fragmentace může defragmentace trvat několik hodin.
    
 ### <a name="rebuild-the-vm"></a>Opětovné sestavení virtuálního počítače
 
-K opětovnému sestavení virtuálního počítače použijte [Krok 5 příkazů pro opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) .
+K opětovnému sestavení virtuálního počítače použijte [Krok 5 příkazů pro opravu virtuálního počítače](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) .

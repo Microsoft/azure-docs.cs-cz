@@ -6,17 +6,18 @@ ms.suite: integration
 ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
-ms.openlocfilehash: afd2735bae2a79ad942c347219019ef200b61070
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec2225633e5621c51067b64af2968a0dc0f5da87
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75428710"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001413"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Volání nebo spuštění Logic Apps pomocí Azure Functions a Azure Service Bus
 
 Můžete použít [Azure Functions](../azure-functions/functions-overview.md) pro aktivaci aplikace logiky, pokud potřebujete nasadit dlouhodobě spuštěný naslouchací proces nebo úlohu. Můžete například vytvořit funkci Azure, která naslouchá ve frontě [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) a hned spustí aplikaci logiky jako Trigger push.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -118,11 +119,11 @@ Dále vytvořte funkci, která funguje jako Trigger a naslouchat do fronty.
 
    * V tomto příkladu se používá `application/json` typ obsahu zprávy, ale tento typ můžete podle potřeby změnit.
    
-   * Z důvodu možného souběžného spouštění funkcí, velkých objemů nebo těžkých zátěží se vyhnete vytvoření instance [třídy HTTPClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) pomocí `using` příkazu a přímému vytváření instancí HTTPClient na požadavek. Další informace najdete v tématu [použití HttpClientFactory k implementaci odolných požadavků HTTP](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core).
+   * Z důvodu možného souběžného spouštění funkcí, velkých objemů nebo těžkých zátěží se vyhnete vytvoření instance [třídy HTTPClient](/dotnet/api/system.net.http.httpclient) pomocí `using` příkazu a přímému vytváření instancí HTTPClient na požadavek. Další informace najdete v tématu [použití HttpClientFactory k implementaci odolných požadavků HTTP](/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core).
    
    * Pokud je to možné, znovu použijte instanci klientů protokolu HTTP. Další informace najdete v tématu [Správa připojení v Azure Functions](../azure-functions/manage-connections.md).
 
-   V tomto příkladu se používá [ `Task.Run` Metoda](https://docs.microsoft.com/dotnet/api/system.threading.tasks.task.run) v [asynchronním](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/async) režimu. Další informace naleznete v tématu [asynchronní programování s Async a await](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/).
+   V tomto příkladu se používá [ `Task.Run` Metoda](/dotnet/api/system.threading.tasks.task.run) v [asynchronním](/dotnet/csharp/language-reference/keywords/async) režimu. Další informace naleznete v tématu [asynchronní programování s Async a await](/dotnet/csharp/programming-guide/concepts/async/).
 
    ```csharp
    using System;

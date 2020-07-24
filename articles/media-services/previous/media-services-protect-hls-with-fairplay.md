@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 3ad06d0e37b7cf464c311e28e546e1b7f1ebd183
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 7f4df99ccd960a6569cd293a86f21359368c139f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058244"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000563"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Chraňte svůj HLS obsah pomocí Apple FairPlay nebo Microsoft PlayReady
 
 > [!NOTE]
-> K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).   > do Media Services V2 se přidávají žádné nové funkce ani funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).   > do Media Services V2 se přidávají žádné nové funkce ani funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 >
 
 Azure Media Services slouží k dynamickému šifrování obsahu HTTP Live Streaming (HLS) pomocí následujících formátů:  
@@ -51,7 +51,7 @@ Tento článek ukazuje, jak použít Media Services k dynamickému šifrování 
 
 Při použití Media Services k zajištění HLS šifrovaných s FairPlay a k doručování licencí FairPlay se vyžadují následující:
 
-  * Účet Azure. Podrobnosti najdete v článku [bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F).
+  * Účet Azure: Podrobnosti najdete v článku [bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F).
   * Účet Media Services. Pokud ho chcete vytvořit, přečtěte si téma [Vytvoření účtu Azure Media Services pomocí Azure Portal](media-services-portal-create-account.md).
   * Zaregistrujte se pomocí [vývojového programu Apple](https://developer.apple.com/).
   * Apple vyžaduje, aby vlastník obsahu získal [balíček pro nasazení](https://developer.apple.com/contact/fps/). Stav, kdy už jste implementovali modul zabezpečení klíčů (KSM) s Media Services a že požadujete finální balíček pro FPS. K dispozici jsou pokyny v posledním balíčku FPS pro vygenerování certifikace a získání tajného klíče aplikace (ASK). Pro konfiguraci FairPlay použijte dotaz.

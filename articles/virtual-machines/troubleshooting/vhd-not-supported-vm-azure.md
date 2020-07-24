@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure
 ms.date: 06/29/2020
 ms.author: genli
-ms.openlocfilehash: ff4822b513ed2aea6a18ba45bffc1d060ee2410e
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: a843a42de6fc1e6cd8ef788552ab4a8ac17b4e25
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85937528"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999050"
 ---
 # <a name="vhd-is-not-supported-when-you-create-a-virtual-machine-in-azure"></a>Virtuální pevný disk se nepodporuje při vytváření virtuálního počítače v Azure.
 
@@ -48,21 +48,21 @@ K tomuto problému dochází z jednoho z následujících důvodů:
 
 Chcete-li tento problém vyřešit, změňte velikost disku tak, aby odpovídala velikosti 1 MB:
 
-- Pokud chcete vyřešit problém ve Windows, použijte [rutinu změnit velikost-VHD PowerShell](https://docs.microsoft.com/powershell/module/hyper-v/resize-vhd). Všimněte si, že **Změna velikosti – VHD** není Azure PowerShell rutinou.
+- Pokud chcete vyřešit problém ve Windows, použijte [rutinu změnit velikost-VHD PowerShell](/powershell/module/hyper-v/resize-vhd). Všimněte si, že **Změna velikosti – VHD** není Azure PowerShell rutinou.
 
-  1. [Instalace role Hyper-V na Windows serveru](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)
-  1. [Převést virtuální disk na virtuální pevný disk s pevnou velikostí](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#convert-the-virtual-disk-to-a-fixed-size-vhd)
+  1. [Instalace role Hyper-V na Windows serveru](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)
+  1. [Převést virtuální disk na virtuální pevný disk s pevnou velikostí](../windows/prepare-for-upload-vhd-image.md#convert-the-virtual-disk-to-a-fixed-size-vhd)
 
-- K vyřešení problému v systému Linux použijte [příkaz qemu-img](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic).
+- K vyřešení problému v systému Linux použijte [příkaz qemu-img](../linux/create-upload-generic.md).
 
 Další informace o tom, jak vytvořit a nahrát VHD pro vytváření virtuálních počítačů Azure, najdete v následujících článcích:
 
-- [Nahrání a vytvoření virtuálního počítače se systémem Linux z vlastní image disku pomocí Azure CLI 1,0](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd)
-- [Vytvořte a nahrajte virtuální pevný disk Windows Serveru na Azure](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)
+- [Nahrání a vytvoření virtuálního počítače se systémem Linux z vlastní image disku pomocí Azure CLI 1,0](../linux/upload-vhd.md)
+- [Vytvořte a nahrajte virtuální pevný disk Windows Serveru na Azure](../windows/upload-generalized-managed.md)
 
 Pokračování v potížích může znamenat poškozený virtuální pevný disk. V takové situaci doporučujeme znovu sestavit VHD od začátku.
 
 Další informace najdete v následujících článcích:
 
-- [O virtuálním pevném disku Windows](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#about-vhds)
-- [O VHD pro Linux](https://docs.microsoft.com/azure/virtual-machines/linux/about-disks-and-vhds#about-vhds)
+- [O virtuálním pevném disku Windows](../windows/managed-disks-overview.md)
+- [O VHD pro Linux](../linux/managed-disks-overview.md)

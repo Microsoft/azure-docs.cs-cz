@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
-ms.openlocfilehash: 6b0f21c3fa7a9c827f7201f4b899a33ea77eaf08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2337a7543f84d7eba5f565d875129cf22e8b27ed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74888491"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001209"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>Připojení k Media Services V3 API – Java
 
@@ -25,7 +26,7 @@ V tomto článku se dozvíte, jak se připojit k sadě Azure Media Services V3 J
 
 V tomto článku se k vývoji ukázkové aplikace používá Visual Studio Code.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Po [napsání Java pomocí Visual Studio Code](https://code.visualstudio.com/docs/java/java-tutorial) nainstalujte:
 
@@ -33,8 +34,8 @@ V tomto článku se k vývoji ukázkové aplikace používá Visual Studio Code.
    - Apache Maven
    - Balíček rozšíření Java
 - Ujistěte se, že jste nastavili `JAVA_HOME` a `PATH` proměnné prostředí.
-- [Vytvořte účet Media Services](create-account-cli-how-to.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services.
-- Postupujte podle kroků v tématu [rozhraní API pro přístup](access-api-cli-how-to.md) . Poznamenejte si ID předplatného, ID aplikace (ID klienta), ověřovací klíč (tajný kód) a ID tenanta, které budete potřebovat v pozdějším kroku.
+- [Vytvořte účet Media Services](./create-account-howto.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services.
+- Postupujte podle kroků v tématu [rozhraní API pro přístup](./access-api-howto.md) . Poznamenejte si ID předplatného, ID aplikace (ID klienta), ověřovací klíč (tajný kód) a ID tenanta, které budete potřebovat v pozdějším kroku.
 
 Také si přečtěte:
 
@@ -93,7 +94,7 @@ Při spuštění příkazu se `pom.xml` `App.java` vytvoří soubory, a.
    import com.microsoft.azure.management.mediaservices.v2018_07_01.implementation.MediaManager;
    import com.microsoft.rest.LogLevel;
    ```
-1. Pokud chcete vytvořit přihlašovací údaje služby Active Directory, které potřebujete k vytvoření žádostí, přidejte do metody Main třídy App následující kód a nastavte hodnoty, které jste získali z [rozhraní API pro přístup](access-api-cli-how-to.md):
+1. Pokud chcete vytvořit přihlašovací údaje služby Active Directory, které potřebujete k vytvoření žádostí, přidejte do metody Main třídy App následující kód a nastavte hodnoty, které jste získali z [rozhraní API pro přístup](./access-api-howto.md):
    
    ```java
    final String clientId = "00000000-0000-0000-0000-000000000000";
@@ -129,4 +130,4 @@ Při spuštění příkazu se `pom.xml` `App.java` vytvoří soubory, a.
 
 Nyní můžete zahrnout `import com.microsoft.azure.management.mediaservices.v2018_07_01.*;` a začít pracovat s entitami.
 
-Další příklady kódu naleznete v části úložiště [ukázek sady Java SDK](https://docs.microsoft.com/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/) .
+Další příklady kódu naleznete v části úložiště [ukázek sady Java SDK](/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/) .

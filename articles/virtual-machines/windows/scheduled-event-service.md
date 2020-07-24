@@ -7,12 +7,12 @@ ms.subservice: monitoring
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
-ms.openlocfilehash: 3f3bf83d8155383757cc87749281c688bd281a4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0806c6e0ed89c2c0f4712ec985599810119fcf89
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82099593"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999016"
 ---
 # <a name="monitoring-scheduled-events"></a>Scheduled Events monitorování
 
@@ -25,17 +25,17 @@ V tomto článku se dozvíte, jak můžete použít naplánované události k oz
 
 Scheduled Events je k dispozici jako součást [Azure instance metadata Service](instance-metadata-service.md), která je k dispozici na všech virtuálních počítačích Azure. Zákazníci můžou psát Automation pro dotazování koncového bodu svých virtuálních počítačů, aby našli naplánovaná oznámení o údržbě a aby prováděli zmírnění rizik, jako je uložení stavu a přepnutí virtuálního počítače mimo rotaci. Doporučujeme, abyste sestavili automatizaci pro záznam Scheduled Events, abyste mohli mít protokol auditování událostí údržby Azure. 
 
-V tomto článku Vás provedeme procesem zaznamenání údržby Scheduled Events k Log Analytics. Pak budeme aktivovat některé základní akce oznámení, jako je odeslání e-mailu týmu a získání historických přehledů o všech událostech, které ovlivnily vaše virtuální počítače. Pro agregaci a automatizaci událostí budeme používat [Log Analytics](/azure/azure-monitor/learn/quick-create-workspace), ale můžete použít jakékoli řešení monitorování ke shromáždění těchto protokolů a aktivaci automatizace.
+V tomto článku Vás provedeme procesem zaznamenání údržby Scheduled Events k Log Analytics. Pak budeme aktivovat některé základní akce oznámení, jako je odeslání e-mailu týmu a získání historických přehledů o všech událostech, které ovlivnily vaše virtuální počítače. Pro agregaci a automatizaci událostí budeme používat [Log Analytics](../../azure-monitor/learn/quick-create-workspace.md), ale můžete použít jakékoli řešení monitorování ke shromáždění těchto protokolů a aktivaci automatizace.
 
 ![Diagram znázorňující životní cyklus události](./media/notifications/events.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto příkladu budete muset vytvořit [virtuální počítač s Windows ve skupině dostupnosti](tutorial-availability-sets.md). Scheduled Events poskytují oznámení o změnách, které můžou ovlivnit některý z virtuálních počítačů ve vaší skupině dostupnosti, cloudové službě, sadě škálování virtuálních počítačů nebo samostatných virtuálních počítačích. Budeme používat [službu](https://github.com/microsoft/AzureScheduledEventsService) , která se dotazuje na naplánované události na jednom z virtuálních počítačů, které se budou chovat jako kolektor, a získat tak události pro všechny ostatní virtuální počítače ve skupině dostupnosti.    
 
 Neodstraňujte skupinu prostředků skupiny na konci tohoto kurzu.
 
-Budete také muset [vytvořit Log Analytics pracovní prostor](/azure/azure-monitor/learn/quick-create-workspace) , který použijeme k agregaci informací z virtuálních počítačů ve skupině dostupnosti.
+Budete také muset [vytvořit Log Analytics pracovní prostor](../../azure-monitor/learn/quick-create-workspace.md) , který použijeme k agregaci informací z virtuálních počítačů ve skupině dostupnosti.
 
 ## <a name="set-up-the-environment"></a>Nastavení prostředí
 
@@ -112,7 +112,7 @@ Nyní chceme připojit Log Analytics pracovní prostor k virtuálnímu počíta�
 1. Vyhledejte a vyberte **myCollectorVM**. 
 1. Na nové stránce pro **myCollectorVM**vyberte **připojit**.
 
-Tím se na virtuální počítač nainstaluje [Agent Microsoft Monitoring Agent](/azure/virtual-machines/extensions/oms-windows) . Připojení virtuálního počítače k pracovnímu prostoru a instalace rozšíření bude trvat několik minut. 
+Tím se na virtuální počítač nainstaluje [Agent Microsoft Monitoring Agent](../extensions/oms-windows.md) . Připojení virtuálního počítače k pracovnímu prostoru a instalace rozšíření bude trvat několik minut. 
 
 ## <a name="configure-the-workspace"></a>Konfigurace pracovního prostoru
 
@@ -132,7 +132,7 @@ Tím se na virtuální počítač nainstaluje [Agent Microsoft Monitoring Agent]
 ## <a name="creating-an-alert-rule-with-azure-monitor"></a>Vytvoření pravidla výstrahy pomocí Azure Monitor 
 
 
-Po vložení událostí do Log Analytics můžete spustit následující [dotaz](/azure/azure-monitor/log-query/get-started-portal) , který vyhledá události plánu.
+Po vložení událostí do Log Analytics můžete spustit následující [dotaz](../../azure-monitor/log-query/get-started-portal.md) , který vyhledá události plánu.
 
 1. V horní části stránky vyberte **protokoly** a vložte následující text do textového pole:
 

@@ -14,19 +14,20 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
 ms.custom: has-adal-ref
-ms.openlocfilehash: 6dc05f225e3585b83bd6a57ca47bd5adf97934ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30c91b71b952bb68761015325a00ff6926c62dfe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83201120"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001311"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Připojení k Media Services V3 API – .NET
 
 V tomto článku se dozvíte, jak se připojit k sadě Azure Media Services V3 .NET SDK pomocí metody Login objektu služby.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- [Vytvořte účet Media Services](create-account-cli-how-to.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services
+- [Vytvořte účet Media Services](./create-account-howto.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services
 - Nainstalujte nástroj, který byste chtěli použít pro vývoj pro .NET. Postup v tomto článku ukazuje, jak používat [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Můžete použít Visual Studio Code, viz [práce s jazykem C#](https://code.visualstudio.com/docs/languages/csharp). Nebo můžete použít jiný Editor kódu.
 
 > [!IMPORTANT]
@@ -38,14 +39,14 @@ V tomto článku se dozvíte, jak se připojit k sadě Azure Media Services V3 .
 1. V nabídce **soubor** klikněte na příkaz **Nový**  >  **projekt**. 
 1. Vytvořte konzolovou aplikaci **.NET Core** .
 
-Ukázková aplikace v tomto tématu cílí na cíle `netcoreapp2.0` . Kód používá Async Main, který je k dispozici počínaje jazykem C# 7,1. Další podrobnosti najdete v tomto [blogu](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) .
+Ukázková aplikace v tomto tématu cílí na cíle `netcoreapp2.0` . Kód používá Async Main, který je k dispozici počínaje jazykem C# 7,1. Další podrobnosti najdete v tomto [blogu](/archive/blogs/benwilli/async-main-is-available-but-hidden) .
 
 ## <a name="add-required-nuget-packages"></a>Přidat požadované balíčky NuGet
 
 1. V aplikaci Visual Studio vyberte **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce NuGet**.
 2. V okně **konzoly Správce balíčků** `Install-Package` přidejte následující balíčky NuGet pomocí příkazu. Například, `Install-Package Microsoft.Azure.Management.Media`.
 
-|Balíček|Description|
+|Balíček|Popis|
 |---|---|
 |`Microsoft.Azure.Management.Media`|Azure Media Services SDK. <br/>Abyste měli jistotu, že používáte nejnovější balíček Azure Media Services, zkontrolujte [Microsoft. Azure. Management. Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media).|
 |`Microsoft.Rest.ClientRuntime.Azure.Authentication`|Knihovna ověřování ADAL pro sadu Azure SDK pro NET|
@@ -63,7 +64,7 @@ Ukázková aplikace v tomto tématu cílí na cíle `netcoreapp2.0` . Kód použ
 
 ### <a name="set-values-in-appsettingsjson"></a>Nastavit hodnoty v appsettings.jsna
 
-Spusťte `az ams account sp create` příkaz, jak je popsáno v tématu [přístupová rozhraní API](access-api-cli-how-to.md). Příkaz vrátí JSON, který byste měli zkopírovat do "appsettings.json".
+Spusťte `az ams account sp create` příkaz, jak je popsáno v tématu [přístupová rozhraní API](./access-api-howto.md). Příkaz vrátí JSON, který byste měli zkopírovat do "appsettings.json".
  
 ## <a name="add-configuration-file"></a>Přidání konfiguračního souboru
 
@@ -242,5 +243,5 @@ namespace ConsoleApp1
 
 ## <a name="see-also"></a>Viz také
 
-* [Reference k .NET](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
+* [Reference k .NET](/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
 * Další příklady kódu naleznete v tématu úložiště [ukázek sady .NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet) .

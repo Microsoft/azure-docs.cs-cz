@@ -14,22 +14,23 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: juliako
 ms.custom: tracking-python
-ms.openlocfilehash: 3e6e421d346925f751595ce2fb2d0891e31dc108
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b283d04c7d9ddf7639c198625ea69ca958170210
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559623"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001175"
 ---
 # <a name="connect-to-media-services-v3-api---python"></a>Připojení k Media Services V3 API – Python
 
 V tomto článku se dozvíte, jak se připojit k sadě Azure Media Services V3 Python SDK pomocí metody přihlašování instančního objektu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Stažení Pythonu z [Python.org](https://www.python.org/downloads/)
 - Ujistěte se, že jste nastavili `PATH` proměnnou prostředí.
-- [Vytvořte účet Media Services](create-account-cli-how-to.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services.
-- Postupujte podle kroků v tématu [rozhraní API pro přístup](access-api-cli-how-to.md) . Poznamenejte si ID předplatného, ID aplikace (ID klienta), ověřovací klíč (tajný klíč) a ID tenanta, které budete potřebovat v pozdějším kroku.
+- [Vytvořte účet Media Services](./create-account-howto.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services.
+- Postupujte podle kroků v tématu [rozhraní API pro přístup](./access-api-howto.md) . Poznamenejte si ID předplatného, ID aplikace (ID klienta), ověřovací klíč (tajný klíč) a ID tenanta, které budete potřebovat v pozdějším kroku.
 
 > [!IMPORTANT]
 > Přečtěte si [zásady vytváření názvů](media-services-apis-overview.md#naming-conventions).
@@ -54,7 +55,7 @@ pip3 install azure-mgmt-media==1.1.1
 1. Otevřete soubor ve svém oblíbeném editoru.
 1. Do souboru přidejte kód, který následuje. Kód importuje požadované moduly a vytvoří objekt přihlašovacích údajů služby Active Directory, ke kterému se potřebujete připojit Media Services.
 
-      Nastavte hodnoty proměnných na hodnoty, které jste získali z [rozhraní API pro přístup](access-api-cli-how-to.md) .
+      Nastavte hodnoty proměnných na hodnoty, které jste získali z [rozhraní API pro přístup](./access-api-howto.md) .
 
       ```
       import adal

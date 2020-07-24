@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6d86c90828c081a542fa5574493a46e8a2e44640
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7310c037511fdf1a7d6f3763fd61d292078ea83e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82187473"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998884"
 ---
 # <a name="cloudsimple-security-overview"></a>Přehled zabezpečení CloudSimple
 
@@ -29,7 +29,7 @@ Mezi požadavky na zabezpečení infrastruktury Azure patří datacentra a umís
 
 ### <a name="datacenter-security"></a>Zabezpečení datového centra
 
-Microsoft má celou divizi, která je věnována navrhování, sestavování a provozování fyzických zařízení podporujících Azure. Tento tým je investoval do zachování nejmodernějšího fyzického zabezpečení. Podrobnosti o fyzickém zabezpečení najdete v tématech [zařízení, místní a fyzické zabezpečení, které](../security/azure-physical-security.md)jsou v Azure.
+Microsoft má celou divizi, která je věnována navrhování, sestavování a provozování fyzických zařízení podporujících Azure. Tento tým je investoval do zachování nejmodernějšího fyzického zabezpečení. Podrobnosti o fyzickém zabezpečení najdete v tématech [zařízení, místní a fyzické zabezpečení, které](../security/fundamentals/physical-security.md)jsou v Azure.
 
 ### <a name="equipment-location"></a>Umístění zařízení
 

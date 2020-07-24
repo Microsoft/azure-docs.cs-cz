@@ -12,11 +12,12 @@ ms.topic: article
 ms.date: 5/28/2020
 ms.author: inhenkel
 ms.custom: references_regions
-ms.openlocfilehash: cefd366e29fe1c6f68ec38816247f78bb53cd6e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ecc8cad4480528477f6bb470c7bc32ee2a20e11
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196243"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001345"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Cloudy a oblasti, ve kterých existuje Azure Media Services V3
 
@@ -37,14 +38,14 @@ Azure Media Services V3 je k dispozici prostřednictvím Azure Resource Manager 
 
 [LiveTranscription](live-transcription.md) je k dispozici v následujících oblastech:
 
-- Jihovýchodní Asie
-- Západní Evropa
+- Southeast Asia
+- West Europe
 - Severní Evropa
-- USA – východ
-- USA – střed
-- USA – středojih
-- USA – západ 2
-- Brazílie – jih
+- East US
+- Střední USA
+- Středojižní USA
+- Západní USA 2
+- Brazil South
 
 ## <a name="regionsgeographieslocations"></a>Oblasti/geografické oblasti/umístění
 
@@ -52,7 +53,7 @@ Azure Media Services V3 je k dispozici prostřednictvím Azure Resource Manager 
 
 ### <a name="region-code-name"></a>Název kódu oblasti
 
-Pokud potřebujete zadat parametr **umístění** , musíte jako hodnotu **umístění** zadat název kódu oblasti. Pokud chcete získat název kódu pro oblast, ve které je váš účet, a na to, na který má být vaše volání směrováno, můžete spustit následující řádek v rozhraní příkazového řádku [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) .
+Pokud potřebujete zadat parametr **umístění** , musíte jako hodnotu **umístění** zadat název kódu oblasti. Pokud chcete získat název kódu pro oblast, ve které je váš účet, a na to, na který má být vaše volání směrováno, můžete spustit následující řádek v rozhraní příkazového řádku [Azure CLI](/cli/azure/?view=azure-cli-latest) .
 
 ```azurecli-interactive
 az account list-locations
@@ -79,39 +80,39 @@ Následující koncové body jsou důležité pro informace o připojení k Medi
 
 ### <a name="global-azure"></a>Globální Azure
 
-|Koncové body||
-| --- | --- |
+| Služba | Koncový bod |
+| ------- | -------- |
 | Azure Resource Manager |  `https://management.azure.com/` |
-| Authentication | `https://login.microsoftonline.com/` |
+| Ověřování | `https://login.microsoftonline.com/` |
 | Cílová skupina tokenů | `https://management.core.windows.net/` |
 
 ### <a name="azure-government"></a>Azure Government
 
-|Koncové body||
-| --- | --- |
+| Služba | Koncový bod |
+| ------- | -------- |
 | Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
-| Authentication | `https://login.microsoftonline.us/` |
+| Ověřování | `https://login.microsoftonline.us/` |
 | Cílová skupina tokenů | `https://management.core.usgovcloudapi.net/` |
 
 ### <a name="azure-germany"></a>Azure (Německo)
 
-| Koncové body ||
-| --- | --- |  
+| Služba | Koncový bod |
+| ------- | -------- |
 | Azure Resource Manager | `https://management.cloudapi.de/` |
-| Authentication | `https://login.microsoftonline.de/` |
+| Ověřování | `https://login.microsoftonline.de/` |
 | Cílová skupina tokenů | `https://management.core.cloudapi.de/`|
 
 ### <a name="azure-china-21vianet"></a>Azure (Čína) 21Vianet
 
-|Koncové body||
-| --- | --- |
+| Služba | Koncový bod |
+| ------- | -------- |
 | Azure Resource Manager | `https://management.chinacloudapi.cn/` |
-| Authentication | `https://login.chinacloudapi.cn/` |
+| Ověřování | `https://login.chinacloudapi.cn/` |
 | Cílová skupina tokenů |  `https://management.core.chinacloudapi.cn/` |
 
 ## <a name="see-also"></a>Viz také
 
-* [Oblast Azure](https://azure.microsoft.com/global-infrastructure/regions/)
+* [Oblasti Azure](https://azure.microsoft.com/global-infrastructure/regions/)
 * [Zeměpisné oblasti Azure](https://azure.microsoft.com/global-infrastructure/geographies/)
 * [Umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/)
 

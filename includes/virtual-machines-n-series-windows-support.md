@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 40e5a1bf940e46aed566a1e3fa6dcb4e6b2d9230
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04b085d2e990a580ddc99acb3b83ac8bd8ac2db3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77135043"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998969"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>Podporované operační systémy a ovladače
 
@@ -34,12 +34,14 @@ Ovladače NVIDIA Tesla (CUDA) pro virtuální počítače NC, NCv2, NCv3, ND a N
 
 Microsoft redistribuuje instalační programy ovladačů NVIDIA GRID pro virtuální počítače a virtuální počítače řady NVv3-Series používané jako virtuální pracovní stanice nebo pro virtuální aplikace. Nainstalujte jenom tyto ovladače mřížky na virtuální počítače Azure NV-Series jenom v operačních systémech uvedených v následující tabulce. Tyto ovladače zahrnují licencování pro software služby GRID Virtual GPU v Azure. Nemusíte nastavovat licenční server pro software NVIDIA vGPU.
 
+Ovladače mřížky znovu distribuované pomocí Azure nefungují na virtuálních počítačích bez řady NV, jako jsou například NC, NCv2, NCv3, ND a NDv2-Series VM.
+
 Počítejte s tím, že rozšíření NVIDIA bude vždycky instalovat nejnovější ovladač. Odkazy na předchozí verzi poskytujeme pro zákazníky, kteří mají závislost na starší verzi.
 
-Pro Windows Server 2019, Windows Server 2016 a Windows 10 (až do buildu 1909):
-- [Mřížka 10,1 (442,06)](https://go.microsoft.com/fwlink/?linkid=874181) (. exe)
-- [Mřížka 10,0 (441,66)](https://download.microsoft.com/download/2/a/3/2a316e62-3be9-4ddb-ae8e-c04b6df6e22d/441.66_grid_win10_server2016_server2019_64bit_international.exe) (. exe) 
+Pro Windows Server 2019, Windows Server 2016 a Windows 10 (až do buildu 2004):
+- [Mřížka 11 (451,48)](https://go.microsoft.com/fwlink/?linkid=874181) (. exe)
+- [Mřížka 10,1 (442,06)](https://download.microsoft.com/download/b/8/f/b8f5ecec-b8f9-47de-b007-ac40adc88dc8/442.06_grid_win10_64bit_international_whql.exe) (. exe) 
 
-Pro Windows Server 2012 R2, Windows Server 2008 R2, Windows 8 a Windows 7: 
-- [Mřížka 10,1 (442,06)](https://go.microsoft.com/fwlink/?linkid=874184) (. exe)
-- [Mřížka 10,0 (441,66)](https://download.microsoft.com/download/d/8/0/d80091f8-0d55-47c2-958a-bacd136f432a/441.66_grid_win7_win8_server2008R2_server2012R2_64bit_international.exe) (. exe)  
+Pro Windows Server 2012 R2: 
+- [Mřížka 11 (451,48)](https://go.microsoft.com/fwlink/?linkid=874184) (. exe)
+- [Mřížka 10,1 (442,66)](https://download.microsoft.com/download/4/3/3/4330fd5c-c685-4ca1-abca-3b2fb3c11d2e/442.06_grid_win8_win7_64bit_international_whql.exe) (. exe)  

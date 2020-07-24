@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: fa7dca62ed51c52b704c199ca04eadb6306be4df
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: c3d776362b0447b148c0b2bdedba1287fa56058b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170781"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000189"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Odeslání souborů do účtu Azure Media Services pomocí REST  
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "86170781"
 > * [Azure Portal](media-services-portal-upload-files.md)
 > 
 
-Ve službě Media Services můžete digitální soubory nahrát do assetu. Entita [assetu](https://docs.microsoft.com/rest/api/media/operations/asset) může obsahovat video, zvuk, obrázky, kolekce miniatur, textové stopy a soubory titulků (a metadata o těchto souborech.)  Po nahrání souborů do assetu je váš obsah bezpečně uložen v cloudu pro další zpracování a streamování. 
+Ve službě Media Services můžete digitální soubory nahrát do assetu. Entita [assetu](/rest/api/media/operations/asset) může obsahovat video, zvuk, obrázky, kolekce miniatur, textové stopy a soubory titulků (a metadata o těchto souborech.)  Po nahrání souborů do assetu je váš obsah bezpečně uložen v cloudu pro další zpracování a streamování. 
 
 V tomto kurzu se dozvíte, jak nahrát soubor a další operaci s ním spojenou:
 
@@ -42,13 +42,13 @@ V tomto kurzu se dozvíte, jak nahrát soubor a další operaci s ním spojenou:
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 - [Vytvořte účet Azure Media Services pomocí Azure Portal](media-services-portal-create-account.md).
 - Přečtěte si článek [Přehled přístupu k rozhraní Azure Media Services API pomocí ověřování AAD](media-services-use-aad-auth-to-access-ams-api.md) .
-- Další informace najdete také v tématu [použití ověřování Azure AD pro přístup k rozhraní Media Services API pomocí REST](https://docs.microsoft.com/azure/media-services/previous/media-services-rest-connect-with-aad) .
+- Další informace najdete také v tématu [použití ověřování Azure AD pro přístup k rozhraní Media Services API pomocí REST](./media-services-rest-connect-with-aad.md) .
 - Nakonfigurujte **metodu post** , jak je popsáno v tématu [Configure the post for Media Services REST API Calls](media-rest-apis-with-postman.md).
 
-## <a name="considerations"></a>Co je potřeba vzít v úvahu
+## <a name="considerations"></a>Požadavky
 
 Při použití Media Services REST API platí následující předpoklady:
  
@@ -106,7 +106,7 @@ Postup pro nastavení post pro tento kurz najdete v tématu [Configure a post](m
 >[!NOTE]
 >Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Pokud vždy používáte stejné dny / přístupová oprávnění, například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez odeslání), měli byste použít stejné ID zásad. Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) článku.
 
-Před nahráním jakýchkoli souborů do úložiště objektů BLOB nastavte práva zásad přístupu pro zápis do assetu. Provedete to tak, že ODEŠLEte požadavek HTTP do sady entit AccessPolicies. Při vytváření Definujte hodnotu DurationInMinutes nebo v odpovědi obdržíte interní chybovou zprávu serveru 500. Další informace o AccessPolicies najdete v tématu [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy).
+Před nahráním jakýchkoli souborů do úložiště objektů BLOB nastavte práva zásad přístupu pro zápis do assetu. Provedete to tak, že ODEŠLEte požadavek HTTP do sady entit AccessPolicies. Při vytváření Definujte hodnotu DurationInMinutes nebo v odpovědi obdržíte interní chybovou zprávu serveru 500. Další informace o AccessPolicies najdete v tématu [AccessPolicy](/rest/api/media/operations/accesspolicy).
 
 ### <a name="create-an-access-policy"></a>Vytvoření zásady přístupu
 
@@ -121,7 +121,7 @@ Před nahráním jakýchkoli souborů do úložiště objektů BLOB nastavte pr�
 
 ### <a name="overview"></a>Přehled
 
-[Asset](https://docs.microsoft.com/rest/api/media/operations/asset) je kontejner pro více typů nebo sad objektů v Media Services, včetně videa, zvuku, obrázků, kolekcí miniatur, textových stop a souborů titulků. V REST API vytvoření Assetu vyžaduje odeslání žádosti POST do Media Services a umístění jakýchkoli vlastností informací o prostředku do textu žádosti.
+[Asset](/rest/api/media/operations/asset) je kontejner pro více typů nebo sad objektů v Media Services, včetně videa, zvuku, obrázků, kolekcí miniatur, textových stop a souborů titulků. V REST API vytvoření Assetu vyžaduje odeslání žádosti POST do Media Services a umístění jakýchkoli vlastností informací o prostředku do textu žádosti.
 
 Jedna z vlastností, které lze přidat při vytváření assetu, je **možností**. Můžete určit jednu z následujících možností šifrování: **žádné** (výchozí, bez šifrování se nepoužívá), **StorageEncrypted** (pro obsah, který byl předem šifrovaný pomocí šifrování úložiště na straně klienta), **CommonEncryptionProtected**nebo **EnvelopeEncryptionProtected**. Pokud máte zašifrovaný prostředek, musíte nakonfigurovat zásady doručování. Další informace najdete v tématu [Konfigurace zásad doručení assetu](media-services-rest-configure-asset-delivery-policy.md).
 
@@ -144,15 +144,15 @@ V tomto příkladu vytváříme nešifrovaný prostředek.
 
 Jakmile budete mít AccessPolicy a lokátor, vlastní soubor se nahraje do kontejneru Azure Blob Storage pomocí rozhraní Azure Storage REST API. Soubory je třeba nahrát jako objekty blob bloku. Azure Media Services nepodporuje objekty blob stránky.  
 
-Další informace o práci s objekty blob služby Azure Storage najdete v tématu [REST API služby BLOB](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
+Další informace o práci s objekty blob služby Azure Storage najdete v tématu [REST API služby BLOB](/rest/api/storageservices/blob-service-rest-api).
 
-Chcete-li přijmout skutečnou adresu URL pro odeslání, vytvořte Lokátor SAS (zobrazený níže). Lokátory definují čas spuštění a typ koncového bodu připojení pro klienty, kteří chtějí získat přístup k souborům v prostředku. Můžete vytvořit více entit lokátoru pro určitý AccessPolicy a dvojici prostředků pro zpracování různých požadavků klientů a potřeb. Každá z těchto lokátorů používá hodnotu StartTime a hodnotu DurationInMinutes AccessPolicy k určení doby, po kterou lze adresu URL použít. Další informace najdete v tématu [Lokátor](https://docs.microsoft.com/rest/api/media/operations/locator).
+Chcete-li přijmout skutečnou adresu URL pro odeslání, vytvořte Lokátor SAS (zobrazený níže). Lokátory definují čas spuštění a typ koncového bodu připojení pro klienty, kteří chtějí získat přístup k souborům v prostředku. Můžete vytvořit více entit lokátoru pro určitý AccessPolicy a dvojici prostředků pro zpracování různých požadavků klientů a potřeb. Každá z těchto lokátorů používá hodnotu StartTime a hodnotu DurationInMinutes AccessPolicy k určení doby, po kterou lze adresu URL použít. Další informace najdete v tématu [Lokátor](/rest/api/media/operations/locator).
 
 Adresa URL SAS má následující formát:
 
 `{https://myaccount.blob.core.windows.net}/{asset name}/{video file name}?{SAS signature}`
 
-### <a name="considerations"></a>Co je potřeba vzít v úvahu
+### <a name="considerations"></a>Požadavky
 
 Musí být splněny určité předpoklady:
 
@@ -175,9 +175,9 @@ Musí být splněny určité předpoklady:
 
 Teď, když máte adresu URL pro nahrání, je potřeba napsat nějaký kód s využitím rozhraní API Azure Blob přímo k nahrání souboru do kontejneru SAS. Další informace najdete v následujících článcích:
 
-- [Použití rozhraní REST API pro službu Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-rest-api-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-- [VLOŽENÍ objektu BLOB](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-- [Nahrání objektů blob do úložiště objektů BLOB](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#upload-blobs-to-blob-storage)
+- [Použití rozhraní REST API pro službu Azure Storage](../../storage/common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [VLOŽENÍ objektu BLOB](/rest/api/storageservices/put-blob)
+- [Nahrání objektů blob do úložiště objektů BLOB](/previous-versions/azure/storage/storage-use-azcopy#upload-blobs-to-blob-storage)
 
 ### <a name="upload-a-file-with-postman"></a>Nahrání souboru pomocí metody post
 
@@ -209,7 +209,7 @@ Soubor by měl být nahrán a jeho sada metadat.
 
 ## <a name="validate"></a>Ověření
 
-Pokud chcete ověřit, jestli se soubor úspěšně nahrál, možná budete chtít zadat dotaz na [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) a porovnat **ContentFileSize** (nebo jiné podrobnosti) na to, co očekáváte, aby se v novém assetu zobrazil. 
+Pokud chcete ověřit, jestli se soubor úspěšně nahrál, možná budete chtít zadat dotaz na [AssetFile](/rest/api/media/operations/assetfile) a porovnat **ContentFileSize** (nebo jiné podrobnosti) na to, co očekáváte, aby se v novém assetu zobrazil. 
 
 Následující operace **Get** například přináší data souborů pro soubor assetu (v případě BigBuckBunny.mp4 souboru). Dotaz používá [proměnné prostředí](postman-environment.md) , které jste nastavili dříve.
 
@@ -229,4 +229,3 @@ Odpověď bude obsahovat velikost, název a další informace.
 Nyní můžete kódovat nahrané assety. Další informace najdete v tématu [Kódování assetů](media-services-portal-encode.md).
 
 Můžete také použít službu Azure Functions k aktivaci úlohy kódování při příchodu souboru do nakonfigurovaného kontejneru. Další informace najdete v [této ukázce](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ ).
-

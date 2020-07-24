@@ -15,25 +15,25 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 288b7302b12d607c9090f699af83691b832256a3
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 83e945fccfbfbec207723d6c16f2a4dfc7290c52
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170815"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000036"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Přehled Media Servicesch operací REST API 
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 
-Rozhraní **REST API služby Media Services Operations** se používá k vytváření úloh, prostředků, živých kanálů a dalších prostředků v účtu Media Services. Další informace naleznete v tématu [Media Services operations REST API Reference](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
+Rozhraní **REST API služby Media Services Operations** se používá k vytváření úloh, prostředků, živých kanálů a dalších prostředků v účtu Media Services. Další informace naleznete v tématu [Media Services operations REST API Reference](/rest/api/media/operations/azure-media-services-rest-api-reference).
 
 Media Services poskytuje REST API, který přijímá formát JSON nebo Atom + Pub. Media Services REST API vyžadují konkrétní hlavičky protokolu HTTP, které musí každý klient odeslat při připojení k Media Services a také sadu volitelných hlaviček. V následujících částech jsou popsány hlavičky a příkazy HTTP, které můžete použít při vytváření požadavků a příjem odpovědí z Media Services.
 
 Ověřování u Media Services REST API se provádí prostřednictvím Azure Active Directory ověřování, které je uvedené v článku [použití ověřování Azure AD pro přístup k rozhraní API pro Azure Media Services s REST](media-services-rest-connect-with-aad.md) .
 
-## <a name="considerations"></a>Co je potřeba vzít v úvahu
+## <a name="considerations"></a>Požadavky
 
 Při použití REST platí následující požadavky.
 
@@ -130,4 +130,3 @@ Informace o tom, jak používat ověřování Azure AD s Media Services REST API
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

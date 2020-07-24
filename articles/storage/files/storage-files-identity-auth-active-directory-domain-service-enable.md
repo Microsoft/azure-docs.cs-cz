@@ -7,24 +7,24 @@ ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2d9f7eccae6b87923b52119ded90ced5e4206d7b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe2bbc1d6f42819354f48812a34371a49e5acbac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510399"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999628"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Povolení ověřování Azure Active Directory Domain Services u souborů Azure
 
-[!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
+[Soubory Azure](storage-files-introduction.md)   podporuje ověřování na základě identity přes protokol SMB (Server Message Block) prostřednictvím dvou typů doménových služeb: místní Active Directory Domain Services (služba AD DS) a Azure Active Directory Domain Services (Azure služba AD DS). Důrazně doporučujeme, abyste si v [části Jak funguje, jak](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works) vybrat správnou doménu služby pro authentcation. Instalace se liší v závislosti na zvolené doménové službě. Tento článek se zaměřuje na povolení a konfiguraci služby Azure služba AD DS pro ověřování pomocí sdílených složek Azure.
 
-Přehled ověřování Azure AD pomocí protokolu SMB pro sdílené složky Azure najdete v tématu [přehled Azure Active Directory ověřování pomocí protokolu SMB pro soubory Azure](storage-files-active-directory-overview.md). Tento článek se zaměřuje na to, jak povolit ověřování pomocí Azure Active Directory Domain Services (Azure služba AD DS) v souborech Azure.
+Pokud se sdílenými složkami Azure teprve začínáte, doporučujeme si přečíst si náš [Průvodce plánováním](storage-files-planning.md) , abyste si přečetli následující řadu článků.
 
 > [!NOTE]
 > Soubory Azure podporují ověřování pomocí protokolu Kerberos s Azure služba AD DS s šifrováním RC4-HMAC. Šifrování AES Kerberos ještě není podporované.
 > Služba soubory Azure podporuje ověřování pro Azure služba AD DS s plnou synchronizací s Azure AD. Pokud jste povolili synchronizaci s vymezeným oborem v Azure služba AD DS, že se jenom synchronizuje omezená sada identit z Azure AD, ověřování a autorizace se nepodporuje.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než povolíte Azure AD přes SMB pro sdílené složky Azure, ujistěte se, že jste dokončili následující požadavky:
 
@@ -81,7 +81,7 @@ Pokud chcete povolit službu Azure služba AD DS Authentication přes protokol S
 
 Mějte na paměti, že můžete povolit ověřování Azure služba AD DS přes protokol SMB až po úspěšném nasazení služba AD DS Azure do tenanta Azure AD. Další informace najdete v části [požadavky](#prerequisites).
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 
 Pokud chcete povolit ověřování pomocí služby Azure služba AD DS přes protokol SMB s [Azure Portal](https://portal.azure.com), postupujte podle následujících kroků:
 

@@ -12,18 +12,18 @@ ms.topic: article
 ms.date: 05/03/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 2bcd5f0e6229c4130dddb48c1a20de1c711c6fcf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 28525c198bb6863e942f5ff33d17226769efdc21
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519877"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001141"
 ---
 # <a name="how-to-encode-with-a-custom-transform---net"></a>Jak kódovat pomocí vlastní transformace – .NET
 
 Při kódování pomocí Azure Media Services můžete rychle začít s jedním z doporučených integrovaných přednastavení na základě doporučených osvědčených postupů, jak je znázorněno v kurzu [streamování souborů](stream-files-tutorial-with-api.md) . Můžete také vytvořit vlastní předvolby, která bude cílit na konkrétní scénář nebo požadavky na zařízení.
 
-## <a name="considerations"></a>Co je potřeba vzít v úvahu
+## <a name="considerations"></a>Požadavky
 
 Při vytváření vlastních přednastavení platí následující požadavky:
 
@@ -32,7 +32,7 @@ Při vytváření vlastních přednastavení platí následující požadavky:
 
 ## <a name="prerequisites"></a>Předpoklady 
 
-[Vytvoření účtu Media Services](create-account-cli-how-to.md)
+[Vytvoření účtu Media Services](./create-account-howto.md)
 
 ## <a name="download-the-sample"></a>Stažení ukázky
 
@@ -46,9 +46,9 @@ Ukázka vlastní předvolby se nachází ve složce [EncodeCustomTransform](http
 
 ## <a name="create-a-transform-with-a-custom-preset"></a>Vytvoření transformace pomocí vlastní předvolby 
 
-Když vytváříte novou [transformaci](https://docs.microsoft.com/rest/api/media/transforms), je potřeba určit, co má vytvořit jako výstup. Objekt [TransformOutput](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#transformoutput) v níže uvedeném kódu je povinný parametr. Každý objekt **TransformOutput** obsahuje **Předvolbu**. **Přednastavení** popisuje podrobné pokyny k operacím zpracování videa nebo zvuku, které se mají použít ke generování požadovaných **TransformOutput**. Následující **TransformOutput** vytvoří vlastní kodek a výstupní nastavení vrstvy.
+Když vytváříte novou [transformaci](/rest/api/media/transforms), je potřeba určit, co má vytvořit jako výstup. Objekt [TransformOutput](/rest/api/media/transforms/createorupdate#transformoutput) v níže uvedeném kódu je povinný parametr. Každý objekt **TransformOutput** obsahuje **Předvolbu**. **Přednastavení** popisuje podrobné pokyny k operacím zpracování videa nebo zvuku, které se mají použít ke generování požadovaných **TransformOutput**. Následující **TransformOutput** vytvoří vlastní kodek a výstupní nastavení vrstvy.
 
-Než začnete vytvářet [transformaci](https://docs.microsoft.com/rest/api/media/transforms), ověřte si nejdřív pomocí metody **Get**, jestli už neexistuje (viz kód níže). V Media Services V3 vrátí metody **Get** v entitách **hodnotu null** , pokud entita neexistuje (u názvu se nerozlišuje malá a velká písmena).
+Než začnete vytvářet [transformaci](/rest/api/media/transforms), ověřte si nejdřív pomocí metody **Get**, jestli už neexistuje (viz kód níže). V Media Services V3 vrátí metody **Get** v entitách **hodnotu null** , pokud entita neexistuje (u názvu se nerozlišuje malá a velká písmena).
 
 ### <a name="example"></a>Příklad
 

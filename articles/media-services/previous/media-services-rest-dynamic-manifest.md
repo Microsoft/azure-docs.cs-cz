@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewr: cenkdin
-ms.openlocfilehash: 8166a85d1c3421d95ac2b818e51b6b60e7663165
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 9bc351f72f5dac38ebfc1983a7b918d46f5fc8ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170662"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000308"
 ---
 # <a name="creating-filters-with-azure-media-services-rest-api"></a>Vytváření filtrů pomocí Azure Media Services REST API 
 > [!div class="op_single_selector"]
@@ -38,10 +38,10 @@ Tento článek popisuje, jak pomocí rozhraní REST API vytvářet, aktualizovat
 ## <a name="types-used-to-create-filters"></a>Typy použité k vytváření filtrů
 Při vytváření filtrů se používají tyto typy:  
 
-* [Filtr](https://docs.microsoft.com/rest/api/media/operations/filter)
-* [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
-* [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
-* [FilterTrackSelect a FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
+* [Filtr](/rest/api/media/operations/filter)
+* [AssetFilter](/rest/api/media/operations/assetfilter)
+* [PresentationTimeRange](/rest/api/media/operations/presentationtimerange)
+* [FilterTrackSelect a FilterTrackPropertyCondition](/rest/api/media/operations/filtertrackselect)
 
 > [!NOTE]
 > 
@@ -217,7 +217,7 @@ x-ms-client-request-id: 00000000
 ```
 
 ## <a name="update-filters"></a>Aktualizovat filtry
-Pomocí PATCH, PUT nebo MERGE můžete aktualizovat filtr o nové hodnoty vlastností.  Další informace o těchto operacích naleznete v tématu [patch, PUT, Merge](https://msdn.microsoft.com/library/dd541276.aspx).
+Pomocí PATCH, PUT nebo MERGE můžete aktualizovat filtr o nové hodnoty vlastností.  Další informace o těchto operacích naleznete v tématu [patch, PUT, Merge](/openspecs/windows_protocols/ms-odata/59d5abd3-7b12-490a-a0e2-9d9324b91893).
 
 Pokud filtr aktualizujete, může trvat až dvě minuty, než koncový bod streamování pravidel aktualizuje pravidla. Pokud byl obsah obsluhován pomocí tohoto filtru (a ukládá do mezipaměti proxy a mezipaměti CDN), může aktualizace tohoto filtru způsobit selhání přehrávače. Po aktualizaci filtru vymažte mezipaměť. Pokud tato možnost není možná, zvažte použití jiného filtru.  
 
@@ -371,4 +371,3 @@ Následující příklady ukazují, jak přidat filtry na adresy URL streamován
 
 ## <a name="see-also"></a>Viz také
 [Přehled dynamických manifestů](media-services-dynamic-manifest-overview.md)
-

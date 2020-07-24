@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: f18885634503cc65a5bf78d93bd84afd018956bd
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 0e79469aa0e405a0096d483ae290d10415fe74f3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170798"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000045"
 ---
 # <a name="managing-media-services-entities-with-rest"></a>Správa entit Media Services pomocí REST  
 
@@ -36,7 +36,7 @@ V tomto tématu se dozvíte, jak spravovat Azure Media Services entit pomocí RE
 >[!NOTE]
 > Od 1. dubna 2017 se automaticky odstraní libovolný záznam úlohy ve vašem účtu, který je starší než 90 dní. Spolu s ním se odstraní přidružené záznamy úkolů, a to i v případě, že celkový počet záznamů je nižší než maximální kvóta. Například od 1. dubna 2017 se automaticky odstraní libovolný záznam úlohy ve vašem účtu, který je starší než 31. prosince 2016. Pokud potřebujete archivovat informace o úloze nebo úloze, můžete použít kód popsaný v tomto tématu.
 
-## <a name="considerations"></a>Co je potřeba vzít v úvahu  
+## <a name="considerations"></a>Požadavky  
 
 Při přístupu k entitám v Media Services musíte nastavit konkrétní pole a hodnoty hlaviček v požadavcích HTTP. Další informace najdete v tématu [instalace Media Services REST APIm vývoji](media-services-rest-how-to-use.md).
 
@@ -149,7 +149,7 @@ Host: media.windows.net
 ```
 
 ## <a name="updating-entities"></a>Aktualizace entit
-V závislosti na typu entity a stavu, ve kterém se nachází, můžete aktualizovat vlastnosti této entity prostřednictvím oprav, vložení nebo sloučení požadavků HTTP. Další informace o těchto operacích naleznete v tématu [patch/Put/Merge](https://msdn.microsoft.com/library/dd541276.aspx).
+V závislosti na typu entity a stavu, ve kterém se nachází, můžete aktualizovat vlastnosti této entity prostřednictvím oprav, vložení nebo sloučení požadavků HTTP. Další informace o těchto operacích naleznete v tématu [patch/Put/Merge](/openspecs/windows_protocols/ms-odata/59d5abd3-7b12-490a-a0e2-9d9324b91893).
 
 Následující příklad kódu ukazuje, jak aktualizovat vlastnost Name v entitě Assetu.
 
@@ -190,4 +190,3 @@ Content-Length: 0
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

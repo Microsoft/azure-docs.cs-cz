@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 8553c54b60d1d4e60e28bcb3006bcc804dbc39ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 43203a756bcb42c7d00de9c11e9223f1d8b9e2a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84803707"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001582"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Začínáme vytvářet internetový nástroj pro vyrovnávání zatížení s protokolem IPv6 pomocí prostředí PowerShell pro Správce prostředků
 
@@ -66,7 +67,7 @@ Další informace najdete v tématu [Azure Load Balancer Components](./component
 
 Ujistěte se, že máte nejnovější produkční verzi modulu Azure Resource Manager pro prostředí PowerShell.
 
-1. Přihlášení k Azure
+1. Přihlášení do Azure
 
     ```azurepowershell-interactive
     Connect-AzAccount
@@ -198,7 +199,7 @@ Tento příklad vytvoří následující položky:
 
 ## <a name="create-virtual-machines-and-assign-the-newly-created-nics"></a>Vytvoření virtuálních počítačů a přiřazení nově vytvořených síťových karet
 
-Další informace o vytvoření virtuálního počítače najdete v tématu [Vytvoření a Předkonfigurace virtuálního počítače s Windows pomocí Správce prostředků a Azure PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json)
+Další informace o vytvoření virtuálního počítače najdete v tématu [Vytvoření a Předkonfigurace virtuálního počítače s Windows pomocí Správce prostředků a Azure PowerShell](../virtual-machines/windows/quick-create-powershell.md?toc=%2fazure%2fload-balancer%2ftoc.json)
 
 1. Vytvoření skupiny dostupnosti a účtu úložiště
 

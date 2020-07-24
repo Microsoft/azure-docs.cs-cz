@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: e787617ab6e04a5ff2e7f5d4921a5bf7a4a1eb5d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d00dd096bcfba32912337b122aefd0c00195ee8e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "64867104"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000842"
 ---
 # <a name="monitor-job-progress-using-net"></a>Monitorování průběhu úlohy pomocí .NET 
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 
 Když spouštíte úlohy, často potřebujete způsob, jak sledovat průběh úloh. Průběh můžete zjistit definováním obslužné rutiny události StateChanged (jak je popsáno v tomto tématu) nebo pomocí Azure Queue Storage k monitorování oznámení úloh Media Services (jak je popsáno v [tomto](media-services-dotnet-check-job-progress-with-queues.md) tématu).
 
@@ -117,4 +117,3 @@ Prohlédněte si mapy kurzů k Media Services.
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

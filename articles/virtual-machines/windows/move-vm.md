@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 07/03/2019
 ms.author: cynthn
-ms.openlocfilehash: 6e156af2d4805ba310443a2acf6cc47d06a735eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f919a4af85a15bbe80d7176c316100c3bad634a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84762322"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998914"
 ---
 # <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>Přesun virtuálního počítače s Windows do jiného předplatného nebo jiné skupiny prostředků Azure
 Tento článek vás provede postupem přesunutí virtuálního počítače s Windows mezi skupinami prostředků nebo odběry. Přesunutí mezi předplatnými může být užitečné, pokud jste původně vytvořili virtuální počítač v osobním předplatném a chcete ho teď přesunout do předplatného vaší společnosti, abyste mohli pokračovat v práci. Virtuální počítač není potřeba zastavit, aby ho bylo možné přesunout a měl by během přesunu běžet dál.
@@ -26,13 +26,13 @@ Tento článek vás provede postupem přesunutí virtuálního počítače s Win
 
 ## <a name="use-powershell-to-move-a-vm"></a>Použití PowerShellu k přesunu virtuálního počítače
 
-Pokud chcete přesunout virtuální počítač do jiné skupiny prostředků, musíte se ujistit, že také přesunete všechny závislé prostředky. Seznam s ID prostředku každého z těchto prostředků získáte pomocí rutiny [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) .
+Pokud chcete přesunout virtuální počítač do jiné skupiny prostředků, musíte se ujistit, že také přesunete všechny závislé prostředky. Seznam s ID prostředku každého z těchto prostředků získáte pomocí rutiny [Get-AzResource](/powershell/module/az.resources/get-azresource) .
 
 ```azurepowershell-interactive
  Get-AzResource -ResourceGroupName myResourceGroup | Format-table -wrap -Property ResourceId
 ```
 
-Pomocí výstupu z předchozího příkazu můžete vytvořit seznam oddělený čárkami, který se má [přesunout – AzResource](https://docs.microsoft.com/powershell/module/az.resources/move-azresource) a přesunout jednotlivé prostředky do cílového umístění.
+Pomocí výstupu z předchozího příkazu můžete vytvořit seznam oddělený čárkami, který se má [přesunout – AzResource](/powershell/module/az.resources/move-azresource) a přesunout jednotlivé prostředky do cílového umístění.
 
 ```azurepowershell-interactive
 Move-AzResource -DestinationResourceGroupName "myDestinationResourceGroup" `
