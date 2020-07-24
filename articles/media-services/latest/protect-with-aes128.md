@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2020
 ms.author: juliako
-ms.openlocfilehash: 1e5f1e38461b7f229f9eb7559aeb6203563fceb6
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 45bb8637d37c9c3789a962c9f5ac42227d547637
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200199"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022816"
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>Kurz: šifrování videa pomocí AES-128 a používání služby pro doručování klíčů
 
 > [!NOTE]
-> I když tento kurz používá příklady [sady .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) , jsou obecné kroky stejné pro [REST API](https://docs.microsoft.com/rest/api/media/liveevents), [CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)nebo jiné podporované sady [SDK](media-services-apis-overview.md#sdks).
+> I když tento kurz používá příklady [sady .NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) , jsou obecné kroky stejné pro [REST API](/rest/api/media/liveevents), [CLI](/cli/azure/ams/live-event?view=azure-cli-latest)nebo jiné podporované sady [SDK](media-services-apis-overview.md#sdks).
 
 Media Services můžete použít k doručování HTTP Live Streaming (HLS), MPEG-POMLČKy a Smooth Streaming šifrovaných pomocí AES pomocí 128 bitových šifrovacích klíčů. Media Services taky poskytuje službu pro doručování klíčů, která poskytuje šifrovací klíče autorizovaným uživatelům. Pokud chcete, aby Media Services dynamicky zašifroval vaše video, přiřadíte šifrovací klíč k lokátoru streamování a také nakonfigurujete zásady klíče obsahu. Když hráč vyžádá datový proud, Media Services použije zadaný klíč k dynamickému šifrování vašeho obsahu pomocí AES-128. K dešifrování streamu si přehrávač vyžádá klíč ze služby doručování klíčů. K tomu, aby služba zjistila, jestli má daný uživatel povolené získání klíče, vyhodnocuje zásadu symetrického klíče, kterou jste pro klíč určili.
 
@@ -51,14 +51,14 @@ V tomto kurzu získáte informace o následujících postupech:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kurzu potřebujete následující:
 
 * Přečíst si článek [Přehled ochrany obsahu](content-protection-overview.md)
 * Nainstalujte Visual Studio Code nebo Visual Studio.
-* [Vytvořte účet Media Services](create-account-cli-quickstart.md).
-* Získání přihlašovacích údajů potřebných k použití Media Services rozhraní API pomocí [přístupových rozhraní API](access-api-cli-how-to.md).
+* [Vytvořte účet Media Services](./create-account-howto.md).
+* Získání přihlašovacích údajů potřebných k použití Media Services rozhraní API pomocí [přístupových rozhraní API](./access-api-howto.md).
 
 ## <a name="download-code"></a>Stažení kódu
 
@@ -81,21 +81,21 @@ Chcete-li začít používat rozhraní Media Services API s rozhraním .NET, vyt
 
 ## <a name="create-an-output-asset"></a>Vytvoření výstupního prostředku  
 
-Výstupní [Asset](https://docs.microsoft.com/rest/api/media/assets) ukládá výsledek vaší úlohy kódování.  
+Výstupní [Asset](/rest/api/media/assets) ukládá výsledek vaší úlohy kódování.  
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CreateOutputAsset)]
 
 ## <a name="get-or-create-an-encoding-transform"></a>Získání nebo vytvoření transformace kódování
 
-Když vytváříte novou instanci [Transformace](https://docs.microsoft.com/rest/api/media/transforms), musíte určit, co má být jejím výstupem. Objekt **TransformOutput** v níže uvedeném kódu je povinný parametr. Každý objekt **TransformOutput** obsahuje **Předvolbu**. **Předvolba** popisuje podrobné pokyny operací zpracování videa nebo zvuku, které se používají ke generování požadovaného objektu **TransformOutput**. Ukázka popsaná v tomto článku používá předdefinovanou předvolbu s názvem **AdaptiveStreaming**. Přednastavení zakóduje vstupní video do automaticky vygenerovaného žebříku přenosové rychlosti (páry přenosů s rozlišením) na základě vstupních rozlišení a přenosové rychlosti a pak vytvoří soubory ISO MP4 s H. 264 a zvukem AAC odpovídajícím páru rozlišení přenosové rychlosti.
+Když vytváříte novou instanci [Transformace](/rest/api/media/transforms), musíte určit, co má být jejím výstupem. Objekt **TransformOutput** v níže uvedeném kódu je povinný parametr. Každý objekt **TransformOutput** obsahuje **Předvolbu**. **Předvolba** popisuje podrobné pokyny operací zpracování videa nebo zvuku, které se používají ke generování požadovaného objektu **TransformOutput**. Ukázka popsaná v tomto článku používá předdefinovanou předvolbu s názvem **AdaptiveStreaming**. Přednastavení zakóduje vstupní video do automaticky vygenerovaného žebříku přenosové rychlosti (páry přenosů s rozlišením) na základě vstupních rozlišení a přenosové rychlosti a pak vytvoří soubory ISO MP4 s H. 264 a zvukem AAC odpovídajícím páru rozlišení přenosové rychlosti.
 
-Před vytvořením nové [transformace](https://docs.microsoft.com/rest/api/media/transforms)nejprve ověřte, zda již existuje pomocí metody **Get** , jak je znázorněno v následujícím kódu. Pokud entita v Media Services v3 neexistuje, metoda **Get** vrátí hodnotu **null** (v názvu se nerozlišují malá a velká písmena).
+Před vytvořením nové [transformace](/rest/api/media/transforms)nejprve ověřte, zda již existuje pomocí metody **Get** , jak je znázorněno v následujícím kódu. Pokud entita v Media Services v3 neexistuje, metoda **Get** vrátí hodnotu **null** (v názvu se nerozlišují malá a velká písmena).
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#EnsureTransformExists)]
 
 ## <a name="submit-job"></a>Spuštění úlohy
 
-Jak je uvedeno výše, objekt [Transformace](https://docs.microsoft.com/rest/api/media/transforms) je předpis a [Úloha](https://docs.microsoft.com/rest/api/media/jobs) je vlastní požadavek na službu Media Services, aby **transformaci** použila na daný vstupní videoobsah nebo zvukový obsah. **Úloha** určuje informace, jako je umístění vstupního videa a umístění výstupu.
+Jak je uvedeno výše, objekt [Transformace](/rest/api/media/transforms) je předpis a [Úloha](/rest/api/media/jobs) je vlastní požadavek na službu Media Services, aby **transformaci** použila na daný vstupní videoobsah nebo zvukový obsah. **Úloha** určuje informace, jako je umístění vstupního videa a umístění výstupu.
 
 V tomto kurzu vytvoříme vstup úlohy na základě souboru, který je ingestný přímo z [adresy URL zdroje https](job-input-from-http-how-to.md).
 
@@ -103,7 +103,7 @@ V tomto kurzu vytvoříme vstup úlohy na základě souboru, který je ingestný
 
 ## <a name="wait-for-the-job-to-complete"></a>Čekání na dokončení úlohy
 
-Dokončení úlohy trvá déle. V takovém případě chcete být upozorněni. Následující ukázka kódu ukazuje, jak se má služba dotazovat na stav [úlohy](https://docs.microsoft.com/rest/api/media/jobs). Cyklické dotazování není doporučeným osvědčeným postupem pro produkční aplikace kvůli možné latenci. Pokud se dotazování u některého účtu používá nadměrně, je možné ho omezit. Místo dotazování by vývojáři měli používat službu Event Grid. Další informace najdete v tématu [Směrování událostí do vlastního webového koncového bodu](job-state-events-cli-how-to.md).
+Dokončení úlohy trvá déle. V takovém případě chcete být upozorněni. Následující ukázka kódu ukazuje, jak se má služba dotazovat na stav [úlohy](/rest/api/media/jobs). Cyklické dotazování není doporučeným osvědčeným postupem pro produkční aplikace kvůli možné latenci. Pokud se dotazování u některého účtu používá nadměrně, je možné ho omezit. Místo dotazování by vývojáři měli používat službu Event Grid. Další informace najdete v tématu [Směrování událostí do vlastního webového koncového bodu](job-state-events-cli-how-to.md).
 
 **Úloha** obvykle prochází následujícími stavy: **Naplánováno**, **Ve frontě**, **Zpracovávání** a **Dokončeno** (konečný stav). Pokud se úloha dokončí v rámci chyby, zobrazí se **chybový** stav. Pokud dojde ke zrušení úlohy, po dokončení operace se akce **zruší** a **zruší** .
 
@@ -121,21 +121,21 @@ Když hráč vyžádá datový proud, Media Services použije zadaný klíč k d
 
 Po dokončení kódování a nastavení zásady symetrického klíče spočívá další krok ve vytvoření videa ve výstupním prostředku, které budou moct klienti přehrávat. Video zpřístupníte ve dvou krocích:
 
-1. Vytvořte [Lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators).
+1. Vytvořte [Lokátor streamování](/rest/api/media/streaminglocators).
 2. Vytvoření adres URL pro streamování, které můžou používat klienti
 
 Proces vytvoření **lokátoru streamování** se nazývá publikování. Ve výchozím nastavení je **Lokátor streamování** platný ihned po volání rozhraní API. Bude trvat až do odstranění, pokud nenastavíte volitelné počáteční a koncové časy.
 
-Při vytváření [lokátoru streamování](https://docs.microsoft.com/rest/api/media/streaminglocators)budete muset zadat požadované **StreamingPolicyName**. V tomto kurzu používáme jeden z PredefinedStreamingPolicies, který oznamuje Azure Media Services způsob publikování obsahu pro streamování. V tomto příkladu se používá šifrování pomocí kódování AES (Toto šifrování se také označuje jako šifrování ClearKey, protože klíč se doručuje do klienta pro přehrávání prostřednictvím protokolu HTTPS a nikoli licence DRM).
+Při vytváření [lokátoru streamování](/rest/api/media/streaminglocators)budete muset zadat požadované **StreamingPolicyName**. V tomto kurzu používáme jeden z PredefinedStreamingPolicies, který oznamuje Azure Media Services způsob publikování obsahu pro streamování. V tomto příkladu se používá šifrování pomocí kódování AES (Toto šifrování se také označuje jako šifrování ClearKey, protože klíč se doručuje do klienta pro přehrávání prostřednictvím protokolu HTTPS a nikoli licence DRM).
 
 > [!IMPORTANT]
-> Pokud používáte vlastní [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies), měli byste navrhnout určitou sadu takových zásad pro svůj účet Media Service a znovu je použít pro své lokátory streamování, kdykoli budete potřebovat stejné možnosti šifrování a protokoly. Počet záznamů StreamingPolicy je pro účty služby Media Service omezený kvótou. Neměli byste vytvářet novou StreamingPolicy pro každý Lokátor streamování.
+> Pokud používáte vlastní [StreamingPolicy](/rest/api/media/streamingpolicies), měli byste navrhnout určitou sadu takových zásad pro svůj účet Media Service a znovu je použít pro své lokátory streamování, kdykoli budete potřebovat stejné možnosti šifrování a protokoly. Počet záznamů StreamingPolicy je pro účty služby Media Service omezený kvótou. Neměli byste vytvářet novou StreamingPolicy pro každý Lokátor streamování.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CreateStreamingLocator)]
 
 ## <a name="get-a-test-token"></a>Získání testovacího tokenu
 
-V tomto kurzu určíme, že má mít zásada symetrického klíče omezení tokenu. Zásady omezení tokenem musí být doplněny tokenem vydaným službou tokenů zabezpečení (STS). Media Services podporuje tokeny ve formátu [JWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) a to je to, co v ukázce nakonfigurujeme.
+V tomto kurzu určíme, že má mít zásada symetrického klíče omezení tokenu. Zásady omezení tokenem musí být doplněny tokenem vydaným službou tokenů zabezpečení (STS). Media Services podporuje tokeny ve formátu [JWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_3) a to je to, co v ukázce nakonfigurujeme.
 
 ContentKeyIdentifierClaim se používá v **zásadách klíčů obsahu**, což znamená, že token prezentovaný službě doručení klíčů musí mít identifikátor klíče obsahu. V ukázce jsme při vytváření lokátoru streamování neurčili klíč obsahu, systém pro nás vytvořil náhodný. Pro vygenerování testovacího tokenu je potřeba získat ContentKeyId, který se vloží do deklarace ContentKeyIdentifierClaim.
 
@@ -143,7 +143,7 @@ ContentKeyIdentifierClaim se používá v **zásadách klíčů obsahu**, což z
 
 ## <a name="build-a-dash-streaming-url"></a>Vytvoření adresy URL pro streamování DASH
 
-Teď, když je [Lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators) vytvořený, můžete získat adresy URL streamování. Pokud chcete vytvořit adresu URL, musíte zřetězit název hostitele [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) a cestu k **lokátoru streamování** . V této ukázce se používá *výchozí* **koncový bod streamování** . Při prvním vytvoření účtu služby Media Service bude tento *výchozí* **koncový bod streamování** v zastaveném stavu, takže je potřeba zavolat **Start**.
+Teď, když je [Lokátor streamování](/rest/api/media/streaminglocators) vytvořený, můžete získat adresy URL streamování. Pokud chcete vytvořit adresu URL, musíte zřetězit název hostitele [StreamingEndpoint](/rest/api/media/streamingendpoints) a cestu k **lokátoru streamování** . V této ukázce se používá *výchozí* **koncový bod streamování** . Při prvním vytvoření účtu služby Media Service bude tento *výchozí* **koncový bod streamování** v zastaveném stavu, takže je potřeba zavolat **Start**.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetMPEGStreamingUrl)]
 

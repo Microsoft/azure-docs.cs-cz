@@ -13,11 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: juliako
-ms.openlocfilehash: ef04b1b7b5030189482e89e26e4565397cbdd7c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2226d7a769caf049af30bbca81ca3079d72970b4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75779242"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023122"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>Vytváření filtrů pomocí sady Media Services .NET SDK
 
@@ -25,21 +26,21 @@ Při doručování obsahu zákazníkům (streamování živých událostí nebo 
 
 Podrobný popis této funkce a scénářů, kde se používá, najdete v tématu [dynamické manifesty](filters-dynamic-manifest-overview.md) a [filtry](filters-concept.md).
 
-V tomto tématu se dozvíte, jak pomocí Media Services .NET SDK definovat filtr pro prostředek video na vyžádání a vytvořit [filtry účtu](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet) a [filtry assetů](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet). 
+V tomto tématu se dozvíte, jak pomocí Media Services .NET SDK definovat filtr pro prostředek video na vyžádání a vytvořit [filtry účtu](/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet) a [filtry assetů](/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet). 
 
 > [!NOTE]
 > Nezapomeňte zkontrolovat [presentationTimeRange](filters-concept.md#presentationtimerange).
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 - Zkontrolujte [filtry a dynamické manifesty](filters-dynamic-manifest-overview.md).
-- [Vytvořte účet Media Services](create-account-cli-how-to.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services. 
-- Získání informací potřebných pro [přístup k rozhraním API](access-api-cli-how-to.md)
+- [Vytvořte účet Media Services](./create-account-howto.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services. 
+- Získání informací potřebných pro [přístup k rozhraním API](./access-api-howto.md)
 - Podívejte se na [nahrávání, kódování a streamování pomocí Azure Media Services,](stream-files-tutorial-with-api.md) abyste viděli, jak [začít používat sadu .NET SDK](stream-files-tutorial-with-api.md#start_using_dotnet) .
 
 ## <a name="define-a-filter"></a>Definovat filtr  
 
-V rozhraní .NET nakonfigurujete výběry sledování pomocí tříd [FilterTrackSelection](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackselection?view=azure-dotnet) a [FilterTrackPropertyCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition?view=azure-dotnet) . 
+V rozhraní .NET nakonfigurujete výběry sledování pomocí tříd [FilterTrackSelection](/dotnet/api/microsoft.azure.management.media.models.filtertrackselection?view=azure-dotnet) a [FilterTrackPropertyCondition](/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition?view=azure-dotnet) . 
 
 Následující kód definuje filtr, který obsahuje všechny zvukové stopy, které jsou ES-3, a všechny videosoubory, které mají přenosovou rychlost v rozsahu 0-1000000.
 
@@ -109,7 +110,7 @@ Po definování filtrů je můžou klienti používat v adrese URL streamování
 
 V následující tabulce jsou uvedeny některé příklady adres URL s filtry:
 
-|Protocol (Protokol)|Příklad|
+|Protokol|Příklad|
 |---|---|
 |HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
 |MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
@@ -118,5 +119,3 @@ V následující tabulce jsou uvedeny některé příklady adres URL s filtry:
 ## <a name="next-steps"></a>Další kroky
 
 [Streamování videí](stream-files-tutorial-with-api.md) 
-
-

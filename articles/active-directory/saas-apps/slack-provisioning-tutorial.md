@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2019
+ms.date: 05/06/2020
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8b7fa5aea835329be8f65a3bb1775ba5b0d97d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ca536ddacb0f81459625b733eb79282e145afba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389852"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87016291"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Kurz: Konfigurace časové rezervy pro Automatické zřizování uživatelů
 
@@ -36,7 +36,7 @@ Cílem tohoto kurzu je Ukázat kroky, které potřebujete k tomu, abyste v časo
 > * Časová rezerva [jednotného přihlašování](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-tutorial) (doporučeno)
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
 
@@ -62,13 +62,13 @@ Služba zřizování Azure AD umožňuje obor, který se zřídí na základě p
 
 * Začněte malým. Než se pustíte do všech uživatelů, testujte je s malou sadou uživatelů a skupin. Pokud je obor pro zřizování nastavený na přiřazené uživatele a skupiny, můžete to řídit přiřazením jednoho nebo dvou uživatelů nebo skupin k aplikaci. Pokud je obor nastavený na všechny uživatele a skupiny, můžete zadat [Filtr oboru založený na atributech](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
 
-## <a name="step-4-configure-automatic-user-provisioning-to-slack"></a>Krok 4. Konfigurace automatického zřizování uživatelů pro časovou rezervu 
+## <a name="step-4-configure-automatic-user-provisioning-to-slack"></a>Krok 4: Konfigurace automatického zřizování uživatelů pro časovou rezervu 
 
 V této části se seznámíte s připojením k rozhraní API pro zřizování uživatelských účtů Azure AD s časovou rezervou a konfigurací zřizovací služby k vytváření, aktualizaci a zakázání přiřazených uživatelských účtů v časové rezervě na základě přiřazení uživatelů a skupin ve službě Azure AD.
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-slack-in-azure-ad"></a>Konfigurace automatického zřizování uživatelských účtů pro časovou rezervu v Azure AD:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -169,7 +169,7 @@ Jakmile nakonfigurujete zřizování, použijte k monitorování nasazení tyto 
 2. Podívejte se na [indikátor průběhu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) , kde se zobrazí stav cyklu zřizování a jak se má dokončit.
 3. Pokud se zdá, že konfigurace zřizování je ve stavu není v pořádku, bude aplikace přejít do karantény. Další informace o stavech karantény najdete [tady](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
-## <a name="connector-limitations"></a>Omezení konektoru
+## <a name="troubleshooting-tips"></a>Tipy pro řešení problémů
 
 * Při konfiguraci atributu **DisplayName** časové rezervy mějte na paměti následující chování:
 
@@ -179,17 +179,21 @@ Jakmile nakonfigurujete zřizování, použijte k monitorování nasazení tyto 
   
   * Povolené interpunkce obsahuje tečky, podtržítka, spojovníky, apostrofy, hranaté závorky (např. **([{}])**) a oddělovače (např. **/;**).
   
+  * Vlastnost DisplayName nemůže obsahovat znak @. Pokud je k dispozici znak @, můžete v protokolech zřizování najít přeskočenou událost s popisem "AttributeValidationFailed".
+
   * Aktualizuje se jenom v případě, že jsou tato dvě nastavení nakonfigurovaná na pracovišti nebo organizaci **profilu** pracovní rezervy a **uživatelé nemůžou měnit jeho zobrazované jméno**.
-  
+
 * Atribut **uživatelského jména** časové rezervy musí být kratší než 21 znaků a mít jedinečnou hodnotu.
 
 * Časová rezerva povoluje pouze spárování s atributy **username** a **email**.  
+  
+* Běžné kódy erorr jsou zdokumentovány v oficiální dokumentaci k časové rezervě.https://api.slack.com/scim#errors
 
 ## <a name="change-log"></a>Protokol změn
 
 * 06/16/2020 – atribut DisplayName byl změněn tak, aby se aktualizoval pouze při vytváření nového uživatele.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

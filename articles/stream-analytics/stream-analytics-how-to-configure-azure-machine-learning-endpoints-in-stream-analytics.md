@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/11/2019
-ms.openlocfilehash: 63c54369ecda6a4f242ca76730c48a414a9d4724
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 33d1e73523ca85a21c032729b6537ee3297ea23e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040873"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020827"
 ---
 # <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics-preview"></a>Integrace Azure Machine Learning Studio (Classic) v Stream Analytics (Preview)
 Stream Analytics podporuje uživatelsky definované funkce, které volají koncové body Azure Machine Learning Studio (Classic). Podpora REST API pro tuto funkci je podrobně popsána v [knihovně Stream Analytics REST API](https://msdn.microsoft.com/library/azure/dn835031.aspx). Tento článek poskytuje dodatečné informace potřebné k úspěšné implementaci této funkce v Stream Analytics. V [tomto](stream-analytics-machine-learning-integration-tutorial.md)kurzu je také publikovaný a dostupný.
@@ -28,7 +28,7 @@ Microsoft Azure Machine Learning Studio (Classic) poskytuje nástroj pro spolupr
 Každý koncový bod obsahuje rozhraní API pro spuštění dávky a synchronní spuštění. Stream Analytics používá synchronní spuštění. Konkrétní služba se nazývá [Služba požadavků a odpovědí](../machine-learning/studio/consume-web-services.md) v Azure Machine Learning Studio (Classic).
 
 ## <a name="machine-learning-resources-needed-for-stream-analytics-jobs"></a>Machine Learning prostředky potřebné pro úlohy Stream Analytics
-Pro účely Stream Analytics zpracování úloh je pro úspěšné provedení nutné provést i koncový bod požadavek/odpověď, [apikey](../machine-learning/machine-learning-connect-to-azure-machine-learning-web-service.md)a definici Swagger. Stream Analytics má další koncový bod, který vytvoří adresu URL koncového bodu Swagger, vyhledá rozhraní a vrátí výchozí definici UDF pro uživatele.
+Pro účely Stream Analytics zpracování úloh je pro úspěšné provedení nutné provést i koncový bod požadavek/odpověď, [apikey](https://docs.microsoft.com/azure/machine-learning/studio/consume-web-services)a definici Swagger. Stream Analytics má další koncový bod, který vytvoří adresu URL koncového bodu Swagger, vyhledá rozhraní a vrátí výchozí definici UDF pro uživatele.
 
 ## <a name="configure-a-stream-analytics-and-machine-learning-udf-via-rest-api"></a>Konfigurace Stream Analytics a Machine Learning systému souborů UDF prostřednictvím REST API
 Pomocí rozhraní REST API můžete nakonfigurovat úlohu pro volání funkcí jazyka Azure Machine. Kroky jsou následující:
@@ -187,7 +187,7 @@ Nyní se v případě každé události vstupu do systému souborů UDF (zde naz
 ```
 
 
-## <a name="get-help"></a>Získání pomoci
+## <a name="get-help"></a>Podpora
 Pokud potřebujete další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)
 
 ## <a name="next-steps"></a>Další kroky

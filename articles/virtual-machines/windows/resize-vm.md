@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: cynthn
-ms.openlocfilehash: f456af143ac6ec21bcb9b0c3ec75635c51f748ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98a0a1a2ce0a5122a953b8cc9916e2bf56955feb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82099882"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020233"
 ---
 # <a name="resize-a-windows-vm"></a>Změna velikosti virtuálního počítače s Windows
 
@@ -25,7 +25,7 @@ Pokud virtuální počítač používá Premium Storage, ujistěte se, že zvol�
 
 ## <a name="use-the-portal"></a>Použití portálu
 
-1. Otevřete [Azure Portal](https://portal.azure.com).
+1. Otevřete web [Azure Portal](https://portal.azure.com).
 1. Otevřete stránku pro virtuální počítač.
 1. V nabídce vlevo vyberte **Velikost**.
 1. Ze seznamu dostupných velikostí vyberte novou velikost a pak vyberte **změnit velikost**.
@@ -126,5 +126,4 @@ $vmIds = $as.VirtualMachinesReferences
 
 ## <a name="next-steps"></a>Další kroky
 
-Pro další škálovatelnost spusťte více instancí virtuálních počítačů a nahorizontální navýšení kapacity. Další informace najdete v tématu [Automatické škálování počítačů s Windows v sadě škálování virtuálního počítače](../../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md).
-
+Pro další škálovatelnost spusťte více instancí virtuálních počítačů a nahorizontální navýšení kapacity. Další informace najdete v tématu [Automatické škálování počítačů s Windows v sadě škálování virtuálního počítače](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md).

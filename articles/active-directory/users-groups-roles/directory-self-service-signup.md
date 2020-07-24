@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b23d3d287238d2813f7381941dc279851bc3afdd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a61bd162baf6f079b625dc07d4faa397493ba618
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84728822"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015863"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Co je samoobslužná registrace do služby Azure Active Directory?
 
@@ -77,9 +77,9 @@ Další informace a příklady použití těchto parametrů naleznete v tématu 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přidání vlastního názvu domény do Azure AD](../fundamentals/add-custom-domain.md)
-* [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview)
-* [Azure PowerShell](/powershell/azure/overview)
+* [Přidání názvu vlastní domény do Azure AD](../fundamentals/add-custom-domain.md)
+* [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/)
+* [Azure PowerShell](/powershell/azure/)
 * [Referenční informace k rutinám Azure](/powershell/azure/get-started-azureps)
 * [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
 * [Zavřete svůj pracovní nebo školní účet v nespravovaném adresáři.](users-close-account.md)

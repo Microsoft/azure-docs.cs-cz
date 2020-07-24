@@ -5,26 +5,28 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 06/29/2020
+ms.date: 07/14/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f5e5a4075705e43dc0ac37181bf33b078013177
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81c3715995d0d53cd72acf7277f46a279fa4cfb2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555235"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019654"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Začínáme s Azure Active Directory Identity Protection a Microsoft Graph
 
-Microsoft Graph je koncový bod rozhraní Microsoft Unified API a jeho Domovská stránka rozhraní API pro [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) . K dispozici jsou čtyři rozhraní API, která zveřejňují informace o rizikových uživatelích a přihlášeních. První rozhraní API, **riskDetection**, umožňuje zadat dotaz na Microsoft Graph seznam uživatelů a jejich přihlašování a související informace o detekci. Druhé rozhraní API, **riskyUsers**, vám umožní dotazovat se na Microsoft Graph informace o ochraně identity uživatelů zjištěné jako rizika. Třetí rozhraní API vám umožní dotazovat **se na**Microsoft Graph pro informace o přihlášeních k Azure AD s konkrétními vlastnostmi, které se týkají stavu rizika, podrobností a úrovně. Čtvrté rozhraní API **identityRiskEvents**umožňuje zadat dotaz na seznam [detekcí rizik](../reports-monitoring/concept-risk-events.md) a přidružených informací v Microsoft Graph. Rozhraní identityRiskEvents API bude zastaralé 10. ledna 2020; Doporučujeme místo toho použít rozhraní **riskDetections** API. Tento článek vám pomůže začít s připojením k Microsoft Graph a dotazování na tato rozhraní API. Podrobné informace o tom, úplnou dokumentaci a přístup k Průzkumníku graphu, najdete na [webu Microsoft Graph](https://graph.microsoft.io/) nebo v konkrétní referenční dokumentaci pro tato rozhraní API:
+Microsoft Graph je koncový bod rozhraní Microsoft Unified API a jeho Domovská stránka rozhraní API pro [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) . Existují tři rozhraní API, která zveřejňují informace o rizikových uživatelích a přihlášeních. První rozhraní API, **riskDetection**, umožňuje zadat dotaz na Microsoft Graph seznam uživatelů a jejich přihlašování a související informace o detekci. Druhé rozhraní API, **riskyUsers**, vám umožní dotazovat se na Microsoft Graph informace o ochraně identity uživatelů zjištěné jako rizika. Třetí rozhraní API vám umožní dotazovat **se na**Microsoft Graph pro informace o přihlášeních k Azure AD s konkrétními vlastnostmi, které se týkají stavu rizika, podrobností a úrovně. 
 
-* [rozhraní API pro riskDetection](/graph/api/resources/riskdetection?view=graph-rest-v1.0)
-* [rozhraní API pro riskyUsers](/graph/api/resources/riskyuser?view=graph-rest-v1.0)
-* [Přihlášení k rozhraní API](/graph/api/resources/signin?view=graph-rest-v1.0)
+Tento článek vám pomůže začít s připojením k Microsoft Graph a dotazování na tato rozhraní API. Podrobné informace o tom, úplnou dokumentaci a přístup k Průzkumníku graphu, najdete na [webu Microsoft Graph](https://graph.microsoft.io/) nebo v konkrétní referenční dokumentaci pro tato rozhraní API:
+
+* [Rozhraní API riskDetection](/graph/api/resources/riskdetection?view=graph-rest-v1.0)
+* [Rozhraní API riskyUsers](/graph/api/resources/riskyuser?view=graph-rest-v1.0)
+* [Rozhraní API signIn](/graph/api/resources/signin?view=graph-rest-v1.0)
 
 ## <a name="connect-to-microsoft-graph"></a>Připojit k Microsoft graphu
 
@@ -37,7 +39,7 @@ Existují čtyři kroky pro přístup k datům Identity Protection prostřednict
 
 ### <a name="retrieve-your-domain-name"></a>Načíst název domény 
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).  
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).  
 1. Vyhledejte **Azure Active Directory**  >  **vlastní názvy domén**. 
 1. Poznamenejte si `.onmicrosoft.com` doménu, budete potřebovat tyto informace v pozdějším kroku.
 
@@ -68,7 +70,7 @@ Existují čtyři kroky pro přístup k datům Identity Protection prostřednict
 1. V **aplikaci** , kterou jste vytvořili, vyberte **certifikáty & tajných**kódů.
 1. V části **tajné klíče klienta**vyberte **nový tajný klíč klienta**.
    1. Zadejte tajný klíč klienta **Popis** a nastavte časový interval vypršení platnosti podle vašich zásad vaší organizace.
-   1. Vyberte možnost **Přidat**.
+   1. Vyberte **Přidat**.
 
    > [!NOTE]
    > Pokud tento klíč ztratíte, budete se muset vrátit do této části a vytvořit nový klíč. Zachovat tento klíč jako tajný klíč: kdokoli, kdo má přístup k vašim datům.

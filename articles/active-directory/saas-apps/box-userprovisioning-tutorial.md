@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2017
+ms.date: 07/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1397b4189a9c2c15e3878687ea8c67c1da7567f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0be9298e56cf2e5c816c45fcb7e84eb20c11ef4d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77058565"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87018175"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Kurz: Konfigurace boxu pro Automatické zřizování uživatelů
 
@@ -28,7 +29,7 @@ Cílem tohoto kurzu je Ukázat kroky, které je třeba provést v poli a Azure A
 > [!NOTE]
 > Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s polem budete potřebovat následující položky:
 
@@ -37,6 +38,9 @@ Ke konfiguraci integrace služby Azure AD s polem budete potřebovat následují
 
 > [!NOTE]
 > Když testujete kroky v tomto kurzu, doporučujeme *Nepoužívat produkční* prostředí.
+
+> [!NOTE]
+> Aplikace musí být nejprve povolené v aplikaci box.
 
 K otestování kroků v tomto kurzu použijte tato doporučení:
 
@@ -129,7 +133,7 @@ V tenantovi vašeho tenanta jsou synchronizující uživatelé uvedeni v části
 ![Stav integrace](./media/box-userprovisioning-tutorial/IC769556.png "Stav integrace")
 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

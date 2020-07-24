@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: a61f7ff69e648262eb721eb61a98b09dbbee924c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0426872c29fa126514f22a5f4fb57f19903c967
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73961426"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021660"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>Nastavení IP adresování pro připojení k sekundárnímu místnímu webu po převzetí služeb při selhání
 
@@ -78,12 +79,12 @@ Po převzetí služeb při selhání Site Recovery přidělí IP adresu pro kaž
 
 Po povolení ochrany pro virtuální počítač můžete pomocí následujícího ukázkového skriptu ověřit adresu přiřazenou k virtuálnímu počítači. Tato IP adresa se nastaví jako IP adresa pro převzetí služeb při selhání a přiřadí se k virtuálnímu počítači v době převzetí služeb při selhání:
 
-    ```
-    $vm = Get-SCVirtualMachine -Name <VM_NAME>
-    $na = $vm[0].VirtualNetworkAdapters>
-    $ip = Get-SCIPAddress -GrantToObjectID $na[0].id
-    $ip.address 
-    ```
+```powershell
+$vm = Get-SCVirtualMachine -Name <VM_NAME>
+$na = $vm[0].VirtualNetworkAdapters>
+$ip = Get-SCIPAddress -GrantToObjectID $na[0].id
+$ip.address
+```
 
 ## <a name="use-a-different-ip-address"></a>Použít jinou IP adresu
 
@@ -92,7 +93,7 @@ V tomto scénáři se změní IP adresy virtuálních počítačů, u kterých d
 - Pro intranetové aplikace používejte nedostatečné hodnoty TTL.
 - Pro včasné aktualizace serveru DNS použijte následující skript v plánu obnovení Site Recovery. Pokud používáte dynamickou registraci DNS, nepotřebujete skript.
 
-    ```
+    ```powershell
     param(
     string]$Zone,
     [string]$name,

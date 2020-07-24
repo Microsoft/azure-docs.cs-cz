@@ -5,27 +5,27 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.topic: conceptual
 ms.workload: big-data
-ms.date: 04/15/2020
+ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 10616c8003d9bbbe42cb70bd1bac4193044907c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 170b90816535562d6740449157840cedb00f291d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416997"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020504"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Sdílení vlastního zobrazení pomocí parametrizovaných adres URL
 
-Chcete-li sdílet vlastní zobrazení v Průzkumníkovi Time Series Insights, můžete programově vytvořit parametrizovanou adresu URL vlastního zobrazení.
+Chcete-li sdílet vlastní zobrazení v Průzkumníkovi Azure Time Series Insights, můžete programově vytvořit parametrizovanou adresu URL vlastního zobrazení.
 
-Průzkumník Time Series Insights podporuje parametry dotazu URL pro určení zobrazení v prostředí přímo z adresy URL. Pouze pomocí adresy URL můžete například určit cílové prostředí, predikát vyhledávání a požadované časové období. Když uživatel vybere přizpůsobenou adresu URL, rozhraní poskytne odkaz přímo na tento prostředek na portálu Time Series Insights. Platí zde zásady přístupu k datům.
+Azure Time Series Insights Explorer podporuje parametry dotazů URL pro určení zobrazení v prostředí přímo z adresy URL. Pouze pomocí adresy URL můžete například určit cílové prostředí, predikát vyhledávání a požadované časové období. Když uživatel vybere přizpůsobenou adresu URL, rozhraní poskytne odkaz přímo na tento prostředek na portálu Azure Time Series Insights. Platí zde zásady přístupu k datům.
 
 > [!TIP]
-> * Podívejte se na [ukázku bezplatné Time Series Insights](https://insights.timeseries.azure.com/samples).
-> * Přečtěte si doprovodnou dokumentaci k [Time Series Insights Exploreru](./time-series-insights-explorer.md) .
+> * Podívejte se na [ukázku bezplatné Azure Time Series Insights](https://insights.timeseries.azure.com/samples).
+> * Přečtěte si doprovodnou dokumentaci k [Azure Time Series Insights Exploreru](./time-series-insights-explorer.md) .
 
 ## <a name="environment-id"></a>ID prostředí
 
@@ -53,7 +53,7 @@ Pro relativní časovou hodnotu použijte `relativeMillis=<value>` , pokud je *h
 
 Například `&relativeMillis=3600000` zobrazí data za posledních 60 minut.
 
-Přijaté hodnoty odpovídají nabídce **rychlý čas** v Průzkumníkovi Time Series Insights a zahrnují:
+Přijaté hodnoty odpovídají nabídce **rychlý čas** v Průzkumníkovi Azure Time Series Insights a zahrnují:
 
 * `1800000`(Posledních 30 minut)
 * `3600000`(Posledních 60 minut)
@@ -66,7 +66,7 @@ Přijaté hodnoty odpovídají nabídce **rychlý čas** v Průzkumníkovi Time 
 
 ### <a name="optional-parameters"></a>Volitelné parametry
 
-`timeSeriesDefinitions=<collection of term objects>`Parametr určuje výrazy predikátu, které se zobrazí v zobrazení Time Series Insights:
+`timeSeriesDefinitions=<collection of term objects>`Parametr určuje výrazy predikátu, které se zobrazí v zobrazení Azure Time Series Insights:
 
 | Parametr | Položka URL | Popis |
 | --- | --- | --- |
@@ -98,7 +98,7 @@ Přijaté hodnoty odpovídají nabídce **rychlý čas** v Průzkumníkovi Time 
 
 ### <a name="examples"></a>Příklady
 
-Pokud chcete do Time Series Insightsho prostředí přidat definice časových řad jako parametr URL, přidejte:
+Pokud chcete do Azure Time Series Insightsho prostředí přidat definice časových řad jako parametr adresy URL, přidejte:
 
 ```URL parameter
 &timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},
@@ -117,16 +117,16 @@ Pro zobrazení můžete vytvořit následující parametrizovanou adresu URL:
 https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]
 ```
 
-[![Adresa URL s parametrem Time Series Insights Explorer](media/parameterized-url/share-parameterized-url.png)](media/parameterized-url/share-parameterized-url.png#lightbox)
+[![Adresa URL s parametrem Azure Time Series Insights Explorer](media/parameterized-url/share-parameterized-url.png)](media/parameterized-url/share-parameterized-url.png#lightbox)
 
 > [!TIP]
 > Podívejte se na téma Průzkumník Live pomocí výše uvedeného příkladu [adresy URL](https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]) .
 
-Výše uvedená adresa URL popisuje a zobrazí Time Series Insights zobrazení Průzkumníka s parametry. 
+Výše uvedená adresa URL popisuje a zobrazí Azure Time Series Insights zobrazení Průzkumníka s parametry. 
 
 * Parametrizované predikáty.
 
-  [![Time Series Insights parametrické predikáty Průzkumníka.](media/parameterized-url/share-parameterized-url-predicates.png)](media/parameterized-url/share-parameterized-url-predicates.png#lightbox)
+  [![Azure Time Series Insights parametrické predikáty Průzkumníka.](media/parameterized-url/share-parameterized-url-predicates.png)](media/parameterized-url/share-parameterized-url-predicates.png#lightbox)
 
 * Sdílené zobrazení celého grafu.
 
@@ -136,4 +136,4 @@ Výše uvedená adresa URL popisuje a zobrazí Time Series Insights zobrazení P
 
 * Naučte se, jak [zadávat dotazy na data pomocí jazyka C#](time-series-insights-query-data-csharp.md).
 
-* Přečtěte si o [Time Series Insights Exploreru](./time-series-insights-explorer.md).
+* Přečtěte si o [Azure Time Series Insights Exploreru](./time-series-insights-explorer.md).

@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 01d41b20c543262280e215cf4e31fd0cccce877f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f7f6de717f0ed9a2e27e15199b6f0ea566e0fdcd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531179"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021626"
 ---
 # <a name="connect-your-pulse-connect-secure-to-azure-sentinel"></a>Připojení Pulse Connect Secure k Azure Sentinel
+
+> [!IMPORTANT]
+> Konektor zabezpečení dat Pulse Connect v Azure Sentinel je aktuálně ve verzi Public Preview.
+> Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Tento článek vysvětluje, jak připojit [zabezpečovací zařízení Pulse Connect](https://www.pulsesecure.net/products/pulse-connect-secure/) ke službě Azure Sentinel. Konektor pro zabezpečení dat Pulse Connect umožňuje snadno připojit zabezpečené protokoly Pulse Connect k Azure Sentinel, zobrazit řídicí panely, vytvořit vlastní výstrahy a vylepšit šetření. Integrace mezi pulsovým připojením Secure a službou Azure Sentinel využívá protokol syslog.
 

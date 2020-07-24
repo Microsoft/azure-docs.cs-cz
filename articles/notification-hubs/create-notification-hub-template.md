@@ -1,6 +1,6 @@
 ---
 title: Vytvoření centra oznámení Azure pomocí šablony Azure Resource Manager
-description: Naučte se vytvořit centrum oznámení Azure pomocí šablony Azure Resource Manager.
+description: Naučte se vytvořit centrum oznámení Azure pomocí šablony Azure Resource Manager (šablona ARM).
 services: notification-hubs
 author: sethmanheim
 ms.service: notification-hubs
@@ -10,37 +10,37 @@ ms.author: sethm
 ms.date: 05/15/2020
 ms.reviewer: thsomasu
 ms.lastreviewed: 05/15/2020
-ms.openlocfilehash: ede6b8ae22fb51a9586c6c4465d2cf9ac79f88df
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: a1e947c80ae48ae507d0712e62084538165918be
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996665"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022442"
 ---
-# <a name="quickstart-create-a-notification-hub-using-an-azure-resource-manager-template"></a>Rychlý Start: vytvoření centra oznámení pomocí šablony Azure Resource Manager
+# <a name="quickstart-create-a-notification-hub-using-an-arm-template"></a>Rychlý Start: vytvoření centra oznámení pomocí šablony ARM
 
 Azure Notification Hubs poskytuje snadno použitelný a Škálovatelný modul nabízených oznámení, který umožňuje odesílat oznámení na libovolnou platformu (iOS, Android, Windows, Kindle atd.) z libovolného back-endu (Cloud nebo místní). Další informace o této službě najdete v tématu [co je Azure Notification Hubs](notification-hubs-push-notification-overview.md).
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-V tomto rychlém startu se používá šablona Azure Resource Manager k vytvoření oboru názvů Azure Notification Hubs a centrum oznámení s názvem **MyHub** v rámci tohoto oboru názvů.
+Tento rychlý Start používá šablonu Azure Resource Manager (šablonu ARM) k vytvoření oboru názvů Azure Notification Hubs a centrum oznámení s názvem **MyHub** v rámci tohoto oboru názvů.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
+
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-notification-hub%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Žádné
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
-## <a name="create-a-notification-hubs-namespace-and-hub"></a>Vytvoření Notification Hubsového oboru názvů a centra
+## <a name="review-the-template"></a>Kontrola šablony
 
-### <a name="review-the-template"></a>Kontrola šablony
-
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-notification-hub/).
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-notification-hub/).
 
 :::code language="json" source="~/quickstart-templates/101-notification-hub/azuredeploy.json" range="1-45" highlight="22-40":::
 
-* [Microsoft. NotificationHubs/obory názvů](/azure/templates/microsoft.notificationhubs/2017-04-01/namespaces)
-* [Microsoft. NotificationHubs/obory názvů/notificationHubs](/azure/templates/microsoft.notificationhubs/2017-04-01/namespaces/notificationhubs)
+* [Microsoft. NotificationHubs/obory názvů](/azure/templates/microsoft.notificationhubs/namespaces)
+* [Microsoft. NotificationHubs/obory názvů/notificationHubs](/azure/templates/microsoft.notificationhubs/namespaces/notificationhubs)
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
@@ -86,4 +86,4 @@ Write-Host "Press [ENTER] to continue..."
 Podrobný kurz, který vás provede procesem vytvoření šablony, najdete v těchto tématech:
 
 > [!div class="nextstepaction"]
-> [Kurz: vytvoření a nasazení první šablony Azure Resource Manager](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [Kurz: vytvoření a nasazení první šablony ARM](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

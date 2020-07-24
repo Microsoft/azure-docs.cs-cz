@@ -14,13 +14,14 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0cd2de0929b22dda6e566316c4eda966d8d62e24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2ccf986f81ec3abed54c85640b8afb1c5cf7172
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732646"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015880"
 ---
-# <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Přebírat nespravovaný adresář jako správce v Azure Active Directory
+# <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Převzetí nespravovaného adresáře v roli správce v Azure Active Directory
 
 Tento článek popisuje dva způsoby, jak převzít název domény DNS v nespravovaném adresáři v Azure Active Directory (Azure AD). Když se samoobslužný uživatel zaregistruje ke cloudové službě, která využívá Azure AD, přidá se do nespravovaného adresáře Azure AD na základě svojí e-mailové domény. Další informace o samoobslužné registraci a registraci ke službě najdete v tématu [co je samoobslužná registrace pro Azure Active Directory?](directory-self-service-signup.md)
 
@@ -31,7 +32,7 @@ Během procesu převzetí správce můžete vlastnictví prokázat způsobem pop
 
 * Když provedete ["externí" převzetí správce](#external-admin-takeover) nespravovaného adresáře Azure, přidáte název domény DNS nespravovaného adresáře do spravovaného adresáře Azure. Když přidáte název domény, ve vašem spravovaném adresáři Azure se vytvoří mapování uživatelů na prostředky, aby uživatelé měli i nadále přístup ke službám bez přerušení. 
 
-## <a name="internal-admin-takeover"></a>Převzetí interního správce
+## <a name="internal-admin-takeover"></a>Převzetí interním správcem
 
 Některé produkty, které zahrnují SharePoint a OneDrive, jako je například Office 365, nepodporují externí převzetí. Pokud se jedná o váš scénář, nebo pokud jste správcem a chcete převzít nespravovanou nebo "stínovou" organizaci Azure AD, kterou vytvořili uživatelé, kteří použili samoobslužné registrace, můžete to udělat pomocí interního převzetí služeb správce.
 
@@ -73,7 +74,7 @@ Po dokončení předchozích kroků teď jste globálním správcem čtvrté ká
 > [!NOTE]
 > Všichni uživatelé Power BI nebo služby Azure Rights Management, kteří mají licence přiřazené v organizaci Office 365, musí uložit své řídicí panely, pokud je název domény odebraný. Musí se přihlásit pomocí uživatelského jména, jako je například *uživatel \@ fourthcoffeexyz.onmicrosoft.com* *, nikoli User \@ fourthcoffee. xyz*.
 
-## <a name="external-admin-takeover"></a>Převzetí externích správců
+## <a name="external-admin-takeover"></a>Převzetí externím správcem
 
 Pokud jste už organizaci se službami Azure nebo Office 365 spravovali, nemůžete přidat vlastní název domény, pokud už je ověřený v jiné organizaci Azure AD. Ze spravované organizace ve službě Azure AD se ale můžete přebírat nespravovanou organizaci jako převzetí externích správců. Obecný postup najdete v článku [Přidání vlastní domény do Azure AD](../fundamentals/add-custom-domain.md).
 
@@ -169,9 +170,9 @@ rutiny | Využití
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přidání vlastního názvu domény do Azure AD](../fundamentals/add-custom-domain.md)
-* [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview)
-* [Azure PowerShell](/powershell/azure/overview)
+* [Přidání názvu vlastní domény do Azure AD](../fundamentals/add-custom-domain.md)
+* [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/)
+* [Azure PowerShell](/powershell/azure/)
 * [Referenční informace k rutinám Azure](/powershell/azure/get-started-azureps)
 * [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
 

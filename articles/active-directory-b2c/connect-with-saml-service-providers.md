@@ -12,12 +12,12 @@ ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b9ea9e756587af124ca94518d9f15271310ddee3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3baa659d454a24a132eda914d50acddbd5df8a90
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389374"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020062"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrace aplikace SAML v Azure AD B2C
 
@@ -41,7 +41,7 @@ Shrnutí dvou scénářů, které nejsou exkluzivní, pomocí SAML:
 | Moje aplikace očekává pro dokončení ověřování kontrolní výraz SAML. | **Azure AD B2C funguje jako zprostředkovatel identity (IdP).**<br />Azure AD B2C funguje jako IdP SAML pro aplikace. | Tento článek. |
 | Moji uživatelé potřebují jednotné přihlašování pomocí zprostředkovatele identity kompatibilního s SAML, jako je ADFS, Salesforce nebo Shibboleth.  | **Azure AD B2C funguje jako poskytovatel služeb (SP).**<br />Azure AD B2C slouží jako poskytovatel služeb při připojování k poskytovateli identity SAML. Jedná se o federační proxy mezi vaší aplikací a poskytovatelem identity SAML.  | <ul><li>[Nastavení přihlášení pomocí služby ADFS jako IdP SAML pomocí vlastních zásad](identity-provider-adfs2016-custom.md)</li><li>[Nastavení přihlašování pomocí poskytovatele služby Salesforce SAML pomocí vlastních zásad](identity-provider-salesforce-custom.md)</li></ul> |
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Proveďte kroky v části Začínáme [s vlastními zásadami v Azure AD B2C](custom-policy-get-started.md). Vlastní zásady *SocialAndLocalAccounts* potřebujete od úvodní sady Custom Policy Pack popsané v článku.
 * Základní porozumění protokolu Security Assertion Markup Language (SAML).
@@ -267,7 +267,7 @@ Vaše vlastní zásady a Azure AD B2C tenant jsou teď připravené. V dalším 
 
 ### <a name="41-register-your-application-in-azure-ad-b2c"></a>4,1 zaregistrovat aplikaci v Azure AD B2C
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací**a pak vyberte **Nová registrace**.
@@ -353,6 +353,51 @@ K dokončení tohoto kurzu použijte naši [aplikaci testu SAML][samltest]:
 * Zadejte tento identifikátor URI vystavitele:`https://contoso.onmicrosoft.com/app-name`
 
 Vyberte **přihlašovací údaje** , které byste měli mít k dispozici na přihlašovací obrazovce uživatele. Po přihlášení je kontrolní výraz SAML vydán zpět do ukázkové aplikace.
+
+## <a name="enable-encypted-assertions"></a>Povolit kontrolní výrazy zašifrována
+Chcete-li zašifrovat kontrolní výrazy SAML odeslané zpět poskytovateli služeb, Azure AD B2C použijí certifikát veřejného klíče poskytovatele služby. Veřejný klíč musí existovat v metadatech SAML popsaných výše v [části "samlMetadataUrl"](#samlmetadataurl) jako popisovač klíče s použitím šifrování.
+
+Následuje příklad popisovače šifry metadat SAML s použitím nastavení šifrování:
+
+```xml
+<KeyDescriptor use="encryption">
+  <KeyInfo xmlns="https://www.w3.org/2000/09/xmldsig#">
+    <X509Data>
+      <X509Certificate>valid certificate</X509Certificate>
+    </X509Data>
+  </KeyInfo>
+</KeyDescriptor>
+```
+
+Pokud chcete povolit Azure AD B2C odesílat šifrované kontrolní výrazy, nastavte položku metadat **WantsEncryptedAssertion** na hodnotu true v technickém profilu předávající strany, jak je znázorněno níže.
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TrustFrameworkPolicy
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
+  PolicySchemaVersion="0.3.0.0"
+  TenantId="contoso.onmicrosoft.com"
+  PolicyId="B2C_1A_signup_signin_saml"
+  PublicPolicyUri="http://contoso.onmicrosoft.com/B2C_1A_signup_signin_saml">
+ ..
+ ..
+  <RelyingParty>
+    <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+    <TechnicalProfile Id="PolicyProfile">
+      <DisplayName>PolicyProfile</DisplayName>
+      <Protocol Name="SAML2"/>
+      <Metadata>
+          <Item Key="WantsEncryptedAssertions">true</Item>
+      </Metadata>
+     ..
+     ..
+     ..
+    </TechnicalProfile>
+  </RelyingParty>
+</TrustFrameworkPolicy>
+```
 
 ## <a name="sample-policy"></a>Ukázková zásada
 

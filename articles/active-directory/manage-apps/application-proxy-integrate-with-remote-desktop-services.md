@@ -11,16 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/23/2019
+ms.date: 07/22/2020
 ms.author: kenwith
 ms.custom: it-pro
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34f3dcd607a7417932912528167a1120dbfd9b4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9cba74c773e1f141db14e06cf0cda8b31d06ba4f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764515"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019518"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publikování vzdálené plochy pomocí Azure Proxy aplikací služby AD
 
@@ -28,7 +29,7 @@ Služba Vzdálená plocha a Azure Proxy aplikací služby AD společně spolupra
 
 Zamýšlenou cílovou skupinu pro tento článek:
 - Aktuální zákazníci proxy aplikací, kteří chtějí koncovým uživatelům nabídnout další aplikace publikováním místních aplikací prostřednictvím služby Vzdálená plocha.
-- Aktuální zákazníci se vzdálenou plochou, kteří chtějí snížit plochu pro útok na nasazení pomocí služby Azure Proxy aplikací služby AD. V tomto scénáři získáte omezené množství dvou kroků ověřování a řízení podmíněného přístupu k VP.
+- Aktuální zákazníci se vzdálenou plochou, kteří chtějí snížit plochu pro útok na nasazení pomocí služby Azure Proxy aplikací služby AD. Tento scénář obsahuje sadu dvou kroků ověřování a řízení podmíněného přístupu pro RDS.
 
 ## <a name="how-application-proxy-fits-in-the-standard-rds-deployment"></a>Způsob, jakým se proxy aplikace vejde do standardního nasazení služby RDS
 
@@ -45,17 +46,17 @@ V nasazení služby Vzdálená plocha se webová role RD a role Brána VP spouš
 
 ## <a name="requirements"></a>Požadavky
 
-- Použijte jiného klienta než webového klienta vzdálené plochy, protože webový klient nepodporuje proxy aplikace.
-
 - Webové a Brána VP koncové body webu VP musí být umístěny ve stejném počítači a se společným kořenem. Web a Brána VP VP jsou publikovány jako jediná aplikace s proxy aplikací, takže můžete mít k dispozici jednotné přihlašování mezi oběma aplikacemi.
 
 - Už byste měli mít [nasazený](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure) [proxy aplikace](application-proxy-add-on-premises-application.md)RDS a Enabled.
 
-- V tomto scénáři se předpokládá, že vaši koncoví uživatelé procházejí Internet Explorerem v počítačích se systémem Windows 7 nebo Windows 10, které se připojují prostřednictvím webové stránky vzdálené plochy. Pokud potřebujete podporovat jiné operační systémy, přečtěte si téma [Podpora dalších konfigurací klientů](#support-for-other-client-configurations).
+- Koncoví uživatelé musí použít kompatibilní prohlížeč pro připojení k webu RD Web nebo webovému klientovi RD. Další podrobnosti najdete v článku [Podpora pro konfigurace klientů](#support-for-other-client-configurations).
 
-- Při publikování webu RD Web se doporučuje použít stejný interní a externí plně kvalifikovaný název domény. Pokud se vnitřní a vnější plně kvalifikovaný název domény liší, měli byste zakázat překlad hlaviček požadavku, aby klient nepřijal neplatné odkazy. 
+- Při publikování webu RD Web se doporučuje použít stejný interní a externí plně kvalifikovaný název domény. Pokud se vnitřní a vnější plně kvalifikovaný název domény liší, měli byste zakázat překlad hlaviček požadavku, aby klient nepřijal neplatné odkazy.
 
-- V aplikaci Internet Explorer povolte doplněk RDS ActiveX.
+- Pokud používáte web RD v aplikaci Internet Explorer, bude nutné povolit doplněk RDS ActiveX.
+
+- Pokud používáte webového klienta služby Vzdálená plocha, budete muset použít konektor proxy aplikace [verze 1.5.1975 nebo novější](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-release-version-history).
 
 - Pro tok předběžného ověřování Azure AD se uživatelé můžou k publikovaným prostředkům připojit jenom v podokně **aplikace RemoteApp a plochy** . Uživatelé se nemohou připojit k ploše pomocí podokna **připojit k VZDÁLENÉMU počítači** .
 
@@ -71,7 +72,11 @@ Po nastavení služby RDS a Azure Proxy aplikací služby AD pro vaše prostřed
    - Metoda předběžného ověření: Azure Active Directory
    - Přeložit hlavičky adresy URL: ne
 2. Přiřaďte uživatele k publikované aplikaci RD. Ujistěte se, že všichni mají přístup ke službě RDS.
-3. Ponechte pro aplikaci metodu jednotného přihlašování, jako je **zakázané jednotné přihlašování Azure AD**. Uživatelům se zobrazí výzva k ověření jednou pro Azure AD a jednorázově na webu RD Web, ale mají k Brána VP jednotné přihlašování.
+3. Ponechte pro aplikaci metodu jednotného přihlašování, jako je **zakázané jednotné přihlašování Azure AD**.
+
+   >[!Note]
+   >Uživatelům se zobrazí výzva k ověření jednou pro Azure AD a jednorázově na webu RD Web, ale mají k Brána VP jednotné přihlašování.
+
 4. Vyberte **Azure Active Directory**a pak **Registrace aplikací**. Vyberte aplikaci ze seznamu.
 5. V části **Spravovat**vyberte **branding**.
 6. Aktualizujte pole **Adresa URL domovské stránky** tak, aby odkazovalo na webový koncový bod služby Vzdálená plocha (například `https://\<rdhost\>.com/RDWeb` ).
@@ -110,6 +115,11 @@ Připojte se k nasazení služby Vzdálená plocha jako správce a změňte náz
 
 Teď, když jste nakonfigurovali vzdálenou plochu, Azure Proxy aplikací služby AD převzal jako internetovou komponentu služby RDS. Ostatní veřejné koncové body pro Internet můžete odebrat na webu a na počítačích s Brána VP.
 
+### <a name="enable-the-rd-web-client"></a>Povolení webového klienta služby Vzdálená plocha
+Pokud chcete, aby uživatelé mohli použít webový klient služby Vzdálená plocha, postupujte podle kroků v [části nastavení webového klienta vzdálené plochy pro vaše uživatele](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-web-client-admin) , abyste mohli tuto možnost povolit.
+
+Webový klient vzdálené plochy umožňuje uživatelům přístup k infrastruktuře vzdálené plochy vaší organizace prostřednictvím webového prohlížeče kompatibilního s HTML5, jako je Microsoft Edge, Internet Explorer 11, Google Chrome, Safari nebo Mozilla Firefox (v 55.0 a novější).
+
 ## <a name="test-the-scenario"></a>Testování scénáře
 
 Otestujte scénář pomocí aplikace Internet Explorer v počítači se systémem Windows 7 nebo 10.
@@ -121,11 +131,12 @@ Otestujte scénář pomocí aplikace Internet Explorer v počítači se systéme
 
 ## <a name="support-for-other-client-configurations"></a>Podpora pro jiné konfigurace klientů
 
-Konfigurace, která je popsaný v tomto článku, je určena uživatelům ve Windows 7 nebo 10 pomocí aplikace Internet Explorer a doplňku ActiveX služby RDS. Pokud ale potřebujete, můžete podporovat jiné operační systémy nebo prohlížeče. Rozdíl je v metodě ověřování, kterou používáte.
+Konfigurace, která je popsaný v tomto článku, je určena pro přístup k VP prostřednictvím webu RD Web nebo webového klienta RD. Pokud ale potřebujete, můžete podporovat jiné operační systémy nebo prohlížeče. Rozdíl je v metodě ověřování, kterou používáte.
 
 | Metoda ověřování | Podporovaná konfigurace klienta |
 | --------------------- | ------------------------------ |
-| Předběžné ověřování    | Windows 7/10 použití doplňku ActiveX pro Internet Explorer + RDS |
+| Předběžné ověřování    | RD Web-Windows 7/10 použití doplňku ActiveX pro Internet Explorer + RDS |
+| Předběžné ověřování    | Webový klient služby Vzdálená plocha – webový prohlížeč kompatibilní s HTML5, jako je Microsoft Edge, Internet Explorer 11, Google Chrome, Safari nebo Mozilla Firefox (v 55.0 a novější) |
 | Předávací | Jakýkoli jiný operační systém, který podporuje aplikaci Vzdálená plocha Microsoft |
 
 Tok předběžného ověřování nabízí více výhod zabezpečení než tok průchodu. S předběžným ověřením můžete použít funkce ověřování Azure AD, jako je jednotné přihlašování, podmíněný přístup a dvoustupňové ověřování pro vaše místní prostředky. Zajistěte také, aby vaše síť dosáhla pouze ověřeného provozu.
@@ -136,5 +147,5 @@ Chcete-li použít předávací ověřování, existují pouze dvě úpravy krok
 
 ## <a name="next-steps"></a>Další kroky
 
-[Povolení vzdáleného přístupu k SharePointu s využitím Proxy aplikací služby Azure AD](application-proxy-integrate-with-sharepoint-server.md)  
-[Požadavky na zabezpečení při vzdáleném přístupu k aplikacím pomocí Azure Proxy aplikací služby AD](application-proxy-security.md)
+[Povolení vzdáleného přístupu k SharePointu pomocí Azure proxy aplikací služby AD](application-proxy-integrate-with-sharepoint-server.md) 
+ [Požadavky na zabezpečení při vzdáleném přístupu k aplikacím pomocí Azure proxy aplikací služby AD](application-proxy-security.md)

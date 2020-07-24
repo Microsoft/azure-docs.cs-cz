@@ -1,5 +1,5 @@
 ---
-title: Definování datových typů
+title: Datové typy tabulek v synapse SQL
 description: Doporučení pro definování datových typů tabulek v synapse SQL
 services: synapse-analytics
 author: filippopovic
@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 312c58a7df09ebe3e0bdf0749f902199723a331b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 907258dbce9b4f942601935df472e3515ed2d956
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81429002"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020630"
 ---
 # <a name="table-data-types-in-synapse-sql"></a>Datové typy tabulek v synapse SQL
 

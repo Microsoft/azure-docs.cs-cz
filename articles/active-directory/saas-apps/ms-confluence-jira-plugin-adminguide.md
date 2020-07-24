@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8679f9a03fded546db68f058bca716ba053aa0fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5884685f12c4697558a008287f446e52e5105d3b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73161206"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87016781"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Atlassian JIRA a příručka pro správce Confluence pro Azure Active Directory
 
@@ -54,7 +54,7 @@ Správci JIRA a Confluence můžou pomocí tohoto modulu plug-in povolit jednotn
 * JIRA nebo Confluence je k dispozici i mimo podnikovou síť.
 * Modul plug-in funguje jenom s místní verzí JIRA a Confluence.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před instalací modulu plug-in si všimněte následujících informací:
 
@@ -139,7 +139,7 @@ Následující obrázek znázorňuje konfigurační obrazovku v JIRA i Confluenc
 
 * **Povolit jednotné přihlašování**: výběr, který se má udělat, pokud se chcete odhlásit ze služby Azure AD, když se uživatel odhlásí z JIRA nebo Confluence.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 * Máte k dispozici **více chyb certifikátu**: Přihlaste se do služby Azure AD a odeberte více certifikátů, které jsou pro aplikaci k dispozici. Zajistěte, aby byl přítomen pouze jeden certifikát.
 
@@ -147,7 +147,7 @@ Následující obrázek znázorňuje konfigurační obrazovku v JIRA i Confluenc
 
 * **Chcete zakázat WebSudo (zakažte relaci zabezpečeného správce)**:
 
-  * Pro JIRA jsou ve výchozím nastavení povolené relace zabezpečeného správce (tj. potvrzení hesla před přístupem k funkcím pro správu). Pokud chcete tuto schopnost v instanci JIRA odebrat, zadejte v souboru JIRA-config. Properties následující řádek:`ira.websudo.is.disabled = true`
+  * Pro JIRA jsou ve výchozím nastavení povolené relace zabezpečeného správce (tj. potvrzení hesla před přístupem k funkcím pro správu). Pokud chcete tuto schopnost v instanci JIRA odebrat, zadejte v souboru JIRA-config. Properties následující řádek:`jira.websudo.is.disabled = true`
 
   * V případě Confluence postupujte podle pokynů na [webu podpory Confluence](https://confluence.atlassian.com/doc/configuring-secure-administrator-sessions-218269595.html).
 

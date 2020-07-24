@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Konfigurace SuccessFactors příchozího zřizování v Azure Active Directory | Microsoft Docs'
+title: 'Kurz: Konfigurace příchozího zřizování SuccessFactors ve službě AD a Azure AD | Microsoft Docs'
 description: Informace o tom, jak nakonfigurovat příchozí zřizování z SuccessFactors
 services: active-directory
 author: cmmdesai
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/05/2019
 ms.author: chmutali
-ms.openlocfilehash: d9317a68c8967fbe0728e8c47e59dd33367c6163
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77b4336fd9430b523f4f9fa288b7451117f7e0c5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84702171"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87016968"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>Kurz: Konfigurace zřizování SAP SuccessFactors pro uživatele služby Active Directory (Preview)
 Cílem tohoto kurzu je Ukázat kroky, které potřebujete k tomu, abyste uživatelům zřídili SuccessFactors zaměstnanci v rámci služby Active Directory (AD) a Azure AD s volitelným zpětným zápisem e-mailové adresy na SuccessFactors. Tato integrace je ve verzi Public Preview a podporuje načítání více než [70 a uživatelských atributů](../app-provisioning/sap-successfactors-attribute-reference.md) od SuccessFactors zaměstnanců od středníku.

@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/07/2020
+ms.date: 07/22/2020
 ms.subservice: app-mgmt
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83c41a357ebaf65cca8465bfc48dda3dd065c3e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 042509240eb2b88446d3ac1956d9056d5c39dfc8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84759993"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019382"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure Proxy aplikací služby AD: Historie verzí
 V tomto článku jsou uvedeny verze a funkce služby Azure Active Directory (Azure AD) proxy aplikací, které byly vydány. Tým Azure AD pravidelně aktualizuje proxy aplikace s novými funkcemi a funkcemi. Konektory proxy aplikací se aktualizují automaticky, když se uvolní nová verze. 
@@ -36,6 +36,31 @@ Jak povolit proxy aplikace | V tomto [kurzu](application-proxy-add-on-premises-a
 Vysvětlení konektorů Azure Proxy aplikací služby AD | Přečtěte si další informace o [správě konektorů](application-proxy-connectors.md) a o tom, jak konektory [automaticky upgradují](application-proxy-connectors.md#automatic-updates).
 Stažení konektoru služby Azure Proxy aplikací služby AD |  [Stáhněte si nejnovější konektor](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download).
 
+## <a name="1519750"></a>1.5.1975.0
+
+### <a name="release-status"></a>Stav verze
+
+22. července 2020: vydáno ke stažení Tato verze je k dispozici pouze pro instalaci prostřednictvím stránky pro stažení. Vydání této verze se automaticky aktualizuje na pozdější dobu.
+
+### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
+-   Vylepšená podpora pro Azure Government cloudová prostředí. Postup, jak správně nainstalovat konektor pro Azure Government Cloud, najdete v části [požadavky](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls) a [kroky instalace](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud).
+- Podpora používání webového klienta služby Vzdálená plocha s proxy aplikací. Další podrobnosti najdete v tématu věnovaném [publikování vzdálené plochy pomocí Azure proxy aplikací služby AD](application-proxy-integrate-with-remote-desktop-services.md) .
+- Vylepšená vyjednávání rozšíření protokolu WebSocket. 
+
+### <a name="fixed-issues"></a>Opravené problémy
+- Opravili jsme problém protokolu WebSocket, který vynutil řetězce v malých písmenech.
+- Opravili jsme problém, který způsobil, že konektory occassionally nereagující.
+
+## <a name="1516260"></a>1.5.1626.0
+
+### <a name="release-status"></a>Stav verze
+
+17. července 2020: vydáno ke stažení. Tato verze je k dispozici pouze pro instalaci prostřednictvím stránky pro stažení. Vydání této verze se automaticky aktualizuje na pozdější dobu.
+
+### <a name="fixed-issues"></a>Opravené problémy
+- Problém vyřešené nevracení paměti v předchozí verzi
+- Obecná vylepšení podpory protokolu WebSocket
+
 ## <a name="1515260"></a>1.5.1526.0
 
 ### <a name="release-status"></a>Stav verze
@@ -47,7 +72,7 @@ Stažení konektoru služby Azure Proxy aplikací služby AD |  [Stáhněte si n
 - Vylepšené signalizace mezi konektorem a službami Azure. To zahrnuje podporu spolehlivých relací pro komunikaci WCF mezi konektorem a službami Azure a vylepšení mezipaměti protokolu DNS pro komunikaci pomocí protokolu WebSocket.
 - Podpora konfigurace proxy serveru mezi konektorem a aplikací back-end. Další informace najdete v tématu [práce se stávajícími místními proxy servery](application-proxy-configure-connectors-with-proxy-servers.md).
 
-### <a name="fixed-issues"></a>Oprava potíží
+### <a name="fixed-issues"></a>Opravené problémy
 - Odebral se návrat k portu 8080 pro komunikaci z konektoru se službami Azure.
 - Přidání trasování ladění pro komunikaci protokolu WebSocket. 
 - Bylo vyřešeno zachování atributu SameSite při nastavení v souborech cookie aplikace back-endu.
@@ -65,7 +90,7 @@ Stažení konektoru služby Azure Proxy aplikací služby AD |  [Stáhněte si n
 - Jako výchozí protokol pro konektory nastavte TLS 1,2. 
 - Přidala se nová licenční smlouva s koncovým uživatelem (EULA).  
 
-### <a name="fixed-issues"></a>Oprava potíží
+### <a name="fixed-issues"></a>Opravené problémy
 
 - Opravili jsme chybu, která způsobila nevracení paměti v konektoru.
 - Aktualizace verze Azure Service Bus, která zahrnuje opravu chyby pro problémy s časovým limitem konektoru.
@@ -76,7 +101,7 @@ Stažení konektoru služby Azure Proxy aplikací služby AD |  [Stáhněte si n
 
 19. ledna 2018: vydáno ke stažení
 
-### <a name="fixed-issues"></a>Oprava potíží
+### <a name="fixed-issues"></a>Opravené problémy
 
 - Přidání podpory pro vlastní domény, které potřebují překlad domény v souboru cookie.
 

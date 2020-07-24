@@ -3,17 +3,17 @@ title: Použití úložiště Queue (C++) – Azure Storage
 description: Naučte se používat službu Queue Storage v Azure. Ukázky jsou napsány v jazyce C++.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 05/11/2017
+ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 0ae099e74db3137be49d59d01c83807108bf370f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a4f8b99be564779b350bff2ab5b37f3c7ccc6f2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809261"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020966"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>Používání úložiště Queue z C++
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -40,7 +40,7 @@ Abyste mohli pokračovat, musíte si nainstalovat klientskou knihovnu služby Az
 Klientskou knihovnu služby Azure Storage pro C++ můžete nainstalovat následujícími způsoby:
 
 * **Linux:** Postupujte podle pokynů uvedených v tématu [Azure Storage Client Library for C++ Ready: Začínáme na stránce systému Linux](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux) .
-* **Windows:** Ve Windows použijte [vcpkg](https://github.com/microsoft/vcpkg) jako správce závislostí. Postupujte podle pokynů pro [rychlé zahájení](https://github.com/microsoft/vcpkg#quick-start) inicializace vcpkg. Potom pomocí následujícího příkazu nainstalujte knihovnu:
+* **Windows:** Ve Windows použijte [vcpkg](https://github.com/microsoft/vcpkg) jako správce závislostí. Postupujte podle pokynů v [rychlém](https://github.com/microsoft/vcpkg#quick-start) startu a inicializujte vcpkg. Potom pomocí následujícího příkazu nainstalujte knihovnu:
 
 ```powershell
 .\vcpkg.exe install azure-storage-cpp
@@ -49,7 +49,7 @@ Klientskou knihovnu služby Azure Storage pro C++ můžete nainstalovat následu
 Můžete najít průvodce pro sestavení zdrojového kódu a exportovat ho do NuGet v souboru [Readme](https://github.com/Azure/azure-storage-cpp#download--install) .
 
 ## <a name="configure-your-application-to-access-queue-storage"></a>Konfigurace aplikace pro přístup k Queue Storage
-Do horní části souboru C++ přidejte následující příkazy include, u kterých chcete používat rozhraní API služby Azure Storage pro přístup k frontám:  
+Do horní části souboru C++ přidejte následující příkazy include, u kterých chcete používat rozhraní API služby Azure Storage pro přístup k frontám:
 
 ```cpp
 #include <was/storage_account.h>
@@ -57,21 +57,21 @@ Do horní části souboru C++ přidejte následující příkazy include, u kter
 ```
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>Nastavení připojovacího řetězce služby Azure Storage
-Klient úložiště Azure používá připojovací řetězec úložiště k uložení koncových bodů a přihlašovacích údajů pro přístup ke službám správy dat. Při spuštění v klientské aplikaci musíte zadat připojovací řetězec úložiště v následujícím formátu pomocí názvu účtu úložiště a přístupového klíče úložiště pro účet úložiště, který je uvedený na webu [Azure Portal](https://portal.azure.com) , pro hodnoty *account* a *AccountKey* . Informace o účtech úložiště a přístupových klíčích najdete v tématu [informace o Azure Storagech účtech](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json). Tento příklad ukazuje deklaraci statického pole pro uložení připojovacího řetězce:  
+Klient úložiště Azure používá připojovací řetězec úložiště k uložení koncových bodů a přihlašovacích údajů pro přístup ke službám správy dat. Při spuštění v klientské aplikaci musíte zadat připojovací řetězec úložiště v následujícím formátu s použitím názvu účtu úložiště a přístupového klíče úložiště pro účet úložiště, který je uvedený v [Azure Portal](https://portal.azure.com) pro hodnoty *account* a *AccountKey* . Informace o účtech úložiště a přístupových klíčích najdete v tématu [informace o Azure Storagech účtech](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json). Tento příklad ukazuje deklaraci statického pole pro uložení připojovacího řetězce:
 
 ```cpp
 // Define the connection-string with your values.
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key"));
 ```
 
-K otestování aplikace na místním počítači s Windows můžete použít [emulátor úložiště](../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) Microsoft Azure, který je nainstalovaný spolu se sadou [Azure SDK](https://azure.microsoft.com/downloads/). Emulátor úložiště je nástroj, který simuluje služby objektů blob, front a tabulek dostupných v Azure na vašem místním vývojovém počítači. Následující příklad ukazuje deklaraci statického pole pro uložení připojovacího řetězce k místnímu emulátoru úložiště:  
+K otestování aplikace na místním počítači s Windows můžete použít [emulátor úložiště Azurite](../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json). Azurite je nástroj, který simuluje služby objektů BLOB a front, které jsou dostupné v Azure, na vašem místním vývojovém počítači. Následující příklad ukazuje deklaraci statického pole pro uložení připojovacího řetězce k místnímu emulátoru úložiště:
 
 ```cpp
-// Define the connection-string with Azure Storage Emulator.
+// Define the connection-string with Azurite.
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-Emulátor úložiště Azure spustíte tak, že vyberete tlačítko **Start** nebo stisknete klávesu **Windows** . Začněte psát **Azure Storage emulátoru**a v seznamu aplikací vyberte **emulátor úložiště Microsoft Azure** .
+Pokud chcete začít Azurite, přečtěte si téma [použití emulátoru Azurite pro vývoj místních Azure Storage](../common/storage-use-azurite.md).
 
 V následujících ukázkách se předpokládá, že jste pomocí některé z těchto dvou metod získali připojovací řetězec úložiště.
 

@@ -17,12 +17,12 @@ ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 6f18c9fe43b0b714e5709b014c051520b3722138
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: d8aa6cc7894b13789fe196e32c401128572346bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855132"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019059"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Nejčastější dotazy a známé problémy se spravovanými identitami pro prostředky Azure
 
@@ -55,9 +55,12 @@ Spravované identity nemají v adresáři objekt aplikace, což je to, co se bě
 
 Ne, neexistují žádné plány na podporu spravovaných identit pro prostředky Azure v Azure Cloud Services.
 
-### <a name="does-managed-identities-for-azure-resources-work-with-the-active-directory-authentication-library-adal-or-the-microsoft-authentication-library-msal"></a>Pracují spravované identity prostředků Azure pomocí Active Directory Authentication Library (ADAL) nebo knihovny Microsoft Authentication Library (MSAL)?
+### <a name="what-is-the-credential-associated-with-a-managed-identity-how-long-is-it-valid-and-how-often-is-it-rotated"></a>Jaké jsou přihlašovací údaje přidružené ke spravované identitě? Jak dlouho je platný a jak často se otáčí?
 
-Ne, spravované identity pro prostředky Azure ještě nejsou integrované s ADAL nebo MSAL. Podrobnosti o získání tokenu pro spravované identity pro prostředky Azure pomocí koncového bodu REST najdete v tématu [Jak používat spravované identity pro prostředky Azure na virtuálním počítači Azure k získání přístupového tokenu](how-to-use-vm-token.md).
+> [!NOTE]
+> Způsob, jakým jsou spravované identity ověřovány, jsou podrobnosti interní implementace, které se mohou změnit bez předchozího upozornění.
+
+Spravované identity používají ověřování založené na certifikátech. Platnost přihlašovacích údajů každé spravované identity vyprší po 90 dnech a je zahrnutá za 45 dnů.
 
 ### <a name="what-is-the-security-boundary-of-managed-identities-for-azure-resources"></a>Jaká je hranice zabezpečení spravovaných identit pro prostředky Azure?
 
@@ -133,7 +136,7 @@ Alternativní řešení pro spravované identity v předplatném, které se pře
  - Pro spravované identity přiřazené systémem: zakažte a znovu povolte. 
  - Pro spravované identity přiřazené uživateli: Odstraňte, znovu ho vytvořte a znovu připojte k potřebným prostředkům (např. virtuální počítače).
 
-Další informace najdete v tématu [přenos předplatného Azure do jiného adresáře služby Azure AD (Preview)](../../role-based-access-control/transfer-subscription.md).
+Další informace najdete v tématu věnovaném [převodu předplatných Azure do jiného adresáře Azure AD (Preview)](../../role-based-access-control/transfer-subscription.md).
 
 ### <a name="moving-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>Přesunutí spravované identity přiřazené uživatelem do jiné skupiny prostředků nebo předplatného
 

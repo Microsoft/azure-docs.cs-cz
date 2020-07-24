@@ -2,25 +2,22 @@
 title: Použití omezení tenanta ke správě přístupu k SaaS aplikacím – Azure AD
 description: Jak používat omezení tenanta ke správě uživatelů, kteří budou mít přístup k aplikacím na základě jejich tenanta Azure AD.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: kenwith
-ms.reviewer: richagi
+ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd302791aa783f1a95d48f666366aa845fcaadbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae90a682ea2d1abb8159ec28ed02ed122494f512
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763019"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019246"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Použití omezení tenanta ke správě přístupu k SaaS cloudovým aplikacím
 
@@ -60,7 +57,7 @@ Aby bylo možné použít omezení tenanta, klienti musí být schopni se připo
 
 K povolení omezení klientů prostřednictvím vaší proxy infrastruktury se vyžaduje následující konfigurace. Tyto doprovodné materiály jsou obecné, takže byste měli v dokumentaci dodavatele proxy serveru vyhledat konkrétní kroky implementace.
 
-#### <a name="prerequisites"></a>Požadavky
+#### <a name="prerequisites"></a>Předpoklady
 
 - Proxy musí být schopné provádět zachycení protokolu TLS, vkládání hlaviček HTTP a filtrovat cíle pomocí plně kvalifikovaného názvu domény nebo adresy URL.
 
@@ -101,7 +98,7 @@ I když se konfigurace omezení tenanta provádí v podnikové infrastruktuře p
 
 2. V levém podokně vyberte **Azure Active Directory**. Zobrazí se stránka přehled Azure Active Directory.
 
-3. V části **Další možnosti** vyberte **omezení tenanta**.
+3. Na stránce Přehled vyberte **omezení tenanta**.
 
 Správce pro tenanta, který je zadaný jako tenant s omezeným přístupem, může pomocí této sestavy zobrazit blokované přihlášení kvůli zásadám omezení tenanta, včetně použité identity a ID cílového adresáře. Přihlášení jsou obsažena v případě, že je nastavení klienta toto omezení buď tenant klienta, nebo tenant prostředků pro přihlášení.
 
@@ -120,7 +117,7 @@ Podobně jako u jiných sestav v Azure Portal můžete použít filtry k určen�
 - **Výsledek MFA**
 - **IP adresa**
 - **Klient**
-- **Jmen**
+- **Uživatelské jméno**
 - **Umístění**
 - **ID cílového tenanta**
 

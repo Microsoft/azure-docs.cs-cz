@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 01ce952ea774ba852c83d0d6aa3fe38d5dfd677e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 219e2b77a0f6f30307c43f006fcdd3828d3c8fbf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711846"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021371"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Nasazení a správa řešení StorSimple Cloud Appliance v Azure (s aktualizací Update 3 a novější)
 
@@ -83,7 +84,7 @@ Než zřídíte cloudové zařízení, je třeba provést následující přípr
 * Pro cloudové zařízení [nakonfigurujte virtuální síť v Azure](../virtual-network/manage-virtual-network.md#create-a-virtual-network). Používáte-li službu Premium Storage, musíte vytvořit virtuální síť v oblasti Azure, která podporuje službu Premium Storage. Oblasti služby Premium Storage jsou oblasti, které odpovídají řádku pro Diskové úložiště v [seznamu služeb Azure podle oblasti](https://azure.microsoft.com/regions/services/).
 * Doporučujeme použít výchozí server DNS poskytovaný platformou Azure místo zadávání vlastního názvu serveru DNS. Pokud název serveru DNS není platný nebo pokud server DNS není schopen správně přeložit IP adresy, vytvoření cloudového zařízení se nezdaří.
 * Připojení point-to-site a site-to-site jsou volitelná, ale nejsou vyžadována. Pokud chcete, můžete nastavit tyto možnosti pro pokročilejší scénáře.
-* Můžete ve virtuální síti vytvořit [virtuální počítače Azure](../virtual-machines/virtual-machines-windows-quick-create-portal.md) (hostitelské servery), které můžou používat svazky vystavené cloudovým zařízením. Tyto servery musí splňovat následující požadavky:
+* Můžete ve virtuální síti vytvořit [virtuální počítače Azure](../virtual-machines/windows/quick-create-portal.md) (hostitelské servery), které můžou používat svazky vystavené cloudovým zařízením. Tyto servery musí splňovat následující požadavky:
 
   * Být virtuální počítače Windows nebo Linux s nainstalovaným softwarem iniciátoru iSCSI.
   * Musí být spuštěné ve stejné virtuální síti jako cloudové zařízení.
@@ -194,7 +195,7 @@ Aby se cloudové zařízení mohlo připojit k hostitelskému serveru ve stejné
 
      ![Výběr virtuálního počítače pro cloudové zařízení](./media/storsimple-8000-cloud-appliance-u2/sca-vm.png)
 
-2. Přejděte do **Nastavení > Sítě**. V pravém podokně se zobrazí privátní IP adresa cloudového zařízení. Poznamenejte si ji.
+2. Přejděte do **Nastavení > Sítě**. V pravém podokně se zobrazí privátní IP adresa cloudového zařízení. Poznamenejte si ho.
 
     ![Získání privátní IP adresy pro cloudové zařízení](./media/storsimple-8000-cloud-appliance-u2/sca-private-ip-vm-networking.png)
 

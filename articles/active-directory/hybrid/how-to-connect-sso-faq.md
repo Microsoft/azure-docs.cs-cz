@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 674befe7d01d0ef88026afeb2cb9179b167a88ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f621ed1342928b7f05fc8b84bfc2fceadf494fb5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357932"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019727"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory bezproblémové jednotné přihlašování: nejčastější dotazy
 
@@ -54,7 +54,7 @@ Kromě toho uživatelé získají tiché přihlašování, pokud aplikace odesí
 | Název aplikace | Adresa URL aplikace, která se má použít |
 | -- | -- |
 | SharePoint Online | https: \/ /contoso.SharePoint.com |
-| portál Azure | https: \/ /Portal.Azure.com/contoso.com |
+| Portál Azure Portal | https: \/ /Portal.Azure.com/contoso.com |
 
 Ve výše uvedených tabulkách nahraďte "contoso.com" názvem domény, aby se získaly správné adresy URL aplikací pro vašeho tenanta.
 
@@ -62,7 +62,7 @@ Pokud chcete, aby se v rámci tichého přihlašování používaly jiné aplika
 
 **Otázka: provádí bezproblémovou podporu jednotného přihlašování `Alternate ID` jako uživatelské jméno místo `userPrincipalName` ?**
 
-Ano. Bezproblémové jednotné přihlašování podporuje `Alternate ID` jako uživatelské jméno, pokud je nakonfigurované v Azure AD Connect, jak je znázorněno [zde](how-to-connect-install-custom.md). Ne všechny aplikace Office 365 podporují `Alternate ID` . Informace o příkazu support najdete v dokumentaci konkrétní aplikace.
+Yes. Bezproblémové jednotné přihlašování podporuje `Alternate ID` jako uživatelské jméno, pokud je nakonfigurované v Azure AD Connect, jak je znázorněno [zde](how-to-connect-install-custom.md). Ne všechny aplikace Office 365 podporují `Alternate ID` . Informace o příkazu support najdete v dokumentaci konkrétní aplikace.
 
 **Otázka: Jaký je rozdíl mezi prostředím jednotného přihlašování, které poskytuje [Azure AD JOIN](../active-directory-azureadjoin-overview.md) a bezproblémové jednotné přihlašování?**
 
@@ -102,6 +102,10 @@ Na místním serveru, na kterém běží Azure AD Connect, postupujte podle těc
    >Použitý účet správce domény nesmí být členem skupiny Protected Users. V takovém případě se operace nezdaří.
 
    2. Volání `Update-AzureADSSOForest -OnPremCredentials $creds` . Tento příkaz aktualizuje dešifrovací klíč protokolu Kerberos pro `AZUREADSSO` účet počítače v této konkrétní doménové struktuře služby AD a aktualizuje ho v Azure AD.
+   
+   >[!NOTE]
+   >Pokud nejste správce domény a přiřadili jste mu oprávnění správce domény, měli byste zavolat`Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount`
+   
    3. Předchozí kroky opakujte pro každou doménovou strukturu služby AD, na které jste tuto funkci nastavili.
 
    >[!IMPORTANT]

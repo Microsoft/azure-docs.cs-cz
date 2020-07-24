@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: 25290a66da3d5c8325513b2bea6d27d12ca7da70
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 1df17ccb41c974c8939710850b5bb71ee3a5ef1b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134813"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021575"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Přidání runbooků Azure Automation do plánů obnovení
 
@@ -115,7 +115,7 @@ Blog Aman Sharma v rámci [sběru cloudů](http://harvestingclouds.com) má uži
 ## <a name="customize-the-recovery-plan"></a>Přizpůsobení plánu obnovení
 
 1. V trezoru vyberte **plány obnovení (Site Recovery)** .
-2. Pokud chcete vytvořit plán obnovení, klikněte na **+ plán obnovení**. [Další informace](site-recovery-create-recovery-plans.md). Pokud již máte plán obnovení, vyberte jej a otevřete ho.
+2. Pokud chcete vytvořit plán obnovení, klikněte na **+ plán obnovení**. [Přečtěte si další informace](site-recovery-create-recovery-plans.md). Pokud již máte plán obnovení, vyberte jej a otevřete ho.
 3. Na stránce plán obnovení klikněte na **přizpůsobit**.
 
     ![Klikněte na tlačítko přizpůsobit.](media/site-recovery-runbook-automation-new/custom-rp.png)
@@ -199,7 +199,7 @@ V některých případech možná nebudete moci vytvořit samostatné proměnné
 - Například obnovení služby SharePoint má dva front-endy. Základní obchodní aplikace (LOB) má pouze jeden front-end.
 - V tomto scénáři nemůžete pro každý plán obnovení vytvořit samostatné proměnné.
 
-V následujícím příkladu vytvoříme [komplexní proměnnou](/powershell/module/servicemanagement/azure/set-azureautomationvariable) v účtu Azure Automation.
+V následujícím příkladu vytvoříme [komplexní proměnnou](/powershell/module/servicemanagement/azure.service/set-azureautomationvariable) v účtu Azure Automation.
 
 Provedeme to zadáním více hodnot pomocí Azure PowerShell.
 

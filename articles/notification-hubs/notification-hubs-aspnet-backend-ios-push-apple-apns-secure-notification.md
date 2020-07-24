@@ -14,11 +14,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: aa84ad9f48f79a77bad1445dadc8c5c965b13655
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7dc3212007e9b9ec67d0d235135d4d46f20b950
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85248696"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022119"
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs Secure push
 
@@ -121,7 +122,7 @@ Abychom dosáhli tohoto cíle, musíme napsat logiku, která načte zabezpečen�
 4. Nyní musíme zpracovat příchozí oznámení a použít výše uvedenou metodu k načtení obsahu, který se má zobrazit. Nejdřív musíme povolit, aby vaše aplikace pro iOS běžela na pozadí při přijímání nabízeného oznámení. V **Xcode**vyberte projekt aplikace na levém panelu a pak klikněte na cíl vaší hlavní aplikace v části **cíle** v centrálním podokně.
 5. Pak v horní části centrálního podokna klikněte na kartu **Možnosti** a zaškrtněte políčko **Vzdálená oznámení** .
 
-    ![][IOS1]
+    ![Snímek obrazovky s XCode s vybraným projektem aplikace a otevřenou kartou možnosti. Zaškrtávací políčko pro vzdálené oznámení je zaškrtnuté.][IOS1]
 
 6. V `AppDelegate.m` části přidejte následující metodu pro zpracování nabízených oznámení:
 

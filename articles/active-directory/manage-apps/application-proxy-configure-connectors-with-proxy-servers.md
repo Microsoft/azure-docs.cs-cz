@@ -12,11 +12,12 @@ ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48727e377c2b6707e570cad103e4b08bcb44a1cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c785e2b13e7d5c57ff6d5ce9161fea1a80da77e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764923"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019535"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Práce se stávajícími místními proxy servery
 
@@ -110,13 +111,13 @@ Existují čtyři aspekty, které je třeba vzít v úvahu při použití odchoz
 
 Povolte přístup k následujícím adresám URL:
 
-| URL | Jak se používá |
+| Adresa URL | Jak se používá |
 | --- | --- |
 | \*. msappproxy.net<br>\*. servicebus.windows.net | Komunikace mezi konektorem a cloudovou službou proxy aplikací |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Konektor používá tyto adresy URL k ověření certifikátů. |
 | login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*. microsoftonline.com <br> *. microsoftonline-p.com<br>*. msauth.NET <br> *. msauthimages.net<br>*. msecnd.NET <br> *. msftauth.net<br>*. msftauthimages.NET <br> *. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctdl.windowsupdate.com:80 | Konektor tyto adresy URL používá během procesu registrace. |
 
-Pokud vaše brána firewall nebo proxy server umožňuje konfigurovat seznamy povolených serverů DNS, můžete povolit připojení k \* příponám. msappproxy.NET a \* . ServiceBus.Windows.NET. V takovém případě je potřeba, abyste povolili přístup k [rozsahům IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653). Rozsahy IP adres se aktualizují každý týden.
+Pokud vaše brána firewall nebo proxy server umožňuje konfigurovat seznamy povolených serverů DNS, můžete povolit připojení k \* příponám. msappproxy.NET a \* . ServiceBus.Windows.NET. V takovém případě je potřeba, abyste povolili přístup k [rozsahům IP adres datového centra Azure](https://www.microsoft.com/download/details.aspx?id=41653). Rozsahy IP adres se aktualizují každý týden.
 
 Pokud nemůžete připojení podle plně kvalifikovaného názvu domény a potřebujete místo toho zadat rozsahy IP adres, použijte tyto možnosti:
 
@@ -152,6 +153,9 @@ Pokud to chcete povolit, postupujte prosím podle následujících kroků:
 4.  Nakonfigurujte požadovaná nastavení proxy serveru. 
 
 Tato nastavení nastaví konektor pro komunikaci do Azure a back-endu stejný proxy server pro předávání. Pokud konektor ke komunikaci Azure nevyžaduje žádný dopředný proxy server nebo jiný dopředný proxy server, můžete ho nastavit změnou ApplicationProxyConnectorService.exe.config, jak je popsáno v částech obejití odchozích proxy serverů nebo použití odchozího proxy server.
+
+> [!NOTE]
+> Existují různé způsoby konfigurace internetového proxy serveru v operačním systému. Nastavení proxy serveru nakonfigurovaná pomocí příkazu NETSH WINHTTP (spustit `NETSH WINHTTP SHOW PROXY` pro ověření) přepsat nastavení proxy serveru, které jste nakonfigurovali v kroku 2. 
 
 Služba aktualizačního konektoru bude používat i proxy počítače. Toto chování lze změnit úpravou ApplicationProxyConnectorUpdaterService.exe.config souboru.
 

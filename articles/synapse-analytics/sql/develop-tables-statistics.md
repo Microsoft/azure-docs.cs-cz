@@ -1,5 +1,5 @@
 ---
-title: Vytváření, aktualizace statistik
+title: Vytváření a aktualizace statistiky pomocí prostředků Azure synapse SQL
 description: Doporučení a příklady pro vytváření a aktualizaci statistik pro optimalizaci dotazů v synapse SQL
 services: synapse-analytics
 author: filippopovic
@@ -11,11 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 1bc5f5f5ffe44cbefe5a131aa041e5afc2e8257f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25c92437b350d7329c340fe1ea13b3df40e231ba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83659227"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020595"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statistika v synapse SQL
 
@@ -442,7 +443,7 @@ K dispozici je několik systémových zobrazení a funkcí, které můžete pou�
 
 Tato systémová zobrazení obsahují informace o statistice:
 
-| Zobrazení katalogu | Description |
+| Zobrazení katalogu | Popis |
 |:--- |:--- |
 | [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |Jeden řádek pro každý sloupec. |
 | [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |Jeden řádek pro každý objekt v databázi. |
@@ -456,7 +457,7 @@ Tato systémová zobrazení obsahují informace o statistice:
 
 Tyto systémové funkce jsou užitečné pro práci s statistikami:
 
-| Systémová funkce | Description |
+| Systémová funkce | Popis |
 |:--- |:--- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |Datum poslední aktualizace objektu statistiky |
 | [PŘÍKAZ DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |Souhrnná úroveň a podrobné informace o distribuci hodnot, které přirozuměl objektům statistiky. |
@@ -505,7 +506,7 @@ AND     st.[user_created] = 1
 
 Příkaz DBCC SHOW_STATISTICS () zobrazuje data uchovávaná v rámci objektu statistiky. Tato data jsou dodávána se třemi částmi:
 
-- Záhlaví
+- Hlavička
 - Vektor hustoty
 - Histogram
 

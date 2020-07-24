@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: 94c261da0c935cb7a41dde768069099b4e5ed251
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb5e51503fa20cd3ace6070cb1b51f5bf32d0e13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80384071"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87016254"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>Kurz: Konfigurace přiblížení pro Automatické zřizování uživatelů
 
@@ -34,7 +34,7 @@ Tento kurz popisuje kroky, které je třeba provést v rámci lupy i Azure Activ
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a přiblížením
 > * [Jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-tutorial) pro přiblížení (doporučeno)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -74,7 +74,7 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 
 Přidejte přiblížení z Galerie aplikací Azure AD a začněte spravovat zřizování pro přiblížení. Pokud jste již dříve nastavili přiblížení pro jednotné přihlašování, můžete použít stejnou aplikaci. Doporučuje se ale při počátečním testování integrace vytvořit samostatnou aplikaci. Další informace o přidání aplikace z Galerie [najdete tady](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app). 
 
-## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Krok 4. Definujte, kdo bude v oboru pro zřizování. 
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Krok 4: Definujte, kdo bude v oboru pro zřizování. 
 
 Služba zřizování Azure AD umožňuje obor, který se zřídí na základě přiřazení do aplikace, nebo na základě atributů uživatele nebo skupiny. Pokud se rozhodnete určit rozsah, který se zřídí pro vaši aplikaci na základě přiřazení, můžete k přiřazení uživatelů a skupin k aplikaci použít následující [postup](../manage-apps/assign-user-or-group-access-portal.md) . Pokud se rozhodnete obor, který se zřídí výhradně na základě atributů uživatele nebo skupiny, můžete použít filtr oboru, jak je popsáno [zde](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 
@@ -89,7 +89,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-zoom-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro přiblížení v Azure AD:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -154,7 +154,10 @@ Jakmile nakonfigurujete zřizování, použijte k monitorování nasazení tyto 
 ## <a name="connector-limitations"></a>Omezení konektoru
 * Možnost přiblížení umožňuje dnes maximálně 9 999 základních uživatelů.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="change-log"></a>Protokol změn
+* 05/14/2020 – byla přidána podpora operací aktualizace pro e-maily [Type EQ "Work"] Attribute.
+
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

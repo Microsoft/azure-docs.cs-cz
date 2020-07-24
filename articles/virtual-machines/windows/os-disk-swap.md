@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: c96fa4c453911c4ca4b8cf6d8f74647b4532109f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d4abd68e60201a17e56ee105777614c42691bfc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711540"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020334"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>Změna disku s operačním systémem používaného virtuálním počítačem Azure pomocí PowerShellu
 
@@ -24,7 +25,7 @@ Virtuální počítač musí být stopped\deallocated, a ID prostředku spravova
 Ujistěte se, že velikost virtuálního počítače a typ úložiště jsou kompatibilní s diskem, který chcete připojit. Pokud je například disk, který chcete použít, v Premium Storage, musí být virtuální počítač schopný Premium Storage (například velikost řady DS-Series). Oba disky musí mít také stejnou velikost.
 A ujistěte se, že nepoužíváte nešifrovaný virtuální počítač s šifrovaným diskem s operačním systémem, to není podporováno. Pokud virtuální počítač nepoužívá Azure Disk Encryption, nepoužívá se Azure Disk Encryption disk s operačním systémem, který se používá.
 
-Získání seznamu disků ve skupině prostředků pomocí [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk)
+Získání seznamu disků ve skupině prostředků pomocí [Get-AzDisk](/powershell/module/az.compute/get-azdisk)
 
 ```azurepowershell-interactive
 Get-AzDisk -ResourceGroupName myResourceGroup | Format-Table -Property Name

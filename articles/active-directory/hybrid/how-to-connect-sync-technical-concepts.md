@@ -16,19 +16,19 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 251d156afbd367e83945397760a6afe98a1cfb98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01e53b30a4c27296e30e031ffb771697afa8e1e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356929"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019671"
 ---
 # <a name="azure-ad-connect-sync-technical-concepts"></a>Synchronizace služby Azure AD Connect: Technické koncepty
 Tento článek je souhrnem tématu [Principy architektury](how-to-connect-sync-technical-concepts.md).
 
 Azure AD Connect synchronizovat buildy na pevné platformě pro synchronizaci Metaadresáře.
 V následujících částech jsou uvedeny koncepty pro Metaadresáře synchronizaci.
-Služba Azure Active Directory Sync umožňuje vytvářet na MIIS, ILM a FIM další platformu pro připojení ke zdrojům dat, synchronizaci dat mezi zdroji dat a také zřizování a rušení zřizování identit.
+Služba Azure Active Directory Sync zajišťuje na MIIS (Microsoft Identity Integration Server), ILM (správce životního cyklu identit) a FIM (Forefront Identity Manager) další platformu pro připojení ke zdrojům dat, synchronizaci dat mezi zdroji dat a také zřizování a rušení zřizování identit.
 
 ![Technické koncepce](./media/how-to-connect-sync-technical-concepts/scenario.png)
 
@@ -86,7 +86,7 @@ To v podstatě vytvoří odkaz a tok atributů může pokračovat v obousměrné
 
 Pokaždé, když pravidlo určí, že je potřeba vytvořit nový objekt prostoru konektoru, se nazývá zřizování. Vzhledem k tomu, že tato operace probíhá pouze v prostoru konektoru, nebude přenesena do připojeného zdroje dat, dokud nebude proveden export.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 * [Azure AD Connect synchronizace: přizpůsobení možností synchronizace](how-to-connect-sync-whatis.md)
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)
 

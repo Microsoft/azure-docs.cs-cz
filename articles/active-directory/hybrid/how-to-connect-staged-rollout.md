@@ -10,16 +10,16 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52684520aed8712aed40318f32a83194f7f86683
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f547aa900c1b8dbea27eceff7ac7ebc86a83e33
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357847"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019824"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrace na cloudové ověřování pomocí připraveného zavedení (Preview)
 
-Když použijete postup při dvoufázové přípravě, můžete se vyhnout přímou migraci celé doméně.  Díky tomu můžete selektivně testovat skupiny uživatelů s možnostmi cloudového ověřování, jako je Azure Multi-Factor Authentication (MFA), podmíněný přístup, ochrana identity pro nevrácená pověření, zásady správného řízení identity a další.  Tento článek popisuje, jak provést tento přepínač. Než začnete postupovat podle fáze zavedení, měli byste zvážit důsledky, pokud je splněna jedna nebo více z následujících podmínek:
+Příprava na přípravu umožňuje selektivně testovat skupiny uživatelů s možnostmi cloudového ověřování, jako je Azure Multi-Factor Authentication (MFA), podmíněný přístup, ochrana identity pro nevrácená pověření, řízení identit a další, a to ještě před vyjmutím z domén.  Tento článek popisuje, jak provést tento přepínač. Než začnete postupovat podle fáze zavedení, měli byste zvážit důsledky, pokud je splněna jedna nebo více z následujících podmínek:
     
 -  Aktuálně používáte místní Multi-Factor Authentication Server. 
 -  Pro ověřování používáte čipové karty. 
@@ -33,7 +33,7 @@ Přehled této funkce najdete v tomto tématu Azure Active Directory: co je post
 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 -   Máte tenanta Azure Active Directory (Azure AD) se federovanémi doménami.
 
@@ -45,7 +45,7 @@ Přehled této funkce najdete v tomto tématu Azure Active Directory: co je post
 
 -   Pro uživatele, kteří se migrují do cloudového ověřování, jste nakonfigurovali všechny příslušné zásady klienta a zásad podmíněného přístupu, které potřebujete.
 
--   Pokud plánujete použít Azure Multi-Factor Authentication, doporučujeme použít [sblíženou registraci pro Samoobslužné resetování hesla (SSPR) a Multi-Factor Authentication](../authentication/concept-registration-mfa-sspr-combined.md) , aby vaši uživatelé mohli své metody ověřování registrovat jednou.
+-   Pokud plánujete použít Azure Multi-Factor Authentication, doporučujeme použít [kombinovanou registraci pro Samoobslužné resetování hesla (SSPR) a Multi-Factor Authentication](../authentication/concept-registration-mfa-sspr-combined.md) , aby vaši uživatelé mohli své metody ověřování registrovat jednou.
 
 -   Pokud chcete použít funkci dvoufázové zavedení, musíte být globálním správcem vašeho tenanta.
 
@@ -81,6 +81,8 @@ Následující scénáře nejsou podporovány pro fáze zavedení:
 
 
 - Když poprvé přidáte skupinu zabezpečení pro dvoufázové zavedení, budete omezeni na 200 uživatelů, aby nedocházelo k vypršení časového limitu uživatelského prostředí. Po přidání skupiny můžete podle potřeby přidat do ní další uživatele přímo.
+
+- I když jsou uživatelé ve fázi zavedení, jsou zásady vypršení platnosti hesla nastavené na 90 dnů bez možnosti přizpůsobení. 
 
 
 ## <a name="get-started-with-staged-rollout"></a>Začínáme s fází uvedení do provozu
@@ -155,7 +157,7 @@ Můžete zavést jednu z těchto možností:
 - **Možnost B**  -  *předávací ověřování*  +  *bezproblémové jednotné přihlašování*
 - **Nepodporováno**  -  synchronizace hodnot hash *hesel*  +  *předávací ověřování*  +  *bezproblémové jednotné přihlašování*
 
-Udělejte toto:
+Postupujte následovně:
 
 1. Pokud chcete získat přístup k UŽIVATELSKÉmu rozhraní verze Preview, přihlaste se k [portálu Azure AD](https://aka.ms/stagedrolloutux).
 
@@ -173,6 +175,7 @@ Udělejte toto:
 
    >[!NOTE]
    >Členové ve skupině jsou automaticky povoleni pro připravené zavedení. Vnořené a dynamické skupiny se pro připravené zavedení nepodporují.
+   >Při přidávání nové skupiny budou uživatelé v této skupině (až 200 uživatelů pro novou skupinu) aktualizováni tak, aby používali spravované ověřování immidiatly. Úprava skupiny (přidávání nebo odebírání uživatelů) může trvat až 24 hodin, než se změny projeví.
 
 ## <a name="auditing"></a>Auditování
 

@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 74516aa921e45917f327a193a1c972b021c9c8ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2385171a501d00f91c58f3fde9b487505ec21c60
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74896072"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023207"
 ---
 # <a name="creating-filters-with-cli"></a>Vytváření filtrů pomocí rozhraní příkazového řádku 
 
@@ -26,14 +27,14 @@ Při doručování obsahu zákazníkům (streamování živých událostí nebo 
 
 Podrobný popis této funkce a scénářů, kde se používá, najdete v tématu [dynamické manifesty](filters-dynamic-manifest-overview.md) a [filtry](filters-concept.md).
 
-V tomto tématu se dozvíte, jak nakonfigurovat filtr pro Asset na vyžádání a pomocí rozhraní příkazového řádku Media Services V3 vytvořit [filtry účtu](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) a [filtry assetů](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest). 
+V tomto tématu se dozvíte, jak nakonfigurovat filtr pro Asset na vyžádání a pomocí rozhraní příkazového řádku Media Services V3 vytvořit [filtry účtu](/cli/azure/ams/account-filter?view=azure-cli-latest) a [filtry assetů](/cli/azure/ams/asset-filter?view=azure-cli-latest). 
 
 > [!NOTE]
 > Nezapomeňte zkontrolovat [presentationTimeRange](filters-concept.md#presentationtimerange).
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
-- [Vytvořte účet Media Services](create-account-cli-how-to.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services. 
+- [Vytvořte účet Media Services](./create-account-howto.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services. 
 
 [!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
@@ -79,7 +80,7 @@ Následující příklad definuje podmínky pro výběr sledování, které jsou
 
 ## <a name="create-account-filters"></a>Vytváření filtrů účtů
 
-Následující příkaz [AZ AMS Account-Filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) vytvoří filtr účtu s vybraným filtrem sledovat [výše definované výše](#define-a-filter). 
+Následující příkaz [AZ AMS Account-Filter](/cli/azure/ams/account-filter?view=azure-cli-latest) vytvoří filtr účtu s vybraným filtrem sledovat [výše definované výše](#define-a-filter). 
 
 Příkaz umožňuje předat volitelný `--tracks` parametr, který obsahuje JSON, reprezentující výběry sledování.  K načtení JSON ze souboru použijte @ {File}. Pokud používáte Azure CLI místně, zadejte celou cestu k souboru:
 
@@ -87,17 +88,17 @@ Příkaz umožňuje předat volitelný `--tracks` parametr, který obsahuje JSON
 az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @tracks.json
 ```
 
-Podívejte se také na [Příklady JSON pro filtry](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create-an-account-filter).
+Podívejte se také na [Příklady JSON pro filtry](/rest/api/media/accountfilters/createorupdate#create-an-account-filter).
 
 ## <a name="create-asset-filters"></a>Vytváření filtrů assetů
 
-Následující příkaz [AZ AMS Asset-Filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest) vytvoří filtr assetů s vybraným filtrem sledovat výběry, které byly [definované dříve](#define-a-filter). 
+Následující příkaz [AZ AMS Asset-Filter](/cli/azure/ams/asset-filter?view=azure-cli-latest) vytvoří filtr assetů s vybraným filtrem sledovat výběry, které byly [definované dříve](#define-a-filter). 
 
 ```azurecli
 az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-name assetName --tracks @tracks.json
 ```
 
-Podívejte se také na [Příklady JSON pro filtry](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter).
+Podívejte se také na [Příklady JSON pro filtry](/rest/api/media/assetfilters/createorupdate#create-an-asset-filter).
 
 ## <a name="associate-filters-with-streaming-locator"></a>Přidružit filtry k lokátoru streamování
 
@@ -119,7 +120,7 @@ Po definování filtrů je můžou klienti používat v adrese URL streamování
 
 V následující tabulce jsou uvedeny některé příklady adres URL s filtry:
 
-|Protocol (Protokol)|Příklad|
+|Protokol|Příklad|
 |---|---|
 |HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
 |MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
@@ -131,4 +132,4 @@ V následující tabulce jsou uvedeny některé příklady adres URL s filtry:
 
 ## <a name="see-also"></a>Viz také
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+[Azure CLI](/cli/azure/ams?view=azure-cli-latest)

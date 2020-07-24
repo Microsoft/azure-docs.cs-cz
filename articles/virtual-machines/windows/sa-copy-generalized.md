@@ -9,11 +9,12 @@ ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.custom: storage-accounts
-ms.openlocfilehash: 31b8200b63780388fb53db588c418951c500ac19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8077689bce988124da34428842df8fd2ef757bf0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84232908"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020181"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Vytvoření nespravované image z virtuálního počítače Azure
 
@@ -24,9 +25,9 @@ V tomto článku se dozvíte, jak pomocí Azure PowerShell vytvořit image zobec
  
 
 ## <a name="generalize-the-vm"></a>Generalizace virtuálního počítače 
-V této části se dozvíte, jak zobecnit virtuální počítač s Windows pro použití jako image. Generalizace virtuálního počítače odebere všechny informace o osobním účtu mimo jiné a připraví počítač, který se má použít jako image. Další informace o nástroji Sysprep najdete v článku věnovaném [úvodu do použití nástroje Sysprep](https://technet.microsoft.com/library/bb457073.aspx).
+V této části se dozvíte, jak zobecnit virtuální počítač s Windows pro použití jako image. Generalizace virtuálního počítače odebere všechny informace o osobním účtu mimo jiné a připraví počítač, který se má použít jako image. Další informace o nástroji Sysprep najdete v článku věnovaném [úvodu do použití nástroje Sysprep](/previous-versions/windows/it-pro/windows-xp/bb457073(v=technet.10)).
 
-Ujistěte se, že nástroj Sysprep podporuje role serveru spuštěné v počítači. Další informace najdete v tématu [Podpora nástroje Sysprep pro role serveru](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles) .
+Ujistěte se, že nástroj Sysprep podporuje role serveru spuštěné v počítači. Další informace najdete v tématu [Podpora nástroje Sysprep pro role serveru](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles) .
 
 > [!IMPORTANT]
 > Pokud virtuální pevný disk nahráváte poprvé do Azure, ujistěte se, že jste před spuštěním nástroje Sysprep [připravili virtuální počítač](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) . 
@@ -183,7 +184,7 @@ Vytvořte proměnnou pro dokončenou virtuální síť.
 $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 ```
 
-### <a name="create-the-vm"></a>Vytvořte virtuální počítač.
+### <a name="create-the-vm"></a>Vytvoření virtuálního počítače
 Následující prostředí PowerShell dokončí konfigurace virtuálních počítačů a jako zdroj nové instalace používá nespravovanou bitovou kopii.
 
 </br>
@@ -251,5 +252,3 @@ Po dokončení by se měl nově vytvořený virtuální počítač zobrazit v [A
 
 ## <a name="next-steps"></a>Další kroky
 Pokud chcete spravovat nový virtuální počítač pomocí Azure PowerShell, přečtěte si téma [Správa virtuálních počítačů pomocí Azure Resource Manager a PowerShellu](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-
-

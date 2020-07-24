@@ -7,16 +7,16 @@ ms.workload: infrastructure
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: 04dba192488744d1b54b0a0e2d885c0b1766bdc6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ac2e94e9c0213f14999d730027e118df6584519
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82100528"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020198"
 ---
-# <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuální počítače v šabloně Azure Resource Manager
+# <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuální počítače v šabloně Resource Manageru
 
-Tento článek popisuje aspekty Azure Resource Manager šablony, které se vztahují k virtuálním počítačům. Tento článek nepopisuje úplnou šablonu pro vytvoření virtuálního počítače. potřebujete definice prostředků pro účty úložiště, síťová rozhraní, veřejné IP adresy a virtuální sítě. Další informace o tom, jak se tyto prostředky dají definovat společně, najdete v [návodu k šabloně správce prostředků](../../azure-resource-manager/resource-manager-template-walkthrough.md).
+Tento článek popisuje aspekty Azure Resource Manager šablony, které se vztahují k virtuálním počítačům. Tento článek nepopisuje úplnou šablonu pro vytvoření virtuálního počítače. potřebujete definice prostředků pro účty úložiště, síťová rozhraní, veřejné IP adresy a virtuální sítě. Další informace o tom, jak se tyto prostředky dají definovat společně, najdete v [návodu k šabloně správce prostředků](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 
 Galerie obsahuje mnoho [šablon](https://azure.microsoft.com/documentation/templates/?term=VM) , které zahrnují prostředek virtuálního počítače. Ne všechny prvky, které lze zahrnout do šablony, jsou popsány zde.
 
@@ -156,14 +156,14 @@ Verze rozhraní API, kterou zadáte v šabloně, má vliv na to, které vlastnos
 
 Tyto příležitosti použijte k získání nejnovějších verzí rozhraní API:
 
-- REST API – [vypíše všechny poskytovatele prostředků](https://docs.microsoft.com/rest/api/resources/providers) .
-- PowerShell – [Get-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/get-azresourceprovider)
-- Azure CLI – [AZ Provider show](https://docs.microsoft.com/cli/azure/provider)
+- REST API – [vypíše všechny poskytovatele prostředků](/rest/api/resources/providers) .
+- PowerShell – [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider)
+- Azure CLI – [AZ Provider show](/cli/azure/provider)
 
 
 ## <a name="parameters-and-variables"></a>Parametry a proměnné
 
-[Parametry](../../resource-group-authoring-templates.md) usnadňují zadání hodnot pro šablonu při jejím spuštění. V příkladu se používá tento oddíl parametrů:
+[Parametry](../../azure-resource-manager/templates/template-syntax.md) usnadňují zadání hodnot pro šablonu při jejím spuštění. V příkladu se používá tento oddíl parametrů:
 
 ```json
 "parameters": {
@@ -175,7 +175,7 @@ Tyto příležitosti použijte k získání nejnovějších verzí rozhraní API
 
 Když nasadíte ukázkovou šablonu, zadáte hodnoty pro název a heslo účtu správce na každém virtuálním počítači a počet virtuálních počítačů, které se mají vytvořit. Máte možnost zadat hodnoty parametrů v samostatném souboru, který je spravován šablonou, nebo zadat hodnoty po zobrazení výzvy.
 
-[Proměnné](../../resource-group-authoring-templates.md) usnadňují nastavení hodnot v šabloně, které se v něm používají opakovaně, nebo které se můžou v průběhu času měnit. Tento oddíl proměnných se používá v tomto příkladu:
+[Proměnné](../../azure-resource-manager/templates/template-syntax.md) usnadňují nastavení hodnot v šabloně, které se v něm používají opakovaně, nebo které se můžou v průběhu času měnit. Tento oddíl proměnných se používá v tomto příkladu:
 
 ```json
 "variables": { 
@@ -208,7 +208,7 @@ Když nasadíte ukázkovou šablonu, zadáte hodnoty pro název a heslo účtu s
 }, 
 ```
 
-Když nasadíte ukázkovou šablonu, použijí se pro název a identifikátor dříve vytvořeného účtu úložiště proměnné hodnoty proměnných. Proměnné také slouží k poskytnutí nastavení pro diagnostické rozšíření. Použijte [osvědčené postupy pro vytváření šablon Azure Resource Manager](../../resource-manager-template-best-practices.md) , které vám pomůžou určit, jak chcete strukturovat parametry a proměnné ve vaší šabloně.
+Když nasadíte ukázkovou šablonu, použijí se pro název a identifikátor dříve vytvořeného účtu úložiště proměnné hodnoty proměnných. Proměnné také slouží k poskytnutí nastavení pro diagnostické rozšíření. Použijte [osvědčené postupy pro vytváření šablon Azure Resource Manager](../../azure-resource-manager/templates/template-best-practices.md) , které vám pomůžou určit, jak chcete strukturovat parametry a proměnné ve vaší šabloně.
 
 ## <a name="resource-loops"></a>Smyčky prostředků
 
@@ -247,7 +247,7 @@ Pamatujte, že vytvoření smyčky pro jeden prostředek v šabloně může vyž
 
 ## <a name="dependencies"></a>Závislosti
 
-Většina prostředků závisí na dalších prostředcích, aby fungovaly správně. Virtuální počítače musí být přidružené k virtuální síti a k tomu potřebují síťové rozhraní. Element [dependsOn](../../resource-group-define-dependencies.md) se používá k zajištění, že síťové rozhraní je připravené k použití před vytvořením virtuálních počítačů:
+Většina prostředků závisí na dalších prostředcích, aby fungovaly správně. Virtuální počítače musí být přidružené k virtuální síti a k tomu potřebují síťové rozhraní. Element [dependsOn](../../azure-resource-manager/templates/define-resource-dependency.md) se používá k zajištění, že síťové rozhraní je připravené k použití před vytvořením virtuálních počítačů:
 
 ```json
 "dependsOn": [
@@ -277,7 +277,7 @@ Při definování prostředku virtuálního počítače se používá několik p
 - [hodnota](sizes.md)
 - [název](/azure/architecture/best-practices/resource-naming) a přihlašovací údaje
 - nastavení disku a [operačního systému](cli-ps-findimage.md)
-- [síťové rozhraní](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 
+- [síťové rozhraní](/previous-versions/azure/virtual-network/virtual-network-deploy-multinic-classic-ps) 
 - Diagnostika spouštění
 
 ## <a name="disks-and-images"></a>Disky a image
@@ -369,7 +369,7 @@ Volitelně můžete přidat datové disky k virtuálním počítačům. [Počet 
 
 ## <a name="extensions"></a>Rozšíření
 
-I když jsou [rozšíření](extensions-features.md) samostatným prostředkem, jsou úzce svázána s virtuálními počítači. Rozšíření se dají přidat jako podřízený prostředek virtuálního počítače nebo jako samostatný prostředek. V příkladu se zobrazuje [rozšíření diagnostiky](extensions-diagnostics-template.md) , které se přidává do virtuálních počítačů:
+I když jsou [rozšíření](../extensions/features-windows.md) samostatným prostředkem, jsou úzce svázána s virtuálními počítači. Rozšíření se dají přidat jako podřízený prostředek virtuálního počítače nebo jako samostatný prostředek. V příkladu se zobrazuje [rozšíření diagnostiky](../extensions/diagnostics-template.md) , které se přidává do virtuálních počítačů:
 
 ```json
 { 
@@ -404,7 +404,7 @@ I když jsou [rozšíření](extensions-features.md) samostatným prostředkem, 
 
 Tento prostředek rozšíření používá proměnnou úložiště a diagnostické proměnné k poskytnutí hodnot. Pokud chcete změnit data shromážděná tímto rozšířením, můžete přidat další čítače výkonu do proměnné wadperfcounters. Můžete také zvolit, aby diagnostická data byla vložena do jiného účtu úložiště, než kde jsou uloženy disky virtuálních počítačů.
 
-Na virtuálním počítači můžete nainstalovat spoustu rozšíření, ale nejužitečnější je pravděpodobně [rozšíření vlastních skriptů](extensions-customscript.md). V tomto příkladu se skript prostředí PowerShell s názvem start.ps1 při prvním spuštění spouští na každém virtuálním počítači:
+Na virtuálním počítači můžete nainstalovat spoustu rozšíření, ale nejužitečnější je pravděpodobně [rozšíření vlastních skriptů](../extensions/custom-script-windows.md). V tomto příkladu se skript prostředí PowerShell s názvem start.ps1 při prvním spuštění spouští na každém virtuálním počítači:
 
 ```json
 {
@@ -447,11 +447,11 @@ Pokud jste zajímá o stavu prostředků v nasazení, zobrazte skupinu prostřed
 
 ![Získat informace o nasazení](./media/template-description/virtual-machines-deployment-info.png)
     
-Nejedná se o problém, jak použít stejnou šablonu k vytvoření prostředků nebo k aktualizaci existujících prostředků. Když použijete příkazy k nasazení šablon, budete mít možnost vyslovit, který [režim](../../resource-group-template-deploy.md) chcete použít. Režim lze nastavit buď jako **dokončený** , nebo **přírůstkový**. Výchozím nastavením je přírůstkové aktualizace. Při použití **kompletního** režimu buďte opatrní, protože prostředky můžete omylem odstranit. Když nastavíte režim na **dokončeno**, správce prostředků odstraní všechny prostředky ve skupině prostředků, která není v šabloně.
+Nejedná se o problém, jak použít stejnou šablonu k vytvoření prostředků nebo k aktualizaci existujících prostředků. Když použijete příkazy k nasazení šablon, budete mít možnost vyslovit, který [režim](../../azure-resource-manager/templates/deploy-powershell.md) chcete použít. Režim lze nastavit buď jako **dokončený** , nebo **přírůstkový**. Výchozím nastavením je přírůstkové aktualizace. Při použití **kompletního** režimu buďte opatrní, protože prostředky můžete omylem odstranit. Když nastavíte režim na **dokončeno**, správce prostředků odstraní všechny prostředky ve skupině prostředků, která není v šabloně.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Vytvoření vlastní šablony pomocí [vytváření Azure Resource Manager šablon](../../resource-group-authoring-templates.md).
+- Vytvoření vlastní šablony pomocí [vytváření Azure Resource Manager šablon](../../azure-resource-manager/templates/template-syntax.md).
 - Nasaďte šablonu, kterou jste vytvořili, pomocí [šablony Správce prostředků vytvořit virtuální počítač s Windows](ps-template.md).
 - Informace o tom, jak spravovat virtuální počítače, které jste vytvořili, najdete v tématu [Vytvoření a správa virtuálních počítačů s Windows pomocí modulu Azure PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 - Syntaxi a vlastnosti typů prostředků v šablonách JSON naleznete v tématu [Azure Resource Manager Reference k šabloně](/azure/templates/).

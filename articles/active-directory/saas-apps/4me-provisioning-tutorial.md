@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: 423ba8c7aea9659a4c91f68a01392954c2ba6db2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c83d43fe1a2068fa4c9f24a10c0975610142a84
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77059156"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87018685"
 ---
 # <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>Kurz: Konfigurace 4me pro Automatické zřizování uživatelů
 
@@ -30,7 +31,7 @@ Cílem tohoto kurzu je předvést kroky, které je třeba provést v 4me a Azure
 >
 > Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -83,7 +84,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-4me-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro 4me ve službě Azure AD:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -127,7 +128,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Mapování uživatelů 4me](media/4me-provisioning-tutorial/4me-user-mapping.png)
     
-11. Zkontrolujte atributy uživatele synchronizované z Azure AD do 4me v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v 4me pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
+11. Zkontrolujte atributy uživatele synchronizované z Azure AD do 4me v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v 4me pro operace aktualizace. Ujistěte se prosím, že [4me podporuje filtrování](https://developer.4me.com/v1/scim/users/) u odpovídajícího atributu, který jste zvolili. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
     ![Mapování uživatelů 4me](media/4me-provisioning-tutorial/4me-user-attributes.png)
     
@@ -163,7 +164,7 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 * 4me vygenerované tajné tokeny mají datum vypršení platnosti v měsíci od generace.
 * 4me nepodporuje operace **odstranění** .
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

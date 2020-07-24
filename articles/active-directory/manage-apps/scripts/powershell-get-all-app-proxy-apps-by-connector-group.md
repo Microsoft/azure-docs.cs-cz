@@ -1,5 +1,5 @@
 ---
-title: Ukázka prostředí PowerShell – seznam všech skupin konektorů proxy aplikací
+title: Vypsat skupiny konektorů Azure Proxy aplikací služby AD pro aplikace
 description: Příklad prostředí PowerShell, ve kterém jsou uvedeny všechny skupiny konektorů proxy aplikací služby Azure Active Directory (Azure AD) s přiřazenými aplikacemi.
 services: active-directory
 author: msmimart
@@ -12,11 +12,12 @@ ms.date: 12/05/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dcf2eb6a1904e4a7223a19e598f0c06ddc36f71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f381d64e06d8b7abf67b08297baa616397cc439
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75482163"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019433"
 ---
 # <a name="get-all-application-proxy-apps-and-list-by-connector-group"></a>Načíst všechny aplikace a seznam proxy aplikací podle skupiny konektorů
 

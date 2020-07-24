@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/06/2020
 ms.author: vinigam
-ms.openlocfilehash: 4fe981576e3f6e58b0886d9c0d2eb2915d8b7720
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31d0de63185c56eafda8c42efbe44d8e7ffcaf1f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80396614"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022459"
 ---
 # <a name="sample-queries-with-new-fields-in-the-traffic-analytics-schema-august-2019-schema-update"></a>Ukázkové dotazy s novými poli ve schématu Analýza provozu (aktualizace schématu srpna 2019)
 
@@ -76,7 +76,7 @@ DestPublicIPsAggregated = iif(isnotempty(DestPublicIPs_s), DestPublicIPs_s, "N/A
 
 Staré pole používá formát:
 
-<hodnota indexu 0) >|<NSG_ Rule>|<Flow Direction>|<Flow Status>|<FlowCount ProcessedByRule>
+`<Index value 0)>|<NSG_ RuleName>|<Flow Direction>|<Flow Status>|<FlowCount ProcessedByRule>`
 
 V rámci skupiny zabezpečení sítě (NSG) už nemůžeme agregovat data. V aktualizovaném schématu **NSGList_s** obsahuje pouze jeden NSG. **NSGRules** také obsahuje pouze jedno pravidlo. V tomto příkladu jsme odebrali složitá formátování, jak je znázorněno v příkladu.
 

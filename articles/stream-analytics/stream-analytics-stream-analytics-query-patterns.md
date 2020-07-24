@@ -8,11 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/18/2019
-ms.openlocfilehash: 78dde3f6706ecbc54daca162ac718911752fa0ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c79d810979641d1dc128c741c2124d9b5887aa3d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83832958"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020742"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Běžné vzory dotazů v Azure Stream Analytics
 
@@ -83,7 +84,7 @@ FROM Input
 ```
 ## <a name="data-aggregation-over-time"></a>Agregace dat v průběhu času
 
-Chcete-li vypočítat informace v časovém intervalu, lze data agregovat dohromady. V tomto příkladu je počet vypočítán za posledních 10 minut času pro všechny konkrétní auto.
+Chcete-li vypočítat informace v časovém intervalu, lze data agregovat dohromady. V tomto příkladu je počet vypočítán za posledních 10 sekund času pro všechny konkrétní auto.
 
 **Vstup**:
 
@@ -248,7 +249,7 @@ Pro výstup dat do různých výstupních umyvadel lze použít vícenásobné p
 
 **Výstupní AlertOutput**:
 
-| Značka | Čas | Počet |
+| Značka | Čas | Count |
 | --- | --- | --- |
 | Make2 |2015-01-01T00:00:10.0000000 Z |3 |
 
@@ -677,7 +678,7 @@ Například hodiny zařízení pro *TollID* 2 jsou pět sekund za *TollID* 1 a h
 
 **Výstup**:
 
-| TollID | Počet |
+| TollID | Count |
 | --- | --- |
 | 1 | 2 |
 | 2 | 2 |
@@ -758,7 +759,7 @@ Uživatel například komunikuje s webovou stránkou, kde je zaznamenán počet 
 
 **Vstup**:
 
-| User_id | Čas | URL |
+| User_id | Čas | Adresa URL |
 | --- | --- | --- |
 | 0 | 2017-01-26T00:00:00.0000000 Z | "www.example.com/a.html" |
 | 0 | 2017-01-26T00:00:20.0000000 Z | "www.example.com/b.html" |
@@ -927,7 +928,7 @@ Dotaz umožňuje výrobci automaticky monitorovat umístění počítačů a zí
 
 Další informace najdete v článku [scénáře použití geografických zón a geoprostorové agregace s Azure Stream Analytics](geospatial-scenarios.md) článkem.
 
-## <a name="get-help"></a>Získání pomoci
+## <a name="get-help"></a>Podpora
 
 Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 

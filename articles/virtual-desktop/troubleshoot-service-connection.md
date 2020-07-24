@@ -1,5 +1,5 @@
 ---
-title: Poradce při potížích s virtuálním počítačem s Windows s připojením služby – Azure
+title: Řešení potíží s připojením k virtuálnímu počítači s Windows na jaře 2020 – Azure
 description: Řešení problémů při nastavování připojení klienta v prostředí klienta virtuální plochy Windows
 services: virtual-desktop
 author: Heidilohr
@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 56a31caeefb3589527fdbbac118fa3a544a0d1a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9aced0e420826cd73526a54da728c20d8d8e0142
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208889"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020419"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Připojení ke službě virtuální plochy Windows
 

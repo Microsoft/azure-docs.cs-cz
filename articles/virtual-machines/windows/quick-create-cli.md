@@ -8,24 +8,24 @@ ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c6f1663924f338b6b17c760afe64527f563f5bc2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 178c4b92722453cd1c97471e725cb0fc68abb6fa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82098012"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020317"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>Rychlý start: Vytvoření virtuálního počítače s Windows pomocí Azure CLI
 
 Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. V tomto rychlém startu se dozvíte, jak pomocí Azure CLI nasadit do Azure virtuální počítač s Windows Serverem 2016. Pak se k virtuálnímu počítači připojíte přes protokol RDP a nainstalujete na něj webový server služby IIS, abyste virtuální počítač viděli v akci.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 
 Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
 
-Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče tak, že přejdete [https://shell.azure.com/bash](https://shell.azure.com/bash)na. Vyberte **Kopírovat** pro zkopírování bloků kódu, vložení do Cloud Shell a stisknutím klávesy **ENTER** ji spusťte.
+Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče tak, že přejdete na [https://shell.azure.com/bash](https://shell.azure.com/bash) . Vyberte **Kopírovat** pro zkopírování bloků kódu, vložení do Cloud Shell a stisknutím klávesy **ENTER** ji spusťte.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -39,7 +39,7 @@ az group create --name myResourceGroup --location eastus
 
 Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Následující příklad vytvoří virtuální počítač s názvem *myVM*. V tomto příkladu se pro uživatelské jméno správce používá *azureuser* . 
 
-Budete muset dodat heslo, které splňuje [požadavky na heslo pro virtuální počítače Azure](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
+Budete muset dodat heslo, které splňuje [požadavky na heslo pro virtuální počítače Azure](./faq.md#what-are-the-password-requirements-when-creating-a-vm
 ). Pomocí níže uvedeného příkladu se zobrazí výzva k zadání hesla na příkazovém řádku. Můžete také přidat `--admin-password` parametr s hodnotou pro heslo. Uživatelské jméno a heslo se použijí později, až se připojíte k virtuálnímu počítači.
 
 ```azurecli-interactive

@@ -13,11 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: juliako
-ms.openlocfilehash: 23ee7ba7a5456916eb307e21aa2074924614cb4b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd592469a4435504f1eecf1f24e50faf23fad17a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84418139"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022969"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Živé streamování s Azure Media Services V3
 
@@ -34,7 +35,7 @@ Pro zákazníky, kteří chtějí doručovat obsah do rozsáhlých internetovýc
 Tento článek poskytuje přehled a pokyny pro živé streamování pomocí Media Services a odkazy na další relevantní články.
  
 > [!NOTE]
-> Pomocí [Azure Portal](https://portal.azure.com/) můžete spravovat V3 [Live události](live-events-outputs-concept.md), zobrazit [prostředky](assets-concept.md)v3 a získat informace o přístupu k rozhraním API. Pro všechny ostatní úlohy správy (například transformace a úlohy) použijte [REST API](https://docs.microsoft.com/rest/api/media/), [CLI](https://aka.ms/ams-v3-cli-ref)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
+> Pomocí [Azure Portal](https://portal.azure.com/) můžete spravovat V3 [Live události](live-events-outputs-concept.md), zobrazit [prostředky](assets-concept.md)v3 a získat informace o přístupu k rozhraním API. Pro všechny ostatní úlohy správy (například transformace a úlohy) použijte [REST API](/rest/api/media/), [CLI](https://aka.ms/ams-v3-cli-ref)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
 
 ## <a name="dynamic-packaging-and-delivery"></a>Dynamické balení a doručování
 
@@ -53,7 +54,7 @@ Dynamické filtrování se používá k řízení počtu běhů, formátů, pře
 
 ## <a name="live-event-types"></a>Typy živých událostí
 
-[Živé události](https://docs.microsoft.com/rest/api/media/liveevents) jsou zodpovědné za ingestování a zpracování aktivních informačních kanálů. Živá událost může být nastavená na *předávací* (místní živý kodér posílá datový proud s více přenosovými rychlostmi) nebo *živé kódování* (místní kodér Live Encoder posílá datový proud s jednou přenosovou rychlostí). Podrobnosti o živém streamování v Media Services V3 najdete v tématu [živé události a živé výstupy](live-events-outputs-concept.md).
+[Živé události](/rest/api/media/liveevents) jsou zodpovědné za ingestování a zpracování aktivních informačních kanálů. Živá událost může být nastavená na *předávací* (místní živý kodér posílá datový proud s více přenosovými rychlostmi) nebo *živé kódování* (místní kodér Live Encoder posílá datový proud s jednou přenosovou rychlostí). Podrobnosti o živém streamování v Media Services V3 najdete v tématu [živé události a živé výstupy](live-events-outputs-concept.md).
 
 ### <a name="pass-through"></a>Průchod
 
@@ -107,7 +108,7 @@ Abyste pochopili pracovní postup živého streamování v Media Services V3, mu
     * Zastaví živou událost. Jakmile se živá událost zastaví, neúčtují se žádné poplatky. Když bude potřeba kanál znovu spustit, bude mít stejnou ingestovanou adresu URL, takže nebude nutné kodér znovu konfigurovat.
     * Koncový bod streamování můžete zastavit, pokud nechcete pokračovat v poskytování archivu živé události jako Stream na vyžádání. Pokud je živá událost v zastaveném stavu, neúčtují se žádné poplatky.
 
-Asset, do kterého se živý výstup archivuje, se automaticky stal Assetem na vyžádání, když se odstraní živý výstup. Aby bylo možné zastavit živou událost, je nutné odstranit všechny živé výstupy. Pomocí volitelného příznaku [removeOutputsOnStop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body) můžete automaticky odebrat živé výstupy při zastavení. 
+Asset, do kterého se živý výstup archivuje, se automaticky stal Assetem na vyžádání, když se odstraní živý výstup. Aby bylo možné zastavit živou událost, je nutné odstranit všechny živé výstupy. Pomocí volitelného příznaku [removeOutputsOnStop](/rest/api/media/liveevents/stop#request-body) můžete automaticky odebrat živé výstupy při zastavení. 
 
 > [!TIP]
 > Viz [kurz živého streamování](stream-live-tutorial-with-api.md), článek prověřuje kód, který implementuje výše popsané kroky.

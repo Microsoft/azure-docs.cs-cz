@@ -11,12 +11,12 @@ ms.date: 06/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2a41dcf9c224e9e4a9a280078432e0b57e16c2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7992563bdfb318867e963ed4f371998bafbbbcdb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359411"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019909"
 ---
 # <a name="azure-ad-connect-group-writeback"></a>Zpětný zápis skupin Azure AD Connect
 
@@ -34,7 +34,7 @@ Pokud chcete povolit zpětný zápis skupin, použijte následující postup:
 
 1. Otevřete Průvodce Azure AD Connect, vyberte **Konfigurovat** a pak klikněte na **Další**.
 2. Vyberte **přizpůsobit možnosti synchronizace** a pak klikněte na **Další**.
-3. Na stránce **připojit ke službě Azure AD** zadejte svoje přihlašovací údaje. Klikněte na **Další**.
+3. Na stránce **připojit ke službě Azure AD** zadejte svoje přihlašovací údaje. Klikněte na **Next** (Další).
 4. Na stránce **volitelné funkce** ověřte, že jsou stále vybrané možnosti, které jste předtím nakonfigurovali.
 5. Vyberte možnost **zpětný zápis skupiny** a klikněte na **Další**.
 6. Na **stránce zpětný zápis**vyberte organizační jednotku (OU) služby Active Directory pro ukládání objektů synchronizovaných ze sady Office 365 do vaší místní organizace a potom klikněte na tlačítko **Další**.
@@ -48,7 +48,7 @@ Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\AdSyncC
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN $AzureADConnectSWritebackAccountDN
 ```
 
-Další informace o konfiguraci skupin Office 365 najdete v tématu [konfigurace Microsoft 365Ch skupin pomocí místní služby Exchange Hybrid](https://docs.microsoft.com/exchange/hybrid-deployment/set-up-office-365-groups#enable-group-writeback-in-azure-ad-connect).
+Další informace o konfiguraci skupin Office 365 najdete v tématu [konfigurace Microsoft 365Ch skupin pomocí místní služby Exchange Hybrid](https://docs.microsoft.com/exchange/hybrid-deployment/set-up-microsoft-365-groups#enable-group-writeback-in-azure-ad-connect).
 
 ## <a name="disabling-group-writeback"></a>Zakázání zpětného zápisu skupiny
 Chcete-li zakázat zpětný zápis skupiny, použijte následující postup: 
@@ -61,7 +61,7 @@ Chcete-li zakázat zpětný zápis skupiny, použijte následující postup:
 
    ![Zrušit zaškrtávací políčko](media/how-to-connect-group-writeback/group2.png)
   
-3. Klikněte na **Další**.
+3. Klikněte na **Next** (Další).
 4. Klikněte na **Konfigurovat**.
 
  >[!NOTE]

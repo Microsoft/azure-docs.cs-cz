@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 9136fd702fad5c12a8ec97a68ff8a592a203d7d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6accd303ba11c4c1406c7a157fa8176972fc7a3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80582203"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022903"
 ---
 # <a name="manage-assets"></a>Správa prostředků
 
-V Azure Media Services [Asset](https://docs.microsoft.com/rest/api/media/assets) je místo, kde jste 
+V Azure Media Services [Asset](/rest/api/media/assets) je místo, kde jste 
 
 * nahrávání mediálních souborů do assetu,
 * ingestování a archivace živých streamů do assetu
@@ -56,13 +56,13 @@ Až se digitální soubory nahrají do úložiště a přidruží se k Assetu, d
     ```
 2. Získejte adresu URL SAS s oprávněními pro čtení i zápis, která se použije k nahrání digitálních souborů do kontejneru aktiva.
 
-    K [vypsání adres URL kontejnerů aktiv](https://docs.microsoft.com/rest/api/media/assets/listcontainersas) můžete použít rozhraní API Media Services.
+    K [vypsání adres URL kontejnerů aktiv](/rest/api/media/assets/listcontainersas) můžete použít rozhraní API Media Services.
 
-    **AssetContainerSas. listContainerSas** převezme parametr [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) , na kterém jste nastavili `expiryTime` . Čas by měl být nastaven na < 24 hodin.
+    **AssetContainerSas. listContainerSas** převezme parametr [ListContainerSasInput](/rest/api/media/assets/listcontainersas#listcontainersasinput) , na kterém jste nastavili `expiryTime` . Čas by měl být nastaven na < 24 hodin.
 
-    [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) vrací několik adres URL SAS, protože pro každý účet úložiště jsou k dispozici dva klíče účtu úložiště. Účet úložiště má dva klíče, protože pomáhá při převzetí služeb při selhání a bezproblémovém střídání klíčů účtu úložiště. První adresa URL SAS představuje první klíč účtu úložiště a druhá adresa URL SAS představuje druhý klíč.
+    [ListContainerSasInput](/rest/api/media/assets/listcontainersas#listcontainersasinput) vrací několik adres URL SAS, protože pro každý účet úložiště jsou k dispozici dva klíče účtu úložiště. Účet úložiště má dva klíče, protože pomáhá při převzetí služeb při selhání a bezproblémovém střídání klíčů účtu úložiště. První adresa URL SAS představuje první klíč účtu úložiště a druhá adresa URL SAS představuje druhý klíč.
 3. Použijte rozhraní API Azure Storage nebo sady SDK (například [úložiště REST API](../../storage/common/storage-rest-api-auth.md) nebo [sadu .NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) k nahrání souborů do kontejneru assetů.
-4. Pomocí rozhraní API služby Media Services verze 3 můžete vytvořit transformaci a úlohu ke zpracování vstupního aktiva. Další informace najdete v tématu [Transformace a úlohy](transform-concept.md).
+4. Pomocí rozhraní API služby Media Services verze 3 můžete vytvořit transformaci a úlohu ke zpracování vstupního aktiva. Další informace najdete v tématu [Transformace a úlohy](./transforms-jobs-concept.md).
 5. Streamování obsahu z prostředku "Output".
 
 ### <a name="create-a-new-asset"></a>Vytvoření nového aktiva
@@ -76,7 +76,7 @@ Až se digitální soubory nahrají do úložiště a přidruží se k Assetu, d
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{amsAccountName}/assets/{assetName}?api-version=2018-07-01
 ```
 
-Příklad REST najdete v tématu [Vytvoření assetu pomocí REST](https://docs.microsoft.com/rest/api/media/assets/createorupdate#examples) .
+Příklad REST najdete v tématu [Vytvoření assetu pomocí REST](/rest/api/media/assets/createorupdate#examples) .
 
 V tomto příkladu se dozvíte, jak vytvořit **Text žádosti** , kde můžete zadat popis, název kontejneru, účet úložiště a další užitečné informace.
 
@@ -100,16 +100,16 @@ curl -X PUT \
  Asset asset = await client.Assets.CreateOrUpdateAsync(resourceGroupName, accountName, assetName, new Asset());
 ```
 
-### <a name="see-also"></a>Viz také:
+### <a name="see-also"></a>Viz také
 
 * [Vytvoření vstupu úlohy z místního souboru](job-input-from-local-file-how-to.md)
 * [Vytvoření vstupu úlohy z adresy URL HTTPS](job-input-from-http-how-to.md)
 
 ## <a name="ingest-and-archive-live-streams-into-an-asset"></a>Ingestování a archivace živých streamů do assetu
 
-V Media Services je objekt [živého výstupu](https://docs.microsoft.com/rest/api/media/liveoutputs) podobný digitálnímu záznamu videa, který zachytí a zaznamená svůj živý stream do assetu v účtu Media Services. Zaznamenaný obsah je trvale uložen do kontejneru definovaného prostředkem [assetu](https://docs.microsoft.com/rest/api/media/assets) .
+V Media Services je objekt [živého výstupu](/rest/api/media/liveoutputs) podobný digitálnímu záznamu videa, který zachytí a zaznamená svůj živý stream do assetu v účtu Media Services. Zaznamenaný obsah je trvale uložen do kontejneru definovaného prostředkem [assetu](/rest/api/media/assets) .
 
-Další informace naleznete v tématech:
+Další informace najdete tady:
 
 * [Použití cloudového DVR](live-event-cloud-dvr.md)
 * [Kurz živého streamování](stream-live-tutorial-with-api.md)
@@ -118,7 +118,7 @@ Další informace naleznete v tématech:
 
 V Media Services při zpracování videí (například kódování nebo analýzy) potřebujete vytvořit výstupní [Asset](assets-concept.md) pro uložení výsledku vaší [úlohy](transforms-jobs-concept.md).
 
-Další informace naleznete v tématech:
+Další informace najdete tady:
 
 * [Kódování videa](encoding-concept.md)
 * [Vytvoření vstupu úlohy z místního souboru](job-input-from-local-file-how-to.md)
@@ -127,7 +127,7 @@ Další informace naleznete v tématech:
 
 Chcete-li publikovat Asset pro streamování, je nutné vytvořit [Lokátor streamování](streaming-locators-concept.md). Lokátor streamování musí znát název assetu, který chcete publikovat. 
 
-Další informace naleznete v tématech:
+Další informace najdete tady:
 
 [Kurz: nahrávání, kódování a streamování videí pomocí Media Services V3](stream-files-tutorial-with-api.md)
 
@@ -145,6 +145,6 @@ Viz téma [filtrování, řazení, stránkování Media Services entit](entities
 
 Podívejte se na kompletní příklady kódu, které ukazují, jak nahrávat, kódovat, analyzovat, streamovat živě a na vyžádání: 
 
-* [Java](https://docs.microsoft.com/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/), 
-* [.NET](https://docs.microsoft.com/samples/azure-samples/media-services-v3-dotnet/azure-media-services-v3-samples-using-net/), 
-* [REST](https://docs.microsoft.com/samples/azure-samples/media-services-v3-rest-postman/azure-media-services-postman-collection/).
+* [Java](/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/), 
+* [.NET](/samples/azure-samples/media-services-v3-dotnet/azure-media-services-v3-samples-using-net/), 
+* [REST](/samples/azure-samples/media-services-v3-rest-postman/azure-media-services-postman-collection/).

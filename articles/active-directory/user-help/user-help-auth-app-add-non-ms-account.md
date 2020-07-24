@@ -11,11 +11,12 @@ ms.topic: end-user-help
 ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: b6bda6d35391543e416c377557e34de317e293eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04076ed5b91f8e840a084b784477d07eea5adee7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83741574"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015966"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Přidání jiných účtů než do aplikace Microsoft Authenticator
 
@@ -49,7 +50,7 @@ Přidejte svůj účet Google tím, že zapnete dvojúrovňové ověřování a 
 
 ### <a name="add-your-google-account-to-the-app"></a>Přidání účtu Google do aplikace
 
-1. Na stránce Google na vašem počítači v části **nastavit alternativní druhý krok** vyberte možnost **nastavit** v části **ověřovací aplikace** .
+1. Na stránce zabezpečení účtu Google na vašem počítači ( https://myaccount.google.com/security) , v části **Přidat další druhý postup ověřte, zda se jedná** o možnost **nastavit** v části **ověřovací aplikace** .
 
 2. Na stránce **získat kódy ze ověřovací aplikace** vyberte v závislosti na typu telefonu možnost **Android** nebo **iPhone** a pak vyberte **Další**.
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 723329022d748ee18a07fcaeaecc2aff0e5f707b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a1952f6dccf12de4cb1571dacabecf78c65cd01b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528974"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021643"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>Povolení zotavení po havárii zóny pro virtuální počítače Azure
 
@@ -20,7 +20,6 @@ Tento článek popisuje, jak replikovat, převzetí služeb při selhání a nav
 
 >[!NOTE]
 >
->- Site Recovery v současné době nepodporuje pro zotavení po havárii zóny plány obnovení prostřednictvím portálu. Použijte prosím prostředí PowerShell nebo REST API k využití plánů obnovení pro zotavení po havárii zóny. 
 >- Podpora zóny až po zotavení po havárii zóny je aktuálně omezená na dvě oblasti: jihovýchodní Asie a Velká Británie – jih.  
 >- Site Recovery nepřesouvá ani neukládají zákaznická data mimo oblast, ve které je nasazená, když zákazník používá k zotavení po havárii zóny. Zákazníci si můžou vybrat Recovery Services trezor z jiné oblasti, pokud si si je vyberou. Trezor Recovery Services obsahuje metadata, ale žádná skutečná zákaznická data.
 

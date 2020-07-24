@@ -8,12 +8,12 @@ ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: bd65f33663dea3663f14fb4167448e39b9b7d0b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2999d5bd6d780d5815f22d18e6e8cdd580987af
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82099763"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020164"
 ---
 # <a name="run-scripts-in-your-windows-vm"></a>Spouštění skriptů na VIRTUÁLNÍm počítači s Windows
 
@@ -34,7 +34,7 @@ Pokud chcete automatizovat úlohy nebo řešit problémy, možná budete muset n
 Funkce [příkazu Run](run-command.md) umožňuje správu virtuálních počítačů a aplikací a odstraňování potíží pomocí skriptů a je k dispozici i v případě, že je počítač nedostupný, například pokud brána firewall hosta nemá otevřený port RDP nebo SSH.
 
 * Spouštění skriptů na virtuálních počítačích Azure.
-* Dá se spustit pomocí [Azure Portal](run-command.md), [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke)nebo [PowerShellu](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) .
+* Dá se spustit pomocí [Azure Portal](run-command.md), [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke)nebo [PowerShellu](/powershell/module/az.compute/invoke-azvmruncommand) .
 * Rychlé spuštění skriptu a zobrazení výstupu a opakování podle potřeby v Azure Portal.
 * Skript lze zadat přímo nebo můžete spustit jeden z vestavěných skriptů.
 * Spusťte skript prostředí PowerShell na počítačích s Windows a skriptu bash v počítačích se systémem Linux.
@@ -57,7 +57,7 @@ Funkce [příkazu Run](run-command.md) umožňuje správu virtuálních počíta
 
 ## <a name="serial-console"></a>Konzola sériového portu
 
-[Sériová konzola](serial-console.md) poskytuje přímý přístup k virtuálnímu počítači, podobně jako s klávesnicí připojenou k virtuálnímu počítači.
+[Sériová konzola](../troubleshooting/serial-console-windows.md) poskytuje přímý přístup k virtuálnímu počítači, podobně jako s klávesnicí připojenou k virtuálnímu počítači.
 
 * Spusťte příkazy na virtuálních počítačích Azure.
 * Dá se spustit pomocí textové konzole pro počítač v Azure Portal.
@@ -71,4 +71,4 @@ Přečtěte si další informace o různých funkcích, které jsou k dispozici 
 * [Rozšíření vlastních skriptů](../extensions/custom-script-windows.md)
 * [Spuštění příkazu](run-command.md)
 * [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md)
-* [Sériová konzola](serial-console.md)
+* [Sériová konzola](../troubleshooting/serial-console-windows.md)

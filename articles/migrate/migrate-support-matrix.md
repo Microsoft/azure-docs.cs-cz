@@ -2,14 +2,14 @@
 title: Azure Migrateová matice podpory
 description: Poskytuje souhrn nastavení podpory a omezení pro službu Azure Migrate.
 ms.topic: conceptual
-ms.date: 04/19/2020
+ms.date: 07/23/2020
 ms.author: raynew
-ms.openlocfilehash: 8350f557efd9224d92388835f55871cb861eda25
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: fae5af9c8717604d71ec2bf2628ea25125d5b2d5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108749"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022714"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrateová matice podpory
 
@@ -21,32 +21,34 @@ Tabulka shrnuje podporované scénáře zjišťování, hodnocení a migrace.
 
 **Nasazení** | **Podrobnosti** 
 --- | --- 
-**Zjišťování specifické pro aplikaci** | Můžete zjišťovat aplikace, role a funkce spuštěné na virtuálních počítačích VMware. V tuto chvíli je tato funkce omezená jenom na zjišťování. Posouzení je aktuálně na úrovni počítače. Ještě nenabízíme hodnocení specifické pro aplikace, role ani funkce. 
-**Místní posouzení** | Vyhodnoťte místní úlohy a data běžící na virtuálních počítačích VMware, virtuálních počítačích Hyper-V a fyzických serverech. Vyhodnoťte pomocí Azure Migrate Server Assessment and Microsoft Data Migration Assistant (DMA) a také další nástroje a nabídky ISV.
-**Místní migrace do Azure** | Migrujte úlohy a data spuštěná na fyzických serverech, virtuálních počítačích VMware, virtuálních počítačích Hyper-V, fyzických serverech a cloudových virtuálních počítačích do Azure. Migrujte pomocí Azure Migrate Server Assessment and Azure Database Migration Service (DMS) a také další nástroje a nabídky ISV.
+**Zjišťování** | Můžete zjistit metadata počítače a dynamická data o výkonu.
+**Zjišťování aplikací** | Můžete zjišťovat aplikace, role a funkce spuštěné na virtuálních počítačích VMware. V tuto chvíli je tato funkce omezená jenom na zjišťování. Posouzení je aktuálně na úrovni počítače. Ještě nenabízíme vyhodnocení na základě aplikací, rolí nebo funkcí. 
+**Posouzení** | Vyhodnoťte místní úlohy a data běžící na virtuálních počítačích VMware, virtuálních počítačích Hyper-V a fyzických serverech. Vyhodnotit pomocí Azure Migrate posouzení serveru, Microsoft Data Migration Assistant (DMA) a také dalších nástrojů a nabídek ISV.
+**Migrace** | Migrujte úlohy a data spuštěná na fyzických serverech, virtuálních počítačích VMware, virtuálních počítačích Hyper-V, fyzických serverech a cloudových virtuálních počítačích do Azure. Migrujte pomocí Azure Migrate Server Assessment and Azure Database Migration Service (DMS) a také další nástroje a nabídky ISV.
 
 > [!NOTE]
 > V současné době nástroje ISV nemůžou odesílat data Azure Migrate v Azure Government. Můžete použít integrované nástroje společnosti Microsoft nebo nezávisle na nich používat partnerské nástroje.
 
 ## <a name="supported-tools"></a>Podporované nástroje
 
+
 Konkrétní podpora nástrojů je shrnuta v tabulce.
 
-**Nástroj** | **Místa** | **Migrate** 
+**Nástroj** | **Posouzení** | **Migrate** 
 --- | --- | ---
 Vyhodnocování serveru Azure Migrate | Posouzení [virtuálních počítačů VMware](tutorial-prepare-vmware.md), [virtuálních počítačů Hyper-V](tutorial-prepare-hyper-v.md)a [fyzických serverů](tutorial-prepare-physical.md). |  Není k dispozici (NA)
-Migrace serverů Azure Migrate | NA | Migrujte [virtuální počítače VMware](tutorial-migrate-vmware.md), [virtuální počítače Hyper-V](tutorial-migrate-hyper-v.md)a [fyzické servery](tutorial-migrate-physical-virtual-machines.md).
-[Carbonite](https://www.carbonite.com/data-protection-resources/resource/Datasheet/carbonite-migrate-for-microsoft-azure) | NA | Migrujte virtuální počítače VMware, virtuální počítače Hyper-V, fyzické servery a úlohy veřejného cloudu. 
-[Cloudamize](https://www.cloudamize.com/platform#tab-0)| Vyhodnoťte virtuální počítače VMware, virtuální počítače Hyper-V, fyzické servery a úlohy veřejného cloudu. | NA
+Migrace serverů Azure Migrate | Není k dispozici | Migrujte [virtuální počítače VMware](tutorial-migrate-vmware.md), [virtuální počítače Hyper-V](tutorial-migrate-hyper-v.md)a [fyzické servery](tutorial-migrate-physical-virtual-machines.md).
+[Carbonite](https://www.carbonite.com/data-protection-resources/resource/Datasheet/carbonite-migrate-for-microsoft-azure) | Není k dispozici | Migrujte virtuální počítače VMware, virtuální počítače Hyper-V, fyzické servery a úlohy veřejného cloudu. 
+[Cloudamize](https://www.cloudamize.com/platform#tab-0)| Vyhodnoťte virtuální počítače VMware, virtuální počítače Hyper-V, fyzické servery a úlohy veřejného cloudu. | Není k dispozici
 [Corent Technology](https://go.microsoft.com/fwlink/?linkid=2084928) | Vyhodnoťte a migrujte virtuální počítače VMware, virtuální počítače Hyper-V, fyzické servery a úlohy veřejného cloudu. |  Migrujte virtuální počítače VMware, virtuální počítače Hyper-V, fyzické servery a úlohy veřejného cloudu.
-[Zařízení 42](https://go.microsoft.com/fwlink/?linkid=2097158) | Vyhodnoťte virtuální počítače VMware, virtuální počítače Hyper-V, fyzické servery a úlohy veřejného cloudu.| NA
-[DMA](/sql/dma/dma-overview?view=sql-server-2017) | Vyhodnotit SQL Serveré databáze. | NA
-[DMS](../dms/dms-overview.md) | NA | Migrujte SQL Server, Oracle, MySQL, PostgreSQL, MongoDB. 
-[Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Posouzení infrastruktury virtuálních klientských počítačů (VDI) | NA
-[Movere](https://www.movere.io/) | Posouzení virtuálních počítačů VMWare, virtuálních počítačů Hyper-V, virtuálních počítačů, virtuálních počítačů, pracovních stanic (včetně infrastruktury VDI), úloh veřejných cloudů | NA
-[RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | NA | Migrace virtuálních počítačů VMWare, virtuálních počítačů Hyper-V, virtuálních počítačů Xen, KVM virtuálních počítačů, fyzických počítačů, úloh veřejných cloudů 
-[Turbonomic](https://go.microsoft.com/fwlink/?linkid=2094295)  | Vyhodnoťte virtuální počítače VMware, virtuální počítače Hyper-V, fyzické servery a úlohy veřejného cloudu. | NA
-[UnifyCloud](https://go.microsoft.com/fwlink/?linkid=2097195) | Vyhodnoťte virtuální počítače VMware, virtuální počítače Hyper-V, fyzické servery, úlohy veřejného cloudu a SQL Server databáze. | NA
+[Zařízení 42](https://go.microsoft.com/fwlink/?linkid=2097158) | Vyhodnoťte virtuální počítače VMware, virtuální počítače Hyper-V, fyzické servery a úlohy veřejného cloudu.| Není k dispozici
+[DMA](/sql/dma/dma-overview?view=sql-server-2017) | Vyhodnotit SQL Serveré databáze. | Není k dispozici
+[DMS](../dms/dms-overview.md) | Není k dispozici | Migrujte SQL Server, Oracle, MySQL, PostgreSQL, MongoDB. 
+[Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Posouzení infrastruktury virtuálních klientských počítačů (VDI) | Není k dispozici
+[Movere](https://www.movere.io/) | Posouzení virtuálních počítačů VMWare, virtuálních počítačů Hyper-V, virtuálních počítačů, virtuálních počítačů, pracovních stanic (včetně infrastruktury VDI), úloh veřejných cloudů | Není k dispozici
+[RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | Není k dispozici | Migrace virtuálních počítačů VMWare, virtuálních počítačů Hyper-V, virtuálních počítačů Xen, KVM virtuálních počítačů, fyzických počítačů, úloh veřejných cloudů 
+[Turbonomic](https://go.microsoft.com/fwlink/?linkid=2094295)  | Vyhodnoťte virtuální počítače VMware, virtuální počítače Hyper-V, fyzické servery a úlohy veřejného cloudu. | Není k dispozici
+[UnifyCloud](https://go.microsoft.com/fwlink/?linkid=2097195) | Vyhodnoťte virtuální počítače VMware, virtuální počítače Hyper-V, fyzické servery, úlohy veřejného cloudu a SQL Server databáze. | Není k dispozici
 [WebApp Pomocník s migrací](https://appmigration.microsoft.com/) | Posouzení webových aplikací | Migrujte webové aplikace.
 
 
@@ -73,13 +75,17 @@ Vytvoření trezoru klíčů pro migraci bez agentů VMware | Pokud chcete migro
 
 ## <a name="supported-geographies-public-cloud"></a>Podporovaná geografická oblast (veřejný cloud)
 
-Azure Migrate projekt můžete vytvořit v řadě geografických oblastí ve veřejném cloudu. I když v těchto geografických oblastech můžete vytvářet pouze projekty, můžete vyhodnocovat nebo migrovat počítače pro jiná cílová umístění. Geografie projektu se používá pouze k uložení zjištěných metadat.
+Azure Migrate projekt můžete vytvořit v řadě geografických oblastí ve veřejném cloudu.
+
+- I když v těchto geografických oblastech můžete vytvářet pouze projekty, můžete vyhodnocovat nebo migrovat počítače pro jiná cílová umístění.
+- Geografie projektu se používá pouze k uložení zjištěných metadat.
+- Když vytvoříte projekt, vyberete zeměpisnou oblast. Projekt a související prostředky jsou vytvořeny v jedné z oblastí zeměpisné oblasti. Oblast je přidělená službou Azure Migrate.
 
 **Geografické** | **Umístění úložiště metadat**
 --- | ---
 Asie a Tichomoří | Východní Asie nebo jihovýchodní Asie
 Austrálie | Austrálie – východ nebo Austrálie – jihovýchod
-Brazílie | Brazílie – jih
+Brazílie | Brazil South
 Kanada | Kanada – střed nebo Kanada – východ
 Evropa | Severní Evropa nebo Západní Evropa
 Francie | Francie – střed
@@ -113,7 +119,7 @@ Cílová replikace | USA | Cílové oblasti: US DoD – střed, US DoD – vých
 
 Existují dvě verze služby Azure Migrate:
 
-- **Aktuální verze**: pomocí této verze můžete vytvořit nové projekty Azure Migrate, zjišťovat místní vyhodnocení a orchestrovat posouzení a migrace. [Další informace](whats-new.md).
+- **Aktuální verze**: pomocí této verze můžete vytvořit nové projekty Azure Migrate, zjišťovat místní vyhodnocení a orchestrovat posouzení a migrace. [Přečtěte si další informace](whats-new.md).
 - **Předchozí verze**: pro zákazníky používající předchozí verzi Azure Migrate (podporuje se jenom posouzení místních virtuálních počítačů VMware), měli byste teď použít aktuální verzi. V předchozí verzi nemůžete vytvářet nové projekty Azure Migrate ani provádět nové zjišťování.
 
 ## <a name="next-steps"></a>Další kroky

@@ -15,12 +15,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97eef1f331d8e6965e378d6a76cfa7a0c50feb9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6c329b7de3e18989e7dbfa35aa6e9303c129654
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317472"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019297"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>Neočekávaná aplikace v seznamu Moje aplikace
 
@@ -28,7 +28,7 @@ Tento článek vám pomůže pochopit, jak se aplikace zobrazí v seznamu **vše
 
 ## <a name="how-to-see-all-applications-in-your-tenant"></a>Jak zobrazit všechny aplikace ve vašem tenantovi
 
-Chcete-li zobrazit všechny aplikace ve vašem tenantovi, je nutné pomocí ovládacího prvku **filtru** zobrazit **všechny aplikace** v seznamu **všechny aplikace** . Postupujte následovně:
+Chcete-li zobrazit všechny aplikace ve vašem tenantovi, je nutné pomocí ovládacího prvku **filtru** zobrazit **všechny aplikace** v seznamu **všechny aplikace** . Postupujte takto:
 
 1.  Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce** nebo **spolusprávce.**
 
@@ -68,7 +68,7 @@ Při filtrování na **všechny aplikace**zobrazuje seznam **všechny aplikace**
 
 6. Když přidáte aplikaci, kterou vyvíjíte, můžete použít [metody ověřování ASP.NET](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) nebo [připojené služby](https://devblogs.microsoft.com/visualstudio/connecting-to-cloud-services/) sady Visual Studio.
 
-7. Když vytvoříte instanční objekt služby pomocí [modulu Azure AD PowerShell](/powershell/azure/install-adv2?view=azureadps-2.0)
+7. Když vytvoříte instanční objekt služby pomocí [modulu Azure AD PowerShell](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
 
 8. Když [souhlasíte s aplikací](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) jako správce pro používání dat ve vašem tenantovi
 

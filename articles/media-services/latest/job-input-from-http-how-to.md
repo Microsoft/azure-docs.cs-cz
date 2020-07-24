@@ -11,11 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: juliako
-ms.openlocfilehash: a3d4568dd237491f28ae2880bdd78dd236870c3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ff2bc6d4bb4f7b983787b287fbb27e1c33cc179
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74899826"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022986"
 ---
 # <a name="create-a-job-input-from-an-https-url"></a>Vytvoření vstupu úlohy z adresy URL HTTPS
 
@@ -32,7 +33,7 @@ Následující kód ukazuje, jak vytvořit úlohu s zadáním adresy URL protoko
 
 ## <a name="job-error-codes"></a>Kódy chyb úlohy
 
-Viz [kódy chyb](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
+Viz [kódy chyb](/rest/api/media/jobs/get#joberrorcode).
 
 ## <a name="next-steps"></a>Další kroky
 

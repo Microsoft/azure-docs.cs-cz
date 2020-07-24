@@ -14,21 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
-ms.openlocfilehash: a0eb234d9677c479d2cb404b065da408854168e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c9a7a09d3085b1ec67bf29f142c6e7b205561ef
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368425"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021745"
 ---
 # <a name="connect-your-perimeter-81-activity-logs-to-azure-sentinel"></a>Připojení protokolů aktivit hraničního 81 k Azure Sentinel
+
+> [!IMPORTANT]
+> Datový konektor hraničního 81 ve službě Azure Sentinel je aktuálně ve verzi Public Preview.
+> Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Tento článek vysvětluje, jak připojit zařízení [protokolu hraničního 81 s protokolem](https://www.perimeter81.com/) do Azure Sentinel. Konektor pro protokoly aktivit hraničního prostředí 81 umožňuje snadno převést data hraničních 81 do Azure Sentinel, abyste je mohli zobrazit v sešitech, použít je k vytváření vlastních výstrah a začlenit je ke zlepšení šetření.
 
 > [!NOTE]
 > Data budou uložená v geografickém umístění pracovního prostoru, na kterém běží Azure Sentinel.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - V pracovním prostoru Azure Sentinel musíte mít oprávnění ke čtení a zápisu.
 
