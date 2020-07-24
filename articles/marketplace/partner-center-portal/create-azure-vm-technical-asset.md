@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: dannyevers
 ms.author: mingshen
 ms.date: 04/13/2020
-ms.openlocfilehash: aee2016b422dcf447dbae047c8a77ae93bf79ab7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5bed073799521498efe5302ab9af616dcdf9f9ab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107151"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053576"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>Vytvoření technických prostředků virtuálního počítače Azure
 
@@ -43,7 +43,7 @@ Návrh, sestavování a testování těchto assetů trvá čas a vyžaduje techn
 
 Zvažte použití jednoho z následujících skriptovacích prostředí, které vám pomůžou spravovat virtuální počítače a virtuální pevné disky:
 
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)
 * [Azure CLI](https://code.visualstudio.com/)
 
 Kromě toho zvažte přidání následujících nástrojů do vývojového prostředí:
@@ -125,7 +125,7 @@ Tento článek podrobně popisuje, jak použít integrovanou podporu Windows RDP
 
 K připojení k virtuálnímu počítači se systémem Linux budete potřebovat klienta SSH (Secure Shell Protocol). V následujících krocích se používá [bezplatná](https://www.ssh.com/ssh/putty/) koncová SSH.
 
-1. Přejít na [Azure Portal](https://ms.portal.azure.com/).
+1. Přejděte na [Azure Portal](https://ms.portal.azure.com/).
 2. Vyhledejte a vyberte **virtuální počítače**.
 3. Vyberte virtuální počítač, ke kterému se chcete připojit.
 4. Spusťte virtuální počítač, pokud ještě není spuštěný.
@@ -163,7 +163,7 @@ Tato část popisuje, jak vytvořit a nasadit image virtuálního počítače (V
 
 Vytvořte bitovou kopii pomocí Azure Portal nebo Azure PowerShell.
 
-#### <a name="deploy-using-the-azure-portal"></a>Nasazení s využitím webu Azure Portal
+#### <a name="deploy-using-the-azure-portal"></a>Nasazení pomocí webu Azure Portal
 
 1. Na domovské stránce vyberte **vytvořit prostředek**, vyhledejte "nasazení šablony" a vyberte **vytvořit**.
 2. **V editoru vyberte vytvořit vlastní šablonu**.
@@ -180,7 +180,7 @@ Vytvořte bitovou kopii pomocí Azure Portal nebo Azure PowerShell.
     | Název DNS pro veřejnou IP adresu | Název DNS veřejné IP adresy. Po nasazení nabídky zadejte název DNS pro veřejnou IP adresu v Azure Portal. |
     | Uživatelské jméno správce | Uživatelské jméno účtu správce pro nový virtuální počítač |
     | Heslo správce | Heslo účtu správce pro nový virtuální počítač |
-    | OS Type | Operační systém virtuálního počítače: Windows nebo Linux |
+    | Typ operačního systému | Operační systém virtuálního počítače: Windows nebo Linux |
     | ID předplatného | Identifikátor vybraného předplatného |
     | Umístění | Zeměpisná poloha nasazení |
     | Velikost virtuálního počítače | [Velikost virtuálního počítače Azure](../../virtual-machines/windows/sizes.md), například Standard_A2 |
