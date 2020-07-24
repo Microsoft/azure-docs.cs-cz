@@ -3,12 +3,12 @@ title: Monitorování aplikací Java v jakémkoli prostředí – Azure Monitor 
 description: Monitorování výkonu aplikací pro aplikace Java spuštěné v jakémkoli prostředí bez instrumentace aplikace Distribuované trasování a mapa aplikací
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 3e3d108603ad6210143deea58049ff7b230bb6fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ca6e7050b1c7649298d2417f9f7f66ef8898816
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85319699"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014333"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Monitorování aplikací nezaložených na kódu Java Azure Monitor Application Insights – Public Preview
 
@@ -32,11 +32,11 @@ Přidat `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.5.jar` do AR
 
 Typické argumenty JVM zahrnují `-Xmx512m` a `-XX:+UseG1GC` . Takže pokud víte, kam je přidat, pak už víte, kam je přidat.
 
-Další nápovědu ke konfiguraci argumentů JVM vaší aplikace najdete v článku [3,0 Preview: Tipy pro aktualizaci ARGUMENTŮ JVM](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-arguments).
+Další nápovědu ke konfiguraci argumentů JVM vaší aplikace najdete v článku [3,0 Preview: Tipy pro aktualizaci ARGUMENTŮ JVM](./java-standalone-arguments.md).
 
 **3. Nasměrujte agenta na prostředek Application Insights**
 
-Pokud ještě prostředek Application Insights nemáte, můžete ho vytvořit pomocí postupu v [příručce pro vytváření prostředků](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource).
+Pokud ještě prostředek Application Insights nemáte, můžete ho vytvořit pomocí postupu v [příručce pro vytváření prostředků](./create-new-resource.md).
 
 Najeďte agentem na prostředek Application Insights, a to nastavením proměnné prostředí:
 
@@ -75,12 +75,12 @@ V `ApplicationInsights.json` souboru můžete také nakonfigurovat:
 * Zachycení protokolu aplikace
 * JMX metriky
 * Mikrometr
-* Prezenční signál
+* Tep
 * Vzorkování
 * Proxy server HTTP
 * Automatická diagnostika
 
-Podrobnosti najdete v článku [3,0 Public Preview: možnosti konfigurace](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config).
+Podrobnosti najdete v článku [3,0 Public Preview: možnosti konfigurace](./java-standalone-config.md).
 
 ## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>Autoshromáždit požadavky, závislosti, protokoly a metriky
 

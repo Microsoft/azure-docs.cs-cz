@@ -3,12 +3,12 @@ title: Monitorování aplikací Java spuštěných v jakémkoli prostředí – 
 description: Monitorování výkonu aplikací pro aplikace Java spuštěné v jakémkoli prostředí se samostatným agentem Java bez instrumentace aplikace Distribuované trasování a mapa aplikací
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 527f1eaf04be7b5e8c89c12912a06d2f5d50321f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6499fbc62a78cb333c623dbea8269144e623921c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82508033"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014237"
 ---
 # <a name="configuring-jvm-args-java-standalone-agent-for-azure-monitor-application-insights"></a>Konfigurace samostatného agenta JVM args Java pro Azure Monitor Application Insights
 
@@ -16,7 +16,7 @@ ms.locfileid: "82508033"
 
 ## <a name="azure-environments"></a>Prostředí Azure
 
-Nakonfigurujte [App Services](https://docs.microsoft.com/azure/app-service/configure-language-java#set-java-runtime-options).
+Nakonfigurujte [App Services](../../app-service/configure-language-java.md#set-java-runtime-options).
 
 ## <a name="spring-boot"></a>Spring Boot
 

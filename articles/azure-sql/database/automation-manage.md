@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 3d785edb82e62363dd96d9fd67447f1be7ffe8f5
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: b90acafb9146ec6cd796a0916ad46bf880398b22
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982595"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013976"
 ---
 # <a name="manage-databases-in-azure-sql-database-by-using-azure-automation"></a>Správa databází v Azure SQL Database pomocí Azure Automation
 
@@ -34,7 +34,7 @@ Snížení provozní režie a uvolnění zaměstnanců IT/DevOps, aby se mohli s
 
 ## <a name="how-azure-automation-can-help-manage-your-databases"></a>Jak Azure Automation můžou pomáhat se správou databází
 
-Pomocí Azure Automation můžete spravovat databáze v Azure SQL Database pomocí [rutin prostředí PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/#sql) , které jsou k dispozici v [nástrojích pro Azure PowerShell](/powershell/azure/overview). Azure Automation mají tyto rutiny Azure SQL Database PowerShellu dostupné, abyste mohli provádět všechny úlohy správy SQL Database v rámci služby. Tyto rutiny můžete také spárovat v Azure Automation s rutinami pro další služby Azure, a automatizovat tak složité úlohy napříč službami Azure a systémy třetích stran.
+Pomocí Azure Automation můžete spravovat databáze v Azure SQL Database pomocí [rutin prostředí PowerShell](/powershell/module/servicemanagement/azure.service/#sql) , které jsou k dispozici v [nástrojích pro Azure PowerShell](/powershell/azure/). Azure Automation mají tyto rutiny Azure SQL Database PowerShellu dostupné, abyste mohli provádět všechny úlohy správy SQL Database v rámci služby. Tyto rutiny můžete také spárovat v Azure Automation s rutinami pro další služby Azure, a automatizovat tak složité úlohy napříč službami Azure a systémy třetích stran.
 
 Azure Automation taky může komunikovat přímo s SQL servery tím, že vydávají příkazy SQL pomocí PowerShellu.
 

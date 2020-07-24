@@ -13,19 +13,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 14e7f4d09185f76786fd88576eef0b6df02877c4
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: f1fad6554a347acb1de72bfe1e5c3413e6f74d9f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85368069"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004150"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: použití SSMS pro připojení k a dotazování Azure SQL Database nebo spravované instance Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 V tomto rychlém startu se dozvíte, jak pomocí SQL Server Management Studio (SSMS) se připojit k Azure SQL Database nebo spravované instanci SQL Azure a spustit některé dotazy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Dokončení tohoto rychlého startu vyžaduje následující položky:
 
@@ -33,7 +33,7 @@ Dokončení tohoto rychlého startu vyžaduje následující položky:
 
 - Databáze v Azure SQL Database. K vytvoření a konfiguraci databáze v Azure SQL Database můžete použít jeden z těchto rychlých startů:
 
-  || Databáze SQL | Spravovaná instance SQL | SQL Server na virtuálním počítači Azure |
+  | Akce | Databáze SQL | Spravovaná instance SQL | SQL Server na virtuálním počítači Azure |
   |:--- |:--- |:---|:---|
   | Vytvořit| [Azure Portal](single-database-create-quickstart.md) | [Azure Portal](../managed-instance/instance-create-quickstart.md) | [Azure Portal](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
   || [Rozhraní příkazového řádku](scripts/create-and-configure-database-cli.md) | [Rozhraní příkazového řádku](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
@@ -53,7 +53,7 @@ Pokud jednoduše chcete spustit některé dotazy ad-hoc bez instalace SSMS, pře
 
 Získejte informace o připojení, které potřebujete pro připojení k vaší databázi. K dokončení tohoto rychlého startu budete potřebovat plně kvalifikovaný název [serveru](logical-servers.md) nebo název hostitele, název databáze a přihlašovací informace.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com/).
 
 2. Přejděte do **databáze** nebo **spravované instance** , pro kterou chcete zadat dotaz.
 
@@ -149,7 +149,7 @@ Spuštěním tohoto příkazu [vložte](/sql/t-sql/statements/insert-transact-sq
    WHERE Name='myNewProduct'
    ```
 
-2. Vyberte **Provést**. Zobrazí se následující výsledek.
+2. Vyberte **Execute** (Provést). Zobrazí se následující výsledek.
 
    ![výsledek dotazu na tabulku produktu](./media/connect-query-ssms/result.png)
 

@@ -3,11 +3,12 @@ title: Analýza využití pomocí Azure Application Insights | Dokumentace Micro
 description: Pochopte uživatele a to, co dělají s vaší aplikací.
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 7f4f46f183291684fa59e5aa35b65c8ac3352563
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1acc803d66bef29a77266d4e38e1605ffd75f36f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797780"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014061"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Analýzy používání pomocí nástroje Application Insights
 
@@ -33,7 +34,7 @@ Nejlepší prostředí získáte instalací Application Insights jak v kódu apl
     </script>
     ```
 
-    Další informace o pokročilejších konfiguracích pro monitorování webů najdete v [referenčním článku o sadě JavaScript SDK](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
+    Další informace o pokročilejších konfiguracích pro monitorování webů najdete v [referenčním článku o sadě JavaScript SDK](./javascript.md).
 
 3. **Kód mobilní aplikace:** Pomocí sady App Center SDK můžete shromažďovat události z vaší aplikace a pak tyto události poslat do Application Insights pro účely analýzy pomocí [této příručky](../../azure-monitor/learn/mobile-center-quickstart.md).
 
@@ -44,7 +45,7 @@ Nejlepší prostředí získáte instalací Application Insights jak v kódu apl
 ## <a name="include-user-and-session-id-in-your-telemetry"></a>Zahrnutí ID uživatele a relace do telemetrie
 Aby bylo možné sledovat uživatele v průběhu času, Application Insights vyžaduje způsob jejich identifikace. Jediným nástrojem pro použití, který nevyžaduje ID uživatele nebo ID relace, je nástroj Events.
 
-Zahajte odesílání ID uživatelů a relací pomocí [tohoto procesu](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context).
+Zahajte odesílání ID uživatelů a relací pomocí [tohoto procesu](./usage-send-user-context.md).
 
 ## <a name="explore-usage-demographics-and-statistics"></a>Prozkoumat demografické údaje o využití a statistiky
 Zjistěte, kdy lidé používají vaši aplikaci, jaké stránky mají nejvíc zajímat, kde se nacházejí vaši uživatelé, jaké prohlížeče a operační systémy používají. 
@@ -174,5 +175,5 @@ Všechny nové TelemetryClients automaticky přidají hodnotu vlastnosti, kterou
    - [Trychtýře](usage-funnels.md)
    - [Uchovávání](usage-retention.md)
    - [Toky uživatele](usage-flows.md)
-   - [Workbooks](../../azure-monitor/platform/workbooks-overview.md)
+   - [Sešity](../../azure-monitor/platform/workbooks-overview.md)
    - [Přidat kontext uživatele](usage-send-user-context.md)

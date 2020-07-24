@@ -3,11 +3,12 @@ title: Kolekce IP adres Azure Application Insights | Microsoft Docs
 description: Porozumění způsobu, jakým jsou zpracovávány IP adresy a geografická umístění s využitím Azure Application Insights
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: c7a4506c6a4246edc007a5ea2158998b472ec316
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1576207eb267166a33b84009407ec119de471e6e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807124"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014435"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Geografická poloha a zpracování IP adres
 
@@ -26,7 +27,7 @@ Toto chování je záměrné, což umožňuje vyhnout se zbytečné kolekci osob
 
 ## <a name="overriding-default-behavior"></a>Přepsání výchozího chování
 
-I když je výchozím chováním minimalizace shromažďování osobních údajů, stále nabízíme flexibilitu pro shromažďování a ukládání dat IP adres. Než se rozhodnete ukládat osobní údaje, jako jsou IP adresy, důrazně doporučujeme ověřit, že se neruší žádné požadavky na dodržování předpisů ani místní předpisy, na které se může vztahovat. Další informace o zpracování osobních údajů v Application Insights najdete v [pokynech k osobním údajům](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt).
+I když je výchozím chováním minimalizace shromažďování osobních údajů, stále nabízíme flexibilitu pro shromažďování a ukládání dat IP adres. Než se rozhodnete ukládat osobní údaje, jako jsou IP adresy, důrazně doporučujeme ověřit, že se neruší žádné požadavky na dodržování předpisů ani místní předpisy, na které se může vztahovat. Další informace o zpracování osobních údajů v Application Insights najdete v [pokynech k osobním údajům](../platform/personal-data-mgmt.md).
 
 ## <a name="storing-ip-address-data"></a>Ukládání dat IP adresy
 
@@ -98,7 +99,7 @@ Pokud potřebujete pouze změnit chování pro jeden Application Insights prost�
 
 ### <a name="rest-api"></a>Rozhraní REST API
 
-Datová část [rozhraní REST API](https://docs.microsoft.com/rest/api/azure/) pro provádění stejných úprav je následující:
+Datová část [rozhraní REST API](/rest/api/azure/) pro provádění stejných úprav je následující:
 
 ```
 PATCH https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/microsoft.insights/components/<resource-name>?api-version=2018-05-01-preview HTTP/1.1
@@ -119,7 +120,7 @@ Content-Length: 54
 
 ## <a name="telemetry-initializer"></a>Inicializátor telemetrie
 
-Pokud potřebujete pružnější alternativu než `DisableIpMasking` při zaznamenávání všech nebo částí IP adres, můžete pomocí [inicializátoru telemetrie](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer) zkopírovat veškerou nebo část IP adresy do vlastního pole. 
+Pokud potřebujete pružnější alternativu než `DisableIpMasking` při zaznamenávání všech nebo částí IP adres, můžete pomocí [inicializátoru telemetrie](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) zkopírovat veškerou nebo část IP adresy do vlastního pole. 
 
 ### <a name="aspnet--aspnet-core"></a>ASP.NET/ASP.NET Core
 
@@ -232,6 +233,6 @@ Nově shromážděné IP adresy by se měly zobrazit ve `customDimensions_client
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o [shromažďování osobních údajů](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt) v Application Insights.
+* Přečtěte si další informace o [shromažďování osobních údajů](../platform/personal-data-mgmt.md) v Application Insights.
 
 * Přečtěte si další informace o tom, jak [shromažďování IP adres](https://apmtips.com/posts/2016-07-05-client-ip-address/) v Application Insights funguje. (Jedná se o starší externí Blogový příspěvek napsaný jedním z našich inženýrů. Předchází aktuálnímu výchozímu chování, při kterém je zaznamenána IP adresa `0.0.0.0` , ale má větší hloubku v rámci integrovaného mechanismu `ClientIpHeaderTelemetryInitializer` .)

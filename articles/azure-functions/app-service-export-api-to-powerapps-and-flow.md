@@ -4,11 +4,12 @@ description: Přehled postupu vystavení rozhraní API hostovaného v App Servic
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.reviewer: sunayv
-ms.openlocfilehash: 8ded1c5fba902adeaeb883894452c00c4ae1d617
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d968c62afbfc92952f747e1e7627c98fe07436d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83115812"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015081"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Exportování rozhraní API hostovaného v Azure do PowerApps a Microsoft Flow
 
@@ -57,7 +58,7 @@ K dokončení exportu v **expresním** režimu použijte následující postup:
 
 2. Použijte nastavení uvedená v tabulce.
 
-    |Nastavení|Description|
+    |Nastavení|Popis|
     |--------|------------|
     |**Prostředí**|Vyberte prostředí, do kterého se má vlastní konektor Uložit. Další informace najdete v tématu [Prostředí – přehled](https://powerapps.microsoft.com/tutorials/environments-overview/).|
     |**Název vlastního rozhraní API**|Zadejte název, který PowerApps a tvůrci Microsoft Flow uvidí v seznamu konektorů.|
@@ -145,9 +146,9 @@ Při použití Azure AD potřebujete dva registrace aplikací Azure AD: jedno pr
 
 - Ke konfiguraci registrace pro rozhraní API použijte funkci [App Service ověřování/autorizace](../app-service/configure-authentication-provider-aad.md) .
 
-- Pokud chcete nakonfigurovat registraci konektoru, postupujte podle kroků v části [Přidání aplikace Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications). Registrace musí mít delegovaný přístup k vašemu rozhraní API a adresu URL odpovědi `https://msmanaged-na.consent.azure-apim.net/redirect` . 
+- Pokud chcete nakonfigurovat registraci konektoru, postupujte podle kroků v části [Přidání aplikace Azure AD](../active-directory/develop/quickstart-register-app.md). Registrace musí mít delegovaný přístup k vašemu rozhraní API a adresu URL odpovědi `https://msmanaged-na.consent.azure-apim.net/redirect` . 
 
-Další informace najdete v tématu Příklady registrace Azure AD pro [PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) a [Microsoft Flow](https://docs.microsoft.com/connectors/custom-connectors/azure-active-directory-authentication). Tyto příklady používají jako rozhraní API Azure Resource Manager; Pokud budete postupovat podle pokynů, nahraďte své rozhraní API.
+Další informace najdete v tématu Příklady registrace Azure AD pro [PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) a [Microsoft Flow](/connectors/custom-connectors/azure-active-directory-authentication). Tyto příklady používají jako rozhraní API Azure Resource Manager; Pokud budete postupovat podle pokynů, nahraďte své rozhraní API.
 
 Jsou vyžadovány následující hodnoty konfigurace:
 - **ID klienta** – ID klienta vašeho konektoru registrace Azure AD
@@ -168,5 +169,3 @@ Jsou vyžadovány následující hodnoty konfigurace:
 - **Autorizační adresa URL** – autorizační adresa url OAuth 2,0
 - **Adresa URL tokenu** – adresa URL tokenu OAuth 2,0
 - **Aktualizovat adresu URL** – adresa URL pro aktualizaci OAuth 2,0
-
-

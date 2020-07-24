@@ -41,7 +41,7 @@
 - name: Referenční informace
   items:
     - name: Rozhraní API
-      href: 'https://docs.microsoft.com/javascript/api/azuremediaplayer/?view=azure-node-latest'
+      href: /javascript/api/azuremediaplayer/?view=azure-node-latest
     - name: Metody rozhraní API
       href: azure-media-player-api-methods.md
     - name: Možnosti

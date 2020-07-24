@@ -3,12 +3,12 @@ title: Přidání úložiště artefaktů do testovacího prostředí v Azure De
 description: Naučte se, jak přidat úložiště artefaktů do testovacího prostředí ve službě Azure DevTest Labs.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 0c2c1b5f93e2b4dcaae818b3f529dc16440c3c75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d823f437cddef0a33c7d7ea3b4c4fbdaad90fb8e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483903"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013433"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Přidání úložiště artefaktů do testovacího prostředí v DevTest Labs
 DevTest Labs umožňuje zadat artefakt, který se má přidat k virtuálnímu počítači v době vytváření nebo po vytvoření virtuálního počítače. Tento artefakt může být nástroj nebo aplikace, kterou chcete nainstalovat na virtuální počítač. Artefakty jsou definované v souboru JSON, který se načte z GitHubu nebo z úložiště Git Azure DevOps.
@@ -19,7 +19,7 @@ Tento článek poskytuje informace o tom, jak přidat vlastní úložiště arte
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud chcete do testovacího prostředí přidat úložiště, nejdřív Získejte klíčové informace z vašeho úložiště. Následující části popisují, jak získat požadované informace pro úložiště, která jsou hostovaná na **GitHubu** nebo v **Azure DevOps**.
 
 ### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>Získání adresy URL pro klonování úložiště GitHub a tokenu osobního přístupu
@@ -55,7 +55,7 @@ Pokud chcete do testovacího prostředí přidat úložiště, nejdřív Získej
 ## <a name="use-azure-portal"></a>Použití webu Azure Portal
 V této části najdete postup přidání úložiště artefaktů do testovacího prostředí v Azure Portal.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
 2. Vyberte **Další služby**a v seznamu služeb vyberte **DevTest Labs** .
 3. V seznamu cvičení vyberte testovací prostředí.
 4. V nabídce vlevo vyberte **Konfigurace a zásady** .
@@ -64,7 +64,7 @@ V této části najdete postup přidání úložiště artefaktů do testovacíh
 
     ![Tlačítko Přidat úložiště](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
 5. Na stránce **úložiště** zadejte následující informace:
-   1. **Název**. Zadejte název úložiště.
+   1. **Název:** Zadejte název úložiště.
    2. **Adresa Url git clone** Zadejte adresu URL klonu Git HTTPS, kterou jste zkopírovali dříve z GitHubu nebo z Azure DevOps Services.
    3. **Větev**. Pokud chcete získat definice, zadejte větev.
    4. **Osobní přístupový token** Zadejte osobní přístupový token, který jste už dříve získali z GitHubu nebo Azure DevOps Services.
@@ -78,7 +78,7 @@ V této části najdete postup přidání úložiště artefaktů do testovacíh
 
 V této části najdete postup přidání úložiště artefaktů do testovacího prostředí pomocí šablony Azure Resource Manager.  Šablona vytvoří testovací prostředí, pokud ještě neexistuje.
 
-### <a name="template"></a>Šablona
+### <a name="template"></a>Template (Šablona)
 Ukázková šablona použitá v tomto článku shromažďuje následující informace prostřednictvím parametrů. Většina parametrů má inteligentní výchozí hodnoty, ale je třeba zadat několik hodnot. Je nutné zadat název testovacího prostředí, identifikátor URI pro úložiště artefaktů a token zabezpečení pro úložiště.
 
 - Název testovacího prostředí.
@@ -183,7 +183,7 @@ New-AzResourceGroupDeployment `
 Po úspěšném spuštění rutiny New-AzResourceGroupDeployment budou výstupy příkazu obsahovat důležité informace, jako je stav zřizování (měl by být úspěšný), a všechny výstupy pro šablonu.
 
 ## <a name="use-azure-powershell"></a>Použití Azure Powershell
-V této části najdete ukázkový skript PowerShellu, který se dá použít k přidání úložiště artefaktů do testovacího prostředí. Pokud nemáte Azure PowerShell, přečtěte si téma [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview?view=azps-1.2.0) podrobné pokyny k jeho instalaci.
+V této části najdete ukázkový skript PowerShellu, který se dá použít k přidání úložiště artefaktů do testovacího prostředí. Pokud nemáte Azure PowerShell, přečtěte si téma [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/?view=azps-1.2.0) podrobné pokyny k jeho instalaci.
 
 ### <a name="full-script"></a>Celý skript
 Tady je úplný skript, včetně některých podrobných zpráv a komentářů:

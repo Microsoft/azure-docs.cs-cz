@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 06/22/2020
-ms.openlocfilehash: b53a2c0cb3c709a6f22b57b45bef8b2894594a4d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3edb8da6d535ac7817c29db254aa84efd92321b6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85602447"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012973"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Co je výpočetní instance služby Azure Machine Learning?
 
@@ -30,7 +30,7 @@ Pro vzdělávání modelů produkčního prostředí použijte [Azure Machine Le
 
 Výpočetní instance je plně spravovaná cloudová pracovní stanice optimalizovaná pro vývojové prostředí ve službě Machine Learning. Přináší následující výhody:
 
-|Klíčové výhody||
+|Klíčové výhody|Popis|
 |----|----|
 |Produktivita|Modely můžete vytvářet a nasazovat pomocí integrovaných poznámkových bloků a následujících nástrojů v Azure Machine Learning Studiu:<br/>– Jupyter<br/>- JupyterLab<br/>-RStudio (Preview)<br/>Instance COMPUTE je plně integrovaná do Azure Machine Learningho pracovního prostoru a studia. Poznámkové bloky a data můžete sdílet s dalšími odborníky na data v pracovním prostoru. Můžete také nastavit VS Code vzdáleného vývoje pomocí [SSH](how-to-set-up-vs-code-remote.md) . |
 |Spravované & zabezpečené|Snižte nároky na zabezpečení a přidejte dodržování požadavků podnikového zabezpečení. Výpočetní instance poskytují robustní zásady správy a zabezpečené síťové konfigurace, jako jsou:<br/><br/>– Automatické zřizování z Správce prostředků šablon nebo Azure Machine Learning SDK<br/>- [Řízení přístupu na základě role (RBAC)](/azure/role-based-access-control/overview)<br/>- [Podpora virtuální sítě](how-to-enable-virtual-network.md#compute-instance)<br/>-Zásada SSH pro povolení nebo zakázání přístupu SSH<br/>Protokol TLS 1,2 povolen |
@@ -39,8 +39,11 @@ Výpočetní instance je plně spravovaná cloudová pracovní stanice optimaliz
 
 ## <a name="tools-and-environments"></a><a name="contents"></a>Nástroje a prostředí
 
-Instance Azure Machine Learning COMPUTE vám umožní vytvářet, vyškolovat a nasazovat modely v plně integrovaném prostředí poznámkového bloku v pracovním prostoru.
+> [!IMPORTANT]
+> Nástroje označené (Preview) jsou momentálně ve verzi Public Preview.
+> Verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
+Instance Azure Machine Learning COMPUTE vám umožní vytvářet, vyškolovat a nasazovat modely v plně integrovaném prostředí poznámkového bloku v pracovním prostoru.
 
 Tyto nástroje a prostředí se nainstalují do výpočetní instance: 
 
@@ -59,7 +62,7 @@ Tyto nástroje a prostředí se nainstalují do výpočetní instance:
 |----|:----:|
 |RStudio server Open Source Edition (Preview)||
 |Jádro R||
-|Sada SDK Azure Machine Learning pro R|[azuremlsdk](https://azure.github.io/azureml-sdk-for-r/reference/index.html)</br>Ukázky SDK|
+|Sada SDK Azure Machine Learning pro R|[azuremlsdk](https://azure.github.io/azureml-sdk-for-r/reference/index.html)</br>Ukázky sady SDK|
 
 |Prostředí & **Python** Tools|Podrobnosti|
 |----|----|
@@ -140,7 +143,7 @@ Pokud jste připraveni spustit jeden z vašich poznámkových bloků, vytvořte 
 :::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="Vytvořit novou výpočetní instanci":::
 
 
-|Pole  |Description  |
+|Pole  |Popis  |
 |---------|---------|
 |Název výpočtu     |  <li>Název je povinný a musí mít délku 3 až 24 znaků.</li><li>Platné znaky jsou velká písmena a malá písmena, číslice a **-** znak.</li><li>Název musí začínat písmenem.</li><li>Název musí být jedinečný v rámci všech stávajících výpočtů v oblasti Azure. Pokud zvolený název není jedinečný, zobrazí se upozornění.</li><li>Pokud **-** se používá znak, musí následovat aspoň jedno písmeno později v názvu.</li>     |
 |Typ virtuálního počítače |  Vyberte možnost procesor nebo GPU. Tento typ nelze po vytvoření změnit.     |

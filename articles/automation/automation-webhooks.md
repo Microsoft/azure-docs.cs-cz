@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2d73b87248fff2e99f05d2d6d6263f2bb3abba57
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 4338bc4a11b785b27f6316748f9cbc4eeaaddbea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185632"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015098"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Spuštění runbooku z webhooku
 
@@ -30,7 +30,7 @@ Následující tabulka popisuje vlastnosti, které musíte nakonfigurovat pro We
 | Vlastnost | Popis |
 |:--- |:--- |
 | Název |Název Webhooku Můžete zadat jakýkoli název, který chcete, protože není k dispozici klientovi. Používá se pouze k identifikaci Runbooku v Azure Automation. Jako osvědčený postup byste měli Webhook dát název týkající se klienta, který ho používá. |
-| URL |Adresa URL Webhooku Jedná se o jedinečnou adresu, kterou klient volá s HTTP POST, aby mohl spustit Runbook propojený s webhookem. Při vytváření Webhooku se automaticky vygeneruje. Nemůžete zadat vlastní adresu URL. <br> <br> Adresa URL obsahuje token zabezpečení, který umožňuje systému třetí strany vyvolat sadu Runbook bez dalšího ověřování. Z tohoto důvodu byste měli zacházet s adresou URL, jako je heslo. Z bezpečnostních důvodů můžete při vytváření Webhooku zobrazit jenom adresu URL v Azure Portal. Poznamenejte si adresu URL v zabezpečeném umístění pro budoucí použití. |
+| Adresa URL |Adresa URL Webhooku Jedná se o jedinečnou adresu, kterou klient volá s HTTP POST, aby mohl spustit Runbook propojený s webhookem. Při vytváření Webhooku se automaticky vygeneruje. Nemůžete zadat vlastní adresu URL. <br> <br> Adresa URL obsahuje token zabezpečení, který umožňuje systému třetí strany vyvolat sadu Runbook bez dalšího ověřování. Z tohoto důvodu byste měli zacházet s adresou URL, jako je heslo. Z bezpečnostních důvodů můžete při vytváření Webhooku zobrazit jenom adresu URL v Azure Portal. Poznamenejte si adresu URL v zabezpečeném umístění pro budoucí použití. |
 | Datum vypršení platnosti | Datum vypršení platnosti Webhooku, po kterém ho už nebude možné používat. Po vytvoření Webhooku můžete upravit datum vypršení platnosti, dokud nevypršela platnost Webhooku. |
 | Povoleno | Nastavení určující, zda je Webhook ve výchozím nastavení povolený, když je vytvořený. Pokud tuto vlastnost nastavíte na zakázáno, nebude moct Webhook používat žádný klient. Tuto vlastnost můžete nastavit při vytváření Webhooku nebo jakékoli jiné doby po jejím vytvoření. |
 
@@ -133,7 +133,7 @@ Za předpokladu, že žádost je úspěšná, odpověď Webhooku obsahuje ID úl
 {"JobIds":["<JobId>"]}
 ```
 
-Klient nemůže určit, kdy má být úloha sady Runbook dokončena nebo její stav dokončení z Webhooku. Tyto informace může zjistit s použitím ID úlohy s jiným mechanismem, jako je například [Windows PowerShell](/powershell/module/servicemanagement/azure/get-azureautomationjob) nebo [rozhraní Azure Automation API](/rest/api/automation/job).
+Klient nemůže určit, kdy má být úloha sady Runbook dokončena nebo její stav dokončení z Webhooku. Tyto informace může zjistit s použitím ID úlohy s jiným mechanismem, jako je například [Windows PowerShell](/powershell/module/servicemanagement/azure.service/get-azureautomationjob) nebo [rozhraní Azure Automation API](/rest/api/automation/job).
 
 ## <a name="renew-a-webhook"></a>Obnovení Webhooku
 

@@ -3,28 +3,28 @@ title: Průběžný export telemetrie z Application Insights | Microsoft Docs
 description: Exportujte data o využití a diagnostiku do úložiště v Microsoft Azure a Stáhněte si z něj.
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 8ca2dc30b6e0681b5ee10fa3c77fab15ffb18b1d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 54cd6db6de4aa9c1b8f8894c03a8803ee4aa2b00
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110211"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014520"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Export telemetrie z Application Insights
 Chcete udržet telemetrii déle než standardní doba uchovávání? Nebo ji zpracujete specializovaným způsobem? Pro tuto dobu je ideální pro průběžný export. Události, které vidíte na portálu Application Insights, se dají exportovat do úložiště v Microsoft Azure ve formátu JSON. Odtud si můžete stáhnout svá data a napsat kód, který budete potřebovat k jeho zpracování.  
 
 > [!NOTE]
-> Průběžný export se podporuje jenom pro klasické prostředky Application Insights. [Prostředky Application Insights založené na pracovním prostoru](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource) musí používat [nastavení diagnostiky](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource#export-telemetry).
+> Průběžný export se podporuje jenom pro klasické prostředky Application Insights. [Prostředky Application Insights založené na pracovním prostoru](./create-workspace-resource.md) musí používat [nastavení diagnostiky](./create-workspace-resource.md#export-telemetry).
 >
 
 Před nastavením průběžného exportu je možné zvážit několik možností:
 
 * Tlačítko Exportovat v horní části karty metriky nebo hledání umožňuje přenést tabulky a grafy do excelové tabulky.
 
-* [Analýza](../../azure-monitor/app/analytics.md) poskytuje výkonný dotazovací jazyk pro telemetrii. Může také exportovat výsledky.
+* [Analýza](../log-query/log-query-overview.md) poskytuje výkonný dotazovací jazyk pro telemetrii. Může také exportovat výsledky.
 * Pokud hledáte [data v Power BI](../../azure-monitor/app/export-power-bi.md ), můžete to udělat bez použití průběžného exportu.
 * [Přístup k datům REST API](https://dev.applicationinsights.io/) umožňuje programově přistupovat k telemetrie.
-* Můžete také získat přístup k nastavení [průběžného exportu prostřednictvím PowerShellu](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport).
+* Můžete také získat přístup k nastavení [průběžného exportu prostřednictvím PowerShellu](/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport).
 
 Po průběžném exportu kopíruje vaše data do úložiště (kde může zůstat tak dlouho, jak budete chtít), je stále k dispozici v Application Insights pro obvyklou [dobu uchování](../../azure-monitor/app/data-retention-privacy.md).
 
@@ -32,9 +32,9 @@ Po průběžném exportu kopíruje vaše data do úložiště (kde může zůsta
 
 Průběžný export **nepodporuje** následující funkce a konfigurace služby Azure Storage:
 
-* Použití [bran firewall VNet/Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security) ve spojení s úložištěm objektů BLOB v Azure.
+* Použití [bran firewall VNet/Azure Storage](../../storage/common/storage-network-security.md) ve spojení s úložištěm objektů BLOB v Azure.
 
-* [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction).
+* [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md).
 
 ## <a name="create-a-continuous-export"></a><a name="setup"></a>Vytvoření průběžného exportu
 
@@ -58,7 +58,7 @@ Může to trvat přibližně hodinu, než se data objeví v úložišti.
 
 Po dokončení prvního exportu najdete v kontejneru úložiště objektů BLOB v Azure strukturu podobnou následující: (Tato operace se bude lišit v závislosti na shromažďovaných datech.)
 
-|Name | Description |
+|Název | Popis |
 |:----|:------|
 | [Dostupnost](export-data-model.md#availability) | Oznamuje [webové testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md).  |
 | [Událost](export-data-model.md#events) | Vlastní události generované [TrackEvent ()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent). 
@@ -200,7 +200,7 @@ V případě větších škálování zvažte clustery [HDInsight](https://azure
     Upravte export a otevřete kartu exportovat cíl. ponechte stejné úložiště jako předtím a kliknutím na OK potvrďte. Export se restartuje. Pokud byla změna během posledních několika dní, ztratíte data.
 * *Můžu pozastavit export?*
 
-    Ano. Klikněte na Zakázat.
+    Yes. Klikněte na Zakázat.
 
 ## <a name="code-samples"></a>Ukázky kódů
 

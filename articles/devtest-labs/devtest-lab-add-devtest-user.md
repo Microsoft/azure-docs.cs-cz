@@ -3,19 +3,19 @@ title: Přidat vlastníky a uživatele v Azure DevTest Labs | Microsoft Docs
 description: Přidání vlastníků a uživatelů v Azure DevTest Labs pomocí Azure Portal nebo PowerShellu
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: d5e7a166f9b79e2ff46f5874d53a40ed16750100
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: b54e372a9b85b76737c0780be4bce9362765301b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855688"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013458"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Přidat vlastníky a uživatele v Azure DevTest Labs
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
 > 
 > 
 
-Přístup v Azure DevTest Labs řídí [Access Control na základě role (RBAC) založené na rolích Azure](../role-based-access-control/overview.md). Pomocí RBAC můžete oddělit povinnosti v rámci týmu na *role* , ve kterých udělíte jenom množství přístupu, které uživatelé potřebují k provádění svých úloh. Tři z těchto rolí RBAC jsou *vlastník*, *uživatel DevTest Labs*a *Přispěvatel*. V tomto článku se dozvíte, jaké akce se dají provádět v každé ze tří hlavních rolí RBAC. Odtud se naučíte, jak přidat uživatele do testovacího prostředí prostřednictvím portálu i prostřednictvím skriptu PowerShellu a jak přidat uživatele na úrovni předplatného.
+Přístup v Azure DevTest Labs řídí [řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md). Pomocí RBAC můžete oddělit povinnosti v rámci týmu na *role* , ve kterých udělíte jenom množství přístupu, které uživatelé potřebují k provádění svých úloh. Tři z těchto rolí RBAC jsou *vlastník*, *uživatel DevTest Labs*a *Přispěvatel*. V tomto článku se dozvíte, jaké akce se dají provádět v každé ze tří hlavních rolí RBAC. Odtud se naučíte, jak přidat uživatele do testovacího prostředí prostřednictvím portálu i prostřednictvím skriptu PowerShellu a jak přidat uživatele na úrovni předplatného.
 
 ## <a name="actions-that-can-be-performed-in-each-role"></a>Akce, které je možné provést v každé roli
 Existují tři hlavní role, které můžete přiřadit uživateli:
@@ -53,7 +53,7 @@ Následující tabulka ilustruje akce, které mohou provádět uživatelé v ka�
 Vlastníky a uživatele je možné přidat na úrovni testovacího prostředí prostřednictvím Azure Portal. Uživatel může být externím uživatelem s platným [účet Microsoft (MSA)](devtest-lab-faq.md#what-is-a-microsoft-account).
 Následující kroky vás provedou procesem přidání vlastníka nebo uživatele do testovacího prostředí v Azure DevTest Labs:
 
-1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se na portál [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 3. V seznamu cvičení vyberte požadované testovací prostředí.
 4. V okně testovacího prostředí vyberte **Konfigurace a zásady**. 
@@ -110,7 +110,7 @@ Do testovacího prostředí můžete přidat další vlastníky přes okno testo
 
 K přidání vlastníka do předplatného Azure použijte tento postup:
 
-1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se na portál [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Vyberte **všechny služby**a potom v seznamu vyberte **odběry** .
 3. Vyberte požadované předplatné.
 4. Vyberte ikonu **přístupu** . 
@@ -127,4 +127,3 @@ K přidání vlastníka do předplatného Azure použijte tento postup:
 11. Když se vrátíte do okna **Uživatelé** , uživatel byl přidán jako vlastník. Tento uživatel je teď vlastníkem všech laboratoří vytvořených v rámci tohoto předplatného, takže může provádět úkoly vlastníka. 
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
-

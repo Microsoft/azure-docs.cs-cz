@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: e56ba304d197984110de5127a0f163ac0accf1aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3835f88eb581693d10f68a9a495329466a657a2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537504"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014486"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Rychlý Start: Začínáme s Application Insights ve webovém projektu Java
 
@@ -17,14 +18,14 @@ V tomto rychlém startu použijete Application Insights k automatickému instrum
 
 Application Insights představují rozšiřitelnou analytickou službu, která webovým vývojářům pomůže pochopit výkon a využití živých aplikací. Application Insights podporuje aplikace v Javě spuštěné v systému Linux, Unix nebo Windows.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * Funkční aplikace Java.
 
 ## <a name="get-an-application-insights-instrumentation-key"></a>Získejte klíč instrumentace Application Insights
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com/).
 2. Na webu Azure Portalvytvořte prostředek Application Insights. Nastavte typ aplikace na webovou aplikaci Java.
 
 3. Najděte klíč instrumentace nového prostředku. Tento klíč budete muset za chvíli vložit do projektu kódu.
@@ -171,7 +172,7 @@ Proklikejte se jednotlivými typy konkrétního požadavku pro zobrazení jednot
 ![Přejít k určitému ukázkovému zobrazení](./media/java-get-started/007-instance.png)
 
 ### <a name="analytics-powerful-query-language"></a>Analýzy: účinný dotazovací jazyk
-Jak shromažďujete další data, můžete spouštět dotazy obou ke shromáždění dat a k nalezení jednotlivých instancí.  [Analýzy](../../azure-monitor/app/analytics.md) představují výkonný nástroj jak pro vysvětlení výkonu, tak i využití a k diagnostickým účelům.
+Jak shromažďujete další data, můžete spouštět dotazy obou ke shromáždění dat a k nalezení jednotlivých instancí.  [Analýzy](../log-query/log-query-overview.md) představují výkonný nástroj jak pro vysvětlení výkonu, tak i využití a k diagnostickým účelům.
 
 ![Příklad analýz](./media/java-get-started/0025.png)
 
@@ -263,7 +264,7 @@ Můžete zadat další čítače výkonu, které se mají shromažďovat.
   * `tabular`: data čítače výkonu jsou ve formátu řádku tabulky
 
 #### <a name="windows-performance-counters"></a>Čítače výkonu Windows
-Každý [čítač výkonu systému Windows](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx) je členem určité kategorie (stejným způsobem, jakým je pole členem třídy). Kategorie mohou být buď globální, nebo mohou mít číslované nebo pojmenované instance.
+Každý [čítač výkonu systému Windows](/windows/win32/perfctrs/performance-counters-portal) je členem určité kategorie (stejným způsobem, jakým je pole členem třídy). Kategorie mohou být buď globální, nebo mohou mít číslované nebo pojmenované instance.
 
 ```XML
     <PerformanceCounters>
@@ -307,7 +308,7 @@ Application Insights může otestovat váš web v pravidelných intervalech a zk
 * [Monitorování čítačů výkonu Unix](java-collectd.md)
 * Přidejte [na svoje webové stránky monitorování](javascript.md) a sledujte dobu načítání stránek, volání AJAX nebo výjimky prohlížeče.
 * Můžete napsat i [vlastní telemetrii](../../azure-monitor/app/api-custom-events-metrics.md) ke sledování využití v prohlížeči nebo na serveru.
-* Použití [analýzy](../../azure-monitor/app/analytics.md) pro výkonné dotazy přes telemetrii z vaší aplikace
+* Použití [analýzy](../log-query/log-query-overview.md) pro výkonné dotazy přes telemetrii z vaší aplikace
 * Další informace najdete na webu [Azure pro vývojáře v Javě](/java/azure).
 
 <!--Link references-->

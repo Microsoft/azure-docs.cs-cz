@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 8be8ffa1b569c365c8fa9b985d2b8319b7c0731b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: faef2721b48ffab12264c585d2dec55ab9334016
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249831"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015285"
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>Použití řízení přístupu na základě role ve službě API Management
 
-Azure API Management spoléhá na Access Control na základě rolí v Azure (RBAC) a umožňuje jemně odstupňovanou správu přístupu pro API Management služby a entity (například rozhraní API a zásady). Tento článek poskytuje přehled předdefinovaných a vlastních rolí v API Management. Další informace o správě přístupu v Azure Portal najdete v tématu [Začínáme se správou přístupu v Azure Portal](../role-based-access-control/overview.md).
+Azure API Management spoléhá na řízení přístupu na základě role Azure (Azure RBAC) a umožňuje jemně odstupňovanou správu přístupu pro API Management služby a entity (například rozhraní API a zásady). Tento článek poskytuje přehled předdefinovaných a vlastních rolí v API Management. Další informace o správě přístupu v Azure Portal najdete v tématu [Začínáme se správou přístupu v Azure Portal](../role-based-access-control/overview.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

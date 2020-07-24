@@ -4,12 +4,12 @@ description: V tomto rychlém startu se dozvíte, jak nastavit monitorování we
 ms.topic: quickstart
 ms.date: 07/15/2019
 ms.custom: mvc
-ms.openlocfilehash: b47f3ce1ebed12d14dffd68e87dd013bb86218ea
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: fa2ecd5d953ec0411a122dc7107ce23de1ae5bc6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801633"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014044"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>Rychlý Start: Začněte monitorovat web pomocí Azure Monitor Application Insights
 
@@ -17,7 +17,7 @@ V tomto rychlém startu se naučíte, jak na web přidat Open Source sadu Applic
 
 Azure Monitor Application Insights umožňuje snadné monitorování webu z hlediska dostupnosti, výkonu a využití. Můžete také rychle identifikovat a diagnostikovat chyby ve vaší aplikaci a nečekat na to, až je nahlásí uživatelé. Application Insights poskytuje možnosti monitorování na straně serveru i klienta nebo prohlížeče.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * Web, na který můžete přidat Application Insights JavaScript SDK.
@@ -26,24 +26,24 @@ Azure Monitor Application Insights umožňuje snadné monitorování webu z hled
 
 Application Insights můžou shromažďovat data telemetrie z jakékoli aplikace připojené k Internetu, která běží místně nebo v cloudu. Tato data zobrazíte pomocí následujících kroků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-1. Vyberte **vytvořit** > **nástroje** > pro správu prostředků**Application Insights**.
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com/).
+1. Vyberte **vytvořit**  >  **Nástroje pro správu**prostředků  >  **Application Insights**.
 
    > [!NOTE]
-   >Pokud Application Insights prostředek vytvoříte poprvé, přečtěte si téma [vytvoření prostředku Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource).
+   >Pokud Application Insights prostředek vytvoříte poprvé, přečtěte si téma [vytvoření prostředku Application Insights](./create-new-resource.md).
 1. Jakmile se zobrazí pole konfigurace, dokončete pomocí následující tabulky vstupní pole:
 
     | Nastavení        | Hodnota           | Popis  |
    | ------------- |:-------------|:-----|
    | **Název**      | Globálně jedinečná hodnota | Název, který identifikuje aplikaci, kterou sledujete. |
    | **Skupina prostředků**     | myResourceGroup      | Název nové skupiny prostředků pro hostování dat Application Insights. Můžete vytvořit novou skupinu prostředků nebo použít existující. |
-   | **Umístění** | USA – východ | Vyberte umístění poblíž vaší aplikace nebo poblíž místa, kde je vaše aplikace hostovaná. |
+   | **Umístění** | East US | Vyberte umístění poblíž vaší aplikace nebo poblíž místa, kde je vaše aplikace hostovaná. |
 1. Vyberte **Vytvořit**.
 
 ## <a name="create-an-html-file"></a>Vytvoření souboru HTML
 
-1. Na místním počítači vytvořte soubor ``hello_world.html``. V tomto příkladu vytvořte soubor na kořeni jednotky C, aby vypadal jako ``C:\hello_world.html``.
-1. Zkopírujte následující skript a vložte ho do ``hello_world.html``:
+1. Na místním počítači vytvořte soubor ``hello_world.html``. V tomto příkladu vytvořte soubor na kořeni jednotky C, aby vypadal jako ``C:\hello_world.html`` .
+1. Zkopírujte následující skript a vložte ho do ``hello_world.html`` :
 
     ```html
     <!DOCTYPE html>
@@ -60,11 +60,11 @@ Application Insights můžou shromažďovat data telemetrie z jakékoli aplikace
 
 ## <a name="configure-application-insights-sdk"></a>Konfigurace Application Insights SDK
 
-1. Vyberte **Přehled** > **základy**a pak zkopírujte **klíč instrumentace**vaší aplikace.
+1. Vyberte **Přehled**  >  **základy**a pak zkopírujte **klíč instrumentace**vaší aplikace.
 
    ![Formulář Nový prostředek Application Insights](media/website-monitoring/instrumentation-key-001.png)
 
-1. Před uzavírací ``hello_world.html`` ``</head>`` značku přidejte do souboru následující skript:
+1. ``hello_world.html``Před uzavírací značku přidejte do souboru následující skript ``</head>`` :
 
    ```javascript
    <script type="text/javascript">
@@ -86,7 +86,7 @@ Application Insights můžou shromažďovat data telemetrie z jakékoli aplikace
 
    Čtyři výchozí grafy na stránce Přehled mají nastavený obor na data aplikace na straně serveru. Vzhledem k tomu, že instrumentuje interakce klienta nebo prohlížeče se sadou JavaScript SDK, toto konkrétní zobrazení se nepoužije, pokud je v něm také nainstalovaná sada SDK na straně serveru.
 
-1. Vyberte **Analytics** ![ikonu](media/website-monitoring/006.png)mapa aplikace Analytics.  Tato akce otevře **analýzu**, která poskytuje bohatý dotazovací jazyk pro analýzu všech dat shromážděných v Application Insights. Chcete-li zobrazit data související s požadavky prohlížeče na straně klienta, spusťte následující dotaz:
+1. Vyberte **Analytics** ![ ikonu mapa aplikace Analytics ](media/website-monitoring/006.png) .  Tato akce otevře **analýzu**, která poskytuje bohatý dotazovací jazyk pro analýzu všech dat shromážděných v Application Insights. Chcete-li zobrazit data související s požadavky prohlížeče na straně klienta, spusťte následující dotaz:
 
     ```kusto
     // average pageView duration by name
@@ -132,4 +132,4 @@ Pokud máte v úmyslu pokračovat v práci s dalšími rychlými starty nebo kur
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vyhledání a diagnostika potíží s výkonem](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)
+> [Vyhledání a diagnostika potíží s výkonem](../log-query/log-query-overview.md)

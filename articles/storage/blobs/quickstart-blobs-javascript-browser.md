@@ -7,12 +7,12 @@ ms.date: 04/18/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: af76025317436f7046b857731e4c8af9b504201f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f884e6d3cbc2e1f3127b251818f4617fccb6a999
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833413"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011324"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -20,12 +20,17 @@ ms.locfileid: "85833413"
 
 Úložiště objektů BLOB v Azure je optimalizované pro ukládání velkých objemů nestrukturovaných dat. Objekty blob jsou objekty, které mohou obsahovat text nebo binární data, včetně obrázků, dokumentů, datových proudů médií a archivovaných dat. V tomto rychlém startu se naučíte spravovat objekty BLOB pomocí JavaScriptu v prohlížeči. Nahrajete a vypíšete objekty BLOB a vytvoříte a odstraníte kontejnery.
 
-[Referenční dokumentace k](/javascript/api/@azure/storage-blob)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)  |  [Balíček (npm)](https://www.npmjs.com/package/@azure/storage-blob)  |  [Ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+Další prostředky:
+
+* [Referenční dokumentace k rozhraní API](/javascript/api/@azure/storage-blob)
+* [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
+* [Balíček (npm)](https://www.npmjs.com/package/@azure/storage-blob)
+* [Ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 > [!NOTE]
 > Informace o tom, jak začít s předchozí verzí sady SDK, najdete [v tématu rychlý Start: Správa objektů BLOB pomocí sady JavaScript v10 za účelem SDK v Node.js](storage-quickstart-blobs-nodejs-legacy.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Účet Azure s aktivním předplatným](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 * [Účet Azure Storage](../common/storage-account-create.md)
@@ -155,7 +160,7 @@ Vzorový kód ukazuje, jak provádět následující úlohy pomocí klientské k
 * [Vytvoření a odstranění kontejneru úložiště](#create-and-delete-a-storage-container)
 * [Výpis objektů blob](#list-blobs)
 * [Nahrát objekty blob](#upload-blobs)
-* [Odstranění objektů blob](#delete-blobs)
+* [Odstraňovat objekty blob](#delete-blobs)
 
 Kód spustíte po přidání všech fragmentů kódu do souboru *index.js* .
 
@@ -215,7 +220,7 @@ Uložte soubor *index.js* .
 
 Tento kód propojí tlačítko **Vybrat a odeslat soubory** do skrytého `file-input` prvku. Událost tlačítka `click` aktivuje událost vstupu souboru `click` a zobrazí nástroj pro výběr souboru. Po výběru souborů a zavření dialogového okna `input` dojde k události a `uploadFiles` zavolá se funkce. Tato funkce vytvoří objekt [BlockBlobClient](/javascript/api/@azure/storage-blob/blockblobclient) a potom zavolá funkci [uploadBrowserData](/javascript/api/@azure/storage-blob/blockblobclient#uploadbrowserdata-blob---arraybuffer---arraybufferview--blockblobparalleluploadoptions-) pouze pro prohlížeč pro každý vybraný soubor. Každé volání vrátí `Promise` . Každá `Promise` je přidána do seznamu tak, aby mohly být všechny očekávány společně, což způsobí, že se soubory budou nahrávat paralelně.
 
-### <a name="delete-blobs"></a>Odstranění objektů blob
+### <a name="delete-blobs"></a>Odstraňovat objekty blob
 
 Pokud kliknete na tlačítko **Odstranit vybrané soubory** , odstraňte soubory z kontejneru úložiště. Na konec souboru *index.js* přidejte následující kód.
 
@@ -267,7 +272,7 @@ V [Azure Portal](https://portal.azure.com)můžete pomocí následujících krok
 #### <a name="step-1---create-a-container"></a>Krok 1 – vytvoření kontejneru
 
 1. Ve webové aplikaci vyberte **vytvořit kontejner**. Stav označuje, že byl vytvořen kontejner.
-2. Pokud chcete ověřit Azure Portal, vyberte svůj účet úložiště. V části **BLOB Service**vyberte **kontejnery**. Ověřte, že se nový kontejner zobrazuje. (Možná budete muset vybrat **aktualizovat**.)
+2. Pokud chcete ověřit Azure Portal, vyberte svůj účet úložiště. V části **Blob service** vyberte **Kontejnery**. Ověřte, že se nový kontejner zobrazuje. (Možná budete muset vybrat **aktualizovat**.)
 
 #### <a name="step-2---upload-a-blob-to-the-container"></a>Krok 2 – nahrání objektu blob do kontejneru
 

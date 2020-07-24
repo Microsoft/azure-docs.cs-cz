@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: a2074b1ecd37fd18a9a0ac9091f05e734765e40b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 181f0d62f160a6644e0423be052012521752525f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86199977"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012939"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Co je návrhář služby Azure Machine Learning (Preview)? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -26,7 +26,7 @@ Azure Machine Learning Designer vám umožňuje vizuálně propojit [datové sad
 
 Návrhář používá [pracovní prostor](concept-workspace.md) Azure Machine Learning k uspořádání sdílených prostředků, jako jsou:
 
-+ [Kanály](#pipeline)
++ [Pipelines](#pipeline)
 + [Datové sady](#datasets)
 + [Výpočetní prostředky](#compute)
 + [Registrované modely](concept-azure-machine-learning-architecture.md#models)
@@ -90,7 +90,7 @@ Další nápovědu k dispozici v knihovně strojového učení, najdete v témat
 
 Pomocí výpočetních prostředků z pracovního prostoru můžete spustit kanál a hostovat nasazené modely jako koncové body v reálném čase nebo koncové body kanálu (pro odvození dávky). Podporované cíle výpočtů:
 
-| Cílový výpočetní objekt | Probíhá trénování | Nasazení |
+| Cílový výpočetní objekt | Školení | Nasazení |
 | ---- |:----:|:----:|
 | Azure Machine Learning COMPUTE | ✓ | |
 | Azure Machine Learning výpočetní instance | ✓ | |
@@ -98,7 +98,7 @@ Pomocí výpočetních prostředků z pracovního prostoru můžete spustit kan�
 
 Cíle výpočetní služby jsou připojeny k vašemu [pracovnímu prostoru Azure Machine Learning](concept-workspace.md). Výpočetní cíle můžete spravovat ve vašem pracovním prostoru v [Azure Machine Learning Studiu](https://ml.azure.com).
 
-## <a name="deploy"></a>Nasazení
+## <a name="deploy"></a>Nasadit
 
 Chcete-li provést Inferencing v reálném čase, je nutné nasadit kanál jako **koncový bod v reálném**čase. Koncový bod v reálném čase vytvoří rozhraní mezi externí aplikací a modelem bodování. Volání koncového bodu v reálném čase vrátí výsledky předpovědi do aplikace v reálném čase. Pro volání koncového bodu v reálném čase předáte klíč rozhraní API, který byl vytvořen při nasazení koncového bodu. Koncový bod je založený na REST, oblíbené architektuře, která je vhodná pro projekty webového programování.
 
@@ -115,25 +115,6 @@ Publikované kanály jsou flexibilní, dají se využít ke školení a reučen�
 Publikovaný kanál běží na výpočetních prostředcích, které definujete v konceptu kanálu pro každý modul.
 
 Návrhář vytvoří stejný objekt [PublishedPipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py) jako sadu SDK.
-
-
-## <a name="moving-from-the-visual-interface-to-the-designer"></a>Přesun z vizuálního rozhraní do návrháře
-
-Rozhraní jazyka Visual (Preview) bylo aktualizováno a nyní je Azure Machine Learning Designer (Preview). Návrhář byl znovu navržen tak, aby používal back-end založený na kanálu, který je plně integrován s ostatními funkcemi Azure Machine Learning. 
-
-V důsledku těchto aktualizací se některé koncepty a pojmy pro vizuální rozhraní změnily nebo přejmenovaly. Nejdůležitější koncepční změny najdete v následující tabulce. 
-
-| Koncept v Návrháři | Dříve v vizuálním rozhraní |
-| ---- |:----:|
-| Koncept kanálu | Experiment |
-| Koncový bod v reálném čase | Webová služba |
-
-### <a name="migrating-to-the-designer"></a>Migrace do návrháře
-
-Existující experimenty vizuálního rozhraní a webové služby můžete převést na kanály a koncové body v návrháři v reálném čase. K migraci prostředků vizuálního rozhraní použijte následující postup:
-
-[!INCLUDE [migrate from the visual interface](../../includes/aml-vi-designer-migration.md)]
-
 
 ## <a name="next-steps"></a>Další kroky
 

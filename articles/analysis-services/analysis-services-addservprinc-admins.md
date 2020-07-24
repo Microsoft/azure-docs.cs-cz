@@ -8,12 +8,12 @@ ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4ce23e9da84d01a288c1c37c6a6d884db2ed3969
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ce8f7347e4813e72ede426ab17f09221ab859136
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077554"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015404"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Přidání instančního objektu k roli správce serveru 
 
@@ -44,7 +44,7 @@ Správce serveru můžete nakonfigurovat pomocí SQL Server Management Studio (S
 
 ## <a name="using-a-resource-manager-template"></a>Použití šablony Resource Manageru
 
-Správce serveru můžete také nakonfigurovat tak, že nasadíte Analysis Services Server pomocí šablony Azure Resource Manager. Identita, která spouští nasazení, musí patřit do role **přispěvatele** pro prostředek v [Access Control na základě rolí Azure (RBAC)](../role-based-access-control/overview.md).
+Správce serveru můžete také nakonfigurovat tak, že nasadíte Analysis Services Server pomocí šablony Azure Resource Manager. Identita, která spouští nasazení, musí patřit do role **přispěvatele** pro prostředek v [řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md).
 
 > [!IMPORTANT]
 > Instanční objekt se musí přidat pomocí formátu `app:{service-principal-client-id}@{azure-ad-tenant-id}` .
@@ -119,5 +119,3 @@ Pak můžete pomocí tohoto ID klienta v kombinaci s ID tenanta přidat spravova
 
 * [Stáhnout SQL Server modul PowerShellu](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
 * [Stáhnout SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
-
-

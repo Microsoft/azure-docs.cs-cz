@@ -10,12 +10,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
-ms.openlocfilehash: 7321331adcfc81e26b40e7a3c4869b8b1e50fc0e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 02962e9c5be2c4b73d121a53a7b595c573ad6cd0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254380"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015217"
 ---
 # <a name="deploy-to-azure-kubernetes-service"></a>Nasazení do Azure Kubernetes Service
 
@@ -29,7 +29,7 @@ Tento článek popisuje postup nasazení komponenty samoobslužné brány Azure 
 
 ## <a name="deploy-the-self-hosted-gateway-to-aks"></a>Nasazení samoobslužné brány do AKS
 
-1. V části **Nastavení**vyberte **brány** .
+1. V části **nasazení a infrastruktura**vyberte **brány** .
 2. Vyberte prostředek samoobslužné brány, který chcete nasadit.
 3. Vyberte **nasazení**.
 4. Všimněte si, že nový token v textovém poli **token** byl automaticky vygenerován za použití výchozích hodnot **vypršení platnosti** a **tajného klíče** . V případě potřeby upravte buď nebo, a pokud je to potřeba **, vyberte vytvořit a vytvořte** nový token.

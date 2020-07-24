@@ -3,12 +3,12 @@ title: Prozkoumejte protokoly trasování .NET v Application Insights
 description: Hledání v protokolech vygenerovaných trasováním, NLog nebo Log4Net.
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: d010fe4389e22c9909800f5329911b6b5619d7b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aad81855b58ee96789d097fbfbd3e7f9b17f6900
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829529"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014571"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>Prozkoumejte protokoly trasování .NET/.NET Core a Python v Application Insights
 
@@ -84,7 +84,7 @@ Pokud dáváte přednost log4net nebo NLog, použijte:
 ```
 
 ## <a name="use-eventsource-events"></a>Použití událostí EventSource
-Můžete nakonfigurovat události [System. Diagnostics. Tracing. EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) pro odeslání do Application Insights jako trasování. Nejdřív nainstalujte `Microsoft.ApplicationInsights.EventSourceListener` balíček NuGet. Pak upravte `TelemetryModules` část souboru [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) .
+Můžete nakonfigurovat události [System. Diagnostics. Tracing. EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) pro odeslání do Application Insights jako trasování. Nejdřív nainstalujte `Microsoft.ApplicationInsights.EventSourceListener` balíček NuGet. Pak upravte `TelemetryModules` část souboru [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) .
 
 ```xml
     <Add Type="Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule, Microsoft.ApplicationInsights.EventSourceListener">
@@ -188,9 +188,9 @@ Můžete například:
 >Pokud vaše aplikace odesílá spoustu dat a používáte sadu SDK Application Insights pro ASP.NET verze 2.0.0-beta3 nebo novější, může funkce *adaptivního vzorkování* fungovat a odesílat jenom část telemetrie. [Další informace o vzorkování.](../../azure-monitor/app/sampling.md)
 >
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 ### <a name="how-do-i-do-this-for-java"></a>Návody to udělat pro Java?
-V případě instrumentace bez kódu Java (doporučeno) protokoly se shromažďují mimo pole, použijte [agenta Java 3,0](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent).
+V případě instrumentace bez kódu Java (doporučeno) protokoly se shromažďují mimo pole, použijte [agenta Java 3,0](./java-in-process-agent.md).
 
 Pokud používáte sadu Java SDK, použijte [adaptéry protokolu Java](../../azure-monitor/app/java-trace-logs.md).
 
@@ -200,7 +200,7 @@ Pokud používáte sadu Java SDK, použijte [adaptéry protokolu Java](../../azu
 
 ### <a name="theres-no-log-adapter-option-in-the-configuration-tool"></a>V konfiguračním nástroji není žádná možnost adaptéru protokolu.
 * Nejdřív nainstalujte rozhraní protokolování.
-* Pokud používáte System. Diagnostics. Trace, ujistěte se, že je [v *web.config*nakonfigurovaný ](https://msdn.microsoft.com/library/system.diagnostics.eventlogtracelistener.aspx).
+* Pokud používáte System. Diagnostics. Trace, ujistěte se, že je [v *web.config*nakonfigurovaný ](/dotnet/api/system.diagnostics.eventlogtracelistener?view=dotnet-plat-ext-3.1).
 * Ujistěte se, že máte nejnovější verzi Application Insights. V aplikaci Visual Studio, přejít na **nástroje**  >  **rozšíření a aktualizace**a otevřete kartu **aktualizace** . Pokud tam **Developer Analytics Tools** , vyberte ho a aktualizujte ho.
 
 ### <a name="i-get-the-instrumentation-key-cannot-be-empty-error-message"></a><a name="emptykey"></a>Zobrazí se chybová zpráva "klíč instrumentace nemůže být prázdný"
@@ -228,5 +228,5 @@ Pokud vaše aplikace odesílá voluminous množství dat a používáte sadu SDK
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [exceptions]: asp-net-exceptions.md
 [portal]: https://portal.azure.com/
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
+[qna]: ../faq.md
 [start]: ../../azure-monitor/app/app-insights-overview.md

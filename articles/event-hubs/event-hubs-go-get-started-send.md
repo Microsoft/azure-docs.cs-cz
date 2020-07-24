@@ -3,12 +3,12 @@ title: 'Rychlý Start: odesílání a příjem událostí pomocí jazyka přejí
 description: 'Rychlý Start: Tento článek poskytuje návod pro vytvoření aplikace v cestách, která odesílá události z Azure Event Hubs.'
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 18b139db32e806ac2bdbf440a9dfa8a10ab1ecf3
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 59cd0d757108e7579ce389d216b0ee4d569e12fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85320348"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002450"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-event-hubs-using-go"></a>Rychlý Start: odeslání událostí do nebo příjem událostí z Event Hubs pomocí jazyka přejít
 Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro ingestování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md).
@@ -18,7 +18,7 @@ V tomto kurzu se dozvíte, jak psát aplikace v cestách pro odesílání událo
 > [!NOTE]
 > Tento rychlý start si můžete stáhnout jako ukázku z [GitHubu](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/eventhubs), nahradit řetězce `EventHubConnectionString` a `EventHubName`, hodnotami pro vaše centrum událostí a spustit. Alternativně můžete vytvořit vlastní řešení podle kroků v tomto kurzu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
@@ -120,13 +120,13 @@ log.Printf("got partition IDs: %s\n", info.PartitionIDs)
 
 Spusťte aplikaci, aby odesílala události do centra událostí. 
 
-Gratulujeme! Nyní jste odeslali zprávy do centra událostí.
+Blahopřejeme! Nyní jste odeslali zprávy do centra událostí.
 
 ## <a name="receive-events"></a>Příjem událostí
 
 ### <a name="create-a-storage-account-and-container"></a>Vytvoření účtu úložiště a kontejneru
 
-Stav, jako je například zapůjčení oddílů a kontrolních bodů v datovém proudu událostí, je sdílen mezi přijímači pomocí kontejneru Azure Storage. Pomocí sady SDK můžete vytvořit účet úložiště a kontejner, ale můžete ho také vytvořit podle pokynů v [tématu informace o účtech úložiště Azure](../storage/common/storage-create-storage-account.md).
+Stav, jako je například zapůjčení oddílů a kontrolních bodů v datovém proudu událostí, je sdílen mezi přijímači pomocí kontejneru Azure Storage. Pomocí sady SDK můžete vytvořit účet úložiště a kontejner, ale můžete ho také vytvořit podle pokynů v [tématu informace o účtech úložiště Azure](../storage/common/storage-account-create.md).
 
 Ukázky pro vytváření artefaktů úložiště s využitím sady SDK jsou k dispozici v [úložišti ukázek přejít](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/storage) a v ukázce odpovídající tomuto kurzu.
 

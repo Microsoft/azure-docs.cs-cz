@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0560d9a5156f06f7ae7473f63359d9d17926b7ab
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 425a7ff0553ddeac502c59e240f5ab152d6e0d79
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186448"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015149"
 ---
 # <a name="integrate-with-azure-monitor-logs"></a>Integrace s protokoly Azure Monitor
 
@@ -30,11 +30,11 @@ Protokoly Azure Monitor poskytují větší provozní viditelnost dat konfigurac
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít odesílat sestavy konfigurace stavu automatizace do Azure Monitor protokolů, budete potřebovat:
 
-- Vydání [Azure PowerShell](/powershell/azure/overview) (v 2.3.0) v listopadu 2016 nebo novějším.
+- Vydání [Azure PowerShell](/powershell/azure/) (v 2.3.0) v listopadu 2016 nebo novějším.
 - Účet Azure Automation. Další informace najdete v [úvodu k Azure Automation](automation-intro.md).
 - Pracovní prostor Log Analytics pomocí nabídky služby Automation & Control. Další informace najdete v tématu [Začínáme s Log Analytics v Azure monitor](../azure-monitor/log-query/get-started-portal.md).
 - Nejméně jeden uzel Konfigurace stavu Azure Automation. Další informace najdete v tématu věnovaném [připojování počítačů pro správu podle konfigurace stavu Azure Automation](automation-dsc-onboarding.md).
@@ -135,13 +135,13 @@ Diagnostika Azure Automation v protokolech Azure Monitor vytvořit dvě kategori
 | --- | --- |
 | TimeGenerated |Datum a čas spuštění kontroly dodržování předpisů. |
 | OperationName |`DscNodeStatusData`. |
-| Hodnotu |Hodnota, která označuje, zda je uzel kompatibilní. |
+| ResultType |Hodnota, která označuje, zda je uzel kompatibilní. |
 | NodeName_s |Název spravovaného uzlu. |
 | NodeComplianceStatus_s |Hodnota stavu, která určuje, zda je uzel kompatibilní. |
 | DscReportStatus |Hodnota stavu označující, zda byla kontroly dodržování předpisů úspěšně spuštěna. |
 | ConfigurationMode | Režim použitý k aplikování konfigurace na uzel. Možné hodnoty: <ul><li>`ApplyOnly`: DSC aplikuje konfiguraci a nedělá nic dalšího, pokud se do cílového uzlu nevloží nová konfigurace nebo když se ze serveru načte nová konfigurace. Po počátečním použití nové konfigurace DSC nekontroluje posun od dříve nakonfigurovaného stavu. DSC se pokusí použít konfiguraci, dokud není úspěšná, než se `ApplyOnly` hodnota uplatní. </li><li>`ApplyAndMonitor`: Toto je výchozí hodnota. LCM aplikuje všechny nové konfigurace. Pokud se cílový uzel po počáteční aplikaci posune od požadovaného stavu, DSC nahlásí nesoulad v protokolech. DSC se pokusí použít konfiguraci, dokud není úspěšná, než se `ApplyAndMonitor` hodnota uplatní.</li><li>`ApplyAndAutoCorrect`: DSC aplikuje všechny nové konfigurace. Pokud se po počátečním použití nové konfigurace Posune cílový uzel od požadovaného stavu, DSC nahlásí nesoulad v protokolech a pak znovu použije aktuální konfiguraci.</li></ul> |
 | HostName_s | Název spravovaného uzlu. |
-| IP adresa | IPv4 adresa spravovaného uzlu. |
+| IPAddress | IPv4 adresa spravovaného uzlu. |
 | Kategorie | `DscNodeStatus`. |
 | Prostředek | Název Azure Automation účtu. |
 | Tenant_g | Identifikátor GUID, který identifikuje tenanta pro daného volajícího. |
@@ -166,7 +166,7 @@ Diagnostika Azure Automation v protokolech Azure Monitor vytvořit dvě kategori
 | --- | --- |
 | TimeGenerated |Datum a čas spuštění kontroly dodržování předpisů. |
 | OperationName |`DscResourceStatusData`.|
-| Hodnotu |Zda je prostředek kompatibilní. |
+| ResultType |Zda je prostředek kompatibilní. |
 | NodeName_s |Název spravovaného uzlu. |
 | Kategorie | DscNodeStatus. |
 | Prostředek | Název Azure Automation účtu. |

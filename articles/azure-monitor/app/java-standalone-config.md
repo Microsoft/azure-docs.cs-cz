@@ -3,12 +3,12 @@ title: Monitorování aplikací Java kdekoli – Azure Monitor Application Insig
 description: Monitorování výkonu aplikací bez kódu pro aplikace Java běžící v jakémkoli prostředí bez instrumentace aplikace. Najděte hlavní příčinu potíží d pomocí distribuovaného trasování a mapy aplikací.
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 0c66ad01f265dde7da2f48b17b3ad4438d59a0ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a01f2e9339f3ba4f8f50fc41617fabf9da9d8cd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85319682"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014197"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Možnosti konfigurace – samostatný agent Java pro Azure Monitor Application Insights
 
@@ -172,7 +172,7 @@ Pokud chcete zakázat tyto funkce:
 }
 ```
 
-## <a name="heartbeat"></a>Prezenční signál
+## <a name="heartbeat"></a>Tep
 
 Ve výchozím nastavení Application Insights Java 3,0 Preview pošle metriku prezenčního signálu každých 15 minut. Pokud používáte metriku prezenčního signálu k aktivaci výstrah, můžete zvýšit frekvenci tohoto prezenčního signálu:
 
@@ -216,7 +216,7 @@ Tady je příklad, jak nastavit vzorkování na **10% všech transakcí** – Uj
 
 ## <a name="http-proxy"></a>Proxy server HTTP
 
-Pokud je vaše aplikace za bránou firewall a nemůže se připojit přímo k Application Insights (viz [IP adresy, které používá Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses)), můžete nakonfigurovat Application Insights Java 3,0 Preview pro použití proxy serveru http:
+Pokud je vaše aplikace za bránou firewall a nemůže se připojit přímo k Application Insights (viz [IP adresy, které používá Application Insights](./ip-addresses.md)), můžete nakonfigurovat Application Insights Java 3,0 Preview pro použití proxy serveru http:
 
 ```json
 {

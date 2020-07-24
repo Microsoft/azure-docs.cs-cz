@@ -7,12 +7,13 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b7e3cc2b9d35eafcb875efa167821a8e9ad80146
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 8ccd9120937148043590d30232acd6b556b09dc6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81454199"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015268"
 ---
 # <a name="manage-database-roles-and-users"></a>Správa databázových rolí a uživatelů
 
@@ -43,8 +44,8 @@ Při přidávání **skupiny zabezpečení**použijte `obj:groupid@tenantid` .
   
     |Oprávnění|Popis|  
     |----------------|-----------------|  
-    |**Žádné**|Členové nemohou číst ani upravovat schéma modelu a nemohou zadávat dotazy na data.|  
-    |**Čtení**|Členové se můžou dotazovat na data (na základě filtrů řádků), ale nemůžou upravovat schéma modelu.|  
+    |**Žádný**|Členové nemohou číst ani upravovat schéma modelu a nemohou zadávat dotazy na data.|  
+    |**Číst**|Členové se můžou dotazovat na data (na základě filtrů řádků), ale nemůžou upravovat schéma modelu.|  
     |**Čtení a zpracování**|Členové mohou zadávat dotazy na data (na základě filtrů na úrovni řádků) a spouštět proces a zpracovávat všechny operace, ale nemohou upravovat schéma modelu.|  
     |**Proces**|Členové mohou spustit proces a zpracovat všechny operace. Nelze číst ani upravovat schéma modelu a nelze zadávat dotazy na data.|  
     |**Správce**|Členové mohou upravit schéma modelu a dotazovat se na všechna data.|   
@@ -74,7 +75,7 @@ Chcete-li přidat role a uživatele do nasazené databáze modelů, musíte být
    |----------------|-----------------|  
    |**Úplné řízení (správce)**|Členové můžou upravovat schéma modelu, proces a můžou se dotazovat na všechna data.| 
    |**Process database**|Členové mohou spustit proces a zpracovat všechny operace. Schéma modelu nelze upravovat a nelze zadávat dotazy na data.|  
-   |**Čtení**|Členové se můžou dotazovat na data (na základě filtrů řádků), ale nemůžou upravovat schéma modelu.|  
+   |**Číst**|Členové se můžou dotazovat na data (na základě filtrů řádků), ale nemůžou upravovat schéma modelu.|  
   
 4. Klikněte na **členství**a pak zadejte uživatele nebo skupinu do svého TENANTA Azure AD podle e-mailové adresy.
 

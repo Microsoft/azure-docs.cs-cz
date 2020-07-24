@@ -4,11 +4,12 @@ description: Začínáme s Application Insights. Analyzujte využití, dostupnos
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 873fc41585c387246d83008a8f97d6c4d9a32c3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b93e7f0fdb909a40667b001fa99929b3cfe27ad
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80985061"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014161"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Sledování výkonu webových aplikací
 
@@ -25,7 +26,7 @@ Pokud jste ještě nepřidali Application Insights do projektu (tj. Pokud nemá 
 * [Webové aplikace v ASP.NET](../../azure-monitor/app/asp-net.md)
   * [Přidat monitorování výjimek](../../azure-monitor/app/asp-net-exceptions.md)
   * [Přidat monitorování závislostí](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Webové aplikace Java EE](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
+* [Webové aplikace Java EE](./java-in-process-agent.md)
 
 ## <a name="exploring-performance-metrics"></a><a name="view"></a>Prozkoumávání metrik výkonu
 V [Azure Portal](https://portal.azure.com)přejděte k prostředku Application Insights, který jste nastavili pro vaši aplikaci. Okno Přehled obsahuje základní údaje o výkonu:
@@ -60,15 +61,15 @@ Hledejte neobvyklé špičky. Obecně je možné očekávat dobu odezvy při ná
 
 Kliknutím na dlaždici získáte časy pro konkrétní adresy URL.
 
-![](./media/web-monitor-performance/appinsights-42reqs.png)
+![Snímek obrazovky s podoknem stavu aplikace, ve kterém se zobrazují spojnicové grafy v čase přesunutí průměrných požadavků a doby odezvy.](./media/web-monitor-performance/appinsights-42reqs.png)
 
 ### <a name="slowest-requests"></a>Nejpomalejší požadavky
-![](./media/web-monitor-performance/appinsights-44slowest.png)
+![Snímek obrazovky se seznamem nejpomalejších požadavků a jejich dob odezvy.](./media/web-monitor-performance/appinsights-44slowest.png)
 
 Zobrazuje, které požadavky můžou potřebovat vyladění výkonu.
 
 ### <a name="failed-requests"></a>Neúspěšné požadavky
-![](./media/web-monitor-performance/appinsights-46failed.png)
+![Snímek obrazovky se spojnicovým grafem v čase s počtem neúspěšných požadavků; To znamená, že požadavky, které vygenerovaly nezachycené výjimky.](./media/web-monitor-performance/appinsights-46failed.png)
 
 Počet požadavků, které vygenerovaly nezachycené výjimky.
 
@@ -86,7 +87,7 @@ Výběrem jakékoli metriky zakážete ostatním uživatelům, kteří se nemů�
 ## <a name="set-alerts"></a>Nastavení upozornění
 Pokud chcete dostávat oznámení e-mailem o neobvyklých hodnotách jakékoli metriky, přidejte upozornění. Můžete zvolit odeslání e-mailu správcům účtu nebo určitým e-mailovým adresám.
 
-![](./media/web-monitor-performance/appinsights-413setMetricAlert.png)
+![Snímek obrazovky dialogového okna Přidat pravidlo výstrahy spolu s snímky obrazovky připojenými šipkami, které ukazují, jak se dostat k tomuto dialogovému oknu z Průzkumník metrik.](./media/web-monitor-performance/appinsights-413setMetricAlert.png)
 
 Nastavte prostředek před ostatními vlastnostmi. Nevybírejte prostředky webového testu, pokud chcete nastavit výstrahy týkající se výkonu nebo metrik využití.
 
@@ -144,12 +145,9 @@ Prostředí pro zkoumání výkonu zobrazuje relevantní přehledy na straně uk
 [availability]: ../../azure-monitor/app/monitor-web-app-availability.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [greenbrown]: ../../azure-monitor/app/asp-net.md
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
+[qna]: ../faq.md
 [redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
 [start]: ../../azure-monitor/app/app-insights-overview.md
 [usage]: usage-overview.md
 [livestream]: ../../azure-monitor/app/live-stream.md
 [snapshot]: ../../azure-monitor/app/snapshot-debugger.md
-
-
-

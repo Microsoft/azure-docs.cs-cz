@@ -8,14 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 07/06/2020
+ms.date: 07/20/2020
 ms.author: aahi
 ms.custom: tracking-python
-ms.openlocfilehash: feababd3d6f6845142a13ccb3b2b31b78315704b
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 99c22edac7acefe3ec34ff40e892a7071b932ada
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027941"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013806"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Rychlý Start: použití REST API Pythonu k volání služby Analýza textu rozpoznávání 
 <a name="HOLTop"></a>
@@ -24,7 +25,7 @@ V tomto rychlém startu můžete začít s analýzou jazyka pomocí Analýza tex
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Python 3.x](https://python.org)
 
@@ -297,7 +298,7 @@ pprint(key_phrases)
 Chcete-li identifikovat známé entity (osoby, místa a věci) v textových dokumentech, přihlaste se `/text/analytics/v3.0/entities/recognition/general` do základního koncového bodu analýza textu, aby bylo možné vytvořit adresu URL pro rozpoznávání jazyka. Příklad: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
     
 ```python
-entities_url = endpoint + "/text/analytics/v3.0/entities/recognition/general/recognition/general"
+entities_url = endpoint + "/text/analytics/v3.0/entities/recognition/general"
 ```
 
 Vytvořte kolekci dokumentů, jako v předchozích příkladech. 
@@ -355,5 +356,5 @@ pprint(entities)
 
 ## <a name="see-also"></a>Viz také 
 
- [Přehled Analýza textu](../overview.md)  
+ [Přehled analýzy textu](../overview.md)  
  [Nejčastější dotazy](../text-analytics-resource-faq.md)

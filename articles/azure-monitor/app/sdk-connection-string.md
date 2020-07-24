@@ -6,12 +6,12 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: d9906e43bad296cc850942c01c83c6bfee2651fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81e27c0f62e921eb468c78521e426c8917da250a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482118"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014134"
 ---
 # <a name="connection-strings"></a>Připojovací řetězce
 
@@ -31,12 +31,12 @@ Scénáře zákazníků, kde vizualizuji, že to má největší dopad:
 
 - Výjimky brány firewall nebo přesměrování proxy 
 
-    V případech, kdy je vyžadováno monitorování pro intranetový webový server, jsme naši starší řešení požádali o přidání jednotlivých koncových bodů služby do vaší konfigurace. Další informace najdete [tady](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#can-i-monitor-an-intranet-web-server). 
+    V případech, kdy je vyžadováno monitorování pro intranetový webový server, jsme naši starší řešení požádali o přidání jednotlivých koncových bodů služby do vaší konfigurace. Další informace najdete [tady](../faq.md#can-i-monitor-an-intranet-web-server). 
     Připojovací řetězce nabízejí lepší alternativu tím, že se toto úsilí omezuje na jedno nastavení. Jednoduchá předpona, změna přípony umožňuje automatické plnění a přesměrování všech koncových bodů do správných služeb. 
 
 - Svrchovaná nebo hybridní cloudová prostředí
 
-    Uživatelé mohou odesílat data do definované [oblasti Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights).
+    Uživatelé mohou odesílat data do definované [oblasti Azure Government](../../azure-government/compare-azure-government-global-azure.md#application-insights).
     Připojovací řetězce umožňují definovat nastavení koncových bodů pro intranetové servery nebo nastavení hybridního cloudu. 
 
 ## <a name="getting-started"></a>Začínáme

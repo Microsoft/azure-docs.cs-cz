@@ -8,12 +8,12 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, 
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 909e4638b3b0919919320a09cbfa0e8d9ac92f2e
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 8279a32ece16209c1dd5bca13d08e22b283677ee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995934"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006999"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Rychlý Start: ladění a iterace na Kubernetes: Visual Studio & .NET Core – Azure Dev Spaces
 
@@ -25,16 +25,16 @@ V tomto průvodci se naučíte:
 
 Azure Dev Spaces taky umožňuje ladění a iteraci pomocí:
 - [Java a Visual Studio Code](quickstart-java.md)
-- [Node. js a Visual Studio Code](quickstart-nodejs.md)
+- [Node.js a Visual Studio Code](quickstart-nodejs.md)
 - [.NET Core a Visual Studio Code](quickstart-netcore.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Pokud žádné nemáte, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 - Visual Studio 2019 ve Windows s nainstalovanou úlohou vývoj pro Azure Pokud nemáte nainstalované Visual Studio, Stáhněte si ho [tady](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 - [Nainstalované rozhraní Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Vytvoření clusteru služby Azure Kubernetes
+## <a name="create-an-azure-kubernetes-service-cluster"></a>Vytvoření clusteru služby Azure Kubernetes Service
 
 Cluster AKS je potřeba vytvořit v [podporované oblasti][supported-regions]. Níže uvedené příkazy vytvoří skupinu prostředků s názvem *MyResourceGroup* a cluster AKS s názvem *MyAKS*.
 
@@ -84,15 +84,15 @@ Managed Kubernetes cluster 'MyAKS' in resource group 'MyResourceGroup' is ready 
 
 V projektu vyberte v rozevíracím seznamu nastavení spuštění možnost **Azure dev Spaces** , jak je znázorněno níže.
 
-![](media/get-started-netcore-visualstudio/LaunchSettings.png)
+![Snímek obrazovky uživatelského rozhraní sady Visual Studio s zvýrazněnou a vybranou možností IIS Express a možnost Azure Dev Spaces zvýrazněna.](media/get-started-netcore-visualstudio/LaunchSettings.png)
 
-V dialogovém okně Azure Dev Spaces vyberte své *předplatné* a *cluster Azure Kubernetes*. Ponechte nastavenou možnost *výchozí* a povolte zaškrtávací políčko *veřejně přístupné* . *Space* Klikněte na tlačítko *OK*.
+V dialogovém okně Azure Dev Spaces vyberte své *předplatné* a *cluster Azure Kubernetes*. Ponechte nastavenou možnost *výchozí* a povolte zaškrtávací políčko *veřejně přístupné* . *Space* Klikněte na *OK*.
 
-![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.png)
+![Snímek obrazovky dialogového okna Azure Dev Spaces.](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.png)
 
-Tento proces nasadí vaši službu do *výchozího* vývojového prostoru s veřejně přístupným URL. Pokud zvolíte cluster, který není nakonfigurovaný pro práci s Azure Dev Spaces, zobrazí se zpráva s dotazem, jestli ho chcete nakonfigurovat. Klikněte na tlačítko *OK*.
+Tento proces nasadí vaši službu do *výchozího* vývojového prostoru s veřejně přístupným URL. Pokud zvolíte cluster, který není nakonfigurovaný pro práci s Azure Dev Spaces, zobrazí se zpráva s dotazem, jestli ho chcete nakonfigurovat. Klikněte na *OK*.
 
-![](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
+![Snímek obrazovky dialogového okna Přidat prostředek prostorů Azure](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
 
 V okně *výstup* se zobrazí veřejná adresa URL pro službu spuštěnou ve *výchozím* prostoru pro vývoj:
 

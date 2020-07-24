@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
-ms.openlocfilehash: 171b355f40939efb31e96a4bf8b2d77e97d19f25
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 77b5b52153c552008406b4b85083bcba5542cebe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147099"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012718"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Ochrana před přeložením a nevyváženými daty pomocí automatizovaného strojového učení
 
@@ -27,9 +27,9 @@ K naplnění ve strojovém učení dochází, když model přesně odpovídá š
 
 Vezměte v úvahu následující vyškolené modely a jejich odpovídající přesností a testování.
 
-| Model | Přesnost vlaku | Přesnost testu |
+| Modelování | Přesnost vlaku | Přesnost testu |
 |-------|----------------|---------------|
-| A | 99,9 % | 95% |
+| A | 99,9 % | 95 % |
 | B | 87% | 87% |
 | C | 99,9 % | 45 % |
 
@@ -101,7 +101,7 @@ Následující techniky jsou další možnosti pro zpracování nevyvážených 
 
 - Převzorkování na dokonce i nevyrovnanost třídy, a to buď pomocí vzorkování menších tříd, nebo dolů vyvzorkováním větších tříd. Tyto metody vyžadují, aby byly zkušenosti se zpracováním a analýzou.
 
-- Zkontrolujte metriky výkonu pro nevyvážená data. Například skóre F1 je vážený průměr přesnosti a odvolání. Míry přesnosti – přesnost přesného třídění – nízká přesnost označuje vysoký počet falešně pozitivních hodnot--, zatímco při odvolání měření úplnosti klasifikátoru udává vysoký počet falešně negativních hodnot.
+- Zkontrolujte metriky výkonu pro nevyvážená data. Například skóre F1 je harmonickým průměrem přesnosti a odvolání. Přesnost měří přesnost třídění, kde větší přesnost označuje méně falešně pozitivních hodnot a při odvolání měří úplnost klasifikátoru, kde větší počet chyb značí méně falešně negativních hodnot.
 
 ## <a name="next-steps"></a>Další kroky
 

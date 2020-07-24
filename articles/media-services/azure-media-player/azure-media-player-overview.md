@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: b6d30aebd4de272ba98fce87f23701b129eacb02
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6f3c173c61e9f6d82a51fcaf7e11cda47eb47c1c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81726519"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011700"
 ---
 # <a name="azure-media-player-overview"></a>Přehled Azure Media Playeru #
 
@@ -19,7 +19,7 @@ Azure Media Player je webový přehrávač, který je založený na přehráván
 
 Microsoft Azure Media Services umožňuje, aby se obsah zpracoval s POMLČKou, Smooth Streaming a HLS formáty streamování pro přehrávání obsahu. Azure Media Player brát v úvahu tyto různé formáty a automaticky hraje nejlepší odkaz na základě schopností platforem a prohlížečů. Microsoft Azure Media Services taky umožňuje dynamické šifrování assetů s běžným šifrováním (PlayReady nebo Widevine) nebo šifrováním pomocí šifrování AES-128. Azure Media Player umožňuje dešifrování šifrovaného obsahu PlayReady a AES-128, když je správně nakonfigurovaný.  Postup konfigurace najdete v části [chráněný obsah](azure-media-player-protected-content.md) .
 
-Pokud chcete požádat o nové funkce, poskytněte nápady nebo zpětnou vazbu, odešlete prosím na [UserVoice pro Azure Media Player](https://aka.ms/ampuservoice). Pokud máte nějaké a specifické problémy, otázky nebo zjistíte případné chyby, pusťte nás na ampinfo@microsoft.com.
+Pokud chcete požádat o nové funkce, poskytněte nápady nebo zpětnou vazbu, odešlete prosím na [UserVoice pro Azure Media Player](https://aka.ms/ampuservoice). Pokud máte nějaké a specifické problémy, otázky nebo zjistíte případné chyby, pusťte nás na ampinfo@microsoft.com .
 
 [Zaregistrujte](https://aka.ms/ampsignup) se ještě předtím, než jste vygenerovali vydání, a zajistěte si nejnovější verzi, kterou Azure Media Player musí nabídnout.
 
@@ -28,7 +28,7 @@ Pokud chcete požádat o nové funkce, poskytněte nápady nebo zpětnou vazbu, 
 
 ## <a name="license"></a>Licence ##
 
-Azure Media Player je licencovaná a podléhá podmínkám, které jsou uvedené v licenčních podmínkami pro software společnosti Microsoft pro Azure Media Player. Úplné výrazy najdete v [souboru s licencí](azure-media-player-license.md) . Další informace najdete v [prohlášení o zásadách ochrany osobních údajů](https://www.microsoft.com/en-us/privacystatement/default.aspx) .
+Azure Media Player je licencovaná a podléhá podmínkám, které jsou uvedené v licenčních podmínkami pro software společnosti Microsoft pro Azure Media Player. Úplné výrazy najdete v [souboru s licencí](/legal/azure-media-player/azure-media-player-license) . Další informace najdete v [prohlášení o zásadách ochrany osobních údajů](https://www.microsoft.com/en-us/privacystatement/default.aspx) .
 
 Copyright 2015 Microsoft Corporation.
 

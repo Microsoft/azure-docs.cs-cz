@@ -3,12 +3,12 @@ title: Filtrování a předzpracování v sadě Application Insights SDK | Micro
 description: Zapište procesory telemetrie a Inicializátory telemetrie pro sadu SDK, aby bylo možné filtrovat nebo přidat vlastnosti dat před odesláním telemetrie na Application Insights portál.
 ms.topic: conceptual
 ms.date: 11/23/2016
-ms.openlocfilehash: d33aeebfb374f081b4ae5dee7f83ccd04d0835ee
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: adaada3589fd0db1c7d47b788ad50d570defe780
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075786"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014622"
 ---
 # <a name="filter-and-preprocess-telemetry-in-the-application-insights-sdk"></a>Filtrování a předzpracování telemetrie v sadě Application Insights SDK
 
@@ -498,7 +498,7 @@ public void Initialize(ITelemetry telemetry)
 
 #### <a name="add-information-from-httpcontext"></a>Přidat informace z HttpContext
 
-Následující ukázkový inicializátor načte data z [`HttpContext`](https://docs.microsoft.com/aspnet/core/fundamentals/http-context?view=aspnetcore-3.1) a připojí je k `RequestTelemetry` instanci. `IHttpContextAccessor`Je automaticky zajištěn vložením závislosti konstruktoru.
+Následující ukázkový inicializátor načte data z [`HttpContext`](/aspnet/core/fundamentals/http-context?view=aspnetcore-3.1) a připojí je k `RequestTelemetry` instanci. `IHttpContextAccessor`Je automaticky zajištěn vložením závislosti konstruktoru.
 
 ```csharp
 public class HttpContextRequestTelemetryInitializer : ITelemetryInitializer
@@ -543,7 +543,7 @@ Jaký je rozdíl mezi procesory telemetrie a Inicializátory telemetrie?
 ## <a name="reference-docs"></a>Referenční dokumenty
 
 * [Přehled rozhraní API](../../azure-monitor/app/api-custom-events-metrics.md)
-* [Odkaz na ASP.NET](https://msdn.microsoft.com/library/dn817570.aspx)
+* [Odkaz na ASP.NET](/previous-versions/azure/dn817570(v=azure.100))
 
 ## <a name="sdk-code"></a>Kód sady SDK
 
@@ -554,4 +554,4 @@ Jaký je rozdíl mezi procesory telemetrie a Inicializátory telemetrie?
 ## <a name="next-steps"></a><a name="next"></a>Další kroky
 * [Hledat události a protokoly](../../azure-monitor/app/diagnostic-search.md)
 * [Vzorkování](../../azure-monitor/app/sampling.md)
-* [Řešení potíží](../../azure-monitor/app/troubleshoot-faq.md)
+* [Řešení potíží](../faq.md)

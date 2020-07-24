@@ -5,12 +5,12 @@ author: ofirmanor
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: 951894bcd047d93809b41f47213ad670823a27e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fff1aac5df50550e43ae3e87c63c2130c6b39644
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445368"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013959"
 ---
 # <a name="common-alert-schema-definitions"></a>Definice běžných schémat upozornění
 
@@ -71,7 +71,7 @@ Jakákoli instance výstrahy popisuje prostředek, který byl ovlivněn, a pří
 
 ## <a name="essentials"></a>Základy
 
-| Pole | Description|
+| Pole | Popis|
 |:---|:---|
 | alertId | Identifikátor GUID jednoznačně identifikující instanci výstrahy. |
 | alertRule | Název pravidla výstrahy, které vytvořilo instanci výstrahy. |
@@ -83,7 +83,7 @@ Jakákoli instance výstrahy popisuje prostředek, který byl ovlivněn, a pří
 | originAlertId | ID instance výstrahy vygenerované službou monitorování. |
 | firedDateTime | Datum a čas, kdy byla instance výstrahy vyvolána v koordinovaném univerzálním čase (UTC). |
 | resolvedDateTime | Datum a čas, kdy je podmínka monitorování instance výstrahy nastavena na hodnotu **Vyřešeno** ve formátu UTC. V současné době platí jenom pro výstrahy metriky.|
-| description | Popis definovaný v pravidle výstrahy. |
+| Popis | Popis definovaný v pravidle výstrahy. |
 |essentialsVersion| Číslo verze oddílu základy.|
 |alertContextVersion | Číslo verze `alertContext` oddílu |
 
@@ -149,7 +149,7 @@ Jakákoli instance výstrahy popisuje prostředek, který byl ovlivněn, a pří
 ### <a name="log-alerts"></a>Výstrahy protokolu
 
 > [!NOTE]
-> Pro výstrahy protokolu, které mají definované vlastní předmět e-mailu nebo datovou část JSON, umožňují společné schéma vrátit předmět e-mailu nebo schéma datové části na ten, který je popsaný takto. Výstrahy s povoleným společným schématem mají omezení horní velikosti 256 KB na jednu výstrahu. Výsledky hledání nejsou vložené v datové části výstrah protokolu, pokud velikost výstrahy způsobí překročení této prahové hodnoty. To můžete zjistit zaškrtnutím příznaku `IncludeSearchResults` . Pokud výsledky hledání nejsou zahrnuté, měli byste použít vyhledávací dotaz ve spojení s [rozhraním Log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/dataaccess/query/get). 
+> Pro výstrahy protokolu, které mají definované vlastní předmět e-mailu nebo datovou část JSON, umožňují společné schéma vrátit předmět e-mailu nebo schéma datové části na ten, který je popsaný takto. Výstrahy s povoleným společným schématem mají omezení horní velikosti 256 KB na jednu výstrahu. Výsledky hledání nejsou vložené v datové části výstrah protokolu, pokud velikost výstrahy způsobí překročení této prahové hodnoty. To můžete zjistit zaškrtnutím příznaku `IncludeSearchResults` . Pokud výsledky hledání nejsou zahrnuté, měli byste použít vyhledávací dotaz ve spojení s [rozhraním Log Analytics API](/rest/api/loganalytics/dataaccess/query/get). 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
@@ -220,7 +220,7 @@ Jakákoli instance výstrahy popisuje prostředek, který byl ovlivněn, a pří
                     "Heartbeat"
                 ]
             }
-        ]
+        ],
     "IncludeSearchResults": "True",
     "AlertType": "Metric measurement"
     }
@@ -500,5 +500,4 @@ Jakákoli instance výstrahy popisuje prostředek, který byl ovlivněn, a pří
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o [běžném schématu výstrah](https://aka.ms/commonAlertSchemaDocs).
-- Naučte se [, jak vytvořit aplikaci logiky, která používá společné schéma výstrah pro zpracování všech výstrah](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations). 
-
+- Naučte se [, jak vytvořit aplikaci logiky, která používá společné schéma výstrah pro zpracování všech výstrah](./alerts-common-schema-integrations.md). 

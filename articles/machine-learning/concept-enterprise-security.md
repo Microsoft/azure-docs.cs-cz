@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: 5afa6b9127317fcd1a683651be86cdfe078cfcd6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 94724ea44b52ae885594fe55b67d74a03e339dab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259442"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012857"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Podnikové zabezpečení pro Azure Machine Learning
 
@@ -34,7 +34,7 @@ Služba Multi-Factor Authentication je podporovaná, pokud je služba Azure Acti
 1. Klient prezentuje token pro Azure Resource Manager a všem Azure Machine Learning.
 1. Služba Machine Learning poskytuje Machine Learning token služby pro výpočetní cíl pro uživatele (například Výpočetní prostředky služby Machine Learning). Tento token používá cílový výpočetní cíl pro zpětné volání do služby Machine Learning po dokončení spuštění. Rozsah je omezen na pracovní prostor.
 
-[![Ověřování v Azure Machine Learning](media/concept-enterprise-security/authentication.png)](media/concept-enterprise-security/authentication-expanded.png#lightbox)
+[![Ověřování v Azure Machine Learning](media/concept-enterprise-security/authentication.png)](media/concept-enterprise-security/authentication.png#lightbox)
 
 Další informace najdete v tématu [nastavení ověřování pro Azure Machine Learning prostředky a pracovní postupy](how-to-setup-authentication.md). Tento článek obsahuje informace a příklady ověřování, včetně použití instančních objektů a automatizovaných pracovních postupů.
 
@@ -88,7 +88,7 @@ Každý pracovní prostor má také přidruženou spravovanou identitu přiřaze
 
 Další informace o spravovaných identitách najdete v tématu [spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
-| Resource | Oprávnění |
+| Prostředek | Oprávnění |
 | ----- | ----- |
 | Pracovní prostor | Přispěvatel |
 | Účet úložiště | Přispěvatel dat objektu BLOB služby Storage |
@@ -128,6 +128,8 @@ Můžete také povolit privátní propojení Azure pro váš pracovní prostor. 
 * Zabezpečeně předává přihlašovací údaje pro účet úložiště, registr kontejnerů a účet SSH z vrstvy spouštění do výpočetních clusterů pomocí vašeho trezoru klíčů.
 * Povolí filtrování protokolu IP, aby se zajistilo, že se nadřazené fondy dávek nedají volat v jiných externích službách než AzureMachineLearningService.
 
+> [!WARNING]
+> `hbi_workspace`Příznak lze nastavit pouze v případě, že je vytvořen pracovní prostor. Nedá se změnit pro existující pracovní prostor.
 
 Další informace o tom, jak šifrování v klidovém umístění funguje v Azure, najdete v tématu [šifrování dat Azure v klidovém umístění](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest).
 
@@ -317,7 +319,7 @@ V předplatném uživatele se vytvoří další prostředky během vytváření 
 
 Uživatel může také zřídit jiné výpočetní cíle, které jsou připojeny k pracovnímu prostoru (například službě Azure Kubernetes nebo virtuálním počítačům) podle potřeby.
 
-[![Vytvořit pracovní postup pracovního postupu](media/concept-enterprise-security/create-workspace.png)](media/concept-enterprise-security/create-workspace-expanded.png#lightbox)
+[![Vytvořit pracovní postup pracovního postupu](media/concept-enterprise-security/create-workspace.png)](media/concept-enterprise-security/create-workspace.png#lightbox)
 
 ### <a name="save-source-code-training-scripts"></a>Uložit zdrojový kód (školicí skripty)
 
@@ -325,9 +327,9 @@ Následující diagram znázorňuje pracovní postup snímku kódu.
 
 Přidruženo k pracovnímu prostoru Azure Machine Learning jsou adresáře (experimenty), které obsahují zdrojový kód (školicí skripty). Tyto skripty se ukládají na vašem místním počítači a v cloudu (ve službě Azure Blob Storage pro vaše předplatné). Snímky kódu se používají ke spuštění nebo kontrole historických auditů.
 
-[![Pracovní postup snímku kódu](media/concept-enterprise-security/code-snapshot.png)](media/concept-enterprise-security/code-snapshot-expanded.png#lightbox)
+[![Pracovní postup snímku kódu](media/concept-enterprise-security/code-snapshot.png)](media/concept-enterprise-security/code-snapshot.png#lightbox)
 
-### <a name="training"></a>Probíhá trénování
+### <a name="training"></a>Školení
 
 Následující diagram znázorňuje pracovní postup školení.
 
@@ -352,7 +354,7 @@ Vzhledem k tomu, že Výpočetní prostředky služby Machine Learning je spravo
 
 V níže uvedeném diagramu se tento krok stane, když výpočetní cíl školení zapíše metriky Run zpátky do Azure Machine Learning z úložiště v databázi Cosmos DB. Klienti můžou volat Azure Machine Learning. Machine Learning bude z databáze Cosmos DB znovu aktivovat metriky a vracet je zpět klientovi.
 
-[![Pracovní postup školení](media/concept-enterprise-security/training-and-metrics.png)](media/concept-enterprise-security/training-and-metrics-expanded.png#lightbox)
+[![Pracovní postup školení](media/concept-enterprise-security/training-and-metrics.png)](media/concept-enterprise-security/training-and-metrics.png#lightbox)
 
 ### <a name="creating-web-services"></a>Vytváření webových služeb
 
@@ -367,7 +369,7 @@ Podrobnosti najdete tady:
 * Podrobnosti žádosti o vyhodnocování jsou uložené v Application Insights, který je v předplatném uživatele.
 * Telemetrii se taky vloží do předplatného Microsoft/Azure.
 
-[![Pracovní postup odvození](media/concept-enterprise-security/inferencing.png)](media/concept-enterprise-security/inferencing-expanded.png#lightbox)
+[![Pracovní postup odvození](media/concept-enterprise-security/inferencing.png)](media/concept-enterprise-security/inferencing.png#lightbox)
 
 ## <a name="next-steps"></a>Další kroky
 

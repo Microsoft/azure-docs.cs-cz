@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6913ae8cbd8c73bd2763bd89172280feee9df973
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 31c769039009889559b6aa05bb76139d63c42feb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185615"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015013"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Nasazení Hybrid Runbook Worker Windows
 
@@ -18,7 +18,7 @@ Pomocí funkce Hybrid Runbook Worker služby Azure Automation můžete spouště
 
 Po úspěšném nasazení služby Runbook Worker si přečtěte téma [spuštění runbooků na Hybrid Runbook Worker](automation-hrw-run-runbooks.md) , kde se dozvíte, jak konfigurovat Runbooky pro automatizaci procesů v místním datovém centru nebo v jiném cloudovém prostředí.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že máte následující.
 
@@ -173,7 +173,7 @@ Ve výsledcích hledání byste měli vidět záznamy prezenčního signálu pro
 
 2. Chcete-li ověřit verzi Hybrid Runbook Worker, přejděte na `C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\` podsložku **verze** a poznamenejte si ji.
 
-### <a name="step-3---install-the-runbook-environment-and-connect-to-azure-automation"></a>Krok 3 – instalace prostředí Runbooku a připojení k Azure Automation
+### <a name="step-2---install-the-runbook-environment-and-connect-to-azure-automation"></a>Krok 2 – instalace prostředí Runbooku a připojení k Azure Automation
 
 Když nakonfigurujete agenta tak, aby nahlásil do Log Analytics pracovního prostoru, funkce Azure Automation vloží `HybridRegistration` modul PowerShellu, který obsahuje `Add-HybridRunbookWorker` rutinu. Pomocí této rutiny nainstalujete do počítače prostředí Runbooku a zaregistrujete ho do Azure Automation.
 
@@ -202,7 +202,7 @@ Můžete získat informace požadované pro parametry `Url` a `Key` ze stránky 
 
 * V případě potřeby nastavte `Verbose` parametr pro příjem podrobností o instalaci.
 
-### <a name="step-4----install-powershell-modules"></a>Krok 4 – Instalace modulů PowerShellu
+### <a name="step-3----install-powershell-modules"></a>Krok 3 – Instalace modulů PowerShellu
 
 Runbooky můžou používat jakékoli aktivity a rutiny definované v modulech nainstalovaných ve vašem Azure Automationovém prostředí. Protože tyto moduly nejsou automaticky nasazené do místních počítačů, musíte je nainstalovat ručně. Výjimkou je modul Azure. Tento modul se instaluje ve výchozím nastavení a poskytuje přístup k rutinám pro všechny služby a aktivity Azure pro Azure Automation.
 

@@ -73,8 +73,6 @@
               href: how-dev-spaces-works-routing.md
             - name: Vzdálené ladění
               href: how-dev-spaces-works-remote-debugging.md
-            - name: Místní proces s Kubernetes
-              href: how-dev-spaces-works-local-process-kubernetes.md
         - name: Jak funguje VS Code s Dev Spaces
           href: how-vs-code-works-with-dev-spaces.md
         - name: Konfigurace sítě v různých síťových topologiích
@@ -111,10 +109,6 @@
           href: how-to/ingress-https-traefik.md
         - name: Použití NGINX pro vlastní příchozí přenos dat a HTTPS
           href: how-to/ingress-https-nginx.md
-        - name: Použití místního procesu s Kubernetes s využitím editoru Visual Studio Code (Preview)
-          href: how-to/local-process-kubernetes-vs-code.md
-        - name: Použití místního procesu s Kubernetes s využitím sady Visual Studio (Preview)
-          href: how-to/local-process-kubernetes-visual-studio.md
     - name: Řešení potíží
       href: troubleshooting.md
     - name: Nejčastější dotazy

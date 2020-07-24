@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: tracking-python
-ms.openlocfilehash: 0ab8cb56b29460911f2cfe8b711a07329ee739d6
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: dcefab0466d23713b1a004376395ce4ef6ce3998
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84553183"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006258"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>Rychlý Start: Klientská knihovna Azure Queue Storage V12 pro Python
 
@@ -29,9 +29,14 @@ Použijte klientskou knihovnu Azure Queue Storage V12 pro Python:
 * Odstranění zpráv z fronty
 * Odstranění fronty
 
-[Referenční dokumentace k](https://docs.microsoft.com/python/api/azure-storage-queue/index)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue)  |  [Balíček (index balíčku Pythonu)](https://pypi.org/project/azure-storage-queue/)  |  [Ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+Další prostředky:
 
-## <a name="prerequisites"></a>Požadavky
+* [Referenční dokumentace k rozhraní API](https://docs.microsoft.com/python/api/azure-storage-queue/index)
+* [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue)
+* [Balíček (index balíčku Pythonu)](https://pypi.org/project/azure-storage-queue/)
+* [Ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * Účet úložiště Azure – [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)

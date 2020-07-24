@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 5f4b48dfbef7362a0b49e53a17b080e127701c94
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 8a951a4920f2f80a4b9738317bdb2da96c613d53
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86199877"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013041"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Co je Automated Machine Learning (AutoML)?
 
@@ -174,7 +174,7 @@ Při volbě místní a vzdálené považovat tyto specialisty i nevýhody.
 
  K dispozici jsou další funkce, pokud používáte vzdálené výpočty, jak je znázorněno v následující tabulce. Některé z těchto funkcí jsou k dispozici pouze v pracovním prostoru Enterprise.
 
-| Funkce                                                    | Remote | Local | Nutné <br>Pracovní prostor Enterprise |
+| Funkce                                                    | Vzdálené | Místní | Nutné <br>Pracovní prostor Enterprise |
 |------------------------------------------------------------|--------|-------|-------------------------------|
 | Streamování dat (podpora velkých objemů dat, až 100 GB)          | ✓      |       | ✓                             |
 | Featurization a školení textu založeného na DNN-BERT             | ✓      |       | ✓                             |

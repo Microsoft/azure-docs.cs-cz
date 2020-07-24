@@ -6,18 +6,18 @@ ms.topic: overview
 description: Přečtěte si, jak Azure Dev Spaces poskytuje rychlé a iterativní vývojové prostředí Kubernetes pro týmy ve clusterech služby Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: fd757d5392a7cefcacdd1d77807beb72e34c8f89
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 691845cd888e4d24c1144f2805402a3baf14a86e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873368"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006960"
 ---
 # <a name="what-is-azure-dev-spaces"></a>Co je služba Azure Dev Spaces?
 
 Azure Dev Spaces poskytuje rychlé a iterativní vývojové prostředí Kubernetes pro týmy v clusterech Azure Kubernetes Service (AKS). Azure Dev Spaces také umožňuje ladit a testovat všechny součásti aplikace v AKS s minimálním nastavením vývojového počítače, aniž by se musely replikovat nebo napodobovat závislosti.
 
-![](media/azure-dev-spaces/collaborate-graphic.gif)
+![Diagram zobrazuje dvě verze aplikace vyvinuté nezávisle. Pak jsou sloučeny do jednoho z Azure Dev Spacesho vývojového prostředí.](media/azure-dev-spaces/collaborate-graphic.gif)
 
 ## <a name="how-azure-dev-spaces-simplifies-kubernetes-development"></a>Jak Azure Dev Spaces zjednodušuje vývoj na platformě Kubernetes
 

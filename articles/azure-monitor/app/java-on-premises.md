@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
 ms.date: 04/16/2020
-ms.openlocfilehash: aadc9c7bfaa9ad6338015f5dd085b5ab865673f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6c083e24ce44272ef9394b8418d3dc66771ceb8a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83697200"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014265"
 ---
 # <a name="java-codeless-application-monitoring-on-premises---azure-monitor-application-insights---public-preview"></a>Monitorování aplikací s kódováním kódu Java v místním prostředí – Azure Monitor Application Insights – Public Preview
 
@@ -19,10 +20,10 @@ Monitorování aplikací bez kódu Java je vše o jednoduchosti – neexistují 
 
 Po povolení bude agent Java automaticky shromažďovat velké množství požadavků, závislostí, protokolů a metrik z nejčastěji používaných knihoven a architektur.
 
-Postupujte prosím podle [podrobných pokynů](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) pro všechna prostředí, včetně místních.
+Postupujte prosím podle [podrobných pokynů](./java-in-process-agent.md) pro všechna prostředí, včetně místních.
 
  ## <a name="next-steps"></a>Další kroky
 
-* [Získat pokyny ke stažení agenta Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
+* [Získat pokyny ke stažení agenta Java](./java-in-process-agent.md)
 * [Konfigurace argumentů JVM](https://github.com/microsoft/ApplicationInsights-Java/wiki/3.0-Preview:-Tips-for-updating-your-JVM-args)
 * [Přizpůsobení konfigurace](https://github.com/microsoft/ApplicationInsights-Java/wiki/3.0-Preview:-Configuration-Options)

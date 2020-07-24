@@ -17,12 +17,12 @@ ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: bd3890757377525cf9c178866a2a2fbc0791b9de
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d5f54d65fcfd8a124b30a785697d53ad120fbf9c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79461006"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000921"
 ---
 # <a name="azure-media-services-v3-overview"></a>Přehled služby Azure Media Services v3
 
@@ -31,7 +31,7 @@ Azure Media Services je cloudová platforma, která umožňuje vytvářet řeše
 Sady SDK Media Services V3 jsou založené na [Media Services V3 openapi Specification (Swagger)](https://aka.ms/ams-v3-rest-sdk).
 
 > [!NOTE]
-> V současné době můžete použít [Azure Portal](https://portal.azure.com/) k: správa prostředků Media Services V3 [Live Events](live-events-outputs-concept.md), View (ne Manage) v3 [assets](assets-concept.md), [získat informace o přístupu k rozhraním API](access-api-portal.md). Pro všechny ostatní úlohy správy (například [transformace a úlohy](transforms-jobs-concept.md) a [Ochrana obsahu](content-protection-overview.md)) použijte [REST API](https://docs.microsoft.com/rest/api/media/), [CLI](https://aka.ms/ams-v3-cli-ref)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
+> V současné době můžete použít [Azure Portal](https://portal.azure.com/) k: správa prostředků Media Services V3 [Live Events](live-events-outputs-concept.md), View (ne Manage) v3 [assets](assets-concept.md), [získat informace o přístupu k rozhraním API](./access-api-howto.md). Pro všechny ostatní úlohy správy (například [transformace a úlohy](transforms-jobs-concept.md) a [Ochrana obsahu](content-protection-overview.md)) použijte [REST API](/rest/api/media/), [CLI](https://aka.ms/ams-v3-cli-ref)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -53,8 +53,8 @@ Media Services umožňuje vytvářet různé pracovní postupy pro média v clou
 * Analyzovat zaznamenaný videoobsah a zvukový obsah. Pro větší komfort při sledování může například organizace u svého obsahu převést řeč na text nebo vytvořit index vyhledávání a řídicí panel. Může také analyzovat nejčastější témata stížností, jejich zdroje a další související data.
 * Vytvořit službu odběru videa a streamovat obsah chráněný technologií DRM, pokud zákazník (například filmové studio) potřebuje omezit přístup a pracuje s díly chráněnými autorským zákonem.
 * Poskytovat offline obsah pro přehrávání v letadlech, vlacích a automobilech. Zákazník si může obsah stáhnout do svého telefonu nebo tabletu pro pozdější přehrání, pokud očekává nedostupnost sítě.
-* Implementujte výukovou platformu pro vzdělávací e-Learning s využitím Azure Media Services a [Azure rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/?pivot=products&panel=ai) pro titulkování na text, překladu na více jazyků a tak dále.
-* Pomocí Azure Media Services společně se službou [Azure rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/?pivot=products&panel=ai) můžete přidat titulky a titulky do videí do služby stravování pro širší cílovou skupinu (například lidem s postižením sluchu nebo lidem, kteří chtějí načítat v jiném jazyce).
+* Implementujte výukovou platformu pro vzdělávací e-Learning s využitím Azure Media Services a [Azure rozhraní API služeb Cognitive Services](../../index.yml?pivot=products&panel=ai) pro titulkování na text, překladu na více jazyků a tak dále.
+* Pomocí Azure Media Services společně se službou [Azure rozhraní API služeb Cognitive Services](../../index.yml?pivot=products&panel=ai) můžete přidat titulky a titulky do videí do služby stravování pro širší cílovou skupinu (například lidem s postižením sluchu nebo lidem, kteří chtějí načítat v jiném jazyce).
 * Umožněte Azure CDN dosáhnout velkého měřítka, aby bylo možné lépe zvládnout okamžité vysoké zátěže (například začátek události spuštění produktu).
 
 ## <a name="how-can-i-get-started-with-v3"></a>Jak začít s v3? 
@@ -86,16 +86,16 @@ Kurzy ukazují postupy založené na scénářích pro některé z hlavních Med
 * [Analýza videa – .NET](analyze-videos-tutorial-with-api.md)
 * [Dynamické šifrování AES-128 – .NET](protect-with-aes128.md)
 
-### <a name="samples"></a>ukázky
+### <a name="samples"></a>Ukázky
 
-Pomocí [tohoto prohlížeče ukázek](https://docs.microsoft.com/samples/browse/?products=azure-media-services) můžete procházet Azure Media Services ukázky kódu.
+Pomocí [tohoto prohlížeče ukázek](/samples/browse/?products=azure-media-services) můžete procházet Azure Media Services ukázky kódu.
 
 ### <a name="how-to-guides"></a>Návody
 
 Návody obsahují ukázky kódu, které demonstrují, jak dokončit úlohu. V této části najdete spoustu příkladů. Tady je několik z nich:
 
-* [Vytvoření účtu – rozhraní příkazového řádku](create-account-cli-how-to.md)
-* [Přístup k rozhraním API – rozhraní příkazového řádku](access-api-cli-how-to.md)
+* [Vytvoření účtu – rozhraní příkazového řádku](./create-account-howto.md)
+* [Přístup k rozhraním API – rozhraní příkazového řádku](./access-api-howto.md)
 * [Kódování pomocí protokolu HTTPS jako vstup úlohy – .NET](job-input-from-http-how-to.md)  
 * [Monitorování událostí – portál](monitor-events-portal-how-to.md)
 * [Dynamické šifrování pomocí více DRM – technologie .NET](protect-with-drm.md) 

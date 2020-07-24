@@ -7,16 +7,16 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 5cfb0430bc94d347afd75bc01170a71a7ad53565
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 26594486e1d98c0349fd41470c749109faf71b0b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84711863"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011409"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure V12 pro .NET
+# <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Rychlý start: Klientská knihovna úložiště objektů blob Azure verze 12 pro .NET
 
-Začněte s klientskou knihovnou V12 Azure Blob Storage pro .NET. Azure Blob Storage je řešení úložiště objektů Microsoftu pro cloud. Postupujte podle kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy. Úložiště objektů blob je optimalizované pro ukládání velkých objemů nestrukturovaných dat.
+Začněte s klientskou knihovnou V12 Azure Blob Storage pro .NET. Azure Blob Storage je řešení úložiště objektů pro cloud od Microsoftu. Postupujte podle kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy. Služba Blob Storage je optimalizovaná pro ukládání velkých objemů nestrukturovaných dat.
 
 > [!NOTE]
 > Informace o tom, jak začít s předchozí verzí sady SDK, najdete v tématu [rychlý Start: Klientská knihovna pro Azure Blob Storage pro .NET](storage-quickstart-blobs-dotnet-legacy.md).
@@ -29,11 +29,16 @@ Použijte klientskou knihovnu služby Azure Blob Storage V12 pro .NET pro:
 * Stažení objektu blob do místního počítače
 * Odstranění kontejneru
 
-[Referenční dokumentace k](/dotnet/api/azure.storage.blobs)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)  |  [Balíček (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)  |  [Ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+Další prostředky:
+
+* [Referenční dokumentace k rozhraní API](/dotnet/api/azure.storage.blobs)
+* [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)
+* [Balíček (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)
+* [Ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * Účet úložiště Azure – [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)

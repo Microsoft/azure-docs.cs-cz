@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: V tomto rychlém startu se dozvíte, jak používat Azure Dev Spaces a Visual Studio Code k ladění a rychlé iteraci aplikace .NET Core ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: b8ddf2e484b3d1525825f8df3b738091564b0a78
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 104e812cc9e792ce71f263085ba1a3474cc2226b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512448"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002773"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio-code-and-net-core---azure-dev-spaces"></a>Rychlý Start: ladění a iterace na Kubernetes: Visual Studio Code a .NET Core – Azure Dev Spaces
 
@@ -26,7 +26,7 @@ Azure Dev Spaces také umožňují ladit a iterovat pomocí:
 - [Node.js a Visual Studio Code](quickstart-nodejs.md)
 - [.NET Core a Visual Studio](quickstart-netcore-visualstudio.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Pokud žádné nemáte, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 - [Visual Studio Code nainstalován](https://code.visualstudio.com/download).
@@ -153,9 +153,9 @@ Když je služba spuštěna v režimu ladění, aktualizujte řádek 22 v `Contr
 ViewData["Message"] = "Your application description page in Azure while debugging!";
 ```
 
-Uložte soubor. Klikněte na *ladit* a pak *znovu spusťte ladění* nebo na *panelu nástrojů ladění*klikněte na tlačítko *restartovat ladění* .
+Soubor uložte. Klikněte na *ladit* a pak *znovu spusťte ladění* nebo na *panelu nástrojů ladění*klikněte na tlačítko *restartovat ladění* .
 
-![Panel nástrojů ladění je malé podokno v horním středu stránky (hned pod nadpisem stránky). Na tlačítku restartovat se zobrazí KRUHOVÁ ŠIPKA a zvýrazní se. Obrázek najetí myší na tlačítko je "restartovat (Ctrl + Shift + F5)".](media/common/debug-action-refresh.png)
+![Panel nástrojů ladění je malé podokno v horním středu stránky (hned pod nadpisem stránky). Na tlačítku restartovat se zobrazí KRUHOVÁ ŠIPKA a zvýrazní se. Obrázek tlačítka myši pro tlačítko je "restartovat (CTRL + SHIFT + f 5)".](media/common/debug-action-refresh.png)
 
 V prohlížeči otevřete službu a Všimněte si, že se zobrazí aktualizovaná zpráva.
 

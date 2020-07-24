@@ -7,20 +7,25 @@ ms.date: 01/27/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: d30260f8718d061473dfa4b29b7c35e33b27390d
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 41d6457986ac3c97b3e7a19d089e7ce6a15d1f5b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871387"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011273"
 ---
 # <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>Rychlý Start: Správa objektů BLOB pomocí sady Java V12 SDK
 
 V tomto rychlém startu se naučíte spravovat objekty BLOB pomocí Java. Objekty blob jsou objekty, které mohou obsahovat velké objemy textových nebo binárních dat, včetně obrázků, dokumentů, datových proudů médií a dat archivu. Můžete nahrávat, stahovat a vypisovat objekty BLOB a vytvářet a odstraňovat kontejnery.
 
-[API reference documentation](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html) | [Library source code](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob)[Ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples) knihovny | dokumentace k referenční dokumentaci rozhraní API[(Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob) | 
+Další prostředky:
 
-## <a name="prerequisites"></a>Požadavky
+* [Referenční dokumentace k rozhraní API](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html)
+* [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob)
+* [Balíček (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob)
+* [Ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Účet služby Azure Storage. [Vytvořte účet úložiště](../common/storage-account-create.md).
@@ -101,7 +106,7 @@ Vytvořte aplikaci Java s názvem *BLOB-Start-V12*.
 
 ### <a name="install-the-package"></a>Instalace balíčku
 
-V textovém editoru otevřete soubor *pom. XML* . Přidejte následující prvek závislosti do skupiny závislostí.
+Otevřete *pom.xml* soubor v textovém editoru. Přidejte následující prvek závislosti do skupiny závislostí.
 
 ```xml
 <dependency>
@@ -156,11 +161,11 @@ Na následujícím diagramu jsou vztahy těchto prostředků.
 
 K interakci s těmito prostředky použijte následující třídy Java:
 
-* [BlobServiceClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClient.html): `BlobServiceClient` třída umožňuje manipulovat s Azure Storage prostředky a kontejnery objektů BLOB. Účet úložiště poskytuje obor názvů nejvyšší úrovně pro Blob service.
+* [BlobServiceClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClient.html): `BlobServiceClient` Třída umožňuje manipulovat s Azure Storage prostředky a kontejnery objektů BLOB. Účet úložiště poskytuje obor názvů nejvyšší úrovně pro Blob service.
 * [BlobServiceClientBuilder](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClientBuilder.html): `BlobServiceClientBuilder` Třída poskytuje rozhraní API pro tvůrce Fluent, které pomáhá pomoci při konfiguraci a vytváření instancí `BlobServiceClient` objektů.
-* [BlobContainerClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html): `BlobContainerClient` třída umožňuje manipulovat s kontejnery Azure Storage a jejich objekty blob.
-* [BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html): `BlobClient` třída umožňuje manipulovat s objekty blob Azure Storage.
-* [BlobItem](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/models/BlobItem.html): `BlobItem` třída reprezentuje jednotlivé objekty blob vrácené voláním metody `listBlobsFlat`.
+* [BlobContainerClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html): `BlobContainerClient` Třída umožňuje manipulovat s kontejnery Azure Storage a jejich objekty blob.
+* [BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html): `BlobClient` Třída umožňuje manipulovat s objekty blob Azure Storage.
+* [BlobItem](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/models/BlobItem.html): `BlobItem` Třída reprezentuje jednotlivé objekty blob vrácené voláním metody `listBlobsFlat` .
 
 ## <a name="code-examples"></a>Příklady kódu
 
@@ -302,7 +307,7 @@ System.out.println("Done");
 
 Tato aplikace vytvoří testovací soubor v místní složce a nahraje ho do úložiště objektů BLOB. Příklad zobrazí seznam objektů BLOB v kontejneru a stáhne soubor s novým názvem, abyste mohli porovnat staré a nové soubory.
 
-Přejděte do adresáře, který obsahuje soubor *pom. XML* a zkompilujte projekt pomocí následujícího `mvn` příkazu.
+Přejděte do adresáře obsahujícího soubor *pom.xml* a zkompilujte projekt pomocí následujícího `mvn` příkazu.
 
 ```console
 mvn compile
