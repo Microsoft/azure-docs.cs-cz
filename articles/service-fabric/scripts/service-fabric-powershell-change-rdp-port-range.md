@@ -10,20 +10,20 @@ ms.workload: multiple
 ms.topic: sample
 ms.date: 03/19/2018
 ms.custom: sfrev
-ms.openlocfilehash: b3d922cb5a7cdf34e63731ab32f21c94d7b6bca0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5cc72423d7e901f82cdf7e40f5de72bd54e9cec1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76025017"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076178"
 ---
 # <a name="update-the-rdp-port-range-values"></a>Aktualizace hodnot rozsahu portů RDP
 
-Tento ukázkový skript po nasazení clusteru změní hodnoty rozsahu portů RDP na virtuálních počítačích uzlu clusteru.  Aby se základní virtuální počítače nezacyklily, používá se Azure PowerShell.  Skript získá `Microsoft.Network/loadBalancers` prostředek ve skupině prostředků clusteru a aktualizuje hodnoty `inboundNatPools.frontendPortRangeStart` a. `inboundNatPools.frontendPortRangeEnd` Podle potřeby upravte parametry.
+Tento ukázkový skript po nasazení clusteru změní hodnoty rozsahu portů RDP na virtuálních počítačích uzlu clusteru.  Aby se základní virtuální počítače nezacyklily, používá se Azure PowerShell.  Skript získá `Microsoft.Network/loadBalancers` prostředek ve skupině prostředků clusteru a aktualizuje `inboundNatPools.frontendPortRangeStart` `inboundNatPools.frontendPortRangeEnd` hodnoty a. Podle potřeby upravte parametry.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-V případě potřeby nainstalujte Azure PowerShell podle pokynů uvedených v [příručce k Azure PowerShellu](/powershell/azure/overview).
+V případě potřeby nainstalujte Azure PowerShell podle pokynů uvedených v [příručce k Azure PowerShellu](/powershell/azure/).
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -40,6 +40,6 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
+Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/).
 
 Další ukázky Azure PowerShellu pro Azure Service Fabric najdete v [ukázkách Azure PowerShellu](../service-fabric-powershell-samples.md).

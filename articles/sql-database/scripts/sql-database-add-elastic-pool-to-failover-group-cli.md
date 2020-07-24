@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 42cc10398fce831b6343f69df03104d428700ac3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 965e6fe3546630713f3fee2774c70aebd1ed2ae7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022773"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086077"
 ---
 # <a name="use-cli-to-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Přidání elastického fondu Azure SQL Database do skupiny převzetí služeb při selhání pomocí rozhraní příkazového řádku
 
@@ -52,7 +52,7 @@ az group delete --name $resource
 
 Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| | |
+| Příkaz | Popis |
 |---|---|
 | [AZ SQL elastický fond](/cli/azure/sql/elastic-pool) | Příkazy elastického fondu. |
 | [AZ SQL Failover-Group](/cli/azure/sql/failover-group) | Příkazy skupiny převzetí služeb při selhání. |

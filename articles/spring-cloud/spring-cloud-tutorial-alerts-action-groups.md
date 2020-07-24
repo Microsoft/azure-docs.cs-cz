@@ -6,12 +6,13 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
-ms.openlocfilehash: 0d3fcbbb317ef70687c83ff21e2ab817d89051a6
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: devx-track-java
+ms.openlocfilehash: c31c52d278c1e40b18b3308ca154b934d060d403
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142463"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071172"
 ---
 # <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Kurz: jak monitorovat prostředky jarní cloudu pomocí výstrah a skupin akcí
 
@@ -21,7 +22,7 @@ Pro nastavení kanálu výstrah existují dva kroky:
 1. Nastavte skupinu akcí s akcemi, které se mají provést, když se aktivuje výstraha, například e-mail, SMS, Runbook nebo Webhook. Skupiny akcí lze znovu použít mezi různými výstrahami.
 2. Nastavte pravidla upozornění. Pravidla vážou modely metrik se skupinami akcí na základě cílového prostředku, metriky, podmínky, agregace času atd.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Kromě požadavků na jarní kapacitu Azure postup v tomto kurzu pracuje s nasazenou instancí cloudu pro Azure jaře.  Začněte pomocí [rychlého](spring-cloud-quickstart-launch-app-cli.md) startu.
 
@@ -81,7 +82,7 @@ Chcete-li nakonfigurovat **výstrahu**, přejděte zpět na stránku **výstrahy
 
    ![Nové pravidlo výstrahy na portálu obrazovky](media/alerts-action-groups/alerts-3-2.png)
 
-1. Klikněte na **Done** (Hotovo).
+1. Klikněte na **Hotovo**.
 
 Podrobnosti o podmínkách, které je možné monitorovat, najdete v tématu [Možnosti metrik portálu User Portal](spring-cloud-concept-metrics.md#user-metrics-options).
 
@@ -93,7 +94,7 @@ Podrobnosti o podmínkách, které je možné monitorovat, najdete v tématu [Mo
 
 1. Nastavte **závažnost**.
 
-1. Klikněte na **vytvořit pravidlo výstrahy**.
+1. Klikněte na **Vytvořit pravidlo upozornění**.
 
    ![Nové pravidlo výstrahy na portálu obrazovky](media/alerts-action-groups/alerts-3-4.png)
 
@@ -110,7 +111,7 @@ Pravidlo je také možné vytvořit pomocí stránky **metriky** :
 V tomto kurzu jste zjistili, jak nastavit výstrahy a skupiny akcí pro aplikaci pro jarní Cloud v Azure. Další informace o skupinách akcí najdete v těchto tématech:
 
 > [!div class="nextstepaction"]
-> [Vytváření a Správa skupin akcí v Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
+> [Vytváření a správa skupin akcí na webu Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
 
 > [!div class="nextstepaction"]
 > [Chování výstrah SMS ve skupinách akcí](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e8d68e5f2eeeb7363469535c027f258fbc9d7ed1
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: cf8fc9916384c9eef24c4c50f7647632c0e6b7a2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85480486"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077467"
 ---
 # <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>Kurz: vytvoření imagí virtuálních počítačů s Windows pomocí Azure PowerShell
 
@@ -54,7 +54,7 @@ Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém ho
 
 ## <a name="get-the-vm"></a>Získání virtuálního počítače
 
-Seznam virtuálních počítačů, které jsou k dispozici ve skupině prostředků, můžete zobrazit pomocí [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm). Jakmile znáte název virtuálního počítače a skupinu prostředků, můžete `Get-AzVM` znovu použít k získání objektu virtuálního počítače a jeho uložení do proměnné pro pozdější použití. Tento příklad načte virtuální počítač s názvem *sourceVM* ze skupiny prostředků "myResourceGroup" a přiřadí ho k proměnné *$sourceVM*. 
+Seznam virtuálních počítačů, které jsou k dispozici ve skupině prostředků, můžete zobrazit pomocí [Get-AzVM](/powershell/module/az.compute/get-azvm). Jakmile znáte název virtuálního počítače a skupinu prostředků, můžete `Get-AzVM` znovu použít k získání objektu virtuálního počítače a jeho uložení do proměnné pro pozdější použití. Tento příklad načte virtuální počítač s názvem *sourceVM* ze skupiny prostředků "myResourceGroup" a přiřadí ho k proměnné *$sourceVM*. 
 
 ```azurepowershell-interactive
 $sourceVM = Get-AzVM `
@@ -64,7 +64,7 @@ $sourceVM = Get-AzVM `
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků pomocí příkazu [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) .
+Vytvořte skupinu prostředků pomocí příkazu [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) .
 
 Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. V následujícím příkladu se vytvoří skupina prostředků s názvem *myGalleryRG* v oblasti *EastUS* :
 
@@ -78,7 +78,7 @@ $resourceGroup = New-AzResourceGroup `
 
 Galerie imagí je primární prostředek, který slouží k povolení sdílení obrázků. Povolenými znaky pro název galerie jsou velká a malá písmena, číslice, tečky a tečky. Název galerie nesmí obsahovat pomlčky. Názvy galerií musí být v rámci vašeho předplatného jedinečné. 
 
-Vytvořte galerii imagí pomocí [New-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/new-azgallery). Následující příklad vytvoří galerii s názvem *myGallery* ve skupině prostředků *myGalleryRG* .
+Vytvořte galerii imagí pomocí [New-AzGallery](/powershell/module/az.compute/new-azgallery). Následující příklad vytvoří galerii s názvem *myGallery* ve skupině prostředků *myGalleryRG* .
 
 ```azurepowershell-interactive
 $gallery = New-AzGallery `
@@ -91,9 +91,9 @@ $gallery = New-AzGallery `
 
 ## <a name="create-an-image-definition"></a>Vytvoření definice obrázku 
 
-Definice obrázků vytvoří logické seskupení obrázků. Slouží ke správě informací o verzích imagí, které jsou v nich vytvořeny. Názvy definic obrázků mohou být tvořeny velkými a malými písmeny, číslicemi, tečkami, pomlčkami a tečkami. Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions).
+Definice obrázků vytvoří logické seskupení obrázků. Slouží ke správě informací o verzích imagí, které jsou v nich vytvořeny. Názvy definic obrázků mohou být tvořeny velkými a malými písmeny, číslicemi, tečkami, pomlčkami a tečkami. Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](./shared-image-galleries.md#image-definitions).
 
-Vytvořte definici Image pomocí [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). V tomto příkladu se image galerie jmenuje *myGalleryImage* a vytvoří se pro specializovanou image. 
+Vytvořte definici Image pomocí [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion). V tomto příkladu se image galerie jmenuje *myGalleryImage* a vytvoří se pro specializovanou image. 
 
 ```azurepowershell-interactive
 $galleryImage = New-AzGalleryImageDefinition `
@@ -111,7 +111,7 @@ $galleryImage = New-AzGalleryImageDefinition `
 
 ## <a name="create-an-image-version"></a>Vytvoření verze image
 
-Vytvořte verzi image z virtuálního počítače pomocí [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). 
+Vytvořte verzi image z virtuálního počítače pomocí [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion). 
 
 Povolené znaky pro verzi obrázku jsou čísla a tečky. Čísla musí být v rozsahu 32 celé číslo. Formát: *MajorVersion*. *Podverze.* *Oprava*.
 
@@ -140,7 +140,7 @@ Replikace obrázku do všech cílových oblastí může chvíli trvat.
 
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače 
 
-Jakmile budete mít specializovanou image, můžete vytvořit jeden nebo více nových virtuálních počítačů. Pomocí rutiny [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) . Pokud chcete použít image, použijte `Set-AzVMSourceImage` a nastavte na `-Id` ID definice image ($GalleryImage. ID v tomto případě), abyste vždycky používali nejnovější verzi image. 
+Jakmile budete mít specializovanou image, můžete vytvořit jeden nebo více nových virtuálních počítačů. Pomocí rutiny [New-AzVM](/powershell/module/az.compute/new-azvm) . Pokud chcete použít image, použijte `Set-AzVMSourceImage` a nastavte na `-Id` ID definice image ($GalleryImage. ID v tomto případě), abyste vždycky používali nejnovější verzi image. 
 
 V tomto příkladu nahraďte názvy prostředků podle potřeby. 
 
@@ -195,7 +195,7 @@ New-AzRoleAssignment `
    
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech souvisejících prostředků použít rutinu [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) :
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech souvisejících prostředků použít rutinu [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) :
 
 ```azurepowershell-interactive
 # Delete the gallery 
@@ -207,11 +207,11 @@ Remove-AzResourceGroup -Name myResoureceGroup
 
 ## <a name="azure-image-builder"></a>Azure Image Builder
 
-Azure také nabízí službu, která je založená na balíčku, [tvůrci imagí virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview). Jednoduše popište vlastní nastavení v šabloně a zpracuje se tím vytváření obrázků. 
+Azure také nabízí službu, která je založená na balíčku, [tvůrci imagí virtuálních počítačů Azure](./image-builder-overview.md). Jednoduše popište vlastní nastavení v šabloně a zpracuje se tím vytváření obrázků. 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste vytvořili specializovanou image virtuálního počítače. Naučili jste se tyto postupy:
+V tomto kurzu jste vytvořili specializovanou image virtuálního počítače. Naučili jste se:
 
 > [!div class="checklist"]
 > * Vytvoření služby Shared Image Gallery
@@ -224,6 +224,3 @@ Přejděte k dalšímu kurzu, kde se dozvíte, jak vytvořit vysoce dostupné vi
 
 > [!div class="nextstepaction"]
 > [Vytvoření vysoce dostupných virtuálních počítačů](tutorial-availability-sets.md)
-
-
-

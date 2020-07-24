@@ -4,16 +4,16 @@ description: 'Kurz: v tomto kurzu se dozvíte, jak zachytit data z centra událo
 services: event-hubs
 ms.date: 06/23/2020
 ms.topic: tutorial
-ms.openlocfilehash: b5f38c1a5b60dc8c8f0d9e8710c5dbc95434fe78
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 8d45681b53aa2dd8df8c2288fecdde1b45fb7bd4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322489"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039493"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Kurz: migrace zachycených Event Hubs dat do SQL Data Warehouse pomocí Event Grid a Azure Functions
 
-[Zachytávání](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) služby Event Hubs představuje nejjednodušší způsob, jak automaticky doručovat streamovaná data ve službě Event Hubs do služby Azure Blob Storage nebo Azure Data Lake Store. Následně můžete tato data zpracovávat a doručovat do libovolných dalších cílových úložišť, například do služby SQL Data Warehouse nebo Cosmos DB. V tomto kurzu se dozvíte, jak pomocí funkce Azure aktivované [Event Gridem](https://docs.microsoft.com/azure/event-grid/overview) zachytávat data z centra událostí do služby SQL Data Warehouse.
+[Zachytávání](./event-hubs-capture-overview.md) služby Event Hubs představuje nejjednodušší způsob, jak automaticky doručovat streamovaná data ve službě Event Hubs do služby Azure Blob Storage nebo Azure Data Lake Store. Následně můžete tato data zpracovávat a doručovat do libovolných dalších cílových úložišť, například do služby SQL Data Warehouse nebo Cosmos DB. V tomto kurzu se dozvíte, jak pomocí funkce Azure aktivované [Event Gridem](../event-grid/overview.md) zachytávat data z centra událostí do služby SQL Data Warehouse.
 
 ![Visual Studio](./media/store-captured-data-data-warehouse/EventGridIntegrationOverview.PNG)
 
@@ -31,7 +31,7 @@ V tomto kurzu provedete následující akce:
 > - Streamování ukázkových dat do centra událostí
 > - Ověření zachycených dat ve službě SQL Data Warehouse
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -130,7 +130,7 @@ Po publikování funkce můžete začít odebírat událost zachycení ze služb
 
 ## <a name="create-an-event-grid-subscription-from-the-functions-app"></a>Vytvoření odběru Event Gridu v aplikaci Functions
  
-1. Přejít na [Azure Portal](https://portal.azure.com/). Vyberte skupinu prostředků a aplikaci funkcí.
+1. Přejděte na [Azure Portal](https://portal.azure.com/). Vyberte skupinu prostředků a aplikaci funkcí.
 
    ![Zobrazení aplikace funkcí](./media/store-captured-data-data-warehouse/view-function-app.png)
 
@@ -178,7 +178,4 @@ Po několika minutách zadejte dotaz do tabulku ve službě SQL Data Warehouse. 
 ## <a name="next-steps"></a>Další kroky 
 Pomocí kombinace datového skladu s výkonnými nástroji pro vizualizaci dat můžete získat užitečné přehledy.
 
-V tomto článku se dozvíte, jak používat [Power BI se službou SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-integrate-power-bi).
-
-
-
+V tomto článku se dozvíte, jak používat [Power BI se službou SQL Data Warehouse](/azure/sql-data-warehouse/sql-data-warehouse-integrate-power-bi).

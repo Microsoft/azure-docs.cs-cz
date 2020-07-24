@@ -3,16 +3,16 @@ title: Kurz – obnovení služby SAP HANA DB v Azure pomocí rozhraní příkaz
 description: V tomto kurzu se dozvíte, jak obnovit SAP HANA databáze běžící na virtuálním počítači Azure z trezoru služby Azure Backup Recovery Services pomocí Azure CLI.
 ms.topic: tutorial
 ms.date: 12/4/2019
-ms.openlocfilehash: 14e5023bf79e3e20f96c00fdc73f19c8cd095b73
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 617c21d8c62ed83678f6fc99741409e82eb3c0b1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170577"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023921"
 ---
 # <a name="tutorial-restore-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Kurz: obnovení databází SAP HANA ve virtuálním počítači Azure pomocí Azure CLI
 
-Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo prostřednictvím skriptů. Tato dokumentace podrobně popisuje, jak obnovit zálohovanou SAP HANA databázi na virtuálním počítači Azure pomocí Azure CLI. Tyto kroky můžete provést také pomocí [Azure Portal](https://docs.microsoft.com/azure/backup/sap-hana-db-restore).
+Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo prostřednictvím skriptů. Tato dokumentace podrobně popisuje, jak obnovit zálohovanou SAP HANA databázi na virtuálním počítači Azure pomocí Azure CLI. Tyto kroky můžete provést také pomocí [Azure Portal](./sap-hana-db-restore.md).
 
 Pomocí [Azure Cloud Shell](tutorial-sap-hana-backup-cli.md) spustit příkazy rozhraní příkazového řádku.
 
@@ -33,7 +33,7 @@ V tomto kurzu se předpokládá, že máte databázi SAP HANA běžící na virt
 
 ## <a name="view-restore-points-for-a-backed-up-database"></a>Zobrazit body obnovení pro zálohovanou databázi
 
-Chcete-li zobrazit seznam všech bodů obnovení pro databázi, použijte rutinu [AZ Backup RecoveryPoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) následujícím způsobem:
+Chcete-li zobrazit seznam všech bodů obnovení pro databázi, použijte rutinu [AZ Backup RecoveryPoint list](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) následujícím způsobem:
 
 ```azurecli-interactive
 az backup recoverypoint list --resource-group saphanaResourceGroup \
@@ -56,7 +56,7 @@ DefaultRangeRecoveryPoint                                    AzureWorkload      
 Jak vidíte, výše uvedený seznam obsahuje tři body obnovení: jednu pro úplnou, rozdílovou a zálohu protokolu.
 
 >[!NOTE]
->Počáteční a koncový bod každého nepoškozeného řetězce zálohy protokolu můžete zobrazit také pomocí rutiny [AZ Backup RecoveryPoint show-log-řetěz](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) .
+>Počáteční a koncový bod každého nepoškozeného řetězce zálohy protokolu můžete zobrazit také pomocí rutiny [AZ Backup RecoveryPoint show-log-řetěz](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) .
 
 ## <a name="prerequisites-to-restore-a-database"></a>Předpoklady pro obnovení databáze
 
@@ -73,7 +73,7 @@ Azure Backup může obnovit databáze SAP HANA, které běží na virtuálních 
 * Obnoví konkrétní datum nebo čas (za sekundu) pomocí záloh protokolu. Azure Backup automaticky určuje odpovídající úplné a rozdílové zálohy a řetěz záloh protokolů, které jsou nutné k obnovení na základě vybraného času.
 * Obnovení do konkrétního úplného nebo rozdílového zálohování pro obnovení do konkrétního bodu obnovení.
 
-Chcete-li obnovit databázi, použijte rutinu [AZ Restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) , která vyžaduje objekt konfigurace obnovení jako jeden ze vstupů. Tento objekt se dá vygenerovat pomocí rutiny [AZ Backup recoveryconfig show](https://docs.microsoft.com/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show) . Objekt konfigurace obnovení obsahuje všechny podrobnosti k provedení obnovení. Jedním z nich je režim obnovení – **OriginalWorkloadRestore** nebo **AlternateWorkloadRestore**.
+Chcete-li obnovit databázi, použijte rutinu [AZ Restore-azurewl](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) , která vyžaduje objekt konfigurace obnovení jako jeden ze vstupů. Tento objekt se dá vygenerovat pomocí rutiny [AZ Backup recoveryconfig show](/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show) . Objekt konfigurace obnovení obsahuje všechny podrobnosti k provedení obnovení. Jedním z nich je režim obnovení – **OriginalWorkloadRestore** nebo **AlternateWorkloadRestore**.
 
 >[!NOTE]
 > **OriginalWorkloadRestore** – obnovte data do stejné instance SAP HANA jako původní zdroj. Tato možnost přepíše původní databázi. <br>
@@ -85,7 +85,7 @@ Chcete-li obnovit databázi do alternativního umístění, použijte jako reži
 
 V tomto kurzu obnovíte předchozí bod obnovení. [Zobrazte seznam bodů obnovení](#view-restore-points-for-a-backed-up-database) pro databázi a vyberte bod, do kterého chcete obnovit. V tomto kurzu se použije bod obnovení s názvem *7660777527047692711*.
 
-Pomocí výše uvedeného názvu bodu obnovení a režimu obnovení vytvoříme objekt konfigurace obnovení pomocí rutiny [AZ Backup recoveryconfig show](https://docs.microsoft.com/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show) . Pojďme se podívat, jak každý ze zbývajících parametrů v této rutině znamená:
+Pomocí výše uvedeného názvu bodu obnovení a režimu obnovení vytvoříme objekt konfigurace obnovení pomocí rutiny [AZ Backup recoveryconfig show](/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show) . Pojďme se podívat, jak každý ze zbývajících parametrů v této rutině znamená:
 
 * **--target-Item-Name** Jedná se o název, který obnovená databáze použije. V tomto případě jsme použili název *restored_database*.
 * **--target-Server-Name** Jedná se o název serveru SAP HANA, který se úspěšně zaregistroval v trezoru služby Recovery Services a nachází se ve stejné oblasti jako databáze, která se má obnovit. Pro tento kurz obnovíme databázi na stejný SAP HANA Server, který jsme chránili, s názvem *hxehost*.
@@ -112,7 +112,7 @@ Odpověď na výše uvedený dotaz bude objekt konfigurace obnovení, který vyp
 {"restore_mode": "AlternateLocation", "container_uri": " VMAppContainer;Compute;saphanaResourceGroup;saphanaVM ", "item_uri": "SAPHanaDatabase;hxe;hxe", "recovery_point_id": "7660777527047692711", "item_type": "SAPHana", "source_resource_id": "/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/saphanavm", "database_name": null, "container_id": null, "alternate_directory_paths": null}
 ```
 
-Nyní obnovte databázi spuštěním rutiny [AZ Restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) . Pokud chcete tento příkaz použít, zadáte výše uvedený výstup JSON, který se uloží do souboru s názvem *recoveryconfig.js*.
+Nyní obnovte databázi spuštěním rutiny [AZ Restore-azurewl](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) . Pokud chcete tento příkaz použít, zadáte výše uvedený výstup JSON, který se uloží do souboru s názvem *recoveryconfig.js*.
 
 ```azurecli-interactive
 az backup restore restore-azurewl --resource-group saphanaResourceGroup \
@@ -129,13 +129,13 @@ Name                                  Resource
 5b198508-9712-43df-844b-977e5dfc30ea  SAPHANA
 ```
 
-Odpověď vám poskytne název úlohy. Tento název úlohy můžete použít ke sledování stavu úlohy pomocí rutiny [AZ Backup Job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) .
+Odpověď vám poskytne název úlohy. Tento název úlohy můžete použít ke sledování stavu úlohy pomocí rutiny [AZ Backup Job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) .
 
 ## <a name="restore-and-overwrite"></a>Obnovit a přepsat
 
 K obnovení do původního umístění použijeme **OrignialWorkloadRestore** jako režim obnovení. Pak je nutné zvolit bod obnovení, který může být buď předchozí bod v čase, nebo libovolným z předchozích bodů obnovení.
 
-Pro tento kurz si pro obnovení zvolíme předchozí bod v čase "28-11-2019-09:53:00". Tento bod obnovení můžete zadat v následujících formátech: dd-mm-rrrr, dd-mm-rrrr-hh: mm: ss. Chcete-li zvolit platný bod v čase obnovení do, použijte rutinu [AZ Backup RecoveryPoint show-log-řetěz](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) , která uvádí intervaly nepřerušených záloh řetězů protokolů.
+Pro tento kurz si pro obnovení zvolíme předchozí bod v čase "28-11-2019-09:53:00". Tento bod obnovení můžete zadat v následujících formátech: dd-mm-rrrr, dd-mm-rrrr-hh: mm: ss. Chcete-li zvolit platný bod v čase obnovení do, použijte rutinu [AZ Backup RecoveryPoint show-log-řetěz](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) , která uvádí intervaly nepřerušených záloh řetězů protokolů.
 
 ```azurecli-interactive
 az backup recoveryconfig show --resource-group saphanaResourceGroup \
@@ -153,7 +153,7 @@ Odpověď na výše uvedený dotaz bude objekt konfigurace obnovení, který vyp
 {"restore_mode": "OriginalLocation", "container_uri": " VMAppContainer;Compute;saphanaResourceGroup;saphanaVM ", "item_uri": "SAPHanaDatabase;hxe;hxe", "recovery_point_id": "DefaultRangeRecoveryPoint", "log_point_in_time": "28-11-2019-09:53:00", "item_type": "SAPHana", "source_resource_id": "/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/saphanavm", "database_name": null, "container_id": null, "alternate_directory_paths": null}"
 ```
 
-Nyní obnovte databázi spuštěním rutiny [AZ Restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) . Pokud chcete tento příkaz použít, zadáte výše uvedený výstup JSON, který se uloží do souboru s názvem *recoveryconfig.js*.
+Nyní obnovte databázi spuštěním rutiny [AZ Restore-azurewl](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) . Pokud chcete tento příkaz použít, zadáte výše uvedený výstup JSON, který se uloží do souboru s názvem *recoveryconfig.js*.
 
 ```azurecli-interactive
 az backup restore restore-azurewl --resource-group saphanaResourceGroup \
@@ -170,15 +170,15 @@ Name                                  Resource
 5b198508-9712-43df-844b-977e5dfc30ea  SAPHANA
 ```
 
-Odpověď vám poskytne název úlohy. Tento název úlohy můžete použít ke sledování stavu úlohy pomocí rutiny [AZ Backup Job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) .
+Odpověď vám poskytne název úlohy. Tento název úlohy můžete použít ke sledování stavu úlohy pomocí rutiny [AZ Backup Job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) .
 
 ## <a name="restore-as-files"></a>Obnovit jako soubory
 
 K obnovení zálohovaných dat jako souborů místo databáze použijeme **RestoreAsFiles** jako režim obnovení. Pak zvolte bod obnovení, který může být buď předchozí bod v čase, nebo kterýkoli z předchozích bodů obnovení. Jakmile jsou soubory v zadané cestě, můžete tyto soubory převést na libovolný SAP HANA počítač, ve kterém je chcete obnovit jako databázi. Vzhledem k tomu, že můžete tyto soubory přesunout na libovolný počítač, teď můžete data obnovit v rámci předplatných a oblastí.
 
-Pro tento kurz si vybereme předchozí bod obnovení, který se má `28-11-2019-09:53:00` obnovit, a umístění pro výpis záložních souborů jako `/home/saphana/restoreasfiles` na stejném serveru SAP HANA. Tento bod obnovení můžete zadat v jednom z následujících formátů: **dd-mm-rrrr** nebo **dd-mm-rrrr-hh: mm: SS**. Chcete-li zvolit platný bod v čase obnovení do, použijte rutinu [AZ Backup RecoveryPoint show-log-řetěz](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) , která uvádí intervaly nepřerušených záloh řetězů protokolů.
+Pro tento kurz si vybereme předchozí bod obnovení, který se má `28-11-2019-09:53:00` obnovit, a umístění pro výpis záložních souborů jako `/home/saphana/restoreasfiles` na stejném serveru SAP HANA. Tento bod obnovení můžete zadat v jednom z následujících formátů: **dd-mm-rrrr** nebo **dd-mm-rrrr-hh: mm: SS**. Chcete-li zvolit platný bod v čase obnovení do, použijte rutinu [AZ Backup RecoveryPoint show-log-řetěz](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) , která uvádí intervaly nepřerušených záloh řetězů protokolů.
 
-Pomocí rutiny [AZ Backup recoveryconfig show](https://docs.microsoft.com/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show) vytvořte objekt konfigurace obnovení a použijte přitom výše uvedený název bodu obnovení a režim obnovení. Pojďme se podívat, jak každý ze zbývajících parametrů v této rutině znamená:
+Pomocí rutiny [AZ Backup recoveryconfig show](/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show) vytvořte objekt konfigurace obnovení a použijte přitom výše uvedený název bodu obnovení a režim obnovení. Pojďme se podívat, jak každý ze zbývajících parametrů v této rutině znamená:
 
 * **--target-kontejner-Name** Jedná se o název serveru SAP HANA, který se úspěšně zaregistroval v trezoru služby Recovery Services a nachází se ve stejné oblasti jako databáze, která se má obnovit. Pro tento kurz obnovíme databázi jako soubory na stejný SAP HANA Server, který jsme chránili, s názvem *hxehost*.
 * **--RP – název** Pro obnovení bodu v čase bude název bodu obnovení **DefaultRangeRecoveryPoint** .
@@ -215,7 +215,7 @@ Odpověď na výše uvedený dotaz bude objekt konfigurace obnovení, který vyp
 }
 ```
 
-Nyní k obnovení databáze jako souborů spusťte rutinu [AZ Restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) . Pokud chcete tento příkaz použít, zadáte výstup JSON, který je uvedený výše, který se uloží do souboru s názvem *recoveryconfig.js*.
+Nyní k obnovení databáze jako souborů spusťte rutinu [AZ Restore-azurewl](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) . Pokud chcete tento příkaz použít, zadáte výstup JSON, který je uvedený výše, který se uloží do souboru s názvem *recoveryconfig.js*.
 
 ```azurecli-interactive
 az backup restore restore-azurewl --resource-group saphanaResourceGroup \
@@ -266,7 +266,7 @@ Výstup bude vypadat nějak takto:
 }
 ```
 
-Odpověď vám poskytne název úlohy. Tento název úlohy můžete použít ke sledování stavu úlohy pomocí rutiny [AZ Backup Job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) .
+Odpověď vám poskytne název úlohy. Tento název úlohy můžete použít ke sledování stavu úlohy pomocí rutiny [AZ Backup Job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) .
 
 Soubory, které jsou dumpingové do cílového kontejneru, jsou:
 
@@ -347,4 +347,4 @@ Přesuňte obnovené soubory na Server SAP HANA, kde je chcete obnovit jako data
 
 * Informace o tom, jak spravovat SAP HANA databází zálohovaných pomocí Azure CLI, najdete v kurzu [Správa databáze SAP HANA na virtuálním počítači Azure pomocí](tutorial-sap-hana-backup-cli.md) rozhraní PŘÍKAZového řádku.
 
-* Informace o tom, jak obnovit databázi SAP HANA běžící na virtuálním počítači Azure pomocí Azure Portal, najdete [v tématu obnovení databází SAP HANA na virtuálních počítačích Azure](https://docs.microsoft.com/azure/backup/sap-hana-db-restore) .
+* Informace o tom, jak obnovit databázi SAP HANA běžící na virtuálním počítači Azure pomocí Azure Portal, najdete [v tématu obnovení databází SAP HANA na virtuálních počítačích Azure](./sap-hana-db-restore.md) .

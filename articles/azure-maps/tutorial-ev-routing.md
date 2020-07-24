@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, tracking-python
-ms.openlocfilehash: 8c78913486610b171b7577d0bc239e0e7060038e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 32a3ec0caae303c37cad771b2bbbd1b7840512a9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560393"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075442"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Kurz: směrování elektrických vozidel pomocí Azure Notebooks (Python)
 
@@ -35,11 +35,11 @@ V tomto kurzu provedete následující:
 > * Najděte a vizualizujte trasu k nejbližší elektrické stanici zpoplatnění elektrického vozidla na základě času na disku.
 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 Abyste mohli tento kurz dokončit, musíte nejdřív vytvořit účet Azure Maps a získat primární klíč (klíč předplatného). 
 
-Pokud chcete vytvořit předplatné účtu Azure Maps, postupujte podle pokynů v tématu [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps). Potřebujete předplatné účtu Azure Maps s cenovou úrovní S1. 
+Pokud chcete vytvořit předplatné účtu Azure Maps, postupujte podle pokynů v tématu [Vytvoření účtu](quick-demo-map-app.md#create-an-azure-maps-account). Potřebujete předplatné účtu Azure Maps s cenovou úrovní S1. 
 
 Pokud chcete získat primární klíč předplatného pro svůj účet, postupujte podle pokynů v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account).
 
@@ -82,12 +82,12 @@ Zkuste pochopit funkčnost, kterou implementujete v souboru poznámkového bloku
 
 Chcete-li spustit kód v poznámkovém bloku, nainstalujte balíčky na úrovni projektu pomocí následujících kroků:
 
-1. Stáhněte si soubor [*požadavky. txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) z [úložiště poznámkového bloku Azure Maps Jupyter](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)a pak ho nahrajte do svého projektu.
+1. Stáhněte soubor [*requirements.txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) z [úložiště poznámkového bloku Azure Maps Jupyter](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)a pak ho nahrajte do svého projektu.
 1. Na řídicím panelu projekt vyberte **nastavení projektu**. 
 1. V podokně **nastavení projektu** vyberte kartu **prostředí** a pak vyberte **Přidat**.
 1. V části **nastavení prostředí**proveďte následující kroky:   
-    a. V prvním rozevíracím seznamu vyberte možnost **požadavky. txt**.  
-    b. V druhém rozevíracím seznamu vyberte soubor vašich požadavků. *txt* .  
+    a. V prvním rozevíracím seznamu vyberte možnost **Requirements.txt**.  
+    b. V druhém rozevíracím seznamu vyberte soubor *requirements.txt* .  
     c. V třetím rozevíracím seznamu vyberte v části vaše verze **Python verze 3,6** .
 1. Vyberte **Uložit**.
 

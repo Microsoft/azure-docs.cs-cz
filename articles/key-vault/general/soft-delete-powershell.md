@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 022e6eb517987207755d31fdb1820e35197d8dc6
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: d281b8a438710cc98307e41210c3435b26483acd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202125"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013347"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Jak používat obnovitelné odstranění Key Vaultu s využitím PowerShellu
 
@@ -27,7 +27,7 @@ Funkce obnovitelného odstranění Azure Key Vault umožňuje obnovení odstran�
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-- Azure PowerShell 1.0.0 nebo novější – Pokud toto nastavení již nemáte, nainstalujte Azure PowerShell a přidružte ho k předplatnému Azure, viz [Jak nainstalovat a nakonfigurovat Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview). 
+- Azure PowerShell 1.0.0 nebo novější – Pokud toto nastavení již nemáte, nainstalujte Azure PowerShell a přidružte ho k předplatnému Azure, viz [Jak nainstalovat a nakonfigurovat Azure PowerShell](https://docs.microsoft.com/powershell/azure/). 
 
 >[!NOTE]
 > Existuje zastaralá verze našeho Key Vaultho souborového formátování PowerShellu **, která se dá načíst** do vašeho prostředí namísto správné verze. Očekáváme aktualizovanou verzi PowerShellu, která bude obsahovat potřebnou opravu formátování výstupu, a v tomto okamžiku aktualizuje toto téma. Aktuální alternativní řešení: Pokud se setkáte s tímto problémem formátování, je:
@@ -40,7 +40,7 @@ Informace o Key Vault specifických referenčních informacích pro PowerShell n
 
 Operace Key Vault se samostatně spravují prostřednictvím oprávnění řízení přístupu na základě role (RBAC) následujícím způsobem:
 
-| Operace | Description | Oprávnění uživatele |
+| Operace | Popis | Oprávnění uživatele |
 |:--|:--|:--|
 |Seznam|Zobrazí seznam odstraněných trezorů klíčů.|Microsoft. deletedVaults trezor//Read|
 |Zotavit|Obnoví odstraněný Trezor klíčů.|Trezor Microsoft. a trezory/zápis|

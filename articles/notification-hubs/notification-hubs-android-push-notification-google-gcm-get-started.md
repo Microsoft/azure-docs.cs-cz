@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 3f2ad007ff0e1012f957c718d125b2e5b2e40964
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: d5bd8f5e57e73fd0ff63394f119ecca678b17e60
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85249227"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022579"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Kurz: nabízená oznámení na zařízení s Androidem pomocí Azure Notification Hubs a Google Cloud Messaging (nepoužívané)
 
@@ -51,7 +51,7 @@ V tomto kurzu provedete následující akce:
 > * Připojte aplikaci k centru oznámení
 > * Otestování aplikace
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * [Android Studio](https://go.microsoft.com/fwlink/?LinkId=389797).
@@ -485,7 +485,7 @@ Kromě toho se ujistěte, že jste do svého spuštěného emulátoru v části 
 
 ## <a name="optional-send-push-notifications-directly-from-the-app"></a>(Volitelné) Zasílání nabízených oznámení přímo z aplikace
 
-Za normálních okolností byste odesílali oznámení pomocí serveru backend. V některých případech můžete chtít možnost zasílání nabízených oznámení přímo z klientské aplikace. Tato část vysvětluje postup odesílání oznámení z klienta pomocí [API služby REST centra oznámení Azure](https://msdn.microsoft.com/library/azure/dn223264.aspx).
+Za normálních okolností byste odesílali oznámení pomocí serveru backend. V některých případech můžete chtít možnost zasílání nabízených oznámení přímo z klientské aplikace. Tato část vysvětluje postup odesílání oznámení z klienta pomocí [API služby REST centra oznámení Azure](/previous-versions/azure/reference/dn223264(v=azure.100)).
 
 1. V zobrazení projektu Android Studio rozbalte položku **App**  >  **Src**  >  **Main**  >  **res**  >  **layout**. Otevřete soubor rozložení `activity_main.xml` a klikněte na kartu **Text** pro aktualizaci textového obsahu souboru. Aktualizujte ho pomocí kódu níže, který přidává nové `Button` a `EditText` ovládací prvky pro zasílání zpráv s nabízeným oznámením centra oznámení. Přidejte tento kód v dolní části, těsně před `</RelativeLayout>`.
 
@@ -544,7 +544,7 @@ Za normálních okolností byste odesílali oznámení pomocí serveru backend. 
     private String HubSasKeyName = null;
     private String HubSasKeyValue = null;
     ```
-6. Vytvořte token SaS (Software Access Signature) pro ověření požadavku POST kvůli odeslání zpráv do centra oznámení. Parsujte data klíče připojovacího řetězce a vytvořte token SaS podle pokynů v referenční dokumentaci k rozhraní REST API v části [Základní pojmy](https://msdn.microsoft.com/library/azure/dn495627.aspx). Následující kód představuje příklad implementace.
+6. Vytvořte token SaS (Software Access Signature) pro ověření požadavku POST kvůli odeslání zpráv do centra oznámení. Parsujte data klíče připojovacího řetězce a vytvořte token SaS podle pokynů v referenční dokumentaci k rozhraní REST API v části [Základní pojmy](/previous-versions/azure/reference/dn495627(v=azure.100)). Následující kód představuje příklad implementace.
 
     Do `MainActivity.java` přidejte následující metodu do třídy `MainActivity` k analýze připojovacího řetězce.
 
@@ -741,7 +741,7 @@ V tomto kurzu jste poslali oznámení všem zařízením s Androidem registrovan
 [Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-android-get-started-push.md 
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Referencing a library project]: https://go.microsoft.com/fwlink/?LinkId=389800
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
 [Azure Portal]: https://portal.azure.com

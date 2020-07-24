@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d269b95e5e6fb8491afd4c2f9729cbb047cf3419
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7fe1c01542df2fcc38982fe2a30f9e94c712eacb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100443"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065257"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>Kurz: Vytvoření a nasazení vysoce dostupných virtuálních počítačů v Azure PowerShellu
 
@@ -41,13 +41,13 @@ Skupiny dostupnosti použijte v případě, že chcete v Azure nasadit spolehliv
 
 Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
 
-Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče tak, že přejdete [https://shell.azure.com/powershell](https://shell.azure.com/powershell)na. Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
+Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče tak, že přejdete na [https://shell.azure.com/powershell](https://shell.azure.com/powershell) . Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
 
 ## <a name="create-an-availability-set"></a>Vytvoření skupiny dostupnosti
 
 Hardware ve vybraném umístění je rozdělený do několika aktualizačních domén a domén selhání. **Aktualizační doména** je skupina virtuálních počítačů a podřízeného fyzického hardwaru, který je možné současně restartovat. Virtuální počítače v jedné **doméně selhání** sdílejí společné úložiště a také zdroj napájení a síťový přepínač.  
 
-Skupinu dostupnosti můžete vytvořit pomocí [New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset). V tomto příkladu je počet domén aktualizace i selhání *2* a skupina dostupnosti má název *myAvailabilitySet*.
+Skupinu dostupnosti můžete vytvořit pomocí [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset). V tomto příkladu je počet domén aktualizace i selhání *2* a skupina dostupnosti má název *myAvailabilitySet*.
 
 Vytvořte skupinu prostředků.
 
@@ -57,7 +57,7 @@ New-AzResourceGroup `
    -Location EastUS
 ```
 
-Vytvořte spravovanou skupinu dostupnosti pomocí [New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset) s `-sku aligned` parametrem.
+Vytvořte spravovanou skupinu dostupnosti pomocí [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) s `-sku aligned` parametrem.
 
 ```azurepowershell-interactive
 New-AzAvailabilitySet `
@@ -73,15 +73,15 @@ New-AzAvailabilitySet `
 Virtuální počítače musí být vytvořené v rámci skupiny dostupnosti, abyste se ujistili, že jsou správně distribuované napříč hardwarem. Existující virtuální počítač nemůžete přidat do skupiny dostupnosti po jeho vytvoření. 
 
 
-Když vytvoříte virtuální počítač pomocí [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm), použijete `-AvailabilitySetName` parametr k zadání názvu skupiny dostupnosti.
+Když vytvoříte virtuální počítač pomocí [New-AzVM](/powershell/module/az.compute/new-azvm), použijete `-AvailabilitySetName` parametr k zadání názvu skupiny dostupnosti.
 
-Nejdřív pomocí rutiny [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) nastavte uživatelské jméno a heslo správce virtuálního počítače:
+Nejdřív pomocí rutiny [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) nastavte uživatelské jméno a heslo správce virtuálního počítače:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-Teď vytvořte dva virtuální počítače pomocí [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) ve skupině dostupnosti.
+Teď vytvořte dva virtuální počítače pomocí [New-AzVM](/powershell/module/az.compute/new-azvm) ve skupině dostupnosti.
 
 ```azurepowershell-interactive
 for ($i=1; $i -le 2; $i++)
@@ -101,13 +101,13 @@ for ($i=1; $i -le 2; $i++)
 
 Vytvoření a konfigurace obou virtuálních počítačů bude trvat několik minut. Po dokončení budete mít dva virtuální počítače distribuované napříč základním hardwarem. 
 
-Pokud se podíváte na skupinu dostupnosti na portálu, přejděte na **skupiny** > prostředků**myResourceGroupAvailability** > **myAvailabilitySet**, měli byste vidět, jak se virtuální počítače distribuují napříč dvěma doménami selhání a aktualizačními doménami.
+Pokud se podíváte na skupinu dostupnosti na portálu, přejděte na **skupiny prostředků**  >  **myResourceGroupAvailability**  >  **myAvailabilitySet**, měli byste vidět, jak se virtuální počítače distribuují napříč dvěma doménami selhání a aktualizačními doménami.
 
 ![Skupina dostupnosti na portálu](./media/tutorial-availability-sets/fd-ud.png)
 
 ## <a name="check-for-available-vm-sizes"></a>Kontrola dostupných velikostí virtuálních počítačů 
 
-Když vytvoříte virtuální počítač ve skupině dostupnosti, budete potřebovat zjistit, jaké velikosti virtuálních počítačů jsou na hardwaru k dispozici. Pomocí příkazu [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) získáte všechny dostupné velikosti pro virtuální počítače, které můžete nasadit ve skupině dostupnosti.
+Když vytvoříte virtuální počítač ve skupině dostupnosti, budete potřebovat zjistit, jaké velikosti virtuálních počítačů jsou na hardwaru k dispozici. Pomocí příkazu [Get-AzVMSize](/powershell/module/az.compute/get-azvmsize) získáte všechny dostupné velikosti pro virtuální počítače, které můžete nasadit ve skupině dostupnosti.
 
 ```azurepowershell-interactive
 Get-AzVMSize `
@@ -136,5 +136,3 @@ Přejděte k dalšímu kurzu, kde se seznámíte se škálovacími sadami virtu�
 
 > [!div class="nextstepaction"]
 > [Vytvoření sady škálování virtuálního počítače](tutorial-create-vmss.md)
-
-

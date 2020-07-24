@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 1bed17084af39fa75fe01d68fbdd33c586d48e67
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: f77c20faa87adf28a2dda43412a59867309c7cf8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114278"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066927"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Vytvoření úhlové aplikace s rozhraním API Azure Cosmos DB pro MongoDB – použití Mongoose pro připojení k Cosmos DB
 
@@ -30,9 +30,9 @@ V této části kurzu budete:
 > * Vytvořte službu Hero, která získá data Hero.
 > * Spusťte aplikaci místně.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Než začnete s tímto kurzem, proveďte kroky v [části 4](tutorial-develop-mongodb-nodejs-part4.md).
 
@@ -230,7 +230,7 @@ Pojďme si projít několik minut a projít si předchozí kód. Nejprve přejde
 
 Dále spusťte aplikaci pomocí následujících kroků:
 
-1. V Visual Studio Code uložte všechny změny. Na levé straně vyberte tlačítko **ladit** ![ ikona ladění v Visual Studio Code ](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png) a pak vyberte tlačítko **spustit ladění** ![ ikona ladění v Visual Studio Code ](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png) .
+1. V Visual Studio Code uložte všechny změny. Na levé straně vyberte tlačítko **ladit** :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png"::: a pak vyberte tlačítko **Spustit ladění** :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png"::: .
 
 1. Teď přejděte do prohlížeče. Otevřete **Nástroje pro vývojáře** a **kartu síť**. Přejděte na `http://localhost:3000` a zobrazí se naše aplikace.
 

@@ -12,14 +12,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/16/2020
 ms.author: juliako
-ms.openlocfilehash: 35be4ec2c4f5f8c299120c0ba7dbdcb1dd112473
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f12771e55ced3b8783b6c7497b83e6b041c66b75
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79472029"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074476"
 ---
-# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Kurz: kódování vzdáleného souboru na základě adresy URL a streamu pro video
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Kurz: Kódování vzdáleného souboru na základě adresy URL a streamování videa – REST
 
 Azure Media Services umožňuje kódování mediálních souborů ve formátech, které se dají přehrávat na nejrůznějších prohlížečích a zařízeních. Například můžete chtít svůj obsah streamovat ve formátu Apple HLS nebo MPEG DASH. Před streamováním je vhodné soubor digitálního média ve vysoké kvalitě zakódovat. Pokyny ke kódování najdete v tématu [Principy kódování](encoding-concept.md).
 
@@ -40,9 +40,9 @@ V tomto kurzu získáte informace o následujících postupech:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- [Vytvořte účet Media Services](create-account-cli-how-to.md).
+- [Vytvořte účet Media Services](./create-account-howto.md).
 
     Nezapomeňte si pamatovat hodnoty, které jste použili pro název skupiny prostředků a název účtu Media Services
 
@@ -125,7 +125,7 @@ V této části odešleme požadavky relevantní pro kódování a vytvoření a
 
 ### <a name="start-a-streaming-endpoint"></a>Spuštění koncového bodu streamování
 
-Pokud chcete streamování povolit, musíte nejdřív spustit [koncový bod streamování](https://docs.microsoft.com/azure/media-services/latest/streaming-endpoint-concept) , ze kterého chcete streamovat video.
+Pokud chcete streamování povolit, musíte nejdřív spustit [koncový bod streamování](./streaming-endpoint-concept.md) , ze kterého chcete streamovat video.
 
 > [!NOTE]
 > Fakturuje se vám jenom v případě, že je koncový bod streamování ve stavu spuštěno.
@@ -139,19 +139,19 @@ Pokud chcete streamování povolit, musíte nejdřív spustit [koncový bod stre
         ```
         https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaservices/:accountName/streamingEndpoints/:streamingEndpointName/start?api-version={{api-version}}
         ```
-    * Pokud je žádost úspěšná, vrátí `Status: 202 Accepted` se.
+    * Pokud je žádost úspěšná, `Status: 202 Accepted` vrátí se.
 
-        Tento stav znamená, že žádost byla přijata ke zpracování; zpracování však nebylo dokončeno. Můžete zadat dotaz na stav operace na základě hodnoty v hlavičce `Azure-AsyncOperation` Response.
+        Tento stav znamená, že žádost byla přijata ke zpracování; zpracování však nebylo dokončeno. Můžete zadat dotaz na stav operace na základě hodnoty v `Azure-AsyncOperation` hlavičce Response.
 
         Například následující operace GET vrátí stav vaší operace:
         
         `https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/<resourceGroupName>/providers/Microsoft.Media/mediaservices/<accountName>/streamingendpointoperations/1be71957-4edc-4f3c-a29d-5c2777136a2e?api-version=2018-07-01`
 
-        Článek [sledování asynchronních operací Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) podrobněji vysvětluje, jak sledovat stav asynchronních operací Azure prostřednictvím hodnot vrácených v odpovědi.
+        Článek [sledování asynchronních operací Azure](../../azure-resource-manager/management/async-operations.md) podrobněji vysvětluje, jak sledovat stav asynchronních operací Azure prostřednictvím hodnot vrácených v odpovědi.
 
 ### <a name="create-an-output-asset"></a>Vytvoření výstupního prostředku
 
-Výstupní [Asset](https://docs.microsoft.com/rest/api/media/assets) ukládá výsledek vaší úlohy kódování. 
+Výstupní [Asset](/rest/api/media/assets) ukládá výsledek vaší úlohy kódování. 
 
 1. V levém okně aplikace po výběru vyberte prostředky.
 2. Pak vyberte „Create or update an Asset“ (Vytvořit nebo aktualizovat prostředek).
@@ -175,14 +175,14 @@ Výstupní [Asset](https://docs.microsoft.com/rest/api/media/assets) ukládá v�
 
 ### <a name="create-a-transform"></a>Vytvoření transformace
 
-Když kódujete nebo zpracováváte obsah v Media Services, kódování se obvykle nastaví jako předpis. Potom stačí odeslat **Úlohu**, která tento předpis použije pro video. Odesláním nových úloh pro každé nové video použijete tento recept na všechna videa v knihovně. V Media Services se pro předpis používá označení **transformace**. Další informace najdete v tématu [Transformace a úlohy](transform-concept.md). Ukázka popsaná v tomto kurzu definuje předpis, který zakóduje video tak, aby se dalo streamovat na nejrůznějších zařízeních s iOSem a Androidem. 
+Když kódujete nebo zpracováváte obsah v Media Services, kódování se obvykle nastaví jako předpis. Potom stačí odeslat **Úlohu**, která tento předpis použije pro video. Odesláním nových úloh pro každé nové video použijete tento recept na všechna videa v knihovně. V Media Services se pro předpis používá označení **transformace**. Další informace najdete v tématu [Transformace a úlohy](./transforms-jobs-concept.md). Ukázka popsaná v tomto kurzu definuje předpis, který zakóduje video tak, aby se dalo streamovat na nejrůznějších zařízeních s iOSem a Androidem. 
 
-Když vytváříte novou instanci [Transformace](https://docs.microsoft.com/rest/api/media/transforms), musíte určit, co má být jejím výstupem. Objekt **TransformOutput** je povinný parametr. Každý objekt **TransformOutput** obsahuje **Předvolbu**. **Předvolba** popisuje podrobné pokyny operací zpracování videa nebo zvuku, které se používají ke generování požadovaného objektu **TransformOutput**. Ukázka popsaná v tomto článku používá předdefinovanou předvolbu s názvem **AdaptiveStreaming**. Tato předvolba zakóduje vstupní video na základě vstupního rozlišení a přenosové rychlosti do automaticky generované dvojice přenosová rychlost / rozlišení (tzv. bitrate ladder) a vytvoří soubory ISO MP4 s videem H.264 a zvukem AAC odpovídající jednotlivým dvojicím přenosová rychlost / rozlišení. Informace o této předvolbě najdete v tématu o [automatickém generování dvojic bitrate ladder](autogen-bitrate-ladder.md).
+Když vytváříte novou instanci [Transformace](/rest/api/media/transforms), musíte určit, co má být jejím výstupem. Objekt **TransformOutput** je povinný parametr. Každý objekt **TransformOutput** obsahuje **Předvolbu**. **Předvolba** popisuje podrobné pokyny operací zpracování videa nebo zvuku, které se používají ke generování požadovaného objektu **TransformOutput**. Ukázka popsaná v tomto článku používá předdefinovanou předvolbu s názvem **AdaptiveStreaming**. Tato předvolba zakóduje vstupní video na základě vstupního rozlišení a přenosové rychlosti do automaticky generované dvojice přenosová rychlost / rozlišení (tzv. bitrate ladder) a vytvoří soubory ISO MP4 s videem H.264 a zvukem AAC odpovídající jednotlivým dvojicím přenosová rychlost / rozlišení. Informace o této předvolbě najdete v tématu o [automatickém generování dvojic bitrate ladder](autogen-bitrate-ladder.md).
 
 Můžete použít předdefinovanou předvolbu EncoderNamedPreset, nebo si vytvořit vlastní. 
 
 > [!Note]
-> Než začnete vytvářet [transformaci](https://docs.microsoft.com/rest/api/media/transforms), ověřte si nejdřív pomocí metody **Get**, jestli už neexistuje. V tomto kurzu předpokládáme, že vytváříte transformaci s jedinečným názvem.
+> Než začnete vytvářet [transformaci](/rest/api/media/transforms), ověřte si nejdřív pomocí metody **Get**, jestli už neexistuje. V tomto kurzu předpokládáme, že vytváříte transformaci s jedinečným názvem.
 
 1. V levém okně aplikace po vybírání kódování a analýzy.
 2. Potom vyberte „Create Transform“ (Vytvořit transformaci).
@@ -215,9 +215,9 @@ Můžete použít předdefinovanou předvolbu EncoderNamedPreset, nebo si vytvo�
 
 ### <a name="create-a-job"></a>Vytvoření úlohy
 
-[Úloha](https://docs.microsoft.com/rest/api/media/jobs) je vlastní požadavek na službu Media Services, aby vytvořenou **transformaci** použila na daný vstupní videoobsah nebo zvukový obsah. **Úloha** určuje informace, jako je umístění vstupního videa a umístění pro výstup.
+[Úloha](/rest/api/media/jobs) je vlastní požadavek na službu Media Services, aby vytvořenou **transformaci** použila na daný vstupní videoobsah nebo zvukový obsah. **Úloha** určuje informace, jako je umístění vstupního videa a umístění pro výstup.
 
-V tomto příkladu je vstup úlohy založen na adrese URL HTTPS ("https:\//nimbuscdn-nimbuspm.Streaming.MediaServices.Windows.NET/2b533311-b215-4409-80af-529c3e853622/").
+V tomto příkladu je vstup úlohy založen na adrese URL HTTPS ("https: \/ /nimbuscdn-nimbuspm.Streaming.MediaServices.Windows.NET/2b533311-b215-4409-80af-529c3e853622/").
 
 1. V levém okně aplikace po vybírání kódování a analýzy.
 2. Pak vyberte „Create or Update Job“ (Vytvořit nebo aktualizovat úlohu).
@@ -256,18 +256,18 @@ V tomto příkladu je vstup úlohy založen na adrese URL HTTPS ("https:\//nimbu
 
 #### <a name="job-error-codes"></a>Kódy chyb úlohy
 
-Viz [kódy chyb](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
+Viz [kódy chyb](/rest/api/media/jobs/get#joberrorcode).
 
 ### <a name="create-a-streaming-locator"></a>Vytvoření lokátoru streamování
 
-Po dokončení úlohy kódování je dalším krokem vytvoření videa ve výstupním **prostředku** pro klienty k přehrávání. Video můžete zpřístupnit ve dvou krocích: nejdřív vytvořte streamovací lokátor ([StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators)) a pak adresy URL pro streamování, které budou klienti používat. 
+Po dokončení úlohy kódování je dalším krokem vytvoření videa ve výstupním **prostředku** pro klienty k přehrávání. Video můžete zpřístupnit ve dvou krocích: nejdřív vytvořte streamovací lokátor ([StreamingLocator](/rest/api/media/streaminglocators)) a pak adresy URL pro streamování, které budou klienti používat. 
 
 Proces vytvoření lokátoru streamování se nazývá publikování. Ve výchozím nastavení je Lokátor streamování platný hned po volání rozhraní API a trvá až do odstranění, pokud nenastavíte volitelné počáteční a koncové časy. 
 
-Když vytváříte streamovací lokátor [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators), je potřeba zadat požadovaný název zásady streamování **StreamingPolicyName**. V tomto příkladu budete zasílat streamování (nebo nešifrovaných) obsahu, takže se použije předdefinovaná zásada pro zrušení streamování Predefined_ClearStreamingOnly.
+Když vytváříte streamovací lokátor [StreamingLocator](/rest/api/media/streaminglocators), je potřeba zadat požadovaný název zásady streamování **StreamingPolicyName**. V tomto příkladu budete zasílat streamování (nebo nešifrovaných) obsahu, takže se použije předdefinovaná zásada pro zrušení streamování Predefined_ClearStreamingOnly.
 
 > [!IMPORTANT]
-> Pokud chcete definovat vlastní [zásady streamování](https://docs.microsoft.com/rest/api/media/streamingpolicies), doporučujeme navrhnout pro účet služby Media Service omezený počet takovýchto zásad a používat je opakovaně pro streamovací lokátory, kdykoli potřebujete stejné protokoly a možnosti šifrování. 
+> Pokud chcete definovat vlastní [zásady streamování](/rest/api/media/streamingpolicies), doporučujeme navrhnout pro účet služby Media Service omezený počet takovýchto zásad a používat je opakovaně pro streamovací lokátory, kdykoli potřebujete stejné protokoly a možnosti šifrování. 
 
 Váš účet Media Service má kvótu pro počet položek **zásad streamování** . Pro každý Lokátor streamování byste neměli vytvářet nové **zásady streamování** .
 
@@ -297,7 +297,7 @@ Váš účet Media Service má kvótu pro počet položek **zásad streamování
 
 #### <a name="list-paths"></a>Seznam cest
 
-Teď, když se vytvořil [Lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators) , můžete získat adresy URL streamování.
+Teď, když se vytvořil [Lokátor streamování](/rest/api/media/streaminglocators) , můžete získat adresy URL streamování.
 
 1. V levém okně aplikace pro odesílání vyberte možnost Zásady streamování.
 2. Potom vyberte „List Paths“ (Seznam cest).
@@ -372,7 +372,7 @@ https://amsaccount-usw22.streaming.media.azure.net/cdb80234-1d94-42a9-b056-0eefa
 
 Tento článek používá k otestování streamu přehrávač Azure Media Player. 
 
-1. Otevřete webový prohlížeč a přejděte na [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/).
+1. Otevřete webový prohlížeč a přejděte na [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/) .
 2. Do pole pro **adresu URL** vložte adresu URL, kterou jste vytvořili. 
 3. Stiskněte **Update Player** (Aktualizovat přehrávač).
 

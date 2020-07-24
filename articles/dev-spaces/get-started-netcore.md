@@ -5,12 +5,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: V tomto kurzu se dozvíte, jak používat Azure Dev Spaces a Visual Studio Code k ladění a rychlé iteraci aplikace .NET Core ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
-ms.openlocfilehash: d4078113f93159ef981a78a9917ed65bd03a304b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9c73c191054c9eee183a762d0a029d6c8dc431ee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80240559"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013636"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-net-core-with-azure-dev-spaces"></a>Vytvoření Kubernetesho vývojového prostoru: Visual Studio Code a .NET Core s Azure Dev Spaces
 
@@ -20,10 +20,10 @@ V tomto průvodci se naučíte:
 - Iterativně vyvíjet kód v kontejnerech pomocí editoru VS Code a příkazového řádku
 - Produktivně vyvíjet a testovat kód v týmovém prostředí
 
-> [!Note]
+> [!NOTE]
 > **Pokud se vám pozastavila** kdykoli, přečtěte si část [Poradce při potížích](troubleshooting.md) .
 
-## <a name="install-the-azure-cli"></a>Instalace rozhraní příkazového řádku Azure CLI
+## <a name="install-the-azure-cli"></a>Instalace Azure CLI
 Azure Dev Spaces vyžaduje minimální nastavení místního počítače. Většina konfigurace vývojového prostoru se ukládá do cloudu, aby ji šlo sdílet s ostatními uživateli. Nejdřív si stáhněte a spusťte [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ### <a name="sign-in-to-azure-cli"></a>Přihlášení k Azure CLI
@@ -33,7 +33,7 @@ Přihlaste se k Azure. V okně terminálu zadejte následující příkaz:
 az login
 ```
 
-> [!Note]
+> [!NOTE]
 > Pokud nemáte předplatné Azure, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 
 #### <a name="if-you-have-multiple-azure-subscriptions"></a>Pokud máte více předplatných Azure...
@@ -126,11 +126,11 @@ Sledujte výstup příkazu. Během jeho zpracování si můžete všimnout něko
 - Zobrazí se informace o koncových bodech kontejneru. V našem případě očekáváme veřejnou adresu URL protokolu HTTP.
 - Za předpokladu, že se výše uvedené fáze úspěšně dokončily, měl by se začít zobrazovat výstup `stdout` (a `stderr`), jak se kontejner spouští.
 
-> [!Note]
+> [!NOTE]
 > Při prvním spuštění příkazu `up` budou tyto kroky trvat déle, ale následná spuštění by měla být rychlejší.
 
 ### <a name="test-the-web-app"></a>Test webové aplikace
-Zkontrolujte výstup konzoly pro zprávu *spuštění aplikace* a potvrďte, že byl `up` příkaz dokončen:
+Zkontrolujte výstup konzoly pro zprávu *spuštění aplikace* a potvrďte, že `up` byl příkaz dokončen:
 
 ```
 Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
@@ -151,14 +151,13 @@ webfrontend-5798f9dc44-99fsd: Now listening on: http://[::]:80
 webfrontend-5798f9dc44-99fsd: Application started. Press Ctrl+C to shut down.
 ```
 
-Identifikujte veřejnou adresu URL pro službu ve výstupu `up` příkazu. Končí na `.azds.io`. Ve výše uvedeném příkladu je `http://webfrontend.1234567890abcdef1234.eus.azds.io/`veřejná adresa URL.
+Identifikujte veřejnou adresu URL pro službu ve výstupu `up` příkazu. Končí na `.azds.io` . Ve výše uvedeném příkladu je veřejná adresa URL `http://webfrontend.1234567890abcdef1234.eus.azds.io/` .
 
-Webovou aplikaci zobrazíte otevřením veřejné adresy URL v prohlížeči. Všimněte si také `stdout` , `stderr` že když pracujete s webovou aplikací, Všimněte si také, že oznámení a výstup jsou streamované do okna *azds Trace* Terminal. V případě, že procházejí systémem, uvidíte také informace o sledování požadavků HTTP. Díky tomu je snazší sledovat komplexní volání více služeb během vývoje. Toto sledování požadavků poskytuje instrumentace, kterou přidávají vývojové prostory.
+Webovou aplikaci zobrazíte otevřením veřejné adresy URL v prohlížeči. Všimněte si také, že když pracujete s webovou aplikací, Všimněte si také, `stdout` že oznámení a `stderr` výstup jsou streamované do okna *azds Trace* Terminal. V případě, že procházejí systémem, uvidíte také informace o sledování požadavků HTTP. Díky tomu je snazší sledovat komplexní volání více služeb během vývoje. Toto sledování požadavků poskytuje instrumentace, kterou přidávají vývojové prostory.
 
-![okno terminálu trasování azds](media/get-started-netcore/azds-trace.png)
+![okno terminálu trasování z d s](media/get-started-netcore/azds-trace.png)
 
-
-> [!Note]
+> [!NOTE]
 > Kromě veřejné adresy URL můžete použít alternativní `http://localhost:<portnumber>` adresu URL, která se zobrazí ve výstupu konzoly. Pokud použijete adresu URL místního hostitele, může se zdát, že je kontejner spuštěný v místním prostředí, ale ve skutečnosti je spuštěný v AKS. Azure Dev Spaces používá k namapování portu localhost na kontejner spuštěný v AKS funkci Kubernetes pro *přeposílání portů* . To usnadňuje interakci se službou z místního počítače.
 
 ### <a name="update-a-content-file"></a>Aktualizace souboru obsahu
@@ -170,7 +169,7 @@ Azure Dev Spaces neslouží jenom ke spuštění kódu v prostředí Kubernetes.
     <h2>Hello k8s in Azure!</h2>
     ```
 
-1. Uložte soubor. Za chvilku se v okně terminálu zobrazí zpráva o aktualizaci souboru ve spuštěném kontejneru.
+1. Soubor uložte. Za chvilku se v okně terminálu zobrazí zpráva o aktualizaci souboru ve spuštěném kontejneru.
 1. Přejděte do prohlížeče a aktualizujte stránku. Na webové stránce by se měl zobrazit aktualizovaný kód HTML.
 
 Co se stalo? Úpravy obsahových souborů jako HTML a CSS nevyžadují rekompilaci ve webové aplikaci .NET Core. Aktivní příkaz `azds up` totiž automaticky synchronizuje všechny upravené soubory obsahu do kontejneru spuštěného v Azure, abyste změny obsahu viděli okamžitě.
@@ -180,7 +179,7 @@ Aktualizace souborů s kódem je o něco pracnější, protože aplikace .NET Co
 
 1. V okně terminálu stiskněte `Ctrl+C`, abyste zastavili `azds up`.
 1. Otevřete soubor s kódem, který se jmenuje `Controllers/HomeController.cs`, a upravte zprávu, která se zobrazí na stránce O aplikaci: `ViewData["Message"] = "Your application description page.";`
-1. Uložte soubor.
+1. Soubor uložte.
 1. V okně terminálu spusťte `azds up`. 
 
 Tento příkaz znovu sestaví image kontejneru a znovu nasadí Helm chart. Pokud chcete vidět, jak se změny kódu projevily v běžící aplikaci, přejděte do nabídky O aplikaci webové aplikace.
@@ -191,9 +190,9 @@ Existuje ještě *rychlejší způsob* vývoje kódu, který si ukážeme v dal�
 
 V této části použijete editor VS Code k přímému ladění kontejneru spuštěného v Azure. Naučíte se také, jak zrychlit cyklus úpravy-spuštění-testování.
 
-![](media/common/edit-refresh-see.png)
+![Diagram znázorňuje vývojovou smyčku se třemi fázemi: upravit kód, aktualizovat kontejner a zobrazit aktualizaci.](media/common/edit-refresh-see.png)
 
-> [!Note]
+> [!NOTE]
 > **Pokud se někde zaseknete**, podívejte se na článek o [odstraňování potíží](troubleshooting.md) nebo na tuto stránku přidejte komentář.
 
 ### <a name="initialize-debug-assets-with-the-vs-code-extension"></a>Inicializace prostředků ladění s využitím rozšíření VS Code
@@ -203,16 +202,16 @@ Otevřete **paletu příkazů** (pomocí nabídky **Zobrazit | Paleta příkazů
 
 Tím přidáte konfiguraci ladění pro Azure Dev Spaces do složky `.vscode`. Nezaměňujte tento příkaz s příkazem `azds prep`, který projekt nakonfiguruje pro nasazení.
 
-![](media/common/command-palette.png)
+![Tento snímek obrazovky ukazuje výběr příkazu "Azure Dev Spaces: Příprava konfiguračních souborů pro Azure Dev Spaces" z okna palety příkazů.](media/common/command-palette.png)
 
 
 ### <a name="select-the-azds-debug-configuration"></a>Výběr konfiguraci AZDS pro ladění
 1. Pokud chcete zobrazit ladění, klikněte na boku editoru VS Code na **panelu aktivit** na ikonu Ladění.
 1. Jako aktivní konfiguraci ladění vyberte **.NET Core Launch (AZDS)** (Spustit .NET Core (AZDS)).
 
-![](media/get-started-netcore/debug-configuration.png)
+![Snímek obrazovky je v levém horním rohu okna Visual Studio Code. Ikona ladění je zvýrazněna, levý panel má název "ladění" a rozevírací seznam napravo od názvu zobrazuje "tečka .NET Core Launch (A Z D S).](media/get-started-netcore/debug-configuration.png)
 
-> [!Note]
+> [!NOTE]
 > Pokud na paletě příkazů nevidíte příkazy Azure Dev Spaces, ověřte, že máte nainstalované rozšíření VS Code pro Azure Dev Spaces. Ujistěte se, že pracovní prostor, který jste otevřeli ve VS Code, je složka obsahující soubor azds.yaml.
 
 
@@ -221,10 +220,10 @@ Když chcete v Kubernetes ladit kód, stiskněte **F5**.
 
 Stejně jako u příkazu `up` se kód synchronizuje s vývojovým prostorem a sestaví se kontejner, který se nasadí v Kubernetes. Ladicí program se tentokrát samozřejmě připojí ke vzdálenému kontejneru.
 
-> [!Tip]
+> [!TIP]
 > Stavový řádek VS Code změní oranžová, což znamená, že ladicí program je připojen. Zobrazí se také adresa URL pro kliknutí, kterou můžete použít k otevření webu.
 
-![](media/common/vscode-status-bar-url.png)
+![Snímek obrazovky ukazuje dolní část okna Visual Studio Code. Oranžový stavový řádek je poslední řádek. Obsahuje a U R L pro otevření webu.](media/common/vscode-status-bar-url.png)
 
 V serverovém souboru s kódem nastavte zarážku, třeba ve funkci `About()` ve zdrojovém souboru `Controllers/HomeController.cs`. Aktualizace stránky prohlížeče způsobí aktivaci zarážky.
 
@@ -243,7 +242,7 @@ public IActionResult About()
 
 Uložte soubor a v **podokně akce ladění**klikněte na tlačítko **restartovat** . 
 
-![](media/common/debug-action-refresh.png)
+![Podokno akce ladění je malé podokno v horním středu stránky (hned pod nadpisem stránky). Tlačítko restartovat, KRUHOVÁ ŠIPKA, je zvýrazněna. Obrázek tlačítka myši pro tlačítko je "restartovat (CTRL + SHIFT + F 5)".](media/common/debug-action-refresh.png)
 
 Místo opětovného sestavení a nasazení nové image kontejneru po každé provedené změně, což často dlouho trvá, rekompiluje služba Azure Dev Spaces kód po přírůstcích ve stávajícím kontejneru, aby se zrychlil cyklus úprav/ladění.
 

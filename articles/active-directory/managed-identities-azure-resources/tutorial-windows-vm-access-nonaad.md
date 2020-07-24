@@ -1,5 +1,5 @@
 ---
-title: Kurz`:` použití spravované identity pro přístup k Azure Key Vault-Windows-Azure AD
+title: Kurz `:` použití spravované identity pro přístup k Azure Key Vault-Windows-Azure AD
 description: Tento kurz vás postupně provede používáním spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Key Vaultu.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/10/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd9f85e3bfd11ee655ce581c60a5b65e13f4497b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7648f0c41731968c6cf8d2b2b2e55fffd9b5f53d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75971827"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87018770"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Key Vaultu 
 
@@ -35,12 +35,12 @@ Získáte informace o těchto tématech:
 > * Udělení přístupu virtuálnímu počítači k tajnému kódu uloženému ve službě Key Vault 
 > * Získání přístupového tokenu pomocí identity virtuálního počítače a jeho použití k načtení tajného kódu ze služby Key Vault 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
 
-## <a name="enable"></a>Povolení
+## <a name="enable"></a>Povolit
 
 [!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
 
@@ -52,7 +52,7 @@ V této části se dozvíte, jak udělit přístup k VIRTUÁLNÍmu počítači p
 
 Napřed potřebujete vytvořit Key Vault a pak k němu udělíte přístup spravované identitě přiřazené systémem virtuálního počítače.   
 
-1. V horní části levého navigačního panelu vyberte **vytvořit prostředek** > **zabezpečení a identita** > **Key Vault**.  
+1. V horní části levého navigačního panelu vyberte **vytvořit prostředek**  >  **zabezpečení a identita**  >  **Key Vault**.  
 2. Zadejte **název** nového trezoru klíčů. 
 3. Umístěte trezor klíčů do stejného předplatného a stejné skupiny prostředků jako virtuální počítač, který jste vytvořili dříve. 
 4. Vyberte **Zásady přístupu** a klikněte na **Přidat novou**. 
@@ -75,7 +75,7 @@ Potom přidejte do trezoru klíčů tajný kód, abyste ho mohli později načí
  
 ## <a name="access-data"></a>Přístup k datům  
 
-V této části se dozvíte, jak získat přístupový token pomocí identity virtuálního počítače a jak ho použít k načtení tajného kódu z Key Vault. Pokud nemáte nainstalovaný PowerShell 4.3.1 nebo novější, budete si muset [stáhnout a nainstalovat nejnovější verzi](https://docs.microsoft.com/powershell/azure/overview).
+V této části se dozvíte, jak získat přístupový token pomocí identity virtuálního počítače a jak ho použít k načtení tajného kódu z Key Vault. Pokud nemáte nainstalovaný PowerShell 4.3.1 nebo novější, budete si muset [stáhnout a nainstalovat nejnovější verzi](https://docs.microsoft.com/powershell/azure/).
 
 Nejdřív použijeme spravovanou identitu přiřazenou systémem virtuálního počítače k získání přístupového tokenu pro ověření v Key Vaultu:
  

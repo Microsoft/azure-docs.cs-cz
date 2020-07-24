@@ -6,12 +6,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: 57701218186266e897e8312d01372fd36ddee715
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: a1fdc9e37084b1e8064bf642ff84646149c32ee7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84906118"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050663"
 ---
 # <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>Kurz: nasazení aplikace v ASP.NET do Azure pomocí Azure SQL Database
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -108,8 +108,8 @@ Můžete ponechat vygenerovaný název webové aplikace nebo ho můžete změnit
 
    | Nastavení  | Navrhovaná hodnota | Další informace |
    | ----------------- | ------------ | ----|
-   |**Plán App Service**| myAppServicePlan | [Plány služby App Service](../app-service/overview-hosting-plans.md) |
-   |**Umístění**| Západní Evropa | [Oblast Azure](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
+   |**Plán služby App Service**| myAppServicePlan | [Plány služby App Service](../app-service/overview-hosting-plans.md) |
+   |**Umístění**| Západní Evropa | [Oblasti Azure](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
    |**Velikost**| Free | [Cenové úrovně](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)|
 
 ### <a name="create-a-server"></a>Vytvoření serveru
@@ -155,7 +155,7 @@ Přidejte několik položek úkolů.
 
 ![Publikovaná aplikace ASP.NET v Azure App](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 
-Gratulujeme! Vaše aplikace ASP.NET řízená daty je spuštěná ve službě Azure App Service.
+Blahopřejeme! Vaše aplikace ASP.NET řízená daty je spuštěná ve službě Azure App Service.
 
 ## <a name="access-the-database-locally"></a>Místní přístup k databázi
 
@@ -415,3 +415,8 @@ Další zdroje informací:
 
 > [!div class="nextstepaction"]
 > [Konfigurace aplikace ASP.NET](configure-language-dotnet-framework.md)
+
+Chcete optimalizovat a uložit své útraty do cloudu?
+
+> [!div class="nextstepaction"]
+> [Zahájení analýzy nákladů pomocí Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

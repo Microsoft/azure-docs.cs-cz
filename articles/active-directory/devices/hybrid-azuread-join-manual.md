@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4bfe55c4ebe722e98f0816078b64c0131a30d03
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 007763d65021b0730c6e4e81ada33790d3cf4c02
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83778723"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025774"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Kurz: Ruční konfigurace hybridních zařízení připojených k Azure Active Directory
 
@@ -25,7 +25,7 @@ Pomocí správy zařízení v Azure Active Directory (Azure AD) můžete zajisti
 > [!TIP]
 > Pokud je pro vás možnost použití Azure AD Connect, přečtěte si související kurzy ke [spravovaným](hybrid-azuread-join-managed-domains.md) nebo [federovaným](hybrid-azuread-join-federated-domains.md) doménám. Pomocí Azure AD Connect můžete významně zjednodušit konfiguraci hybridního připojení ke službě Azure AD.
 
-Pokud máte místní prostředí Active Directory a chcete připojit svá zařízení připojená k doméně k Azure AD, můžete to provést tak, že nakonfigurujete hybridní zařízení připojená k Azure AD. V tomto kurzu:
+Pokud máte místní prostředí Active Directory a chcete připojit svá zařízení připojená k doméně k Azure AD, můžete to provést tak, že nakonfigurujete hybridní zařízení připojená k Azure AD. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Ruční konfigurace služby hybridního připojení k Azure AD
@@ -35,7 +35,7 @@ Pokud máte místní prostředí Active Directory a chcete připojit svá zaří
 > * Ověření připojených zařízení
 > * Řešení potíží s implementací
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto kurzu se předpokládá, že jste obeznámeni s:
 
@@ -533,7 +533,7 @@ V AD FS musíte přidat pravidlo transformace vystavování, které projde metod
 
    `c:[Type == "http://schemas.microsoft.com/claims/authnmethodsreferences"] => issue(claim = c);`
 
-1. Na federačním serveru zadejte následující příkaz prostředí PowerShell. Nahraďte ** \< RPObjectName \> ** názvem objektu předávající strany pro objekt vztahu důvěryhodnosti předávající strany Azure AD. Tento objekt má obvykle název **Microsoft Office 365 Identity Platform**.
+1. Na federačním serveru zadejte následující příkaz prostředí PowerShell. Nahraďte **\<RPObjectName\>** názvem objektu předávající strany pro objekt vztahu důvěryhodnosti předávající strany Azure AD. Tento objekt má obvykle název **Microsoft Office 365 Identity Platform**.
 
    `Set-AdfsRelyingPartyTrust -TargetName <RPObjectName> -AllowedAuthenticationClassReferences wiaormultiauthn`
 
@@ -567,7 +567,7 @@ Tady jsou tři způsoby, jak vyhledat a ověřit stav zařízení:
 
 ### <a name="using-powershell"></a>Pomocí prostředí PowerShell
 
-Ověřte stav registrace zařízení v tenantovi Azure pomocí **[Get-MsolDevice](/powershell/msonline/v1/get-msoldevice)**. Tato rutina je v [modulu Azure Active Directory PowerShellu](/powershell/azure/install-msonlinev1?view=azureadps-2.0).
+Ověřte stav registrace zařízení v tenantovi Azure pomocí **[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)**. Tato rutina je v [modulu Azure Active Directory PowerShellu](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-2.0).
 
 Při kontrole podrobností služby použijte rutinu **Get-MSolDevice** :
 
@@ -612,7 +612,7 @@ Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -e
 Pokud dochází k problémům s dokončováním hybridního připojení služby Azure AD pro zařízení s Windows připojená k doméně, přečtěte si téma:
 
 - [Řešení potíží se zařízeními pomocí příkazu dsregcmd](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
-- [Řešení potíží s hybridními Azure Active Directory připojenými zařízeními](troubleshoot-hybrid-join-windows-current.md)
+- [Řešení potíží se zařízeními připojenými službou Hybrid Azure Active Directory Join](troubleshoot-hybrid-join-windows-current.md)
 - [Řešení potíží s modulem hybridní Azure Active Directory připojená zařízení nižší úrovně](troubleshoot-hybrid-join-windows-legacy.md)
 
 ## <a name="next-steps"></a>Další kroky

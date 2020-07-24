@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4b9dac92f0cff213622f0087b281814251f06ffd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c0d8d2b009194b58c76dbd0a171f701f90df4086
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181609"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058281"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Přidání přihlášení do Microsoftu do webové aplikace v ASP.NET
 
@@ -54,14 +54,14 @@ Tato část popisuje, jak nainstalovat a nakonfigurovat kanál ověřování pro
 
 ### <a name="create-your-aspnet-project"></a>Vytvoření projektu ASP.NET
 
-1. V aplikaci Visual Studio: Přejít na **soubor** > **Nový** > **projekt**.
+1. V aplikaci Visual Studio: Přejít na **soubor**  >  **Nový**  >  **projekt**.
 2. V části **Visual C#\Web** vyberte **Webová aplikace ASP.NET (.NET Framework)**.
 3. Pojmenujte aplikaci a vyberte **OK**.
 4. Vyberte **prázdné**a potom zaškrtněte políčko pro přidání odkazů **MVC** .
 
 ## <a name="add-authentication-components"></a>Přidat komponenty ověřování
 
-1. V aplikaci Visual Studio: přejít do **nástroje** > **správce** > balíčků NuGet**Konzola správce balíčků**.
+1. V aplikaci Visual Studio: přejít do **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků**.
 2. Přidejte *balíčky NuGet middlewaru OWIN* tak, že do okna konzoly Správce balíčků zadáte toto:
 
     ```powershell
@@ -79,7 +79,7 @@ Následující kroky slouží k vytvoření třídy OWIN middleware pro konfigur
 
 > [!TIP]
 > Pokud projekt nemá soubor `Startup.cs` v kořenové složce:
-> 1. Klikněte pravým tlačítkem na kořenovou složku projektu a pak vyberte **Přidat** > **novou položku** > **Owin po spuštění třídy**.<br/>
+> 1. Klikněte pravým tlačítkem na kořenovou složku projektu a pak vyberte **Přidat**  >  **novou položku**  >  **Owin po spuštění třídy**.<br/>
 > 2. Pojmenujte ho **Startup.cs**.
 >
 >> Ujistěte se, že vybraná třída je třída OWIN Startup a ne standardní třída jazyka C#. Potvrďte to tak, že ověříte, že jste viděli [assembly: OwinStartup (typeof ({NameSpace}. Po spuštění))] nad oborem názvů.
@@ -177,7 +177,7 @@ Parametry, které zadáte v *OpenIDConnectAuthenticationOptions* , slouží jako
 
 Pokud chcete vytvořit nový kontroler pro vystavování metod přihlášení a odhlášení, postupujte podle těchto kroků:
 
-1.  Klikněte pravým tlačítkem na složku **řadiče** a vyberte **Přidat** > **kontroler**.
+1.  Klikněte pravým tlačítkem na složku **řadiče** a vyberte **Přidat**  >  **kontroler**.
 2.  Vyberte **Kontroler MVC (verze .NET) – prázdný**.
 3.  Vyberte **Přidat**.
 4.  Pojmenujte ji **HomeController** a pak vyberte **Přidat**.
@@ -269,11 +269,11 @@ V aplikaci Visual Studio vytvořte nové zobrazení, abyste přidali tlačítko 
 ## <a name="add-a-controller-to-display-users-claims"></a>Přidání kontroleru pro zobrazení deklarací identity uživatele
 Tento kontroler demonstruje použití atributu `[Authorize]` k ochraně kontroleru. Tento atribut omezuje přístup k řadiči tím, že povoluje pouze ověřené uživatele. Následující kód využívá atribut k zobrazení deklarací identity uživatele, které byly načteny jako součást přihlášení:
 
-1.  Klikněte pravým tlačítkem na složku **Controllers** a pak vyberte **Přidat** > **kontroler**.
+1.  Klikněte pravým tlačítkem na složku **Controllers** a pak vyberte **Přidat**  >  **kontroler**.
 2.  Vyberte **Kontroler MVC {version} – prázdný**.
 3.  Vyberte **Přidat**.
 4.  Pojmenujte ho **ClaimsController**.
-5.  Nahraďte kód třídy kontroleru následujícím kódem. Tím se do `[Authorize]` třídy přidá atribut:
+5.  Nahraďte kód třídy kontroleru následujícím kódem. Tím se `[Authorize]` do třídy přidá atribut:
 
     ```csharp
     [Authorize]
@@ -345,7 +345,7 @@ V sadě Visual Studio vytvořte nové zobrazení, ve kterém se budou zobrazovat
     </html>
     ```
 
-## <a name="register-your-application"></a>Registrace vaší aplikace
+## <a name="register-your-application"></a>Registrace aplikace
 
 K registraci aplikace a přidání informací o registraci vaší aplikace do vašeho řešení máte dvě možnosti:
 
@@ -363,7 +363,7 @@ Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci apl
 
 1. Otevřete Visual Studio a potom:
    1. v Průzkumník řešení vyberte projekt a zobrazte okno Vlastnosti (Pokud nevidíte okno Vlastnosti stiskněte F4).
-   1. Změňte povolený protokol `True`SSL na.
+   1. Změňte povolený protokol SSL na `True` .
    1. Klikněte pravým tlačítkem myši na projekt v aplikaci Visual Studio, vyberte možnost **vlastnosti**a pak vyberte kartu **Web** . V části **servery** změňte nastavení **adresy URL projektu** na **adresu URL SSL**.
    1. Zkopírujte adresu URL protokolu SSL. Tuto adresu URL přidáte do seznamu adres URL pro přesměrování v seznamu adres URL pro přesměrování v dalším kroku.<br/><br/>![Vlastnosti projektu](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo pomocí osobního účet Microsoft.
@@ -372,9 +372,9 @@ Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci apl
 1. Vyberte **Nová registrace**.
 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
    1. V části **název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, jako je například **ASPNET-tutorial**.
-   1. Přidejte adresu URL protokolu SSL, kterou jste zkopírovali ze sady Visual Studio v kroku `https://localhost:44368/`1 (například) v **adrese URL odpovědi**, a vyberte možnost **Registrovat**.
+   1. Přidejte adresu URL protokolu SSL, kterou jste zkopírovali ze sady Visual Studio v kroku 1 (například `https://localhost:44368/` ) v **adrese URL odpovědi**, a vyberte možnost **Registrovat**.
 1. Vyberte nabídku **ověřování** , v části **implicitní udělení**vyberte **tokeny ID** a pak vyberte **Uložit**.
-1. Přidejte následující do souboru Web. config, který je umístěn v kořenové složce v `configuration\appSettings` části:
+1. V souboru web.config přidejte následující příkaz, který se nachází v kořenové složce v `configuration\appSettings` části:
 
     ```xml
     <add key="ClientId" value="Enter_the_Application_Id_here" />
@@ -388,7 +388,7 @@ Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci apl
 
 ## <a name="test-your-code"></a>Testování kódu
 
-Chcete-li otestovat aplikaci v aplikaci Visual Studio, stiskněte klávesu F5 ke spuštění projektu. Prohlížeč se otevře v umístění http://<span></span>localhost: {port} a zobrazí se tlačítko **Přihlásit se účtem Microsoft** . Kliknutím na tlačítko spusťte proces přihlášení.
+Chcete-li otestovat aplikaci v aplikaci Visual Studio, stiskněte klávesu F5 ke spuštění projektu. Prohlížeč se otevře v umístění http:// <span></span> localhost: {port} a zobrazí se tlačítko **Přihlásit se účtem Microsoft** . Kliknutím na tlačítko spusťte proces přihlášení.
 
 Až budete připraveni spustit test, použijte účet Azure AD (pracovní nebo školní účet) nebo osobní účet Microsoft (<span>Live).</span> com nebo <span>Outlook.</span> com) pro přihlášení.
 
@@ -396,7 +396,7 @@ Až budete připraveni spustit test, použijte účet Azure AD (pracovní nebo �
 <br/><br/>
 ![Přihlaste se ke svému účet Microsoft](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
-#### <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Oprávnění a souhlas koncového bodu Microsoft Identity Platform
+#### <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Oprávnění a souhlas v koncovém bodu Microsoft Identity Platform
 
 Aplikace, které se integrují se sadou Microsoft Identity Platform, se řídí autorizačním modelem, který poskytuje uživatelům a správcům kontrolu nad tím, jak budou data dostupná. Po ověření uživatele s Microsoft Identity platformou pro přístup k této aplikaci se zobrazí výzva k vyjádření souhlasu s oprávněními požadovanými aplikací ("zobrazit váš základní profil" a "zachovat přístup k datům, ke kterým jste udělili přístup."). Po přijetí těchto oprávnění bude uživatel pokračovat do výsledků aplikace. Uživatel se ale může místo toho zobrazit na stránce **vyžadovat souhlas správce** , pokud nastane jedna z následujících možností:
 
@@ -407,7 +407,7 @@ Další informace najdete [v tématu oprávnění a souhlas v koncovém bodě Mi
 
 ### <a name="view-application-results"></a>Zobrazit výsledky aplikace
 
-Po přihlášení se uživatel přesměruje na domovskou stránku vašeho webu. Domovská stránka je adresa URL protokolu HTTPS zadaná v informacích o registraci aplikace na portálu pro registraci aplikací společnosti Microsoft. Stránka domů obsahuje uvítací zprávu *"Hello \<User>"* , odkaz pro odhlášení a odkaz k zobrazení deklarací identity uživatele. Odkaz na deklarace identity uživatele se připojí k řadiči deklarací identity, který jste vytvořili dříve.
+Po přihlášení se uživatel přesměruje na domovskou stránku vašeho webu. Domovská stránka je adresa URL protokolu HTTPS zadaná v informacích o registraci aplikace na portálu pro registraci aplikací společnosti Microsoft. Stránka domů obsahuje uvítací zprávu *"Hello \<user> "* , odkaz pro odhlášení a odkaz k zobrazení deklarací identity uživatele. Odkaz na deklarace identity uživatele se připojí k řadiči deklarací identity, který jste vytvořili dříve.
 
 ### <a name="view-the-users-claims"></a>Zobrazit deklarace identity uživatele
 
@@ -420,8 +420,8 @@ Po procházení zobrazení řadiče by se měla zobrazit tabulka, která obsahuj
 |Vlastnost |Hodnota |Popis |
 |---|---|---|
 |**Název** |Celé jméno uživatele | Jméno a příjmení uživatele
-|**Jmen** |uživatelský<span>@domain.com</span> | Uživatelské jméno, které se používá k identifikaci uživatele|
-|**Subjekt** |Subjekt |Řetězec, který jedinečně identifikuje uživatele napříč webem|
+|**Uživatelské jméno** |uživatelský<span>@domain.com</span> | Uživatelské jméno, které se používá k identifikaci uživatele|
+|**Předmět** |Předmět |Řetězec, který jedinečně identifikuje uživatele napříč webem|
 |**ID tenanta** |Identifikátor GUID | **Identifikátor GUID** , který jednoznačně představuje organizaci Azure AD pro uživatele|
 
 Kromě toho by se měla zobrazit tabulka všech deklarací identity, které jsou v žádosti o ověření. Další informace najdete v [seznamu deklarací identity, které jsou v tokenu ID](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
@@ -431,7 +431,7 @@ Kromě toho by se měla zobrazit tabulka všech deklarací identity, které jsou
 Pokud chcete otestovat přístup jako anonymní uživatel k řadiči, který je chráněný `Authorize` atributem, postupujte takto:
 
 1. Vyberte odkaz pro odhlášení uživatele a dokončete proces odhlašování.
-2. V prohlížeči zadejte http://<span></span>localhost: {port}/deklarace identity pro přístup k řadiči, který je chráněný `Authorize` atributem.
+2. V prohlížeči zadejte http:// <span></span> localhost: {port}/deklarace identity pro přístup k řadiči, který je chráněný `Authorize` atributem.
 
 #### <a name="expected-results-after-access-to-a-protected-controller"></a>Po přístupu k chráněnému kontroleru se očekávaly výsledky.
 
@@ -441,7 +441,7 @@ Zobrazí se výzva k ověření, že se má použít zobrazení chráněného ř
 
 ### <a name="protect-your-entire-website"></a>Ochrana celého webu
 
-Chcete-li chránit celý web, přidejte do souboru **Global. asax** `AuthorizeAttribute` atribut do `GlobalFilters` filtru v `Application_Start` metodě:
+Chcete-li chránit celý web, přidejte do souboru **Global. asax** atribut do `AuthorizeAttribute` `GlobalFilters` filtru v `Application_Start` metodě:
 
 ```csharp
 GlobalFilters.Filters.Add(new AuthorizeAttribute());
@@ -457,24 +457,24 @@ K dispozici je více možností pro omezení přístupu uživatelů k aplikaci.
 
 Tato možnost se často používá pro obchodní *aplikace*: Pokud chcete, aby vaše aplikace přijímala přihlášení jenom z účtů, které patří do konkrétní instance služby Azure AD (včetně *účtů Guest* této instance), postupujte podle následujících kroků:
 
-1. V souboru Web. config změňte hodnotu `Tenant` parametru z `Common` na název tenanta organizace, například. `contoso.onmicrosoft.com`
-2. Ve [třídě Owin Startup](#configure-the-authentication-pipeline)nastavte `ValidateIssuer` argument na `true`.
+1. V souboru web.config změňte hodnotu `Tenant` parametru z `Common` na název tenanta organizace, například `contoso.onmicrosoft.com` .
+2. Ve [třídě Owin Startup](#configure-the-authentication-pipeline)nastavte `ValidateIssuer` argument na `true` .
 
 #### <a name="option-2-restrict-access-to-users-in-a-specific-list-of-organizations"></a>Možnost 2: omezení přístupu uživatelům v konkrétním seznamu organizací
 
 Přístup pro přihlášení můžete omezit jenom na uživatelské účty v organizaci Azure AD, které jsou v seznamu povolených organizací:
-1. Ve [třídě Owin Startup](#configure-the-authentication-pipeline)nastavte `ValidateIssuer` argument na `true`.
+1. Ve [třídě Owin Startup](#configure-the-authentication-pipeline)nastavte `ValidateIssuer` argument na `true` .
 2. Nastavte hodnotu `ValidIssuers` parametru na seznam povolených organizací.
 
 #### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>Možnost 3: použití vlastní metody pro ověření vystavitelů
 
-Můžete implementovat vlastní metodu pro ověření vystavitelů pomocí parametru **IssuerValidator** . Další informace o tom, jak použít tento parametr, naleznete v tématu [Třída TokenValidationParameters](/previous-versions/visualstudio/dn464192(v=vs.114)).
+Můžete implementovat vlastní metodu pro ověření vystavitelů pomocí parametru **IssuerValidator** . Další informace o tom, jak použít tento parametr, naleznete v tématu Třída [TokenValidationParameters](/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters) .
 
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si, jak můžou webové aplikace volat webová rozhraní API.
 
-### <a name="learn-how-to-create-the-application-used-in-this-quickstart-guide"></a>Informace o tom, jak vytvořit aplikaci používanou v tomto průvodci rychlým startem
+### <a name="learn-how-to-create-the-application-used-in-this-quickstart"></a>Naučte se, jak vytvořit aplikaci používanou v tomto rychlém startu.
 
 Další informace o webových aplikacích, které volají webová rozhraní API, s využitím platformy Microsoft Identity Platform:
 

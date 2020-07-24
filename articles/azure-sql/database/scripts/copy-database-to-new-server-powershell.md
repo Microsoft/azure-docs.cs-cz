@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: ae2a4ce3c8c1b3760dc83d01def9694b1d20fea0
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: cf6e29ccc5e12969031f4c99f86d7356e7bbfadf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196941"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063327"
 ---
 # <a name="use-powershell-to-copy-a-database-to-a-new-server"></a>Použití PowerShellu ke zkopírování databáze na nový server
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
@@ -57,6 +57,6 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure PowerShell najdete v [dokumentaci k Azure PowerShell](/powershell/azure/overview).
+Další informace o Azure PowerShell najdete v [dokumentaci k Azure PowerShell](/powershell/azure/).
 
 Další ukázkové skripty PowerShellu pro službu SQL Database najdete v tématu [Skripty PowerShellu pro službu Azure SQL Database](../powershell-script-content-guide.md).

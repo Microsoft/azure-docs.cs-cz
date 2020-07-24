@@ -15,29 +15,30 @@ ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fa73253c49f49647d3415340b2601f1395f912c
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: c2b630111261be8e3615ab45e95633040e799551
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86172764"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050985"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lensesio"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Lenses.io
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-the-lensesio-dataops-portal"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) k portálu DataOps pro Lenses.io.
 
-V tomto kurzu se dozvíte, jak integrovat Lenses.io s Azure Active Directory (Azure AD). Když integrujete Lenses.io s Azure AD, můžete:
+V tomto kurzu se dozvíte, jak integrovat portál [lenses.IO](https://lenses.io/) DataOps s Azure Active Directory (Azure AD). Když integrujete Lenses.io s Azure AD, můžete:
 
-* Řízení ve službě Azure AD, která má přístup k Lenses.io.
-* Umožněte, aby se vaši uživatelé automaticky přihlásili k Lenses.io svým účtům Azure AD.
+* Řízení ve službě Azure AD, která má přístup k portálu Lenses.io.
+* Umožněte uživatelům, aby se automaticky přihlásili k objektivu pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* Lenses.io odběr s povoleným jednotným přihlašováním (SSO).
+* Instance portálu čočky. Portál pro rozptylová skla můžete nasadit [různými způsoby](https://lenses.io/product/deployment/).
+* [Licence](https://lenses.io/product/pricing/) lenses.IO, která podporuje jednotné přihlašování (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -61,15 +62,15 @@ Pokud chcete nakonfigurovat integraci Lenses.io do služby Azure AD, musíte př
 
 ## <a name="configure-and-test-azure-ad-sso-for-lensesio"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Lenses.io
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Lenses.io pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Lenses.io.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí portálu Lenses.io pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Lenses.io.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Lenses.io, dokončete následující stavební bloky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
-    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. **[Vytvořte testovacího uživatele a skupinu Azure AD](#create-an-azure-ad-test-user-and-group)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
     1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
 1. **[Nakonfigurujte LENSES.IO SSO](#configure-lensesio-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
-    1. **[Vytvořte lenses.IO Test User](#create-lensesio-test-user)** -to, abyste měli protějšek B. Simon v lenses.IO, která je propojená s reprezentací uživatele v Azure AD.
+    1. **[Vytvořte lenses.IO oprávnění skupiny testu](#create-lensesio-test-group-permissions)** – abyste mohli řídit, co B. Simon má mít přístup v lenses.IO (autorizaci).
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
@@ -84,26 +85,26 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<CUSTOMER_LENSES_BASE_URL>`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<CUSTOMER_LENSES_BASE_URL>` např.`https://lenses.my.company.com`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://<CUSTOMER_LENSES_BASE_URL>`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://<CUSTOMER_LENSES_BASE_URL>` např.`https://lenses.my.company.com`
 
     c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<CUSTOMER_LENSES_BASE_URL>/api/v2/auth/saml/callback?client_name=SAML2Client`
+    například.`https://lenses.my.company.com/api/v2/auth/saml/callback?client_name=SAML2Client`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL, adresy URL odpovědi a identifikátoru. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta lenses.IO](mailto:support@lenses.io) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL, adresy URL odpovědi a identifikátoru na základě základní adresy URL vaší instance portálu čočky. Další informace najdete v [dokumentaci k LENSES.IO SSO](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0).
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
-1. V části **nastavení lenses.IO** zkopírujte na základě vašeho požadavku příslušné adresy URL.
+1. V části **nastavení lenses.IO** použijte soubor XML výše a nakonfigurujete rozptylová skla v rámci služby Azure SSO.
 
-    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
+### <a name="create-an-azure-ad-test-user-and-group"></a>Vytvoření testovacího uživatele a skupiny Azure AD
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
-
-V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon. Také vytvoříte testovací skupinu pro B. Simon, která bude sloužit k řízení toho, jaký přístup B. Simon má v čočky.
+Můžete zjistit, jak rozptylová skla používá mapování členství ve skupině pro autorizaci v [dokumentaci k jednotnému přihlašování pomocí čočky](https://docs.lenses.io/install_setup/configuration/security.html#id3) .
 
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
@@ -112,6 +113,23 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
+
+Vytvoření skupiny:
+1. Zpět na **Azure Active Directory**vyberte **skupiny** .
+1. V horní části obrazovky vyberte **Nová skupina** .
+1. Ve **vlastnostech skupiny**proveďte tyto kroky:
+   1. V poli **typ skupiny** vyberte `Security` .
+   1. Do pole **název skupiny** zadejte`LensesUsers`
+   1. Klikněte na **Vytvořit**.
+1. Vyberte skupinu `LensesUsers` a poznamenejte si **ID objektu** (např. `f8b5c1ec-45de-4abd-af5c-e874091fb5f7` ). Toto ID se použije v čočky k mapování uživatelů této skupiny na [správná oprávnění](https://docs.lenses.io/install_setup/configuration/security.html#id3).  
+   
+Přiřazení skupiny k testovacímu uživateli: 
+1. Vraťte se zpět na **Azure Active Directory**vyberte **Uživatelé**.
+1. Vyberte testovacího uživatele `B.Simon` .
+1. Vyberte **skupiny**.
+1. V horní části obrazovky vyberte **Přidat členství** .
+1. Vyhledejte `LensesUsers` a vyberte ji.
+1. Klikněte na **Vybrat**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -133,19 +151,23 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-lensesio-sso"></a>Konfigurace jednotného přihlašování Lenses.io
 
-Ke konfiguraci jednotného přihlašování na straně **lenses.IO** je potřeba odeslat stažený **soubor XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory lenses.IO](mailto:support@lenses.io). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Ke konfiguraci jednotného přihlašování na portálu **lenses.IO** nainstalujete stažený **soubor XML federačních metadat** do instance čočky a [nakonfigurujete rozptylová skla pro povolení jednotného přihlašování](https://docs.lenses.io/install_setup/configuration/security.html#configure-lenses). 
 
-### <a name="create-lensesio-test-user"></a>Vytvořit testovacího uživatele Lenses.io
+### <a name="create-lensesio-test-group-permissions"></a>Vytvořit oprávnění skupiny testů Lenses.io
 
-V této části vytvoříte uživatele s názvem Britta Simon v Lenses.io. Pokud chcete přidat uživatele na platformě Lenses.io, pracujte s [týmem podpory lenses.IO](mailto:support@lenses.io) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte skupinu v objektivech pomocí **ID objektu** skupiny, kterou jsme si `LensesUsers` poznamenali v [části Vytvoření](#create-an-azure-ad-test-user-and-group)uživatele.
+Přiřadíte požadovaná oprávnění, která `B.Simon` by měla mít v čočky.
+Další informace najdete v části [mapování skupin Azure-čočky](https://docs.lenses.io/install_setup/configuration/security.html#azure-groups).
 
 ## <a name="test-sso"></a>Test SSO 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici Lenses.io, měli byste se automaticky přihlásit k Lenses.io, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Lenses.io, měli byste se automaticky přihlásit k portálu Lenses.io, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
+
+- [Nastavení jednotného přihlašování v instanci Lenses.io](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0)
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

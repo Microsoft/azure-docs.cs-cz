@@ -6,17 +6,18 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: ec78b62f15851c41a3b9759f32d9c35c189f72c4
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: devx-track-java
+ms.openlocfilehash: 77b105fd5bbc6cc88411379e79522562ebce3677
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142032"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083748"
 ---
 # <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>Použití IntelliJ k nasazování aplikací Azure Spring Cloudu
 Modul plug-in IntelliJ pro jarní cloud Azure podporuje nasazení aplikací z NÁPADu IntelliJ.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * [JDK 8 Azul Zulu](https://docs.microsoft.com/java/azure/jdk/java-jdk-install?view=azure-java-stable)
 * [Maven 3.5.0 +](https://maven.apache.org/download.cgi)
 * [IntelliJ nápad, komunita/Ultimate Edition, verze 2020.1/2019.3](https://www.jetbrains.com/idea/download/#section=windows)
@@ -28,7 +29,7 @@ Můžete přidat Azure Toolkit for IntelliJ nápad 3.35.0 z uživatelského rozh
 
     ![Vyberte konfigurovat.](media/spring-cloud-intellij-howto/configure-plugin-1.png)
 
-1. Vyhledejte Azure Toolkit for IntelliJ.  Klikněte na **nainstalovat**.
+1. Vyhledejte Azure Toolkit for IntelliJ.  Klikněte na **Install** (Nainstalovat).
 
     ![Nainstalovat modul plug-in](media/spring-cloud-intellij-howto/install-plugin.png)
 

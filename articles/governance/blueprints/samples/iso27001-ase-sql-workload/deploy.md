@@ -1,14 +1,14 @@
 ---
 title: Ukázka předmocného pomocného kódu ISO 27001/úlohy SQL
 description: Nasaďte kroky ukázkového plánu úloh ISO 27001 App Service Environment/SQL Database, včetně podrobností parametrů artefaktu podrobného plánu.
-ms.date: 01/13/2020
+ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 6b8f3b753f1dd8cfbc247a77f2004e3c4d3423bb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 74f2670b79d1968755e376d1f5a75bbb76e6e6c3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75922584"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072882"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Nasazení ukázka ISO 27001 App Service Environment/SQL Database úlohy podrobný plán
 
@@ -20,7 +20,7 @@ Pokud chcete nasadit ukázkovou úlohu Azure modrotisky ISO 27001 App Service En
 > - Označení kopie ukázky jako **publikované**
 > - Přiřazení kopie podrobného plánu k existujícímu předplatnému
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free), ještě než začnete.
 
 ## <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Ukázka podrobného plánu pro nasazování sdílených služeb ISO 27001
 
@@ -113,7 +113,7 @@ Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 |-|-|-|-|
 |Log Analytics skupina prostředků|Skupina prostředků|Název|**Uzamkl** – zřetězí **název organizace** s `-workload-log-rg` cílem vytvořit skupinu prostředků jako jedinečnou.|
 |Log Analytics skupina prostředků|Skupina prostředků|Umístění|**Locked** – použije parametr podrobného plánu.|
-|Šablona Log Analytics|Šablona Resource Manageru|Úroveň služeb|Nastaví úroveň pracovního prostoru Log Analytics. Výchozí hodnota je _PerNode_.|
+|Šablona Log Analytics|Šablona Resource Manageru|Úroveň služby|Nastaví úroveň pracovního prostoru Log Analytics. Výchozí hodnota je _PerNode_.|
 |Šablona Log Analytics|Šablona Resource Manageru|Uchovávání protokolů ve dnech|Uchovávání dat ve dnech. Výchozí hodnota je _365_.|
 |Šablona Log Analytics|Šablona Resource Manageru|Umístění|Oblast, která se používá k vytvoření pracovního prostoru Log Analytics. Výchozí hodnota je _západní USA 2_.|
 |Skupina síťových prostředků|Skupina prostředků|Název|**Uzamkl** – zřetězí **název organizace** s `-workload-net-rg` cílem vytvořit skupinu prostředků jako jedinečnou.|
@@ -149,8 +149,8 @@ Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 Teď, když jste si prohlédli postup 27001 nasazení ukázky App Service Environment/SQL Database úlohy podrobného plánu úloh, najdete v následujících článcích informace o architektuře a mapování ovládacích prvků:
 
 > [!div class="nextstepaction"]
-> [ISO 27001 App Service Environment/SQL Database úlohy podrobného plánu – přehled](./index.md)
-> [ISO 27001 App Service Environment/SQL Database úlohový plán – mapování ovládacích prvků](./control-mapping.md)
+> [ISO 27001 App Service Environment/SQL Database úlohy podrobný plán – přehled](./index.md) 
+>  [ISO 27001 App Service Environment/SQL Database úlohový plán – mapování ovládacích prvků](./control-mapping.md)
 
 Další články věnované podrobným plánům a postupu jejich využití:
 

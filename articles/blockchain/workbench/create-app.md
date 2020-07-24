@@ -4,12 +4,12 @@ description: Kurz týkající se vytvoření aplikace blockchain pro Azure block
 ms.date: 10/14/2019
 ms.topic: tutorial
 ms.reviewer: brendal
-ms.openlocfilehash: 33a9e9c10c07d0808626353a7edfd505e0f60bc9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7be79757f506ea9fb854a248e77f0ff4f1b74f47
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74324811"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073109"
 ---
 # <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>Kurz: Vytvoření aplikace blockchain pro Azure blockchain Workbench
 
@@ -25,7 +25,7 @@ Dozvíte se, jak provést tyto akce:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nasazení aplikace blockchain Workbench Další informace najdete v tématu [nasazení Azure blockchain Workbench](deploy.md) pro podrobnosti o nasazení.
 * Azure Active Directory uživatelů v tenantovi přidružených k blockchain Workbench. Další informace najdete v tématu [Přidání uživatelů Azure AD v Azure blockchain Workbench](manage-users.md#add-azure-ad-users).
@@ -42,7 +42,7 @@ Použijte postup vytvoření souborů aplikace nebo si ukázku si můžete [stá
 
 Metadata konfigurace definují pracovní postupy vysoké úrovně a model interakce aplikace blockchain. Metadata konfigurace představují fáze pracovního postupu a model interakce aplikace blockchain.
 
-1. V oblíbeném editoru vytvořte soubor s názvem `HelloBlockchain.json`.
+1. V oblíbeném editoru vytvořte soubor s názvem `HelloBlockchain.json` .
 2. Přidejte následující JSON pro definování konfigurace aplikace blockchain.
 
     ``` json
@@ -220,7 +220,7 @@ Inteligentní kontrakty reprezentují obchodní logiku aplikace blockchain. V so
 
 Inteligentní kontrakty v hustotě jsou podobné třídám v objektově orientovaném jazyce. Každá smlouva obsahuje stav a funkce pro implementaci fází a akcí inteligentního kontraktu.
 
-V oblíbeném editoru vytvořte soubor s názvem `HelloBlockchain.sol`.
+V oblíbeném editoru vytvořte soubor s názvem `HelloBlockchain.sol` .
 
 ### <a name="version-pragma"></a>Direktiva pragma verze
 
@@ -238,7 +238,7 @@ Blockchain Workbench používá konfigurační soubor a soubor kódu inteligentn
 
 ### <a name="contract"></a>Kontrakt
 
-Přidejte hlavičku **kontraktu** do souboru `HelloBlockchain.sol` kódu inteligentního kontraktu.
+Přidejte hlavičku **kontraktu** do `HelloBlockchain.sol` souboru kódu inteligentního kontraktu.
 
 ``` solidity
 contract HelloBlockchain {
@@ -248,7 +248,7 @@ contract HelloBlockchain {
 
 Proměnné stavu ukládají hodnoty stavu pro každou instanci smlouvy. Proměnné stavu ve vaší smlouvě musí odpovídat vlastnostem pracovního postupu, které jsou definovány v konfiguračním souboru.
 
-Do svého kontraktu v souboru kódu `HelloBlockchain.sol` inteligentního kontraktu přidejte proměnné stavu.
+Do svého kontraktu v `HelloBlockchain.sol` souboru kódu inteligentního kontraktu přidejte proměnné stavu.
 
 ``` solidity
     //Set of States
@@ -269,7 +269,7 @@ Konstruktor definuje vstupní parametry pro novou instanci inteligentního kontr
 
 Ve funkci konstruktoru napíšete jakoukoli obchodní logiku, kterou chcete provést před vytvořením smlouvy. Například inicializujte proměnné stavu pomocí počátečních hodnot.
 
-Přidejte funkci konstruktoru do svého kontraktu do souboru `HelloBlockchain.sol` kódu inteligentního kontraktu.
+Přidejte funkci konstruktoru do svého kontraktu do `HelloBlockchain.sol` souboru kódu inteligentního kontraktu.
 
 ``` solidity
     // constructor function
@@ -281,13 +281,13 @@ Přidejte funkci konstruktoru do svého kontraktu do souboru `HelloBlockchain.so
     }
 ```
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Funkce
 
 Funkce jsou spustitelné jednotky obchodní logiky v rámci smlouvy. Požadované parametry pro funkci jsou definovány jako parametry funkce v konfiguračním souboru. Počet, pořadí a typ parametrů se musí shodovat v obou souborech. Funkce jsou přidruženy k přechodům v pracovním postupu blockchain Workbench v konfiguračním souboru. Přechod je akce prováděná za účelem přechodu na další fázi pracovního postupu aplikace, kterou Určuje smlouva.
 
 Napište libovolnou obchodní logiku, kterou chcete ve funkci provádět. Například úprava hodnoty proměnné stavu.
 
-1. Do svého kontraktu do souboru kódu `HelloBlockchain.sol` inteligentního kontraktu přidejte následující funkce.
+1. Do svého kontraktu do `HelloBlockchain.sol` souboru kódu inteligentního kontraktu přidejte následující funkce.
 
     ``` solidity
         // call this function to send a request
@@ -313,29 +313,29 @@ Napište libovolnou obchodní logiku, kterou chcete ve funkci provádět. Např�
     }
     ```
 
-2. Uložte soubor `HelloBlockchain.sol` kódu inteligentního kontraktu.
+2. Uložte `HelloBlockchain.sol` soubor kódu inteligentního kontraktu.
 
 ## <a name="add-blockchain-application-to-blockchain-workbench"></a>Přidání aplikace blockchain do aplikace blockchain Workbench
 
 Pokud chcete přidat aplikaci blockchain do aplikace blockchain Workbench, nahrajete soubory konfigurace a inteligentních smluv pro definování aplikace.
 
-1. Ve webovém prohlížeči přejděte na webovou adresu blockchain Workbench. Například `https://{workbench URL}.azurewebsites.net/` webová aplikace je vytvořena při nasazení aplikace blockchain Workbench. Informace o tom, jak najít webovou adresu blockchain Workbench, najdete v tématu [Webová adresa URL služby blockchain Workbench](deploy.md#blockchain-workbench-web-url) .
+1. Ve webovém prohlížeči přejděte na webovou adresu blockchain Workbench. Například `https://{workbench URL}.azurewebsites.net/` Webová aplikace je vytvořena při nasazení aplikace blockchain Workbench. Informace o tom, jak najít webovou adresu blockchain Workbench, najdete v tématu [Webová adresa URL služby blockchain Workbench](deploy.md#blockchain-workbench-web-url) .
 2. Přihlaste se jako [správce aplikace blockchain Workbench](manage-users.md#manage-blockchain-workbench-administrators).
-3. Vyberte **aplikace** > **nové**. Zobrazí se podokno **Nová aplikace** .
-4. Vyberte **Odeslat konfiguraci** > smlouvy**Procházet** a vyhledejte konfigurační soubor **HelloBlockchain. JSON** , který jste vytvořili. Konfigurační soubor je automaticky ověřen. Vyberte odkaz **Zobrazit** pro zobrazení chyb ověřování. Před nasazením aplikace opravte chyby ověřování.
-5.  > Vyberte **Odeslat kód kontraktu****a vyhledejte soubor kódu inteligentní** kontraktu **HelloBlockchain. Sol** . Soubor kódu je automaticky ověřen. Vyberte odkaz **Zobrazit** pro zobrazení chyb ověřování. Před nasazením aplikace opravte chyby ověřování.
+3. Vyberte **aplikace**  >  **nové**. Zobrazí se podokno **Nová aplikace** .
+4. Vyberte možnost **nahrát konfiguraci smlouvy**  >  **Procházet** a vyhledejte **HelloBlockchain.js** konfiguračního souboru, který jste vytvořili. Konfigurační soubor je automaticky ověřen. Vyberte odkaz **Zobrazit** pro zobrazení chyb ověřování. Před nasazením aplikace opravte chyby ověřování.
+5. Vyberte **Odeslat kód kontraktu**  >  **Browse** a vyhledejte soubor kódu inteligentní kontraktu **HelloBlockchain. Sol** . Soubor kódu je automaticky ověřen. Vyberte odkaz **Zobrazit** pro zobrazení chyb ověřování. Před nasazením aplikace opravte chyby ověřování.
 6. Vyberte **nasadit** a vytvořte tak aplikaci blockchain založenou na konfiguračních a inteligentních souborech smluv.
 
 Nasazení aplikace blockchain trvá několik minut. Po dokončení nasazení se v **aplikacích**zobrazí nová aplikace. 
 
 > [!NOTE]
-> Blockchain aplikace můžete vytvářet také pomocí [REST API Azure blockchain Workbench](https://docs.microsoft.com/rest/api/azure-blockchain-workbench).
+> Blockchain aplikace můžete vytvářet také pomocí [REST API Azure blockchain Workbench](/rest/api/azure-blockchain-workbench).
 
 ## <a name="add-blockchain-application-members"></a>Přidat členy aplikace blockchain
 
 Přidejte do své aplikace členy aplikace, abyste mohli iniciovat a provádět akce s kontrakty. Chcete-li přidat členy aplikace, musíte být [správcem aplikace blockchain Workbench](manage-users.md#manage-blockchain-workbench-administrators).
 
-1. Vyberte **aplikace** > **Hello, blockchain!**.
+1. Vyberte **aplikace**  >  **Hello, blockchain!**.
 2. Počet členů přidružených k aplikaci se zobrazí v pravém horním rohu stránky. U nové aplikace bude počet členů nula.
 3. V pravém horním rohu stránky vyberte odkaz **Členové** . Zobrazí se aktuální seznam členů pro aplikaci.
 4. V seznamu členství vyberte **přidat členy**.

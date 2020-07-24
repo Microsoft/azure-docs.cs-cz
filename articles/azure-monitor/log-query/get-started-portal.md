@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: bfed93a4ed13878448d21b95d265e49bf0260742
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 522a13c6de87dd8074b76f95670baf79fc96d419
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85798251"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075330"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>Kurz: Začínáme s Log Analytics dotazy
 
@@ -87,7 +87,7 @@ Chcete-li použít řízení **časového rozsahu** , vyberte ho v horním panel
 - Hodnoty časového rozsahu jsou ve formátu UTC, což může být jiné než vaše místní časové pásmo.
 - Pokud dotaz explicitně nastaví filtr pro **TimeGenerated**, ovládací prvek pro výběr času zobrazuje **hodnotu nastavenou v dotazu**a je zakázán, aby nedocházelo ke konfliktu.
 
-### <a name="run-a-query"></a>Spustit dotaz
+### <a name="run-a-query"></a>Spuštění dotazu
 Pokud chcete spustit dotaz, umístěte kurzor někam do dotazu a vyberte **Spustit** na horním panelu nebo stiskněte klávesu **SHIFT** + **ENTER**. Dotaz se spustí, dokud nenajde prázdný řádek.
 
 ## <a name="filter-results"></a>Filtrování výsledků
@@ -189,7 +189,7 @@ Uložení dotazu:
    
    Chcete-li uložit dotaz jako funkci, zadejte **alias funkce**, což je krátký název pro jiné dotazy, které se mají použít pro volání tohoto dotazu.
    
-1. Zadejte **kategorii** pro **Průzkumník dotazů** , která se má použít pro dotaz.
+1. Pokud jste v pracovním prostoru Log Analytics, poskytněte **kategorii** pro **Průzkumník dotazů** , která se má použít pro dotaz. (Kategorie nejsou k dispozici pro dotazy Application Insights.)
    
 1. Vyberte **Uložit**.
    
@@ -202,6 +202,10 @@ Pokud chcete načíst uložený dotaz, vyberte v pravém horním rohu možnost *
 
 ### <a name="export-and-share-queries"></a>Exportovat a sdílet dotazy
 Pokud chcete exportovat dotaz, vyberte **exportovat** na horním panelu a pak vyberte **exportovat do sdíleného svazku clusteru – všechny sloupce**, **exportovat do sloupců, které se zobrazí**, nebo **exportovat do Power BI (dotaz M)** z rozevíracího seznamu.
+
+Následující video ukazuje, jak integrovat Log Analytics s Excelem.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Asme]
 
 Pokud chcete sdílet odkaz na dotaz, vyberte **Kopírovat odkaz** na horním panelu a pak vyberte **Kopírovat odkaz na dotaz**, **Kopírovat text dotazu**nebo **zkopírovat výsledky dotazu** , které se zkopírují do schránky. Odkaz na dotaz můžete odeslat jiným uživatelům, kteří mají přístup ke stejnému pracovnímu prostoru.
 

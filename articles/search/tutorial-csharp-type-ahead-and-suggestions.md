@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 04/15/2020
-ms.openlocfilehash: 63c098ccd42a438f8daab787afb54cf13cd053c3
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 07/15/2020
+ms.openlocfilehash: 760624b06d00a873ff48c659ef65f9af62cd6454
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780551"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084020"
 ---
 # <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>Kurz: přidání automatického dokončování a návrhů pomocí sady .NET SDK
 
@@ -26,7 +26,7 @@ V tomto kurzu se naučíte:
 > * Přidat automatické dokončování
 > * Kombinování automatického dokončování a návrhů
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento kurz je součástí série a sestavuje se na stránkování projektu vytvořeném v [kurzu C#: stránkování výsledků hledání – Azure kognitivní hledání](tutorial-csharp-paging.md).
 
@@ -42,7 +42,7 @@ Pojďme začít s nejjednodušším případem, který uživateli nabízí alter
      @Html.TextBoxFor(m => m.searchText, new { @class = "searchBox", @id = "azureautosuggest" }) <input value="" class="searchBoxSubmit" type="submit">
     ```
 
-2. Po zavření tohoto příkazu po ukončení ** &lt;/div&gt;** zadejte tento skript. Tento skript využívá [widget automatického dokončování](https://api.jqueryui.com/autocomplete/) z open source knihovny uživatelského rozhraní jQuery a prezentuje rozevírací seznam navrhovaných výsledků. 
+2. Po zavření tohoto příkazu po ukončení ** &lt; /div &gt; **zadejte tento skript. Tento skript využívá [widget automatického dokončování](https://api.jqueryui.com/autocomplete/) z open source knihovny uživatelského rozhraní jQuery a prezentuje rozevírací seznam navrhovaných výsledků. 
 
     ```javascript
     <script>
@@ -61,7 +61,7 @@ Pojďme začít s nejjednodušším případem, který uživateli nabízí alter
 
 ### <a name="add-references-to-jquery-scripts-to-the-view"></a>Přidat do zobrazení odkazy na skripty jQuery
 
-1. Chcete-li získat přístup k knihovně jQuery &lt;,&gt; změňte část Head souboru zobrazení na následující kód:
+1. Chcete-li získat přístup k knihovně jQuery, změňte &lt; &gt; část Head souboru zobrazení na následující kód:
 
     ```cs
     <head>
@@ -308,7 +308,7 @@ K dispozici jsou knihovny, které nabízejí tuto funkci – často se označuje
 
     Jedna možnost automatického dokončování se vrátí v horní části seznamu **výsledků** , po kterém následují všechny návrhy.
 
-2. V zobrazení nejprve implementujeme štych, aby se v oblasti tučného textu, který uživatel zadal, vykresluje slovo světle šedého automatického dokončování. HTML obsahuje relativní umístění pro tento účel. Změňte příkaz **TextBoxFor** (a jeho okolní &lt;příkazy div&gt; ) na následující, což znamená, že druhé vyhledávací pole identifikované jako v **rámci** našeho normálního vyhledávacího pole je napravo pomocí tohoto vyhledávacího pole 39 pixelů z výchozího umístění!
+2. V zobrazení nejprve implementujeme štych, aby se v oblasti tučného textu, který uživatel zadal, vykresluje slovo světle šedého automatického dokončování. HTML obsahuje relativní umístění pro tento účel. Změňte příkaz **TextBoxFor** (a jeho okolní &lt; příkazy div &gt; ) na následující, což znamená, že druhé vyhledávací pole identifikované jako v **underneath** rámci našeho normálního vyhledávacího pole je napravo pomocí tohoto vyhledávacího pole 39 pixelů z výchozího umístění!
 
     ```cs
     <div id="underneath" class="searchBox" style="position: relative; left: 0; top: 0">

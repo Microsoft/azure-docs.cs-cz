@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 06/30/2020
+ms.date: 07/17/2020
 ms.author: victorh
-ms.openlocfilehash: c44daa67b4029c73c57ca82d72ee0a9759dd4c2d
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 7634effd5d1ac46955addd723ee7c992eb820a57
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563660"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084700"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>Kurz: zabezpečení virtuálního centra pomocí správce Azure Firewall
 
@@ -27,16 +27,19 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Vytvoření virtuální sítě paprsků
 > * Vytvoření zabezpečeného virtuálního rozbočovače
-> * Připojit střed a paprskový virtuální sítě
-> * Vytvoření zásady brány firewall a zabezpečení centra
+> * Připojení virtuálních sítí hvězdicové a hvězdicové sítě
 > * Směrování provozu do vašeho centra
+> * Nasazení serverů
+> * Vytvoření zásady brány firewall a zabezpečení centra
 > * Testování brány firewall
 
 ## <a name="create-a-hub-and-spoke-architecture"></a>Vytvoření architektury centra a paprsků
 
-Nejdřív vytvořte virtuální síť paprsků, kam můžete umístit své servery.
+Nejdřív vytvořte virtuální sítě paprsků, kam můžete umístit své servery.
 
-### <a name="create-a-spoke-virtual-network-and-subnets"></a>Vytvoření virtuální sítě a podsítí paprsků
+### <a name="create-two-spoke-virtual-networks-and-subnets"></a>Vytvořit dvě virtuální sítě a podsítě paprsků
+
+Tyto dvě virtuální sítě budou mít v nich Server úloh a budou chráněny bránou firewall.
 
 1. Na domovské stránce Azure Portal vyberte **vytvořit prostředek**.
 2. V části **sítě**vyberte **virtuální síť**.
@@ -45,23 +48,20 @@ Nejdřív vytvořte virtuální síť paprsků, kam můžete umístit své serve
 2. Jako **název**zadejte **paprsek-01**.
 3. V **oblasti oblast**vyberte **(US) východní USA**.
 4. Vyberte **Další: IP adresy**.
-1. V poli **adresní prostor**přijměte výchozí **10.0.0.0/16**.
-3. V části **název podsítě**vyberte **výchozí**.
-4. Změňte název podsítě na **úlohu-SN**.
-5. Jako **Rozsah adres podsítě**zadejte **10.0.1.0/24**.
-6. Vyberte **Uložit**...
-
-Dále vytvořte podsíť pro server skoků.
-
-1. Vyberte **Přidat podsíť**.
-4. Jako **název podsítě**zadejte **skok-SN**.
-5. Jako **Rozsah adres podsítě**zadejte **10.0.2.0/24**.
+1. V případě **adresního prostoru**zadejte **10.1.0.0/16**.
+3. Vyberte **Přidat podsíť**.
+4. Zadejte **úlohu-01-SN**.
+5. Jako **Rozsah adres podsítě**zadejte **10.1.1.0/24**.
 6. Vyberte **Přidat**.
-
-Nyní vytvořte virtuální síť.
-
 1. Vyberte **Zkontrolovat a vytvořit**.
 2. Vyberte **Vytvořit**.
+
+Opakujte tento postup pro vytvoření další podobné virtuální sítě:
+
+Název: **paprsek-02**<br>
+Adresní prostor: **10.2.0.0/16**<br>
+Název podsítě: úloha **-02-SN**<br>
+Rozsah adres podsítě: **10.2.1.0/24**
 
 ### <a name="create-the-secured-virtual-hub"></a>Vytvoření zabezpečeného virtuálního centra
 
@@ -74,7 +74,7 @@ Vytvořte zabezpečeného virtuálního centra pomocí Správce brány firewall.
 5. Jako **skupinu prostředků**vyberte **FW-Manager**.
 7. V **oblasti oblast**vyberte **východní USA**.
 1. V poli **název zabezpečeného virtuálního centra**zadejte příkaz **hub-01**.
-2. Jako **adresní prostor centra**zadejte **10.1.0.0/16**.
+2. Jako **adresní prostor centra**zadejte **10.0.0.0/16**.
 3. Pro nový název vWAN zadejte **vWAN-01**.
 4. Zrušte zaškrtnutí políčka **Zahrnout bránu VPN pro povolení důvěryhodných partnerů zabezpečení** .
 5. Vyberte **Další: Azure firewall**.
@@ -82,18 +82,85 @@ Vytvořte zabezpečeného virtuálního centra pomocí Správce brány firewall.
 7. Přijměte výchozí nastavení **zakázaný** **důvěryhodný partner zabezpečení** a vyberte **Další: zkontrolovat + vytvořit**.
 8. Vyberte **Vytvořit**. Nasazení bude trvat přibližně 30 minut.
 
-### <a name="connect-the-hub-and-spoke-vnets"></a>Připojit střed a paprskový virtuální sítě
+Nyní můžete získat veřejnou IP adresu brány firewall.
 
-Nyní můžete vytvořit partnerský vztah k rozbočovači a paprsku virtuální sítě.
+1. Po dokončení nasazení na Azure Portal vyberte **všechny služby**.
+1. Zadejte **Správce brány firewall** a potom vyberte **Správce brány firewall**.
+2. Vyberte **Zabezpečená virtuální rozbočovače**.
+3. Vyberte možnost **hub-01**.
+7. Vyberte **Konfigurace veřejné IP adresy**.
+8. Poznamenejte si veřejnou IP adresu, kterou použijete později.
+
+### <a name="connect-the-hub-and-spoke-virtual-networks"></a>Připojení virtuálních sítí hvězdicové a hvězdicové sítě
+
+Nyní můžete vytvořit partnerský vztah k virtuálním sítím rozbočovač a paprsek.
 
 1. Vyberte skupinu prostředků **FW-Manager** a potom vyberte virtuální síť WAN **Vwan-01** .
 2. V části **připojení**vyberte **připojení k virtuální síti**.
 3. Vyberte **Přidat připojení**.
-4. Jako **název připojení**zadejte **hub-paprsek**.
+4. Jako **název připojení**zadejte **hub-paprsek-01**.
 5. V případě **rozbočovačů**vyberte možnost **hub-01**.
 6. Jako **skupinu prostředků**vyberte **FW-Manager**.
 7. V případě **virtuální sítě**vyberte **paprskový-01**.
 8. Vyberte **Vytvořit**.
+
+Opakujte pro připojení k virtuální síti **paprske-02** : název připojení – **střed – paprskový-02**
+
+### <a name="configure-the-hub-and-spoke-routing"></a>Konfigurace směrování centra a paprsků
+
+Z Azure Portal otevřete Cloud Shell a spusťte následující Azure PowerShell ke konfiguraci požadovaného směrování centra a paprsků.
+
+```azurepowershell
+$noneRouteTable = Get-AzVHubRouteTable -ResourceGroupName fw-manager `
+                  -HubName hub-01 -Name noneRouteTable
+$vnetConns = Get-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
+             -ParentResourceName hub-01
+
+$vnetConn = $vnetConns[0]
+$vnetConn.RoutingConfiguration.PropagatedRouteTables.Ids = @($noneRouteTable)
+$vnetConn.RoutingConfiguration.PropagatedRouteTables.Labels = @("none")
+Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
+   -ParentResourceName hub-01 -Name $vnetConn.Name `
+   -RoutingConfiguration $vnetConn.RoutingConfiguration
+
+$vnetConn = $vnetConns[1]
+$vnetConn.RoutingConfiguration.PropagatedRouteTables.Ids = @($noneRouteTable)
+$vnetConn.RoutingConfiguration.PropagatedRouteTables.Labels = @("none")
+Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
+   -ParentResourceName hub-01 -Name $vnetConn.Name -RoutingConfiguration $vnetConn.RoutingConfiguration
+```
+
+## <a name="deploy-the-servers"></a>Nasazení serverů
+
+1. V Azure Portal vyberte **vytvořit prostředek**.
+2. V seznamu **oblíbených** vyberte **Windows Server 2016 Datacenter** .
+3. Zadejte pro virtuální počítač tyto hodnoty:
+
+   |Nastavení  |Hodnota  |
+   |---------|---------|
+   |Skupina prostředků     |**FW – správce**|
+   |Název virtuálního počítače     |**SRV – zatížení-01**|
+   |Oblast     |**VYLEPŠENÍ Východní USA)**|
+   |Uživatelské jméno správce     |Zadejte uživatelské jméno.|
+   |Heslo     |Zadejte heslo.|
+
+4. V části **pravidla příchozího portu**pro **veřejné příchozí porty**vyberte **None (žádné**).
+6. Přijměte ostatní výchozí hodnoty a vyberte **Další: disky**.
+7. Přijměte výchozí nastavení disku a vyberte **Další: sítě**.
+8. Vyberte pro virtuální síť **paprsk-01** a vyberte **úlohu-01-SN** pro podsíť.
+9. V případě **veřejné IP adresy**vyberte **žádné**.
+11. Přijměte ostatní výchozí hodnoty a vyberte **Další: Správa**.
+12. Výběrem možnosti **vypnuto** zakážete diagnostiku spouštění. Přijměte ostatní výchozí hodnoty a vyberte **zkontrolovat + vytvořit**.
+13. Zkontrolujte nastavení na stránce Souhrn a pak vyberte **vytvořit**.
+
+Pomocí informací v následující tabulce můžete nakonfigurovat jiný virtuální počítač s názvem **SRV-úlohy-02**. Zbytek konfigurace je stejný jako virtuální počítač **SRV-zatížení-01** .
+
+|Nastavení  |Hodnota  |
+|---------|---------|
+|Virtuální síť|**Paprskový-02**|
+|Podsíť|**Zatížení 02 – SN**|
+
+Po nasazení serverů vyberte prostředek serveru a v části **sítě** si poznamenejte privátní IP adresu každého serveru.
 
 ## <a name="create-a-firewall-policy-and-secure-your-hub"></a>Vytvoření zásady brány firewall a zabezpečení centra
 
@@ -102,31 +169,64 @@ Zásady brány firewall definují kolekce pravidel pro směrování provozu na j
 1. V nástroji Správce brány firewall vyberte **zobrazit Azure firewall zásady**.
 2. Vyberte **vytvořit Azure firewall zásady**.
 3. V části **Podrobnosti o zásadách**zadejte **název** **zásady typu-01** a v **oblasti** vyberte **východní USA**.
-4. Vyberte **Další: pravidla**.
-5. Na kartě **pravidla** vyberte **přidat kolekci pravidel**.
-6. Na stránce **přidat kolekci pravidel** zadejte **RC-01** pro **název**.
-7. Jako **typ kolekce pravidel**vyberte **Application (aplikace**).
-8. Jako **Priorita**zadejte **100**.
-9. Zajistěte, aby **akce kolekce pravidel** byla **povolená**.
-10. Jako **název** pravidla zadejte **Allow-MSFT**.
-11. Jako **typ zdroje**vyberte **IP adresa**.
-12. Jako **zdroj**zadejte **\*** .
-13. V případě **protokolu**zadejte **http, https**.
-14. Ujistěte se, že **cílový typ** je **plně kvalifikovaný název domény**.
-15. Pro **cíl**zadejte ** \* . Microsoft.com**.
-16. Vyberte **Přidat**.
-17. Vyberte **Další: Analýza hrozeb**.
-18. Vyberte **Další: rozbočovače**.
-19. Na kartě **centra** vyberte **přidružit virtuální rozbočovače**.
-20. Vyberte možnost **hub-01** a pak vyberte **Přidat**.
-21. Vyberte **Zkontrolovat a vytvořit**.
-22. Vyberte **Vytvořit**.
+4. Vyberte **Další: nastavení DNS (Preview)**.
+1. Vyberte **Další: pravidla**.
+2. Na kartě **pravidla** vyberte **přidat kolekci pravidel**.
+3. Na stránce **přidat kolekci pravidel** zadejte pro **název** **App-RC-01** .
+4. Jako **typ kolekce pravidel**vyberte **Application (aplikace**).
+5. Jako **Priorita**zadejte **100**.
+6. Zajistěte, aby **akce kolekce pravidel** byla **povolená**.
+7. Jako **název** pravidla zadejte **Allow-MSFT**.
+8. Jako **typ zdroje**vyberte **IP adresa**.
+9. Jako **zdroj**zadejte **\*** .
+10. V případě **protokolu**zadejte **http, https**.
+11. Ujistěte se, že **cílový typ** je **plně kvalifikovaný název domény**.
+12. Pro **cíl**zadejte ** \* . Microsoft.com**.
+13. Vyberte **Přidat**.
+
+Přidejte pravidlo DNAT, abyste mohli připojit vzdálenou plochu k virtuálnímu počítači **SRV-úlohy-01** .
+
+1. Vyberte **přidat kolekci pravidel**.
+2. Jako **název**zadejte **DNAT-RDP**.
+3. Jako **typ kolekce pravidel**vyberte **DNAT**.
+4. Jako **Priorita**zadejte **100**.
+5. Jako **název** pravidla zadejte **Allow-RDP**.
+6. Jako **typ zdroje**vyberte **IP adresa**.
+7. Jako **zdroj**zadejte **\*** .
+8. V části **Protokol** vyberte **TCP**.
+9. V případě **cílových portů**zadejte **3389**.
+10. Jako **typ cíle**vyberte **IP adresa**.
+11. Do pole **cíl**zadejte veřejnou IP adresu brány firewall, kterou jste si poznamenali dříve.
+12. Pro **přeloženou adresu**zadejte privátní IP adresu pro **SRV-úlohu-01** , kterou jste si poznamenali dříve.
+13. Do pole **Přeložený port** zadejte **3389**.
+14. Vyberte **Přidat**.
+
+Přidejte pravidlo sítě, abyste mohli připojit vzdálenou plochu z **SRV-úlohy-01** do služby **SRV – úloha-02**.
+
+1. Vyberte **přidat kolekci pravidel**.
+2. Jako **název**zadejte **VNet-RDP**.
+3. Jako **typ kolekce pravidel**vyberte **síť**.
+4. Jako **Priorita**zadejte **100**.
+5. Jako **název** pravidla zadejte **Allow-VNet**.
+6. Jako **typ zdroje**vyberte **IP adresa**.
+7. Jako **zdroj**zadejte **\*** .
+8. V části **Protokol** vyberte **TCP**.
+9. V případě **cílových portů**zadejte **3389**.
+9. Jako **typ cíle**vyberte **IP adresa**.
+10. Do pole **cíl**zadejte privátní IP adresu **SRV-úlohy-02** , kterou jste si poznamenali dříve.
+11. Vyberte **Přidat**.
+1. Vyberte **Další: Analýza hrozeb**.
+2. Vyberte **Další: rozbočovače**.
+3. Na kartě **centra** vyberte **přidružit virtuální rozbočovače**.
+4. Vyberte možnost **hub-01** a pak vyberte **Přidat**.
+5. Vyberte **Zkontrolovat a vytvořit**.
+6. Vyberte **Vytvořit**.
 
 To může trvat přibližně pět minut nebo i déle.
 
 ## <a name="route-traffic-to-your-hub"></a>Směrování provozu do vašeho centra
 
-Nyní je nutné zajistit, aby byl síťový provoz směrován přes bránu firewall.
+Teď je potřeba zajistit, aby byl síťový provoz směrován přes bránu firewall.
 
 1. V nástroji Správce brány firewall vyberte **Zabezpečená virtuální rozbočovače**.
 2. Vyberte možnost **hub-01**.
@@ -139,82 +239,37 @@ Nyní je nutné zajistit, aby byl síťový provoz směrován přes bránu firew
 
 ## <a name="test-your-firewall"></a>Otestování brány firewall
 
-Chcete-li otestovat pravidla brány firewall, budete muset nasadit několik serverů. Nasadíte úlohu – SRV v podsíti zatížení SÉRIOVÉho zatížení, abyste otestovali pravidla brány firewall a mohli přejít na adresu SRV, abyste se mohli připojit z Internetu pomocí vzdálené plochy a pak se připojit k úloze – SRV.
+K otestování pravidel brány firewall připojíte vzdálenou plochu pomocí veřejné IP adresy brány firewall, která je NATed na **SRV-úlohy-01**. Odtud použijete prohlížeč k otestování pravidla aplikace a připojení vzdálené plochy ke službě **SRV – úloha-02** pro otestování pravidla sítě.
 
-### <a name="deploy-the-servers"></a>Nasazení serverů
-
-1. V Azure Portal vyberte **vytvořit prostředek**.
-2. V seznamu **oblíbených** vyberte **Windows Server 2016 Datacenter** .
-3. Zadejte pro virtuální počítač tyto hodnoty:
-
-   |Nastavení  |Hodnota  |
-   |---------|---------|
-   |Skupina prostředků     |**FW – správce**|
-   |Název virtuálního počítače     |**Skok – SRV**|
-   |Oblast     |**VYLEPŠENÍ Východní USA)**|
-   |Uživatelské jméno správce     |Zadejte uživatelské jméno.|
-   |Heslo     |Zadejte heslo.|
-
-4. V části **pravidla příchozího portu**pro **veřejné příchozí porty**vyberte **Povolit vybrané porty**.
-5. V případě **vyberte příchozí porty**vyberte **RDP (3389)**.
-6. Přijměte ostatní výchozí hodnoty a vyberte **Další: disky**.
-7. Přijměte výchozí nastavení disku a vyberte **Další: sítě**.
-8. Ujistěte se, že je pro virtuální síť vybraná možnost **paprske-01** a že podsíť **přeskočí SN**.
-9. Pro **veřejnou IP**adresu přijměte výchozí název nové veřejné IP adresy (Přejít-SRV-IP).
-11. Přijměte ostatní výchozí hodnoty a vyberte **Další: Správa**.
-12. Výběrem možnosti **vypnuto** zakážete diagnostiku spouštění. Přijměte ostatní výchozí hodnoty a vyberte **zkontrolovat + vytvořit**.
-13. Zkontrolujte nastavení na stránce Souhrn a pak vyberte **vytvořit**.
-
-Pomocí informací v následující tabulce můžete nakonfigurovat jiný virtuální počítač s názvem úloha **-SRV**. Zbývající část konfigurace je stejná jako u virtuálního počítače Srv-Jump.
-
-|Nastavení  |Hodnota  |
-|---------|---------|
-|Podsíť|**Workload-SN**|
-|Veřejná IP adresa|**Žádné**|
-|Veřejné příchozí porty|**Žádné**|
-
-### <a name="add-a-route-table-and-default-route"></a>Přidání směrovací tabulky a výchozí trasy
-
-Pokud chcete, aby připojení k Internetu mohlo přejít k síti Internet, musíte vytvořit směrovací tabulku a výchozí bránu trasy k Internetu z podsítě **skok-SN** .
-
-1. V Azure Portal vyberte **vytvořit prostředek**.
-2. Do vyhledávacího pole zadejte **směrovací tabulku** a pak vyberte **směrovací tabulka**.
-3. Vyberte **Vytvořit**.
-4. Jako **název**zadejte **RT-01** .
-5. Vyberte své předplatné, **správce programu FW** pro skupinu prostředků a **(US) východní USA** pro oblast.
-6. Vyberte **Vytvořit**.
-7. Po dokončení nasazení vyberte tabulku směrování **RT-01** .
-8. Vyberte **trasy** a pak vyberte **Přidat**.
-9. Jako **název trasy**zadejte **skočit-to-inet** .
-10. Jako **předponu adresy**zadejte **0.0.0.0/0** .
-11. Jako **typ dalšího segmentu směrování**vyberte **Internet** .
-12. Vyberte **OK**.
-13. Po dokončení nasazení vyberte **podsítě**a pak vyberte **přidružit**.
-14. Vyberte **paprskový-01** pro **virtuální síť**.
-15. Vyberte **skok – SN** pro **podsíť**.
-16. Vyberte **OK**.
-
-### <a name="test-the-rules"></a>Testování pravidel
+### <a name="test-the-application-rule"></a>Testování pravidla aplikace
 
 Nyní otestujte pravidla brány firewall a potvrďte, že funguje podle očekávání.
 
-1. V Azure Portal zkontrolujte nastavení sítě pro virtuální počítač **SRV** a zaznamenejte si privátní IP adresu.
-2. Připojte vzdálenou plochu k virtuálnímu počítači **skoku** a přihlaste se. Odtud otevřete připojení ke vzdálené ploše v rámci **úlohy-SRV** privátní IP adresa.
+1. Připojte vzdálenou plochu k veřejné IP adrese firewall a přihlaste se.
 
 3. Otevřete prohlížeč Internet Explorer a přejděte na adresu https://www.microsoft.com.
 4. **OK**  >  V okně výstrahy zabezpečení aplikace Internet Explorer vyberte OK**Zavřít** .
 
    Měla by se zobrazit Domovská stránka společnosti Microsoft.
 
-5. Přejděte na https://www.google.com.
+5. Přejděte na adresu https://www.google.com.
 
    Brána firewall by vás měla zablokovat.
 
-Takže teď ověříte, že pravidla brány firewall fungují:
+Takže teď ověříte, že pravidlo aplikace firewall funguje:
 
 * Můžete přejít na jediný povolený plně kvalifikovaný název domény, ale jinam už ne.
 
+### <a name="test-the-network-rule"></a>Testování síťového pravidla
 
+Nyní otestujte pravidlo sítě.
+
+- Otevřete vzdálenou plochu na privátní IP adresu **SRV-úloha-02** .
+
+   Vzdálená plocha by se měla připojit ke službě **SRV-úlohy-02**.
+
+Takže teď ověříte, že pravidlo sítě brány firewall funguje:
+* Vzdálenou plochu můžete připojit k serveru umístěnému v jiné virtuální síti.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: d670ee0cb2396858d908ac13f70819efd57d7f63
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: fcedec126c925ff218b8a0fb17b81dbf5ac1d769
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391821"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044225"
 ---
 # <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>Prozkoumejte digitální vlákna Azure pomocí ukázkové klientské aplikace
 
-Tento kurz zavádí ukázkovou aplikaci, která implementuje klientskou aplikaci příkazového řádku pro interakci s instancí digitálních vláken Azure. Klientská aplikace je podobná té, kterou jste napsali v [kurzu: Code a klientská aplikace](tutorial-code.md).
+Tento kurz zavádí ukázkovou aplikaci, která implementuje klientskou aplikaci příkazového řádku pro interakci s instancí digitálních vláken Azure. Klientská aplikace je podobná té, kterou jste napsali v [*kurzu: Code a klientská aplikace*](tutorial-code.md).
 
 Tuto ukázku můžete použít k provádění základních akcí v Azure, jako je nahrávání modelů, vytváření a úpravy vláken a vytváření relací. Můžete se také podívat na kód ukázky, kde se dozvíte o rozhraních API digitálních vláken Azure a postup implementace vlastních příkazů úpravou ukázkového projektu, který byste ale chtěli.
 
@@ -118,7 +118,7 @@ Ověřte vytvoření modelů spuštěním příkazu `GetModels true` . Tím se d
 
 :::image type="content" source="media/tutorial-command-line-app/output-get-models.png" alt-text="Výsledky getmodels zobrazující aktualizovaný model místnosti":::
 
-#### <a name="errors"></a>chyby
+#### <a name="errors"></a>Chyby
 
 Ukázková aplikace také zpracovává chyby ze služby. 
 
@@ -129,7 +129,7 @@ CreateModels Room
 ```
 
 Jelikož modely nelze přepsat, nyní bude vrácena chyba služby.
-Podrobnosti o tom, jak odstranit existující modely, naleznete v tématu [How to: Manage Custom Models](how-to-manage-model.md).
+Podrobnosti o tom, jak odstranit existující modely, naleznete v tématu [*How to: Manage Custom Models*](how-to-manage-model.md).
 ```cmd/sh
 Response 409: Service request failed.
 Status: 409 (Conflict)
@@ -285,7 +285,7 @@ Hlavní funkcí digitálních vláken Azure je schopnost snadno a efektivně [do
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Projekt v tomto kurzu je základem pro další kurz, [kurz: připojení uceleného řešení](tutorial-end-to-end.md). Pokud máte v plánu pokračovat k dalšímu kurzu, můžete zde nastavené prostředky zachovat, abyste mohli dál používat tuto instanci digitálních vláken Azure a nakonfigurovanou ukázkovou aplikaci.
+Projekt v tomto kurzu je základem pro další kurz, [*kurz: připojení uceleného řešení*](tutorial-end-to-end.md). Pokud máte v plánu pokračovat k dalšímu kurzu, můžete zde nastavené prostředky zachovat, abyste mohli dál používat tuto instanci digitálních vláken Azure a nakonfigurovanou ukázkovou aplikaci.
 * V takovém případě můžete použít ukázkové aplikace `DeleteAllTwins` a `DeleteAllModels` příkazy k vymazání nevláken a modelů v instanci, v uvedeném pořadí. V dalším kurzu vám poskytneme čistou SLAT.
 
 Pokud už prostředky vytvořené v tomto kurzu nepotřebujete, odstraňte je pomocí těchto kroků.
@@ -316,10 +316,10 @@ V tomto kurzu jste začali s digitálními podmnožinami Azure pomocí nastaven�
 Přejděte k dalšímu kurzu a použijte ukázkovou aplikaci příkazového řádku v kombinaci s jinými službami Azure a dokončete tak kompletní scénář založený na datech:
 
 > [!div class="nextstepaction"]
-> [Kurz: připojení kompletního řešení](tutorial-end-to-end.md)
+> [*Kurz: připojení kompletního řešení*](tutorial-end-to-end.md)
 
 Případně můžete začít hledat v dokumentaci k konceptu, kde najdete další informace o prvcích, se kterými jste pracovali v tomto kurzu:
-* [Koncepty: vlastní modely](concepts-models.md)
+* [*Koncepty: vlastní modely*](concepts-models.md)
 
 Další podrobné informace o procesech v tomto kurzu můžete také zahájit pomocí článků s postupy:
-* [Postupy: použití rozhraní příkazového řádku Azure Digital zdvojené](how-to-use-cli.md)
+* [*Postupy: použití rozhraní příkazového řádku Azure Digital zdvojené*](how-to-use-cli.md)

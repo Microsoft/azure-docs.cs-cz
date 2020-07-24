@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
-ms.openlocfilehash: f6e70caaedf906142b19ba45f0eb4d818e2955e7
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 4e236be298f92506e40a7f5197b2abeb065e7eed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85051896"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013262"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>Kurz: použití spravované identity pro připojení Key Vault k webové aplikaci Azure pomocí .NET
 
@@ -22,13 +22,13 @@ Azure Key Vault poskytuje způsob, jak bezpečně ukládat přihlašovací údaj
 
 V tomto kurzu se používá spravovaná identita k ověření webové aplikace Azure pomocí Azure Key Vault. I když postup používá [klientskou knihovnu Azure Key Vault v4 pro .NET](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) a [Azure CLI](/cli/azure/get-started-with-azure-cli), platí stejné základní zásady i při použití vývojového jazyka dle vašeho výběru, Azure PowerShell nebo Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [.NET Core 3,1 SDK nebo novější](https://dotnet.microsoft.com/download/dotnet-core/3.1).
-* Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) nebo [Azure PowerShell](/powershell/azure/overview)
+* Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) nebo [Azure PowerShell](/powershell/azure/)
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -51,7 +51,7 @@ Pokud chcete vytvořit Trezor klíčů, použijte příkaz [AZ Key trezor Create
 az keyvault create --name "<your-keyvault-name>" -g "myResourceGroup"
 ```
 
-Poznamenejte si vrácenou hodnotu `vaultUri` , která bude ve formátu "https://<Your-webtrezor-name>. Vault.Azure.NET/". Bude použit v kroku [aktualizace kódu](#update-the-code) .
+Poznamenejte si vrácenou hodnotu `vaultUri` , která bude ve formátu "https:// &lt; Your-Vault.Azure.NET/trezor-name &gt; .". Bude použit v kroku [aktualizace kódu](#update-the-code) .
 
 V trezoru klíčů teď můžete umístit tajný klíč pomocí příkazu [AZ Key trezor tajné sady](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set) . Nastavte název tajného kódu na "MySecret" a hodnotu na "úspěch!".
 

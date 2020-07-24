@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: cf1d732391f86bec9c0ec2de1e6bace2e808bb19
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 1f0668a897f5bc88fbaeb770bc045e56dae2d48f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85318922"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075494"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>Kurz: implementace prostorových analýz IoT pomocí Azure Maps
 
@@ -83,15 +83,15 @@ Následující obrázek představuje oblast geografické oblasti zvýrazněnou m
   ![Trasa geografické ploty](./media/tutorial-iot-hub-maps/geofence-route.png)
 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 Abyste mohli dokončit kroky v tomto kurzu, musíte nejdřív vytvořit skupinu prostředků v Azure Portal. Chcete-li vytvořit skupinu prostředků, proveďte následující kroky:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
 
-2. Vyberte **Skupiny prostředků**.
+2. Vyberte **skupiny prostředků**.
     
    ![Skupiny prostředků](./media/tutorial-iot-hub-maps/resource-group.png)
 
@@ -110,7 +110,7 @@ Abyste mohli dokončit kroky v tomto kurzu, musíte nejdřív vytvořit skupinu 
 
 ### <a name="create-an-azure-maps-account"></a>Vytvoření účtu Azure Maps 
 
-Abychom mohli implementovat obchodní logiku na základě Azure Maps prostorové analýzy, musíme vytvořit účet Azure Maps ve skupině prostředků, kterou jsme vytvořili. Podle pokynů v tématu [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps) vytvořte předplatné Azure Maps účtu s cenovou úrovní S1. Použijte k získání primárního klíče pro váš účet postup uvedený v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) . Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
+Abychom mohli implementovat obchodní logiku na základě Azure Maps prostorové analýzy, musíme vytvořit účet Azure Maps ve skupině prostředků, kterou jsme vytvořili. Podle pokynů v tématu [Vytvoření účtu](quick-demo-map-app.md#create-an-azure-maps-account) vytvořte předplatné Azure Maps účtu s cenovou úrovní S1. Použijte k získání primárního klíče pro váš účet postup uvedený v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) . Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
 
 
@@ -143,7 +143,7 @@ IoT Hub je spravovaná služba v cloudu. IoT Hub slouží jako centrální Centr
 Pomocí postupu v [části vytvoření IoT Hub](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet#create-an-iot-hub)vytvořte centrum IoT.
 
 
-### <a name="register-a-device"></a>Registrování zařízení 
+### <a name="register-a-device"></a>Registrace zařízení 
 
 Aby bylo možné se připojit k IoT Hub, musí být zařízení registrované. Pokud chcete zaregistrovat zařízení ve službě IoT Hub, postupujte podle následujících kroků:
 

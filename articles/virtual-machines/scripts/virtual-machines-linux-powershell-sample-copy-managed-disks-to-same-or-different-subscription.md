@@ -1,5 +1,5 @@
 ---
-title: Kopírování spravovaných disků do předplatného – ukázka PowerShellu
+title: Kopírování spravovaných disků do předplatného (Linux) – ukázka PowerShellu
 description: Ukázka skriptu Azure PowerShell – kopírování (nebo přesun) spravovaných disků do stejného nebo jiného předplatného
 services: virtual-machines-linux
 documentationcenter: storage
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/06/2017
 ms.author: ramankum
-ms.openlocfilehash: 35890d7b19451aa8051618871c9ca485aabca2c9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ca594801c0886903f395dddb7ccbfccb42bff15f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81458518"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069391"
 ---
-# <a name="copy-managed-disks-in-the-same-subscription-or-different-subscription-with-powershell"></a>Kopírování spravovaných disků v rámci stejného předplatného nebo jiného předplatného pomocí PowerShellu
+# <a name="copy-managed-disks-in-the-same-subscription-or-different-subscription-with-powershell-linux"></a>Kopírování spravovaných disků v rámci stejného předplatného nebo jiného předplatného pomocí PowerShellu (Linux)
 
 Tento skript vytvoří kopii existujícího spravovaného disku ve stejném předplatném nebo v jiném předplatném. Nový disk se vytvoří ve stejné oblasti jako nadřazený spravovaný disk.
 
@@ -40,11 +40,11 @@ Tento skript k vytvoření nového spravovaného disku v cílovém předplatném
 
 | Příkaz | Poznámky |
 |---|---|
-| [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzDiskConfig) | Vytvoří konfiguraci disku, která se použije při vytvoření disku. Zahrnuje ID prostředku nadřazeného disku a umístění, které je stejné jako umístění nadřazeného disku.  |
-| [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | Vytvoří disk pomocí konfigurace disku, názvu disku a názvu skupiny prostředků, které použije jako parametry. |
+| [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) | Vytvoří konfiguraci disku, která se použije při vytvoření disku. Zahrnuje ID prostředku nadřazeného disku a umístění, které je stejné jako umístění nadřazeného disku.  |
+| [New-AzDisk](/powershell/module/az.compute/new-azdisk) | Vytvoří disk pomocí konfigurace disku, názvu disku a názvu skupiny prostředků, které použije jako parametry. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
+Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/).
 
 Další ukázkové skripty PowerShellu pro virtuální počítače najdete v [dokumentaci k virtuálním počítačům Azure s Linuxem](../linux/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

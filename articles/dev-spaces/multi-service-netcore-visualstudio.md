@@ -7,21 +7,21 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: V tomto kurzu se dozvíte, jak pomocí Azure Dev Spaces a sady Visual Studio ladit aplikaci .NET Core s více službami ve službě Azure Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
-ms.openlocfilehash: 7f95c21c2cf5b7adcdb34d7bbe2b1f8314c20333
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 073019a75f78263e9d300a82469b36268d032679
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75438390"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072936"
 ---
 # <a name="running-multiple-dependent-services-net-core-and-visual-studio-with-azure-dev-spaces"></a>Spuštění více závislých služeb: .NET Core a Visual Studio s Azure Dev Spaces
 
 V tomto kurzu se naučíte vyvíjet aplikace s více službami pomocí Azure Dev Spaces společně s dalšími výhodami, které poskytují vývojové prostory.
 
 ## <a name="call-another-container"></a>Volání jiného kontejneru
-V této části se chystáte vytvořit druhou službu, `mywebapi`, a `webfrontend` zavolat ji. Každá služba poběží v samostatném kontejneru. Ladění pak provedete v obou kontejnerech.
+V této části se chystáte vytvořit druhou službu, `mywebapi` , a `webfrontend` zavolat ji. Každá služba poběží v samostatném kontejneru. Ladění pak provedete v obou kontejnerech.
 
-![](media/common/multi-container.png)
+![V diagramu se zobrazuje volání služby webendu (jak je uvedeno u šipky) služba mywebapi.](media/common/multi-container.png)
 
 ### <a name="download-sample-code-for-mywebapi"></a>Stažení ukázkového kódu pro *mywebapi*
 Kvůli úspoře času si můžete ukázkový kód stáhnout z úložiště GitHub. Přejděte na https://github.com/Azure/dev-spaces a stáhněte si úložiště GitHub výběrem možnosti **Clone or Download** (Klonovat nebo stáhnout). Kód k této části je tady: `samples/dotnetcore/getting-started/mywebapi`.
@@ -34,7 +34,7 @@ Kvůli úspoře času si můžete ukázkový kód stáhnout z úložiště GitHu
 2. Až se `mywebapi` připraví, otevřete v prohlížeči adresu místního hostitele a k adrese URL připojte `/api/values`, aby se vyvolalo výchozí rozhraní GET API pro `ValuesController`. 
 3. Pokud byly všechny kroky úspěšné, měla by se zobrazit odpověď ze služby `mywebapi`, která vypadá takto:
 
-    ![](media/get-started-netcore-visualstudio/WebAPIResponse.png)
+    ![Webová stránka zobrazuje pole JSON dvou řetězců: "hodnota1" a "hodnota2".](media/get-started-netcore-visualstudio/WebAPIResponse.png)
 
 ### <a name="make-a-request-from-webfrontend-to-mywebapi"></a>Vytvoření požadavku z *webfrontend* do *mywebapi*
 Teď napíšeme kód v projektu `webfrontend`, který vygeneruje požadavek do `mywebapi`. Přejděte do okna sady Visual Studio, ve kterém je projekt `webfrontend`. V `HomeController.cs` souboru *nahraďte* kód metody about následujícím kódem:

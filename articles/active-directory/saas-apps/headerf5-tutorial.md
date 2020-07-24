@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 352f52a2a6d84d352bb46e09f104efde303307f5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 341be30c30f7b4a2a53f70f18e1c2a3a30de1cb4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80478050"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034393"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s F5
+# <a name="tutorial-configure-single-sign-on-sso-between-azure-active-directory-and-f5"></a>Kurz: Konfigurace jednotného přihlašování (SSO) mezi Azure Active Directory a F5
 
 V tomto kurzu se naučíte integrovat F5 s Azure Active Directory (Azure AD). Při integraci F5 se službou Azure AD můžete:
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte integrovat F5 s Azure Active Directory (Azure AD). P�
 
 Další informace o integraci aplikací SaaS s jednotným přihlašováním ve službě Azure AD najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -177,7 +177,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -221,7 +221,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. Kromě toho budete vyžadovat **certifikát SSL pro název hostitele aplikace. Přejděte do seznamu certifikát > Správa certifikátů > přenos provozu > seznam certifikátů protokolu SSL**. V pravém horním rohu vyberte **importovat** . **Typ importu** bude **PKCS 12 (IIS)**. Zadejte **název klíče** (bude odkazován později v konfiguraci) a zadejte soubor PFX. Zadejte **heslo** pro PFX. Klikněte na **importovat**.
 
     >[!NOTE]
-    >V příkladu našeho názvu aplikace používáme `Headerapp.superdemo.live`certifikát o zástupné kartě, který je `WildCard-SuperDemo.live`naším příponou KeyName.
+    >V příkladu našeho názvu aplikace `Headerapp.superdemo.live` používáme certifikát o zástupné kartě, který je naším `WildCard-SuperDemo.live` příponou KeyName.
 
     ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure13.png)
 
@@ -286,7 +286,7 @@ Tato část je určena k použití, pokud nemůžete použít konfiguraci s asis
 1. Přejděte do **seznamu certifikát > Správa certifikátů > přenos provozu > seznam certifikátů protokolu SSL**. V pravém horním rohu vyberte **importovat** . **Typ importu** bude **PKCS 12 (IIS)**. Zadejte **název klíče** (bude odkazován později v konfiguraci) a zadejte soubor PFX. Zadejte **heslo** pro PFX. Klikněte na **importovat**.
 
     >[!NOTE]
-    >V příkladu našeho názvu aplikace používáme `Headerapp.superdemo.live`certifikát o zástupné kartě, který je `WildCard-SuperDemo.live`naším příponou KeyName.
+    >V příkladu našeho názvu aplikace `Headerapp.superdemo.live` používáme certifikát o zástupné kartě, který je naším `WildCard-SuperDemo.live` příponou KeyName.
   
     ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure17.png)
 
@@ -346,7 +346,7 @@ Tato část je určena k použití, pokud nemůžete použít konfiguraci s asis
  
     ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure29.png)
 
-    a. Vyhledejte soubor metadata. XML stažený z Azure AD a zadejte **název zprostředkovatele identity**.
+    a. Přejděte na metadata.xml soubor stažený z Azure AD a zadejte **název zprostředkovatele identity**.
 
     b. Klikněte na tlačítko **OK**.
 
@@ -360,7 +360,7 @@ Tato část je určena k použití, pokud nemůžete použít konfiguraci s asis
 
     f. **Shodný zdroj =% {Session. Server. landinguri}** 
 
-    g. **Shoda hodnoty =/***
+    například **Shoda hodnoty =/***
 
     h. Kliknout na **aktualizovat**
 
@@ -394,7 +394,7 @@ Tato část je určena k použití, pokud nemůžete použít konfiguraci s asis
 
     ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure35.png)
  
-    g. Klikněte na **Editor vizuálních zásad**, upravte **zásady přístupu pro** odkaz na profil.
+    například Klikněte na **Editor vizuálních zásad**, upravte **zásady přístupu pro** odkaz na profil.
 
     h. V editoru vizuálních zásad klikněte na symbol + a vyberte **ověřování SAML**.
 
@@ -418,7 +418,7 @@ Tato část je určena k použití, pokud nemůžete použít konfiguraci s asis
 
 1. Přiřaďte profil přístupu k virtuálnímu serveru, aby funkce F5 BIG IP APM používala nastavení profilu pro příchozí provoz a spouštěla dříve definovaná zásada přístupu.
 
-    a. Klikněte na **Hlavní** > **místní provoz** > **virtuální servery**.
+    a. Klikněte na **Hlavní**  >  **místní provoz**  >  **virtuální servery**.
 
     ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure40.png)
  
@@ -438,11 +438,11 @@ Tato část je určena k použití, pokud nemůžete použít konfiguraci s asis
  
     Když RULE_INIT {set static::d ebug 0}, pokud ACCESS_ACL_ALLOWED {
 
-    Nastavte AZUREAD_USERNAME [přístup:: Session data Get "session.saml.last.attr.name.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"], pokud {$static::d ebug} {log local0. "AZUREAD_USERNAME = $AZUREAD _USERNAME"} Pokud {! ( [HTTP:: header existuje "AZUREAD_USERNAME"]) } {HTTP:: header INSERT AZUREAD_USERNAME $AZUREAD _USERNAME}
+    Nastavte AZUREAD_USERNAME [přístup:: Session data Get "session.saml.last.attr.name. http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name "], pokud {$static::d ebug} {log local0. "AZUREAD_USERNAME = $AZUREAD _USERNAME"} Pokud {! ( [HTTP:: header existuje "AZUREAD_USERNAME"]) } {HTTP:: header INSERT AZUREAD_USERNAME $AZUREAD _USERNAME}
 
-    Nastavte AZUREAD_DISPLAYNAME [přístup:: Session data Get "session.saml.last.attr.name.http://schemas.microsoft.com/identity/claims/displayname"], pokud {$static::d ebug} {log local0. "AZUREAD_DISPLAYNAME = $AZUREAD _DISPLAYNAME"} Pokud {! ( [HTTP:: header existuje "AZUREAD_DISPLAYNAME"]) } {HTTP:: header INSERT AZUREAD_DISPLAYNAME $AZUREAD _DISPLAYNAME}
+    Nastavte AZUREAD_DISPLAYNAME [přístup:: Session data Get "session.saml.last.attr.name. http://schemas.microsoft.com/identity/claims/displayname "], pokud {$static::d ebug} {log local0. "AZUREAD_DISPLAYNAME = $AZUREAD _DISPLAYNAME"} Pokud {! ( [HTTP:: header existuje "AZUREAD_DISPLAYNAME"]) } {HTTP:: header INSERT AZUREAD_DISPLAYNAME $AZUREAD _DISPLAYNAME}
 
-    Nastavte AZUREAD_EMAILADDRESS [přístup:: Session data Get "session.saml.last.attr.name.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"], pokud {$static::d ebug} {log local0. "AZUREAD_EMAILADDRESS = $AZUREAD _EMAILADDRESS"} Pokud {! ( [HTTP:: header existuje "AZUREAD_EMAILADDRESS"]) } {HTTP:: header Insert "AZUREAD_EMAILADDRESS" $AZUREAD _EMAILADDRESS}}
+    Nastavte AZUREAD_EMAILADDRESS [přístup:: Session data Get "session.saml.last.attr.name. http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress "], pokud {$static::d ebug} {log local0. "AZUREAD_EMAILADDRESS = $AZUREAD _EMAILADDRESS"} Pokud {! ( [HTTP:: header existuje "AZUREAD_EMAILADDRESS"]) } {HTTP:: header Insert "AZUREAD_EMAILADDRESS" $AZUREAD _EMAILADDRESS}}
 
     **Ukázkový výstup níže**
 
@@ -458,7 +458,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici F5 na přístupovém panelu byste měli být automaticky přihlášeni k F5, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

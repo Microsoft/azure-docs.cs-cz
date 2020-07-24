@@ -9,18 +9,18 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc
 ms.reviewer: akjosh
-ms.openlocfilehash: 22f3fd44fbeb3d951d4add7b90a0e9aebd863ebf
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 159ded093f278672a8251263f7bab1050a945e11
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792832"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085839"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>Kurz: Vytvoření a použití vlastní image pro škálovací sady virtuálních počítačů pomocí Azure CLI
 Při vytváření škálovací sady zadáte image, která se použije při nasazení instancí virtuálních počítačů. Pokud chcete snížit počet úloh po nasazení instancí virtuálních počítačů, můžete použít vlastní image virtuálního počítače. Tato vlastní image virtuálního počítače obsahuje instalace a konfigurace všech požadovaných aplikací. Všechny instance virtuálních počítačů vytvořené ve škálovací sadě používají vlastní image virtuálního počítače a jsou připravené k obsluze provozu aplikace. Co se v tomto kurzu naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření galerie sdílených imagí
+> * Vytvoření služby Shared Image Gallery
 > * Vytvoření specializované definice obrázku
 > * Vytvoření verze image
 > * Vytvoření sady škálování z specializované image
@@ -90,13 +90,13 @@ Definice obrázků vytvoří logické seskupení obrázků. Slouží ke správě
 
 Názvy definic obrázků mohou být tvořeny velkými a malými písmeny, číslicemi, tečkami, pomlčkami a tečkami. 
 
-Ujistěte se, že je vaše definice image správným typem. Pokud jste virtuální počítač zobecněni (pomocí nástroje Sysprep pro Windows nebo waagent-devisioning pro Linux), měli byste vytvořit zobecněnou definici Image pomocí `--os-state generalized`. Pokud chcete virtuální počítač použít bez odebrání stávajících uživatelských účtů, vytvořte pomocí nástroje `--os-state specialized`specializovanou definici image.
+Ujistěte se, že je vaše definice image správným typem. Pokud jste virtuální počítač zobecněni (pomocí nástroje Sysprep pro Windows nebo waagent-devisioning pro Linux), měli byste vytvořit zobecněnou definici Image pomocí `--os-state generalized` . Pokud chcete virtuální počítač použít bez odebrání stávajících uživatelských účtů, vytvořte pomocí nástroje specializovanou definici image `--os-state specialized` .
 
-Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions).
+Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](../virtual-machines/linux/shared-image-galleries.md#image-definitions).
 
 Vytvořte definici obrázku v galerii pomocí [AZ SIG image-definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create).
 
-V tomto příkladu se definice image jmenuje *myImageDefinition*a je určena pro [specializovanou](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images) image operačního systému Linux. Pokud chcete vytvořit definici imagí pomocí operačního systému Windows, použijte `--os-type Windows`. 
+V tomto příkladu se definice image jmenuje *myImageDefinition*a je určena pro [specializovanou](../virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images) image operačního systému Linux. Pokud chcete vytvořit definici imagí pomocí operačního systému Windows, použijte `--os-type Windows` . 
 
 ```azurecli-interactive 
 az sig image-definition create \
@@ -122,7 +122,7 @@ Povolené znaky pro verzi obrázku jsou čísla a tečky. Čísla musí být v r
 
 V tomto příkladu je verze naší image *1.0.0* a my vytvoříme jednu repliku v oblasti *střed USA – jih* a 1 replice v *východní USA 2* oblasti. Oblasti replikace musí zahrnovat oblast, ve které je umístěný zdrojový virtuální počítač.
 
-`--managed-image` V tomto příkladu nahraďte hodnotu ID virtuálního počítače z předchozího kroku.
+`--managed-image`V tomto příkladu nahraďte hodnotu ID virtuálního počítače z předchozího kroku.
 
 ```azurecli-interactive 
 az sig image-version create \
@@ -137,18 +137,18 @@ az sig image-version create \
 > [!NOTE]
 > Aby bylo možné použít stejnou spravovanou bitovou kopii k vytvoření jiné verze bitové kopie, je třeba počkat na dokončení sestavení a repliky verze image.
 >
-> Image můžete ukládat do Premium Storage tím, že přidáte `--storage-account-type  premium_lrs`nebo zadáte [redundantní úložiště zóny](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) , a to `--storage-account-type  standard_zrs` přidáním, když vytvoříte verzi image.
+> Image můžete ukládat do Premium Storage tím, že přidáte nebo zadáte `--storage-account-type  premium_lrs` [redundantní úložiště zóny](../storage/common/storage-redundancy.md) , a to přidáním, `--storage-account-type  standard_zrs` Když vytvoříte verzi image.
 >
 
 
 
 
 ## <a name="create-a-scale-set-from-the-image"></a>Vytvoření sady škálování z Image
-Vytvořte sadu škálování z specializované Image pomocí [`az vmss create`](/cli/azure/vmss#az-vmss-create). 
+Vytvořte sadu škálování z specializované Image pomocí [`az vmss create`](/cli/azure/vmss#az-vmss-create) . 
 
 Vytvořením sady škálování pomocí [`az vmss create`](/cli/azure/vmss#az-vmss-create) parametru--specializované použijte k označení, že se jedná o specializovanou image. 
 
-Pomocí ID definice image pro `--image` můžete vytvořit instance sady škálování z nejnovější verze image, která je k dispozici. Můžete také vytvořit instance sady škálování z konkrétní verze, a to zadáním ID verze image pro `--image`. 
+Pomocí ID definice image pro `--image` můžete vytvořit instance sady škálování z nejnovější verze image, která je k dispozici. Můžete také vytvořit instance sady škálování z konkrétní verze, a to zadáním ID verze image pro `--image` . 
 
 Vytvořte sadu škálování s názvem *myScaleSet* nejnovější verzi image *myImageDefinition* , kterou jsme vytvořili dříve.
 
@@ -208,7 +208,7 @@ az sig show \
    --query id
 ```
 
-Pomocí ID objektu jako oboru společně s e-mailovou adresou a [AZ role Assignment vytvořit](/cli/azure/role/assignment#az-role-assignment-create) poskytněte uživateli přístup k galerii sdílených imagí. `<email-address>` Nahraďte `<gallery iD>` a vlastními informacemi.
+Pomocí ID objektu jako oboru společně s e-mailovou adresou a [AZ role Assignment vytvořit](/cli/azure/role/assignment#az-role-assignment-create) poskytněte uživateli přístup k galerii sdílených imagí. Nahraďte `<email-address>` a `<gallery iD>` vlastními informacemi.
 
 ```azurecli-interactive
 az role assignment create \
@@ -217,7 +217,7 @@ az role assignment create \
    --scope <gallery ID>
 ```
 
-Další informace o tom, jak sdílet prostředky pomocí RBAC, najdete v tématu [Správa přístupu pomocí RBAC a Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli).
+Další informace o tom, jak sdílet prostředky pomocí RBAC, najdete v tématu [Správa přístupu pomocí RBAC a Azure CLI](../role-based-access-control/role-assignments-cli.md).
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
@@ -232,7 +232,7 @@ az group delete --name myResourceGroup --no-wait --yes
 V tomto kurzu jste zjistili, jak vytvořit a použít vlastní image virtuálního počítače pro škálovací sady pomocí Azure CLI:
 
 > [!div class="checklist"]
-> * Vytvoření galerie sdílených imagí
+> * Vytvoření služby Shared Image Gallery
 > * Vytvoření specializované definice obrázku
 > * Vytvoření verze image
 > * Vytvoření sady škálování z specializované image

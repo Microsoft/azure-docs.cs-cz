@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 01/19/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: f8e1a0ca86f9346cf07c87a738d48cb56f6d7d57
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f6b900bba178d4180d48ed3b89ec1e4d6cb49d7b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75614770"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076122"
 ---
 # <a name="create-a-service-fabric-cluster"></a>Vytvoření clusteru Service Fabric
 
@@ -27,7 +27,7 @@ Tento ukázkový skript vytvoří cluster Service Fabric s pěti uzly zabezpeče
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-V případě potřeby nainstalujte Azure PowerShell pomocí instrukcí v [příručce Azure PowerShell](/powershell/azure/overview) a pak spuštěním příkazu `Connect-AzAccount` vytvořte připojení k Azure. 
+V případě potřeby nainstalujte Azure PowerShell pomocí instrukcí v [příručce Azure PowerShell](/powershell/azure/) a pak spuštěním příkazu `Connect-AzAccount` vytvořte připojení k Azure. 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -52,6 +52,6 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
+Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/).
 
 Další ukázky Azure PowerShellu pro Azure Service Fabric najdete v [ukázkách Azure PowerShellu](../service-fabric-powershell-samples.md).

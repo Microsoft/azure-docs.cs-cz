@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 42c776d4d6c3973e7c222c9c9adf3e5105f6c84f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 22628af5b3e62edfc96699ad051b6a00cf9c1429
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79296794"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078938"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Kurz: nastavení prostředí pro strojové učení na IoT Edge
 
@@ -38,11 +38,11 @@ Vývojový virtuální počítač se nastaví pomocí:
 * [Sada .NET Core SDK](https://dotnet.microsoft.com/)
 * [Python 3](https://www.python.org/)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0)
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.1.0)
 * [Rozšíření VS Code](https://marketplace.visualstudio.com/search?target=VSCode)
   * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
   * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-  * [R #](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
+  * [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
   * [Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
   * [PowerShell](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)
 
@@ -52,7 +52,7 @@ Vytvoření a konfigurace virtuálního počítače trvá přibližně 30 minut.
 
 1. Naklonujte nebo stáhněte [Machine Learning a IoT Edge](https://github.com/Azure-Samples/IoTEdgeAndMlSample) ukázkové úložiště do místního počítače.
 
-1. Otevřete PowerShell jako správce a přejděte do adresáře **\IoTEdgeAndMlSample\DevVM** , který se nachází v kořenovém adresáři, kam jste stáhli kód. V kořenovém adresáři pro váš zdroj budeme odkazovat jako `srcdir`na.
+1. Otevřete PowerShell jako správce a přejděte do adresáře **\IoTEdgeAndMlSample\DevVM** , který se nachází v kořenovém adresáři, kam jste stáhli kód. V kořenovém adresáři pro váš zdroj budeme odkazovat jako na `srcdir` .
 
     ```powershell
     cd c:\srcdir\IoTEdgeAndMlSample\DevVM
@@ -66,7 +66,7 @@ Vytvoření a konfigurace virtuálního počítače trvá přibližně 30 minut.
     Set-ExecutionPolicy Bypass -Scope Process
     ```
 
-1. Spusťte Create-AzureDevVM. ps1.
+1. Spusťte Create-AzureDevVM.ps1.
 
     ```powershell
     .\Create-AzureDevVm.ps1
@@ -116,7 +116,7 @@ Teď, když jsme vytvořili virtuální počítač, potřebujeme dokončit insta
 
 1. Zobrazí se výzva, abyste přijali certifikát pro virtuální počítač. Vyberte **Ano**.
 
-## <a name="install-visual-studio-code-extensions"></a>Instalace rozšíření Visual Studio Code
+## <a name="install-visual-studio-code-extensions"></a>Instalace rozšíření pro Visual Studio Code
 
 Teď, když jste se připojili k vývojovému počítači, přidejte k Visual Studio Code několik užitečných rozšíření, která usnadňují vývojové prostředí.
 
@@ -181,7 +181,7 @@ V rámci vytváření služby IoT Hub vytvořil skript, který jsme spustili v p
 
 1. Otevřete [Azure Portal](https://portal.azure.com) a v tomto kurzu vyhledejte skupinu prostředků, kterou používáte.
 
-1. V seznamu prostředků vyberte IoT Hub vytvoření skriptu. Bude mít název končící náhodnými znaky, jako je například `IotEdgeAndMlHub-jrujej6de6i7w`.
+1. V seznamu prostředků vyberte IoT Hub vytvoření skriptu. Bude mít název končící náhodnými znaky, jako je například `IotEdgeAndMlHub-jrujej6de6i7w` .
 
 1. V nabídce v levém podokně v části **zasílání zpráv**vyberte **směrování zpráv**.
 
@@ -193,7 +193,7 @@ V rámci vytváření služby IoT Hub vytvořil skript, který jsme spustili v p
 
    V seznamu vlastní koncové body se zobrazí **turbofanDeviceStorage** . Všimněte si následujících vlastností tohoto koncového bodu:
 
-   * Odkazuje na kontejner úložiště objektů blob, který jste vytvořili `devicedata` s názvem, jak je uvedeno v **názvu kontejneru**.
+   * Odkazuje na kontejner úložiště objektů blob, který jste vytvořili s názvem `devicedata` , jak je uvedeno v **názvu kontejneru**.
    * **Formát názvu souboru** má jako poslední prvek v názvu oddíl. Pro operace se soubory, které provedeme v Azure Notebooks později v tomto kurzu, zjistíme, že tento formát je pohodlnější.
    * Jeho **stav** by měl být v pořádku.
 

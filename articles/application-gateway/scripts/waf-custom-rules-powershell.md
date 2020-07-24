@@ -6,25 +6,25 @@ ms.service: application-gateway
 ms.topic: sample
 ms.date: 6/7/2019
 ms.author: victorh
-ms.openlocfilehash: ffdde80598322222e2a8f000eee8be269becdd11
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4ffbab992732c39054818b9b4f21871687b05dcb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "66743420"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083136"
 ---
-# <a name="create-waf-custom-rules-with-azure-powershell"></a>Vytváření vlastních pravidel WAF pomocí Azure PowerShell
+# <a name="create-web-application-firewall-waf-custom-rules-with-azure-powershell"></a>Vytváření vlastních pravidel firewallu webových aplikací (WAF) pomocí Azure PowerShell
 
 Tento skript vytvoří bránu firewall webových aplikací Application Gateway, která používá vlastní pravidla. Vlastní pravidlo blokuje provoz, pokud Hlavička požadavku obsahuje User-Agent *evilbot*.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="azure-powershell-module"></a>Modul Azure PowerShellu
 
 Pokud se rozhodnete nainstalovat a používat Azure PowerShell místně, vyžaduje tento skript verzi modulu Azure PowerShell 2.1.0 nebo novější.
 
 1. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
-2. Pokud chcete vytvořit připojení k Azure, spusťte `Connect-AzAccount`.
+2. Pokud chcete vytvořit připojení k Azure, spusťte `Connect-AzAccount` .
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -70,5 +70,5 @@ Tento skript pomocí následujících příkazů vytvoří nasazení. Každá po
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace o vlastních pravidlech WAF najdete v tématu [vlastní pravidla pro Firewall webových aplikací](../custom-waf-rules-overview.md) .
-- Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
+- Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/).
 - Další ukázkové skripty PowerShellu pro aplikační brány najdete v [dokumentaci služby Azure Application Gateway](../powershell-samples.md).

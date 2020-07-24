@@ -8,12 +8,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 6cb0eafce354ba54dd161fee52efe46677ad2765
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 87ca8591be42e34a52f15913e0ec4058505cc0b0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74195888"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079059"
 ---
 # <a name="create-an-azure-firewall-test-environment"></a>Vytvoření testovacího prostředí brány Azure Firewall
 
@@ -21,7 +21,7 @@ Tento ukázkový skript vytvoří bránu firewall a testovací síťové prostř
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Brána firewall je ve AzureFirewallSubnet a je nakonfigurovaná pomocí kolekce pravidel aplikace s jedním pravidlem, které umožňuje přístup k `www.microsoft.com`.
+Brána firewall je ve AzureFirewallSubnet a je nakonfigurovaná pomocí kolekce pravidel aplikace s jedním pravidlem, které umožňuje přístup k `www.microsoft.com` .
 
 Vytvoří se trasa definovaná uživatelem, která odkazuje síťový provoz z podsítě ServersSubnet přes bránu firewall, kde se používají její pravidla.
 
@@ -79,5 +79,5 @@ Tento skript k vytvoření skupiny prostředků, virtuální sítě a skupin zab
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
+Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/).
 

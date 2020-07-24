@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/22/2020
-ms.openlocfilehash: 8d04099f2835102b8fdf63b26bd19b43b206cf6a
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: a9c2a5beae8a9206554dd6c432c1d8442b652696
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86172760"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021881"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>Kurz: Vytvoření vlastního analyzátoru pro telefonní čísla
 
@@ -29,7 +29,7 @@ V tomto kurzu použijeme post a [rozhraní REST API](https://docs.microsoft.com/
 > * Testování způsobu, jakým vlastní text analyzátoru tokenizes
 > * Vytvoření samostatných analyzátorů pro indexování a hledání k dalšímu zlepšení výsledků
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto kurzu jsou vyžadovány následující služby a nástroje.
 
@@ -38,7 +38,7 @@ V tomto kurzu jsou vyžadovány následující služby a nástroje.
 
 ## <a name="download-files"></a>Stažení souborů
 
-Zdrojový kód pro tento kurz je ve složce [Custom-analyzers](https://github.com/Azure-Samples/azure-search-postman-samples/custom-analyzers) v úložišti GitHub [Azure-Samples/Azure-Search-post-Samples](https://github.com/Azure-Samples/azure-search-postman-samples) .
+Zdrojový kód pro tento kurz je ve složce [Custom-analyzers](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/custom-analyzers) v úložišti GitHub [Azure-Samples/Azure-Search-post-Samples](https://github.com/Azure-Samples/azure-search-postman-samples) .
 
 ## <a name="1---create-azure-cognitive-search-service"></a>1. vytvoření služby Azure Kognitivní hledání
 
@@ -586,7 +586,7 @@ I když analyzátor definovaný v tomto kurzu nabízí jednoduché řešení pro
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Když pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete na konci projektu. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
+Když pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete na konci projektu. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu všechny prostředky nebo skupiny prostředků v levém navigačním podokně.
 

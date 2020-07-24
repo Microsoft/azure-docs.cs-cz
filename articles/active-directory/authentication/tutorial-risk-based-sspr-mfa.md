@@ -5,21 +5,26 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 05/11/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 718a38f4744b6a1f9b4ebd0112be07b2556f1c39
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 18b2fb520ecab8b233be3c93ef614a2bce01a75e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116039"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034992"
 ---
 # <a name="tutorial-use-risk-detections-for-user-sign-ins-to-trigger-azure-multi-factor-authentication-or-password-changes"></a>Kurz: použití detekcí rizik pro přihlášení uživatelů k aktivaci Multi-Factor Authentication nebo změn hesel v Azure
 
-Pokud chcete chránit své uživatele, můžete nakonfigurovat zásady na základě rizik v Azure Active Directory (Azure AD), které automaticky reagují na rizikové chování. Zásady Azure AD Identity Protection můžou automaticky blokovat pokus o přihlášení nebo vyžadovat další akci, třeba vyžadovat změnu hesla nebo zobrazení výzvy pro Azure Multi-Factor Authentication. Tyto zásady pracují se stávajícími zásadami podmíněného přístupu Azure AD jako dodatečnou vrstvu ochrany organizace organizace. Uživatelé nemusí nikdy aktivovat rizikové chování v jedné z těchto zásad, ale vaše organizace je chráněná, pokud je proveden pokus o ohrožení zabezpečení.
+Pokud chcete chránit své uživatele, můžete nakonfigurovat zásady na základě rizik v Azure Active Directory (Azure AD), které automaticky reagují na rizikové chování. Zásady Azure AD Identity Protection můžou automaticky blokovat pokus o přihlášení nebo vyžadovat další akci, třeba vyžadovat změnu hesla nebo zobrazení výzvy pro Azure Multi-Factor Authentication. Tyto zásady pracují se stávajícími zásadami podmíněného přístupu Azure AD jako vyšší úrovně ochrany pro vaši organizaci. Uživatelé nemusí nikdy aktivovat rizikové chování v jedné z těchto zásad, ale vaše organizace je chráněná, pokud je proveden pokus o ohrožení zabezpečení.
+
+> [!IMPORTANT]
+> V tomto kurzu se dozvíte správce, jak povolit Multi-Factor Authentication Azure na základě rizik.
+>
+> Pokud váš IT tým nepovolil možnost použít Azure Multi-Factor Authentication nebo máte problémy při přihlašování, obraťte se na helpdesk, kde najdete další pomoc.
 
 V tomto kurzu se naučíte:
 
@@ -30,7 +35,7 @@ V tomto kurzu se naučíte:
 > * Zapnutí vícefaktorového ověřování na základě rizikové události
 > * Testování zásad na základě rizik pro pokusy o přihlášení uživatelů
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
@@ -124,7 +129,7 @@ Pokud jste dokončili testy a už nechcete mít povolené zásady na základě r
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste povolili zásady pro uživatele na základě rizik pro Azure AD Identity Protection. Naučili jste se tyto postupy:
+V tomto kurzu jste povolili zásady pro uživatele na základě rizik pro Azure AD Identity Protection. Naučili jste se:
 
 > [!div class="checklist"]
 > * Pochopení dostupných zásad pro Azure AD Identity Protection

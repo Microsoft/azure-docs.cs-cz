@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s F5 | Microsoft Docs'
+title: 'Kurz: integrace s jednotným přihlašováním v Azure AD s F5 | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a F5.
 services: active-directory
 documentationCenter: na
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a24ec98e9d5978a6f896715b25bd6b08d4a0262d
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 8d64774bd76a88c2ee8c1981fb3509c7265f4736
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232181"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87017325"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s F5
 
@@ -177,7 +177,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -282,45 +282,45 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 Server služby Active Directory AAA nakonfigurujete v Access Policy Manageru (APM) a určíte řadiče domény a přihlašovací údaje, které se mají použít k ověřování uživatelů.
 
-1.    Na hlavní kartě klikněte na **zásady přístupu > AAA servery > Active Directory**. Otevře se obrazovka seznam serverů služby Active Directory.
+1. Na hlavní kartě klikněte na **zásady přístupu > AAA servery > Active Directory**. Otevře se obrazovka seznam serverů služby Active Directory.
 
-2.    Klikněte na **Vytvořit**. Otevře se obrazovka nové vlastnosti serveru.
+2. Klikněte na **Vytvořit**. Otevře se obrazovka nové vlastnosti serveru.
 
-3.    Do pole **název** zadejte jedinečný název pro Server ověřování.
+3. Do pole **název** zadejte jedinečný název pro Server ověřování.
 
-4.    Do pole **název domény** zadejte název domény systému Windows.
+4. Do pole **název domény** zadejte název domény systému Windows.
 
-5.    V nastavení **připojení k serveru** vyberte jednu z těchto možností:
+5. V nastavení **připojení k serveru** vyberte jednu z těchto možností:
 
-    * Vyberte možnost **použít fond** pro nastavení vysoké dostupnosti pro Server AAA.
+   * Vyberte možnost **použít fond** pro nastavení vysoké dostupnosti pro Server AAA.
 
-    * Vyberte **přímo** a nastavte Server AAA pro samostatnou funkci.
+   * Vyberte **přímo** a nastavte Server AAA pro samostatnou funkci.
 
-6.    Pokud jste vybrali možnost **přímý**, zadejte název do pole **řadič domény** .
+6. Pokud jste vybrali možnost **přímý**, zadejte název do pole **řadič domény** .
 
-7.    Pokud jste vybrali možnost použít **fond**, nakonfigurujte fond:
+7. Pokud jste vybrali možnost použít **fond**, nakonfigurujte fond:
 
-    * Do pole **název fondu řadičů domény** zadejte název.
+   * Do pole **název fondu řadičů domény** zadejte název.
 
-    * Určete **řadiče domény** ve fondu tak, že pro každý z nich zadáte IP adresu a název hostitele a kliknete na tlačítko **Přidat** .
+   * Určete **řadiče domény** ve fondu tak, že pro každý z nich zadáte IP adresu a název hostitele a kliknete na tlačítko **Přidat** .
 
-    * Chcete-li monitorovat stav serveru AAA, máte možnost vybrat monitorování stavu: v tomto případě je vhodný pouze monitor **gateway_icmp** . můžete ji vybrat ze seznamu **monitorování fondu serverů** .
+   * Chcete-li monitorovat stav serveru AAA, máte možnost vybrat monitorování stavu: v tomto případě je vhodný pouze monitor **gateway_icmp** . můžete ji vybrat ze seznamu **monitorování fondu serverů** .
 
-8.    V poli **název správce** zadejte pro správce, který má oprávnění správce služby Active Directory, název s rozlišováním velkých a malých písmen. Funkce APM používá informace v polích **jméno správce** a **heslo správce** pro dotaz AD. Pokud je pro anonymní dotazy nakonfigurovaná služba Active Directory, nemusíte zadávat jméno správce. V opačném případě funkce APM potřebuje účet s dostatečným oprávněním k vytvoření vazby na server služby Active Directory, načtení informací o skupině uživatelů a načtení zásad hesel služby Active Directory pro podporu funkcí souvisejících s heslem. (Funkce APM musí načítat zásady hesel, například pokud v akci dotazu AD vyberete možnost Výzva uživatele na změnu hesla před vypršením platnosti.) Pokud v této konfiguraci neposkytnete informace o účtu správce, funkce APM použije uživatelský účet k načtení informací. Tato funkce funguje, pokud má uživatelský účet dostatečná oprávnění.
+8. V poli **název správce** zadejte pro správce, který má oprávnění správce služby Active Directory, název s rozlišováním velkých a malých písmen. Funkce APM používá informace v polích **jméno správce** a **heslo správce** pro dotaz AD. Pokud je pro anonymní dotazy nakonfigurovaná služba Active Directory, nemusíte zadávat jméno správce. V opačném případě funkce APM potřebuje účet s dostatečným oprávněním k vytvoření vazby na server služby Active Directory, načtení informací o skupině uživatelů a načtení zásad hesel služby Active Directory pro podporu funkcí souvisejících s heslem. (Funkce APM musí načítat zásady hesel, například pokud v akci dotazu AD vyberete možnost Výzva uživatele na změnu hesla před vypršením platnosti.) Pokud v této konfiguraci neposkytnete informace o účtu správce, funkce APM použije uživatelský účet k načtení informací. Tato funkce funguje, pokud má uživatelský účet dostatečná oprávnění.
 
-9.    Do pole **heslo správce** zadejte heslo správce přidružené k názvu domény.
+9. Do pole **heslo správce** zadejte heslo správce přidružené k názvu domény.
 
-10.    V poli **ověřit heslo správce** zadejte heslo správce přidružené k nastavení **název domény** .
+10. V poli **ověřit heslo správce** zadejte heslo správce přidružené k nastavení **název domény** .
 
-11.    Do pole **Doba života mezipaměti skupiny** zadejte počet dní. Výchozí doba platnosti je 30 dní.
+11. Do pole **Doba života mezipaměti skupiny** zadejte počet dní. Výchozí doba platnosti je 30 dní.
 
-12.    Do pole **Doba platnosti mezipaměti objektu zabezpečení hesla** zadejte počet dní. Výchozí doba platnosti je 30 dní.
+12. Do pole **Doba platnosti mezipaměti objektu zabezpečení hesla** zadejte počet dní. Výchozí doba platnosti je 30 dní.
 
-13.    V seznamu **typ šifrování předběžného ověření protokolu Kerberos** vyberte typ šifrování. Výchozí hodnota je **none**. Pokud zadáte typ šifrování, systém BIG-IP obsahuje data předběžného ověření protokolu Kerberos v rámci prvního paketu žádosti ověřovací služby (AS-REQ).
+13. V seznamu **typ šifrování předběžného ověření protokolu Kerberos** vyberte typ šifrování. Výchozí hodnota je **none**. Pokud zadáte typ šifrování, systém BIG-IP obsahuje data předběžného ověření protokolu Kerberos v rámci prvního paketu žádosti ověřovací služby (AS-REQ).
 
-14.    Do pole **časový limit** zadejte časový interval (v sekundách) pro Server AAA. (Toto nastavení je volitelné.)
+14. Do pole **časový limit** zadejte časový interval (v sekundách) pro Server AAA. (Toto nastavení je volitelné.)
 
-15.    Klikněte na **Hotovo**. Nový server se zobrazí v seznamu. Tím se nový server služby Active Directory přidá do seznamu serverů služby Active Directory.
+15. Klikněte na **Hotovo**. Nový server se zobrazí v seznamu. Tím se nový server služby Active Directory přidá do seznamu serverů služby Active Directory.
 
     ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure17.png)
 
@@ -456,7 +456,7 @@ Server služby Active Directory AAA nakonfigurujete v Access Policy Manageru (AP
 
 *  **Krok 1:** Vytvoření účtu delegování
 
-    **Příklad:**
+    **Případě**
     * Název domény: **Ukázka. Live**
 
     * Název účtu SAM: **Big-ipuser**
@@ -465,7 +465,7 @@ Server služby Active Directory AAA nakonfigurujete v Access Policy Manageru (AP
 
 * **Krok 2:** Nastavit hlavní název služby (SPN) (na účtu delegování APM)
 
-    **Příklad:**
+    **Případě**
     * setspn – A **Host/Big-ipuser. demo. Live** Big-ipuser
 
 * **Krok 3:** Delegování hlavního názvu služby (pro účet App Service) nastaví příslušné delegování pro účet delegace F5.

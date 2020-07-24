@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b27615b0c76b5c23bbc79788431b0e909b8bf22a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 84a93d4fb8a6a3890ddd2c94b4f0a5c9114bd84d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67092769"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058192"
 ---
 # <a name="tutorial-integrate-replicon-with-azure-active-directory"></a>Kurz: integrace Replicon s Azure Active Directory
 
@@ -33,12 +33,15 @@ V tomto kurzu se dozvíte, jak integrovat Replicon s Azure Active Directory (Azu
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat zdarma [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 * Replicon odběr s povoleným jednotným přihlašováním (SSO).
+
+> [!NOTE]
+> Tato integrace je taky dostupná pro použití z cloudového prostředí Azure AD USA. Tuto aplikaci můžete najít v galerii cloudových aplikací pro státní správu Azure AD USA a nakonfigurovat ji stejným způsobem jako ve veřejném cloudu.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -113,9 +116,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     * Následuje příklad schématu pro úplnou adresu URL:`https://na2.replicon.com/\<YourCompanyKey\>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
-   b. **+** Kliknutím na rozbalte část **v20Configuration** .
+   b. Kliknutím na **+** rozbalte část **v20Configuration** .
 
-   c. **+** Kliknutím na rozbalte část **metaDataConfiguration** .
+   c. Kliknutím na **+** rozbalte část **metaDataConfiguration** .
 
    d. Vyberte **SHA256** pro xmlSignatureAlgorithm
 
@@ -129,7 +132,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `BrittaSimon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `BrittaSimon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -159,7 +162,7 @@ Cílem této části je vytvořit uživatele s názvem B. Simon v Replicon.
 
 1. V okně webového prohlížeče se přihlaste k webu Replicon společnosti jako správce.
 
-2. Přejít na **uživatele \> pro správu**.
+2. Přejít na ** \> uživatele pro správu**.
 
     ![Uživatelé](./media/replicon-tutorial/ic777806.png "Uživatelé")
 
@@ -171,7 +174,7 @@ Cílem této části je vytvořit uživatele s názvem B. Simon v Replicon.
 
     ![Profil uživatele](./media/replicon-tutorial/ic777808.png "Profil uživatele")
 
-    a. Do textového pole **přihlašovací jméno** zadejte e-mailovou adresu Azure AD pro uživatele Azure AD, kterého chcete zřídit `B.Simon@contoso.com`.
+    a. Do textového pole **přihlašovací jméno** zadejte e-mailovou adresu Azure AD pro uživatele Azure AD, kterého chcete zřídit `B.Simon@contoso.com` .
 
     > [!NOTE]
     > Přihlašovací jméno musí odpovídat e-mailové adrese uživatele ve službě Azure AD.
@@ -193,7 +196,7 @@ Cílem této části je vytvořit uživatele s názvem B. Simon v Replicon.
 
 Když na přístupovém panelu vyberete dlaždici Replicon, měli byste se automaticky přihlásit k Replicon, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

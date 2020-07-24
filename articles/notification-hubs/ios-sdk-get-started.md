@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: bf6477fed1840daa326f411862a7304018f39e3c
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 94e930c996710c2b25d4114c7cfcb17129c5177d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85252198"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022425"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Kurz: odesílání nabízených oznámení do aplikací pro iOS pomocí Azure Notification Hubs
 
@@ -27,7 +27,7 @@ Spuštění tohoto kurzu je předpokladem pro následné kurzy C a SWIFT iOS a z
 - Vytvoříte centrum oznámení.
 - Nakonfigurujte centrum oznámení s informacemi o službě APN.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete mít aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/free/).
 
@@ -185,7 +185,7 @@ Druhá možnost obsahuje několik výhod v porovnání s používáním certifik
 
    Toto je hodnota tokenu, která bude později použita ke konfiguraci Notification Hubs.
 
-Na konci těchto kroků byste měli mít následující informace pro pozdější použití v části [Konfigurace centra oznámení s informacemi o službě APN](notification-hubs-ios-push-notifications-swift-apps-get-started.md#configure-your-notification-hub-with-apns-information):
+Na konci těchto kroků byste měli mít následující informace pro pozdější použití v části [Konfigurace centra oznámení s informacemi o službě APN](#configure-the-notification-hub-with-apns-information):
 
 - **ID týmu**   (viz krok 1)
 - **ID**   sady prostředků (viz krok 1)
@@ -235,7 +235,7 @@ V této části vytvoříte centrum oznámení a nakonfigurujete ověřování p
 
 2. V nabídce vlevo vyberte **všechny služby**   a **Notification Hubs**   v části **mobilní zařízení**vyberte Notification Hubs   . Výběrem ikony hvězdičky vedle názvu služby přidáte službu do oddílu **Oblíbené položky**   v levé nabídce. Po přidání **Notification Hubs**   k **oblíbeným položkám**ji vyberte.
 
-   :::image type="content" source="media/ios-sdk-get-started/image18.png" alt-text="portál Azure":::
+   :::image type="content" source="media/ios-sdk-get-started/image18.png" alt-text="Azure Portal":::
 
 3. Na stránce **Notification Hubs**   Vyberte **Přidat**   na panelu nástrojů.
 
@@ -264,7 +264,7 @@ V této části vytvoříte centrum oznámení a nakonfigurujete ověřování p
 
 ## <a name="configure-the-notification-hub-with-apns-information"></a>Konfigurace centra oznámení s informacemi o službě APN
 
-V části **Notification Services**vyberte **Apple (APNs)** a pak postupujte podle příslušných kroků na základě postupu, který jste zvolili dříve v části [Vytvoření certifikátu pro Notification Hubs](notification-hubs-ios-push-notifications-swift-apps-get-started.md#creating-a-certificate-for-notification-hubs)   .
+V části **Notification Services**vyberte **Apple (APNs)** a pak postupujte podle příslušných kroků na základě postupu, který jste zvolili dříve v části [Vytvoření certifikátu pro Notification Hubs](#create-a-certificate-for-notification-hubs)   .
 
 > [!NOTE]
 > Pokud chcete odesílat nabízená oznámení uživatelům, kteří si zakoupili vaši aplikaci ze Storu, použijte pro **režim aplikace** **produkční** prostředí.
@@ -306,4 +306,4 @@ Nyní jste nakonfigurovali centrum oznámení pomocí služby APNS. Máte také 
 
 V tomto kurzu jste vytvořili a nakonfigurovali centrum oznámení v Azure a nakonfigurovali ho tak, aby umožňovalo posílání oznámení do vaší aplikace prostřednictvím služby Apple Push Notification Service (APNS). V dalším kroku vytvoříme ukázkovou aplikaci pro iOS a integrujete sadu SDK pro centra oznámení Azure, aby mohla přijímat nabízená oznámení odeslaná prostřednictvím Azure Portal. Přejděte k následujícímu kurzu v závislosti na zvoleném jazyce:
 
-- [Kurz: integrace s aplikací pro iOS pomocí SWIFT](notification-hubs-ios-push-notifications-swift-apps-get-started.md)
+- [Kurz: integrace s aplikací pro iOS pomocí SWIFT]()

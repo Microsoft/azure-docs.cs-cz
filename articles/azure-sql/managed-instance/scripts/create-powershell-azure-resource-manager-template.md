@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: f4c4c63e6461dd3aa3cabe86b871434814fb400e
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 8ac742c42a32e8b864c4be71e786c292ceb1514d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84708531"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073380"
 ---
 # <a name="use-powershell-with-an-azure-resource-manager-template-to-create-a-managed-instance"></a>Použití PowerShellu se šablonou Azure Resource Manager k vytvoření spravované instance
 
@@ -41,7 +41,7 @@ Azure PowerShell příkazy mohou spustit nasazení pomocí předdefinované Azur
 
 Název instance, uživatelské jméno správce SQL, virtuální síť/podsíť a kolaci nelze později změnit. Vlastnosti jiných instancí lze změnit.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V této ukázce se předpokládá, že jste [vytvořili platné síťové prostředí](../virtual-network-subnet-create-arm-template.md) nebo [upravili stávající virtuální síť](../vnet-existing-add-subnet.md) pro spravovanou instanci. V případě potřeby můžete v případě potřeby připravit síťové prostředí pomocí samostatné [šablony Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment). 
 
@@ -138,6 +138,6 @@ Po dokončení skriptu se ke spravované instanci dostanete ze všech služeb Az
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure PowerShell najdete v [dokumentaci k Azure PowerShell](/powershell/azure/overview).
+Další informace o Azure PowerShell najdete v [dokumentaci k Azure PowerShell](/powershell/azure/).
 
 Další ukázkové skripty PowerShellu pro spravovanou instanci Azure SQL najdete ve [skriptech PowerShellu spravovaných instancí Azure SQL](../../database/powershell-script-content-guide.md).

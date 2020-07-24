@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: cac918f369a10a8084cdc7d0c66d5c0c4c400cc2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1f098b866eee6fd8555cafcec0f64a0a5f261f9e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81458535"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079974"
 ---
 # <a name="restart-vms"></a>Restartování virtuálních počítačů
 
@@ -86,15 +86,15 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skup
 
 | Příkaz | Poznámky |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | Vytvoří virtuální počítače.  |
-| [az vm list](https://docs.microsoft.com/cli/azure/vm) | Používá se s parametrem `--query` k zajištění, aby virtuální počítače byly před restartováním zřízené, a pak k získání ID virtuálních počítačů, pomocí kterých je restartuje. |
-| [az resource list](https://docs.microsoft.com/cli/azure/vm) | Používá se s parametrem `--query` k získání ID virtuálních počítačů s použitím značky. |
-| [az vm restart](https://docs.microsoft.com/cli/azure/vm) | Restartuje virtuální počítače. |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
+| [az group create](/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az vm create](/cli/azure/vm/availability-set) | Vytvoří virtuální počítače.  |
+| [az vm list](/cli/azure/vm) | Používá se s parametrem `--query` k zajištění, aby virtuální počítače byly před restartováním zřízené, a pak k získání ID virtuálních počítačů, pomocí kterých je restartuje. |
+| [az resource list](/cli/azure/vm) | Používá se s parametrem `--query` k získání ID virtuálních počítačů s použitím značky. |
+| [az vm restart](/cli/azure/vm) | Restartuje virtuální počítače. |
+| [az group delete](/cli/azure/vm/extension) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
+Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 
 Další ukázkové skripty rozhraní příkazového řádku pro virtuální počítače najdete v [dokumentaci k virtuálním počítačům Azure s Linuxem](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

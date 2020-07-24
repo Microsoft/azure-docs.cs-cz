@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 64085c55376ec85e20244abb452c2e365aa0aeec
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: ed552bfb37f01200a4dba38ea733a1189768d56a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114380"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067163"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Vytvoření úhlové aplikace s rozhraním API Azure Cosmos DB pro MongoDB – Sestavte uživatelské rozhraní pomocí úhlů.
 
@@ -32,7 +32,7 @@ Třetí část kurzu vychází z [části 2](tutorial-develop-mongodb-nodejs-par
 
 > [!VIDEO https://www.youtube.com/embed/MnxHuqcJVoM]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v [části 2](tutorial-develop-mongodb-nodejs-part2.md) tohoto kurzu.
 
@@ -41,7 +41,7 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
 
 ## <a name="build-the-ui"></a>Vytvoření uživatelského rozhraní
 
-1. Ve Visual Studio Code kliknutím na tlačítko Zastavit ![Tlačítko Zastavit ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part3/stop-button.png) zastavte aplikaci Node.
+1. V Visual Studio Code kliknutím na tlačítko Zastavit :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part3/stop-button.png"::: zastavte aplikaci uzlu. 
 
 2. V okně příkazového řádku ve Windows nebo v okně Terminálu na Macu zadejte následující příkaz, který vygeneruje komponentu heroes. V tomto kódu je g = generovat, c = komponenta, heroes = název komponenty. Kód používá strukturu plochých souborů (--flat), takže se pro komponentu nevytvoří podsložka.
 
@@ -347,7 +347,7 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
       }
     }
     ``` 
-3. Uložte soubor. 
+3. Soubor uložte. 
 
 ## <a name="display-the-component"></a>Zobrazení komponenty
 
@@ -474,7 +474,7 @@ Když teď máme komponentu, jak ji zobrazíme na obrazovce? Pojďme upravit vý
 
 6. Uložte všechny soubory ve Visual Studio Code.
 
-## <a name="build-the-app"></a>Sestavení aplikace
+## <a name="build-the-app"></a>Vytvoření aplikace
 
 1. Na příkazovém řádku zadejte následující příkaz, který sestaví aplikaci Angular. 
 
@@ -486,7 +486,7 @@ Když teď máme komponentu, jak ji zobrazíme na obrazovce? Pojďme upravit vý
 
     Teď aplikaci spustíme.
 
-2. Ve Visual Studio Code klikněte na tlačítko **Ladit**![Ikona Ladit ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png) na levé straně a pak klikněte na tlačítko **Spustit ladění**![Ikona Spustit ladění ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png).
+2. V Visual Studio Code klikněte na tlačítko **ladění** :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png"::: na levé straně a potom klikněte na tlačítko **Spustit ladění** :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png"::: .
 
 3. Nyní otevřete internetový prohlížeč a přejděte na adresu **localhost:3000**, kde se zobrazí místně spuštěná aplikace.
 

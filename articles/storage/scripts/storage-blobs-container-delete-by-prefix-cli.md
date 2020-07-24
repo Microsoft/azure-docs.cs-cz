@@ -9,14 +9,14 @@ ms.devlang: cli
 ms.topic: sample
 ms.date: 06/22/2017
 ms.author: tamram
-ms.openlocfilehash: 391cc4c08b7067ef388c2130cb340fb5597c843f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 71bffe004ae8f2ac2060c1bfc12c4fff0be95c34
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067020"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006207"
 ---
-# <a name="delete-containers-based-on-container-name-prefix"></a>Odstranění kontejnerů na základě předpony názvu kontejneru
+# <a name="use-an-azure-cli-script-to-delete-containers-based-on-container-name-prefix"></a>Použití skriptu Azure CLI k odstranění kontejnerů na základě předpony názvu kontejneru
 
 Tento skript nejprve vytvoří několik ukázkových kontejnerů v úložišti objektů blob v Azure a pak některé z kontejnerů odstraní na základě předpony v názvu kontejneru.
 

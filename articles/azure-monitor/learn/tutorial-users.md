@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2017
 ms.custom: mvc
-ms.openlocfilehash: cc6c7fc94e940732ba180c83344eabf29597d849
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ae4a7335394f0e2f0bd0e3ac47c36b1f61026428
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77670351"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079583"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Použití Azure Application Insights k pochopení, jakým způsobem zákazníci používají vaši aplikaci
 
@@ -28,7 +28,7 @@ Azure Application Insights shromažďuje informace o využití a pomáhá pochop
 > * Prozkoumání způsobu, jakým uživatelé procházejí vaši aplikaci
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -38,10 +38,10 @@ Pro absolvování tohoto kurzu potřebujete:
 - Stáhnout a nainstalovat [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger).
 - Nasadit do Azure aplikaci .NET a [povolit sadu Application Insights SDK](../../azure-monitor/app/asp-net.md). 
 - [Odesílat z aplikace telemetrii](../../azure-monitor/app/usage-overview.md#send-telemetry-from-your-app) umožňující přidání vlastních zobrazení událostí a stránek.
-- Odesílat [kontext uživatele](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context) umožňující sledovat aktivity uživatele v průběhu času a naplno využívat funkce využití.
+- Odesílat [kontext uživatele](../app/usage-send-user-context.md) umožňující sledovat aktivity uživatele v průběhu času a naplno využívat funkce využití.
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
-Přihlaste se k Azure Portal [https://portal.azure.com](https://portal.azure.com)v.
+Přihlaste se k Azure Portal v [https://portal.azure.com](https://portal.azure.com) .
 
 ## <a name="get-information-about-your-users"></a>Získání informací o uživatelích
 Panel **Uživatelé** umožňuje různými způsoby porozumět důležitým podrobnostem o vašich uživatelích. Pomocí tohoto panelu můžete získat informace, jako například odkud se uživatelé připojují, podrobnosti o jejich klientech a oblasti aplikace, ke kterým přistupují. 
@@ -102,16 +102,16 @@ Zatímco předchozí panely se zaměřovaly na to, co prováděli uživatelé va
 
 1. V nabídce vyberte **Trychtýře** a pak klikněte na **Nový**. 
 
-    ![](media/tutorial-users/funnelsnew.png)
+    ![Snímek obrazovky ukazující, jak vytvořit nový trychtýř](media/tutorial-users/funnelsnew.png)
 
 2. Zadejte **Název trychtýře**.
 3. Vytvořte trychtýř s alespoň dvěma kroky a pro každý krok vyberte akci.  Seznam akcí se sestavuje na základě dat o využití shromážděných službou Application Insights.
 
-    ![](media/tutorial-users/funnelsedit.png)
+    ![Snímek obrazovky ukazující, jak vytvořit kroky v novém trychtýři](media/tutorial-users/funnelsedit.png)
 
 4. Kliknutím na **Uložit** trychtýř uložte a pak zobrazte jeho výsledky.  V okně napravo od trychtýře se zobrazí nejčastější události před první aktivitou a po poslední aktivitě, které vám pomůžou porozumět tendencím uživatelů kolem konkrétní posloupnosti.
 
-    ![](media/tutorial-users/funnelsright.png)
+    ![Snímek obrazovky znázorňující výsledky události nově vytvořeného trychtýře.](media/tutorial-users/funnelsright.png)
 
 
 ## <a name="learn-which-customers-return"></a>Zjištění, kteří zákazníci se vracejí
@@ -120,11 +120,11 @@ Zatímco předchozí panely se zaměřovaly na to, co prováděli uživatelé va
 1. V nabídce vyberte **Uchování**.
 2. Analyzované informace ve výchozím nastavení zahrnují uživatele, kteří provedli jakoukoli akci a pak se vrátili, aby provedli jakoukoli akci.  Tento filtr můžete změnit například tak, aby zahrnoval pouze uživatele, kteří se vrátili po dokončení nákupu.
 
-    ![](media/tutorial-users/retentionquery.png)
+    ![Snímek obrazovky ukazující, jak nastavit filtr uchovávání informací](media/tutorial-users/retentionquery.png)
 
 3. Vracející se uživatelé, kteří splňují kritéria, se zobrazí v grafické a tabulkové podobě pro různé doby.  Typickým vzorem je postupné klesání počtu vracejících se uživatelů v průběhu času.  Náhlý pokles mezi časovými obdobími může vzbuzovat obavy. 
 
-    ![](media/tutorial-users/retentiongraph.png)
+    ![Snímek obrazovky zobrazující graf pro uživatele, kteří se shodují s nastavenými kritérii pro filtr uchovávání dat.](media/tutorial-users/retentiongraph.png)
 
 ## <a name="analyze-user-navigation"></a>Analýza procházení uživatelů
 **Tok uživatelů** vizualizuje, jak uživatelé procházejí mezi jednotlivými stránkami a funkcemi vaší aplikace.  To vám pomůže najít odpověď na otázky, jako například kam uživatelé obvykle přecházejí z konkrétní stránky, jak obvykle opouštějí vaši aplikaci a jestli existují nějaké akce, které se pravidelně opakují.
@@ -133,15 +133,15 @@ Zatímco předchozí panely se zaměřovaly na to, co prováděli uživatelé va
 2.  Kliknutím na **Nový** vytvořte nový tok uživatelů a pak klikněte na **Upravit**, abyste mohli upravit jeho podrobnosti.
 3.  Rozšiřte **Časový rozsah** na 7 dnů a vyberte počáteční událost.  Tento tok bude sledovat uživatelské relace začínající touto událostí.
 
-    ![](media/tutorial-users/flowsedit.png)
+    ![Snímek obrazovky ukazující, jak vytvořit nový tok uživatele.](media/tutorial-users/flowsedit.png)
 
 4.  Zobrazí se tok uživatelů s různými cestami uživatelů a počty jejich relací.  Modré čáry označují akci, kterou uživatel provedl po aktuální akci.  Červená čára označuje konec uživatelské relace.
 
-    ![](media/tutorial-users/flows.png)
+    ![Snímek obrazovky znázorňující zobrazení uživatelských cest a počtů relací pro tok uživatele.](media/tutorial-users/flows.png)
 
 5.  Pokud chcete z toku odebrat událost, klikněte na **x** v rohu akce a pak klikněte na **Vytvořit graf**.  Graf se překreslí a všechny instance dané události se odeberou.  Klikněte na **Upravit** a všimněte si, že událost je teď přidaná mezi **Vyloučené události**.
 
-    ![](media/tutorial-users/flowsexclude.png)
+    ![Snímek obrazovky zobrazující seznam vyloučených událostí pro tok uživatele.](media/tutorial-users/flowsexclude.png)
 
 ## <a name="consolidate-usage-data"></a>Konsolidace dat o využití
 **Sešity** kombinují v interaktivních dokumentech vizualizace dat, analytické dotazy a text.  Pomocí sešitů můžete seskupovat běžné informace o využití, konsolidovat informace o konkrétním incidentu nebo informovat váš tým o využití vaší aplikace.
@@ -150,12 +150,12 @@ Zatímco předchozí panely se zaměřovaly na to, co prováděli uživatelé va
 2.  Kliknutím na **Nový** vytvořte nový sešit.
 3.  K dispozici již máte dotaz, který zahrne veškerá data o využití za poslední den a zobrazí je v pruhovém grafu.  Můžete použít tento dotaz, ručně ho upravit nebo kliknout na **Ukázkové dotazy** a vybrat si z dalších užitečných dotazů.
 
-    ![](media/tutorial-users/samplequeries.png)
+    ![Snímek obrazovky zobrazující seznam ukázkových dotazů, které můžete použít.](media/tutorial-users/samplequeries.png)
 
 4.  Klikněte na **Úpravy hotovy**.
 5.  V horním podokně klikněte na **Upravit** a upravte text v horní části sešitu.  Tento text je formátovaný s využitím markdownu.
 
-    ![](media/tutorial-users/markdown.png)
+    ![Snímek obrazovky znázorňující úpravu textu v horní části sešitu](media/tutorial-users/markdown.png)
 
 6.  Kliknutím na **Přidat uživatele** přidejte graf s informacemi o uživatelích.  Pokud chcete, upravte podrobnosti grafu, a pak ho uložte kliknutím na **Úpravy hotovy**.
 

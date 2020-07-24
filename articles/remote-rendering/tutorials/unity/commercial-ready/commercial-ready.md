@@ -1,16 +1,16 @@
 ---
-title: Vytváření aplikace pro vzdálené vykreslování Azure připravené pro komerční zpracování
+title: Vytvoření aplikace Azure Remote Rendering připravené pro komerční využití
 description: Strategie a požadavky pro vytvoření komerční aplikace připravené pomocí vzdáleného vykreslování Azure
-author: m-the-hoff
-ms.author: v-michof
+author: FlorianBorn71
+ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: fa1a49aeef8b86230dc1d5ea898832cfb1cee852
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: e827f7eff707f5a7c467f53eacab6973bff2ef2f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85569648"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076429"
 ---
 # <a name="tutorial-creating-a-commercial-ready-azure-remote-rendering-application"></a>Kurz: Vytvoření aplikace pro vzdálené vykreslování Azure připravené pro komerční zpracování
 
@@ -23,7 +23,7 @@ V tomto kurzu získáte informace o těchto tématech:
 > * Optimalizace uživatelského prostředí kolem času načítání relace
 > * Okolnosti týkající se latence sítě
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Tento kurz sestaví [kurz: zabezpečení vzdáleného vykreslování Azure a úložiště modelu](../security/security.md).
 
@@ -35,7 +35,7 @@ Tento modul vás seznámí s dalšími možnostmi, které možná budete muset v
 
 Obecný přehled osvědčených postupů architektury pro celou architekturu najdete v těchto postupech:
 
-* [Centrum architektury Azure](https://docs.microsoft.com/azure/architecture/)
+* [Azure Architecture Center](https://docs.microsoft.com/azure/architecture/)
 * [Příručka Začínáme pro vývojáře v Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide)
 
 ## <a name="analytics"></a>Analýzy
@@ -263,13 +263,13 @@ Je důležité sestavit komplexní řešení vzdáleného vykreslování Azure o
 
 * Strategie ověřování
 * Správa přístupu – skupiny, zásady a oprávnění
-* Víceklientská architektura
+* Architektura s více tenanty
 * Ukládání a přenos dat do úložiště
 * Dočasné tokeny použití
 * Distribuované útoky s cílem odepření služeb (DDoS)
 * Detekce hrozeb
 * Sítě VPN a zabezpečené sítě
-* Brány firewall
+* brány firewall,
 * Správa certifikátů a tajných klíčů
 * Ohrožení zabezpečení a zneužití aplikace
 

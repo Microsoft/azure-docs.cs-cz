@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: eb00234fb7522c763dbaa910bee99cf327bebaf1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 80fcebec76788ca9ec754b35c57f9965f38c2c0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77597894"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037095"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Kurz: Rozšíření souborových serverů Windows s využitím Synchronizace souborů Azure
 
@@ -26,11 +26,11 @@ Tento článek popisuje základní kroky pro rozšíření kapacity úložiště
 > * Vytvoření skupiny synchronizace a koncového bodu cloudu
 > * Vytvoření koncového bodu serveru
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se na portál [Azure Portal](https://portal.azure.com).
 
 ## <a name="prepare-your-environment"></a>Příprava prostředí
 
@@ -69,7 +69,7 @@ Po nasazení účtu úložiště Azure vytvoříte sdílenou složku.
 
     ![Nahrání souboru](./media/storage-sync-files-extend-servers/create-file-share-portal5.png)
 
-1. Přejděte do složky _FilesToSync_ , ve které jste vytvořili soubor. txt, vyberte _mytestdoc. txt_ a vyberte **nahrát**.
+1. Přejděte do složky _FilesToSync_ , ve které jste vytvořili soubor. txt, vyberte _mytestdoc.txt_ a vyberte **nahrát**.
 
     ![Procházení sdílené složky](./media/storage-sync-files-extend-servers/create-file-share-portal6.png)
 
@@ -78,7 +78,7 @@ V tomto okamžiku jste vytvořili účet úložiště a sdílenou složku s jedn
 ### <a name="deploy-a-vm-and-attach-a-data-disk"></a>Nasazení virtuálního počítače a připojení datového disku
 
 1. Přejděte na Azure Portal a rozbalte nabídku vlevo. V levém horním rohu vyberte **vytvořit prostředek** .
-1. Ve vyhledávacím poli nad seznamem prostředků **Azure Marketplace** vyhledejte **Windows Server 2016 Datacenter** a vyberte ho ve výsledcích. Zvolte **Vytvořit**.
+1. Ve vyhledávacím poli nad seznamem prostředků **Azure Marketplace** vyhledejte **Windows Server 2016 Datacenter** a vyberte ho ve výsledcích. Vyberte **vytvořit**.
 1. Přejít na kartu **základy** . V části **Project Details (podrobnosti projektu**) vyberte skupinu prostředků, kterou jste pro tento kurz vytvořili.
 
    ![Zadání základních informací o VIRTUÁLNÍm počítači v okně portálu](./media/storage-sync-files-extend-servers/vm-resource-group-and-subscription.png)
@@ -152,7 +152,7 @@ Teď můžete k virtuálnímu počítači přidat datový disk.
 
 ### <a name="add-the-data-disk"></a>Přidání datového disku
 
-1. Pořád na virtuálním počítači **Windows Server 2016 Datacenter** vyberte **soubory a** > **Volumes** > **disky**svazky služby úložiště.
+1. Pořád na virtuálním počítači **Windows Server 2016 Datacenter** vyberte **soubory a**  >  **Volumes**  >  **disky**svazky služby úložiště.
 
     ![Datový disk](media/storage-sync-files-extend-servers/your-disk.png)
 
@@ -164,9 +164,9 @@ Teď můžete k virtuálnímu počítači přidat datový disk.
    Právě jste disk převedli do stavu online a vytvořili jste svazek. Otevřete Průzkumníka souborů na virtuálním počítači s Windows serverem a potvrďte přítomnost nedávno přidaného datového disku.
 
 1. V Průzkumníku souborů na VIRTUÁLNÍm počítači rozbalte **Tento počítač** a otevřete novou jednotku. V tomto příkladu je to jednotka F:.
-1. Klikněte pravým tlačítkem a vyberte **Nová** > **Složka**. Pojmenujte složku _FilesToSync_.
+1. Klikněte pravým tlačítkem a vyberte **Nová**  >  **Složka**. Pojmenujte složku _FilesToSync_.
 1. Otevřete složku **FilesToSync** .
-1. Klikněte pravým tlačítkem a vyberte **Nový** > **textový dokument**. Pojmenujte textový soubor _MyTestFile_.
+1. Klikněte pravým tlačítkem a vyberte **Nový**  >  **textový dokument**. Pojmenujte textový soubor _MyTestFile_.
 
     ![Přidání nového textového souboru](media/storage-sync-files-extend-servers/new-file.png)
 
@@ -186,7 +186,7 @@ Pak na virtuálním počítači s Windows serverem 2016 Datacenter nainstalujte 
    > [!NOTE]
    > Pokud máte verzi NuGet, která je starší než 2.8.5.201, budete vyzváni ke stažení a instalaci nejnovější verze NuGetu.
 
-   Ve výchozím nastavení není Galerie prostředí PowerShell pro PowerShellGet nakonfigurovaná jako důvěryhodné úložiště. Při prvním použití PSGallery se zobrazí následující výzva:
+   Ve výchozím nastavení není Galerie prostředí PowerShell nakonfigurovaná jako důvěryhodné úložiště pro PowerShellGet. Při prvním použití PSGallery se zobrazí následující výzva:
 
    ```output
    Untrusted repository
@@ -220,7 +220,7 @@ Pokud chcete nasadit Azure File Sync, nejdřív umístěte prostředek **služby
    | **Název** | Jedinečný název (pro každé předplatné) služby synchronizace úložiště.<br><br>Pro tento kurz použijte _afssyncservice02_ . |
    | **Předplatné** | Předplatné Azure, které používáte pro tento kurz. |
    | **Skupina prostředků** | Skupina prostředků, která obsahuje službu synchronizace úložiště.<br><br>Pro tento kurz použijte _afsresgroup101918_ . |
-   | **Umístění** | USA – východ |
+   | **Umístění** | East US |
 
 1. Jakmile budete hotovi, vyberte **Vytvořit** a nasaďte **službu synchronizace úložiště**.
 1. Vyberte kartu **oznámení** > **Přejít na prostředek**.
@@ -234,15 +234,15 @@ Agent Synchronizace souborů Azure je balíček ke stažení, který umožňuje 
 
    ![Stažení agenta synchronizace](media/storage-sync-files-extend-servers/sync-agent-download.png)
 
-1. Zaškrtněte políčko pro **StorageSyncAgent_V3_WS2016. EXE** a vyberte **Další**.
+1. Zaškrtněte políčko pro **StorageSyncAgent_V3_WS2016.EXE** a vyberte možnost **Další**.
 
    ![Výběr agenta](media/storage-sync-files-extend-servers/select-agent.png)
 
-1. Vyberte možnost **po** > **spuštění** > **otevřít**.
+1. Vyberte možnost **po**  >  **spuštění**  >  **otevřít**.
 1. Pokud jste to ještě neudělali, zavřete okno PowerShellu.
 1. V **Průvodci instalací agenta synchronizace úložiště** přijměte výchozí hodnoty.
 1. Vyberte **Install** (Nainstalovat).
-1. Vyberte **Finish** (Dokončit).
+1. Vyberte **Dokončit**.
 
 Na virtuální počítač s Windows Serverem 2016 Datacenter jste nasadili službu synchronizace Azure a nainstalovali agenta. Teď je potřeba virtuální počítač zaregistrovat ve službě synchronizace úložiště.
 
@@ -259,9 +259,8 @@ Uživatelské rozhraní pro registraci serveru by se mělo po instalaci agenta A
 
    ![Snímek obrazovky uživatelského rozhraní pro registraci serveru](media/storage-sync-files-extend-servers/signin.png)
 
-   | | |
-   | ----- | ----- |
    | Hodnota | Popis |
+   | ----- | ----- |
    | **Předplatné Azure** | Předplatné, které obsahuje službu synchronizace úložiště pro účely tohoto kurzu. |
    | **Skupina prostředků** | Skupina prostředků, která obsahuje službu synchronizace úložiště. Pro tento kurz použijte _afsresgroup101918_ . |
    | **Služba synchronizace úložiště** | Název služby synchronizace úložiště. Pro tento kurz použijte _afssyncservice02_ . |
@@ -301,10 +300,9 @@ Koncový bod serveru představuje konkrétní umístění na zaregistrovaném se
 
 1. V podokně **přidat koncový bod serveru** zadejte následující informace pro vytvoření koncového bodu serveru:
 
-   | | |
-   | ----- | ----- |
    | Hodnota | Popis |
-   | **Zaregistrovaný server** | Název serveru, který jste vytvořili. Pro tento kurz použijte *afsvm101918* . |
+   | ----- | ----- |
+   | **Registrovaný Server** | Název serveru, který jste vytvořili. Pro tento kurz použijte *afsvm101918* . |
    | **Cesta** | Cesta k Windows serveru na jednotku, kterou jste vytvořili. V tomto kurzu použijte *f:\filestosync* . |
    | **Vrstvení cloudu** | Pro účely tohoto kurzu nechte tuto možnost zakázanou. |
    | **Volné místo svazku** | Pro účely tohoto kurzu ponechte tuto hodnotu prázdnou. |

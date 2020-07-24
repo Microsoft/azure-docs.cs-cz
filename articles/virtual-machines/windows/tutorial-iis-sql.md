@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3e44236f74a5448c540c58ba730d65b412d48bd0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1c53194bd345c18ac582acd538f1e8f8e1e34d54
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101701"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027848"
 ---
 # <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>Kurz: instalace sady SQL, IIS, .NET Stack na virtuálním počítači s Windows pomocí Azure PowerShell
 
@@ -29,11 +29,11 @@ V tomto kurzu nainstalujeme sadu SQL, IIS a .NET Stack pomocí Azure PowerShell.
 
 Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
 
-Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče tak, že přejdete [https://shell.azure.com/powershell](https://shell.azure.com/powershell)na. Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
+Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče tak, že přejdete na [https://shell.azure.com/powershell](https://shell.azure.com/powershell) . Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
 
 ## <a name="create-an-iis-vm"></a>Vytvoření virtuálního počítače IIS 
 
-V tomto příkladu používáme rutinu [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) v powershellu Cloud Shell k rychlému vytvoření virtuálního počítače s Windows serverem 2016 a následné instalaci služby IIS a .NET Framework. Virtuální počítače se službou IIS a s SQL sdílí skupinu prostředků a virtuální síť, takže pro jejich názvy vytvoříme proměnné.
+V tomto příkladu používáme rutinu [New-AzVM](/powershell/module/az.compute/new-azvm) v powershellu Cloud Shell k rychlému vytvoření virtuálního počítače s Windows serverem 2016 a následné instalaci služby IIS a .NET Framework. Virtuální počítače se službou IIS a s SQL sdílí skupinu prostředků a virtuální síť, takže pro jejich názvy vytvoříme proměnné.
 
 
 ```azurepowershell-interactive
@@ -52,7 +52,7 @@ New-AzVm `
     -OpenPorts 80,3389 
 ```
 
-Nainstalujte službu IIS a rozhraní .NET Framework pomocí rozšíření vlastních skriptů pomocí rutiny [set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) .
+Nainstalujte službu IIS a rozhraní .NET Framework pomocí rozšíření vlastních skriptů pomocí rutiny [set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) .
 
 ```azurepowershell-interactive
 Set-AzVMExtension `
@@ -76,7 +76,7 @@ $vNet = Get-AzVirtualNetwork `
    -ResourceGroupName $resourceGroup
 ```
 
-Vytvořte konfiguraci pro podsíť pomocí [Add-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/add-azvirtualnetworksubnetconfig).
+Vytvořte konfiguraci pro podsíť pomocí [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig).
 
 
 ```azurepowershell-interactive
@@ -87,7 +87,7 @@ Add-AzVirtualNetworkSubnetConfig `
    -ServiceEndpoint Microsoft.Sql
 ```
 
-Aktualizujte virtuální síť novými informacemi o podsíti pomocí [set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetwork) .
+Aktualizujte virtuální síť novými informacemi o podsíti pomocí [set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) .
    
 ```azurepowershell-interactive   
 $vNet | Set-AzVirtualNetwork
@@ -111,7 +111,7 @@ New-AzVm `
     -OpenPorts 3389,1401 
 ```
 
-K přidání [rozšíření SQL Server](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension) k virtuálnímu počítači SQL použijte [set-AzVMSqlServerExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsqlserverextension) .
+K přidání [rozšíření SQL Server](../../azure-sql/virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md) k virtuálnímu počítači SQL použijte [set-AzVMSqlServerExtension](/powershell/module/az.compute/set-azvmsqlserverextension) .
 
 ```azurepowershell-interactive
 Set-AzVMSqlServerExtension `
@@ -123,7 +123,7 @@ Set-AzVMSqlServerExtension `
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste nainstalovali stack SQL&#92;IIS&#92;.NET pomocí Azure PowerShellu. Naučili jste se tyto postupy:
+V tomto kurzu jste nainstalovali stack SQL&#92;IIS&#92;.NET pomocí Azure PowerShellu. Naučili jste se:
 
 > [!div class="checklist"]
 > * Vytvoření virtuálního počítače 
@@ -135,4 +135,3 @@ Přejděte k dalšímu kurzu, kde se dozvíte, jak zabezpečit webový server sl
 
 > [!div class="nextstepaction"]
 > [Zabezpečený webový server služby IIS pomocí certifikátů TLS/SSL](tutorial-secure-web-server.md)
-

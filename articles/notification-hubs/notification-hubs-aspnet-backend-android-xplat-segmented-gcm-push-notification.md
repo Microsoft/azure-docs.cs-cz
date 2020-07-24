@@ -17,12 +17,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 57a11eac47baace0ad9fa7dcae82dca6eeee0988
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e4517adb0e8fb623864076b6ab2ffde9f92698d0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80127291"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022238"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-android-devices-using-google-cloud-messaging-deprecated"></a>Kurz: odeslání nabízených oznámení na konkrétní zařízení s Androidem pomocí Google Cloud Messaging (zastaralé)
 
@@ -45,7 +45,7 @@ V tomto kurzu provedete následující akce:
 > * Odešlete označená oznámení.
 > * Otestování aplikace
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento kurz vychází z aplikace, kterou jste vytvořili v [kurzu Zasílání nabízených oznámení zařízením s Androidem službami Azure Notification Hubs a Google Cloud Messaging][get-started]. Než začnete tento kurz, dokončete [kurz Zasílání nabízených oznámení zařízením s Androidem službami Azure Notification Hubs a Google Cloud Messaging][get-started].
 
@@ -53,7 +53,7 @@ Tento kurz vychází z aplikace, kterou jste vytvořili v [kurzu Zasílání nab
 
 První krok spočívá v přidání prvků uživatelského rozhraní do stávající třídy MainActivity, aby si uživatel mohl vybrat kategorie, které si zaregistruje. Kategorie, které uživatel vybere, jsou uložené v zařízení. Při spuštění aplikace se v centru oznámení provede registrace zařízení s vybranými kategoriemi ve formě značek.
 
-1. `res/layout/activity_main.xml file`Otevřete a nahraďte obsah následujícím:
+1. Otevřete `res/layout/activity_main.xml file` a nahraďte obsah následujícím:
 
     ```xml
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -120,7 +120,7 @@ První krok spočívá v přidání prvků uživatelského rozhraní do stávaj�
 
     Vaše `main_activity.xml` grafické rozložení by mělo vypadat jako na následujícím obrázku:
 
-    ![][A1]
+    ![Snímek obrazovky vývojového prostředí s viditelnou obrazovkou aplikace Aplikace obsahuje seznam kategorií zpráv, které byly přidány do kódu.][A1]
 3. Vytvořte třídu `Notifications` ve stejném balíčku jako svou `MainActivity` třídu.
 
     ```java
@@ -196,7 +196,7 @@ První krok spočívá v přidání prvků uživatelského rozhraní do stávaj�
     ```
 
     Tato třída uloží kategorie novinek, které bude zařízení dostávat, do místního úložiště. Obsahuje také metody registrace kategorií.
-4. Ve `MainActivity` třídě odeberte soukromá pole pro `NotificationHub` a `GoogleCloudMessaging`a přidejte pole pro: `Notifications`
+4. Ve `MainActivity` třídě odeberte soukromá pole pro a a `NotificationHub` `GoogleCloudMessaging` přidejte pole pro `Notifications` :
 
     ```java
     // private GoogleCloudMessaging gcm;
@@ -272,7 +272,7 @@ Tento postup provede při spuštění registraci v centru oznámení. Použije k
 > [!NOTE]
 > Hodnota registraionId přiřazená službou GCM (Google Cloud Messaging) se může kdykoli změnit, a proto byste měli oznámení často registrovat, abyste se vyhnuli chybám. V tomto příkladu se oznámení registrují při každém spuštění aplikace. Pokud se aplikace spouštějí často, třeba častěji než jednou denně, pravděpodobně můžete registraci přeskočit kvůli úspoře šířky pásma, protože od předchozí registrace neuplynul ani den.
 
-1. Na konec `onCreate` metody ve `MainActivity` třídě přidejte následující kód:
+1. Na konec `onCreate` metody ve třídě přidejte následující kód `MainActivity` :
 
     ```java
     notifications.subscribeToCategories(notifications.retrieveCategories());
@@ -338,8 +338,8 @@ V tomto kurzu jste odeslali nabízená oznámení určitým zařízením s Andro
 [Use Notification Hubs to broadcast localized breaking news]: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
 [Notify users with Notification Hubs]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Mobile Service]: /develop/mobile/tutorials/get-started/
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-To for Windows Store]: https://msdn.microsoft.com/library/jj927172.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[Notification Hubs How-To for Windows Store]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Submit an app page]: https://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: https://go.microsoft.com/fwlink/p/?LinkId=262253

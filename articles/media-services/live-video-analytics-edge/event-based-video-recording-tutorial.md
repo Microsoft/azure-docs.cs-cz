@@ -3,12 +3,12 @@ title: Kurz pro nahrávání a přehrávání videa založeného na událostech 
 description: V tomto kurzu se naučíte používat Azure Live video Analytics na Azure IoT Edge k nahrání záznamu videa založeného na událostech do cloudu a jeho přehrání z cloudu.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 938bae28b1a523e23ea9f8f1ba79bbe6c487d5db
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: cbd00bf5737e9833a860e154c629bb344416b6ca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765195"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011766"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Kurz: nahrávání videa založeného na událostech do cloudu a přehrávání z cloudu
 
@@ -32,11 +32,11 @@ Než začnete, přečtěte si tyto články:
 * [Živá analýza videí na IoT Edge terminologii](terminology.md)
 * [Koncepty Media graphu](media-graph-concept.md) 
 * [Nahrávání videa na základě událostí](event-based-video-recording-concept.md)
-* [Kurz: vývoj modulu IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux)
+* [Kurz: vývoj modulu IoT Edge](../../iot-edge/tutorial-develop-for-linux.md)
 * [Postup úpravy nasazení. * .template.js](https://github.com/microsoft/vscode-azure-iot-edge/wiki/How-to-edit-deployment.*.template.json)
-* Oddíl, [jak deklarovat trasy v manifestu nasazení IoT Edge](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)
+* Oddíl, [jak deklarovat trasy v manifestu nasazení IoT Edge](../../iot-edge/module-composition.md#declare-routes)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Předpoklady pro tento kurz:
 
@@ -52,7 +52,7 @@ Na konci tohoto postupu budete mít v předplatném Azure nasazené relevantní 
 * Azure IoT Hub
 * Účet služby Azure Storage
 * Účet Azure Media Services
-* Virtuální počítač Linux v Azure s nainstalovaným [modulem runtime IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)
+* Virtuální počítač Linux v Azure s nainstalovaným [modulem runtime IoT Edge](../../iot-edge/how-to-install-iot-edge-linux.md)
 
 ## <a name="concepts"></a>Koncepty
 
@@ -135,9 +135,9 @@ Otevřete src/Edge/deployment.objectCounter.template.jsna. V části **modulů**
 * **rtspsim**: Toto je simulátor RTSP.
 * **objectCounter**: Jedná se o modul, který hledá konkrétní objekty ve výsledcích z yolov3.
 
-Pro modul objectCounter se podívejte na řetězec ($ {MODULes. objectCounter}), který se používá pro hodnotu image. Vychází z [kurzu](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux) vývoje IoT Edge modulu. Visual Studio Code automaticky rozpozná, že kód pro modul objectCounter je pod položkou src/Edge/Module/objectCounter. 
+Pro modul objectCounter se podívejte na řetězec ($ {MODULes. objectCounter}), který se používá pro hodnotu image. Vychází z [kurzu](../../iot-edge/tutorial-develop-for-linux.md) vývoje IoT Edge modulu. Visual Studio Code automaticky rozpozná, že kód pro modul objectCounter je pod položkou src/Edge/Module/objectCounter. 
 
-Přečtěte si [Tento oddíl](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) , jak deklarovat trasy v manifestu nasazení IoT Edge. Pak zkontrolujte trasy v souboru JSON šablony. Všimněte si, jak:
+Přečtěte si [Tento oddíl](../../iot-edge/module-composition.md#declare-routes) , jak deklarovat trasy v manifestu nasazení IoT Edge. Pak zkontrolujte trasy v souboru JSON šablony. Všimněte si, jak:
 
 * LVAToObjectCounter se používá k odesílání konkrétních událostí do konkrétního koncového bodu v modulu objectCounter.
 * ObjectCounterToLVA se používá k odeslání události triggeru do konkrétního koncového bodu (který by měl být IoT Hub zdrojový uzel) v modulu lvaEdge.
@@ -150,7 +150,7 @@ Přečtěte si [Tento oddíl](https://docs.microsoft.com/azure/iot-edge/module-c
 
 Manifest nasazení definuje, které moduly jsou nasazeny do hraničního zařízení a nastavení konfigurace pro tyto moduly. Pomocí těchto kroků vygenerujte manifest ze souboru šablony a potom ho nasaďte do hraničního zařízení.
 
-Pomocí Visual Studio Code se přihlaste k Docker podle [těchto pokynů](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux#build-and-push-your-solution) . Pak vyberte **sestavení a nabízená IoT Edge řešení**. Pro tento krok použijte src/Edge/deployment.objectCounter.template.js.
+Pomocí Visual Studio Code se přihlaste k Docker podle [těchto pokynů](../../iot-edge/tutorial-develop-for-linux.md#build-and-push-your-solution) . Pak vyberte **sestavení a nabízená IoT Edge řešení**. Pro tento krok použijte src/Edge/deployment.objectCounter.template.js.
 
 ![Sestavování a nabízených IoT Edge řešení](./media/event-based-video-recording-tutorial/build-push.png)
 
@@ -259,7 +259,7 @@ Pokud se chcete podívat na události z modulu objectCounter a ve službě Live 
 
 ## <a name="interpret-the-results"></a>Interpretace výsledků 
 
-Když spustíte graf Media Graph, Live video Analytics v modulu IoT Edge odešle určité diagnostické a provozní události do centra IoT Edge. Tyto události jsou zprávy, které se zobrazí v okně **výstup** Visual Studio Code. Obsahují oddíl tělo a oddíl applicationProperties. Informace o tom, co tyto oddíly představuje, najdete v tématu [Vytvoření a čtení zpráv IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
+Když spustíte graf Media Graph, Live video Analytics v modulu IoT Edge odešle určité diagnostické a provozní události do centra IoT Edge. Tyto události jsou zprávy, které se zobrazí v okně **výstup** Visual Studio Code. Obsahují oddíl tělo a oddíl applicationProperties. Informace o tom, co tyto oddíly představuje, najdete v tématu [Vytvoření a čtení zpráv IoT Hub](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
 V následujících zprávách jsou vlastnosti aplikace a obsah těla definovány modulem Live video Analytics.
 
@@ -413,4 +413,4 @@ Pokud máte v úmyslu vyzkoušet ostatní kurzy, přihlaste se k prostředkům, 
 ## <a name="next-steps"></a>Další kroky
 
 * Místo používání simulátoru RTSP použijte [fotoaparát IP](https://en.wikipedia.org/wiki/IP_camera) s podporou pro RTSP. V případě, že hledáte zařízení, která jsou v souladu s profily G, S nebo T, můžete vyhledat kamery s podporou protokolu RTSP na [stránce ONVIF – vyhovujících produktů](https://www.onvif.org/conformant-products/) .
-* Použijte zařízení AMD64 nebo x64 Linux (vs. pomocí virtuálního počítače Azure Linux). Toto zařízení musí být ve stejné síti jako kamera IP. Postupujte podle pokynů v části [Instalace modulu runtime Azure IoT Edge v systému Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux). Pak postupujte podle pokynů v tématu [nasazení prvního IoT Edge modulu do](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) rychlého startu zařízení s nástrojem Virtual Linux a zaregistrujte zařízení ve službě Azure IoT Hub.
+* Použijte zařízení AMD64 nebo x64 Linux (vs. pomocí virtuálního počítače Azure Linux). Toto zařízení musí být ve stejné síti jako kamera IP. Postupujte podle pokynů v části [Instalace modulu runtime Azure IoT Edge v systému Linux](../../iot-edge/how-to-install-iot-edge-linux.md). Pak postupujte podle pokynů v tématu [nasazení prvního IoT Edge modulu do](../../iot-edge/quickstart-linux.md) rychlého startu zařízení s nástrojem Virtual Linux a zaregistrujte zařízení ve službě Azure IoT Hub.

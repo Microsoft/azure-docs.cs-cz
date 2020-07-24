@@ -1,18 +1,18 @@
 ---
-title: 'Spuštění více závislých služeb: & Node. js Visual Studio Code'
+title: 'Spuštění více závislých služeb: Node.js & Visual Studio Code'
 services: azure-dev-spaces
 ms.date: 11/21/2018
 ms.topic: tutorial
-description: V tomto kurzu se dozvíte, jak pomocí Azure Dev Spaces a Visual Studio Code ladit aplikaci Node. js s více službami ve službě Azure Kubernetes
+description: V tomto kurzu se dozvíte, jak pomocí Azure Dev Spaces a Visual Studio Code ladit aplikaci Node.js s více službami ve službě Azure Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
-ms.openlocfilehash: a5fa0aae3a966dd96ee95e6bcafc3b2eec4e6837
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2c87dedda1db97a033526c809de735fe036120ef
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75438297"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006978"
 ---
-# <a name="running-multiple-dependent-services-nodejs-and-visual-studio-code-with-azure-dev-spaces"></a>Spuštění více závislých služeb: Node. js a Visual Studio Code s Azure Dev Spaces
+# <a name="running-multiple-dependent-services-nodejs-and-visual-studio-code-with-azure-dev-spaces"></a>Spuštění více závislých služeb: Node.js a Visual Studio Code pomocí Azure Dev Spaces
 
 V tomto kurzu se naučíte vyvíjet aplikace s více službami pomocí Azure Dev Spaces společně s dalšími výhodami, které poskytují vývojové prostory.
 
@@ -20,10 +20,10 @@ V tomto kurzu se naučíte vyvíjet aplikace s více službami pomocí Azure Dev
 
 V této části vytvoříte druhou službu `mywebapi`, kterou bude `webfrontend` volat. Každá služba poběží v samostatném kontejneru. Ladění pak provedete v obou kontejnerech.
 
-![](media/common/multi-container.png)
+![V diagramu se zobrazuje volání služby webendu (jak je uvedeno u šipky) služba mywebapi.](media/common/multi-container.png)
 
 ### <a name="open-sample-code-for-mywebapi"></a>Otevření ukázkového kódu *mywebapi*
-Měli byste `mywebapi` už mít vzorový kód pro tuto příručku ve složce s názvem `samples` (Pokud ne, přejdete na https://github.com/Azure/dev-spaces a vyberte **klonovat nebo stáhnout** pro stažení úložiště GitHubu.) Kód pro tuto část je v `samples/nodejs/getting-started/mywebapi`.
+Měli byste už mít vzorový kód pro `mywebapi` tuto příručku ve složce s názvem `samples` (Pokud ne, přejdete na https://github.com/Azure/dev-spaces a vyberte **klonovat nebo stáhnout** pro stažení úložiště GitHubu.) Kód pro tuto část je v `samples/nodejs/getting-started/mywebapi` .
 
 ### <a name="run-mywebapi"></a>Spuštění *mywebapi*
 1. V *samostatném okně editoru VS Code* otevřete složku `mywebapi`.
@@ -62,7 +62,7 @@ Předchozí příklad kódu předává hlavičku `azds-route-as` z příchozího
 
 ### <a name="debug-across-multiple-services"></a>Ladění více služeb
 1. V této fázi byste měli mít spuštěnou službu `mywebapi` s připojeným ladicím programem. Pokud tomu tak není, stiskněte v projektu `mywebapi` klávesu F5.
-1. Nastavte zarážku uvnitř výchozí obslužné rutiny GET `/` [na řádku 8 `server.js` ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/mywebapi/server.js#L8).
+1. Nastavte zarážku uvnitř výchozí `/` obslužné rutiny Get [na řádku 8 `server.js` ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/mywebapi/server.js#L8).
 1. V projektu `webfrontend` nastavte zarážku těsně před odesláním požadavku GET do `http://mywebapi`.
 1. V projektu `webfrontend` stiskněte klávesu F5.
 1. Otevřete webovou aplikaci a projděte kód obou služeb. Ve webové aplikaci by se měla zobrazit zpráva vytvořená spojením řetězců dvou služeb: „Hello from webfrontend and Hello from mywebapi.“

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 76b7a97a5be5e7952b0ac11d93bd68656ff8f1ec
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6c5484c421807f5657fe5fc460342d39d442bcda
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79454308"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048572"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>Kurz: nasazení HSM do existující virtuální sítě pomocí rozhraní příkazového řádku
 
@@ -36,7 +36,7 @@ Typická, vysoká dostupnost, architektura nasazení ve více oblastech, může 
 
 Tento kurz se zaměřuje na pár HSM a požadovanou bránu ExpressRoute (viz podsíť 1 výše), která se integruje do existující virtuální sítě (viz virtuální síť 1 výše).  Všechny ostatní prostředky jsou standardní prostředky Azure. Stejný proces integrace lze použít pro HSM v podsíti 4 ve virtuální síti 3 výše.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Vyhrazený modul HARDWAROVÉho zabezpečení Azure není v současnosti dostupný v Azure Portal. Veškerá interakce se službou bude prostřednictvím příkazového řádku nebo pomocí PowerShellu. V tomto kurzu použijete rozhraní příkazového řádku (CLI) v Azure Cloud Shell. Pokud začínáte s rozhraním příkazového řádku Azure CLI, postupujte podle pokynů v části Začínáme: [Azure CLI 2,0](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)Začínáme.
 
@@ -47,7 +47,7 @@ Předpoklady:
 - Vytvořili jste skupinu prostředků pro tyto prostředky a nově nasazená v tomto kurzu se připojí k této skupině.
 - Už jste vytvořili potřebnou virtuální síť, podsíť a virtuální počítače podle diagramu výše a teď chcete do tohoto nasazení integrovat 2 HSM.
 
-Všechny níže uvedené pokyny předpokládají, že jste již přešli na Azure Portal a že jste otevřeli Cloud Shell (vyberte\>\_"" směrem nahoru v pravém horním rohu portálu).
+Všechny níže uvedené pokyny předpokládají, že jste již přešli na Azure Portal a že jste otevřeli Cloud Shell (vyberte " \> \_ " směrem nahoru v pravém horním rohu portálu).
 
 ## <a name="provisioning-a-dedicated-hsm"></a>Zřizování vyhrazeného modulu HSM
 
@@ -63,21 +63,13 @@ az feature show \
    --name AzureDedicatedHSM
 ```
 
-Následující příkaz ověří síťové funkce vyžadované pro vyhrazenou službu HSM.
-
-```azurecli
-az feature show \
-   --namespace Microsoft.Network \
-   --name AllowBaremetalServers
-```
-
-Oba příkazy by měly vracet stav "registrováno" (jak je vidět níže). Pokud příkazy nevrátí "zaregistrované", budete se muset zaregistrovat pro tuto službu, obraťte se na svého zástupce účet Microsoft.
+Příkazy by měly vracet stav "registrováno" (jak je vidět níže). Pokud příkazy nevrátí "zaregistrované", budete se muset zaregistrovat pro tuto službu tím, že se obrátíte na zástupce účet Microsoft.
 
 ![stav předplatného](media/tutorial-deploy-hsm-cli/subscription-status.png)
 
 ### <a name="creating-hsm-resources"></a>Vytváření prostředků HSM
 
-Modul HARDWAROVÉho zabezpečení se zřídí do virtuální sítě zákazníků, takže se vyžaduje virtuální síť a podsíť. Závislost modulu HARDWAROVÉho zabezpečení, která umožňuje komunikaci mezi virtuální sítí a fyzickým zařízením, je bránou ExpressRoute a nakonec je pro přístup k zařízení HSM pomocí klientského softwaru identita Gemalto potřeba virtuální počítač. Tyto prostředky byly shromážděny do souboru šablony s odpovídajícím souborem parametrů pro snadné použití. Soubory jsou k dispozici na základě kontaktování Microsoftu HSMrequest@Microsoft.compřímo jako.
+Modul HARDWAROVÉho zabezpečení se zřídí do virtuální sítě zákazníků, takže se vyžaduje virtuální síť a podsíť. Závislost modulu HARDWAROVÉho zabezpečení, která umožňuje komunikaci mezi virtuální sítí a fyzickým zařízením, je bránou ExpressRoute a nakonec je pro přístup k zařízení HSM pomocí klientského softwaru identita Gemalto potřeba virtuální počítač. Tyto prostředky byly shromážděny do souboru šablony s odpovídajícím souborem parametrů pro snadné použití. Soubory jsou k dispozici na základě kontaktování Microsoftu přímo jako HSMrequest@Microsoft.com .
 
 Jakmile budete mít soubory, musíte upravit soubor parametrů a vložit tak preferované názvy prostředků. Upravit řádky pomocí "value": "".
 
@@ -126,7 +118,7 @@ Přidružený soubor šablony Azure Resource Manager vytvoří 6 prostředků s 
 - HSM v razítku 1
 - HSM na razítku 2
 
-Po nastavení hodnot parametrů je potřeba odeslat soubory do Azure Portal sdílené složky Cloud Shell pro použití. V Azure Portal klikněte v pravém horním\>\_rohu na symbol "Cloud Shell" a tím se v dolní části obrazovky zobrazí příkazové prostředí. Možnosti pro toto jsou BASH a PowerShell a pokud ještě nejsou nastavené, měli byste vybrat BASH.
+Po nastavení hodnot parametrů je potřeba odeslat soubory do Azure Portal sdílené složky Cloud Shell pro použití. V Azure Portal klikněte v \> \_ pravém horním rohu na symbol "Cloud Shell" a tím se v dolní části obrazovky zobrazí příkazové prostředí. Možnosti pro toto jsou BASH a PowerShell a pokud ještě nejsou nastavené, měli byste vybrat BASH.
 
 Příkazové prostředí má na panelu nástrojů možnost odeslat/stáhnout a tuto šablonu byste měli vybrat k nahrání šablony a souborů parametrů do sdílené složky:
 
@@ -210,7 +202,7 @@ Ve výše uvedeném příkazu by se mohla místo názvu DNS použít taky IP adr
 >[!NOTE]
 >Všimněte si políčka "Zobrazit skryté typy", které při výběru zobrazí prostředky HSM.
 
-Na snímku obrazovky výše klikněte na "HSM1_HSMnic" nebo "HSM2_HSMnic" by se zobrazila příslušná privátní IP adresa. V opačném `az resource show` případě výše uvedený příkaz slouží jako způsob identifikace správné IP adresy. 
+Na snímku obrazovky výše klikněte na "HSM1_HSMnic" nebo "HSM2_HSMnic" by se zobrazila příslušná privátní IP adresa. V opačném případě `az resource show` výše uvedený příkaz slouží jako způsob identifikace správné IP adresy. 
 
 Pokud máte správnou IP adresu, spusťte následující příkaz, který nahradí tuto adresu:
 

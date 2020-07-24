@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 35ac39109bfcb4dc63b738c947d2ad8caf8ac0a6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 704c56745ad89e9ed2f79e8a863f1d0bc9845bf9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77021283"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001821"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>Kurz: nasazení a návod pro šablonu aplikace monitorování průběžného pacienta
 
@@ -85,13 +85,16 @@ Pokud kliknete na kartu **šablony zařízení** , uvidíte, že existují dva r
 >[!div class="mx-imgBorder"] 
 >![Oprava – oprava šablony zařízení – důležité](media/smart-vitals-device-template.png)
 
-Pokud kliknete na kartu **skupiny zařízení** , zjistíte také, že tyto šablony zařízení mají pro ně automaticky vytvořené skupiny zařízení.
+### <a name="device-groups"></a>skupiny zařízení. 
+Skupiny zařízení umožňují logicky seskupovat sadu zařízení a následně v nich provádět hromadné dotazy nebo operace. 
+
+Pokud kliknete na kartu skupiny zařízení, uvidíte, že pro každou šablonu zařízení v aplikaci jsme vytvořili několik výchozích skupin zařízení. Všimněte si, že jsme také vytvořili dvě další vzorové skupiny zařízení s názvem "zřízení zařízení" a "zařízení se zastaralým firmwarem". Tyto ukázkové skupiny zařízení použijeme jako vstupy ke spouštění některých [úloh](#jobs).
 
 ### <a name="rules"></a>Pravidla
 
 Při přechodu na kartu pravidla se zobrazí tři pravidla, která existují v šabloně aplikace:
 
-* **Teplota složené závorky**: Toto pravidlo se aktivuje, když je teplota zařízení v typografické závorce větší než 95&deg;F v intervalu 5 minut. Toto pravidlo můžete použít k upozornění týmu pacient a péče a k tomu, aby se zařízení vzdáleně vypnulo.
+* **Teplota složené závorky**: Toto pravidlo se aktivuje, když je teplota zařízení v typografické závorce větší než 95 &deg; F v intervalu 5 minut. Toto pravidlo můžete použít k upozornění týmu pacient a péče a k tomu, aby se zařízení vzdáleně vypnulo.
 
 * **Zjištěná klesnout**: Toto pravidlo se aktivuje, pokud je zjištěno, že pacient je. Toto pravidlo můžete použít ke konfiguraci akce pro nasazení provozního týmu, která pomůže pacientovi, který se zařadí.
 
@@ -99,6 +102,13 @@ Při přechodu na kartu pravidla se zobrazí tři pravidla, která existují v �
 
 >[!div class="mx-imgBorder"] 
 >![Střední pravidlo teploty složené závorky](media/brace-temp-rule.png)
+
+### <a name="jobs"></a>Úlohy
+
+Úlohy umožňují spouštět hromadné operace se sadou zařízení, které jako vstup používají [skupiny zařízení](#device-groups) . Načetli jsme šablonu aplikace se dvěma ukázkovými úlohami, které může operátor řešení spustit v nějakém okamžiku životního cyklu zařízení:
+* **Aktualizovat firmware složených závorek**: Tato úloha najde zařízení ve skupině zařízení se zastaralým firmwarem a spustí příkaz, který tato zařízení aktualizuje na nejnovější verzi firmwaru složené závorky. Tato ukázková úloha předpokládá, že zařízení má funkce pro příjem příkazu Update a načítají soubory firmwaru přímo z cloudu.  
+
+* **Znovu zřídit zařízení**: Pokud máte sadu zařízení, která se nedávno vrátila do nemocnice a je potřeba ji znovu zřídit pro další sadu pacientů, můžete tuto úlohu spustit pro hromadnou aktualizaci zařízení zřizování. V tomto případě přenášíme všechna zařízení ze skupiny zařízení s názvem "zřízení zařízení" a my provedeme příkaz k jejich zřízení. 
 
 ### <a name="devices"></a>Zařízení
 
@@ -112,6 +122,10 @@ Karta **příkazy** vám umožní spustit příkazy, které byly namodelované j
 
 >[!div class="mx-imgBorder"] 
 >![Zobrazení kolenových závorek](media/knee-brace-dashboard.png)
+
+### <a name="data-export"></a>Export dat
+
+Export dat umožňuje nepřetržitě exportovat data IoT Central zařízení do jiných služeb Azure, včetně [rozhraní Azure API pro FHIR](concept-continuous-patient-monitoring-architecture.md#export-to-azure-api-for-fhir).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

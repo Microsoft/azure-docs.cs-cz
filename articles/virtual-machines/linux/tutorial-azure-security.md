@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9b70474a985cde1cd6d7d98e84f7f228fde7a812
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6711075ba3a58e526733c3a18cab03084edc067e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81460099"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080093"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Kurz: Použití služby Azure Security Center k monitorování virtuálních počítačů s Linuxem
 
@@ -57,7 +57,7 @@ Na všechny virtuální počítače se pak nainstaluje agent Security Center pro
 
 ## <a name="set-up-a-security-policy"></a>Nastavení zásady zabezpečení
 
-Zásady zabezpečení slouží k definici položek, pro které Security Center shromažďuje data a poskytuje doporučení. Na různé sady prostředků Azure můžete použít různé zásady zabezpečení. Přestože se ve výchozím nastavení u prostředků Azure vyhodnocují všechny položky zásad, jednotlivé položky zásad můžete pro všechny prostředky Azure nebo skupinu prostředků vypnout. Podrobné informace o zásadách zabezpečení Security Center najdete v tématu [Nastavení zásad zabezpečení v Azure Security Center](../../security-center/security-center-policies.md). 
+Zásady zabezpečení slouží k definici položek, pro které Security Center shromažďuje data a poskytuje doporučení. Na různé sady prostředků Azure můžete použít různé zásady zabezpečení. Přestože se ve výchozím nastavení u prostředků Azure vyhodnocují všechny položky zásad, jednotlivé položky zásad můžete pro všechny prostředky Azure nebo skupinu prostředků vypnout. Podrobné informace o zásadách zabezpečení Security Center najdete v tématu [Nastavení zásad zabezpečení v Azure Security Center](../../security-center/tutorial-security-policy.md). 
 
 Nastavení zásad zabezpečení pro celé předplatné:
 
@@ -122,7 +122,7 @@ Výběrem výstrahy zobrazíte informace. Můžete například zobrazit popis hr
 ![Útok na protokol RDP](./media/tutorial-azure-security/rdp-attack.png)
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste nastavili Azure Security Center a pak jste v Security Center zkontrolovali virtuální počítače. Naučili jste se tyto postupy:
+V tomto kurzu jste nastavili Azure Security Center a pak jste v Security Center zkontrolovali virtuální počítače. Naučili jste se:
 
 > [!div class="checklist"]
 > * Nastavení shromažďování dat
@@ -134,4 +134,3 @@ Přejděte k dalšímu kurzu, kde najdete další informace o vytvoření kanál
 
 > [!div class="nextstepaction"]
 > [Vytvoření infrastruktury CI/CD pomocí Jenkinse, GitHubu a Dockeru](../../jenkins/tutorial-jenkins-github-docker-cicd.md)
-

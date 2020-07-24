@@ -3,12 +3,12 @@ title: Event Hubs Azure – procesní události Apache Kafka
 description: 'Kurz: v tomto článku se dozvíte, jak zpracovávat události Kafka, které se ingestují prostřednictvím centra událostí pomocí Azure Stream Analytics'
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 8fbc1ae326cc75603f5a86361e4bc79ecc461fd6
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 6dfca5b476dff1ee3367b5365c15869c8cff819b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85313271"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074912"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Kurz: proces Apache Kafka pro události Event Hubs pomocí Stream Analytics 
 Tento článek ukazuje, jak streamovat data do Event Hubs a zpracovávat je pomocí Azure Stream Analytics. Provede vás následujícími kroky: 
@@ -20,7 +20,7 @@ Tento článek ukazuje, jak streamovat data do Event Hubs a zpracovávat je pomo
 Pokud používáte koncový bod Kafka vystavený centrem událostí, nemusíte měnit klienty protokolu ani spouštět vlastní clustery. Azure Event Hubs podporuje [Apache Kafka verze 1.0](https://kafka.apache.org/10/documentation.html). a vyšší. 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 
@@ -129,7 +129,7 @@ Dotaz v Stream Analytics úloze projde daty bez provedení jakýchkoli analýz. 
  
 
 ### <a name="define-a-query"></a>Definovat dotaz
-Po dokončení nastavení úlohy Stream Analytics pro čtení příchozího datového streamu je dalším krokem vytvoření transformace, která analyzuje data v reálném čase. Transformační dotaz definujete pomocí jazyka [Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference). V tomto návodu definujete dotaz, který projde daty bez provedení jakékoli transformace.
+Po dokončení nastavení úlohy Stream Analytics pro čtení příchozího datového streamu je dalším krokem vytvoření transformace, která analyzuje data v reálném čase. Transformační dotaz definujete pomocí jazyka [Stream Analytics Query Language](/stream-analytics-query/stream-analytics-query-language-reference). V tomto návodu definujete dotaz, který projde daty bez provedení jakékoli transformace.
 
 1. Vyberte **dotaz**.
 2. V okně dotazu nahraďte `[YourOutputAlias]` aliasem výstupu, který jste vytvořili dříve.

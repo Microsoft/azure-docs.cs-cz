@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 02/04/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5842d21f9fb35cd8fddc5521d630d597aedcc2ba
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 0ac13dc669ed20df58f05c672926b7bee55dbc90
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85983145"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035022"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Kurz: povolení odemknutí účtu nebo resetování hesla uživateli pomocí samoobslužného resetování hesla Azure Active Directory
 
 Samoobslužné resetování hesla (SSPR) Azure Active Directory (Azure AD) umožňuje uživatelům změnit nebo resetovat svoje heslo bez zásahu správce ani helpdesku. Pokud je účet uživatele uzamčený nebo zapomněl heslo, může postupovat podle výzev ke zrušení odblokování a opětovnému získání práce. Tato možnost omezuje volání helpdesku a ztrátu produktivity, když se uživatel nemůže přihlásit ke svému zařízení nebo aplikaci.
 
 > [!IMPORTANT]
-> V tomto rychlém startu se zobrazí správce, jak povolit samoobslužné resetování hesla. Pokud už jste koncoví uživatelé zaregistrovali pro Samoobslužné resetování hesla a potřebujete se zpátky do svého účtu, pokračujte na https://aka.ms/sspr .
+> V tomto kurzu se dozvíte správce, jak povolit samoobslužné resetování hesla. Pokud už jste koncoví uživatelé zaregistrovali pro Samoobslužné resetování hesla a potřebujete se zpátky do svého účtu, pokračujte na https://aka.ms/sspr .
 >
 > Pokud váš IT tým nepovolil možnost resetovat si vlastní heslo, obraťte se na helpdesk a získáte další pomoc.
 
@@ -33,7 +33,7 @@ Co se v tomto kurzu naučíte:
 > * Konfigurace metod ověřování a možností registrace
 > * Testování procesu SSPR jako uživatel
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
@@ -41,9 +41,9 @@ K dokončení tohoto kurzu potřebujete následující prostředky a oprávněn�
     * V případě potřeby [ho vytvořte zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Účet s oprávněními *globálního správce* .
 * Uživatel bez oprávnění správce s heslem, které znáte, například *testuser*. Pomocí tohoto účtu v tomto kurzu otestujete prostředí SSPR pro koncové uživatele.
-    * Pokud potřebujete vytvořit uživatele, přečtěte si téma [rychlý Start: přidání nových uživatelů do Azure Active Directory](../add-users-azure-active-directory.md).
+    * Pokud potřebujete vytvořit uživatele, přečtěte si téma [rychlý Start: přidání nových uživatelů do Azure Active Directory](../fundamentals/add-users-azure-active-directory.md).
 * Skupina, pro kterou je uživatel bez oprávnění správce členem, například *SSPR-test-Group*. V tomto kurzu povolíte SSPR pro tuto skupinu.
-    * Pokud potřebujete vytvořit skupinu, přečtěte si téma Postup [Vytvoření skupiny a přidání členů v Azure Active Directory](../active-directory-groups-create-azure-portal.md).
+    * Pokud potřebujete vytvořit skupinu, přečtěte si téma Postup [Vytvoření skupiny a přidání členů v Azure Active Directory](../fundamentals/active-directory-groups-create-azure-portal.md).
 
 ## <a name="enable-self-service-password-reset"></a>Povolení samoobslužného resetování hesel
 
@@ -78,8 +78,8 @@ Když uživatelé potřebují odemknout svůj účet nebo resetovat heslo, zobra
     * *Kód mobilní aplikace*
     * *E-mail*
     * *Mobilní telefon*
-    * *Telefon do kanceláře*
-    * *Bezpečnostní otázky*
+
+    Další metody ověřování, jako je třeba *telefon do kanceláře* nebo *bezpečnostní otázky*, můžete podle potřeby povolit, aby vyhovovaly vašim obchodním požadavkům.
 
 1. Chcete-li použít metody ověřování, vyberte možnost **Uložit**.
 
@@ -95,7 +95,7 @@ Správce může tyto kontaktní údaje zadat ručně, nebo může přejít na re
 
 ## <a name="configure-notifications-and-customizations"></a>Konfigurace oznámení a přizpůsobení
 
-Pokud chcete, aby uživatelé měli informace o aktivitě účtu, můžete nakonfigurovat e-mailová oznámení, která se budou posílat, když dojde k události SSPR. Tato oznámení můžou pokrývat jak běžné uživatelské účty, tak účty správců. V případě účtů správců poskytuje toto oznámení další úroveň povědomí, když se resetuje heslo privilegovaného účtu správce pomocí SSPR.
+Pokud chcete, aby uživatelé měli informace o aktivitě účtu, můžete nakonfigurovat e-mailová oznámení, která se budou posílat, když dojde k události SSPR. Tato oznámení můžou pokrývat jak běžné uživatelské účty, tak účty správců. V případě účtů správců poskytuje toto oznámení další úroveň povědomí, když se resetuje heslo privilegovaného účtu správce pomocí SSPR. Pokud se SSPR použije v účtu správce, budou všichni globální správci upozorněni.
 
 1. Na stránce **oznámení** v nabídce na levé straně nakonfigurujte následující možnosti:
 
@@ -133,14 +133,14 @@ V následujícím kurzu tohoto seriálu nakonfigurujete zpětný zápis hesla. T
 
 Pokud už nechcete používat funkci SSPR, kterou jste nakonfigurovali v rámci tohoto kurzu, nastavte stav SSPR na **none** pomocí následujících kroků:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
 1. Vyhledejte a vyberte **Azure Active Directory**a potom v nabídce na levé straně zvolte **resetování hesla** .
 1. Na stránce **vlastnosti** v části možnost *Samoobslužné resetování hesla povoleno*vyberte možnost **žádná**.
 1. Pokud chcete použít změnu SSPR, vyberte **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste povolili Samoobslužné resetování hesla služby Azure AD pro vybranou skupinu uživatelů. Naučili jste se tyto postupy:
+V tomto kurzu jste povolili Samoobslužné resetování hesla služby Azure AD pro vybranou skupinu uživatelů. Naučili jste se:
 
 > [!div class="checklist"]
 > * Povolení samoobslužného resetování hesla pro skupinu uživatelů Azure AD

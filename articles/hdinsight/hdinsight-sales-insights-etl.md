@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: c213b0089af0af295d44afd38bbc5c17b6db159d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a0f081e0f8df00bbc99d2163fb54a2f15d92a159
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81535226"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006428"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>Kurz: vytvoření uceleného datového kanálu pro odvoditelné prodejní přehledy ve službě Azure HDInsight
 
@@ -23,17 +23,17 @@ Tento datový kanál kombinuje data z různých úložišť, odebírá všechna 
 
 ![Architektura ETL](./media/hdinsight-sales-insights-etl/architecture.png)
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Azure CLI – minimálně verze 2.2.0 Viz [instalace rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-* JQ, procesor JSON příkazového řádku.  Viz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
+* JQ, procesor JSON příkazového řádku.  Viz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) .
 
 * Člen [předdefinovaného vlastníka role Azure](../role-based-access-control/built-in-roles.md)
 
-* Pokud k aktivaci kanálu Data Factory používáte PowerShell, budete potřebovat [modul AZ](https://docs.microsoft.com/powershell/azure/overview).
+* Pokud k aktivaci kanálu Data Factory používáte PowerShell, budete potřebovat [modul AZ](https://docs.microsoft.com/powershell/azure/).
 
 * [Power BI Desktop](https://aka.ms/pbiSingleInstaller) k vizualizaci obchodních přehledů na konci tohoto kurzu.
 
@@ -106,7 +106,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Vytvoření clusteru může trvat přibližně 20 minut.
 
-Výchozí heslo pro přístup SSH ke clusterům je `Thisisapassword1`. Pokud chcete změnit heslo `./templates/resourcesparameters_remainder.json` , přejděte na soubor a změňte heslo pro parametry `sparksshPassword`, `sparkClusterLoginPassword`, `llapClusterLoginPassword`a. `llapsshPassword`
+Výchozí heslo pro přístup SSH ke clusterům je `Thisisapassword1` . Pokud chcete změnit heslo, přejděte na `./templates/resourcesparameters_remainder.json` soubor a změňte heslo pro `sparksshPassword` `sparkClusterLoginPassword` parametry,, `llapClusterLoginPassword` a `llapsshPassword` .
 
 ### <a name="verify-deployment-and-collect-resource-information"></a>Ověření nasazení a shromažďování informací o prostředcích
 
@@ -172,7 +172,7 @@ Tento skript provádí následující akce:
 
 1. Vytvoří instanční objekt s `Storage Blob Data Contributor` oprávněními pro data Lake Storage Gen2 účet úložiště.
 1. Získá ověřovací token pro autorizaci požadavků POST do [Data Lake Storage Gen2 REST API systému souborů](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/filesystem/create).
-1. Vyplní skutečný název vašeho účtu úložiště Data Lake Storage Gen2 v souborech `sparktransform.py` a. `query.hql`
+1. Vyplní skutečný název vašeho účtu úložiště Data Lake Storage Gen2 v `sparktransform.py` `query.hql` souborech a.
 1. Získá klíče úložiště pro účty Data Lake Storage Gen2 a BLOB Storage.
 1. Vytvoří jiné nasazení prostředků, aby se vytvořil kanál Azure Data Factory s přidruženými propojenými službami a aktivitami. Předá klíče úložiště jako parametry souboru šablony, aby propojené služby mohly správně přistupovat k účtům úložiště.
 
@@ -190,7 +190,7 @@ cat resourcesoutputs_adf.json | jq -r '.properties.outputs.factoryName.value'
 
 Pro aktivaci kanálu můžete:
 
-* Aktivujte kanál Data Factory v PowerShellu. Nahraďte `RESOURCEGROUP`a `DataFactoryName` příslušnými hodnotami a spusťte následující příkazy:
+* Aktivujte kanál Data Factory v PowerShellu. Nahraďte `RESOURCEGROUP` a `DataFactoryName` příslušnými hodnotami a spusťte následující příkazy:
 
     ```powershell
     # If you have multiple subscriptions, set the one to use
@@ -219,7 +219,7 @@ Pro aktivaci kanálu můžete:
 Pokud chcete ověřit, že je kanál spuštěný, můžete provést jeden z následujících kroků:
 
 * V datové továrně na portálu můžete přejít do části **monitorování** .
-* V Průzkumník služby Azure Storage přejít na účet úložiště Data Lake Storage Gen 2. Přejděte do systému `files` souborů a potom přejděte do `transformed` složky a zkontrolujte její obsah, abyste viděli, jestli kanál uspěl.
+* V Průzkumník služby Azure Storage přejít na účet úložiště Data Lake Storage Gen 2. Přejděte do `files` systému souborů a potom přejděte do `transformed` složky a zkontrolujte její obsah, abyste viděli, jestli kanál uspěl.
 
 Další způsoby, jak transformovat data pomocí služby HDInsight, najdete v [tomto článku o použití Jupyter notebook](/azure/hdinsight/spark/apache-spark-load-data-run-query).
 
@@ -232,7 +232,7 @@ Další způsoby, jak transformovat data pomocí služby HDInsight, najdete v [t
     scp scripts/query.hql sshuser@$llapClusterName-ssh.azurehdinsight.net:/home/sshuser/
     ```
 
-    Připomenutí: výchozí heslo je `Thisisapassword1`.
+    Připomenutí: výchozí heslo je `Thisisapassword1` .
 
 1. K přístupu ke clusteru LLAP použijte SSH. Zadejte příkaz:
 
@@ -252,24 +252,24 @@ Další způsoby, jak transformovat data pomocí služby HDInsight, najdete v [t
 
 1. Otevřete Power BI Desktop.
 
-1. V nabídce přejděte na **získat data** > **...**  >  **Azure** > **Interaktivní dotaz Azure HDInsight**.
+1. V nabídce přejděte na **získat data**  >  **...**  >  **Azure**  >  **Interaktivní dotaz HDInsight**
 
-1. Vyberte **Connect** (Připojit).
+1. Vyberte **Připojit**.
 
 1. Z dialogového okna **HDInsight Interactive Query** :
-    1. Do textového pole **Server** zadejte název clusteru LLAP ve formátu `https://LLAPCLUSTERNAME.azurehdinsight.net`.
-    1. Do textového pole **databáze** zadejte `default`.
+    1. Do textového pole **Server** zadejte název clusteru LLAP ve formátu `https://LLAPCLUSTERNAME.azurehdinsight.net` .
+    1. Do textového pole **databáze** zadejte `default` .
     1. Vyberte **OK**.
 
 1. V dialogovém okně **AzureHive** :
-    1. Do textového pole **uživatelské jméno** zadejte `admin`.
-    1. Do textového pole **heslo** zadejte `Thisisapassword1`.
-    1. Vyberte **Connect** (Připojit).
+    1. Do textového pole **uživatelské jméno** zadejte `admin` .
+    1. Do textového pole **heslo** zadejte `Thisisapassword1` .
+    1. Vyberte **Připojit**.
 
-1. Z **navigátoru**vyberte `sales`a/nebo `sales_raw` zobrazte náhled dat. Po načtení dat můžete experimentovat s řídicím panelem, který chcete vytvořit. Pokud chcete začít s Power BI řídicími panely, přečtěte si následující odkazy:
+1. Z **navigátoru**vyberte `sales` a/nebo `sales_raw` Zobrazte náhled dat. Po načtení dat můžete experimentovat s řídicím panelem, který chcete vytvořit. Pokud chcete začít s Power BI řídicími panely, přečtěte si následující odkazy:
 
 * [Úvod do řídicích panelů pro návrháře Power BI](https://docs.microsoft.com/power-bi/service-dashboards)
-* [Kurz: Začínáme s služba Power BI](https://docs.microsoft.com/power-bi/service-get-started)
+* [Kurz: Začínáme se službou Power BI](https://docs.microsoft.com/power-bi/service-get-started)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

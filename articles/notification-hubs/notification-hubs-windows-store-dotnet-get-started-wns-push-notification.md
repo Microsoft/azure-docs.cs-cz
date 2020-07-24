@@ -15,12 +15,12 @@ ms.date: 12/05/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 12/04/2019
-ms.openlocfilehash: f78f24ee68545b386169e29a5a52ccc572849ad7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 232bd96373f22957a88c94585f53237e05d5e5cf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80127062"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076700"
 ---
 # <a name="tutorial-send-notifications-to-universal-windows-platform-apps-using-azure-notification-hubs"></a>Kurz: odesílání oznámení do Univerzální platforma Windows aplikací pomocí Azure Notification Hubs
 
@@ -39,11 +39,11 @@ Proveďte následující kroky:
 > * Vytvoření ukázkové aplikace pro Windows
 > * Odeslání zkušebních oznámení
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 - Microsoft Visual Studio 2017 nebo novější. V příkladu v tomto kurzu se používá [Visual Studio 2019](https://www.visualstudio.com/products).
-- [Nainstalované nástroje pro vývoj aplikací pro UPW](https://msdn.microsoft.com/windows/uwp/get-started/get-set-up)
+- [Nainstalované nástroje pro vývoj aplikací pro UPW](/windows/uwp/get-started/get-set-up)
 - Aktivní účet Windows Store
 - Potvrďte, že je povolené nastavení **dostávat oznámení z aplikací a další odesílatelé** . 
     - V počítači spusťte okno **Nastavení** .
@@ -108,7 +108,7 @@ Vaše centrum oznámení je teď nakonfigurované pro práci se službou WNS. M�
     ![Okno Spravovat balíčky NuGet][20]
 
     Tato akce stáhne a nainstaluje knihovnu služby Azure Notification Hubs pro Windows a přidá na ni odkaz pomocí [balíčku NuGet Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs).
-9. Otevřete soubor `App.xaml.cs` projektu a přidejte následující příkazy:
+9. Otevřete `App.xaml.cs` soubor projektu a přidejte následující příkazy:
 
     ```csharp
     using Windows.Networking.PushNotifications;
@@ -116,7 +116,7 @@ Vaše centrum oznámení je teď nakonfigurované pro práci se službou WNS. M�
     using Windows.UI.Popups;
     ```
 
-10. V `App.xaml.cs` souboru projektu vyhledejte `App` třídu a přidejte následující `InitNotificationsAsync` definici metody. Nahraďte `<your hub name>` názvem centra oznámení, které jste vytvořili v Azure Portal, a `<Your DefaultListenSharedAccessSignature connection string>` nahraďte `DefaultListenSharedAccessSignature` připojovacím řetězcem na stránce **Policies (zásady přístupu** ) centra oznámení:
+10. V `App.xaml.cs` souboru projektu vyhledejte `App` třídu a přidejte následující `InitNotificationsAsync` definici metody. Nahraďte `<your hub name>` názvem centra oznámení, které jste vytvořili v Azure Portal, a nahraďte `<Your DefaultListenSharedAccessSignature connection string>` `DefaultListenSharedAccessSignature` připojovacím řetězcem na stránce **Policies (zásady přístupu** ) centra oznámení:
 
     ```csharp
     private async void InitNotificationsAsync()
@@ -139,9 +139,9 @@ Vaše centrum oznámení je teď nakonfigurované pro práci se službou WNS. M�
     Tento kód načte identifikátor URI kanálu pro aplikaci z WNS a pak zaregistruje tento kanál URI pomocí centra oznámení.
 
     >[!NOTE]
-    > `hub name` Zástupný symbol nahraďte názvem centra oznámení, který se zobrazí v Azure Portal. Také nahraďte zástupný symbol připojovacího řetězce `DefaultListenSharedAccessSignature` připojovacím řetězcem, který jste získali ze stránky **zásady přístupu** vašeho centra oznámení v předchozí části.
+    > `hub name`Zástupný symbol nahraďte názvem centra oznámení, který se zobrazí v Azure Portal. Také nahraďte zástupný symbol připojovacího řetězce `DefaultListenSharedAccessSignature` připojovacím řetězcem, který jste získali ze stránky **zásady přístupu** vašeho centra oznámení v předchozí části.
 
-11. V horní části obslužné rutiny `OnLaunched` události v `App.xaml.cs`přidejte následující volání do nové `InitNotificationsAsync` metody:
+11. V horní části `OnLaunched` obslužné rutiny události v `App.xaml.cs` přidejte následující volání do nové `InitNotificationsAsync` metody:
 
     ```csharp
     InitNotificationsAsync();
@@ -191,6 +191,6 @@ notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md)
 <!-- URLs. -->
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
-[toast catalog]: https://msdn.microsoft.com/library/windows/apps/hh761494.aspx
-[tile catalog]: https://msdn.microsoft.com/library/windows/apps/hh761491.aspx
-[badge overview]: https://msdn.microsoft.com/library/windows/apps/hh779719.aspx
+[toast catalog]: /previous-versions/windows/apps/hh761494(v=win.10)
+[tile catalog]: /previous-versions/windows/apps/hh761491(v=win.10)
+[badge overview]: /previous-versions/windows/apps/hh779719(v=win.10)

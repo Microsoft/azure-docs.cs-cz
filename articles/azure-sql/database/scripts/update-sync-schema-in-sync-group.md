@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 1cfc6f71543787fb6e8393fe4a5162ffefb0a3a0
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 44a9b0b4d609013147f799ae19f750c34e81837c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196662"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084870"
 ---
 # <a name="use-powershell-to-update-the-sync-schema-in-an-existing-sync-group"></a>Aktualizace schématu synchronizace ve stávající skupině synchronizace pomocí PowerShellu
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
@@ -86,7 +86,7 @@ Skript **UpdateSyncSchema** používá následující příkazy. Každý příka
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
+Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/).
 
 Další ukázkové skripty PowerShellu pro službu SQL Database najdete v tématu [Skripty PowerShellu pro službu Azure SQL Database](../powershell-script-content-guide.md).
 
@@ -95,7 +95,7 @@ Další informace o Synchronizace dat SQL najdete v tématech:
 - Přehled – [synchronizace dat mezi Azure SQL Database a SQL Server pomocí synchronizace dat SQL v Azure](../sql-data-sync-data-sql-server-sql-database.md)
 - Nastavení synchronizace dat
     - Použití Azure Portal- [kurzu: nastavení synchronizace dat SQL synchronizace dat mezi Azure SQL Database a SQL Server](../sql-data-sync-sql-server-configure.md)
-    - Použití prostředí PowerShell
+    - Použití PowerShellu
         -  [Synchronizace dat mezi několika databázemi v Azure SQL Database pomocí PowerShellu](sql-data-sync-sync-data-between-sql-databases.md)
         -  [Použití PowerShellu k synchronizaci dat mezi Azure SQL Database a SQL Server](sql-data-sync-sync-data-between-azure-onprem.md)
 - Agent synchronizace dat – [Agent synchronizace dat pro synchronizace dat SQL v Azure](../sql-data-sync-agent-overview.md)

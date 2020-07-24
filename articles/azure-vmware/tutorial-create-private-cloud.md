@@ -2,27 +2,27 @@
 title: Kurz – nasazení clusteru vSphere v Azure
 description: Naučte se nasadit cluster vSphere v Azure pomocí řešení Azure VMWare (AVS).
 ms.topic: tutorial
-ms.date: 05/04/2020
-ms.openlocfilehash: fc753f43563650357cf43c102e94f0057b62a406
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.date: 07/15/2020
+ms.openlocfilehash: 4f3b33ea401c62124ae5f8a4c881d86d2f19b40c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873740"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079413"
 ---
 # <a name="tutorial-deploy-an-avs-private-cloud-in-azure"></a>Kurz: nasazení privátního cloudu služby AVS v Azure
 
 Řešení Azure VMware (AVS) poskytuje možnost nasadit cluster vSphere v Azure. Minimální počáteční nasazení je tři hostitele. Další hostitele je možné přidat najednou, maximálně 16 hostitelů na jeden cluster. 
 
-Protože možnost AVS vám neumožní spravovat privátní cloud s vaším místním systémem vCenter při spuštění, budete muset provést další konfiguraci a připojení k místní instanci vCenter, virtuální síti a dalším. V této sérii kurzů budou zahrnuty tyto postupy a související požadavky.
+Protože aplikace AVS neumožňuje spravovat váš privátní cloud s vaším místním systémem vCenter při spuštění, je potřeba další konfigurace a připojení k místní instanci vCenter, virtuální síti a další. Tyto postupy a související požadavky jsou pokryté v tomto kurzu.
 
-V tomto kurzu:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření privátního cloudu AVS
 > * Ověření nasazení privátního cloudu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Odpovídající práva správce a oprávnění k vytvoření privátního cloudu.
@@ -30,91 +30,89 @@ V tomto kurzu:
 
 ## <a name="register-the-resource-provider"></a>Registrace poskytovatele prostředků
 
-Aby bylo možné používat řešení Azure VMware, musíte nejdřív zaregistrovat poskytovatele prostředků. Následující příklad registruje poskytovatele prostředků v rámci vašeho předplatného.
+Pokud chcete používat funkci AVS, musíte nejdřív zaregistrovat poskytovatele prostředků s vaším předplatným.
 
-```azurecli-interactive
+```
+azurecli-interactive
 az provider register -n Microsoft.AVS --subscription <your subscription ID>
 ```
 
 Další způsoby registrace poskytovatele prostředků najdete v tématu [poskytovatelé a typy prostředků Azure](../azure-resource-manager/management/resource-providers-and-types.md).
 
-## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
-
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-private-cloud"></a>Vytvoření privátního cloudu
 
 Privátní cloud služby AVS můžete vytvořit pomocí [Azure Portal](#azure-portal) nebo pomocí [Azure CLI](#azure-cli).
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 
-V Azure Portal vyberte **+ vytvořit nový prostředek**. Do textového pole **Hledat na Marketplace** zadejte `Azure VMware Solution` a ze seznamu vyberte **Řešení Azure VMware** . V okně **Řešení Azure VMware** vyberte **vytvořit** .
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
 
-Na kartě **základy** zadejte hodnoty polí. V následující tabulce je uveden podrobný seznam vlastností.
+1. Vyberte **vytvořit nový prostředek**. Do textového pole **Hledat na Marketplace** zadejte `Azure VMware Solution` a ze seznamu vyberte **Řešení Azure VMware** . V okně **Řešení Azure VMware** vyberte **vytvořit** .
 
-| Pole   | Hodnota  |
-| ---| --- |
-| **Předplatné** | Předplatné, které plánujete použít pro nasazení.|
-| **Skupina prostředků** | Skupina prostředků pro prostředky privátního cloudu. |
-| **Umístění** | Vyberte umístění, jako je například **východní USA**.|
-| **Název prostředku** | Název vašeho privátního cloudu služby AVS |
-| **SKLADOVÉ** | Vyberte hodnotu následující SKU: AV36 |
-| **Dvou** | Toto je počet hostitelů, které se mají přidat do clusteru privátního cloudu. Výchozí hodnota je 3. Tuto hodnotu je možné vyhodnotit nebo snížit po nasazení.  |
-| **heslo správce vCenter** | Zadejte heslo správce cloudu. |
-| **Heslo správce NSX-T** | Zadejte heslo správce NSX-T. |
-| **Blok adresy** | Zadejte blok IP adres pro síť CIDR privátního cloudu. Příklad: 10.175.0.0/22. |
+1. Na kartě **základy** zadejte hodnoty polí. V následující tabulce jsou uvedeny vlastnosti polí.
 
-:::image type="content" source="./media/tutorial-create-private-cloud/create-private-cloud.png" alt-text="Vytvoření privátního cloudu" border="true":::
+   | Pole   | Hodnota  |
+   | ---| --- |
+   | **Předplatné** | Předplatné, které plánujete použít pro nasazení.|
+   | **Skupina prostředků** | Skupina prostředků pro prostředky privátního cloudu. |
+   | **Umístění** | Vyberte umístění, jako je například **východní USA**.|
+   | **Název prostředku** | Název vašeho privátního cloudu služby AVS |
+   | **Skladová jednotka (SKU)** | Vyberte následující hodnotu SKU: AV36 |
+   | **Dvou** | Počet hostitelů, kteří mají být přidáni do clusteru privátního cloudu. Výchozí hodnota je 3, což může být vyvoláno nebo sníženo po nasazení.  |
+   | **heslo správce vCenter** | Zadejte heslo správce cloudu. |
+   | **Heslo správce NSX-T** | Zadejte heslo správce NSX-T. |
+   | **Blok adresy** | Zadejte blok IP adres pro síť CIDR privátního cloudu, například 10.175.0.0/22. |
 
-Po dokončení vyberte **zkontrolovat + vytvořit**. Na další obrazovce ověřte zadané informace. Pokud jsou informace správné, vyberte **vytvořit**.
+   :::image type="content" source="./media/tutorial-create-private-cloud/create-private-cloud.png" alt-text="Vytvoření privátního cloudu" border="true":::
 
-> [!NOTE]
-> Tento krok trvá zhruba dvě hodiny. 
+1. Po dokončení vyberte **zkontrolovat + vytvořit**. Na další obrazovce ověřte zadané informace. Pokud jsou informace správné, vyberte **vytvořit**.
+
+   > [!NOTE]
+   > Tento krok trvá zhruba dvě hodiny. 
+
+1. Ověřte, že nasazení proběhlo úspěšně. Přejděte do skupiny prostředků, kterou jste vytvořili, a vyberte svůj privátní cloud.  Po dokončení nasazení se zobrazí stav **dokončeno** . 
+
+   :::image type="content" source="./media/tutorial-create-private-cloud/validate-deployment.png" alt-text="Ověření nasazení privátního cloudu" border="true":::
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Alternativně můžete pomocí rozhraní příkazového řádku Azure vytvořit privátní cloud služby AVS v Azure. Pokud to chcete provést, můžete použít Azure Cloud Shell následující kroky ukazují, jak to provést.
+Místo Azure Portal vytvoření privátního cloudu služby AVS můžete použít rozhraní příkazového řádku Azure pomocí Azure Cloud Shell. Je to bezplatné interaktivní prostředí s předinstalovanými a nakonfigurovanými běžnými nástroji Azure pro použití s vaším účtem. 
 
 #### <a name="open-azure-cloud-shell"></a>Otevření služby Azure Cloud Shell
 
-Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem.
-
-Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese https://shell.azure.com/bash. Vyberte **Kopírovat** pro zkopírování bloků kódu, vložení do Cloud Shell a stisknutím klávesy **ENTER** ji spusťte.
+Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče tak, že přejdete na [https://shell.azure.com/bash](https://shell.azure.com/bash) . Vyberte **Kopírovat** pro zkopírování bloků kódu, vložení do Cloud Shell a stisknutím klávesy **ENTER** ji spusťte.
 
 #### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *eastus* :
 
-```azurecli-interactive
+```
+azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
 #### <a name="create-a-private-cloud"></a>Vytvoření privátního cloudu
 
-Pokud chcete vytvořit privátní cloud služby AVS, musíte zadat název skupiny prostředků, název privátního cloudu, umístění, velikost clusteru.
+Zadejte název skupiny prostředků, název privátního cloudu, umístění a velikost clusteru.
 
+| Vlastnost  | Popis  |
+| --------- | ------------ |
+| **-g** (název skupiny prostředků)     | Název skupiny prostředků pro prostředky privátního cloudu.        |
+| **-n** (název privátního cloudu)     | Název vašeho privátního cloudu služby AVS        |
+| **--umístění**     | Umístění používané pro váš privátní cloud.         |
+| **--cluster-Size**     | Velikost clusteru. Minimální hodnota je 3.         |
+| **--Network-Block**     | Blok IP adres CIDR pro síť, který se má použít pro privátní cloud. Blok adres by neměl překrývat bloky adres používané v jiných virtuálních sítích, které jsou ve vašem předplatném a v místních sítích.        |
+| **--SKU** | Hodnota SKU: AV36 |
 
-|Vlastnost  |Popis  |
-|---------|---------|
-|Název skupiny prostředků     | Název skupiny prostředků, do které nasazujete privátní cloud.        |
-|Název privátního cloudu     | Název privátního cloudu.        |
-|Umístění     | Umístění, které se používá pro privátní cloud         |
-|Velikost clusteru     | Velikost clusteru. Minimální hodnota je 3.         |
-|Síťový blok     | Rozsah CIDR, který se má použít pro privátní cloud. Doporučuje se, aby bylo jedinečné v místním prostředí i v prostředí Azure.        |
-
-```azurecli-interactive
-az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --location eastus --cluster-size 3 --network-block xx.xx.xx.xx/22
+```
+azurecli-interactive
+az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --location eastus --cluster-size 3 --network-block xx.xx.xx.xx/22 --sku AV36
 ```
 
-## <a name="verify-deployment-was-successful"></a>Ověření nasazení bylo úspěšné.
+## <a name="delete-a-private-cloud-azure-portal"></a>Odstranění privátního cloudu (Azure Portal)
 
-Přejděte do skupiny prostředků, kterou jste vytvořili, a vyberte svůj privátní cloud. po dokončení nasazení se zobrazí následující obrazovka se stavem **úspěch**.
-
-:::image type="content" source="./media/tutorial-create-private-cloud/validate-deployment.png" alt-text="Ověření nasazení privátního cloudu" border="true":::
-
-## <a name="delete-a-private-cloud"></a>Odstranění privátního cloudu
-
-Pokud máte privátní cloud služby AVS, který jste ověřili, že už nepotřebujete, můžete ho odstranit. Při odstranění privátního cloudu se odstraní všechny clustery společně se všemi svými součástmi.
+Pokud máte privátní cloud služby AVS, který už nepotřebujete, můžete ho odstranit. Při odstranění privátního cloudu se odstraní všechny clustery společně se všemi svými součástmi.
 
 Provedete to tak, že v Azure Portal přejdete do svého privátního cloudu a vyberete **Odstranit**. Na stránce potvrzení potvrďte název privátního cloudu a vyberte **Ano**.
 

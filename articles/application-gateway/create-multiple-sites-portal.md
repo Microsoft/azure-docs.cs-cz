@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 07/26/2019
+ms.date: 07/20/2020
 ms.author: victorh
-ms.openlocfilehash: ca6be666a9b77532b4f1c61f6e3391c239e82c91
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2f1501438c5fde5be401411ee51b212323427761
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74075151"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068114"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Kurz: vytvoření a konfigurace aplikační brány pro hostování více webů pomocí Azure Portal
 
@@ -22,22 +22,22 @@ Můžete použít Azure Portal ke [konfiguraci hostování více](multiple-site-
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření služby Application Gateway
+> * Vytvoření brány Application Gateway
 > * Vytváření virtuálních počítačů pro back-end servery
 > * Vytváření back-end fondů se servery back-end
 > * Vytvořit back-endové naslouchací procesy
 > * Vytvořit pravidla směrování
 > * Vytvoření záznamu CNAME v doméně
 
-![Příklad směrování na více webů](./media/create-multiple-sites-portal/scenario.png)
+:::image type="content" source="./media/create-multiple-sites-portal/scenario.png" alt-text="Application Gateway více lokalit":::
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k Azure Portal v[https://portal.azure.com](https://portal.azure.com)
 
-## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
+## <a name="create-an-application-gateway"></a>Vytvoření brány Application Gateway
 
 1. V levé nabídce Azure Portal vyberte **vytvořit prostředek** . Zobrazí se **nové** okno.
 
@@ -50,7 +50,7 @@ Přihlaste se k Azure Portal v[https://portal.azure.com](https://portal.azure.co
    - **Skupina prostředků**: pro skupinu prostředků vyberte **myResourceGroupAG** . Pokud neexistuje, vyberte **vytvořit novou** a vytvořte ji.
    - **Název aplikační brány**: jako název služby Application Gateway zadejte *myAppGateway* .
 
-     ![Vytvořit novou aplikační bránu: Základy](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png" alt-text="Vytvořit Application Gateway":::
 
 2.  Aby mohl Azure komunikovat mezi prostředky, které vytvoříte, potřebuje virtuální síť. Můžete buď vytvořit novou virtuální síť, nebo použít existující. V tomto příkladu vytvoříte novou virtuální síť ve stejnou chvíli, kdy vytvoříte Aplikační bránu. Instance Application Gateway se vytvářejí v oddělených podsítích. V tomto příkladu vytvoříte dvě podsítě: jednu pro aplikační bránu a druhou pro back-end servery.
 
@@ -66,7 +66,7 @@ Přihlaste se k Azure Portal v[https://portal.azure.com](https://portal.azure.co
 
     Výběrem **OK** zavřete okno **vytvořit virtuální síť** a uložte nastavení virtuální sítě.
 
-     ![Vytvořit novou aplikační bránu: virtuální síť](./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png)
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png" alt-text="Vytvořit virtuální síť":::
     
 3. Na kartě **základy** přijměte výchozí hodnoty pro ostatní nastavení a potom vyberte **Další: front-endu**.
 
@@ -78,7 +78,7 @@ Přihlaste se k Azure Portal v[https://portal.azure.com](https://portal.azure.co
 
 2. Zvolte **vytvořit nový** pro **veřejnou IP adresu** a jako název veřejné IP adresy zadejte *myAGPublicIPAddress* a pak vyberte **OK**. 
 
-     ![Vytvořit novou aplikační bránu: front-endové](./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png)
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png" alt-text="Vytvořit virtuální síť":::
 
 3. Vyberte **Další: back-endy**.
 
@@ -96,7 +96,7 @@ Back-end fond slouží ke směrování požadavků na servery back-end, které o
 3. V okně **Přidat fond back-endu** vyberte **Přidat** a uložte konfiguraci fondu back-end a vraťte se na kartu back- **endy** .
 4. Teď přidejte další back-end fond s názvem *fabrikamPool*.
 
-     ![Vytvořit novou aplikační bránu: back-endy](./media/create-multiple-sites-portal/backend-pools.png)
+    :::image type="content" source="./media/create-multiple-sites-portal/backend-pools.png" alt-text="Vytvořit back-endy":::
 
 4. Na kartě **back-endy** vyberte **Další: Konfigurace**.
 
@@ -117,9 +117,12 @@ Na kartě **Konfigurace** propojíte front-endové a back-endové fondy, které 
    - **Typ naslouchacího procesu**: více lokalit
    - **Název hostitele**: **www.contoso.com**
 
+>[!NOTE]
+> Pomocí Application Gateway nebo WAF v2 SKU můžete také nakonfigurovat až 5 názvů hostitelů na naslouchací proces a v názvu hostitele můžete použít zástupné znaky. Další informace najdete [v tématu názvy hostitelů se zástupnými znaky v naslouchací](multiple-site-overview.md#wildcard-host-names-in-listener-preview) službě. V Azure Portal je můžete definovat v samostatných textových polích v poli název hostitele.
+
    Přijměte výchozí hodnoty pro ostatní nastavení na kartě **naslouchací proces** a potom vyberte kartu **cílení na back-end** a nakonfigurujte zbývající část pravidla směrování.
 
-   ![Vytvoření nové aplikační brány: naslouchací proces](./media/create-multiple-sites-portal/routing-rule.png)
+   :::image type="content" source="./media/create-multiple-sites-portal/routing-rule.png" alt-text="Vytvořit pravidlo směrování":::
 
 4. Na kartě **cílení na server back-end** vyberte **ContosoPool** pro **cíl back-endu**.
 
@@ -128,7 +131,7 @@ Na kartě **Konfigurace** propojíte front-endové a back-endové fondy, které 
 6. V okně **Přidat pravidlo směrování** vyberte **Přidat** a uložte pravidlo směrování a vraťte se na kartu **Konfigurace** .
 7. Vyberte **Přidat pravidlo** a přidejte podobné pravidlo, naslouchací proces, cíl back-endu a nastavení HTTP pro Fabrikam.
 
-     ![Vytvoření nové aplikační brány: pravidlo směrování](./media/create-multiple-sites-portal/fabrikamRule.png)
+     :::image type="content" source="./media/create-multiple-sites-portal/fabrikam-rule.png" alt-text="Pravidlo společnosti Fabrikam":::
 
 7. Vyberte **Další: značky** a potom **Další: zkontrolovat + vytvořit**.
 
@@ -218,7 +221,7 @@ Po vytvoření služby Application Gateway s veřejnou IP adresou můžete získ
 
 2. Zkopírujte IP adresu a použijte ji jako hodnotu nového záznamu na *webové* stránce ve vašich doménách.
 
-## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
+## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
 1. Do adresního řádku prohlížeče zadejte název domény. Příklad: `http://www.contoso.com`.
 

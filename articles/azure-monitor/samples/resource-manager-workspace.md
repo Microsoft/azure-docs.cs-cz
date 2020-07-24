@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: 66c62156cec79a65b856a6f4c8f2ad34aa687b05
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: d5af288ea564c4118e010c8d0f0f86c5337ce170
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83854490"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024048"
 ---
 # <a name="resource-manager-template-samples-for-log-analytics-workspaces-in-azure-monitor"></a>Ukázky šablon Správce prostředků pro Log Analytics pracovní prostory v Azure Monitor
 Tento článek obsahuje ukázkové [Azure Resource Manager šablony](../../azure-resource-manager/templates/template-syntax.md) pro vytváření a konfiguraci Log Analytics pracovních prostorů v Azure monitor. Každá ukázka obsahuje soubor šablony a soubor parametrů s ukázkovými hodnotami, které se mají poskytnout šabloně.
@@ -24,7 +24,7 @@ Tento článek obsahuje ukázkové [Azure Resource Manager šablony](../../azure
 - [Pracovní prostory Microsoft. OperationalInsights](/azure/templates/microsoft.operationalinsights/2020-03-01-preview/workspaces) 
 - [Pracovní prostory Microsoft. OperationalInsights/zdroje dat](/azure/templates/microsoft.operationalinsights/2020-03-01-preview/workspaces/datasources)
 
-## <a name="create-a-log-analytics-workspace"></a>Vytvoření pracovního prostoru služby Log Analytics
+## <a name="create-a-log-analytics-workspace"></a>Vytvoření pracovního prostoru Log Analytics
 Následující ukázka vytvoří nový prázdný pracovní prostor Log Analytics.
 
 ### <a name="notes"></a>Poznámky
@@ -609,7 +609,7 @@ Následující ukázka přidá kolekci [vlastních protokolů](../platform/data-
 
 ### <a name="notes"></a>Poznámky
 
-- Konfigurace oddělovačů a extrakcí může být složitá. Pro pomoc můžete definovat vlastní protokol pomocí Azure Portal a načíst jeho konfiguraci pomocí [Get-AzOperationalInsightsDataSource](https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.8.0) s **-Kind** nastaveného na **CustomLog**.
+- Konfigurace oddělovačů a extrakcí může být složitá. Pro pomoc můžete definovat vlastní protokol pomocí Azure Portal a načíst jeho konfiguraci pomocí [Get-AzOperationalInsightsDataSource](/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.8.0) s **-Kind** nastaveného na **CustomLog**.
 
   
 ### <a name="template-file"></a>Soubor šablony

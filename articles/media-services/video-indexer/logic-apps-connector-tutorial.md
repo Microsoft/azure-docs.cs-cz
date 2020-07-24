@@ -1,25 +1,25 @@
 ---
 title: Video Indexer konektory s využitím kurzu aplikace logiky a automatizace pro Power automat.
 description: V tomto kurzu se dozvíte, jak odemknout nové prostředí a příležitosti finanční zhodnocení Video Indexer konektory pomocí aplikace logiky a automatizace Power automatu.
-author: anikaz
+author: anzaman
 manager: johndeu
-ms.author: anzaman
+ms.author: alzam
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 05/01/2020
-ms.openlocfilehash: 932f52aa694c13fd3696d82872135304a4e41bdc
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 5f29e616c0643914ca28921eee481105a5feb0c5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801123"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047095"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Kurz: použití Video Indexer s aplikací logiky a automatickým automatickým zapnutím
 
 Azure Media Services [video indexer v2 REST API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Delete-Video?) podporuje komunikaci mezi servery i mezi klientem a serverem, a umožňuje video indexer uživatelům integrovat video a zvukové poznatky do své aplikační logiky, a to díky podpoře nových prostředí a finanční zhodnocení příležitostí.
 
-Abychom integraci zajistili ještě snazší, podporujeme [Logic Apps](https://azure.microsoft.com/services/logic-apps/) a [Power](https://preview.flow.microsoft.com/connectors/shared_videoindexer-v2/video-indexer-v2/) automaty, které jsou kompatibilní s naším rozhraním API. Pomocí konektorů můžete nastavit vlastní pracovní postupy, abyste mohli efektivně indexovat a extrahovat poznatky z velkého množství videosouborů a zvukových souborů, aniž byste museli psát jediný řádek kódu. Navíc pomocí konektorů pro integraci získáte lepší přehled o stavu pracovního postupu a snadném způsobu jeho ladění.  
+Abychom integraci zajistili ještě snazší, podporujeme [Logic Apps](https://azure.microsoft.com/services/logic-apps/)   a [Power](https://preview.flow.microsoft.com/connectors/shared_videoindexer-v2/video-indexer-v2/)automaty   , které jsou kompatibilní s naším rozhraním API. Pomocí konektorů můžete nastavit vlastní pracovní postupy, abyste mohli efektivně indexovat a extrahovat poznatky z velkého množství videosouborů a zvukových souborů, aniž byste museli psát jediný řádek kódu. Navíc pomocí konektorů pro integraci získáte lepší přehled o stavu pracovního postupu a snadném způsobu jeho ladění.  
 
 Abychom vám pomohli rychle začít s Video Indexer konektory, budeme postupovat podle ukázkové aplikace logiky a řešení Power Automate, které můžete nastavit. 
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli začít, budete také potřebovat účet Video Indexer společně s přístupem k rozhraním API prostřednictvím klíče rozhraní API. 
 
@@ -64,7 +64,7 @@ Potom přejdete na akci vytvořit identifikátor URI SAS podle cesty a vyberte m
 
 ![Identifikátor URI SAS podle cesty](./media/logic-apps-connector-tutorial/sas-uri-by-path.jpg)
 
-Pokud chcete získat video indexer token účtu, vyplňte  [umístění a ID svého účtu](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-use-apis#location).
+Pokud chcete získat Video Indexer token účtu, vyplňte [umístění a ID svého účtu](./video-indexer-use-apis.md#account-id)   .
 
 ![Získání přístupového tokenu účtu](./media/logic-apps-connector-tutorial/account-access-token.png)
 
@@ -90,7 +90,7 @@ K nastavení tohoto toku budete muset zadat Video Indexer klíč rozhraní API a
 
 U triggeru se zobrazí pole Adresa URL příspěvku HTTP. Adresa URL se nevygeneruje až po uložení toku; adresu URL ale budete potřebovat nakonec. Vrátíme se k tomu. 
 
-Pokud chcete získat video indexer token účtu, vyplňte  [umístění a ID svého účtu](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-use-apis#location).  
+Pokud chcete získat Video Indexer token účtu, vyplňte [umístění a ID svého účtu](./video-indexer-use-apis.md#account-id)   .  
 
 Přejdete na akci načíst index videa a vyplňte požadované parametry. Pro ID videa zadejte následující výraz: triggerOutputs () [' dotazy '] [' ID '] 
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1070230d968a6239a5a4aab5ac412280393d17da
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: bcc0651bace15280127bb725c21b32673f8cdb6e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133168"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071208"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrace virtuálních počítačů služby Amazon Web Services (AWS) do Azure
 
@@ -22,7 +22,7 @@ V tomto kurzu se dozvíte, jak migrovat virtuální počítače s Amazon Web Ser
 
 
 > [!TIP]
-> Nyní byste měli použít službu Azure Migrate k migraci virtuálních počítačů s AWS do Azure namísto služby Azure Site Recovery. [Další informace](../migrate/tutorial-migrate-physical-virtual-machines.md).
+> Nyní byste měli použít službu Azure Migrate k migraci virtuálních počítačů s AWS do Azure namísto služby Azure Site Recovery. [Přečtěte si další informace](../migrate/tutorial-migrate-physical-virtual-machines.md).
 
 
 > [!div class="checklist"]
@@ -34,10 +34,10 @@ V tomto kurzu se dozvíte, jak migrovat virtuální počítače s Amazon Web Ser
 > * Otestování převzetí služeb při selhání, aby bylo jisté, že všechno funguje.
 > * Spustit jednorázové převzetí služeb při selhání do Azure
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/pricing/free-trial/), ještě než začnete.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - Ověřte, že na virtuálních počítačích, které chcete migrovat, běží podporovaná verze operačního systému. Podporované verze: 
   - Windows Server 2016 
   - Windows Server 2012 R2
@@ -115,7 +115,7 @@ Na stránce trezoru na webu Azure Portal vyberte v části **Začínáme** možn
 
 Na stránce **Cíl ochrany** vyberete následující hodnoty:
 
-|    |  |
+| Krok | Výběr |
 |---------|-----------|
 | Kde se vaše počítače nachází? |Vyberte možnost pro **místní řešení**.|
 | Kam chcete své počítače replikovat? |Vyberte možnost **připojení k Azure**.|
@@ -181,7 +181,7 @@ Povolte replikaci pro všechny virtuální počítače, které chcete migrovat. 
 2. V části **Pro místní počítače a virtuální počítače Azure** vyberte **Krok 1: Replikace aplikace**. Na stránkách průvodce zadejte následující informace. Po zadání údajů na každé stránce zvolte **OK**.
    - 1: Konfigurace zdroje
 
-     |  |  |
+     | Parametr | Hodnota |
      |-----|-----|
      | Zdroj: | Zvolte **Místní**.|
      | Zdrojové umístění:| Zadejte název instance EC2 konfiguračního serveru.|
@@ -190,7 +190,7 @@ Povolte replikaci pro všechny virtuální počítače, které chcete migrovat. 
 
    - 2: Konfigurace cíle
 
-     |  |  |
+     | Parametr | Hodnota |
      |-----|-----|
      | Cíl: | Nechte zadanou výchozí hodnotu.|
      | Předplatné: | Zvolte předplatné, které jste dosud používali.|

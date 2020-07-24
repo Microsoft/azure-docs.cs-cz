@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: 5d4990fd806aed75d9b5e5ddd3e9a615631d9d65
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 977f138fad1f2eb1eae95049d2bd8a730ba5687e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82146520"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048733"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Kurz: vytvoření automatizovaných pracovních postupů založených na plánech pomocí Azure Logic Apps
 
@@ -32,16 +32,16 @@ Jakmile budete hotovi, vaše aplikace logiky bude na základní úrovni vypadat 
 
 ![Přehled pracovního postupu vysoké úrovně aplikace logiky](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-overview.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud předplatné nemáte, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
-* E-mailový účet od poskytovatele e-mailu, který podporuje Logic Apps, jako je například Office 365 Outlook, Outlook.com nebo Gmail. Pokud máte jiného poskytovatele, [tady se podívejte na seznam konektorů](https://docs.microsoft.com/connectors/). V tomto rychlém startu se používá účet Office 365 Outlook. Pokud používáte jiný e-mailový účet, obecné kroky zůstanou stejné, ale vaše uživatelské rozhraní se může mírně lišit.
+* E-mailový účet od poskytovatele e-mailu, který podporuje Logic Apps, jako je například Office 365 Outlook, Outlook.com nebo Gmail. Pokud máte jiného poskytovatele, [tady se podívejte na seznam konektorů](/connectors/). V tomto rychlém startu se používá účet Office 365 Outlook. Pokud používáte jiný e-mailový účet, obecné kroky zůstanou stejné, ale vaše uživatelské rozhraní se může mírně lišit.
 
   > [!IMPORTANT]
-  > Pokud chcete použít konektor Gmail, můžou tento konektor používat jenom obchodní účty G-Suite bez omezení v Logic Apps. Pokud máte účet příjemce Gmail, můžete tento konektor použít jenom pro konkrétní služby schválené v Google, nebo můžete [vytvořit klientskou aplikaci Google pro ověřování pomocí konektoru Gmail](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Další informace najdete v tématu [zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
+  > Pokud chcete použít konektor Gmail, můžou tento konektor používat jenom obchodní účty G-Suite bez omezení v Logic Apps. Pokud máte účet příjemce Gmail, můžete tento konektor použít jenom pro konkrétní služby schválené v Google, nebo můžete [vytvořit klientskou aplikaci Google pro ověřování pomocí konektoru Gmail](/connectors/gmail/#authentication-and-bring-your-own-application). Další informace najdete v tématu [zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
-* K získání doby trvání cesty pro nějakou trasu potřebujete přístupový klíč k rozhraní API Map Bing. Pokud chcete tento klíč získat, řiďte se kroky [postupu získání klíče k Mapám Bing](https://docs.microsoft.com/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key).
+* K získání doby trvání cesty pro nějakou trasu potřebujete přístupový klíč k rozhraní API Map Bing. Pokud chcete tento klíč získat, řiďte se kroky [postupu získání klíče k Mapám Bing](/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -49,30 +49,30 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašo
 
 ## <a name="create-your-logic-app"></a>Vytvoření aplikace logiky
 
-1. V hlavní nabídce Azure vyberte **vytvořit prostředek** > **Integration** > **Logic App**.
+1. V hlavní nabídce Azure vyberte **vytvořit prostředek**  >  **Integration**  >  **Logic App**.
 
    ![Vytvoření prostředku aplikace logiky](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-new-logic-app-resource.png)
 
-1. V části **Vytvořit aplikaci logiky** zadejte podrobnosti o vaší aplikaci logiky podle následujícího obrázku a popisu. Až to budete mít, vyberte **Vytvořit**.
+1. V části **Vytvořit aplikaci logiky** zadejte podrobnosti o vaší aplikaci logiky podle následujícího obrázku a popisu. Po dokončení vyberte **Vytvořit**.
 
    ![Zadání informací o vaší aplikaci logiky](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app-settings.png)
 
    | Vlastnost | Hodnota | Popis |
    |----------|-------|-------------|
-   | **Název** | LA-dobacesty | Název vaší aplikace logiky, který může obsahovat jenom písmena, číslice, spojovníky (`-`), podtržítka`_`(), kulaté závorky`(`( `)`,) a tečky`.`(). V tomto příkladu se používá "LA-Dobacesty". |
+   | **Název** | LA-dobacesty | Název vaší aplikace logiky, který může obsahovat jenom písmena, číslice, spojovníky ( `-` ), podtržítka ( `_` ), kulaté závorky ( `(` , `)` ) a tečky ( `.` ). V tomto příkladu se používá "LA-Dobacesty". |
    | **Předplatné** | <*Vaše předplatné – Azure-Subscription-Name*> | Název vašeho předplatného Azure |
    | **Skupina prostředků** | LA-dobacesty-SP | Název [skupiny prostředků Azure](../azure-resource-manager/management/overview.md), která se používá k uspořádání souvisejících prostředků. V tomto příkladu se používá "LA-Dobacesty-RG". |
    | **Umístění** | USA – západ | TNelze načíst oblast, kam se mají ukládat informace o aplikaci logiky V tomto příkladu se používá "Západní USA". |
    | **Log Analytics** | Vypnuto | Pokud chcete zapnout protokolování diagnostiky, ponechte nastavení **Vypnuto**. |
    ||||
 
-1. Až Azure nasadí vaši aplikaci, vyberte na panelu nástrojů Azure možnost **oznámení** > **Přejít na prostředek** pro vaši nasazenou aplikaci logiky.
+1. Až Azure nasadí vaši aplikaci, vyberte na panelu nástrojů Azure možnost **oznámení**  >  **Přejít na prostředek** pro vaši nasazenou aplikaci logiky.
 
    ![Přejít na nový prostředek aplikace logiky](./media/tutorial-build-scheduled-recurring-logic-app-workflow/go-to-new-logic-app-resource.png)
 
    Nebo můžete vyhledat a vybrat aplikaci logiky zadáním názvu do vyhledávacího pole.
 
-   Otevře se Návrhář Logic Apps a zobrazí se stránka s úvodním videem a běžně používanými triggery a vzorci aplikace logiky. V části **Šablony** vyberte **Prázdná aplikace logiky**.
+   Otevře se Návrhář Logic Apps a zobrazí se stránka s úvodním videem a běžně používanými triggery a vzorci aplikace logiky. V oblasti **Šablony** vyberte **Prázdná aplikace logiky**.
 
    ![Vybrat šablonu prázdná aplikace logiky](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-logic-app-template.png)
 
@@ -94,8 +94,8 @@ Dále přidejte [Trigger](../logic-apps/logic-apps-overview.md#logic-app-concept
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Doba** | Ano | 1 | Počet intervalů, po které se má čekat mezi kontrolami |
-   | **Frekvence** | Ano | Týden | Jednotka času pro opakování |
+   | **Interval** | Yes | 1 | Počet intervalů, po které se má čekat mezi kontrolami |
+   | **Frekvence** | Yes | Týden | Jednotka času pro opakování |
    |||||
 
 1. V části **interval** a **frekvence**otevřete seznam **Přidat nový parametr** a vyberte tyto vlastnosti, které chcete přidat do triggeru.
@@ -123,7 +123,7 @@ Dále přidejte [Trigger](../logic-apps/logic-apps-overview.md#logic-app-concept
 
    ![Tvar sbalení pro skrytí podrobností](./media/tutorial-build-scheduled-recurring-logic-app-workflow/collapse-trigger-shape.png)
 
-1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
+1. Uložte aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
 Vaše aplikace logiky je teď v provozu, ale kromě opakování nic dalšího nedělá. Přidejte tedy akci, která bude reagovat na aktivaci triggeru.
 
@@ -143,15 +143,15 @@ Teď, když máte trigger, přidejte [akci](../logic-apps/logic-apps-overview.md
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Název připojení** | Ano | PřipojeníMapyBing | Zadejte název připojení. V tomto příkladu se používá "BingMapsConnection". |
-   | **Klíč rozhraní API** | Ano | <*váš klíč-Bing-Maps-Key*> | Zadejte klíč Map Bing, který jste dříve dostali. Pokud nemáte k dispozici klíč služby Mapy Bing, přečtěte si, [jak získat klíč](https://msdn.microsoft.com/library/ff428642.aspx). |
+   | **Název připojení** | Yes | PřipojeníMapyBing | Zadejte název připojení. V tomto příkladu se používá "BingMapsConnection". |
+   | **Klíč rozhraní API** | Yes | <*váš klíč-Bing-Maps-Key*> | Zadejte klíč Map Bing, který jste dříve dostali. Pokud nemáte k dispozici klíč služby Mapy Bing, přečtěte si, [jak získat klíč](/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key). |
    |||||
 
 1. Přejmenujte akci s tímto popisem: `Get route and travel time with traffic`
 
 1. V akci otevřete **seznam přidat nový parametr**a vyberte tyto vlastnosti, které chcete přidat k akci.
 
-   * **Zvýšit**
+   * **Optimalizace**
    * **Jednotka vzdálenosti**
    * **Způsob cestování**
 
@@ -163,16 +163,16 @@ Teď, když máte trigger, přidejte [akci](../logic-apps/logic-apps-overview.md
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Bod na trase 1** | Ano | <*Začátek – umístění*> | Počátek vaší cesty |
-   | **Bod na trase 2** | Ano | <*koncové umístění*> | Cíl vaší trasy |
-   | **Zvýšit** | Ne | timeWithTraffic | Parametr k optimalizaci vaší trasy, jako je například vzdálenost, doba trvání cesty včetně dopravní situace atd. Vyberte parametr "timeWithTraffic". |
-   | **Jednotka vzdálenosti** | Ne | <*vaše preference*> | Jednotka vzdálenosti použitá pro trasu. V tomto příkladu se jako jednotka používá "km". |
-   | **Způsob cestování** | Ne | Autem | Způsob cestování pro danou trasu. Vyberte režim "řízení". |
+   | **Bod na trase 1** | Yes | <*Začátek – umístění*> | Počátek vaší cesty |
+   | **Bod na trase 2** | Yes | <*koncové umístění*> | Cíl vaší trasy |
+   | **Optimalizace** | No | timeWithTraffic | Parametr k optimalizaci vaší trasy, jako je například vzdálenost, doba trvání cesty včetně dopravní situace atd. Vyberte parametr "timeWithTraffic". |
+   | **Jednotka vzdálenosti** | No | <*vaše preference*> | Jednotka vzdálenosti použitá pro trasu. V tomto příkladu se jako jednotka používá "km". |
+   | **Způsob cestování** | No | Autem | Způsob cestování pro danou trasu. Vyberte režim "řízení". |
    ||||
 
-   Další informace o těchto parametrech najdete v tématu [Výpočet trasy](https://docs.microsoft.com/bingmaps/rest-services/routes/calculate-a-route).
+   Další informace o těchto parametrech najdete v tématu [Výpočet trasy](/bingmaps/rest-services/routes/calculate-a-route).
 
-1. Uložte svou aplikaci logiky.
+1. Uložte aplikaci logiky.
 
 Dále vytvořte proměnnou tak, aby bylo možné převést a uložit aktuální dobu trvání cesty v minutách, a nikoli v sekundách. Tímto způsobem se vyhnete opakování převodu a danou hodnotu snadněji využijete v dalších krocích. 
 
@@ -194,9 +194,9 @@ Ve výchozím nastavení vrátí předchozí akce **získat trasu** aktuální d
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Název** | Ano | dobacesty | Název proměnné. V tomto příkladu se používá "Dobacesty". |
-   | **Typ** | Ano | Integer | Datový typ proměnné |
-   | **Osa** | Ne| Výraz, který převede aktuální dobu trvání cesty ze sekund na minuty (viz postup pod touto tabulkou) | Počáteční hodnota proměnné |
+   | **Název** | Yes | dobacesty | Název proměnné. V tomto příkladu se používá "Dobacesty". |
+   | **Typ** | Yes | Celé číslo | Datový typ proměnné |
+   | **Hodnota** | No| Výraz, který převede aktuální dobu trvání cesty ze sekund na minuty (viz postup pod touto tabulkou) | Počáteční hodnota proměnné |
    ||||
 
    1. Chcete-li vytvořit výraz pro vlastnost **Value** , klikněte do pole, aby se zobrazil seznam dynamického obsahu. V případě potřeby zvětšete okno prohlížeče, dokud se seznam nezobrazí. V seznamu dynamický obsah vyberte možnost **výraz**.
@@ -226,7 +226,7 @@ Ve výchozím nastavení vrátí předchozí akce **získat trasu** aktuální d
 
       ![Vlastnost Value se zobrazuje s vyřešeným výrazem.](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-6.png)
 
-1. Uložte svou aplikaci logiky.
+1. Uložte aplikaci logiky.
 
 Dál přidejte podmínku, která zkontroluje, zda je aktuální doba trvání cesty delší než určený limit.
 
@@ -256,7 +256,7 @@ Dál přidejte podmínku, která zkontroluje, zda je aktuální doba trvání ce
 
       ![Dokončená podmínka pro kontrolu doby trvání cesty](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time.png)
 
-1. Uložte svou aplikaci logiky.
+1. Uložte aplikaci logiky.
 
 V dalším kroku přidejte akci, která se spustí, když doba trvání cesty překročí váš limit.
 
@@ -325,7 +325,7 @@ Nyní přidáte akci, která odešle e-mail, pokud doba trvání cesty překroč
 
       ![Byla vyřešena vlastnost "tělo" ve výrazu](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-6.png)
 
-1. Uložte svou aplikaci logiky.
+1. Uložte aplikaci logiky.
 
 V dalším kroku otestujte aplikaci logiky, která teď vypadá podobně jako v tomto příkladu:
 
@@ -357,7 +357,7 @@ Pokud už ukázkovou aplikaci logiky nepotřebujete, odstraňte skupinu prostře
 
 1. V hlavní nabídce Azure přejděte na **Skupiny prostředků** a vyberte skupinu prostředků pro vaši aplikaci logiky.
 
-1. V nabídce skupina prostředků vyberte **Přehled** > **Odstranit skupinu prostředků**. 
+1. V nabídce skupina prostředků vyberte **Přehled**  >  **Odstranit skupinu prostředků**. 
 
    ![Přehled > Odstranit skupinu prostředků](./media/tutorial-build-scheduled-recurring-logic-app-workflow/delete-resource-group.png)
 

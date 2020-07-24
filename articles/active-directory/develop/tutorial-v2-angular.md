@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7cd2d5d8728e2a0539d5f106ab39c563e6e7c382
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: ee7c95cc25e911ba0ffe1e2815f219e040aaca31
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231688"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058267"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Kurz: přihlášení uživatelů a volání rozhraní Microsoft Graph API z úhlové aplikace s jednou stránkou
 
@@ -31,7 +31,7 @@ V tomto kurzu se dozvíte, jak může jednorozměrná aplikace s jednou stránko
 
 ## <a name="how-the-sample-app-works"></a>Jak ukázková aplikace funguje
 
-![Diagram znázorňující, jak ukázková aplikace vygenerovaná v tomto kurzu funguje](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
+![Diagram znázorňující, jak ukázková aplikace vygenerovaná v tomto kurzu funguje](./media/tutorial-v2-angular/diagram-auth-flow-spa-angular.svg)
 
 ### <a name="more-information"></a>Další informace
 
@@ -43,7 +43,7 @@ V tomto scénáři se po přihlášení uživatele vyžádá přístupový token
 
 V tomto kurzu se používá následující knihovna:
 
-|Knihovna|Description|
+|Knihovna|Popis|
 |---|---|
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft Authentication Library pro JavaScript – úhlová obálka|
 
@@ -148,7 +148,7 @@ Přidejte následující kód pro `AppComponent` přihlášení uživatele:
 ```javascript
 export class AppComponent implements OnInit {
     constructor(private broadcastService: BroadcastService, private authService: MsalService) { }
-    
+
     ngOnInit() { }
 
     login() {
@@ -264,14 +264,14 @@ this.authService.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 
 V tomto kódu `scopes` obsahuje obory, které jsou požadovány k vrácení do přístupového tokenu pro rozhraní API.
 
-Zde je příklad:
+Příklad:
 
 * `["user.read"]`pro Microsoft Graph
 * `["<Application ID URL>/scope"]`pro vlastní webová rozhraní API (tj. `api://<Application ID>/access_as_user` )
 
 #### <a name="get-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
-Někdy potřebujete, aby uživatel spolupracoval s koncovým bodem Microsoft Identity Platform. Zde je příklad:
+Někdy potřebujete, aby uživatel spolupracoval s koncovým bodem Microsoft Identity Platform. Příklad:
 
 * Uživatelé možná budou muset znovu zadat svoje přihlašovací údaje, protože vypršela platnost hesla.
 * Vaše aplikace požaduje přístup k dalším oborům prostředků, ke kterým uživatel musí vyjádřit souhlas.

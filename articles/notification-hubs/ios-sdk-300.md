@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: 4f34b3e7567a65dca45fd29b4e8aa9b78a6ced76
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: f43db986f70e64e55225465223b7e324450541a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126316"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084332"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs-version-300-preview1"></a>Kurz: odesílání nabízených oznámení do aplikací pro iOS pomocí Azure Notification Hubs (verze 3.0.0-preview1)
 
@@ -28,7 +28,7 @@ Tento kurz se zabývá následujícími kroky:
 
 Kompletní kód pro tento kurz si můžete stáhnout [z GitHubu](https://github.com/Azure/azure-notificationhubs-ios/tree/v3-preview2/Samples).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu budete potřebovat následující požadavky:
 
@@ -352,7 +352,7 @@ Další informace najdete v následujících článcích:
 - [Správa registrací](notification-hubs-push-notification-registration-management.md)
 - [Práce s značkami](notification-hubs-tags-segment-push-message.md)
 - [Práce s vlastními šablonami](notification-hubs-templates-cross-platform-push-messages.md)
-- [Řízení přístupu Service Bus pomocí sdílených přístupových podpisů](/azure/service-bus-messaging/service-bus-sas)
+- [Řízení přístupu Service Bus pomocí sdílených přístupových podpisů](../service-bus-messaging/service-bus-sas.md)
 - [Generování tokenů SAS prostřednictvím kódu programu](/rest/api/eventhub/generate-sas-token)
 - [Apple Security: běžné šifrování](https://developer.apple.com/security/)
 - [Čas v epocha systému UNIX](https://en.wikipedia.org/wiki/Unix_time)

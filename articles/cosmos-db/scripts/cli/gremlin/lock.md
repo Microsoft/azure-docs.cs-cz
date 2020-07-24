@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: sample
 ms.date: 06/03/2020
-ms.openlocfilehash: e4aba05df23ce4048ba711680086407cb764a24a
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: 23ee9dea87e358e731b7c9e525c7b9728006f116
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84514722"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084751"
 ---
 # <a name="create-a-resource-lock-for-azure-cosmos-gremlin-api-database-and-graph-using-azure-cli"></a>Vytvoření zámku prostředků pro databázi a graf Azure Cosmos Gremlin API pomocí Azure CLI
 
@@ -21,7 +21,7 @@ ms.locfileid: "84514722"
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.6.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 > [!IMPORTANT]
-> Zámky prostředků nefungují pro změny provedené uživateli, kteří se připojují pomocí Gremlin SDK nebo webu Azure Portal, pokud není účet Cosmos DB nejdříve zamčený s `disableKeyBasedMetadataWriteAccess` povolenou vlastností. Další informace o tom, jak tuto vlastnost Povolit, najdete v tématu [prevence změn ze sad SDK](../../../role-based-access-control.md#preventing-changes-from-cosmos-sdk).
+> Zámky prostředků nefungují pro změny provedené uživateli, kteří se připojují pomocí Gremlin SDK nebo webu Azure Portal, pokud není účet Cosmos DB nejdříve zamčený s `disableKeyBasedMetadataWriteAccess` povolenou vlastností. Další informace o tom, jak tuto vlastnost Povolit, najdete v tématu [prevence změn ze sad SDK](../../../role-based-access-control.md#prevent-sdk-changes).
 
 ## <a name="sample-script"></a>Ukázkový skript
 

@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: ae2d6259bac6a2034edc98de9b0405f32f17fbc3
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 225fb1099c1a095a4ec5bced4acc010d7cec6835
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849488"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043878"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>Vytvoření a sloučení CSR v Key Vault
 
@@ -59,7 +59,7 @@ Následující kroky vám pomůžou vytvořit certifikát od certifikačních au
 
     Žádost o certifikát se teď úspěšně sloučila.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 
 1.  Pokud chcete vygenerovat CSR pro certifikační autoritu dle vašeho výběru, přejděte do trezoru klíčů, do kterého chcete certifikát přidat.
 2.  Na stránkách Key Vault vlastnosti vyberte **certifikáty**.
@@ -81,7 +81,24 @@ Následující kroky vám pomůžou vytvořit certifikát od certifikačních au
 
 Žádost o certifikát se teď úspěšně sloučila.
 
-## <a name="troubleshoot"></a>Řešení potíží
+## <a name="adding-more-information-to-csr"></a>Přidání dalších informací CSR
+
+Pokud chcete přidat další informace při vytváření CSR, např. 
+    - Země:
+    - Město/místní:
+    - Stát/provincie:
+    - Dotčen
+    - Organizační jednotka: všechny tyto informace můžete přidat při vytváření CSR tím, že je definujete v tématu Subject.
+
+Příklad
+    ```SubjectName="CN = docs.microsoft.com, OU = Microsoft Corporation, O = Microsoft Corporation, L = Redmond, S = WA, C = US"
+    ```
+
+>[!Note]
+>Pokud požadujete certifikát DV se všemi těmito podrobnostmi v oddělení IT, certifikační autorita může žádost odmítnout, protože certifikační autorita nemusí být schopna ověřit všechny informace v žádosti. Pokud požadujete certifikát OV, je vhodnější přidat všechny tyto informace v oddělení IT.
+
+
+## <a name="troubleshoot"></a>Odstranit potíže
 
 Pokud je certifikát vystavený ve Azure Portal stav zakázáno, přejděte k části zobrazení **certifikátu** a zkontrolujte chybovou zprávu pro daný certifikát.
 

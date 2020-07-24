@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 90ef75c704459ca726480e6950ba748162c66b8e
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: a9c9dee94dd50462109a8864ffb413ce991c8dbd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147019"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072392"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Označení obrázků v projektu s popisem 
 
@@ -24,7 +24,7 @@ Poté, co správce projektu [vytvoří projekt označování](https://docs.micro
 > * Nástroje pro označování
 > * Jak používat nástroje pro konkrétní úkoly označování
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Účet Microsoft](https://account.microsoft.com/account) nebo účet Azure Active Directory pro organizaci a projekt
 * Přístup na úrovni přispěvatele k pracovnímu prostoru, který obsahuje projekt značení.
@@ -65,6 +65,10 @@ Azure povolí tlačítko **Odeslat** , když jste označili všechny obrázky na
 Po odeslání značek pro data v Azure aktualizuje stránku pomocí nové sady imagí z pracovní fronty.
 
 ### <a name="assisted-machine-learning-preview"></a>Strojové učení s asistencí (Preview) 
+
+> [!IMPORTANT]
+> Strojové učení s asistencí je aktuálně ve verzi Public Preview.
+> Verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Můžou se aktivovat algoritmy strojového učení. Pokud jsou tyto algoritmy v projektu povolené, může se zobrazit následující:
 

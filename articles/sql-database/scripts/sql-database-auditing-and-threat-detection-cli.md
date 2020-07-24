@@ -11,12 +11,12 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: carlrab, vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 34cbba15f5798286be63171da0173f6214fe7822
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ac945b14091ae01cfad66c3776c84406583e491f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022722"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037113"
 ---
 # <a name="use-cli-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>Konfigurace auditování SQL Database a rozšířené ochrany před internetovými útoky pomocí rozhraní příkazového řádku
 
@@ -52,7 +52,7 @@ az group delete --name $resource
 
 Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| | |
+| Příkaz | Popis |
 |---|---|
 | [AZ SQL DB audit-Policy](/cli/azure/sql/db/audit-policy) | Nastaví pro databázi zásady auditu. |
 | [AZ SQL DB Threat-Policy](/cli/azure/sql/db/threat-policy) | Nastaví pro databázi pokročilé zásady ochrany před internetovými útoky. |

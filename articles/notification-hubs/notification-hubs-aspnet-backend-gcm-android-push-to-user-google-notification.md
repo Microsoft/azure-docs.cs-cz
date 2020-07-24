@@ -17,12 +17,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 709926671e1ad4d8beefaf0f1cff4c56b1948ca3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b96f337b27e40c5eaec88e220ca3fee6904df905
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80127368"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022272"
 ---
 # <a name="tutorial-send-push-notification-to-specific-android-users-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Kurz: odeslání nabízeného oznámení konkrétním uživatelům Androidu pomocí Azure Notification Hubs a Google Cloud Messaging (zastaralé)
 
@@ -40,7 +40,7 @@ V tomto kurzu provedete následující kroky:
 > * Aktualizace aplikace pro Android
 > * Otestování aplikace
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete tento kurz, dokončete [kurz Zasílání nabízených oznámení do zařízení s Androidem službami Azure Notification Hubs a Google Cloud Messaging](notification-hubs-android-push-notification-google-gcm-get-started.md).
 
@@ -154,7 +154,7 @@ Dalším krokem je aktualizace aplikace pro Android vytvořené v [kurzu Zasíl�
 
     Vaše `main_activity.xml` grafické rozložení by teď mělo vypadat jako na následujícím obrázku:
 
-    ![][A1]
+    ![Snímek obrazovky aplikace s poli pro uživatelské jméno, heslo, příjemce a zprávu a s tlačítky pro přihlášení a odesílání oznámení.][A1]
 3. Vytvořte novou třídu s názvem `RegisterClient` ve stejném balíčku jako svou `MainActivity` třídou. Pro soubor s novou třídou použijte následující kód.
 
     ```java
@@ -406,7 +406,7 @@ Dalším krokem je aktualizace aplikace pro Android vytvořené v [kurzu Zasíl�
     }
     ```
 
-    Obslužná rutina pro tlačítko **Přihlásit** vygeneruje základní ověřovací token pomocí vstupního uživatelského jména a hesla (představuje všechny tokeny, které vaše schéma ověřování používá), potom používá `RegisterClient` k volání back-end pro registraci. `login`
+    `login`Obslužná rutina pro tlačítko **Přihlásit** vygeneruje základní ověřovací token pomocí vstupního uživatelského jména a hesla (představuje všechny tokeny, které vaše schéma ověřování používá), potom používá `RegisterClient` k volání back-end pro registraci.
 
     Metoda `sendPush` zavolá back-end za účelem aktivace zabezpečeného oznámení pro uživatele na základě značky uživatele. Systém oznámení platformy, na který metoda `sendPush` cílí, závisí na předaném řetězci `pns`.
 
@@ -474,7 +474,7 @@ Dalším krokem je aktualizace aplikace pro Android vytvořené v [kurzu Zasíl�
 2. V aplikaci pro Android zadejte uživatelské jméno a heslo. Oba řetězce musí mít stejnou hodnotu a nesmí obsahovat mezery ani speciální znaky.
 3. V aplikaci pro Android klikněte na **Přihlásit**se. Počkejte na zprávu s oznámením **Logged in and registered** (Přihlášeno a zaregistrováno). Tím se aktivuje tlačítko **Send Notification** (Odeslat oznámení).
 
-    ![][A2]
+    ![Snímek obrazovky aplikace Informační zpráva potvrzující, že je uživatel přihlášený a registrovaný, a tlačítko pro odeslání oznámení je zapnuté.][A2]
 4. Kliknutím na přepínací tlačítko povolte všechny platformy, na kterých jste aplikaci spustili a zaregistrovali uživatele.
 5. Zadejte jméno uživatele, který obdrží zprávu oznámení. Tento uživatel musí mít na cílových zařízení zaregistrovaná oznámení.
 6. Zadejte zprávu, kterou uživatel obdrží jako nabízené oznámení.

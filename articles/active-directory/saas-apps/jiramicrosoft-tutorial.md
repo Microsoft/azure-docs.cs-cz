@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c6db9ed92161e968b36c75b8bee5a847137c072
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ba0c44953a33e6ccd0bbe406159e9636411695ca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80631869"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87017089"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s JIRA SAML SSO Microsoftu
 
@@ -37,7 +37,7 @@ Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je
 
 K povolení jednotného přihlašování použijte účet Microsoft Azure Active Directory se serverem Atlassian JIRA. Díky tomu můžou všichni uživatelé vaší organizace používat přihlašovací údaje Azure AD k přihlášení do aplikace JIRA. Tento modul plug-in používá pro federaci protokol SAML 2,0.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K nakonfigurování integrace služby Azure AD pomocí jednotného přihlašování JIRA SAML od Microsoftu budete potřebovat následující položky:
 
@@ -57,6 +57,9 @@ Chcete-li začít, potřebujete následující položky:
 
 * Nepoužívejte své provozní prostředí, pokud není nutné.
 * JIRA jednotné přihlašování SAML pomocí předplatného jednotného přihlašování (SSO) Microsoftu.
+
+> [!NOTE]
+> Tato integrace je taky dostupná pro použití z cloudového prostředí Azure AD USA. Tuto aplikaci můžete najít v galerii cloudových aplikací pro státní správu Azure AD USA a nakonfigurovat ji stejným způsobem jako ve veřejném cloudu.
 
 ## <a name="supported-versions-of-jira"></a>Podporované verze JIRA
 
@@ -130,7 +133,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -169,7 +172,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
     > [!NOTE]
     > Nejdříve byste měli nakonfigurovat server pomocí níže uvedených pokynů a pak nainstalovat modul plug-in.
 
-    a. Na portu **konektoru** v souboru **Server. XML** aplikace JIRA přidejte následující atribut.
+    a. V **server.xml** souboru aplikace JIRA Server přidejte pod portem **konektoru** atribut.
 
     `scheme="https" proxyName="<subdomain.domain.com>" proxyPort="<proxy_port>" secure="true"`
 
@@ -246,11 +249,11 @@ Aby se uživatelé Azure AD mohli přihlašovat k JIRA místním serveru, musí 
 
     ![Přidat zaměstnance](./media/jiramicrosoft-tutorial/user4.png) 
 
-    a. Do textového pole **e-mailová adresa** zadejte e-mailovou B.simon@contoso.comadresu uživatele.
+    a. Do textového pole **e-mailová adresa** zadejte e-mailovou adresu uživatele B.simon@contoso.com .
 
     b. Do textového pole **celé jméno** zadejte jméno a příjmení uživatele, jako je B. Simon.
 
-    c. Do textového pole **uživatelské jméno** zadejte e-maily jako B.simon@contoso.comuživatel.
+    c. Do textového pole **uživatelské jméno** zadejte e-maily jako uživatel B.simon@contoso.com .
 
     d. Do textového pole **heslo** zadejte heslo uživatele.
 
@@ -262,7 +265,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici JIRA SSO SSO Microsoft, měli byste se automaticky přihlásit k JIRA SAML SSO, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

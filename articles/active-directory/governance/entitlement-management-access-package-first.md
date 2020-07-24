@@ -3,7 +3,7 @@ title: Kurz – vytvoření balíčku pro přístup – Správa nároků Azure A
 description: Podrobný návod, jak vytvořit první balíček přístupu v Azure Active Directory správě nároků.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: barclayn
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.subservice: compliance
-ms.date: 03/30/2020
-ms.author: ajburnle
+ms.date: 07/22/2020
+ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2d31ef46dfba31a8f217f68e8d5f98b67d58da5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b79a631ba82d0b4a420ef27684e5a62571ddf85a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80410596"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034572"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Kurz: vytvoření prvního balíčku přístupu ve správě nároků Azure AD
 
@@ -42,7 +42,7 @@ Podrobný příklad procesu nasazení správy opravňujících Azure Active Dire
 
 >[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete používat správu nároků služby Azure AD, musíte mít jednu z těchto licencí:
 
@@ -67,7 +67,7 @@ Adresář prostředků má jeden nebo více prostředků ke sdílení. V tomto k
 
     | Název | Role adresáře |
     | --- | --- |
-    | **Uživateli** | Globální správce<br/>-nebo-<br/>Správce uživatele |
+    | **Uživateli** | Globální správce<br/>-nebo-<br/>Správce uživatelů |
     | **Requestor1** | Uživatel |
 
 1. Vytvořte skupinu zabezpečení Azure AD s názvem **marketingové zdroje** s **přiřazeným**typem členství.
@@ -264,4 +264,4 @@ V tomto kroku odeberete změny, které jste provedli, a odstraníte balíček p�
 
 V dalším článku se dozvíte víc o běžných krocích scénářů v tématu Správa nároků.
 > [!div class="nextstepaction"]
-> [Typické scénáře](entitlement-management-scenarios.md)
+> [Obvyklé scénáře](entitlement-management-scenarios.md)

@@ -2,18 +2,18 @@
 title: Kurz pro objednání Azure Data Box | Microsoft Docs
 description: Seznamte se s požadavky na nasazení a postupem objednání Azure Data Boxu.
 services: databox
-author: alkohli
+author: priestlg
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 04/23/2019
-ms.author: alkohli
-ms.openlocfilehash: cfb95f2fb02544197f9b2796a705844e33eca201
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.date: 07/21/2020
+ms.author: v-grpr
+ms.openlocfilehash: fd841dee5f3a845d793255f5e13b416fb1add4f4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392471"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007271"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Kurz: Objednání Azure Data Boxu
 
@@ -40,7 +40,7 @@ Před nasazením zařízení dokončete následující požadavky na konfiguraci
 
 [!INCLUDE [Prerequisites](../../includes/data-box-deploy-ordered-prerequisites.md)]
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 Můžete se přihlásit k Azure a spustit příkazy rozhraní příkazového řádku Azure CLI jedním ze dvou způsobů:
 
@@ -49,11 +49,15 @@ Můžete se přihlásit k Azure a spustit příkazy rozhraní příkazového ř�
 
 K tomuto kurzu používáme Azure CLI prostřednictvím prostředí Windows PowerShell, ale můžete si vybrat jednu z možností.
 
-### <a name="install-the-cli-locally"></a>Místní instalace rozhraní příkazového řádku
+### <a name="for-azure-cli"></a>Pro Azure CLI
+
+Než začnete, ujistěte se, že:
+
+#### <a name="install-the-cli-locally"></a>Místní instalace rozhraní příkazového řádku
 
 * Nainstalujte [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) verze 2.0.67 nebo novější. Případně můžete [nainstalovat pomocí MSI](https://aka.ms/installazurecliwindows).
 
-#### <a name="sign-in-to-azure"></a>Přihlášení k Azure
+**Přihlášení k Azure**
 
 Otevřete okno příkazového řádku Windows PowerShellu a přihlaste se k Azure pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) :
 
@@ -83,7 +87,7 @@ You have logged in. Now let us find all the subscriptions to which you have acce
 ]
 ```
 
-#### <a name="install-the-azure-data-box-cli-extension"></a>Instalace rozšíření Azure Data Box CLI
+**Instalace rozšíření Azure Data Box CLI**
 
 Než budete moci použít příkazy Azure Data Box CLI, je nutné nainstalovat rozšíření. Rozšíření Azure CLI poskytují přístup k experimentálním a předběžným příkazům, které ještě nebyly dodány jako součást základního rozhraní příkazového řádku. Další informace o rozšířeních najdete v tématu [použití rozšíření pomocí Azure CLI](/cli/azure/azure-cli-extensions-overview).
 
@@ -115,82 +119,90 @@ Pokud je rozšíření nainstalovaná úspěšně, zobrazí se následující v�
         Please let us know how we are doing: https://aka.ms/clihats
 ```
 
-### <a name="use-azure-cloud-shell"></a>Použití služby Azure Cloud Shell
+#### <a name="use-azure-cloud-shell"></a>Použití služby Azure Cloud Shell
 
-Pomocí [Azure Cloud Shell](https://shell.azure.com/)prostředí Azure Hosted Interactive Shell můžete v prohlížeči spustit příkazy rozhraní příkazového řádku (CLI). Azure Cloud Shell podporuje bash nebo Windows PowerShell se službami Azure. Rozhraní příkazového řádku Azure je předem nainstalované a nakonfigurované pro použití s vaším účtem. V nabídce v pravé horní části Azure Portal klikněte na tlačítko Cloud Shell:
+Pomocí [Azure Cloud Shell](https://shell.azure.com/)prostředí Azure Hosted Interactive Shell můžete v prohlížeči spustit příkazy rozhraní příkazového řádku (CLI). Azure Cloud Shell podporuje bash nebo Windows PowerShell se službami Azure. Rozhraní příkazového řádku Azure je předem nainstalované a nakonfigurované pro použití s vaším účtem. V nabídce v pravé horní části Azure Portal vyberte tlačítko Cloud Shell:
 
 ![Cloud Shell](../storage/common/media/storage-quickstart-create-account/cloud-shell-menu.png)
 
 Tlačítko spustí interaktivní prostředí, které můžete použít ke spuštění kroků popsaných v tomto článku s postupem.
 
-<!-- To start Azure Cloud Shell:
+# <a name="powershell"></a>[PowerShell](#tab/azure-ps)
 
-| Option | Example/Link |
-|-----------------------------------------------|---|
-| Select **Try It** in the upper-right corner of a code block. Selecting **Try It** doesn't automatically copy the code to Cloud Shell. | ![Example of Try It for Azure Cloud Shell](../../includes/media/cloud-shell-try-it/hdi-azure-cli-try-it.png) |
-| Go to [https://shell.azure.com](https://shell.azure.com), or select the **Launch Cloud Shell** button to open Cloud Shell in your browser. | [![Launch Cloud Shell in a new window](../../includes/media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com) |
-| Select the **Cloud Shell** button on the menu bar at the upper right in the [Azure portal](https://portal.azure.com). | ![Cloud Shell button in the Azure portal](../../includes/media/cloud-shell-try-it/hdi-cloud-shell-menu.png) |
+[!INCLUDE [Prerequisites](../../includes/data-box-deploy-ordered-prerequisites.md)]
 
-To run the code in this article in Azure Cloud Shell:
+### <a name="for-azure-powershell"></a>Pro Azure PowerShell
 
-1. Start Cloud Shell.
+Než začnete, ujistěte se, že:
 
-2. Select the **Copy** button on a code block to copy the code.
+* Nainstalujte Windows PowerShell 6.2.4 nebo novější.
+* Nainstalujte modul Azure PowerShell (AZ).
+* Nainstalujte modul Azure Data Box (AZ. DataBox).
+* Přihlaste se k Azure.
 
-3. Paste the code into the Cloud Shell session by selecting **Ctrl**+**Shift**+**V** on Windows and Linux or by selecting **Cmd**+**Shift**+**V** on macOS.
+#### <a name="install-azure-powershell-and-modules-locally"></a>Místní instalace Azure PowerShell a modulů
 
-4. Select **Enter** to run the code.
+**Instalace nebo upgrade prostředí Windows PowerShell**
 
-For this tutorial, we use Windows PowerShell command prompt to run Azure CLI commands. -->
+Budete muset mít nainstalované prostředí Windows PowerShell verze 6.2.4 nebo novější. Pokud chcete zjistit, jakou verzi PowerShellu máte nainstalovanou, spusťte: `$PSVersionTable` .
 
-<!-- This goes away, we'll show this later when we show how to order a Data Box. -->
-<!-- ## Change the output format type
+Zobrazí se následující výstup:
 
-All Azure CLI commands will use json as the output format by default unless you change it. You can change the output format by using the global parameter `--output <output-format>`. -->
-
-<!-- ```azurecli
-
-az databox job <command> --output <output-format>
-
+```azurepowershell
+    PS C:\users\gusp> $PSVersionTable
+    
+    Name                           Value
+    ----                           -----
+    PSVersion                      6.2.3
+    PSEdition                      Core
+    GitCommitId                    6.2.3
+    OS                             Microsoft Windows 10.0.18363
+    Platform                       Win32NT
+    PSCompatibleVersions           {1.0, 2.0, 3.0, 4.0…}
+    PSRemotingProtocolVersion      2.3
+    SerializationVersion           1.1.0.1
+    WSManStackVersion              3.0
 ```
 
-Azure Data Box CLI commands support the following output formats:
+Pokud je vaše verze nižší než 6.2.4, musíte upgradovat verzi Windows PowerShellu. Pokud chcete nainstalovat nejnovější verzi Windows PowerShellu, přečtěte si článek [instalace Azure PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell?view=powershell-7).
 
-* json (default setting)
-* jsonc
-* table
-* tsv
-* yaml
-* yamlc
-* none
+**Nainstalovat Azure PowerShell a Data Box moduly**
 
-You can use the parameter `--output` with all Azure Data Box CLI commands. -->
+Abyste mohli Azure Data Box použít Azure PowerShell, budete muset nainstalovat Azure PowerShell moduly. Instalace modulů Azure PowerShell:
 
-<!-- To set the output format to yaml: -->
+1. Nainstalujte [Azure PowerShell AZ Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az).
+2. Pak pomocí příkazu nainstalujte AZ. DataBox `Install-Module -Name Az.DataBox` .
 
-<!-- ```azurecli
-PS C:\Windows>az databox job show --resource-group "myresourcegroup" --name "mydataboxorder" --output "yaml"
+```azurepowershell
+PS C:\PowerShell\Modules> Install-Module -Name Az.DataBox
+PS C:\PowerShell\Modules> Get-InstalledModule -Name "Az.DataBox"
 
-``` -->
-<!-- 
-To set the out format to tabular form (easier to read):
+Version              Name                                Repository           Description
+-------              ----                                ----------           -----------
+0.1.1                Az.DataBox                          PSGallery            Microsoft Azure PowerShell - DataBox ser…
+```
 
-```azurecli
-PS C:\Windows>az databox job show --resource-group "myresourcegroup" --name "mydataboxorder" --output "table"
+#### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-``` -->
+Otevřete okno příkazového řádku Windows PowerShellu a přihlaste se k Azure pomocí příkazu [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/Connect-AzAccount) :
 
-<!-- Here's the example output of `az databox job show` after changing the output format to table:
+```azurepowershell
+PS C:\Windows> Connect-AzAccount
+```
 
-```azurecli
-PS C:\WINDOWS\system32> az databox job show --resource-group "GDPTest" --name "mydataboxtest3" --output "table"
-Command group 'databox job' is experimental and not covered by customer support. Please use with discretion.
+Zde je výstup z úspěšného přihlášení:
 
-DeliveryType    IsCancellable    IsCancellableWithoutFee    IsDeletable    IsShippingAddressEditable    Location    Name            ResourceGroup    StartTime                         Status
---------------  ---------------  -------------------------  -------------  ---------------------------  ----------  --------------  ---------------  --------------------------------  -------------
-NonScheduled    True             True                       False          True                         westus      mydataboxorder  myresourcegroup          2020-06-11T22:05:49.436622+00:00  DeviceOrdered
+```output
+WARNING: To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code FSBFZMBKC to authenticate.
 
-``` -->
+Account              SubscriptionName                          TenantId                             Environment
+-------              ----------------                          --------                             -----------
+gusp@contoso.com     MySubscription                            aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa AzureCloud
+
+PS C:\Windows\System32>
+```
+
+Podrobné informace o tom, jak se přihlásit k Azure pomocí Windows PowerShellu, najdete v tématu věnovaném [přihlášení pomocí Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 
 ---
 
@@ -201,61 +213,87 @@ NonScheduled    True             True                       False          True 
 Chcete-li zařízení objednat, proveďte následující kroky v Azure Portal.
 
 1. Pomocí svých přihlašovacích údajů Microsoft Azure se přihlaste na následující adrese URL: [https://portal.azure.com](https://portal.azure.com).
-2. Klikněte na **+ Vytvořit prostředek** a vyhledejte *Azure Data Box*. Klikněte na **Azure Data Box**.
+2. Vyberte **+ Vytvořit prostředek** a vyhledejte *Azure Data Box*. Vyberte **Azure Data Box**.
 
-   [![Vyhledání Azure Data Boxu 1](media/data-box-deploy-ordered/search-azure-data-box1.png)](media/data-box-deploy-ordered/search-azure-data-box1.png#lightbox)
+   ![Vyberte Azure Data Box](media/data-box-deploy-ordered/select-data-box-import-02.png)
 
-3. Klikněte na **Vytvořit**.
+3. Vyberte **Vytvořit**.
+
+   ![Vyberte Azure Data Box](media/data-box-deploy-ordered/select-data-box-import-03.png)
 
 4. Podívejte se, zda je služba Data Box dostupná ve vaší oblasti. Zadejte nebo vyberte následující informace a pak vyberte **Použít**.
 
     |Nastavení  |Hodnota  |
     |---------|---------|
-    |Předplatné     | Vyberte pro službu Data Box předplatné se smlouvou Enterprise, předplatné CSP nebo předplatné Azure Sponsorship. <br> Předplatné je propojeno s vaším fakturačním účtem.       |
     |Typ přenosu     | Vyberte **Importovat do Azure**.        |
+    |Předplatné     | Vyberte pro službu Data Box předplatné se smlouvou Enterprise, předplatné CSP nebo předplatné Azure Sponsorship. <br> Předplatné je propojeno s vaším fakturačním účtem.       |
+    |Skupina prostředků | Vyberte existující skupinu prostředků. Skupina prostředků je logický kontejner prostředků, které lze spravovat nebo nasadit společně. |
     |Zdrojová země/oblast    |    Vyberte zemi nebo oblast, ve které jsou data aktuálně umístěná.         |
-    |Cílová oblast Azure     |     Vyberte oblast Azure, do které chcete data přenést.        |
+    |Cílová oblast Azure     |     Vyberte oblast Azure, do které chcete data přenést. <br> Další informace najdete v části věnované [dostupnosti v oblastech](data-box-overview.md#region-availability).            |
+
+    [![Azure Data Box pořadí importu](media/data-box-deploy-ordered/select-data-box-import-04b.png)](media/data-box-deploy-ordered/select-data-box-import-04b.png#lightbox)
 
 5. Vyberte **Data Box**. Maximální použitelná kapacita pro jednu objednávku je 80 TB. V případě větších objemů dat můžete vytvořit více objednávek.
 
-      [![Vyberte možnost Data Box 1.](media/data-box-deploy-ordered/select-data-box-option1.png)](media/data-box-deploy-ordered/select-data-box-option1.png#lightbox)
+    ![Výběr možnosti Data Boxu 1](media/data-box-deploy-ordered/select-data-box-import-05.png)
 
-6. V části **Objednávka** zadejte **Podrobnosti objednávky**. Zadejte nebo vyberte následující informace a pak vyberte **Další**.
+6. V **uvedeném pořadí**přejděte na kartu **základy** . Zadejte nebo vyberte následující informace a vyberte **Další: cílová data>**.
 
     |Nastavení  |Hodnota  |
     |---------|---------|
-    |Název     |  Zadejte popisný název pro sledování objednávky. <br> Název může být tvořen 3 až 24 písmeny, číslicemi a spojovníky. <br> Název musí začínat a končit písmenem nebo číslicí.      |
-    |Skupina prostředků     |    Použijte existující skupinu prostředků, nebo vytvořte novou. <br> Skupina prostředků je logický kontejner prostředků, které lze spravovat nebo nasadit společně.         |
-    |Cílová oblast Azure     | K účtu úložiště přiřaďte oblast. <br> Další informace najdete v části věnované [dostupnosti v oblastech](data-box-overview.md#region-availability).        |
-    |Cíl úložiště     | Zvolte účet úložiště, spravované disky nebo obojí. <br> Na základě zadané oblasti Azure vyberte z filtrovaného seznamu existujících účtů úložiště jeden nebo více účtů úložiště. Data Box je možné propojit až s 10 účty úložiště. <br> Můžete si také vytvořit nový účet **Pro obecné účely v1**, **Pro obecné účely v2** nebo **účet úložiště objektů blob**. <br>Účty úložiště s virtuálními sítěmi se podporují. Pokud chcete službě Data Box povolit práci se zabezpečenými účty úložiště, v nastavení síťové brány firewall účtu úložiště povolte důvěryhodné služby. Další informace najdete v tématu Postup [přidání Azure Data box jako důvěryhodné služby](../storage/common/storage-network-security.md#exceptions).|
+    |Předplatné      | Předplatné se automaticky vyplní na základě vašeho předchozího výběru.|
+    |Skupina prostředků    | Skupina prostředků, kterou jste vybrali dříve. |
+    |Název importovaného objednávky | Zadejte popisný název pro sledování objednávky. <br> Název může být tvořen 3 až 24 písmeny, číslicemi a spojovníky. <br> Název musí začínat a končit písmenem nebo číslicí.    |
 
-    Pokud jako cíl úložiště používáte účet úložiště, podívejte se na následující snímek obrazovky:
+    ![Výběr možnosti Data Boxu 1](media/data-box-deploy-ordered/select-data-box-import-06.png)
 
-    ![Pořadí Data Box pro účet úložiště](media/data-box-deploy-ordered/order-storage-account.png)
+    Ve výchozím nastavení je heslo k odemknutí zařízení šifrované pomocí klíče spravovaného společností Microsoft. Po dokončení objednávky můžete přidat spravovaný klíč zákazníka. Spravovaný klíč zákazníka vám umožňuje použít vlastní klíč z klíče trezoru klíčů Azure k ochraně vašeho hesla pro odemknutí zařízení. Další informace najdete v tématu [použití klíčů spravovaných zákazníkem v Azure Key Vault pro Azure Data box](data-box-customer-managed-encryption-key-portal.md).
 
-    Pokud používáte Data Box k vytváření spravovaných disků z místních virtuálních pevných disků (VHD), budete také muset zadat následující informace:
+7. Na kartě **cíl dat** vyberte **cíl dat**.
+
+    Pokud jako cíl úložiště používáte **účty úložiště** , zobrazí se následující snímek obrazovky:
+
+    ![Azure Data Box cíl dat](media/data-box-deploy-ordered/select-data-box-import-07.png)
+
+    Na základě zadané oblasti Azure vyberte z filtrovaného seznamu existujících účtů úložiště jeden nebo více účtů úložiště. Data Box je možné propojit až s 10 účty úložiště. Můžete si také vytvořit nový účet **Pro obecné účely v1**, **Pro obecné účely v2** nebo **účet úložiště objektů blob**.
+
+    Účty úložiště s virtuálními sítěmi se podporují. Pokud chcete službě Data Box povolit práci se zabezpečenými účty úložiště, v nastavení síťové brány firewall účtu úložiště povolte důvěryhodné služby. Další informace najdete v tématu Postup [přidání Azure Data box jako důvěryhodné služby](../storage/common/storage-network-security.md#exceptions).
+
+    Pokud k vytváření **spravovaných disků** z místních virtuálních pevných disků (VHD) používáte data box, budete muset zadat taky tyto informace:
 
     |Nastavení  |Hodnota  |
     |---------|---------|
     |Skupiny prostředků     | Pokud chcete vytvořit spravované disky z místních virtuálních pevných disků, vytvořte nové skupiny prostředků. Stávající skupinu prostředků můžete použít jenom v případě, že se skupina prostředků vytvořila dříve při vytváření Data Boxho pořadí pro spravovaný disk pomocí služby Data Box. <br> Můžete zadat i více skupin prostředků oddělených středníkem. Podporuje se maximálně 10 skupin prostředků.|
 
-    ![Pořadí Data Box pro spravovaný disk](media/data-box-deploy-ordered/order-managed-disks.png)
+    ![Pořadí Data Box pro spravovaný disk](media/data-box-deploy-ordered/select-data-box-import-07b.png)
 
     Účet úložiště zadaný pro spravované disky slouží jako přípravný účet úložiště. Služba Data Box nahraje virtuální pevné disky jako objekty blob stránky do přípravného účtu úložiště, a teprve pak je převede na spravované disky a přesune do skupin prostředků. Další informace najdete v tématu popisujícím [ověření nahrání dat do Azure](data-box-deploy-picked-up.md#verify-data-upload-to-azure).
 
-7. V části **Dodací adresa** zadejte jméno a příjmení, název a poštovní adresu společnosti a platné telefonní číslo. Klikněte na **Ověřit adresu**. Služba ověří, zda je dodací adresa pro službu dostupná. Pokud je pro zadanou dodací adresu služba k dispozici, obdržíte o tom oznámení.
+    Chcete-li pokračovat, vyberte možnost **Další: kontaktní údaje** .
+
+8. V **podrobnostech kontaktu**vyberte **+ Přidat dodací adresu**.
+
+    ![Pořadí Data Box pro spravovaný disk](media/data-box-deploy-ordered/select-data-box-import-08a.png)
+
+9. V části **Dodací adresa** zadejte jméno a příjmení, název a poštovní adresu společnosti a platné telefonní číslo. Vyberte **Ověřit adresu**. Služba ověří, zda je dodací adresa pro službu dostupná. Pokud je pro zadanou dodací adresu služba k dispozici, obdržíte o tom oznámení.
+
+   ![Pořadí Data Box pro spravovaný disk](media/data-box-deploy-ordered/select-data-box-import-10.png)
 
    Pokud jste vybrali samoobslužné expedici, obdržíte po úspěšném dokončení objednávky e-mailové oznámení. Další informace o samoobslužném expedici najdete v tématu [použití samostatně spravovaného expedice](data-box-portal-customer-managed-shipping.md).
 
-8. Po úspěšném ověření podrobností o odeslání klikněte na **Další** .
+10. Po úspěšném ověření podrobností o expedici vyberte **Přidat dodací adresu** . Vrátíte se na kartu **Podrobnosti o kontaktu** .
 
-9. Na kartě **Podrobnosti o oznámení** zadejte e-mailové adresy. Na tyto e-mailové adresy vám služba bude posílat e-mailová oznámení o všech aktualizacích stavu objednávky.
+11. Až se vrátíte k **podrobnostem kontaktu** , přidejte jednu nebo víc e-mailových adres. Na tyto e-mailové adresy vám služba bude posílat e-mailová oznámení o všech aktualizacích stavu objednávky.
 
     Doporučujeme použít skupinový e-mail, abyste oznámení mohli dostávat i tehdy, když odejde správce skupiny.
 
-10. Na kartě **Souhrn** zkontrolujte informace týkající se objednávky, kontaktu, oznámení a podmínkách ochrany osobních údajů. Zaškrtněte políčko, že souhlasíte s podmínkami ochrany osobních údajů.
+    ![Pořadí Data Box pro spravovaný disk](media/data-box-deploy-ordered/select-data-box-import-08c.png)
 
-11. Klikněte na **Objednat**. Vytvoření objednávky trvá několik minut.
+12. Projděte si informace v části **Revize + objednávka** týkající se podmínek objednávky, kontaktu, oznámení a ochrany osobních údajů. Zaškrtněte políčko, že souhlasíte s podmínkami ochrany osobních údajů.
+
+13. Vyberte **Objednat**. Vytvoření objednávky trvá několik minut.
+
+    ![Pořadí Data Box pro spravovaný disk](media/data-box-deploy-ordered/select-data-box-import-11.png)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -263,7 +301,7 @@ Při seřazení zařízení pomocí Azure CLI proveďte následující kroky:
 
 1. Zapište si nastavení pro Data Box objednávku. Mezi tato nastavení patří vaše osobní/obchodní informace, název předplatného, informace o zařízení a informace o expedici. Tato nastavení budete muset použít jako parametry při spuštění příkazu CLI k vytvoření pořadí Data Box. Následující tabulka ukazuje nastavení parametrů používané pro `az databox job create` :
 
-   | Nastavení (parametr) | Description |  Ukázková hodnota |
+   | Nastavení (parametr) | Popis |  Ukázková hodnota |
    |---|---|---|
    |resource-group| Použijte existující skupinu prostředků, nebo vytvořte novou. Skupina prostředků je logický kontejner prostředků, které lze spravovat nebo nasadit společně. | myresourcegroup|
    |name| Název vytvářené objednávky. | "mydataboxorder"|
@@ -287,7 +325,7 @@ Při seřazení zařízení pomocí Azure CLI proveďte následující kroky:
    |query| Řetězec dotazu JMESPath Další informace najdete v tématu [JMESPath](http://jmespath.org/). | --dotaz<string>|
    |verbose| Zahrnout podrobné protokolování. | --verbose |
 
-2. V příkazovém řádku příkazu Choice nebo terminálu pomocí příkazu [AZ Databox Job Create](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-create) vytvořte objednávku Azure Data box.
+2. V příkazovém řádku příkazu Choice nebo terminálu pomocí [úlohy AZ data box Create](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-create) vytvořte objednávku Azure Data box.
 
    ```azurecli
    az databox job create --resource-group <resource-group> --name <order-name> --location <azure-location> --sku <databox-device-type> --contact-name <contact-name> --phone <phone-number> --email-list <email-list> --street-address1 <street-address-1> --street-address2 <street-address-2> --city "contact-city" --state-or-province <state-province> --country <country> --postal-code <postal-code> --company-name <company-name> --storage-account "storage-account"
@@ -369,6 +407,64 @@ Při seřazení zařízení pomocí Azure CLI proveďte následující kroky:
     NonScheduled    True             True                       False          True                         westus      mydataboxtest4  myresourcegroup  2020-06-18T03:48:00.905893+00:00  DeviceOrdered
 
     ```
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-ps)
+
+Pomocí Azure PowerShell seřazení zařízení postupujte podle následujících kroků:
+
+1. Před vytvořením pořadí importu musíte získat účet úložiště a uložit objekt účtu úložiště do proměnné.
+
+   ```azurepowershell
+    $storAcct = Get-AzStorageAccount -Name "mystorageaccount" -ResourceGroup "myresourcegroup"
+   ```
+
+2. Zapište si nastavení pro Data Box objednávku. Mezi tato nastavení patří vaše osobní/obchodní informace, název předplatného, informace o zařízení a informace o expedici. Tato nastavení budete muset použít jako parametry při spuštění příkazu PowerShellu k vytvoření pořadí Data Box. Následující tabulka ukazuje nastavení parametrů používané pro [New-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/New-AzDataBoxJob).
+
+    | Nastavení (parametr) | Popis |  Ukázková hodnota |
+    |---|---|---|
+    |ResourceGroupName [povinné]| Použijte existující skupinu prostředků. Skupina prostředků je logický kontejner prostředků, které lze spravovat nebo nasadit společně. | myresourcegroup|
+    |Název [povinné]| Název vytvářené objednávky. | "mydataboxorder"|
+    |Kontakt [povinné]| Název přidružený k dodací adrese. | "Gus Polsko"|
+    |PhoneNumber [požadováno]| Telefonní číslo osoby nebo firmy, které obdrží objednávku.| "14255551234"
+    |Umístění [povinné]| Nejbližší oblast Azure, na kterou se bude vaše zařízení napravovat.| WestUS|
+    |DataBoxType [povinné]| Konkrétní Data Box zařízení, které objednáváte. Platné hodnoty jsou: "DataBox", "DataBoxDisk" a "DataBoxHeavy"| "DataBox" |
+    |EmailId [povinné]| E-mailové adresy přidružené k objednávce| "gusp@contoso.com" |
+    |StreetAddress1 [povinné]| Adresa ulice, na kterou bude objednávka odeslána | "15700 NE 39th St" |
+    |StreetAddress2| Informace o sekundární adrese, například číslo bytu nebo číslo budovy. | "Bld 123" |
+    |StreetAddress3| Informace o terciární adrese. | |
+    |Město [povinné]| Město, do kterého bude zařízení expedováno. | Redmond |
+    |StateOrProvinceCode [povinné]| Stav, ve kterém se zařízení dokončí.| WA |
+    |CountryCode [povinné]| Země, kterou bude zařízení dodán. | "USA" |
+    |PSČ [povinné]| Poštovní směrovací číslo nebo PSČ přidružené k expediční adrese.| "98052"|
+    |CompanyName| Název vaší společnosti, pro kterou pracujete.| Contoso, LTD |
+    |StorageAccountResourceId [povinné]| Azure Storage ID účtu, ze kterého chcete importovat data.| <AzStorageAccount>. ID |
+
+3. V příkazovém řádku příkazu Choice nebo terminálu použijte příkaz [New-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/New-AzDataBoxJob) k vytvoření objednávky Azure Data box.
+
+   ```azurepowershell
+    PS> $storAcct = Get-AzureStorageAccount -StorageAccountName "mystorageaccount"
+    PS> New-AzDataBoxJob -Location "WestUS" \
+                         -StreetAddress1 "15700 NE 39th St" \
+                         -PostalCode "98052" \
+                         -City "Redmond" \
+                         -StateOrProvinceCode "WA" \
+                         -CountryCode "US" \
+                         -EmailId "gusp@contoso.com" \
+                         -PhoneNumber 4255551234 \
+                         -ContactName "Gus Poland" \
+                         -StorageAccount $storAcct.id \
+                         -DataBoxType DataBox \
+                         -ResourceGroupName "myresourcegroup" \
+                         -Name "myDataBoxOrderPSTest"
+   ```
+
+   Zde je výstup z spuštění příkazu:
+
+   ```output
+    jobResource.Name     jobResource.Sku.Name jobResource.Status jobResource.StartTime jobResource.Location ResourceGroup
+    ----------------     -------------------- ------------------ --------------------- -------------------- -------------
+    myDataBoxOrderPSTest DataBox              DeviceOrdered      07-06-2020 05:25:30   westus               myresourcegroup
+   ```
 
 ---
 
@@ -469,13 +565,77 @@ V následující tabulce jsou uvedeny informace o parametrech pro `az databox jo
    Command group 'databox job' is experimental and not covered by customer support. Please use with discretion.
    CancellationReason                                               DeliveryType    IsCancellable    IsCancellableWithoutFee    IsDeletable    IsShippingAddressEditable    Location    Name                 ResourceGroup    StartTime                         Status
    ---------------------- ----------------------------------------  --------------  ---------------  -------------------------  -------------  ---------------------------  ----------  -------------------  ---------------  --------------------------------  -------------
-   OtherReason This was a test order for documentation purposes.    NonScheduled    False            False                      True           False                        westus      gdpImportTest        GDPTest          2020-05-26T23:20:57.464075+00:00  Cancelled
-   NoLongerNeeded This order was created for documentation purposes.NonScheduled    False            False                      True           False                        westus      mydataboxExportTest  GDPTest          2020-05-27T00:04:16.640397+00:00  Cancelled
-   IncorrectOrder                                                   NonScheduled    False            False                      True           False                        westus      mydataboxtest2       GDPTest          2020-06-10T16:54:23.509181+00:00  Cancelled
-                                                                    NonScheduled    True             True                       False          True                         westus      mydataboxtest3       GDPTest          2020-06-11T22:05:49.436622+00:00  DeviceOrdered
-                                                                    NonScheduled    True             True                       False          True                         westus      mydataboxtest4       GDPTest          2020-06-18T03:48:00.905893+00:00  DeviceOrdered
+   OtherReason This was a test order for documentation purposes.    NonScheduled    False            False                      True           False                        westus      gdpImportTest        MyResGrp         2020-05-26T23:20:57.464075+00:00  Cancelled
+   NoLongerNeeded This order was created for documentation purposes.NonScheduled    False            False                      True           False                        westus      mydataboxExportTest  MyResGrp         2020-05-27T00:04:16.640397+00:00  Cancelled
+   IncorrectOrder                                                   NonScheduled    False            False                      True           False                        westus      mydataboxtest2       MyResGrp         2020-06-10T16:54:23.509181+00:00  Cancelled
+                                                                    NonScheduled    True             True                       False          True                         westus      mydataboxtest3       MyResGrp         2020-06-11T22:05:49.436622+00:00  DeviceOrdered
+                                                                    NonScheduled    True             True                       False          True                         westus      mydataboxtest4       MyResGrp         2020-06-18T03:48:00.905893+00:00  DeviceOrdered
    PS C:\WINDOWS\system32>
    ```
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-ps)
+
+### <a name="track-a-single-order"></a>Sledovat jednu objednávku
+
+Pokud chcete získat informace o sledování jednoho existujícího pořadí Azure Data Box, spusťte rutinu [Get-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/Get-AzDataBoxJob). Příkaz zobrazí informace o takovém pořadí, jako je například, nikoli omezení na: název, skupina prostředků, informace o sledování, ID předplatného, kontaktní informace, typ dodávky a SKU zařízení.
+
+> [!NOTE]
+> `Get-AzDataBoxJob`slouží k zobrazení jedné i vícenásobné objednávky. Rozdílem je, že zadáváte název objednávky pro jednotlivé objednávky.
+
+   ```azurepowershell
+    Get-AzDataBoxJob -ResourceGroupName <String> -Name <String>
+   ```
+
+   V následující tabulce jsou uvedeny informace o parametrech pro `Get-AzDataBoxJob` :
+
+   | Parametr | Popis |  Ukázková hodnota |
+   |---|---|---|
+   |ResourceName (požadováno)| Název skupiny prostředků přidružené k danému pořadí. Skupina prostředků je logický kontejner prostředků, které lze spravovat nebo nasadit společně. | myresourcegroup|
+   |Název [povinné]| Název objednávky, pro kterou mají být získány informace. | "mydataboxorder"|
+   |ResourceId| ID prostředku přidruženého k objednávce |  |
+
+   Tady je příklad příkazu s výstupem:
+
+   ```azurepowershell
+    PS C:\WINDOWS\system32> Get-AzDataBoxJob -ResourceGroupName "myResourceGroup" -Name "myDataBoxOrderPSTest"
+   ```
+
+   Zde je výstup z spuštění příkazu:
+
+   ```output
+   jobResource.Name     jobResource.Sku.Name jobResource.Status jobResource.StartTime jobResource.Location ResourceGroup
+   ----------------     -------------------- ------------------ --------------------- -------------------- -------------
+   myDataBoxOrderPSTest DataBox              DeviceOrdered      7/7/2020 12:37:16 AM  WestUS               myResourceGroup
+   ```
+
+### <a name="list-all-orders"></a>Vypsat všechny objednávky
+
+Pokud jste objednali více zařízení, můžete spuštěním rutiny [Get-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/Get-AzDataBoxJob) Zobrazit všechny vaše objednávky Azure Data box. Příkaz zobrazí seznam všech objednávek, které patří do určité skupiny prostředků. Zobrazuje se také ve výstupu: název objednávky, stav expedice, oblast Azure, typ doručení, stav objednávky. Zrušené objednávky jsou také zahrnuty v seznamu.
+Příkaz také zobrazuje časová razítka jednotlivých objednávek.
+
+```azurepowershell
+Get-AzDataBoxJob -ResourceGroupName <String>
+```
+
+Tady je příklad tohoto příkazu:
+
+```azurepowershell
+PS C:\WINDOWS\system32> Get-AzDataBoxJob -ResourceGroupName "myResourceGroup"
+```
+
+Zde je výstup z spuštění příkazu:
+
+```output
+jobResource.Name     jobResource.Sku.Name jobResource.Status jobResource.StartTime jobResource.Location ResourceGroup
+----------------     -------------------- ------------------ --------------------- -------------------- -------------
+guspImportTest       DataBox              Cancelled          5/26/2020 11:20:57 PM WestUS               myResourceGroup
+mydataboxExportTest  DataBox              Cancelled          5/27/2020 12:04:16 AM WestUS               myResourceGroup
+mydataboximport1     DataBox              Cancelled          6/26/2020 11:00:34 PM WestUS               myResourceGroup
+myDataBoxOrderPSTest DataBox              Cancelled          7/07/2020 12:37:16 AM WestUS               myResourceGroup
+mydataboxtest2       DataBox              Cancelled          6/10/2020 4:54:23  PM WestUS               myResourceGroup
+mydataboxtest4       DataBox              DeviceOrdered      6/18/2020 3:48:00  AM WestUS               myResourceGroup
+PS C:\WINDOWS\system32>
+```
 
 ---
 
@@ -564,6 +724,74 @@ Tady je příklad příkazu s výstupem:
    command ran in 1.142 seconds.
    PS C:\Windows>
    ```
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-ps)
+
+### <a name="cancel-an-order"></a>Zrušení objednávky
+
+Chcete-li zrušit Azure Data Box pořadí, spusťte rutinu [stop-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/stop-azdataboxjob). Je nutné zadat důvod pro zrušení objednávky.
+
+```azurepowershell
+Stop-AzDataBoxJob -ResourceGroup <String> -Name <String> -Reason <String>
+```
+
+V následující tabulce jsou uvedeny informace o parametrech pro `Stop-AzDataBoxJob` :
+
+| Parametr | Popis |  Ukázková hodnota |
+|---|---|---|
+|ResourceName (požadováno)| Název skupiny prostředků přidružené k objednávce, která se má zrušit. Skupina prostředků je logický kontejner prostředků, které lze spravovat nebo nasadit společně. | myresourcegroup|
+|Název [povinné]| Název objednávky, která se má odstranit | "mydataboxorder"|
+|Důvod [povinné]| Důvod zrušení objednávky. | "Zadali jste chybné informace a museli jste objednávku zrušit." |
+|Force | Vynutí spuštění rutiny bez potvrzení uživatele. | -Force |
+
+Tady je příklad příkazu s výstupem:
+
+```azurepowershell
+PS C:\PowerShell\Modules> Stop-AzDataBoxJob -ResourceGroupName myResourceGroup \
+                                            -Name "myDataBoxOrderPSTest" \
+                                            -Reason "I entered erroneous information and had to cancel."
+```
+
+Zde je výstup z spuštění příkazu:
+
+```output
+Confirm
+"Cancelling Databox Job "myDataBoxOrderPSTest
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
+PS C:\WINDOWS\system32>
+```
+
+### <a name="delete-an-order"></a>Odstranění objednávky
+
+Pokud jste zrušili Azure Data Boxou objednávku, můžete ji odstranit spuštěním příkazu [Remove-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/remove-azdataboxjob) .
+
+```azurepowershell
+Remove-AzDataBoxJob -Name <String> -ResourceGroup <String>
+```
+
+V následující tabulce jsou uvedeny informace o parametrech pro `Remove-AzDataBoxJob` :
+
+| Parametr | Popis |  Ukázková hodnota |
+|---|---|---|
+|ResourceName (požadováno)| Název skupiny prostředků přidružené k objednávce, která se má odstranit Skupina prostředků je logický kontejner prostředků, které lze spravovat nebo nasadit společně. | myresourcegroup|
+|Název [povinné]| Název objednávky, která se má odstranit | "mydataboxorder"|
+|Force | Vynutí spuštění rutiny bez potvrzení uživatele. | -Force |
+
+Tady je příklad příkazu s výstupem:
+
+```azurepowershell
+PS C:\Windows> Remove-AzDataBoxJob -ResourceGroup "myresourcegroup" \
+                                   -Name "mydataboxtest3"
+```
+
+Zde je výstup z spuštění příkazu:
+
+```output
+Confirm
+"Removing Databox Job "mydataboxtest3
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
+PS C:\Windows>
+```
 
 ---
 

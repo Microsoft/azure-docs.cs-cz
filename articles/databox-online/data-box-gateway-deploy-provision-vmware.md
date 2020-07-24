@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: b62441a4b1307a232ad2f592f13253c0759b5431
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 64a33b12da0e9b90eaeb7039f65b2493a839a0c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85564198"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054120"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>Kurz: zřízení Azure Data Box Gateway ve VMware
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Níže jsou uvedené požadavky na zřízení virtuálního zařízení v hostitelském systému, na kterém běží VMware ESXi 6,0, 6,5 nebo 6,7.
 
@@ -93,7 +93,7 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte virtuální zaří
   
 3. Nahrajte VMDK na server ESXi. V podokně Navigátor vyberte **Úložiště**.
 
-   ![](./media/data-box-gateway-deploy-provision-vmware/image2.png)
+   ![Snímek obrazovky stránky na serveru ESXi, která zobrazuje podokno navigátor s vybranou možností úložiště.](./media/data-box-gateway-deploy-provision-vmware/image2.png)
 
 4. V pravém podokně v části **Úložiště dat** vyberte úložiště dat, do kterého chcete VMDK nahrát. 
 
@@ -132,11 +132,11 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte virtuální zaří
 13. Zobrazí se okno **Nový virtuální počítač**. V části Vyberte typ vytvoření zvolte **Vytvořit nový virtuální počítač** a klikněte na **Další**.
     ![Stránka pro výběr typu vytvoření](./media/data-box-gateway-deploy-provision-vmware/image10.png)
 
-14. Na stránce **Vyberte název, název operačního systému a umístění** zadejte **Název** vašeho virtuálního počítače. Tento název by se měl shodovat s názvem složky, který jste zadali dříve v kroku 7 (doporučený osvědčený postup). Jako **Řada hostovaného operačního systému** zvolte Windows a jako **Verze hostovaného operačního systému** zvolte Microsoft Windows Server 2016 (64bitová verze). Klikněte na **Další**.
+14. Na stránce **Vyberte název, název operačního systému a umístění** zadejte **Název** vašeho virtuálního počítače. Tento název by se měl shodovat s názvem složky, který jste zadali dříve v kroku 7 (doporučený osvědčený postup). Jako **Řada hostovaného operačního systému** zvolte Windows a jako **Verze hostovaného operačního systému** zvolte Microsoft Windows Server 2016 (64bitová verze). Klikněte na **Next** (Další).
 
     ![Vyberte název a název operačního systému a stránku umístění.](./media/data-box-gateway-deploy-provision-vmware/image11.png)
 
-15. Na stránce **Vyberte úložiště** vyberte úložiště dat, které chcete ke zřízení virtuálního počítače použít. Klikněte na **Další**.
+15. Na stránce **Vyberte úložiště** vyberte úložiště dat, které chcete ke zřízení virtuálního počítače použít. Klikněte na **Next** (Další).
 
     ![Stránka pro výběr úložiště](./media/data-box-gateway-deploy-provision-vmware/image12.png)
 16. Na stránce **Přizpůsobit nastavení** nastavte počet **CPU** na 4, velikost **paměti** na 8 192 MB (nebo více) a velikost **pevného disku 1** na 2 TB (nebo více). Zvolte **pevný disk SCSI**, který chcete přidat. V tomto případě to byl typ LSI Logic SAS. **Statické disky IDE se nepodporují.** **Pevný disk 1** je virtuální pevný disk. Mějte na paměti, že disk po zřízení už není možné zmenšit. Při pokusu o zmenšení disku dojde ke ztrátě všech místních dat v zařízení. 
@@ -151,7 +151,7 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte virtuální zaří
 
      ![Stránka pro přizpůsobení nastavení](./media/data-box-gateway-deploy-provision-vmware/image15.png)
 
-17. Volitelné *Tento krok proveďte jenom v případě, že používáte VMware ESXi Server 6,7*. Na stránce **přizpůsobit nastavení** klikněte na **Možnosti virtuálního počítače**. Přejděte na **Možnosti spuštění > firmware** a změňte ho na **BIOS**. Ve výchozím nastavení je hodnota nastavena na EFI. Klikněte na **Další**.
+17. Volitelné *Tento krok proveďte jenom v případě, že používáte VMware ESXi Server 6,7*. Na stránce **přizpůsobit nastavení** klikněte na **Možnosti virtuálního počítače**. Přejděte na **Možnosti spuštění > firmware** a změňte ho na **BIOS**. Ve výchozím nastavení je hodnota nastavena na EFI. Klikněte na **Next** (Další).
 
     ![Stránka Přizpůsobení nastavení, pokud je spuštěný VMware ESXi Server 6,7](./media/data-box-gateway-deploy-provision-vmware/image15a.png)
 

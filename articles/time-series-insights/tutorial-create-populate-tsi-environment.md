@@ -1,49 +1,49 @@
 ---
 title: 'Kurz: vytvoření prostředí – Azure Time Series Insights | Microsoft Docs'
-description: Naučte se vytvořit prostředí Time Series Insights, které je naplněné daty z simulovaných zařízení.
+description: Naučte se vytvořit prostředí Azure Time Series Insights, které je naplněné daty z simulovaných zařízení.
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 04/27/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 47cee660114ba0b19b952015b1fecff8c85d2c25
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9f74be239bee1d6da3dfdb516c4fc410669e338d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189211"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020647"
 ---
-# <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Kurz: Vytvoření prostředí Azure Time Series Insights
+# <a name="tutorial-create-an-azure-time-series-insights-gen1-environment"></a>Kurz: vytvoření prostředí Azure Time Series Insights Gen1
 
 Tento kurz vás provede procesem vytvoření Azure Time Series Insights prostředí, které je naplněné daty z simulovaných zařízení. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 >
-> * Vytvořte Time Series Insights prostředí.
+> * Vytvořte Azure Time Series Insights prostředí.
 > * Vytvořte řešení pro simulaci zařízení, které obsahuje centrum IoT.
-> * Připojte prostředí Time Series Insights ke službě IoT Hub.
-> * Spusťte simulaci zařízení pro streamování dat do prostředí Time Series Insights.
+> * Připojte prostředí Azure Time Series Insights ke službě IoT Hub.
+> * Spusťte simulaci zařízení pro streamování dat do prostředí Azure Time Series Insights.
 > * Ověřte Simulovaná data telemetrie.
 
 > [!IMPORTANT]
 > Zaregistrujte si [bezplatné předplatné Azure](https://azure.microsoft.com/free/) , pokud ho ještě nemáte.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet pro přihlášení do Azure musí být také členem role **vlastníka** předplatného. Další informace najdete v článku [Správa přístupu pomocí řízení přístupu na základě role a Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="review-video"></a>Zkontrolovat video
 
-### <a name="learn-how-to-use-an-azure-iot-solution-accelerator-to-generate-data-and-get-started-with-time-series-insights-br"></a>Naučte se, jak pomocí akcelerátoru řešení Azure IoT vygenerovat data a začít s Time Series Insights. </br>
+### <a name="learn-how-to-use-an-azure-iot-solution-accelerator-to-generate-data-and-get-started-with-azure-time-series-insights-br"></a>Naučte se, jak pomocí akcelerátoru řešení Azure IoT vygenerovat data a začít s Azure Time Series Insights. </br>
 
 > [!VIDEO https://www.youtube.com/embed/6ehNf6AJkFo]
 
 ## <a name="overview"></a>Přehled
 
-Prostředí Time Series Insights je místo, kde se shromažďují a ukládají data zařízení. Po uložení je možné použít k dotazování a analýze dat [rozhraní API](/rest/api/time-series-insights/ga-query-api) pro [Azure Time Series Insights](time-series-quickstart.md) a dotazování Time Series Insights.
+Prostředí Azure Time Series Insights je místo, kde se shromažďují a ukládají data zařízení. Po uložení je možné použít k dotazování a analýze dat [rozhraní API](/rest/api/time-series-insights/ga-query-api) pro [Azure Time Series Insights](time-series-quickstart.md) a dotazování Azure Time Series Insights.
 
 Azure IoT Hub je zdroj událostí, který se používá pro všechna zařízení (simulované nebo fyzické) v tomto kurzu k bezpečnému připojení a přenosu dat do cloudu Azure.
 
@@ -54,7 +54,7 @@ V tomto kurzu se používá také [akcelerátor řešení IoT](https://www.azure
 
 ## <a name="create-a-device-simulation"></a>Vytvoření simulace zařízení
 
-Nejprve vytvořte řešení pro simulaci zařízení, které generuje testovací data pro naplnění Time Series Insightsho prostředí.
+Nejprve vytvořte řešení pro simulaci zařízení, které generuje testovací data pro naplnění Azure Time Series Insightsho prostředí.
 
 1. V samostatném okně nebo na kartě přejdete na [azureiotsolutions.com](https://www.azureiotsolutions.com). Přihlaste se pomocí stejného účtu předplatného Azure a vyberte akcelerátor **simulace zařízení** .
 
@@ -65,9 +65,9 @@ Nejprve vytvořte řešení pro simulaci zařízení, které generuje testovací
    Parametr|Popis
    ---|---
    **Název nasazení** | Tato jedinečná hodnota se používá k vytvoření nové skupiny prostředků. Uvedené prostředky Azure se vytvoří a přiřadí do skupiny prostředků.
-   **Předplatné Azure** | Zadejte stejné předplatné, které bylo použito k vytvoření prostředí Time Series Insights v předchozí části.
+   **Předplatné Azure** | Zadejte stejné předplatné, které bylo použito k vytvoření prostředí Azure Time Series Insights v předchozí části.
    **Možnosti nasazení** | Pokud chcete vytvořit nový IoT Hub specifický pro tento kurz, vyberte **zřídit nový IoT Hub** .
-   **Umístění Azure** | Zadejte stejnou oblast, která byla použita k vytvoření prostředí Time Series Insights v předchozí části.
+   **Umístění Azure** | Zadejte stejnou oblast, která byla použita k vytvoření prostředí Azure Time Series Insights v předchozí části.
 
    Až budete hotovi, vyberte **vytvořit** a zřiďte prostředky Azure v řešení. Dokončení tohoto procesu může trvat až 20 minut.
 
@@ -86,42 +86,42 @@ Nejprve vytvořte řešení pro simulaci zařízení, které generuje testovací
 
 ## <a name="create-an-environment"></a>Vytvoření prostředí
 
-Za druhé vytvořte v předplatném Azure Time Series Insights prostředí.
+Za druhé vytvořte v předplatném Azure Azure Time Series Insights prostředí.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí svého účtu předplatného Azure.
 1. Vlevo nahoře vyberte **+ Vytvořit prostředek**.
 1. Vyberte kategorii **Internet věcí** a pak vyberte **Time Series Insights**.
 
-   [![Vyberte prostředek prostředí Time Series Insights.](media/tutorial-create-populate-tsi-environment/tsi-create-new-environment.png)](media/tutorial-create-populate-tsi-environment/tsi-create-new-environment.png#lightbox)
+   [![Vyberte prostředek prostředí Azure Time Series Insights.](media/tutorial-create-populate-tsi-environment/tsi-create-new-environment.png)](media/tutorial-create-populate-tsi-environment/tsi-create-new-environment.png#lightbox)
 
 1. Na stránce **Time Series Insights prostředí** vyplňte požadované parametry.
 
    Parametr|Popis
    ---|---
-   **Název prostředí** | Vyberte jedinečný název prostředí Time Series Insights. Názvy používá Průzkumník Time Series Insights a [rozhraní API pro dotazy](https://docs.microsoft.com/rest/api/time-series-insights/ga-query).
-   **Předplatné** | Předplatná představují kontejnery prostředků Azure. Vyberte předplatné, ve kterém chcete vytvořit prostředí Time Series Insights.
-   **Skupina prostředků** | Skupina prostředků představuje kontejner prostředků Azure. Vyberte existující skupinu prostředků nebo vytvořte novou pro prostředek prostředí Time Series Insights.
-   **Umístění** | Vyberte oblast datového centra pro prostředí Time Series Insights. Aby nedošlo k další latenci, vytvořte Time Series Insights prostředí ve stejné oblasti jako jiné prostředky IoT.
+   **Název prostředí** | Vyberte jedinečný název prostředí Azure Time Series Insights. Názvy používá Průzkumník Azure Time Series Insights a [rozhraní API pro dotazy](https://docs.microsoft.com/rest/api/time-series-insights/ga-query).
+   **Předplatné** | Předplatná představují kontejnery prostředků Azure. Vyberte předplatné, ve kterém chcete vytvořit prostředí Azure Time Series Insights.
+   **Skupina prostředků** | Skupina prostředků představuje kontejner prostředků Azure. Vyberte existující skupinu prostředků nebo vytvořte novou pro prostředek prostředí Azure Time Series Insights.
+   **Umístění** | Vyberte oblast datového centra pro prostředí Azure Time Series Insights. Aby nedošlo k další latenci, vytvořte Azure Time Series Insights prostředí ve stejné oblasti jako jiné prostředky IoT.
    **Úroveň** | Vyberte potřebnou propustnost. Vyberte **S1**.
-   **Klíčivost** | Kapacita je násobitel, který se používá pro míru příchozího přenosu dat a kapacitu úložiště přidruženou k vybrané SKU. Kapacitu můžete po vytvoření změnit. Vyberte kapacitu **1**.
+   **Kapacita** | Kapacita je násobitel, který se používá pro míru příchozího přenosu dat a kapacitu úložiště přidruženou k vybrané SKU. Kapacitu můžete po vytvoření změnit. Vyberte kapacitu **1**.
 
    Po dokončení vyberte **Další: zdroj události** , abyste mohli pokračovat k dalšímu kroku.
 
-   [![Vytvoření prostředku prostředí Time Series Insights](media/tutorial-create-populate-tsi-environment/tsi-create-resource-tsi-params.png)](media/tutorial-create-populate-tsi-environment/tsi-create-resource-tsi-params.png#lightbox)
+   [![Vytvoření prostředku prostředí Azure Time Series Insights](media/tutorial-create-populate-tsi-environment/tsi-create-resource-tsi-params.png)](media/tutorial-create-populate-tsi-environment/tsi-create-resource-tsi-params.png#lightbox)
 
-1. Nyní připojte prostředí Time Series Insights ke službě IoT Hub vytvořené pomocí akcelerátoru řešení. Nastavte **Vyberte rozbočovač** na `Select existing`. Pak při nastavení **IoT Hubho názvu**vyberte Centrum IoT vytvořené pomocí akcelerátoru řešení.
+1. Nyní připojte prostředí Azure Time Series Insights ke službě IoT Hub vytvořené pomocí akcelerátoru řešení. Nastavte **Vyberte rozbočovač** na `Select existing` . Pak při nastavení **IoT Hubho názvu**vyberte Centrum IoT vytvořené pomocí akcelerátoru řešení.
 
-   [![Připojení prostředí Time Series Insights k vytvořenému centru IoT Hub](media/tutorial-create-populate-tsi-environment/tsi-create-resource-iot-hub.png)](media/tutorial-create-populate-tsi-environment/tsi-create-resource-iot-hub.png#lightbox)
+   [![Připojení prostředí Azure Time Series Insights k vytvořenému centru IoT Hub](media/tutorial-create-populate-tsi-environment/tsi-create-resource-iot-hub.png)](media/tutorial-create-populate-tsi-environment/tsi-create-resource-iot-hub.png#lightbox)
 
    Nakonec vyberte **zkontrolovat + vytvořit**.
 
 1. Projděte si panel **oznámení** a sledujte dokončení nasazení.
 
-   [![Nasazení prostředí Time Series Insights bylo úspěšné.](media/tutorial-create-populate-tsi-environment/create-resource-tsi-deployment-succeeded.png)](media/tutorial-create-populate-tsi-environment/create-resource-tsi-deployment-succeeded.png#lightbox)
+   [![Nasazení prostředí Azure Time Series Insights bylo úspěšné.](media/tutorial-create-populate-tsi-environment/create-resource-tsi-deployment-succeeded.png)](media/tutorial-create-populate-tsi-environment/create-resource-tsi-deployment-succeeded.png#lightbox)
 
 ## <a name="run-device-simulation"></a>Spustit simulaci zařízení
 
-Po dokončení nasazení a počáteční konfigurace naplňte Time Series Insights prostředí pomocí ukázkových dat z [simulovaných zařízení vytvořených akcelerátorem](#create-a-device-simulation).
+Po dokončení nasazení a počáteční konfigurace naplňte Azure Time Series Insights prostředí pomocí ukázkových dat z [simulovaných zařízení vytvořených akcelerátorem](#create-a-device-simulation).
 
 Společně se službou IoT Hub se vygenerovala Azure App Service webová aplikace pro vytvoření a přenos telemetrie simulovaného zařízení.
 
@@ -139,7 +139,7 @@ Společně se službou IoT Hub se vygenerovala Azure App Service webová aplikac
    ---|---
    **Cílová služba IoT Hub** | Vyberte možnost **použít předem zřízené IoT Hub**.
    **Model zařízení** | Vyberte **chladicíer**.
-   **Počet zařízení**  | Zadejte `10` hodnotu v poli **množství**.
+   **Počet zařízení**  | Zadejte `10` **hodnotu**v poli množství.
    **Frekvence telemetrie** | Zadejte `10` sekundy.
    **Doba trvání simulace** | Vyberte **Konec v:** a zadejte `5` minuty.
 
@@ -153,35 +153,35 @@ Společně se službou IoT Hub se vygenerovala Azure App Service webová aplikac
 
 ## <a name="verify-the-telemetry-data"></a>Ověření telemetrických dat
 
-V této poslední části ověříte, že se data telemetrie vygenerovala a uložila v prostředí Time Series Insights. K ověření dat použijete průzkumníka TSI, který slouží k dotazování a analyzování telemetrických dat.
+V této poslední části ověříte, že se data telemetrie vygenerovala a uložila v prostředí Azure Time Series Insights. Chcete-li ověřit data, použijte Průzkumníka Azure Time Series Insights, který se používá k dotazování a analýze dat telemetrie.
 
-1. Vraťte se na stránku **Přehled** skupiny prostředků Time Series Insightsho prostředí. Vyberte prostředí Time Series Insights.
+1. Vraťte se na stránku **Přehled** skupiny prostředků Azure Time Series Insightsho prostředí. Vyberte prostředí Azure Time Series Insights.
 
-   [![Skupina prostředků prostředí Time Series Insights a prostředí](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-rg.png)](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-rg.png#lightbox)
+   [![Skupina prostředků prostředí Azure Time Series Insights a prostředí](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-rg.png)](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-rg.png#lightbox)
 
-1. Na stránce **Přehled** prostředí Time Series Insights vyberte **adresu URL Time Series Insights Explorer** a otevřete tak Průzkumník Time Series Insights.
+1. Na stránce **Přehled** prostředí Azure Time Series Insights vyberte **adresu URL Time Series Insights Explorer** a otevřete tak Průzkumník Azure Time Series Insights.
 
-   [![Průzkumník Time Series Insights](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-explorer-url.png)](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-explorer-url.png#lightbox)
+   [![Průzkumník Azure Time Series Insights](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-explorer-url.png)](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-explorer-url.png#lightbox)
 
-1. Průzkumník Time Series Insights načítá a ověřuje pomocí účtu Azure Portal. Zpočátku se zobrazí oblast grafu, ve které Time Series Insights prostředí naplnilo společně s jejich simulovanými daty telemetrie. Pokud chcete filtrovat užší časový rozsah, vyberte rozevírací nabídku v levém horním rohu. Zadejte časový rozsah, který je dostatečně velký pro rozsah trvání simulace zařízení. Pak vyberte lupu hledání.
+1. Průzkumník Azure Time Series Insights načítá a ověřuje pomocí účtu Azure Portal. Zpočátku se zobrazí oblast grafu, ve které Azure Time Series Insights prostředí naplnilo společně s jejich simulovanými daty telemetrie. Pokud chcete filtrovat užší časový rozsah, vyberte rozevírací nabídku v levém horním rohu. Zadejte časový rozsah, který je dostatečně velký pro rozsah trvání simulace zařízení. Pak vyberte lupu hledání.
 
-   [![Filtr časového rozsahu Time Series Insights Exploreru](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png)](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png#lightbox)
+   [![Filtr časového rozsahu Azure Time Series Insights Exploreru](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png)](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png#lightbox)
 
-1. Zúžení časového rozsahu umožňuje grafu přiblížit se k různým nárůstům přenosu dat do centra IoT a Time Series Insightsho prostředí. Všimněte si také **kompletního** textu v pravém horním rohu, které zobrazuje celkový počet nalezených událostí. Můžete také přetáhnout posuvník **velikost intervalu** pro řízení členitosti grafu v grafu.
+1. Zúžení časového rozsahu umožňuje grafu přiblížit se k různým nárůstům přenosu dat do centra IoT a Azure Time Series Insightsho prostředí. Všimněte si také **kompletního** textu v pravém horním rohu, které zobrazuje celkový počet nalezených událostí. Můžete také přetáhnout posuvník **velikost intervalu** pro řízení členitosti grafu v grafu.
 
-   [![Filtrované zobrazení časového rozsahu Time Series Insights Exploreru](media/tutorial-create-populate-tsi-environment/tsie-view-time-range.png)](media/tutorial-create-populate-tsi-environment/tsie-view-time-range.png#lightbox)
+   [![Filtrované zobrazení časového rozsahu Azure Time Series Insights Exploreru](media/tutorial-create-populate-tsi-environment/tsie-view-time-range.png)](media/tutorial-create-populate-tsi-environment/tsie-view-time-range.png#lightbox)
 
 1. Nakonec můžete také kliknutím levým na oblast filtrovat rozsah. Potom klikněte pravým tlačítkem a pomocí možnosti **prozkoumat události** zobrazte podrobnosti události v zobrazení tabulkových **událostí** .
 
-   [![Zobrazení a události filtrovaného časového rozsahu aplikace Time Series Insights Explorer](media/tutorial-create-populate-tsi-environment/tsie-view-time-range-events.png)](media/tutorial-create-populate-tsi-environment/tsie-view-time-range-events.png#lightbox)
+   [![Zobrazení a události filtrovaného časového rozsahu aplikace Azure Time Series Insights Explorer](media/tutorial-create-populate-tsi-environment/tsie-view-time-range-events.png)](media/tutorial-create-populate-tsi-environment/tsie-view-time-range-events.png#lightbox)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-V tomto kurzu se vytvoří několik spuštěných služeb Azure, které podporují řešení pro simulaci Time Series Insights prostředí a zařízení. Pokud je chcete odebrat, přejděte zpět na Azure Portal.
+V tomto kurzu se vytvoří několik spuštěných služeb Azure, které podporují řešení pro simulaci Azure Time Series Insights prostředí a zařízení. Pokud je chcete odebrat, přejděte zpět na Azure Portal.
 
 Z nabídky na levé straně Azure Portal:
 
-1. Vyberte ikonu **skupiny prostředků** . Pak vyberte skupinu prostředků, kterou jste vytvořili pro prostředí Time Series Insights. V horní části stránky vyberte **Odstranit skupinu prostředků**, zadejte název skupiny prostředků a vyberte **Odstranit**.
+1. Vyberte ikonu **skupiny prostředků** . Pak vyberte skupinu prostředků, kterou jste vytvořili pro prostředí Azure Time Series Insights. V horní části stránky vyberte **Odstranit skupinu prostředků**, zadejte název skupiny prostředků a vyberte **Odstranit**.
 
 1. Vyberte ikonu **skupiny prostředků** . Pak vyberte skupinu prostředků, kterou vytvořil akcelerátor řešení pro simulaci zařízení. V horní části stránky vyberte **Odstranit skupinu prostředků**, zadejte název skupiny prostředků a vyberte **Odstranit**.
 
@@ -191,13 +191,13 @@ V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 >
-> * Vytvořte Time Series Insights prostředí.
+> * Vytvořte Azure Time Series Insights prostředí.
 > * Vytvořte řešení pro simulaci zařízení, které obsahuje centrum IoT.
-> * Připojte prostředí Time Series Insights ke službě IoT Hub.
-> * Spusťte simulaci zařízení pro streamování dat do prostředí Time Series Insights.
+> * Připojte prostředí Azure Time Series Insights ke službě IoT Hub.
+> * Spusťte simulaci zařízení pro streamování dat do prostředí Azure Time Series Insights.
 > * Ověřte Simulovaná data telemetrie.
 
-Teď, když víte, jak vytvořit vlastní prostředí Time Series Insights, se naučíte, jak vytvořit webovou aplikaci, která využívá data z prostředí Time Series Insights:
+Teď, když víte, jak vytvořit vlastní prostředí Azure Time Series Insights, se naučíte, jak vytvořit webovou aplikaci, která využívá data z prostředí Azure Time Series Insights:
 
 > [!div class="nextstepaction"]
 > [Čtení ukázek pro vizualizaci hostovaného klienta sady SDK](https://tsiclientsample.azurewebsites.net/)

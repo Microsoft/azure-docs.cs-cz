@@ -1,16 +1,16 @@
 ---
-title: Spuštění paralelní úlohy
+title: Spuštění paralelní úlohy pomocí rozhraní .NET API
 description: Kurz – Paralelní překódování multimediálních souborů pomocí aplikace ffmpeg ve službě Azure Batch s využitím klientské knihovny Batch .NET
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.custom: mvc
-ms.openlocfilehash: d8a5db6c6c63d680514e21bef0e5a8bc6b3ea550
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: afa660a7138f3b69b2a6f7c478550095f357e29b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82733069"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062594"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Kurz: Spuštění paralelní úlohy pomocí služby Azure Batch s využitím rozhraní .NET API
 
@@ -29,7 +29,7 @@ V tomto kurzu pomocí open source nástroje [ffmpeg](https://ffmpeg.org/) parale
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Visual Studio 2017 nebo novější](https://www.visualstudio.com/vs)nebo [.NET Core 2,1](https://www.microsoft.com/net/download/dotnet-core/2.1) pro Linux, MacOS nebo Windows.
 
@@ -45,8 +45,8 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 Pomocí webu Azure Portal přidejte do svého účtu Batch aplikaci ffmpeg jako [balíček aplikace](batch-application-packages.md). Balíčky aplikací pomáhají spravovat aplikace úkolů a jejich nasazení do výpočetních uzlů ve fondu. 
 
-1. V Azure Portal klikněte na **Další služby** > **účty Batch**a potom klikněte na název vašeho účtu Batch.
-3. Klikněte na **aplikace** > **Přidat**.
+1. V Azure Portal klikněte na **Další služby**  >  **účty Batch**a potom klikněte na název vašeho účtu Batch.
+3. Klikněte na **aplikace**  >  **Přidat**.
 4. Jako **ID aplikace** zadejte *ffmpeg* a jako verzi balíčku zadejte *3.4*. Vyberte soubor zip s aplikací ffmpeg, který jste stáhli dříve, a pak klikněte na **OK**. Balíček aplikace ffmpeg se přidá do vašeho účtu Batch.
 
 ![Přidání balíčku aplikace](./media/tutorial-parallel-dotnet/add-application.png)
@@ -118,7 +118,7 @@ Sample end: 11/19/2018 3:29:36 PM
 Elapsed time: 00:09:14.3418742
 ```
 
-Fond, výpočetní uzly, úlohy a úkoly můžete sledovat ve svém účtu Batch na webu Azure Portal. Pokud například chcete zobrazit Heat mapu výpočetních uzlů ve fondu, klikněte na **fondy** > *WinFFmpegPool*.
+Fond, výpočetní uzly, úlohy a úkoly můžete sledovat ve svém účtu Batch na webu Azure Portal. Pokud například chcete zobrazit Heat mapu výpočetních uzlů ve fondu, klikněte na **fondy**  >  *WinFFmpegPool*.
 
 Když jsou úkoly spuštěné, heat mapa vypadá přibližně takto:
 
@@ -245,7 +245,7 @@ await job.CommitAsync();
 
 Ukázka vytvoří v úloze úkoly zavoláním metody `AddTasksAsync`, která vytvoří seznam objektů [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask). Každý objekt `CloudTask` pomocí vlastnosti [CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) spouští aplikaci ffmpeg, která zpracuje vstupní objekt `ResourceFile`. Aplikace ffmpeg se na každý uzel nainstalovala dříve při vytváření fondu. Tady příkazový řádek spouští aplikaci ffmpeg kvůli převodu jednotlivých vstupních souborů MP4 (video) na soubory MP3 (zvuk).
 
-Ukázka po spuštění příkazového řádku vytvoří pro soubor MP3 objekt [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile). Výstupní soubory všech úkolů (v tomto případě jednoho) se pomocí vlastnosti [OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) nahrají do kontejneru v propojeném účtu úložiště. Dříve v ukázce kódu se získala adresa URL sdíleného přístupového`outputContainerSasUrl`podpisu (), která poskytuje přístup pro zápis do výstupního kontejneru. Poznamenejte si podmínky nastavené `outputFile` u objektu. Výstupní soubor z úlohy se do kontejneru nahraje až po úspěšném dokončení úlohy (`OutputFileUploadCondition.TaskSuccess`). Další podrobnosti o implementaci najdete v ukázce úplného [kódu](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) na GitHubu.
+Ukázka po spuštění příkazového řádku vytvoří pro soubor MP3 objekt [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile). Výstupní soubory všech úkolů (v tomto případě jednoho) se pomocí vlastnosti [OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) nahrají do kontejneru v propojeném účtu úložiště. Dříve v ukázce kódu se získala adresa URL sdíleného přístupového podpisu ( `outputContainerSasUrl` ), která poskytuje přístup pro zápis do výstupního kontejneru. Poznamenejte si podmínky nastavené u `outputFile` objektu. Výstupní soubor z úlohy se do kontejneru nahraje až po úspěšném dokončení úlohy ( `OutputFileUploadCondition.TaskSuccess` ). Další podrobnosti o implementaci najdete v ukázce úplného [kódu](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) na GitHubu.
 
 Potom ukázka přidá úkoly do úlohy pomocí metody [AddTaskAsync](/dotnet/api/microsoft.azure.batch.joboperations.addtaskasync) a ta je zařadí do fronty ke spuštění ve výpočetních uzlech.
 

@@ -3,17 +3,17 @@ title: Kurz – připojení generické klientské aplikace v Pythonu k Azure IoT
 description: V tomto kurzu se dozvíte, jak jako vývojář zařízení připojit zařízení s klientskou aplikací v Pythonu k vaší aplikaci Azure IoT Central. Šablonu zařízení vytvoříte tak, že naimportujete model schopností zařízení a přidáte zobrazení, která vám umožní pracovat s připojeným zařízením.
 author: dominicbetts
 ms.author: dobett
-ms.date: 03/24/2020
+ms.date: 07/07/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: tracking-python
-ms.openlocfilehash: 98aa452e8b0b5cf04edd319298c2b35e6097148e
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: f89a8caf5b91fb22cca020b1d146905b68c6ed96
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971058"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002018"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-python"></a>Kurz: vytvoření a připojení klientské aplikace k aplikaci Azure IoT Central (Python)
 
@@ -34,11 +34,11 @@ V tomto kurzu se naučíte:
 > * Pomocí zobrazení můžete spravovat vlastnosti zařízení.
 > * Pro řízení zařízení zavolejte synchronní a asynchronní příkazy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
-* Aplikace Azure IoT Central vytvořená pomocí šablony **vlastní aplikace** . Další informace najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central.md).
+* Aplikace Azure IoT Central vytvořená pomocí šablony **vlastní aplikace** . Další informace najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central.md). Aplikace musí být vytvořená na nebo po 07/14/2020.
 * Vývojový počítač s nainstalovaným [Pythonem](https://www.python.org/) verze 3,7 nebo novějším. Můžete spustit `python3 --version` na příkazovém řádku a ověřit svou verzi. Python je k dispozici pro širokou škálu operačních systémů. Pokyny v tomto kurzu předpokládají, že na příkazovém řádku Windows máte spuštěný příkaz **python3** .
 
 [!INCLUDE [iot-central-add-environmental-sensor](../../../includes/iot-central-add-environmental-sensor.md)]
@@ -214,18 +214,18 @@ Následující kroky ukazují, jak vytvořit klientskou aplikaci v Pythonu, kter
 
     Operátor může zobrazit datovou část odpovědi v historii příkazů.
 
-1. Do funkce přidejte následující funkce `main` , které budou zpracovávat aktualizace vlastností odeslané z vaší IoT Central aplikace:
+1. Do funkce přidejte následující funkce `main` , které budou zpracovávat aktualizace vlastností odeslané z vaší aplikace IoT Central. Zpráva, kterou zařízení odesílá v reakci na [aktualizaci vlastnosti s možností zápisu](concepts-telemetry-properties-commands.md#writeable-property-types) , musí obsahovat `av` `ac` pole a. `ad`Pole je volitelné:
 
     ```python
       async def name_setting(value, version):
         await asyncio.sleep(1)
         print(f'Setting name value {value} - {version}')
-        await device_client.patch_twin_reported_properties({'name' : {'value': value['value'], 'status': 'completed', 'desiredVersion': version}})
+        await device_client.patch_twin_reported_properties({'name' : {'value': value, 'ad': 'completed', 'ac': 200, 'av': version}})
 
       async def brightness_setting(value, version):
         await asyncio.sleep(5)
         print(f'Setting brightness value {value} - {version}')
-        await device_client.patch_twin_reported_properties({'brightness' : {'value': value['value'], 'status': 'completed', 'desiredVersion': version}})
+        await device_client.patch_twin_reported_properties({'brightness' : {'value': value, 'ad': 'completed', 'ac': 200, 'av': version}})
 
       settings = {
         'name': name_setting,
@@ -261,7 +261,7 @@ Následující kroky ukazují, jak vytvořit klientskou aplikaci v Pythonu, kter
 
       if device_client is not None and device_client.connected:
         print('Send reported properties on startup')
-        await device_client.patch_twin_reported_properties({'state': 'true'})
+        await device_client.patch_twin_reported_properties({'state': 'true', 'processorArchitecture': 'ARM', 'swVersion': '1.0.0'})
         tasks = asyncio.gather(
           send_telemetry(),
           command_listener(),
@@ -303,6 +303,10 @@ Můžete vidět, že se zařízení připojí k aplikaci Azure IoT Central a za�
 Můžete zjistit, jak zařízení reaguje na příkazy a aktualizace vlastností:
 
 ![Sledování klientské aplikace](media/tutorial-connect-device-python/run-application-2.png)
+
+## <a name="view-raw-data"></a>Zobrazit nezpracovaná data
+
+[!INCLUDE [iot-central-monitor-environmental-sensor-raw-data](../../../includes/iot-central-monitor-environmental-sensor-raw-data.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

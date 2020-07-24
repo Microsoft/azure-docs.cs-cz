@@ -9,18 +9,21 @@ ms.topic: tutorial
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
-ms.date: 03/04/2020
-ms.openlocfilehash: cca09f53f90b43713c2b9b764568fb0a6d157c5d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 07/10/2020
+ms.openlocfilehash: d11df9bae954dc654e22157639b74e5ca2363494
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118966"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047847"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Kurz: vytvoření klasifikačního modelu pomocí automatizovaného ML v Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-V tomto kurzu se naučíte, jak vytvořit základní model klasifikace bez psaní jediného řádku kódu pomocí automatizovaného rozhraní machine learningu Azure Machine Learning. Tento model klasifikace předpovídá, jestli se klient přihlásí k odběru pevně stanoveného termínu s finanční institucí.
+V tomto kurzu se naučíte, jak vytvořit základní model klasifikace bez psaní jediného řádku kódu pomocí automatizovaného strojového učení v Azure Machine Learning Studiu. Tento model klasifikace předpovídá, jestli se klient přihlásí k odběru pevně stanoveného termínu s finanční institucí.
+
+>[!IMPORTANT]
+> Automatizované prostředí strojového učení v nástroji Azure Machine Learning Studio je ve verzi Preview. Některé funkce nemusí být podporované nebo mají omezené možnosti.
 
 Pomocí automatizovaného strojového učení můžete automatizovat časově náročné úlohy. Automatizované Machine Learning rychle projde mnoho kombinací algoritmů a parametrů, které vám pomůžou najít nejlepší model na základě metriky úspěšnosti výběru.
 
@@ -34,28 +37,28 @@ V tomto kurzu se naučíte, jak provádět následující úlohy:
 > * Zobrazit podrobnosti experimentu.
 > * Nasazení modelu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree).
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree).
 
-* Stáhněte bankmarketing_train datový soubor [**. csv**](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) . Sloupec **y** indikuje, jestli se zákazník přihlásil k odběru pevně stanoveného termínu, který se později identifikuje jako cílový sloupec pro předpovědi v tomto kurzu. 
+* Stáhněte [**bankmarketing_train.csv**](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) datový soubor. Sloupec **y** indikuje, jestli se zákazník přihlásil k odběru pevně stanoveného termínu, který se později identifikuje jako cílový sloupec pro předpovědi v tomto kurzu. 
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 
 Azure Machine Learning pracovní prostor je základní prostředek v cloudu, který používáte k experimentování, výuce a nasazování modelů strojového učení. Přijedná se o vaše předplatné Azure a skupinu prostředků k snadno spotřebovanému objektu ve službě. 
 
-Pracovní prostor můžete vytvořit prostřednictvím Azure Portal, webové konzoly pro správu prostředků Azure.
+Pracovní prostor **Enterprise Edition** vytvoříte prostřednictvím Azure Portal, webové konzoly pro správu prostředků Azure.
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
 
 >[!IMPORTANT] 
 > Poznamenejte si svůj **pracovní prostor** a **předplatné**. Budete je potřebovat, abyste se ujistili, že vytvoříte experiment na správném místě. 
 
-## <a name="create-and-run-the-experiment"></a>Vytvoření a spuštění experimentu
+## <a name="get-started-in-azure-machine-learning-studio"></a>Začínáme v Azure Machine Learning Studiu
 
-V rámci služby Azure Machine Learning na webu můžete provést následující kroky experimentu, https://ml.azure.com které zahrnují nástroje strojového učení, které slouží k provádění scénářů pro datové vědy u všech úrovní dovedností. Toto rozhraní není podporované v prohlížečích Internet Exploreru.
+Provedete následující kroky experimentu a spustíte je pomocí nástroje Azure Machine Learning Studio v rámci https://ml.azure.com , konsolidovaného webového rozhraní, které zahrnuje nástroje strojového učení, k provádění scénářů pro datové vědy u všech úrovní dovedností. Aplikace Studio není podporována v prohlížečích aplikace Internet Explorer.
 
-1. Přihlaste se k [Azure Machine Learning](https://ml.azure.com).
+1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com).
 
 1. Vyberte své předplatné a pracovní prostor, který jste vytvořili.
 
@@ -67,7 +70,11 @@ V rámci služby Azure Machine Learning na webu můžete provést následující
 
    ![Stránka Začínáme](./media/tutorial-first-experiment-automated-ml/get-started.png)
 
-1. Vyberte **nový automatizovaný běh ml**. 
+1. Vyberte **+ Nový Automated ml Run**. 
+
+## <a name="create-and-load-dataset"></a>Vytvořit a načíst datovou sadu
+
+Před konfigurací experimentu nahrajte datový soubor do svého pracovního prostoru ve formě Azure Machine Learning datové sady. V takovém případě vám umožní zajistit, aby vaše data byla pro váš experiment vhodně formátována.
 
 1. Vytvořte novou datovou sadu výběrem možnosti **místní soubory** z rozevíracího seznamu **+ vytvořit datovou sadu** . 
 
@@ -79,7 +86,7 @@ V rámci služby Azure Machine Learning na webu můžete provést následující
 
     1. Vyberte **Procházet**.
     
-    1. V místním počítači vyberte soubor **bankmarketing_train. csv** . Jedná se o soubor, který jste stáhli jako [požadavek](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv).
+    1. Vyberte soubor **bankmarketing_train.csv** na místním počítači. Jedná se o soubor, který jste stáhli jako [požadavek](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv).
 
     1. Poskytněte datovou sadu jedinečný název a zadejte volitelný popis. 
 
@@ -89,7 +96,7 @@ V rámci služby Azure Machine Learning na webu můžete provést následující
        
     1. Ověřte, zda je formulář **nastavení a náhled** vyplněný následujícím způsobem, a vyberte možnost **Další**.
         
-        Pole|Description| Hodnota pro kurz
+        Pole|Popis| Hodnota pro kurz
         ---|---|---
         Formát souboru|Definuje rozložení a typ dat uložených v souboru.| Oddělených
         Oddělovač|Jeden nebo více znaků pro určení hranice mezi &nbsp; oddělenými a nezávislými oblastmi v prostém textu nebo v jiných datových proudech. |Čárka
@@ -101,25 +108,35 @@ V rámci služby Azure Machine Learning na webu můžete provést následující
 
         ![Konfigurace karty Preview](./media/tutorial-first-experiment-automated-ml/schema-tab-config.gif)
 
-    1. Na formuláři **potvrdit podrobnosti** ověřte, že se informace shodují s dříve vyplněnými **základními informacemi** o formulářích pro informace a **nastavení a ve verzi Preview** .
+    1. Na formuláři **potvrdit podrobnosti** ověřte, že se informace shodují s dříve vyplněnými **základními informacemi, úložištěm dat a výběrem souborů** a **nastaveními a náhledem** .
+    
     1. Vyberte **vytvořit** a dokončete vytvoření datové sady.
+    
     1. Jakmile se datová sada zobrazí v seznamu, vyberte ji.
+    
     1. Přečtěte si **Náhled dat** a ujistěte se, že jste nezahrnuli **Day_of_week** pak vyberte **OK**.
 
     1. Vyberte **Další**.
+
+## <a name="configure-experiment-run"></a>Konfigurace experimentového běhu
+
+Po načtení a konfiguraci dat můžete nastavit experiment. Tato instalace zahrnuje úkoly návrhu, jako je například, výběr velikosti prostředí COMPUTE a určení toho, který sloupec chcete odhadnout. 
 
 1. Naplňte formulář pro **spuštění konfigurace** následujícím způsobem:
     1. Zadejte tento název experimentu:`my-1st-automl-experiment`
 
     1. Jako cílový sloupec vyberte **y** , co chcete předpovědět. Tento sloupec indikuje, jestli se klient přihlásil k odběru termínu nebo ne.
+    
     1. Vyberte **vytvořit nový výpočetní** výkon a nakonfigurujte svůj cíl služby Compute. Výpočetní cíl je místní nebo cloudové prostředí, které se používá ke spuštění školicího skriptu nebo hostování nasazení služby. Pro tento experiment používáme cloudový výpočetní výkon. 
 
-        Pole | Description | Hodnota pro kurz
+        Pole | Popis | Hodnota pro kurz
         ----|---|---
         Název výpočtu |Jedinečný název, který identifikuje váš výpočetní kontext.|automl – COMPUTE
+        &nbsp;Typ virtuálního počítače &nbsp;| Vyberte typ virtuálního počítače pro výpočetní výkon.|PROCESOR (jednotka ústředního zpracování)
         &nbsp;Velikost virtuálního počítače &nbsp;| Vyberte velikost virtuálního počítače pro výpočetní výkon.|Standard_DS12_V2
-        Minimální/maximální počet uzlů (v rozšířených nastaveních)| Chcete-li profilovat data, je nutné zadat 1 nebo více uzlů.|Minimální počet uzlů: 1<br>Maximální počet uzlů: 6
-  
+        Minimální/maximální počet uzlů| Chcete-li profilovat data, je nutné zadat 1 nebo více uzlů.|Minimální počet uzlů: 1<br>Maximální počet uzlů: 6
+        Počet sekund nečinnosti před horizontálním navýšení kapacity | Doba nečinnosti před tím, než se cluster automaticky škáluje na minimální počet uzlů.|120 (výchozí)
+        Upřesnit nastavení | Nastavení pro konfiguraci a autorizaci virtuální sítě pro svůj experiment.| Žádné
         1. Pokud chcete získat cíl výpočtů, vyberte **vytvořit** . 
 
             **Dokončení této akce trvá několik minut.** 
@@ -128,17 +145,16 @@ V rámci služby Azure Machine Learning na webu můžete provést následující
 
     1. Vyberte **Další**.
 
-1. Ve formuláři **typ úlohy a nastavení** vyberte jako typ úlohy strojového učení možnost **klasifikace** .
+1. Ve formuláři **typ úlohy a nastavení** dokončete instalaci automatizovaného experimentu ml zadáním typu úlohy Machine Learning a nastavení konfigurace.
+    
+    1.  Jako typ úlohy strojového učení vyberte **klasifikace** .
 
     1. Vyberte **Zobrazit další nastavení konfigurace** a vyplňte pole následujícím způsobem. Tato nastavení mají lepší kontrolu nad úlohou školení. V opačném případě se výchozí hodnoty aplikují na základě experimentů a výběrů dat.
 
-        >[!NOTE]
-        > V tomto kurzu nenastavíte prahovou hodnotu metriky nebo maximální počet jader na iteraci. Ani nebudete blokovat testování algoritmů.
-   
-        Další &nbsp; Konfigurace|Description|Hodnota &nbsp; pro &nbsp; kurz
+        Další &nbsp; Konfigurace|Popis|Hodnota &nbsp; pro &nbsp; kurz
         ------|---------|---
         Primární metrika| Metrika vyhodnocení, podle které se algoritmus strojového učení měří.|AUC_weighted
-        Automaticky featurization| Umožňuje předzpracování. To zahrnuje automatické čištění dat, přípravu a transformaci, které generují syntetické funkce.| Povolit
+        Vysvětlete nejlepší model| Automaticky zobrazuje vysvětlení nejlepšího modelu vytvořeného pomocí automatizovaného ML.| Povolit
         Blokované algoritmy | Algoritmy, které chcete vyloučit z úlohy školení| Žádné
         Výstupní kritérium| Pokud je splněno kritérium, úloha školení se zastaví. |&nbsp;Čas úlohy školení &nbsp; (hodiny): 1 <br> &nbsp;Prahová hodnota skóre metriky &nbsp; : žádné
         Ověřování | Vyberte typ křížového ověření a počet testů.|Typ ověřování:<br>&nbsp;k skládání &nbsp; křížového ověřování <br> <br> Počet ověření: 2
@@ -161,7 +177,7 @@ Přejděte na kartu **modely** a podívejte se na testované algoritmy (modely).
 
 Až budete čekat na dokončení všech modelů experimentů, vyberte **název algoritmu** dokončeného modelu a prozkoumejte jeho podrobnosti o výkonu. 
 
-Následující navigace prochází pomocí karet **Podrobnosti modelu** a **vizualizace** k zobrazení vlastností vybraného modelu, metrik a grafů výkonu. 
+Následující naviguje **Podrobnosti** a karty **metriky** k zobrazení vlastností, metrik a výkonu vybraného modelu. 
 
 ![Podrobnosti spuštění iterace](./media/tutorial-first-experiment-automated-ml/run-detail.gif)
 
@@ -171,11 +187,15 @@ Automatizované rozhraní Machine Learning umožňuje nasadit nejlepší model j
 
 Pro tento experiment nasazení do webové služby znamená, že finanční instituce teď má iterativní a škálovatelné webové řešení pro identifikaci potenciálních zákazníků s dlouhodobým vkladem. 
 
-Po dokončení spuštění přejděte zpět na stránku **podrobností o spuštění** a vyberte kartu **modely** .
+Zkontrolujte, jestli je váš experiment dokončený. Provedete to tak, že v horní části obrazovky vyberete **Spustit 1** a vrátíte se na nadřazenou stránku spuštění. V levém horním rohu obrazovky se zobrazí stav **dokončeno** . 
 
-V tomto kontextu experimentu se **VotingEnsemble** považuje za nejlepší model na základě metriky **AUC_weighted** .  Tento model nasadíme, ale doporučujeme, aby dokončení nasazení trvalo přibližně 20 minut. Proces nasazení zahrnuje několik kroků, včetně registrace modelu, generování prostředků a jejich konfigurace pro webovou službu.
+Po dokončení experimentu se stránka s **podrobnostmi** vyplní pomocí oddílu **nejlepšího Shrnutí modelu** . V tomto kontextu experimentu se **VotingEnsemble** považuje za nejlepší model na základě metriky **AUC_weighted** .  
 
-1. V levém dolním rohu vyberte tlačítko **nasadit nejlepší model** .
+Tento model nasadíme, ale doporučujeme, aby dokončení nasazení trvalo přibližně 20 minut. Proces nasazení zahrnuje několik kroků, včetně registrace modelu, generování prostředků a jejich konfigurace pro webovou službu.
+
+1. Výběrem **VotingEnsemble** otevřete stránku specifickou pro daný model.
+
+1. V levém horním rohu vyberte tlačítko **nasadit** .
 
 1. Nasaďte podokno **nasadit model** následujícím způsobem:
 
@@ -191,7 +211,7 @@ V tomto kontextu experimentu se **VotingEnsemble** považuje za nejlepší model
 
 1. Vyberte **Nasadit**.  
 
-    V horní části obrazovky **spuštění** se zobrazí zelená zpráva o úspěchu a v podokně **doporučený model** se zobrazí stavová zpráva v části **stav nasazení**. Pro pravidelnou kontrolu stavu nasazení vyberte **aktualizovat** .
+    V horní části obrazovky **spuštění** se zobrazí zelená zpráva o úspěchu a v podokně **Souhrn modelu** se zobrazí stavová zpráva v části **stav nasazení**. Pro pravidelnou kontrolu stavu nasazení vyberte **aktualizovat** .
     
 Nyní máte provozní webovou službu, která generuje předpovědi. 
 

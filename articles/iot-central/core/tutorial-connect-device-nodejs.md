@@ -1,27 +1,27 @@
 ---
-title: Kurz – připojení Obecné klientské aplikace Node. js do Azure IoT Central | Microsoft Docs
-description: V tomto kurzu se dozvíte, jak jako vývojář zařízení připojit zařízení s klientskou aplikací Node. js k vaší aplikaci Azure IoT Central. Šablonu zařízení vytvoříte tak, že naimportujete model schopností zařízení a přidáte zobrazení, která vám umožní pracovat s připojeným zařízením.
+title: Kurz – připojení Obecné klientské aplikace Node.js k Azure IoT Central | Microsoft Docs
+description: V tomto kurzu se dozvíte, jak jako vývojář zařízení připojit zařízení s Node.js klientskou aplikací k vaší aplikaci Azure IoT Central. Šablonu zařízení vytvoříte tak, že naimportujete model schopností zařízení a přidáte zobrazení, která vám umožní pracovat s připojeným zařízením.
 author: dominicbetts
 ms.author: dobett
-ms.date: 03/24/2020
+ms.date: 07/07/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mqtt
-ms.openlocfilehash: 65f441425113d89010cc2d282758c5a042be9300
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: 08df3bce9d1ecce4d4b0cdfc3034355feef6a4ba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84417901"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003368"
 ---
-# <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>Kurz: vytvoření a připojení klientské aplikace k aplikaci Azure IoT Central (Node. js)
+# <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>Kurz: vytvoření a připojení klientské aplikace k aplikaci Azure IoT Central (Node.js)
 
 [!INCLUDE [iot-central-selector-tutorial-connect](../../../includes/iot-central-selector-tutorial-connect.md)]
 
 *Tento článek se týká tvůrců řešení a vývojářů zařízení.*
 
-V tomto kurzu se dozvíte, jak jako vývojář zařízení připojit klientskou aplikaci Node. js k vaší aplikaci Azure IoT Central. Aplikace Node. js simuluje chování zařízení snímače životního prostředí. Pomocí ukázkového _modelu schopností zařízení_ vytvoříte _šablonu zařízení_ v IoT Central. Přidáním zobrazení do šablony zařízení povolíte operátorovi komunikovat se zařízením.
+V tomto kurzu se dozvíte, jak jako vývojář pro zařízení připojit klienta aplikace Node.js k aplikaci Azure IoT Central. Node.js aplikace simuluje chování zařízení snímače životního prostředí. Pomocí ukázkového _modelu schopností zařízení_ vytvoříte _šablonu zařízení_ v IoT Central. Přidáním zobrazení do šablony zařízení povolíte operátorovi komunikovat se zařízením.
 
 V tomto kurzu se naučíte:
 
@@ -29,36 +29,36 @@ V tomto kurzu se naučíte:
 > * Importujte model schopností zařízení a vytvořte šablonu zařízení.
 > * Přidejte do šablony zařízení výchozí a vlastní zobrazení.
 > * Publikujte šablonu zařízení a přidejte do aplikace IoT Central reálné zařízení.
-> * Vytvořte a spusťte kód zařízení Node. js a podívejte se, jak se připojí k vaší IoT Central aplikaci.
+> * Vytvořte a spusťte kód zařízení Node.js a podívejte se, jak se připojit k vaší aplikaci IoT Central.
 > * Zobrazit simulovanou telemetrii odeslanou ze zařízení.
 > * Pomocí zobrazení můžete spravovat vlastnosti zařízení.
 > * Pro řízení zařízení zavolejte synchronní a asynchronní příkazy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
-* Aplikace Azure IoT Central vytvořená pomocí šablony **vlastní aplikace** . Další informace najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central.md).
-* Vývojový počítač s nainstalovanou aplikací [Node. js](https://nodejs.org/) verze 10.0.0 nebo novější. Můžete spustit na `node --version` příkazovém řádku a ověřit svou verzi. Pokyny v tomto kurzu předpokládají, že jste spustili příkaz **Node** na příkazovém řádku Windows. V mnoha dalších operačních systémech ale můžete použít Node. js.
+* Aplikace Azure IoT Central vytvořená pomocí šablony **vlastní aplikace** . Další informace najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central.md). Aplikace musí být vytvořená na nebo po 07/14/2020.
+* Vývojový počítač s nainstalovanou [Node.js](https://nodejs.org/) verzí 10.0.0 nebo novější. Můžete spustit na `node --version` příkazovém řádku a ověřit svou verzi. Pokyny v tomto kurzu předpokládají, že jste spustili příkaz **Node** na příkazovém řádku Windows. Můžete však použít Node.js v mnoha dalších operačních systémech.
 
 [!INCLUDE [iot-central-add-environmental-sensor](../../../includes/iot-central-add-environmental-sensor.md)]
 
 ### <a name="create-a-nodejs-application"></a>Vytvoření aplikace Node.js
 
-Následující kroky ukazují, jak vytvořit klientskou aplikaci Node. js, která se připojuje k reálnému zařízení, které jste přidali do aplikace. Tato aplikace Node. js simuluje chování reálného zařízení.
+Následující kroky ukazují, jak vytvořit klientskou aplikaci Node.js, která se připojuje k reálnému zařízení, které jste přidali do aplikace. Tato Node.js aplikace simuluje chování reálného zařízení.
 
 1. V prostředí příkazového řádku přejděte do `environmental-sensor` složky, kterou jste předtím vytvořili.
 
-1. Chcete-li inicializovat projekt Node. js a nainstalovat požadované závislosti, spusťte následující příkazy – přijměte všechny výchozí možnosti při spuštění `npm init` :
+1. Chcete-li inicializovat projekt Node.js a nainstalovat požadované závislosti, spusťte následující příkazy – přijměte všechny výchozí možnosti při spuštění příkazu `npm init` :
 
     ```cmd/sh
     npm init
     npm install azure-iot-device azure-iot-device-mqtt azure-iot-provisioning-device-mqtt azure-iot-security-symmetric-key --save
     ```
 
-1. Ve složce vytvořte soubor s názvem **environmentalSensor. js** `environmental-sensor` .
+1. Ve složce vytvořte soubor **environmentalSensor.js** s názvemenvironmentalSensor.js`environmental-sensor` .
 
-1. Na `require` začátek souboru **environmentalSensor. js** přidejte následující příkazy:
+1. `require`Na začátek souboru **environmentalSensor.js** přidejte následující příkazy:
 
     ```javascript
     "use strict";
@@ -121,7 +121,7 @@ Následující kroky ukazují, jak vytvořit klientskou aplikaci Node. js, kter�
 
     IoT Central používá vlákna zařízení k synchronizaci hodnot vlastností mezi zařízením a aplikací IoT Central. Hodnoty vlastností zařízení používají nedokončené hlášené vlastnosti zařízení. Zapisovatelné vlastnosti používají v zařízení nahlášené vlákna a požadované vlastnosti.
 
-1. Chcete-li definovat a zpracovat zapisovatelné vlastnosti, na které zařízení reaguje, přidejte následující kód:
+1. Chcete-li definovat a zpracovat zapisovatelné vlastnosti, na které zařízení reaguje, přidejte následující kód. Zpráva, kterou zařízení odesílá v reakci na [aktualizaci vlastnosti s možností zápisu](concepts-telemetry-properties-commands.md#writeable-property-types) , musí obsahovat `av` `ac` pole a. `ad`Pole je volitelné:
 
     ```javascript
     // Add any writeable properties your device supports,
@@ -130,12 +130,12 @@ Následující kroky ukazují, jak vytvořit klientskou aplikaci Node. js, kter�
     var writeableProperties = {
       'name': (newValue, callback) => {
           setTimeout(() => {
-            callback(newValue, 'completed');
+            callback(newValue, 'completed', 200);
           }, 1000);
       },
       'brightness': (newValue, callback) => {
         setTimeout(() => {
-            callback(newValue, 'completed');
+            callback(newValue, 'completed', 200);
         }, 5000);
       }
     };
@@ -145,13 +145,14 @@ Následující kroky ukazují, jak vytvořit klientskou aplikaci Node. js, kter�
       twin.on('properties.desired', function (desiredChange) {
         for (let setting in desiredChange) {
           if (writeableProperties[setting]) {
-            console.log(`Received setting: ${setting}: ${desiredChange[setting].value}`);
-            writeableProperties[setting](desiredChange[setting].value, (newValue, status) => {
+            console.log(`Received setting: ${setting}: ${desiredChange[setting]}`);
+            writeableProperties[setting](desiredChange[setting], (newValue, status, code) => {
               var patch = {
                 [setting]: {
                   value: newValue,
-                  status: status,
-                  desiredVersion: desiredChange.$version
+                  ad: status,
+                  ac: code,
+                  av: desiredChange.$version
                 }
               }
               sendDeviceProperties(twin, patch);
@@ -280,7 +281,9 @@ Následující kroky ukazují, jak vytvořit klientskou aplikaci Node. js, kter�
           } else {
             // Send device properties once on device start up.
             var properties = {
-              state: 'true'
+              state: 'true',
+              processorArchitecture: 'ARM',
+              swVersion: '1.0.0'
             };
             sendDeviceProperties(twin, properties);
 
@@ -326,9 +329,13 @@ Můžete zjistit, jak zařízení reaguje na příkazy a aktualizace vlastností
 
 ![Sledování klientské aplikace](media/tutorial-connect-device-nodejs/run-application-2.png)
 
+## <a name="view-raw-data"></a>Zobrazit nezpracovaná data
+
+[!INCLUDE [iot-central-monitor-environmental-sensor-raw-data](../../../includes/iot-central-monitor-environmental-sensor-raw-data.md)]
+
 ## <a name="next-steps"></a>Další kroky
 
-Jako vývojář zařízení teď, když jste se naučili základy vytvoření zařízení pomocí Node. js, jsme si udělali několik navrhovaných dalších kroků:
+Jako vývojář zařízení teď jste se seznámili se základy vytváření zařízení pomocí Node.js, což je několik navrhovaných dalších kroků:
 
 * Naučte se, jak připojit reálné zařízení k IoT Central v tématu [připojení zařízení IoT DevKit k vaší aplikaci Azure IoT Central](./howto-connect-devkit.md) .
 * Přečtěte si, [co jsou šablony zařízení?](./concepts-device-templates.md) Další informace o roli šablon zařízení při implementaci kódu zařízení.

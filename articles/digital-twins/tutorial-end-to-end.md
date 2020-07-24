@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 9c07db575827254de833fc0b2390be823ebc4e57
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: bd1c41f23164d8dda2712ef2c361498cdaed6105
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206573"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032288"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>Sestavení kompletního řešení
 
@@ -26,6 +26,9 @@ V tomto kurzu budete...
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+### <a name="set-up-cloud-shell-session"></a>Nastavit relaci Cloud Shell
 [!INCLUDE [Cloud Shell for Azure Digital Twins](../../includes/digital-twins-cloud-shell.md)]
 
 [!INCLUDE [Azure Digital Twins tutorial: configure the sample project](../../includes/digital-twins-tutorial-sample-configure.md)]
@@ -177,7 +180,7 @@ Tady jsou akce, které dokončíte pro nastavení připojení tohoto zařízení
 4. Spuštění simulovaného zařízení a generování telemetrie
 5. Dotazování na živé výsledky Azure pro zobrazení živých výsledků
 
-### <a name="create-an-iot-hub-instance"></a>Vytvoření instance IoT Hub
+### <a name="create-an-iot-hub-instance"></a>Vytvoření instance IoT Hubu
 
 Digitální vlákna Azure je navržená tak, aby fungovala vedle [IoT Hub](../iot-hub/about-iot-hub.md), což je služba Azure pro správu zařízení a jejich dat. V tomto kroku nastavíte centrum IoT, které bude spravovat ukázkové zařízení v tomto kurzu.
 
@@ -258,7 +261,7 @@ connectionString = <Iot-hub-connection-string>
 deviceConnectionString = <device-connection-string>
 ```
 
-Uložte soubor.
+Soubor uložte.
 
 Nyní chcete-li zobrazit výsledky simulace dat, kterou jste nastavili, spusťte projekt **DeviceSimulator** pomocí tohoto tlačítka na panelu nástrojů:
 
@@ -433,7 +436,7 @@ Nakonec odstraňte ukázkovou složku projektu, kterou jste stáhli z místního
 V tomto kurzu jste vytvořili kompletní scénář, který zobrazuje digitální vlákna Azure, která se řídí daty živého zařízení.
 
 Pak začněte hledat v dokumentaci konceptu, kde najdete další informace o prvcích, se kterými jste pracovali v tomto kurzu:
-* [Koncepty: vlastní modely](concepts-models.md)
+* [*Koncepty: vlastní modely*](concepts-models.md)
 
 Případně můžete v tomto kurzu podrobněji podrobnější informace o procesech, a to spuštěním článků s postupy:
-* [Postupy: použití rozhraní příkazového řádku Azure Digital zdvojené](how-to-use-cli.md)
+* [*Postupy: použití rozhraní příkazového řádku Azure Digital zdvojené*](how-to-use-cli.md)

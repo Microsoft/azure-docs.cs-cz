@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b225b6471dd59275b3963bc2de09607c97a21465
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 7fd1b815a56a21e502decb440806040c626c13d2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85373399"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019637"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory
 
@@ -47,7 +47,7 @@ Pokud chcete použít proxy aplikace, potřebujete Windows Server se systémem W
 Pro zajištění vysoké dostupnosti v produkčním prostředí doporučujeme mít více než jeden Windows Server. Pro tento kurz stačí jeden Windows Server.
 
 > [!IMPORTANT]
-> Pokud instalujete konektor v systému Windows Server 2019, je nutné zakázat podporu protokolu HTTP2 v součásti WinHttp. V dřívějších verzích podporovaných operačních systémů je to ve výchozím nastavení zakázané. Přidáním následujícího klíče registru a restartováním serveru ho zakážete ve Windows serveru 2019. Všimněte si, že se jedná o klíč registru na úrovni počítače.
+> Pokud instalujete konektor v systému Windows Server 2019, je nutné zakázat podporu protokolu HTTP2 v součásti WinHttp pro vynucené delegování protokolu Kerberos do správné práce. V dřívějších verzích podporovaných operačních systémů je to ve výchozím nastavení zakázané. Přidáním následujícího klíče registru a restartováním serveru ho zakážete ve Windows serveru 2019. Všimněte si, že se jedná o klíč registru na úrovni počítače.
 >
 > ```
 > Windows Registry Editor Version 5.00
@@ -95,6 +95,9 @@ Povolení TLS 1,2:
 
 Začněte tím, že povolíte komunikaci s datovými centry Azure a připravíte své prostředí pro Azure Proxy aplikací služby AD. Pokud je v cestě brána firewall, ujistěte se, že je otevřená. Otevřená brána firewall umožňuje konektoru předávat žádosti pomocí protokolu HTTPS (TCP) na proxy aplikace.
 
+> [!IMPORTANT]
+> Pokud instalujete konektor pro Azure Government Cloud, postupujte podle [požadavků](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls) a [pokynů k instalaci](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud). K tomu je potřeba povolit přístup k jiné sadě adres URL a další parametr ke spuštění instalace.
+
 ### <a name="open-ports"></a>Otevřené porty
 
 Otevřete následující porty pro **odchozí** provoz.
@@ -110,7 +113,7 @@ Pokud brána firewall vynutila provoz na základě pocházejících uživatelů,
 
 Povolte přístup k následujícím adresám URL:
 
-| URL | Jak se používá |
+| Adresa URL | Jak se používá |
 | --- | --- |
 | \*. msappproxy.net<br>\*. servicebus.windows.net | Komunikace mezi konektorem a cloudovou službou proxy aplikací |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Konektor používá tyto adresy URL k ověření certifikátů. |
@@ -121,6 +124,7 @@ Povolte přístup k následujícím adresám URL:
 ## <a name="install-and-register-a-connector"></a>Instalace a registrace konektoru
 
 Chcete-li použít proxy aplikace, nainstalujte konektor na každý server s Windows, který používáte se službou proxy aplikací. Konektor je agent, který spravuje odchozí připojení z místních aplikačních serverů k proxy aplikací v Azure AD. Konektor můžete nainstalovat na servery, na kterých jsou taky nainstalované další ověřovací agenty, jako je Azure AD Connect.
+
 
 Postup instalace konektoru:
 
@@ -196,7 +200,7 @@ Teď, když jste připravili prostředí a nainstalovali konektor, jste připrav
 
 6. V případě potřeby nakonfigurujte **Další nastavení**. U většiny aplikací byste měli tato nastavení zachovat ve svých výchozích stavech. 
 
-    | Pole | Description |
+    | Pole | Popis |
     | :---- | :---------- |
     | **Časový limit aplikace back-endu** | Nastavte tuto hodnotu na **Long** , jenom pokud se vaše aplikace pomalu ověřuje a připojuje. Ve výchozím nastavení má časový limit aplikace back-end délku 85 sekund. Když se nastaví na Long, časový limit pro back-end se zvýší na 180 sekund. |
     | **Použít soubor cookie pouze s protokolem HTTP** | Nastavte tuto hodnotu na **Ano** , pokud chcete, aby soubory cookie proxy aplikací zahrnovaly příznak HttpOnly v hlavičce HTTP Response. Pokud používáte službu Vzdálená plocha, nastavte tuto hodnotu na **ne**.|
@@ -205,7 +209,7 @@ Teď, když jste připravili prostředí a nainstalovali konektor, jste připrav
     | **Přeložit adresy URL v hlavičkách** | Tuto hodnotu nechte jako **Ano** , pokud vaše aplikace nevyžadovala v žádosti o ověření hlavičku původního hostitele. |
     | **Přeložit adresy URL v těle aplikace** | Tuto hodnotu nechte jako **ne** , pokud jste nepevně zakódovanéi odkazy HTML na jiné místní aplikace a nepoužíváte vlastní domény. Další informace najdete v tématu [Překlad propojení pomocí proxy aplikace](application-proxy-configure-hard-coded-link-translation.md).<br><br>Tuto hodnotu nastavte na **Ano** , pokud plánujete monitorovat tuto aplikaci pomocí Microsoft Cloud App Security (MCAS). Další informace najdete v tématu [Konfigurace monitorování přístupu aplikace v reálném čase pomocí Microsoft Cloud App Security a Azure Active Directory](application-proxy-integrate-with-microsoft-cloud-application-security.md). |
 
-7. Vyberte možnost **Přidat**.
+7. Vyberte **Přidat**.
 
 ## <a name="test-the-application"></a>Testování aplikace
 

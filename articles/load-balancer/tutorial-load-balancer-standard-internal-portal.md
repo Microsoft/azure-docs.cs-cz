@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: b8fcef13fbe41ac26b2a31d6871896428649eaa1
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: f7f16093074b48610c1db8fec7f05ee01e7ab1ed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920853"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078780"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-standard-load-balancer-in-the-azure-portal"></a>Kurz: Vyrovnávání zatížení interního provozu pomocí standardního nástroje pro vyrovnávání zatížení v Azure Portal
 
@@ -32,25 +32,23 @@ Pokud chcete, můžete tyto kroky provést pomocí [Azure CLI](load-balancer-get
 
 Pokud chcete postupovat podle tohoto kurzu, přihlaste se k Azure Portal v [https://portal.azure.com](https://portal.azure.com) .
 
-## <a name="create-a-vnet-back-end-servers-and-a-test-vm"></a>Vytvoření virtuální sítě, back-endové serverů a testovacího virtuálního počítače
+## <a name="virtual-network-and-parameters"></a>Virtuální síť a parametry
+V této části budete muset v krocích níže nahradit následující parametry:
 
-Nejdřív vytvořte virtuální síť (VNet). Ve virtuální síti vytvořte dva virtuální počítače, které se mají použít pro back-end fond standardního nástroje pro vyrovnávání zatížení, a třetí virtuální počítač, který se má použít k otestování nástroje pro vyrovnávání zatížení. 
+| Parametr                   | Hodnota                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupSLB |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | USA – východ 2      |
+| **\<IPv4-address-space>**   | 10.3.0.0 \ 16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.3.0.0 \ 24          |
 
-### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
-
-1. V levé horní části portálu vyberte **vytvořit prostředek**  >  **síť**  >  **virtuální síť**.
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
    
-1. V podokně **vytvořit virtuální síť** zadejte nebo vyberte tyto hodnoty:
-   
-   - **Název**: zadejte **MyVNet**.
-   - **Zdroj dat**: vyberte **vytvořit novou**a potom zadejte **MyResourceGroupLB**a vyberte **OK**. 
-   - **Podsíť**  >  **Název**: zadejte **MyBackendSubnet**.
-   
-1. Vyberte **Vytvořit**.
 
-   ![Vytvoření virtuální sítě](./media/tutorial-load-balancer-basic-internal-portal/2-load-balancer-virtual-network.png)
 
-### <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
+## <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
 
 1. V levé horní části portálu vyberte **vytvořit prostředek**  >  **COMPUTE**  >  **Windows Server 2016 Datacenter**. 
    
@@ -94,14 +92,14 @@ Pomocí portálu vytvořte standardní interní nástroj pro vyrovnávání zat�
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
-    | Předplatné               | Vyberte své předplatné.    |    
+    | Předplatné               | Vyberte předplatné.    |    
     | Skupina prostředků         | Vyberte **vytvořit nový** a do textového pole zadejte *MyResourceGroupLB* .|
-    | Name                   | *myLoadBalancer*                                   |
+    | Název                   | *myLoadBalancer*                                   |
     | Oblast         | Vyberte **USA – východ 2**.                                        |
     | Typ          | Vyberte **interní**.                                        |
-    | SKU           | Vyberte **Standard**.                          |
+    | Skladová položka           | Vyberte **Standard**.                          |
     | Virtuální síť           | Vyberte *MyVNet*.                          |    
-    | Přiřazení IP adresy              | Vyberte možnost **static**.   |
+    | Přiřazení IP adresy              | Vyberte **Statické**.   |
     | Privátní IP adresa|Zadejte adresu, která se nachází v adresním prostoru virtuální sítě a podsítě, například *10.3.0.7*.  |
 
 3. Na kartě **Revize + vytvořit** klikněte na **vytvořit**. 
@@ -129,7 +127,7 @@ K distribuci provozu do virtuálních počítačů využívá nástroj pro vyrov
    1. Do fondu back-end přidejte **MyVM1** a **MyVM2** .
    2. Po přidání jednotlivých počítačů rozevírací seznam a výběr **Konfigurace sítě IP**. 
      
-1. Vyberte možnost **Přidat**.
+1. Vyberte **Přidat**.
    
    ![Přidat fond back-endové adresy](./media/tutorial-load-balancer-standard-internal-portal/3-load-balancer-backend-02.png)
    
@@ -186,7 +184,7 @@ Pokud chcete nakonfigurovat [porty s vysokou dostupností](load-balancer-ha-port
    
    ![Přidání pravidla vyrovnávání zatížení](./media/tutorial-load-balancer-basic-internal-portal/5-load-balancing-rules.png)
 
-## <a name="test-the-load-balancer"></a>Test nástroje pro vyrovnávání zatížení
+## <a name="test-the-load-balancer"></a>Testování Load Balanceru
 
 Na back-endové servery nainstalujte Internetová informační služba (IIS) a pak pomocí MyTestVM otestujte Nástroj pro vyrovnávání zatížení pomocí jeho privátní IP adresy. Každý virtuální počítač back-end slouží jako jiná verze výchozí webové stránky IIS, takže můžete vidět požadavky na distribuci vyrovnávání zatížení mezi dvěma virtuálními počítači.
 
@@ -240,7 +238,7 @@ Na každém back-end serveru použijte PowerShell k instalaci služby IIS a nahr
     ```
 1. Kliknutím na **Odpojit**zavřete připojení RDP k MyVM1 a MyVM2. Virtuální počítače neukončíte.
 
-### <a name="test-the-load-balancer"></a>Test nástroje pro vyrovnávání zatížení
+### <a name="test-the-load-balancer"></a>Testování Load Balanceru
 
 1. V MyTestVM otevřete **Internet Explorer**a odpovězte na všechny **výzvy ke konfiguraci** . 
    

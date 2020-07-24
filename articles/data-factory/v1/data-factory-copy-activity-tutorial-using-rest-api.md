@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3007aa1fab8797d77e1edde83f22e359196641cc
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 91a92f9dd0eaf55b8ba35f38102ee30b8cda4bfa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85248577"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053813"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>Kurz: Použití rozhraní REST API k vytvoření kanálu Azure Data Factory pro kopírování dat 
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity můžete zře
 >  
 > Datový kanál v tomto kurzu kopíruje data ze zdrojového úložiště dat do cílového úložiště dat. Kurz předvádějící způsoby transformace dat pomocí Azure Data Factory najdete v tématu popisujícím [kurz vytvoření kanálu, který umožňuje transformovat data pomocí clusteru Hadoop](data-factory-build-your-first-pipeline.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -57,7 +57,7 @@ Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity můžete zře
   2. Získejte **ID klienta** a **tajný klíč**. 
   3. Získat **ID tenanta** 
   4. Přiřaďte aplikaci **ADFCopyTutorialApp** k roli **Přispěvatel Data Factory**.  
-* Nainstalujte [Azure PowerShell](/powershell/azure/overview).  
+* Nainstalujte [Azure PowerShell](/powershell/azure/).  
 * Spusťte **PowerShell** a potom proveďte následující kroky. Nechte prostředí Azure PowerShell otevřené až do konce tohoto kurzu. Pokud ho zavřete a znovu otevřete, bude potřeba tyto příkazy spustit znovu.
   
   1. Spusťte následující příkaz a zadejte uživatelské jméno a heslo, které používáte k přihlášení na web Azure Portal:
@@ -487,7 +487,7 @@ Výstupní datové sady v současné době řídí plán. V tomto kurzu je vý
     Write-Host $results
     ```
 
-**Gratulujeme!** Úspěšně jste vytvořili objekt pro vytváření dat Azure s kanálem, který kopíruje data z Azure Blob Storage do Azure SQL Database.
+**Blahopřejeme!** Úspěšně jste vytvořili objekt pro vytváření dat Azure s kanálem, který kopíruje data z Azure Blob Storage do Azure SQL Database.
 
 ## <a name="monitor-pipeline"></a>Monitorování kanálu
 V tomto kroku použijete rozhraní REST API služby Data Factory k monitorování řezů vytvářených kanálem.
@@ -519,7 +519,7 @@ Spouštějte Invoke-Command a další příkaz, dokud se u řezu neobjeví sta
 
 U každého řezu se do tabulky EMP v Azure SQL Database zkopírují dva řádky dat ze zdrojového souboru. Proto po úspěšném zpracování všech řezů (stav Připraveno) uvidíte v tabulce emp 24 nových záznamů. 
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 V tomto kurzu jste použili REST API k vytvoření datové továrny Azure ke zkopírování dat z objektu blob Azure do Azure SQL Database. Zde jsou základní kroky, které jste v tomto kurzu provedli:  
 
 1. Vytvořili jste **objekt pro vytváření dat** Azure.

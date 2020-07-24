@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/1/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2dbd75748d30a67c22ac729a8a2130a2d43aef9b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 81c83cd8dcea5f8746b67a7bd52ea52a09c8a711
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205209"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001396"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>Kurz: komplexní ochrana obsahu pomocí Azure AD
 
@@ -48,13 +48,13 @@ Použijí se následující nejnovější technologické verze a koncepty. Před
 Je volitelné, ale doporučujeme, abyste před zahájením tohoto kurzu seznámili s následujícími koncepty:
 
 * Digitální Rights Management (DRM)
-* [Azure Media Services (AMS) V3](https://docs.microsoft.com/azure/media-services/latest/media-services-overview)
+* [Azure Media Services (AMS) V3](./media-services-overview.md)
 * [Zásady klíčů obsahu](content-key-policy-concept.md) AMS pomocí nástroje AMS API v3, Azure Portal nebo [aplikace Azure Media Services Explorer (AMSE)](https://github.com/Azure/Azure-Media-Services-Explorer)
-* Koncové body Azure AD v2 na [platformě Microsoft Identity](https://docs.microsoft.com/azure/active-directory/develop/)
-* Moderní cloudové ověřování, jako je [OAuth 2,0 a OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols)
-  * [Tok autorizačního kódu v OAuth 2,0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow) a proč je potřeba PKCE
-  * [Delegované oprávnění vs – oprávnění aplikace](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#permissions)
-* [Token JWT](https://docs.microsoft.com/azure/active-directory/develop/access-tokens), jeho deklarace a výměna podpisového klíče (zahrnuto v ukázce)
+* Koncové body Azure AD v2 na [platformě Microsoft Identity](../../active-directory/develop/index.yml)
+* Moderní cloudové ověřování, jako je [OAuth 2,0 a OpenID Connect](../../active-directory/develop/active-directory-v2-protocols.md)
+  * [Tok autorizačního kódu v OAuth 2,0](../../active-directory/develop/v2-oauth2-auth-code-flow.md) a proč je potřeba PKCE
+  * [Delegované oprávnění vs – oprávnění aplikace](../../active-directory/develop/developer-glossary.md#permissions)
+* [Token JWT](../../active-directory/develop/access-tokens.md), jeho deklarace a výměna podpisového klíče (zahrnuto v ukázce)
 
 ### <a name="prerequisite-code-and-installations"></a>Požadovaný kód a instalace
 
@@ -63,7 +63,7 @@ Je volitelné, ale doporučujeme, abyste před zahájením tohoto kurzu seznámi
 * Instalace Node.js. Stáhněte si Node.js sem [https://nodejs.org](https://nodejs.org) . NPM je součástí instalace.
 * [Předplatné Azure](https://azure.microsoft.com/free/)
 * Účet Azure Media Services (AMS).
-* @azure/msal-browserv 2.0 jeden z členů sady SDK [Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) pro různé klientské platformy
+* @azure/msal-browserv 2.0 jeden z členů sady SDK [Microsoft Authentication Library (MSAL)](../../active-directory/develop/msal-overview.md) pro různé klientské platformy
 * Nejnovější verze [Azure Media Player](https://github.com/Azure-Samples/azure-media-player-samples)(obsažená v ukázce)
 * Přihlašovací údaje pro FPS od společnosti Apple, pokud chcete zahrnout FairPlay DRM a certifikát aplikace hostovaný s CORS, který je přístupný prostřednictvím JavaScriptu na straně klienta.
 
@@ -98,7 +98,7 @@ Návrh subsystému je zobrazen v následujícím diagramu.  Má tři vrstvy:
 
 ![obrazovka pro analýzu tokenů JWT](media/aad-ams-content-protection/subsystem.svg)
 
-Další podrobnosti o subsystému najdete v tématu [Návrh systému ochrany obsahu s více DRM pomocí řízení přístupu](https://docs.microsoft.com/azure/media-services/latest/design-multi-drm-system-with-access-control) .
+Další podrobnosti o subsystému najdete v tématu [Návrh systému ochrany obsahu s více DRM pomocí řízení přístupu](./design-multi-drm-system-with-access-control.md) .
 
 ## <a name="understand-the-single-page-app"></a>Pochopení jednostránkové aplikace
 
@@ -260,7 +260,7 @@ Máte dvě možnosti, jak nastavit aplikaci přehrávače:
 
 ### <a name="option-1"></a>Možnost 1
 
-1. Spuštění nástroje Visual Studio Code
+1. Spusťte Visual Studio Code.
 1. Chcete-li projekt otevřít, klikněte na položku soubor-> otevřít složku – > vyhledejte a vyberte nadřazenou složku *package.jsv* souboru.
 1. Otevřete JavaScriptový soubor *Public/JavaScript/constants.js*.
 1. Nahraďte `OAUTH2_CONST.CLIENT_ID` `client_id` vaší registrovanou klientskou aplikací v tenantovi AAD.  Najdete ho v `client_id` části Přehled registrované aplikace v Azure Portal. Poznámka: Toto je ID klienta, nikoli ID objektu.
@@ -339,7 +339,7 @@ if (tokenClaims != null && tokenClaims.Length > 0)
 }
 ```
 
-Deklarace *skupin* je členem [omezené sady deklarací identity](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping#claim-sets) ve službě Azure AD.
+Deklarace *skupin* je členem [omezené sady deklarací identity](../../active-directory/develop/active-directory-claims-mapping.md#claim-sets) ve službě Azure AD.
 
 #### <a name="test"></a>Test
 

@@ -17,12 +17,12 @@ ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: 4ccf62dd8a249c9ba23bbb4510164b35a58db917
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 58c234df5babc02fdd0e69a9c806043465293ace
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72387407"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030279"
 ---
 # <a name="tutorial-send-localized-push-notifications-to-windows-apps-using-azure-notification-hubs"></a>Kurz: posílání lokalizovaných nabízených oznámení do aplikací pro Windows pomocí Azure Notification Hubs
 
@@ -46,7 +46,7 @@ V tomto kurzu se naučíte:
 > * Aktualizovat back-endovou aplikaci, aby posílala lokalizovaná oznámení
 > * Otestování aplikace
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Dokončete [kurz o zasílání oznámení určitým zařízením (Univerzální platforma Windows)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md).
 
@@ -79,7 +79,7 @@ Další informace o šablonách najdete v tématu [šablony nabízených oznáme
 ## <a name="update-windows-app-to-support-locale-information"></a>Aktualizovat aplikace pro Windows, aby podporovaly informace o národním prostředí
 
 1. Otevřete řešení sady Visual Studio, které jste vytvořili v [kurzu o zasílání oznámení určitým zařízením (Univerzální platforma Windows)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md).
-2. Aktualizujte `MainPage.xaml` soubor řešení tak, aby zahrnoval pole se seznamem národního prostředí:
+2. Aktualizujte soubor řešení `MainPage.xaml` tak, aby zahrnoval pole se seznamem národního prostředí:
 
     ```xml
     <Grid Margin="120, 58, 120, 80"  
@@ -111,7 +111,7 @@ Další informace o šablonách najdete v tématu [šablony nabízených oznáme
         <Button Content="Subscribe" HorizontalAlignment="Center" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Click="SubscribeButton_Click" />
     </Grid>
     ```
-3. Ve `Notifications` třídě přidejte parametr národního prostředí do metod `StoreCategoriesAndSubscribe` a. `SubscribeToCategories`
+3. Ve `Notifications` třídě přidejte parametr národního prostředí do `StoreCategoriesAndSubscribe` `SubscribeToCategories` metod a.
 
     ```csharp
     public async Task<Registration> StoreCategoriesAndSubscribe(string locale, IEnumerable<string> categories)
@@ -138,7 +138,7 @@ Další informace o šablonách najdete v tématu [šablony nabízených oznáme
     }
     ```
 
-    Namísto volání `RegisterNativeAsync` metody zavolejte `RegisterTemplateAsync`. Zaregistrujte určitý formát oznámení, ve kterém šablona závisí na národním prostředí. Zadejte také název šablony (localizedWNSTemplateExample), protože možná budete chtít zaregistrovat více šablon (například jednu pro informační oznámení a druhou pro dlaždice). Pojmenování je také důležité, abyste mohli šablony aktualizovat nebo odstranit.
+    Namísto volání `RegisterNativeAsync` metody zavolejte `RegisterTemplateAsync` . Zaregistrujte určitý formát oznámení, ve kterém šablona závisí na národním prostředí. Zadejte také název šablony (localizedWNSTemplateExample), protože možná budete chtít zaregistrovat více šablon (například jednu pro informační oznámení a druhou pro dlaždice). Pojmenování je také důležité, abyste mohli šablony aktualizovat nebo odstranit.
 
     Pokud si zařízení zaregistruje více šablon se stejnou značkou, doručí se do zařízení příchozí zpráva v několika oznámeních (jedno pro každou šablonu) určených pro výslednou značku. Toto chování je užitečné, pokud se má stejná logická zpráva zobrazit v několika oznámeních, třeba jako oznámení a informační zpráva v aplikaci pro Windows Store.
 4. Pokud chcete načíst uložené národní prostředí, přidejte následující metodu:
@@ -296,6 +296,6 @@ V tomto kurzu jste se naučili zasílat lokalizovaná nabízená oznámení urč
 [Authorize users with scripts]: /develop/mobile/tutorials/authorize-users-in-scripts-dotnet
 [JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
 [wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-To for iOS]: https://msdn.microsoft.com/library/jj927168.aspx
-[Notification Hubs How-To for Windows Store]: https://msdn.microsoft.com/library/jj927172.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[Notification Hubs How-To for iOS]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[Notification Hubs How-To for Windows Store]: /previous-versions/azure/azure-services/jj927170(v=azure.100)

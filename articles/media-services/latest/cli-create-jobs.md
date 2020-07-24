@@ -14,30 +14,30 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: 08caf4b78b1042d5753dba2bc73e93fa3a250a17
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b9d9f66b638eba2503f1650ba64fcd6b4652dc24
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71122380"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023412"
 ---
 # <a name="cli-example-create-and-submit-a-job"></a>Ukázka CLI: Vytvoření a odeslání úlohy
 
 Pokud ve službě Media Services v3 odešlete úlohy pro zpracování videí, musíte službu Media Services informovat, kde najde vstupní video. Jednou z možností je určit adresu URL HTTPS jako vstup úlohy (jak je znázorněno v tomto článku). 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
-[Vytvořte účet Media Services](create-account-cli-how-to.md).
+[Vytvořte účet Media Services](./create-account-howto.md).
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="example-script"></a>Ukázkový skript
 
-Když spustíte `az ams job start`, můžete pro výstup úlohy nastavit popisek. Popisek lze později použít k identifikaci toho, k čemu je tento výstupní prostředek pro. 
+Když spustíte `az ams job start` , můžete pro výstup úlohy nastavit popisek. Popisek lze později použít k identifikaci toho, k čemu je tento výstupní prostředek pro. 
 
 - Pokud k popisku přiřadíte hodnotu, nastavte '--Output-assets ' na "Asset = Label".
 - Pokud k popisku nepřiřadíte hodnotu, nastavte '--Output-assets ' na "majetku =".
-  Všimněte si, že přidáte "=" do `output-assets`. 
+  Všimněte si, že přidáte "=" do `output-assets` . 
 
 ```azurecli
 az ams job start \
@@ -87,4 +87,4 @@ Dostanete odpověď podobnou této:
 
 ## <a name="next-steps"></a>Další kroky
 
-[AZ AMS Job (CLI)](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
+[AZ AMS Job (CLI)](/cli/azure/ams/job?view=azure-cli-latest)

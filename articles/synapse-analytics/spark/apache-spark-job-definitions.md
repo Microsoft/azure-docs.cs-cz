@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.subservice: ''
 ms.date: 04/15/2020
-ms.openlocfilehash: 3311a9a92cc5e63a6fa20e4dd0d2af00fdacc95c
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: ac3e163ffefcb7b164860b0c4fa42edc866227e3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194480"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065636"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Kurz: vytvoření definice úlohy Apache Spark v synapse studiu
 
@@ -24,11 +24,11 @@ Tento kurz se zabývá následujícími úkony:
 
 * Vytvoření definice úlohy Apache Spark pro PySpark (Python)
 * Vytvoření definice úlohy Apache Spark pro Spark (Scala)
-* Vytvoření definice úlohy Apache Spark pro .NET Spark (C#)
+* Vytvoření definice úlohy Apache Spark pro .NET Spark (C#/F #)
 * Odeslání definice úlohy Apache Spark jako úlohy služby Batch
 * Přidání definice úlohy Apache Spark do kanálu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem, ujistěte se, že splňujete následující požadavky:
 
@@ -42,7 +42,7 @@ V této části vytvoříte definici úlohy Apache Spark pro PySpark (Python).
 
 1. Otevřete [Azure synapse Studio](https://web.azuresynapse.net/).
 
-2. Můžete přejít na [ukázkové soubory pro vytvoření Apache Spark definice úloh](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python) a stáhnout **WORDCOUNT. jar** a **shakespear.txt**. Pak tyto soubory nahrajte do Azure Storage: klikněte na **data**, vyberte **účty úložiště**a nahrajte související soubory do adls Gen2 systému souborů. Tento krok přeskočte, pokud už máte soubory ve službě Azure Storage. 
+2. Můžete přejít na [ukázkové soubory pro vytvoření Apache Spark definice úloh](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python) a stáhnout **WORDCOUNT.py** a **shakespear.txt**. Pak tyto soubory nahrajte do Azure Storage: klikněte na **data**, vyberte **účty úložiště**a nahrajte související soubory do adls Gen2 systému souborů. Tento krok přeskočte, pokud už máte soubory ve službě Azure Storage. 
 
      ![nahrát soubor Pythonu](./media/apache-spark-job-definitions/upload-python-file.png)
 
@@ -57,9 +57,9 @@ V této části vytvoříte definici úlohy Apache Spark pro PySpark (Python).
      |  Vlastnost   | Popis   |  
      | ----- | ----- |  
      |Název definice úlohy| Zadejte název definice úlohy Apache Spark. Tento název se dá kdykoli aktualizovat, dokud nebude publikovaný. Vzorku`job definition sample`|
-     |Soubor hlavní definice| Hlavní soubor, který se používá pro úlohu. Vyberte ze svého úložiště soubor PY. Můžete vybrat **Odeslat soubor** a nahrát ho do účtu úložiště. Vzorku`abfss://azureportaldeploy@storageaccountname.dfs.core.windows.net/synapse/workspaces/workspace name/batchjobs/python/fileexists.py`|
-     |Argumenty příkazového řádku| Nepovinné argumenty úlohy. Vzorku`shakespeare.txt`|
-     |Referenční soubory| Další soubory používané pro reference v hlavním definičním souboru. Můžete vybrat **Odeslat soubor** a nahrát ho do účtu úložiště. Vzorku`abfss://azureportaldeploy@storageaccountname.dfs.core.windows.net/synapse/workspaces/workspace name/batchjobs/python/shakespeare.txt`|
+     |Soubor hlavní definice| Hlavní soubor, který se používá pro úlohu. Vyberte ze svého úložiště soubor PY. Můžete vybrat **Odeslat soubor** a nahrát ho do účtu úložiště. Vzorku`abfss://…/path/to/wordcount.py`|
+     |Argumenty příkazového řádku| Nepovinné argumenty úlohy. Vzorku`abfss://…/path/to/shakespeare.txt abfss://…/path/to/result`|
+     |Referenční soubory| Další soubory používané pro reference v hlavním definičním souboru. Můžete vybrat **Odeslat soubor** a nahrát ho do účtu úložiště. |
      |Fond Spark| Úloha se odešle do vybraného fondu Apache Spark.|
      |Verze Sparku| Verze Apache Spark, kterou fond Apache Spark používá|
      |Prováděcí moduly| Počet prováděcích modulů, které se mají udělit v zadaném fondu Apache Spark pro úlohu.|
@@ -92,9 +92,9 @@ V této části vytvoříte definici úlohy Apache Spark pro Apache Spark (Scala
      |  Vlastnost   | Popis   |  
      | ----- | ----- |  
      |Název definice úlohy| Zadejte název definice úlohy Apache Spark. Tento název se dá kdykoli aktualizovat, dokud nebude publikovaný. Vzorku`job definition sample`|
-     |Soubor hlavní definice| Hlavní soubor, který se používá pro úlohu. Vyberte ze svého úložiště soubor JAR. Můžete vybrat **Odeslat soubor** a nahrát ho do účtu úložiště. Vzorku`abfss://sparkjob@storageaccountname.dfs.core.windows.net/scala/wordcount/wordcount.jar`|
+     |Soubor hlavní definice| Hlavní soubor, který se používá pro úlohu. Vyberte ze svého úložiště soubor JAR. Můžete vybrat **Odeslat soubor** a nahrát ho do účtu úložiště. Vzorku`abfss://…/path/to/wordcount.jar`|
      |Název hlavní třídy| Plně kvalifikovaný identifikátor nebo hlavní třída, která je v hlavním definičním souboru. Vzorku`WordCount`|
-     |Argumenty příkazového řádku| Nepovinné argumenty úlohy. Vzorku`abfss://sparkjob@storageaccountname.dfs.core.windows.net/scala/wordcount/shakespeare.txt abfss://sparkjob@storageaccountname.dfs.core.windows.net/scala/wordcount/result`|
+     |Argumenty příkazového řádku| Nepovinné argumenty úlohy. Vzorku`abfss://…/path/to/shakespeare.txt abfss://…/path/to/result`|
      |Referenční soubory| Další soubory používané pro reference v hlavním definičním souboru. Můžete vybrat **Odeslat soubor** a nahrát ho do účtu úložiště.|
      |Fond Spark| Úloha se odešle do vybraného fondu Apache Spark.|
      |Verze Sparku| Verze Apache Spark, kterou fond Apache Spark používá|
@@ -109,9 +109,9 @@ V této části vytvoříte definici úlohy Apache Spark pro Apache Spark (Scala
      ![publikování definice Scala](./media/apache-spark-job-definitions/publish-scala-definition.png)
 
 
-## <a name="create-an-apache-spark-job-definition-for-net-sparkc"></a>Vytvoření definice úlohy Apache Spark pro .NET Spark (C#)
+## <a name="create-an-apache-spark-job-definition-for-net-sparkcf"></a>Vytvoření definice úlohy Apache Spark pro .NET Spark (C#/F #)
 
-V této části vytvoříte definici úlohy Apache Spark pro .NET Spark (C#).
+V této části vytvoříte definici úlohy Apache Spark pro .NET Spark (C#/F #).
  1. Otevřete [Azure synapse Studio](https://web.azuresynapse.net/).
 
  2. Můžete přejít na [ukázkové soubory pro vytvoření Apache Spark definice úloh](https://github.com/Azure-Samples/Synapse/tree/master/Spark/DotNET) a stáhnout **wordcount.zip** a **shakespear.txt**. Pak tyto soubory nahrajte do Azure Storage: klikněte na **data**, vyberte **účty úložiště**a nahrajte související soubory do adls Gen2 systému souborů. Tento krok přeskočte, pokud už máte soubory ve službě Azure Storage. 
@@ -125,12 +125,13 @@ V této části vytvoříte definici úlohy Apache Spark pro .NET Spark (C#).
  4. V rozevíracím seznamu jazyk v hlavním okně Definice úlohy Apache Spark vyberte **.NET Spark (C#/f #)** .
 
  5. Vyplňte informace pro Apache Spark definice úlohy. Můžete zkopírovat ukázkové informace.
+    
      |  Vlastnost   | Popis   |  
      | ----- | ----- |  
      |Název definice úlohy| Zadejte název definice úlohy Apache Spark. Tento název se dá kdykoli aktualizovat, dokud nebude publikovaný. Vzorku`job definition sample`|
-     |Soubor hlavní definice| Hlavní soubor, který se používá pro úlohu. Vyberte soubor ZIP, který obsahuje vaši aplikaci .NET for Apache Spark (tj. hlavní spustitelný soubor, knihovny DLL obsahující uživatelsky definované funkce a další požadované soubory) ze svého úložiště. Můžete vybrat **Odeslat soubor** a nahrát ho do účtu úložiště. Vzorku`abfss://sparkjob@storageaccountname.dfs.core.windows.net/dotnet/wordcount/wordcount.zip`|
+     |Soubor hlavní definice| Hlavní soubor, který se používá pro úlohu. Vyberte soubor ZIP, který obsahuje vaši aplikaci .NET for Apache Spark (tj. hlavní spustitelný soubor, knihovny DLL obsahující uživatelsky definované funkce a další požadované soubory) ze svého úložiště. Můžete vybrat **Odeslat soubor** a nahrát ho do účtu úložiště. Vzorku`abfss://…/path/to/wordcount.zip`|
      |Hlavní spustitelný soubor| Hlavní spustitelný soubor v hlavní definici souboru ZIP. Vzorku`WordCount`|
-     |Argumenty příkazového řádku| Nepovinné argumenty úlohy. Vzorku`abfss://sparkjob@storageaccountname.dfs.core.windows.net/dotnet/wordcount/shakespeare.txt abfss://sparkjob@storageaccountname.dfs.core.windows.net/dotnet/wordcount/result`|
+     |Argumenty příkazového řádku| Nepovinné argumenty úlohy. Vzorku`abfss://…/path/to/shakespeare.txt abfss://…/path/to/result`|
      |Referenční soubory| Další soubory, které jsou vyžadovány pracovními uzly pro spuštění aplikace .NET pro Apache Spark aplikaci, která není obsažena v hlavní definici souboru ZIP (to znamená, že závisí na jar, dalších uživatelsky definovaných funkcí DLL a dalších konfiguračních souborech). Můžete vybrat **Odeslat soubor** a nahrát ho do účtu úložiště.|
      |Fond Spark| Úloha se odešle do vybraného fondu Apache Spark.|
      |Verze Sparku| Verze Apache Spark, kterou fond Apache Spark používá|

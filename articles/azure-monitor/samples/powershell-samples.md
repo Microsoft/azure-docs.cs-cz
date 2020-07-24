@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
-ms.openlocfilehash: 4313d9fec9e858a5d30cfea2bbe7372e6a96169c
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 520022be8ee2054d6c0c89ee3f027de9094ae1af
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85413888"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055264"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Ukázky Azure Monitor PowerShellu
 Tento článek ukazuje ukázky příkazů PowerShellu, které vám pomůžou při přístupu k funkcím Azure Monitor.
@@ -22,10 +22,10 @@ Tento článek ukazuje ukázky příkazů PowerShellu, které vám pomůžou př
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="set-up-powershell"></a>Nastavení PowerShellu
-Pokud jste to ještě neudělali, nastavte PowerShell tak, aby se spouštěl v počítači. Další informace najdete v tématu [instalace a konfigurace PowerShellu](/powershell/azure/overview).
+Pokud jste to ještě neudělali, nastavte PowerShell tak, aby se spouštěl v počítači. Další informace najdete v tématu [instalace a konfigurace PowerShellu](/powershell/azure/).
 
 ## <a name="examples-in-this-article"></a>Příklady v tomto článku
-Příklady v článku ukazují, jak můžete použít rutiny Azure Monitor. Můžete si také projít celý seznam rutin Azure Monitor PowerShellu na [Azure monitor (Insights) rutiny](https://docs.microsoft.com/powershell/module/az.applicationinsights).
+Příklady v článku ukazují, jak můžete použít rutiny Azure Monitor. Můžete si také projít celý seznam rutin Azure Monitor PowerShellu na [Azure monitor (Insights) rutiny](/powershell/module/az.applicationinsights).
 
 ## <a name="sign-in-and-use-subscriptions"></a>Přihlášení a používání předplatných
 Nejdřív se přihlaste ke svému předplatnému Azure.
@@ -53,7 +53,7 @@ Set-AzContext -SubscriptionId <subscriptionid>
 
 
 ## <a name="retrieve-activity-log"></a>Načíst protokol aktivit
-Použijte rutinu [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) .  Níže jsou uvedeny některé běžné příklady. Protokol aktivit obsahuje posledních 90 dnů provozu. Použití dat před tímto časem má za následek chybovou zprávu.  
+Použijte rutinu [Get-AzLog](/powershell/module/az.monitor/get-azlog) .  Níže jsou uvedeny některé běžné příklady. Protokol aktivit obsahuje posledních 90 dnů provozu. Použití dat před tímto časem má za následek chybovou zprávu.  
 
 Podívejte se, jak aktuální datum a čas slouží k ověření, které časy se mají použít v následujících příkazech:
 ```powershell
@@ -116,7 +116,7 @@ Chcete-li zobrazit historii konkrétního pravidla výstrahy, můžete použít 
 Get-AzAlertHistory -ResourceId /subscriptions/s1/resourceGroups/rg1/providers/microsoft.insights/alertrules/myalert -StartTime 2016-03-1 -Status Activated
 ```
 
-`Get-AzAlertHistory`Rutina podporuje různé parametry. Další informace najdete v tématu [Get-AlertHistory](https://msdn.microsoft.com/library/mt282453.aspx).
+`Get-AzAlertHistory`Rutina podporuje různé parametry. Další informace najdete v tématu [Get-AlertHistory](/previous-versions/azure/mt282453(v=azure.100)).
 
 ## <a name="retrieve-information-on-alert-rules"></a>Načíst informace o pravidlech výstrahy
 Všechny následující příkazy se chovají ve skupině prostředků s názvem "montest".
@@ -139,7 +139,7 @@ Načte všechna pravidla upozornění nastavená pro cílový prostředek. Např
 Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
 ```
 
-`Get-AzAlertRule`podporuje další parametry. Další informace najdete v tématu [Get-AlertRule](https://msdn.microsoft.com/library/mt282459.aspx) .
+`Get-AzAlertRule`podporuje další parametry. Další informace najdete v tématu [Get-AlertRule](/previous-versions/azure/mt282459(v=azure.100)) .
 
 ## <a name="create-metric-alerts"></a>Vytvoření upozornění metrik
 Pomocí `Add-AlertRule` rutiny můžete vytvořit, aktualizovat nebo zakázat pravidlo výstrahy.
@@ -148,10 +148,10 @@ Můžete vytvořit vlastnosti e-mailu a Webhooku pomocí `New-AzAlertRuleEmail` 
 
 Následující tabulka popisuje parametry a hodnoty používané k vytvoření výstrahy pomocí metriky.
 
-| parameter | hodnota |
+| parameter | Hodnota |
 | --- | --- |
 | Název |simpletestdiskwrite |
-| Umístění tohoto pravidla výstrahy |USA – východ |
+| Umístění tohoto pravidla výstrahy |East US |
 | ResourceGroup |montest |
 | Parametrem targetresourceid |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
 | Metrika vytvořeného upozornění |\PhysicalDisk (_Total) \ zápisu za sekundu. Podívejte se na `Get-MetricDefinitions` rutinu, jak načíst přesné názvy metrik. |
@@ -201,7 +201,7 @@ Následující příklad vygeneruje tabulku s názvem metriky a jednotkou pro ni
 Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
-Úplný seznam dostupných možností pro `Get-AzMetricDefinition` je k dispozici na adrese [Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx).
+Úplný seznam dostupných možností pro `Get-AzMetricDefinition` je k dispozici na adrese [Get-MetricDefinitions](/previous-versions/azure/mt282458(v=azure.100)).
 
 ## <a name="create-and-manage-activity-log-alerts"></a>Vytváření a správa výstrah protokolu aktivit
 Pomocí `Set-AzActivityLogAlert` rutiny můžete nastavit upozornění protokolu aktivit. Upozornění protokolu aktivit vyžaduje, abyste nejdřív definovali podmínky jako slovník podmínek a pak vytvořili výstrahu, která tyto podmínky používá.
@@ -272,7 +272,7 @@ Nakonec vytvořte nastavení automatického škálování a přidejte profil, kt
 Add-AzAutoscaleSetting -Location "East US" -Name "MyScaleVMSSSetting" -ResourceGroup big2 -TargetResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -AutoscaleProfiles $profile1 -Notifications $notification1
 ```
 
-Další informace o správě nastavení automatického škálování najdete v tématu [Get-AutoscaleSetting](https://msdn.microsoft.com/library/mt282461.aspx).
+Další informace o správě nastavení automatického škálování najdete v tématu [Get-AutoscaleSetting](/previous-versions/azure/mt282461(v=azure.100)).
 
 ## <a name="autoscale-history"></a>Historie automatického škálování
 Následující příklad ukazuje, jak můžete zobrazit nedávné události automatického škálování a výstrahy. Pomocí prohledávání protokolu aktivit můžete zobrazit historii automatického škálování.
@@ -287,7 +287,7 @@ Get-AzLog -Caller "Microsoft.Insights/autoscaleSettings" -DetailedOutput -StartT
 Get-AzAutoScaleHistory -ResourceId /subscriptions/s1/resourceGroups/myrg1/providers/microsoft.insights/autoscalesettings/myScaleSetting -StartTime 2016-03-15 -DetailedOutput
 ```
 
-Další informace najdete v tématu [Get-AutoscaleHistory](https://msdn.microsoft.com/library/mt282464.aspx).
+Další informace najdete v tématu [Get-AutoscaleHistory](/previous-versions/azure/mt282464(v=azure.100)).
 
 ### <a name="view-details-for-an-autoscale-setting"></a>Zobrazit podrobnosti nastavení automatického škálování
 Pomocí `Get-Autoscalesetting` rutiny můžete získat další informace o nastavení automatického škálování.
@@ -399,4 +399,3 @@ Všimněte si, že vlastnost ID pracovního prostoru přijímá *ID prostředku*
 ```
 
 Tyto příkazy lze kombinovat pro posílání dat do více cílů.
-
