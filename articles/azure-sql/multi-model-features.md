@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
-ms.openlocfilehash: d50a9a064e6fa279d65f196c0f031e60081d86bf
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 59a709a206eb29b875272674ee19e414023cc37f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85979994"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073307"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database--sql-managed-instance"></a>Možnosti více modelů Azure SQL Database & spravované instance SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -96,10 +96,7 @@ Modely dokumentů se dají použít místo relačních modelů v některých spe
 
 Prostorová data představují informace o fyzickém umístění a tvaru geometrických objektů. Tyto objekty můžou být umístění bodů nebo složitější objekty, jako jsou země/oblasti, silnice nebo jezera.
 
-Rodina produktů Azure SQL umožňuje analyzovat a dotazovat data reprezentovaná ve formátu JavaScript Object Notation [(JSON)](https://www.json.org/) a exportovat relační data jako text JSON.
-
-
- Dva podporované dva prostorové datové typy: 
+ Dva podporované typy prostorových dat: 
 
 - Typ geometrie reprezentuje data v Euclidean (plochý) souřadnicový systém.
 - Zeměpisný typ představuje data v systému souřadnic pro kulatou zemi.

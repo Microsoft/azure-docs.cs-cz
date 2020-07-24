@@ -2,12 +2,13 @@
 title: Průvodce odstraňováním potíží pro Azure Service Bus | Microsoft Docs
 description: Tento článek poskytuje seznam výjimek zasílání zpráv Azure Service Bus a navrhovaných akcí, které se mají učinit, když dojde k výjimce.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 3b2759916e1f9ef0cec660157f577ff54cd39928
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: 6071aae85daa1852c9384656d7caf5e2deffd84e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340461"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071302"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Průvodce odstraňováním potíží pro Azure Service Bus
 V tomto článku najdete tipy a doporučení pro odstraňování problémů s několika problémy, které se můžou zobrazit při použití Azure Service Bus. 
@@ -15,7 +16,7 @@ V tomto článku najdete tipy a doporučení pro odstraňování problémů s n�
 ## <a name="connectivity-certificate-or-timeout-issues"></a>Problémy s připojením, certifikátem nebo časovým limitem
 Následující postup vám může pomáhat s odstraňováním potíží s připojením/vypršením časového limitu pro všechny služby v rámci *. servicebus.windows.net. 
 
-- Přejděte na nebo [wget](https://www.gnu.org/software/wget/) `https://<yournamespace>.servicebus.windows.net/` . Pomáhá s kontrolou, jestli máte problémy s filtrováním IP adres nebo virtuální sítí nebo s řetězem certifikátů (nejběžnější při použití sady Java SDK).
+- Přejděte na nebo [wget](https://www.gnu.org/software/wget/) `https://<yournamespace>.servicebus.windows.net/` . Pomáhá s kontrolou, jestli máte problémy s filtrováním IP adres nebo virtuální sítí nebo řetězem certifikátů, které jsou obvyklé při použití sady Java SDK.
 
     Příklad úspěšné zprávy:
     
@@ -53,25 +54,48 @@ Následující postup vám může pomáhat s odstraňováním potíží s připo
 - Získejte trasování sítě, pokud předchozí kroky neumožňují a neanalyzují ho pomocí nástrojů, jako je třeba [Wireshark](https://www.wireshark.org/). V případě potřeby kontaktujte [Podpora Microsoftu](https://support.microsoft.com/) . 
 
 ## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>Problémy, které se mohou vyskytnout při upgradech nebo restartu služby
-Upgrady a restarty back-end služby můžou způsobit následující dopad na vaše aplikace:
 
+### <a name="symptoms"></a>Příznaky
 - Žádosti můžou být v neomezeném omezení.
 - Je možné, že v příchozích zprávách nebo požadavcích dojde k přerušení.
 - Soubor protokolu může obsahovat chybové zprávy.
 - Aplikace se můžou po několik sekund odpojit od služby.
 
-Pokud kód aplikace využívá sadu SDK, zásady opakování jsou již vytvořeny a aktivní. Aplikace se znovu připojí bez významného dopadu na aplikaci nebo pracovní postup.
+### <a name="cause"></a>Příčina
+Aktualizace a restarty back-end služby můžou způsobovat tyto problémy ve vašich aplikacích.
+
+### <a name="resolution"></a>Řešení
+Pokud kód aplikace používá sadu SDK, zásady opakování jsou již vytvořeny a aktivní. Aplikace se znovu připojí bez významného dopadu na aplikaci nebo pracovní postup.
 
 ## <a name="unauthorized-access-send-claims-are-required"></a>Neautorizovaný přístup: vyžaduje se odeslání deklarací identity.
+
+### <a name="symptoms"></a>Příznaky 
 Tato chyba se může zobrazit při pokusu o přístup k Service Bus tématu ze sady Visual Studio na místním počítači pomocí spravované identity přiřazené uživatelem s oprávněním odeslat.
 
 ```bash
 Service Bus Error: Unauthorized access. 'Send' claim\(s\) are required to perform this operation.
 ```
 
+### <a name="cause"></a>Příčina
+Identita nemá oprávnění pro přístup k Service Busmu tématu. 
+
+### <a name="resolution"></a>Řešení
 Pokud chcete tuto chybu vyřešit, nainstalujte knihovnu [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/) .  Další informace najdete v tématu [ověřování místního vývoje](..\key-vault\service-to-service-authentication.md#local-development-authentication). 
 
 Informace o tom, jak přiřadit oprávnění k rolím, najdete v tématu [ověřování spravované identity pomocí Azure Active Directory pro přístup k prostředkům Azure Service Bus](service-bus-managed-service-identity.md).
+
+## <a name="service-bus-exception-put-token-failed"></a>Výjimka Service Bus: token Put se nezdařil.
+
+### <a name="symptoms"></a>Příznaky
+Při pokusu o odeslání více než 1000 zpráv pomocí stejného Service Bus Připojení se zobrazí následující chybová zpráva: 
+
+`Microsoft.Azure.ServiceBus.ServiceBusException: Put token failed. status-code: 403, status-description: The maximum number of '1000' tokens per connection has been reached.` 
+
+### <a name="cause"></a>Příčina
+Existuje omezení počtu tokenů, které se používají k posílání a přijímání zpráv pomocí jediného připojení k Service Busmu oboru názvů. Je to 1000. 
+
+### <a name="resolution"></a>Řešení
+Pro odeslání dalších zpráv otevřete nové připojení k Service Busmu oboru názvů.
 
 ## <a name="next-steps"></a>Další kroky
 Viz následující články: 

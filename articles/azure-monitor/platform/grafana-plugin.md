@@ -4,11 +4,12 @@ description: Směrovat Azure Monitor a Application Insights data, abyste je mohl
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/06/2017
-ms.openlocfilehash: 142e3e19c13710963d239a75bc237b63713c29cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23bba091628eee767fbf292a8a8d772ffab674cb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77672204"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073469"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Monitorování služeb Azure v Grafana
 Služby a aplikace Azure teď můžete monitorovat z [Grafana](https://grafana.com/) pomocí [modulu plug-in zdroje dat Azure monitor](https://grafana.com/plugins/grafana-azure-monitor-datasource). Modul plug-in shromažďuje data o výkonu aplikací shromážděná Azure Monitor, včetně různých protokolů a metrik. Tato data pak můžete zobrazit na řídicím panelu Grafana.
@@ -23,7 +24,7 @@ Pokud chcete nastavit místní server Grafana, [Stáhněte a nainstalujte Grafan
 ### <a name="set-up-grafana-on-azure-through-the-azure-marketplace"></a>Nastavení Grafana v Azure pomocí Azure Marketplace
 1. Přejít na Azure Marketplace a vybrat Grafana podle Grafana Labs.
 
-2. Zadejte názvy a podrobnosti. Vytvořte novou skupinu prostředků. Sledujte hodnoty, které zvolíte pro uživatelské jméno virtuálního počítače, heslo virtuálního počítače a heslo správce serveru Grafana.  
+2. Zadejte názvy a podrobnosti. Vytvoříte novou skupinu prostředků. Sledujte hodnoty, které zvolíte pro uživatelské jméno virtuálního počítače, heslo virtuálního počítače a heslo správce serveru Grafana.  
 
 3. Vyberte velikost virtuálního počítače a účet úložiště.
 
@@ -58,9 +59,9 @@ Po úspěšném přihlášení byste měli vidět, že modul plug-in zdroje dat 
 2. Vyberte název zdroje dat a jako typ z rozevíracího seznamu vyberte **Azure monitor** .
 
 3. Vytvoření instančního objektu – služba Grafana používá instanční objekt Azure Active Directory pro připojení k rozhraním API Azure Monitor a shromažďování dat. Abyste mohli spravovat přístup k prostředkům Azure, musíte vytvořit nebo použít existující instanční objekt.
-    * K vytvoření instančního objektu se podívejte na [tyto pokyny](../../azure-resource-manager/resource-group-create-service-principal-portal.md) . Zkopírujte a uložte ID tenanta (ID adresáře), ID klienta (ID aplikace) a tajný klíč klienta (hodnota klíče aplikace).
-    * Pokud chcete přiřadit roli Čtenář k aplikaci Azure Active Directory v předplatném, skupině prostředků nebo prostředku, který chcete monitorovat, přečtěte si téma [přiřazení aplikace k roli](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) . 
-    Rozhraní Log Analytics API vyžaduje [roli čtecího modulu Log Analytics](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader), která zahrnuje oprávnění role čtenáře a přidává je k němu.
+    * K vytvoření instančního objektu se podívejte na [tyto pokyny](../../active-directory/develop/howto-create-service-principal-portal.md) . Zkopírujte a uložte ID tenanta (ID adresáře), ID klienta (ID aplikace) a tajný klíč klienta (hodnota klíče aplikace).
+    * Pokud chcete přiřadit roli Čtenář k aplikaci Azure Active Directory v předplatném, skupině prostředků nebo prostředku, který chcete monitorovat, přečtěte si téma [přiřazení aplikace k roli](../../active-directory/develop/howto-create-service-principal-portal.md) . 
+    Rozhraní Log Analytics API vyžaduje [roli čtecího modulu Log Analytics](../../role-based-access-control/built-in-roles.md#log-analytics-reader), která zahrnuje oprávnění role čtenáře a přidává je k němu.
 
 4. Zadejte podrobnosti o připojení k rozhraním API, která chcete použít. Můžete se připojit k některým z nich nebo k některým z nich. 
     * Pokud se k oběma metrikám a protokolům přihlašujete v Azure Monitor, můžete stejné přihlašovací údaje znovu použít tak, že vyberete **stejné podrobnosti jako Azure monitor API**.
@@ -158,4 +159,3 @@ Pokud jste nastavili prostředí Grafana v Azure, budou se vám účtovat poplat
 
 ## <a name="next-steps"></a>Další kroky
 * [Přehled metrik Azure Monitor](data-platform.md)
-

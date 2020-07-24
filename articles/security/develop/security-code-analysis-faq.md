@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 3d5eac2d3e2f3cd87ddad02aac68ce015163bd00
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df995f60867cb2062330e19a2ccfb8c29f173653
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362070"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071445"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 Máte nějaké otázky? Další informace najdete v následujících nejčastějších dotazech.
@@ -38,7 +38,7 @@ Pro jiné nástroje, jako je BinSkim, které analyzují artefakty po sestavení,
 
 ### <a name="can-i-break-my-build-when-results-are-found"></a>Je možné ukončit sestavení při nalezení výsledků?
 
-Ano. Můžete zavést přerušení sestavení, když kterýkoli nástroj ohlásí problém nebo problém v souboru protokolu. Stačí přidat úlohu sestavení po analýze a zaškrtnout políčko pro libovolný nástroj, pro který chcete sestavení přerušit.
+Yes. Můžete zavést přerušení sestavení, když kterýkoli nástroj ohlásí problém nebo problém v souboru protokolu. Stačí přidat úlohu sestavení po analýze a zaškrtnout políčko pro libovolný nástroj, pro který chcete sestavení přerušit.
 
 V uživatelském rozhraní úlohy po analýze můžete zvolit, aby se sestavení přerušit, když jakýkoli nástroj hlásí pouze chyby nebo chyby a upozornění.
 
@@ -67,7 +67,7 @@ Ne. Používání nástrojů pro bezpečné vývoj v různých úložištích v 
 
 ### <a name="can-i-queue-a-build-to-run-these-tasks-on-a-hosted-build-agent"></a>Můžu sestavení zařadit do fronty a spustit tyto úlohy v hostovaném agentu sestavení? 
 
-Ano. Všechny úlohy a nástroje v rozšíření lze spustit u hostovaného agenta sestavení.
+Yes. Všechny úlohy a nástroje v rozšíření lze spustit u hostovaného agenta sestavení.
 
 >[!NOTE]
 > Úloha sestavení pro kontrolu proti malwaru vyžaduje, aby byl v programu Windows Defender povolen agent sestavení. Hostitelem sady Visual Studio 2017 a novějších je například agent. V hostovaném agentu sady Visual Studio 2015 se úloha sestavení nespustí.
@@ -106,15 +106,17 @@ Tady jsou podrobnosti dvou nejběžnějších scénářů potlačení.
 
 Klíč hash tajného kódu z výstupního souboru CredScan je vyžadován, jak je znázorněno v následující ukázce.
 
-        {
-            "tool": "Credential Scanner",
-            "suppressions": [
-            {
-                "hash": "CLgYxl2FcQE8XZgha9/UbKLTkJkUh3Vakkxh2CAdhtY=",
-                "_justification": "Secret used by MSDN sample, it is fake."
-            }
-          ]
-        }
+```js
+{
+    "tool": "Credential Scanner",
+    "suppressions": [
+    {
+        "hash": "CLgYxl2FcQE8XZgha9/UbKLTkJkUh3Vakkxh2CAdhtY=",
+        "_justification": "Secret used by MSDN sample, it is fake."
+    }
+  ]
+}
+```
 
 >[!WARNING]
 > Klíč hash je vygenerován částí odpovídající hodnoty nebo obsahu souboru. Jakákoli revize zdrojového kódu může změnit klíč hash a zakázat pravidlo potlačení.
@@ -133,19 +135,21 @@ Příklady platných pravidel potlačení:
 - \lib\angular.js
 - angular.js – potlačí všechny soubory se stejným názvem.
 
-        {
-            "tool": "Credential Scanner",
-            "suppressions": [
-            {
-                "file": "\\files\\AdditonalSearcher.xml", 
-                "_justification": "Additional CredScan searcher specific to my team"
-            },
-            {
-                "file": "\\files\\unittest.pfx", 
-                "_justification": "Legitimate UT certificate file with private key"
-            }
-          ]
-        }      
+```js
+{
+    "tool": "Credential Scanner",
+    "suppressions": [
+    {
+        "file": "\\files\\AdditonalSearcher.xml", 
+        "_justification": "Additional CredScan searcher specific to my team"
+    },
+    {
+        "file": "\\files\\unittest.pfx", 
+        "_justification": "Legitimate UT certificate file with private key"
+    }
+  ]
+}
+```
 
 >[!WARNING] 
 > Všechna budoucí tajná klíče přidaná do souboru se také automaticky potlačí.

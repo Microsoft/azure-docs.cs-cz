@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: c143d8aa24d3479f4619ea2c220d4a0c593f9cb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b18c34f8c0378d22d138b865d72fa4f351d7b8f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77665149"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073643"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Řešení pro správu Application Insights Connector (zastaralé)
 
@@ -41,14 +42,14 @@ Při použití řešení můžete:
 
 Na rozdíl od většiny ostatních Log Analytics řešení nejsou shromažďována data pro Application Insights Connector agenti. Všechna data, která řešení používá, přichází přímo z Azure.
 
-| Připojený zdroj | Podporuje se | Description |
+| Připojený zdroj | Podporováno | Popis |
 | --- | --- | --- |
 | [Agenti systému Windows](../../azure-monitor/platform/agent-windows.md) | No | Řešení neshromažďuje informace od agentů systému Windows. |
 | [Agenti systému Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | No | Řešení neshromažďuje informace od agentů systému Linux. |
 | [Skupina pro správu SCOM](../../azure-monitor/platform/om-agents.md) | No | Řešení neshromažďuje informace od agentů v připojené skupině pro správu systému SCOM. |
-| [Účet úložiště Azure](collect-azure-metrics-logs.md) | No | Řešení neumožňuje shromažďování informací z Azure Storage. |
+| [Účet úložiště Azure](./resource-logs.md#send-to-log-analytics-workspace) | No | Řešení neumožňuje shromažďování informací z Azure Storage. |
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud chcete získat přístup k informacím o Application Insights Connector, musíte mít předplatné Azure.
 - Musíte mít minimálně jeden nakonfigurovaný prostředek Application Insights.
@@ -244,13 +245,13 @@ Záznam s *typem* *ApplicationInsights* se vytvoří pro každý typ vstupních 
 | Vlastnost | Popis |
 | --- | --- |
 | Typ | ApplicationInsights |
-| TelemetryType | Žádost |
+| TelemetryType | Request |
 | ResponseCode | Odpověď HTTP se odeslala klientovi. |
 | RequestSuccess | Označuje úspěch nebo neúspěch. True nebo false |
 | ID požadavku | ID pro jednoznačnou identifikaci žádosti |
 | Žádost o zadání | Základ pro GET/POST + URL |
 | RequestDuration | Doba trvání žádosti v sekundách |
-| URL | Adresa URL požadavku, který nezahrnuje hostitele |
+| Adresa URL | Adresa URL požadavku, který nezahrnuje hostitele |
 | Hostitel | Hostitel webového serveru |
 | URLBase | Úplná adresa URL požadavku |
 | ApplicationProtocol | Typ protokolu používaného aplikací |
@@ -303,7 +304,7 @@ $Headers = @{
 $Connections = Invoke-RestMethod -Method "GET" -Uri "https://management.azure.com$($LAWorkspace.ResourceId)/dataSources/?%24filter=kind%20eq%20'ApplicationInsights'&api-version=2015-11-01-preview" -Headers $Headers
 $ConnectionsJson = $Connections | ConvertTo-Json
 ```
-Tento skript vyžaduje ověřovací token nosiče pro ověřování proti Azure Active Directory. Jedním ze způsobů, jak tento token načíst, je použití článku na [webu dokumentace REST API](https://docs.microsoft.com/rest/api/loganalytics/datasources/createorupdate). Klikněte na **vyzkoušet** a přihlaste se k předplatnému Azure. Z **náhledu žádosti** můžete zkopírovat nosný token, jak je znázorněno na následujícím obrázku.
+Tento skript vyžaduje ověřovací token nosiče pro ověřování proti Azure Active Directory. Jedním ze způsobů, jak tento token načíst, je použití článku na [webu dokumentace REST API](/rest/api/loganalytics/datasources/createorupdate). Klikněte na **vyzkoušet** a přihlaste se k předplatnému Azure. Z **náhledu žádosti** můžete zkopírovat nosný token, jak je znázorněno na následujícím obrázku.
 
 
 ![Nosný token](media/app-insights-connector/bearer-token.png)

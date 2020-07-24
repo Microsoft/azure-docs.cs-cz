@@ -3,15 +3,16 @@ title: Připravenost na produkční prostředí a osvědčené postupy – Azure
 description: Tento článek poskytuje pokyny ke konfiguraci a nasazení živé analýzy videí v modulu IoT Edge v produkčním prostředí.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: a5a2ff78d456d4423facdf5f3533ee94bc25bfc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c34e05e184cfa6f0933701a76177fae3eed70c0a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261069"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071930"
 ---
 # <a name="production-readiness-and-best-practices"></a>Připravenost na produkční prostředí a osvědčené postupy
 
-Tento článek poskytuje pokyny ke konfiguraci a nasazení živé analýzy videí v modulu IoT Edge v produkčním prostředí. Měli byste si také projít téma [Příprava na nasazení IoT Edge řešení v produkčním](https://docs.microsoft.com/azure/iot-edge/production-checklist) článku o přípravě IoT Edge řešení. 
+Tento článek poskytuje pokyny ke konfiguraci a nasazení živé analýzy videí v modulu IoT Edge v produkčním prostředí. Měli byste si také projít téma [Příprava na nasazení IoT Edge řešení v produkčním](../../iot-edge/production-checklist.md) článku o přípravě IoT Edge řešení. 
 
 > [!NOTE]
 > V aspektech týkajících se zabezpečení byste se měli obrátit na oddělení IT vaší organizace.

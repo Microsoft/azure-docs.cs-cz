@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: damaerte
-ms.openlocfilehash: 513c3da8031774f5f111ee357b5a3c43e1d09d95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0cfd428e1bd380d17049cbc229bb8850793056e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75832470"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073020"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Přehled služby Azure Cloud Shell
 Azure Cloud Shell je interaktivní prostředí pro správu prostředků Azure, které je po ověření dostupné z webového prohlížeče.
@@ -60,14 +61,14 @@ Cloud Shell nabízí integrovaný grafický textový editor založený na Open S
 
 ### <a name="integrated-with-docsmicrosoftcom"></a>Integrace s docs.microsoft.com
 
-Cloud Shell můžete použít přímo z dokumentace hostované na [docs.Microsoft.com](https://docs.microsoft.com). Je integrovaná v [Microsoft Learn](https://docs.microsoft.com/learn/), [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) a dokumentaci k rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure) – kliknutím na tlačítko vyzkoušet si ve fragmentu kódu otevřete prostředí s moderními prostředími. 
+Cloud Shell můžete použít přímo z dokumentace hostované na [docs.Microsoft.com](https://docs.microsoft.com). Je integrovaná v [Microsoft Learn](https://docs.microsoft.com/learn/), [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) a dokumentaci k rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure) – kliknutím na tlačítko vyzkoušet si ve fragmentu kódu otevřete prostředí s moderními prostředími. 
 
-### <a name="multiple-access-points"></a>Několik přístupových bodů
+### <a name="multiple-access-points"></a>Více přístupových bodů
 Cloud Shell je flexibilní nástroj, který lze použít z:
 * [portal.azure.com](https://portal.azure.com)
 * [shell.azure.com](https://shell.azure.com)
 * [Dokumentace k Azure CLI](https://docs.microsoft.com/cli/azure)
-* [Dokumentace k Azure PowerShellu](https://docs.microsoft.com/powershell/azure/overview)
+* [Dokumentace k Azure PowerShellu](https://docs.microsoft.com/powershell/azure/)
 * [Mobilní aplikace Azure](https://azure.microsoft.com/features/azure-portal/mobile-app/)
 * [Visual Studio Code rozšíření účtu Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 

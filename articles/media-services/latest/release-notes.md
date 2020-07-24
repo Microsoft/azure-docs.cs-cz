@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: juliako
-ms.openlocfilehash: d09fba2130dc302378a59200349a569cc248234b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 53e337cf4ccbabf7f0b7a227632ba5e996e2b4f3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075429"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072132"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Zpráva k vydání verze Azure Media Services V3
 
@@ -36,6 +36,20 @@ V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vý
 >
 > Podrobnosti najdete v tématu [omezení Azure Portal pro Media Services V3](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
 
+## <a name="july-2020"></a>Červenec 2020
+
+### <a name="live-transcriptions"></a>Živá Přepisy
+
+Živý přepis teď podporuje 19 jazyků a 8 oblastí.
+
+## <a name="protecting-your-content-with-media-services-and-azure-ad"></a>Ochrana obsahu pomocí Media Services a Azure AD
+
+Publikovali jsme kurz nazvaný [kompletní ochrana obsahu pomocí Azure AD](./azure-ad-content-protection.md).
+
+### <a name="high-availablity"></a>Vysoká dostupnost
+
+Zveřejnili jsme vysokou dostupnost s Media Services a [přehledem](./media-services-high-availability-encoding.md) a [ukázkou](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/HighAvailabilityEncodingStreaming)videa na vyžádání (vod).
+
 ## <a name="june-2020"></a>Červen 2020
 
 ### <a name="live-video-analytics-on-iot-edge-preview-release"></a>Live video Analytics v IoT Edge verze Preview
@@ -43,16 +57,6 @@ V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vý
 Verze Preview živé analýzy videí na IoT Edge se stala veřejnou. Další informace najdete v [poznámkách k verzi](../live-video-analytics-edge/release-notes.md).
 
 Live video Analytics na IoT Edge je rozšířením řady mediálních služeb. Umožňuje analyzovat živé video s modely AI podle vašeho výběru na vlastních hraničních zařízeních a volitelně zachytit a zaznamenat toto video. Nyní můžete vytvářet aplikace s analýzou videa v reálném čase na hraničních zařízeních, aniž byste se museli starat o složitost sestavování a provozování živého video kanálu.
-
-### <a name="search-by-topics"></a>Hledat podle témat
-
-Teď můžete pomocí rozhraní API pro hledání vyhledat videa s konkrétními tématy (jenom rozhraní API).
-
-Témata jsou přidána jako součást `textScope` (volitelný parametr). Podrobnosti najdete v tématu [rozhraní API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Search-Videos) .  
-
-### <a name="labels-enhancement"></a>Vylepšení popisků
-
-Popisek autor značky byl upgradován a nyní obsahuje více vizuálních popisků, které lze identifikovat.
 
 ## <a name="may-2020"></a>Květen 2020
 
@@ -137,7 +141,7 @@ Media Services V3 oznamuje verzi Preview 24 hodin x 365 dní živého lineární
 
 #### <a name="deprecation-of-media-processors"></a>Vyřazení procesorů médií
 
-Oznamujeme vyřazení *Azure Media Indexer* a *Azure Media Indexer 2 ve verzi Preview*. Data o vyřazení najdete v tématu [starší verze součástí](../previous/legacy-components.md) . [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) nahrazuje tyto starší verze procesorů médií.
+Oznamujeme vyřazení *Azure Media Indexer* a *Azure Media Indexer 2 ve verzi Preview*. Data o vyřazení najdete v tématu [starší verze součástí](../previous/legacy-components.md) . [Azure Media Services video indexer](../video-indexer/index.yml) nahrazuje tyto starší verze procesorů médií.
 
 Další informace najdete v tématu [migrace z Azure Media Indexer a Azure Media Indexer 2 na Azure Media Services video indexer](../previous/migrate-indexer-v1-v2.md).
 
@@ -171,9 +175,9 @@ Od července byla funkce Preview dostupná jenom v USA – střed a USA – stř
 
 ### <a name="video-subclipping"></a>Dílčí výstřižek videa
 
-Video teď můžete při kódování pomocí [úlohy](https://docs.microsoft.com/rest/api/media/jobs)oříznout nebo vystřihnout. 
+Video teď můžete při kódování pomocí [úlohy](/rest/api/media/jobs)oříznout nebo vystřihnout. 
 
-Tato funkce funguje s libovolnou [transformací](https://docs.microsoft.com/rest/api/media/transforms) , která je sestavená buď pomocí přednastavení [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) , nebo z [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) předvoleb. 
+Tato funkce funguje s libovolnou [transformací](/rest/api/media/transforms) , která je sestavená buď pomocí přednastavení [BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) , nebo z [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) předvoleb. 
 
 Viz příklady:
 
@@ -212,8 +216,8 @@ Byly přidány aktualizace, které zahrnují vylepšení výkonu Media Services.
 
 ### <a name="new-presets"></a>Nové předvolby
 
-* [FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset) se přidal do vestavěných přednastavení analyzátoru.
-* [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset) se přidal do vestavěných přednastavení kodéru. Další informace najdete v tématu [kódování s ohledem na obsah](content-aware-encoding.md). 
+* [FaceDetectorPreset](/rest/api/media/transforms/createorupdate#facedetectorpreset) se přidal do vestavěných přednastavení analyzátoru.
+* [ContentAwareEncodingExperimental](/rest/api/media/transforms/createorupdate#encodernamedpreset) se přidal do vestavěných přednastavení kodéru. Další informace najdete v tématu [kódování s ohledem na obsah](content-aware-encoding.md). 
 
 ## <a name="march-2019"></a>Březen 2019
 
@@ -246,21 +250,21 @@ Mezi verze V3 rozhraní API pro aktualizace od verze GA patří:
 
 ## <a name="november-2018"></a>Listopad 2018
 
-Modul CLI 2,0 je teď dostupný pro [Azure Media Services V3 GA](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest) – v 2.0.50.
+Modul CLI 2,0 je teď dostupný pro [Azure Media Services V3 GA](/cli/azure/ams?view=azure-cli-latest) – v 2.0.50.
 
 ### <a name="new-commands"></a>Nové příkazy
 
-- [AZ AMS Account](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest)
-- [AZ AMS Account-Filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
-- [AZ AMS Asset](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest)
-- [AZ AMS Asset-Filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
-- [AZ AMS Content-Key-Policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
-- [AZ AMS Job](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
-- [AZ AMS Live-Event](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
-- [AZ AMS Live-Output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
-- [AZ AMS streaming-Endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
-- [AZ AMS streaming – Lokátor](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
-- [AZ AMS Account MRU](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) -umožňuje správu rezervovaných jednotek médií. Další informace najdete v tématu [škálování rezervovaných jednotek médií](media-reserved-units-cli-how-to.md).
+- [AZ AMS Account](/cli/azure/ams/account?view=azure-cli-latest)
+- [AZ AMS Account-Filter](/cli/azure/ams/account-filter?view=azure-cli-latest)
+- [AZ AMS Asset](/cli/azure/ams/asset?view=azure-cli-latest)
+- [AZ AMS Asset-Filter](/cli/azure/ams/asset-filter?view=azure-cli-latest)
+- [AZ AMS Content-Key-Policy](/cli/azure/ams/content-key-policy?view=azure-cli-latest)
+- [AZ AMS Job](/cli/azure/ams/job?view=azure-cli-latest)
+- [AZ AMS Live-Event](/cli/azure/ams/live-event?view=azure-cli-latest)
+- [AZ AMS Live-Output](/cli/azure/ams/live-output?view=azure-cli-latest)
+- [AZ AMS streaming-Endpoint](/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
+- [AZ AMS streaming – Lokátor](/cli/azure/ams/streaming-locator?view=azure-cli-latest)
+- [AZ AMS Account MRU](/cli/azure/ams/account/mru?view=azure-cli-latest) -umožňuje správu rezervovaných jednotek médií. Další informace najdete v tématu [škálování rezervovaných jednotek médií](media-reserved-units-cli-how-to.md).
 
 ### <a name="new-features-and-breaking-changes"></a>Nové funkce a zásadní změny
 
@@ -351,7 +355,7 @@ CMAF a podpora šifrování "cbcs" pro Apple HLS (iOS 11 +) a přehrávače MPEG
 
 ### <a name="video-indexer"></a>Video Indexer
 
-Vydání Video Indexer GA bylo oznámeno v srpnu. Nové informace o aktuálně podporovaných funkcích najdete v tématu [co je video indexer](../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json). 
+Vydání Video Indexer GA bylo oznámeno v srpnu. Nové informace o aktuálně podporovaných funkcích najdete v tématu [co je video indexer](../video-indexer/video-indexer-overview.md?bc=/azure/media-services/video-indexer/breadcrumb/toc.json&toc=/azure/media-services/video-indexer/toc.json). 
 
 ### <a name="plans-for-changes"></a>Plánuje změny
 

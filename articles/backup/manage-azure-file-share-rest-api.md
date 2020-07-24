@@ -3,16 +3,16 @@ title: Správa zálohování sdílených složek Azure pomocí rozhraní REST AP
 description: Naučte se, jak pomocí REST API spravovat a monitorovat sdílené složky Azure, které jsou zálohované pomocí Azure Backup.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 1e1d3463aa5d6ee10782e2ee17a7c17ffd64cb61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4d1ee187fd1c45dfd043b28c0d4b3d5935f50e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82184907"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073243"
 ---
 # <a name="manage-azure-file-share-backup-with-rest-api"></a>Správa zálohování sdílených složek Azure pomocí REST API
 
-Tento článek vysvětluje, jak provádět úlohy pro správu a monitorování sdílených složek Azure, které jsou zálohované pomocí [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview).
+Tento článek vysvětluje, jak provádět úlohy pro správu a monitorování sdílených složek Azure, které jsou zálohované pomocí [Azure Backup](./backup-overview.md).
 
 ## <a name="monitor-jobs"></a>Monitorování úloh
 
@@ -38,7 +38,7 @@ Například konečná odpověď [REST API operace zálohování aktivační udá
 }
 ```
 
-Úloha zálohování sdílené složky Azure je identifikovaná polem **jobId** a lze ji sledovat tak, jak je uvedeno [zde](https://docs.microsoft.com/rest/api/backup/jobdetails/) , pomocí žádosti o získání.
+Úloha zálohování sdílené složky Azure je identifikovaná polem **jobId** a lze ji sledovat tak, jak je uvedeno [zde](/rest/api/backup/jobdetails/) , pomocí žádosti o získání.
 
 ### <a name="tracking-the-job"></a>Sledování úlohy
 
@@ -54,7 +54,7 @@ GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af
 
 #### <a name="response"></a>Odpověď
 
-Name  | Typ  |  Popis
+Název  | Typ  |  Popis
 --- | --- | ----
 200 OK |  JobResource  | OK
 
@@ -190,7 +190,7 @@ GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af
 
 ## <a name="stop-protection-and-delete-data"></a>Zastavení ochrany a odstranění dat
 
-Pokud chcete ochranu v chráněné sdílené složce odebrat a odstranit taky tato data, proveďte operaci odstranění, jak je popsáno [zde](https://docs.microsoft.com/rest/api/backup/protecteditems/delete).
+Pokud chcete ochranu v chráněné sdílené složce odebrat a odstranit taky tato data, proveďte operaci odstranění, jak je popsáno [zde](/rest/api/backup/protecteditems/delete).
 
 ```http
 DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2019-05-13

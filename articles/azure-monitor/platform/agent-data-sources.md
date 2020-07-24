@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: aec3fe2386ce916c556f6da295a8554fff140259
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a183589c3e5274cf747164cdc33d46044f95e716
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708871"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073694"
 ---
 # <a name="agent-data-sources-in-azure-monitor"></a>Zdroje dat agenta v Azure Monitor
 Data, která Azure Monitor shromažďuje z agentů, jsou definována zdroji dat, které nakonfigurujete.  Data z agentů jsou ukládána jako [data protokolu](data-platform-logs.md) se sadou záznamů.  Každý zdroj dat vytvoří záznamy určitého typu s každým typem s vlastní sadou vlastností.
@@ -46,7 +47,7 @@ Zdroje dat nakonfigurujete z nabídky **data** v **rozšířeném nastavení** p
 ## <a name="data-collection"></a>Shromažďování dat
 Konfigurace zdrojů dat se doručují agentům, které jsou přímo připojené k Azure Monitor během několika minut.  Zadaná data jsou shromažďována z agenta a dodávána přímo do Azure Monitor v intervalech specifických pro jednotlivé zdroje dat.  Prohlédněte si dokumentaci pro každý zdroj dat pro tyto konkrétní.
 
-U agentů System Center Operations Manager v připojené skupině pro správu se konfigurace zdrojů dat přeloží do sad Management Pack a ve výchozím nastavení se doručí do skupiny pro správu každých 5 minut.  Agent stáhne Management Pack jako jiný a shromáždí zadaná data. V závislosti na zdroji dat budou data odeslána na management server, která přepošle data do Azure Monitor, nebo agent odešle data do Azure Monitor bez průchodu management server. Podrobnosti najdete [v tématu podrobnosti o shromažďování dat pro řešení monitorování v Azure](../insights/solutions-inventory.md) .  Můžete si přečíst informace o připojení Operations Manager a Azure Monitor a o úpravách četnosti, kterou konfigurace doručí při [konfiguraci integrace s System Center Operations Manager](om-agents.md).
+U agentů System Center Operations Manager v připojené skupině pro správu se konfigurace zdrojů dat přeloží do sad Management Pack a ve výchozím nastavení se doručí do skupiny pro správu každých 5 minut.  Agent stáhne Management Pack jako jiný a shromáždí zadaná data. V závislosti na zdroji dat budou data odeslána na management server, která přepošle data do Azure Monitor, nebo agent odešle data do Azure Monitor bez průchodu management server. Podrobnosti najdete [v tématu podrobnosti o shromažďování dat pro řešení monitorování v Azure](../monitor-reference.md) .  Můžete si přečíst informace o připojení Operations Manager a Azure Monitor a o úpravách četnosti, kterou konfigurace doručí při [konfiguraci integrace s System Center Operations Manager](om-agents.md).
 
 Pokud se Agent nemůže připojit k Azure Monitor nebo Operations Manager, bude pokračovat ve shromažďování dat, která budou doručována při navázání připojení.  Data mohou být ztracena v případě, že množství dat dosáhne maximální velikosti mezipaměti pro klienta nebo pokud Agent není schopen navázat připojení během 24 hodin.
 

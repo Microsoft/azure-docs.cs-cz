@@ -1,21 +1,25 @@
 ---
-title: Použití emulátoru úložiště Azure pro vývoj a testování | Microsoft Docs
+title: Použití emulátoru úložiště Azure pro vývoj a testování
 description: Emulátor úložiště Azure poskytuje bezplatné místní vývojové prostředí pro vývoj a testování vašich Azure Storagech aplikací.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/21/2019
+ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: eb13dbb7e4cfbbb1b2ea42ea1753e7615df03a7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd179160ad6796da40a5b98e89a10999ad0445d1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512168"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070560"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Použití emulátoru úložiště Azure pro vývoj a testování
 
 Emulátor úložiště Microsoft Azure je nástroj, který emuluje služby Azure Blob, Queue a Table pro účely místního vývoje. Svou aplikaci můžete testovat i v místním úložišti, aniž byste museli vytvářet předplatné Azure nebo náklady. Až budete spokojeni s tím, jak vaše aplikace funguje v emulátoru, přepněte na použití účtu úložiště Azure v cloudu.
+
+> [!IMPORTANT]
+> Emulátor Azure Storage se už aktivně nevyvíjí. [**Azurite**](storage-use-azurite.md) je platforma pro emulátor úložiště, která přechází. Azurite nahrazuje emulátor Azure Storage. Azurite se bude dál aktualizovat, aby podporovala nejnovější verze rozhraní Azure Storage API. Další informace najdete v tématu [**použití emulátoru Azurite pro vývoj místních Azure Storage**](storage-use-azurite.md).
 
 ## <a name="get-the-storage-emulator"></a>Získání emulátoru úložiště
 
@@ -74,7 +78,7 @@ Pomocí nástroje příkazového řádku emulátoru úložiště můžete inicia
 
    `AzureStorageEmulator.exe init /server .`
 
-   Nebo můžete použít následující příkaz, který znovu inicializuje databázi na výchozí instanci LocalDB:
+   Nebo můžete použít následující příkaz, který inicializuje databázi na výchozí instanci LocalDB:
 
    `AzureStorageEmulator.exe init /forceCreate`
 
@@ -178,7 +182,7 @@ Počínaje verzí 3,0 se okno konzoly zobrazí při spuštění emulátoru úlo�
 
 Pokud chcete zobrazit seznam možností, na příkazovém řádku zadejte `/help`.
 
-| Možnost | Description | Příkaz | Arguments |
+| Možnost | Popis | Příkaz | Arguments |
 | --- | --- | --- | --- |
 | **Zahájení** |Spustí emulátor úložiště. |`AzureStorageEmulator.exe start [-inprocess]` |*-Rezpracovat*: spustí emulátor v aktuálním procesu místo vytvoření nového procesu. |
 | **Zastavit** |Zastaví emulátor úložiště. |`AzureStorageEmulator.exe stop` | |
@@ -327,3 +331,7 @@ V emulátoru nejsou žádné rozdíly specifické pro úložiště Queue.
 * Vyhodnoťte [Azurite](https://github.com/azure/azurite)emulátoru Open Source úložiště pro různé platformy, který komunita udržuje. 
 * [Azure Storage ukázky používající rozhraní .NET](../storage-samples-dotnet.md) obsahují odkazy na několik ukázek kódu, které můžete použít při vývoji aplikace.
 * [Průzkumník služby Microsoft Azure Storage](https://storageexplorer.com) můžete použít pro práci s prostředky ve vašem účtu cloudového úložiště a v emulátoru úložiště.
+
+## <a name="see-also"></a>Viz také
+
+* [Vývoj místních Azure Storage pomocí Azurite, sad Azure SDK a Průzkumník služby Azure Storage](https://blog.jongallant.com/2020/04/local-azure-storage-development-with-azurite-azuresdks-storage-explorer/)

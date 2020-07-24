@@ -6,20 +6,21 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
-ms.openlocfilehash: 0e81d48f4e709a9a0bb8ebb33c7029d3841167b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d080c18a1af9549373750b787093fec03b32006
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609042"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073596"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Protokolování výstrah v Azure Monitor
 
 Výstrahy protokolu jsou jedním z typů výstrah, které jsou podporovány v [upozorněních Azure](../../azure-monitor/platform/alerts-overview.md). Výstrahy protokolu umožňují uživatelům používat platformu Azure Analytics jako základ pro upozorňování.
 
-Výstraha protokolu se skládá z pravidel prohledávání protokolu vytvořených pro [Azure monitor protokolů](../../azure-monitor/learn/tutorial-viewdata.md) nebo [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events). Další informace o jeho použití najdete v tématu [vytváření výstrah protokolu v Azure](../../azure-monitor/platform/alerts-log.md) .
+Výstraha protokolu se skládá z pravidel prohledávání protokolu vytvořených pro [Azure monitor protokolů](../log-query/get-started-portal.md) nebo [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events). Další informace o jeho použití najdete v tématu [vytváření výstrah protokolu v Azure](../../azure-monitor/platform/alerts-log.md) .
 
 > [!NOTE]
-> Oblíbená data protokolu z [protokolů Azure monitor](../../azure-monitor/learn/tutorial-viewdata.md) jsou teď dostupná i na platformě metrik v Azure monitor. Pro zobrazení podrobností, [Výstraha metriky pro protokoly](../../azure-monitor/platform/alerts-metric-logs.md)
+> Oblíbená data protokolu z [protokolů Azure monitor](../log-query/get-started-portal.md) jsou teď dostupná i na platformě metrik v Azure monitor. Pro zobrazení podrobností, [Výstraha metriky pro protokoly](../../azure-monitor/platform/alerts-metric-logs.md)
 
 
 ## <a name="log-search-alert-rule---definition-and-types"></a>Pravidlo upozornění prohledávání protokolu – definice a typy
@@ -40,7 +41,7 @@ Pravidla hledání protokolu jsou definována následujícími podrobnostmi:
 
 - **Prahová hodnota**.  Výsledky prohledávání protokolu jsou vyhodnocovány, aby bylo možné určit, zda má být vytvořena výstraha.  Prahová hodnota je odlišná u různých typů pravidel upozornění prohledávání protokolu.
 
-Pravidla hledání protokolu pro [Azure monitor protokolů](../../azure-monitor/learn/tutorial-viewdata.md) nebo [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events)můžou být dvou typů. Každý z těchto typů je podrobně popsán v následujících oddílech.
+Pravidla hledání protokolu pro [Azure monitor protokolů](../log-query/get-started-portal.md) nebo [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events)můžou být dvou typů. Každý z těchto typů je podrobně popsán v následujících oddílech.
 
 - **[Počet výsledků](#number-of-results-alert-rules)** Jediná výstraha vytvořená, když počet záznamů vrácených prohledáváním protokolu překročí zadané číslo.
 - **[Měření metriky](#metric-measurement-alert-rules)**.  Výstraha vytvořená pro každý objekt ve výsledcích prohledávání protokolu s hodnotami, které překračují určenou prahovou hodnotu.
@@ -89,7 +90,7 @@ Pravidla upozornění **měření metriky** vytvoří výstrahu pro každý obje
     
 - **Prahová**hodnota: prahová hodnota pro pravidla upozornění měření metriky je definována agregovanou hodnotou a řadou porušení.  Pokud libovolný datový bod v prohledávání protokolu překročí tuto hodnotu, je považován za porušení.  Pokud počet porušení v nástroji u libovolného objektu ve výsledcích překročí zadanou hodnotu, je pro tento objekt vytvořena výstraha.
 
-*NesmetricColumnná* konfigurace možnosti *agregace on* nebo může způsobit neaktivaci pravidel upozornění. Další informace najdete v tématu [řešení potíží, pokud není správné pravidlo výstrahy měření metriky](alert-log-troubleshoot.md#metric-measurement-alert-rule-is-incorrect).
+*NesmetricColumnná* konfigurace možnosti *agregace on* nebo může způsobit neaktivaci pravidel upozornění. Další informace najdete v tématu [řešení potíží, pokud není správné pravidlo výstrahy měření metriky](./alerts-troubleshoot-log.md#metric-measurement-alert-rule-is-incorrect).
 
 #### <a name="example-of-metric-measurement-type-log-alert"></a>Příklad upozornění protokolu typu měření metriky
 
@@ -149,7 +150,7 @@ V 1:20. odp. když se v 500 kódu výsledku zobrazí nula záznamů, upozorněn�
 Ceny týkající se výstrah protokolů jsou uvedené na stránce s [cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/) . Ve službě Azure Bills se výstrahy protokolu zobrazují jako typ `microsoft.insights/scheduledqueryrules` s:
 
 - Výstrahy protokolu na Application Insights zobrazené s přesným názvem výstrahy spolu se skupinami prostředků a vlastnostmi výstrahy
-- Výstrahy protokolu v Log Analytics zobrazeny s přesným názvem výstrahy spolu se skupinami prostředků a vlastnostmi výstrahy; Při vytvoření pomocí [rozhraní scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)
+- Výstrahy protokolu v Log Analytics zobrazeny s přesným názvem výstrahy spolu se skupinami prostředků a vlastnostmi výstrahy; Při vytvoření pomocí [rozhraní scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules)
 
 [Starší verze rozhraní Log Analytics API](../../azure-monitor/platform/api-alerts.md) mají v rámci Log Analytics uložených hledání a nesprávné [prostředky Azure](../../azure-resource-manager/management/overview.md)nějaké akce a plány výstrah. Pokud tedy chcete povolit účtování pro tyto starší verze protokolů, které jsou vytvořeny pro Log Analytics pomocí Azure Portal **bez** [přepínání do nového rozhraní API](../../azure-monitor/platform/alerts-log-api-switch.md) nebo prostřednictvím [starší verze Log Analytics API](../../azure-monitor/platform/api-alerts.md) – `microsoft.insights/scheduledqueryrules` pro účely fakturace v Azure jsou vytvořeny skrytá pravidla pro upozornění na rozhraní. Skrytá pravidla pro upozornění, která byla vytvořena pro fakturaci `microsoft.insights/scheduledqueryrules` , jak je znázorněno `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` společně se skupinou prostředků a vlastnostmi výstrahy.
 
@@ -158,15 +159,15 @@ Ceny týkající se výstrah protokolů jsou uvedené na stránce s [cenami Azur
 
 Pokud chcete odebrat skryté prostředky scheduleQueryRules vytvořené pro fakturaci pravidel upozornění pomocí [starších Log Analytics rozhraní API](api-alerts.md), může uživatel provést některou z následujících akcí:
 
-- Uživatel může [přepínat předvolby rozhraní API pro pravidla upozornění v pracovním prostoru Log Analytics](../../azure-monitor/platform/alerts-log-api-switch.md) , aniž by došlo ke ztrátě svých pravidel nebo monitorování, aby se přesunuly do Azure Resource Manager kompatibilního [rozhraní scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Proto Eliminujte nutnost vytvářet pravidla pro vyúčtování pseudo skrytých výstrah.
+- Uživatel může [přepínat předvolby rozhraní API pro pravidla upozornění v pracovním prostoru Log Analytics](../../azure-monitor/platform/alerts-log-api-switch.md) , aniž by došlo ke ztrátě svých pravidel nebo monitorování, aby se přesunuly do Azure Resource Manager kompatibilního [rozhraní scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules). Proto Eliminujte nutnost vytvářet pravidla pro vyúčtování pseudo skrytých výstrah.
 - Nebo pokud uživatel nechce přepnout na Předvolby rozhraní API, bude muset uživatel **Odstranit** původní plán a akci upozornění pomocí [starší verze Log Analytics API](api-alerts.md) nebo odstranit v [Azure Portal původní pravidlo upozornění protokolu](../../azure-monitor/platform/alerts-log.md#view--manage-log-alerts-in-azure-portal) .
 
-Kromě toho, že se skryté prostředky scheduleQueryRules vytvořené pro fakturaci pravidel upozornění používají [starší verze rozhraní API Log Analytics](api-alerts.md), všechny operace změny, jako je třeba PUT, selžou. Jako `microsoft.insights/scheduledqueryrules` pravidla typu pseudo jsou pro účely fakturace pravidla upozornění vytvořená pomocí [starší verze rozhraní Log Analytics API](api-alerts.md). Jakákoli změna pravidla výstrahy by se měla provádět pomocí [starší verze rozhraní Log Analytics API](api-alerts.md) (nebo). uživatel může místo toho [Přepnout předvolby rozhraní API pro pravidla upozornění](../../azure-monitor/platform/alerts-log-api-switch.md) na použití [rozhraní API scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) .
+Kromě toho, že se skryté prostředky scheduleQueryRules vytvořené pro fakturaci pravidel upozornění používají [starší verze rozhraní API Log Analytics](api-alerts.md), všechny operace změny, jako je třeba PUT, selžou. Jako `microsoft.insights/scheduledqueryrules` pravidla typu pseudo jsou pro účely fakturace pravidla upozornění vytvořená pomocí [starší verze rozhraní Log Analytics API](api-alerts.md). Jakákoli změna pravidla výstrahy by se měla provádět pomocí [starší verze rozhraní Log Analytics API](api-alerts.md) (nebo). uživatel může místo toho [Přepnout předvolby rozhraní API pro pravidla upozornění](../../azure-monitor/platform/alerts-log-api-switch.md) na použití [rozhraní API scheduledQueryRules](/rest/api/monitor/scheduledqueryrules) .
 
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si informace o [vytváření v protokolových výstrahách v Azure](../../azure-monitor/platform/alerts-log.md).
 * Pochopení [webhooků v protokolových výstrahách v Azure](alerts-log-webhook.md).
 * Přečtěte si o [výstrahách Azure](../../azure-monitor/platform/alerts-overview.md).
-* Přečtěte si další informace o [Application Insights](../../azure-monitor/app/analytics.md).
+* Přečtěte si další informace o [Application Insights](../log-query/log-query-overview.md).
 * Přečtěte si další informace o [Log Analytics](../../azure-monitor/log-query/log-query-overview.md).

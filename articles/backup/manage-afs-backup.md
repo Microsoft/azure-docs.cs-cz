@@ -3,15 +3,16 @@ title: Správa záloh sdílených složek Azure
 description: Tento článek popisuje běžné úlohy správy a monitorování sdílených složek Azure, které jsou zálohované pomocí Azure Backup.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: cb764fa441c063328dc350cf26f42c5bc7a0ca99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6684cb348c9edb35b5f3e46fb7922e9aa265c725
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712084"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073299"
 ---
 # <a name="manage-azure-file-share-backups"></a>Správa záloh sdílených složek Azure
 
-Tento článek popisuje běžné úlohy správy a monitorování sdílených složek Azure, které jsou zálohované pomocí [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview). Naučíte se, jak provádět úlohy správy v trezoru Recovery Services.
+Tento článek popisuje běžné úlohy správy a monitorování sdílených složek Azure, které jsou zálohované pomocí [Azure Backup](./backup-overview.md). Naučíte se, jak provádět úlohy správy v trezoru Recovery Services.
 
 ## <a name="monitor-jobs"></a>Monitorování úloh
 
@@ -164,4 +165,4 @@ Zrušení registrace účtu úložiště:
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v tématu [řešení potíží se zálohováním sdílených složek Azure](https://docs.microsoft.com/azure/backup/troubleshoot-azure-files).
+Další informace najdete v tématu [řešení potíží se zálohováním sdílených složek Azure](./troubleshoot-azure-files.md).

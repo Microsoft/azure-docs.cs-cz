@@ -2,13 +2,13 @@
 title: Vytváření a správa projektů Azure Migrate
 description: Umožňuje najít, vytvořit, spravovat a odstranit projekty v Azure Migrate.
 ms.topic: how-to
-ms.date: 04/19/2020
-ms.openlocfilehash: 644ac5ecab9f5384b446c3b1ebe762a5d06aaf12
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/23/2020
+ms.openlocfilehash: d60868f9d0d4c60291cfd92a9e8d11fd3f9a42b9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113424"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071796"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Vytváření a správa projektů Azure Migrate
 
@@ -65,7 +65,6 @@ Odstraňte následujícím způsobem:
     - Typ prostředku je **Microsoft. migruje/migrateprojects**.
     - Pokud se skupina prostředků používá výhradně v projektu Azure Migrate, můžete odstranit celou skupinu prostředků.
 
-
 Poznámky:
 
 - Při odstranění se odstraní projekt i metadata zjištěných počítačů.
@@ -73,6 +72,7 @@ Poznámky:
 - Pokud používáte analýzu závislostí s pracovním prostorem Azure Log Analytics:
     - Pokud jste připojili Log Analytics pracovní prostor k nástroji pro vyhodnocení serveru, pracovní prostor se automaticky neodstraní. Stejný pracovní prostor Log Analytics lze použít pro více scénářů.
     - Pokud chcete pracovní prostor Log Analytics odstranit, udělejte to ručně.
+- Odstranění projektu je nevratné. Odstraněné objekty se nedají obnovit.
 
 ### <a name="delete-a-workspace-manually"></a>Ruční odstranění pracovního prostoru
 

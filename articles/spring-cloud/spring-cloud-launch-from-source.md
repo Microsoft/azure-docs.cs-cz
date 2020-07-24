@@ -6,12 +6,13 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: brendm
-ms.openlocfilehash: 3ab4b1729ea380671b72a9bb01740930a186d5c3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-java
+ms.openlocfilehash: 7057138709f97c2eba2b2301d8363e2524a2042a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79470790"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071101"
 ---
 # <a name="quickstart-launch-your-spring-cloud-application-from-source-code"></a>Rychlý Start: spuštění vaší jarní cloudové aplikace ze zdrojového kódu
 
@@ -28,7 +29,7 @@ Po tomto rychlém startu se dozvíte, jak:
 > * Nasazení jednotlivých mikroslužeb
 > * Přiřazení veřejného koncového bodu vaší aplikaci
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 >[!Note]
 > Jarní cloud Azure se teď nabízí jako verze Public Preview. Nabídky veřejné verze Preview umožňují zákazníkům experimentovat s novými funkcemi před jejich oficiální verzí.  Funkce a služby verze Public Preview nejsou určeny pro produkční použití.  Další informace o podpoře v rámci verzí Preview najdete v našich [nejčastějších dotazech](https://azure.microsoft.com/support/faq/) nebo v souboru o [support Request](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) , kde se dozvíte víc.
@@ -38,7 +39,7 @@ Než začnete, ujistěte se, že vaše předplatné Azure má požadované závi
 1. [Nainstalovat Git](https://git-scm.com/).
 2. [Nainstalovat JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 3. [Nainstalujte Maven 3,0 nebo novější.](https://maven.apache.org/download.cgi)
-4. [Instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+4. [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 5. [Registrace předplatného Azure](https://azure.microsoft.com/free/)
 
 > [!TIP]
@@ -119,7 +120,7 @@ az spring-cloud app deployment create --app <app-name> -n <deployment-name> --ja
 Azure jaře Cloud používá [kpack](https://github.com/pivotal/kpack) k sestavení projektu.  Pomocí Azure CLI můžete nahrát svůj zdrojový kód, sestavit projekt pomocí kpack a nasadit ho do cílové aplikace.
 
 > [!WARNING]
-> Projekt musí `main-class` vytvořit pouze jeden soubor JAR s položkou v `MANIFEST.MF` `target` (pro nasazení Maven nebo `build/libs` pro Gradle nasazení).  Více souborů JAR s `main-class` položkami způsobí selhání nasazení.
+> Projekt musí vytvořit pouze jeden soubor JAR s `main-class` položkou v `MANIFEST.MF` `target` (pro nasazení Maven nebo `build/libs` pro Gradle nasazení).  Více souborů JAR s `main-class` položkami způsobí selhání nasazení.
 
 Pro projekty Maven/Gradle s jedním modulem:
 

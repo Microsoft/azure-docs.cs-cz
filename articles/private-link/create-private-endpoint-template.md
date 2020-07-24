@@ -1,6 +1,6 @@
 ---
 title: Vytvoření privátního koncového bodu ve službě Azure Private Link
-description: V tomto rychlém startu použijete šablonu Azure Resource Manager k vytvoření privátního koncového bodu.
+description: V tomto rychlém startu použijete šablonu Azure Resource Manager (šablona ARM) k vytvoření privátního koncového bodu.
 services: private-link
 author: mblanco77
 ms.service: private-link
@@ -8,32 +8,34 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: a60edde222a6200a0378cd8c9c4f4774da9c2e50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9fde76b86b290e1271f408cb7810e549dd9502a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817967"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071490"
 ---
-# <a name="quickstart-create-a-private-endpoint-by-using-an-azure-resource-manager-template"></a>Rychlý Start: Vytvoření privátního koncového bodu pomocí šablony Azure Resource Manager
+# <a name="quickstart-create-a-private-endpoint-by-using-an-arm-template"></a>Rychlý Start: Vytvoření privátního koncového bodu pomocí šablony ARM
 
-V tomto rychlém startu použijete šablonu Azure Resource Manager k vytvoření privátního koncového bodu.
+V tomto rychlém startu použijete šablonu Azure Resource Manager (šablona ARM) k vytvoření privátního koncového bodu.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Tento rychlý Start můžete také dokončit pomocí [Azure Portal](create-private-endpoint-portal.md), [Azure PowerShell](create-private-endpoint-powershell.md)nebo rozhraní příkazového [řádku Azure](create-private-endpoint-cli.md).
 
-## <a name="prerequisite"></a>Požadavek
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
+
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-sql%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Požadavky
 
 Potřebujete účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-a-private-endpoint"></a>Vytvoření privátního koncového bodu
+## <a name="review-the-template"></a>Kontrola šablony
 
 Tato šablona vytvoří privátní koncový bod pro instanci Azure SQL Database.
 
-### <a name="review-the-template"></a>Kontrola šablony
-
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/).
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-private-endpoint-sql/).
 
 :::code language="json" source="~/quickstart-templates/101-private-endpoint-sql/azuredeploy.json" range="001-295" highlight="131-156":::
 
@@ -50,9 +52,9 @@ V šabloně je definováno víc prostředků Azure:
 - [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces): síťové rozhraní pro virtuální počítač.
 - [**Microsoft. COMPUTE/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines): virtuální počítač, který slouží k otestování soukromého připojení s privátním koncovým bodem, do instance SQL Database.
 
-### <a name="deploy-the-template"></a>Nasazení šablony
+## <a name="deploy-the-template"></a>Nasazení šablony
 
-Tady je postup, jak nasadit šablonu Azure Resource Manager do Azure:
+Tady je postup, jak nasadit šablonu ARM do Azure:
 
 1. Pokud se chcete přihlásit k Azure a otevřít šablonu, vyberte **nasadit do Azure**. Šablona vytvoří privátní koncový bod, instanci SQL Database, síťovou infrastrukturu a virtuální počítač, který se má ověřit.
 
@@ -66,7 +68,7 @@ Tady je postup, jak nasadit šablonu Azure Resource Manager do Azure:
 ## <a name="validate-the-deployment"></a>Ověření nasazení
 
 > [!NOTE]
-> Šablona Azure Resource Manager vygeneruje jedinečný název pro prostředek virtuálního počítače<b>{UniqueID}</b> a pro prostředek SQL Database SQLServer<b>{UniqueID}</b> . Vygenerovanou hodnotu pro **{UniqueID}** nahraďte.
+> Šablona ARM vygeneruje jedinečný název pro prostředek myVm<b>{UniqueID}</b> virtuálního počítače a pro prostředek SQL Database SQLServer<b>{UniqueID}</b> . Vygenerovanou hodnotu pro **{UniqueID}** nahraďte.
 
 ### <a name="connect-to-a-vm-from-the-internet"></a>Připojení k virtuálnímu počítači z internetu
 

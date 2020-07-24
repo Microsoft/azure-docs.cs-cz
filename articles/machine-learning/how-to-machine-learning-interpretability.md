@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.author: mesameki
-author: mesameki
+ms.author: mithigpe
+author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.openlocfilehash: 83fc13362a373686ee027fd642f03003b411cd63
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: deeb47b55253b9bf1659dd5eba7bc3465602583b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201449"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072227"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Interpretace modelu v Azure Machine Learning (Náhled)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -44,7 +44,7 @@ Třídy interpretace jsou zpřístupněny prostřednictvím více balíčků sad
 
 * `azureml.contrib.interpret`, ve verzi Preview a experimentálních funkcích, které můžete vyzkoušet.
 
-Použijte `pip install azureml-interpret` a `pip install azureml-interpret-contrib` pro obecné použití a `pip install azureml-contrib-interpret` pro AutoML použijte k získání balíčků pro vyhodnocení.
+Použití `pip install azureml-interpret` a `pip install azureml-contrib-interpret` pro obecné použití.
 
 
 > [!IMPORTANT]

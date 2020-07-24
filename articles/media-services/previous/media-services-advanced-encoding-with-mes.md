@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 1d1ac838befc905c3c2b860551b26928f5114e96
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 8142ef5e2aaaf5831c01215d28eecf8d06e1d8ab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955153"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071922"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Rozšířené kódování pomocí přizpůsobení předvoleb inverze 
 
@@ -29,7 +30,7 @@ V tomto tématu se dozvíte, jak přizpůsobit Media Encoder Standard předvolby
 Pokud používáte předvolbu XML, nezapomeňte zachovat pořadí prvků, jak je znázorněno v ukázkách XML níže (například KeyFrameInterval by měl předcházet SceneChangeDetection).
 
 > [!NOTE] 
-> Mnohé z pokročilých funkcí Media Services V2 Media Encoder Standard v současnosti nejsou v systému V3 k dispozici. Další informace najdete v tématu [mezery k funkcím](https://docs.microsoft.com/azure/media-services/latest/media-services-v2-vs-v3#feature-gaps-with-respect-to-v2-apis).
+> Mnohé z pokročilých funkcí Media Services V2 Media Encoder Standard v současnosti nejsou v systému V3 k dispozici. Další informace najdete v tématu [mezery k funkcím](../latest/media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis).
 
 ## <a name="support-for-relative-sizes"></a>Podpora relativních velikostí
 
@@ -240,7 +241,7 @@ Nezapomeňte si prohlédnout část s [informacemi](#considerations) o tom, co j
 </Preset>
 ```
 
-### <a name="considerations"></a>Důležité informace
+### <a name="considerations"></a>Požadavky
 
 Platí následující důležité informace:
 

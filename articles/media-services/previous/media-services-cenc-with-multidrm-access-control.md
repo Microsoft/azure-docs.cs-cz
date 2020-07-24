@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
-ms.openlocfilehash: 4b5a18f0dc5edc06e4800215e88b694e681b5bbb
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 254659c58b9830645211596da0095c33d70e8d95
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960458"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072013"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Návrh systému ochrany obsahu s řízením přístupu pomocí Azure Media Services 
 
@@ -147,12 +148,12 @@ Mapování jsou uvedena v následující tabulce.
 
 | **Stavební blok** | **Technologie** |
 | --- | --- |
-| **Přehrávač** |[Přehrávač médií Azure](https://azure.microsoft.com/services/media-services/media-player/) |
+| **Player** |[Přehrávač médií Azure](https://azure.microsoft.com/services/media-services/media-player/) |
 | **Zprostředkovatel identity (IDP)** |Azure Active Directory (Azure AD) |
 | **Služba tokenů zabezpečení (STS)** |Azure AD |
 | **Pracovní postup ochrany DRM** |Media Services dynamickou ochranu |
 | **Doručování licencí DRM** |* Media Services doručování licencí (PlayReady, Widevine, FairPlay) <br/>* Licenční server Axinom <br/>* Vlastní licenční server PlayReady |
-| **Zdroj** |Koncový bod streamování Media Services |
+| **Zdroji** |Koncový bod streamování Media Services |
 | **Správa klíčů** |Není nutné pro implementaci reference. |
 | **Správa obsahu** |Konzolová aplikace v jazyce C# |
 
@@ -226,7 +227,7 @@ Další informace najdete v tématu [ověřování tokenu JWT v Azure Media Serv
 Informace o službě Azure AD:
 
 * Informace o vývojářích najdete v [příručce pro vývojáře Azure Active Directory](../../active-directory/azuread-dev/v1-overview.md).
-* Informace o Správci najdete ve [správě adresáře tenanta Azure AD](../../active-directory/fundamentals/active-directory-administer.md).
+* Informace o Správci najdete ve [správě adresáře tenanta Azure AD](../../active-directory/fundamentals/active-directory-whatis.md).
 
 ### <a name="some-issues-in-implementation"></a>Některé problémy v implementaci
 Pro pomoc s problémy s implementací použijte následující informace pro řešení potíží.
@@ -295,7 +296,7 @@ Výměna podpisového klíče je důležitým bodem, který je potřeba vzít v 
 
 Azure AD používá oborové standardy k navázání vztahu důvěryhodnosti mezi sebou samými a aplikacemi, které používají Azure AD. Konkrétně služba Azure AD používá podpisový klíč, který se skládá z páru veřejného a privátního klíče. Když Azure AD vytvoří token zabezpečení, který obsahuje informace o uživateli, je před jeho odesláním zpět do aplikace podepsaný službou Azure AD s privátním klíčem. Pokud chcete ověřit, jestli je token platný a pochází z Azure AD, musí aplikace ověřit signaturu tokenu. Aplikace používá veřejný klíč vystavený službou Azure AD, který je obsažený v dokumentu federačních metadat klienta. Tento veřejný klíč a podpisový klíč, ze kterého je odvozený, je stejný, který se používá pro všechny klienty ve službě Azure AD.
 
-Další informace o výměně klíčů Azure AD najdete v tématu [důležité informace o výměně klíčů v Azure AD](../../active-directory/active-directory-signing-key-rollover.md).
+Další informace o výměně klíčů Azure AD najdete v tématu [důležité informace o výměně klíčů v Azure AD](../../active-directory/develop/active-directory-signing-key-rollover.md).
 
 Mezi [dvojicí klíčů veřejného a soukromého](https://login.microsoftonline.com/common/discovery/keys/):
 
@@ -328,7 +329,7 @@ Pokud se podíváte, jak webová aplikace volá aplikaci API v části [Identita
 * Azure AD ověří aplikaci a vrátí přístupový token JWT, který se používá k volání webového rozhraní API.
 * Přes protokol HTTPS používá webová aplikace vrácený přístupový token JWT k přidání řetězce JWT s označením "nosiče" do hlavičky "Authorization" žádosti webovému rozhraní API. Webové rozhraní API potom ověří token JWT. Pokud je ověření úspěšné, vrátí požadovaný prostředek.
 
-V tomto toku identity aplikace webové rozhraní API důvěřuje, že webová aplikace ověřila daného uživatele. Z tohoto důvodu se tento model nazývá důvěryhodný podsystém. Vývojový [diagram autorizace](https://docs.microsoft.com/azure/active-directory/active-directory-protocols-oauth-code) popisuje způsob, jakým funguje autorizační kód pro udělení kódu autorizace.
+V tomto toku identity aplikace webové rozhraní API důvěřuje, že webová aplikace ověřila daného uživatele. Z tohoto důvodu se tento model nazývá důvěryhodný podsystém. Vývojový [diagram autorizace](../../active-directory/azuread-dev/v1-protocols-oauth-code.md) popisuje způsob, jakým funguje autorizační kód pro udělení kódu autorizace.
 
 Získání licence s omezením tokenu se řídí stejným vzorem důvěryhodného subsystému. Služba doručování licencí v Media Services je prostředek webového rozhraní API, nebo "prostředek back-end", ke kterému musí mít webová aplikace přístup. Kde je přístupový token?
 
@@ -405,7 +406,7 @@ I když Azure byl původně povolený jenom pomocí účet Microsoft uživatelů
 
 Vzhledem k tomu, že Azure AD důvěřuje účet Microsoft doméně, můžete do vlastního tenanta Azure AD přidat libovolné účty z následujících domén a použít účet pro přihlášení:
 
-| **Název domény** | **Domain (Doména)** |
+| **Název domény** | **Doména** |
 | --- | --- |
 | **Vlastní doména tenanta Azure AD** |somename.onmicrosoft.com |
 | **Firemní doména** |microsoft.com |
@@ -469,7 +470,7 @@ Následující snímek obrazovky ukazuje scénář, který používá asymetrick
 
 V obou předchozích případech zůstává ověřování uživatelů stejné. Probíhá přes Azure AD. Jediným rozdílem je, že JWTs vydávají vlastní STS místo Azure AD. Když konfigurujete dynamickou ochranu CENC Protection, omezení služby doručování licencí určuje typ JWT, buď symetrický, nebo asymetrický klíč.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Tento dokument popisuje CENC s více nativními technologiemi DRM a Access Control přes ověřování tokenů, jeho návrh a implementaci pomocí Azure, Media Services a Media Player.
 

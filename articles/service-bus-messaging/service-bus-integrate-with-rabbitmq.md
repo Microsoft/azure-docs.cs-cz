@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: service-bus
 ms.date: 07/02/2020
 ms.author: alvidela
-ms.openlocfilehash: df0541802dfc331ffc94e95be112ea7e005960b5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: cf21030fbf1aaa9f36e4d34aac918c4604066ec2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86049793"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071630"
 ---
 # <a name="how-to-integrate-rabbitmq-with-azure-service-bus"></a>Integrace RabbitMQ s Azure Service Bus
 
@@ -90,7 +90,7 @@ Než budete moct tento připojovací řetězec použít, budete ho muset převé
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/converter.png" alt-text="Převést připojovací řetězec":::
 
-Teď otevřete modul plug-in pro správu RabbitMQ v našich prohlížečích [http://localhost:15672/#/dynamic-shovels](http://localhost:15672/#/dynamic-shovels) a `Admin -> Shovel Management` pak na, kde můžete přidat nové Shovel, které postará o posílání zpráv z fronty RabbitMQ do fronty Azure Service Bus.
+Teď otevřete modul plug-in pro správu RabbitMQ v našich prohlížečích `http://localhost:15672/#/dynamic-shovels` a `Admin -> Shovel Management` pak na, kde můžete přidat nové Shovel, které postará o posílání zpráv z fronty RabbitMQ do fronty Azure Service Bus.
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/add-shovel.png" alt-text="Přidat Shovel RabbitMQ":::
 
@@ -98,7 +98,7 @@ Zde zavolejte své Shovel `azure` a vyberte `AMQP 0.9.1` jako zdrojový protokol
 
 Na straně fronty můžete použít `azure` jako název vaší fronty. Pokud tato fronta neexistuje, vytvoří ji RabbitMQ za vás. Můžete také zvolit název fronty, která již existuje. Ostatní možnosti můžete ponechat jako výchozí.
 
-Pak na `destination` straně věci zvolte `AMQP 1.0` jako protokol. Do tohoto `URI` pole zadejte připojovací řetězec, který jste získali z předchozího kroku, převedli jste převod řetězce připojení Azure na formát RabbitMQ. Mělo by to vypadat takto:
+Pak na `destination` straně věci zvolte `AMQP 1.0` jako protokol. Do tohoto `URI` pole zadejte připojovací řetězec, který jste získali z předchozího kroku, převedli jste převod řetězce připojení Azure na formát RabbitMQ. Měl by vypadat takto:
 
 ```
 amqps://rabbitmq-shovel:StringOfRandomChars@rabbitmq.servicebus.windows.net:5671/?sasl=plain

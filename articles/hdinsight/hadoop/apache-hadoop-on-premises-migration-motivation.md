@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.openlocfilehash: b975ee8cebdac3855c3fca88b20c01145d11baeb
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1de9fc480c753b2497a1ea4e3438583b3582bc96
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080189"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072779"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Migrace místních Apache Hadoop clusterů do Azure HDInsight – motivace a výhody
 
@@ -107,7 +107,7 @@ V této části jsou uvedeny dotazníky šablon, které vám pomůžou shromáž
 |Systémy, které jsou závislé na clusteru|SQL Server, Teradata, Power BI, MongoDB|
 |Integrace třetích stran|Tableau, GridGain, Qubole, Informatica, Splunk|
 |**Téma**: **zabezpečení**|||
-|Zabezpečení hraničních|Brány firewall|
+|Zabezpečení hraničních|brány firewall,|
 |Ověřování clusteru & autorizaci|Active Directory, Ambari, Cloudera Manager, bez ověřování|
 |HDFS – Access Control|  Ruční, uživatelé SSH|
 |Ověřování podregistru & autorizaci|Sentry, LDAP, AD s protokolem Kerberos, Ranger|
@@ -148,8 +148,8 @@ V této části jsou uvedeny dotazníky šablon, které vám pomůžou shromáž
 |Míra růstu uzlů clusteru|5% za rok
 |**Téma**: **využití clusteru**|||
 |Průměrné využití procesoru v%|60 %||
-|Průměrná doba využití paměti%|75 %||
-|Využité místo na disku|75 %||
+|Průměrná doba využití paměti%|75 %||
+|Využité místo na disku|75 %||
 |Průměrná doba využití sítě%|25 %
 |**Téma**: **zaměstnanci**|||
 |Počet správců|2||
@@ -163,9 +163,9 @@ V této části jsou uvedeny dotazníky šablon, které vám pomůžou shromáž
 
 ### <a name="azure-requirements-questionnaire"></a>Dotazník požadavků Azure
 
-|**Téma**: **infrastruktura** |||
-|---|---|---|
 |**Otázka**|**Příklad**|**Odpověď**|
+|---|---|---|
+|**Téma**: **infrastruktura** |||
 | Upřednostňovaná oblast|USA – východ||
 |Upřednostňovaná virtuální síť?|Yes||
 |Je potřeba HA/DR?|Yes||

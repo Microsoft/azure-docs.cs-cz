@@ -3,12 +3,12 @@ title: Informace o tom, jak auditovat obsah virtuálních počítačů
 description: Přečtěte si, jak Azure Policy používá agenta konfigurace hosta k auditování nastavení v rámci virtuálních počítačů.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: ec2a9f53fbe2ad0201af0250b0dcfa8dc4d519f0
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: f2f07a3e88984a84ca1529052d5899ad8570a268
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971092"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072823"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Vysvětlení konfigurace hosta ve službě Azure Policy
 
@@ -35,9 +35,8 @@ Než budete moct použít konfiguraci hosta, musíte zaregistrovat poskytovatele
 Pokud chcete auditovat nastavení v rámci počítače, je povolená [rozšíření virtuálního počítače](../../../virtual-machines/extensions/overview.md) a počítač musí mít systémově spravovanou identitu. Rozšíření stáhne příslušné přiřazení zásad a odpovídající definici konfigurace. Identita se používá k ověření počítače při jeho čtení a zápisu do služby konfigurace hosta. Pro připojené počítače ARC není rozšíření vyžadováno, protože je zahrnuto v agentovi počítače připojeného k ARC.
 
 > [!IMPORTANT]
-> K provádění auditů na virtuálních počítačích Azure se vyžaduje rozšíření konfigurace hosta. Pokud chcete nasadit rozšíření ve velkém měřítku, přiřaďte následující definice zásad: 
->  - [Nasaďte požadavky pro povolení zásad konfigurace hostů na virtuálních počítačích s Windows.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
->  - [Nasaďte požadavky pro povolení zásad konfigurace hostů na virtuálních počítačích se systémem Linux.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
+> K auditování virtuálních počítačů Azure se vyžaduje rozšíření konfigurace hosta a spravovaná identita. Pro provádění auditů na virtuálních počítačích Azure je potřeba > rozšíření konfigurace hosta. Pokud chcete nasadit rozšíření ve velkém měřítku, přiřaďte následující iniciativu zásad: > nasazení rozšíření nasaďte ve velkém rozsahu, přiřaďte následující definice zásad: 
+>  - [Nasazení požadavků pro povolení zásad konfigurace hostů na virtuálních počítačích](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)
 
 ### <a name="limits-set-on-the-extension"></a>Omezení nastavená pro rozšíření
 
@@ -63,12 +62,12 @@ Klient konfigurace hosta kontroluje nový obsah každých 5 minut. Po přijetí 
 Zásady konfigurace hosta jsou zahrnuté do nových verzí. Starší verze operačních systémů, které jsou k dispozici ve Azure Marketplace, jsou vyloučené, pokud není agent konfigurace hosta kompatibilní.
 Následující tabulka obsahuje seznam podporovaných operačních systémů pro Image Azure:
 
-|Publisher|Name|Verze|
+|Publisher|Název|Verze|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 a novější|
 |Credativ|Debian|8 a novější|
-|Microsoft|Windows Server|2012 a novější|
-|Microsoft|Klient Windows|Windows 10|
+|Partnerský vztah Microsoftu|Windows Server|2012 a novější|
+|Partnerský vztah Microsoftu|Klient Windows|Windows 10|
 |OpenLogic|CentOS|7,3 a novější|
 |Red Hat|Red Hat Enterprise Linux|7,4-7,8, 9,0 a novější|
 |SUSE|SLES|12 SP3 a novější|
@@ -81,10 +80,11 @@ Aby počítače komunikovaly s poskytovatelem prostředků konfigurace hosta v A
 
 ## <a name="managed-identity-requirements"></a>Požadavky na spravovanou identitu
 
-Zásady **DeployIfNotExists** , které přidávají rozšíření do virtuálních počítačů, také povolují spravovanou identitu přiřazenou systémem, pokud taková neexistuje.
+Zásady v iniciativě [nasazují požadavky pro povolení zásad konfigurace hostů na virtuálních počítačích](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8) povolují spravovanou identitu přiřazenou systémem, pokud taková neexistuje. V iniciativě existují dvě definice zásad, které spravují vytváření identit. Podmínky IF v definicích zásad zajišťují správné chování na základě aktuálního stavu prostředku počítače v Azure.
 
-> [!WARNING]
-> Vyhněte se povolení spravované identity přiřazené uživateli pro virtuální počítače v oboru pro zásady, které povolují spravovanou identitu přiřazenou systémem. Identita přiřazená uživatelem je nahrazena a může způsobit, že počítač přestane reagovat.
+Pokud počítač momentálně nemá žádné spravované identity, platí tyto zásady: [ \[ Preview \] : Přidejte spravovanou identitu přiřazenou systémem a povolte přiřazení konfigurace hostů na virtuálních počítačích bez identit](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e) .
+
+Pokud má počítač nyní uživatelsky přiřazenou identitu systému, platí následující: ve [ \[ verzi Preview \] : Přidání spravované identity přiřazené systémem pro povolení přiřazení konfigurace hostů na virtuálních počítačích s identitou přiřazenou uživatelem](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6) .
 
 ## <a name="guest-configuration-definition-requirements"></a>Požadavky na definici konfigurace hosta
 

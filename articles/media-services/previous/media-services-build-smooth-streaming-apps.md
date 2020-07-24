@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 65e1fa07d2af15e9ccb5f85ce4645e3e6c287952
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 44f10bd49a768004fc63a3287799e6b79dd5bae1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960363"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071906"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Postup sestavení Smooth Streaming aplikace pro Windows Store  
 
@@ -32,7 +32,7 @@ Tento kurz obsahuje čtyři lekce:
 3. Vybrat Smooth Streaming datové proudy
 4. Výběr Smooth Streamingch stop
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 > [!NOTE]
 > Projekty Windows Store verze 8,1 a starší nejsou podporovány v aplikaci Visual Studio 2017.  Další informace najdete v tématu [Cílení na platformy a kompatibilita v sadě Visual Studio 2017](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs).
 
@@ -53,7 +53,7 @@ V této lekci vytvoříte aplikaci pro Windows Store s ovládacím prvkem MediaE
 
 ![Příklad Smooth Streaming aplikace pro Windows Store][PlayerApplication]
 
-Další informace o vývoji aplikací pro Windows Store najdete v tématu [vývoj skvělých aplikací pro Windows 8](https://msdn.microsoft.com/windows/apps/br229512.aspx). Tato lekce obsahuje následující postupy:
+Další informace o vývoji aplikací pro Windows Store najdete v tématu [vývoj skvělých aplikací pro Windows 8](https://developer.microsoft.com/en-us/windows/). Tato lekce obsahuje následující postupy:
 
 1. Vytvořit projekt pro Windows Store
 2. Návrh uživatelského rozhraní (XAML)
@@ -66,11 +66,11 @@ Další informace o vývoji aplikací pro Windows Store najdete v tématu [vývo
 1. V nabídce **soubor** klikněte na příkaz **Nový**a potom klikněte na **projekt**.
 1. V dialogovém okně Nový projekt zadejte nebo vyberte následující hodnoty:
 
-    | Name | Hodnota |
+    | Název | Hodnota |
     | --- | --- |
     | Skupina šablon |Nainstalované/šablony/Visual C#/Windows Store |
-    | Šablona |Prázdná aplikace (XAML) |
-    | Name |SSPlayer |
+    | Template (Šablona) |Prázdná aplikace (XAML) |
+    | Název |SSPlayer |
     | Umístění |C:\SSTutorials |
     | Název řešení |SSPlayer |
     | Vytvořit adresář pro řešení |Vyberte |
@@ -82,7 +82,7 @@ Další informace o vývoji aplikací pro Windows Store najdete v tématu [vývo
 1. Z Průzkumník řešení klikněte pravým tlačítkem na **SSPlayer**a pak klikněte na **Přidat odkaz**.
 1. Zadejte nebo vyberte tyto hodnoty:
 
-    | Name | Hodnota |
+    | Název | Hodnota |
     | --- | --- |
     | Referenční skupina |Windows/rozšíření |
     | Referenční informace |Vyberte sadu Microsoft Smooth Streaming Client SDK pro Windows 8 a balíček Microsoft Visual C++ Runtime |
@@ -1045,4 +1045,3 @@ Dokončili jste lekci 4.  V této lekci přidáte funkci pro výběr možnosti s
 
 [PlayerApplication]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-1.png
 [CodeViewPic]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-2.png
-

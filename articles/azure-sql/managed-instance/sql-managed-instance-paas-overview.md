@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 06/25/2020
-ms.openlocfilehash: 43fad6249d5c6f528353a819e03dd7401440e05d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7d7ec95d2227076ff7b7a95ce6e72fffc840975
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391005"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073350"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Co je spravovaná instance Azure SQL?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -50,7 +50,7 @@ Spravovaná instance SQL kombinuje nejlepší funkce, které jsou k dispozici v 
 
 Klíčové funkce spravované instance SQL jsou uvedené v následující tabulce:
 
-|Funkce | Description|
+|Funkce | Popis|
 |---|---|
 | Verze SQL Server/Build | Databázový stroj SQL Server (nejnovější stabilní) |
 | Spravované automatizované zálohy | Yes |
@@ -115,111 +115,13 @@ Přečtěte si další informace o rozdílech mezi úrovněmi služeb v [omezen�
 
 ## <a name="management-operations"></a>Operace správy
 
-Spravovaná instance Azure SQL poskytuje operace správy, které můžete použít k automatickému nasazení nových spravovaných instancí, aktualizaci vlastností instance a odstranění instancí, pokud už nepotřebujete. V této části najdete informace o operacích správy a jejich typických trváních.
-
-Za účelem podpory [nasazení v rámci virtuálních sítí Azure](../../virtual-network/virtual-network-for-azure-services.md) a zajištění izolace a zabezpečení pro zákazníky se používá spravovaná instance SQL [virtuální clustery](connectivity-architecture-overview.md#high-level-connectivity-architecture), které představují vyhrazenou sadu izolovaných virtuálních počítačů nasazených v podsíti virtuální sítě zákazníka. Každé nasazení spravované instance v rámci prázdné podsítě má za následek nové sestavení virtuálních clusterů.
-
-Následné operace na nasazených spravovaných instancích můžou mít vliv i na základní virtuální cluster. To ovlivňuje dobu trvání operací správy, protože nasazení dalších virtuálních počítačů přináší režii, která je potřeba vzít v úvahu při plánování nových nasazení nebo aktualizací existujících spravovaných instancí.
-
-Všechny operace správy je možné uspořádat do následujících kategorií:
-
-- Nasazení instance (vytvoření nové instance).
-- Aktualizace instance (Změna vlastností instance, jako je virtuální jádra nebo vyhrazené úložiště
-- Odstranění instance.
-
-Operace s virtuálními clustery se obvykle vybírají nejdéle. Doba trvání operací na virtuálních clusterech se liší – níže jsou hodnoty, které můžete obvykle očekávat na základě stávajících dat telemetrie služby:
-
-- **Vytvoření virtuálního clusteru**: Jedná se o synchronní krok při operacích správy instancí. **90% dokončených operací za 4 hodiny**.
-- **Změna velikosti virtuálního clusteru (rozšíření nebo zmenšení)**: rozšíření je synchronní krok, zatímco zmenšování se provádí asynchronně (bez dopadu na dobu trvání operací správy instancí). **90% rozšíření clusteru skončí za méně než 2,5 hodin**.
-- **Odstranění virtuálního clusteru**: odstranění je asynchronní krok, ale dá se taky [iniciovat ručně](virtual-cluster-delete.md) v prázdném virtuálním clusteru. v takovém případě se to provede synchronně. **90% odstranění virtuálních clusterů se dokončí za 1,5 hodin**.
-
-Kromě toho může Správa instancí zahrnovat taky jednu z operací na hostovaných databázích, což vede k delší dobu trvání:
-
-- **Připojení databázových souborů z Azure Storage**: Jedná se o synchronní krok, jako je například COMPUTE (Vcore) nebo škálování úložiště v úrovni služby pro obecné účely. **90% těchto operací skončí za 5 minut**.
-- **Dosazení skupiny dostupnosti Always On**: Jedná se o synchronní krok, například výpočetní výkon (Vcore) nebo škálování úložiště v úrovni služby pro důležité obchodní informace, a také v části Změna úrovně služby z Pro obecné účely na pro důležité obchodní informace (nebo naopak). Doba trvání této operace je úměrná celkové velikosti databáze a aktuální aktivitě databáze (počet aktivních transakcí). Databázová aktivita při aktualizaci instance může způsobit značnou odchylku od celkové doby trvání. **90% těchto operací se spustí v 220 GB/hod nebo vyšších**.
-
-V následující tabulce najdete souhrn operací a typických celkových dob trvání:
-
-|Kategorie  |Operace  |Dlouho běžící segment  |Odhadovaná doba trvání  |
-|---------|---------|---------|---------|
-|**Nasazení** |První instance v prázdné podsíti|Vytvoření virtuálního clusteru|90% dokončených operací za 4 hodiny.|
-|Nasazení |První instance jiné generace hardwaru v neprázdné podsíti (například první instance Gen 5 v podsíti s instancemi Gen 4)|Vytváření virtuálních clusterů *|90% dokončených operací za 4 hodiny.|
-|Nasazení |Vytvoření první instance 4 virtuální jádra, v prázdné nebo neprázdné podsíti|Vytváření virtuálních clusterů * *|90% dokončených operací za 4 hodiny.|
-|Nasazení |Vytváření dalších instancí v neprázdné podsíti (druhá, třetí atd. instance)|Změna velikosti virtuálního clusteru|90% dokončených operací za 2,5 hodin.|
-|**Aktualizace** |Změna vlastnosti instance (heslo správce, přihlášení Azure AD, příznak Zvýhodněné hybridní využití Azure)|Není k dispozici|Až 1 minuta.|
-|Aktualizace |Horizontální navýšení kapacity úložiště instance (Pro obecné účely úroveň služeb)|Připojení souborů databáze|90% dokončených operací za 5 minut.|
-|Aktualizace |Horizontální navýšení kapacity úložiště instance (Pro důležité obchodní informace úroveň služeb)|– Změna velikosti virtuálního clusteru<br>– Vysazení skupiny dostupnosti Always On|90% dokončených operací během 2,5 hodin + času k osazení všech databází (220 GB za hodinu).|
-|Aktualizace |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro obecné účely)|– Změna velikosti virtuálního clusteru<br>-Připojení souborů databáze|90% dokončených operací za 2,5 hodin.|
-|Aktualizace |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro důležité obchodní informace)|– Změna velikosti virtuálního clusteru<br>– Vysazení skupiny dostupnosti Always On|90% dokončených operací během 2,5 hodin + času k osazení všech databází (220 GB za hodinu).|
-|Aktualizace |Škálování instance dolů na 4 virtuální jádra (Pro obecné účely)|– Změna velikosti virtuálního clusteru (při prvním provedení) může vyžadovat vytvoření virtuálního clusteru * *).<br>-Připojení souborů databáze|90% dokončených operací za 4 h 5 min. * *|
-|Aktualizace |Škálování instance dolů na 4 virtuální jádra (Pro důležité obchodní informace)|– Změna velikosti virtuálního clusteru (při prvním provedení) může vyžadovat vytvoření virtuálního clusteru * *).<br>– Vysazení skupiny dostupnosti Always On|90% operací se dokončí během 4 hodiny + čas na osazení všech databází (220 GB za hodinu).|
-|Aktualizace |Instance instance služby instance (Pro obecné účely až Pro důležité obchodní informace a naopak)|– Změna velikosti virtuálního clusteru<br>– Vysazení skupiny dostupnosti Always On|90% dokončených operací během 2,5 hodin + času k osazení všech databází (220 GB za hodinu).|
-|**Odstranění**|Odstranění instance|Zálohování koncového protokolu pro všechny databáze|90% operací skončilo během až 1 minuty.<br>Poznámka: Pokud je odstraněna poslední instance v podsíti, tato operace provede odstranění virtuálního clusteru po 12 hodinách. * * *|
-|Odstranění|Odstranění virtuálního clusteru (jako operace iniciované uživatelem)|Odstranění virtuálního clusteru|90% operací se dokončilo během až 1,5 hodin.|
-
-\*Virtuální cluster je postaven na generaci hardwaru.
-
-\*\*Možnost 4-virtuální jádra byla vydaná v červnu 2019 a vyžaduje novou verzi virtuálního clusteru. Pokud jste v cílové podsíti vytvořili instance, které byly všechny vytvořené před 12. června, automaticky se nasadí nový virtuální cluster na hostitele 4 vCore instance.
-
-\*\*\*12 hodin je aktuální konfigurace, která se může v budoucnu změnit, takže na ni nemusíte nic udělat. Pokud potřebujete virtuální cluster odstranit dřív (například pro vydání podsítě), přečtěte si téma [odstranění podsítě po odstranění spravované instance](virtual-cluster-delete.md).
-
-### <a name="instance-availability-during-management-operations"></a>Dostupnost instance během operací správy
-
-Spravovaná instance SQL **je k dispozici během operací aktualizace**, s výjimkou krátkého výpadku způsobeného převzetím služeb při selhání, ke kterému dochází na konci aktualizace. Obvykle trvá až 10 sekund i v případě přerušených dlouhotrvajících transakcí díky [urychlenému obnovení databáze](../accelerated-database-recovery.md).
-
-> [!IMPORTANT]
-> Nedoporučujeme škálovat výpočetní výkon nebo úložiště spravované instance SQL Azure nebo změnit úroveň služby současně s dlouhotrvajícími transakcemi (import dat, úlohy zpracování dat, opětovné sestavení indexu atd.). Převzetí služeb při selhání databáze, které bude provedeno na konci operace zruší všechny probíhající transakce.
-
-Spravovaná instance SQL není během operací nasazení a odstraňování dostupná pro klientské aplikace.
-
-### <a name="management-operations-cross-impact"></a>Operace správy – mezi důsledky
-
-Operace správy na spravované instanci může ovlivnit jiné operace správy instancí umístěných uvnitř stejného virtuálního clusteru. Ta zahrnují následující:
-
-- **Dlouhodobě běžící operace obnovení** ve virtuálním clusteru budou blokovány při vytváření jiných instancí nebo operacích škálování ve stejné podsíti.<br/>**Příklad:** Pokud existuje dlouhotrvající operace obnovení a ve stejné podsíti je žádost o vytvoření nebo škálování, bude dokončení této žádosti trvat déle, protože bude čekat na dokončení operace obnovení, než bude pokračovat.
-    
-- **Následná operace vytvoření nebo škálování instance** je blokována dříve zahájeným vytvořením instance nebo škálováním instance, které iniciují změnu velikosti virtuálního clusteru.<br/>**Příklad:** Pokud ve stejné podsíti v rámci stejného virtuálního clusteru existuje více požadavků na vytvoření a/nebo škálování a jedna z nich zahájí změnu velikosti virtuálního clusteru, všechny požadavky byly odeslány 5 + minut po dokončení změny velikosti virtuálního clusteru, protože tyto požadavky budou vyžadovat, aby se změna změnila před obnovením.
-
-- **Operace vytvoření nebo škálování odeslané v okně s pěti minutami** se dávkují a spustí paralelně.<br/>**Příklad:** Pro všechny operace odeslané v intervalu 5 minut se provede jenom jedna změna velikosti virtuálního clusteru (měří se od okamžiku provedení první žádosti o operaci). Pokud se po odeslání prvního požadavku pošle více než 5 minut, bude se čekat na dokončení změny ve virtuálním clusteru, než se spustí spuštění.
-
-> [!IMPORTANT]
-> Operace správy, které jsou zablokovány kvůli jiné probíhající operaci, budou automaticky obnoveny, jakmile budou splněny podmínky pro pokračování. Není nutná žádná akce uživatele, aby bylo možné obnovit dočasně pozastavené operace správy.
-
-### <a name="canceling-management-operations"></a>Rušení operací správy
-
-Následující tabulka shrnuje možnosti zrušení konkrétních operací správy a typických celkových dob trvání:
-
-Kategorie  |Operace  |Zrušitelný  |Odhadovaná doba trvání zrušení  |
-|---------|---------|---------|---------|
-|Nasazení |Vytvoření instance |No |  |
-|Aktualizace |Horizontální navýšení kapacity úložiště instance (Pro obecné účely) |No |  |
-|Aktualizace |Horizontální navýšení kapacity úložiště instance (Pro důležité obchodní informace) |Yes |90% dokončených operací za 5 minut. |
-|Aktualizace |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro obecné účely) |Yes |90% dokončených operací za 5 minut. |
-|Aktualizace |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro důležité obchodní informace) |Yes |90% dokončených operací za 5 minut. |
-|Aktualizace |Instance instance služby instance (Pro obecné účely až Pro důležité obchodní informace a naopak) |Yes |90% dokončených operací za 5 minut. |
-|Odstranit |Odstranění instance |No |  |
-|Odstranit |Odstranění virtuálního clusteru (jako operace iniciované uživatelem) |No |  |
-
-Chcete-li zrušit operaci správy, přejděte do okna Přehled a klikněte na oznamovací políčko probíhající operace. Na pravé straně se zobrazí obrazovka s probíhající operací a bude k dispozici tlačítko pro zrušení operace. Po prvním kliknutí se zobrazí výzva, abyste znovu klikněte na tlačítko a potvrďte, že chcete operaci zrušit.
-
-[![Zrušit operaci](./media/sql-managed-instance-paas-overview/canceling-operation.png)](./media/sql-managed-instance-paas-overview/canceling-operation.png#lightbox)
-
-Po odeslání a zpracování žádosti o zrušení se zobrazí oznámení, že odeslání zrušení bylo úspěšné.
-
-V případě úspěchu se operace správy během několika minut zruší a výsledkem je selhání.
-
-![Výsledek operace zrušení](./media/sql-managed-instance-paas-overview/canceling-operation-result.png)
-
-Pokud žádost o zrušení selže nebo pokud není aktivní tlačítko Storno, znamená to, že operace správy přešla do stavu, který není možné zrušit a že se dokončí během několika minut. Operace správy bude pokračovat v provádění, dokud nebude dokončena.
-
-> [!IMPORTANT]
-> Operace zrušení se momentálně podporují jenom na portálu.
+Spravovaná instance Azure SQL poskytuje operace správy, které můžete použít k automatickému nasazení nových spravovaných instancí, aktualizaci vlastností instance a odstranění instancí, pokud už nepotřebujete. Podrobné vysvětlení operací správy najdete na stránce s [přehledem operací správy spravované instance](management-operations-overview.md) .
 
 ## <a name="advanced-security-and-compliance"></a>Pokročilé zabezpečení a dodržování předpisů
 
 Služba SQL Managed instance přináší pokročilé funkce zabezpečení poskytované platformou Azure a databázovým strojem SQL Server.
 
-### <a name="security-isolation"></a>Izolace zabezpečení
+### <a name="security-isolation"></a>Bezpečnostní izolace
 
 Spravovaná instance SQL poskytuje další izolaci zabezpečení od ostatních tenantů na platformě Azure. Izolace zabezpečení zahrnuje:
 
@@ -259,7 +161,7 @@ Zavádí se nová syntaxe pro vytváření objektů zabezpečení serveru Azure 
 
 Služba SQL Managed instance umožňuje centrálně spravovat identity uživatelů databáze a dalších služeb Microsoftu pomocí [Azure Active Directory Integration](../database/authentication-aad-overview.md). Tato možnost zjednodušuje správu oprávnění a zvyšuje zabezpečení. Azure Active Directory podporuje službu [Multi-Factor Authentication](../database/authentication-mfa-ssms-configure.md) pro zvýšení zabezpečení dat a aplikací při podpoře jednotného přihlašování.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Ověřování
 
 Ověřování spravované instance SQL odkazuje na to, jak uživatelé při připojování k databázi prokáže jejich identitu. Spravovaná instance SQL podporuje dva typy ověřování:  
 

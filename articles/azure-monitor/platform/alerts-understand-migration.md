@@ -6,11 +6,12 @@ ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: d31c856e17348c23ad61130869af6ae440d3050d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9696167d9addc3029a53f25e289d17bd3add263
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114312"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073615"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Princip fungování nástroje pro migraci
 
@@ -63,7 +64,7 @@ Všechny klasické výstrahy na účtech úložiště se dají migrovat s výjim
 - SASThrottlingError
 - ThrottlingError
 
-Klasická pravidla upozornění na metriky v procentech se musí migrovat na základě [mapování mezi starými a novými metrikami úložiště](https://docs.microsoft.com/azure/storage/common/storage-metrics-migration#metrics-mapping-between-old-metrics-and-new-metrics). Prahové hodnoty bude nutné upravit odpovídajícím způsobem, protože nová dostupná metrika je absolutní.
+Klasická pravidla upozornění na metriky v procentech se musí migrovat na základě [mapování mezi starými a novými metrikami úložiště](../../storage/common/storage-metrics-migration.md#metrics-mapping-between-old-metrics-and-new-metrics). Prahové hodnoty bude nutné upravit odpovídajícím způsobem, protože nová dostupná metrika je absolutní.
 
 Klasická pravidla upozornění na AnonymousThrottlingError, SASThrottlingError a ThrottlingError musí být rozdělená na dvě nové výstrahy, protože neexistuje žádná kombinovaná metrika, která by poskytovala stejné funkce. Prahové hodnoty bude nutné upravit odpovídajícím způsobem.
 
@@ -72,7 +73,7 @@ Klasická pravidla upozornění na AnonymousThrottlingError, SASThrottlingError 
 U všech klasických upozornění na Cosmos DB metriky se dá migrovat s výjimkou upozornění na tyto metriky:
 
 - Průměrný počet požadavků za sekundu
-- Úrovně konzistence
+- Úroveň konzistence
 - 2xx http
 - 3xx http
 - HTTP 400
@@ -160,7 +161,7 @@ Pro služby účtu úložiště, jako je například blob, Table, File a Queue, 
 | SASSuccess | Metrika transakcí s dimenzemi "ResponseType" = "úspěch" a "ověřování" = "SAS" | |
 | ServerOtherError | Metrika transakcí s dimenzemi "ResponseType" = "ServerOtherError" | |
 | ServerTimeOutError | Metrika transakcí s dimenzemi "ResponseType" = "ServerTimeOutError"  | |
-| Úspěch | Metrika transakcí s dimenzemi "ResponseType" = "úspěch" | |
+| Success | Metrika transakcí s dimenzemi "ResponseType" = "úspěch" | |
 | TotalBillableRequests| Transakce | |
 | TotalEgress | Výchozí přenos dat | |
 | TotalIngress | Příchozí přenos dat | |

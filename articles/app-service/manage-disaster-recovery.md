@@ -4,12 +4,12 @@ description: Přečtěte si, jak Azure App Service pomáhá udržovat možnosti 
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 8c57cf5054bea898370cdccc7bea4243877d27b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1388dc11254324f74efcbaa55c97cac2ccd0c026
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84947035"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073741"
 ---
 # <a name="move-an-app-service-app-to-another-region"></a>Přesunutí aplikace App Service do jiné oblasti
 
@@ -17,7 +17,7 @@ Tento článek popisuje, jak přenést prostředky App Service zpátky do online
 
 Prostředky App Service jsou specifické pro oblast a nelze je přesouvat mezi oblastmi. Aplikaci musíte obnovit do nové aplikace v jiné oblasti a pak vytvořit konfigurace zrcadlení nebo prostředky pro novou aplikaci.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Žádné [Obnovení ze snímku](app-service-web-restore-snapshots.md) obvykle vyžaduje úroveň **Premium** , ale v režimu zotavení po havárii je automaticky povolen pro vaši ovlivněnou aplikaci, a to bez ohledu na to, ve které vrstvě se ovlivněná aplikace nachází.
 
@@ -43,17 +43,17 @@ Některé prostředky, jako jsou importované certifikáty nebo hybridní připo
 
 1. V [Azure Portal](https://portal.azure.com)přejděte na stránku správy ovlivněné aplikace. V neúspěšné oblasti Azure se v ovlivněné aplikaci zobrazuje text upozornění. Klikněte na text upozornění.
 
-    ![](media/manage-disaster-recovery/restore-start.png)
+    ![Snímek obrazovky ovlivněné stránky aplikace Zobrazí se upozornění, které popisuje situaci a poskytuje odkaz pro obnovení aplikace.](media/manage-disaster-recovery/restore-start.png)
 
 1. Na stránce **obnovit zálohu** konfigurujte operaci obnovení podle následující tabulky. Po dokončení klikněte na tlačítko **OK**.
 
-   | Nastavení | Hodnota | Description |
+   | Nastavení | Hodnota | Popis |
    |-|-|-|
    | **Snímek (Preview)** | Vyberte snímek. | K dispozici jsou dva nejnovější snímky. |
    | **Cíl obnovení** | **Existující aplikace** | Klikněte na poznámku níže. Pokud **chcete změnit cílovou aplikaci obnovení** a vybrat cílovou aplikaci, klikněte sem. V případě havárie můžete obnovit jenom snímek do aplikace v jiné oblasti Azure. |
    | **Obnovit konfiguraci lokality** | **Ano** | |
 
-    ![](media/manage-disaster-recovery/restore-configure.png)
+    ![Snímek obrazovky se stránkou obnovit zálohu Konkrétní snímek, možnosti uvedené v předchozí tabulce a tlačítko OK jsou zvýrazněny.](media/manage-disaster-recovery/restore-configure.png)
 
 3. Nakonfigurujte [všechno ostatní](#prepare) v cílové aplikaci tak, aby bylo možné zrcadlit ovlivněnou aplikaci a ověřit konfiguraci.
 
@@ -65,7 +65,7 @@ Pokud chcete jenom obnovit soubory z ovlivněné aplikace bez obnovení, použij
 
 1. V [Azure Portal](https://portal.azure.com)přejděte na stránku správy ovlivněné aplikace a klikněte na **získat profil publikování**.
 
-    ![](media/manage-disaster-recovery/get-publish-profile.png)
+    ![Snímek obrazovky ovlivněné stránky aplikace Upozornění je zobrazeno, ale není zvýrazněno. Místo toho se zvýrazní položka profilu získat publikování.](media/manage-disaster-recovery/get-publish-profile.png)
 
 1. Otevřete stažený soubor a vyhledejte profil publikování, který obsahuje `ReadOnly - FTP` název. Toto je profil zotavení po havárii. Příklad:
 
@@ -84,7 +84,7 @@ Pokud chcete jenom obnovit soubory z ovlivněné aplikace bez obnovení, použij
 
 1. Po připojení Stáhněte celou složku */site/wwwroot* . Následující snímek obrazovky ukazuje, jak si můžete stáhnout v [FileZilly](https://filezilla-project.org/).
 
-    ![](media/manage-disaster-recovery/download-content.png)
+    ![Snímek obrazovky s hierarchií souborů FileZilly Je zvýrazněna složka wwwroot a její místní nabídka je viditelná. V této nabídce je stažení zvýrazněno.](media/manage-disaster-recovery/download-content.png)
 
 ## <a name="next-steps"></a>Další kroky
 [Obnovení aplikace v Azure ze snímku](app-service-web-restore-snapshots.md)

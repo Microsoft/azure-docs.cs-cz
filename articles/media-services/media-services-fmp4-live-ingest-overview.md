@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 3ff356ef67630429b72208107541b1696e4eceac
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9d0bfdf4719b4c3a92a0632a1edda63324d700e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958561"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072034"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure Media Services fragmentované specifikace ingestování MP4 v reálném čase 
 
@@ -48,7 +48,7 @@ Následující seznam popisuje speciální definice formátu, které se vztahuj�
 1. Oddíl 3.3.2 v [1] definuje volitelné pole s názvem **StreamManifestBox** pro živou příjem dat. Vzhledem k logice směrování Azure Load Balancer je použití tohoto pole zastaralé. Pole by nemělo být přítomno při ingestování do Media Services. Pokud je toto pole k dispozici, Media Services ho v tichém režimu ignoruje.
 1. **TrackFragmentExtendedHeaderBox** pole definované v 3.2.3.2 v [1] musí být k dispozici pro každý fragment.
 1. K vygenerování segmentů médií, které mají stejné adresy URL v několika datových centrech, by se měla použít verze 2 **TrackFragmentExtendedHeaderBox** box. Pole index fragmentu je nutné pro převzetí služeb při selhání mezi datovými dataproudy pomocí indexu, jako je například Apple HLS a MPEG-SPOJOVNÍK založený na indexu. Pokud chcete povolit převzetí služeb při selhání napříč datovými centry, musí být fragmentový index synchronizovaný napříč několika kodéry a pro každý následný fragment média se zvýší o 1, a to i v případě, že dojde k restartování nebo selhání.
-1. Oddíl 3.3.6 v [1] definuje pole s názvem **MovieFragmentRandomAccessBox** (**mfra**), které se dá odeslat na konci živého příjmu za účelem označení konce datového proudu (EOS) kanálu. Vzhledem k logice ingestování Media Services, použití EOS je zastaralé a **mfra** box pro živou příjem dat by se neměl odesílat. V případě odeslání Media Services v tichém režimu ignoruje. Pro obnovení stavu bodu ingest doporučujeme použít [resetování kanálu](https://docs.microsoft.com/rest/api/media/operations/channel#reset_channels). Pro ukončení prezentace a streamu doporučujeme také použít [program stop](https://msdn.microsoft.com/library/azure/dn783463.aspx#stop_programs) .
+1. Oddíl 3.3.6 v [1] definuje pole s názvem **MovieFragmentRandomAccessBox** (**mfra**), které se dá odeslat na konci živého příjmu za účelem označení konce datového proudu (EOS) kanálu. Vzhledem k logice ingestování Media Services, použití EOS je zastaralé a **mfra** box pro živou příjem dat by se neměl odesílat. V případě odeslání Media Services v tichém režimu ignoruje. Pro obnovení stavu bodu ingest doporučujeme použít [resetování kanálu](/rest/api/media/operations/channel#reset_channels). Pro ukončení prezentace a streamu doporučujeme také použít [program stop](/rest/api/media/operations/program#stop_programs) .
 1. Doba trvání fragmentu MP4 by měla být konstantní, aby se snížila velikost manifestů klienta. Konstantní doba trvání fragmentu MP4 také vylepšuje heuristické stahování klientů pomocí značek opakování. Doba trvání může kolísat pro kompenzaci sazeb snímků, které nejsou celé číslo.
 1. Doba trvání fragmentu MP4 by měla být přibližně 2 až 6 sekund.
 1. Časová razítka a indexy pro fragmenty MP4 (**TrackFragmentExtendedHeaderBox** `fragment_ absolute_ time` a `fragment_index` ) by měly dorazit ve vzestupném pořadí. I když Media Services je odolný vůči duplicitním fragmentům, má omezená schopnost změnit pořadí fragmentů podle časové osy médií.
@@ -70,12 +70,12 @@ Zde jsou uvedené podrobné požadavky:
 1. Pokud se požadavek HTTP POST ukončí nebo vyprší s chybou TCP před koncem datového proudu, kodér musí vystavit novou žádost POST pomocí nového připojení a postupovat podle předchozích požadavků. Kromě toho kodér musí znovu odeslat předchozí dva fragmenty MP4 pro každou stopu v datovém proudu a pokračovat bez zavedení nekontinuity na časové ose média. Opakované odeslání posledních dvou fragmentů MP4 pro každou stopu zajistí, že nedojde ke ztrátě dat. Jinými slovy, pokud datový proud obsahuje zvuk i video stop a aktuální požadavek POST se nezdaří, kodér se musí znovu připojit a znovu pošle poslední dva fragmenty zvukové stopy, které byly dříve úspěšně odeslány, a poslední dva fragmenty pro stopu videa, které byly dříve úspěšně odeslány, aby se zajistilo, že nedojde ke ztrátě dat. Kodér musí udržovat "dopředné" fragmenty média, které se znovu odesílají při opětovném připojení.
 
 ## <a name="5-timescale"></a>5. Časová osa
-[[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) popisuje použití časové osy pro **SmoothStreamingMedia** (oddíl 2.2.2.1), **StreamElement** (oddíl 2.2.2.3), **StreamFragmentElement** (oddíl 2.2.2.6) a **LiveSMIL** (oddíl 2.2.7.3.1). Pokud hodnota časové osy není k dispozici, použije se výchozí hodnota 10 000 000 (10 MHz). I když specifikace formátu Smooth Streaming neblokuje použití jiných hodnot časové osy, většina implementací kodéru používá tuto výchozí hodnotu (10 MHz) pro generování Smooth Streaming ingestování dat. Vzhledem k funkci [dynamického balení médií Azure](media-services-dynamic-packaging-overview.md) doporučujeme pro streamování videa a 44,1 kHz nebo pro zvukové streamy použít časovou osu 90 – khz nebo 48,1 kHz. Pokud se pro různé datové proudy používají odlišné hodnoty časového měřítka, je nutné odeslat časovou osu na úrovni datového proudu. Další informace najdete v tématu [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx).     
+[[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) popisuje použití časové osy pro **SmoothStreamingMedia** (oddíl 2.2.2.1), **StreamElement** (oddíl 2.2.2.3), **StreamFragmentElement** (oddíl 2.2.2.6) a **LiveSMIL** (oddíl 2.2.7.3.1). Pokud hodnota časové osy není k dispozici, použije se výchozí hodnota 10 000 000 (10 MHz). I když specifikace formátu Smooth Streaming neblokuje použití jiných hodnot časové osy, většina implementací kodéru používá tuto výchozí hodnotu (10 MHz) pro generování Smooth Streaming ingestování dat. Vzhledem k funkci [dynamického balení médií Azure](./previous/media-services-dynamic-packaging-overview.md) doporučujeme pro streamování videa a 44,1 kHz nebo pro zvukové streamy použít časovou osu 90 – khz nebo 48,1 kHz. Pokud se pro různé datové proudy používají odlišné hodnoty časového měřítka, je nutné odeslat časovou osu na úrovni datového proudu. Další informace najdete v tématu [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx).     
 
 ## <a name="6-definition-of-stream"></a>6. definice "Stream"
 Stream je základní Jednotková operace v reálném ingestování pro vytváření živých prezentací, zpracování převzetí služeb při selhání streamování a scénářů redundance. Stream je definovaný jako jeden jedinečný, fragmentovaný Bitstream MP4, který může obsahovat jednu stopu nebo několik stop. Celá živá prezentace může obsahovat jeden nebo více datových proudů v závislosti na konfiguraci živých kodérů. Následující příklady ilustrují různé možnosti použití datových proudů k vytvoření úplné živé prezentace.
 
-**Příklad:** 
+**Případě** 
 
 Zákazník chce vytvořit prezentaci živého streamování, která obsahuje následující zvukové a video přenosové rychlosti:
 
@@ -98,7 +98,7 @@ V této možnosti se zákazník rozhodne rozdělit zvukovou stopu pomocí videa 
 
 ![Streamy – zvukové a video stopy][image4]
 
-### <a name="summary"></a>Souhrn
+### <a name="summary"></a>Shrnutí
 Nejedná se o vyčerpávající seznam všech možných možností ingestování v tomto příkladu. Vzhledem k tomu, že živé ingestování podporuje jakékoliv seskupení skladeb do datových proudů. Zákazníci a technici v kodéru si můžou zvolit vlastní implementace založené na složitosti, kapacitě kodéru a požadavcích na redundanci a převzetí služeb při selhání. Ve většině případů je ale k dispozici pouze jedna zvuková stopa pro celou živou prezentaci. Proto je důležité zajistit healthiness datového proudu ingestování, který obsahuje zvukovou stopu. Toto posouzení často vede k tomu, že se zvukové stopy ukládají do vlastního streamu (jak je uvedeno v možnosti 2), nebo je nanavazuje na video s nejnižší přenosovou rychlostí (jako v možnosti 3). Pro zajištění lepší redundance a odolnosti proti chybám odesílají stejnou zvukovou stopu ve dvou různých datových proudech (možnost 2 s redundantními zvukovými stopami) nebo naváže zvukovou stopu s nejméně dvěma videosoubory s minimální přenosovou rychlostí (možnost 3 se zvukovým úložištěm alespoň dvou streamů videa Media Services).
 
 ## <a name="7-service-failover"></a>7. převzetí služeb při selhání

@@ -9,11 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a2fe7daf1476f19f6a6eea83174342fa1273fe14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 487308aca3231650aee3fac5ae127006649e19b9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81867969"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073912"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Rychlý Start – konfigurace prostředí privátního cloudu
 
@@ -113,7 +114,7 @@ Klient VPN je potřebný pro připojení k CloudSimple z počítače.  Stáhnět
 1. Spusťte portál CloudSimple a vyberte **síť**.
 2. Vyberte **VPN Gateway**.
 3. V seznamu bran sítě VPN klikněte na bránu VPN typu Point-to-site.
-4. Vyberte možnost **Uživatelé**.
+4. Vyberte **Uživatelé**.
 5. Klikněte na **Stáhnout konfiguraci sítě VPN**.
 
     ![Stažení konfigurace zařízení VPN](media/download-p2s-vpn-configuration.png)
@@ -147,7 +148,7 @@ Vytvoří se síť VLAN nebo podsíť.  Teď můžete pomocí tohoto ID sítě V
 
 ## <a name="connect-your-environment-to-an-azure-virtual-network"></a>Připojení prostředí k virtuální síti Azure
 
-CloudSimple poskytuje okruh ExpressRoute pro váš privátní cloud. Virtuální síť v Azure můžete připojit k okruhu ExpressRoute. Úplné informace o nastavení připojení najdete v postupu v části [připojení k Azure Virtual Network pomocí ExpressRoute](https://docs.microsoft.com/azure/vmware-cloudsimple/cloudsimple-azure-network-connection).
+CloudSimple poskytuje okruh ExpressRoute pro váš privátní cloud. Virtuální síť v Azure můžete připojit k okruhu ExpressRoute. Úplné informace o nastavení připojení najdete v postupu v části [připojení k Azure Virtual Network pomocí ExpressRoute](./cloudsimple-azure-network-connection.md).
 
 ## <a name="sign-in-to-vcenter"></a>Přihlásit se k vCenter
 

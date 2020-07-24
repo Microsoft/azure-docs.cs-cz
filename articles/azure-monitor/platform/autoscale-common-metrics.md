@@ -4,11 +4,12 @@ description: Zjistěte, které metriky se běžně používají k automatickému
 ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
-ms.openlocfilehash: 2c335168683212337876c963a7cfdb441d0ac69a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 57bffede3b6c6c137da2feea32ad467a13f71a37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76845563"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073525"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor automatické škálování běžných metrik
 
@@ -16,7 +17,7 @@ ms.locfileid: "76845563"
 
 Azure Monitor automatické škálování umožňuje škálovat počet spuštěných instancí nahoru nebo dolů na základě dat telemetrie (metriky). Tento dokument popisuje běžné metriky, které byste mohli chtít použít. V Azure Portal můžete zvolit metriku prostředku, podle které se má škálovat. Můžete ale také zvolit libovolnou metriku z jiného prostředku a škálovat ji.
 
-Automatické škálování Azure Monitor platí jenom pro služby [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)a [API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts). Jiné služby Azure používají jiné metody škálování.
+Automatické škálování Azure Monitor platí jenom pro služby [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)a [API Management](../../api-management/api-management-key-concepts.md). Jiné služby Azure používají jiné metody škálování.
 
 ## <a name="compute-metrics-for-resource-manager-based-vms"></a>Výpočetní metriky pro virtuální počítače založené na Správce prostředků
 Ve výchozím nastavení Správce prostředků Virtual Machines a Virtual Machine Scale Sets emitují metriky Basic (na úrovni hostitele). Kromě toho, když konfigurujete shromažďování dat diagnostiky pro virtuální počítač Azure a VMSS, rozhraní pro diagnostiku Azure také generuje čítače výkonu host-OS (obvykle označované jako metriky host-OS).  Všechny tyto metriky použijete v pravidlech automatického škálování.
@@ -51,10 +52,10 @@ Můžete vytvořit výstrahu pro následující metriky:
 | \Processor(_Total)\% Processor Time |Procento |
 | \Processor (_Total) \% privilegovaný čas |Procento |
 | Čas uživatele \Processor (_Total) \% |Procento |
-| \Processor – informace o frekvenci \Processor (_Total) |Počet |
-| \System\Processes |Počet |
-| \Process (_Total) \Thread počet |Počet |
-| \Process (_Total) \Handle počet |Počet |
+| \Processor – informace o frekvenci \Processor (_Total) |Count |
+| \System\Processes |Count |
+| \Process (_Total) \Thread počet |Count |
+| \Process (_Total) \Handle počet |Count |
 | \Memory \% potvrzené používané bajty |Procento |
 | \Memory\Available Bytes |Bajty |
 | \Memory\Committed bajty |Bajty |
@@ -70,11 +71,11 @@ Můžete vytvořit výstrahu pro následující metriky:
 | \PhysicalDisk (_Total) \ bajty/s |BytesPerSecond |
 | \PhysicalDisk (_Total) \ přečtené bajty/s |BytesPerSecond |
 | \PhysicalDisk (_Total) \ zapsané bajty/s |BytesPerSecond |
-| \PhysicalDisk (_Total) \ prům délka fronty disku |Počet |
-| \PhysicalDisk (_Total) \ prům délka fronty čtení disku |Počet |
-| \PhysicalDisk (_Total) \ prům délka fronty zápisu na disk |Počet |
+| \PhysicalDisk (_Total) \ prům délka fronty disku |Count |
+| \PhysicalDisk (_Total) \ prům délka fronty čtení disku |Count |
+| \PhysicalDisk (_Total) \ prům délka fronty zápisu na disk |Count |
 | \ Logický disk (_Total) \% volného místa |Procento |
-| \ Logický disk (_Total) \ volné megabajtů |Počet |
+| \ Logický disk (_Total) \ volné megabajtů |Count |
 
 ### <a name="guest-os-metrics-linux-vms"></a>Virtuální počítače s metrikami hostovaného operačního systému Linux
 Když vytvoříte virtuální počítač v Azure, diagnostika je ve výchozím nastavení povolená pomocí diagnostického rozšíření.
@@ -118,15 +119,15 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \PhysicalDisk\AverageReadTime |Sekundy |
 | \PhysicalDisk\AverageWriteTime |Sekundy |
 | \PhysicalDisk\AverageTransferTime |Sekundy |
-| \PhysicalDisk\AverageDiskQueueLength |Počet |
+| \PhysicalDisk\AverageDiskQueueLength |Count |
 | \NetworkInterface\BytesTransmitted |Bajty |
 | \NetworkInterface\BytesReceived |Bajty |
-| \NetworkInterface\PacketsTransmitted |Počet |
-| \NetworkInterface\PacketsReceived |Počet |
+| \NetworkInterface\PacketsTransmitted |Count |
+| \NetworkInterface\PacketsReceived |Count |
 | \NetworkInterface\BytesTotal |Bajty |
-| \NetworkInterface\TotalRxErrors |Počet |
-| \NetworkInterface\TotalTxErrors |Počet |
-| \NetworkInterface\TotalCollisions |Počet |
+| \NetworkInterface\TotalRxErrors |Count |
+| \NetworkInterface\TotalTxErrors |Count |
+| \NetworkInterface\TotalCollisions |Count |
 
 ## <a name="commonly-used-app-service-server-farm-metrics"></a>Běžně používaná metrika App Service (serverová farma)
 Automatické škálování můžete provádět i na základě běžných metrik webového serveru, jako je délka fronty http. Jeho název metriky je **HttpQueueLength**.  V následující části jsou uvedeny dostupné metriky serverové farmy (App Service).
@@ -144,8 +145,8 @@ Pomocí těchto metrik můžete výstrahy zapnout nebo škálovat.
 | --- | --- |
 | CpuPercentage |Procento |
 | MemoryPercentage |Procento |
-| DiskQueueLength |Počet |
-| HttpQueueLength |Počet |
+| DiskQueueLength |Count |
+| HttpQueueLength |Count |
 | BytesReceived |Bajty |
 | BytesSent |Bajty |
 
@@ -185,4 +186,3 @@ Pro službu VM Scale Sets můžete aktualizovat nastavení automatického škál
 > Pro Service Bus koncept skupiny prostředků neexistuje, ale Azure Resource Manager vytvoří výchozí skupinu prostředků pro oblast. Skupina prostředků je obvykle ve formátu výchozí-ServiceBus-[region]. Například "default-ServiceBus-EastUS", "default-ServiceBus-WestUS", "default-ServiceBus-AustraliaEast" atd.
 >
 >
-

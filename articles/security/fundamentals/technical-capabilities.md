@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2020
 ms.author: terrylan
-ms.openlocfilehash: 29e6aa96ea1c435e4d734e80824e1cedcfe9a761
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d861388c8c7a5ff64a17607736d4c8a292343dec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519316"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071587"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technické možnosti zabezpečení Azure
 Tento článek poskytuje Úvod do služby zabezpečení v Azure, které vám pomůžou chránit vaše data, prostředky a aplikace v cloudu a splňovat požadavky na zabezpečení vaší firmy.
@@ -152,7 +152,7 @@ Azure AD Privileged Identity Management vám umožní:
 
 Předplatná také mají přidružení s adresářem. Adresář definuje skupinu uživatelů. Můžou to být uživatelé z pracovní nebo školní služby, která adresář vytvořila, nebo můžou být externími uživateli (tj. účty Microsoft). K předplatným jsou přístupná podmnožina těch uživatelů adresáře, kteří byli přiřazeni jako správce služeb nebo spolusprávce (CA). Jedinou výjimkou je to, že účty Microsoft (dříve Windows Live ID) se dají přiřadit jako SA nebo CA, aniž by se musely v adresáři vyskytovat.
 
-Společnosti zaměřené na zabezpečení by se měly soustředit na to, aby zaměstnanci měli přesně potřebná oprávnění. Příliš mnoho oprávnění může zpřístupnit účet pro útočníky. Příliš málo oprávnění znamená, že zaměstnanci nemůžou svou práci efektivně dělat. Správa [na Access Control základě rolí v Azure (RBAC)](../../role-based-access-control/overview.md) pomáhá řešit tento problém tím, že nabízí jemně odstupňovanou správu přístupu pro Azure.
+Společnosti zaměřené na zabezpečení by se měly soustředit na to, aby zaměstnanci měli přesně potřebná oprávnění. Příliš mnoho oprávnění může zpřístupnit účet pro útočníky. Příliš málo oprávnění znamená, že zaměstnanci nemůžou svou práci efektivně dělat. [Řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/overview.md) pomáhá řešit tento problém tím, že nabízí vysoce odstupňovanou správu přístupu pro Azure.
 
 ![Zabezpečený přístup k prostředkům](./media/technical-capabilities/azure-security-technical-capabilities-fig4.png)
 

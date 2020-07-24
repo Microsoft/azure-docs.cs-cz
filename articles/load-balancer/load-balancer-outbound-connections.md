@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/24/2020
 ms.author: allensu
-ms.openlocfilehash: b22ce64e7058f093a102aebec8b00842c8a41cb5
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: a2292dc789938b8bde709728f5bbffe661529cc2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849400"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072631"
 ---
 # <a name="outbound-connections-in-azure"></a>Odchozí připojení v Azure
 
@@ -29,7 +29,7 @@ Azure Load Balancer poskytuje odchozí připojení prostřednictvím různých m
 
 ## <a name="terminology"></a>Terminologie
 
-| Pojem | Příslušný protokol (y) | Podrobnosti|
+| Termín | Příslušný protokol (y) | Podrobnosti|
 | ---------|---------| -------|
 | Překlad zdrojové síťové adresy (SNAT) | TCP, UDP | Nasazení v Azure může komunikovat s koncovými body mimo Azure ve veřejném adresním prostoru IP adres. Když instance inicializuje odchozí tok do cílového umístění ve veřejném adresním prostoru IP adres, Azure dynamicky mapuje privátní IP adresu na veřejnou IP adresu. Po vytvoření tohoto mapování se může vrátit přenos pro tento odchozí výstupní tok a získat tak privátní IP adresu, ve které tok vznikl. Azure používá k provedení této funkce **Překlad zdrojového síťového adres (SNAT)** .|
 | Maskování portů SNAT (PAT)| TCP, UDP |  Při maskování více privátních IP adres za jednou veřejnou IP adresou využívá Azure k maskování/skrytí privátních IP adres **port (Pat) adresování portů** . Dočasné porty se používají pro PAT a jsou [vyčerpány](#preallocatedports) na základě velikosti fondu. Pokud je k instancím virtuálních počítačů, které nemají vyhrazené veřejné IP adresy, přidružen prostředek veřejné Load Balancer, je nutné přepsán každý zdroj odchozího připojení. Zdroj se přepíše z privátního adresního prostoru privátních IP adres virtuální sítě na front-endové veřejné IP adresy nástroje pro vyrovnávání zatížení. Ve veřejném adresním prostoru IP adres musí být pět záznamů toku (zdrojová IP adresa, zdrojový port, transportní protokol IP, cílová IP adresa, cílový port) jedinečný. Maskování portů SNAT se dá použít buď s protokolem IP TCP nebo UDP. Dočasné porty (porty SNAT) se používají k dosažení tohoto toho po přepsání privátní zdrojové IP adresy, protože více toků pochází z jedné veřejné IP adresy. Algoritmus SNAT maskování portů přiděluje porty SNAT odlišně pro UDP a TCP.|
@@ -64,13 +64,13 @@ Změna velikosti back-end fondu může ovlivnit některé z vašich navázaných
 
 ## <a name="outbound-connections-scenario-overview"></a><a name="scenarios"></a>Přehled scénáře odchozích připojení
 
-| Scénář | Metoda | Protokoly IP | Description |
+| Scénář | Metoda | Protokoly IP | Popis |
 |  --- | --- | --- | --- |
 |  1. virtuální počítač s veřejnou IP adresou (s Azure Load Balancer nebo bez něj | SNAT, maskování portů se nepoužívá. | TCP, UDP, ICMP, ESP | Azure používá veřejnou IP adresu přiřazenou ke konfiguraci protokolu IP síťové karty instance pro všechny odchozí toky. Instance má k dispozici všechny dočasné porty. Nezáleží na tom, jestli je virtuální počítač vyrovnaný k vyrovnávání zatížení. Tento scénář má přednost před ostatními. Veřejná IP adresa přiřazená k virtuálnímu počítači je vztah 1:1 (nikoli 1: mnoho) a implementovaný jako bezstavové 1:1 NAT. |
 | 2. veřejné Load Balancer přidružené k virtuálnímu počítači (žádná veřejná IP adresa na virtuálním počítači/instanci) | SNAT s maskou portů (PAT) pomocí Load Balancer front-endu | TCP, UDP | V tomto scénáři musí být prostředek Load Balancer nakonfigurovaný s pravidlem nástroje pro vyrovnávání zatížení, aby bylo možné vytvořit propojení mezi veřejnou IP frontou a back-end fondem. Pokud konfiguraci pravidla nedokončíte, bude chování popsané ve scénáři 3. Pro úspěšné provedení testu stavu není nutné, aby pravidlo mělo funkční naslouchací proces ve fondu back-endu. Když virtuální počítač vytvoří odchozí tok, Azure převede privátní zdrojovou IP adresu odchozího toku na veřejnou IP adresu veřejného Load Balancer front-SNAT. Dočasné porty veřejné IP adresy front-endu nástroje pro vyrovnávání zatížení se používají k odlišení jednotlivých toků, které pocházejí z virtuálního počítače. SNAT dynamicky používá [předpřidělené dočasné porty](#preallocatedports) při vytváření odchozích toků. V tomto kontextu se dočasné porty používané pro SNAT nazývají porty SNAT. Porty SNAT jsou předem přiděleny, jak je popsáno v [tabulce výchozí přidělené porty SNAT](#snatporttable). |
 | 3. VM (bez Load Balancer, žádná veřejná IP adresa) nebo virtuální počítač přidružený k základnímu internímu Load Balancer | SNAT s maskou portů (PAT) | TCP, UDP | Když virtuální počítač vytvoří odchozí tok, Azure převede IP adresu privátního zdroje odchozího toku do veřejné zdrojové IP adresy. Tato veřejná IP adresa se nedá **nakonfigurovat**, nedá se rezervovat a nepočítá se s limitem veřejných IP adres předplatného. Pokud znovu nasadíte virtuální počítač nebo skupinu dostupnosti nebo sadu škálování virtuálního počítače, tato veřejná IP adresa se uvolní a vyžádá se nová veřejná IP adresa. Nepoužívejte tento scénář pro seznam povolených IP adres. Místo toho použijte scénář 1 nebo 2, kde explicitně deklarujete odchozí chování. Porty SNAT jsou přednastavené tak, jak je popsáno v [tabulce výchozí přidělené porty SNAT](#snatporttable).
 
-## <a name="outbound-rules"></a><a name="outboundrules"></a>Odchozí pravidla
+## <a name="outbound-rules"></a><a name="outboundrules"></a>Pravidla odchozích přenosů
 
  Odchozí pravidla usnadňují konfiguraci odchozího překladu síťových adres pro veřejné [Standard Load Balancer](load-balancer-standard-overview.md).  Máte plnou deklarativní kontrolu nad odchozím připojením, abyste mohli škálovat a ladit tuto možnost podle vašich konkrétních potřeb. V této části se rozbalí scénář 2 (B), který je popsaný výše.
 

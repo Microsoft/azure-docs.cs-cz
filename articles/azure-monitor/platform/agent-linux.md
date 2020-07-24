@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 01/21/2020
-ms.openlocfilehash: 9807d6eeb07b953ab75b328ce64c5166ca52dd2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: accd7c3ad82853c1f2af0b632326b2798f85b36b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80637525"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073659"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>Připojení počítačů se systémem Linux k Azure Monitor
 
@@ -154,6 +155,18 @@ Pokud je v obou případech vyžadováno ověřování, je nutné zadat uživate
     ```
     sudo /opt/microsoft/omsagent/bin/service_control restart [<workspace id>]
     ``` 
+
+## <a name="supported-linux-hardening"></a>Podporované posílení zabezpečení pro Linux
+Agent OMS má podporu vlastního nastavení pro Linux. 
+
+V současné době jsou podporovány následující: 
+- Standardů
+
+Následující jsou plánovány, ale nejsou dosud podporovány:
+- CIS – SELINUX
+
+Jiné metody posílení zabezpečení a přizpůsobení nejsou pro agenta OMS podporovány ani plánovány.  
+
 
 ## <a name="upgrade-from-a-previous-release"></a>Upgrade z předchozí verze
 

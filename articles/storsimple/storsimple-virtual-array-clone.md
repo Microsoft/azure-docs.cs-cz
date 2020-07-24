@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: 1596503f5f0a333bf061015827596464aed7558e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd82f7dd821991bbcf57cc7d8105575e0baa4d12
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513632"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070703"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>Klonování ze zálohy vašeho virtuálního pole StorSimple
 
@@ -127,7 +127,7 @@ Každá sdílená složka má složku *.* backups obsahující nejnovější zá
    * **Naplánované zálohy** pojmenované jako &lt; název zařízení &gt; parametr DAILYSCHEDULE-RRRRMMDD-HHMMSS-UTC.
    * **Ruční zálohy** s názvem ad-hoc-RRRRMMDD-HHMMSS-UTC.
      
-     ![](./media/storsimple-virtual-array-clone/image14.png)
+     ![Snímek obrazovky s průzkumníkem souborů, kde se nachází složka. backups V této složce je vybrána složka ruční zálohy.](./media/storsimple-virtual-array-clone/image14.png)
 
 2. Identifikujte zálohu obsahující nejnovější verzi odstraněného souboru. I když název složky obsahuje časové razítko UTC v každém z předchozích případů, čas vytvoření složky je skutečný čas zařízení při spuštění zálohování. K vyhledání a identifikaci záloh použijte časové razítko složky.
 

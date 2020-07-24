@@ -7,17 +7,18 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: 12bc51e800ef5ccd4ad3c72d3860fb22bac5b749
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca8aa62c4119b9b0b7bbed53cf722c694696ef5b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77664911"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073564"
 ---
 # <a name="application-insights-log-based-metrics"></a>Application Insights metriky založené na protokolu
 
 Application Insights metriky založené na protokolu vám umožní analyzovat stav monitorovaných aplikací, vytvářet výkonné řídicí panely a konfigurovat výstrahy. Existují dva typy metrik:
 
-* [Metriky založené na protokolu](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) na pozadí jsou přeloženy do [dotazů Kusto](https://docs.microsoft.com/azure/kusto/query/) z uložených událostí.
+* [Metriky založené na protokolu](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) na pozadí jsou přeloženy do [dotazů Kusto](/azure/kusto/query/) z uložených událostí.
 * [Standardní metriky](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics) se ukládají jako předem agregované časové řady.
 
 Vzhledem k tomu, že *Standardní metriky* jsou během shromažďování předem shrnuty, mají lepší výkon v době dotazu. Díky tomu je lepší volbou pro řídicí panely a výstrahy v reálném čase. *Metriky založené na protokolech* mají více dimenzí, díky kterým jsou nadřazené volbou pro analýzu dat a pro diagnostiku ad-hoc. [Selektor oboru názvů](metrics-getting-started.md#create-your-first-metric-chart) použijte k přepínání mezi standardními metrikami založenými na protokolech v [Průzkumníkovi metrik](metrics-getting-started.md).
@@ -78,7 +79,7 @@ Metrika *testů dostupnosti* odráží počet webových testů, které jsou spou
 
 |Jednotka měření|Podporované agregace|Podporované dimenze|
 |---|---|---|---|---|---|
-|Počet|Počet|Umístění pro spuštění, název testu, výsledek testu|
+|Count|Count|Umístění pro spuštění, název testu, výsledek testu|
 
 ```Kusto
 availabilityResults
@@ -97,7 +98,7 @@ Metriky prohlížeče jsou shromažďovány sadou Application Insights JavaScrip
 
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|
 |---|---|---|
-|Milisekund|Average, min, Max|Žádná|
+|Milisekund|Average, min, Max|Žádné|
 
 ```Kusto
 browserTimings
@@ -113,7 +114,7 @@ browserTimings
 
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|
 |---|---|---|
-|Milisekund|Average, min, Max|Žádná|
+|Milisekund|Average, min, Max|Žádné|
 
 ```Kusto
 browserTimings
@@ -129,7 +130,7 @@ browserTimings
 
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|
 |---|---|---|
-|Milisekund|Average, min, Max|Žádná|
+|Milisekund|Average, min, Max|Žádné|
 
 ```Kusto
 browserTimings
@@ -145,7 +146,7 @@ browserTimings
 
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|
 |---|---|---|
-|Milisekund|Average, min, Max|Žádná|
+|Milisekund|Average, min, Max|Žádné|
 
 ```Kusto
 browserTimings
@@ -161,7 +162,7 @@ browserTimings
 
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|
 |---|---|---|
-|Milisekund|Average, min, Max|Žádná|
+|Milisekund|Average, min, Max|Žádné|
 
 ```Kusto
 browserTimings
@@ -183,7 +184,7 @@ Tato metrika odráží počet vyvolaných výjimek z kódu aplikace spuštěnéh
 
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|Poznámky|
 |---|---|---|---|
-|Počet|Počet|Žádná|Verze založená na protokolu používá agregaci **Sum** .|
+|Count|Count|Žádné|Verze založená na protokolu používá agregaci **Sum** .|
 
 ```Kusto
 exceptions
@@ -198,7 +199,7 @@ Počet neúspěšných volání závislostí
 
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|Poznámky|
 |---|---|---|---|
-|Počet|Počet|Žádná|Verze založená na protokolu používá agregaci **Sum** .|
+|Count|Count|Žádné|Verze založená na protokolu používá agregaci **Sum** .|
 
 ```Kusto
 dependencies
@@ -213,7 +214,7 @@ Pokaždé, když zaznamenáte výjimku pro Application Insights, dojde k volán�
 
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|Poznámky|
 |---|---|---|---|
-|Počet|Počet|Název cloudové role, instance cloudové role, typ zařízení|Verze založená na protokolu používá agregaci **Sum** .|
+|Count|Count|Název cloudové role, instance cloudové role, typ zařízení|Verze založená na protokolu používá agregaci **Sum** .|
 
 ```Kusto
 exceptions
@@ -227,7 +228,7 @@ Počet sledovaných požadavků serveru, které byly označeny jako *neúspěšn
 
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|Poznámky|
 |---|---|---|---|
-|Počet|Počet|Instance cloudové role, název cloudové role, skutečný nebo syntetický provoz, požadavky na výkon, kód odpovědi|Verze založená na protokolu používá agregaci **Sum** .|
+|Count|Count|Instance cloudové role, název cloudové role, skutečný nebo syntetický provoz, požadavky na výkon, kód odpovědi|Verze založená na protokolu používá agregaci **Sum** .|
 
 ```Kusto
 requests
@@ -242,7 +243,7 @@ Tato metrika znázorňuje počet výjimek serveru.
 
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|Poznámky|
 |---|---|---|---|
-|Počet|Počet|Název cloudové role, instance cloudové role|Verze založená na protokolu používá agregaci **Sum** .|
+|Count|Count|Název cloudové role, instance cloudové role|Verze založená na protokolu používá agregaci **Sum** .|
 
 ```Kusto
 exceptions

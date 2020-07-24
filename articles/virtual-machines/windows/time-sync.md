@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: cd9a196e5f957782de91cff69c01fbfa5716369a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1717ebd5709c05e33e658d3798494324a702b1d9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82100494"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074038"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Čas synchronizace pro virtuální počítače s Windows v Azure
 
@@ -24,7 +24,7 @@ Azure je teď zálohovaný infrastrukturou, na které běží Windows Server 201
 >[!NOTE]
 >Rychlý přehled služby Systémový čas najdete v tomto [videu s přehledem vysoké úrovně](https://aka.ms/WS2016TimeVideo).
 >
-> Další informace najdete v tématu [přesný čas pro Windows Server 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time). 
+> Další informace najdete v tématu [přesný čas pro Windows Server 2016](/windows-server/networking/windows-time-service/accurate-time). 
 
 ## <a name="overview"></a>Přehled
 
@@ -172,9 +172,7 @@ w32tm /dumpreg /subkey:Parameters | findstr /i "ntpserver"
 
 Níže jsou uvedeny odkazy na Další informace o čase synchronizace:
 
-- [Nástroje a nastavení služby Systémový čas](https://docs.microsoft.com/windows-server/networking/windows-time-service/Windows-Time-Service-Tools-and-Settings)
-- [Vylepšení Windows serveru 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/windows-server-2016-improvements)
-- [Přesný čas pro Windows Server 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
-- [Podpora hranice pro konfiguraci služby Systémový čas pro prostředí s vysokou přesností](https://docs.microsoft.com/windows-server/networking/windows-time-service/support-boundary)
-
-
+- [Nástroje a nastavení služby Systémový čas](/windows-server/networking/windows-time-service/windows-time-service-tools-and-settings)
+- [Vylepšení Windows serveru 2016](/windows-server/networking/windows-time-service/windows-server-2016-improvements)
+- [Přesný čas pro Windows Server 2016](/windows-server/networking/windows-time-service/accurate-time)
+- [Podpora hranice pro konfiguraci služby Systémový čas pro prostředí s vysokou přesností](/windows-server/networking/windows-time-service/support-boundary)

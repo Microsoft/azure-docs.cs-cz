@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: how-to
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: c41e14490842068895aea383d384007f308e9e1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49748b3d77d097e655ee6ec5777022c038841a6d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887675"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073131"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Správa vypršení platnosti služby Azure Blob Storage v Azure CDN
 > [!div class="op_single_selector"]
@@ -91,7 +91,7 @@ Upřednostňovanou metodou pro nastavení záhlaví objektu BLOB `Cache-Control`
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Azure PowerShell](/powershell/azure/overview) je jedním z nejrychlejších a nejúčinnějších způsobů správy služeb Azure. Pomocí `Get-AzStorageBlob` rutiny Získejte odkaz na objekt BLOB a pak nastavte `.ICloudBlob.Properties.CacheControl` vlastnost. 
+[Azure PowerShell](/powershell/azure/) je jedním z nejrychlejších a nejúčinnějších způsobů správy služeb Azure. Pomocí `Get-AzStorageBlob` rutiny Získejte odkaz na objekt BLOB a pak nastavte `.ICloudBlob.Properties.CacheControl` vlastnost. 
 
 Příklad:
 

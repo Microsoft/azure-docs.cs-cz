@@ -8,18 +8,22 @@ ms.custom: mvc, devcenter, tracking-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: 174c11ba65ccba6389bf3e62d233b1ee56943b97
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 9bb94ee63873dea321af252a4380a7aab10df6ff
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560939"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071471"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rychlý Start: použití Pythonu k připojení a dotazování dat v Azure Database for PostgreSQL-Single server
 
 V tomto rychlém startu pracujete s Azure Database for PostgreSQL s využitím Pythonu na macOS, Ubuntu Linux nebo Windows. V tomto rychlém startu se dozvíte, jak se připojit k databázi a použít příkazy SQL k dotazování, vkládání, aktualizaci a odstraňování dat. Článek předpokládá, že jste obeznámeni s Pythonem, ale novinkou pro práci s Azure Database for PostgreSQL.
 
-## <a name="prerequisites"></a>Požadavky
+> [!TIP]
+> Pokud chcete vytvořit aplikaci Django s PostgreSQL, pak ji vyřadíte [pomocí kurzu nasazení webové aplikace Django s](../app-service/containers/tutorial-python-postgresql-app.md) využitím PostgreSQL.
+
+
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
@@ -60,7 +64,7 @@ Pro každý příklad kódu v tomto článku:
 1. Chcete-li spustit soubor, přejděte do složky vašeho projektu v rozhraní příkazového řádku a zadejte `python` název následovaný názvem souboru, například `python postgres-insert.py` .
 
 ## <a name="create-a-table-and-insert-data"></a>Vytvoření tabulky a vložení dat
-Následující příklad kódu se připojuje k vaší Azure Database for PostgreSQL databázi pomocí funkce [psycopg2. Connect](http://initd.org/psycopg/docs/connection.html) a načítá data pomocí příkazu SQL **INSERT** . Funkce [Cursor. Execute](http://initd.org/psycopg/docs/cursor.html#execute) SPUSTÍ dotaz SQL na databázi. 
+Následující příklad kódu se připojuje k vaší Azure Database for PostgreSQL databázi pomocí funkce [psycopg2. Connect](http://initd.org/psycopg/docs/connection.html) a načítá data pomocí příkazu SQL **INSERT** . Funkce [cursor.exeroztomilá](http://initd.org/psycopg/docs/cursor.html#execute) provádí dotaz SQL na databázi. 
 
 ```Python
 import psycopg2
@@ -104,7 +108,7 @@ Po úspěšném spuštění kódu se vytvoří následující výstup:
 ![Výstup příkazového řádku](media/connect-python/2-example-python-output.png)
 
 ## <a name="read-data"></a>Čtení dat
-Následující příklad kódu se připojuje k vaší Azure Database for PostgreSQL databázi a používá [Cursor. Execute](http://initd.org/psycopg/docs/cursor.html#execute) pomocí příkazu SQL **Select** pro čtení dat. Tato funkce přijme dotaz a vrátí sadu výsledků pro iteraci pomocí [Cursor. fetchall ()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall). 
+Následující příklad kódu se připojuje k vaší Azure Database for PostgreSQL databázi a používá [cursor.exeroztomilá](http://initd.org/psycopg/docs/cursor.html#execute) s příkazem SQL **Select** ke čtení dat. Tato funkce přijme dotaz a vrátí sadu výsledků pro iteraci pomocí [Cursor. fetchall ()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall). 
 
 ```Python
 import psycopg2
@@ -138,7 +142,7 @@ conn.close()
 ```
 
 ## <a name="update-data"></a>Aktualizace dat
-Následující příklad kódu se připojí k vaší Azure Database for PostgreSQL databázi a pomocí příkazu [Cursor. Execute](http://initd.org/psycopg/docs/cursor.html#execute) s příkazem SQL **Update** aktualizuje data. 
+Následující příklad kódu se připojí k vaší Azure Database for PostgreSQL databázi a používá [cursor.exeroztomilá](http://initd.org/psycopg/docs/cursor.html#execute) s příkazem SQL **Update** k aktualizaci dat. 
 
 ```Python
 import psycopg2
@@ -168,7 +172,7 @@ conn.close()
 ```
 
 ## <a name="delete-data"></a>Odstranění dat
-Následující příklad kódu se připojí k vaší Azure Database for PostgreSQL databázi a pomocí příkazu [Cursor. Execute](http://initd.org/psycopg/docs/cursor.html#execute) s příkazem SQL **Delete** odstraní položku inventáře, kterou jste předtím vložili. 
+Následující příklad kódu se připojuje k vaší Azure Database for PostgreSQL databázi a používá [cursor.exeroztomilá](http://initd.org/psycopg/docs/cursor.html#execute) s příkazem SQL **Delete** k odstranění položky inventáře, kterou jste předtím vložili. 
 
 ```Python
 import psycopg2

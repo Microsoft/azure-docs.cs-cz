@@ -1,5 +1,5 @@
 ---
-title: Účty služby Azure Storage
+title: Účty úložiště Azure
 titleSuffix: Azure Media Services
 description: Naučte se vytvořit účet služby Azure Storage pro použití s Azure Media Services.
 services: media-services
@@ -12,11 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: juliako
-ms.openlocfilehash: 72aa0762d001c28b21d5e27ed8f6f9d099f62bfb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34b1061519f91c93be2f5eb43f813b83db8305f8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79499832"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072005"
 ---
 # <a name="azure-storage-accounts"></a>Účty úložiště Azure
 
@@ -31,7 +32,7 @@ Doporučujeme používat GPv2, abyste mohli využít výhod nejnovějších funk
 > [!NOTE]
 > Pro použití s Azure Media Services je podporována pouze úroveň Hot Access, i když ostatní úrovně přístupu lze použít ke snížení nákladů na úložiště obsahu, který se aktivně nepoužívá.
 
-Pro svůj účet úložiště můžete vybrat jiné SKU. Další informace najdete v tématu [účty úložiště](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest). Pokud chcete experimentovat s účty úložiště, použijte `--sku Standard_LRS` . Když však vybíráte SKU pro produkční prostředí, měli byste zvážit `--sku Standard_RAGRS` , což zajišťuje geografickou replikaci pro kontinuitu podnikových aplikací.
+Pro svůj účet úložiště můžete vybrat jiné SKU. Další informace najdete v tématu [účty úložiště](/cli/azure/storage/account?view=azure-cli-latest). Pokud chcete experimentovat s účty úložiště, použijte `--sku Standard_LRS` . Když však vybíráte SKU pro produkční prostředí, měli byste zvážit `--sku Standard_RAGRS` , což zajišťuje geografickou replikaci pro kontinuitu podnikových aplikací.
 
 ## <a name="assets-in-a-storage-account"></a>Prostředky v účtu úložiště
 
@@ -44,11 +45,11 @@ V Media Services V3 se k nahrávání souborů do assetů používají rozhraní
 
 Aby bylo možné chránit vaše prostředky v klidovém stavu, prostředky by měly být šifrovány šifrováním na straně úložiště. Následující tabulka ukazuje, jak funguje šifrování na straně úložiště v Media Services V3:
 
-|Možnost šifrování|Description|Media Services v3|
+|Možnost šifrování|Popis|Media Services v3|
 |---|---|---|
 |Media Services šifrování úložiště| Šifrování AES-256, klíč spravovaný pomocí Media Services. |Nepodporováno. <sup>(1)</sup>|
-|[Šifrování služby Storage pro neaktivní neaktivní data](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Šifrování na straně serveru, které nabízí Azure Storage, klíč spravuje Azure nebo zákazník.|Podporuje se.|
-|[Šifrování na straně klienta úložiště](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Šifrování na straně klienta, které nabízí služba Azure Storage, klíč spravovaný zákazníkem v Key Vault.|Není podporováno.|
+|[Šifrování služby Storage pro neaktivní neaktivní data](../../storage/common/storage-service-encryption.md)|Šifrování na straně serveru, které nabízí Azure Storage, klíč spravuje Azure nebo zákazník.|Podporuje se.|
+|[Šifrování na straně klienta úložiště](../../storage/common/storage-client-side-encryption.md)|Šifrování na straně klienta, které nabízí služba Azure Storage, klíč spravovaný zákazníkem v Key Vault.|Nepodporováno|
 
 <sup>1</sup> v Media Services V3 se šifrování úložiště (šifrování AES-256) podporuje jenom pro zpětnou kompatibilitu, když se vaše prostředky vytvořily pomocí Media Services V2, což znamená, že V3 funguje se stávajícími šifrovanými prostředky úložiště, ale neumožňuje vytváření nových.
 
@@ -65,8 +66,8 @@ Důsledkem následujících primárních scénářů je to, že účet služby M
 
 ## <a name="azure-storage-firewall"></a>Azure Storage firewall
 
-Azure Media Services nepodporuje účty úložiště s povolenými Azure Storage bránou firewall nebo [soukromými koncovými body](https://docs.microsoft.com/azure/storage/common/storage-network-security) .
+Azure Media Services nepodporuje účty úložiště s povolenými Azure Storage bránou firewall nebo [soukromými koncovými body](../../storage/common/storage-network-security.md) .
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak připojit účet úložiště k vašemu Media Services účtu, najdete v tématu [Vytvoření účtu](create-account-cli-quickstart.md).
+Informace o tom, jak připojit účet úložiště k vašemu Media Services účtu, najdete v tématu [Vytvoření účtu](./create-account-howto.md).

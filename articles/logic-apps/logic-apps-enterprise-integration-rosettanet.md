@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 2cc2ac08b9624c1d1d9bee9ce91a7c91189d7f2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 833e2a6f64301c39ba2b9e7959585c3edeab9445
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74792415"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072585"
 ---
 # <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>Zprávy Exchange RosettaNet pro integraci B2B Enterprise v Azure Logic Apps
 
@@ -50,7 +51,7 @@ Tady je několik konceptů a pojmů, které jsou jedinečné pro specifikaci Ros
 
   V případě PIP s jednou akcí je jedinou odpovědí zpráva potvrzujícího signálu. V případě, že se jedná o akci PIP s dvojitou odezvou, iniciátor obdrží zprávu odpovědi a kromě toku zpráv s jednou akcí odpoví spolu s potvrzením.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -81,7 +82,7 @@ Pokud chcete přidat konfiguraci procesu PIP do účtu pro integraci, postupujte
    | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
    | **Název** | Yes | Název PIP |
-   | **Kód PIP** | Yes | Kód pro tři číslice v PIP. Další informace najdete v tématu [RosettaNet Pips](https://docs.microsoft.com/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips). |
+   | **Kód PIP** | Yes | Kód pro tři číslice v PIP. Další informace najdete v tématu [RosettaNet Pips](/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips). |
    | **Verze PIP** | Yes | Číslo verze PIP, které je k dispozici na základě vybraného kódu PIP |
    ||||
 

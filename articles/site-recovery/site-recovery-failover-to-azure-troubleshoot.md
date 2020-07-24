@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 09a4700ce794458ee4dcad2291a93e0b13ca5feb
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 39a92dbdc0bdcd0fdd2bb06efe3fbd4bfe33069d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133764"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071180"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Řešení chyb při převzetí služeb při selhání virtuálního počítače VMware nebo fyzického počítače do Azure
 
@@ -54,9 +54,11 @@ Chcete-li ručně změnit typ spouštění ovladačů pro **hostovaný operačn�
 
     Pokud je požadováno vysazování, poskytuje následující výsledek:
 
-        REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
+    ```output
+    REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
 
-        This system doesn't meet no-hydration requirement.
+    This system doesn't meet no-hydration requirement.
+    ```
 
     V případě, že virtuální počítač splňuje požadavek bez nutnosti vysazování, skript poskytne výsledek "Tento systém splní požadavek bez nutnosti vysazování". V takovém případě jsou všechny ovladače a služby ve stavu, jak to vyžaduje Azure a kdy se na virtuálním počítači nepožaduje aplikace pro vysazování.
 
@@ -65,12 +67,14 @@ Chcete-li ručně změnit typ spouštění ovladačů pro **hostovaný operačn�
     `.\Script-no-hydration.ps1 -set`
     
     Tato akce převede typ spouštění ovladačů a poskytne výsledek podobný tomuto:
-    
-        REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0 
 
-        Updating registry:  REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc   start =  0 
+    ```output
+    REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
 
-        This system is now no-hydration compatible. 
+    Updating registry:  REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc   start =  0
+
+    This system is now no-hydration compatible.
+    ```
 
 ## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>Nepovedlo se připojit/RDP/SSH k virtuálnímu počítači převzetí služeb při selhání kvůli šedě připojenému tlačítku připojení na virtuálním počítači.
 
@@ -116,11 +120,15 @@ Pokud se k počítači můžete připojit pomocí protokolu RDP, ale nemůžete 
 
 * Pokud je operační systém v systému Red Hat nebo Oracle Linux 7. */8.0, spusťte na virtuálním počítači Azure s podporou převzetí služeb při selhání následující příkaz s oprávněními root. Restartujte virtuální počítač za příkazem.
 
-        grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
+  ```console
+  grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
+  ```
 
 * Pokud je operační systém počítače CentOS 7. *, spusťte na VIRTUÁLNÍm počítači Azure s podporou převzetí služeb při selhání následující příkaz s oprávněními root. Restartujte virtuální počítač za příkazem.
 
-        grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
+  ```console
+  grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
+  ```
 
 ## <a name="unexpected-shutdown-message-event-id-6008"></a>Neočekávaná zpráva vypnutí (ID události 6008)
 

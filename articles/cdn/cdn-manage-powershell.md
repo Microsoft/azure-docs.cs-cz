@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/20/2019
 ms.author: allensu
-ms.openlocfilehash: ba67ea9455c8d7f077eae87f582f05b5c2672735
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7ad3034ff3730cdadcfd55765af01c97df78028
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887616"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073064"
 ---
 # <a name="manage-azure-cdn-with-powershell"></a>Správa Azure CDN s využitím PowerShellu
 PowerShell poskytuje jednu z nejpružnější metod pro správu profilů a koncových bodů Azure CDN.  PowerShell můžete interaktivně používat nebo psát pomocí skriptů pro automatizaci úloh správy.  Tento kurz předvádí několik nejběžnějších úloh, které můžete s prostředím PowerShell využít ke správě Azure CDN profilů a koncových bodů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Pokud chcete ke správě Azure CDN profilů a koncových bodů použít PowerShell, musíte mít nainstalovaný modul Azure PowerShell.  Informace o tom, jak nainstalovat Azure PowerShell a připojit se k Azure pomocí `Connect-AzAccount` rutiny, najdete v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview).
+Pokud chcete ke správě Azure CDN profilů a koncových bodů použít PowerShell, musíte mít nainstalovaný modul Azure PowerShell.  Informace o tom, jak nainstalovat Azure PowerShell a připojit se k Azure pomocí `Connect-AzAccount` rutiny, najdete v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/).
 
 > [!IMPORTANT]
 > `Connect-AzAccount`Než budete moct spustit rutiny Azure PowerShell, musíte se přihlásit pomocí.

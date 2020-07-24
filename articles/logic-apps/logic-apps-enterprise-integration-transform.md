@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/08/2016
-ms.openlocfilehash: 500769a39ba7658b35c1abb80101f6234170c941
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 38861ed941d49317e69bfab9afd17638a790bf7b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74792394"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072422"
 ---
 # <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Vytváření map transformujících XML mezi formáty v Azure Logic Apps s využitím rozšíření Enterprise Integration Pack
 
@@ -29,7 +30,7 @@ Po nahrání transformace nebo mapy do účtu pro integraci ji můžete použít
 
 Následující **postup použijte k transformaci**:
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 * Vytvořit účet pro integraci a přidat k němu mapu  
 
@@ -37,11 +38,11 @@ Teď, když jste se seznámili s požadavky, je čas vytvořit aplikaci logiky:
 
 1. Vytvořte aplikaci logiky a [propojte ji s účtem pro integraci](../logic-apps/logic-apps-enterprise-integration-accounts.md "Naučte se propojit účet pro integraci s aplikací logiky.") , který obsahuje mapu.
 2. Přidání triggeru **žádosti** do aplikace logiky  
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
+   ![Snímek obrazovky s rozevíracím seznamem zobrazit rozhraní API spravovaná Microsoftem s vybraným triggerem žádosti Rozevírací seznam je v aplikaci logiky vytvořené pomocí sady Visual Studio Enterprise Integration SDK.](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
 3. Přidejte akci **transformace XML** , a to tak, že nejprve vyberete **přidat akci** .   
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-2.png)   
+   ![Snímek obrazovky s vybraným tlačítkem přidat akci na obrazovce triggeru žádosti](./media/logic-apps-enterprise-integration-transforms/transform-2.png)   
 4. Pokud chcete filtrovat všechny akce, které chcete použít, zadejte do vyhledávacího pole *transformaci* slova.  
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
+   ![Snímek obrazovky ukazující, jak vyhledat akci transformace XML v rozevíracím seznamu zobrazit rozhraní API spravované Microsoftem, aby se mohla přidat do triggeru žádosti](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
 5. Vybrat akci **transformace XML**   
 6. Přidejte **obsah** XML, který transformujete. Jako **obsah**můžete použít jakákoli data XML, která obdržíte v požadavku HTTP. V tomto příkladu vyberte tělo požadavku HTTP, který aktivoval aplikaci logiky.
 
@@ -50,9 +51,9 @@ Teď, když jste se seznámili s požadavky, je čas vytvořit aplikaci logiky:
  
 
 7. Vyberte název **mapy** , kterou chcete použít k provedení transformace. Tato mapa již musí být v účtu pro integraci. V předchozím kroku už máte aplikaci logiky přístup k vašemu účtu pro integraci, který obsahuje vaši mapu.      
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-4.png) 
+   ![Snímek obrazovky zobrazující obsah a pole mapy na obrazovce transformace XML pro aktivační událost požadavku](./media/logic-apps-enterprise-integration-transforms/transform-4.png) 
 8. Uložení práce  
-    ![](./media/logic-apps-enterprise-integration-transforms/transform-5.png) 
+    ![Snímek obrazovky zobrazující tlačítko Uložit v Návrháři Logic Apps.](./media/logic-apps-enterprise-integration-transforms/transform-5.png) 
 
 V tuto chvíli jste dokončili nastavování mapy. V reálné aplikaci budete možná chtít ukládat transformovaná data do obchodní aplikace, jako je SalesForce. K odeslání výstupu transformace do Salesforce můžete snadno použít akci. 
 

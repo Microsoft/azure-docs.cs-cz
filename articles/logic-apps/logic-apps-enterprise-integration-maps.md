@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
-ms.openlocfilehash: e186b9713c8464f8f37e1e0bf112c4118621925c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff6bd1a52e05d55d43969644141f39aed8c8eb63
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75979413"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072642"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>Transformace XML s využitím map v Azure Logic Apps s rozšířením Enterprise Integration Pack
 
@@ -22,7 +23,7 @@ Předpokládejme například, že pravidelně dostanete objednávky B2B nebo fak
 
 Omezení související s integračními účty a artefakty, jako jsou mapy, najdete v tématu [omezení a informace o konfiguraci pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -35,14 +36,14 @@ Omezení související s integračními účty a artefakty, jako jsou mapy, najd
   * Pro sestavení potřebujete kontejner objektů blob Azure, kde můžete nahrát sestavení a umístění tohoto kontejneru. Tímto způsobem můžete toto umístění poskytnout později po přidání sestavení do účtu pro integraci. 
   Pro tento úkol budete potřebovat tyto položky:
 
-    | Položka | Description |
+    | Položka | Popis |
     |------|-------------|
     | [Účet úložiště Azure](../storage/common/storage-account-overview.md) | V tomto účtu vytvořte kontejner objektů BLOB v Azure pro vaše sestavení. Naučte [se vytvořit účet úložiště](../storage/common/storage-account-create.md). |
     | Kontejner objektů blob | V tomto kontejneru můžete nahrát sestavení. Toto umístění kontejneru budete potřebovat také při přidávání sestavení do účtu pro integraci. Přečtěte si, jak [vytvořit kontejner objektů BLOB](../storage/blobs/storage-quickstart-blobs-portal.md). |
     | [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) | Tento nástroj vám pomůže snadněji spravovat účty úložiště a kontejnery objektů BLOB. Chcete-li použít Průzkumník služby Storage, buď [Stáhněte a nainstalujte Průzkumník služby Azure Storage](https://www.storageexplorer.com/). Potom připojte Průzkumník služby Storage k účtu úložiště podle kroků uvedených v části [Začínáme s Průzkumník služby Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md). Další informace najdete v tématu [rychlý Start: vytvoření objektu BLOB v úložišti objektů pomocí Průzkumník služby Azure Storage](../storage/blobs/storage-quickstart-blobs-storage-explorer.md). <p>Nebo v Azure Portal vyhledejte a vyberte svůj účet úložiště. V nabídce účtu úložiště vyberte **Průzkumník služby Storage**. |
     |||
 
-  * U map můžete v současnosti přidat větší mapy pomocí [Azure Logic Apps REST API Maps](https://docs.microsoft.com/rest/api/logic/maps/createorupdate).
+  * U map můžete v současnosti přidat větší mapy pomocí [Azure Logic Apps REST API Maps](/rest/api/logic/maps/createorupdate).
 
 Při vytváření a přidávání map nepotřebujete aplikaci logiky. Pokud ale chcete použít mapu, vaše aplikace logiky potřebuje propojit s integračním účtem, kam tuto mapu ukládáte. Přečtěte si, [Jak propojit Logic Apps s účty pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account). Pokud ještě nemáte aplikaci logiky, přečtěte si, [jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -219,7 +220,7 @@ Po nahrání všech sestavení, na která mapa odkazuje, teď můžete nahrát m
 
 ### <a name="add-maps-more-than-2-mb"></a>Přidat mapy více než 2 MB
 
-V současné době přidejte větší mapy pomocí [Azure Logic Apps mapování REST API](https://docs.microsoft.com/rest/api/logic/maps/createorupdate).
+V současné době přidejte větší mapy pomocí [Azure Logic Apps mapování REST API](/rest/api/logic/maps/createorupdate).
 
 <!--
 

@@ -10,11 +10,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 01/31/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 6b74f9cdc5b3317edc8bf2339ba1d2c29f43e55b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90ad8cc87f1d6a1893b96f6201a4260c03c94fee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560165"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072202"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Vytváření, spouštění a odstraňování prostředků Azure ML pomocí REST
 
@@ -32,7 +33,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Použití požadavků DELETE k vyčištění prostředků 
 > * Použití autorizace na základě klíčů k určení skóre nasazených modelů
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - **Předplatné Azure** , pro které máte práva správce. Pokud nemáte takové předplatné, vyzkoušejte [bezplatné nebo placené osobní předplatné](https://aka.ms/AMLFree) .
 - [Pracovní prostor Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
@@ -47,7 +48,7 @@ V tomto článku získáte informace o těchto tématech:
 - ID klienta (které bude přidruženo k vytvořenému tokenu)
 - Váš tajný klíč klienta (který byste měli chránit)
 
-Tyto hodnoty byste měli mít z odpovědi na Vytvoření instančního objektu, jak je popsáno v tématu [nastavení ověřování pro Azure Machine Learning prostředky a pracovní postupy](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication). Pokud používáte předplatné vaší společnosti, možná nemáte oprávnění k vytvoření instančního objektu. V takovém případě byste měli použít buď [bezplatné, nebo placené osobní předplatné](https://aka.ms/AMLFree).
+Tyto hodnoty by měly být z odpovědi na Vytvoření instančního objektu. Získání těchto hodnot je popsáno v tématu [nastavení ověřování pro Azure Machine Learning prostředky a pracovní postupy](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication). Pokud používáte předplatné vaší společnosti, možná nemáte oprávnění k vytvoření instančního objektu. V takovém případě byste měli použít buď [bezplatné, nebo placené osobní předplatné](https://aka.ms/AMLFree).
 
 Načtení tokenu:
 
@@ -199,15 +200,15 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-Všimněte si, že pokud chcete zobrazit seznam experimentů, na které začíná cesta `history/v1.0` a kdy se mají vypisovat modely, začíná cesta `modelmanagement/v1.0` . REST API je rozdělen do několika operačních skupin, z nichž každá má odlišnou cestu. Referenční dokumentace rozhraní API na odkazech níže uvádějí operace, parametry a kódy odpovědí pro různé operace.
+Všimněte si, že pokud chcete zobrazit seznam experimentů, na které začíná cesta `history/v1.0` a kdy se mají vypisovat modely, začíná cesta `modelmanagement/v1.0` . REST API je rozdělen do několika operačních skupin, z nichž každá má odlišnou cestu. 
 
-|Oblast|Cesta|Referenční informace|
-|-|-|-|
-|Artifacts|artefakt/v 2.0/|[Odkaz na REST API](https://docs.microsoft.com/rest/api/azureml/artifacts)|
-|Úložiště dat|úložiště dat/v 1.0/|[Odkaz na REST API](https://docs.microsoft.com/rest/api/azureml/datastores)|
-|Ladění hyperparametrů|Hyperdrive/v 1.0/|[Odkaz na REST API](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
-|Modely|modelmanagement/v 1.0/|[Odkaz na REST API](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|
-|Historie spuštění|provádění/v 1.0/a historie/v 1.0/|[Odkaz na REST API](https://docs.microsoft.com/rest/api/azureml/runs)|
+|Oblast|Cesta|
+|-|-|
+|Artifacts|artefakt/v 2.0/|
+|Úložiště dat|úložiště dat/v 1.0/|
+|Ladění hyperparametrů|Hyperdrive/v 1.0/|
+|Modely|modelmanagement/v 1.0/|
+|Historie spuštění|provádění/v 1.0/a historie/v 1.0/|
 
 REST API můžete prozkoumat pomocí obecného vzoru:
 
@@ -402,7 +403,7 @@ providers/Microsoft.Storage/storageAccounts/{your-storage-account-name}"
 
 Měli byste obdržet `202 Accepted` odpověď a v vrácených hlavičkách `Location` identifikátor URI. Tento identifikátor URI můžete získat pro informace o nasazení, včetně užitečných ladicích informací, pokud dojde k potížím s některým závislými prostředky (například pokud jste zapomněli povolit přístup správce k vašemu registru kontejneru). 
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="resource-provider-errors"></a>Chyby poskytovatele prostředků
 
