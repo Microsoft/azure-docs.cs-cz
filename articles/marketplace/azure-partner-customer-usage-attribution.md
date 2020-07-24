@@ -7,12 +7,13 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/14/2020
-ms.openlocfilehash: 6997c1aaab8cbe635ccef21967a0fce1f735c1ab
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-terraform
+ms.openlocfilehash: ab729d34219c05ee76a2a14832f41342d29eab21
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103020"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065796"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Obchodní partneři na webu Marketplace a přidělení zákaznického využití
 
@@ -304,7 +305,7 @@ Prohlédněte si podrobné pokyny k snímkům obrazovky s [použitím služeb te
 
 Obraťte se na partnera Microsoftu, který vám poskytne odborného technického konzultanta k nastavení volání podle rozsahu vašich potřeb.
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 **Jaké jsou výhody přidání identifikátoru GUID do šablony?**
 

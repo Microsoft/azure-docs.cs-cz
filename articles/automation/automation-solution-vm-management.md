@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: dbfb50b40b4705cae55ba6e4f1ef950b586b5fb5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 2cbed4d6dd2a9c5e63e73d89e5327fa3759777fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185870"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064456"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Přehled Start/Stop VMs during off-hours
 
@@ -35,7 +35,7 @@ U aktuální funkce platí následující omezení:
 - Spravuje virtuální počítače v jakékoli oblasti, ale dá se použít jenom ve stejném předplatném jako váš účet Azure Automation.
 - Je k dispozici v Azure a Azure Government pro libovolnou oblast, která podporuje pracovní prostor Log Analytics, Azure Automation účet a výstrahy. Azure Government oblasti momentálně nepodporují funkce e-mailu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Sady Runbook pro spouštění/zastavování virtuálních počítačů v době mimo špičku fungují s [účtem spustit jako pro Azure](./manage-runas-account.md). Účet Spustit jako je upřednostňovanou metodou ověřování, protože místo hesla, jehož platnost může vypršet nebo často se mění, používá ověřování certifikátů.
 
@@ -49,9 +49,9 @@ Pokud jste přispěvatelem předplatného a globálním správcem v tenantovi Az
 
 ### <a name="permissions-for-pre-existing-automation-account-and-log-analytics-workspace"></a>Oprávnění pro již existující účet služby Automation a pracovní prostor Log Analytics
 
-Pokud chcete povolit virtuální počítače pro funkci Start/Stop VMs during off-hours pomocí existujícího účtu Automation a pracovního prostoru Log Analytics, budete potřebovat následující oprávnění pro rozsah skupiny prostředků. Další informace o rolích najdete v tématu [vlastní role pro prostředky Azure](../role-based-access-control/custom-roles.md).
+Pokud chcete povolit virtuální počítače pro funkci Start/Stop VMs during off-hours pomocí existujícího účtu Automation a pracovního prostoru Log Analytics, budete potřebovat následující oprávnění pro rozsah skupiny prostředků. Další informace o rolích najdete v tématu [vlastní role Azure](../role-based-access-control/custom-roles.md).
 
-| Oprávnění | Obor|
+| Oprávnění | Rozsah|
 | --- | --- |
 | Microsoft. Automation/automationAccounts/Read | Skupina prostředků |
 | Microsoft. Automation/automationAccounts/Variables/Write | Skupina prostředků |
@@ -80,7 +80,7 @@ Virtuální počítače pro funkci Start/Stop VMs during off-hours můžete povo
 - Členství v roli vývojář aplikace [služby Azure AD](../active-directory/users-groups-roles/directory-assign-admin-roles.md) . Další informace o konfiguraci účtů spustit jako najdete v tématu [oprávnění ke konfiguraci účtů spustit jako](manage-runas-account.md#permissions).
 - Přispěvatel v rámci předplatného nebo následujících oprávnění
 
-| Oprávnění |Obor|
+| Oprávnění |Rozsah|
 | --- | --- |
 | Microsoft. Authorization/Operations/Read | Předplatné|
 | Microsoft. Authorization/oprávnění/čtení |Předplatné|

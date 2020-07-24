@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: 79c99a8ba2712fe69ec6d3b9b9d32ddf6aa081cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e6abeff8998e55eb7cbf450d1c3cc32f233e382
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82580633"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065970"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Připojení k místním systémům souborů pomocí Azure Logic Apps
 
@@ -25,7 +25,7 @@ Pomocí Azure Logic Apps a konektoru systému souborů můžete vytvářet autom
 
 V tomto článku se dozvíte, jak se připojit k místnímu systému souborů, jak je popsáno v tomto ukázkovém scénáři: zkopírování souboru nahraného do Dropboxu do sdílené složky a odeslání e-mailu. K bezpečnému připojení k místním systémům využívají Logic Apps místní [bránu dat](../logic-apps/logic-apps-gateway-connection.md). Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md). Technické informace specifické pro konektor najdete v referenčních informacích o [konektoru systému souborů](/connectors/filesystem/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -35,10 +35,10 @@ V tomto článku se dozvíte, jak se připojit k místnímu systému souborů, j
 
 * Přístup k počítači, který má systém souborů, který chcete použít. Pokud například nainstalujete bránu dat na stejný počítač jako systém souborů, budete potřebovat přihlašovací údaje účtu pro tento počítač.
 
-* E-mailový účet od poskytovatele, který podporuje Logic Apps, jako je například Office 365 Outlook, Outlook.com nebo Gmail. Pokud máte jiného poskytovatele, [tady se podívejte na seznam konektorů](https://docs.microsoft.com/connectors/). Tato aplikace logiky používá účet Office 365 Outlook. Pokud použijete jiný e-mailový účet, celkový postup bude stejný, ale vaše uživatelské rozhraní se může mírně lišit.
+* E-mailový účet od poskytovatele, který podporuje Logic Apps, jako je například Office 365 Outlook, Outlook.com nebo Gmail. Pokud máte jiného poskytovatele, [tady se podívejte na seznam konektorů](/connectors/). Tato aplikace logiky používá účet Office 365 Outlook. Pokud použijete jiný e-mailový účet, celkový postup bude stejný, ale vaše uživatelské rozhraní se může mírně lišit.
 
   > [!IMPORTANT]
-  > Pokud chcete použít konektor Gmail, můžou tento konektor používat jenom obchodní účty G-Suite bez omezení v Logic Apps. Pokud máte účet příjemce Gmail, můžete tento konektor použít jenom pro konkrétní služby schválené v Google, nebo můžete [vytvořit klientskou aplikaci Google pro ověřování pomocí konektoru Gmail](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Další informace najdete v tématu [zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
+  > Pokud chcete použít konektor Gmail, můžou tento konektor používat jenom obchodní účty G-Suite bez omezení v Logic Apps. Pokud máte účet příjemce Gmail, můžete tento konektor použít jenom pro konkrétní služby schválené v Google, nebo můžete [vytvořit klientskou aplikaci Google pro ověřování pomocí konektoru Gmail](/connectors/gmail/#authentication-and-bring-your-own-application). Další informace najdete v tématu [zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
 * Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) V tomto příkladu potřebujete prázdnou aplikaci logiky.
 
@@ -70,12 +70,12 @@ V tomto článku se dozvíte, jak se připojit k místnímu systému souborů, j
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    | -------- | -------- | ----- | ----------- |
-   | **Název připojení** | Ano | <*název připojení*> | Název, který chcete pro připojení |
-   | **Kořenová složka** | Ano | <*název kořenové složky*> | Kořenová složka pro systém souborů, například pokud jste nainstalovali místní bránu dat, jako je například místní složka v počítači, kde je nainstalována místní brána dat, nebo složka sdílené síťové složky, ke které má počítač přístup. <p>Příklad: `\\PublicShare\\DropboxFiles` <p>Kořenová složka je hlavní nadřazená složka, která se používá pro relativní cesty ke všem akcím, které se týkají souborů. |
-   | **Typ ověřování** | Ne | <*typ ověřování*> | Typ ověřování, který používá systém souborů: **Windows** |
-   | **Jmen** | Ano | <*domain* > \\ Doména < *uživatelské jméno*> <p>-nebo- <p><*místní* > \\ počítač < *uživatelské jméno*> | Uživatelské jméno počítače, kde máte složku systému souborů. <p>Pokud je složka systému souborů ve stejném počítači jako místní brána dat, můžete použít <*local-computer* > \\ < *uživatelské jméno* místního počítače>. |
-   | **Heslo** | Ano | <*Vaše heslo*> | Heslo pro počítač, na kterém máte systém souborů |
-   | **brány** | Ano | <*instalace – brána – název*> | Název dříve nainstalované brány |
+   | **Název připojení** | Yes | <*název připojení*> | Název, který chcete pro připojení |
+   | **Kořenová složka** | Yes | <*název kořenové složky*> | Kořenová složka pro systém souborů, například pokud jste nainstalovali místní bránu dat, jako je například místní složka v počítači, kde je nainstalována místní brána dat, nebo složka sdílené síťové složky, ke které má počítač přístup. <p>Příklad: `\\PublicShare\\DropboxFiles` <p>Kořenová složka je hlavní nadřazená složka, která se používá pro relativní cesty ke všem akcím, které se týkají souborů. |
+   | **Typ ověřování** | No | <*typ ověřování*> | Typ ověřování, který používá systém souborů: **Windows** |
+   | **Uživatelské jméno** | Yes | <*domain* > \\ Doména < *uživatelské jméno*> <p>-nebo- <p><*místní* > \\ počítač < *uživatelské jméno*> | Uživatelské jméno počítače, kde máte složku systému souborů. <p>Pokud je složka systému souborů ve stejném počítači jako místní brána dat, můžete použít <*local-computer* > \\ < *uživatelské jméno* místního počítače>. |
+   | **Heslo** | Yes | <*Vaše heslo*> | Heslo pro počítač, na kterém máte systém souborů |
+   | **brány** | Yes | <*instalace – brána – název*> | Název dříve nainstalované brány |
    |||||
 
 1. Jakmile budete hotoví, vyberte **Vytvořit**.
@@ -90,13 +90,13 @@ V tomto článku se dozvíte, jak se připojit k místnímu systému souborů, j
 
    ![Akce Odeslat e-mail](media/logic-apps-using-file-connector/send-email.png)
 
-1. Uložte svou aplikaci logiky. Otestujte svoji aplikaci nahráním souboru do Dropboxu.
+1. Uložte aplikaci logiky. Otestujte svoji aplikaci nahráním souboru do Dropboxu.
 
    Vaše aplikace logiky by měla zkopírovat soubor do místní sdílené složky a odeslat příjemcům e-mail o zkopírovaném souboru.
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Další technické podrobnosti o této spojnici, jako jsou triggery, akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete na [referenční stránce konektoru](https://docs.microsoft.com/connectors/fileconnector/).
+Další technické podrobnosti o této spojnici, jako jsou triggery, akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete na [referenční stránce konektoru](/connectors/fileconnector/).
 
 > [!NOTE]
 > V případě Logic Apps v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Tato verze konektoru ISE-Label používá místo toho [omezení zpráv ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .

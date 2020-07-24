@@ -7,11 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/25/2018
 ms.author: yushwang
-ms.openlocfilehash: d71e8af607ac15c708ff18a2f2a91e11ed36a987
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3a6dd70bf57cabe8014c49e2cd3ee38c8de72b4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987741"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064785"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>Postup konfigurace protokolu BGP v bráně Azure VPN pomocí rozhraní příkazového řádku
 
@@ -302,4 +303,4 @@ Po dokončení těchto kroků se připojení naváže za několik minut. Po doko
 
 ## <a name="next-steps"></a>Další kroky
 
-Po dokončení připojení můžete virtuální počítače přidat do svých virtuálních sítí. Postup najdete v tématu [Vytvoření virtuálního počítače](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Po dokončení připojení můžete virtuální počítače přidat do svých virtuálních sítí. Postup najdete v tématu [Vytvoření virtuálního počítače](../virtual-machines/windows/quick-create-portal.md).

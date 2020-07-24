@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 28fee67ccfc1e67d89d0151c8e14bd7c0b688749
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12c407ecacdce6b9052ca70ef70a2ae87928b6c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207086"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064700"
 ---
 # <a name="how-to-use-image-templates"></a>Používání šablon obrázků
 
@@ -119,7 +119,7 @@ Podívejte se na <a href='https://codepen.io/azuremaps/pen/EqQvzq/'>značku HTML
 
 Pokud vaše aplikace používá stejnou ikonu s různými ikonami nebo pokud vytváříte modul, který přidává další šablony obrázků, můžete tyto ikony snadno přidat a načíst z Azure Maps webové sady SDK. V oboru názvů použijte následující statické funkce `atlas` .
 
-| Name | Návratový typ | Description | 
+| Název | Návratový typ | Popis | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | Přidá do oboru názvů Atlas vlastní šablonu obrázku SVG. |
 |  `getImageTemplate(templateName: string, scale?: number)`| řetězec | Načte šablonu SVG podle názvu. |
@@ -127,7 +127,7 @@ Pokud vaše aplikace používá stejnou ikonu s různými ikonami nebo pokud vyt
 
 Šablony obrázků SVG podporují následující zástupné hodnoty:
 
-| Zástupný symbol | Description |
+| Zástupný symbol | Popis |
 |-|-|
 | `{color}` | Primární barva. | 
 | `{secondaryColor}` | Vedlejší barva. | 
@@ -148,44 +148,337 @@ Tato tabulka obsahuje seznam všech šablon imagí, které jsou aktuálně k dis
 
 **Šablony ikon symbolů**
 
-|||||
-|:-:|:-:|:-:|:-:|
-| značky | Značka – silná | Značka – kroužek | Značka – plochá |
-|![ikona značky](./media/image-templates/marker.png)|![Značka – tlustá ikona](./media/image-templates/marker-thick.png)|![Značka – ikona kruhu](./media/image-templates/marker-circle.png)|![Značka – plochá ikona](./media/image-templates/marker-flat.png)|
-||||
-| Značka – čtvercový | Marker – čtvercový – cluster | značka – šipka | Fix – míč – PIN | 
-|![ikona se čtvercovými značkami](./media/image-templates/marker-square.png)|![Značka – čtvercový – ikona clusteru](./media/image-templates/marker-square-cluster.png)|![Marker – ikona šipky](./media/image-templates/marker-arrow.png)|![Fix – míč – ikona kódu PIN](./media/image-templates/marker-ball-pin.png)|
-||||
-| Značka – čtvercový – zaoblený | znak – čtvercový – zaoblený – cluster | flag | příznak – trojúhelník |
-| ![Značka – čtvercově zaoblená ikona](./media/image-templates/marker-square-rounded.png) | ![ikona se čtvercový-zaoblenými clustery](./media/image-templates/marker-square-rounded-cluster.png) | ![Ikona příznaku](./media/image-templates/flag.png) | ![ikona s označením trojúhelníku](./media/image-templates/flag-triangle.png) |
-||||
-| trojúhelník | trojúhelníkově silné | trojúhelník – šipka nahoru | trojúhelník – šipka doleva |
-| ![ikona trojúhelníku](./media/image-templates/triangle.png) | ![trojúhelníkově tlustá ikona](./media/image-templates/triangle-thick.png) | ![trojúhelník – ikona šipky nahoru](./media/image-templates/triangle-arrow-up.png) | ![trojúhelník – ikona šipky vlevo](./media/image-templates/triangle-arrow-left.png) |
-||||
-| šestiúhelník | šestiúhelníka tlustá | šestiúhelník – zaoblené | šestiúhelníková zaoblená – silná |
-| ![ikona šestiúhelníku](./media/image-templates/hexagon.png) | ![šestiúhelník – tlustá ikona](./media/image-templates/hexagon-thick.png) | ![ikona se zaokrouhlením na šestiúhelník](./media/image-templates/hexagon-rounded.png) | ![šestiúhelník – zaoblený – ikona silného](./media/image-templates/hexagon-rounded-thick.png) |
-||||
-| kotvicí | připnout – zaokrouhlit | Zaoblený – čtvercový | Zaoblený – čtvercový – silný |
-| ![Ikona připnutí](./media/image-templates/pin.png) | ![ikona kulatého připnutí](./media/image-templates/pin-round.png) | ![ikona s zaobleným čtvercem](./media/image-templates/rounded-square.png) | ![ikona s kulatým čtvercem a tlustou ikonou](./media/image-templates/rounded-square-thick.png) |
-||||
-| Šipka nahoru | Šipka nahoru – tenká | car ||
-| ![ikona šipky nahoru](./media/image-templates/arrow-up.png) | ![Šipka nahoru – ikona tenké](./media/image-templates/arrow-up-thin.png) | ![ikona auta](./media/image-templates/car.png) | |
+:::row:::
+   :::column span="":::
+      značky
+   :::column-end:::
+   :::column span="":::
+      Značka – silná
+   :::column-end:::
+   :::column span="":::
+      Značka – kroužek
+   :::column-end:::
+   :::column span="":::
+      Značka – plochá
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![ikona značky](./media/image-templates/marker.png)
+   :::column-end:::
+   :::column span="":::
+      ![Značka – tlustá ikona](./media/image-templates/marker-thick.png)
+   :::column-end:::
+   :::column span="":::
+      ![Značka – ikona kruhu](./media/image-templates/marker-circle.png)
+   :::column-end:::
+   :::column span="":::
+      ![Značka – plochá ikona](./media/image-templates/marker-flat.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      Značka – čtvercový
+   :::column-end:::
+   :::column span="":::
+      Marker – čtvercový – cluster
+   :::column-end:::
+   :::column span="":::
+      značka – šipka
+   :::column-end:::
+   :::column span="":::
+      Fix – míč – PIN
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![ikona se čtvercovými značkami](./media/image-templates/marker-square.png)
+   :::column-end:::
+   :::column span="":::
+      ![Značka – čtvercový – ikona clusteru](./media/image-templates/marker-square-cluster.png)
+   :::column-end:::
+   :::column span="":::
+      ![Marker – ikona šipky](./media/image-templates/marker-arrow.png)
+   :::column-end:::
+   :::column span="":::
+      ![Fix – míč – ikona kódu PIN](./media/image-templates/marker-ball-pin.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      Značka – čtvercový – zaoblený
+   :::column-end:::
+   :::column span="":::
+      znak – čtvercový – zaoblený – cluster
+   :::column-end:::
+   :::column span="":::
+      flag
+   :::column-end:::
+   :::column span="":::
+      příznak – trojúhelník
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![Značka – čtvercově zaoblená ikona](./media/image-templates/marker-square-rounded.png)
+   :::column-end:::
+   :::column span="":::
+      ![ikona se čtvercový-zaoblenými clustery](./media/image-templates/marker-square-rounded-cluster.png)
+   :::column-end:::
+   :::column span="":::
+      ![Ikona příznaku](./media/image-templates/flag.png)
+   :::column-end:::
+   :::column span="":::
+      ![ikona s označením trojúhelníku](./media/image-templates/flag-triangle.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      trojúhelník
+   :::column-end:::
+   :::column span="":::
+      trojúhelníkově silné
+   :::column-end:::
+   :::column span="":::
+      trojúhelník – šipka nahoru
+   :::column-end:::
+   :::column span="":::
+      trojúhelník – šipka doleva
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![ikona trojúhelníku](./media/image-templates/triangle.png)
+   :::column-end:::
+   :::column span="":::
+      ![trojúhelníkově tlustá ikona](./media/image-templates/triangle-thick.png)
+   :::column-end:::
+   :::column span="":::
+      ![trojúhelník – ikona šipky nahoru](./media/image-templates/triangle-arrow-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![trojúhelník – ikona šipky vlevo](./media/image-templates/triangle-arrow-left.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      šestiúhelník
+   :::column-end:::
+   :::column span="":::
+      šestiúhelníka tlustá
+   :::column-end:::
+   :::column span="":::
+      šestiúhelník – zaoblené
+   :::column-end:::
+   :::column span="":::
+      šestiúhelníková zaoblená – silná
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![ikona šestiúhelníku](./media/image-templates/hexagon.png)
+   :::column-end:::
+   :::column span="":::
+      ![šestiúhelník – tlustá ikona](./media/image-templates/hexagon-thick.png)
+   :::column-end:::
+   :::column span="":::
+      ![ikona se zaokrouhlením na šestiúhelník](./media/image-templates/hexagon-rounded.png)
+   :::column-end:::
+   :::column span="":::
+      ![šestiúhelník – zaoblený – ikona silného](./media/image-templates/hexagon-rounded-thick.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      kotvicí
+   :::column-end:::
+   :::column span="":::
+      připnout – zaokrouhlit
+   :::column-end:::
+   :::column span="":::
+      Zaoblený – čtvercový
+   :::column-end:::
+   :::column span="":::
+      Zaoblený – čtvercový – silný
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![Ikona připnutí](./media/image-templates/pin.png)
+   :::column-end:::
+   :::column span="":::
+      ![ikona kulatého připnutí](./media/image-templates/pin-round.png)
+   :::column-end:::
+   :::column span="":::
+      ![ikona s zaobleným čtvercem](./media/image-templates/rounded-square.png)
+   :::column-end:::
+   :::column span="":::
+      ![ikona s kulatým čtvercem a tlustou ikonou](./media/image-templates/rounded-square-thick.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      Šipka nahoru
+   :::column-end:::
+   :::column span="":::
+      Šipka nahoru – tenká
+   :::column-end:::
+   :::column span="":::
+      car
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![ikona šipky nahoru](./media/image-templates/arrow-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![Šipka nahoru – ikona tenké](./media/image-templates/arrow-up-thin.png)
+   :::column-end:::
+   :::column span="":::
+      ![ikona auta](./media/image-templates/car.png)
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+
 
 **Šablony vzorku výplně mnohoúhelníku**
 
-|||||
-|:-:|:-:|:-:|:-:|
-| Kontrola | Kontrola – otočená | kruhu | kruhy – volné místo |
-| ![Ikona kontroly](./media/image-templates/checker.png) | ![Checker – ikona otočená](./media/image-templates/checker-rotated.png) | ![ikona kruhů](./media/image-templates/circles.png) | ![kruhy – ikona s mezerami](./media/image-templates/circles-spaced.png) |
-|||||
-| diagonální – řádky | diagonální čáry – dolů | šikmé – proložení | šikmé – rozložené |
-| ![ikona diagonálního řádku](./media/image-templates/diagonal-lines-up.png) | ![Úhlopříčka-čáry – ikona](./media/image-templates/diagonal-lines-down.png) | ![ikona diagonálního obložení](./media/image-templates/diagonal-stripes-up.png) | ![ikona diagonálního pruhu](./media/image-templates/diagonal-stripes-down.png) |
-|||||
-| Mřížka – čáry | otočené-mřížky – čáry | otočené-mřížky – pruhy | x – výplň |
-| ![ikona čar mřížky](./media/image-templates/grid-lines.png) | ![ikona otočení-mřížka-čáry](./media/image-templates/rotated-grid-lines.png) | ![ikona otočení-mřížka-pruhy](./media/image-templates/rotated-grid-stripes.png) | ![ikona výplně x](./media/image-templates/x-fill.png) |
-|||||
-| cik – cak | cik-cak – vertikální | palec |  |
-| ![cik – ikona cak](./media/image-templates/zig-zag.png) | ![cik-cak – ikona svislého](./media/image-templates/zig-zag-vertical.png) | ![ikona teček](./media/image-templates/dots.png) | |
+:::row:::
+   :::column span="":::
+      Kontrola
+   :::column-end:::
+   :::column span="":::
+      Kontrola – otočená
+   :::column-end:::
+   :::column span="":::
+      kruhu
+   :::column-end:::
+   :::column span="":::
+      kruhy – volné místo
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![Ikona kontroly](./media/image-templates/checker.png)
+   :::column-end:::
+   :::column span="":::
+      ![Checker – ikona otočená](./media/image-templates/checker-rotated.png)
+   :::column-end:::
+   :::column span="":::
+      ![ikona kruhů](./media/image-templates/circles.png)
+   :::column-end:::
+   :::column span="":::
+      ![kruhy – ikona s mezerami](./media/image-templates/circles-spaced.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      diagonální – řádky
+   :::column-end:::
+   :::column span="":::
+      diagonální čáry – dolů
+   :::column-end:::
+   :::column span="":::
+      šikmé – proložení
+   :::column-end:::
+   :::column span="":::
+      šikmé – rozložené
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![ikona diagonálního řádku](./media/image-templates/diagonal-lines-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![Úhlopříčka-čáry – ikona](./media/image-templates/diagonal-lines-down.png)
+   :::column-end:::
+   :::column span="":::
+      ![ikona diagonálního obložení](./media/image-templates/diagonal-stripes-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![ikona diagonálního pruhu](./media/image-templates/diagonal-stripes-down.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      Mřížka – čáry
+   :::column-end:::
+   :::column span="":::
+      otočené-mřížky – čáry
+   :::column-end:::
+   :::column span="":::
+      otočené-mřížky – pruhy
+   :::column-end:::
+   :::column span="":::
+      x – výplň
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![ikona čar mřížky](./media/image-templates/grid-lines.png)
+   :::column-end:::
+   :::column span="":::
+      ![ikona otočení-mřížka-čáry](./media/image-templates/rotated-grid-lines.png)
+   :::column-end:::
+   :::column span="":::
+      ![ikona otočení-mřížka-pruhy](./media/image-templates/rotated-grid-stripes.png)
+   :::column-end:::
+   :::column span="":::
+      ![ikona výplně x](./media/image-templates/x-fill.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      cik – cak
+   :::column-end:::
+   :::column span="":::
+      cik-cak – vertikální
+   :::column-end:::
+   :::column span="":::
+      palec
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![cik – ikona cak](./media/image-templates/zig-zag.png)
+   :::column-end:::
+   :::column span="":::
+      ![cik-cak – ikona svislého](./media/image-templates/zig-zag-vertical.png)
+   :::column-end:::
+   :::column span="":::
+      ![ikona teček](./media/image-templates/dots.png)
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+<br>
 
 **Předem nahrané ikony obrázků**
 

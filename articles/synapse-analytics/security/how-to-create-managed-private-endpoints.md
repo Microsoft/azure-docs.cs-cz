@@ -1,5 +1,5 @@
 ---
-title: Vytvoření spravovaného privátního koncového bodu pro připojení k vašim výsledkům zdroje dat.
+title: Vytvoření spravovaného privátního koncového bodu pro připojení k vašim výsledkům zdroje dat
 description: Tento článek vás seznámí s postupem vytvoření spravovaného privátního koncového bodu pro vaše zdroje dat z pracovního prostoru Azure synapse.
 author: RonyMSFT
 ms.service: synapse-analytics
@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: c6f0054364e5bbfb80fc4c1b9db6a4c15f365a81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fae958542f1bc391f285104d80d1e19131470abe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193885"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065484"
 ---
 # <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>Vytvoření spravovaného privátního koncového bodu ke zdroji dat (Preview)
 

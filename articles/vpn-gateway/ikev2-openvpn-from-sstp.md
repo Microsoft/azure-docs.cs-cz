@@ -2,16 +2,17 @@
 title: Přechod na OpenVPN nebo IKEv2 z SSTP | VPN Gateway Azure
 description: Tento článek vám pomůže porozumět způsobům, jak překonat 128 souběžného počtu připojení SSTP.
 services: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: alzam
-ms.openlocfilehash: e98fd0d57219599fb1c3934638a928542e4311a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1531bca6c56c159b7535536fb31a577f0d7253ef
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84983339"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064669"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>Přechod na Protokol OpenVPN nebo IKEv2 z SSTP
 
@@ -115,7 +116,7 @@ Soubor zip také poskytuje hodnoty některých důležitých nastavení na stran
 |AES256     |   SHA256        | SHA256    | GROUP_ECP256 |
 |AES256     |   SHA256        | SHA256    | GROUP_2 |
 
-**Protokol IPsec**
+**Podporují**
 
 |**Šifr** | **Integrita** | **Skupina PFS** |
 |---        | ---            | ---        |

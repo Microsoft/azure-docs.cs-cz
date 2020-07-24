@@ -1,5 +1,5 @@
 ---
-title: Video Indexer převzetí služeb při selhání a zotavení po havárii
+title: Převzetí služeb při selhání a zotavení po havárii Video Indexeru
 titleSuffix: Azure Media Services
 description: Naučte se převzetí služeb při selhání u sekundárního Video Indexer účtu, pokud dojde k selhání nebo selhání regionálního datacentra.
 services: media-services
@@ -14,19 +14,20 @@ ms.topic: article
 ms.custom: ''
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: 17c21900448fcb6d0a40fe5407f3b8bd62f9e3e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eab376c44065979de86e5c70b796be952fccffaa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79499621"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065412"
 ---
-# <a name="video-indexer-failover-and-disaster-recovery"></a>Video Indexer převzetí služeb při selhání a zotavení po havárii
+# <a name="video-indexer-failover-and-disaster-recovery"></a>Převzetí služeb při selhání a zotavení po havárii Video Indexeru
 
-Azure Media Services Video Indexer neposkytuje okamžité převzetí služeb při selhání, pokud dojde k výpadku nebo selhání regionálního datacentra. Tento článek vysvětluje, jak nakonfigurovat prostředí pro převzetí služeb při selhání, aby se zajistila optimální dostupnost aplikací a minimalizoval čas obnovení, pokud dojde k havárii.
+Video Indexer služby Azure Media Services nenabízí okamžité převzetí služeb při selhání služby v případě výpadku nebo selhání regionálního datacentra. Tento článek vysvětluje, jak nakonfigurovat prostředí pro převzetí služeb při selhání, aby se zajistila optimální dostupnost aplikací a minimalizoval čas obnovení, pokud dojde k havárii.
 
-Doporučujeme, abyste nakonfigurovali zotavení po havárii pro provozní kontinuitu (BCDR) napříč místními páry a využili jsme zásady izolace a dostupnosti Azure. Další informace najdete v tématu [spárované oblasti Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Doporučujeme nakonfigurovat provozní kontinuitu a zotavení po havárii (BCDR) napříč oblastními páry, abyste mohli využívat výhody zásad izolace a dostupnosti Azure. Další informace najdete v tématu [spárované oblasti Azure](../../best-practices-availability-paired-regions.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Předplatné Azure. Pokud ještě nemáte předplatné Azure, zaregistrujte si [bezplatnou zkušební verzi Azure](https://azure.microsoft.com/free/).
 
@@ -38,7 +39,7 @@ K implementaci BCDR musíte mít dva účty Video Indexer, abyste mohli řešit 
 1. Pokud dojde k selhání v primární oblasti, přepněte se na indexování pomocí sekundárního účtu.
 
 > [!TIP]
-> BCDR můžete automatizovat tím, že nastavíte výstrahy protokolu aktivit pro oznámení o stavu služby podle [Upozornění na vytvoření protokolu aktivit v oznámeních služby](../../service-health/alerts-activity-log-service-notifications.md).
+> BCDR můžete automatizovat tím, že nastavíte výstrahy protokolu aktivit pro oznámení o stavu služby podle [Upozornění na vytvoření protokolu aktivit v oznámeních služby](../../service-health/alerts-activity-log-service-notifications-portal.md).
 
 Informace o používání více tenantů najdete v tématu [Správa více tenantů](manage-multiple-tenants.md). Pokud chcete implementovat BCDR, vyberte jednu z těchto dvou možností: [video indexer účet na tenanta](manage-multiple-tenants.md#video-indexer-account-per-tenant) nebo [předplatné Azure na tenanta](manage-multiple-tenants.md#azure-subscription-per-tenant).
 

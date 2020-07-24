@@ -1,23 +1,31 @@
 ---
-title: Začínáme s ovládacím prvkem webového mapování | Mapy Microsoft Azure
-description: Naučte se používat mapu Microsoft Azure map mapy JavaScriptu na straně klienta k vykreslování map a vložených Azure Maps funkcí do vaší webové nebo mobilní aplikace.
-author: philmea
-ms.author: philmea
-ms.date: 01/15/2020
+title: Začínáme s ovládacím prvkem webového mapování Microsoft Azure Maps
+description: Naučte se používat knihovnu JavaScript na straně klienta ovládacího prvku mapa webu Microsoft Azure Maps k vykreslování map a vložených Azure Maps funkcí do vaší webové nebo mobilní aplikace.
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 07/20/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
-ms.openlocfilehash: 6becb504671c1fa380207fda9d7d553fca8ceddf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+manager: philmea
+ms.openlocfilehash: bdbdbfada3c7c4cfb4350bb11a33defd743b7195
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335237"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064214"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Použití mapového ovládacího prvku Azure Maps
 
 Ovládací prvek Mapa knihovna JavaScriptu na straně klienta umožňuje vykreslovat mapy a vložené Azure Maps funkce do vaší webové nebo mobilní aplikace.
+
+## <a name="prerequisites"></a>Předpoklady
+
+Chcete-li použít Ovládací prvek Mapa na webové stránce, musíte mít jeden z následujících požadavků:
+
+* [Vytvořte účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account) a [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného.
+
+* Získejte přihlašovací údaje pro Azure Active Directory (AAD) s [možnostmi ověřování](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions).
 
 ## <a name="create-a-new-map-in-a-web-page"></a>Vytvoření nové mapy na webové stránce
 
@@ -36,19 +44,18 @@ Mapu můžete vložit do webové stránky pomocí Ovládací prvek Mapa knihovny
 
     * Načtěte zdrojový kód Azure Maps Web SDK místně pomocí balíčku [Azure-Maps-Control](https://www.npmjs.com/package/azure-maps-control) npm a hostovat ho s vaší aplikací. Tento balíček obsahuje také definice TypeScript.
 
-        > **NPM instalace Azure-Maps-Control**
+    > **NPM instalace Azure-Maps-Control**
 
-       Pak přidejte odkazy na Azure Maps šablon stylů a odkazů na zdroj skriptu k `<head>` elementu souboru:
+    Pak přidejte odkazy na Azure Maps šablonu stylů do `<head>` prvku souboru:
 
-        ```HTML
-        <link rel="stylesheet" href="node_modules/azure-maps-control/dist/atlas.min.css" type="text/css"> 
-        <script src="node_modules/azure-maps-control/dist/atlas.min.js"></script>
-        ```
+    ```HTML
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
+     ```
 
-    > [!Note]
+    > [!NOTE]
     > Definice TypeScript lze do aplikace importovat přidáním následujícího kódu:
     >
-    > ```Javascript
+    > ```javascript
     > import * as atlas from 'azure-maps-control';
     > ```
 
@@ -70,54 +77,59 @@ Mapu můžete vložit do webové stránky pomocí Ovládací prvek Mapa knihovny
 4. V těle stránky přidejte `<div>` prvek a poskytněte mu `id` **myMap**.
 
    ```HTML
-    <body>
+    <body onload="InitMap()">
         <div id="myMap"></div>
     </body>
    ```
 
-5. Pro inicializaci mapového ovládacího prvku definujte v těle HTML novou značku skriptu. `id` `<div>` Při vytváření instance třídy předejte v mapě nebo `HTMLElement` (například `document.getElementById('myMap')` ) jako první parametr `Map` . Použijte vlastní klíč účtu Azure Maps nebo přihlašovací údaje pro Azure Active Directory (AAD) k ověření mapování pomocí [možností ověřování](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions). 
+5. Nyní inicializujeme mapový ovládací prvek. Aby bylo možné ovládací prvek ověřit, budete muset vlastnit Azure Maps klíč předplatného nebo použít přihlašovací údaje Azure Active Directory (AAD) s [možnostmi ověřování](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions).
 
-   Pokud potřebujete vytvořit účet nebo najít klíč, postupujte podle pokynů v tématu [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps) a [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) . 
+    Pokud používáte klíč předplatného pro ověřování, zkopírujte a vložte následující prvek skriptu do `<head>` prvku a pod první `<script>` prvek. Nahraďte `<Your Azure Maps Key>` klíčem primárního předplatného Azure Maps.
 
-   Možnost **Language** určuje jazyk, který má být použit pro popisky a ovládací prvky mapy. Další informace o podporovaných jazycích najdete v tématu [podporované jazyky](supported-languages.md). Pokud k ověřování používáte klíč předplatného, použijte následující:
-
-   ```HTML
+     ```HTML
     <script type="text/javascript">
-        var map = new atlas.Map('myMap', {
-            center: [-122.33, 47.6],
-            zoom: 12,
-            language: 'en-US',
-            authOptions: {
-                authType: 'subscriptionKey',
-                subscriptionKey: '<Your Azure Maps Key>'
+        function InitMap()
+        {
+            var map = new atlas.Map('myMap', {
+                center: [-122.33, 47.6],
+                zoom: 12,
+                language: 'en-US',
+                authOptions: {
+                    authType: 'subscriptionKey',
+                    subscriptionKey: '<Your Azure Maps Key>'
+                }
             }
         });
     </script>
     ```
 
-   Pokud pro ověřování používáte Azure Active Directory (AAD), použijte následující:
+    Pokud pro ověřování používáte Azure Active Directory (AAD), zkopírujte a vložte následující prvek skriptu do `<head>` prvku a pod první `<script>` prvek.
 
-   ```HTML
+      ```HTML
     <script type="text/javascript">
-        var map = new atlas.Map('myMap', {
-            center: [-122.33, 47.6],
-            zoom: 12,
-            language: 'en-US',
-            authOptions: {
-                authType: 'aad',
-                clientId: '<Your AAD Client Id>',
-                aadAppId: '<Your AAD App Id>',
-                aadTenant: '<Your AAD Tenant Id>'
+        function InitMap()
+        {
+            var map = new atlas.Map('myMap', {
+                center: [-122.33, 47.6],
+                zoom: 12,
+                language: 'en-US',
+                authOptions: {
+                    authType: 'aad',
+                    clientId: '<Your AAD Client Id>',
+                    aadAppId: '<Your AAD App Id>',
+                    aadTenant: '<Your AAD Tenant Id>'
+                }
             }
         });
     </script>
    ```
 
-   Seznam ukázek, které ukazují, jak integrovat Azure Active Directory (AAD) se Azure Maps najdete [tady](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples). 
-    
-   Další informace najdete v dokumentu [ověřování pomocí Azure Maps](azure-maps-authentication.md) a také [Azure Maps UKÁZEK ověřování Azure AD](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples).
+    Další informace o ověřování pomocí Azure Maps naleznete v dokumentu [ověřování pomocí Azure Maps](azure-maps-authentication.md) . Seznam ukázek, které ukazují, jak integrovat Azure Active Directory (AAD) s Azure Maps, najdete [tady](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples).
 
-6. Volitelně můžete najít následující prvky meta značky do hlavní stránky, která je užitečná:
+    >[!TIP]
+    >V tomto příkladu jsme předali na `id` mapě `<div>` . Dalším způsobem, jak to provést, je předat do `HTMLElement` objektu předání `document.getElementById('myMap')` jako první parametr.
+
+6. Volitelně může být užitečné přidat následující `meta` prvky do `head` prvku stránky:
 
    ```HTML
     <!-- Ensures that IE and Edge uses the latest version and doesn't emulate an older version -->
@@ -127,7 +139,7 @@ Mapu můžete vložit do webové stránky pomocí Ovládací prvek Mapa knihovny
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    ```
 
-7. Celý soubor HTML by měl vypadat přibližně takto:
+7. To všechno dohromady, váš soubor HTML by měl vypadat přibližně jako následující kód:
 
    ```HTML
     <!DOCTYPE html>
@@ -147,6 +159,23 @@ Mapu můžete vložit do webové stránky pomocí Ovládací prvek Mapa knihovny
         <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
         <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
 
+
+        <script type="text/javascript">
+            //Create an instance of the map control and set some options.
+            function InitMap()
+            {
+                var map = new atlas.Map('myMap', {
+                    center: [-122.33, 47.6],
+                    zoom: 12,
+                    language: 'en-US',
+                    authOptions: {
+                        authType: 'subscriptionKey',
+                        subscriptionKey: '<Your Azure Maps Key>'
+                    }
+                });
+            }
+        </script>
+
         <style>
             html, body {
                 margin: 0;
@@ -158,21 +187,8 @@ Mapu můžete vložit do webové stránky pomocí Ovládací prvek Mapa knihovny
             }
         </style>
     </head>
-    <body>
+    <body onload="InitMap()">
         <div id="myMap"></div>
-
-        <script type="text/javascript">
-            //Create an instance of the map control and set some options.
-            var map = new atlas.Map('myMap', {
-                center: [-122.33, 47.6],
-                zoom: 12,
-                language: 'en-US',
-                authOptions: {
-                    authType: 'subscriptionKey',
-                    subscriptionKey: '<Your Azure Maps Key>'
-                }
-            });
-        </script>
     </body>
     </html>
     ```
@@ -206,8 +222,8 @@ map = new atlas.Map('myMap', {
 });
 ```
 
-> [!Note]
-> Díky webové sadě SDK je možné načíst více instancí mapy na stejné stránce s různými nastaveními jazyka a oblasti. Kromě toho lze tato nastavení aktualizovat po načtení mapy pomocí `setStyle` funkce mapy. 
+> [!NOTE]
+> Je možné načíst více instancí mapy na stejné stránce s jiným nastavením jazyka a oblasti. Kromě toho lze tato nastavení aktualizovat po načtení mapy pomocí `setStyle` funkce mapy.
 
 Tady je příklad Azure Maps s jazykem, který je nastaven na "fr-FR" a v místním zobrazení na hodnotu "auto".
 
@@ -219,7 +235,7 @@ Tady je příklad Azure Maps s jazykem, který je nastaven na "fr-FR" a v místn
 
 Sada Azure Maps Web SDK podporuje cloud Azure Government. Všechny adresy URL JavaScriptu a CSS použité pro přístup k sadě Azure Maps Web SDK zůstávají stejné. Aby bylo možné se připojit ke cloudové verzi Azure Government Azure Maps platformy, bude nutné provést následující úlohy.
 
-Při použití interaktivního ovládacího prvku mapy přidejte následující řádek kódu před vytvořením instance `Map` třídy. 
+Při použití interaktivního ovládacího prvku mapy přidejte následující řádek kódu před vytvořením instance `Map` třídy.
 
 ```javascript
 atlas.setDomain('atlas.azure.us');

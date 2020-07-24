@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 7bf71ce7c44229ccf19022e9cfb0162f9d77cd97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc55b24c4852028eb1244e97b48415ba08420e20
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80437700"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066531"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Provozní kontinuita a zotavení po havárii pro Azure Logic Apps
 
@@ -103,7 +103,7 @@ Můžete nastavit primární a sekundární umístění, aby instance aplikace l
 | Role primárního-sekundárního | Popis |
 |------------------------|-------------|
 | *Aktivní – aktivní* | Primární a sekundární instance aplikace logiky v obou umístěních aktivně zpracovávají požadavky následujícími způsoby: <p><p>- *Vyrovnávání zatížení*: obě instance můžou na každou instanci naslouchat i vyrovnávání zatížení, a to v případě potřeby. <p>- *Konkurenční spotřebitelé*: obě instance můžou fungovat jako konkurenční spotřebitelé, takže instance budou soutěžit na zprávy z fronty. Pokud dojde k selhání jedné instance, převezme další instance úlohu. |
-| *Aktivní-pasivní* | Primární instance aplikace logiky aktivně zpracovává celou úlohu, zatímco sekundární instance je pasivní (zakázaná nebo neaktivní). Sekundární čeká na signál, že primární je nedostupný nebo nefunguje kvůli přerušení nebo selhání a přebírá úlohu jako aktivní instanci. |
+| *Aktivní – pasivní* | Primární instance aplikace logiky aktivně zpracovává celou úlohu, zatímco sekundární instance je pasivní (zakázaná nebo neaktivní). Sekundární čeká na signál, že primární je nedostupný nebo nefunguje kvůli přerušení nebo selhání a přebírá úlohu jako aktivní instanci. |
 | Vrchní | Některé Logic Apps hrají roli aktivní-aktivní, zatímco jiné aplikace logiky hrají roli aktivní-pasivní. |
 |||
 
@@ -157,7 +157,7 @@ Když se vaše aplikace logiky spustí a začne běžet, stav aplikace je ulože
 
 Chcete-li minimalizovat počet nedokončených instancí pracovních postupů, můžete si vybrat z různých vzorů zpráv, které lze implementovat, například:
 
-* [Vzor fixního směrovacího lístku](https://docs.microsoft.com/biztalk/esb-toolkit/message-routing-patterns#routing-slip)
+* [Vzor fixního směrovacího lístku](/biztalk/esb-toolkit/message-routing-patterns#routing-slip)
 
   Tento model podnikové zprávy rozdělí obchodní proces do menších fází. Pro každou fázi nastavíte aplikaci logiky, která zpracovává úlohu pro danou fázi. Pro komunikaci mezi sebou vaše aplikace logiky používá protokol asynchronního zasílání zpráv, například Azure Service Bus fronty nebo témata. Pokud rozdělíte proces do menších fází, snížíte tím počet obchodních procesů, které se mohou zablokovat v neúspěšné instanci aplikace logiky. Obecnější informace o tomto modelu najdete v tématu [Enterprise Integration Patterns-Routing list](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RoutingTable.html).
 
@@ -165,7 +165,7 @@ Chcete-li minimalizovat počet nedokončených instancí pracovních postupů, m
 
   ![Rozdělení obchodního procesu na fáze reprezentované Logic Apps, které vzájemně komunikují pomocí Azure Service Bus fronty](./media/business-continuity-disaster-recovery-guidance/fixed-routing-slip-pattern.png)
 
-  Pokud primární i sekundární instance aplikace logiky sledují stejný vzor směrování ve svých místech, můžete [model konkurenčních příjemců](https://docs.microsoft.com/azure/architecture/patterns/competing-consumers) implementovat nastavením [rolí aktivních-Active](#roles) pro tyto instance.
+  Pokud primární i sekundární instance aplikace logiky sledují stejný vzor směrování ve svých místech, můžete [model konkurenčních příjemců](/azure/architecture/patterns/competing-consumers) implementovat nastavením [rolí aktivních-Active](#roles) pro tyto instance.
 
 * [Vzor správce procesů (zprostředkovatel)](https://www.enterpriseintegrationpatterns.com/patterns/messaging/ProcessManager.html)
 
@@ -249,7 +249,7 @@ V perspektivě zotavení po havárii se při nastavování primárních a sekund
   Například čtení z fronty zpráv, jako je Azure Service Bus fronta, používá stav na straně serveru, protože služba Řízení front zpráv udržuje zámky na zprávách, aby ostatní klienti nemohli číst stejné zprávy.
 
   > [!NOTE]
-  > Pokud vaše aplikace logiky potřebuje číst zprávy v určitém pořadí, například z fronty Service Bus, můžete použít model konkurenčního příjemce, ale pouze v kombinaci s Service Bus relacemi, které se také označují jako [ *sekvenční convoy* vzor](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy). V opačném případě musíte nastavit instance aplikace logiky s rolemi aktivní – pasivní.
+  > Pokud vaše aplikace logiky potřebuje číst zprávy v určitém pořadí, například z fronty Service Bus, můžete použít model konkurenčního příjemce, ale pouze v kombinaci s Service Bus relacemi, které se také označují jako [ *sekvenční convoy* vzor](/azure/architecture/patterns/sequential-convoy). V opačném případě musíte nastavit instance aplikace logiky s rolemi aktivní – pasivní.
 
 <a name="request-trigger"></a>
 
@@ -271,7 +271,7 @@ V perspektivě zotavení po havárii je Trigger požadavku pasivním přijímač
 
 * [Aktivní – pasivní](#roles): je aktivní jenom primární instance a zpracovává veškerou práci, zatímco sekundární instance čeká na přerušení nebo selhání primárního prostředí. Volající nebo směrovač určí, kdy se má volat sekundární instance.
 
-Jako doporučená architektura můžete použít Azure API Management jako proxy pro aplikace logiky, které používají triggery požadavků. API Management poskytuje [integrovanou odolnost mezi různými oblastmi a schopnost směrovat provoz napříč několika koncovými body](https://docs.microsoft.com/azure/api-management/api-management-howto-deploy-multi-region).
+Jako doporučená architektura můžete použít Azure API Management jako proxy pro aplikace logiky, které používají triggery požadavků. API Management poskytuje [integrovanou odolnost mezi různými oblastmi a schopnost směrovat provoz napříč několika koncovými body](../api-management/api-management-howto-deploy-multi-region.md).
 
 <a name="webhook-trigger"></a>
 
@@ -331,7 +331,7 @@ Pro tuto úlohu v sekundárním umístění vytvořte aplikaci sledovací logiky
 
 ### <a name="activate-your-secondary-instance"></a>Aktivace sekundární instance
 
-K automatické aktivaci sekundární instance můžete vytvořit aplikaci logiky, která volá rozhraní API pro správu, jako je [Azure Resource Manager konektor](https://docs.microsoft.com/connectors/arm/) , který aktivuje příslušné Logic Apps v sekundárním umístění. Po určitém počtu selhání můžete rozšířit aplikaci pro sledovací prostředí, aby volala tuto aplikaci logiky aktivace.
+K automatické aktivaci sekundární instance můžete vytvořit aplikaci logiky, která volá rozhraní API pro správu, jako je [Azure Resource Manager konektor](/connectors/arm/) , který aktivuje příslušné Logic Apps v sekundárním umístění. Po určitém počtu selhání můžete rozšířit aplikaci pro sledovací prostředí, aby volala tuto aplikaci logiky aktivace.
 
 <a name="collect-diagnostic-data"></a>
 
@@ -348,9 +348,9 @@ Můžete nastavit protokolování pro vaši aplikaci logiky a odeslat výsledná
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přehled odolnosti pro Azure](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)
-* [Kontrolní seznam k odolnosti pro konkrétní služby Azure](https://docs.microsoft.com/azure/architecture/checklist/resiliency-per-service)
-* [Správa dat pro odolnost v Azure](https://docs.microsoft.com/azure/architecture/framework/resiliency/data-management)
-* [Zálohování a zotavení po havárii pro aplikace Azure](https://docs.microsoft.com/azure/architecture/framework/resiliency/backup-and-recovery)
-* [Zotavení z přerušení služeb na úrovni celé oblasti](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)
+* [Přehled odolnosti pro Azure](/azure/architecture/framework/resiliency/overview)
+* [Kontrolní seznam k odolnosti pro konkrétní služby Azure](/azure/architecture/checklist/resiliency-per-service)
+* [Správa dat pro odolnost v Azure](/azure/architecture/framework/resiliency/data-management)
+* [Zálohování a zotavení po havárii pro aplikace Azure](/azure/architecture/framework/resiliency/backup-and-recovery)
+* [Zotavení z přerušení služeb na úrovni celé oblasti](/azure/architecture/resiliency/recovery-loss-azure-region)
 * [Smlouvy o úrovni služeb Microsoftu (SLA) pro služby Azure](https://azure.microsoft.com/support/legal/sla/)

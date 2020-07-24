@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: f3bd7bc78eeb62cc33a01ed31bb04d94078cae4b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9a47ac9af1d96cbd65ed68dbafccefa3b95bb20
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80294335"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065489"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Streamování Widevine pro Android v offline režimu  
 
@@ -29,7 +29,7 @@ ms.locfileid: "80294335"
 > * [Verze 2](offline-widevine-for-android.md)
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 
 Kromě ochrany obsahu pro online streamování, předplatné mediálního obsahu a služby pronájmu nabízí obsah ke stažení, který funguje, když nejste připojení k Internetu. Je možné, že budete muset stáhnout obsah na telefon nebo tablet pro přehrávání v režimu v letadle, když se dolétající z sítě. Další scénáře, ve kterých byste mohli chtít stáhnout obsah:
 
@@ -181,7 +181,7 @@ To znamená, že služba tokenů zabezpečení (STS) musí mít obchodní logiku
 
 ### <a name="question"></a>Otázka
 
-V případě Widevine úrovní zabezpečení v dokumentaci k dokumentaci k [Widevine architektury DRM](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf) společnosti Google, definuje tři různé úrovně zabezpečení. V [Azure Media Services dokumentaci k šabloně licence Widevine](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview)je ale k disřádku pět různých úrovní zabezpečení. Jaký je vztah nebo mapování mezi dvěma různými sadami úrovní zabezpečení?
+V případě Widevine úrovní zabezpečení v dokumentaci k dokumentaci k [Widevine architektury DRM](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf) společnosti Google, definuje tři různé úrovně zabezpečení. V [Azure Media Services dokumentaci k šabloně licence Widevine](./media-services-widevine-license-template-overview.md)je ale k disřádku pět různých úrovní zabezpečení. Jaký je vztah nebo mapování mezi dvěma různými sadami úrovní zabezpečení?
 
 ### <a name="answer"></a>Odpověď
 
@@ -191,7 +191,7 @@ V [přehledu architektury DRM](https://storage.googleapis.com/wvdocs/Widevine_DR
 2.  Úroveň zabezpečení 2: provádí kryptografii (ale ne zpracování videa) v rámci TEE: dešifrované vyrovnávací paměti jsou vraceny do aplikační domény a zpracovávány prostřednictvím samostatného grafického hardwaru nebo softwaru. Na úrovni 2 se však kryptografické informace stále zpracovávají pouze v rámci TEE.
 3.  Úroveň zabezpečení 3 nemá na zařízení TEE. K ochraně kryptografických informací a dešifrovaného obsahu v hostitelském operačním systému můžou být podniknuta vhodná opatření. Implementace úrovně 3 může zahrnovat také hardwarový šifrovací modul, ale vylepšuje výkon, ne zabezpečení.
 
-Ve stejnou dobu v [Azure Media Services dokumentaci k šabloně licence Widevine](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview)může mít vlastnost security_level content_key_specs následující pět různých hodnot (požadavky na odolnost klienta pro přehrávání):
+Ve stejnou dobu v [Azure Media Services dokumentaci k šabloně licence Widevine](./media-services-widevine-license-template-overview.md)může mít vlastnost security_level content_key_specs následující pět různých hodnot (požadavky na odolnost klienta pro přehrávání):
 
 1.  Je vyžadováno šifrování WhiteBOX založené na softwaru.
 2.  Vyžaduje se softwarová kryptografie a zakódováný dekodér.
@@ -224,6 +224,6 @@ Existují dva způsoby, jak zvýšit rychlost stahování:
 
 * Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Tento článek popisuje, jak implementovat přehrávání offline režimu pro ČÁRKOVANý obsah chráněný Widevine na zařízeních s Androidem.  Také si odpověděli na některé běžné otázky týkající se offline streamování chráněného obsahu Widevine.

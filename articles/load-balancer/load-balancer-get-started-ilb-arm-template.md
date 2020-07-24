@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 7e8f34f3d68a957dbd5bb13b69f751184d224e2c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 785054222dc3281b11b5e6abe1b82f67e2fc5ace
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961111"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066641"
 ---
 # <a name="create-an-internal-load-balancer-using-a-template"></a>Vytvoření interního nástroje pro vyrovnávání zatížení pomocí šablony
 
@@ -40,7 +40,7 @@ Ukázková šablona, která je k dispozici ve veřejném úložišti, používá
 
 Pokud chcete nasadit šablonu, kterou jste stáhli, pomocí prostředí PowerShell, použijte následující postup.
 
-1. Pokud jste nikdy nepoužili Azure PowerShell, přečtěte si [článek Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview) a postupovat podle pokynů, jak na to, abyste se mohli přihlásit k Azure a vybrat své předplatné.
+1. Pokud jste nikdy nepoužili Azure PowerShell, přečtěte si [článek Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/) a postupovat podle pokynů, jak na to, abyste se mohli přihlásit k Azure a vybrat své předplatné.
 2. Stáhněte si soubor parametrů na místní disk.
 3. Upravte soubor a uložte ho.
 4. Spuštěním rutiny **New-AzResourceGroupDeployment** vytvořte skupinu prostředků pomocí šablony.

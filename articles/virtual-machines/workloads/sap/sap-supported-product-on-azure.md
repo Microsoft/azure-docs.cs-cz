@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b2f4e7a16c967b26b545d1405f973bf8b8afaae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 217d5b060ca1b7d32cd334049db9b7c68b7949a0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82086126"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065078"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Který software SAP se podporuje pro nasazení Azure
 Tento článek popisuje, jak zjistit, který software SAP je podporován pro nasazení Azure a jaké jsou nezbytné verze operačního systému nebo verze DBMS.
@@ -87,12 +87,12 @@ Znalost verzí DBMS, které jsou podporované s cílovou infrastrukturou Azure, 
 V Azure jsou k dispozici dvě služby, které se dají použít ke spuštění databáze HANA:
 
 - Azure Virtual Machines
-- [Velké instance HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+- [Velké instance HANA](./hana-overview-architecture.md)
 
 Pro provozování SAP HANA má SAP více a silnější podmínky infrastruktury, než aby běžely NetWeaver nebo jiné aplikace SAP a DBMS. Výsledkem může být menší počet virtuálních počítačů Azure, které by mohly spouštět SAP HANA DBMS. Seznam podporované infrastruktury Azure podporované pro SAP HANA najdete v části [SAP HANA hardwarový adresář](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). 
 
 > [!NOTE]
-> Jednotky, které začínají písmenem, jsou jednotky [velkých instancí Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) . 
+> Jednotky, které začínají písmenem, jsou jednotky [velkých instancí Hana](./hana-overview-architecture.md) . 
 
 > [!NOTE]
 > Pro SAP není závislá žádná konkrétní certifikace na SAP HANA hlavních verzích. V rozporu se společným stanoviskem je **scénář certifikace** sloupce na [platformách certifikovaných pro IaaS s certifikací Hana](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) **žádný příkaz o certifikaci hlavní verze Hana nebo podverze s certifikací**. Musíte předpokládat, že všechny uvedené jednotky, které je možné použít pro HANA 1,0 a HANA 2,0, pokud jsou podporované vydané verze operačního systému pro konkrétní jednotky, podporuje také verze HANA 1,0. 
@@ -138,12 +138,11 @@ Podpora SAP bitů 10,1 SP08 je popsaná v tématu [podpora SAP – poznámka #24
 Podpora platformy SAP Hybris pro Commerce v Azure je podrobně popsána v [dokumentaci k Hybris](https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/1811/en-US/8c71300f866910149b40c88dfc0de431.html). Od podporovaného systému DBMS pro platformu SAP Hybris pro Commerce se uvádí jako:
 
 - SQL Server a Oracle na platformě operačního systému Windows. Stejné minimální vydané verze platí jako pro SAP NetWeaver. Podrobnosti najdete v [poznámkách k podpoře SAP #1928533](https://launchpad.support.sap.com/#/notes/1928533) .
-- SAP HANA na Red Hat a SUSE Linux. SAP HANA certifikované typy virtuálních počítačů jsou popsány dříve v [tomto dokumentu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#sap-hana-support). Platforma SAP (Hybris) Commerce je považována za úlohu OLTP.
+- SAP HANA na Red Hat a SUSE Linux. SAP HANA certifikované typy virtuálních počítačů jsou popsány dříve v [tomto dokumentu](#sap-hana-support). Platforma SAP (Hybris) Commerce je považována za úlohu OLTP.
 - SQL Azure DB s platformou SAP (Hybris) pro Commerce verze 1811
 
 
 
 
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si další kroky v tématu [plánování a implementace služby Azure Virtual Machines pro SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)
-
+Přečtěte si další kroky v tématu [plánování a implementace služby Azure Virtual Machines pro SAP NetWeaver](./planning-guide.md)

@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 986440db7f8d4e1d4d46832543f58fa2985a4df4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ffcda4a33c43866c3b580a60c87c1ffca59bbc4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83831615"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066342"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Vytváření smyček opakujících akce pracovních postupů nebo zpracovávajících pole v Azure Logic Apps
 
@@ -21,7 +22,7 @@ Chcete-li opakovat akce, dokud není splněna podmínka nebo změny stavu, můž
 > [!TIP]
 > Pokud máte aktivační událost, která přijímá pole a chcete pro každou položku pole Spustit pracovní postup, můžete toto pole v *dávce* [ **SplitOn** vlastností triggeru](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
@@ -74,7 +75,7 @@ Tato ukázková aplikace logiky pošle denní souhrn informačního kanálu RSS 
 
    ![Přidání kroků do smyčky foreach](media/logic-apps-control-flow-loops/for-each-loop-with-step.png)
 
-5. Uložte svou aplikaci logiky. Pokud chcete aplikaci logiky otestovat ručně, na panelu nástrojů návrháře klikněte na **Spustit**.
+5. Uložte aplikaci logiky. Pokud chcete aplikaci logiky otestovat ručně, na panelu nástrojů návrháře klikněte na **Spustit**.
 
 <a name="for-each-json"></a>
 
@@ -161,7 +162,7 @@ Počínaje 8:00 ráno každý den Tato ukázková aplikace logiky zvýší prom�
 
 > [!NOTE]
 > Tyto kroky používají Office 365 Outlook, ale můžete použít libovolného poskytovatele e-mailu, který Logic Apps podporuje. 
-> [Tady se můžete podívat na seznam konektorů](https://docs.microsoft.com/connectors/). Pokud použijete jiný e-mailový účet, obecné kroky zůstanou stejné, ale vaše uživatelské rozhraní může vypadat trochu jinak. 
+> [Tady se můžete podívat na seznam konektorů](/connectors/). Pokud použijete jiný e-mailový účet, obecné kroky zůstanou stejné, ale vaše uživatelské rozhraní může vypadat trochu jinak. 
 
 1. Vytvoření prázdné aplikace logiky V návrháři aplikace logiky pod vyhledávacím polem vyberte **vše**. Vyhledejte "opakování". 
    V seznamu triggery vyberte tuto aktivační událost: **opakování – plán**
@@ -174,7 +175,7 @@ Počínaje 8:00 ráno každý den Tato ukázková aplikace logiky zvýší prom�
 
    | Vlastnost | Hodnota |
    | -------- | ----- |
-   | **Doba** | 1 | 
+   | **Interval** | 1 | 
    | **Frekvence** | Den |
    | **V těchto hodinách** | 8 |
    ||| 
@@ -191,7 +192,7 @@ Počínaje 8:00 ráno každý den Tato ukázková aplikace logiky zvýší prom�
    | Vlastnost | Hodnota | Popis |
    | -------- | ----- | ----------- |
    | **Název** | Omezení | Název vaší proměnné | 
-   | **Typ** | Integer | Datový typ proměnné | 
+   | **Typ** | Celé číslo | Datový typ proměnné | 
    | **Hodnota** | 0 | Počáteční hodnota vaší proměnné | 
    |||| 
 
@@ -229,14 +230,14 @@ Počínaje 8:00 ráno každý den Tato ukázková aplikace logiky zvýší prom�
 
       ![Nastavení vlastností e-mailu](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
 
-      | Vlastnost | Hodnota | Description |
+      | Vlastnost | Hodnota | Popis |
       | -------- | ----- | ----------- | 
       | **Schopn** | *\<email-address\@domain>* | E-mailová adresa příjemce Pro účely testování použijte svoji vlastní e-mailovou adresu. | 
-      | **Subjekt** | Aktuální hodnota pro omezení je **limit** . | Zadejte předmět e-mailu. V tomto příkladu se ujistěte, že jste zahrnuli **mezní** proměnnou. | 
+      | **Předmět** | Aktuální hodnota pro omezení je **limit** . | Zadejte předmět e-mailu. V tomto příkladu se ujistěte, že jste zahrnuli **mezní** proměnnou. | 
       | **Text** | <*e-mail – obsah*> | Zadejte obsah e-mailové zprávy, kterou chcete odeslat. V tomto příkladu zadejte libovolný text, který chcete. | 
       |||| 
 
-1. Uložte svou aplikaci logiky. Pokud chcete aplikaci logiky otestovat ručně, na panelu nástrojů návrháře klikněte na **Spustit**.
+1. Uložte aplikaci logiky. Pokud chcete aplikaci logiky otestovat ručně, na panelu nástrojů návrháře klikněte na **Spustit**.
 
       Po spuštění logiky dostanete e-mail s obsahem, který jste zadali:
 
@@ -246,10 +247,10 @@ Počínaje 8:00 ráno každý den Tato ukázková aplikace logiky zvýší prom�
 
 Smyčka "do" má výchozí omezení, která zastaví provádění, pokud nastane kterákoli z těchto podmínek:
 
-| Vlastnost | Výchozí hodnota | Description | 
+| Vlastnost | Výchozí hodnota | Popis | 
 | -------- | ------------- | ----------- | 
 | **Výpočtu** | 60 | Nejvyšší počet cyklů, které jsou spuštěny před ukončením smyčky. Výchozí hodnota je 60 cyklů. | 
-| **Časový limit** | PT1H | Maximální doba, po kterou se má spustit smyčka před ukončením smyčky. Výchozí hodnota je jedna hodina a je zadána ve formátu ISO 8601. <p>Hodnota časového limitu se vyhodnocuje pro každý cyklus smyčky. Pokud akce ve smyčce trvá déle, než je časový limit, aktuální cyklus se nezastaví. Další cyklus se ale nespustí, protože podmínka limitu není splněná. | 
+| **Prodlev** | PT1H | Maximální doba, po kterou se má spustit smyčka před ukončením smyčky. Výchozí hodnota je jedna hodina a je zadána ve formátu ISO 8601. <p>Hodnota časového limitu se vyhodnocuje pro každý cyklus smyčky. Pokud akce ve smyčce trvá déle, než je časový limit, aktuální cyklus se nezastaví. Další cyklus se ale nespustí, protože podmínka limitu není splněná. | 
 |||| 
 
 Chcete-li změnit tato výchozí omezení, vyberte možnost **Zobrazit upřesňující možnosti** v obrazci akce smyčky.
@@ -334,7 +335,7 @@ V tomto příkladu "dokud" smyčka volá koncový bod HTTP, který vytvoří pro
 
 ## <a name="get-support"></a>Získání podpory
 
-* Otázky najdete na stránce s [dotazem na&Microsoft Q pro Azure Logic Apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
+* Otázky najdete na stránce s [dotazem na&Microsoft Q pro Azure Logic Apps](/answers/topics/azure-logic-apps.html).
 * Chcete-li odesílat nebo hlasovat o funkcích a návrzích, [Azure Logic Apps Web zpětné vazby uživatelů](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další kroky

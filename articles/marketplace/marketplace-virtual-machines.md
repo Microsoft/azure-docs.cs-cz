@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 04/15/2020
-ms.openlocfilehash: 2d615e81891d68327b3225138495262d4eab9aa3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: dac67c6dae801d11866f7c4978a050a0cb2fa1dd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116722"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065642"
 ---
 # <a name="publishing-guide-for-virtual-machine-offers"></a>Průvodce publikováním pro nabídky virtuálních počítačů
 
@@ -47,7 +47,7 @@ Typ nabídky *virtuálního počítače* použijte, když nasadíte virtuální 
 > V tuto chvíli se finanční závazky spojené s smlouva Enterprise dají použít k používání Azure vašeho virtuálního počítače, ale ne k licenčním poplatkům za software.  
 > 
 > [!NOTE]
-> Zjišťování a nasazování virtuálního počítače můžete omezit na konkrétní sadu zákazníků publikováním image a cen jako soukromé nabídky. Soukromý nabízí možnost vytvářet exkluzivní nabídky pro nejbližší zákazníky a nabízet přizpůsobený software a požadavky. Přizpůsobené výrazy vám umožňují zvýraznit celou řadu scénářů, včetně jejich využívání se specializovanými cenami a podmínkami, a také prvotním přístupem k omezenému softwaru pro vydání. Soukromé nabídky vám umožňují poskytovat konkrétní ceny nebo produkty omezené sadě zákazníků tím, že pomocí těchto údajů vytvoří novou SKLADOVOU položku.  
+> Zjišťování a nasazování virtuálního počítače můžete omezit na konkrétní sadu zákazníků publikováním image a cen jako soukromé nabídky. Soukromý nabízí možnost vytvářet exkluzivní nabídky pro nejbližší zákazníky a nabízet přizpůsobený software a požadavky. Přizpůsobené výrazy vám umožňují zvýraznit celou řadu scénářů, včetně jejich využívání se specializovanými cenami a podmínkami, a také prvotním přístupem k omezenému softwaru pro vydání. Soukromé nabídky umožňují poskytovat konkrétní ceny nebo produkty omezené sadě zákazníků tím, že vytvoří nový plán s těmito podrobnostmi.  
 >
 > Další informace najdete v tématu [soukromé nabídky na Azure Marketplace](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace).  
 

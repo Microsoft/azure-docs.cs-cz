@@ -6,22 +6,23 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: a7f9ab478067cecbac6f01a5a969bf48653b6dd1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 796558c2579504b673fd15c468ce635c6b1cca8e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83831496"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066356"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Vytvořte podmíněné příkazy, které řídí akce pracovního postupu v Azure Logic Apps
 
-Pokud chcete spustit konkrétní akce v aplikaci logiky až po předání zadané podmínky, přidejte *podmíněný příkaz*. Tato struktura ovládacího prvku porovnává data v pracovním postupu s konkrétními hodnotami nebo poli. Pak můžete zadat různé akce, které se spustí na základě toho, jestli data splňují podmínky. Podmínky můžete vnořovat mezi sebou.
+Pokud chcete spustit konkrétní akce v aplikaci logiky až po předání zadané podmínky, přidejte *podmíněný příkaz*. Tato řídicí struktura porovnává data v pracovním postupu s konkrétními hodnotami nebo poli. Pak můžete zadat různé akce, které se spustí na základě toho, jestli data splňují podmínky. Podmínky můžete vnořovat mezi sebou.
 
 Předpokládejme například, že máte aplikaci logiky, která posílá příliš mnoho e-mailů, když se nové položky zobrazí v informačním kanálu RSS webu. Můžete přidat podmíněný příkaz k odeslání e-mailu pouze v případě, že nová položka obsahuje konkrétní řetězec. 
 
 > [!TIP]
 > Pro spuštění různých kroků na základě různých specifických hodnot použijte místo toho [*příkaz switch*](../logic-apps/logic-apps-control-flow-switch-statement.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -75,7 +76,7 @@ Předpokládejme například, že máte aplikaci logiky, která posílá příli
    > [!TIP]
    > Existující akce lze přetáhnout do **hodnoty if true** a pokud se jedná o **falešnou** cestu.
 
-1. Uložte svou aplikaci logiky.
+1. Uložte aplikaci logiky.
 
 Tato aplikace logiky teď odesílá poštu jenom v případě, že nové položky v informačním kanálu RSS splňují vaši podmínku.
 
@@ -109,7 +110,7 @@ Tady je definice kódu vysoké úrovně za podmíněným příkazem:
 
 ## <a name="get-support"></a>Získání podpory
 
-* Otázky najdete na stránce s [dotazem na&Microsoft Q pro Azure Logic Apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
+* Otázky najdete na stránce s [dotazem na&Microsoft Q pro Azure Logic Apps](/answers/topics/azure-logic-apps.html).
 * Chcete-li odesílat nebo hlasovat o funkcích a návrzích, navštivte [web Azure Logic Apps pro zpětnou vazbu uživatelů](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další kroky

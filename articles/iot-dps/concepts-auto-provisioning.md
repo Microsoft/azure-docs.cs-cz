@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: c94fa6b851dfc9923628a738a15f7c245204f73f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4755d3ac30a4f6fdc0568dd88fa0e362d7d140a9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74975325"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066560"
 ---
 # <a name="auto-provisioning-concepts"></a>Koncepce automatického zřizování
 
@@ -46,7 +47,7 @@ Automatické zřizování také umístí požadavky na výrobce zařízení, kte
 
 Řada rychlých startů je k dispozici v obsahu vlevo, což vám umožní vysvětlit Automatické zřizování prostřednictvím praktických zkušeností. Aby bylo možné zjednodušit a zjednodušit proces učení, používá se software k simulaci fyzického zařízení pro registraci a registraci. Některé rychlé starty vyžadují, abyste splnili operace pro více rolí, včetně operací pro neexistující role, a to kvůli simulované povaze rychlých startů.
 
-| Role | Operace | Description |
+| Role | Operace | Popis |
 |------| --------- | ------------|
 | Manufacturer | Adresa URL pro kódování identity a registrace | Na základě použitého mechanismu ověřování je výrobce zodpovědný za kódování informací o identitě zařízení a adresu URL pro registraci služby Device Provisioning.<br><br>**Rychlé starty**: vzhledem k tomu, že zařízení je simulované, není k dispozici žádná role výrobce. Podrobnosti o tom, jak získáte tyto informace, které se používají při kódování ukázkové registrační aplikace, najdete v tématu role vývojáře. |
 | | Zadejte identitu zařízení. | Jako původce informace o identitě zařízení je výrobce zodpovědný za jeho komunikaci s operátorem (nebo určeným agentem) nebo jeho přímým zápisem do služby Device Provisioning prostřednictvím rozhraní API.<br><br>**Rychlé starty**: vzhledem k tomu, že zařízení je simulované, není k dispozici žádná role výrobce. Podrobnosti o tom, jak získat identitu zařízení, která se používá k registraci simulovaného zařízení v instanci služby Device Provisioning, najdete v tématu role operátora. |
@@ -102,10 +103,10 @@ Začněte tím, že vyplníte "nastavení automatického zřizování", které n
 
 Pak pokračujte v rychlém startu "automatické zřízení simulovaného zařízení", které vyhovuje mechanismu ověřování zařízení a předvolbu pro sadu SDK/jazyka služeb Device Provisioning. V tomto rychlém startu si projdete fáze "registrace zařízení" a "registrace zařízení a konfigurace": 
 
-|  | Mechanismus ověřování simulovaného zařízení | Rychlý Start SDK/jazyk |  |
-|--|--|--|--|
-|  | Čip TPM (Trusted Platform Module) | [R](quick-create-simulated-device.md)<br>[Java](quick-create-simulated-device-tpm-java.md)<br>[C#](quick-create-simulated-device-tpm-csharp.md)<br>[Python](quick-create-simulated-device-tpm-python.md) |  |
-|  | Certifikát X. 509 | [R](quick-create-simulated-device-x509.md)<br>[Java](quick-create-simulated-device-x509-java.md)<br>[C#](quick-create-simulated-device-x509-csharp.md)<br>[Node.js](quick-create-simulated-device-x509-node.md)<br>[Python](quick-create-simulated-device-x509-python.md) |  |
+| Mechanismus ověřování simulovaného zařízení | Rychlý Start SDK/jazyk |
+| -------------------------------------- | ----------------------- |
+| Čip TPM (Trusted Platform Module) | [R](quick-create-simulated-device.md)<br>[Java](quick-create-simulated-device-tpm-java.md)<br>[C#](quick-create-simulated-device-tpm-csharp.md)<br>[Python](quick-create-simulated-device-tpm-python.md) |
+| Certifikát X. 509 | [R](quick-create-simulated-device-x509.md)<br>[Java](quick-create-simulated-device-x509-java.md)<br>[C#](quick-create-simulated-device-x509-csharp.md)<br>[Node.js](quick-create-simulated-device-x509-node.md)<br>[Python](quick-create-simulated-device-x509-python.md) |
 
 
 

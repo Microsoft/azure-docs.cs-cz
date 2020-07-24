@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 39fcf5d0fe2273c4debd3ae5ebe5fd1190ddc959
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d413b2babda4c73f9f29ce3750bf7d0461db43c1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77616951"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065105"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Co je SAP HANA ve velkých instancích Azure?
 
@@ -38,8 +39,8 @@ Od července 2019 rozlišujeme mezi dvěma různými revizemi razítek velkých 
 - "Revize 3" (rev 3): jsou razítka, která byla k dispozici pro zákazníka k nasazení do července 2019
 - "Revize 4" (Rev 4): nový návrh razítka, který je nasazený v těsné blízkosti hostitelů virtuálních počítačů Azure a který je doposud vydaný v oblastech Azure v:
     -  USA – západ 2 
-    -  USA – východ 
-    -  Západní Evropa
+    -  East US 
+    -  West Europe
     -  Severní Evropa
 
 
@@ -53,8 +54,8 @@ Různé dokumenty s pokyny pro velké instance HANA se týkají těchto oblastí
 - [Instalace a konfigurace SAP HANA (velké instance) v Azure](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [SAP HANA (velké instance) s vysokou dostupností a zotavením po havárii v Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Řešení potíží a monitorování v Azure SAP HANA (velké instance)](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Nastavení vysoké dostupnosti v SUSE pomocí STONITH](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/ha-setup-with-stonith)
-- [Zálohování a obnovení operačního systému pro SKU typu II u razítek revize 3](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-backup-type-ii-skus)
+- [Nastavení vysoké dostupnosti v SUSE pomocí STONITH](./ha-setup-with-stonith.md)
+- [Zálohování a obnovení operačního systému pro SKU typu II u razítek revize 3](./os-backup-type-ii-skus.md)
 
 **Další kroky**
 - Přečtěte si informace [o těchto pojmech](hana-know-terms.md)

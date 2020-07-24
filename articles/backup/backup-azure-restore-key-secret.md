@@ -3,12 +3,12 @@ title: Obnovit tajný klíč Key Vault Key & pro šifrovaný virtuální počít
 description: Naučte se obnovit Key Vault klíč a tajný kód v Azure Backup pomocí PowerShellu.
 ms.topic: conceptual
 ms.date: 08/28/2017
-ms.openlocfilehash: 826b3917fda820ed02cde425ca5a394bffec0df1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49628697b7a271fed55c752026026ab57b17cd4d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82186817"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067214"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Obnovení klíče a tajného kódu Key Vault pro šifrované virtuální počítače pomocí Azure Backup
 
@@ -16,10 +16,10 @@ Tento článek pojednává o použití zálohování virtuálních počítačů 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Zálohování šifrovaných virtuálních počítačů** – šifrované virtuální počítače Azure se zálohovali pomocí Azure Backup. Podrobnosti o tom, jak zálohovat šifrované virtuální počítače Azure, najdete v článku [Správa zálohování a obnovení virtuálních počítačů Azure pomocí PowerShellu](backup-azure-vms-automation.md) .
-* **Konfigurace Azure Key Vault** – Ujistěte se, že je již přítomen Trezor klíčů, pro který jsou klíče a tajné kódy nutné obnovit. Podrobnosti o správě trezoru klíčů najdete v článku [Začínáme s Azure Key Vault](../key-vault/key-vault-get-started.md) .
+* **Konfigurace Azure Key Vault** – Ujistěte se, že je již přítomen Trezor klíčů, pro který jsou klíče a tajné kódy nutné obnovit. Podrobnosti o správě trezoru klíčů najdete v článku [Začínáme s Azure Key Vault](../key-vault/general/overview.md) .
 * **Obnovit disk** – Ujistěte se, že jste aktivovali úlohu obnovení pro obnovení disků pro šifrovaný virtuální počítač pomocí [kroků PowerShellu](backup-azure-vms-automation.md#restore-an-azure-vm). Důvodem je to, že tato úloha v účtu úložiště vygeneruje soubor JSON obsahující klíče a tajné klíče, aby se obnovil zašifrovaný virtuální počítač.
 
 ## <a name="get-key-and-secret-from-azure-backup"></a>Získání klíče a tajného klíče z Azure Backup

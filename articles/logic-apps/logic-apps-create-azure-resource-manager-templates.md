@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: a9e6e8276733eeed88561ed39a6702aec76286a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07fb91f081719a2e51cff45be67bbe9f362123f6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317782"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066073"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Vytváření šablon Azure Resource Manageru pro automatizaci nasazení pro Azure Logic Apps
 
@@ -49,14 +49,14 @@ Předpokládejme například, že máte aplikaci logiky, která přijímá zprá
 
 Tyto ukázky ukazují, jak vytvořit a nasadit Logic Apps pomocí Azure Resource Manager šablon, Azure Pipelines v Azure DevOps a Azure PowerShell:
 
-* [Ukázka: připojení k Azure Service Bus frontám z Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Ukázka: připojení k Azure Storage účtům z Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Ukázka: nastavte akci aplikace Function App pro Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Ukázka: připojení k účtu pro integraci z Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
+* [Ukázka: připojení k Azure Service Bus frontám z Azure Logic Apps](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Ukázka: připojení k Azure Storage účtům z Azure Logic Apps](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Ukázka: nastavte akci aplikace Function App pro Azure Logic Apps](/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Ukázka: připojení k účtu pro integraci z Azure Logic Apps](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
 
 ### <a name="install-powershell-modules"></a>Nainstalovat moduly PowerShellu
 
-1. Pokud jste to ještě neudělali, nainstalujte [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+1. Pokud jste to ještě neudělali, nainstalujte [Azure PowerShell](/powershell/azure/install-az-ps).
 
 1. Nejjednodušší způsob, jak nainstalovat modul LogicAppTemplate z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/LogicAppTemplate), získáte spuštěním tohoto příkazu:
 
@@ -80,7 +80,7 @@ Když `Get-LogicAppTemplate` příkaz spustíte s tímto nástrojem, příkaz ne
 
 ### <a name="generate-template-with-powershell"></a>Generování šablony pomocí PowerShellu
 
-Pokud chcete vygenerovat šablonu po instalaci modulu LogicAppTemplate a rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), spusťte tento příkaz PowerShellu:
+Pokud chcete vygenerovat šablonu po instalaci modulu LogicAppTemplate a rozhraní příkazového [řádku Azure CLI](/cli/azure/?view=azure-cli-latest), spusťte tento příkaz PowerShellu:
 
 ```text
 PS> Get-LogicAppTemplate -Token (az account get-access-token | ConvertFrom-Json).accessToken -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json

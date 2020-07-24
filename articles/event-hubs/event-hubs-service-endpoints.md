@@ -2,13 +2,13 @@
 title: Koncové body služby Virtual Network – Azure Event Hubs | Microsoft Docs
 description: Tento článek poskytuje informace o tom, jak přidat koncový bod služby Microsoft. EventHub do virtuální sítě.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: cf8b956a38f0b22581da3608cd64219aba484988
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/16/2020
+ms.openlocfilehash: 134e310e0859bb6c0a50630f467513e07e6ff390
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315436"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066703"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Použití koncových bodů služby Virtual Network s využitím Azure Event Hubs
 
@@ -24,7 +24,6 @@ Výsledkem je privátní a izolovaný vztah mezi úlohami vázanými na podsíť
 > Důvěryhodné služby společnosti Microsoft nejsou podporovány, pokud jsou implementovány virtuální sítě.
 >
 > Běžné scénáře Azure, které nefungují s virtuálními sítěmi (Všimněte si, že seznam **není vyčerpávající)** –
-> - Azure Monitor (nastavení diagnostiky)
 > - Azure Stream Analytics
 > - Integrace s Azure Event Grid
 > - Trasy k Azure IoT Hub

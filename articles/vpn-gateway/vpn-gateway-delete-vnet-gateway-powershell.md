@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.date: 02/07/2019
 ms.author: cherylmc
 ms.topic: how-to
-ms.openlocfilehash: c9b6c915fe986e0a953a4e5c503e79f39f3d40ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54fe4486d43a40e54a0aeae36963c0271fae6c2b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987993"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064523"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>Odstranění brány virtuální sítě pomocí PowerShellu
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ Existuje několik různých přístupů, které můžete provést, pokud chcete 
 
 ### <a name="1-download-the-latest-azure-resource-manager-powershell-cmdlets"></a>1. Stáhněte nejnovější rutiny prostředí PowerShell pro Azure Resource Manager.
 
-Stáhněte si a nainstalujte nejnovější verzi rutin Azure Resource Manager PowerShellu. Další informace o stažení a instalaci rutin PowerShellu najdete v tématu [instalace a konfigurace Azure PowerShell](/powershell/azure/overview).
+Stáhněte si a nainstalujte nejnovější verzi rutin Azure Resource Manager PowerShellu. Další informace o stažení a instalaci rutin PowerShellu najdete v tématu [instalace a konfigurace Azure PowerShell](/powershell/azure/).
 
 ### <a name="2-connect-to-your-azure-account"></a>2. Připojte se k účtu Azure.
 

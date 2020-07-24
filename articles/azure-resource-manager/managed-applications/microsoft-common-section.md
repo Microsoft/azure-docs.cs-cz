@@ -5,11 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 999a7386ee7c5b3ef76f87280cc2d0cd45f143cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 924aff8f2ba3d796b65f52494845f3b10018065c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75652252"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063982"
 ---
 # <a name="microsoftcommonsection-ui-element"></a>Microsoft. Common. Section – element uživatelského rozhraní
 
@@ -17,7 +18,7 @@ Ovládací prvek, který seskupí jeden nebo více prvků pod záhlavím.
 
 ## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
 
-![Microsoft.Common.Section](./media/managed-application-elements/microsoft.common.section.png)
+![Microsoft.Common.Section](./media/managed-application-elements/microsoft-common-section.png)
 
 ## <a name="schema"></a>Schéma
 
@@ -48,7 +49,7 @@ Ovládací prvek, který seskupí jeden nebo více prvků pod záhlavím.
 - Tento prvek nepodporuje `toolTip` vlastnost.
 
 ## <a name="sample-output"></a>Ukázkový výstup
-Pro přístup k výstupním hodnotám prvků v `elements` použijte funkce [základní ()](create-uidefinition-functions.md#basics) nebo [kroky ()](create-uidefinition-functions.md#steps) a zápis tečky:
+Pro přístup k výstupním hodnotám prvků v `elements` použijte funkce [základní ()](create-ui-definition-referencing-functions.md#basics) nebo [kroky ()](create-ui-definition-referencing-functions.md#steps) a zápis tečky:
 
 ```json
 steps('configuration').section1.text1

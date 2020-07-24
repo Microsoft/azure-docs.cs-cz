@@ -3,17 +3,17 @@ title: Použití modulu Azure Mapsch vnitřních map
 description: Naučte se, jak používat modul mapy Vnitřníchy Microsoft Azure map pro vykreslování map vložením knihoven JavaScript modulu.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6e7b6c7ddb33d42cca66698c87c82477f3e55621
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5f7bca363e22524546e7ee46bf44ddb18dacf00d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517463"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064240"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>Použití modulu Azure Mapsch vnitřních map
 
@@ -42,16 +42,14 @@ Pokud chcete použít globálně hostovanou verzi Content Delivery Network Azure
 
  Nebo si můžete stáhnout Azure Maps modul *vnitřního* softwaru. Modul *vnitřních Azure Maps* obsahuje klientskou knihovnu pro přístup ke službě Azure Maps Services. Pomocí následujících kroků nainstalujete a načtete modul pro *vnitřní* prostředí do své webové aplikace.  
   
-  1. Stáhněte si [balíček Azure-Maps-interiér](https://www.npmjs.com/package/azure-maps-indoor).
+  1. Nainstalujte [balíček Azure-Maps-interiér](https://www.npmjs.com/package/azure-maps-indoor).
   
-  2. Nainstalujte balíček NPM. Ujistěte se, že v konzole nástroje používáte oprávnění správce:
-
       ```powershell
       >npm install azure-maps-control
       >npm install azure-maps-indoor
       ```
 
-  3. Odkaz na *Azure Maps modul vnitřních* souborů a šablonu stylů v `<head>` prvku souboru HTML:
+  2. Odkaz na *Azure Maps modul vnitřních* souborů a šablonu stylů v `<head>` prvku souboru HTML:
 
       ```html
       <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
@@ -71,7 +69,7 @@ const map = new atlas.Map("map-id", {
   //or, you can use bounds: [# west, # south, # east, # north] and replace # with your map's bounds
   style: "blank",
   view: 'Auto',
-  authOptions: { 
+  authOptions: {
       authType: 'subscriptionKey',
       subscriptionKey: subscriptionKey
   },

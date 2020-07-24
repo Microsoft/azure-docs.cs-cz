@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 659cb9aabe5fcca68aea9a73ea9beadb8e52ec50
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4949d5f2621957d6830625fe798601db4472a75d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259171"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064906"
 ---
 # <a name="about-virtual-hub-routing"></a>Informace o směrováních virtuálních center
 
@@ -59,6 +59,9 @@ Připojení dynamicky šíří trasy do směrovací tabulky. S připojením VPN,
 **Tabulka směrování None** je k dispozici také pro každé virtuální centrum. Rozšiřování do tabulky směrování None znamená, že pro rozšíření od připojení nejsou nutné žádné trasy. Připojení VPN, ExpressRoute a VPN uživatele šíří trasy do stejné sady směrovacích tabulek.
 
 :::image type="content" source="./media/about-virtual-hub-routing/concepts-propagation.png" alt-text="Šíření":::
+
+### <a name="labels"></a><a name="static"></a>Štítky
+Popisky poskytují mechanismus pro logickou skupinu směrovacích tabulek. To je užitečné hlavně při šíření tras z připojení k několika směrovacím tabulkám. Například výchozí směrovací tabulka má vestavěný popisek s názvem default. Když uživatelé šíří trasy připojení k výchozímu popisku, bude automaticky platit pro všechny výchozí směrovací tabulky napříč všemi rozbočovači ve virtuální síti WAN. 
 
 ### <a name="configuring-static-routes-in-a-virtual-network-connection"></a><a name="static"></a>Konfigurace statických tras v připojení k virtuální síti
 

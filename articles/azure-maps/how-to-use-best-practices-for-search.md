@@ -1,18 +1,19 @@
 ---
 title: Osvědčené postupy pro Azure Maps Search Service | Mapy Microsoft Azure
 description: Naučte se, jak použít osvědčené postupy při použití Search Service ze Microsoft Azure Maps.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/23/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8f8f5a2f605f8e8b7109267e5223593eb1e2cfb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e98763a3a1c8273cdeec5e945dd324ae43e773f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84264362"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064264"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Osvědčené postupy pro Azure Maps Search Service
 
@@ -25,9 +26,9 @@ Tento článek vysvětluje, jak použít zvukové postupy při volání dat z Az
 * Informace o rozdílech mezi typy výsledků
 * Přečíst strukturu hledání adres – odpověď
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Chcete-li volat rozhraní API služby Azure Maps, potřebujete účet Azure Maps a klíč. Další informace najdete v tématu [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps) a [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account). 
+Chcete-li volat rozhraní API služby Azure Maps, potřebujete účet Azure Maps a klíč. Další informace najdete v tématu [Vytvoření účtu](quick-demo-map-app.md#create-an-azure-maps-account) a [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account). 
 
 Informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
 
@@ -84,7 +85,7 @@ Doporučujeme, abyste používali Azure Maps [hledání přibližného rozhraní
 
 ### <a name="reverse-geocode-and-filter-for-a-geography-entity-type"></a>Inverzní a filtr pro typ geografických entit
 
-Když provedete zpětné vyhledávání v [rozhraní API pro reverzní vyhledávání](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse), může služba vracet mnohoúhelníky pro oblasti správy. Například Yoi může chtít načíst mnohoúhelník oblasti pro město města.Chcete-li zúžit hledání na konkrétní typy geografických entit, zahrňte `entityType` parametr do svých požadavků. 
+Když provedete zpětné vyhledávání v [rozhraní API pro reverzní vyhledávání](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse), může služba vracet mnohoúhelníky pro oblasti správy. Například můžete chtít načíst mnohoúhelník oblasti pro město města.Chcete-li zúžit hledání na konkrétní typy geografických entit, zahrňte `entityType` parametr do svých požadavků. 
 
 Výsledná odpověď obsahuje geografické ID a typ entity, které se shodovaly. Pokud zadáte více než jednu entitu, vrátí koncový bod *nejnižší dostupnou entitu*. Pomocí vráceného ID geometrie můžete získat geometrii geograficky prostřednictvím [služby mnohoúhelníku hledání](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon).
 

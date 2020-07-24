@@ -8,17 +8,18 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
-ms.openlocfilehash: 9398b40763e8226cedf788f9cefbf5ed28cd649d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61f3f2af61bc24f76d061de672a3eaacd54f7f0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83739528"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066119"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Zprávy Exchange X12 pro integraci B2B Enterprise v Azure Logic Apps s využitím Enterprise Integration Pack
 
 Pokud chcete pracovat se X12 zprávami v Azure Logic Apps, můžete použít konektor X12, který poskytuje triggery a akce pro správu komunikace X12. Informace o EDIFACT zprávách najdete v tématu [zprávy Exchange EDIFACT](logic-apps-enterprise-integration-edifact.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -86,7 +87,7 @@ Po nastavení vlastností smlouvy můžete nakonfigurovat způsob, jakým tato s
 
 ![Schémata pro příchozí zprávy](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-schemas.png)
 
-Pro tuto část vyberte [schéma](../logic-apps/logic-apps-enterprise-integration-schemas.md) z [účtu integrace](../logic-apps/logic-apps-enterprise-integration-accounts.md) pro každý typ transakce (ST01) a aplikace odesílatele (GS02). Kanál pro příjem EDI provede zpětný překlad příchozí zprávy porovnáním hodnot a schématu, které jste nastavili v této části, s hodnotami pro ST01 a GS02 v příchozí zprávě a se schématem příchozí zprávy. Po dokončení každého řádku se automaticky zobrazí nový prázdný řádek.
+Pro tuto část vyberte [schéma](../logic-apps/logic-apps-enterprise-integration-schemas.md) z [účtu integrace](./logic-apps-enterprise-integration-create-integration-account.md) pro každý typ transakce (ST01) a aplikace odesílatele (GS02). Kanál pro příjem EDI provede zpětný překlad příchozí zprávy porovnáním hodnot a schématu, které jste nastavili v této části, s hodnotami pro ST01 a GS02 v příchozí zprávě a se schématem příchozí zprávy. Po dokončení každého řádku se automaticky zobrazí nový prázdný řádek.
 
 | Vlastnost | Popis |
 |----------|-------------|
@@ -173,7 +174,7 @@ Po nastavení vlastností smlouvy můžete nakonfigurovat způsob, jakým tato s
    * [Číslo verze ovládacího prvku](#outbound-control-version-number)
    * [Řídicí čísla](#outbound-control-numbers)
    * [Znakové sady a oddělovače](#outbound-character-sets-separators)
-   * [Export](#outbound-validation)
+   * [Ověřování](#outbound-validation)
 
 1. Až to budete mít, nezapomeňte nastavení uložit tak, že vyberete **OK**.
 
@@ -209,7 +210,7 @@ Po nastavení vlastností smlouvy můžete nakonfigurovat způsob, jakým tato s
 
 ![Schémata pro odchozí zprávy](./media/logic-apps-enterprise-integration-x12/x12-send-settings-schemas.png)
 
-Pro tuto část vyberte [schéma](../logic-apps/logic-apps-enterprise-integration-schemas.md) z [účtu integrace](../logic-apps/logic-apps-enterprise-integration-accounts.md) pro každý typ transakce (ST01). Po dokončení každého řádku se automaticky zobrazí nový prázdný řádek.
+Pro tuto část vyberte [schéma](../logic-apps/logic-apps-enterprise-integration-schemas.md) z [účtu integrace](./logic-apps-enterprise-integration-create-integration-account.md) pro každý typ transakce (ST01). Po dokončení každého řádku se automaticky zobrazí nový prázdný řádek.
 
 | Vlastnost | Popis |
 |----------|-------------|
@@ -235,7 +236,7 @@ Pro tuto část vyberte [schéma](../logic-apps/logic-apps-enterprise-integratio
 
 ![Řídicí číslo verze pro odchozí zprávy](./media/logic-apps-enterprise-integration-x12/x12-send-settings-control-version-number.png)
 
-Pro tuto část vyberte [schéma](../logic-apps/logic-apps-enterprise-integration-schemas.md) z [účtu integrace](../logic-apps/logic-apps-enterprise-integration-accounts.md) pro každý výměnný účet. Po dokončení každého řádku se automaticky zobrazí nový prázdný řádek.
+Pro tuto část vyberte [schéma](../logic-apps/logic-apps-enterprise-integration-schemas.md) z [účtu integrace](./logic-apps-enterprise-integration-create-integration-account.md) pro každý výměnný účet. Po dokončení každého řádku se automaticky zobrazí nový prázdný řádek.
 
 | Vlastnost | Popis |
 |----------|-------------|
@@ -315,7 +316,7 @@ Když pracujete se schématy HIPAA a typy zpráv 277 nebo 837, je nutné provés
 
 Tato tabulka uvádí seznam ovlivněných zpráv, všechny varianty a čísla verzí dokumentů, která jsou namapována na tyto typy zpráv:
 
-| Typ nebo varianta zprávy |  Description | Číslo verze dokumentu (GS8) |
+| Typ nebo varianta zprávy |  Popis | Číslo verze dokumentu (GS8) |
 |-------------------------|--------------|-------------------------------|
 | 277 | Oznámení o stavu informací o zdravotní péči | 005010X212 |
 | 837_I | Institucionální deklarace identity zdravotnictví | 004010X096A1 <br>005010X223A1 <br>005010X223A2 |
@@ -380,7 +381,7 @@ Chcete-li zadat tato čísla verzí dokumentů a typy zpráv, postupujte podle n
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Další technické podrobnosti o této spojnici, jako jsou akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete na [referenční stránce konektoru](https://docs.microsoft.com/connectors/x12/).
+Další technické podrobnosti o této spojnici, jako jsou akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete na [referenční stránce konektoru](/connectors/x12/).
 
 > [!NOTE]
 > Pro Logic Apps v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Tato verze konektoru ISE-Label používá [omezení zpráv B2B pro ISE](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits).

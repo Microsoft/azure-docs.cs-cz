@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/24/2020
 ms.author: radeltch
-ms.openlocfilehash: 999ab77538a145189e0576c920216fa55d8508f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eed53725507325351dcf51fbe368331c2a4fd2f8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85366814"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065130"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Nastavení Pacemaker na Red Hat Enterprise Linux v Azure
 
@@ -120,7 +120,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    </code></pre>
 
    > [!IMPORTANT]
-   > Pokud potřebujete aktualizovat agenta Azure plot a při použití vlastní role, nezapomeňte aktualizovat vlastní roli tak, aby zahrnovala akci **stavu PowerOff**. Podrobnosti najdete v tématu [Vytvoření vlastní role pro agenta plotu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker#1-create-a-custom-role-for-the-fence-agent).  
+   > Pokud potřebujete aktualizovat agenta Azure plot a při použití vlastní role, nezapomeňte aktualizovat vlastní roli tak, aby zahrnovala akci **stavu PowerOff**. Podrobnosti najdete v tématu [Vytvoření vlastní role pro agenta plotu](#1-create-a-custom-role-for-the-fence-agent).  
 
 1. **[A]** nastavení rozlišení názvu hostitele
 
@@ -220,7 +220,7 @@ Zařízení STONITH používá instanční objekt k autorizaci proti Microsoft A
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** vytvoření vlastní role pro agenta plotu
 
-Objekt služby nemá ve výchozím nastavení oprávnění pro přístup k prostředkům Azure. Musíte přidělit oprávnění instančního objektu pro spuštění a zastavení (napájení) všech virtuálních počítačů v clusteru. Pokud jste ještě nevytvořili vlastní roli, můžete ji vytvořit pomocí [PowerShellu](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) .
+Objekt služby nemá ve výchozím nastavení oprávnění pro přístup k prostředkům Azure. Musíte přidělit oprávnění instančního objektu pro spuštění a zastavení (napájení) všech virtuálních počítačů v clusteru. Pokud jste ještě nevytvořili vlastní roli, můžete ji vytvořit pomocí [PowerShellu](../../../role-based-access-control/role-assignments-powershell.md) nebo rozhraní příkazového [řádku Azure CLI](../../../role-based-access-control/role-assignments-cli.md) .
 
 Pro vstupní soubor použijte následující obsah. Je potřeba upravit obsah pro vaše předplatná, která jsou, nahraďte c276fc76-9cd4-44c9-99a7-4fd71546436e a e91d47c4-76f3-4271-a796-21b4ecfe3624 ID vašeho předplatného. Pokud máte jenom jedno předplatné, odeberte druhou položku v AssignableScopes.
 
@@ -291,7 +291,7 @@ op monitor interval=3600
 </code></pre>
 
 > [!TIP]
->Agent Azure plotu vyžaduje odchozí připojení k veřejným koncovým bodům, jak je popsáno, spolu s možnými řešeními ve veřejných koncových bodech [pro virtuální počítače s využitím Standard interního nástroje](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
+>Agent Azure plotu vyžaduje odchozí připojení k veřejným koncovým bodům, jak je popsáno, spolu s možnými řešeními ve veřejných koncových bodech [pro virtuální počítače s využitím Standard interního nástroje](./high-availability-guide-standard-load-balancer-outbound-connections.md).  
 
 ## <a name="next-steps"></a>Další kroky
 
