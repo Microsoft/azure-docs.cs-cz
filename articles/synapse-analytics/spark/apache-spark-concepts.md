@@ -1,5 +1,5 @@
 ---
-title: Apache Spark ve službě Azure synapse Analytics – základní koncepty
+title: Apache Spark základní koncepty
 description: Tento článek poskytuje Úvod do Apache Spark ve službě Azure synapse Analytics a v různých konceptech.
 services: synapse-analytics
 author: euangMS
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: aa1b4287899aaff9ede4832e999603773d79d28c
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 806f4dff49e9650dba073721109e7d54a18ecbbe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194123"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052339"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Apache Spark v základních konceptech služby Azure synapse Analytics
 

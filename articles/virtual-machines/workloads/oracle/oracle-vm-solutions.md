@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: rogardle
-ms.openlocfilehash: 363d26391c8ee40fb95a0b8fd92c4d94f1082b8d
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 2201cae66aae8c2d9d106871db0d4ebbd003f361
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221523"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052152"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Image virtuálních počítačů Oracle a jejich nasazení v Microsoft Azure
 
@@ -107,12 +107,12 @@ Azure NetApp Files byla navržena tak, aby splňovala základní požadavky na s
 - Vysoká dostupnost, vysoká odolnost a možnosti správy ve velkém měřítku, které obvykle vyžadují důležité podnikové úlohy (například SAP a Oracle).
 - Rychlé a efektivní zálohování a obnovení, abyste dosáhli nejúčinnějších smluv SLA pro RTO a RPO
 
-Tyto možnosti jsou možné, protože Azure NetApp Files jsou založené na NetApp® ONTAP® všechny systémy, které běží v prostředí Azure Data Center – jako nativní službu Azure. Výsledkem je ideální technologie databázového úložiště, kterou lze zřídit a spotřebovat stejně jako jiné možnosti služby Azure Storage. Další informace o nasazení a přístupu Azure NetApp Files ke svazkům systému souborů NFS najdete v [dokumentaci Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/) . Osvědčené [postupy pro nasazení Oracle v Azure](https://www.netapp.com/us/media/tr-4780.pdf) najdete v tématu Příručka k osvědčeným postupům pro použití Azure NetApp Files pro doporučení pro provoz databáze Oracle v Azure NetApp Files.
+Tyto možnosti jsou možné, protože Azure NetApp Files jsou založené na NetApp® ONTAP® všechny systémy, které běží v prostředí Azure Data Center – jako nativní službu Azure. Výsledkem je ideální technologie databázového úložiště, kterou lze zřídit a spotřebovat stejně jako jiné možnosti služby Azure Storage. Další informace o nasazení a přístupu Azure NetApp Files ke svazkům systému souborů NFS najdete v [dokumentaci Azure NetApp Files](../../../azure-netapp-files/index.yml) . Osvědčené [postupy pro nasazení Oracle v Azure](https://www.netapp.com/us/media/tr-4780.pdf) najdete v tématu Příručka k osvědčeným postupům pro použití Azure NetApp Files pro doporučení pro provoz databáze Oracle v Azure NetApp Files.
 
 ## <a name="licensing-oracle-database--software-on-azure"></a>Licencování Oracle Database & software v Azure
 
 Microsoft Azure je autorizované cloudové prostředí pro spouštění Oracle Database. Tabulka Oracle Core Factor se nedá použít při licencování databází Oracle v cloudu. Místo toho se při použití virtuálních počítačů s technologií Hyper-Threading povolených pro databáze edice Enterprise Edition počítá 2 vCPU jako ekvivalentní jedné licenci Oracle Processor, pokud je povolená možnost webthreading (jak je uvedeno v dokumentu zásady). Podrobnosti o zásadách najdete [tady](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf).
-Databáze Oracle obecně vyžadují větší paměť a vstupně-výstupní operace. Z tohoto důvodu se pro tyto úlohy doporučují [paměťově optimalizované virtuální počítače](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory) . Pro lepší optimalizaci vašich úloh se doporučují [základní vcpu](https://docs.microsoft.com/azure/virtual-machines/linux/constrained-vcpu) Oracle Database pro úlohy, které vyžadují vysoké množství paměti, úložiště a vstupně-výstupní propustnosti, ale ne vysoký počet jader.
+Databáze Oracle obecně vyžadují větší paměť a vstupně-výstupní operace. Z tohoto důvodu se pro tyto úlohy doporučují [paměťově optimalizované virtuální počítače](../../sizes-memory.md) . Pro lepší optimalizaci vašich úloh se doporučují [základní vcpu](../../linux/constrained-vcpu.md) Oracle Database pro úlohy, které vyžadují vysoké množství paměti, úložiště a vstupně-výstupní propustnosti, ale ne vysoký počet jader.
 
 Když migrujete software Oracle a úlohy z místního prostředí do Microsoft Azure, Oracle nabízí mobilitu licencí, jak je uvedeno v tématu [Oracle on Azure – Nejčastější dotazy](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html) .
 

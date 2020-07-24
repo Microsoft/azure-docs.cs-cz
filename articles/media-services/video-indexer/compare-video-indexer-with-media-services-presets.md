@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: juliako
-ms.openlocfilehash: dcfc6ea4afe23424e72c625518356be52f62bc81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0961aa3e573e511a6941bc59ddc335f64799abb4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77602193"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047334"
 ---
 # <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>Porovnat Azure Media Services V3 předvolby a Video Indexer 
 
@@ -30,11 +31,11 @@ V současné době dochází k překrytí mezi funkcemi nabízenými [rozhraním
 
 |Funkce|Rozhraní API pro Video Indexer |Předvolby videa a analyzátoru zvuku<br/>v rozhraních API pro Media Services V3|
 |---|---|---|
-|Media Insights|[Rozšířené](video-indexer-output-json-v2.md) |[Základy](../latest/intelligence-concept.md)|
+|Media Insights|[Rozšířené](video-indexer-output-json-v2.md) |[Základy](../latest/analyzing-video-audio-files-concept.md)|
 |Možnosti|Úplný seznam podporovaných funkcí najdete v článku: <br/> [Přehled](video-indexer-overview.md)|Vrátí jenom video přehledy.|
 |Fakturace|[Ceny Media Services](https://azure.microsoft.com/pricing/details/media-services/#analytics)|[Ceny Media Services](https://azure.microsoft.com/pricing/details/media-services/#analytics)|
 |Dodržování předpisů|Pro nejaktuálnější aktualizace dodržování předpisů navštivte [Offerings.pdfdodržování předpisů Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) a vyhledejte "video indexer", abyste viděli, jestli vyhovuje certifikátu, který by měl zájem.|Pro nejaktuálnější aktualizace dodržování předpisů navštivte [Offerings.pdfdodržování předpisů Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) a vyhledejte "Media Services", abyste viděli, jestli vyhovuje certifikátu, který by měl zájem.|
-|Bezplatná zkušební verze|USA – východ|Není k dispozici|
+|Bezplatná zkušební verze|East US|Není k dispozici|
 |Dostupnost v oblastech|Zobrazit [dostupnost Cognitive Services podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)|Viz [dostupnost Media Services v oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).|
 
 ## <a name="next-steps"></a>Další kroky

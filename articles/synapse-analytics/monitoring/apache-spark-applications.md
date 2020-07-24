@@ -1,6 +1,6 @@
 ---
-title: Monitorování Apache Sparkch aplikací
-description: K monitorování aplikací Apache Spark použijte Azure synapse Studio.
+title: Monitorování Apache Spark aplikací pomocí synapse studia
+description: Pomocí synapse studia můžete monitorovat aplikace Apache Spark.
 services: synapse-analytics
 author: matt1883
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 20c4216e7af0cb4100204ebae1b484a53e3c50a6
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: ecc34b84e5be2d0470cc5a58a71a70e9ffcab1b6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971300"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052549"
 ---
-# <a name="use-the-azure-synapse-studio-to-monitor-your-apache-spark-applications"></a>Monitorování aplikací Apache Spark pomocí Azure synapse studia
+# <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>Monitorování aplikací Apache Spark pomocí nástroje synapse Studio
 
 Pomocí služby Azure synapse Analytics můžete pomocí Apache Spark spouštět poznámkové bloky, úlohy a jiné druhy aplikací v fondech Apache Spark ve vašem pracovním prostoru.
 
@@ -29,11 +29,11 @@ Tento kurz se zabývá následujícími úkony:
 * Zobrazit zrušenou Apache Spark aplikaci
 * Ladění Apache Spark aplikace selhalo.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem, ujistěte se, že splňujete následující požadavky:
 
-- Pracovní prostor Azure synapse Studio. Pokyny najdete v tématu [Vytvoření pracovního prostoru Azure synapse Studio](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace).
+- Pracovní prostor synapse Studio. Pokyny najdete v tématu [Vytvoření pracovního prostoru synapse Studio](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace).
 
 - Fond Apache Spark.
 
@@ -147,4 +147,4 @@ Otevřete **monitorování**a pak vyberte **Apache Spark aplikace**. Pokud chcet
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o monitorování spuštění kanálu najdete v článku [monitorování kanálu spouští Azure synapse Studio](how-to-monitor-pipeline-runs.md) .  
+Další informace o monitorování spuštění kanálu najdete v článku [monitorování spuštění kanálu pomocí synapse studia](how-to-monitor-pipeline-runs.md) .  

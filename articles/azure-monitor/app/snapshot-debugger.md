@@ -4,11 +4,12 @@ description: Snímky ladění se automaticky shromažďují, pokud jsou výjimky
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.reviewer: cweining
-ms.openlocfilehash: 18f43ba90157d71ec9488b6858fa9f41b2ee42a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c920ab019d5d802ea862ab923297670da766a456
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84692015"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049675"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Ladicí snímky pro výjimky v aplikacích .NET
 Pokud dojde k výjimce, můžete automaticky shromáždit snímek ladění z živé webové aplikace. Snímek zobrazuje stav zdrojového kódu a proměnných v okamžiku, kdy byla vyvolána výjimka. Snapshot Debugger v [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) monitorují telemetrii výjimek z vaší webové aplikace. Shromažďuje snímky na vašich vyvolané výjimce, takže budete mít k dispozici informace potřebné k diagnostice problémů v produkčním prostředí. Zahrňte do aplikace [balíček NuGet pro kolektor snímků](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) a volitelně nakonfigurujte parametry kolekce v [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). Snímky se zobrazí na [výjimkách](../../azure-monitor/app/asp-net-exceptions.md) na portálu Application Insights.
@@ -37,7 +38,7 @@ Pokud jste povolili Snapshot Debugger, ale nevidíte snímky, podívejte se na n
 
 ## <a name="grant-permissions"></a>Udělení oprávnění
 
-Přístup k snímkům je chráněn řízením přístupu na základě role (RBAC). Chcete-li zkontrolovat snímek, je nutné nejprve přidat k požadované roli vlastníka předplatného.
+Přístup ke snímkům je chráněný řízením přístupu na základě role (RBAC). Abyste mohli prozkoumat snímek, vlastník předplatného vás nejprve musí přidat do potřebné role.
 
 > [!NOTE]
 > Vlastníci a přispěvatelé tuto roli automaticky nemají. Pokud chtějí snímky zobrazit, musí se do této role přidat sami.
@@ -45,7 +46,7 @@ Přístup k snímkům je chráněn řízením přístupu na základě role (RBAC
 Vlastníci předplatného by měli přiřadit `Application Insights Snapshot Debugger` roli uživatelům, kteří budou kontrolovat snímky. Tato role se dá přiřadit jednotlivým uživatelům nebo skupinám podle vlastníků předplatného pro cílový Application Insights prostředek nebo jeho skupinu prostředků nebo předplatné.
 
 1. V Azure Portal přejděte na prostředek Application Insights.
-1. Klikněte na **Řízení přístupu (IAM)** .
+1. Klikněte na **Řízení přístupu (IAM)**.
 1. Klikněte na tlačítko **+ Přidat přiřazení role** .
 1. V rozevíracím seznamu **role** vyberte **Application Insights Snapshot Debugger** .
 1. Vyhledejte a zadejte jméno uživatele, kterého chcete přidat.
@@ -88,7 +89,7 @@ Snapshot Collector se implementuje jako [procesor telemetrie Application Insight
 Pokaždé, když vaše aplikace volá [TrackException](../../azure-monitor/app/asp-net-exceptions.md#exceptions), Snapshot COLLECTOR vypočítá ID problému z typu vyvolané výjimky a metody throw.
 Pokaždé, když vaše aplikace volá TrackException, se pro příslušné ID problému zvýší hodnota čítače. Když čítač dosáhne `ThresholdForSnapshotting` hodnoty, ID problému se přidá do plánu kolekce.
 
-Snapshot Collector také monitoruje výjimky, když jsou vyvolány přihlášením k odběru události [AppDomain. CurrentDomain. FirstChanceException](https://docs.microsoft.com/dotnet/api/system.appdomain.firstchanceexception) . Když se tato událost aktivuje, vypočítává se ID problému výjimky a porovná se s ID problémů v plánu shromažďování.
+Snapshot Collector také monitoruje výjimky, když jsou vyvolány přihlášením k odběru události [AppDomain. CurrentDomain. FirstChanceException](/dotnet/api/system.appdomain.firstchanceexception) . Když se tato událost aktivuje, vypočítává se ID problému výjimky a porovná se s ID problémů v plánu shromažďování.
 Pokud se zobrazí shoda, vytvoří se snímek běžícího procesu. Snímku je přiřazen jedinečný identifikátor a tato výjimka je opatřena tímto identifikátorem. Po návratu obslužné rutiny FirstChanceException je vyvolána výjimka zpracována jako normální. Nakonec výjimka dosáhne TrackException metody znovu tam, kde je, společně s identifikátorem snímku, je hlášena Application Insights.
 
 Hlavní proces pokračuje v běhu a obsluhuje přenosy pro uživatele s malým přerušením. Mezitím se snímek předává procesu odeslání snímku. Odeslání snímku odešle s minimálním výpisem a nahraje ho, aby Application Insights společně se všemi relevantními soubory symbolů (. pdb).
@@ -116,7 +117,7 @@ Verze 15,2 (nebo vyšší) sady Visual Studio 2017 publikuje ve výchozím nasta
 U výpočetních a dalších typů Azure se ujistěte, že se soubory symbolů nacházejí ve stejné složce hlavní aplikace. dll (obvykle `wwwroot/bin` ) nebo jsou k dispozici na aktuální cestě.
 
 > [!NOTE]
-> Další informace o různých možnostech symbolu, které jsou k dispozici, najdete v dokumentaci k sadě [Visual Studio](https://docs.microsoft.com/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output
+> Další informace o různých možnostech symbolu, které jsou k dispozici, najdete v dokumentaci k sadě [Visual Studio](/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output
 ). Pro dosažení nejlepších výsledků doporučujeme použít "úplné", "přenosné" nebo "vložené".
 
 ### <a name="optimized-builds"></a>Optimalizovaná sestavení
@@ -137,6 +138,6 @@ Povolit pro aplikaci Application Insights Snapshot Debugger:
 
 Nad Application Insights Snapshot Debugger:
  
-* [Nastavte snímkovací body v kódu](https://docs.microsoft.com/visualstudio/debugger/debug-live-azure-applications) pro získání snímků bez čekání na výjimku.
+* [Nastavte snímkovací body v kódu](/visualstudio/debugger/debug-live-azure-applications) pro získání snímků bez čekání na výjimku.
 * [Diagnostika výjimek ve vašich webových aplikacích](../../azure-monitor/app/asp-net-exceptions.md) vysvětluje, jak je možné Application Insights zobrazit další výjimky.
 * [Inteligentní zjišťování](../../azure-monitor/app/proactive-diagnostics.md) automaticky zjišťuje anomálie výkonu.

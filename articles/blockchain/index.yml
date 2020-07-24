@@ -11,12 +11,12 @@ metadata:
   author: PatAltimore
   ms.author: patricka
   ms.date: 10/23/2019
-  ms.openlocfilehash: 11c3c464de5efc9b38426fa7ea015f63b37a8b52
-  ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+  ms.openlocfilehash: 123d84cc29c1dce85cccf8c1bbb089bfbbbf7bf3
+  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 05/31/2020
-  ms.locfileid: "84235499"
+  ms.lasthandoff: 07/23/2020
+  ms.locfileid: "87007658"
 productDirectory:
   items:
   - title: Služba Azure Blockchain
@@ -93,7 +93,7 @@ additionalContent:
       url: https://marketplace.visualstudio.com/items?itemName=azblockchain.azure-blockchain
     - title: Blockchainový konektor Ethereum
       summary: Využijte Azure Logic Apps, Microsoft Flow a Microsoft PowerApps k provádění akcí inteligentních kontraktů, jako je například odeslání transakcí, čtení stavu smlouvy a aktivace toků pro aktualizace kontraktů.
-      url: https://docs.microsoft.com/connectors/blockchainethereum/
+      url: /connectors/blockchainethereum/
     - title: Ukázky kódů
       summary: Úložiště GitHub s ukázkami kódu, které vám pomohou začít.
       url: https://github.com/Azure-Samples/blockchain

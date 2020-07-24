@@ -1,5 +1,5 @@
 ---
-title: Použití GitOps pro konfiguraci clusteru s podporou ARC Azure (Preview)
+title: Nasazení konfigurací pomocí GitOps v clusteru Kubernetes s povoleným ARC (Preview)
 services: azure-arc
 ms.service: azure-arc
 ms.date: 05/19/2020
@@ -8,24 +8,24 @@ author: mlearned
 ms.author: mlearned
 description: Použití GitOps pro konfiguraci clusteru s podporou ARC Azure (Preview)
 keywords: GitOps, Kubernetes, K8s, Azure, ARC, Azure Kubernetes Service, Containers
-ms.openlocfilehash: 890b35aac33a6fa207a71d76143997a1b93116bf
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: e25fdf3a51b3e9264c85707df31d3a4d107b25ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856993"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049972"
 ---
-# <a name="use-gitops-for-an-azure-arc-enabled--configuration-preview"></a>Použití GitOps pro konfiguraci s podporou ARC Azure (Preview)
+# <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Nasazení konfigurací pomocí GitOps v clusteru Kubernetes s povoleným ARC (Preview)
 
-Tato architektura používá pracovní postup GitOps ke konfiguraci clusteru a nasazování aplikací. Konfigurace se popisuje deklarativně v souborech. yaml a ukládají se do Gitu. Agent sleduje změny v úložišti Git a použije je.  Stejný agent taky pravidelně zajišťuje, že stav clusteru odpovídá stavu deklarovanému v úložišti Git a vrátí cluster do požadovaného stavu, pokud došlo k nějakým nespravovaným změnám.
+GitOps je postup, který deklaruje požadovaný stav konfigurace Kubernetes (nasazení, obory názvů atd.) v úložišti Git následovaným dotazem a nasazením těchto konfigurací na cluster pomocí operátoru. Tento dokument popisuje nastavení takových pracovních postupů u clusterů Kubernetes s podporou ARC Azure.
 
-Připojení mezi clusterem a jedním nebo více úložišť Git je sledováno v Azure Resource Manager jako `sourceControlConfiguration` prostředek rozšíření. `sourceControlConfiguration`Vlastnosti prostředku reprezentují, kde a jak by se měly prostředky Kubernetes z Gitu přesměrovat do vašeho clusteru. `sourceControlConfiguration`Data jsou uložená v klidovém stavu v databázi CosmosDb, aby se zajistila důvěrnost dat.
+Připojení mezi clusterem a jedním nebo více úložišť Git je sledováno v Azure Resource Manager jako `sourceControlConfiguration` prostředek rozšíření. `sourceControlConfiguration`Vlastnosti prostředku reprezentují, kde a jak by se měly prostředky Kubernetes z Gitu přesměrovat do vašeho clusteru. `sourceControlConfiguration`Data jsou uložená v klidovém stavu v Azure Cosmos DB databázi, aby se zajistila důvěrnost dat.
 
-Kubernetes, který je povolený `config-agent` v clusteru, je zodpovědný za sledování nových nebo aktualizovaných `sourceControlConfiguration` prostředků a orchestruje přidávání, aktualizaci nebo odebírání odkazů na úložiště Git automaticky.
-
-Stejné vzory se dají použít ke správě větší kolekce clusterů, které se můžou nasadit v heterogenních prostředích. Například můžete mít jedno úložiště, které definuje konfiguraci standardních hodnot vaší organizace, a použít ho na desítky Kubernetes clusterů najednou.
+`config-agent`Spuštění ve vašem clusteru zodpovídá za sledování nových nebo aktualizovaných `sourceControlConfiguration` prostředků rozšíření na prostředku Kubernetes ARC Azure s povoleným nasazením operátoru toku, který sleduje úložiště Git a šíří jakékoli aktualizace provedené v `sourceControlConfiguration` . Pro dosažení víceklientské architektury je dokonce možné vytvořit více `sourceControlConfiguration` prostředků s `namespace` rozsahem na stejném clusteru Kubernetes s povoleným ARC Azure. V takovém případě každý operátor může nasadit konfigurace pouze do příslušného oboru názvů.
 
 Úložiště Git může obsahovat všechny platné prostředky Kubernetes, včetně oborů názvů, ConfigMaps, nasazení, DaemonSets atd.  Může obsahovat také Helm grafy pro nasazení aplikací. Mezi běžné sady scénářů patří definování základní konfigurace pro vaši organizaci, která může zahrnovat běžné role RBAC a vazby, agenty monitorování nebo protokolování nebo služby pro clustery v rámci clusteru.
+
+Stejný vzor lze použít ke správě větší kolekce clusterů, které mohou být nasazeny v heterogenních prostředích. Například můžete mít jedno úložiště, které definuje konfiguraci standardních hodnot vaší organizace, a použít ho na desítky Kubernetes clusterů najednou. [Azure Policy může automatizovat](use-azure-policy.md) vytváření a `sourceControlConfiguration` s konkrétní sadou parametrů ve všech prostředcích Azure ARC s povoleným Kubernetes prostředky v oboru (předplatné nebo skupina prostředků).
 
 Tato úvodní příručka vás provede použitím sady konfigurací s oborem Správce clusteru.
 
@@ -39,8 +39,8 @@ Ukázkové úložiště je členěné kolem uživatele operátora clusteru, kter
  **nasazení:** `cluster-config/azure-vote` 
  **ConfigMap:**`team-a/endpoints`
 
-`config-agent`Dotazování Azure na nové nebo aktualizované dotazy `sourceControlConfiguration` každých 30 sekund.  Toto je maximální doba, kterou bude trvat, než se vybere `config-agent` Nová nebo aktualizovaná konfigurace.
-Pokud přiřazujete soukromé úložiště, zajistěte, abyste provedli také kroky v části [použití konfigurace z privátního úložiště Git](#apply-configuration-from-a-private-git-repository) .
+`config-agent`Cyklické dotazování Azure na nové nebo aktualizované `sourceControlConfiguration` každých 30 sekund, což je maximální doba potřebná `config-agent` k výběru nové nebo aktualizované konfigurace.
+Pokud přidružíte soukromé úložiště s nástrojem `sourceControlConfiguration` , ujistěte se, že jste provedli také kroky v části [použití konfigurace z privátního úložiště Git](#apply-configuration-from-a-private-git-repository).
 
 ### <a name="using-azure-cli"></a>Použití Azure CLI
 
@@ -99,14 +99,14 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 Tady jsou podporované scénáře pro parametr hodnota--úložiště-adresa URL.
 
-| Scénář | Formát | Description |
+| Scénář | Formát | Popis |
 | ------------- | ------------- | ------------- |
 | Soukromé úložiště GitHub – SSH | git@github.com:username/repo | Souboru KeyPair SSH vygenerovaný tokem.  Uživatel musí do účtu GitHubu přidat veřejný klíč jako klíč pro nasazení. |
 | Veřejné úložiště GitHub | `http://github.com/username/repo`nebo git://github.com/username/repo   | Veřejné úložiště Git  |
 
 Tyto scénáře jsou podporovány tokem, ale nikoli sourceControlConfiguration. 
 
-| Scénář | Formát | Description |
+| Scénář | Formát | Popis |
 | ------------- | ------------- | ------------- |
 | Úložiště privátního GitHubu – HTTPS | `https://github.com/username/repo` | Tok negeneruje souboru KeyPair SSH.  [Pokyny](https://docs.fluxcd.io/en/1.17.0/guides/use-git-https.html) |
 | Privátní hostitel Git | user@githost:path/to/repo | [Pokyny](https://docs.fluxcd.io/en/1.18.0/guides/use-private-git-host.html) |
@@ -117,7 +117,7 @@ Tyto scénáře jsou podporovány tokem, ale nikoli sourceControlConfiguration.
 
 Chcete-li upravit vytvoření konfigurace, je zde několik dalších parametrů:
 
-`--enable-helm-operator`: *Volitelný* přepínač, který povolí podporu pro nasazení grafu Helm. Ve výchozím nastavení je tato možnost zakázána.
+`--enable-helm-operator`: *Volitelný* přepínač, který povolí podporu pro nasazení grafu Helm.
 
 `--helm-operator-chart-values`: *Volitelné* hodnoty grafu pro operátor Helm (Pokud je povoleno).  Například: "--set Helm. verze = V3".
 
@@ -125,11 +125,11 @@ Chcete-li upravit vytvoření konfigurace, je zde několik dalších parametrů:
 
 `--operator-namespace`: *Volitelný* název oboru názvů operátoru. Výchozí: výchozí
 
-`--operator-params`: *Volitelné* parametry pro operátor. Musí být zadány v jednoduchých uvozovkách. Například ```--operator-params='--git-readonly --git-path=releases/prod' ```.
+`--operator-params`: *Volitelné* parametry pro operátor. Musí být zadány v jednoduchých uvozovkách. Například ```--operator-params='--git-readonly --git-path=releases' ```.
 
 Možnosti podporované v--operator-params
 
-| Možnost | Description |
+| Možnost | Popis |
 | ------------- | ------------- |
 | --Git-větev  | Větev úložiště Git, která se má použít pro Kubernetes manifesty Výchozí hodnota je "Master". |
 | --Git-Path  | Relativní cesta v úložišti Git pro tok, ve kterém se mají vyhledat manifesty Kubernetes. |
@@ -143,13 +143,16 @@ Možnosti podporované v--operator-params
 
 * Pokud nejsou nastavené možnosti--Git-User nebo--Git-email (což znamená, že nechcete, aby tok zapisoval do úložiště), pak bude automaticky nastavená možnost--Git-ReadOnly (Pokud jste ho ještě nastavili).
 
-* Pokud má enableHelmOperator hodnotu true, pak operatorInstanceName + operatorNamespace řetězce nesmí být v kombinaci 47 znaků.  Pokud se tomuto limitu nebudete řídit, zobrazí se tato chyba:
+* Pokud má enableHelmOperator hodnotu true, pak operatorInstanceName + operatorNamespace řetězce nesmí být v kombinaci 47 znaků.  Pokud se tomuto limitu nebudete řídit, zobrazí se následující chyba:
 
    ```console
    {"OperatorMessage":"Error: {failed to install chart from path [helm-operator] for release [<operatorInstanceName>-helm-<operatorNamespace>]: err [release name \"<operatorInstanceName>-helm-<operatorNamespace>\" exceeds max length of 53]} occurred while doing the operation : {Installing the operator} on the config","ClusterState":"Installing the operator"}
    ```
 
-Další informace najdete v [dokumentaci k toku](https://aka.ms/FluxcdReadme).
+Další informace najdete v [dokumentaci ke službě tokem](https://aka.ms/FluxcdReadme).
+
+> [!TIP]
+> Je možné vytvořit sourceControlConfiguration na Azure Portal i na kartě **Konfigurace** v okně prostředku Kubernetes s podporou ARC Azure.
 
 ## <a name="validate-the-sourcecontrolconfiguration"></a>Ověřit sourceControlConfiguration
 
@@ -206,7 +209,7 @@ Během procesu zřizování se `sourceControlConfiguration` přesunou mezi něko
 
 ## <a name="apply-configuration-from-a-private-git-repository"></a>Použít konfiguraci z privátního úložiště Git
 
-Pokud používáte privátní úložiště Git, musíte provést další úlohu, aby se smyčka zavřela: je nutné přidat veřejný klíč, který byl vygenerován `flux` jako **klíč nasazení** v úložišti.
+Pokud používáte privátní úložiště Git, musíte provést další úlohu, abyste ukončili smyčku: do úložiště přidejte veřejný klíč vygenerovaný `flux` jako **klíč nasazení** .
 
 **Získání veřejného klíče pomocí Azure CLI**
 
@@ -232,7 +235,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 5. Vložte veřejný klíč (mínus všechny okolní uvozovky).
 6. Klikněte na **Přidat klíč** .
 
-Další informace o tom, jak spravovat klíče pro nasazení, najdete v dokumentaci k GitHubu.
+Další informace o tom, jak tyto klíče spravovat, najdete v dokumentaci k GitHubu.
 
 **Pokud používáte úložiště Azure DevOps, přidejte klíč k klíčům SSH.**
 
@@ -292,9 +295,11 @@ kubectl -n itops get all
 
 ## <a name="delete-a-configuration"></a>Odstraní konfiguraci.
 
-Můžete odstranit `sourceControlConfiguration` pomocí Azure CLI nebo Azure Portal.  Po zahájení příkazu DELETE se `sourceControlConfiguration` prostředek v Azure odstraní hned, ale může trvat až 1 hodinu, než se z clusteru dokončí úplné odstranění přidružených objektů (v tomto případě máme nevyřízenou položku, která tuto možnost zkracuje). Pokud `sourceControlConfiguration` byl vytvořen s oborem názvů, nebude tento obor názvů odstraněn z clusteru (aby nedošlo k narušení dalších prostředků, které mohly být v daném oboru názvů vytvořeny).
+Odstraňte `sourceControlConfiguration` pomocí Azure CLI nebo Azure Portal.  Po zahájení příkazu DELETE se `sourceControlConfiguration` prostředek v Azure odstraní hned, ale může trvat až 1 hodinu, než se z clusteru dokončí úplné odstranění přidružených objektů (pro snížení tohoto časového prodlevy máme položku backlogu).
 
-Všimněte si, že všechny změny v clusteru, které byly výsledkem nasazení ze sledovaného úložiště Git, se při odstranění neodstraní `sourceControlConfiguration` .
+> [!NOTE]
+> Po vytvoření sourceControlConfiguration s oborem názvů je možné používat pro uživatele s `edit` vazbou role v oboru názvů nasazení úloh v tomto oboru názvů. Pokud se tato akce `sourceControlConfiguration` s oborem názvů odstraní, obor názvů zůstane beze změny a nebude odstraněn, aby nedošlo k porušení těchto ostatních úloh.
+> Změny v clusteru, které byly výsledkem nasazení ze sledovaného úložiště Git, se při odstranění neodstraní `sourceControlConfiguration` .
 
 ```console
 az k8sconfiguration delete --name '<config name>' -g '<resource group name>' --cluster-name '<cluster name>' --cluster-type connectedClusters
@@ -308,5 +313,5 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Použití GitOps s Helm pro konfiguraci clusteru](./use-gitops-with-helm.md)
+- [Použití Helm s konfigurací správy zdrojového kódu](./use-gitops-with-helm.md)
 - [Řízení konfigurace clusteru pomocí Azure Policy](./use-azure-policy.md)

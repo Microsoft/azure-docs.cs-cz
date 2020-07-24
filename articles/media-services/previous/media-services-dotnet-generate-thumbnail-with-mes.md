@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 3c5e22c14d0df46ddac9a503f43df8d54c3c93d5
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d9b4766b42704da8c81704822f263a6ddf46ce5a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964749"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052837"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Postup generování miniatur pomocí kodéru Media Encoder Standard a .NET 
 
@@ -282,7 +282,7 @@ Poznámka: použití makra {Solution} v názvu souboru; označuje kodéru, aby p
 I když všechny výše uvedené příklady obsahují informace o tom, jak můžete odeslat úlohu kódování, která vytváří pouze image, můžete také zkombinovat kódování videa nebo zvuku s generováním miniatur. Následující přednastavení JSON a XML oznamují **Media Encoder Standard** k vygenerování miniatury během kódování.
 
 ### <a name="json-preset"></a><a id="json"></a>Přednastavení JSON
-Informace o schématu najdete v [tomto](https://msdn.microsoft.com/library/mt269962.aspx) článku.
+Informace o schématu najdete v [tomto](/azure/media-services/previous/media-services-mes-schema) článku.
 
 ```json
     {
@@ -347,7 +347,7 @@ Informace o schématu najdete v [tomto](https://msdn.microsoft.com/library/mt269
 ```
 
 ### <a name="xml-preset"></a><a id="xml"></a>Přednastavení XML
-Informace o schématu najdete v [tomto](https://msdn.microsoft.com/library/mt269962.aspx) článku.
+Informace o schématu najdete v [tomto](/azure/media-services/previous/media-services-mes-schema) článku.
 
 ```csharp
     <?xml version="1.0" encoding="utf-16"?>
@@ -548,7 +548,7 @@ namespace EncodeAndGenerateThumbnails
 }
 ```
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 Platí následující důležité informace:
 
 * Použití explicitních časových razítek pro počátek/krok/rozsah předpokládá, že vstupní zdroj je alespoň 1 minuta dlouhý.
@@ -576,4 +576,3 @@ V průběhu zpracování úlohy kódování můžete kontrolovat [Průběh úloh
 
 ## <a name="see-also"></a>Viz také
 [Přehled kódování Media Services](media-services-encode-asset.md)
-

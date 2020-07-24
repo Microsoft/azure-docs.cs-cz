@@ -8,11 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 'Vytvoření instančního objektu s povolenou službou Azure ARC '
 keywords: Kubernetes, oblouk, Azure, kontejnery
-ms.openlocfilehash: 3c95c6bb85c7c1bc097b7751a560a658863c0afd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 02689dba32c8cc91e4a4a4de4dee98bc990b4dd6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83725597"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050066"
 ---
 # <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>Vytvoření instančního objektu s povolenou službou Azure ARC (verze Preview)
 
@@ -44,13 +45,13 @@ az ad sp create-for-RBAC --skip-assignment --name "https://azure-arc-for-k8s-onb
 
 ## <a name="assign-permissions"></a>Přiřazení oprávnění
 
-Po vytvoření nového instančního objektu přiřaďte roli Azure ARC pro Kubernetes k nově vytvořenému objektu zabezpečení. Toto je integrovaná role Azure s omezenými oprávněními, která umožňuje, aby objekt zabezpečení registroval jenom clustery do Azure. Objekt zabezpečení nemůže v rámci předplatného aktualizovat, odstranit ani upravovat žádné jiné clustery ani prostředky.
+Po vytvoření nového instančního objektu přiřaďte roli "cluster Kubernetes-Azure ARC" do nově vytvořeného objektu zabezpečení. Toto je integrovaná role Azure s omezenými oprávněními, která umožňuje, aby objekt zabezpečení registroval jenom clustery do Azure. Objekt zabezpečení nemůže v rámci předplatného aktualizovat, odstranit ani upravovat žádné jiné clustery ani prostředky.
 
 S ohledem na omezené možnosti můžou zákazníci snadno použít tento objekt zabezpečení k připojování více clusterů.
 
 Oprávnění se můžou dál omezovat předáním příslušného `--scope` argumentu při přiřazení role. To zákazníkům umožňuje omezit registraci clusteru. V různých parametrech jsou podporovány následující scénáře `--scope` :
 
-| Prostředek  | Argument `scope`| Efekt |
+| Prostředek  | Argument `scope`| Účinek |
 | ------------- | ------------- | ------------- |
 | Předplatné | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | Instanční objekt může zaregistrovat libovolný cluster v existující skupině prostředků v daném předplatném. |
 | Skupina prostředků | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | Instanční objekt může registrovat __jenom__ clustery ve skupině prostředků.`myGroup` |

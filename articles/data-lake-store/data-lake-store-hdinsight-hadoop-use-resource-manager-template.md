@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 593edecd2cc1bbdd3627430af41c64be4d6a022b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 33c54738b1ab3c90118c86bbf78bdcc3348658e0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85508635"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048721"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>Vytvoření clusteru HDInsight s Azure Data Lake Storage Gen1 pomocí šablony Azure Resource Manager
 > [!div class="op_single_selector"]
@@ -36,14 +36,14 @@ Tady jsou některé důležité informace pro používání služby HDInsight s 
 
 V tomto článku zřídíme cluster Hadoop s Data Lake Storage Gen1 jako další úložiště. Pokyny k vytvoření clusteru Hadoop s Data Lake Storage Gen1 jako výchozího úložiště najdete v tématu [Vytvoření clusteru HDInsight s Data Lake Storage Gen1 pomocí Azure Portal](data-lake-store-hdinsight-hadoop-use-portal.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Azure PowerShell 1.0 nebo vyšší**. Viz téma [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
+* **Azure PowerShell 1.0 nebo vyšší**. Viz téma [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/).
 * **Azure Active Directory instančního objektu**. Kroky v tomto kurzu poskytují pokyny k vytvoření instančního objektu ve službě Azure AD. Abyste ale mohli vytvořit instanční objekt, musíte být správcem služby Azure AD. Pokud jste správce Azure AD, můžete tento požadavek přeskočit a pokračovat v tomto kurzu.
 
     **Pokud nejste správce Azure AD**, nebudete moct provádět kroky potřebné k vytvoření instančního objektu. V takovém případě musí správce Azure AD nejdřív vytvořit instanční objekt, abyste mohli vytvořit cluster HDInsight s Data Lake Storage Gen1. Instanční objekt musí být také vytvořen pomocí certifikátu, jak je popsáno v tématu [Vytvoření instančního objektu s certifikátem](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority).

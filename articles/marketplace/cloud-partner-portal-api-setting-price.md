@@ -3,26 +3,25 @@ title: Ceny za nabídky virtuálních počítačů – Azure Marketplace
 description: V této části najdete tři způsoby, jak zadat ceny pro nabídky virtuálních počítačů.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: b3d38c59d4c79e908aeef857164603a2a5160e05
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: reference
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 8d6dcd7f3f86e111cfb17fb08c4faadac1552b94
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115498"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039107"
 ---
-<a name="pricing-for-virtual-machine-offers"></a>Ceny nabídek virtuálních počítačů
-==================================
+# <a name="pricing-for-virtual-machine-offers"></a>Ceny nabídek virtuálních počítačů
 
 > [!NOTE]
-> Rozhraní API pro portál partnerů cloudu jsou integrovaná do partnerského centra a budou fungovat i po migraci nabídek do partnerského centra. Integrace přináší malé změny. Projděte si změny uvedené v části [portál partnerů cloudu rozhraní API](./cloud-partner-portal-api-overview.md) , abyste zajistili, že váš kód bude i nadále fungovat po migraci do partnerského centra.
+> Rozhraní API pro portál partnerů cloudu jsou integrovaná s a budou pokračovat v práci v partnerském centru. Přechod přináší malé změny. Projděte si změny uvedené v části [portál partnerů cloudu rozhraní API](./cloud-partner-portal-api-overview.md) , abyste zajistili, že kód pokračuje v práci po přechodu do partnerského centra. Rozhraní API CPP by se mělo používat jenom pro existující produkty, které už jsou integrované před přechodem do partnerského centra; nové produkty by měly používat rozhraní API pro odesílání v partnerském centru.
 
 K dispozici jsou tři způsoby, jak zadat ceny pro virtuální počítače: vlastní ceny za základní ceny, ceny za jádro a ceny v tabulce.
 
-
-<a name="customized-core-pricing"></a>Vlastní ceny za Core
------------------------
+## <a name="customized-core-pricing"></a>Vlastní ceny za Core
 
 Ceny jsou specifické pro každou oblast a kombinaci jader. Každá oblast v seznamu prodejů musí být zadána v části **virtualMachinePricing** / **regionPrices** definice.  Pro každou [oblast](#regions) ve vaší žádosti použijte správné kódy měn.  Následující příklad znázorňuje tyto požadavky:
 
@@ -66,9 +65,7 @@ Ceny jsou specifické pro každou oblast a kombinaci jader. Každá oblast v sez
      }
 ```
 
-
-<a name="per-core-pricing"></a>Ceny za jádro
-----------------
+## <a name="per-core-pricing"></a>Ceny za jádro
 
 V tomto případě vydavatelé určí jednu cenu v USD pro svou skladovou jednotku a všechny ostatní ceny se vygenerují automaticky. Cena za jádro je uvedena v **jednom** parametru v žádosti.
 
@@ -84,9 +81,7 @@ V tomto případě vydavatelé určí jednu cenu v USD pro svou skladovou jednot
      }
 ```
 
-
-<a name="spreadsheet-pricing"></a>Ceny tabulky
--------------------
+## <a name="spreadsheet-pricing"></a>Ceny tabulky
 
 Vydavatel může také odeslat tabulku s cenami do dočasného umístění úložiště a pak zahrnout identifikátor URI do žádosti jako jiné artefakty souborů. Tabulka se pak nahraje, převede na vyhodnocení zadaného časového plánu a nakonec tuto nabídku aktualizuje o ceny. Následné žádosti o získání nabídky vrátí identifikátor URI tabulky a vyhodnocené ceny pro oblast.
 
@@ -101,18 +96,15 @@ Vydavatel může také odeslat tabulku s cenami do dočasného umístění úlo�
      }
 ```
 
-<a name="new-core-sizes-added-on-722019"></a>Nové základní velikosti přidané v 7/2/2019
----------------------------
+## <a name="new-core-sizes-added-on-722019"></a>Nové základní velikosti přidané v 7/2/2019
 
 Vydavatelé virtuálních počítačů byli informováni 2. července 2019 o přidání nových cen pro nové velikosti virtuálních počítačů Azure (na základě počtu jader).  Nové ceny jsou pro základní velikosti 10, 44, 48, 60, 120, 208 a 416.  Pro existující virtuální počítač se automaticky vypočítaly nové ceny pro tyto velikosti jader na základě aktuálních cen.  Vydavatelé mají od 1. srpna 2019 kontrolu nad dalšími cenami a provádět požadované změny.  Po tomto datu se projeví automaticky vypočtené ceny pro tyto nové základní velikosti, pokud už je Vydavatel znovu Nepublikovaná.
 
-
-<a name="regions"></a>Oblasti
--------
+## <a name="regions"></a>Oblasti
 
 V následující tabulce jsou uvedeny různé oblasti, které můžete zadat pro vlastní ceny za základní jádro a jejich odpovídající kódy měn.
 
-| **Věřitel** | **Název**             | **Kód měny** |
+| **Oblast** | **Název**             | **Kód měny** |
 |------------|----------------------|-------------------|
 | DZ         | Alžírsko              | DZD               |
 | AR         | Argentina            | ARS               |

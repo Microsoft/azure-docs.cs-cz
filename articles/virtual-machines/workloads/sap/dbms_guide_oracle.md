@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5b6879d11a4b47c0090f13baa0a15dcc696c8534
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3301667c0ee6ad739b6fb734c2cea3aef4889bd9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525377"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051846"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Nasazení Azure Virtual Machines DBMS pro úlohy SAP
 
@@ -74,7 +74,7 @@ ms.locfileid: "86525377"
 
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com
-[azure-ps]:/powershell/azureps-cmdlets-docs
+[azure-ps]:/powershell/azure/
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
 [azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
@@ -374,10 +374,10 @@ Minimální konfigurace je následující:
 
 | Komponenta | Disk | Ukládání do mezipaměti | Fond úložiště |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA & mirrlogB | Premium | Žádný | Není potřeba |
-| \oracle \<SID> \origlogaB & mirrlogA | Premium | Žádný | Není potřeba |
+| \oracle \<SID> \origlogaA & mirrlogB | Premium | Žádné | Není potřeba |
+| \oracle \<SID> \origlogaB & mirrlogA | Premium | Žádné | Není potřeba |
 | \oracle \<SID> \sapdata1... n | Premium | Jen pro čtení | Dá se použít |
-| \oracle \<SID> \oraarch | Standard | Žádný | Není potřeba |
+| \oracle \<SID> \oraarch | Standard | Žádné | Není potřeba |
 | Oracle Home, saptrace,... | Disk OS | | Není potřeba |
 
 
@@ -387,13 +387,13 @@ Konfigurace výkonu je následující:
 
 | Komponenta | Disk | Ukládání do mezipaměti | Fond úložiště |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA | Premium | Žádný | Dá se použít  |
-| \oracle \<SID> \origlogaB | Premium | Žádný | Dá se použít |
-| \oracle \<SID> \mirrlogAB | Premium | Žádný | Dá se použít |
-| \oracle \<SID> \mirrlogBA | Premium | Žádný | Dá se použít |
+| \oracle \<SID> \origlogaA | Premium | Žádné | Dá se použít  |
+| \oracle \<SID> \origlogaB | Premium | Žádné | Dá se použít |
+| \oracle \<SID> \mirrlogAB | Premium | Žádné | Dá se použít |
+| \oracle \<SID> \mirrlogBA | Premium | Žádné | Dá se použít |
 | \oracle \<SID> \sapdata1... n | Premium | Jen pro čtení | Doporučeno  |
-| \oracle\SID\sapdata (n + 1) * | Premium | Žádný | Dá se použít |
-| \oracle \<SID> \oraarch * | Premium | Žádný | Není potřeba |
+| \oracle\SID\sapdata (n + 1) * | Premium | Žádné | Dá se použít |
+| \oracle \<SID> \oraarch * | Premium | Žádné | Není potřeba |
 | Oracle Home, saptrace,... | Disk OS | Není potřeba |
 
 * (n + 1): hostování systému, dočasné a ZPĚTná prostoru. Vzor vstupně-výstupních prostorů systému a zpětných prostorů se liší od ostatních tabulkových prostorů hostujících data aplikací. Nejedná se o nejlepší možnost pro výkon systému a vrácení tabulkových prostorů.
@@ -420,7 +420,7 @@ Další informace o zotavení po havárii pro databáze Oracle v Azure najdete v
 
 ### <a name="accelerated-networking"></a>Urychlení sítě
 Pro nasazení Oracle ve Windows důrazně doporučujeme zrychlit sítě, jak je popsáno v tématu [urychlené síťové služby Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Zvažte také doporučení, která jsou k [disVirtual Machines v části požadavky na nasazení Azure DBMS pro úlohy SAP](dbms_guide_general.md). 
-### <a name="other"></a>Další
+### <a name="other"></a>Jiné
 [Důležité informace týkající se nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) popisují další důležité koncepty týkající se nasazení virtuálních počítačů s Oracle Database, včetně skupin dostupnosti Azure a monitorování SAP.
 
 ## <a name="specifics-for-oracle-database-on-oracle-linux"></a>Specifické pro Oracle Database Oracle Linux
@@ -464,10 +464,10 @@ Minimální konfigurace:
 
 | Komponenta | Disk | Ukládání do mezipaměti | Odstranění |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA & mirrlogB | Premium | Žádný | Není potřeba |
-| /Oracle/ \<SID> /origlogaB & mirrlogA | Premium | Žádný | Není potřeba |
+| /Oracle/ \<SID> /origlogaA & mirrlogB | Premium | Žádné | Není potřeba |
+| /Oracle/ \<SID> /origlogaB & mirrlogA | Premium | Žádné | Není potřeba |
 | /Oracle/ \<SID> /sapdata1... n | Premium | Jen pro čtení | Dá se použít |
-| /Oracle/ \<SID> /oraarch | Standard | Žádný | Není potřeba |
+| /Oracle/ \<SID> /oraarch | Standard | Žádné | Není potřeba |
 | Oracle Home, saptrace,... | Disk OS | | Není potřeba |
 
 * Odstranění: LVM Stripe nebo MDADM using RAID0
@@ -478,13 +478,13 @@ Konfigurace výkonu:
 
 | Komponenta | Disk | Ukládání do mezipaměti | Odstranění |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA | Premium | Žádný | Dá se použít  |
-| /Oracle/ \<SID> /origlogaB | Premium | Žádný | Dá se použít |
-| /Oracle/ \<SID> /mirrlogAB | Premium | Žádný | Dá se použít |
-| /Oracle/ \<SID> /mirrlogBA | Premium | Žádný | Dá se použít |
+| /Oracle/ \<SID> /origlogaA | Premium | Žádné | Dá se použít  |
+| /Oracle/ \<SID> /origlogaB | Premium | Žádné | Dá se použít |
+| /Oracle/ \<SID> /mirrlogAB | Premium | Žádné | Dá se použít |
+| /Oracle/ \<SID> /mirrlogBA | Premium | Žádné | Dá se použít |
 | /Oracle/ \<SID> /sapdata1... n | Premium | Jen pro čtení | Doporučeno  |
-| /Oracle/ \<SID> /sapdata (n + 1) * | Premium | Žádný | Dá se použít |
-| /Oracle/ \<SID> /oraarch * | Premium | Žádný | Není potřeba |
+| /Oracle/ \<SID> /sapdata (n + 1) * | Premium | Žádné | Dá se použít |
+| /Oracle/ \<SID> /oraarch * | Premium | Žádné | Není potřeba |
 | Oracle Home, saptrace,... | Disk OS | Není potřeba |
 
 * Odstranění: LVM Stripe nebo MDADM using RAID0
@@ -523,5 +523,5 @@ sudo curl -so /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules https://raw.gi
 </code></pre>
 
 
-### <a name="other"></a>Další
+### <a name="other"></a>Jiné
 [Důležité informace týkající se nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) popisují další důležité koncepty týkající se nasazení virtuálních počítačů s Oracle Database, včetně skupin dostupnosti Azure a monitorování SAP.

@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2019
 ms.author: juliako
-ms.openlocfilehash: 872dad95fc5b536c51e251612f40439da020a059
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16c74e10e88d3f8eacd8f59222adbdb19be813ef
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75779633"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053202"
 ---
 # <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>Konfigurace metody post pro Media Services V3 REST API volání
 
@@ -25,10 +26,10 @@ V tomto článku se dozvíte, jak nakonfigurovat **metodu post** , aby ji bylo m
 
 Než začnete s vývojem, přečtěte si téma [vývoj s rozhraními api Media Services V3](media-services-apis-overview.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- [Vytvořte účet Media Services](create-account-cli-how-to.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services. 
-- Získání informací potřebných pro [přístup k rozhraním API](access-api-cli-how-to.md)
+- [Vytvořte účet Media Services](./create-account-howto.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services. 
+- Získání informací potřebných pro [přístup k rozhraním API](./access-api-howto.md)
 - Nainstalujte klienta [Postman](https://www.getpostman.com/) rozhraní REST, ve kterém můžete spouštět rozhraní REST API používaná v některých kurzech ke službě AMS REST. 
 
     V příkladech používáme **Postman**, můžete ale zvolit jakýkoli nástroj REST. Další alternativy: **Visual Studio Code** pomocí modulu plug-in REST nebo **Telerik Fiddler**. 
@@ -91,7 +92,7 @@ Než začnete pracovat s prostředky AMS v3, potřebujete získat a nastavit tok
 
     ![Získání tokenu AAD](./media/develop-with-postman/postman-get-aad-auth-token.png)
 
-## <a name="troubleshooting"></a>Řešení potíží 
+## <a name="troubleshooting"></a>Poradce při potížích 
 
 * Pokud se vaše aplikace nezdařila s protokolem HTTP 504: časový limit brány, ujistěte se, že proměnná umístění nebyla explicitně nastavena na jinou hodnotu než očekávané umístění účtu Media Services. 
 * Pokud se zobrazí chyba "účet nebyl nalezen", zkontrolujte také, zda je vlastnost umístění v těle zprávy JSON nastavena na umístění, ve kterém je účet Media Services. 
@@ -105,4 +106,4 @@ Než začnete pracovat s prostředky AMS v3, potřebujete získat a nastavit tok
 ## <a name="next-steps"></a>Další kroky
 
 - [Streamování souborů s REST](stream-files-tutorial-with-rest.md)  
-- [Kurz: kódování vzdáleného souboru na základě adresy URL a streamu pro video](stream-files-tutorial-with-rest.md)
+- [Kurz: Kódování vzdáleného souboru na základě adresy URL a streamování videa – REST](stream-files-tutorial-with-rest.md)

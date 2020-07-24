@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: apimpm
-ms.openlocfilehash: 2870a654faad4e760a9d022488cb2c4c406cbeab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e79248e16ca21ae84022f8ac7f280d93f489c6a4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82203127"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050354"
 ---
 # <a name="provision-a-self-hosted-gateway-in-azure-api-management"></a>Zřízení samoobslužné brány v Azure API Management
 
 Zřízení prostředku brány v instanci Azure API Management je předpokladem pro nasazení samoobslužné brány. Tento článek vás provede kroky k zřízení prostředku brány v API Management.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Projděte si následující rychlý start: [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md)
 
@@ -31,8 +31,8 @@ Projděte si následující rychlý start: [Vytvoření instance služby Azure A
 
 ## <a name="provision-a-self-hosted-gateway"></a>Zřízení brány v místním prostředí
 
-1. V části **Nastavení**vyberte **brány** .
-2. Klikněte na tlačítko **+ Přidat**.
+1. Vyberte **brány** z části **nasazení a infrastruktura**.
+2. Klikněte na **+ Přidat**.
 3. Zadejte **název** a **oblast** brány.
 > [!TIP]
 > **Oblast** určuje zamýšlené umístění uzlů brány, které budou přidruženy k tomuto prostředku brány. Je sémanticky ekvivalentní s podobnou vlastností přidruženou k libovolnému prostředku Azure, ale může jim být přiřazena libovolná hodnota řetězce.
@@ -42,7 +42,7 @@ Projděte si následující rychlý start: [Vytvoření instance služby Azure A
 > [!IMPORTANT]
 > Ve výchozím nastavení se k novému prostředku brány nepřidruží žádná existující rozhraní API. Proto se pokusy o jejich vyvolání přes novou bránu budou poznamenat `404 Resource Not Found` odpovědi.
 
-6. Klikněte na tlačítko **Add** (Přidat).
+6. Klikněte na **Přidat**.
 
 V instanci API Management byl nyní prostředek brány zřízen. Můžete pokračovat v nasazení brány.
 

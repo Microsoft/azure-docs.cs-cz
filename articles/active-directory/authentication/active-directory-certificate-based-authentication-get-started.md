@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: ca19ccb925721126f7e7d8495addd0794766f376
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 94955e27dcadb3acbea03926d6d1ed73e9c5c9ed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202872"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051342"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Začínáme s ověřováním pomocí certifikátů v Azure Active Directory
 
@@ -93,7 +93,7 @@ Schéma certifikační autority vypadá takto:
     }
 ```
 
-Pro konfiguraci můžete použít [Azure Active Directory PowerShell verze 2](/powershell/azure/install-adv2?view=azureadps-2.0):
+Pro konfiguraci můžete použít [Azure Active Directory PowerShell verze 2](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0):
 
 1. Spusťte prostředí Windows PowerShell s oprávněními správce.
 2. Nainstalujte modul Azure AD verze [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) nebo novější.
@@ -104,7 +104,7 @@ Pro konfiguraci můžete použít [Azure Active Directory PowerShell verze 2](/p
 
 Jako první krok konfigurace musíte navázat spojení s vaším klientem. Jakmile existuje připojení k vašemu tenantovi, můžete si prohlédnout, přidat, odstranit a upravit důvěryhodné certifikační autority, které jsou definovány ve vašem adresáři.
 
-### <a name="connect"></a>Připojení
+### <a name="connect"></a>Připojit
 
 K navázání spojení s vaším klientem použijte rutinu [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) :
 
@@ -122,7 +122,7 @@ K načtení důvěryhodných certifikačních autorit, které jsou definovány v
 
 ### <a name="add"></a>Přidat
 
-Chcete-li vytvořit důvěryhodnou certifikační autoritu, použijte rutinu [New-AzureADTrustedCertificateAuthority](/azurepowershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) a nastavte atribut **crlDistributionPoint** na správnou hodnotu:
+Chcete-li vytvořit důvěryhodnou certifikační autoritu, použijte rutinu [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) a nastavte atribut **crlDistributionPoint** na správnou hodnotu:
 
 ```azurepowershell
     $cert=Get-Content -Encoding byte "[LOCATION OF THE CER FILE]"

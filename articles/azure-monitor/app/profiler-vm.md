@@ -6,11 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 11/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7c5dfe6ed08df01f78346c76fd5a35e7d64ab520
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8beb1d60ca8dcc18978ffeb523a7d63f90ca6c01
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671575"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049798"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Profilování webových aplikací běžících na virtuálním počítači Azure nebo v sadě škálování virtuálního počítače pomocí Application Insights Profiler
 
@@ -24,7 +25,7 @@ Azure Application Insights Profiler můžete nasadit i na tyto služby:
 ## <a name="deploy-profiler-on-a-virtual-machine-or-a-virtual-machine-scale-set"></a>Nasazení profileru na virtuálním počítači nebo v sadě škálování virtuálního počítače
 V tomto článku se dozvíte, jak můžete Application Insights Profiler spustit na virtuálním počítači Azure nebo v sadě škálování virtuálních počítačů Azure. Profiler se instaluje s rozšířením Azure Diagnostics pro virtuální počítače. Nakonfigurujte rozšíření pro spuštění profileru a Sestavte sadu Application Insights SDK do své aplikace.
 
-1. Přidejte sadu Application Insights SDK do [aplikace ASP.NET](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net).
+1. Přidejte sadu Application Insights SDK do [aplikace ASP.NET](./asp-net.md).
 
    Chcete-li zobrazit profily požadavků, je nutné odeslat telemetrii žádosti do Application Insights.
 
@@ -71,7 +72,7 @@ V tomto článku se dozvíte, jak můžete Application Insights Profiler spustit
     ```powershell
     Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All
     ```  
-   b. Pokud je navazování vzdáleného přístupu problém, můžete pomocí rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) spustit následující příkaz:  
+   b. Pokud je navazování vzdáleného přístupu problém, můžete pomocí rozhraní příkazového [řádku Azure](/cli/azure/get-started-with-azure-cli) spustit následující příkaz:  
 
     ```powershell
     az vm run-command invoke -g MyResourceGroupName -n MyVirtualMachineName --command-id RunPowerShellScript --scripts "Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All"

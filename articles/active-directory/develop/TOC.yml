@@ -34,7 +34,7 @@
       items:
         - name: ASP.NET
           href: quickstart-v2-aspnet-webapp.md
-        - name: Jádro ASP.NET
+        - name: ASP.NET Core
           href: quickstart-v2-aspnet-core-webapp.md
         - name: NodeJS
           href: quickstart-v2-nodejs-webapp.md
@@ -343,8 +343,6 @@
               href: msal-js-use-ie-browser.md
             - name: Známé problémy – IE a Microsoft Edge
               href: msal-js-known-issues-ie-edge-browsers.md
-            - name: Známé problémy – Safari
-              href: msal-js-known-issues-safari-browser.md
             - name: Zpracování chyb a výjimek
               href: msal-handling-exceptions.md?tabs=javascript
             - name: Protokolování
@@ -462,7 +460,7 @@
       items:
         - name: Přehled
           href: authentication-national-cloud.md
-        - name: Authentication
+        - name: Ověřování
           href: msal-national-cloud.md
     - name: Automatické zřizování uživatelů (SCIM)
       items:

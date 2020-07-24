@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Použití Azure Policy k aplikování konfigurace clusteru ve velkém měřítku
 keywords: Kubernetes, oblouk, Azure, K8s, Containers
-ms.openlocfilehash: 26b291e2a957047361d4f52eeff58cbe8aa8c633
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e4279f3d89376320116067bf191e3196271918ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111265"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050037"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>Použití Azure Policy k aplikování konfigurace clusteru ve velkém měřítku (Preview)
 
@@ -23,7 +23,11 @@ Pomocí Azure Policy vynutili použití `Microsoft.Kubernetes/connectedclusters`
 
 Pokud používáte více úložišť Git jako zdroje pravdy pro každý cluster (například jedno úložiště pro centrálního IT/clusterový operátor a jiné úložiště pro aplikační týmy), můžete to povolit pomocí více přiřazení zásad. každé přiřazení zásady je nakonfigurované tak, aby používalo jiné úložiště Git.
 
-## <a name="create-a-policy-assignment"></a>Vytvoření přiřazení zásady
+## <a name="prerequisite"></a>Požadavek
+
+Ujistěte se, že máte `Microsoft.Authorization/policyAssignments/write` oprávnění pro obor (předplatné nebo skupinu prostředků), ve kterém chcete vytvořit toto přiřazení zásady.
+
+## <a name="create-a-policy-assignment"></a>Vytvoření přiřazení zásad
 
 1. V Azure Portal přejděte na zásady a v části **vytváření obsahu** na bočním panelu vyberte **definice**.
 2. V kategorii "Kubernetes" vyberte integrovanou zásadu "nasadit GitOps do clusteru Kubernetes" a klikněte na **přiřadit**.
@@ -42,7 +46,7 @@ Po vytvoření přiřazení zásady se použije pro všechny nové `connectedClu
 
 ## <a name="verify-a-policy-assignment"></a>Ověření přiřazení zásady
 
-1. V Azure Portal přejděte k jednomu z vašich `connectedCluster` prostředků a v části **Nastavení** na bočním panelu vyberte **zásady**. (Prostředí spravovaného uživatelského prostředí pro AKS se zatím neimplementuje, ale připravujeme.)
+1. V Azure Portal přejděte k jednomu z vašich `connectedCluster` prostředků a v části **Nastavení** na bočním panelu vyberte **zásady**. (UX pro cluster AKS ještě není implementované, ale připravujeme.)
 2. V seznamu byste měli vidět přiřazení zásad, které jste vytvořili výše, a **stav dodržování předpisů** by měl *splňovat předpisy*.
 3. V části **Nastavení** na bočním panelu vyberte **Konfigurace**.
 4. V seznamu byste měli vidět `sourceControlConfiguration` , že přiřazení zásady bylo vytvořeno.

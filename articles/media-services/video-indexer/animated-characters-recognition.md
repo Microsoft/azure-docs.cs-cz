@@ -10,13 +10,14 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: af608dcfbb5d98cf3116de4e14dc12bf6facb97b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b449f68b25fce19dc034d2a0db0ae5ce8a28ec7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76989905"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047486"
 ---
-# <a name="animated-character-detection-preview"></a>Animovaná detekce znaků (Preview)
+# <a name="animated-character-detection-preview"></a>Detekce animovaných postav (Preview)
 
 Azure Media Services Video Indexer podporuje detekci, seskupení a rozpoznávání znaků v animovaném obsahu prostřednictvím integrace s [Cognitive Services vlastní vize](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/). Tato funkce je k dispozici prostřednictvím portálu i přes rozhraní API.
 
@@ -42,7 +43,7 @@ V závislosti na typu Video Indexer účtu jsou k dispozici různé sady funkcí
 |Funkce|Zkušební verze|Hrazen|
 |---|---|---|
 |Účet Custom Vision|Spravováno na pozadí Video Indexer. |Váš účet Custom Vision je připojen k Video Indexer.|
-|Počet modelů animace|Jeden|Až 100 modelů na účet (omezení Custom Vision).|
+|Počet modelů animace|Jednu|Až 100 modelů na účet (omezení Custom Vision).|
 |Trénování modelu|Video Indexer navlacích model pro nové znaky další příklady stávajících znaků.|Vlastník účtu naplní model, jakmile budou připraveni provést změny.|
 |Rozšířené možnosti v Custom Vision|K portálu Custom Vision nemáte přístup.|Modely můžete upravit sami na portálu Custom Vision.|
 
@@ -133,7 +134,7 @@ Pomocí těchto kroků se připojíte Custom Vision účtu k Video Indexer nebo 
         ![Přizpůsobení modelu obsahu](./media/animated-characters-recognition/content-model-customization-tab.png)
 
      1. Po vyškolení budou všechny videozáznamy, které budou indexovány nebo přeindexovány pomocí tohoto modelu, rozpoznány jako vyškolené znaky. 
-    Placené účty, které mají přístup ke svému účtu Custom Vision, můžou v něm vidět modely a označené obrázky. Přečtěte si další informace o [vylepšení klasifikátoru v Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier).
+    Placené účty, které mají přístup ke svému účtu Custom Vision, můžou v něm vidět modely a označené obrázky. Přečtěte si další informace o [vylepšení klasifikátoru v Custom Vision](../../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md).
 
 1. Odstraní animovaný znak.
 
@@ -159,7 +160,7 @@ Pomocí těchto kroků se připojíte Custom Vision účtu k Video Indexer nebo 
 1. Připojte účet Custom Vision.
 
     Pokud vlastníte Video Indexer placený účet, musíte nejdřív připojit účet Custom Vision. <br/>
-    Pokud účet Custom Vision ještě nemáte, vytvořte ho prosím. Další informace najdete v tématu [Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/home).
+    Pokud účet Custom Vision ještě nemáte, vytvořte ho prosím. Další informace najdete v tématu [Custom Vision](../../cognitive-services/custom-vision-service/home.md).
 
     [Připojte účet Custom Vision pomocí rozhraní API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Connect-Custom-Vision-Account?tags=&pattern=&groupBy=tag).
 1. Vytvořte animovaný znakový model.

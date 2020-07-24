@@ -38,48 +38,44 @@
       href: application-management-fundamentals.md
     - name: Běžné scénáře správy aplikací
       href: common-scenarios.md
-    - name: Cloudové aplikace a jednotné přihlašování
+    - name: Plánování integrace cloudových aplikací
       items:
-        - name: Plánování integrace cloudových aplikací
-          items:
-            - name: Začínáme s integrací aplikací
-              href: plan-an-application-integration.md
-            - name: Plánování nasazení přístupového panelu
-              href: access-panel-deployment-plan.md
-            - name: Pokyny pro vývojáře
-              href: developer-guidance-for-integrating-applications.md
-        - name: Jednotné přihlašování
-          items:
-            - name: Povolení jednotného přihlašování pro aplikaci s více tenanty
-              href: isv-sso-content.md
-            - name: Vytvoření tenanta Azure pro aplikaci s více tenanty
-              href: isv-tenant-multi-tenant-app.md
-            - name: Volba federace s více tenanty
-              href: isv-choose-multi-tenant-federation.md
-            - name: Vytvoření dokumentace pro aplikaci s více tenanty
-              href: isv-create-sso-documentation.md
-            - name: Plánování nasazení jednotného přihlašování
-              href: plan-sso-deployment.md
+        - name: Začínáme s integrací aplikací
+          href: plan-an-application-integration.md
+        - name: Plánování nasazení přístupového panelu
+          href: access-panel-deployment-plan.md
+        - name: Pokyny pro vývojáře
+          href: developer-guidance-for-integrating-applications.md
+    - name: Jednotné přihlašování
+      items:
+        - name: Povolení jednotného přihlašování pro aplikaci s více tenanty
+          href: isv-sso-content.md
+        - name: Vytvoření tenanta Azure pro aplikaci s více tenanty
+          href: isv-tenant-multi-tenant-app.md
+        - name: Volba federace s více tenanty
+          href: isv-choose-multi-tenant-federation.md
+        - name: Vytvoření dokumentace pro aplikaci s více tenanty
+          href: isv-create-sso-documentation.md
+        - name: Plánování nasazení jednotného přihlašování
+          href: plan-sso-deployment.md
         - name: Jednotné přihlašování jedním kliknutím
-          items:
-            - name: Co je jednotné přihlašování jedním kliknutím
-              href: one-click-sso-tutorial.md
-        - name: Zabezpečení aplikací
-          items:
-            - name: Možnosti přístupu k aplikacím
-              href: what-is-access-management.md
-            - name: Možnosti podpisu certifikátů
-              href: certificate-signing-options.md
-            - name: Správa certifikátů
-              href: manage-certificates-for-federated-single-sign-on.md
-            - name: Omezení tenanta
-              href: tenant-restrictions.md
-            - name: Konfigurace šifrování tokenu SAML
-              href: howto-saml-token-encryption.md
-            - name: Portály pro koncové uživatele
-              href: end-user-experiences.md
-    - name: Řízení a viditelnost cloudových aplikací
-      href: cloud-app-security.md
+          href: one-click-sso-tutorial.md
+    - name: Zabezpečení aplikací
+      items:
+        - name: Možnosti přístupu k aplikacím
+          href: what-is-access-management.md
+        - name: Možnosti podpisu certifikátů
+          href: certificate-signing-options.md
+        - name: Správa certifikátů
+          href: manage-certificates-for-federated-single-sign-on.md
+        - name: Omezení tenanta
+          href: tenant-restrictions.md
+        - name: Konfigurace šifrování tokenu SAML
+          href: howto-saml-token-encryption.md
+        - name: Portály pro koncové uživatele
+          href: end-user-experiences.md
+        - name: Řízení a viditelnost cloudových aplikací
+          href: cloud-app-security.md
     - name: Proxy aplikací pro místní aplikace
       items:
         - name: Proxy aplikací

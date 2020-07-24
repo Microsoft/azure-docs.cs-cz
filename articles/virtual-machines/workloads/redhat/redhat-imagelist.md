@@ -1,5 +1,5 @@
 ---
-title: Red Hat Enterprise Linux imagí v Azure | Microsoft Docs
+title: Red Hat Enterprise Linux imagí dostupných v Azure
 description: Přečtěte si o Red Hat Enterprise Linuxch imagí v Microsoft Azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/16/2020
 ms.author: alsin
-ms.openlocfilehash: 089858c789bb11245e98f32047cabb4117ece904
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01c9c4389e2c950fe68c8be171b4c50d3d6271c1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82838582"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052026"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Image Red Hat Enterprise Linux (RHEL) dostupné v Azure
 Azure nabízí celou řadu imagí RHEL pro různé případy použití.
@@ -30,7 +31,7 @@ Toto je seznam imagí RHEL dostupných v Azure. Pokud není uvedeno jinak, všec
 > [!NOTE]
 > Nezpracované obrázky se už nevytvářejí ve prospěch LVM imagí. LVM nabízí několik výhod oproti staršímu schématu oddílu RAW (bez LVM), včetně významně flexibilnějších možností změny velikosti oddílů.
 
-Nabídka| SKU | Dělení | Zřizování | Poznámky
+Nabídka| Skladová položka | Dělení | Zřizování | Poznámky
 :----|:----|:-------------|:-------------|:-----
 RHEL          | 6.7      | ZÍSKÁNÍ    | Linuxový agent |
 |             | 6.8      | ZÍSKÁNÍ    | Linuxový agent |
@@ -54,10 +55,14 @@ RHEL          | 6.7      | ZÍSKÁNÍ    | Linuxový agent |
 |             | 78 – Gen2  | LVM    | Linuxový agent | Připojeno k pravidelným úložištím (EUS není k dispozici pro RHEL 7,8)
 |             | 8 – LVM    | LVM    | Linuxový agent | RHEL 8. x řady imagí. Připojeno k pravidelným úložištím.
 |             | 8. LVM – Gen2| LVM    | Linuxový agent | Hyper-V Generation 2 – RHEL 8. x řada imagí. Připojeno k pravidelným úložištím.
-|             | 8        | LVM    | Linuxový agent | Image RHEL 8,0
+|             | 8        | LVM    | Linuxový agent | Image RHEL 8,0.
 |             | 8 – Gen2   | LVM    | Linuxový agent | Hyper-V generace 2 – image RHEL 8,0.
-|             | 8.1      | LVM    | Linuxový agent | Image RHEL 8,1. Aktuálně připojeno k pravidelným úložištím.
+|             | 8.1      | LVM    | Linuxový agent | Image RHEL 8,2. Aktuálně připojeno k pravidelným úložištím.
 |             | 81gen2   | LVM    | Linuxový agent | Hyper-V generace 2 – image RHEL 8,1. Aktuálně připojeno k pravidelným úložištím.
+|             | 8,1 – CI   | LVM    | Linuxový agent | Image RHEL 8,1 s použitím Cloud-init jako zřizovacího agenta. Aktuálně připojeno k pravidelným úložištím.
+|             | 81-CI-Gen2| LVM    | Linuxový agent | Hyper-V generace 2 – image RHEL 8,1 pomocí Cloud-init jako zřizovacího agenta. Aktuálně připojeno k pravidelným úložištím.
+|             | 8.2      | LVM    | Linuxový agent | Image RHEL 8,2. Aktuálně připojeno k pravidelným úložištím.
+|             | 82gen2   | LVM    | Linuxový agent | Hyper-V generace 2 – image RHEL 8,1. Aktuálně připojeno k pravidelným úložištím.
 RHEL – SAP      | 7.4      | LVM    | Linuxový agent | RHEL 7,4 pro SAP HANA a obchodní aplikace. Připojené k úložištím E4S budou účtovat prémii za SAP a RHEL a také základní výpočetní poplatek.
 |             | 74sap – Gen2| LVM    | Linuxový agent | RHEL 7,4 pro SAP HANA a obchodní aplikace. Obrázek generace 2 Připojené k úložištím E4S budou účtovat prémii za SAP a RHEL a také základní výpočetní poplatek.
 |             | 7,5       | LVM    | Linuxový agent | RHEL 7,5 pro SAP HANA a obchodní aplikace. Připojené k úložištím E4S budou účtovat prémii za SAP a RHEL a také základní výpočetní poplatek.
@@ -84,7 +89,8 @@ RHEL – BYOS     |RHEL – lvm74| LVM    | Linuxový agent | Image RHEL 7,4 BYO
 |             |RHEL – lvm75| LVM    | Linuxový agent | Image RHEL 7,5 BYOS, které nejsou připojené k žádnému zdroji aktualizací, nebudou účtovat RHEL Premium.
 |             |RHEL – lvm76| LVM    | Linuxový agent | Image RHEL 7,6 BYOS, které nejsou připojené k žádnému zdroji aktualizací, nebudou účtovat RHEL Premium.
 |             |RHEL – lvm77| LVM    | Linuxový agent | Image RHEL 7,7 BYOS, které nejsou připojené k žádnému zdroji aktualizací, nebudou účtovat RHEL Premium.
-|             |RHEL – lvm8 | LVM    | Linuxový agent | Image RHEL 8 BYOS (v hodnotě verze image se zobrazuje i podverze RHEL), která není připojená k žádnému zdroji aktualizací, neúčtuje RHEL Premium.
+|             |RHEL – lvm8 | LVM    | Linuxový agent | Image RHEL 8,0 BYOS, které nejsou připojené k žádnému zdroji aktualizací, nebudou účtovat RHEL Premium.
+|             |RHEL – lvm81 | LVM    | Linuxový agent | Image RHEL 8,1 BYOS, které nejsou připojené k žádnému zdroji aktualizací, nebudou účtovat RHEL Premium.
 
 > [!NOTE]
 > Nabídka produktů RHEL-SAP-HANA se Red Hat považuje za konec životnosti. Existující nasazení budou i nadále fungovat normálně, ale Red Hat doporučuje, aby zákazníci migrovali z imagí RHEL-SAP-HANA do imagí RHEL-SAP-HA, které zahrnují úložiště SAP HANA a také doplněk HA. Další podrobnosti o nabídkách cloudu pro Red Hat jsou k dispozici [zde](https://access.redhat.com/articles/3751271).

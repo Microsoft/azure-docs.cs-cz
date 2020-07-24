@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 902210f0ba6fc195cd219dd5a24e7098ed484d8f
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: b1a228e9d15a349f032291fb0678bdd0ad9d95b3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855662"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048858"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>Použití Azure PowerShell k vytvoření clusteru HDInsight s Azure Data Lake Storage Gen1 (jako další úložiště)
 
@@ -44,14 +44,14 @@ Konfigurace HDInsight pro práci s Data Lake Storage Gen1 pomocí prostředí Po
 * Vytvoření clusteru HDInsight s ověřováním pro Data Lake Storage Gen1
 * Spuštění testovací úlohy na clusteru
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Azure PowerShell 1.0 nebo vyšší**. Viz téma [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
+* **Azure PowerShell 1.0 nebo vyšší**. Viz téma [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/).
 * **Windows SDK**. Můžete si ji nainstalovat [odtud](https://dev.windows.com/en-us/downloads). Tento postup slouží k vytvoření certifikátu zabezpečení.
 * **Azure Active Directory instančního objektu**. Kroky v tomto kurzu poskytují pokyny k vytvoření instančního objektu ve službě Azure AD. Abyste ale mohli vytvořit instanční objekt, musíte být správcem služby Azure AD. Pokud jste správce Azure AD, můžete tento požadavek přeskočit a pokračovat v tomto kurzu.
 
@@ -136,10 +136,10 @@ Každé předplatné Azure je přidruženo k Azure Active Directory. Uživatelé
 
 Chcete-li nastavit ověřování služby Active Directory pro Data Lake Storage Gen1, je nutné provést následující úlohy.
 
-* Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
+* Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
 * Vytvoření aplikace v Azure Active Directory a instančního objektu
 
-### <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
+### <a name="create-a-self-signed-certificate"></a>Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
 
 Před pokračováním v postupu v této části se ujistěte, že máte nainstalovanou [Windows SDK](https://dev.windows.com/en-us/downloads) . Musíte také vytvořit adresář, například **C:\mycertdir**, kde se certifikát vytvoří.
 

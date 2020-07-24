@@ -3,12 +3,12 @@ title: Použití portálu k nahrávání, kódování a streamování obsahu –
 description: V tomto rychlém startu se dozvíte, jak pomocí portálu nahrávat, kódovat a streamovat obsah pomocí Azure Media Services.
 ms.topic: quickstart
 ms.date: 06/08/2020
-ms.openlocfilehash: 374e8a22bf8fdcb14101bffc26f9d1b27480ce88
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: bab13b7b878f8992ac5523b9902054a42a3dc769
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232470"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053361"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>Rychlý Start: nahrání, kódování a streamování obsahu pomocí portálu
 
@@ -35,7 +35,7 @@ V tomto rychlém startu se dozvíte, jak používat Azure Portal k nahrání, k�
 
         V současné době při použití Azure Portal můžete provést následující: vygenerujte soubory titulků TTML a WebVTT. Soubory v těchto formátech lze použít k zpřístupnění zvukových souborů a videosouborů lidem s postižením sluchu. Můžete také extrahovat klíčová slova z vašeho obsahu.
 
-        Pro bohatou práci, která umožňuje extrahovat přehledy z vašich videosouborů a zvukových souborů, použijte přednastavení Media Services V3 (jak je popsáno v tématu [kurz: analýza videí pomocí Media Services V3](analyze-videos-tutorial-with-api.md)). <br/>Pokud potřebujete podrobnější přehled, použijte [video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) přímo.    
+        Pro bohatou práci, která umožňuje extrahovat přehledy z vašich videosouborů a zvukových souborů, použijte přednastavení Media Services V3 (jak je popsáno v tématu [kurz: analýza videí pomocí Media Services V3](analyze-videos-tutorial-with-api.md)). <br/>Pokud potřebujete podrobnější přehled, použijte [video indexer](../video-indexer/index.yml) přímo.    
 * Po zpracování obsahu můžete multimediální obsah doručovat přehrávačům klientů. Chcete-li zpřístupnit video výstupnímu prostředku pro klienty pro přehrávání, je nutné vytvořit **Lokátor streamování**. Při vytváření **lokátoru streamování**je potřeba zadat **zásady streamování**. **Zásady streamování** umožňují definovat protokoly streamování a možnosti šifrování (pokud existují) pro vaše **Lokátory streamování**.
     
     Zrevidujte
@@ -46,7 +46,7 @@ V tomto rychlém startu se dozvíte, jak používat Azure Portal k nahrání, k�
     * [Filtry](filters-concept.md)
 * Svůj obsah můžete chránit šifrováním pomocí standard AES (Advanced Encryption Standard) (AES-128) nebo/a kteréhokoliv ze tří hlavních systémů DRM: Microsoft PlayReady, Google Widevine a Apple FairPlay. [Šifrování obsahu pomocí Azure Portal](encrypt-content-quickstart.md) rychlý Start ukazuje, jak nakonfigurovat ochranu obsahu.
         
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -80,7 +80,7 @@ Pokud přejdete do okna assety, uvidíte, že se do seznamu přidal výstupní A
 
 Pokud chcete zobrazit stav úlohy, přejděte na **úlohy**. Úloha obvykle prochází následujícími stavy: naplánované, zařazeno do fronty, zpracování, dokončeno (konečný stav). Pokud během provádění úlohy dojde k chybě, přejde úloha do stavu Chyba.
 
-![Stav](./media/manage-assets-quickstart/job-status.png)
+![Status](./media/manage-assets-quickstart/job-status.png)
 
 ## <a name="publish-and-stream"></a>Publikování a streamování
 

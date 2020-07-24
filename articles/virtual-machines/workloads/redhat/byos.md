@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/10/2020
 ms.author: alsin
-ms.openlocfilehash: af541faaf9529cec81c60cb1a879161d66e34a7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54d703b8a493610174f00844cd0736f65f3ee541
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84694378"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052169"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux ve službě Azure na základě vlastních předplatných zlatých imagí
 
@@ -68,7 +69,7 @@ Zbytek tohoto dokumentu se zaměřuje na metodu CLI, která umožňuje zřídit 
 
 ## <a name="use-the-red-hat-gold-images-from-the-azure-cli"></a>Použití imagí Red Hat Gold z Azure CLI
 
-Následující pokyny vás provedou procesem prvotního nasazení pro virtuální počítač s RHEL pomocí Azure CLI. V těchto pokynech se předpokládá, že máte nainstalované rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Následující pokyny vás provedou procesem prvotního nasazení pro virtuální počítač s RHEL pomocí Azure CLI. V těchto pokynech se předpokládá, že máte nainstalované rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli).
 
 >[!IMPORTANT]
 >Ujistěte se, že používáte všechna malá písmena v odkazech vydavatele, nabídky, plánu a obrázku pro všechny následující příkazy.
@@ -199,7 +200,7 @@ Postup pro použití Azure Disk Encryption najdete v tématu [scénáře Azure D
 
     V takovém případě kontaktujte Microsoft nebo Red Hat, abyste povolili vaše předplatné.
 
-- Pokud upravíte snímek z image RHEL BYOS a pokusíte se o publikování této vlastní image do [Galerie sdílených imagí](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries), je nutné zadat informace o plánu, který odpovídá původnímu zdroji snímku. Příkaz může vypadat například takto:
+- Pokud upravíte snímek z image RHEL BYOS a pokusíte se o publikování této vlastní image do [Galerie sdílených imagí](../../linux/shared-image-galleries.md), je nutné zadat informace o plánu, který odpovídá původnímu zdroji snímku. Příkaz může vypadat například takto:
 
     ```azurecli
     az vm create –image \

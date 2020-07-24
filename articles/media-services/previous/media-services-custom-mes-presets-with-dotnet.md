@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
-ms.openlocfilehash: 9509a38dbe9655cd7f70096bc5f3283f35c190f0
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 085a186ffd98220257ad912ede93f43d339707f2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956706"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052932"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Přizpůsobení přednastavených Media Encoder Standard  
 
@@ -30,7 +30,7 @@ Tento článek ukazuje, jak provést rozšířené kódování pomocí Media Enc
 V tomto článku se dozvíte, jak přizpůsobit předvolbu pomocí přednastavení [H264 s více přenosovými rychlostmi](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) a snížením počtu vrstev. Článek [přizpůsobení Media Encoder Standard přednastavení](media-services-advanced-encoding-with-mes.md) ukazuje vlastní předvolby, které lze použít k provádění pokročilých úloh kódování.
 
 > [!NOTE]
-> Vlastní předvolby popsané v tomto článku nelze použít v [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/) transformes nebo příkazech CLI. Další podrobnosti najdete v [pokynech k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Vlastní předvolby popsané v tomto článku nelze použít v [Media Services V3](../latest/index.yml) transformes nebo příkazech CLI. Další podrobnosti najdete v [pokynech k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 
 ## <a name="customizing-a-mes-preset"></a><a id="customizing_presets"></a>Přizpůsobení přednastavené ekonomiky
 

@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 718447e1dbf597af4349eab0be78a2bb544dec90
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7394cb50010bddddf8f8eff4b4f04eaf4d3231b6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78970173"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052112"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Úlohy Red Hat v Azure
 
@@ -36,7 +36,7 @@ Pokud se nechcete zabývat nezávisle na placení za příslušný počet předp
 
 ### <a name="red-hat-gold-images"></a>Image Red Hat Gold
 
-Azure nabízí také Red Hat Gold images`rhel-byos`(). Tyto obrázky můžou být užitečné pro zákazníky, kteří mají existující předplatné Red Hat a chtějí je používat v Azure. Abyste mohli povolit cloudový přístup Red Hat do Azure, budete si muset povolit svoje stávající předplatné Red Hat. Přístup k těmto obrázkům se uděluje automaticky, pokud jsou pro cloudový přístup povolená předplatná Red Hat a splňují požadavky na způsobilost. Použití těchto imagí umožňuje zákazníkovi vyhnout se dvojímu vyúčtování, které by mohlo vést k používání imagí s průběžnými platbami.
+Azure nabízí také Red Hat Gold images ( `rhel-byos` ). Tyto obrázky můžou být užitečné pro zákazníky, kteří mají existující předplatné Red Hat a chtějí je používat v Azure. Abyste mohli povolit cloudový přístup Red Hat do Azure, budete si muset povolit svoje stávající předplatné Red Hat. Přístup k těmto obrázkům se uděluje automaticky, pokud jsou pro cloudový přístup povolená předplatná Red Hat a splňují požadavky na způsobilost. Použití těchto imagí umožňuje zákazníkovi vyhnout se dvojímu vyúčtování, které by mohlo vést k používání imagí s průběžnými platbami.
 * Naučte se, jak [Povolit předplatná Red Hat pro cloudový přístup pomocí Azure](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/con-enable-subs).
 * Přečtěte si [, jak najít obrázky Red Hat Gold v rutinách Azure Portal, Azure CLI nebo PowerShellu](./byos.md).
 
@@ -45,7 +45,7 @@ Azure nabízí také Red Hat Gold images`rhel-byos`(). Tyto obrázky můžou bý
 
 ### <a name="generation-2-images"></a>Image 2. generace
 
-Virtuální počítače generace 2 poskytují několik novějších funkcí v porovnání s virtuálními počítači 1. generace. Další informace najdete v dokumentaci k [generaci 2](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2). Klíčovým rozdílem z hlediska image RHEL je, že virtuální počítače 2. generace používají rozhraní UEFI místo rozhraní firmware systému BIOS. Místo hlavního spouštěcího záznamu (MBR) v době spuštění používají také tabulku oddílů GUID (GPT). Použití GPT umožňuje mimo jiné velikost disků s operačním systémem větší než 2 TB. [Virtuální počítače řady Mv2](../../mv2-series.md) se navíc spouštějí jenom na imagí generace 2.
+Virtuální počítače generace 2 poskytují několik novějších funkcí v porovnání s virtuálními počítači 1. generace. Další informace najdete v dokumentaci k [generaci 2](../../linux/generation-2.md). Klíčovým rozdílem z hlediska image RHEL je, že virtuální počítače 2. generace používají rozhraní UEFI místo rozhraní firmware systému BIOS. Místo hlavního spouštěcího záznamu (MBR) v době spuštění používají také tabulku oddílů GUID (GPT). Použití GPT umožňuje mimo jiné velikost disků s operačním systémem větší než 2 TB. [Virtuální počítače řady Mv2](../../mv2-series.md) se navíc spouštějí jenom na imagí generace 2.
 
 RHEL generace 2 jsou k dispozici v Azure Marketplace. V části SKU image vyhledejte "Gen2" v seznamu všech imagí, které se zobrazí při použití rozhraní příkazového řádku Azure CLI. Pokud chcete nasadit virtuální počítač 2. generace, v procesu nasazení virtuálního počítače přejít na kartu **Upřesnit** .
 
@@ -55,10 +55,10 @@ Azure poskytuje infrastrukturu aktualizací Red Hat jenom pro virtuální počí
 
 ### <a name="rhui-update-behavior"></a>Chování aktualizace RHUI
 
-RHEL image připojené k RHUI aktualizací ve výchozím nastavení na nejnovější podverzi RHEL při `yum update` spuštění. Toto chování znamená, že virtuální počítač s RHEL 7,4 se může upgradovat na RHEL `yum update` 7,7, pokud se na něm spustí operace. Toto chování je záměrné pro RHUI. Pokud chcete toto chování upgradu zmírnit, přepínejte z běžných úložišť RHEL do [úložišť podpory rozšířené aktualizace](./redhat-rhui.md#rhel-eus-and-version-locking-rhel-vms).
+RHEL image připojené k RHUI aktualizací ve výchozím nastavení na nejnovější podverzi RHEL při `yum update` spuštění. Toto chování znamená, že virtuální počítač s RHEL 7,4 se může upgradovat na RHEL 7,7, pokud `yum update` se na něm spustí operace. Toto chování je záměrné pro RHUI. Pokud chcete toto chování upgradu zmírnit, přepínejte z běžných úložišť RHEL do [úložišť podpory rozšířené aktualizace](./redhat-rhui.md#rhel-eus-and-version-locking-rhel-vms).
 
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si další informace o [RHEL imagí v Azure](./redhat-images.md).
 * Přečtěte si další informace o [infrastruktuře aktualizací Red Hat](./redhat-rhui.md).
-* Přečtěte si další informace o [nabídce Red Hat`rhel-byos`Gold Image ()](./byos.md).
+* Přečtěte si další informace o [nabídce Red Hat Gold Image ( `rhel-byos` )](./byos.md).

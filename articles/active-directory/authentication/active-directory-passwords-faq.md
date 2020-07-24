@@ -5,21 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/15/2020
+ms.date: 07/20/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7997359fb29afc876b184b811e0409cfdbeb265a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2eff16e0d1aa242ed4ca8b427c7af8e8defa7804
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83826464"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051302"
 ---
-# <a name="password-management-frequently-asked-questions"></a>Nejčastější dotazy ke správě hesel
+# <a name="self-service-password-reset-frequently-asked-questions"></a>Nejčastější dotazy k samoobslužnému resetování hesla
 
-Tady jsou uvedené některé nejčastější dotazy týkající se resetování hesla.
+Tady jsou uvedené některé nejčastější dotazy, které se týkají všech věcí, které souvisejí s resetováním hesla samoobslužné služby.
 
 Pokud máte obecné otázky týkající se Azure Active Directory (Azure AD) a samoobslužného resetování hesla (SSPR), na které se tady neodkazuje, můžete požádat o pomoc komunitou na [stránce s dotazem Microsoft Q&na Azure Active Directory](https://docs.microsoft.com/answers/topics/azure-active-directory.html). Mezi členy komunity patří inženýri, správci produktů, odborníky MVP a odborníci na IT.
 
@@ -37,7 +38,7 @@ Tyto nejčastější dotazy jsou rozdělené do následujících částí:
 
   > **Odpověď:** Ano. Pokud je povolené resetování hesla a jsou licencované, můžou uživatelé přejít na registrační portál pro resetování hesla ( https://aka.ms/ssprsetup) k registraci ověřovacích informací). Uživatelé se také mohou registrovat prostřednictvím přístupového panelu ( https://myapps.microsoft.com) . Chcete-li provést registraci prostřednictvím přístupového panelu, je nutné vybrat profilový obrázek, vybrat **profil**a pak vybrat možnost **registrovat pro resetování hesla** .
   >
-  >
+  > Pokud povolíte [kombinovanou registraci](concept-registration-mfa-sspr-combined.md), můžou se uživatelé zaregistrovat pro SSPR i pro Azure Multi-Factor Authentication ve stejnou dobu.
 * **Otázka: Pokud povolím resetování hesla pro skupinu a potom se rozhodnete ji povolit pro všechny, je nutné znovu zaregistrovat své uživatele?**
 
   > **Odpověď:** Ne. Uživatelům, kteří nastavili data ověřování, není nutné znovu registrovat.

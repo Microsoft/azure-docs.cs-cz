@@ -224,7 +224,7 @@
     - name: Ukázky kódů
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory'
     - name: Rutiny Azure PowerShellu
-      href: /powershell/azure/overview
+      href: /powershell/azure/
     - name: Beta verze Microsoft Graph REST API
       href: /graph/api/resources/authenticationmethods-overview?view=graph-rest-beta
     - name: Limity a omezení služeb

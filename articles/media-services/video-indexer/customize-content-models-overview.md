@@ -9,16 +9,17 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
 ms.date: 06/26/2019
-ms.author: anzaman
-ms.openlocfilehash: 09e6fd8530ddb1745a92c6f31f4d5a5843a2ac10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: kumud
+ms.openlocfilehash: 937a73847e867e826b3a577adf0c85184d7a93d0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76513163"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047236"
 ---
 # <a name="customizing-content-models-in-video-indexer"></a>Přizpůsobení modelů obsahu v Video Indexer
 
-Video Indexer vám umožní přizpůsobit některé z jeho modelů, aby byly přizpůsobené vašemu konkrétnímu případu použití. Mezi tyto modely patří [značky](customize-brands-model-overview.md), [jazyk](customize-language-model-overview.md)a [osoba](customize-person-model-overview.md). Tyto modely můžete snadno přizpůsobit pomocí Video Indexer webu nebo rozhraní API.
+Video Indexer vám umožňuje přizpůsobit některé modely vašemu konkrétnímu případu použití. Mezi tyto modely patří [značky](customize-brands-model-overview.md), [jazyk](customize-language-model-overview.md)a [osoba](customize-person-model-overview.md). Tyto modely si můžete snadno přizpůsobit pomocí rozhraní API nebo webu Video Indexeru.
 
 Tento článek obsahuje odkazy na články, které vysvětlují výhody jednotlivých typů přizpůsobení. Článek také obsahuje odkazy na návody, které ukazují, jak můžete implementovat přizpůsobení jednotlivých modelů.
 
@@ -38,7 +39,7 @@ Tento článek obsahuje odkazy na články, které vysvětlují výhody jednotli
 * [Přizpůsobení jazykových modelů pomocí Video Indexer webu](customize-language-model-with-website.md)
 * [Přizpůsobení jazykových modelů pomocí rozhraní Video Indexer API](customize-language-model-with-api.md)
  
-## <a name="person-model"></a>Model osoby
+## <a name="person-model"></a>Model osob
 
 * [Přehled přizpůsobení modelů osob](customize-person-model-overview.md)
 * [Přizpůsobení modelů osob pomocí Video Indexer webu](customize-person-model-with-website.md)

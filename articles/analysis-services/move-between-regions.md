@@ -7,11 +7,13 @@ ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ff012dc78f3981b6fb5fdbd8a5bde45083dd997b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 4844f3e34a6b49559affbb4d4ed7bc5b5e38e538
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699426"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050357"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>Přesunout Analysis Services do jiné oblasti
 
@@ -46,11 +48,11 @@ Před přesunutím serveru do jiné oblasti se doporučuje vytvořit podrobný p
 > [!NOTE]
 > Pokud k připojení ke zdrojům dat používáte místní bránu dat, musíte taky přesunout prostředek brány do oblasti cílového serveru. Další informace najdete v tématu [instalace a konfigurace místní brány dat](analysis-services-gateway-install.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - **Účet úložiště Azure**: vyžaduje se pro uložení záložního souboru. ABF.
 - **SQL Server Management Studio (SSMS)**: vyžaduje se pro zálohování a obnovení databází modelu.
-- **Azure PowerShell**. Požadováno jenom v případě, že se rozhodnete tuto úlohu dokončit pomocí PowerShellu.
+- **Azure PowerShell.** Požadováno jenom v případě, že se rozhodnete tuto úlohu dokončit pomocí PowerShellu.
 
 ## <a name="prepare"></a>Příprava
 
@@ -69,7 +71,7 @@ Pokud jsou nakonfigurovaná nastavení úložiště, pomocí kroků v části [z
 
 Export šablony pomocí webu Azure Portal:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
 
 2. Vyberte **všechny prostředky**a potom vyberte Server Analysis Services.
 
@@ -264,7 +266,7 @@ Volitelné: po obnovení databáze modelu zpracujte model a tabulky, které aktu
 
 2. Rozbalte položku **tabulky**, klikněte pravým tlačítkem myši na tabulku. V **tabulce procesu**, vyberte všechny tabulky a pak vyberte **OK**.
 
-## <a name="verify"></a>Ověřit
+## <a name="verify"></a>Ověření
 
 1. Na portálu přejdete na nový cílový server.
 

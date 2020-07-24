@@ -14,19 +14,20 @@ ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: f1d4d4f4006702ebe0d057e56cf24a022e73b83e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd8c38f9f08bbcaccc39d2f0d1843af720c12932
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79251359"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053228"
 ---
 # <a name="standard-encoder-formats-and-codecs"></a>Formáty a kodeky Standard Encoder
 
-Tento článek obsahuje seznam nejběžnějších formátů souborů pro import a export, které můžete použít se službou [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset). Informace o tom, jak vytvořit vlastní přednastavení pomocí **StandardEncoderPreset**, najdete v tématu [Vytvoření transformace s vlastní předvolbumi](customize-encoder-presets-how-to.md).
+Tento článek obsahuje seznam nejběžnějších formátů souborů pro import a export, které můžete použít se službou [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset). Informace o tom, jak vytvořit vlastní přednastavení pomocí **StandardEncoderPreset**, najdete v tématu [Vytvoření transformace s vlastní předvolbumi](customize-encoder-presets-how-to.md).
 
 ## <a name="input-containerfile-formats"></a>Vstupní formáty kontejneru nebo souborů
 
-| Formáty souborů (přípony souborů) | Podporuje se |
+| Formáty souborů (přípony souborů) | Podporováno |
 | --- | --- |
 | FLV (s kodeky H.264 a AAC) (.flv) |Yes |
 | MXF (.mxf) |Yes |
@@ -35,7 +36,7 @@ Tento článek obsahuje seznam nejběžnějších formátů souborů pro import 
 | Windows Media Video (WMV) a ASF (.wmv, .asf) |Yes |
 | AVI (nekomprimovaný s 8bitovým nebo 10bitovým kódováním) (.avi) |Yes |
 | MP4 (.mp4, .m4a, .m4v) a ISMV (.isma, .ismv) |Yes |
-| [Microsoft Digital Video Recording (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) (.dvr-ms) |Yes |
+| [Microsoft Digital Video Recording (DVR-MS)](/previous-versions/windows/desktop/mstv/about-the-dvr-ms-file-format) (.dvr-ms) |Yes |
 | Matroska a WebM (.mkv) |Yes |
 | WAVE a WAV (.wav) |Yes |
 | QuickTime (.mov) |Yes |
@@ -51,7 +52,7 @@ nebo
 * Soubory MXF, GXF a QuickTime, kde se zvuk přenáší jako samostatné stopy PCM, ale mapování kanálů (na stereo nebo prostorový zvuk 5.1) je možné odvodit z metadat souboru
 
 ## <a name="input-video-codecs"></a>Vstupní kodeky videa
-| Vstupní kodeky videa | Podporuje se |
+| Vstupní kodeky videa | Podporováno |
 | --- | --- |
 | AVC s 8bitovou nebo 10bitovou hloubkou až do vzorkování 4:2:2, včetně AVCIntra |8bitová hloubka, 4:2:0 a 4:2:2 |
 | Avid DNxHD (v souborech MXF) |Yes |
@@ -74,7 +75,7 @@ nebo
 | HEVC/H. 265| Hlavní profil|
 
 ## <a name="input-audio-codecs"></a>Vstupní zvukové kodeky
-| Kodeky vstupního zvuku | Podporuje se |
+| Kodeky vstupního zvuku | Podporováno |
 | --- | --- |
 | AAC (AAC-LC, AAC-HE a AAC-HEv2; až do prostorového zvuku 5.1) |Yes |
 | MPEG Layer 2 |Yes |

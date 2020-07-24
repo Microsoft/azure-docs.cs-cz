@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Tento článek poskytuje přehled Kubernetes s podporou ARC Azure.
 keywords: Kubernetes, oblouk, Azure, kontejnery
 ms.custom: references_regions
-ms.openlocfilehash: 3960a0f0b6866a0a5d3476e841d29c6e5a89a238
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 4f07c0e5e01648984514701cd4838f85478d86af
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309930"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050051"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Co je Kubernetes ve verzi Preview s podporou ARC Azure?
 
@@ -24,9 +24,8 @@ Aby mohl správce clusteru připojit ke službě Azure cluster Kubernetes, musí
 
 Kubernetes s podporou ARC Azure podporuje standardní protokol SSL pro zabezpečení přenášených dat. Data jsou také uložená v klidovém stavu v Azure Cosmos DB databázi, aby se zajistila důvěrnost dat.
  
- > [!NOTE]
-> Kubernetes s podporou ARC Azure je ve verzi Preview. Nedoporučujeme ho pro produkční úlohy. 
-
+> [!NOTE]
+> Kubernetes s povoleným obloukem Azure je ve verzi Preview. Nedoporučujeme ho pro produkční úlohy.
 
 ## <a name="supported-scenarios"></a>Podporované scénáře 
 
@@ -40,13 +39,12 @@ Kubernetes s podporou ARC Azure podporuje tyto scénáře:
 
 * Použijte zásady pomocí Azure Policy pro Kubernetes. 
 
- 
 ## <a name="supported-regions"></a>Podporované oblasti 
 
 Kubernetes s povoleným ARC Azure je aktuálně podporované v těchto oblastech: 
 
-* USA – východ 
-* Západní Evropa 
+* East US 
+* West Europe 
 
 ## <a name="next-steps"></a>Další kroky
 

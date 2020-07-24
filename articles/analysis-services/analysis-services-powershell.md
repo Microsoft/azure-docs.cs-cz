@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: dfa9de94665c0ee98d0252be6de807f18e39b087
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e64ffe5007d27a44167f08807a9694875fe48c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83697969"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050448"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>Správa služby Azure Analysis Services pomocí PowerShellu
 
@@ -25,7 +26,7 @@ Tento článek popisuje rutiny prostředí PowerShell, které se používají k 
 
 Většina úloh prostředí PowerShell vyžaduje oprávnění správce na spravovaném serveru Analysis Services. Naplánované úlohy PowerShellu jsou bezobslužné operace. Účet nebo instanční objekt, na kterém běží Plánovač, musí mít na serveru Analysis Services oprávnění správce. 
 
-Pro operace se serverem, které používají rutiny Azure PowerShell, musí účet nebo účet spouštějící Plánovač také patřit do role vlastníka pro prostředek v [Access Control na základě role (RBAC) založené na rolích Azure](../role-based-access-control/overview.md). 
+Pro operace se serverem, které používají rutiny Azure PowerShell, musí účet nebo účet spouštějící Plánovač taky patřit do role vlastníka pro prostředek v [řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md). 
 
 ## <a name="resource-and-server-operations"></a>Operace s prostředky a servery 
 
@@ -43,7 +44,7 @@ Dokumentace – [Reference k SQLServer](/powershell/module/sqlserver)
 
 ### <a name="supported-cmdlets"></a>Podporované rutiny
 
-|Rutina|Description|
+|Rutina|Popis|
 |------------|-----------------| 
 |[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Přidejte člena do databázové role.| 
 |[Backup – ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase)|Zálohuje databázi Analysis Services.|  

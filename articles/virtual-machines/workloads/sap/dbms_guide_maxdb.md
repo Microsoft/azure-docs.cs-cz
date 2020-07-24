@@ -15,11 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5a7343bcf6ba4388beda118b242fa47d13baaa89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 842ab7a1562c731e790ba03b2fd5acdc3987a90d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84022586"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051965"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Nasazení SAP MaxDB, liveCache a Content serveru na virtuálních počítačích Azure
 
@@ -73,7 +74,7 @@ ms.locfileid: "84022586"
 
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com
-[azure-ps]:/powershell/azureps-cmdlets-docs
+[azure-ps]:/powershell/azure/
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
 [azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
@@ -308,7 +309,7 @@ ms.locfileid: "84022586"
 
 
 
-Tento dokument popisuje několik různých oblastí, které je potřeba vzít v úvahu při nasazování MaxDB, liveCache a serveru obsahu v Azure IaaS. Jako předběžnou podmínkou tohoto dokumentu byste měli mít přehled o dokumentech [pro nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) a také další Příručky k úloze [SAP v dokumentaci k Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). 
+Tento dokument popisuje několik různých oblastí, které je potřeba vzít v úvahu při nasazování MaxDB, liveCache a serveru obsahu v Azure IaaS. Jako předběžnou podmínkou tohoto dokumentu byste měli mít přehled o dokumentech [pro nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) a také další Příručky k úloze [SAP v dokumentaci k Azure](./get-started.md). 
 
 ## <a name="specifics-for-the-sap-maxdb-deployments-on-windows"></a>Specifické pro nasazení SAP MaxDB ve Windows
 ### <a name="sap-maxdb-version-support-on-azure"></a>Podpora verze SAP MaxDB v Azure
@@ -328,7 +329,7 @@ Aktualizovaný seznam dokumentace SAP MaxDB najdete v následující dokumentaci
 
 ### <a name="sap-maxdb-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Pokyny pro konfiguraci SAP MaxDB pro instalace SAP na virtuálních počítačích Azure
 #### <a name="storage-configuration"></a><a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>Konfigurace úložiště
-Osvědčené postupy pro Azure Storage pro SAP MaxDB se řídí obecnými doporučeními uvedenými v kapitole [Struktura úložiště virtuálního počítače pro nasazení RDBMS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64).
+Osvědčené postupy pro Azure Storage pro SAP MaxDB se řídí obecnými doporučeními uvedenými v kapitole [Struktura úložiště virtuálního počítače pro nasazení RDBMS](./dbms_guide_general.md#65fa79d6-a85f-47ee-890b-22e794f51a64).
 
 > [!IMPORTANT]
 > Podobně jako u jiných databází má SAP MaxDB také soubory dat a protokolů. V terminologii SAP MaxDB je však správný výraz "svazek" (nikoli "soubor"). K dispozici jsou například datové svazky SAP MaxDB a svazky protokolů. Nepleťte si je s diskovými svazky operačního systému. 

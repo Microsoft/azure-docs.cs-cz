@@ -10,11 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: juliako
-ms.openlocfilehash: bb57af37308badcd3123af3348178aaac061f376
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d533735af340b23e8a79b6c5953df748a548609c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83652178"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046965"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Video Indexer nejčastějších dotazech
 
@@ -58,13 +59,13 @@ Ne, Video Indexer poskytuje integraci více modelů strojového učení do jedno
 
 ### <a name="what-media-formats-does-video-indexer-support"></a>Jaké formáty médií Video Indexer podporují?
 
-Video Indexer podporuje většinu běžných formátů médií. Další podrobnosti najdete v seznamu [formátů Azure Media Encoder Standard](https://docs.microsoft.com/azure/media-services/latest/media-encoder-standard-formats) .
+Video Indexer podporuje většinu běžných formátů médií. Další podrobnosti najdete v seznamu [formátů Azure Media Encoder Standard](../latest/media-encoder-standard-formats.md) .
 
 ### <a name="how-do-i-upload-a-media-file-into-video-indexer-and-what-are-the-limitations"></a>Návody nahrát mediální soubor do Video Indexer a jaká jsou omezení?
 
 Ve webovém portálu Video Indexer můžete nahrát soubor médií pomocí dialogového okna pro nahrání souboru nebo tak, že přejdete na adresu URL, která přímo hostuje zdrojový soubor (viz [příklad](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4)). Žádná adresa URL, která hostuje mediální obsah pomocí elementu iFrame nebo kódu pro vložení, nebude fungovat (viz [příklad](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11)). 
 
-Další informace najdete v tomto [Průvodci](https://docs.microsoft.com/azure/media-services/video-indexer/upload-index-videos).
+Další informace najdete v tomto [Průvodci](./upload-index-videos.md).
 
 #### <a name="limitations"></a>Omezení
 
@@ -75,7 +76,7 @@ Další informace najdete v tomto [Průvodci](https://docs.microsoft.com/azure/m
 
 ### <a name="how-long-does-it-take-video-indexer-to-extract-insights-from-media"></a>Jak dlouho trvá Video Indexer k extrakci přehledů z médií?
 
-Doba potřebná k indexování videosouboru nebo zvukového souboru, a to pomocí rozhraní Video Indexer API i Video Indexer webového rozhraní, závisí na několika parametrech, jako je třeba délka souboru a kvalita, počet přehledů nalezených v souboru, počet dostupných [rezervovaných jednotek](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview) a zda je povolen [koncový bod streamování](https://docs.microsoft.com/azure/media-services/previous/media-services-streaming-endpoints-overview) . Doporučujeme, abyste spustili několik testovacích souborů s vlastním obsahem a získali průměrnou představu, abyste měli lepší představu.
+Doba potřebná k indexování videosouboru nebo zvukového souboru, a to pomocí rozhraní Video Indexer API i Video Indexer webového rozhraní, závisí na několika parametrech, jako je třeba délka souboru a kvalita, počet přehledů nalezených v souboru, počet dostupných [rezervovaných jednotek](../previous/media-services-scale-media-processing-overview.md) a zda je povolen [koncový bod streamování](../previous/media-services-streaming-endpoints-overview.md) . Doporučujeme, abyste spustili několik testovacích souborů s vlastním obsahem a získali průměrnou představu, abyste měli lepší představu.
 
 ### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>Můžu vytvořit vlastní pracovní postupy pro automatizaci procesů pomocí Video Indexer?
 
@@ -87,7 +88,7 @@ Můžete vidět, které oblasti Azure Video Indexer k dispozici na stránce [obl
 
 ### <a name="can-i-customize-video-indexer-models-for-my-specific-use-case"></a>Můžu přizpůsobit Video Indexer modely pro můj konkrétní případ použití? 
 
-Ano. V Video Indexer můžete přizpůsobit některé z dostupných modelů, aby lépe vyhovovaly vašim potřebám. 
+Yes. V Video Indexer můžete přizpůsobit některé z dostupných modelů, aby lépe vyhovovaly vašim potřebám. 
 
 Například náš model person podporuje dopředné 1 000 000i rozpoznávání celebrit, ale můžete ho také naučit, aby rozpoznal jiné plošky, které nejsou v této databázi. 
 
@@ -95,7 +96,7 @@ Podrobnosti najdete v článcích o přizpůsobení [osob](customize-person-mode
 
 ###  <a name="can-i-edit-the-videos-in-my-library"></a>Můžu upravit videa v knihovně?
 
-Ano. Kliknutím na tlačítko **Upravit video** v zobrazení knihovny nebo kliknutím na tlačítko **otevřít v editoru** na displeji přehrávače se dostanete na kartu **projekty** . Můžete vytvořit nový projekt a přidat další videa z knihovny, abyste je mohli společně upravovat. až budete hotovi, můžete si video vykreslit a stáhnout. 
+Yes. Kliknutím na tlačítko **Upravit video** v zobrazení knihovny nebo kliknutím na tlačítko **otevřít v editoru** na displeji přehrávače se dostanete na kartu **projekty** . Můžete vytvořit nový projekt a přidat další videa z knihovny, abyste je mohli společně upravovat. až budete hotovi, můžete si video vykreslit a stáhnout. 
 
 Pokud chcete získat přehled o novém videu, Indexujte ho pomocí Video Indexer a zobrazí se ve vaší knihovně se svými přehledy.
 

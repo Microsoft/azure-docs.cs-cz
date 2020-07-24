@@ -9,13 +9,13 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
-ms.author: anzaman
-ms.openlocfilehash: 81df3897dff13823e4b97e10bc91d3a22b0e1b0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: kumud
+ms.openlocfilehash: c3223bed6c8335a31b1bfb918e6d44e3b54a7787
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80128042"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047270"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-website"></a>Přizpůsobení modelu značek pomocí Video Indexer webu
 
@@ -33,7 +33,7 @@ Web Video Indexer můžete použít k vytváření, používání a úpravám vl
 
 ## <a name="edit-brands-model-settings"></a>Upravit nastavení modelu značek
 
-Máte možnost nastavit, jestli chcete, aby se zjistily značky z databáze značek Bingu. Chcete-li nastavit tuto možnost, je nutné upravit nastavení modelu značek. Postupujte následovně:
+Máte možnost nastavit, jestli chcete, aby se zjistily značky z databáze značek Bingu. Chcete-li nastavit tuto možnost, je nutné upravit nastavení modelu značek. Postupujte takto:
 
 1. Přejít na web [video indexer](https://www.videoindexer.ai/) a přihlásit se.
 2. Pokud chcete ve svém účtu přizpůsobit model, vyberte tlačítko **Přizpůsobení modelu obsahu** v pravém horním rohu stránky.

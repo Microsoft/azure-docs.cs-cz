@@ -8,14 +8,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 80932ebbedeca3f5e0a1b4cc2e68d73ef5b0d63a
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 9aec584271975982e1d58cc3525faee0d403e1af
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025722"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048077"
 ---
-# <a name="create-and-explore-azure-machine-learning-dataset-with-labels-preview"></a>Vytvoření a prozkoumat Azure Machine Learning datovou sadu s popisky (Preview)
+# <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>Vytvoření a zkoumání Azure Machine Learning datové sady s popisky
 
 V tomto článku se dozvíte, jak exportovat popisky dat z Azure Machine Learning projektu označování dat a načíst je do oblíbených formátů, jako je například PANDAS dataframe pro zkoumání dat nebo Torchvision datovou sadu pro transformaci obrázku. 
 
@@ -23,7 +23,7 @@ V tomto článku se dozvíte, jak exportovat popisky dat z Azure Machine Learnin
 
 Azure Machine Learning datové sady s popisky jsou [TabularDatasets](how-to-create-register-datasets.md#dataset-types) s vlastností Label, budeme na ně odkazovat jako na datové sady s popisky. Tyto konkrétní typy TabularDatasets jsou vytvořeny pouze jako výstup Azure Machine Learning projektů pro označování dat. Pomocí [těchto kroků](how-to-create-labeling-projects.md)vytvořte projekt pro označování dat. Machine Learning podporuje popisky dat pro klasifikaci obrázků, a to buď s více popisky, nebo s více třídami, a identifikacemi objektů společně s ohraničenými poli.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree) před tím, než začnete.
 * [Sada SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)nebo přístup k [Azure Machine Learning Studiu](https://ml.azure.com/).

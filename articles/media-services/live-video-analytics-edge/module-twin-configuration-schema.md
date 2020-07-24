@@ -3,26 +3,27 @@ title: Modul s dvojím zápisem JSON – Azure
 description: Toto téma popisuje modul s dvojitým formátem JSON pro živé video analýzy v IoT Edge.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: a342c59b35c7ebb4b6021163da76bdd3e0d449c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8bd86bdc2c8de9ee586e785db2074fa772100420
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266810"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053060"
 ---
 # <a name="module-twin-json-schema"></a>Nevlákenný modul – schéma JSON
 
-Vlákna zařízení jsou dokumenty JSON, které ukládají informace o stavu zařízení včetně metadat, konfigurací a podmínek. Azure IoT Hub udržuje takové dvojče pro každé zařízení, které připojíte k IoT Hubu. Podrobné vysvětlení naleznete v tématu [Principy a použití vláken v modulech v IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins)
+Vlákna zařízení jsou dokumenty JSON, které ukládají informace o stavu zařízení včetně metadat, konfigurací a podmínek. Azure IoT Hub udržuje takové dvojče pro každé zařízení, které připojíte k IoT Hubu. Podrobné vysvětlení naleznete v tématu [Principy a použití vláken v modulech v IoT Hub](../../iot-hub/iot-hub-devguide-module-twins.md)
 
 Toto téma popisuje modul s dvojitým formátem JSON pro živé video analýzy v IoT Edge.
 
 > [!NOTE]
-> Aby bylo možné získat přístup k Media Services prostředkům a rozhraní Media Services API, musíte nejdřív ověřit. Další informace najdete v tématu [přístup k rozhraní Azure Media Services API](../latest/media-services-apis-overview.md#accessing-the-azure-media-services-api).
+> Abyste mohli získat autorizaci pro přístup k prostředkům a rozhraní API služby Media Services, musíte se nejprve ověřit. Další informace najdete v tématu [přístup k rozhraní Azure Media Services API](../latest/media-services-apis-overview.md#accessing-the-azure-media-services-api).
 
 ## <a name="module-twin-properties"></a>Moduly s dvojitými vlastnostmi
 
 Live video Analytics na IoT Edge zpřístupňuje následující funkční vlastnosti modulu. 
 
-|Vlastnost |Požaduje se |Dynamická |Description |
+|Vlastnost |Požaduje se |Dynamická |Popis |
 |---|---|---|---|
 |applicationDataDirectory |Yes |No |Cesta k připojenému svazku pro trvalou konfiguraci. |
 |azureMediaServicesArmId |Yes |No |Jedinečný identifikátor správy prostředků Azure pro účet Media Services.|
@@ -42,7 +43,7 @@ Live video Analytics na IoT Edge zpřístupňuje následující funkční vlastn
 
 <sup>*</sup>Je nutné zadat buď certifikát zabezpečení služby, nebo heslo. 
 
-Dynamické vlastnosti lze aktualizovat bez restartování modulu. Hodnoty pro několik těchto vlastností můžete získat podle pokynů v článku [získání přístupu k Media Services rozhraní API](../latest/access-api-cli-how-to.md) . 
+Dynamické vlastnosti lze aktualizovat bez restartování modulu. Hodnoty pro několik těchto vlastností můžete získat podle pokynů v článku [získání přístupu k Media Services rozhraní API](../latest/access-api-howto.md) . 
 
 Další informace o roli volitelného nastavení diagnostiky najdete v článku [monitorování a protokolování](monitoring-logging.md) .
 

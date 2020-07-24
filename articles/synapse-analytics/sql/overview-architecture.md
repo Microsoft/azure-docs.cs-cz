@@ -1,5 +1,5 @@
 ---
-title: Architektura SQL Azure synapse
+title: Architektura Synapse SQL
 description: Přečtěte si, jak Azure synapse SQL kombinuje výkonné paralelní zpracování (MPP) s Azure Storage pro zajištění vysokého výkonu a škálovatelnosti.
 services: synapse-analytics
 author: mlee3gsd
@@ -10,11 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: d073bc82b3a9e42e443caa5d3e7855fd4eb5b98b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f2f3eee12bb8741f6d079f6f081a08f4e2db9b5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83658913"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046862"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Architektura SQL Azure synapse 
 
@@ -44,7 +45,7 @@ Díky oddělenému úložišti a výpočetnímu prostředí může při použit�
 
 * Zvětšete nebo zmenšete výpočetní výkon v rámci fondu SQL (datový sklad) bez přesouvání dat.
 * pozastavit výpočetní kapacitu a zachovat neporušená data, zatímco platíte pouze za úložiště,
-* Obnovit výpočetní kapacitu za provozu
+* obnovit výpočetní kapacitu za provozu.
 
 ## <a name="azure-storage"></a>Azure Storage
 
@@ -52,13 +53,13 @@ Synapse SQL využívá Azure Storage k zabezpečení vašich uživatelských dat
 
 SQL na vyžádání umožňuje dotazování souborů ve službě Data Lake způsobem jen pro čtení, zatímco fond SQL umožňuje také ingestovat data. Když se data ingestují do fondu SQL, data se horizontálně dělené do **distribucí** za účelem optimalizace výkonu systému. Můžete zvolit, který vzor horizontálního dělení se má použít k distribuci dat při definování tabulky. Jsou podporovány tyto horizontálního dělení vzory:
 
-* Hodnota hash
-* Kruhové dotazování.
+* Hodnoty hash
+* Kruhové dotazování
 * Replikace
 
 ## <a name="control-node"></a>Řídicí uzel
 
-Řídicí uzel je mozek architektury. Jde o prvek front-end, který komunikuje se všemi aplikacemi a připojeními. 
+Řídicí uzel je mozek architektury. Jde o front-end, který komunikuje se všemi aplikacemi a připojeními. 
 
 V rámci fondu SQL je modul MPP spuštěn v uzlu Control pro optimalizaci a koordinaci paralelních dotazů. Když odešlete dotaz T-SQL do fondu SQL, řídicí uzel ho transformuje na dotazy, které se spouštějí proti každé distribuci paralelně.
 

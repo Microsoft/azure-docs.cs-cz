@@ -3,17 +3,18 @@ title: Správa zálohovaných SAP HANA databází na virtuálních počítačíc
 description: V tomto článku se seznámíte s běžnými úlohami při správě a monitorování SAP HANAch databází, které běží na virtuálních počítačích Azure.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: e3705750e32b8b34ed397b8f68f22b0728129266
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98dd67668d1b88a25dfa3b91174cd96730c435e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83701120"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049454"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Správa a monitorování zálohovaných databází SAP HANA
 
-Tento článek popisuje běžné úlohy pro správu a monitorování SAP HANAch databází, které běží na virtuálním počítači Azure a které se zálohují do Azure Backup Recovery Services trezoru služby [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) . Naučíte se monitorovat úlohy a výstrahy, aktivovat zálohování na vyžádání, upravovat zásady, zastavovat a obnovovat ochranu databáze a rušit registraci virtuálního počítače ze záloh.
+Tento článek popisuje běžné úlohy pro správu a monitorování SAP HANAch databází, které běží na virtuálním počítači Azure a které se zálohují do Azure Backup Recovery Services trezoru služby [Azure Backup](./backup-overview.md) . Naučíte se monitorovat úlohy a výstrahy, aktivovat zálohování na vyžádání, upravovat zásady, zastavovat a obnovovat ochranu databáze a rušit registraci virtuálního počítače ze záloh.
 
-Pokud jste ještě nenakonfigurovali zálohy pro databáze SAP HANA, přečtěte si téma [zálohování databází SAP HANA na virtuálních počítačích Azure](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database).
+Pokud jste ještě nenakonfigurovali zálohy pro databáze SAP HANA, přečtěte si téma [zálohování databází SAP HANA na virtuálních počítačích Azure](./backup-azure-sap-hana-database.md).
 
 ## <a name="monitor-manual-backup-jobs-in-the-portal"></a>Monitorování úloh ručního zálohování na portálu
 
@@ -25,13 +26,13 @@ Azure Backup zobrazí všechny ručně aktivované úlohy v části **úlohy zá
 
 ![Seznam úloh zálohování](./media/sap-hana-db-manage/backup-jobs-list.png)
 
-Další informace o monitorování najdete [v části monitorování v Azure Portal](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor) a [monitorování pomocí Azure monitor](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor).
+Další informace o monitorování najdete [v části monitorování v Azure Portal](./backup-azure-monitoring-built-in-monitor.md) a [monitorování pomocí Azure monitor](./backup-azure-monitoring-use-azuremonitor.md).
 
 ## <a name="view-backup-alerts"></a>Zobrazit výstrahy zálohování
 
 Výstrahy představují snadný způsob, jak monitorovat zálohy databází SAP HANA. Výstrahy vám pomůžou soustředit se na události, které vás zajímají, aniž byste se museli ztratit v mnoha událostech, které zálohování vygeneruje. Azure Backup vám umožní nastavit upozornění a můžou se monitorovat takto:
 
-* Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+* Přihlaste se na portál [Azure Portal](https://portal.azure.com/).
 * Na řídicím panelu trezoru vyberte **výstrahy zálohování**.
 
   ![Výstrahy zálohování na řídicím panelu trezoru](./media/sap-hana-db-manage/backup-alerts-dashboard.png)
@@ -42,7 +43,7 @@ Výstrahy představují snadný způsob, jak monitorovat zálohy databází SAP 
 
 * Kliknutím na výstrahy zobrazíte další podrobnosti:
 
-  ![Podrobnosti upozornění](./media/sap-hana-db-manage/alert-details.png)
+  ![Podrobnosti výstrahy](./media/sap-hana-db-manage/alert-details.png)
 
 Dnes Azure Backup umožňuje odesílání výstrah e-mailem. Jsou to tyto výstrahy:
 
@@ -50,7 +51,7 @@ Dnes Azure Backup umožňuje odesílání výstrah e-mailem. Jsou to tyto výstr
 * Konsolidovat na úrovni databáze podle kódu chyby.
 * Odesílá se jenom pro první selhání zálohování databáze.
 
-ToTo Další informace o monitorování najdete [v části monitorování v Azure Portal](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor) a [monitorování pomocí Azure monitor](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor).
+Další informace o monitorování najdete [v části monitorování v Azure Portal](./backup-azure-monitoring-built-in-monitor.md) a [monitorování pomocí Azure monitor](./backup-azure-monitoring-use-azuremonitor.md).
 
 ## <a name="management-operations"></a>Operace správy
 
@@ -62,7 +63,7 @@ Zálohy se spouštějí v souladu s plánem zásad. Zálohu můžete spustit na 
 
 1. V nabídce trezoru klikněte na položku **zálohované položky**.
 2. V části **zálohované položky**vyberte virtuální počítač, na kterém běží databáze SAP HANA, a pak klikněte na **Zálohovat nyní**.
-3. V části **Zálohovat nyní**pomocí ovládacího prvku kalendáře vyberte poslední den, kdy se má bod obnovení zachovat. Pak klikněte na **OK**.
+3. V části **Zálohovat nyní**vyberte typ zálohy, kterou chcete provést. Pak klikněte na **OK**. Tato záloha se zachová v závislosti na zásadách přidružených k této zálohované položce.
 4. Monitorujte oznámení na portálu. Průběh úlohy můžete monitorovat na řídicím panelu trezoru > probíhající **úlohy zálohování**  >  **In progress**. V závislosti na velikosti databáze může vytváření prvotní zálohy chvíli trvat.
 
 ### <a name="hana-native-client-integration"></a>Integrace nativního klienta HANA
@@ -73,7 +74,7 @@ Zálohy na vyžádání aktivované ze všech nativních klientů HANA (do **Bac
 
 ![Poslední spuštění zálohy](./media/sap-hana-db-manage/last-backups.png)
 
-[Tyto zálohy můžete také monitorovat](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#monitor-manual-backup-jobs-in-the-portal) na stránce **úlohy zálohování** .
+[Tyto zálohy můžete také monitorovat](#monitor-manual-backup-jobs-in-the-portal) na stránce **úlohy zálohování** .
 
 Tyto zálohy na vyžádání se zobrazí také v seznamu bodů obnovení pro obnovení.
 
@@ -81,7 +82,7 @@ Tyto zálohy na vyžádání se zobrazí také v seznamu bodů obnovení pro obn
 
 #### <a name="restore"></a>Obnovení
 
-Obnovení spouštěné z nativních klientů HANA (pomocí **Backint**) pro obnovení na stejný počítač se dá [monitorovat](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#monitor-manual-backup-jobs-in-the-portal) na stránce **úlohy zálohování** .
+Obnovení spouštěné z nativních klientů HANA (pomocí **Backint**) pro obnovení na stejný počítač se dá [monitorovat](#monitor-manual-backup-jobs-in-the-portal) na stránce **úlohy zálohování** .
 
 ### <a name="run-sap-hana-native-client-backup-on-a-database-with-azure-backup-enabled"></a>SAP HANA spuštění zálohování nativního klienta v databázi s povolenou službou Azure Backup
 
@@ -115,7 +116,7 @@ U SAP HANA zálohované položky můžete změnit základní zásady.
 
   ![Vybrat existující zásady zálohování](./media/sap-hana-db-manage/existing-backup-policy.png)
 
-* Změňte zásadu výběrem ze seznamu. [V případě potřeby vytvořte nové zásady zálohování](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database#create-a-backup-policy) .
+* Změňte zásadu výběrem ze seznamu. [V případě potřeby vytvořte nové zásady zálohování](./backup-azure-sap-hana-database.md#create-a-backup-policy) .
 
   ![Zvolit zásadu z rozevíracího seznamu](./media/sap-hana-db-manage/choose-backup-policy.png)
 
@@ -171,7 +172,7 @@ Ochranu databáze SAP HANA můžete zastavit několika způsoby:
 Pokud se rozhodnete zachovat body obnovení, mějte na paměti tyto informace:
 
 * Všechny body obnovení zůstanou nedotčeny trvale, všechna vyřazení se zastaví při zastavení ochrany s uchováním dat.
-* Bude se vám účtovat za chráněnou instanci a spotřebované úložiště. Další informace najdete v tématu [Azure Backup ceny](https://azure.microsoft.com/pricing/details/backup/).
+* Bude se vám účtovat chráněná instance a spotřebované úložiště. Další informace najdete v tématu [Azure Backup ceny](https://azure.microsoft.com/pricing/details/backup/).
 * Pokud odstraníte zdroj dat bez zastavení zálohování, nové zálohování se nezdaří.
 
 Zastavení ochrany databáze:
@@ -241,4 +242,4 @@ Tuto možnost použijte opatrně: když se aktivuje na virtuálním počítači 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Naučte se [řešit běžné problémy při zálohování SAP HANA databází.](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot)
+* Naučte se [řešit běžné problémy při zálohování SAP HANA databází.](./backup-azure-sap-hana-database-troubleshoot.md)

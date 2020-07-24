@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
-ms.openlocfilehash: b8f8bda52be63a4176411855dd9ff9919e9e31f5
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 14ff1a00b40d956f369b1978f15f01f113c50270
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856676"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050134"
 ---
 # <a name="keys-and-values"></a>Klíče a hodnoty
 
@@ -77,7 +77,7 @@ V popisech můžete použít libovolný znak Unicode s výjimkou `*` , `,` a `\`
 
 Jednotlivé hodnoty klíče se jednoznačně identifikují pomocí klíče a popisku, který může být `null` . Zadáním vzoru zadáte dotaz na úložiště konfigurace aplikace pro klíčové hodnoty. Úložiště konfigurace aplikace vrátí všechny klíčové hodnoty, které odpovídají vzoru, a jejich odpovídající hodnoty a atributy. Použijte následující vzorové vzory v REST API volání do konfigurace aplikace:
 
-| Klíč | |
+| Klíč | Popis |
 |---|---|
 | `key`je vynecháno nebo`key=*` | Odpovídá všem klíčům |
 | `key=abc` | Odpovídá přesně názvu klíče **ABC** |
@@ -86,7 +86,7 @@ Jednotlivé hodnoty klíče se jednoznačně identifikují pomocí klíče a pop
 
 Můžete také zahrnout následující vzory popisku:
 
-| Popisek | |
+| Popisek | Popis |
 |---|---|
 | `label`je vynecháno nebo`label=*` | Odpovídá jakémukoli popisku, který obsahuje`null` |
 | `label=%00` | Odpovídá `null` popisku |

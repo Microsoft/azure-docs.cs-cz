@@ -13,23 +13,23 @@ ms.topic: article
 ms.date: 01/21/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 7e4f1141a9d4bd58451782e8412063a22565556d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9f9463cd1cac49e36ea52cafaf4d07f4e709ca7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80584537"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053246"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Filtrování, řazení a stránkování Media Services entit
 
 Toto téma popisuje možnosti dotazů OData a Podpora stránkování, která je dostupná při výpisu Azure Media Servicesch entit v3.
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 
 * Vlastnosti entit, které jsou typu, `Datetime` jsou vždy ve formátu UTC.
 * Prázdný znak v řetězci dotazu by měl být zakódovaný pomocí adresy URL před odesláním žádosti.
 
-## <a name="comparison-operators"></a>Operátory porovnání
+## <a name="comparison-operators"></a>Operátory porovnávání
 
 K porovnání pole s konstantní hodnotou můžete použít následující operátory:
 
@@ -158,34 +158,34 @@ Následující tabulka ukazuje, jak můžete použít možnosti filtrování a �
 
 |Název entity|Název vlastnosti|Filtrovat|Objednání|
 |---|---|---|---|
-|[Prostředky](https://docs.microsoft.com/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` a `desc`|
+|[Aktiva](/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` a `desc`|
 ||Properties. alternateId |`eq`||
 ||Properties. assetId |`eq`||
 ||vlastnosti. vytvořeno| `eq`, `gt`, `lt`| `asc` a `desc`|
-|[Zásady symetrických klíčů](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
+|[Zásady symetrických klíčů](/rest/api/media/contentkeypolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
 ||vlastnosti. vytvořeno    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
 ||vlastnosti. Description    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
 ||Properties. lastModified|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
 ||Properties. policyId|`eq`, `ne`||
-|[Úlohy](https://docs.microsoft.com/rest/api/media/jobs)| name  | `eq`            | `asc` a `desc`|
+|[Úlohy](/rest/api/media/jobs)| name  | `eq`            | `asc` a `desc`|
 ||vlastnosti. State        | `eq`, `ne`        |                         |
 ||vlastnosti. vytvořeno      | `gt`, `ge`, `lt`, `le`| `asc` a `desc`|
 ||Properties. lastModified | `gt`, `ge`, `lt`, `le` | `asc` a `desc`| 
-|[Lokátory streamování](https://docs.microsoft.com/rest/api/media/streaminglocators)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
+|[Lokátory streamování](/rest/api/media/streaminglocators)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
 ||vlastnosti. vytvořeno    |`eq`, `ne`, `ge`, `le`,  `gt`, `lt`|`asc` a `desc`|
 ||vlastnosti. čas_ukončení    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
-|[Zásady streamování](https://docs.microsoft.com/rest/api/media/streamingpolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
+|[Zásady streamování](/rest/api/media/streamingpolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
 ||vlastnosti. vytvořeno    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
-|[Transformace](https://docs.microsoft.com/rest/api/media/transforms)| name | `eq`            | `asc` a `desc`|
+|[Transformace](/rest/api/media/transforms)| name | `eq`            | `asc` a `desc`|
 || vlastnosti. vytvořeno      | `gt`, `ge`, `lt`, `le`| `asc` a `desc`|
 || Properties. lastModified | `gt`, `ge`, `lt`, `le`| `asc` a `desc`|
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vypsat prostředky](https://docs.microsoft.com/rest/api/media/assets/list)
-* [Seznam zásad pro klíč obsahu](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)
-* [Vypsat úlohy](https://docs.microsoft.com/rest/api/media/jobs/list)
-* [Vypsat zásady streamování](https://docs.microsoft.com/rest/api/media/streamingpolicies/list)
-* [Seznam lokátorů streamování](https://docs.microsoft.com/rest/api/media/streaminglocators/list)
+* [Vypsat prostředky](/rest/api/media/assets/list)
+* [Seznam zásad pro klíč obsahu](/rest/api/media/contentkeypolicies/list)
+* [Vypsat úlohy](/rest/api/media/jobs/list)
+* [Vypsat zásady streamování](/rest/api/media/streamingpolicies/list)
+* [Seznam lokátorů streamování](/rest/api/media/streaminglocators/list)
 * [Streamování souboru](stream-files-dotnet-quickstart.md)
 * [Kvóty a omezení](limits-quotas-constraints.md)

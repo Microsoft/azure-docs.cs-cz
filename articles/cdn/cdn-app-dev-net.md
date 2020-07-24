@@ -15,14 +15,14 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.custom: has-adal-ref
-ms.openlocfilehash: 20db31b63a82431b7dd59c6c5c92a1fb756c5c06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f891327a60d5438369c56dd858bfcefff182cdf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888423"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049344"
 ---
-# <a name="get-started-with-azure-cdn-development"></a>Začínáme s vývojem pro Azure CDN
+# <a name="get-started-with-the-azure-cdn-library-for-net"></a>Začínáme s knihovnou Azure CDN pro .NET
 > [!div class="op_single_selector"]
 > * [Node.js](cdn-app-dev-node.md)
 > * [.NET](cdn-app-dev-net.md)
@@ -156,7 +156,7 @@ Pojďme získat základní strukturu našeho programu napsaného.
 
 Teď, když je napsaná základní struktura našeho programu, bychom měli vytvořit metody, které metoda volá `Main` .
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 Než budeme moct použít knihovnu pro správu Azure CDN, musíme ověřit náš instanční objekt a získat ověřovací token.  Tato metoda načte token pomocí ADAL.
 
 ```csharp
@@ -330,7 +330,7 @@ Nyní můžeme zkompilovat a spustit program kliknutím na tlačítko **Start** 
 
 Když program dosáhne výše uvedené výzvy, měli byste se vrátit do vaší skupiny prostředků v Azure Portal a zjistit, zda byl profil vytvořen.
 
-![Výborně!](./media/cdn-app-dev-net/cdn-success.png)
+![Úspěch!](./media/cdn-app-dev-net/cdn-success.png)
 
 Potom můžeme potvrdit výzvy ke spuštění zbytku programu.
 

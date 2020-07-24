@@ -6,12 +6,12 @@ metadata:
   title: Dokumentace ke službám Microsoft Azure Container Service | Microsoft Docs
   description: Naučte se používat služby Azure Container Service ke správě a vývoji cloudových kontejnerových aplikací.
   ms.topic: hub-page
-  ms.openlocfilehash: c83db23fda2fe5895a8d4400a26be463ec8d2d6a
-  ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+  ms.openlocfilehash: 7618bedf711554fbd4428ceb6c88817477b82e6d
+  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/11/2020
-  ms.locfileid: "86260703"
+  ms.lasthandoff: 07/23/2020
+  ms.locfileid: "87031877"
 highlightedContent:
   items:
   - itemType: whats-new
@@ -41,7 +41,7 @@ conceptualContent:
       text: Další informace
   - title: Testování a vývoj aplikací AKS
     links:
-    - url: ../dev-spaces/how-dev-spaces-works-local-process-kubernetes.md
+    - url: /visualstudio/containers/overview-local-process-kubernetes
       itemType: concept
       text: Jak funguje místní proces s Kubernetes
     - url: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md

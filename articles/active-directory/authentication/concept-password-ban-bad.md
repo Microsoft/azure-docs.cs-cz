@@ -1,180 +1,232 @@
 ---
-title: Dynamicky zakázaná hesla – Azure Active Directory
-description: Zakázání slabých hesel z vašeho prostředí pomocí dynamicky se zakázaných hesel Azure AD
+title: Ochrana heslem v Azure Active Directory
+description: Přečtěte si, jak dynamicky zakázat slabé heslo z vašeho prostředí pomocí Azure Active Directory ochrany heslem.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 07/16/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f905b3eb6d1675f0bc252c3500169b3144287d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f0f7571cf9f8d355330c4acf425e38ce215e840
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550710"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050870"
 ---
-# <a name="eliminate-bad-passwords-in-your-organization"></a>Eliminace špatných hesel v rámci organizace
+# <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>Eliminujte chybná hesla pomocí Azure Active Directory ochrany heslem.
 
-Vedoucí v oboru průmyslu oznamují, že nebudete používat stejné heslo na více místech, abyste ho mohli složitě a neměli jednoduché jako "Password123". Jak můžou organizace zaručit, že se jejich uživatelé budou starat o osvědčené postupy? Jak zajistí, aby uživatelé nepoužívali slabé heslo, nebo dokonce variace na slabých heslech?
+Spousta pokynů k zabezpečení doporučuje, abyste nepoužívali stejné heslo na více místech, aby se zajistila složitá a aby nedocházelo k jednoduchým heslům, jako je *Password123*. Uživatelům můžete poskytnout [pokyny, jak zvolit hesla](https://www.microsoft.com/research/publication/password-guidance), ale slabá nebo nezabezpečená hesla se často používají. Ochrana heslem Azure AD detekuje a blokuje známá slabá hesla a jejich varianty a může také blokovat další slabé výrazy, které jsou specifické pro vaši organizaci.
 
-Prvním krokem při zadávání silnějších hesel je poskytnutí pokynů uživatelům. Aktuální pokyny Microsoftu k tomuto tématu najdete na následujícím odkazu:
+Díky ochraně hesel služby Azure AD jsou výchozí globální seznamy zakázaných hesel automaticky aplikovány na všechny cloudové uživatele. Pro podporu vlastních obchodních potřeb a zabezpečení můžete definovat položky v seznamu vlastního zakázaného hesla. Když uživatelé mění nebo resetují hesla, jsou tyto seznamy zakázaných hesel zaškrtnuté, aby vynutily používání silných hesel.
 
-[Pokyny k heslu Microsoftu](https://www.microsoft.com/research/publication/password-guidance)
+Měli byste používat další funkce, jako je [Azure Multi-Factor Authentication](concept-mfa-howitworks.md). nespoléhá se jenom na silná hesla vynucená ochranou hesel Azure AD. Další informace o použití několika vrstev zabezpečení pro přihlašovací události najdete v tématu o tom, co je [to $Word PA](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984).
 
-Je důležité mít dobrý návod, ale i s tím, že ví, že mnoho uživatelů stále ještě ukončí výběr slabého hesla. Ochrana heslem Azure AD chrání vaši organizaci tím, že detekuje a blokuje známá slabá hesla a jejich varianty a volitelně blokuje i další slabé výrazy, které jsou specifické pro vaši organizaci.
-
-Další informace o aktuálním úsilí zabezpečení naleznete v [sestavě Microsoft Security Intelligence](https://www.microsoft.com/security/operations/security-intelligence-report).
+> [!IMPORTANT]
+> Tento koncepční článek vysvětluje správce, jak funguje ochrana heslem Azure AD. Pokud už jste koncoví uživatelé zaregistrovali pro Samoobslužné resetování hesla a potřebujete se zpátky do svého účtu, pokračujte na [https://aka.ms/sspr](https://aka.ms/sspr) .
+>
+> Pokud váš IT tým nepovolil možnost resetovat si vlastní heslo, obraťte se na helpdesk a získáte další pomoc.
 
 ## <a name="global-banned-password-list"></a>Globální seznam zakázaných hesel
 
-Tým Azure AD Identity Protection průběžně analyzuje data telemetrie zabezpečení Azure AD, která hledají běžně používaná slabá nebo napadená hesla, nebo přesněji základní výrazy, které se často používají jako základ pro slabá hesla. Když se tyto slabé výrazy najde, přidají se do seznamu globálních zakázaných hesel. Obsah seznamu globálních zakázaných hesel není založený na žádném externím zdroji dat. Globální seznam zakázaných hesel je založený výhradně na průběžných výsledcích telemetrie a analýzy zabezpečení Azure AD.
+Tým Azure AD Identity Protection průběžně analyzuje data telemetrie zabezpečení Azure AD, která hledají běžně používaná slabá nebo ohrožená hesla. Konkrétně analýza vyhledá základní výrazy, které se často používají jako základ pro slabá hesla. Po nalezení slabých podmínek se přidá do *seznamu globálních zakázaných hesel*. Obsah seznamu globálních zakázaných hesel není založený na žádném externím zdroji dat, ale na výsledcích telemetrie a analýz zabezpečení Azure AD.
 
-Pokaždé, když se nové heslo změní nebo obnoví pro libovolného uživatele v rámci Azure AD, jako vstup klíče při ověřování síly hesla se použije aktuální verze seznamu globálních zakázaných hesel. Toto ověření má za následek mnohem silnější hesla pro všechny zákazníky Azure AD.
+Při změně nebo resetování hesla pro libovolného uživatele v tenantovi služby Azure AD se používá aktuální verze seznamu globálních zakázaných hesel k ověření síly hesla. Tato kontrola ověření má za následek silnější hesla pro všechny zákazníky Azure AD.
+
+Globální seznam zakázaných hesel se automaticky použije pro všechny cloudové uživatele v tenantovi Azure AD. Není k dispozici žádná možnost povolit ani konfigurovat a nelze ji zakázat.
 
 > [!NOTE]
-> Internetoví – zločinci využívají podobné strategie i při jejich útokech. Proto Microsoft nepublikuje obsah tohoto seznamu veřejně.
+> Internetoví – zločinci používají podobné strategie ve svých útocích k identifikaci běžných slabých hesel a variací. Pro zvýšení zabezpečení nepublikuje Microsoft obsah seznamu globálních zakázaných hesel.
 
 ## <a name="custom-banned-password-list"></a>Vlastní seznam zakázaných hesel
 
-Některé organizace můžou chtít ještě víc zlepšit zabezpečení přidáním vlastních vlastních nastavení na seznam globálních zakázaných hesel, ve kterém Microsoft zavolá vlastní seznam zakázaných hesel. Společnost Microsoft doporučuje, aby se výrazy přidané do tohoto seznamu primárně zaměřily na konkrétní organizační výrazy, například:
+Některé organizace chtějí zvýšit zabezpečení a přidat vlastní vlastní nastavení nad seznam globálních zakázaných hesel. Pokud chcete přidat vlastní položky, můžete použít *vlastní seznam zakázaných hesel*. Výrazy přidané do seznamu vlastních zakázaných hesel by měly být zaměřené na konkrétní organizační výrazy, například v následujících příkladech:
 
 - Názvy značek
 - Názvy produktů
-- Umístění (například ústředí společnosti)
+- Umístění, jako je například ústředí společnosti
 - Interní výrazy specifické pro společnost
-- Zkratky, které mají konkrétní význam společnosti.
+- Zkratky, které mají konkrétní význam společnosti
 
-Po přidání podmínek do vlastního seznamu zakázaných hesel budou v kombinaci s podmínkami v seznamu globální zakázané heslo při ověřování hesel kombinovány.
+Pokud jsou výrazy přidány do seznamu vlastních zakázaných hesel, budou zkombinovány s podmínkami v seznamu globální seznam zakázaných hesel. Události změny a resetování hesla se pak ověřují na kombinované sadě seznamů zakázaných hesel.
 
 > [!NOTE]
-> Vlastní seznam zakázaných hesel je omezen na maximálně 1000 podmínek. Není navržený pro blokování extrémně velkých seznamů hesel. Aby bylo možné plně využívat výhody vlastního seznamu zakázaných hesel, společnost Microsoft doporučuje, abyste před přidáním nových podmínek do vlastního seznamu zakázaných hesel nejprve zkontrolovali a porozuměli algoritmu pro vyhodnocení hesla (viz [jak jsou vyhodnocena hesla](concept-password-ban-bad.md#how-are-passwords-evaluated)). Porozumět tomu, jak algoritmus funguje, umožní vašemu podniku efektivně detekovat a blokovat velký počet slabých hesel a jejich variant.
+> Vlastní seznam zakázaných hesel je omezený na maximum 1000 podmínek. Není určený pro blokování extrémně rozsáhlých seznamů hesel.
+>
+> Abyste mohli plně využít výhody vlastního seznamu zakázaných hesel, nejdřív pochopíte, [jak jsou hesla vyhodnocována](#how-are-passwords-evaluated) před přidáním podmínek do vlastního seznamu zakázaných adres. Tento přístup umožňuje efektivně detekovat a blokovat velký počet slabých hesel a jejich variant.
 
-Příklad: Uvažujme zákazníka s názvem "contoso", který je založený na Londýně a který vytvoří produkt s názvem "widget". U takového zákazníka by byl wasteful i méně bezpečný a snaží se zablokovat konkrétní variace těchto podmínek, například:
+![Úprava vlastního seznamu zakázaných hesel v části metody ověřování](./media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords-cropped.png)
+
+Pojďme se považovat za zákazníka s názvem *Contoso*. Společnost je založena na Londýně a vytvoří produkt s názvem *widget*. Pro tento příklad zákazníka by byl wasteful a méně zabezpečený, aby se pokusil zablokovat konkrétní variace těchto podmínek, například následující:
 
 - Contoso! 1
 - "Contoso@London"
 - "ContosoWidget"
 - "! Contoso
 - "LondonHQ"
-- ... etcetera
 
-Místo toho je mnohem efektivnější a bezpečné zablokovat jenom základní Klíčové výrazy:
+Místo toho je mnohem efektivnější a bezpečné zablokovat jenom základní Klíčové výrazy, například následující příklady:
 
 - "Contoso"
 - London
 - Pomůck
 
-Algoritmus ověřování hesla pak automaticky zablokuje slabé varianty a kombinace výše uvedeného.
+Algoritmus ověřování hesla pak automaticky blokuje slabé varianty a kombinace.
 
-Vlastní seznam zakázaných hesel a možnost Povolit místní integraci služby Active Directory se spravují pomocí Azure Portal.
+Pokud chcete začít používat vlastní seznam zakázaných hesel, dokončete následující kurz:
 
-![Úprava vlastního seznamu zakázaných hesel v části metody ověřování](./media/concept-password-ban-bad/authentication-methods-password-protection.png)
+> [!div class="nextstepaction"]
+> [Kurz: Konfigurace vlastních zakázaných hesel](tutorial-configure-custom-password-protection.md)
 
 ## <a name="password-spray-attacks-and-third-party-compromised-password-lists"></a>Útoky prostřednictvím spreje hesla a seznamy hesel pro zneužití třetích stran
 
-Jednou z klíčových výhod ochrany heslem Azure AD je pomáhat při ochraně proti útokům prostřednictvím postřiku hesla. Většina útoků založených na heslech se nepokusí o útok na konkrétní účet více než několikrát, protože takové chování významně zvyšuje pravděpodobnost detekce, a to buď prostřednictvím uzamčení účtu, nebo jiným způsobem. Většina útoků proti postřikům hesla proto spoléhá na odeslání jenom malého počtu známých slabých hesel proti každému účtu v podniku. Tato technika umožňuje útočníkovi rychle vyhledat snadno narušený účet a zároveň zabránit potenciálním prahům detekce.
+Ochrana heslem Azure AD pomáhá chránit proti útokům prostřednictvím postřiku hesla. Většina útoků na postřik hesla se nepokouší o útok na určitý účet více než několikrát. Toto chování by zvýšilo pravděpodobnost detekce, a to buď prostřednictvím uzamčení účtu, nebo jiným způsobem.
 
-Ochrana heslem v Azure AD je navržená tak, aby efektivně blokovala všechna známá hesla, která se budou pravděpodobně používat v útocích proti rozstřiku hesla, a to na základě dat telemetrie zabezpečení, jak je vidět v Azure AD.  Společnost Microsoft si uvědomuje weby třetích stran, které si vyčíslují miliony hesel, které byly ohroženy předchozími veřejně známými narušeními zabezpečení. Je běžné, že produkty pro ověřování hesel třetích stran vycházejí z porovnání hrubou silou s těmito miliony hesel. Společnost Microsoft si neosvědčila, že tyto techniky nejsou nejlepším způsobem, jak vylepšit celkovou sílu hesla, a to s využitím typických strategií používaných útočníky pro postřik hesel.
+Místo toho většina útoků proti rozstřiku hesla odesílá jenom malý počet známých slabých hesel proti každému účtu v podniku. Tato technika umožňuje útočníkovi rychle vyhledat snadno narušený účet a vyhnout se potenciálním prahům při detekci.
+
+Azure AD Password Protection efektivně blokuje všechna známá slabá hesla, která jsou pravděpodobně používána v útocích proti rozstřiku hesla. Tato ochrana je založená na skutečných datech telemetrie zabezpečení z Azure AD a vytváří globální seznam zakázaných hesel.
+
+Existují některé weby třetích stran, které vyčíslují miliony hesel, které byly ohroženy předchozími veřejně známými narušeními zabezpečení. Je běžné, že produkty pro ověřování hesel třetích stran vycházejí z porovnání hrubou silou s těmito miliony hesel. Nicméně tyto techniky nejsou nejlepším způsobem, jak zlepšit celkovou sílu hesla, a to s využitím typických strategií používaných útočníky pro postřik hesel.
 
 > [!NOTE]
-> Seznam pro globální zakázané heslo společnosti Microsoft není založen na jakýchkoli zdrojích dat třetích stran, včetně seznamů napadených hesel.
+> Globální seznam zakázaných hesel není založený na žádných zdrojích dat třetích stran, včetně seznamů napadených hesel.
 
-I když je seznam globálních zakázaných společností Microsoft malým porovnáním s některými hromadnými seznamy třetích stran, projeví se jeho bezpečnostní účinky tím, že se od reálné telemetrie zabezpečení na základě vlastních útoků na základě hesla doplní skutečnost, že algoritmus ověřování hesla společnosti Microsoft používá inteligentní techniky přibližného porovnávání. Konečným výsledkem je, že bude efektivně detekovat a blokovat miliony nejběžnějších slabých hesel, které se ve vašem podniku používají. Zákazníci, kteří se rozhodnou přidat konkrétní firemní údaje do seznamu vlastních zakázaných hesel, mají také výhodu stejný algoritmus.
-
-Další informace o problémech zabezpečení založených na heslech se dají zkontrolovat na [vašem PA $ $Word nezáleží](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984)na tom.
+I když je globální seznam zakázaných dat malý v porovnání s některými hromadnými seznamy třetích stran, je z reálné telemetrie zabezpečení na skutečné útoky proti heslům z reálného světa. Tento přístup zlepšuje celkové zabezpečení a efektivitu a algoritmus ověřování hesla také používá inteligentní techniky pro přibližné rozhledání. V důsledku toho Azure AD Password Protection efektivně detekuje a blokuje miliony nejběžnějších slabých hesel, které se ve vašem podniku používají.
 
 ## <a name="on-premises-hybrid-scenarios"></a>Místní hybridní scénáře
 
-Ochrana účtů jenom v cloudu je užitečná, ale mnoho organizací udržuje hybridní scénáře, včetně místní služby Windows Server Active Directory. Výhody zabezpečení ochrany heslem Azure AD se taky můžou rozšířit do prostředí Windows Server Active Directory pomocí instalace místních agentů. Uživatelé a správci, kteří mění nebo resetují hesla ve službě Active Directory, vyžadují, aby vyhověly stejným zásadám hesel jako pouze cloudovým uživatelům.
+Řada organizací má model hybridní identity, který zahrnuje místní prostředí Active Directory Domain Services (služba AD DS). K rozšiřování výhod zabezpečení ochrany heslem Azure AD do prostředí služba AD DS můžete komponenty nainstalovat na místní servery. Tito agenti vyžadují v místním prostředí služba AD DS události změny hesla, aby vyhověly stejným zásadám hesel jako jen cloudovým uživatelům.
+
+Další informace najdete v tématu věnovaném [vymáhání ochrany heslem Azure AD pro služba AD DS](concept-password-ban-bad-on-premises.md).
 
 ## <a name="how-are-passwords-evaluated"></a>Jak se vyhodnocují hesla
 
-Pokaždé, když uživatel změní nebo obnoví heslo, bude nové heslo kontrolováno na sílu a složitost tím, že je ověří podle kombinovaného seznamu podmínek z globálních a vlastních seznamů zakázaných hesel (Pokud je nakonfigurováno).
+Když uživatel změní nebo obnoví heslo, bude nové heslo kontrolováno o sílu a složitosti tím, že je ověří podle kombinovaného seznamu podmínek z globálních a vlastních seznamů zakázaných hesel.
 
-I v případě, že heslo uživatele obsahuje zakázané heslo, může být heslo stále přijatelné v případě, že je celé heslo dostatečně silné. Nově nakonfigurované heslo provede následující kroky, abyste zjistili jeho celkovou sílu, abyste zjistili, jestli by se měl přijmout nebo odmítnout.
+I v případě, že heslo uživatele obsahuje zakázané heslo, může být přijato heslo, pokud je celkové heslo jinak dostatečně silné. Nově konfigurované heslo provede následující kroky k vyhodnocení jeho celkové síly, aby bylo možné určit, jestli se má přijmout nebo odmítnout:
 
 ### <a name="step-1-normalization"></a>Krok 1: normalizace
 
 Nové heslo se nejprve prochází procesem normalizace. Tato technika umožňuje mapovat malou sadu zakázaných hesel na mnohem větší sadu potenciálně slabých hesel.
 
-Normalizace má dvě části.  Nejprve se všechna velká písmena změní na malá písmena.  Za druhé, jsou provedeny běžné náhrady znaků, například:  
+Normalizace má následující dvě části:
 
-| Původní dopis  | Nahrazené písmeno |
-| --- | --- |
-| 0,8  | zápis |
-| první  | l |
-| '$'  | jeho |
-| '\@'  | určitého |
+* Všechna velká písmena jsou změněna na malá písmena.
+* Pak jsou provedeny běžné náhrady znaků, například v následujícím příkladu:
 
-Příklad: Předpokládejme, že heslo "prázdné" je zakázáno a uživatel se pokusí změnit heslo na " Bl@nK ". I když Bl@nk není výslovně zakázaná, proces normalizace toto heslo převede na "prázdné", což je zakázané heslo.
+   | Původní dopis | Nahrazené písmeno |
+   |-----------------|--------------------|
+   | 0               | o                  |
+   | 1               | l                  |
+   | $               | s                  |
+   | \@              | pro                  |
+
+Uvažujte následující příklad:
+
+* Heslo "prázdné" je zakázáno.
+* Uživatel se pokusí změnit heslo na " Bl@nK ".
+* I když Bl@nk není zakázaná, proces normalizace toto heslo převede na "prázdné".
+* Heslo by se zamítlo.
 
 ### <a name="step-2-check-if-password-is-considered-banned"></a>Krok 2: ověření, jestli se heslo považuje za zakázané
 
+Heslo je pak zkontrolováno pro jiné vyhovující chování a je vygenerováno skóre. Tento konečný výsledek určuje, jestli je žádost o změnu hesla přijatá nebo zamítnutá.
+
 #### <a name="fuzzy-matching-behavior"></a>Chování při přibližném porovnání
 
-V normalizovaném hesle se používá přibližná shoda k identifikaci, zda obsahuje heslo nalezené v globálním nebo vlastním seznamu zakázaných hesel. Shodný proces je založen na jedné z úprav vzdálenosti (1) porovnání.  
+V normalizovaném hesle se používá přibližná shoda k identifikaci, zda obsahuje heslo nalezené v globálním nebo vlastním seznamu zakázaných hesel. Shodný proces je založen na jedné z úprav vzdálenosti (1) porovnání.
 
-Příklad: Předpokládejme, že heslo "ABCDEF" je zakázané a uživatel se pokusí změnit heslo na jednu z následujících možností:
+Uvažujte následující příklad:
 
-' abcdeg ' *(poslední znak se změnil z ' f ' na ' g ')* ' abcdefg ' *' (g ' připojeno ke konci)* ' abcde ' *(koncová ' f ' byla odstraněna z elementu end)*
+* Heslo "ABCDEF" je zakázáno.
+* Uživatel se pokusí změnit heslo na jednu z následujících možností:
 
-Každé z výše uvedených hesel se konkrétně neshoduje se zakázaným heslem "ABCDEF". Vzhledem k tomu, že každý příklad je v rámci úpravy vzdálenosti 1 zakázaného termínu "ABCDEF", jsou všechny považovány za shodné s "ABCDEF".
+   * ' abcdeg ' – *poslední znak se změnil z ' f ' na ' g '*
+   * ' abcdefg '- *' g ' připojeno k elementu end*
+   * ' abcde ' – *koncový znak ' f ' byl odstraněn z elementu end*
+
+* Každé z výše uvedených hesel se konkrétně neshoduje se zakázaným heslem "ABCDEF".
+
+    Vzhledem k tomu, že každý příklad je v rámci úpravy vzdálenosti 1 zakázaného termínu "ABCDEF", jsou všechny považovány za shodné s "ABCDEF".
+* Tato hesla by byla zamítnuta.
 
 #### <a name="substring-matching-on-specific-terms"></a>Shoda podřetězců (za určitých podmínek)
 
-Pro porovnání podřetězců se používá normalizované heslo ke kontrole křestního jména a příjmení uživatele a také názvu tenanta (Všimněte si, že při ověřování hesel v řadiči domény služby Active Directory se neprovádí shoda názvů klientů.)
+Pro porovnání podřetězců se používá normalizované heslo ke kontrole křestní jméno a příjmení uživatele a také název tenanta. Shoda s názvem tenanta není při ověřování hesel na služba AD DS řadiči domény pro místní hybridní scénáře prováděna.
 
-Příklad: Předpokládejme, že máme uživatele, Pol, který chce resetovat heslo na "P0l123fb". Po normalizaci se toto heslo stane "pol123fb". Shoda podřetězců najde, že heslo obsahuje křestní jméno uživatele "Pol". I když "P0l123fb" nebylo konkrétně výslovně na seznam zakázaných hesel, v hesle byl nalezen řetězec shodný se znakem "Pol". Proto by toto heslo bylo odmítnuto.
+> [!IMPORTANT]
+> Shoda podřetězců je vynutila pouze pro názvy a jiné výrazy, které mají alespoň čtyři znaky dlouhé.
+
+Uvažujte následující příklad:
+
+* Uživatel s názvem cyklické dotazování, který chce resetovat heslo na "p0LL23fb".
+* Po normalizaci se toto heslo stane "poll23fb".
+* Shoda podřetězců najde, že heslo obsahuje křestní jméno uživatele "dotaz".
+* I když "poll23fb" nebylo konkrétně výslovně nastavené na seznam zakázaných hesel, v hesle byl nalezen řetězec shodný s řetězcem.
+* Heslo by se zamítlo.
 
 #### <a name="score-calculation"></a>Výpočet skóre
 
-Dalším krokem je identifikace všech instancí zakázaných hesel v normalizovaném novém heslu uživatele. Potom:
+Dalším krokem je identifikace všech instancí zakázaných hesel v normalizovaném novém heslu uživatele. Body jsou přiřazeny na základě následujících kritérií:
 
 1. Každé zakázané heslo, které se nachází v uživatelském hesle, je přiděleno na jeden bod.
-2. Každý zbývající jedinečný znak je dán jedním bodem.
-3. Heslo musí být alespoň pět (5) bodů, aby je bylo možné přijmout.
+1. Každý zbývající jedinečný znak je dán jedním bodem.
+1. Heslo musí mít aspoň pět (5) bodů, které se mají přijmout.
 
-V následujících dvou příkladech se předpokládá, že contoso používá ochranu heslem Azure AD a má ve svém vlastním seznamu "contoso". Pojďme také předpokládat, že je "prázdná" v globálním seznamu.
+V dalších dvou ukázkových scénářích používá contoso používání ochrany heslem Azure AD a má ve svém vlastním seznamu zakázaných hesel "contoso". Pojďme také předpokládat, že je "prázdná" v globálním seznamu.
 
-Příklad: uživatel změní heslo na "C0ntos0Blank12".
+V následujícím ukázkovém scénáři uživatel změní heslo na "C0ntos0Blank12":
 
-Po normalizaci se toto heslo bude "contosoblank12". Odpovídající proces zjistí, že toto heslo obsahuje dvě zakázaná hesla: contoso a prázdné. Toto heslo pak předané skóre:
+* Po normalizaci se toto heslo bude "contosoblank12".
+* Odpovídající proces zjistí, že toto heslo obsahuje dvě zakázaná hesla: contoso a blank.
+* K tomuto heslu se pak dostanou následující skóre:
 
-[contoso] + [prázdné] + [1] + [2] = 4 body vzhledem k tomu, že toto heslo je pod pěti (5) body, bude odmítnuto.
+    *[contoso] + [prázdné] + [1] + [2] = 4 body*
 
-Příklad: uživatel změní heslo na " ContoS0Bl@nkf9 !".
+* Jelikož je toto heslo pod pěti (5) body, je odmítnuto.
 
-Po normalizaci se toto heslo bude "contosoblankf9!". Odpovídající proces zjistí, že toto heslo obsahuje dvě zakázaná hesla: contoso a prázdné. Toto heslo pak předané skóre:
+Pojďme se podívat na trochu odlišný příklad, který ukazuje, jak může další složitost hesla vytvořit požadovaný počet bodů, které se mají přijmout. V následujícím ukázkovém scénáři uživatel změní heslo na " ContoS0Bl@nkf9 !":
 
-[contoso] + [prázdné] + [f] + [9] + [!] = 5 bodů vzhledem k tomu, že toto heslo je aspoň pět (5) bodů, je přijaté.
+* Po normalizaci se toto heslo bude "contosoblankf9!".
+* Odpovídající proces zjistí, že toto heslo obsahuje dvě zakázaná hesla: contoso a blank.
+* K tomuto heslu se pak dostanou následující skóre:
 
-   > [!IMPORTANT]
-   > Počítejte s tím, že algoritmus zakázaného hesla spolu s globálním seznamem může v Azure kdykoli a kdykoli změnit v závislosti na probíhající analýze zabezpečení a výzkumu. U místní služby agenta řadiče domény se aktualizované algoritmy projeví až po opětovné instalaci softwaru agenta DC.
+    *[contoso] + [prázdné] + [f] + [9] + [!] = 5 bodů*
 
-## <a name="license-requirements"></a>Licenční požadavky
+* Protože toto heslo je aspoň pět (5) bodů, je přijaté.
 
-| Uživatelé | Ochrana heslem Azure AD s globálním seznamem zakázaných hesel | Ochrana heslem Azure AD s vlastním seznamem zakázaných hesel|
-| --- | --- | --- |
-| Jenom cloudové uživatele | Azure AD Free | Azure AD Premium P1 nebo P2 |
-| Uživatelé synchronizovaný z místní služby Windows Server Active Directory | Azure AD Premium P1 nebo P2 | Azure AD Premium P1 nebo P2 |
-
-> [!NOTE]
-> Místní uživatelé služby Windows Server Active Directory, kteří nejsou synchronizováni, Azure Active Directory také výhody ochrany heslem Azure AD na základě stávajícího licencování pro synchronizované uživatele.
-
-Další informace o licencování, včetně nákladů, najdete na [webu Azure Active Directory ceny](https://azure.microsoft.com/pricing/details/active-directory/).
+> [!IMPORTANT]
+> Algoritmus zakázaného hesla spolu s globálním seznamem zakázaných hesel může a v Azure kdykoli měnit, a to na základě průběžné analýzy zabezpečení a výzkumu.
+>
+> Pro místní službu agenta řadiče domény v hybridních scénářích se aktualizované algoritmy projeví až po opětovné instalaci softwaru agenta DC.
 
 ## <a name="what-do-users-see"></a>Co vidí uživatelé
 
 Když se uživatel pokusí resetovat heslo na něco, co by bylo zakázané, zobrazí se tato chybová zpráva:
 
-Vaše heslo bohužel obsahuje slovo, frázi nebo vzor, který umožňuje snadnou možnost uhodnout heslo. Zkuste to prosím znovu s jiným heslem.
+*"Heslo bohužel obsahuje slovo, frázi nebo vzor, který umožňuje snadnou možnost uhodnout heslo. Zkuste to prosím znovu s jiným heslem. "*
+
+## <a name="license-requirements"></a>Licenční požadavky
+
+| Uživatelé | Ochrana heslem Azure AD s globálním seznamem zakázaných hesel | Ochrana heslem Azure AD s vlastním seznamem zakázaných hesel|
+|-------------------------------------------|---------------------------|---------------------------|
+| Jenom cloudové uživatele                          | Azure AD Free             | Azure AD Premium P1 nebo P2 |
+| Uživatelé synchronizovaný z místních služba AD DS | Azure AD Premium P1 nebo P2 | Azure AD Premium P1 nebo P2 |
+
+> [!NOTE]
+> Místní služba AD DS uživatelům, kteří nejsou synchronizovaný se službou Azure AD, můžou také těžit z ochrany hesel Azure AD na základě stávajícího licencování pro synchronizované uživatele.
+
+Další informace o licencování, včetně nákladů, najdete na [webu Azure Active Directory ceny](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Konfigurovat vlastní seznam zakázaných hesel](howto-password-ban-bad.md)
-- [Povolení agentů ochrany hesel služby Azure AD v místním prostředí](howto-password-ban-bad-on-premises-deploy.md)
+Pokud chcete začít používat vlastní seznam zakázaných hesel, dokončete následující kurz:
+
+> [!div class="nextstepaction"]
+> [Kurz: Konfigurace vlastních zakázaných hesel](tutorial-configure-custom-password-protection.md)
+
+Můžete také [Povolit místní ochranu heslem služby Azure AD](howto-password-ban-bad-on-premises-deploy.md).

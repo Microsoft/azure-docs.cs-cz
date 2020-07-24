@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: c0e4d281880b3870c81352efca146ece7100be74
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 0a82050bef36e139c122ea97f777fb5cb1906974
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964307"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052969"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Použití webhooků Azure k monitorování oznámení úlohy Media Services pomocí .NET 
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 
 Když spouštíte úlohy, často potřebujete způsob, jak sledovat průběh úloh. Oznámení o úlohách Media Services můžete sledovat pomocí webhooků Azure nebo [Azure Queue Storage](media-services-dotnet-check-job-progress-with-queues.md). Tento článek ukazuje, jak pracovat s Webhooky.
 
@@ -42,15 +42,15 @@ V tomto článku se dozvíte, jak
 
 Můžete najít Definice různých Media Services .NET Azure Functions (včetně toho, co je uvedeno v tomto článku) [zde](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kurzu potřebujete následující:
 
-* Účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
+* Účet Azure: Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * Účet Media Services. Pokud chcete vytvořit účet Media Services, přečtěte si článek [Jak vytvořit účet Media Services](media-services-portal-create-account.md).
 * Princip [použití Azure Functions](../../azure-functions/functions-overview.md). Přečtěte si také [Azure Functions vazby HTTP a Webhooku](../../azure-functions/functions-bindings-http-webhook.md).
 
-## <a name="create-a-function-app"></a>Vytvoření Function App
+## <a name="create-a-function-app"></a>Vytvoření aplikace funkcí
 
 1. Přejděte na web [Azure Portal](https://portal.azure.com) a přihlaste se pomocí účtu Azure.
 2. Vytvořte aplikaci Function App, jak je popsáno [zde](../../azure-functions/functions-create-function-app-portal.md).
@@ -61,7 +61,7 @@ Při vývoji Media Servicesch funkcí je užitečné přidat proměnné prostře
 
 Oddíl [nastavení aplikace](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings) definuje parametry, které se používají ve Webhooku definovaném v tomto článku. Do nastavení aplikace přidejte také následující parametry. 
 
-|Name|Definice|Příklad| 
+|Název|Definice|Příklad| 
 |---|---|---|
 |SigningKey |Podpisový klíč.| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
 |WebHookEndpoint | Adresa koncového bodu Webhooku. Po vytvoření funkce Webhooku můžete zkopírovat adresu URL z odkazu **získat adresu URL funkce** . | https: \/ /juliakofuncapp.azurewebsites.NET/API/Notification_Webhook_Function?Code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g = =.|

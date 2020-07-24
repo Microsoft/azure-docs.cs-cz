@@ -14,11 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 618acae10b874eb5ebd5b6da7fe081368528dbd8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 43e16d15c48471d75a7ab5ce23898f1161a60153
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712492"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052827"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Vývoj Azure Functions s využitím Media Services
 
@@ -26,12 +27,12 @@ V tomto článku se dozvíte, jak začít s vytvářením Azure Functions, kter�
 
 Pokud chcete prozkoumat a nasadit existující Azure Functions, které používají Azure Media Services, podívejte se na [Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration). Toto úložiště obsahuje příklady, které používají Media Services k zobrazení pracovních postupů souvisejících s ingestování obsahu přímo z úložiště objektů blob, kódování a zápisu obsahu zpátky do úložiště objektů BLOB. Obsahuje taky příklady monitorování oznámení úloh prostřednictvím webhooků a front Azure. Můžete také vyvíjet své funkce na základě příkladů v úložišti [Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) . Pokud chcete tyto funkce nasadit, klikněte na tlačítko **nasadit do Azure** .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Je nutné, abyste před vytvořením první funkce měli aktivní účet Azure. Pokud ještě nemáte účet Azure, [můžete použít bezplatné účty](https://azure.microsoft.com/free/).
 - Pokud budete vytvářet Azure Functions, které provádějí akce v účtu Azure Media Services (AMS) nebo naslouchat událostem odesílaným Media Services, měli byste vytvořit účet AMS, jak je popsáno [zde](media-services-portal-create-account.md).
     
-## <a name="create-a-function-app"></a>Vytvoření Function App
+## <a name="create-a-function-app"></a>Vytvoření aplikace funkcí
 
 1. Přejděte na web [Azure Portal](https://portal.azure.com) a přihlaste se pomocí účtu Azure.
 2. Vytvořte aplikaci Function App, jak je popsáno [zde](../../azure-functions/functions-create-function-app-portal.md).
@@ -337,7 +338,7 @@ Chcete-li otestovat funkci, je třeba nahrát soubor MP4 do **vstupního** konte
 4. Stiskněte **nahrát** a přejděte k souboru. mp4, který chcete nahrát.
 
 >[!NOTE]
-> Při použití triggeru objektu BLOB v plánu spotřeby může po dobu nečinnosti aplikace Function App docházet ke zpoždění zpracování nových objektů BLOB až na 10 minut. Po spuštění aplikace Function App se objekty blob zpracovávají okamžitě. Další informace najdete v tématu [triggery a vazby služby Blob Storage](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob).
+> Při použití triggeru objektu BLOB v plánu spotřeby může po dobu nečinnosti aplikace Function App docházet ke zpoždění zpracování nových objektů BLOB až na 10 minut. Po spuštění aplikace Function App se objekty blob zpracovávají okamžitě. Další informace najdete v tématu [triggery a vazby služby Blob Storage](../../azure-functions/functions-bindings-storage-blob.md).
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -349,4 +350,3 @@ Další informace najdete také v tématu [použití webhooků Azure k monitorov
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

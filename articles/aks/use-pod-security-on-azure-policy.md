@@ -4,12 +4,13 @@ description: Naučte se zabezpečit lusky pomocí Azure Policy ve službě Azure
 services: container-service
 ms.topic: article
 ms.date: 07/06/2020
-ms.openlocfilehash: 8a5107b9ba3c05c92a06753b2cb30bcfc2896d91
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+author: jluk
+ms.openlocfilehash: 8be0b05c260037bbe8afc92726d81668e1391d4a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86090897"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050469"
 ---
 # <a name="secure-pods-with-azure-policy-preview"></a>Zabezpečení lusků pomocí Azure Policy (Preview)
 
@@ -63,7 +64,7 @@ Tento dokument popisuje, jak použít Azure Policy k zabezpečení lusků v clus
 
 Po instalaci doplňku Azure Policy se ve výchozím nastavení neuplatní žádné zásady.
 
-Existují čtrnáct (14) předdefinovaných individuálních zásad Azure a dvou (2) integrovaných iniciativ, které v clusteru AKS konkrétně zabezpečují lusky.
+K dispozici jsou jedenácté (11) předdefinované individuální zásady Azure a dvě (2) integrovaná iniciativa, která v clusteru AKS konkrétně zabezpečuje lusky.
 Jednotlivé zásady je možné přizpůsobit pomocí efektu. [Tady je uvedený úplný seznam zásad AKS a jejich podporovaných efektů][policy-samples]. Přečtěte si další informace o [Azure Policych efektech](../governance/policy/concepts/effects.md).
 
 Zásady Azure je možné použít na úrovni skupiny pro správu, předplatného nebo skupiny prostředků. Když přiřadíte zásadu na úrovni skupiny prostředků, ujistěte se, že je v oboru zásad vybraná skupina prostředků cílového clusteru AKS. Každý cluster v přiřazeném oboru s nainstalovaným doplňkem Azure Policy je v oboru pro zásady.
@@ -78,24 +79,41 @@ Azure Policy pro Kubernetes nabízí dvě integrované iniciativy, které zabezp
 
 Obě předdefinované iniciativy jsou sestavené z definic používaných v [pod zásadami zabezpečení z Kubernetes](https://github.com/kubernetes/website/blob/master/content/en/examples/policy/baseline-psp.yaml).
 
-|[Řízení zásad zabezpečení pod](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)| Odkaz na definici Azure Policy| Základní iniciativa | Omezená iniciativa |
+|[Řízení zásad zabezpečení pod](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)| Odkaz na definici Azure Policy| [Základní iniciativa](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2Fa8640138-9b0a-4a28-b8cb-1666c838647d) | [Omezená iniciativa](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2F42b8ef37-b724-4e24-bbc8-7a7708edfe00) |
 |---|---|---|---|
 |Zakázat spouštění privilegovaných kontejnerů|[Veřejný cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4)| Ano | Ano
 |Zakázat sdílené použití oborů názvů hostitele|[Veřejný cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47a1ee2f-2a2a-4576-bf2a-e0e36709c2b8)| Ano | Ano
-|Omezení využití hostitelských sítí a portů na známý seznam|[Veřejný cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82985f06-dc18-4a48-bc1c-b9f4f0098cfe)| Ano | Ano
-|Omezit využití hostitelského systému souborů|[Veřejný cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F098fc59e-46c7-4d99-9b16-64990e543d75)| Ano | Ano
-|Přidávání možností pro Linux mimo [výchozí sadu](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities)|[Veřejný cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc26596ff-4d70-4e6a-9a30-c2506bd2f80c) | Ano | Ano
-|Omezit využití definovaných typů svazků|[Veřejný cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F16697877-1118-4fb1-9b65-9898ec2509ec)| - | Yes
+|Omezit veškeré využití hostitelských sítí a portů|[Veřejný cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82985f06-dc18-4a48-bc1c-b9f4f0098cfe)| Ano | Ano
+|Omezení využití hostitelského systému souborů|[Veřejný cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F098fc59e-46c7-4d99-9b16-64990e543d75)| Ano | Ano
+|Omezení možností pro Linux na [výchozí sadu](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities)|[Veřejný cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc26596ff-4d70-4e6a-9a30-c2506bd2f80c) | Ano | Ano
+|Omezit využití definovaných typů svazků|[Veřejný cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F16697877-1118-4fb1-9b65-9898ec2509ec)| - | Ano – povolené typy svazků jsou `configMap` , `emptyDir` , `projected` , `downwardAPI` ,`persistentVolumeClaim`|
 |Eskalace oprávnění do kořenového adresáře|[Veřejný cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) | - | Yes |
-|Omezení ID uživatelů a skupin kontejneru|[Veřejný cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Yes |
-|Omezte přidělení FSGroup, které vlastní svazky pod.|[Veřejný cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Yes |
-|Vyžaduje použití profilu seccomp|[Veřejný cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F975ce327-682c-4f2e-aa46-b9598289b86c) | - | - |
-|Omezení sysctl profilu používaného kontejnery|[Veřejný cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F56d0a13f-712f-466b-8416-56fb354fb823) | - | - |
-|Výchozí typy připojení procedury jsou definované tak, aby se snížila plocha pro útoky.|[Veřejný cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff85eb0dd-92ee-40e9-8a76-db25a507d6d3) | - | - |
-|Omezit na konkrétní ovladače FlexVolume|[Veřejný cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff4a8fce0-2dd5-4c21-9a36-8f0ec809d663) | - | - |
-|Povoluje připojení, která nejsou jen pro čtení.|[Veřejný cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdf49d893-a74c-421d-bc95-c663042e5b80) | - | - |
-|Definování vlastního kontextu SELinux kontejneru|[Veřejný cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe1e6c427-07d9-46ab-9689-bfa85431e636) | - | - |
-|Definování profilu AppArmor používaného kontejnery|[Veřejný cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F511f5417-5d12-434d-ab2e-816901e72a5e) | - | - |
+|Omezení ID uživatelů a skupin kontejneru|[Veřejný cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Yes|
+|Omezte přidělení FSGroup, které vlastní svazky pod.|[Veřejný cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Ano – povolená pravidla jsou `runAsUser: mustRunAsNonRoot` , `supplementalGroup: mustRunAs 1:65536` , `fsGroup: mustRunAs 1:65535` , `runAsGroup: mustRunAs 1:65535` .  |
+|Vyžaduje profil seccomp|[Veřejný cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F975ce327-682c-4f2e-aa46-b9598289b86c) | - | Ano, allowedProfiles jsou * `docker/default` nebo`runtime/default` |
+
+\*Docker/default se v Kubernetes nepoužívá, protože v 1.11
+
+### <a name="additional-optional-policies"></a>Další volitelné zásady
+
+Existují další zásady Azure, které se dají jednotlivě použít mimo použití iniciativy. Zvažte možnost připojit tyto zásady kromě iniciativ, pokud vaše požadavky nejsou splněné v rámci integrovaných iniciativ.
+
+|[Řízení zásad zabezpečení pod](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)| Odkaz na definici Azure Policy| Použití kromě základní iniciativy | Použít společně s omezenou iniciativou |
+|---|---|---|---|
+|Definování profilu AppArmor používaného kontejnery|[Veřejný cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F511f5417-5d12-434d-ab2e-816901e72a5e) | Volitelné | Volitelné |
+|Povoluje připojení, která nejsou jen pro čtení.|[Veřejný cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdf49d893-a74c-421d-bc95-c663042e5b80) | Volitelné | Volitelné |
+|Omezit na konkrétní ovladače FlexVolume|[Veřejný cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff4a8fce0-2dd5-4c21-9a36-8f0ec809d663) | Volitelné – použijte, pokud chcete jenom ovladače FlexVolume omezit, ale ne jiné nastavit pomocí omezení využití definovaných typů svazků. | Netýká se – omezená iniciativa obsahuje "omezení využití definovaných typů svazků", které nepovoluje všechny ovladače FlexVolume |
+
+### <a name="unsupported-built-in-policies-for-managed-aks-clusters"></a>Nepodporované předdefinované zásady pro spravované clustery AKS
+
+> [!NOTE]
+> Následující 3 zásady se **v AKS nepodporují** kvůli přizpůsobení aspektů spravovaných a zabezpečených pomocí AKS jako spravované služby. Tyto zásady jsou vytvořené speciálně pro clustery připojené ke službě Azure ARC s nespravovanými rovinami řízení.
+
+|[Řízení zásad zabezpečení pod](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)|
+|---|
+|Definování vlastního kontextu SELinux kontejneru|
+|Omezení sysctl profilu používaného kontejnery|
+|Výchozí typy připojení procedury jsou definované tak, aby se snížila plocha pro útoky.|
 
 <!---
 # Removing until custom initiatives are supported the week after preview

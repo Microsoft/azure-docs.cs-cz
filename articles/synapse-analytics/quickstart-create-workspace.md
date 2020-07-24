@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: a069ee40c2db99b05e9620cf83c06c49cc9e29fc
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: da7f115224db10ad1d66e8ffe7b86e58e43ae866
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274233"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052451"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Rychlý Start: vytvoření pracovního prostoru synapse
 
@@ -56,7 +56,7 @@ Přihlaste se na [Azure Portal](https://portal.azure.com/).
     > [!IMPORTANT]
     > Pracovní prostor Azure synapse musí být schopný číst a zapisovat na vybraný ADLS Gen2 účet. Pro libovolný účet úložiště, který propojíte jako primární účet úložiště, je navíc nutné povolit **hierarchický obor názvů** při vytváření účtu úložiště.
     >
-    > Pod poli ADLS Gen2 výběru se zobrazí Poznámka s informací o tom, že se spravované identitě pracovního prostoru přiřadí role **Přispěvatel dat objektů BLOB Storaqe** ve vybraném systému souborů Data Lake Storage Gen2 udělení úplného přístupu.
+    > Pod poli ADLS Gen2 výběru se zobrazí Poznámka s informací o tom, že se spravované identitě pracovního prostoru přiřadí role **Přispěvatel dat objektů BLOB úložiště** ve vybraném systému souborů Data Lake Storage Gen2 udělení úplného přístupu.
 
 4. Volitelné Změňte kteroukoli kartu **Předvolby zabezpečení a sítě** :
 5. Volitelné Přidejte libovolné značky na kartě **značky** .

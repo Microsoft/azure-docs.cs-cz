@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: b54545708d21c876fb85e1795b26c34eece005dd
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5f3b5c60907260a0e868d491a4d55ea3624c2bce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255706"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046785"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>Řízení přístupu účtu úložiště pro SQL na vyžádání (Preview)
 
@@ -87,6 +87,11 @@ Můžete použít následující kombinace autorizačních a Azure Storagech typ
 | *Spravovaná identita* | Podporováno      | Podporováno        | Podporováno     |
 | *Identita uživatele*    | Podporováno      | Podporováno        | Podporováno     |
 
+
+> [!IMPORTANT]
+> Při přístupu k úložišti chráněnému bránou firewall se dá použít jenom spravovaná identita. Je nutné, aby byly [povoleny důvěryhodné služby společnosti Microsoft... nastavení](../../storage/common/storage-network-security.md#trusted-microsoft-services) a explicitně [přiřadí roli RBAC](../../storage/common/storage-auth-aad.md#assign-rbac-roles-for-access-rights) [spravované identitě přiřazené systémem](../../active-directory/managed-identities-azure-resources/overview.md) pro danou instanci prostředku. V takovém případě rozsah přístupu pro instanci odpovídá roli RBAC přiřazené spravované identitě.
+>
+
 ## <a name="credentials"></a>Přihlašovací údaje
 
 Pokud chcete zadat dotaz na soubor umístěný v Azure Storage, vyžaduje koncový bod SQL na vyžádání přihlašovací údaje, které obsahují ověřovací údaje. Používají se dva typy přihlašovacích údajů:
@@ -109,11 +114,7 @@ Aby uživatel mohl používat přihlašovací údaje, musí mít `REFERENCES` op
 GRANT REFERENCES ON CREDENTIAL::[storage_credential] TO [specific_user];
 ```
 
-Aby bylo zajištěno bezproblémové předávací prostředí Azure AD, budou mít všichni uživatelé ve výchozím nastavení právo používat `UserIdentity` přihlašovací údaje. Toho je dosaženo automatickým provedením následujícího příkazu při zřizování pracovního prostoru Azure synapse:
-
-```sql
-GRANT REFERENCES ON CREDENTIAL::[UserIdentity] TO [public];
-```
+Aby bylo zajištěno bezproblémové předávací prostředí Azure AD, budou mít všichni uživatelé ve výchozím nastavení právo používat `UserIdentity` přihlašovací údaje.
 
 ## <a name="server-scoped-credential"></a>Přihlašovací údaje v oboru serveru
 

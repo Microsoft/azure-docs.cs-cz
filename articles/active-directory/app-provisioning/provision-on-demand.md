@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/23/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 78a56b6a848139c47d7934a47decb126afe00b7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7799e873afb117481cebafd982df59a3267f4405
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85297524"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051573"
 ---
 # <a name="on-demand-provisioning"></a>Zřizování na vyžádání
 Zřizování na vyžádání umožňuje zřídit uživatele v aplikaci během několika sekund. Tuto možnost můžete využít k rychlému řešení potíží s konfigurací, ověřování výrazů, které jste definovali, filtrům rozsahu testů a mnohem více. 
@@ -30,6 +30,8 @@ Zřizování na vyžádání umožňuje zřídit uživatele v aplikaci během n�
 5. Klikněte na **zřídit na vyžádání**.
 6. Vyhledat uživatele podle křestního jména, příjmení, zobrazovaného jména, hlavního názvu uživatele nebo e-mailu.
 7. V dolní části stránky vyberte zřídit.
+
+:::image type="content" source="media/provision-on-demand/on-demand-provision-user.jpg" alt-text="Na vyžádání zřídí uživatele.":::
 
 ## <a name="understanding-the-provisioning-steps"></a>Porozumění krokům zřizování
 Funkce zřizování na vyžádání se pokusí zobrazit kroky, které služba zřizování provádí při zřizování uživatele. K zřizování uživatele se obvykle používá pět kroků a jeden nebo více kroků níže se zobrazí v prostředí pro zřizování na vyžádání.
@@ -88,6 +90,8 @@ Stránky zobrazit podrobnosti zobrazují vlastnosti uživatelů, které byly sp�
 ### <a name="step-5-perform-action"></a>Krok 5: provedení akce
 Služba zřizování nakonec provede akci, jako je vytvoření, aktualizace, odstranění nebo přeskočení uživatele. 
 
+:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="Bylo úspěšné zřízení uživatele.":::
+
 **Zobrazit podrobnosti**
 
 V části Zobrazit podrobnosti se zobrazí atributy, které byly v cílové aplikaci změněny. To představuje konečný výstup aktivity zřizování služby a exportovaných atributů. Pokud se tento krok nezdaří, zobrazené atributy reprezentují atributy, které služba zřizování provedla při pokusu o změnu.  
@@ -102,11 +106,11 @@ V části Zobrazit podrobnosti se zobrazí atributy, které byly v cílové apli
 **Jak dlouho trvá zřizování na vyžádání?** Obvykle trvá méně než 30 sekund. 
 
 ## <a name="known-limitations"></a>Známá omezení
-V současné době existuje několik známých omezení. Pošlete prosím na [UserVoice](https://aka.ms/appprovisioningfeaturerequest) , abychom vám mohli lépe určit, jaká vylepšení se mají udělat dál. Pamatujte na to, že tato omezení jsou specifická pro schopnost zřizování na vyžádání. konkrétní informace o tom, jestli aplikace podporuje zřizování skupin, odstranění atd., najdete v kurzu použití aplikace. 
+V současné době existuje několik známých omezení. Uveďte prosím [hlas uživatele](https://aka.ms/appprovisioningfeaturerequest) , abychom mohli lépe určit, jaká vylepšení se mají udělat dál. Pamatujte na to, že tato omezení jsou specifická pro schopnost zřizování na vyžádání. konkrétní informace o tom, jestli aplikace podporuje zřizování skupin, odstranění atd., najdete v kurzu použití aplikace. 
 
 * Aplikace Workday, AWS a SuccessFactors nepodporují zřizování na vyžádání.
 * Zřizování skupin a rolí na vyžádání se nepodporuje.
-* Zakázání nebo odstranění uživatelů a skupin se nepodporuje.
+* Zřizování na vyžádání podporuje zakázání uživatelů, kteří byli z aplikace nepřiřazeni, ale nepodporuje zakázání nebo odstranění uživatelů, kteří byli zakázáni nebo odstraněni z Azure Active Directory (uživatelé se při hledání uživatele nezobrazují).
 
 ## <a name="next-steps"></a>Další kroky
 

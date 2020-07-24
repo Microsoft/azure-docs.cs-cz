@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 83f7f16d8406744a10451e8d488b7719845c525d
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: b2509539551b3991690e6d0313e069ae015eb892
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135936"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052411"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>Nastavení vývojářů aplikací řízených distribucí (ADCD) v IBM zD&T V1
 
@@ -27,7 +27,7 @@ V tomto článku se dozvíte, jak nastavit instanci ADCD v prostředí zD&T v Az
 
 Podobně jako zD&T je ADCDs k dispozici pouze pro zákazníky a partnery IBM a slouží výhradně pro účely vývoje a testování. Nepoužívají se pro produkční prostředí. K dispozici je řada instalačních balíčků IBM ke stažení prostřednictvím [služby Passport Advantage](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.guide.adcd.doc/topics/installation_ps.html) nebo [IBM PartnerWorld](https://www.ibm.com/partnerworld/public).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -72,7 +72,7 @@ Teď, když máte balíčky, musíte je nahrát do svého virtuálního počíta
 
 2. Vyberte kartu **SSH** a potom příkaz SSH zkopírujte do schránky.
 
-3. Přihlaste se k VIRTUÁLNÍmu počítači pomocí vašich přihlašovacích údajů a [klienta ssh](/azure/virtual-machines/linux/use-remote-desktop) podle volby. Tato ukázka používá rozšíření pro Linux pro Windows 10, které přidává prostředí bash do příkazového řádku Windows. Pro výstupy funguje stejně taky.
+3. Přihlaste se k VIRTUÁLNÍmu počítači pomocí vašich přihlašovacích údajů a [klienta ssh](../../../linux/use-remote-desktop.md) podle volby. Tato ukázka používá rozšíření pro Linux pro Windows 10, které přidává prostředí bash do příkazového řádku Windows. Pro výstupy funguje stejně taky.
 
 4. Po přihlášení vytvořte adresář pro nahrání balíčků IBM. Mějte na paměti, že Linux rozlišuje velká a malá písmena. Například Tato ukázka předpokládá, že balíčky jsou nahrány do:
 
@@ -184,13 +184,13 @@ Image se teď může nasadit a je připravená k připojení emulátoru terminá
 > [!NOTE]
 > Pokud se zobrazí chyba s informací, že nemáte dostatek místa na disku, je třeba si uvědomit, že oblast vyžaduje 151 GB.
 
-Gratulujeme! Nyní používáte sálové prostředí IBM v Azure.
+Blahopřejeme! Nyní používáte sálové prostředí IBM v Azure.
 
 ## <a name="learn-more"></a>Další informace
 
-- [Migrace sálového počítače: mýty a fakta](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
-- [IBM DB2 pureScale v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/ibm-db2-purescale-azure)
-- [Řešení potíží](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
+- [Migrace sálového počítače: mýty a fakta](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
+- [IBM DB2 pureScale v Azure](../../../linux/ibm-db2-purescale-azure.md)
+- [Řešení potíží](../../../troubleshooting/index.yml)
 - [Migrace Demystifying z sálového počítače do Azure](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->

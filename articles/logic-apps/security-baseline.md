@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d27abfda789a9bb1bd5479b059355703388333f8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1e547cf3f08e49ce707cd079778588fb6be5acb5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520642"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048423"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>Základní hodnoty zabezpečení Azure pro Logic Apps
 
@@ -643,7 +643,7 @@ Společnost Microsoft spravuje základní infrastrukturu pro Azure Logic Apps a 
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte řízení přístupu na základě role
 
-**Doprovodné**materiály: můžete povolit pouze konkrétní uživatele nebo skupiny, aby mohli spouštět konkrétní úkoly, jako je správa, úpravy a zobrazení Logic Apps. K řízení jejich oprávnění použijte Access Control na základě rolí Azure (RBAC), abyste členům v předplatném Azure mohli přiřadit přizpůsobené nebo předdefinované role:
+**Doprovodné**materiály: můžete povolit pouze konkrétní uživatele nebo skupiny, aby mohli spouštět konkrétní úkoly, jako je správa, úpravy a zobrazení Logic Apps. Pokud chcete řídit svá oprávnění, použijte řízení přístupu na základě role Azure (Azure RBAC), abyste členům v rámci předplatného Azure mohli přiřadit přizpůsobené nebo předdefinované role:
 - Přispěvatel aplikace logiky: umožňuje spravovat Logic Apps, ale nemůžete pro ně měnit přístup.
 - Operátor aplikace logiky: umožňuje číst, povolit a zakázat Logic Apps, ale nemůžete je upravovat ani aktualizovat.
 

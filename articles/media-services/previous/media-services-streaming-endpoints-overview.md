@@ -14,20 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 95d8d819aa1b418b4a7ec736cef64cb989f7e37b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbd460b584789aa7d40de9ba6430ff6202c3764b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74885615"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052514"
 ---
 # <a name="streaming-endpoints-overview"></a>Přehled koncových bodů streamování  
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 
 V Microsoft Azure Media Services (AMS) **koncový bod streamování** představuje službu streamování, která může doručovat obsah přímo do klientské aplikace přehrávače nebo do Content DELIVERY Network (CDN) pro další distribuci. Media Services také poskytuje bezproblémovou integraci Azure CDN. Odchozí datový proud ze služby StreamingEndpoint může být živý datový proud, video na vyžádání nebo progresivní stažení assetu ve vašem účtu Media Services. Každý účet Azure Media Services obsahuje výchozí StreamingEndpoint. V rámci účtu se dají vytvořit další starají. Existují dvě verze starají, 1,0 a 2,0. Od desátého ledna 2017 budou všechny nově vytvořené účty AMS zahrnovat **výchozí** StreamingEndpoint verze 2,0. Další koncové body streamování, které přidáte do tohoto účtu, budou mít také verzi 2,0. Tato změna nebude mít vliv na stávající účty; stávající starají bude verze 1,0 a bude možné ji upgradovat na verzi 2,0. Tato změna bude mít za způsob změny chování, fakturace a funkcí (Další informace najdete v části **typy a verze streamování** ).
 
-Azure Media Services do entity koncového bodu streamování se přidaly následující vlastnosti: **CdnProvider**, **CdnProfile**, **StreamingEndpointVersion**. Podrobný přehled těchto vlastností najdete v [tomto](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)tématu. 
+Azure Media Services do entity koncového bodu streamování se přidaly následující vlastnosti: **CdnProvider**, **CdnProfile**, **StreamingEndpointVersion**. Podrobný přehled těchto vlastností najdete v [tomto](/rest/api/media/operations/streamingendpoint)tématu. 
 
 Když vytvoříte účet Azure Media Services výchozí koncový bod streamování Standard se vytvoří v **zastaveném** stavu. Nemůžete odstranit výchozí koncový bod streamování. V závislosti na dostupnosti Azure CDN v cílové oblasti ve výchozím nastavení nově vytvořený výchozí koncový bod streamování zahrnuje taky integraci poskytovatele CDN "StandardVerizon". 
                 
@@ -49,7 +50,7 @@ Pro všechny další koncové body:`{EndpointName}-{AccountName}.streaming.media
 Od verze Media Services od ledna 2017 jsou k dispozici dva typy streamování: **Standard** (Preview) a **Premium**. Tyto typy jsou součástí koncového bodu streamování verze "2,0".
 
 
-|Typ|Description|
+|Typ|Popis|
 |--------|--------|  
 |**Standard**|Výchozí koncový bod streamování je **standardní** typ, dá se změnit na typ Premium úpravou jednotek streamování.|
 |**Premium** |Tato možnost je vhodná pro profesionální scénáře, které vyžadují vyšší škálu nebo řízení. Přesunete se na typ **Premium** úpravou jednotek streamování.<br/>Vyhrazené koncové body streamování živě v izolovaném prostředí a nesoutěží o prostředky.|
@@ -76,7 +77,7 @@ Pokud má koncový bod streamování **verze "1,0"** >= 1 prémiové jednotky st
 
 |Typ|StreamingEndpointVersion|ScaleUnits|CDN|Fakturace|
 |--------------|----------|-----------------|-----------------|-----------------|
-|Klasický|1.0|0|NA|Free|
+|Klasický|1.0|0|Není k dispozici|Free|
 |Koncový bod streamování Standard (Preview)|2.0|0|Yes|Hrazen|
 |Jednotky streamování na úrovni Premium|1.0|> 0|Yes|Hrazen|
 |Jednotky streamování na úrovni Premium|2.0|> 0|Yes|Hrazen|
@@ -101,7 +102,7 @@ Informace o smlouvě SLA najdete v článku [ceny a smlouvy SLA](https://azure.m
 
 ## <a name="migration-between-types"></a>Migrace mezi typy
 
-From | Akce | Akce
+Z | Záměr | Akce
 ---|---|---
 Classic|Standard|Musíte se přihlásit
 Klasický|Premium| Škálování (další jednotky streamování)
@@ -121,4 +122,3 @@ Prohlédněte si mapy kurzů k Media Services.
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

@@ -9,11 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 807771fd4018c9666f059c965370ebc36d0105df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 279ba2ca5b82d7bad5b55736179f92a0146bdc84
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79456297"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048148"
 ---
 # <a name="export-data-module"></a>Exportovat datový modul
 
@@ -27,6 +28,7 @@ Tento modul podporuje export dat do následujících cloudových datových služ
 - Sdílená složka Azure
 - Azure Data Lake
 - Azure Data Lake Gen2
+- Databáze Azure SQL
 
 Před exportem dat je třeba nejprve zaregistrovat úložiště dat v pracovním prostoru Azure Machine Learning. Další informace najdete v tématu [přístup k datům ve službě Azure Storage](../how-to-access-data.md).
 

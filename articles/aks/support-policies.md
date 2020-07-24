@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: ce014fc338ebfad18b91ba65b614ca0a380a3f7c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: be80c0d5999ed06bcc505ec5737e7e416d28b981
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243847"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050692"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Zásady podpory pro službu Azure Kubernetes
 
@@ -137,7 +137,7 @@ I když se zákazníci můžou přihlásit k pracovním uzlům a měnit je, nedo
 
 ## <a name="network-ports-access-and-nsgs"></a>Síťové porty, přístup a skupin zabezpečení sítě
 
-AKS má jako spravované služby určité požadavky na síť a připojení. Tyto požadavky jsou pro normální komponenty IaaS méně flexibilní než požadavky. V AKS operace, jako je přizpůsobení pravidel NSG, blokování konkrétního portu (například pomocí pravidel brány firewall, které blokují odchozí port 443) a povolených adres URL může být váš cluster nepodporují.
+AKS má jako spravované služby určité požadavky na síť a připojení. Tyto požadavky jsou pro normální komponenty IaaS méně flexibilní než požadavky. V AKS operace, jako je přizpůsobení pravidel NSG, blokování konkrétního portu (například pomocí pravidel brány firewall, které blokují odchozí port 443) a přidávání adres URL do seznamu povolených adres může způsobit nepodporu clusteru.
 
 > [!NOTE]
 > AKS v současné době neumožňuje úplně uzamknout výstupní provoz z vašeho clusteru. Pokud chcete řídit seznam adres URL a portů, které může váš cluster používat pro odchozí přenosy, přečtěte si téma omezení odchozího [provozu](limit-egress-traffic.md).

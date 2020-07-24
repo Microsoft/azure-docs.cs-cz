@@ -13,12 +13,12 @@ metadata:
   author: Juliako
   ms.author: juliako
   ms.date: 07//2020
-  ms.openlocfilehash: 5d49173a9c06e35c5af3831e504fc6f55a8dfc50
-  ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+  ms.openlocfilehash: da549a54773365d39e3a19179acd6495a6ac1ce5
+  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/01/2020
-  ms.locfileid: "84259537"
+  ms.lasthandoff: 07/23/2020
+  ms.locfileid: "87023360"
 highlightedContent:
   items:
   - title: Informace o platformě Azure Media Services v3
@@ -52,7 +52,7 @@ conceptualContent:
     - url: ./latest/media-services-apis-overview.md
       itemType: concept
       text: Vývoj pomocí platformy Media Services v3
-    - url: https://docs.microsoft.com/samples/browse/?products=azure-media-services
+    - url: /samples/browse/?products=azure-media-services
       itemType: sample
       text: Ukázky kódů
     - url: ./latest/release-notes.md
@@ -132,4 +132,4 @@ additionalContent:
       url: https://docs.microsoft.com/azure/cdn
     - title: Event Grid
       summary: Naučte se používat Azure Event Grid k reakci na relevantní události.
-      url: https://docs.microsoft.com/azure/event-grid/
+      url: ../event-grid/index.yml

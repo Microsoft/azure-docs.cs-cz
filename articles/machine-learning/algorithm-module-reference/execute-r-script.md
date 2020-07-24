@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/27/2020
-ms.openlocfilehash: 71e1a43728cf923207d209848b26627aeb7bd680
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3559ae5c246129aa369cb49e7749e499002f1dc6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751749"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048179"
 ---
 # <a name="execute-r-script-module"></a>Spustit modul skriptu R
 
@@ -320,9 +320,8 @@ Můžete předat objekty R mezi instancemi modulu spouštění skriptu jazyka R 
 
 V současné době jsou k dispozici následující předinstalované balíčky jazyka R:
 
-|              |            | 
-|--------------|------------| 
 | Balíček      | Verze    | 
+|--------------|------------| 
 | askpass      | 1.1        | 
 | assertthat   | 0.2.1      | 
 | backports    | 1.1.4      | 

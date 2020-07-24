@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 05/19/2020
-ms.openlocfilehash: 676a0471ad4321f37cf6dd854d6d98083723f5de
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8f827d3e983a50589975eca59808bd1471fe4810
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116688"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047596"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>Přehled portálu komerčního tržiště v partnerském centru
 
@@ -28,9 +28,9 @@ Partnerským centrem je centrum zkušeností Microsoftu pro partnery. Pro organi
 
 ## <a name="migration-from-the-cloud-partner-portal"></a>Migrace z portál partnerů cloudu
 
-Partnerské centrum se vyvíjí, aby bylo možné lépe integrovat všechny aspekty našeho vztahu s vydavateli softwaru. V rámci tohoto vývoje jsme migrovali veškerou správu nabídky komerčních webů na webu Marketplace z [portál partnerů cloudu](https://cloudpartner.azure.com/) do partnerského centra.
+Partnerské centrum se vyvíjí, aby bylo možné lépe integrovat všechny aspekty našeho vztahu s vydavateli softwaru. V rámci tohoto vývoje jsme migrovali všechna komerční Správa nabídek na webu Marketplace z portál partnerů cloudu (CPP) do partnerského centra.
 
-Stávající vydavatelé, kteří dřív použili portál partnerů cloudu, najdou známé, ale vylepšené a intuitivní uživatelské prostředí s partnerským centrem. Uživatelé budou plynule přesměrováni na příslušné umístění. Tento upgrade tohoto partnerských zkušeností nebude mít na zákazníky vliv.
+Stávající vydavatelé, kteří dříve použili CPP, budou v partnerském centru Hledat známé, ale vylepšené a intuitivní uživatelské prostředí. Uživatelé budou plynule přesměrováni na příslušné umístění. Tento upgrade tohoto partnerských zkušeností nebude mít na zákazníky vliv.
 
 ### <a name="improvements-on-publishing-and-offer-management-user-experience"></a>Vylepšení publikování a řízení uživatelských prostředí pro správu
 

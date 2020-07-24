@@ -9,11 +9,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
-ms.openlocfilehash: 774d2bb58fd7dd75825be8f433f078d70c13fe8c
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 25cde21d72de49c5a4f51121f2aa4295319899ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919992"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049213"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Sestavení a nasazení aplikace Node.js ve službě Azure Cloud Service
 
@@ -30,7 +31,7 @@ Jedná se o jednoduchou aplikaci "hello world":
 
 ![A web browser displaying the Hello World web page][A web browser displaying the Hello World web page]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 > [!NOTE]
 > Tento kurz používá prostředí Azure PowerShell, které vyžaduje systém Windows.
 
@@ -85,7 +86,7 @@ http.createServer(function (req, res) {
 
 Tento kód je v podstatě stejný jako u příkladu "Hello World" na webu [nodejs.org] až na to, že používá číslo portu přiřazené cloudovému prostředí.
 
-## <a name="deploy-the-application-to-azure"></a>Nasazení aplikace v Azure
+## <a name="deploy-the-application-to-azure"></a>Nasazení aplikace do Azure
 
 > [!NOTE]
 > K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete si [aktivovat výhody předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo si [zaregistrovat bezplatný účet](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A85619ABF).
@@ -177,9 +178,9 @@ Další informace najdete ve [Středisku pro vývojáře Node.js].
 
 [Porovnání webů Azure, služby Cloud Services a služby Virtual Machines]: /azure/architecture/guide/technology-choices/compute-decision-tree
 [Použití jednoduché webové aplikace]: ../app-service/app-service-web-get-started-nodejs.md
-[Azure PowerShell]: /powershell/azureps-cmdlets-docs
+[Azure PowerShell]: /powershell/azure/
 [Azure SDK pro .NET 2.7]: https://www.microsoft.com/en-us/download/details.aspx?id=48178
-[připojení PowerShellu]: /powershell/azureps-cmdlets-docs
+[připojení PowerShellu]: /powershell/azure/
 [nodejs.org]: https://nodejs.org/
 [Přehled vytváření hostované služby pro Azure]: https://azure.microsoft.com/documentation/services/cloud-services/
 [Středisko pro vývojáře Node.js]: https://azure.microsoft.com/develop/nodejs/
