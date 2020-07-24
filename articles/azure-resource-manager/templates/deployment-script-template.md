@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/08/2020
+ms.date: 07/16/2020
 ms.author: jgao
-ms.openlocfilehash: 8906ac7a00a349e2312eb80f5e25e32292a089ab
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: fcdcf563cd88cbf6604877636432a406c1960cff
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134575"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117039"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Použití skriptů nasazení v šablonách (Preview)
 
@@ -38,7 +38,7 @@ Prostředek skriptu nasazení je k dispozici pouze v oblastech, kde je k dispozi
 > [!IMPORTANT]
 > K provádění skriptů a odstraňování potíží je potřeba účet úložiště a instance kontejneru. Máte možnost zadat existující účet úložiště, jinak se služba skriptu automaticky vytvoří účet úložiště spolu s instancí kontejneru. Tyto dva automaticky vytvořené prostředky obvykle odstraní služba skriptu, když se spuštění skriptu nasazení dostane do stavu terminálu. Budou se vám účtovat prostředky, dokud se prostředky neodstraní. Další informace najdete v tématu [vyčištění prostředků skriptů nasazení](#clean-up-deployment-script-resources).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - **Spravovaná identita přiřazená uživatelem s rolí přispěvatele do cílové skupiny prostředků**. Tato identita se používá ke spouštění skriptů nasazení. K provedení operací mimo skupinu prostředků je potřeba udělit další oprávnění. Například pokud chcete vytvořit novou skupinu prostředků, přiřaďte identitu k úrovni předplatného.
 
@@ -263,7 +263,7 @@ K provádění skriptů a odstraňování potíží je potřeba účet úložiš
 
 - Podporované typy účtů úložiště:
 
-    | SKU             | Podporovaný druh     |
+    | Skladová položka             | Podporovaný druh     |
     |-----------------|--------------------|
     | Premium_LRS     | Úložiště        |
     | Premium_ZRS     | Úložiště        |
@@ -335,7 +335,7 @@ Na stránce Přehled se zobrazí některé důležité informace o prostředku, 
 
 V nabídce vlevo můžete zobrazit obsah skriptu nasazení, argumenty předané skriptu a výstup.  Můžete také exportovat šablonu pro skript nasazení, včetně skriptu nasazení.
 
-### <a name="use-powershell"></a>Použití prostředí PowerShell
+### <a name="use-powershell"></a>Použití PowerShellu
 
 Pomocí Azure PowerShell můžete spravovat skripty nasazení v rámci předplatného nebo oboru skupiny prostředků:
 
@@ -600,6 +600,34 @@ Také je nutné nakonfigurovat sdílení souborů pro připojení adresáře, kt
     ![Správce prostředků skript nasazení skriptu Docker cmd](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
 
 Po úspěšném otestování skriptu ho můžete použít jako skript nasazení v šablonách.
+
+## <a name="deployment-script-error-codes"></a>Kódy chyb skriptu nasazení
+
+| Kód chyby | Popis |
+|------------|-------------|
+| DeploymentScriptInvalidOperation | Definice prostředku skriptu nasazení v šabloně obsahuje neplatné názvy vlastností. |
+| DeploymentScriptResourceConflict | Nelze odstranit prostředek skriptu nasazení, který je v neterminálu, a provádění nepřekročilo 1 hodinu. Nebo nemůže znovu spustit stejný skript nasazení se stejným identifikátorem prostředku (stejné předplatné, název skupiny prostředků a název prostředku), ale současně i s různým obsahem textu skriptu. |
+| DeploymentScriptOperationFailed | Operace skriptu nasazení se nezdařila interně. Obraťte se prosím na podporu Microsoftu. |
+| DeploymentScriptStorageAccountAccessKeyNotSpecified | Přístupový klíč nebyl zadaný pro existující účet úložiště.|
+| DeploymentScriptContainerGroupContainsInvalidContainers | Skupina kontejnerů vytvořená službou skriptu nasazení se externě změnila a přidaly se neplatné kontejnery. |
+| DeploymentScriptContainerGroupInNonterminalState | Dva nebo víc prostředků skriptu nasazení používá stejný název instance kontejneru Azure ve stejné skupině prostředků a jedna z nich ještě nedokončila své provádění. |
+| DeploymentScriptStorageAccountInvalidKind | Existující účet úložiště typu BlobBlobStorage nebo BlobStorage nepodporuje sdílené složky a nedá se použít. |
+| DeploymentScriptStorageAccountInvalidKindAndSku | Existující účet úložiště nepodporuje sdílení souborů. Seznam podporovaných typů účtů úložiště najdete v tématu [použití existujícího účtu úložiště](#use-existing-storage-account). |
+| DeploymentScriptStorageAccountNotFound | Účet úložiště neexistuje nebo byl odstraněn externím procesem nebo nástrojem. |
+| DeploymentScriptStorageAccountWithServiceEndpointEnabled | Zadaný účet úložiště má koncový bod služby. Účet úložiště s koncovým bodem služby se nepodporuje. |
+| DeploymentScriptStorageAccountInvalidAccessKey | Pro existující účet úložiště je zadaný neplatný přístupový klíč. |
+| DeploymentScriptStorageAccountInvalidAccessKeyFormat | Neplatný formát klíče účtu úložiště Viz [Správa přístupových klíčů účtu úložiště](../../storage/common/storage-account-keys-manage.md). |
+| DeploymentScriptExceededMaxAllowedTime | Doba spuštění skriptu nasazení překročila hodnotu časového limitu zadanou v definici prostředku skriptu nasazení. |
+| DeploymentScriptInvalidOutputs | Výstupy skriptu nasazení nejsou platným objektem JSON. |
+| DeploymentScriptContainerInstancesServiceLoginFailure | Uživatelem přiřazená identita se nemohla přihlásit po deseti pokusech o 1 minutový interval. |
+| DeploymentScriptContainerGroupNotFound | Skupina kontejnerů vytvořená službou skriptu nasazení byla odstraněna externím nástrojem nebo procesem. |
+| DeploymentScriptDownloadFailure | Nepovedlo se stáhnout podpůrný skript. Viz [použití podpůrného skriptu](#use-supporting-scripts).|
+| DeploymentScriptError | V uživatelském skriptu došlo k chybě. |
+| DeploymentScriptBootstrapScriptExecutionFailed | Spouštěcí skript vrátil chybu. Spouštěcí skript je systémový skript, který orchestruje spuštění skriptu nasazení. |
+| DeploymentScriptExecutionFailed | Během provádění skriptu nasazení došlo k neznámé chybě. |
+| DeploymentScriptContainerInstancesServiceUnavailable | Při vytváření instance kontejneru Azure (ACI) ACI vyvolala chybu nedostupné služby. |
+| DeploymentScriptContainerGroupInNonterminalState | Při vytváření instance kontejneru Azure (ACI) používá jiný skript nasazení stejný ACI název ve stejném oboru (stejné předplatné, název skupiny prostředků a název prostředku). |
+| DeploymentScriptContainerGroupNameInvalid | Zadaný název instance kontejneru Azure (ACI) nesplňuje požadavky ACI. Přečtěte si téma [řešení běžných potíží v Azure Container Instances](../../container-instances/container-instances-troubleshooting.md#issues-during-container-group-deployment).|
 
 ## <a name="next-steps"></a>Další kroky
 

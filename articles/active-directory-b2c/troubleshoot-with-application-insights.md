@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 11/04/2019
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fad29c32731ee2470354a51acf32e350eb0c4cfc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b5bc3f87296ea1af5de28178df6d8f27c965476
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85384868"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116079"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Shromažďovat protokoly Azure Active Directory B2C pomocí Application Insights
 
@@ -31,7 +32,7 @@ Podrobné protokoly aktivit popsané tady by měly být povolené **jenom** běh
 
 Pokud ho ještě nemáte, vytvořte v předplatném instanci Application Insights.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vaše předplatné Azure (ne váš Azure AD B2C adresář).
 1. V navigační nabídce vlevo vyberte **vytvořit prostředek** .
 1. Vyhledejte a vyberte **Application Insights**a pak vyberte **vytvořit**.
@@ -93,7 +94,7 @@ Předtím, než budete moci zobrazit nové protokoly v Application Insights, exi
 
 Tady je seznam dotazů, které můžete použít k zobrazení protokolů:
 
-| Dotaz | Description |
+| Dotaz | Popis |
 |---------------------|--------------------|
 `traces` | Zobrazit všechny protokoly vygenerované Azure AD B2C |
 `traces | where timestamp > ago(1d)` | Zobrazit všechny protokoly vygenerované Azure AD B2C za poslední den

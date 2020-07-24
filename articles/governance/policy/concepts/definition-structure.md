@@ -3,12 +3,12 @@ title: Podrobnosti struktury definice zásad
 description: Popisuje způsob, jakým se používají definice zásad k navázání konvencí pro prostředky Azure ve vaší organizaci.
 ms.date: 06/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 28f4e3a99b7241711e46ce92fdfd2d7689b4527b
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 87cdca414a04d287f02fec5b3510c4f561cab8c0
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971109"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116993"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -22,7 +22,7 @@ Schéma definice zásad najdete tady:[https://schema.management.azure.com/schema
 K vytvoření definice zásady použijete JSON. Definice zásad obsahuje prvky pro:
 
 - zobrazované jméno
-- description
+- Popis
 - režim
 - zprostředkovatele identity
 - parameters
@@ -186,7 +186,7 @@ Tento příklad odkazuje na parametr **allowedLocations** , který byl prokázá
 
 ### <a name="strongtype"></a>strongType
 
-V rámci `metadata` vlastnosti můžete použít **strongType** k poskytnutí seznamu možností s vícenásobným výběrem v rámci Azure Portal. **strongType** může být podporovaný _typ prostředku_ nebo povolená hodnota. Chcete-li zjistit, zda je _typ prostředku_ platný pro **strongType**, použijte [příkaz Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider).
+V rámci `metadata` vlastnosti můžete použít **strongType** k poskytnutí seznamu možností s vícenásobným výběrem v rámci Azure Portal. **strongType** může být podporovaný _typ prostředku_ nebo povolená hodnota. Chcete-li zjistit, zda je _typ prostředku_ platný pro **strongType**, použijte [příkaz Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider). Formát pro _typ prostředku_ **strongType** je `<Resource Provider>/<Resource Type>` . Například, `Microsoft.Network/virtualNetworks/subnets`.
 
 Některé _typy prostředků_ , které nejsou vraceny **Get-AzResourceProvider** , jsou podporovány. Jsou to tyto:
 
@@ -287,7 +287,7 @@ Při použití podmínek **Match** a **notMatch** zadejte, `#` aby odpovídaly �
 
 V hodnotě pole ** \[ \* \] alias** pole je každý prvek v poli vyhodnocen individuálně pomocí logických prvků **a** mezi prvky. Další informace najdete v tématu [vyhodnocení \[ \* \] aliasu](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
 
-### <a name="fields"></a>Fields (Pole)
+### <a name="fields"></a>Pole
 
 Podmínky jsou tvořeny pomocí polí. Pole odpovídá vlastnostem v datové části požadavku prostředku a popisuje stav prostředku.
 
@@ -430,7 +430,7 @@ Místo toho použijte funkci [if ()](../../../azure-resource-manager/templates/t
 
 S revidovaným pravidlem zásad `if()` před tím, než **name** se pokusíte získat `substring()` hodnotu s méně než třemi znaky, zkontroluje délku názvu. Pokud je **název** příliš krátký, je místo toho vrácena hodnota "nezačíná na ABC" a porovnána s **ABC**. Prostředek s krátkým názvem, který nezačíná na **ABC** , se stále neúspěšně stane pravidlem zásad, ale během vyhodnocování se nestane příčinou chyby.
 
-### <a name="count"></a>Počet
+### <a name="count"></a>Count
 
 Podmínky, které počítají, kolik členů pole v datové části prostředků, které odpovídají výrazu podmínky, mohou být tvořeny pomocí výrazu **Count** . Běžné scénáře kontrolují, jestli alespoň jedno z ', ' přesně jedno z ', ' vše z ' nebo ' žádné z ', které členové pole splní. funkce **Count** vyhodnocuje každého člena pole [ \[ \* \] aliasu](#understanding-the--alias) pro výraz podmínky a sečte _skutečný_ výsledek, který je pak porovnán s operátorem výrazu. Výrazy **Count** můžou být do jedné definice **policyRule** přidány až třikrát.
 
@@ -513,37 +513,7 @@ Příklad 4: Ověřte, že všechny členy pole objektů splňují výraz podmí
 }
 ```
 
-Příklad 5: Ověřte, že všechny členy pole řetězců splňují výraz podmínky.
-
-```json
-{
-    "count": {
-        "field": "Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]",
-        "where": {
-            "field": "Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]",
-            "like": "*@contoso.com"
-        }
-    },
-    "equals": "[length(field('Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]'))]"
-}
-```
-
-Příklad 6: použití **pole** uvnitř **hodnoty** ke kontrole, že všichni členové pole splňují výraz podmínky
-
-```json
-{
-    "count": {
-        "field": "Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]",
-        "where": {
-            "value": "[last(split(first(field('Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]')), '@'))]",
-            "equals": "contoso.com"
-        }
-    },
-    "equals": "[length(field('Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]'))]"
-}
-```
-
-Příklad 7: Ověřte, že aspoň jeden člen pole odpovídá více vlastnostem ve výrazu podmínky.
+Příklad 5: Ověřte, že aspoň jeden člen pole odpovídá více vlastnostem ve výrazu podmínky.
 
 ```json
 {
@@ -570,7 +540,7 @@ Příklad 7: Ověřte, že aspoň jeden člen pole odpovídá více vlastnostem 
 }
 ```
 
-### <a name="effect"></a>Efekt
+### <a name="effect"></a>Účinek
 
 Azure Policy podporuje následující typy účinku:
 

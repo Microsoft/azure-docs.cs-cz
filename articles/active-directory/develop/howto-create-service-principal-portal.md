@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 12389484f63d35eb31b38d5067061dc99b7284f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 479222cc9b67775d359182740dc78865da8cee38
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505983"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87115920"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Postup: Vytvoření aplikace Azure AD a instančního objektu s přístupem k prostředkům pomocí portálu
 
@@ -29,7 +29,7 @@ V tomto článku se dozvíte, jak pomocí portálu vytvořit instanční objekt 
 > Místo Vytvoření instančního objektu zvažte použití spravovaných identit pro prostředky Azure pro vaši identitu aplikace. Pokud váš kód běží na službě, která podporuje spravované identity a přistupuje k prostředkům, které podporují ověřování Azure AD, jsou spravované identity lepší volbou pro vás. Další informace o spravovaných identitách pro prostředky Azure, včetně toho, které služby v současnosti podporují, najdete v tématu [co jsou spravované identity pro prostředky Azure?](../managed-identities-azure-resources/overview.md).
 
 ## <a name="app-registration-app-objects-and-service-principals"></a>Registrace aplikace, objekty aplikace a instanční objekty
-Neexistuje žádný způsob, jak přímo vytvořit instanční objekt pomocí Azure Portal.  Když zaregistrujete aplikaci prostřednictvím Azure Portal, objekt aplikace a instanční objekt automaticky vytvoří váš domovský adresář nebo tenant.  Další informace o vztahu mezi registrací aplikace, objekty aplikace a instančními objekty najdete v tématu o tom, jak číst [aplikace a objekty zabezpečení služby v Azure Active Directory](app-objects-and-service-principals.md).
+Neexistuje žádný způsob, jak přímo vytvořit instanční objekt pomocí Azure Portal.  Když zaregistrujete aplikaci prostřednictvím Azure Portal, objekt aplikace a instanční objekt se automaticky vytvoří v domovském adresáři nebo tenantovi.  Další informace o vztahu mezi registrací aplikace, objekty aplikace a instančními objekty najdete v tématu o tom, jak číst [aplikace a objekty zabezpečení služby v Azure Active Directory](app-objects-and-service-principals.md).
 
 ## <a name="permissions-required-for-registering-an-app"></a>Oprávnění vyžadovaná k registraci aplikace
 
@@ -55,7 +55,7 @@ Ověření oprávnění k předplatnému:
 
 1. Vyhledejte a vyberte **předplatná**nebo vyberte **předplatná** na **domovské** stránce.
 
-   ![Search](./media/howto-create-service-principal-portal/select-subscription.png)
+   ![Hledat](./media/howto-create-service-principal-portal/select-subscription.png)
 
 1. Vyberte předplatné, ve kterém chcete vytvořit instanční objekt.
 
@@ -159,7 +159,7 @@ Postup nahrání certifikátu:
 
     ![Vyberte nahrát certifikát a vyberte ten, který chcete přidat.](./media/howto-create-service-principal-portal/upload-cert.png)
 
-1. Vyberte možnost **Přidat**.
+1. Vyberte **Přidat**.
 
 Po registraci certifikátu ve vaší aplikaci na portálu pro registraci aplikací je nutné povolit klientský kód aplikace pro použití certifikátu.
 
@@ -178,7 +178,7 @@ Pokud se rozhodnete nepoužívat certifikát, můžete vytvořit nový tajný kl
    ![Zkopírujte tajnou hodnotu, protože ji nemůžete později načíst.](./media/howto-create-service-principal-portal/copy-secret.png)
 
 ## <a name="configure-access-policies-on-resources"></a>Konfigurace zásad přístupu pro prostředky
-Mějte na paměti, že možná budete muset pro prostředky, ke kterým aplikace potřebuje přístup, nakonfigurovat oprávnění k přidání. Například je třeba [aktualizovat zásady přístupu trezoru klíčů](/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies) , aby vaše aplikace měla přístup k klíčům, tajným klíčům nebo certifikátům.  
+Mějte na paměti, že možná budete muset nakonfigurovat další oprávnění k prostředkům, které vaše aplikace potřebuje k přístupu. Například je třeba [aktualizovat zásady přístupu trezoru klíčů](/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies) , aby vaše aplikace měla přístup k klíčům, tajným klíčům nebo certifikátům.  
 
 1. V [Azure Portal](https://portal.azure.com)přejděte do svého trezoru klíčů a vyberte **zásady přístupu**.  
 1. Vyberte **Přidat zásady přístupu**a pak vyberte klíčová, tajná a oprávnění certifikátů, která chcete aplikaci udělit.  Vyberte objekt služby, který jste předtím vytvořili.

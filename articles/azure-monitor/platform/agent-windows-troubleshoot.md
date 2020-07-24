@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 4112555347ce1d718375fbab3f166c6f2f5deeaa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 338fdcb6ee2ebad98972bead7e16c9bc5944f2b3
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80333506"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117067"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Řešení potíží s agentem Log Analytics pro Windows 
 
@@ -34,11 +34,12 @@ Ověřte, že je brána firewall nebo proxy server nakonfigurovaná tak, aby pov
 
 |Prostředek agenta|Porty |Směr |Obejít kontrolu protokolu HTTPS|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Port 443 |Odchozí|Ano |  
-|*.oms.opinsights.azure.com |Port 443 |Odchozí|Ano |  
-|*.blob.core.windows.net |Port 443 |Odchozí|Ano |  
+|*.ods.opinsights.azure.com |Port 443 |Odchozí|Yes |  
+|*.oms.opinsights.azure.com |Port 443 |Odchozí|Yes |  
+|*.blob.core.windows.net |Port 443 |Odchozí|Yes |  
+|*. agentsvc.azure-automation.net |Port 443 |Odchozí|Yes |  
 
-Informace o bráně firewall požadované pro Azure Government najdete v tématu [správa Azure Government](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs). Pokud plánujete použít Azure Automation Hybrid Runbook Worker k připojení a registraci ve službě Automation pro použití sad Runbook nebo řešení správy ve vašem prostředí, musí mít přístup k číslu portu a adresám URL popsaným v tématu [Konfigurace sítě pro Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md#network-planning). 
+Informace o bráně firewall požadované pro Azure Government najdete v tématu [správa Azure Government](../../azure-government/compare-azure-government-global-azure.md#azure-monitor-logs). Pokud plánujete použít Azure Automation Hybrid Runbook Worker k připojení a registraci ve službě Automation pro použití sad Runbook nebo řešení správy ve vašem prostředí, musí mít přístup k číslu portu a adresám URL popsaným v tématu [Konfigurace sítě pro Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md#network-planning). 
 
 Existuje několik způsobů, jak můžete ověřit, zda agent úspěšně komunikuje s Azure Monitor.
 
@@ -103,4 +104,3 @@ Pokud dotaz vrátí výsledky, je nutné určit, zda určitý datový typ není 
     |8000 |HealthService |Tato událost určí, jestli pracovní postup související s výkonem, událostí nebo jiným shromážděným datovým typem nemůže přesílat službě k ingestování do pracovního prostoru. | Událost s ID 2136 ze zdrojového HealthService je zapsána spolu s touto událostí a může značit, že Agent nemůže komunikovat se službou, pravděpodobně kvůli nepatřičné konfiguraci proxy serveru a nastavení ověřování, výpadku sítě nebo síťové brány firewall/proxy serveru nepovoluje provoz TCP z počítače do služby.| 
     |10102 a 10103 |Moduly Health Service |Pracovní postup nemohl vyřešit zdroj dat. |Tato situace může nastat, pokud zadaný čítač výkonu nebo instance v počítači neexistují nebo jsou nesprávně definovány v nastavení dat pracovního prostoru. Pokud se jedná o [čítač výkonu](data-sources-performance-counters.md#configuring-performance-counters)zadaný uživatelem, ověřte, že zadané informace jsou následující ve správném formátu a existují v cílových počítačích. |
     |26002 |Moduly Health Service |Pracovní postup nemohl vyřešit zdroj dat. |Tato situace může nastat, pokud zadaný protokol událostí systému Windows v počítači neexistuje. Tuto chybu můžete bezpečně ignorovat, pokud se neočekává, že bude tento protokol událostí zaregistrován, jinak pokud se jedná o [protokol událostí](data-sources-windows-events.md#configuring-windows-event-logs)zadaný uživatelem, ověřte, jestli jsou zadané informace správné. |
-

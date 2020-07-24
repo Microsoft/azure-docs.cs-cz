@@ -3,14 +3,14 @@ title: Geografická replikace registru
 description: Začněte vytvářet a spravovat geograficky replikovaný registr kontejnerů Azure, což umožňuje, aby registr poskytoval více oblastí s více hlavními místními replikami. Geografická replikace je funkcí úrovně Premium Service.
 author: stevelas
 ms.topic: article
-ms.date: 05/11/2020
+ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: 315de5151547c4339255639cb65d1be30f7213ff
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b5d016574fd85047ec349820a747b47d0582958b
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247128"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116796"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geografická replikace v Azure Container Registry
 
@@ -95,7 +95,7 @@ ACR zahájí synchronizaci imagí napříč nakonfigurovanými replikami. Po dok
 * Když nahrajete nebo vyžádáte image z geograficky replikovaného registru, Azure Traffic Manager na pozadí pošle požadavek do registru v oblasti, která je nejblíže vaší latenci v síti.
 * Po nahrání obrázku nebo aktualizace značky do nejbližší oblasti trvá Azure Container Registry pro replikaci manifestů a vrstev do zbývajících oblastí, do kterých jste se přihlásili. Větším imagí trvá replikace déle než menší. Image a značky jsou synchronizované v rámci replikačních oblastí s konečným modelem konzistence.
 * Chcete-li spravovat pracovní postupy, které jsou závislé na nabízených aktualizacích do geograficky replikovaného registru, doporučujeme nakonfigurovat [Webhooky](container-registry-webhook.md) , aby reagovaly na nabízené události. Můžete nastavit regionální Webhooky v rámci geograficky replikovaného registru a sledovat tak nabízené události, které se dokončí napříč geograficky replikovanými oblastmi.
-* Pro poskytování objektů blob, které představují vrstvy obsahu, Azure Container Registry používá koncové body dat. V každé z geograficky replikovaných oblastí v registru můžete povolit [vyhrazené koncové body dat](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) pro váš registr. Tyto koncové body umožňují konfiguraci přísně vymezených pravidel přístupu brány firewall.
+* Pro poskytování objektů blob, které představují vrstvy obsahu, Azure Container Registry používá koncové body dat. V každé z geograficky replikovaných oblastí v registru můžete povolit [vyhrazené koncové body dat](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) pro váš registr. Tyto koncové body umožňují konfiguraci přísně vymezených pravidel přístupu brány firewall. Pro účely řešení potíží můžete volitelně [zakázat směrování na replikaci](#temporarily-disable-routing-to-replication) při zachování replikovaných dat.
 * Pokud nakonfigurujete [privátní odkaz](container-registry-private-link.md) pro váš registr pomocí privátních koncových bodů ve virtuální síti, budou ve výchozím nastavení povoleny vyhrazené koncové body dat v každé z geograficky replikovaných oblastí. 
 
 ## <a name="delete-a-replica"></a>Odstranění repliky
@@ -127,9 +127,36 @@ Pokud k tomuto problému dojde, jedním z řešení je použít mezipaměť DNS 
 
 K optimalizaci překladu DNS na nejbližší replice při vkládání imagí nakonfigurujete geograficky replikovaný registr ve stejných oblastech Azure jako zdroj nabízených operací nebo nejbližší oblast při práci mimo Azure.
 
+### <a name="temporarily-disable-routing-to-replication"></a>Dočasné zakázání směrování do replikace
+
+Pokud chcete řešit potíže s geograficky replikovaným registrem, můžete chtít dočasně zakázat Traffic Manager směrování do jedné nebo více replikací. Počínaje verzí 2,8 Azure CLI můžete nakonfigurovat `--region-endpoint-enabled` možnost (Preview) při vytváření nebo aktualizaci replikované oblasti. Když nastavíte `--region-endpoint-enabled` možnost replikace na `false` , Traffic Manager už do této oblasti směrovat žádosti Docker push nebo Pull. Ve výchozím nastavení je směrování na všechny replikace povolené a synchronizace dat mezi všemi replikacemi probíhá, ať už je směrování povolené nebo zakázané.
+
+Pokud chcete zakázat směrování do existující replikace, nejdřív spusťte příkaz [AZ ACR Replication list][az-acr-replication-list] a seznamte se s replikacemi v registru. Pak spusťte příkaz [AZ ACR replikace Update][az-acr-replication-update] a nastavte `--region-endpoint-enabled false` pro konkrétní replikaci. Například ke konfiguraci nastavení pro *westus* replikace v *myregistry*:
+
+```azurecli
+# Show names of existing replications
+az acr replication list --registry --output table
+
+# Disable routing to replication
+az acr replication update update --name westus \
+  --registry myregistry --resource-group MyResourceGroup \
+  --region-endpoint-enabled false
+```
+
+Postup obnovení směrování do replikace:
+
+```azurecli
+az acr replication update update --name westus \
+  --registry myregistry --resource-group MyResourceGroup \
+  --region-endpoint-enabled true
+```
+
 ## <a name="next-steps"></a>Další kroky
 
 Podívejte se na tři části kurzu, [geografickou replikaci v Azure Container Registry](container-registry-tutorial-prepare-registry.md). Projděte si vytvoření geograficky replikovaného registru, vytvoření kontejneru a jeho nasazení s jediným `docker push` příkazem pro více oblastí Web Apps pro instance kontejnerů.
 
 > [!div class="nextstepaction"]
 > [Geografická replikace v Azure Container Registry](container-registry-tutorial-prepare-registry.md)
+
+[az-acr-replication-list]: /cli/azure/acr/replication#az-acr-replication-list
+[az-acr-replication-update]: /cli/azure/acr/replication#az-acr-replication-update

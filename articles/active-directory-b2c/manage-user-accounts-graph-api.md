@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 03/16/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5b7eea37cbd926046c6b923b003cd47e0a0c2b0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54b4292c74f7737f1c392d601627eb3e0ff48812
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85387622"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116203"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Správa Azure AD B2C uživatelských účtů pomocí Microsoft Graph
 
@@ -59,7 +60,7 @@ Uživatel s účtem zákazníka se může přihlásit s více identitami. Např�
 
 V rozhraní Microsoft Graph API jsou místní i federované identity uloženy v `identities` atributu uživatele, který je typu [objectIdentity][graph-objectIdentity]. `identities`Kolekce představuje sadu identit, které se používají pro přihlášení k uživatelskému účtu. Tato kolekce umožňuje uživateli přihlásit se k uživatelskému účtu pomocí kterékoli z jeho přidružených identit.
 
-| Vlastnost   | Typ |Description|
+| Vlastnost   | Typ |Popis|
 |:---------------|:--------|:----------|
 |signInType|řetězec| Určuje typy přihlašování uživatelů v adresáři. Pro místní účet: `emailAddress` , `emailAddress1` , `emailAddress2` , `emailAddress3` , `userName` nebo jakýkoli jiný typ, který chcete. Účet sociálních sítí musí být nastavený na `federated` .|
 |issuer|řetězec|Určuje vystavitele identity. U místních účtů (kde **signInType** není `federated` ) Tato vlastnost je výchozí název domény místního B2C tenanta, například `contoso.onmicrosoft.com` . Pro sociální identity (kde **signInType** je `federated` ) hodnota je název vystavitele, například`facebook.com`|

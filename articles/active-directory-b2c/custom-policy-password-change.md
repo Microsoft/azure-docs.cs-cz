@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 12/13/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c159e78d0aa065b53b1164e01309e770302fb1ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6faf9fb3d15709d3897db9a77bf14ebf238e8fbf
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389016"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116371"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurace změny hesla pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ ms.locfileid: "85389016"
 
 V Azure Active Directory B2C (Azure AD B2C) můžete uživatelům, kteří jsou přihlášení pomocí místního účtu, povolit změnu hesla, aniž by museli dokázat ověření pomocí e-mailu. Pokud platnost relace vyprší až do doby, kdy uživatel získá tok změny hesla, zobrazí se výzva k opětovnému přihlášení. V tomto článku se dozvíte, jak nakonfigurovat změnu hesla ve [vlastních zásadách](custom-policy-overview.md). Pro toky uživatelů je také možné nakonfigurovat [Samoobslužné resetování hesla](user-flow-self-service-password-reset.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Proveďte kroky v části Začínáme [s vlastními zásadami v Active Directory B2C](custom-policy-get-started.md).
 
@@ -65,6 +65,7 @@ Proveďte kroky v části Začínáme [s vlastními zásadami v Active Directory
               <Item Key="response_types">id_token</Item>
               <Item Key="response_mode">query</Item>
               <Item Key="scope">email openid</Item>
+              <Item Key="grant_type">password</Item>
               <Item Key="UsePolicyInRedirectUri">false</Item>
               <Item Key="HttpBinding">POST</Item>
               <Item Key="client_id">ProxyIdentityExperienceFrameworkAppId</Item>
@@ -165,7 +166,7 @@ Při testování aplikací v Azure AD B2C může být užitečné, aby byl token
 
 ### <a name="upload-the-files"></a>Nahrání souborů
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com/).
 2. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
 3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **architekturu prostředí identity**.
