@@ -15,11 +15,12 @@ ms.workload: infrastructure
 ms.date: 01/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 01ce1599f86082aef3ff53d298cc53896074af66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7aa71062c86d57cabe8579e13011956137804f74
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76277593"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079787"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>Skupiny umístění v blízkosti Azure pro optimální latenci sítě s aplikacemi SAP
 Aplikace SAP založené na architektuře SAP NetWeaver nebo SAP S/4HANA jsou citlivé na latenci sítě mezi aplikační vrstvou SAP a databázovou vrstvou SAP. Tato citlivost je výsledkem většiny obchodních logiky spuštěných v aplikační vrstvě. Vzhledem k tomu, že aplikační vrstva SAP spouští obchodní logiku, vydává dotazy do databázové vrstvy s vysokou frekvencí v poměru tisíc nebo desítky tisíců za sekundu. Ve většině případů je povaha těchto dotazů jednoduchá. Je často možné je spouštět na úrovni databáze za 500 mikrosekund nebo méně.
@@ -28,7 +29,7 @@ Aplikace SAP založené na architektuře SAP NetWeaver nebo SAP S/4HANA jsou cit
 
 V mnoha oblastech Azure se dosáhlo množství datových center. Tento nárůst se aktivoval také zavedením Zóny dostupnosti. Zákazníci, zvláště pro systémy s vysokým využitím SAP, navíc používají více speciálních SKU virtuálních počítačů ve skupině M-Series nebo ve velkých instancích HANA. Tyto typy virtuálních počítačů Azure nejsou dostupné ve všech datacentrech v konkrétní oblasti Azure. Z důvodu těchto dvou Tendencies zákazníci narazili na latenci sítě, která není v optimálním rozsahu. V některých případech tato latence vede k zajištění optimálního výkonu svých systémů SAP.
 
-Aby se tyto problémy předešly, Azure nabízí [skupiny umístění pro Proximity](https://docs.microsoft.com/azure/virtual-machines/linux/co-location). Tato nová funkce se už použila k nasazení různých systémů SAP. Omezení pro skupiny umístění blízkosti najdete v článku na začátku tohoto odstavce. Tento článek se zabývá scénáři SAP, ve kterých se můžou používat skupiny umístění v blízkosti Azure.
+Aby se tyto problémy předešly, Azure nabízí [skupiny umístění pro Proximity](../../linux/co-location.md). Tato nová funkce se už použila k nasazení různých systémů SAP. Omezení pro skupiny umístění blízkosti najdete v článku na začátku tohoto odstavce. Tento článek se zabývá scénáři SAP, ve kterých se můžou používat skupiny umístění v blízkosti Azure.
 
 ## <a name="what-are-proximity-placement-groups"></a>Co jsou skupiny umístění pro Proximity? 
 Skupina umístění blízkosti Azure je logická konstrukce. Je-li definována jedna, je svázána s oblastí Azure a skupinou prostředků Azure. Po nasazení virtuálních počítačů se na skupinu umístění blízkosti odkazuje:
@@ -39,7 +40,7 @@ Skupina umístění blízkosti Azure je logická konstrukce. Je-li definována j
 > [!NOTE]
 > Pokud není nasazený žádný hostitelský hardware, který by mohl spustit konkrétní typ virtuálního počítače v datacentru, kde byl umístěn první virtuální počítač, nasazení požadovaného typu virtuálního počítače nebude úspěšné. Zobrazí se zpráva o selhání.
 
-Jedna [Skupina prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/manage-resources-portal) může mít přiřazených několik skupin umístění blízkosti. Ale skupina umístění blízkosti se dá přiřadit jenom k jedné skupině prostředků Azure.
+Jedna [Skupina prostředků Azure](../../../azure-resource-manager/management/manage-resources-portal.md) může mít přiřazených několik skupin umístění blízkosti. Ale skupina umístění blízkosti se dá přiřadit jenom k jedné skupině prostředků Azure.
 
 Pokud používáte skupiny umístění pro Proximity, pamatujte na tyto skutečnosti:
 
@@ -48,9 +49,9 @@ Pokud používáte skupiny umístění pro Proximity, pamatujte na tyto skutečn
 - Z důvodu vyřazení hardwaru může společnost Microsoft vytvořit kapacitu pro typ virtuálního počítače, který jste použili v jiném datovém centru, nikoli tu, kterou jste původně použili. V takovém případě může být nutné přesunout všechny virtuální počítače skupiny umístění blízkosti do jiného datového centra.
 
 ## <a name="proximity-placement-groups-with-sap-systems-that-use-only-azure-vms"></a>Skupiny umístění pro Proximity se systémy SAP, které používají jenom virtuální počítače Azure
-Většina nasazení systémů SAP NetWeaver a S/4HANA v Azure nepoužívá [velké instance Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture). Pro nasazení, která nepoužívají velké instance HANA, je důležité zajistit optimální výkon mezi aplikační vrstvou SAP a vrstvou DBMS. Provedete to tak, že pro systém definujete skupinu umístění blízkosti Azure.
+Většina nasazení systémů SAP NetWeaver a S/4HANA v Azure nepoužívá [velké instance Hana](./hana-overview-architecture.md). Pro nasazení, která nepoužívají velké instance HANA, je důležité zajistit optimální výkon mezi aplikační vrstvou SAP a vrstvou DBMS. Provedete to tak, že pro systém definujete skupinu umístění blízkosti Azure.
 
-Ve většině zákaznických nasazení vytvářejí zákazníci jednu [skupinu prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/manage-resources-portal) pro systémy SAP. V takovém případě existuje vztah 1:1 mezi například skupinou prostředků systému produkčního prostředí ERP a skupinou umístění blízkosti. V jiných případech zákazníci organizují své skupiny prostředků vodorovně a shromažďují všechny produkční systémy v jedné skupině prostředků. V tomto případě budete mít mezi skupinou prostředků vztah 1: n pro produkční systémy SAP a skupiny umístění pro Proximity pro produkční prostředí SAP ERP, SAP BW a tak dále.
+Ve většině zákaznických nasazení vytvářejí zákazníci jednu [skupinu prostředků Azure](../../../azure-resource-manager/management/manage-resources-portal.md) pro systémy SAP. V takovém případě existuje vztah 1:1 mezi například skupinou prostředků systému produkčního prostředí ERP a skupinou umístění blízkosti. V jiných případech zákazníci organizují své skupiny prostředků vodorovně a shromažďují všechny produkční systémy v jedné skupině prostředků. V tomto případě budete mít mezi skupinou prostředků vztah 1: n pro produkční systémy SAP a skupiny umístění pro Proximity pro produkční prostředí SAP ERP, SAP BW a tak dále.
 
 Vyhněte se sdružování produkčních nebo neprodukčních systémů SAP do jedné skupiny umístění pro Proximity. Když malý počet systémů SAP nebo systém SAP a některé okolní aplikace potřebují síťovou komunikaci s nízkou latencí, můžete zvážit přesunutí těchto systémů do jedné skupiny umístění pro Proximity. Měli byste se vyhnout sadě systémů, protože čím více systémů rozcházíte do skupiny umístění blízkosti, tím větší je riziko:
 
@@ -64,11 +65,11 @@ Tady je popis ideální konfigurace, jak je popsáno v tématu:
 V takovém případě jsou jednotlivé systémy SAP seskupené do jedné skupiny prostředků, přičemž každý z nich má každou skupinu umístění v blízkosti. Bez ohledu na to, jestli používáte konfigurace škálování na více systémů nebo DBMS, nemusíte mít žádnou závislost.
 
 ## <a name="proximity-placement-groups-and-hana-large-instances"></a>Skupiny umístění blízkosti a velké instance HANA
-Pokud jsou některé systémy SAP závislé na [velkých instancích](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) vrstvy aplikace v Hana, můžete mít významná vylepšení latence sítě mezi velkými instancemi a virtuálními počítači Azure, když používáte jednotky velkých instancí Hana, které jsou nasazeny v [řádcích revize 4](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance). Jedním z vylepšení je, že velké instance v HANA, jak se nasazují, se nasazují se skupinou umístění blízkosti. Tuto skupinu umístění blízkosti můžete použít k nasazení virtuálních počítačů aplikační vrstvy. V důsledku toho budou tyto virtuální počítače nasazeny ve stejném datovém centru, které je hostitelem jednotky velkých instancí HANA.
+Pokud jsou některé systémy SAP závislé na [velkých instancích](./hana-overview-architecture.md) vrstvy aplikace v Hana, můžete mít významná vylepšení latence sítě mezi velkými instancemi a virtuálními počítači Azure, když používáte jednotky velkých instancí Hana, které jsou nasazeny v [řádcích revize 4](./hana-network-architecture.md#networking-architecture-for-hana-large-instance). Jedním z vylepšení je, že velké instance v HANA, jak se nasazují, se nasazují se skupinou umístění blízkosti. Tuto skupinu umístění blízkosti můžete použít k nasazení virtuálních počítačů aplikační vrstvy. V důsledku toho budou tyto virtuální počítače nasazeny ve stejném datovém centru, které je hostitelem jednotky velkých instancí HANA.
 
-Pokud chcete zjistit, jestli je jednotka velkých instancí HANA nasazená v rámci kontrolního razítka nebo řádku revize 4, přečtěte si článek [Správa velkých instancí Azure Hana prostřednictvím Azure Portal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#look-at-attributes-of-single-hli-unit). V přehledu atributů jednotky velkých instancí HANA můžete také určit název skupiny umístění blízkosti, protože byla vytvořena při nasazení jednotky velkých instancí HANA. Název, který se zobrazí v přehledu atributy, je název skupiny umístění blízkosti, do které byste měli nasadit virtuální počítače vrstvy aplikace.
+Pokud chcete zjistit, jestli je jednotka velkých instancí HANA nasazená v rámci kontrolního razítka nebo řádku revize 4, přečtěte si článek [Správa velkých instancí Azure Hana prostřednictvím Azure Portal](./hana-li-portal.md#look-at-attributes-of-single-hli-unit). V přehledu atributů jednotky velkých instancí HANA můžete také určit název skupiny umístění blízkosti, protože byla vytvořena při nasazení jednotky velkých instancí HANA. Název, který se zobrazí v přehledu atributy, je název skupiny umístění blízkosti, do které byste měli nasadit virtuální počítače vrstvy aplikace.
 
-V porovnání se systémy SAP, které používají jenom virtuální počítače Azure, je při použití velkých instancí HANA méně flexibilita při rozhodování o tom, kolik [skupin prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/manage-resources-portal) se má použít. Všechny jednotky velkých instancí HANA [tenanta rozsáhlých instancí Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-know-terms) se seskupují do jedné skupiny prostředků, jak je popsáno v [tomto článku](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#display-of-hana-large-instance-units-in-the-azure-portal). Pokud nebudete nasazovat do různých klientů, aby se odlišili například produkční a neprodukční systémy nebo jiné systémy, všechny jednotky velkých instancí HANA budou nasazeny v klientovi s velkým počtem instancí HANA. Tento tenant má relaci 1:1 se skupinou prostředků. Pro každou jednotlivou jednotku však bude definována samostatná skupina umístění blízkosti.
+V porovnání se systémy SAP, které používají jenom virtuální počítače Azure, je při použití velkých instancí HANA méně flexibilita při rozhodování o tom, kolik [skupin prostředků Azure](../../../azure-resource-manager/management/manage-resources-portal.md) se má použít. Všechny jednotky velkých instancí HANA [tenanta rozsáhlých instancí Hana](./hana-know-terms.md) se seskupují do jedné skupiny prostředků, jak je popsáno v [tomto článku](./hana-li-portal.md#display-of-hana-large-instance-units-in-the-azure-portal). Pokud nebudete nasazovat do různých klientů, aby se odlišili například produkční a neprodukční systémy nebo jiné systémy, všechny jednotky velkých instancí HANA budou nasazeny v klientovi s velkým počtem instancí HANA. Tento tenant má relaci 1:1 se skupinou prostředků. Pro každou jednotlivou jednotku však bude definována samostatná skupina umístění blízkosti.
 
 V důsledku toho budou vztahy mezi skupinami prostředků Azure a skupinami umístění blízkosti pro jednoho tenanta, jak je znázorněno zde:
 
@@ -161,8 +162,7 @@ Pokud již máte nasazené systémy SAP, možná budete chtít optimalizovat lat
 ## <a name="next-steps"></a>Další kroky
 Projděte si dokumentaci:
 
-- [Úlohy SAP v Azure: kontrolní seznam pro plánování a nasazení](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)
-- [Preview: nasazení virtuálních počítačů do skupin umístění blízkosti pomocí Azure CLI](https://docs.microsoft.com/azure/virtual-machines/linux/proximity-placement-groups)
-- [Verze Preview: nasazení virtuálních počítačů do skupin umístění s blízkostí pomocí PowerShellu](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups)
-- [Důvody pro nasazení Azure Virtual Machines DBMS pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
-
+- [Úlohy SAP v Azure: kontrolní seznam pro plánování a nasazení](./sap-deployment-checklist.md)
+- [Preview: nasazení virtuálních počítačů do skupin umístění blízkosti pomocí Azure CLI](../../linux/proximity-placement-groups.md)
+- [Verze Preview: nasazení virtuálních počítačů do skupin umístění s blízkostí pomocí PowerShellu](../../windows/proximity-placement-groups.md)
+- [Důvody pro nasazení Azure Virtual Machines DBMS pro úlohy SAP](./dbms_guide_general.md)

@@ -3,15 +3,16 @@ title: Durable Functions publikování do Azure Event Grid (Preview)
 description: Naučte se konfigurovat automatické publikování Azure Event Grid pro Durable Functions.
 ms.topic: conceptual
 ms.date: 04/25/2020
-ms.openlocfilehash: c0106f3754e0cdcbf1f295fbe3f1b5def8dc3ca1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e4651dd7548ba76380bfc2d1b314e67d7abe63d9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83124230"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081742"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions publikování do Azure Event Grid (Preview)
 
-Tento článek popisuje, jak nastavit Durable Functions pro publikování událostí životního cyklu orchestrace (například vytvoření, dokončení a selhání) do vlastního [tématu Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview).
+Tento článek popisuje, jak nastavit Durable Functions pro publikování událostí životního cyklu orchestrace (například vytvoření, dokončení a selhání) do vlastního [tématu Azure Event Grid](../../event-grid/overview.md).
 
 Tato funkce je užitečná v následujících situacích:
 
@@ -21,11 +22,11 @@ Tato funkce je užitečná v následujících situacích:
 
 * **Dlouhodobě běžící aktivita na pozadí**: Pokud použijete Durable Functions pro dlouhou běžící aktivitu na pozadí, tato funkce vám pomůže seznámit se s aktuálním stavem.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Do projektu Durable Functions nainstalujte [Microsoft. Azure. WebJobs. Extensions. DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) .
 * Nainstalujte [emulátor Azure Storage](../../storage/common/storage-use-emulator.md) (jenom Windows) nebo použijte existující účet Azure Storage.
-* Instalace rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) nebo použití [Azure Cloud Shell](../../cloud-shell/overview.md)
+* Instalace rozhraní příkazového [řádku Azure](/cli/azure/?view=azure-cli-latest) nebo použití [Azure Cloud Shell](../../cloud-shell/overview.md)
 
 ## <a name="create-a-custom-event-grid-topic"></a>Vytvoření vlastního Event Gridho tématu
 
@@ -167,7 +168,7 @@ Pomocí Azure Portal vytvořte další aplikaci Function App, která bude naslou
 
 ### <a name="add-an-event-grid-subscription"></a>Přidání předplatného Event Grid
 
-Nyní můžete přidat Event Grid předplatné pro Event Grid téma, které jste vytvořili. Další informace najdete v tématu [Koncepty v Azure Event Grid](https://docs.microsoft.com/azure/event-grid/concepts).
+Nyní můžete přidat Event Grid předplatné pro Event Grid téma, které jste vytvořili. Další informace najdete v tématu [Koncepty v Azure Event Grid](../../event-grid/concepts.md).
 
 1. V nové funkci vyberte **integrace** a pak vyberte **Event Grid Trigger (eventGridEvent)**. 
 

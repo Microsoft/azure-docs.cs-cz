@@ -5,11 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 37a387b93f1c6b3796b66993405787cf43990bc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88a8dcb53ab2f845f52121b11c96c23ad0a3e791
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83684018"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078925"
 ---
 # <a name="sensor-partner-integration"></a>Integrace partnerských řešení pro senzory
 
@@ -43,7 +44,7 @@ Data telemetrie se mapují na kanonickou zprávu, která je publikovaná na Azur
 
 Rozhraní API obsahují technickou dokumentaci k Swagger. Další informace o rozhraních API a jejich odpovídajících požadavcích nebo odpovědích najdete v tématu [Swagger](https://aka.ms/FarmBeatsSwagger).
 
-**Authentication**
+**Ověřování**
 
 FarmBeats používá ověřování Microsoft Azure Active Directory.Azure App Service poskytuje integrovanou podporu ověřování a autorizace.
 
@@ -92,7 +93,7 @@ access_token = token_response.get('access_token')
 Tady jsou nejběžnější hlavičky požadavků, které je potřeba zadat při volání rozhraní API FarmBeats DataHub.
 
 
-**Hlaviček** | **Popis a příklad**
+**Hlavička** | **Popis a příklad**
 --- | ---
 Typ obsahu | Formát požadavku (Content-Type: Application/ <format> ). Pro rozhraní FarmBeats DataHub API je formát JSON. Content-Type: Application/JSON
 Autorizace | Určuje přístupový token potřebný k vytvoření volání rozhraní API. Autorizace: nosný <přístup-token>
@@ -130,25 +131,25 @@ FarmBeats DataHub má následující rozhraní API, které umožňuje partnerům
 - /**SensorModel**: SensorModel odpovídá metadatům snímače, jako je výrobce, typ snímače, který je buď analogový, nebo digitální, a míru snímače, například okolní teplotu a tlak.
 - /**Senzor**: senzor odpovídá fyzickému senzoru, který zaznamenává hodnoty. Senzor se obvykle připojuje k zařízení s ID zařízení.
 
-  **DeviceModel** |  |
+  DeviceModel | Popis |
   --- | ---
   Typ (uzel, brána)  | Typ zařízení – uzel nebo brána |
   Manufacturer  | Název výrobce |
   ProductCode  | Kód produktu nebo číslo modelu zařízení Například EnviroMonitor # 6800. |
   Porty  | Název portu a typ, který je digitální nebo analogový.  |
-  Name  | Název, který identifikuje prostředek. Například název modelu nebo název produktu. |
-  Description  | Poskytněte smysluplný popis modelu. |
+  Název  | Název, který identifikuje prostředek. Například název modelu nebo název produktu. |
+  Popis  | Poskytněte smysluplný popis modelu. |
   Vlastnosti  | Další vlastnosti od výrobce. |
-  **Zařízení** |  |
+  **Zařízení** | **Popis** |
   DeviceModelId  |ID přidruženého modelu zařízení |
   HardwareId   |Jedinečné ID zařízení, například adresa MAC.  |
   ReportingInterval |Interval generování sestav v sekundách. |
   Umístění    |Zeměpisná šířka zařízení (-90 až + 90), zeměpisná délka (-180 až 180) a zvýšení úrovně (v metrech). |
   ParentDeviceId | ID nadřazeného zařízení, ke kterému je připojeno toto zařízení Například pokud je uzel připojen k bráně, uzel má jako bránu parentDeviceID. |
-  Name  | Název, který identifikuje prostředek. Partneři zařízení musí poslat název, který je konzistentní s názvem zařízení na straně partnera zařízení. Pokud je název zařízení definovaný uživatelem na straně partnera zařízení, stejný uživatelsky definovaný název by měl být šířen do FarmBeats.  |
-  Description  | Zadejte smysluplný popis.  |
+  Název  | Název, který identifikuje prostředek. Partneři zařízení musí poslat název, který je konzistentní s názvem zařízení na straně partnera zařízení. Pokud je název zařízení definovaný uživatelem na straně partnera zařízení, stejný uživatelsky definovaný název by měl být šířen do FarmBeats.  |
+  Popis  | Zadejte smysluplný popis.  |
   Vlastnosti  |Další vlastnosti od výrobce.  |
-  **SensorModel** |  |
+  **SensorModel** | **Popis** |
   Typ (analogové, digitální)  |Zmiňující analogový nebo digitální senzor.|
   Manufacturer  | Název výrobce. |
   ProductCode  | Kód produktu nebo název modelu nebo číslo. Například RS-CO2-N01.  |
@@ -159,17 +160,17 @@ FarmBeats DataHub má následující rozhraní API, které umožňuje partnerům
   SensorMeasures > AggregationType  | Buď None, Average, Max, minima nebo StandardDeviation.
   Hloubka > SensorMeasures  | Hloubka senzoru v centimetrech Například měření vlhkosti 10 cm pod vozovkou.
   Popis > SensorMeasures  | Poskytněte smysluplný popis měření.
-  Name  | Název, který identifikuje prostředek. Například název modelu nebo název produktu.
-  Description  | Poskytněte smysluplný popis modelu.
+  Název  | Název, který identifikuje prostředek. Například název modelu nebo název produktu.
+  Popis  | Poskytněte smysluplný popis modelu.
   Vlastnosti  | Další vlastnosti od výrobce.
-  **Elektrické**  |  |
+  **Elektrické**  | **Popis** |
   HardwareId  | Jedinečné ID pro senzory nastavené výrobcem.
   SensorModelId  | ID přidruženého modelu senzoru
   Umístění  | Zeměpisná šířka (-90 až + 90), zeměpisná délka (-180 až 180) a zvýšení úrovně (v metrech).
   Název > portu  |Název a typ portu, ke kterému je senzor připojen na zařízení. Tento název musí být stejný jako definovaný v modelu zařízení.
   DeviceId  | ID zařízení, ke kterému je senzor připojen.
-  Name  | Název, který identifikuje prostředek. Například název senzoru nebo název produktu a číslo modelu nebo kód produktu.
-  Description  | Zadejte smysluplný popis.
+  Název  | Název, který identifikuje prostředek. Například název senzoru nebo název produktu a číslo modelu nebo kód produktu.
+  Popis  | Zadejte smysluplný popis.
   Vlastnosti  | Další vlastnosti od výrobce.
 
  Informace o jednotlivých objektech a jejich vlastnostech naleznete v [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mbullwin
-ms.openlocfilehash: 897e615234e17cfe36790778d00cd56371afd91f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f27771291d95770a693fa56041f7dce3de459d13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560132"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081419"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Zdroje dat Azure Monitor sešity
 
@@ -61,7 +61,7 @@ Chcete-li, aby ovládací prvek dotazu použil tento zdroj dat, použijte rozev�
 
 ## <a name="azure-data-explorer"></a>Průzkumník dat Azure
 
-Sešity teď podporují dotazování z clusterů [Azure Průzkumník dat](https://docs.microsoft.com/azure/data-explorer/) pomocí výkonného dotazovacího jazyka [Kusto](https://docs.microsoft.com/azure/kusto/query/index) .   
+Sešity teď podporují dotazování z clusterů [Azure Průzkumník dat](/azure/data-explorer/) pomocí výkonného dotazovacího jazyka [Kusto](/azure/kusto/query/index) .   
 
 ![Snímek obrazovky s oknem dotazu Kusto](./media/workbooks-overview/data-explorer.png)
 
@@ -90,7 +90,7 @@ Zprostředkovatel JSON umožňuje vytvořit výsledek dotazu ze statického obsa
 > [!NOTE]
 > Doporučeným způsobem, jak dotazovat se na informace o výstrahách Azure, je použít zdroj dat [grafu prostředků Azure](#azure-resource-graph) dotazem na `AlertsManagementResources` tabulku.
 >
-> Příklady najdete v tématu informace o [tabulce Azure Resource graphu](https://docs.microsoft.com/azure/governance/resource-graph/reference/supported-tables-resources)nebo v [šabloně výstrahy](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Workbooks/Azure%20Resources/Alerts/Alerts.workbook) .
+> Příklady najdete v tématu informace o [tabulce Azure Resource graphu](../../governance/resource-graph/reference/supported-tables-resources.md)nebo v [šabloně výstrahy](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Workbooks/Azure%20Resources/Alerts/Alerts.workbook) .
 >
 > Zdroj dat výstrah zůstane k dispozici po určitou dobu, zatímco autoři budou moci přejít na použití ARG. Použití tohoto zdroje dat v šablonách se nedoporučuje. 
 
@@ -113,5 +113,5 @@ Aby nedocházelo k automatickému volání nedůvěryhodných hostitelů při po
 
 * [Začínáme](workbooks-visualizations.md) se dozvědět více o seznámcích s mnoha různými možnostmi vizualizací.
 * [Řízení](workbooks-access-control.md) a sdílení přístupu k prostředkům sešitu.
-* [Tipy pro optimalizaci dotazů Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization)
+* [Tipy pro optimalizaci dotazů Log Analytics](../log-query/query-optimization.md)
 * 

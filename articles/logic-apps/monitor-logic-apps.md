@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 69d018db26a42c331ff41d242eae54d6fcc43990
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 66796a819c0ca7e114d82210a988fc7e13003941
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536246"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078200"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Monitorovat stav spuštění, zkontrolovat historii triggerů a nastavit výstrahy pro Azure Logic Apps
 
@@ -86,7 +86,7 @@ Pokaždé, když se Trigger aktivuje pro položku nebo událost, vytvoří modul
      Nyní můžete zobrazit informace, jako jsou vstupy a výstupy pro daný krok, například:
 
    > [!NOTE]
-   > Všechny podrobnosti a události modulu runtime jsou v rámci Logic Apps služby šifrované. Šifrují se pouze v případě, že uživatel požaduje zobrazení těchto dat. Můžete [Skrýt vstupy a výstupy v historii spuštění](../logic-apps/logic-apps-securing-a-logic-app.md#obfuscate) nebo řídit přístup uživatelů k těmto informacím pomocí [Access Control na základě role (RBAC) založené na rolích Azure](../role-based-access-control/overview.md).
+   > Všechny podrobnosti a události modulu runtime jsou v rámci Logic Apps služby šifrované. Šifrují se pouze v případě, že uživatel požaduje zobrazení těchto dat. Pomocí [řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md)můžete [Skrýt vstupy a výstupy v historii spuštění](../logic-apps/logic-apps-securing-a-logic-app.md#obfuscate) nebo řídit přístup uživatelů k těmto informacím.
 
 <a name="review-trigger-history"></a>
 

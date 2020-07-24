@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: juliako
-ms.openlocfilehash: 692fe12d12538bc35e3a22d4af1bd185839f69d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce3d0a5beb5903d29b1deec345cf4673e3492e5d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84418712"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080920"
 ---
 # <a name="output-metadata"></a>Výstupní metadata
 
-Úloha kódování je přidružená ke vstupnímu assetu (nebo assetům), na kterém chcete provést některé úlohy kódování. Například kódování souboru MP4 do H. 264 datových sad MP4 s adaptivní přenosovou rychlostí; Vytvořte miniaturu. Vytvořte překryvy. Po dokončení úlohy se vytvoří výstupní Asset.  Výstupní Asset obsahuje video, zvuk, miniatury a další soubory. Výstupní Asset obsahuje také soubor s metadaty o výstupním prostředku. Název souboru JSON metadat má následující formát: `<source_file_name>_manifest.json` (například `BigBuckBunny_manifest.json` ).  
+Úloha kódování je přidružená ke vstupnímu assetu (nebo assetům), na kterém chcete provést některé úlohy kódování. Například kódování souboru MP4 do H. 264 datových sad MP4 s adaptivní přenosovou rychlostí; Vytvořte miniaturu. Vytvořte překryvy. Po dokončení úlohy se vytvoří výstupní Asset.  Výstupní Asset obsahuje video, zvuk, miniatury a další soubory. Výstupní Asset obsahuje také soubor s metadaty o výstupním prostředku. Název souboru JSON metadat má následující formát: `<source_file_name>_manifest.json` (například `BigBuckBunny_manifest.json` ). Měli byste vyhledat jakékoli * _metadata.jsna a zadat dotaz na řetězec FilePath v rámci vyhledání zdrojového názvu souboru (bez zkrácení).
 
 Media Services neprovádí prověřování vstupních assetů za účelem generování metadat. Vstupní metadata se generují jako artefakt, když se v úloze zpracuje vstupní Asset. Proto je tento artefakt zapsán do výstupního prostředku. Pro generování metadat pro vstupní prostředky a výstupní prostředky se používají různé nástroje. Vstupní metadata proto mají trochu jiné schéma než výstupní metadata.
 
@@ -33,7 +34,7 @@ Tento článek popisuje prvky a typy schémat JSON, na kterých je založena vý
 
 Kolekce záznamů AssetFile pro úlohu kódování.  
 
-| Name | Description |
+| Název | Popis |
 | --- | --- |
 | **Prostředky** |Kolekce vstupních/zdrojových mediálních souborů, které byly zpracovány za účelem vytvoření tohoto AssetFile.<br />Příklad: `"Sources": [{"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"}]`|
 | **VideoTracks**|Každý fyzický AssetFile může v něm obsahovat nula nebo více videí, které se pronechají v příslušném formátu kontejneru. <br />Viz [VideoTracks](#videotracks). |
@@ -46,14 +47,14 @@ Kolekce záznamů AssetFile pro úlohu kódování.
 
 Každý fyzický AssetFile může v něm obsahovat nula nebo více videí, které se pronechají v příslušném formátu kontejneru. Element **VideoTracks** reprezentuje kolekci všech stop videa.  
 
-| Name | Description |
+| Název | Popis |
 | --- | --- |
 | **Účet**<br /> Vyžadováno |Index tohoto videa na základě nuly **Poznámka:**  Toto **ID** nemusí nutně být TrackID, jak se používá v souboru MP4. <br /><br />Příklad: `"Id": 1`|
 | **FourCC**<br />Vyžadováno | Videokodek FourCC kód, který je hlášen pomocí FFmpeg.  <br /><br />Příklad: `"FourCC": "avc1"`|
 | **Profil** |Profil H264 (platí jenom pro kodek H264).  <br /><br />Příklad: `"Profile": "High"` |
 | **Obsah** |Úroveň H264 (platí pouze pro kodek H264).  <br /><br />Příklad: `"Level": "3.2"`|
-| **impulzu**<br />Vyžadováno |Zakódovaná Šířka videa v pixelech  <br /><br />Příklad: `"Width": "1280"`|
-| **Height**<br />Vyžadováno |Výška kódovaného videa v pixelech  <br /><br />Příklad: `"Height": "720"`|
+| **Width (Šířka)**<br />Vyžadováno |Zakódovaná Šířka videa v pixelech  <br /><br />Příklad: `"Width": "1280"`|
+| **Výška**<br />Vyžadováno |Výška kódovaného videa v pixelech  <br /><br />Příklad: `"Height": "720"`|
 | **DisplayAspectRatioNumerator**<br />Vyžadováno|Čítač zobrazení poměru stran videa  <br /><br />Příklad: `"DisplayAspectRatioNumerator": 16.0`|
 | **DisplayAspectRatioDenominator**<br />Vyžadováno |Jmenovatel poměru stran zobrazení videa  <br /><br />Příklad: `"DisplayAspectRatioDenominator": 9.0`|
 | **Framerate**<br />Vyžadováno |Měřená snímková frekvence videa ve formátu. 3F.  <br /><br />Příklad: `"Framerate": 29.970`|
@@ -64,7 +65,7 @@ Každý fyzický AssetFile může v něm obsahovat nula nebo více videí, kter�
 
 Každý fyzický AssetFile může v něm obsahovat nula nebo více zvukových stop, které se pronechají v příslušném formátu kontejneru. Element **AudioTracks** reprezentuje kolekci všech těchto zvukových stop.  
 
-| Name  | Description |
+| Název  | Popis |
 | --- | --- |
 | **Účet**<br />Vyžadováno  |Index této zvukové stopy založený na nule. **Poznámka:**  To není nutně TrackID, jak se používá v souboru MP4.  <br /><br />Příklad: `"Id": 2`|
 | **Kodek**  |Řetězec kodeku zvukového záznamu  <br /><br />Příklad: `"Codec": "aac"`|

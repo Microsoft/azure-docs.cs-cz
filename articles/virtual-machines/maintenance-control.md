@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 950f4cfda73b40db0de8ba035868573cda1a5017
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3e914b904b0f6f1d3a4fae6c43c81cdf4eae819
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675789"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080008"
 ---
 # <a name="managing-platform-updates-with-maintenance-control"></a>Správa aktualizací platformy pomocí řízení údržby 
 
@@ -22,12 +23,12 @@ Spravujte aktualizace platforem, které nevyžadují restart, pomocí řízení 
 Pomocí řízení údržby můžete:
 - Dávka se aktualizuje do jednoho balíčku aktualizace.
 - Počkejte až 35 dní, než se aktualizace použijí. 
-- Automatizujte aktualizace platforem pro okno údržby pomocí Azure Functions.
+- Automatizujte aktualizace platforem pro okno údržby pomocí [Azure Functions](https://github.com/Azure/azure-docs-powershell-samples/tree/master/maintenance-auto-scheduler).
 - Konfigurace údržby pracují v rámci předplatných a skupin prostředků. 
 
 ## <a name="limitations"></a>Omezení
 
-- Virtuální počítače musí být na [vyhrazeném hostiteli](./linux/dedicated-hosts.md)nebo být vytvořené pomocí [izolované velikosti virtuálního počítače](./linux/isolation.md).
+- Virtuální počítače musí být na [vyhrazeném hostiteli](./linux/dedicated-hosts.md)nebo být vytvořené pomocí [izolované velikosti virtuálního počítače](isolation.md).
 - Po 35 dnech se automaticky použije aktualizace.
 - Uživatel musí mít přístup k **přispěvateli prostředků** .
 
@@ -38,6 +39,8 @@ Konfigurace údržby můžete vytvořit a spravovat pomocí kterékoli z násled
 - [Azure CLI](maintenance-control-cli.md)
 - [Azure PowerShell](maintenance-control-powershell.md)
 - [Azure Portal](maintenance-control-portal.md)
+
+Ukázku Azure Functions najdete v tématu [Plánování aktualizací údržby s ovládáním a správou údržby a Azure Functions](https://github.com/Azure/azure-docs-powershell-samples/tree/master/maintenance-auto-scheduler).
 
 ## <a name="next-steps"></a>Další kroky
 

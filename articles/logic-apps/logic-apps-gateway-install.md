@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: 6624cd0ff70ab359f4af36ca2f1f107d8f0b5fd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c52e8dfa3cda40cc663b5d7f27b67c7d2ad0b60
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83659268"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078645"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Instalace místní brány dat pro Azure Logic Apps
 
@@ -21,11 +22,11 @@ Než se budete moct [připojit k místním zdrojům dat z Azure Logic Apps](../l
 * [Místní brána dat Microsoft Power Apps](/powerapps/maker/canvas-apps/gateway-reference)
 * [Azure Analysis Services místní bránu dat](../analysis-services/analysis-services-gateway.md)
 
-Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu dat, abyste mohli přistupovat k místním zdrojům dat z Azure Logic Apps. Další informace o [tom, jak brána pro data funguje](#gateway-cloud-service) , najdete dál v tomto tématu. Další informace o bráně najdete v tématu [co je místní brána](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)? Pokud chcete automatizovat úlohy instalace a správy brány, podívejte se na galerii prostředí PowerShell pro [rutiny prostředí PowerShell pro datagateway](https://www.powershellgallery.com/packages/DataGateway/3000.15.15).
+Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu dat, abyste mohli přistupovat k místním zdrojům dat z Azure Logic Apps. Další informace o [tom, jak brána pro data funguje](#gateway-cloud-service) , najdete dál v tomto tématu. Další informace o bráně najdete v tématu [co je místní brána](/data-integration/gateway/service-gateway-onprem)? Pokud chcete automatizovat úlohy instalace a správy brány, podívejte se na galerii prostředí PowerShell pro [rutiny prostředí PowerShell pro datagateway](https://www.powershellgallery.com/packages/DataGateway/3000.15.15).
 
 <a name="requirements"></a>
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet a předplatné Azure. Pokud nemáte účet Azure s předplatným, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -79,7 +80,7 @@ Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu d
 
   * Brána má dva režimy: standardní režim a osobní režim, které platí jenom pro Power BI. Na stejném počítači nemůžete mít spuštěnou více než jednu bránu ve stejném režimu.
 
-  * Azure Logic Apps podporuje operace čtení a zápisu prostřednictvím brány. Nicméně tyto operace mají [omezení velikosti datové části](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations).
+  * Azure Logic Apps podporuje operace čtení a zápisu prostřednictvím brány. Nicméně tyto operace mají [omezení velikosti datové části](/data-integration/gateway/service-gateway-onprem#considerations).
 
 <a name="install-gateway"></a>
 
@@ -142,8 +143,8 @@ Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu d
 
 Místní brána dat závisí na [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) pro cloudové připojení a stanovuje odpovídající odchozí připojení k příslušné oblasti Azure přidružené k bráně. Pokud vaše pracovní prostředí vyžaduje, aby provoz prochází přes proxy server nebo bránu firewall pro přístup k Internetu, může toto omezení zabránit místní bráně dat v připojení ke cloudové službě brány a Azure Service Bus. Brána má několik nastavení komunikace, která můžete upravit. Další informace najdete v těchto tématech:
 
-* [Úprava nastavení komunikace pro místní bránu dat](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)
-* [Konfigurace nastavení proxy serveru pro místní bránu dat](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)
+* [Úprava nastavení komunikace pro místní bránu dat](/data-integration/gateway/service-gateway-communication)
+* [Konfigurace nastavení proxy serveru pro místní bránu dat](/data-integration/gateway/service-gateway-proxy)
 
 <a name="high-availability"></a>
 
@@ -155,7 +156,7 @@ Aby nedocházelo k jednomu bodu selhání pro místní přístup k datům, můž
 
 * V primární bráně musí být spuštěná aktualizace brány ze listopadu 2017 nebo novější.
 
-Po nastavení primární brány, když přejdete k instalaci jiné brány, vyberte **Přidat do existujícího clusteru brány**, vyberte primární bránu, která je první bránu, kterou jste nainstalovali, a zadejte pro tuto bránu obnovovací klíč. Další informace najdete v tématu [clustery s vysokou dostupností pro místní bránu dat](https://docs.microsoft.com/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster).
+Po nastavení primární brány, když přejdete k instalaci jiné brány, vyberte **Přidat do existujícího clusteru brány**, vyberte primární bránu, která je první bránu, kterou jste nainstalovali, a zadejte pro tuto bránu obnovovací klíč. Další informace najdete v tématu [clustery s vysokou dostupností pro místní bránu dat](/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster).
 
 <a name="update-gateway-installation"></a>
 
@@ -185,7 +186,7 @@ Pokud musíte změnit umístění brány, přesunout instalaci brány do nového
 
 ## <a name="tenant-level-administration"></a>Správa na úrovni tenanta
 
-Aby bylo možné získat přehled o všech místních branách dat v tenantovi Azure AD, můžou se globální správci v tomto tenantovi přihlašovat do centra pro [správu Power Platform](https://powerplatform.microsoft.com) jako správce tenanta a vybrat možnost **brány dat** . Další informace najdete v tématu [Správa na úrovni tenanta pro místní bránu dat](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin).
+Aby bylo možné získat přehled o všech místních branách dat v tenantovi Azure AD, můžou se globální správci v tomto tenantovi přihlašovat do centra pro [správu Power Platform](https://powerplatform.microsoft.com) jako správce tenanta a vybrat možnost **brány dat** . Další informace najdete v tématu [Správa na úrovni tenanta pro místní bránu dat](/data-integration/gateway/service-gateway-tenant-level-admin).
 
 <a name="restart-gateway"></a>
 
@@ -196,7 +197,7 @@ Ve výchozím nastavení se instalace brány na místním počítači spouští 
 > [!NOTE]
 > Váš účet služby Windows se liší od účtu používaného pro připojení k místním zdrojům dat a z účtu Azure, který používáte při přihlašování ke cloudovým službám.
 
-Stejně jako u jakékoli jiné služby Windows můžete bránu spouštět a zastavovat různými způsoby. Další informace najdete v tématu [restart místní brány dat](https://docs.microsoft.com/data-integration/gateway/service-gateway-restart).
+Stejně jako u jakékoli jiné služby Windows můžete bránu spouštět a zastavovat různými způsoby. Další informace najdete v tématu [restart místní brány dat](/data-integration/gateway/service-gateway-restart).
 
 <a name="gateway-cloud-service"></a>
 
@@ -217,11 +218,11 @@ Tyto kroky popisují, co se stane, když budete pracovat s prvkem, který je př
 
 1. Cloudová služba vytvoří dotaz společně se zašifrovanými přihlašovacími údaji pro zdroj dat. Služba pak odešle dotaz a přihlašovací údaje do fronty brány ke zpracování.
 
-1. Cloudová služba brány dotaz analyzuje a odešle požadavek do Azure Service Bus.
+1. Cloudová služba brány dotaz analyzuje a odešle požadavek do Azure Service Busu.
 
-1. Azure Service Bus odesílá nedokončené žádosti do brány.
+1. Azure Service Bus odešle nevyřízené požadavky do brány.
 
-1. Brána získá dotaz, dešifruje přihlašovací údaje a připojí se k jednomu nebo více zdrojům dat pomocí těchto přihlašovacích údajů.
+1. Brána obdrží dotaz, dešifruje přihlašovací údaje a pomocí nich se připojí k jednomu nebo více zdrojům dat.
 
 1. Brána odešle dotaz do zdroje dat pro spuštění.
 
@@ -260,9 +261,9 @@ Tady jsou způsoby, jak můžete porovnat místní účty Active Directory se sl
 
 ## <a name="faq-and-troubleshooting"></a>Nejčastější dotazy a řešení potíží
 
-* [Místní brána dat – nejčastější dotazy](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
-* [Řešení problémů s místní bránou dat](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
-* [Monitorování a optimalizace výkonu brány](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
+* [Místní brána dat – nejčastější dotazy](/data-integration/gateway/service-gateway-onprem-faq)
+* [Řešení problémů s místní bránou dat](/data-integration/gateway/service-gateway-tshoot)
+* [Monitorování a optimalizace výkonu brány](/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>Další kroky
 

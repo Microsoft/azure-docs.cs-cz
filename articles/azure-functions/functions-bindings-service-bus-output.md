@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 6159ea7c9e00e822019a0d6542be2e84dbbdc335
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 559198c4ecbbc86cc82ce8b286d9608170e161c5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603634"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079719"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Service Bus výstupní vazba pro Azure Functions
 
@@ -280,10 +280,10 @@ Python nepodporuje atributy.
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `ServiceBus` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 |**textový** | Není k dispozici | Musí být nastavené na "serviceBus". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
-|**direction** | Není k dispozici | Musí být nastavené na "out". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
+|**směr** | Není k dispozici | Musí být nastavené na "out". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
 |**Jméno** | Není k dispozici | Název proměnné, která představuje zprávu fronty nebo tématu v kódu funkce. Nastavte na "$return", chcete-li odkazovat na návratovou hodnotu funkce. |
 |**Proměnné QueueName**|**Proměnné QueueName**|Název fronty  Nastavte pouze v případě, že jsou odesílány zprávy fronty, nikoli téma.
 |**téma**|**Téma**|Název tématu. Nastaveno pouze při posílání zpráv témat, nikoli pro frontu.|
@@ -311,7 +311,7 @@ Při práci s funkcemi jazyka C#:
 
 * Asynchronní funkce vyžadují návratovou hodnotu nebo `IAsyncCollector` místo `out` parametru.
 
-* Chcete-li získat přístup k ID relace, připojte se k [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) typu a použijte `sessionId` vlastnost.
+* Chcete-li získat přístup k ID relace, připojte se k [`Message`](/dotnet/api/microsoft.azure.servicebus.message) typu a použijte `sessionId` vlastnost.
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
@@ -328,7 +328,7 @@ Při práci s funkcemi jazyka C#:
 
 * Asynchronní funkce vyžadují návratovou hodnotu nebo `IAsyncCollector` místo `out` parametru.
 
-* Chcete-li získat přístup k ID relace, připojte se k [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) typu a použijte `sessionId` vlastnost.
+* Chcete-li získat přístup k ID relace, připojte se k [`Message`](/dotnet/api/microsoft.azure.servicebus.message) typu a použijte `sessionId` vlastnost.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -336,11 +336,11 @@ Přístup ke frontě nebo tématu pomocí `context.bindings.<name from function.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Místo předdefinované výstupní vazby použijte [sadu Azure Service Bus SDK](https://docs.microsoft.com/azure/service-bus-messaging) .
+Místo předdefinované výstupní vazby použijte [sadu Azure Service Bus SDK](../service-bus-messaging/index.yml) .
 
 # <a name="java"></a>[Java](#tab/java)
 
-Místo předdefinované výstupní vazby použijte [sadu Azure Service Bus SDK](https://docs.microsoft.com/azure/service-bus-messaging) .
+Místo předdefinované výstupní vazby použijte [sadu Azure Service Bus SDK](../service-bus-messaging/index.yml) .
 
 ---
 
@@ -348,8 +348,8 @@ Místo předdefinované výstupní vazby použijte [sadu Azure Service Bus SDK](
 
 | Vazba | Referenční informace |
 |---|---|
-| Service Bus | [Kódy chyb Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-exceptions) |
-| Service Bus | [Omezení Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quotas) |
+| Service Bus | [Kódy chyb Service Bus](../service-bus-messaging/service-bus-messaging-exceptions.md) |
+| Service Bus | [Omezení Service Bus](../service-bus-messaging/service-bus-quotas.md) |
 
 <a name="host-json"></a>  
 
@@ -384,11 +384,11 @@ Tato část popisuje globální nastavení konfigurace, která jsou k dispozici 
 
 Pokud jste `isSessionsEnabled` nastavili na `true` , `sessionHandlerOptions` bude dodržena.  Pokud jste `isSessionsEnabled` nastavili na `false` , `messageHandlerOptions` bude dodržena.
 
-|Vlastnost  |Výchozí | Description |
+|Vlastnost  |Výchozí | Popis |
 |---------|---------|---------|
 |prefetchCount|0|Získá nebo nastaví počet zpráv, které může příjemce zprávy současně požadovat.|
 |maxAutoRenewDuration|00:05:00|Maximální doba, během které bude zámek zprávy obnoven automaticky.|
-|Zobrazovat|true|Určuje, zda má být aktivační událost automaticky volána po zpracování, nebo pokud kód funkce bude ručně volána možnost Dokončit.<br><br>Nastavení na `false` je podporováno pouze v jazyce C#.<br><br>Je-li nastavena na hodnotu `true` , aktivační událost automaticky dokončí zprávu, pokud se provádění funkce dokončí úspěšně a zpráva se v opačném případě opustí.<br><br>Když nastavíte `false` , zodpovídáte za volání metod [MessageReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet) k dokončení, zrušení nebo nedoručené zprávě. Pokud je vyvolána výjimka (a není volána žádná z `MessageReceiver` metod), zůstane zámek. Po vypršení platnosti zámku se zpráva znovu zařadí do fronty s `DeliveryCount` přírůstkem a automaticky se obnoví zámek.<br><br>Ve funkcích, které nejsou v jazyce C #, výsledkem výjimek ve funkci jsou volání za běhu `abandonAsync` na pozadí. Pokud nedojde k žádné výjimce, `completeAsync` je volána na pozadí. |
+|Zobrazovat|true|Určuje, zda má být aktivační událost automaticky volána po zpracování, nebo pokud kód funkce bude ručně volána možnost Dokončit.<br><br>Nastavení na `false` je podporováno pouze v jazyce C#.<br><br>Je-li nastavena na hodnotu `true` , aktivační událost automaticky dokončí zprávu, pokud se provádění funkce dokončí úspěšně a zpráva se v opačném případě opustí.<br><br>Když nastavíte `false` , zodpovídáte za volání metod [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet) k dokončení, zrušení nebo nedoručené zprávě. Pokud je vyvolána výjimka (a není volána žádná z `MessageReceiver` metod), zůstane zámek. Po vypršení platnosti zámku se zpráva znovu zařadí do fronty s `DeliveryCount` přírůstkem a automaticky se obnoví zámek.<br><br>Ve funkcích, které nejsou v jazyce C #, výsledkem výjimek ve funkci jsou volání za běhu `abandonAsync` na pozadí. Pokud nedojde k žádné výjimce, `completeAsync` je volána na pozadí. |
 |maxConcurrentCalls|16|Maximální počet souběžných volání zpětného volání, které by mělo pumpa zpráv iniciovat na úrovni instance. Ve výchozím nastavení aplikace runtime Functions zpracovává více zpráv souběžně.|
 |maxConcurrentSessions|2000|Maximální počet relací, které mohou být zpracovány souběžně podle škálované instance.|
 

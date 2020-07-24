@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: fa7464c70593c83c708aba49235ecdde1be0cc9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8a06435d4b5a4c11f74073e67e3f48fd2ed0779d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807763"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079566"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure Glosář: slovník cloudové terminologie na platformě Azure
 
@@ -51,7 +51,7 @@ Rozhraní příkazového řádku, které se dá použít ke správě služeb Azu
 
 ## <a name="azure-powershell"></a><a name="powershell"></a>Azure PowerShell
 Rozhraní příkazového řádku pro správu služeb Azure prostřednictvím příkazového řádku z počítačů s Windows. Některé služby nebo funkce služeb se dají spravovat jenom přes PowerShell nebo rozhraní příkazového řádku.
-Viz [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview)
+Viz [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/)
 
 ## <a name="azure-resource-manager-deployment-model"></a><a name="arm-model"></a>Model nasazení Azure Resource Manager
 Jeden ze dvou [modelů nasazení](resource-manager-deployment-model.md) , který se používá k nasazení prostředků v Microsoft Azure (druhý je model nasazení Classic). Některé služby Azure podporují jenom model nasazení Správce prostředků, některá podporují jenom klasický model nasazení a některá podporují obojí. Dokumentace ke každé službě Azure určuje, které modely podporují.

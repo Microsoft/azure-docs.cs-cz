@@ -7,11 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 07/24/2019
 ms.author: osamaz
-ms.openlocfilehash: b8a454c2a104dfe8545cf734bf0b020b8f749bb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 80863b56334b0d2d76cdf505dcd15c5cc4c14c52
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73889630"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081096"
 ---
 # <a name="connecting-azure-with-public-clouds"></a>Propojení Azure s veřejnými cloudy
 
@@ -33,7 +34,7 @@ Poskytovatelé Layer3 se běžně označují jako poskytovatelé IP adres VPN ne
  
 Při připojování prostřednictvím poskytovatele Layer3 společnost Microsoft prostřednictvím protokolu BGP inzeruje trasy virtuální sítě zákazníka poskytovateli služeb. Poskytovatel může mít dvě různé implementace.
 
-![](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l3.png)
+![Diagram, který zobrazuje poskytovatele Layer3](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l3.png)
 
 Poskytovatel může vyčlenit každého poskytovatele cloudu v samostatném VRF, pokud přenosy ze všech poskytovatelů cloudu budou dostupné ve směrovači zákazníka. Pokud zákazník používá protokol BGP s poskytovatelem služeb, pak se tyto trasy ve výchozím nastavení znovu inzerují jiným poskytovatelům cloudu. 
 
@@ -44,7 +45,7 @@ V každém veřejném cloudu je limit prefixu jiný, takže při distribuci tras
 ### <a name="layer2-provider-and-direct-connection"></a>Poskytovatel layer2 a přímé připojení
 
 I když se fyzické připojení v obou modelech liší, ale v Layer3 BGP se naváže přímo mezi MSEE a směrovačem zákazníka. Pro přímé zákazníky ExpressRoute se připojuje přímo k MSEE. V případě layer2 poskytovatel služeb rozšiřuje síť VLAN od zákaznických objektů do cloudu. Zákazníci spouštějí protokol BGP na layer2 síti pro připojení svých řadičů domény ke cloudu.
-![](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l2.png)
+![Diagram, který zobrazuje poskytovatele layer2 a přímé připojení.](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l2.png)
 V obou případech bude mít zákazník připojení typu Point-to-Point ke každému veřejnému cloudu. Zákazník vytvoří samostatné připojení protokolu BGP ke každému veřejnému cloudu. Trasy přijaté jedním poskytovatelem cloudu budou ve výchozím nastavení inzerovány jinému poskytovateli cloudu. Každý poskytovatel cloudu má jiný limit předpon, takže během inzerce by zákazník měli tyto limity postarat. Zákazník může při inzerci tras z jiných veřejných cloudů použít obvyklé ovladače protokolu BGP u Microsoftu.
 
 ## <a name="direct-connection-with-expressroute"></a>Přímé připojení pomocí ExpressRoute

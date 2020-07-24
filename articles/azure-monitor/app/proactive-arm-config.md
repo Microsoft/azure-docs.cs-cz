@@ -6,12 +6,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7ca4df620739b2ab55b8ba986031cc48fe87f1fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a4cb788a24252a2de7b9d669b166b25ed48be1c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80294906"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081589"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Správa pravidel inteligentního vyhledávání Application Insights pomocí šablon Azure Resource Manager
 
@@ -22,7 +22,7 @@ Tuto metodu lze použít při nasazování nových Application Insightsch prost�
 
 Můžete konfigurovat následující nastavení pravidel inteligentního zjišťování:
 - Pokud je pravidlo povolené (výchozí hodnota je **true**)
-- Pokud se mají e-maily posílat uživatelům přidruženým ke [čtenářům monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) předplatného a k [monitorování rolí přispěvatele](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) , když se najde detekce (výchozí hodnota je **true**)
+- Pokud se mají e-maily posílat uživatelům přidruženým ke [čtenářům monitorování](../../role-based-access-control/built-in-roles.md#monitoring-reader) předplatného a k [monitorování rolí přispěvatele](../../role-based-access-control/built-in-roles.md#monitoring-contributor) , když se najde detekce (výchozí hodnota je **true**)
 - Všichni další příjemci e-mailu, kteří by měli dostávat oznámení, když zjistí detekci.
     -  Konfigurace e-mailu není k dispozici pro pravidla inteligentního zjišťování označená jako _Náhled_.
 

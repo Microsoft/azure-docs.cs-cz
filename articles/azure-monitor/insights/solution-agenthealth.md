@@ -6,17 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2020
-ms.openlocfilehash: 7093e20473b799a3f05ddf30803721636732241e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e7fcde86c9bbf017ac3fca6025a025104b0d864
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77663251"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081572"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Řešení Agent Health v Azure Monitor
 Řešení Agent Health v Azure vám pomůže pochopit, pro všechny agenty, kteří odesílají zprávy přímo do pracovního prostoru Log Analytics v Azure Monitor nebo ve skupině pro správu System Center Operations Manager připojené k Azure Monitor, které nereagují a odesílají provozní data.  Můžete také sledovat, kolik agentů je nasazených a jak jsou geograficky distribuováni, a provádět další dotazy, abyste si udrželi přehled o distribuci agentů nasazených v Azure, dalších cloudových prostředích nebo místně.    
 
-## <a name="prerequisites"></a>Požadavky
-Před nasazením tohoto řešení potvrďte, že máte aktuálně podporované [agenty systému Windows](../../log-analytics/log-analytics-windows-agent.md) , které vytváří sestavy do pracovního prostoru Log Analytics, nebo se dohlásí do [skupiny pro správu Operations Manager](../../azure-monitor/platform/om-agents.md) integrované s vaším pracovním prostorem.
+## <a name="prerequisites"></a>Předpoklady
+Před nasazením tohoto řešení potvrďte, že máte aktuálně podporované [agenty systému Windows](../platform/agent-windows.md) , které vytváří sestavy do pracovního prostoru Log Analytics, nebo se dohlásí do [skupiny pro správu Operations Manager](../../azure-monitor/platform/om-agents.md) integrované s vaším pracovním prostorem.
 
 ## <a name="solution-components"></a>Součásti řešení
 Toto řešení se skládá z následujících prostředků, které se přidají do vašeho pracovního prostoru, a přímo připojených agentů nebo skupiny pro správu připojené k nástroji Operations Manager.
@@ -37,7 +38,7 @@ Přidejte Agent Health řešení do svého pracovního prostoru Log Analytics po
 ### <a name="supported-agents"></a>Podporovaní agenti
 Následující tabulka popisuje připojené zdroje, které toto řešení podporuje.
 
-| Připojený zdroj | Podporuje se | Description |
+| Připojený zdroj | Podporováno | Popis |
 | --- | --- | --- |
 | Agenti systému Windows | Yes | Události prezenčního signálu se shromažďují z přímých agentů systému Windows.|
 | Skupina pro správu nástroje System Center Operations Manager | Yes | Události prezenčního signálu se shromažďují z agentů, kteří se nahlásí do skupiny pro správu každých 60 sekund, a pak předají Azure Monitor. Přímé připojení od agentů Operations Manager k Azure Monitor se nevyžaduje. Data události prezenčního signálu se předávají ze skupiny pro správu do pracovního prostoru Log Analytics.|
@@ -47,7 +48,7 @@ Když přidáte řešení do svého pracovního prostoru Log Analytics, do říd
 
 Kliknutím na dlaždici **Agent Health** otevřete řídicí panel **Agent Health**.  Řídicí panel obsahuje sloupce v následující tabulce. Každý sloupec obsahuje seznam prvních deseti událostí podle počtu, které splňují kritéria sloupce pro zadaný časový rozsah. Výběrem možnosti **Zobrazit všechno** v pravé dolní části každého sloupce nebo kliknutím na záhlaví sloupce můžete spustit prohledávání protokolu, které vám poskytne úplný seznam.
 
-| Sloupec | Description |
+| Sloupec | Popis |
 |--------|-------------|
 | Počet agentů v průběhu času | Trend vývoje počtu linuxových agentů a agentů systému Windows za posledních sedm dnů.|
 | Počet nereagujících agentů | Seznam agentů, kteří za posledních 24 hodin neodeslali prezenční signál.|
@@ -68,7 +69,7 @@ Vytvoří se záznam typu **Prezenční signál**.  Vlastnosti záznamů tohoto 
 
 | Vlastnost | Popis |
 | --- | --- |
-| `Type` | *Heartbeat* (Prezenční signál)|
+| `Type` | *Tep*|
 | `Category` | Hodnota je *Direct Agent* (Přímý agent), *SCOM Agent* (Agent nástroje SCOM) nebo *SCOM Management Server* (Server pro správu nástroje SCOM).|
 | `Computer` | Název počítače.|
 | `OSType` | Operační systém Windows nebo Linux.|
@@ -89,7 +90,7 @@ Každý agent, který hlásí do Operations Manager management server bude odes�
 ## <a name="sample-log-searches"></a>Ukázky hledání v protokolech
 V následující tabulce jsou uvedeny ukázky prohledávání protokolu pro záznamy shromážděné tímto řešením.
 
-| Dotaz | Description |
+| Dotaz | Popis |
 |:---|:---|
 | Heartbeat &#124; distinct Computer |Celkový počet agentů |
 | Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(24h) |Počet nereagujících agentů za posledních 24 hodin |

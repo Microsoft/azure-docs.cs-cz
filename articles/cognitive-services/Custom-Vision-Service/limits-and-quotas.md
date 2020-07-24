@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 089d5dbb1eece2904f104dfecb3de8adec052dfc
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 21b90f423a3ba3c7fa38334c79aec9dc65a250cd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391736"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079179"
 ---
 # <a name="limits-and-quotas"></a>Omezení a kvóty
 
@@ -23,7 +23,7 @@ Existují dvě úrovně klíčů pro službu Custom Vision. Předplatné F0 (Fre
 
 Pro projekty S0 se očekává, že počet školicích obrázků na projekt a značek na projekt se bude zvětšovat v čase.
 
-||**F0**|**S0**|
+|Faktor|**F0**|**S0**|
 |-----|-----|-----|
 |Projekty|2|100|
 |Školení imagí na projekt |5 000|100 000|

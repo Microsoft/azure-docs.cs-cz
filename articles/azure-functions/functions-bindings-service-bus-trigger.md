@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: ee4961c6c1bb8cafe25ec2c84affdf0f1789e9f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aedf39f99ace6e1119dde7089a3c83b96ac41fb1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603022"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079702"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Aktivační událost Azure Service Bus pro Azure Functions
 
@@ -289,10 +289,10 @@ Další podrobnosti najdete v [příkladu](#example) triggeru.
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `ServiceBusTrigger` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 |**textový** | Není k dispozici | Musí být nastavené na "serviceBusTrigger". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
-|**direction** | Není k dispozici | Musí být nastavené na "in". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
+|**směr** | Není k dispozici | Musí být nastavené na "in". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
 |**Jméno** | Není k dispozici | Název proměnné, která představuje zprávu fronty nebo tématu v kódu funkce. |
 |**Proměnné QueueName**|**Proměnné QueueName**|Název fronty, která se má monitorovat  Nastavte pouze v případě, že monitorování fronty, nikoli tématu.
 |**téma**|**Téma**|Název tématu, které se má monitorovat Nastavte pouze v případě, že monitorování tématu, nikoli pro frontu.|
@@ -312,10 +312,10 @@ Pro zprávu o frontě nebo tématu jsou k dispozici následující typy parametr
 * `string`– Pokud se jedná o text zprávy
 * `byte[]`– Užitečné pro binární data.
 * Vlastní typ – Pokud zpráva obsahuje JSON, Azure Functions se pokusí deserializovat data JSON.
-* `BrokeredMessage`– Poskytuje deserializovanou zprávu s metodou [BrokeredMessage. GetBody \<T> ()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) .
-* [`MessageReceiver`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet)– Používá se k přijímání a potvrzení zpráv z kontejneru zpráv (povinné, když [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) je nastavená na `false` )
+* `BrokeredMessage`– Poskytuje deserializovanou zprávu s metodou [BrokeredMessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) .
+* [`MessageReceiver`](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet)– Používá se k přijímání a potvrzení zpráv z kontejneru zpráv (povinné, když [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) je nastavená na `false` )
 
-Tyto typy parametrů jsou pro Azure Functions verze 1. x; pro 2. x a novější použijte [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) místo `BrokeredMessage` .
+Tyto typy parametrů jsou pro Azure Functions verze 1. x; pro 2. x a novější použijte [`Message`](/dotnet/api/microsoft.azure.servicebus.message) místo `BrokeredMessage` .
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
@@ -324,9 +324,9 @@ Pro zprávu o frontě nebo tématu jsou k dispozici následující typy parametr
 * `string`– Pokud se jedná o text zprávy
 * `byte[]`– Užitečné pro binární data.
 * Vlastní typ – Pokud zpráva obsahuje JSON, Azure Functions se pokusí deserializovat data JSON.
-* `BrokeredMessage`– Poskytuje deserializovanou zprávu s metodou [BrokeredMessage. GetBody \<T> ()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) .
+* `BrokeredMessage`– Poskytuje deserializovanou zprávu s metodou [BrokeredMessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) .
 
-Tyto parametry jsou pro Azure Functions verze 1. x; pro 2. x a novější použijte [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) místo `BrokeredMessage` .
+Tyto parametry jsou pro Azure Functions verze 1. x; pro 2. x a novější použijte [`Message`](/dotnet/api/microsoft.azure.servicebus.message) místo `BrokeredMessage` .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -352,13 +352,13 @@ V Azure Functions nelze řídit ani konfigurovat zpracování nezpracovatelných
 
 Modul runtime Functions obdrží zprávu v [režimu PeekLock](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode). Volá `Complete` zprávu, pokud se funkce dokončí úspěšně, nebo volá, `Abandon` Pokud se funkce nezdaří. Pokud je funkce spuštěná déle, než je `PeekLock` časový limit, zámek se automaticky obnoví, dokud je funkce spuštěná. 
 
-`maxAutoRenewDuration`Je možné konfigurovat v *host.js*, který se mapuje na [OnMessageOptions. MaxAutoRenewDuration](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration?view=azure-dotnet). Maximální povolený počet pro toto nastavení je 5 minut v závislosti na Service Bus dokumentaci, zatímco časový limit funkcí můžete zvýšit z výchozí hodnoty 5 minut na 10 minut. U Service Busch funkcí byste to neudělali, protože byste překročili Service Bus limit obnovení.
+`maxAutoRenewDuration`Je možné konfigurovat v *host.js*, který se mapuje na [OnMessageOptions. MaxAutoRenewDuration](/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration?view=azure-dotnet). Maximální povolený počet pro toto nastavení je 5 minut v závislosti na Service Bus dokumentaci, zatímco časový limit funkcí můžete zvýšit z výchozí hodnoty 5 minut na 10 minut. U Service Busch funkcí byste to neudělali, protože byste překročili Service Bus limit obnovení.
 
 ## <a name="message-metadata"></a>Metadata zprávy
 
 Aktivační událost Service Bus poskytuje několik [vlastností metadat](./functions-bindings-expressions-patterns.md#trigger-metadata). Tyto vlastnosti lze použít jako součást výrazů vazby v jiných vazbách nebo jako parametry v kódu. Tyto vlastnosti jsou členy třídy [zpráv](/dotnet/api/microsoft.azure.servicebus.message?view=azure-dotnet) .
 
-|Vlastnost|Typ|Description|
+|Vlastnost|Typ|Popis|
 |--------|----|-----------|
 |`ContentType`|`string`|Identifikátor typu obsahu využitý odesílatelem a příjemcem pro logiku specifickou pro aplikaci.|
 |`CorrelationId`|`string`|ID korelace.|

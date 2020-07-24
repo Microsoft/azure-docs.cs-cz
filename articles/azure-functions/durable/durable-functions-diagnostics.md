@@ -5,11 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4cb832f8fe11ac2581e97d9cdcc777eaff702ee9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fcd92f1f134b79d23da6848cbb04894b242fcec0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84697998"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081810"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnostika v Durable Functions v Azure
 
@@ -19,7 +20,7 @@ K dispozici je několik možností pro diagnostiku problémů s [Durable Functio
 
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) je doporučený způsob, jak diagnostikovat a monitorovat v Azure Functions. Totéž platí pro Durable Functions. Přehled toho, jak ve vaší aplikaci Function App využít Application Insights, najdete v tématu [monitorování Azure Functions](../functions-monitoring.md).
 
-Azure Functions trvalá přípona také generuje *sledovací události* , které umožňují sledovat komplexní provádění orchestrace. Tyto události sledování se dají najít a dotazovat pomocí nástroje [Application Insights Analytics](../../azure-monitor/app/analytics.md) v Azure Portal.
+Azure Functions trvalá přípona také generuje *sledovací události* , které umožňují sledovat komplexní provádění orchestrace. Tyto události sledování se dají najít a dotazovat pomocí nástroje [Application Insights Analytics](../../azure-monitor/log-query/log-query-overview.md) v Azure Portal.
 
 ### <a name="tracking-data"></a>Sledování dat
 
@@ -149,7 +150,7 @@ Výsledkem je seznam ID instancí a jejich aktuální stav modulu runtime.
 
 ![Application Insights dotaz](./media/durable-functions-diagnostics/app-insights-single-summary-query.png)
 
-## <a name="logging"></a>protokolování
+## <a name="logging"></a>Protokolování
 
 Je důležité, abyste při psaní protokolů přímo z funkce Orchestrator měli na paměti chování při přehrávání nástroje Orchestrator. Zvažte například následující funkci Orchestrator:
 
@@ -382,7 +383,7 @@ Azure Functions podporuje přímo ladění kódu funkce a tato podpora přenáš
 
 ## <a name="storage"></a>Storage
 
-Ve výchozím nastavení Durable Functions ukládá stav do Azure Storage. Toto chování znamená, že můžete zkontrolovat stav orchestrace pomocí nástrojů, jako je [Průzkumník služby Microsoft Azure Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
+Ve výchozím nastavení Durable Functions ukládá stav do Azure Storage. Toto chování znamená, že můžete zkontrolovat stav orchestrace pomocí nástrojů, jako je [Průzkumník služby Microsoft Azure Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md).
 
 ![Snímek obrazovky Průzkumník služby Azure Storage](./media/durable-functions-diagnostics/storage-explorer.png)
 

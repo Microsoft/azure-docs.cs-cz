@@ -7,16 +7,16 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: 930e32cfc57cb5b48180c7695b7b6c7d11df8caa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9581bb17e29a25b618a90aece5675d132c14a97c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506969"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081487"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Vlastní metriky v Azure Monitor (Preview)
 
-Při nasazení prostředků a aplikací v Azure budete chtít začít shromažďovat telemetrii, abyste získali přehled o jejich výkonu a stavu. Azure zpřístupňuje některé metriky, které jsou dostupné v poli. Tyto metriky se nazývají [Standard nebo Platform](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported). Jsou však omezené. 
+Při nasazení prostředků a aplikací v Azure budete chtít začít shromažďovat telemetrii, abyste získali přehled o jejich výkonu a stavu. Azure zpřístupňuje některé metriky, které jsou dostupné v poli. Tyto metriky se nazývají [Standard nebo Platform](./metrics-supported.md). Jsou však omezené. 
 
 Je možné, že budete chtít shromáždit některé vlastní ukazatele výkonu nebo metriky specifické pro firmy, které poskytují hlubší přehledy. Tyto **vlastní** metriky je možné shromažďovat prostřednictvím telemetrie aplikací, agenta, který běží na vašich prostředcích Azure, nebo i mimo monitorovací systém a přímo odeslat Azure monitor. Po publikování do Azure Monitor můžete procházet, dotazovat a upozorňovat na vlastní metriky pro vaše prostředky a aplikace Azure vedle sebe se standardními metrikami, které vysílá Azure.
 
@@ -37,23 +37,23 @@ Podrobnosti o tom, kdy se má povolit pro dotazy na vlastní metriky a metriky, 
 Vlastní metriky se uchovávají po [stejnou dobu jako metriky platforem](data-platform-metrics.md#retention-of-metrics). 
 
 > [!NOTE]  
-> Metriky odesílané Azure Monitor prostřednictvím sady Application Insights SDK se účtují jako ingestovaná data protokolu. Účtují jenom další metriky jenom v případě, že je vybraná funkce Application Insights [Povolit upozorňování na vlastní dimenze metriky](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) . Toto zaškrtávací políčko odesílá data do databáze Azure Monitor metrik pomocí vlastních rozhraní API metrik, které umožňuje komplexnější výstrahy.  Přečtěte si další informace o [cenovém modelu Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model) a [cenách ve vaší oblasti](https://azure.microsoft.com/pricing/details/monitor/).
+> Metriky odesílané Azure Monitor prostřednictvím sady Application Insights SDK se účtují jako ingestovaná data protokolu. Účtují jenom další metriky jenom v případě, že je vybraná funkce Application Insights [Povolit upozorňování na vlastní dimenze metriky](../app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation) . Toto zaškrtávací políčko odesílá data do databáze Azure Monitor metrik pomocí vlastních rozhraní API metrik, které umožňuje komplexnější výstrahy.  Přečtěte si další informace o [cenovém modelu Application Insights](../app/pricing.md#pricing-model) a [cenách ve vaší oblasti](https://azure.microsoft.com/pricing/details/monitor/).
 
 
 ## <a name="how-to-send-custom-metrics"></a>Jak odesílat vlastní metriky
 
 Když odesíláte vlastní metriky do Azure Monitor, musí každý datový bod nebo hodnota nahlášené obsahovat následující informace.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Ověřování
 Aby bylo možné odesílat vlastní metriky Azure Monitor, entita, která odesílá metriku, potřebuje platný token Azure Active Directory (Azure AD) v hlavičce **nosiče** žádosti. Existuje několik podporovaných způsobů získání platného nosných tokenů:
-1. [Spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Poskytuje identitu samotného prostředku Azure, jako je třeba virtuální počítač. Identita spravované služby (MSI) je navržena tak, aby poskytovala oprávnění k provádění určitých operací. Příklad povoluje prostředku generovat metriky o sobě samým. K prostředku nebo jeho MSI se dá udělit oprávnění pro **monitorování** pro ostatní prostředky. S tímto oprávněním může MSI vysílat metriky i pro jiné prostředky.
-2. [Instanční objekt služby Azure AD](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals). V tomto scénáři může být aplikace nebo služba Azure AD přiřazená oprávnění k vygenerování metriky o prostředku Azure.
+1. [Spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md). Poskytuje identitu samotného prostředku Azure, jako je třeba virtuální počítač. Identita spravované služby (MSI) je navržena tak, aby poskytovala oprávnění k provádění určitých operací. Příklad povoluje prostředku generovat metriky o sobě samým. K prostředku nebo jeho MSI se dá udělit oprávnění pro **monitorování** pro ostatní prostředky. S tímto oprávněním může MSI vysílat metriky i pro jiné prostředky.
+2. [Instanční objekt služby Azure AD](../../active-directory/develop/app-objects-and-service-principals.md). V tomto scénáři může být aplikace nebo služba Azure AD přiřazená oprávnění k vygenerování metriky o prostředku Azure.
 K ověření žádosti Azure Monitor ověří token aplikace pomocí veřejných klíčů Azure AD. Existující role **vydavatele metrik monitorování** již má toto oprávnění. Je k dispozici v Azure Portal. Instanční objekt v závislosti na tom, k jakým prostředkům vysílat vlastní metriky, je možné v požadovaném oboru udělit roli **vydavatele metrik monitorování** . Příkladem může být předplatné, skupina prostředků nebo konkrétní prostředek.
 
 > [!TIP]  
 > Když požádáte o token Azure AD, aby vygeneroval vlastní metriky, ujistěte se, že cílová skupina nebo prostředek, pro který je požadován token, jsou `https://monitoring.azure.com/` . Nezapomeňte zahrnout koncové lomítko (/).
 
-### <a name="subject"></a>Subjekt
+### <a name="subject"></a>Předmět
 Tato vlastnost zachycuje ID prostředku Azure, pro který je nahlášená vlastní metrika. Tyto informace se zakódují v adrese URL vytvořeného volání rozhraní API. Každé rozhraní API může odesílat jenom hodnoty metrik pro jeden prostředek Azure.
 
 > [!NOTE]  
@@ -68,13 +68,13 @@ Tato vlastnost zachycuje, co je to oblast Azure, pro kterou je prostředek, pro 
 >
 >
 
-### <a name="timestamp"></a>Časové razítko
+### <a name="timestamp"></a>Timestamp
 Každý datový bod odeslaný do Azure Monitor musí být označený pomocí časového razítka. Toto časové razítko zachycuje hodnotu DateTime, při které je hodnota metriky měřena nebo shromažďována. Azure Monitor přijímá data metriky s časovými razítky až do 20 minut v minulosti a 5 minut v budoucnosti. Časové razítko musí být ve formátu ISO 8601.
 
 ### <a name="namespace"></a>Obor názvů
 Obory názvů představují způsob kategorizace nebo seskupení podobných metrik dohromady. Pomocí oborů názvů můžete dosáhnout izolace mezi skupinami metrik, které mohou shromažďovat různé přehledy nebo ukazatele výkonu. Například můžete mít obor názvů s názvem **contosomemorymetrics** , který sleduje metriky využití paměti, které profilují vaši aplikaci. Jiný obor názvů s názvem **contosoapptransaction** může sledovat všechny metriky o transakcích uživatelů ve vaší aplikaci.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Název
 **Název** je název metriky, která je hlášena. Obvykle je název dostatečně popisný, aby mohl lépe identifikovat, co je měřené. Příkladem je metrika, která měří počet bajtů paměti použitých na daném virtuálním počítači. Může mít název metriky, například **používané paměťové bajty**.
 
 ### <a name="dimension-keys"></a>Klíče dimenzí
@@ -92,7 +92,7 @@ Při publikování hodnoty metriky můžete zadat pouze jednu hodnotu dimenze na
 Dimenze jsou volitelné, ne všechny metriky mohou mít rozměry. Pokud příspěvek metriky definuje klíče dimenzí, jsou odpovídající hodnoty dimenze povinné.
 
 ### <a name="metric-values"></a>Hodnoty metriky
-Azure Monitor ukládá všechny metriky v intervalech členitosti po minutách. Chápeme, že během dané minuty může být nutné vzorkovat určitou metriku několikrát. Příkladem je využití procesoru. Nebo může být nutné změřit mnoho diskrétních událostí. Příkladem jsou latence transakcí přihlášení. Pokud chcete omezit počet nezpracovaných hodnot, které musíte vygenerovat a zaplatit za Azure Monitor, můžete tyto hodnoty lokálně agregovat a generovat:
+Azure Monitor ukládá všechny metriky v intervalech členitosti po minutách. Chápeme, že během dané minuty může být nutné vzorkovat určitou metriku několikrát. Například podle využití procesoru. Nebo může být nutné změřit mnoho diskrétních událostí. Příkladem jsou latence transakcí přihlášení. Pokud chcete omezit počet nezpracovaných hodnot, které musíte vygenerovat a zaplatit za Azure Monitor, můžete tyto hodnoty lokálně agregovat a generovat:
 
 * **Min**: minimální zjištěná hodnota ze všech vzorků a měření během minuty.
 * **Max**: maximální získaná hodnota ze všech vzorků a měření během minuty.
@@ -176,7 +176,7 @@ Až se vlastní metriky odešlou do Azure Monitor, můžete je procházet pomoc�
 > Abyste mohli zobrazit vlastní metriky, musíte být čtenář nebo role Přispěvatel.
 
 ### <a name="browse-your-custom-metrics-via-the-azure-portal"></a>Procházejte vlastní metriky prostřednictvím Azure Portal
-1.    Přejít na [Azure Portal](https://portal.azure.com).
+1.    Přejděte na [Azure Portal](https://portal.azure.com).
 2.    Vyberte podokno **monitorování** .
 3.    Vyberte **Metriky**.
 4.    Vyberte prostředek, pro který jste vygenerovali vlastní metriky.
@@ -190,16 +190,16 @@ Ve verzi Public Preview je možnost publikovat vlastní metriky k dispozici pouz
 |---|---|
 | **USA a Kanada** | |
 |USA – středozápad | https: \/ /westcentralus.Monitoring.Azure.com |
-|USA – západ 2       | https: \/ /westus2.Monitoring.Azure.com |
+|Západní USA 2       | https: \/ /westus2.Monitoring.Azure.com |
 |USA – středosever | https: \/ /northcentralus.Monitoring.Azure.com
-|USA – středojih| https: \/ /southcentralus.Monitoring.Azure.com |
-|USA – střed      | https: \/ /centralus.Monitoring.Azure.com |
+|Středojižní USA| https: \/ /southcentralus.Monitoring.Azure.com |
+|Střední USA      | https: \/ /centralus.Monitoring.Azure.com |
 |Střední Kanada | https: \/ /canadacentral.Monitoring.Azure.com |
-|USA – východ| https: \/ /eastus.Monitoring.Azure.com |
+|East US| https: \/ /eastus.Monitoring.Azure.com |
 |USA – východ 2 | https: \/ /eastus2.Monitoring.Azure.com |
 | **Evropa** | |
 |Severní Evropa    | https: \/ /northeurope.Monitoring.Azure.com |
-|Západní Evropa     | https: \/ /westeurope.Monitoring.Azure.com |
+|West Europe     | https: \/ /westeurope.Monitoring.Azure.com |
 |Spojené království – jih | https: \/ /uksouth.Monitoring.Azure.com
 |Francie – střed | https: \/ /francecentral.Monitoring.Azure.com |
 | **Afrika** | |
@@ -207,8 +207,8 @@ Ve verzi Public Preview je možnost publikovat vlastní metriky k dispozici pouz
 | **Asie** | |
 |Indie – střed | https: \/ /centralindia.Monitoring.Azure.com |
 |Austrálie – východ | https: \/ /australiaeast.Monitoring.Azure.com |
-|Japonsko – východ | https: \/ /japaneast.Monitoring.Azure.com |
-|Jihovýchodní Asie  | https: \/ /southeastasia.Monitoring.Azure.com |
+|Japan East | https: \/ /japaneast.Monitoring.Azure.com |
+|Southeast Asia  | https: \/ /southeastasia.Monitoring.Azure.com |
 |Východní Asie | https: \/ /eastasia.Monitoring.Azure.com |
 |Jižní Korea – střed   | https: \/ /koreacentral.Monitoring.Azure.com |
 

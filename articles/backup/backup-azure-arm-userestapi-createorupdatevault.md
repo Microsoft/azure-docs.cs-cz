@@ -4,15 +4,16 @@ description: V tomto článku se dozvíte, jak spravovat operace zálohování a
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
-ms.openlocfilehash: 1901c35d2b4d8bcd02cc064fcfc844e19969e3b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0170bda1ca956efe971695e34dc0d14b68eb109a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74173420"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079328"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>Vytvoření trezoru služby Azure Recovery Services pomocí REST API
 
-Postup vytvoření trezoru služby Azure Recovery Services pomocí REST API je popsaný v dokumentaci k [Vytvoření trezoru REST API](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate) . Tento dokument můžeme použít jako referenci k vytvoření trezoru s názvem "testVault" v "Západní USA".
+Postup vytvoření trezoru služby Azure Recovery Services pomocí REST API je popsaný v dokumentaci k [Vytvoření trezoru REST API](/rest/api/recoveryservices/vaults/createorupdate) . Tento dokument můžeme použít jako referenci k vytvoření trezoru s názvem "testVault" v "Západní USA".
 
 Pokud chcete vytvořit nebo aktualizovat trezor služby Azure Recovery Services, použijte následující operaci *vložení* .
 
@@ -29,7 +30,7 @@ Jsou vyžadovány následující hlavičky:
 | Hlavička požadavku   | Popis |
 |------------------|-----------------|
 | *Content-Type:*  | Povinná hodnota. Nastavte na `application/json`. |
-| *Authorization:* | Povinná hodnota. Nastavte na platný  [přístupový token](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)`Bearer`. |
+| *Authorization:* | Povinná hodnota. Nastavte na platný  [přístupový token](/rest/api/azure/#authorization-code-grant-interactive-clients)`Bearer`. |
 
 Další informace o tom, jak vytvořit žádost, najdete v tématu [komponenty REST API žádosti o odezvu](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
@@ -37,12 +38,12 @@ Další informace o tom, jak vytvořit žádost, najdete v tématu [komponenty R
 
 Následující běžné definice se používají k sestavení textu žádosti:
 
-|Name  |Požaduje se  |Typ  |Description  |
+|Název  |Požaduje se  |Typ  |Description  |
 |---------|---------|---------|---------|
 |značk     |         |   Řetězec      |  Volitelné eTag       |
 |location     |  true       |Řetězec         |   Umístění prostředku      |
-|properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Vlastnosti trezoru       |
-|skladové     |         |  [Skladové](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Určuje jedinečný systémový identifikátor každého prostředku Azure.     |
+|properties     |         | [VaultProperties](/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Vlastnosti trezoru       |
+|skladové     |         |  [Skladové](/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Určuje jedinečný systémový identifikátor každého prostředku Azure.     |
 |tags     |         | Objekt        |     Značky prostředků    |
 
 Všimněte si, že název trezoru a název skupiny prostředků jsou k dispozici v identifikátoru URI PUT. Text žádosti definuje umístění.
@@ -65,10 +66,10 @@ Následující vzorový text se používá k vytvoření trezoru v "Západní US
 
 Existují dvě úspěšné odpovědi, které by mohla operace vytvořit nebo aktualizovat Recovery Services trezoru:
 
-|Name  |Typ  |Description  |
+|Název  |Typ  |Description  |
 |---------|---------|---------|
-|200 OK     |   [Hesel](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)      | OK        |
-|201 vytvořeno     | [Hesel](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)        |   Vytvořeno      |
+|200 OK     |   [Trezor](/rest/api/recoveryservices/vaults/createorupdate#vault)      | OK        |
+|201 vytvořeno     | [Trezor](/rest/api/recoveryservices/vaults/createorupdate#vault)        |   Vytvořeno      |
 
 Další informace o odpovědích REST API najdete v tématu [zpracování zprávy s odpovědí](/rest/api/azure/#process-the-response-message).
 

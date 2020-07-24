@@ -7,15 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 04/30/2019
+ms.date: 07/20/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 60f2e3f949a4f627839a07137ebaf77518db87a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d19f59635920951b506e41884f4ab79be78e247d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213971"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080722"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>Použití IDENTITY k vytváření náhradních klíčů v synapse fondu SQL
 
@@ -23,7 +24,7 @@ V tomto článku najdete doporučení a příklady použití vlastnosti IDENTITY
 
 ## <a name="what-is-a-surrogate-key"></a>Co je náhradní klíč
 
-Náhradní klíč v tabulce je sloupec s jedinečným identifikátorem pro každý řádek. Klíč se negeneruje z dat tabulky. Datové modely, jako je vytváření náhradních klíčů ve svých tabulkách při návrhu modelů datového skladu. Vlastnost IDENTITY můžete použít k dosažení tohoto cíle jednoduše a efektivně, aniž by to ovlivnilo výkon zatížení.  
+Náhradní klíč v tabulce je sloupec s jedinečným identifikátorem pro každý řádek. Klíč se negeneruje z dat tabulky. Datové modely, jako je vytváření náhradních klíčů ve svých tabulkách při návrhu modelů datového skladu. Vlastnost IDENTITY můžete použít k dosažení tohoto cíle jednoduše a efektivně, aniž by to ovlivnilo výkon zatížení. Vlastnost IDENTITY má určitá omezení, jak je popsáno v [Create Table (Transact-SQL) identity (vlastnost)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest). Jedním z omezení IDENTITY je, že není zaručená jedinečnost. Nastavení IDENTITY pro vložení je vypnuto a nedojde k opětovnému vytvoření hodnoty identity. výsledkem bude více jedinečných hodnot, ale v některých situacích nemusí být zaručena jedinečnost. Pokud nemůžete použít hodnoty identity z důvodu omezení IDENTITY, vytvořte samostatnou tabulku s aktuální hodnotou a spravujte přístup k tabulce a číslu přiřazení k vaší aplikaci. 
 
 ## <a name="creating-a-table-with-an-identity-column"></a>Vytvoření tabulky se sloupcem IDENTITY
 
@@ -49,7 +50,7 @@ Tato zbývající část této části popisuje drobné odlišnosti implementace
 
 ### <a name="allocation-of-values"></a>Přidělení hodnot
 
-Vlastnost IDENTITY nezaručuje pořadí, ve kterém jsou přiděleny náhradní hodnoty, což odráží chování SQL Server a Azure SQL Database. V synapse fondu SQL se ale neexistence záruky vysloví.
+Vlastnost IDENTITY nezaručuje pořadí, ve kterém jsou náhradní hodnoty přiděleny z důvodu distribuované architektury datového skladu. Vlastnost IDENTITY je navržená pro horizontální navýšení kapacity napříč všemi distribucemi v synapse fondu SQL bez ovlivnění výkonu zatížení. 
 
 Následující příklad je ilustrace:
 

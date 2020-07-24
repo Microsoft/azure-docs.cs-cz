@@ -3,17 +3,18 @@ title: Sada Security Detection Pack s Azure Application Insights
 description: Monitorujte aplikaci s využitím Azure Application Insights a inteligentní detekci potenciálních problémů se zabezpečením.
 ms.topic: conceptual
 ms.date: 12/12/2017
-ms.openlocfilehash: b23ada6fe4596a2eee242cc9145789521caf697f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ed304e903bb50591e61e294b6701f8268f9d8e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669722"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081623"
 ---
 # <a name="application-security-detection-pack-preview"></a>Sada rozpoznávání zabezpečení aplikace (Preview)
 
 Application Insights automaticky analyzuje telemetrii vygenerovanou vaší aplikací a detekuje potenciální problémy se zabezpečením. Tato funkce vám umožňuje identifikovat potenciální problémy zabezpečení a zpracovat je pomocí opravy aplikace nebo provedením potřebných bezpečnostních opatření.
 
-Tato funkce nevyžaduje žádné speciální nastavení, jiné než [Konfigurace vaší aplikace pro posílání telemetrie](https://docs.microsoft.com/azure/application-insights/app-insights-usage-overview).
+Tato funkce nevyžaduje žádné speciální nastavení, jiné než [Konfigurace vaší aplikace pro posílání telemetrie](./usage-overview.md).
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Kdy získám tento typ oznámení inteligentního zjišťování?
 Byly zjištěny tři typy problémů se zabezpečením:

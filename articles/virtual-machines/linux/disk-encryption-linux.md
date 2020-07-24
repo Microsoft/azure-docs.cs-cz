@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b55707612c34cb3c95eafd95780955bf991c409c
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 7664cebbd12e075e9b9ea7ea75021b61569a80cf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206151"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080280"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Scénáře použití služby Azure Disk Encryption na virtuálních počítačích se systémem Linux
 
@@ -205,13 +205,13 @@ Následující tabulka uvádí Správce prostředků parametry šablony pro exis
 | forceUpdateTag | Pokaždé, když je potřeba vynutit spuštění operace, předat jedinečnou hodnotu, třeba identifikátor GUID. |
 | location | Umístění pro všechny prostředky |
 
-Další informace o tom, jak nakonfigurovat šablonu pro šifrování disků virtuálního počítače Linux, najdete v tématu [Azure Disk Encryption pro Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/azure-disk-enc-linux).
+Další informace o tom, jak nakonfigurovat šablonu pro šifrování disků virtuálního počítače Linux, najdete v tématu [Azure Disk Encryption pro Linux](../extensions/azure-disk-enc-linux.md).
 
 ## <a name="use-encryptformatall-feature-for-data-disks-on-linux-vms"></a>Použití funkce EncryptFormatAll pro datové disky na virtuálních počítačích se systémem Linux
 
 Parametr **EncryptFormatAll** zkracuje dobu, po kterou jsou datové disky platformy Linux šifrovány. Oddíly, které splňují určitá kritéria, se naformátují společně se svými aktuálními systémy souborů a pak se znovu připojí k, kde byly před provedením příkazu. Pokud chcete vyloučit datový disk, který splňuje kritéria, můžete ho před spuštěním příkazu odpojit.
 
- Po spuštění tohoto příkazu se naformátují všechny jednotky, které byly připojené dříve, a vrstva šifrování se spustí na začátku prázdné jednotky. Když je vybraná tato možnost, bude se taky šifrovat dočasný disk připojený k virtuálnímu počítači. Pokud dojde k resetování dočasného disku, bude řešení Azure Disk Encryption po další příležitosti znovu naformátováno a znovu zašifrováno pro virtuální počítač. Po zašifrování disku prostředků nebude moci [Agent Microsoft Azure Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) spravovat disk prostředků a povolit soubor odkládacího souboru, ale můžete odkládací soubor ručně nakonfigurovat.
+ Po spuštění tohoto příkazu se naformátují všechny jednotky, které byly připojené dříve, a vrstva šifrování se spustí na začátku prázdné jednotky. Když je vybraná tato možnost, bude se taky šifrovat dočasný disk připojený k virtuálnímu počítači. Pokud dojde k resetování dočasného disku, bude řešení Azure Disk Encryption po další příležitosti znovu naformátováno a znovu zašifrováno pro virtuální počítač. Po zašifrování disku prostředků nebude moci [Agent Microsoft Azure Linux](../extensions/agent-linux.md) spravovat disk prostředků a povolit soubor odkládacího souboru, ale můžete odkládací soubor ručně nakonfigurovat.
 
 >[!WARNING]
 > EncryptFormatAll by neměl být použit, pokud jsou v datových svazcích virtuálního počítače potřebná data. Můžete vyloučit disky ze šifrování odpojováním. Nejdřív byste si měli vyzkoušet EncryptFormatAll nejprve na testovacím virtuálním počítači, pochopit parametr funkce a jeho nevýznam před tím, než se ho pokusíte na produkčním virtuálním počítači. Možnost EncryptFormatAll formátuje datový disk a všechna data, která na něm jsou, budou ztracena. Než budete pokračovat, ověřte, že disky, které chcete vyloučit, jsou správně odpojeny. </br></br>
@@ -262,7 +262,7 @@ Doporučujeme LVM instalaci. Pro všechny následující příklady nahraďte za
 
 1. Naformátujte, připojte a přidejte tyto disky do souboru fstab.
 
-1. Zvolte oddíl Standard, vytvořte oddíl, který pokrývá celou jednotku, a pak oddíl naformátujte. Symbolických odkazů vygenerované v Azure používáme tady. Použití symbolických odkazů zabraňuje problémům souvisejícím se změnou názvů zařízení. Další informace najdete v článku řešení potíží s chybami [názvů zařízení](troubleshoot-device-names-problems.md) .
+1. Zvolte oddíl Standard, vytvořte oddíl, který pokrývá celou jednotku, a pak oddíl naformátujte. Symbolických odkazů vygenerované v Azure používáme tady. Použití symbolických odkazů zabraňuje problémům souvisejícím se změnou názvů zařízení. Další informace najdete v článku řešení potíží s chybami [názvů zařízení](../troubleshooting/troubleshoot-device-names-problems.md) .
     
     ```bash
     parted /dev/disk/azure/scsi1/lun0 mklabel gpt
@@ -332,7 +332,7 @@ Nový datový disk můžete přidat pomocí [AZ VM disk Attach](add-disk.md)nebo
 
 ### <a name="enable-encryption-on-a-newly-added-disk-with-azure-cli"></a>Povolení šifrování u nově přidaného disku pomocí Azure CLI
 
- Pokud byl virtuální počítač dříve zašifrován pomocí možnosti "vše", parametr--Volume-Type by měl zůstat "All". Vše zahrnuje operační systém i datové disky. Pokud byl virtuální počítač předtím zašifrovaný pomocí typu svazku "OS", měl by být parametr--Volume-Type změněn na hodnotu "All", takže bude zahrnut jak operační systém, tak i nový datový disk. Pokud byl virtuální počítač zašifrován pouze s typem svazku "data", může zůstat "data", jak je znázorněno níže. Přidání a připojení nového datového disku k virtuálnímu počítači není dostatečně přípravné na šifrování. Předtím, než povolíte šifrování, musí být nově připojený disk naformátovaný a správně připojený k virtuálnímu počítači. V systému Linux musí být disk připojen v/etc/fstab s [názvem trvalého blokování zařízení](troubleshoot-device-names-problems.md).  
+ Pokud byl virtuální počítač dříve zašifrován pomocí možnosti "vše", parametr--Volume-Type by měl zůstat "All". Vše zahrnuje operační systém i datové disky. Pokud byl virtuální počítač předtím zašifrovaný pomocí typu svazku "OS", měl by být parametr--Volume-Type změněn na hodnotu "All", takže bude zahrnut jak operační systém, tak i nový datový disk. Pokud byl virtuální počítač zašifrován pouze s typem svazku "data", může zůstat "data", jak je znázorněno níže. Přidání a připojení nového datového disku k virtuálnímu počítači není dostatečně přípravné na šifrování. Předtím, než povolíte šifrování, musí být nově připojený disk naformátovaný a správně připojený k virtuálnímu počítači. V systému Linux musí být disk připojen v/etc/fstab s [názvem trvalého blokování zařízení](../troubleshooting/troubleshoot-device-names-problems.md).  
 
 Na rozdíl od syntaxe PowerShellu rozhraní příkazového řádku nevyžaduje, aby uživatel při povolování šifrování poskytoval jedinečnou verzi sekvence. Rozhraní příkazového řádku automaticky vygeneruje a použije svou vlastní jedinečnou hodnotu verze sekvence.
 
@@ -413,7 +413,7 @@ Azure Disk Encryption nefunguje pro následující scénáře, funkce a technolo
 - Virtuální počítač s "vnořenými přípojnými body"; To znamená, že několik přípojných bodů v jedné cestě (například "/1stmountpoint/data/2stmountpoint").
 - Virtuální počítač s datovou jednotkou připojenou nad složku operačního systému.
 - Virtuální počítače řady M-Series s Akcelerátor zápisu disky.
-- Použití [šifrování na straně serveru u klíčů spravovaných zákazníkem](disk-encryption.md) na virtuální počítače zašifrované přes ADE a naopak.
+- Použití ADE na virtuální počítač, který má datový disk zašifrovaný pomocí [klíčů spravovaných zákazníkem](disk-encryption.md) (SSE + CMK), nebo použití SSE + CMK na datový disk na virtuálním počítači zašifrovaném pomocí ADE.
 - Migrace virtuálního počítače zašifrovaného přes ADE na [serveru pomocí klíčů spravovaných zákazníkem](disk-encryption.md).
 
 ## <a name="next-steps"></a>Další kroky

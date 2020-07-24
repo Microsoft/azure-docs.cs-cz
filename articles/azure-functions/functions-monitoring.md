@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5560d24601b8aef0d8a4058cc2c04e27e9c86362
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: c3d43bc20c31475a00a0ea81e4abdeb5405162a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170407"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081793"
 ---
 # <a name="monitor-azure-functions"></a>Monitorování Azure Functions
 
@@ -58,7 +58,7 @@ Pokud chcete Application Insights otevřít z aplikace Function App v Azure Port
 
 ![Otevření Application Insights na stránce s přehledem aplikace Function App](media/functions-monitoring/ai-link.png)
 
-Informace o tom, jak používat Application Insights, najdete v [dokumentaci k Application Insights](https://docs.microsoft.com/azure/application-insights/). V této části jsou uvedeny některé příklady, jak zobrazit data v Application Insights. Pokud už jste obeznámeni s Application Insights, můžete přejít přímo k [oddílům, jak nakonfigurovat a přizpůsobit data telemetrie](#configure-categories-and-log-levels).
+Informace o tom, jak používat Application Insights, najdete v [dokumentaci k Application Insights](/azure/application-insights/). V této části jsou uvedeny některé příklady, jak zobrazit data v Application Insights. Pokud už jste obeznámeni s Application Insights, můžete přejít přímo k [oddílům, jak nakonfigurovat a přizpůsobit data telemetrie](#configure-categories-and-log-levels).
 
 ![Karta Přehled Application Insights](media/functions-monitoring/metrics-explorer.png)
 
@@ -68,12 +68,12 @@ Následující oblasti Application Insights mohou být užitečné při vyhodnoc
 | ---- | ----------- |
 | **[Selhání](../azure-monitor/app/asp-net-exceptions.md)** |  Vytvářejte grafy a výstrahy na základě selhání funkcí a výjimek serveru. **Název operace** je název funkce. Pokud neimplementujete vlastní telemetrie pro závislosti, neobjeví se chyby v závislostech. |
 | **[Výkon](../azure-monitor/app/performance-counters.md)** | Analyzujte problémy s výkonem zobrazením využití prostředků a propustnosti na **instance rolí cloudu**. Tato data můžou být užitečná pro scénáře ladění, kde funkce bogging své základní prostředky. |
-| **[Metriky](../azure-monitor/app/metrics-explorer.md)** | Vytváření grafů a výstrah založených na metrikách. Metriky zahrnují počet vyvolání funkcí, dobu provádění a míru úspěšnosti. |
+| **[Metriky](../azure-monitor/platform/metrics-charts.md)** | Vytváření grafů a výstrah založených na metrikách. Metriky zahrnují počet vyvolání funkcí, dobu provádění a míru úspěšnosti. |
 | **[Živé metriky](../azure-monitor/app/live-stream.md)** | Umožňuje zobrazit data metrik, která se vytvářejí téměř v reálném čase. |
 
 ## <a name="query-telemetry-data"></a>Dotazování dat telemetrie
 
-[Application Insights Analytics](../azure-monitor/app/analytics.md) vám umožní přístup ke všem datům telemetrie ve formě tabulek v databázi. Analýza poskytuje dotazovací jazyk pro extrakci, manipulaci a vizualizaci dat. 
+[Application Insights Analytics](../azure-monitor/log-query/log-query-overview.md) vám umožní přístup ke všem datům telemetrie ve formě tabulek v databázi. Analýza poskytuje dotazovací jazyk pro extrakci, manipulaci a vizualizaci dat. 
 
 Vyberte **protokoly** pro prozkoumání protokolovaných událostí nebo dotazování na ně.
 
@@ -142,8 +142,8 @@ Protokolovací nástroj Azure Functions zahrnuje i *úroveň protokolu* s každ�
 |Informace | 2 |
 |Upozornění     | 3 |
 |Chyba       | 4 |
-|Kritická    | 5 |
-|Žádná        | 6 |
+|Kritické    | 5 |
+|Žádné        | 6 |
 
 Úroveň protokolu `None` je vysvětleno v další části. 
 
@@ -153,7 +153,7 @@ Protokolovací nástroj Azure Functions zahrnuje i *úroveň protokolu* s každ�
 
 ### <a name="version-2x-and-higher"></a>Verze 2. x a vyšší
 
-Verze v2. x a novější verze modulu runtime Functions používají [hierarchii filtrů protokolování .NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering). 
+Verze v2. x a novější verze modulu runtime Functions používají [hierarchii filtrů protokolování .NET Core](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering). 
 
 ```json
 {
@@ -246,7 +246,7 @@ Jak je uvedeno v předchozí části, modul runtime agreguje data o spouštění
 
 ## <a name="configure-sampling"></a>Konfigurace vzorkování
 
-Application Insights má funkci [vzorkování](../azure-monitor/app/sampling.md) , která vám může chránit při vytváření příliš velkého množství dat telemetrie při dokončeném provádění v době špičky zatížení. Když frekvence příchozího provádění překročí zadanou prahovou hodnotu, Application Insights začne náhodně ignorovat některé příchozí spuštění. Výchozí nastavení maximálního počtu spuštění za sekundu je 20 (pět ve verzi 1. x). Vzorkování můžete nakonfigurovat v [host.jszapnuto](https://docs.microsoft.com/azure/azure-functions/functions-host-json#applicationinsights).  Tady je příklad:
+Application Insights má funkci [vzorkování](../azure-monitor/app/sampling.md) , která vám může chránit při vytváření příliš velkého množství dat telemetrie při dokončeném provádění v době špičky zatížení. Když frekvence příchozího provádění překročí zadanou prahovou hodnotu, Application Insights začne náhodně ignorovat některé příchozí spuštění. Výchozí nastavení maximálního počtu spuštění za sekundu je 20 (pět ve verzi 1. x). Vzorkování můžete nakonfigurovat v [host.jszapnuto](./functions-host-json.md#applicationinsights).  Tady je příklad:
 
 ### <a name="version-2x-and-later"></a>Verze 2. x a novější
 
@@ -285,9 +285,9 @@ Protokoly můžete zapsat v kódu funkce, který se zobrazí jako trasování v 
 
 ### <a name="ilogger"></a>ILogger
 
-Místo parametru použijte ve svých funkcích parametr [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) `TraceWriter` . Protokoly vytvořené pomocí možnosti `TraceWriter` Přejít na Application Insights, ale `ILogger` umožňují [strukturované protokolování](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging).
+Místo parametru použijte ve svých funkcích parametr [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) `TraceWriter` . Protokoly vytvořené pomocí možnosti `TraceWriter` Přejít na Application Insights, ale `ILogger` umožňují [strukturované protokolování](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging).
 
-S `ILogger` objektem zavoláte `Log<level>` [metody rozšíření v ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) k vytváření protokolů. Následující kód zapisuje `Information` protokoly do kategorie Functions. <YOUR_FUNCTION_NAME>. Uživatel. "
+S `ILogger` objektem zavoláte `Log<level>` [metody rozšíření v ILogger](/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) k vytváření protokolů. Následující kód zapisuje `Information` protokoly do kategorie Functions. <YOUR_FUNCTION_NAME>. Uživatel. "
 
 ```cs
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger logger)
@@ -358,7 +358,7 @@ Tento kód je alternativou pro volání `trackMetric` pomocí Node.js SDK pro Ap
 
 Verze Application Insights SDK specifická pro konkrétní funkce, kterou můžete použít k posílání vlastních dat telemetrie z vašich funkcí do Application Insights: [Microsoft. Azure. WebJobs. Logging. ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights). K instalaci tohoto balíčku použijte následující příkaz z příkazového řádku:
 
-# <a name="command"></a>[Systému](#tab/cmd)
+# <a name="command"></a>[Příkaz](#tab/cmd)
 
 ```cmd
 dotnet add package Microsoft.Azure.WebJobs.Logging.ApplicationInsights --version <VERSION>
@@ -553,7 +553,7 @@ module.exports = function (context, req) {
     var operationIdOverride = {"ai.operation.id":context.traceContext.traceparent};
 
     client.trackEvent({name: "my custom event", tagOverrides:operationIdOverride, properties: {customProperty2: "custom property value"}});
-    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride);
+    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride});
     client.trackMetric({name: "custom metric", value: 3, tagOverrides:operationIdOverride});
     client.trackTrace({message: "trace message", tagOverrides:operationIdOverride});
     client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:operationIdOverride});
@@ -577,7 +577,7 @@ module.exports = function (context, req) {
     var operationIdOverride = {"ai.operation.id":context.operationId};
 
     client.trackEvent({name: "my custom event", tagOverrides:operationIdOverride, properties: {customProperty2: "custom property value"}});
-    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride);
+    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride});
     client.trackMetric({name: "custom metric", value: 3, tagOverrides:operationIdOverride});
     client.trackTrace({message: "trace message", tagOverrides:operationIdOverride});
     client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:operationIdOverride});
@@ -679,14 +679,11 @@ az webapp log tail --resource-group <RESOURCE_GROUP_NAME> --name <FUNCTION_APP_N
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Protokoly streamování můžete povolit pomocí [Azure PowerShell](/powershell/azure/overview). Pro prostředí PowerShell pomocí následujících příkazů přidejte svůj účet Azure, vyberte své předplatné a soubory protokolu streamu:
+Protokoly streamování můžete povolit pomocí [Azure PowerShell](/powershell/azure/). Pro prostředí PowerShell pomocí příkazu [set-AzWebApp](/powershell/module/az.websites/set-azwebapp) Povolte protokolování aplikace Function App, jak je znázorněno v následujícím fragmentu kódu: 
 
-```powershell
-Add-AzAccount
-Get-AzSubscription
-Get-AzSubscription -SubscriptionName "<subscription name>" | Select-AzSubscription
-Get-AzWebSiteLog -Name <FUNCTION_APP_NAME> -Tail
-```
+:::code language="powershell" source="~/powershell_scripts/app-service/monitor-with-logs/monitor-with-logs.ps1" range="19-20":::
+
+Další informace naleznete v tématu [úplný příklad kódu](../app-service/scripts/powershell-monitor.md#sample-script). 
 
 ## <a name="scale-controller-logs-preview"></a>Škálování protokolů řadiče (Preview)
 
@@ -732,7 +729,7 @@ Pokud chcete zakázat integrované protokolování, odstraňte `AzureWebJobsDash
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v následujících materiálech:
+Další informace naleznete v následujících zdrojích:
 
 * [Application Insights](/azure/application-insights/)
 * [Protokolování ASP.NET Core](/aspnet/core/fundamentals/logging/)

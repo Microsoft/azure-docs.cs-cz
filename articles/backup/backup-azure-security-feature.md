@@ -4,16 +4,16 @@ description: Naučte se používat funkce zabezpečení v Azure Backup k zajišt
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.openlocfilehash: 24dc108ce4d9c991b1e062c0435b38a63899a249
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d8f8d6937cd93a9da9c82b2ed501c9fbb815b11
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82186766"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079345"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Funkce zabezpečení, které vám pomůžou chránit hybridní zálohy, které používají Azure Backup
 
-Problémy se zabezpečením, jako je malware, ransomwarem a vniknutí, se zvyšují. Tyto problémy se zabezpečením můžou být nákladné, s ohledem na peníze i data. Z důvodu ochrany proti takovým útokům teď Azure Backup poskytuje funkce zabezpečení, které vám pomůžou chránit hybridní zálohy. Tento článek popisuje, jak povolit a používat tyto funkce pomocí agenta Azure Recovery Services a Azure Backup Server. Mezi tyto funkce patří:
+Problémy se zabezpečením, jako je malware, ransomwarem a vniknutí, se zvyšují. Tyto problémy se zabezpečením můžou být nákladné, s ohledem na peníze i data. Z důvodu ochrany proti takovým útokům teď Azure Backup poskytuje funkce zabezpečení, které vám pomůžou chránit hybridní zálohy. Tento článek popisuje, jak povolit a používat tyto funkce pomocí agenta Azure Recovery Services a Azure Backup Server. Patří k nim:
 
 - **Prevence**. Další úroveň ověřování se přidá vždy, když se provede kritická operace, jako je změna hesla. Ověření je zajištěno, že tyto operace mohou provádět pouze uživatelé, kteří mají platné přihlašovací údaje Azure.
 - **Výstrahy**. Správci předplatného se pošle e-mailové oznámení vždy, když se provede kritická operace, jako je odstraňování zálohovaných dat. Tento e-mail zajistí, že se uživateli na tyto akce rychle pošle oznámení.
@@ -48,7 +48,7 @@ Pokud vytváříte Recovery Services trezor, můžete použít všechny funkce z
     ![Snímek obrazovky s vlastnostmi trezoru Recovery Services](./media/backup-azure-security-feature/security-settings-update.png)
 
     Odkaz na aktualizaci otevře okno **nastavení zabezpečení** , které poskytuje souhrn funkcí a umožňuje jejich povolení.
-5. V rozevíracím seznamu jste **nakonfigurovali azure Multi-Factor Authentication?** vyberte hodnotu a potvrďte, jestli jste povolili [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md). Pokud je tato možnost povolená, budete požádáni o ověření z jiného zařízení (například mobilního telefonu) při přihlašování k Azure Portal.
+5. V rozevíracím seznamu jste **nakonfigurovali azure Multi-Factor Authentication?** vyberte hodnotu a potvrďte, jestli jste povolili [Azure Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md). Pokud je tato možnost povolená, budete požádáni o ověření z jiného zařízení (například mobilního telefonu) při přihlašování k Azure Portal.
 
    Když provádíte kritické operace zálohování, musíte zadat bezpečnostní kód PIN, který je k dispozici na Azure Portal. Povolením Azure Multi-Factor Authentication přidáte vrstvu zabezpečení. K Azure Portal mají přístup jenom autorizovaní uživatelé s platnými přihlašovacími údaji Azure a ověřené z druhého zařízení.
 6. Nastavení zabezpečení uložíte tak, že vyberete **Povolit** a kliknete na **Uložit**. Můžete vybrat **Povolit** až po výběru hodnoty z v seznamu, **který jste nakonfigurovali v Azure Multi-Factor Authentication?** v předchozím kroku.
@@ -88,7 +88,7 @@ V rámci přidání dodatečné úrovně ověřování pro kritické operace bud
 
 Chcete-li získat tento kód PIN:
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 2. Přejděte na **Recovery Services**  >  **Settings**  >  **vlastnosti**nastavení trezoru.
 3. V části **bezpečnostní kód PIN**klikněte na **vygenerovat**. Otevře se okno, které obsahuje PIN kód, který se má zadat v uživatelském rozhraní agenta Azure Recovery Services.
     Tento kód PIN je platný jenom po dobu pěti minut a po uplynutí této doby se vygeneruje automaticky.

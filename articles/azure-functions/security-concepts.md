@@ -3,19 +3,20 @@ title: Zabezpečení Azure Functions
 description: Přečtěte si, jak zajistit, aby byl kód vaší funkce běžící v Azure lépe zabezpečený před běžnými útoky.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 692e8420bda1e7baa8521dd6caaf5eef183823fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bdb012c3f379b1e0314364f79ccc4aa49eba4bd3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259418"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079685"
 ---
 # <a name="securing-azure-functions"></a>Zabezpečení Azure Functions
 
-V mnoha ohledech je plánování bezpečného vývoje, nasazení a provozu funkcí bez serveru stejné jako u všech webových nebo cloudových aplikací, které hostují. [Azure App Service](/azure/app-service/) poskytuje infrastrukturu hostování pro aplikace Function App. Tento článek poskytuje strategie zabezpečení pro spuštění kódu funkce a způsob, jakým App Service vám může pomáhat zabezpečit vaše funkce. 
+V mnoha ohledech je plánování bezpečného vývoje, nasazení a provozu funkcí bez serveru stejné jako u všech webových nebo cloudových aplikací, které hostují. [Azure App Service](../app-service/index.yml) poskytuje infrastrukturu hostování pro aplikace Function App. Tento článek poskytuje strategie zabezpečení pro spuštění kódu funkce a způsob, jakým App Service vám může pomáhat zabezpečit vaše funkce. 
 
 [!INCLUDE [app-service-security-intro](../../includes/app-service-security-intro.md)]
 
-Sadu doporučení zabezpečení, která se řídí [srovnávacím testem zabezpečení Azure](/azure/security/benchmarks/overview), najdete v tématu [základní informace o zabezpečení Azure pro Azure Functions](security-baseline.md).
+Sadu doporučení zabezpečení, která se řídí [srovnávacím testem zabezpečení Azure](../security/benchmarks/overview.md), najdete v tématu [základní informace o zabezpečení Azure pro Azure Functions](security-baseline.md).
 
 ## <a name="secure-operation"></a>Zabezpečená operace 
 
@@ -61,7 +62,7 @@ Následující tabulka porovnává použití různých druhů přístupových kl
 |-----------------------------------------------|--------------------------|--------------------|
 | Spustit funkci                            | Konkrétní funkce        | Funkce           |
 | Spustit funkci                            | Libovolná funkce             | Funkce nebo hostitel   |
-| Volání koncového bodu správce                        | Function App             | Hostitel (jenom Master) |
+| Volání koncového bodu správce                        | Aplikace funkcí             | Hostitel (jenom Master) |
 | Volání rozhraní API pro rozšíření trvalých úloh              | Aplikace Function App<sup>1</sup> | Systém<sup>2</sup> |
 | Volání Webhooku specifického pro rozšíření (interní) | Aplikace Function App<sup>1</sup> | systém<sup>2</sup> |
 

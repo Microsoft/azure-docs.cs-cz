@@ -8,11 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: 97399635399c12022006ac95e60c5828bf2a9dc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 975dcc357e244469f33385f84f2e15a89997597b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76905435"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078214"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>Migrace aplikací a řešení z BizTalk Services na Azure Logic Apps
 
@@ -34,7 +35,7 @@ Tato tabulka mapuje BizTalk Services možností Logic Apps.
 | BizTalk Services   | Logic Apps            | Účel                      |
 | ------------------ | --------------------- | ---------------------------- |
 | Konektor          | Konektor             | Odesílání a příjem dat   |
-| Bridge             | Aplikace logiky             | Procesor kanálu           |
+| Most             | Aplikace logiky             | Procesor kanálu           |
 | Ověřit fázi     | Akce ověřování XML | Ověření dokumentu XML proti schématu | 
 | Fáze obohacení       | Datové tokeny           | Zvýšení úrovně vlastností na zprávy nebo pro rozhodování o směrování |
 | Fáze transformace    | Akce transformace      | Převod zpráv XML z jednoho formátu na jiný |
@@ -52,13 +53,13 @@ BizTalk Services má několik typů artefaktů.
 
 Konektory BizTalk Services umožňují mostům odesílat a přijímat data, včetně obousměrných mostů, které umožňují interakci s požadavky a odpovědí založenými na protokolu HTTP. Logic Apps používá stejnou terminologii a má stovky konektorů, které slouží ke stejnému účelu připojením k široké škále technologií a služeb. Například konektory jsou k dispozici pro cloudové služby SaaS a PaaS, jako jsou OneDrive, Office 365, Dynamics CRM a další, a navíc místní systémy prostřednictvím místní brány dat, která nahrazuje službu BizTalk Adapter Service pro BizTalk Services. Zdroje v BizTalk Services jsou omezeny na FTP, SFTP a Service Bus a v předplatném tématu.
 
-![](media/logic-apps-move-from-mabs/sources.png)
+![Diagram znázorňující tok BizTalk Services.](media/logic-apps-move-from-mabs/sources.png)
 
 Ve výchozím nastavení má každý most koncový bod HTTP, který je nakonfigurovaný pomocí běhové adresy a relativních vlastností adresy pro daný most. Chcete-li dosáhnout stejných výsledků s Logic Apps, použijte akci [a akce odpovědi](../connectors/connectors-native-reqres.md) .
 
 ## <a name="xml-processing-and-bridges"></a>Zpracování a mosty XML
 
-V BizTalk Services je most analogicky podobný kanálu zpracování. Most může přijímat data přijatá z konektoru, dělat práci s daty a odesílat výsledky do jiného systému. Logic Apps stejně podporuje stejné vzory interakce založené na kanálech jako BizTalk Services a také poskytuje další způsoby integrace. [Most požadavků a odpovědí XML](https://msdn.microsoft.com/library/azure/hh689781.aspx) v BizTalk Services se označuje jako kanál VETER, který se skládá z fází, které provádějí tyto úlohy:
+V BizTalk Services je most analogicky podobný kanálu zpracování. Most může přijímat data přijatá z konektoru, dělat práci s daty a odesílat výsledky do jiného systému. Logic Apps stejně podporuje stejné vzory interakce založené na kanálech jako BizTalk Services a také poskytuje další způsoby integrace. [Most požadavků a odpovědí XML](/previous-versions/azure/hh689781(v=azure.100)) v BizTalk Services se označuje jako kanál VETER, který se skládá z fází, které provádějí tyto úlohy:
 
 * (V) ověřit
 * (E) obohacení
@@ -68,7 +69,7 @@ V BizTalk Services je most analogicky podobný kanálu zpracování. Most může
 
 Tento obrázek ukazuje, jak je rozděleno mezi požadavky a odpověďmi, což zajišťuje kontrolu nad žádostí a cestami odpovědí samostatně, například pomocí různých map pro každou cestu:
 
-![](media/logic-apps-move-from-mabs/xml-request-reply.png)
+![Snímek obrazovky, který ukazuje, jak je zpracování rozděleno mezi požadavky a odpověď.](media/logic-apps-move-from-mabs/xml-request-reply.png)
 
 Také jednosměrné most XML přidává na začátku a na konci zpracování fáze dekódování a kódování. Předávací most obsahuje jednu fázi obohacení.
 
@@ -90,7 +91,7 @@ V BizTalk Services fáze transformace převede jeden formát zprávy založený 
 
 BizTalk Services provede rozhodnutí směrování, ke kterému koncovému bodu nebo konektoru odesílají příchozí zprávy nebo data. Možnost výběru z předem nakonfigurovaných koncových bodů je možná pomocí možnosti směrovacího filtru:
 
-![](media/logic-apps-move-from-mabs/route-filter.png)
+![Snímek obrazovky, který zobrazuje možnost směrovacího filtru.](media/logic-apps-move-from-mabs/route-filter.png)
 
 V BizTalk Services platí, že pokud jsou k dispozici pouze dvě možnosti, použití *podmínky* je nejlepším způsobem, jak převést filtry směrování v BizTalk Services. Pokud existuje více než dva, použijte **přepínač**.
 
@@ -102,7 +103,7 @@ Při zpracování BizTalk Services přidá fáze obohacení vlastnosti do kontex
 
 ### <a name="run-custom-code"></a>Spustit vlastní kód
 
-BizTalk Services umožňuje [Spustit vlastní kód](https://msdn.microsoft.com/library/azure/dn232389.aspx) , který se nahraje ve vlastních sestaveních. Tuto funkci implementuje rozhraní [IMessageInspector](https://msdn.microsoft.com/library/microsoft.biztalk.services.imessageinspector) . Každá fáze v mostu obsahuje dvě vlastnosti (při kontrole a při ukončení), které poskytují typ rozhraní .NET, který jste vytvořili, který implementuje toto rozhraní. Vlastní kód umožňuje provádět složitější zpracování dat a umožňuje znovu použít existující kód v sestaveních, která provádějí běžné obchodní logiky. 
+BizTalk Services umožňuje [Spustit vlastní kód](/previous-versions/azure/dn232389(v=azure.100)) , který se nahraje ve vlastních sestaveních. Tuto funkci implementuje rozhraní [IMessageInspector](/azure/logic-apps/logic-apps-move-from-mabs) . Každá fáze v mostu obsahuje dvě vlastnosti (při kontrole a při ukončení), které poskytují typ rozhraní .NET, který jste vytvořili, který implementuje toto rozhraní. Vlastní kód umožňuje provádět složitější zpracování dat a umožňuje znovu použít existující kód v sestaveních, která provádějí běžné obchodní logiky. 
 
 Logic Apps poskytuje dva hlavní způsoby spouštění vlastního kódu: Azure Functions a API Apps. Azure Functions lze vytvořit a volat z Logic Apps. Přečtěte si téma [Přidání a spuštění vlastního kódu pro Logic Apps prostřednictvím Azure Functions](../logic-apps/logic-apps-azure-functions.md). K vytvoření vlastních triggerů a akcí použijte API Apps, součást Azure App Service. Přečtěte si další informace o [Vytvoření vlastního rozhraní API pro použití s Logic Apps](../logic-apps/logic-apps-create-api-app.md). 
 

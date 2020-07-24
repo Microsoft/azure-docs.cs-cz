@@ -9,12 +9,12 @@ ms.subservice: faq
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: cf58b62001ce5d193e3a06973215d82138ad4b59
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 8170cfcbbf200c6ba5030aff5716f46b537d8c97
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855596"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080467"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Nejčastější dotazy ke škálovacím sadám virtuálních počítačů Azure
 
@@ -28,7 +28,7 @@ Sada škálování může mít 0 až 1 000 virtuálních počítačů založený
 
 ### <a name="are-data-disks-supported-within-scale-sets"></a>Podporují se ve škálovacích sadách datové disky?
 
-Ano. Škálovací sada může definovat konfiguraci připojených datových jednotek, která se použije na všechny virtuální počítače v sadě. Další informace najdete v tématu [Škálovací sady Azure a připojené datové disky](virtual-machine-scale-sets-attached-disks.md). Další možnosti ukládání dat zahrnují:
+Yes. Škálovací sada může definovat konfiguraci připojených datových jednotek, která se použije na všechny virtuální počítače v sadě. Další informace najdete v tématu [Škálovací sady Azure a připojené datové disky](virtual-machine-scale-sets-attached-disks.md). Další možnosti ukládání dat zahrnují:
 
 * Soubory Azure (sdílené jednotky SMB)
 * Jednotka operačního systému
@@ -64,22 +64,22 @@ Oblastní sada pro škálování (mimo oblast) používá *skupiny umístění*,
 
 ### <a name="do-scale-sets-work-with-azure-availability-zones"></a>Fungují sady škálování s využitím zón dostupnosti Azure?
 
-Ano! Další informace najdete v [dokumentu zóna sady škálování](./virtual-machine-scale-sets-use-availability-zones.md).
+Ano. Další informace najdete v [dokumentu zóna sady škálování](./virtual-machine-scale-sets-use-availability-zones.md).
 
 
 ## <a name="autoscale"></a>Automatické škálování
 
 ### <a name="what-are-best-practices-for-azure-autoscale"></a>Co jsou osvědčené postupy pro automatické škálování Azure?
 
-Osvědčené postupy pro automatické škálování najdete v tématu [osvědčené postupy pro automatické škálování virtuálních počítačů](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-autoscale-best-practices).
+Osvědčené postupy pro automatické škálování najdete v tématu [osvědčené postupy pro automatické škálování virtuálních počítačů](../azure-monitor/platform/autoscale-best-practices.md).
 
 ### <a name="where-do-i-find-metric-names-for-autoscaling-that-uses-host-based-metrics"></a>Kde najdu názvy metrik pro automatické škálování, které používá metriky založené na hostiteli?
 
-Názvy metrik pro automatické škálování, které používá metriky založené na hostiteli, najdete v tématu [podporované metriky s Azure monitor](https://azure.microsoft.com/documentation/articles/monitoring-supported-metrics/).
+Názvy metrik pro automatické škálování, které používá metriky založené na hostiteli, najdete v tématu [podporované metriky s Azure monitor](../azure-monitor/platform/metrics-supported.md).
 
 ### <a name="are-there-any-examples-of-autoscaling-based-on-an-azure-service-bus-topic-and-queue-length"></a>Existují nějaké příklady automatického škálování na základě Azure Service Busho tématu a délky fronty?
 
-Ano. Příklady automatického škálování na základě Azure Service Busho tématu a délky fronty najdete v tématu [Azure monitor automatické škálování běžných metrik](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/).
+Yes. Příklady automatického škálování na základě Azure Service Busho tématu a délky fronty najdete v tématu [Azure monitor automatické škálování běžných metrik](../azure-monitor/platform/autoscale-common-metrics.md).
 
 Pro Service Bus frontu použijte následující kód JSON:
 
@@ -104,9 +104,9 @@ Nahraďte příklady hodnot pomocí identifikátorů URI (Uniform Resource Ident
 
 Na virtuálním počítači můžete vytvořit nastavení automatického škálování, které bude používat metriky na úrovni hostitele nebo metriky na základě hostovaného operačního systému.
 
-Seznam podporovaných metrik najdete v tématu [Azure monitor automatické škálování běžných metrik](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-autoscale-common-metrics).
+Seznam podporovaných metrik najdete v tématu [Azure monitor automatické škálování běžných metrik](../azure-monitor/platform/autoscale-common-metrics.md).
 
-Úplnou ukázku pro Virtual Machine Scale Sets najdete v tématu [Pokročilá konfigurace automatického škálování pomocí Správce prostředků šablon pro Virtual Machine Scale Sets](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets).
+Úplnou ukázku pro Virtual Machine Scale Sets najdete v tématu [Pokročilá konfigurace automatického škálování pomocí Správce prostředků šablon pro Virtual Machine Scale Sets](../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md).
 
 Ukázka používá metriku CPU na úrovni hostitele a metriku počtu zpráv.
 
@@ -114,13 +114,13 @@ Ukázka používá metriku CPU na úrovni hostitele a metriku počtu zpráv.
 
 ### <a name="how-do-i-set-alert-rules-on-a-virtual-machine-scale-set"></a>Návody nastavit pravidla upozornění pro sadu škálování virtuálního počítače?
 
-Pomocí PowerShellu nebo rozhraní příkazového řádku Azure můžete vytvářet upozornění na metriky pro služby Virtual Machine Scale Sets. Další informace najdete v tématu ukázky rychlého startu ukázek [Azure monitor PowerShellu](https://azure.microsoft.com/documentation/articles/insights-powershell-samples/#create-alert-rules) a [Azure monitor pro rychlé zprovoznění CLI pro různé platformy](https://azure.microsoft.com/documentation/articles/insights-cli-samples/#work-with-alerts).
+Pomocí PowerShellu nebo rozhraní příkazového řádku Azure můžete vytvářet upozornění na metriky pro služby Virtual Machine Scale Sets. Další informace najdete v tématu ukázky rychlého startu ukázek [Azure monitor PowerShellu](../azure-monitor/samples/powershell-samples.md#create-metric-alerts) a [Azure monitor pro rychlé zprovoznění CLI pro různé platformy](../azure-monitor/samples/cli-samples.md#work-with-alerts).
 
 Parametrem targetresourceid sady škálování virtuálního počítače vypadá takto:
 
 /subscriptions/yoursubscriptionid/resourceGroups/yourresourcegroup/providers/Microsoft.Compute/virtualMachineScaleSets/yourvmssname
 
-Můžete zvolit libovolný čítač výkonu virtuálního počítače jako metriku pro nastavení výstrahy. Další informace najdete v článku [metriky hostovaného operačního systému Správce prostředků pro virtuální počítače s Windows](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-resource-manager-based-windows-vms) a [metriky hostovaného operačního systému pro virtuální počítače](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-linux-vms) se systémem Linux v článku věnovaném [Azure monitor automatické škálování běžných metrik](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/) .
+Můžete zvolit libovolný čítač výkonu virtuálního počítače jako metriku pro nastavení výstrahy. Další informace najdete v článku [metriky hostovaného operačního systému Správce prostředků pro virtuální počítače s Windows](../azure-monitor/platform/autoscale-common-metrics.md#guest-os-metrics-for-resource-manager-based-windows-vms) a [metriky hostovaného operačního systému pro virtuální počítače](../azure-monitor/platform/autoscale-common-metrics.md#guest-os-metrics-linux-vms) se systémem Linux v článku věnovaném [Azure monitor automatické škálování běžných metrik](../azure-monitor/platform/autoscale-common-metrics.md) .
 
 ### <a name="how-do-i-set-up-autoscale-on-a-virtual-machine-scale-set-by-using-powershell"></a>Návody nastavit automatické škálování pro sadu škálování virtuálního počítače pomocí PowerShellu?
 
@@ -159,7 +159,7 @@ Použijte následující kód JSON:
 
 Kód podporuje systémy Windows a Linux.
 
-Další informace najdete v tématu [Vytvoření nebo aktualizace sady škálování virtuálních počítačů](https://msdn.microsoft.com/library/mt589035.aspx).
+Další informace najdete v tématu [Vytvoření nebo aktualizace sady škálování virtuálních počítačů](/rest/api/compute/virtualmachinescalesets/createorupdate).
 
 
 ### <a name="how-do-i-use-self-signed-certificates-provisioned-for-azure-service-fabric-clusters"></a>Návody používat certifikáty podepsané svým držitelem zřízené pro clustery Azure Service Fabric?
@@ -169,11 +169,11 @@ V posledním příkladu použijte následující příkaz Azure CLI v prostřed�
 az sf cluster create -h
 ```
 
-Certifikáty podepsané svým držitelem se nedají použít pro distribuovanou důvěryhodnost poskytovanou certifikační autoritou a neměla by se používat pro žádný Service Fabric cluster určený k hostování podnikových produkčních řešení. Další Service Fabric doprovodné materiály k zabezpečení najdete v článku [osvědčené postupy zabezpečení Azure Service Fabric](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices) a [Service Fabric scénáře zabezpečení clusteru](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/).
+Certifikáty podepsané svým držitelem se nedají použít pro distribuovanou důvěryhodnost poskytovanou certifikační autoritou a neměla by se používat pro žádný Service Fabric cluster určený k hostování podnikových produkčních řešení. Další Service Fabric doprovodné materiály k zabezpečení najdete v článku [osvědčené postupy zabezpečení Azure Service Fabric](../security/fundamentals/service-fabric-best-practices.md) a [Service Fabric scénáře zabezpečení clusteru](../service-fabric/service-fabric-cluster-security.md).
 
 ### <a name="can-i-specify-an-ssh-key-pair-to-use-for-ssh-authentication-with-a-linux-virtual-machine-scale-set-from-a-resource-manager-template"></a>Můžu zadat pár klíčů SSH, který se má použít pro ověřování SSH se sadou škálování virtuálního počítače se systémem Linux ze šablony Správce prostředků?
 
-Ano. REST API pro **osProfile** se podobá standardnímu REST API virtuálního počítače.
+Yes. REST API pro **osProfile** se podobá standardnímu REST API virtuálního počítače.
 
 Zahrnout **osProfile** do šablony:
 
@@ -197,7 +197,7 @@ Zahrnout **osProfile** do šablony:
 
 Tento blok JSON se používá v [této šabloně Azure pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json).
 
-Další informace najdete v tématu [Vytvoření nebo aktualizace sady škálování virtuálních počítačů](https://msdn.microsoft.com/library/azure/mt589035.aspx#linuxconfiguration).
+Další informace najdete v tématu [Vytvoření nebo aktualizace sady škálování virtuálních počítačů](/rest/api/compute/virtualmachinescalesets/createorupdate#linuxconfiguration).
 
 ### <a name="how-do-i-remove-deprecated-certificates"></a>Návody odebrat zastaralé certifikáty?
 
@@ -224,10 +224,10 @@ Veřejné klíče SSH můžete zadat jako prostý text při vytváření virtuá
 }
 ```
 
-název elementu linuxConfiguration | Požaduje se | Typ | Description
+název elementu linuxConfiguration | Požaduje se | Typ | Popis
 --- | --- | --- | ---
 protokoly | No | Kolekce | Určuje konfiguraci klíče SSH pro operační systém Linux.
-cesta | Yes | Řetězec | Určuje cestu k souboru pro Linux, kde se mají najít klíče SSH nebo certifikát.
+program | Yes | Řetězec | Určuje cestu k souboru pro Linux, kde se mají najít klíče SSH nebo certifikát.
 keyData | Yes | Řetězec | Určuje veřejný klíč SSH kódovaný ve formátu base64.
 
 Příklad najdete v tématu [Šablona pro rychlý Start pro 101-VM-sshkey GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json).
@@ -240,7 +240,7 @@ K tomu může dojít, pokud se pokusíte znovu přidat stejný trezor namísto p
 
 Chcete-li přidat další tajné kódy ze stejného trezoru klíčů, aktualizujte $vmss. Properties. osProfile. tajných kódů [0]. vaultCertificates list.
 
-Očekávanou vstupní strukturu najdete v tématu [Vytvoření nebo aktualizace sady virtuálních počítačů](https://msdn.microsoft.com/library/azure/mt589035.aspx).
+Očekávanou vstupní strukturu najdete v tématu [Vytvoření nebo aktualizace sady virtuálních počítačů](/rest/api/compute/virtualmachinescalesets/createorupdate).
 
 Vyhledejte tajný klíč v objektu sady škálování virtuálního počítače, který je v trezoru klíčů. Pak přidejte odkaz na certifikát (adresa URL a název úložiště tajného klíče) do seznamu přidruženého k trezoru.
 
@@ -268,7 +268,7 @@ Certifikáty se přidávají do všech virtuálních počítačů, dokonce i tě
 
 ### <a name="where-do-i-put-certificates-for-linux-vms"></a>Kam můžu umístit certifikáty pro virtuální počítače se systémem Linux?
 
-Informace o tom, jak nasadit certifikáty pro virtuální počítače se systémem Linux, najdete v tématu [nasazení certifikátů do virtuálních počítačů z trezoru klíčů spravovaných zákazníkem](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/).
+Informace o tom, jak nasadit certifikáty pro virtuální počítače se systémem Linux, najdete v tématu [nasazení certifikátů do virtuálních počítačů z trezoru klíčů spravovaných zákazníkem](/archive/blogs/kv/deploy-certificates-to-vms-from-customer-managed-key-vault).
 
 ### <a name="how-do-i-add-a-new-vault-certificate-to-a-new-certificate-object"></a>Návody přidat nový certifikát trezoru do nového objektu Certificate?
 
@@ -304,7 +304,7 @@ Pokud vytvoříte virtuální počítač a potom aktualizujete tajný klíč v t
 
 Pokud chcete nasadit veřejné klíče. cer do sady škálování virtuálních počítačů, můžete vygenerovat soubor. pfx, který obsahuje jenom soubory. cer. K tomu použijte `X509ContentType = Pfx` . Například načtěte soubor. CER jako objekt x509Certificate2 v jazyce C# nebo PowerShell a potom zavolejte metodu.
 
-Další informace naleznete v tématu [Metoda certifikátu x509. Export (X509ContentType, String)](https://msdn.microsoft.com/library/24ww6yzk(v=vs.110.aspx)).
+Další informace naleznete v tématu [Metoda certifikátu x509. Export (X509ContentType, String)](/dotnet/api/system.security.cryptography.x509certificates.x509certificate.export?view=netcore-3.1#system_security_cryptography_x509certificates_x509certificate_export_system_security_cryptography_x509certificates_x509contenttype_system_string_).
 
 ### <a name="how-do-i-pass-in-certificates-as-base64-strings"></a>Návody certifikáty předávat jako řetězce base64?
 
@@ -334,9 +334,9 @@ Z hlediska kompatibility jsou škálovací sady virtuálních počítačů zákl
 
 Další informace najdete na webu [Centrum zabezpečení Microsoft](https://www.microsoft.com/TrustCenter/Compliance/PCI).
 
-### <a name="does-managed-identities-for-azure-resources-work-with-virtual-machine-scale-sets"></a>Pracují [spravované identity prostředků Azure](https://docs.microsoft.com/azure/active-directory/msi-overview) se službou Virtual Machine Scale Sets?
+### <a name="does-managed-identities-for-azure-resources-work-with-virtual-machine-scale-sets"></a>Pracují [spravované identity prostředků Azure](../active-directory/managed-identities-azure-resources/overview.md) se službou Virtual Machine Scale Sets?
 
-Ano. V šablonách rychlého startu Azure pro [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) a [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)se můžete podívat na příklady šablon MSI.
+Yes. V šablonách rychlého startu Azure pro [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) a [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)se můžete podívat na příklady šablon MSI.
 
 ## <a name="deleting"></a>odstraňování
 
@@ -436,7 +436,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
 ### <a name="how-do-i-execute-a-custom-script-thats-hosted-in-a-private-storage-account"></a>Návody spustit vlastní skript, který je hostovaný v privátním účtu úložiště?
 
-Pokud chcete spustit vlastní skript, který je hostovaný v privátním účtu úložiště, nastavte chráněná nastavení pomocí klíče a názvu účtu úložiště. Další informace najdete v tématu [rozšíření vlastních skriptů](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/#template-example-for-a-windows-vm-with-protected-settings).
+Pokud chcete spustit vlastní skript, který je hostovaný v privátním účtu úložiště, nastavte chráněná nastavení pomocí klíče a názvu účtu úložiště. Další informace najdete v tématu [rozšíření vlastních skriptů](../virtual-machines/extensions/custom-script-windows.md?toc=/azure/virtual-machines/windows/toc.json#property-managedidentity).
 
 ## <a name="passwords"></a>Hesla
 
@@ -448,7 +448,7 @@ Existují dva hlavní způsoby, jak změnit heslo pro virtuální počítače ve
 
     Aktualizujte přihlašovací údaje správce přímo v modelu sady škálování (například pomocí Azure Resource Explorer, PowerShellu nebo rozhraní příkazového řádku). Po aktualizaci sady škálování mají všechny nové virtuální počítače nové přihlašovací údaje. Existující virtuální počítače mají pouze nové přihlašovací údaje, pokud jsou přeobrazované.
 
-- Resetujte heslo pomocí rozšíření přístupu virtuálních počítačů. Ujistěte se, že dodržujete požadavky na heslo, jak je popsáno [zde](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm).
+- Resetujte heslo pomocí rozšíření přístupu virtuálních počítačů. Ujistěte se, že dodržujete požadavky na heslo, jak je popsáno [zde](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
 
     Použijte následující příklad PowerShellu:
 
@@ -469,7 +469,7 @@ Existují dva hlavní způsoby, jak změnit heslo pro virtuální počítače ve
 
 ### <a name="is-it-possible-to-assign-a-network-security-group-nsg-to-a-scale-set-so-that-it-applies-to-all-the-vm-nics-in-the-set"></a>Je možné přiřadit skupině škálování skupinu zabezpečení sítě (NSG), aby platila pro všechny síťové karty virtuálních počítačů v sadě?
 
-Ano. Skupinu zabezpečení sítě můžete použít přímo na sadu škálování tak, že na ni odkazujete v části networkInterfaceConfigurations profilu sítě. Příklad:
+Yes. Skupinu zabezpečení sítě můžete použít přímo na sadu škálování tak, že na ni odkazujete v části networkInterfaceConfigurations profilu sítě. Příklad:
 
 ```json
 "networkProfile": {
@@ -523,7 +523,7 @@ Pokud chcete nasadit sadu škálování virtuálního počítače do existujíc�
 
 ### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>Můžu použít sady škálování s akcelerovanými síťovými službami?
 
-Ano. Pokud chcete používat akcelerované síťové služby, nastavte enableAcceleratedNetworking na hodnotu true v nastavení networkInterfaceConfigurations sady škálování. Například
+Yes. Pokud chcete používat akcelerované síťové služby, nastavte enableAcceleratedNetworking na hodnotu true v nastavení networkInterfaceConfigurations sady škálování. Například
 
 ```json
 "networkProfile": {
@@ -566,7 +566,7 @@ Pokud chcete vytvořit sadu škálování virtuálního počítače, která kaž
 
 ### <a name="can-i-configure-a-scale-set-to-work-with-multiple-application-gateways"></a>Můžu nakonfigurovat sadu škálování tak, aby fungovala s více aplikačními bránami?
 
-Ano. ID prostředků pro více Application Gateway fond adres back-endu můžete přidat do seznamu _applicationGatewayBackendAddressPools_ v části _IPConfiguration_ v profilu sítě sady škálování.
+Yes. ID prostředků pro více Application Gateway fond adres back-endu můžete přidat do seznamu _applicationGatewayBackendAddressPools_ v části _IPConfiguration_ v profilu sítě sady škálování.
 
 ## <a name="scale"></a>Měřítko
 
@@ -635,7 +635,7 @@ Ano, prostředky sady škálování můžete přesunout do nového předplatnéh
 
 ### <a name="how-to-i-update-my-virtual-machine-scale-set-to-a-new-image-how-do-i-manage-patching"></a>Jak aktualizovat sadu škálování virtuálního počítače na novou image? Návody spravovat opravy?
 
-Pokud chcete aktualizovat sadu škálování virtuálního počítače na novou image a spravovat opravy, přečtěte si téma [upgrade sady škálování virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set).
+Pokud chcete aktualizovat sadu škálování virtuálního počítače na novou image a spravovat opravy, přečtěte si téma [upgrade sady škálování virtuálních počítačů](./virtual-machine-scale-sets-upgrade-scale-set.md).
 
 ### <a name="can-i-use-the-reimage-operation-to-reset-a-vm-without-changing-the-image-that-is-i-want-reset-a-vm-to-factory-settings-rather-than-to-a-new-image"></a>Můžu použít operaci obnovení obrazu k resetování virtuálního počítače bez změny image? (To znamená, že chci resetovat virtuální počítač na tovární nastavení, nikoli na nový obrázek.)
 
@@ -656,7 +656,7 @@ Požadované ID pracovního prostoru a workspaceKey najdete v pracovním prostor
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="how-do-i-turn-on-boot-diagnostics"></a>Návody zapnout diagnostiku spouštění?
 

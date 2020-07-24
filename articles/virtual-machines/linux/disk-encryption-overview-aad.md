@@ -8,14 +8,14 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: dbd44c5a90a656b804ff4e3bb9984a059ec3a89a
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 30edd5b8e9fbfdce9fb3061c1891ff0a68a50cc8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135421"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080246"
 ---
-# <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>Azure Disk Encryption s Azure AD (předchozí verze)
+# <a name="azure-disk-encryption-with-azure-active-directory-ad-previous-release"></a>Azure Disk Encryption s Azure Active Directory (AD) (předchozí verze)
 
 Nová vydaná verze Azure Disk Encryption eliminuje požadavek na poskytnutí parametru aplikace Azure Active Directory (Azure AD) pro povolení šifrování disku virtuálního počítače. V nové verzi už nebudete muset zadávat přihlašovací údaje Azure AD během kroku povolení šifrování. Všechny nové virtuální počítače musí být zašifrované bez parametrů aplikace Azure AD pomocí nové vydané verze. Pokyny k povolení šifrování disku virtuálního počítače pomocí nové verze najdete v tématu [Azure Disk Encryption pro virtuální počítače se systémem Linux](disk-encryption-overview.md). Virtuální počítače, které jsou už šifrované pomocí parametrů aplikace Azure AD, se pořád podporují a měly by se udržovat dál se syntaxí AAD.
 
@@ -47,9 +47,9 @@ Pokud chcete funkci Azure Disk Encryption povolit pomocí starší syntaxe param
   ```
 
 ### <a name="group-policy"></a>Zásady skupiny
- - Řešení Azure Disk Encryption využívá ochranu pomocí nástroje BitLocker pro virtuální počítače s Windows IaaS. Pro virtuální počítače připojené k doméně neinstalujte žádné zásady skupiny, které vynutily ochranu čipem TPM. Informace o Zásady skupiny možnosti **Povolení BitLockeru bez kompatibilního čipu TPM**najdete v tématu [Zásady skupiny BitLockeru](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1).
+ - Řešení Azure Disk Encryption využívá ochranu pomocí nástroje BitLocker pro virtuální počítače s Windows IaaS. Pro virtuální počítače připojené k doméně neinstalujte žádné zásady skupiny, které vynutily ochranu čipem TPM. Informace o Zásady skupiny možnosti **Povolení BitLockeru bez kompatibilního čipu TPM**najdete v tématu [Zásady skupiny BitLockeru](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1).
 
-- Zásady BitLockeru na virtuálních počítačích připojených k doméně s vlastním Zásady skupiny musí zahrnovat následující nastavení: [Konfigurace úložiště informací pro obnovení BitLockeru – > povolení 256ho obnovovacího klíče](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Azure Disk Encryption se nezdařila, pokud je nastavení vlastního Zásady skupiny BitLockeru nekompatibilní. V počítačích, které nemají správné nastavení zásad, použijte novou zásadu, vynutí aktualizaci nové zásady (gpupdate.exe/Force) a pak se v případě potřeby restartuje. 
+- Zásady BitLockeru na virtuálních počítačích připojených k doméně s vlastním Zásady skupiny musí zahrnovat následující nastavení: [Konfigurace úložiště informací pro obnovení BitLockeru – > povolení 256ho obnovovacího klíče](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Azure Disk Encryption se nezdařila, pokud je nastavení vlastního Zásady skupiny BitLockeru nekompatibilní. V počítačích, které nemají správné nastavení zásad, použijte novou zásadu, vynutí aktualizaci nové zásady (gpupdate.exe/Force) a pak se v případě potřeby restartuje. 
 
 ## <a name="encryption-key-storage-requirements"></a>Požadavky na úložiště šifrovacího klíče 
 

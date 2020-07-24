@@ -9,15 +9,15 @@ ms.subservice: management
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 0848d092c342b29c1839a4dd4cebd0bad62ea3ca
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 001b5d803dedad8de407480e668c9ec40a004ace
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023002"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080382"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Práce s velkými škálovacími sadami virtuálních počítačů
-Nyní můžete vytvořit [škálovací sady virtuálních počítačů](/azure/virtual-machine-scale-sets/) Azure s kapacitou až 1 000 virtuálních počítačů. V tomto dokumentu je _velká škálovací sada virtuálních počítačů_ definována jako škálovací sada umožňující škálování na více než 100 virtuálních počítačů. Tato funkce se nastavuje pomocí vlastnosti škálovací sady (_singlePlacementGroup=False_). 
+Nyní můžete vytvořit [škálovací sady virtuálních počítačů](./index.yml) Azure s kapacitou až 1 000 virtuálních počítačů. V tomto dokumentu je _velká škálovací sada virtuálních počítačů_ definována jako škálovací sada umožňující škálování na více než 100 virtuálních počítačů. Tato funkce se nastavuje pomocí vlastnosti škálovací sady (_singlePlacementGroup=False_). 
 
 Některé aspekty velkých škálovacích sad, například vyrovnávání zatížení a domény selhání, se chovají jinak než u standardních škálovacích sad. Tento dokument vysvětluje charakteristiky velkých škálovacích sad a popisuje vše, co potřebujete vědět pro jejich úspěšné použití ve vašich aplikacích. 
 
@@ -34,10 +34,10 @@ Následující požadavky vám pomůžou rozhodnout, jestli vaše aplikace můž
 - Škálovací sady vytvořené z vlastních imagí (image virtuálních počítačů, které si vytvoříte a nahrajete sami) je aktuálně možné škálovat až na 600 virtuálních počítačů.
 - Velké škálovací sady vyžadují Spravované disky Azure. Škálovací sady vytvořené bez Spravovaných disků vyžadují více účtů úložiště (jeden na každých 20 virtuálních počítačů). Velké škálovací sady jsou navržené pro práci výhradně se Spravovanými disky z důvodu snížení režijních nákladů na správu úložiště. Také se díky tomu vyhnete riziku, že narazíte na omezení předplatného pro účty úložiště. 
 - Velká škála (SPG = false) nepodporuje sítě InfiniBand.
-- Vyrovnávání zatížení úrovně 4 pomocí škálovacích sad, které se skládají z více skupin umístění, vyžaduje [skladovou položku služby Azure Load Balancer úrovně Standard](../load-balancer/load-balancer-standard-overview.md). Skladová položka služby Load Balancer úrovně Standard poskytuje další výhody, jako je například možnost vyrovnávat zatížení mezi několika škálovacími sadami. Standardní skladová položka také vyžaduje, aby škálovací sada byla přidružena ke skupině zabezpečení sítě, jinak fondy NAT nebudou správně fungovat. Pokud potřebujete použít skladovou položku služby Azure Load Balancer úrovně Basic, ujistěte se, že je škálovací sada nakonfigurována k používání jediné skupiny umístění, což je výchozí nastavení.
+- Vyrovnávání zatížení úrovně 4 pomocí škálovacích sad, které se skládají z více skupin umístění, vyžaduje [skladovou položku služby Azure Load Balancer úrovně Standard](../load-balancer/load-balancer-overview.md). Skladová položka služby Load Balancer úrovně Standard poskytuje další výhody, jako je například možnost vyrovnávat zatížení mezi několika škálovacími sadami. Standardní skladová položka také vyžaduje, aby škálovací sada byla přidružena ke skupině zabezpečení sítě, jinak fondy NAT nebudou správně fungovat. Pokud potřebujete použít skladovou položku služby Azure Load Balancer úrovně Basic, ujistěte se, že je škálovací sada nakonfigurována k používání jediné skupiny umístění, což je výchozí nastavení.
 - Vyrovnávání zatížení úrovně 7 pomocí služby Azure Application Gateway je podporováno pro všechny škálovací sady.
 - Škálovací sada je definována s jednou podsítí – ujistěte se, že má vaše podsíť dostatečně velký adresní prostor pro všechny požadované virtuální počítače. Škálovací sada ve výchozím nastavení provádí nadměrné zřizování (během nasazování nebo při horizontálním navyšováním kapacity vytváří virtuální počítače navíc, které se vám neúčtují) pro zvýšení spolehlivosti nasazení a výkonu. Počítejte s adresním prostorem o 20 % větším, než je počet virtuálních počítačů, na který plánujete škálovat.
-- Domény selhání a upgradovací domény jsou konzistentní pouze v rámci skupiny umístění. Tato architektura nemění celkovou dostupnost škálovací sady, protože virtuální počítače jsou rovnoměrně distribuované mezi rozdílný fyzický hardware. Znamená to ale, že pokud potřebujete zajistit, aby byly dva virtuální počítače na různém hardwaru, nesmíte je zapomenout umístit do různých domén selhání ve stejné skupině umístění. Přečtěte si prosím tuto [možnost dostupnosti](/azure/virtual-machines/windows/availability)odkazů. 
+- Domény selhání a upgradovací domény jsou konzistentní pouze v rámci skupiny umístění. Tato architektura nemění celkovou dostupnost škálovací sady, protože virtuální počítače jsou rovnoměrně distribuované mezi rozdílný fyzický hardware. Znamená to ale, že pokud potřebujete zajistit, aby byly dva virtuální počítače na různém hardwaru, nesmíte je zapomenout umístit do různých domén selhání ve stejné skupině umístění. Přečtěte si prosím tuto [možnost dostupnosti](../virtual-machines/windows/availability.md)odkazů. 
 - Doména selhání a ID skupiny umístění jsou zobrazené v _zobrazení instance_ virtuálního počítače škálovací sady. Zobrazení instance virtuálního počítače škálovací sady můžete zobrazit v [Průzkumníku prostředků Azure](https://resources.azure.com/).
 
 ## <a name="creating-a-large-scale-set"></a>Vytvoření velké škálovací sady
@@ -84,5 +84,3 @@ Pokud chcete stávající škálovací sadu virtuálních počítačů rozšíř
 
 > [!NOTE]
 > U škálovací sady můžete změnit podporu pouze jedné skupiny umístění (výchozí chování) na podporu více skupin umístění, ale převod opačným směrem možný není. Proto se před převodem ujistěte, že rozumíte vlastnostem velkých škálovacích sad.
-
-

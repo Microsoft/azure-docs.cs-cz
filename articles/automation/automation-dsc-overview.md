@@ -10,12 +10,12 @@ ms.author: magoedte
 ms.date: 06/22/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6a1c6bb39e743a96ad110a60e41cc59306e7a2ae
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 437a917e0f9b6e7a7370e828c8e3ee95218cea3f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186380"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079736"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Přehled konfigurace stavu Azure Automation
 
@@ -73,7 +73,7 @@ Pro uzly s Windows se podporují tyto verze:
 >[!NOTE]
 >SKU samostatného produktového [serveru Microsoft Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-server-2016) neobsahuje implementaci DSC. Proto ho nejde spravovat pomocí prostředí PowerShell DSC nebo konfigurace stavu Azure Automation.
 
-Pro uzly se systémem Linux podporuje rozšíření DSC Linux všechna distribuce systému Linux uvedená v části [podporovaná distribuce systému Linux](https://github.com/Azure/azure-linux-extensions/tree/master/DSC#4-supported-linux-distributions).
+Pro uzly se systémem Linux podporuje rozšíření DSC Linux všechna distribuce systému Linux uvedená v [dokumentaci k prostředí POWERSHELL DSC](/powershell/scripting/dsc/getting-started/lnxgettingstarted).
 
 ### <a name="dsc-requirements"></a>Požadavky DSC
 

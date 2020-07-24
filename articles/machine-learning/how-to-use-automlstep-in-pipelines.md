@@ -11,19 +11,19 @@ author: lobrien
 manager: cgronlun
 ms.date: 06/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: f162aca8c30d890ecf662a88fb5f2182edb14c9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b8dfa37047113d84470f86cd67c601ebf48f793
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298238"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078097"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Použití automatizovaného ML v kanálu Azure Machine Learning v Pythonu
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Funkce automatizovaného škálování na základě Azure Machine Learning vám pomůže zjistit modely s vysokým výkonem bez nutnosti opětovné implementace každého možného přístupu. V kombinaci s Azure Machine Learning kanály můžete vytvářet nasaditelné pracovní postupy, které umožňují rychle zjistit algoritmus, který je pro vaše data nejvhodnější. V tomto článku se dozvíte, jak efektivně připojit krok přípravy dat k automatizovanému kroku ML. Automatizovaná ML může rychle zjistit algoritmus, který je pro vaše data nejvhodnější, a přitom vás zavede na cestách, aby MLOps a modeloval provozní životní cyklus s kanály.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
@@ -97,6 +97,8 @@ if not compute_name in ws.compute_targets :
 
 compute_target = ws.compute_targets[compute_name]
 ```
+
+[!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
 Mezilehlá data mezi přípravou dat a krokem automatizovaného ML se dají uložit do výchozího úložiště dat v pracovním prostoru, takže nepotřebujeme volat `get_default_datastore()` `Workspace` objekt. 
 
@@ -268,7 +270,7 @@ prepped_data = Dataset.get_by_name(ws, 'Data_prepared')
 
 Porovnávání dvou technik:
 
-| Technika |  | 
+| Technika | Výhody a nevýhody | 
 |-|-|
 |`PipelineOutputTabularDataset`| Vyšší výkon | 
 || Fyzická trasa z`PipelineData` | 

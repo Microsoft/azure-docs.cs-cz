@@ -6,15 +6,16 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 7c220ff2882e12f5239dbd5abc5f87b900cb3807
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ded36eeecb14eeac0ce3de37c8d01d99bc31491f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609390"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078179"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Referenční příručka schématu pro typy triggerů a akcí v Azure Logic Apps
 
-Tento odkaz popisuje obecné typy používané k identifikaci triggerů a akcí v definici pracovního postupu vaší aplikace logiky, která je popsána a ověřována [jazykem definice pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md). Pokud chcete najít triggery a akce konkrétního konektoru, které můžete použít ve svých aplikacích logiky, přečtěte si seznam v části [Přehled konektorů](https://docs.microsoft.com/connectors/).
+Tento odkaz popisuje obecné typy používané k identifikaci triggerů a akcí v definici pracovního postupu vaší aplikace logiky, která je popsána a ověřována [jazykem definice pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md). Pokud chcete najít triggery a akce konkrétního konektoru, které můžete použít ve svých aplikacích logiky, přečtěte si seznam v části [Přehled konektorů](/connectors/).
 
 <a name="triggers-overview"></a>
 
@@ -45,18 +46,18 @@ Triggery mají tyto prvky nejvyšší úrovně, i když jsou některé voliteln�
 
 *Požadováno*
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*Název aktivační události*> | Řetězec | Název triggeru | 
 | <*typ triggeru*> | Řetězec | Typ triggeru, například "http" nebo "vstupech apiconnection" | 
 | <*aktivační události – vstupy*> | JSON – objekt | Vstupy, které definují chování triggeru | 
 | <*Časová jednotka*> | Řetězec | Časová jednotka, která popisuje, jak často se Trigger aktivuje: "druhé", "Minute", "hodina", "den", "týden", "měsíc" | 
-| <*počet jednotek v čase*> | Integer | Hodnota, která určuje, jak často se Trigger aktivuje na základě frekvence, což je počet časových jednotek, které se mají počkat, dokud se Trigger znovu nespustí. <p>Tady jsou minimální a maximální intervaly: <p>-Month: 1-16 měsíců </br>Denní: 1-500 dní </br>-Hodina: 1 – 12000 hodin </br>-Minute: 1 – 72000 minut </br>-Sekunda: 1 – 9999999 sekund<p>Pokud má například interval hodnotu 6 a frekvence je "Month", opakování je každých 6 měsíců. | 
+| <*počet jednotek v čase*> | Celé číslo | Hodnota, která určuje, jak často se Trigger aktivuje na základě frekvence, což je počet časových jednotek, které se mají počkat, dokud se Trigger znovu nespustí. <p>Tady jsou minimální a maximální intervaly: <p>-Month: 1-16 měsíců </br>Denní: 1-500 dní </br>-Hodina: 1 – 12000 hodin </br>-Minute: 1 – 72000 minut </br>-Sekunda: 1 – 9999999 sekund<p>Pokud má například interval hodnotu 6 a frekvence je "Month", opakování je každých 6 měsíců. | 
 |||| 
 
 *Volitelné*
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*pole s podmínkami*> | Pole | Pole, které obsahuje jednu nebo více [podmínek](#trigger-conditions) , které určují, zda má být pracovní postup spuštěn. K dispozici pouze pro aktivační události. | 
 | <*Runtime – konfigurace – možnosti*> | JSON – objekt | Můžete změnit chování spuštění triggeru nastavením `runtimeConfiguration` vlastností. Další informace najdete v tématu [nastavení konfigurace modulu runtime](#runtime-config-options). | 
@@ -70,19 +71,19 @@ Každý typ triggeru má jiné rozhraní a vstupy, které definují chování tr
 
 ### <a name="built-in-triggers"></a>Předdefinované aktivační události
 
-| Typ aktivační události | Description | 
+| Typ aktivační události | Popis | 
 |--------------|-------------| 
 | [**HTTP**](#http-trigger) | Zkontroluje nebo provede *dotazování* libovolného koncového bodu. Tento koncový bod musí splňovat konkrétní kontrakt triggeru buď pomocí `202` asynchronního vzoru, nebo vrácením pole. | 
 | [**HTTPWebhook**](#http-webhook-trigger) | Vytvoří pro vaši aplikaci logiky volatelné koncové body, ale zavolá zadanou adresu URL k registraci nebo zrušení registrace. |
 | [**Opakování**](#recurrence-trigger) | Aktivuje se na základě definovaného plánu. Můžete nastavit budoucí datum a čas pro aktivaci této aktivační události. Na základě frekvence můžete zadat také časy a dny pro spuštění pracovního postupu. | 
-| [**Žádost**](#request-trigger)  | Vytvoří pro vaši aplikaci logiky volatelné koncové body, které se taky označuje jako Trigger "ruční". Podívejte se například na [pracovní postupy volání, Trigger nebo vnořování s koncovými body http](../logic-apps/logic-apps-http-endpoint.md). | 
+| [**Request**](#request-trigger)  | Vytvoří pro vaši aplikaci logiky volatelné koncové body, které se taky označuje jako Trigger "ruční". Podívejte se například na [pracovní postupy volání, Trigger nebo vnořování s koncovými body http](../logic-apps/logic-apps-http-endpoint.md). | 
 ||| 
 
 ### <a name="managed-api-triggers"></a>Spravované triggery rozhraní API
 
-| Typ aktivační události | Description | 
+| Typ aktivační události | Popis | 
 |--------------|-------------| 
-| [**Vstupech apiconnection**](#apiconnection-trigger) | Kontroluje nebo *dotazuje* koncový bod pomocí [rozhraní API spravovaných Microsoftem](../connectors/apis-list.md). | 
+| [**ApiConnection**](#apiconnection-trigger) | Kontroluje nebo *dotazuje* koncový bod pomocí [rozhraní API spravovaných Microsoftem](../connectors/apis-list.md). | 
 | [**Vstupech apiconnectionwebhook**](#apiconnectionwebhook-trigger) | Vytvoří pro vaši aplikaci logiky volatelné koncové body voláním [rozhraní API spravovaných Microsoftem](../connectors/apis-list.md) pro přihlášení k odběru a zrušení odběru. | 
 ||| 
 
@@ -125,35 +126,35 @@ Tato aktivační událost zkontroluje nebo provede *dotaz* na koncový bod pomoc
 
 *Požadováno*
 
-| Hodnota | Typ | Description |
+| Hodnota | Typ | Popis |
 |-------|------|-------------|
 | <*APIConnection_trigger_name*> | Řetězec | Název triggeru |
 | <*název připojení*> | Řetězec | Název připojení ke spravovanému rozhraní API, které používá pracovní postup |
 | <*typ metody*> | Řetězec | Metoda HTTP pro komunikaci se spravovaným rozhraním API: "GET", "PUT", "POST", "PATCH", "DELETE" |
 | <*rozhraní API – operace*> | Řetězec | Operace rozhraní API, která se má volat |
 | <*Časová jednotka*> | Řetězec | Časová jednotka, která popisuje, jak často se Trigger aktivuje: "druhé", "Minute", "hodina", "den", "týden", "měsíc" |
-| <*počet jednotek v čase*> | Integer | Hodnota, která určuje, jak často se Trigger aktivuje na základě frekvence, což je počet časových jednotek, které se mají počkat, dokud se Trigger znovu nespustí. <p>Tady jsou minimální a maximální intervaly: <p>-Month: 1-16 měsíců </br>Denní: 1-500 dní </br>-Hodina: 1 – 12000 hodin </br>-Minute: 1 – 72000 minut </br>-Sekunda: 1 – 9999999 sekund<p>Pokud má například interval hodnotu 6 a frekvence je "Month", opakování je každých 6 měsíců. |
+| <*počet jednotek v čase*> | Celé číslo | Hodnota, která určuje, jak často se Trigger aktivuje na základě frekvence, což je počet časových jednotek, které se mají počkat, dokud se Trigger znovu nespustí. <p>Tady jsou minimální a maximální intervaly: <p>-Month: 1-16 měsíců </br>Denní: 1-500 dní </br>-Hodina: 1 – 12000 hodin </br>-Minute: 1 – 72000 minut </br>-Sekunda: 1 – 9999999 sekund<p>Pokud má například interval hodnotu 6 a frekvence je "Month", opakování je každých 6 měsíců. |
 ||||
 
 *Volitelné*
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*opakování – chování*> | JSON – objekt | Přizpůsobuje chování opakování pro přerušované výpadky, které mají stavový kód 408, 429 a 5XX, a jakékoli výjimky připojení. Další informace najdete v tématu [zásady opakování](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
 | <*dotaz – parametry*> | JSON – objekt | Všechny parametry dotazu, které se mají zahrnout do volání rozhraní API Například `"queries": { "api-version": "2018-01-01" }` objekt přidá `?api-version=2018-01-01` do volání. | 
-| <*Max – běhy*> | Integer | Ve výchozím nastavení se instance pracovních postupů spouští ve stejnou dobu (souběžně nebo paralelně) až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete tento limit změnit nastavením nového <*počet*> hodnoty, přečtěte si téma [Změna souběžnosti triggeru](#change-trigger-concurrency). | 
-| <*Max-běhy-Queue*> | Integer | Pokud je v pracovním postupu již spuštěn maximální počet instancí, které lze změnit na základě `runtimeConfiguration.concurrency.runs` vlastnosti, budou všechny nové běhy vloženy do této fronty až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete změnit výchozí limit, přečtěte si téma [Změna limitu čekání na spuštění](#change-waiting-runs). | 
+| <*Max – běhy*> | Celé číslo | Ve výchozím nastavení se instance pracovních postupů spouští ve stejnou dobu (souběžně nebo paralelně) až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete tento limit změnit nastavením nového <*počet*> hodnoty, přečtěte si téma [Změna souběžnosti triggeru](#change-trigger-concurrency). | 
+| <*Max-běhy-Queue*> | Celé číslo | Pokud je v pracovním postupu již spuštěn maximální počet instancí, které lze změnit na základě `runtimeConfiguration.concurrency.runs` vlastnosti, budou všechny nové běhy vloženy do této fronty až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete změnit výchozí limit, přečtěte si téma [Změna limitu čekání na spuštění](#change-waiting-runs). | 
 | <*splitOn – výraz*> | Řetězec | Pro aktivační události, které vracejí pole, tento výraz odkazuje na pole, které se má použít, abyste mohli vytvořit a spustit instanci pracovního postupu pro každou položku pole, a ne použít smyčku For Each. <p>Tento výraz například reprezentuje položku v poli vrácené v obsahu těla triggeru:`@triggerbody()?['value']` |
 | <*operace – možnost*> | Řetězec | Výchozí chování můžete změnit nastavením `operationOptions` Vlastnosti. Další informace najdete v tématu [Možnosti operací](#operation-options). |
 ||||
 
 *Výstupy*
  
-| Prvek | Typ | Description |
+| Prvek | Typ | Popis |
 |---------|------|-------------|
 | záhlaví | JSON – objekt | Hlavičky z odpovědi |
 | text | JSON – objekt | Tělo odpovědi |
-| stavový kód | Integer | Stavový kód z odpovědi |
+| stavový kód | Celé číslo | Stavový kód z odpovědi |
 |||| 
 
 *Příklad*
@@ -219,7 +220,7 @@ Tato aktivační událost pošle požadavek na předplatné na koncový bod pomo
 
 *Požadováno*
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*název připojení*> | Řetězec | Název připojení ke spravovanému rozhraní API, které používá pracovní postup | 
 | <*text obsahu*> | JSON – objekt | Veškerý obsah zprávy, který se odešle jako datová část spravovanému rozhraní API | 
@@ -227,12 +228,12 @@ Tato aktivační událost pošle požadavek na předplatné na koncový bod pomo
 
 *Volitelné*
 
-| Hodnota | Typ | Description |
+| Hodnota | Typ | Popis |
 |-------|------|-------------|
 | <*opakování – chování*> | JSON – objekt | Přizpůsobuje chování opakování pro přerušované výpadky, které mají stavový kód 408, 429 a 5XX, a jakékoli výjimky připojení. Další informace najdete v tématu [zásady opakování](../logic-apps/logic-apps-exception-handling.md#retry-policies). |
 | <*dotaz – parametry*> | JSON – objekt | Všechny parametry dotazu, které se mají zahrnout do volání rozhraní API <p>Například `"queries": { "api-version": "2018-01-01" }` objekt přidá `?api-version=2018-01-01` do volání. |
-| <*Max – běhy*> | Integer | Ve výchozím nastavení se instance pracovních postupů spouští ve stejnou dobu (souběžně nebo paralelně) až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete tento limit změnit nastavením nového <*počet*> hodnoty, přečtěte si téma [Změna souběžnosti triggeru](#change-trigger-concurrency). |
-| <*Max-běhy-Queue*> | Integer | Pokud je v pracovním postupu již spuštěn maximální počet instancí, které lze změnit na základě `runtimeConfiguration.concurrency.runs` vlastnosti, budou všechny nové běhy vloženy do této fronty až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete změnit výchozí limit, přečtěte si téma [Změna limitu čekání na spuštění](#change-waiting-runs). | 
+| <*Max – běhy*> | Celé číslo | Ve výchozím nastavení se instance pracovních postupů spouští ve stejnou dobu (souběžně nebo paralelně) až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete tento limit změnit nastavením nového <*počet*> hodnoty, přečtěte si téma [Změna souběžnosti triggeru](#change-trigger-concurrency). |
+| <*Max-běhy-Queue*> | Celé číslo | Pokud je v pracovním postupu již spuštěn maximální počet instancí, které lze změnit na základě `runtimeConfiguration.concurrency.runs` vlastnosti, budou všechny nové běhy vloženy do této fronty až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete změnit výchozí limit, přečtěte si téma [Změna limitu čekání na spuštění](#change-waiting-runs). | 
 | <*splitOn – výraz*> | Řetězec | Pro aktivační události, které vracejí pole, tento výraz odkazuje na pole, které se má použít, abyste mohli vytvořit a spustit instanci pracovního postupu pro každou položku pole, a ne použít smyčku For Each. <p>Tento výraz například reprezentuje položku v poli vrácené v obsahu těla triggeru:`@triggerbody()?['value']` |
 | <*operace – možnost*> | Řetězec | Výchozí chování můžete změnit nastavením `operationOptions` Vlastnosti. Další informace najdete v tématu [Možnosti operací](#operation-options). | 
 |||| 
@@ -305,7 +306,7 @@ Tato aktivační událost pošle požadavek na zadaný koncový bod HTTP nebo HT
 | `method` | <*typ metody*> | Řetězec | Metoda, která se má použít pro odeslání odchozí žádosti: "GET", "PUT", "POST", "PATCH" nebo "DELETE" |
 | `uri` | <*HTTP-nebo-HTTPS-Endpoint-URL*> | Řetězec | Adresa URL koncového bodu HTTP nebo HTTPS, kam chcete odeslat odchozí požadavek. Maximální velikost řetězce: 2 KB <p>V případě služby nebo prostředku Azure Tato syntaxe identifikátoru URI zahrnuje ID prostředku a cestu k prostředku, ke kterému chcete získat přístup. |
 | `frequency` | <*Časová jednotka*> | Řetězec | Časová jednotka, která popisuje, jak často se Trigger aktivuje: "druhé", "Minute", "hodina", "den", "týden", "měsíc" |
-| `interval` | <*počet jednotek v čase*> | Integer | Hodnota, která určuje, jak často se Trigger aktivuje na základě frekvence, což je počet časových jednotek, které se mají počkat, dokud se Trigger znovu nespustí. <p>Tady jsou minimální a maximální intervaly: <p>-Month: 1-16 měsíců </br>Denní: 1-500 dní </br>-Hodina: 1 – 12000 hodin </br>-Minute: 1 – 72000 minut </br>-Sekunda: 1 – 9999999 sekund<p>Pokud má například interval hodnotu 6 a frekvence je "Month", opakování je každých 6 měsíců. |
+| `interval` | <*počet jednotek v čase*> | Celé číslo | Hodnota, která určuje, jak často se Trigger aktivuje na základě frekvence, což je počet časových jednotek, které se mají počkat, dokud se Trigger znovu nespustí. <p>Tady jsou minimální a maximální intervaly: <p>-Month: 1-16 měsíců </br>Denní: 1-500 dní </br>-Hodina: 1 – 12000 hodin </br>-Minute: 1 – 72000 minut </br>-Sekunda: 1 – 9999999 sekund<p>Pokud má například interval hodnotu 6 a frekvence je "Month", opakování je každých 6 měsíců. |
 |||||
 
 *Volitelné*
@@ -317,8 +318,8 @@ Tato aktivační událost pošle požadavek na zadaný koncový bod HTTP nebo HT
 | `body` | <*text obsahu*> | JSON – objekt | Obsah zprávy, která má být odeslána jako datová část s požadavkem |
 | `authentication` | <*hodnoty typu ověřování a vlastností*> | JSON – objekt | Model ověřování, který požadavek používá pro ověřování odchozích požadavků. Další informace najdete v tématu [Přidání ověřování do odchozích volání](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound). Kromě Scheduleru `authority` je tato vlastnost podporovaná. Pokud není zadaný, použije se výchozí hodnota `https://management.azure.com/` , ale můžete použít jinou hodnotu. |
 | `retryPolicy` > `type` | <*opakování – chování*> | JSON – objekt | Přizpůsobuje chování opakování pro přerušované výpadky, které mají stavový kód 408, 429 a 5XX, a jakékoli výjimky připojení. Další informace najdete v tématu [zásady opakování](../logic-apps/logic-apps-exception-handling.md#retry-policies). |
-| `runs` | <*Max – běhy*> | Integer | Ve výchozím nastavení se instance pracovních postupů spouští ve stejnou dobu (souběžně nebo paralelně) až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete tento limit změnit nastavením nového <*počet*> hodnoty, přečtěte si téma [Změna souběžnosti triggeru](#change-trigger-concurrency). |
-| `maximumWaitingRuns` | <*Max-běhy-Queue*> | Integer | Pokud je v pracovním postupu již spuštěn maximální počet instancí, které lze změnit na základě `runtimeConfiguration.concurrency.runs` vlastnosti, budou všechny nové běhy vloženy do této fronty až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete změnit výchozí limit, přečtěte si téma [Změna limitu čekání na spuštění](#change-waiting-runs). |
+| `runs` | <*Max – běhy*> | Celé číslo | Ve výchozím nastavení se instance pracovních postupů spouští ve stejnou dobu (souběžně nebo paralelně) až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete tento limit změnit nastavením nového <*počet*> hodnoty, přečtěte si téma [Změna souběžnosti triggeru](#change-trigger-concurrency). |
+| `maximumWaitingRuns` | <*Max-běhy-Queue*> | Celé číslo | Pokud je v pracovním postupu již spuštěn maximální počet instancí, které lze změnit na základě `runtimeConfiguration.concurrency.runs` vlastnosti, budou všechny nové běhy vloženy do této fronty až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete změnit výchozí limit, přečtěte si téma [Změna limitu čekání na spuštění](#change-waiting-runs). |
 | `operationOptions` | <*operace – možnost*> | Řetězec | Výchozí chování můžete změnit nastavením `operationOptions` Vlastnosti. Další informace najdete v tématu [Možnosti operací](#operation-options). |
 |||||
 
@@ -328,7 +329,7 @@ Tato aktivační událost pošle požadavek na zadaný koncový bod HTTP nebo HT
 |---------|------|-------------|
 | `headers` | JSON – objekt | Hlavičky z odpovědi |
 | `body` | JSON – objekt | Tělo odpovědi |
-| `status code` | Integer | Stavový kód z odpovědi |
+| `status code` | Celé číslo | Stavový kód z odpovědi |
 ||||
 
 *Požadavky na příchozí požadavky*
@@ -396,7 +397,7 @@ Některé hodnoty, například <*metody typu*>, jsou k dispozici pro `"subscribe
 
 *Požadováno*
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*typ metody*> | Řetězec | Metoda HTTP, která se má použít pro požadavek předplatného: "GET", "PUT", "POST", "PATCH" nebo "DELETE" | 
 | <*koncový bod – přihlášení k odběru – adresa URL*> | Řetězec | Adresa URL koncového bodu, kam se má odeslat žádost o předplatné | 
@@ -404,25 +405,25 @@ Některé hodnoty, například <*metody typu*>, jsou k dispozici pro `"subscribe
 
 *Volitelné*
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*typ metody*> | Řetězec | Metoda HTTP, která se má použít pro žádost o zrušení: "GET", "PUT", "POST", "PATCH" nebo "DELETE" | 
 | <*koncový bod – zrušení odběru adresy URL*> | Řetězec | Adresa URL koncového bodu, kam se má odeslat žádost o zrušení | 
 | <*text obsahu*> | Řetězec | Veškerý obsah zprávy pro odeslání v rámci předplatného nebo žádosti o zrušení | 
 | <*typ ověřování*> | JSON – objekt | Model ověřování, který požadavek používá pro ověřování odchozích požadavků. Další informace najdete v tématu [Přidání ověřování do odchozích volání](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound). |
 | <*opakování – chování*> | JSON – objekt | Přizpůsobuje chování opakování pro přerušované výpadky, které mají stavový kód 408, 429 a 5XX, a jakékoli výjimky připojení. Další informace najdete v tématu [zásady opakování](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
-| <*Max – běhy*> | Integer | Ve výchozím nastavení jsou instance pracovních postupů všechny spouštěny současně (souběžně nebo paralelně) až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete tento limit změnit nastavením nového <*počet*> hodnoty, přečtěte si téma [Změna souběžnosti triggeru](#change-trigger-concurrency). | 
-| <*Max-běhy-Queue*> | Integer | Pokud je v pracovním postupu již spuštěn maximální počet instancí, které lze změnit na základě `runtimeConfiguration.concurrency.runs` vlastnosti, budou všechny nové běhy vloženy do této fronty až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete změnit výchozí limit, přečtěte si téma [Změna limitu čekání na spuštění](#change-waiting-runs). | 
+| <*Max – běhy*> | Celé číslo | Ve výchozím nastavení jsou instance pracovních postupů všechny spouštěny současně (souběžně nebo paralelně) až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete tento limit změnit nastavením nového <*počet*> hodnoty, přečtěte si téma [Změna souběžnosti triggeru](#change-trigger-concurrency). | 
+| <*Max-běhy-Queue*> | Celé číslo | Pokud je v pracovním postupu již spuštěn maximální počet instancí, které lze změnit na základě `runtimeConfiguration.concurrency.runs` vlastnosti, budou všechny nové běhy vloženy do této fronty až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete změnit výchozí limit, přečtěte si téma [Změna limitu čekání na spuštění](#change-waiting-runs). | 
 | <*operace – možnost*> | Řetězec | Výchozí chování můžete změnit nastavením `operationOptions` Vlastnosti. Další informace najdete v tématu [Možnosti operací](#operation-options). | 
 |||| 
 
 *Výstupy* 
 
-| Prvek | Typ | Description |
+| Prvek | Typ | Popis |
 |---------|------|-------------| 
 | záhlaví | JSON – objekt | Hlavičky z odpovědi | 
 | text | JSON – objekt | Tělo odpovědi | 
-| stavový kód | Integer | Stavový kód z odpovědi | 
+| stavový kód | Celé číslo | Stavový kód z odpovědi | 
 |||| 
 
 *Příklad*
@@ -490,23 +491,23 @@ Tato aktivační událost se spouští na základě zadaného plánu opakování
 
 *Požadováno*
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*Časová jednotka*> | Řetězec | Časová jednotka, která popisuje, jak často se Trigger aktivuje: "druhé", "Minute", "hodina", "den", "týden", "měsíc" | 
-| <*počet jednotek v čase*> | Integer | Hodnota, která určuje, jak často se Trigger aktivuje na základě frekvence, což je počet časových jednotek, které se mají počkat, dokud se Trigger znovu nespustí. <p>Tady jsou minimální a maximální intervaly: <p>-Month: 1-16 měsíců </br>Denní: 1-500 dní </br>-Hodina: 1 – 12000 hodin </br>-Minute: 1 – 72000 minut </br>-Sekunda: 1 – 9999999 sekund<p>Pokud má například interval hodnotu 6 a frekvence je "Month", opakování je každých 6 měsíců. | 
+| <*počet jednotek v čase*> | Celé číslo | Hodnota, která určuje, jak často se Trigger aktivuje na základě frekvence, což je počet časových jednotek, které se mají počkat, dokud se Trigger znovu nespustí. <p>Tady jsou minimální a maximální intervaly: <p>-Month: 1-16 měsíců </br>Denní: 1-500 dní </br>-Hodina: 1 – 12000 hodin </br>-Minute: 1 – 72000 minut </br>-Sekunda: 1 – 9999999 sekund<p>Pokud má například interval hodnotu 6 a frekvence je "Month", opakování je každých 6 měsíců. | 
 |||| 
 
 *Volitelné*
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*počáteční – datum a čas – ve formátu-RRRR-MM-DDThh: mm: SS*> | Řetězec | Počáteční datum a čas v tomto formátu: <p>RRRR-MM-DDThh: mm: SS Pokud zadáte časové pásmo <p>-nebo- <p>RRRR-MM-DDThh: mm: ssZ, pokud nezadáte časové pásmo <p>Pokud například požadujete 18. září 2017 na 2:00 odp., zadejte "2017-09-18T14:00:00" a zadejte časové pásmo, například "Tichomoří (běžný čas"), nebo zadejte "2017-09-18T14:00:00Z" bez časového pásma. <p>**Poznámka:** Tento počáteční čas má v budoucnosti maximálně 49 let a musí následovat za [specifikací data a času ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) ve [formátu data](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)a času UTC, ale bez [posunu UTC](https://en.wikipedia.org/wiki/UTC_offset). Pokud nezadáte časové pásmo, je nutné na konci přidat písmeno "Z" bez mezer. Tento "Z" odkazuje na ekvivalentní [námořní čas](https://en.wikipedia.org/wiki/Nautical_time). <p>V případě jednoduchých plánů je počáteční čas prvním výskytem, ale u složitých plánů se Trigger neaktivuje dříve, než je čas spuštění. Další informace o počátečních datech a časech najdete v tématu [vytváření a plánování pravidelného spouštění úloh](../connectors/connectors-native-recurrence.md). | 
 | <*časové pásmo*> | Řetězec | Platí pouze v případě, že zadáte čas spuštění, protože tato aktivační událost nepřijímá [posun UTC](https://en.wikipedia.org/wiki/UTC_offset). Určete časové pásmo, které chcete použít. | 
 | <*jedna nebo více hodin*> | Celočíselné nebo celočíselné pole | Pokud zadáte "Day" nebo "Week" pro `frequency` , můžete zadat jedno nebo více celých čísel od 0 do 23, které jsou odděleny čárkami, jako hodiny dne, kdy chcete pracovní postup spustit. <p>Pokud například zadáte "10", "12" a "14", dostanete jako hodiny 10 DOP, 12 ODP a 2 ODP. | 
 | <*jedna nebo více minut – známky*> | Celočíselné nebo celočíselné pole | Pokud zadáte "Day" nebo "Week" pro `frequency` , můžete zadat jedno nebo více celých čísel od 0 do 59, které jsou odděleny čárkami, jako minuty hodiny, kdy chcete pracovní postup spustit. <p>Například můžete zadat "30" jako znak minuty a použít předchozí příklad pro hodiny dne, získáte 10:30 dop. 12:30 ODP. a 2:30 PM. | 
 | weekDays | Řetězec nebo pole řetězců | Pokud zadáte "Week" pro `frequency` , můžete zadat jeden nebo více dní, které jsou odděleny čárkami, pokud chcete spustit pracovní postup: "pondělí", "úterý", "Středa", "čtvrtek", "pátek", "Sobota" a "neděle" | 
-| <*Max – běhy*> | Integer | Ve výchozím nastavení jsou instance pracovních postupů všechny spouštěny současně (souběžně nebo paralelně) až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete tento limit změnit nastavením nového <*počet*> hodnoty, přečtěte si téma [Změna souběžnosti triggeru](#change-trigger-concurrency). | 
-| <*Max-běhy-Queue*> | Integer | Pokud je v pracovním postupu již spuštěn maximální počet instancí, které lze změnit na základě `runtimeConfiguration.concurrency.runs` vlastnosti, budou všechny nové běhy vloženy do této fronty až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete změnit výchozí limit, přečtěte si téma [Změna limitu čekání na spuštění](#change-waiting-runs). | 
+| <*Max – běhy*> | Celé číslo | Ve výchozím nastavení jsou instance pracovních postupů všechny spouštěny současně (souběžně nebo paralelně) až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete tento limit změnit nastavením nového <*počet*> hodnoty, přečtěte si téma [Změna souběžnosti triggeru](#change-trigger-concurrency). | 
+| <*Max-běhy-Queue*> | Celé číslo | Pokud je v pracovním postupu již spuštěn maximální počet instancí, které lze změnit na základě `runtimeConfiguration.concurrency.runs` vlastnosti, budou všechny nové běhy vloženy do této fronty až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete změnit výchozí limit, přečtěte si téma [Změna limitu čekání na spuštění](#change-waiting-runs). | 
 | <*operace – možnost*> | Řetězec | Výchozí chování můžete změnit nastavením `operationOptions` Vlastnosti. Další informace najdete v tématu [Možnosti operací](#operation-options). | 
 |||| 
 
@@ -568,7 +569,7 @@ Další informace a příklady pro tuto aktivační událost najdete v tématu [
 
 Tato aktivační událost umožní, aby se aplikace logiky vyvolala vytvořením koncového bodu, který může přijímat příchozí požadavky. Pro tuto aktivační událost zadejte schéma JSON, které popisuje a ověří datovou část nebo vstupy, které Trigger obdrží od příchozího požadavku. Schéma také usnadňuje odkazování na vlastnosti triggeru z pozdějších akcí pracovního postupu.
 
-Chcete-li zavolat tuto aktivační událost, je nutné použít `listCallbackUrl` rozhraní API, které je popsáno v [REST API služby pracovního postupu](https://docs.microsoft.com/rest/api/logic/workflows). Informace o tom, jak tento Trigger použít jako koncový bod HTTP, najdete v tématu [pracovní postupy volání, triggeru nebo vnoření pracovních postupů s koncovými body http](../logic-apps/logic-apps-http-endpoint.md).
+Chcete-li zavolat tuto aktivační událost, je nutné použít `listCallbackUrl` rozhraní API, které je popsáno v [REST API služby pracovního postupu](/rest/api/logic/workflows). Informace o tom, jak tento Trigger použít jako koncový bod HTTP, najdete v tématu [pracovní postupy volání, triggeru nebo vnoření pracovních postupů s koncovými body http](../logic-apps/logic-apps-http-endpoint.md).
 
 ```json
 "manual": {
@@ -599,7 +600,7 @@ Chcete-li zavolat tuto aktivační událost, je nutné použít `listCallbackUrl
 
 *Požadováno*
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*vlastnost – název*> | Řetězec | Název vlastnosti ve schématu JSON, která popisuje datovou část | 
 | <*typ vlastnosti*> | Řetězec | Typ vlastnosti | 
@@ -607,13 +608,13 @@ Chcete-li zavolat tuto aktivační událost, je nutné použít `listCallbackUrl
 
 *Volitelné*
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*typ metody*> | Řetězec | Metoda, kterou příchozí požadavky musí použít k volání aplikace logiky: "GET", "PUT", "POST", "PATCH", "DELETE" |
 | <*relativní – cesta-pro-přijatý parametr*> | Řetězec | Relativní cesta k parametru, který může adresa URL koncového bodu přijmout | 
 | <*požadované – vlastnosti*> | Pole | Jedna nebo více vlastností, které vyžadují hodnoty | 
-| <*Max – běhy*> | Integer | Ve výchozím nastavení jsou instance pracovních postupů všechny spouštěny současně (souběžně nebo paralelně) až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete tento limit změnit nastavením nového <*počet*> hodnoty, přečtěte si téma [Změna souběžnosti triggeru](#change-trigger-concurrency). | 
-| <*Max-běhy-Queue*> | Integer | Pokud je v pracovním postupu již spuštěn maximální počet instancí, které lze změnit na základě `runtimeConfiguration.concurrency.runs` vlastnosti, budou všechny nové běhy vloženy do této fronty až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete změnit výchozí limit, přečtěte si téma [Změna limitu čekání na spuštění](#change-waiting-runs). | 
+| <*Max – běhy*> | Celé číslo | Ve výchozím nastavení jsou instance pracovních postupů všechny spouštěny současně (souběžně nebo paralelně) až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete tento limit změnit nastavením nového <*počet*> hodnoty, přečtěte si téma [Změna souběžnosti triggeru](#change-trigger-concurrency). | 
+| <*Max-běhy-Queue*> | Celé číslo | Pokud je v pracovním postupu již spuštěn maximální počet instancí, které lze změnit na základě `runtimeConfiguration.concurrency.runs` vlastnosti, budou všechny nové běhy vloženy do této fronty až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete změnit výchozí limit, přečtěte si téma [Změna limitu čekání na spuštění](#change-waiting-runs). | 
 | <*operace – možnost*> | Řetězec | Výchozí chování můžete změnit nastavením `operationOptions` Vlastnosti. Další informace najdete v tématu [Možnosti operací](#operation-options). | 
 |||| 
 
@@ -771,7 +772,7 @@ Azure Logic Apps poskytuje různé typy akcí – každý s různými vstupy, kt
 
 *Požadováno*
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------|
 | <*název akce*> | Řetězec | Název akce | 
 | <*Typ akce*> | Řetězec | Typ akce, například "http" nebo "vstupech apiconnection"| 
@@ -782,7 +783,7 @@ Azure Logic Apps poskytuje různé typy akcí – každý s různými vstupy, kt
 
 *Volitelné*
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------|
 | <*opakování – chování*> | JSON – objekt | Přizpůsobuje chování opakování pro přerušované výpadky, které mají stavový kód 408, 429 a 5XX, a jakékoli výjimky připojení. Další informace najdete v tématu Zásady opakování. | 
 | <*Runtime – konfigurace – možnosti*> | JSON – objekt | U některých akcí můžete chování akce v době běhu změnit nastavením `runtimeConfiguration` vlastností. Další informace najdete v tématu [nastavení konfigurace modulu runtime](#runtime-config-options). | 
@@ -815,11 +816,11 @@ Tady jsou některé běžně používané typy akcí:
 
 ### <a name="built-in-actions"></a>Integrované akce
 
-| Typ akce | Description | 
+| Typ akce | Popis | 
 |-------------|-------------| 
-| [**Vytvořit**](#compose-action) | Vytvoří jeden výstup ze vstupů, které mohou mít různé typy. | 
+| [**Sestavit**](#compose-action) | Vytvoří jeden výstup ze vstupů, které mohou mít různé typy. | 
 | [**Spustit JavaScriptový kód**](#run-javascript-code) | Spustí fragmenty kódu JavaScriptu, které se vejdou do konkrétních kritérií. Požadavky na kód a další informace naleznete v tématu [Přidání a spuštění fragmentů kódu s vloženým kódem](../logic-apps/logic-apps-add-run-inline-code.md). |
-| [**Slouží**](#function-action) | Zavolá funkci Azure Function. | 
+| [**Funkce**](#function-action) | Zavolá funkci Azure Function. | 
 | [**HTTP**](#http-action) | Volá koncový bod HTTP. | 
 | [**Spojit**](#join-action) | Vytvoří řetězec ze všech položek v poli a oddělí tyto položky zadaným znakem oddělovače. | 
 | [**Analyzovat JSON**](#parse-json-action) | Vytvoří uživatelsky přívětivé tokeny z vlastností v obsahu JSON. Pak můžete odkazovat na tyto vlastnosti zahrnutím tokenů do aplikace logiky. | 
@@ -828,17 +829,17 @@ Tady jsou některé běžně používané typy akcí:
 | [**Vyberte**](#select-action) | Vytvoří pole s objekty JSON transformací položek z jiného pole na základě zadané mapy. | 
 | [**Stolní**](#table-action) | Vytvoří z pole tabulku CSV nebo HTML. | 
 | [**Ruší**](#terminate-action) | Zastaví aktivně běžící pracovní postup. | 
-| [**Wait**](#wait-action) | Pozastaví pracovní postup na určitou dobu nebo do zadaného data a času. | 
-| [**Pracovního postupu**](#workflow-action) | Vnoření pracovního postupu do jiného pracovního postupu. | 
+| [**Počkej**](#wait-action) | Pozastaví pracovní postup na určitou dobu nebo do zadaného data a času. | 
+| [**Pracovní postup**](#workflow-action) | Vnoření pracovního postupu do jiného pracovního postupu. | 
 ||| 
 
 <a name="managed-api-actions"></a>
 
 ### <a name="managed-api-actions"></a>Spravované akce rozhraní API
 
-| Typ akce | Description | 
+| Typ akce | Popis | 
 |-------------|-------------|  
-| [**Vstupech apiconnection**](#apiconnection-action) | Volá koncový bod HTTP pomocí [rozhraní API spravovaného Microsoftem](../connectors/apis-list.md). | 
+| [**ApiConnection**](#apiconnection-action) | Volá koncový bod HTTP pomocí [rozhraní API spravovaného Microsoftem](../connectors/apis-list.md). | 
 | [**Vstupech apiconnectionwebhook**](#apiconnectionwebhook-action) | Funguje jako Webhook HTTP, ale používá [rozhraní API spravované Microsoftem](../connectors/apis-list.md). | 
 ||| 
 
@@ -848,7 +849,7 @@ Tady jsou některé běžně používané typy akcí:
 
 Tyto akce vám pomůžou řídit spouštění pracovních postupů a zahrnovat další akce. Mimo akci pracovního postupu ovládacího prvku můžete přímo odkazovat na akce v rámci akce pracovního postupu ovládacího prvku. Například pokud máte `Http` v oboru nějakou akci, můžete odkazovat na `@body('Http')` výraz z libovolného místa v pracovním postupu. Akce, které existují v akci pracovního postupu řízení, ale mohou být spouštěny pouze za jinými akcemi, které jsou ve stejné struktuře pracovního postupu řízení.
 
-| Typ akce | Description | 
+| Typ akce | Popis | 
 |-------------|-------------| 
 | [**ForEach**](#foreach-action) | Spustí stejné akce ve smyčce pro každou položku v poli. | 
 | [**Přestože**](#if-action) | Spustí akce na základě toho, jestli je zadaná podmínka pravdivá, nebo false. | 
@@ -887,7 +888,7 @@ Tato akce odešle požadavek HTTP na [rozhraní API spravované Microsoftem](../
 
 *Požadováno*
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*název akce*> | Řetězec | Název akce poskytované konektorem | 
 | <*rozhraní API – název*> | Řetězec | Název rozhraní API spravovaného Microsoftem používaného pro připojení | 
@@ -897,7 +898,7 @@ Tato akce odešle požadavek HTTP na [rozhraní API spravované Microsoftem](../
 
 *Volitelné*
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*jiné – specifické pro akce-vstup – vlastnosti*> | JSON – objekt | Všechny další vstupní vlastnosti, které se vztahují na tuto konkrétní akci | 
 | <*opakování – chování*> | JSON – objekt | Přizpůsobuje chování opakování pro přerušované výpadky, které mají stavový kód 408, 429 a 5XX, a jakékoli výjimky připojení. Další informace najdete v tématu [zásady opakování](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
@@ -967,7 +968,7 @@ Některé hodnoty, například <*metody typu*>, jsou k dispozici pro `"subscribe
 
 *Požadováno*
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*název akce*> | Řetězec | Název akce poskytované konektorem | 
 | <*typ metody*> | Řetězec | Metoda HTTP, která se má použít k přihlášení k odběru nebo odhlášení odběru koncového bodu: "GET", "PUT", "POST", "PATCH" nebo "DELETE" | 
@@ -976,7 +977,7 @@ Některé hodnoty, například <*metody typu*>, jsou k dispozici pro `"subscribe
 
 *Volitelné*
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*rozhraní API – zrušení odběru adresy URL*> | Řetězec | Identifikátor URI, který se má použít k odhlášení odběru rozhraní API | 
 | <*Hlavička-obsah*> | JSON – objekt | Libovolná záhlaví, která se mají poslat v žádosti <p>Například chcete-li nastavit jazyk a typ pro požadavek: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
@@ -1006,9 +1007,9 @@ Tato akce vytvoří jeden výstup z více vstupů, včetně výrazů. Výstup i 
 
 *Požadováno* 
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
-| <*vstupy do sestavení*> | Všechny | Vstupy pro vytvoření jednoho výstupu | 
+| <*vstupy do sestavení*> | Libovolný | Vstupy pro vytvoření jednoho výstupu | 
 |||| 
 
 *Příklad 1*
@@ -1067,7 +1068,7 @@ Tato akce spustí fragment kódu JavaScriptu a vrátí výsledky prostřednictv�
 
 *Požadováno*
 
-| Hodnota | Typ | Description |
+| Hodnota | Typ | Popis |
 |-------|------|-------------|
 | <*JavaScript – fragment kódu*> | Různé | Kód JavaScriptu, který chcete spustit. Požadavky na kód a další informace naleznete v tématu [Přidání a spuštění fragmentů kódu s vloženým kódem](../logic-apps/logic-apps-add-run-inline-code.md). <p>V `code` atributu může fragment kódu jako vstup použít objekt jen pro čtení `workflowContext` . Tento objekt má podvlastnost, které přidávají vašemu kódu přístup k výsledkům triggeru a předchozím akcím v pracovním postupu. Další informace o `workflowContext` objektu naleznete [v tématu Referenční Trigger a výsledky akcí ve vašem kódu](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext). |
 ||||
@@ -1078,7 +1079,7 @@ Tato akce spustí fragment kódu JavaScriptu a vrátí výsledky prostřednictv�
 
 Pro `includeTrigger` atribut můžete zadat `true` nebo `false` hodnoty.
 
-| Hodnota | Typ | Description |
+| Hodnota | Typ | Popis |
 |-------|------|-------------|
 | <*předchozí akce*> | Pole řetězců | Pole se zadanými názvy akcí Použijte názvy akcí, které se zobrazí v definici pracovního postupu, kde názvy akcí používají podtržítka (_), ne mezery (""). |
 ||||
@@ -1144,7 +1145,7 @@ Tato akce volá dříve vytvořenou [funkci Azure Functions](../azure-functions/
 
 *Požadováno*
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------|  
 | <*Azure-Function-ID*> | Řetězec | ID prostředku pro funkci Azure, kterou chcete volat. Zde je formát pro tuto hodnotu:<p>"/Subscriptions/<*Azure-Subscription-ID*>/ResourceGroups/<*Azure-resource-group*>/Providers/Microsoft.Web/Sites/<*Azure-function-app-Name*>/Functions/<*Azure-Function-Name*>" | 
 | <*typ metody*> | Řetězec | Metoda HTTP, která se má použít pro volání funkce: "GET", "PUT", "POST", "PATCH" nebo "DELETE" <p>Pokud není zadán, výchozí hodnota je metoda "POST". | 
@@ -1152,7 +1153,7 @@ Tato akce volá dříve vytvořenou [funkci Azure Functions](../azure-functions/
 
 *Volitelné*
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------|  
 | <*Hlavička-obsah*> | JSON – objekt | Všechna záhlaví k odeslání pomocí volání <p>Například chcete-li nastavit jazyk a typ pro požadavek: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | <*text obsahu*> | JSON – objekt | Veškerý obsah zprávy, který se má odeslat v žádosti | 
@@ -1222,7 +1223,7 @@ Tato akce odešle požadavek na zadaný koncový bod HTTP nebo HTTPS a zkontrolu
 
 *Požadováno*
 
-| Vlastnost | Hodnota | Typ | Description |
+| Vlastnost | Hodnota | Typ | Popis |
 |----------|-------|------|-------------|
 | `method` | <*typ metody*> | Řetězec | Metoda, která se má použít pro odeslání odchozí žádosti: "GET", "PUT", "POST", "PATCH" nebo "DELETE" |
 | `uri` | <*HTTP-nebo-HTTPS-Endpoint-URL*> | Řetězec | Adresa URL koncového bodu HTTP nebo HTTPS, kam chcete odeslat odchozí požadavek. Maximální velikost řetězce: 2 KB <p>V případě služby nebo prostředku Azure Tato syntaxe identifikátoru URI zahrnuje ID prostředku a cestu k prostředku, ke kterému chcete získat přístup. |
@@ -1230,7 +1231,7 @@ Tato akce odešle požadavek na zadaný koncový bod HTTP nebo HTTPS a zkontrolu
 
 *Volitelné*
 
-| Vlastnost | Hodnota | Typ | Description |
+| Vlastnost | Hodnota | Typ | Popis |
 |----------|-------|------|-------------|
 | `headers` | <*Hlavička-obsah*> | JSON – objekt | Libovolná záhlaví, která je potřeba zahrnout do žádosti <p>Chcete-li například nastavit jazyk a typ: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | `queries` | <*dotaz – parametry*> | JSON – objekt | Všechny parametry dotazů, které je třeba v žádosti použít <p>Například `"queries": { "api-version": "2018-01-01" }` objekt přidá `?api-version=2018-01-01` do volání. |
@@ -1274,7 +1275,7 @@ Tato akce vytvoří řetězec ze všech položek v poli a oddělí tyto položky
 
 *Požadováno*
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*skupin*> | Pole | Pole nebo výraz, který poskytuje zdrojové položky. Pokud zadáte výraz, uzavřete tento výraz do dvojitých uvozovek. | 
 | <*oddělovač*> | Řetězec s jedním znakem | Znak, který odděluje každou položku v řetězci | 
@@ -1318,7 +1319,7 @@ Tato akce vytvoří uživatelsky přívětivá pole nebo *tokeny* z vlastností 
 
 *Požadováno*
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*JSON – zdroj*> | JSON – objekt | Obsah JSON, který chcete analyzovat | 
 | <*Schéma JSON*> | JSON – objekt | Schéma JSON, které popisuje základní obsah JSON, který akce používá pro analýzu zdrojového obsahu JSON. <p>**Tip**: v Návrháři Logic Apps můžete buď zadat schéma, nebo zadat ukázkovou datovou část, aby tato akce mohla generovat schéma. | 
@@ -1420,7 +1421,7 @@ Tato akce vytvoří pole z položek v jiném poli na základě zadané podmínky
 
 *Požadováno*
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*skupin*> | Pole | Pole nebo výraz, který poskytuje zdrojové položky. Pokud zadáte výraz, uzavřete tento výraz do dvojitých uvozovek. |
 | <*podmínka nebo filtr*> | Řetězec | Podmínka použitá pro filtrování položek ve zdrojovém poli <p>**Poznámka**: Pokud žádné hodnoty neodpovídají této podmínce, pak akce vytvoří prázdné pole. |
@@ -1461,14 +1462,14 @@ Tato akce vytvoří datovou část pro odpověď na požadavek HTTP.
 
 *Požadováno*
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
-| <*odpověď – stavový kód*> | Integer | Stavový kód protokolu HTTP, který je odeslán na příchozí požadavek. Výchozí kód je "200 OK", ale kód může být platný stavový kód, který začíná na 2xx, 4xx nebo 5xx, ale ne s 3xxx. | 
+| <*odpověď – stavový kód*> | Celé číslo | Stavový kód protokolu HTTP, který je odeslán na příchozí požadavek. Výchozí kód je "200 OK", ale kód může být platný stavový kód, který začíná na 2xx, 4xx nebo 5xx, ale ne s 3xxx. | 
 |||| 
 
 *Volitelné*
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*odpovědi – hlavičky*> | JSON – objekt | Jedna nebo více hlaviček, které mají být zahrnuty do odpovědi | 
 | <*text odpovědi*> | Některé | Tělo odpovědi, což může být řetězec, objekt JSON nebo i binární obsah z předchozí akce | 
@@ -1536,7 +1537,7 @@ Tato akce vytvoří pole s objekty JSON transformací položek z jiného pole na
 
 *Požadováno* 
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*skupin*> | Pole | Pole nebo výraz, který poskytuje zdrojové položky. Ujistěte se, že uzavřete výraz do dvojitých uvozovek. <p>**Poznámka**: Pokud je zdrojové pole prázdné, akce vytvoří prázdné pole. | 
 | <*název klíče*> | Řetězec | Název vlastnosti přiřazený výsledku z *výrazu* <> <p>Chcete-li přidat novou vlastnost napříč všemi objekty ve výstupním poli, zadejte <> *název klíče* pro tuto vlastnost a *výraz* <> pro hodnotu vlastnosti. <p>Chcete-li odebrat vlastnost ze všech objektů v poli, vynechejte> <*název klíče* pro tuto vlastnost. | 
@@ -1634,7 +1635,7 @@ Tato akce vytvoří z pole tabulku CSV nebo HTML. U polí s objekty JSON Tato ak
 
 *Požadováno* 
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | \<CSV *or* HTML>| Řetězec | Formát tabulky, kterou chcete vytvořit | 
 | <*skupin*> | Pole | Pole nebo výraz, který poskytuje zdrojové položky pro tabulku <p>**Poznámka**: Pokud je zdrojové pole prázdné, akce vytvoří prázdnou tabulku. | 
@@ -1644,10 +1645,10 @@ Tato akce vytvoří z pole tabulku CSV nebo HTML. U polí s objekty JSON Tato ak
 
 Chcete-li zadat nebo přizpůsobit záhlaví a hodnoty sloupců, použijte `columns` pole. Pokud `header-value` mají páry stejný název záhlaví, zobrazí se jejich hodnoty ve stejném sloupci pod tímto názvem záhlaví. V opačném případě každá jedinečná hlavička definuje jedinečný sloupec.
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*název sloupce*> | Řetězec | Název záhlaví sloupce | 
-| <*hodnota sloupce*> | Všechny | Hodnota v tomto sloupci | 
+| <*hodnota sloupce*> | Libovolný | Hodnota v tomto sloupci | 
 |||| 
 
 *Příklad 1*
@@ -1723,7 +1724,7 @@ Tato definice akce vytvoří tabulku HTML z proměnné "myItemArray". Tento př�
 
 Tady je tabulka HTML, kterou tato akce vytvoří: 
 
-<table><thead><tr><th>Stock_ID</th><th>Description</th></tr></thead><tbody><tr><td>0</td><td>Organické jablka</td></tr><tr><td>1</td><td>Organické pomeranče</td></tr></tbody></table>
+<table><thead><tr><th>Stock_ID</th><th>Popis</th></tr></thead><tbody><tr><td>0</td><td>Organické jablka</td></tr><tr><td>1</td><td>Organické pomeranče</td></tr></tbody></table>
 
 <a name="terminate-action"></a>
 
@@ -1747,7 +1748,7 @@ Tato akce zastaví běh instance pracovního postupu, zruší všechny probíhaj
 
 *Požadováno*
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*stav*> | Řetězec | Stav, který se má vrátit pro spuštění: "neúspěšné", "zrušené" nebo "úspěch" |
 |||| 
@@ -1756,7 +1757,7 @@ Tato akce zastaví běh instance pracovního postupu, zruší všechny probíhaj
 
 Vlastnosti objektu "runStatus" platí pouze v případě, že vlastnost "runStatus" je nastavena na hodnotu "Failed".
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*Chyba – kód-nebo-název*> | Řetězec | Kód nebo název chyby |
 | <*chyba – zpráva*> | Řetězec | Zpráva nebo text, který popisuje chybu a všechny akce, které může uživatel aplikace provést | 
@@ -1817,9 +1818,9 @@ Tato akce pozastaví provádění pracovního postupu v zadaném intervalu nebo 
 
 *Požadováno*
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
-| <*počet jednotek*> | Integer | Pro akci **zpoždění** počet jednotek, které se mají čekat | 
+| <*počet jednotek*> | Celé číslo | Pro akci **zpoždění** počet jednotek, které se mají čekat | 
 | <*doba*> | Řetězec | Pro akci **zpoždění** interval čekání: "Second", "Minute", "hour", "Day", "Week", "Month" | 
 | <*časové razítko pro datum a čas*> | Řetězec | Pro **zpoždění až** do akce, datum a čas, kdy se má pokračovat v provádění. Tato hodnota musí používat [formát data a času UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time). | 
 |||| 
@@ -1890,7 +1891,7 @@ Modul Logic Apps kontroluje přístup k triggeru, který chcete volat, takže se
 
 *Požadováno*
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*vnořená logika – App-Name*> | Řetězec | Název aplikace logiky, kterou chcete volat | 
 | <*Název aktivační události*> | Řetězec | Název triggeru ve vnořené aplikaci logiky, kterou chcete volat | 
@@ -1901,7 +1902,7 @@ Modul Logic Apps kontroluje přístup k triggeru, který chcete volat, takže se
 
 *Volitelné*
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------|  
 | <*Hlavička-obsah*> | JSON – objekt | Všechna záhlaví k odeslání pomocí volání | 
 | <*text obsahu*> | JSON – objekt | Veškerý obsah zprávy, který má být odeslán s voláním | 
@@ -1967,7 +1968,7 @@ Tato akce smyčky projde polem a provede akce u každé položky pole. Ve výcho
 
 *Požadováno* 
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*akce – 1... n*> | Řetězec | Názvy akcí, které se spouštějí na každé položce pole | 
 | <*akce – definice-1... n*> | JSON – objekt | Definice akcí, které se spouštějí | 
@@ -1976,9 +1977,9 @@ Tato akce smyčky projde polem a provede akce u každé položky pole. Ve výcho
 
 *Volitelné*
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
-| <*výpočtu*> | Integer | Ve výchozím nastavení se iterace smyčky for each spouští současně (souběžně nebo paralelně) až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete tento limit změnit nastavením nového <*počet*> hodnoty, přečtěte si téma [Změna pro každou souběžnou smyčku](#change-for-each-concurrency). | 
+| <*výpočtu*> | Celé číslo | Ve výchozím nastavení se iterace smyčky for each spouští současně (souběžně nebo paralelně) až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete tento limit změnit nastavením nového <*počet*> hodnoty, přečtěte si téma [Změna pro každou souběžnou smyčku](#change-for-each-concurrency). | 
 | <*operace – možnost*> | Řetězec | Chcete-li spustit smyčku "for each" sekvenčně, nikoli paralelně, nastavte buď *možnost <operace-*> na `Sequential` nebo <> *Count* `1` , ale ne obojí. Další informace najdete v tématu [spuštění smyčky for each postupně](#sequential-for-each). | 
 |||| 
 
@@ -2040,7 +2041,7 @@ Tato akce, která je *podmíněným příkazem*, vyhodnotí výraz, který před
 }
 ```
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*pomocné*> | JSON – objekt | Podmínka, která může být výrazem, k vyhodnocení | 
 | <*akce – 1*> | JSON – objekt | Akce, která se má spustit, když <*podmínka*> vyhodnotí na true | 
@@ -2130,7 +2131,7 @@ Tato akce logicky seskupuje akce do *oborů*, které po dokončení akcí v dan�
 
 *Požadováno*
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------|  
 | <*vnitřní akce-1... n*> | JSON – objekt | Jedna nebo více akcí, které se spouštějí v rámci oboru |
 | <*akce – vstupy*> | JSON – objekt | Vstupy pro každou akci |
@@ -2171,7 +2172,7 @@ Tato akce, označovaná také jako *příkaz switch*, uspořádá další akce d
 
 *Požadováno*
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*výraz-objekt-nebo-token*> | Různé | Výraz, objekt JSON nebo token k vyhodnocení | 
 | <*název akce*> | Řetězec | Název akce, která se má spustit pro případ porovnání | 
@@ -2181,7 +2182,7 @@ Tato akce, označovaná také jako *příkaz switch*, uspořádá další akce d
 
 *Volitelné*
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*Výchozí hodnota – název akce*> | Řetězec | Název výchozí akce, která má být spuštěna, pokud neexistuje žádný vyhovující případ | 
 | <*výchozí – definice akce*> | JSON – objekt | Definice akce, která má být spuštěna, pokud neexistuje žádný vyhovující případ | 
@@ -2297,13 +2298,13 @@ Tato akce smyčky obsahuje akce, které se spustí, dokud není zadaná podmínk
 }
 ```
 
-| Hodnota | Typ | Description | 
+| Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*název akce*> | Řetězec | Název akce, kterou chcete spustit uvnitř smyčky. | 
 | <*Typ akce*> | Řetězec | Typ akce, kterou chcete spustit | 
 | <*akce – vstupy*> | Některé | Vstupy pro akci, která se má spustit | 
 | <*pomocné*> | Řetězec | Podmínka nebo výraz, který se má vyhodnotit po dokončení všech akcí ve smyčce | 
-| <*počet cyklů*> | Integer | Limit nejvyšší hodnoty smyček, které mohou být akce spuštěny. Další informace o výchozím omezení a maximálním limitu najdete v tématu [omezení a konfigurace pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). | 
+| <*počet cyklů*> | Celé číslo | Limit nejvyšší hodnoty smyček, které mohou být akce spuštěny. Další informace o výchozím omezení a maximálním limitu najdete v tématu [omezení a konfigurace pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). | 
 | <*smyčka – časový limit*> | Řetězec | Limit v nejdelší době, kdy může být smyčka spuštěna. Výchozí `timeout` hodnota je `PT1H` , což je požadovaný [formát ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). |
 |||| 
 
@@ -2376,12 +2377,12 @@ Pro aktivační události a akce můžete omezit dobu trvání asynchronního vz
 
 Můžete změnit výchozí chování za běhu pro triggery a akce přidáním těchto `runtimeConfiguration` vlastností do definice triggeru nebo akce.
 
-| Vlastnost | Typ | Description | Aktivační událost nebo akce | 
+| Vlastnost | Typ | Popis | Aktivační událost nebo akce | 
 |----------|------|-------------|-------------------| 
-| `runtimeConfiguration.concurrency.runs` | Integer | Změňte [*výchozí limit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) počtu instancí pracovního postupu, které lze spustit současně (souběžně nebo paralelně). Úprava této hodnoty může přispět k omezení počtu požadavků, které systém back-end obdrží. <p>Nastavení `runs` vlastnosti na `1` funguje stejným způsobem jako nastavení `operationOptions` vlastnosti `SingleInstance` . Můžete nastavit buď vlastnost, ale ne obojí. <p>Chcete-li změnit výchozí limit, přečtěte si téma [Změna souběžnosti triggeru](#change-trigger-concurrency) nebo [instancí triggerů](#sequential-trigger). | Všechny triggery | 
-| `runtimeConfiguration.concurrency.maximumWaitingRuns` | Integer | Změňte [*výchozí limit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) počtu instancí pracovního postupu, které musí čekat na spuštění, když aplikace logiky už používá maximální počet souběžných instancí. <p>Pokud chcete změnit výchozí limit, přečtěte si téma [Změna limitu čekání na spuštění](#change-waiting-runs). | Všechny triggery | 
-| `runtimeConfiguration.concurrency.repetitions` | Integer | Změňte [*výchozí limit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) počtu iterací smyčky "for each", které lze spustit současně (souběžně nebo paralelně). <p>Nastavení `repetitions` vlastnosti na `1` funguje stejným způsobem jako nastavení `operationOptions` vlastnosti `SingleInstance` . Můžete nastavit buď vlastnost, ale ne obojí. <p>Chcete-li změnit výchozí limit, přečtěte si téma [Změna "pro každou" souběžnou](#change-for-each-concurrency) "nebo [běh" pro každou "smyčku](#sequential-for-each). | Akce: <p>[Foreach](#foreach-action) | 
-| `runtimeConfiguration.paginationPolicy.minimumItemCount` | Integer | Pro konkrétní akce, které podporují a mají zapnuté stránkování, tato hodnota určuje *minimální* počet výsledků, které se mají načíst. <p>Pokud chcete zapnout stránkování, přečtěte si téma [získání hromadných dat, položek nebo výsledků pomocí stránkování](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md) . | Akce: proměnlivé |
+| `runtimeConfiguration.concurrency.runs` | Celé číslo | Změňte [*výchozí limit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) počtu instancí pracovního postupu, které lze spustit současně (souběžně nebo paralelně). Úprava této hodnoty může přispět k omezení počtu požadavků, které systém back-end obdrží. <p>Nastavení `runs` vlastnosti na `1` funguje stejným způsobem jako nastavení `operationOptions` vlastnosti `SingleInstance` . Můžete nastavit buď vlastnost, ale ne obojí. <p>Chcete-li změnit výchozí limit, přečtěte si téma [Změna souběžnosti triggeru](#change-trigger-concurrency) nebo [instancí triggerů](#sequential-trigger). | Všechny triggery | 
+| `runtimeConfiguration.concurrency.maximumWaitingRuns` | Celé číslo | Změňte [*výchozí limit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) počtu instancí pracovního postupu, které musí čekat na spuštění, když aplikace logiky už používá maximální počet souběžných instancí. <p>Pokud chcete změnit výchozí limit, přečtěte si téma [Změna limitu čekání na spuštění](#change-waiting-runs). | Všechny triggery | 
+| `runtimeConfiguration.concurrency.repetitions` | Celé číslo | Změňte [*výchozí limit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) počtu iterací smyčky "for each", které lze spustit současně (souběžně nebo paralelně). <p>Nastavení `repetitions` vlastnosti na `1` funguje stejným způsobem jako nastavení `operationOptions` vlastnosti `SingleInstance` . Můžete nastavit buď vlastnost, ale ne obojí. <p>Chcete-li změnit výchozí limit, přečtěte si téma [Změna "pro každou" souběžnou](#change-for-each-concurrency) "nebo [běh" pro každou "smyčku](#sequential-for-each). | Akce: <p>[Foreach](#foreach-action) | 
+| `runtimeConfiguration.paginationPolicy.minimumItemCount` | Celé číslo | Pro konkrétní akce, které podporují a mají zapnuté stránkování, tato hodnota určuje *minimální* počet výsledků, které se mají načíst. <p>Pokud chcete zapnout stránkování, přečtěte si téma [získání hromadných dat, položek nebo výsledků pomocí stránkování](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md) . | Akce: proměnlivé |
 | `runtimeConfiguration.secureData.properties` | Pole | U mnoha triggerů a akcí tato nastavení skrývá vstupy, výstupy nebo obojí z historie spuštění aplikace logiky. <p>Další informace o zabezpečení těchto dat najdete v tématu [skrytí vstupů a výstupů z historie spuštění](../logic-apps/logic-apps-securing-a-logic-app.md#secure-data-code-view). | Většina aktivačních událostí a akcí |
 | `runtimeConfiguration.staticResult` | JSON – objekt | Pro akce, které podporují a mají nastavení [statického výsledku](../logic-apps/test-logic-apps-mock-data-static-results.md) zapnuto, `staticResult` má objekt tyto atributy: <p>- `name`, který odkazuje na název definice statického výsledku aktuální akce, který se zobrazí uvnitř `staticResults` atributu v atributu pracovního postupu aplikace logiky `definition` . Další informace najdete v tématu [statické výsledky – reference schématu pro jazyk definice pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md#static-results). <p> - `staticResultOptions`, který určuje, zda jsou statické výsledky `Enabled` pro aktuální akci nebo nikoli. <p>Pokud chcete zapnout statické výsledky, přečtěte si téma [test Logic Apps s napodobnou daty nastavením statických výsledků](../logic-apps/test-logic-apps-mock-data-static-results.md) . | Akce: proměnlivé |
 ||||| 
@@ -2392,9 +2393,9 @@ Můžete změnit výchozí chování za běhu pro triggery a akce přidáním t�
 
 Můžete změnit výchozí chování triggerů a akcí pomocí `operationOptions` vlastnosti v definici Trigger nebo Action.
 
-| Možnost operace | Typ | Description | Aktivační událost nebo akce | 
+| Možnost operace | Typ | Popis | Aktivační událost nebo akce | 
 |------------------|------|-------------|-------------------| 
-| `DisableAsyncPattern` | Řetězec | Spouštějte akce založené na protokolu HTTP synchronně, nikoli asynchronně. <p><p>Chcete-li nastavit tuto možnost, přečtěte si téma [Run Actions synchronně](#disable-asynchronous-pattern). | Činností <p>[Vstupech apiconnection](#apiconnection-action), <br>[Http](#http-action), <br>[Základě](#response-action) | 
+| `DisableAsyncPattern` | Řetězec | Spouštějte akce založené na protokolu HTTP synchronně, nikoli asynchronně. <p><p>Chcete-li nastavit tuto možnost, přečtěte si téma [Run Actions synchronně](#disable-asynchronous-pattern). | Činností <p>[Vstupech apiconnection](#apiconnection-action), <br>[Http](#http-action), <br>[Response](#response-action) (Odpověď) | 
 | `OptimizedForHighThroughput` | Řetězec | Změňte [výchozí limit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) počtu spuštění akcí za 5 minut na [maximální limit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). <p><p>Pokud chcete tuto možnost nastavit, přečtěte si téma [spuštění v režimu vysoké propustnosti](#run-high-throughput-mode). | Všechny akce | 
 | `Sequential` | Řetězec | Spouštějte každou iteraci cyklů "for each" v jednom okamžiku, nikoli současně paralelně. <p>Tato možnost funguje stejným způsobem jako nastavení `runtimeConfiguration.concurrency.repetitions` vlastnosti na `1` . Můžete nastavit buď vlastnost, ale ne obojí. <p><p>Chcete-li nastavit tuto možnost, přečtěte si část [spuštění smyčky for each postupně](#sequential-for-each).| Akce: <p>[Foreach](#foreach-action) | 
 | `SingleInstance` | Řetězec | Spusťte Trigger pro každou instanci aplikace logiky postupně a počkejte na dokončení dříve aktivního běhu a počkejte, než se aktivuje další instance aplikace logiky. <p><p>Tato možnost funguje stejným způsobem jako nastavení `runtimeConfiguration.concurrency.runs` vlastnosti na `1` . Můžete nastavit buď vlastnost, ale ne obojí. <p>Pokud chcete tuto možnost nastavit, přečtěte si téma [instance triggeru postupně](#sequential-trigger). | Všechny triggery | 
@@ -2656,7 +2657,7 @@ Další informace najdete v tématu Možnosti nastavení a [operace](#operation-
 
 ### <a name="run-actions-in-a-synchronous-operation-pattern"></a>Spuštění akcí ve vzoru synchronní operace
 
-Ve výchozím nastavení jsou akce HTTP a akce vstupech apiconnection v Azure Logic Apps následovat po standardním [*vzoru asynchronní operace*](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply), zatímco akce odpovědi odpovídá *vzoru synchronní operace*. Asynchronní vzor určuje, že po volání akce nebo odeslání požadavku do zadaného koncového bodu, služby, systému nebo rozhraní API příjemce okamžitě vrátí odpověď ["202 přijatý"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3) . Tento kód potvrdí, že příjemce požadavek přijal, ale nedokončil zpracování. Odpověď může obsahovat `location` hlavičku, která určuje adresu URL a ID aktualizace, které volající může použít k nepřetržitému cyklickému dotazování nebo kontrole stavu asynchronního požadavku, dokud příjemce neukončí zpracování a vrátí odpověď na úspěch ["200 OK"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) nebo jinou odpověď mimo 202. Další informace najdete v tématu [asynchronní integrace mikroslužeb vynutila autonomii](https://docs.microsoft.com/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging)mikroslužeb.
+Ve výchozím nastavení jsou akce HTTP a akce vstupech apiconnection v Azure Logic Apps následovat po standardním [*vzoru asynchronní operace*](/azure/architecture/patterns/async-request-reply), zatímco akce odpovědi odpovídá *vzoru synchronní operace*. Asynchronní vzor určuje, že po volání akce nebo odeslání požadavku do zadaného koncového bodu, služby, systému nebo rozhraní API příjemce okamžitě vrátí odpověď ["202 přijatý"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3) . Tento kód potvrdí, že příjemce požadavek přijal, ale nedokončil zpracování. Odpověď může obsahovat `location` hlavičku, která určuje adresu URL a ID aktualizace, které volající může použít k nepřetržitému cyklickému dotazování nebo kontrole stavu asynchronního požadavku, dokud příjemce neukončí zpracování a vrátí odpověď na úspěch ["200 OK"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) nebo jinou odpověď mimo 202. Další informace najdete v tématu [asynchronní integrace mikroslužeb vynutila autonomii](/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging)mikroslužeb.
 
 * V návrháři aplikace logiky mají nastavení **asynchronního vzoru** nastavené akce HTTP, akce vstupech apiconnection a akce odpovědi. Pokud je toto nastavení povoleno, určuje, že volající nečeká na dokončení zpracování, a může přejít k další akci, ale pokračuje v kontrole stavu, dokud se zpracování nezastaví. Pokud je toto nastavení zakázáno, určuje, že volající čeká na dokončení zpracování, než přejde k další akci. Toto nastavení můžete najít pomocí těchto kroků:
 

@@ -8,19 +8,19 @@ ms.author: ladolan
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.custom: mvc
-ms.date: 04/29/2020
-ms.openlocfilehash: d80972cd200b8f85e14d316c4c06a38f88ac81b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/20/2020
+ms.openlocfilehash: d50f577a7170982be004cc8957114f79675fbc6e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82598160"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078617"
 ---
 # <a name="manage-logic-apps-in-the-azure-portal"></a>Správa aplikací logiky v Azure Portal
 
 Aplikace logiky můžete spravovat pomocí [Azure Portal](https://portal.azure.com) nebo sady [Visual Studio](manage-logic-apps-with-visual-studio.md). Tento článek popisuje, jak upravit, zakázat, povolit nebo odstranit Logic Apps v Azure Portal. Pokud s Azure Logic Appsem začínáte, přečtěte si téma [co je Azure Logic Apps](logic-apps-overview.md)?
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -36,7 +36,7 @@ K vyhledání a otevření aplikace logiky použijte následující postup:
 
 1. Na panelu hledání Azure zadejte `logic apps` a vyberte **Logic Apps**.
 
-   ![Vyhledejte a vyberte "Logic Apps"](./media/manage-logic-apps-with-azure-portal/find-select-logic-apps.png)
+   ![Snímek obrazovky Azure Portal nabídky se Logic Apps prohledali a vybrali na panelu hledání.](./media/manage-logic-apps-with-azure-portal/find-select-logic-apps.png)
 
 1. Na stránce **Logic Apps** vyhledejte a vyberte aplikaci logiky, kterou chcete spravovat.
 
@@ -100,19 +100,19 @@ Zakázání aplikace logiky ovlivní vaše instance pracovního postupu a spust�
 
    * Na panelu nástrojů vyberte **Zakázat**.
 
-     ![Zakázat aplikaci s jednou logikou v Azure Portal](./media/manage-logic-apps-with-azure-portal/disable-single-logic-app.png)
+     ![Snímek panelu nástrojů aplikace logiky, který zobrazuje vybrané tlačítko pro vypnutí](./media/manage-logic-apps-with-azure-portal/disable-single-logic-app.png)
 
      Pokud je vaše aplikace logiky už zakázaná, zobrazí se jenom možnost **Povolit** .
 
    * Na panelu nástrojů vyberte **Povolit**.
 
-     ![Povolit aplikaci s jednou logikou v Azure Portal](./media/manage-logic-apps-with-azure-portal/enable-single-logic-app.png)
+     ![Snímek panelu nástrojů aplikace logiky, který zobrazuje vybrané tlačítko Povolit](./media/manage-logic-apps-with-azure-portal/enable-single-logic-app.png)
 
      Pokud je vaše aplikace logiky už povolená, zobrazí se jenom možnost **Zakázat** . 
 
    Azure Portal na hlavním panelu nástrojů Azure zobrazuje oznámení o tom, zda byla operace úspěšná nebo neúspěšná.
 
-   ![Oznámení pro potvrzení stavu operace](./media/manage-logic-apps-with-azure-portal/operation-confirmation-notification.png)
+   ![Snímek obrazovky Azure Portal, který zobrazuje oznámení pro potvrzení stavu operace](./media/manage-logic-apps-with-azure-portal/operation-confirmation-notification.png)
 
 <a name="disable-or-enable-multiple-logic-apps"></a>
 
@@ -122,15 +122,15 @@ Zakázání aplikace logiky ovlivní vaše instance pracovního postupu a spust�
 
 1. Pokud chcete zkontrolovat, jestli je aplikace logiky aktuálně povolená nebo zakázaná, na stránce **Logic Apps** zkontrolujte sloupec **stav** pro tuto aplikaci logiky. 
 
-   ![Sloupec stav Logic Apps](./media/manage-logic-apps-with-azure-portal/view-logic-app-status.png)
+   ![Snímek obrazovky stránky Azure Portal Logic Apps zobrazující seznam aplikací logiky seřazených podle sloupce stav](./media/manage-logic-apps-with-azure-portal/view-logic-app-status.png)
 
    Pokud sloupec **stav** není zobrazený, vyberte na panelu nástrojů **Logic Apps** možnost **vyzkoušet si verzi Preview**.
 
-   ![Zapnout náhled](./media/manage-logic-apps-with-azure-portal/select-try-preview.png)
+   ![Obrazovka stránky Azure Portal Logic Apps, která zobrazuje vybrané tlačítko vyzkoušet náhled.](./media/manage-logic-apps-with-azure-portal/select-try-preview.png)
 
 1. Ve sloupci zaškrtávací políčko Vyberte aplikace logiky, které chcete zakázat nebo povolit. Na panelu nástrojů vyberte **Zakázat** nebo **Povolit**.
 
-   ![Povolení nebo zakázání více aplikací logiky v Azure Portal](./media/manage-logic-apps-with-azure-portal/enable-disable-multiple-logic-apps.png)
+   ![Obrazovka stránky Azure Portal Logic Apps, která zobrazuje tlačítka povolit a zakázat pro více aplikací logiky.](./media/manage-logic-apps-with-azure-portal/enable-disable-multiple-logic-apps.png)
 
 1. Po zobrazení pole potvrzení vyberte **Ano** a pokračujte.
 
@@ -158,11 +158,11 @@ Odstranění vaší aplikace logiky má vliv na instance pracovního postupu v t
 
 1. V nabídce aplikace logiky zvolte **Přehled**. Na panelu nástrojů aplikace logiky vyberte **Odstranit**.
 
-   ![Na panelu nástrojů aplikace logiky vyberte Odstranit.](./media/manage-logic-apps-with-azure-portal/delete-single-logic-app.png)
+   ![Snímek panelu nástrojů aplikace logiky, který zobrazuje vybrané tlačítko pro odstranění](./media/manage-logic-apps-with-azure-portal/delete-single-logic-app.png)
 
 1. Po zobrazení pole potvrzení zadejte název vaší aplikace logiky a vyberte **Odstranit**.
 
-   ![Potvrďte odstranění aplikace logiky](./media/manage-logic-apps-with-azure-portal/delete-confirmation-single-logic-app.png)
+   ![Snímek obrazovky Logic Apps výzvy k potvrzení odstranění jedné aplikace logiky](./media/manage-logic-apps-with-azure-portal/delete-confirmation-single-logic-app.png)
 
    Azure Portal na hlavním panelu nástrojů Azure zobrazuje oznámení o tom, zda byla operace úspěšná nebo neúspěšná.
 
@@ -174,11 +174,11 @@ Odstranění vaší aplikace logiky má vliv na instance pracovního postupu v t
 
 1. Ve sloupci zaškrtávací políčko Vyberte aplikace logiky, které chcete odstranit. Na panelu nástrojů vyberte **Odstranit**.
 
-   ![Odstranění více aplikací logiky](./media/manage-logic-apps-with-azure-portal/delete-multiple-logic-apps.png)
+   ![Snímek obrazovky Logic Apps stránky zobrazující několik Logic Apps v seznamu, který se vybral pro odstranění.](./media/manage-logic-apps-with-azure-portal/delete-multiple-logic-apps.png)
 
 1. Jakmile se zobrazí okno potvrzení, zadejte `yes` a vyberte **Odstranit**.
 
-   ![Potvrďte odstranění vašich aplikací logiky](./media/manage-logic-apps-with-azure-portal/delete-confirmation-multiple-logic-apps.png)
+   ![Snímek obrazovky Logic Apps výzvy k potvrzení odstranění více aplikací logiky](./media/manage-logic-apps-with-azure-portal/delete-confirmation-multiple-logic-apps.png)
 
    Azure Portal na hlavním panelu nástrojů Azure zobrazuje oznámení o tom, zda byla operace úspěšná nebo neúspěšná.
 
@@ -196,13 +196,13 @@ Můžete použít Azure Portal pro správu verzí vašich aplikací logiky. Mů�
 
 1. V nabídce aplikace logiky v části **vývojové nástroje**vyberte možnost **verze**.
 
-   ![V nabídce aplikace logiky vyberte v části vývojové nástroje možnost verze.](./media/manage-logic-apps-with-azure-portal/logic-apps-menu-versions.png)
+   ![Snímek aplikace logiky v Azure Portal se zobrazeným výběrem stránky verze ve vývojových nástrojích.](./media/manage-logic-apps-with-azure-portal/logic-apps-menu-versions.png)
 
 1. Vyberte **verzi** vaší aplikace logiky, kterou chcete spravovat ze seznamu. Chcete-li filtrovat seznam, můžete zadat identifikátor **verze** na panelu hledání.
 
 1. Na stránce **Historie verze** se zobrazí podrobnosti o předchozí verzi v režimu jen pro čtení. Můžete vybrat mezi Logic Apps **Návrháře** a režimy **zobrazení kódu** .
 
-   ![Stránka s verzí historie pro aplikaci logiky se zobrazením kódu a návrhářem Logic Apps](./media/manage-logic-apps-with-azure-portal/history-version.png)
+   ![Snímek obrazovky se stránkou s verzí historie Logic Apps, která zobrazuje možnosti zobrazení kódu a návrháře.](./media/manage-logic-apps-with-azure-portal/history-version.png)
 
 <a name="promote-previous-versions"></a>
 
@@ -212,11 +212,11 @@ Můžete použít Azure Portal pro správu verzí vašich aplikací logiky. Mů�
 
 1. Na stránce **Historie verze** vyberte **zvýšit úroveň**.
 
-   ![Tlačítko zvýšit úroveň v historii verzí aplikace logiky](./media/manage-logic-apps-with-azure-portal/promote-button.png)
+   ![Snímek historie verze aplikace logiky, na které se zobrazuje tlačítko pro zvýšení úrovně předchozí verze](./media/manage-logic-apps-with-azure-portal/promote-button.png)
 
 1. Na stránce **návrháře Logic Apps** , která se otevře, upravte podle potřeby verzi, kterou podporujete. Můžete přepínat mezi **návrhářem** a režimy **zobrazení kódu** . Můžete také aktualizovat **parametry**, **šablony**a **konektory**.
 
-   ![Stránka návrháře Logic Apps pro zvýšení úrovně předchozí verze](./media/manage-logic-apps-with-azure-portal/promote-page.png)
+   ![Snímek obrazovky návrháře Logic Apps, který zobrazuje tlačítko pro zvýšení úrovně předchozí verze aplikace logiky](./media/manage-logic-apps-with-azure-portal/promote-page.png)
 
 1. Pokud chcete uložit všechny aktualizace a dokončit zvýšení úrovně předchozí verze, vyberte **Uložit**. (Nebo pokud chcete změny zrušit, vyberte **Zrušit**.) 
 

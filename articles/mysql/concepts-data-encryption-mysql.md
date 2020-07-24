@@ -6,11 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: e2f732a8cf51c51de1b6125717eafb672d7fff74
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 90ca46ace5f774e288b40a969f8f7e9802e79857
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027405"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080875"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Azure Database for MySQL šifrování dat pomocí klíče spravovaného zákazníkem
 
@@ -51,7 +52,7 @@ Aby mohl server MySQL používat pro šifrování klíč DEK klíče, které jso
 * **wrapKey**: aby bylo možné zašifrovat klíč dek.
 * **unwrapKey**: aby bylo možné dešifrovat klíč dek.
 
-Správce trezoru klíčů může také [Povolit protokolování událostí auditu Key Vault](../azure-monitor/insights/azure-key-vault.md), aby se mohly auditovat později.
+Správce trezoru klíčů může také [Povolit protokolování událostí auditu Key Vault](../azure-monitor/insights/key-vault-insights-overview.md), aby se mohly auditovat později.
 
 Když je server nakonfigurovaný tak, aby používal klíč spravovaný zákazníkem, který je uložený v trezoru klíčů, server pošle klíč DEK do trezoru klíčů pro šifrování. Key Vault vrátí šifrovaný klíč DEK, který je uložený v uživatelské databázi. Obdobně platí, že pokud je to potřeba, server pošle chráněný klíč DEK do trezoru klíčů pro dešifrování. Auditoři můžou pomocí Azure Monitor kontrolovat protokoly událostí auditu Key Vault, pokud je povolené protokolování.
 

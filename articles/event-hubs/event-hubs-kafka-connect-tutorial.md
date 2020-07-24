@@ -3,12 +3,12 @@ title: Integrace s Apache Kafka Connect – Azure Event Hubs | Microsoft Docs
 description: Tento článek poskytuje informace o tom, jak používat Apache Spark s Azure Event Hubs pro Kafka.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 2e7a6b406b6d33c94c6fddea2f73b70c24f45f86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c63d27549df40120a90b2594ab54337c11168b6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320168"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079098"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>Podpora integrace připojení Apache Kafka ve službě Azure Event Hubs (Preview)
 Se zvyšujícími se obchodními požadavky na příjem dat se zvyšuje i potřeba příjmu dat z nejrůznějších externích zdrojů a jímek. [Připojení Apache Kafka](https://kafka.apache.org/documentation/#connect) poskytuje takovou architekturu pro připojení a import nebo export dat do nebo z jakéhokoli externího systému, jako je MySQL, HDFS a systém souborů, prostřednictvím clusteru Kafka. Tento kurz vás provede použitím architektury Kafka Connect s Event Hubs.
@@ -27,14 +27,14 @@ V tomto kurzu provedete následující kroky:
 > * Spuštění připojení Kafka
 > * Vytvoření konektorů
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Abyste mohli dokončit tento návod, ujistěte se, že máte následující:
 
 - Předplatné Azure. Pokud žádné nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
 - [Git](https://www.git-scm.com/downloads)
 - Linux/MacOS
 - Vydaná verze Kafka (verze 1.1.1, Scala verze 2.11), která je k dispozici na webu [kafka.apache.org](https://kafka.apache.org/downloads#1.1.1)
-- Přečtěte si úvodní článek [Event Hubs pro Apache Kafka](https://docs.microsoft.com/azure/event-hubs/event-hubs-for-kafka-ecosystem-overview).
+- Přečtěte si úvodní článek [Event Hubs pro Apache Kafka](./event-hubs-for-kafka-ecosystem-overview.md).
 
 ## <a name="create-an-event-hubs-namespace"></a>Vytvoření oboru názvů služby Event Hubs
 K odesílání do jakékoli služby Event Hubs a příjmu z ní se vyžaduje obor názvů služby Event Hubs. Pokyny k vytvoření oboru názvů a centra událostí najdete v tématu [vytvoření centra událostí](event-hubs-create.md) . Získejte plně kvalifikovaný název domény a připojovací řetězec služby Event Hubs pro pozdější použití. Pokyny najdete v tématu [Získání připojovacího řetězce služby Event Hubs](event-hubs-get-connection-string.md). 

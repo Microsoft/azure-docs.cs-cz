@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 0176454b38dfa88480e63fedfae175a63192eaee
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4c5290d9f5ec47969ae43e5986d31484927a0ac5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498589"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081351"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Vizualizace dat z Azure Monitoru
 Tento článek poskytuje souhrn dostupných metod pro vizualizaci dat protokolů a metrik uložených v Azure Monitor.
@@ -40,6 +40,8 @@ Vizualizace, jako jsou grafy a grafy, vám pomohou analyzovat data monitorován�
 [Řídicí panely Azure](../azure-portal/azure-portal-dashboards.md) jsou primární technologie pro řídicí panely pro Azure. Jsou zvláště užitečné v případě, že máte v infrastruktuře a službách Azure samostatné podokno, které vám umožní rychle identifikovat důležité problémy.
 
 ![Řídicí panel](media/visualizations/dashboard.png)
+
+Tady je video s návodem k vytváření řídicích panelů.
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4AslH]
 

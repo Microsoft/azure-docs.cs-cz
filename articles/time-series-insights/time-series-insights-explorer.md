@@ -5,51 +5,51 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: b564373780da5bba71bc46ddbac3dc69a0c94a4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e78b5118a2525fbf10a3089712f75e44cb7deceb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81382780"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080688"
 ---
-# <a name="azure-time-series-insights-explorer"></a>Průzkumník Azure Time Series Insights
+# <a name="azure-time-series-insights-gen1-explorer"></a>Azure Time Series Insights Průzkumník Gen1
 
-Tento článek popisuje funkce a možnosti všeobecně dostupné pro [webovou aplikaci Azure Time Series Insights Explorer](https://insights.timeseries.azure.com/). Průzkumník Time Series Insights ukazuje výkonné možnosti vizualizace dat poskytované službou a lze k němu přistupovat v rámci vašeho vlastního prostředí.
+Tento článek popisuje funkce a možnosti pro [webovou aplikaci](https://insights.timeseries.azure.com/)Azure Time Series Insights Gen1 Explorer. Průzkumník Azure Time Series Insights ukazuje výkonné možnosti vizualizace dat poskytované službou a lze k němu přistupovat v rámci vašeho vlastního prostředí.
 
-Azure Time Series Insights je plně spravovaná služba pro analýzy, ukládání a vizualizace, která usnadňuje zkoumání a analýzy miliard událostí IoT současně. Poskytuje globální přehled o datech, který vám umožní rychle ověřit vaše řešení IoT a vyhnout se nákladným výpadkům důležitých zařízení. Můžete zjišťovat skryté trendy, odhalit anomálie a provádět analýzy hlavních příčin téměř v reálném čase. Průzkumník Time Series Insights je aktuálně ve verzi Public Preview.
+Azure Time Series Insights je plně spravovaná služba pro analýzy, ukládání a vizualizace, která usnadňuje zkoumání a analýzy miliard událostí IoT současně. Poskytuje globální přehled o datech, který vám umožní rychle ověřit vaše řešení IoT a vyhnout se nákladným výpadkům důležitých zařízení. Můžete zjišťovat skryté trendy, odhalit anomálie a provádět analýzy hlavních příčin téměř v reálném čase. 
 
 > [!TIP]
 > Prohlídku provedenou pomocí demonstračního prostředí si můžete přečíst v tématu [rychlý start Azure Time Series Insights](time-series-quickstart.md).
 
 ## <a name="video"></a>Video
 
-### <a name="learn-about-querying-data-by-using-the-time-series-insights-explorer-br"></a>Přečtěte si informace o dotazování na data pomocí Time Series Insights Exploreru. </br>
+### <a name="learn-about-querying-data-by-using-the-azure-time-series-insights-explorer-br"></a>Přečtěte si informace o dotazování na data pomocí Azure Time Series Insights Exploreru. </br>
 
 > [!VIDEO https://www.youtube.com/embed/SHFPZvrR71s]
 
 >[!NOTE]
->Přehrajte si předchozí video <a href="https://www.youtube.com/watch?v=6ehNf6AJkFo">"Začínáme s Time Series Insights pomocí akcelerátoru řešení Azure IoT".</a>
+>Přehrajte si předchozí video <a href="https://www.youtube.com/watch?v=6ehNf6AJkFo">"Začínáme s Azure Time Series Insights pomocí akcelerátoru řešení Azure IoT".</a>
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Než budete moct použít Time Series Insights Explorer, musíte:
+Než budete moct použít Azure Time Series Insights Explorer, musíte:
 
-- Vytvořte Time Series Insights prostředí. Další informace najdete v článku [jak začít s Time Series Insights](./time-series-insights-get-started.md).
+- Vytvořte Azure Time Series Insights prostředí. Další informace najdete v článku [jak začít s Azure Time Series Insights](./time-series-insights-get-started.md).
 - [Poskytněte](time-series-insights-data-access.md) v prostředí přístup k vašemu účtu.
 - Přidejte do něj zdroj události služby [IoT Hub](time-series-insights-how-to-add-an-event-source-iothub.md) nebo [centra událostí](time-series-insights-how-to-add-an-event-source-eventhub.md) .
 
 ## <a name="explore-and-query-data"></a>Prozkoumat data a dotazovat se na ně
 
-Během několika minut od připojení zdroje událostí k vašemu Time Series Insights prostředí můžete zkoumat a dotazovat se na data časových řad.
+Během několika minut od připojení zdroje událostí k vašemu Azure Time Series Insights prostředí můžete zkoumat a dotazovat se na data časových řad.
 
-1. Začněte tím, že ve webovém prohlížeči otevřete [průzkumníka Time Series Insights](https://insights.timeseries.azure.com/) . Na levé straně okna vyberte prostředí. Všechna prostředí, ke kterým máte přístup, jsou uvedena v abecedním pořadí.
+1. Začněte tím, že ve webovém prohlížeči otevřete [průzkumníka Azure Time Series Insights](https://insights.timeseries.azure.com/) . Na levé straně okna vyberte prostředí. Všechna prostředí, ke kterým máte přístup, jsou uvedena v abecedním pořadí.
 
 1. Po výběru prostředí buď použijte konfigurace **od** a **do** v horní části, nebo vyberte a přetáhněte přes časový rozsah, který chcete. Vyberte lupu v pravém horním rohu nebo klikněte pravým tlačítkem na vybraný časový interval a vyberte **Hledat**.
 
@@ -57,7 +57,7 @@ Během několika minut od připojení zdroje událostí k vašemu Time Series In
 
 1. Ikona cloudu Azure vás přesměruje do vašeho prostředí v Azure Portal.
 
-   [![Výběr prostředí Time Series Insights](media/time-series-insights-explorer/tsi-ga-explorer-environments.png)](media/time-series-insights-explorer/tsi-ga-explorer-environments.png#lightbox)
+   [![Výběr prostředí Azure Time Series Insights](media/time-series-insights-explorer/tsi-ga-explorer-environments.png)](media/time-series-insights-explorer/tsi-ga-explorer-environments.png#lightbox)
 
 1. V dalším kroku se zobrazí graf zobrazující počet všech událostí během vybraného časového rozmezí. Tady máte několik ovládacích prvků:
 
@@ -78,9 +78,9 @@ Během několika minut od připojení zdroje událostí k vašemu Time Series In
          |**PRO**     | **String**, **bool**, **Double**, **DateTime**, **TimeSpan**, **null**        |  Všechny operandy by měly být stejného typu nebo mít **nulovou** konstantu.        |
          |**MÁ**     | **Řetězec**        |  Na pravé straně jsou povoleny pouze konstantní řetězcové literály. Prázdný řetězec a **hodnota null** nejsou povoleny.       |
 
-      - **Příklady dotazů**
+      - **Ukázky dotazů**
 
-         [![Příklady dotazů GA](media/time-series-insights-explorer/tsi-ga-example-queries.png)](media/time-series-insights-explorer/tsi-ga-example-queries.png#lightbox)
+         [![Příklady dotazů Gen1](media/time-series-insights-explorer/tsi-ga-example-queries.png)](media/time-series-insights-explorer/tsi-ga-example-queries.png#lightbox)
 
 1. Pomocí nástroje posuvník **velikosti intervalu** můžete přiblížit nebo oddálit intervaly ve stejném časovém intervalu. Posuvník poskytuje přesnější kontrolu nad pohybem mezi velkými řezy času, které znázorňují hladké trendy až po milisekundy, což umožňuje zobrazit a analyzovat podrobné a vysoce rozlišení vašich dat. Výchozí počáteční bod posuvníku je nastaven jako optimální zobrazení dat z výběru pro vyvážení rozlišení, rychlosti dotazů a členitosti.
 
@@ -108,23 +108,23 @@ Během několika minut od připojení zdroje událostí k vašemu Time Series In
 
 1. Pomocí **heatmapu** můžete v daném dotazu rychle vymezit jedinečné nebo neobvyklé datové řady. Pouze jeden hledaný termín lze vizuálně rozčlenit jako heatmapu.
 
-    [![Graf heatmapu v Průzkumníku GA](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
+    [![Vytváření grafů heatmapu v Průzkumníkovi Gen1](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
 
-1. Když prozkoumáte události tak, že vyberete nebo kliknete pravým tlačítkem myši, zpřístupní se panel **události** . Tady můžete zkontrolovat všechny nezpracované události a vyexportovat události jako soubory JSON nebo CSV. Time Series Insights ukládá všechna nezpracovaná data.
+1. Když prozkoumáte události tak, že vyberete nebo kliknete pravým tlačítkem myši, zpřístupní se panel **události** . Tady můžete zkontrolovat všechny nezpracované události a vyexportovat události jako soubory JSON nebo CSV. Azure Time Series Insights ukládá všechna nezpracovaná data.
 
     [![Události](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png)](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png#lightbox)
 
 1. Po prozkoumání událostí a vystavení vzorců a statistiky sloupců vyberte kartu **statistiky** .
 
-    - **Vzory**: Tato funkce proaktivně rozsvítí nejdůležitější vzory ve vybrané datové oblasti. Nemusíte se pohlížet na tisíce událostí, abyste zjistili, jaké vzory vyžadují nejvíce času a energii. Pomocí Time Series Insights můžete přejít přímo na tyto statisticky významné vzory, abyste mohli pokračovat v analýze. Tato funkce je užitečná také pro následné šetření do historických dat.
+    - **Vzory**: Tato funkce proaktivně rozsvítí nejdůležitější vzory ve vybrané datové oblasti. Nemusíte se pohlížet na tisíce událostí, abyste zjistili, jaké vzory vyžadují nejvíce času a energii. Pomocí Azure Time Series Insights můžete přejít přímo na tyto statisticky významné vzory, abyste mohli pokračovat v analýze. Tato funkce je užitečná také pro následné šetření do historických dat.
     - **Statistiky sloupce**: statistiky sloupců poskytují grafy a tabulky, které rozdělují data z každého sloupce vybrané řady dat přes vybrané časové rozpětí.
 
       [![Grafy a možnosti statistiky sloupců](media/time-series-insights-explorer/tsi-ga-explorer-stat-column.png)](media/time-series-insights-explorer/tsi-ga-explorer-stat-column.png#lightbox)
 
-Nyní jste se seznámili s klíčovými funkcemi, konfiguračními nastaveními a možnostmi zobrazení, které jsou k dispozici v aplikaci Time Series Insights Explorer Web App.
+Nyní jste se seznámili s klíčovými funkcemi, konfiguračními nastaveními a možnostmi zobrazení, které jsou k dispozici v aplikaci Azure Time Series Insights Explorer Web App.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se [diagnostikovat a řešit problémy](time-series-insights-diagnose-and-solve-problems.md) v prostředí Time Series Insights.
+- Naučte se [diagnostikovat a řešit problémy](time-series-insights-diagnose-and-solve-problems.md) v prostředí Azure Time Series Insights.
 
 - Převezměte [Azure Time Series Insights](time-series-quickstart.md) úvodní prohlídka s asistencí.

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f5e0eda72f39a70f02b596a8fd69728336eac333
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e682232afa401f443ffe8f14f617b075978117ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82594810"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080042"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Příprava infrastruktury Azure pro SAP HA pomocí clusteru s podporou převzetí služeb při selhání systému Windows a sdíleného disku pro SAP ASCS/SCS
 
@@ -164,7 +164,7 @@ ms.locfileid: "82594810"
 
 Tento článek popisuje kroky, které můžete provést při přípravě infrastruktury Azure pro instalaci a konfiguraci systému SAP s vysokou dostupností na clusteru s podporou převzetí služeb při selhání s Windows pomocí *sdíleného disku clusteru* jako možnosti CLUSTERINGU instance SAP ASCS.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s instalací, přečtěte si tento článek:
 
@@ -372,7 +372,7 @@ V našem příkladu je adresní prostor instance služby Azure Virtual Network 1
 Chcete-li nastavit požadované IP adresy DNS, proveďte následující kroky:
 
 1. V Azure Portal v podokně **servery DNS** se ujistěte, že je možnost **servery DNS** virtuální sítě nastavená na **vlastní DNS**.
-2. Vyberte nastavení podle typu sítě, kterou máte. Další informace najdete v následujících materiálech:
+2. Vyberte nastavení podle typu sítě, kterou máte. Další informace naleznete v následujících zdrojích:
    * Přidejte IP adresy místních serverů DNS.  
    Místní servery DNS můžete rozmístit do virtuálních počítačů, které běží v Azure. V takovém scénáři můžete přidat IP adresy virtuálních počítačů Azure, na kterých spouštíte službu DNS.
    * Pro nasazení virtuálních počítačů, které jsou izolované v Azure: nasaďte další virtuální počítač ve stejné instanci Virtual Network, která slouží jako server DNS. Přidejte IP adresy virtuálních počítačů Azure, které jste nastavili pro spuštění služby DNS.
@@ -524,7 +524,7 @@ Pokud chcete pro instance SAP ASCS nebo SCS používat odlišná čísla, musít
 1. V Azure Portal vyberte-li pravidla vyrovnávání zatížení nástroje pro vyrovnávání zatížení ** \<SID\> ASCS-kg**  >  **Load Balancing Rules**.
 2. Pro všechna pravidla vyrovnávání zatížení, která patří do instance SAP ASCS nebo SCS, změňte tyto hodnoty:
 
-   * Name
+   * Název
    * Port
    * Back-end port
 
@@ -555,7 +555,7 @@ Chcete-li přidat položky registru na oba uzly clusteru instance SAP ASCS/SCS, 
 | Název proměnné |`KeepAliveTime` |
 | Typ proměnné |REG_DWORD (desetinné číslo) |
 | Hodnota |120000 |
-| Odkaz na dokumentaci |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
+| Odkaz na dokumentaci |[https://technet.microsoft.com/library/cc957549.aspx](/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10)) |
 
 **Tabulka 3:** Změna prvního parametru protokolu TCP/IP
 
@@ -566,7 +566,7 @@ Pak přidejte tuto položku registru Windows na uzlech clusteru Windows pro SAP 
 | Název proměnné |`KeepAliveInterval` |
 | Typ proměnné |REG_DWORD (desetinné číslo) |
 | Hodnota |120000 |
-| Odkaz na dokumentaci |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
+| Odkaz na dokumentaci |[https://technet.microsoft.com/library/cc957548.aspx](/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10)) |
 
 **Tabulka 4:** Změna druhého parametru protokolu TCP/IP
 

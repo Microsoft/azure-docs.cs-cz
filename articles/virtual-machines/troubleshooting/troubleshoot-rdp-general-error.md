@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f996ffa864fb4178ddedecde7c5511d5d9cf39a1
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: df318fea4960601dcbfa84149fdc47bedc9104a2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985802"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079821"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Řešení obecné chyby protokolu RDP na virtuálním počítači Azure
 
@@ -183,7 +183,7 @@ Další informace najdete v tématu [Časté připojení vzdálené plochy na vi
 
 #### <a name="step-1-turn-on-remote-desktop"></a>Krok 1: zapnutí vzdálené plochy
 
-1. [Připojte disk s operačním systémem k virtuálnímu počítači pro obnovení](../windows/troubleshoot-recovery-disks-portal.md).
+1. [Připojte disk s operačním systémem k virtuálnímu počítači pro obnovení](./troubleshoot-recovery-disks-portal-windows.md).
 2. Spusťte připojení ke vzdálené ploše virtuálního počítače pro obnovení.
 3. Ujistěte se, že je disk označen jako **online** v konzole pro správu disků. Poznamenejte si písmeno jednotky přiřazené k připojenému disku s operačním systémem.
 4. Spusťte připojení ke vzdálené ploše virtuálního počítače pro obnovení.

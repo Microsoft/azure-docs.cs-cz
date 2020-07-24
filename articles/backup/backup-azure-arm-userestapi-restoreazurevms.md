@@ -4,11 +4,12 @@ description: V tomto článku se dozvíte, jak spravovat operace obnovení zálo
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 87e3d75d925968b6521324f5b776cf8df1f6af11
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aabf687fb1f21473c7239d3fab26819b2ea2bea6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84247795"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079294"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Obnovení virtuálních počítačů Azure pomocí REST API
 
@@ -18,7 +19,7 @@ Pro všechny operace obnovení je nutné nejprve identifikovat příslušný bod
 
 ## <a name="select-recovery-point"></a>Vybrat bod obnovení
 
-Dostupné body obnovení zálohované položky mohou být uvedeny pomocí [REST APIho bodu obnovení seznamu](https://docs.microsoft.com/rest/api/backup/recoverypoints/list). Jedná se o jednoduchou operaci *Get* se všemi relevantními hodnotami.
+Dostupné body obnovení zálohované položky mohou být uvedeny pomocí [REST APIho bodu obnovení seznamu](/rest/api/backup/recoverypoints/list). Jedná se o jednoduchou operaci *Get* se všemi relevantními hodnotami.
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13
@@ -30,9 +31,9 @@ Identifikátor URI *Get* má všechny požadované parametry. Není potřeba ž�
 
 ### <a name="responses"></a>Odpovědi
 
-|Name  |Typ  |Description  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
-|200 OK     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
+|200 OK     |   [RecoveryPointResourceList](/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
 
 #### <a name="example-response"></a>Příklad odpovědi
 
@@ -118,7 +119,7 @@ Bod obnovení je označený `{name}` polem ve výše uvedené reakci.
 
 Pokud je potřeba přizpůsobit vytvoření virtuálního počítače ze záložních dat, může se jedna z nich jenom obnovit na vybraný účet úložiště a z těchto disků vytvořit virtuální počítač podle jejich požadavků. Účet úložiště by měl být ve stejné oblasti jako trezor služby Recovery Services a neměl by být zóna redundantní. Disky i konfigurace zálohovaného virtuálního počítače ("vmconfig.jszapnuté") se uloží do daného účtu úložiště.
 
-Aktivace disků pro obnovení je požadavek *post* . Pokud chcete získat další informace o operaci obnovení disků, přečtěte si [téma "Trigger Restore" REST API](https://docs.microsoft.com/rest/api/backup/restores/trigger).
+Aktivace disků pro obnovení je požadavek *post* . Pokud chcete získat další informace o operaci obnovení disků, přečtěte si [téma "Trigger Restore" REST API](/rest/api/backup/restores/trigger).
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
@@ -130,11 +131,11 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 
 Pokud chcete aktivovat obnovení disku ze zálohy virtuálního počítače Azure, níže jsou uvedené součásti textu žádosti.
 
-|Name  |Typ  |Description  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
-|properties     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
+|properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
-Úplný seznam definic těla žádosti a další podrobnosti najdete v tématu [Aktivace obnovení REST API dokumentu](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body).
+Úplný seznam definic těla žádosti a další podrobnosti najdete v tématu [Aktivace obnovení REST API dokumentu](/rest/api/backup/restores/trigger#request-body).
 
 #### <a name="example-request"></a>Příklad požadavku
 
@@ -160,11 +161,11 @@ Následující text žádosti definuje vlastnosti vyžadované k aktivaci obnove
 
 ### <a name="response"></a>Odpověď
 
-Aktivace disku pro obnovení je [asynchronní operace](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). To znamená, že tato operace vytvoří další operaci, která musí být sledována samostatně.
+Aktivace disku pro obnovení je [asynchronní operace](../azure-resource-manager/management/async-operations.md). To znamená, že tato operace vytvoří další operaci, která musí být sledována samostatně.
 
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokončení této operace 200 (OK).
 
-|Name  |Typ  |Description  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
 |202 přijato     |         |     Přijato    |
 

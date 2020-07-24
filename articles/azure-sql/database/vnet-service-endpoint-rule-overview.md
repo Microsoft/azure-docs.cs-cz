@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 51d7ae8671d4b57e1822aa1c4ee5bf30a5f24cbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2ed9e9e4ec658fc506ad2bd449ee1a49d510503f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253983"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081334"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Použití koncových bodů a pravidel služby virtuální sítě pro servery v Azure SQL Database
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -31,8 +31,6 @@ Aby bylo možné vytvořit pravidlo virtuální sítě, musí být nejprve [konc
 ## <a name="how-to-create-a-virtual-network-rule"></a>Postup vytvoření pravidla virtuální sítě
 
 Pokud vytvoříte pouze pravidlo virtuální sítě, můžete přeskočit kroky a vysvětlení [dále v tomto článku](#anchor-how-to-by-using-firewall-portal-59j).
-
-<!--<a name="anch-details-about-vnet-rules-38q"/> -->
 
 ## <a name="details-about-virtual-network-rules"></a>Podrobnosti o pravidlech virtuální sítě
 
@@ -112,7 +110,7 @@ Azure Storage implementoval stejnou funkci, která umožňuje omezit připojení
 
 Základ se běžně používá k načtení dat do služby Azure synapse Analytics z účtů Azure Storage. Pokud účet Azure Storage, ze kterého načítáte data, omezuje přístup jenom na sadu virtuálních sítí VNet, dojde k přerušení připojení od základu k účtu. Pokud chcete povolit jak základní scénáře importu i exportu, tak pomocí služby Azure synapse Analytics, která se připojuje k Azure Storage zabezpečená virtuální síti, postupujte podle kroků uvedených níže:
 
-#### <a name="prerequisites"></a>Požadavky
+#### <a name="prerequisites"></a>Předpoklady
 
 - Pomocí této [příručky](https://docs.microsoft.com/powershell/azure/install-az-ps)nainstalujte Azure PowerShell.
 - Pokud máte účet úložiště pro obecné účely v1 nebo blob, musíte nejdřív v této [příručce](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)upgradovat na obecné účely v2.
@@ -229,7 +227,7 @@ Rutiny PowerShellu pro akce virtuální sítě SQL volají interně volání roz
 
 - [Pravidla Virtual Network: operace][rest-api-virtual-network-rules-operations-862r]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Musíte už mít podsíť, která je označená konkrétním Virtual Networkm *typu* koncového bodu služby, který je relevantní pro Azure SQL Database.
 
@@ -240,7 +238,7 @@ Musíte už mít podsíť, která je označená konkrétním Virtual Networkm *t
 
 ## <a name="azure-portal-steps"></a>Azure Portal kroky
 
-1. Přihlaste se k [portálu Azure Portal][http-azure-portal-link-ref-477t].
+1. Přihlaste se na portál [Azure Portal][http-azure-portal-link-ref-477t].
 
 2. Vyhledejte a vyberte **SQL servery**a pak vyberte svůj server. V části **zabezpečení**vyberte možnost **brány firewall a virtuální sítě**.
 

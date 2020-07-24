@@ -2,13 +2,13 @@
 title: Tlačítko nasadit do Azure
 description: Pomocí tlačítka nasaďte Azure Resource Manager šablony z úložiště GitHub.
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: e403d095f7419ed13742dcfa8e8407a92ad10be0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/20/2020
+ms.openlocfilehash: 9fe69eba2a91bf19e0662ae071c222905c348666
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82744092"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079457"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>Použití tlačítka nasazení k nasazení šablon z úložiště GitHub
 
@@ -28,7 +28,11 @@ Obrázek se zobrazí jako:
 
 ## <a name="create-url-for-deploying-template"></a>Vytvořit adresu URL pro nasazení šablony
 
-Pokud chcete vytvořit adresu URL pro vaši šablonu, začněte s nezpracovanými adresami URL šablony v úložišti:
+Pokud chcete vytvořit adresu URL pro vaši šablonu, začněte s nezpracovanými adresami URL šablony v úložišti. Pokud chcete zobrazit neupravenou adresu URL, vyberte **Nezpracovaná**.
+
+:::image type="content" source="./media/deploy-to-azure-button/select-raw.png" alt-text="vybrat nezpracované":::
+
+Formát adresy URL je:
 
 ```html
 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json

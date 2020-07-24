@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: 415895b894261ade9b2332eb3fb926eba74fe937
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: d7e56fe36af3d841cfd888dd6c1bf05502837cdd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078404"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079838"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>Spuštění virtuálního počítače se zablokuje při přípravě Windows. Nevypínejte počítač v Azure
 
@@ -45,7 +45,7 @@ Pokud se problém nevyřeší po čekání na zpracování změn, budete potřeb
 ### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Připojení disku s operačním systémem k virtuálnímu počítači pro obnovení
 
 1. Pořídit snímek disku s operačním systémem ovlivněného virtuálního počítače jako zálohy. Další informace najdete v tématu [vytvoření snímku disku](../windows/snapshot-copy-managed-disk.md).
-2. [Připojte disk s operačním systémem k virtuálnímu počítači pro obnovení](../windows/troubleshoot-recovery-disks-portal.md).
+2. [Připojte disk s operačním systémem k virtuálnímu počítači pro obnovení](./troubleshoot-recovery-disks-portal-windows.md).
 3. Vzdálená plocha do virtuálního počítače pro obnovení. 
 4. Pokud je disk s operačním systémem zašifrovaný, musíte před přechodem k dalšímu kroku vypnout šifrování. Další informace najdete v tématu [dešifrujte zašifrovaný disk s operačním systémem ve virtuálním počítači, který se nedá spustit](troubleshoot-bitlocker-boot-error.md#solution).
 
@@ -99,7 +99,7 @@ Pokud chcete povolit protokol výpisu a sériovou konzolu, spusťte následujíc
         reg unload HKLM\BROKENSYSTEM
         ```
 
-3. [Odpojte disk s operačním systémem a pak znovu připojte disk s operačním systémem k ovlivněnému virtuálnímu počítači](../windows/troubleshoot-recovery-disks-portal.md).
+3. [Odpojte disk s operačním systémem a pak znovu připojte disk s operačním systémem k ovlivněnému virtuálnímu počítači](./troubleshoot-recovery-disks-portal-windows.md).
 4. Spusťte virtuální počítač a otevřete konzolu sériového portu.
 5. Chcete-li aktivovat výpis paměti, vyberte možnost **Odeslat nemaskovatelné přerušení (NMI)** .
     ![obrázek, kde se má poslat nemaskovatelné přerušení](./media/troubleshoot-vm-configure-update-boot/run-nmi.png)

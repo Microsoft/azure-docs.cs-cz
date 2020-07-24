@@ -1,5 +1,5 @@
 ---
-title: Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver | Microsoft Docs
+title: Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver
 description: Průvodce vysokou dostupností pro SAP NetWeaver v Azure Virtual Machines
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -16,13 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d1b028472785b146a45c22b3d23db7cb241c11da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbdbae3d310d6e4c3224663dd523cb124744dfbd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84557322"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080178"
 ---
-# <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver
+# <a name="high-availability-azure-virtual-machines-for-sap-netweaver"></a>Vysoce dostupná Azure Virtual Machines pro SAP NetWeaver
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -35,7 +36,7 @@ ms.locfileid: "84557322"
 [azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 [azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
-[dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
+[dbms-guide]:dbms-guide.md
 
 [deployment-guide]:deployment-guide.md
 
@@ -170,7 +171,7 @@ V rámci zjednodušení nasazení a konfigurace používáme v tomto článku š
 ## <a name="prerequisites"></a><a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a>Požadovaný
 Než začnete, ujistěte se, že splňujete požadavky popsané v následujících částech. Nezapomeňte také zkontrolovat všechny prostředky uvedené v části [Resources (prostředky][sap-ha-guide-2] ).
 
-V tomto článku používáme šablony Azure Resource Manager pro [trojrozměrné NETWEAVER SAP pomocí Managed disks](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md/). Užitečný přehled šablon najdete v tématu [šablony SAP Azure Resource Manager](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/).
+V tomto článku používáme šablony Azure Resource Manager pro [trojrozměrné NETWEAVER SAP pomocí Managed disks](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md/). Užitečný přehled šablon najdete v tématu [šablony SAP Azure Resource Manager](/archive/blogs/saponsqlserver/azure-quickstart-templates-for-sap).
 
 ## <a name="resources"></a><a name="42b8f600-7ba3-4606-b8a5-53c4f026da08"></a>Prostředky
 Tyto články zahrnují nasazení SAP v Azure:
@@ -319,7 +320,7 @@ Všechny virtuální počítače, které hostují instance aplikačního serveru
 * Všechny virtuální počítače jsou součástí stejné upgradovací domény. Upgradovací doména například zajistí, že virtuální počítače nejsou aktualizovány ve stejnou dobu během plánovaného výpadku údržby.
 * Všechny virtuální počítače jsou součástí stejné domény selhání. Doména selhání například zajišťuje nasazení virtuálních počítačů, aby nedošlo k žádnému jedinému bodu selhání, který by měl mít vliv na dostupnost všech virtuálních počítačů.
 
-Přečtěte si další informace o tom, jak [spravovat dostupnost virtuálních počítačů][virtual-machines-manage-availability].
+Přečtěte si další informace o tom, jak [spravovat dostupnost virtuálních počítačů] [.. /manage-availability.md].
 
 Jenom nespravovaný disk: vzhledem k tomu, že účet Azure Storage je potenciálním jediným bodem selhání, je důležité mít aspoň dva účty služby Azure Storage, ve kterých jsou distribuované aspoň dva virtuální počítače. V ideálním případě by se disky každého virtuálního počítače, na kterém běží instance dialogového okna SAP, nasadily v jiném účtu úložiště.
 
@@ -587,7 +588,7 @@ V našem příkladu je adresní prostor virtuální sítě Azure 10.0.0.0/16. Ex
 Chcete-li nastavit požadované IP adresy DNS, proveďte následující kroky.
 
 1. V Azure Portal v okně **servery DNS** se ujistěte, že je možnost **servery DNS** virtuální sítě nastavená na **vlastní DNS**.
-2. Vyberte nastavení podle typu sítě, kterou máte. Další informace najdete v následujících materiálech:
+2. Vyberte nastavení podle typu sítě, kterou máte. Další informace naleznete v následujících zdrojích:
    * Přidejte IP adresy místních serverů DNS.  
    Místní servery DNS můžete rozmístit do virtuálních počítačů, které běží v Azure. V takovém scénáři můžete přidat IP adresy virtuálních počítačů Azure, na kterých spouštíte službu DNS.
    * Pro nasazení virtuálních počítačů izolované v Azure: nasaďte další virtuální počítač ve stejné instanci Virtual Network, která slouží jako server DNS. Přidejte IP adresy virtuálních počítačů Azure, které jste nastavili pro spuštění služby DNS.
@@ -739,7 +740,7 @@ Pokud chcete pro instance SAP ASCS nebo SCS používat odlišná čísla, musít
 1. V Azure Portal vyberte ** < *SID*>-disascs**  >  **pravidla vyrovnávání zatížení pro vyrovnávání**zatížení.
 2. Pro všechna pravidla vyrovnávání zatížení, která patří do instance SAP ASCS nebo SCS, změňte tyto hodnoty:
 
-   * Name
+   * Název
    * Port
    * Back-end port
 
@@ -770,7 +771,7 @@ Chcete-li přidat položky registru na oba uzly clusteru instance SAP ASCS/SCS, 
 | Název proměnné |`KeepAliveTime` |
 | Typ proměnné |REG_DWORD (desetinné číslo) |
 | Hodnota |120000 |
-| Odkaz na dokumentaci |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
+| Odkaz na dokumentaci |[https://technet.microsoft.com/library/cc957549.aspx](/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10)) |
 
 _**Tabulka 3:** Změna prvního parametru protokolu TCP/IP_
 
@@ -781,7 +782,7 @@ Pak přidejte tyto položky registru Windows na obou uzlech clusteru Windows pro
 | Název proměnné |`KeepAliveInterval` |
 | Typ proměnné |REG_DWORD (desetinné číslo) |
 | Hodnota |120000 |
-| Odkaz na dokumentaci |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
+| Odkaz na dokumentaci |[https://technet.microsoft.com/library/cc957548.aspx](/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10)) |
 
 _**Tabulka 4:** Změna druhého parametru protokolu TCP/IP_
 

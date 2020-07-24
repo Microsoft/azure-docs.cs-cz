@@ -1,24 +1,28 @@
 ---
 title: Vytvoření první funkce pomocí šablon Azure Resource Manager
-description: Pomocí šablony Azure Resource Manager můžete vytvořit a nasadit do Azure jednoduchou funkci bez serveru, která se aktivovala protokolem HTTP.
+description: Pomocí šablony Azure Resource Manager (šablona ARM) můžete vytvářet a nasazovat do Azure jednoduchou funkci bez serveru, která se aktivovala protokolem HTTP.
 ms.date: 3/5/2020
 ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: subject-armqs
-ms.openlocfilehash: 403ff6407105574c78b8e600c37efbe61d2f8b79
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: e409b3b64ac6bc39ba4cb58397506723a67a0de2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84740443"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081708"
 ---
-# <a name="quickstart-create-and-deploy-azure-functions-resources-from-a-resource-manager-template"></a>Rychlý Start: vytvoření a nasazení Azure Functionsch prostředků ze šablony Správce prostředků
+# <a name="quickstart-create-and-deploy-azure-functions-resources-from-an-arm-template"></a>Rychlý Start: vytvoření a nasazení Azure Functionsch prostředků ze šablony ARM
 
-V tomto článku vytvoříte pomocí šablony Azure Resource Manager funkci, která reaguje na požadavky HTTP. 
+V tomto článku použijete šablonu Azure Resource Manager (šablonu ARM) k vytvoření funkce, která reaguje na požadavky HTTP. 
 
 Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům na několik centů nebo méně. 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
+
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-function-app-create-dynamic%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -48,13 +52,11 @@ Zvolte jednu z následujících karet, použijte odkaz a dokončete část a vyt
 
 Po vytvoření projektu místně vytvoříte prostředky potřebné ke spuštění nové funkce v Azure. 
 
-## <a name="create-a-serverless-function-app-in-azure"></a>Vytvoření aplikace s funkcemi bez serveru v Azure
+## <a name="review-the-template"></a>Kontrola šablony
 
-### <a name="review-the-template"></a>Kontrola šablony
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-function-app-create-dynamic/).
 
-Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dynamic).
-
-:::code language="json" source="~/quickstart-templates/101-function-app-create-dynamic/azuredeploy.json" :::
+:::code language="json" source="~/quickstart-templates/101-function-app-create-dynamic/azuredeploy.json" range="1-140" highlight="55-136":::
 
 Tato šablona vytvoří tyto čtyři prostředky Azure:
 
@@ -63,7 +65,7 @@ Tato šablona vytvoří tyto čtyři prostředky Azure:
 + [**Microsoft. Web/weby**](/azure/templates/microsoft.web/sites): Vytvoření aplikace Function App.
 + [**Microsoft. Insights/Components**](/azure/templates/microsoft.insights/components): vytvořte instanci Application Insights pro monitorování.
 
-### <a name="deploy-the-template"></a>Nasazení šablony
+## <a name="deploy-the-template"></a>Nasazení šablony
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli-interactive

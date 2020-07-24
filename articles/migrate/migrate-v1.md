@@ -7,22 +7,22 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7c4a148d68de8c57ed9237c05ba11eaf6c5e81e3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5ea17edc61988f13df5137686d823a424f6752ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103955"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080858"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Práce s předchozí verzí Azure Migrate
 
-Tento článek poskytuje informace o práci s předchozí verzí Azure Migrate.
+Tento článek poskytuje informace o práci s předchozí verzí Azure Migrate. 
 
 
 Existují dvě verze služby Azure Migrate:
 
 - **Aktuální verze**: Tato verze slouží k vytváření Azure Migrate projektů, zjišťování místních počítačů a orchestraci posouzení a migrace. [Přečtěte si další](whats-new.md) informace o novinkách v této verzi.
-- **Předchozí verze**: Pokud používáte předchozí verzi Azure Migrate (podporuje se jenom posouzení místních virtuálních počítačů VMware), měli byste teď použít aktuální verzi. Pokud stále potřebujete použít Azure Migrate projekty vytvořené v předchozí verzi, můžete to dělat a nemůžete udělat:
+- **Předchozí verze**: Pokud používáte předchozí verzi Azure Migrate (podporuje se jenom posouzení místních virtuálních počítačů VMware), měli byste teď použít aktuální verzi. V tomto článku se v projektech předchozí verze označují jako klasické projekty. Pokud stále potřebujete použít Azure Migrate projekty vytvořené v předchozí verzi, můžete to dělat a nemůžete udělat:
     - Už nemůžete vytvářet projekty migrace.
     - Doporučujeme, abyste neprováděli nové zjišťování.
     - Ke stávajícím projektům můžete pořád přistupovat.
@@ -31,7 +31,7 @@ Existují dvě verze služby Azure Migrate:
 
 ## <a name="upgrade-between-versions"></a>Upgrade mezi verzemi
 
-Nemůžete upgradovat projekty nebo součásti v předchozí verzi na novou verzi. Musíte [vytvořit nový Azure Migrate projekt](how-to-add-tool-first-time.md)a přidat do něj nástroje pro posouzení a migraci.
+Nemůžete upgradovat projekty nebo součásti v předchozí verzi na novou verzi. Musíte [vytvořit nový Azure Migrate projekt](create-manage-projects.md)a přidat do něj [Nástroje pro posouzení a migraci](how-to-add-tool-first-time.md) . Pomocí kurzů můžete pochopit, jak jsou dostupné nástroje pro posouzení a migraci. Pokud byl pracovní prostor Log Analytics připojený k klasickému projektu, můžete ho po odstranění klasického projektu připojit k projektu aktuální verze.
 
 ## <a name="find-projects-from-previous-version"></a>Najít projekty z předchozí verze
 
@@ -39,7 +39,16 @@ Vyhledat projekty z předchozí verze následujícím způsobem:
 
 1. V Azure Portal > **všechny služby**vyhledejte a vyberte **Azure Migrate**. 
 2. Na řídicím panelu Azure Migrate existuje oznámení a odkaz pro přístup k původním Azure Migratem projektům.
-3. Klikněte na odkaz pro otevření projektů v1.
+3. Klikněte na odkaz pro otevření klasických projektů.
+
+## <a name="delete-projects-from-previous-version"></a>Odstranit projekty z předchozí verze
+
+Vyhledejte a odstraňte projekty z předchozí verze následujícím způsobem:
+
+1. V Azure Portal > **všechny služby**vyhledejte a vyberte **Azure Migrate**. 
+2. Na řídicím panelu Azure Migrate existuje oznámení a odkaz pro přístup k původním Azure Migratem projektům.
+3. Klikněte na odkaz pro otevření klasických projektů.
+4. Vyberte projekt, který chcete odstranit, a odstraňte ho. 
 
 
 ## <a name="create-an-assessment"></a>Vytvoření posouzení
@@ -56,7 +65,7 @@ Vyhodnocování vytvořte následujícím způsobem:
 3. Vytvořte skupinu a pojmenujte ji.
 4. Vyberte virtuální počítače, které do ní chcete přidat.
 5. Kliknutím na tlačítko **Vytvořit posouzení** vytvoříte skupinu a posouzení.
-6. Po vytvoření posouzení ho zobrazte na **Overview**  >  **řídicím panelu**přehled.
+6. Jakmile bude posouzení hotové, zobrazíte ho v části **Přehled** > **Řídicí panel**.
 7. Klikněte na **Exportovat posouzení** a stáhněte ho jako excelový soubor.
 
 Pokud chcete aktualizovat existující interní hodnocení o nejnovější data o výkonu, můžete použít příkaz **Přepočítat** a hodnocení aktualizovat.
@@ -92,7 +101,7 @@ Připravenost přihlíží k několika vlastnostem virtuálních počítačů, a
 --- | --- | ---
 **Typ spouštění** | Systém BIOS je podporován. Rozhraní UEFI se nepodporuje. | Podmíněně připravený, pokud je typ spouštění UEFI.
 **Cores** | Počítače Core <= maximální počet jader (128) podporovaných virtuálním počítačem Azure.<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate bere v úvahu využité jádra.<br/>Pokud je v nastavení hodnocení určen faktor komfortu, je počet využitých jader vynásoben faktorem pohodlí.<br/><br/> Pokud není k dispozici žádná historie výkonu, Azure Migrate používá přidělená jádra bez použití faktoru pohodlí. | Připraveno, pokud je omezení menší nebo rovno.
-**Memory (Paměť)** | Velikost paměti počítače <= maximální paměť (3892 GB v Azure M Series Standard_M128m &nbsp; <sup>2</sup>) pro virtuální počítač Azure. [Další informace](../virtual-machines/windows/sizes.md).<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate bere v úvahu využitou paměť.<br/><br/>Pokud je určen faktor komfortu, vyhodnotí se využitá paměť podle faktoru pohodlí.<br/><br/> Pokud není k dispozici žádná historie, je přidělená paměť použita bez použití faktoru pohodlí.<br/><br/> | V rámci omezení je připravený.
+**Paměť** | Velikost paměti počítače <= maximální paměť (3892 GB v Azure M Series Standard_M128m &nbsp; <sup>2</sup>) pro virtuální počítač Azure. [Přečtěte si další informace](../virtual-machines/windows/sizes.md).<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate bere v úvahu využitou paměť.<br/><br/>Pokud je určen faktor komfortu, vyhodnotí se využitá paměť podle faktoru pohodlí.<br/><br/> Pokud není k dispozici žádná historie, je přidělená paměť použita bez použití faktoru pohodlí.<br/><br/> | V rámci omezení je připravený.
 **Disk úložiště** | Přidělená velikost disku musí být 4 TB (4096 GB) nebo méně.<br/><br/> Počet disků připojených k počítači musí být 65 nebo méně, včetně disku s operačním systémem. | V rámci omezení je připravený.
 **Sítě** | K počítači musí být připojen 32 nebo méně síťových adaptérů. | V rámci omezení je připravený.
 
@@ -227,7 +236,7 @@ Instalace agenta na počítač s Windows:
 2. Na **úvodní** stránce klikněte na **Další**. Na stránce **licenční podmínky** **kliknutím na Souhlasím** přijměte licenci.
 3. V části **cílová složka**ponechejte nebo upravte výchozí instalační složku > **Další**.
 4. V **Možnosti nastavení agenta**vyberte **Azure Log Analytics**  >  **Další**.
-5. Kliknutím na **Přidat** přidejte nový pracovní prostor Log Analytics. Vložte do ID a klíče pracovního prostoru, který jste zkopírovali z portálu. Klikněte na **Další**.
+5. Kliknutím na **Přidat** přidejte nový pracovní prostor Log Analytics. Vložte do ID a klíče pracovního prostoru, který jste zkopírovali z portálu. Klikněte na **Next** (Další).
 
 Agenta můžete nainstalovat z příkazového řádku nebo pomocí automatizované metody, jako je Configuration Manager. [Přečtěte si další informace](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) o použití těchto metod k instalaci agenta MMA.
 
@@ -244,7 +253,7 @@ Instalace agenta na počítač se systémem Linux:
 
 ### <a name="install-the-mma-agent-on-a-machine-monitored-by-operations-manager"></a>Instalace agenta MMA na počítači monitorovaném nástrojem Operations Manager
 
-Pro počítače monitorované nástrojem System Center Operations Manager 2012 R2 nebo novějším není potřeba instalovat agenta MMA. Service Map se integruje s Operations Manager MMA ke shromáždění potřebných dat závislostí. [Další informace](../azure-monitor/insights/service-map-scom.md#prerequisites). Je potřeba nainstalovat agenta závislostí.
+Pro počítače monitorované nástrojem System Center Operations Manager 2012 R2 nebo novějším není potřeba instalovat agenta MMA. Service Map se integruje s Operations Manager MMA ke shromáždění potřebných dat závislostí. [Přečtěte si další informace](../azure-monitor/insights/service-map-scom.md#prerequisites). Je potřeba nainstalovat agenta závislostí.
 
 ### <a name="install-the-dependency-agent"></a>Instalace agenta závislostí
 

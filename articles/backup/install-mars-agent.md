@@ -3,12 +3,12 @@ title: Instalace agenta Microsoft Azure Recovery Services (MARS)
 description: Naučte se, jak nainstalovat agenta Microsoft Azure Recovery Services (MARS) pro zálohování počítačů s Windows.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 7a43f585e978b7d6974ac89fbb5d93f15aebb1d7
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: b9842f6b07621301a0a8a32f5eb7fae5ece153bc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855236"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079362"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Instalace agenta Azure Backup MARS
 
@@ -42,10 +42,10 @@ Data, která jsou k dispozici pro zálohování, závisí na tom, kde je agent n
 
 ## <a name="modify-storage-replication"></a>Úprava replikace úložiště
 
-Ve výchozím nastavení trezory používají [geograficky redundantní úložiště (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
+Ve výchozím nastavení trezory používají [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy.md).
 
 * Pokud je trezor vaším primárním zálohovacím mechanismem, doporučujeme použít GRS.
-* Pomocí [místně redundantního úložiště (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) můžete snížit náklady na službu Azure Storage.
+* Pomocí [místně redundantního úložiště (LRS)](../storage/common/storage-redundancy.md?toc=/azure/storage/blobs/toc.json) můžete snížit náklady na službu Azure Storage.
 
 Postup úpravy typu replikace úložiště:
 
@@ -95,7 +95,7 @@ Chcete-li použít partnerský vztah Microsoftu, vyberte následující služby,
 * Oblast Azure, podle umístění vašeho trezoru Recovery Services
 * Azure Storage podle umístění vašeho trezoru Recovery Services
 
-Další informace najdete v tématu [požadavky na směrování ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
+Další informace najdete v tématu [požadavky na směrování ExpressRoute](../expressroute/expressroute-routing.md).
 
 > [!NOTE]
 > Veřejné partnerské vztahy se pro nové okruhy zastaraly.

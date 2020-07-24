@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: 5d0eee6b89ec3e0be944f17c361aafa598724069
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: bc29a62f469b0b9d091fcdef2488afba764a09fe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042114"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080348"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Rozšíření a funkce virtuálních počítačů pro Linux
 
@@ -32,12 +32,12 @@ Tento článek poskytuje přehled rozšíření virtuálních počítačů, pře
 K dispozici je několik různých rozšíření virtuálních počítačů Azure, z nichž každý má konkrétní případ použití. Možné příklady:
 
 - Použijte konfiguraci požadovaného stavu PowerShellu na virtuální počítač s rozšířením DSC pro Linux. Další informace najdete v tématu [rozšíření konfigurace požadovaného stavu Azure](https://github.com/Azure/azure-linux-extensions/tree/master/DSC).
-- Nakonfigurujte monitorování virtuálního počítače pomocí rozšíření virtuálního počítače Microsoft Monitoring Agent. Další informace najdete v tématu [monitorování virtuálního počítače se systémem Linux](../linux/tutorial-monitoring.md).
+- Nakonfigurujte monitorování virtuálního počítače pomocí rozšíření virtuálního počítače Microsoft Monitoring Agent. Další informace najdete v tématu [monitorování virtuálního počítače se systémem Linux](../linux/tutorial-monitor.md).
 - Nakonfigurujte monitorování infrastruktury Azure pomocí rozšíření pro začínající nebo služby Datadog. Další informace najdete v dokumentaci k [docs](https://docs.chef.io/azure_portal.html) nebo na [blogu služby Datadog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 
 Kromě rozšíření specifických pro procesy je k dispozici rozšíření vlastních skriptů pro virtuální počítače s Windows i Linux. Rozšíření vlastních skriptů pro Linux umožňuje spustit libovolný skript bash na virtuálním počítači. Vlastní skripty jsou užitečné pro navrhování nasazení Azure, která vyžadují konfiguraci, a to nad rámec toho, co můžou využít nativní nástroje Azure. Další informace najdete v tématu [rozšíření vlastních skriptů pro virtuální počítače Linux](custom-script-linux.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro zpracování rozšíření na virtuálním počítači potřebujete nainstalovaného agenta Azure Linux. Některá jednotlivá rozšíření mají požadavky, jako je například přístup k prostředkům nebo závislostem.
 
@@ -65,7 +65,7 @@ Balíčky rozšíření se stáhnou z úložiště rozšíření Azure Storage a
 > [!IMPORTANT]
 > Pokud jste zablokovali přístup k *168.63.129.16* pomocí brány firewall hostů, rozšíření selžou bez ohledu na výše uvedené.
 
-Agenty lze použít pouze ke stažení balíčků rozšíření a stavu hlášení. Pokud třeba instalace rozšíření potřebuje stáhnout skript z GitHubu (vlastní skript) nebo potřebuje přístup k Azure Storage (Azure Backup), musí se otevřít další porty skupiny zabezpečení brány firewall/sítě. Různá rozšíření mají různé požadavky, protože se jedná o aplikace v pravém. U rozšíření, která vyžadují přístup k Azure Storage můžete přístup pomocí značek služeb Azure NSG pro [úložiště](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)zpřístupnit.
+Agenty lze použít pouze ke stažení balíčků rozšíření a stavu hlášení. Pokud třeba instalace rozšíření potřebuje stáhnout skript z GitHubu (vlastní skript) nebo potřebuje přístup k Azure Storage (Azure Backup), musí se otevřít další porty skupiny zabezpečení brány firewall/sítě. Různá rozšíření mají různé požadavky, protože se jedná o aplikace v pravém. U rozšíření, která vyžadují přístup k Azure Storage můžete přístup pomocí značek služeb Azure NSG pro [úložiště](../../virtual-network/security-overview.md#service-tags)zpřístupnit.
 
 Pro přesměrování požadavků na přenos agenta má agent pro Linux proxy server podporu. Tato proxy server podpora však nepoužívá rozšíření. Je nutné nakonfigurovat každé individuální rozšíření tak, aby fungovalo s proxy serverem.
 
@@ -105,7 +105,7 @@ info:    Executing command vm extension set
 info:    vm extension set command OK
 ```
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 
 Rozšíření virtuálních počítačů je možné použít pro existující virtuální počítač prostřednictvím Azure Portal. Vyberte virtuální počítač na portálu, klikněte na **rozšíření**a pak vyberte **Přidat**. V seznamu dostupných rozšíření vyberte požadované rozšíření a postupujte podle pokynů v průvodci.
 
@@ -259,7 +259,7 @@ V předchozím příkladu je výstup nadřazeného objektu nebo balíčku nasaze
 
 "Agent stavu cíle" je verze automatického aktualizace.
 
-Důrazně doporučujeme, abyste pro agenta vždy měli automatické aktualizace, [AutoUpdate. Enabled = y](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent). Tato možnost není povolená znamená, že je potřeba aktualizovat agenta ručně a Nezískávat opravy chyb a zabezpečení.
+Důrazně doporučujeme, abyste pro agenta vždy měli automatické aktualizace, [AutoUpdate. Enabled = y](./update-linux-agent.md). Tato možnost není povolená znamená, že je potřeba aktualizovat agenta ručně a Nezískávat opravy chyb a zabezpečení.
 
 #### <a name="extension-updates"></a>Aktualizace rozšíření
 
@@ -403,7 +403,7 @@ Můžete také odebrat rozšíření v Azure Portal následujícím způsobem:
 
 ## <a name="common-vm-extension-reference"></a>Obecné odkazy na rozšíření virtuálních počítačů
 
-| Název rozšíření | Description | Další informace |
+| Název rozšíření | Popis | Další informace |
 | --- | --- | --- |
 | Rozšíření vlastních skriptů pro Linux |Spouštění skriptů na virtuálním počítači Azure |[Rozšíření vlastních skriptů pro Linux](custom-script-linux.md) |
 | Rozšíření přístupu virtuálních počítačů |Opětovné získání přístupu k virtuálnímu počítači Azure |[Rozšíření přístupu virtuálních počítačů](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |

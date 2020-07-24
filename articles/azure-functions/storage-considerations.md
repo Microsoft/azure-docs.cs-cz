@@ -3,12 +3,12 @@ title: Požadavky na úložiště pro Azure Functions
 description: Seznamte se s požadavky na úložiště Azure Functions a o šifrování uložených dat.
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 324516240d09a5443908cbffec514e4caba2b604
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2efd583b319e3f3b1fa3db307ea4a3cf53710165
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83648795"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079600"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Požadavky na úložiště pro Azure Functions
 
@@ -18,7 +18,7 @@ Azure Functions vyžaduje účet Azure Storage při vytváření instance aplika
 |Služba úložiště  | Využití funkcí  |
 |---------|---------|
 | [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)     | Zachovat stav vazeb a klíče funkcí  <br/>Používá se také pro [centra úloh v Durable Functions](durable/durable-functions-task-hubs.md). |
-| [Soubory Azure](../storage/files/storage-files-introduction.md)  | Sdílená složka používaná k ukládání a spouštění kódu aplikace Function App v [plánu spotřeby](functions-scale.md#consumption-plan). |
+| [Azure Files](../storage/files/storage-files-introduction.md)  | Sdílená složka používaná k ukládání a spouštění kódu aplikace Function App v [plánu spotřeby](functions-scale.md#consumption-plan). |
 | [Úložiště front Azure](../storage/queues/storage-queues-introduction.md)     | Používá [se pro centra úloh v Durable Functions](durable/durable-functions-task-hubs.md).   |
 | [Azure Table storage](../storage/tables/table-storage-overview.md)  |  Používá [se pro centra úloh v Durable Functions](durable/durable-functions-task-hubs.md).       |
 
@@ -41,7 +41,7 @@ Každá aplikace Function App vyžaduje, aby účet úložiště fungoval. Pokud
 
 Připojení k účtu úložiště se udržuje v [nastavení aplikace AzureWebJobsStorage](./functions-app-settings.md#azurewebjobsstorage). 
 
-Připojovací řetězec účtu úložiště se musí aktualizovat při opětovném generování klíčů úložiště. [Přečtěte si další informace o správě klíčů úložiště tady](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account).
+Připojovací řetězec účtu úložiště se musí aktualizovat při opětovném generování klíčů úložiště. [Přečtěte si další informace o správě klíčů úložiště tady](../storage/common/storage-account-create.md).
 
 ### <a name="shared-storage-accounts"></a>Sdílené účty úložiště
 
@@ -80,5 +80,3 @@ Přečtěte si další informace o možnostech hostování Azure Functions.
 
 > [!div class="nextstepaction"]
 > [Hostování a škálování Azure Functions](functions-scale.md)
-
-

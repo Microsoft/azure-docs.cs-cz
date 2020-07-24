@@ -1,5 +1,5 @@
 ---
-title: Azure Firewall filtrování plně kvalifikovaného názvu domény v pravidlech sítě (Preview)
+title: Filtrování Azure Firewallového správce v pravidlech sítě (Preview)
 description: Jak používat filtrování plně kvalifikovaného názvu domény v síťových pravidlech
 services: firewall-manager
 author: vhorne
@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 46d1f2eae1342901a660f99891d1ac1529e8ad77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 599620c5fcc3ad1802527bd66e2dbead1b97d11d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85568596"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079031"
 ---
 # <a name="fqdn-filtering-in-network-rules-preview"></a>Filtrování plně kvalifikovaného názvu domény v pravidlech sítě (Preview)
 

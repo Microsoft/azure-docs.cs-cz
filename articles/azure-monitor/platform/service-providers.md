@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: 3adb94709d089e2f1d106680acc00c08d2203a4d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e49f9caaeb1b16daa49fabb217b6fc40fff17f53
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340882"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081470"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Protokoly Azure Monitor pro poskytovatele služeb
 
@@ -20,7 +21,7 @@ Velké podniky sdílí spoustu podobností s poskytovateli služeb, zejména v p
 
 Pro partnery a poskytovatele služeb, kteří jsou součástí programu [Cloud Solution Provider (CSP)](https://partner.microsoft.com/en-US/membership/cloud-solution-provider) , je Log Analytics v Azure monitor jedna ze služeb Azure dostupných v předplatných Azure CSP.
 
-Log Analytics v Azure Monitor může také používat poskytovatel služeb, který spravuje prostředky zákazníka prostřednictvím funkce správy delegovaných prostředků Azure v [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview).
+Log Analytics v Azure Monitor může také používat poskytovatel služeb, který spravuje prostředky zákazníka prostřednictvím funkce správy delegovaných prostředků Azure v [Azure Lighthouse](../../lighthouse/overview.md).
 
 ## <a name="architectures-for-service-providers"></a>Architektury pro poskytovatele služeb
 
@@ -34,12 +35,12 @@ V této architektuře je pracovní prostor nasazený v tenantovi zákazníka, kt
 
 Existují dva způsoby, jak můžou správci poskytovatele služeb získat přístup k pracovnímu prostoru Log Analytics v tenantovi zákazníka:
 
-- Zákazník může přidat jednotlivé uživatele od poskytovatele služeb jako [Azure Active Directory uživatelů typu Host (B2B)](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b). Správci poskytovatele služeb se budou muset přihlásit ke všem adresářům zákazníka v Azure Portal, aby měli přístup k těmto pracovním prostorům. To také vyžaduje, aby zákazníci mohli spravovat individuální přístup pro každého správce služby Service Provider.
-- Pro zajištění větší škálovatelnosti a flexibility můžou poskytovatelé služeb využít možnost [správy delegovaných prostředků Azure](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management) ve [službě Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) pro přístup k tenantovi zákazníka. Pomocí této metody jsou správci poskytovatele služeb zahrnuti do skupiny uživatelů Azure AD v tenantovi poskytovatele služeb a tato skupina má přístup k této skupině během procesu připojování pro každého zákazníka. Tito správci pak můžou přístup k pracovním prostorům každého zákazníka z vlastního tenanta poskytovatele služeb, ale nemusí se přihlašovat jednotlivě k tenantovi jednotlivých zákazníků. Přístup k prostředkům pracovních prostorů Log Analytics vašich zákazníků tímto způsobem omezuje práci na straně zákazníka a usnadňuje shromažďování a analýzu dat napříč několika zákazníky spravovanými stejným poskytovatelem služeb prostřednictvím nástrojů, jako jsou například [sešity Azure monitor](https://docs.microsoft.com/azure//azure-monitor/platform/workbooks-overview). Další informace najdete v tématu [monitorování zákaznických prostředků ve velkém měřítku](https://docs.microsoft.com/azure/lighthouse/how-to/monitor-at-scale).
+- Zákazník může přidat jednotlivé uživatele od poskytovatele služeb jako [Azure Active Directory uživatelů typu Host (B2B)](../../active-directory/b2b/what-is-b2b.md). Správci poskytovatele služeb se budou muset přihlásit ke všem adresářům zákazníka v Azure Portal, aby měli přístup k těmto pracovním prostorům. To také vyžaduje, aby zákazníci mohli spravovat individuální přístup pro každého správce služby Service Provider.
+- Pro zajištění větší škálovatelnosti a flexibility můžou poskytovatelé služeb využít možnost [správy delegovaných prostředků Azure](../../lighthouse/concepts/azure-delegated-resource-management.md) ve [službě Azure Lighthouse](../../lighthouse/overview.md) pro přístup k tenantovi zákazníka. Pomocí této metody jsou správci poskytovatele služeb zahrnuti do skupiny uživatelů Azure AD v tenantovi poskytovatele služeb a tato skupina má přístup k této skupině během procesu připojování pro každého zákazníka. Tito správci pak můžou přístup k pracovním prostorům každého zákazníka z vlastního tenanta poskytovatele služeb, ale nemusí se přihlašovat jednotlivě k tenantovi jednotlivých zákazníků. Přístup k prostředkům pracovních prostorů Log Analytics vašich zákazníků tímto způsobem omezuje práci na straně zákazníka a usnadňuje shromažďování a analýzu dat napříč několika zákazníky spravovanými stejným poskytovatelem služeb prostřednictvím nástrojů, jako jsou například [sešity Azure monitor](../..//azure-monitor/platform/workbooks-overview.md). Další informace najdete v tématu [monitorování zákaznických prostředků ve velkém měřítku](../../lighthouse/how-to/monitor-at-scale.md).
 
 Mezi výhody distribuované architektury patří:
 
-* Zákazník může ověřit konkrétní úrovně oprávnění prostřednictvím [delegované správy prostředků Azure](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management)nebo může spravovat přístup k protokolům pomocí vlastního [přístupu založeného na rolích](https://docs.microsoft.com/azure/role-based-access-control/overview).
+* Zákazník může ověřit konkrétní úrovně oprávnění prostřednictvím [delegované správy prostředků Azure](../../lighthouse/concepts/azure-delegated-resource-management.md)nebo může spravovat přístup k protokolům pomocí vlastního [přístupu založeného na rolích](../../role-based-access-control/overview.md).
 * Protokoly je možné shromažďovat ze všech typů prostředků, nikoli jenom z dat virtuálních počítačů založených na agentech. Například protokoly auditu Azure.
 * Každý zákazník může mít různá nastavení pro svůj pracovní prostor, jako je například uchovávání a capping dat.
 * Izolace mezi zákazníky za zákonné a dodržování předpisů.
@@ -74,7 +75,7 @@ Třetí architektura je kombinací obou možností. Vychází z první distribuo
 
 Existují dvě možnosti implementace protokolů v centrálním umístění:
 
-1. Centrální pracovní prostor: poskytovatel služeb může ve svém tenantovi vytvořit pracovní prostor a použít skript, který využívá [rozhraní API pro dotazování](https://dev.loganalytics.io/) s [rozhraním API pro shromažďování dat](../../azure-monitor/platform/data-collector-api.md) k přenesení dat z různých pracovních prostorů do tohoto centrálního umístění. Další možností je jiný než skript, je použít [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
+1. Centrální pracovní prostor: poskytovatel služeb může ve svém tenantovi vytvořit pracovní prostor a použít skript, který využívá [rozhraní API pro dotazování](https://dev.loganalytics.io/) s [rozhraním API pro shromažďování dat](../../azure-monitor/platform/data-collector-api.md) k přenesení dat z různých pracovních prostorů do tohoto centrálního umístění. Další možností je jiný než skript, je použít [Azure Logic Apps](../../logic-apps/logic-apps-overview.md).
 
 2. Power BI jako centrální umístění: Power BI se může chovat jako centrální umístění, když různé pracovní prostory exportují data do tohoto prostředí pomocí integrace mezi Log Analyticsm a [Power BIm](../../azure-monitor/platform/powerbi.md).
 
@@ -88,4 +89,4 @@ Existují dvě možnosti implementace protokolů v centrálním umístění:
 
 * Generování souhrnných sestav pomocí [Power BI](../../azure-monitor/platform/powerbi.md)
 
-* Zaveďte zákazníky do [správy delegovaných prostředků Azure](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management).
+* Zaveďte zákazníky do [správy delegovaných prostředků Azure](../../lighthouse/concepts/azure-delegated-resource-management.md).

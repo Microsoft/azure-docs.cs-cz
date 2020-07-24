@@ -4,12 +4,12 @@ description: Jak nasadit a nakonfigurovat síť sdružení prostředků infrastr
 ms.date: 07/07/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: e1cbfa56f1e4ea9f8cbaa0ad973d06e8b8d486ca
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1e90eeccb015b4d5ef78b79297565ddde9cfa305
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085796"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081269"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hlavní kniha prostředků infrastruktury pro službu Azure Kubernetes (AKS)
 
@@ -28,9 +28,9 @@ Než začnete používat šablonu řešení, porovnejte svůj scénář s běžn
 
 Možnost | Model služby | Běžný případ použití
 -------|---------------|-----------------
-Šablony řešení | IaaS | Šablony řešení jsou Azure Resource Manager šablony, pomocí kterých můžete zřídit plně nakonfigurovanou topologii sítě blockchain. Šablony nasazují a konfigurují Microsoft Azure COMPUTE, sítě a služby úložiště pro daný typ sítě blockchain. Šablony řešení jsou poskytovány bez smlouvy o úrovni služeb. Pro podporu použijte [stránku s otázkou Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html) .
-[Služba Azure Blockchain](../service/overview.md) | PaaS | Služba Azure blockchain ve verzi Preview zjednodušuje vytváření, správu a řízení sítí konsorcia blockchain. Využijte Azure blockchain Service pro řešení, která vyžadují PaaS, správu konsorcia nebo jejich soukromí a transakce.
-[Azure Blockchain Workbench](../workbench/overview.md) | IaaS a PaaS | Azure blockchain Workbench Preview je kolekce služeb a funkcí Azure, které vám pomůžou vytvářet a nasazovat aplikace blockchain pro sdílení obchodních procesů a dat s jinými organizacemi. Využijte Azure blockchain Workbench pro vytváření prototypů řešení blockchain nebo blockchain aplikace pro zkoušku konceptu. Azure Blockchain Workbench se poskytuje bez smlouvy o úrovni služeb. Pro podporu použijte [stránku s otázkou Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html) .
+Šablony řešení | IaaS | Šablony řešení jsou Azure Resource Manager šablony, pomocí kterých můžete zřídit plně nakonfigurovanou topologii sítě blockchain. Šablony nasazují a konfigurují Microsoft Azure COMPUTE, sítě a služby úložiště pro daný typ sítě blockchain. Šablony řešení jsou poskytovány bez smlouvy o úrovni služeb. Pro podporu použijte [stránku s otázkou Microsoft Q&](/answers/topics/azure-blockchain-workbench.html) .
+[Azure Blockchain Service](../service/overview.md) | PaaS | Služba Azure blockchain ve verzi Preview zjednodušuje vytváření, správu a řízení sítí konsorcia blockchain. Využijte Azure blockchain Service pro řešení, která vyžadují PaaS, správu konsorcia nebo jejich soukromí a transakce.
+[Azure Blockchain Workbench](../workbench/overview.md) | IaaS a PaaS | Azure blockchain Workbench Preview je kolekce služeb a funkcí Azure, které vám pomůžou vytvářet a nasazovat aplikace blockchain pro sdílení obchodních procesů a dat s jinými organizacemi. Využijte Azure blockchain Workbench pro vytváření prototypů řešení blockchain nebo blockchain aplikace pro zkoušku konceptu. Azure Blockchain Workbench se poskytuje bez smlouvy o úrovni služeb. Pro podporu použijte [stránku s otázkou Microsoft Q&](/answers/topics/azure-blockchain-workbench.html) .
 
 ## <a name="hyperledger-fabric-consortium-architecture"></a>Architektura konsorcia infrastruktury pro hlavní kniha
 
@@ -113,7 +113,7 @@ Pokud chcete začít s nasazením síťových součástí HLF, přejděte na [Az
     - **Předpona DNS**: Předpona názvu DNS (Domain Name System) pro cluster AKS. Pomocí DNS se připojíte k rozhraní Kubernetes API při správě kontejnerů po vytvoření clusteru.
     - **Velikost uzlu**: velikost uzlu Kubernetes můžete vybrat ze seznamu skladových jednotek virtuálních počítačů (SKU) dostupných v Azure. Pro zajištění optimálního výkonu doporučujeme standardní DS3 v2.
     - **Počet uzlů**: počet uzlů Kubernetes, které mají být nasazeny v clusteru. Doporučujeme, aby byl tento počet uzlů minimálně rovný nebo větší než počet uzlů HLF zadaných v nastavení prostředků infrastruktury.
-    - **ID klienta instančního objektu**: Zadejte ID klienta existujícího instančního objektu nebo vytvořte nový, který se vyžaduje pro ověřování AKS. Další informace najdete v tématu Postup [Vytvoření instančního objektu](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps?view=azps-3.2.0#create-a-service-principal).
+    - **ID klienta instančního objektu**: Zadejte ID klienta existujícího instančního objektu nebo vytvořte nový, který se vyžaduje pro ověřování AKS. Další informace najdete v tématu Postup [Vytvoření instančního objektu](/powershell/azure/create-azure-service-principal-azureps?view=azps-3.2.0#create-a-service-principal).
     - **Tajný kód klienta instančního objektu**: zadejte tajný klíč klienta instančního objektu, který je k dispozici v ID klienta instančního objektu.
     - **Potvrzení tajného klíče klienta**: potvrďte tajný klíč klienta, který je k dispozici v tajnosti klienta instančního objektu
     - **Povolit monitorování kontejnerů**: tuto možnost vyberte, pokud chcete povolit monitorování AKS, což umožňuje, aby protokoly AKS předalo do zadaného pracovního prostoru Log Analytics.
@@ -138,7 +138,7 @@ Chcete-li vytvořit blockchain Consortium po nasazení služby řazení a partne
 
 Všechny příkazy ke spuštění skriptu Azure HLF můžete provést prostřednictvím příkazového řádku Azure bash. Rozhraní (CLI). K webové verzi prostředí Azure Shell se můžete přihlásit prostřednictvím  ![Šablona prostředků infrastruktury hlavní knihy v Azure Kubernetes Service](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) možnost v pravém horním rohu Azure Portal. Do příkazového řádku zadejte bash a přejděte do bash CLI.
 
-Další informace najdete v tématu [Azure Shell](https://docs.microsoft.com/azure/cloud-shell/overview) .
+Další informace najdete v tématu [Azure Shell](../../cloud-shell/overview.md) .
 
 ![Šablona prostředků infrastruktury hlavní knihy v Azure Kubernetes Service](./media/hyperledger-fabric-consortium-azure-kubernetes-service/hyperledger-powershell.png)
 
@@ -285,7 +285,7 @@ Z klienta partnerské organizace, vystavení níže příkaz pro nastavení part
 ./azhlf channel setAnchorPeers -c $CHANNEL_NAME -p <anchorPeersList> -o $PEER_ORG_NAME -u $PEER_ADMIN_IDENTITY
 ```
 
-`<anchorPeersList>`je seznam uzlů oddělený mezerou, který se má nastavit jako kotvicí partner. Třeba
+`<anchorPeersList>`je seznam uzlů oddělený mezerou, který se má nastavit jako kotvicí partner. Příklad:
 
   - Nastavte `<anchorPeersList>` jako "peer1", pokud chcete nastavit pouze uzel peer1 jako kotvicího partnera.
   - Nastavte `<anchorPeersList>` jako "peer1" "peer3", pokud chcete jako kotvový partner nastavit uzel peer1 i peer3.
@@ -441,6 +441,6 @@ Pokud chcete poskytnout zpětnou vazbu k produktu nebo požádat o nové funkce,
 
 Spolupracujte s odborníky z Microsoftu a komunitou Azure blockchain.
 
-- [Microsoft Q&stránku s otázkou](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html). Technická podpora pro šablony Blockchain je omezená na problémy s nasazením.
-- [Technická komunita Microsoftu](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+- [Microsoft Q&stránku s otázkou](/answers/topics/azure-blockchain-workbench.html). Technická podpora pro šablony Blockchain je omezená na problémy s nasazením.
+- [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)

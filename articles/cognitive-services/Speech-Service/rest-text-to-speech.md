@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 77bba9433052c00df671caf73198ff75356b1c9a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0f43d1f780f838fdc49eb055536204026edcc729
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81400159"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079226"
 ---
 # <a name="text-to-speech-rest-api"></a>Rozhraní REST API pro převod textu na řeč
 
@@ -37,31 +37,31 @@ Než začnete používat toto rozhraní API, pochopte:
 
 ## <a name="get-a-list-of-voices"></a>Získat seznam hlasů
 
-`voices/list` Koncový bod umožňuje získat úplný seznam hlasů pro konkrétní oblast nebo koncový bod.
+`voices/list`Koncový bod umožňuje získat úplný seznam hlasů pro konkrétní oblast nebo koncový bod.
 
 ### <a name="regions-and-endpoints"></a>Oblasti a koncové body
 
 | Oblast | Koncový bod |
 |--------|----------|
 | Austrálie – východ | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Brazílie – jih | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Brazil South | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Střední Kanada | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| USA – střed | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Střední USA | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Východní Asie | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| USA – východ | `https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| East US | `https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA – východ 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Francie – střed | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Indie – střed | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Japonsko – východ | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Japan East | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Jižní Korea – střed | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA – středosever | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Severní Evropa | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| USA – středojih | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Jihovýchodní Asie | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Středojižní USA | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Southeast Asia | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Spojené království – jih | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Západní Evropa | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| West Europe | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA – západ | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| USA – západ 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Západní USA 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
@@ -69,7 +69,7 @@ Tato tabulka obsahuje seznam požadovaných a volitelných hlaviček pro požada
 
 | Hlavička | Popis | Požadováno/volitelné |
 |--------|-------------|---------------------|
-| `Authorization` | Autorizační token předchází slovu `Bearer`. Další informace najdete v tématu [Ověřování](#authentication). | Požaduje se |
+| `Authorization` | Autorizační token předchází slovu `Bearer` . Další informace najdete v tématu [Ověřování](#authentication). | Vyžadováno |
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -155,7 +155,7 @@ Stavový kód HTTP pro každou odpověď indikuje úspěch nebo běžné chyby.
 
 ## <a name="convert-text-to-speech"></a>Převod textu na řeč
 
-`v1` Koncový bod umožňuje převod textu na řeč pomocí [jazyka SSML (Speech Shrnutí Markup Language)](speech-synthesis-markup.md).
+`v1`Koncový bod umožňuje převod textu na řeč pomocí [jazyka SSML (Speech Shrnutí Markup Language)](speech-synthesis-markup.md).
 
 ### <a name="regions-and-endpoints"></a>Oblasti a koncové body
 
@@ -169,27 +169,27 @@ Tato tabulka obsahuje seznam požadovaných a volitelných hlaviček pro požada
 
 | Hlavička | Popis | Požadováno/volitelné |
 |--------|-------------|---------------------|
-| `Authorization` | Autorizační token předchází slovu `Bearer`. Další informace najdete v tématu [Ověřování](#authentication). | Požaduje se |
-| `Content-Type` | Určuje typ obsahu pro zadaný text. Přijatá hodnota: `application/ssml+xml`. | Požaduje se |
-| `X-Microsoft-OutputFormat` | Určuje formát výstup zvuku. Úplný seznam přijatých hodnot najdete v tématu [zvukové výstupy](#audio-outputs). | Požaduje se |
-| `User-Agent` | Název aplikace. Zadaná hodnota musí být kratší než 255 znaků. | Požaduje se |
+| `Authorization` | Autorizační token předchází slovu `Bearer` . Další informace najdete v tématu [Ověřování](#authentication). | Vyžadováno |
+| `Content-Type` | Určuje typ obsahu pro zadaný text. Přijatá hodnota: `application/ssml+xml` . | Vyžadováno |
+| `X-Microsoft-OutputFormat` | Určuje formát výstup zvuku. Úplný seznam přijatých hodnot najdete v tématu [zvukové výstupy](#audio-outputs). | Vyžadováno |
+| `User-Agent` | Název aplikace. Zadaná hodnota musí být kratší než 255 znaků. | Vyžadováno |
 
 ### <a name="audio-outputs"></a>Zvukové výstupy
 
 Toto je seznam podporovaných formátů zvuku, které se odesílají v každé žádosti jako `X-Microsoft-OutputFormat` záhlaví. Každá z nich zahrnuje přenosovou rychlost a typ kódování. Služba Speech podporuje zvukové výstupy 24 kHz, 16 kHz a 8 kHz.
 
-|||
-|-|-|
-| `raw-16khz-16bit-mono-pcm` | `raw-8khz-8bit-mono-mulaw` |
-| `riff-8khz-8bit-mono-alaw` | `riff-8khz-8bit-mono-mulaw` |
-| `riff-16khz-16bit-mono-pcm` | `audio-16khz-128kbitrate-mono-mp3` |
-| `audio-16khz-64kbitrate-mono-mp3` | `audio-16khz-32kbitrate-mono-mp3` |
-| `raw-24khz-16bit-mono-pcm` | `riff-24khz-16bit-mono-pcm` |
-| `audio-24khz-160kbitrate-mono-mp3` | `audio-24khz-96kbitrate-mono-mp3` |
-| `audio-24khz-48kbitrate-mono-mp3` | |
+```output
+raw-16khz-16bit-mono-pcm            raw-8khz-8bit-mono-mulaw
+riff-8khz-8bit-mono-alaw            riff-8khz-8bit-mono-mulaw
+riff-16khz-16bit-mono-pcm           audio-16khz-128kbitrate-mono-mp3
+audio-16khz-64kbitrate-mono-mp3     audio-16khz-32kbitrate-mono-mp3
+raw-24khz-16bit-mono-pcm            riff-24khz-16bit-mono-pcm
+audio-24khz-160kbitrate-mono-mp3    audio-24khz-96kbitrate-mono-mp3
+audio-24khz-48kbitrate-mono-mp3     ogg-24khz-16bit-mono-opus
+```
 
 > [!NOTE]
-> Pokud váš vybraný hlasový a výstupní formát má jiné přenosové rychlosti, zvuk se v případě potřeby převzorkuje. Avšak 24 kHz hlasy nepodporuje `audio-16khz-16kbps-mono-siren` a `riff-16khz-16kbps-mono-siren` výstupní formáty.
+> Pokud váš vybraný hlasový a výstupní formát má jiné přenosové rychlosti, zvuk se v případě potřeby převzorkuje. OGG-24khz-16bitový-mono-Opus se dá dekódovat pomocí [kodeku Opus](https://opus-codec.org/downloads/)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -233,11 +233,11 @@ Stavový kód HTTP pro každou odpověď indikuje úspěch nebo běžné chyby.
 | 400 | Chybný požadavek | Povinný parametr chybí, je prázdný nebo má hodnotu null. Nebo hodnota předaná buď požadovanému, nebo volitelnému parametru není platná. Běžným problémem je záhlaví, které je příliš dlouhé. |
 | 401 | Neautorizováno | Požadavek není autorizovaný. Zkontrolujte, jestli je klíč předplatného nebo token platný a ve správné oblasti. |
 | 413 | Entita požadavku je příliš velká. | Vstup SSML je delší než 1024 znaků. |
-| 415 | Nepodporovaný typ média | Je možné, že bylo zadáno `Content-Type` chybné. `Content-Type`měla by být nastavena `application/ssml+xml`na. |
+| 415 | Nepodporovaný typ média | Je možné, že `Content-Type` bylo zadáno chybné. `Content-Type`měla by být nastavena na `application/ssml+xml` . |
 | 429 | Příliš mnoho žádostí | Překročili jste kvótu nebo míru požadavků povolených pro vaše předplatné. |
 | 502 | Chybná brána    | Problém v síti nebo na straně serveru. Může také označovat neplatné hlavičky. |
 
-Pokud je `200 OK`stav HTTP, tělo odpovědi obsahuje zvukový soubor v požadovaném formátu. Tento soubor se dá přehrát jako přenesený, uložený do vyrovnávací paměti nebo uložený do souboru.
+Pokud je stav HTTP `200 OK` , tělo odpovědi obsahuje zvukový soubor v požadovaném formátu. Tento soubor se dá přehrát jako přenesený, uložený do vyrovnávací paměti nebo uložený do souboru.
 
 ## <a name="next-steps"></a>Další kroky
 

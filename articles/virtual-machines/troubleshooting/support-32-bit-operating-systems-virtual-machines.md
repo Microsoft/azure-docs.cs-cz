@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: b4e08cba2b49f43baea16b01ec709d8d9ab6a18d
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 91e5ca10e97e8fc1646367ac6d575d6813f3a291
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856943"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079855"
 ---
 # <a name="support-for-32-bit-operating-systems-in-azure-virtual-machines"></a>Podpora 32bitových operačních systémů ve virtuálních počítačích Azure
 
@@ -34,8 +34,8 @@ Další informace o operačních systémech, které jsou podporované na virtuá
 ## <a name="references"></a>Reference
 
 * [Další informace o bezplatných rozšířených aktualizacích zabezpečení pro Windows Server 2008/R2 v Azure](https://www.microsoft.com/cloud-platform/windows-server-2008)
-* [Přečtěte si další informace o podpoře systému Windows Server 2008 SP2 32 – specializované image v Azure](https://docs.microsoft.com/windows-server/get-started/uploading-specialized-ws08-image-to-azure)
-* [Další informace o podpoře migrace imagí Windows serveru 2008 do Azure pomocí Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-windows-server-2008)
+* [Přečtěte si další informace o podpoře systému Windows Server 2008 SP2 32 – specializované image v Azure](/windows-server/get-started/uploading-specialized-ws08-image-to-azure)
+* [Další informace o podpoře migrace imagí Windows serveru 2008 do Azure pomocí Azure Site Recovery](../../site-recovery/migrate-tutorial-windows-server-2008.md)
 * [Další informace o podporovaných operačních systémech rozšíření Azure](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems)
 * [Další informace o používání Windows serveru 2003 na Microsoft Azure](https://support.microsoft.com/help/3206074/running-windows-server-2003-on-microsoft-azure)
 

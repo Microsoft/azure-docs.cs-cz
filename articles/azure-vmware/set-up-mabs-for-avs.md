@@ -3,12 +3,12 @@ title: Nastavení Azure Backup Server pro řešení Azure VMware
 description: Nastavte prostředí pro řešení Azure VMware pro zálohování virtuálních počítačů pomocí Azure Backup Server.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: c56ebaff6b08f3d6586dfe025fdb2a5bfc708fa4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c45d2030e282057c487d142669ab634cd81f6929
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84816862"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079532"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Nastavení Azure Backup Server pro řešení Azure VMware
 
@@ -192,7 +192,7 @@ Postupujte podle kroků v této části ke stažení, extrakci a instalaci softw
 
 ### <a name="download-the-software-package"></a>Stažení softwarového balíčku
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com/).
 
 1. Pokud už máte otevřený trezor Recovery Services, pokračujte k dalšímu kroku. Pokud nemáte Recovery Services trezor otevřený, ale jste v Azure Portal, vyberte v hlavní nabídce možnost **Procházet**.
 
@@ -309,7 +309,7 @@ Pokud jste balíček softwaru stáhli na jiný server, zkopírujte soubory do vi
    * **Databáze**: **DatabaseName** by měl být **ReportServer \<SQLInstanceName> $**.
    * **Adresa URL webového portálu**: **virtuální adresář** by měl být **Reports_ \<SQLInstanceName> **.
 
-   [Přečtěte si další informace](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) o konfiguraci služby SSRS.
+   [Přečtěte si další informace](/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) o konfiguraci služby SSRS.
 
    > [!NOTE]
    > [Podmínky poskytování služeb Microsoft Online Services](https://www.microsoft.com/licensing/product-licensing/products) (OST) řídí licencování pro SQL Server používané jako databáze pro Azure Backup Server. V závislosti na OST SQL Server sady s Azure Backup Server používat jenom jako databázi pro Azure Backup Server.
@@ -319,7 +319,7 @@ Pokud jste balíček softwaru stáhli na jiný server, zkopírujte soubory do vi
 1. Zadejte umístění instalace souborů Microsoft Azure Backup serveru a vyberte **Další**.
 
    > [!NOTE]
-   > Pro zálohování do Azure se vyžaduje pomocné umístění. Ujistěte se, že pracovní umístění je alespoň 5% plánovaného zálohování dat do cloudu. V případě ochrany disku je třeba po dokončení instalace nakonfigurovat samostatné disky. Další informace o fondech úložiště najdete v tématu [Konfigurace fondů úložiště a diskového úložiště](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758075(v=sc.12)).
+   > Pro zálohování do Azure se vyžaduje pomocné umístění. Ujistěte se, že pracovní umístění je alespoň 5% plánovaného zálohování dat do cloudu. V případě ochrany disku je třeba po dokončení instalace nakonfigurovat samostatné disky. Další informace o fondech úložiště najdete v tématu [Konfigurace fondů úložiště a diskového úložiště](/previous-versions/system-center/system-center-2012-r2/hh758075(v=sc.12)).
 
    ![Nastavení instalace Microsoft Azure Backup instalace](../backup/media/backup-azure-microsoft-azure-backup/space-screen.png)
 
@@ -393,4 +393,3 @@ Přejděte k dalšímu kurzu, kde se dozvíte, jak nakonfigurovat zálohování 
 
 > [!div class="nextstepaction"]
 > [Konfigurace zálohování virtuálních počítačů řešení VMware Azure](backup-avs-vms-with-mabs.md)
-

@@ -6,11 +6,12 @@ ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/28/2020
-ms.openlocfilehash: b5c4005c95a88a40a836b9c0f6d1fd01e0417ed0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8211127d7c886b86f97e83a61b3b3ebb055851e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84170269"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078665"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Volání, triggery nebo vnořování aplikací logiky pomocí koncových bodů HTTPS v Azure Logic Apps
 
@@ -18,7 +19,7 @@ Pokud chcete, aby aplikace logiky mohla přijímat příchozí žádosti z jiný
 
 K nastavení možného koncového bodu můžete použít některý z těchto typů triggerů, které umožňují Logic Apps přijímat příchozí požadavky:
 
-* [Žádost](../connectors/connectors-native-reqres.md)
+* [Request](../connectors/connectors-native-reqres.md)
 * [HTTP Webhook](../connectors/connectors-native-webhook.md)
 * Aktivační události spravovaného konektoru, které mají [typ vstupech apiconnectionwebhook](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) a můžou přijímat příchozí požadavky HTTPS
 
@@ -27,7 +28,7 @@ K nastavení možného koncového bodu můžete použít některý z těchto typ
 
 Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý Start: Vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -35,7 +36,7 @@ Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](..
 
 ## <a name="create-a-callable-endpoint"></a>Vytvořit volatelné koncové body
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vytvořte a otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com). Vytvořte a otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
 
    V tomto příkladu se používá aktivační událost žádosti, ale můžete použít libovolný Trigger, který může přijímat příchozí požadavky HTTPS. Všechny zásady se na tyto triggery vztahují stejně. Další informace o triggeru žádosti najdete v tématu [příjem a odpověď na příchozí volání HTTPS pomocí Azure Logic Apps](../connectors/connectors-native-reqres.md).
 
@@ -97,7 +98,7 @@ Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](..
 
       Pole **schématu JSON textu žádosti** teď zobrazuje vygenerované schéma.
 
-1. Uložte svou aplikaci logiky.
+1. Uložte aplikaci logiky.
 
    V poli **Adresa URL příspěvku http** se teď zobrazuje VYGENEROVANÁ adresa URL pro zpětné volání, kterou můžou další služby použít k volání a aktivaci vaší aplikace logiky. Tato adresa URL obsahuje parametry dotazu, které určují klíč sdíleného přístupového podpisu (SAS), který se používá k ověřování.
 
@@ -248,7 +249,7 @@ Pokud chcete přijmout hodnoty parametrů prostřednictvím adresy URL koncovéh
 
       ![Příklad těla odpovědi s parametrem](./media/logic-apps-http-endpoint/relative-url-with-parameter.png)
 
-1. Uložte svou aplikaci logiky.
+1. Uložte aplikaci logiky.
 
    V aktivační události požadavku se adresa URL zpětného volání aktualizuje a teď obsahuje relativní cestu, například:
 
@@ -356,7 +357,7 @@ V těle odpovědi můžete zahrnout více hlaviček a libovolného typu obsahu. 
 
 Odpovědi mají tyto vlastnosti:
 
-| Property (zobrazení) | Property (JSON) | Description |
+| Property (zobrazení) | Property (JSON) | Popis |
 |--------------------|-----------------|-------------|
 | **Stavový kód** | `statusCode` | Stavový kód HTTPS, který se má použít v odpovědi na příchozí požadavek. Tento kód může být libovolný platný stavový kód, který začíná na 2xx, 4xx nebo 5xx. Nicméně stavové kódy 3xx nejsou povoleny. |
 | **Hlavičky** | `headers` | Jedna nebo více hlaviček, které mají být zahrnuty do odpovědi |
@@ -387,7 +388,7 @@ Pokud chcete zobrazit definici JSON pro akci odpovědi a kompletní definici JSO
 
 #### <a name="q-what-about-url-security"></a>Otázka: co je zabezpečení adresy URL?
 
-Odpověď **: Azure**bezpečně generuje adresy URL zpětného volání aplikace logiky pomocí [sdíleného přístupového podpisu (SAS)](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature). Tento podpis projde jako parametr dotazu a musí být ověřený předtím, než bude možné spustit aplikaci logiky. Azure vygeneruje signaturu pomocí jedinečné kombinace tajného klíče na aplikaci logiky, názvu triggeru a prováděné operace. Takže pokud nikdo nemá přístup k klíči tajné aplikace logiky, nemůže vygenerovat platný podpis.
+Odpověď **: Azure**bezpečně generuje adresy URL zpětného volání aplikace logiky pomocí [sdíleného přístupového podpisu (SAS)](/rest/api/storageservices/delegate-access-with-shared-access-signature). Tento podpis projde jako parametr dotazu a musí být ověřený předtím, než bude možné spustit aplikaci logiky. Azure vygeneruje signaturu pomocí jedinečné kombinace tajného klíče na aplikaci logiky, názvu triggeru a prováděné operace. Takže pokud nikdo nemá přístup k klíči tajné aplikace logiky, nemůže vygenerovat platný podpis.
 
 > [!IMPORTANT]
 > Pro produkční a vyšší systémy zabezpečení důrazně doporučujeme volat aplikaci logiky přímo z prohlížeče z těchto důvodů:

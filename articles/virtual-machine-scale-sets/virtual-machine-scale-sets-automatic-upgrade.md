@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 06/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: af0dea5297cca02b12aecdc8252e62030032b93e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 558dd152aa1c6638155ad4215dc16f08d33d2e2f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601339"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080535"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatické upgrady bitových kopií operačního systému služby Azure Virtual Machine Scale set
 
@@ -143,7 +143,7 @@ Během upgradu operačního systému se instance virtuálních počítačů v sa
 
 Sada škálování se dá volitelně nakonfigurovat s sondami stavu aplikace a poskytnout tak platformě přesné informace o průběžném stavu aplikace. Sondy stavu aplikace jsou vlastní Load Balancer sondy, které se používají jako signály stavu. Aplikace spuštěná v instanci virtuálního počítače sady škálování může reagovat na externí požadavky HTTP nebo TCP, které označují, jestli jsou v pořádku. Další informace o tom, jak vlastní Load Balancer sondy fungují, najdete v tématu [pochopení sond nástroje pro vyrovnávání zatížení](../load-balancer/load-balancer-custom-probe-overview.md). Sondy stavu aplikací nejsou podporované pro Service Fabric sady škálování. Sady škálování bez Service Fabric vyžadují buď Load Balancer testování stavu aplikace, nebo [rozšíření stavu aplikace](virtual-machine-scale-sets-health-extension.md).
 
-Pokud je sada škálování nakonfigurovaná tak, aby používala více skupin umístění, je nutné použít testy pomocí [Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) .
+Pokud je sada škálování nakonfigurovaná tak, aby používala více skupin umístění, je nutné použít testy pomocí [Standard Load Balancer](../load-balancer/load-balancer-overview.md) .
 
 ### <a name="configuring-a-custom-load-balancer-probe-as-application-health-probe-on-a-scale-set"></a>Konfigurace vlastního testu Load Balancer jako sonda stavu aplikace na sadě škálování
 Osvědčeným postupem je vytvoření testu nástroje pro vyrovnávání zatížení pro stav nastavení škálování. Je možné použít stejný koncový bod pro existující sondu HTTP nebo test TCP, ale sonda stavu může vyžadovat odlišné chování z tradičního testu nástroje pro vyrovnávání zatížení. Například tradiční test nástroje pro vyrovnávání zatížení může vracet stav není v pořádku, pokud je zatížení instance příliš vysoké, ale to by nebylo vhodné při určování stavu instance během automatického upgradu operačního systému. Nakonfigurujte test tak, aby měl vysokou frekvenci zjišťování kratší než dvě minuty.
@@ -161,7 +161,7 @@ Na modul pro vyrovnávání zatížení se dá odkazovat v *networkProfile* sady
 ```
 
 > [!NOTE]
-> Pokud používáte automatické upgrady operačního systému pomocí Service Fabric, je nová image operačního systému zahrnutá v aktualizační doméně podle aktualizační domény, aby se zachovala vysoká dostupnost služeb běžících v Service Fabric. Pokud chcete použít automatické upgrady operačního systému v Service Fabric musíte cluster nakonfigurovat tak, aby používal úroveň odolnosti stříbra nebo vyšší. Další informace o vlastnostech odolnosti Service Fabric clusterech najdete v [této dokumentaci](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster).
+> Pokud používáte automatické upgrady operačního systému pomocí Service Fabric, je nová image operačního systému zahrnutá v aktualizační doméně podle aktualizační domény, aby se zachovala vysoká dostupnost služeb běžících v Service Fabric. Pokud chcete použít automatické upgrady operačního systému v Service Fabric musíte cluster nakonfigurovat tak, aby používal úroveň odolnosti stříbra nebo vyšší. Další informace o vlastnostech odolnosti Service Fabric clusterech najdete v [této dokumentaci](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster).
 
 ### <a name="keep-credentials-up-to-date"></a>Udržování přihlašovacích údajů v aktuálním stavu
 Pokud vaše sada škálování používá pro přístup k externím prostředkům nějaké přihlašovací údaje, jako je třeba rozšíření virtuálního počítače nakonfigurované pro použití tokenu SAS pro účet úložiště, pak ověřte, že se přihlašovací údaje aktualizují. Pokud vypršela platnost jakýchkoli přihlašovacích údajů, včetně certifikátů a tokenů, upgrade selže a první dávka virtuálních počítačů zůstane ve stavu selhání.

@@ -9,11 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: dec9d7d6f4676c3550bb6c0be79e25d907e5b3da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed552a57e51ce9249f84bab6bb72bfe783e43edb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682473"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078102"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Datové vědy s Data Science Virtual Machine pro Linux v Azure
 
@@ -23,14 +24,14 @@ V tomto návodu se dozvíte, jak dokončit několik běžných úloh pro datové
 
 V tomto návodu analyzujeme datovou sadu [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) . Spambase je sada e-mailů, které jsou označené buď spam, nebo HAM (nikoli spam). Spambase také obsahuje statistiku o obsahu e-mailů. V tomto návodu budeme mluvit o statistice později.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete moct použít DSVM pro Linux, musíte mít následující požadavky:
 
 * **Předplatné Azure**. Pokud chcete získat předplatné Azure, přečtěte si téma [Vytvoření bezplatného účtu Azure ještě dnes](https://azure.microsoft.com/free/).
 * [**Data Science Virtual Machine Linux**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Informace o zřizování virtuálního počítače najdete v tématu [zřízení Data Science Virtual Machine pro Linux](linux-dsvm-intro.md).
-* V počítači je nainstalovaná [**X2Go**](https://wiki.x2go.org/doku.php) s otevřenou relací desktop Xfce. Další informace najdete v tématu [instalace a konfigurace klienta X2Go](linux-dsvm-intro.md#x2go).
-* Chcete-li plynulejší posouvání, přepněte ve webovém prohlížeči DSVM na prohlížeč Firefox `gfx.xrender.enabled` příznaku `about:config` . [Další informace](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Zvažte také nastavení `mousewheel.enable_pixel_scrolling` na `False` . [Další informace](https://support.mozilla.org/questions/981140).
+* V počítači je nainstalovaná [**X2Go**](https://wiki.x2go.org/doku.php) s otevřenou relací desktop Xfce. Další informace najdete v tématu [instalace a konfigurace klienta X2Go](dsvm-ubuntu-intro.md#x2go).
+* Chcete-li plynulejší posouvání, přepněte ve webovém prohlížeči DSVM na prohlížeč Firefox `gfx.xrender.enabled` příznaku `about:config` . [Přečtěte si další informace](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Zvažte také nastavení `mousewheel.enable_pixel_scrolling` na `False` . [Přečtěte si další informace](https://support.mozilla.org/questions/981140).
 * **Účet Azure Machine Learning**. Pokud ho ještě nemáte, zaregistrujte si nový účet na [domovské stránce Azure Machine Learning](https://azure.microsoft.com/free/services/machine-learning//).
 
 ## <a name="download-the-spambase-dataset"></a>Stáhnout datovou sadu spambase
@@ -374,12 +375,12 @@ Můžete také použít kartu **prozkoumat** k vygenerování přehlednéch ploc
 
 1. Vyberte **distribuce**.
 1. Pro **word_freq_remove** a **word_freq_you**vyberte **histogram**.
-1. Vyberte **Provést**. V jednom okně grafu _by se měla_ zobrazit jak zobrazení hustoty, kde je jasné, že se v e-mailech zdá mnohem častěji, než je třeba _Odebrat_.
+1. Vyberte **Execute** (Provést). V jednom okně grafu _by se měla_ zobrazit jak zobrazení hustoty, kde je jasné, že se v e-mailech zdá mnohem častěji, než je třeba _Odebrat_.
 
 Tato **korelace** je také zajímavá. Vytvoření grafu:
 
 1. Jako **typ**vyberte **korelace**.
-1. Vyberte **Provést**.
+1. Vyberte **Execute** (Provést).
 1. Rattle vás upozorní, že doporučuje maximálně 40 proměnných. Vyberte **Ano** pro zobrazení grafu.
 
 Existují některé zajímavé korelace, které se přidávají: _technologie_ se silně korelují se _HP_ a _Labs_, například. Také se silně koreluje s _650_ , protože kód oblasti dárce datové sady je 650.
@@ -401,7 +402,7 @@ Rattle také může spustit analýzu clusteru. Pojďme vyloučíme některé fun
 * word_freq_business
 * spam
 
-Vraťte se na kartu **cluster** . Vyberte **KMeans**a pak nastavte **počet clusterů** na **4**. Vyberte **Provést**. Výsledky se zobrazí v okně výstup. Jeden cluster má vysokou frekvenci _Jiří_ a _HP_a je pravděpodobně legitimním podnikovým e-mailem.
+Vraťte se na kartu **cluster** . Vyberte **KMeans**a pak nastavte **počet clusterů** na **4**. Vyberte **Execute** (Provést). Výsledky se zobrazí v okně výstup. Jeden cluster má vysokou frekvenci _Jiří_ a _HP_a je pravděpodobně legitimním podnikovým e-mailem.
 
 Postup sestavení základního modelu Machine Learning pro rozhodovací strom:
 
@@ -413,7 +414,7 @@ Postup sestavení základního modelu Machine Learning pro rozhodovací strom:
 Užitečnou funkcí Rattle je schopnost spustit několik metod strojového učení a rychle je vyhodnotit. Tady je postup:
 
 1. Jako **typ**vyberte **vše**.
-1. Vyberte **Provést**.
+1. Vyberte **Execute** (Provést).
 1. Po dokončení běhu Rattle můžete vybrat libovolnou hodnotu **typu** , jako je **SVM**, a zobrazit výsledky.
 1. Můžete také porovnat výkon modelů v sadě ověřování pomocí karty **vyhodnocení** . Například výběr **matice chyb** ukazuje záměnu, celkovou chybu a průměrnou chybu třídy pro každý model v sadě ověřování. Můžete také kreslit křivky ROC, spustit analýzu citlivosti a provádět další typy vyhodnocení modelu.
 
@@ -495,7 +496,7 @@ Začněte tím, že v nabídce **aplikace** otevřete SQuirreL SQL. Postup nasta
 1. Klikněte pravým tlačítkem na **PostgreSQL** a vyberte **Upravit ovladač**.
 1. Vyberte **Další cesta ke třídě**  >  **Přidat**.
 1. Jako **název souboru**zadejte **/usr/share/Java/jdbcdrivers/PostgreSQL-9.4.1208.jre6.jar**.
-1. Vyberte **Open** (Otevřít).
+1. Vyberte **Otevřít**.
 1. Vyberte možnost **seznam ovladačů**. Jako **název třídy**vyberte **org. PostgreSQL. Driver**a pak vyberte **OK**.
 
 Nastavení připojení k místnímu serveru:

@@ -11,13 +11,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
-ms.openlocfilehash: e91e59e8e8acbf76ed35cff6b2f654103bb763b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb62def47e46e6f72a2f04efaefaa9d36ef9e72c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73888559"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080895"
 ---
-# <a name="filter-inbound-and-outbound-vm-network-traffic"></a>Filtrování příchozího a odchozího síťového provozu virtuálního počítače
+# <a name="use-an-azure-cli-script-to-filter-inbound-and-outbound-vm-network-traffic"></a>Filtrování příchozího a odchozího síťového provozu virtuálního počítače pomocí skriptu Azure CLI
 
 Tento ukázkový skript vytvoří virtuální síť s front-endovou a back-endovou podsítí. Příchozí síťový provoz do front-endové podsítě je omezený na HTTP, HTTPS a SSH, zatímco odchozí provoz do Internetu z back-endové podsítě není povolený. Po spuštění skriptu budete mít jeden virtuální počítač se dvěma síťovými kartami. Obě síťové karty budou připojené k jiné podsíti.
 

@@ -5,12 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 045b938e2612aa7e5b366f93c22669412f2d98e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 7/17/2020
+ms.openlocfilehash: 91980972dcbe7af28a1b222f6cd3002a7420145d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85100806"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080841"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Použití koncových bodů služeb virtuální sítě a pravidel pro Azure Database for MySQL
 
@@ -23,6 +24,8 @@ Aby bylo možné vytvořit pravidlo virtuální sítě, musí nejprve existovat 
 > [!NOTE]
 > Tato funkce je k dispozici ve všech oblastech Azure, kde Azure Database for MySQL nasazeny pro Pro obecné účely a paměťově optimalizované servery.
 > V případě partnerského vztahu virtuálních sítí platí, že pokud přenos prochází přes společnou bránu virtuální sítě s koncovými body služby a měl by se přesměrovat na partnera, vytvořte prosím pravidlo seznamu ACL/virtuální sítě, které povolí službě Azure Virtual Machines ve virtuální síti brány pro přístup k serveru Azure Database for MySQL.
+
+Můžete také zvážit použití [privátního odkazu](concepts-data-access-security-private-link.md) pro připojení. Privátní odkaz poskytuje ve vaší virtuální síti privátní IP adresu pro server Azure Database for MySQL.
 
 <a name="anch-terminology-and-description-82f"></a>
 
@@ -61,12 +64,6 @@ Brána Azure Database for MySQL firewall umožňuje zadat rozsahy IP adres, ze k
 Možnost IP můžete vyřazením získat *statickou* IP adresu pro virtuální počítač. Podrobnosti najdete v tématu [Konfigurace privátních IP adres pro virtuální počítač pomocí Azure Portal][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w].
 
 Přístup ke statickým IP adresám se ale může obtížně spravovat a při velkém rozsahu je nákladný. Pravidla virtuální sítě je snazší vytvářet a spravovat.
-
-### <a name="c-cannot-yet-have-azure-database-for-mysql-on-a-subnet-without-defining-a-service-endpoint"></a>C. V podsíti se ještě nedá Azure Database for MySQL bez definování koncového bodu služby.
-
-Pokud byl váš **Microsoft. SQL** Server uzlem v podsíti ve vaší virtuální síti, můžou všechny uzly v rámci virtuální sítě komunikovat se serverem Azure Database for MySQL. V takovém případě můžou vaše virtuální počítače komunikovat s Azure Database for MySQL bez nutnosti používat pravidla virtuální sítě nebo pravidla protokolu IP.
-
-Od srpna 2018 však služba Azure Database for MySQL ještě nepatří mezi služby, které je možné přiřadit přímo do podsítě.
 
 <a name="anch-details-about-vnet-rules-38q"></a>
 
@@ -119,6 +116,8 @@ Pro Azure Database for MySQL funkce pravidla virtuální sítě má následujíc
 
 - Podpora koncových bodů služby virtuální sítě je určená jenom pro Pro obecné účely a paměťově optimalizované servery.
 
+- Pokud je v podsíti povolený **Microsoft. SQL** , znamená to, že pro připojení chcete použít jenom pravidla virtuální sítě. [Nevirtuální pravidla brány firewall](concepts-firewall-rules.md) prostředků v této podsíti nebudou fungovat.
+
 - V bráně firewall se rozsahy IP adres vztahují na následující síťové položky, ale pravidla virtuální sítě ne:
     - [Virtuální privátní síť (VPN) typu Site-to-Site (S2S)][vpn-gateway-indexmd-608y]
     - Místně prostřednictvím [ExpressRoute][expressroute-indexmd-744v]
@@ -131,7 +130,7 @@ Aby bylo možné Azure Database for MySQL komunikaci z okruhu, musíte vytvořit
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>Přidání pravidla brány firewall virtuální sítě na server bez zapnutí koncových bodů služby virtuální sítě
 
-Pouze nastavení pravidla brány firewall nezabezpečuje Server do virtuální sítě. Aby se zabezpečení projevilo, musíte taky **zapnout koncové body** služby virtuální sítě. Při zapnutí koncových bodů služby **ve**vaší virtuální síti dojde k výpadku, dokud se přechod neukončí na **zapnuto**. **Off** To platí zejména v kontextu velkých virtuální sítě. Pomocí příznaku **IgnoreMissingServiceEndpoint** můžete snížit nebo odstranit výpadky během přechodu.
+Pouze nastavení pravidla brány firewall virtuální sítě nezabezpečuje Server s virtuální sítí. Aby se zabezpečení projevilo, musíte taky **zapnout koncové body** služby virtuální sítě. Při zapnutí koncových bodů služby **ve**vaší virtuální síti dojde k výpadku, dokud se přechod neukončí na **zapnuto**. **Off** To platí zejména v kontextu velkých virtuální sítě. Pomocí příznaku **IgnoreMissingServiceEndpoint** můžete snížit nebo odstranit výpadky během přechodu.
 
 Příznak **IgnoreMissingServiceEndpoint** můžete nastavit pomocí Azure CLI nebo portálu.
 

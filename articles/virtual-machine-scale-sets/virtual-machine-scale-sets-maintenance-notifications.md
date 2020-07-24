@@ -9,11 +9,12 @@ ms.subservice: management
 ms.date: 08/20/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: c4b0cb8204891538ef9c4eef3fa0ff5fd9686536
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db6a8965b6a0d03c3de95644d3d455ce3c950960
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83200088"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080433"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Oznámení plánované údržby pro škálovací sady virtuálních počítačů
 
@@ -71,7 +72,7 @@ Je nejvhodnější použít samoobslužnou údržbu v následujících případe
 
 Po naplánování naplánovaných vln údržby můžete zobrazit seznam sad škálování virtuálních počítačů, na které se vztahuje nadcházející údržba Wave, a to pomocí Azure Portal. 
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
 2. V nabídce vlevo vyberte **všechny služby**a pak vyberte **Virtual Machine Scale Sets**.
 3. V části **Virtual Machine Scale Sets**vyberte **Upravit sloupce** a otevřete seznam dostupných sloupců.
 4. V části **Dostupné sloupce** vyberte **samoobslužná údržba**a pak ji přesuňte do seznamu **vybrané sloupce** . Vyberte **Použít**.  
@@ -80,9 +81,9 @@ Po naplánování naplánovaných vln údržby můžete zobrazit seznam sad šk�
 
 Sloupec **samoobslužná údržba** se teď zobrazuje v seznamu služby Virtual Machine Scale Sets. Každá sada škálování virtuálního počítače může mít jednu z následujících hodnot pro sloupec samoobslužná Údržba:
 
-| Hodnota | Description |
+| Hodnota | Popis |
 |-------|-------------|
-| Yes | Aspoň jeden virtuální počítač v sadě škálování virtuálního počítače je v samoobslužném okně. Údržbu můžete kdykoli spustit během tohoto samoobslužného okna. | 
+| Ano | Aspoň jeden virtuální počítač v sadě škálování virtuálního počítače je v samoobslužném okně. Údržbu můžete kdykoli spustit během tohoto samoobslužného okna. | 
 | No | V rámci příslušné sady škálování virtuálních počítačů nejsou žádné virtuální počítače v okně samoobslužné služby. | 
 | - | Vaše služby Virtual Machine Scale Sets nejsou součástí plánovaného formátu Wave pro údržbu.| 
 
@@ -90,7 +91,7 @@ Sloupec **samoobslužná údržba** se teď zobrazuje v seznamu služby Virtual 
 
 Azure komunikuje s plánem plánované údržby odesláním e-mailu vlastníkovi předplatného a spoluvlastníci. Do této komunikace můžete přidat příjemce a kanály tím, že vytvoříte výstrahy protokolu aktivit. Další informace najdete v tématu [monitorování aktivity předplatného pomocí protokolu aktivit Azure](../azure-monitor/platform/platform-logs-overview.md).
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
 2. V nabídce vlevo vyberte **monitor**. 
 3. V podokně **monitor – výstrahy (Classic)** vyberte **+ Přidat upozornění protokolu aktivit**.
 4. Na stránce **Přidat upozornění protokolu aktivit** vyberte nebo zadejte požadované informace. V části **kritéria**ověřte, že jste nastavili následující hodnoty:
@@ -111,7 +112,7 @@ Po spuštění údržby se ovlivněné virtuální počítače v sadě škálov�
  
 ## <a name="check-maintenance-status-by-using-powershell"></a>Ověření stavu údržby pomocí PowerShellu
 
-Pomocí Azure PowerShell můžete zobrazit, kdy se u virtuálních počítačů ve službě Virtual Machine Scale Sets plánuje údržba. Informace o plánované údržbě jsou k dispozici pomocí rutiny [Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) při použití `-InstanceView` parametru.
+Pomocí Azure PowerShell můžete zobrazit, kdy se u virtuálních počítačů ve službě Virtual Machine Scale Sets plánuje údržba. Informace o plánované údržbě jsou k dispozici pomocí rutiny [Get-AzVmss](/powershell/module/az.compute/get-azvmss) při použití `-InstanceView` parametru.
  
 Informace o údržbě jsou vráceny pouze v případě, že je údržba plánována. Pokud není naplánována žádná údržba, která by měla vliv na instanci virtuálního počítače, rutina nevrátí žádné informace o údržbě. 
 
@@ -121,7 +122,7 @@ Get-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -In
 
 V **MaintenanceRedeployStatus**se vrátí následující vlastnosti: 
 
-| Hodnota | Description   |
+| Hodnota | Popis   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | Určuje, jestli můžete v tomto okamžiku spustit údržbu virtuálního počítače. |
 | PreMaintenanceWindowStartTime         | Začátek samoobslužného okna údržby, když můžete na svém VIRTUÁLNÍm počítači zahájit údržbu. |
@@ -152,7 +153,7 @@ az vmss list-instances -g rgName -n vmssName --expand instanceView
 
 V **MaintenanceRedeployStatus** se vrátí následující vlastnosti pro každou instanci virtuálního počítače: 
 
-| Hodnota | Description   |
+| Hodnota | Popis   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | Určuje, jestli můžete v tomto okamžiku spustit údržbu virtuálního počítače. |
 | PreMaintenanceWindowStartTime         | Začátek samoobslužného okna údržby, když můžete na svém VIRTUÁLNÍm počítači zahájit údržbu. |
@@ -170,7 +171,7 @@ Následující volání inicializuje údržbu instance virtuálního počítače
 az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
 ```
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 **Otázka: Proč potřebujete restartovat své virtuální počítače nyní?**
 

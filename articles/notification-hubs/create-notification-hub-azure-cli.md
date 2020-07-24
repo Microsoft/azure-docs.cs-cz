@@ -13,12 +13,12 @@ ms.date: 05/27/2020
 ms.author: dbradish
 ms.reviewer: sethm
 ms.lastreviewed: 03/18/2020
-ms.openlocfilehash: 3014a66c633a4293de8cd6eb325e962366c103b9
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: d32bae48348e482e0e175760a416097ffbc17a1c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85208259"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080943"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Rychlý Start: vytvoření centra oznámení Azure pomocí Azure CLI
 
@@ -95,7 +95,7 @@ Notification Hubs vyžaduje verzi rozhraní příkazového řádku Azure 2.0.67 
    az notification-hub namespace create --resource-group spnhubrg --name spnhubns  --location eastus --sku Free
    ```
 
-   Pokud `--name` jste k příkazu uvedli, že není `az notification-hub namespace create` k dispozici, nebo nesplňuje [pravidla pojmenování a omezení pro prostředky Azure](/azure/azure-resource-manager/management/resource-name-rules), rozhraní příkazového řádku Azure CLI bude odpovídat následujícímu výstupu konzoly:
+   Pokud `--name` jste k příkazu uvedli, že není `az notification-hub namespace create` k dispozici, nebo nesplňuje [pravidla pojmenování a omezení pro prostředky Azure](../azure-resource-manager/management/resource-name-rules.md), rozhraní příkazového řádku Azure CLI bude odpovídat následujícímu výstupu konzoly:
 
    ```output
    #the name is not available
@@ -148,7 +148,7 @@ Notification Hubs vyžaduje verzi rozhraní příkazového řádku Azure 2.0.67 
 
 1. Vypíše zásady přístupu pro Centrum oznámení.
 
-   Azure Notification Hubs používá [zabezpečení sdíleného přístupového podpisu](/azure/notification-hubs/notification-hubs-push-notification-security) pomocí zásad přístupu.  Při vytváření centra oznámení se vytvoří automaticky dvě zásady.  Připojovací řetězce z těchto zásad jsou potřeba ke konfiguraci nabízených oznámení.  Příkaz [AZ Notification-hub Authorization-Rule list](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) nabízí seznam názvů zásad a jejich příslušných skupin prostředků.
+   Azure Notification Hubs používá [zabezpečení sdíleného přístupového podpisu](./notification-hubs-push-notification-security.md) pomocí zásad přístupu.  Při vytváření centra oznámení se vytvoří automaticky dvě zásady.  Připojovací řetězce z těchto zásad jsou potřeba ke konfiguraci nabízených oznámení.  Příkaz [AZ Notification-hub Authorization-Rule list](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) nabízí seznam názvů zásad a jejich příslušných skupin prostředků.
 
    ```azurecli
    az notification-hub authorization-rule list --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --output table
@@ -167,7 +167,7 @@ Notification Hubs vyžaduje verzi rozhraní příkazového řádku Azure 2.0.67 
 
 3. Seznam klíčů a připojovacích řetězců pro zásady přístupu centra oznámení
 
-   Pro každou zásadu přístupu existují dvě sady klíčů a připojovací řetězce.  Později je budete potřebovat ke [konfiguraci centra oznámení](/azure/notification-hubs/configure-notification-hub-portal-pns-settings).  Chcete-li zobrazit seznam klíčů a řetězců připojení pro zásady přístupu k centru oznámení, použijte příkaz [AZ Notification-hub Authorization-Rule](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) Policy Command-Keys.
+   Pro každou zásadu přístupu existují dvě sady klíčů a připojovací řetězce.  Později je budete potřebovat ke [konfiguraci centra oznámení](./configure-notification-hub-portal-pns-settings.md).  Chcete-li zobrazit seznam klíčů a řetězců připojení pro zásady přístupu k centru oznámení, použijte příkaz [AZ Notification-hub Authorization-Rule](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) Policy Command-Keys.
 
    ```azurecli
    #query the keys and connection strings for DefaultListenSharedAccessSignature

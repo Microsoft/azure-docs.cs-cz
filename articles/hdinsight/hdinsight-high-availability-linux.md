@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 21ecf33291924097f076aa28088eb4eac652ce67
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: f97b4877d87acec923812fd0289d5161529dbe7a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849667"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081028"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Dostupnost a spolehlivost clusterů Apache Hadoop v HDInsight
 
@@ -64,7 +64,7 @@ Přístup ke clusteru přes Internet se poskytuje prostřednictvím veřejné br
 
 Přístup přes veřejnou bránu je omezený na porty 443 (HTTPS), 22 a 23.
 
-|Port |Description |
+|Port |Popis |
 |---|---|
 |443|Slouží k přístupu k Ambari a dalším webovým uživatelským rozhraním nebo rozhraním API REST hostovaným na hlavních uzlech.|
 |22|Slouží k přístupu k primárnímu hlavnímu uzlu nebo hraničnímu uzlu pomocí SSH.|
@@ -97,7 +97,7 @@ Další informace o práci s Ambari REST API najdete v tématu [monitorování a
 
 K uzlům, které nejsou přímo přístupné přes Internet, se můžete připojit pomocí následujících metod:
 
-|Metoda |Description |
+|Metoda |Popis |
 |---|---|
 |SSH|Po připojení k hlavnímu uzlu pomocí SSH můžete pomocí SSH z hlavního uzlu se připojit k ostatním uzlům v clusteru. Další informace najdete v dokumentu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).|
 |Tunel SSH|Pokud potřebujete přístup k webové službě hostované na jednom z uzlů, které nejsou přístupné pro Internet, musíte použít tunel SSH. Další informace najdete v tématu [použití tunelu SSH](hdinsight-linux-ambari-ssh-tunnel.md) v dokumentu HDInsight.|
@@ -119,7 +119,7 @@ Pro indikaci stavu se může zobrazit řada ikon, které se mohou objevit vedle 
 
 Následující výstrahy vám pomůžou monitorovat dostupnost clusteru:
 
-| Název výstrahy                               | Description                                                                                                                                                                                  |
+| Název výstrahy                               | Popis                                                                                                                                                                                  |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Stav monitorování metriky                    | Tato výstraha indikuje stav procesu monitorování metrik, jak je určený skriptem stavu monitorování.                                                                                   |
 | Prezenční signál agenta Ambari                   | Tato výstraha se aktivuje, pokud server ztratil kontakt s agentem.                                                                                                                        |
@@ -268,7 +268,7 @@ Z webového uživatelského rozhraní Ambari vyberte službu, pro kterou chcete 
 
 Velikost uzlu lze vybrat pouze při vytváření clusteru. Seznam různých velikostí virtuálních počítačů dostupných pro HDInsight najdete na stránce s cenami za službu [HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-Při vytváření clusteru můžete určit velikost uzlů. Následující informace obsahují pokyny k určení velikosti pomocí [Azure Portal](https://portal.azure.com/), [Azure PowerShell modulu AZ](/powershell/azureps-cmdlets-docs)a [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest):
+Při vytváření clusteru můžete určit velikost uzlů. Následující informace obsahují pokyny k určení velikosti pomocí [Azure Portal](https://portal.azure.com/), [Azure PowerShell modulu AZ](/powershell/azure/)a [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest):
 
 * **Azure Portal**: při vytváření clusteru můžete nastavit velikost uzlů používaných clusterem:
 
@@ -284,6 +284,6 @@ Další informace o položkách, které jsou popsány v tomto článku, najdete 
 
 * [Referenční informace k Apache Ambari REST](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
 * [Instalace a konfigurace rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com//cli/azure/install-azure-cli?view=azure-cli-latest)
-* [Instalace a konfigurace Azure PowerShell modul AZ](/powershell/azure/overview)
+* [Instalace a konfigurace Azure PowerShell modul AZ](/powershell/azure/)
 * [Správa HDInsight pomocí Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 * [Zřizování clusterů HDInsight se systémem Linux](hdinsight-hadoop-provision-linux-clusters.md)

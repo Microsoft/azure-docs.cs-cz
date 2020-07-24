@@ -7,11 +7,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 03/10/2020
 ms.author: cynthn
-ms.openlocfilehash: 195a19ef881f235ad8e42f23b53da9e667ef88d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 068f6e85a0b2a56bb20c8581ec4fa59d50009088
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79086750"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080314"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>Nasazení virtuálních počítačů na vyhrazené hostitele pomocí portálu
 
@@ -45,7 +46,7 @@ Do vyhrazeného hostitele můžete přidat opuštěný virtuální počítač, a
 
 - Velikost virtuálního počítače musí být ve stejné rodině velikostí jako vyhrazený hostitel. Pokud je například vyhrazený hostitel DSv3, může být velikost virtuálního počítače Standard_D4s_v3, ale nemůžete ho Standard_A4_v2. 
 - Virtuální počítač musí být umístěný ve stejné oblasti jako vyhrazený hostitel.
-- Virtuální počítač nemůže být součástí skupiny umístění blízkosti. Odeberte virtuální počítač ze skupiny umístění blízkosti, než ho přesunete na vyhrazeného hostitele. Další informace najdete v tématu [přesun virtuálního počítače ze skupiny umístění do blízkosti](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group) .
+- Virtuální počítač nemůže být součástí skupiny umístění blízkosti. Odeberte virtuální počítač ze skupiny umístění blízkosti, než ho přesunete na vyhrazeného hostitele. Další informace najdete v tématu [přesun virtuálního počítače ze skupiny umístění do blízkosti](../windows/proximity-placement-groups.md#move-an-existing-vm-out-of-a-proximity-placement-group) .
 - Virtuální počítač nemůže být ve skupině dostupnosti.
 - Pokud je virtuální počítač v zóně dostupnosti, musí se jednat o stejnou zónu dostupnosti jako skupina hostitelů. Nastavení zóny dostupnosti pro virtuální počítač a skupinu hostitelů se musí shodovat.
 
@@ -66,6 +67,3 @@ Přesuňte virtuální počítač na vyhrazeného hostitele pomocí [portálu](h
 - [Zde](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)najdete ukázkovou šablonu, která pro maximální odolnost v oblasti používá zóny i domény selhání.
 
 - Vyhrazeného hostitele můžete nasadit taky pomocí [Azure CLI](dedicated-hosts-cli.md).
-
-
-

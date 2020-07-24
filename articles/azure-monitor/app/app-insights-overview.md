@@ -4,15 +4,15 @@ description: Správa výkonu aplikací a monitorování využití živých webov
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: c25929100fdfa6f4652e99c0d2563d9e56cfb62b
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 9e89de2af252ed6c4e2fcd23559bfbf871b0f99d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996087"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079634"
 ---
 # <a name="what-is-application-insights"></a>Co je Application Insights?
-Application Insights, funkce [Azure monitor](../overview.md), je rozšiřitelná služba pro správu výkonu aplikací (APM) pro vývojáře a odborníky v oblasti DevOps. Použijte ho k monitorování svých živých aplikací. Automaticky detekuje anomálie výkonu a obsahuje výkonné analytické nástroje, které vám pomohou diagnostikovat problémy a pochopit, co uživatelé s vaší aplikací skutečně dělají.  Je navržená tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití. Funguje pro aplikace na nejrůznějších platformách, jako jsou .NET, Node. js, Java a Python hostované místně, hybridním nebo jakýmkoli veřejným cloudem. Integruje se s vaším procesem DevOps a obsahuje body připojení k celé řadě dalších vývojářských nástrojů. Díky integraci s Visual Studio App Center může monitorovat a analyzovat telemetrii z mobilních aplikací.
+Application Insights, funkce [Azure monitor](../overview.md), je rozšiřitelná služba pro správu výkonu aplikací (APM) pro vývojáře a odborníky v oblasti DevOps. Použijte ho k monitorování svých živých aplikací. Automaticky detekuje anomálie výkonu a obsahuje výkonné analytické nástroje, které vám pomohou diagnostikovat problémy a pochopit, co uživatelé s vaší aplikací skutečně dělají.  Je navržená tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití. Funguje pro aplikace na nejrůznějších platformách, jako jsou .NET, Node.js, Java a Python hostované místně, hybridním nebo jakýmkoli veřejným cloudem. Integruje se s vaším procesem DevOps a obsahuje body připojení k celé řadě dalších vývojářských nástrojů. Díky integraci s Visual Studio App Center může monitorovat a analyzovat telemetrii z mobilních aplikací.
 
 ## <a name="how-does-application-insights-work"></a>Jak Application Insights funguje?
 Nainstalujete do své aplikace malý balíček instrumentace (SDK) nebo povolíte Application Insights pomocí agenta Application Insights, pokud se [podporuje](../../azure-monitor/app/platforms.md). Instrumentace monitoruje vaši aplikaci a směruje data telemetrie do prostředku Azure Application Insights pomocí jedinečného identifikátoru GUID, který označujeme jako klíč instrumentace.
@@ -21,7 +21,7 @@ Instrumentovat můžete nejenom aplikaci webové služby, ale také libovolné k
 
 ![Instrumentace Application Insights ve vaší aplikaci odesílá telemetrii prostředku Application Insights.](./media/app-insights-overview/diagram.png)
 
-Kromě toho můžete využít telemetrii z hostitelských prostředí, jako jsou třeba čítače výkonu, diagnostika Azure nebo protokoly Dockeru. Můžete také nastavit webové testy, které webové službě pravidelně odesílají umělé požadavky.
+Kromě toho můžete využít telemetrii z hostitelských prostředí, jako jsou třeba čítače výkonu, diagnostika Azure nebo protokoly Dockeru. Můžete také nastavit webové testy, které webové službě pravidelně odesílají syntetické požadavky.
 
 Všechny tyto streamy telemetrie jsou integrované do Azure Monitor. V Azure Portal můžete použít výkonné analytické a vyhledávací nástroje na nezpracovaná data.
 
@@ -57,7 +57,7 @@ Data se dají prozkoumávat mnoha způsoby. Podívejte se na tyto články:
 | [**Průzkumník metrik pro agregovaná data**](../../azure-monitor/platform/metrics-charts.md)<br/>Prozkoumání, filtrování a segmentace agregovaných dat, jako jsou třeba frekvence požadavků, selhání a výjimek, doby odezvy a časy načtení stránek. |![Metriky](./media/app-insights-overview/metrics-tn.png) |
 | [**Řídicí panely**](../../azure-monitor/app/overview-dashboard.md)<br/>Propojení dat z různých zdrojů a jejich sdílení s ostatními. Ideální pro aplikace s více komponentami a pro nepřetržité zobrazení v týmové místnosti. |![Ukázka řídicího panelu](./media/app-insights-overview/dashboard-tn.png) |
 | [**Live Metrics Stream**](../../azure-monitor/app/live-stream.md)<br/>Při nasazování nového sestavení sledujte tyto ukazatele výkonu téměř v reálném čase, abyste se ujistili, že všechno funguje podle očekávání. |![Ukázka živé metriky](./media/app-insights-overview/live-metrics-tn.png) |
-| [**Analýzy**](../../azure-monitor/app/analytics.md)<br/>Tento výkonný dotazovací jazyk umožňuje odpovědět na složité dotazy týkající se využití a výkonu vaší aplikace. |![Ukázka analýzy](./media/app-insights-overview/analytics-tn.png) |
+| [**Analýzy**](../log-query/log-query-overview.md)<br/>Tento výkonný dotazovací jazyk umožňuje odpovědět na složité dotazy týkající se využití a výkonu vaší aplikace. |![Ukázka analýzy](./media/app-insights-overview/analytics-tn.png) |
 | [**Visual Studio**](../../azure-monitor/app/visual-studio.md)<br/>Viz údaje o výkonu v kódu. Ke kódu je možné přejít z trasování zásobníku.|![Visual Studio](./media/app-insights-overview/visual-studio-tn.png) |
 | [**Snapshot Debugger**](../../azure-monitor/app/snapshot-debugger.md)<br/>Laďte vzorky snímků z operací za provozu s hodnotami parametrů.|![Visual Studio](./media/app-insights-overview/snapshot.png) |
 | [**Power BI**](../../azure-monitor/app/export-power-bi.md )<br/>Integrujte metriky využití s ostatními funkcemi business intelligence.| ![Power BI](./media/app-insights-overview/power-bi.png)|
@@ -101,7 +101,7 @@ Existuje několik způsobů, jak začít. Použijte ten, který vám nejvíce vy
   * [ASP.NET Core aplikací](../../azure-monitor/app/asp-net-core.md)
   * [Konzolové aplikace .NET](../../azure-monitor/app/console.md)
   * [Java](../../azure-monitor/app/java-get-started.md)
-  * [Node. js](../../azure-monitor/app/nodejs.md)
+  * [Node.js](../../azure-monitor/app/nodejs.md)
   * [Python](../../azure-monitor/app/opencensus-python.md)
   * [Jiné platformy](../../azure-monitor/app/platforms.md)
 * **[Instrumentujte webové stránky](../../azure-monitor/app/javascript.md)** pro zobrazení stránky, AJAX a další telemetrie na straně klienta.
@@ -120,14 +120,14 @@ Začínáme při vývoji:
 * [ASP.NET](../../azure-monitor/app/asp-net.md)
 * [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
-* [Node. js](../../azure-monitor/app/nodejs.md)
+* [Node.js](../../azure-monitor/app/nodejs.md)
 * [Python](../../azure-monitor/app/opencensus-python.md)
 
 
 ## <a name="support-and-feedback"></a>Podpora a zpětná vazba
 * Otázky a problémy:
   * [Řešení potíží][qna]
-  * [Stránka s otázkou Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-monitor.html)
+  * [Stránka s otázkou Microsoft Q&](/answers/topics/azure-monitor.html)
   * [StackOverflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * Vaše návrhy:
   * [UserVoice](https://feedback.azure.com/forums/357324-application-insights/filters/top)
@@ -146,5 +146,5 @@ Začínáme při vývoji:
 [knowUsers]: app-insights-web-track-usage.md
 [platforms]: ../../azure-monitor/app/platforms.md
 [portal]: https://portal.azure.com/
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
+[qna]: ../faq.md
 [redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md

@@ -1,5 +1,5 @@
 ---
-title: Vytvoření konfigurace SAP multi-SID v Azure | Microsoft Docs
+title: Vytvoření konfigurace s vysokou dostupností pro SAP s více identifikátory SID v Azure
 description: Průvodce vysokou dostupností konfigurace NetWeaver s více identifikátory SID na virtuálních počítačích s Windows
 services: virtual-machines-windows, virtual-network, storage
 documentationcenter: saponazure
@@ -16,13 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d7938f7db22f004a0bf6cdf2e22dc8e103896719
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9cf62be1ad9d95ff20351966bf21af0cb3d9f0a3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77617402"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079872"
 ---
-# <a name="create-an-sap-netweaver-multi-sid-configuration"></a>Vytvoření konfigurace NetWeaver s více identifikátory SID pro SAP
+# <a name="create-a-high-availability-sap-netweaver-multi-sid-configuration"></a>Vytvoření konfigurace s vysokou dostupností SAP NetWeaver s více identifikátory SID
 
 [load-balancer-multivip-overview]:../../../load-balancer/load-balancer-multivip-overview.md
 [sap-ha-guide]:sap-high-availability-guide.md 
@@ -54,7 +55,7 @@ Tento článek se zaměřuje na to, jak přejít z jedné instalace ASCS/SCS do 
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Cluster služby WSFC byl již nakonfigurován pro jednu instanci SAP ASCS/SCS, jak je popsáno v [Průvodci pro vysoce DOSTUPNOU SAP NetWeaver na virtuálních počítačích s Windows][sap-ha-guide] a jak je znázorněno v tomto diagramu.
 
 ![Instance SAP ASCS/SCS s vysokou dostupností][sap-ha-guide-figure-6001]
@@ -218,7 +219,7 @@ Po spuštění skriptu se výsledky zobrazí v Azure Portal, jak je znázorněno
 
 Pro každou další instanci SAP ASCS/SCS je nutné přidat nový disk pro sdílení clusteru. Pro Windows Server 2012 R2 se sdílený disk clusteru služby WSFC, který se právě používá, je softwarové řešení s.
 
-Udělejte toto:
+Postupujte následovně:
 1. Přidejte další disk nebo disky stejné velikosti (které je třeba protáhnout) do každého uzlu clusteru a naformátujte je.
 2. Nakonfigurujte replikaci úložiště s využitím datakeep.
 

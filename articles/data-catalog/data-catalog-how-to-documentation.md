@@ -4,13 +4,14 @@ description: Článek s postupem popisuje, jak dokumentovat datové assety v Azu
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: e9e9013d354585d04f205feb93a84d94c0f05905
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3674c316e34b1e54ed8282ac7d2c228a2b774c06
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68950187"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081215"
 ---
 # <a name="how-to-document-data-sources-in-azure-data-catalog"></a>Postup dokumentování zdrojů dat v Azure Data Catalog
 
@@ -40,5 +41,5 @@ Výhoda **Azure Data Catalog** dokumentace vám umožní používat Data Catalog
 * Dokumentuje pouze tabulky: obsah je specifický pro daný objekt, ale uživatelé mají více míst pro dokumenty.
 * Kontejnery a tabulky dokumentů: nejucelenější přístup, ale mohou zavádět větší údržbu dokumentů.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 Dokumentování zdrojů dat pomocí **Azure Data Catalog** může vytvořit mluvený komentář k vašim datovým assetům, a to co nejvíce podrobností.  Pomocí odkazů můžete propojit obsah uložený v existujícím úložišti obsahu, který přináší existující dokumentaci a datové prostředky dohromady. Jakmile uživatelé zjišťují příslušné datové prostředky, mohou mít úplnou sadu dokumentace.

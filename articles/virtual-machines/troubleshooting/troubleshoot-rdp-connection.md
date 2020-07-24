@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: akjosh
-ms.openlocfilehash: a259217280be343f383372a066d4033368c2b651
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 831ce1ccb2c09a85ddfff8fa65172b1871119a61
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526691"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079889"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Řešení potíží s připojením ke vzdálené ploše virtuálního počítače Azure
 Připojení RDP (Remote Desktop Protocol) k vašemu virtuálnímu počítači Azure s Windows může z různých důvodů selhat a vy tak k němu můžete ztratit přístup. Problém může být ve službě Vzdálená plocha na virtuálním počítači, v síťovém připojením nebo v klientovi vzdálené plochy na hostitelském počítači. Tento článek vás provede několika nejběžnějšími metodami řešení potíží s připojením RDP. 
@@ -104,7 +104,7 @@ Po každém kroku řešení potíží zkuste znovu připojit k vašemu VIRTUÁLN
 Pokud stále dochází k problémům s protokolem RDP, můžete [otevřít žádost o podporu](https://azure.microsoft.com/support/options/) nebo si přečtěte [podrobnější koncepty a kroky pro řešení potíží s](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)protokolem RDP.
 
 ## <a name="troubleshoot-using-azure-powershell"></a>Řešení potíží pomocí Azure PowerShellu
-Pokud jste to ještě neudělali, [nainstalujte a nakonfigurujte nejnovější Azure PowerShell](/powershell/azure/overview).
+Pokud jste to ještě neudělali, [nainstalujte a nakonfigurujte nejnovější Azure PowerShell](/powershell/azure/).
 
 Následující příklady používají proměnné, jako například `myResourceGroup` , `myVM` a `myVMAccessExtension` . Nahraďte názvy a umístění těchto proměnných vlastními hodnotami.
 
@@ -245,7 +245,7 @@ Při pokusu o připojení k VIRTUÁLNÍmu počítači přes RDP se může objevi
 * [Chyba zabezpečení systému Windows: vaše přihlašovací údaje nefungovaly](troubleshoot-specific-rdp-errors.md#wincred).
 * [Tento počítač se nemůže připojit ke vzdálenému počítači](troubleshoot-specific-rdp-errors.md#rdpconnect).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 Pokud nedošlo k žádné z těchto chyb a stále se nemůžete připojit k virtuálnímu počítači přes vzdálenou plochu, přečtěte si podrobný [Průvodce odstraňováním potíží pro vzdálenou plochu](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Postup řešení potíží při přístupu k aplikacím běžícím na virtuálním počítači najdete v tématu [řešení potíží s přístupem k aplikaci spuštěné na virtuálním počítači Azure](./troubleshoot-app-connection.md?toc=/azure/virtual-machines/linux/toc.json).
 * Pokud máte problémy s použitím Secure Shell (SSH) pro připojení k virtuálnímu počítači se systémem Linux v Azure, přečtěte si téma [řešení potíží s připojením SSH k virtuálnímu počítači se systémem Linux v Azure](./troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json).

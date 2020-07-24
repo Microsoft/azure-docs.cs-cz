@@ -71,13 +71,13 @@
     - name: Sada Azure Blockchain Dev Kit
       href: 'https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki'
     - name: Blockchainové rozhraní REST API
-      href: 'https://docs.microsoft.com/rest/api/blockchain/'
+      href: /rest/api/blockchain/
     - name: Ukázky kódů
       href: 'https://github.com/Azure-Samples/blockchain'
     - name: Blog
       href: 'https://azure.microsoft.com/blog/topics/blockchain/'
     - name: Stránka s dotazy na Microsoft Q&A
-      href: 'https://docs.microsoft.com/answers/topics/azure-blockchain-service.html'
+      href: /answers/topics/azure-blockchain-service.html
     - name: Podpora komunity
       href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
     - name: Podpora webu Stack Overflow

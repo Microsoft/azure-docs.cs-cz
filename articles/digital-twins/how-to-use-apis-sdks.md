@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 522aed07d850dfdb2782ee8263f33bd3f42eb8c2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 34a02de8a6789a028c776e784ea4aa9692f53d9d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258039"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079165"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Použití rozhraní API a sad SDK služby Azure Digital Twins
 
@@ -54,7 +54,7 @@ Použití rozhraní API roviny dat:
    - zdroj sady SDK, včetně složky ukázek, najdete na webu GitHub: [Klientská knihovna Azure IoT s Nevlákenou pro .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). 
    - Můžete si prohlédnout [referenční dokumentaci k sadě SDK](https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins?view=azure-dotnet-preview).
    - Podrobné informace a příklady použití můžete zobrazit tak, že v tomto článku budete pokračovat v části [.NET (C#) SDK (rovina dat)](#net-c-sdk-data-plane) .
-* Můžete vygenerovat sadu SDK pro jiný jazyk pomocí programu AutoRest. Postupujte podle pokynů v tématu [Postupy: vytváření vlastních sad SDK pro digitální vlákna Azure pomocí automatického REST](how-to-create-custom-sdks.md).
+* Můžete vygenerovat sadu SDK pro jiný jazyk pomocí programu AutoRest. Postupujte podle pokynů v tématu [*Postupy: vytváření vlastních sad SDK pro digitální vlákna Azure pomocí automatického REST*](how-to-create-custom-sdks.md).
 
 Rozhraní API roviny dat můžete také využít k interakci s digitálními podčinnostmi Azure prostřednictvím rozhraní příkazového [řádku](how-to-use-cli.md).
 
@@ -71,11 +71,11 @@ Pokud chcete použít sadu SDK, zahrňte do svého projektu balíček NuGet **Az
 * Pomocí nástroje pro příkazový řádek .NET můžete spustit:
 
     ```cmd/sh
-    dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.2
+    dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
     dotnet add package Azure.identity
     ```
 
-Podrobný návod k používání rozhraní API v praxi najdete v tématu [kurz: Code a klientská aplikace](tutorial-code.md). 
+Podrobný návod k používání rozhraní API v praxi najdete v tématu [*kurz: Code a klientská aplikace*](tutorial-code.md). 
 
 ### <a name="net-sdk-usage-examples"></a>Příklady použití sady .NET SDK
 
@@ -137,7 +137,7 @@ await foreach (string twin in result)
 }
 ```
 
-Projděte si kurz tohoto ukázkového kódu aplikace a podívejte se na [kurz: vytvoření klientské aplikace](tutorial-code.md) pro návod. 
+Projděte si kurz tohoto ukázkového kódu aplikace a podívejte se na [*kurz: vytvoření klientské aplikace*](tutorial-code.md) pro návod. 
 
 Další ukázky můžete najít také v [úložišti GitHub pro sadu .NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core/samples).
 
@@ -290,8 +290,8 @@ Tady můžete zobrazit metriky pro vaši instanci a vytvořit vlastní zobrazen�
 
 ## <a name="next-steps"></a>Další kroky
 
-Viz jak používat rozhraní API k vytvoření instance digitálního vlákna Azure:
-* [Postupy: vytvoření instance digitálních vláken Azure](how-to-set-up-instance.md)
+Informace o použití rozhraní API k nastavení instance a ověřování digitálních vláken Azure:
+* [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-scripted.md)
 
 Nebo si Projděte kroky k vytvoření klientské aplikace, jako je ta, kterou jste použili v tomto postupu:
-* [Kurz: vytvoření kódu klientské aplikace](tutorial-code.md)
+* [*Kurz: vytvoření kódu klientské aplikace*](tutorial-code.md)

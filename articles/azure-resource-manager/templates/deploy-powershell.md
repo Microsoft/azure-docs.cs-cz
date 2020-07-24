@@ -2,16 +2,17 @@
 title: Nasazení prostředků pomocí PowerShellu a šablony
 description: K nasazení prostředků do Azure použijte Azure Resource Manager a Azure PowerShell. Prostředky jsou definovány v šabloně Resource Manageru.
 ms.topic: conceptual
-ms.date: 06/04/2020
-ms.openlocfilehash: af255e0248c029f42c9c2999ae7c0389d60c58fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/21/2020
+ms.openlocfilehash: 64993b526b67430266a8b3e85e3bcc233a3e28a3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84431835"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079515"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>Nasazení prostředků pomocí šablon ARM a Azure PowerShell
 
-Naučte se používat Azure PowerShell se šablonami Azure Resource Manager (ARM) k nasazení prostředků do Azure. Další informace o konceptech nasazení a správy řešení Azure najdete v tématu [Přehled nasazení šablony](overview.md).
+Tento článek vysvětluje, jak používat Azure PowerShell se šablonami Azure Resource Manager (šablony ARM) k nasazení vašich prostředků do Azure. Pokud nejste obeznámeni s koncepty nasazení a správy řešení Azure, přečtěte si téma [Přehled nasazení šablony](overview.md).
 
 ## <a name="deployment-scope"></a>Rozsah nasazení
 
@@ -51,7 +52,7 @@ V závislosti na rozsahu nasazení použijete jiné příkazy.
 
 Příklady v tomto článku používají nasazení skupin prostředků.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K nasazení budete potřebovat šablonu. Pokud ho ještě nemáte, Stáhněte si a uložte [ukázkovou šablonu](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) z úložiště šablon Azure pro rychlý Start. Místní název souboru použitý v tomto článku je **c:\MyTemplates\azuredeploy.js**.
 
@@ -69,11 +70,40 @@ $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
+New-AzResourceGroupDeployment -Name ExampleDeployment `
+  -ResourceGroupName $resourceGroupName `
   -TemplateFile c:\MyTemplates\azuredeploy.json
 ```
 
 Dokončení nasazení může trvat několik minut.
+
+## <a name="deployment-name"></a>Název nasazení
+
+V předchozím příkladu jste najmenovali nasazení `ExampleDeployment` . Pokud název nasazení nezadáte, použije se název souboru šablony. Například pokud nasadíte šablonu s názvem `azuredeploy.json` a nezadáte název nasazení, nasazení se pojmenuje `azuredeploy` .
+
+Pokaždé, když spustíte nasazení, do historie nasazení skupiny prostředků se přidá záznam s názvem nasazení. Pokud spustíte jiné nasazení a přiřadíte mu stejný název, bude předchozí položka nahrazena aktuálním nasazením. Pokud chcete zachovat jedinečné položky v historii nasazení, udělte každému nasazení jedinečný název.
+
+Chcete-li vytvořit jedinečný název, můžete přiřadit náhodné číslo.
+
+```azurepowershell-interactive
+$suffix = Get-Random -Maximum 1000
+$deploymentName = "ExampleDeployment" + $suffix
+```
+
+Nebo přidejte hodnotu data.
+
+```azurepowershell-interactive
+$today=Get-Date -Format "MM-dd-yyyy"
+$deploymentName="ExampleDeployment"+"$today"
+```
+
+Pokud spustíte souběžná nasazení do stejné skupiny prostředků se stejným názvem nasazení, bude dokončeno pouze poslední nasazení. Všechna nasazení se stejným názvem, která nebyla dokončena, budou nahrazena posledním nasazením. Pokud například spustíte nasazení s názvem `newStorage` , které nasadí účet úložiště s názvem `storage1` a zároveň spustíte jiné nasazení s názvem `newStorage` , které nasadí účet úložiště s názvem `storage2` , nasadíte jenom jeden účet úložiště. Výsledný účet úložiště je pojmenován `storage2` .
+
+Pokud ale spustíte nasazení s názvem `newStorage` , které nasadí účet úložiště s názvem `storage1` , a hned po jeho dokončení spustíte jiné nasazení s názvem `newStorage` , které nasadí účet úložiště s názvem `storage2` , budete mít dva účty úložiště. Jedna má název `storage1` a druhá má název `storage2` . Ale v historii nasazení máte jenom jednu položku.
+
+Pokud pro každé nasazení zadáte jedinečný název, můžete je spustit souběžně bez konfliktu. Pokud spustíte nasazení s názvem, `newStorage1` které nasadí účet úložiště s názvem `storage1` a zároveň spustíte jiné nasazení s názvem, `newStorage2` které nasadí účet úložiště s názvem `storage2` , budete mít dva účty úložiště a dvě položky v historii nasazení.
+
+Aby nedocházelo ke konfliktům s souběžnými nasazeními a zajistili v historii nasazení jedinečné položky, udělte každé nasazení jedinečný název.
 
 ## <a name="deploy-remote-template"></a>Nasadit vzdálenou šablonu
 

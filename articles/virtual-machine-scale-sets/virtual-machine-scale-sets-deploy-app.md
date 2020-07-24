@@ -9,13 +9,14 @@ ms.subservice: management
 ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 7c39088890680b6cfc903083283ed09cb7618d16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90cda1e8d48e6c7f9e925d6d1b9e11b5d2514e93
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83124920"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080518"
 ---
-# <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Nasazení aplikace do škálovací sady virtuálních počítačů
+# <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Nasazení aplikace do škálovacích sad virtuálních počítačů
 
 Pokud chcete spouštět aplikace na instancích virtuálních počítačů ve škálovací sadě, musíte nejprve nainstalovat komponenty aplikace a požadované soubory. V tomto článku se seznámíte s způsoby vytvoření vlastní image virtuálního počítače pro instance v sadě škálování nebo automatické spouštění instalačních skriptů na existujících instancích virtuálních počítačů. Naučíte se také, jak spravovat aktualizace aplikace nebo operačního systému v rámci sady škálování.
 
@@ -112,4 +113,4 @@ Pokud používáte vlastní image virtuálního počítače s předinstalovanou 
 
 
 ## <a name="next-steps"></a>Další kroky
-Při sestavování a nasazování aplikací do sady škálování můžete zkontrolovat [Přehled návrhu sady škálování](virtual-machine-scale-sets-design-overview.md). Další informace o tom, jak spravovat sadu škálování, najdete v tématu [použití PowerShellu ke správě sady škálování](virtual-machine-scale-sets-windows-manage.md).
+Při sestavování a nasazování aplikací do sady škálování můžete zkontrolovat [Přehled návrhu sady škálování](virtual-machine-scale-sets-design-overview.md). Další informace o tom, jak spravovat sadu škálování, najdete v tématu [použití PowerShellu ke správě sady škálování](./virtual-machine-scale-sets-manage-powershell.md).

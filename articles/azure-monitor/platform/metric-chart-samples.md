@@ -7,15 +7,16 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 00935762a5e19ec47074021aff59992fd3b801bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 762264cfe7e0441671411e2c277a0796cd527399
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797451"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081521"
 ---
 # <a name="metric-chart-examples"></a>Příklady grafu metriky 
 
-Platforma Azure nabízí [více než tisíc metrik](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported), z nichž mnoho má rozměry. Pomocí [filtrů dimenzí](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts), použití [rozdělení](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts), řízení typu grafu a úpravy nastavení grafu můžete vytvářet výkonné diagnostické pohledy a řídicí panely, které poskytují přehled o stavu vaší infrastruktury a aplikací. Tento článek ukazuje několik příkladů grafů, které můžete vytvořit pomocí [Průzkumník metrik](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts) a vysvětluje kroky nezbytné ke konfiguraci každého z těchto grafů.
+Platforma Azure nabízí [více než tisíc metrik](./metrics-supported.md), z nichž mnoho má rozměry. Pomocí [filtrů dimenzí](./metrics-charts.md), použití [rozdělení](./metrics-charts.md), řízení typu grafu a úpravy nastavení grafu můžete vytvářet výkonné diagnostické pohledy a řídicí panely, které poskytují přehled o stavu vaší infrastruktury a aplikací. Tento článek ukazuje několik příkladů grafů, které můžete vytvořit pomocí [Průzkumník metrik](./metrics-charts.md) a vysvětluje kroky nezbytné ke konfiguraci každého z těchto grafů.
 
 Chcete sdílet skvělé grafy jako příklady na celém světě? Přispívat na tuto stránku na GitHubu a sdílejte příklady vlastních grafů.
 
@@ -37,7 +38,7 @@ Podívejte se na dostupnost vaší aplikace podle oblasti a určete, která geog
 
 ### <a name="how-to-configure-this-chart"></a>Jak nakonfigurovat tento graf?
 
-Nejdřív musíte zapnout monitorování [dostupnosti Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/monitor-web-app-availability) pro váš web. Pak vyberte prostředek Application Insights a vyberte metriku dostupnosti. Použijte rozdělení na dimenzi **umístění běhu** .
+Nejdřív musíte zapnout monitorování [dostupnosti Application Insights](../app/monitor-web-app-availability.md) pro váš web. Pak vyberte prostředek Application Insights a vyberte metriku dostupnosti. Použijte rozdělení na dimenzi **umístění běhu** .
 
 ## <a name="volume-of-storage-account-transactions-by-api-name"></a>Objem transakcí účtu úložiště podle názvu rozhraní API
 

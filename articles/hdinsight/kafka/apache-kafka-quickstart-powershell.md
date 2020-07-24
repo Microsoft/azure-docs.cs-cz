@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: d14d8f38ff8a2bed01584d5c5fec56d254cede05
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 57f9338841b599e10c8a1d7eec8fd4f371ceecb9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73494748"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081011"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>Rychlý Start: Vytvoření clusteru Apache Kafka ve službě Azure HDInsight pomocí prostředí PowerShell
 
@@ -25,19 +25,19 @@ V tomto rychlém startu se dozvíte, jak vytvořit cluster [Apache Kafka](https:
 
 Rozhraní API Kafka je přístupné jenom pro prostředky ve stejné virtuální síti. V tomto rychlém startu budete ke clusteru přistupovat přímo pomocí SSH. Pokud chcete k platformě Kafka připojit jiné služby, sítě nebo virtuální počítače, musíte nejprve vytvořit virtuální síť a pak v síti vytvořit prostředky. Další informace najdete v dokumentu [Připojení k platformě Apache Kafka pomocí virtuální sítě](apache-kafka-connect-vpn-gateway.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-* Prostředí PowerShell [AZ Module](https://docs.microsoft.com/powershell/azure/overview) installed.
+* Prostředí PowerShell [AZ Module](https://docs.microsoft.com/powershell/azure/) installed.
 
 * Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k předplatnému `Connect-AzAccount` Azure pomocí rutiny a postupujte podle pokynů na obrazovce.
+Přihlaste se k předplatnému Azure pomocí `Connect-AzAccount` rutiny a postupujte podle pokynů na obrazovce.
 
 ```azurepowershell-interactive
 # Login to your Azure subscription
@@ -67,7 +67,7 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 I když Kafka v HDInsight ukládá data Kafka pomocí Spravovaných disků Azure, cluster používá i Azure Storage k ukládání informací, jako jsou protokoly. Pomocí [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) vytvořte nový účet úložiště.
 
 > [!IMPORTANT]  
-> Druh `BlobStorage` účtu úložiště se dá použít jenom jako sekundární úložiště pro clustery HDInsight.
+> Druh účtu úložiště `BlobStorage` se dá použít jenom jako sekundární úložiště pro clustery HDInsight.
 
 ```azurepowershell-interactive
 $storageName = Read-Host -Prompt "Enter the storage account name"

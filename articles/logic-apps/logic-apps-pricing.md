@@ -8,12 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 9ce807238e1e373701305f8b6bb03451e0202633
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: a5511d7cd4b5bb0f3fe901a735535f8db9036ee7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964630"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078158"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Cenový model pro Azure Logic Apps
 
@@ -77,27 +77,27 @@ Pro aplikace logiky, které vytvoříte a spustíte v ISE, platíte za tyto funk
 
 ## <a name="connectors"></a>Konektory
 
-Konektory Azure Logic Apps vám pomůžou aplikace logiky přistupovat k aplikacím, službám a systémům v cloudu nebo místně tím, že poskytují [triggery](#triggers), [Akce](#actions)nebo obojí. Konektory jsou klasifikovány buď jako standard, nebo jako podnikové. Přehled těchto konektorů najdete v tématu [konektory pro Azure Logic Apps](../connectors/apis-list.md). Pokud pro rozhraní REST API, která chcete použít ve svých aplikacích logiky, nejsou k dispozici žádné předem připravené konektory, můžete vytvořit [vlastní konektory](https://docs.microsoft.com/connectors/custom-connectors), které jsou kolem těchto rozhraní REST API jenom obálkami. Vlastní konektory se účtují jako standardní konektory. V následujících částech najdete další informace o tom, jak fakturace pro aktivační události a akce fungují.
+Konektory Azure Logic Apps vám pomůžou aplikace logiky přistupovat k aplikacím, službám a systémům v cloudu nebo místně tím, že poskytují [triggery](#triggers), [Akce](#actions)nebo obojí. Konektory jsou klasifikovány buď jako standard, nebo jako podnikové. Přehled těchto konektorů najdete v tématu [konektory pro Azure Logic Apps](../connectors/apis-list.md). Pokud pro rozhraní REST API, která chcete použít ve svých aplikacích logiky, nejsou k dispozici žádné předem připravené konektory, můžete vytvořit [vlastní konektory](/connectors/custom-connectors), které jsou kolem těchto rozhraní REST API jenom obálkami. Vlastní konektory se účtují jako standardní konektory. V následujících částech najdete další informace o tom, jak fakturace pro aktivační události a akce fungují.
 
 <a name="triggers"></a>
 
-## <a name="triggers"></a>Aktivační události
+## <a name="triggers"></a>Aktivační procedury
 
-Triggery jsou speciální akce, které vytvoří instanci aplikace logiky, když dojde ke konkrétní události. Triggery fungují různými způsoby, které mají vliv na měření aplikace logiky. Tady jsou různé druhy aktivačních událostí, které existují v Azure Logic Apps:
+Trigger je vždy prvním krokem v pracovním postupu aplikace logiky a jedná se o speciální akci, která vytvoří a spustí instanci aplikace logiky, když jsou splněna určitá kritéria nebo dojde ke konkrétní události. Triggery fungují různými způsoby, které mají vliv na měření aplikace logiky. Tady jsou různé druhy aktivačních událostí, které existují v Azure Logic Apps:
 
-* **Aktivační událost cyklického dotazování**: Tato aktivační událost nepřetržitě kontroluje koncový bod pro zprávy, které odpovídají kritériím pro vytvoření instance aplikace logiky a spuštění pracovního postupu. I v případě, že se nevytvoří žádná instance aplikace logiky, Logic Apps měřiče dotazovat jednotlivé požadavky jako spuštění. Pokud chcete zadat interval dotazování, nastavte Trigger pomocí návrháře aplikace logiky.
+* **Aktivační událost opakování**: můžete použít tuto obecnou triggerovou proceduru, která není specifická pro žádnou službu nebo systém, aby se spustila pracovní postup aplikace logiky a vytvořila se instance aplikace logiky, která se spouští na základě intervalu opakování, který jste nastavili v aktivační události. Můžete například nastavit Trigger opakování, který se spouští každé tři dny nebo složitějším plánem.
+
+* **Aktivační událost cyklického dotazování**: můžete použít konkrétnější aktivační událost opakování, která je obvykle přidružená ke spravovanému konektoru pro konkrétní službu nebo systém, a kontrolovat události nebo zprávy, které splňují kritéria pro vytvoření a spuštění instance aplikace logiky, a to na základě intervalu opakování, který jste nastavili v aktivační události. I když se nevytvoří žádná instance aplikace logiky, například když se triggery přeskočí, služba Logic Apps každou žádost o cyklické dotazování vyřadí jako spuštění. Pokud chcete zadat interval dotazování, nastavte Trigger pomocí návrháře aplikace logiky.
 
   [!INCLUDE [logic-apps-polling-trigger-non-standard-metering](../../includes/logic-apps-polling-trigger-non-standard-metering.md)]
 
-* **Trigger Webhooku**: Tato aktivační událost čeká, až klient pošle požadavek do konkrétního koncového bodu. Každý požadavek odeslaný na koncový bod Webhooku se počítá jako provedení akce. Například triggerem Webhooku žádosti a HTTP jsou triggery Webhooku.
-
-* **Trigger opakování**: Tato aktivační událost vytvoří instanci aplikace logiky založenou na intervalu opakování, který jste nastavili v aktivační události. Můžete například nastavit Trigger opakování, který se spouští každé tři dny nebo složitějším plánem.
+* **Trigger Webhooku**: místo použití triggeru cyklického dotazování můžete použít Trigger Webhooku, který počká, až klient pošle žádost do vaší aplikace logiky na konkrétní adresu URL koncového bodu. Každý požadavek, který se odešle na koncový bod Webhooku, se počítá jako provedení akce. Například triggerem Webhooku žádosti a HTTP jsou oba triggery obecného Webhooku. Některé konektory pro služby nebo systémy také mají triggery Webhooku.
 
 <a name="actions"></a>
 
 ## <a name="actions"></a>Akce
 
-"Integrované" akce Azure Logic Apps měřičů, jako jsou například HTTP, jako nativní akce. Například integrované akce zahrnují volání HTTP, volání z Azure Functions nebo API Management a kroky toku řízení, jako jsou podmínky, smyčky a příkazy Switch. Každá akce má svůj vlastní typ akce. Například akce, které volají [konektory](https://docs.microsoft.com/connectors) , mají typ "vstupech apiconnection". Tyto konektory jsou klasifikované jako konektory Standard nebo Enterprise, které se měří na základě příslušných [cen](https://azure.microsoft.com/pricing/details/logic-apps). Podnikové konektory ve *verzi Preview* se účtují jako standardní konektory.
+"Integrované" akce Azure Logic Apps měřičů, jako jsou například HTTP, jako nativní akce. Například integrované akce zahrnují volání HTTP, volání z Azure Functions nebo API Management a kroky toku řízení, jako jsou podmínky, smyčky a příkazy Switch. Každá akce má svůj vlastní typ akce. Například akce, které volají [konektory](/connectors) , mají typ "vstupech apiconnection". Tyto konektory jsou klasifikované jako konektory Standard nebo Enterprise, které se měří na základě příslušných [cen](https://azure.microsoft.com/pricing/details/logic-apps). Podnikové konektory ve *verzi Preview* se účtují jako standardní konektory.
 
 Azure Logic Apps měřiče všech úspěšných a neúspěšných akcí jako spuštění. Logic Apps ale neměří na tyto akce:
 
@@ -122,7 +122,7 @@ Pokud máte [ *prostředí ISE (Integration Service Environment* ) (](../logic-a
 
 Pokud si chcete vybrat mezi účtem pro integraci Free, Basic nebo Standard, přečtěte si tyto popisy případů použití:
 
-* **Zdarma**: v případě, že chcete vyzkoušet průzkumné scénáře, nikoli produkční scénáře. Tato úroveň je dostupná jenom pro veřejné oblasti v Azure, například Západní USA nebo jihovýchodní Asie, ale ne pro [Azure Čína 21Vianet](https://docs.microsoft.com/azure/china/overview-operations) nebo [Azure Government](../azure-government/documentation-government-welcome.md).
+* **Zdarma**: v případě, že chcete vyzkoušet průzkumné scénáře, nikoli produkční scénáře. Tato úroveň je dostupná jenom pro veřejné oblasti v Azure, například Západní USA nebo jihovýchodní Asie, ale ne pro [Azure Čína 21Vianet](/azure/china/overview-operations) nebo [Azure Government](../azure-government/documentation-government-welcome.md).
 
 * **Basic**: Pokud chcete, aby zpracování zpráv fungovalo jako malý obchodní partner, který má vztah obchodního partnera s větší obchodní entitou
 

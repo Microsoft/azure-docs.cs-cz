@@ -1,22 +1,22 @@
 ---
-title: Streamování dat monitorování Azure do centra událostí
+title: Streamování dat monitorování Azure do centra událostí a externích partnerů
 description: Naučte se streamovat data monitorování Azure do centra událostí a získat tak data do služby partner SIEM nebo Analytics Tool.
-author: bwren
 services: azure-monitor
-ms.topic: conceptual
-ms.date: 11/15/2019
+author: bwren
 ms.author: bwren
+ms.topic: conceptual
+ms.date: 07/15/2020
 ms.subservice: ''
-ms.openlocfilehash: 8bfec756c365c451a4e2b8236814454980d1d563
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4299c647a8fb454d5096eaa0444d5f4f1d2240e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539308"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081453"
 ---
-# <a name="stream-azure-monitoring-data-to-an-event-hub"></a>Streamování dat monitorování Azure do centra událostí
-Azure Monitor poskytuje kompletní řešení monitorování zásobníku pro aplikace a služby v Azure, v jiných cloudech a v místním prostředí. Kromě použití Azure Monitor k analýze těchto dat a jejich využití v různých scénářích monitorování ho možná budete muset poslat ostatním nástrojům pro monitorování ve vašem prostředí. Nejúčinnější metodou pro streamování dat monitorování do externích nástrojů ve většině případů je použití [Azure Event Hubs](../../event-hubs/index.yml). Tento článek obsahuje stručný popis toho, jak můžete streamovat data monitorování z různých zdrojů do centra událostí a odkazy na podrobné pokyny.
+# <a name="stream-azure-monitoring-data-to-an-event-hub-or-external-partner"></a>Streamování dat monitorování Azure do centra událostí nebo externího partnera
 
+Azure Monitor poskytuje kompletní řešení monitorování zásobníku pro aplikace a služby v Azure, v jiných cloudech a v místním prostředí. Kromě použití Azure Monitor k analýze těchto dat a jejich využití v různých scénářích monitorování ho možná budete muset poslat ostatním nástrojům pro monitorování ve vašem prostředí. Ve většině případů nejúčinnější metoda pro streamování dat monitorování do externích nástrojů používá službu [Azure Event Hubs](/azure/event-hubs/). Tento článek obsahuje stručný popis toho, jak to provést, a pak uvádí některé z partnerů, na které můžete odesílat data. Některé mají zvláštní integraci se Azure Monitor a můžou být hostované v Azure.  
 
 ## <a name="create-an-event-hubs-namespace"></a>Vytvoření oboru názvů služby Event Hubs
 
@@ -56,8 +56,9 @@ Směrování dat monitorování do centra událostí pomocí Azure Monitor vám 
 | ArcSight | No | ArcSight Azure Event hub Smart Connector je k dispozici jako součást [kolekce inteligentních konektorů ArcSight](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852). |
 | Server syslogu | No | Pokud chcete streamovat data Azure Monitor přímo na server syslog, můžete použít [řešení založené na funkci Azure Functions](https://github.com/miguelangelopereira/azuremonitor2syslog/).
 | LogRhythm | No| Pokyny k nastavení LogRhythm pro shromažďování protokolů z centra událostí jsou k dispozici [zde](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/). 
-|Logz.io | Ano | Další informace najdete v tématu [Začínáme s monitorováním a protokolováním pomocí LOGZ.IO pro aplikace Java běžící v Azure](/azure/developer/java/fundamentals/java-get-started-with-logzio) .
+|Logz.io | Yes | Další informace najdete v tématu [Začínáme s monitorováním a protokolováním pomocí LOGZ.IO pro aplikace Java běžící v Azure](/azure/developer/java/fundamentals/java-get-started-with-logzio) .
 
+Další partneři mohou být také k dispozici. Úplnější seznam všech partnerů Azure Monitor a jejich schopností najdete v tématu [Azure monitor integrace partnerů](partners.md).
 
 ## <a name="next-steps"></a>Další kroky
 * [Archivace protokolu aktivit do účtu úložiště](./activity-log.md#legacy-collection-methods)

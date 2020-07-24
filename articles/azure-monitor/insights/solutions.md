@@ -6,21 +6,22 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/12/2020
-ms.openlocfilehash: 4edcb22ed6bd33b1174354cf0cbb9a590e35c207
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2da00b44be7018bef80e466231efb75a8eb99754
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84906883"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081538"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Monitorování řešení v Azure Monitor
+
 Monitorování řešení využívajících služby v Azure k zajištění dalších analýz provozu určité aplikace nebo služby. Tento článek poskytuje stručný přehled řešení monitorování v Azure a podrobnosti o jejich používání a instalaci. Můžete přidat řešení monitorování Azure Monitor pro všechny aplikace a služby, které používáte. Jsou obvykle k dispozici zdarma, ale shromažďují data, která by mohla vyvolat poplatky za využití.
 
 ## <a name="use-monitoring-solutions"></a>Použití řešení monitorování
 
-Otevřete stránku **Přehled** v Azure monitor pro zobrazení dlaždice pro každé nainstalované řešení v pracovním prostoru. 
+Otevřete stránku **Přehled** v Azure monitor pro zobrazení dlaždice pro každé nainstalované řešení v pracovním prostoru.
 
-1. Přejít na [Azure Portal](https://ms.portal.azure.com). Vyhledejte a vyberte **monitor**.
+1. Přejděte na [Azure Portal](https://ms.portal.azure.com). Vyhledejte a vyberte **monitor**.
 1. V nabídce **přehledy** vyberte **Další**.
 1. Pomocí rozevíracích seznamů v horní části obrazovky změňte pracovní prostor nebo časový rozsah použitý pro dlaždice.
 1. Klikněte na dlaždici pro řešení a otevřete jeho zobrazení, které obsahuje podrobnější analýzu shromážděných dat.
@@ -31,12 +32,13 @@ Otevřete stránku **Přehled** v Azure monitor pro zobrazení dlaždice pro ka�
 
 ## <a name="list-installed-monitoring-solutions"></a>Výpis nainstalovaných řešení monitorování
 
+### <a name="portal"></a>[Azure Portal](#tab/portal)
+
 Pomocí následujícího postupu můžete zobrazit seznam řešení monitorování nainstalovaných ve vašem předplatném.
 
-1. Přejít na [Azure Portal](https://ms.portal.azure.com). Vyhledejte a vyberte **řešení**.
+1. Přejděte na [Azure Portal](https://ms.portal.azure.com). Vyhledejte a vyberte **řešení**.
 1. Jsou uvedena řešení nainstalovaná ve všech pracovních prostorech. Za názvem řešení následuje název pracovního prostoru, ve kterém je nainstalovaný.
 1. Pomocí rozevíracích seznamů v horní části obrazovky můžete filtrovat podle předplatného nebo skupiny prostředků.
-
 
 ![Vypsat všechna řešení](media/solutions/list-solutions-all.png)
 
@@ -44,7 +46,26 @@ Kliknutím na název řešení otevřete jeho stránku Shrnutí. Tato stránka z
 
 ![Vlastnosti řešení](media/solutions/solution-properties.png)
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pomocí příkazu [AZ monitor Log-Analytics Solution list](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution#ext-log-analytics-solution-az-monitor-log-analytics-solution-list) můžete zobrazit seznam řešení monitorování nainstalovaných ve vašem předplatném.   Před spuštěním `list` příkazu použijte požadavky zjištěné v části [instalace řešení monitorování](#install-a-monitoring-solution).
+
+```azurecli
+# List all log-analytics solutions in the current subscription.
+az monitor log-analytics solution list
+
+# List all log-analytics solutions for a specific subscription
+az monitor log-analytics solution list --subscription MySubscription
+
+# List all log-analytics solutions in a resource group
+az monitor log-analytics solution list --resource-group MyResourceGroup
+```
+
+* * *
+
 ## <a name="install-a-monitoring-solution"></a>Instalace řešení monitorování
+
+### <a name="portal"></a>[Azure Portal](#tab/portal)
 
 Řešení monitorování od Microsoftu a partnerů jsou k dispozici na [Azure Marketplace](https://azuremarketplace.microsoft.com). Dostupná řešení můžete vyhledat a nainstalovat pomocí následujícího postupu. Když nainstalujete řešení, musíte vybrat [Log Analytics pracovní prostor](../platform/manage-access.md) , kde se bude řešení instalovat a kde se budou shromažďovat jeho data.
 
@@ -61,12 +82,76 @@ Kliknutím na název řešení otevřete jeho stránku Shrnutí. Tato stránka z
 Členové komunity mohou odesílat řešení pro správu do šablon pro rychlý Start Azure. Tato řešení můžete nainstalovat přímo nebo stáhnout šablony pro pozdější instalaci.
 
 1. Pokud chcete propojit pracovní prostor a účet, postupujte podle kroků popsaných v [Log Analytics pracovního prostoru a účtu Automation](#log-analytics-workspace-and-automation-account) .
-2. Přejít na [šablony pro rychlý Start Azure](https://azure.microsoft.com/documentation/templates/) 
+2. Přejít na [šablony pro rychlý Start Azure](https://azure.microsoft.com/documentation/templates/)
 3. Vyhledejte řešení, které vás zajímá.
 4. Výběrem řešení z výsledků zobrazíte jeho podrobnosti.
 5. Klikněte na tlačítko **nasadit do Azure** .
 6. Budete vyzváni k zadání informací, jako je například skupina prostředků a umístění, spolu s hodnotami pro všechny parametry v řešení.
 7. Pro instalaci řešení klikněte na **koupit** .
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+### <a name="prepare-your-environment"></a>Příprava prostředí
+
+1. Instalace Azure CLI
+
+   Před spuštěním příkazů odkazů CLI musíte [nainstalovat rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) .  Pokud budete chtít, můžete k dokončení kroků v tomto článku použít také Azure Cloud Shell.  Azure Cloud Shell je interaktivní prostředí prostředí, které používáte v prohlížeči.  Spusťte Cloud Shell pomocí jedné z následujících metod:
+
+   - Otevřete Cloud Shell tak, že na[https://shell.azure.com](https://shell.azure.com)
+
+   - Vyberte tlačítko **Cloud Shell** na řádku nabídek v pravém horním rohu [Azure Portal](https://portal.azure.com)
+
+1. Přihlásit se.
+
+   Pokud používáte místní instalaci rozhraní příkazového řádku, přihlaste se pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) .  Proces ověřování dokončíte podle kroků zobrazených v terminálu.
+
+    ```azurecli
+    az login
+    ```
+
+1. Nainstalovat `log-analytics` rozšíření
+
+   `log-analytics`Příkaz je experimentálním rozšířením základního rozhraní příkazového řádku Azure. Další informace o odkazech na rozšíření v [používání rozšíření pomocí Azure CLI](/cli/azure/azure-cli-extensions-overview?).
+
+   ```azurecli
+   az extension add --name log-analytics
+   ```
+
+   Očekává se následující upozornění.
+
+   ```output
+   The installed extension `log-analytics` is experimental and not covered by customer support.  Please use with discretion.
+   ```
+
+### <a name="install-a-solution-with-the-azure-cli"></a>Instalace řešení pomocí Azure CLI
+
+Když nainstalujete řešení, musíte vybrat [Log Analytics pracovní prostor](/azure/azure-monitor/platform/manage-access) , kde se bude řešení instalovat a kde se budou shromažďovat jeho data.  Pomocí Azure CLI můžete pracovní prostory spravovat pomocí příkazů [AZ monitor Log-Analytics pracovní prostor](/cli/azure/monitor/log-analytics/workspace) .  Pokud chcete propojit pracovní prostor a účet, postupujte podle kroků popsaných v [Log Analytics pracovního prostoru a účtu Automation](#log-analytics-workspace-and-automation-account) .
+
+K instalaci řešení monitorování použijte [řešení AZ monitor Log-Analytics Create](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution) .  Parametry v hranatých závorkách jsou volitelné.
+
+```azurecli
+az monitor log-analytics solution create --name
+                                         --plan-product
+                                         --plan-publisher
+                                         --resource-group
+                                         --workspace
+                                         [--no-wait]
+                                         [--tags]
+```
+
+Zde je příklad kódu, který vytváří řešení pro analýzu protokolů pro produkt plánu OMSGallery/Containers.
+
+```azurecli
+az monitor log-analytics solution create --resource-group MyResourceGroup \
+                                         --name Containers({SolutionName}) \
+                                         --tags key=value \
+                                         --plan-publisher Microsoft  \
+                                         --plan-product "OMSGallery/Containers" \
+                                         --workspace "/subscriptions/{SubID}/resourceGroups/{ResourceGroup}/providers/ \
+                                           Microsoft.OperationalInsights/workspaces/{WorkspaceName}"
+```
+
+* * *
 
 ## <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics pracovní prostor a účet Automation
 
@@ -88,9 +173,25 @@ Pomocí následujícího postupu můžete ověřit propojení mezi Log Analytics
 
 ## <a name="remove-a-monitoring-solution"></a>Odebrání řešení monitorování
 
-Pokud chcete nainstalované řešení odebrat, vyhledejte ho v [seznamu nainstalovaných řešení](#list-installed-monitoring-solutions). Kliknutím na název řešení otevřete jeho stránku Souhrn a pak klikněte na **Odstranit**.
+### <a name="portal"></a>[Azure Portal](#tab/portal)
+
+Pokud chcete nainstalované řešení odebrat pomocí portálu, vyhledejte ho v [seznamu nainstalovaných řešení](#list-installed-monitoring-solutions). Kliknutím na název řešení otevřete jeho stránku Souhrn a pak klikněte na **Odstranit**.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pokud chcete nainstalované řešení odebrat pomocí Azure CLI, použijte příkaz [AZ monitor Log-Analytics Solution Delete](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution#ext-log-analytics-solution-az-monitor-log-analytics-solution-delete) .
+
+```azurecli
+az monitor log-analytics solution delete --name
+                                         --resource-group
+                                         [--no-wait]
+                                         [--yes]
+```
+
+* * *
 
 ## <a name="next-steps"></a>Další kroky
 
 * Získejte [seznam řešení monitorování od Microsoftu](solutions-inventory.md).
 * Naučte se [vytvářet dotazy](../log-query/log-query-overview.md) k analýze dat shromažďovaných monitorovacími řešeními.
+* Podívejte se [na všechny příkazy rozhraní příkazového řádku Azure pro Azure monitor](/cli/azure/azure-cli-reference-for-monitor).

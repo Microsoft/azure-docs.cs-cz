@@ -6,11 +6,12 @@ ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: acb1e942c1f342ce6fee7d8aeacafcc1d7b6fd91
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d3493cc76dfb05cca3c89114b279b99ab49bac2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75409533"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081640"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Nejčastější dotazy týkající se sítě v Azure Functions
 
@@ -54,7 +55,7 @@ Můžete také aktivovat funkci ze všech ostatních prostředků ve virtuální
 
 ## <a name="how-can-i-deploy-my-function-app-in-a-virtual-network"></a>Jak můžu nasadit aplikaci Function App ve virtuální síti?
 
-Nasazení do App Service Environment je jediným způsobem, jak vytvořit aplikaci Function App, která je zcela uvnitř virtuální sítě. Podrobnosti o používání interního nástroje pro vyrovnávání zatížení s App Service Environment můžete začít s článkem [Vytvoření a použití interního nástroje pro vyrovnávání zatížení s App Service Environment](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase).
+Nasazení do App Service Environment je jediným způsobem, jak vytvořit aplikaci Function App, která je zcela uvnitř virtuální sítě. Podrobnosti o používání interního nástroje pro vyrovnávání zatížení s App Service Environment můžete začít s článkem [Vytvoření a použití interního nástroje pro vyrovnávání zatížení s App Service Environment](../app-service/environment/create-ilb-ase.md).
 
 V případě scénářů, kdy potřebujete pouze jednosměrný přístup k prostředkům virtuální sítě nebo méně komplexní izolaci sítě, přečtěte si téma [Přehled funkcí sítě](functions-networking-options.md).
 

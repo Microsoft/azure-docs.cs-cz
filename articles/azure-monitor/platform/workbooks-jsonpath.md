@@ -9,15 +9,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
-ms.openlocfilehash: 58a2657f6b9aee101384146c4ebb43023953bfcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efa54933ac7d57ec0dcff9ae11b6fb5c2c87a897
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82892209"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081385"
 ---
 # <a name="how-to-use-jsonpath-to-transform-json-data-in-workbooks"></a>Jak používat JSONPath k transformaci dat JSON v sešitech
 
-Sešity se mohou dotazovat na data z mnoha zdrojů. Některé koncové body, například [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) nebo vlastní koncový bod, mohou vracet výsledky ve formátu JSON. Pokud data JSON vrácená koncovým bodem nejsou nakonfigurovaná ve formátu, který si přejete, můžete k transformaci výsledků použít JSONPath.
+Sešity se mohou dotazovat na data z mnoha zdrojů. Některé koncové body, například [Azure Resource Manager](../../azure-resource-manager/management/overview.md) nebo vlastní koncový bod, mohou vracet výsledky ve formátu JSON. Pokud data JSON vrácená koncovým bodem nejsou nakonfigurovaná ve formátu, který si přejete, můžete k transformaci výsledků použít JSONPath.
 
 JSONPath je dotazovací jazyk pro JSON, který se podobá XPath pro XML. Podobně jako XPath JSONPath umožňuje extrakci a filtraci dat ze struktury JSON.
 
@@ -74,7 +75,7 @@ Předpokládejme, že se vám jako reprezentace inventáře obchodu přidáváme
    |:-----------|:-----------------|
    | Nadpis      | `$.title`        |
    | Autor     | `$.author`       |
-   | Price      | `$.price`        |
+   | Cena      | `$.price`        |
 
     ID sloupců budou záhlaví sloupců. Pole cesty JSON sloupce označují cestu z kořene tabulky k hodnotě sloupce.
 

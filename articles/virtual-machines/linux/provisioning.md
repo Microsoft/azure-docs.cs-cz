@@ -9,21 +9,21 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 6530d05b8e1aa565e64256054e81b785572edfb0
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: a7d9aa7de8bb75a22acc85c77924765eaa1b6b3b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85308139"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080144"
 ---
 # <a name="azure-linux-vm-provisioning"></a>Zřizování virtuálních počítačů Azure Linux
 Když vytváříte virtuální počítač z generalizované Image (sdílená Galerie imagí nebo spravovaná image), řídicí plocha vám umožní vytvořit virtuální počítač a předat parametry a nastavení virtuálnímu počítači. Toto se říká *zřizování*virtuálního počítače. Během zřizování platforma zpřístupňuje virtuálnímu počítači požadované hodnoty parametrů pro vytvoření virtuálního počítače (název hostitele, uživatelské jméno, heslo, klíče SSH, customData), které jsou k dispozici pro virtuální počítač. 
 
 Zřizovací agent vloženými v rámci image bude rozhraní s platformou, propojuje až několik nezávislých rozhraní zřizování, nastaví vlastnosti a signál na platformu, kterou dokončil. 
 
-Agenti zřizování můžou být [agentem Azure Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)nebo [Cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init). Jedná se o [předpoklady](create-upload-generic.md) pro vytváření zobecněných imagí.
+Agenti zřizování můžou být [agentem Azure Linux](../extensions/agent-linux.md)nebo [Cloud-init](./using-cloud-init.md). Jedná se o [předpoklady](create-upload-generic.md) pro vytváření zobecněných imagí.
 
-Zřizovací agenti poskytují podporu pro všechny schválené [distribuce systému Azure Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)a v mnoha případech najdete schválené image distribuce, které se budou dodávat s agenty Cloud-init i Linux. Díky tomu máte možnost mít ke zpracování zřizování Cloud-init a Agent pro Linux bude poskytovat podporu pro zpracování [rozšíření Azure](https://docs.microsoft.com/azure/virtual-machines/extensions/features-windows). Poskytnutí podpory pro rozšíření znamená, že virtuální počítač bude mít nárok na podporu dalších služeb Azure, jako je resetování hesla virtuálních počítačů, monitorování Azure, Azure Backup, šifrování disku Azure atd.
+Zřizovací agenti poskytují podporu pro všechny schválené [distribuce systému Azure Linux](./endorsed-distros.md)a v mnoha případech najdete schválené image distribuce, které se budou dodávat s agenty Cloud-init i Linux. Díky tomu máte možnost mít ke zpracování zřizování Cloud-init a Agent pro Linux bude poskytovat podporu pro zpracování [rozšíření Azure](../extensions/features-windows.md). Poskytnutí podpory pro rozšíření znamená, že virtuální počítač bude mít nárok na podporu dalších služeb Azure, jako je resetování hesla virtuálních počítačů, monitorování Azure, Azure Backup, šifrování disku Azure atd.
 
 Po dokončení zřizování se při každém spuštění spustí Cloud-init. Cloud-init bude monitorovat změny virtuálního počítače, například změny sítě, připojení a formátování dočasného disku a spuštění agenta pro Linux. Agent pro Linux se průběžně spouští na serveru a hledá "cílový stav" (novou konfiguraci) z platformy Azure, takže když nainstalujete rozšíření, Agent bude moct je zpracovat.
 
@@ -61,7 +61,7 @@ Pokud máte jádro systému Linux, které nemůže podporovat spuštění agenta
   
 - Přesměrování konzoly na sériový port
 
-## <a name="communication"></a>Communication
+## <a name="communication"></a>Komunikace
 Tok informací z platformy k agentům probíhá prostřednictvím dvou kanálů:
 
 - Spouštěcí DVD připojený k IaaS nasazení. Disk DVD obsahuje konfigurační soubor kompatibilní s OVF, který obsahuje informace o všech zřizováních, jiné než skutečné páry klíčů SSH.

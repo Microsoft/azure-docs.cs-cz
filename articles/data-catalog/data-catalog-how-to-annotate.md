@@ -4,13 +4,14 @@ description: Postup popisuje, jak opatřit poznámkami datové assety v Azure Da
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: c1e022591ce1aee073330055744fbd78d97c0b1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61a91ca8a51886c28beee77853d1ae67911e00e7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68950262"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081232"
 ---
 # <a name="how-to-annotate-data-sources-in-azure-data-catalog"></a>Postup přidání poznámek ke zdrojům dat v Azure Data Catalog
 
@@ -36,7 +37,7 @@ Data Catalog podporuje následující typy poznámek:
 | Poznámka | Poznámky |
 | --- | --- |
 | Popisný název |Popisné názvy lze zadat na úrovni datového assetu, aby bylo možné snadněji pochopit datové prostředky. Popisné názvy jsou nejužitečnější, pokud je název podkladového objektu nešifrovaný, zkrácený nebo jinak nesmysluplný pro uživatele. |
-| Description |Popisy lze zadat na úrovni assetů dat a atributů nebo sloupců. Popisy jsou krátké textové poznámky s volným tvarem, které popisují perspektivu uživatele na datovém assetu nebo jeho použití. |
+| Popis |Popisy lze zadat na úrovni assetů dat a atributů nebo sloupců. Popisy jsou krátké textové poznámky s volným tvarem, které popisují perspektivu uživatele na datovém assetu nebo jeho použití. |
 | Značky (uživatelské značky) |Značky lze zadat na úrovni assetů dat a atributů nebo sloupců. Uživatelské značky jsou uživatelsky definované popisky, které lze použít k kategorizaci datových prostředků nebo atributů. |
 | Značky (Glosář glosáře) |Značky lze zadat na úrovni assetů dat a atributů nebo sloupců. Značky glosáře jsou centrálně definované výrazy glosáře, které lze použít ke kategorizaci datových assetů nebo atributů pomocí běžné obchodní taxonomie. Další informace naleznete v článku [Jak nastavit obchodní glosář řízeným přidáváním značek](data-catalog-how-to-business-glossary.md) |
 | Odborníky |Odborníky mohou být dodány na úrovni datového assetu. Odborníci identifikují uživatele nebo skupiny pomocí odborných perspektiv na data a můžou sloužit jako kontaktní body pro uživatele, kteří zjišťují registrované zdroje dat a mají otázky, na které neodpoví stávající poznámky. |
@@ -56,7 +57,7 @@ Při výběru více tabulek a zobrazení budou na portálu Data Catalog zobrazen
 ## <a name="annotations-and-discovery"></a>Poznámky a zjišťování
 Stejně jako metadata extrahovaná ze zdroje dat během registrace se přidají do indexu hledání Data Catalog, uživatelsky zadaná metadata se také indexují. To znamená, že nejenom anotace usnadňují uživatelům pochopení dat, která zjišťují, poznámky také usnadňují uživatelům vyhledávání datových assetů s poznámkami, a to pomocí podmínek, které jim dávají smysl.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 Registrace zdroje dat pomocí Data Catalog zajišťuje, aby byla data zjistitelná zkopírováním strukturních a popisných metadat ze zdroje dat do služby katalogu. Po zaregistrování zdroje dat můžou uživatelé poskytnout poznámky, které usnadňují zjišťování a pochopení v rámci portálu Data Catalog.
 
 ## <a name="see-also"></a>Viz také

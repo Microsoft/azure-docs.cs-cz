@@ -3,11 +3,12 @@ title: Automatizace procesů Azure Application Insights pomocí Logic Apps
 description: Přečtěte si, jak můžete rychle automatizovat opakované procesy tím, že do aplikace logiky přidáte konektor Application Insights.
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.openlocfilehash: 4a0944e661932d86fac75f78c4faf5be751806c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76a199023ef37fbda27be59fdf70f6ca5d8481bc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79473162"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079617"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Automatizace Application Insights procesů pomocí Logic Apps
 
@@ -18,14 +19,14 @@ Najdete v datech telemetrie opakované spouštění stejných dotazů, abyste zk
 
 Pomocí této integrace můžete automatizovat mnoho procesů bez nutnosti psát jediný řádek kódu. Pomocí konektoru Application Insights můžete vytvořit aplikaci logiky a rychle tak automatizovat všechny Application Insights procesy. 
 
-Můžete také přidat další akce. Funkce Logic Apps v Azure App Service zpřístupňuje stovky akcí. Například pomocí aplikace logiky můžete automaticky odeslat e-mailové oznámení nebo vytvořit chybu v Azure DevOps. Můžete také použít jednu z mnoha dostupných [šablon](https://docs.microsoft.com/azure/logic-apps/logic-apps-use-logic-app-templates) , které vám pomůžou urychlit proces vytváření aplikace logiky. 
+Můžete také přidat další akce. Funkce Logic Apps v Azure App Service zpřístupňuje stovky akcí. Například pomocí aplikace logiky můžete automaticky odeslat e-mailové oznámení nebo vytvořit chybu v Azure DevOps. Můžete také použít jednu z mnoha dostupných [šablon](../../logic-apps/logic-apps-create-logic-apps-from-templates.md) , které vám pomůžou urychlit proces vytváření aplikace logiky. 
 
 ## <a name="create-a-logic-app-for-application-insights"></a>Vytvoření aplikace logiky pro Application Insights
 
 V tomto kurzu se naučíte, jak vytvořit aplikaci logiky, která používá algoritmus autocluster Analytics k seskupení atributů v datech webové aplikace. Tok automaticky odesílá výsledky na základě e-mailu, stačí jenom jeden z příkladů, jak můžete Application Insights Analytics a Logic Apps společně používat. 
 
 ### <a name="step-1-create-a-logic-app"></a>Krok 1: Vytvoření aplikace logiky
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
 1. Klikněte na **vytvořit prostředek**, vyberte **web a mobilní zařízení**a pak vyberte **Aplikace logiky**.
 
     ![Nové okno aplikace logiky](./media/automate-with-logic-apps/1createlogicapp.png)
@@ -117,7 +118,7 @@ Když vytváříte vlastní dotazy, ověřte, že správně fungují v analytick
       ![Obrazovka konfigurace e-mailu Office 365](./media/automate-with-logic-apps/12emailattachment.png)
 
 ### <a name="step-7-save-and-test-your-logic-app"></a>Krok 7: uložení a otestování aplikace logiky
-* Kliknutím na **Uložit** uložte změny.
+* Kliknutím na **Uložit** změny uložte.
 
 Můžete počkat, až aktivační událost spustí aplikaci logiky, nebo můžete spustit aplikaci logiky hned po výběru možnosti **Spustit**.
 
@@ -130,13 +131,8 @@ Po spuštění aplikace logiky obdrží příjemci, které jste zadali v seznamu
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o vytváření [analytických dotazů](../../azure-monitor/log-query/get-started-queries.md).
-- Další informace o [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps).
+- Další informace o [Logic Apps](../../logic-apps/logic-apps-overview.md).
 
 
 
 <!--Link references-->
-
-
-
-
-

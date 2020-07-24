@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: 5588920c860de09ea1561cf5ed4b28a08085438c
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 327a8a0de0d144a5c1d8494a6dd22a8b89a7bd93
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207766"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081045"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>Spouštění dotazů Apache Hive pomocí PowerShellu
 
@@ -24,11 +24,11 @@ Tento dokument poskytuje příklad použití Azure PowerShell ke spouštění do
 > [!NOTE]  
 > Tento dokument neposkytuje podrobný popis toho, co HiveQL příkazy, které jsou používány v příkladech. Informace o HiveQL, které se používají v tomto příkladu, najdete v tématu [použití Apache Hive s Apache Hadoop ve službě HDInsight](hdinsight-use-hive.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Cluster Apache Hadoop v HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](./apache-hadoop-linux-tutorial-get-started.md).
 
-* Prostředí PowerShell [AZ Module](https://docs.microsoft.com/powershell/azure/overview) installed.
+* Prostředí PowerShell [AZ Module](https://docs.microsoft.com/powershell/azure/) installed.
 
 ## <a name="run-a-hive-query"></a>Spuštění dotazu Hive
 
@@ -86,7 +86,7 @@ Následující kroky ukazují, jak pomocí těchto rutin spustit úlohu v cluste
    >
    > Další informace o **řetězcích**najdete v tématu <a href="https://technet.microsoft.com/library/ee692792.aspx" target="_blank">použití řetězců v prostředí Windows PowerShell</a>.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud se po dokončení úlohy nevrátí žádné informace, podívejte se na protokoly chyb. Chcete-li zobrazit informace o chybě pro tuto úlohu, přidejte na konec `hivejob.ps1` souboru, uložte ho a pak ho znovu spusťte.
 

@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: cfbd5af7063a4764820b5ce892a9a2b8a305b1b7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ac42fe3265163a5a967524fe11063803c9ca91d3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494934"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080586"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Automatické škálování sady škálování virtuálních počítačů v Azure Portal
 Při vytváření škálovací sady definujete počet instancí virtuálních počítačů, které chcete spouštět. S měnícími se požadavky na aplikaci můžete počet instancí virtuálních počítačů automaticky zvyšovat nebo snižovat. Možnost automatického škálování umožňuje držet krok s požadavky zákazníků nebo reagovat na změny výkonu aplikace v průběhu jejího životního cyklu.
@@ -48,8 +48,8 @@ Pokud se požadavky na vaši aplikaci zvýší, zvýší se i zatížení instan
     | *Statistika agregačního intervalu* | Definuje, jak by měly být shromážděné metriky v jednotlivých intervalech agregovány pro účely analýzy.                             | Průměr        |
     | *Operátor*             | Operátor sloužící k porovnání dat metriky s prahovou hodnotou.                                                     | Větší než   |
     | *Prahová hodnota*            | Procentuální hodnota, která způsobí, že pravidlo automatického škálování aktivuje akci.                                                 | 70             |
-    | *Doba trvání*             | Doba, která se monitoruje před porovnáním metrik a prahových hodnot.                                   | 10 minut     |
-    | *Operace*            | Definuje, jestli se má při použití pravidla a o tom, jaký přírůstek má změnit horizontální navýšení nebo snížení kapacity sady škálování.                        | Zvýšit procento o |
+    | *Doba trvání*             | Doba, která se monitoruje před porovnáním metrik a prahových hodnot. Nezahrnuje dobu chladnutí.                                   | 10 minut     |
+    | *Operace*            | Definuje, jestli se má sada škálování škálovat nahoru nebo dolů při použití pravidla a podle toho, co se zvyšuje.                        | Zvýšit procento o |
     | *Počet instancí*       | Procento instancí virtuálních počítačů, které se mají po aktivaci pravidla změnit.                                            | 20             |
     | *Přestávka (minuty)*  | Doba, po kterou se má počkat před opětovným použitím pravidla, aby akce automatického škálování měly dostatek času se projevit. | 5 minut      |
 
@@ -70,7 +70,7 @@ Večer nebo o víkendu se požadavky na vaši aplikaci můžou snížit. Pokud j
     
     | Parametr              | Vysvětlení                                                                                                          | Hodnota          |
     |------------------------|----------------------------------------------------------------------------------------------------------------------|----------------|
-    | *Podnikatel*             | Operátor sloužící k porovnání dat metriky s prahovou hodnotou.                                                      | Menší než   |
+    | *Operátor*             | Operátor sloužící k porovnání dat metriky s prahovou hodnotou.                                                      | Menší než   |
     | *Prahová hodnota*            | Procentuální hodnota, která způsobí, že pravidlo automatického škálování aktivuje akci.                                                 | 30             |
     | *Operace*            | Definuje, jestli se má při použití pravidla a o tom, jaký přírůstek má změnit horizontální navýšení nebo snížení kapacity sady škálování.                         | Snížit procento o |
     | *Počet instancí*       | Procento instancí virtuálních počítačů, které se mají po aktivaci pravidla změnit.                                             | 20             |

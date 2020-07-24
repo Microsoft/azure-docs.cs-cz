@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e539e2a26e53ded8a2c42491c1e1e596a2180ed7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5c81897f74163191de4b167ffa56225ca0698ca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85268978"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079052"
 ---
 # <a name="azure-security-baseline-for-expressroute"></a>Základní hodnoty zabezpečení Azure pro ExpressRoute
 
@@ -246,7 +246,7 @@ Partneři, kteří používají Správce prostředků Partnerská rozhraní API,
 
 * [Princip RBAC v Azure](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-* [Využití RBAC v ExpressRoute partnerovi Správce prostředků API](https://docs.microsoft.com/azure/expressroute/cross-connections-api-developmentment)
+* [Využití RBAC v ExpressRoute partnerovi Správce prostředků API](https://docs.microsoft.com/azure/expressroute/cross-connections-api-development)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -584,7 +584,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 **Doprovodné**materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování prostředků Azure. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
 
 Kromě toho použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v předplatných zákazníka pomocí následujících integrovaných definic zásad:
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 - Povolené typy prostředků
 
 * [Vytvoření dalších předplatných Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription)
@@ -646,7 +646,7 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 ### <a name="69-use-only-approved-azure-services"></a>6,9: Používejte jenom schválené služby Azure.
 
 **Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 - Povolené typy prostředků
 
 * [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)

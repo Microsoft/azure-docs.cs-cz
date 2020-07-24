@@ -2,12 +2,13 @@
 title: Nasazení prostředků pomocí REST API a šablony
 description: K nasazení prostředků do Azure použijte Azure Resource Manager a Správce prostředků REST API. Prostředky jsou definovány v šabloně Resource Manageru.
 ms.topic: conceptual
-ms.date: 06/04/2020
-ms.openlocfilehash: a2280d3bb406fd7e5c41558478363de68cbd44b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/21/2020
+ms.openlocfilehash: 17ea7da3e0b581ed60d2db97d350a70d5250ef28
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678405"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079490"
 ---
 # <a name="deploy-resources-with-arm-templates-and-resource-manager-rest-api"></a>Nasazení prostředků pomocí šablon ARM a Správce prostředků REST API
 
@@ -100,7 +101,7 @@ Příklady v tomto článku používají nasazení skupin prostředků.
    }
    ```
 
-    Pokud chcete protokolovat obsah odpovědi, požádat o obsah nebo obojí, přidejte do žádosti **debugSetting** .
+    Pokud chcete protokolovat obsah odpovědi, požádat o obsah nebo obojí, zahrňte `debugSetting` do žádosti.
 
    ```json
    {
@@ -193,6 +194,22 @@ Příklady v tomto článku používají nasazení skupin prostředků.
    ```HTTP
    GET https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
    ```
+
+## <a name="deployment-name"></a>Název nasazení
+
+Vašemu nasazení můžete dát název, jako je například `ExampleDeployment` .
+
+Pokaždé, když spustíte nasazení, do historie nasazení skupiny prostředků se přidá záznam s názvem nasazení. Pokud spustíte jiné nasazení a přiřadíte mu stejný název, bude předchozí položka nahrazena aktuálním nasazením. Pokud chcete zachovat jedinečné položky v historii nasazení, udělte každému nasazení jedinečný název.
+
+Chcete-li vytvořit jedinečný název, můžete přiřadit náhodné číslo. Nebo přidejte hodnotu data.
+
+Pokud spustíte souběžná nasazení do stejné skupiny prostředků se stejným názvem nasazení, bude dokončeno pouze poslední nasazení. Všechna nasazení se stejným názvem, která nebyla dokončena, budou nahrazena posledním nasazením. Pokud například spustíte nasazení s názvem `newStorage` , které nasadí účet úložiště s názvem `storage1` a zároveň spustíte jiné nasazení s názvem `newStorage` , které nasadí účet úložiště s názvem `storage2` , nasadíte jenom jeden účet úložiště. Výsledný účet úložiště je pojmenován `storage2` .
+
+Pokud ale spustíte nasazení s názvem `newStorage` , které nasadí účet úložiště s názvem `storage1` , a hned po jeho dokončení spustíte jiné nasazení s názvem `newStorage` , které nasadí účet úložiště s názvem `storage2` , budete mít dva účty úložiště. Jedna má název `storage1` a druhá má název `storage2` . Ale v historii nasazení máte jenom jednu položku.
+
+Pokud pro každé nasazení zadáte jedinečný název, můžete je spustit souběžně bez konfliktu. Pokud spustíte nasazení s názvem, `newStorage1` které nasadí účet úložiště s názvem `storage1` a zároveň spustíte jiné nasazení s názvem, `newStorage2` které nasadí účet úložiště s názvem `storage2` , budete mít dva účty úložiště a dvě položky v historii nasazení.
+
+Aby nedocházelo ke konfliktům s souběžnými nasazeními a zajistili v historii nasazení jedinečné položky, udělte každé nasazení jedinečný název.
 
 ## <a name="next-steps"></a>Další kroky
 

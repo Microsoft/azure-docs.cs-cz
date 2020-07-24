@@ -1,5 +1,5 @@
 ---
-title: Připojení webového klienta pro virtuální počítače s Windows – Azure
+title: Připojení k virtuálnímu počítači s Windows pomocí webového klienta – Azure
 description: Jak se připojit k virtuálnímu počítači s Windows pomocí webového klienta.
 services: virtual-desktop
 author: Heidilohr
@@ -8,13 +8,14 @@ ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bb3a73566cd2477e493ca8621336fb3a51f3b3b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4bb54db8a18baa237f1c32c223b5f609638c7523
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212458"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080620"
 ---
-# <a name="connect-with-the-web-client"></a>Připojení k webovému klientovi
+# <a name="connect-to-windows-virtual-desktop-with-the-web-client"></a>Připojení k virtuálnímu počítači s Windows pomocí webového klienta
 
 >[!IMPORTANT]
 >Tento obsah se vztahuje na jarní 2020 aktualizaci s Azure Resource Manager objekty virtuálních klientů Windows. Pokud používáte virtuální plochu Windows na verzi 2019 bez Azure Resource Manager objektů, přečtěte si [Tento článek](./virtual-desktop-fall-2019/connect-web-2019.md).

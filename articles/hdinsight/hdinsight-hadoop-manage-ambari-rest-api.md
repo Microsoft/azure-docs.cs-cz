@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 03ef1708f836eb016d8f2fce530b9588cc61cd35
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 45b9c158aca85d62b02d65282876d5e40129878f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075701"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081062"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Správa clusterů HDInsight pomocí REST API Apache Ambari
 
@@ -25,7 +25,7 @@ Naučte se používat REST API Apache Ambari ke správě a monitorování cluste
 
 Apache Ambari zjednodušuje správu a monitorování clusterů Hadoop tím, že poskytuje jednoduché webové uživatelské rozhraní, které je zajištěno pomocí [rozhraní REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).  Ambari se ve výchozím nastavení poskytuje u clusterů HDInsight se systémem Linux.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Cluster Hadoop ve službě HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
@@ -39,7 +39,7 @@ Apache Ambari zjednodušuje správu a monitorování clusterů Hadoop tím, že 
 
  Základní identifikátor URI (Uniform Resource Identifier) pro Ambari REST API v HDInsight je `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` , kde `CLUSTERNAME` je název vašeho clusteru.  Názvy clusterů v identifikátorech URI rozlišují **velká a malá písmena**.  I když název clusteru v části plně kvalifikovaného názvu domény (FQDN) v identifikátoru URI () rozlišuje velká a malá písmena `CLUSTERNAME.azurehdinsight.net` , jiné výskyty v identifikátoru URI rozlišují velká a malá písmena.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 Připojení k Ambari v HDInsight vyžaduje protokol HTTPS. Použijte název účtu správce (výchozí nastavení je **admin**) a heslo, které jste zadali při vytváření clusteru.
 
@@ -253,7 +253,7 @@ Vrácená hodnota je podobná jednomu z následujících příkladů:
     Vrácená hodnota je podobná `/clusters/CLUSTERNAME/` . Tato hodnota je cesta v rámci Data Lake Storage účtu. Tato cesta je kořenem systému souborů kompatibilního s HDFS pro daný cluster.  
 
 > [!NOTE]  
-> Rutina [Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) , kterou poskytuje [Azure PowerShell](/powershell/azure/overview) , vrátí taky informace o úložišti pro daný cluster.
+> Rutina [Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) , kterou poskytuje [Azure PowerShell](/powershell/azure/) , vrátí taky informace o úložišti pro daný cluster.
 
 ### <a name="get-all-configurations"></a>Získat všechny konfigurace
 

@@ -9,23 +9,24 @@ ms.subservice: autoscale
 ms.date: 04/26/2019
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: aa004cc3ad6c02937ae3c3c8bdb1d5ebd225f434
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 549f8fbc1e3acf435011f223faeb5b8240f0c55d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83124801"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080416"
 ---
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>Automatické škálování pomocí metrik hosta v šabloně sady pro systém Linux
 
 V Azure existují dva široké typy metrik, které se shromažďují z virtuálních počítačů a sad škálování: metriky hostitele a metriky hostů. Pokud chcete používat standardní metriky procesoru, disku a sítě, na nejvyšší úrovni je vhodné metriky hostitele. Pokud ale potřebujete větší výběr metrik, je třeba metriky hosta vyhledat.
 
-Metriky hostitele nevyžadují další nastavení, protože jsou shromažďovány hostitelským počítačem hostitele, zatímco metriky hosta vyžadují, abyste v hostovaném virtuálním počítači nainstalovali [rozšíření Windows Azure Diagnostics](../virtual-machines/windows/extensions-diagnostics-template.md) nebo [Linux Azure Diagnostics](../virtual-machines/linux/diagnostic-extension.md) . Jedním z běžných důvodů použití metrik hostů namísto metrik hostitele je, že metriky hosta poskytují větší výběr metrik než metriky hostitele. Jedním z takových příkladů je metrika spotřeby paměti, která je dostupná jenom přes metriky hosta. [Tady jsou uvedené podporované](../azure-monitor/platform/metrics-supported.md)metriky hostitele a [tady](../azure-monitor/platform/autoscale-common-metrics.md)jsou uvedené běžně používané metriky hosta. Tento článek popisuje, jak upravit [šablonu základní životaschopná sada škálování](virtual-machine-scale-sets-mvss-start.md) tak, aby používala pravidla automatického škálování založená na metrikách hosta pro systémy Linux Scale Sets.
+Metriky hostitele nevyžadují další nastavení, protože jsou shromažďovány hostitelským počítačem hostitele, zatímco metriky hosta vyžadují, abyste v hostovaném virtuálním počítači nainstalovali [rozšíření Windows Azure Diagnostics](../virtual-machines/extensions/diagnostics-template.md) nebo [Linux Azure Diagnostics](../virtual-machines/extensions/diagnostics-linux.md) . Jedním z běžných důvodů použití metrik hostů namísto metrik hostitele je, že metriky hosta poskytují větší výběr metrik než metriky hostitele. Jedním z takových příkladů je metrika spotřeby paměti, která je dostupná jenom přes metriky hosta. [Tady jsou uvedené podporované](../azure-monitor/platform/metrics-supported.md)metriky hostitele a [tady](../azure-monitor/platform/autoscale-common-metrics.md)jsou uvedené běžně používané metriky hosta. Tento článek popisuje, jak upravit [šablonu základní životaschopná sada škálování](virtual-machine-scale-sets-mvss-start.md) tak, aby používala pravidla automatického škálování založená na metrikách hosta pro systémy Linux Scale Sets.
 
 ## <a name="change-the-template-definition"></a>Změna definice šablony
 
 V [předchozím článku](virtual-machine-scale-sets-mvss-start.md) jsme vytvořili základní šablonu sady škálování. Nyní použijeme tuto předchozí šablonu a upravíte ji k vytvoření šablony, která nasadí sadu škálování pro Linux pomocí automatického škálování na základě metriky hosta.
 
-Nejprve přidejte parametry pro `storageAccountName` a `storageAccountSasToken` . Agent diagnostiky ukládá data metrik v [tabulce](../cosmos-db/table-storage-how-to-use-dotnet.md) v tomto účtu úložiště. Od agenta diagnostiky Linux verze 3,0 už použití přístupového klíče k úložišti není podporované. Místo toho použijte [token SAS](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Nejprve přidejte parametry pro `storageAccountName` a `storageAccountSasToken` . Agent diagnostiky ukládá data metrik v [tabulce](../cosmos-db/tutorial-develop-table-dotnet.md) v tomto účtu úložiště. Od agenta diagnostiky Linux verze 3,0 už použití přístupového klíče k úložišti není podporované. Místo toho použijte [token SAS](../storage/common/storage-sas-overview.md).
 
 ```diff
      },
@@ -41,7 +42,7 @@ Nejprve přidejte parametry pro `storageAccountName` a `storageAccountSasToken` 
    },
 ```
 
-Dále upravte sadu škálování tak, `extensionProfile` aby zahrnovala diagnostické rozšíření. V této konfiguraci zadejte ID prostředku pro sadu škálování, ze kterého se mají shromažďovat metriky, a také účet úložiště a token SAS, který se použije k uložení metrik. Určete, jak často se metriky agregují (v tomto případě každou minutu) a které metriky se mají sledovat (v tomto případě procento využité paměti). Podrobnější informace o této konfiguraci a metrikách jiných než procento využité paměti najdete v [této dokumentaci](../virtual-machines/linux/diagnostic-extension.md).
+Dále upravte sadu škálování tak, `extensionProfile` aby zahrnovala diagnostické rozšíření. V této konfiguraci zadejte ID prostředku pro sadu škálování, ze kterého se mají shromažďovat metriky, a také účet úložiště a token SAS, který se použije k uložení metrik. Určete, jak často se metriky agregují (v tomto případě každou minutu) a které metriky se mají sledovat (v tomto případě procento využité paměti). Podrobnější informace o této konfiguraci a metrikách jiných než procento využité paměti najdete v [této dokumentaci](../virtual-machines/extensions/diagnostics-linux.md).
 
 ```diff
                  }

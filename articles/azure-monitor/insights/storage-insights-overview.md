@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 7ab7071f504231290f72646e59a30fa855cff6cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d71201da0c4af35720a309fe0dfa068cd2c69630
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84944487"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081606"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Monitorování služby úložiště pomocí Azure Monitor pro úložiště
 
@@ -31,7 +31,7 @@ Kombinace it přináší:
 
 * **Přizpůsobitelné** , kde můžete měnit metriky, které chcete zobrazit, upravit nebo nastavit prahové hodnoty, které odpovídají vašim limitům, a uložit jako vlastní sešit. Grafy v sešitě lze připnout na řídicí panel Azure.  
 
-Tato funkce nevyžaduje, abyste povolili ani nenakonfigurovali cokoli. ve výchozím nastavení se shromažďují metriky úložiště z vašich účtů úložiště. Pokud neznáte metriky dostupné na Azure Storage, podívejte se na popis a definici v části Azure Storage metriky tím, že zkontrolujete [metriky služby Azure Storage](../../storage/common/storage-metrics-in-azure-monitor.md).
+Tato funkce nevyžaduje, abyste povolili ani nenakonfigurovali cokoli. ve výchozím nastavení se shromažďují metriky úložiště z vašich účtů úložiště. Pokud neznáte metriky dostupné na Azure Storage, podívejte se na popis a definici v části Azure Storage metriky tím, že zkontrolujete [metriky služby Azure Storage](../../storage/common/monitor-storage.md).
 
 >[!NOTE]
 >Pro přístup k této funkci se neplatí žádné poplatky a účtují se vám jenom Azure Monitor základní funkce, které nakonfigurujete nebo povolíte, jak je popsáno na stránce [Azure monitor s podrobnostmi o cenách](https://azure.microsoft.com/pricing/details/monitor/) .
@@ -46,7 +46,7 @@ Z Azure Monitor můžete zobrazit podrobnosti o transakcích, latencích a kapac
 
 Pokud chcete zobrazit využití a dostupnost účtů úložiště ve všech předplatných, proveďte následující kroky.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
 
 2. V Azure Portal v levém podokně vyberte **monitor** a v části **přehledy** vyberte **účty úložiště**.
 
@@ -198,7 +198,7 @@ Teď změníme barevný motiv pro metriky kapacity v sestavě tak, aby místo mo
 
 1. Vyberte **Nastavení sloupce** v mřížce metriky.
 
-2. V podokně **Upravit nastavení sloupců** vyberte v části **sloupce** část **Microsoft. Storage/storageaccounts-Capacity-UsedCapacity $ | Microsoft. Storage/storageaccounts/blobservices-Capacity-BlobCapacity $ | Microsoft. Storage/Storageaccounts/služby úložiště-Capacity-$ | Microsoft. Storage/storageaccounts/queueservices-Capacity-QueueCapacity $ | Microsoft. Storage/storageaccounts/tableservices-Capacity-TableCapacity $**. V **paletě barev**v rozevíracím seznamu vyberte **zelený**.
+2. V podokně **Upravit nastavení sloupců** vyberte v části **sloupce** část **Microsoft. Storage/storageaccounts-Capacity-UsedCapacity $ `|` Microsoft. Storage/Storageaccounts/blobservices-Capacity-BlobCapacity $ `|` Microsoft. Storage/storageaccounts/služby úložiště-Capacity- `|` `|` disks $ Microsoft. Storage/storageaccounts/** queueservices-Capacity-QueueCapacity $. V **paletě barev**v rozevíracím seznamu vyberte **zelený**.
 
 3. Kliknutím na **Uložit a zavřít** potvrďte změnu.
 
@@ -226,7 +226,7 @@ V tomto příkladu pracujeme se sešitem kapacity účtu úložiště a demonstr
 
 7. Na panelu příkazů vyberte **Uložit jako** a uložte kopii sešitu s vlastními úpravami a potom kliknutím na **hotové úpravy** vraťte do režimu čtení.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Obecné pokyny k odstraňování potíží najdete v článku věnovaném [řešení problémů](troubleshoot-workbooks.md)na základě vyhrazeného sešitu.
 
@@ -246,7 +246,7 @@ Podrobné pokyny, jak změnit barvy a prahové hodnoty dostupnosti, najdete v č
 
 ### <a name="how-to-analyze-and-troubleshoot-the-data-shown-in-azure-monitor-for-storage"></a>Jak analyzovat a řešit potíže s daty zobrazenými v Azure Monitor pro úložiště?
 
- Podrobnosti o tom, jak analyzovat a řešit problémy Azure Storage dat zobrazených v Azure Monitor pro úložiště, najdete v článku [monitorování, diagnostika a řešení potíží s Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-monitoring-diagnosing-troubleshooting) .
+ Podrobnosti o tom, jak analyzovat a řešit problémy Azure Storage dat zobrazených v Azure Monitor pro úložiště, najdete v článku [monitorování, diagnostika a řešení potíží s Microsoft Azure Storage](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md) .
 
 ### <a name="why-dont-i-see-all-the-types-of-errors-in-metrics"></a>Proč se mi nezobrazují všechny typy chyb v metrikách?
 
@@ -269,7 +269,7 @@ Každý sešit je uložený v účtu úložiště, ve kterém jste ho uložili. 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Nakonfigurujte [Upozornění metrik](../platform/alerts-metric.md) a [oznámení o stavu služby](../../service-health/alerts-activity-log-service-notifications.md) , abyste nastavili automatizované upozorňování na pomoc při zjišťování problémů.
+* Nakonfigurujte [Upozornění metrik](../platform/alerts-metric.md) a [oznámení o stavu služby](../../service-health/alerts-activity-log-service-notifications-portal.md) , abyste nastavili automatizované upozorňování na pomoc při zjišťování problémů.
 
 * Seznamte se s scénáři, které jsou navržené tak, aby podporovaly, vytváření nových a přizpůsobení existujících sestav a další informace najdete v tématu [vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../platform/workbooks-overview.md).
 

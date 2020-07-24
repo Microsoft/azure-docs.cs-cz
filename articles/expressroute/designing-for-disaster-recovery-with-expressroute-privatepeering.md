@@ -7,17 +7,22 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 05/25/2019
 ms.author: rambala
-ms.openlocfilehash: 726a014983c0da959d72b7976fef2ebb2c6e9b9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8adfb0ef0d9aa79d1b14127453f76223f035d62a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74076692"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081164"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Návrh pro zotavení po havárii s privátním partnerským vztahem ExpressRoute
 
 ExpressRoute je navržená tak, aby poskytovala vysokou dostupnost k zajištění privátní síťové připojení k prostředkům Microsoftu. Jinými slovy, v ExpressRoute cestě v síti Microsoftu neexistuje jediný bod selhání. Pokyny k návrhu pro maximalizaci dostupnosti okruhu ExpressRoute najdete v tématu [navrhování pro zajištění vysoké dostupnosti pomocí ExpressRoute][HA].
 
 Pokud se ale Murphya oblíbená pořekadlem – Pokud se něco nepovede *, může se*v tomto článku soustředit na řešení, která přesahují selhání, která se dají řešit pomocí jednoho okruhu ExpressRoute. Jinými slovy, v tomto článku se podíváme na požadavky architektury sítě, které vám pomůžou vytvářet robustní back-end síť pro zotavení po havárii pomocí geograficky redundantních okruhů ExpressRoute.
+
+>[!NOTE]
+>Koncepty popsané v tomto článku platí stejně, když je v rámci virtuální sítě WAN nebo mimo ni vytvořen okruh ExpressRoute.
+>
 
 ## <a name="need-for-redundant-connectivity-solution"></a>Nutné řešení redundantního připojení
 
@@ -109,7 +114,7 @@ V prvním scénáři navrhneme zotavení po havárii tak, aby veškerý provoz m
 
 Scénář 1 je znázorněný v následujícím diagramu. V diagramu zelené čáry označují cesty pro přenos toků mezi VNet1 a místními sítěmi. Modré čáry označují cesty pro přenos toků mezi VNet2 a místními sítěmi. Plné čáry označují požadovanou cestu v ustáleném stavu a přerušované čáry označují cestu provozu při selhání odpovídajícího okruhu ExpressRoute, který přenáší tok přenosů v ustáleném stavu. 
 
-[![čl]][7]
+[![7]][7]
 
 Scénář můžete rozpravit pomocí váhy připojení, aby se virtuální sítěy preferované připojení k umístění místních partnerských vztahů ExpressRoute pro provoz vázaný na místní síť. K dokončení řešení je potřeba zajistit symetrický tok zpětného provozu. V relaci iBGP můžete použít místní preference mezi směrovači BGP (na kterých jsou ExpressRoute okruhy ukončeny na místní straně) a upřednostnit okruh ExpressRoute. Řešení je znázorněno v následujícím diagramu. 
 
@@ -123,7 +128,7 @@ Scénář 2 je znázorněn v následujícím diagramu. V diagramu zelené čáry
 
 Řešení je znázorněno v následujícím diagramu. Jak je znázorněno, můžete scénář navrhovat buď pomocí konkrétnější trasy (možnost 1), nebo jako předřazení AS-Path (možnost 2) pro ovlivnění výběru cest virtuální sítě. Aby bylo možné ovlivnit místní síťové směrování pro přenos dat na pracovišti Azure, je nutné nakonfigurovat vzájemné propojení mezi místním umístěním, a to tak, aby bylo možné méně preferovat. Howa nakonfigurujete propojení propojení tak, jak upřednostňujete, závisí na směrovacím protokolu používaném v místní síti. Můžete použít místní preference s iBGP nebo metrikou s IGP (OSPF nebo IS-IS).
 
-[![10]][10]
+[![10pruhový]][10]
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: e6ff33b6a23cb85649a8811a8bef27ab455ab9e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e554fe48c3cbf8b744bf2f435f7b51e424d28808
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82980894"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079549"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Pokročilé funkce Průzkumníku metrik Azure
 
@@ -20,7 +21,7 @@ ms.locfileid: "82980894"
 
 ## <a name="metrics-in-azure"></a>Metriky v Azure
 
-[Metrikami v Azure monitor](data-platform-metrics.md) jsou řady měřených hodnot a počty, které se shromažďují a ukládají v průběhu času. Existují metriky Standard (nebo "platforma") a vlastní metriky. Standardní metriky vám nabízí samotná platforma Azure. Standardní metriky odráží údaje o stavu a využití vašich prostředků Azure. Vzhledem k tomu, že své aplikace odesílají vlastní metriky do Azure pomocí [rozhraní Application Insights API pro vlastní události a metriky](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics), [rozšíření Windows Azure Diagnostics (WAD)](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview)nebo [Azure monitor REST API](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api).
+[Metrikami v Azure monitor](data-platform-metrics.md) jsou řady měřených hodnot a počty, které se shromažďují a ukládají v průběhu času. Existují metriky Standard (nebo "platforma") a vlastní metriky. Standardní metriky vám nabízí samotná platforma Azure. Standardní metriky odráží údaje o stavu a využití vašich prostředků Azure. Vzhledem k tomu, že své aplikace odesílají vlastní metriky do Azure pomocí [rozhraní Application Insights API pro vlastní události a metriky](../app/api-custom-events-metrics.md), [rozšíření Windows Azure Diagnostics (WAD)](./diagnostics-extension-overview.md)nebo [Azure monitor REST API](./metrics-store-custom-rest-api.md).
 
 ## <a name="create-views-with-multiple-metrics-and-charts"></a>Vytváření zobrazení s více metrikami a grafy
 
@@ -163,7 +164,7 @@ Převezmete podokno pro vytvoření pravidla výstrahy se základními rozměry 
 
 Další informace o nastavení výstrah metrik najdete v tomto [článku](alerts-metric.md) .
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 *V grafu nevidím žádná data.*
 
@@ -175,5 +176,4 @@ Další informace o nastavení výstrah metrik najdete v tomto [článku](alerts
 
 ## <a name="next-steps"></a>Další kroky
 
-  Další informace o osvědčených postupech pro vytváření řídicích panelů s možnými metrikami najdete v [tématu vytváření vlastních řídicích panelů klíčových ukazatelů výkonu](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-dashboards) .
-
+  Další informace o osvědčených postupech pro vytváření řídicích panelů s možnými metrikami najdete v [tématu vytváření vlastních řídicích panelů klíčových ukazatelů výkonu](../learn/tutorial-app-dashboards.md) .

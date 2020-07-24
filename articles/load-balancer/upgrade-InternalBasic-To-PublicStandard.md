@@ -1,5 +1,5 @@
 ---
-title: Upgrade ze základní veřejné na standardní veřejné Azure Load Balancer
+title: Upgrade z interního na běžný na standardní Azure Load Balancer
 description: V tomto článku se dozvíte, jak upgradovat interní Load Balancer Azure Basic na standard Public Load Balancer
 services: load-balancer
 author: irenehua
@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 6b4d2a5cf441eb702bc33fc862fec9cc28a998b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 225252f2cd47c36de2c7eed4ed1e5dae3ebd81b2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809355"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078757"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Upgradovat interní Load Balancer Azure – vyžaduje se odchozí připojení
 [Azure Standard Load Balancer](load-balancer-overview.md) nabízí bohatou sadu funkcí a vysokou dostupnost prostřednictvím redundance zóny. Další informace o Load Balancer SKU najdete v tématu [srovnávací tabulka](https://docs.microsoft.com/azure/load-balancer/skus#skus). Vzhledem k tomu, že standardní interní Load Balancer neposkytuje odchozí připojení, poskytujeme řešení, které místo toho vytvoří standardní veřejný Load Balancer.
@@ -124,7 +124,7 @@ Pokud byste chtěli upustit od připojení k virtuálním počítačům z Intern
 
 ### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Existují nějaká omezení Azure PowerShell skriptu pro migraci konfigurace z V1 na v2?
 
-Ano. Podívejte se na [Upozornění a omezení](#caveatslimitations).
+Yes. Podívejte se na [Upozornění a omezení](#caveatslimitations).
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Přepíná Azure PowerShell skript také přenos z mé základní Load Balancer na nově vytvořenou Standard Load Balancer?
 

@@ -9,11 +9,12 @@ ms.subservice: management
 ms.date: 02/22/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 430c08fc318a89c4d11575eab90ee524b88a979a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07f72d54c0d62748196302ed1b77ea750dede8ff
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84607342"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080450"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Pochopení ID instancí pro virtuální počítače Azure VM Scale set
 Tento článek popisuje ID instancí pro sady škálování a různé způsoby jejich povrchu.
@@ -22,19 +23,19 @@ Tento článek popisuje ID instancí pro sady škálování a různé způsoby j
 
 Každý virtuální počítač v sadě škálování získá ID instance, která ho jednoznačně identifikuje. Toto ID instance se používá v rozhraních API sady škálování pro provádění operací na konkrétním virtuálním počítači v sadě škálování. Můžete například zadat konkrétní ID instance pro obnovení bitové kopie při použití rozhraní API pro přeimagí:
 
-REST API: `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/reimage?api-version={apiVersion}` (Další informace najdete v dokumentaci k [REST API](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesetvms/reimage)).
+REST API: `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/reimage?api-version={apiVersion}` (Další informace najdete v dokumentaci k [REST API](/rest/api/compute/virtualmachinescalesetvms/reimage)).
 
-PowerShell: `Set-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage` (Další informace najdete v [dokumentaci k PowerShellu](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm))
+PowerShell: `Set-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage` (Další informace najdete v [dokumentaci k PowerShellu](/powershell/module/az.compute/set-azvmssvm))
 
-CLI: `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` (Další informace najdete v [dokumentaci k](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)rozhraní příkazového řádku).
+CLI: `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` (Další informace najdete v [dokumentaci k](/cli/azure/vmss?view=azure-cli-latest)rozhraní příkazového řádku).
 
 Seznam ID instancí můžete získat zobrazením všech instancí v sadě škálování:
 
-REST API: `GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines?api-version={apiVersion}` (Další informace najdete v dokumentaci k [REST API](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesetvms/list)).
+REST API: `GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines?api-version={apiVersion}` (Další informace najdete v dokumentaci k [REST API](/rest/api/compute/virtualmachinescalesetvms/list)).
 
-PowerShell: `Get-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName}` (Další informace najdete v [dokumentaci k PowerShellu](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm))
+PowerShell: `Get-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName}` (Další informace najdete v [dokumentaci k PowerShellu](/powershell/module/az.compute/get-azvmssvm))
 
-CLI: `az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}` (Další informace najdete v [dokumentaci k](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)rozhraní příkazového řádku).
+CLI: `az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}` (Další informace najdete v [dokumentaci k](/cli/azure/vmss?view=azure-cli-latest)rozhraní příkazového řádku).
 
 K vypsání virtuálních počítačů v sadě škálování můžete použít taky [Resources.Azure.com](https://resources.azure.com) nebo [Azure SDK](https://azure.microsoft.com/downloads/) .
 
@@ -65,7 +66,7 @@ Jak vidíte, vlastnost instanceId je jenom desítkové číslo. Po odstranění 
 
 Ve výše uvedeném příkladu je pro virtuální počítač k dispozici také "název". Tento název má podobu "{Scale-set-Name} _ {instance-ID}". Tento název je ten, který se zobrazí v Azure Portal při výpisu instancí v sadě škálování:
 
-![](./media/virtual-machine-scale-sets-instance-ids/vmssInstances.png)
+![Snímek obrazovky zobrazující seznam instancí v sadě škálování virtuálního počítače v Azure Portal.](./media/virtual-machine-scale-sets-instance-ids/vmssInstances.png)
 
 Část názvu {instance-ID} je stejné desetinné číslo jako výše popsaná vlastnost instanceId.
 

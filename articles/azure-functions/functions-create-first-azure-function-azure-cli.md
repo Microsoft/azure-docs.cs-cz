@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: quickstart
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 86be7ec73d8e19597062f3fa3777f3aa422082c3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: acfe4695b94fe9337296d70ef4a2864794730ec4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506345"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081725"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Rychlý Start: vytvoření funkce v Azure, která reaguje na požadavky HTTP
 
@@ -111,6 +111,9 @@ Po zobrazení výzvy zadejte následující hodnoty:
 `Y`Potvrďte zadáním nebo stisknutím klávesy ENTER.
 
 Maven vytvoří soubory projektu v nové složce s názvem _artifactId_, který je v tomto příkladu `fabrikam-functions` . 
+
+Pro spuštění v jazyce Java 11 v Azure je nutné upravit hodnoty v souboru pom.xml. Další informace najdete v tématu [verze Java](functions-reference-java.md#java-versions). 
+
 ::: zone-end  
 Přejděte do složky projektu:
 
@@ -157,6 +160,8 @@ Nastavení prostředků Azure vytvořených pro hostování vaší aplikace jsou
 :::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-102":::
 
 Tato nastavení můžete změnit, abyste mohli řídit, jak se v Azure vytvářejí prostředky, třeba změnou `runtime.os` z `windows` na `linux` před počátečním nasazením. Úplný seznam nastavení podporovaných modulem plug-in Maven najdete v [podrobnostech o konfiguraci](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details).
+
+Pokud chcete spustit aplikaci Function App na Java 11 místo Java 8, je nutné ručně aktualizovat soubor pom.xml s hodnotami jazyka Java 11. Další informace najdete v tématu [verze Java](functions-reference-java.md#java-versions). Při spuštění na Java 11 se ujistěte, že  
 
 #### <a name="functiontestjava"></a>FunctionTest. Java
 
@@ -367,7 +372,7 @@ Tím se v Azure vytvoří následující prostředky:
 + Skupina prostředků. Název jako _Java-Functions-Group_.
 + Účet úložiště. Požadováno funkcemi. Název se vygeneruje náhodně na základě požadavků na název účtu úložiště.
 + Plán hostování. Hostování bez serveru pro aplikaci Function App v oblasti _westus_ Název je _Java-Functions-App-Service-Plan_.
-+ Aplikace Function App Function App je jednotka pro nasazení a spouštění pro vaše funkce. Název se náhodně generuje na základě vašich _artifactId_a připojuje se k náhodně vygenerovanému číslu. 
++ Aplikace Function App Function App je jednotka pro nasazení a spouštění pro vaše funkce. Název se náhodně generuje na základě vašeho _artifactId_a připojuje se k náhodně vygenerovanému číslu. 
 
 Nasazení zabalí soubory projektu a nasadí je do nové aplikace Function App pomocí [nasazení zip](functions-deployment-technologies.md#zip-deploy). Kód se spouští z balíčku pro nasazení v Azure.
 ::: zone-end

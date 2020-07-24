@@ -1,5 +1,5 @@
 ---
-title: Ochrana vašich Azure App Service webových aplikací a rozhraní API
+title: Ochrana rozhraní API a webových aplikací Azure App Service
 description: Tento článek vám pomůže začít chránit vaše Azure App Service webové aplikace a rozhraní API v Azure Security Center.
 services: security-center
 documentationcenter: na
@@ -10,13 +10,14 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/27/2019
 ms.author: memildin
-ms.openlocfilehash: 2d81e1a1218add504e1e35015276b6924da0e3e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35b91aab8c228fc7dced5dfe06e33f939f4634f5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77616480"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080790"
 ---
-# <a name="protect-your-azure-app-service-web-apps-and-apis"></a>Ochrana vašich Azure App Service webových aplikací a rozhraní API
+# <a name="protect-your-azure-app-service-web-apps-and-apis"></a>Ochrana rozhraní API a webových aplikací Azure App Service
 
 Azure App Service je plně spravovaná platforma pro vytváření a hostování webových aplikací a rozhraní API, aniž byste se museli starat o správu infrastruktury. Poskytuje správu, monitorování a Operational Insights pro splnění požadavků na výkon, zabezpečení a dodržování předpisů na podnikové úrovni. Další informace najdete v tématu [Azure App Service](https://azure.microsoft.com/services/app-service/).
 

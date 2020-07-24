@@ -1,20 +1,17 @@
 ---
 title: Práce s historií verze rozšíření pro konfiguraci požadovaného stavu Azure
 description: Tento článek obsahuje informace o tom, jak pracovat s historií verzí pro rozšíření konfigurace požadovaného stavu (DSC) v Azure.
-ms.date: 06/21/2018
+ms.date: 07/22/2020
 keywords: DSC, PowerShell, Azure, rozšíření
-author: mgoedtel
-ms.author: magoedte
 services: automation
-ms.service: automation
 ms.subservice: dsc
 ms.topic: conceptual
-ms.openlocfilehash: 0bb82ce92a151bd8e955c136751d8e7f307bbf1b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: b45512faf09cfe745023d29d32f89a4432cc3b2b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186414"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079753"
 ---
 # <a name="work-with-azure-desired-state-configuration-extension-version-history"></a>Práce s historií verze rozšíření pro konfiguraci požadovaného stavu Azure
 
@@ -23,6 +20,29 @@ Rozšíření virtuálního počítače pro konfiguraci požadovaného stavu Azu
 Tento článek obsahuje informace o jednotlivých verzích rozšíření virtuálních počítačů Azure DSC, která prostředí podporuje, a komentáře a poznámky k novým funkcím nebo změnám.
 
 ## <a name="latest-version"></a>Nejnovější verze
+
+### <a name="version-280"></a>Verze 2,80
+
+- **Datum vydání:**
+  - 26. září, SEP-2019 (Azure) | 6. července 2020 (Azure Čína Vianet 21) | 20. července 2020 (Azure Government)
+- **Podpora operačního systému:**
+  - Windows Server 2019
+  - Windows Server 2016
+  - Windows Server 2012 R2
+  - Windows Server 2012
+  - Windows Server 2008 R2 SP1
+  - Klient Windows 7/8.1/10
+  - Nano Server
+- **Podpora WMF:**
+  - WMF 5.1
+  - WMF 5,0 RTM
+  - Aktualizace WMF 4,0
+  - WMF 4.0
+- **Hlediska**
+  - Azure
+  - Azure Čína Vianet 21
+  - Azure Government
+- **Poznámky:** V této verzi nejsou zahrnuté žádné nové funkce.
 
 ### <a name="version-276"></a>Verze 2,76
 

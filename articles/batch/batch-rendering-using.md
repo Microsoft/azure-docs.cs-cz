@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 262431cfcc906b6df1054aaa7dc2b9573c3b8833
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e4f33f0974462197382ea6ac5d2b68d61909f73b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965242"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079241"
 ---
 # <a name="using-azure-batch-rendering"></a>Použití vykreslování Azure Batch
 
@@ -19,7 +19,7 @@ K dispozici je několik způsobů, jak Azure Batch vykreslování použít:
 * Rozhraní API:
   * Pište kód pomocí kterékoli z rozhraní API pro Batch.  Vývojáři mohou integrovat Azure Batch možností do svých stávajících aplikací nebo pracovních postupů, ať už v cloudu, nebo na základě místního prostředí.
 * Nástroje příkazového řádku:
-  * Ke skriptování dávkového použití můžete použít [příkazový řádek Azure](/cli/azure/) nebo [PowerShell](/powershell/azure/overview) .
+  * Ke skriptování dávkového použití můžete použít [příkazový řádek Azure](/cli/azure/) nebo [PowerShell](/powershell/azure/) .
   * Konkrétně [Podpora šablon Batch CLI](./batch-cli-templates.md) zjednodušuje vytváření fondů a odesílání úloh.
 * Batch Explorer uživatelské rozhraní:
   * [Batch Explorer](https://github.com/Azure/BatchLabs) je klientský nástroj pro různé platformy, který umožňuje spravovat a monitorovat účty Batch.

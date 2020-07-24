@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: b8bf409d759b74e6a5ef0d840aebbe807a04448a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2a45218118282f4f1cadb29c9022fc05b30f907
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324817"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078743"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Export toků z Power Automate a nasazení do Azure Logic Apps
 
@@ -19,11 +20,11 @@ Pokud chcete rozšířit a rozšířit možnosti toku, můžete tento tok migrov
 > [!NOTE]
 > V Azure Logic Apps nejsou k dispozici všechny konektory Power Automate. Můžete migrovat pouze toky Power Automate, které mají ekvivalentní konektory v Azure Logic Apps. Například Trigger tlačítka, konektor pro schvalování a konektor oznámení jsou specifické pro automatizaci. V současné době se toky založené na OpenAPI v Power automatu nepodporují pro export a nasazení jako šablony aplikace logiky.
 >
-> * Pokud chcete zjistit, které napájecí konektory nemají Logic Apps ekvivalenty, přečtěte si téma [Automatizace konektorů](https://docs.microsoft.com/connectors/connector-reference/connector-reference-powerautomate-connectors).
+> * Pokud chcete zjistit, které napájecí konektory nemají Logic Apps ekvivalenty, přečtěte si téma [Automatizace konektorů](/connectors/connector-reference/connector-reference-powerautomate-connectors).
 >
-> * Pokud chcete zjistit, které Logic Apps konektory nemají ekvivalenty vypnutí napájení, přečtěte si téma [Logic Apps konektory](https://docs.microsoft.com/connectors/connector-reference/connector-reference-powerautomate-connectors).
+> * Pokud chcete zjistit, které Logic Apps konektory nemají ekvivalenty vypnutí napájení, přečtěte si téma [Logic Apps konektory](/connectors/connector-reference/connector-reference-powerautomate-connectors).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 

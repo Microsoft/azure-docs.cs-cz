@@ -9,16 +9,16 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: 7a21fb1c8da365176c27921bd58a5dffae468d2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b69bb480112993c42a22c71227b64943f33585e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735944"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080365"
 ---
 # <a name="edv4-and-edsv4-series"></a>Řada Edv4 a Edsv4
 
-Edv4 a Edsv4-Series běží na &reg; procesorech Intel Xeon &reg; Platinum 8272CL (Cascade Lake) v konfiguraci s vlákny typu Hyper a jsou ideální pro různé podnikové aplikace náročné na paměť a funkce až 504 GIB paměti RAM, [Intel Turbo &reg; Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [ &reg; technologie Intel Hyper-threading](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) a [Intel &reg; Advanced Vector Extensions 512 (Intel &reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). Podporují taky [ &reg; zvýšení úrovně Intel s hloubkovým učením](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html). Tyto nové velikosti virtuálních počítačů budou mít 50% větší místní úložiště a taky lepší počet vstupně-výstupních operací pro čtení i zápis ve srovnání s [Ev3/Esv3mi](https://docs.microsoft.com/azure/virtual-machines/ev3-esv3-series) [virtuálními počítači Gen2](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)
+Edv4 a Edsv4-Series běží na &reg; procesorech Intel Xeon &reg; Platinum 8272CL (Cascade Lake) v konfiguraci s vlákny typu Hyper a jsou ideální pro různé podnikové aplikace náročné na paměť a funkce až 504 GIB paměti RAM, [Intel Turbo &reg; Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [ &reg; technologie Intel Hyper-threading](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) a [Intel &reg; Advanced Vector Extensions 512 (Intel &reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). Podporují taky [ &reg; zvýšení úrovně Intel s hloubkovým učením](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html). Tyto nové velikosti virtuálních počítačů budou mít 50% větší místní úložiště a taky lepší počet vstupně-výstupních operací pro čtení i zápis ve srovnání s [Ev3/Esv3mi](./ev3-esv3-series.md) [virtuálními počítači Gen2](./linux/generation-2.md)
 
 ## <a name="edv4-series"></a>Edv4-Series
 
@@ -71,7 +71,7 @@ Aktualizace pro zachování paměti: podporováno
 | Standard_E48ds_v4 | 48 | 384 | 1800 | 32 | 462000/2904 (1200) | 76800/1152 | 8/24000 |
 | Standard_E64ds_v4 <sup>1</sup> | 64 | 504 | 2400 | 32 | 615000/3872 (1600) | 80000/1200 | 8/30000 |
 
-počet [dostupných jader s omezením](https://docs.microsoft.com/azure/virtual-machines/windows/constrained-vcpu): <sup>1</sup> .
+počet [dostupných jader s omezením](./windows/constrained-vcpu.md): <sup>1</sup> .
 
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
@@ -79,9 +79,9 @@ počet [dostupných jader s omezením](https://docs.microsoft.com/azure/virtual-
 ## <a name="other-sizes"></a>Jiné velikosti
 
 - [Obecné účely](sizes-general.md)
-- [Optimalizované z hlediska paměti](sizes-memory.md)
-- [Optimalizované z hlediska úložiště](sizes-storage.md)
-- [Optimalizované z hlediska GPU](sizes-gpu.md)
+- [Optimalizované pro paměť](sizes-memory.md)
+- [Optimalizované pro úložiště](sizes-storage.md)
+- [Optimalizované z hlediska GPU.](sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 - [Předchozí generace](sizes-previous-gen.md)
 

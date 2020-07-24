@@ -7,14 +7,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 193aa168cff436512dc2044d0986df508fd6bfa9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6048b5f0a3702e95cef9175933041fe36f2f07bb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248732"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081555"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-flow"></a>Konektor protokolů Azure Monitor pro Logic Apps a flow
-[Azure Logic Apps](/azure/logic-apps/) a [Power](https://ms.flow.microsoft.com) Automata umožňují vytvářet automatizované pracovní postupy s využitím stovek akcí pro nejrůznější služby. Konektor protokolů Azure Monitor umožňuje vytvářet pracovní postupy, které načítají data z pracovního prostoru Log Analytics nebo Application Insights aplikace v Azure Monitor. Tento článek popisuje akce, které konektor obsahuje, a poskytuje návod k sestavení pracovního postupu pomocí těchto dat.
+[Azure Logic Apps](../../logic-apps/index.yml) a [Power](https://ms.flow.microsoft.com) Automata umožňují vytvářet automatizované pracovní postupy s využitím stovek akcí pro nejrůznější služby. Konektor protokolů Azure Monitor umožňuje vytvářet pracovní postupy, které načítají data z pracovního prostoru Log Analytics nebo Application Insights aplikace v Azure Monitor. Tento článek popisuje akce, které konektor obsahuje, a poskytuje návod k sestavení pracovního postupu pomocí těchto dat.
 
 Můžete například vytvořit aplikaci logiky, která bude používat data protokolu Azure Monitor v e-mailovém oznámení ze sady Office 365, vytvořit chybu v Azure DevOps nebo odeslat zprávu o časové rezervě.  Pracovní postup můžete aktivovat jednoduchým plánem nebo z nějaké akce v připojené službě, jako je například doručení e-mailu nebo. 
 
@@ -31,16 +32,16 @@ V závislosti na velikosti dat a použitém dotazu může konektor dosáhnout sv
 Následující tabulka popisuje akce, které jsou součástí konektoru protokolů Azure Monitor. Oba umožňují spustit dotaz protokolu pro Log Analytics pracovní prostor nebo Application Insights aplikaci. Rozdíl je v způsobu, jakým jsou vrácena data.
 
 > [!NOTE]
-> Konektor Azure Monitor logs nahrazuje konektor [azure Log Analytics](https://docs.microsoft.com/connectors/azureloganalytics/) a [konektor Azure Application Insights](https://docs.microsoft.com/connectors/applicationinsights/). Tento konektor nabízí stejné funkce jako ostatní a je upřednostňovanou metodou pro spuštění dotazu na Log Analytics pracovní prostor nebo aplikaci Application Insights.
+> Konektor Azure Monitor logs nahrazuje konektor [azure Log Analytics](/connectors/azureloganalytics/) a [konektor Azure Application Insights](/connectors/applicationinsights/). Tento konektor nabízí stejné funkce jako ostatní a je upřednostňovanou metodou pro spuštění dotazu na Log Analytics pracovní prostor nebo aplikaci Application Insights.
 
 
-| Akce | Description |
+| Akce | Popis |
 |:---|:---|
-| [Spustit dotaz a výsledky seznamu](https://docs.microsoft.com/connectors/azuremonitorlogs/#run-query-and-list-results) | Vrátí každý řádek jako svůj vlastní objekt. Tuto akci použijte, pokud chcete s každým řádkem pracovat samostatně ve zbývající části pracovního postupu. Tato akce obvykle následuje za [každou aktivitou](../../logic-apps/logic-apps-control-flow-loops.md#foreach-loop). |
-| [Spuštění dotazu a vizualizace výsledků](https://docs.microsoft.com/connectors/azuremonitorlogs/#run-query-and-visualize-results) | Vrátí všechny řádky v sadě výsledků dotazu jako jeden formátovaný objekt. Tuto akci použijte, pokud chcete použít sadu výsledků ve zbývající části pracovního postupu, například odeslání výsledků do e-mailu.  |
+| [Spustit dotaz a výsledky seznamu](/connectors/azuremonitorlogs/#run-query-and-list-results) | Vrátí každý řádek jako svůj vlastní objekt. Tuto akci použijte, pokud chcete s každým řádkem pracovat samostatně ve zbývající části pracovního postupu. Tato akce obvykle následuje za [každou aktivitou](../../logic-apps/logic-apps-control-flow-loops.md#foreach-loop). |
+| [Spuštění dotazu a vizualizace výsledků](/connectors/azuremonitorlogs/#run-query-and-visualize-results) | Vrátí všechny řádky v sadě výsledků dotazu jako jeden formátovaný objekt. Tuto akci použijte, pokud chcete použít sadu výsledků ve zbývající části pracovního postupu, například odeslání výsledků do e-mailu.  |
 
 ## <a name="walkthroughs"></a>Postupy
-Následující kurzy ilustrují použití Azure Monitorch konektorů v Azure Logic Apps. Stejný příklad můžete provést s automatickým automatizací a jediným rozdílem, jak vytvořit počáteční pracovní postup a spustit ho po dokončení. Konfigurace pracovního postupu a akcí je mezi oběma. Začněte tím, že si můžete začít v tématu [Vytvoření toku ze šablony v Power](https://docs.microsoft.com/power-automate/get-started-logic-template) automatu.
+Následující kurzy ilustrují použití Azure Monitorch konektorů v Azure Logic Apps. Stejný příklad můžete provést s automatickým automatizací a jediným rozdílem, jak vytvořit počáteční pracovní postup a spustit ho po dokončení. Konfigurace pracovního postupu a akcí je mezi oběma. Začněte tím, že si můžete začít v tématu [Vytvoření toku ze šablony v Power](/power-automate/get-started-logic-template) automatu.
 
 
 ### <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
@@ -124,6 +125,5 @@ Po dokončení aplikace logiky Ověřte e-mailovou adresu příjemce, kterého j
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o [dotazech protokolu v Azure monitor](../log-query/log-query-overview.md).
-- Další informace o [Logic Apps](/azure/logic-apps/)
+- Další informace o [Logic Apps](../../logic-apps/index.yml)
 - Přečtěte si další informace o [Microsoft Flow](https://ms.flow.microsoft.com).
-
