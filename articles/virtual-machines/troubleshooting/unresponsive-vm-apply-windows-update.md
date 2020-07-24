@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 16c8eed3377c2191b4345ec59ec1eba8be01369d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76c3f729a8520c7bff7b49a1d2200d7950f8a9f4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80633954"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074293"
 ---
 # <a name="vm-is-unresponsive-with-c01a001d-error-when-applying-windows-update"></a>Při použití web Windows Update virtuální počítač neodpovídá chybě "C01A001D"
 
@@ -27,7 +27,7 @@ Tento článek popisuje kroky pro řešení problémů, které web Windows Updat
 
 ## <a name="symptoms"></a>Příznaky
 
-Při použití [diagnostiky spouštění](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) k zobrazení snímku obrazovky virtuálního počítače se zobrazí web Windows Update (KB), ale dojde k chybě s kódem chyby: ' C01A001D '.
+Při použití [diagnostiky spouštění](./boot-diagnostics.md) k zobrazení snímku obrazovky virtuálního počítače se zobrazí web Windows Update (KB), ale dojde k chybě s kódem chyby: ' C01A001D '.
 
 ![nereagující web Windows Update](./media/unresponsive-vm-apply-windows-update/unresponsive-windows-update.png)
 
@@ -49,17 +49,17 @@ V systému souborů nelze vytvořit základní soubor. Operační systém nemů�
 
 ### <a name="create-and-access-a-repair-vm"></a>Vytvoření a přístup k opravnému virtuálnímu počítači
 
-1. Pomocí [kroků 1-3 příkazů pro opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) Připravte opravný virtuální počítač.
+1. Pomocí [kroků 1-3 příkazů pro opravu virtuálního počítače](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) Připravte opravný virtuální počítač.
 2. Připojte se k opravnému virtuálnímu počítači pomocí Připojení ke vzdálené ploše.
 
 ### <a name="free-up-space-on-the-hard-disk"></a>Uvolněte místo na pevném disku
 
 Pokud disk ještě není 1 TB, je nutné změnit jeho velikost. Jakmile je disk 1 TB, proveďte Vyčištění disku a defragmentaci jednotky.
 
-1. Ověřte, zda je disk plný. Pokud je disk menší než 1 TB, [rozbalte ho do velikosti 1 TB pomocí PowerShellu](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json).
+1. Ověřte, zda je disk plný. Pokud je disk menší než 1 TB, [rozbalte ho do velikosti 1 TB pomocí PowerShellu](../windows/expand-os-disk.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json).
 2. Jakmile je disk 1 TB, proveďte Vyčištění disku.
-    - [Odpojte datový disk od poškozeného virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk).
-    - [Připojte datový disk k fungujícímu virtuálnímu počítači](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps#attach-an-existing-data-disk-to-a-vm).
+    - [Odpojte datový disk od poškozeného virtuálního počítače](../windows/detach-disk.md).
+    - [Připojte datový disk k fungujícímu virtuálnímu počítači](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm).
     - Uvolněte místo pomocí [nástroje Vyčištění disku](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) .
 3. Po změně velikosti a vyčištění jednotky defragmentujte:
 
@@ -115,4 +115,4 @@ Pokud disk ještě není 1 TB, je nutné změnit jeho velikost. Jakmile je disk 
 
 ### <a name="rebuild-the-vm"></a>Opětovné sestavení virtuálního počítače
 
-Pomocí [kroku 5 příkazů pro opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) znovu sestavte virtuální počítač.
+Pomocí [kroku 5 příkazů pro opravu virtuálního počítače](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) znovu sestavte virtuální počítač.

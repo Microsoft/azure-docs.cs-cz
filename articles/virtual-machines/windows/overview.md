@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: bf1e3abc1d4fceaa6547f63346ecd64e1128eac2
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 4868db7df6209c620c5ae1bd9b1207072214ad35
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234965"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074217"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Virtuální počítače s Windows v Azure
 
@@ -30,7 +30,7 @@ Virtuální počítače Azure lze použít různými způsoby. Tady je několik 
 Počet virtuálních počítačů, které vaše aplikace používá, lze vertikálně nebo horizontálně navýšit pro splnění vašich požadavků.
 
 ## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>Co je třeba zvážit před vytvořením virtuálního počítače?
-Při sestavování infrastruktury aplikace v Azure vždy existuje velké množství [aspektů návrhu](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/windows-vm). Než začnete, je důležité zvážit následující aspekty virtuálního počítače:
+Při sestavování infrastruktury aplikace v Azure vždy existuje velké množství [aspektů návrhu](/azure/architecture/reference-architectures/n-tier/windows-vm). Než začnete, je důležité zvážit následující aspekty virtuálního počítače:
 
 * Názvy prostředků vaší aplikace
 * Umístění, kam se ukládají prostředky
@@ -47,10 +47,10 @@ Tato tabulka ukazuje několik způsobů, jak můžete získat seznam dostupných
 
 | Metoda | Popis |
 | --- | --- |
-| portál Azure |Při vytváření virtuálního počítače vyberte umístění ze seznamu. |
-| Azure PowerShell |Použijte příkaz [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) . |
-| REST API |Použijte operaci [Vypsat umístění](https://docs.microsoft.com/rest/api/resources/subscriptions). |
-| Azure CLI |Použijte operaci [az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest). |
+| Portál Azure Portal |Při vytváření virtuálního počítače vyberte umístění ze seznamu. |
+| Azure PowerShell |Použijte příkaz [Get-AzLocation](/powershell/module/az.resources/get-azlocation) . |
+| REST API |Použijte operaci [Vypsat umístění](/rest/api/resources/subscriptions). |
+| Azure CLI |Použijte operaci [az account list-locations](/cli/azure/account?view=azure-cli-latest). |
 
 ## <a name="availability"></a>Dostupnost
 Platforma Azure oznámila špičkovou smlouvu o úrovni služeb (SLA) s 99,9% dostupností pro samostatné instance virtuálních počítačů za předpokladu, že virtuální počítač nasadíte se službou Premium Storage pro všechny disky.  Aby se na vaše nasazení vztahovala standardní záruka 99,95% dostupnosti virtuálního počítače podle smlouvy SLA, stále je nutné nasadit alespoň dva virtuální počítače, které vaši úlohu spouští v rámci skupiny dostupnosti. Skupina dostupnosti zajistí, že vaše virtuální počítače jsou distribuované mezi několik domén selhání v datacentrech Azure a také nasazené na hostitele s různými časovými obdobími údržby. Úplná smlouva [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) vysvětluje garantovanou dostupnost Azure jako celku.
@@ -73,32 +73,32 @@ Tato tabulka ukazuje několik způsobů, jak můžete najít informace o imagi.
 
 | Metoda | Popis |
 | --- | --- |
-| portál Azure |Hodnoty se pro vás zadají automaticky, když vyberete image, která se má použít. |
-| Azure PowerShell |[Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher) – umístění *umístění*<BR>[Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer) *– umístění umístění –* Vydavatel *vydavatele*<BR>[Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) *– umístění umístění –* Vydavatel *vydavatele – nabídka* nabídky *offerName* |
-| Rozhraní REST API |[Vypsat vydavatele imagí](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[Vypsat nabídky imagí](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[Vypsat skladové jednotky (SKU) imagí](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
-| Azure CLI |[AZ VM Image list-Publishers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest) – *umístění umístění*<BR>[AZ VM Image list-nabídky](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest) -- *Location* Location--Publisher *Publisher*<BR>[AZ VM Image list-SKU](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest) - *-Location Location--* *Publisher--* Offer *offername*|
+| Portál Azure Portal |Hodnoty se pro vás zadají automaticky, když vyberete image, která se má použít. |
+| Azure PowerShell |[Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) – umístění *umístění*<BR>[Get-AzVMImageOffer](/powershell/module/az.compute/get-azvmimageoffer) *– umístění umístění –* Vydavatel *vydavatele*<BR>[Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) *– umístění umístění –* Vydavatel *vydavatele – nabídka* nabídky *offerName* |
+| Rozhraní REST API |[Vypsat vydavatele imagí](/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[Vypsat nabídky imagí](/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[Vypsat skladové jednotky (SKU) imagí](/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
+| Azure CLI |[AZ VM Image list-Publishers](/cli/azure/vm/image?view=azure-cli-latest) – *umístění umístění*<BR>[AZ VM Image list-nabídky](/cli/azure/vm/image?view=azure-cli-latest) -- *Location* Location--Publisher *Publisher*<BR>[AZ VM Image list-SKU](/cli/azure/vm?view=azure-cli-latest) - *-Location Location--* *Publisher--* Offer *offername*|
 
 Můžete se rozhodnout [nahrát a použít vlastní image](upload-generalized-managed.md). Pokud tak učiníte, název vydavatele, nabídka a skladová jednotka (SKU) se nepoužijí.
 
 ### <a name="extensions"></a>Rozšíření
-[Rozšíření](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) virtuálního počítače poskytují vašemu virtuálnímu počítači další schopnosti prostřednictvím konfigurace po nasazení a automatizovaných úloh.
+[Rozšíření](../extensions/features-windows.md?toc=/azure/virtual-machines/windows/toc.json) virtuálního počítače poskytují vašemu virtuálnímu počítači další schopnosti prostřednictvím konfigurace po nasazení a automatizovaných úloh.
 
 Pomocí rozšíření můžete provádět tyto běžné úlohy:
 
-* **Spuštění vlastních skriptů** – [Rozšíření vlastních skriptů](extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) pomáhá konfigurovat úlohy na virtuálním počítači spuštěním vašeho skriptu při zřízení virtuálního počítače.
-* **Nasazení a správa konfigurací** – [Rozšíření Konfigurace požadovaného stavu prostředí PowerShell](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) pomáhá nastavit konfiguraci požadovaného stavu na virtuálním počítači za účelem správy konfigurací a prostředí.
-* **Shromažďování diagnostických dat** – [Rozšíření Azure Diagnostics](extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) pomáhá konfigurovat virtuální počítač pro shromažďování diagnostických dat, která lze použít k monitorování stavu aplikace.
+* **Spuštění vlastních skriptů** – [Rozšíření vlastních skriptů](../extensions/custom-script-windows.md?toc=/azure/virtual-machines/windows/toc.json) pomáhá konfigurovat úlohy na virtuálním počítači spuštěním vašeho skriptu při zřízení virtuálního počítače.
+* **Nasazení a správa konfigurací** – [Rozšíření Konfigurace požadovaného stavu prostředí PowerShell](../extensions/dsc-overview.md?toc=/azure/virtual-machines/windows/toc.json) pomáhá nastavit konfiguraci požadovaného stavu na virtuálním počítači za účelem správy konfigurací a prostředí.
+* **Shromažďování diagnostických dat** – [Rozšíření Azure Diagnostics](../extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json) pomáhá konfigurovat virtuální počítač pro shromažďování diagnostických dat, která lze použít k monitorování stavu aplikace.
 
 ### <a name="related-resources"></a>Související prostředky
 Prostředky v této tabulce používá virtuální počítač a je nutné, aby existovaly nebo byly vytvořeny při vytváření virtuálního počítače.
 
 | Prostředek | Povinné | Popis |
 | --- | --- | --- |
-| [Skupina prostředků](../../azure-resource-manager/management/overview.md) |Ano |Virtuální počítač musí být součástí skupiny prostředků. |
-| [Účet úložiště](../../storage/common/storage-create-storage-account.md) |Ano |Virtuální počítač potřebuje účet úložiště k ukládání svých virtuálních pevných disků. |
-| [Virtuální síť](../../virtual-network/virtual-networks-overview.md) |Ano |Virtuální počítač musí být členem virtuální sítě. |
+| [Skupina prostředků](../../azure-resource-manager/management/overview.md) |Yes |Virtuální počítač musí být součástí skupiny prostředků. |
+| [Účet úložiště](../../storage/common/storage-account-create.md) |Yes |Virtuální počítač potřebuje účet úložiště k ukládání svých virtuálních pevných disků. |
+| [Virtuální síť](../../virtual-network/virtual-networks-overview.md) |Yes |Virtuální počítač musí být členem virtuální sítě. |
 | [Veřejná IP adresa](../../virtual-network/public-ip-addresses.md) |No |Virtuální počítač může mít přiřazenou veřejnou IP adresu pro umožnění vzdáleného přístupu. |
-| [Síťové rozhraní](../../virtual-network/virtual-network-network-interface.md) |Ano |Virtuální počítač potřebuje síťové rozhraní ke komunikaci v síti. |
+| [Síťové rozhraní](../../virtual-network/virtual-network-network-interface.md) |Yes |Virtuální počítač potřebuje síťové rozhraní ke komunikaci v síti. |
 | [Datové disky](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |No |Virtuální počítač může zahrnovat datové disky pro rozšíření možností úložiště. |
 
 ## <a name="next-steps"></a>Další kroky
@@ -108,4 +108,3 @@ Vytvořte svůj první virtuální počítač!
 - [Azure Portal](quick-create-portal.md)
 - [PowerShell](quick-create-powershell.md)
 - [Azure CLI](quick-create-cli.md)
-

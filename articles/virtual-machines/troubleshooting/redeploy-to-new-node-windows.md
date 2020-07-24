@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 36af0eeb43fb209ed65f950576f2dc9e97ec3633
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: afbea39a080e1dd768a14d6e0eacda1bad23c5a4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71058625"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074417"
 ---
 # <a name="redeploy-windows-virtual-machine-to-new-azure-node"></a>Opětovné nasazení virtuálního počítače s Windows na nový uzel Azure
 Pokud jste se setkali s řešením potíží s připojením vzdálené plochy (RDP) nebo aplikací k virtuálnímu počítači Azure se systémem Windows, může vám tento virtuální počítač znovu nasadit. Když znovu nasadíte virtuální počítač, Azure vypne virtuální počítač, přesune virtuální počítač do nového uzlu v rámci infrastruktury Azure a pak ho znovu zachová a uchová všechny možnosti konfigurace a přidružené prostředky. V tomto článku se dozvíte, jak nasadit virtuální počítač pomocí Azure PowerShell nebo Azure Portal.
@@ -28,7 +28,7 @@ Pokud jste se setkali s řešením potíží s připojením vzdálené plochy (R
 
 
 ## <a name="using-azure-powershell"></a>Použití Azure Powershell
-Ujistěte se, že je na vašem počítači nainstalovaný nejnovější Azure PowerShell 1. x. Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview).
+Ujistěte se, že je na vašem počítači nainstalovaný nejnovější Azure PowerShell 1. x. Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/).
 
 Následující příklad nasadí virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup` :
 
@@ -39,5 +39,4 @@ Set-AzVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
 [!INCLUDE [virtual-machines-common-redeploy-to-new-node](../../../includes/virtual-machines-common-redeploy-to-new-node.md)]
 
 ## <a name="next-steps"></a>Další kroky
-Pokud máte problémy s připojením k VIRTUÁLNÍmu počítači, můžete najít konkrétní pomoc týkající se [řešení potíží s připojením RDP](troubleshoot-rdp-connection.md) nebo [podrobného postupu pro řešení potíží s](detailed-troubleshoot-rdp.md)protokolem RDP. Pokud nemůžete získat přístup k aplikaci běžící na vašem VIRTUÁLNÍm počítači, můžete si také přečíst [problémy s odstraňováním potíží s aplikacemi](../windows/troubleshoot-app-connection.md).
-
+Pokud máte problémy s připojením k VIRTUÁLNÍmu počítači, můžete najít konkrétní pomoc týkající se [řešení potíží s připojením RDP](troubleshoot-rdp-connection.md) nebo [podrobného postupu pro řešení potíží s](detailed-troubleshoot-rdp.md)protokolem RDP. Pokud nemůžete získat přístup k aplikaci běžící na vašem VIRTUÁLNÍm počítači, můžete si také přečíst [problémy s odstraňováním potíží s aplikacemi](./troubleshoot-app-connection.md).

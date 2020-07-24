@@ -3,12 +3,12 @@ title: Detekce pohybu, nahrávání videa do Azure Media Services
 description: V tomto rychlém startu se dozvíte, jak používat Live video Analytics na IoT Edge k detekci pohybů v živém datovém streamu a k nahrávání videoklipů do Azure Media Services.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 0a81bebe7333266e1b70f97f8c712fccf392a464
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: 24bf958c7a6af25d64d8c2884b9fa259c67e39c3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84817315"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074395"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Rychlý Start: zjištění pohybu, nahrání videa do Media Services
 
@@ -16,7 +16,7 @@ Tento článek vás provede kroky k použití živé analýzy videí v IoT Edge 
 
 Tento článek se sestavuje na začátku [Začínáme rychlý Start](get-started-detect-motion-emit-events-quickstart.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Visual Studio Code](https://code.visualstudio.com/) na počítači pomocí [rozšíření Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
@@ -475,7 +475,7 @@ Nyní volejte metodu GraphInstanceSet Direct s následující datovou částí:
 }
 ```
 
-Je třeba počítat s následujícím:
+Všimněte si, že:
 
 * Výše uvedená datová část určuje název topologie grafu (EVRtoAssetsOnMotionDetecion), pro který je nutné vytvořit instanci grafu.
 * Datová část obsahuje hodnotu parametru "rtspUrl", která v datové části topologie nemá výchozí hodnotu.
@@ -655,7 +655,7 @@ Instance grafu, kterou jste vytvořili a aktivovali výše, používá uzel proc
 
 Všimněte si následujících vlastností ve výše uvedených zprávách.
 
-* Každá zpráva obsahuje oddíl "tělo" a oddíl "applicationProperties". Informace o tom, co tyto oddíly reprezentují, najdete v článku o [Vytvoření a načtení IoT Hub zprávě](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
+* Každá zpráva obsahuje oddíl "tělo" a oddíl "applicationProperties". Informace o tom, co tyto oddíly reprezentují, najdete v článku o [Vytvoření a načtení IoT Hub zprávě](../../iot-hub/iot-hub-devguide-messages-construct.md).
 * První zprávou je událost diagnostiky, MediaSessionEstablished říká, že se zdrojový uzel RTSP (předmět) mohl navázat spojení s simulátorem RTSP a začít přijímat (simulované) živé kanály.
 * "Subject" v applicationProperties odkazuje na uzel v topologii grafu, ze které byla zpráva generována. V tomto případě zpráva pochází ze zdrojového uzlu RTSP.
 * eventType v applicationProperties značí, že se jedná o diagnostickou událost.

@@ -7,11 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: f84d4fcd85f1e718f414e63bbe76fd29fa32427d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1c87c517a0013fa31ba63ef1f78677fe85f5d287
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869566"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074263"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Zvýhodněné hybridní využití Azure pro Windows Server
 Zákazníci se Software Assurance, Zvýhodněné hybridní využití Azure pro Windows Server, vám umožní využívat místní licence k Windows serveru a spouštět virtuální počítače s Windows v Azure s nižšími náklady. K nasazení nových virtuálních počítačů s operačním systémem Windows můžete použít Zvýhodněné hybridní využití Azure pro Windows Server. Tento článek se dokončí postupem, jak nasadit nové virtuální počítače s Zvýhodněné hybridní využití Azure pro Windows Server a jak aktualizovat existující běžící virtuální počítače. Další informace o Zvýhodněné hybridní využití Azure pro licencování Windows serveru a úspory nákladů najdete na [stránce zvýhodněné hybridní využití Azure licencování Windows serveru](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -64,8 +65,8 @@ az vm create \
     --license-type Windows_Server
 ```
 
-### <a name="template"></a>Šablona
-V rámci šablon Správce prostředků `licenseType` je třeba zadat další parametr. Další informace o [vytváření Azure Resource Manager šablon](../../resource-group-authoring-templates.md) najdete v článku.
+### <a name="template"></a>Template (Šablona)
+V rámci šablon Správce prostředků `licenseType` je třeba zadat další parametr. Další informace o [vytváření Azure Resource Manager šablon](../../azure-resource-manager/templates/template-syntax.md) najdete v článku.
 ```json
 "properties": {
     "licenseType": "Windows_Server",
@@ -189,7 +190,7 @@ Můžete si taky přečíst další informace o tom, jak [Upravit sadu škálov�
 ## <a name="next-steps"></a>Další kroky
 - Přečtěte si další informace o [tom, jak ušetřit peníze pomocí zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-use-benefit/)
 - Přečtěte si další informace o [nejčastějších dotazech k zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-use-benefit/faq/)
-- Přečtěte si další informace o [zvýhodněné hybridní využití Azure s podrobnými pokyny pro licencování Windows serveru](https://docs.microsoft.com/windows-server/get-started/azure-hybrid-benefit)
+- Přečtěte si další informace o [zvýhodněné hybridní využití Azure s podrobnými pokyny pro licencování Windows serveru](/windows-server/get-started/azure-hybrid-benefit)
 - Přečtěte si další informace o [zvýhodněné hybridní využití Azure pro Windows Server a Azure Site Recovery díky migraci aplikací do Azure ještě více cenově výhodné](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/) .
-- Další informace o [Windows 10 v Azure s oprávněním pro hostování s více klienty](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)
+- Další informace o [Windows 10 v Azure s oprávněním pro hostování s více klienty](./windows-desktop-multitenant-hosting-deployment.md)
 - Další informace o [používání šablon Správce prostředků](../../azure-resource-manager/management/overview.md)

@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 03/25/2020
+ms.date: 07/17/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 6e7723a437e90807063e3c3b7af2bf068dca5b9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee2ff7119c229b8a0fd94be3b85863fcb1108f58
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82100647"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074165"
 ---
 # <a name="deploy-spot-vms-using-the-azure-portal"></a>Nasazení virtuálních počítačů na místě pomocí Azure Portal
 
@@ -23,8 +23,10 @@ Ceny pro virtuální počítače na místě jsou proměnné na základě oblast�
 
 Máte možnost nastavit maximální cenu, kterou jste ochotni zaplatit za hodinu pro virtuální počítač. Maximální cena za virtuální počítač na místě se dá nastavit v amerických dolarech (USD), a to s využitím až 5 desetinných míst. Hodnota by měla být například `0.05701` maximální cena $0,05701 USD za hodinu. Pokud nastavíte maximální cenu `-1` , nebude se virtuální počítač vyřadit podle ceny. Cena za virtuální počítač bude aktuální cena za bod nebo cena za standardní virtuální počítač, který je stále menší, pokud je dostupná kapacita a kvóta.
 
+Když je virtuální počítač vyřazený, máte možnost odstranit virtuální počítač a příslušný disk nebo zrušit přidělení virtuálního počítače, aby se mohl později restartovat.
 
-## <a name="create-the-vm"></a>Vytvořte virtuální počítač.
+
+## <a name="create-the-vm"></a>Vytvoření virtuálního počítače
 
 Postup vytvoření virtuálního počítače, který používá bodové virtuální počítače, je stejný jako podrobný průvodce [rychlým startem](quick-create-portal.md). Při nasazení virtuálního počítače se můžete rozhodnout použít instanci bodu Azure.
 

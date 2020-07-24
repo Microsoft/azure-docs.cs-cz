@@ -13,11 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: changov
 ms.reviewer: vashan, rajraj
-ms.openlocfilehash: f5fbd80fc9a8e519cf8f49ab16d7e747c6a8171b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1cc8a43423ecd33218948aaa001fc34877eac60
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76045359"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074283"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>Řešení chyb způsobených omezováním rozhraní API 
 
@@ -25,13 +26,13 @@ Požadavky na výpočetní výkon Azure můžou být omezené na základě před
 
 ## <a name="throttling-by-azure-resource-manager-vs-resource-providers"></a>Omezování pomocí Azure Resource Manager zprostředkovatelů prostředků vs  
 
-Jako přední dveře do Azure Azure Resource Manager provádí ověřování a první pořadí ověřování a omezování všech příchozích požadavků rozhraní API. Omezení četnosti volání Azure Resource Manager a související hlavičky protokolu HTTP pro diagnostickou odezvu jsou popsány [zde](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling).
+Jako přední dveře do Azure Azure Resource Manager provádí ověřování a první pořadí ověřování a omezování všech příchozích požadavků rozhraní API. Omezení četnosti volání Azure Resource Manager a související hlavičky protokolu HTTP pro diagnostickou odezvu jsou popsány [zde](../../azure-resource-manager/management/request-limits-and-throttling.md).
  
 Když klient rozhraní API Azure získá chybu omezování, stav HTTP je 429 příliš mnoho požadavků. Pokud chcete zjistit, jestli je omezování požadavků prováděné Azure Resource Manager nebo podkladovým poskytovatelem prostředků, jako je CRP, prozkoumejte žádosti o `x-ms-ratelimit-remaining-subscription-reads` získání požadavků a `x-ms-ratelimit-remaining-subscription-writes` odpovědí pro požadavky bez získání. Pokud se zbývající počet volání blíží 0, bylo dosaženo obecného limitu volání pro předplatné definovaného Azure Resource Manager. Aktivity všech klientů předplatného se počítají dohromady. V opačném případě omezování přichází z cílového poskytovatele prostředků (ten adresovaná `/providers/<RP>` segmentem adresy URL požadavku). 
 
 ## <a name="call-rate-informational-response-headers"></a>Hlavičky informativních odpovědí v kurzu volání 
 
-| Záhlaví                            | Formát hodnoty                           | Příklad                               | Description                                                                                                                                                                                               |
+| Hlavička                            | Formát hodnoty                           | Příklad                               | Popis                                                                                                                                                                                               |
 |-----------------------------------|----------------------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | x-MS-ratelimit-zbývající – prostředek |```<source RP>/<policy or bucket>;<count>```| Microsoft. COMPUTE/HighCostGet3Min; 159 | Zbývající počet volání rozhraní API pro zásady omezování zahrnující kontejner prostředků nebo skupinu operací včetně cíle této žádosti                                                                   |
 | x-MS-Request-poplatek               | ```<count>```                             | 1                                     | Počet volání, která se účtují za tento požadavek HTTP, směrem k příslušnému limitu zásad. Většinou se jedná o 1. Požadavky na dávky, například pro škálování sady škálování virtuálních počítačů, můžou účtovat víc počtů. |
@@ -78,8 +79,8 @@ Jak je uvedeno výše, každá chyba omezování zahrnuje `Retry-After` hlavičk
 
 ## <a name="api-call-rate-and-throttling-error-analyzer"></a>Frekvence volání rozhraní API a analyzátor chyb omezování
 Pro rozhraní API poskytovatele výpočetních prostředků je k dispozici verze Preview funkce řešení potíží. Tyto rutiny PowerShellu poskytují statistiky o počtu požadavků rozhraní API na časový interval na operaci a porušení omezení pro skupinu operací (Policy):
--   [Export – AzLogAnalyticRequestRateByInterval](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticrequestratebyinterval)
--   [Export – AzLogAnalyticThrottledRequest](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticthrottledrequest)
+-   [Export – AzLogAnalyticRequestRateByInterval](/powershell/module/az.compute/export-azloganalyticrequestratebyinterval)
+-   [Export – AzLogAnalyticThrottledRequest](/powershell/module/az.compute/export-azloganalyticthrottledrequest)
 
 Statistika volání rozhraní API může poskytovat skvělé informace o chování klientů předplatného a povolit snadnou identifikaci vzorů volání, které způsobují omezení.
 
@@ -99,4 +100,4 @@ Rutiny PowerShellu používají rozhraní REST API, které můžou klienti snadn
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o pokynech pro opakování pro jiné služby v Azure najdete v [pokynech k opakování pro konkrétní služby](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific) .
+Další informace o pokynech pro opakování pro jiné služby v Azure najdete v [pokynech k opakování pro konkrétní služby](/azure/architecture/best-practices/retry-service-specific) .

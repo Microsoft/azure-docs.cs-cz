@@ -3,12 +3,12 @@ title: Nasazení Live video Analytics na zařízení IoT Edge – Azure
 description: V tomto článku jsou uvedené kroky, které vám pomůžou nasadit Live video Analytics na zařízení IoT Edge. To byste měli udělat například v případě, že máte přístup k místnímu počítači se systémem Linux nebo jste vytvořili účet Azure Media Services.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: 415d22a47e6563e10a1880429537ab182d1ff7a5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ea7a1026f42cd3d8745559bc195a89b7fbcb69a0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519894"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074455"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Nasazení Live video Analytics na zařízení IoT Edge
 
@@ -18,10 +18,10 @@ V tomto článku jsou uvedené kroky, které vám pomůžou nasadit Live video A
 ## <a name="prerequisites"></a>Předpoklady
 
 * Počítač se systémem Linux, který splňuje omezení HW a SW pro Live video Analytics
-* Předplatné Azure, ke kterému máte [oprávnění vlastníka](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)
-* [Vytvoření a nastavení IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal)
-* [Registrace zařízení IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-register-device)
-* [Instalace modulu runtime Azure IoT Edge v systémech Linux založených na distribuci Debian](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)
+* Předplatné Azure, ke kterému máte [oprávnění vlastníka](../../role-based-access-control/built-in-roles.md#owner)
+* [Vytvoření a nastavení IoT Hub](../../iot-hub/iot-hub-create-through-portal.md)
+* [Registrace zařízení IoT Edge](../../iot-edge/how-to-register-device.md)
+* [Instalace modulu runtime Azure IoT Edge v systémech Linux založených na distribuci Debian](../../iot-edge/how-to-install-iot-edge-linux.md)
 * [Vytvoření účtu Azure Media Services](../latest/create-account-howto.md)
     * Použijte jednu z těchto oblastí: Východní USA 2, Střed USA, Střed USA – sever, Japonsko – východ, Západní USA 2, Středozápadní USA, Kanada – východ, Velká Británie – jih, Francie – střed, Francie – jih, Švýcarsko – sever, Švýcarsko – západ a Japonsko – západ.
     * Doporučuje se používat účty úložiště pro obecné účely v2 (GPv2).
@@ -225,7 +225,7 @@ Po vytvoření nasazení se vrátíte na stránku IoT Edge služby IoT Hub.
 2.  V podrobnostech o zařízení ověřte, že je modul BLOB Storage uveden v části **nasazení a nahlášený zařízením**.
 
 Může chvíli trvat, než se modul na zařízení spustí a pak se znovu oznámí IoT Hub. Aktualizujte stránku, aby se zobrazil aktualizovaný stav.
-Stavový kód: 200 – OK znamená, že [modul runtime IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime) je v pořádku a pracuje správně.
+Stavový kód: 200 – OK znamená, že [modul runtime IoT Edge](../../iot-edge/iot-edge-runtime.md) je v pořádku a pracuje správně.
 
 ![Status](./media/deploy-iot-edge-device/status.png)
 

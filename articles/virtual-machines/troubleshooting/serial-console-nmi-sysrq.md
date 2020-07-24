@@ -13,13 +13,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 3ad68438f5fc015b6a9150d67485b90a095f1a4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 545399e1d7941351ce861ac98d995d5e57006ea1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79250085"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074368"
 ---
-# <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Použití sériové konzoly pro volání nemaskovaných přerušení a SysRq
+# <a name="use-the-azure-serial-console-for-sysrq-and-nmi-calls"></a>Použití konzole sériového rozhraní Azure pro volání SysRq a NMI
 
 ## <a name="system-request-sysrq"></a>Požadavek na systém (SysRq)
 SysRq je posloupnost klíčů, které rozumí jádro operačního systému Linux, které může aktivovat sadu předem definovaných akcí. Tyto příkazy se často používají v případě, že řešení potíží s virtuálním počítačem nebo obnovení nelze provést pomocí tradiční správy (například pokud virtuální počítač neodpovídá). Použití funkce SysRq v konzole sériového kódu Azure napodobuje stisknutí klávesy SysRq a znaků, které jsou zadány na fyzické klávesnici.
@@ -28,11 +29,11 @@ Po doručení sekvence SysRq bude konfigurace jádra řídit, jak systém reaguj
 
 Pomocí ikony klávesnice na panelu příkazů, která se zobrazuje níže, můžete k odeslání SysRq na virtuální počítač Azure použít konzolu Azure Serial.
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
+![Snímek obrazovky s konzolou sériového rozhraní Azure Ikona klávesnice se zvýrazní a její nabídka se zobrazí. Tato nabídka obsahuje položku příkazu Odeslat SysRq.](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
 
 Když vyberete příkaz Odeslat SysRq, otevře se dialogové okno, ve kterém budou uvedeny běžné možnosti SysRq, nebo přijmout sekvenci SysRq příkazů zadaných do dialogového okna.  To umožňuje řadě SysRq provádět operace vysoké úrovně, jako je bezpečné restartování pomocí: `REISUB` .
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
+![Snímek obrazovky dialogového okna Odeslat příkaz SysRq do hosta Je vybrána možnost pro zadání příkazů a pole obsahuje REISUB.](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
 
 Příkaz SysRq se nedá použít na virtuálních počítačích, které jsou zastavené nebo jejichž jádro je v nereagující stavu. (například nouzové jádro jádra).
 
@@ -101,7 +102,7 @@ Nemaskovatelné přerušení (NMI) je navržené k vytvoření signálu, který 
 
 Pomocí ikony klávesnice na panelu příkazů, která je uvedená níže, se dá použít Konzola sériového portu k odeslání NMI virtuálnímu počítači Azure. Po doručení NMI bude konfigurace virtuálního počítače řídit, jak systém reaguje.  Operační systémy Linux se dají nakonfigurovat tak, aby selhaly, a vytvoří výpis paměti. operační systém obdrží NMI.
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
+![Snímek obrazovky s konzolou sériového portu Ikona klávesnice se zvýrazní a její nabídka se zobrazí. Tato nabídka obsahuje položku pro odeslání nemaskované položky přerušení.](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
 
 ### <a name="enable-nmi"></a>Povolit NMI
 Pro systémy Linux, které podporují sysctl pro konfiguraci parametrů jádra, můžete povolit nenouzové při příjmu tohoto NMI pomocí následujících kroků:
