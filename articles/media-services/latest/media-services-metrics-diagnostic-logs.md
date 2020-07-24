@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: f051d02ac06163cf1861ab6bfc6afd0dcbb0ad8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7058160819c9b6ccc3f63511f86e930fcbfc413b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82559528"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011647"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>Monitorovat metriky Media Services a diagnostické protokoly přes Azure Monitor
 
@@ -58,7 +58,7 @@ Měli byste taky zkontrolovat [kvóty a omezení účtu](limits-quotas-constrain
 
 ### <a name="streaming-endpoint"></a>Koncový bod streamování
 
-Jsou podporovány následující Media Services metriky [koncových bodů streamování](https://docs.microsoft.com/rest/api/media/streamingendpoints) :
+Jsou podporovány následující Media Services metriky [koncových bodů streamování](/rest/api/media/streamingendpoints) :
 
 |Název metriky|Zobrazované jméno|Popis|
 |---|---|---|
@@ -92,7 +92,7 @@ Media Services podporuje následující diagnostické protokoly:
 
 ### <a name="key-delivery"></a>Doručení klíče
 
-|Name|Popis|
+|Název|Popis|
 |---|---|
 |Požadavek služby doručení klíčů|Protokoly, které zobrazují informace o požadavku služby doručování klíčů Další informace najdete v tématu [schémata](media-services-diagnostic-logs-schema.md).|
 

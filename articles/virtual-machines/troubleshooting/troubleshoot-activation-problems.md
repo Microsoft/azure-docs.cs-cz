@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 44c86dae3c7df8293404c253b94164c37d574158
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c89fcf22f669c97f2b17acce57c293eabcf96de
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736930"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009692"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Řešení potíží s aktivací virtuálního počítače Azure s Windows
 
@@ -46,9 +46,9 @@ K problémům s aktivací virtuálního počítače Azure obecně dochází v p�
 ## <a name="solution"></a>Řešení
 
 >[!NOTE]
->Pokud používáte síť VPN typu Site-to-site a vynucené tunelové propojení, přečtěte si téma [použití vlastních tras Azure pro povolení aktivace prostřednictvím služby správy klíčů s vynuceným tunelovým propojením](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-forced-tunneling). 
+>Pokud používáte síť VPN typu Site-to-site a vynucené tunelové propojení, přečtěte si téma [použití vlastních tras Azure pro povolení aktivace prostřednictvím služby správy klíčů s vynuceným tunelovým propojením](../../vpn-gateway/vpn-gateway-about-forced-tunneling.md). 
 >
->Pokud používáte ExpressRoute a máte publikovanou výchozí trasu, přečtěte si téma [Jak mohu blokovat připojení k Internetu k virtuálním sítím připojeným k okruhům ExpressRoute?](https://docs.microsoft.com/azure/expressroute/expressroute-faqs).
+>Pokud používáte ExpressRoute a máte publikovanou výchozí trasu, přečtěte si téma [Jak mohu blokovat připojení k Internetu k virtuálním sítím připojeným k okruhům ExpressRoute?](../../expressroute/expressroute-faqs.md).
 
 ### <a name="step-1-configure-the-appropriate-kms-client-setup-key"></a>Krok 1 nakonfigurujte příslušný instalační klíč klienta služby správy klíčů.
 
@@ -61,7 +61,7 @@ Pro virtuální počítač vytvořený z vlastní image musíte nakonfigurovat p
     cscript c:\windows\system32\slmgr.vbs /dlv
     ```
 
-2. Pokud se ve výstupu příkazu **slmgr.vbs /dlv** zobrazí kanál RETAIL, spuštěním následujících příkazů nastavte [instalační klíč klienta KMS](https://technet.microsoft.com/library/jj612867%28v=ws.11%29.aspx?f=255&MSPPError=-2147217396) pro používanou verzi Windows Serveru a vynuťte opakování aktivace: 
+2. Pokud se ve výstupu příkazu **slmgr.vbs /dlv** zobrazí kanál RETAIL, spuštěním následujících příkazů nastavte [instalační klíč klienta KMS](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj612867(v=ws.11)?f=255&MSPPError=-2147217396) pro používanou verzi Windows Serveru a vynuťte opakování aktivace: 
 
     ```
     cscript c:\windows\system32\slmgr.vbs /ipk <KMS client setup key>
@@ -77,7 +77,7 @@ Pro virtuální počítač vytvořený z vlastní image musíte nakonfigurovat p
 
 ### <a name="step-2-verify-the-connectivity-between-the-vm-and-azure-kms-service"></a>Krok 2 Ověřte připojení mezi virtuálním počítačem a službou Azure KMS.
 
-1. Stáhněte a extrahujte nástroj [PSping](https://docs.microsoft.com/sysinternals/downloads/psping) do místní složky na virtuálním počítači, který se neaktivuje. 
+1. Stáhněte a extrahujte nástroj [PSping](/sysinternals/downloads/psping) do místní složky na virtuálním počítači, který se neaktivuje. 
 
 2. Přejděte na Start, vyhledejte Windows PowerShell, klikněte pravým tlačítkem na Windows PowerShell a vyberte Spustit jako správce.
 
@@ -102,7 +102,7 @@ Pro virtuální počítač vytvořený z vlastní image musíte nakonfigurovat p
   
     Také se ujistěte, že brána firewall ve virtuálním počítači neblokuje odchozí síťový provoz do koncového bodu služby správy klíčů s 1688 portem.
 
-5. Ověřte použití [Network Watcher dalšího směrování](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview) , že typ dalšího segmentu směrování z daného virtuálního počítače na cílovou IP adresu 23.102.135.246 (pro KMS.Core.Windows.NET) nebo IP adresu příslušného koncového bodu služby správy klíčů, který se vztahuje k vaší oblasti, je **Internet**.  Pokud je výsledek VirtualAppliance nebo VirtualNetworkGateway, je pravděpodobné, že existuje výchozí trasa.  Obraťte se na správce sítě a pracujte s nimi a určete správný postup.  Může se jednat o [vlastní trasu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/custom-routes-enable-kms-activation) , pokud je toto řešení v souladu se zásadami vaší organizace.
+5. Ověřte použití [Network Watcher dalšího směrování](../../network-watcher/network-watcher-next-hop-overview.md) , že typ dalšího segmentu směrování z daného virtuálního počítače na cílovou IP adresu 23.102.135.246 (pro KMS.Core.Windows.NET) nebo IP adresu příslušného koncového bodu služby správy klíčů, který se vztahuje k vaší oblasti, je **Internet**.  Pokud je výsledek VirtualAppliance nebo VirtualNetworkGateway, je pravděpodobné, že existuje výchozí trasa.  Obraťte se na správce sítě a pracujte s nimi a určete správný postup.  Může se jednat o [vlastní trasu](./custom-routes-enable-kms-activation.md) , pokud je toto řešení v souladu se zásadami vaší organizace.
 
 6. Po ověření úspěšného připojení k adrese kms.core.windows.net spusťte na stejném příkazovém řádku Windows PowerShellu se zvýšenými oprávněními následující příkaz. Tento příkaz se několikrát pokusí o aktivaci.
 
@@ -114,7 +114,7 @@ Pro virtuální počítač vytvořený z vlastní image musíte nakonfigurovat p
     
     **Aktivace systému Windows (R), edice ServerDatacenter (12345678-1234-1234-1234-12345678)...  Produkt byl úspěšně aktivován.**
 
-## <a name="faq"></a>Nejčastější dotazy 
+## <a name="faq"></a>Časté otázky 
 
 ### <a name="i-created-the-windows-server-2016-from-azure-marketplace-do-i-need-to-configure-kms-key-for-activating-the-windows-server-2016"></a>Vytvořil (a) jsem Windows Server 2016 z Azure Marketplace. Potřebuji nakonfigurovat klíč služby správy klíčů pro aktivaci Windows serveru 2016? 
 
@@ -124,13 +124,13 @@ Ne. Bitová kopie ve Azure Marketplace má již nakonfigurovaný příslušný i
 ### <a name="does-windows-activation-work-the-same-way-regardless-if-the-vm-is-using-azure-hybrid-use-benefit-hub-or-not"></a>Funguje aktivace Windows stejným způsobem bez ohledu na to, jestli virtuální počítač používá zvýhodněné hybridní využití Azure (centrum), nebo ne? 
 
  
-Ano. 
+Yes. 
  
 
 ### <a name="what-happens-if-windows-activation-period-expires"></a>Co se stane, když vyprší doba aktivace Windows? 
 
  
-Po vypršení období odkladu a Windows se stále neaktivuje Windows Server 2008 R2 a novější verze Windows zobrazí další oznámení o aktivaci. Tapeta plochy zůstane černá a web Windows Update bude instalovat pouze zabezpečení a kritické aktualizace, ale ne volitelné aktualizace. Podívejte se na část oznámení v dolní části stránky [licenční podmínky](https://technet.microsoft.com/library/ff793403.aspx) .   
+Po vypršení období odkladu a Windows se stále neaktivuje Windows Server 2008 R2 a novější verze Windows zobrazí další oznámení o aktivaci. Tapeta plochy zůstane černá a web Windows Update bude instalovat pouze zabezpečení a kritické aktualizace, ale ne volitelné aktualizace. Podívejte se na část oznámení v dolní části stránky [licenční podmínky](/previous-versions/tn-archive/ff793403(v=technet.10)) .   
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoc? Obraťte se na podporu.
 

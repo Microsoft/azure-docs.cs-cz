@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 14e8b3e28115fb191760382ed2a9fbd5c5a04114
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: dc9e4e0a896677fd22baf33e7776e8158bd0bee6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919913"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011341"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: Horká, studená a archivní úroveň přístupu
 
@@ -118,10 +118,10 @@ V následující tabulce jsou popsány porovnání úložiště objektů blob bl
 |                                           | **Výkon úrovně Premium**   | **Horká vrstva** | **Studená vrstva**       | **Úroveň archivu**  |
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
 | **Dostupnost**                          | 99,9 %                     | 99,9 %        | 99 %                 | Offline           |
-| **Dostupnost** <br> **(přístupy pro čtení RA-GRS)**  | Není k dispozici                       | 99,99 %       | 99,9 %               | Offline           |
+| **Dostupnost** <br> **(přístupy pro čtení RA-GRS)**  | –                       | 99,99 %       | 99,9 %               | Offline           |
 | **Poplatky za využití**                         | Vyšší náklady na úložiště, nižší přístup a náklady na transakce | Vyšší náklady na úložiště, nižší přístup a náklady na transakce | Snížení nákladů na úložiště, vyššího přístupu a transakčních nákladů | Nejnižší náklady na úložiště, nejvyšší přístup a náklady na transakce |
-| **Minimální velikost objektu**                   | Není k dispozici                       | Není k dispozici          | Není k dispozici                 | Není k dispozici               |
-| **Minimální doba uložení**              | Není k dispozici                       | Není k dispozici          | 30 dnů<sup>1</sup> | 180 dnů
+| **Minimální velikost objektu**                   | –                       | –          | –                 | –               |
+| **Minimální doba uložení**              | –                       | –          | 30 dnů<sup>1</sup> | 180 dnů
 | **Latence** <br> **(čas do prvního bajtu)** | Jednociferné číslo milisekund | milisekundy | milisekundy        | hodiny<sup>2</sup> |
 
 <sup>1</sup> objekty ve studené vrstvě na účtech GPv2 mají minimální dobu uchování 30 dnů. Účty úložiště BLOB nemají pro studenou vrstvu minimální dobu uchování.
@@ -141,7 +141,7 @@ V této části se při použití Azure Portal a PowerShellu ukázaly následuj�
 ### <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>Změna výchozí úrovně přístupu u účtu GPv2 nebo Blob Storage
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
 
 1. V Azure Portal vyhledejte a vyberte **všechny prostředky**.
 
@@ -169,7 +169,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 ### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>Změna úrovně objektu BLOB v účtu GPv2 nebo BLOB Storage
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
 
 1. V Azure Portal vyhledejte a vyberte **všechny prostředky**.
 
@@ -220,7 +220,7 @@ Všechny účty úložiště používají cenový model pro úložiště objekt�
 > [!NOTE]
 > Další informace o cenách pro objekty blob bloku najdete na stránce s [cenami Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/) . Další informace o poplatcích za odchozí přenosy dat najdete na stránce [Podrobné informace o cenách přenosů dat](https://azure.microsoft.com/pricing/details/data-transfers/).
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 **Pokud chci vrstvit svá data, mám použít účet Blob Storage nebo GPv2?**
 
@@ -230,7 +230,7 @@ Cenová struktura se u účtů GPv1 a GPv2 liší a zákazníci by před volbou 
 
 **Můžu ve stejném účtu ukládat objekty ve všech třech (horká, studená a archivní) úrovních?**
 
-Ano. Atribut **úroveň přístupu** nastavený na úrovni účtu představuje výchozí úroveň účtu, která se vztahuje na všechny objekty v daném účtu bez explicitní nastavené úrovně. Vrstvení na úrovni objektů BLOB umožňuje nastavit úroveň přístupu na úrovni objektu bez ohledu na to, jaká je nastavení vrstvy přístupu na účtu. V rámci stejného účtu můžou existovat objekty BLOB v některé ze tří úrovní přístupu (horká, studená nebo archivní).
+Yes. Atribut **úroveň přístupu** nastavený na úrovni účtu představuje výchozí úroveň účtu, která se vztahuje na všechny objekty v daném účtu bez explicitní nastavené úrovně. Vrstvení na úrovni objektů BLOB umožňuje nastavit úroveň přístupu na úrovni objektu bez ohledu na to, jaká je nastavení vrstvy přístupu na účtu. V rámci stejného účtu můžou existovat objekty BLOB v některé ze tří úrovní přístupu (horká, studená nebo archivní).
 
 **Můžu změnit výchozí úroveň přístupu účtu úložiště BLOB nebo GPv2?**
 
@@ -248,7 +248,7 @@ Horká a studená úroveň přístupu spolu s ovládáním datových vrstev na �
 
 Objekty BLOB v úrovni Hot Access mají stejnou latenci jako objekty BLOB v účtech GPv1, GPv2 a BLOB Storage. Objekty blob ve studené úrovni přístupu mají podobnou latenci (v milisekundách) jako objekty BLOB v účtech GPv1, GPv2 a BLOB Storage. Objekty BLOB v archivní úrovni mají několik hodin latence v účtech GPv1, GPv2 a BLOB Storage.
 
-Objekty blob ve studené úrovni přístupu mají mírně nižší dostupnost služby (SLA) než objekty blob uložené v úrovni Hot Accessu. Další informace najdete ve [smlouvě SLA pro vaše úložiště](https://azure.microsoft.com/support/legal/sla/storage/v1_2/).
+Objekty blob ve studené úrovni přístupu mají mírně nižší dostupnost služby (SLA) než objekty blob uložené v úrovni Hot Accessu. Další informace najdete ve [smlouvě SLA pro vaše úložiště](https://azure.microsoft.com/support/legal/sla/storage/v1_5/).
 
 **Jsou operace mezi horkou, studenou a archivní úrovní stejné?**
 

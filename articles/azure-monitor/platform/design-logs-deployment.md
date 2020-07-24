@@ -6,14 +6,14 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: ed525230315781eeca41956047a173f27b1447e1
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 939a2e67d6d2c215f7a575b6b9bd08660fc03b27
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201290"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008196"
 ---
-# <a name="designing-your-azure-monitor-logs-deployment"></a>Návrh nasazení Azure Monitorch protokolů
+# <a name="designing-your-azure-monitor-logs-deployment"></a>Návrh nasazení protokolů služby Azure Monitor
 
 Azure Monitor ukládá data [protokolu](data-platform-logs.md) v pracovním prostoru Log Analytics, což je prostředek Azure a kontejner, ve kterém se data shromažďují, agreguje a slouží jako hranice správy. I když můžete v předplatném Azure nasadit jeden nebo více pracovních prostorů, měli byste pochopit několik důležitých informací, abyste měli jistotu, že vaše počáteční nasazení probíhá podle našich pokynů, které vám poskytnou nákladově efektivní, spravovatelné a škálovatelné nasazení, které vyhovuje potřebám vaší organizace.
 
@@ -25,7 +25,7 @@ Pracovní prostor Log Analytics poskytuje:
 
 * Geografické umístění pro ukládání dat.
 * Izolace dat udělením přístupových práv k různým uživatelům podle jedné z našich doporučených strategií návrhu.
-* Obor pro konfiguraci nastavení, jako je [cenová úroveň](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier), [uchování](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)a [capping dat](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#manage-your-maximum-daily-data-volume)
+* Obor pro konfiguraci nastavení, jako je [cenová úroveň](./manage-cost-storage.md#changing-pricing-tier), [uchování](./manage-cost-storage.md#change-the-data-retention-period)a [capping dat](./manage-cost-storage.md#manage-your-maximum-daily-data-volume)
 
 Tento článek poskytuje podrobný přehled týkající se návrhu a migrace, přehled řízení přístupu a porozumění implementací návrhu, které doporučujeme pro vaši organizaci IT.
 

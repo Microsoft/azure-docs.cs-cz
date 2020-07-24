@@ -9,13 +9,14 @@ ms.workload: infrastructure
 ms.date: 04/17/2020
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 8285bc216b5b06a33d481dbca011e44e77df25de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6478438be34ed19897dcde1affbff557093e01fc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678779"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009828"
 ---
-# <a name="troubleshooting-shared-image-galleries"></a>Řešení potíží se sdílenými galeriemi imagí
+# <a name="troubleshooting-shared-image-galleries-in-azure"></a>Řešení potíží s galeriemi sdílených imagí v Azure
 
 
 [!INCLUDE [virtual-machines-common-shared-image-troubleshooting](../../includes/virtual-machines-common-shared-image-troubleshooting.md)]

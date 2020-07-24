@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 5af6aec2267384c37f664522d075bf26c632e7e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19a0e94206691dc741020374bf5c827ba423515d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81382888"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008349"
 ---
 # <a name="availability-alerts"></a>Upozornění na dostupnost
 
@@ -24,7 +24,7 @@ Výstrahy jsou teď ve výchozím nastavení automaticky povolené, ale aby bylo
 ![Vytvořit prostředí](./media/availability-alerts/create-test.png)
 
 > [!NOTE]
->  S [novými sjednocenými výstrahami](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)se **musí** nakonfigurovat závažnost pravidla výstrahy a předvolby oznámení se [skupinami akcí](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) v prostředí výstrahy. Bez následujících kroků obdržíte pouze oznámení v portálu.
+>  S [novými sjednocenými výstrahami](../platform/alerts-overview.md)se **musí** nakonfigurovat závažnost pravidla výstrahy a předvolby oznámení se [skupinami akcí](../platform/action-groups.md) v prostředí výstrahy. Bez následujících kroků obdržíte pouze oznámení v portálu.
 
 1. Po uložení testu dostupnosti klikněte na kartě Podrobnosti na tři tečky, které jste právě provedli. Klikněte na upravit upozornění.
 
@@ -39,7 +39,7 @@ Výstrahy jsou teď ve výchozím nastavení automaticky povolené, ale aby bylo
 
 ### <a name="alert-on-x-out-of-y-locations-reporting-failures"></a>Výstraha na ose X z umístění Y hlášení selhání
 
-Pravidlo upozornění na umístění X z Y je ve výchozím nastavení povolené v [novém jednotném prostředí výstrah](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)při vytváření nového testu dostupnosti. Můžete si vybrat možnost Classic nebo zakázat pravidlo výstrahy.
+Pravidlo upozornění na umístění X z Y je ve výchozím nastavení povolené v [novém jednotném prostředí výstrah](../platform/alerts-overview.md)při vytváření nového testu dostupnosti. Můžete si vybrat možnost Classic nebo zakázat pravidlo výstrahy.
 
 > [!NOTE]
 > Nakonfigurujte skupiny akcí tak, aby přijímaly oznámení v případě, že se výstraha aktivuje podle výše uvedeného postupu. Bez tohoto kroku dostanete oznámení v portálu jenom v případě, že se pravidlo aktivuje.
@@ -47,7 +47,7 @@ Pravidlo upozornění na umístění X z Y je ve výchozím nastavení povolené
 
 ### <a name="alert-on-availability-metrics"></a>Upozornění na metriky dostupnosti
 
-Pomocí [nových sjednocených výstrah](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)můžete upozornit na segmenticky agregovanou dostupnost a metriky doby trvání testu:
+Pomocí [nových sjednocených výstrah](../platform/alerts-overview.md)můžete upozornit na segmenticky agregovanou dostupnost a metriky doby trvání testu:
 
 1. Vyberte prostředek Application Insights v prostředí metrik a vyberte metriku dostupnosti:
 
@@ -57,7 +57,7 @@ Pomocí [nových sjednocených výstrah](https://docs.microsoft.com/azure/monito
 
 ### <a name="alert-on-custom-analytics-queries"></a>Upozornění na vlastní analytické dotazy
 
-Pomocí [nových sjednocených výstrah](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)můžete upozornit na [vlastní dotazy protokolu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log). S vlastními dotazy můžete upozorňovat na jakékoli podmínky, které vám pomůžou dosáhnout nejspolehlivějšího signálu problémů s dostupností. To platí i v případě, že odesíláte vlastní výsledky dostupnosti pomocí sady TrackAvailability SDK.
+Pomocí [nových sjednocených výstrah](../platform/alerts-overview.md)můžete upozornit na [vlastní dotazy protokolu](../platform/alerts-unified-log.md). S vlastními dotazy můžete upozorňovat na jakékoli podmínky, které vám pomůžou dosáhnout nejspolehlivějšího signálu problémů s dostupností. To platí i v případě, že odesíláte vlastní výsledky dostupnosti pomocí sady TrackAvailability SDK.
 
 > [!Tip]
 > Metriky dostupnosti dat zahrnují všechny vlastní výsledky dostupnosti, které můžete odeslat voláním naší sady TrackAvailability SDK. Můžete použít upozorňování na podporu metrik pro upozornění na výsledky vlastní dostupnosti.
@@ -67,7 +67,7 @@ Pomocí [nových sjednocených výstrah](https://docs.microsoft.com/azure/monito
 
 Pokud chcete tento proces automatizovat pomocí šablon Azure Resource Manager, přečtěte si dokumentaci k tématu [Vytvoření upozornění na metriku pomocí šablony Správce prostředků](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert) .
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Vyhrazený [článek týkající se řešení potíží](troubleshoot-availability.md).
 

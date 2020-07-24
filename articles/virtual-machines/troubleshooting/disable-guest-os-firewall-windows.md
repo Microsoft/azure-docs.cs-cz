@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 5d8aa456a6454dd511b7dcda5d3f74a739033356
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0426c5359e4d82d0316613586b9298596d82605
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83774341"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009760"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Zakázání brány firewall hostovaného operačního systému na virtuálním počítači Azure
 
@@ -73,7 +74,7 @@ Pokud máte funkčního agenta Azure, můžete použít [rozšíření vlastníc
 
 #### <a name="mitigation-3-pstools-commands"></a>Zmírnění 3: nástroj PsTools příkazy
 
-1.  Na virtuálním počítači pro řešení potíží stáhněte [Nástroj PsTools](https://docs.microsoft.com/sysinternals/downloads/pstools).
+1.  Na virtuálním počítači pro řešení potíží stáhněte [Nástroj PsTools](/sysinternals/downloads/pstools).
 
 2.  Otevřete instanci CMD a potom přejděte k virtuálnímu počítači přes jeho DIP.
 

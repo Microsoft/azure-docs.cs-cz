@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/04/2020
-ms.openlocfilehash: 81040adf6cfbb8820ec7f306c7d614830e3a2613
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1808623821d71169ec35beab1d33d4eb2c32c189
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82791101"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008400"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Vytvoření a spuštění vlastních testů dostupnosti pomocí Azure Functions
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jak vytvořit funkci Azure pomocí TrackAvailability ()
 
 - Pokud máte prostředek Application Insights:
     - Ve výchozím nastavení Azure Functions vytvoří prostředek Application Insights, ale pokud byste chtěli použít některý z již vytvořených prostředků, budete ho muset během vytváření zadat.
-    - Postupujte podle pokynů v tématu Postup [Vytvoření funkce Azure Functions prostředku a časovače](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function) (zastavit před vyčištěním) s následujícími možnostmi.
+    - Postupujte podle pokynů v tématu Postup [Vytvoření funkce Azure Functions prostředku a časovače](../../azure-functions/functions-create-scheduled-function.md) (zastavit před vyčištěním) s následujícími možnostmi.
         -  Vyberte kartu **monitorování** v pravém horním rohu.
 
             ![ Vytvoření aplikace Azure Functions s vlastním prostředkem App Insights](media/availability-azure-functions/create-function-app.png)
@@ -35,7 +35,7 @@ Tento článek popisuje, jak vytvořit funkci Azure pomocí TrackAvailability ()
         - Vybrat **kontrolu + vytvořit**
 - Pokud ještě nemáte vytvořený prostředek Application Insights pro funkci aktivovanou časovačem:
     - Když vytváříte aplikaci Azure Functions, vytvoří se ve výchozím nastavení pro vás prostředek Application Insights.
-    - Postupujte podle pokynů v tématu Jak [vytvořit prostředek Azure functions a funkci aktivovanou časovačem](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function) (před čištěním zastavit).
+    - Postupujte podle pokynů v tématu Jak [vytvořit prostředek Azure functions a funkci aktivovanou časovačem](../../azure-functions/functions-create-scheduled-function.md) (před čištěním zastavit).
 
 ## <a name="sample-code"></a>Ukázka kódu
 
@@ -45,7 +45,7 @@ Zkopírujte následující kód do souboru run. CSX (Tato akce nahradí již exi
 >![Běh. csx funkce Azure Functions v Azure Portal](media/availability-azure-functions/runcsx.png)
 
 > [!NOTE]
-> Pro adresu koncového bodu použijte: `EndpointAddress= https://dc.services.visualstudio.com/v2/track` . Pokud se prostředek nenachází v oblasti, jako je Azure Government nebo Azure Čína, najdete v tomto článku o [přepsání výchozích koncových bodů](https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification) a výběru příslušného koncového bodu kanálu telemetrie pro vaši oblast.
+> Pro adresu koncového bodu použijte: `EndpointAddress= https://dc.services.visualstudio.com/v2/track` . Pokud se prostředek nenachází v oblasti, jako je Azure Government nebo Azure Čína, najdete v tomto článku o [přepsání výchozích koncových bodů](./custom-endpoints.md#regions-that-require-endpoint-modification) a výběru příslušného koncového bodu kanálu telemetrie pro vaši oblast.
 
 ```C#
 #load "runAvailabilityTest.csx"

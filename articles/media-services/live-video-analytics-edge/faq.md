@@ -3,11 +3,12 @@ title: Live video Analytics na IoT Edge Nejčastější dotazy – Azure
 description: Toto téma obsahuje odpovědi na živé video analýzy na základě nejčastějších dotazů IoT Edge.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 0a6c1c0f26116227454fa0968264644ea7a43178
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 705c74b1ba6d3a28911185b82a558099e87dc18d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261321"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011511"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Nejčastější dotazy
 
@@ -17,16 +18,16 @@ Toto téma obsahuje odpovědi na živé video analýzy na základě nejčastěj�
 
 Jaké jsou systémové proměnné, které se dají použít v definici topologie grafu?
 
-|Proměnná   |Description|
+|Proměnná   |Popis|
 |---|---|
-|[System. DateTime](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/linq/system-datetime-methods)|Představuje okamžitý čas, obvykle vyjádřený jako datum a denní dobu.|
+|[System. DateTime](/dotnet/framework/data/adonet/sql/linq/system-datetime-methods)|Představuje okamžitý čas, obvykle vyjádřený jako datum a denní dobu.|
 |System. GraphTopologyName   |Představuje topologii mediálního grafu, obsahuje podrobný plán grafu.|
 |System. GraphInstanceName|  Představuje instanci mediálního grafu, uchovává hodnoty parametrů a odkazuje na topologii.|
 
 ## <a name="configuration-and-deployment"></a>Konfigurace a nasazení
 
 Můžu modul Media Edge nasadit do zařízení s Windows 10?
-    * Ano. Podívejte se na článek o [kontejnerech Linux ve Windows 10](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/linux-containers).
+    * Yes. Podívejte se na článek o [kontejnerech Linux ve Windows 10](/virtualization/windowscontainers/deploy-containers/linux-containers).
 
 ## <a name="capture-from-ip-camera-and-rtsp-settings"></a>Zachytit z kamery IP a nastavení protokolu RTSP
 
@@ -38,16 +39,16 @@ Můžu modul Media Edge nasadit do zařízení s Windows 10?
 * Můžu u instance grafu resetovat nebo aktualizovat adresu URL zdroje RTSP?
     * Ano, pokud je instance grafu v neaktivním stavu.  
 * Je k dispozici simulátor RTSP pro použití při testování a vývoji?
-    * Ano. K dispozici je modul Edge [simulátoru RTSP](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) pro použití v rychlém startu a kurzech pro podporu procesu učení. Při poskytování tohoto modulu se snažíme všem maximálně vyhovět, ale ne vždy musí být dostupný. Důrazně doporučujeme, abyste tuto dobu nepoužívali déle než několik hodin. Než začnete vytvářet plány nasazení v produkčním prostředí, měli byste investovat do testování s vaším skutečným zdrojem RTSP.
+    * Yes. K dispozici je modul Edge [simulátoru RTSP](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) pro použití v rychlém startu a kurzech pro podporu procesu učení. Při poskytování tohoto modulu se snažíme všem maximálně vyhovět, ale ne vždy musí být dostupný. Důrazně doporučujeme, abyste tuto dobu nepoužívali déle než několik hodin. Než začnete vytvářet plány nasazení v produkčním prostředí, měli byste investovat do testování s vaším skutečným zdrojem RTSP.
 * Podporujete zjišťování ONVIF IP kamer na hraničních zařízeních?
     * Ne, zjišťování ONVIF na hraničních zařízeních se nepodporuje.
 
 ## <a name="streaming-and-playback"></a>Streamování a přehrávání
 
 * Můžou se prostředky zaznamenané do AMS z Edge přehrát zpátky pomocí Media Services technologie streamování, jako je HLS nebo POMLČKa?
-    * Ano. Nahrané prostředky mohou být streamované jako jakékoli jiné prostředky v Azure Media Services. Pokud chcete streamovat obsah, musíte mít vytvořený koncový bod streamování a ve stavu spuštěno. Pomocí standardního procesu vytváření lokátoru streamování získáte přístup k HLS nebo POMLČKám manifest pro streamování do libovolných rozhraní přehrávače, které podporuje. Podrobnosti o vytváření publikovaných manifestů HLS nebo SPOJOVNÍKů naleznete v tématu [dynamické balení](../latest/dynamic-packaging-overview.md).
+    * Yes. Nahrané prostředky mohou být streamované jako jakékoli jiné prostředky v Azure Media Services. Pokud chcete streamovat obsah, musíte mít vytvořený koncový bod streamování a ve stavu spuštěno. Pomocí standardního procesu vytváření lokátoru streamování získáte přístup k HLS nebo POMLČKám manifest pro streamování do libovolných rozhraní přehrávače, které podporuje. Podrobnosti o vytváření publikovaných manifestů HLS nebo SPOJOVNÍKů naleznete v tématu [dynamické balení](../latest/dynamic-packaging-overview.md).
 * Můžu u archivovaného assetu použít standardní ochranu obsahu a funkce DRM Media Services?
-    * Ano. Veškerá standardní funkce Ochrana obsahu a DRM v dynamickém šifrování je k dispozici pro použití na assetech zaznamenaných z mediálního grafu.
+    * Yes. Veškerá standardní funkce Ochrana obsahu a DRM v dynamickém šifrování je k dispozici pro použití na assetech zaznamenaných z mediálního grafu.
 * Jaké přehrávače můžu použít k zobrazení obsahu ze zaznamenaných assetů?
    * Podporují se všechny standardní přehrávače podporující rozhraní Apple HTTP Live Streaming (HLS) verze 3 nebo verze 4. Kromě toho se podporuje i jakýkoli přehrávač, který podporuje přehrávání kompatibilní se standardem MPEG-SPOJOVNÍK.
     Mezi Doporučené přehrávače pro testování patří:

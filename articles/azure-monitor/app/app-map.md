@@ -4,15 +4,16 @@ description: Monitorování složitých topologií aplikace s mapou aplikace
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 7c5c9173704535b1e34ffde5867bd512e3e02ed8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f9f19ea9370b9da3e69d871e8b53ccf7f64a6a5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80989523"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008502"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikace: třídění distribuovaných aplikací
 
-Mapa aplikace vám pomůže odhalit slabá místa výkonu nebo neúspěšné oblasti selhání napříč všemi komponentami distribuované aplikace. Každý uzel na mapě představuje komponentu aplikace nebo její závislosti; a má stav klíčových ukazatelů výkonu a výstrah. Můžete kliknout na libovolnou komponentu a podrobnou diagnostiku, například Application Insights události. Pokud vaše aplikace používá služby Azure, můžete také kliknout na Azure Diagnostics, jako je SQL Database Advisor doporučení.
+Mapa aplikace pomáhá zjistit kritické body výkonu nebo hlavní místa selhání ve všech komponentách distribuované aplikace. Každý uzel na mapě představuje komponentu aplikace nebo její závislosti; a má stav klíčových ukazatelů výkonu a výstrah. Můžete kliknout na libovolnou komponentu a podrobnou diagnostiku, například Application Insights události. Pokud vaše aplikace používá služby Azure, můžete také kliknout na Azure Diagnostics, jako je SQL Database Advisor doporučení.
 
 ## <a name="what-is-a-component"></a>Co je komponenta?
 
@@ -156,7 +157,7 @@ U [ASP.NET Corech](asp-net-core.md#adding-telemetryinitializers) aplikací je p�
 
 **Agent Java**
 
-V případě [agenta Java 3,0](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) se název cloudové role nastaví takto:
+V případě [agenta Java 3,0](./java-in-process-agent.md) se název cloudové role nastaví takto:
 
 ```json
 {
@@ -250,7 +251,7 @@ Situaci, kdy byste mohli chtít přepsat hodnotu pro instanci cloudové role, m�
 
 Další informace o tom, jak přepsat vlastnost název cloudové role pomocí inicializátorů telemetrie, najdete v tématu věnovaném [Přidání vlastností: ITelemetryInitializer](api-filtering-sampling.md#addmodify-properties-itelemetryinitializer).
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud máte potíže s tím, jak mapa aplikace funguje podle očekávání, zkuste postupovat takto:
 
@@ -258,15 +259,15 @@ Pokud máte potíže s tím, jak mapa aplikace funguje podle očekávání, zkus
 
 1. Ujistěte se, že používáte oficiálně podporovanou sadu SDK. Nepodporované nebo komunitní sady SDK nemusí podporovat korelaci.
 
-    Seznam podporovaných sad SDK najdete v tomto [článku](https://docs.microsoft.com/azure/application-insights/app-insights-platforms) .
+    Seznam podporovaných sad SDK najdete v tomto [článku](./platforms.md).
 
 2. Upgradujte všechny součásti na nejnovější verzi sady SDK.
 
-3. Pokud používáte Azure Functions s jazykem C#, upgradujte na [Functions v2](https://docs.microsoft.com/azure/azure-functions/functions-versions).
+3. Pokud používáte Azure Functions s jazykem C#, upgradujte na [Functions v2](../../azure-functions/functions-versions.md).
 
 4. Ověřte, že je [název cloudové role](#set-cloud-role-name) správně nakonfigurovaný.
 
-5. Pokud vám chybí závislost, ujistěte se, že je v seznamu [automaticky shromažďovaných závislostí](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies). Pokud ne, můžete ji stále najít ručně pomocí [volání TrackDependency](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency).
+5. Pokud vám chybí závislost, ujistěte se, že je v seznamu [automaticky shromažďovaných závislostí](./auto-collect-dependencies.md). Pokud ne, můžete ji stále najít ručně pomocí [volání TrackDependency](./api-custom-events-metrics.md#trackdependency).
 
 ### <a name="too-many-nodes-on-the-map"></a>Příliš mnoho uzlů na mapě
 
@@ -280,7 +281,7 @@ Pokud to chcete opravit, budete muset změnit instrumentaci a správně nastavit
 
 * Typ závislosti by měl představovat logický typ závislosti. Například protokol HTTP, SQL nebo Azure Blob jsou typické typy závislostí. Neměl by obsahovat jedinečné identifikátory.
 
-* Název cloudové role je popsaný v [části výše](https://docs.microsoft.com/azure/azure-monitor/app/app-map#set-cloud-role-name).
+* Název cloudové role je popsaný v [části výše](#set-cloud-role-name).
 
 ## <a name="portal-feedback"></a>Váš názor na portál
 

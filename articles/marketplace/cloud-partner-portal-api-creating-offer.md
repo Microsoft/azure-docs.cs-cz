@@ -4,19 +4,21 @@ description: Rozhraní API k vytvoření nové nebo aktualizace stávající nab
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 06/19/2020
-ms.openlocfilehash: 5104d11c1eaf9641f1d631db97dcca036308cd45
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 249eb982ee701ea0a442121c02e55ad98e1f6fb9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115719"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011987"
 ---
 <a name="create-or-modify-an-offer"></a>Vytvoření nebo úprava nabídky
 =========================
 
 > [!NOTE]
-> Rozhraní API pro portál partnerů cloudu jsou integrovaná do partnerského centra a budou fungovat i po migraci nabídek do partnerského centra. Integrace přináší malé změny. Projděte si změny uvedené v části [portál partnerů cloudu rozhraní API](./cloud-partner-portal-api-overview.md) , abyste zajistili, že váš kód bude i nadále fungovat po migraci do partnerského centra.
+> Rozhraní API pro portál partnerů cloudu jsou integrovaná s a budou pokračovat v práci v partnerském centru. Přechod přináší malé změny. Projděte si změny uvedené v části [portál partnerů cloudu rozhraní API](./cloud-partner-portal-api-overview.md) , abyste zajistili, že kód pokračuje v práci po přechodu do partnerského centra. Rozhraní API CPP by se mělo používat jenom pro existující produkty, které už jsou integrované před přechodem do partnerského centra; nové produkty by měly používat rozhraní API pro odesílání v partnerském centru.
 
 Toto volání aktualizuje konkrétní nabídku v rámci oboru názvů vydavatele nebo vytvoří novou nabídku.
 
@@ -33,7 +35,7 @@ Toto volání aktualizuje konkrétní nabídku v rámci oboru názvů vydavatele
 | verze-api       |  Nejnovější verze rozhraní API            |   Datum           |
 |  |  |  |
 
-<a name="header"></a>Záhlaví
+<a name="header"></a>Hlavička
 ------
 
 |  **Název**        |  **Hodnota**               |
@@ -48,7 +50,7 @@ Toto volání aktualizuje konkrétní nabídku v rámci oboru názvů vydavatele
 
 Následující příklad vytvoří nabídku s hodnotami OfferId `contosovirtualmachine` .
 
-### <a name="request"></a>Žádost
+### <a name="request"></a>Request
 
 ``` json
   {
@@ -283,4 +285,4 @@ Následující příklad vytvoří nabídku s hodnotami OfferId `contosovirtualm
 <a name="uploading-artifacts"></a>Nahrávají se artefakty.
 -------------------
 
-Artefakty, jako jsou obrázky a loga, byste měli sdílet tak, že je nahrajete do přístupného umístění na webu, a pak každý jako identifikátor URI v žádosti PUT, jako v předchozím příkladu. Systém zjistí, že tyto soubory nejsou k dispozici v úložišti Azure Marketplace, a stáhne tyto soubory do úložiště.  V důsledku toho zjistíte, že budoucí požadavky GET vrátí adresu URL služby Azure Marketplace pro tyto soubory.
+Artefakty, jako jsou obrázky a loga, byste měli sdílet tak, že je nahrajete do přístupného umístění na webu, a pak každý jako identifikátor URI v žádosti PUT, jako v předchozím příkladu. Systém zjistí, že tyto soubory nejsou k dispozici ve Azure Marketplacem úložišti, a tyto soubory Stáhněte do úložiště.  V důsledku toho zjistíte, že budoucí požadavky GET vrátí adresu URL služby Azure Marketplace pro tyto soubory.

@@ -3,19 +3,21 @@ title: Reference k rozhraní API portál partnerů cloudu – komerční tržiš
 description: Popis, předpoklady k použití a seznam operací rozhraní API Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: 56594b41bd0b771d0cb9a2f49611d9b6c6d393db
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: reference
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 51c8b91ccf85087f965d632dee9296076aba0d86
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113577"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011954"
 ---
 # <a name="cloud-partner-portal-api-reference"></a>Reference k rozhraní API portál partnerů cloudu
 
 > [!NOTE]
-> Rozhraní API pro portál partnerů cloudu jsou integrovaná do partnerského centra a budou fungovat i po migraci nabídek do partnerského centra. Integrace přináší malé změny. Zkontrolujte [změny v rozhraních API cpp](#changes-to-cpp-apis-after-the-migration-to-partner-center) uvedených v tomto dokumentu, abyste zajistili, že váš kód bude i po migraci do partnerského centra fungovat i nadále.
+> Rozhraní API pro portál partnerů cloudu jsou integrovaná s a budou pokračovat v práci v partnerském centru. Přechod přináší malé změny. Zkontrolujte [změny v rozhraních API cpp](#changes-to-cpp-apis-after-the-migration-to-partner-center) uvedených v tomto dokumentu, abyste zajistili, že váš kód pokračuje v práci po přechodu do partnerského centra. Rozhraní API CPP by se mělo používat jenom pro existující produkty, které už jsou integrované před přechodem do partnerského centra; nové produkty by měly používat rozhraní API pro odesílání v partnerském centru.
 
 Rozhraní REST API pro portál partnerů cloudu umožňují programové načítání a manipulaci s pracovními postupy, nabídkami a profily vydavatelů. Rozhraní API používají řízení přístupu na základě role (RBAC) k prosazování správných oprávnění v době zpracování.
 
@@ -61,6 +63,6 @@ Tato reference odkazuje na rozhraní API, aby prováděla následující běžn�
 
 - [Nastavení cen pro nabídky virtuálních počítačů](./cloud-partner-portal-api-setting-price.md)
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 - [Řešení potíží s chybami ověřování](./cloud-partner-portal-api-troubleshooting-authentication-errors.md)

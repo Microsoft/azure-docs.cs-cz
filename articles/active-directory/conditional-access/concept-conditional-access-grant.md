@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1d30a32a58dd2385a214d813307c645c56afdc8
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 85beb04e39c5c47b9ee71ee96c2dff8910766ea3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024441"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009047"
 ---
 # <a name="conditional-access-grant"></a>Podmíněný přístup: udělení
 
@@ -81,7 +81,6 @@ Toto nastavení platí pro následující aplikace pro iOS a Android:
 - Microsoft Edge
 - Microsoft Excel
 - Microsoft Flow
-- Microsoft Intune Managed Browser
 - Fakturace Microsoftu
 - Microsoft Kaizala
 - Spouštěč Microsoftu
@@ -123,9 +122,22 @@ Aby bylo možné tento ovládací prvek udělit, podmíněný přístup vyžaduj
 Toto nastavení platí pro následující klientské aplikace:
 
 - Microsoft Cortana
+- Microsoft Edge
+- Microsoft Excel
+- Microsoft Office
 - Microsoft OneDrive
+- Microsoft OneNote
 - Microsoft Outlook
 - Microsoft Planner
+- Microsoft Power BI
+- Microsoft PowerPoint
+- Microsoft SharePoint
+- Microsoft Word
+- Víceřádkové pro Intune
+- Devět e-mailů & kalendář
+
+> [!NOTE]
+> Microsoft Kaizala, Microsoft Skype pro firmy a Microsoft Visio nepodporují udělení **zásad ochrany aplikací** . Pokud požadujete, aby tyto aplikace fungovaly, použijte výhradně udělení oprávnění **vyžadovat schválené aplikace** . Použití klauzule OR mezi dvěma granty nebude pro tyto tři aplikace fungovat.
 
 **Poznámky**
 

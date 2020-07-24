@@ -3,8 +3,8 @@ title: Konfigurace požadovaného stavu pro Azure – přehled
 description: Naučte se používat obslužnou rutinu rozšíření Microsoft Azure pro konfiguraci požadovaného stavu prostředí PowerShell (DSC). Tento článek obsahuje požadavky, architekturu a rutiny.
 services: virtual-machines-windows
 documentationcenter: ''
-author: bobbytreed
-manager: carmonm
+author: mgoedtel
+manager: evansma
 editor: ''
 tags: azure-resource-manager
 keywords: našly
@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
-ms.date: 05/02/2018
-ms.author: robreed
-ms.openlocfilehash: 82d268eedd73b8de670da93ad3a601b5e75e6444
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/13/2020
+ms.author: magoedte
+ms.openlocfilehash: edf1fce488bf3bb8aa107a295cf3488243775192
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82188531"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010916"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Úvod k obslužné rutině rozšíření Azure Desired State Configuration
 
@@ -36,7 +36,7 @@ Ve virtuálním počítači není k dispozici žádné Průběžné vytváření
 
 Tento článek poskytuje informace o obou scénářích: použití rozšíření DSC pro službu Automation pro automatizaci a používání rozšíření DSC jako nástroje pro přiřazení konfigurací k virtuálním počítačům pomocí sady Azure SDK.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - **Místní počítač**: Pokud chcete pracovat s rozšířením virtuálního počítače Azure, musíte použít Azure Portal nebo sadu Azure PowerShell SDK.
 - **Agent hosta**: virtuální počítač Azure NAKONFIGUROVANÝ konfigurací DSC musí být operační systém, který podporuje Windows Management Framework (WMF) 4,0 nebo novější. Úplný seznam podporovaných verzí operačních systémů najdete v části [Historie verzí rozšíření DSC](../../automation/automation-dsc-extension-history.md).
@@ -59,7 +59,7 @@ Při prvním volání rozšíření se nainstaluje verze WMF pomocí následují
 - Pokud je zadána vlastnost **wmfVersion** , je nainstalována verze WMF, pokud není tato verze kompatibilní s operačním systémem virtuálního počítače.
 - Pokud není zadána žádná vlastnost **wmfVersion** , je nainstalována nejnovější příslušná verze WMF.
 
-Instalace WMF vyžaduje restart. Po restartování bude rozšíření stahovat soubor zip, který je zadán ve vlastnosti **modulesUrl** , pokud je k dispozici. Pokud je toto umístění v úložišti objektů BLOB v Azure, můžete pro přístup k souboru zadat token SAS ve vlastnosti **sasToken** . Po stažení a rozbalení souboru. zip se funkce konfigurace definovaná v **configurationFunction** spustí a vygeneruje soubor. mof ([Formát MOF (Managed Object Format)](https://docs.microsoft.com/windows/win32/wmisdk/managed-object-format--mof-)). Rozšíření se pak spustí `Start-DscConfiguration -Force` pomocí generovaného souboru. mof. Rozšíření zachytí výstup a zapíše ho do kanálu stavu Azure.
+Instalace WMF vyžaduje restart. Po restartování bude rozšíření stahovat soubor zip, který je zadán ve vlastnosti **modulesUrl** , pokud je k dispozici. Pokud je toto umístění v úložišti objektů BLOB v Azure, můžete pro přístup k souboru zadat token SAS ve vlastnosti **sasToken** . Po stažení a rozbalení souboru. zip se funkce konfigurace definovaná v **configurationFunction** spustí a vygeneruje soubor. mof ([Formát MOF (Managed Object Format)](/windows/win32/wmisdk/managed-object-format--mof-)). Rozšíření se pak spustí `Start-DscConfiguration -Force` pomocí generovaného souboru. mof. Rozšíření zachytí výstup a zapíše ho do kanálu stavu Azure.
 
 ### <a name="default-configuration-script"></a>Výchozí konfigurační skript
 
@@ -81,7 +81,7 @@ Tyto informace se dají zobrazit v Azure Portal nebo můžete použít PowerShel
 ```
 
 V případě názvu konfigurace uzlu se ujistěte, že konfigurace uzlu existuje v konfiguraci stavu Azure.  Pokud tomu tak není, nasazení rozšíření vrátí chybu.  Také se ujistěte, že používáte název *konfigurace uzlu* , a ne konfiguraci.
-Konfigurace je definována ve skriptu, který se používá [ke kompilaci konfigurace uzlu (soubor MOF)](https://docs.microsoft.com/azure/automation/automation-dsc-compile).
+Konfigurace je definována ve skriptu, který se používá [ke kompilaci konfigurace uzlu (soubor MOF)](../../automation/automation-dsc-compile.md).
 Název bude vždycky konfigurace následovaný tečkou `.` a buď `localhost` nebo určitým názvem počítače.
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>Rozšíření DSC v šablonách Správce prostředků
@@ -188,11 +188,11 @@ Portál shromažďuje následující vstup:
 
 - **Argumenty konfigurace**: Pokud funkce konfigurace přebírá argumenty, zadejte je tady ve formátu **argumentName1 = Hodnota1, argumentName2 = hodnota2**. Tento formát je jiný formát, ve kterém jsou konfigurační argumenty přijaty v rutinách PowerShellu nebo šablonách Správce prostředků.
 
-- **Soubor konfiguračních dat psd1**: vaše konfigurace vyžaduje soubor konfiguračních dat v souboru. psd1, pomocí tohoto pole můžete vybrat datový soubor a nahrát ho do úložiště objektů BLOB uživatele. Soubor konfiguračních dat je zabezpečený tokenem SAS v úložišti objektů BLOB.
+- **Soubor psd1 konfiguračních dat**: Pokud vaše konfigurace vyžaduje soubor dat konfigurace v `.psd1` , pomocí tohoto pole vyberte datový soubor a nahrajte ho do úložiště objektů BLOB uživatele. Soubor konfiguračních dat je zabezpečený tokenem SAS v úložišti objektů BLOB.
 
 - **Verze WMF**: Určuje verzi rozhraní Windows Management Framework (WMF), která má být na vašem virtuálním počítači nainstalovaná. Nastavení této vlastnosti na nejnovější nainstaluje nejnovější verzi WMF. V současné době jsou jedinou možnou hodnotou této vlastnosti 4,0, 5,0, 5,1 a nejnovější. Tyto možné hodnoty se vztahují na aktualizace. Výchozí hodnota je **nejnovější**.
 
-- **Shromažďování dat**: Určuje, zda bude rozšíření shromažďovat telemetrii. Další informace najdete v tématu [shromažďování dat rozšíření Azure DSC](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/).
+- **Shromažďování dat**: Určuje, zda bude rozšíření shromažďovat telemetrii. Další informace najdete v tématu [shromažďování dat rozšíření Azure DSC](https://devblogs.microsoft.com/powershell/azure-dsc-extension-data-collection-2/).
 
 - **Version (verze**): Určuje verzi rozšíření DSC, která se má nainstalovat. Informace o verzích najdete v tématu [Historie verzí rozšíření DSC](/powershell/scripting/dsc/getting-started/azuredscexthistory).
 

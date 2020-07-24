@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f209a8b1d7ba5ab4fc213e43d56c04aebc3bd410
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: d2deb59b5a10177b1a6e57046c013ec9dac0fb06
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224260"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010797"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Key Vault rozšíření virtuálního počítače pro Linux
 
@@ -35,7 +35,7 @@ Rozšíření virtuálních počítačů Key Vault podporuje tyto distribuce sys
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
-Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního počítače. Rozšíření nevyžaduje chráněná nastavení – veškerá jeho nastavení jsou považována za informace bez dopadu na zabezpečení. Přípona vyžaduje seznam monitorovaných tajných kódů, četnost dotazování a cílové úložiště certifikátů. Konkrétně:  
+Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního počítače. Rozšíření nevyžaduje chráněná nastavení – veškerá jeho nastavení jsou považována za informace bez dopadu na zabezpečení. Přípona vyžaduje seznam monitorovaných tajných kódů, četnost dotazování a cílové úložiště certifikátů. Konkrétně se jedná o tyto:  
 ```json
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -71,7 +71,7 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
 > [!NOTE]
 > Vaše sledované adresy URL certifikátů by měly být ve formátu `https://myVaultName.vault.azure.net/secrets/myCertName` .
 > 
-> Důvodem je to `/secrets` , že cesta vrátí úplný certifikát, včetně privátního klíče, ale `/certificates` cesta ne. Další informace o certifikátech najdete tady: [Key Vault certifikátů](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates) .
+> Důvodem je to `/secrets` , že cesta vrátí úplný certifikát, včetně privátního klíče, ale `/certificates` cesta ne. Další informace o certifikátech najdete tady: [Key Vault certifikátů](../../key-vault/general/about-keys-secrets-certificates.md) .
 
 > [!NOTE]
 > Vlastnost authenticationSettings je volitelná pro scénáře, kdy má virtuální počítač více přiřazených identit.
@@ -88,9 +88,9 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
 | typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | řetězec |
 | certificateStoreName | Ignoruje se na Linux. | řetězec |
-| linkOnRenewal | false (nepravda) | Boolean |
+| linkOnRenewal | false (nepravda) | boolean |
 | certificateStoreLocation  | /var/lib/waagent/Microsoft.Azure.KeyVault | řetězec |
-| requiredInitialSync | true | Boolean |
+| requiredInitialSync | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | pole řetězců
 | msiEndpoint | http://169.254.169.254/metadata/identity | řetězec |
 | msiClientId | c7373ae5-91c2-4165-8ab6-7381d6e75619 | řetězec |
@@ -204,12 +204,12 @@ Pomocí rozhraní příkazového řádku Azure můžete nasadit rozšíření Ke
 Mějte na paměti následující omezení/požadavky:
 - Omezení Key Vault:
   - Musí existovat v době nasazení. 
-  - Mustbe sada zásad přístupu Key Vault pro identitu VM/VMSS pomocí spravované identity. Viz [poskytnutí Key Vault ověřování pomocí spravované identity](../../key-vault/managed-identity.md)
+  - Mustbe sada zásad přístupu Key Vault pro identitu VM/VMSS pomocí spravované identity. Viz [poskytnutí Key Vault ověřování pomocí spravované identity](../../key-vault/general/managed-identity.md)
 
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Řešení potíží
+### <a name="troubleshoot"></a>Odstranit potíže
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí Azure PowerShell. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí Azure PowerShell.
 

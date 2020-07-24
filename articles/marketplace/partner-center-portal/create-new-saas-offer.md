@@ -1,18 +1,18 @@
 ---
-title: Vytvoření nové nabídky SaaS pro komerční tržiště Microsoftu
-description: Postup vytvoření nové nabídky software jako služba (SaaS) pro výpis nebo prodej v Microsoft AppSource, Azure Marketplace nebo prostřednictvím programu Cloud Solution Provider (CSP) pomocí programu Microsoft Commercial Marketplace v partnerském centru Microsoftu.
+title: Vytvoření nabídky SaaS, Azure Marketplace a Microsoft AppSource
+description: Postup vytvoření nabídky software jako služba (SaaS) pro výpis nebo prodej v Microsoft AppSource, Azure Marketplace nebo prostřednictvím programu Cloud Solution Provider (CSP) pomocí programu Microsoft Commercial Marketplace v partnerském centru Microsoftu.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: a233f3594ace74a6bfeca90ffccfbcb233e5d890
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/22/2020
+ms.openlocfilehash: 2c5394dce503a6fa00e2a3e6ff73a683d3d2e76f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121877"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012089"
 ---
-# <a name="create-a-new-saas-offer-in-the-commercial-marketplace"></a>Vytvoření nové nabídky SaaS na komerčním webu Marketplace
+# <a name="create-a-saas-offer"></a>Vytvoření nabídky SaaS
 
 Pokud chcete začít vytvářet nabídky software jako služba (SaaS) na komerčním webu Marketplace, ujistěte se, že jste nejdřív [vytvořili účet partnerského centra](./create-account.md) a otevřete [řídicí panel komerčního tržiště](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)s vybraným **přehledem** .
 
@@ -96,7 +96,7 @@ Toto je ukázkový rozpis nákladů a výběrů za účelem předvedení modelu 
 - V tomto příkladu vám Microsoft účtuje $100,00 pro zákazníka za softwarovou licenci a vyplatí $80,00 pro vydavatele.
 
 > [!NOTE]
-> **Omezený poplatek za službu Marketplace** – u některých nabídek SaaS, které jste publikovali na komerčním tržišti, společnost Microsoft sníží poplatek za službu Marketplace z 20% (jak je popsáno v tématu smlouva Microsoft Publisher Agreement) na 10%. Pro vaše nabídky, které mají být kvalifikovány, je nutné, aby vaše nabídky označila společnost Microsoft jako nabízené prioritní IP adresy nebo spoluprodejní IP adresy. Nárok na získání omezeného servisního poplatku za měsíc musí být splněn nejméně pět (5) pracovních dnů před koncem každého kalendářního měsíce. Snížený poplatek za službu Marketplace se nevztahuje na virtuální počítače, spravované aplikace ani žádné jiné produkty, které jsou dostupné prostřednictvím komerčního tržiště.
+> **Omezený poplatek za službu Marketplace** – u některých nabídek SaaS, které jste publikovali na komerčním tržišti, společnost Microsoft sníží poplatek za službu Marketplace z 20% (jak je popsáno v tématu smlouva Microsoft Publisher Agreement) na 10%. Aby vaše nabídky získaly nárok, vaše nabídky musí být určené společností Microsoft jako spoluprodejní motivovaní Azure. Nárok na získání omezeného servisního poplatku za měsíc musí být splněn nejméně pět (5) pracovních dnů před koncem každého kalendářního měsíce. Snížený poplatek za službu Marketplace platí také pro virtuální počítače s motivovaní, spravované aplikace a jakékoli další kvalifikované IaaS nabídky, které jsou k dispozici prostřednictvím komerčního tržiště Azure IP.
 
 ### <a name="list-through-microsoft"></a>Seznam prostřednictvím Microsoftu
 
@@ -131,13 +131,13 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Microsoft AppSo
 
 1. Velké logo
 2. Kategorie
-3. Odvětví
+3. Obory
 4. Adresa podpory (odkaz)
 5. Podmínky použití
 6. Zásady ochrany osobních údajů
 7. Název nabídky
-8. Souhrn
-9. Description
+8. Shrnutí
+9. Popis
 10. Snímky obrazovky a videa
 11. Dokumenty
 
@@ -190,7 +190,7 @@ Vaše nabídka bude publikována do AppSource nebo Azure Marketplace v závislos
 
 V [nabídce Doporučené postupy](../gtm-offer-listing-best-practices.md)najdete úplný seznam kategorií a podkategorií, které platí pro jednotlivé prezentace.
 
-### <a name="industries"></a>Odvětví
+### <a name="industries"></a>Obory
 
 [!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
@@ -260,7 +260,7 @@ Zadejte podrobnosti, které se mají zobrazit na webu Marketplace, včetně popi
 - **Hledaná klíčová slova** – zadejte až tři klíčová slova pro hledání, která můžou zákazníci použít k vyhledání vaší nabídky na webu Marketplace.
 - Úvodní **pokyny** (povinné) – Vysvětlete, jak nakonfigurovat a začít používat vaši aplikaci pro potenciální zákazníky.  Tento rychlý Start může obsahovat odkazy na podrobnější online dokumentaci. Do tohoto pole lze zadat až 3 000 znaků textu.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Popis
 
 Toto pole je vyžadováno.
 
@@ -331,14 +331,14 @@ Diagramy a podrobná vysvětlení popisující použití shromážděných polí
 
 - **Adresa URL cílové stránky** (požadováno) – definujte adresu URL webu SaaS (například `https://contoso.com/signup` ), kterou budou koncoví zákazníci uvádět po získání nabídky z webu Marketplace a aktivaci procesu konfigurace z nově vytvořeného předplatného SaaS.  Tato adresa URL bude volána parametrem identifikačního tokenu nákupu na webu Marketplace, který jednoznačně identifikuje konkrétní nákup SaaS zákazníka.  Tento token musíte vyměňovat pro příslušné podrobnosti o předplatném SaaS pomocí rozhraní [Resolve](./pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) API.  Tyto podrobnosti a všechny ostatní, které chcete shromažďovat, by se měly používat jako součást interaktivní webové stránky zákazníka, která je integrovaná s vaším prostředím, k dokončení registrace koncových zákazníků a k aktivaci jejich nákupu.  Na této stránce by se měl uživatel zaregistrovat přes ověřování jedním kliknutím pomocí Azure Active Directory (Azure AD). <br> <br> Tato adresa URL s parametrem identifikačního tokenu nákupu na webu Marketplace bude taky volána, když koncový zákazník spustí spravované prostředí SaaS Azure Portal z centra pro správu M365. Oba toky byste měli zpracovávat, když se token poskytne poprvé po nákupu pro nové zákazníky a když je poskytnutý pro stávající zákazníky, kteří spravují jeho SaaS. <br> <br> Cílová stránka, kterou zde nakonfigurujete, by měla být spuštěná a musí běžet 24/7. Toto je jediný způsob, jakým se dozvíte o nových nákupech nabídek SaaS provedených na webu Marketplace nebo o požadavcích na konfiguraci aktivního předplatného nabídky.
 
-- **Webhook připojení** (povinné) – pro všechny asynchronní události, které Microsoft potřebuje odeslat (například předplatné SaaS se zrušilo), budeme potřebovat zadat adresu URL Webhooku připojení. Budeme zavolat tuto adresu URL a upozorníme vás na událost. <br> <br> Webhook, který zadáte, by měl být v provozu a musí běžet 24/7, protože se jedná o jediný způsob, jakým se dozvíte o aktualizacích předplatných SaaS vašich zákazníků prostřednictvím Marketplace.  Pokud ještě nemáte systém Webhooku, nejjednodušší konfigurace bude mít aplikaci logiky koncového bodu HTTP, která bude naslouchat všem událostem, které jsou do ní odesílány, a pak je správně zpracovat (například `https://prod-1westus.logic.azure.com:443/work` ). Další informace najdete v tématu [pracovní postupy volání, triggeru nebo vnoření pracovních postupů s koncovými body HTTP v Logic Apps](../../logic-apps/logic-apps-http-endpoint.md).
+- **Webhook připojení** (povinné) – pro všechny asynchronní události, které Microsoft potřebuje odeslat (například předplatné SaaS se zrušilo), budeme potřebovat zadat adresu URL Webhooku připojení. Budeme zavolat tuto adresu URL a upozorníme vás na událost. <br> <br> Webhook, který zadáte, by měl být v provozu a musí běžet 24/7, protože se jedná o jediný způsob, jakým se dozvíte o aktualizacích předplatných SaaS vašich zákazníků prostřednictvím Marketplace. Pokud ještě nemáte systém Webhooku, nejjednodušší konfigurace bude mít aplikaci logiky koncového bodu HTTP, která bude naslouchat všem událostem, které jsou do ní odesílány, a pak je správně zpracovat (například `https://prod-1westus.logic.azure.com:443/work` ). Další informace najdete v tématu [pracovní postupy volání, triggeru nebo vnoření pracovních postupů s koncovými body HTTP v Logic Apps](../../logic-apps/logic-apps-http-endpoint.md).
 
 - **ID tenanta Azure AD** (povinné) – uvnitř Azure Portal musíme [vytvořit aplikaci Azure Active Directory (AD)](../../active-directory/develop/howto-create-service-principal-portal.md) , abyste mohli ověřit, že připojení mezi našimi dvěma službami je za ověřenou komunikací. [ID tenanta](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)zjistíte tak, že přejdete na Azure Active Directory a vyberete **vlastnosti**a pak vyhledáte uvedené číslo **ID adresáře** (například 50c464d3-4930-494c-963c-1e951d15360e).
 
 - **ID aplikace Azure AD** (požadováno) – budete také potřebovat [ID aplikace](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in). Pokud chcete získat jeho hodnotu, vyberte Azure Active Directory a vyberte **Registrace aplikací**a vyhledejte číslo **ID aplikace** uvedené (například `50c464d3-4930-494c-963c-1e951d15360e` ).
 
 >[!Note]
->ID aplikace Azure AD je přidruženo k vašemu ID vydavatele v účtu partnerského centra.  Ujistěte se, že se stejné ID aplikace používá ve všech vašich nabídkách.
+>ID aplikace Azure AD je přidruženo k vašemu ID vydavatele v účtu partnerského centra. Ujistěte se, že používáte stejné ID aplikace ve všech vašich nabídkách.
 
 >[!Note]
 >Pokud má Vydavatel v partnerském centru dva nebo více různých účtů, měla by se použít nejméně jedno jiné ID aplikace Azure AD, každé pro jeden z účtů. Každý partnerský účet v partnerském centru by měl používat jedinečné ID aplikace Azure AD pro všechny nabídky SaaS, které jsou publikovány prostřednictvím tohoto účtu.
@@ -347,7 +347,7 @@ Než budete pokračovat, vyberte **Uložit koncept** .
 
 ## <a name="plan-overview"></a>Přehled plánu
 
-Tato stránka vám umožní v rámci stejné nabídky poskytnout nejrůznější možnosti plánu. Tyto plány (někdy označované jako SKU) se mohou lišit v souvislosti s verzemi, finanční zhodnocení a úrovněmi služby. Aby bylo možné nabídku prodávat na webu Marketplace, musíte nastavit aspoň jeden plán.
+Tato stránka vám umožní v rámci stejné nabídky poskytnout nejrůznější možnosti plánu. Tyto plány (dříve nazývané SKU) se můžou lišit podle verze, finanční zhodnocení nebo vrstev služby. Musíte nastavit aspoň jeden plán pro prodej vaší nabídky na webu Marketplace.
 
 Po vytvoření se zobrazí vaše názvy plánů, ID, cenové modely, dostupnost (veřejné nebo soukromé), aktuální stav publikování a všechny dostupné akce.
 
@@ -380,7 +380,7 @@ Tato stránka vám umožní nakonfigurovat trhy, které tento plán bude k dispo
 
 #### <a name="markets-optional"></a>Trhy (volitelné)
 
-Každý plán musí být k dispozici alespoň v jednom trhu. Vyberte **Upravit trhy** a zaškrtněte políčko pro jakékoli místo na trhu, kde byste chtěli tento plán zpřístupnit. Tato stránka obsahuje vyhledávací pole a možnost výběru "vypoukázaného" země/oblastí, kde společnost Microsoft za vás zavazuje prodej a používání daně.
+Každý plán musí být k dispozici alespoň v jednom trhu. Vyberte **Upravit trhy** a zaškrtněte políčko pro jakékoli místo na trhu, kde byste chtěli tento plán zpřístupnit. Tato stránka obsahuje vyhledávací pole a možnost výběru ["Vypoukázaného" země/oblastí](tax-details-paid-transactions.md), kde společnost Microsoft za vás zavazuje prodej a používání daně.
 
 Pokud jste už pro svůj plán nastavili ceny v USA dolary (USD) a přidáte další místo na trhu, cena za nový trh se vypočítá podle aktuálních směnných kurzů. Před publikováním si přečtěte cenu za každý trh. Prohlédněte si ceny pomocí odkazu exportovat ceny (XLSX) po uložení změn.
 
@@ -444,7 +444,7 @@ Vyberte **Toto je soukromý plán** , aby byl váš plán soukromý a viditelný
 
 Přiřaďte cílovou skupinu, která bude mít přístup k tomuto privátnímu plánu. Přístup se přiřazuje pomocí ID klientů s možností zahrnutí popisu každého přiřazeného ID tenanta. Pokud importujete soubor tabulky. csv, můžete přidat maximálně 10 ID klientů nebo 20 000 ID klientů.
 
-Tenant je reprezentace organizace s ID reprezentovanou jako identifikátor GUID (globálně jedinečný identifikátor, 128 celé číslo, které se používá k identifikaci prostředků). Jedná se o vyhrazenou instanci služby Azure AD, kterou vývojář organizace nebo aplikace obdrží, když organizace nebo vývojář aplikace vytvoří relaci s Microsoftem, například při registraci k Azure, Microsoft Intune nebo Microsoft 365. Každý tenant Azure AD je samostatný a oddělený od ostatních tenantů Azure AD. Pokud chcete zkontrolovat, jestli máte tenanta, přihlaste se k webu Azure Portal pomocí účtu, který chcete použít ke správě vaší aplikace. Pokud tenanta máte, budete k němu automaticky přihlášeni a název tenanta se zobrazí přímo pod názvem vašeho účtu. Najeďte myší na název vašeho účtu v pravém horním rohu webu Azure Portal, zobrazí se vaše jméno, e-mail, ID adresáře nebo tenanta (GUID) a vaše doména. Pokud je k vašemu účtu přidruženo více tenantů, můžete výběrem názvu vašeho účtu otevřít nabídku, ve které můžete mezi jednotlivými tenanty přepínat. Každý tenant má vlastní ID tenanta. ID tenanta vaší organizace můžete také vyhledat pomocí adresy URL názvu domény na adrese [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
+Tenant je reprezentace organizace s ID reprezentovanou jako identifikátor GUID (globálně jedinečný identifikátor, 128 celé číslo, které se používá k identifikaci prostředků). Jedná se o vyhrazenou instanci služby Azure AD, kterou vývojář organizace nebo aplikace obdrží, když organizace nebo vývojář aplikace vytvoří relaci s Microsoftem, například při registraci k Azure, Microsoft Intune nebo Microsoft 365. Každý tenant Azure AD se odlišuje a je oddělený od ostatních tenantů Azure AD. Pokud chcete zkontrolovat, jestli máte tenanta, přihlaste se k webu Azure Portal pomocí účtu, který chcete použít ke správě vaší aplikace. Pokud tenanta máte, budete k němu automaticky přihlášeni a název tenanta se zobrazí přímo pod názvem vašeho účtu. Najeďte myší na název vašeho účtu v pravém horním rohu webu Azure Portal, zobrazí se vaše jméno, e-mail, ID adresáře nebo tenanta (GUID) a vaše doména. Pokud je k vašemu účtu přidruženo více tenantů, můžete výběrem názvu vašeho účtu otevřít nabídku, ve které můžete mezi jednotlivými tenanty přepínat. Každý tenant má vlastní ID tenanta. ID tenanta vaší organizace můžete také vyhledat pomocí adresy URL názvu domény na adrese [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
 
 I když SaaS nabízí použití ID tenanta k definování soukromé cílové skupiny, můžou používat i jiné typy nabídek ID předplatných Azure (které jsou také reprezentované jako identifikátory GUID).
 
@@ -468,7 +468,7 @@ Než budete pokračovat, vyberte **Uložit koncept** .
 
 Pokud chcete, aby vaše nabídka byla k dispozici v programu CSP, umožní poskytovatelům cloudového řešení prodávat vaše produkty jako součást řešení svým zákazníkům. Další informace najdete v tématu [Poskytovatelé cloudových řešení](https://go.microsoft.com/fwlink/?linkid=2111109).
 
-## <a name="publish"></a>Publikování
+## <a name="publish"></a>Publikovat
 
 Až dokončíte všechny požadované části nabídky, vyberte **zkontrolovat a publikovat** v pravém horním rohu portálu.
 

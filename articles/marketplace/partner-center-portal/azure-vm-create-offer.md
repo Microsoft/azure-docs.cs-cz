@@ -1,18 +1,18 @@
 ---
 title: Vytvoření nabídky virtuálních počítačů Azure na Azure Marketplace
-description: Naučte se, jak vytvořit virtuální počítač na Azure Marketplace s požadovanou SKU.
+description: Naučte se, jak vytvořit virtuální počítač v Azure Marketplace s požadovaným plánem.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: emuench
 ms.author: mingshen
-ms.date: 06/17/2020
-ms.openlocfilehash: fe53de2c81f9e9df5fd9270951f943b0b3505f1e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/17/2020
+ms.openlocfilehash: 6df1620f2d1097ac23e5dfa3903fefc74d13fa65
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110975"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012021"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Vytvoření nabídky virtuálních počítačů Azure na Azure Marketplace
 
@@ -158,7 +158,7 @@ Zákazníkům musíte poskytnout podmínky nabídky a ujednání. Máte dvě mo�
 
   * **Vlastní změny**: tyto zvláštní změny standardní smlouvy jsou zaměřené na konkrétní zákazníky prostřednictvím ID klientů Azure. Můžete zvolit tenanta, kterého chcete cílit. S vlastními podmínkami změny v toku nákupu nabídky se zobrazí jenom zákazníci z tenanta. Zákazníci musí přijmout podmínky standardní smlouvy a změny před tím, než budou moci vaši nabídku použít.
 
-    1. Začněte tím, že vyberete **Přidat vlastní výrazy změny (max. 10)**. Pro každou nabídku můžete zadat až deset vlastních podmínek pro změnu. Udělejte toto:
+    1. Začněte tím, že vyberete **Přidat vlastní výrazy změny (max. 10)**. Pro každou nabídku můžete zadat až deset vlastních podmínek pro změnu. Postupujte následovně:
 
        a. Do pole **vlastní výrazy pro změnu** zadejte vlastní výrazy. Můžete zadat neomezený počet znaků. Pouze zákazníci z ID tenanta, které zadáte pro tyto vlastní výrazy, se budou zobrazovat v toku nákupu nabídky v Azure Portal.
 
@@ -180,7 +180,7 @@ Na stránce **seznam nabídek** můžete definovat podrobnosti nabídky, jako je
 
 ### <a name="marketplace-details"></a>Podrobnosti Marketplace
 
-#### <a name="name"></a>Name
+#### <a name="name"></a>Název
 
 Název, který zde zadáte, se zákazníkům zobrazí jako název seznamu nabídek. Toto pole se vyplní názvem, který jste zadali do pole **alias nabídky** při vytváření nabídky. Tento název můžete později změnit. Název:
 
@@ -196,7 +196,7 @@ Zadejte krátký popis vaší nabídky, který se zobrazí ve výsledcích hled�
 
 Zadejte delší popis nabídky, která se zobrazí ve výsledcích hledání Azure Marketplace. Může obsahovat až 256 znaků.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Popis
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -226,7 +226,7 @@ Poskytněte web podpory, kde se zákazníci můžou připojit k vašemu týmu po
 
 Poskytněte kontaktní informace partnerům Microsoftu, kteří se použijí, když vaši zákazníci otevřou lístek podpory. Tyto informace nejsou uvedené na Azure Marketplace.
 
-- Name
+- Název
 - E-mail
 - Rozložení
 
@@ -234,7 +234,7 @@ Poskytněte kontaktní informace partnerům Microsoftu, kteří se použijí, kd
 
 Poskytněte kontaktní informace Microsoftu pro použití v případě problémů s vaší nabídkou, včetně problémů s certifikací. Tyto informace nejsou uvedené na Azure Marketplace.
 
-- Name
+- Název
 - E-mail
 - Rozložení
 
@@ -286,7 +286,7 @@ Než budete pokračovat k další části, vyberte **Uložit koncept** .
 
 ## <a name="plan-overview"></a>Přehled plánu
 
-V partnerském centru můžete v rámci stejné nabídky poskytnout nejrůznější možnosti plánu. Tyto plány se dřív odkazovaly na SKU. Nabídka vyžaduje aspoň jeden plán, který se může lišit podle finanční zhodnocení cílové skupiny, oblasti Azure, funkcí nebo imagí virtuálních počítačů.
+V partnerském centru můžete v rámci stejné nabídky poskytnout nejrůznější možnosti plánu. Nabídka vyžaduje aspoň jeden plán (dříve označovaný jako SKU), který se může lišit podle finanční zhodnocení publikum, oblasti Azure, funkcí nebo imagí virtuálních počítačů.
 
 Po vytvoření plánů vyberte kartu **Přehled plánu** , kterou chcete zobrazit:
 
@@ -413,7 +413,6 @@ Jednotlivé plány můžete navrhovat tak, aby je bylo možné zobrazit všem u�
 >[!Note]
 >Pro předplatná Azure vytvořená prostřednictvím prodejce programu Cloud Solution Provider (CSP) nejsou podporovány soukromé nabídky.
 
-
 #### <a name="hide-a-plan"></a>Skrýt plán
 
 Pokud má být váš virtuální počítač používán pouze nepřímo, pokud je odkazován prostřednictvím jiné šablony řešení nebo spravované aplikace, zaškrtněte toto políčko pro publikování virtuálního počítače, ale jeho skrytí od zákazníků, kteří si ho můžou vyhledat nebo procházet přímo.
@@ -516,10 +515,10 @@ Na stránce **Přehled nabídky** se zobrazuje vizuální reprezentace kroků, d
 
 Tato stránka obsahuje také odkazy, které vám pomůžou s touto nabídkou pracovat v závislosti na jeho stavu:
 
-- Pokud je nabídka koncept: [Odstranit koncept nabídky](update-existing-offer.md#delete-a-draft-offer))
-- Pokud je nabídka živá: [ukončit prodej nabídky](update-existing-offer.md#stop-selling-an-offer-or-plan))
-- Pokud je nabídka ve verzi Preview: [Přejít na Live](publishing-status.md#publisher-approval))
-- Pokud jste nedokončili odhlášení vydavatele: [Zrušit publikování](update-existing-offer.md#cancel-publishing))
+- Pokud je nabídka koncept: [Nabídka odstranit koncept](update-existing-offer.md#delete-a-draft-offer)
+- Pokud je nabídka živá: [ukončit prodej nabídky](update-existing-offer.md#stop-selling-an-offer-or-plan)
+- Pokud je nabídka ve verzi Preview: [jít-Live](publishing-status.md#publisher-approval)
+- Pokud jste nedokončili odhlášení vydavatele: [Zrušit publikování](update-existing-offer.md#cancel-publishing)
 
 ## <a name="marketplace-examples"></a>Příklady Marketplace
 
@@ -530,12 +529,12 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 #### <a name="call-out-descriptions"></a>Popisy volání
 
 1. Velké logo
-2. Price
+2. Cena
 3. Kategorie
 4. podmínky a ujednání
 5. Adresa zásad ochrany osobních údajů (odkaz)
 6. Název nabídky
-7. Description
+7. Popis
 8. Užitečné odkazy
 9. Snímky obrazovky a videa
 
@@ -566,8 +565,8 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 
 #### <a name="call-out-descriptions"></a>Popisy volání
 
-1. Name
-2. Description
+1. Název
+2. Popis
 3. Užitečné odkazy
 4. Snímky obrazovky a videa
 

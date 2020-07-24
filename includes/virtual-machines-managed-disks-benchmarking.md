@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e5148ff9e92a2e550a3117356a4e77cbac8fc6f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da5811abec889bcc47d08878a0950df7f0983663
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67673282"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010817"
 ---
 *Zahřívání mezipaměti*  
 Disk s ukládáním do mezipaměti hostitele jen pro čtení umožňuje poskytnout vyšší IOPS, než je limit disku. Chcete-li získat tento maximální výkon pro čtení z mezipaměti hostitele, nejprve je nutné zahříváním mezipaměti tohoto disku. Tím se zajistí, že se v IOs pro čtení, který nástroj pro srovnávací testy na svazek CacheReads, bude ve skutečnosti načítat mezipaměť, a ne přímo disk. Výsledkem přístupů do mezipaměti je další IOPS z disku s povolenou jedinou mezipamětí.
@@ -21,7 +21,7 @@ Disk s ukládáním do mezipaměti hostitele jen pro čtení umožňuje poskytno
 > [!IMPORTANT]
 > Před spuštěním srovnávacích testů je nutné zavěsit mezipaměť a pokaždé, když se virtuální počítač restartuje.
 
-## <a name="tools"></a>nástroje
+## <a name="tools"></a>Nástroje
 
 ### <a name="iometer"></a>Iometer
 
@@ -62,24 +62,24 @@ Provedením následujících kroků zahříváte mezipaměť.
 
 1. Vytvořte dvě specifikace přístupu s hodnotami uvedenými níže,
 
-   | Name | Velikost požadavku | Vybraných | Oprávnění |
+   | Název | Velikost požadavku | Vybraných | Oprávnění |
    | --- | --- | --- | --- |
    | RandomWrites \_ 1 MB |1 MB |100 |0 |
    | RandomReads \_ 1 MB |1 MB |100 |100 |
 1. Spusťte test IOMeter pro inicializaci disku mezipaměti s následujícími parametry. Pro cílový svazek použijte tři pracovní vlákna a hloubku fronty 128. Nastavte hodnotu doba běhu testu na 2 hodiny na kartě nastavení testu.
 
-   | Scénář | Cílový svazek | Name | Doba trvání |
+   | Scénář | Cílový svazek | Název | Doba trvání |
    | --- | --- | --- | --- |
    | Inicializovat disk mezipaměti |CacheReads |RandomWrites \_ 1 MB |2 hodiny |
 1. Spusťte test IOMeter pro vyhřívání disku mezipaměti s následujícími parametry. Pro cílový svazek použijte tři pracovní vlákna a hloubku fronty 128. Nastavte hodnotu doba běhu testu na 2 hodiny na kartě nastavení testu.
 
-   | Scénář | Cílový svazek | Name | Doba trvání |
+   | Scénář | Cílový svazek | Název | Doba trvání |
    | --- | --- | --- | --- |
    | Zahřívání disku mezipaměti |CacheReads |RandomReads \_ 1 MB |2 hodiny |
 
 Po zahřívání disku mezipaměti pokračujte podle níže uvedených scénářů testování. Chcete-li spustit test IOMeter, použijte pro **každý** cílový svazek alespoň tři pracovní vlákna. Pro každé pracovní vlákno vyberte cílový svazek, nastavte hloubku fronty a vyberte jednu z uložených specifikací testu, jak je znázorněno v následující tabulce, aby se mohl spustit odpovídající testovací scénář. Tabulka také ukazuje očekávané výsledky pro IOPS a propustnost při spuštění těchto testů. Pro všechny scénáře se používá malá vstupně-výstupní operace o velikosti 8 KB a vysoká hloubka fronty 128.
 
-| Scénář testu | Cílový svazek | Name | Výsledek |
+| Scénář testu | Cílový svazek | Název | Výsledek |
 | --- | --- | --- | --- |
 | Max. Čtení IOPS |CacheReads |RandomWrites \_ 8K |50 000 IOPS |
 | Max. Zápis IOPS |NoCacheWrites |RandomReads \_ 8K |64 000 IOPS |
@@ -153,7 +153,7 @@ sudo fio --runtime 30 fiowrite.ini
 ```
 
 V průběhu testu můžete zobrazit počet vstupně-výstupních operací pro zápis, které virtuální počítač a prémiové disky přináší. Jak je znázorněno v následující ukázce, virtuální počítač DS14 poskytuje maximální limit zápisu IOPS 50 000 IOPS.  
-    ![Dodává se počet virtuálních počítačů pro zápis IOPS a prémiových disků.](../articles/virtual-machines/linux/media/premium-storage-performance/image11.png)
+    ![Doručí se počet virtuálních počítačů pro zápis IOPS a prémiových disků.](../articles/virtual-machines/linux/media/premium-storage-performance/image11.png)
 
 #### <a name="maximum-read-iops"></a>Maximální počet IOPS pro čtení
 
@@ -194,7 +194,7 @@ sudo fio --runtime 30 fioread.ini
 ```
 
 I když se test spustí, můžete zobrazit počet vstupně-výstupních operací, které virtuální počítače a disky Premium doručí. Jak je znázorněno v následující ukázce, DS14 virtuální počítač nabízí více než 64 000 čtení IOPS. Toto je kombinace disku a výkonu mezipaměti.  
-    ![](../articles/virtual-machines/linux/media/premium-storage-performance/image12.png)
+    ![Snímek obrazovky s množstvím virtuálních počítačů pro zápis IOPS a prémiových disků.](../articles/virtual-machines/linux/media/premium-storage-performance/image12.png)
 
 #### <a name="maximum-read-and-write-iops"></a>Maximální počet vstupně-výstupních operací čtení a zápisu
 

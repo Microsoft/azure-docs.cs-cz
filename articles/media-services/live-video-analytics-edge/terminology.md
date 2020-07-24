@@ -3,12 +3,12 @@ title: Live video Analytics v terminologii IoT EDG – Azure
 description: Tento článek poskytuje přehled živé analýzy videí na IoT Edge terminologii.
 ms.topic: conceptual
 ms.date: 05/30/2020
-ms.openlocfilehash: 58f3d7b54fd0bd19e6bc0a057ef053bb2c74cd97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d4eff506b2a6f51b9803f827379b9ba0c2b2ff6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84816523"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011494"
 ---
 # <a name="terminology"></a>Terminologie
 
@@ -26,7 +26,7 @@ Live video Analytics na IoT Edge může vytvářet assety nebo přidávat data d
 
 ## <a name="streaming"></a>Streamování
 
-Pokud máte na mobilním zařízení sledované video ze služeb, jako jsou Netflix, YouTube a další, máte streamované video. Přehrávání začne brzy po klepnutí na tlačítko "přehrát" (Pokud máte dostatečnou šířku pásma) a můžete hledat a zpátky na časové ose videa. Díky streamování je nápad doručovat pouze část videa, která je sledována, a nechat prohlížeč začít přehrávat video, zatímco data jsou stále přenášena ze serveru do klienta pro přehrávání. V souvislosti s Azure Media Services [streamování](https://en.wikipedia.org/wiki/Streaming_media) odkazuje na proces doručování médií z [Azure Media Services](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview) na klienta streamování (například Azure Media Player). Můžete použít Azure Media Services ke streamování videa klientům pomocí standardních protokolů pro streamování médií založených na protokolu HTTP, jako je například [http Live Streaming (HLS)](https://developer.apple.com/streaming/) a [MPEG-pomlčka](https://dashif.org/about/). HLS podporuje aplikace Azure Media Player a webové přehrávače, jako je [JW Player](https://www.jwplayer.com/), [hls.js](https://github.com/video-dev/hls.js/), [VideoJS](https://videojs.com/), [Shaka Player Google](https://github.com/google/shaka-player), nebo můžete nakreslit nativně v mobilních aplikacích s využitím [Exoplayer](https://github.com/google/ExoPlayer) v Androidu a iOS [Foundation](https://developer.apple.com/av-foundation/). Formát MPEG-POMLČKa je také podporován nástrojem Azure Media Player. [na této stránce najdete seznam klientů](https://dashif.org/clients/). 
+Pokud máte na mobilním zařízení sledované video ze služeb, jako jsou Netflix, YouTube a další, máte streamované video. Přehrávání začne brzy po klepnutí na tlačítko "přehrát" (Pokud máte dostatečnou šířku pásma) a můžete hledat a zpátky na časové ose videa. Díky streamování je nápad doručovat pouze část videa, která je sledována, a nechat prohlížeč začít přehrávat video, zatímco data jsou stále přenášena ze serveru do klienta pro přehrávání. V souvislosti s Azure Media Services [streamování](https://en.wikipedia.org/wiki/Streaming_media) odkazuje na proces doručování médií z [Azure Media Services](../azure-media-player/azure-media-player-overview.md) na klienta streamování (například Azure Media Player). Můžete použít Azure Media Services ke streamování videa klientům pomocí standardních protokolů pro streamování médií založených na protokolu HTTP, jako je například [http Live Streaming (HLS)](https://developer.apple.com/streaming/) a [MPEG-pomlčka](https://dashif.org/about/). HLS podporuje aplikace Azure Media Player a webové přehrávače, jako je [JW Player](https://www.jwplayer.com/), [hls.js](https://github.com/video-dev/hls.js/), [VideoJS](https://videojs.com/), [Shaka Player Google](https://github.com/google/shaka-player), nebo můžete nakreslit nativně v mobilních aplikacích s využitím [Exoplayer](https://github.com/google/ExoPlayer) v Androidu a iOS [Foundation](https://developer.apple.com/av-foundation/). Formát MPEG-POMLČKa je také podporován nástrojem Azure Media Player. [na této stránce najdete seznam klientů](https://dashif.org/clients/). 
 
 Díky použití [Media graphu](#media-graph)s k nahrávání videí do assetu v Azure Media Services můžete využívat možnosti streamování v Media Services, abyste mohli doručovat streamy videa v HLS a spojovníkech. Další informace najdete v článku o [přehrávání videa](video-playback-concept.md) .
 

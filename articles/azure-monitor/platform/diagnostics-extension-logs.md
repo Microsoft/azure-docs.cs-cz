@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 44368ab90abd189c6a8a0792494828c87142eb20
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a367e819ab9f12d9adcb448848c80eaeea73d113
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77672391"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008026"
 ---
 # <a name="collect-data-from-azure-diagnostics-extension-to-azure-monitor-logs"></a>Shromažďovat data z rozšíření diagnostiky Azure do protokolů Azure Monitor
 Rozšíření Azure Diagnostics je [Agent v Azure monitor](agents-overview.md) , který shromažďuje data monitorování z hostovaného operačního systému výpočetních prostředků Azure, včetně virtuálních počítačů. Tento článek popisuje, jak shromažďovat data shromážděná diagnostickým rozšířením z Azure Storage do Azure Monitor protokolů.
@@ -62,6 +63,6 @@ Za přibližně 30 minut budete moci zobrazit data z účtu úložiště v praco
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Shromážděte protokoly a metriky pro služby Azure](collect-azure-metrics-logs.md) pro podporované služby Azure.
+* [Shromážděte protokoly a metriky pro služby Azure](./resource-logs.md#send-to-log-analytics-workspace) pro podporované služby Azure.
 * [Povolte řešení](../../azure-monitor/insights/solutions.md) a poskytněte vám tak přehled o datech.
 * Data můžete analyzovat [pomocí vyhledávacích dotazů](../../azure-monitor/log-query/log-query-overview.md) .

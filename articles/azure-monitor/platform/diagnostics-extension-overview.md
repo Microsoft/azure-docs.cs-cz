@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 5dcdfba6e8dd00c8ba09e5e98293a30d19e51c99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6201a4e0551f0f75dde65b2bc4b8b560a0f5ea20
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83635956"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007992"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Přehled rozšíření Azure Diagnostics
 Azure Diagnostics rozšíření je [Agent v Azure monitor](agents-overview.md) , který shromažďuje data monitorování z hostovaného operačního systému výpočetních prostředků Azure, včetně virtuálních počítačů. Tento článek obsahuje přehled rozšíření Azure Diagnostics, včetně specifických funkcí, které podporuje, a možností instalace a konfigurace. 
@@ -33,7 +34,7 @@ Mezi hlavní rozdíly, které je potřeba vzít v úvahu, patří:
 
 - Rozšíření Azure Diagnostics se dá použít jenom s virtuálními počítači Azure. Agent Log Analytics se dá použít s virtuálními počítači v Azure, jinými cloudy a místním prostředím.
 - Rozšíření Azure Diagnostics odesílá data do Azure Storage, [Azure monitor metriky](data-platform-metrics.md) (pouze Windows) a Event Hubs. Agent Log Analytics shromažďuje data do [protokolů Azure monitor](data-platform-logs.md).
-- Agent Log Analytics je vyžadován pro [řešení](../monitor-reference.md#insights-and-core-solutions), [Azure monitor pro virtuální počítače](../insights/vminsights-overview.md)a další služby, jako je například [Azure Security Center](/azure/security-center/).
+- Agent Log Analytics je vyžadován pro [řešení](../monitor-reference.md#insights-and-core-solutions), [Azure monitor pro virtuální počítače](../insights/vminsights-overview.md)a další služby, jako je například [Azure Security Center](../../security-center/index.yml).
 
 ## <a name="costs"></a>Náklady
 Pro diagnostické rozšíření Azure se neúčtují žádné náklady, ale pro ingestování dat vám můžou být účtovány poplatky. Podívejte se na [Azure monitor ceny](https://azure.microsoft.com/pricing/details/monitor/) pro cíl, kde shromažďujete data.
@@ -43,14 +44,14 @@ V následujících tabulkách najdete seznam dat, která se můžou shromažďov
 
 ### <a name="windows-diagnostics-extension-wad"></a>Rozšíření Windows Diagnostics (WAD)
 
-| Zdroj dat | Description |
+| Zdroj dat | Popis |
 | --- | --- |
 | Protokoly událostí systému Windows   | Události z protokolu událostí systému Windows. |
 | Čítače výkonu | Číselné hodnoty, které měří výkon různých aspektů operačního systému a zatížení. |
 | Protokoly IIS             | Informace o použití pro weby služby IIS běžící v hostovaném operačním systému. |
 | Protokoly aplikací     | Sleduje zprávy zapsané vaší aplikací. |
-| Protokoly EventSource .NET |Psaní kódu pro události pomocí třídy [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) .NET |
-| [Protokoly ETW založené na manifestech](https://docs.microsoft.com/windows/desktop/etw/about-event-tracing) |Trasování událostí pro události systému Windows generované jakýmkoli procesem. |
+| Protokoly EventSource .NET |Psaní kódu pro události pomocí třídy [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) .NET |
+| [Protokoly ETW založené na manifestech](/windows/desktop/etw/about-event-tracing) |Trasování událostí pro události systému Windows generované jakýmkoli procesem. |
 | Výpisy stavu systému (protokoly)   | Informace o stavu procesu, pokud dojde k chybě aplikace. |
 | Protokoly založené na souborech    | Protokoly vytvořené vaší aplikací nebo službou. |
 | Diagnostické protokoly agenta | Informace o Azure Diagnostics sebe sama. |
@@ -58,11 +59,11 @@ V následujících tabulkách najdete seznam dat, která se můžou shromažďov
 
 ### <a name="linux-diagnostics-extension-lad"></a>Diagnostické rozšíření pro Linux (LAD)
 
-| Zdroj dat | Description |
+| Zdroj dat | Popis |
 | --- | --- |
 | Syslog | Události odeslané do systému protokolování událostí pro Linux.   |
 | Čítače výkonu  | Číselné hodnoty, které měří výkon různých aspektů operačního systému a zatížení. |
-| Soubory protokolů | Záznamy odesílané do protokolu založeného na souborech.  |
+| Soubory protokolu | Záznamy odesílané do protokolu založeného na souborech.  |
 
 ## <a name="data-destinations"></a>Cíle dat
 Diagnostické rozšíření Azure pro systémy Windows i Linux vždy shromažďuje data do účtu Azure Storage. Přečtěte si téma [instalace a konfigurace rozšíření Windows Azure Diagnostics (WAD)](diagnostics-extension-windows-install.md) a [použijte diagnostické rozšíření systému Linux k monitorování metrik a protokolů](../../virtual-machines/extensions/diagnostics-linux.md) pro seznam konkrétních tabulek a objektů blob, kde jsou tato data shromažďována.
@@ -71,7 +72,7 @@ Nakonfigurujte jednu nebo více *datových umyvadel* pro odesílání dat do dal
 
 ### <a name="windows-diagnostics-extension-wad"></a>Rozšíření Windows Diagnostics (WAD)
 
-| Cíl | Description |
+| Cíl | Popis |
 |:---|:---|
 | Azure Monitor metriky | Shromažďovat údaje o výkonu pro Azure Monitor metriky. Viz [odeslání metriky hostovaného operačního systému do databáze metriky Azure monitor](collect-custom-metrics-guestos-resource-manager-vm.md).  |
 | Event Hubs | K posílání dat mimo Azure použijte Azure Event Hubs. Přečtěte si téma [streamování dat Azure Diagnostics do Event Hubs](diagnostics-extension-stream-event-hubs.md) |
@@ -84,7 +85,7 @@ Data WAD můžete také shromažďovat z úložiště do pracovního prostoru Lo
 ### <a name="linux-diagnostics-extension-lad"></a>Diagnostické rozšíření pro Linux (LAD)
 LAD zapisuje data do tabulek v Azure Storage. Podporuje jímky v následující tabulce.
 
-| Cíl | Description |
+| Cíl | Popis |
 |:---|:---|
 | Event Hubs | K posílání dat mimo Azure použijte Azure Event Hubs. |
 | Objekty blob Azure Storage | Zápis do dat do objektů BLOB v Azure Storage kromě tabulek. |
@@ -116,4 +117,3 @@ Podrobnosti o instalaci a konfiguraci diagnostického rozšíření pro Windows 
 
 * Naučte se [používat čítače výkonu v Azure Diagnostics](../../cloud-services/diagnostics-performance-counters.md).
 * Pokud máte potíže s diagnostikou spouštění nebo hledáním dat v tabulkách úložiště Azure, přečtěte si téma [řešení potíží Azure Diagnostics](diagnostics-extension-troubleshooting.md)
-

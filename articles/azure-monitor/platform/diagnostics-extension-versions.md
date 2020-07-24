@@ -6,11 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/29/2020
-ms.openlocfilehash: 4dd91363cdebf18e6303238816e8269065a6a317
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 42924b4ac5493fc910079ca1f89a6195ccba55e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77672238"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007907"
 ---
 # <a name="windows-azure-diagnostics-extension-wad-configuration-schema-versions-and-history"></a>Verze a historie schématu konfigurace rozšíření Windows Azure Diagnostics (WAD)
 Tento článek uvádí historii verzí verzí schématu [rozšíření Azure Diagnostics pro Windows (WAD)](diagnostics-extension-overview.md) , která se dodává jako součást sady SDK Microsoft Azure.  
@@ -18,7 +19,7 @@ Tento článek uvádí historii verzí verzí schématu [rozšíření Azure Dia
 
 ## <a name="azure-sdk-and-diagnostics-versions-shipping-chart"></a>Graf expedice a verze diagnostiky Azure SDK  
 
-|Verze sady Azure SDK | Verze rozšíření diagnostiky | Model|  
+|Verze sady Azure SDK | Verze rozšíření diagnostiky | Modelování|  
 |------------------|-------------------------------|------|  
 |verze               |1.0                            |modul plug-in|  
 |2,0 – 2,4         |1.0                            |modul plug-in|  
@@ -45,7 +46,7 @@ Různé verze diagnostiky Azure používají různá schémata konfigurace. Sch�
 
 ### <a name="diagnostics-extension-111"></a>Diagnostické rozšíření 1,11
 Přidání podpory pro Azure Monitor jímku. Tato jímka se vztahuje pouze na čítače výkonu. Umožňuje odesílat čítače výkonu shromážděné na VIRTUÁLNÍm počítači, VMSS nebo cloudovou službu, aby se Azure Monitor jako vlastní metriky. Jímka Azure Monitor podporuje:
-* Načítání všech čítačů výkonu odeslaných do Azure Monitor prostřednictvím [rozhraní API pro Azure monitor metriky.](https://docs.microsoft.com/rest/api/monitor/metrics/list)
+* Načítání všech čítačů výkonu odeslaných do Azure Monitor prostřednictvím [rozhraní API pro Azure monitor metriky.](/rest/api/monitor/metrics/list)
 * Upozorňování na všechny čítače výkonu odesílané do Azure Monitor prostřednictvím nového [jednotného prostředí s výstrahami](../../azure-monitor/platform/alerts-overview.md) v Azure monitor
 * Zpracovávání operátoru zástupného znaku v čítačích výkonu jako dimenze instance v rámci metriky. Pokud jste si například shromáždili čítač "logický disk ( \* )/DiskWrites/SEC", mohli byste filtrovat a rozdělit na dimenzi "instance", která vykreslí nebo upozorní na zápisy disku/s pro každý logický disk (C:, D: atd.).
 
@@ -189,4 +190,3 @@ Pokud upgradujete projekt ze sady Azure SDK 2,4 na sadu Azure SDK 2,5 nebo nově
 * **Diagnostiku aplikací cloudových služeb lze konfigurovat pouze na úrovni role, nikoli na úrovni instance.**
 * Při **každém nasazení aplikace se konfigurace diagnostiky aktualizuje** – to může způsobit problémy s paritou, pokud změníte konfiguraci diagnostiky z Průzkumník serveru a pak znovu nasadíte aplikaci.
 * **V sadě Azure SDK 2,5 a novějších jsou výpisy stavu systému nakonfigurovány v konfiguračním souboru diagnostiky, nikoli v kódu** – Pokud máte výpisy stavu systému v kódu, bude nutné ručně přenést konfiguraci z kódu do konfiguračního souboru, protože výpisy stavu systému nebudou přeneseny během migrace do sady Azure SDK 2,6.
-

@@ -15,11 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: fd094e35ceaa718ec1b258d74106b39744cbd16f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 091a5d33e49e2abe811bf3cc250d04d69506165d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79087822"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011630"
 ---
 # <a name="media-services-v2-vs-v3"></a>Media Services V2 vs. v3
 
@@ -27,7 +28,7 @@ Tento článek popisuje změny, které byly představeny v Azure Media Services 
 
 ## <a name="general-changes-from-v2"></a>Obecné změny z v2
 
-* Pro prostředky vytvořené pomocí v3 Media Services podporuje pouze [šifrování úložiště Azure Storage na straně serveru](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
+* Pro prostředky vytvořené pomocí v3 Media Services podporuje pouze [šifrování úložiště Azure Storage na straně serveru](../../storage/common/storage-service-encryption.md).
     * Rozhraní V3 API můžete použít s prostředky vytvořenými s rozhraními API v2, která měla [šifrování úložiště](../previous/media-services-rest-storage-encryption.md) (AES 256) poskytované Media Services.
     * Nemůžete vytvářet nové Assety se starším [šifrováním úložiště](../previous/media-services-rest-storage-encryption.md) AES 256, které používá rozhraní V3 API.
 * Vlastnosti [assetu](assets-concept.md)v v3 se liší od v2, viz [jak mapování vlastností](#map-v3-asset-properties-to-v2).
@@ -87,11 +88,11 @@ Rozhraní V3 API má následující mezery v souvislosti s rozhraním API v2. Uz
 
 ### <a name="map-v3-asset-properties-to-v2"></a>Mapování vlastností assetu V3 na v2
 
-Následující tabulka ukazuje, jak vlastnosti [assetu](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset)v v3 jsou mapovány na vlastnosti assetu ve verzi v2.
+Následující tabulka ukazuje, jak vlastnosti [assetu](/rest/api/media/assets/createorupdate#asset)v v3 jsou mapovány na vlastnosti assetu ve verzi v2.
 
 |vlastnosti V3|vlastnosti v2|
 |---|---|
-|`id`– (jedinečné) Úplná cesta Azure Resource Manager, viz příklady v [assetu](https://docs.microsoft.com/rest/api/media/assets/createorupdate) .||
+|`id`– (jedinečné) Úplná cesta Azure Resource Manager, viz příklady v [assetu](/rest/api/media/assets/createorupdate) .||
 |`name`– (jedinečné) informace najdete v tématu zásady [vytváření názvů](media-services-apis-overview.md#naming-conventions) . ||
 |`alternateId`|`AlternateId`|
 |`assetId`|`Id`– (jedinečná) hodnota začíná `nb:cid:UUID:` předponou.|
@@ -106,11 +107,11 @@ Následující tabulka ukazuje, jak vlastnosti [assetu](https://docs.microsoft.c
 
 Aby bylo možné chránit vaše prostředky v klidovém stavu, prostředky by měly být šifrovány šifrováním na straně úložiště. Následující tabulka ukazuje, jak funguje šifrování na straně úložiště v Media Services:
 
-|Možnost šifrování|Description|Media Services v2|Media Services v3|
+|Možnost šifrování|Popis|Media Services v2|Media Services v3|
 |---|---|---|---|
 |Media Services šifrování úložiště|Šifrování AES-256, klíč spravovaný pomocí Media Services.|Podporováno<sup>(1)</sup>|Nepodporováno<sup>(2)</sup>|
-|[Šifrování služby Storage pro neaktivní neaktivní data](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Šifrování na straně serveru, které nabízí Azure Storage, klíč spravuje Azure nebo zákazník.|Podporuje se|Podporuje se|
-|[Šifrování na straně klienta úložiště](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Šifrování na straně klienta, které nabízí služba Azure Storage, klíč spravovaný zákazníkem v Key Vault.|Nepodporuje se|Nepodporuje se|
+|[Šifrování služby Storage pro neaktivní neaktivní data](../../storage/common/storage-service-encryption.md)|Šifrování na straně serveru, které nabízí Azure Storage, klíč spravuje Azure nebo zákazník.|Podporováno|Podporováno|
+|[Šifrování na straně klienta úložiště](../../storage/common/storage-client-side-encryption.md)|Šifrování na straně klienta, které nabízí služba Azure Storage, klíč spravovaný zákazníkem v Key Vault.|Nepodporováno|Nepodporováno|
 
 <sup>1</sup> když Media Services podporuje zpracování obsahu v nešifrované/bez jakékoli formy šifrování, nedoporučuje se to.
 

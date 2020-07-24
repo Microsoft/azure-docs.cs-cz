@@ -9,11 +9,12 @@ ms.subservice: availability
 ms.date: 07/01/2019
 ms.reviewer: zivr
 ms.custom: mimckitt
-ms.openlocfilehash: 8e455d4d016f97a466838c07fc7af2422f72cc00
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1525ef7c1e19aa9821df3f111fdce3518d37afd5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83727093"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011052"
 ---
 # <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>Preview: vytváření a používání skupin umístění blízkosti pomocí PowerShellu
 
@@ -29,7 +30,7 @@ Skupina umístění blízkosti je logické seskupení, které se používá k za
 
 
 ## <a name="create-a-proximity-placement-group"></a>Vytvoření skupiny umístění bezkontaktní komunikace
-Pomocí rutiny [New-AzProximityPlacementGroup](https://docs.microsoft.com/powershell/module/az.compute/new-azproximityplacementgroup) vytvořte skupinu umístění blízkosti. 
+Pomocí rutiny [New-AzProximityPlacementGroup](/powershell/module/az.compute/new-azproximityplacementgroup) vytvořte skupinu umístění blízkosti. 
 
 ```azurepowershell-interactive
 $resourceGroup = "myPPGResourceGroup"
@@ -54,7 +55,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-scale-set"></a>Vytvoření škálovací sady
 
-Pomocí `-ProximityPlacementGroup $ppg.Id` [New-AzVMSS](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) pro vytvoření sady škálování vytvořte v skupině umístění blízkosti rozsah, ve kterém se bude vztahovat na ID skupiny umístění blízkosti.
+Pomocí `-ProximityPlacementGroup $ppg.Id` [New-AzVMSS](/powershell/module/az.compute/new-azvmss) pro vytvoření sady škálování vytvořte v skupině umístění blízkosti rozsah, ve kterém se bude vztahovat na ID skupiny umístění blízkosti.
 
 ```azurepowershell-interactive
 $scalesetName = "myVM"

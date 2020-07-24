@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: a2569ca3f998030680bd7dbd872d71ccd372a25d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73f2b3ea90cc94fa3411552c7b812fe53eb4dbbb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77672425"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008094"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Vytvoření nastavení diagnostiky v Azure pomocí šablony Správce prostředků
 [Nastavení diagnostiky](diagnostic-settings.md) v Azure monitor určují, kam se mají posílat [protokoly platforem](platform-logs-overview.md) , které shromažďují prostředky Azure, a platforma Azure, na které jsou závislé. V tomto článku najdete podrobné informace a příklady použití [šablony Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) k vytvoření a konfiguraci nastavení diagnostiky pro shromažďování protokolů platforem do různých umístění.
@@ -29,7 +30,7 @@ Podrobnosti najdete v tématu [nasazení prostředků pomocí šablon Správce p
 
 
 ## <a name="resource-logs"></a>Protokoly prostředků
-V případě protokolů prostředků přidejte do šablony prostředek typu `<resource namespace>/providers/diagnosticSettings` . Oddíl Properties (vlastnosti) se řídí formátem popsaným v tématu [nastavení diagnostiky – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate). Zadejte `category` v `logs` části pro každou z kategorií platných pro prostředek, který chcete shromáždit. Přidejte `metrics` vlastnost ke shromáždění metrik prostředků do stejných cílů, pokud [prostředek podporuje metriky](metrics-supported.md).
+V případě protokolů prostředků přidejte do šablony prostředek typu `<resource namespace>/providers/diagnosticSettings` . Oddíl Properties (vlastnosti) se řídí formátem popsaným v tématu [nastavení diagnostiky – vytvořit nebo aktualizovat](/rest/api/monitor/diagnosticsettings/createorupdate). Zadejte `category` v `logs` části pro každou z kategorií platných pro prostředek, který chcete shromáždit. Přidejte `metrics` vlastnost ke shromáždění metrik prostředků do stejných cílů, pokud [prostředek podporuje metriky](metrics-supported.md).
 
 Následuje šablona, která shromažďuje kategorii protokolu prostředků pro určitý prostředek do Log Analyticsho pracovního prostoru, účtu úložiště a centra událostí.
 
@@ -143,7 +144,7 @@ Následuje příklad, který vytvoří nastavení diagnostiky pro nastavení aut
 ```
 
 ## <a name="activity-log"></a>Protokol aktivit
-Pro protokol aktivit Azure Přidejte prostředek typu `Microsoft.Insights/diagnosticSettings` . Kategorie k dispozici jsou uvedené v [protokolech aktivit v protokolu aktivit](activity-log-view.md#categories-in-the-activity-log). Následuje šablona, která shromažďuje všechny kategorie protokolů aktivit do Log Analyticsho pracovního prostoru, účtu úložiště a centra událostí.
+Pro protokol aktivit Azure Přidejte prostředek typu `Microsoft.Insights/diagnosticSettings` . Kategorie k dispozici jsou uvedené v [protokolech aktivit v protokolu aktivit](./activity-log.md#view-the-activity-log). Následuje šablona, která shromažďuje všechny kategorie protokolů aktivit do Log Analyticsho pracovního prostoru, účtu úložiště a centra událostí.
 
 
 ```json

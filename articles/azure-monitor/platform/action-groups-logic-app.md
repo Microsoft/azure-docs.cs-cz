@@ -6,11 +6,12 @@ ms.author: dukek
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
-ms.openlocfilehash: 655a3acc44a1418778b37fbef85e5df75d042317
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f592c42bc06c6bcd33ce6e10c506f8af0d8e0cf2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78206232"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008383"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Postup aktivace složitých akcí s výstrahami Azure Monitor
 
@@ -127,7 +128,7 @@ Postup je podobný, pokud chcete, aby aplikace logiky prováděla jinou akci.
 
 14. V horní části **návrháře Logic Apps**vyberte **Uložit** a uložte svoji aplikaci logiky.
 
-15. Otevřete existující skupinu akcí a přidejte akci, která se odkazuje na aplikaci logiky. Pokud nemáte existující skupinu akcí, přečtěte si téma [Vytvoření a Správa skupin akcí v Azure Portal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) k jeho vytvoření. Nezapomeňte uložit změny.
+15. Otevřete existující skupinu akcí a přidejte akci, která se odkazuje na aplikaci logiky. Pokud nemáte existující skupinu akcí, přečtěte si téma [Vytvoření a Správa skupin akcí v Azure Portal](./action-groups.md) k jeho vytvoření. Nezapomeňte uložit změny.
 
     ![Aktualizace skupiny akcí](media/action-groups-logic-app/update-action-group.png "Aktualizace skupiny akcí")
 
@@ -294,6 +295,5 @@ Logic Apps má řadu různých konektorů, které umožňují aktivovat akce v �
 
 ## <a name="next-steps"></a>Další kroky
 * Získejte [Přehled výstrah protokolu aktivit Azure](../../azure-monitor/platform/alerts-overview.md) a Naučte se přijímat výstrahy.  
-* Naučte se [konfigurovat výstrahy, když se publikuje oznámení Azure Service Health](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+* Naučte se [konfigurovat výstrahy, když se publikuje oznámení Azure Service Health](../../service-health/alerts-activity-log-service-notifications-portal.md).
 * Přečtěte si další informace o [skupinách akcí](../../azure-monitor/platform/action-groups.md).
-

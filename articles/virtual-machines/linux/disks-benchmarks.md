@@ -7,13 +7,14 @@ ms.date: 01/11/2019
 ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: a658bfc0815a03d0f6944d1c42eacdd04397458d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1dfcad5a4fb6611543e6421e82889f239f14951
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84660892"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010818"
 ---
-# <a name="benchmarking-a-disk"></a>Srovnávací testování disku
+# <a name="benchmark-your-application-on-azure-disk-storage"></a>Srovnávací test aplikace v Azure Disk Storage
 
 Srovnávací testy je proces simulace různých úloh ve vaší aplikaci a měření výkonu aplikace pro jednotlivé úlohy. Použijte postup popsaný v [článku návrh pro vysoký výkon](premium-storage-performance.md). Spuštěním nástrojů srovnávacích testů na virtuálních počítačích, které hostují aplikaci, můžete určit úrovně výkonu, které může vaše aplikace dosáhnout, pomocí Premium Storage. V tomto článku poskytujeme příklady srovnávacích testů standardního virtuálního počítače s DS14, které jsou zřízené pomocí disků Azure Premium Storage.
 

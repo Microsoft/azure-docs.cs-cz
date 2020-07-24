@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 07/16/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 9cb9f1a33c37487f4bfb1419d45d4e42a862d815
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddf9a1309cb4f9156cec3aeb5d2ddd9d22cde485
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888118"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011444"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>Konfigurace replikace objektů pro objekty blob bloku (Preview)
 
@@ -52,7 +52,7 @@ Chcete-li vytvořit zásadu replikace v Azure Portal, postupujte podle následuj
 
     :::image type="content" source="media/object-replication-configure/configure-replication-policy.png" alt-text="Snímek obrazovky zobrazující pravidla replikace v Azure Portal":::
 
-1. V případě potřeby zadejte jeden nebo více filtrů, aby bylo možné kopírovat pouze objekty blob, které odpovídají vzoru předpony. Pokud například zadáte předponu `b` , budou replikovány pouze objekty blob, jejichž název začíná tímto písmenem. Jako součást předpony můžete zadat virtuální adresář.
+1. V případě potřeby zadejte jeden nebo více filtrů, aby bylo možné kopírovat pouze objekty blob, které odpovídají vzoru předpony. Pokud například zadáte předponu `b` , budou replikovány pouze objekty blob, jejichž název začíná tímto písmenem. Jako součást předpony můžete zadat virtuální adresář. Řetězec předpony nepodporuje zástupné znaky.
 
     Následující obrázek ukazuje filtry, které omezují, které objekty BLOB se zkopírují jako součást pravidla replikace.
 
@@ -68,7 +68,7 @@ Chcete-li vytvořit zásadu replikace v Azure Portal, postupujte podle následuj
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Pokud chcete vytvořit zásadu replikace pomocí PowerShellu, nejdřív nainstalujte verzi [2.0.1 – Preview](https://www.powershellgallery.com/packages/Az.Storage/2.0.1-preview) modulu PowerShellu AZ. Storage. Pomocí těchto kroků nainstalujete modul verze Preview:
+Pokud chcete vytvořit zásadu replikace pomocí PowerShellu, nejdřív nainstalujte verzi [2.0.1-Preview](https://www.powershellgallery.com/packages/Az.Storage/2.0.1-preview) nebo novější z modulu PowerShellu AZ. Storage. Pomocí těchto kroků nainstalujete modul verze Preview:
 
 1. Odinstalujte všechny předchozí instalace Azure PowerShell ze systému Windows pomocí nastavení **aplikace & funkce** v části **Nastavení**.
 
