@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: iainfou
-ms.openlocfilehash: 4a9081b3d3c1c925efb4cc80201e6154752dc628
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc78df7ea904bf85f5f2561319e6fc773244e971
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734771"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005209"
 ---
-# <a name="frequently-asked-questions-faqs"></a>Nejčastější dotazy
+# <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>Nejčastější dotazy týkající se služby Azure Active Directory (Active Directory Domain Services)
 
 Tato stránka obsahuje odpovědi na nejčastější dotazy týkající se Azure Active Directory Domain Services.
 
@@ -47,13 +47,13 @@ Klasické virtuální sítě nejsou pro nová nasazení podporovaná. Existujíc
 Další informace najdete v [oficiálním oznámení o zastarání](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/).
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-resource-manager-virtual-network"></a>Můžu Azure AD Domain Services ve virtuální síti Azure Resource Manager povolit?
-Ano. Azure AD Domain Services lze povolit ve virtuální síti Azure Resource Manager. Při vytváření spravované domény už nejsou dostupné klasické virtuální sítě Azure.
+Yes. Azure AD Domain Services lze povolit ve virtuální síti Azure Resource Manager. Při vytváření spravované domény už nejsou dostupné klasické virtuální sítě Azure.
 
 ### <a name="can-i-migrate-my-existing-managed-domain-from-a-classic-virtual-network-to-a-resource-manager-virtual-network"></a>Můžu migrovat existující spravovanou doménu z klasické virtuální sítě do Správce prostředků virtuální sítě?
-Ano. Další informace najdete v tématu [migrace Azure AD Domain Services z modelu klasických virtuálních sítí do Správce prostředků](migrate-from-classic-vnet.md).
+Yes. Další informace najdete v tématu [migrace Azure AD Domain Services z modelu klasických virtuálních sítí do Správce prostředků](migrate-from-classic-vnet.md).
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-csp-cloud-solution-provider-subscription"></a>Můžu Azure AD Domain Services povolit v předplatném Azure CSP (Cloud Solution Provider)?
-Ano. Další informace najdete v tématu [povolení Azure AD Domain Services v předplatných služby Azure CSP](csp.md).
+Yes. Další informace najdete v tématu [povolení Azure AD Domain Services v předplatných služby Azure CSP](csp.md).
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-a-federated-azure-ad-directory-i-do-not-synchronize-password-hashes-to-azure-ad-can-i-enable-azure-ad-domain-services-for-this-directory"></a>Můžu Azure AD Domain Services povolit ve federovaném adresáři služby Azure AD? Nesynchronizuji hodnoty hash hesel do služby Azure AD. Můžu povolit Azure AD Domain Services pro tento adresář?
 Ne. K ověřování uživatelů pomocí protokolu NTLM nebo Kerberos Azure AD Domain Services potřebuje přístup k hodnotám hash hesel uživatelských účtů. Ve federovaném adresáři nejsou hodnoty hash hesel uložené v adresáři služby Azure AD. Proto Azure AD Domain Services nefunguje s těmito adresáři služby Azure AD.
@@ -64,7 +64,7 @@ Pokud však používáte Azure AD Connect pro synchronizaci hodnot hash hesel, m
 Samotná služba přímo nepodporuje tento scénář. Vaše spravovaná doména je dostupná v jednom okamžiku jenom v jedné virtuální síti. Můžete ale nakonfigurovat připojení mezi několika virtuálními sítěmi a zpřístupnit Azure AD Domain Services jiným virtuálním sítím. Další informace najdete v tématu [Postup připojení virtuálních sítí v Azure pomocí bran VPN](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md) nebo [partnerských vztahů virtuálních sítí](../virtual-network/virtual-network-peering-overview.md).
 
 ### <a name="can-i-enable-azure-ad-domain-services-using-powershell"></a>Můžu povolit Azure AD Domain Services používání PowerShellu?
-Ano. Další informace najdete v tématu [povolení Azure AD Domain Services pomocí prostředí PowerShell](powershell-create-instance.md).
+Yes. Další informace najdete v tématu [povolení Azure AD Domain Services pomocí prostředí PowerShell](powershell-create-instance.md).
 
 ### <a name="can-i-enable-azure-ad-domain-services-using-a-resource-manager-template"></a>Můžu Azure AD Domain Services povolit použití šablony Správce prostředků?
 Ano, Azure AD Domain Services spravovanou doménu můžete vytvořit pomocí Správce prostředků šablony. Před nasazením šablony musí být vytvořený instanční objekt a skupina služby Azure AD pro správu pomocí Azure Portal nebo Azure PowerShell. Další informace najdete v tématu [Vytvoření spravované domény Azure služba AD DS pomocí šablony Azure Resource Manager](template-create-instance.md). Při vytváření Azure AD Domain Services spravované domény v Azure Portal existuje také možnost Exportovat šablonu pro použití s dalšími nasazeními.
@@ -80,7 +80,7 @@ Ne. Po vytvoření spravované domény Azure AD Domain Services nemůžete tuto 
 
 ### <a name="does-azure-ad-domain-services-include-high-availability-options"></a>Zahrnuje Azure AD Domain Services možnosti vysoké dostupnosti?
 
-Ano. Každá Azure AD Domain Services spravovaná doména obsahuje dva řadiče domény. Tyto řadiče domény nespravujete ani se k nim nepřipojujete, jsou součástí spravované služby. Pokud nasadíte Azure AD Domain Services do oblasti, která podporuje Zóny dostupnosti, řadiče domény se rozdělují mezi zóny. V oblastech, které nepodporují Zóny dostupnosti, jsou řadiče domény distribuované napříč skupinami dostupnosti. Pro tuto distribuci nemáte žádné možnosti konfigurace nebo řízení správy. Další informace najdete v tématu [Možnosti dostupnosti pro virtuální počítače v Azure](../virtual-machines/windows/availability.md).
+Yes. Každá Azure AD Domain Services spravovaná doména obsahuje dva řadiče domény. Tyto řadiče domény nespravujete ani se k nim nepřipojujete, jsou součástí spravované služby. Pokud nasadíte Azure AD Domain Services do oblasti, která podporuje Zóny dostupnosti, řadiče domény se rozdělují mezi zóny. V oblastech, které nepodporují Zóny dostupnosti, jsou řadiče domény distribuované napříč skupinami dostupnosti. Pro tuto distribuci nemáte žádné možnosti konfigurace nebo řízení správy. Další informace najdete v tématu [Možnosti dostupnosti pro virtuální počítače v Azure](../virtual-machines/windows/availability.md).
 
 ## <a name="administration-and-operations"></a>Správa a operace
 
@@ -114,13 +114,13 @@ Změny provedené v adresáři Azure AD pomocí uživatelského rozhraní služb
 Ne. Schéma je spravováno společností Microsoft pro spravovanou doménu. Azure AD Domain Services nepodporuje rozšíření schématu.
 
 ### <a name="can-i-modify-or-add-dns-records-in-my-managed-domain"></a>Můžu v mé spravované doméně upravovat nebo přidávat záznamy DNS?
-Ano. Členům skupiny *AAD DC Administrators* jsou udělena oprávnění *Správce DNS* pro úpravu záznamů DNS ve spravované doméně. Uživatelé mohou pomocí konzoly Správce DNS na počítači se systémem Windows Server, který je připojen ke spravované doméně, spravovat službu DNS. Pokud chcete použít konzolu Správce DNS, nainstalujte *Nástroje serveru DNS*, které jsou součástí *Nástroje pro vzdálenou správu serveru* volitelné funkce na serveru. Další informace najdete v tématu [Správa DNS ve spravované doméně Azure AD Domain Services](manage-dns.md).
+Yes. Členům skupiny *AAD DC Administrators* jsou udělena oprávnění *Správce DNS* pro úpravu záznamů DNS ve spravované doméně. Uživatelé mohou pomocí konzoly Správce DNS na počítači se systémem Windows Server, který je připojen ke spravované doméně, spravovat službu DNS. Pokud chcete použít konzolu Správce DNS, nainstalujte *Nástroje serveru DNS*, které jsou součástí *Nástroje pro vzdálenou správu serveru* volitelné funkce na serveru. Další informace najdete v tématu [Správa DNS ve spravované doméně Azure AD Domain Services](manage-dns.md).
 
 ### <a name="what-is-the-password-lifetime-policy-on-a-managed-domain"></a>Jaké jsou zásady životního cyklu hesel ve spravované doméně?
 Výchozí doba života hesla ve spravované doméně Azure AD Domain Services je 90 dní. Doba života hesla není synchronizovaná s životností hesla nakonfigurovanou v Azure AD. Proto můžete mít situaci, kdy vyprší platnost hesel uživatelů ve vaší spravované doméně, ale ve službě Azure AD stále platí. V takových scénářích potřebují uživatelé změnit heslo v Azure AD a nové heslo se synchronizuje do vaší spravované domény. Kromě toho se k vaší spravované doméně nesynchronizují atributy *hesla – bez vypršení platnosti* a *uživatelské heslo-při příštím přihlášení* pro uživatelské účty.
 
 ### <a name="does-azure-ad-domain-services-provide-ad-account-lockout-protection"></a>Poskytuje Azure AD Domain Services ochranu před uzamčením účtu AD?
-Ano. Pět neplatných pokusů o zadání hesla ve spravované doméně způsobí, že se uživatelský účet zamkne po dobu 30 minut. Po 30 minutách se uživatelský účet automaticky odemkne. Neplatné pokusy o zadání hesla ve spravované doméně nezamkne uživatelský účet ve službě Azure AD. Uživatelský účet je uzamčený pouze v rámci vaší Azure AD Domain Services spravované domény. Další informace najdete v tématu [zásady hesel a uzamčení účtů ve spravovaných doménách](password-policy.md).
+Yes. Pět neplatných pokusů o zadání hesla ve spravované doméně způsobí, že se uživatelský účet zamkne po dobu 30 minut. Po 30 minutách se uživatelský účet automaticky odemkne. Neplatné pokusy o zadání hesla ve spravované doméně nezamkne uživatelský účet ve službě Azure AD. Uživatelský účet je uzamčený pouze v rámci vaší Azure AD Domain Services spravované domény. Další informace najdete v tématu [zásady hesel a uzamčení účtů ve spravovaných doménách](password-policy.md).
 
 ### <a name="can-i-configure-distributed-file-system-and-replication-within-azure-ad-domain-services"></a>Je možné nakonfigurovat systém souborů DFS (Distributed File System) a replikaci v rámci Azure AD Domain Services?
 Ne. Systém souborů DFS (Distributed File System) (DFS) a replikace nejsou k dispozici při použití Azure AD Domain Services.
@@ -135,7 +135,7 @@ Ne. Systém souborů DFS (Distributed File System) (DFS) a replikace nejsou k di
 * [K jakým oblastem Azure je služba dostupná?](#can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services)
 
 ### <a name="is-azure-ad-domain-services-a-paid-service"></a>Je Azure AD Domain Services placená služba?
-Ano. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/active-directory-ds/).
+Yes. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/active-directory-ds/).
 
 ### <a name="is-there-a-free-trial-for-the-service"></a>Máte k dispozici bezplatnou zkušební verzi služby?
 Azure AD Domain Services je součástí bezplatné zkušební verze pro Azure. Můžete si zaregistrovat [bezplatnou měsíční zkušební verzi Azure](https://azure.microsoft.com/pricing/free-trial/).
@@ -152,7 +152,7 @@ Ne. Azure AD Domain Services je služba Azure s průběžnými platbami, která 
 ### <a name="what-azure-regions-is-the-service-available-in"></a>K jakým oblastem Azure je služba dostupná?
 Seznam oblastí Azure, kde je Azure AD Domain Services k dispozici, najdete na stránce [služby Azure podle oblasti](https://azure.microsoft.com/regions/#services/) .
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Řešení běžných potíží s konfigurací nebo správou Azure AD Domain Services najdete v [Průvodci odstraňováním potíží](troubleshoot.md) .
 

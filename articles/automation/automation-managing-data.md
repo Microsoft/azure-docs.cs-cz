@@ -3,14 +3,14 @@ title: Zabezpečení dat Azure Automation
 description: Tento článek vám pomůže zjistit, jak Azure Automation chrání vaše osobní údaje a zabezpečuje vaše data.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 06/03/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: cc96f2dd81b618b4170acd4b415a09248adbb7d5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 610c2050150a533e246bc74ed7750ce87f7cf617
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186159"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004643"
 ---
 # <a name="management-of-azure-automation-data"></a>Správa dat služby Azure Automation
 
@@ -50,7 +50,7 @@ Následující tabulka shrnuje zásady uchovávání informací pro různé pros
 | Data | Zásady |
 |:--- |:--- |
 | Účty |Účet se trvale odebere 30 dní poté, co ho uživatel odstraní. |
-| Prostředky |Asset se trvale odebere 30 dní poté, co ho uživatel odstraní nebo 30 dní poté, co uživatel odstraní účet, který má Asset. |
+| Prostředky |Asset se trvale odebere 30 dní poté, co ho uživatel odstraní nebo 30 dní poté, co uživatel odstraní účet, který má Asset. Prostředky zahrnují proměnné, plány, přihlašovací údaje, certifikáty, balíčky Python 2 a připojení. |
 | Uzly DSC |Uzel DSC se trvale odebere 30 dnů po zrušení registrace účtu Automation pomocí Azure Portal nebo rutiny [Unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) ve Windows PowerShellu. Uzel je také trvale odebrán 30 dní poté, co uživatel odstraní účet, který obsahuje uzel. |
 | Úlohy |Úloha je odstraněna a trvale odebrána 30 dní po provedení změny, například po dokončení úlohy, zastavení nebo pozastavení. |
 | Moduly |Modul se trvale odebere 30 dní poté, co ho uživatel odstraní nebo 30 dní poté, co uživatel odstraní účet, který obsahuje daný modul. |
@@ -66,7 +66,7 @@ Když odstraníte účet služby Automation v Azure, odstraní se všechny objek
 
 ### <a name="runbooks"></a>Runbooky
 
-Runbooky můžete exportovat do souborů skriptu pomocí rutiny Azure Portal nebo rutiny [Get-AzureAutomationRunbookDefinition](/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) ve Windows PowerShellu. Tyto soubory skriptu můžete importovat do jiného účtu Automation, jak je popsáno v tématu [Správa runbooků v Azure Automation](manage-runbooks.md).
+Runbooky můžete exportovat do souborů skriptu pomocí rutiny Azure Portal nebo rutiny [Get-AzureAutomationRunbookDefinition](/powershell/module/servicemanagement/azure.service/get-azureautomationrunbookdefinition) ve Windows PowerShellu. Tyto soubory skriptu můžete importovat do jiného účtu Automation, jak je popsáno v tématu [Správa runbooků v Azure Automation](manage-runbooks.md).
 
 ### <a name="integration-modules"></a>Integrační moduly
 

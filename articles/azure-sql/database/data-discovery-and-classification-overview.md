@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 tags: azure-synapse
-ms.openlocfilehash: 8e04cb87895f00e1ee992745c43a884596bd8398
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 3f1f284255d1c0e77779c175951eaf33d3e56067
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85987261"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004099"
 ---
 # <a name="data-discovery--classification"></a>Zjišťování a klasifikace dat
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -77,7 +77,7 @@ Po definování zásad v rámci organizace můžete dál klasifikovat jednotliv�
 > [!NOTE]
 > Následující příklad používá Azure SQL Database, ale měli byste vybrat příslušný produkt, pro který chcete nakonfigurovat klasifikaci & zjišťování dat.
 
-1. Přejít na [Azure Portal](https://portal.azure.com).
+1. Přejděte na [Azure Portal](https://portal.azure.com).
 
 2. V záhlaví **zabezpečení** v podokně Azure SQL Database otevřete **Rozšířené zabezpečení dat** . Vyberte **Upřesnit zabezpečení dat**a pak vyberte kartu **klasifikace & zjišťování dat** .
 
@@ -129,7 +129,7 @@ Tyto předdefinované role mohou číst klasifikaci dat databáze:
 - Čtenář
 - Přispěvatel
 - Správce zabezpečení SQL
-- Správce přístupu uživatelů
+- Správce uživatelských přístupů
 
 Tyto předdefinované role mohou změnit klasifikaci dat databáze:
 
@@ -137,7 +137,7 @@ Tyto předdefinované role mohou změnit klasifikaci dat databáze:
 - Přispěvatel
 - Správce zabezpečení SQL
 
-Přečtěte si další informace o oprávněních na základě rolí v [RBAC pro prostředky Azure](https://docs.microsoft.com/azure/role-based-access-control/overview).
+Další informace o oprávněních založených na rolích najdete v [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview).
 
 ## <a name="manage-classifications"></a><a id="manage-classification"></a>Spravovat klasifikace
 

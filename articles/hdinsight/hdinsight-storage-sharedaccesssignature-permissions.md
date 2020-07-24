@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 3756e7d1f58c37038347888a21d98326cd4eb71f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8ab181eb72b5a3ab54ad8dba19d23288926b8969
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087448"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006309"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Použití sdílených přístupových podpisů služby Azure Storage k omezení přístupu k datům ve službě HDInsight
 
@@ -25,13 +25,13 @@ Služba HDInsight má úplný přístup k datům v účtech Azure Storage přidr
 > [!WARNING]  
 > HDInsight musí mít úplný přístup k výchozímu úložišti pro cluster.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](./hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * Existující [kontejner úložiště](../storage/blobs/storage-quickstart-blobs-portal.md).  
 
-* Pokud používáte PowerShell, budete potřebovat [AZ Module](https://docs.microsoft.com/powershell/azure/overview).
+* Pokud používáte PowerShell, budete potřebovat [AZ Module](https://docs.microsoft.com/powershell/azure/).
 
 * Pokud chcete použít rozhraní příkazového řádku Azure a ještě jste ho nenainstalovali, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
@@ -211,7 +211,7 @@ Pokud se zobrazí chybová zpráva, může být nutné provést akci `pip instal
 
 3. Vyberte **Nastavení** a přidejte hodnoty pro následující položky:
 
-    |Položka |Description |
+    |Položka |Popis |
     |---|---|
     |StorageConnectionString|Připojovací řetězec pro účet úložiště, pro který chcete vytvořit uloženou zásadu a SAS pro. Formát by měl být `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` ve formátu, kde `myaccount` je název vašeho účtu úložiště a `mykey` je klíč pro účet úložiště.|
     |ContainerName|Kontejner v účtu úložiště, ke kterému chcete omezit přístup|

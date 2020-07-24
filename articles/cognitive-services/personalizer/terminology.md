@@ -3,14 +3,14 @@ title: Přizpůsobení terminologie
 description: Přizpůsobování používá terminologii při výuce. Tyto výrazy se používají v Azure Portal a rozhraní API.
 ms.topic: conceptual
 ms.date: 04/23/2020
-ms.openlocfilehash: 3f819ff3305a7c7302eb56c83b98340946613a92
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8177606ac6e968bd287a23554be7b9dd06d880a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586299"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002858"
 ---
-# <a name="terminology"></a>Terminologie
+# <a name="personalizer-terminology"></a>Terminologie přizpůsobování
 
 Přizpůsobování používá terminologii při výuce. Tyto výrazy se používají v Azure Portal a rozhraní API.
 

@@ -3,13 +3,14 @@ title: Vytvořit prvky definice uživatelského rozhraní
 description: Popisuje prvky, které mají být použity při vytváření definic uživatelského rozhraní pro Azure Portal.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 02/06/2020
+ms.date: 07/13/2020
 ms.author: tomfitz
-ms.openlocfilehash: 12bf5d131001d95a3f4327f95c24125dbf3fb510
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 221e4dc2e909561c70b1cd1b86df026619c2b31f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77086705"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004303"
 ---
 # <a name="createuidefinition-elements"></a>CreateUiDefinition elementy
 
@@ -47,12 +48,14 @@ Schéma pro většinu prvků je následující:
 
 Dokumentace pro každý prvek obsahuje ukázku uživatelského rozhraní, schéma, poznámky k chování elementu (obvykle týkající se ověřování a podporovaného přizpůsobení) a ukázkový výstup.
 
+- [Microsoft. Common. CheckBox](microsoft-common-checkbox.md)
 - [Microsoft.Common.DropDown](microsoft-common-dropdown.md)
 - [Microsoft.Common.FileUpload](microsoft-common-fileupload.md)
 - [Microsoft. Common. InfoBox](microsoft-common-infobox.md)
 - [Microsoft.Common.OptionsGroup](microsoft-common-optionsgroup.md)
 - [Microsoft.Common.PasswordBox](microsoft-common-passwordbox.md)
 - [Microsoft.Common.Section](microsoft-common-section.md)
+- [Microsoft. Common. Slider](microsoft-common-slider.md)
 - [Microsoft. Common. TagsByResource](microsoft-common-tagsbyresource.md)
 - [Microsoft. Common. TextBlock](microsoft-common-textblock.md)
 - [Microsoft.Common.TextBox](microsoft-common-textbox.md)
@@ -62,6 +65,8 @@ Dokumentace pro každý prvek obsahuje ukázku uživatelského rozhraní, schém
 - [Microsoft. ManagedIdentity. IdentitySelector](microsoft-managedidentity-identityselector.md)
 - [Microsoft.Network.PublicIpAddressCombo](microsoft-network-publicipaddresscombo.md)
 - [Microsoft.Network.VirtualNetworkCombo](microsoft-network-virtualnetworkcombo.md)
+- [Microsoft. Solutions. ArmApiControl](microsoft-solutions-armapicontrol.md)
+- [Microsoft. Solutions. ResourceSelector](microsoft-solutions-resourceselector.md)
 - [Microsoft.Storage.MultiStorageAccountCombo](microsoft-storage-multistorageaccountcombo.md)
 - [Microsoft.Storage.StorageAccountSelector](microsoft-storage-storageaccountselector.md)
 

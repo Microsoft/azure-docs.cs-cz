@@ -11,11 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 923502132fdbe0b4a56c0fc23c19475e9074b8ff
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 19b7962462e5cdb03bad0c6004b8c19f781ccc69
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040244"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005272"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-active-directory-domain-services"></a>Vytvoření skupinového účtu spravované služby (gMSA) v Azure Active Directory Domain Services
 
@@ -29,12 +30,12 @@ V tomto článku se dozvíte, jak vytvořit gMSA ve spravované doméně pomocí
 
 K dokončení tohoto článku potřebujete následující prostředky a oprávnění:
 
-* Aktivní předplatné Azure.
+* Musíte mít aktivní předplatné Azure.
     * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
 * Ve vašem tenantovi Azure AD je povolená a nakonfigurovaná spravovaná doména Azure Active Directory Domain Services.
-    * V případě potřeby dokončete kurz a [vytvořte a nakonfigurujte doménu Azure Active Directory Domain Services spravovaných][create-azure-ad-ds-instance].
+    * V případě potřeby dokončete kurz a [vytvořte a nakonfigurujte Azure Active Directory Domain Services spravovanou doménu][create-azure-ad-ds-instance].
 * Virtuální počítač pro správu Windows serveru, který je připojený k spravované doméně Azure služba AD DS.
     * V případě potřeby dokončete kurz a [vytvořte virtuální počítač pro správu][tutorial-create-management-vm].
 

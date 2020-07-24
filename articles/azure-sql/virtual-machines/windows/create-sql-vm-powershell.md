@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2c5ef71059fd3ba96299624818a13ebe1ae0929b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a25625e085ee07a2dc036fd40f70e6b0376b42a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737848"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003878"
 ---
 # <a name="how-to-use-azure-powershell-to-provision-sql-server-on-azure-virtual-machines"></a>Jak pomocí Azure PowerShell zřídit SQL Server v Azure Virtual Machines
 
@@ -152,7 +152,7 @@ New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-Virtuální počítač vyžaduje prostředky úložiště pro disk operačního systému a SQL Server data a soubory protokolů. Pro zjednodušení vytvoříte pro obojí jeden disk. Další disky můžete připojit později pomocí rutiny [Add-Azure disk](https://docs.microsoft.com/powershell/module/servicemanagement/azure/add-azuredisk) k umístění SQL serverch dat a souborů protokolu na vyhrazené disky. Pomocí rutiny [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) vytvořte v nové skupině prostředků účet úložiště úrovně Standard. Zadejte proměnné, které jste předtím inicializoval pro název účtu úložiště, název SKU úložiště a umístění.
+Virtuální počítač vyžaduje prostředky úložiště pro disk operačního systému a SQL Server data a soubory protokolů. Pro zjednodušení vytvoříte pro obojí jeden disk. Další disky můžete připojit později pomocí rutiny [Add-Azure disk](/powershell/module/servicemanagement/azure.service/add-azuredisk) k umístění SQL serverch dat a souborů protokolu na vyhrazené disky. Pomocí rutiny [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) vytvořte v nové skupině prostředků účet úložiště úrovně Standard. Zadejte proměnné, které jste předtím inicializoval pro název účtu úložiště, název SKU úložiště a umístění.
 
 Spuštěním této rutiny vytvoříte nový účet úložiště.
 

@@ -4,15 +4,16 @@ description: Přehled dostupných zobrazení databáze SQL DB ve službě Azure 
 ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: mmercuri
-ms.openlocfilehash: 585084b4c85c48533bdad96d4f99813ef2e418b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e715bd2297c1e051ae92b15d73c945c9e80c3d94
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74325979"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003317"
 ---
 # <a name="azure-blockchain-workbench-database-views"></a>Zobrazení databáze Azure blockchain Workbench
 
-Azure blockchain Workbench Preview doručuje data z distribuovaných knih do databáze SQL DB *mimo řetěz* . Databáze s neplatnými možnostmi umožňuje používat SQL a stávající nástroje, jako je [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017), k interakci s daty blockchain.
+Azure blockchain Workbench Preview doručuje data z distribuovaných knih do databáze SQL DB *mimo řetěz* . Databáze s neplatnými možnostmi umožňuje používat SQL a stávající nástroje, jako je [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017), k interakci s daty blockchain.
 
 Azure blockchain Workbench poskytuje sadu databázových zobrazení, která poskytují přístup k datům, která budou užitečná při provádění dotazů. Tato zobrazení jsou silně Denormalizovaná, aby bylo snadné rychle začít sestavovat sestavy, analyzovat a jinak využívat blockchain data pomocí stávajících nástrojů a bez nutnosti předávat zdroje databáze.
 
@@ -26,7 +27,7 @@ Tato část obsahuje přehled zobrazení databáze a data, která obsahují.
 
 Toto zobrazení obsahuje podrobné informace o **aplikacích** , které se nahrály do Azure blockchain Workbench.
 
-| Name                             | Typ          | Může mít hodnotu null. | Description                                                                                                                                                                                                                                                   |
+| Název                             | Typ          | Může mít hodnotu null. | Popis                                                                                                                                                                                                                                                   |
 |----------------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                    | int           | No          | Jedinečný identifikátor aplikace |
 | ApplicationName                  | nvarchar (50)  | No          | Název aplikace |
@@ -47,7 +48,7 @@ Toto zobrazení obsahuje podrobné informace o rolích, které jsou definované 
 
 V aplikaci pro *přenos assetu* se můžou definovat například role *kupující* a *prodejce* .
 
-| Name                   | Typ             | Může mít hodnotu null. | Description                                       |
+| Název                   | Typ             | Může mít hodnotu null. | Popis                                       |
 |------------------------|------------------|-------------|---------------------------------------------------|
 | ApplicationId          | int              | No          | Jedinečný identifikátor aplikace           |
 | ApplicationName        | nvarchar (50)     | No          | Název aplikace                       |
@@ -63,7 +64,7 @@ Toto zobrazení obsahuje podrobné informace o rolích definovaných v aplikací
 
 V aplikaci pro *přenos assetů* může být například *Jan Novák* přidružen k roli *Buyer* .
 
-| Name                       | Typ          | Může mít hodnotu null. | Description                                                                                                                                                                                                                           |
+| Název                       | Typ          | Může mít hodnotu null. | Popis                                                                                                                                                                                                                           |
 |----------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId              | int           | No          | Jedinečný identifikátor aplikace                                                                                                                                                                                               |
 | ApplicationName            | nvarchar (50)  | No          | Název aplikace                                                                                                                                                                                                           |
@@ -86,7 +87,7 @@ Toto zobrazení poskytuje podrobné informace o připojeních definovaných v Az
 -   Podrobnosti o přidružené knize
 -   Přidružené informace o uživateli
 
-| Name                     | Typ          | Může mít hodnotu null. | Description                                                                                                                                                                                                                           |
+| Název                     | Typ          | Může mít hodnotu null. | Popis                                                                                                                                                                                                                           |
 |--------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ConnectionId             | int           | No          | Jedinečný identifikátor připojení v Azure blockchain Workbench |
 | ConnectionEndpointUrl    | nvarchar (50)  | No          | Adresa URL koncového bodu pro připojení |
@@ -111,7 +112,7 @@ Toto zobrazení poskytuje podrobné informace o nasazených smlouvách. Pro kaž
 -   Podrobnosti o uživateli, který spustil akci
 -   Podrobnosti související s blokem blockchain a transakcí
 
-| Name                                     | Typ           | Může mít hodnotu null. | Description                                                                                                                                                                                                                                                   |
+| Název                                     | Typ           | Může mít hodnotu null. | Popis                                                                                                                                                                                                                                                   |
 |------------------------------------------|----------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ConnectionId                             | int            | No          | Jedinečný identifikátor připojení v Azure blockchain Workbench                                                                                                                                                                                         |
 | ConnectionEndpointUrl                    | nvarchar (50)   | No          | Adresa URL koncového bodu pro připojení |
@@ -152,7 +153,7 @@ Toto zobrazení představuje většinu informací souvisejících s akcemi prove
 -   Podrobnosti o uživateli, který spustil akci
 -   Podrobnosti související s blokem blockchain a transakcí
 
-| Name                                     | Typ          | Může mít hodnotu null. | Description                                                                                                                                                                                                                                                                                                    |
+| Název                                     | Typ          | Může mít hodnotu null. | Popis                                                                                                                                                                                                                                                                                                    |
 |------------------------------------------|---------------|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                            | int           | No          | Jedinečný identifikátor aplikace |
 | ApplicationName                          | nvarchar (50)  | No          | Název aplikace |
@@ -211,7 +212,7 @@ Toto zobrazení představuje většinu informací týkajících se vlastností p
 -   Specifické hodnoty instance pro vlastnosti
 -   Podrobnosti vlastnosti State smlouvy
 
-| Name                               | Typ          | Může mít hodnotu null. | Description                                                                                                                                                                                                                                                                        |
+| Název                               | Typ          | Může mít hodnotu null. | Popis                                                                                                                                                                                                                                                                        |
 |------------------------------------|---------------|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                      | int           | No          | Jedinečný identifikátor aplikace |
 | ApplicationName                    | nvarchar (50)  | No          | Název aplikace |
@@ -251,7 +252,7 @@ Toto zobrazení představuje většinu informací týkajících se stavu konkré
 -   Přidružená definice vlastnosti inteligentních kontraktů
 -   Podrobnosti vlastnosti State smlouvy
 
-| Name                               | Typ          | Může mít hodnotu null. | Description                                                                                                                                                                                                                                                                        |
+| Název                               | Typ          | Může mít hodnotu null. | Popis                                                                                                                                                                                                                                                                        |
 |------------------------------------|---------------|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                      | int           | No          | Jedinečný identifikátor aplikace |
 | ApplicationName                    | nvarchar (50)  | No          | Název aplikace |
@@ -286,7 +287,7 @@ Toto zobrazení představuje většinu informací týkajících se stavu konkré
 
 Toto zobrazení poskytuje podrobné informace o členech konsorcia zřízených pro používání Azure blockchain Workbench. Ve výchozím nastavení se data naplní počátečním zřizováním uživatele.
 
-| Name               | Typ          | Může mít hodnotu null. | Description                                                                                                                                                                                                                               |
+| Název               | Typ          | Může mít hodnotu null. | Popis                                                                                                                                                                                                                               |
 |--------------------|---------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ID                 | int           | No          | Jedinečný identifikátor uživatele |
 | ExternalID         | nvarchar (255) | No          | Externí identifikátor pro uživatele. Ve výchozím nastavení je toto ID identifikátor GUID, který představuje ID Azure Active Directory pro uživatele. |
@@ -303,7 +304,7 @@ Toto zobrazení představuje základní metadata pracovního postupu a také fun
 -   Přidružená definice pracovního postupu
 -   Informace o stavu spuštění přidruženého pracovního postupu
 
-| Name                              | Typ          | Může mít hodnotu null. | Description                                                                                                                                |
+| Název                              | Typ          | Může mít hodnotu null. | Popis                                                                                                                                |
 |-----------------------------------|---------------|-------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                     | int           | No          | Jedinečný identifikátor aplikace |
 | ApplicationName                   | nvarchar (50)  | No          | Název aplikace |
@@ -330,7 +331,7 @@ Toto zobrazení představuje základní metadata pracovního postupu a také fun
 -   Přidružená definice pracovního postupu
 -   Podrobnosti funkce pracovního postupu
 
-| Name                                 | Typ          | Může mít hodnotu null. | Description                                                                          |
+| Název                                 | Typ          | Může mít hodnotu null. | Popis                                                                          |
 |--------------------------------------|---------------|-------------|--------------------------------------------------------------------------------------|
 | ApplicationId                        | int           | No          | Jedinečný identifikátor aplikace |
 | ApplicationName                      | nvarchar (50)  | No          | Název aplikace |
@@ -359,7 +360,7 @@ Toto zobrazení představuje vlastnosti definované pro pracovní postup. Pro ka
 -   Přidružená definice pracovního postupu
 -   Podrobnosti vlastnosti pracovního postupu
 
-| Name                         | Typ          | Může mít hodnotu null. | Description                                                                                                                                                                                                                                                   |
+| Název                         | Typ          | Může mít hodnotu null. | Popis                                                                                                                                                                                                                                                   |
 |------------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                | int           | No          | Jedinečný identifikátor aplikace |
 | ApplicationName              | nvarchar (50)  | No          | Název aplikace |
@@ -386,7 +387,7 @@ Toto zobrazení představuje vlastnosti přidružené k pracovnímu postupu. Pro
 -   Přidružená definice pracovního postupu
 -   Informace o stavu pracovního postupu
 
-| Name                         | Typ          | Může mít hodnotu null. | Description                                                                                                                                                                                                                                                   |
+| Název                         | Typ          | Může mít hodnotu null. | Popis                                                                                                                                                                                                                                                   |
 |------------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                | int           | No          | Jedinečný identifikátor aplikace |
 | ApplicationName              | nvarchar (50)  | No          | Název aplikace |

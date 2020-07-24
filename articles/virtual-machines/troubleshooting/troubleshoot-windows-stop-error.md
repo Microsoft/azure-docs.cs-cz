@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 67064cf694445acf8472b958660133c2f2d31db9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 33b4c59e14301e496d0eddafa7bdfdf201b7aa29
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85660841"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005901"
 ---
 # <a name="windows-stop-error---status-no-memory"></a>Chyba zastavení Windows – stav nedostatku paměti
 
@@ -26,7 +27,7 @@ Tento článek popisuje kroky pro řešení problémů, které se nepodařilo sp
 
 ## <a name="symptom"></a>Příznak
 
-Když pomocí [diagnostiky spouštění](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) zobrazíte snímek obrazovky virtuálního počítače (VM), uvidíte, že snímek obrazovky zobrazuje kód chyby: `0xC0000017` . V závislosti na verzi Windows, kterou používáte, se může tento kód zobrazit buď ve **Správci spouštění systému Windows** , nebo na **obrazovce pro obnovení**.
+Když pomocí [diagnostiky spouštění](./boot-diagnostics.md) zobrazíte snímek obrazovky virtuálního počítače (VM), uvidíte, že snímek obrazovky zobrazuje kód chyby: `0xC0000017` . V závislosti na verzi Windows, kterou používáte, se může tento kód zobrazit buď ve **Správci spouštění systému Windows** , nebo na **obrazovce pro obnovení**.
 
    **Správce spouštění systému Windows**
 
@@ -56,7 +57,7 @@ Disk s operačním systémem je buď plný, moc fragmentován, nebo operační s
 
 ### <a name="create-and-access-a-repair-vm"></a>Vytvoření a přístup k opravnému virtuálnímu počítači
 
-1. Pomocí [kroků 1-3 příkazů pro opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) Připravte opravný virtuální počítač.
+1. Pomocí [kroků 1-3 příkazů pro opravu virtuálního počítače](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) Připravte opravný virtuální počítač.
 1. Pomocí Připojení ke vzdálené ploše připojit k opravnému virtuálnímu počítači.
 
 ### <a name="for-generation-2-vms-assign-a-letter-to-the-extensible-firmware-interface-efi-partition"></a>V případě virtuálních počítačů 2. generace Přiřaďte písmeno oddílu EFI (Extensible Firmware Interface):
@@ -93,7 +94,7 @@ Pokud používáte virtuální počítač 2. generace, k oddílu EFI připojené
 Když je teď poškozený disk připojený k opravnému virtuálnímu počítači, měli byste ověřit, jestli má operační systém na tomto disku dostatek místa pro správné fungování. 
 
 1. Ověřte, jestli je disk plný, a to tak, že kliknete pravým tlačítkem na jednotku připojeného disku a vyberete **vlastnosti**.
-1. Pokud disk má **méně než 300 MB volného místa**, [rozbalte ho do velikosti 1 TB pomocí PowerShellu](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk).
+1. Pokud disk má **méně než 300 MB volného místa**, [rozbalte ho do velikosti 1 TB pomocí PowerShellu](../windows/expand-os-disk.md).
 1. Až bude velikost disku **1 TB**, budete muset provést vyčištění disku. K uvolnění místa můžete použít [Nástroj pro vyčištění disku](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) .
 1. Otevřete příkazový řádek se zvýšenými oprávněními (Spustit jako správce) a proveďte na jednotce defragmentaci:
 
@@ -222,4 +223,4 @@ Pokud chcete povolit shromažďování výpisů paměti a sériovou konzolu, spu
    
 ### <a name="rebuild-the-vm"></a>Opětovné sestavení virtuálního počítače
 
-K opětovnému sestavení virtuálního počítače použijte [Krok 5 příkazů pro opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) .
+K opětovnému sestavení virtuálního počítače použijte [Krok 5 příkazů pro opravu virtuálního počítače](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) .

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/27/2019
 ms.author: mlottner
-ms.openlocfilehash: fe117cf8d05ba3392b71858acf94d1fc88c1a527
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98afd1eb1f8a73c2d6dd3f293a07cdb70780d238
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81311565"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004762"
 ---
 # <a name="pricing-and-associated-costs"></a>Ceny a související náklady
 
@@ -50,11 +50,11 @@ Postup změny nastavení:
 
 1. V části **zabezpečení**klikněte na **Přehled**.
 
-1. Klikněte na příkaz **Nastavení**.
+1. Klikněte na **Nastavení**.
 
 Následující tabulka poskytuje souhrn souvisejících nákladů a dopadů jednotlivých možností.
 
-|     | Využití | Komentář |
+| Možnost | Využití | Komentář |
 | --- | --- | --- |
 | **Log Analytics úložiště** |  |
 | Doporučení a výstrahy zařízení| Doporučení a výstrahy zabezpečení vygenerované službou | Nenepovinné |
@@ -73,7 +73,7 @@ Následující tabulka poskytuje souhrn souvisejících nákladů a dopadů jedn
 | | Podrobnosti o [výstrahách](concept-security-alerts.md) a vyšetřováních [doporučení](concept-recommendations.md) nejsou k dispozici. |
 |
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 - Přístup k [nezpracovaným datům zabezpečení](how-to-security-data-access.md)
 - [Prozkoumání zařízení](how-to-investigate-device.md)

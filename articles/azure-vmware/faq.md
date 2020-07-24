@@ -4,11 +4,12 @@ description: Poskytuje odpovědi na některé běžné dotazy týkající se ře
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: 1649b5649bd18b7ab53f3cc0196d7dff0f6f5b2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f160e617163f11c02e4d661cbf1c14f63a6772f8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84112682"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003419"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Nejčastější dotazy týkající se řešení Azure VMware (AVS) Preview
 
@@ -32,7 +33,7 @@ K dispozici jsou všechny služby Azure, které budou dostupné pro zákazníky 
 
 **Používají se stejné nástroje, které teď používám ke správě prostředků privátního cloudu?**
 
-Ano. Azure Portal se používá pro nasazení a řadu operací správy. vCenter a NSX Manager se používají ke správě prostředků vSphere a NSX-T.
+Yes. Azure Portal se používá pro nasazení a řadu operací správy. vCenter a NSX Manager se používají ke správě prostředků vSphere a NSX-T.
 
 **Můžu pomocí místního serveru vCenter spravovat privátní cloud?**
 
@@ -44,7 +45,7 @@ Konkrétní integrace a případy použití mohou být vyhodnoceny případ od p
 
 **Můžu migrovat virtuální počítače s vSphere z místního prostředí do služby AVS Private cloudy?**
 
-Ano. Migrace virtuálních počítačů a vMotion se dají použít k přesunu virtuálních počítačů do privátního cloudu, pokud jsou splněné standardní systémy přes vCenter [požadavky] [ https://kb.vmware.com/s/article/210695 ].
+Yes. Migrace virtuálních počítačů a vMotion se dají použít k přesunu virtuálních počítačů do privátního cloudu, pokud jsou splněné standardní systémy přes vCenter [požadavky] [ https://kb.vmware.com/s/article/210695 ].
 
 **Vyžaduje se v místních prostředích konkrétní verze vSphere?**
 
@@ -165,7 +166,7 @@ Ne. Příchozí síťový provoz z Internetu přímo do privátních cloudů nen
 
 **Je potřeba omezit přístup k Internetu z virtuálních počítačů v logických sítích na Internet?**
 
-Ano. Abyste mohli vytvořit bránu firewall, která omezuje přístup virtuálních počítačů k Internetu, budete muset použít Správce NSX-T.
+Yes. Abyste mohli vytvořit bránu firewall, která omezuje přístup virtuálních počítačů k Internetu, budete muset použít Správce NSX-T.
 
 ## <a name="accounts-and-privileges"></a>Účty a oprávnění
 
@@ -215,7 +216,7 @@ Můžete požádat o zvýšení kvóty tím, že [odešlete žádost o podporu](
 > ```azurecli-interactive
 > az provider register -n Microsoft.AVS --subscription <your subscription ID>
 > ```
-> Další způsoby registrace poskytovatele prostředků najdete v tématu [poskytovatelé a typy prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types).
+> Další způsoby registrace poskytovatele prostředků najdete v tématu [poskytovatelé a typy prostředků Azure](../azure-resource-manager/management/resource-providers-and-types.md).
 
 1. V Azure Portal v části **pomoc a podpora**vytvořte **novou žádost o podporu** a zadejte pro lístek následující informace:
    - **Typ problému:** Odbornou

@@ -3,12 +3,12 @@ title: Události Azure Event Hubs-Exchange pomocí různých protokolů
 description: V tomto článku se dozvíte, jak můžou zákazníci a výrobci, kteří používají různé protokoly (AMQP, Apache Kafka a HTTPS), vyměňovat události při použití Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: ec3122dcf151fe3e7b7b9578725e810ddca22bdf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6cdc4b9040f314b4ec41f84cc7436f0f2e3d6af6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320600"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002501"
 ---
 # <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>Výměna událostí mezi spotřebiteli a producenty, kteří používají různé protokoly: AMQP, Kafka a HTTPS
 Azure Event Hubs podporuje tři protokoly pro příjemce a výrobce: AMQP, Kafka a HTTPS. Každý z těchto protokolů má svůj vlastní způsob, jak vyjádřit zprávu, a to přirozeně na následující otázku: Pokud aplikace odesílá události do centra událostí s jedním protokolem a spotřebovává je s jiným protokolem, co jednotlivé části a hodnoty události vypadají, jako když dorazí na příjemce? Tento článek popisuje osvědčené postupy pro producenta i příjemce, aby bylo zajištěno, že hodnoty v rámci události jsou správně interpretovány náročnými aplikacemi.
@@ -331,7 +331,7 @@ String myStringProperty = new String(rawbytes, StandardCharsets.UTF_8);
 ## <a name="next-steps"></a>Další kroky
 V tomto článku jste zjistili, jak se streamovat do Event Hubs bez změny klientů protokolu nebo spouštění vlastních clusterů. Další informace o Event Hubs a Event Hubs pro Kafka najdete v následujících článcích:  
 
-* [Informace o službě Event Hubs](event-hubs-what-is-event-hubs.md)
+* [Informace o službě Event Hubs](./event-hubs-about.md)
 * [Informace o službě Event Hubs pro ekosystém Kafka](event-hubs-for-kafka-ecosystem-overview.md)
 * [Další ukázky v úložišti Event Hubs pro ekosystém Kafka na GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka)
 * Pomocí [nástroje MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) můžete [streamovat události z Kafka do místního prostředí a Event Hubs v cloudu.](event-hubs-kafka-mirror-maker-tutorial.md)

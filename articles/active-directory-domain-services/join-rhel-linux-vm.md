@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/23/2020
+ms.date: 07/13/2020
 ms.author: iainfou
-ms.openlocfilehash: d43c12681c7230dc4959261ffd6d96f74ea095d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2a6cb422c1133f0ed53d2c1061501a47d9c92f1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734720"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005085"
 ---
 # <a name="join-a-red-hat-enterprise-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Připojení virtuálního počítače s Red Hat Enterprise Linux k spravované doméně Azure Active Directory Domain Services
 
@@ -24,11 +24,11 @@ Pokud chcete umožnit uživatelům přihlašovat se k virtuálním počítačům
 
 V tomto článku se dozvíte, jak připojit virtuální počítač Red Hat Enterprise Linux (RHEL) ke spravované doméně.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
-* Aktivní předplatné Azure.
+* Musíte mít aktivní předplatné Azure.
     * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
@@ -116,7 +116,7 @@ Teď, když jsou na virtuálním počítači nainstalované požadované balíč
     kinit contosoadmin@AADDSCONTOSO.COM
     ```
 
-1. Nakonec připojte počítač k spravované doméně pomocí `realm join` příkazu. Použijte stejný uživatelský účet, který je součástí spravované domény, kterou jste zadali v předchozím `kinit` příkazu, například `contosoadmin@AADDSCONTOSO.COM` :
+1. Nakonec připojte virtuální počítač ke spravované doméně pomocí `realm join` příkazu. Použijte stejný uživatelský účet, který je součástí spravované domény, kterou jste zadali v předchozím `kinit` příkazu, například `contosoadmin@AADDSCONTOSO.COM` :
 
     ```console
     sudo realm join --verbose AADDSCONTOSO.COM -U 'contosoadmin@AADDSCONTOSO.COM'
@@ -142,7 +142,7 @@ Successfully enrolled machine in realm
     * Ověřte, že je virtuální počítač nasazený do stejné nebo partnerské virtuální sítě, ve které je dostupná spravovaná doména.
     * Ověřte, že nastavení serveru DNS pro virtuální síť se aktualizovala tak, aby odkazovala na řadiče domény spravované domény.
 
-1. Nejprve se připojte k doméně pomocí `adcli join` příkazu a tento příkaz také vytvoří keytab k ověření počítače. Použijte uživatelský účet, který je součástí spravované domény.
+1. Nejprve se připojte k doméně pomocí `adcli join` příkazu, tento příkaz také vytvoří keytab k ověření počítače. Použijte uživatelský účet, který je součástí spravované domény.
 
     ```console
     sudo adcli join aaddscontoso.com -U contosoadmin

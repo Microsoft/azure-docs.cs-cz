@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: tyao
-ms.openlocfilehash: 077f127648688b25d45b433fa2bc94ee011b3f2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f41dc688996b2431060a3cde209ca1ed4a21fe8c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80336071"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005612"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>Konfigurace pravidla omezení IP adres pomocí brány firewall webových aplikací pro přední dveře Azure
 
@@ -24,7 +24,7 @@ Ve výchozím nastavení je webová aplikace přístupná z Internetu. Chcete-li
 
 ## <a name="configure-a-waf-policy-with-the-azure-portal"></a>Konfigurace zásady WAF pomocí Azure Portal
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Pomocí pokynů popsaných v tématu rychlý Start vytvořte profil front-dveří Azure [: vytvoření předních dveří pro globální webovou aplikaci s vysokou dostupností](../../frontdoor/quickstart-create-front-door.md).
 
@@ -37,7 +37,7 @@ Pomocí pokynů popsaných v tématu rychlý Start vytvořte profil front-dveř�
    |Nastavení  |Hodnota  |
    |---------|---------|
    |Zásady pro     |Globální WAF (přední dvířka)|
-   |Předplatné     |Výběr předplatného|
+   |Předplatné     |Vyberte své předplatné.|
    |Skupina prostředků     |Vyberte skupinu prostředků, ve které je vaše přední dveře.|
    |Název zásad     |Zadejte název zásady.|
    |Stav zásad     |Povoleno|
@@ -64,7 +64,7 @@ Pomocí pokynů popsaných v tématu rychlý Start vytvořte profil front-dveř�
 
    :::image type="content" source="../media/waf-front-door-configure-ip-restriction/custom-rule.png" alt-text="Vlastní pravidlo":::
 
-   Vyberte možnost **Přidat**.
+   Vyberte **Přidat**.
 6. Vyberte **Další: přidružení**.
 7. Vyberte **Přidat hostitele front-end**.
 8. V případě **hostitele s front-endu**vyberte hostitele front-end a vyberte **Přidat**.
@@ -83,7 +83,7 @@ Pomocí pokynů popsaných v tématu rychlý Start vytvořte profil front-dveř�
 
 ## <a name="configure-a-waf-policy-with-the-azure-cli"></a>Konfigurace zásady WAF pomocí Azure CLI
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 Než začnete konfigurovat zásady omezení IP adres, nastavte prostředí rozhraní příkazového řádku a vytvořte profil front-dveří Azure.
 
 #### <a name="set-up-the-azure-cli-environment"></a>Nastavení prostředí Azure CLI
@@ -162,13 +162,13 @@ V tomto příkladu se zásada WAF aplikuje na **FrontendEndpoints [0]**. Zásady
 
 ## <a name="configure-a-waf-policy-with-azure-powershell"></a>Konfigurace zásady WAF pomocí Azure PowerShell
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 Než začnete konfigurovat zásady omezení IP adres, nastavte prostředí PowerShell a vytvořte profil front-dveří Azure.
 
 #### <a name="set-up-your-powershell-environment"></a>Nastavení prostředí PowerShell
 Azure PowerShell poskytuje sadu rutin, které používají model [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) pro správu prostředků Azure.
 
-[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) můžete nainstalovat na místní počítač a používat v jakékoli relaci PowerShellu. Podle pokynů na stránce se přihlaste do PowerShellu pomocí vašich přihlašovacích údajů Azure a pak nainstalujte modul AZ Module.
+[Azure PowerShell](https://docs.microsoft.com/powershell/azure/) můžete nainstalovat na místní počítač a používat v jakékoli relaci PowerShellu. Podle pokynů na stránce se přihlaste do PowerShellu pomocí vašich přihlašovacích údajů Azure a pak nainstalujte modul AZ Module.
 
 1. Pomocí následujícího příkazu se připojte k Azure a pak se přihlaste pomocí interaktivního dialogu.
     ```

@@ -2,13 +2,13 @@
 title: Pravidla brány firewall pro Azure Event Hubs | Microsoft Docs
 description: Pomocí pravidel brány firewall povolte připojení z konkrétních IP adres do Azure Event Hubs.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: fb9fa72af7127224afdcf70ecca1c851e9212c4d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/16/2020
+ms.openlocfilehash: 4c42f70a4f28c560c321f7c1e825b66514a8029e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320418"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002416"
 ---
 # <a name="configure-ip-firewall-rules-for-an-azure-event-hubs-namespace"></a>Konfigurace pravidel brány firewall protokolu IP pro Azure Event Hubs obor názvů
 Ve výchozím nastavení jsou Event Hubs obory názvů přístupné z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na více než jenom na sadu IPv4 adres nebo rozsahů IPv4 adres v [CIDR (směrování mezi doménami bez třídy)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
@@ -21,7 +21,6 @@ Tato funkce je užitečná ve scénářích, ve kterých by měl být Azure Even
 > Důvěryhodné služby společnosti Microsoft nejsou podporovány, pokud jsou implementovány virtuální sítě.
 >
 > Běžné scénáře Azure, které nefungují s virtuálními sítěmi (Všimněte si, že seznam **není vyčerpávající)** –
-> - Azure Monitor (nastavení diagnostiky)
 > - Azure Stream Analytics
 > - Integrace s Azure Event Grid
 > - Trasy k Azure IoT Hub

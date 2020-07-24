@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: 37e6b2986f76529b5f3b2edc69f50259485df0b4
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f87c3665f558b3185e95b0ad0aa18a883439a221
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087006"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006513"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Konfigurace odchozího síťového provozu pro clustery Azure HDInsight pomocí brány firewall
 
@@ -69,13 +69,13 @@ Vytvořte kolekci pravidel aplikace, která umožňuje clusteru odesílat a při
 
     **Oddíl značek plně kvalifikovaného názvu domény**
 
-    | Name | Zdrojová adresa | FQDN – značka | Poznámky |
+    | Název | Zdrojová adresa | FQDN – značka | Poznámky |
     | --- | --- | --- | --- |
     | Rule_1 | * | WindowsUpdate a HDInsight | Vyžadováno pro služby HDI Services |
 
     **Oddíl cílové plně kvalifikované názvy domén**
 
-    | Name | Zdrojové adresy | `Protocol:Port` | Cílové plně kvalifikované názvy domén | Poznámky |
+    | Název | Zdrojové adresy | Protokol: port | Cílové plně kvalifikované názvy domén | Poznámky |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https: 443 | login.windows.net | Povoluje aktivitu přihlášení systému Windows. |
     | Rule_3 | * | https: 443 | login.microsoftonline.com | Povoluje aktivitu přihlášení systému Windows. |
@@ -83,7 +83,7 @@ Vytvořte kolekci pravidel aplikace, která umožňuje clusteru odesílat a při
 
    ![Title: zadejte podrobnosti kolekce pravidel aplikace.](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
-1. Vyberte možnost **Přidat**.
+1. Vyberte **Přidat**.
 
 ### <a name="configure-the-firewall-with-network-rules"></a>Konfigurace brány firewall pomocí síťových pravidel
 
@@ -103,23 +103,23 @@ Vytvořte Síťová pravidla pro správnou konfiguraci clusteru HDInsight.
 
     **Část IP adresy**
 
-    | Name | Protocol (Protokol) | Zdrojové adresy | Cílové adresy | Cílové porty | Poznámky |
+    | Název | Protokol | Zdrojové adresy | Cílové adresy | Cílové porty | Poznámky |
     | --- | --- | --- | --- | --- | --- |
     | Rule_1 | UDP | * | * | 123 | Časová služba |
-    | Rule_2 | Všechny | * | DC_IP_Address_1 DC_IP_Address_2 | * | Pokud používáte Balíček zabezpečení podniku (ESP), pak v části IP adresy přidejte síťové pravidlo, které umožňuje komunikaci s clustery AAD-DS pro ESP. IP adresy řadičů domény najdete v části AAD-DS na portálu. |
+    | Rule_2 | Libovolný | * | DC_IP_Address_1 DC_IP_Address_2 | * | Pokud používáte Balíček zabezpečení podniku (ESP), pak v části IP adresy přidejte síťové pravidlo, které umožňuje komunikaci s clustery AAD-DS pro ESP. IP adresy řadičů domény najdete v části AAD-DS na portálu. |
     | Rule_3 | TCP | * | IP adresa vašeho účtu Data Lake Storage | * | Pokud používáte Azure Data Lake Storage, můžete v části IP adresy přidat síťové pravidlo, které řeší problém s SNI s ADLS Gen1 a Gen2. Tato možnost bude směrovat provoz do brány firewall. To může mít za následek vyšší náklady na načtení velkých objemů dat, ale přenos bude protokolován a auditován v protokolech brány firewall. Určete IP adresu účtu Data Lake Storage. Můžete použít příkaz prostředí PowerShell, například `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")` k překladu plně kvalifikovaného názvu domény na IP adresu.|
     | Rule_4 | TCP | * | * | 12000 | Volitelné Pokud používáte Log Analytics, vytvořte v části IP adresy síťové pravidlo, které umožní komunikaci s pracovním prostorem Log Analytics. |
 
     **Oddíl Service Tags**
 
-    | Name | Protocol (Protokol) | Zdrojové adresy | Značky služeb | Cílové porty | Poznámky |
+    | Název | Protokol | Zdrojové adresy | Značky služeb | Cílové porty | Poznámky |
     | --- | --- | --- | --- | --- | --- |
     | Rule_7 | TCP | * | SQL | 1433 | Nakonfigurujte pravidlo sítě v části značky služby pro SQL, které vám umožní protokolovat a auditovat provoz SQL. Pokud jste nenakonfigurovali koncové body služby pro SQL Server v podsíti HDInsight, která bude bránu firewall obejít. |
     | Rule_8 | TCP | * | Azure Monitor | * | volitelné Toto pravidlo by mělo přidat zákazníci, kteří chtějí používat funkci automatického škálování. |
     
    ![Title: zadejte kolekci pravidel aplikace.](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
-1. Vyberte možnost **Přidat**.
+1. Vyberte **Přidat**.
 
 ### <a name="create-and-configure-a-route-table"></a>Vytvoření a konfigurace směrovací tabulky
 
@@ -139,14 +139,14 @@ Pokud chcete například nakonfigurovat směrovací tabulku pro cluster vytvoře
 
 1. Z nové trasy přejděte do **Nastavení**  >  **trasy**  >  **+ Přidat**. Přidejte následující trasy:
 
-| Název trasy | Předpona adresy | Typ dalšího segmentu | Adresa dalšího segmentu |
+| Název trasy | Předpona adresy | Typ dalšího přesměrování | Adresa dalšího segmentu |
 |---|---|---|---|
-| 168.61.49.99 | 168.61.49.99/32 | Internet | NA |
-| 23.99.5.239 | 23.99.5.239/32 | Internet | NA |
-| 168.61.48.131 | 168.61.48.131/32 | Internet | NA |
-| 138.91.141.162 | 138.91.141.162/32 | Internet | NA |
-| 13.82.225.233 | 13.82.225.233/32 | Internet | NA |
-| 40.71.175.99 | 40.71.175.99/32 | Internet | NA |
+| 168.61.49.99 | 168.61.49.99/32 | Internet | Není k dispozici |
+| 23.99.5.239 | 23.99.5.239/32 | Internet | Není k dispozici |
+| 168.61.48.131 | 168.61.48.131/32 | Internet | Není k dispozici |
+| 138.91.141.162 | 138.91.141.162/32 | Internet | Není k dispozici |
+| 13.82.225.233 | 13.82.225.233/32 | Internet | Není k dispozici |
+| 40.71.175.99 | 40.71.175.99/32 | Internet | Není k dispozici |
 | 0.0.0.0 | 0.0.0.0/0 | Virtuální zařízení | 10.0.2.4 |
 
 Dokončete konfiguraci směrovací tabulky:

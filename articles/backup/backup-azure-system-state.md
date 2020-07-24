@@ -3,12 +3,12 @@ title: Zálohování stavu systému Windows do Azure
 description: Naučte se zálohovat stav systému Windows Server nebo počítačů s Windows do Azure.
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: 4319e03f9673baa2be01c1650ac1929204741087
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea38b76d9a8b7b8ccc1898ed9450177da2cb2458
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611437"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003723"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>Zálohování stavu systému Windows do Azure
 
@@ -40,7 +40,7 @@ Při vytváření trezoru služby Recovery Services se ujistěte, že je redunda
 
     ![volby konfigurace úložiště](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
-    Ve výchozím nastavení má váš trezor nastavené geograficky redundantní úložiště. Pokud používáte Azure jako primární koncový bod úložiště záloh, pokračujte v používání **geograficky redundantního** úložiště. Pokud Azure nepoužíváte jako primární koncový bod úložiště záloh, vyberte **Místně redundantní** – snížíte tím náklady na úložiště Azure. Další informace o možnostech [geograficky redundantního](../storage/common/storage-redundancy-grs.md) a [místně redundantního](../storage/common/storage-redundancy-lrs.md) úložiště najdete v tomto [přehledu redundance úložiště](../storage/common/storage-redundancy.md).
+    Ve výchozím nastavení má váš trezor nastavené geograficky redundantní úložiště. Pokud používáte Azure jako primární koncový bod úložiště záloh, pokračujte v používání **geograficky redundantního** úložiště. Pokud Azure nepoužíváte jako primární koncový bod úložiště záloh, vyberte **Místně redundantní** – snížíte tím náklady na úložiště Azure. Další informace o možnostech [geograficky redundantního](../storage/common/storage-redundancy.md) a [místně redundantního](../storage/common/storage-redundancy.md) úložiště najdete v tomto [přehledu redundance úložiště](../storage/common/storage-redundancy.md).
 
 Teď, když jste vytvořili trezor, nakonfigurujte ho pro zálohování stavu systému Windows.
 
@@ -152,7 +152,7 @@ K dokončení prvotního zálohování použijte agenta Microsoft Azure Recovery
 
 5. Vyberte **stav systému** a pak klikněte na **OK**.
 
-6. Klikněte na **Další**.
+6. Klikněte na **Next** (Další).
 
 7. Na následujících stránkách vyberte požadovanou četnost zálohování a zásady uchovávání informací pro zálohy stavu systému.
 
@@ -174,7 +174,7 @@ K dokončení prvotního zálohování použijte agenta Microsoft Azure Recovery
 
 5. Průvodce zavřete kliknutím na **Zavřít**. Pokud průvodce zavřete před dokončením procesu zálohování, průvodce zůstane spuštěný na pozadí.
     > [!NOTE]
-    > Agent MARS aktivuje nástroj SFC/VERIFYONLY jako součást předkontrol všech záloh stavu systému. K tomu je potřeba zajistit, aby byly soubory zálohované jako součást stavu systému správné verze odpovídající verzi Windows. Další informace o nástroji pro kontrolu systémových souborů (SFC) najdete v [tomto článku](https://docs.microsoft.com/windows-server/administration/windows-commands/sfc).
+    > Agent MARS aktivuje nástroj SFC/VERIFYONLY jako součást předkontrol všech záloh stavu systému. K tomu je potřeba zajistit, aby byly soubory zálohované jako součást stavu systému správné verze odpovídající verzi Windows. Další informace o nástroji pro kontrolu systémových souborů (SFC) najdete v [tomto článku](/windows-server/administration/windows-commands/sfc).
     >
 
 Po dokončení prvotní zálohy se v konzole Zálohování zobrazí stav **Úloha byla dokončena**.

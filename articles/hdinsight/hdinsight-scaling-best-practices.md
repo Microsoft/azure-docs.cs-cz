@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: fc14c3bd069162c390c09fddbfe9169b90bf66ce
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: a9d419052f000b220c993109e45d371398607275
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086003"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006446"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Škálování clusterů Azure HDInsight
 
 HDInsight poskytuje flexibilitu s možnostmi horizontálního navýšení a snížení kapacity počtu pracovních uzlů v clusterech. Tato pružnost umožňuje zmenšit cluster po hodinách nebo na víkendech. A rozbalíte je během špičkových obchodních požadavků.
 
-Škálovat cluster před pravidelným zpracováním dávek, aby cluster měl dostatečné prostředky. Po dokončení zpracování a využití se rozroste a zmenšuje cluster HDInsight dolů na méně pracovních uzlů.
+Škálovat cluster před pravidelným zpracováním dávek, aby cluster měl dostatečné prostředky.  Po dokončení zpracování a využití se rozroste a zmenšuje cluster HDInsight dolů na méně pracovních uzlů.
 
 Cluster můžete škálovat ručně pomocí jedné z metod popsaných níže. Možnosti automatického [škálování](hdinsight-autoscale-clusters.md) můžete použít také k automatickému horizontálnímu navýšení kapacity směrem nahoru a dolů v reakci na určité metriky.
 
@@ -30,7 +30,7 @@ Cluster můžete škálovat ručně pomocí jedné z metod popsaných níže. Mo
 
 Microsoft poskytuje následující nástroje pro škálování clusterů:
 
-|Nástroj | Description|
+|Nástroj | Popis|
 |---|---|
 |[Modul Az PowerShellu](https://docs.microsoft.com/powershell/azure)|[`Set-AzHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
 |[Modul AzureRM PowerShellu](https://docs.microsoft.com/powershell/azure/azurerm) |[`Set-AzureRmHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
@@ -106,6 +106,14 @@ Dopad změny počtu datových uzlů se liší pro každý typ clusteru podporova
 * Kafka
 
     Po operaci škálování byste měli znovu vyrovnávat repliky oddílů. Další informace najdete v článku o [vysoké dostupnosti dat s Apache Kafka v dokumentu HDInsight](./kafka/apache-kafka-high-availability.md) .
+
+* Apache Hive LLAP
+
+    Po škálování na `N` pracovní uzly bude HDInsight automaticky nastavit následující konfigurace a restartovat podregistr.
+
+  * Maximální počet souběžných dotazů:`hive.server2.tez.sessions.per.default.queue = min(N, 32)`
+  * Počet uzlů používaných LLAP podregistru:`num_llap_nodes  = N`
+  * Počet uzlů pro spuštění démona LLAP podregistru:`num_llap_nodes_for_llap_daemons = N`
 
 ## <a name="how-to-safely-scale-down-a-cluster"></a>Jak bezpečně škálovat cluster
 

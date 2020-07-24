@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/23/2020
+ms.date: 07/13/2020
 ms.author: iainfou
-ms.openlocfilehash: 845b48d84040343f829648f9c7fda2372e3413dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93f16629b74ab76d7b46603d84d52cff4bf1ca13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734737"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005102"
 ---
 # <a name="join-a-coreos-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Připojení virtuálního počítače s CoreOS k spravované doméně Azure Active Directory Domain Services
 
@@ -24,11 +24,11 @@ Pokud chcete umožnit uživatelům přihlašovat se k virtuálním počítačům
 
 V tomto článku se dozvíte, jak připojit virtuální počítač s CoreOS ke spravované doméně.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
-* Aktivní předplatné Azure.
+* Musíte mít aktivní předplatné Azure.
     * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
@@ -85,7 +85,7 @@ sudo vi /etc/sssd/sssd.conf
 Zadejte vlastní název spravované domény pro následující parametry:
 
 * *domény* ve všech velkých písmenech
-* *[Domain/AADDS]* kde je AADDS ve všech velkých písmenech
+* *[Domain/AADDSCONTOSO]* kde je AADDSCONTOSO ve všech velkých písmenech
 * *ldap_uri*
 * *ldap_search_base*
 * *krb5_server*
@@ -97,7 +97,7 @@ config_file_version = 2
 services = nss, pam
 domains = AADDSCONTOSO.COM
 
-[domain/AADDSCONTOSO.COM]
+[domain/AADDSCONTOSO]
 id_provider = ad
 auth_provider = ad
 chpass_provider = ad

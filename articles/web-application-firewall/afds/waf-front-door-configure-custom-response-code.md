@@ -8,11 +8,12 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: 14e4ccdf17647823dc9e1005c1c68a9f1f217b9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a995460793686d8293d77965e74e2cbf916925a0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84726363"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005595"
 ---
 # <a name="configure-a-custom-response-for-azure-web-application-firewall-waf"></a>Konfigurace vlastní odpovědi pro Firewall webových aplikací Azure (WAF)
 
@@ -36,7 +37,7 @@ Ve výše uvedeném příkladu jsme kód odpovědi zavedli jako 403 a nakonfigur
 
 Prostředí Azure PowerShell poskytuje sadu rutin, které ke správě vašich prostředků Azure využívají model [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). 
 
-[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) můžete nainstalovat na místní počítač a používat v jakékoli relaci PowerShellu. Postupujte podle pokynů na stránce, přihlaste se pomocí přihlašovacích údajů Azure a nainstalujte modul AZ PowerShell.
+[Azure PowerShell](https://docs.microsoft.com/powershell/azure/) můžete nainstalovat na místní počítač a používat v jakékoli relaci PowerShellu. Postupujte podle pokynů na stránce, přihlaste se pomocí přihlašovacích údajů Azure a nainstalujte modul AZ PowerShell.
 
 ### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Připojení k Azure pomocí interaktivního dialogu pro přihlášení
 

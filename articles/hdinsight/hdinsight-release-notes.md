@@ -8,18 +8,18 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 0481f92666c8ca547dc427e117f9917afb257629
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ef243d5b151f95a00e22ac7636a46b93090ccce3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511870"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006530"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Poznámky k verzi Azure HDInsight
 
 Tento článek poskytuje informace **o nejnovějších aktualizacích vydaných** verzí Azure HDInsight. Informace o dřívějších verzích najdete v tématu [archiv zpráv k vydání verze HDInsight](hdinsight-release-notes-archive.md).
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Azure HDInsight je jednou z nejoblíbenějších služeb pro podnikové zákazníky, kteří se týkají Open Source analýz v Azure.
 
@@ -62,4 +62,4 @@ Došlo k potížím při použitelnosti konektoru skladu z podregistru v předch
 Zeppelin nesprávně zkrátila úvodní nuly ve výstupu tabulky pro formát řetězce. V této verzi jsme tento problém vyřešili.
 
 ## <a name="component-version-change"></a>Změna verze součásti
-Pro tuto verzi se nezměnila žádná verze součásti. V [tomto dokumentu](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)najdete aktuální verze komponent pro HDInsight 4,0 ad HDInsight 3,6.
+Pro tuto verzi se nezměnila žádná verze součásti. V [tomto dokumentu](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)najdete aktuální verze komponent pro HDInsight 4,0 a HDInsight 3,6.

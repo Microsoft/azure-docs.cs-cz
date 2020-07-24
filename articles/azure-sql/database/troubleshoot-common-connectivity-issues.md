@@ -12,12 +12,12 @@ author: dalechen
 ms.author: ninarn
 ms.reviewer: carlrab, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: acc61cefbc9d89f11eae5b6549add57871035ddb
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0b28fa788e7b35e94482104d807c228db21f49b4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078965"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003912"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>Řešení chyb přechodného připojení v SQL Database a spravované instanci SQL
 
@@ -148,8 +148,8 @@ Pokud se například počet rovná 3 a interval se rovná 10 sekund, časový li
 
 Parametry **atributu ConnectRetryCount** a **atributu ConnectRetryInterval** umožňují, aby se váš objekt **SqlConnection** znovu opakoval, aniž by bylo nutné sdělit nebo přestane svůj program, jako je například vrácení řízení vašemu programu. Opakování se může vyskytnout v následujících situacích:
 
-- mySqlConnection. Open – volání metody
-- mySqlConnection.Exevolání metody roztomilá
+- SqlConnection. Open – volání metody
+- SqlConnection.Exevolání metody roztomilá
 
 Existuje Subtlety. Pokud při provádění *dotazu* dojde k přechodné chybě, váš objekt **SqlConnection** neopakuje operaci připojení. V takovém případě to neopakuje dotaz. Nicméně **SqlConnection** velmi rychle zkontroluje připojení před odesláním dotazu ke spuštění. Pokud rychlá kontroly zjistí problém s připojením, **SqlConnection** opakuje operaci připojení. Pokud je opakování úspěšné, odešle se dotaz k provedení.
 
@@ -276,7 +276,7 @@ Enterprise Library 6 (EntLib60) nabízí pro pomoc s protokolováním spravovan�
 
 Tady jsou některé příkazy SELECT jazyka Transact-SQL, které dotazují protokoly chyb a další informace.
 
-| Dotaz na protokol | Description |
+| Dotaz na protokol | Popis |
 |:--- |:--- |
 | `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |Zobrazení [Sys. event_log](https://msdn.microsoft.com/library/dn270018.aspx) nabízí informace o jednotlivých událostech, které obsahují některé, které mohou způsobit přechodné chyby nebo selhání připojení.<br/><br/>V ideálním případě můžete sladit **start_time** nebo **end_time** hodnoty informacemi o tom, kdy došlo k potížím s klientským programem.<br/><br/>Chcete-li spustit tento dotaz, je nutné se připojit k *Hlavní* databázi. |
 | `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |Zobrazení [Sys. database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx) nabízí agregované počty typů událostí pro další diagnostiku.<br/><br/>Chcete-li spustit tento dotaz, je nutné se připojit k *Hlavní* databázi. |

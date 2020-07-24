@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/10/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 37f99ade366a73cb96caf55a562a92476223eb6b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 46096e1f3f4266e9c070bd1d67f328241163126b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261799"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004541"
 ---
 # <a name="troubleshoot-the-connected-machine-agent-connection-issues"></a>Řešení potíží s připojením agenta připojeného počítače
 
@@ -48,6 +48,9 @@ Následuje příklad příkazu, který umožňuje podrobné protokolování s p�
 
 Následuje příklad příkazu, který umožňuje podrobné protokolování s připojeným agentem počítače pro Linux při provádění interaktivní instalace.
 
+>[!NOTE]
+>Aby bylo možné spustit **azcmagent**, musíte mít oprávnění *root* Access pro počítače se systémem Linux.
+
 ```
 azcmagent connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID" --verbose
 ```
@@ -73,12 +76,15 @@ V následující tabulce jsou uvedené některé známé chyby a návrhy, jak je
 |--------|------|---------------|---------|
 |Nepovedlo se získat tok zařízení autorizačního tokenu. |`Error occurred while sending request for Device Authorization Code: Post https://login.windows.net/fb84ce97-b875-4d12-b031-ef5e7edf9c8e/oauth2/devicecode?api-version=1.0:  dial tcp 40.126.9.7:443: connect: network is unreachable.` |Koncový bod není dostupný. `login.windows.net` | Ověřte připojení ke koncovému bodu. |
 |Nepovedlo se získat tok zařízení autorizačního tokenu. |`Error occurred while sending request for Device Authorization Code: Post https://login.windows.net/fb84ce97-b875-4d12-b031-ef5e7edf9c8e/oauth2/devicecode?api-version=1.0:  dial tcp 40.126.9.7:443: connect: network is Forbidden`. |Proxy server nebo brána firewall blokuje přístup ke `login.windows.net` koncovému bodu. | Ověřte připojení ke koncovému bodu, které není blokované bránou firewall nebo proxy server. |
+|Nepovedlo se získat tok zařízení autorizačního tokenu.  |`Error occurred while sending request for Device Authorization Code: Post https://login.windows.net/fb84ce97-b875-4d12-b031-ef5e7edf9c8e/oauth2/devicecode?api-version=1.0:  dial tcp lookup login.windows.net: no such host`. | Zásady skupiny objekt *Konfigurace počítače \ Šablony pro správu \ System \ profily uživatelů \ možnost Odstranit profily uživatelů starší, než je zadaný počet dnů při restartování systému* je povolená. | Ověřte, jestli je objekt zásad skupiny povolený a cílí na příslušný počítač. Další podrobnosti najdete v poznámce pod čarou <sup>[1](#footnote1)</sup> . |
 |Nepovedlo se získat autorizační token ze SPN. |`Failed to execute the refresh request. Error = 'Post https://login.windows.net/fb84ce97-b875-4d12-b031-ef5e7edf9c8e/oauth2/token?api-version=1.0: Forbidden'` |Proxy server nebo brána firewall blokuje přístup ke `login.windows.net` koncovému bodu. |Ověřte připojení ke koncovému bodu, které není blokované bránou firewall nebo proxy server. |
 |Nepovedlo se získat autorizační token ze SPN. |`Invalid client secret is provided` |Chybný nebo neplatný tajný klíč instančního objektu. |Ověřte tajný klíč instančního objektu. |
 | Nepovedlo se získat autorizační token ze SPN. |`Application with identifier 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' was not found in the directory 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'. This can happen if the application has not been installed by the administrator of the tenant or consented to by any user in the tenant` |Nesprávný instanční objekt nebo ID tenanta. |Ověřte instanční objekt nebo ID tenanta.|
 |Získat odpověď na prostředek ARM |`The client 'username@domain.com' with object id 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' does not have authorization to perform action 'Microsoft.HybridCompute/machines/read' over scope '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.HybridCompute/machines/MSJC01' or the scope is invalid. If access was recently granted, please refresh your credentials."}}" Status Code=403` |Nesprávná pověření nebo oprávnění |Ověřte, že jste vy nebo instanční objekt je členem role registrace **počítače připojeného k Azure** . |
 |Nepovedlo se AzcmagentConnectovat prostředek ARM. |`The subscription is not registered to use namespace 'Microsoft.HybridCompute'` |Poskytovatelé prostředků Azure nejsou zaregistrovaní. |Zaregistrujte [poskytovatele prostředků](./agent-overview.md#register-azure-resource-providers). |
 |Nepovedlo se AzcmagentConnectovat prostředek ARM. |`Get https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.HybridCompute/machines/MSJC01?api-version=2019-03-18-preview:  Forbidden` |Proxy server nebo brána firewall blokují přístup ke `management.azure.com` koncovému bodu. |Ověřte připojení ke koncovému bodu, které není blokované bránou firewall nebo proxy server. |
+
+<a name="footnote1"></a><sup>1</sup> Pokud je tento objekt zásad skupiny povolený a vztahuje se na počítače s připojeným agentem počítače, odstraní se profil uživatele přidružený k předdefinovanému účtu zadanému pro službu *himds* . V důsledku toho také odstraní ověřovací certifikát používaný ke komunikaci se službou uloženou v mezipaměti místního úložiště certifikátů po dobu 30 dnů. Před uplynutím lhůty 30 dnů se provede pokus o obnovení certifikátu. Pokud chcete tento problém vyřešit, použijte postup [zrušení registrace počítače](manage-agent.md#unregister-machine) a pak ho znovu zaregistrujte se spuštěnou službou `azcmagent connect` .
 
 ## <a name="next-steps"></a>Další kroky
 

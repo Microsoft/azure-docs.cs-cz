@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 4e704a25e0c9700afbe4fa85031d7ff4d6a8d0c1
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e1a4a366b3e4fa045df69683d6e72b157ccf0a1f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965497"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003623"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Vytvoření FCI se sdílenými disky Azure (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,7 +28,7 @@ Tento článek vysvětluje, jak vytvořit instanci clusteru s podporou převzet�
 Další informace najdete v tématu Přehled [FCI s SQL Server na virtuálních počítačích Azure](failover-cluster-instance-overview.md) a [osvědčených postupech pro clustery](hadr-cluster-best-practices.md). 
 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 Před dokončením kroků v tomto článku byste už měli mít:
 
@@ -157,7 +157,7 @@ Pokud chcete cluster ověřit pomocí uživatelského rozhraní, udělejte na je
 1. V části **Vybrat servery nebo cluster**zadejte názvy obou virtuálních počítačů.
 1. V části **Možnosti testování**vyberte **Spustit pouze vybrané testy**. 
 1. Vyberte **Další**.
-1. V části **Výběr testu**vyberte všechny testy *kromě* **prostory úložiště s přímým přístupem**.
+1. V části **Výběr testu**vyberte všechny testy *s výjimkou* **úložiště** .
 
 ## <a name="test-cluster-failover"></a>Testovací převzetí služeb při selhání clusteru
 
@@ -181,9 +181,7 @@ Po nakonfigurování clusteru s podporou převzetí služeb při selhání a vš
 
 1. Vyberte **nový SQL Server instalace clusteru s podporou převzetí služeb při selhání**. Podle pokynů v průvodci nainstalujte SQL Server FCI.
 
-   Datové adresáře FCI musí být v clusterovém úložišti. V případě Prostory úložiště s přímým přístupem se nejedná o sdílený disk, ale přípojný bod na svazku na každém serveru. Prostory úložiště s přímým přístupem synchronizuje svazek mezi oběma uzly. Svazek se prezentuje clusteru jako sdílený svazek clusteru (CSV). Pro datové adresáře použijte přípojný bod sdíleného svazku clusteru.
-
-   ![Datové adresáře](./media/failover-cluster-instance-storage-spaces-direct-manually-configure/20-data-dicrectories.png)
+Datové adresáře FCI musí být na sdílených discích Azure. 
 
 1. Po dokončení pokynů v průvodci instalační program nainstaluje SQL Server FCI na první uzel.
 

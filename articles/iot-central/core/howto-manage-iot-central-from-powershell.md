@@ -8,22 +8,22 @@ ms.author: dobett
 ms.date: 03/27/2020
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 9ca1c8f4a8e92babf65ec049b3784882bd3af689
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7638b44dc3e727e2530e656541272ddad292d1fc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82744981"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002467"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Správa řešení IoT Central z Azure PowerShellu
 
 [!INCLUDE [iot-central-selector-manage](../../../includes/iot-central-selector-manage.md)]
 
-Místo vytváření a správy aplikací IoT Central na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) můžete ke správě aplikací použít [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) .
+Místo vytváření a správy aplikací IoT Central na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) můžete ke správě aplikací použít [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) .
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -70,10 +70,10 @@ Skript nejprve vytvoří skupinu prostředků v oblasti východní USA pro aplik
 |------------------|------------|
 |ResourceGroupName |Skupina prostředků, která obsahuje aplikaci. Tato skupina prostředků už musí existovat ve vašem předplatném. |
 |Umístění |Ve výchozím nastavení používá tato rutina umístění ze skupiny prostředků. V současné době můžete vytvořit aplikaci IoT Central v oblastech **Austrálie**, **Asie a Tichomoří**, **Evropa**, **USA**, **Spojené království**a **Japonsko** . |
-|Name              |Název aplikace v Azure Portal. |
+|Název              |Název aplikace v Azure Portal. |
 |Subdoména         |Subdoména v adrese URL aplikace V tomto příkladu je adresa URL aplikace `https://mysubdomain.azureiotcentral.com` . |
 |Skladová jednotka (SKU)               |V současné době můžete použít buď **ST1** nebo **ST2**. Viz [ceny za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
-|Šablona          | Šablona aplikace, která se má použít Další informace najdete v následující tabulce. |
+|Template (Šablona)          | Šablona aplikace, která se má použít Další informace najdete v následující tabulce. |
 |DisplayName       |Název aplikace, jak se zobrazuje v uživatelském rozhraní. |
 
 [!INCLUDE [iot-central-template-list](../../../includes/iot-central-template-list.md)]

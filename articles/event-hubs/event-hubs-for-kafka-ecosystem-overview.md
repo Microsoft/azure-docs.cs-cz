@@ -2,13 +2,13 @@
 title: Použití centra událostí z aplikace Apache Kafka – Azure Event Hubs | Microsoft Docs
 description: Tento článek poskytuje informace o podpoře Apache Kafka službou Azure Event Hubs.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 733623895176bb3b573c2efcbda8a40b9e2d87c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/20/2020
+ms.openlocfilehash: 6dad797f6769e9804cce7d47ed74794fdddcfb0b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320524"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002474"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Použití Azure Event Hubs z Apache Kafkach aplikací
 Event Hubs poskytuje koncový bod Kafka, který můžou stávající aplikace založené na Kafka použít jako alternativu ke spuštění vlastního clusteru Kafka. Event Hubs podporuje [Apache Kafka protokol 1,0 a novější](https://kafka.apache.org/documentation/)a funguje s vašimi stávajícími aplikacemi Kafka, včetně nástroje MirrorMaker.  
@@ -66,7 +66,7 @@ sasl.mechanism=PLAIN
 sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 ```
 
-#### <a name="samples"></a>ukázky 
+#### <a name="samples"></a>Ukázky 
 **Kurz** s podrobnými pokyny k vytvoření centra událostí a přístup k němu pomocí SAS nebo OAuth najdete v tématu [rychlý Start: streamování dat pomocí Event Hubs pomocí protokolu Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md).
 
 Další **ukázky** , které ukazují, jak používat OAuth s Event Hubs pro Kafka, najdete v tématu [ukázky na GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth).
@@ -79,12 +79,10 @@ Funkce Event Hubs for Kafka umožňuje psát pomocí jednoho protokolu a číst 
 
 Tady je seznam funkcí Kafka, které ještě nejsou podporované:
 
-*   Idempotentní producent
 *   Transakce
 *   Komprese
 *   Uchovávání na základě velikosti
 *   Komprimace protokolů
-*   Přidávání oddílů do existujícího tématu
 *   Podpora rozhraní HTTP Kafka API
 *   Datové proudy Kafka
 

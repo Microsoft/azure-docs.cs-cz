@@ -7,18 +7,18 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 59d1bf08c0680d222710b55c6d6bdb4d5745da56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 843a51ca04ae4256ed21912268443595a5f36083
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82084511"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005714"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>Přesunutí virtuálního počítače s Windows z Amazon Web Services (AWS) na virtuální počítač Azure
 
 Pokud vyhodnocujete virtuální počítače Azure pro hostování vašich úloh, můžete exportovat existující Amazon Web Services (AWS) EC2 instanci virtuálního počítače s Windows a potom do Azure nahrajte virtuální pevný disk (VHD). Po nahrání VHD můžete z virtuálního pevného disku vytvořit nový virtuální počítač v Azure. 
 
-Tento článek popisuje přesunutí jednoho virtuálního počítače z AWS do Azure. Pokud chcete přesunout virtuální počítače z AWS do Azure ve velkém měřítku, přečtěte si téma [migrace virtuálních počítačů v Amazon Web Services (AWS) do Azure pomocí Azure Site Recovery](../../site-recovery/site-recovery-migrate-aws-to-azure.md).
+Tento článek popisuje přesunutí jednoho virtuálního počítače z AWS do Azure. Pokud chcete přesunout virtuální počítače z AWS do Azure ve velkém měřítku, přečtěte si téma [migrace virtuálních počítačů v Amazon Web Services (AWS) do Azure pomocí Azure Site Recovery](../../site-recovery/migrate-tutorial-aws-azure.md).
 
 ## <a name="prepare-the-vm"></a>Příprava virtuálního počítače 
  

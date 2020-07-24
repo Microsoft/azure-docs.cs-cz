@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: timlt
-ms.openlocfilehash: 2a6650cac975c575415a329361da00d4fbfcaa9d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64f91263154f7e65238acdcef9d97e5f2d09aad5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68965122"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006018"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>Série StorSimple 8000: řešení hybridního cloudového úložiště
 
@@ -59,7 +60,7 @@ Následující tabulka popisuje některé klíčové výhody, které Microsoft A
 * **StorSimple Cloud Appliance** – také označované jako virtuální zařízení StorSimple, jedná se o softwarovou verzi zařízení StorSimple, která replikuje architekturu a většinu funkcí fyzického hybridního úložného zařízení. StorSimple Cloud Appliance běží na jednom uzlu na virtuálním počítači Azure. Virtuální zařízení úrovně Premium, která využívají službu Azure Premium Storage, jsou k dispozici v Update 2 a novějších.
 * **Služba StorSimple Device Manager** – rozšíření Azure Portal, které umožňuje spravovat zařízení StorSimple nebo StorSimple Cloud Appliance z jednoho webového rozhraní. Pomocí služby StorSimple Device Manager můžete vytvářet a spravovat služby, zobrazovat a spravovat zařízení, zobrazovat výstrahy, spravovat svazky a zobrazovat a spravovat zásady zálohování a katalog záloh.
 * **Windows PowerShell pro StorSimple** – rozhraní příkazového řádku, které můžete použít ke správě zařízení StorSimple. Windows PowerShell pro StorSimple mají funkce, které vám umožní zaregistrovat zařízení StorSimple, nakonfigurovat síťové rozhraní na zařízení, nainstalovat určité typy aktualizací, vyřešit potíže s vaším zařízením a získat přístup k relaci podpory a změnit stav zařízení. Přístup k Windows PowerShell pro StorSimple získáte tak, že se připojíte ke konzole sériového prostředí nebo pomocí vzdálené komunikace Windows PowerShellu.
-* **Azure PowerShell rutiny StorSimple** – kolekce rutin prostředí Windows PowerShell, které umožňují automatizovat úlohy na úrovni služby a migrace z příkazového řádku. Další informace o rutinách Azure PowerShell pro StorSimple najdete v části [Reference k rutinám](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0#azure).
+* **Azure PowerShell rutiny StorSimple** – kolekce rutin prostředí Windows PowerShell, které umožňují automatizovat úlohy na úrovni služby a migrace z příkazového řádku. Další informace o rutinách Azure PowerShell pro StorSimple najdete v části [Reference k rutinám](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0#azure).
 * **StorSimple Snapshot Manager** – modul snap-in konzoly MMC, který používá skupiny svazků a služba Stínová kopie svazku Windows ke generování záloh konzistentních vzhledem k aplikacím. Kromě toho můžete k vytváření plánů zálohování a klonování a obnovování svazků použít Snapshot Manager StorSimple.
 * **Adaptér StorSimple pro službu SharePoint** – nástroj, který transparentně rozšiřuje Microsoft Azure StorSimple úložiště a ochrany dat na serverové farmy služby SharePoint, a současně umožňuje zobrazit a spravovat úložiště StorSimple z portálu centrální správy služby SharePoint.
 
@@ -128,7 +129,7 @@ K Windows PowerShell pro StorSimple můžete přistupovat ze sériové konzoly (
 Další informace najdete na webu [použití Windows PowerShell pro StorSimple ke správě zařízení](storsimple-8000-windows-powershell-administration.md).
 
 ## <a name="azure-powershell-storsimple-cmdlets"></a>Rutiny Azure PowerShell StorSimple
-Rutiny Azure PowerShell StorSimple jsou kolekcí rutin prostředí Windows PowerShell, které umožňují automatizovat úlohy na úrovni služby a migrace z příkazového řádku. Další informace o rutinách Azure PowerShell pro StorSimple najdete v části [Reference k rutinám](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0).
+Rutiny Azure PowerShell StorSimple jsou kolekcí rutin prostředí Windows PowerShell, které umožňují automatizovat úlohy na úrovni služby a migrace z příkazového řádku. Další informace o rutinách Azure PowerShell pro StorSimple najdete v části [Reference k rutinám](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0).
 
 ## <a name="storsimple-snapshot-manager"></a>StorSimple Snapshot Manager
 StorSimple Snapshot Manager je modul snap-in konzoly MMC (Microsoft Management Console), který můžete použít k vytvoření konzistentních záložních kopií místních a cloudových dat v určitém časovém okamžiku. Modul snap-in běží na hostiteli založeném na systému Windows Server. StorSimple Snapshot Manager můžete použít k těmto akcím:
@@ -207,14 +208,14 @@ Odstranění duplicitních dat snižuje celkové množství uložených dat odst
 ## <a name="storsimple-workload-summary"></a>Souhrn úlohy StorSimple
 Souhrn podporovaných úloh StorSimple je v tabulce.
 
-| Scénář | Úloha | Podporuje se | Omezení | Verze |
+| Scénář | Úloha | Podporováno | Omezení | Verze |
 | --- | --- | --- | --- | --- |
 | Spolupráce |Sdílení souborů |Yes | |Všechny verze |
 | Spolupráce |Sdílení distribuovaných souborů |Yes | |Všechny verze |
 | Spolupráce |SharePoint |Ano* |Podporováno pouze s místně připnuté svazky |Aktualizace 2 a novější |
 | Archivace |Jednoduché archivace souborů |Yes | |Všechny verze |
 | Virtualizace |Virtuální počítače |Ano* |Podporováno pouze s místně připnuté svazky |Aktualizace 2 a novější |
-| databáze |SQL |Ano* |Podporováno pouze s místně připnuté svazky |Aktualizace 2 a novější |
+| Databáze |SQL |Ano* |Podporováno pouze s místně připnuté svazky |Aktualizace 2 a novější |
 | Střežení kamerami |Střežení kamerami |Ano* |Podporováno, pokud je zařízení StorSimple vyhrazené jenom pro tuto úlohu. |Aktualizace 2 a novější |
 | Backup |Primární cílová záloha |Ano* |Podporováno, pokud je zařízení StorSimple vyhrazené jenom pro tuto úlohu. |Aktualizace 3 a novější |
 | Backup |Zálohování sekundárního cíle |Ano* |Podporováno, pokud je zařízení StorSimple vyhrazené jenom pro tuto úlohu. |Aktualizace 3 a novější |
@@ -225,7 +226,7 @@ Zařízení řady StorSimple 8000 nepodporují následující úlohy. Při nasaz
 
 * Lékařské zpracování
 * Výměna
-* Place
+* VDI
 * Oracle
 * SAP
 * Velký objem dat
@@ -234,7 +235,7 @@ Zařízení řady StorSimple 8000 nepodporují následující úlohy. Při nasaz
 
 Níže je seznam podporovaných komponent infrastruktury StorSimple.
 
-| Scénář | Úloha | Podporuje se | Omezení | Verze |
+| Scénář | Úloha | Podporováno | Omezení | Verze |
 | --- | --- | --- | --- | --- |
 | Obecné |Express Route |Yes | |Všechny verze |
 | Obecné |DataCore FC |Ano* |Podporováno s DataCore SANsymphony |Všechny verze |
@@ -257,7 +258,7 @@ Následuje seznam jiného softwaru, který se používá s StorSimple k vytvář
 Před nasazením řešení Microsoft Azure StorSimple doporučujeme projít si následující pojmy a definice.
 
 ### <a name="key-terms-and-definitions"></a>Klíčové pojmy a definice
-| Výraz (akronym nebo zkratka) | Description |
+| Výraz (akronym nebo zkratka) | Popis |
 | --- | --- |
 | záznam řízení přístupu (ACR) |Záznam přidružený ke svazku na vašem zařízení Microsoft Azure StorSimple, který určuje, kteří hostitelé se k němu mohou připojit. Stanovení vychází z kvalifikovaného názvu iSCSI (IQN) hostitelů (obsažených v ACR), které se připojují k vašemu zařízení StorSimple. |
 | AES-256 |Algoritmus 256 standard AES (Advanced Encryption Standard) (AES) pro šifrování dat při jejich přesunu do cloudu a z něj. |

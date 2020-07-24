@@ -10,14 +10,14 @@ ms.topic: reference
 ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 69368ecd7234912bcaf5eb606545f62ddb7b30a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84850b7d44033a2759c51c5c6b9c53d1c945a99d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204179"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005374"
 ---
-# <a name="localization"></a>Lokalizace
+# <a name="localization-element"></a>Element Localization
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -45,7 +45,7 @@ Element **Localization** obsahuje následující atributy:
 
 Element **Localization** obsahuje následující elementy XML
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | SupportedLanguages | 1: n | Seznam podporovaných jazyků |
 | LocalizedResources | 0: n | Seznam lokalizovaných prostředků |
@@ -63,7 +63,7 @@ Element **SupportedLanguages** obsahuje následující atributy:
 
 Element **SupportedLanguages** obsahuje následující prvky:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | SupportedLanguage | 1: n | Zobrazí obsah, který odpovídá značce jazyka na značku RFC 5646-Tags pro identifikaci jazyků. |
 
@@ -73,11 +73,11 @@ Element **LocalizedResources** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| ID | Yes | Identifikátor, který slouží k jednoznačné identifikaci lokalizovaných prostředků. |
+| Id | Yes | Identifikátor, který slouží k jednoznačné identifikaci lokalizovaných prostředků. |
 
 Element **LocalizedResources** obsahuje následující prvky:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | LocalizedCollections | 0: n | Definuje celé kolekce v různých jazykových verzích. Kolekce může mít různý počet položek a různé řetězce pro různé jazykové verze. Příklady kolekcí zahrnují výčty, které se zobrazí v typech deklarací. Například seznam zemí nebo oblastí se uživateli zobrazí v rozevíracím seznamu. |
 | LocalizedStrings | 0: n | Definuje všechny řetězce s výjimkou těch řetězců, které se zobrazují v kolekcích v různých jazykových verzích. |
@@ -86,7 +86,7 @@ Element **LocalizedResources** obsahuje následující prvky:
 
 Element **LocalizedCollections** obsahuje následující prvky:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | Lokalizovaná | 1: n | Seznam podporovaných jazyků |
 
@@ -102,7 +102,7 @@ Element **LocalizedCollections** obsahuje následující prvky:
 
 **Lokalizovaný** ElementCollection obsahuje následující prvky:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | Položka | 0: n | Definuje dostupnou možnost, kterou může uživatel vybrat pro deklaraci identity v uživatelském rozhraní, jako je například hodnota v rozevíracím seznamu. |
 
@@ -138,7 +138,7 @@ Následující příklad ukazuje použití elementu **LocalizedCollections** . O
 
 Element **LocalizedStrings** obsahuje následující prvky:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | LocalizedString | 1: n | Lokalizovaný řetězec. |
 

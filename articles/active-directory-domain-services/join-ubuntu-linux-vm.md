@@ -9,13 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/22/2020
+ms.date: 07/13/2020
 ms.author: iainfou
-ms.openlocfilehash: 7cbd9250ecfb05e52204e1754046e02e4045fa6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7eaf8b6b5cddc8a01b59cda0cafc819e06a5ec7c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734703"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005000"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Připojení virtuálního počítače s Ubuntu Linux k spravované doméně Azure Active Directory Domain Services
 
@@ -23,11 +24,11 @@ Pokud chcete umožnit uživatelům přihlašovat se k virtuálním počítačům
 
 V tomto článku se dozvíte, jak připojit virtuální počítač Ubuntu Linux ke spravované doméně.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
-* Aktivní předplatné Azure.
+* Musíte mít aktivní předplatné Azure.
     * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
@@ -140,7 +141,7 @@ Teď, když jsou na virtuálním počítači nainstalované požadované balíč
     kinit contosoadmin@AADDSCONTOSO.COM
     ```
 
-1. Nakonec připojte počítač k spravované doméně pomocí `realm join` příkazu. Použijte stejný uživatelský účet, který je součástí spravované domény, kterou jste zadali v předchozím `kinit` příkazu, například `contosoadmin@AADDSCONTOSO.COM` :
+1. Nakonec připojte virtuální počítač ke spravované doméně pomocí `realm join` příkazu. Použijte stejný uživatelský účet, který je součástí spravované domény, kterou jste zadali v předchozím `kinit` příkazu, například `contosoadmin@AADDSCONTOSO.COM` :
 
     ```console
     sudo realm join --verbose AADDSCONTOSO.COM -U 'contosoadmin@AADDSCONTOSO.COM' --install=/

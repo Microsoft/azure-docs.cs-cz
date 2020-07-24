@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 10/18/2018
 ms.author: dacurwin
 ms.custom: include file
-ms.openlocfilehash: c0f717e26534151585a51badf4bb1fe1ba58eb00
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 8586d90631e8d38fa020ff9dab3f626aaedb2760
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970517"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003722"
 ---
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
@@ -51,6 +51,10 @@ Pokud chcete vytvořit trezor Recovery Services, postupujte podle těchto kroků
       > Pokud si nejste jisti umístěním zdroje dat, zavřete dialogové okno. V portálu přejdete na seznam prostředků. Pokud máte zdroje dat ve více oblastech, vytvořte pro každou oblast Recovery Services trezor. Vytvořte trezor v prvním umístění předtím, než vytvoříte trezor pro jiné umístění. Není nutné zadávat účty úložiště pro ukládání zálohovaných dat. Recovery Services trezor a Azure Backup popisovač automaticky.
       >
       >
+
+1. Po zadání hodnot vyberte **zkontrolovat + vytvořit**.
+
+    ![Vytvoření trezoru Recovery Services](./media/backup-create-rs-vault/review-and-create.png)
 
 1. Až budete připraveni k vytvoření trezoru Recovery Services, vyberte **vytvořit**.
 

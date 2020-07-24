@@ -7,11 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: victorh
-ms.openlocfilehash: 493ed1a31a23366a90b80d3ab510218c8dce0e9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40f0195ced375da09891eb577bd81f36b2f37cba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74186631"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005544"
 ---
 # <a name="configure-a-web-application-firewall-policy-using-azure-powershell"></a>Konfigurace zásad brány firewall webových aplikací pomocí Azure PowerShell
 
@@ -20,7 +21,7 @@ V tomto článku se dozvíte, jak nakonfigurovat zásady WAF, které se skládaj
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s nastavením zásady omezení četnosti, nastavte prostředí PowerShell a vytvořte profil front-dveří.
 
@@ -28,7 +29,7 @@ Než začnete s nastavením zásady omezení četnosti, nastavte prostředí Pow
 
 Prostředí Azure PowerShell poskytuje sadu rutin, které ke správě vašich prostředků Azure využívají model [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). 
 
-[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) můžete nainstalovat na místní počítač a používat v jakékoli relaci PowerShellu. Postupujte podle pokynů na stránce, přihlaste se pomocí přihlašovacích údajů Azure a nainstalujte AZ PowerShell Module.
+[Azure PowerShell](https://docs.microsoft.com/powershell/azure/) můžete nainstalovat na místní počítač a používat v jakékoli relaci PowerShellu. Postupujte podle pokynů na stránce, přihlaste se pomocí přihlašovacích údajů Azure a nainstalujte AZ PowerShell Module.
 
 #### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 

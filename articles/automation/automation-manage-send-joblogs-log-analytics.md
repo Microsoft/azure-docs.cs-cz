@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 05/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0c8863615446f8b14043cd7bd13e529b7efa1e46
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 2fe6cbdbcb0cf5b5c28d34f2059a2b070b059566
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186193"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004745"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>Předávání dat úloh Azure Automation do protokolů Azure Monitoru
 
@@ -28,7 +28,7 @@ Azure Automation může odesílat datové proudy úloh sady Runbook a streamová
 
 Pokud chcete začít odesílat protokoly pro automatizaci Azure Monitor protokolů, budete potřebovat:
 
-* Nejnovější verzi [Azure PowerShell](/powershell/azureps-cmdlets-docs/).
+* Nejnovější verzi [Azure PowerShell](/powershell/azure/).
 * Pracovní prostor služby Log Analytics. Další informace najdete v tématu [Začínáme s protokoly Azure monitor](../azure-monitor/overview.md).
 * ID prostředku pro váš účet Azure Automation.
 
@@ -70,7 +70,7 @@ Diagnostika Azure Automation v protokolech Azure Monitor vytvoří dva typy záz
 | ResultType |Stav úlohy runbooku. Možné hodnoty:<br>– Nové<br>– Vytvořeno<br>- Spuštěno<br>- Zastaveno<br>- Pozastaveno<br>- Neúspěch<br>-Dokončeno |
 | Kategorie | Klasifikace typu dat. Službě Automation odpovídá hodnota JobLogs. |
 | OperationName | Typ operace prováděné v Azure. Pro automatizaci je tato hodnota úloha. |
-| Resource | Název účtu Automation |
+| Prostředek | Název účtu Automation |
 | SourceSystem | Systém, který Azure Monitor protokoly použít ke shromáždění dat. Tato hodnota je vždy Azure pro diagnostiku Azure. |
 | ResultDescription |Stav výsledku úlohy Runbooku Možné hodnoty:<br>- Úloha se spustila<br>- Zpracování úlohy se nezdařilo<br>- Úloha je dokončená |
 | CorrelationId |Identifikátor GUID korelace úlohy Runbooku |
@@ -92,7 +92,7 @@ Diagnostika Azure Automation v protokolech Azure Monitor vytvoří dva typy záz
 | ResultType |Stav úlohy runbooku. Možné hodnoty:<br>– Probíhá |
 | Kategorie | Klasifikace typu dat. Službě Automation odpovídá hodnota JobStreams. |
 | OperationName | Typ operace provedené v Azure Pro automatizaci je tato hodnota úloha. |
-| Resource | Název účtu Automation. |
+| Prostředek | Název účtu Automation. |
 | SourceSystem | Systém, který Azure Monitor protokoly použít ke shromáždění dat. Tato hodnota je vždy Azure pro diagnostiku Azure. |
 | ResultDescription |Popis, který obsahuje výstupní datový proud z Runbooku. |
 | CorrelationId |Identifikátor GUID korelace úlohy Runbooku |

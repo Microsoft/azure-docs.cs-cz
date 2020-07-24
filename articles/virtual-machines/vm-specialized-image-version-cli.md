@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 04/23/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 1ccf03deee2a2f72c1eb2008e1acc5bf67d16447
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a22c0941a405dd2fcf37403e3a12113bc51cb774
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82796769"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005799"
 ---
 # <a name="create-a-vm-using-a-specialized-image-version-with-the-azure-cli"></a>Vytvoření virtuálního počítače s využitím specializované verze Image pomocí Azure CLI
 
-Vytvořte virtuální počítač ze [specializované verze image](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images) uložené v galerii sdílených imagí. Pokud chcete vytvořit virtuální počítač s použitím generalizované image, přečtěte si téma [Vytvoření virtuálního počítače z generalizované verze image](vm-generalized-image-version-cli.md).
+Vytvořte virtuální počítač ze [specializované verze image](./linux/shared-image-galleries.md#generalized-and-specialized-images) uložené v galerii sdílených imagí. Pokud chcete vytvořit virtuální počítač s použitím generalizované image, přečtěte si téma [Vytvoření virtuálního počítače z generalizované verze image](vm-generalized-image-version-cli.md).
 
 V tomto příkladu nahraďte názvy prostředků podle potřeby. 
 
@@ -58,5 +58,3 @@ Pomocí šablon můžete také vytvořit prostředek Galerie sdílených imagí.
 - [Vytvoření definici image v Shared Image Gallery](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [Vytvoření verze image v Shared Image Gallery](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 - [Vytvoření virtuálního počítače z verze image](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
-
-

@@ -3,12 +3,12 @@ title: Příjem událostí pomocí procesoru událostí hostitel – Azure Event
 description: Tento článek popisuje hostitele procesoru událostí v Azure Event Hubs, který zjednodušuje správu kontrolních bodů, zapůjčení a čtení událostí s paralelním hostováním.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 338b4e890d61aca0d48287db6f042f9dc088754b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd11e3ef77ff665a0207a2cf7e63b1b9f2df0e08
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320634"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002518"
 ---
 # <a name="event-processor-host"></a>EventProcessorHost
 > [!NOTE]
@@ -22,7 +22,7 @@ ms.locfileid: "85320634"
 
 Azure Event Hubs je výkonná služba pro příjem telemetrie, která se dá použít ke streamování milionů událostí s nízkými náklady. Tento článek popisuje, jak používat příjmové události pomocí modulu *Event Processor Host* (EPH); Inteligentní Agent pro příjemce, který zjednodušuje správu kontrolních bodů, leasingu a paralelních čtecích zařízení událostí.  
 
-Klíčem k horizontálnímu navýšení kapacity pro Event Hubs je nápad rozdělit uživatele na oddíly. Na rozdíl od vzorce [konkurenčních spotřebitelů](https://msdn.microsoft.com/library/dn568101.aspx) umožňuje vzor rozděleného uživatele vysoké škálování odebráním kritických bodů pro spor a zjednodušením koncového paralelismu.
+Klíčem k horizontálnímu navýšení kapacity pro Event Hubs je nápad rozdělit uživatele na oddíly. Na rozdíl od vzorce [konkurenčních spotřebitelů](/previous-versions/msp-n-p/dn568101(v=pandp.10)) umožňuje vzor rozděleného uživatele vysoké škálování odebráním kritických bodů pro spor a zjednodušením koncového paralelismu.
 
 ## <a name="home-security-scenario"></a>Scénář zabezpečení domácích
 
@@ -162,7 +162,7 @@ Kromě toho jedno přetížení [RegisterEventProcessorAsync](/dotnet/api/micros
 Tady je postup, jak epocha Receive funguje:
 
 ### <a name="with-epoch"></a>S epocha
-Epocha je jedinečný identifikátor (hodnota epocha), kterou služba používá, aby se vynutilo vlastnictví oddílu nebo zapůjčení. K vytvoření přijímače založeného na epocha použijte metodu [CreateEpochReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createepochreceiver?view=azure-dotnet) . Tato metoda vytvoří přijímač založené na epocha. Příjemce se vytvoří pro konkrétní oddíl centra událostí ze zadané skupiny uživatelů.
+Epocha je jedinečný identifikátor (hodnota epocha), kterou služba používá, aby se vynutilo vlastnictví oddílu nebo zapůjčení. K vytvoření přijímače založeného na epocha použijte metodu [CreateEpochReceiver](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createepochreceiver?view=azure-dotnet) . Tato metoda vytvoří přijímač založené na epocha. Příjemce se vytvoří pro konkrétní oddíl centra událostí ze zadané skupiny uživatelů.
 
 Funkce epocha poskytuje uživatelům možnost zajistit, že ve skupině příjemců je v libovolném časovém okamžiku pouze jeden přijímač, a to s následujícími pravidly:
 
@@ -171,7 +171,7 @@ Funkce epocha poskytuje uživatelům možnost zajistit, že ve skupině příjem
 - Pokud je k dispozici přijímač s hodnotou epocha E1 a vytvoří se nový příjemce s hodnotou epocha E2, kde E1 > E2, pak vytvoření objektu E2 s chybou se nezdaří a dojde k chybě: příjemce s epocha E1 již existuje.
 
 ### <a name="no-epoch"></a>Žádné epocha
-Pomocí metody [CreateReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver?view=azure-dotnet) vytvoříte přijímač, který není založen na epocha. 
+Pomocí metody [CreateReceiver](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver?view=azure-dotnet) vytvoříte přijímač, který není založen na epocha. 
 
 V případě zpracování datových proudů existuje několik scénářů, kdy uživatelé chtějí vytvořit více přijímačů v jedné skupině příjemců. Pro podporu takových scénářů máme možnost vytvořit přijímač bez epocha a v tomto případě povolíme až 5 souběžných přijímačů ve skupině příjemců.
 

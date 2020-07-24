@@ -7,11 +7,12 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: b034159c3d12927f6425b3dc3c5b5609af9b0b76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29f50b2cf9523b9266de2f73607b0099f32852e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77649360"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005408"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Konfigurace pravidla omezení četnosti brány firewall webových aplikací pomocí Azure PowerShell
 Pravidlo omezení četnosti brány firewall webových aplikací (WAF) pro službu Azure front-dveře řídí počet požadavků povolených od klientů během minutového trvání.
@@ -19,12 +20,12 @@ V tomto článku se dozvíte, jak nakonfigurovat pravidlo omezení četnosti WAF
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Než začnete s nastavením zásady omezení četnosti, nastavte prostředí PowerShell a vytvořte profil front-dveří.
 ### <a name="set-up-your-powershell-environment"></a>Nastavení prostředí PowerShell
 Prostředí Azure PowerShell poskytuje sadu rutin, které ke správě vašich prostředků Azure využívají model [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). 
 
-[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) můžete nainstalovat na místní počítač a používat v jakékoli relaci PowerShellu. Postupujte podle pokynů na stránce, přihlaste se pomocí přihlašovacích údajů Azure a nainstalujte AZ PowerShell Module.
+[Azure PowerShell](https://docs.microsoft.com/powershell/azure/) můžete nainstalovat na místní počítač a používat v jakékoli relaci PowerShellu. Postupujte podle pokynů na stránce, přihlaste se pomocí přihlašovacích údajů Azure a nainstalujte AZ PowerShell Module.
 
 #### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Připojení k Azure pomocí interaktivního dialogu pro přihlášení
 ```

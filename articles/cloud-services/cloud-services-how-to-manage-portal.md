@@ -8,11 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: 80481bc11933b0404079221f23b5054024f00acb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 471aa6e5297f8b68f08567a66e3f07e9688ca57e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811364"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002926"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>Správa Cloud Services v Azure Portal
 V **Cloud Services** oblasti Azure Portal můžete:
@@ -76,7 +77,7 @@ Nasazení můžete měnit na stránce **Cloud Services** nebo na řídicím pane
 
 - Pokud chcete pro produkční slot použít statickou IP adresu, musíte rezervovat i pro svůj přípravný slot. V opačném případě se výměna nezdařila.
 
-- Než budete moct provést prohození, musí být spuštěné všechny instance vašich rolí. Stav vašich instancí můžete zjistit v okně **přehled** Azure Portal. Případně můžete použít příkaz [Get-AzureRole](/powershell/module/servicemanagement/azure/get-azurerole?view=azuresmps-3.7.0) ve Windows PowerShellu.
+- Než budete moct provést prohození, musí být spuštěné všechny instance vašich rolí. Stav vašich instancí můžete zjistit v okně **přehled** Azure Portal. Případně můžete použít příkaz [Get-AzureRole](/powershell/module/servicemanagement/azure.service/get-azurerole?view=azuresmps-3.7.0) ve Windows PowerShellu.
 
 Upozorňujeme, že aktualizace operačního systému hosta a operace Service retušova taky můžou způsobit, že se swapy nasazení nezdaří. Další informace najdete v tématu [řešení problémů s nasazením cloudové služby](cloud-services-troubleshoot-deployment-problems.md).
 
