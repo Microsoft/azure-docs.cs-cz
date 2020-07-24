@@ -2,19 +2,20 @@
 title: Metody ověřování
 titleSuffix: Azure Maps
 description: V tomto článku se dozvíte o ověřování Azure Active Directory a sdíleného klíče. Oba se používají pro služby Microsoft Azure Maps. Přečtěte si, jak získat Azure Maps klíč předplatného.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: fe79b630291959ce4dc8b4743127986088a876ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e270a9a1a773442a4d1d28d9bbfe37639cac7c65
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987535"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133380"
 ---
 # <a name="authentication-with-azure-maps"></a>Ověřování s využitím Azure Maps
 
@@ -89,7 +90,7 @@ Při konfiguraci služby Azure RBAC zvolíte objekt zabezpečení a použijete h
 
 Následující typy definic rolí existují k podpoře scénářů aplikací.
 
-| Definice role Azure       | Description                                                                                              |
+| Definice role Azure       | Popis                                                                                              |
 | :-------------------------- | :------------------------------------------------------------------------------------------------------- |
 | Čtečka dat Azure Maps      | Poskytuje přístup k neměnným Azure Maps rozhraní REST API.                                                       |
 | Přispěvatel dat Azure Maps | Poskytuje přístup k proměnlivým rozhraním REST API Azure Maps. Proměnlivost je definována akcemi: Write a DELETE. |

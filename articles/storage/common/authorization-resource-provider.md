@@ -9,12 +9,12 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 73077b6b25c09c17deb4ad468c79fe6d5ddd648e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 634e1866a2c3e30e0750b9e6f4b2b3f93db2f8dc
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833251"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133108"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>Použití poskytovatele prostředků Azure Storage k přístupu k prostředkům správy
 
@@ -26,7 +26,7 @@ Poskytovatele prostředků Azure Storage můžete použít k provádění akcí,
 
 Microsoft poskytuje dvě rozhraní REST API pro práci s Azure Storagemi prostředky. Tato rozhraní API tvoří základ všech akcí, které můžete provádět proti Azure Storage. REST API Azure Storage vám umožní pracovat s daty v účtu úložiště, včetně objektů blob, front, souborů a dat tabulek. Azure Storage poskytovatel prostředků REST API vám umožní pracovat s účtem úložiště a souvisejícími prostředky.
 
-Požadavek, který čte nebo zapisuje data objektů blob, vyžaduje různá oprávnění, než je požadavek, který provádí operaci správy. RBAC poskytuje jemně odstupňovanou kontrolu nad oprávněními obou typů prostředků. Když přiřadíte roli RBAC objektu zabezpečení, ujistěte se, že rozumíte tomu, jaká oprávnění budou udělena. Podrobné informace, které popisují, které akce jsou spojené s každou integrovanou rolí RBAC, najdete v tématu [předdefinované role pro prostředky Azure](../../role-based-access-control/built-in-roles.md).
+Požadavek, který čte nebo zapisuje data objektů blob, vyžaduje různá oprávnění, než je požadavek, který provádí operaci správy. RBAC poskytuje jemně odstupňovanou kontrolu nad oprávněními obou typů prostředků. Když přiřadíte roli RBAC objektu zabezpečení, ujistěte se, že rozumíte tomu, jaká oprávnění budou udělena. Podrobné informace o tom, které akce jsou spojené s jednotlivými integrovanými rolemi RBAC, najdete v tématu [předdefinované role Azure](../../role-based-access-control/built-in-roles.md).
 
 Azure Storage podporuje použití Azure AD k autorizaci požadavků na úložiště objektů BLOB a front. Informace o rolích RBAC pro operace s daty objektů BLOB a front najdete v tématu [autorizace přístupu k objektům blob a frontám pomocí služby Active Directory](storage-auth-aad.md).
 
@@ -34,7 +34,7 @@ Azure Storage podporuje použití Azure AD k autorizaci požadavků na úložiš
 
 Každé předplatné Azure má přidruženou Azure Active Directory, která spravuje uživatele, skupiny a aplikace. Uživatel, skupina nebo aplikace se také označuje jako instanční objekt zabezpečení v kontextu [platformy Microsoft Identity](/azure/active-directory/develop/). Přístup k prostředkům v předplatném můžete udělit objektu zabezpečení, který je definovaný ve službě Active Directory pomocí řízení přístupu na základě role (RBAC).
 
-Když přiřadíte roli RBAC objektu zabezpečení, také určíte rozsah, ve kterém budou oprávnění udělená rolí platná. Pro operace správy můžete přiřadit roli na úrovni předplatného, skupiny prostředků nebo účtu úložiště. Roli RBAC můžete přiřadit objektu zabezpečení pomocí [Azure Portal](https://portal.azure.com/), [nástrojů Azure CLI](../../cli-install-nodejs.md), [powershellu](/powershell/azureps-cmdlets-docs)nebo [poskytovatele prostředků Azure Storage REST API](/rest/api/storagerp).
+Když přiřadíte roli RBAC objektu zabezpečení, také určíte rozsah, ve kterém budou oprávnění udělená rolí platná. Pro operace správy můžete přiřadit roli na úrovni předplatného, skupiny prostředků nebo účtu úložiště. Roli RBAC můžete přiřadit objektu zabezpečení pomocí [Azure Portal](https://portal.azure.com/), [nástrojů Azure CLI](../../cli-install-nodejs.md), [powershellu](/powershell/azure/)nebo [poskytovatele prostředků Azure Storage REST API](/rest/api/storagerp).
 
 Další informace najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)?](../../role-based-access-control/overview.md) a [klasické role správců předplatného, role Azure RBAC a role správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
@@ -44,7 +44,7 @@ Azure poskytuje předdefinované role, které udělují oprávnění k volání 
 
 Předdefinované role, které udělují oprávnění k volání operací správy úložiště, zahrnují role popsané v následující tabulce:
 
-|    Role RBAC    |    Description    |    Zahrnuje přístup k klíčům účtu?    |
+|    Role RBAC    |    Popis    |    Zahrnuje přístup k klíčům účtu?    |
 |---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
 | **Vlastník** | Může spravovat všechny prostředky úložiště a přistupovat k prostředkům.  | Ano, poskytuje oprávnění k zobrazení a obnovení klíčů účtu úložiště. |
 | **Přispěvatel**  | Může spravovat všechny prostředky úložiště, ale nemůže spravovat prostředky pro přiřazení. | Ano, poskytuje oprávnění k zobrazení a obnovení klíčů účtu úložiště. |
@@ -57,7 +57,7 @@ Třetí sloupec v tabulce uvádí, zda integrovaná role podporuje **Microsoft. 
 
 ### <a name="custom-roles-for-management-operations"></a>Vlastní role pro operace správy
 
-Azure také podporuje definování vlastních rolí RBAC pro přístup k prostředkům správy. Další informace o vlastních rolích najdete v tématu [vlastní role pro prostředky Azure](../../role-based-access-control/custom-roles.md).
+Azure také podporuje definování vlastních rolí Azure pro přístup k prostředkům správy. Další informace o vlastních rolích najdete v tématu [vlastní role Azure](../../role-based-access-control/custom-roles.md).
 
 ## <a name="code-samples"></a>Ukázky kódů
 

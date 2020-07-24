@@ -2,19 +2,17 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.custom: include file
 ms.date: 04/16/2020
-ms.author: diberry
-ms.openlocfilehash: 1c3631b4a2964c5e3a8d8267d1934a5822966342
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ac0192da3afa76c3c21056f218f2b249c44d1c36
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673437"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133806"
 ---
 Cognitive Services poskytuje dvě služby pro zpracování v přirozeném jazyce, [Language Understanding](../luis/what-is-luis.md) a [QnA maker](../qnamaker/overview/overview.md), každý s jiným účelem. Informace o tom, kdy používat jednotlivé služby a jak se vzájemně přidávají
 
@@ -43,7 +41,7 @@ Pokud robot váš chat obdrží text `How do I get to the Human Resources buildi
 
 ## <a name="when-do-you-use-luis"></a>Kdy používáte LUIS?
 
-LUIS použijte, pokud potřebujete znát záměr utterance jako součást procesu v robotovi chatu. Po pokračování s ukázkovým textem, `How do I get to the Human Resources building on the Seattle North campus?` když znáte záměr uživatele, zjistíte umístění, můžete podrobnosti o utterance (vydaná s entitami) předat jiné službě, jako je například Transport Server, a získat tak odpověď.
+Službu LUIS použijte v případě, že v rámci procesu v chatbotu potřebujete znát záměr promluvy. Po pokračování s ukázkovým textem, `How do I get to the Human Resources building on the Seattle North campus?` když znáte záměr uživatele, zjistíte umístění, můžete podrobnosti o utterance (vydaná s entitami) předat jiné službě, jako je například Transport Server, a získat tak odpověď.
 
 K určení záměru nemusíte kombinovat LUIS a QnA Maker.
 
@@ -51,7 +49,7 @@ Tyto dvě služby můžete v tomto utterance kombinovat, pokud robot robot potř
 
 ## <a name="when-do-you-use-qna-maker"></a>Kdy použijete QnA Maker?
 
-Použijte QnA Maker, když máte statickou znalostní bázi odpovědí. Tato znalostní báze je vlastní pro vaše potřeby, které jste sestavili s dokumenty, jako jsou soubory PDF a adresy URL.
+Službu QnA Maker použijte v případě, že máte statickou znalostní bázi odpovědí. Tato znalostní báze je přizpůsobená vašim potřebám a vytvořená na základě dokumentů například v podobě souborů PDF nebo adres URL.
 
 V případě, že budete pokračovat s příkladem utterance, `How do I get to the Human Resources building on the Seattle North campus?` pošlete text jako dotaz do publikované služby QnA maker a dostanete nejlepší odpověď.
 
@@ -75,7 +73,7 @@ Pokud vaše chatovací robot potřebuje více informací, než je kterákoli z p
 
 Pomocí nástroje bot Framework **[Dispatch CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** můžete vytvořit proces, který bude spolupracovat s oběma službami. Tento nástroj vytvoří nejvyšší LUIS aplikaci záměrů, které odesílají mezi LUIS a QnA Maker jako podřízené aplikace. [Další informace](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=cs) o integraci s LUIS, QnA maker a robot Framework
 
-K implementaci tohoto typu robota chatu použijte vzorový tvůrce robota **NLP s odesláním**v [jazyce C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) nebo [Node. js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch).
+K implementaci tohoto typu robota chatu použijte ukázku tvůrce robota, **NLP s odesláním**v [jazyce C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) nebo [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch).
 
 ## <a name="best-practices"></a>Osvědčené postupy
 

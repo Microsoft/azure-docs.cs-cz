@@ -6,27 +6,29 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/13/2020
+ms.date: 07/23/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 24d726f7600c3ba80833640be8036bf0daa2c014
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e30c4142232a2d695204f5c8f612eb44791c847c
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518720"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133159"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>Zabránit anonymnímu veřejnému přístupu pro čtení kontejnerů a objektů BLOB
 
 Anonymní veřejný přístup pro čtení kontejnerů a objektů BLOB v Azure Storage je pohodlný způsob, jak sdílet data, ale může také představovat bezpečnostní riziko. Je důležité spravovat anonymní přístup v rozumném zájmu a pochopit, jak vyhodnocovat anonymní přístup k datům. Provozní složitost, lidská chyba nebo škodlivý útok na data, která jsou veřejně přístupná, můžou vést k nákladným porušením dat. Společnost Microsoft doporučuje povolit anonymní přístup pouze v případě, že je to nutné pro váš scénář aplikace.
 
-Ve výchozím nastavení může uživatel s příslušnými oprávněními nakonfigurovat veřejný přístup k kontejnerům a objektům blob. Můžete zabránit veškerému veřejnému přístupu na úrovni účtu úložiště. Když zakážete přístup k veřejnému objektu BLOB pro účet úložiště, pak kontejnery v účtu nejde nakonfigurovat pro veřejný přístup. Všechny kontejnery, které již byly nakonfigurovány pro veřejný přístup, již nebudou přijímat anonymní požadavky. Další informace najdete v tématu [Konfigurace anonymního veřejného přístupu pro čtení pro kontejnery a objekty blob](anonymous-read-access-configure.md).
+Ve výchozím nastavení jsou veřejný přístup k datům objektů BLOB vždycky zakázaný. Výchozí konfigurace účtu úložiště ale umožňuje uživateli s příslušnými oprávněními nakonfigurovat veřejný přístup ke kontejnerům a objektům blob v účtu úložiště. Pro zvýšení zabezpečení můžete zakázat veškerý veřejný přístup k účtu úložiště bez ohledu na nastavení veřejného přístupu pro jednotlivé kontejnery. Zakázáním veřejného přístupu k účtu úložiště znemožníte uživateli povolit veřejný přístup ke kontejneru v účtu. Microsoft doporučuje, abyste zakázali veřejný přístup k účtu úložiště, pokud to váš scénář nevyžaduje. Nepovolení veřejného přístupu pomáhá zabránit narušením dat způsobeným nežádoucím anonymním přístupem.
+
+Když zakážete přístup k veřejnému objektu BLOB pro účet úložiště, Azure Storage odmítne všechny anonymní požadavky na tento účet. Po povolení veřejného přístupu pro účet není možné kontejnery tohoto účtu následně nakonfigurovat pro veřejný přístup. Všechny kontejnery, které již byly nakonfigurovány pro veřejný přístup, již nebudou přijímat anonymní požadavky. Další informace najdete v tématu [Konfigurace anonymního veřejného přístupu pro čtení pro kontejnery a objekty blob](anonymous-read-access-configure.md).
 
 Tento článek popisuje, jak analyzovat anonymní požadavky na účet úložiště a jak zabránit anonymnímu přístupu pro celý účet úložiště nebo pro jednotlivé kontejnery.
 
 ## <a name="detect-anonymous-requests-from-client-applications"></a>Detekovat anonymní požadavky z klientských aplikací
 
-Když zakážete veřejný přístup pro čtení pro účet úložiště, riskujete tím odmítnutí požadavků na kontejnery a objekty blob, které jsou aktuálně nakonfigurované pro veřejný přístup. Nepovolení veřejného přístupu pro účet úložiště přepíše nastavení veřejného přístupu pro všechny kontejnery v tomto účtu úložiště. Pokud pro účet úložiště není povolený veřejný přístup, všechny budoucí anonymní požadavky na daný účet selžou.
+Když zakážete veřejný přístup pro čtení pro účet úložiště, riskujete tím odmítnutí požadavků na kontejnery a objekty blob, které jsou aktuálně nakonfigurované pro veřejný přístup. Nepovolení veřejného přístupu pro účet úložiště přepíše nastavení veřejného přístupu pro jednotlivé kontejnery v tomto účtu úložiště. Pokud pro účet úložiště není povolený veřejný přístup, všechny budoucí anonymní požadavky na daný účet selžou.
 
 Aby bylo možné pochopit, jakým způsobem může mít veřejný přístup vliv na klientské aplikace, společnost Microsoft doporučuje povolit protokolování a metriky pro tento účet a analyzovat vzory anonymních požadavků během časového intervalu. Pomocí metrik určete počet anonymních požadavků na účet úložiště a pomocí protokolů určete, ke kterým kontejnerům se má anonymní přístup.
 

@@ -1,24 +1,24 @@
 ---
 title: Přehled | Mapy Microsoft Azure
 description: Seznamte se se službami a možnostmi v Microsoft Azure Maps a jejich použití ve svých aplikacích.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/15/2020
 ms.topic: overview
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 2b6c61c5c144923ece80fddf8a1412d68f35ad52
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 56dce7f52c172255ae316a9171555b8687b7c683
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242865"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133414"
 ---
 # <a name="what-is-azure-maps"></a>Co je služba Azure Maps?
 
-Azure Maps je kolekce geoprostorových služeb, které používají aktuální mapová data k poskytování geografického kontextu webovým a mobilním aplikacím. Azure Maps poskytuje:
+Azure Maps je kolekce geoprostorových služeb. Tyto služby používají aktuální data z map, aby webovým a mobilním aplikacím poskytovaly související geografické informace. Azure Maps poskytuje:
 
 * Rozhraní REST API pro vykreslování map v několika stylech a v satelitních proobrázcích.
 * Služba Search vám umožní najít adresy, místa a body zájmu po celém světě.
@@ -57,7 +57,7 @@ K vytváření aplikací pro mobilní mapování použijte Azure Maps Android SD
 
 Azure Maps se skládá z následujících devíti služeb, které poskytují geografickou souvislost aplikacím Azure.
 
-### <a name="data-service"></a>Datová služba
+### <a name="data-service"></a>Služba Data
 
 Data jsou pro mapy naléhavá. Pomocí datové služby můžete nahrávat a ukládat geoprostorové data pro použití s prostorovou operací nebo kompozicí imagí.  Uvedení zákaznických dat blíže ke službě Azure Maps omezí latenci, zvýší produktivitu a vytvoří nové scénáře ve vašich aplikacích. Podrobnosti o této službě najdete v dokumentaci k [rozhraní API datové služby](https://docs.microsoft.com/rest/api/maps/data).
 

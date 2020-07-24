@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 7cf03de2efdb1026934985c225a2a9eecbfbb5a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24e4554e2202c8b5452193e1b0f48cf6c8ada5dd
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84902808"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133805"
 ---
 ## <a name="limitations"></a>Omezení
 
@@ -79,7 +79,15 @@ Po zřízení vyhrazeného hostitele ho Azure přiřadí k fyzickému serveru. T
 
 ## <a name="quotas"></a>Kvóty
 
-Pro vyhrazené hostitele je k dispozici výchozí limit kvóty 3000 vCPU pro jednotlivé oblasti. Počet hostitelů, které můžete nasadit, je taky omezený kvótou pro rodinu velikosti virtuálního počítače, která se používá pro hostitele. Například předplatné s průběžnými **platbami** může mít k dispozici pouze kvótu 10 vCPU pro řadu velikostí Dsv3 v oblasti východní USA. V takovém případě musíte požádat o zvýšení kvóty alespoň na 64 vCPU, než budete moct nasadit vyhrazeného hostitele. V případě potřeby vyberte v pravém horním rohu tlačítko **zvýšení žádosti** , aby se zažádal požadavek.
+Existují dva typy kvót, které jsou spotřebovány při nasazení vyhrazeného hostitele.
+
+1. Vyhrazená kvóta vCPU hostitele. Výchozí limit kvóty je 3000 vCPU podle oblasti.
+1. Kvóta řady velikostí virtuálních počítačů. Například předplatné s průběžnými **platbami** může mít k dispozici pouze kvótu 10 vCPU pro řadu velikostí Dsv3 v oblasti východní USA. Chcete-li nasadit vyhrazeného hostitele Dsv3, je třeba před nasazením vyhrazeného hostitele požádat o zvýšení kvóty minimálně na 64 vCPU. 
+
+Pokud chcete požádat o zvýšení kvóty, vytvořte žádost o podporu v [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+
+Zřízení vyhrazeného hostitele bude využívat vyhrazené hostitelské vCPU i kvótu vCPU rodiny virtuálních počítačů, ale nespotřebovává regionální vCPU.
+
 
 ![Snímek obrazovky se stránkou používání a kvót na portálu](./media/virtual-machines-common-dedicated-hosts/quotas.png)
 
@@ -113,7 +121,7 @@ Typy velikosti a hardwaru se v jednotlivých oblastech liší. Další informace
 
 Azure monitoruje a spravuje stav hostitelů. Při dotazování hostitele se vrátí následující stavy:
 
-| Stav   | Description       |
+| Stav   | Popis       |
 |----------|----------------|
 | Dostupný hostitel     | Neexistují žádné známé problémy s hostitelem.   |
 | Hostitel v rámci šetření  | Máme nějaké problémy s hostitelem, který se chystáme najít. Toto je přechodný stav nutný k tomu, aby Azure mohl vyzkoušet a identifikovat rozsah a hlavní příčinu zjištěného problému. Může to mít vliv na virtuální počítače, které běží na hostiteli. |
