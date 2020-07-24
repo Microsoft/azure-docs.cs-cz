@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: banders
-ms.openlocfilehash: cd6e075448c68b6d2c65832d128e14c016c69c7c
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 28080517a33f1bbf9bee3436493f178b60c0d161
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85601407"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523600"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Získání vlastnictví fakturace předplatných Azure pro vlastní účet se smlouvou MPA
 
@@ -155,6 +155,12 @@ Některé žádosti zákazníků o převod můžou kvůli povaze aktuální stru
 Adresář převáděných předplatných Azure musí odpovídat adresáři zákazníka vybranému při navazování vztahu CSP.
 
 Pokud se tyto dva adresáře neshodují, předplatná není možné převést. Musíte buď navázat nový vztah se zákazníkem na úrovni prodejce CSP výběrem adresáře příslušných předplatných Azure, nebo změnit adresář předplatných Azure tak, aby odpovídal adresáři vztahu CSP se zákazníkem. Další informace najdete v tématu [Přidružení existujícího předplatného k adresáři Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory#to-associate-an-existing-subscription-to-your-azure-ad-directory).
+
+### <a name="ea-subscription-in-the-non-orgnization-directory"></a>Předplatné EA v adresáři mimo organizaci
+
+Předplatná EA z adresářů mimo organizaci se dají přenášet v případě, že pro příslušný adresář existuje vztah prodejce s CSP. Pokud pro adresář neexistuje vztah prodejce, musíte zajistit, aby v adresáři byl uživatel organizace jako *globální správce*, který může přijímat partnerské vztahy. Část názvu domény v uživatelském jméně musí tvořit buď počáteční výchozí název domény [název domény]. onmicrosoft.com, nebo ověřený nefederovaný název vlastní domény, například contoso.com.  
+
+Pokud chcete do adresáře přidat nového uživatele, přečtěte si téma [Rychlé zprovoznění: Přidání nových uživatelů do služby Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory).
 
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Kontrola přístupu ke smlouvě s partnerem Microsoftu
 
