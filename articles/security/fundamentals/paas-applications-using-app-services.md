@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2019
 ms.author: terrylan
-ms.openlocfilehash: 49b51a5f14f305afa915ec1d0fae42ca9ded6b1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc273c2e6e27c191b4407ffae86a4ba227ee642b
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81461663"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131034"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-app-service"></a>Osvědčené postupy pro zabezpečení webových a mobilních aplikací PaaS pomocí Azure App Service
 
@@ -33,7 +33,7 @@ Azure App Service je nabídka typu platforma jako služba (PaaS), která umožň
 App Service poskytuje službě OAuth 2,0 pro vašeho poskytovatele identity. OAuth 2,0 se zaměřuje na jednoduchost vývojáře v klientských počítačích a poskytuje konkrétní autorizační toky pro webové aplikace, desktopové aplikace a mobilní telefony. Azure AD používá OAuth 2,0, který vám umožní autorizovat přístup k mobilním a webovým aplikacím. Další informace najdete v tématu [ověřování a autorizace v Azure App Service](../../app-service/overview-authentication-authorization.md).
 
 ## <a name="restrict-access-based-on-role"></a>Omezení přístupu na základě role
-Omezení přístupu je nezbytné pro organizace, které chtějí vyhovět zásadám zabezpečení pro přístup k datům. Řízení přístupu na základě role (RBAC) můžete použít k přiřazení oprávnění uživatelům, skupinám a aplikacím v určitém oboru, jako je třeba znát a nejnižší principy zabezpečení oprávnění. Další informace o udělení přístupu uživatelům k aplikacím najdete v tématu [co je řízení přístupu na základě role](/azure/role-based-access-control/overview).
+Omezení přístupu je nezbytné pro organizace, které chtějí vyhovět zásadám zabezpečení pro přístup k datům. Řízení přístupu na základě role (RBAC) můžete použít k přiřazení oprávnění uživatelům, skupinám a aplikacím v určitém oboru, jako je třeba znát a nejnižší principy zabezpečení oprávnění. Další informace o tom, jak udělit uživatelům přístup k aplikacím, najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)](/azure/role-based-access-control/overview).
 
 ## <a name="protect-your-keys"></a>Ochrana klíčů
 Nezáleží na tom, jaký je dobrý způsob zabezpečení při ztrátě klíčů předplatného. Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče používané cloudovými aplikacemi a službami. Pomocí Key Vault můžete šifrovat klíče a tajné klíče (například ověřovací klíče, klíče účtu úložiště, šifrovací klíče dat). Soubory PFX a hesla) pomocí klíčů chráněných moduly hardwarového zabezpečení (HSM). Pro zvýšené bezpečí můžete klíče importovat nebo generovat v modulech HSM. Pomocí Key Vault můžete také spravovat certifikáty TLS s automatickým obnovením. Další informace najdete v tématu [co je Azure Key Vault](../../key-vault/general/overview.md) .

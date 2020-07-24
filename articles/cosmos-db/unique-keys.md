@@ -5,13 +5,14 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 07/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: f234579c6fb2b6f1bc0cd518b87ea69fae30093a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5a867a00fa28dcd03842d02be16d88e3a7d2e9f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74869829"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132649"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Omezení jedinečnosti klíčů v Azure Cosmos DB
 
@@ -19,7 +20,7 @@ Jedinečné klíče přidávají vrstvu integrity dat do kontejneru Azure Cosmos
 
 Po vytvoření kontejneru s jedinečnou zásadou klíče se zabrání vytvoření nové nebo aktualizace existující položky, která má za následek duplikování v rámci logického oddílu, jak je určeno omezením jedinečného klíče. Klíč oddílu v kombinaci s jedinečným klíčem zaručuje jedinečnost položky v rámci rozsahu kontejneru.
 
-Představte si třeba kontejner Azure Cosmos s e-mailovou adresou jako omezení jedinečnosti klíče a `CompanyID` jako klíč oddílu. Když nakonfigurujete e-mailovou adresu uživatele s jedinečným klíčem, každá položka má v rámci dané položky jedinečnou e-mailovou adresu `CompanyID` . Nelze vytvořit dvě položky s duplicitními e-mailovými adresami a stejnou hodnotou klíče oddílu. 
+Představte si třeba kontejner Azure Cosmos s e-mailovou adresou jako omezení jedinečnosti klíče a `CompanyID` jako klíč oddílu. Když nakonfigurujete e-mailovou adresu uživatele s jedinečným klíčem, každá položka má v rámci dané položky jedinečnou e-mailovou adresu `CompanyID` . Nelze vytvořit dvě položky s duplicitními e-mailovými adresami a stejnou hodnotou klíče oddílu. V rozhraní API ve Azure Cosmos DB SQL (Core) je položka uložená jako hodnota JSON. Tyto hodnoty JSON rozlišují velká a malá písmena. Když vyberete vlastnost jako jedinečný klíč, můžete pro tuto vlastnost vkládat hodnoty pro velká a malá písmena. Například pokud máte jedinečný klíč definovaný pro vlastnost Name, "Gaby" se liší od "Gaby" a můžete do kontejneru vložit obojí.
 
 Pokud chcete vytvořit položky se stejnou e-mailovou adresou, ale ne se stejným křestním jménem, posledním jménem a e-mailovou adresou, přidejte další cesty k zásadě jedinečného klíče. Místo vytváření jedinečného klíče na základě e-mailové adresy můžete také vytvořit jedinečný klíč s kombinací křestního jména, příjmení a e-mailové adresy. Tento klíč je známý jako složený jedinečný klíč. V takovém případě je povolena každá jedinečná kombinace tří hodnot v rámci dané položky `CompanyID` . 
 

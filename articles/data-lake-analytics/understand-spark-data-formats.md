@@ -1,19 +1,17 @@
 ---
 title: Pochopení Apache Spark datových formátů pro Azure Data Lake Analytics vývojářů U-SQL.
 description: Tento článek popisuje Apache Spark koncepty, které U_SQL vývojářům porozumět rozdílům mezi datovými formáty U-SQL a Spark.
-author: guyhay
-ms.author: guyhay
 ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.custom: understand-apache-spark-data-formats
 ms.date: 01/31/2019
-ms.openlocfilehash: ed929b9dd6d262d63554ef3df59d3e3806dd28dc
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bff8c89dcdcbb7c319e04e5e7518985badf5a5ff
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106420"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132309"
 ---
 # <a name="understand-differences-between-u-sql-and-spark-data-formats"></a>Vysvětlení rozdílů mezi datovými formáty U-SQL a Spark
 
@@ -50,7 +48,7 @@ Po této transformaci můžete zkopírovat data, jak je popsáno v kapitole [př
 
 - [Principy konceptů kódu Spark pro vývojáře U-SQL](understand-spark-code-concepts.md)
 - [Upgradujte řešení pro analýzu velkých objemů dat z Azure Data Lake Storage Gen1 na Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-upgrade.md)
-- [.NET pro Apache Spark](https://docs.microsoft.com/dotnet/spark/what-is-apache-spark-dotnet)
+- [.NET for Apache Spark](https://docs.microsoft.com/dotnet/spark/what-is-apache-spark-dotnet)
 - [Transformuje data pomocí aktivity Sparku v Azure Data Factory](../data-factory/transform-data-using-spark.md)
 - [Transformuje data pomocí aktivity podregistru Hadoop v Azure Data Factory](../data-factory/transform-data-using-hadoop-hive.md)
 - [Co je Apache Spark ve službě Azure HDInsight](../hdinsight/spark/apache-spark-overview.md)

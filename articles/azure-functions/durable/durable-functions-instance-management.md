@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1837d342c4476633ee33a8579abe7389ac9bbddf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce85473e80bfccf1bcff3e21408fd91e4cd428a4
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80476825"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131323"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Správa instancí v Durable Functions v Azure
 
@@ -18,13 +18,13 @@ Pokud používáte rozšíření [Durable Functions](durable-functions-overview.
 
 Můžete začít a ukončovat instance, například, a můžete zadávat dotazy na instance, včetně možnosti dotazování všech instancí a instancí dotazů pomocí filtrů. Kromě toho můžete odesílat události do instancí, počkat na dokončení Orchestrace a načíst adresy URL Webhooku pro správu protokolu HTTP. Tento článek se zabývá i dalšími operacemi správy, včetně převíjení instancí, vymazáním Historie instancí a odstraněním centra úloh.
 
-V Durable Functions máte možnosti, jak chcete implementovat jednotlivé operace správy. Tento článek popisuje příklady, které používají [Azure Functions Core Tools](../functions-run-local.md) pro .NET (C#) i JavaScript.
+V Durable Functions máte možnosti, jak chcete implementovat jednotlivé operace správy. Tento článek popisuje příklady, které používají [Azure Functions Core Tools](../functions-run-local.md) pro .NET (C#), JavaScript a Python.
 
 ## <a name="start-instances"></a>Počáteční instance
 
 Je důležité, abyste mohli spustit instanci orchestrace. To se obvykle provádí při použití vazby Durable Functions v triggeru jiné funkce.
 
-`StartNewAsync`Metoda (.NET) nebo `startNew` (JavaScript) na [vazbě klienta Orchestration](durable-functions-bindings.md#orchestration-client) spouští novou instanci. Interně Tato metoda zařadí zprávu do fronty ovládacích prvků, která pak aktivuje začátek funkce se zadaným názvem, který používá [aktivační vazbu orchestrace](durable-functions-bindings.md#orchestration-trigger).
+`StartNewAsync`Metoda (.NET), `startNew` (JavaScript) nebo `start_new` (Python) na [vazbě klienta Orchestration](durable-functions-bindings.md#orchestration-client) spouští novou instanci. Interně Tato metoda zařadí zprávu do fronty ovládacích prvků, která pak aktivuje začátek funkce se zadaným názvem, který používá [aktivační vazbu orchestrace](durable-functions-bindings.md#orchestration-trigger).
 
 Tato asynchronní operace se dokončí při úspěšném naplánování procesu orchestrace.
 
@@ -60,7 +60,7 @@ public static async Task Run(
 
 <a name="javascript-function-json"></a>Pokud není uvedeno jinak, příklady na této stránce používají aktivační událost HTTP s následujícími function.jsv.
 
-**function.jsna**
+**function.json**
 
 ```json
 {
@@ -102,6 +102,56 @@ module.exports = async function(context, input) {
 };
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+<a name="javascript-function-json"></a>Pokud není uvedeno jinak, příklady na této stránce používají aktivační událost HTTP s následujícími function.jsv.
+
+**function.json**
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [    
+    {
+      "name": "msg",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "messages",
+      "connection": "AzureStorageQueuesConnectionString"
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "name": "starter",
+      "type": "durableClient",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+> [!NOTE]
+> Tento příklad cílí na Durable Functions verze 2. x. Ve verzi 1. x použijte `orchestrationClient` místo `durableClient` .
+
+**__init__. py**
+
+```python
+import logging
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+    
+    instance_id = await client.start_new('HelloWorld', None, None)
+    logging.log(f"Started orchestration with ID = ${instance_id}.")
+
+```
+
 ---
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
@@ -127,7 +177,7 @@ func durable start-new --function-name HelloWorld --input @counter-data.json --t
 
 V rámci snahy o správu orchestrací budete pravděpodobně potřebovat shromáždit informace o stavu instance orchestrace (například bez ohledu na to, zda byla dokončena normálně nebo neúspěšná).
 
-`GetStatusAsync`Metoda (.NET) nebo `getStatus` (JavaScript) na [vazbě klienta Orchestration](durable-functions-bindings.md#orchestration-client) se dotazuje na stav instance Orchestration.
+`GetStatusAsync`Metoda (.NET), `getStatus` (JavaScript) nebo `get_status` (Python) na [vazbě klienta Orchestration](durable-functions-bindings.md#orchestration-client) se dotazuje na stav instance Orchestration.
 
 Provede (povinné) (volitelné), (volitelné), (nepovinné) `instanceId` `showHistory` `showHistoryOutput` a `showInput` (volitelné) jako parametry.
 
@@ -153,7 +203,7 @@ Metoda vrátí objekt s následujícími vlastnostmi:
   * **Ukončeno**: instance byla náhle zastavena.
 * **History**: historie spouštění orchestrace. Toto pole je vyplněno pouze v případě `showHistory` , že je nastavena na hodnotu `true` .
 
-Tato metoda vrátí `null` (.NET) nebo `undefined` (JavaScript), pokud instance neexistuje.
+Tato metoda vrátí `null` (.NET), `undefined` (JavaScript) nebo `None` (Python), pokud instance neexistuje.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -185,6 +235,19 @@ module.exports = async function(context, instanceId) {
 ```
 
 Viz [začátek instancí](#javascript-function-json) function.jsv konfiguraci.
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+
+    status = await client.get_status(instance_id)
+    # do something based on the current status
+```
 
 ---
 
@@ -218,7 +281,7 @@ func durable get-history --id 0ab8c55a66644d68a3a8b220b12d209c
 
 Spíše než dotazování jedné instance orchestrace v čase, může být efektivnější dotazování na ně.
 
-Můžete použít `GetStatusAsync` metodu (.NET) nebo `getStatusAll` (JavaScript) pro dotazování stavů všech instancí orchestrace. V rozhraní .NET můžete předat `CancellationToken` objekt pro případ, že ho chcete zrušit. Metoda vrátí objekty se stejnými vlastnostmi jako `GetStatusAsync` Metoda s parametry.
+Můžete použít `GetStatusAsync` metodu (.NET), `getStatusAll` (JavaScript) nebo `get_status_all` (Python) pro dotazování stavů všech instancí orchestrace. V rozhraní .NET můžete předat `CancellationToken` objekt pro případ, že ho chcete zrušit. Metoda vrátí objekty se stejnými vlastnostmi jako `GetStatusAsync` Metoda s parametry.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -253,6 +316,24 @@ module.exports = async function(context, req) {
         context.log(JSON.stringify(instance));
     });
 };
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import logging
+import json
+import azure.functions as func
+import azure.durable_functions as df
+
+
+async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+
+    instances = await client.get_status_all()
+
+    for instance in instances:
+        logging.log(json.dumps(instance))
 ```
 
 Viz [začátek instancí](#javascript-function-json) function.jsv konfiguraci.
@@ -331,6 +412,31 @@ module.exports = async function(context, req) {
 
 Viz [začátek instancí](#javascript-function-json) function.jsv konfiguraci.
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import logging
+from datetime import datetime
+import json
+import azure.functions as func
+import azure.durable_functions as df
+from azure.durable_functions.models.OrchestrationRuntimeStatus import OrchestrationRuntimeStatus
+
+async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+
+    runtime_status = [OrchestrationRuntimeStatus.Completed, OrchestrationRuntimeStatus.Running]
+
+    instances = await client.get_status_by(
+        datetime(2018, 3, 10, 10, 1, 0),
+        datetime(2018, 3, 10, 10, 23, 59),
+        runtime_status
+    )
+
+    for instance in instances:
+        logging.log(json.dumps(instance))
+```
+
 ---
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
@@ -355,7 +461,7 @@ func durable get-instances --created-after 2018-03-10T13:57:31Z --created-before
 
 Máte-li instanci orchestrace, která trvá příliš dlouho, nebo ji pouze potřebujete zastavit, než se z nějakého důvodu dokončí, máte možnost ji ukončit.
 
-`TerminateAsync`K ukončení instancí můžete použít metodu (.NET) nebo `terminate` (JavaScript) [vazby klienta Orchestration](durable-functions-bindings.md#orchestration-client) . Dva parametry jsou `instanceId` a `reason` řetězec, který se zapisuje do protokolů a do stavu instance.
+`TerminateAsync`K ukončení instancí můžete použít metodu (.NET), `terminate` (JavaScript) nebo `terminate` (Python) [vazby klienta Orchestration](durable-functions-bindings.md#orchestration-client) . Dva parametry jsou `instanceId` a `reason` řetězec, který se zapisuje do protokolů a do stavu instance.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -387,6 +493,19 @@ module.exports = async function(context, instanceId) {
 ```
 
 Viz [začátek instancí](#javascript-function-json) function.jsv konfiguraci.
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+
+    reason = "It was time to be done."
+    return client.terminate(instance_id, reason)
+```
 
 ---
 
@@ -453,6 +572,19 @@ module.exports = async function(context, instanceId) {
 
 Viz [začátek instancí](#javascript-function-json) function.jsv konfiguraci.
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+
+    event_data = [1, 2 ,3]
+    return client.raise_event(instance_id, 'MyEvent', event_data)
+```
+
 ---
 
 > [!NOTE]
@@ -493,6 +625,39 @@ Tady je příklad funkce triggeru HTTP, která ukazuje, jak používat toto rozh
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpSyncStart/index.js)]
 
 Viz [začátek instancí](#javascript-function-json) function.jsv konfiguraci.
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import logging
+import azure.functions as func
+import azure.durable_functions as df
+
+timeout = "timeout"
+retry_interval = "retryInterval"
+
+async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+
+    instance_id = await client.start_new(req.route_params['functionName'], None, req.get_body())
+    logging.log(f"Started orchestration with ID = '${instance_id}'.")
+
+    timeout_in_milliseconds = get_time_in_seconds(req, timeout)
+    timeout_in_milliseconds = timeout_in_milliseconds if timeout_in_milliseconds != None else 30000
+    retry_interval_in_milliseconds = get_time_in_seconds(req, retry_interval)
+    retry_interval_in_milliseconds = retry_interval_in_milliseconds if retry_interval_in_milliseconds != None else 1000
+
+    return client.wait_for_completion_or_create_check_status_response(
+        req,
+        instance_id,
+        timeout_in_milliseconds,
+        retry_interval_in_milliseconds
+    )
+
+def get_time_in_seconds(req: func.HttpRequest, query_parameter_name: str):
+    query_value = req.params.get(query_parameter_name)
+    return query_value if query_value != None else 1000
+```
 
 ---
 
@@ -600,6 +765,22 @@ modules.exports = async function(context, ctx) {
 
 Viz [začátek instancí](#javascript-function-json) function.jsv konfiguraci.
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.cosmosdb.cdb.Document:
+    client = df.DurableOrchestrationClient(starter)
+
+    payload = client.create_check_status_response(req, instance_id).get_body().decode()
+
+    return func.cosmosdb.CosmosDBConverter.encode({
+        id: instance_id,
+        payload: payload
+    })
+```
 ---
 
 ## <a name="rewind-instances-preview"></a>Instance převinutí (Preview)
@@ -647,6 +828,22 @@ module.exports = async function(context, instanceId) {
 
 Viz [začátek instancí](#javascript-function-json) function.jsv konfiguraci.
 
+# <a name="python"></a>[Python](#tab/python)
+
+> [!NOTE]
+> V Pythonu není tato funkce aktuálně podporována.
+
+<!-- ```python
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+
+    reason = "Orchestrator failed and needs to be revived."
+    return client.rewind(instance_id, reason)
+``` -->
+
 ---
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
@@ -693,6 +890,18 @@ module.exports = async function(context, instanceId) {
 
 Viz [začátek instancí](#javascript-function-json) function.jsv konfiguraci.
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+
+    return client.purge_instance_history(instance_id)
+```
+
 ---
 
 Následující příklad ukazuje funkci aktivovanou časovačem, která vyprázdní historii pro všechny instance orchestrace, které byly dokončeny po zadaném časovém intervalu. V takovém případě dojde k odebrání dat pro všechny instance, které byly dokončeny před 30 nebo více dny. Je naplánováno, že se spustí jednou za den, ve 12 dop.:
@@ -722,7 +931,7 @@ public static Task Run(
 
 `purgeInstanceHistoryBy`Metodu lze použít k podmíněné mazání historie instancí pro více instancí.
 
-**function.jsna**
+**function.json**
 
 ```json
 {
@@ -759,7 +968,22 @@ module.exports = async function (context, myTimer) {
     return client.purgeInstanceHistoryBy(createdTimeFrom, createdTimeTo, runtimeStatuses);
 };
 ```
+# <a name="python"></a>[Python](#tab/python)
 
+```python
+import azure.functions as func
+import azure.durable_functions as df
+from azure.durable_functions.models.DurableOrchestrationStatus import OrchestrationRuntimeStatus
+from datetime import datetime, timedelta
+
+async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+    created_time_from = datetime.datetime()
+    created_time_to = datetime.datetime.today + timedelta(days = -30)
+    runtime_statuses = [OrchestrationRuntimeStatus.Completed]
+
+    return client.purge_instance_history_by(created_time_from, created_time_to, runtime_statuses)
+```
 ---
 
 > [!NOTE]

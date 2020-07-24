@@ -1,19 +1,19 @@
 ---
 title: Přidat jednoduchou datovou vrstvu | Mapy Microsoft Azure
 description: Naučte se, jak přidat jednoduchou datovou vrstvu pomocí modulu pro prostorové vstupně-výstupní operace, který poskytuje Azure Maps Web SDK.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 61272bee350fc7c7dd7d0e17adc55c436f4706ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 622aa41975fdec015e4ca4964309c5c4bf274ef2
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84885965"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131442"
 ---
 # <a name="add-a-simple-data-layer"></a>Přidání jednoduché datové vrstvy
 
@@ -113,7 +113,7 @@ Pokud je funkce nebo a `Point` `MultiPoint` a funkce nemá `image` vlastnost, kt
 
 Clustery se také vykreslují pomocí bublinové vrstvy. Ve výchozím nastavení je poloměr clusteru nastavený na `16` . Barva clusteru se liší v závislosti na počtu bodů v clusteru, jak je definováno níže:
 
-| počet bodů | Barva    |
+| počet bodů | Color    |
 |-------------|----------|
 | &gt;= 100   | `red`    |
 | &gt;= 10    | `yellow` |

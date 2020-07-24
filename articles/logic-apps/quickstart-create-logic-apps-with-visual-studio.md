@@ -1,18 +1,18 @@
 ---
-title: Automatizace pracovních postupů úloh v aplikaci Visual Studio
-description: Vytváření, plánování a spouštění opakovaných pracovních postupů pro podnikovou integraci pomocí Azure Logic Apps a sady Visual Studio
+title: Automatizace úloh a pracovních postupů pomocí sady Visual Studio
+description: Vytváření, plánování a spouštění automatizovaných pracovních postupů pro podnikovou integraci pomocí Azure Logic Apps a sady Visual Studio
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/08/2019
-ms.openlocfilehash: 4416c9f9d1c55a460cb983089706e984d90ba082
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/22/2020
+ms.openlocfilehash: cd46821b74803d62be0361346166ed78a5f53286
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520762"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132360"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Rychlé zprovoznění: Vytváření automatizovaných úloh, procesů a pracovních postupů pomocí Azure Logic Apps – Visual Studio
 
@@ -51,9 +51,15 @@ V tomto rychlém startu vytvoříte stejnou aplikaci logiky pomocí sady Visual 
   
     Azure Logic Apps Tools můžete stáhnout a nainstalovat přímo z Visual Studio Marketplace nebo si můžete přečíst, [jak toto rozšíření nainstalovat v rámci sady Visual Studio](/visualstudio/ide/finding-and-using-visual-studio-extensions). Po dokončení instalace nezapomeňte sadu Visual Studio restartovat.
 
+  * Chcete-li použít předplatná Azure Government se sadou Visual Studio, přečtěte si následující témata pro další nastavení:
+
+    * Visual Studio 2019: [rychlý Start: připojení k Azure Government pomocí sady Visual Studio](../azure-government/documentation-government-connect-vs.md)
+
+    * Visual Studio 2017: [Představujeme rozšíření sady Visual Studio pro selektory prostředí Azure](https://devblogs.microsoft.com/azuregov/introducing-the-azure-environment-selector-visual-studio-extension/), které si můžete stáhnout a nainstalovat z [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=SteveMichelotti.AzureEnvironmentSelector).
+
 * Přístup k webu při používání vloženého Návrháře aplikace logiky
 
-  Návrhář potřebuje připojení k Internetu, aby mohl vytvářet prostředky v Azure a číst vlastnosti a data z konektorů ve vaší aplikaci logiky. Například pro připojení Dynamics CRM Online Návrhář kontroluje vaši instanci CRM na výchozí a vlastní vlastnosti.
+  Návrhář potřebuje připojení k Internetu, aby mohl vytvářet prostředky v Azure a číst vlastnosti a data z konektorů ve vaší aplikaci logiky.
 
 * E-mailový účet podporovaný v Logic Apps, jako je Office 365 Outlook, Outlook.com nebo Gmail. Pro jiné poskytovatele zkontrolujte [seznam konektorů](/connectors/). V tomto příkladu se používá Office 365 Outlook. Pokud použijete jiného poskytovatele, celkový postup bude stejný, ale vaše uživatelské rozhraní se může mírně lišit.
 

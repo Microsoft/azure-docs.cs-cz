@@ -1,101 +1,42 @@
 ---
-title: Ověření klientské aplikace
+title: Zápis ověřovacího kódu aplikace
 titleSuffix: Azure Digital Twins
-description: Podívejte se, jak ověřit klientskou aplikaci proti službě Azure Digital revlákens.
+description: Viz jak psát ověřovací kód v klientské aplikaci.
 author: baanders
 ms.author: baanders
 ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e52307c92d9371af6479f64841c6f269ed10e4b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d235280ae4a600994eb93ec08c7a13630f9682f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390818"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131578"
 ---
-# <a name="authenticate-a-client-application-with-azure-digital-twins"></a>Ověřování klientské aplikace pomocí digitálních vláken Azure
+# <a name="write-client-app-authentication-code"></a>Zápis ověřovacího kódu klientské aplikace
 
-Po [vytvoření instance digitálního vlákna Azure](how-to-set-up-instance.md)můžete vytvořit klientskou aplikaci, kterou použijete k interakci s instancí. Po nastavení klientského projektu Starter se v tomto článku dozvíte, jak správně ověřit tuto klientskou aplikaci s instancí digitálních vláken Azure.
+Po [Nastavení instance a ověřování digitálních vláken Azure](how-to-set-up-instance-scripted.md)můžete vytvořit klientskou aplikaci, kterou použijete k interakci s instancí. Po nastavení projektu počátečního klienta v tomto článku se dozvíte, **jak v této klientské aplikaci psát kód pro ověření v** instanci digitálních vláken Azure.
 
-To se provádí ve dvou krocích:
-1. Vytvoření registrace aplikace
-2. Zápis ověřovacího kódu v klientské aplikaci
+Existují dva přístupy k ukázkovému kódu v tomto článku. Můžete použít tu, která je pro vás nejvhodnější, v závislosti na zvoleném jazyce:
+* První část ukázkového kódu používá sadu SDK Azure Digital .NET (C#). Sada SDK je součástí sady Azure SDK pro .NET a je umístěná v tomto umístění: [*Klientská knihovna Azure IoT s Nevlákenou pro .NET*](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core).
+* Druhá část ukázkového kódu je určena pro uživatele, kteří nepoužívají sadu .NET SDK, a místo toho používají sady SDK generované pomocí automatického REST v jiných jazycích. Další informace o této strategii najdete v tématu [*Postupy: vytváření vlastních sad SDK pro digitální vlákna Azure pomocí automatického REST*](how-to-create-custom-sdks.md).
 
-[!INCLUDE [Cloud Shell for Azure Digital Twins](../../includes/digital-twins-cloud-shell.md)]
+Další informace o rozhraních API a sadách SDK pro digitální vlákna Azure najdete v tématu [*Postupy: použití rozhraní API a sad SDK pro digitální vlákna Azure*](how-to-use-apis-sdks.md).
 
-## <a name="create-an-app-registration"></a>Vytvoření registrace aplikace
+## <a name="prerequisites"></a>Předpoklady
 
-K ověřování proti digitálním vazbám Azure z klientské aplikace je potřeba nastavit **registraci aplikace** v [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md).
+Nejdřív dokončete kroky nastavení v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-scripted.md). Tím se zajistí, že máte instanci digitálního vlákna Azure, ke které má váš uživatel oprávnění pro přístup, a Vy jste nastavili oprávnění pro klientské aplikace. Po dokončení všech těchto nastavení jste připraveni k psaní kódu klientské aplikace.
 
-V této registraci aplikace nakonfigurujete přístupová oprávnění k [rozhraním API pro digitální vlákna Azure](how-to-use-apis-sdks.md). Vaše klientská aplikace se ověřuje proti registraci aplikace a v důsledku toho jsou jim udělena nakonfigurovaná přístupová oprávnění k rozhraním API.
+Chcete-li pokračovat, budete potřebovat projekt klientské aplikace, ve kterém budete psát kód. Pokud ještě nemáte nastavený projekt klientské aplikace, vytvořte si základní projekt v jazyce zvoleném pro použití v tomto kurzu.
 
-Pokud chcete vytvořit registraci aplikace, musíte zadat ID prostředku pro rozhraní API digitálních vláken Azure a základní oprávnění pro rozhraní API. V pracovním adresáři otevřete nový soubor a zadejte následující fragment kódu JSON pro konfiguraci těchto podrobností: 
+## <a name="authentication-and-client-creation-net-c-sdk"></a>Ověřování a vytváření klientů: sada SDK .NET (C#)
 
-```json
-[{
-    "resourceAppId": "0b07f429-9f4b-4714-9392-cc5e8e80c8b0",
-    "resourceAccess": [
-     {
-       "id": "4589bd03-58cb-4e6c-b17f-b580e39652f8",
-       "type": "Scope"
-     }
-    ]
-}]
-``` 
-
-Uložte tento soubor jako *manifest.jsna*.
-
-> [!NOTE] 
-> K dispozici jsou některá místa, kde je možné použít "popisný" čitelný řetězec `https://digitaltwins.azure.net` pro místo identifikátoru GUID pro ID aplikace prostředků Azure Digital Replaced `0b07f429-9f4b-4714-9392-cc5e8e80c8b0` . Mnoho příkladů v celé této dokumentaci například používá ověřování pomocí knihovny MSAL a popisný řetězec lze použít pro tuto sadu. Během tohoto kroku vytváření registrace aplikace je ale ve formátu identifikátoru GUID IDENTIFIKÁTORu vyžadováno, jak je uvedeno výše. 
-
-V okně Cloud Shell klikněte na ikonu nahrát/stáhnout soubory a vyberte Odeslat.
-
-:::image type="content" source="media/how-to-authenticate-client/upload-extension.png" alt-text="Cloud Shell okno zobrazující výběr možnosti nahrání":::
-Přejděte na *manifest.js* právě vytvořeného a stiskněte tlačítko "otevřít".
-
-Potom spuštěním následujícího příkazu vytvořte registraci aplikace (podle potřeby nahraďte zástupné symboly):
-
-```azurecli
-az ad app create --display-name <name-for-your-app> --native-app --required-resource-accesses manifest.json --reply-url http://localhost
-```
-
-Výstup z tohoto příkazu vypadá nějak takto.
-
-:::image type="content" source="media/how-to-authenticate-client/new-app-registration.png" alt-text="Nová registrace aplikace AAD":::
-
-Po vytvoření registrace aplikace přejděte pomocí [tohoto odkazu](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) na stránku s přehledem registrace aplikace AAD v Azure Portal.
-
-Z tohoto přehledu vyberte registraci aplikace, kterou jste právě vytvořili ze seznamu. Tím se otevřou podrobnosti na stránce, jako je tato:
-
-:::image type="content" source="media/how-to-authenticate-client/get-authentication-ids.png" alt-text="Azure Portal: ID ověřování":::
-
-Poznamenejte si *ID aplikace (klienta)* a *ID adresáře (tenanta)* **zobrazené na stránce** . Tyto hodnoty použijete později k ověření klientské aplikace s využitím rozhraní API pro digitální vlákna Azure.
-
-> [!NOTE]
-> V závislosti na vašem scénáři možná budete muset provést další změny v registraci aplikace. Tady jsou některé běžné požadavky, které možná budete muset splnit:
-> * Aktivace přístupu veřejného klienta
-> * Nastavit konkrétní adresy URL odpovědí pro přístup k webu a desktopu
-> * Povolení pro toky implicitního ověřování OAuth2
-> * Pokud je vaše předplatné Azure vytvořené pomocí účet Microsoft, jako je Live, Xbox nebo Hotmail, musíte nastavit *signInAudience* na registraci aplikace pro podporu osobních účtů.
-> Nejjednodušší způsob, jak nastavit tato nastavení, je použít [Azure Portal](https://portal.azure.com/). Další informace o tomto procesu najdete v tématu [Registrace aplikace s platformou Microsoft Identity](https://docs.microsoft.com/graph/auth-register-app-v2).
-
-## <a name="write-client-app-authentication-code-net-c-sdk"></a>Zápis ověřovacího kódu klientské aplikace: sada SDK .NET (C#)
-
-Tato část popisuje kód, který bude nutné zahrnout do klientské aplikace, aby bylo možné dokončit proces ověřování pomocí sady .NET (C#) SDK.
-Sada Azure Digital revlákens C# SDK je součástí sady Azure SDK for .NET. Najdete tady: [Klientská knihovna Azure IoT Digital nevlákenná pro .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core).
-
-### <a name="prerequisites"></a>Požadavky
-
-Pokud ještě nemáte nastavený projekt úvodní klientské aplikace, vytvořte projekt Basic .NET, který se použije v tomto kurzu.
-
-Aby bylo možné používat sadu .NET SDK, budete muset zahrnout do projektu následující balíčky:
+Nejprve zahrňte do projektu následující balíčky, aby bylo možné použít sadu .NET SDK a nástroje ověřování pro tento postup:
 * `Azure.DigitalTwins.Core`(verze `1.0.0-preview.2` )
 * `Azure.Identity`
 
-V závislosti na zvolených nástrojích můžete to udělat pomocí Správce balíčků sady Visual Studio nebo `dotnet` nástroje příkazového řádku. 
-
-### <a name="authentication-and-client-creation-net"></a>Ověřování a vytváření klientů: .NET
+V závislosti na zvolených nástrojích můžete balíčky zahrnout pomocí Správce balíčků sady Visual Studio nebo `dotnet` nástroje příkazového řádku. 
 
 K ověření pomocí sady .NET SDK použijte jednu z metod získání přihlašovacích údajů, které jsou definovány v knihovně [Azure. identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) .
 
@@ -146,20 +87,22 @@ DigitalTwinsClientOptions opts =
 client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
 ```
 
-Projděte si téma [How to: Set the Azure Function for Data Processing](how-to-create-azure-function.md) pro ucelený příklad, který vysvětluje některé důležité možnosti konfigurace v kontextu funkcí.
+Projděte si téma [*How to: Set the Azure Function for Data Processing*](how-to-create-azure-function.md) pro ucelený příklad, který vysvětluje některé důležité možnosti konfigurace v kontextu funkcí.
 
 Chcete-li použít ověřování ve funkci, nezapomeňte na:
 * [Povolení spravované identity](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet)
-* [Proměnné prostředí](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables?tabs=csharp)
-* Přiřaďte oprávnění k aplikaci Functions, která mu umožní přístup k rozhraním API digitálních vláken. Další informace najdete v tématu [Postupy: nastavení funkce Azure pro zpracování dat](how-to-create-azure-function.md) .
+* Použijte [proměnné prostředí](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables?tabs=csharp) podle potřeby.
+* Přiřaďte oprávnění k aplikaci Functions, která mu umožní přístup k rozhraním API digitálních vláken. Další informace o procesech Azure Functions najdete v tématu [*Postup: nastavení funkce Azure pro zpracování dat*](how-to-create-azure-function.md).
 
-## <a name="authentication-in-an-autorest-generated-sdk"></a>Ověřování v sadě SDK generované AutoRest
+## <a name="authentication-with-an-autorest-generated-sdk"></a>Ověřování pomocí sady SDK generované AutoRest
 
-Pokud nepoužíváte rozhraní .NET, můžete se rozhodnout vytvořit knihovnu SDK v jazyce podle vašeho výběru, jak je popsáno v tématu [Postupy: vytváření vlastních sad SDK pro digitální vlákna Azure pomocí automatického REST](how-to-create-custom-sdks.md).
+Pokud nepoužíváte rozhraní .NET, můžete se rozhodnout vytvořit knihovnu SDK v jazyce podle vašeho výběru, jak je popsáno v tématu [*Postupy: vytváření vlastních sad SDK pro digitální vlákna Azure pomocí automatického REST*](how-to-create-custom-sdks.md).
 
 V této části se dozvíte, jak ověřit v takovém případě.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
+
+Nejdřív byste měli provést kroky pro vytvoření vlastní sady SDK s AutoRest pomocí kroků v tématu [*Postupy: vytváření vlastních sad SDK pro digitální vlákna Azure*](how-to-create-custom-sdks.md)pomocí automatického REST.
 
 V tomto příkladu se používá sada TypeScript SDK generovaná s AutoRest. V důsledku toho také vyžaduje:
 * [msal-js](https://github.com/AzureAD/microsoft-authentication-library-for-js)
@@ -167,7 +110,7 @@ V tomto příkladu se používá sada TypeScript SDK generovaná s AutoRest. V d
 
 ### <a name="minimal-authentication-code-sample"></a>Ukázka minimálního ověřovacího kódu
 
-K ověření aplikace .NET se službami Azure můžete v klientské aplikaci použít následující minimální kód.
+K ověření aplikace se službami Azure můžete v klientské aplikaci použít následující minimální kód.
 
 Budete potřebovat ID *aplikace (klienta)* a *ID adresáře (tenant)* z dřívější verze a také adresu URL instance digitálního vlákna Azure.
 
@@ -248,12 +191,12 @@ export async function login() {
 
 Všimněte si, že pokud kód výše umístí ID klienta, ID tenanta a adresu URL instance přímo do kódu pro jednoduchost, je vhodné, aby kód získal tyto hodnoty z konfiguračního souboru nebo proměnné prostředí.
 
-MSAL má mnoho dalších možností, které můžete použít k implementaci takových akcí jako ukládání do mezipaměti a dalších toků ověřování. Další informace najdete v tématu [Přehled knihovny Microsoft Authentication Library (MSAL)](../active-directory/develop/msal-overview.md).
+MSAL má mnoho dalších možností, které můžete použít k implementaci takových akcí jako ukládání do mezipaměti a dalších toků ověřování. Další informace najdete v tématu [*Přehled knihovny Microsoft Authentication Library (MSAL)*](../active-directory/develop/msal-overview.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další informace o tom, jak funguje zabezpečení v Azure Digital autovlákna:
-* [Koncepty: zabezpečení pro řešení digitálních vláken Azure](concepts-security.md)
+* [*Koncepty: zabezpečení pro řešení digitálních vláken Azure*](concepts-security.md)
 
 Nebo teď, když je toto ověřování nastavené, přejděte k vytváření modelů ve vaší instanci:
-* [Postupy: Správa vlastních modelů](how-to-manage-model.md)
+* [*Postupy: Správa vlastních modelů*](how-to-manage-model.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e5c57ba56ce236bcf07478e1784eec6d4c632d1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca54cb44618da1ff92b12b3ad918da513ab2be2f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82195243"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131816"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Základní hodnoty zabezpečení Azure pro Cosmos DB
 
@@ -78,7 +78,7 @@ Konfigurace sdílení prostředků mezi zdroji:https://docs.microsoft.com/azure/
 
 Povolte DDoS Protection Standard ve virtuálních sítích přidružených k vašim Azure Cosmos DB instancím, abyste se mohli chránit před útoky DDoS. K odepření komunikace se známými škodlivými nebo nepoužívanými internetovými IP adresami použijte Azure Security Center integrovanou analýzu hrozeb.
 
-Postup configureAzure Cosmos DB rozšířené ochrany před internetovými útoky:https://docs.microsoft.com/azure/cosmos-db/cosmos-db-advanced-threat-protection
+Jak nakonfigurovat Azure Cosmos DB rozšířené ochrany před internetovými útoky:https://docs.microsoft.com/azure/cosmos-db/cosmos-db-advanced-threat-protection
 
 Jak nakonfigurovat DDoS Protection:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
@@ -121,7 +121,7 @@ Jak nakonfigurovat Cosmos DB rozšířené ochrany před internetovými útoky:h
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: Minimalizujte složitost a administrativní režii pravidel zabezpečení sítě
 
-**Doprovodné**materiály: u prostředků, které potřebují přístup k vašemu účtu Azure Cosmos, použijte značky služby Virtual Network k definování řízení přístupu k síti v síti securitygGroups nebo Azure firewall. Značky služeb můžete používat místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby (např. AzureCosmosDB) v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu. Společnost Microsoft spravuje předpony adres, které jsou součástí značky služby, a automaticky aktualizuje označení služby jako adresy změny.
+**Doprovodné**materiály: u prostředků, které potřebují přístup k vašemu účtu Azure Cosmos, použijte značky služby Virtual Network k definování řízení přístupu k síti u skupin zabezpečení sítě nebo Azure firewall. Značky služeb můžete používat místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby (např. AzureCosmosDB) v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu. Společnost Microsoft spravuje předpony adres, které jsou součástí značky služby, a automaticky aktualizuje označení služby jako adresy změny.
 
 Další informace o použití značek služeb:https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
@@ -686,7 +686,7 @@ Vytváření a používání značek:https://docs.microsoft.com/azure/azure-reso
 
 **Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
 
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 
 - Povolené typy prostředků
 
@@ -731,7 +731,7 @@ Jak vytvářet dotazy pomocí Azure graphu:https://docs.microsoft.com/azure/gove
 
 **Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
 
-- Nepovolené typy prostředků 
+- Žádné povolené typy prostředků 
 
 - Povolené typy prostředků
 

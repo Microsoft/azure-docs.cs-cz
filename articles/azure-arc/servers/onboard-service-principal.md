@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 02/04/2020
+ms.date: 07/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: ac6a00efa7db848e4c05703c81ba835fbf5f77e3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7ac04b29853ce0d4f6ac4004bdfad4effd283170
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103785"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132989"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>Připojení hybridních počítačů k Azure ve velkém měřítku
 
@@ -76,7 +76,7 @@ Role registrace **počítače připojeného k Azure** obsahuje jenom oprávněn�
 
 ## <a name="install-the-agent-and-connect-to-azure"></a>Instalace agenta a připojení k Azure
 
-Následující postup nainstaluje a nakonfiguruje agenta připojeného počítače na hybridních počítačích pomocí šablony skriptu, která provádí podobný postup popsaný v tématu [připojení hybridních počítačů k Azure z Azure Portal](onboard-portal.md) . Rozdíl je v posledním kroku, kdy navážete připojení ke službě Azure ARC pomocí příkazu, který `azcmagent` používá objekt služby. 
+Následující postup nainstaluje a nakonfiguruje agenta připojeného počítače na hybridních počítačích pomocí šablony skriptu, která provádí podobný postup popsaný v tématu [připojení hybridních počítačů k Azure z Azure Portal](onboard-portal.md) . Rozdíl je v posledním kroku, kdy navážete připojení ke službě Azure ARC pomocí příkazu, který `azcmagent` používá objekt služby.
 
 Níže jsou uvedené nastavení, pomocí kterého nakonfigurujete `azcmagent` příkaz pro použití instančního objektu.
 
@@ -110,6 +110,10 @@ msiexec /i AzureConnectedMachineAgent.msi /l*v installationlog.txt /qn | Out-Str
   --subscription-id "{subscriptionID}"
 ```
 
+>[!NOTE]
+>Skript podporuje běh jenom z 64 verze Windows PowerShellu.
+>
+
 ### <a name="linux-installation-script"></a>Instalační skript pro Linux
 
 Následuje příklad instalačního skriptu připojeného počítače pro Linux, který byl změněn tak, aby používal instanční objekt k podpoře plně automatizované, neinteraktivní instalace agenta.
@@ -131,7 +135,10 @@ azcmagent connect \
   --subscription-id "{subscriptionID}"
 ```
 
-Po nainstalování agenta a jeho konfiguraci pro připojení k Azure ARC pro servery (Preview), navštivte Azure Portal a ověřte, že se server úspěšně připojil. Zobrazte počítače v [Azure Portal](https://aka.ms/hybridmachineportal).
+>[!NOTE]
+>Aby bylo možné spustit **azcmagent**, musíte mít oprávnění *root* Access pro počítače se systémem Linux.
+
+Po nainstalování agenta a jeho konfiguraci pro připojení k Azure ARC pro servery (Preview), navštivte Azure Portal a ověřte, že se server úspěšně připojil. Zobrazte si počítače na webu [Azure Portal](https://aka.ms/hybridmachineportal).
 
 ![Úspěšné připojení k serveru](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 

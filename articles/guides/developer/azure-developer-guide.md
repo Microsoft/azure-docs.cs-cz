@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: c4121482c37afcda0f580656bbe583128b7720fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10c9e2c3ecefedded393d6949be1480f2f02973b
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829393"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131051"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Úvodní příručka pro vývojáře v Azure
 
@@ -76,7 +76,7 @@ Z důvodu úrovně kontroly, kterou máte s virtuálními počítači, můžete 
 
 > **Kdy použít**: použijte Virtual Machines, pokud chcete mít plnou kontrolu nad infrastrukturou aplikace nebo migrujete místní aplikační úlohy do Azure bez nutnosti provádět změny.
 >
-> **Začínáme**: Vytvořte [virtuální počítač](../../virtual-machines/virtual-machines-linux-quick-create-portal.md) se systémem Linux nebo [virtuální počítač s Windows](../../virtual-machines/virtual-machines-windows-hero-tutorial.md) z Azure Portal.
+> **Začínáme**: Vytvořte [virtuální počítač](../../virtual-machines/linux/quick-create-portal.md) se systémem Linux nebo [virtuální počítač s Windows](../../virtual-machines/windows/quick-create-portal.md) z Azure Portal.
 
 #### <a name="azure-functions-serverless"></a>Azure Functions (bez serveru)
 
@@ -141,11 +141,6 @@ Kontejnery Docker, což je forma virtualizace operačního systému, umožňují
 
 Azure nabízí několik způsobů použití kontejnerů ve vašich aplikacích.
 
-- **Rozšíření virtuálních počítačů Azure Docker**: umožňuje nakonfigurovat virtuální počítač pomocí nástrojů Docker, které budou fungovat jako hostitel Docker.
-
-  > **Kdy použít**: když chcete vygenerovat konzistentní nasazení kontejnerů pro vaše aplikace na virtuálním počítači, nebo když chcete použít [Docker Compose](https://docs.docker.com/compose/overview/).
-  >
-  > **Začínáme**: [vytvoření prostředí Docker v Azure pomocí rozšíření Docker VM](../../virtual-machines/virtual-machines-linux-dockerextension.md).
 
 - **Služba Azure Kubernetes**: umožňuje vytváření, konfiguraci a správu clusteru virtuálních počítačů, které jsou předem nakonfigurované pro spouštění kontejnerových aplikací. Další informace o službě Azure Kubernetes najdete v tématu [Úvod do služby Azure Kubernetes](../../aks/intro-kubernetes.md).
 
@@ -163,7 +158,7 @@ Azure nabízí několik způsobů použití kontejnerů ve vašich aplikacích.
   >
   > **Začínáme**: [použijte vlastní image docker pro App Service v systému Linux](../../app-service/containers/quickstart-docker-go.md).
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Ověřování
 
 Je velmi důležité nejen zjistit, kdo používá vaše aplikace, ale také k tomu, aby se zabránilo neoprávněnému přístupu k prostředkům. Azure nabízí několik způsobů, jak ověřit klienty aplikace.
 
@@ -198,7 +193,7 @@ Když vaše aplikace běží v Azure, je potřeba monitorovat výkon, sledovat p
 Bez ohledu na to, jestli je zřizování virtuálních počítačů nebo publikování vašich webových aplikací pomocí průběžné integrace, se Azure integruje s většinou oblíbených DevOps nástrojů. Můžete pracovat s nástroji, které už máte, a maximalizovat stávající prostředí s podporou nástrojů jako:
 
 * Jenkins
-* GitHubu
+* GitHub
 * Puppet
 * Chef
 * TeamCity
@@ -238,7 +233,7 @@ Azure poskytuje dva způsoby, jak spravovat aplikace a služby z příkazového 
 
 -   [Azure PowerShell](../../powershell-install-configure.md): poskytuje sadu modulů s rutinami, které vám umožní spravovat prostředky Azure pomocí Windows PowerShellu.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 
 [Azure Portal](https://portal.azure.com) je webová aplikace. Pomocí Azure Portal můžete vytvářet, spravovat a odebírat prostředky a služby Azure. Obsahuje:
 
@@ -302,7 +297,7 @@ Azure Resource Explorer je skvělý nástroj pro vizualizaci prostředků, kter�
 
 Když povolíte přístup k prostředkům Azure, doporučuje se uživatelům poskytnout nejnižší oprávnění, která jsou potřebná k provedení dané úlohy.
 
-- **Řízení přístupu na základě role (RBAC)**: v Azure můžete udělit přístup k uživatelským účtům (UPN) v zadaném oboru: předplatné, skupina prostředků nebo jednotlivé prostředky. RBAC umožňuje nasazení prostředků do skupiny prostředků a udělení oprávnění určitému uživateli nebo skupině. Umožňuje taky omezit přístup jenom na prostředky, které patří do cílové skupiny prostředků. Můžete taky udělit přístup k jednomu prostředku, jako je třeba virtuální počítač nebo virtuální síť. Chcete-li udělit přístup, přiřaďte roli uživateli, skupině nebo objektu služby. Existuje mnoho předdefinovaných rolí a můžete také definovat vlastní role. Další informace najdete v tématu [co je řízení přístupu na základě role (RBAC)?](../../role-based-access-control/overview.md).
+- **Řízení přístupu na základě role (RBAC)**: v Azure můžete udělit přístup k uživatelským účtům (UPN) v zadaném oboru: předplatné, skupina prostředků nebo jednotlivé prostředky. RBAC umožňuje nasazení prostředků do skupiny prostředků a udělení oprávnění určitému uživateli nebo skupině. Umožňuje taky omezit přístup jenom na prostředky, které patří do cílové skupiny prostředků. Můžete taky udělit přístup k jednomu prostředku, jako je třeba virtuální počítač nebo virtuální síť. Chcete-li udělit přístup, přiřaďte roli uživateli, skupině nebo objektu služby. Existuje mnoho předdefinovaných rolí a můžete také definovat vlastní role. Další informace najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)?](../../role-based-access-control/overview.md).
 
   > **Kdy použít**: když pro uživatele a skupiny potřebujete jemně odstupňovanou správu přístupu, nebo když potřebujete nastavit uživatele jako vlastníka předplatného.
   >

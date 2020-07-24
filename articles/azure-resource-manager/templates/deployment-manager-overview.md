@@ -4,11 +4,12 @@ description: Popisuje, jak nasadit službu ve více oblastech pomocí Azure Depl
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 006c123dfbb682ff5c498872d7f717a4a09e0bb5
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 27e8c9c0aa2ee86b490d266fc6ff76f263eee7ef
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057921"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130218"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Povolení postupů bezpečného nasazení pomocí Azure Deployment Manager (Public Preview)
 
@@ -36,7 +37,7 @@ Další prostředky:
 
 ## <a name="identity-and-access"></a>Identita a přístup
 
-Při Deployment Manager provede [uživatelem přiřazenou spravovanou identitu](../../active-directory/managed-identities-azure-resources/overview.md) akce nasazení. Tuto identitu vytvoříte před zahájením nasazení. Musí mít přístup k předplatnému, ke kterému službu nasazujete, a dostatečné oprávnění k dokončení nasazení. Informace o akcích udělených prostřednictvím rolí najdete v tématu [předdefinované role pro prostředky Azure](../../role-based-access-control/built-in-roles.md).
+Při Deployment Manager provede [uživatelem přiřazenou spravovanou identitu](../../active-directory/managed-identities-azure-resources/overview.md) akce nasazení. Tuto identitu vytvoříte před zahájením nasazení. Musí mít přístup k předplatnému, ke kterému službu nasazujete, a dostatečné oprávnění k dokončení nasazení. Informace o akcích udělených prostřednictvím rolí najdete v tématu [předdefinované role Azure](../../role-based-access-control/built-in-roles.md).
 
 Identita se musí nacházet ve stejném umístění jako zavedení.
 

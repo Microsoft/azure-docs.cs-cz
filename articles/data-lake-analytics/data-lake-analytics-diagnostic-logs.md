@@ -3,16 +3,14 @@ title: Povolení a zobrazení diagnostických protokolů pro Azure Data Lake Ana
 description: Vysvětlení způsobu nastavení a přístupu k diagnostickým protokolům pro Azure Data Lake Analytics
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: jasonwhowell
-ms.author: jasonh
 ms.topic: how-to
 ms.date: 02/12/2018
-ms.openlocfilehash: 9d389c433cb8a049671668cb58b3d80691ff0d16
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c8c24134c4694a9a2df36ac278452a532a5125ad
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121431"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132598"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Přístup k protokolům diagnostiky pro Azure Data Lake Analytics
 
@@ -128,7 +126,7 @@ Zde je ukázkový záznam v protokolu žádostí ve formátu JSON. Každý objek
 
 #### <a name="request-log-schema"></a>Schéma protokolu žádostí
 
-| Name | Typ | Description |
+| Název | Typ | Popis |
 | --- | --- | --- |
 | time |Řetězec |Časové razítko (v UTC) protokolu |
 | resourceId |Řetězec |Identifikátor prostředku, na kterém byla operace provedena |
@@ -142,7 +140,7 @@ Zde je ukázkový záznam v protokolu žádostí ve formátu JSON. Každý objek
 
 #### <a name="request-log-properties-schema"></a>Vlastnosti protokolu žádosti – schéma
 
-| Name | Typ | Description |
+| Název | Typ | Popis |
 | --- | --- | --- |
 | HttpMethod |Řetězec |Metoda HTTP použitá pro operaci Například GET. |
 | Cesta |Řetězec |Cesta, na které byla operace provedena |
@@ -178,7 +176,7 @@ Zde je ukázkový záznam v protokolu auditu ve formátu JSON. Každý objekt BL
 
 #### <a name="audit-log-schema"></a>Schéma protokolu auditu
 
-| Name | Typ | Description |
+| Název | Typ | Popis |
 | --- | --- | --- |
 | time |Řetězec |Časové razítko (v UTC) protokolu |
 | resourceId |Řetězec |Identifikátor prostředku, na kterém byla operace provedena |
@@ -196,7 +194,7 @@ Zde je ukázkový záznam v protokolu auditu ve formátu JSON. Každý objekt BL
 
 #### <a name="audit-log-properties-schema"></a>Schéma vlastností protokolu auditu
 
-| Name | Typ | Description |
+| Název | Typ | Popis |
 | --- | --- | --- |
 | JobId |Řetězec |ID přiřazené k úloze |
 | JobName |Řetězec |Název, který byl zadán pro úlohu |

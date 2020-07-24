@@ -1,18 +1,19 @@
 ---
 title: Jak používat modul Azure Maps prostorového vstupu/výstupu | Mapy Microsoft Azure
 description: Naučte se používat modul pro prostorové vstupně-výstupní operace poskytovaný Azure Maps Web SDK. Tento modul poskytuje robustní funkce usnadňující vývojářům integrovat prostorová data pomocí Azure Maps Web SDK.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/28/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 1de9dd9721700418b1aa9ba661fc070db1dbedcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0532b1548af9be04a53f3ba06147fdde4722f307
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80804635"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130694"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>Jak používat modul Azure Maps prostorového vstupu/výstupu
 
@@ -36,9 +37,9 @@ Toto video poskytuje přehled modulu pro prostorové vstupně-výstupní operace
 > [!WARNING]
 > Používejte jenom data a služby, které jsou ze zdroje, kterému důvěřujete, zejména v případě, že se na něj odkazuje z jiné domény. Modul pro prostorové vstupně-výstupní operace provede kroky pro minimalizaci rizika, ale nejbezpečnější přístup je příliš, takže danagerous data do vaší aplikace neumožňují začít. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Než budete moct použít modul pro vytváření prostorových dat, budete muset [vytvořit účet Azure Maps](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-account-with-azure-maps) a [získat pro svůj účet primární klíč předplatného](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#get-the-primary-key-for-your-account).
+Než budete moct použít modul pro vytváření prostorových dat, budete muset [vytvořit účet Azure Maps](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-azure-maps-account) a [získat pro svůj účet primární klíč předplatného](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#get-the-primary-key-for-your-account).
 
 ## <a name="installing-the-spatial-io-module"></a>Instalace modulu pro prostorové vstupně-výstupní operace
 

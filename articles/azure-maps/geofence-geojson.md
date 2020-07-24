@@ -1,19 +1,19 @@
 ---
 title: Formát dat geografického JSON pro geografickou plot | Mapy Microsoft Azure
 description: V tomto článku se dozvíte, jak připravit data o geografickosti, která je možné použít ve službě Microsoft Azure Maps GET a POST API pro geografické rozvržení.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/14/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 7b9860908dd3bdf3dcda727f350578a97b890cac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 924c23f0fb0156ff585872dded72932a1574a12d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335622"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131301"
 ---
 # <a name="geofencing-geojson-data"></a>Geografická data geografických zón
 
@@ -30,7 +30,7 @@ Data pro geografickou nebo množinu geografických plotů jsou reprezentována `
 * `expiredTime`Je datum a čas vypršení platnosti dat geografických zón. Pokud `userTime` je hodnota v žádosti pozdější než tato hodnota, považují se odpovídající data o geografickou část považována za data s vypršenou platností a nedotazují se na ně. Na základě toho se geometryId z těchto geografických dat do `expiredGeofenceGeometryId` pole v rámci reakce na geografické ploty.
 * `validityPeriod`Je seznam časových období platnosti geografické zóny. Pokud hodnota `userTime` v žádosti spadá mimo období platnosti, považují se odpovídající data o geografickou oblast za neplatnou a nebudou se dotazovat. GeometryId těchto geografických dat je součástí `invalidPeriodGeofenceGeometryId` pole v rámci reakce na geografické ploty. V následující tabulce jsou uvedeny vlastnosti elementu validityPeriod.
 
-| Name | Typ | Vyžadováno  | Popis |
+| Název | Typ | Vyžadováno  | Popis |
 | :------------ |:------------: |:---------------:| :-----|
 | startTime | Datum a čas  | true | Datum a čas zahájení období platnosti. |
 | endTime   | Datum a čas  | true |  Datum a čas konce období platnosti. |

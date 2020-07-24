@@ -3,19 +3,17 @@ title: Etika a zodpovědné osoba – individuální použití
 titleSuffix: Azure Cognitive Services
 description: Tyto pokyny jsou zaměřené na to, abychom vám pomohli implementovat přizpůsobení způsobem, který vám pomůže vytvořit důvěryhodnost ve vaší společnosti a službě. Nezapomeňte pozastavit na výzkum, dozvědět se a úmyslně ovlivnit dopad přizpůsobení na život v lidech. V případě pochybností vyhledejte pokyny.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.author: diberry
-ms.openlocfilehash: e422284b871214dbeca31b5dd17b9177a18ad3c8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 602da28f0c235fb0e797a493bc1160631c042a9d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80478105"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132717"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Pokyny pro odpovědnou implementaci přizpůsobeného přizpůsobování
 
@@ -135,7 +133,7 @@ Níže jsou uvedené oblasti návrhu pro zodpovědné implementace AI. Další i
 * *Poskytněte uživatelům informace o tom, jak byl obsah přizpůsobován.* Uživatelům můžete například zobrazit tlačítko s popiskem `Why These Suggestions?` ukazující, které hlavní funkce uživatele a akce přehrály roli ve výsledcích přizpůsobeného modulu.
 * Ujistěte se, že vám podmínky použití znamenají, že k přizpůsobení prostředí budete používat informace o uživatelích a jejich chování.
 
-### <a name="fairness"></a>Spravedlnosti
+### <a name="fairness"></a>Spravedlnost
 *Systémy AI by měly považovat za všechny osoby poměrně*.
 
 * Nepoužívejte přizpůsobený modul pro případy použití, kde jsou výsledky dlouhodobé, následné nebo zahrnuje reálné poškození.

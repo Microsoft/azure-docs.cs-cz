@@ -3,19 +3,17 @@ title: Posílení učení – přizpůsobené přizpůsobování
 titleSuffix: Azure Cognitive Services
 description: Přizpůsobení používá informace o akcích a aktuálním kontextu k zajištění lepšího hodnocení návrhů. Informace o těchto akcích a kontextu jsou atributy nebo vlastnosti, které jsou označovány jako funkce.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
-ms.author: diberry
-ms.openlocfilehash: 36071cdee25cfa99fc54b0e5c0c0aa822cb5fe2f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8b97221de4921e06ddfab610618f37683b990181
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68662841"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132734"
 ---
 # <a name="what-is-reinforcement-learning"></a>Co je posílení učení?
 
@@ -59,7 +57,7 @@ Jan taky pro témata, jako je například společná předpověď (ICML 2015), p
 
 Přizpůsobování aktuálně používá [pro dostupné](https://github.com/VowpalWabbit/vowpal_wabbit/wiki) jako základ pro strojové učení. Toto rozhraní umožňuje maximální propustnost a nejnižší latenci při provádění pořadí přizpůsobení a školení modelu se všemi událostmi.
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 
 * [Provádění kontextových rozhodnutí s nízkým technickým dluhem](https://arxiv.org/abs/1606.03966)
 * [Snížení přístupu k korektní klasifikaci](https://arxiv.org/abs/1803.02453)

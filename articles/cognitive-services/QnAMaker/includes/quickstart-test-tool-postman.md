@@ -2,24 +2,22 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
-ms.author: diberry
-ms.openlocfilehash: a5af58c645720f0643e9245dc106248e36f2658f
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: fabd79829425147667c46f686a1ec1ceb6a29b00
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84237731"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132877"
 ---
 Tento rychlý Start založený na držiteli vás provede tím, že získáte odpověď ze znalostní báze.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nejnovější [**příspěvek**](https://www.getpostman.com/).
 * Musíte mít

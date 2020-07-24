@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 0a1447e64b606170601e6df6a443f53e3132294d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ec681d0af132d11e18703dce6105352651a70180
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522257"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131612"
 ---
 # <a name="secure-azure-digital-twins-with-role-based-access-control"></a>Zabezpečení digitálních vláken Azure pomocí řízení přístupu na základě role
 
@@ -35,7 +35,7 @@ Krok ověřování vyžaduje, aby každá žádost aplikace při spuštění obs
 
 Krok autorizace vyžaduje přiřazení role RBAC objektu zabezpečení. Role, které jsou přiřazeny objektu zabezpečení, určují oprávnění, která bude mít objekt zabezpečení. Funkce digitálních vláken Azure poskytuje role RBAC, které zahrnují sady oprávnění pro prostředky digitálních vláken Azure. Tyto role jsou popsány dále v tomto článku.
 
-Další informace o rolích a přiřazení rolí podporovaných v Azure najdete v tématu [pochopení různých rolí](../role-based-access-control/rbac-and-directory-admin-roles.md) v dokumentaci k Azure RBAC.
+Další informace o rolích a přiřazení rolí podporovaných v Azure najdete v tématu [*pochopení různých rolí*](../role-based-access-control/rbac-and-directory-admin-roles.md) v dokumentaci k Azure RBAC.
 
 ### <a name="authentication-with-managed-identities"></a>Ověřování pomocí spravovaných identit
 
@@ -46,19 +46,19 @@ Se spravovanými identitami spravuje platforma Azure tuto identitu modulu runtim
 ### <a name="authorization-rbac-roles-for-azure-digital-twins"></a>Autorizace: role RBAC pro digitální vlákna Azure
 
 Azure poskytuje níže vestavěné role RBAC pro autorizaci přístupu k prostředku digitálních vláken Azure:
-* Vlastník digitálních vláken Azure (Preview) – pomocí této role můžete poskytnout úplný přístup k prostředkům Azure Digital Resources.
-* Čtečka digitálních vláken Azure (Preview) – Tato role slouží k udělení přístupu k prostředkům digitálních vláken Azure, které jsou jen pro čtení.
+* *Vlastník digitálních vláken Azure (Preview)* – pomocí této role můžete poskytnout úplný přístup k prostředkům Azure Digital Resources.
+* *Čtečka digitálních vláken Azure (Preview)* – tato role slouží k udělení přístupu k prostředkům digitálních vláken Azure, které jsou jen pro čtení.
 
 > [!TIP]
-> Role čtenář digitálních vláken Azure (Preview) teď podporuje i vztahy procházení.
+> Role *Čtenář digitálních vláken Azure (Preview)* teď podporuje i vztahy procházení.
 
-Další informace o tom, jak jsou předdefinované role definované, najdete v tématu [vysvětlení definic rolí](../role-based-access-control/role-definitions.md) v dokumentaci k Azure RBAC. Informace o vytváření vlastních rolí RBAC najdete v tématu [vlastní role pro prostředky Azure](../role-based-access-control/custom-roles.md).
+Další informace o tom, jak jsou předdefinované role definované, najdete v tématu [*vysvětlení definic rolí*](../role-based-access-control/role-definitions.md) v dokumentaci k Azure RBAC. Informace o vytváření vlastních rolí Azure najdete v tématu [*vlastní role Azure*](../role-based-access-control/custom-roles.md).
 
 Role můžete přiřadit dvěma způsoby:
-* prostřednictvím podokna řízení přístupu (IAM) pro digitální vlákna Azure v Azure Portal (viz [Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a Azure Portal](../role-based-access-control/role-assignments-portal.md))
+* prostřednictvím podokna řízení přístupu (IAM) pro digitální vlákna Azure v Azure Portal (viz [*Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a Azure Portal*](../role-based-access-control/role-assignments-portal.md))
 * Přidání nebo odebrání role přes příkazy rozhraní příkazového řádku
 
-Podrobnější pokyny k tomu, jak to provést, najdete v [kurzu o digitálních zdvojeních Azure: *připojení kompletního řešení*](tutorial-end-to-end.md).
+Podrobnější pokyny k tomu, jak to provést, najdete v kurzu o digitálních Zdvojeních Azure [*: připojení kompletního řešení*](tutorial-end-to-end.md).
 
 ## <a name="permission-scopes"></a>Obory oprávnění
 
@@ -71,8 +71,14 @@ Následující seznam popisuje úrovně, na kterých můžete přistoupit k pros
 * Digitální zdvojený vztah: akce pro tento prostředek definují kontrolu nad operacemi CRUD u [vztahů](concepts-twins-graph.md) mezi digitálními prvky v grafu s dvojitou závislostí.
 * Trasa události: akce pro tento prostředek určují oprávnění k [Směrování událostí](concepts-route-events.md) z digitálních vláken Azure do služby koncového bodu, jako [je centrum událostí](../event-hubs/event-hubs-about.md), [Event Grid](../event-grid/overview.md)nebo [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md).
 
+## <a name="troubleshooting"></a>Poradce při potížích
+
+Pokud se uživatel pokusí provést akci, kterou role nepovoluje, může se zobrazit chyba z čtení žádosti o službu `403 (Forbidden)` . Další informace a postup pro řešení potíží najdete v tématu [*řešení potíží: žádost o digitální vlákna Azure se nezdařila se stavem: 403 (zakázáno)*](troubleshoot-error-403.md).
+
 ## <a name="next-steps"></a>Další kroky
 
-* Podívejte se, jak projít tyto kroky pomocí ukázkové klientské aplikace v tématu [*Postupy: ověření klientské aplikace*](how-to-authenticate-client.md).
+* Podívejte se na tyto koncepty v tématu [*Postup: nastavení instance a ověřování*](how-to-set-up-instance-scripted.md).
+
+* Informace o tom, jak s těmito koncepty pracovat z klientského kódu aplikace v tématu [*Postupy: psaní ověřovacího kódu aplikace*](how-to-authenticate-client.md).
 
 * Přečtěte si další informace o [RBAC pro Azure](../role-based-access-control/overview.md).

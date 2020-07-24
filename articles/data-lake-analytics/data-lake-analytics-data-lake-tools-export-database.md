@@ -2,19 +2,17 @@
 title: Export databáze U-SQL – Nástroje Azure Data Lake pro Visual Studio
 description: Naučte se, jak pomocí Nástroje Azure Data Lake pro Visual Studio exportovat databázi U-SQL a automaticky ji naimportovat do místního účtu.
 services: data-lake-analytics
-author: yanancai
-ms.author: yanacai
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 11/27/2017
-ms.openlocfilehash: 364682f6bcf2edeecc7af2da6c91e4bfd1de98a4
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 05e55d1608323b8e746a1c82ccb915a2db58ce97
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117283"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132088"
 ---
 # <a name="export-a-u-sql-database"></a>Export databáze U-SQL
 
@@ -51,7 +49,7 @@ V tomto kroku můžete ověřit vybrané objekty v poli se **seznamem exportovat
 
 Můžete také nakonfigurovat další nastavení pro cíl exportu. Popisy konfigurace jsou uvedeny v následující tabulce:
 
-|Konfigurace|Description|
+|Konfigurace|Popis|
 |-------------|-----------|
 |Název cíle|Tento název označuje, kam chcete uložit exportované prostředky databáze. Příklady jsou sestavení, další soubory a ukázková data. Složka s tímto názvem se vytvoří v kořenové složce vašich místních dat.|
 |Adresář projektu|Tato cesta definuje, kam chcete Uložit exportovaný skript U-SQL. Všechny definice databázových objektů jsou uloženy v tomto umístění.|

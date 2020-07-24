@@ -1,16 +1,16 @@
 ---
-title: Řídicí panel využití v Microsoft Commercial Marketplace Analytics
+title: Řídicí panel využití v Microsoft Commercial Marketplace Analytics, Azure Marketplace a Microsoft AppSource
 description: Přečtěte si, jak získat přístup ke všem VIRTUÁLNÍm počítačům nabízí metriky fakturace využití a měření. V partnerském centru v části komerční web Marketplace přejdete na řídicí panel využití.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 12/11/2019
-ms.openlocfilehash: 8747ff98cd2b53773d9e0a95436d90fef74fda55
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+ms.date: 07/22/2020
+ms.openlocfilehash: a03ef316b409fdeff687f0ee7bbbf6316857c54b
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120666"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131741"
 ---
 # <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Řídicí panel využití v Microsoft Commercial Marketplace Analytics
 
@@ -30,14 +30,13 @@ Na kartě využití virtuálního počítače jsou k dispozici grafické repreze
 - [Souhrn využití](#usage-summary)
 - [Využití podle geografie](#usage-by-geography)
 - [Využití podle nabídek](#usage-by-offers)
-- [Trend využití podle nabídek a SKU](#usage-trend-by-offers-and-skus)
+- [Využití trendů podle nabídek a plánů](#usage-trend-by-offers-and-plans)
 - [Využití podle typu nabídky](#usage-by-offer-type)
 - [Využití podle velikosti virtuálního počítače](#usage-by-vm-size)
 - [Využití podle prodejního kanálu](#usage-by-sales-channel)
 - [Podrobná data o využití](#detailed-usage-data)
 
-> [!NOTE]
-> Sestavy Analytics se v portál partnerů cloudu (CPP) a partnerském centru zobrazují odlišně. **Přehledy prodejců** v CPP mají kartu objednávky a využití, která zobrazuje data pro nabídky založené na použití i pro nabídky nevyužívající použití. V partnerském centru se metriky využití zobrazují na samostatné stránce.
+Maximální latence mezi generováním událostí využití a vytvářením sestav v partnerském centru je 48 hodin.
 
 ### <a name="usage-summary"></a>Souhrn využití
 
@@ -52,7 +51,7 @@ Tabulka Souhrn využití zobrazuje hodiny používání zákazníka pro všechny
 
 ### <a name="usage-by-geography"></a>Využití podle geografie
 
-**Normalizované využití podle geografických** heatmapu zobrazuje hodiny využití mapované v závislosti na zemi nebo oblasti zákazníka. Barevná variace země/oblasti představuje normalizovanou koncentraci využití. Kliknutím na tlačítko **Domů** na mapě se vraťte k původnímu zobrazení.
+**Normalizované využití podle geografického** heatho mapy zobrazuje hodiny využití mapované na základě země nebo oblasti zákazníka. Barevná variace země/oblasti představuje normalizovanou koncentraci využití. Kliknutím na tlačítko **Domů** na mapě se vraťte k původnímu zobrazení.
 
 ### <a name="usage-by-offers"></a>Využití podle nabídek
 
@@ -60,9 +59,9 @@ Tabulka Souhrn využití zobrazuje hodiny používání zákazníka pro všechny
 - Pruhový graf znázorňuje trend růstu od měsíců po měsících pro vybraný rozsah dat. Sloupce měsíc představují hodiny využití z nabídek s nejvyšším hodinou využití pro příslušný měsíc. Spojnicový graf znázorňuje trend procenta nárůstu vykreslený na sekundární ose Y.
 - Pomocí posuvníku v horní části grafu se posunete doprava doleva podél osy x nebo se zaměřte na konkrétní datové body.
 
-### <a name="usage-trend-by-offers-and-skus"></a>Trend využití podle nabídek a SKU
+### <a name="usage-trend-by-offers-and-plans"></a>Využití trendů podle nabídek a plánů
 
-Tento graf znázorňuje trend normalizovaného využití pro vybrané SKU nabídky. Tabulek výsledků nabídky zobrazuje nejvyšší 50 nabídky s nejvyšším využitím, seřazené podle hodin využití. Tabulek výsledků SKU zobrazuje prvních 50 SKU s nejvyšším využitím pro vybranou nabídku.
+Tento graf znázorňuje trend normalizovaného využití pro vybrané plány (dříve nazývané SKU) nabídky. Tabulek výsledků nabídky zobrazuje nejvyšší 50 nabídky s nejvyšším využitím, seřazené podle hodin využití. Tabulek výsledků plánu zobrazuje horních 50 plánů s nejvyšším využitím vybrané nabídky.
 
 ### <a name="usage-by-offer-type"></a>Využití podle typu nabídky
 
@@ -72,7 +71,7 @@ Tento graf znázorňuje trend normalizovaného využití pro vybrané SKU nabíd
 
 ### <a name="usage-by-vm-size"></a>Využití podle velikosti virtuálního počítače
 
-Tento graf znázorňuje trend využití vybraných velikostí virtuálních počítačů (max. 5) všech nabídek a SKU. Sloupcový graf je skládaný s hodinami využití vybraných velikostí virtuálních počítačů.
+Tento graf znázorňuje trend využití vybraných velikostí virtuálních počítačů (maximálně pět) pro všechny vaše nabídky a plány. Sloupcový graf je skládaný s hodinami využití vybraných velikostí virtuálních počítačů.
 
 Tabulek výsledků zobrazuje nejvyšší 50 velikosti virtuálních počítačů s nejvyšším využitím a seřazenými podle hodin využití.
 
@@ -90,7 +89,7 @@ Tabulek výsledků zobrazuje nejvyšší 50 velikosti virtuálních počítačů
 - Každý sloupec v mřížce lze seřadit.
 - Data je možné extrahovat do souboru CSV, pokud je počet záznamů menší než 1000.
 - Pokud počet záznamů překročí 1000, exportují se data asynchronně na stránce ke stažení, která bude k dispozici po dobu následujících 30 dnů.
-- Filtry lze použít na **podrobná data o využití** k zobrazení pouze těch dat, která vás zajímají. Data je možné filtrovat podle země/oblasti, prodejního kanálu, typu licence Marketplace, typu použití, názvu nabídky, typu nabídky, bezplatných zkušebních verzí, ID předplatného Marketplace, ID zákazníka a názvu společnosti.
+- Použijte filtry na **podrobná data o využití** , abyste zobrazili jenom data, která vás zajímají. Filtrovat data podle země/oblasti, prodejního kanálu, typu licence Marketplace, typu použití, názvu nabídky, typu nabídky, bezplatných zkušebních verzí, ID předplatného Marketplace, ID zákazníka a název společnosti.
 
 > [!NOTE]
 > Vyberte **typ použití** ve filtru stránky pro zobrazení grafů na stránce v zobrazení "normalizované zobrazení" nebo "raw". Výchozím zobrazením pro tyto grafy je "normalizované zobrazení".
@@ -107,7 +106,7 @@ Tabulek výsledků zobrazuje nejvyšší 50 velikosti virtuálních počítačů
 Karta **využití měřené fakturace** prezentuje informace o použití pro typy nabídek, kde využití se měří podle dimenze měřiče. Nadlimitní typ SaaS nabídky se teď prezentuje. Karta zobrazuje grafické reprezentace nadlimitních trendů pro využití SaaS měření využívání dat:
 
 - Trend nadlimitního **využití podle dimenze měřiče**: zobrazí měsíční trend nadlimitku pro vybranou dimenzi nabídky. Osa X představuje měsíc a osa Y představuje množství využití. Jednotka měření vlastního měřiče se zobrazí také na ose Y.
-- Trend nadlimitního využití **podle SKU**: představuje trend množství využití vybrané dimenze měřiče SKU. Zobrazené skladové položky budou představovat 5 hlavních SKU s největším množstvím využití vybrané nabídky.
+- Nadlimitní **trend podle plánu**: představuje trend množství využití vybrané dimenze měřiče podle plánů. Zobrazené plány budou představovat pět nejlepších plánů s největším množstvím využití vybrané nabídky.
 - Trend nadlimitního využití **od největších 50 zákazníků**: horní 50 nabídky s nejvyšším počtem hodin používání se zobrazují na ***kartě vedoucí*** a jsou seřazené podle nejvyššího využití vlastního měřiče. Vyberte zákazníka v tabulek výsledků a zobrazte trend využití vybrané dimenze měřiče.
 - Trend nadlimitního využití **v rámci hlavních zákazníků**: prezentuje nejlepší percentily zákazníků, které přispívají k celkovému využití%. Horní percentil zákazníka se zobrazuje podél osy X a je určený množstvím využití zákazníka. Osa Y zobrazuje množství využití. Podrobnosti můžete zobrazit tak, že najedete myší na body podél spojnicového grafu.
 

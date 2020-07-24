@@ -13,11 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 692d86fa27ea42df6fe1128b64e408a5d4a4d08b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6935ea505643f253daf4c0b7d818137f52583682
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444450"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132819"
 ---
 # <a name="virtual-network-service-endpoints"></a>Koncové body služby pro virtuální síť
 
@@ -87,7 +88,7 @@ Koncové body služby poskytují následující výhody:
 - Virtuální síť, ve které je koncový bod nakonfigurovaný, může být ve stejném předplatném jako prostředek služby Azure nebo v jiném předplatném. Další informace o oprávněních požadovaných pro nastavení koncových bodů a zabezpečení služeb Azure najdete v části [Zřizování](#provisioning).
 - U podporovaných služeb můžete pomocí koncových bodů služby svázat s virtuálními sítěmi nové nebo existující prostředky.
 
-### <a name="considerations"></a>Důležité informace
+### <a name="considerations"></a>Požadavky
 
 - Po povolení koncového bodu služby se zdrojová IP adresa přepne z použití veřejných IPv4 adres na používání jejich privátní IPv4 adresy při komunikaci se službou z této podsítě. Během tohoto přepnutí se ukončí všechna existující otevřená připojení TCP ke službě. Při povolování nebo zakazování koncového bodu služby pro podsíť se ujistěte, že nejsou spuštěné žádné důležité úlohy. Také se ujistěte, že se vaše aplikace můžou po přepnutí IP adres automaticky připojit ke službám Azure.
 
@@ -122,7 +123,7 @@ Po nakonfigurování koncových bodů služby na určitou službu ověřte, zda 
 
 Koncové body služby je možné konfigurovat na virtuálních sítích nezávisle na uživateli s oprávněním k zápisu do virtuální sítě. Aby bylo možné zabezpečit prostředky služeb Azure na virtuální síť, musí mít uživatel oprávnění k *Microsoft. Network/virtualNetworks/subnets/joinViaServiceEndpoint/Action* pro přidané podsítě. Ve výchozím nastavení zahrnují předdefinované role správce služby toto oprávnění. Oprávnění můžete upravit vytvořením vlastních rolí.
 
-Další informace o předdefinovaných rolích najdete v tématu [předdefinované role pro prostředky Azure](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Další informace o přiřazení konkrétních oprávnění k vlastním rolím najdete v tématu [vlastní role pro prostředky Azure](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Další informace o předdefinovaných rolích najdete v tématu [předdefinované role Azure](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Další informace o přiřazení konkrétních oprávnění k vlastním rolím najdete v tématu [vlastní role Azure](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Virtuální sítě a prostředky služeb Azure můžou být ve stejném předplatném nebo v různých předplatných. Pokud jsou virtuální síť a prostředky služeb Azure v různých předplatných, musí být prostředky ve stejném tenantovi Active Directory (AD). 
 
@@ -151,4 +152,3 @@ Nejčastější dotazy najdete v tématu [Virtual Network časté otázky týkaj
 - [Integrace služeb Azure ve virtuálních sítích](virtual-network-for-azure-services.md)
 - [Virtual Network zásady koncového bodu služby](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
 - [Šablona Azure Resource Manageru](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
-

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ab0b08c01478d1375ec2a234dc0277980312f17c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 56ebb32e2d1c2a9bab9592da63e1ada7130bb7ff
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258278"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131629"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Principy dvojitých modelů v digitálních prozdvojeních Azure
 
@@ -24,12 +24,12 @@ Modely se napisují pomocí **digitálního DTDL (Digital vláken Definition Lan
 
 ## <a name="digital-twin-definition-language-dtdl-for-writing-models"></a>DTDL (Digital redefinition Language) pro psaní modelů
 
-Modely pro digitální vlákna Azure jsou definovány pomocí jazyka DTDL (Digital nedefinovaný jazyk). DTDL je založen na JSON-LD a je nezávislý na programovacím jazyce. DTDL není výhradně pro digitální vlákna Azure, ale používá se také k reprezentaci dat zařízení v jiných službách IoT, jako je [IoT technologie Plug and Play](../iot-pnp/overview-iot-plug-and-play.md). Digitální vlákna Azure používá DTDL *verze 2*.
+Modely pro digitální vlákna Azure jsou definovány pomocí jazyka DTDL (Digital nedefinovaný jazyk). DTDL je založen na JSON-LD a je nezávislý na programovacím jazyce. DTDL není výhradně pro digitální vlákna Azure, ale používá se také k reprezentaci dat zařízení v jiných službách IoT, jako je [IoT technologie Plug and Play](../iot-pnp/overview-iot-plug-and-play.md). 
+
+Digitální vlákna Azure používá DTDL *verze 2*. Další informace o této verzi DTDL najdete v dokumentaci k jejímu specifikaci v GitHubu: [*Digital DTDLing Definition Language () – verze 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md).
 
 > [!TIP] 
 > Ne všechny služby, které používají DTDL, implementují přesně stejné funkce DTDL. Například IoT technologie Plug and Play nepoužívá funkce DTDL, které jsou pro grafy, zatímco digitální vlákna Azure v současné době neimplementují příkazy DTDL. Další informace o funkcích DTDL, které jsou specifické pro funkce digitálních vláken Azure, najdete v části dále v tomto článku týkajícími se [specifických implementací Azure pro digitální vlákna DTDL](#azure-digital-twins-dtdl-implementation-specifics).
-
-Další informace o DTDL obecně najdete v dokumentaci k jejímu specifikaci v GitHubu: [Digital DTDLing Definition Language () – verze 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md).
 
 ## <a name="elements-of-a-model"></a>Prvky modelu
 
@@ -62,7 +62,9 @@ Aby byl model DTDL kompatibilní s digitálními ovládacími vlákna Azure, mus
 
 Modely s dvojitým typem lze zapsat v libovolném textovém editoru. Jazyk DTDL se řídí syntaxí JSON, takže byste měli ukládat modely s příponou *. JSON*. Použití rozšíření JSON umožní mnoha programovým textovým editorům poskytnout základní kontrolu syntaxe a zvýrazňování pro dokumenty DTDL. K dispozici je také [rozšíření DTDL](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl) pro [Visual Studio Code](https://code.visualstudio.com/).
 
-Zde je příklad typického modelu, který je napsán jako rozhraní DTDL. Model popisuje Planet, každý s názvem, hmotností a teplotu. Globálním může mít Moons jako satelity a může obsahovat craters.
+Tato část obsahuje příklad typického modelu, který je napsán jako rozhraní DTDL. Model popisuje **Planet**, každý s názvem, hmotností a teplotu.
+ 
+Vezměte v úvahu, že Planet může také interagovat s **Moons** , které jsou jejich satelity, a může obsahovat **craters**. V následujícím příkladu `Planet` model vyjadřuje připojení k těmto dalším entitám odkazem na dva externí modely – `Moon` a `Crater` . Tyto modely jsou také definovány v následujícím ukázkovém kódu, ale jsou udržovány velmi jednoduché, takže nemusíte odečítat z primárního `Planet` příkladu.
 
 ```json
 [
@@ -101,6 +103,11 @@ Zde je příklad typického modelu, který je napsán jako rozhraní DTDL. Model
   },
   {
     "@id": "dtmi:com:contoso:Crater;1",
+    "@type": "Interface",
+    "@context": "dtmi:dtdl:context;2"
+  },
+  {
+    "@id": "dtmi:com:contoso:Moon;1",
     "@type": "Interface",
     "@context": "dtmi:dtdl:context;2"
   }
@@ -204,13 +211,13 @@ Pro ověřování dokumentů modelu je k dispozici ukázkový nezávisláý jazy
 
 Ukázka validátoru DTDL je postavená na knihovně DTDL analyzátoru .NET, která je k dispozici v NuGet jako knihovna na straně klienta: [**Microsoft. Azure. DigitalTwins. Parser**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/). Knihovnu můžete také použít přímo k návrhu vlastního řešení ověřování. Při použití knihovny analyzátoru se ujistěte, že používáte verzi, která je kompatibilní s verzí, kterou Azure Digital revláken používá. Během období Preview se jedná o verzi *3.7.0*.
 
-Další informace o knihovně analyzátoru, včetně příkladů použití, najdete v tématu [Postupy: analýza a ověření modelů](how-to-use-parser.md).
+Další informace o knihovně analyzátoru, včetně příkladů použití, najdete v tématu [*Postupy: analýza a ověření modelů*](how-to-use-parser.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si téma Správa modelů pomocí rozhraní DigitalTwinsModels API:
-* [Postupy: Správa vlastních modelů](how-to-manage-model.md)
+* [*Postupy: Správa vlastních modelů*](how-to-manage-model.md)
 
 Nebo se dozvíte, jak se vytváří digitální vlákna na základě modelů:
-* [Koncepty: digitální vlákna a Dvojitá graf](concepts-twins-graph.md)
+* [*Koncepty: digitální vlákna a Dvojitá graf*](concepts-twins-graph.md)
 

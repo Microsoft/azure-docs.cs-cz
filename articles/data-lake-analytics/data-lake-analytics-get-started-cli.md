@@ -2,17 +2,15 @@
 title: Vytvoření & dotazů Azure Data Lake Analytics – Azure CLI
 description: Naučte se používat rozhraní příkazového řádku Azure k vytvoření účtu Azure Data Lake Analytics a odeslání úlohy U-SQL.
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: e8de36cca8386ed2a8ddba5782b7b48f248192e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 44648f1c01aed221e90029eb64d48576b899b1c4
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564825"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132581"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli"></a>Začínáme s Azure Data Lake Analytics s využitím rozhraní Azure CLI
 
@@ -20,7 +18,7 @@ ms.locfileid: "85564825"
 
 Tento článek popisuje, jak pomocí rozhraní příkazového řádku Azure CLI vytvářet účty Azure Data Lake Analytics, odesílat úlohy USQL a katalogy. Tato úloha načte soubor hodnot oddělených tabulátory (TSV) a převede ho na soubor hodnot oddělených čárkami (CSV).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, budete potřebovat tyto položky:
 
@@ -64,7 +62,7 @@ az group create --name "<Resource Group Name>" --location "<Azure Location>"
 ```
 
 * **Data Lake Analytics název účtu**. Každý účtu Data Lake Analytics má název.
-* **Umístění**. Použijte jedno z datových center Azure, které podporuje Data Lake Analytics.
+* **Umístění:** Použijte jedno z datových center Azure, které podporuje Data Lake Analytics.
 * **Výchozí účet Data Lake Store**: každý Data Lake Analytics účet má výchozí data Lake Store účet.
 
 Zobrazení seznamu stávajícího účtu Data Lake Store:

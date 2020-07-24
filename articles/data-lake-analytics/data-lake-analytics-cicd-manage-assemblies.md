@@ -1,17 +1,17 @@
 ---
 title: Správa sestavení U-SQL v kanálu CI/CD-Azure Data Lake
 description: Seznamte se s osvědčenými postupy pro správu sestavení U-SQL C# v kanálu CI/CD pomocí Azure DevOps.
-author: yanancai
-ms.author: yanacai
+author: liudan66
+ms.author: liud
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 10/30/2018
-ms.openlocfilehash: 9daf2cc6ed176e46399f2cdb2f424a622fdeb812
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 4bb6ee60df291c1939d3bb0d72a9b3992be9b3c0
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115387"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132139"
 ---
 # <a name="best-practices-for-managing-u-sql-assemblies-in-a-cicd-pipeline"></a>Osvědčené postupy pro správu sestavení U-SQL v kanálu CI/CD
 

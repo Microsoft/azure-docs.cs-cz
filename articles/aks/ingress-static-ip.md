@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Naučte se, jak nainstalovat a nakonfigurovat řadič příchozího přenosu NGINX se statickou veřejnou IP adresou v clusteru Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 07/02/2020
-ms.openlocfilehash: a59bd1cfcc03b0a6c9af218cb7108a0ba094377d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/21/2020
+ms.openlocfilehash: 89068210e0a2656c0a0642417532b28d8f10d93a
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255281"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130847"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Vytvoření kontroleru příchozího přenosu dat se statickou veřejnou IP adresou ve službě Azure Kubernetes Service (AKS)
 
@@ -48,6 +48,9 @@ V dalším kroku vytvořte veřejnou IP adresu s metodou *statického* přiděle
 ```azurecli-interactive
 az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --sku Standard --allocation-method static --query publicIp.ipAddress -o tsv
 ```
+
+> [!NOTE]
+> Výše uvedené příkazy vytvoří IP adresu, která se odstraní, když odstraníte cluster AKS. Případně můžete vytvořit IP adresu v jiné skupině prostředků, kterou je možné spravovat odděleně od clusteru AKS. Pokud vytvoříte IP adresu v jiné skupině prostředků, ujistěte se, že instanční objekt používaný clusterem AKS má delegovaná oprávnění k jiné skupině prostředků, jako je například *Přispěvatel sítě*.
 
 Teď nasaďte *Nginx a vstupní* graf s Helm. Pro přidání redundance se nasadí dvě repliky kontrolerů příchozího přenosu dat NGINX s parametrem `--set controller.replicaCount`. Pokud chcete mít v clusteru AKS k dispozici více než jeden uzel, zajistěte, aby bylo možné plně využít více uzlů.
 
@@ -264,7 +267,7 @@ V následujícím příkladu je přenos do adresy `https://demo-aks-ingress.east
 Vytvořte soubor s názvem `hello-world-ingress.yaml` a zkopírujte ho do následujícího příkladu YAML.
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress

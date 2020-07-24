@@ -1,16 +1,16 @@
 ---
-title: Řídicí panel zákazníka v Microsoft Commercial Marketplace Analytics na partnerském centru
+title: Řídicí panel zákazníka v Microsoft Commercial Marketplace Analytics na partnerském centru, Azure Marketplace a Microsoft AppSource
 description: Naučte se, jak získat přístup k informacím o vašich zákaznících, včetně trendů růstu, pomocí řídicího panelu zákazníka na komerčním webu Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: 9f71a668b3473521e9d8d7c9318ab2e557380845
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+ms.date: 07/22/2020
+ms.openlocfilehash: f4dbdbfc3b835871516233e601881012190169ce
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121754"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131765"
 ---
 # <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel Zákazníci v analýzách komerčního marketplace
 
@@ -29,10 +29,12 @@ Pokud chcete získat přístup k **řídicímu panelu zákazníka**, otevřete �
 - [Zákazník podle geografie](#customer-by-geography)
 - [Trendy zákazníků](#customer-trends)
 - [Zákazníci podle objednávek a využití](#customers-by-orders-and-usage)
-- [Zákazníci podle SKU](#customers-by-skus)
+- [Zákazníci podle plánů](#customers-by-plans)
 - [Objednávky a využití podle typu zákazníka](#orders-and-usage-by-customer-type)
 - [Tabulka s podrobnostmi o zákaznících](#customer-details-table)
 - [Filtry stránek zákazníka](#customer-page-filters)
+
+Maximální latence mezi nákupem zákazníků a vykazováním v partnerském centru je 48 hodin.
 
 ### <a name="customer-summary"></a>Shrnutí zákazníka
 
@@ -50,9 +52,9 @@ Existují tři **typy zákazníků**: nový, existující a změněný.
 
 ### <a name="customer-by-geography"></a>Zákazník podle geografie
 
-Graf **zákazníka podle geografického** grafu zobrazuje počty všech zákazníků a zákazníků získaných během vybraného časového období a jsou mapovány na základě země nebo oblasti zákazníka. Světlá barva světla na mapě představuje nízkou a vysokou hodnotu počtu zákazníků. Kliknutím na záznam v tabulce se přiblížíte k zemi nebo oblasti.
+Graf **zákazníka podle geografického** grafu zobrazuje počty všech zákazníků a zákazníků získaných během vybraného rozsahu kalendářních dat, které jsou mapovány na základě země nebo oblasti zákazníka. Světlá barva světla na mapě představuje nízkou a vysokou hodnotu počtu zákazníků. Vyberte záznam v tabulce pro přiblížení země nebo oblasti.
 
-Heatmapu zobrazuje počet zákazníků a% podle země/oblasti zákazníka. Mapu můžete přesunout tak, aby se zobrazilo přesné umístění a přiblížení do konkrétního umístění. Tato mapa má doplňkovou mřížku, která vám umožní zobrazit% zákazníků podle umístění a také nově přidaných zákazníků do tohoto umístění.
+Heat Mapa zobrazuje počet zákazníků a procento podle země/oblasti zákazníka. Mapu můžete přesunout tak, aby se zobrazilo přesné umístění a přiblížení do konkrétního umístění. Tato mapa má doplňkovou mřížku, která vám umožní zobrazit% zákazníků podle umístění a také nově přidaných zákazníků do tohoto umístění.
 
 ### <a name="customer-trends"></a>Trendy zákazníků
 
@@ -71,14 +73,14 @@ Tabulka **zákazníci podle objednávek/používání** obsahuje tři karty, "ob
 
 Příklad najdete v následujícím grafu pro normalizované využití: horní 30. percentil zákazníků přispívá k 87% normalizovaného využití na základě součtu. 30. percentil zákazníků přispívá jenom 1 570 000 hodin využití.
 
-### <a name="customers-by-skus"></a>Zákazníci podle SKU
+### <a name="customers-by-plans"></a>Zákazníci podle plánů
 
-Tabulky **zákazníci podle SKU nebo využití** jsou popsány níže.
+Grafy **zákazníci podle plánů nebo použití** jsou popsány níže.
 
 1. Vedoucí deska zobrazuje podrobnosti o hlavních 50 zákaznících seřazených podle počtu objednávek. Po výběru zákazníka se podrobnosti o zákazníkovi zobrazí v oddílech 2, 3 a 4 tohoto vedoucího senátu.
 2. Podrobnosti o profilu zákazníka se zobrazí v tomto prostoru, když se vydavatelé přihlásí pomocí role vlastníka. Pokud jsou vydavatelé přihlášení pomocí role přispěvatele, podrobnosti v této části nebudou k dispozici.
-3. Prstencový graf ORDER by SKU zobrazuje Rozpis objednávek koupených pro skladové položky. Zobrazí se horní 5 SKU s nejvyšším počtem objednávek, zatímco zbytek objednávek je seskupený pod položkou "REST All".
-4. Prstencový graf křesla podle SKU zobrazuje rozpis míst objednaných pro skladové položky. Zobrazí se horní 5 SKU s nejvyššími místy, zatímco zbytek objednávek je seskupený pod položkou REST ALL.
+3. Prstencový graf **Orders by plánuje** zobrazit rozpis objednávek koupených pro plány. Zobrazí se horní pět plánů s nejvyšším počtem objednávek, zatímco zbytek objednávek je seskupený pod položkou "REST All".
+4. Prstencový graf **křesla podle plánů** zobrazuje rozpis sedadel seřazených pro plány. Zobrazí se horní pět plánů s nejvyššími místy, zatímco zbytek objednávek je seskupený pod položkou REST ALL.
 
 ### <a name="orders-and-usage-by-customer-type"></a>Objednávky a využití podle typu zákazníka
 
@@ -95,7 +97,7 @@ Tabulka **Podrobnosti o zákazníkovi** zobrazuje číslovaný seznam prvních 1
 - Každý sloupec v mřížce lze seřadit.
 - Data je možné extrahovat do souboru TSV, pokud je počet záznamů menší než 1000.
 - Pokud je počet záznamů větší než 1000, exportovaná data se asynchronně nasadí na stránku ke stažení na následujících 30 dnů.
-- Filtry lze v tabulce použít k zobrazení pouze těch dat, která vás zajímají. Data je možné filtrovat podle názvu společnosti, ID zákazníka, ID předplatného Marketplace, typu licence Azure, data získání, data ztráty, e-mailu zákazníka, země zákazníka/oblasti/státu/města/PSČ, jazyka zákazníka atd.
+- Použijte filtry na tabulku, abyste zobrazili jenom data, která vás zajímají. Filtrovat data podle názvu společnosti, ID zákazníka, ID předplatného Marketplace, typu licence Azure, datum získání, ztracené datum, E-mail zákazníka, země zákazníka/oblast/stav/Město/PSČ, jazyk zákazníka atd.
 - Když je nabídka koupena chráněným zákazníkem, informace v **podrobnostech o zákazníkovi** budou maskovány (* * * * * * * * * * * *).
 - Podrobnosti o dimenzi zákazníka, jako je název společnosti, jméno zákazníka a E-mail zákazníka, jsou na úrovni ID organizace, nikoli na Azure Marketplace nebo na úrovni transakce AppSource.
 
@@ -104,7 +106,7 @@ Tabulka **Podrobnosti o zákazníkovi** zobrazuje číslovaný seznam prvních 1
 Filtry **stránky Customers** jsou aplikovány na úrovni stránky Customers. Můžete vybrat více filtrů pro vykreslení grafu pro kritéria, která se rozhodnete zobrazit, a data, která chcete zobrazit v mřížce/exportu podrobných objednávek dat. Filtry se aplikují na extrahovaná data pro rozsah dat, který jste vybrali v pravém horním rohu stránky objednávky.
 
 >[!NOTE]
-> Podrobné definice pro každé pole v mřížce zákazníka, filtry stránek a jejich možné výběry se nacházejí v [nejčastějších dotazech a terminologii pro komerční analýzy na webu Marketplace](./faq-terminology.md).
+> Podrobné definice pro každé pole v mřížce zákazníka, filtry stránky a jejich možné výběry jsou umístěny v níže uvedeném článku s nejčastějšími dotazy.
 
 ## <a name="next-steps"></a>Další kroky
 

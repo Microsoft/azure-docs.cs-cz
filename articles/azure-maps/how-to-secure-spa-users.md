@@ -2,18 +2,19 @@
 title: Postup zabezpečení jednostránkové aplikace pomocí přihlášení uživatele
 titleSuffix: Azure Maps
 description: Jak nakonfigurovat jedinou stránku aplikace, která podporuje jednotné přihlašování Azure AD pomocí Azure Maps Web SDK.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 307f1ea8d98aec8594dd4f666d4e18922122b0f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0602829f1334e13241c2e396d409280506099d34
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988553"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130881"
 ---
 # <a name="secure-a-single-page-application-with-user-sign-in"></a>Zabezpečení jednostránkové aplikace pomocí přihlášení uživatele
 

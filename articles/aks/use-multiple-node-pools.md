@@ -4,14 +4,14 @@ description: Naučte se vytvářet a spravovat fondy více uzlů pro cluster ve 
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: c35b3cdbde79a771eccc42c7c3a60b0ab4e08e8a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 400e595d51f08428b01337e63f6c6e8ba5836794
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250851"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133091"
 ---
-# <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vytvoření a Správa fondů více uzlů pro cluster ve službě Azure Kubernetes (AKS)
+# <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vytvoření a správa více fondů uzlů pro cluster ve službě Azure Kubernetes Service (AKS)
 
 Ve službě Azure Kubernetes Service (AKS) jsou uzly stejné konfigurace seskupeny dohromady do *fondů uzlů*. Tyto fondy uzlů obsahují základní virtuální počítače, na kterých běží vaše aplikace. Počáteční počet uzlů a jejich velikost (SKU) je definován při vytváření clusteru AKS, který vytváří [fond uzlů systému][use-system-pool]. Pokud chcete podporovat aplikace, které mají různé výpočetní prostředky nebo požadavky na úložiště, můžete vytvořit další *fondy uživatelských uzlů*. Fondy systémových uzlů slouží jako primární účel hostování důležitých systémových lusků, jako jsou například CoreDNS a tunnelfront. Fondy uživatelských uzlů slouží jako primární účel hostování aplikace. V případě, že chcete mít v clusteru AKS jenom jeden fond, je ale možné naplánovat použití lusků na uzlech systému. Fondy uživatelských uzlů jsou tam, kde umístíte jednotlivé lusky pro jednotlivé aplikace. Pomocí těchto dalších fondů uživatelských uzlů můžete například poskytnout GPU pro aplikace náročné na výpočetní výkon nebo přístup k vysoce výkonnému úložišti SSD.
 
@@ -72,7 +72,7 @@ Až bude cluster připravený, pomocí příkazu [AZ AKS Get-Credentials][az-aks
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-## <a name="add-a-node-pool"></a>Přidat fond uzlů
+## <a name="add-a-node-pool"></a>Přidání fondu uzlů
 
 Cluster vytvořený v předchozím kroku má fond s jedním uzlem. Přidejte druhý fond uzlů pomocí příkazu [AZ AKS nodepool Add][az-aks-nodepool-add] . Následující příklad vytvoří fond uzlů s názvem *mynodepool* , který spouští *3* uzly:
 
@@ -502,6 +502,9 @@ az aks nodepool add \
     --node-taints sku=gpu:NoSchedule \
     --no-wait
 ```
+
+> [!NOTE]
+> Soubor. chuti lze nastavit pouze pro fondy uzlů během vytváření fondu uzlů.
 
 Následující příklad výstupu příkazu [AZ AKS nodepool list][az-aks-nodepool-list] ukazuje, že *taintnp* *vytváří* uzly se zadaným *nodeTaints*:
 

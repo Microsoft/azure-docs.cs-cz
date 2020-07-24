@@ -1,20 +1,20 @@
 ---
 title: Vývoj projektu U-SQL Database – Azure Data Lake
 description: Naučte se vyvíjet databázi U-SQL pomocí Nástroje Azure Data Lake pro Visual Studio.
-author: yanancai
-ms.author: yanacai
-ms.reviewer: jasonwhowell
+author: liudan66
+ms.author: liud
+ms.reviewer: jasonh
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: a81f623b3bca2877fce1a9aee7cd2dff6e44f37d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ee35385b88bf4fbd5f899fde032b11b99a20d050
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117419"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130031"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>Použití databázového projektu U-SQL pro vývoj databáze U-SQL pro Azure Data Lake
 

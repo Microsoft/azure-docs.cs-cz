@@ -3,19 +3,17 @@ title: Použití metody testování offline – přizpůsobení
 titleSuffix: Azure Cognitive Services
 description: V tomto článku se dozvíte, jak pomocí offline testování změřit efektivitu vaší aplikace a analyzovat výukovou smyčku.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.author: diberry
-ms.openlocfilehash: f8ceef5e80bf15f0ba52a9c289e617018febfb5c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 627f511bb12c16c8f54935d1f782cb7c2c962163
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77623589"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132751"
 ---
 # <a name="offline-evaluation"></a>Offline vyhodnocení
 
@@ -55,7 +53,7 @@ Aktuální zásady zahrnuté do hodnocení:
 | Nastavení učení | Účel|
 |--|--|
 |**Online zásady**| Aktuální zásady učení použité v přizpůsobeném nástroji |
-|**Standardní hodnoty**|Výchozí hodnota aplikace (určená první akcí odeslanou při voláních pořadí)|
+|**Směrný**|Výchozí hodnota aplikace (určená první akcí odeslanou při voláních pořadí)|
 |**Náhodné zásady**|Chování imaginárního pořadí, které vždy vrátí náhodný výběr akcí ze zadaných.|
 |**Vlastní zásady**|Při spuštění vyhodnocení se nahrály další zásady učení.|
 |**Optimalizované zásady**|Pokud bylo vyhodnocení spuštěno s možností zjišťování optimalizované zásady, bude porovnána a bude možné ji stáhnout, nebo ji můžete nastavit jako zásady učení online, přičemž nahradíte tu aktuální.|
@@ -108,5 +106,5 @@ Doporučujeme, abyste provedli hodnocení funkcí a požádali:
 
 ## <a name="next-steps"></a>Další kroky
 
-[Konfigurace](how-to-settings.md)přizpůsobeného[spuštění offline hodnocení](how-to-offline-evaluation.md) – pochopení [způsobu, jakým funkce přizpůsobuje práci](how-personalizer-works.md) 
-
+Konfigurovat přizpůsobeného [přizpůsobování](how-to-settings.md) 
+ [Spustit vyhodnocení offline](how-to-offline-evaluation.md) Princip fungování přizpůsobeného [přizpůsobování](how-personalizer-works.md)

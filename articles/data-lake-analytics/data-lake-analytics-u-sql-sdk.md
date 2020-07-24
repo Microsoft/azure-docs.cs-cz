@@ -4,16 +4,15 @@ description: Naučte se spouštět a testovat úlohy U-SQL místně pomocí př�
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: yanacai
-ms.author: yanacai
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 03/01/2017
-ms.openlocfilehash: 58521b16e0f4ff133fd032abd4451f785256bbee
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: daf72fcf7baba289b4145d06d878c8a7232f1c6a
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110466"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132411"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Spuštění a testování U-SQL s Azure Data Lake U-SQL SDK
 
@@ -65,7 +64,7 @@ V skriptech U-SQL můžete použít jak relativní cestu, tak i místní absolut
 
 Při místním spuštění skriptu U-SQL je pracovní adresář vytvořen během kompilace v rámci aktuálního spuštěného adresáře. Kromě výstupů kompilace budou k tomuto pracovnímu adresáři zkopírovány nezbytné běhové soubory pro místní spuštění. Kořenová složka pracovního adresáře se nazývá "ScopeWorkDir" a soubory v pracovním adresáři jsou následující:
 
-|Adresář nebo soubor|Adresář nebo soubor|Adresář nebo soubor|Definice|Description|
+|Adresář nebo soubor|Adresář nebo soubor|Adresář nebo soubor|Definice|Popis|
 |--------------|--------------|--------------|----------|-----------|
 |C6A101DDCB470506| | |Řetězec hash verze modulu runtime|Stínová kopie souborů modulu runtime potřebných pro místní spuštění|
 | |Script_66AE4909AA0ED06C| |Název skriptu + hash řetězec cesty ke skriptu|Výstupy kompilace a protokolování kroků spuštění|
@@ -142,17 +141,17 @@ LocalRunHelper run -Script path_to_usql_script.usql [optional_arguments]
 
 Níže jsou uvedené nepovinné argumenty pro **běh**:
 
-|Argument|Výchozí hodnota|Description|
+|Argument|Výchozí hodnota|Popis|
 |--------|-------------|-----------|
-|– CodeBehind|False|Skript obsahuje kód. cs za|
+|– CodeBehind|Nepravda|Skript obsahuje kód. cs za|
 |-CppSDK| |Adresář CppSDK|
 |– Dataroot| Proměnná prostředí dataroot|Dataroot pro místní spuštění, výchozí pro proměnnou prostředí ' LOCALRUN_DATAROOT '|
 |– Zpráva| |Vypsat zprávy v konzole nástroje do souboru|
 |– Paralelní|1|Spustit plán se zadaným paralelismu|
 |– Odkazy| |Seznam cest k dodatečným referenčním sestavením nebo datovým souborům kódu, které jsou oddělené znakem '; '|
-|-UdoRedirect|False|Generovat konfiguraci přesměrování Udo sestavení|
+|-UdoRedirect|Nepravda|Generovat konfiguraci přesměrování Udo sestavení|
 |-UseDatabase|master|Databáze, která se má použít pro kód za dočasnou registraci sestavení|
-|– Verbose|False|Zobrazit podrobné výstupy z modulu runtime|
+|– Verbose|Nepravda|Zobrazit podrobné výstupy z modulu runtime|
 |-WorkDir|Aktuální adresář|Adresář pro použití a výstupy kompilátoru|
 |-RunScopeCEP|0|Režim ScopeCEP, který se má použít|
 |-ScopeCEPTempPath|názvem|Dočasná cesta, která se má použít pro streamovaná data|
@@ -174,7 +173,7 @@ LocalRunHelper compile -Script path_to_usql_script.usql [optional_arguments]
 
 Následující jsou nepovinné argumenty pro **kompilaci**:
 
-|Argument|Description|
+|Argument|Popis|
 |--------|-----------|
 | -CodeBehind [výchozí hodnota false]|Skript obsahuje kód. cs za|
 | -CppSDK [výchozí hodnota]|Adresář CppSDK|
@@ -219,7 +218,7 @@ LocalRunHelper execute -Algebra path_to_compiled_algebra_file [optional_argument
 
 Níže jsou uvedené volitelné argumenty pro **provedení**:
 
-|Argument|Výchozí hodnota|Description|
+|Argument|Výchozí hodnota|Popis|
 |--------|-------------|-----------|
 |– Dataroot | '' |Kořen dat pro provedení metadat. Nastaví se jako výchozí proměnná prostředí **LOCALRUN_DATAROOT** .|
 |– Zpráva | '' |Vypíše zprávy v konzole nástroje do souboru.|
@@ -332,13 +331,13 @@ LocalRunHelper.exe poskytuje rozhraní pro programování pro místní kompilaci
 
 Public LocalRunHelper ([System. IO. TextWriter messageOutput = null])
 
-|Parametr|Typ|Description|
+|Parametr|Typ|Popis|
 |---------|----|-----------|
 |messageOutput|System. IO. TextWriter|pro výstupní zprávy nastavte na hodnotu null, aby se použila konzola.|
 
 ### <a name="properties"></a>Vlastnosti
 
-|Vlastnost|Typ|Description|
+|Vlastnost|Typ|Popis|
 |--------|----|-----------|
 |AlgebraPath|řetězec|Cesta k souboru algebraický (soubor algebraický je jedním z výsledků kompilace)|
 |CodeBehindReferences|řetězec|Pokud má skript další kód na pozadí, zadejte cesty oddělené znakem '; '|
@@ -363,7 +362,7 @@ Public LocalRunHelper ([System. IO. TextWriter messageOutput = null])
 
 ### <a name="method"></a>Metoda
 
-|Metoda|Description|Vrátit|Parametr|
+|Metoda|Popis|Vrátit|Parametr|
 |------|-----------|------|---------|
 |Public bool DoCompile ()|Kompilace skriptu U-SQL|True při úspěchu| |
 |Public bool DoExec ()|Spustí zkompilovaný výsledek.|True při úspěchu| |

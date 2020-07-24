@@ -1,19 +1,19 @@
 ---
 title: Pokrytí geografického kódování | Mapy Microsoft Azure
 description: Proces převodu adresy umístění na zeměpisnou šířku a délky souřadnic se označuje jako geografické kódování. V tomto článku se dozvíte o oblastech s pokrytím geografického kódování v Microsoft Azure Maps.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 12/31/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 9836bd35b16c4c308b7c9d096b104c0cec68a34c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52c6cda800b535109d906fd6e6ae1aa8c709f23f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335654"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132802"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps pokrytí geografické kódování
 

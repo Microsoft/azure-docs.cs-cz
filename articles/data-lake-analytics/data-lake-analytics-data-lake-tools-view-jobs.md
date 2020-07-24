@@ -2,24 +2,22 @@
 title: Použití & zobrazení úloh v prohlížeči úloh – Azure Data Lake Analytics
 description: Tento článek popisuje, jak použít prohlížeč úloh a zobrazení úloh pro Azure Data Lake Analytics úlohy.
 ms.service: data-lake-analytics
-author: jasonwhowell
-ms.author: jasonh
 ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
 ms.topic: how-to
 ms.date: 08/02/2017
-ms.openlocfilehash: e0db5482a48819074fc0552417aa79dbc2e5cf66
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 32684ea72df63de5b82941b3ef44e9d579d09eb4
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120173"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131884"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>Použití prohlížeče úloh a zobrazení úloh pro Azure Data Lake Analytics
 Služba Azure Data Lake Analytics archivuje odeslané úlohy do úložiště dotazů. V tomto článku se naučíte, jak pomocí prohlížeče úloh a zobrazení úloh v Nástroje Azure Data Lake pro Visual Studio najít historické informace o úlohách. 
 
 Ve výchozím nastavení služba Data Lake Analytics archivuje úlohy po dobu 30 dnů. Dobu platnosti můžete nakonfigurovat z Azure Portal konfigurací přizpůsobených zásad vypršení platnosti. Po vypršení platnosti nebude možné získat přístup k informacím o úloze. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 [Požadavky sady Visual Studio najdete v tématu Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-get-started.md#prerequisites).
 
 ## <a name="open-the-job-browser"></a>Otevřete prohlížeč úloh.
@@ -158,7 +156,7 @@ Podrobnosti úlohy zobrazují podrobné informace o úloze, včetně skriptu, pr
 * Skript
   
     Skript U-SQL úlohy je uložený v úložišti dotazů. V případě potřeby můžete zobrazit původní skript U-SQL a v případě potřeby ho znovu odeslat.
-* Zdroje a prostředky
+* Prostředky
   
     Výstupy kompilace úlohy uložené v úložišti dotazů můžete najít prostřednictvím prostředků. Například můžete najít "algebra.xml", který se používá k zobrazení grafu úlohy, vámi registrovaných sestavení atd.
 * Zobrazení spuštění vrcholu

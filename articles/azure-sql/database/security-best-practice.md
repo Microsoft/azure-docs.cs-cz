@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 8104302afa84446e2d57c7156f33bc0160e31472
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 00369ae45a13414ce46f324e37afe24be24a48e0
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986773"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132938"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>PlayBook pro adresování běžných požadavků na zabezpečení pomocí Azure SQL Database a spravované instance Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -62,12 +62,12 @@ Pokud není uvedeno jinak, doporučujeme, abyste provedli všechny osvědčené 
 
 Chystáme se dál aktualizovat doporučení a osvědčené postupy, které jsou tady uvedené. Zadáním odkazu na **zpětnou vazbu** na konci tohoto článku zadejte nebo opravte tento dokument.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 Ověřování je proces, který označuje, že uživatel vyžádá. Azure SQL Database a spravovaná instance SQL podporují dva typy ověřování:
 
-- Ověřování pomocí SQL
-- Ověřování pomocí Azure Active Directory
+- Ověřování SQL
+- Ověřování služby Azure Active Directory
 
 > [!NOTE]
 > Pro všechny nástroje a aplikace třetích stran nemusí být ověřování Azure Active Directory podporováno.
@@ -112,7 +112,7 @@ Centrální Správa identit nabízí následující výhody:
 > - Přístupový token Azure AD je uložený v mezipaměti na straně klienta a jeho životnost závisí na konfiguraci tokenu. Viz článek, [konfigurovatelné životnosti tokenů v Azure Active Directory](../../active-directory/develop/active-directory-configurable-token-lifetimes.md)
 > - Pokyny k řešení potíží s ověřováním Azure AD najdete na následujícím blogu: [řešení potíží s Azure AD](https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991).
 
-### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
+### <a name="azure-multi-factor-authentication"></a>Vícefaktorové ověřování Azure
 
 > Zmíněné v: #2 praxe metody OSA, ISO Access Control (AC)
 
@@ -240,9 +240,9 @@ Přiřaďte pouze potřebná [oprávnění](https://docs.microsoft.com/sql/relat
   - Nezapomeňte nepřiřazovat uživatele k zbytečným rolím.
 
 - V Azure Resource Manager:
-  - Pokud jsou dostupné nebo vlastní role RBAC a přiřazují potřebná oprávnění, použijte předdefinované role.
-    - [Předdefinované role pro Azure](../../role-based-access-control/built-in-roles.md)
-    - [Vlastní role pro prostředky Azure](../../role-based-access-control/custom-roles.md)
+  - Pokud jsou k dispozici nebo vlastní role Azure a přiřadíte potřebná oprávnění, použijte předdefinované role.
+    - [Předdefinované role Azure](../../role-based-access-control/built-in-roles.md)
+    - [Vlastní role Azure](../../role-based-access-control/custom-roles.md)
 
 **Osvědčené postupy**:
 
@@ -265,7 +265,7 @@ Následující osvědčené postupy jsou volitelné, ale výsledkem bude lepší
 
 - Mějte na paměti, že oprávnění v databázovém stroji se dají použít v následujících oborech (menším rozsahem je menší dopad udělených oprávnění):
   - Server (speciální role v hlavní databázi) v Azure
-  - databáze
+  - Databáze
   - Schéma
     - Osvědčeným postupem je použití schémat k udělení oprávnění v rámci databáze. (viz také: [schéma – návrh: doporučení pro návrh schématu s ohledem na zabezpečení](http://andreas-wolter.com/en/schema-design-for-sql-server-recommendations-for-schema-design-with-security-in-mind/))
   - Objekt (tabulka, zobrazení, procedura atd.)
@@ -291,7 +291,7 @@ Oddělení povinností, označované také jako oddělení cel, popisuje nutnost
 - Identifikujte komplexní hierarchii uživatelů (a automatizovaných procesů), které přistupují k systému.
 
 - Vytvořte role podle potřeb uživatelů a přiřaďte k rolím oprávnění.
-  - Pro úlohy na úrovni správy v Azure Portal nebo prostřednictvím PowerShellu – automatizace používá role RBAC. Vyhledejte integrovanou roli, která odpovídá požadavku, nebo vytvořte vlastní roli RBAC pomocí dostupných oprávnění.
+  - Pro úlohy na úrovni správy v Azure Portal nebo prostřednictvím PowerShellu – automatizace používá role RBAC. Najít integrovanou roli, která odpovídá požadavku, nebo vytvořit vlastní roli Azure pomocí dostupných oprávnění
   - Vytvořte role serveru pro úlohy na úrovni serveru (vytváření nových přihlašovacích údajů, databází) ve spravované instanci.
   - Vytváření databázových rolí pro úlohy na úrovni databáze.
 
@@ -342,8 +342,8 @@ Pro čtenáře, kteří chtějí podrobně hlouběji do SoD, doporučujeme násl
   - [Podepisování uložených procedur](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)
 
 - Pro správu prostředků Azure:
-  - [Předdefinované role pro Azure](../../role-based-access-control/built-in-roles.md)
-  - [Vlastní role pro prostředky Azure](../../role-based-access-control/custom-roles.md)
+  - [Předdefinované role Azure](../../role-based-access-control/built-in-roles.md)
+  - [Vlastní role Azure](../../role-based-access-control/custom-roles.md)
   - [Použití Azure AD Privileged Identity Management pro zvýšení úrovně přístupu](https://www.microsoft.com/itshowcase/using-azure-ad-privileged-identity-management-for-elevated-access)
 
 ### <a name="perform-regular-code-reviews"></a>Provádět běžné revize kódu

@@ -7,11 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: a817cb0722bff721891cd290ea4a6552c778dddf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 550ed5791df821b1793755f5046da92adf6e3f3a
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701843"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131544"
 ---
 # <a name="how-to-protect-private-dns-zones-and-records"></a>Postup ochrany privátních zón a záznamů DNS
 
@@ -23,7 +24,7 @@ Tento článek vysvětluje, jak Azure DNS umožňuje chránit privátní zóny D
 
 ## <a name="role-based-access-control"></a>Řízení přístupu na základě role
 
-Správa na Access Control základě rolí v Azure (RBAC) umožňuje jemně odstupňovanou správu přístupu pro uživatele, skupiny a prostředky Azure. Pomocí RBAC můžete udělit úroveň přístupu, kterou uživatelé potřebují. Další informace o tom, jak RBAC pomáhá spravovat přístup, najdete v tématu [co je Access Control na základě rolí](../role-based-access-control/overview.md).
+Řízení přístupu na základě role v Azure (Azure RBAC) umožňuje jemně odstupňovanou správu přístupu pro uživatele, skupiny a prostředky Azure. Pomocí RBAC můžete udělit úroveň přístupu, kterou uživatelé potřebují. Další informace o tom, jak vám Správa přístupu pomáhá spravovat přístup, najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md).
 
 ### <a name="the-private-dns-zone-contributor-role"></a>Role Přispěvatel Privátní DNS zóny
 
@@ -167,7 +168,7 @@ Vlastnost Actions definuje následující oprávnění specifická pro službu D
 * `Microsoft.Network/privateDNSZones/read`uděluje oprávnění ke čtení privátních zón DNS, ale nemění je, takže vám umožní zobrazit zónu, ve které se vytváří záznam CNAME.
 
 > [!NOTE]
-> Použití vlastní role RBAC k zamezení odstranění sad záznamů, zatímco jejich aktualizace je neefektivním ovládacím prvkem. Zabraňuje odstranění sad záznamů, ale nebrání jejich úpravám.  Mezi povolené úpravy patří přidávání a odebírání záznamů ze sady záznamů, včetně odebrání všech záznamů, které ponechávají prázdnou sadu záznamů. To má stejný účinek jako odstranění sady záznamů z pohledu na překlad DNS.
+> Pomocí vlastní role Azure zabráníte odstranění sad záznamů, ale pořád jejich aktualizace není efektivním ovládacím prvkem. Zabraňuje odstranění sad záznamů, ale nebrání jejich úpravám.  Mezi povolené úpravy patří přidávání a odebírání záznamů ze sady záznamů, včetně odebrání všech záznamů, které ponechávají prázdnou sadu záznamů. To má stejný účinek jako odstranění sady záznamů z pohledu na překlad DNS.
 
 Vlastní definice rolí nejdou aktuálně definovat prostřednictvím Azure Portal. Vlastní role na základě této definice role se dá vytvořit pomocí Azure PowerShell:
 

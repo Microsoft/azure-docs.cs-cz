@@ -1,19 +1,20 @@
 ---
 title: Zobrazit výsledky hledání na mapě | Mapy Microsoft Azure
 description: V tomto článku se dozvíte, jak provést požadavek hledání pomocí nástroje Microsoft Azure Maps Web SDK a zobrazit výsledky na mapě.
-author: Philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: da67c27f590e60c7ae4eecbe8e139c5519e39e31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 678781ff4bade7484f28cc9ab14d960f2b24c323
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83123951"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130286"
 ---
 # <a name="show-search-results-on-the-map"></a>Zobrazit výsledky hledání na mapě
 

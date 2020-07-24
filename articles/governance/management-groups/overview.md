@@ -3,16 +3,16 @@ title: Uspořádání prostředků pomocí skupin pro správu – zásady správ
 description: Další informace o skupinách pro správu, fungování jejich oprávnění a způsobu jejich využití
 ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: b3d031b68ee7dba9c80ee0c7e97898bb8b439a47
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 1856b2d6f8fafb18757d547d0117f584fb2abb24
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963678"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132921"
 ---
 # <a name="what-are-azure-management-groups"></a>Co jsou skupiny pro správu Azure?
 
-Pokud má vaše organizace mnoho předplatných, možná budete potřebovat způsob, jak efektivně spravovat přístup, zásady a dodržování předpisů pro tato předplatná. Skupiny pro správu Azure představují úroveň rozsahu nad předplatnými. Předplatná uspořádáte do kontejnerů označovaných jako skupiny pro správu a na tyto skupiny pro správu použijete své zásady správného řízení. Všechna předplatná v rámci skupiny pro správu automaticky dědí podmínky, které se na příslušnou skupinu pro správu vztahují. Skupiny pro správu poskytují správu na podnikové úrovni ve velkém měřítku bez ohledu na to, jaké typy předplatného případně máte.
+Pokud má vaše organizace mnoho předplatných, možná budete potřebovat způsob, jak efektivně spravovat přístup, zásady a dodržování předpisů pro tato předplatná. Skupiny pro správu Azure poskytují úroveň oboru nad předplatnými. Předplatná uspořádáte do kontejnerů označovaných jako skupiny pro správu a na tyto skupiny pro správu použijete své zásady správného řízení. Všechna předplatná v rámci skupiny pro správu automaticky dědí podmínky, které se na příslušnou skupinu pro správu vztahují. Skupiny pro správu poskytují správu na podnikové úrovni ve velkém měřítku bez ohledu na to, jaké typy předplatného případně máte.
 Všechna předplatná v rámci jedné skupiny pro správu musí důvěřovat stejnému tenantovi Azure Active Directory.
 
 Zásady můžete například použít pro skupinu pro správu, která omezuje oblasti dostupné pro vytváření virtuálních počítačů (VM). Tyto zásady se použijí pro všechny skupiny pro správu, předplatná a prostředky v rámci této skupiny a umožní vytváření virtuálních počítačů jenom v příslušné oblasti.
@@ -27,13 +27,13 @@ Můžete vytvořit hierarchii, která aplikuje zásadu, například omezení um�
 
 Dalším scénářem, kde by se skupiny pro správu použily, je poskytnutí uživatelského přístupu k několika předplatným. Přesunutím několika předplatných do skupiny pro správu můžete v této skupině vytvořit jedno přiřazení [řízení přístupu na základě role](../../role-based-access-control/overview.md) (RBAC), které zdědí tento přístup pro všechna předplatná. Jedno přiřazení v rámci skupiny pro správu tak může uživatelům umožnit přístup ke všemu, co potřebují, a není potřeba vytvářet skript řízení přístupu na základě role pro různá předplatná.
 
-### <a name="important-facts-about-management-groups"></a>Důležité informace o skupinách pro správu
+### <a name="important-facts-about-management-groups"></a>Důležitá fakta týkající se skupin pro správu
 
 - Jeden adresář podporuje až 10 000 skupin pro správu.
 - Strom skupin pro správu může mít až šest úrovní vnoření.
   - Toto omezení nezahrnuje kořenovou úroveň ani úroveň předplatného.
 - Každá skupina pro správu a předplatné může mít jenom jeden nadřazený prvek.
-- Každá skupina pro správu může mít několik podřízených položek.
+- Každá skupina pro správu může mít mnoho podřízených položek.
 - Všechny skupiny pro správu a předplatná jsou v rámci adresáře v jedné hierarchii. [Důležité informace o kořenových skupinách pro správu](#important-facts-about-the-root-management-group)
 
 ## <a name="root-management-group-for-each-directory"></a>Kořenová skupina pro správu pro jednotlivé adresáře
@@ -42,7 +42,7 @@ Každý adresář obdrží jednu skupinu pro správu nejvyšší úrovně, kter�
 
 ### <a name="important-facts-about-the-root-management-group"></a>Důležité informace o kořenových skupinách pro správu
 
-- Zobrazovaný název kořenové skupiny pro správu ve výchozím nastavení je **Kořenová skupina tenanta**. ID je ID služby Azure Active Directory.
+- Ve výchozím nastavení je zobrazovaný název kořenové skupiny pro správu **Kořenová skupina tenanta**. ID je ID služby Azure Active Directory.
 - Pokud chcete tento zobrazovaný název změnit, musí váš účet mít pro příslušnou kořenovou skupinu pro správu roli Vlastník nebo Přispěvatel. Viz [Změna názvu skupiny pro správu](manage.md#change-the-name-of-a-management-group) , aby se aktualizoval název skupiny pro správu.
 - Kořenová skupina pro správu se na rozdíl od ostatních skupin pro správu nedá přesunout ani odstranit.  
 - Všechna předplatná a skupiny pro správu v rámci adresáře spadají do jedné kořenové skupina pro správu.
@@ -87,22 +87,22 @@ Tato oprávnění se dědí do podřízených prostředků, které v hierarchii 
 
 Následující diagram ukazuje role a podporované akce pro skupiny pro správu.
 
-| Název role RBAC             | Vytvořit | přejmenování | Pøesunout\*\* | Odstranit | Přiřazení přístupu | Přiřazení zásad | Čtení  |
+| Název role RBAC             | Vytvořit | přejmenování | Pøesunout\*\* | Odstranit | Přiřazení přístupu | Přiřazení zásad | Číst  |
 |:-------------------------- |:------:|:------:|:--------:|:------:|:-------------:| :------------:|:-----:|
 |Vlastník                       | X      | X      | X        | X      | X             | X             | X     |
 |Přispěvatel                 | X      | X      | X        | X      |               |               | X     |
 |G Přispěvatel\*            | X      | X      | X        | X      |               |               | X     |
-|Čtenář                      |        |        |          |        |               |               | ×     |
-|Čtečka MG\*                 |        |        |          |        |               |               | ×     |
-|Přispěvatel zásad prostředků |        |        |          |        |               | ×             |       |
-|Správce přístupu uživatelů   |        |        |          |        | X             | X             |       |
+|Čtenář                      |        |        |          |        |               |               | X     |
+|Čtečka MG\*                 |        |        |          |        |               |               | X     |
+|Přispěvatel zásad prostředků |        |        |          |        |               | X             |       |
+|Správce uživatelských přístupů   |        |        |          |        | X             | X             |       |
 
 \*: MG čtenář a g Reader umožňují uživatelům provádět tyto akce pouze v oboru skupiny pro správu.  
 \*\*: Přiřazení rolí u kořenové skupiny pro správu se nevyžadují k přesunu předplatného nebo skupiny pro správu do a z ní. Další informace o přesunu položek v rámci hierarchie najdete v tématu věnovaném [správě prostředků s využitím skupin pro správu](manage.md).
 
-## <a name="custom-rbac-role-definition-and-assignment"></a>Vlastní definice role RBAC a přiřazení
+## <a name="azure-custom-role-definition-and-assignment"></a>Definice a přiřazení vlastní role Azure
 
-Vlastní podpora rolí RBAC pro skupiny pro správu je momentálně ve verzi Preview s některými [omezeními](#limitations). Obor skupiny pro správu můžete definovat v oboru, který se dá přiřadit k definici role. Tato vlastní role RBAC pak bude k dispozici pro přiřazení k této skupině pro správu a ke všem podřízeným skupinám pro správu, předplatným, skupinám prostředků a prostředkům. Tato vlastní role se bude dědit v rámci hierarchie jako všechny předdefinované role.  
+Podpora vlastních rolí Azure pro skupiny pro správu je momentálně ve verzi Preview s některými [omezeními](#limitations). Obor skupiny pro správu můžete definovat v oboru, který se dá přiřadit k definici role. Tato vlastní role Azure pak bude k dispozici pro přiřazení v této skupině pro správu a skupině pro správu, předplatného, skupině prostředků nebo prostředku pod ní. Tato vlastní role se bude dědit v rámci hierarchie jako všechny předdefinované role.  
 
 ### <a name="example-definition"></a>Příklad definice
 

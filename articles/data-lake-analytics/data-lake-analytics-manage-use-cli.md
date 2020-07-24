@@ -2,18 +2,16 @@
 title: Správa Azure Data Lake Analytics pomocí rozhraní příkazového řádku Azure
 description: Tento článek popisuje, jak pomocí rozhraní příkazového řádku Azure spravovat Data Lake Analytics úlohy, zdroje dat & uživatele.
 services: data-lake-analytics
-author: jasonwhowell
-ms.author: jasonh
 ms.assetid: 4e5a3a0a-6d7f-43ed-aeb5-c3b3979a1e0a
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 01/29/2018
-ms.openlocfilehash: f2e77e31049e2643f1488eb3f6be906de735ad2b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: d4b9a7be36bd4c0a4044f3e76b96b21a16eb80de
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121414"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132513"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>Správa Azure Data Lake Analytics pomocí rozhraní příkazového řádku Azure (CLI)
 
@@ -22,13 +20,13 @@ ms.locfileid: "86121414"
 Naučte se spravovat účty Azure Data Lake Analytics, zdroje dat, uživatele a úlohy pomocí Azure CLI. Pokud chcete zobrazit témata správy pomocí jiných nástrojů, klikněte na kartu nahoře.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete tento kurz, musíte mít následující prostředky:
 
 * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* Rozhraní příkazového řádku Azure Viz téma [Instalace a konfigurace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* Azure CLI Viz téma [Instalace a konfigurace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
   * Pokud chcete absolvovat tuto ukázku, stáhněte a nainstalujte **předběžnou verzi** [nástrojů příkazového řádku Azure](https://github.com/MicrosoftBigData/AzureDataLake/releases).
 

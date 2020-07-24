@@ -6,15 +6,15 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/14/2020
+ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: cf09dd1521994f01e5f43b981d4bff540f3b1f40
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fe26731a7f217d0f441a3dea1650f2652677a57f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506447"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133006"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Připojení hybridních počítačů k Azure z Azure Portal
 
@@ -89,6 +89,10 @@ Pokud se agent po dokončení instalace nepovede spustit, podívejte se do proto
 
 1. Otevřete příkazový řádek PowerShellu se zvýšenými oprávněními.
 
+    >[!NOTE]
+    >Skript podporuje běh jenom z 64 verze Windows PowerShellu.
+    >
+
 1. Přejděte do složky nebo sdílené složky, do které jste zkopírovali skript, a spusťte ho na serveru spuštěním `./OnboardingScript.ps1` skriptu.
 
 Pokud se agent po dokončení instalace nepovede spustit, podívejte se do protokolů, kde najdete podrobnější informace o chybě. Adresář protokolu je *%ProgramFiles%\AzureConnectedMachineAgentAgent\logs*.
@@ -155,9 +159,9 @@ Když nainstalujete agenta, nakonfigurujte ho tak, aby komunikoval se službou A
 >[!NOTE]
 >Aby bylo možné spustit **azcmagent**, musíte mít oprávnění *root* Access pro počítače se systémem Linux.
 
-## <a name="verify-the-connection-with-azure-arc"></a>Ověření připojení pomocí ARC Azure
+## <a name="verify-the-connection-with-azure-arc"></a>Ověření připojení k Azure Arcu
 
-Po nainstalování agenta a jeho konfiguraci pro připojení k Azure ARC pro servery (Preview), navštivte Azure Portal a ověřte, že se server úspěšně připojil. Zobrazte počítače v [Azure Portal](https://aka.ms/hybridmachineportal).
+Po nainstalování agenta a jeho konfiguraci pro připojení k Azure ARC pro servery (Preview), navštivte Azure Portal a ověřte, že se server úspěšně připojil. Zobrazte si počítače na webu [Azure Portal](https://aka.ms/hybridmachineportal).
 
 ![Úspěšné připojení k serveru](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 

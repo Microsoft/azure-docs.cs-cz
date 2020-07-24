@@ -2,25 +2,23 @@
 title: Vytvořit & dotaz Azure Data Lake Analytics-Azure Portal
 description: Vytvořte pomocí webu Azure Portal účet služby Azure Data Lake Analytics a odešlete úlohu U-SQL.
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: b1584d16-e0d2-4019-ad1f-f04be8c5b430
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: c78889c8d910edb5111c18b9cbb77387d2693f87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8f0a5697a128deb75537f3d48a3830dc7ba9df9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564776"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132530"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-the-azure-portal"></a>Začínáme s Azure Data Lake Analytics na webu Azure Portal
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
 Tento článek popisuje, jak používat Azure Portal k vytváření účtů Azure Data Lake Analytics, definování úloh v [U-SQL](data-lake-analytics-u-sql-get-started.md) a odesílání úloh do služby Data Lake Analytics.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete tento kurz, musíte mít **předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -34,7 +32,7 @@ Nyní vytvoříte Data Lake Analytics a účet Azure Data Lake Storage Gen1 ve s
    * **Název:** Pojmenujte svůj účet Data Lake Analytics (povolena jsou pouze malá písmena a číslice).
    * **Předplatné**: Zvolte předplatné Azure použité pro účet Analytics.
    * **Skupina prostředků**. Vyberte některou z existujících skupin prostředků Azure nebo vytvořte novou.
-   * **Umístění**. Vyberte datové centrum Azure pro účet Data Lake Analytics.
+   * **Umístění:** Vyberte datové centrum Azure pro účet Data Lake Analytics.
    * **Data Lake Storage Gen1**: postupujte podle pokynů k vytvoření nového účtu Data Lake Storage Gen1 nebo vyberte existující účet. 
 4. Volitelně vyberte cenovou úroveň pro svůj účet Data Lake Analytics.
 5. Klikněte na **Vytvořit**. 

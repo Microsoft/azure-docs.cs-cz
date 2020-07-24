@@ -3,18 +3,16 @@ title: Cognitive Services a Machine Learning
 titleSuffix: Azure Cognitive Services
 description: Projděte si víc o vztahu Azure Cognitive Services k ostatním nabídkám Azure pro strojové učení.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.author: diberry
-ms.openlocfilehash: c8480557d0f27594fa369e4e2451a5d0fe7ad3cc
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 0b034d0135c66852b07e0a2ed2fd69e8c3fdc4a6
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856725"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132836"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services a strojové učení
 
@@ -25,8 +23,8 @@ Cognitive Services poskytuje možnosti strojového učení, které řeší Obecn
 |Kategorie služby|Účel|
 |--|--|
 |[Rozhodnutí](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|Sestavujte aplikace, které zveřejňují doporučení pro informované a efektivní rozhodování.|
-|[Jazyk](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Umožněte svým aplikacím, aby zpracovávaly přirozený jazyk s využitím předem sestavených skriptů, vyhodnocovaly subjektivní hodnocení a naučily se rozpoznávat, co uživatelé chtějí.|
-|[Vyhledávání](https://azure.microsoft.com/services/cognitive-services/directory/search/)|Přidejte do svých aplikací rozhraní API pro Vyhledávání Bingu a využijte možnosti pročesávat miliardy webů, obrázků, videí a novinek pomocí jediného volání rozhraní API.|
+|[Jazyk](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Vaše aplikace můžou zpracovávat přirozený jazyk pomocí předem připravených skriptů, vyhodnocovat postoje a učit se rozpoznávat, co uživatelé chtějí.|
+|[Vyhledávání](https://azure.microsoft.com/services/cognitive-services/directory/search/)|Do aplikací můžete přidat rozhraní API pro vyhledávání Bingu a využívat možnost pročesávat miliardy webových stránek, obrázků, videí a novinek pomocí jediného volání rozhraní API.|
 |[Řeč](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|Převádějte řeč na text a text na přirozeně znějící řeč. Překládejte z jednoho jazyka do druhého a používejte možnost ověření a rozpoznání mluvčího.|
 |[Obraz](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|Využijte možnost rozpoznávat, identifikovat, indexovat a moderovat vaše obrázky, videa a obsah digitálního rukopisu a opatřovat je titulky.|
 ||||
@@ -92,7 +90,7 @@ Následující data kategorizují každou službu podle druhu dat, která povolu
 |Služba rozpoznávání|Nevyžadují se žádné školicí údaje.|Poskytnete některá nebo všechna školicí data.|Shromažďování dat v reálném čase nebo téměř v reálném čase|
 |--|--|--|--|
 |[Detektor anomálií](./Anomaly-Detector/overview.md)|x|x|x|
-|Vyhledávání pomocí služby Bing |x|||
+|Vyhledávání Bingu |x|||
 |[Počítačové zpracování obrazu](./Computer-vision/Home.md)|x|||
 |[Content Moderator](./Content-Moderator/overview.md)|x||x|
 |[Custom Vision](./Custom-Vision-Service/home.md)||x||

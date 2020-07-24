@@ -5,15 +5,15 @@ author: bwren
 services: cosmos-db
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/20/2020
+ms.date: 07/22/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: cd100fca074e63c56cd6a19843cc68e1a1ddf214
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 9c2a87f3d70d3873771b3a59114b424efffe4fb9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850296"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130184"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>Azure Cosmos DB monitorování
 
@@ -23,7 +23,7 @@ Data můžete monitorovat pomocí metrik na straně klienta a serveru. Při pou�
 
 * **Monitorování z portálu Azure Cosmos DB:** Můžete monitorovat metriky dostupné v rámci účtu Azure Cosmos na kartě **metriky** . Metriky na této kartě zahrnují metriky propustnosti, úložiště, dostupnosti, latence, konzistence a úrovně systému. Ve výchozím nastavení mají tyto metriky dobu uchovávání 7 dní. Další informace najdete v části [monitorování dat shromážděných z Azure Cosmos DB](#monitoring-from-azure-cosmos-db) v tomto článku.
 
-* **Monitorování pomocí metrik ve službě Azure monitor:** Můžete monitorovat metriky svého účtu Azure Cosmos a vytvářet řídicí panely z Azure Monitor. Azure Monitor shromažďuje metriky Azure Cosmos DB ve výchozím nastavení, nemusíte nic konfigurovat explicitně. Tyto metriky se shromažďují s různou úrovní podrobností, členitost se může lišit v závislosti na zvolené metrikě. Ve výchozím nastavení mají tyto metriky dobu uchovávání 30 dnů. Většina metrik, které jsou k dispozici z předchozích možností, je také k dispozici v těchto metrikách. Další informace najdete v části [Analýza dat metrik](#analyze-metric-data) v tomto článku.
+* **Monitorování pomocí metrik ve službě Azure monitor:** Můžete monitorovat metriky svého účtu Azure Cosmos a vytvářet řídicí panely z Azure Monitor. Azure Monitor shromažďuje metriky Azure Cosmos DB ve výchozím nastavení, nemusíte nic konfigurovat explicitně. Tyto metriky se shromažďují s různou úrovní podrobností, členitost se může lišit v závislosti na zvolené metrikě. Ve výchozím nastavení mají tyto metriky dobu uchovávání 30 dnů. Většina metrik, které jsou k dispozici z předchozích možností, je také k dispozici v těchto metrikách. Hodnoty dimenze pro metriky, jako je například název kontejneru, nerozlišují velká a malá písmena. Proto je nutné použít porovnávání bez rozlišování velkých a malých písmen při porovnávání řetězců u těchto hodnot dimenzí. Další informace najdete v části [Analýza dat metrik](#analyze-metric-data) v tomto článku.
 
 * **Monitorování pomocí diagnostických protokolů v Azure monitor:** Můžete monitorovat protokoly svého účtu Azure Cosmos a vytvářet řídicí panely z Azure Monitor. Telemetrie, jako jsou události a trasování, ke kterým dochází při druhé členitosti, se ukládají jako protokoly. Například pokud se propustnost kontejneru změní, vlastnosti účtu Cosmos se změní tyto události jsou zachyceny v rámci protokolů. Tyto protokoly můžete analyzovat spuštěním dotazů na shromážděná data. Další informace najdete v části [Analýza dat protokolu](#analyze-log-data) v tomto článku.
 
@@ -78,7 +78,7 @@ Metriky pro Azure Cosmos DB můžete analyzovat pomocí metrik z jiných služeb
 
 ### <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>Zobrazit metriky na úrovni operace pro Azure Cosmos DB
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com/).
 
 1. V levém navigačním panelu vyberte **monitor** a vyberte **metriky**.
 

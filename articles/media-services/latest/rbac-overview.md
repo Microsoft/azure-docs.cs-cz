@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 93b2cd3a2565b14ea07d6db6b14dd146e4223528
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1872d0dd56a0459988e65852340c36493ee53f9f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "66236921"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132241"
 ---
 # <a name="role-based-access-control-rbac-for-media-services-accounts"></a>Řízení přístupu na základě role (RBAC) pro účty Media Services
 
@@ -36,14 +36,14 @@ foreach (Microsoft.Azure.Management.Media.Models.Operation a in client.Operation
 }
 ```
 
-V článku [předdefinované definice rolí](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) se přesně dozvíte, co role uděluje. 
+V článku [předdefinované definice rolí](../../role-based-access-control/built-in-roles.md) se přesně dozvíte, co role uděluje. 
 
 Další informace najdete v následujících článcích:
 
-- [Role klasického správce předplatného, role Azure RBAC a role správce Azure AD](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
-- [Co je RBAC pro prostředky Azure?](https://docs.microsoft.com/azure/role-based-access-control/overview)
-- [Správa přístupu pomocí RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)
-- [Media Services operace poskytovatele prostředků](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftmedia)
+- [Role klasického správce předplatného, role Azure RBAC a role správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [Co je řízení přístupu na základě role Azure (Azure RBAC)?](../../role-based-access-control/overview.md)
+- [Správa přístupu pomocí RBAC](../../role-based-access-control/role-assignments-rest.md)
+- [Media Services operace poskytovatele prostředků](../../role-based-access-control/resource-provider-operations.md#microsoftmedia)
 
 ## <a name="next-steps"></a>Další kroky
 

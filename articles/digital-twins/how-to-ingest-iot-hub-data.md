@@ -7,11 +7,12 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 351f7ed131d545d2aa83df753cac3f26e76e4ccb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c73f007f85a963a09de4e05222082fd52f784c0
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725847"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131561"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Ingestování IoT Hub telemetrie do digitálních vláken Azure
 
@@ -37,11 +38,11 @@ Tento scénář je popsaný v diagramu níže:
 
 :::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="Zařízení IoT Hub odesílá do funkce Azure funkci telemetrii teploty prostřednictvím IoT Hub, Event Grid nebo systémových témat, což aktualizuje vlastnost teploty u vláken v digitálních událostech Azure." border="false":::
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete pokračovat v tomto příkladu, musíte splnit následující požadavky.
 1. Vytvořte centrum IoT. Pokyny najdete v části *vytvoření IoT Hub* v [tomto IoT Hub rychlém](../iot-hub/quickstart-send-telemetry-cli.md) startu.
-2. Vytvořte alespoň jednu funkci Azure pro zpracování událostí z IoT Hub. Přečtěte si téma [Postupy: nastavení funkce Azure pro zpracování dat](how-to-create-azure-function.md) a vytvoření základní funkce Azure, která se může připojit k digitálním podprocesům Azure a volat funkce rozhraní API digitálních vláken Azure. Zbytek tohoto postupu bude sestaven na této funkci.
+2. Vytvořte alespoň jednu funkci Azure pro zpracování událostí z IoT Hub. Přečtěte si téma [*Postupy: nastavení funkce Azure pro zpracování dat*](how-to-create-azure-function.md) a vytvoření základní funkce Azure, která se může připojit k digitálním podprocesům Azure a volat funkce rozhraní API digitálních vláken Azure. Zbytek tohoto postupu bude sestaven na této funkci.
 3. Nastavte cíl události pro data centra. V [Azure Portal](https://portal.azure.com/)přejděte k instanci IoT Hub. V části *události*Vytvořte předplatné pro funkci Azure Functions. 
 
     :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="Azure Portal: přidání odběru události":::
@@ -54,7 +55,7 @@ Než budete pokračovat v tomto příkladu, musíte splnit následující požad
 
 ## <a name="create-an-azure-function-in-visual-studio"></a>Vytvoření funkce Azure v aplikaci Visual Studio
 
-V této části se používají stejné kroky při spuštění sady Visual Studio a Osnova funkcí Azure Functions v tématu [Postupy: nastavení funkce Azure pro zpracování dat](how-to-create-azure-function.md). Kostra zpracovává ověřování a vytváří klienta služby, který je připravený na zpracování dat a volání rozhraní API digitálních vláken Azure v reakci. 
+V této části se používají stejné kroky při spuštění sady Visual Studio a Osnova funkcí Azure Functions v tématu [*Postupy: nastavení funkce Azure pro zpracování dat*](how-to-create-azure-function.md). Kostra zpracovává ověřování a vytváří klienta služby, který je připravený na zpracování dat a volání rozhraní API digitálních vláken Azure v reakci. 
 
 Jádrem funkce kostra je:
 
@@ -267,9 +268,9 @@ Teď máte funkci Azure, která je vybavená ke čtení a interpretaci dat scén
 
 ## <a name="debug-azure-function-apps-locally"></a>Místní ladění aplikací funkcí Azure Functions
 
-Službu Azure Functions je možné ladit pomocí Event Grid triggeru místně. Další informace najdete v tématu [ladění Event Grid triggeru místně](../azure-functions/functions-debug-event-grid-trigger-local.md).
+Službu Azure Functions je možné ladit pomocí Event Grid triggeru místně. Další informace najdete v tématu [*ladění Event Grid triggeru místně*](../azure-functions/functions-debug-event-grid-trigger-local.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si o příchozím a odchozím přenosu dat pomocí digitálních vláken Azure:
-* [Koncepty: integrace s jinými službami](concepts-integration.md)
+* [*Koncepty: integrace s jinými službami*](concepts-integration.md)

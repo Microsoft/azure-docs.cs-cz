@@ -1,19 +1,19 @@
 ---
 title: Zobrazit metriky využití Azure Maps API | Mapy Microsoft Azure
 description: V tomto článku se dozvíte, jak zobrazit metriky pro volání rozhraní API služby Microsoft Azure Maps v Azure Portal.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 0eb117af712b3b1f63a3f99c96cba9775f8e3996
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 57fb699a7225a53af1f093520855e8e2ef132f42
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335150"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130728"
 ---
 # <a name="view-azure-maps-api-usage-metrics"></a>Zobrazení metrik využití rozhraní API služby Azure Maps
 

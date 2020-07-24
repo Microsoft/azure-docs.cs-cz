@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 01bb5f9ae6d8c7a6374a8b1392b061f31fdb63a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fec93169a8c49422c9e310cddc08ae3412b89166
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390580"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132275"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Správa modelů digitálních vláken Azure
 
@@ -66,7 +66,7 @@ Tento model definuje název a jedinečné ID pro místnost pacienta a vlastnosti
 V rámci této metody můžete přejít na, abyste definovali modely pro nemocnice, zóny nebo samotnou nemocnice.
 
 > [!TIP]
-> Pro analýzu a ověření DTDL je k dispozici knihovna na straně klienta. Generuje model objektu C# DTDL obsahu, který lze použít v modelem řízených scénářů, jako je například generování prvků uživatelského rozhraní. Tuto knihovnu můžete také použít k tomu, abyste se ujistili, že vaše modely nemají žádné chyby syntaxe, než je nahrajete. Další informace o této knihovně a přístup k předdefinovaným vzorům pro validátor DTDL naleznete v tématu [How to: Analyze and Validate Models](how-to-use-parser.md).
+> Pro analýzu a ověření DTDL je k dispozici knihovna na straně klienta. Generuje model objektu C# DTDL obsahu, který lze použít v modelem řízených scénářů, jako je například generování prvků uživatelského rozhraní. Tuto knihovnu můžete také použít k tomu, abyste se ujistili, že vaše modely nemají žádné chyby syntaxe, než je nahrajete. Další informace o této knihovně a přístup k předdefinovaným vzorům pro validátor DTDL naleznete v tématu [*How to: Analyze and Validate Models*](how-to-use-parser.md).
 
 ## <a name="manage-models-with-apis"></a>Spravujte modely pomocí rozhraní API.
 
@@ -190,7 +190,7 @@ Stav vyřazení modelu z provozu je obsažen v `ModelData` záznamech vrácenýc
 
 Můžete odstranit všechny modely ve vaší instanci najednou, nebo je můžete udělat jednotlivě.
 
-Příklad, jak odstranit všechny modely, najdete v ukázkové aplikaci použité v tomto [kurzu: Prozkoumejte základy s ukázkovou klientskou aplikací](tutorial-command-line-app.md). Soubor *CommandLoop.cs* to dělá ve `CommandDeleteAllModels` funkci.
+Příklad, jak odstranit všechny modely, najdete v ukázkové aplikaci použité v tomto [*kurzu: Prozkoumejte základy s ukázkovou klientskou aplikací*](tutorial-command-line-app.md). Soubor *CommandLoop.cs* to dělá ve `CommandDeleteAllModels` funkci.
 
 Zbývající část této části rozdělí model na více podrobností a ukazuje, jak to udělat pro jednotlivý model.
 
@@ -247,9 +247,9 @@ Digitální vlákna Azure nebrání tomuto stavu, proto buďte opatrní na sprá
 
 ## <a name="manage-models-with-cli"></a>Správa modelů pomocí rozhraní příkazového řádku
 
-Modely je také možné spravovat pomocí rozhraní příkazového řádku Azure Digital revlákens CLI. Příkazy najdete v tématu [Postupy: použití rozhraní příkazového řádku Azure Digital zdvojené](how-to-use-cli.md).
+Modely je také možné spravovat pomocí rozhraní příkazového řádku Azure Digital revlákens CLI. Příkazy najdete v tématu [*Postupy: použití rozhraní příkazového řádku Azure Digital zdvojené*](how-to-use-cli.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 Podívejte se, jak vytvořit a spravovat digitální vlákna na základě vašich modelů:
-* [Postupy: Správa digitálních vláken](how-to-manage-twin.md)
+* [*Postupy: Správa digitálních vláken*](how-to-manage-twin.md)

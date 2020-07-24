@@ -1,19 +1,20 @@
 ---
 title: Vytvoření mapy pomocí Azure Maps | Mapy Microsoft Azure
 description: V tomto článku se dozvíte, jak na webové stránce vykreslit mapu pomocí webové sady SDK Microsoft Azure Maps.
-author: Philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 97eb1ebb61e5ff78ed918fded8107f5775b533c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4d3784bda1ba5a94dad1cae45513120b3686869
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83124019"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130490"
 ---
 # <a name="create-a-map"></a>Vytvoření mapy
 

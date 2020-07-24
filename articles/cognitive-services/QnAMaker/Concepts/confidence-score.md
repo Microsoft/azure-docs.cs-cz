@@ -3,20 +3,18 @@ title: Hodnocení spolehlivosti – QnA Maker
 titleSuffix: Azure Cognitive Services
 description: Je nutné publikovat znalostní bázi. Po publikování se znalostní báze dotazuje na koncový bod předpovědi prostředí runtime pomocí rozhraní generateAnswer API.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: d901a803311805825c22503af6098e805a67e8f6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: faf24f11763ca2bcd9bb872b09b5d1b69e78bd06
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76843448"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131153"
 ---
 # <a name="the-confidence-score-of-an-answer"></a>Hodnocení spolehlivosti odpovědi
 Když je dotaz na uživatele shodný se základem znalostní báze, QnA Maker vrátí relevantní odpovědi společně s hodnocením spolehlivosti. Toto skóre označuje jistotu, že odpověď je správná pro daný dotaz uživatele.
@@ -61,7 +59,7 @@ Při volbě prahové hodnoty Pamatujte na rovnováhu mezi přesností a rozsahem
 
 Nastavte skóre prahové hodnoty jako vlastnost [těla JSON GENERATEANSWER API](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration). To znamená, že ji nastavíte pro každé volání GenerateAnswer.
 
-Z rozhraní bot Framework nastavte skóre jako součást objektu Options v [jazyce C#](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) nebo [Node. js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs).
+Z rozhraní bot Framework nastavte skóre v rámci objektu Options pomocí [C#](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) nebo [Node.js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs).
 
 ## <a name="improve-confidence-scores"></a>Vylepšení hodnocení spolehlivosti
 Chcete-li zlepšit míru spolehlivosti konkrétní reakce na dotaz na uživatele, můžete do této odpovědi přidat dotaz uživatele do znalostní báze jako alternativní otázku. [Změnou](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) velikosti písmen bez rozlišení velkých a malých písmen můžete také přidat synonyma do klíčových slov ve vaší znalostní bázi.

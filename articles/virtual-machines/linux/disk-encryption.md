@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 0847f2360a3562f96454992470e3cc2000f66b11
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fba16f9245c8d438268338329ebadad7a57ef206
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502720"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131918"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Šifrování na straně serveru Azure Disk Storage
 
@@ -80,8 +80,7 @@ Zákazníci s vysokým zabezpečením, kteří se týkají rizik spojených s ja
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Povolení kompletního šifrování pomocí šifrování na hostiteli – CLI](disks-enable-host-based-encryption-cli.md)
-- [Povolit dvojité šifrování v klidovém umístění pro Managed disks – CLI](disks-enable-double-encryption-at-rest-cli.md)
-- [Povolit pro spravované disky klíče spravované zákazníkem – CLI](disks-enable-customer-managed-keys-cli.md)
-- [Povolení klíčů spravovaných zákazníkem pro spravované disky – portál](disks-enable-customer-managed-keys-portal.md)
+- Povolení kompletního šifrování pomocí šifrování na hostiteli s použitím rozhraní příkazového [řádku](disks-enable-host-based-encryption-cli.md) nebo [Azure Portal](disks-enable-host-based-encryption-portal.md).
+- U spravovaných disků buď pomocí rozhraní příkazového [řádku](disks-enable-double-encryption-at-rest-cli.md) nebo [Azure Portal](disks-enable-double-encryption-at-rest-portal.md)povolte dvojité šifrování v klidovém umístění.
+- Povolte pro spravované disky klíče spravované zákazníkem buď pomocí rozhraní příkazového [řádku](disks-enable-customer-managed-keys-cli.md) , nebo [Azure Portal](disks-enable-customer-managed-keys-portal.md).
 - [Co je Azure Key Vault?](../../key-vault/general/overview.md)

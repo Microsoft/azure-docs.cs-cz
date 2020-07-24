@@ -1,18 +1,19 @@
 ---
 title: Osvědčené postupy pro Azure Maps Route Service | Mapy Microsoft Azure
 description: Naučte se směrovat vozidla pomocí Route Service ze Microsoft Azure Maps.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/11/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 24fa4c48f6ca03e4049483a9acfff067d5a6a736
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79e9096030aada9fa368bb2e78af323139c0586c
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266691"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132207"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Osvědčené postupy pro službu Azure Maps Route
 
@@ -28,9 +29,9 @@ Rozhraní API pro trasy tras a směrovací matice v Azure Maps [Route Service](h
 * Optimalizujte alternativní trasy pomocí pomocných bodů. Můžete například nabídnout alternativní trasy, které předají elektricky zpoplatněné trakční vozidlo.
 * Použití [Route Service](https://docs.microsoft.com/rest/api/maps/route) s Azure Maps Web SDK
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Chcete-li volat rozhraní API Azure Maps, potřebujete účet Azure Maps a klíč. Další informace najdete v tématu [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps) a [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account). Primární klíč se také označuje jako primární klíč předplatného nebo klíč předplatného.
+Chcete-li volat rozhraní API Azure Maps, potřebujete účet Azure Maps a klíč. Další informace najdete v tématu [Vytvoření účtu](quick-demo-map-app.md#create-an-azure-maps-account) a [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account). Primární klíč se také označuje jako primární klíč předplatného nebo klíč předplatného.
 
 Informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md). Další informace o pokrytí Route Service najdete v [pokrytí směrování](routing-coverage.md).
 
@@ -60,7 +61,7 @@ Tady je porovnání, ve kterém se zobrazují některé možnosti směrových ce
 | Získat směr směrování | 1 | | X | X | |
 | Pokyny pro odeslání trasy | 1 | X | X | X | X |
 | Batch – itinerář trasy | 700 | | X | X | |
-| Vyjednaná matice směrování | 700 | | × | | |
+| Vyjednaná matice směrování | 700 | | X | | |
 
 Další informace o možnostech směrování u elektrických vozidel najdete v našem kurzu o [Směrování elektrických vozidel pomocí Azure Notebooks s Pythonem](tutorial-ev-routing.md).
 
@@ -72,7 +73,7 @@ Hodnota **travelTimeInSeconds** výpočtu trasy zahrnuje zpoždění v důsledku
 
 Pokud do žádosti zahrnete parametr **computeTravelTimeFor = All** , bude mít element Summary v odpovědi následující další pole, včetně historických podmínek provozu:
 
-| Prvek | Description|
+| Element | Popis|
 | :--- | :--- |
 | noTrafficTravelTimeInSeconds | Odhadovaná doba trvání cesty, která se počítá jako v případě, že na trase nedochází k žádným zpožděním kvůli přenosovým podmínkám, například kvůli zahlcení |
 | historicTrafficTravelTimeInSeconds | Odhadovaná doba trvání cesty vypočtená pomocí historických dat o přenosech závislých na čase |

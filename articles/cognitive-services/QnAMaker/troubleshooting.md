@@ -3,13 +3,12 @@ title: Řešení potíží – QnA Maker
 description: Seznam z nejčastějších dotazů týkajících se QnA Maker služby vám pomůže s tím, že službu povedete rychleji a s lepšími výsledky.
 ms.topic: troubleshooting
 ms.date: 03/25/2020
-ms.author: diberry
-ms.openlocfilehash: 7847e21dbcf07f669d6802fffdd1e43623a72340
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ec994677b17ee21dbf4ee6091be3bdf943572b2e
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80804346"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131986"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Řešení potíží pro QnA Maker
 
@@ -30,7 +29,7 @@ Přečtěte si další informace o [cenových úrovních](Concepts/azure-resourc
 <details>
 <summary><b>Jak získat koncový bod služby Qnamakerem</b></summary>
 
-**Odpověď**: koncový bod služby qnamakerem je užitečný pro účely ladění při kontaktování podpory Qnamakerem nebo UserVoice. Koncový bod je adresa URL v tomto formátu: `https://your-resource-name.azurewebsites.net`.
+**Odpověď**: koncový bod služby qnamakerem je užitečný pro účely ladění při kontaktování podpory Qnamakerem nebo UserVoice. Koncový bod je adresa URL v tomto formátu: `https://your-resource-name.azurewebsites.net` .
 
 1. Přejít do služby Qnamakerem (skupina prostředků) v [Azure Portal](https://portal.azure.com)
 
@@ -173,7 +172,7 @@ Pokud máte obsah z více jazyků, nezapomeňte vytvořit samostatnou službu pr
 </details>
 
 <details>
-<summary><b>Odstranil (a `testkb` ) jsem svůj index ve vyhledávací službě. Jak mohu tuto situaci opravit?</b></summary>
+<summary><b>Odstranil (a) jsem svůj `testkb` index ve vyhledávací službě. Jak mohu tuto situaci opravit?</b></summary>
 
 **Odpověď**: stará data nejde obnovit. Vytvořte nový prostředek QnA Maker a znovu vytvořte znalostní bázi.
 
@@ -209,12 +208,12 @@ Pokud máte obsah z více jazyků, nezapomeňte vytvořit samostatnou službu pr
 1. Pořád ve službě App Service vyberte **vývojové nástroje**, pak **Rozšířené nástroje**a pak **Přejít**na. Otevře se nové okno prohlížeče.
 1. Vyberte **ladit konzola**a pak **cmd** a otevřete nástroj příkazového řádku.
 1. Přejděte do _lokality/wwwroot/data/qnamakerem/_ Directory.
-1. Odeberte všechny složky, jejichž název začíná na `rd`.
+1. Odeberte všechny složky, jejichž název začíná na `rd` .
 
     **Neodstraňujte** následující:
 
-    * KbIdToRankerMappings. txt – soubor
-    * Soubor EndpointSettings. JSON
+    * Soubor KbIdToRankerMappings.txt
+    * EndpointSettings.jsv souboru
     * EndpointKeys složka
 
 1. Spusťte službu App Service.
@@ -244,7 +243,7 @@ Pokud máte obsah z více jazyků, nezapomeňte vytvořit samostatnou službu pr
 **Odpověď**: musíte mít následující informace o znalostní bázi Knowledge Base:
 
 * ID znalostní báze
-* Název vlastní subdomény publikovaného koncového bodu znalostní báze, `host`který se po publikování nachází na stránce **Nastavení** .
+* Název vlastní subdomény publikovaného koncového bodu znalostní báze, `host` který se po publikování nachází na stránce **Nastavení** .
 * Klíč publikovaného koncového bodu znalostní báze – byl po publikování na stránce **Nastavení** nalezen.
 
 Tyto informace najdete v Azure Portal do App Service bot. V části **Nastavení-> konfigurace-> nastavení aplikace**změňte tyto hodnoty.

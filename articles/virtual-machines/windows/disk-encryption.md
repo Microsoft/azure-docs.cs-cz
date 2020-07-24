@@ -8,18 +8,18 @@ ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 0bb0fb268d18ddc152dae45014e2154686762976
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e609e755f02d4321664804bfbb90f979c1c06ead
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259820"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133057"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Šifrování na straně serveru Azure Disk Storage
 
 Šifrování na straně serveru (SSE) chrání vaše data a pomáhá splnit závazky zabezpečení a dodržování předpisů vaší organizace. SSE automaticky šifruje vaše data uložená na spravovaných discích Azure (s operačním systémem a datových discích) ve výchozím nastavení při uchování do cloudu. 
 
-Data ve službě Azure Managed disks jsou transparentně šifrovaná pomocí 256 [šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), což je jedna z nejúčinnějších šifrovacích šifr, která jsou kompatibilní se standardem FIPS 140-2. Další informace o kryptografických modulech založených na službě Azure Managed disks najdete v tématu [kryptografie API: Next Generation.](https://docs.microsoft.com/windows/desktop/seccng/cng-portal)
+Data ve službě Azure Managed disks jsou transparentně šifrovaná pomocí 256 [šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), což je jedna z nejúčinnějších šifrovacích šifr, která jsou kompatibilní se standardem FIPS 140-2. Další informace o kryptografických modulech založených na službě Azure Managed disks najdete v tématu [kryptografie API: Next Generation.](/windows/desktop/seccng/cng-portal)
 
 Šifrování na straně serveru nemá vliv na výkon spravovaných disků a neplatí žádné další náklady. 
 
@@ -50,9 +50,9 @@ Klíče spravované zákazníkem teď mají následující omezení:
 
 ## <a name="encryption-at-host---end-to-end-encryption-for-your-vm-data"></a>Šifrování v rámci hostitele – komplexní šifrování pro data virtuálních počítačů
 
-Komplexní šifrování začíná z hostitele virtuálního počítače, na kterém je server Azure, ke kterému je váš virtuální počítač přiřazený. Data na dočasných discích a v mezipamětích disků s operačním systémem a daty se ukládají na tomto hostiteli virtuálních počítačů. Pokud povolíte komplexní šifrování, všechna tato data budou v klidovém stavu zašifrovaná a toky se zašifrují do služby úložiště, kde jsou trvalé. Komplexní šifrování nepoužívá procesor vašeho virtuálního počítače a nemá vliv na výkon vašeho virtuálního počítače. 
+Komplexní šifrování začíná z hostitele virtuálního počítače, na kterém je server Azure, ke kterému je váš virtuální počítač přiřazený. Data na vašich dočasných discích, dočasných discích s operačním systémem a uložených mezipamětích operačního systému nebo datových disků se ukládají na tomto hostiteli virtuálních počítačů. Pokud povolíte komplexní šifrování, všechna tato data budou v klidovém stavu zašifrovaná a toky se zašifrují do služby úložiště, kde jsou trvalé. Komplexní šifrování nepoužívá procesor vašeho virtuálního počítače a nemá vliv na výkon vašeho virtuálního počítače. 
 
-Dočasné disky jsou v klidovém stavu zašifrované pomocí klíčů spravovaných platformou, když povolíte komplexní šifrování. Mezipaměti operačního systému a datových disků jsou v klidovém stavu zašifrované buď pomocí klíčů spravovaných zákazníkem nebo platformou, v závislosti na typu šifrování. Pokud je například disk zašifrovaný pomocí klíčů spravovaných zákazníkem, pak je mezipaměť pro disk zašifrovaná pomocí klíčů spravovaných zákazníkem a pokud je disk zašifrovaný pomocí klíčů spravovaných platformou, bude mezipaměť pro disk zašifrovaná pomocí klíčů spravovaných platformou.
+Dočasné disky a dočasné disky s operačním systémem jsou v klidovém stavu zašifrované pomocí klíčů spravovaných platformou, když povolíte komplexní šifrování. Mezipaměti operačního systému a datových disků jsou v klidovém stavu zašifrované buď pomocí klíčů spravovaných zákazníkem nebo platformou, v závislosti na typu šifrování. Pokud je například disk zašifrovaný pomocí klíčů spravovaných zákazníkem, pak je mezipaměť pro disk zašifrovaná pomocí klíčů spravovaných zákazníkem a pokud je disk zašifrovaný pomocí klíčů spravovaných platformou, bude mezipaměť pro disk zašifrovaná pomocí klíčů spravovaných platformou.
 
 ### <a name="restrictions"></a>Omezení
 
@@ -68,7 +68,7 @@ Dočasné disky jsou v klidovém stavu zašifrované pomocí klíčů spravovan�
 
 ## <a name="double-encryption-at-rest"></a>Dvojité šifrování v klidovém umístění
 
-Zákazníci s vysokým zabezpečením, kteří se týkají rizik spojených s jakýmkoli konkrétním šifrovacím algoritmem, implementací nebo klíčem, se teď můžou rozhodnout pro další vrstvu šifrování pomocí jiného šifrovacího algoritmu nebo režimu v infrastruktuře, který používá šifrovací klíče spravované platformou. Tato nová vrstva se dá použít na disky, snímky a image, které se zašifrují v klidovém stavu s dvojitým šifrováním.
+Zákazníci s vysokým zabezpečením, kteří se týkají rizik spojených s jakýmkoli konkrétním šifrovacím algoritmem, implementací nebo klíčem, se teď můžou rozhodnout pro další vrstvu šifrování pomocí jiného šifrovacího algoritmu nebo režimu v infrastruktuře, který používá šifrovací klíče spravované platformou. Tato nová vrstva se dá použít pro trvalý operační systém a datové disky, snímky a image, které se zašifrují v klidovém stavu s dvojitým šifrováním.
 
 ### <a name="supported-regions"></a>Podporované oblasti
 
@@ -76,7 +76,7 @@ Zákazníci s vysokým zabezpečením, kteří se týkají rizik spojených s ja
 
 ## <a name="server-side-encryption-versus-azure-disk-encryption"></a>Šifrování na straně serveru oproti službě Azure Disk Encryption
 
-[Azure Disk Encryption](../../security/fundamentals/azure-disk-encryption-vms-vmss.md) využívá funkci [nástroje BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) systému Windows k šifrování spravovaných disků pomocí klíčů spravovaných zákazníkem v rámci virtuálního počítače hosta.  Šifrování na straně serveru pomocí klíčů spravovaných zákazníkem se zlepšuje v ADE tím, že vám umožní používat pro vaše virtuální počítače jakékoli typy operačních systémů a image šifrováním dat ve službě úložiště.
+[Azure Disk Encryption](../../security/fundamentals/azure-disk-encryption-vms-vmss.md) využívá funkci [nástroje BitLocker](/windows/security/information-protection/bitlocker/bitlocker-overview) systému Windows k šifrování spravovaných disků pomocí klíčů spravovaných zákazníkem v rámci virtuálního počítače hosta. Šifrování na straně serveru pomocí klíčů spravovaných zákazníkem se zlepšuje v ADE tím, že vám umožní používat pro vaše virtuální počítače jakékoli typy operačních systémů a image šifrováním dat ve službě úložiště.
 
 > [!IMPORTANT]
 > Klíče spravované zákazníkem spoléhají na spravované identity prostředků Azure, což je funkce Azure Active Directory (Azure AD). Při konfiguraci klíčů spravovaných zákazníkem se spravovaná identita automaticky přiřadí k vašim prostředkům v rámci pokrývání. Pokud později přesunete předplatné, skupinu prostředků nebo spravovaný disk z jednoho adresáře služby Azure AD do jiného, nepřesune se do nového tenanta spravovaná identita přidružená ke spravovaným diskům, takže klíče spravované zákazníkem už možná nebudou fungovat. Další informace najdete v tématu [přenos předplatného mezi adresáři služby Azure AD](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).
@@ -84,9 +84,8 @@ Zákazníci s vysokým zabezpečením, kteří se týkají rizik spojených s ja
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Povolení kompletního šifrování pomocí šifrování v hostiteli – PowerShell](disks-enable-host-based-encryption-powershell.md)
-- [Povolení dvojitého šifrování v klidovém prostředí pro vaše spravované disky – PowerShell](disks-enable-double-encryption-at-rest-powershell.md)
-- [Povolení klíčů spravovaných zákazníkem pro vaše spravované disky – PowerShell](disks-enable-customer-managed-keys-powershell.md)
-- [Povolení klíčů spravovaných zákazníkem pro vaše spravované disky – portál](disks-enable-customer-managed-keys-portal.md)
+- Povolení kompletního šifrování pomocí šifrování na hostiteli s využitím [PowerShellu](disks-enable-host-based-encryption-powershell.md) nebo [Azure Portal](disks-enable-host-based-encryption-portal.md).
+- U spravovaných disků buď pomocí [PowerShellu](disks-enable-double-encryption-at-rest-powershell.md) , nebo [Azure Portal](disks-enable-double-encryption-at-rest-portal.md)povolte dvojité šifrování v klidovém umístění.
+- Povolte klíče spravované zákazníkem pro spravované disky buď pomocí [PowerShellu](disks-enable-customer-managed-keys-powershell.md) , nebo [Azure Portal](disks-enable-customer-managed-keys-portal.md).
 - [Prozkoumejte šablony Azure Resource Manager pro vytváření šifrovaných disků pomocí klíčů spravovaných zákazníkem](https://github.com/ramankumarlive/manageddiskscmkpreview)
 - [Co je Azure Key Vault?](../../key-vault/general/overview.md)

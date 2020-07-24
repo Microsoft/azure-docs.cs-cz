@@ -1,14 +1,14 @@
 ---
 title: Návrh pracovních postupů pro zásady jako kód
 description: Naučte se navrhovat pracovní postupy pro nasazení Azure Policy definic jako kódu a automatické ověřování prostředků.
-ms.date: 05/20/2020
+ms.date: 07/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 17964459c6c06e6d7df09da4d3f0813350f209ec
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 02ff979feac1afb5f1664e6387e0abcde69b60eb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970939"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131493"
 ---
 # <a name="design-policy-as-code-workflows"></a>Návrh pracovních postupů pro zásady jako kód
 
@@ -20,6 +20,24 @@ Jak budete postupovat na cestě pomocí zásad správného řízení cloudu, bud
 Zásada jako kód je kombinací těchto nápadů. V podstatě Udržujte definice zásad ve správě zdrojového kódu a pokaždé, když provedete změnu, otestujete a ověříte tuto změnu. Nicméně by neměl být rozsahem zapojení zásad s infrastrukturou jako Code nebo DevOps.
 
 Krok ověření by měl být také součástí dalších pracovních postupů průběžné integrace nebo průběžného nasazování. Příklady zahrnují nasazení prostředí aplikace nebo virtuální infrastruktury. Provedením Azure Policy ověření počáteční komponenty procesu sestavení a nasazení aplikace a provozní týmy zjišťují, zda jsou jejich změny nekompatibilní, dlouho předtím, než jsou příliš pozdě a pokoušejí se nasadit v produkčním prostředí.
+
+## <a name="definitions-and-foundational-information"></a>Definice a základní informace
+
+Než se dostanete k podrobnostem o pracovním postupu pro kód zásad, Projděte si následující definice a příklady:
+
+- [Definice zásady](./definition-structure.md)
+- [Definice iniciativy](./initiative-definition-structure.md)
+
+Názvy souborů se zarovnají do částí definice zásady nebo iniciativy:
+- `policy(set).json`– Celá definice
+- `policy(set).parameters.json`– `properties.parameters` Část definice
+- `policy.rules.json`– `properties.policyRule` Část definice
+- `policyset.definitions.json`– `properties.policyDefinitions` Část definice
+
+Příklady těchto formátů souborů jsou k dispozici v [Azure Policy úložiště GitHub](https://github.com/Azure/azure-policy/):
+
+- Definice zásad: [Přidání značky k prostředkům](https://github.com/Azure/azure-policy/tree/master/samples/Tags/add-tag)
+- Definice iniciativy: [fakturační značky](https://github.com/Azure/azure-policy/tree/master/samples/PolicyInitiatives/multiple-billing-tags)
 
 ## <a name="workflow-overview"></a>Přehled pracovního postupu
 
@@ -119,7 +137,7 @@ Obecný pracovní postup pro zásady jako kód je určen pro vývoj a nasazován
 
 V těchto případech platí, že po nasazení aplikace nebo infrastruktury do testovacího předplatného nebo skupiny prostředků by se mělo provést vyhodnocení zásad pro tento rozsah ověřování všech stávajících zásad a iniciativ. I když můžou být v takovém prostředí nakonfigurované jako **enforcementMode** _zakázané_ , je užitečné znát počáteční informace v případě, že nasazení aplikace nebo infrastruktury v brzké době neporušila definice zásad. Toto vyhodnocení zásad by proto mělo být krok v těchto pracovních postupech a neúspěšné nasazení, které vytváří nekompatibilní prostředky.
 
-## <a name="review"></a>Revize
+## <a name="review"></a>Opakování
 
 Tento článek popisuje obecný pracovní postup pro zásady jako kód a také v případě, že vyhodnocení zásad by mělo být součástí dalších pracovních postupů nasazení. Tento pracovní postup se dá použít v jakémkoli prostředí, které podporuje skriptované kroky a automatizaci na základě triggerů.
 

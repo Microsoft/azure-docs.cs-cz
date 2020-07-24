@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: b5524d0612bf8f5d69979a8392f664e417c5f98d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 531a7fd8547130b4897f3dad0900e1c27fb7fe9a
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808182"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132037"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Řešení potíží se stavem back-endu v Application Gateway
 ==================================================
@@ -32,7 +32,7 @@ Stav načtený některou z těchto metod může být kterýkoli z následující
 
 - Není v pořádku
 
-- Není známo
+- Neznámý
 
 Pokud je stav back-endu serveru pro server v pořádku, znamená to, že Application Gateway přepošle žádosti na tento server. Pokud ale stav back-endu pro všechny servery v back-end fondu není v pořádku nebo není známý, může dojít k problémům při pokusu o přístup k aplikacím. Tento článek popisuje příznaky, příčinu a řešení jednotlivých zobrazených chyb.
 
@@ -176,7 +176,7 @@ Také ověřte, zda jakákoli NSG/UDR/firewall blokuje přístup k IP adrese a p
 
 | **Chyba** | **Akce** |
 | --- | --- |
-| Neshoda stavového kódu testu: přijata 401 | Ověřte, zda back-end Server vyžaduje ověření. Application Gateway PROBE nemůže v tomto okamžiku předat přihlašovací údaje pro ověření. Buď povolte \" protokol HTTP 401 \" ve stavovém kódu sondy nebo proveďte test na cestu, kde server nevyžaduje ověření. | |
+| Neshoda stavového kódu testu: přijata 401 | Ověřte, zda back-end Server vyžaduje ověření. Application Gateway PROBE nemůže předat přihlašovací údaje pro ověření. Buď povolte \" protokol HTTP 401 \" ve stavovém kódu sondy nebo proveďte test na cestu, kde server nevyžaduje ověření. | |
 | Neshoda stavového kódu testu: přijata 403 | Přístup je zakázán. Ověřte, jestli je na serveru back-end povolený přístup k cestě. | |
 | Neshoda stavového kódu testu: přijata 404 | Stránka se nenašla. Ověřte, zda je na serveru back-end přístupná cesta k názvu hostitele. Změňte název hostitele nebo parametr cesty na hodnotu, která je k dispozici. | |
 | Neshoda stavového kódu testu: přijata 405 | Požadavky testu na Application Gateway používají metodu HTTP GET. Ověřte, zda server tuto metodu povoluje. | |

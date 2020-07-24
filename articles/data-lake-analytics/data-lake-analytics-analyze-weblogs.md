@@ -2,24 +2,22 @@
 title: Analýza webových protokolů pomocí Azure Data Lake Analytics
 description: Naučte se analyzovat webové protokoly pomocí Azure Data Lake Analytics pro spouštění funkcí a dotazů U-SQL.
 services: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: 3a196735-d0d9-4deb-ba68-c4b3f3be8403
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: 25b84646bd6a95f0409184cccd40c6b7c9a0ef7f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5ad837c51fafd7df2b019c78ae4adaf4967f2df7
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117436"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132632"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>Analýza webových protokolů pomocí Azure Data Lake Analytics
 Naučte se analyzovat webové protokoly pomocí Data Lake Analytics, zejména v tématu zjištění, které odhlašovací servery při pokusu o návštěvě webu narazily na chyby.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * **Visual Studio 2015 nebo Visual Studio 2013**.
 * **[Nástroje Data Lake pro Visual Studio](https://aka.ms/adltoolsvs)**.
 

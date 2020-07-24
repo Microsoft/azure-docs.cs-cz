@@ -3,19 +3,17 @@ title: 'Funkce: akce a kontext – přizpůsobování'
 titleSuffix: Azure Cognitive Services
 description: Přizpůsobení používá funkce, informace o akcích a kontextu k zajištění lepšího hodnocení návrhů. Funkce mohou být velmi obecné nebo specifické pro položku.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.author: diberry
-ms.openlocfilehash: 408501232891a7971d03c89acc647d9ed19609b3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 590416f077fc1ff9430e42e27217548476c9032f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77026145"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132768"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Funkce jsou informace o akcích a kontextu.
 
@@ -25,8 +23,8 @@ Přizpůsobení používá **funkce**, které jsou informace o **aktuálním kon
 
 Můžete mít například **funkci** o:
 
-* _Uživatel_ , jako je `Sports_Shopper`například. Nemělo by to být individuální ID uživatele. 
-* _Obsah_ , jako je `Documentary` `Movie` `TV Series`například, pokud se jedná o, a, nebo zda je položka maloobchodního prodeje v obchodě k dispozici.
+* _Uživatel_ , jako je například `Sports_Shopper` . Nemělo by to být individuální ID uživatele. 
+* _Obsah_ , jako je například, pokud se jedná o, a, `Documentary` `Movie` `TV Series` nebo zda je položka maloobchodního prodeje v obchodě k dispozici.
 * _Aktuální_ časové období, jako je například den v týdnu.
 
 Přizpůsobené aplikace nepředepisuje, neomezuje ani neopravují funkce, které můžete odeslat pro akce a kontext:
@@ -56,12 +54,12 @@ Přizpůsobování přebírá funkce uspořádané do oborů názvů. V aplikaci
 Následují příklady oborů názvů funkcí používaných aplikacemi:
 
 * User_Profile_from_CRM
-* Time
+* Čas
 * Mobile_Device_Info
 * http_user_agent
 * VideoResolution
 * UserDeviceInfo
-* Weather
+* Počasí
 * Product_Recommendation_Ratings
 * current_time
 * NewsArticle_TextAnalytics
@@ -69,10 +67,10 @@ Následují příklady oborů názvů funkcí používaných aplikacemi:
 Obory názvů funkcí můžete pojmenovat podle vlastních konvencí, pokud jsou platné klíče JSON. Obory názvů slouží k uspořádání funkcí do různých sad a k jednoznačnému využití funkcí s podobnými názvy. Obory názvů si můžete představit jako předponu, která je přidána do názvů funkcí. Obory názvů nemůžou být vnořené.
 
 
-V následujících JSON, `user` `state`, a `device` jsou obory názvů funkcí. 
+V následujících JSON,, `user` `state` a `device` jsou obory názvů funkcí. 
 
 > [!Note]
-> V současné době důrazně doporučujeme používat názvy pro obory názvů funkcí, které jsou založené na kódování UTF-8 a začínají s různými písmeny. Například `user` `state` `device` ,, a začněte s `u`, `s`a. `d` V současné době by obory názvů se stejnými prvními znaky mohly způsobit kolizi v indexech použitých pro strojové učení.
+> V současné době důrazně doporučujeme používat názvy pro obory názvů funkcí, které jsou založené na kódování UTF-8 a začínají s různými písmeny. Například,, `user` `state` a `device` začněte s, a `u` `s` `d` . V současné době by obory názvů se stejnými prvními znaky mohly způsobit kolizi v indexech použitých pro strojové učení.
 
 Objekty JSON můžou zahrnovat vnořené objekty JSON a jednoduché vlastnosti nebo hodnoty. Pole lze zahrnout pouze v případě, že položky pole jsou čísla. 
 
@@ -157,7 +155,7 @@ Můžete použít několik dalších [Cognitive Services Azure](https://www.micr
 * [Entity Linking](../entitylinking/home.md)
 * [Analýza textu](../text-analytics/overview.md)
 * [Emoce](../emotion/home.md)
-* [Computer Vision](../computer-vision/home.md)
+* [Počítačové zpracování obrazu](../computer-vision/home.md)
 
 ## <a name="actions-represent-a-list-of-options"></a>Akce reprezentují seznam možností.
 
@@ -179,7 +177,7 @@ Neodesílat při akcích řazení více než 50 akcí. Může se jednat o stejn�
 
 Akce, které zadáte do rozhraní API řazení, budou záviset na tom, co se snažíte přizpůsobit.
 
-Zde je několik příkladů:
+Tady je několik příkladů:
 
 |Účel|Akce|
 |--|--|

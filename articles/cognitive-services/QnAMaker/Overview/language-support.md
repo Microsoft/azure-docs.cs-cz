@@ -3,19 +3,17 @@ title: Jazyková podpora – QnA Maker
 titleSuffix: Azure Cognitive Services
 description: Seznam jazykové verze, přirozené jazyky, které QnA Maker podporuje ve znalostní bázi. Nemíchejte jazyky ve stejné znalostní bázi.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 09/24/2019
-ms.author: diberry
-ms.openlocfilehash: 2c1b98a72af3442b596a9fdde66d254e3e5c2c19
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: e5740992e6cde4f4f6e009394878f21e957381d4
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84678609"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132853"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Jazyková podpora pro QnA Maker prostředky a základy znalostní báze
 

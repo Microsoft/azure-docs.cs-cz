@@ -8,12 +8,12 @@ ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 8f3e670a4f2a49bcce48be1ba0452a36cbf96df1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6aad6201136bb925d5e094de115cc7274cc7872a
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392314"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131408"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Použití digitálních vláken Azure k aktualizaci mapy vnitřních Azure Maps
 
@@ -25,11 +25,11 @@ Tento postup se zabývá těmito postupy:
 2. Vytvoření funkce Azure, která aktualizuje Azure Maps funkce vnitřních map stateset
 3. Jak ukládat ID map a ID stateset funkcí do grafu digitálních vláken Azure
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
-* Postupujte podle kurzu digitálních vláken Azure [: připojení kompletního řešení](./tutorial-end-to-end.md).
+* Postupujte podle kurzu digitálních vláken Azure [*: připojení kompletního řešení*](./tutorial-end-to-end.md).
     * Tuto dvojitou cestu rozšíříte pomocí dalšího koncového bodu a trasy. Z tohoto kurzu taky přidáte další funkci do aplikace Function App. 
-* Postupujte podle Azure Maps [kurzu: pomocí nástroje Azure Maps Creator Vytvořte vnitřní](../azure-maps/tutorial-creator-indoor-maps.md) mapy a vytvořte Azure Mapsou vnitřní mapu s *funkcí stateset*.
+* Postupujte podle Azure Maps [*kurzu: pomocí nástroje Azure Maps Creator Vytvořte vnitřní*](../azure-maps/tutorial-creator-indoor-maps.md) mapy a vytvořte Azure Mapsou vnitřní mapu s *funkcí stateset*.
     * [Funkce statesets](../azure-maps/creator-indoor-maps.md#feature-statesets) jsou kolekce dynamických vlastností (stavů) přiřazených k funkcím datové sady, jako jsou místnosti nebo vybavení. V tomto kurzu Azure Maps ukládá funkce stateset stav místnosti, který budete zobrazovat na mapě.
     * Budete potřebovat *STATESET ID* vaší funkce Azure Maps a *ID předplatného*.
 
@@ -45,11 +45,11 @@ Nejdřív vytvoříte trasu v části digitální vlákna Azure, která bude př
 
 ## <a name="create-a-route-and-filter-to-twin-update-notifications"></a>Vytvoření trasy a filtru pro dvojitá oznámení o aktualizacích
 
-Instance digitálních vláken Azure mohou generovat události s dvojitou aktualizací pokaždé, když se aktualizuje stav vlákna. [Kurz k digitálním vazbám Azure: připojení kompletního řešení](./tutorial-end-to-end.md) propojeného výše projde scénářem, kdy se k aktualizaci atributu teploty připojeného ke zdvojení místnosti používá teploměr. Toto řešení rozšíříte tak, že se přihlásíte k odběru oznámení o aktualizacích pro vlákna a tyto informace použijete k aktualizaci našich map.
+Instance digitálních vláken Azure mohou generovat události s dvojitou aktualizací pokaždé, když se aktualizuje stav vlákna. Kurz k digitálním vazbám Azure [*: připojení kompletního řešení*](./tutorial-end-to-end.md) propojeného výše projde scénářem, kdy se k aktualizaci atributu teploty připojeného ke zdvojení místnosti používá teploměr. Toto řešení rozšíříte tak, že se přihlásíte k odběru oznámení o aktualizacích pro vlákna a tyto informace použijete k aktualizaci vašich map.
 
-Tento model čte přímo z místnosti, nikoli ze zařízení IoT, což nám dává flexibilitu při změně podkladového zdroje dat, aniž by bylo nutné aktualizovat logiku mapování. Můžete například přidat více teploměrů nebo nastavit tuto místnost pro sdílení teploměru s jinou místností, a to vše bez nutnosti aktualizovat naši logiku mapy.
+Tento model čte přímo z místnosti místo zařízení IoT, což vám dává flexibilitu při změně podkladového zdroje dat na teplotu, aniž by bylo potřeba aktualizovat logiku mapování. Můžete například přidat více teploměrů nebo nastavit tuto místnost pro sdílení teploměru s jinou místností, a to vše bez nutnosti aktualizovat logiku mapy.
 
-1. Vytvořte téma Event gridu, které bude přijímat události z naší instance digitálního vlákna Azure.
+1. Vytvořte téma Event gridu, které bude přijímat události z instance digitálního vlákna Azure.
     ```azurecli
     az eventgrid topic create -g <your-resource-group-name> --name <your-topic-name> -l <region>
     ```
@@ -61,14 +61,14 @@ Tento model čte přímo z místnosti, nikoli ze zařízení IoT, což nám dáv
 
 3. Vytvořte trasu v rámci digitálních vláken Azure, která odešle do koncového bodu události s dvojitou aktualizací.
     ```azurecli
-    az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "{ "endpointId": "<endpoint-ID>","filter": "type = 'Microsoft.DigitalTwins.Twin.Update'"}"
+    az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
     ```
 
 ## <a name="create-an-azure-function-to-update-maps"></a>Vytvoření funkce Azure pro aktualizaci map
 
-Chystáte se vytvořit funkci aktivovanou Event Grid v naší aplikaci Function App z [kompletního kurzu](./tutorial-end-to-end.md). Tato funkce rozbalí tato oznámení a pošle aktualizace Azure Maps funkcím stateset k aktualizaci teploty jedné místnosti. 
+Chystáte se vytvořit funkci aktivovanou Event Grid v rámci aplikace Function App z kompletního kurzu ([*kurz: připojení kompletního řešení*](./tutorial-end-to-end.md)). Tato funkce rozbalí tato oznámení a pošle aktualizace Azure Maps funkcím stateset k aktualizaci teploty jedné místnosti. 
 
-V následujícím dokumentu najdete referenční informace: [Azure Event Grid Trigger pro Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-grid-trigger).
+V následujícím dokumentu najdete referenční informace: [*Azure Event Grid Trigger pro Azure Functions*](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-grid-trigger).
 
 Kód funkce nahraďte následujícím kódem. Odfiltruje pouze aktualizace vláken na prostor, přečte aktualizovanou teplotu a odešle tyto informace do Azure Maps.
 
@@ -100,7 +100,7 @@ namespace SampleFunctionsApp
 
             //Parse updates to "space" twins
             if (message["data"]["modelId"].ToString() == "dtmi:contosocom:DigitalTwins:Space;1")
-            {   //Set the ID of the room to be updated in our map. 
+            {   //Set the ID of the room to be updated in your map. 
                 //Replace this line with your logic for retrieving featureID. 
                 string featureID = "UNIT103";
 
@@ -138,9 +138,9 @@ az functionapp config appsettings set --settings "statesetID=<your-Azure-Maps-st
 
 Pokud chcete vidět živou aktualizaci, postupujte podle následujících kroků:
 
-1. Začněte posílat Simulovaná data IoT spuštěním projektu **DeviceSimulator** z kurzu digitálních vláken Azure [: Připojte ucelené řešení](tutorial-end-to-end.md). Pokyny k tomuto postupu najdete v části [*Configure and run the simulace*](././tutorial-end-to-end.md#configure-and-run-the-simulation) .
+1. Začněte posílat Simulovaná data IoT spuštěním projektu **DeviceSimulator** z kurzu digitálních vláken Azure [*: Připojte ucelené řešení*](tutorial-end-to-end.md). Pokyny k tomuto postupu najdete v části [*Configure and run the simulace*](././tutorial-end-to-end.md#configure-and-run-the-simulation) .
 2. Pomocí [modulu **Azure Maps interiéru** ](../azure-maps/how-to-use-indoor-module.md) můžete vykreslit vaše vnitřní mapy vytvořené v programu Azure Maps Creator.
-    1. Zkopírujte kód HTML z [*příkladu: použijte modul vnitřních map*](../azure-maps/how-to-use-indoor-module.md#example-use-the-indoor-maps-module) v kurzu pro mapy vnitřních souborů [: použijte modul Azure Mapsch vnitřních map](../azure-maps/how-to-use-indoor-module.md) k místnímu souboru.
+    1. Zkopírujte kód HTML z [*příkladu: použijte modul vnitřních map*](../azure-maps/how-to-use-indoor-module.md#example-use-the-indoor-maps-module) v kurzu pro mapy vnitřních souborů [*: použijte modul Azure Mapsch vnitřních map*](../azure-maps/how-to-use-indoor-module.md) k místnímu souboru.
     1. Nahraďte *tilesetId* a *statesetID* v místním souboru HTML hodnotami.
     1. Otevřete tento soubor v prohlížeči.
 
@@ -160,5 +160,5 @@ V závislosti na konfiguraci topologie budete moct uložit tyto tři atributy na
 
 Další informace o správě, upgradu a načítání informací z grafu vláken naleznete v následujících odkazech:
 
-* [Postupy: Správa digitálních vláken](./how-to-manage-twin.md)
-* [Postupy: dotazování na nevlákenný graf](./how-to-query-graph.md)
+* [*Postupy: Správa digitálních vláken*](./how-to-manage-twin.md)
+* [*Postupy: dotazování na nevlákenný graf*](./how-to-query-graph.md)

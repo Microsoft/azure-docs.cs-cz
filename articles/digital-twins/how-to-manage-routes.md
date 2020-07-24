@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 923ae652872246916b2a4c5e8be95871983dbe95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc22cf5a21709ccacafe068a60541cc9990d1131
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559839"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132258"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>Správa koncových bodů a tras v digitálních prozdvojeních Azure
 
@@ -23,14 +23,9 @@ Mezi podporované typy koncových bodů patří:
 * [Event Grid](../event-grid/overview.md)
 * [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)
 
-Další informace o různých koncových bodech najdete v tématu [Volba mezi službou zasílání zpráv Azure](https://docs.microsoft.com/azure/event-grid/compare-messaging-services).
+Další informace o různých koncových bodech najdete v tématu [*Volba mezi službou zasílání zpráv Azure*](https://docs.microsoft.com/azure/event-grid/compare-messaging-services).
 
 Koncové body a trasy se spravují pomocí [**rozhraní API EventRoutes**](how-to-use-apis-sdks.md), [sady .NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)nebo rozhraní příkazového [řádku Azure Digital revlákens](how-to-use-cli.md). Dají se taky spravovat prostřednictvím [Azure Portal](https://portal.azure.com).
-
-> [!NOTE]
-> Správa tras událostí prostřednictvím Azure Portal je aktuálně dostupná jenom pro uživatele Azure na účtech podnikových domén. 
->
->Pokud používáte osobní [účet Microsoft (MSA)](https://account.microsoft.com/account/Account), jako je třeba @outlook.com účet, použijte rozhraní API pro Azure Digital res nebo CLI ke správě směrování událostí, jak je popsáno v tomto článku.
 
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>Vytvoření koncového bodu pro digitální vlákna Azure
 
@@ -70,7 +65,14 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 ## <a name="manage-event-routes-with-apis"></a>Správa směrování událostí pomocí rozhraní API
 
-Aby bylo možné skutečně odesílat data z digitálních vláken Azure do koncového bodu, je nutné definovat trasu události. **Rozhraní API** pro digitální vlákna v Azure EventRoutes umožňují vývojářům nacházet v celém systému a na navazujících službách tok událostí. Přečtěte si další informace o trasách událostí v tématu [Koncepty: směrování událostí digitálních vláken Azure](concepts-route-events.md).
+Aby bylo možné skutečně odesílat data z digitálních vláken Azure do koncového bodu, je nutné definovat trasu události. **Rozhraní API** pro digitální vlákna v Azure EventRoutes umožňují vývojářům nacházet v celém systému a na navazujících službách tok událostí. Přečtěte si další informace o trasách událostí v tématu [*Koncepty: směrování událostí digitálních vláken Azure*](concepts-route-events.md).
+
+Po dokončení nastavení koncových bodů můžete pokračovat v vytváření směrování událostí.
+
+>[!NOTE]
+>Pokud jste své koncové body v poslední době nasadili, ověřte, že se jejich nasazení dokončilo, **než** se pokusíte použít pro novou trasu události. Pokud se nasazení trasy nepovede, protože koncové body nejsou připravené, počkejte pár minut a zkuste to znovu.
+>
+> Pokud tento tok spouštíte, můžete si ho vymezit tak, že sestavíte za 2-3 minut čekání na dokončení nasazování služby koncového bodu a teprve potom přejdete na nastavení směrování.
 
 Ukázky v tomto článku používají sadu C# SDK.
 
@@ -145,11 +147,11 @@ Pokud chcete přidat filtr, můžete použít požadavek PUT na *https://{YourHo
 
 Tady jsou podporované filtry tras.
 
-| Název filtru | Description | Filtrovat schéma | Podporované hodnoty | 
+| Název filtru | Popis | Filtrovat schéma | Podporované hodnoty | 
 | --- | --- | --- | --- |
 | Typ | [Typ toku událostí](./concepts-route-events.md#types-of-event-messages) prostřednictvím vaší digitální instance | `"filter" : "type = '<eventType>'"` | `Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br> `Microsoft.DigitalTwins.Relationship.Delete` <br> `microsoft.iot.telemetry`  |
 | Zdroj | Název instance digitálního vlákna Azure | `"filter" : "source = '<hostname>'"`|  **Pro oznámení**:`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net` <br> **Pro telemetrii**:`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net/digitaltwins/<twinId>`|
-| Subjekt | Popis události v kontextu výše uvedeného zdroje událostí | `"filter": " subject = '<subject>'"` | **Pro oznámení**: subjekt je`<twinid>` <br> nebo formát identifikátoru URI pro předměty, které jsou jednoznačně identifikované více částmi nebo identifikátory:<br>`<twinid>/relationships/<relationshipid>`<br> **Pro telemetrii**: subjekt je cesta k komponentě (Pokud se telemetrie generuje z vlákna), jako je například `comp1.comp2` . Pokud telemetrie není vygenerována ze součásti, je pole předmětu prázdné. |
+| Předmět | Popis události v kontextu výše uvedeného zdroje událostí | `"filter": " subject = '<subject>'"` | **Pro oznámení**: subjekt je`<twinid>` <br> nebo formát identifikátoru URI pro předměty, které jsou jednoznačně identifikované více částmi nebo identifikátory:<br>`<twinid>/relationships/<relationshipid>`<br> **Pro telemetrii**: subjekt je cesta k komponentě (Pokud se telemetrie generuje z vlákna), jako je například `comp1.comp2` . Pokud telemetrie není vygenerována ze součásti, je pole předmětu prázdné. |
 | Schéma dat | ID modelu DTDL | `"filter": "dataschema = 'dtmi:example:com:floor4;2'"` | **Pro telemetrii**: schéma dat je ID modelu vlákna nebo komponenty, která tuto telemetrii emituje. <br>**Pro oznámení**: schéma dat se nepodporuje.|
 | Typ obsahu | Typ obsahu hodnoty dat | `"filter": "datacontenttype = '<contentType>'"` | `application/json` |
 | Specifikace verze | Verze schématu události, kterou používáte | `"filter": "specversion = '<version>'"` | Musí být `1.0` . To označuje schéma CloudEvents verze 1,0. |
@@ -174,7 +176,7 @@ Když implementujete nebo aktualizujete filtr, může tato změna trvat několik
 
 ## <a name="manage-endpoints-and-routes-with-cli"></a>Správa koncových bodů a tras pomocí rozhraní příkazového řádku
 
-Koncové body a trasy je taky možné spravovat pomocí rozhraní příkazového řádku Azure Digital revlákens CLI. Příkazy najdete v tématu [Postupy: použití rozhraní příkazového řádku Azure Digital zdvojené](how-to-use-cli.md).
+Koncové body a trasy je taky možné spravovat pomocí rozhraní příkazového řádku Azure Digital revlákens CLI. Příkazy najdete v tématu [*Postupy: použití rozhraní příkazového řádku Azure Digital zdvojené*](how-to-use-cli.md).
 
 ## <a name="monitor-event-routes"></a>Monitorování tras událostí
 
@@ -189,4 +191,4 @@ Tady můžete zobrazit metriky pro vaši instanci a vytvořit vlastní zobrazen�
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si o různých typech zpráv o událostech, které můžete získat:
-* [Postupy: interpretace dat událostí](how-to-interpret-event-data.md)
+* [*Postupy: interpretace dat událostí*](how-to-interpret-event-data.md)
