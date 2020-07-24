@@ -1,5 +1,5 @@
 ---
-title: Postup udělení oprávnění ke spravované identitě v pracovním prostoru Azure synapse
+title: Udělení oprávnění spravované identitě v pracovním prostoru synapse
 description: Článek, který vysvětluje, jak nakonfigurovat oprávnění pro spravovanou identitu v pracovním prostoru Azure synapse.
 author: RonyMSFT
 ms.service: synapse-analytics
@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8e33bd127fca9ddce7b15d144fd287ec4a6bf0e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9cb1ddceff30b247caf3ecd9ee3bc21d5addb519
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193460"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089443"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>Udělení oprávnění pro spravovanou identitu pracovního prostoru (Preview)
 

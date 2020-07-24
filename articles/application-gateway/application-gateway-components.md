@@ -5,14 +5,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 07/20/2020
 ms.author: absha
-ms.openlocfilehash: 798137a74f22824dbfec9653bff327d3a0a1f3b4
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 20d43666919f8528c25735592c2727601af10bbb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186754"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088083"
 ---
 # <a name="application-gateway-components"></a>Komponenty Application Gateway
 
@@ -69,13 +69,13 @@ Existují dva typy naslouchacího procesu:
 
 - **Basic**. Tento typ naslouchacího procesu naslouchá pro jednu doménovou lokalitu, kde má jedno mapování DNS na IP adresu služby Application Gateway. Tato konfigurace naslouchacího procesu se vyžaduje, když hostete jednu lokalitu za aplikační bránou.
 
-- **Více lokalit**. Tato konfigurace naslouchacího procesu se vyžaduje, když nakonfigurujete více než jednu webovou aplikaci na stejné instanci služby Application Gateway. Umožňuje pro vaše nasazení nakonfigurovat efektivnější topologii přidáním až 100 webů do jedné aplikační brány. Každou stránku lze přesměrovat na vlastní back-endový fond. Například tři subdomény, abc.contoso.com, xyz.contoso.com a pqr.contoso.com, odkazují na IP adresu služby Application Gateway. Vytvořili jste tři naslouchací procesy pro více webů a nakonfigurujete každého naslouchacího procesu pro příslušný port a nastavení protokolu.
+- **Více lokalit**. Tato konfigurace naslouchacího procesu se vyžaduje v případě, že chcete nakonfigurovat směrování na základě názvu hostitele nebo názvu domény pro více než jednu webovou aplikaci na stejné aplikační bráně. Umožňuje pro nasazení nakonfigurovat efektivnější topologii přidáním až 100 webů do jedné aplikační brány. Každou stránku lze přesměrovat na vlastní back-endový fond. Například tři domény, contoso.com, fabrikam.com a adatum.com, odkazují na IP adresu služby Application Gateway. Vytvořili jste tři [naslouchací procesy pro více webů](multiple-site-overview.md) a nakonfigurujete každého naslouchacího procesu pro příslušný port a nastavení protokolu. 
 
-    Další informace najdete v tématu [hostování více webů](application-gateway-web-app-overview.md).
+    Můžete také definovat názvy hostitelů se zástupnými znaky v rámci naslouchacího procesu pro více webů a až 5 názvů hostitelů na naslouchací proces. Další informace najdete v tématu [názvy hostitelů se zástupnými znaky ve službě Listener (Preview)](multiple-site-overview.md#wildcard-host-names-in-listener-preview).
 
-Po vytvoření naslouchacího procesu ho přidružíte k pravidlu směrování požadavků. Toto pravidlo určuje, jak má být žádost o naslouchací službě směrována do back-endu.
+    Další informace o tom, jak nakonfigurovat naslouchací proces pro více webů, najdete v tématu [hostování více webů v Application Gateway pomocí Azure Portal](create-multiple-sites-portal.md).
 
-Application Gateway zpracovává naslouchací procesy v uvedeném [pořadí](configuration-overview.md#order-of-processing-listeners).
+Po vytvoření naslouchacího procesu ho přidružíte k pravidlu směrování požadavků. Toto pravidlo určuje, jak má být žádost o naslouchací službě směrována do back-endu. Pravidlo směrování požadavků taky obsahuje back-end fond, který se má směrovat, a nastavení HTTP, kde se zmiňuje port back-endu, protokol atd.
 
 ## <a name="request-routing-rules"></a>Pravidla směrování žádostí
 
@@ -99,13 +99,13 @@ Můžete zvolit cíl přesměrování tak, aby byl jiný naslouchací proces (co
 
 Další informace najdete v tématu [přesměrování provozu ve službě Application Gateway](redirect-overview.md).
 
-### <a name="rewrite-http-headers"></a>Přepsání hlaviček HTTP
+### <a name="rewrite-http-headers-and-url"></a>Přepsat hlavičky a adresu URL protokolu HTTP
 
-Pomocí pravidel směrování žádostí můžete přidat, odebrat nebo aktualizovat žádosti a hlavičky odpovědí protokolu HTTP (S), protože pakety požadavků a odpovědí se pohybují mezi klienty klienta a back-endu prostřednictvím služby Application Gateway.
+Pomocí pravidel pro přepsání můžete přidat, odebrat nebo aktualizovat žádosti a hlavičky odpovědí HTTP (S) a také cestu URL a parametry řetězce dotazu, protože pakety požadavků a odpovědí se pohybují mezi klienty klienta a back-endu přes Aplikační bránu.
 
-Hlavičky lze nastavit na statické hodnoty nebo na jiné hlavičky a proměnné serveru. To pomáhá s důležitými případy použití, jako je například extrakce IP adres klientů, odebrání citlivých informací o back-endu, přidání dalších zabezpečení atd.
+Parametry hlaviček a adres URL lze nastavit na statické hodnoty nebo na jiné hlavičky a proměnné serveru. To pomáhá s důležitými případy použití, jako je například extrakce IP adres klientů, odebrání citlivých informací o back-endu, přidání dalších zabezpečení atd.
 
-Další informace najdete v tématu [přepis hlaviček protokolu HTTP v bráně Application Gateway](rewrite-http-headers.md).
+Další informace najdete v tématu [přepis hlaviček protokolu HTTP a adresy URL ve službě Application Gateway](rewrite-http-headers-url.md).
 
 ## <a name="http-settings"></a>Nastavení HTTP
 

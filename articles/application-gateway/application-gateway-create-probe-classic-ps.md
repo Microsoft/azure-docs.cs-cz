@@ -1,5 +1,5 @@
 ---
-title: Vytvoření vlastní sondy pomocí PowerShellu – Azure Application Gateway
+title: Vytvoření vlastní sondy pomocí modelu nasazení Classic – Azure Application Gateway
 description: Zjistěte, jak vytvořit vlastní test pro Application Gateway pomocí prostředí PowerShell v modelu nasazení Classic.
 services: application-gateway
 author: vhorne
@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 3a555fff758fdd1f4ddff60c7828a3e44af008ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1445d1418bde6d5d15e365c59ceb56e7661faccb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807291"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088066"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Vytvoření vlastní sondy pro Azure Application Gateway (Classic) pomocí prostředí PowerShell
 
@@ -28,7 +28,7 @@ V tomto článku přidáte vlastní test paměti do existující aplikační br�
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
-## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
+## <a name="create-an-application-gateway"></a>Vytvoření brány Application Gateway
 
 Pro vytvoření nové aplikační brány:
 
@@ -143,10 +143,10 @@ Konfigurační parametry jsou:
 |Parametr|Popis|
 |---|---|
 |**Název** |Referenční název pro vlastní test paměti |
-| **Protocol (Protokol)** | Použitý protokol (možné hodnoty jsou HTTP nebo HTTPS).|
+| **Protokol** | Použitý protokol (možné hodnoty jsou HTTP nebo HTTPS).|
 | **Hostitel** a **cesta** | Dokončete cestu adresy URL vyvolanou aplikační bránou a určete stav instance. Například pokud máte webovou stránku http: \/ /contoso.com/, pak se vlastní test paměti dá nakonfigurovat na http: \/ /contoso.com/Path/custompath.htm, aby testy testů měly ÚSPĚŠNOU odpověď HTTP.|
-| **Doba** | Nakonfiguruje kontrolu intervalu sondy v sekundách.|
-| **Časový limit** | Definuje časový limit testu pro kontrolu odezvy protokolu HTTP.|
+| **Interval** | Nakonfiguruje kontrolu intervalu sondy v sekundách.|
+| **Prodlev** | Definuje časový limit testu pro kontrolu odezvy protokolu HTTP.|
 | **UnhealthyThreshold** | Počet neúspěšných odpovědí HTTP nutných k označení back-endové instance jako *chybného*.|
 
 V konfiguraci je odkazováno na název sondy, \<BackendHttpSettings\> které přiřadí, který fond back-end používá vlastní nastavení sondy.

@@ -3,8 +3,8 @@ title: 'Kurz: migrace SQL Server Online do spravované instance SQL'
 titleSuffix: Azure Database Migration Service
 description: Naučte se provádět online migraci z SQL Server do spravované instance Azure SQL pomocí Azure Database Migration Service.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/10/2020
-ms.openlocfilehash: 3d462fa0fa2afe5937c60985938c8268991dfa41
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4bd6c3dc1f3cd1ef553efc6ac3cd3c4e558afc97
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084218"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087658"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>Kurz: migrace SQL Server do spravované instance Azure SQL online pomocí DMS
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 >
 > * Vytvořte instanci služby Azure Database Migration Service.
 > * Vytvořte projekt migrace a spusťte online migraci pomocí Azure Database Migration Service.
-> * Monitorování migrace
+> * Monitorujte migraci.
 > * Až budete připraveni, proveďte migraci přímou migraci.
 
 > [!IMPORTANT]
@@ -50,7 +50,7 @@ V tomto kurzu se naučíte:
 
 Tento článek popisuje online migraci z SQL Server do spravované instance SQL. Offline migraci najdete v článku [migrace SQL Server do spravované instance SQL offline pomocí DMS](tutorial-sql-server-to-managed-instance.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
@@ -88,6 +88,9 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
   > Azure Database Migration Service vyžaduje oprávnění přispěvatele u předplatného pro zadané ID aplikace. Případně můžete vytvořit vlastní role, které udělují specifická oprávnění, která Azure Database Migration Service vyžaduje. Podrobné pokyny k používání vlastních rolí najdete v článku [vlastní role pro SQL Server migrací do online migrace spravované instance SQL](https://docs.microsoft.com/azure/dms/resource-custom-roles-sql-db-managed-instance).
 
 * Vytvořte nebo si poznamenejte **úroveň výkonu Standard** účtu úložiště Azure, do kterého může služba DMS nahrát soubory záloh databází a který může použít k migraci databází.  Ujistěte se, že jste vytvořili účet Azure Storage ve stejné oblasti, ve které je vytvořena instance Azure Database Migration Service.
+
+  > [!NOTE]
+  > Při migraci databáze, která je chráněná [transparentní šifrování dat](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview) do spravované instance pomocí online migrace, je nutné před obnovením databáze migrovat odpovídající certifikát z místní instance nebo virtuálního počítače Azure SQL Server. Podrobný postup najdete v tématu [migrace TDE certifikátu do spravované instance](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview).
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Registrace poskytovatele prostředků Microsoft.DataMigration
 

@@ -8,11 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 06/03/2020
 ms.author: anfeldma
-ms.openlocfilehash: 520f64cbe768f2fcbd4603d1fb038bc349cd01db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e82e2c9c319696bc34f73ce24ee6ed12951ac77
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391974"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087811"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK pro SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -41,12 +42,12 @@ Toto je původní Azure Cosmos DB synchronizovat sadu Java SDK v2 pro rozhraní 
 |---|---|
 |**Stažení sady SDK**|[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
 |**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní Java API](/java/api/com.microsoft.azure.documentdb)|
-|**Přispívání do sady SDK**|[GitHubu](https://github.com/Azure/azure-documentdb-java/)|
+|**Přispívání do sady SDK**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
 |**Začínáme**|[Začínáme se sadou Java SDK](sql-api-java-get-started.md)|
 |**Kurz webové aplikace**|[Vývoj webových aplikací pomocí Azure Cosmos DB](sql-api-java-application.md)|
 |**Minimální podporovaná doba běhu**|[Java Development Kit (JDK) 7 +](/java/azure/jdk/?view=azure-java-stable)|
 
-## <a name="release-notes"></a>Poznámky k verzi
+## <a name="release-notes"></a>Zpráva k vydání verze
 
 ### <a name="251"></a><a name="2.5.1"></a>2.5.1
 * Opravuje problém mezipaměti hlavního oddílu v dotazucollection dokumentu.
@@ -114,7 +115,7 @@ Toto je původní Azure Cosmos DB synchronizovat sadu Java SDK v2 pro rozhraní 
 ### <a name="1164"></a><a name="1.16.4"></a>1.16.4
 * Opravili jsme chybu v rozsahu klíče oddílu čtení pro dotaz.
 
-### <a name="1163"></a><a name="1.16.3"/>1.16.3
+### <a name="1163"></a><a name="1.16.3"></a>1.16.3
 * Opravili jsme chybu v nastavení velikosti hlavičky tokenu pokračování v režimu DirectHttps.
 
 ### <a name="1162"></a><a name="1.16.2"></a>1.16.2
@@ -330,7 +331,7 @@ Všechny žádosti o Cosmos DB používání vyřazené sady SDK budou službou 
 | 0.9.1 – zapůjčení |19. prosince 2014 |29. února 2016 |
 | 0.9.0 – zapůjčení |10. prosince 2014 |29. února 2016 |
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Viz také

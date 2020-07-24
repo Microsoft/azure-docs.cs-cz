@@ -3,8 +3,8 @@ title: 'Kurz: migrace SQL Server offline do jediné databáze SQL'
 titleSuffix: Azure Database Migration Service
 description: Naučte se migrovat z SQL Server Azure SQL Database offline pomocí Azure Database Migration Service.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 45a343fdbd41abf1388556131f1f53a675d8ab49
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0d2353364767dfb1fd73d517926d0fa63c11a1d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316231"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087709"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>Kurz: Offline migrace SQL Serveru do služby Azure SQL Database pomocí DMS
 
@@ -31,14 +31,14 @@ V tomto kurzu se naučíte:
 > - Vytvořte instanci služby Azure Database Migration Service.
 > - Vytvořte projekt migrace pomocí Azure Database Migration Service.
 > - Spuštění migrace
-> - Monitorování migrace
+> - Monitorujte migraci.
 > - Stažení sestavy migrace
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
 Tento článek popisuje offline migraci z SQL Server do databáze v Azure SQL Database. Informace o online migraci najdete v tématu [Online migrace SQL Serveru do služby Azure SQL Database pomocí DMS](tutorial-sql-server-azure-sql-online.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
@@ -149,7 +149,7 @@ Chcete-li migrovat schéma **AdventureWorks2012** do izolované databáze nebo A
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Registrace poskytovatele prostředků Microsoft.DataMigration
 
-1. Přihlaste se k portálu Azure. Vyhledejte a vyberte **odběry**.
+1. Přihlaste se k webu Azure Portal. Vyhledejte a vyberte **odběry**.
 
    ![Zobrazení předplatných na portálu](media/tutorial-sql-server-to-azure-sql/portal-select-subscription1.png)
 
@@ -273,7 +273,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
 
 3. Ověřte cílové databáze na cílovém Azure SQL Database.
 
-### <a name="additional-resources"></a>Další zdroje
+### <a name="additional-resources"></a>Další zdroje informací
 
 - Migrace SQL pomocí praktického testovacího prostředí [služby Azure Data Migration Service](https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyGuid=3b671509-c3cd-4495-8e8f-354acfa09587) .
 - Informace o známých problémech a omezeních při provádění online migrací pro Azure SQL Database najdete v článku [známé problémy a řešení pro Azure SQL Database online migrace](known-issues-azure-sql-online.md).

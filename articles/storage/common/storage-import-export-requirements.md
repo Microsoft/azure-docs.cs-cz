@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 6da9490d5d9a876922fb9c2ba5d908db411adb1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 877d1442c346b321562cb396a77224a6b40c7df2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512419"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087233"
 ---
 # <a name="azure-importexport-system-requirements"></a>Požadavky na systém Azure Import/Export
 
@@ -50,14 +50,14 @@ Další informace o účtech úložiště najdete v tématu [Přehled účtů Az
 Každou úlohu můžete použít k přenosu dat do nebo z jednoho účtu úložiště. Jinými slovy, jedna úloha importu/exportu nemůže být rozložená mezi několik účtů úložiště. Informace o vytvoření nového účtu úložiště najdete v tématu [Vytvoření účtu úložiště](storage-account-create.md).
 
 > [!IMPORTANT]
-> Služba Azure import export nepodporuje účty úložiště, ve kterých je povolená funkce [koncových bodů služby Virtual Network](../../virtual-network/virtual-network-service-endpoints-overview.md)   . 
+> U účtů úložiště, kde je povolená funkce [koncových bodů služby Virtual Network](../../virtual-network/virtual-network-service-endpoints-overview.md)   , použijte nastavení **Povolit důvěryhodné služby společnosti Microsoft...** , aby služba [Import/export](/storage-network-security.md) mohla provádět import/export dat do a z Azure.
 
 ## <a name="supported-storage-types"></a>Podporované typy úložiště
 
 Služba Azure import/export podporuje následující seznam typů úložišť.
 
 
-|Úloha  |Služba úložiště |Podporuje se  |Nepodporuje se  |
+|Úloha  |Služba úložiště |Podporováno  |Nepodporováno  |
 |---------|---------|---------|---------|
 |Import     |  Azure Blob Storage <br><br> Azure File Storage       | Podporované objekty blob bloku a objekty blob stránky <br><br> Podporované soubory          |
 |Export     |   Azure Blob Storage       | Podporované objekty blob bloku, objekty blob stránky a doplňovací objekty blob         | Soubory Azure nejsou podporované
@@ -72,7 +72,7 @@ Pro službu Azure import/export potřebujete Podporované disky pro kopírován�
 Následující seznam disků je podporován pro použití se službou Import/export.
 
 
-|Typ disku  |Velikost  |Podporuje se |
+|Typ disku  |Velikost  |Podporováno |
 |---------|---------|---------|
 |SSD    |   2,5 "      |SATA III          |
 |HDD     |  2,5 "<br>3,5 "       |SATA II, SATA III         |

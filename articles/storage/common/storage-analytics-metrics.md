@@ -9,11 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 5613453667e3bb278f4da22ebed4502def70235b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4bb17fce7be7aeff2a6978177106201e4c80aee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83675901"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087267"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Analýza úložiště Azure metriky (klasické)
 
@@ -37,7 +38,7 @@ Azure Storage používá řešení Analýza úložiště k ukládání metrik, k
 
  Pro požadavky uživatelů a požadavky vytvořené Analýza úložiště samotné se zaznamenávají transakční metriky. Například požadavky, které Analýza úložiště k zápisu protokolů a entit tabulek, se zaznamenávají.
 
-## <a name="capacity-metrics"></a>Metriky kapacity  
+## <a name="capacity-metrics"></a>Kapacitní metriky  
 
 > [!NOTE]
 >  V současné době jsou metriky kapacity k dispozici pouze pro službu BLOB Service.
@@ -145,18 +146,16 @@ V části **monitorování (Classic)** v podokně nabídky účtu úložiště v
 
 Pokud chcete stáhnout metriky pro dlouhodobé ukládání nebo je analyzovat místně, je nutné použít nástroj nebo napsat kód pro čtení tabulek. Je nutné stáhnout minutové metriky pro analýzu. Tabulky se nezobrazí, pokud vypíšete všechny tabulky v účtu úložiště, ale můžete k nim přistupovat přímo podle názvu. Mnoho nástrojů pro procházení úložiště ví o těchto tabulkách a umožňuje vám jejich přímé prohlížení. Seznam dostupných nástrojů najdete v tématu [Azure Storage klientských nástrojů](/azure/storage/storage-explorers).
 
-||||  
+|Metriky|Názvy tabulek|Poznámky| 
 |-|-|-|  
-|**Metriky**|**Názvy tabulek**|**Poznámky**|  
 |Hodinové metriky|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|Ve verzích starších než 15. srpna 2013 byly tyto tabulky známé jako:<br /><br /> $MetricsTransactionsBlob<br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> Metriky pro souborovou službu jsou k dispozici od verze 5. dubna 2015.|  
 |Minutové metriky|$MetricsMinutePrimaryTransactionsBlob<br /><br /> $MetricsMinutePrimaryTransactionsTable<br /><br /> $MetricsMinutePrimaryTransactionsQueue<br /><br /> $MetricsMinutePrimaryTransactionsFile|Dá se povolit jenom pomocí PowerShellu nebo prostřednictvím kódu programu.<br /><br /> Metriky pro souborovou službu jsou k dispozici od verze 5. dubna 2015.|  
 |Kapacita|$MetricsCapacityBlob|Pouze Blob service.|  
 
 Úplné podrobnosti o schématech pro tyto tabulky najdete v tématu [Analýza úložiště schématu tabulky metrik](/rest/api/storageservices/storage-analytics-metrics-table-schema). Následující ukázkové řádky obsahují pouze podmnožinu dostupných sloupců, ale ilustrují některé důležité funkce, kterými metrika úložiště ukládá tyto metriky:  
 
-||||||||||||  
+|PartitionKey|RowKey|Timestamp|TotalRequests|TotalBillableRequests|TotalIngress|TotalEgress|Dostupnost|AverageE2ELatency|AverageServerLatency|PercentSuccess| 
 |-|-|-|-|-|-|-|-|-|-|-|  
-|**PartitionKey**|**RowKey**|**Časové razítko**|**TotalRequests**|**TotalBillableRequests**|**TotalIngress**|**TotalEgress**|**Dostupnost**|**AverageE2ELatency**|**AverageServerLatency**|**PercentSuccess**|  
 |20140522T1100|uživatelský Všem|2014-05-22T11:01:16.7650250 Z|7|7|4003|46801|100|104,4286|6,857143|100|  
 |20140522T1100|uživatelský QueryEntities|2014-05-22T11:01:16.7640250 Z|5|5|2694|45951|100|143,8|7.8|100|  
 |20140522T1100|uživatelský QueryEntity|2014-05-22T11:01:16.7650250 Z|1|1|538|633|100|3|3|100|  

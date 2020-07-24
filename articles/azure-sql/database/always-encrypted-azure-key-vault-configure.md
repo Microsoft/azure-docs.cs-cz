@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: 46b899b1891a6759ea2b9501f43c687990198f1f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ab1865608146880bbf612b7cb08c2a673c93b31f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078013"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087955"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>Konfigurace Always Encrypted pomocí Azure Key Vault 
 
@@ -37,7 +37,7 @@ Postupujte podle kroků v tomto článku a Naučte se, jak nastavit Always Encry
 - Vytvořte databázovou tabulku a Zašifrujte sloupce.
 - Vytvořte aplikaci, která vloží, vybere a zobrazí data ze zašifrovaných sloupců.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 
 - Účet a předplatné Azure. Pokud ho ještě nemáte, zaregistrujte si [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
@@ -45,7 +45,7 @@ Postupujte podle kroků v tomto článku a Naučte se, jak nastavit Always Encry
 - [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) verze 13.0.700.242 nebo novější.
 - [.NET Framework 4,6](https://msdn.microsoft.com/library/w0x726c2.aspx) nebo novější (na klientském počítači).
 - [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
-- [Azure PowerShell](/powershell/azure/overview) nebo [Azure CLI](/cli/azure/install-azure-cli)
+- [Azure PowerShell](/powershell/azure/) nebo [Azure CLI](/cli/azure/install-azure-cli)
 
 ## <a name="enable-client-application-access"></a>Povolit přístup k klientské aplikaci
 
@@ -159,7 +159,7 @@ Kliknutím na tlačítko **Další** na **úvodní** stránce otevřete stránku
 
 Zašifrujte informace **SSN** a **DatumNarození** pro každého pacienta. Sloupec SSN bude používat deterministické šifrování, které podporuje vyhledávání rovnosti, spojení a seskupování podle. Sloupec DatumNarození bude používat náhodné šifrování, které nepodporuje operace.
 
-Nastavte **typ šifrování** pro sloupec SSN na **deterministické** a sloupec DatumNarození, který se má **náhodným**nastavením. Klikněte na **Další**.
+Nastavte **typ šifrování** pro sloupec SSN na **deterministické** a sloupec DatumNarození, který se má **náhodným**nastavením. Klikněte na **Next** (Další).
 
 ![Šifrovat sloupce](./media/always-encrypted-azure-key-vault-configure/column-selection.png)
 
@@ -171,7 +171,7 @@ V tomto kurzu se dozvíte, jak ukládat klíče v Azure Key Vault.
 
 1. Vyberte **Azure Key Vault**.
 2. V rozevíracím seznamu vyberte požadovaný Trezor klíčů.
-3. Klikněte na **Další**.
+3. Klikněte na **Next** (Další).
 
 ![Konfigurace hlavního klíče](./media/always-encrypted-azure-key-vault-configure/master-key-configuration.png)
 
@@ -179,11 +179,11 @@ V tomto kurzu se dozvíte, jak ukládat klíče v Azure Key Vault.
 
 Nyní můžete šifrovat sloupce nebo uložit skript prostředí PowerShell pro pozdější spuštění. Pro tento kurz vyberte **pokračovat** a klikněte na **Další**.
 
-### <a name="summary"></a>Souhrn
+### <a name="summary"></a>Shrnutí
 
 Ověřte správnost nastavení a kliknutím na **Dokončit** dokončete instalaci pro Always Encrypted.
 
-![Souhrn](./media/always-encrypted-azure-key-vault-configure/summary.png)
+![Shrnutí](./media/always-encrypted-azure-key-vault-configure/summary.png)
 
 ### <a name="verify-the-wizards-actions"></a>Ověření akcí Průvodce
 

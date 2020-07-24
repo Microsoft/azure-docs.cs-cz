@@ -4,19 +4,20 @@ description: Rozhraní API pro načtení zadané nabídky v rámci oboru názvů
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 06/19/2020
-ms.openlocfilehash: a4bbe133d8b223bf717597467336eb486f432380
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: bf64645f672e54849064d86f9250a62efeac8d66
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115532"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087403"
 ---
-<a name="retrieve-a-specific-offer"></a>Načíst konkrétní nabídku
-=========================
+# <a name="retrieve-a-specific-offer"></a>Načíst konkrétní nabídku
 
 > [!NOTE]
-> Rozhraní API pro portál partnerů cloudu jsou integrovaná do partnerského centra a budou fungovat i po migraci nabídek do partnerského centra. Integrace přináší malé změny. Projděte si změny uvedené v části [portál partnerů cloudu rozhraní API](./cloud-partner-portal-api-overview.md) , abyste zajistili, že váš kód bude i nadále fungovat po migraci do partnerského centra.
+> Rozhraní API pro portál partnerů cloudu jsou integrovaná s a budou pokračovat v práci v partnerském centru. Přechod přináší malé změny. Projděte si změny uvedené v části [portál partnerů cloudu rozhraní API](./cloud-partner-portal-api-overview.md) , abyste zajistili, že kód pokračuje v práci po přechodu do partnerského centra. Rozhraní API CPP by se mělo používat jenom pro existující produkty, které už jsou integrované před přechodem do partnerského centra; nové produkty by měly používat rozhraní API pro odesílání v partnerském centru.
 
 Načte zadanou nabídku v rámci oboru názvů vydavatele.  
 
@@ -34,23 +35,18 @@ Můžete také načíst konkrétní verzi nabídky nebo načíst nabídku v konc
 
 ```
 
-
-<a name="uri-parameters"></a>Parametry identifikátoru URI
---------------
-
+## <a name="uri-parameters"></a>Parametry identifikátoru URI
 
 | **Název**    | **Popis**                                                                          | **Datový typ** |
 |-------------|------------------------------------------------------------------------------------------|---------------|
 | publisherId | publisherId. Například contoso                                                        | Řetězec        |
 | Hodnotami OfferId     | Identifikátor GUID, který jedinečně identifikuje nabídku                                                 | Řetězec        |
-| verze     | Verze získané nabídky Ve výchozím nastavení se načte nejnovější verze nabídky. | Integer       |
+| verze     | Verze získané nabídky Ve výchozím nastavení se načte nejnovější verze nabídky. | Celé číslo       |
 | slotId      | Slot, ze kterého má být nabídka načtena, může být jedním z těchto:      <br/>  - `Draft`(výchozí) načte verzi nabídky, která je aktuálně v konceptu.  <br/>  -  `Preview`Načte verzi nabídky, která je aktuálně ve verzi Preview.     <br/>  -  `Production`Načte verzi nabídky, která je aktuálně v produkčním prostředí.          |      enum |
 | verze-api | Nejnovější verze rozhraní API                                                                    | Datum          |
 |  |  |  |
 
-
-<a name="header"></a>Záhlaví
-------
+## <a name="header"></a>Hlavička
 
 |  **Název**          |   **Hodnota**            |
 |  ---------------   |  --------------        |
@@ -58,9 +54,7 @@ Můžete také načíst konkrétní verzi nabídky nebo načíst nabídku v konc
 |  Autorizace     | `Bearer YOUR_TOKEN`    |
 |  |  |
 
-
-<a name="body-example"></a>Příklad textu
-------------
+## <a name="body-example"></a>Příklad textu
 
 ### <a name="response"></a>Odpověď
 
@@ -175,7 +169,6 @@ Můžete také načíst konkrétní verzi nabídky nebo načíst nabídku v konc
 }
 ```
 
-
 ### <a name="response-body-properties"></a>Vlastnosti textu odpovědi
 
 |  **Název**       |   **Popis**                                                                                                               |
@@ -183,12 +176,11 @@ Můžete také načíst konkrétní verzi nabídky nebo načíst nabídku v konc
 |  offerTypeId    | Identifikuje typ nabídky.                                                                                                    |
 |  publisherId    | Jedinečný identifikátor vydavatele                                                                                              |
 |  status         | Stav nabídky Seznam možných hodnot najdete v tématu o [stavu nabídky](#offer-status) níže.                                  |
-|  ID             | Identifikátor GUID, který jedinečně identifikuje nabídku                                                                                         |
+|  Id             | Identifikátor GUID, který jedinečně identifikuje nabídku                                                                                         |
 |  verze        | Aktuální verze nabídky Vlastnost Version nemůže změnit klient. Po každém publikování se zvýší.    |
 |  definice     | Skutečná definice úlohy                                                                                               |
 |  changedTime    | UTC – datum poslední změny nabídky                                                                                   |
 |  |  |
-
 
 ### <a name="response-status-codes"></a>Stavové kódy odpovědí
 
@@ -200,7 +192,6 @@ Můžete také načíst konkrétní verzi nabídky nebo načíst nabídku v konc
 |  404      | `Not found`-Zadaná entita neexistuje. Klient by měl kontrolovat publisherId, hodnotami OfferId a verzi (Pokud je zadaný).      |
 |  |  |
 
-
 ### <a name="offer-status"></a>Stav nabídky
 
 |  **Název**                   |   **Popis**                             |
@@ -208,8 +199,8 @@ Můžete také načíst konkrétní verzi nabídky nebo načíst nabídku v konc
 |  NeverPublished             | Nabídka nebyla nikdy publikována.               |
 |  NotStarted                 | Nabídka je nová, ale není spuštěná.              |
 |  WaitingForPublisherReview  | Nabídka čeká na schválení vydavatele.      |
-|  Spuštěno                    | Zpracovává se odeslání nabídky.          |
-|  Úspěch                  | Bylo dokončeno zpracování příspěvku nabídky.    |
+|  Spuštěný                    | Zpracovává se odeslání nabídky.          |
+|  Úspěšný                  | Bylo dokončeno zpracování příspěvku nabídky.    |
 |  Zrušeno                   | Odeslání nabídky se zrušilo.                |
-|  Failed                     | Odeslání nabídky se nezdařilo.                      |
+|  Neúspěšný                     | Odeslání nabídky se nezdařilo.                      |
 |  |  |

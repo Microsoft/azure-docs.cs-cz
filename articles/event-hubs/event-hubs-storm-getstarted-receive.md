@@ -3,12 +3,12 @@ title: 'Rychlý Start: příjem událostí pomocí Apache Storm – Azure Event 
 description: 'Rychlý Start: Tento článek poskytuje informace o tom, jak přijímat události z Azure Event Hubs pomocí Apache Storm.'
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 05973a9a930cd7b42a5a00554c48832065c794ec
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 099a3ff1ad57616de0d7929d787b82e9d55c9e00
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85315362"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087573"
 ---
 # <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>Rychlý Start: příjem událostí z Event Hubs pomocí Apache Storm
 
@@ -16,7 +16,7 @@ ms.locfileid: "85315362"
 
 Další informace o Event Hubs vzorech přijímání najdete v [přehledu Event Hubs][Event Hubs overview].
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Než začnete s rychlým startem, **vytvořte obor názvů Event Hubs a centrum událostí**. Použijte [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centrum událostí, postupujte podle pokynů v [tomto článku](event-hubs-create.md). 
 
 ## <a name="create-project-and-add-code"></a>Vytvořit projekt a přidat kód
@@ -238,7 +238,7 @@ Další informace o službě Event Hubs najdete na následujících odkazech:
 * [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)
 
 <!-- Links -->
-[Event Hubs overview]: event-hubs-what-is-event-hubs.md
+[Event Hubs overview]: ./event-hubs-about.md
 [HDInsight Storm]: ../hdinsight/storm/apache-storm-overview.md
 [Příklad HDInsight s využitím centra událostí]: https://github.com/Azure-Samples/hdinsight-java-storm-eventhub
 

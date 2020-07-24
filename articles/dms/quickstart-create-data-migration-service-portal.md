@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
-ms.date: 01/08/2020
-ms.openlocfilehash: 7d27d67cfa46eb4554f6ca3d66df76e393b18da0
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 07/21/2020
+ms.openlocfilehash: 0dd150909a56aafdd2005f2d68a12d32a1e8fae4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84187547"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087777"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>Rychlý start: Vytvoření instance služby Azure Database Migration Service pomocí webu Azure Portal
 
@@ -30,6 +30,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 Otevřete webový prohlížeč, přejděte na web [Microsoft Azure Portal](https://portal.azure.com/) a pak zadejte svoje přihlašovací údaje pro přihlášení k portálu.
 
 Výchozím zobrazením je váš řídicí panel služby.
+
+> [!NOTE]
+> Můžete vytvořit až 10 instancí DMS na předplatné. Pokud požadujete větší počet instancí, vytvořte lístek podpory.
 
 ## <a name="register-the-resource-provider"></a>Registrace poskytovatele prostředků
 

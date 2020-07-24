@@ -1,5 +1,5 @@
 ---
-title: Spotřeba prostředků SQL Analytics synapse
+title: Synapse využití prostředků SQL
 description: Přečtěte si o modelech spotřeby synapse SQL ve službě Azure synapse Analytics.
 services: synapse analytics
 author: vvasic-msft
@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: b81f1e49b2209d0a236f1fb453bb7fe679bb3608
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 364f1676740106d57e61f94beaec53682656ef40
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84112758"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089188"
 ---
-# <a name="azure-synapse-analytics-sql-resource-consumption"></a>Spotřeba prostředků SQL ve službě Azure synapse Analytics
+# <a name="synapse-sql-resource-consumption"></a>Synapse využití prostředků SQL
 
 Tento článek popisuje modely spotřeby prostředků synapse SQL (Preview).
 
@@ -45,7 +45,7 @@ Zvyšování DWU:
 - Zvyšuje počet čtenářů a zapisovačů pro operace základního zatížení.
 - Zvyšuje maximální počet souběžných dotazů a souběžných slotů.
 
-### <a name="service-level-objective"></a>Service Level Objective (cíl úrovně služby)
+### <a name="service-level-objective"></a>Service Level Objective
 
 Cíl úrovně služeb (SLO) je nastavení škálovatelnosti, které určuje náklady a úroveň výkonu datového skladu. Úrovně služeb pro Gen2 se měří v jednotkách služby COMPUTE Data Warehouse (cDWU), například DW2000c. Úrovně služeb Gen1 se měří v DWU, například DW2000.
 
@@ -107,7 +107,7 @@ Chcete-li zobrazit aktuální nastavení DWU:
 
 1. Otevřete Průzkumník objektů systému SQL Server v aplikaci Visual Studio.
 2. Připojte se k hlavní databázi přidružené k logickému SQL serveru.
-3. Vyberte ze zobrazení dynamické správy sys. database_service_objectives. Zde naleznete příklad:
+3. Vyberte ze zobrazení dynamické správy sys. database_service_objectives. Tady je příklad:
 
 ```sql
 SELECT  db.name [Database]
@@ -120,7 +120,7 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 ### <a name="change-data-warehouse-units"></a>Změnit jednotky datového skladu
 
-#### <a name="azure-portal"></a>portál Azure
+#### <a name="azure-portal"></a>Portál Azure Portal
 
 Postup změny DWU:
 

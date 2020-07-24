@@ -1,22 +1,22 @@
 ---
 title: Použití emulátoru Azurite pro vývoj místních Azure Storage
-description: Azurite Open Source emulátor (Preview) poskytuje bezplatné místní prostředí pro testování vašich aplikací Azure Storage.
+description: Azurite Open Source emulátor poskytuje bezplatné místní prostředí pro testování vašich aplikací Azure Storage.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 05/01/2020
+ms.date: 07/15/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: af846b0c203934468b7f6282234819142093286f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c850fccf5a86df4c35ce4db53b5b40d5e8588210
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512144"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089409"
 ---
-# <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>Použití emulátoru Azurite pro místní Azure Storage vývoj a testování (Preview)
+# <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>Použití emulátoru Azurite pro vývoj místních Azure Storage
 
-Azurite verze 3,2 Open-Source emulátor (Preview) poskytuje bezplatné místní prostředí pro testování objektů blob Azure a aplikací úložiště ve frontě. Až budete spokojeni s tím, jak vaše aplikace pracuje místně, přepněte se na použití účtu Azure Storage v cloudu. Emulátor poskytuje podporu pro různé platformy v systémech Windows, Linux a macOS. Azurite V3 podporuje rozhraní API implementovaná službou Azure Blob service.
+Azurite Open Source emulátor poskytuje bezplatné místní prostředí pro testování objektů blob Azure a aplikací úložiště ve frontě. Až budete spokojeni s tím, jak vaše aplikace pracuje místně, přepněte se na použití účtu Azure Storage v cloudu. Emulátor poskytuje podporu pro různé platformy v systémech Windows, Linux a macOS.
 
 Azurite je budoucí platforma emulátoru úložiště. Azurite nahrazuje [emulátor Azure Storage](storage-use-emulator.md). Azurite se bude dál aktualizovat, aby podporovala nejnovější verze rozhraní Azure Storage API.
 
@@ -34,8 +34,6 @@ V Visual Studio Code Vyberte podokno **rozšíření** a vyhledejte *Azurite* na
 ![Tržiště rozšíření Visual Studio Code](media/storage-use-azurite/azurite-vs-code-extension.png)
 
 V prohlížeči můžete také přejít na [trh rozšíření Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite) . Kliknutím na tlačítko **nainstalovat** otevřete Visual Studio Code a přejdete přímo na stránku rozšíření Azurite.
-
-Azurite můžete rychle spustit nebo zavřít na stavovém řádku Visual Studio Code. Klikněte na **[Azurite BLOB Service]** nebo **[služba Azurite Queue]**.
 
 Rozšíření podporuje následující příkazy Visual Studio Code. Chcete-li otevřít paletu příkazů, stiskněte klávesu F1 v Visual Studio Code. 
 
@@ -67,6 +65,7 @@ Podporovaná jsou následující nastavení:
    - **Azurite: Queue Host** – koncový bod naslouchací služby služba front. Výchozí nastavení je 127.0.0.1.
    - **Azurite: port fronty** – port naslouchání služba front. Výchozí port je 10001.
    - **Azurite: bezobslužný** bezobslužný režim zakáže protokol přístupu. Výchozí hodnota je **false** (nepravda).
+   - **Azurite: Přeskočit kontrolu verze rozhraní API** – Přeskočit kontrolu verze API žádosti Výchozí hodnota je **false** (nepravda).
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>Instalace a spuštění Azurite pomocí NPM
 
@@ -311,6 +310,15 @@ azurite --oauth basic --cert path/server.pem --key path/key.pem
 
 Azurite podporuje základní ověřování zadáním `basic` parametru pro `--oauth` přepínač. Azurite provede základní ověřování, jako je ověřování příchozího tokenu nosiče, kontrola vystavitele, cílové skupiny a vypršení platnosti. Azurite nekontroluje podpis nebo oprávnění tokenu.
 
+### <a name="skip-api-version-check"></a>Přeskočit kontrolu verze rozhraní API
+
+**Volitelné** – při spuštění Azurite zkontroluje, jestli je požadovaná verze rozhraní API platná. Následující příkaz přeskočí kontrolu verze rozhraní API:
+
+```console
+azurite --skipApiVersionCheck
+```
+
+
 ## <a name="authorization-for-tools-and-sdks"></a>Autorizace pro nástroje a sady SDK
 
 Připojte se k Azurite z Azure Storage sady SDK nebo nástrojů, jako je [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/), pomocí jakékoli strategie ověřování. Vyžaduje se ověření. Azurite podporuje autorizaci pomocí OAuth, sdíleného klíče a signatury sdíleného přístupu (SAS). Azurite také podporuje anonymní přístup k veřejným kontejnerům.
@@ -554,4 +562,4 @@ Příspěvky a návrhy pro Azurite jsou Vítá vás. Přejít na stránku [proje
 ## <a name="next-steps"></a>Další kroky
 
 - [Použijte emulátor úložiště Azure pro vývoj a testování](storage-use-emulator.md) dokumentů staršího emulátoru úložiště Azure, který nahrazuje Azurite.
-- [Konfigurace připojovacích řetězců Azure Storage](storage-configure-connection-string.md) vysvětluje, jak sestavit platný připojovací řetězec úložiště Azure.
+- [Konfigurace připojovacích řetězců Azure Storage](storage-configure-connection-string.md) vysvětluje, jak sestavit platný připojovací řetězec Azure Storage.

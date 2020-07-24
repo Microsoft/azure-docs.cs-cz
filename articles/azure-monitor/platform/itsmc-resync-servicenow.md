@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: f09f5010c18f5ea064b02f0fbbae107bf473e1f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3382f93990612b0ab34eb0848cbf3d6577c44ff
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81313667"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087930"
 ---
 # <a name="how-to-manually-fix-servicenow-sync-problems"></a>Ruční oprava problémů s synchronizací ServiceNow
 
@@ -38,7 +38,7 @@ K opětovné aktivaci připojení a aktualizaci tokenu použijte následující 
     1. Klikněte na název konektoru, aby se nakonfiguroval.
     1. Odstranit všechny konektory, které se už nepoužívají
 
-    1. Aktualizujte pole podle [těchto definic](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-connections) na základě typu partnera.
+    1. Aktualizujte pole podle [těchto definic](./itsmc-connections.md) na základě typu partnera.
 
     1. Klikněte na synchronizovat.
 

@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 0f386e4ba4a1835b88b753574bde23e93f7f8d17
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 5e70d434fcb297ff39b32a83b89a86e85fe9564f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86235831"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088440"
 ---
 # <a name="azure-powershell---enable-double-encryption-at-rest-on-your-managed-disks"></a>Azure PowerShell – na spravovaných discích povolit dvojité šifrování v klidovém prostředí
 
@@ -25,7 +25,7 @@ Azure Disk Storage podporuje dvojité šifrování v klidovém umístění pro s
 
 ## <a name="prerequisites"></a>Předpoklady
 
-Nainstalujte nejnovější [verzi Azure PowerShell](/powershell/azure/install-az-ps)a přihlaste se k účtu Azure pomocí [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-4.3.0).
+Nainstalujte nejnovější [verzi Azure PowerShell](/powershell/azure/install-az-ps)a přihlaste se k účtu Azure pomocí [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-4.3.0).
 
 ## <a name="getting-started"></a>Začínáme
 
@@ -35,7 +35,7 @@ Nainstalujte nejnovější [verzi Azure PowerShell](/powershell/azure/install-az
     
     ```powershell
     $ResourceGroupName="yourResourceGroupName"
-    $LocationName="westcentralus"
+    $LocationName="westus2"
     $keyVaultName="yourKeyVaultName"
     $keyName="yourKeyName"
     $keyDestination="Software"
@@ -49,13 +49,13 @@ Nainstalujte nejnovější [verzi Azure PowerShell](/powershell/azure/install-az
 1.  Vytvořte DiskEncryptionSet pomocí encryptionType sady jako EncryptionAtRestWithPlatformAndCustomerKeys. V šabloně Azure Resource Manager (ARM) použijte rozhraní API verze **2020-05-01** . 
     
     ```powershell
-    New-AzResourceGroupDeployment -ResourceGroupName CMKTesting `
+    New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName `
     -TemplateUri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/DoubleEncryption/CreateDiskEncryptionSetForDoubleEncryption.json" `
-    -diskEncryptionSetName "yourDESForDoubleEncryption" `
-    -keyVaultId "subscriptions/dd80b94e-0463-4a65-8d04-c94f403879dc/resourceGroups/yourResourceGroupName/providers/Microsoft.KeyVault/vaults/yourKeyVaultName" `
-    -keyVaultKeyUrl "https://yourKeyVaultName.vault.azure.net/keys/yourKeyName/403445136dee4a57af7068cab08f7d42" `
+    -diskEncryptionSetName $diskEncryptionSetName `
+    -keyVaultId $keyVault.ResourceId `
+    -keyVaultKeyUrl $key.Key.Kid `
     -encryptionType "EncryptionAtRestWithPlatformAndCustomerKeys" `
-    -region "CentralUSEUAP"
+    -region $LocationName
     ```
 
 1. Udělte DiskEncryptionSet prostředku přístup k trezoru klíčů.
@@ -64,6 +64,7 @@ Nainstalujte nejnovější [verzi Azure PowerShell](/powershell/azure/install-az
     > V případě, že Azure může v Azure Active Directory vytvořit identitu vašeho DiskEncryptionSetu, může to několik minut trvat. Pokud při spuštění následujícího příkazu dojde k chybě, například "Nejde najít objekt služby Active Directory", počkejte pár minut a zkuste to znovu.
 
     ```powershell  
+    $des=Get-AzDiskEncryptionSet -name $diskEncryptionSetName -ResourceGroupName $ResourceGroupName
     Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ObjectId $des.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
     ```
 
@@ -71,5 +72,5 @@ Nainstalujte nejnovější [verzi Azure PowerShell](/powershell/azure/install-az
 
 Teď, když jste vytvořili a nakonfigurovali tyto prostředky, je můžete použít k zabezpečení svých spravovaných disků. Následující odkazy obsahují ukázkové skripty, z nichž každý má odpovídající scénář, který můžete použít k zabezpečení svých spravovaných disků.
 
-[Azure PowerShell – povolení klíčů spravovaných zákazníkem pomocí disků spravovaných šifrováním na straně serveru](disks-enable-customer-managed-keys-powershell.md) 
- [Ukázky šablon Azure Resource Manager](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/DoubleEncryption)
+- [Azure PowerShell – povolení klíčů spravovaných zákazníkem pomocí disků spravovaných šifrováním na straně serveru](disks-enable-customer-managed-keys-powershell.md)
+- [Ukázky šablon Azure Resource Manager](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/DoubleEncryption)

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 7e59ee029b1705f6f789812b870de96bbb74a6e5
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 23556d6c0d64c6b6351d09ac1a658da0e5a4dd68
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223546"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088831"
 ---
 # <a name="migrate-from-a-managed-image-to-a-shared-image-gallery-image"></a>Migrace ze spravované image do image galerie sdílených imagí
 
@@ -54,9 +54,9 @@ Definice obrázků vytvoří logické seskupení obrázků. Používají se ke s
 
 Při vytváření definice obrázku se ujistěte, že jsou všechny správné informace. Vzhledem k tomu, že se spravované image vždycky zobecněny, měli byste nastavit `-OsState generalized` . 
 
-Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions).
+Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](./windows/shared-image-galleries.md#image-definitions).
 
-Vytvořte definici Image pomocí [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). V tomto příkladu má definice image název *myImageDefinition*a je určena pro zobecněný operační systém Windows. Pokud chcete vytvořit definici imagí pomocí operačního systému Linux, použijte `-OsType Linux` . 
+Vytvořte definici Image pomocí [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion). V tomto příkladu má definice image název *myImageDefinition*a je určena pro zobecněný operační systém Windows. Pokud chcete vytvořit definici imagí pomocí operačního systému Linux, použijte `-OsType Linux` . 
 
 ```azurepowershell-interactive
 $imageDefinition = New-AzGalleryImageDefinition `
@@ -73,7 +73,7 @@ $imageDefinition = New-AzGalleryImageDefinition `
 
 ## <a name="get-the-managed-image"></a>Získat spravovanou bitovou kopii
 
-Seznam imagí, které jsou k dispozici ve skupině prostředků, můžete zobrazit pomocí [Get-AzImage](https://docs.microsoft.com/powershell/module/az.compute/get-azimage). Jakmile znáte název bitové kopie a její skupinu prostředků, můžete `Get-AzImage` znovu použít k získání objektu image a uložit ho do proměnné pro pozdější použití. Tento příklad načte image s názvem *myImage* ze skupiny prostředků "myResourceGroup" a přiřadí ji k proměnné *$managedImage*. 
+Seznam imagí, které jsou k dispozici ve skupině prostředků, můžete zobrazit pomocí [Get-AzImage](/powershell/module/az.compute/get-azimage). Jakmile znáte název bitové kopie a její skupinu prostředků, můžete `Get-AzImage` znovu použít k získání objektu image a uložit ho do proměnné pro pozdější použití. Tento příklad načte image s názvem *myImage* ze skupiny prostředků "myResourceGroup" a přiřadí ji k proměnné *$managedImage*. 
 
 ```azurepowershell-interactive
 $managedImage = Get-AzImage `
@@ -84,7 +84,7 @@ $managedImage = Get-AzImage `
 
 ## <a name="create-an-image-version"></a>Vytvoření verze image
 
-Pomocí [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)vytvořte z spravované image verzi image. 
+Pomocí [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion)vytvořte z spravované image verzi image. 
 
 Povolené znaky pro verzi obrázku jsou čísla a tečky. Čísla musí být v rozsahu 32 celé číslo. Formát: *MajorVersion*. *Podverze.* *Oprava*.
 
@@ -117,7 +117,7 @@ $job.State
 > [!NOTE]
 > Aby bylo možné použít stejnou spravovanou bitovou kopii k vytvoření jiné verze bitové kopie, je třeba počkat na dokončení sestavení a repliky verze image. 
 >
-> Image můžete ukládat do úložiště Premiun přidáním `-StorageAccountType Premium_LRS` nebo [redundantním úložištěm zóny](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) přidáním `-StorageAccountType Standard_ZRS` při vytváření verze image.
+> Image můžete ukládat do úložiště Premiun přidáním `-StorageAccountType Premium_LRS` nebo [redundantním úložištěm zóny](../storage/common/storage-redundancy.md) přidáním `-StorageAccountType Standard_ZRS` při vytváření verze image.
 >
 
 ## <a name="delete-the-managed-image"></a>Odstranit spravovanou bitovou kopii

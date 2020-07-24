@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 06/19/2020
+ms.date: 07/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c666a11f8d5e13d022309eddab16edb6aab76381
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5fb992edea38c3dff9beffab1f131d3e7a6fdbf6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527757"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087216"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) (RDP) pro fond hostitelů
 
@@ -30,18 +30,6 @@ Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) (RDP) fondu h
 ## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, postupujte podle pokynů v části [nastavení modulu Azure Virtual Desktop PowerShell](powershell-module.md) a nastavte modul prostředí PowerShell a přihlaste se k Azure.
-
-## <a name="default-rdp-properties"></a>Výchozí vlastnosti protokolu RDP
-
-Publikované soubory RDP ve výchozím nastavení obsahují následující vlastnosti:
-
-|Vlastnosti protokolu RDP | Desktops | Vzdálené aplikace RemoteApp |
-|---|---| --- |
-| Režim více monitorů | Povoleno | – |
-| Přesměrování jednotky povolena | Jednotky, schránka, tiskárny, porty COM, zařízení USB a čipové karty| Jednotky, schránka a tiskárny |
-| Režim vzdáleného zvuku | Přehrát místně | Přehrát místně |
-
-Tato výchozí nastavení se přepíšou všemi vlastními vlastnostmi, které definujete pro fond hostitelů.
 
 ## <a name="configure-rdp-properties-in-the-azure-portal"></a>Konfigurace vlastností protokolu RDP v Azure Portal
 

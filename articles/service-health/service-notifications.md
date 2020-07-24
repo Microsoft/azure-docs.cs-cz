@@ -3,11 +3,12 @@ title: Zobrazení oznámení o stavu služby s využitím webu Azure Portal
 description: Oznámení o stavu služby umožňují zobrazit zprávy o stavu služby publikované pomocí Microsoft Azure.
 ms.topic: conceptual
 ms.date: 6/27/2019
-ms.openlocfilehash: 21416edc95d345eb183030a9b0cccb7529305d6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f8297ae708d3f4e7921221f2c4bacee12a7a2b1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75748651"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089562"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Zobrazení oznámení o stavu služby s využitím webu Azure Portal
 
@@ -29,7 +30,7 @@ Další informace o různých třídách oznámení o stavu služby najdete v t�
 
     ![Snímek obrazovky protokolu aktivity monitorování s vybranými výstrahami](./media/service-notifications/service-health-summary.png)
 
-1. Vyberte **+ Přidat upozornění protokolu aktivit**a nastavte výstrahu, abyste se ujistili, že máte oznámení o budoucích oznámeních služby. Další informace najdete v tématu [vytváření výstrah protokolu aktivit u oznámení služby](../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+1. Vyberte **+ Přidat upozornění protokolu aktivit**a nastavte výstrahu, abyste se ujistili, že máte oznámení o budoucích oznámeních služby. Další informace najdete v tématu [vytváření výstrah protokolu aktivit u oznámení služby](./alerts-activity-log-service-notifications-portal.md).
 
 ## <a name="next-steps"></a>Další kroky
 

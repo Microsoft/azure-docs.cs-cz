@@ -6,14 +6,14 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
-ms.openlocfilehash: ca4dc888af414ede270118eff72652f098d3306c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8a459d1fba4353b4b3e092e83a759314cc455ead
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82779038"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087284"
 ---
-# <a name="localization"></a>Lokalizace #
+# <a name="azure-media-player-localization"></a>Azure Media Player lokalizace #
 
 Podpora více jazyků umožňuje uživatelům jiných než anglické národní prostředí nativně interagovat s přehrávačem. Azure Media Player vytvoří instanci s globálním slovníkem jazyků, který bude lokalizovat chybové zprávy na základě jazyka stránky. Vývojář může také vytvořit instanci přehrávače s vynuceným nastavením jazyka. Výchozí jazyk je angličtina (EN).
 
@@ -31,7 +31,7 @@ Azure Media Player aktuálně podporuje následující jazyky s odpovídajícím
 | Angličtina {výchozí}   | en   | Chorvatština                | hod     | Rumunština                | loď           |
 | Arabština              | snížen   | Maďarština               | hu     | Slovenština                  | SM           |
 | Bulharština           | BG   | Indonéština              | id     | Slovene                 | SSL           |
-| Katalánština             | určen   | Islandština               | is     | Srbština – cyrilice      | sr-cyrl-cs   |
+| Katalánština             | určen   | Islandština               | je     | Srbština – cyrilice      | sr-cyrl-cs   |
 | Čeština               | cs   | Italština                 | její     | Srbština – latinka         | sr-latn-rs   |
 | Dánština              | &   | Japonština                | dža     | Ruština                 | ru           |
 | Němčina              | &   | Kazaština                  | kk     | Švédština                 | činí           |

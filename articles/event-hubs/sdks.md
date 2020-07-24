@@ -3,12 +3,12 @@ title: Azure Event Hubs – klientské sady SDK | Microsoft Docs
 description: Tento článek poskytuje informace o klientských sadách SDK pro Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 4c3557556500f2a536e20331bd3d05d84f608f0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b75a66197b152425198b94a68ac77e392cb4c0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85312547"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087556"
 ---
 # <a name="azure-event-hubs---client-sdks"></a>Azure Event Hubs – klientské sady SDK
 Tento článek poskytuje následující informace pro sady SDK podporované službou Azure Event Hubs: 
@@ -33,7 +33,7 @@ Následující tabulka popisuje všechny aktuálně dostupné klienty Azure Even
 |        | [Azure – eventhub – checkpointstoreblob – AIO](https://pypi.org/project/azure-eventhub-checkpointstoreblob-aio/) | <ul><li>[Umístění GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio)</li><li>[Kurz](get-started-python-send-v2.md)</li></ul> |
 | JavaScript | [Azure/Event – centra](https://www.npmjs.com/package/@azure/event-hubs) | <ul><li>[Umístění GitHubu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs)</li><li>[Kurz](get-started-node-send-v2.md)</li></ul> |
 |            | [Azure/eventhubs-checkpointstore-BLOB](https://www.npmjs.com/package/@azure/eventhubs-checkpointstore-blob) | <ul><li>[Umístění GitHubu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/eventhubs-checkpointstore-blob)</li><li>[Kurz](get-started-node-send-v2.md)</li></ul> |
-| Přejít | [Azure – Event – centra – přejít](https://github.com/Azure/azure-event-hubs-go) | <ul><li>[Umístění GitHubu](https://github.com/Azure/azure-event-hubs-go)</li><li>[Kurz](event-hubs-go-get-started-send.md)</li></ul> |
+| Go | [Azure – Event – centra – přejít](https://github.com/Azure/azure-event-hubs-go) | <ul><li>[Umístění GitHubu](https://github.com/Azure/azure-event-hubs-go)</li><li>[Kurz](event-hubs-go-get-started-send.md)</li></ul> |
 | C | [Azure-Event-Centers-c](https://github.com/Azure/azure-event-hubs-c) | <ul><li>[Umístění GitHubu](https://github.com/Azure/azure-event-hubs-c)</li><li>[Kurz](event-hubs-c-getstarted-send.md)</li></ul> |
 
 ## <a name="management-sdks"></a>Sady Management SDK
@@ -48,6 +48,6 @@ V následující tabulce jsou uvedeny všechny aktuálně dostupné knihovny spe
 
 Další informace o službě Event Hubs najdete na následujících odkazech:
 
-* [Přehled Event Hubs](event-hubs-what-is-event-hubs.md)
+* [Přehled Event Hubs](./event-hubs-about.md)
 * [Vytvoření centra událostí](event-hubs-create.md)
 * [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)

@@ -3,16 +3,16 @@ title: Vytvoření centra událostí s povoleným zachytáváním – Azure Even
 description: Vytvoření oboru názvů Azure Event Hubs s jedním centrem událostí a povolení funkce Capture pomocí šablony Azure Resource Manageru
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 51b654635fa7e06901a257c930e04bff3ea86cf8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7308d951cf48d8123df050bdf58772ec914aac3e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315703"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087590"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Vytvoření oboru názvů v centru událostí a povolení funkce Capture pomocí šablony
 
-Tento článek ukazuje, jak použít šablonu Azure Resource Manageru, která vytvoří obor názvů [Event Hubs](event-hubs-what-is-event-hubs.md) s jednou instancí centra událostí, ve kterém také povolí [funkci Capture](event-hubs-capture-overview.md). Tento článek popisuje, jak definovat, které prostředky se nasadí, a jak definovat parametry zadávané při spuštění nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky.
+Tento článek ukazuje, jak použít šablonu Azure Resource Manageru, která vytvoří obor názvů [Event Hubs](./event-hubs-about.md) s jednou instancí centra událostí, ve kterém také povolí [funkci Capture](event-hubs-capture-overview.md). Tento článek popisuje, jak definovat, které prostředky se nasadí, a jak definovat parametry zadávané při spuštění nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky.
 
 Tento článek také ukazuje, jak určit, že se události mají zachytávat do objektů Azure Storage Blob nebo do služby Azure Data Lake Store v závislosti na zvoleném cíli.
 
@@ -418,7 +418,7 @@ Funkci Event Hubs Capture můžete konfigurovat také prostřednictvím webu [Az
 
 Další informace o službě Event Hubs najdete na následujících odkazech:
 
-* [Přehled Event Hubs](event-hubs-what-is-event-hubs.md)
+* [Přehled Event Hubs](./event-hubs-about.md)
 * [Vytvoření centra událostí](event-hubs-create.md)
 * [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)
 

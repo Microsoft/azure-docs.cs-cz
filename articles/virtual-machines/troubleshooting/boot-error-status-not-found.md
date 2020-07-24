@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: 817f9e362e639cbb8f0cc79607c376c0e8216ec7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3677d67f55cfccdc80245b2ec870ffa76b0a1940
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83664988"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088661"
 ---
 # <a name="troubleshoot-windows-boot-manager-error----0xc0000225-status-not-found"></a>Řešení potíží s Windows Boot Managerem – chyba – 0xC0000225 "status nenalezen"
  
@@ -26,7 +27,7 @@ Tento článek popisuje kroky pro řešení problémů, při kterých se kód ch
 
 ## <a name="symptoms"></a>Příznaky
 
-Když použijete [diagnostiku spouštění](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) k zobrazení snímku obrazovky virtuálního počítače, uvidíte, že snímek obrazovky zobrazuje chybu systému Windows, která selhala s kódem stavu *0xc0000225*.
+Když použijete [diagnostiku spouštění](./boot-diagnostics.md) k zobrazení snímku obrazovky virtuálního počítače, uvidíte, že snímek obrazovky zobrazuje chybu systému Windows, která selhala s kódem stavu *0xc0000225*.
 
 Soubor přidružený k tomuto kódu chyby vás bude informovat o krocích, které je potřeba provést, aby se problém vyřešil. Vyhledejte **soubor:** text oddílu a určete příslušný postup.
 
@@ -89,7 +90,7 @@ Poškození podregistru může mít následující příčiny:
 
 ### <a name="create-and-access-a-repair-vm"></a>Vytvoření a přístup k opravnému virtuálnímu počítači
 
-1. Pomocí kroků 1-3 příkazů pro [opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) Připravte opravný virtuální počítač.
+1. Pomocí kroků 1-3 příkazů pro [opravu virtuálního počítače](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) Připravte opravný virtuální počítač.
 1. Pomocí Připojení ke vzdálené ploše se připojte k opravnému virtuálnímu počítači.
 
 ### <a name="select-a-solution"></a>Vybrat řešení
@@ -177,7 +178,7 @@ Pokud tato kolekce informací obsahuje chybu, pokud není k dispozici žádný s
          sel disk <DISK #>
          ```
 
-         Následující obrázek ukazuje výsledky výpisu a výběru disku. Disk 0 (127 GB | Online), disk 1 (32 GB | Online) a disk 2 (127 GB | Online) jsou uvedeny s vybraným diskem 2 pomocí příkazu `sel disk 2` .
+         Následující obrázek ukazuje výsledky výpisu a výběru disku. V seznamu je uveden disk 0 (127 GB/online), disk 1 (32 GB/online) a disk 2 (127 GB/online) s vybraným diskem 2 pomocí příkazu `sel disk 2` .
 
          ![Výsledky výpisu a následného výběru disku. Disk 0 (127 GB | Online), disk 1 (32 GB | Online) a disk 2 (127 GB | Online) jsou uvedeny s vybraným diskem 2.](./media/troubleshoot-boot-error-status-not-found/9.png)
 
@@ -188,7 +189,7 @@ Pokud tato kolekce informací obsahuje chybu, pokud není k dispozici žádný s
          sel partition <PARTITION #>
          ```
 
-         Následující obrázek znázorňuje výsledky výpisu a výběru oddílu. V seznamu je uveden oddíl 1 (rezervovaný | 16 TB), oddíl 2 (systém | 100 MB) a oddíl 3 (primární | 126 GB) s vybraným oddílem 2 pomocí příkazu `sel part 2` .
+         Následující obrázek znázorňuje výsledky výpisu a výběru oddílu. V seznamu oddíl 1 (rezervovaný/16), oddíl 2 (systém/100 MB) a oddíl 3 (primární/126 GB) se vybere oddíl 2 pomocí příkazu `sel part 2` .
 
          ![Výsledky výpisu a následného výběru oddílu. V seznamu oddíl 1 (rezervovaný | 16), oddíl 2 (systém | 100 MB) a oddíl 3 (primární | 126 GB) se vybere oddíl 2.](./media/troubleshoot-boot-error-status-not-found/10.png)
 
@@ -302,4 +303,4 @@ Chyba **souboru registru** obsahuje řešení, ale pro další pomoc budete muse
    
 ### <a name="rebuild-the-vm"></a>Opětovné sestavení virtuálního počítače
 
-K opětovnému sestavení virtuálního počítače použijte [Krok 5 příkazů pro opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) .
+K opětovnému sestavení virtuálního počítače použijte [Krok 5 příkazů pro opravu virtuálního počítače](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) .

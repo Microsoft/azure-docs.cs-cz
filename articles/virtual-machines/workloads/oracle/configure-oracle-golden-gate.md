@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: 60d06fa4cf6d116f9c802cda544a356e469755b5
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 5ed99fd6a16743846033313fcf13702f69f3e728
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223070"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088355"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Implementace Oracle Zlaté brány na virtuálním počítači Azure Linux 
 
@@ -27,7 +27,7 @@ Azure CLI slouží k vytváření a správě prostředků Azure z příkazového
 
 V tomto dokumentu se dozvíte, jak vytvořit, nainstalovat a nakonfigurovat Oracle zlatou bránu na virtuálním počítači Azure. V tomto kurzu jsou dva virtuální počítače nastavené ve skupině dostupnosti v jedné oblasti. Stejný kurz se dá použít k nastavení brány OracleGolden pro virtuální počítače v různých Zóny dostupnosti v jedné oblasti Azure nebo pro nastavení virtuálních počítačů ve dvou různých oblastech.
 
-Než začnete, ujistěte se, že je rozhraní Azure CLI nainstalované. Další informace najdete v tématu [Průvodce instalací Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Než začnete, ujistěte se, že je rozhraní Azure CLI nainstalované. Další informace najdete v tématu [Průvodce instalací Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="prepare-the-environment"></a>Příprava prostředí
 
@@ -68,7 +68,7 @@ az group create --name myResourceGroup --location westus
 
 ### <a name="create-an-availability-set"></a>Vytvoření skupiny dostupnosti
 
-Následující krok je nepovinný, ale doporučuje se. Další informace najdete v tématu [Průvodce skupinami dostupnosti Azure](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines).
+Následující krok je nepovinný, ale doporučuje se. Další informace najdete v tématu [Průvodce skupinami dostupnosti Azure](../../windows/infrastructure-example.md).
 
 ```azurecli
 az vm availability-set create \

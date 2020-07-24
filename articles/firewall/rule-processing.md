@@ -7,13 +7,14 @@ ms.service: firewall
 ms.topic: article
 ms.date: 04/10/2020
 ms.author: victorh
-ms.openlocfilehash: 93677b3e473ab825665fed5590ac345a8cfcc300
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84110e749dac9267e994385aa5f6d05e3ba224a6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81113437"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087539"
 ---
-# <a name="azure-firewall-rule-processing-logic"></a>Logika zpracování pravidel Azure Firewall
+# <a name="configure-azure-firewall-rules"></a>Konfigurace pravidel Azure Firewall
 Pravidla překladu adres (NAT), pravidla sítě a aplikace můžete nakonfigurovat na Azure Firewall. Kolekce pravidel se zpracovávají podle typu pravidla v pořadí podle priority, nižších čísel od 100 do 65 000. Název kolekce pravidel může obsahovat jenom písmena, číslice, podtržítka, tečky nebo spojovníky. Musí začínat písmenem nebo číslicí a končit písmenem, číslicí nebo podtržítkem. Maximální délka názvu je 80 znaků.
 
 Doporučujeme, abyste v případě potřeby nasadili čísla priority kolekce pravidel v 100 přírůstcích (100, 200, 300 a tak dále).
@@ -48,13 +49,13 @@ Připojení k google.com je povolené z důvodu odpovídajícího síťového pr
 - Akce: Povolit
 
 
-|name  |Protocol (Protokol)  |Typ zdroje  |Zdroj  |Cílový typ  |Cílová adresa  |Cílové porty|
+|name  |Protokol  |Typ zdroje  |Zdroj  |Cílový typ  |Cílová adresa  |Cílové porty|
 |---------|---------|---------|---------|----------|----------|--------|
 |Povolení – Web     |TCP|IP adresa|*|IP adresa|*|80,443
 
 **Pravidlo aplikace**
 
-- Akce: Odepřít
+- Akce: Deny
 
 |name  |Typ zdroje  |Zdroj  |Protokol: port|Cílové plně kvalifikované názvy domén|
 |---------|---------|---------|---------|----------|----------|
@@ -74,7 +75,7 @@ Přenosy SSH se zamítly, protože kolekce *síťových pravidel* s vyšší pri
 - Priorita: 200
 - Akce: Povolit
 
-|name  |Protocol (Protokol)  |Typ zdroje  |Zdroj  |Cílový typ  |Cílová adresa  |Cílové porty|
+|name  |Protokol  |Typ zdroje  |Zdroj  |Cílový typ  |Cílová adresa  |Cílové porty|
 |---------|---------|---------|---------|----------|----------|--------|
 |Povolení – SSH     |TCP|IP adresa|*|IP adresa|*|22
 
@@ -82,9 +83,9 @@ Přenosy SSH se zamítly, protože kolekce *síťových pravidel* s vyšší pri
 
 - Název: Deny-Collection
 - Priorita: 100
-- Akce: Odepřít
+- Akce: Deny
 
-|name  |Protocol (Protokol)  |Typ zdroje  |Zdroj  |Cílový typ  |Cílová adresa  |Cílové porty|
+|name  |Protokol  |Typ zdroje  |Zdroj  |Cílový typ  |Cílová adresa  |Cílové porty|
 |---------|---------|---------|---------|----------|----------|--------|
 |Odepřít – SSH     |TCP|IP adresa|*|IP adresa|*|22
 

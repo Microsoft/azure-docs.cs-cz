@@ -6,12 +6,13 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: dc4426fc08efff44bc46ba37eb6fbc6fe31f356b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: cda22c63a70c5121e6a6972c66bdc0a4bb5158fc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735434"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089460"
 ---
 # <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Kvóty a plány služeb pro jarní Cloud v Azure
 
@@ -22,7 +23,7 @@ Všechny služby Azure nastavily výchozí limity a kvóty pro prostředky a fun
 | Prostředek | Basic | Standard
 ------- | ------- | -------
 Virtuální procesory | 1 na instanci služby | 4 na instanci služby
-Memory (Paměť) | 2 GB na instanci služby | 8 GB na instanci služby
+Paměť | 2 GB na instanci služby | 8 GB na instanci služby
 Instance služby Azure jaře Cloud Service na oblast na předplatné | 10 | 10
 Celkový počet instancí aplikace na jednu instanci cloudové služby Azure na jaře | 25 | 500
 Trvalé svazky | 1 GB/aplikace x 10 | aplikace 50 GB/aplikace x 10

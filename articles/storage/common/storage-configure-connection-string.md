@@ -6,22 +6,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/06/2020
+ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 26faad0bb8aeb8dff693eea4cb9d47e0df1814b4
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 30e8bd7fda08795ecc1aa78b0d2507e7c915ad0d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027324"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087250"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Nakonfigurování připojovacích řetězců Azure Storage
 
 Připojovací řetězec zahrnuje autorizační informace požadované pro vaši aplikaci pro přístup k datům v účtu Azure Storage za běhu pomocí autorizace pomocí sdíleného klíče. Připojovací řetězce můžete nakonfigurovat na:
 
-* Připojte se k emulátoru úložiště Azure.
+* Připojte se k emulátoru úložiště Azurite.
 * Přístup k účtu úložiště v Azure.
 * Přístup k určeným prostředkům v Azure získáte prostřednictvím sdíleného přístupového podpisu (SAS).
 
@@ -37,15 +37,15 @@ Vaše aplikace potřebuje přístup k připojovacímu řetězci za běhu, aby by
 * Aplikace spuštěná na ploše nebo v zařízení může uložit připojovací řetězec do souboru **app.config** nebo **web.config** . Přidejte připojovací řetězec do oddílu **appSettings** v těchto souborech.
 * Aplikace, která běží v cloudové službě Azure, může uložit připojovací řetězec do [souboru schématu konfigurace služby Azure (. cscfg)](https://msdn.microsoft.com/library/ee758710.aspx). Přidejte připojovací řetězec do části **ConfigurationSettings** konfiguračního souboru služby.
 
-Uložení připojovacího řetězce do konfiguračního souboru usnadňuje aktualizaci připojovacího řetězce pro přepínání mezi emulátorem úložiště a účtem služby Azure Storage v cloudu. Musíte upravit připojovací řetězec tak, aby odkazoval na cílové prostředí.
+Uložení připojovacího řetězce do konfiguračního souboru usnadňuje aktualizaci připojovacího řetězce pro přepínání mezi [emulátorem úložiště Azurite](../common/storage-use-azurite.md) a účtem služby Azure Storage v cloudu. Musíte upravit připojovací řetězec tak, aby odkazoval na cílové prostředí.
 
 Můžete použít [Configuration Manager Microsoft Azure](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) pro přístup k připojovacímu řetězci za běhu bez ohledu na to, kde je aplikace spuštěná.
 
-## <a name="configure-a-connection-string-for-the-storage-emulator"></a>Konfigurace připojovacího řetězce pro emulátor úložiště
+## <a name="configure-a-connection-string-for-azurite"></a>Konfigurace připojovacího řetězce pro Azurite
 
 [!INCLUDE [storage-emulator-connection-string-include](../../../includes/storage-emulator-connection-string-include.md)]
 
-Další informace o emulátoru úložiště najdete v článku [použití emulátoru úložiště Azure pro vývoj a testování](storage-use-emulator.md).
+Další informace o Azurite najdete v tématu [použití emulátoru Azurite pro vývoj místních Azure Storage](../common/storage-use-azurite.md).
 
 ## <a name="configure-a-connection-string-for-an-azure-storage-account"></a>Konfigurace připojovacího řetězce pro účet služby Azure Storage
 
@@ -140,6 +140,6 @@ EndpointSuffix=core.chinacloudapi.cn;
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Použití emulátoru úložiště Azure pro vývoj a testování](storage-use-emulator.md)
+* [Použití emulátoru Azurite pro vývoj místních Azure Storage](../common/storage-use-azurite.md)
 * [Azure Storage Explorer](storage-explorers.md)
 * [Použití sdílených přístupových podpisů (SAS)](storage-sas-overview.md)

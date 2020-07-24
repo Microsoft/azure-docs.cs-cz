@@ -14,10 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: akjosh
 ms.openlocfilehash: 5914947bd994ee405f253e34c3dd919dd6561898
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79253790"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088848"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Rozšíření agenta Stackify retracee pro Linux
 
@@ -36,7 +37,7 @@ Přetrasování je jediný nástroj, který poskytuje všechny následující fu
 
 Toto rozšíření poskytuje instalační cestu pro agenta pro Linux pro opětovné trasování. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="operating-system"></a>Operační systém 
 
@@ -190,7 +191,7 @@ az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --
 | 40 | Chyba instalace | activationKey je povinný údaj. |
 | 51 | Chyba instalace | Distribuce OS se nepodporuje. |
 | 60 | Chyba instalace | prostředí je povinné. |
-| 70 | Chyba instalace | Není známo |
+| 70 | Chyba instalace | Neznámý |
 | 80 | Povolit chybu | Instalace služby se nezdařila |
 | 90 | Povolit chybu | Spuštění služby se nezdařilo |
 | 100 | Zakázat chybu | Zastavení služby se nezdařilo |

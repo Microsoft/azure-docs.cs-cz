@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1a8023a700e83892fae9a16bb2bfbe2a2eb0b307
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e66af8e55f7b60347d9577c64b7183c6ef8b44f4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193409"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089307"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Zabezpečení pracovního prostoru synapse (Preview)
 
@@ -36,7 +36,7 @@ Pokud chcete zabezpečit pracovní prostor synapse (Preview), postupujte podle v
 
 Tento dokument používá ke zjednodušení pokynů standardní názvy. Nahraďte je libovolnými názvy.
 
-|Nastavení | Příklad hodnoty | Description |
+|Nastavení | Příklad hodnoty | Popis |
 | :------ | :-------------- | :---------- |
 | **Pracovní prostor synapse** | WS1 |  Název, který bude mít pracovní prostor synapse. |
 | **Účet ADLSGEN2** | STG1 | Účet ADLS, který se má používat s vaším pracovním prostorem. |
@@ -112,7 +112,7 @@ I když můžete uživatele přiřadit k rolím synapse, pokud tak učiníte, ne
 
 Uživatelé v každé roli musí provést následující kroky:
 
-|   | Krok | Správci pracovního prostoru | Správci Spark | Správci SQL |
+| Číslo | Krok | Správci pracovního prostoru | Správci Spark | Správci SQL |
 | --- | --- | --- | --- | --- |
 | 1 | Nahrání souboru Parquet do CNT1 | ANO | ANO | ANO |
 | 2 | Přečtěte si soubor Parquet pomocí SQL na vyžádání. | ANO | NO | ANO |

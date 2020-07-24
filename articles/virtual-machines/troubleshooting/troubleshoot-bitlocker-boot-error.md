@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
 ms.custom: has-adal-ref
-ms.openlocfilehash: e0e0d9bfe46a473210b89701b5a8c56e999771d3
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 23523a3618ad31e34a81152e48d4ee0f606e5aac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132956"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088525"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Chyby spuštění nástroje BitLocker na virtuálním počítači Azure
 
@@ -28,7 +28,7 @@ ms.locfileid: "86132956"
 
 ## <a name="symptom"></a>Příznak
 
- Virtuální počítač s Windows se nespustí. Po kontrole snímků obrazovky v okně [diagnostiky spouštění](../windows/boot-diagnostics.md) se zobrazí jedna z následujících chybových zpráv:
+ Virtuální počítač s Windows se nespustí. Po kontrole snímků obrazovky v okně [diagnostiky spouštění](./boot-diagnostics.md) se zobrazí jedna z následujících chybových zpráv:
 
 - Připojte ovladač USB s klíčem BitLockeru.
 
@@ -48,7 +48,7 @@ Pokud chcete tento problém vyřešit, zastavte a uvolněte virtuální počíta
 Pokud tato metoda problém nevyřeší, postupujte podle těchto kroků a obnovte soubor klíče bek ručně:
 
 1. Pořídit snímek systémového disku ovlivněného virtuálního počítače jako zálohy. Další informace najdete v tématu [vytvoření snímku disku](../windows/snapshot-copy-managed-disk.md).
-2. [Připojte systémový disk k virtuálnímu počítači pro obnovení](troubleshoot-recovery-disks-portal-windows.md). Pokud chcete spustit příkaz [Manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) v kroku 7, musí být na virtuálním počítači pro obnovení povolená funkce **Nástroj BitLocker Drive Encryption** .
+2. [Připojte systémový disk k virtuálnímu počítači pro obnovení](troubleshoot-recovery-disks-portal-windows.md). Pokud chcete spustit příkaz [Manage-bde](/windows-server/administration/windows-commands/manage-bde) v kroku 7, musí být na virtuálním počítači pro obnovení povolená funkce **Nástroj BitLocker Drive Encryption** .
 
     Když připojíte spravovaný disk, může se zobrazit zpráva "obsahuje nastavení šifrování, a proto nemůže být použita jako chybová zpráva" datový disk ". V takovém případě spusťte následující skript a pokuste se znovu připojit disk:
 
@@ -70,7 +70,7 @@ Pokud tato metoda problém nevyřeší, postupujte podle těchto kroků a obnovt
     ```
      Spravovaný disk nemůžete připojit k virtuálnímu počítači, který se obnovil z Image objektu BLOB.
 
-3. Po připojení disku vytvořte připojení ke vzdálené ploše k virtuálnímu počítači pro obnovení, abyste mohli spouštět některé skripty Azure PowerShell. Ujistěte se, že máte na virtuálním počítači pro obnovení nainstalovanou [nejnovější verzi Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) .
+3. Po připojení disku vytvořte připojení ke vzdálené ploše k virtuálnímu počítači pro obnovení, abyste mohli spouštět některé skripty Azure PowerShell. Ujistěte se, že máte na virtuálním počítači pro obnovení nainstalovanou [nejnovější verzi Azure PowerShell](/powershell/azure/) .
 
 4. Otevřete relaci Azure PowerShell se zvýšenými oprávněními (Spustit jako správce). Spusťte následující příkazy, abyste se přihlásili k předplatnému Azure:
 

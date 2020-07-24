@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviewer: mimckitt
-ms.openlocfilehash: ba06350a564990899a593714a1f49d1e00ea544a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f91b5879922fc473ff1e46f817b3d649b1b30a9c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262102"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088729"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Scheduled Events pro virtuální počítače se systémem Linux
 
@@ -39,7 +39,7 @@ Pomocí Scheduled Events může aplikace zjistit, kdy se bude provádět údržb
 
 Scheduled Events poskytuje události v následujících případech použití:
 
-- [Údržba iniciovaná platformou](https://docs.microsoft.com/azure/virtual-machines/linux/maintenance-and-updates) (například restartování virtuálního počítače, migrace za provozu nebo zachovávání aktualizací v paměti pro hostitele)
+- [Údržba iniciovaná platformou](../maintenance-and-updates.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json) (například restartování virtuálního počítače, migrace za provozu nebo zachovávání aktualizací v paměti pro hostitele)
 - Virtuální počítač běží na [degradované hostitelském hardwaru](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events) , který brzy vypoví selhání.
 - Údržba iniciované uživatelem (například uživatel restartuje nebo znovu nasadí virtuální počítač)
 - Vyřazení instancí [sad](../../virtual-machine-scale-sets/use-spot.md) [virtuálních počítačů](spot-vms.md) a škálování na místě
@@ -73,7 +73,7 @@ Pokud se virtuální počítač nevytvoří v rámci Virtual Network, výchozí 
 ### <a name="version-and-region-availability"></a>Dostupnost verze a oblasti
 Služba Scheduled Events má verzi. Verze jsou povinné. aktuální verze je `2019-01-01` .
 
-| Verze | Typ verze | Oblasti | Poznámky k verzi | 
+| Verze | Typ verze | Oblasti | Zpráva k vydání verze | 
 | - | - | - | - | 
 | 2019-08-01 | Obecná dostupnost | Vše | <li> Přidání podpory pro EventSource |
 | 2019-04-01 | Obecná dostupnost | Vše | <li> Přidání podpory pro popis události |
@@ -138,7 +138,7 @@ V případě naplánovaných událostí obsahuje odpověď pole událostí.
 | Prostředky| Seznam prostředků, které tato událost ovlivňuje V seznamu je zaručeno, že bude obsahovat počítače z jedné [aktualizační domény](manage-availability.md), ale nemusí obsahovat všechny počítače v ud. <br><br> Příklad: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | Stav této události <br><br> Hodnoty: <ul><li>`Scheduled`: Tato událost je naplánována na spuštění po uplynutí doby zadané ve `NotBefore` Vlastnosti.<li>`Started`: Tato událost je spuštěná.</ul> `Completed`Není k dispozici žádný nebo podobný stav. Událost již není vrácena po dokončení události.
 | NotBefore| Čas, po kterém může být tato událost spuštěna. <br><br> Příklad: <br><ul><li> Pondělí 19. září 2016 18:29:47 GMT  |
-| Description | Popis této události <br><br> Příklad: <br><ul><li> Hostitelský server prochází údržbou. |
+| Popis | Popis této události <br><br> Příklad: <br><ul><li> Hostitelský server prochází údržbou. |
 | EventSource | Iniciátor události. <br><br> Příklad: <br><ul><li> `Platform`: Tato událost je iniciována pomocí Platform. <li>`User`: Tato událost je iniciována uživatelem. |
 
 ### <a name="event-scheduling"></a>Plánování událostí
@@ -150,7 +150,7 @@ Každé události je naplánováno minimální množství času v budoucnu na z�
 | Restartování | 15 minut |
 | Opětovné nasazení | 10 minut |
 | Přerušen | 30 sekund |
-| Terminate | [Uživatelsky konfigurovatelné](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications): 5 až 15 minut |
+| Terminate (Ukončení) | [Uživatelsky konfigurovatelné](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications): 5 až 15 minut |
 
 > [!NOTE] 
 > V některých případech může Azure předpovědět selhání hostitele kvůli zhoršenému hardwaru a při plánování migrace se pokusí zmírnit přerušení služby. Ovlivněné virtuální počítače dostanou plánovanou událost `NotBefore` , která je obvykle několik dní v budoucnu. Skutečný čas se liší v závislosti na předpokládaném vyhodnocení rizik při selhání. Pokud je to možné, Azure se pokusí poskytnout oznámení v předstihu 7 dní, ale skutečná doba se změní a může být menší, pokud je předpověď taková, že dojde k bezprostřednímu výpadku hardwaru. Abyste minimalizovali riziko pro vaši službu pro případ, že se hardware před migrací iniciované systémem nezdařil, doporučujeme, abyste virtuální počítač co nejdříve znovu nasadili.
@@ -189,7 +189,7 @@ import json
 import socket
 import urllib2
 
-metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01"
+metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01"
 this_host = socket.gethostname()
 
 
@@ -233,4 +233,4 @@ if __name__ == '__main__':
 - Podívejte se na ukázku [Scheduled Events v Azure pátek](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance) . 
 - Přečtěte si ukázky kódu Scheduled Events v [metadatech instance Azure Scheduled Events úložiště GitHub](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm).
 - Přečtěte si další informace o rozhraních API, která jsou k dispozici v [instance metadata Service](instance-metadata-service.md).
-- Přečtěte si o [plánované údržbě virtuálních počítačů se systémem Linux v Azure](planned-maintenance.md).
+- Přečtěte si o [plánované údržbě virtuálních počítačů se systémem Linux v Azure](../maintenance-and-updates.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json).

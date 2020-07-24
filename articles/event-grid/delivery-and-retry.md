@@ -3,12 +3,12 @@ title: Azure Event Grid doručování a opakování
 description: Popisuje, jak Azure Event Grid doručuje události a jak zpracovává nedoručené zprávy.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: e565bbc8592dc2818e3573672e6e3035c3c8983a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: fe7574d7e17b1763afb2292c15007dd87b056ef1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113832"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087607"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Doručování zpráv Event Grid a opakování
 
@@ -78,8 +78,12 @@ V případě selhání doručení koncovým bodem se Event Grid začne zpozdit d
 Funkčním účelem opožděného doručení je chránit nestavové koncové body i Event Grid systém. Bez zálohování a zpoždění doručování do špatných koncových bodů se můžou zásady opakování Event Grid a možnosti svazku snadno přesazovat systémem.
 
 ## <a name="dead-letter-events"></a>Nedoručené události
+Když Event Grid nemůže doručovat událost v určitém časovém období nebo po pokusu o doručení události v určitém počtu opakování, může odeslat nedoručenou událost do účtu úložiště. Tento proces se označuje jako **nedoručené**. Event Grid nedoručená událost, pokud je splněna **jedna z následujících** podmínek. 
 
-Když Event Grid nemůže doručovat událost, může odeslat nedoručenou událost do účtu úložiště. Tento proces se označuje jako nedoručené. Ve výchozím nastavení Event Grid nezapne nedoručené písmeno. Pokud ho chcete povolit, musíte zadat účet úložiště pro ukládání nedoručených událostí při vytváření odběru události. Vyžádáte si události z tohoto účtu úložiště, abyste mohli vyřešit dodávky.
+- Událost se nedoručuje do období TTL (Time to Live).
+- Počet pokusů o doručení události překročil limit.
+
+Je-li splněna některá z podmínek, událost je vyřazena nebo byla nedoručena.  Ve výchozím nastavení Event Grid nezapne nedoručené písmeno. Pokud ho chcete povolit, musíte zadat účet úložiště pro ukládání nedoručených událostí při vytváření odběru události. Vyžádáte si události z tohoto účtu úložiště, abyste mohli vyřešit dodávky.
 
 Event Grid pošle událost do umístění nedoručených zpráv, když se pokusí všechny jeho pokusy opakovat. Pokud Event Grid obdrží kód odpovědi 400 (špatný požadavek) nebo 413 (příliš velký požadavek na entitu požadavku), okamžitě ho pošle do koncového bodu se nedoručenými písmeny. Tyto kódy odpovědí ukazují, že doručení události nebude nikdy úspěšné.
 
@@ -111,8 +115,8 @@ Všechny ostatní kódy, které nejsou ve výše uvedené sadě (200-204), jsou 
 
 | Stavový kód | Chování opakování |
 | ------------|----------------|
-| 400 Chybný požadavek | Zkuste to znovu po 5 minutách a dalších (nedoručených zpráv hned po nastavení nedoručených zpráv) |
-| 401 Neautorizováno | Zkusit znovu za 5 minut nebo déle |
+| 400 – Chybný požadavek | Zkuste to znovu po 5 minutách a dalších (nedoručených zpráv hned po nastavení nedoručených zpráv) |
+| 401 – Neautorizováno | Zkusit znovu za 5 minut nebo déle |
 | 403 – Zakázáno | Zkusit znovu za 5 minut nebo déle |
 | 404 Nenalezeno | Zkusit znovu za 5 minut nebo déle |
 | 408 – Časový limit žádosti | Opakovat po 2 nebo více minutách |

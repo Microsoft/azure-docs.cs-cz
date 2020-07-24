@@ -9,13 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 07/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 74210864332319dabb16eda865da9dc9793e3dbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6092395929f4990010e2212f28a5962cfe1c7e7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84187672"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087832"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Aktivita kopírování v Azure Data Factory
 
@@ -197,11 +198,11 @@ Na kartě Zdroj aktivity kopírování můžete najít následující konfigurac
 
 Pokud ho chcete nakonfigurovat programově, přidejte `additionalColumns` do zdroje aktivity kopírování vlastnost:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | additionalColumns | Přidejte další datové sloupce ke zkopírování do jímky.<br><br>Každý objekt v poli `additionalColumns` představuje sloupec navíc. `name`Definuje název sloupce a `value` Určuje hodnotu dat daného sloupce.<br><br>Povolené hodnoty dat jsou:<br>- **`$$FILEPATH`**– Rezervovaná proměnná Určuje relativní cestu zdrojových souborů k cestě ke složce zadané v datové sadě. Platí pro zdroj založený na souborech.<br>- **Vyjádření**<br>- **Statická hodnota** | No |
 
-**Příklad:**
+**Případě**
 
 ```json
 "activities":[
@@ -239,6 +240,22 @@ Pokud ho chcete nakonfigurovat programově, přidejte `additionalColumns` do zdr
     }
 ]
 ```
+
+## <a name="auto-create-sink-tables"></a>Automaticky vytvářet tabulky jímky
+
+Když kopírujete data do služby SQL Database/Azure synapse Analytics, pokud cílová tabulka neexistuje, aktivita kopírování podporuje automatické vytvoření na základě zdrojových dat. Díky tomu je možné rychle začít načítat data a vyhodnocovat SQL Database nebo Azure synapse Analytics. Po přijetí dat můžete zkontrolovat a upravit schéma tabulky jímky podle vašich potřeb.
+
+Tato funkce se podporuje při kopírování dat z libovolného zdroje do následujících úložišť dat jímky. Můžete najít možnost v *uživatelském rozhraní pro vytváření ADF* – >á *jímka aktivity kopírování* – > *možnost Tabulka* – > *Automatické vytvoření tabulky*nebo prostřednictvím `tableOption` vlastnosti v datové části jímky aktivity kopírování.
+
+- [Azure SQL Database](connector-azure-sql-database.md)
+- [Azure SQL Database spravovaná instance](connector-azure-sql-managed-instance.md)
+- [Analýza Azure synapse (dříve Azure SQL Data Warehouse)](connector-azure-sql-data-warehouse.md)
+- [SQL Server](connector-sql-server.md)
+
+![Vytvoření tabulek jímky](media/copy-activity-overview/create-sink-table.png)
+
+> [!NOTE]
+> Automatické vytváření tabulek není v současné době podporováno, je-li povolena [Příprava kopírování](copy-activity-performance-features.md#staged-copy) .
 
 ## <a name="fault-tolerance"></a>Odolnost proti chybám
 

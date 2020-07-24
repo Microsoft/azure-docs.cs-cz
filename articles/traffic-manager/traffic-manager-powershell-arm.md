@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: rohink
-ms.openlocfilehash: af19586807bf676f1f449f7402b364a054721eec
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: e9d995a69a4fc54d6f001ced7503a9138d737dbc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187587"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089035"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Použití PowerShellu ke správě Traffic Manager
 
@@ -38,7 +38,7 @@ Každý profil Traffic Manager představuje prostředek typu "TrafficManagerProf
 
 Tyto pokyny používají Microsoft Azure PowerShell. Následující článek vysvětluje, jak nainstalovat a nakonfigurovat Azure PowerShell.
 
-* [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview)
+* [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/)
 
 V příkladech v tomto článku se předpokládá, že máte existující skupinu prostředků. Skupinu prostředků můžete vytvořit pomocí následujícího příkazu:
 

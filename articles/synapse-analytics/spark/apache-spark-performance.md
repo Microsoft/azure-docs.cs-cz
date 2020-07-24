@@ -1,5 +1,5 @@
 ---
-title: Optimalizace úloh Sparku pro výkon v Azure synapse Analytics
+title: Optimalizace úloh Sparku pro výkon
 description: Tento článek poskytuje Úvod do Apache Spark ve službě Azure synapse Analytics a v různých konceptech.
 services: synapse-analytics
 author: euangMS
@@ -9,16 +9,16 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: a4d95e57e3b72f8338da5c88f4ddfd57f66014cb
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 89040057798ec4c909cac584ed96c187e79b5581
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194854"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089256"
 ---
 # <a name="optimize-apache-spark-jobs-preview-in-azure-synapse-analytics"></a>Optimalizace úloh Apache Spark (Preview) ve službě Azure synapse Analytics
 
-Naučte se optimalizovat [Apache Spark](https://spark.apache.org/) konfiguraci clusteru pro konkrétní zatížení.  Nejběžnějším problémem je zatížení paměti kvůli nesprávným konfiguracím (zvláště nesprávnému vykonavateli), dlouhotrvajícím operacím a úlohám, které způsobují kartézském operace. Úlohy můžete urychlit s vhodným ukládáním do mezipaměti a díky tomu, aby bylo možné [Zkosit data](#optimize-joins-and-shuffles). Nejlepšího výkonu dosáhnete, když budete monitorovat a kontrolovat dlouhodobá spuštění úloh Sparku, která jsou náročná na prostředky.
+Naučte se optimalizovat [Apache Spark](https://spark.apache.org/) konfiguraci clusteru pro konkrétní zatížení.  Nejběžnější výzvou je zatížení paměti kvůli nesprávným konfiguracím (zejména kvůli nesprávně nastavené velikosti exekutorů), dlouhotrvajícím operacím a úlohám, které vedou ke kartézským operacím. Úlohy můžete urychlit s vhodným ukládáním do mezipaměti a díky tomu, aby bylo možné [Zkosit data](#optimize-joins-and-shuffles). Nejlepšího výkonu dosáhnete, když budete monitorovat a kontrolovat dlouhodobá spuštění úloh Sparku, která jsou náročná na prostředky.
 
 Následující části popisují běžné optimalizace úloh Spark a doporučení.
 
@@ -41,14 +41,14 @@ Starší verze Sparku používají RDD k abstraktním datům, Spark 1,3 a 1,6 za
   * Přidá režii serializace/deserializace.
   * Vysoká režie GC.
   * Zruší generování kódu na celé fázi.
-* **RDD**
+* **Sady RDD**
   * Nemusíte používat RDD, pokud nepotřebujete vytvářet nové vlastní RDD.
   * Žádná optimalizace dotazů prostřednictvím Catalyst.
   * Nevytváření celého připraveného kódu.
   * Vysoká režie GC.
   * Musí používat starší rozhraní API Spark 1. x.
 
-## <a name="use-optimal-data-format"></a>Použít optimální datový formát
+## <a name="use-optimal-data-format"></a>Použití optimálního formátu dat
 
 Spark podporuje mnoho formátů, jako je CSV, JSON, XML, Parquet, orc a Avro. Spark se dá rozšířit tak, aby podporoval mnoho dalších formátů s externími zdroji dat. Další informace najdete v tématu [Apache Spark balíčky](https://spark-packages.org).
 
@@ -82,14 +82,14 @@ Pokud chcete adresovat zprávy o nedostatku paměti, zkuste:
 * Využijte místo objektů RDD na nižší úrovni datový rámec.
 * Vytvořte ComplexTypes, které zapouzdřují akce, například "horních N", různé agregace nebo operace s okny.
 
-## <a name="optimize-data-serialization"></a>Optimalizovat serializaci dat
+## <a name="optimize-data-serialization"></a>Optimalizace serializace dat
 
 Úlohy Sparku jsou distribuované, takže pro nejlepší výkon je důležité, aby byla vhodná serializace dat.  Pro Spark existují dvě možnosti serializace:
 
 * Výchozím nastavením je serializace Java.
 * Serializace kryo je novější formát a může mít za následek rychlejší a kompaktnější serializaci než Java.  Kryo vyžaduje, abyste v programu zaregistrovali třídy a zatím nepodporovaly všechny Serializovatelné typy.
 
-## <a name="use-bucketing"></a>Použít zablokování
+## <a name="use-bucketing"></a>Použití rozdělování do kbelíků
 
 Sestavování se podobá dělení dat, ale každá sada může obsahovat sadu hodnot sloupce, nikoli jenom jednu. Vytváření bloků funguje dobře pro dělení na velké (v milionech a více) číslech hodnot, jako jsou například identifikátory produktu. Sada je určena pomocí algoritmu hash pro klíč kontejneru řádku. Rozdělené tabulky nabízejí jedinečné optimalizace, protože ukládají metadata o způsobu jejich seřazení a řazení.
 
@@ -101,7 +101,7 @@ Některé pokročilé funkce pro seintervalování jsou tyto:
 
 Můžete použít dělení a zablokování současně.
 
-## <a name="optimize-joins-and-shuffles"></a>Optimalizace spojení a náhodného navýšení
+## <a name="optimize-joins-and-shuffles"></a>Optimalizace spojení a náhodného prohazování metodou shuffle
 
 Pokud máte pomalé úlohy při spojení nebo náhodně, příčinou je pravděpodobně *zkosení dat*, což je asymetrie v datech úlohy. Například úloha mapy může trvat 20 sekund, ale při spuštění úlohy, kde se data připojí nebo rozchází, trvá hodiny. Chcete-li opravit zešikmení dat, měli byste nasoleit celý klíč nebo použít *izolovanou hodnotu Salt* pouze pro některé podmnožiny klíčů. Pokud používáte izolovanou sůl, měli byste další filtr k izolaci vaší podmnožiny nasolených klíčů v rámci spojení map. Další možností je zavést sloupec intervalu a předem agregovat do kontejnerů.
 
@@ -162,7 +162,7 @@ Monitorujte výkon dotazů pro odlehlé nebo jiné problémy s výkonem. Prohlé
 
 Například musí mít alespoň dvakrát tolik úloh jako počet jader prováděcích modulů v aplikaci. Můžete také povolit spekulativní provádění úkolů pomocí `conf: spark.speculation = true` .
 
-## <a name="optimize-job-execution"></a>Optimalizace provádění úloh
+## <a name="optimize-job-execution"></a>Optimalizace spouštění úloh
 
 * Ukládat do mezipaměti podle potřeby, například pokud používáte data dvakrát a pak je Uložit do mezipaměti.
 * Všesměrové vysílání proměnných do všech prováděcích modulů. Proměnné jsou serializovány pouze jednou, což vede k rychlejšímu vyhledávání.

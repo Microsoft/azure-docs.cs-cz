@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 06/17/2020
+ms.date: 07/20/2020
 tags: connectors
-ms.openlocfilehash: c2f3af4b0e2fafdd95798b412f37ed20204cd42f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a277c6205dfb9dfa04565fb3ebcb3da589669764
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807749"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087879"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Monitorování, vytváření a správa souborů SFTP pomocí SSH a Azure Logic Apps
 
@@ -23,6 +23,7 @@ Chcete-li automatizovat úlohy, které sledují, vytváří, odesílají a přij
 > Konektor SFTP-SSH v tuto chvíli nepodporuje tyto servery SFTP:
 > 
 > * IBM datapower
+> * MessageWay
 > * OpenText zabezpečená tabulka MFT
 > * OpenText GXS
 
@@ -53,15 +54,15 @@ Rozdíly mezi konektorem SFTP-SSH a konektorem SFTP najdete v části [porovnán
   |--------|------------------|-----------------------------|
   | **Kopírovat soubor** | Ne | Nelze použít |
   | **Vytvořit soubor** | Ano | Ano |
-  | **Vytvořit složku** | Nelze použít | Nelze použít |
-  | **Odstranit dlaždici** | Nelze použít | Nelze použít |
-  | **Extrakce archivu do složky** | Nelze použít | Nelze použít |
+  | **Vytvořit složku** | Není | Není |
+  | **Odstranit dlaždici** | Není | Není |
+  | **Extrakce archivu do složky** | Není | Není |
   | **Získat obsah souboru** | Ano | Ano |
   | **Získání obsahu souboru pomocí cesty** | Ano | Ano |
-  | **Získat metadata souboru** | Nelze použít | Nelze použít |
-  | **Získat metadata souboru pomocí cesty** | Nelze použít | Nelze použít |
-  | **Zobrazit seznam souborů ve složce** | Nelze použít | Nelze použít |
-  | **Přejmenovat soubor** | Nelze použít | Nelze použít |
+  | **Získat metadata souboru** | Není | Není |
+  | **Získat metadata souboru pomocí cesty** | Není | Není |
+  | **Zobrazit seznam souborů ve složce** | Není | Není |
+  | **Přejmenovat soubor** | Není | Není |
   | **Aktualizovat soubor** | Ne | Nelze použít |
   ||||
 
@@ -85,7 +86,7 @@ Tady jsou další klíčové rozdíly mezi konektorem SFTP-SSH a konektorem SFTP
 
 * Uloží připojení do serveru SFTP *po dobu až 1 hodiny*, což zvyšuje výkon a snižuje počet pokusů o připojení k serveru. Pokud chcete nastavit dobu trvání tohoto chování při ukládání do mezipaměti, upravte vlastnost [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) v konfiguraci SSH na vašem serveru SFTP.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -156,7 +157,7 @@ Pokud je váš privátní klíč ve formátu výstupního souboru, který použ�
 
 1. Uložte soubor privátního klíče s `.pem` příponou názvu souboru.
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 
 Tato část popisuje pokyny ke kontrole triggerů a akcí tohoto konektoru.
 

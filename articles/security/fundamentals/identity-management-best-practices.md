@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: aa662dfbd98be5ec16a30e690f28196ca3868390
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 35fd95272530ed31f8ee197679e9368ca74ebef1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855898"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089664"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Osvědčené postupy zabezpečení správy identit a řízení přístupu v Azure
 
@@ -216,7 +216,7 @@ Pomocí [RBAC](/azure/role-based-access-control/overview) můžete přiřadit op
 * **Skupina pro správu segmentů** pro týmy s omezeným rozsahem (obvykle z důvodu zákonných nebo jiných organizačních hranic)
 
 **Osvědčený postup**: Udělte patřičným oprávněním bezpečnostním týmům, které mají přímé provozní zodpovědnosti.
-**Podrobnosti**: Projděte si předdefinované role RBAC pro příslušné přiřazení role. Pokud předdefinované role nevyhovují konkrétním potřebám vaší organizace, můžete [pro prostředky Azure vytvořit vlastní role](/azure/role-based-access-control/custom-roles). Stejně jako u integrovaných rolí můžete uživatelům, skupinám a instančním objektům přiřadit vlastní role v předplatném, skupině prostředků a oborech prostředků.
+**Podrobnosti**: Projděte si předdefinované role RBAC pro příslušné přiřazení role. Pokud předdefinované role nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit [vlastní role Azure](/azure/role-based-access-control/custom-roles). Stejně jako u integrovaných rolí můžete uživatelům, skupinám a instančním objektům přiřadit vlastní role v předplatném, skupině prostředků a oborech prostředků.
 
 **Osvědčené postupy**: Udělte Azure Security Center přístup k rolím zabezpečení, které ho potřebují. Security Center umožňuje týmům zabezpečení rychle identifikovat a opravit rizika.
 **Podrobnosti**: přidejte bezpečnostní týmy s těmito požadavky do role [Správce zabezpečení](/azure/role-based-access-control/built-in-roles#security-admin) RBAC, aby mohli zobrazit zásady zabezpečení, zobrazit stavy zabezpečení, upravit zásady zabezpečení, zobrazit výstrahy a doporučení a zrušit výstrahy a doporučení. To můžete provést pomocí kořenové skupiny pro správu nebo skupiny pro správu segmentu v závislosti na rozsahu zodpovědnosti.

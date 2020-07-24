@@ -10,18 +10,18 @@ ms.workload: azure-vs
 ms.topic: how-to
 ms.date: 11/03/2017
 ms.author: ghogen
-ms.openlocfilehash: d864230ff524f6c008f9f05c16505cd9d0e9f229
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bdc03e8c136606ab7768705b0c8dbcc97782966f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82583362"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088389"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Publikování webové aplikace v ASP.NET ve virtuálním počítači Azure ze sady Visual Studio
 
 Tento dokument popisuje, jak publikovat webovou aplikaci v ASP.NET na virtuálním počítači Azure pomocí funkce publikování **Microsoft Azure Virtual Machines** v aplikaci Visual Studio 2019.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Aby bylo možné použít Visual Studio k publikování projektu ASP.NET na virtuálním počítači Azure, musí být virtuální počítač správně nastavený.
 
 - Počítač musí být nakonfigurovaný tak, aby spouštěl webovou aplikaci v ASP.NET a nainstaloval nástroj WebDeploy. Další informace najdete v tématu [Vytvoření virtuálního počítače s ASP.NET pomocí nástroje WebDeploy](https://github.com/aspnet/Tooling/blob/AspNetVMs/docs/create-asp-net-vm-with-webdeploy.md).
@@ -69,7 +69,7 @@ Následující část popisuje, jak publikovat stávající webovou aplikaci v A
 
 11. Pokud publikování proběhlo úspěšně, spustí se prohlížeč a otevře se adresa URL nově publikovaného webu.
 
-**Výborně!**
+**Úspěch!**
 
 Vaše webová aplikace se teď úspěšně publikovala na virtuálním počítači Azure.
 
@@ -111,7 +111,7 @@ Vaše nastavení by mělo vypadat přibližně takto:
 
 ### <a name="set-up-cicd-for-automated-deployment-to-azure-vm"></a>Nastavení CI/CD pro automatizované nasazení na virtuální počítač Azure
 
-Postup nastavení kanálu průběžného doručování s Azure Pipelines najdete v tématu [nasazení na virtuální počítač s Windows](https://docs.microsoft.com/vsts/build-release/apps/cd/deploy-webdeploy-iis-deploygroups).
+Postup nastavení kanálu průběžného doručování s Azure Pipelines najdete v tématu [nasazení na virtuální počítač s Windows](/vsts/build-release/apps/cd/deploy-webdeploy-iis-deploygroups).
 
 [VM Overview - DNS Name]: ../../../includes/media/publish-web-app-from-visual-studio/VMOverviewDNSName.png
 [IP Address Config - DNS Name]: ../../../includes/media/publish-web-app-from-visual-studio/IPAddressConfigDNSName.png

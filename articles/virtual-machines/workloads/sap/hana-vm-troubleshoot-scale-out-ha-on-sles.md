@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: e93b3412785817050ac53030be9ff2172a678c06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c3a24bc9d754a15a0b372667fbcd689365a9aec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77617128"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088304"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Ověření a řešení potíží SAP HANA nastavení vysoké dostupnosti škálování na SLES 12 SP3 
 
@@ -171,7 +172,7 @@ Konfigurační soubor **Corosync** musí být správný na každém uzlu v clust
 
 Příkladem je obsah **Corosync. conf** z testovacího systému.
 
-První část je **Totem**, jak je popsáno v tématu [instalace clusteru](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#cluster-installation), krok 11. Hodnotu **mcastaddr**můžete ignorovat. Stačí zachovat existující položku. Položky pro **token** a **konsensu** musí být nastaveny podle [Microsoft Azure SAP HANA dokumentaci][sles-pacemaker-ha-guide].
+První část je **Totem**, jak je popsáno v tématu [instalace clusteru](./high-availability-guide-suse-pacemaker.md#cluster-installation), krok 11. Hodnotu **mcastaddr**můžete ignorovat. Stačí zachovat existující položku. Položky pro **token** a **konsensu** musí být nastaveny podle [Microsoft Azure SAP HANA dokumentaci][sles-pacemaker-ha-guide].
 
 <pre><code>
 totem {
@@ -278,7 +279,7 @@ systemctl restart corosync
 
 ## <a name="sbd-device"></a>Zařízení SBD
 
-Postup nastavení zařízení SBD na virtuálním počítači Azure je popsané v tématu [SBDing (oplocening](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing)).
+Postup nastavení zařízení SBD na virtuálním počítači Azure je popsané v tématu [SBDing (oplocening](./high-availability-guide-suse-pacemaker.md#sbd-fencing)).
 
 Nejdřív na virtuálním počítači SBD serveru ověřte, jestli existují položky seznamu ACL pro každý uzel v clusteru. Na virtuálním počítači s SBD serverem spusťte následující příkaz:
 
@@ -421,7 +422,7 @@ Na straně cílového virtuálního počítače **hSo-Hana-VM-S2-2** v tomto př
 /dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68:   notice: servant: Received command test from hso-hana-vm-s2-1 on disk /dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68
 </code></pre>
 
-Ověřte, že položky v **/etc/sysconfig/SBD** odpovídají popisu v části [nastavení Pacemaker na SUSE Linux Enterprise Server v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing). Ověřte, zda je nastavení spouštění v **/etc/iSCSI/iscsid.conf** nastaveno na hodnotu automaticky.
+Ověřte, že položky v **/etc/sysconfig/SBD** odpovídají popisu v části [nastavení Pacemaker na SUSE Linux Enterprise Server v Azure](./high-availability-guide-suse-pacemaker.md#sbd-fencing). Ověřte, zda je nastavení spouštění v **/etc/iSCSI/iscsid.conf** nastaveno na hodnotu automaticky.
 
 Následující položky jsou důležité v **/etc/sysconfig/SBD**. V případě potřeby upravit hodnotu **ID** :
 
@@ -978,4 +979,3 @@ Tento konečný snímek obrazovky ukazuje část s **podrobnostmi** o jednom př
 ## <a name="next-steps"></a>Další kroky
 
 Tato příručka pro řešení potíží popisuje vysokou dostupnost pro SAP HANA v konfiguraci s možností horizontálního rozšíření kapacity. Kromě databáze je další důležitou součástí systému SAP NetWeaver Stack. Přečtěte si o [vysoké dostupnosti pro SAP NetWeaver na virtuálních počítačích Azure, které používají server SUSE Enterprise Linux][sap-nw-ha-guide-sles].
-

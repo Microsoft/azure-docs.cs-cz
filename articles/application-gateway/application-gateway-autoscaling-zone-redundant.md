@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 4caed3f330dd3e50fe2652a2cd33c0e4249f2fd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a82a35f1736aa7908928cbca3397cbe9c705e5b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254340"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088102"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatické škálování a zónově redundantní služby Application Gateway v2 
 
@@ -148,10 +148,10 @@ Vytvoření nové instance může ale nějakou dobu trvat (přibližně po šest
 
 Následující tabulka porovnává funkce, které jsou k dispozici u jednotlivých SKU.
 
-|                                                   | SKU v1   | V2 SKU   |
+| Funkce                                           | SKU v1   | V2 SKU   |
 | ------------------------------------------------- | -------- | -------- |
 | Automatické škálování                                       |          | &#x2713; |
-| Redundance zóny                                   |          | &#x2713; |
+| Zónová redundance                                   |          | &#x2713; |
 | Statická virtuální IP adresa                                        |          | &#x2713; |
 | Řadič příchozího přenosu dat (AKS) Azure Kubernetes Service () |          | &#x2713; |
 | Integrace se službou Azure Key Vault                       |          | &#x2713; |
@@ -178,15 +178,15 @@ Tato část popisuje funkce a omezení skladové položky v2, která se liší o
 
 |Rozdíl|Podrobnosti|
 |--|--|
-|Ověřovací certifikát|Není podporováno.<br>Další informace najdete v tématu [Přehled koncového protokolu TLS s Application Gateway](ssl-overview.md#end-to-end-tls-with-the-v2-sku).|
-|Kombinování Standard_v2 a standardních Application Gateway ve stejné podsíti|Nepodporuje se|
+|Ověřovací certifikát|Nepodporováno<br>Další informace najdete v tématu [Přehled koncového protokolu TLS s Application Gateway](ssl-overview.md#end-to-end-tls-with-the-v2-sku).|
+|Kombinování Standard_v2 a standardních Application Gateway ve stejné podsíti|Nepodporováno|
 |Trasa definovaná uživatelem (UDR) na Application Gateway podsíti|Podporované (konkrétní scénáře) Ve verzi Preview.<br> Další informace o podporovaných scénářích najdete v tématu [Přehled konfigurace Application Gateway](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet).|
 |NSG pro rozsah portů pro příchozí spojení| -65200 až 65535 pro Standard_v2 SKU<br>-65503 až 65534 pro SKU Standard.<br>Další informace najdete v [nejčastějších dotazech](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
-|Protokoly výkonu v diagnostice Azure|Není podporováno.<br>Měly by se používat metriky Azure.|
+|Protokoly výkonu v diagnostice Azure|Nepodporováno<br>Měly by se používat metriky Azure.|
 |Fakturace|Fakturace naplánovala zahájení od 1. července 2019.|
 |Režim FIPS|V tuto chvíli se nepodporují.|
 |Jenom interního nástroje režim|To se v tuto chvíli nepodporuje. Podporují se veřejné a interního nástroje režimy.|
-|Integrace se službou NET Watch|Není podporováno.|
+|Integrace se službou NET Watch|Nepodporováno|
 |Integrace služby Azure Security Center|Ještě není k dispozici.
 
 ## <a name="migrate-from-v1-to-v2"></a>Migrace z v1 na v2

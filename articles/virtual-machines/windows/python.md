@@ -8,11 +8,12 @@ ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
 ms.custom: tracking-python
-ms.openlocfilehash: b5f8b0e8f22a476ad379b55275d79c2874966852
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92b6d8c6cd59f82439beec24c003aac6673014e7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84551971"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088321"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Vytváření a správa virtuálních počítačů s Windows v Azure pomocí Pythonu
 
@@ -31,7 +32,7 @@ Provedení těchto kroků trvá přibližně 20 minut.
 
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
 
-1. Pokud jste to ještě neudělali, nainstalujte [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Na stránce úlohy vyberte **vývoj v Pythonu** a pak klikněte na **nainstalovat**. V souhrnu vidíte, že je pro vás automaticky vybraný **Python 3 64-bit (3.6.0)** . Pokud jste již nainstalovali aplikaci Visual Studio, můžete přidat úlohu Pythonu pomocí spouštěče sady Visual Studio.
+1. Pokud jste to ještě neudělali, nainstalujte [Visual Studio](/visualstudio/install/install-visual-studio). Na stránce úlohy vyberte **vývoj v Pythonu** a pak klikněte na **nainstalovat**. V souhrnu vidíte, že je pro vás automaticky vybraný **Python 3 64-bit (3.6.0)** . Pokud jste již nainstalovali aplikaci Visual Studio, můžete přidat úlohu Pythonu pomocí spouštěče sady Visual Studio.
 2. Po instalaci a spuštění sady Visual Studio klikněte na **soubor**  >  **Nový**  >  **projekt**.
 3. Klikněte na **šablony**  >  **Python**  >  **Python Application**, jako název projektu zadejte *myPythonProject* , vyberte umístění projektu a pak klikněte na **OK**.
 
@@ -565,6 +566,5 @@ Vzhledem k tomu, že se vám účtují prostředky používané v Azure, je vžd
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud byly nějaké problémy s nasazením, je dalším krokem projít si téma [Řešení potíží s nasazením skupin prostředků pomocí webu Azure Portal](../../resource-manager-troubleshoot-deployments-portal.md).
-- Další informace o [knihovně Pythonu v Azure](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)
-
+- Pokud byly nějaké problémy s nasazením, je dalším krokem projít si téma [Řešení potíží s nasazením skupin prostředků pomocí webu Azure Portal](../../azure-resource-manager/templates/deployment-history.md).
+- Další informace o [knihovně Pythonu v Azure](/python/api/overview/azure/?view=azure-python)

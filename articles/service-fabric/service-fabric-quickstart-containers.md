@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 07/10/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: da50fb9f331e91089bb6bf0fb373cab8045639f0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 934b679813323fe144f935811eb613ab68b561db
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260512"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089613"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Rychlý start: Nasazení kontejnerů Windows do Service Fabric
 
@@ -86,7 +86,7 @@ V souboru *ApplicationManifest.xml* také změňte **PasswordEncrypted** na **ho
 
 Následující vzorový skript vytvoří cluster Service Fabric s pěti uzly zabezpečený pomocí certifikátu X. 509. Příkaz vytvoří certifikát podepsaný svým držitelem a nahraje ho do nového trezoru klíčů. Certifikát se také zkopíruje do místního adresáře. Další informace o tom, jak vytvořit cluster pomocí tohoto skriptu, najdete v [Service Fabric clusteru](scripts/service-fabric-powershell-create-secure-cluster-cert.md).
 
-V případě potřeby nainstalujte Azure PowerShell podle pokynů uvedených v [příručce Azure PowerShell](/powershell/azure/overview).
+V případě potřeby nainstalujte Azure PowerShell podle pokynů uvedených v [příručce Azure PowerShell](/powershell/azure/).
 
 Před spuštěním následujícího skriptu můžete v PowerShellu spustit, `Connect-AzAccount` aby se vytvořilo připojení k Azure.
 
@@ -132,7 +132,7 @@ Aplikace je teď připravená a přímo ze sady Visual Studio ji můžete nasadi
 
 V Průzkumníku řešení klikněte pravým tlačítkem na **MyFirstContainer** a zvolte **Publikovat**. Zobrazí se dialogové okno Publikovat.
 
-Při spuštění příkazu v okně PowerShellu zkopírujte obsah následující **CN =** a do `Import-PfxCertificate` něj přidejte port `19000` . Například `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000`. Zkopírujte ho do pole **koncový bod připojení** . Zapamatujte si tuto hodnotu, protože ji budete potřebovat v budoucím kroku.
+Při spuštění příkazu v okně PowerShellu zkopírujte obsah následující **CN =** a do `Import-PfxCertificate` něj přidejte port `19000` . Například, `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000`. Zkopírujte ho do pole **koncový bod připojení** . Zapamatujte si tuto hodnotu, protože ji budete potřebovat v budoucím kroku.
 
 Klikněte na **Rozšířené parametry připojení** a ověřte informace o parametrech připojení.  Hodnoty *findValue* a *ServerCertThumbprint* musí odpovídat kryptografickému otisku certifikátu nainstalovaného při spuštění `Import-PfxCertificate` v předchozím kroku.
 

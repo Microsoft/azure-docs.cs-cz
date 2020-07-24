@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: bced6a9e6c59dc32657dbabef986e29e0447b28b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29457f2f5021fed9d8785f5764c4119de4be1fa9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60947198"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089545"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Sestava odhadu nákladů z Plánovače nasazení služby Azure Site Recovery 
 
@@ -119,7 +119,7 @@ Ruční přidání virtuálních počítačů:
 
     f. **Each DR-Drill duration (Days)**
 
-    například **OS Type**
+    například **Typ operačního systému**
 
     h. **Data redundancy**
 
@@ -167,16 +167,16 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 ## <a name="supported-currencies"></a>Podporované měny
 Plánovač nasazení služby Site Recovery může vygenerovat sestavu nákladů s libovolnou z následujících měn.
 
-|Měna|Name||Měna|Name||Měna|Name|
+|Měna|Název|Měna|Název|Měna|Název|
 |---|---|---|---|---|---|---|---|
-|ARS|Argentinské peso ($)||AUD|Australský dolar ($)||BRL|Brazilský real (R$)|
-|CAD|Kanadský dolar ($)||CHF|Švýcarský frank (chf)||DKK|Dánská koruna (kr)|
-|EUR|Euro (€)||GBP|Britská libra (ł)||HKD|Hongkongský dolar (HK$)|
-|IDR|Indonéská rupie (Rp)||INR|Indická rupie (₹)||JPY|Japonské jenu (y)|
-|KRW|Výhra v korejštině (₩)||MXN|Mexické peso (MX$)||MYR|Malajsijský ringgit (RM$)|
+|ARS|Argentinské peso ($)|AUD|Australský dolar ($)|BRL|Brazilský real (R$)|
+|CAD|Kanadský dolar ($)|CHF|Švýcarský frank (chf)|DKK|Dánská koruna (kr)|
+|EUR|Euro (€)|GBP|Britská libra (ł)|HKD|Hongkongský dolar (HK$)|
+|IDR|Indonéská rupie (Rp)|INR|Indická rupie (₹)|JPY|Japonské jenu (y)|
+|KRW|Výhra v korejštině (₩)|MXN|Mexické peso (MX$)|MYR|Malajsijský ringgit (RM$)|
 |NOK|Norská koruna (kr)||NZD|Novozélandský dolar ($)||RUB|Ruský rubl (руб)|
-|SAR|Saúdský rijál (SR)||SEK|Švédská koruna (kr)||TWD|Tchajwanský dolar (NT$)|
-|TRY|Turecká lira (TL)||USD| Americký dolar ($)||ZAR|Jihoafrický rand (R)|
+|SAR|Saúdský rijál (SR)|SEK|Švédská koruna (kr)|TWD|Tchajwanský dolar (NT$)|
+|TRY|Turecká lira (TL)|USD| Americký dolar ($)|ZAR|Jihoafrický rand (R)|
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o ochraně [virtuálních počítačů Hyper-V do Azure s využitím Site Recovery](hyper-v-azure-tutorial.md)

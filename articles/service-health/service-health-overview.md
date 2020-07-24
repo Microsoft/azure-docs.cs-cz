@@ -3,12 +3,12 @@ title: Přehled Service Health | Microsoft Docs
 description: Individuální informace o tom, jak jsou vaše aplikace Azure ovlivněny aktuálními a budoucími problémy a údržbou služeb Azure.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: bc1d07fdbba6da3540336438973fb1cfbb0c356b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f2f0c8bf2cf4fe5beae7d48b198a23edba4e9ae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563372"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089596"
 ---
 # <a name="service-health-overview"></a>Přehled Service Health
 
@@ -68,7 +68,7 @@ Filtrovat Service Health pro zobrazení předplatných, oblastí a typů prostř
 
 ## <a name="configure-service-health-alerts"></a>Konfigurace upozornění na stav služby
 
-Service Health se integruje s Azure Monitor a upozorní vás prostřednictvím e-mailů, textových zpráv a oznámení Webhooku v případě, že budou ovlivněny vaše důležité firemní prostředky. Nastavte upozornění protokolu aktivit pro příslušnou událost služby Service Health. Směrování této výstrahy na příslušné osoby ve vaší organizaci pomocí skupin akcí. Další informace najdete v tématu [Konfigurace výstrah pro Service Health](../azure-monitor/platform/alerts-activity-log-service-notifications.md) .
+Service Health se integruje s Azure Monitor a upozorní vás prostřednictvím e-mailů, textových zpráv a oznámení Webhooku v případě, že budou ovlivněny vaše důležité firemní prostředky. Nastavte upozornění protokolu aktivit pro příslušnou událost služby Service Health. Směrování této výstrahy na příslušné osoby ve vaší organizaci pomocí skupin akcí. Další informace najdete v tématu [Konfigurace výstrah pro Service Health](./alerts-activity-log-service-notifications-portal.md) .
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
 

@@ -7,29 +7,29 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 72a76fb513dc6eb008fcf1d1e19ffc33e713cfdc
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 6738f598275e91ce8a811c3ef6bcc6d5dc84e0bd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259248"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089494"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>Rychlý Start: Vytvoření první statické webové aplikace
 
-Služba Azure static Web Apps publikuje weby do produkčního prostředí tím, že vytváří aplikace z úložiště GitHub. V tomto rychlém startu vytvoříte webovou aplikaci s použitím preferované architektury front-endu z úložiště GitHub.
+Služba Azure Static Web Apps publikuje weby do produkčního prostředí po sestavení aplikací z úložiště GitHub. V tomto rychlém startu vytvoříte webovou aplikaci s použitím preferované architektury front-endu z úložiště GitHub.
 
 Pokud nemáte předplatné Azure, [Vytvořte si bezplatný zkušební účet](https://azure.microsoft.com/free).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet [GitHub](https://github.com)
 - Účet [Azure](https://portal.azure.com)
 
-## <a name="create-a-repository"></a>Vytvoření úložiště
+## <a name="create-a-repository"></a>Vytvořte úložiště
 
 V tomto článku se používají úložiště šablon GitHubu, která usnadňují vytvoření nového úložiště. Šablony nastavují aplikace úvodní s různými rozhraními front-endu.
 
-# <a name="angular"></a>[Úhlová](#tab/angular)
+# <a name="angular"></a>[Angular](#tab/angular)
 
 - Ujistěte se, že jste přihlášeni k GitHubu, a přejděte do následujícího umístění a vytvořte nové úložiště.
   - https://github.com/staticwebdev/angular-basic/generate
@@ -54,7 +54,7 @@ V tomto článku se používají úložiště šablon GitHubu, která usnadňuj�
 - Pojmenování úložiště **My-First-static-Web-App**
 
 > [!NOTE]
-> Pro vytvoření webové aplikace se v Azure static Web Apps vyžaduje aspoň jeden soubor HTML. Úložiště, které vytvoříte v tomto kroku, obsahuje jeden soubor _index. html_ .
+> Pro vytvoření webové aplikace se v Azure static Web Apps vyžaduje aspoň jeden soubor HTML. Úložiště, které vytvoříte v tomto kroku, zahrnuje jeden soubor _index.html_ .
 
 ---
 
@@ -67,10 +67,10 @@ Klikněte na tlačítko **vytvořit úložiště z šablony** .
 Teď, když je úložiště vytvořené, můžete z Azure Portal vytvořit statickou webovou aplikaci.
 
 - Přejít na [Azure Portal](https://portal.azure.com)
-- Klikněte na **vytvořit prostředek** .
-- Hledání **statického Web Apps**
-- Klikněte na **statické Web Apps (Preview)** .
-- Klikněte na **vytvořit** .
+- Klikněte na **Vytvořit prostředek**.
+- Vyhledejte **Static Web Apps**.
+- Klikněte na **Static Web Apps (Preview)**
+- Klikněte na **Vytvořit**.
 
 ### <a name="basics"></a>Základy
 
@@ -81,10 +81,10 @@ Začněte tím, že nakonfigurujete novou aplikaci a propojíte ji s úložišt�
 - Výběr vašeho _předplatného Azure_
 - Vyberte nebo vytvořte novou _skupinu prostředků_ .
 - Pojmenujte aplikaci **My-First-static-Web-App**.
-  - Platné znaky jsou `a-z` (bez rozlišení velkých a malých písmen), `0-9` a `-` .
+  - Platné znaky jsou `a-z` (bez rozlišování malých a velkých písmen), `0-9` a `-`.
 - Vyberte _oblast_ , která je pro vás nejblíže
 - Výběr **bezplatné** _SKU_
-- Klikněte na tlačítko **Přihlásit se pomocí GitHubu** a proveďte ověření pomocí GitHubu.
+- Klikněte na tlačítko **Přihlásit se přes GitHub** a ověřte se v této službě.
 
 Až se přihlásíte pomocí GitHubu, zadejte informace o úložišti.
 
@@ -93,15 +93,18 @@ Až se přihlásíte pomocí GitHubu, zadejte informace o úložišti.
 - Vybrat upřednostňovanou _organizaci_
 - Z rozevíracího seznamu _úložiště_ vyberte **My-First-web-static-App** .
 - V rozevíracím seznamu _větev_ vyberte **Hlavní** .
-- Kliknutím na tlačítko **Další: >sestavení** upravíte konfiguraci sestavení
+- Klikněte na tlačítko **Další: Build >** (Další: Sestavení) a upravte konfiguraci sestavení.
 
 :::image type="content" source="media/getting-started/next-build-button.png" alt-text="Tlačítko Další sestavení":::
 
+> [!NOTE]
+>  Pokud nevidíte žádná úložiště, možná budete muset autorizovat Azure static Web Apps v GitHubu. Přejděte do úložiště GitHub a přejděte na **nastavení > aplikace > autorizovaných aplikací OAuth**, vyberte **statické Web Apps Azure**a pak vyberte **udělit**. V případě úložišť organizace musíte být vlastníkem organizace, abyste udělili oprávnění.
+
 ### <a name="build"></a>Sestavení
 
-Dále přidejte podrobnosti o konfiguraci, které jsou specifické pro preferovanou front-end architekturu.
+V dalším kroku přidejte konfigurační podrobnosti specifické pro vámi preferovanou front-endovou platformu.
 
-# <a name="angular"></a>[Úhlová](#tab/angular)
+# <a name="angular"></a>[Angular](#tab/angular)
 
 - Zadejte **/** do pole _umístění aplikace_ .
 - Vymazat výchozí hodnotu z pole _umístění rozhraní API_
@@ -127,27 +130,27 @@ Dále přidejte podrobnosti o konfiguraci, které jsou specifické pro preferova
 
 ---
 
-Klikněte na tlačítko **Zkontrolovat a vytvořit**.
+Klikněte na tlačítko **Review + create** (Zkontrolovat a vytvořit).
 
 :::image type="content" source="media/getting-started/review-create.png" alt-text="Tlačítko pro vytvoření Revize":::
 
 Chcete-li po vytvoření aplikace tyto hodnoty změnit, můžete upravit [soubor pracovního postupu](github-actions-workflow.md).
 
-### <a name="review--create"></a>Zkontrolovat a vytvořit
+### <a name="review--create"></a>Kontrola a vytvoření
 
 Po ověření žádosti můžete pokračovat v vytváření aplikace.
 
-Klikněte na tlačítko **vytvořit** .
+Klikněte na tlačítko **Create** (Vytvořit).
 
-:::image type="content" source="media/getting-started/create-button.png" alt-text="Tlačítko vytvořit":::
+:::image type="content" source="media/getting-started/create-button.png" alt-text="Tlačítko Create (Vytvořit)":::
 
 Po vytvoření prostředku klikněte na tlačítko **Přejít k prostředku** .
 
-:::image type="content" source="media/getting-started/resource-button.png" alt-text="Tlačítko Přejít na prostředek":::
+:::image type="content" source="media/getting-started/resource-button.png" alt-text="Tlačítko Go to resource (Přejít k prostředku)":::
 
 ## <a name="view-the-website"></a>Zobrazit web
 
-Existují dva aspekty nasazení statické aplikace. Nejdřív se zřídí základní prostředky Azure, které tvoří vaši aplikaci. Druhým je pracovní postup akcí GitHubu, který vytváří a publikuje vaši aplikaci.
+Existují dva aspekty nasazení statické aplikace. Při prvním se zřídí základní prostředky Azure, které tvoří vaši aplikaci. Druhým je právě pracovní postup GitHub Actions, který vytvoří a publikuje vaši aplikaci.
 
 Předtím, než budete moci přejít na novou statickou lokalitu, musí být sestavení nasazení nejprve dokončeno.
 
@@ -163,7 +166,7 @@ V okně Přehled statického Web Apps se zobrazuje řada odkazů, které vám po
 
 Pokud nebudete tuto aplikaci nadále používat, můžete instanci statického Web Apps Azure odstranit pomocí následujících kroků:
 
-1. Otevřete [Azure Portal](https://portal.azure.com)
+1. Otevřete [Azure Portal](https://portal.azure.com).
 1. Hledání **My-First-web-static-App** z horního panelu hledání
 1. Klikněte na název aplikace.
 1. Klikněte na tlačítko **Odstranit** .

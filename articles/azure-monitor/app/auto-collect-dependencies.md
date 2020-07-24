@@ -5,15 +5,16 @@ ms.topic: reference
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/06/2020
-ms.openlocfilehash: 21e98ee9dc59e7520fb715f1146e492b9198f883
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba7830cc1c0a3e6a563b4343b37ec07f7d508af4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891600"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087981"
 ---
 # <a name="dependency-auto-collection"></a>Automatické shromažďování závislostí
 
-Níže je uveden aktuálně podporovaný seznam volání závislostí, která jsou automaticky rozpoznána jako závislosti, aniž by bylo nutné provádět další úpravy kódu vaší aplikace. Tyto závislosti jsou vizuální v zobrazení Application Insights [Mapa aplikace](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) a [Diagnostika transakcí](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics) . Pokud vaše závislost není v seznamu níže, můžete ji stále sledovat ručně pomocí [volání sledování závislostí](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency).
+Níže je uveden aktuálně podporovaný seznam volání závislostí, která jsou automaticky rozpoznána jako závislosti, aniž by bylo nutné provádět další úpravy kódu vaší aplikace. Tyto závislosti jsou vizuální v zobrazení Application Insights [Mapa aplikace](./app-map.md) a [Diagnostika transakcí](./transaction-diagnostics.md) . Pokud vaše závislost není v seznamu níže, můžete ji stále sledovat ručně pomocí [volání sledování závislostí](./api-custom-events-metrics.md#trackdependency).
 
 ## <a name="net"></a>.NET
 
@@ -22,7 +23,7 @@ Níže je uveden aktuálně podporovaný seznam volání závislostí, která js
 | ASP.NET WebForms | 4.5 + |
 | ASP.NET MVC | 4 + |
 | ASP.NET WebAPI | 4.5 + |
-| Jádro ASP.NET | 1.1 + |
+| Výsledek akce | 1.1 + |
 | <b>Komunikační knihovny</b> |
 | [HttpClient](https://www.microsoft.com/net/) | 4.5 +, .NET Core 1.1 + |
 | [SqlClient](https://www.nuget.org/packages/System.Data.SqlClient) | .NET Core 1.0 +, NuGet 4.3.0 |
@@ -61,7 +62,7 @@ Níže je uveden aktuálně podporovaný seznam volání závislostí, která js
 
 > [!NOTE]
 > * S výjimkou reaktivní podpory programování.
-> <br>† Vyžaduje instalaci [agenta JVM](https://docs.microsoft.com/azure/application-insights/app-insights-java-agent#install-the-application-insights-agent-for-java).
+> <br>† Vyžaduje instalaci [agenta JVM](./java-agent.md#install-the-application-insights-agent-for-java).
 
 ## <a name="nodejs"></a>Node.js
 

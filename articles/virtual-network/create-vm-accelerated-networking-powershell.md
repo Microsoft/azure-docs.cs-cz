@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/15/2020
 ms.author: gsilva
-ms.openlocfilehash: 2dc7b0447a97cdafc88d2cee4612aba22c1e0eea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 582553675284e88e4707812b1f6b459a4e67f14a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84975788"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088185"
 ---
 # <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>Vytvoření virtuálního počítače s Windows s akcelerovanými síťovými službami pomocí Azure PowerShell
 
@@ -63,7 +63,7 @@ Následující distribuce jsou podporovány přímo z Galerie Azure:
 
 Akcelerované sítě se podporují na většině účelových a výpočetních instancí s optimálním využitím dvou nebo více virtuálních procesorů (vCPU).  Podporované řady jsou: Dv2/DSv2 a F/FS.
 
-Na instancích podporujících multithreading se podporuje akcelerované sítě pro instance virtuálních počítačů se čtyřmi nebo více vCPU. Podporované řady jsou: D/Dsv3, D/Dsv4, E/Esv3, EA/Easv4, Fsv2, Lsv2, MS/MMS a MS/Mmsv2.
+Na instancích podporujících multithreading se podporuje akcelerované sítě pro instance virtuálních počítačů se čtyřmi nebo více vCPU. Podporované řady jsou: D/Dsv3, D/Dsv4, da/Dasv4, E/Esv3, EA/Easv4, Fsv2, Lsv2, MS/MMS a MS/Mmsv2.
 
 Další informace o instancích virtuálních počítačů najdete v tématu [velikosti pro virtuální počítače s Windows v Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 

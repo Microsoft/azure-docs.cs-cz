@@ -1,19 +1,20 @@
 ---
-title: Směrný plán zabezpečení synapse Analytics pro Azure Security test
+title: Základní plán zabezpečení Azure pro synapse Analytics
 description: Základní hodnoty zabezpečení synapse Analytics poskytují pokyny a prostředky pro implementaci doporučení zabezpečení, která jsou určená v srovnávacím testu zabezpečení Azure.
 author: msmbaldwin
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 07/02/2020
+ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4b40bdeb6f60aafea760c6c6e3e0b0f99b419614
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 34453dacd763b8b6a2bff3d977a7bc9b2ab78ca9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040652"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089324"
 ---
-# <a name="synapse-analytics-security-baseline-for-azure-security-benchmark"></a>Směrný plán zabezpečení synapse Analytics pro Azure Security test
+# <a name="azure-security-baseline-for-synapse-analytics"></a>Základní plán zabezpečení Azure pro synapse Analytics
 
 Základní plán zabezpečení Azure pro synapse Analytics obsahuje doporučení, která vám pomůžou vylepšit stav zabezpečení vašeho nasazení.
 
@@ -27,9 +28,9 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Ochrana prostředků Azure v rámci virtuálních sítí
 
-**Doprovodné**materiály: zabezpečení Azure SQL Database k virtuální síti prostřednictvím privátního odkazu. Privátní odkaz Azure umožňuje přístup ke službám Azure PaaS přes privátní koncový bod ve vaší virtuální síti. Provoz mezi vaší virtuální sítí a službou přenáší páteřní síť Microsoftu.
+**Doprovodné**materiály: zabezpečení SQL Server Azure pro virtuální síť prostřednictvím privátního propojení. Privátní odkaz Azure umožňuje přístup ke službám Azure PaaS přes privátní koncový bod ve vaší virtuální síti. Provoz mezi vaší virtuální sítí a službou přenáší páteřní síť Microsoftu.
 
-Případně můžete při připojování ke synapse fondu SQL zúžit rozsah odchozího připojení k SQL Database pomocí skupiny zabezpečení sítě. Nastavením povolit službám Azure na OFF zakažte veškerý provoz služeb Azure pro SQL Database prostřednictvím veřejného koncového bodu. Ujistěte se, že nejsou v pravidlech brány firewall povolená žádná veřejná IP adresa.
+Případně můžete při připojování ke synapse fondu SQL zúžit rozsah odchozího připojení k databázi SQL pomocí skupiny zabezpečení sítě. Nastavením povolit službám Azure na OFF zakažte všechny přenosy služeb Azure do databáze SQL prostřednictvím veřejného koncového bodu. Ujistěte se, že nejsou v pravidlech brány firewall povolená žádná veřejná IP adresa.
 
 * [Principy privátního odkazu Azure](https://docs.microsoft.com/azure/private-link/private-link-overview)
 
@@ -43,7 +44,7 @@ Případně můžete při připojování ke synapse fondu SQL zúžit rozsah odc
 
 **Zodpovědnost**: zákazník
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1,2: Sledujte a protokolujte konfiguraci a provoz virtuálních sítí, podsítí a síťových karet
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1,2: Sledujte a protokolujte konfiguraci a provoz virtuálních sítí, podsítí a síťových rozhraní
 
 **Pokyny**: když se připojujete ke svému fondu SQL Azure synapse a máte Povolené protokoly toku NSG (Network Security Group), odešlete protokoly do účtu Azure Storage pro auditování provozu.
 
@@ -123,7 +124,7 @@ Povolit DDoS Protection standard pro virtuální sítě přidružené k Azure sy
 
 **Pokyny**: pomocí značek služby virtuální sítě můžete definovat řízení přístupu k síti pro skupiny zabezpečení sítě nebo Azure firewall. Značky služeb můžete používat místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby (např. ApiManagement) v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu. Společnost Microsoft spravuje předpony adres, které jsou součástí značky služby, a automaticky aktualizuje označení služby jako adresy změny.
 
-Při použití koncového bodu služby pro váš fond SQL Azure synapse se vyžaduje odchozí připojení k Azure SQL Database veřejné IP adresy: aby se Azure SQL Database IP adresy povolují připojení, musí se otevřít skupiny zabezpečení sítě (skupin zabezpečení sítě). To můžete provést pomocí značek služby NSG pro Azure SQL Database.
+Při použití koncového bodu služby pro váš fond SQL Azure synapse se vyžaduje odchozí IP adresy pro Azure SQL Database: aby se mohly Azure SQL Database IP adresy, musí se otevřít síťové skupiny zabezpečení (skupin zabezpečení sítě), aby se povolilo připojení. To můžete provést pomocí značek služby NSG pro Azure SQL Database.
 
 * [Pochopení značek služeb pomocí koncových bodů služby pro Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview#limitations)
 
@@ -135,7 +136,7 @@ Při použití koncového bodu služby pro váš fond SQL Azure synapse se vyža
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: Udržujte standardní konfigurace zabezpečení pro síťová zařízení.
 
-**Pokyny**: definování a implementace konfigurací zabezpečení sítě pro prostředky související s vaším fondem SQL pomocí Azure Policy. Obor názvů Microsoft. SQL můžete použít k definování vlastních definic zásad nebo k použití kterékoli z vestavěných definic zásad navržených pro Azure SQL Database/serverovou ochranu sítě. Příkladem příslušných integrovaných zásad zabezpečení sítě pro Azure SQL Database Server by byl: "SQL Server by měl používat koncový bod služby virtuální sítě".
+**Pokyny**: definování a implementace konfigurací zabezpečení sítě pro prostředky související s vaším fondem SQL pomocí Azure Policy. Obor názvů Microsoft. SQL můžete použít k definování vlastních definic zásad nebo k používání kterékoli z vestavěných definic zásad, které jsou určené pro ochranu Azure SQL Database/Server Network. Příkladem příslušných integrovaných zásad zabezpečení sítě pro Azure SQL Database Server by byl: "SQL Server by měl používat koncový bod služby virtuální sítě".
 
 Pomocí Azure modrotisky můžete zjednodušit rozsáhlá nasazení Azure tím, že zabalíte artefakty klíčových prostředí, jako jsou šablony pro správu prostředků Azure, řízení přístupu na základě role (RBAC) a zásady, v jediné definici podrobného plánu. Podrobné sestavování můžete snadno použít pro nová předplatná a prostředí a vyladit řízení a správu prostřednictvím správy verzí.
 
@@ -359,7 +360,7 @@ Chcete-li identifikovat účty správců pro databázi, otevřete Azure Portal a
 
 **Zodpovědnost**: zákazník
 
-### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: použijte jednotné přihlašování (SSO) s Azure Active Directory
+### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3,4: použijte Azure Active Directory jednotné přihlašování (SSO).
 
 **Pokyny**: použijte registraci aplikace Azure (instanční objekt) k získání tokenu, který se dá použít k interakci s datovým skladem na řídicí rovině (Azure Portal) prostřednictvím volání rozhraní API.
 
@@ -387,7 +388,7 @@ Chcete-li identifikovat účty správců pro databázi, otevřete Azure Portal a
 
 **Zodpovědnost**: zákazník
 
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: Používejte vyhrazené počítače (privilegovaný přístup k pracovní stanici) pro všechny úlohy správy
+### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3,6: Používejte zabezpečené pracovní stanice spravované Azure pro úlohy správy
 
 **Pokyny**: použití pracovní stanice s privilegovaným přístupem (privilegovaným přístupem) s konfigurací Multi-Factor Authentication (MFA) nakonfigurovanou pro přihlášení a konfiguraci prostředků Azure.
 
@@ -475,7 +476,7 @@ Při použití ověřování SQL vytvořte v databázi uživatele databáze s om
 
 **Zodpovědnost**: zákazník
 
-### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: upozornění na odchylku chování přihlášení k účtu
+### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3,12: výstraha při odchylce chování při přihlašování k účtu
 
 **Pokyny**: pomocí funkcí Azure Active Directory (Azure AD) Identity Protection a detekce rizik můžete nakonfigurovat automatizované odezvy na zjištěné podezřelé akce související s identitami uživatelů. Kromě toho můžete k dalšímu zkoumání připojit data do Azure Sentinel a ingestovat.
 
@@ -583,7 +584,7 @@ Kromě toho můžete v Azure Portal nastavit zásadu dynamického maskování da
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte řízení přístupu na základě role
 
-**Pokyny**: pomocí řízení přístupu na základě role (RBAC) v Azure můžete spravovat přístup k Azure SQL Database ve fondu SQL synapse.
+**Pokyny**: použití řízení přístupu na základě role (RBAC) v Azure ke správě přístupu k databázím SQL Azure ve fondu SQL synapse.
 
 Autorizaci řídí členství v databázové roli vašeho uživatelského účtu a oprávnění na úrovni objektů. Doporučený postup je udělit uživatelům co nejmenší možná oprávnění.
 
@@ -641,9 +642,9 @@ Kromě toho můžete nastavit výstrahy pro databáze ve fondu SQL synapse pomoc
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: spuštění automatizovaných nástrojů pro kontrolu ohrožení zabezpečení
 
-**Doprovodné**materiály: povolení pokročilých zabezpečení dat a použití doporučení od Azure Security Center při provádění posouzení ohrožení zabezpečení SQL Database.
+**Doprovodné**materiály: povolení pokročilých zabezpečení dat a sledování doporučení od Azure Security Center při provádění posouzení ohrožení zabezpečení vašich databází SQL Azure.
 
-* [Spuštění posouzení ohrožení zabezpečení na Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
+* [Jak spustit posuzování ohrožení zabezpečení ve vašich databázích SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
 
 * [Jak povolit pokročilé zabezpečení dat](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
 
@@ -737,7 +738,7 @@ I když je možné zjistit klasické prostředky Azure prostřednictvím Azure R
 
 **Zodpovědnost**: zákazník
 
-### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6,4: definování a údržba inventáře schválených prostředků Azure
+### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6,4: definování a údržba inventáře schválených prostředků Azure
 
 **Pokyny**: Definujte seznam schválených prostředků Azure, které souvisejí s vaším synapse fondem SQL.
 
@@ -748,7 +749,7 @@ I když je možné zjistit klasické prostředky Azure prostřednictvím Azure R
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: monitorování neschválených prostředků Azure
 
 **Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 - Povolené typy prostředků
 
 Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky v rámci předplatných. Ujistěte se, že všechny prostředky Azure přítomné v daném prostředí jsou schválené.
@@ -788,7 +789,7 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 ### <a name="69-use-only-approved-azure-services"></a>6,9: Používejte jenom schválené služby Azure.
 
 **Doprovodné**materiály: pomocí Azure Policy můžete umístit omezení typu prostředků, které se dají vytvořit v předplatných zákazníka, a to pomocí následujících integrovaných definic zásad:
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 - Povolené typy prostředků
 
 Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky v rámci předplatných. Ujistěte se, že všechny prostředky Azure přítomné v daném prostředí jsou schválené.
@@ -845,8 +846,7 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: Vytvoření zabezpečených konfigurací pro všechny prostředky Azure
 
-**Doprovodné**materiály: použijte aliasy Azure Policy v oboru názvů Microsoft. SQL k vytvoření vlastních zásad pro auditování nebo prosazování konfigurace prostředků, které se vztahují k vašemu synapse fondu SQL. Můžete také využít integrované definice zásad pro databáze Azure, například:
-
+**Doprovodné**materiály: použijte aliasy Azure Policy v oboru názvů Microsoft. SQL k vytvoření vlastních zásad pro auditování nebo prosazování konfigurace prostředků, které se vztahují k vašemu synapse fondu SQL. Můžete také využít integrované definice zásad pro Azure Database/Server, například:
 - Nasazení detekce hrozeb na SQL serverech
 - SQL Server by měl používat koncový bod služby virtuální sítě
 
@@ -978,7 +978,7 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 *Další informace najdete v tématu [řízení zabezpečení: obrana proti malwaru](/azure/security/benchmarks/security-control-malware-defense).*
 
-### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: použití centrálně spravovaného malwarového softwaru
+### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: použijte centrálně spravovaný antimalwarový software
 
 **Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky. Microsoft zpracovává anti-malware pro základní platformu.
 

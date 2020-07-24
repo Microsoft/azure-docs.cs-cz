@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 99e637099e54698e9d6eabb14920251a9d4a81f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f1120c78ef2a634c079705c85170d9742eabd1f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194397"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087420"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Přesun dat do služby SQL Database pro Azure Machine Learning
 
@@ -30,13 +31,13 @@ Následující tabulka shrnuje možnosti přesunutí dat do Azure SQL Database.
 | <b>Plochý soubor (ve formátu CSV nebo TSV)</b> |[Hromadné vložení dotazu SQL](#bulk-insert-sql-query) |
 | <b>Místní SQL Server</b> |1.[Export do plochého souboru](#export-flat-file)<br> 2. [Průvodce migrací SQL Database](#insert-tables-bcp)<br> 3. [zálohování a obnovení databáze](#db-migration)<br> 4. [Azure Data Factory](#adf) |
 
-## <a name="prerequisites"></a><a name="prereqs"></a>Požadavky
+## <a name="prerequisites"></a><a name="prereqs"></a>Předpoklady
 Tady popsané postupy vyžadují:
 
-* **Předplatné Azure**. Pokud nemáte předplatné, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* **Předplatné Azure** Pokud nemáte předplatné, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 * **Účet služby Azure Storage**. K ukládání dat v tomto kurzu použijete účet služby Azure Storage. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md). Po vytvoření účtu úložiště je třeba získat klíč účtu, který se používá pro přístup k účtu. Viz [Správa přístupových klíčů účtu úložiště](../../storage/common/storage-account-keys-manage.md).
 * Přístup k **Azure SQL Database**. Pokud musíte nastavit Azure SQL Database, [Začínáme s Microsoft Azure SQL Database](../../sql-database/sql-database-get-started.md) poskytuje informace o tom, jak zřídit novou instanci Azure SQL Database.
-* Instalace a konfigurace **Azure PowerShell** lokálně. Pokyny najdete v tématu [instalace a konfigurace Azure PowerShell](/powershell/azure/overview).
+* Instalace a konfigurace **Azure PowerShell** lokálně. Pokyny najdete v tématu [instalace a konfigurace Azure PowerShell](/powershell/azure/).
 
 **Data**: procesy migrace jsou znázorněny pomocí [datové sady taxislužby NYC](https://chriswhong.com/open-data/foil_nyc_taxi/). Datová sada taxislužby NYC obsahuje informace o datech na cestách a jejich veletrzích a je dostupná v Azure Blob Storage: [data NYC taxislužby](https://www.andresmh.com/nyctaxitrips/). Ukázka a popis těchto souborů jsou k dispozici v [popisu datové sady NYC taxislužby TRIPS](sql-walkthrough.md#dataset).
 
