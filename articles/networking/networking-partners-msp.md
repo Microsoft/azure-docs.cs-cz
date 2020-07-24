@@ -5,14 +5,14 @@ services: networking
 author: skishen525
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 07/23/2020
 ms.author: sukishen
-ms.openlocfilehash: aa77ac3652d8646a3354cb137ba7cf4240e58e6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d9a8b44cc6e78eda4a3e0b18d59d2372e7129c05
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482883"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124169"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Informace o sítích Azure pro síťové služby MSP
 
@@ -20,7 +20,7 @@ ms.locfileid: "85482883"
 
 Azure Networking účastníci programu MSP jsou specializovaná sada poskytovatelů spravovaných služeb, které řeší potřeby a problémy podnikového cloudového přístupu napříč všemi aspekty cloudových a hybridních sítí. Spravované síťové služby zahrnují jednu nebo více následujících služeb: architektura sítě, plánování, nasazení, provoz, údržba a optimalizace.
 
-![MSP][0]
+:::image type="content" source="./media/networking-partners-msp/msp.jpg" alt-text="její":::
 
 Zákazníci si můžou koupit služby spravované MSP v Azure Marketplace nebo přímo z MSP. Účastníci programu MSP může nasadit a spravovat síťové prostředky Azure v předplatných zákazníků a skupinách prostředků pomocí [Azure Lighthouse](https://azure.microsoft.com/services/azure-lighthouse/).
 
@@ -32,6 +32,7 @@ Odkazy v této části použijte, pokud chcete získat další informace o služ
 | ---| ---| ---| ---| ---|
 |[Skupina ANS UK](https://www.ans.co.uk/)|[Azure Managed svc + ANS Glass 10wk – implementace](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.glassms)|[ExpressRoute & připojení: posouzení 2 týdnů](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.ans_er)|[Azure Virtual WAN + Fortinet: posouzení 2 týdnů](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.ans_vw)|||
 |[Sítě Aryaka](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)||[Aryaka Networks Azure Connect](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aryaka.cloudconnect_azure_19?tab=Overview)|[Aryaka Networks Azure Virtual WAN](https://azuremarketplace.microsoft.com/marketplace/apps/aryaka.cloudconnect_azure_19?tab=Overview) | | |
+|[AXESDN](https://www.axesdn.com/en/azure-msp.html)||[AXESDN Managed Azure ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/1584591601184.axesdn_managed_azure_expressroute?tab=Overview)|[AXESDN spravovaná přes Azure Virtual WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/1584591601184.axesdn_managed_azure_virtualwan?tab=Overview) | | |
 |[BT](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)|[Konzultace k transformaci sítě: 1 – posouzení HR](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/bt-americas-inc.network-transformation-consulting); [Cloudový připojení BT Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-001?tab=Overview)|[Cloud BT Connect Azure ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-003?tab=Overview)|[Cloud BT Connect Azure VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-002?tab=Overview)|||
 |[CenturyLink](https://www.centurylink.com/business.html)||[ExpressRoute konzultačního okruhu: 8-týden implementace](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/centurylink2362604-2362604.centurylink_consultingservicesforexpressroute)||||
 |[Spoluvývoj](https://www.coevolve.com/services/azure-networking-services/)|||[Spravovaná virtuální hraniční síť VMware SD – WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/coevolveptylimited1581027739259.managed-vmware-sdwan-edge?tab=Overview)|||
@@ -53,7 +54,7 @@ Odkazy v této části použijte, pokud chcete získat další informace o služ
 |[Ostražití](https://vigilant.it/manage-cloud-service/)|[Kontroly stavu Azure: 5 dní posouzení](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[ExpressRoute: 5 dní implementace](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
 |[Vandis](https://www.vandis.com/microsoft-azure-practice/)||[Vandis spravované ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[Vandis spravované VWAN využívající Fortinet](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview); [Vandis spravované VWAN využívající Palo Alto Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview)|
 
-K dispozici jsou tyto Azure Marketplace, včetně nových spravovaných služeb zabezpečení a spravovaných služeb MEC od následujících partnerů Azure Networking MSP, které jsou v naší mapě: [Amdocs](https://www.amdocs.com/); [AXESDN](https://www.axesdn.com/en/azure-msp.html); [CenturyLink](https://www.centurylink.com/business/networking/cloud-connectivity.html);  [Německý Telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406);  [IX dosáhnou](https://www.ixreach.com/services/sdn-cloud-connect/);  Pro [Cloud](https://intercloud.com/partners/microsoft-azure/);  [KINX](https://www.kinx.net/service/cloud/?lang=en); [OmniClouds](https://omniclouds.com/services/);  [Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms); [Federované bezdrátové sítě](https://www.federatedwireless.com/caas/)
+K dispozici jsou Azure Marketplace nabídky pro spravované služby ExpressRoute, Virtual WAN, služby zabezpečení a soukromé hraniční zóny od následujících partnerů Azure pro síťové rozhraní MSP: [Amdocs](https://www.amdocs.com/);  [Německý Telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406);  [IX dosáhnou](https://www.ixreach.com/services/sdn-cloud-connect/);  Pro [Cloud](https://intercloud.com/partners/microsoft-azure/);  [KINX](https://www.kinx.net/service/cloud/?lang=en); [OmniClouds](https://omniclouds.com/);  [Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms); [Federované bezdrátové sítě](https://www.federatedwireless.com/caas/)
 
 ## <a name="expressroute-partners"></a><a name="expressroute"></a>Partneři ExpressRoute
 
@@ -62,6 +63,3 @@ Informace o partnerech najdete v tématu [partneři a umístění ExpressRoute](
 ## <a name="virtual-wan-partners"></a><a name="vwan"></a>Virtuální partneři sítě WAN
 
 Informace o partnerech najdete v tématu [virtuální partneři a poskytovatelé sítě WAN](../virtual-wan/virtual-wan-locations-partners.md).
-
-<!--Image References-->
-[0]: ./media/networking-partners-msp/msp.png "Popis programu MSP"

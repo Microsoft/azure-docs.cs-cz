@@ -2,18 +2,19 @@
 title: Jak zabezpečit jednostránkové aplikaci pomocí neinteraktivního přihlašování
 titleSuffix: Azure Maps
 description: Postup konfigurace jednostránkové aplikace s neinteraktivním řízením přístupu na základě role Azure AD a Azure Maps webové sady SDK.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: d33fbdf2e95faaa82c13b4fc0d52ea3f188c3f86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 96dd1cf6a5d6cea69899bf920c86018384ebbc3c
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988554"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126448"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>Jak zabezpečit jednostránkové aplikaci pomocí neinteraktivního přihlašování
 
@@ -107,7 +108,7 @@ Vytvořte zabezpečenou aplikaci webové služby, která je zodpovědná za ově
     > [!div class="mx-imgBorder"]
     > ![Udělit RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. Na kartě **přiřazení rolí** v části **Role**vyberte předdefinované Azure Maps definice role, jako je **Azure Maps data Reader** nebo **Azure Maps Přispěvatel dat**. V části **přiřadit přístup k**vyberte **Function App**. Vyberte objekt zabezpečení podle názvu. Pak vyberte **Uložit**.
+2. Na kartě **přiřazení rolí** v části **Role**vyberte předdefinované Azure Maps definice role, jako je **Azure Maps data Reader** nebo **Azure Maps Přispěvatel dat**. V části **přiřadit přístup k**vyberte **Function App**. Vyberte objekt zabezpečení podle názvu. Potom vyberte **Uložit**.
 
    * Podívejte se na podrobnosti o [Přidání nebo odebrání přiřazení rolí](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
 

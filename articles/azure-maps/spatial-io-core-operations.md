@@ -1,19 +1,19 @@
 ---
 title: Základní vstupně-výstupní operace | Mapy Microsoft Azure
 description: Naučte se efektivně číst a zapisovat XML a data s oddělovači pomocí základních knihoven z modulu prostorového vstupu/výstupu.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0b8fe1b319dc480879944d28f10645025a8cb38e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e142fe348a339e4903d692cad569015edb69f75
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80371439"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124472"
 ---
 # <a name="core-io-operations"></a>Základní vstupně-výstupní operace
 
@@ -30,7 +30,7 @@ Kromě poskytování nástrojů pro čtení prostorových datových souborů zp�
 
 Ve výchozím nastavení čtečka použije jako oddělovač znak čárky. Oddělovač je však možné změnit na libovolný jeden znak nebo nastavit na `'auto'` . Při nastavení na `'auto'` je čtenář analyzovat první řádek textu v řetězci. Pak se v následující tabulce vybere nejběžnější znak, který použijete jako oddělovač.
 
-| | |
+| Oddělovač | Znak |
 | :-- | :-- |
 | Čárka | `,` |
 | Karta | `\t` |

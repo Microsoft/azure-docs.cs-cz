@@ -1,19 +1,20 @@
 ---
 title: Přidat značku HTML pro mapování | Mapy Microsoft Azure
 description: V tomto článku se dozvíte, jak přidat značku HTML k mapě pomocí webové sady SDK Microsoft Azure Maps.
-author: Philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 30d9cf9848a8d99505bf9f9c97bef5aaa31065ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fae7c2e24eb10ffb2a36a0af1052be2694b0693c
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83119280"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126325"
 ---
 # <a name="add-html-markers-to-the-map"></a>Přidání značek HTML do mapy
 

@@ -1,15 +1,15 @@
 ---
 title: Nasazení šablony řešení Ethereem pro kontrolu pravopisu pro účely úřadu v Azure
 description: Nasazení a konfigurace Ethereemé sítě konsorcia Ethereem pro více členů v Azure pomocí řešení pro kontrolu pravopisu
-ms.date: 07/07/2020
+ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 859be5d779663e429ef333c8fd8163c0aa60eab5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: d75b5348c49728d2a796257fa4000f6c3a36831d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085918"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124920"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Nasazení šablony řešení Ethereem pro kontrolu pravopisu pro účely úřadu v Azure
 
@@ -23,11 +23,14 @@ K nasazení, konfiguraci a řízení Ethereemé sítě pro ověření ve více �
 
 Než se rozhodnete použít šablonu řešení Ethereem pro kontrolu pravopisu, porovnejte svůj scénář s běžnými případy použití dostupných možností Azure blockchain.
 
+> [!IMPORTANT]
+> Zvažte použití [služby Azure blockchain](../service/overview.md) namísto šablony řešení Ethereem v Azure. Služba Azure Blockchain je podporovaná spravovaná služba Azure. Paritní Ethereem přecházejí na vývoj a údržbu řízený komunitou. Další informace najdete v tématu [přechod Ethereem parity na OPENETHEREUM DAO](https://www.parity.io/parity-ethereum-openethereum-dao/).
+
 Možnost | Model služby | Běžný případ použití
 -------|---------------|-----------------
-Šablony řešení | IaaS | Šablony řešení jsou Azure Resource Manager šablony, pomocí kterých můžete zřídit plně nakonfigurovanou topologii sítě blockchain. Šablony nasazují a konfigurují Microsoft Azure COMPUTE, sítě a služby úložiště pro daný typ sítě blockchain. Šablony řešení jsou poskytovány bez smlouvy o úrovni služeb. Pro podporu použijte [stránku s otázkou Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html) .
-[Služba Azure Blockchain](../service/overview.md) | PaaS | Služba Azure blockchain ve verzi Preview zjednodušuje vytváření, správu a řízení sítí konsorcia blockchain. Využijte Azure blockchain Service pro řešení, která vyžadují PaaS, správu konsorcia nebo jejich soukromí a transakce.
-[Azure Blockchain Workbench](../workbench/overview.md) | IaaS a PaaS | Azure blockchain Workbench Preview je kolekce služeb a funkcí Azure, které vám pomůžou vytvářet a nasazovat aplikace blockchain pro sdílení obchodních procesů a dat s jinými organizacemi. Využijte Azure blockchain Workbench pro vytváření prototypů řešení blockchain nebo blockchain aplikace pro zkoušku konceptu. Azure Blockchain Workbench se poskytuje bez smlouvy o úrovni služeb. Pro podporu použijte [stránku s otázkou Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html) .
+Šablony řešení | IaaS | Šablony řešení jsou Azure Resource Manager šablony, pomocí kterých můžete zřídit plně nakonfigurovanou topologii sítě blockchain. Šablony nasazují a konfigurují Microsoft Azure COMPUTE, sítě a služby úložiště pro daný typ sítě blockchain. Šablony řešení jsou poskytovány bez smlouvy o úrovni služeb. Pro podporu použijte [stránku s otázkou Microsoft Q&](/answers/topics/azure-blockchain-workbench.html) .
+[Azure Blockchain Service](../service/overview.md) | PaaS | Služba Azure blockchain ve verzi Preview zjednodušuje vytváření, správu a řízení sítí konsorcia blockchain. Využijte Azure blockchain Service pro řešení, která vyžadují PaaS, správu konsorcia nebo jejich soukromí a transakce.
+[Azure Blockchain Workbench](../workbench/overview.md) | IaaS a PaaS | Azure blockchain Workbench Preview je kolekce služeb a funkcí Azure, které vám pomůžou vytvářet a nasazovat aplikace blockchain pro sdílení obchodních procesů a dat s jinými organizacemi. Využijte Azure blockchain Workbench pro vytváření prototypů řešení blockchain nebo blockchain aplikace pro zkoušku konceptu. Azure Blockchain Workbench se poskytuje bez smlouvy o úrovni služeb. Pro podporu použijte [stránku s otázkou Microsoft Q&](/answers/topics/azure-blockchain-workbench.html) .
 
 ## <a name="solution-architecture"></a>Architektura řešení
 
@@ -95,7 +98,7 @@ Typ ověřování | Metoda, která se má ověřit pro virtuální počítač. |
 Heslo | Heslo pro účet správce pro každý nasazený virtuální počítač. Všechny virtuální počítače mají zpočátku stejné heslo. Po zřízení můžete heslo změnit. | 12-72 znaků 
 Předplatné | Předplatné, ke kterému se má nasadit síť konsorcia |
 Skupina prostředků| Skupina prostředků, do které se má nasadit síť konsorcia | myResourceGroup
-Umístění | Oblast Azure pro skupinu prostředků. | USA – západ 2
+Umístění | Oblast Azure pro skupinu prostředků. | Západní USA 2
 
 Vyberte **OK**.
 
@@ -108,7 +111,7 @@ V části *oblasti nasazení*určete počet oblastí a umístění pro každý z
 Parametr | Popis | Příklad hodnoty
 ----------|-------------|--------------
 Počet oblastí|Počet oblastí pro nasazení sítě konsorcia| 2
-První oblast | První oblast pro nasazení sítě konsorcia | USA – západ 2
+První oblast | První oblast pro nasazení sítě konsorcia | Západní USA 2
 Druhá oblast | Druhá oblast pro nasazení sítě konsorcia. Další oblasti jsou viditelné, pokud je počet oblastí 2 nebo vyšší. | USA – východ 2
 
 Vyberte **OK**.
@@ -127,7 +130,7 @@ Velikost virtuálního počítače uzlu validátoru | Velikost virtuálního po�
 
 Virtuální počítač a vrstva úložiště mají vliv na výkon sítě.  Pro výběr cenové efektivity použijte následující tabulku:
 
-SKU virtuálního počítače|Vrstva úložiště|Price|Propustnost|Latence
+SKU virtuálního počítače|Vrstva úložiště|Cena|Propustnost|Latence
 ---|---|---|---|---
 F1|SSD úrovně Standard|slab|slab|high
 D2_v3|SSD úrovně Standard|střední|střední|střední
@@ -164,13 +167,13 @@ Parametr | Popis | Příklad hodnoty
 ----------|-------------|--------------
 Monitorování | Možnost povolení monitorování | Povolit
 Připojit k existujícím protokolům Azure Monitor | Možnost vytvoření nové instance protokolu Azure Monitor nebo připojení k existující instanci | Vytvořit nový
-Umístění | Oblast, ve které je nasazena nová instance | USA – východ
-Existující ID pracovního prostoru Log Analytics (připojit k existujícím protokolům Azure Monitor = připojit existující)|ID pracovního prostoru existující instance protokolu Azure Monitor||NA
-Existující primární klíč Log Analytics (Připojte se k existujícím protokolům Azure Monitor = připojit existující)|Primární klíč, který se používá pro připojení ke stávající instanci Azure Monitorch protokolů||NA
+Umístění | Oblast, ve které je nasazena nová instance | East US
+Existující ID pracovního prostoru Log Analytics (připojit k existujícím protokolům Azure Monitor = připojit existující)|ID pracovního prostoru existující instance protokolu Azure Monitor||Není k dispozici
+Existující primární klíč Log Analytics (Připojte se k existujícím protokolům Azure Monitor = připojit existující)|Primární klíč, který se používá pro připojení ke stávající instanci Azure Monitorch protokolů||Není k dispozici
 
 Vyberte **OK**.
 
-### <a name="summary"></a>Souhrn
+### <a name="summary"></a>Shrnutí
 
 Kliknutím na Souhrn zkontrolujte zadané vstupy a spusťte základní ověřování před nasazením. Před nasazením si můžete stáhnout šablonu a parametry.
 
@@ -557,7 +560,7 @@ Chcete-li kompilovat, nasazovat a testovat inteligentní kontrakty, je zde něko
 
 V následujícím příkladu vytvoříte jednoduchou inteligentní kontrakt. Truffle můžete použít ke kompilaci a nasazení inteligentních kontraktů do vaší sítě blockchain. Po nasazení zavoláte funkci inteligentního kontraktu prostřednictvím transakce.
 
-#### <a name="prerequisites"></a>Požadavky
+#### <a name="prerequisites"></a>Předpoklady
 
 * Nainstalujte [Python 2.7.15](https://www.python.org/downloads/release/python-2715/). Python je potřeba pro Truffle a Web3. Vyberte možnost instalovat, pokud chcete zahrnout Python do vaší cesty.
 * Nainstalujte Truffle v 5.0.5 `npm install -g truffle@v5.0.5` . Truffle vyžaduje instalaci několika nástrojů, včetně [Node.js](https://nodejs.org), [Gitu](https://git-scm.com/). Další informace najdete v [dokumentaci k Truffle](https://github.com/trufflesuite/truffle).
@@ -683,7 +686,7 @@ Teď, když je vaše inteligentní smlouva nasazená, můžete odeslat transakci
 
 Podpora WebAssembly je už povolená na nově nasazených sítích PoA. Umožňuje vývoj inteligentních kontraktů v jakémkoli jazyce, který předává do webového sestavení (Rust, C, C++). Další informace najdete v tématech [Přehled parity WebAssembly](https://wiki.parity.io/WebAssembly-Home) a [tutorial z parity tech](https://github.com/paritytech/pwasm-tutorial) .
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 ### <a name="i-notice-there-are-many-transactions-on-the-network-that-i-didnt-send-where-are-these-coming-from"></a>Všimněte si, že síť obsahuje mnoho transakcí, které jsem neodeslal. Odkud pocházejí?
 
@@ -731,10 +734,10 @@ Pokud chcete poskytnout zpětnou vazbu k produktu nebo požádat o nové funkce,
 
 Spolupracujte s odborníky z Microsoftu a komunitou Azure blockchain.
 
-* [Microsoft Q&stránku s otázkou](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html). Technická podpora pro šablony Blockchain je omezená na problémy s nasazením.
-* [Technická komunita Microsoftu](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+* [Microsoft Q&stránku s otázkou](/answers/topics/azure-blockchain-workbench.html). Technická podpora pro šablony Blockchain je omezená na problémy s nasazením.
+* [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 
 ## <a name="next-steps"></a>Další kroky
 
-Další řešení Azure blockchain najdete v dokumentaci ke [službě Azure blockchain](https://docs.microsoft.com/azure/blockchain/).
+Další řešení Azure blockchain najdete v dokumentaci ke [službě Azure blockchain](../index.yml).

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: eb23f1e703c2e447c484ccb366914cb4b23c5bf7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f9d736098e42bf5ca07eca0cb952275c5e39c2a9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536538"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125186"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rychlý Start: vytvoření služby Vyrovnávání zatížení pro vyrovnávání zatížení virtuálních počítačů pomocí Azure Portal
 
@@ -111,7 +111,7 @@ Vytvořte sondu stavu s názvem **myHealthProbe**, abyste mohli monitorovat stav
     | Prahová hodnota pro poškozený stav | Vyberte **2** pro počet chybných **prahových hodnot** nebo po sobě jdoucích selhání sondy, ke kterým musí dojít, aby se virtuální počítač považoval za poškozený.|
     | | |
 
-3. Vyberte **OK**.
+3. Ponechte zbytek výchozí hodnoty a vyberte **OK**.
 
 ### <a name="create-a-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
 
@@ -140,7 +140,7 @@ V této části vytvoříte pravidlo nástroje pro vyrovnávání zatížení:
     | Back-endový port | Zadejte **80**. |
     | Back-endový fond | Vyberte **myBackendPool**.|
     | Sonda stavu | Vyberte **myHealthProbe**. |
-    | Vytvořit implicitní odchozí pravidla | Vyberte **Ano**. </br> Další informace a pokročilou konfiguraci odchozího pravidla najdete v těchto tématech: </br> [Odchozí připojení v Azure](load-balancer-outbound-connections.md) </br> [Konfigurace vyrovnávání zatížení a odchozích pravidel v Standard Load Balancer pomocí Azure Portal](configure-load-balancer-outbound-portal.md)
+    | Vytvořit implicitní odchozí pravidla | Vyberte **Ne**.
 
 4. Ponechte zbytek výchozích hodnot a pak vyberte **OK**.
 
@@ -160,7 +160,7 @@ V této části nahradíte parametry v krocích níže uvedenými informacemi:
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroupLB |
 | **\<virtual-network-name>** | myVNet          |
-| **\<region-name>**          | Západní Evropa      |
+| **\<region-name>**          | West Europe      |
 | **\<IPv4-address-space>**   | 10.1.0.0 \ 16          |
 | **\<subnet-name>**          | myBackendSubnet        |
 | **\<subnet-address-range>** | 10.1.0.0 \ 24          |
@@ -237,6 +237,49 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
     | Zóna dostupnosti | **2** |**3**|
     | Skupina zabezpečení sítě | Vybrat existující **myNSG**| Vybrat existující **myNSG**|
 
+## <a name="create-outbound-rule-configuration"></a>Vytvořit konfiguraci odchozího pravidla
+Odchozí pravidla nástroje pro vyrovnávání zatížení konfigurují odchozí SNAT pro virtuální počítače ve fondu back-endu. 
+
+Další informace o odchozích připojeních najdete v tématu [odchozí připojení v Azure](load-balancer-outbound-connections.md).
+
+### <a name="create-outbound-rule"></a>Vytvořit odchozí pravidlo
+
+1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom v seznamu prostředků vyberte **myLoadBalancer** .
+
+2. V části **Nastavení**vyberte **odchozí pravidla**a pak vyberte **Přidat**.
+
+3. Pomocí těchto hodnot nakonfigurujte odchozí pravidla:
+
+    | Nastavení | Hodnota |
+    | ------- | ----- |
+    | Název | Zadejte **myOutboundRule**. |
+    | IP adresa front-endu | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Do **název**zadejte **LoadBalancerFrontEndOutbound**. </br> Vyberte **IP adresu** nebo **předponu IP**adresy. </br> V části **Veřejná IP adresa** nebo **předpona veřejné IP**adresy vyberte **vytvořit novou** . </br> Jako název zadejte **myPublicIPOutbound** nebo **myPublicIPPrefixOutbound**. </br> Vyberte **OK**. </br> Vyberte **Přidat**.|
+    | Časový limit nečinnosti (minuty) | Přesuňte posuvník na **15 minut**.|
+    | Resetování protokolu TCP | Vyberte **Povoleno**.|
+    | Back-endový fond | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Jako **název**zadejte **myBackendPoolOutbound** . </br> Vyberte **Přidat**. |
+    | Přidělování portů-> přidělování portů | Vyberte možnost **ručně vybrat počet odchozích portů** . |
+    | Odchozí porty – > zvolit podle | Vybrat **porty na instanci** |
+    | Odchozí porty – > porty na instanci | Zadejte **10000**. |
+
+4. Vyberte **Přidat**.
+
+### <a name="add-virtual-machines-to-outbound-pool"></a>Přidat virtuální počítače do odchozího fondu
+
+1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom v seznamu prostředků vyberte **myLoadBalancer** .
+
+2. V části **Nastavení**vyberte **back-endové fondy**.
+
+3. Vyberte **myBackendPoolOutbound**.
+
+4. Ve **virtuální síti**vyberte **myVNet**.
+
+5. Na **virtuální počítače**vyberte **+ Přidat**.
+
+6. Zaškrtněte políčka vedle **myVM1**, **myVM2**a **myVM3**. 
+
+7. Vyberte **Přidat**.
+
+8. Vyberte **Uložit**.
 
 # <a name="option-2-create-a-load-balancer-basic-sku"></a>[Možnost 2: Vytvoření nástroje pro vyrovnávání zatížení (základní skladová položka)](#tab/option-1-create-load-balancer-basic)
 
@@ -289,7 +332,7 @@ V této části nahradíte parametry v krocích níže uvedenými informacemi:
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroupLB |
 | **\<virtual-network-name>** | myVNet          |
-| **\<region-name>**          | Západní Evropa      |
+| **\<region-name>**          | West Europe      |
 | **\<IPv4-address-space>**   | 10.1.0.0 \ 16          |
 | **\<subnet-name>**          | myBackendSubnet        |
 | **\<subnet-address-range>** | 10.1.0.0 \ 24          |
@@ -441,9 +484,10 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
     | Název |  **myVM2** |**myVM3**|
     | Skupina dostupnosti| Vybrat **myAvailabilitySet** | Vybrat **myAvailabilitySet**|
     | Skupina zabezpečení sítě | Vybrat existující **myNSG**| Vybrat existující **myNSG**|
+
 ---
 
-### <a name="install-iis"></a>Instalace služby IIS
+## <a name="install-iis"></a>Instalace služby IIS
 
 1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom v seznamu prostředky vyberte **myVM1** , která je umístěná ve skupině prostředků **myResourceGroupLB** .
 

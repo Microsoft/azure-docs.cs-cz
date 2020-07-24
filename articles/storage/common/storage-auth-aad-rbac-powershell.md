@@ -1,7 +1,7 @@
 ---
 title: Přiřazení role RBAC pro přístup k datům pomocí PowerShellu
 titleSuffix: Azure Storage
-description: Naučte se používat PowerShell k přiřazení oprávnění k objektu zabezpečení Azure Active Directory s řízením přístupu na základě role (RBAC). Azure Storage podporuje integrované a vlastní role RBAC pro ověřování prostřednictvím služby Azure AD.
+description: Naučte se používat PowerShell k přiřazení oprávnění k objektu zabezpečení Azure Active Directory s řízením přístupu na základě role (RBAC). Azure Storage podporuje integrované a vlastní role Azure pro ověřování prostřednictvím služby Azure AD.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: a67981e2919854b80479ccc1c27ecf97469eebce
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dab10c8d7c93e130c707f6020309e5dd2440a028
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518673"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124886"
 ---
 # <a name="use-powershell-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Přiřazení role RBAC pro přístup k datům BLOB a Queue pomocí PowerShellu
 
@@ -23,7 +23,7 @@ Azure Active Directory (Azure AD) autorizuje přístupová práva k zabezpečen�
 
 Když je role RBAC přiřazená k objektu zabezpečení Azure AD, poskytuje Azure přístup k těmto prostředkům pro daný objekt zabezpečení. Přístup může být vymezený na úrovni předplatného, skupiny prostředků, účtu úložiště nebo jednotlivého kontejneru nebo fronty. Objekt zabezpečení Azure AD může být uživatelem, skupinou, instančním objektem služby nebo [spravovanou identitou pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 
-Tento článek popisuje, jak použít Azure PowerShell k vypsání předdefinovaných rolí RBAC a jejich přiřazení uživatelům. Další informace o použití Azure PowerShell najdete v tématu [přehled Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
+Tento článek popisuje, jak použít Azure PowerShell k vypsání předdefinovaných rolí RBAC a jejich přiřazení uživatelům. Další informace o použití Azure PowerShell najdete v tématu [přehled Azure PowerShell](https://docs.microsoft.com/powershell/azure/).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

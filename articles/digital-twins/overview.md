@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 05a3fc7524b16033c48170b6cf0fa4e004c9eb9b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7f5ad0b493f925ce34ffe19892fa432322995a9c
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257985"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125203"
 ---
 # <a name="what-is-azure-digital-twins"></a>Co je služba Azure Digital Twins?
 
@@ -44,7 +44,7 @@ DTDL se používá pro datové modely v jiných službách Azure IoT, včetně s
 
 Digitální modely v rámci digitálních vláken Azure jsou živé a aktuální reprezentace reálného světa. Pomocí vztahů ve vlastních DTDL modelech spojíte vlákna do **živého grafu** představujícího vaše prostředí.
 
-Vizualizaci grafu digitálních vláken Azure můžete zobrazit pomocí ukázkové aplikace v [**Průzkumníkovi digitálních vláken Azure**](https://github.com/Azure-Samples/digital-twins-explorer).
+Vizualizaci grafu digitálních vláken Azure můžete zobrazit pomocí ukázkové aplikace v [**Průzkumníkovi digitálních vláken Azure**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/).
 
 Tady je přehled toho, jak vypadá ukázková vizualizace:
 
@@ -94,16 +94,16 @@ Následující diagram znázorňuje, kde se digitální vlákna Azure nachází 
 
 > [!IMPORTANT]
 > Digitální vlákna Azure je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v tématu [*doplňujících podmínek použití pro Microsoft Azure*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
-Seznam omezení digitálních vláken Azure v rámci veřejné verze Preview najdete v tématu [referenční informace: omezení služby Public Preview](reference-service-limits.md).
+Seznam omezení digitálních vláken Azure v rámci veřejné verze Preview najdete v tématu [*referenční informace: omezení služby Public Preview*](reference-service-limits.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 Pokud jste pracovali s předchozí verzí Preview digitálních vláken Azure, přečtěte si, co se změnilo:
-* [Přehled: rozdíly z předchozí verze](overview-differences.md)
+* [*Přehled: rozdíly z předchozí verze*](overview-differences.md)
 
 Nebo si pokračujte a podrobněi se s využitím digitálních vláken Azure pomocí prvního kurzu:
 
 > [!div class="nextstepaction"]
-> [Kurz: vytvoření kódu klientské aplikace](tutorial-code.md)
+> [*Kurz: vytvoření kódu klientské aplikace*](tutorial-code.md)

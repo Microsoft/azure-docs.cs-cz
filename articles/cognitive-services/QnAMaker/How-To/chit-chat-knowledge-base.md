@@ -3,20 +3,18 @@ title: Přidání funkce CHITEST – chat k QnA Maker znalostní bázi Knowledge
 titleSuffix: Azure Cognitive Services
 description: Přidání osobní funkce CHITEST – chat k robotovi usnadňuje další konverzaci a poutavější při vytváření KB. QnA Maker vám umožní snadno přidat předem vyplněnou sadu horního programu CHITEST-chat do vaší znalostní báze.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: e06cad8e8ca62330b09e173cf6058905b49f19e4
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 0aca072a9e659d242dec9dd45a12f9568d419599
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992901"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124421"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Přidání funkce CHITEST – chat do znalostní báze
 
@@ -29,7 +27,7 @@ Níže jsou uvedeny některé příklady různých osobních druhů. Můžete zo
 Pro dotaz na uživatele `When is your birthday?` má každá osobnost odpověď ve stylu:
 
 <!-- added quotes so acrolinx doesn't score these sentences -->
-|Osobní|Příklad|
+|Osobnost|Příklad|
 |--|--|
 |Professional|Stáří neplatí pro mě.|
 |Vhodná|Nejedná se opravdu o stáří.|
@@ -74,7 +72,7 @@ Chcete-li zobrazit metadata, vyberte možnost **zobrazení možností** na panel
 ## <a name="add-additional-chit-chat-questions-and-answers"></a>Přidat další funkce CHITEST – otázky a odpovědi chatu
 Můžete přidat nový pár CHITEST-chat QnA, který není v předdefinované sadě dat. Ujistěte se, že neduplikujete dvojici QnA, která je již pokryta v sadě CHITEST-chat. Když přidáte všechny nové funkce CHITEST-chat QnA, přidají se do vašeho **redakčního** zdroje. Chcete-li zajistit, aby toto pořadí porozumělo tomu, že se jedná o funkci CHITEST-chat, přidejte dvojici klíč/hodnota metadat "redakční: chitchat", jak je vidět na následujícím obrázku:
 
-![! [Přidání funkce CHITEST-chat QnAs] (.. /media/qnamaker-how-to-chit-chat/add-new-chit-chat.png)](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
+![! [Přidání funkce CHITEST-chat QnAs] (.. /Media/qnamaker-How-to-Chit-Chat/add-new-chit-chat.png)](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
 
 ## <a name="delete-chit-chat-from-an-existing-kb"></a>Odstranit CHITEST – chat z existující znalostní báze
 Vyberte své znalostní báze a přejděte na stránku **Nastavení** . Konkrétní funkce CHITEST-chat je uvedena jako soubor s vybraným názvem preference. Tuto možnost můžete odstranit jako zdrojový soubor.

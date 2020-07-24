@@ -3,19 +3,17 @@ title: Metadata s GenerateAnswer API – QnA Maker
 titleSuffix: Azure Cognitive Services
 description: QnA Maker umožňuje přidat metadata ve formě párů klíč/hodnota k vašim dvojicím dotazů a odpovědí. Výsledky můžete filtrovat podle uživatelských dotazů a ukládat Další informace, které se dají použít v následných konverzacích.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.author: diberry
-ms.openlocfilehash: 171efd0e5750555130588f783c4a858def11afec
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.date: 07/16/2020
+ms.openlocfilehash: 863143cb2ec1085bf03b070c225f2be5e8e4393d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83993503"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126172"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Získat odpověď s GenerateAnswer API a metadaty
 
@@ -146,7 +144,7 @@ var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnCont
 
 Předchozí kód JSON požádal pouze o odpovědi, které jsou na 30% nebo vyšší než prahové skóre.
 
-## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>Použití QnA Maker s robotem v Node. js
+## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>Použití QnA Maker s robotem v Node.js
 
 Rozhraní bot Framework poskytuje přístup k vlastnostem QnA Maker pomocí [rozhraní Getanswer API](https://docs.microsoft.com/javascript/api/botbuilder-ai/qnamaker?view=botbuilder-ts-latest#generateanswer-string---undefined--number--number-):
 
@@ -184,13 +182,40 @@ Vzhledem k tomu, že se výsledky vyžadují jenom pro restaurace "Paradise", m�
 {
     "question": "When does this hotel close?",
     "top": 1,
-    "strictFilters": [
-      {
-        "name": "restaurant",
-        "value": "paradise"
-      }]
+    "strictFilters": [ { "name": "restaurant", "value": "paradise"}]
 }
 ```
+
+### <a name="logical-and-by-default"></a>Logický operátor AND ve výchozím nastavení
+
+Chcete-li v dotazu zkombinovat několik filtrů metadat, přidejte do pole vlastnosti další filtry metadat `strictFilters` . Ve výchozím nastavení jsou hodnoty logicky kombinovány (a). Logická kombinace vyžaduje, aby všechny filtry odpovídaly dvojicím QnA, aby se dvojice vracela v odpovědi.
+
+To je ekvivalentní použití `strictFiltersCompoundOperationType` vlastnosti s hodnotou `AND` .
+
+### <a name="logical-or-using-strictfilterscompoundoperationtype-property"></a>Logická nebo použití vlastnosti strictFiltersCompoundOperationType
+
+Pokud se zkombinujete s několika filtry metadat a chcete použít jenom jeden nebo několik filtrů, které odpovídají, použijte `strictFiltersCompoundOperationType` vlastnost s hodnotou `OR` .
+
+Vaše znalostní báze umožňuje vracet odpovědi, pokud libovolný filtr odpovídá, ale nevrátí odpovědi, které nemají metadata.
+
+```json
+{
+    "question": "When do facilities in this hotel close?",
+    "top": 1,
+    "strictFilters": [
+      { "name": "type","value": "restaurant"},
+      { "name": "type", "value": "bar"},
+      { "name": "type", "value": "poolbar"}
+    ],
+    "strictFiltersCompoundOperationType": "OR"
+}
+```
+
+### <a name="metadata-examples-in-quickstarts"></a>Příklady metadat v rychlých startech
+
+Další informace o metadatech v rychlém startu portálu QnA Maker pro metadata:
+* [Vytváření – přidání metadat do páru QnA](../quickstarts/add-question-metadata-portal.md#add-metadata-to-filter-the-answers)
+* [Prediktivní dotazování – filtrování odpovědí podle metadat](../quickstarts/get-answer-from-knowledge-base-using-url-tool.md)
 
 <a name="keep-context"></a>
 
@@ -243,7 +268,7 @@ Můžete prohledat publikované znalostní báze KB, pomocí `isTest=false` nebo
 
 |Kód|Vysvětlení|
 |:--|--|
-|2xx|Úspěch|
+|2xx|Success|
 |400|Parametry požadavku jsou nesprávné, což znamená, že požadované parametry chybí, jsou poškozené nebo jsou moc velké.|
 |400|Tělo žádosti není správné, což znamená, že JSON chybí, má špatný nebo je moc velký.|
 |401|Neplatný klíč|

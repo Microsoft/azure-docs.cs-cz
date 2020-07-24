@@ -1,23 +1,24 @@
 ---
-title: Vytvoření datové továrny Azure pomocí šablony Správce prostředků
-description: V tomto kurzu vytvoříte ukázkový kanál služby Azure Data Factory pomocí šablony Azure Resource Manageru.
+title: Vytvoření Azure Data Factory pomocí šablony Azure Resource Manager (šablona ARM)
+description: Vytvoření ukázkového Azure Data Factory kanálu pomocí šablony Azure Resource Manager (šablona ARM).
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
+tags: azure-resource-manager
 ms.workload: data-services
-ms.topic: quickstart
-ms.date: 02/20/2019
 author: djpmsft
 ms.author: daperlov
-manager: anandsub
-ms.openlocfilehash: 5ea45346de5ea841867dd13dd4c9a0ed26647448
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.reviewer: maghan, jingwang
+ms.topic: quickstart
+ms.custom: subject-armqs
+ms.date: 07/16/2020
+ms.openlocfilehash: ee641840839772d858cea775acb23e375d6aadea
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81419115"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117401"
 ---
-# <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Kurz: Vytvoření datové továrny Azure pomocí šablony Azure Resource Manageru
+# <a name="quickstart-create-an-azure-data-factory-using-arm-template"></a>Rychlý Start: vytvoření Azure Data Factory pomocí šablony ARM
 
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](v1/data-factory-build-your-first-pipeline-using-arm.md)
@@ -25,678 +26,170 @@ ms.locfileid: "81419115"
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Tento rychlý start popisuje použití šablony Azure Resource Manageru k vytvoření datové továrny Azure. Kanál, který vytvoříte v této datové továrně, **kopíruje** data z jedné složky do jiné složky v úložišti objektů BLOB v Azure. Kurz o tom, jak **transformovat** data pomocí Azure Data Factory, najdete v tématu [kurz: transformace dat pomocí Sparku](transform-data-using-spark.md).
+V tomto rychlém startu se dozvíte, jak pomocí šablony Azure Resource Manager (šablony ARM) vytvořit datovou továrnu Azure. Kanál, který vytvoříte v této datové továrně, **kopíruje** data z jedné složky do jiné složky v úložišti objektů BLOB v Azure. Kurz o tom, jak **transformovat** data pomocí Azure Data Factory, najdete v tématu [kurz: transformace dat pomocí Sparku](transform-data-using-spark.md).
+
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 > [!NOTE]
 > Tento článek neposkytuje podrobný úvod do služby Data Factory. Úvod do služby Azure Data Factory najdete v tématu [Úvod do Azure Data Factory](introduction.md).
 
-[!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)]
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
-### <a name="azure-powershell"></a>Azure PowerShell
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-data-factory-v2-blob-to-blob-copy%2Fazuredeploy.json)
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+## <a name="prerequisites"></a>Požadavky
 
-Nainstalujte nejnovější Azure PowerShell moduly podle pokynů v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/install-Az-ps).
+### <a name="azure-subscription"></a>Předplatné Azure
 
-## <a name="resource-manager-templates"></a>Šablony Resource Manageru
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
 
-Obecné informace o šablonách Azure Resource Manageru najdete v tématu [Vytváření šablon Azure Resource Manageru](../azure-resource-manager/templates/template-syntax.md).
+### <a name="create-a-file"></a>Vytvoření souboru
 
-Následující oddíl poskytuje hotovou šablonu Resource Manageru pro definování entit služby Data Factory, abyste mohli rychle projít kurzem a otestovat šablonu. Pro lepší pochopení toho, jak jsou jednotlivé entity služby Data Factory definovány, přejděte k oddílu [Entity služby Data Factory v šabloně](#data-factory-entities-in-the-template).
+Otevřete textový editor, například **Poznámkový blok**, a vytvořte soubor s názvem **emp.txt** s následujícím obsahem:
 
-Další informace o syntaxi a vlastnostech JSON pro Data Factory prostředky v šabloně najdete v tématu [typy prostředků Microsoft. DataFactory](/azure/templates/microsoft.datafactory/allversions).
-
-## <a name="data-factory-json"></a>JSON pro Data Factory
-
-Vytvořte soubor JSON s názvem **ADFTutorialARM. JSON** ve složce **C:\ADFTutorial** (Pokud ještě neexistuje, vytvořte složku ADFTutorial) s následujícím obsahem:
-
-```json
-{  
-    "$schema":"http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion":"1.0.0.0",
-    "parameters":{  
-        "dataFactoryName":{  
-            "type":"string",
-            "metadata":"Data Factory Name"
-        },
-        "dataFactoryLocation":{  
-            "type":"string",
-            "defaultValue":"East US",
-            "metadata":{  
-                "description":"Location of the data factory. Currently, only East US, East US 2, and West Europe are supported. "
-            }
-        },
-        "storageAccountName":{  
-            "type":"string",
-            "metadata":{  
-                "description":"Name of the Azure storage account that contains the input/output data."
-            }
-        },
-        "storageAccountKey":{  
-            "type":"securestring",
-            "metadata":{  
-                "description":"Key for the Azure storage account."
-            }
-        },
-        "triggerStartTime": {
-            "type": "string",
-            "metadata": {
-                "description": "Start time for the trigger."
-            }
-        },
-        "triggerEndTime": {
-            "type": "string",
-            "metadata": {
-                "description": "End time for the trigger."
-            }
-        }
-    },      
-    "variables":{  
-        "factoryId":"[concat('Microsoft.DataFactory/factories/', parameters('dataFactoryName'))]"
-    },
-    "resources":[  
-        {  
-            "name":"[parameters('dataFactoryName')]",
-            "apiVersion":"2018-06-01",
-            "type":"Microsoft.DataFactory/factories",
-            "location":"[parameters('dataFactoryLocation')]",
-            "identity":{  
-                "type":"SystemAssigned"
-            },
-            "resources":[  
-                {  
-                    "name":"[concat(parameters('dataFactoryName'), '/ArmtemplateStorageLinkedService')]",
-                    "type":"Microsoft.DataFactory/factories/linkedServices",
-                    "apiVersion":"2018-06-01",
-                    "properties":{  
-                        "annotations":[  
-
-                        ],
-                        "type":"AzureBlobStorage",
-                        "typeProperties":{  
-                            "connectionString":"[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageAccountName'),';AccountKey=',parameters('storageAccountKey'))]"
-                        }
-                    },
-                    "dependsOn":[  
-                        "[parameters('dataFactoryName')]"
-                    ]
-                },
-                {  
-                    "name":"[concat(parameters('dataFactoryName'), '/ArmtemplateTestDatasetIn')]",
-                    "type":"Microsoft.DataFactory/factories/datasets",
-                    "apiVersion":"2018-06-01",
-                    "properties":{  
-                        "linkedServiceName":{  
-                            "referenceName":"ArmtemplateStorageLinkedService",
-                            "type":"LinkedServiceReference"
-                        },
-                        "annotations":[  
-
-                        ],
-                        "type":"Binary",
-                        "typeProperties":{  
-                            "location":{  
-                                "type":"AzureBlobStorageLocation",
-                                "fileName":"emp.txt",
-                                "folderPath":"input",
-                                "container":"adftutorial"
-                            }
-                        }
-                    },
-                    "dependsOn":[  
-                        "[parameters('dataFactoryName')]",
-                        "[concat(variables('factoryId'), '/linkedServices/ArmtemplateStorageLinkedService')]"
-                    ]
-                },
-                {  
-                    "name":"[concat(parameters('dataFactoryName'), '/ArmtemplateTestDatasetOut')]",
-                    "type":"Microsoft.DataFactory/factories/datasets",
-                    "apiVersion":"2018-06-01",
-                    "properties":{  
-                        "linkedServiceName":{  
-                            "referenceName":"ArmtemplateStorageLinkedService",
-                            "type":"LinkedServiceReference"
-                        },
-                        "annotations":[  
-
-                        ],
-                        "type":"Binary",
-                        "typeProperties":{  
-                            "location":{  
-                                "type":"AzureBlobStorageLocation",
-                                "folderPath":"output",
-                                "container":"adftutorial"
-                            }
-                        }
-                    },
-                    "dependsOn":[  
-                        "[parameters('dataFactoryName')]",
-                        "[concat(variables('factoryId'), '/linkedServices/ArmtemplateStorageLinkedService')]"
-                    ]
-                },
-                {  
-                    "name":"[concat(parameters('dataFactoryName'), '/ArmtemplateSampleCopyPipeline')]",
-                    "type":"Microsoft.DataFactory/factories/pipelines",
-                    "apiVersion":"2018-06-01",
-                    "properties":{  
-                        "activities":[  
-                            {  
-                                "name":"MyCopyActivity",
-                                "type":"Copy",
-                                "dependsOn":[  
-
-                                ],
-                                "policy":{  
-                                    "timeout":"7.00:00:00",
-                                    "retry":0,
-                                    "retryIntervalInSeconds":30,
-                                    "secureOutput":false,
-                                    "secureInput":false
-                                },
-                                "userProperties":[  
-
-                                ],
-                                "typeProperties":{  
-                                    "source":{  
-                                        "type":"BinarySource",
-                                        "storeSettings":{  
-                                            "type":"AzureBlobStorageReadSettings",
-                                            "recursive":true
-                                        }
-                                    },
-                                    "sink":{  
-                                        "type":"BinarySink",
-                                        "storeSettings":{  
-                                            "type":"AzureBlobStorageWriteSettings"
-                                        }
-                                    },
-                                    "enableStaging":false
-                                },
-                                "inputs":[  
-                                    {  
-                                        "referenceName":"ArmtemplateTestDatasetIn",
-                                        "type":"DatasetReference",
-                                        "parameters":{  
-
-                                        }
-                                    }
-                                ],
-                                "outputs":[  
-                                    {  
-                                        "referenceName":"ArmtemplateTestDatasetOut",
-                                        "type":"DatasetReference",
-                                        "parameters":{  
-
-                                        }
-                                    }
-                                ]
-                            }
-                        ],
-                        "annotations":[  
-
-                        ]
-                    },
-                    "dependsOn":[  
-                        "[parameters('dataFactoryName')]",
-                        "[concat(variables('factoryId'), '/datasets/ArmtemplateTestDatasetIn')]",
-                        "[concat(variables('factoryId'), '/datasets/ArmtemplateTestDatasetOut')]"
-                    ]
-                },
-                {  
-                    "name":"[concat(parameters('dataFactoryName'), '/ArmTemplateTestTrigger')]",
-                    "type":"Microsoft.DataFactory/factories/triggers",
-                    "apiVersion":"2018-06-01",
-                    "properties":{  
-                        "annotations":[  
-
-                        ],
-                        "runtimeState":"Started",
-                        "pipelines":[  
-                            {  
-                                "pipelineReference":{  
-                                    "referenceName":"ArmtemplateSampleCopyPipeline",
-                                    "type":"PipelineReference"
-                                },
-                                "parameters":{  
-
-                                }
-                            }
-                        ],
-                        "type":"ScheduleTrigger",
-                        "typeProperties":{  
-                            "recurrence":{  
-                                "frequency":"Hour",
-                                "interval":1,
-                                "startTime":"[parameters('triggerStartTime')]",
-                                "endTime":"[parameters('triggerEndTime')]",
-                                "timeZone":"UTC"
-                            }
-                        }
-                    },
-                    "dependsOn":[  
-                        "[parameters('dataFactoryName')]",
-                        "[concat(variables('factoryId'), '/pipelines/ArmtemplateSampleCopyPipeline')]"
-                    ]
-                }
-            ]
-        }
-    ]
-}
-```
-## <a name="parameters-json"></a>Parametry JSON
-
-Vytvořte soubor JSON s názvem **ADFTutorialARM-Parameters.json**, který obsahuje parametry pro šablonu Azure Resource Manageru.
-
-> [!IMPORTANT]
-> - Zadejte název a klíč svého účtu služby Azure Storage v parametrech **storageAccountName** a **storageAccountKey** v souboru parametrů. Vytvořili jste kontejner adftutorial a do vstupní složky v tomto úložišti objektů blob v Azure jste nahráli ukázkový soubor (emp.txt).
-> - V parametru **dataFactoryName** zadejte globálně jedinečný název datové továrny. Například ARMTutorialFactoryJohnDoe11282017.
-> - V parametru **triggerStartTime** zadejte aktuální den ve formátu `2019-09-08T00:00:00`.
-> - V parametru **triggerEndTime** zadejte následující den ve formátu `2019-09-09T00:00:00`. Můžete také zkontrolovat aktuální čas UTC a jako čas ukončení zadat další hodinu nebo dvě. Pokud je například aktuální čas UTC 1:32, zadejte jako čas ukončení `2019-09-09:03:00:00`. V tomto případě trigger spustí kanál dvakrát (ve 2:00 a ve 3:00).
-
-```json
-{  
-    "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion":"1.0.0.0",
-    "parameters":{  
-        "dataFactoryName":{  
-            "value":"<datafactoryname>"
-        },
-        "dataFactoryLocation":{  
-            "value":"East US"
-        },
-        "storageAccountName":{  
-            "value":"<yourstorageaccountname>"
-        },
-        "storageAccountKey":{  
-            "value":"<yourstorageaccountkey>"
-        },
-        "triggerStartTime":{  
-            "value":"2019-09-08T11:00:00"
-        },
-        "triggerEndTime":{  
-            "value":"2019-09-08T14:00:00"
-        }
-    }
-}
+```emp.txt
+John, Doe
+Jane, Doe
 ```
 
-> [!IMPORTANT]
-> Můžete mít samostatné soubory JSON s parametry pro vývojové, testovací a produkční prostředí, které lze použít se stejnou šablonou JSON služby Data Factory. Pomocí skriptu prostředí PowerShell můžete zautomatizovat nasazování entit služby Data Factory v těchto prostředích.
+Uložte soubor do složky **C:\ADFv2QuickStartPSH** . (Pokud složka ještě neexistuje, vytvořte ji.)
 
-## <a name="deploy-data-factory-entities"></a>Nasazení entit služby Data Factory
+## <a name="review-template"></a>Zkontrolovat šablonu
 
-Spuštěním následujícího příkazu v PowerShellu nasaďte ve své skupině prostředků Data Factory entit (v tomto případě ADFTutorialResourceGroup jako příklad) pomocí Správce prostředků šablony, kterou jste vytvořili dříve v tomto rychlém startu.
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-data-factory-v2-blob-to-blob-copy/).
 
-```powershell
-New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFTutorial\ADFTutorialARM.json -TemplateParameterFile C:\ADFTutorial\ADFTutorialARM-Parameters.json
+:::code language="json" source="~/quickstart-templates/101-data-factory-v2-blob-to-blob-copy/azuredeploy.json" range="1-196" highlight="40-187":::
+
+V šabloně jsou definované prostředky Azure:
+
+- [Microsoft. Storage/storageAccounts](/azure/templates/Microsoft.Storage/storageAccounts): definuje účet úložiště.
+- [Microsoft. DataFactory/factorys](/azure/templates/microsoft.datafactory/factories): Vytvořte Azure Data Factory.
+- [Microsoft. DataFactory/Factory/linkedServices](/azure/templates/microsoft.datafactory/factories/linkedservices): Vytvořte propojenou službu Azure Data Factory.
+- [Microsoft. DataFactory/Factory/datové sady](/azure/templates/microsoft.datafactory/factories/datasets): vytvoří Azure Data Factory datovou sadu.
+- [Microsoft. DataFactory/továrny/kanály](/azure/templates/microsoft.datafactory/factories/pipelines): vytvoření kanálu Azure Data Factory.
+
+Další příklady šablon Azure Data Factory najdete v [galerii šablon rychlý Start](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Datafactory&pageNumber=1&sort=Popular).
+
+## <a name="deploy-the-template"></a>Nasazení šablony
+
+1. Vyberte následující obrázek a přihlaste se k Azure a otevřete šablonu. Šablona vytvoří účet Azure Data Factory, účet úložiště a kontejner objektů BLOB.
+
+    [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-data-factory-v2-blob-to-blob-copy%2Fazuredeploy.json)
+
+2. Vyberte nebo zadejte následující hodnoty.
+
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-deploy-arm-template.png" alt-text="Nasadit šablonu ADF ARM":::
+
+    Pokud není zadaný, použijte k vytvoření prostředků Azure Data Factory výchozí hodnoty:
+
+    - **Předplatné**: vyberte předplatné Azure.
+    - **Skupina prostředků**: vyberte **vytvořit novou**, zadejte jedinečný název pro skupinu prostředků a pak vyberte **OK**.
+    - **Oblast**: vyberte umístění.  Například *východní USA*.
+    - **Data Factory název**: použijte výchozí hodnotu.
+    - **Umístění**: použijte výchozí hodnotu.
+    - **Název účtu úložiště**: použijte výchozí hodnotu.
+    - **Kontejner objektů BLOB**: použijte výchozí hodnotu.
+
+## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
+
+1. Vyberte **Přejít do skupiny prostředků**.
+
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-go-to-resource-group.png" alt-text="Skupina prostředků":::
+
+2.  Ověřte, že je vytvořený Azure Data Factory.
+    1. Vaše Azure Data Factory název je ve formátu-DataFactory \<uniqueid\> .
+
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-sample.png" alt-text="Ukázka Data Factory":::
+
+2. Ověřte, že je účet úložiště vytvořený.
+    1. Název účtu úložiště je ve formátu úložiště \<uniqueid\> .
+
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-storage-account.png" alt-text="Účet úložiště":::
+
+3. Vyberte účet úložiště, který jste vytvořili, a pak vyberte **kontejnery**.
+    1. Na stránce **kontejnery** vyberte kontejner objektů blob, který jste vytvořili.
+        1. Název kontejneru objektů BLOB je v objektu Format-BLOB \<uniqueid\> .
+
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-blob-container.png" alt-text="Kontejner objektů BLOB":::
+
+### <a name="upload-a-file"></a>Nahrání souboru
+
+1. Na stránce **kontejnery** vyberte **Odeslat**.
+
+2. V pravém podokně v pravém podokně vyberte **soubory** a potom vyhledejte a vyberte soubor **emp.txt** , který jste vytvořili dříve.
+
+3. Rozbalte nadpis **Upřesnit** .
+
+4. Do pole **Odeslat do složky** zadejte Input ( *vstup*).
+
+5. Vyberte tlačítko **Nahrát**. Měli byste vidět soubor **emp.txt** a stav nahrávání v seznamu.
+
+6. Vyberte ikonu **Zavřít** ( **X**) pro zavření stránky **nahrát objekt BLOB** .
+
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-upload-blob-file.png" alt-text="Odeslat soubor do vstupní složky":::
+
+Nechejte stránku kontejneru otevřenou, protože ji můžete použít k ověření výstupu na konci tohoto rychlého startu.
+
+### <a name="start-trigger"></a>Spustit aktivační událost
+
+1. Přejděte na stránku **Datové továrny** a vyberte datovou továrnu, kterou jste vytvořili. 
+
+2. Vyberte dlaždici **Author & monitor** . 
+
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author-monitor-tile.png" alt-text="& monitorování autora":::
+
+2. Vyberte kartu **Autor** :::image type="icon" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author.png" border="false"::: .
+
+3. Vyberte kanál vytvořený-ArmtemplateSampleCopyPipeline.
+
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-pipelines.png" alt-text="Kanál šablony ARM":::
+
+4. Vyberte možnost **Přidat**  >  **aktivační událost nyní**.
+
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-trigger-now.png" alt-text="Trigger":::
+
+5. V pravém podokně v části **spuštění kanálu**vyberte **OK**.
+
+### <a name="monitor-the-pipeline"></a>Monitorování kanálu
+
+1. Vyberte kartu **monitorování** :::image type="icon" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-monitor.png" border="false"::: .
+
+2. Zobrazí se spuštění aktivit související s příslušným spuštěním kanálu. V tomto rychlém startu má kanál pouze jednu aktivitu typu Kopírování. V takovém případě se zobrazí spuštění této aktivity.
+
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-successful-run.png" alt-text="Úspěšné spuštění":::
+
+### <a name="verify-the-output-file"></a>Ověření výstupního souboru
+
+Kanál automaticky vytvoří výstupní složku v kontejneru objektů BLOB. Potom do výstupní složky zkopíruje soubor emp.txt ze vstupní složky. 
+
+1. V Azure Portal klikněte na stránce **kontejnery** na **aktualizovat** , aby se zobrazila výstupní složka. 
+
+2. V seznamu složek vyberte **výstup** .
+
+3. Potvrďte, že je do výstupní složky zkopírovaný soubor **emp.txt**. 
+
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-output.png" alt-text="Výstup":::
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Prostředky, které jste vytvořili v rámci tohoto rychlého startu, můžete vyčistit dvěma způsoby. Můžete [Odstranit skupinu prostředků Azure](../azure-resource-manager/management/delete-resource-group.md), která zahrnuje všechny prostředky ve skupině prostředků. Pokud chcete ostatní prostředky zachovat beze změny, odstraňte pouze datovou továrnu, kterou jste vytvořili v tomto kurzu.
+
+Odstranění skupiny prostředků odstraní všechny prostředky, které v ní jsou, včetně datových továren. Spuštěním následujícího příkazu odstraníte celou skupinu prostředků: 
+
+```azurepowershell-interactive
+Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 ```
 
-Zobrazí se podobný výstup jako v následující ukázce:
+Pokud chcete odstranit jenom datovou továrnu, ne celou skupinu prostředků, spusťte následující příkaz: 
 
-```console
-DeploymentName          : MyARMDeployment
-ResourceGroupName       : ADFTutorialResourceGroup
-ProvisioningState       : Succeeded
-Timestamp               : 9/8/2019 10:52:29 AM
-Mode                    : Incremental
-TemplateLink            : 
-Parameters              : 
-                          Name                   Type                       Value     
-                          =====================  =========================  ==========
-                          dataFactoryName        String                     <data factory name>
-                          dataFactoryLocation    String                     East US   
-                          storageAccountName     String                     <storage account name>
-                          storageAccountKey      SecureString                         
-                          triggerStartTime       String                     9/8/2019 11:00:00 AM
-                          triggerEndTime         String                     9/8/2019 2:00:00 PM
-                          
-Outputs                 : 
-DeploymentDebugLogLevel : 
+```azurepowershell-interactive
+Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupName
 ```
-
-## <a name="start-the-trigger"></a>Spuštění triggeru
-
-Šablona nasadí následující entity služby Data Factory:
-
-- Propojená služba Azure Storage
-- Binární datové sady (vstup a výstup)
-- Kanál s aktivitou kopírování
-- Trigger pro aktivaci kanálu
-
-Nasazený trigger je v zastaveném stavu. Jedním ze způsobů, jak spustit Trigger, je použít rutinu **Start-AzDataFactoryV2Trigger** prostředí PowerShell. Podrobné kroky najdete v následujícím postupu:
-
-1. V okně PowerShellu vytvořte proměnnou, která bude uchovávat název skupiny prostředků. Zkopírujte do okna PowerShellu následující příkaz a stiskněte ENTER. Pokud jste pro příkaz New-AzResourceGroupDeployment zadali jiný název skupiny prostředků, aktualizujte tady hodnotu.
-
-    ```powershell
-    $resourceGroupName = "ADFTutorialResourceGroup"
-    ```
-2. Vytvořte proměnnou, která bude uchovávat název datové továrny. Zadejte stejný název, jaký jste zadali v souboru ADFTutorialARM-Parameters.json.
-
-    ```powershell
-    $dataFactoryName = "<yourdatafactoryname>"
-    ```
-3. Nastavte proměnnou pro název triggeru. Název triggeru je pevně zakódovaný v souboru šablony Resource Manageru (ADFTutorialARM.json).
-
-    ```powershell
-    $triggerName = "ArmTemplateTestTrigger"
-    ```
-4. Po zadání názvu datové továrny a triggeru získejte **stav triggeru** spuštěním následujícího příkazu PowerShellu:
-
-    ```powershell
-    Get-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $triggerName
-    ```
-
-    Zde je ukázkový výstup:
-
-    ```json
-
-    TriggerName       : ArmTemplateTestTrigger
-    ResourceGroupName : ADFTutorialResourceGroup
-    DataFactoryName   : ADFQuickstartsDataFactory0905
-    Properties        : Microsoft.Azure.Management.DataFactory.Models.ScheduleTrigger
-    RuntimeState      : Stopped
-    ```
-    
-    Všimněte si, že stav modulu runtime triggeru je **Zastaveno**.
-5. **Spusťte Trigger**. Trigger spouští kanál definovaný v šabloně v celou hodinu. To znamená, že pokud jste tento příkaz spustili ve 14:25, trigger poprvé spustí kanál v 15:00. Potom kanál spustí každou hodinu až do času ukončení zadaného pro aktivační událost.
-
-    ```powershell
-    Start-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
-    ```
-    
-    Zde je ukázkový výstup:
-    
-    ```console
-    Confirm
-    Are you sure you want to start trigger 'ArmTemplateTestTrigger' in data factory 'ARMFactory1128'?
-    [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
-    True
-    ```
-6. Opětovným spuštěním příkazu Get-AzDataFactoryV2Trigger ověřte, zda byl aktivační událost spuštěn.
-
-    ```powershell
-    Get-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
-    ```
-    
-    Zde je ukázkový výstup:
-    
-    ```console
-    TriggerName       : ArmTemplateTestTrigger
-    ResourceGroupName : ADFTutorialResourceGroup
-    DataFactoryName   : ADFQuickstartsDataFactory0905
-    Properties        : Microsoft.Azure.Management.DataFactory.Models.ScheduleTrigger
-    RuntimeState      : Started
-    ```
-
-## <a name="monitor-the-pipeline"></a>Monitorování kanálu
-
-1. Po přihlášení k webu [Azure Portal](https://portal.azure.com/) klikněte na **Všechny služby**, vyhledejte klíčové slovo jako například **data fa** a vyberte **Datové továrny**.
-
-2. Na stránce **Datové továrny** klikněte na datovou továrnu, kterou jste vytvořili. V případě potřeby můžete seznam filtrovat s použitím názvu vaší datové továrny.
-
-3. Na stránce Datová továrna klikněte na dlaždice **vytvořit & monitorování** .
-
-4. Na stránce **Začínáme** vyberte **kartu monitorování**.  ![Monitorování spuštění kanálu](media/doc-common-process/get-started-page-monitor-button.png)
-
-    > [!IMPORTANT]
-    > Zobrazí se pouze spuštění kanálu v celou hodinu (například ve 4:00, 5:00, 6:00 atd.). Po uplynutí další celé hodiny seznam aktualizujte kliknutím na **Aktualizovat** na panelu nástrojů.
-
-5. Klikněte na odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce** .
-
-    ![Odkaz na akce kanálu](media/quickstart-create-data-factory-resource-manager-template/pipeline-actions-link.png)
-
-6. Zobrazí se spuštění aktivit související s příslušným spuštěním kanálu. V tomto rychlém startu má kanál pouze jednu aktivitu typu Kopírování. Proto se zobrazí spuštění této aktivity.
-
-    ![Spuštění aktivit](media/quickstart-create-data-factory-resource-manager-template/activity-runs.png)
-7. Klikněte na odkaz **výstup** ve sloupci akce. V okně **Výstup** se zobrazí výstup operace kopírování. Pokud chcete zobrazit celý výstup, klikněte na tlačítko pro maximalizaci. Maximalizované okno výstupu můžete minimalizovat nebo zavřít.
-
-8. Jakmile se zobrazí úspěšné nebo chybné spuštění, zastavte trigger. Trigger spouští kanál jednou za hodinu. Kanál při každém spuštění zkopíruje stejný soubor ze vstupní složky do výstupní složky. Pokud chcete trigger zastavit, spusťte v okně PowerShellu následující příkaz.
-    
-    ```powershell
-    Stop-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $triggerName
-    ```
-
-[!INCLUDE [data-factory-quickstart-verify-output-cleanup.md](../../includes/data-factory-quickstart-verify-output-cleanup.md)]
-
-## <a name="json-definitions-for-entities"></a><a name="data-factory-entities-in-the-template"></a>Definice JSON pro entity
-
-V šabloně JSON jsou definovány následující entity služby Data Factory:
-
-- [Propojená služba Azure Storage](#azure-storage-linked-service)
-- [Binární vstupní datová sada](#binary-input-dataset)
-- [Binární výstupní datová sada](#binary-output-dataset)
-- [Data Pipeline s aktivitou kopírování](#data-pipeline)
-- [Trigger](#trigger)
-
-#### <a name="azure-storage-linked-service"></a>Propojená služba Azure Storage
-
-Služba AzureStorageLinkedService propojí váš účet služby Azure Storage s datovou továrnou. V rámci požadavků jste vytvořili kontejner a nahráli data do tohoto účtu úložiště. V tomto oddílu zadáte název a klíč svého účtu služby Azure Storage. Podrobnosti o vlastnostech JSON sloužících k definování propojené služby Azure Storage najdete v oddílu [Propojená služba Azure Storage](connector-azure-blob-storage.md#linked-service-properties).
-
-```json
-{  
-    "name":"[concat(parameters('dataFactoryName'), '/ArmtemplateStorageLinkedService')]",
-    "type":"Microsoft.DataFactory/factories/linkedServices",
-    "apiVersion":"2018-06-01",
-    "properties":{  
-        "annotations":[  
-
-        ],
-        "type":"AzureBlobStorage",
-        "typeProperties":{  
-            "connectionString":"[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageAccountName'),';AccountKey=',parameters('storageAccountKey'))]"
-        }
-    },
-    "dependsOn":[  
-        "[parameters('dataFactoryName')]"
-    ]
-}
-```
-
-Vlastnost connectionString používá parametry storageAccountName a storageAccountKey. Hodnoty těchto parametrů se předávají pomocí konfiguračního souboru. Definice také používá proměnné: azureStorageLinkedService a DataFactory definované v šabloně.
-
-#### <a name="binary-input-dataset"></a>Binární vstupní datová sada
-
-Propojená služba úložiště Azure určuje připojovací řetězec, který služba Data Factory používá za běhu, aby se připojila k vašemu účtu úložiště Azure. V definici binární datové sady zadáte názvy kontejneru objektů blob, složky a souboru, který obsahuje vstupní data. Podrobnosti o vlastnostech JSON použitých k definování binární datové sady naleznete v tématu [vlastnosti binární datové sady](format-binary.md#dataset-properties) .
-
-```json
-{  
-    "name":"[concat(parameters('dataFactoryName'), '/ArmtemplateTestDatasetIn')]",
-    "type":"Microsoft.DataFactory/factories/datasets",
-    "apiVersion":"2018-06-01",
-    "properties":{  
-        "linkedServiceName":{  
-            "referenceName":"ArmtemplateStorageLinkedService",
-            "type":"LinkedServiceReference"
-        },
-        "annotations":[  
-
-        ],
-        "type":"Binary",
-        "typeProperties":{  
-            "location":{  
-                "type":"AzureBlobStorageLocation",
-                "fileName":"emp.txt",
-                "folderPath":"input",
-                "container":"adftutorial"
-            }
-        }
-    },
-    "dependsOn":[  
-        "[parameters('dataFactoryName')]",
-        "[concat(variables('factoryId'), '/linkedServices/ArmtemplateStorageLinkedService')]"
-    ]
-}
-```
-
-#### <a name="binary-output-dataset"></a>Binární výstupní datová sada
-
-Zadáte název složky ve službě Azure Blob Storage, která uchovává zkopírovaná data ze vstupní složky. Podrobnosti o vlastnostech JSON použitých k definování binární datové sady naleznete v tématu [vlastnosti binární datové sady](format-binary.md#dataset-properties) .
-
-```json
-{  
-    "name":"[concat(parameters('dataFactoryName'), '/ArmtemplateTestDatasetOut')]",
-    "type":"Microsoft.DataFactory/factories/datasets",
-    "apiVersion":"2018-06-01",
-    "properties":{  
-        "linkedServiceName":{  
-            "referenceName":"ArmtemplateStorageLinkedService",
-            "type":"LinkedServiceReference"
-        },
-        "annotations":[  
-
-        ],
-        "type":"Binary",
-        "typeProperties":{  
-            "location":{  
-                "type":"AzureBlobStorageLocation",
-                "folderPath":"output",
-                "container":"adftutorial"
-            }
-        }
-    },
-    "dependsOn":[  
-        "[parameters('dataFactoryName')]",
-        "[concat(variables('factoryId'), '/linkedServices/ArmtemplateStorageLinkedService')]"
-    ]
-}
-```
-
-#### <a name="data-pipeline"></a>Data Pipeline
-
-Definujete kanál, který kopíruje data z jedné binární datové sady do jiné binární datové sady. Popisy elementů JSON sloužících k definování kanálu v tomto příkladu najdete v oddílu [Kód JSON kanálu](concepts-pipelines-activities.md#pipeline-json).
-
-```json
-{  
-    "name":"[concat(parameters('dataFactoryName'), '/ArmtemplateSampleCopyPipeline')]",
-    "type":"Microsoft.DataFactory/factories/pipelines",
-    "apiVersion":"2018-06-01",
-    "properties":{  
-        "activities":[  
-            {  
-                "name":"MyCopyActivity",
-                "type":"Copy",
-                "dependsOn":[  
-
-                ],
-                "policy":{  
-                    "timeout":"7.00:00:00",
-                    "retry":0,
-                    "retryIntervalInSeconds":30,
-                    "secureOutput":false,
-                    "secureInput":false
-                },
-                "userProperties":[  
-
-                ],
-                "typeProperties":{  
-                    "source":{  
-                        "type":"BinarySource",
-                        "storeSettings":{  
-                            "type":"AzureBlobStorageReadSettings",
-                            "recursive":true
-                        }
-                    },
-                    "sink":{  
-                        "type":"BinarySink",
-                        "storeSettings":{  
-                            "type":"AzureBlobStorageWriteSettings"
-                        }
-                    },
-                    "enableStaging":false
-                },
-                "inputs":[  
-                    {  
-                        "referenceName":"ArmtemplateTestDatasetIn",
-                        "type":"DatasetReference",
-                        "parameters":{  
-
-                        }
-                    }
-                ],
-                "outputs":[  
-                    {  
-                        "referenceName":"ArmtemplateTestDatasetOut",
-                        "type":"DatasetReference",
-                        "parameters":{  
-
-                        }
-                    }
-                ]
-            }
-        ],
-        "annotations":[  
-
-        ]
-    },
-    "dependsOn":[  
-        "[parameters('dataFactoryName')]",
-        "[concat(variables('factoryId'), '/datasets/ArmtemplateTestDatasetIn')]",
-        "[concat(variables('factoryId'), '/datasets/ArmtemplateTestDatasetOut')]"
-    ]
-}
-```
-
-#### <a name="trigger"></a>Trigger
-
-Nadefinujete trigger, který spouští kanál jednou za hodinu. Nasazený trigger je v zastaveném stavu. Spusťte Trigger pomocí rutiny **Start-AzDataFactoryV2Trigger** . Další informace o aktivačních událostech najdete v článku [spuštění kanálu a triggery](concepts-pipeline-execution-triggers.md#trigger-execution) .
-
-```json
-{  
-    "name":"[concat(parameters('dataFactoryName'), '/ArmTemplateTestTrigger')]",
-    "type":"Microsoft.DataFactory/factories/triggers",
-    "apiVersion":"2018-06-01",
-    "properties":{  
-        "annotations":[  
-
-        ],
-        "runtimeState":"Started",
-        "pipelines":[  
-            {  
-                "pipelineReference":{  
-                    "referenceName":"ArmtemplateSampleCopyPipeline",
-                    "type":"PipelineReference"
-                },
-                "parameters":{  
-
-                }
-            }
-        ],
-        "type":"ScheduleTrigger",
-        "typeProperties":{  
-            "recurrence":{  
-                "frequency":"Hour",
-                "interval":1,
-                "startTime":"[parameters('triggerStartTime')]",
-                "endTime":"[parameters('triggerEndTime')]",
-                "timeZone":"UTC"
-            }
-        }
-    },
-    "dependsOn":[  
-        "[parameters('dataFactoryName')]",
-        "[concat(variables('factoryId'), '/pipelines/ArmtemplateSampleCopyPipeline')]"
-    ]
-}
-```
-
-## <a name="reuse-the-template"></a>Znovupoužití šablony
-
-V tomto kurzu jste vytvořili šablonu pro definování entit služby Data Factory a šablonu pro předávání hodnot parametrů. Chcete-li použít stejnou šablonu k nasazení entit služby Data Factory do různých prostředí, vytvořte pro každé prostředí soubor parametrů a použijte jej při nasazování příslušného prostředí.
-
-Příklad:
-
-```powershell
-New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Dev.json
-
-New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Test.json
-
-New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Production.json
-```
-
-Všimněte si, že první příkaz používá soubor parametrů pro vývojové prostředí, druhý příkaz používá soubor parametrů pro testovací prostředí a třetí příkaz používá soubor parametrů pro produkční prostředí.
-
-Šablonu můžete také znovu použít k provádění opakujících se úloh. Můžete například vytvořit mnoho datových továren s jedním nebo více kanály, které implementují stejnou logiku, ale každá datová továrna používá jiný účet úložiště Azure. V tomto scénáři použijete k vytvoření datových továren stejnou šablonu ve stejném prostředí (vývojové, testovací nebo produkční) s různými soubory parametrů.
 
 ## <a name="next-steps"></a>Další kroky
 
-Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob Azure. Projděte si [kurzy](tutorial-copy-data-dot-net.md), kde se dozvíte o použití služby Data Factory ve více scénářích.
+V tomto rychlém startu jste vytvořili Azure Data Factory pomocí šablony ARM a ověřili nasazení. Další informace o Azure Data Factory a Azure Resource Manager najdete dál v článcích níže.
+
+- [Dokumentace k Azure Data Factory](index.yml)
+- Další informace o [Azure Resource Manageru](../azure-resource-manager/management/overview.md)
+- Získat další [šablony Azure Data Factory ARM](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Datafactory&pageNumber=1&sort=Popular)

@@ -1,7 +1,7 @@
 ---
 title: Přiřazení role RBAC pro přístup k datům pomocí Azure Portal
 titleSuffix: Azure Storage
-description: Naučte se používat Azure Portal k přiřazení oprávnění k objektu zabezpečení Azure Active Directory s řízením přístupu na základě role (RBAC). Azure Storage podporuje integrované a vlastní role RBAC pro ověřování prostřednictvím služby Azure AD.
+description: Naučte se používat Azure Portal k přiřazení oprávnění k objektu zabezpečení Azure Active Directory s řízením přístupu na základě role (RBAC). Azure Storage podporuje integrované a vlastní role Azure pro ověřování prostřednictvím služby Azure AD.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 77eb3ddfdbf2525aa031c462a38df5dcb8d31217
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e0278329ff6b6946c4107ea048367753eaccbfd8
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518754"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124982"
 ---
 # <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Přiřazení role RBAC pro přístup k datům BLOB a Queue pomocí Azure Portal
 
@@ -98,7 +98,7 @@ Přiřazení role **čtenáře** je nezbytné jenom pro uživatele, kteří pot�
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace o rolích RBAC pro prostředky úložiště najdete v tématu [ověření přístupu k objektům blob a frontám Azure pomocí Azure Active Directory](storage-auth-aad.md). 
-- Další informace o RBAC najdete v tématu [co je řízení přístupu na základě role (RBAC)?](../../role-based-access-control/overview.md).
+- Další informace o RBAC najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)?](../../role-based-access-control/overview.md).
 - Další informace o tom, jak přiřadit a spravovat přiřazení rolí RBAC pomocí Azure PowerShell, Azure CLI nebo REST API, najdete v těchto článcích:
     - [Správa řízení přístupu na základě role (RBAC) pomocí Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
     - [Správa řízení přístupu na základě role (RBAC) pomocí Azure CLI](../../role-based-access-control/role-assignments-cli.md)

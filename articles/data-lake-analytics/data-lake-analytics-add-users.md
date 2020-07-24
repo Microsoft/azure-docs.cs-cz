@@ -3,18 +3,16 @@ title: Přidání uživatelů k účtu Azure Data Lake Analytics
 description: Přečtěte si, jak správně přidat uživatele k účtu Data Lake Analytics pomocí Průvodce přidáním uživatele a Azure PowerShell.
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
 ms.topic: how-to
 ms.date: 05/24/2018
-ms.openlocfilehash: 16ec54bb2a41927a92d953586af59ae3653a29c0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 09f866d7ed72e82770a7f3a0fe5da24bb864851f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117453"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126070"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>Přidání uživatele na webu Azure Portal
 
@@ -34,7 +32,7 @@ V případě potřeby udělte "R-X" nebo "RWX" ve složkách, které obsahují v
 ## <a name="optionally-add-the-user-to-the-azure-data-lake-storage-gen1-role-reader-role"></a>Volitelně můžete přidat uživatele do role **čtecího modulu** role Azure Data Lake Storage Gen1.
 1.  Najděte svůj Azure Data Lake Storage Gen1 účet.
 2.  Klikněte na **Uživatelé**.
-3. Klikněte na tlačítko **Add** (Přidat).
+3. Klikněte na **Přidat**.
 4.  Vyberte roli Azure RBAC pro přiřazení této skupiny.
 5.  Přiřaďte roli čtenáře. Tato role má minimální sadu oprávnění potřebných pro procházení a správu dat uložených v ADLSGen1. Pokud skupina není určená pro správu služeb Azure, přiřaďte ji k této roli.
 6.  Zadejte název skupiny.
@@ -42,7 +40,7 @@ V případě potřeby udělte "R-X" nebo "RWX" ve složkách, které obsahují v
 
 ## <a name="adding-a-user-using-powershell"></a>Přidání uživatele pomocí prostředí PowerShell
 
-1. Postupujte podle pokynů v této příručce: [Jak nainstalovat a nakonfigurovat Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
+1. Postupujte podle pokynů v této příručce: [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/).
 2. Stáhněte si [Add-AdlaJobUser.ps1](https://github.com/Azure/AzureDataLake/blob/master/Samples/PowerShell/ADLAUsers/Add-AdlaJobUser.ps1) powershellový skript.
 3. Spusťte PowerShellový skript. 
 

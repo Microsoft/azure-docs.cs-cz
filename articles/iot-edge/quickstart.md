@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 73d7c129a63e4d63ad5cc05d8dac47720c7955e4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 748e31499a4aa8f1ddd2cea4e918b688426338fa
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511904"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117252"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Rychlý Start: nasazení prvního IoT Edge modulu do virtuálního zařízení s Windows
 
@@ -22,10 +22,12 @@ Vyzkoušejte si Azure IoT Edge v tomto rychlém startu tak, že nasadíte kontej
 
 V tomto rychlém startu se naučíte:
 
-1. Vytvořte centrum IoT.
-2. Zaregistrovat zařízení IoT Edge do centra IoT Hub.
-3. Nainstalujte a spusťte modul runtime IoT Edge na virtuálním zařízení.
-4. Vzdáleně nasadit modul na zařízení IoT Edge a odeslat telemetrická data do služby IoT Hub.
+> [!div class="checklist"]
+>
+> * Vytvořte centrum IoT.
+> * Zaregistrovat zařízení IoT Edge do centra IoT Hub.
+> * Nainstalujte a spusťte modul runtime IoT Edge na virtuálním zařízení.
+> * Vzdáleně nasadit modul na zařízení IoT Edge a odeslat telemetrická data do služby IoT Hub.
 
 ![Architektura pro rychlé zprovoznění diagramu pro zařízení a Cloud](./media/quickstart/install-edge-full.png)
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 51111d92e85c6ddbdfac85c333293c2af8b31fbe
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 68be8d08939464d200da588c481447f8206c9117
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498956"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117193"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Řešení Network Performance Monitor v Azure
 
@@ -56,7 +56,7 @@ NPM může monitorovat propojení mezi sítěmi a aplikacemi v jakékoli části
 * Jižní Velká Británie
 * Východní Asie
 * Jižní Korea – střed
-* Central India
+* Indie – střed
 * ) – Virginia vlády USA
 * Čína – východ 2
 
@@ -65,6 +65,9 @@ Seznam podporovaných oblastí pro monitorování ExpressRoute je k dispozici v 
 
 
 ## <a name="set-up-and-configure"></a>Nastavení a konfigurace
+
+> [!NOTE]
+> Můžete se také podívat na Log Analytics agenta označovaného jako Microsoft Monitoring Agent (MMA) nebo agent OMS Linux.
 
 ### <a name="install-and-configure-agents"></a>Instalace a konfigurace agentů 
 

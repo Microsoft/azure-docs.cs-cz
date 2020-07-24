@@ -15,12 +15,12 @@ ms.date: 07/13/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d973cf47ed691914b22d62e1a99315c6ea9183d8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fd737a22a37d6edc47c2769a470af00537d720eb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511598"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124149"
 ---
 # <a name="azure-custom-roles"></a>Vlastní role Azure
 
@@ -118,14 +118,14 @@ Následující tabulka popisuje, co znamenají vlastnosti vlastní role.
 | Vlastnost | Požaduje se | Typ | Popis |
 | --- | --- | --- | --- |
 | `Name`</br>`roleName` | Ano | Řetězec | Zobrazované jméno vlastní role Zatímco definice role je skupina pro správu nebo prostředek na úrovni předplatného, můžete definici role použít ve více předplatných, která sdílejí stejný adresář služby Azure AD. Tento zobrazovaný název musí být jedinečný v oboru adresáře služby Azure AD. Může obsahovat písmena, číslice, mezery a speciální znaky. Maximální počet znaků je 128. |
-| `Id`</br>`name` | Ano | Řetězec | Jedinečné ID vlastní role Pro Azure PowerShell a Azure CLI se toto ID automaticky vygeneruje při vytvoření nové role. |
-| `IsCustom`</br>`roleType` | Ano | Řetězec | Označuje, zda se jedná o vlastní roli. Nastavte na `true` nebo `CustomRole` pro vlastní role. Nastavte na `false` nebo `BuiltInRole` pro předdefinované role. |
-| `Description`</br>`description` | Ano | Řetězec | Popis vlastní role Může obsahovat písmena, číslice, mezery a speciální znaky. Maximální počet znaků je 1024. |
-| `Actions`</br>`actions` | Ano | Řetězec [] | Pole řetězců, které určuje operace správy, které může role provést. Další informace najdete v tématu [Akce](role-definitions.md#actions). |
+| `Id`</br>`name` | Yes | Řetězec | Jedinečné ID vlastní role Pro Azure PowerShell a Azure CLI se toto ID automaticky vygeneruje při vytvoření nové role. |
+| `IsCustom`</br>`roleType` | Yes | Řetězec | Označuje, zda se jedná o vlastní roli. Nastavte na `true` nebo `CustomRole` pro vlastní role. Nastavte na `false` nebo `BuiltInRole` pro předdefinované role. |
+| `Description`</br>`description` | Yes | Řetězec | Popis vlastní role Může obsahovat písmena, číslice, mezery a speciální znaky. Maximální počet znaků je 1024. |
+| `Actions`</br>`actions` | Yes | Řetězec [] | Pole řetězců, které určuje operace správy, které může role provést. Další informace najdete v tématu [Akce](role-definitions.md#actions). |
 | `NotActions`</br>`notActions` | No | Řetězec [] | Pole řetězců, které určují operace správy, které jsou vyloučeny z povolených `Actions` . Další informace najdete v tématu [NotActions](role-definitions.md#notactions). |
 | `DataActions`</br>`dataActions` | No | Řetězec [] | Pole řetězců, které určuje datové operace, které může role provádět na vašich datech v rámci daného objektu. Pokud vytvoříte vlastní roli s `DataActions` , tuto roli nelze přiřadit v oboru skupiny pro správu. Další informace naleznete v tématu [Dataactions](role-definitions.md#dataactions). |
 | `NotDataActions`</br>`notDataActions` | No | Řetězec [] | Pole řetězců, které určují operace s daty, které jsou vyloučeny z povolených `DataActions` . Další informace najdete v tématu [NotDataActions](role-definitions.md#notdataactions). |
-| `AssignableScopes`</br>`assignableScopes` | Ano | Řetězec [] | Pole řetězců, které určuje rozsahy, které jsou k dispozici pro přiřazení vlastní role. V rámci vlastní role můžete definovat jenom jednu skupinu pro správu `AssignableScopes` . Přidání skupiny pro správu do `AssignableScopes` je aktuálně ve verzi Preview. Další informace najdete v tématu [AssignableScopes](role-definitions.md#assignablescopes). |
+| `AssignableScopes`</br>`assignableScopes` | Yes | Řetězec [] | Pole řetězců, které určuje rozsahy, které jsou k dispozici pro přiřazení vlastní role. V rámci vlastní role můžete definovat jenom jednu skupinu pro správu `AssignableScopes` . Přidání skupiny pro správu do `AssignableScopes` je aktuálně ve verzi Preview. Další informace najdete v tématu [AssignableScopes](role-definitions.md#assignablescopes). |
 
 ## <a name="wildcard-permissions"></a>Oprávnění zástupných znaků
 
@@ -192,7 +192,7 @@ Následující seznam popisuje omezení pro vlastní role.
 - Vlastní role se `DataActions` nedají přiřadit v oboru skupiny pro správu.
 - Azure Resource Manager neověřuje existenci skupiny pro správu v oboru přiřazení definice role.
 
-Další informace o vlastních rolích a skupinách pro správu najdete v tématu [uspořádání prostředků pomocí skupin pro správu Azure](../governance/management-groups/overview.md#custom-rbac-role-definition-and-assignment).
+Další informace o vlastních rolích a skupinách pro správu najdete v tématu [uspořádání prostředků pomocí skupin pro správu Azure](../governance/management-groups/overview.md#azure-custom-role-definition-and-assignment).
 
 ## <a name="input-and-output-formats"></a>Formáty vstupu a výstupu
 

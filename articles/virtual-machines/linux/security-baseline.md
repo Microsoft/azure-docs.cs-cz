@@ -1,5 +1,5 @@
 ---
-title: Základní Linux Virtual Machines zabezpečení pro Azure Security test
+title: Základní hodnoty zabezpečení Azure pro Linux Virtual Machines
 description: Základní Linux Virtual Machines zabezpečení poskytuje postupy a prostředky pro implementaci doporučení zabezpečení uvedených v srovnávacím testu zabezpečení Azure.
 author: msmbaldwin
 ms.service: virtual-machines-linux
@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2d8c4d67ed9b268bae55711fae8c4def33b967fc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bd6157f2775b2496e489cfbf03b35f49fb6f5442
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531198"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124710"
 ---
-# <a name="linux-virtual-machines-security-baseline-for-azure-security-benchmark"></a>Základní Linux Virtual Machines zabezpečení pro Azure Security test
+# <a name="azure-security-baseline-for-linux-virtual-machines"></a>Základní hodnoty zabezpečení Azure pro Linux Virtual Machines
 
 Základní plán zabezpečení Azure pro Linux Virtual Machines obsahuje doporučení, která vám pomůžou vylepšit stav zabezpečení vašeho nasazení.
 
@@ -568,7 +568,7 @@ Microsoft používá protokol TLS (Transport Layer Security) k ochraně dat při
 
 * [Řízení přístupu k prostředkům Azure na základě role (RBAC)](../../role-based-access-control/overview.md)
 
-* [Předdefinované role pro prostředky Azure](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
+* [Předdefinované role Azure](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
 
 **Monitorování Azure Security Center**: není k dispozici.
 

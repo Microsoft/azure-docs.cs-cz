@@ -6,12 +6,12 @@ author: renatosalas
 ms.author: regutier
 ms.date: 04/14/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 50dcd3f438645c99e0ed3cfdded7a101ee5f1852
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 719f0cfa0a1f80568acf3231ce3ffab441e5f6b7
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539852"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117389"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>Konfigurace Přineste si vlastní úložiště (BYOS) pro Application Insights Profiler a Snapshot Debugger
 
@@ -63,7 +63,7 @@ _ ![ Obrázek 1,1](media/profiler-bring-your-own-storage/figure-11.png)_
 Pokud používáte také privátní odkaz, je vyžadována jedna další konfigurace, která umožňuje připojení k důvěryhodné službě společnosti Microsoft z vašeho Virtual Network. Informace najdete v [dokumentaci zabezpečení sítě úložiště](../../storage/common/storage-network-security.md#trusted-microsoft-services).
 
 ### <a name="link-your-storage-account-with-your-application-insights-resource"></a>Propojte svůj účet úložiště s vaším prostředkem Application Insights
-Chcete-li nakonfigurovat BYOS pro diagnostiku na úrovni kódu (Profiler/ladicí program), jsou k dispozici dvě možnosti:
+Chcete-li nakonfigurovat BYOS pro diagnostiku na úrovni kódu (Profiler/ladicí program), existují tři možnosti:
 
 * Používání rutin Azure PowerShell
 * Použití rozhraní příkazového řádku Azure (CLI)
@@ -229,7 +229,7 @@ Chcete-li nakonfigurovat BYOS pro diagnostiku na úrovni kódu (Profiler/ladicí
 1. Povolte diagnostiku na úrovni kódu (Profiler/ladicí program) na úlohy, které vás zajímají, prostřednictvím Azure Portal. (App Service > Application Insights) _ ![ Obrázek 2,0](media/profiler-bring-your-own-storage/figure-20.png)_ 
  _Obrázek 2,0_
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 ### <a name="template-schema-schema_uri-isnt-supported"></a>Schéma šablony {schema_uri} se nepodporuje.
 * Ujistěte se, že `$schema` je vlastnost šablony platná. Musí splňovat následující vzor:`https://schema.management.azure.com/schemas/{schema_version}/deploymentTemplate.json#`
 * Ujistěte se, že `schema_version` je šablona v rámci platných hodnot: `2014-04-01-preview, 2015-01-01, 2018-05-01, 2019-04-01, 2019-08-01` .

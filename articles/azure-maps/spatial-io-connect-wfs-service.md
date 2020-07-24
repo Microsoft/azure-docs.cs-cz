@@ -1,19 +1,19 @@
 ---
 title: Připojení ke službě webové funkce (WFS) | Mapy Microsoft Azure
 description: Přečtěte si, jak se připojit ke službě WFS, a pak pomocí Azure Maps Web SDK a modulu pro prostor v/v vytvořit dotaz na službu WFS.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8b511395eb61e8845aaa11e5ca7a490dc461424d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 42e8356dabc8172ddb75595dc63b01aaf4244958
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334203"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124659"
 ---
 # <a name="connect-to-a-wfs-service"></a>Připojení ke službě WFS
 
@@ -26,7 +26,7 @@ Třída podporuje následující funkce `WfsClient` :
 - Žádosti se provádějí `HTTP GET` jenom pomocí.
 - Podporované operace:
 
-    | | |
+    | Operace | Popis |
     | :-- | :-- |
     | GetCapabilities | Vygeneruje dokument metadat s platnými operacemi a parametry WFS. |
     | Getfeature | Vrátí výběr funkcí ze zdroje dat. |
@@ -65,7 +65,7 @@ Specifikace pro WFS Standard využívá filtry OGC. Níže uvedené filtry jsou 
 - `Mul`
 - `Div`
 
-**Operátory porovnání**
+**Operátory porovnávání**
 
 - `PropertyIsEqualTo`
 - `PropertyIsNotEqualTo`

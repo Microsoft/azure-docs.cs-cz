@@ -14,15 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: a6dc55138977727dc5399ec9653340225bcc3901
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec98060a09a1fad4f851689daff3f4b578c164f5
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514635"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124098"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>Access Control na základě rolí pro StorSimple
 
-Tento článek poskytuje stručný popis způsobu použití Access Control na základě rolí (RBAC) Azure pro zařízení StorSimple. RBAC nabízí jemně odstupňovanou správu přístupu pro Azure. Použijte RBAC k udělení správného přístupu uživatelům StorSimple k tomu, aby mohli provádět své úlohy, a ne udělit všem neomezený přístup. Další informace o základech správy přístupu v Azure najdete v tématu [Začínáme s Access Control na základě rolí v Azure Portal](../role-based-access-control/overview.md).
+Tento článek poskytuje stručný popis toho, jak se dá řízení přístupu na základě role Azure (RBAC) použít pro zařízení StorSimple. RBAC nabízí jemně odstupňovanou správu přístupu pro Azure. Použijte RBAC k udělení správného přístupu uživatelům StorSimple k tomu, aby mohli provádět své úlohy, a ne udělit všem neomezený přístup. Další informace o základech správy přístupu v Azure najdete v tématu [Začínáme s Access Control na základě rolí v Azure Portal](../role-based-access-control/overview.md).
 
 Tento článek se týká zařízení řady StorSimple 8000 se systémem Update 3,0 nebo novějším v Azure Portal.
 
@@ -34,7 +35,7 @@ RBAC se dá přiřadit na základě rolí. Role zajišťují určité úrovně o
 
 * **Předdefinované role** – předdefinované role můžou být vlastník, přispěvatel, čtenář nebo správce přístupu uživatelů. Další informace najdete v tématu [předdefinované role pro Access Control na základě rolí Azure](../role-based-access-control/built-in-roles.md).
 
-* **Vlastní role** – Pokud předdefinované role nevyhovují vašim potřebám, můžete vytvořit vlastní role RBAC pro StorSimple. Pokud chcete vytvořit vlastní roli RBAC, začněte s předdefinovanou rolí, upravte ji a pak ji znovu naimportujte do prostředí. Stažení a nahrání role se spravují pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure CLI. Další informace najdete v tématu [Vytvoření vlastních rolí pro Access Control na základě rolí](../role-based-access-control/custom-roles.md).
+* **Vlastní role** – Pokud předdefinované role nevyhovují vašim potřebám, můžete vytvořit vlastní role Azure pro StorSimple. Pokud chcete vytvořit vlastní roli Azure, začněte s předdefinovanou rolí, upravte ji a pak ji znovu naimportujte do prostředí. Stažení a nahrání role se spravují pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure CLI. Další informace najdete v tématu [Vytvoření vlastních rolí pro Access Control na základě rolí](../role-based-access-control/custom-roles.md).
 
 Pokud chcete zobrazit různé role dostupné pro uživatele zařízení StorSimple v Azure Portal, přejděte do služby StorSimple Device Manager a pak přejděte do části **řízení přístupu (IAM) > role**.
 
@@ -101,7 +102,7 @@ V následujícím příkladu Začínáme integrovanou **čtečkou** rolí, kter�
     }
     ```
 
-6. Importujte vlastní roli RBAC zpátky do prostředí.
+6. Naimportujte vlastní roli Azure zpátky do prostředí.
 
     `New-AzRoleDefinition -InputFile "C:\ssrbaccustom.json"`
 

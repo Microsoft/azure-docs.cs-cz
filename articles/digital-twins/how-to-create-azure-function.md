@@ -7,11 +7,12 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3b416e6ccb035ede06a360c2697a9b20ca417d98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e284bc76da9ca40341d72f772aa7ee947a11638
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725898"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124302"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Připojení aplikací Azure Functions pro zpracování dat
 
@@ -77,7 +78,7 @@ Toto je vaše základní funkce Azure Functions.
 
 Nyní můžete zkompilovat a spustit funkci. I když jsou služby Azure Functions nakonec určené ke spouštění v cloudu, můžete také spustit a ladit Azure Functions místně.
 
-Další informace najdete v tématu [ladění Event Grid triggeru místně](../azure-functions/functions-debug-event-grid-trigger-local.md).
+Další informace najdete v tématu [*ladění Event Grid triggeru místně*](../azure-functions/functions-debug-event-grid-trigger-local.md).
 
 ### <a name="add-the-azure-digital-twins-sdk-to-your-azure-function-app"></a>Přidání sady Azure Digital revlákens SDK do vaší aplikace Azure Functions
 
@@ -162,9 +163,9 @@ Pomocí hodnoty *principalId* v následujícím příkazu přiřaďte identitu a
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
 ```
 
-Další informace o spravované identitě najdete v tématu [Jak používat spravované identity pro App Service a Azure Functions](../app-service/overview-managed-identity.md).
+Další informace o spravované identitě najdete v tématu [*Jak používat spravované identity pro App Service a Azure Functions*](../app-service/overview-managed-identity.md).
 
-Nakonec můžete nastavit proměnnou prostředí tak, aby se adresa URL instance digitálního vlákna Azure pro vaši funkci přístupná. Další informace najdete v tématu [proměnné prostředí](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables).
+Nakonec můžete nastavit proměnnou prostředí tak, aby se adresa URL instance digitálního vlákna Azure pro vaši funkci přístupná. Další informace najdete v tématu [*proměnné prostředí*](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables).
 
 > [!TIP]
 > Adresa URL instance digitálních vláken Azure se provede přidáním *https://* na začátek *názvu hostitele*instance digitálního vlákna Azure. Chcete-li zobrazit název hostitele spolu se všemi vlastnostmi vaší instance, můžete spustit `az dt show --dt-name <your-Azure-Digital-Twins-instance>` .
@@ -208,7 +209,7 @@ Všimněte si také **ID objektu** zobrazené na této stránce, jak bude použi
 
 ### <a name="assign-access-roles"></a>Přiřazení rolí přístupu
 
-Vzhledem k tomu, že digitální vlákna Azure používá ke správě přístupu řízení přístupu na základě role (Další informace najdete v tématu [Koncepty: zabezpečení pro řešení digitálních vláken Azure](concepts-security.md) ), musíte také přidat roli pro každou aplikaci Function App, kterou chcete zpřístupnit pro přístup k digitálním úlohám Azure.
+Vzhledem k tomu, že digitální vlákna Azure používá ke správě přístupu řízení přístupu na základě role (Další informace najdete v tématu [*Koncepty: zabezpečení pro řešení digitálních vláken Azure*](concepts-security.md) ), musíte také přidat roli pro každou aplikaci Function App, kterou chcete zpřístupnit pro přístup k digitálním úlohám Azure.
 
 K přiřazení role potřebujete **ID prostředku** instance digitálního vlákna Azure, kterou jste vytvořili. Pokud jste ho při vytváření instance nepoužili dříve, můžete ho načíst pomocí tohoto příkazu:
 
@@ -231,4 +232,4 @@ V tomto článku jste postupovali podle kroků pro nastavení funkce Azure pro p
 * Event Grid koncový bod přijímající zprávy z jiných služeb
 
 Další informace najdete v tématu postup sestavení na základní funkci Azure pro ingestování IoT Hub dat do digitálních vláken Azure:
-* [Postupy: ingestování telemetrie z IoT Hub](how-to-ingest-iot-hub-data.md)
+* [*Postupy: ingestování telemetrie z IoT Hub*](how-to-ingest-iot-hub-data.md)

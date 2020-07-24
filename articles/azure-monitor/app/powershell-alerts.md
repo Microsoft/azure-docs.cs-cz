@@ -2,13 +2,13 @@
 title: Použití PowerShellu k nastavení výstrah v Application Insights | Microsoft Docs
 description: Automatizujte konfiguraci Application Insights, abyste získali e-maily o změnách metriky.
 ms.topic: conceptual
-ms.date: 10/31/2016
-ms.openlocfilehash: 3a3d614ec57242a2ea4b29a86d6365a2efe56f94
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/23/2016
+ms.openlocfilehash: 00212aa8783a6bfc8e46d325a882781e33b7de51
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516953"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117159"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>Použití prostředí PowerShell k nastavení výstrahy v nástroji Application Insights
 
@@ -30,7 +30,7 @@ Na počítač, na který chcete spouštět skripty, nainstalujte modul Azure Pow
 * Použijte ho k instalaci Microsoft Azure PowerShellu.
 
 ## <a name="connect-to-azure"></a>Připojení k Azure
-Začněte Azure PowerShell a [Připojte se k předplatnému](/powershell/azure/overview):
+Začněte Azure PowerShell a [Připojte se k předplatnému](/powershell/azure/):
 
 ```azurepowershell
 Add-AzAccount
@@ -51,7 +51,7 @@ Get-AzAlertRule -ResourceGroup "Fabrikam" `
 Add-AzMetricAlertRule -Name "{ALERT NAME}" `
   -Description "{TEXT}" `
   -ResourceGroup "{GROUP NAME}" `
-  -ResourceId "/subscriptions/{SUBSCRIPTION ID}/resourcegroups/{GROUP NAME}/providers/microsoft.insights/components/{APP RESOURCE NAME}" `
+  -TargetResourceId "/subscriptions/{SUBSCRIPTION ID}/resourcegroups/{GROUP NAME}/providers/microsoft.insights/components/{APP RESOURCE NAME}" `
   -MetricName "{METRIC NAME}" `
   -Operator GreaterThan `
   -Threshold {NUMBER}  `
@@ -71,7 +71,7 @@ Identifikátor GUID je ID předplatného (ne klíč instrumentace aplikace).
 ```azurepowershell
 Add-AzMetricAlertRule -Name "slow responses" `
   -ResourceGroup "Fabrikam" `
-  -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
+  -TargetResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
   -MetricName "request.duration" `
   -Operator GreaterThan `
   -Threshold 1 `
@@ -88,7 +88,7 @@ Mám aplikaci, ve které používám [TrackMetric ()](../../azure-monitor/app/ap
 Add-AzMetricAlertRule -Name "poor sales" `
   -Description "slow sales alert" `
   -ResourceGroup "Fabrikam" `
-  -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
+  -TargetResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
   -MetricName "salesPerHour" `
   -Operator LessThan `
   -Threshold 100 `

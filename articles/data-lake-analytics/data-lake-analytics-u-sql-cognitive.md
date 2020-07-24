@@ -2,19 +2,17 @@
 title: Funkce pro rozpoznávání jazyka U-SQL v Azure Data Lake Analytics
 description: Naučte se používat inteligentní funkce rozpoznávání v U-SQL. Tyto ukázky kódu vám pomůžou začít.
 services: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: 019c1d53-4e61-4cad-9b2c-7a60307cbe19
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 06/05/2018
-ms.openlocfilehash: c417004e4abeda12b444ea4143ef1262f480d348
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 35973f3453daf61ee18b04b68e2fee4dd2e52402
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119544"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125475"
 ---
 # <a name="get-started-with-the-cognitive-capabilities-of-u-sql"></a>Začínáme se schopností rozpoznávání U-SQL
 

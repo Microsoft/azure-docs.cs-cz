@@ -11,11 +11,12 @@ author: nishankgu
 ms.author: nigup
 ms.date: 05/08/2020
 ms.custom: contperfq4
-ms.openlocfilehash: df636ce1200d8c3744681a60532b22c409dd81dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8be4169a44b2ef57db8aa49b96f6c5fe85ded1c
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84430464"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125084"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Správa & zvýšení kvót pro prostředky pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -71,7 +72,7 @@ Dostupné prostředky:
 | Maximální počet uzlů v prostředku s jednou Azure Machine Learning COMPUTE (AmlCompute) | uzly 100 |
 | Maximální počet MPI procesů GPU na uzel | 1-4 |
 | Maximální počet pracovníků GPU na uzel | 1-4 |
-| Maximální doba života úlohy | 90 dnů<sup>1</sup> |
+| Maximální doba života úlohy | 21 dnů<sup>1</sup> |
 | Maximální doba života úlohy na uzlu s nízkou prioritou | 7 dnů<sup>2</sup> |
 | Maximální počet serverů parametrů na uzel | 1 |
 

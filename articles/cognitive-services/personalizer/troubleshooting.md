@@ -3,13 +3,12 @@ title: Řešení potíží – přizpůsobení
 description: Tento článek obsahuje odpovědi na nejčastější dotazy k řešení potíží týkajících se přizpůsobení.
 ms.topic: troubleshooting
 ms.date: 02/26/2020
-ms.author: diberry
-ms.openlocfilehash: ca19fbfc505e3e46338a0930773b1879dce788c1
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 55b9068dbd7bfbb3ea3972c3381fda6d9cde5076
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586248"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126104"
 ---
 # <a name="personalizer-troubleshooting"></a>Řešení potíží s přizpůsobením
 
@@ -73,7 +72,7 @@ Po zahájení nového období aktualizace se použije aktualizovaný model a doj
 
 Obvykle je to způsobeno časovými razítky, ID uživatele nebo některými dalšími dodanými funkcemi, které jsou odesílány v.
 
-### <a name="i-created-an-offline-evaluation-and-it-succeeded-almost-instantly-why-is-that-i-dont-see-any-results"></a>Vytvořil (a) jsem se offline zkušební období a skoro okamžitě uspělo. Proč to tak je? Nevidím žádné výsledky?
+### <a name="i-created-an-offline-evaluation-and-it-succeeded-almost-instantly-why-is-that-i-dont-see-any-results"></a>Vytvořil (a) jsem se offline zkušební období a skoro okamžitě uspělo. Proč tomu tak je? Nevidím žádné výsledky?
 
 Testování v režimu offline používá z událostí v daném časovém období data z vyškolených modelů. Pokud jste neodeslali žádná data v časovém období mezi počátečním a koncovým časem vyhodnocení, bude dokončena bez jakýchkoli výsledků. Odešlete nové online vyhodnocení tak, že vyberete časový rozsah s událostmi, které jste věděli, že jste ho přizpůsobili.
 

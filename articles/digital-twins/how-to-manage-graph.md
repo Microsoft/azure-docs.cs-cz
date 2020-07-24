@@ -7,20 +7,20 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6d51abab46cd8450dd3a09e5e5ef47e6267b990d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7f7239e0c13478af712d8e8d9dad8fda23fe42c7
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258085"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125528"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Správa grafu digitálních vláken pomocí vztahů
 
 Srdcem digitálních vláken Azure je [dvojitě graf](concepts-twins-graph.md) , který představuje celé prostředí. Dvojitý graf se skládá z jednotlivých digitálních vláken propojených prostřednictvím **vztahů**.
 
-Jakmile budete mít funkční [instanci digitálních vláken Azure](how-to-set-up-instance.md) a nastavili jste [ověřování](how-to-authenticate-client.md) pro klientskou aplikaci, můžete použít [**rozhraní API DigitalTwins**](how-to-use-apis-sdks.md) k vytváření, úpravám a odstraňování digitálních vláken a jejich vztahů v instanci digitálních vláken Azure. Můžete také použít [rozhraní .NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)nebo rozhraní příkazového [řádku Azure Digital revlákens](how-to-use-cli.md).
+Jakmile budete mít funkční [instanci digitálních vláken Azure](how-to-set-up-instance-scripted.md) a nastavili jste [ověřovací](how-to-authenticate-client.md) kód v klientské aplikaci, můžete použít [**rozhraní API DigitalTwins**](how-to-use-apis-sdks.md) k vytváření, úpravám a odstraňování digitálních vláken a jejich vztahů v instanci digitálních vláken Azure. Můžete také použít [rozhraní .NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)nebo rozhraní příkazového [řádku Azure Digital revlákens](how-to-use-cli.md).
 
-Tento článek se zaměřuje na správu vztahů a grafu jako celku. Chcete-li pracovat s jednotlivými digitálními podseznamy, přečtěte si téma [Postup: Správa digitálních vláken](how-to-manage-twin.md).
+Tento článek se zaměřuje na správu vztahů a grafu jako celku. Chcete-li pracovat s jednotlivými digitálními podseznamy, přečtěte si téma [*Postup: Správa digitálních vláken*](how-to-manage-twin.md).
 
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
@@ -62,7 +62,7 @@ public async static Task CreateRelationship(DigitalTwinsClient client, string sr
 }
 ```
 
-Další informace o pomocné třídě `BasicRelationship` naleznete v tématu [How to: use the Azure Digital revlákens API and SDK](how-to-use-apis-sdks.md).
+Další informace o pomocné třídě `BasicRelationship` naleznete v tématu [*How to: use the Azure Digital revlákens API and SDK*](how-to-use-apis-sdks.md).
 
 ## <a name="list-relationships"></a>Výpis relací
 
@@ -108,7 +108,7 @@ Digitální vlákna Azure také obsahuje rozhraní API pro vyhledání všech p�
 
 Předchozí ukázka kódu se zaměřuje na hledání odchozích vztahů. Následující příklad je podobný, ale místo toho najde příchozí relace. Po nalezení je také odstraní.
 
-Všimněte si, že volání IncomingRelationship nevrátí úplný
+Všimněte si, že `IncomingRelationship` volání nevrátí úplný text vztahu.
 
 ```csharp
 async Task<List<IncomingRelationship>> FindIncomingRelationshipsAsync(string dtId)
@@ -229,7 +229,7 @@ V praktických případech použití budou zdvojené hierarchie často vytvořen
 
 Vezměte v úvahu následující tabulku dat s popisem sady digitálních vláken a relací, které se mají vytvořit.
 
-| Model    | ID | Nadřazený | Název vztahu | Další data |
+| Modelování    | ID | Nadřazený | Název vztahu | Další data |
 | --- | --- | --- | --- | --- |
 | řízení    | Floor01 | | | … |
 | konverzační    | Room10 | Floor01 | obsahuje | … |
@@ -301,10 +301,10 @@ foreach (JsonElement row in data.RootElement.EnumerateArray())
 ```
 ## <a name="manage-relationships-with-cli"></a>Správa vztahů pomocí rozhraní příkazového řádku
 
-Vlákna a jejich vztahy se dají spravovat taky pomocí rozhraní příkazového řádku Azure Digital revlákens CLI. Příkazy najdete v tématu [Postupy: použití rozhraní příkazového řádku Azure Digital zdvojené](how-to-use-cli.md).
+Vlákna a jejich vztahy se dají spravovat taky pomocí rozhraní příkazového řádku Azure Digital revlákens CLI. Příkazy najdete v tématu [*Postupy: použití rozhraní příkazového řádku Azure Digital zdvojené*](how-to-use-cli.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si o dotazování na vyzdvojený graf digitálních vláken Azure:
-* [Koncepty: dotazovací jazyk](concepts-query-language.md)
-* [Postupy: dotazování na nevlákenný graf](how-to-query-graph.md)
+* [*Koncepty: dotazovací jazyk*](concepts-query-language.md)
+* [*Postupy: dotazování na nevlákenný graf*](how-to-query-graph.md)

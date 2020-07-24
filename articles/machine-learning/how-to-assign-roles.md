@@ -11,12 +11,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: f289be1b3432d9c62b4841c513088afa16e0e447
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff8d532bf1c19ded9567e8c1e4b63e674c01d0d8
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609244"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125169"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Správa přístupu k pracovnímu prostoru Azure Machine Learning
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,18 +25,18 @@ V tomto článku se dozvíte, jak spravovat přístup k pracovnímu prostoru Azu
 
 ## <a name="default-roles"></a>Výchozí role
 
-Azure Machine Learning pracovní prostor je prostředek Azure. Podobně jako u jiných prostředků Azure se při vytvoření nového pracovního prostoru Azure Machine Learning dodává se třemi výchozími rolemi. Do pracovního prostoru můžete přidat uživatele a přiřadit jim jednu z těchto integrovaných rolí.
+Pracovní prostor služby Azure Machine Learning je prostředek Azure. Podobně jako u jiných prostředků Azure má nově vytvořený pracovní prostor služby Azure Machine Learning tři výchozí role. Do pracovního prostoru můžete přidat uživatele a přiřadit jim jednu z těchto integrovaných rolí.
 
 | Role | Úroveň přístupu |
 | --- | --- |
 | **Čtenář** | Akce jen pro čtení v pracovním prostoru. Čtenáři můžou v pracovním prostoru vypisovat a zobrazovat prostředky (včetně přihlašovacích údajů [úložiště dat](how-to-access-data.md) ), ale nemůžou tyto prostředky vytvářet ani aktualizovat. |
 | **Přispěvatel** | Zobrazení, vytvoření, úprava nebo odstranění prostředků (kde je k dispozici) v pracovním prostoru. Přispěvatelé můžou například vytvořit experiment, vytvořit nebo připojit výpočetní cluster, odeslat běh a nasadit webovou službu. |
-| **Vlastník** | Úplný přístup k pracovnímu prostoru, včetně možnosti zobrazit, vytvořit, upravit nebo odstranit (kde se vztahují) prostředky v pracovním prostoru. Kromě toho můžete změnit přiřazení rolí. |
+| **Vlastník** | Úplný přístup k pracovnímu prostoru, včetně možnosti zobrazit, vytvořit, upravit nebo odstranit (kde se vztahují) prostředky v pracovním prostoru. Kromě toho můžete měnit přiřazení rolí. |
 
 > [!IMPORTANT]
 > Přístup k rolím může být v Azure omezený na více úrovní. Například někdo s přístupem vlastníka k pracovnímu prostoru nemusí mít oprávnění vlastníka ke skupině prostředků, která obsahuje pracovní prostor. Další informace najdete v tématu [jak funkce RBAC funguje](/azure/role-based-access-control/overview#how-rbac-works).
 
-Další informace o konkrétních předdefinovaných rolích najdete v tématu [předdefinované role pro Azure](/azure/role-based-access-control/built-in-roles).
+Další informace o konkrétních předdefinovaných rolích najdete v tématu [předdefinované role Azure](/azure/role-based-access-control/built-in-roles).
 
 ## <a name="manage-workspace-access"></a>Správa přístupu k pracovnímu prostoru
 
@@ -45,7 +45,7 @@ Pokud jste vlastníkem pracovního prostoru, můžete přidat a odebrat role pro
 - [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 - [Azure CLI](/azure/role-based-access-control/role-assignments-cli)
 - [REST API](/azure/role-based-access-control/role-assignments-rest)
-- [Šablony Azure Resource Manageru](/azure/role-based-access-control/role-assignments-template)
+- [Šablony Azure Resource Manager](/azure/role-based-access-control/role-assignments-template)
 
 Pokud jste nainstalovali [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md), můžete k přiřazení rolí uživatelům použít taky příkaz CLI.
 
@@ -69,7 +69,7 @@ Azure Machine Learning integrovaných akcí pro mnoho operací a úloh. Úplný 
 
 ## <a name="create-custom-role"></a>Vytvoření vlastní role
 
-Pokud jsou předdefinované role nedostatečné, můžete vytvořit vlastní role. Vlastní role můžou mít v tomto pracovním prostoru oprávnění ke čtení, zápisu, odstranění a výpočtu prostředků. Role může být dostupná na konkrétní úrovni pracovního prostoru, na konkrétní úrovni skupiny prostředků nebo na konkrétní úrovni předplatného.
+Pokud si s předdefinovanými rolemi nevystačíte, můžete vytvářet role vlastní. Vlastní role můžou mít v tomto pracovním prostoru oprávnění ke čtení, zápisu, odstranění a výpočtu prostředků. Role může být dostupná na konkrétní úrovni pracovního prostoru, na konkrétní úrovni skupiny prostředků nebo na konkrétní úrovni předplatného.
 
 > [!NOTE]
 > Abyste mohli vytvářet vlastní role v rámci tohoto prostředku, musíte být vlastníkem prostředku na této úrovni.
@@ -117,7 +117,7 @@ Po nasazení bude tato role k dispozici v zadaném pracovním prostoru. Nyní m�
 az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
 ```
 
-Další informace o vlastních rolích najdete v tématu [vlastní role pro prostředky Azure](/azure/role-based-access-control/custom-roles).
+Další informace o vlastních rolích najdete v tématu [vlastní role Azure](/azure/role-based-access-control/custom-roles).
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -128,11 +128,11 @@ Následující tabulka představuje souhrn Azure Machine Learningch aktivit a op
 
 | Aktivita | Rozsah na úrovni předplatného | Rozsah na úrovni skupiny prostředků | Rozsah na úrovni pracovního prostoru |
 |---|---|---|---|
-| Vytvořit nový pracovní prostor | Není požadováno | Vlastník nebo přispěvatel | Není k dispozici (vlastník nebo zdědí vyšší obor role po vytvoření) |
-| Vytvořit nový výpočetní cluster | Není požadováno | Není požadováno | Vlastník, přispěvatel nebo vlastní role povolují:`workspaces/computes/write` |
-| Vytvořit nový virtuální počítač s poznámkovým blokem | Není požadováno | Vlastník nebo přispěvatel | Není možný |
-| Vytvořit novou výpočetní instanci | Není požadováno | Není požadováno | Vlastník, přispěvatel nebo vlastní role povolují:`workspaces/computes/write` |
-| Aktivita roviny dat, jako je odeslání běhu, přístup k datům, nasazování modelu nebo publikování kanálu | Není požadováno | Není požadováno | Vlastník, přispěvatel nebo vlastní role povolují:`workspaces/*/write` <br/> Pro povolení služby MSI pro přístup k datům ve vašem účtu úložiště budete taky potřebovat úložiště dat zaregistrované v pracovním prostoru. |
+| Vytvořit nový pracovní prostor | Nevyžadováno | Vlastník nebo přispěvatel | Není k dispozici (vlastník nebo zdědí vyšší obor role po vytvoření) |
+| Vytvořit nový výpočetní cluster | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují:`workspaces/computes/write` |
+| Vytvořit nový virtuální počítač s poznámkovým blokem | Nevyžadováno | Vlastník nebo přispěvatel | Není možný |
+| Vytvořit novou výpočetní instanci | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují:`workspaces/computes/write` |
+| Aktivita roviny dat, jako je odeslání běhu, přístup k datům, nasazování modelu nebo publikování kanálu | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují:`workspaces/*/write` <br/> Pro povolení služby MSI pro přístup k datům ve vašem účtu úložiště budete taky potřebovat úložiště dat zaregistrované v pracovním prostoru. |
 
 
 ### <a name="q-how-do-i-list-all-the-custom-roles-in-my-subscription"></a>Otázka: Návody vypsat všechny vlastní role v předplatném?

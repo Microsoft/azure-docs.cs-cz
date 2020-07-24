@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 07/05/2020
-ms.openlocfilehash: ad2e6a05fa8459d8e5a53d9bb8b8e08790a7d8ec
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3835046e50180e1d1091f5083f276c7c1ad56612
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539410"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117365"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor klíč spravovaný zákazníkem 
 
@@ -194,7 +194,7 @@ Tato nastavení se dají aktualizovat přes rozhraní příkazového řádku a P
 
 Tento prostředek se používá jako zprostředkující připojení identity mezi Key Vault a vašimi pracovními prostory v Log Analytics. Po obdržení potvrzení, že vaše předplatná byla povolena, vytvořte prostředek *clusteru* Log Analytics v oblasti, ve které jsou umístěny vaše pracovní prostory.
 
-Při vytváření prostředku *clusteru* je nutné zadat úroveň *rezervace kapacity* (SKU). Úroveň *rezervace kapacity* může být v rozsahu 1 000 až 2 000 GB za den a můžete ji aktualizovat v krocích 100 později. Pokud potřebujete úroveň rezervace kapacity vyšší než 2 000 GB za den, kontaktujte nás na adrese LAIngestionRate@microsoft.com . [Další informace](./manage-cost-storage.md#log-analytics-dedicated-clusters)
+Při vytváření prostředku *clusteru* je nutné zadat úroveň *rezervace kapacity* (SKU). Úroveň *rezervace kapacity* může být v rozsahu 1000 až 3000 GB za den a můžete ji aktualizovat v krocích 100. Pokud potřebujete úroveň rezervace kapacity vyšší než 3000 GB za den, kontaktujte nás na adrese LAIngestionRate@microsoft.com . [Další informace](./manage-cost-storage.md#log-analytics-dedicated-clusters)
 
 Vlastnost *billingType* Určuje přidělení fakturace pro prostředek *clusteru* a jeho data:
 - *Cluster* (výchozí) – náklady na rezervaci kapacity pro váš cluster se připočítají ke zdroji *clusteru* .
@@ -467,9 +467,9 @@ Všechna vaše data zůstanou po operaci střídání klíčů přístupná, pro
 Dotazovací jazyk používaný v Log Analytics je výrazná a může obsahovat citlivé informace v komentářích přidaných do dotazů nebo v syntaxi dotazu. Některé organizace vyžadují, aby tyto informace byly chráněny jako součást zásad CMK a vy budete potřebovat ukládat dotazy zašifrované s vaším klíčem. Azure Monitor vám umožní ukládat do svého pracovního prostoru dotazy *uložené – prohledávání* a *protokolování výstrah* šifrovaných pomocí vašeho klíče ve vlastním účtu úložiště. 
 
 > [!NOTE]
-> CMK pro dotazy použité v sešitech a řídicích panelech Azure se zatím nepodporují. Tyto dotazy zůstanou šifrované pomocí klíče Microsoft.  
+> Dotazy Log Analytics mohou být uloženy v různých úložištích v závislosti na použitém scénáři. Dotazy zůstávají šifrované pomocí klíče Microsoft Key (MMK) v následujících scénářích bez ohledu na konfiguraci CMK: sešity v Azure Monitor, řídicí panely Azure, aplikace Azure Logic Apps, Azure Notebooks a sady Runbook Automation.
 
-Když zadáte [vlastní úložiště](./private-storage.md) (BYOS) a přidružíte ho k pracovnímu prostoru, služba nahraje dotazy na *uložené výsledky hledání* a *protokolování výstrah* do vašeho účtu úložiště. To znamená, že můžete řídit účet úložiště a [zásady šifrování v REST](../../storage/common/encryption-customer-managed-keys.md) buď pomocí stejného klíče, který používáte k šifrování dat v log Analyticsm clusteru, nebo v jiném klíči. Budete ale odpovědní za náklady spojené s tímto účtem úložiště. 
+Když zadáte vlastní úložiště (BYOS) a přidružíte ho k pracovnímu prostoru, služba nahraje dotazy na *uložené výsledky hledání* a *protokolování výstrah* do vašeho účtu úložiště. To znamená, že můžete řídit účet úložiště a [zásady šifrování v REST](../../storage/common/encryption-customer-managed-keys.md) buď pomocí stejného klíče, který používáte k šifrování dat v log Analyticsm clusteru, nebo v jiném klíči. Budete ale odpovědní za náklady spojené s tímto účtem úložiště. 
 
 **Otázky před nastavením CMK pro dotazy**
 * Musíte mít oprávnění Write k vašemu pracovnímu prostoru i účtu úložiště.
@@ -599,7 +599,7 @@ Po dokončení konfigurace se všechny nové dotazy na upozornění uloží do �
 
 - **Aktualizovat *rezervaci kapacity* v prostředku *clusteru***
 
-  Když se datový svazek, ke kterému se přiřadí vaše přidružené pracovní prostory, mění v čase a chcete patřičně aktualizovat úroveň rezervace kapacity. Postupujte podle kroků [aktualizace prostředku *clusteru* ](#update-cluster-resource-with-key-identifier-details) a zadejte novou hodnotu kapacity. Může být v rozsahu 1 000 až 2 000 GB za den a v krocích po 100. Pro zajištění vyšší úrovně než 2 000 GB za den kontaktujte kontakt Microsoftu, abyste ho povolili. Všimněte si, že nemusíte zadávat úplný text žádosti REST a měla by obsahovat SKU:
+  Když se datový svazek, ke kterému se přiřadí vaše přidružené pracovní prostory, mění v čase a chcete patřičně aktualizovat úroveň rezervace kapacity. Postupujte podle kroků [aktualizace prostředku *clusteru* ](#update-cluster-resource-with-key-identifier-details) a zadejte novou hodnotu kapacity. Může být v rozsahu 1000 až 3000 GB za den a v krocích po 100. Pro zajištění vyšší úrovně než 3000 GB za den kontaktujte kontakt Microsoftu, abyste ho povolili. Všimněte si, že nemusíte zadávat úplný text žádosti REST, ale měla by obsahovat SKU:
 
   ```powershell
   Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -SkuCapacity "daily-ingestion-gigabyte"
@@ -715,7 +715,7 @@ Po dokončení konfigurace se všechny nové dotazy na upozornění uloží do �
 
 - Přidružení pracovního prostoru ke zdroji *clusteru* selže, pokud je přidruženo k jinému prostředku *clusteru* .
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 - Chování při Key Vault dostupnosti
   - V normálním provozu – mezipaměť úložiště AEK na krátkou dobu a vrátí se zpět na Key Vault k pravidelnému rozbalení.

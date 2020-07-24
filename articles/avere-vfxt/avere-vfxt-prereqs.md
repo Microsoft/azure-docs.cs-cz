@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: c1828bcde5c26c5605b867c115127eb2502bdd86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24c803bd94f56af551f3afa2cb7350219b4fa448
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505337"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124727"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Příprava k vytvoření Avere vFXT
 
@@ -38,7 +38,7 @@ K dispozici je několik alternativních řešení, která umožňují vytvořit 
 |----------|--------|-------|
 | Správce skupiny prostředků vytvoří vFXT. | V rámci skupiny prostředků musí být vytvořená virtuální síť, řadič clusteru a uzly clusteru. | Role [Správce přístupu uživatelů](../role-based-access-control/built-in-roles.md#user-access-administrator) a [přispěvatelů](../role-based-access-control/built-in-roles.md#contributor) jsou vymezeny na cílovou skupinu prostředků. |
 | Použít existující externí virtuální síť | Řadič clusteru a uzly clusteru se vytvářejí v rámci skupiny prostředků vFXT, ale používají existující virtuální síť v jiné skupině prostředků. | (1) role [Správce přístupu uživatele](../role-based-access-control/built-in-roles.md#user-access-administrator) a [přispěvatelé](../role-based-access-control/built-in-roles.md#contributor) jsou v oboru pro skupinu prostředků vFXT. a (2) [Přispěvatel virtuálních počítačů](../role-based-access-control/built-in-roles.md#virtual-machine-contributor), [správce uživatelských přístupů](../role-based-access-control/built-in-roles.md#user-access-administrator)a role [přispěvatele avere](../role-based-access-control/built-in-roles.md#avere-contributor) v oboru pro skupinu prostředků virtuální sítě. |
-| Vlastní role pro tvůrci clusteru | Neexistují žádná omezení umístění prostředků. Tato metoda poskytuje nevlastníky významná oprávnění. | Vlastník předplatného vytvoří vlastní roli RBAC, jak je vysvětleno v [tomto článku](avere-vfxt-non-owner.md). |
+| Vlastní role pro tvůrci clusteru | Neexistují žádná omezení umístění prostředků. Tato metoda poskytuje nevlastníky významná oprávnění. | Vlastník předplatného vytvoří vlastní roli Azure, jak je vysvětleno v [tomto článku](avere-vfxt-non-owner.md). |
 
 ## <a name="quota-for-the-vfxt-cluster"></a>Kvóta pro cluster vFXT
 
