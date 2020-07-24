@@ -4,12 +4,12 @@ description: Naučte se, jak nainstalovat rozšíření Durable Functions pro Az
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 7eee3c36620d0cc9f5906e355b76e7418c61b477
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b029fa246977dfe4210f6e8df242415f7e4103f1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807957"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081912"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Vytvoření Durable Functions pomocí Azure Portal
 
@@ -20,7 +20,7 @@ ms.locfileid: "85807957"
 > * Při vývoji trvalých funkcí v jazyce C# byste místo toho měli zvážit [vývoj v aplikaci Visual Studio 2019](durable-functions-create-first-csharp.md).
 > * Pokud vyvíjíte trvalé funkce v JavaScriptu, měli byste zvážit [Visual Studio Code vývoj](./quickstart-js-vscode.md).
 
-## <a name="create-a-function-app"></a>Vytvoření Function App
+## <a name="create-a-function-app"></a>Vytvoření aplikace funkcí
 
 Musíte mít aplikaci Function App, která bude hostovat provádění jakékoli funkce. Aplikace Function App vám umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování, škálování a sdílení prostředků. Můžete vytvořit aplikaci pro .NET nebo JavaScript.
 
@@ -58,8 +58,6 @@ Pokud vytváříte Durable Functions JavaScriptu, budete muset nainstalovat [ `d
 
    ![Kudu spustit instalaci npm](./media/durable-functions-create-portal/kudu-npm-install.png)
    
-5. Nakonec [Povolte režim kompatibility](https://docs.microsoft.com/azure/azure-functions/durable/quickstart-js-vscode#enable-compatibility-mode-1) přidáním nastavení aplikace `FUNCTIONS_V2_COMPATIBILITY_MODE` s hodnotou `true` .
-
 ## <a name="create-an-orchestrator-function"></a>Vytvoření funkce Orchestrator
 
 1. V aplikaci Function App vyberte v levém podokně **funkce** a pak v horní nabídce vyberte **Přidat** . 

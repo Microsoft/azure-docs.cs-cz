@@ -8,17 +8,18 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: af5e511cbf273bc4e4fa0a08d089a955426fe75c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: caa3717fdf915e205c1a4f82f4e199346ca29fcb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75454197"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082802"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>Použití služby správy certifikátů trezoru OPC
 
 Tento článek vysvětluje, jak registrovat aplikace a jak vydávat podepsané certifikáty aplikací pro zařízení OPC UA.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="deploy-the-certificate-management-service"></a>Nasazení služby správy certifikátů
 
@@ -37,7 +38,7 @@ Pokud jste to ještě neudělali, vytvořte certifikát certifikační autority 
 
 1. Otevřete svou službu Certificate Service na adrese `https://myResourceGroup-app.azurewebsites.net` a přihlaste se.
 2. Přejít na **zaregistrovat nové**. Pro registraci aplikace musí mít uživatel alespoň přiřazenou roli zapisovače.
-2. Formulář pro zadávání názvů řídí konvence pojmenování v OPC UA. Například na následujícím snímku obrazovky se zobrazí nastavení pro ukázku [referenčního serveru OPC UA](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/Reference) v OPC UA .NET Standard stack:
+2. Formulář pro zadávání názvů řídí konvence pojmenování v OPC UA. Například na následujícím snímku obrazovky se zobrazí nastavení pro ukázku [referenčního serveru OPC UA](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/Applications/ReferenceServer) v OPC UA .NET Standard stack:
 
    ![Snímek obrazovky s registrací referenčního serveru UA](media/howto-opc-vault-secure/reference-server-registration.png "Registrace referenčního serveru UA")
 

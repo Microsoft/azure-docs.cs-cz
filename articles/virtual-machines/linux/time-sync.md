@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 25e8be28903d490a7a8c17e16d2beddc44c95c41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b47fb242a82097a9fa5c9c41dac99f0a7f8ab2c8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782768"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085431"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Čas synchronizace pro virtuální počítače se systémem Linux v Azure
 
@@ -127,11 +128,11 @@ V tomto příkladu je vrácená hodnota *ptp0*, takže ji používáme ke kontro
 cat /sys/class/ptp/ptp0/clock_name
 ```
 
-To by mělo vrátit **HyperV**.
+Mělo by se vrátit `hyperv` .
 
 ### <a name="chrony"></a>chrony
 
-V Ubuntu 19,10 a novějších verzích Red Hat Enterprise Linux a CentOS 7. x je [Chrony](https://chrony.tuxfamily.org/) nakonfigurovaná tak, aby používala zdrojové hodiny PTP. Místo Chrony starší verze systému Linux používají ntpd (Network Time Protocol Daemon), který nepodporuje zdroje přes PTP. Aby bylo možné v těchto verzích povolit PTP, musí být Chrony ručně nainstalovaná a nakonfigurovaná (Chrony. conf) pomocí následujícího kódu:
+V Ubuntu 19,10 a novějších verzích Red Hat Enterprise Linux a CentOS 8. x je [Chrony](https://chrony.tuxfamily.org/) nakonfigurovaná tak, aby používala zdrojové hodiny PTP. Místo Chrony starší verze systému Linux používají ntpd (Network Time Protocol Daemon), který nepodporuje zdroje přes PTP. Aby bylo možné v těchto verzích povolit PTP, musí být Chrony ručně nainstalovaná a nakonfigurovaná (Chrony. conf) pomocí následujícího kódu:
 
 ```bash
 refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
@@ -143,9 +144,9 @@ Další informace o Red Hat a NTP najdete v tématu [Konfigurace NTP](https://ac
 
 Další informace o Chrony najdete v tématu [použití Chrony](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_the_chrony_suite#sect-Using_chrony).
 
-Pokud jsou současně povoleny současně Chrony i TimeSync zdroje, můžete jeden označit jako **upřednostňovaný**, což nastaví druhý zdroj jako zálohu. Vzhledem k tomu, že služby NTP neaktualizují hodiny pro rozsáhlá zkosení s výjimkou po dlouhou dobu, VMICTimeSync obnoví hodiny z pozastavených událostí virtuálního počítače mnohem rychleji než samostatné nástroje založené na NTP.
+Pokud jsou současně povoleny současně Chrony i VMICTimeSync zdroje, můžete jeden označit jako **upřednostňovaný**, což nastaví druhý zdroj jako zálohu. Vzhledem k tomu, že služby NTP neaktualizují hodiny pro rozsáhlá zkosení s výjimkou po dlouhou dobu, VMICTimeSync obnoví hodiny z pozastavených událostí virtuálního počítače mnohem rychleji než samostatné nástroje založené na NTP.
 
-Ve výchozím nastavení chronyd zrychluje nebo zpomaluje systémové hodiny, aby se opravila doba posunu. Pokud se posun přestane příliš velký, Chrony neodstraní posun. K překonání tohoto `makestep` parametru může být parametr v **/etc/Chrony.conf** změněn tak, aby vynutil timesync, pokud posun překročí zadanou prahovou hodnotu.
+Ve výchozím nastavení chronyd zrychluje nebo zpomaluje systémové hodiny, aby se opravila doba posunu. Pokud se posun přestane příliš velký, Chrony neodstraní posun. Pro překonání tohoto `makestep` parametru může být parametr v **/etc/Chrony.conf** změněn tak, aby se vynutila časová synchronizace, pokud posun překročí zadanou prahovou hodnotu.
 
  ```bash
 makestep 1.0 -1

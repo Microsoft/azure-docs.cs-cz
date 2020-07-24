@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 37ade037b7f3c88f5ff33d7fc4640b19f366fe7a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 05a9b8009d896a2ee87df3e1c4493d249a887566
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531207"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083918"
 ---
 # <a name="connect-your-okta-single-sign-on-to-azure-sentinel-with-azure-function"></a>Připojení okta jednotného přihlašování k Azure Sentinel pomocí funkce Azure Functions
+
+> [!IMPORTANT]
+> Konektor dat jednotného přihlašování okta ve službě Azure Sentinel je aktuálně ve verzi Public Preview.
+> Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Konektor okta jednotného přihlašování (SSO) umožňuje snadno připojit všechny protokoly řešení zabezpečení [jednotného přihlašování okta (SSO)](https://www.okta.com/products/single-sign-on/) k Azure Sentinel, zobrazit řídicí panely, vytvořit vlastní výstrahy a vylepšit šetření. Integrace mezi okta jednotným přihlašováním a protokolem Azure Sentinel využívá Azure Functions k vyžádání dat protokolu pomocí REST API.
 

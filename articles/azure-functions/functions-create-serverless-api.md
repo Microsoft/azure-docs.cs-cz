@@ -6,17 +6,18 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 5607a737fa4616d4eda3d174144c1717125f4181
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 440eb1f39284f8d99a8d6b9067b018c4a54fcd27
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83122765"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083017"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>Přizpůsobení koncového bodu HTTP v Azure Functions
 
 V tomto článku se dozvíte, jak Azure Functions umožňuje vytvářet vysoce škálovatelná rozhraní API. Azure Functions se dodává s kolekcí integrovaných triggerů HTTP a vazeb, které usnadňují vytváření koncových bodů v nejrůznějších jazycích, včetně Node.js, C# a dalších. V tomto článku budete přizpůsobovat Trigger HTTP, který bude zpracovávat konkrétní akce v návrhu rozhraní API. Také se připravujete pro rostoucí rozhraní API integrací s Proxy služby Azure Functions a nastavením přípravných rozhraní API. Tyto úlohy se provádí na základě funkcí prostředí COMPUTE bez serveru, takže se nemusíte starat o škálování prostředků – stačí se zaměřit na logiku rozhraní API.
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 [!INCLUDE [Previous quickstart note](../../includes/functions-quickstart-previous-topics.md)]
 
@@ -36,7 +37,7 @@ Ve výchozím nastavení je funkce triggeru protokolu HTTP nakonfigurovaná tak,
 
 1. Použijte nastavení triggeru HTTP, jak je uvedeno v následující tabulce.
 
-    | Pole | Ukázková hodnota | Description |
+    | Pole | Ukázková hodnota | Popis |
     |---|---|---|
     | Šablona trasy | /hello | Určuje, jaká trasa se používá k vyvolání této funkce. |
     | Úroveň autorizace | Anonymní | Volitelné: Zpřístupňuje vaši funkci bez klíče rozhraní API. |
@@ -46,7 +47,7 @@ Ve výchozím nastavení je funkce triggeru protokolu HTTP nakonfigurovaná tak,
 
 1. Vyberte **Uložit**.
 
-Další informace o přizpůsobení funkcí HTTP najdete v tématu [Azure Functions vazby HTTP](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook).
+Další informace o přizpůsobení funkcí HTTP najdete v tématu [Azure Functions vazby HTTP](./functions-bindings-http-webhook.md).
 
 ### <a name="test-your-api"></a>Testování rozhraní API
 
@@ -73,8 +74,8 @@ V další části budete své rozhraní API nakládat prostřednictvím proxy se
 
 Proxy může odkazovat na libovolný prostředek HTTP, například na:
 - Azure Functions 
-- Aplikace API ve službě [Azure App Service](https://docs.microsoft.com/azure/app-service/overview)
-- Kontejnery Dockeru ve službě [App Service v Linuxu](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro)
+- Aplikace API ve službě [Azure App Service](../app-service/overview.md)
+- Kontejnery Dockeru ve službě [App Service v Linuxu](../app-service/containers/app-service-linux-intro.md)
 - Jakékoli jiné hostované rozhraní API
 
 Další informace o proxy najdete v článku [Práce s Proxy služby Azure Functions].
@@ -85,7 +86,7 @@ V této části vytvoříte nový proxy server, který slouží jako front-end p
 
 ### <a name="setting-up-the-frontend-environment"></a>Nastavení prostředí front-endu
 
-Zopakováním postupu v článku o [vytvoření aplikace funkcí](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app) vytvořte novou aplikaci funkcí, ve které vytvoříte proxy. Tato nová adresa URL aplikace slouží jako front-end pro naše rozhraní API a aplikace Function App, kterou jste předtím upravovali, slouží jako back-end.
+Zopakováním postupu v článku o [vytvoření aplikace funkcí](./functions-create-first-azure-function.md#create-a-function-app) vytvořte novou aplikaci funkcí, ve které vytvoříte proxy. Tato nová adresa URL aplikace slouží jako front-end pro naše rozhraní API a aplikace Function App, kterou jste předtím upravovali, slouží jako back-end.
 
 1. Na portálu přejděte na novou front-endovou aplikaci funkcí.
 1. Vyberte **Funkce platformy** a zvolte **Nastavení aplikace**.
@@ -104,9 +105,9 @@ Zopakováním postupu v článku o [vytvoření aplikace funkcí](https://docs.m
 
 1. Na stránce **nový proxy** použijte nastavení v následující tabulce a pak vyberte **vytvořit**.
 
-    | Pole | Ukázková hodnota | Description |
+    | Pole | Ukázková hodnota | Popis |
     |---|---|---|
-    | Name | HelloProxy | Popisný název sloužící jen ke správě |
+    | Název | HelloProxy | Popisný název sloužící jen ke správě |
     | Šablona trasy | /api/remotehello | Určuje, jaká trasa se používá k vyvolání tohoto proxy. |
     | Adresa URL back-endu | https://%HELLO_HOST%/api/hello | Určuje koncový bod, na který má být žádost přes proxy směrována. |
 
@@ -125,7 +126,7 @@ Potom použijete proxy server k vytvoření rozhraní API pro vaše řešení. T
 
 Pokud chcete vytvořit toto rozhraní API pro vytváření, vytvoříme nový proxy server, tentokrát pomocí [Editor služby App Service](https://github.com/projectkudu/kudu/wiki/App-Service-Editor). Začněte tím, že na portálu přejdete na aplikaci funkcí. Vyberte **funkce platformy**a v části **vývojové nástroje** Najděte **Editor služby App Service**. Na nové kartě se otevře Editor služby App Service.
 
-Vyberte `proxies.json` v levém navigačním panelu. Tento soubor uchovává konfiguraci pro všechny vaše proxy servery. Pokud používáte jednu z [metod nasazení Functions](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment), můžete tento soubor udržovat ve správě zdrojového kódu. Další informace o tomto souboru najdete v článku o [pokročilé konfiguraci proxy](https://docs.microsoft.com/azure/azure-functions/functions-proxies#advanced-configuration).
+Vyberte `proxies.json` v levém navigačním panelu. Tento soubor uchovává konfiguraci pro všechny vaše proxy servery. Pokud používáte jednu z [metod nasazení Functions](./functions-continuous-deployment.md), můžete tento soubor udržovat ve správě zdrojového kódu. Další informace o tomto souboru najdete v článku o [pokročilé konfiguraci proxy](./functions-proxies.md#advanced-configuration).
 
 Pokud jste následovali společně, proxies.jsby měl vypadat takto:
 
@@ -179,7 +180,7 @@ Dále přidáte své rozhraní API pro návrhy. Nahraďte proxies.jssouboru nás
 }
 ```
 
-Tento kód přidá nový proxy server `GetUserByName` bez `backendUri` Vlastnosti. Místo volání jiného prostředku upravuje výchozí odpověď od proxy pomocí přepisu odpovědi. Přepisy žádostí a odpovědí lze použít také ve spojení s adresou URL back-endu. Tato technika je užitečná hlavně při proxy serveru do starší verze systému, kde možná budete muset změnit hlavičky, parametry dotazů a tak dále. Další informace o přepisech žádostí a odpovědí najdete v článku o [úpravách žádostí a odpovědí v proxy](https://docs.microsoft.com/azure/azure-functions/functions-proxies).
+Tento kód přidá nový proxy server `GetUserByName` bez `backendUri` Vlastnosti. Místo volání jiného prostředku upravuje výchozí odpověď od proxy pomocí přepisu odpovědi. Přepisy žádostí a odpovědí lze použít také ve spojení s adresou URL back-endu. Tato technika je užitečná hlavně při proxy serveru do starší verze systému, kde možná budete muset změnit hlavičky, parametry dotazů a tak dále. Další informace o přepisech žádostí a odpovědí najdete v článku o [úpravách žádostí a odpovědí v proxy](./functions-proxies.md).
 
 Otestujte napodobeninu rozhraní API voláním koncového bodu `<YourProxyApp>.azurewebsites.net/api/users/{username}` pomocí prohlížeče nebo oblíbeného klienta REST. Nezapomeňte nahradit _{username}_ řetězcovou hodnotou představující uživatelské jméno.
 
@@ -189,10 +190,10 @@ V tomto článku jste zjistili, jak vytvořit a přizpůsobit rozhraní API na A
 
 Při dalším vývoji rozhraní API vám mohou přijít vhod následující odkazy:
 
-- [Vazby HTTP ve službě Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook)
+- [Vazby HTTP ve službě Azure Functions](./functions-bindings-http-webhook.md)
 - [Práce s Proxy služby Azure Functions]
-- [Dokumentace rozhraní API služby Azure Functions (verze Preview)](https://docs.microsoft.com/azure/azure-functions/functions-api-definition-getting-started)
+- [Dokumentace rozhraní API služby Azure Functions (verze Preview)](./functions-openapi-definition.md)
 
 
-[Create your first function]: https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function
-[Práce s Proxy služby Azure Functions]: https://docs.microsoft.com/azure/azure-functions/functions-proxies
+[Create your first function]: ./functions-create-first-azure-function.md
+[Práce s Proxy služby Azure Functions]: ./functions-proxies.md

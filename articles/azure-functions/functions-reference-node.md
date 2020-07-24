@@ -3,23 +3,27 @@ title: Referenční dokumentace pro vývojáře JavaScriptu pro Azure Functions
 description: Naučte se vyvíjet funkce pomocí JavaScriptu.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: d71301ef73cd94c13b12e17c923ec73abb8e4aae
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/17/2020
+ms.openlocfilehash: c0e5dd7e1869accd309656b69bd2a07d21b1a3ec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252721"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082966"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions příručka pro vývojáře JavaScriptu
 
-Tato příručka obsahuje informace o složitými rozhraními psaní Azure Functions pomocí JavaScriptu.
+Tato příručka obsahuje podrobné informace, které vám pomůžou s úspěšným vývojem Azure Functions pomocí JavaScriptu.
 
-Funkce JavaScriptu je export `function` , který se spustí, když se aktivuje ([triggery se konfigurují v function.jszapnuté](functions-triggers-bindings.md)). První argument předaný do každé funkce je `context` objekt, který se používá pro příjem a odesílání dat vazby, protokolování a komunikaci s modulem runtime.
+Jako Express.js, Node.js nebo vývojář JavaScriptu, pokud jste Azure Functions, je třeba si nejdřív přečíst jeden z následujících článků:
 
-V tomto článku se předpokládá, že už jste si přečetli [Azure Functions referenci pro vývojáře](functions-reference.md). Dokončete rychlý Start funkcí a vytvořte svoji první funkci pomocí [Visual Studio Code](functions-create-first-function-vs-code.md) nebo na [portálu](functions-create-first-azure-function.md).
+| Začínáme | Koncepty| Učení s asistencí |
+| -- | -- | -- | 
+| <ul><li>[Node.js funkce pomocí Visual Studio Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript)</li><li>[Node.js funkce pomocí terminálu/příkazového řádku](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-javascript)</li></ul> | <ul><li>[Příručka pro vývojáře](functions-reference.md)</li><li>[Možnosti hostování](functions-scale.md)</li><li>[Funkce TypeScriptu](#typescript)</li><li>[Požadavky na výkon &nbsp;](functions-best-practices.md)</li></ul> | <ul><li>[Vytváření bezserverových aplikací](/learn/paths/create-serverless-applications/)</li><li>[Refaktoring rozhraní API bez serveru Node.js a Express](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
-Tento článek také podporuje [vývoj aplikací TypeScript](#typescript).
+## <a name="javascript-function-basics"></a>Základy funkcí JavaScriptu
+
+Funkce JavaScriptu (Node.js) je export `function` , který se spustí, když se aktivuje ([triggery se konfigurují v function.json](functions-triggers-bindings.md)). První argument předaný do každé funkce je `context` objekt, který se používá pro příjem a odesílání dat vazby, protokolování a komunikaci s modulem runtime.
 
 ## <a name="folder-structure"></a>Struktura složek
 
@@ -118,7 +122,7 @@ Vstup je rozdělen do dvou kategorií v Azure Functions: jeden je vstup triggeru
    };
    ```
    
- - **Jako vstupy pomocí objektu jazyka JavaScript [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) .** To je v podstatě totéž jako předání vstupů jako parametrů, ale umožňuje dynamicky zpracovávat vstupy.
+ - **Jako vstupy pomocí objektu jazyka JavaScript [`arguments`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments) .** To je v podstatě totéž jako předání vstupů jako parametrů, ale umožňuje dynamicky zpracovávat vstupy.
  
    ```javascript
    module.exports = async function(context) { 
@@ -559,11 +563,11 @@ V tomto příkladu je důležité si uvědomit, že i když je objekt exportová
 
 Při spuštění s `--inspect` parametrem Node.js proces naslouchá klientovi ladění na zadaném portu. V Azure Functions 2. x můžete zadat argumenty, které mají být předávány do procesu Node.js, který spouští váš kód přidáním proměnné prostředí nebo nastavení aplikace `languageWorkers:node:arguments = <args>` . 
 
-Chcete-li ladit místně, přidejte `"languageWorkers:node:arguments": "--inspect=5858"` `Values` do souboru [local.settings.js](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file) a připojte ladicí program k portu 5858.
+Chcete-li ladit místně, přidejte `"languageWorkers:node:arguments": "--inspect=5858"` `Values` do souboru [local.settings.js](./functions-run-local.md#local-settings-file) a připojte ladicí program k portu 5858.
 
 Při ladění pomocí VS Code `--inspect` je parametr automaticky přidán pomocí `port` hodnoty v launch.jsprojektu v souboru.
 
-Ve verzi 1. x nebude nastavení `languageWorkers:node:arguments` fungovat. Port pro ladění můžete vybrat s [`--nodeDebugPort`](https://docs.microsoft.com/azure/azure-functions/functions-run-local#start) parametrem na Azure Functions Core Tools.
+Ve verzi 1. x nebude nastavení `languageWorkers:node:arguments` fungovat. Port pro ladění můžete vybrat s [`--nodeDebugPort`](./functions-run-local.md#start) parametrem na Azure Functions Core Tools.
 
 ## <a name="typescript"></a>TypeScript
 
@@ -613,7 +617,7 @@ npm start
 - `tsc`
 - `func start`
 
-#### <a name="publish-to-azure"></a>Publikování aplikací do Azure
+#### <a name="publish-to-azure"></a>Publikování do Azure
 
 Než použijete [`func azure functionapp publish`] příkaz k nasazení do Azure, vytvoříte sestavení JavaScriptu připravené pro produkční soubory z zdrojových souborů TypeScriptu. 
 
@@ -632,7 +636,7 @@ Při práci s funkcemi JavaScriptu si pamatujte na informace v následujících 
 
 ### <a name="choose-single-vcpu-app-service-plans"></a>Výběr plánů s jednou vCPU App Service
 
-Když vytváříte aplikaci Function App, která používá plán App Service, doporučujeme místo plánu s více Vcpuy vybrat plán s jedním vCPU. V současné době fungují funkce JavaScript Functions efektivněji na virtuálních počítačích s jednou vCPU a použití větších virtuálních počítačů nevytváří očekávaná vylepšení výkonu. V případě potřeby můžete ruční horizontální navýšení kapacity rozšířit přidáním více instancí virtuálních počítačů s jedním vCPU nebo můžete povolit automatické škálování. Další informace najdete v tématu [Ruční nebo automatické škálování počtu instancí](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2ftoc.json).
+Když vytváříte aplikaci Function App, která používá plán App Service, doporučujeme místo plánu s více Vcpuy vybrat plán s jedním vCPU. V současné době fungují funkce JavaScript Functions efektivněji na virtuálních počítačích s jednou vCPU a použití větších virtuálních počítačů nevytváří očekávaná vylepšení výkonu. V případě potřeby můžete ruční horizontální navýšení kapacity rozšířit přidáním více instancí virtuálních počítačů s jedním vCPU nebo můžete povolit automatické škálování. Další informace najdete v tématu [Ruční nebo automatické škálování počtu instancí](../azure-monitor/platform/autoscale-get-started.md?toc=/azure/app-service/toc.json).
 
 ### <a name="cold-start"></a>Studený start
 

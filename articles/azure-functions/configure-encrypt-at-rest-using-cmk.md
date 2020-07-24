@@ -3,13 +3,14 @@ title: Šifrování zdroje aplikace v klidovém umístění
 description: Zašifrujte data aplikace v Azure Storage a nasaďte je jako soubor balíčku.
 ms.topic: article
 ms.date: 03/06/2020
-ms.openlocfilehash: 62179e900ace0d6d7b8b1f07e8f0ab685508f991
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6dfb56a5ef6b1ab3cfbd0762bf7816e37ce0aa39
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79408720"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081878"
 ---
-# <a name="encryption-at-rest-using-customer-managed-keys"></a>Šifrování v klidovém formátu pomocí klíčů spravovaných zákazníkem
+# <a name="encrypt-your-application-data-at-rest-using-customer-managed-keys"></a>Šifrování dat vaší aplikace v klidovém formátu pomocí klíčů spravovaných zákazníkem
 
 Šifrování dat aplikace Function App v klidovém prostředí vyžaduje účet Azure Storage a Azure Key Vault. Tyto služby se používají při spuštění aplikace z balíčku pro nasazení.
 
@@ -19,7 +20,7 @@ ms.locfileid: "79408720"
 
 ## <a name="set-up-encryption-at-rest"></a>Nastavení šifrování v klidovém umístění
 
-### <a name="create-an-azure-storage-account"></a>Vytvoření účtu služby Azure Storage
+### <a name="create-an-azure-storage-account"></a>Vytvoření účtu Azure Storage
 
 Nejdřív [vytvořte účet Azure Storage](../storage/common/storage-account-create.md) a [Zašifrujte ho pomocí zákaznických spravovaných klíčů](../storage/common/encryption-customer-managed-keys.md). Po vytvoření účtu úložiště použijte [Průzkumník služby Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md) k nahrání souborů balíčku.
 
@@ -98,7 +99,7 @@ Pokud se klíč SAS pro účet úložiště otočí, aplikace Function App už n
 
 Přístup aplikace Function App k datům webu můžete odvolat tím, že zakážete přístup aplikace Function App k Key Vault. Uděláte to tak, že odeberete zásady přístupu pro identitu aplikace Function App. Jedná se o stejnou identitu, kterou jste vytvořili dříve při konfiguraci odkazů na Trezor klíčů.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Soubory vaší aplikace jsou teď ve vašem účtu úložiště zašifrované v klidovém stavu. Po spuštění aplikace Function App načte adresu URL SAS z vašeho trezoru klíčů. Nakonec aplikace Function App načte soubory aplikace z účtu úložiště. 
 

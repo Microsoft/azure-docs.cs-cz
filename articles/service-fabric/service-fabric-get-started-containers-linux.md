@@ -4,12 +4,12 @@ description: Vytvoříte svou první aplikaci typu kontejner pro Linux na platfo
 ms.topic: conceptual
 ms.date: 1/4/2019
 ms.custom: tracking-python
-ms.openlocfilehash: 783f6a06d57a447998710e2c8ff349b23ef751c5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 547030b983dd02e7b65d404188dccdcc24d53a22
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256412"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083833"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Vytvoření první aplikace Service Fabric typu kontejner v Linuxu
 > [!div class="op_single_selector"]
@@ -26,6 +26,8 @@ Spuštění existující aplikace v kontejneru Linux v clusteru Service Fabric n
   * [Service Fabric SDK a nástroje](service-fabric-get-started-linux.md)
   * [Docker CE pro Linux](https://docs.docker.com/engine/installation/#prior-releases). 
   * [Service Fabric CLI](service-fabric-cli.md)
+
+* Cluster se systémem Linux se třemi nebo více uzly.
 
 * Registr ve službě Azure Container Registry – [Vytvořte registr kontejneru](../container-registry/container-registry-get-started-portal.md) ve svém předplatném Azure. 
 
@@ -103,7 +105,7 @@ REPOSITORY                    TAG                 IMAGE ID            CREATED   
 helloworldapp                 latest              86838648aab6        2 minutes ago       194 MB
 ```
 
-## <a name="run-the-application-locally"></a>Místní spuštění aplikace
+## <a name="run-the-application-locally"></a>Aplikaci spustíte místně.
 Než kontejnerizovanou aplikaci nahrajete do registru kontejneru, ověřte, že se spustí místně. 
 
 Spusťte aplikaci s mapováním portu 4000 vašeho počítače na zpřístupněný port 80 kontejneru:
@@ -371,7 +373,7 @@ Tady jsou kompletní manifesty aplikace a služby použité v tomto článku.
 Pokud chcete přidat další službu kontejneru do aplikace již vytvořené pomocí Yeomana, proveďte následující kroky:
 
 1. Změňte adresář na kořenovou složku stávající aplikace. Například `cd ~/YeomanSamples/MyApplication`, pokud `MyApplication` je aplikace vytvořená pomocí Yeomanu.
-2. Spusťte `yo azuresfcontainer:AddService`.
+2. Spuštěním příkazu `yo azuresfcontainer:AddService`
 
 <a id="manually"></a>
 

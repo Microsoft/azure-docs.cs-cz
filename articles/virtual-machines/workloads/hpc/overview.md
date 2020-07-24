@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 07/02/2019
-ms.openlocfilehash: b3d5d003db89a11a013c3236a3afbe03ffe68557
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1f88496a6c474194089f20e128b2b92ec61e8559
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76271024"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083425"
 ---
 # <a name="high-performance-computing-on-h-series-vms"></a>Vysoce výkonné výpočetní prostředí na virtuálních počítačích řady H-Series
 
@@ -39,7 +39,7 @@ Další informace o nastavení InfiniBand na virtuálních počítačích s Infi
 
 ## <a name="get-started"></a>Začínáme
 
-Nejdřív se rozhodněte, který virtuální počítač řady H-Series budete používat. Podrobnosti o virtuálních počítačích optimalizovaných pro HPC najdete v tématu Přehled [pro velmi řadu](hb-series-overview.md) a [přehledy HC-Series](hc-series-overview.md). Specifikace najdete v tématu [vysoce výkonné výpočetní virtuální počítače s vysokým výkonem](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc).
+Nejdřív se rozhodněte, který virtuální počítač řady H-Series budete používat. Podrobnosti o virtuálních počítačích optimalizovaných pro HPC najdete v tématu Přehled [pro velmi řadu](hb-series-overview.md) a [přehledy HC-Series](hc-series-overview.md). Specifikace najdete v tématu [vysoce výkonné výpočetní virtuální počítače s vysokým výkonem](../../sizes-hpc.md).
 
 Po vybrání a vytvoření virtuálního počítače pro aplikaci ho budete muset nakonfigurovat tak, že povolíte InfiniBand. Informace o tom, jak povolit InfiniBand na virtuálních počítačích s Windows i Linux, najdete v tématu [Povolení InfiniBand](enable-infiniband.md).
 
@@ -51,4 +51,4 @@ Až si vyberete řadu virtuálních počítačů, nastavíte InfiniBand a MPI, j
 
 - Další informace o klíčových rozdílech a specifikacích najdete v článku Přehled a Přehled řady [HC](hc-series-overview.md) - [Series](hb-series-overview.md) .
 
-- Pro vyšší úroveň architektury spouštění úloh HPC si přečtěte téma věnované architektuře [HPC (High Performance Computing) v Azure](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/).
+- Pro vyšší úroveň architektury spouštění úloh HPC si přečtěte téma věnované architektuře [HPC (High Performance Computing) v Azure](/azure/architecture/topics/high-performance-computing/).

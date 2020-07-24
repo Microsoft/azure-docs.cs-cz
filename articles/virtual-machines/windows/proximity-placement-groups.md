@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 2401e8c160fd1c2ee3a734f374f1d4409c52ed16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ea986b338d977102d78e9c12bcbe5b2f2c510e7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82098522"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083442"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>Nasazení virtuálních počítačů do skupin umístění Proximity pomocí prostředí PowerShell
 
@@ -24,7 +24,7 @@ Skupina umístění blízkosti je logické seskupení, které se používá k za
 
 
 ## <a name="create-a-proximity-placement-group"></a>Vytvoření skupiny umístění bezkontaktní komunikace
-Pomocí rutiny [New-AzProximityPlacementGroup](https://docs.microsoft.com/powershell/module/az.compute/new-azproximityplacementgroup) vytvořte skupinu umístění blízkosti. 
+Pomocí rutiny [New-AzProximityPlacementGroup](/powershell/module/az.compute/new-azproximityplacementgroup) vytvořte skupinu umístění blízkosti. 
 
 ```azurepowershell-interactive
 $resourceGroup = "myPPGResourceGroup"
@@ -49,7 +49,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
-`-ProximityPlacementGroup $ppg.Id`Pokud k vytvoření virtuálního počítače použijete [příkaz New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) , ve skupině umístění blízkosti se vytvoří virtuální počítač, který bude odkazovat na ID skupiny umístění blízkosti.
+`-ProximityPlacementGroup $ppg.Id`Pokud k vytvoření virtuálního počítače použijete [příkaz New-AzVM](/powershell/module/az.compute/new-azvm) , ve skupině umístění blízkosti se vytvoří virtuální počítač, který bude odkazovat na ID skupiny umístění blízkosti.
 
 ```azurepowershell-interactive
 $vmName = "myVM"
@@ -146,7 +146,7 @@ foreach ($vmId in $vmIDs){
 
 ## <a name="scale-sets"></a>Škálovací sady
 
-Ve skupině umístění blízkosti můžete také vytvořit sadu škálování. Použijte stejný `-ProximityPlacementGroup` parametr s [New-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) k vytvoření sady škálování a všechny instance se vytvoří ve stejné skupině umístění blízkosti.
+Ve skupině umístění blízkosti můžete také vytvořit sadu škálování. Použijte stejný `-ProximityPlacementGroup` parametr s [New-AzVmss](/powershell/module/az.compute/new-azvmss) k vytvoření sady škálování a všechny instance se vytvoří ve stejné skupině umístění blízkosti.
 
 
 Pokud chcete přidat nebo odebrat existující sadu škálování na skupinu umístění blízkosti, musíte nejprve zastavit sadu škálování. 

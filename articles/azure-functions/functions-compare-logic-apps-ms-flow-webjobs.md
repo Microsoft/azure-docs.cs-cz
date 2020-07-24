@@ -4,12 +4,12 @@ description: 'Porovnání cloudových služeb Microsoftu, které jsou optimalizo
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 9d7531fac9610b357adb37d28f5d5e90a7e4b108
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 1e6d1462a4f94db424081ea1567e5926806d3e81
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169863"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083000"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Volba správných služeb integrace a automatizace v Azure
 
@@ -37,9 +37,9 @@ Následující tabulka vám pomůže určit, jestli je pro určitou integraci ne
 |  | Power Automate | Logic Apps |
 | --- | --- | --- |
 | **Uživatelé** |Administrativní pracovníci, podnikoví uživatelé, správci služby SharePoint |Profesionální integrátoři a vývojáře, IT profesionálové |
-| **Scénáře** |Samoobslužné |Pokročilé integrace |
-| **Nástroj pro návrh** |V prohlížeči a mobilní aplikaci, pouze uživatelské rozhraní |V prohlížeči a sadě [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md), k dispozici je [zobrazení kódu](../logic-apps/logic-apps-author-definitions.md) |
-| **Správa životního cyklu aplikací (ALM)** |Návrh a testování v neprodukčních prostředích po připraveném zvýšení úrovně na produkční |Azure DevOps: Správa zdrojového kódu, testování, podpora, automatizace a možnosti správy v [Azure Resource Manager](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) |
+| **Scénáře** |Samoobsluha |Pokročilé integrace |
+| **Nástroj pro návrh** |V prohlížeči a mobilní aplikaci, pouze uživatelské rozhraní |V prohlížeči a sadě [Visual Studio](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), k dispozici je [zobrazení kódu](../logic-apps/logic-apps-author-definitions.md) |
+| **Správa životního cyklu aplikací (ALM)** |Návrh a testování v neprodukčních prostředích po připraveném zvýšení úrovně na produkční |Azure DevOps: Správa zdrojového kódu, testování, podpora, automatizace a možnosti správy v [Azure Resource Manager](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) |
 | **Prostředí pro správu** |Správa zásad automatizace prostředí a ochrany před únikem informací, sledování licencování: [Centrum pro správu](https://admin.flow.microsoft.com) |Správa skupin prostředků, připojení, správy přístupu a protokolování: [Azure Portal](https://portal.azure.com) |
 | **Zabezpečení** |Protokoly auditu zabezpečení a dodržování předpisů Office 365, DLP, [šifrování v klidovém umístění](https://wikipedia.org/wiki/Data_at_rest#Encryption) pro citlivá data |Security Assurance of Azure: [zabezpečení Azure](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity), [Azure Security Center](https://azure.microsoft.com/services/security-center/), [protokoly auditu](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
 
@@ -56,8 +56,8 @@ Při sestavování orchestrace lze služby kombinovat, takže je možné volat f
 | **Vývoj** | Založeno na kódu (imperativní) | Založeno na návrháři (deklarativní) |
 | **Připojení** | [O tucet vestavěných typů vazeb](functions-triggers-bindings.md#supported-bindings), psaní kódu pro vlastní vazby | [Velká kolekce konektorů](../connectors/apis-list.md), [Enterprise Integration Pack pro scénáře B2B](../logic-apps/logic-apps-enterprise-integration-overview.md), [sestavení vlastních konektorů](../logic-apps/custom-connector-overview.md) |
 | **Akce** | Každá aktivita je funkce Azure; zápis kódu pro funkce aktivity |[Rozsáhlá kolekce předdefinovaných akcí](../logic-apps/logic-apps-workflow-actions-triggers.md)|
-| **Sledovaný** | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [protokoly Azure monitor](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
-| **správy** | [REST API](durable/durable-functions-http-api.md), [Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [REST API](https://docs.microsoft.com/rest/api/logic/), [PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [Visual Studio](https://docs.microsoft.com/azure/logic-apps/manage-logic-apps-with-visual-studio) |
+| **Monitorování** | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [protokoly Azure monitor](../logic-apps/monitor-logic-apps.md)|
+| **správy** | [REST API](durable/durable-functions-http-api.md), [Visual Studio](/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [REST API](/rest/api/logic/), [PowerShell](/powershell/module/az.logicapp), [Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md) |
 | **Kontext spuštění** | Může běžet [místně](functions-runtime-overview.md) nebo v cloudu. | Spouští se jenom v cloudu.|
 
 <a name="function"></a>

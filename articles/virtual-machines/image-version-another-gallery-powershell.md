@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 1fe26a880979a431e456d9a1819dfd1b18d25f77
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 48f0a247ed023583c8489994439a790944b90fdc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221217"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082592"
 ---
 # <a name="copy-an-image-from-another-gallery-using-powershell"></a>Kopírování obrázku z jiné galerie pomocí PowerShellu
 
@@ -100,7 +100,7 @@ Výstup bude vypadat zhruba takto:
 }
 ```
 
-Vytvořte novou definici image v cílové galerii pomocí rutiny [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) a informací z výstupu výše.
+Vytvořte novou definici image v cílové galerii pomocí rutiny [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) a informací z výstupu výše.
 
 
 V tomto příkladu je definice obrázku pojmenována *myDestinationImgDef* v galerii s názvem *myDestinationGallery*.
@@ -123,7 +123,7 @@ $destinationImgDef  = New-AzGalleryImageDefinition `
 
 ## <a name="create-the-image-version"></a>Vytvoření verze image
 
-Vytvořte verzi Image pomocí [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). V `--managed-image` parametru pro vytvoření verze image v cílové galerii budete muset předat ID zdrojového obrázku. 
+Vytvořte verzi Image pomocí [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion). V `--managed-image` parametru pro vytvoření verze image v cílové galerii budete muset předat ID zdrojového obrázku. 
 
 Povolené znaky pro verzi obrázku jsou čísla a tečky. Čísla musí být v rozsahu 32 celé číslo. Formát: *MajorVersion*. *Podverze.* *Oprava*.
 
@@ -156,7 +156,7 @@ $job.State
 > [!NOTE]
 > Aby bylo možné použít stejnou spravovanou bitovou kopii k vytvoření jiné verze bitové kopie, je třeba počkat na dokončení sestavení a repliky verze image.
 >
-> Image můžete ukládat do úložiště Premiun přidáním `-StorageAccountType Premium_LRS` nebo [redundantním úložištěm zóny](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) přidáním `-StorageAccountType Standard_ZRS` při vytváření verze image.
+> Image můžete ukládat do úložiště Premiun přidáním `-StorageAccountType Premium_LRS` nebo [redundantním úložištěm zóny](../storage/common/storage-redundancy.md) přidáním `-StorageAccountType Standard_ZRS` při vytváření verze image.
 >
 
 

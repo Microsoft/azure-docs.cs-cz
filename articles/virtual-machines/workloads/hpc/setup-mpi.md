@@ -12,11 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 469e926932ffa11ef9f2a262b78a587ba435549e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ca9a21d105be6f17c1aa40ae1a0ab7f01c38184
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77023986"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083408"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>Nastavení rozhraní pro předávání zpráv pro HPC
 
@@ -199,4 +200,4 @@ Výše uvedená syntaxe předpokládá sdílený domovský adresář, jinak mus�
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) v Azure.
+Přečtěte si další informace o [HPC](/azure/architecture/topics/high-performance-computing/) v Azure.

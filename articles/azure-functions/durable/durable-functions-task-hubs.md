@@ -3,13 +3,14 @@ title: Centra úloh v Durable Functions – Azure
 description: Zjistěte, co je centrum úloh v rozšíření Durable Functions pro Azure Functions. Naučte se konfigurovat centra úloh.
 author: cgillum
 ms.topic: conceptual
-ms.date: 11/03/2019
+ms.date: 07/14/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 427ab6c4e0e769ab881af0af3023d514c1b092c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: afee79aecaad97ec4b441df0758166073b2413cf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81604617"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083102"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Centra úloh v Durable Functions (Azure Functions)
 
@@ -127,6 +128,19 @@ public static async Task<HttpResponseMessage> Run(
 > Předchozí příklad v jazyce C# je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` místo `IDurableOrchestrationContext` . Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Vlastnost Centrum úkolů v `function.json` souboru se nastavuje prostřednictvím nastavení aplikace:
+
+```json
+{
+    "name": "input",
+    "taskHub": "%MyTaskHub%",
+    "type": "orchestrationClient",
+    "direction": "in"
+}
+```
+
+# <a name="python"></a>[Python](#tab/python)
 
 Vlastnost Centrum úkolů v `function.json` souboru se nastavuje prostřednictvím nastavení aplikace:
 

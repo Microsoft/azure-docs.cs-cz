@@ -8,11 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 843727c005fefdc2ca0484492a1feafe2a291b46
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2c9b8a769dec1a2aa461a34203c98a228cf71d16
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040741"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082048"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>Připojení virtuálních sítí z různých modelů nasazení pomocí PowerShellu
 
@@ -32,11 +33,11 @@ Pokud ještě nemáte bránu virtuální sítě a nechcete ji vytvořit, možná
 
 Následující kroky vás provedou nastavením potřebným ke konfiguraci dynamické brány nebo brány založené na trasách pro každou virtuální síť a vytvoření připojení VPN mezi bránami. Tato konfigurace nepodporuje statické brány ani brány založené na zásadách.
 
-### <a name="prerequisites"></a><a name="pre"></a>Požadavky
+### <a name="prerequisites"></a><a name="pre"></a>Předpoklady
 
 * Oba virtuální sítě již byly vytvořeny. Pokud potřebujete vytvořit virtuální síť Resource Manageru, přečtěte si téma [Vytvoření skupiny prostředků a virtuální sítě](../virtual-network/quick-create-powershell.md#create-a-resource-group-and-a-virtual-network). Pokud chcete vytvořit klasickou virtuální síť, přečtěte si téma vytvoření virtuální sítě [typu Classic](https://docs.microsoft.com/azure/virtual-network/create-virtual-network-classic).
 * Rozsahy adres pro virtuální sítě se vzájemně nepřekrývají, nebo se překrývají s žádným z rozsahů pro další připojení, ke kterým je možné brány připojit.
-* Nainstalovali jste nejnovější rutiny PowerShellu. Další informace najdete v tématu [instalace a konfigurace Azure PowerShell](/powershell/azure/overview) . Nezapomeňte nainstalovat rutinu Service Management (SM) i Správce prostředků (RM). 
+* Nainstalovali jste nejnovější rutiny PowerShellu. Další informace najdete v tématu [instalace a konfigurace Azure PowerShell](/powershell/azure/) . Nezapomeňte nainstalovat rutinu Service Management (SM) i Správce prostředků (RM). 
 
 ### <a name="example-settings"></a><a name="exampleref"></a>Příklad nastavení
 
@@ -96,7 +97,7 @@ V elementu **VirtualNetworkSites** přidejte podsíť brány do vaší virtuáln
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
-**Příklad:**
+**Případě**
 
 ```xml
 <VirtualNetworkSites>

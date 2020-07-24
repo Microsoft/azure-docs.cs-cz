@@ -3,11 +3,12 @@ title: Zjišťování duplicitních zpráv Azure Service Bus | Microsoft Docs
 description: Tento článek vysvětluje, jak můžete zjišťovat duplicity v Azure Service Busch zprávách. Duplicitní zprávu lze ignorovat a vyřadit.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: c8935fa67dda28bb2fec663c5e714982933f0f22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbca1b4b4f894d35835e7d37e0b4e742a2d3b917
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337906"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083884"
 ---
 # <a name="duplicate-detection"></a>Vyhledávání duplicit
 
@@ -32,7 +33,7 @@ Parametr *MessageID* může mít vždy nějaký identifikátor GUID, ale ukotven
 
 Tato funkce je v portálu při vytváření entit zapnutá pomocí zaškrtávacího políčka **Povolit detekci duplicit** , která je ve výchozím nastavení vypnutá. Nastavení pro vytváření nových témat je ekvivalentní.
 
-![][1]
+![Snímek obrazovky dialogového okna vytvořit front s vybranou možností povolit detekci duplicit a popsaný červeně][1]
 
 > [!IMPORTANT]
 > Po vytvoření fronty nelze povolit nebo zakázat detekci duplicit. Tuto možnost můžete provést pouze v době vytváření fronty. 
@@ -41,7 +42,7 @@ Prostřednictvím kódu programu nastavíte příznak s vlastností [QueueDescri
 
 Časová historie vyhledávání duplicit ve výchozím nastavení je 30 sekund pro fronty a témata s maximální hodnotou 7 dní. Toto nastavení můžete změnit v okně fronta a vlastnosti tématu v Azure Portal.
 
-![][2]
+![Snímek obrazovky funkce Service Bus s zvýrazněným nastavením vlastností a možností historie vyhledávání duplicit zobrazený červeně][2]
 
 Prostřednictvím kódu programu můžete nakonfigurovat velikost okna zjišťování duplicitních dat, během kterého se uchovávají ID zpráv, pomocí vlastnosti [QueueDescription. DuplicateDetectionHistoryTimeWindow](/dotnet/api/microsoft.servicebus.messaging.queuedescription.duplicatedetectionhistorytimewindow#Microsoft_ServiceBus_Messaging_QueueDescription_DuplicateDetectionHistoryTimeWindow) s úplným .NET Framework API. V rozhraní Azure Resource Manager API je hodnota nastavena pomocí vlastnosti [queueProperties. duplicateDetectionHistoryTimeWindow](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) .
 

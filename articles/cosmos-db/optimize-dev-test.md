@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 3fe5ea98f8db633eed7ce4e2c0ac0cafa56408ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea5d975b73afcf03ad97bafd1c6f68f2b55263c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82194512"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084717"
 ---
 # <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>Optimalizace nákladů na vývoj a testování ve službě Azure Cosmos DB
 
@@ -23,7 +23,9 @@ Tento článek popisuje různé možnosti použití Azure Cosmos DB pro vývoj a
 
 ## <a name="azure-cosmos-db-free-tier"></a>Azure Cosmos DB úroveň Free
 
-Azure Cosmos DB úroveň Free usnadňuje začátek, vývoj a testování aplikací nebo dokonce i spouštění malých produkčních úloh zdarma. Pokud je na účtu povolená úroveň Free, získáte v bezplatném účtu prvních 400 RU/s a 5 GB úložiště. Můžete také vytvořit sdílenou databázi propustnosti s 25 kontejnery, které sdílejí 400 RU/s na úrovni databáze, a to vše zahrnuté do bezplatné úrovně (omezení 5 sdílených databází propustnosti v účtu bezplatné úrovně). Úroveň Free pro celou dobu životnosti účtu trvá neomezenou dobu a přináší všechny [výhody a funkce](introduction.md#key-benefits) pravidelného Azure Cosmos DB účtu, včetně neomezené kapacity úložiště a propustnosti (ru/s), SLA, vysoké dostupnosti, klíč globální distribuce ve všech oblastech Azure a dalších. Můžete mít až jeden účet bezplatné úrovně na jedno předplatné Azure a při vytváření účtu musí být výslovný souhlas. Pokud chcete začít, [vytvořte nový účet v Azure Portal s povolenou úrovní Free](create-cosmosdb-resources-portal.md) nebo použijte [šablonu ARM](manage-sql-with-resource-manager.md#free-tier). Další podrobnosti najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/).
+Azure Cosmos DB úroveň Free usnadňuje začátek, vývoj a testování aplikací nebo dokonce i spouštění malých produkčních úloh zdarma. Pokud je na účtu povolená úroveň Free, získáte v bezplatném účtu prvních 400 RU/s a 5 GB úložiště. Můžete také vytvořit sdílenou databázi propustnosti s 25 kontejnery, které sdílejí 400 RU/s na úrovni databáze, a to vše zahrnuté do bezplatné úrovně (omezení 5 sdílených databází propustnosti v účtu bezplatné úrovně). Pokud při použití bezplatné úrovně zřídíte sdílenou databázi s minimální propustností 400 RU/s, můžou všechny kontejnery v této databázi sdílet propustnost. Všechny nové databáze se sdílenou propustností nebo kontejnery s vyhrazenou propustností se účtují běžnými cenami.
+
+Úroveň Free pro celou dobu životnosti účtu trvá neomezenou dobu a přináší všechny [výhody a funkce](introduction.md#key-benefits) pravidelného Azure Cosmos DB účtu, včetně neomezené kapacity úložiště a propustnosti (ru/s), SLA, vysoké dostupnosti, klíč globální distribuce ve všech oblastech Azure a dalších. Můžete mít až jeden účet bezplatné úrovně na jedno předplatné Azure a při vytváření účtu musí být výslovný souhlas. Pokud chcete začít, [vytvořte nový účet v Azure Portal s povolenou úrovní Free](create-cosmosdb-resources-portal.md) nebo použijte [šablonu ARM](manage-sql-with-resource-manager.md#free-tier). Další podrobnosti najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
 ## <a name="try-azure-cosmos-db-for-free"></a>Vyzkoušejte si Azure Cosmos DB zdarma
 

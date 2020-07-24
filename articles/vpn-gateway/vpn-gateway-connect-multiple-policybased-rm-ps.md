@@ -7,11 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/26/2020
 ms.author: yushwang
-ms.openlocfilehash: a8a4ba7ea3de9140d79856fad9d5d0bc42cf4c51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7fb344e16ed672dfc6c88fbe2c4888c52c9b717d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984614"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081980"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Připojení bran Azure VPN k několika místním zařízením VPN založeným na zásadách pomocí PowerShellu
 
@@ -35,8 +36,8 @@ Následující diagramy zvýrazňují dva modely:
 ### <a name="azure-support-for-policy-based-vpn"></a>Podpora Azure pro síť VPN založená na zásadách
 V současné době podporuje Azure oba režimy bran sítě VPN: brány sítě VPN založené na směrováních a brány VPN založené na zásadách. Jsou postavené na různých interních platformách, což vede k různým specifikacím:
 
-|                          | **PolicyBased VPN Gateway** | **RouteBased VPN Gateway**       |**RouteBased VPN Gateway**                          |
-| ---                      | ---                         | ---                              |---                                                 |
+| Kategorie | PolicyBased VPN Gateway | RouteBased VPN Gateway | RouteBased VPN Gateway |
+| -------- | ----------------------- | ---------------------- | ---------------------- |---                                                 |
 | **SKU brány Azure**    | Základní                       | Základní                            | VpnGw1, VpnGw2, VpnGw3, VpnGw4, VpnGw5  |
 | **Verze protokolu IKE**          | IKEv1                       | IKEv2                            | IKEv1 a IKEv2                         |
 | **Počet. Připojení S2S** | **1**                       | 10                               | 30                     |
@@ -55,7 +56,7 @@ Následující diagram ukazuje, proč přenosové směrování přes Azure VPN G
 
 Jak je znázorněno v diagramu, brána Azure VPN Gateway selektory přenosu dat z virtuální sítě do každé z prefixů místní sítě, ale ne z předpon mezi připojeními. Například místní lokalita 2, lokalita 3 a site 4 může komunikovat s VNet1, ale nemůže se vzájemně připojit přes bránu Azure VPN. Diagram zobrazuje selektory přenosů mezi připojeními, které nejsou v bráně Azure VPN v rámci této konfigurace k dispozici.
 
-## <a name="workflow"></a><a name="workflow"></a>Pracovního postupu
+## <a name="workflow"></a><a name="workflow"></a>Pracovní postup
 
 Pokyny v tomto článku se řídí stejným příkladem, jak je popsáno v tématu [Konfigurace zásad IPSec/IKE pro připojení S2S nebo VNet-to-VNet](vpn-gateway-ipsecikepolicy-rm-powershell.md) pro vytvoření připojení S2S VPN. To je znázorněno v následujícím diagramu:
 
@@ -204,6 +205,6 @@ Následující řádek ukazuje, jestli se pro připojení používají selektory
       ```
 
 ## <a name="next-steps"></a>Další kroky
-Po dokončení připojení můžete do virtuálních sítí přidávat virtuální počítače. Kroky jsou uvedeny v tématu [Vytvoření virtuálního počítače](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Po dokončení připojení můžete do virtuálních sítí přidávat virtuální počítače. Kroky jsou uvedeny v tématu [Vytvoření virtuálního počítače](../virtual-machines/windows/quick-create-portal.md).
 
 Další informace o vlastních zásadách IPsec/IKE najdete v podrobnostech o [konfiguraci zásad IPSec/IKE pro připojení S2S VPN nebo VNet-to-VNet](vpn-gateway-ipsecikepolicy-rm-powershell.md) .

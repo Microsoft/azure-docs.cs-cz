@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: aece41329d6481b8ad15090a834c8758f86abdc2
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 7a4408b54b663b2cd8abc22772ac1b799ea50de0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131341"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083765"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Nastavení zotavení po havárii pro webovou aplikaci založenou na službě IIS
 
@@ -26,7 +26,7 @@ Dobré řešení pro zotavení po havárii podporuje plány obnovení modelován
 
 Tento článek popisuje, jak chránit webovou aplikaci, která je založená na Internetová informační služba (IIS) pomocí [Azure Site Recovery](site-recovery-overview.md). Tento článek se zabývá osvědčenými postupy pro replikaci webové aplikace založené na službě IIS do Azure, jak provést postup zotavení po havárii a jak převzít služby při selhání z aplikace do Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že víte, jak provádět následující úlohy:
 
@@ -63,7 +63,7 @@ Scénář | Do sekundární lokality | Do Azure
 Hyper-V | Ano | Ano
 VMware | Ano | Ano
 Fyzický server | No | Yes
-Azure|NA|Yes
+Azure|Není k dispozici|Yes
 
 ## <a name="replicate-virtual-machines"></a>Replikace virtuálních počítačů
 
@@ -102,12 +102,14 @@ Připojovací řetězec Určuje databázi, se kterou web komunikuje. Pokud přip
 
 Pokud připojovací řetězec odkazuje na virtuální počítač databáze pomocí IP adresy, je nutné aktualizovat po převzetí služeb při selhání. Například následující připojovací řetězec odkazuje na databázi s IP adresou 127.0.1.2:
 
-        <?xml version="1.0" encoding="utf-8"?>
-        <configuration>
-        <connectionStrings>
-        <add name="ConnStringDb1" connectionString="Data Source= 127.0.1.2\SqlExpress; Initial Catalog=TestDB1;Integrated Security=False;" />
-        </connectionStrings>
-        </configuration>
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+<connectionStrings>
+<add name="ConnStringDb1" connectionString="Data Source= 127.0.1.2\SqlExpress; Initial Catalog=TestDB1;Integrated Security=False;" />
+</connectionStrings>
+</configuration>
+```
 
 Chcete-li aktualizovat připojovací řetězec ve webové vrstvě, přidejte [skript aktualizace připojení služby IIS](https://gallery.technet.microsoft.com/Update-IIS-connection-2579aadc) za skupinu 3 v plánu obnovení.
 

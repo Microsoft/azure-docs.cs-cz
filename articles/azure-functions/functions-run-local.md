@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 8a68c793d9aaf94ad28f2e478254e42ede4800de
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 611cb5b94ee2ad458fa00a61af673696d7e7a212
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170356"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085142"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -35,7 +35,7 @@ Existují tři verze Azure Functions Core Tools. Použitá verze závisí na va�
 
 + **Verze 1. x**: podporuje verzi 1. x modulu runtime Azure Functions. Tato verze nástrojů je podporována pouze v počítačích se systémem Windows a je instalována z [balíčku npm](https://www.npmjs.com/package/azure-functions-core-tools).
 
-+ [**Verze 3. x/2. x**](#v2): podporuje buď [verzi 3. x, nebo 2. x Azure Functions runtime](functions-versions.md). Tyto verze podporují [Windows](/azure/azure-functions/functions-run-local?tabs=windows#v2), [MacOS](/azure/azure-functions/functions-run-local?tabs=macos#v2)a [Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2) a k instalaci používají správce balíčků pro konkrétní platformu nebo npm.
++ [**Verze 3. x/2. x**](#v2): podporuje buď [verzi 3. x, nebo 2. x Azure Functions runtime](functions-versions.md). Tyto verze podporují [Windows](?tabs=windows#v2), [MacOS](?tabs=macos#v2)a [Linux](?tabs=linux#v2) a k instalaci používají správce balíčků pro konkrétní platformu nebo npm.
 
 Pokud není uvedeno jinak, příklady v tomto článku jsou pro verzi 3. x.
 
@@ -48,7 +48,7 @@ Pokud není uvedeno jinak, příklady v tomto článku jsou pro verzi 3. x.
 
 ### <a name="version-3x-and-2x"></a><a name="v2"></a>Verze 3. x a 2. x
 
-Verze 3. x/2. x nástroje používá modul runtime Azure Functions, který je postaven na .NET Core. Tato verze je podporovaná na všech platformách .NET Core podporovaných [systémem](/azure/azure-functions/functions-run-local?tabs=windows#v2), včetně Windows, [MacOS](/azure/azure-functions/functions-run-local?tabs=macos#v2)a [Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2). 
+Verze 3. x/2. x nástroje používá modul runtime Azure Functions, který je postaven na .NET Core. Tato verze je podporovaná na všech platformách .NET Core podporovaných [systémem](?tabs=windows#v2), včetně Windows, [MacOS](?tabs=macos#v2)a [Linux](?tabs=linux#v2). 
 
 > [!IMPORTANT]
 > Požadavek na instalaci .NET Core SDK můžete obejít pomocí [sad rozšíření].
@@ -240,7 +240,7 @@ Pokud není nastaven žádný platný připojovací řetězec úložiště pro [
 
 ### <a name="get-your-storage-connection-strings"></a>Získání připojovacích řetězců úložiště
 
-I při použití Emulátor úložiště Microsoft Azure pro vývoj budete možná chtít testovat pomocí skutečného připojení úložiště. Za předpokladu, že jste již [vytvořili účet úložiště](../storage/common/storage-create-storage-account.md), můžete získat platný připojovací řetězec úložiště jedním z následujících způsobů:
+I při použití Emulátor úložiště Microsoft Azure pro vývoj budete možná chtít testovat pomocí skutečného připojení úložiště. Za předpokladu, že jste již [vytvořili účet úložiště](../storage/common/storage-account-create.md), můžete získat platný připojovací řetězec úložiště jedním z následujících způsobů:
 
 - V [Azure Portal]vyhledejte a vyberte **účty úložiště**. 
   ![Vyberte účty úložiště z Azure Portal](./media/functions-run-local/select-storage-accounts.png)
@@ -343,7 +343,7 @@ func start
 ```
 func start
 ```
-Tento příkaz musí být [spuštěn ve virtuálním prostředí](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#create-venv).
+Tento příkaz musí být [spuštěn ve virtuálním prostředí](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python#create-venv).
 
 # <a name="typescript"></a>[TypeScript](#tab/ts)
 
@@ -574,7 +574,7 @@ Tento typ protokolů streamování vyžaduje, aby byla pro aplikaci Function App
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučte se vyvíjet, testovat a publikovat Azure Functions pomocí Azure Functions Core Tools [modulu Microsoft učení](https://docs.microsoft.com/learn/modules/develop-test-deploy-azure-functions-with-core-tools/) Azure Functions Core Tools je [Open Source a hostovaný na GitHubu](https://github.com/azure/azure-functions-cli).  
+Naučte se vyvíjet, testovat a publikovat Azure Functions pomocí Azure Functions Core Tools [modulu Microsoft učení](/learn/modules/develop-test-deploy-azure-functions-with-core-tools/) Azure Functions Core Tools je [Open Source a hostovaný na GitHubu](https://github.com/azure/azure-functions-cli).  
 Pokud chcete zaslat žádost o chybu nebo funkci, [otevřete problém GitHubu](https://github.com/azure/azure-functions-cli/issues).
 
 <!-- LINKS -->

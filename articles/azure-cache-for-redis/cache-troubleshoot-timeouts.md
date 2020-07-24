@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: a5c5c80aaba083b0f65ac0dab41350765a8f5631
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d9360a4b5c5f0ef080b3de2a9d425bcdf2b2e70
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833753"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081895"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Řešení potíží s časovými limity služby Azure Cache for Redis
 
@@ -30,7 +30,7 @@ Služba Azure cache pro Redis pravidelně aktualizuje svůj serverový software 
 
 ## <a name="stackexchangeredis-timeout-exceptions"></a>Výjimky časového limitu StackExchange. Redis
 
-StackExchange. Redis používá konfigurační nastavení s názvem `synctimeout` pro synchronní operace s výchozí hodnotou 1000 MS. Pokud se synchronní volání v tuto chvíli nedokončí, klient StackExchange. Redis vyvolá chybu s časovým limitem, která je podobná následujícímu příkladu:
+StackExchange. Redis používá konfigurační nastavení s názvem `synctimeout` pro synchronní operace s výchozí hodnotou 5000 MS. Pokud se synchronní volání v tuto chvíli nedokončí, klient StackExchange. Redis vyvolá chybu s časovým limitem, která je podobná následujícímu příkladu:
 
 ```output
     System.TimeoutException: Timeout performing MGET 2728cc84-58ae-406b-8ec8-3f962419f641, inst: 1,mgr: Inactive, queue: 73, qu=6, qs=67, qc=0, wr=1/1, in=0/0 IOCP: (Busy=6, Free=999, Min=2,Max=1000), WORKER (Busy=7,Free=8184,Min=2,Max=8191)
@@ -47,7 +47,7 @@ Tato chybová zpráva obsahuje metriky, které vám pomohou Ukázat příčinu a
 | qs |67 probíhajících operací bylo odesláno na server, ale odpověď zatím není k dispozici. Odpověď může být `Not yet sent by the server` nebo.`sent by the server but not yet processed by the client.` |
 | QC |počet probíhajících operací zaznamenal odpovědi, ale ještě nebyly označeny jako splněné, protože čekají na cyklus dokončení. |
 | radiační |Existuje aktivní zapisovač (to znamená, že 6 neodeslaných požadavků se Neignoruje) bajtů/activewriters |
-| in |Nejsou k dispozici žádná aktivní čtecí zařízení a v bajtech síťových adaptérů/activereaders je k dispozici nula bajtů. |
+| se |Nejsou k dispozici žádná aktivní čtecí zařízení a v bajtech síťových adaptérů/activereaders je k dispozici nula bajtů. |
 
 Pomocí následujících kroků můžete prozkoumat možné hlavní příčiny.
 
@@ -73,7 +73,7 @@ Pomocí následujících kroků můžete prozkoumat možné hlavní příčiny.
 
 1. Ujistěte se, že váš server a klientská aplikace jsou ve stejné oblasti v Azure. Například může docházet k vypršení časového limitu, když je vaše mezipaměť v Východní USA, ale klient se nachází v Západní USA a žádost se nedokončila v rámci `synctimeout` intervalu nebo může docházet k vypršení časového limitu při ladění z místního vývojového počítače. 
 
-    Důrazně doporučujeme mít mezipaměť a klienta ve stejné oblasti Azure. Pokud máte scénář, který zahrnuje volání mezi oblastmi, nastavte `synctimeout` interval na hodnotu vyšší, než je výchozí interval 1000-MS zahrnutím `synctimeout` vlastnosti do připojovacího řetězce. Následující příklad ukazuje fragment připojovacího řetězce pro StackExchange. Redis poskytnutý službou Azure cache pro Redis s `synctimeout` 2000 MS.
+    Důrazně doporučujeme mít mezipaměť a klienta ve stejné oblasti Azure. Pokud máte scénář, který zahrnuje volání mezi oblastmi, nastavte `synctimeout` interval na hodnotu vyšší, než je výchozí interval 5000-MS zahrnutím `synctimeout` vlastnosti do připojovacího řetězce. Následující příklad ukazuje fragment připojovacího řetězce pro StackExchange. Redis poskytnutý službou Azure cache pro Redis s `synctimeout` 2000 MS.
 
     ```output
     synctimeout=2000,cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...

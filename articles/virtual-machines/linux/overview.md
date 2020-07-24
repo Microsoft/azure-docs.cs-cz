@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 98a118ef662abd323854911e9fc1ffc6b7374db2
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: a62cb11e862bb8733e2758297d82aa7732b2d739
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84232983"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082460"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Virtuální počítače s Linuxem v Azure
 
@@ -30,7 +30,7 @@ Virtuální počítače Azure lze použít různými způsoby. Tady je několik 
 Počet virtuálních počítačů, které vaše aplikace používá, lze vertikálně nebo horizontálně navýšit pro splnění vašich požadavků.
 
 ## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>Co je třeba zvážit před vytvořením virtuálního počítače?
-Při sestavování infrastruktury aplikace v Azure vždy existuje velké množství [aspektů návrhu](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/windows-vm). Než začnete, je důležité zvážit následující aspekty virtuálního počítače:
+Při sestavování infrastruktury aplikace v Azure vždy existuje velké množství [aspektů návrhu](/azure/architecture/reference-architectures/n-tier/windows-vm). Než začnete, je důležité zvážit následující aspekty virtuálního počítače:
 
 * Názvy prostředků vaší aplikace
 * Umístění, kam se ukládají prostředky
@@ -47,10 +47,10 @@ Tato tabulka ukazuje několik způsobů, jak můžete získat seznam dostupných
 
 | Metoda | Popis |
 | --- | --- |
-| portál Azure |Při vytváření virtuálního počítače vyberte umístění ze seznamu. |
-| Azure PowerShell |Použijte příkaz [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) . |
-| REST API |Použijte operaci [Vypsat umístění](https://docs.microsoft.com/rest/api/resources/subscriptions). |
-| Azure CLI |Použijte operaci [az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest). |
+| Portál Azure Portal |Při vytváření virtuálního počítače vyberte umístění ze seznamu. |
+| Azure PowerShell |Použijte příkaz [Get-AzLocation](/powershell/module/az.resources/get-azlocation) . |
+| REST API |Použijte operaci [Vypsat umístění](/rest/api/resources/subscriptions). |
+| Azure CLI |Použijte operaci [az account list-locations](/cli/azure/account?view=azure-cli-latest). |
 
 ## <a name="availability"></a>Dostupnost
 Platforma Azure oznámila špičkovou smlouvu o úrovni služeb (SLA) s 99,9% dostupností pro samostatné instance virtuálních počítačů za předpokladu, že virtuální počítač nasadíte se službou Premium Storage pro všechny disky.  Aby se na vaše nasazení vztahovala standardní záruka 99,95% dostupnosti virtuálního počítače podle smlouvy SLA, stále je nutné nasadit alespoň dva virtuální počítače, které vaši úlohu spouští v rámci skupiny dostupnosti. Skupina dostupnosti zajistí, že vaše virtuální počítače jsou distribuované mezi několik domén selhání v datacentrech Azure a také nasazené na hostitele s různými časovými obdobími údržby. Úplná smlouva [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) vysvětluje garantovanou dostupnost Azure jako celku.
@@ -95,7 +95,7 @@ Microsoft úzce spolupracuje s partnery na zajištění aktualizace a optimaliza
 K dosažení správné kultury DevOps musí být veškerá infrastruktura tvořená kódem.  Když je veškerá infrastruktura v kódu, můžete ji snadno vytvořit znovu.  Azure spolupracuje se všemi hlavními nástroji pro automatizaci, jako jsou Ansible, Chef, SaltStack a Puppet.  Azure obsahuje také vlastní nástroj pro automatizaci:
 
 * [Šablony Azure](create-ssh-secured-vm-from-template.md)
-* [Azure VMAccess](using-vmaccess-extension.md)
+* [Azure VMAccess](../extensions/vmaccess.md)
 
 Azure podporuje pro [Cloud-init](https://cloud-init.io/) napříč většinou Linux distribuce, která ho podporují.  Aktivně spolupracujeme s našimi distribuce partnery se systémem Linux, aby byly k dispozici image s povoleným cloudovým inicializacím na webu Azure Marketplace. Díky těmto imagí budou vaše nasazení a konfigurace pro cloudovou inicializaci bez problémů fungovat s virtuálními počítači a sadami škálování virtuálních počítačů.
 
@@ -120,4 +120,3 @@ Vytvořte svůj první virtuální počítač!
 - [Azure Portal](quick-create-portal.md)
 - [Azure CLI](quick-create-cli.md)
 - [PowerShell](quick-create-powershell.md)
-

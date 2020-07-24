@@ -7,11 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 7ab798ccbbbfc9cfc11ae85fd698ecedcb5e8e73
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a5d4f388d9e5f47a13812687489525590c520c3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84658156"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085482"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Připojení služby Azure File Storage na virtuálních počítačích se systémem Linux pomocí protokolu SMB
 
@@ -62,7 +63,7 @@ STORAGEKEY=$(az storage account keys list \
 
 Pomocí [AZ Storage Share Create](/cli/azure/storage/share)vytvořte sdílenou složku úložiště souborů. 
 
-Názvy sdílených složek musí obsahovat malá písmena, číslice a spojovníky, ale nemohou začínat spojovníkem. Kompletní informace o zadávání názvů sdílených složek a souborů najdete v tématu [Pojmenování a odkazování na sdílené složky, soubory a metadata](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
+Názvy sdílených složek musí obsahovat malá písmena, číslice a spojovníky, ale nemohou začínat spojovníkem. Kompletní informace o zadávání názvů sdílených složek a souborů najdete v tématu [Pojmenování a odkazování na sdílené složky, soubory a metadata](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata).
 
 Tento příklad vytvoří sdílenou složku s názvem *myshare* s kvótou 10-GIB. 
 
@@ -110,4 +111,3 @@ Pro zvýšení zabezpečení v produkčních prostředích byste měli přihlaš
 - [Přizpůsobení virtuálního počítače se systémem Linux během vytváření pomocí Cloud-init](using-cloud-init.md)
 - [Přidání disku do virtuálního počítače s Linuxem](add-disk.md)
 - [Azure Disk Encryption pro virtuální počítače se systémem Linux](disk-encryption-overview.md)
-

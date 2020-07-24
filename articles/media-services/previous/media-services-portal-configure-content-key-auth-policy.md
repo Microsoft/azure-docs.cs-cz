@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 9b81d58bbb79b05ea54af8b3f06f29b4a45a6555
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 2be430fc032acd94f851072f80d14a43638c8863
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058159"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084581"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>Konfigurace zásad autorizace klíče obsahu
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -33,7 +33,7 @@ Tento článek ukazuje, jak použít Azure Portal ke konfiguraci zásad autoriza
 
 Když hráč požádá o datový proud, který je nastaven na dynamický šifrování, Media Services používá nakonfigurovaný klíč k dynamickému šifrování vašeho obsahu pomocí šifrování AES nebo DRM. K dešifrování streamu si přehrávač vyžádá klíč ze služby doručování klíčů. Aby bylo možné zjistit, zda je uživatel autorizován pro získání klíče, služba vyhodnotí zásady autorizace, které jste zadali pro klíč.
 
-Pokud máte v plánu používat více klíčů obsahu nebo chcete zadat jinou adresu URL služby pro doručování licencí, než je služba doručování klíčů Media Services, použijte rozhraní Media Services .NET SDK nebo rozhraní REST API. Další informace naleznete v tématech:
+Pokud máte v plánu používat více klíčů obsahu nebo chcete zadat jinou adresu URL služby pro doručování licencí, než je služba doručování klíčů Media Services, použijte rozhraní Media Services .NET SDK nebo rozhraní REST API. Další informace najdete tady:
 
 * [Konfigurace zásad autorizace klíče obsahu pomocí sady Media Services .NET SDK](media-services-dotnet-configure-content-key-auth-policy.md)
 * [Konfigurace zásad autorizace klíče obsahu pomocí Media Services REST API](media-services-rest-configure-content-key-auth-policy.md)
@@ -57,7 +57,7 @@ Otevřené omezení znamená, že systém doručí klíč všem, kdo vytvoří k
 ### <a name="token-restriction"></a>Omezení tokenu
 Chcete-li zvolit zásadu omezeného tokenu, vyberte tlačítko **token** .
 
-Zásady omezeného tokenu musí být doplněny tokenem vydaným službou tokenů zabezpečení (STS). Media Services podporuje tokeny ve formátech jednoduchých webových tokenů ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) a JSON web token (Jwt). Další informace najdete v tématu [ověřování JWT](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/).
+Zásady omezeného tokenu musí být doplněny tokenem vydaným službou tokenů zabezpečení (STS). Media Services podporuje tokeny ve formátech jednoduchých webových tokenů ([SWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_2)) a JSON web token (Jwt). Další informace najdete v tématu [ověřování JWT](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/).
 
 Media Services neposkytuje službu STS. Můžete vytvořit vlastní STS pro vydávání tokenů. Služba STS musí být nakonfigurovaná tak, aby vytvořila token podepsaný pomocí zadaného klíče a vydávala deklarace identity, které jste zadali v konfiguraci omezení tokenu. Pokud je token platný a deklarace identity v tokenu odpovídají nastavením nakonfigurovaným pro klíč obsahu, služba doručování Media Services Key vrátí šifrovací klíč klientovi.
 
@@ -94,4 +94,3 @@ Můžete vybrat tlačítko **Importovat zásady XML** a zadat jiný kód XML, kt
 
 [open_policy]: ./media/media-services-portal-configure-content-key-auth-policy/media-services-protect-content-with-open-restriction.png
 [token_policy]: ./media/media-services-key-authorization-policy/media-services-protect-content-with-token-restriction.png
-

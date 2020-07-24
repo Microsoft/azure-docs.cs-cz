@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 52a52f6f7bca99d662a68ae48276062969b194f0
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 25f4f99d2bd80034d2f337aa649417d2d06026be
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86235999"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082524"
 ---
 # <a name="azure-cli---enable-double-encryption-at-rest-on-your-managed-disks"></a>Azure CLI – povolení dvojitého šifrování v klidovém prostředí na spravovaných discích
 
@@ -73,5 +73,5 @@ Nainstalujte si nejnovější rozhraní příkazového [řádku Azure](/cli/azur
 
 Teď, když jste vytvořili a nakonfigurovali tyto prostředky, je můžete použít k zabezpečení svých spravovaných disků. Následující odkazy obsahují ukázkové skripty, z nichž každý má odpovídající scénář, který můžete použít k zabezpečení svých spravovaných disků.
 
-[Ukázky](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/DoubleEncryption) 
- šablon Azure Resource Manager [Povolení klíčů spravovaných zákazníkem pomocí šifrování na straně serveru – příklady](disks-enable-customer-managed-keys-cli.md#examples)
+- [Ukázky šablon Azure Resource Manager](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/DoubleEncryption)
+- [Povolení klíčů spravovaných zákazníkem pomocí šifrování na straně serveru – příklady](disks-enable-customer-managed-keys-cli.md#examples)

@@ -5,26 +5,25 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 07/13/2020
 ms.author: victorh
-ms.openlocfilehash: 58f670f3f55a63f0c1823adc13c98f5863d4d650
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23a7682d8a64de57db4ff9ae785ada90d4a06944
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77444547"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084666"
 ---
 # <a name="azure-firewall-central-management"></a>Azure Firewall centrální Správa
 
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
-
 Pokud spravujete více bran firewall, víte, že neustále se měnící pravidla brány firewall obtížně udržují, aby byla synchronizovaná. Centrální týmy IT potřebují způsob, jak definovat základní zásady brány firewall a vymáhat je napříč různými obchodními jednotkami. Týmy DevOps ve stejnou chvíli chtějí vytvořit své vlastní místní odvozené zásady brány firewall pro lepší flexibilitu.
 
-Tyto problémy můžete vyřešit pomocí Azure Firewall Manageru ve verzi Preview.
+Azure Firewall Manager vám může tyto problémy vyřešit.
 
 
-## <a name="azure-firewall-manager-preview"></a>Správce Azure Firewall Preview
+## <a name="azure-firewall-manager"></a>Azure Firewall Manager
 
-Verze Preview služby Azure Firewall Manager je služba pro správu zabezpečení sítě, která poskytuje centrální zásady zabezpečení a správu směrování pro hraniční zabezpečení na základě cloudu. Podnikoví IT týmy usnadňují centrálně definování pravidel na úrovni sítě a aplikací pro filtrování přenosů napříč několika instancemi Azure Firewall. Pro zásady správného řízení provozu a ochrany můžete v architektuře hub a paprsků zasahovat do různých oblastí a předplatných Azure. Poskytuje taky DevOps lepší flexibilitu s odvozenými zásadami zabezpečení místní brány firewall, které jsou implementované v organizacích.
+Azure Firewall Manager je služba pro správu zabezpečení sítě, která poskytuje centrální zásady zabezpečení a správu směrování pro hraniční zabezpečení na základě cloudu. Podnikoví IT týmy usnadňují centrálně definování pravidel na úrovni sítě a aplikací pro filtrování přenosů napříč několika instancemi Azure Firewall. Pro zásady správného řízení provozu a ochrany můžete v architektuře hub a paprsků zasahovat do různých oblastí a předplatných Azure. Poskytuje taky DevOps lepší flexibilitu s odvozenými zásadami zabezpečení místní brány firewall, které jsou implementované v organizacích.
 
 ### <a name="firewall-policy"></a>Zásady brány firewall
 
@@ -47,4 +46,4 @@ Následující špičková řešení třetích stran podporují Azure Firewall c
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o nástroji Azure Firewall Manager Preview najdete v tématu [co je verze preview Azure firewall Manageru?](../firewall-manager/overview.md)
+Další informace o Azure Firewall Manageru najdete v tématu [co je Azure firewall Manager?](../firewall-manager/overview.md) .

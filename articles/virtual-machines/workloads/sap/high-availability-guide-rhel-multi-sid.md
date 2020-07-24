@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/24/2020
 ms.author: radeltch
-ms.openlocfilehash: 4f1bfd58e27f0cd677980ff9351d32d91a68e3e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1de6ce3a653b4ef007c6f8c878cbe2aa49f507ca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80247431"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085176"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-red-hat-enterprise-linux-for-sap-applications-multi-sid-guide"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure v Red Hat Enterprise Linux pro Průvodce pro aplikace SAP s více SID
 
@@ -56,7 +56,7 @@ V ukázkových konfiguracích jsou instalační příkazy atd. tři systémy SAP
 * **NW2**: ASCS instance číslo **10** a virtuální název hostitele **msnw2ascs**; OLAJÍCÍCH instance číslo **12** a název virtuálního hostitele **msnw2ers**.  
 * **NW3**: ASCS instance číslo **20** a virtuální název hostitele **msnw3ascs**; OLAJÍCÍCH instance číslo **22** a název virtuálního hostitele **msnw3ers**.  
 
-Článek nepokrývá databázovou vrstvu a nasazení sdílených složek SAP NFS. V příkladech v tomto článku používáme [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes) volume **sapMSID** pro sdílené složky NFS za předpokladu, že je svazek už nasazený. Předpokládáme, že Azure NetApp Files svazek je nasazený pomocí protokolu NFSv3 a že pro prostředky clusteru pro instance ASCS a OLAJÍCÍCH pro instance SAP Systems NW1, NW2 a NW3 existují následující cesty k tomuto souboru:  
+Článek nepokrývá databázovou vrstvu a nasazení sdílených složek SAP NFS. V příkladech v tomto článku používáme [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-create-volumes.md) volume **sapMSID** pro sdílené složky NFS za předpokladu, že je svazek už nasazený. Předpokládáme, že Azure NetApp Files svazek je nasazený pomocí protokolu NFSv3 a že pro prostředky clusteru pro instance ASCS a OLAJÍCÍCH pro instance SAP Systems NW1, NW2 a NW3 existují následující cesty k tomuto souboru:  
 
 * Volume sapMSID (nfs://10.42.0.4/sapmnt<b>NW1</b>)
 * Volume sapMSID (nfs://10.42.0.4/usrsap<b>NW1</b>ASCS)
@@ -106,7 +106,7 @@ Než začnete, přečtěte si následující poznámky a dokumenty SAP jako prvn
 
 Pro virtuální počítače, které jsou součástí clusteru, musí být velikost, aby bylo možné spouštět všechny prostředky, pokud dojde k převzetí služeb při selhání. Každé rozhraní SAP SID může převzít služby při selhání nezávisle na sobě v clusteru s vysokou dostupností více identifikátorů SID.  
 
-Pro zajištění vysoké dostupnosti vyžaduje SAP NetWeaver sdílené složky s vysokou dostupností. V této dokumentaci uvádíme příklady u sdílených složek SAP nasazených na [Azure NetApp Files SVAZCÍCH NFS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes). Sdílené složky je taky možné hostovat na [clusteru GlusterFS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs)s vysokou dostupností, který můžou používat víc systémů SAP.  
+Pro zajištění vysoké dostupnosti vyžaduje SAP NetWeaver sdílené složky s vysokou dostupností. V této dokumentaci uvádíme příklady u sdílených složek SAP nasazených na [Azure NetApp Files SVAZCÍCH NFS](../../../azure-netapp-files/azure-netapp-files-create-volumes.md). Sdílené složky je taky možné hostovat na [clusteru GlusterFS](./high-availability-guide-rhel-glusterfs.md)s vysokou dostupností, který můžou používat víc systémů SAP.  
 
 ![Přehled vysoké dostupnosti SAP NetWeaver](./media/high-availability-guide-rhel/ha-rhel-multi-sid.png)
 
@@ -116,7 +116,7 @@ Pro zajištění vysoké dostupnosti vyžaduje SAP NetWeaver sdílené složky s
 > [!TIP]
 > Clustering s více identifikátory SID pro SAP ASCS/OLAJÍCÍCH je řešení s vyšší složitou složitostí. Implementaci je složitější. Zahrnuje také vyšší administrativní úsilí při provádění aktivit údržby (například opravy operačního systému). Než začnete se skutečnou implementací, věnujte přitom pečlivé plánování nasazení a všech zúčastněných komponent, jako jsou virtuální počítače, připojení NFS, VIP, konfigurace nástroje pro vyrovnávání zatížení atd.  
 
-SAP NetWeaver ASCS, SAP NetWeaver SCS a SAP NetWeaver OLAJÍCÍCH používají virtuální název hostitele a virtuální IP adresy. V Azure se nástroj pro vyrovnávání zatížení vyžaduje k použití virtuální IP adresy. Doporučujeme použít službu [Load Balancer úrovně Standard](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal).  
+SAP NetWeaver ASCS, SAP NetWeaver SCS a SAP NetWeaver OLAJÍCÍCH používají virtuální název hostitele a virtuální IP adresy. V Azure se nástroj pro vyrovnávání zatížení vyžaduje k použití virtuální IP adresy. Doporučujeme použít službu [Load Balancer úrovně Standard](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md).  
 
 Následující seznam obsahuje konfiguraci nástroje pro vyrovnávání zatížení (A) SCS a OLAJÍCÍCH pro tento příklad clusteru s více identifikátory SID se třemi systémy SAP. Pro každou z těchto identifikátorů SID budete potřebovat samostatné IP adresy front-endu, sondy stavu a pravidla vyrovnávání zatížení pro každou instanci ASCS a OLAJÍCÍCH. Přiřaďte všechny virtuální počítače, které jsou součástí clusteru ASCS/ASCS, do jednoho back-endového fondu s jedním interního nástroje.  
 
@@ -162,23 +162,23 @@ Následující seznam obsahuje konfiguraci nástroje pro vyrovnávání zatíže
   * Připojeno k primárním síťovým rozhraním všech virtuálních počítačů, které by měly být součástí clusteru (A) SCS/OLAJÍCÍCH
 
 > [!Note]
-> Pokud se virtuální počítače bez veřejných IP adres nacházejí v back-end fondu interní služby pro vyrovnávání zatížení (bez veřejné IP adresy), nebude žádné odchozí připojení k Internetu, pokud se neprovede další konfigurace, která umožní směrování na veřejné koncové body. Podrobnosti o tom, jak dosáhnout odchozího připojení, najdete v tématu [připojení k veřejnému koncovému bodu pro Virtual Machines používání Azure Standard Load Balancer ve scénářích s vysokou dostupností SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)  
+> Pokud se virtuální počítače bez veřejných IP adres nacházejí v back-end fondu interní služby pro vyrovnávání zatížení (bez veřejné IP adresy), nebude žádné odchozí připojení k Internetu, pokud se neprovede další konfigurace, která umožní směrování na veřejné koncové body. Podrobnosti o tom, jak dosáhnout odchozího připojení, najdete v tématu [připojení k veřejnému koncovému bodu pro Virtual Machines používání Azure Standard Load Balancer ve scénářích s vysokou dostupností SAP](./high-availability-guide-standard-load-balancer-outbound-connections.md)  
 
 > [!IMPORTANT]
-> Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net. IPv4. tcp_timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
+> Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net. IPv4. tcp_timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](../../../load-balancer/load-balancer-custom-probe-overview.md).
 
 ## <a name="sap-shares"></a>Sdílené složky SAP
 
-SAP NetWeaver vyžaduje sdílené úložiště pro přenos, adresář profilů a tak dále. Pro vysoce dostupný systém SAP je důležité mít vysoce dostupné sdílené složky. Budete se muset rozhodnout pro architekturu pro sdílené složky SAP. Jednou z možností je nasadit sdílené složky na [Azure NetApp Files SVAZCÍCH NFS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes).  Díky Azure NetApp Files získáte integrovanou vysokou dostupnost pro sdílené složky SAP NFS.
+SAP NetWeaver vyžaduje sdílené úložiště pro přenos, adresář profilů a tak dále. Pro vysoce dostupný systém SAP je důležité mít vysoce dostupné sdílené složky. Budete se muset rozhodnout pro architekturu pro sdílené složky SAP. Jednou z možností je nasadit sdílené složky na [Azure NetApp Files SVAZCÍCH NFS](../../../azure-netapp-files/azure-netapp-files-create-volumes.md).  Díky Azure NetApp Files získáte integrovanou vysokou dostupnost pro sdílené složky SAP NFS.
 
-Další možností je sestavit [GlusterFS na virtuálních počítačích Azure v Red Hat Enterprise Linux pro SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs), které se dají sdílet mezi několika systémy SAP. 
+Další možností je sestavit [GlusterFS na virtuálních počítačích Azure v Red Hat Enterprise Linux pro SAP NetWeaver](./high-availability-guide-rhel-glusterfs.md), které se dají sdílet mezi několika systémy SAP. 
 
 ## <a name="deploy-the-first-sap-system-in-the-cluster"></a>Nasazení prvního systému SAP v clusteru
 
 Teď, když jste se rozhodli o architekturu pro sdílené složky SAP, nasaďte první systém SAP v clusteru, a to podle příslušné dokumentace.
 
-* Pokud používáte Azure NetApp Files svazky NFS, postupujte podle [vysoké dostupnosti virtuálních počítačů Azure pro SAP NetWeaver v Red Hat Enterprise Linux s Azure NetApp Files pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files) .  
-* Pokud používáte cluster GlusterFS, Sledujte [GlusterFS na virtuálních počítačích Azure na Red Hat Enterprise Linux pro SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs).  
+* Pokud používáte Azure NetApp Files svazky NFS, postupujte podle [vysoké dostupnosti virtuálních počítačů Azure pro SAP NetWeaver v Red Hat Enterprise Linux s Azure NetApp Files pro aplikace SAP](./high-availability-guide-rhel-netapp-files.md) .  
+* Pokud používáte cluster GlusterFS, Sledujte [GlusterFS na virtuálních počítačích Azure na Red Hat Enterprise Linux pro SAP NetWeaver](./high-availability-guide-rhel-glusterfs.md).  
 
 Výše uvedené dokumenty vás provede kroky pro přípravu potřebné infrastruktury, sestavení clusteru a příprava operačního systému na spuštění aplikace SAP.  
 
@@ -191,7 +191,7 @@ V tomto příkladu předpokládáme, že systém **NW1** už je v clusteru nasaz
 
 Následující položky jsou předpony buď **[A]** – platí pro všechny uzly, **[1]** – platí pouze pro uzel 1 nebo **[2]** – platí pouze pro uzel 2.
 
-### <a name="prerequisites"></a>Požadavky 
+### <a name="prerequisites"></a>Předpoklady 
 
 > [!IMPORTANT]
 > Než budete postupovat podle pokynů k nasazení dalších systémů SAP v clusteru, postupujte podle pokynů pro nasazení prvního systému SAP v clusteru, protože existují kroky, které jsou nezbytné pouze při prvním nasazení systému.  
@@ -204,7 +204,7 @@ Tato dokumentace předpokládá, že:
 
 ### <a name="prepare-for-sap-netweaver-installation"></a>Příprava na instalaci SAP NetWeaver
 
-1. Přidejte konfiguraci pro nově nasazený systém (to znamená, **NW2**, **NW3**) do existujícího Azure Load Balancer podle pokynů k [nasazení Azure Load Balancer ručně prostřednictvím Azure Portal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files#deploy-linux-manually-via-azure-portal). Upravte IP adresy, porty sondy stavu, pravidla vyrovnávání zatížení pro vaši konfiguraci.  
+1. Přidejte konfiguraci pro nově nasazený systém (to znamená, **NW2**, **NW3**) do existujícího Azure Load Balancer podle pokynů k [nasazení Azure Load Balancer ručně prostřednictvím Azure Portal](./high-availability-guide-rhel-netapp-files.md#deploy-linux-manually-via-azure-portal). Upravte IP adresy, porty sondy stavu, pravidla vyrovnávání zatížení pro vaši konfiguraci.  
 
 2. **[A]** nastavení rozlišení názvů pro další systémy SAP. Můžete buď použít server DNS, nebo upravit `/etc/hosts` na všech uzlech. Tento příklad ukazuje, jak použít `/etc/hosts` soubor.  Přizpůsobte IP adresy a názvy hostitelů vašemu prostředí. 
 
@@ -247,8 +247,8 @@ Tato dokumentace předpokládá, že:
 
    Aktualizujte soubor `/etc/fstab` pomocí systémů souborů pro další systémy SAP, které nasazujete do clusteru.  
 
-   * Pokud používáte Azure NetApp Files, postupujte podle pokynů uvedených [tady](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files#prepare-for-sap-netweaver-installation) .  
-   * Pokud používáte cluster GlusterFS, postupujte podle pokynů uvedených [tady](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel#prepare-for-sap-netweaver-installation) .  
+   * Pokud používáte Azure NetApp Files, postupujte podle pokynů uvedených [tady](./high-availability-guide-rhel-netapp-files.md#prepare-for-sap-netweaver-installation) .  
+   * Pokud používáte cluster GlusterFS, postupujte podle pokynů uvedených [tady](./high-availability-guide-rhel.md#prepare-for-sap-netweaver-installation) .  
 
 ### <a name="install-ascs--ers"></a>Nainstalovat ASCS/OLAJÍCÍCH
 
@@ -602,17 +602,17 @@ Tato dokumentace předpokládá, že:
 
 Dokončete instalaci SAP pomocí:
 
-* [Příprava aplikačních serverů SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files#2d6008b0-685d-426c-b59e-6cd281fd45d7)
-* [Instalace instance systému DBMS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files#install-database)
-* [Instalace primárního aplikačního serveru SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files#sap-netweaver-application-server-installation)
+* [Příprava aplikačních serverů SAP NetWeaver](./high-availability-guide-rhel-netapp-files.md#2d6008b0-685d-426c-b59e-6cd281fd45d7)
+* [Instalace instance systému DBMS](./high-availability-guide-rhel-netapp-files.md#install-database)
+* [Instalace primárního aplikačního serveru SAP](./high-availability-guide-rhel-netapp-files.md#sap-netweaver-application-server-installation)
 * Instalace jedné nebo více dalších instancí aplikace SAP
 
 ## <a name="test-the-multi-sid-cluster-setup"></a>Testování nastavení clusteru s více SID
 
 Následující testy jsou podmnožinou testovacích případů v průvodcích osvědčených postupů Red Hat. Jsou zahrnuty pro usnadnění práce. Úplný seznam testů clusteru najdete v následující dokumentaci:
 
-* Pokud používáte Azure NetApp Files svazky NFS, postupujte podle [vysoké dostupnosti virtuálních počítačů Azure pro SAP NetWeaver v RHEL s Azure NetApp Files pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files) .
-* Pokud používáte vysoce dostupný `GlusterFS` , postupujte podle [vysoké dostupnosti virtuálních počítačů Azure pro SAP NETWEAVER v RHEL pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel).  
+* Pokud používáte Azure NetApp Files svazky NFS, postupujte podle [vysoké dostupnosti virtuálních počítačů Azure pro SAP NetWeaver v RHEL s Azure NetApp Files pro aplikace SAP](./high-availability-guide-rhel-netapp-files.md) .
+* Pokud používáte vysoce dostupný `GlusterFS` , postupujte podle [vysoké dostupnosti virtuálních počítačů Azure pro SAP NETWEAVER v RHEL pro aplikace SAP](./high-availability-guide-rhel.md).  
 
 Vždy si přečtěte Příručky k osvědčeným postupům Red Hat a proveďte všechny další testy, které by mohly být přidané.  
 Zobrazené testy jsou ve dvou uzlech, cluster s více identifikátory SID se třemi nainstalovanými systémy SAP.  

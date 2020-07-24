@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: troubleshooting
 ms.date: 03/18/2020
-ms.author: rohogue
-ms.openlocfilehash: 8d576f8660d140a95eb67f7babf1c0af61f04278
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: v-erkel
+ms.openlocfilehash: efa163a2c10a7dc93bf5d26865a0e7eb43f11dea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515458"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082762"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>Řešení potíží s cílovým úložištěm a konfigurací serveru NFS
 
@@ -20,7 +20,7 @@ Tento článek obsahuje řešení některých běžných chyb konfigurace a dal�
 Tento článek obsahuje podrobné informace o tom, jak kontrolovat porty a jak povolit kořenový přístup k systému NAS. Obsahuje taky podrobné informace o méně běžných problémech, které by mohly způsobit selhání vytvoření cíle úložiště NFS.
 
 > [!TIP]
-> Před použitím tohoto průvodce si přečtěte [předpoklady pro cílení úložiště NFS](hpc-cache-prereqs.md#nfs-storage-requirements).
+> Před použitím tohoto průvodce si přečtěte [předpoklady pro cílení úložiště NFS](hpc-cache-prerequisites.md#nfs-storage-requirements).
 
 Pokud zde řešení problému není zahrnuto, [otevřete prosím lístek podpory](hpc-cache-support-ticket.md) , aby vám služba a podpora Microsoftu mohla spolupracovat, abyste mohli problém prozkoumat a vyřešit.
 
@@ -32,7 +32,7 @@ Porty se liší pro systémy úložišť od různých dodavatelů, proto při na
 
 Obecně platí, že mezipaměť potřebuje přístup k těmto portům:
 
-| Protocol (Protokol) | Port  | Služba  |
+| Protokol | Port  | Služba  |
 |----------|-------|----------|
 | TCP/UDP  | 111   | rpcbind  |
 | TCP/UDP  | 2049  | NFS      |

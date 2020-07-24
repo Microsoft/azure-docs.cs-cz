@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 02/11/2020
 ms.author: bentrin
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fd1267711871b3e55f1a6229e46ae27b360322f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db51ec682f43366f5637c461e3fe4037dec8e364
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77617044"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085210"
 ---
 # <a name="sap-hana-on-azure-large-instance-migration-to-azure-virtual-machines"></a>SAP HANA migrace velkých instancí Azure do Azure Virtual Machines
 Tento článek popisuje možné scénáře nasazení rozsáhlých instancí Azure a nabízí plánovací a migrační přístup s minimalizovanými výpadky přechodu.
@@ -40,7 +41,7 @@ Tento článek přináší následující předpoklady:
 - Zákazníci ověřili plán návrhu a migrace.
 - Naplánujte virtuální počítač pro zotavení po havárii spolu s primární lokalitou.  Zákazníci nemůžou používat HLI jako uzel DR pro primární lokalitu spuštěnou na virtuálních počítačích po migraci.
 - Zákazníci zkopírovali požadované záložní soubory do cílových virtuálních počítačů na základě možností obnovy podnikových požadavků a dodržování předpisů. S dostupnými zálohami virtuálních počítačů umožňuje obnovení k určitému bodu v čase během přechodného období.
-- Pro HSR HA musí zákazníci pro [SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) a [RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker)nastavit a nakonfigurovat zařízení STONITH na SAP HANA.  Není předem nakonfigurovaný jako HLI případ.
+- Pro HSR HA musí zákazníci pro [SLES](./high-availability-guide-suse-pacemaker.md) a [RHEL](./high-availability-guide-rhel-pacemaker.md)nastavit a nakonfigurovat zařízení STONITH na SAP HANA.  Není předem nakonfigurovaný jako HLI případ.
 - Tento přístup k migraci nepokrývá skladové položky HLI s konfigurací Optane.
 
 ## <a name="deployment-scenarios"></a>Scénáře nasazení
@@ -48,21 +49,21 @@ Společné modely nasazení s HLI zákazníky jsou shrnuté v následující tab
 
 | ID scénáře | Scénář HLI | Chcete migrovat na virtuální počítač v doslovném znění? | Přeznačit |
 | --- | --- | --- | --- |
-| 1 | [Jeden uzel s jedním identifikátorem SID](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-one-sid) | Yes | - |
-| 2 | [Jeden uzel s MCOS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-mcos) | Yes | - |
-| 3 | [Jeden uzel se systémem DR pomocí replikace úložiště](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-storage-replication) | No | Replikace úložiště není pro virtuální platformu Azure k dispozici, změňte aktuální řešení zotavení po havárii na HSR nebo zálohování nebo obnovení. |
-| 4 | [Jeden uzel se systémem DR (víceúčelový) pomocí replikace úložiště](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-multipurpose-using-storage-replication) | No | Replikace úložiště není pro virtuální platformu Azure k dispozici, změňte aktuální řešení zotavení po havárii na HSR nebo zálohování nebo obnovení. |
-| 5 | [HSR s STONITH pro vysokou dostupnost](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#hsr-with-stonith-for-high-availability) | Yes | Pro cílové virtuální počítače není k dispozici předkonfigurovaná SBD.  Vyberte a nasaďte řešení STONITH.  Možné možnosti: Agent služby Azure na úrovni služby (podporuje se pro [RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker), [SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)), SBD |
-| 6 | [HA s HSRem, DR s replikací úložiště](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-with-hsr-and-dr-with-storage-replication) | No | Nahraďte replikaci úložiště pro potřeby zotavení po havárii buď pomocí HSR, nebo zálohování nebo obnovení. |
-| 7 | [Automatické převzetí služeb při selhání hostitele (1 + 1)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#host-auto-failover-11) | Yes | Použití ANF pro sdílené úložiště s virtuálními počítači Azure |
-| 8 | [Horizontální navýšení kapacity pomocí úsporného režimu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-standby) | Yes | ČERNOBÍLé a 4HANA s M128s, M416s, M416ms virtuálními počítači pomocí ANF jenom pro úložiště |
-| 9 | [Horizontální navýšení kapacity bez úsporného režimu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-without-standby) | Yes | ČERNOBÍLé/4HANA s M128s, M416s, M416ms virtuálními počítači (s využitím nebo bez použití ANF pro úložiště) |
-| 10 | [Horizontální navýšení kapacity pomocí replikace úložiště v systému DR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-storage-replication) | No | Nahraďte replikaci úložiště pro potřeby zotavení po havárii buď pomocí HSR, nebo zálohování nebo obnovení. |
-| 11 | [Jeden uzel s DR pomocí HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-hsr) | Yes | - |
-| 12 | [HSR jednoho uzlu do DR (náklady optimalizované)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-hsr-to-dr-cost-optimized) | Yes | - |
-| 13 | [HA a DR s HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr) | Yes | - |
-| 14 | [HA a DR s HSR (náklady optimalizované)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr-cost-optimized) | Yes | - |
-| 15 | [Horizontální navýšení kapacity pomocí HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-hsr) | Yes | ČERNOBÍLé/4HANA s M128s. Virtuální počítače s M416s, M416ms (s nebo bez použití ANF pro úložiště) |
+| 1 | [Jeden uzel s jedním identifikátorem SID](./hana-supported-scenario.md#single-node-with-one-sid) | Yes | - |
+| 2 | [Jeden uzel s MCOS](./hana-supported-scenario.md#single-node-mcos) | Yes | - |
+| 3 | [Jeden uzel se systémem DR pomocí replikace úložiště](./hana-supported-scenario.md#single-node-with-dr-using-storage-replication) | No | Replikace úložiště není pro virtuální platformu Azure k dispozici, změňte aktuální řešení zotavení po havárii na HSR nebo zálohování nebo obnovení. |
+| 4 | [Jeden uzel se systémem DR (víceúčelový) pomocí replikace úložiště](./hana-supported-scenario.md#single-node-with-dr-multipurpose-using-storage-replication) | No | Replikace úložiště není pro virtuální platformu Azure k dispozici, změňte aktuální řešení zotavení po havárii na HSR nebo zálohování nebo obnovení. |
+| 5 | [HSR s STONITH pro vysokou dostupnost](./hana-supported-scenario.md#hsr-with-stonith-for-high-availability) | Yes | Pro cílové virtuální počítače není k dispozici předkonfigurovaná SBD.  Vyberte a nasaďte řešení STONITH.  Možné možnosti: Agent služby Azure na úrovni služby (podporuje se pro [RHEL](./high-availability-guide-rhel-pacemaker.md), [SLES](./high-availability-guide-suse-pacemaker.md)), SBD |
+| 6 | [HA s HSRem, DR s replikací úložiště](./hana-supported-scenario.md#high-availability-with-hsr-and-dr-with-storage-replication) | No | Nahraďte replikaci úložiště pro potřeby zotavení po havárii buď pomocí HSR, nebo zálohování nebo obnovení. |
+| 7 | [Automatické převzetí služeb při selhání hostitele (1 + 1)](./hana-supported-scenario.md#host-auto-failover-11) | Yes | Použití ANF pro sdílené úložiště s virtuálními počítači Azure |
+| 8 | [Horizontální navýšení kapacity pomocí úsporného režimu](./hana-supported-scenario.md#scale-out-with-standby) | Yes | ČERNOBÍLé a 4HANA s M128s, M416s, M416ms virtuálními počítači pomocí ANF jenom pro úložiště |
+| 9 | [Horizontální navýšení kapacity bez úsporného režimu](./hana-supported-scenario.md#scale-out-without-standby) | Yes | ČERNOBÍLé/4HANA s M128s, M416s, M416ms virtuálními počítači (s využitím nebo bez použití ANF pro úložiště) |
+| 10 | [Horizontální navýšení kapacity pomocí replikace úložiště v systému DR](./hana-supported-scenario.md#scale-out-with-dr-using-storage-replication) | No | Nahraďte replikaci úložiště pro potřeby zotavení po havárii buď pomocí HSR, nebo zálohování nebo obnovení. |
+| 11 | [Jeden uzel s DR pomocí HSR](./hana-supported-scenario.md#single-node-with-dr-using-hsr) | Yes | - |
+| 12 | [HSR jednoho uzlu do DR (náklady optimalizované)](./hana-supported-scenario.md#single-node-hsr-to-dr-cost-optimized) | Yes | - |
+| 13 | [HA a DR s HSR](./hana-supported-scenario.md#high-availability-and-disaster-recovery-with-hsr) | Yes | - |
+| 14 | [HA a DR s HSR (náklady optimalizované)](./hana-supported-scenario.md#high-availability-and-disaster-recovery-with-hsr-cost-optimized) | Yes | - |
+| 15 | [Horizontální navýšení kapacity pomocí HSR](./hana-supported-scenario.md#scale-out-with-dr-using-hsr) | Yes | ČERNOBÍLé/4HANA s M128s. Virtuální počítače s M416s, M416ms (s nebo bez použití ANF pro úložiště) |
 
 
 ## <a name="source-hli-planning"></a>Zdroj (HLI) plánování
@@ -72,7 +73,7 @@ Při připojování serveru HLI se v rámci plánování výpočetních prostře
 Je dobrým provozním postupem, jak uklizený obsah databáze, takže se nemigrují, zastaralá data nebo zastaralá protokolují do nové databáze.  Údržbu obvykle zahrnuje odstranění nebo archivaci starých, neplatných nebo neaktivních dat.  Tyto akce "hygieny dat" by měly být testovány v neprodukčních systémech, aby bylo možné před využitím produkčního prostředí ověřit platnost jejich dat.
 
 ### <a name="allow-network-connectivity-for-new-vms-and-or-virtual-network"></a>Povolení síťového připojení pro nové virtuální počítače a virtuální sítě 
-V nasazení HLI zákazníka se síť nastavila na základě informací popsaných v článku [architektura sítě SAP Hana (velké instance)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture). Směrování provozu sítě se taky provádí způsobem popsaným v části "směrování v Azure".
+V nasazení HLI zákazníka se síť nastavila na základě informací popsaných v článku [architektura sítě SAP Hana (velké instance)](./hana-network-architecture.md). Směrování provozu sítě se taky provádí způsobem popsaným v části "směrování v Azure".
 - Pokud se v části nastavení nového virtuálního počítače jako cíle migrace nachází ve stávající virtuální síti s rozsahy IP adres, které už mají povolený přístup k HLI, nevyžaduje se žádná další aktualizace připojení.
 - Pokud je nový virtuální počítač Azure umístěný v novém Microsoft Azure Virtual Network, může být v jiné oblasti a má partnerský vztah se stávající virtuální sítí. k povolení přístupu pro tento nový rozsah IP adres virtuální sítě se dá použít klíč služby ExpressRoute a ID prostředku z původního HLI zřizování.  Zajistěte koordinaci se správou služeb Microsoftu, aby se virtuální síť mohla HLI připojit.  Poznámka: aby se minimalizovala latence sítě mezi aplikační a databázovou vrstvou, musí být vrstva aplikace i databáze ve stejné virtuální síti.  
 
@@ -106,7 +107,7 @@ Zamyslete se nad novou infrastrukturou, která převezme místo existující inf
 Aktuální oblast nasazení aplikačních serverů SAP je typicky v blízkosti přidruženého HLIsu.  HLIs se ale nabízí v méně umístěních než dostupné oblasti Azure.  Při migraci fyzického HLIu na virtuální počítač Azure je také vhodný čas k vyladění vzdálenosti blízkosti všech souvisejících služeb pro účely optimalizace výkonu.  V takovém případě je jedním z klíčových aspektů, aby zvolená oblast měla všechny požadované prostředky.  Například dostupnost určité rodiny virtuálních počítačů nebo nabídky zón Azure pro nastavení vysoké dostupnosti.
 
 ### <a name="virtual-network"></a>Virtuální síť 
-Zákazníci si musí vybrat, jestli se má nová databáze HANA spustit ve stávající virtuální síti, nebo vytvořit novou.  Primárním rozhodujícím faktorem je aktuální rozložení sítě pro SAP na šířku.  I když infrastruktura přechází z jednoho pásma do nasazení se dvěma zónami a používá PPG, dojde ke změně architektury. Další informace najdete v článku [Azure PPG pro optimální latenci sítě pomocí aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios).   
+Zákazníci si musí vybrat, jestli se má nová databáze HANA spustit ve stávající virtuální síti, nebo vytvořit novou.  Primárním rozhodujícím faktorem je aktuální rozložení sítě pro SAP na šířku.  I když infrastruktura přechází z jednoho pásma do nasazení se dvěma zónami a používá PPG, dojde ke změně architektury. Další informace najdete v článku [Azure PPG pro optimální latenci sítě pomocí aplikace SAP](./sap-proximity-placement-scenarios.md).   
 
 ### <a name="security"></a>Zabezpečení
 Bez ohledu na to, jestli se nový SAP HANA virtuální počítač vystavuje na nové nebo existující virtuální síti nebo podsíti, představuje novou podnikovou službu, která vyžaduje zabezpečení.  Pro tuto novou třídu služby by se mělo vyhodnotit a nasazovat řízení přístupu v souladu se zásadami zabezpečení informací společnosti.
@@ -115,7 +116,7 @@ Bez ohledu na to, jestli se nový SAP HANA virtuální počítač vystavuje na n
 Tato migrace je také příležitostí ke správné velikosti výpočetního modulu HANA.  Jedna z nich může používat [Systémová zobrazení](https://help.sap.com/viewer/7c78579ce9b14a669c1f3295b0d8ca16/Cloud/3859e48180bb4cf8a207e15cf25a7e57.html) Hana společně s Hana Studio k pochopení spotřeby systémových prostředků, což umožňuje správnou změnu velikosti pro zajištění efektivity útraty.
 
 ### <a name="storage"></a>Storage 
-Výkon úložiště je jedním z faktorů, které mají vliv na uživatelské prostředí aplikace SAP.  Základem pro danou SKLADOVOU položku virtuálního počítače, existuje minimální rozložení úložiště publikované [SAP HANA konfigurací úložiště virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage). Doporučujeme, abyste si prostudovali tyto minimální specifikace a porovnali si stávající HLI systémovou statistiku, abyste zajistili adekvátní vstupně-výstupní kapacity a výkon pro nový virtuální počítač HANA.
+Výkon úložiště je jedním z faktorů, které mají vliv na uživatelské prostředí aplikace SAP.  Základem pro danou SKLADOVOU položku virtuálního počítače, existuje minimální rozložení úložiště publikované [SAP HANA konfigurací úložiště virtuálních počítačů Azure](./hana-vm-operations-storage.md). Doporučujeme, abyste si prostudovali tyto minimální specifikace a porovnali si stávající HLI systémovou statistiku, abyste zajistili adekvátní vstupně-výstupní kapacity a výkon pro nový virtuální počítač HANA.
 
 Pokud PPG nakonfigurujete pro nový virtuální počítač HANA a jeho přidružené severy, odešlete lístek podpory pro kontrolu a zajištění společného umístění úložiště a virtuálního počítače. Vzhledem k tomu, že vaše řešení zálohování může být potřeba změnit, měli byste také znovu navštívit náklady na úložiště, aby nedocházelo k provozním útratám překvapením.
 
@@ -123,13 +124,13 @@ Pokud PPG nakonfigurujete pro nový virtuální počítač HANA a jeho přidruž
 S HLI byla replikace úložiště nabízená jako výchozí možnost pro zotavení po havárii. Tato funkce není výchozí možností pro SAP HANA na virtuálním počítači Azure. Zvažte HSR, zálohování a obnovení nebo jiná podporovaná řešení vyhovující vašim obchodním potřebám.
 
 ### <a name="availability-sets-availability-zones-and-proximity-placement-groups"></a>Skupiny dostupnosti, Zóny dostupnosti a umístění blízkosti 
-Pro zkrácení vzdálenosti mezi aplikační vrstvou a SAP HANA, aby se zajistila minimální latence sítě, je potřeba, aby se nový virtuální počítač databáze a aktuální aplikační servery SAP umístily do PPG. Informace o tom, jak sada dostupnosti Azure a Zóny dostupnosti fungují s PPG pro nasazení SAP, najdete v tématu [Skupina umístění blízkosti](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) .
+Pro zkrácení vzdálenosti mezi aplikační vrstvou a SAP HANA, aby se zajistila minimální latence sítě, je potřeba, aby se nový virtuální počítač databáze a aktuální aplikační servery SAP umístily do PPG. Informace o tom, jak sada dostupnosti Azure a Zóny dostupnosti fungují s PPG pro nasazení SAP, najdete v tématu [Skupina umístění blízkosti](./sap-proximity-placement-scenarios.md) .
 Pokud jsou členové cílového systému HANA nasazeni ve více než jedné zóně Azure, musí mít zákazníci jasný pohled na profil latence zvolených zón. Umístění systémových komponent SAP je optimální vzhledem k blízkosti vzdálenosti mezi aplikací SAP a databází.  [Testovací nástroj pro latenci zóny dostupnosti](https://github.com/Azure/SAP-on-Azure-Scripts-and-Utilities/tree/master/AvZone-Latency-Test) veřejné domény pomáhá zjednodušit měření.  
 
 
 ### <a name="backup-strategy"></a>Strategie zálohování
 Mnoho zákazníků už používá řešení zálohování třetích stran pro SAP HANA v HLI.  V takovém případě je nutné nakonfigurovat pouze další chráněné databáze virtuálních počítačů a HANA.  Probíhající úlohy zálohování HLI se teď můžou neplánovat, pokud se počítač po migraci vyřadí z provozu.
-Azure Backup pro SAP HANA na virtuálním počítači je teď všeobecně dostupná.  Podrobnější informace najdete v těchto odkazech: [zálohování](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database), [obnovení](https://docs.microsoft.com/azure/backup/sap-hana-db-restore), [Správa](https://docs.microsoft.com/azure/backup/sap-hana-db-manage) SAP HANA zálohování ve virtuálních počítačích Azure.
+Azure Backup pro SAP HANA na virtuálním počítači je teď všeobecně dostupná.  Podrobnější informace najdete v těchto odkazech: [zálohování](../../../backup/backup-azure-sap-hana-database.md), [obnovení](../../../backup/sap-hana-db-restore.md), [Správa](../../../backup/sap-hana-db-manage.md) SAP HANA zálohování ve virtuálních počítačích Azure.
 
 ### <a name="dr-strategy"></a>Strategie zotavení po havárii
 Pokud vaše cíle na úrovni služby přinese delší dobu obnovení, jednoduché zálohování do úložiště objektů BLOB a obnovení na místě nebo obnovení do nového virtuálního počítače je nejjednodušší a nejméně nákladná strategie zotavení po havárii.  
@@ -196,5 +197,5 @@ Vzhledem k tomu, že jsou servery virtuálních počítačů stood nahoru a že 
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si tyto články:
-- [SAP HANA konfigurací infrastruktury a operací v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations).
-- [Úlohy SAP v Azure: kontrolní seznam pro plánování a nasazení](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist).
+- [SAP HANA konfigurací infrastruktury a operací v Azure](./hana-vm-operations.md).
+- [Úlohy SAP v Azure: kontrolní seznam pro plánování a nasazení](./sap-deployment-checklist.md).

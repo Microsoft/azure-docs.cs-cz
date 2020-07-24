@@ -6,11 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: 57db2253cbffa8e16313c7613de6d2ddb2f2b0a2
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 1bda235e5f3f867762457d0dc8214bbadc88059e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027235"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084819"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Připojení k Azure Cosmos DB pomocí nástrojů BI Analytics s ovladačem ODBC
 
@@ -235,11 +236,11 @@ Pomocí nového názvu DSN se můžete připojit k Azure Cosmos DB pomocí libov
 
 1. Chcete-li vizualizovat data v Power BI ploše, zaškrtněte políčko před názvem tabulky a potom klikněte na tlačítko **načíst**.
 
-1. V Power BI Desktop úplně vlevo vyberte kartu data. ![Karta data v Power BI Desktop](./media/odbc-driver/odbc-driver-data-tab.png) Ověřte, že se data naimportovala.
+1. V Power BI Desktop úplně vlevo vyberte kartu data a potvrďte tak, že se :::image type="icon" source="./media/odbc-driver/odbc-driver-data-tab.png"::: data naimportovala. 
 
-1. Vizuály teď můžete vytvářet pomocí Power BI kliknutím na ![ kartu Sestava sestavy v Power BI Desktop ](./media/odbc-driver/odbc-driver-report-tab.png) , kliknutím na **Nový vizuál**a přizpůsobením dlaždice. Další informace o vytváření vizualizací v Power BI Desktop najdete v tématu [typy vizualizací v Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/).
+1. Vizuály teď můžete vytvářet pomocí Power BI kliknutím na kartu Sestava :::image type="icon" source="./media/odbc-driver/odbc-driver-report-tab.png"::: , kliknutím na **Nový vizuál**a přizpůsobením dlaždice. Další informace o vytváření vizualizací v Power BI Desktop najdete v tématu [typy vizualizací v Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/). 
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud se zobrazí následující chyba, ujistěte se, že hodnoty pro **hostitele** a **přístupová oprávnění** , které jste zkopírovali Azure Portal v [kroku 2](#connect) jsou správné, a pak to zkuste znovu. Použijte tlačítka Kopírovat napravo od **hostitele** a přístupové hodnoty **klíčů** v Azure Portal ke zkopírování hodnoty bez chyb.
 

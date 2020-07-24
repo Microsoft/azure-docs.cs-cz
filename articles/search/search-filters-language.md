@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: b0ebbbb64e173e1501f08f8385b14c365759a804
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3bd0f01193b1e6579d60b581b43ad71ebb6001e3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82116277"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084190"
 ---
 # <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>Postup filtrování podle jazyka v Azure Kognitivní hledání 
 
@@ -34,7 +34,7 @@ V Azure Kognitivní hledání dotazy cílí na jeden index. Vývojáři, kteří
 
 Následující příklad pochází z [ukázky reálného majetku](search-get-started-portal.md) , který obsahuje několik polí řetězců obsahujících obsah v různých jazycích. Všimněte si, že přiřazení analyzátoru jazyka pro pole v tomto indexu. Pole, která obsahují řetězce, fungují lépe při fulltextovém vyhledávání, když se spáruje s analýzou analyzátoru pro zpracování jazykových pravidel cílového jazyka.
 
-  ![](./media/search-filters-language/lang-fields.png)
+  ![Snímek obrazovky znázorňující obrazovku s poli pro ukázku reálného majetku. Je zvýrazněna skupina polí, která ukazuje, jak přiřazení analyzátoru jazyka odpovídají jazykům zvýrazněných polí.](./media/search-filters-language/lang-fields.png)
 
 > [!Note]
 > Příklady kódu znázorňující definice polí s analyzátory jazyků naleznete v tématu [definice indexu (.NET)](https://docs.microsoft.com/azure/search/search-create-index-dotnet) a [definice indexu (REST)](search-create-index-rest-api.md).
@@ -60,7 +60,7 @@ parameters =
 > [!Note]
 > I když v dotazu není žádný $filter argument, je tento případ použití silně spojený s koncepty filtru, takže se zobrazí jako scénář filtrování.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 + [Filtry v Azure Kognitivní hledání](search-filters.md)
 + [Analyzátory jazyka](https://docs.microsoft.com/rest/api/searchservice/language-support)

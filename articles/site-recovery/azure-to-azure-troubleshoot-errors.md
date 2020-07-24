@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: 91aaedba13dfd9c0a3ea06b3460beaa8ead20233
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: d3e70384a99e2dad3f19825cb85b83861e4647e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130454"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083816"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Řešení chyb replikace virtuálních počítačů z Azure do Azure
 
@@ -534,6 +534,44 @@ K tomuto problému může dojít, pokud byl virtuální počítač dříve chrá
 ### <a name="fix-the-problem"></a>Oprava problému
 
 Odstraňte disk repliky identifikovaný v chybové zprávě a opakujte úlohu ochrany, která se nezdařila.
+
+## <a name="enable-protection-failed-as-the-installer-is-unable-to-find-the-root-disk-error-code-151137"></a>Ochranu se nepovedlo zapnout, protože instalační program nemůže najít kořenový disk (kód chyby 151137).
+
+K této chybě dochází u počítačů se systémem Linux, kde je disk s operačním systémem zašifrovaný pomocí Azure Disk Encryption (ADE). Jedná se o platný problém pouze v agentovi verze 9,35.
+
+### <a name="possible-causes"></a>Možné příčiny
+
+Instalační program nemůže najít kořenový disk, který je hostitelem kořenového souborového systému.
+
+### <a name="fix-the-problem"></a>Oprava problému
+
+Pokud chcete tento problém vyřešit, postupujte podle následujících kroků:
+
+1. Vyhledejte agenty v adresáři _/var/lib/waagent_ na počítačích s RHEL a CentOS pomocí příkazu níže: <br>
+
+    `# find /var/lib/ -name Micro\*.gz`
+
+   Očekávaný výstup:
+
+    `/var/lib/waagent/Microsoft.Azure.RecoveryServices.SiteRecovery.LinuxRHEL7-1.0.0.9139/UnifiedAgent/Microsoft-ASR_UA_9.35.0.0_RHEL7-64_GA_30Jun2020_release.tar.gz`
+
+2. Vytvořte nový adresář a změňte adresář na tento nový adresář.
+3. Extrahujte soubor agenta, který najdete v prvním kroku, pomocí následujícího příkazu:
+
+    `tar -xf <Tar Ball File>`
+
+4. Otevřete soubor _prereq_check_installer.jsna_ a odstraňte následující řádky. Soubor uložte za něj.
+
+    ```
+       {
+          "CheckName": "SystemDiskAvailable",
+          "CheckType": "MobilityService"
+       },
+    ```
+5. Pomocí příkazu volejte instalační program: <br>
+
+    `./install -d /usr/local/ASR -r MS -q -v Azure`
+6. Pokud se instalační program úspěšně dokončí, zkuste znovu spustit úlohu povolit replikaci.
 
 ## <a name="next-steps"></a>Další kroky
 

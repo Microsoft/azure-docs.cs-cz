@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 44a0b8fe56477620c0ac47d5c5de8830dac46214
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82aa1ba6ec20e8242568a2725899ddc515a4dc0f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77014993"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082065"
 ---
 # <a name="manage-your-cloudsimple-private-cloud-virtual-machines-in-azure"></a>Správa virtuálních počítačů privátního cloudu CloudSimple v Azure
 
@@ -22,13 +23,13 @@ Pro správu virtuálních počítačů, které jste [vytvořili pro privátní c
 
 Následující ovládací prvky jsou k dispozici na stránce **Přehled** pro vybraný virtuální počítač.
 
-| Řízení | Description |
+| Řízení | Popis |
 | ------------ | ------------- |
 | Připojit | Připojte se k zadanému virtuálnímu počítači.  |
 | Spustit | Spusťte zadaný virtuální počítač.  |
 | Restartovat | Vypněte a pak zapněte zadaný virtuální počítač.  |
 | Zastavit | Vypněte konkrétní virtuální počítač.  |
-| Zachycování | Zachyťte image zadaného virtuálního počítače, aby ji bylo možné použít jako image k vytvoření dalších virtuálních počítačů. Viz [Vytvoření spravované image zobecněného virtuálního počítače v Azure](../virtual-machines/windows/classic/capture-image.md).   |
+| Zachytávání | Zachyťte image zadaného virtuálního počítače, aby ji bylo možné použít jako image k vytvoření dalších virtuálních počítačů. Viz [Vytvoření spravované image zobecněného virtuálního počítače v Azure](../virtual-machines/windows/capture-image-resource.md).   |
 | Přesunout | Přejděte na zadaný virtuální počítač.  |
 | Odstranit | Odeberte zadaný virtuální počítač.  |
 | Aktualizovat | Aktualizuje data v zobrazení.  |
@@ -39,7 +40,7 @@ Grafy v dolní oblasti stránky **přehledu** prezentují data o výkonu pro vyb
 
 Zobrazí se následující grafy.
 
-| Položka | Description |
+| Položka | Popis |
 | ------------ | ------------- |
 | CPU (průměr) | Průměrné využití procesoru v procentech za vybraný interval.   |
 | Síť | Provoz v síti a ze sítě (MB) v průběhu vybraného intervalu.  |
@@ -50,9 +51,9 @@ Zobrazí se následující grafy.
 
 Pokud chcete přidat disk virtuálního počítače, otevřete stránku **disky** pro vybraný virtuální počítač. Pokud chcete přidat disk, klikněte na **Přidat disk**. Proveďte konfiguraci každého z následujících nastavení zadáním nebo výběrem vložené možnosti. Klikněte na **Uložit**.
 
-   | Položka | Description |
+   | Položka | Popis |
    | ------------ | ------------- |
-   | Name | Zadejte název pro identifikaci disku.  |
+   | Název | Zadejte název pro identifikaci disku.  |
    | Velikost | Vyberte jednu z dostupných velikostí.  |
    | Řadič SCSI | Vyberte řadič SCSI. Dostupné řadiče se liší v různých podporovaných operačních systémech.  |
    | Mode | Určuje, jak se disk podílí na snímcích. Vyberte jednu z těchto možností: <br> -Nezávislá trvalá: všechna data zapsaná na disk se napíší trvale.<br> Nezávislé, netrvalé: změny zapsané na disk se zahodí při vypnutí nebo resetování virtuálního počítače.  Tento režim umožňuje vždy restartovat virtuální počítač ve stejném stavu. Další informace najdete v [dokumentaci k VMware](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html). |
@@ -63,7 +64,7 @@ Disk odstraníte tak, že ho vyberete a kliknete na **Odstranit**.
 
 Pokud chcete změnit kapacitu virtuálního počítače, otevřete stránku **Velikost** pro vybraný virtuální počítač. Zadejte některou z následujících možností a klikněte na **Uložit**.
 
-| Položka | Description |
+| Položka | Popis |
 | ------------ | ------------- |
 | Počet jader | Počet jader přiřazených k virtuálnímu počítači.  |
 | Virtualizace hardwaru | Zaškrtnutím políčka zpřístupníte hardwarovou virtualizaci hostovanému operačnímu systému. Podívejte se na článek o VMware [vystavte virtualizaci hardwaru VMware s asistencí](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A98801C-68E8-47AF-99ED-00C63E4857F6.html). |
@@ -73,9 +74,9 @@ Pokud chcete změnit kapacitu virtuálního počítače, otevřete stránku **Ve
 
 Chcete-li přidat rozhraní, klikněte na tlačítko **Přidat síťové rozhraní**. Proveďte konfiguraci každého z následujících nastavení tak, že zadáte nebo vyberete vloženou možnost. Klikněte na **Uložit**.
 
-   | Řízení | Description |
+   | Řízení | Popis |
    | ------------ | ------------- |
-   | Name | Zadejte název pro identifikaci rozhraní.  |
+   | Název | Zadejte název pro identifikaci rozhraní.  |
    | Síť | Vyberte ze seznamu konfigurovaných sítí v vSphere privátního cloudu.  |
    | Adaptér | Vyberte adaptér vSphere ze seznamu dostupných typů nakonfigurovaných pro virtuální počítač. Další informace najdete v článku znalostní báze VMware, který [vybírá síťový adaptér pro virtuální počítač](https://kb.vmware.com/s/article/1001805). |
    | Zapnout při spuštění | Určete, jestli se má při spuštění virtuálního počítače povolit hardware síťové karty. Výchozí hodnota je **Enable**. |

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: ffbc850c580daee5890f9c75021cc518918d098e
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 073a92f07d17614cb386c5c33a8058af9b59aaea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145388"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084071"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity-preview"></a>Nastavení připojení k účtu Azure Storage pomocí spravované identity (Preview)
 
@@ -53,17 +53,19 @@ V tomto kroku udělíte službě Azure Kognitivní hledání oprávnění číst
     ![Přidat přiřazení role](./media/search-managed-identities/add-role-assignment-storage.png "Přidat přiřazení role")
 
 4. Vyberte příslušné role na základě typu účtu úložiště, který chcete indexovat:
-    1. Azure Blob Storage vyžaduje přidání vyhledávací služby do rolí **Čtenář a Access** data **Reader a BLOB Storage** .
-    1. Azure Data Lake Storage Gen2 vyžaduje, abyste přidali vyhledávací službu do rolí **Čtenář a Access** data Reader a **BLOB Storage** .
-    1. Azure Table Storage vyžaduje, abyste přidali vyhledávací službu jenom do role **Čtenář a přístup k datům** .
+    1. Úložiště objektů BLOB v Azure vyžaduje, abyste přidali vyhledávací službu do role **čtečky dat objektů BLOB úložiště** .
+    1. Azure Data Lake Storage Gen2 vyžaduje, abyste přidali vyhledávací službu do role **čtečky dat objektů BLOB úložiště** .
+    1. Azure Table Storage vyžaduje přidání vyhledávací služby do role **Čtenář a přístup k datům** .
 5.  Ponechat **přiřazení přístupu k** **uživateli, skupině nebo instančnímu objektu Azure AD**
 6.  Vyhledejte vyhledávací službu, vyberte ji a pak vyberte **Uložit** .
 
+    Příklad pro Azure Blob Storage a Azure Data Lake Storage Gen2:
+
+    ![Přidat přiřazení role čtečky dat objektů BLOB úložiště](./media/search-managed-identities/add-role-assignment-storage-blob-data-reader.png "Přidat přiřazení role čtečky dat objektů BLOB úložiště")
+
+    Příklad pro Azure Table Storage:
+
     ![Přidat přiřazení čtecího zařízení a role přístup k datům](./media/search-managed-identities/add-role-assignment-reader-and-data-access.png "Přidat přiřazení čtecího zařízení a role přístup k datům")
-
-Všimněte si, že při připojování k Azure Blob Storage a Azure Data Lake Storage Gen2 musíte také přidat přiřazení role **čtečky dat objektů BLOB úložiště** .
-
-![Přidat přiřazení role čtečky dat objektů BLOB úložiště](./media/search-managed-identities/add-role-assignment-storage-blob-data-reader.png "Přidat přiřazení role čtečky dat objektů BLOB úložiště")
 
 ### <a name="3---create-the-data-source"></a>3. vytvoření zdroje dat
 

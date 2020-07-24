@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 57ec22cb02512577f8737718cae9175403fb5603
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 627eca1f9a775f12fc9d504629c2a3abbcc919a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74900886"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084496"
 ---
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Správa koncových bodů streamování s využitím webu Azure Portal 
 
@@ -66,7 +67,7 @@ Koncový bod streamování umožňuje konfigurovat následující vlastnosti:
 * Řízení mezipaměti
 * Zásady přístupu přes web
 
-Podrobné informace o těchto vlastnostech naleznete v tématu [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint).
+Podrobné informace o těchto vlastnostech naleznete v tématu [StreamingEndpoint](/rest/api/media/operations/streamingendpoint).
 
 >[!NOTE]
 >Když je CDN povolené, nebudete mít přístup k IP adrese. Přístup k IP adresám se vztahuje jenom v případě, že nemáte síť CDN.
@@ -74,7 +75,7 @@ Podrobné informace o těchto vlastnostech naleznete v tématu [StreamingEndpoin
 Koncový bod streamování můžete nakonfigurovat následujícím způsobem:
 
 1. Vyberte koncový bod streamování, který chcete nakonfigurovat.
-2. Klikněte na příkaz **Nastavení**.
+2. Klikněte na **Nastavení**.
 
 Následuje stručný popis polí.
 
@@ -121,4 +122,3 @@ Prohlédněte si mapy kurzů k Media Services.
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

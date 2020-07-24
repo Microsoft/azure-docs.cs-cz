@@ -5,11 +5,12 @@ author: alexkarcher-msft
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 8fcd0661e2c7cab505121cf0d4d7b4c1d29017f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d84e1269fecf3bd85538415b5790c22aaf6eb01e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77063777"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085108"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>Chyba řešení potíží: "Modul runtime služby Azure Functions je nedosažitelný"
 
@@ -17,7 +18,7 @@ Tento článek vám pomůže při odstraňování potíží s následujícím ch
 
 > "Chyba: Modul runtime služby Azure Functions je nedosažitelný. Kliknutím sem zobrazíte podrobnosti o konfiguraci úložiště. "
 
-K tomuto problému dochází, když Modul runtime služby Azure Functions nepůjde spustit. Nejběžnějším důvodem pro problém je, že aplikace Function App ztratila přístup k účtu úložiště. Další informace najdete v tématu [požadavky na účet úložiště](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements).
+K tomuto problému dochází, když Modul runtime služby Azure Functions nepůjde spustit. Nejběžnějším důvodem pro problém je, že aplikace Function App ztratila přístup k účtu úložiště. Další informace najdete v tématu [požadavky na účet úložiště](./functions-create-function-app-portal.md#storage-account-requirements).
 
 Zbytek tohoto článku vám pomůže vyřešit následující příčiny této chyby, včetně toho, jak identifikovat a vyřešit jednotlivé případy.
 
@@ -25,7 +26,7 @@ Zbytek tohoto článku vám pomůže vyřešit následující příčiny této c
 
 Každá aplikace Function App vyžaduje, aby účet úložiště fungoval. Pokud se tento účet odstraní, nebude fungovat.
 
-Začněte tím, že v nastavení aplikace vyhledáte název svého účtu úložiště. Buď `AzureWebJobsStorage` nebo `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` obsahuje název vašeho účtu úložiště zabaleného v připojovacím řetězci. Další informace najdete v tématu [referenční informace k nastavení aplikace Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage).
+Začněte tím, že v nastavení aplikace vyhledáte název svého účtu úložiště. Buď `AzureWebJobsStorage` nebo `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` obsahuje název vašeho účtu úložiště zabaleného v připojovacím řetězci. Další informace najdete v tématu [referenční informace k nastavení aplikace Azure Functions](./functions-app-settings.md#azurewebjobsstorage).
 
 V Azure Portal vyhledejte svůj účet úložiště, abyste viděli, jestli stále existuje. Pokud byla odstraněna, znovu vytvořte účet úložiště a nahraďte připojovací řetězce úložiště. Váš kód funkce je ztracen a je nutné ho znovu nasadit.
 
@@ -36,12 +37,12 @@ Pokud v předchozím kroku nemůžete najít připojovací řetězec účtu úlo
 ### <a name="required-application-settings"></a>Požadovaná nastavení aplikace
 
 * Požadovanou
-    * [`AzureWebJobsStorage`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
+    * [`AzureWebJobsStorage`](./functions-app-settings.md#azurewebjobsstorage)
 * Vyžadováno pro funkce plánu spotřeby:
-    * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
-    * [`WEBSITE_CONTENTSHARE`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
+    * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](./functions-app-settings.md)
+    * [`WEBSITE_CONTENTSHARE`](./functions-app-settings.md)
 
-Další informace najdete v tématu [referenční informace k nastavení aplikace Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-app-settings).
+Další informace najdete v tématu [referenční informace k nastavení aplikace Azure Functions](./functions-app-settings.md).
 
 ### <a name="guidance"></a>Pokyny
 
@@ -51,7 +52,7 @@ Další informace najdete v tématu [referenční informace k nastavení aplikac
 
 ## <a name="storage-account-credentials-are-invalid"></a>Přihlašovací údaje účtu úložiště nejsou platné.
 
-V případě, že znovu vygenerujete klíče úložiště, je třeba aktualizovat dříve popsané připojovací řetězce účtu úložiště. Další informace o správě klíčů úložiště najdete v tématu [Vytvoření účtu Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account).
+V případě, že znovu vygenerujete klíče úložiště, je třeba aktualizovat dříve popsané připojovací řetězce účtu úložiště. Další informace o správě klíčů úložiště najdete v tématu [Vytvoření účtu Azure Storage](../storage/common/storage-account-create.md).
 
 ## <a name="storage-account-is-inaccessible"></a>Účet úložiště není dostupný.
 
@@ -59,7 +60,7 @@ Vaše aplikace Function App musí být schopna získat přístup k účtu úlož
 
 * Aplikace Function App se nasadí do vašeho App Service Environment bez správných síťových pravidel, která umožňují provoz do a z účtu úložiště.
 
-* Brána firewall účtu úložiště je povolená a není nakonfigurovaná tak, aby umožňovala provoz do a z funkcí. Další informace najdete v tématu [Konfigurace virtuálních sítí a bran firewall Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+* Brána firewall účtu úložiště je povolená a není nakonfigurovaná tak, aby umožňovala provoz do a z funkcí. Další informace najdete v tématu [Konfigurace virtuálních sítí a bran firewall Azure Storage](../storage/common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 ## <a name="daily-execution-quota-is-full"></a>Kvóta denního spuštění je plná.
 
@@ -87,7 +88,7 @@ Ověření konfigurace App Service Environment:
    
 Portál můžete použít taky z počítače připojeného k virtuální síti, na které běží vaše aplikace, nebo na virtuálním počítači, který běží ve vaší virtuální síti. 
 
-Další informace o konfiguraci příchozího pravidla najdete v části "skupiny zabezpečení sítě" v tématu [požadavky na síť pro App Service Environment](https://docs.microsoft.com/azure/app-service/environment/network-info#network-security-groups).
+Další informace o konfiguraci příchozího pravidla najdete v části "skupiny zabezpečení sítě" v tématu [požadavky na síť pro App Service Environment](../app-service/environment/network-info.md#network-security-groups).
 
 ## <a name="next-steps"></a>Další kroky
 

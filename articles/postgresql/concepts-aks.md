@@ -4,13 +4,14 @@ description: Seznamte se s připojením služby Azure Kubernetes Service (AKS) s
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.date: 5/6/2019
+ms.date: 07/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 46aa411826dd3ea578a2d98b0fe631ab0a12ef4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4214b01f3f3651f8785f8644cf12326bf182bce7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74769876"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084173"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql---single-server"></a>Připojení služby Azure Kubernetes a serveru Azure Database for PostgreSQL-Single server
 
@@ -40,11 +41,6 @@ Výstupem bude vygenerovaná skupina prostředků, kterou AKS vytvoří, obsahuj
 az network nic list --resource-group nodeResourceGroup -o table
 ```
 
-## <a name="open-service-broker-for-azure"></a>Technologie Open Service Broker for Azure 
-[Open Service Broker pro Azure](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (OSBA) vám umožní zřídit služby Azure přímo z Kubernetes nebo Cloud Foundry. Jedná se o [Open Service Broker implementaci rozhraní API](https://www.openservicebrokerapi.org/) pro Azure.
-
-Pomocí OSBA můžete vytvořit server Azure Database for PostgreSQL a vytvořit jeho propojení s clusterem AKS pomocí nativního jazyka Kubernetes. Přečtěte si, jak používat OSBA a Azure Database for PostgreSQL společně na [stránce GitHubu OSBA](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/postgresql.md). 
-
 
 ## <a name="connection-pooling"></a>Sdružování připojení
 Pooler připojení minimalizuje náklady a čas spojený s vytvářením a uzavíráním nových připojení k databázi. Fond je kolekce připojení, která se dají znovu použít. 
@@ -53,4 +49,4 @@ S PostgreSQL můžete používat víc fondů připojení. Jedna z těchto [PgBou
 
 
 ## <a name="next-steps"></a>Další kroky
--  [Vytvoření clusteru služby Azure Kubernetes](../aks/kubernetes-walkthrough.md)
+-  [Vytvoření clusteru služby Azure Kubernetes Service](../aks/kubernetes-walkthrough.md)

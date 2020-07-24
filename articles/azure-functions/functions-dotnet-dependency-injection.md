@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: bb9783b38185940f0e75e888c3bc69a1edcc6cbb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 02cb862c5ec6f75d546aabcd6e8ac97a4de961a4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249253"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082949"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Použití injektáže závislostí ve službě Azure Functions pro .NET
 
-Azure Functions podporuje vzor návrhu pro vkládání závislostí (DI), což je technika pro dosažení [inverze řízení (IOC)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) mezi třídami a jejich závislostmi.
+Azure Functions podporuje vzor návrhu pro vkládání závislostí (DI), což je technika pro dosažení [inverze řízení (IOC)](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) mezi třídami a jejich závislostmi.
 
-- Vkládání závislostí v Azure Functions je postavené na funkcích injektáže .NET Core Dependency vstřik. Doporučuje se používat [vkládání závislostí .NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) . Existují rozdíly v tom, jak potlačíte závislosti a jak jsou čteny konfigurační hodnoty pomocí Azure Functions v plánu spotřeby.
+- Vkládání závislostí v Azure Functions je postavené na funkcích injektáže .NET Core Dependency vstřik. Doporučuje se používat [vkládání závislostí .NET Core](/aspnet/core/fundamentals/dependency-injection) . Existují rozdíly v tom, jak potlačíte závislosti a jak jsou čteny konfigurační hodnoty pomocí Azure Functions v plánu spotřeby.
 
 - Podpora vkládání závislostí začíná Azure Functions 2. x.
 
@@ -115,7 +115,7 @@ V tomto příkladu se používá balíček [Microsoft. Extensions. http](https:/
 
 ## <a name="service-lifetimes"></a>Životnost služeb
 
-Azure Functions aplikace poskytují stejné životnosti služeb jako [vkládání závislostí ASP.NET](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes). U aplikace Functions se chovají různé životnosti služby následujícím způsobem:
+Azure Functions aplikace poskytují stejné životnosti služeb jako [vkládání závislostí ASP.NET](/aspnet/core/fundamentals/dependency-injection#service-lifetimes). U aplikace Functions se chovají různé životnosti služby následujícím způsobem:
 
 - **Přechodný**: přechodné služby se vytvářejí při každém požadavku služby.
 - **Vymezené**: rozsah platnosti služby odpovídá době trvání spuštění funkce. Oborové služby se pro každé spuštění vytvoří jednou. Pozdější požadavky na tuto službu během opakovaného použití existující instance služby.
@@ -125,7 +125,7 @@ Zobrazit nebo stáhnout [ukázku různých životností služby](https://aka.ms/
 
 ## <a name="logging-services"></a>Protokolovací služby
 
-Pokud potřebujete vlastního poskytovatele protokolování, zaregistrujte vlastní typ jako instanci nástroje [`ILoggerProvider`](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerfactory) , která je k dispozici prostřednictvím balíčku NuGet [Microsoft. Extensions. Logging. Abstractions](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/) .
+Pokud potřebujete vlastního poskytovatele protokolování, zaregistrujte vlastní typ jako instanci nástroje [`ILoggerProvider`](/dotnet/api/microsoft.extensions.logging.iloggerfactory) , která je k dispozici prostřednictvím balíčku NuGet [Microsoft. Extensions. Logging. Abstractions](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/) .
 
 Application Insights automaticky přidá Azure Functions.
 
@@ -250,7 +250,7 @@ public class HttpTrigger
 }
 ```
 
-Další podrobnosti týkající se práce s možnostmi najdete [v tématu vzor možností v ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options) .
+Další podrobnosti týkající se práce s možnostmi najdete [v tématu vzor možností v ASP.NET Core](/aspnet/core/fundamentals/configuration/options) .
 
 > [!WARNING]
 > Vyhněte se pokusům o čtení hodnot ze souborů, jako *local.settings.jsna* nebo *appSettings. { Environment}. JSON* pro plán spotřeby Hodnoty načtené z těchto souborů souvisejících s triggery triggeru nejsou k dispozici, protože tato aplikace se škáluje, protože hostitelská infrastruktura nemá přístup k informacím o konfiguraci, protože řadič škálování vytváří nové instance aplikace.

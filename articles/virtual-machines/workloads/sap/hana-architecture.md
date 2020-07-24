@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 041da4198b0bdd040a4916008a1135aa2e2a5f7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa059ec8159779969c7ef7a5f4c97f3e985993a9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77614523"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082184"
 ---
 # <a name="sap-hana-large-instances-architecture-on-azure"></a>Architektura SAP HANA (velké instance) v Azure
 
@@ -40,7 +41,7 @@ Zobrazená architektura je rozdělená na tři části:
 
    Pro aplikace a databáze SAP NetWeaver, které se podporují pro spouštění v Azure, najdete informace v tématu [podpora SAP poznámka #1928533 – aplikace SAP v Azure: podporované produkty a typy virtuálních počítačů Azure](https://launchpad.support.sap.com/#/notes/1928533). Dokumentaci k nasazení řešení SAP v Azure najdete v těchto tématech:
 
-  -  [Používání SAP na virtuálních počítačích s Windows](../../virtual-machines-windows-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+  -  [Používání SAP na virtuálních počítačích s Windows](./get-started.md?toc=/azure/virtual-machines/linux/toc.json)
   -  [Použití řešení SAP na virtuálních počítačích Azure](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 - **Left**: zobrazuje SAP HANA hardware s certifikací TDI v razítku velké instance Azure. Jednotky velkých instancí HANA jsou připojené k virtuálním sítím vašeho předplatného Azure pomocí stejné technologie jako připojení z místního prostředí do Azure. Od května 2019 byla představena optimalizace, která umožňuje komunikaci mezi jednotkami velkých instancí HANA a virtuálními počítači Azure bez zapojení brány ExpressRoute. Tato optimalizace označovaná jako rychlá cesta ExpressRoute se zobrazuje v této architektuře (červené čáry). 

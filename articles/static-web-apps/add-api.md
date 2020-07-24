@@ -7,18 +7,18 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
-ms.openlocfilehash: fd4f57350e97ad38c2c78aec29b1e51d775e8a02
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 4df1aa53c09777ac2470581df07ac132255b005a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104108"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083663"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Přidání rozhraní API do služby Azure static Web Apps Preview pomocí Azure Functions
 
 Do služby Azure static Web Apps můžete přidat rozhraní API bez serveru prostřednictvím integrace s Azure Functions. Tento článek ukazuje, jak přidat a nasadit rozhraní API do webu Azure static Web Apps.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným.
   - Pokud účet nemáte, můžete si [ho vytvořit zdarma](https://azure.microsoft.com/free).
@@ -53,7 +53,7 @@ V dalším kroku vytvoříte Azure Functions projekt jako rozhraní API aplikace
 1. V projektu _My-Vanilla-API_ vytvořte podsložku s názvem **rozhraní API**.
 1. Stisknutím **klávesy F1** otevřete paletu příkazů.
 1. Zadejte **Azure Functions: vytvořit nový projekt...**
-1. Stiskněte klávesu **ENTER**
+1. Stiskněte **Enter**.
 1. Zvolit **Procházet**
 1. Vyberte složku **rozhraní API** jako adresář pracovního prostoru projektu.
 1. Zvolte **Vybrat**
@@ -133,7 +133,7 @@ U výše uvedených nastavení je koncovým bodem rozhraní API:
 
 ## <a name="run-the-api-locally"></a>Místní spuštění rozhraní API
 
-Visual Studio Code se integruje s [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local) a umožní vám spustit tento projekt na místním vývojovém počítači před publikováním do Azure.
+Visual Studio Code se integruje s [Azure Functions Core Tools](../azure-functions/functions-run-local.md) a umožní vám spustit tento projekt na místním vývojovém počítači před publikováním do Azure.
 
 > [!TIP]
 > Než budete pokračovat, ujistěte se, že máte nainstalované všechny prostředky uvedené v oddílu [požadavky](#prerequisites) .
@@ -218,10 +218,10 @@ Pomocí Visual Studio Code proveďte potvrzení a vložení změn do vzdálenéh
 ## <a name="create-a-static-web-app"></a>Vytvoření statické webové aplikace
 
 1. Přejít na [Azure Portal](https://portal.azure.com)
-1. Klikněte na **vytvořit prostředek** .
+1. Klikněte na **Vytvořit prostředek**.
 1. Vyhledat **statickou webovou aplikaci**
 1. Klikněte na **statická webová aplikace (Preview)** .
-1. Klikněte na **vytvořit** .
+1. Klikněte na **Vytvořit**.
 
 Pak přidejte nastavení specifické pro aplikaci.
 
@@ -230,11 +230,11 @@ Pak přidejte nastavení specifické pro aplikaci.
 1. Pojmenujte aplikaci **My-Vanilla-API**.
 1. Vyberte _oblast_ , která je pro vás nejblíže
 1. Výběr **bezplatné** _SKU_
-1. Klikněte na tlačítko **Přihlásit se pomocí GitHubu** a proveďte ověření pomocí GitHubu.
+1. Klikněte na tlačítko **Přihlásit se přes GitHub** a ověřte se v této službě.
 1. Vybrat upřednostňovanou _organizaci_
 1. Z rozevíracího seznamu _úložiště_ vyberte **My-Vanilla-API** .
 1. V rozevíracím seznamu _větev_ vyberte **Hlavní** .
-1. Kliknutím na tlačítko **Další: >sestavení** upravíte konfiguraci sestavení
+1. Klikněte na tlačítko **Další: Build >** (Další: Sestavení) a upravte konfiguraci sestavení.
 
 Dále přidejte následující podrobnosti o sestavení.
 
@@ -242,7 +242,7 @@ Dále přidejte následující podrobnosti o sestavení.
 1. Do pole _umístění rozhraní API_ zadejte **API** .
 1. Zrušte zaškrtnutí políčka Výchozí hodnota mimo _umístění artefaktu aplikace_a nechte pole prázdné.
 1. Klikněte na **Zkontrolovat a vytvořit**.
-1. Klikněte na tlačítko **vytvořit** .
+1. Klikněte na tlačítko **Create** (Vytvořit).
 
     Po kliknutí na tlačítko _vytvořit_ Azure provede dvě věci. Nejdřív se vytvoří základní cloudové služby, které budou podporovat aplikaci. Dále proces na pozadí začne sestavovat a nasazovat aplikaci.
 

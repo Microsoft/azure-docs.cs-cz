@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 3cc561a7f7f6f58c439a70315eba857e63def09d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d266dbd0ee908c41a7d29ddbb6d9c73fcfdc7c9e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561313"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083459"
 ---
 # <a name="run-micro-focus-enterprise-server-50-in-a-docker-container-on-azure"></a>Provozování Micro Enterprise serveru 5,0 v kontejneru Docker v Azure
 
@@ -27,7 +27,7 @@ Docker přidá do aplikací přenositelnost a izolaci. Můžete například expo
 
 V tomto kurzu se do **Windows 2016 Datacenter** nainstaluje virtuální počítač s kontejnery z Azure Marketplace. Tento virtuální počítač obsahuje **Docker 18.09.0**. Následující postup ukazuje, jak nasadit kontejner, spustit ho a pak se k němu připojit pomocí emulátoru 3270.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, podívejte se na tyto požadavky:
 
@@ -171,6 +171,6 @@ A to je vše! Teď spouštíte a spravujete aplikaci CICS v kontejneru Docker.
 
 ## <a name="next-steps"></a>Další kroky
 
--   [Instalace Micro Micro Enterprise Server 5,0 a Enterprise Developer 5,0 v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/set-up-micro-focus-azure)
+-   [Instalace Micro Micro Enterprise Server 5,0 a Enterprise Developer 5,0 v Azure](./set-up-micro-focus-azure.md)
 
--   [Migrace mainframových aplikací](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)
+-   [Migrace mainframových aplikací](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)

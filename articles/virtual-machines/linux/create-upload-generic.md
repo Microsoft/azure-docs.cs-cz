@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: guybo
-ms.openlocfilehash: f700dec6486bad9e7024d7c908a70dd0ff2b342c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc18c278754afd4bb08d564a2f82680fd94bf866
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80066764"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082575"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Informace pro neschválené distribuce
 
@@ -24,17 +24,18 @@ Všechna distribuce běžící v Azure mají řadu požadavků. Tento článek n
 
 Doporučujeme, abyste začali s jedním ze systému [Linux v rámci schválených distribucí v Azure](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Následující články ukazují, jak připravit různé schválené distribuce systému Linux podporované v Azure:
 
-* **[Distribuce založené na CentOS](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[SLES a openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+- [Distribuce založené na CentOS](create-upload-centos.md)
+- [Debian Linux](debian-create-upload-vhd.md)
+- [Flatcar Container Linux](flatcar-create-upload-vhd.md)
+- [Oracle Linux](oracle-create-upload-vhd.md)
+- [Red Hat Enterprise Linux](redhat-create-upload-vhd.md)
+- [SLES a openSUSE](suse-create-upload-vhd.md)
+- [Ubuntu](create-upload-ubuntu.md)
 
 Tento článek se zaměřuje na obecné pokyny pro provozování distribuce systému Linux v Azure.
 
 ## <a name="general-linux-installation-notes"></a>Obecné poznámky k instalaci pro Linux
-* Formát virtuálního pevného disku Hyper-V (VHDX) se v Azure nepodporuje, jenom *pevný virtuální*pevný disk.  Disk můžete převést na formát VHD pomocí Správce technologie Hyper-V nebo rutiny [Convert-VHD](https://docs.microsoft.com/powershell/module/hyper-v/convert-vhd) . Pokud používáte VirtualBox, při vytváření disku vyberte **pevnou velikost** , nikoli výchozí (dynamicky přidělené).
+* Formát virtuálního pevného disku Hyper-V (VHDX) se v Azure nepodporuje, jenom *pevný virtuální*pevný disk.  Disk můžete převést na formát VHD pomocí Správce technologie Hyper-V nebo rutiny [Convert-VHD](/powershell/module/hyper-v/convert-vhd) . Pokud používáte VirtualBox, při vytváření disku vyberte **pevnou velikost** , nikoli výchozí (dynamicky přidělené).
 * Azure podporuje virtuální počítače Gen1 (Boot Boot) & Gen2 (UEFI Boot).
 * Maximální velikost povolená pro virtuální pevný disk je 1 023 GB.
 * Při instalaci systému Linux doporučujeme místo Správce logických svazků (LVM) používat standardní oddíly, což je výchozí nastavení pro mnoho instalací. Použití standardních oddílů zabrání v konfliktu LVM názvů s klonovanými virtuálními počítači, zejména pokud je disk s operačním systémem někdy připojený k jinému stejnému virtuálnímu počítači pro řešení potíží. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) se můžou používat na datových discích.
@@ -66,7 +67,7 @@ Image VHD v Azure musí mít virtuální velikost zarovnaná na 1 MB.  Virtuáln
 
 * Virtuální pevný disk http: \/ / \<mystorageaccount> . blob.Core.Windows.NET/VHDs/MyLinuxVM.VHD má nepodporovanou virtuální velikost 21475270656 bajtů. Velikost musí být celé číslo (v MB).
 
-V takovém případě změňte velikost virtuálního počítače pomocí konzoly Správce technologie Hyper-V nebo rutiny [změnit velikost-VHD](https://technet.microsoft.com/library/hh848535.aspx) PowerShell.  Pokud nepoužíváte v prostředí Windows, doporučujeme použít příkaz `qemu-img` k převedení (v případě potřeby) a změně velikosti VHD.
+V takovém případě změňte velikost virtuálního počítače pomocí konzoly Správce technologie Hyper-V nebo rutiny [změnit velikost-VHD](/powershell/module/hyper-v/resize-vhd?view=win10-ps) PowerShell.  Pokud nepoužíváte v prostředí Windows, doporučujeme použít příkaz `qemu-img` k převedení (v případě potřeby) a změně velikosti VHD.
 
 > [!NOTE]
 > Verze [qemu-img obsahuje známou chybu](https://bugs.launchpad.net/qemu/+bug/1490611) >= 2.2.1, která má za následek nesprávně naformátovaný virtuální pevný disk. Tento problém byl opravený v QEMU 2,6. Doporučujeme použít buď `qemu-img` 2.2.0, nebo nižší, nebo 2,6 nebo vyšší.
@@ -189,4 +190,3 @@ V jádru musí být zahrnuté následující opravy. Tento seznam se nedá dokon
    > V VirtualBox se může po spuštění tohoto říká zobrazit následující chyba `waagent -force -deprovision` `[Errno 5] Input/output error` . Tato chybová zpráva není kritická a je možné ji ignorovat.
 
 * Vypněte virtuální počítač a nahrajte virtuální pevný disk do Azure.
-

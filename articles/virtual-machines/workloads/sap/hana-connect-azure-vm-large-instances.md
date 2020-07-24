@@ -15,15 +15,16 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fb6f88fbfcbd539603e435b11661c428d54f3c34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3231241e2fbc6e02725b5611d05b9ee4f0f1a35a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74224730"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082167"
 ---
 # <a name="connecting-azure-vms-to-hana-large-instances"></a>Připojení virtuálních počítačů Azure k Velkým instancím HANA
 
-Článek [co je SAP HANA v Azure (velké instance)?](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) uvádí, že minimální nasazení velkých instancí HANA s aplikační vrstvou SAP v Azure vypadá takto:
+Článek [co je SAP HANA v Azure (velké instance)?](./hana-overview-architecture.md) uvádí, že minimální nasazení velkých instancí HANA s aplikační vrstvou SAP v Azure vypadá takto:
 
 ![Virtuální síť Azure, která je připojená k SAP HANA v Azure (velké instance) a místní](./media/hana-overview-architecture/image1-architecture.png)
 
@@ -93,13 +94,13 @@ Některé rozsahy IP adres, které jsou nezbytné pro nasazení velkých instanc
 
 Volitelné rozsahy IP adres, které se nakonec musí odeslat společnosti Microsoft:
 
-- Pokud se rozhodnete použít [Global REACH ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) , abyste mohli povolit přímé směrování z místních na velké jednotky instancí pro Hana, musíte rezervovat jiný rozsah IP adres/29. Tento rozsah se nesmí překrývat s žádným z dalších rozsahů IP adres, které jste definovali dříve.
-- Pokud se rozhodnete použít [Global REACH ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) , abyste mohli povolit přímé směrování z klienta služby velká instance Hana v jedné oblasti Azure do jiného tenanta rozsáhlých instancí Hana v jiné oblasti Azure, je potřeba rezervovat jiný rozsah IP adres/29. Tento rozsah se nesmí překrývat s žádným z dalších rozsahů IP adres, které jste definovali dříve.
+- Pokud se rozhodnete použít [Global REACH ExpressRoute](../../../expressroute/expressroute-global-reach.md) , abyste mohli povolit přímé směrování z místních na velké jednotky instancí pro Hana, musíte rezervovat jiný rozsah IP adres/29. Tento rozsah se nesmí překrývat s žádným z dalších rozsahů IP adres, které jste definovali dříve.
+- Pokud se rozhodnete použít [Global REACH ExpressRoute](../../../expressroute/expressroute-global-reach.md) , abyste mohli povolit přímé směrování z klienta služby velká instance Hana v jedné oblasti Azure do jiného tenanta rozsáhlých instancí Hana v jiné oblasti Azure, je potřeba rezervovat jiný rozsah IP adres/29. Tento rozsah se nesmí překrývat s žádným z dalších rozsahů IP adres, které jste definovali dříve.
 
 Další informace o ExpressRoute Global Reach a využití o velkých instancích HANA najdete v dokumentech:
 
-- [Síťová architektura SAP HANA (velké instance)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)
-- [Připojení virtuální sítě k velkým instancím HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route)
+- [Síťová architektura SAP HANA (velké instance)](./hana-network-architecture.md)
+- [Připojení virtuální sítě k velkým instancím HANA](./hana-connect-vnet-express-route.md)
  
 Je nutné definovat a naplánovat rozsahy IP adres, které byly popsány dříve. Nemusíte je ale přenášet do Microsoftu. Rozsahy IP adres, které se musí pojmenovat Microsoftu:
 

@@ -13,14 +13,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/22/2020
+ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: b6a284d13d0d737eca65b2593813b3d1b999cfdf
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: dbcb39641f35ad0f997db30b320826764a08bff1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133159"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082252"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Nasazení Azure Virtual Machines pro SAP NetWeaver
 
@@ -74,7 +74,7 @@ ms.locfileid: "86133159"
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-cli-2]:https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
 [azure-portal]:https://portal.azure.com
-[azure-ps]:/powershell/azureps-cmdlets-docs
+[azure-ps]:/powershell/azure/
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
 [azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
@@ -285,15 +285,15 @@ ms.locfileid: "86133159"
 [virtual-machines-linux-tutorial]:../../linux/quick-create-cli.md
 [virtual-machines-linux-update-agent]:../../linux/update-agent.md
 [virtual-machines-manage-availability]:../../linux/manage-availability.md
-[virtual-machines-ps-create-preconfigure-windows-resource-manager-vms]:../../virtual-machines-windows-ps-create.md
+[virtual-machines-ps-create-preconfigure-windows-resource-manager-vms]:../../windows/quick-create-powershell.md
 [virtual-machines-sizes]:../../linux/sizes.md
 [virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
 [virtual-machines-windows-classic-ps-sql-int-listener]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
 [virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
 [virtual-machines-sql-server-infrastructure-services]:../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
 [virtual-machines-sql-server-performance-best-practices]:../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md
-[virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
-[virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
+[virtual-machines-upload-image-windows-resource-manager]:../../windows/upload-image.md
+[virtual-machines-windows-tutorial]:../../windows/quick-create-portal.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
 [virtual-network-deploy-multinic-arm-cli]:../linux/multiple-nics.md
 [virtual-network-deploy-multinic-arm-ps]:../windows/multiple-nics.md
@@ -324,7 +324,7 @@ Azure Virtual Machines je řešení pro organizace, které potřebují výpočet
 
 V tomto článku jsme pokryli postup nasazení aplikací SAP na virtuálních počítačích v Azure, včetně alternativních možností nasazení a řešení potíží. Tento článek sestaví na informacích v [Azure Virtual Machines plánování a implementace pro SAP NetWeaver][planning-guide]. Také doplňuje dokumentaci k instalaci SAP a poznámky SAP, které jsou primárními prostředky pro instalaci a nasazení softwaru SAP.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
@@ -370,7 +370,7 @@ Pro určení velikosti SAP si můžete sdělit následující informace:
 
 V Azure Resource Manager můžete použít skupiny prostředků ke správě všech prostředků aplikace ve vašem předplatném Azure. Další informace naleznete v tématu [Přehled Azure Resource Manager][resource-group-overview].
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Prostředky
 
 ### <a name="sap-resources"></a><a name="42ee2bdb-1efc-4ec7-ab31-fe4c22769b94"></a>Prostředky SAP
 
@@ -421,7 +421,7 @@ Následující vývojový diagram znázorňuje posloupnost kroků specifických 
 
 Nejjednodušší způsob, jak vytvořit nový virtuální počítač s imagí z Azure Marketplace, je použití Azure Portal.
 
-1.  Přejděte do části <https://portal.azure.com/#create/hub> (Soubor > Nový > Jiné).  Nebo v nabídce Azure Portal vyberte **+ Nový**.
+1.  Přejděte na <https://portal.azure.com/#create/hub>.  Nebo v nabídce Azure Portal vyberte **+ Nový**.
 1.  Vyberte **COMPUTE**a potom vyberte typ operačního systému, který chcete nasadit. Například Windows Server 2012 R2, SUSE Linux Enterprise Server 12 (SLES 12), Red Hat Enterprise Linux 7,2 (RHEL 7,2) nebo Oracle Linux 7,2. Výchozí zobrazení seznamu nezobrazuje všechny podporované operační systémy. Pro úplný seznam vyberte **Zobrazit vše** . Další informace o podporovaných operačních systémech pro nasazení softwaru SAP najdete v tématu SAP Note [1928533].
 1.  Na další stránce si přečtěte podmínky a ujednání.
 1.  V poli **Vyberte model nasazení** vyberte možnost **Správce prostředků**.
@@ -443,8 +443,8 @@ Průvodce vás provede nastavením požadovaných parametrů k vytvoření virtu
 1. **Nastavení**:
    * **Storage**
      * **Typ disku**: Vyberte typ disku disku s operačním systémem. Pokud chcete pro datové disky použít Premium Storage, doporučujeme použít také Premium Storage pro disk s operačním systémem.
-     * **Použití spravovaných disků**: pokud chcete Managed disks použít, vyberte Ano. Další informace o Managed Disks naleznete v části kapitola [Managed disks](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage#microsoft-azure-storage-resiliency) v příručce pro plánování.
-     * **Účet úložiště**: Vyberte existující účet úložiště nebo vytvořte nový. Ne všechny typy úložišť fungují pro spouštění aplikací SAP. Další informace o typech úložiště najdete v tématu [Struktura úložiště virtuálního počítače pro nasazení RDBMS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64).
+     * **Použití spravovaných disků**: pokud chcete Managed disks použít, vyberte Ano. Další informace o Managed Disks naleznete v části kapitola [Managed disks](./planning-guide-storage.md#microsoft-azure-storage-resiliency) v příručce pro plánování.
+     * **Účet úložiště**: Vyberte existující účet úložiště nebo vytvořte nový. Ne všechny typy úložišť fungují pro spouštění aplikací SAP. Další informace o typech úložiště najdete v tématu [Struktura úložiště virtuálního počítače pro nasazení RDBMS](./dbms_guide_general.md#65fa79d6-a85f-47ee-890b-22e794f51a64).
    * **Síť**
      * **Virtuální síť** a **podsíť**: Pokud chcete virtuální počítač integrovat s vaším intranetem, vyberte virtuální síť, která je připojená k vaší místní síti.
      * **Veřejná IP adresa**: Vyberte veřejnou IP adresu, kterou chcete použít, nebo zadejte parametry pro vytvoření nové veřejné IP adresy. Veřejnou IP adresu můžete použít pro přístup k virtuálnímu počítači přes Internet. Ujistěte se, že jste taky vytvořili skupinu zabezpečení sítě, která vám usnadní zabezpečení přístupu k virtuálnímu počítači.
@@ -500,7 +500,7 @@ V Azure Portal zadejte pro šablonu následující parametry:
 
      U větších systémů důrazně doporučujeme použít Azure Premium Storage. Další informace o typech úložiště najdete v těchto zdrojích:
       * [Použití Azure SSD úrovně Premium Storage pro instanci SAP DBMS][2367194]
-      * [Struktura úložiště virtuálního počítače pro nasazení RDBMS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
+      * [Struktura úložiště virtuálního počítače pro nasazení RDBMS](./dbms_guide_general.md#65fa79d6-a85f-47ee-890b-22e794f51a64)
       * [Premium Storage: vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure][storage-premium-storage-preview-portal]
       * [Úvod do Microsoft Azure Storage][storage-introduction]
    * **Uživatelské jméno** a **heslo správce**: uživatelské jméno a heslo.
@@ -545,7 +545,7 @@ Pomocí různých kroků můžete vytvořit soukromou bitovou kopii pro Linux, n
 ---
 > ![Windows][Logo_Windows] Windows
 >
-> K přípravě image Windows, kterou můžete použít k nasazení více virtuálních počítačů, musí být nastavení systému Windows (například identifikátor SID Windows a název hostitele) abstraktní nebo zobecněná na místním virtuálním počítači. K tomu můžete použít [Nástroj Sysprep](https://msdn.microsoft.com/library/hh825084.aspx) .
+> K přípravě image Windows, kterou můžete použít k nasazení více virtuálních počítačů, musí být nastavení systému Windows (například identifikátor SID Windows a název hostitele) abstraktní nebo zobecněná na místním virtuálním počítači. K tomu můžete použít [Nástroj Sysprep](/previous-versions/windows/it-pro/windows-8.1-and-8/hh825084(v=win.10)) .
 >
 > ![Linux][Logo_Linux] Linux
 >
@@ -562,9 +562,9 @@ Následující vývojový diagram znázorňuje posloupnost kroků specifických 
 
 #### <a name="create-a-virtual-machine-by-using-the-azure-portal"></a>Vytvoření virtuálního počítače pomocí Azure Portal
 
-Nejjednodušší způsob, jak vytvořit nový virtuální počítač z image spravovaného disku, je pomocí Azure Portal. Další informace o tom, jak vytvořit image pro správu disku, najdete [v tématu zachycení spravované image zobecněného virtuálního počítače v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource) .
+Nejjednodušší způsob, jak vytvořit nový virtuální počítač z image spravovaného disku, je pomocí Azure Portal. Další informace o tom, jak vytvořit image pro správu disku, najdete [v tématu zachycení spravované image zobecněného virtuálního počítače v Azure](../../windows/capture-image-resource.md) .
 
-1.  Přejděte do části <https://ms.portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Compute%2Fimages> (Soubor > Nový > Jiné). Nebo v nabídce Azure Portal vyberte možnost **obrázky**.
+1.  Přejděte na <https://ms.portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Compute%2Fimages>. Nebo v nabídce Azure Portal vyberte možnost **obrázky**.
 1.  Vyberte image spravovaného disku, kterou chcete nasadit, a klikněte na **vytvořit virtuální počítač** .
 
 Průvodce vás provede nastavením požadovaných parametrů k vytvoření virtuálního počítače, kromě všech požadovaných prostředků, jako jsou síťová rozhraní a účty úložiště. Některé z těchto parametrů jsou:
@@ -583,7 +583,7 @@ Průvodce vás provede nastavením požadovaných parametrů k vytvoření virtu
 1. **Nastavení**:
    * **Storage**
      * **Typ disku**: Vyberte typ disku disku s operačním systémem. Pokud chcete pro datové disky použít Premium Storage, doporučujeme použít také Premium Storage pro disk s operačním systémem.
-     * **Použití spravovaných disků**: pokud chcete Managed disks použít, vyberte Ano. Další informace o Managed Disks naleznete v části kapitola [Managed disks](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage#microsoft-azure-storage-resiliency) v příručce pro plánování.
+     * **Použití spravovaných disků**: pokud chcete Managed disks použít, vyberte Ano. Další informace o Managed Disks naleznete v části kapitola [Managed disks](./planning-guide-storage.md#microsoft-azure-storage-resiliency) v příručce pro plánování.
    * **Síť**
      * **Virtuální síť** a **podsíť**: Pokud chcete virtuální počítač integrovat s vaším intranetem, vyberte virtuální síť, která je připojená k vaší místní síti.
      * **Veřejná IP adresa**: Vyberte veřejnou IP adresu, kterou chcete použít, nebo zadejte parametry pro vytvoření nové veřejné IP adresy. Veřejnou IP adresu můžete použít pro přístup k virtuálnímu počítači přes Internet. Ujistěte se, že jste taky vytvořili skupinu zabezpečení sítě, která vám usnadní zabezpečení přístupu k virtuálnímu počítači.
@@ -636,7 +636,7 @@ V Azure Portal zadejte pro šablonu následující parametry:
 
      U větších systémů důrazně doporučujeme použít Azure Premium Storage. Další informace o typech úložiště najdete v následujících zdrojích informací:
       * [Použití Azure SSD úrovně Premium Storage pro instanci SAP DBMS][2367194]
-      * [Struktura úložiště virtuálního počítače pro nasazení RDBMS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
+      * [Struktura úložiště virtuálního počítače pro nasazení RDBMS](./dbms_guide_general.md#65fa79d6-a85f-47ee-890b-22e794f51a64)
       * [Premium Storage: vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure][storage-premium-storage-preview-portal]
       * [Úvod do Microsoft Azure Storage][storage-introduction]
    * **Identifikátor URI image virtuálního pevného** disku (jenom šablona image nespravovaného disku): identifikátor URI PRIVÁTNÍHO virtuálního pevného disku, například https:// &lt;> Account. blob.Core.Windows.NET/VHDs/userimage.VHD.
@@ -728,7 +728,7 @@ V Azure Portal zadejte pro šablonu následující parametry:
 
      U větších systémů důrazně doporučujeme použít Azure Premium Storage. Další informace o typech úložiště najdete v následujících zdrojích informací:
       * [Použití Azure SSD úrovně Premium Storage pro instanci SAP DBMS][2367194]
-      * [Struktura úložiště virtuálního počítače pro nasazení RDBMS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
+      * [Struktura úložiště virtuálního počítače pro nasazení RDBMS](./dbms_guide_general.md#65fa79d6-a85f-47ee-890b-22e794f51a64)
       * [Premium Storage: vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure][storage-premium-storage-preview-portal]
       * [Úvod do Microsoft Azure Storage][storage-introduction]
    * **Identifikátor URI VHD disku s operačním systémem** (jenom šablona nespravovaného disku): identifikátor URI privátního disku s operačním systémem, například https://\ &lt; účet \>. blob.Core.Windows.NET/VHDs/OSDisk.VHD.
@@ -780,9 +780,9 @@ V této části najdete podrobný postup pro konkrétní úkoly v procesu konfig
 
 ### <a name="deploy-azure-powershell-cmdlets"></a><a name="604bcec2-8b6e-48d2-a944-61b0f5dee2f7"></a>Nasazení rutin Azure PowerShell
 
-Postupujte podle kroků popsaných v článku [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) .
+Postupujte podle kroků popsaných v článku [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps) .
 
-Pravidelně kontrolujte aktualizace rutin PowerShellu, které se obvykle aktualizují měsíčně. Postupujte podle kroků popsaných v [tomto](https://docs.microsoft.com/powershell/azure/install-az-ps#update-the-azure-powershell-module) článku. Pokud není v SAP Note [1928533] nebo sap Note [2015553]uvedeno jinak, doporučujeme pracovat s nejnovějšími verzemi Azure PowerShell rutin.
+Pravidelně kontrolujte aktualizace rutin PowerShellu, které se obvykle aktualizují měsíčně. Postupujte podle kroků popsaných v [tomto](/powershell/azure/install-az-ps#update-the-azure-powershell-module) článku. Pokud není v SAP Note [1928533] nebo sap Note [2015553]uvedeno jinak, doporučujeme pracovat s nejnovějšími verzemi Azure PowerShell rutin.
 
 Pokud chcete zjistit verzi rutin Azure PowerShell, které jsou nainstalované na vašem počítači, spusťte tento příkaz PowerShellu:
 
@@ -792,7 +792,7 @@ Pokud chcete zjistit verzi rutin Azure PowerShell, které jsou nainstalované na
 
 ### <a name="deploy-azure-cli"></a><a name="1ded9453-1330-442a-86ea-e0fd8ae8cab3"></a>Nasazení Azure CLI
 
-Postupujte podle kroků popsaných v článku [instalace rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) .
+Postupujte podle kroků popsaných v článku [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli) .
 
 Pravidelně kontrolujte aktualizace rozhraní příkazového řádku Azure, které se obvykle aktualizují měsíčně.
 
@@ -933,7 +933,7 @@ Postup instalace rozšíření Azure pro SAP pomocí prostředí PowerShell:
 
 1. Ujistěte se, že máte nainstalovanou nejnovější verzi rutiny Azure PowerShell. Další informace najdete v tématu [nasazení rutin Azure PowerShell][deployment-guide-4.1].  
 1. Spusťte následující rutinu Azure PowerShellu.
-    Seznam dostupných prostředí získáte spuštěním `commandlet Get-AzEnvironment` . Pokud chcete používat globální Azure, vaše prostředí je **AzureCloud**. V případě Azure Čína 21Vianet vyberte **AzureChinaCloud**.
+    Seznam dostupných prostředí získáte spuštěním rutiny `Get-AzEnvironment` . Pokud chcete používat globální Azure, vaše prostředí je **AzureCloud**. V případě Azure Čína 21Vianet vyberte **AzureChinaCloud**.
 
     ```powershell
     $env = Get-AzEnvironment -Name <name of the environment>
@@ -1023,44 +1023,21 @@ Instalace rozšíření Azure pro SAP pomocí Azure CLI:
 
 Nové rozšíření VM pro SAP používá pro přístup k datům monitorování a konfigurace virtuálního počítače spravovanou identitu přiřazenou k virtuálnímu počítači. Pokud chcete pro SAP nainstalovat nové rozšíření Azure pomocí PowerShellu, musíte nejdřív přiřadit takovou identitu k virtuálnímu počítači a udělit této identitě přístup ke všem prostředkům používaným tímto virtuálním počítačem, třeba k diskům a síťovým rozhraním.
 
-Proces bude automatizován v další verzi Azure PowerShell (> 4.2.0). Po tom, co je nová verze dostupná, budeme Tento článek aktualizovat. Do té doby prosím postupujte podle těchto kroků a nainstalujte rozšíření ručně.
-
 > [!NOTE]
 > Následující kroky vyžadují oprávnění vlastníka pro skupinu prostředků nebo jednotlivé prostředky (virtuální počítač, datové disky atd.).
 
 1. Ujistěte se, že používáte agenta hostitele SAP 7,21 PL 47 nebo vyšší.
 1. Ujistěte se, že jste odinstalovali aktuální verzi rozšíření virtuálního počítače pro SAP. Instalace obou verzí rozšíření virtuálního počítače pro SAP na stejném virtuálním počítači není podporovaná.
-1. Ujistěte se, že máte nainstalovanou nejnovější verzi rutiny Azure PowerShell. Další informace najdete v tématu [nasazení rutin Azure PowerShell][deployment-guide-4.1].
-1. Postupujte podle kroků uvedených v článku [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí prostředí PowerShell][qs-configure-powershell-windows-vm] , aby se virtuálnímu počítači povolila spravovaná identita přiřazená systémem. Spravované identity přiřazené uživatelem nejsou podporovány rozšířením virtuálního počítače pro SAP. Můžete ale povolit i identitu přiřazenou systémem i uživatele.
-    
-    Příklad:
-    ```powershell
-    $vm = Get-AzVM -ResourceGroupName <resource-group-name> -Name <vm name>
-    Update-AzVM -ResourceGroupName $vm.ResourceGroupName -VM $vm -IdentityType SystemAssigned
-    ```
-
-1. Přiřaďte přístup spravovaných identit ke skupině prostředků virtuálního počítače nebo ke všem síťovým rozhraním, spravovaným diskům a samotnému virtuálnímu počítači, jak je popsáno v tématu [přiřazení spravované identity k prostředku pomocí příkladu PowerShellu][howto-assign-access-powershell] :
+1. Ujistěte se, že máte nainstalovanou nejnovější verzi rutiny Azure PowerShell (aspoň 4.3.0). Další informace najdete v tématu [nasazení rutin Azure PowerShell][deployment-guide-4.1].
+1. Spusťte následující rutinu Azure PowerShellu.
+    Seznam dostupných prostředí získáte spuštěním rutiny `Get-AzEnvironment` . Pokud chcete používat globální Azure, vaše prostředí je **AzureCloud**. V případě Azure Čína 21Vianet vyberte **AzureChinaCloud**.
 
     ```powershell
-    $spID = (Get-AzVM -ResourceGroupName <resource-group-name> -Name <vm name>).identity.principalid
-    $rg = Get-AzResourceGroup -Name $vm.ResourceGroupName
-    New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Reader" -Scope $rg.ResourceId
-    ```
-
-1. Spusťte následující rutinu prostředí PowerShell pro instalaci rozšíření Azure pro SAP.
-    Rozšíření je aktuálně podporováno pouze v AzureCloud. Azure Čína 21Vianet, Azure Government nebo některá z dalších speciálních prostředí se zatím nepodporují.
-
-    ```powershell
-    $env = Get-AzEnvironment -Name AzureCloud
+    $env = Get-AzEnvironment -Name <name of the environment>
     Connect-AzAccount -Environment $env
     Set-AzContext -SubscriptionName <subscription name>
 
-    $vm = Get-AzVM -ResourceGroupName <resource-group-name> -Name <vm name>
-    if ($vm.StorageProfile.OsDisk.OsType -eq "Windows") {
-      Set-AzVMExtension -Publisher Microsoft.AzureCAT.AzureEnhancedMonitoring -ExtensionType MonitorX64Windows -Name MonitorX64Windows -TypeHandlerVersion "1.0" -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Settings @{"system" = "SAP"} -Location $vm.Location
-    } else {
-      Set-AzVMExtension -Publisher Microsoft.AzureCAT.AzureEnhancedMonitoring -ExtensionType MonitorX64Linux -Name MonitorX64Linux -TypeHandlerVersion "1.0" -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Settings @{"system" = "SAP"} -Location $vm.Location
-    }
+    Set-AzVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name> -InstallNewExtension
     ```
 
 #### <a name="configure-the-new-azure-extension-for-sap-with-azure-cli"></a><a name="c8749c24-fada-42ad-b114-f9aae2dc37da"></a>Konfigurace nového rozšíření Azure pro SAP pomocí Azure CLI
@@ -1116,7 +1093,10 @@ Spusťte kontrolu připravenosti pro rozšíření Azure pro SAP, jak je popsan�
 
 ### <a name="readiness-check-for-the-azure-extension-for-sap"></a><a name="bb61ce92-8c5c-461f-8c53-39f5e5ed91f2"></a>Kontroly připravenosti pro rozšíření Azure pro SAP
 
-Tato kontrolu zajistí, že se všechny metriky výkonu, které se zobrazí v aplikaci SAP, poskytují pomocí základního rozšíření Azure pro SAP. Pokud jste nasadili nové rozšíření Azure pro SAP, postupujte podle pokynů [pro kontrolu připravenosti kapitoly pro nové rozšíření Azure pro SAP][deployment-guide-5.1-new] v této příručce.
+> [!NOTE]
+> Existují dvě verze rozšíření virtuálního počítače. Tato kapitola se zabývá výchozím rozšířením virtuálního počítače. Pokud jste nainstalovali nové rozšíření virtuálních počítačů, přečtěte si prosím téma [kontroly připravenosti kapitoly pro nové rozšíření Azure pro SAP][deployment-guide-5.1-new] .
+
+Tato kontrolu zajistí, že se všechny metriky výkonu, které se zobrazí v aplikaci SAP, poskytují pomocí základního rozšíření Azure pro SAP.
 
 #### <a name="run-the-readiness-check-on-a-windows-vm"></a>Spuštění kontroly připravenosti na virtuálním počítači s Windows
 
@@ -1167,15 +1147,15 @@ Pokud hodnota **stavu** není v **pořádku**, postupujte podle pokynů v část
 
 1. Podívejte se na výstup rozšíření Azure pro SAP.
 
-   a.  Spusťte `more /var/lib/AzureEnhancedMonitor/PerfCounters`.
+   a.  Spuštěním příkazu `more /var/lib/AzureEnhancedMonitor/PerfCounters`
 
    **Očekávaný výsledek**: vrátí seznam čítačů výkonu. Soubor by neměl být prázdný.
 
-   b. Spusťte `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error`.
+   b. Spuštěním příkazu `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error`
 
    **Očekávaný výsledek**: vrátí jeden řádek, kde chyba je **none**, například **3; config; Chyba; 0; 0; 0; None; 0; 1456416792; TST-servercs;**
 
-   c. Spusťte `more /var/lib/AzureEnhancedMonitor/LatestErrorRecord`.
+   c. Spuštěním příkazu `more /var/lib/AzureEnhancedMonitor/LatestErrorRecord`
 
    **Očekávaný výsledek**: vrátí hodnotu jako prázdnou nebo neexistuje.
 
@@ -1183,29 +1163,29 @@ Pokud předchozí kontrola nebyla úspěšná, spusťte tyto další kontroly:
 
 1. Ujistěte se, že je waagent nainstalovaný a povolený.
 
-   a.  Spusťte `sudo ls -al /var/lib/waagent/`.
+   a.  Spuštěním příkazu `sudo ls -al /var/lib/waagent/`
 
      **Očekávaný výsledek**: Vypíše obsah adresáře waagent.
 
-   b.  Spusťte `ps -ax | grep waagent`.
+   b.  Spuštěním příkazu `ps -ax | grep waagent`
 
    **Očekávaný výsledek**: zobrazuje jednu položku podobnou této:`python /usr/sbin/waagent -daemon`
 
 1. Ujistěte se, že je nainstalovaná a spuštěná přípona Azure pro SAP.
 
-   a.  Spusťte `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'`.
+   a.  Spuštěním příkazu `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'`
 
    **Očekávaný výsledek**: zobrazuje obsah rozšíření Azure pro adresář SAP.
 
-   b. Spusťte `ps -ax | grep AzureEnhanced`.
+   b. Spuštěním příkazu `ps -ax | grep AzureEnhanced`
 
    **Očekávaný výsledek**: zobrazuje jednu položku podobnou této:`python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon`
 
 1. Nainstalujte agenta hostitele SAP, jak je popsáno v tématu SAP Note [1031096], a zkontrolujte výstup `saposcol` .
 
-   a.  Spusťte `/usr/sap/hostctrl/exe/saposcol -d`.
+   a.  Spuštěním příkazu `/usr/sap/hostctrl/exe/saposcol -d`
 
-   b.  Spusťte `dump ccm`.
+   b.  Spuštěním příkazu `dump ccm`
 
    c.  Ověřte, zda je metrika **přístupu Virtualization_Configuration \enhanced pro monitorování** **pravdivá**.
 
@@ -1215,7 +1195,10 @@ Pokud některá z těchto kontrol selže a podrobnější informace o tom, jak t
 
 ### <a name="readiness-check-for-the-new-azure-extension-for-sap"></a><a name="7bf24f59-7347-4c7a-b094-4693e4687ee5"></a>Kontroly připravenosti pro nové rozšíření Azure pro SAP
 
-Tato kontrolu zajistí, že se všechny metriky výkonu, které se zobrazí v aplikaci SAP, poskytují pomocí základního rozšíření Azure pro SAP. Pokud jste nasadili staré rozšíření Azure pro SAP, postupujte podle pokynů v části [kontroly připravenosti pro Azure Extension pro SAP][deployment-guide-5.1] v této příručce.
+> [!NOTE]
+> Existují dvě verze rozšíření virtuálního počítače. Tato kapitola se zabývá novým rozšířením virtuálního počítače. Pokud jste nainstalovali výchozí rozšíření virtuálního počítače, přečtěte si prosím téma [kontroly připravenosti kapitoly pro Azure Extension pro SAP][deployment-guide-5.1].
+
+Tato kontrolu zajistí, že se všechny metriky výkonu, které se zobrazí v aplikaci SAP, poskytují pomocí základního rozšíření Azure pro SAP.
 
 #### <a name="run-the-readiness-check-on-a-windows-vm"></a>Spuštění kontroly připravenosti na virtuálním počítači s Windows
 
@@ -1245,29 +1228,29 @@ Pokud předchozí kontrola nebyla úspěšná, spusťte tyto další kontroly:
 
 1. Ujistěte se, že je waagent nainstalovaný a povolený.
 
-   a.  Spusťte `sudo ls -al /var/lib/waagent/`.
+   a.  Spuštěním příkazu `sudo ls -al /var/lib/waagent/`
 
      **Očekávaný výsledek**: Vypíše obsah adresáře waagent.
 
-   b.  Spusťte `ps -ax | grep waagent`.
+   b.  Spuštěním příkazu `ps -ax | grep waagent`
 
    **Očekávaný výsledek**: zobrazuje jednu položku podobnou této:`python /usr/sbin/waagent -daemon`
 
 1. Ujistěte se, že je nainstalovaná a spuštěná přípona Azure pro SAP.
 
-   a.  Spusťte `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Linux-*/'`.
+   a.  Spuštěním příkazu `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Linux-*/'`
 
    **Očekávaný výsledek**: zobrazuje obsah rozšíření Azure pro adresář SAP.
 
-   b. Spusťte `ps -ax | grep AzureEnhanced`.
+   b. Spuštěním příkazu `ps -ax | grep AzureEnhanced`
 
    **Očekávaný výsledek**: zobrazuje jednu položku podobnou této:`/var/lib/waagent/Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Linux-1.0.0.82/AzureEnhancedMonitoring -monitor`
 
 1. Nainstalujte agenta hostitele SAP, jak je popsáno v tématu SAP Note [1031096], a zkontrolujte výstup `saposcol` .
 
-   a.  Spusťte `/usr/sap/hostctrl/exe/saposcol -d`.
+   a.  Spuštěním příkazu `/usr/sap/hostctrl/exe/saposcol -d`
 
-   b.  Spusťte `dump ccm`.
+   b.  Spuštěním příkazu `dump ccm`
 
    c.  Ověřte, zda je metrika **přístupu Virtualization_Configuration \enhanced pro monitorování** **pravdivá**.
 
@@ -1276,6 +1259,9 @@ Pokud již máte nainstalovaný aplikační Server SAP NetWeaver ABAP, otevřete
 Pokud některá z těchto kontrol selže a získáte podrobné informace o tom, jak toto rozšíření znovu nasadit, přečtěte si téma [řešení potíží s novým rozšířením Azure pro SAP][deployment-guide-5.3-new].
 
 ### <a name="health-check-for-the-azure-extension-for-sap-configuration"></a><a name="e2d592ff-b4ea-4a53-a91a-e5521edb6cd1"></a>Kontrolu stavu pro rozšíření Azure pro konfiguraci SAP
+
+> [!NOTE]
+> Existují dvě verze rozšíření virtuálního počítače. Tato kapitola se zabývá výchozím rozšířením virtuálního počítače. Pokud jste nainstalovali nové rozšíření virtuálních počítačů, přečtěte si prosím téma [o kontrole stavu pro nové rozšíření Azure pro konfiguraci SAP][deployment-guide-5.2-new].
 
 Pokud některá data infrastruktury nejsou doručena správně, jak je uvedeno v testu popsaných v tématu [Kontrola připravenosti pro Azure Extension pro SAP][deployment-guide-5.1], spusťte `Test-AzVMAEMExtension` rutinu, abyste zkontrolovali, jestli je správně nakonfigurovaná infrastruktura Azure a rozšíření Azure pro SAP.
 
@@ -1301,6 +1287,9 @@ Ujistěte se, že všechny výsledky kontroly stavu jsou v **pořádku**. Pokud 
 
 ### <a name="health-check-for-the-new-azure-extension-for-sap-configuration"></a><a name="464ac96d-7d3c-435d-a5ae-3faf3bfef4b3"></a>Kontrolu stavu pro nové rozšíření Azure pro konfiguraci SAP
 
+> [!NOTE]
+> Existují dvě verze rozšíření virtuálního počítače. Tato kapitola se zabývá novým rozšířením virtuálního počítače. Pokud jste nainstalovali výchozí rozšíření virtuálního počítače, přečtěte si prosím téma [o kontrole stavu pro rozšíření Azure pro konfiguraci SAP][deployment-guide-5.2].
+
 Pokud některá z dat infrastruktury nejsou dodána správně, jak je uvedeno v testu popsaných v tématu [Kontrola připravenosti pro Azure Extension pro SAP][deployment-guide-5.1-new], spusťte `Get-AzVMExtension` rutinu, abyste zkontrolovali, jestli je nainstalované rozšíření Azure pro SAP. `Test-AzVMAEMExtension`Ještě nepodporuje nové rozšíření. Jakmile rutina podporuje nové rozšíření, aktualizujeme Tento článek.
 
 1. Ujistěte se, že máte nainstalovanou nejnovější verzi rutiny Azure PowerShell, jak je popsáno v tématu [Deploying Azure PowerShell rutiny][deployment-guide-4.1].
@@ -1310,12 +1299,15 @@ Pokud některá z dat infrastruktury nejsou dodána správně, jak je uvedeno v 
    $env = Get-AzEnvironment -Name <name of the environment>
    Connect-AzAccount -Environment $env
    Set-AzContext -SubscriptionName <subscription name>
-   Get-AzVMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
+   Test-AzVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
    ```
 
-1. Rutina obsahuje seznam všech rozšíření vybraného virtuálního počítače. Ujistěte se, že na virtuálním počítači je nainstalované rozšíření Azure pro SAP.
+1. Rutina testuje konfiguraci rozšíření virtuálního počítače pro SAP na virtuálním počítači, který vyberete.
 
 ### <a name="troubleshooting-azure-extension-for-sap"></a><a name="fe25a7da-4e4e-4388-8907-8abc2d33cfd8"></a>Řešení potíží s rozšířením Azure pro SAP
+
+> [!NOTE]
+> Existují dvě verze rozšíření virtuálního počítače. Tato kapitola se zabývá výchozím rozšířením virtuálního počítače. Pokud jste nainstalovali nové rozšíření virtuálních počítačů, přečtěte si kapitolu [Poradce při potížích s novým rozšířením Azure pro SAP][deployment-guide-5.3-new].
 
 #### <a name="windowslogo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Čítače výkonu Azure se vůbec nezobrazují
 
@@ -1406,6 +1398,9 @@ Metriky výkonu v Azure se shromažďují pomocí démona, který získává dat
 Pokud problém nevyřešíte pomocí SAP Note [1999351] , spusťte konfigurační skript znovu, `Set-AzVMAEMExtension` jak je popsáno v tématu [Konfigurace rozšíření Azure pro SAP][deployment-guide-4.5]. Může se stát, že budete muset počkat na hodinu, protože čítače pro diagnostiku úložiště nebo diagnostické čítače se nemůžou vytvářet hned po povolení. Pokud se problém opakuje, otevřete zprávu zákaznická podpora SAP na komponentě BC-OP-NT-AZR pro Windows nebo BC-OP-LNX-AZR pro virtuální počítač se systémem Linux.
 
 ### <a name="troubleshooting-the-new-azure-extension-for-sap"></a><a name="b7afb8ef-a64c-495d-bb37-2af96688c530"></a>Řešení potíží s novým rozšířením Azure pro SAP
+
+> [!NOTE]
+> Existují dvě verze rozšíření virtuálního počítače. Tato kapitola se zabývá novým rozšířením virtuálního počítače. Pokud jste nainstalovali výchozí rozšíření virtuálního počítače, přečtěte si kapitolu [Poradce při potížích s rozšířením Azure pro SAP][deployment-guide-5.3].
 
 #### <a name="windowslogo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Čítače výkonu Azure se vůbec nezobrazují
 
@@ -1500,7 +1495,7 @@ Postupujte podle kroků v části [Konfigurace rozšíření Azure pro SAP][depl
 
 Pokud chyby nezmizí, obraťte se na [podporu][deployment-guide-contact-support].
 
-#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Kontaktujte podporu
+#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Kontaktování podpory
 
 Neočekávaná chyba nebo neexistuje žádné známé řešení. Shromážděte soubor AzureEnhancedMonitoring_service. log umístěný ve složce C:\Packages\Plugins\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler \\ \<version\> \Drop (Windows) nebo/var/log/Azure/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux (Linux) a požádejte o další pomoc podporu SAP.
 

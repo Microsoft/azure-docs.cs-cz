@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
-ms.openlocfilehash: 874e6f9b1c0bebedb5f50ca38d0703420be69de5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: c4a4f641283a9a4771a236ba844cfe296b31c28c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186958"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082674"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Postup instalace a konfigurace Trend Micro hlubokého zabezpečení jako služby na virtuálním počítači s Windows
 
@@ -38,7 +38,7 @@ Pokud máte aktuální předplatné od společnosti Trend Micro pro místní ře
 
 [Azure Portal](https://portal.azure.com) umožňuje nainstalovat rozšíření Trend Micro Security při použití image z **Marketplace** k vytvoření virtuálního počítače. Pokud vytváříte jeden virtuální počítač, můžete pomocí portálu snadno přidat ochranu z Trend Micro.
 
-Když použijete záznam z **Marketplace** , otevře se průvodce, který vám pomůže nastavit virtuální počítač. K instalaci rozšíření Trend Micro Security použijte okno **Nastavení** , třetí panel průvodce.  Obecné pokyny najdete v tématu [Vytvoření virtuálního počítače s Windows v Azure Portal](../windows/classic/tutorial.md).
+Když použijete záznam z **Marketplace** , otevře se průvodce, který vám pomůže nastavit virtuální počítač. K instalaci rozšíření Trend Micro Security použijte okno **Nastavení** , třetí panel průvodce.  Obecné pokyny najdete v tématu [Vytvoření virtuálního počítače s Windows v Azure Portal](../windows/quick-create-portal.md).
 
 Po zobrazení okna **Nastavení** v průvodci proveďte následující kroky:
 
@@ -57,7 +57,7 @@ Po zobrazení okna **Nastavení** v průvodci proveďte následující kroky:
 ## <a name="install-the-deep-security-agent-on-an-existing-vm"></a>Instalace hloubkového agenta zabezpečení na existujícím virtuálním počítači
 K instalaci agenta na existující virtuální počítač budete potřebovat následující položky:
 
-* Azure PowerShell modul, verze 0.8.2 nebo novější, nainstalované na místním počítači. Verzi Azure PowerShell, kterou jste nainstalovali, můžete zjistit pomocí příkazu **Get-Module Azure | Format-Table Version** . Pokyny a odkaz na nejnovější verzi najdete v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview). Přihlaste se k předplatnému Azure pomocí `Add-AzureAccount` .
+* Azure PowerShell modul, verze 0.8.2 nebo novější, nainstalované na místním počítači. Verzi Azure PowerShell, kterou jste nainstalovali, můžete zjistit pomocí příkazu **Get-Module Azure | Format-Table Version** . Pokyny a odkaz na nejnovější verzi najdete v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/). Přihlaste se k předplatnému Azure pomocí `Add-AzureAccount` .
 * Agent virtuálního počítače je nainstalovaný na cílovém virtuálním počítači.
 
 Nejprve ověřte, zda je agent virtuálního počítače již nainstalován. Zadejte název cloudové služby a název virtuálního počítače a potom na příkazovém řádku Azure PowerShell na úrovni správce spusťte následující příkazy. Nahradí vše v uvozovkách, včetně < a > znaků.

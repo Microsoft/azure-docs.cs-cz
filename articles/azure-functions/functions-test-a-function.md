@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 1f08d6b8a2ce2381c3bc85891a292ac05561cf34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be406744dc9752dd3c924c636e85f43e133c1cca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832555"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085074"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie testování kódu ve službě Azure Functions
 
@@ -40,13 +40,13 @@ Pokud chcete nastavit prostředí, vytvořte funkci a otestujte aplikaci. Násle
 3. [Vytvořte funkci časovače ze šablony](./functions-create-scheduled-function.md) a pojmenujte ji **MyTimerTrigger**.
 4. [Vytvořte v řešení aplikaci XUnit test](https://xunit.github.io/docs/getting-started-dotnet-core) a pojmenujte ji **Functions. Tests**.
 5. Pomocí NuGet přidejte odkaz z testovací aplikace do [Microsoft. AspNetCore. Mvc.](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
-6. [Odkázat na aplikaci *Functions* ](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) v aplikaci *Functions. Tests* .
+6. [Odkázat na aplikaci *Functions* ](/visualstudio/ide/managing-references-in-a-project?view=vs-2017) v aplikaci *Functions. Tests* .
 
 ### <a name="create-test-classes"></a>Vytváření testovacích tříd
 
 Nyní, když jsou vytvořeny projekty, můžete vytvořit třídy používané ke spouštění automatizovaných testů.
 
-Každá funkce převezme instanci [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) , která zpracovává protokolování zpráv. Některé testy buď neprotokolují zprávy, nebo nemají žádné obavy o implementaci protokolování. Jiné testy potřebují k vyhodnocení zpráv protokolovaných za účelem určení, zda test projde.
+Každá funkce převezme instanci [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) , která zpracovává protokolování zpráv. Některé testy buď neprotokolují zprávy, nebo nemají žádné obavy o implementaci protokolování. Jiné testy potřebují k vyhodnocení zpráv protokolovaných za účelem určení, zda test projde.
 
 Vytvoříte novou třídu s názvem `ListLogger` , která obsahuje interní seznam zpráv k vyhodnocení během testování. Chcete-li implementovat požadované `ILogger` rozhraní, třída potřebuje obor. Následující třída napodobá oboru pro testovací případy, které se mají předat `ListLogger` třídě.
 
@@ -192,7 +192,7 @@ namespace Functions.Tests
 
 `TestFactory`Třída implementuje následující členy:
 
-- **Data**: Tato vlastnost vrací kolekci [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable) vzorových dat. Páry klíč-hodnota představují hodnoty, které jsou předány do řetězce dotazu.
+- **Data**: Tato vlastnost vrací kolekci [IEnumerable](/dotnet/api/system.collections.ienumerable) vzorových dat. Páry klíč-hodnota představují hodnoty, které jsou předány do řetězce dotazu.
 
 - **CreateDictionary –**: Tato metoda přijímá dvojici klíč/hodnota jako argumenty a vrátí novou hodnotu `Dictionary` použitou k vytvoření `QueryCollection` pro reprezentaci hodnot řetězce dotazu.
 

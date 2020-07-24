@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 04/28/2020
 ms.author: genli
-ms.openlocfilehash: 3aa0a0d31e70300814f35c337197b383877fe7be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6010c67b531d0f1ebb0ed836062cd5e323e5474c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610213"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083510"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Příprava disku VHD nebo VHDX s Windows pro nahrání do Azure
 
@@ -62,7 +62,7 @@ Pomocí jedné z metod v této části můžete převést virtuální disk a zm�
 
 ### <a name="use-powershell-to-convert-the-disk"></a>Použití PowerShellu k převedení disku
 
-Virtuální disk můžete převést pomocí rutiny [Convert-VHD](/powershell/module/hyper-v/convert-vhd) v prostředí PowerShell. Pokud potřebujete informace o instalaci této rutiny, klikněte [sem](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
+Virtuální disk můžete převést pomocí rutiny [Convert-VHD](/powershell/module/hyper-v/convert-vhd) v prostředí PowerShell. Pokud potřebujete informace o instalaci této rutiny, klikněte [sem](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
 
 Následující příklad převede disk z VHDX na VHD. Také převede disk z dynamicky se zvětšující disk na disk s pevnou velikostí.
 
@@ -86,7 +86,7 @@ Pokud máte image virtuálního počítače s Windows ve [formátu souboru VMDK]
 
 ### <a name="use-powershell-to-resize-the-disk"></a>Použití PowerShellu ke změně velikosti disku
 
-Velikost virtuálního disku můžete změnit pomocí rutiny [změnit velikost-VHD](/powershell/module/hyper-v/resize-vhd) v prostředí PowerShell. Pokud potřebujete informace o instalaci této rutiny, klikněte [sem](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
+Velikost virtuálního disku můžete změnit pomocí rutiny [změnit velikost-VHD](/powershell/module/hyper-v/resize-vhd) v prostředí PowerShell. Pokud potřebujete informace o instalaci této rutiny, klikněte [sem](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
 
 Následující příklad změní velikost disku z 100,5 MiB na 101 MiB, aby splňoval požadavek na zarovnání Azure.
 
@@ -138,7 +138,7 @@ Po dokončení kontroly SFC nainstalujte aktualizace Windows a restartujte poč�
    netsh.exe winhttp reset proxy
    ```
 
-    Pokud virtuální počítač potřebuje pracovat s konkrétním proxy serverem, přidejte výjimku proxy serveru pro IP adresu Azure ([168.63.129.16](/azure/virtual-network/what-is-ip-address-168-63-129-16)), aby se virtuální počítač mohl připojit k Azure:
+    Pokud virtuální počítač potřebuje pracovat s konkrétním proxy serverem, přidejte výjimku proxy serveru pro IP adresu Azure ([168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)), aby se virtuální počítač mohl připojit k Azure:
 
     ```
     $proxyAddress='<your proxy server>'
@@ -264,7 +264,7 @@ Ujistěte se, že jsou pro vzdálený přístup správně nakonfigurovaná násl
 
 1. Pokud je virtuální počítač součástí domény, zkontrolujte následující zásady, abyste se ujistili, že předchozí nastavení se nevrátí.
 
-    |                 Cíl                  |                                                                            Zásada                                                                            |                           Hodnota                            |
+    |                 Cíl                  |                                                                            Zásady                                                                            |                           Hodnota                            |
     | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------- |
     | Protokol RDP je povolený.                        | Computer cestě konfigurace Settings\Administrative Templates\Components\Remote Desktop – pracovní relace, Host\Connections         | Umožňuje uživatelům vzdálené připojení pomocí vzdálené plochy.    |
     | NLA – zásady skupiny                      | Settings\Administrative Templates\Components\Remote Desktop – relace pro pracovní plochu – Host\Security                                                    | Vyžadovat ověření uživatele pro vzdálený přístup pomocí NLA |
@@ -308,7 +308,7 @@ Ujistěte se, že jsou pro vzdálený přístup správně nakonfigurovaná násl
 
 1. Pokud je virtuální počítač součástí domény, zkontrolujte následující zásady služby Azure AD a ujistěte se, že předchozí nastavení nejsou obnovena.
 
-    |                 Cíl                 |                                                                         Zásada                                                                          |                  Hodnota                  |
+    |                 Cíl                 |                                                                         Zásady                                                                          |                  Hodnota                  |
     | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
     | Povolit profily brány Windows Firewall | Computer cestě konfigurace Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Domain Profile\Windows firewall   | Chránit všechna síťová připojení         |
     | Povolit protokol RDP                           | Computer cestě konfigurace Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Domain Profile\Windows firewall   | Povolit příchozí výjimky vzdálené plochy |
@@ -405,7 +405,7 @@ Ujistěte se, že je virtuální počítač v pořádku, zabezpečený a dostupn
 
    - Backup Operators
 
-   - Everyone
+   - Všichni
 
    - Uživatelé
 
@@ -421,7 +421,7 @@ V ideálním případě byste měli udržovat počítač aktualizovaný na *úro
 
 <br />
 
-|        Součást        |     Binární     | Windows 7 SP1, Windows Server 2008 R2 SP1 |       Windows 8, Windows Server 2012        | Windows 8.1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 |      Windows 10 v1703      | Windows 10 v1709, Windows Server 2016 v1709 | Windows 10 v1803, Windows Server 2016 v1803 |
+|        Komponenta        |     Binární     | Windows 7 SP1, Windows Server 2008 R2 SP1 |       Windows 8, Windows Server 2012        | Windows 8.1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 |      Windows 10 v1703      | Windows 10 v1709, Windows Server 2016 v1709 | Windows 10 v1803, Windows Server 2016 v1803 |
 | ----------------------- | -------------- | ----------------------------------------- | ------------------------------------------- | ----------------------------------- | ------------------------------------------- | -------------------------- | ------------------------------------------- | ------------------------------------------- |
 | Storage                 | disk.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061          | -                                           | -                          | -                                           | -                                           |
 |                         | storport.sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726          | 10.0.14393.1358 - KB4022715                 | 10.0.15063.332             | -                                           | -                                           |
@@ -472,7 +472,7 @@ Obvykle se spouštíte, `sysprep.exe` abyste vytvořili šablonu, ze které mů�
 Pokud chcete vytvořit jenom jeden virtuální počítač z jednoho disku, nemusíte používat nástroj Sysprep. Místo toho můžete vytvořit virtuální počítač z *specializované image*. Informace o tom, jak vytvořit virtuální počítač z specializovaného disku, najdete v těchto tématech:
 
 - [Vytvoření virtuálního počítače ze specializovaného disku](create-vm-specialized.md)
-- [Vytvoření virtuálního počítače ze specializovaného disku VHD](/azure/virtual-machines/windows/create-vm-specialized-portal)
+- [Vytvoření virtuálního počítače ze specializovaného disku VHD](./create-vm-specialized-portal.md)
 
 Chcete-li vytvořit zobecněnou bitovou kopii, je nutné spustit nástroj Sysprep. Další informace najdete v tématu [použití nástroje Sysprep: Úvod](/previous-versions/windows/it-pro/windows-xp/bb457073(v=technet.10)).
 
@@ -519,4 +519,4 @@ Následující nastavení neovlivní nahrávání VHD. Důrazně ale doporučuje
 ## <a name="next-steps"></a>Další kroky
 
 - [Nahrání image virtuálního počítače s Windows do Azure pro nasazení Správce prostředků](upload-generalized-managed.md)
-- [Řešení potíží s aktivací virtuálních počítačů Azure s Windows](troubleshoot-activation-problems.md)
+- [Řešení potíží s aktivací virtuálních počítačů Azure s Windows](../troubleshooting/troubleshoot-activation-problems.md)

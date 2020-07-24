@@ -7,11 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 203e5fcaa99f7aebeda34e6968f636ed72851ec8
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 5d0393ab5f2582efa2a4b727543bc799cdb1143e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921526"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082847"
 ---
 # <a name="what-are-wrangling-data-flows"></a>Co jsou toky dat tahání?
 
@@ -27,7 +28,7 @@ Tok dat tahání transformuje M vygenerované online editorem hybridních webov�
 Toky dat tahání jsou zvláště užitečné pro inženýry dat nebo "občany pro datové integrátory".
 
 > [!NOTE]
-> Tok dat tahání je aktuálně dostupných ve verzi Public Preview.
+> Tok dat tahání je aktuálně k dispozici ve verzi Public Preview.
 
 ## <a name="use-cases"></a>Případy použití
 
@@ -50,8 +51,8 @@ Vizuálně naskenujte vaše data způsobem bez kódu, abyste mohli odebrat jaké
 | [Azure Blob Storage](connector-azure-blob-storage.md) | CSV, Parquet | Klíč účtu |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | CSV | Instanční objekt |
 | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV, Parquet | Klíč účtu, instanční objekt |
-| [Azure SQL Database](connector-azure-sql-database.md) | - | Ověřování pomocí SQL |
-| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) | - | Ověřování pomocí SQL |
+| [Azure SQL Database](connector-azure-sql-database.md) | - | Ověřování SQL |
+| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) | - | Ověřování SQL |
 
 ## <a name="the-mashup-editor"></a>Editor hybridní webové aplikace
 

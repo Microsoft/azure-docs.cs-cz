@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 082575a67ea43d62f322e177cff087e5bd572c27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 852d8f8f85536dc62dd792e5727dd7ec0571ba29
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72792900"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084207"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>Postup sestavení filtru omezujících vlastností v Azure Kognitivní hledání 
 
@@ -28,7 +28,7 @@ Napravovaná navigace se používá pro filtrování na základě výsledků dot
 
 Omezující vlastnosti jsou dynamické a vracejí se v dotazu. Hledání odpovědí vede s těmito kategoriemi omezujícími vlastnostmi, které slouží k procházení výsledků. Pokud nejste obeznámeni s omezujícími vlastnostmi, následující příklad je ilustrace navigační struktury omezující vlastnosti.
 
-  ![](./media/search-filters-facets/facet-nav.png)
+  ![Obrázek znázorňující dialogové okno hledání s filtrovanými výsledky hledání seskupenými podle obchodních titulů Šipka značí, že výsledky jsou omezující vlastnosti, které se zobrazí v navigační struktuře omezující vlastnosti.](./media/search-filters-facets/facet-nav.png)
 
 Novinka s omezujícími podrobnostmi a chcete podrobnější informace? Přečtěte si téma [implementace omezující navigace v Azure kognitivní hledání](search-faceted-navigation.md).
 
@@ -121,7 +121,7 @@ Jedním z problémů s navigací omezujícími vlastnostmi v Azure Kognitivní h
 
 I když se jedná o běžný případ použití, není to něco, že navigační struktura omezující vlastnosti aktuálně poskytuje okamžitý stav. Vývojáři, kteří chtějí, aby statické omezující vlastnosti typicky obužívali omezení tím, že vydávají dva filtrované dotazy: jeden obor s výsledky, druhý, který se používá k vytvoření statického seznamu omezujících vlastností pro účely navigace.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 + [Filtry v Azure Kognitivní hledání](search-filters.md)
 + [Vytvořit index REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)

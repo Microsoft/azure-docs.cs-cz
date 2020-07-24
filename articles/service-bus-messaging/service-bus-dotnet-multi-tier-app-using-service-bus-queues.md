@@ -4,11 +4,12 @@ description: Kurz .NET, který vám pomůže vytvořit vícevrstvou aplikaci v A
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: c7a64e708d860fe9e5832ad3f1375f41f9b86724
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 183f3b6e1231c843c04290024a89c270f0dd0026
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340312"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083935"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>Vícevrstvá aplikace .NET, která používá fronty Azure Service Bus
 
@@ -27,7 +28,7 @@ V tomto kurzu sestavíte a spustíte vícevrstvou aplikaci v cloudové službě 
 
 Následující snímek obrazovky ukazuje dokončenou aplikaci.
 
-![][0]
+![Snímek obrazovky se stránkou pro odeslání aplikace][0]
 
 ## <a name="scenario-overview-inter-role-communication"></a>Přehled scénáře: komunikace mezi rolemi
 Abyste mohli odeslat objednávku ke zpracování, musí komponenta uživatelského prostředí front-endu, která běží ve webové roli, pracovat s logikou střední úrovně běžící v roli pracovního procesu. Tento příklad používá zasílání zpráv Service Bus pro komunikaci mezi vrstvami.
@@ -36,7 +37,7 @@ Pomocí zasílání zpráv Service Bus mezi webem a prostředními úrovněmi od
 
 Service Bus nabízí dvě entity, které podporují zprostředkované zasílání zpráv: fronty a témata. V případě front se každá zpráva odeslaná do fronty spotřebuje jedním příjemcem. Témata podporují chování typu publikovat/odebírat, ve kterém je každá publikovaná zpráva zpřístupněná odběru registrovanému pro dané téma. Každý odběr logicky uchovává svoji vlastní frontu zpráv. Odběry se taky dají konfigurovat pomocí pravidel filtrů, které omezují skupinu zpráv předávaných do fronty odběru na takové, které odpovídají filtru. Následující příklad používá fronty Service Bus.
 
-![][1]
+![Diagram znázorňující komunikaci mezi webovou rolí, Service Bus a rolí pracovního procesu.][1]
 
 Tento komunikační mechanizmus má několik výhod oproti přímému přenosu zpráv.
 
@@ -44,7 +45,7 @@ Tento komunikační mechanizmus má několik výhod oproti přímému přenosu z
 * **Vyrovnávání zátěže.** V mnoha aplikacích se zátěž na systém může postupně měnit, zatímco doba nutná ke zpracování pracovní jednotky je obvykle stálá. Propojovací producenti a spotřebitelé zpráv s frontou – to znamená, že spotřebitelskou aplikaci (pracovní proces) stačí zřídit jen na obvyklou zátěž, ne na zátěž ve špičce. S měnící se příchozí zátěží se mění hloubka fronty. To znamená přímou úsporu nákladů ve smyslu infrastruktury nutné pro zvládání zatížení aplikace.
 * **Vyrovnávání zatížení.** Když se zátěž zvyšuje, můžou se přidat další pracovní procesy, které budou číst zprávy z fronty. Každou zprávu zpracovává jen jeden pracovní proces. Toto vyrovnávání zátěže podle požadavků umožňuje optimální využívání pracovních počítačů i v případě, že se pracovní počítače liší z hlediska výkonu, protože zprávy žádaný a zpracovávají svou vlastním maximální rychlostí. Tomuto chování se často říká *konkurence mezi spotřebiteli*.
   
-  ![][2]
+  ![Diagram znázorňující komunikaci mezi webovou rolí, Service Bus a dvěma rolemi pracovního procesu.][2]
 
 V následující části se probírá kód, který tuto architekturu implementuje.
 
@@ -63,27 +64,27 @@ Potom přidáte kód, který odesílá položky do fronty Service Bus a zobrazí
 
 1. Jako správce spusťte Visual Studio: klikněte pravým tlačítkem na ikonu programu **Visual Studio** a vyberete možnost **Spustit jako správce**. Emulátor výpočtů v Azure, který se bude probírat později v tomto článku, potřebuje, aby bylo Visual Studio spuštěné s právy správce.
    
-   Ve Visual Studiu v nabídce **Soubor** klikněte na **Nový** a pak na **Projekt**.
+   V sadě Visual Studio v nabídce **Soubor** klikněte na **Nový** a pak na **Projekt**.
 2. V **Nainstalovaných šablonách** v části **Visual C#** klikněte na **Cloud** a pak na **Cloudová služba Azure**. Jako název projektu zadejte **MultiTierApp**. Pak klikněte na **OK**.
    
-   ![][9]
+   ![Snímek obrazovky dialogového okna Nový projekt se zvoleným cloudem a zvýrazněnou možností Visual C# pro cloudovou službu Azure, která je červená.][9]
 3. V podokně **Role** dvakrát klikněte na **Webová role ASP.NET**.
    
-   ![][10]
+   ![Snímek obrazovky dialogového okna nový Microsoft Azure cloudové služby s vybranými webovými rolemi ASP.NET a WebRole1 taky vybraný.][10]
 4. Najeďte kurzorem na **WebRole1** v části **řešení Cloudové služby Azure**, klikněte na ikonu tužky a přejmenujte webovou roli na **FrontendWebRole**. Pak klikněte na **OK**. (Ujistěte se, že „Frontend“ zadáte s malým „e“ tzn. nikoli „FrontEnd“.)
    
-   ![][11]
+   ![Snímek obrazovky dialogového okna nový Microsoft Azure cloudové služby s řešením přejmenováno na FrontendWebRole][11]
 5. V dialogovém okně **Nový projekt ASP.NET** v seznamu **Vyberte šablonu** klikněte na **MVC**.
    
-   ![][12]
+   ![Screenshotof se dialogové okno Nový projekt ASP.NET se zvýrazněným MVC a je zvýrazněné červeně a možnost změny ověřování popsaný červeně.][12]
 6. Pořád ještě v dialogovém okně **Nový projekt ASP.NET** klikněte na tlačítko **Změna ověřování**. V dialogovém okně **Změnit ověřování** zkontrolujte, že je vybraná možnost **Bez ověřování**, a potom klikněte na **OK**. V tomto kurzu nasazujete aplikaci, která nepotřebuje přihlášení uživatele.
    
-    ![][16]
+    ![Snímek obrazovky dialogového okna pro změnu ověřování s vybranou možností bez ověřování a zobrazený červeně][16]
 7. Pořád ještě v dialogovém okně **Nový projekt ASP.NET** klikněte na tlačítko **OK** a vytvořte tak projekt.
 8. V **Průzkumníku řešení** v projektu **FrontendWebRole** klikněte pravým tlačítkem na **Reference**, a pak klikněte na **Správa balíčků NuGet**.
 9. Klikněte na kartu **Procházet** a pak vyhledejte **WindowsAzure.ServiceBus**. Vyberte balíček **WindowsAzure.ServiceBus**, klikněte na **Instalovat** a přijměte podmínky použití.
    
-   ![][13]
+   ![Snímek obrazovky dialogového okna spravovat balíčky NuGet se zvýrazněnou možností WindowsAzure. ServiceBus a možnost instalace je popsaný červeně.][13]
    
    Poznámka: Teď jsou vytvořené reference na sestavení klienta a přidané některé nové soubory s kódem.
 10. V **Průzkumníku řešení** klikněte pravým tlačítkem na **Modely**, pak klikněte na **Přidat** a pak na **Třída**. Do pole **Název** zadejte název **OnlineOrder.cs**. Pak klikněte na **Přidat**.
@@ -165,16 +166,16 @@ V této části vytvoříte stránky, které vaše aplikace zobrazí.
 4. V nabídce **Sestavení** klikněte na **Sestavit řešení** a vyzkoušejte přesnost své dosavadní práce.
 5. Teď vytvořte zobrazení pro metodu `Submit()`, kterou jste vytvořili předtím. Klikněte pravým tlačítkem do metody `Submit()` (přetížení `Submit()`, které nepřijímá žádné parametry), a pak vyberte **Přidat zobrazení**.
    
-   ![][14]
+   ![Snímek obrazovky s kódem s fokusem na metodě odeslání a v rozevíracím seznamu se zvýrazněnou možností přidat zobrazení][14]
 6. Objeví se dialogové okno pro vytvoření zobrazení. V seznamu **Šablona** vyberte **Vytvořit**. V seznamu **Třída modelu** vyberte třídu **OnlineOrder**.
    
-   ![][15]
-7. Klikněte na tlačítko **Add** (Přidat).
+   ![Snímek obrazovky dialogového okna Přidat zobrazení s rozevíracími seznamy šablony a třídy modelu popsaný červeně.][15]
+7. Klikněte na **Přidat**.
 8. Teď změňte zobrazený název vaší aplikace. V **Průzkumníku řešení** poklikejte na soubor **Views\Shared\\_Layout.cshtml** a otevře se v editoru Visual Studio.
 9. Všechny výskyty **My ASP.NET Application** změňte na **Northwind Traders Products**.
 10. Odstraňte odkazy **Home**, **About** a **Contact**. Odstraňte zvýrazněný uzel:
     
-    ![][28]
+    ![Snímek obrazovky kódu se třemi řádky kódu odkazu na akci H T M L je zvýrazněný.][28]
 11. Nakonec upravte stránku pro odesílání tak, aby obsahovala nějaké informace o frontě. V **Průzkumníku řešení** poklikejte na soubor **Views\Home\Submit.cshtml** a otevře se v editoru Visual Studio. Po `<h2>Submit</h2>` přidejte následující řádek. Hodnota `ViewBag.MessageCount` je zatím prázdná. Zaplníte ji později.
     
     ```html
@@ -182,7 +183,7 @@ V této části vytvoříte stránky, které vaše aplikace zobrazí.
     ```
 12. Teď je implementované vaše uživatelské prostředí. Stisknutím klávesy **F5** můžete spustit svoji aplikaci a zkontrolovat, že vypadá tak, jak má.
     
-    ![][17]
+    ![Snímek obrazovky se stránkou pro odeslání aplikace][17]
 
 ### <a name="write-the-code-for-submitting-items-to-a-service-bus-queue"></a>Napsání nového kódu pro odesílání položek do fronty Service Bus
 Teď přidejte kód pro odesílání položek do fronty. Nejdřív vytvořte třídu, která obsahuje informace o připojení k vaší frontě Service Bus. Potom inicializujte připojení ze souboru Global.aspx.cs. Nakonec aktualizujte kód pro odesílání, který jste vytvořili předtím v souboru HomeController.cs tak, aby položky odesílal do fronty Service Bus.
@@ -289,13 +290,13 @@ Teď přidejte kód pro odesílání položek do fronty. Nejdřív vytvořte tř
        }
        else
        {
-           return View(order);
+           return View(order); 
        }
    }
    ```
 9. Teď můžete aplikaci znovu spustit. Pokaždé, když odešlete odbejdnávku, počet zpráv se zvýší.
    
-   ![][18]
+   ![Snímek stránky pro odeslání aplikace s počtem zpráv byl zvýšen na hodnotu 1.][18]
 
 ## <a name="create-the-worker-role"></a>Vytvoření role pracovního procesu
 Teď vytvoříte roli pracovního procesu, která zpracuje odesílání objednávek. Tento příklad používá šablonu Visual Studia **Role pracovního procesu s frontou Service Bus**. Potřebné pověření jste už získali z portálu.
@@ -304,16 +305,16 @@ Teď vytvoříte roli pracovního procesu, která zpracuje odesílání objedná
 2. Ve Visual Studiu v **Průzkumníku řešení** klikněte pravým tlačítkem na složku **Roles** v projektu **MultiTierApp**.
 3. Klikněte na **Přidat**, a pak klikněte na **Nový projekt role pracovního procesu**. Zobrazí se dialogové okno **Přidat nový projekt role**.
    
-   ![][26]
+   ![Snímek obrazovky s podoknem Průzkumníka řešení s možností projektu Nová role pracovního procesu a zvýrazněnou možností přidat][26]
 4. V dialogovém okně **Přidat nový projekt role** klikněte na **Role pracovního procesu s frontou Service Bus**.
    
-   ![][23]
+   ![Snímek obrazovky dialogového okna projektu nové role služby Active Directory s rolí pracovního procesu, která je zvýrazněná možností fronty Service Bus a je označená červeně][23]
 5. Do pole **Název** zadejte název projektu **OrderProcessingRole**. Pak klikněte na **Přidat**.
 6. Připojovací řetězec, který jste získali v kroku 9 v části „Vytvoření oboru názvů Service Bus“ zkopírujte do schránky.
 7. V **Průzkumníku řešení** klikněte pravým tlačítkem na roli **OrderProcessingRole**, které jste vytvořili v kroku 5 (ujistěte se, že kliknete pravým tlačítkem na **OrderProcessingRole** v seznamu **Role**, ne na třídu). Potom klikněte na **Vlastnosti**.
 8. Na kartě **Nastavení** v dialogovém okně **Vlastnosti** klikněte do pole **Hodnota** pro **Microsoft.ServiceBus.ConnectionString** a vložte hodnotu koncového bodu, kterou jste zkopírovali v kroku 6.
    
-   ![][25]
+   ![Snímek obrazovky dialogového okna vlastnosti se zvolenou kartou nastavení a řádkem tabulky Microsoft. ServiceBus. ConnectionString červeně.][25]
 9. Vytvořte třídu **OnlineOrder**, která bude zastupovat objednávky při jejich zpracování z fronty. Můžete znovu použít třídu, kterou jste už vytvořili. V **Průzkumníku řešení** klikněte pravým tlačítkem na třídu **OrderProcessingRole** (pravým tlačítkem klikněte ikonu třídy, ne na roli). Klikněte na **Přidat**, pak klikněte na **Existující položka**.
 10. Přejděte do podsložky pro **FrontendWebRole\Models** a poklikejte na **OnlineOrder.cs**, tím ho přidáte do projektu.
 11. Ve **WorkerRole.cs** změňte hodnotu proměnné **QueueName** z `"ProcessingQueue"` na `"OrdersQueue"`, jak je vidět v následujícím kódu.
@@ -338,9 +339,9 @@ Teď vytvoříte roli pracovního procesu, která zpracuje odesílání objedná
     ```
 14. Dokončili jste aplikaci. Celou aplikaci můžete vyzkoušet tak, že v Průzkumníku řešení kliknete pravým tlačítkem na projekt MultiTierApp, vyberete **Nastavit jako spouštěný projekt**, a pak stisknete F5. Všimněte si, že počet zpráv se nezvyšuje, protože role pracovního procesu zpracovává položky z fronty a označuje je jako hotové. Výstup své role pracovního procesu můžete sledovat v uživatelském prostředí Emulátoru výpočtů v Azure. To můžete udělat tak, že v oznamovací oblasti hlavního panelu kliknete pravým tlačítkem na ikonu emulátoru a vyberte **Zobrazit uživatelské prostředí emulátoru služby Compute**.
     
-    ![][19]
+    ![Snímek obrazovky, co se zobrazí po kliknutí na ikonu emulátoru V seznamu možností se zobrazí uživatelské rozhraní emulátoru Compute.][19]
     
-    ![][20]
+    ![Snímek obrazovky dialogového okna Microsoft Azureho emulátoru COMPUTE (expresní)][20]
 
 ## <a name="next-steps"></a>Další kroky
 Pokud se o službě Service Bus chcete dozvědět víc, pročtěte si následující zdroje:  

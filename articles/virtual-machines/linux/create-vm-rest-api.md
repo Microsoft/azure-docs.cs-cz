@@ -6,11 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 1594c030839cccdd48c4b032c6ad92f746f78e26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78b11a4d900b8c9cf30a1d37a2b7e6380d6b989a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78970277"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082558"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Vytvoření virtuálního počítače se systémem Linux, který používá ověřování pomocí protokolu SSH, s REST API
 
@@ -45,7 +46,7 @@ Jsou vyžadovány následující hlavičky:
 | Hlavička požadavku   | Popis |
 |------------------|-----------------|
 | *Content-Type:*  | Povinná hodnota. Nastavte na `application/json`. |
-| *Authorization:* | Povinná hodnota. Nastavte na platný  [přístupový token](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)`Bearer`. |
+| *Authorization:* | Povinná hodnota. Nastavte na platný  [přístupový token](/rest/api/azure/#authorization-code-grant-interactive-clients)`Bearer`. |
 
 Obecné informace o práci s požadavky na REST API najdete v tématu [komponenty REST API žádosti a odpovědi](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
@@ -53,7 +54,7 @@ Obecné informace o práci s požadavky na REST API najdete v tématu [komponent
 
 Následující běžné definice se používají k sestavení textu žádosti:
 
-| Name                       | Požaduje se | Typ                                                                                | Description  |
+| Název                       | Požaduje se | Typ                                                                                | Description  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True     | řetězec                                                                              | Umístění prostředku. |
 | name                       |          | řetězec                                                                              | Název virtuálního počítače |
@@ -121,13 +122,13 @@ Příklad textu žádosti je uvedený níže. Ujistěte se, že jste zadali náz
 
 ## <a name="sending-the-request"></a>Odesílá se žádost.
 
-K odeslání tohoto požadavku HTTP můžete použít klienta vaší předvolby. Můžete také použít [Nástroj v prohlížeči](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate) kliknutím na tlačítko **vyzkoušet** .
+K odeslání tohoto požadavku HTTP můžete použít klienta vaší předvolby. Můžete také použít [Nástroj v prohlížeči](/rest/api/compute/virtualmachines/createorupdate) kliknutím na tlačítko **vyzkoušet** .
 
 ### <a name="responses"></a>Odpovědi
 
 Existují dvě úspěšné odpovědi, které by mohla operace vytvořit nebo aktualizovat virtuální počítač:
 
-| Name        | Typ                                                                              | Description |
+| Název        | Typ                                                                              | Description |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
 | 201 vytvořeno | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Vytvořeno     |
@@ -150,4 +151,4 @@ Další informace o rozhraních REST API Azure nebo jiných nástrojích pro spr
 - [REST API zprostředkovatele Azure COMPUTE](/rest/api/compute/)
 - [Začínáme s Azure REST API](/rest/api/azure/)
 - [Azure CLI](/cli/azure/)
-- [Modul Azure PowerShellu](/powershell/azure/overview)
+- [Modul Azure PowerShellu](/powershell/azure/)

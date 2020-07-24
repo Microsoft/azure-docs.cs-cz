@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 0c2a9612fab6c685cbc690aa9bbc12d1c7b7b746
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d0e2487632971579a1a473375eb2200f3a63a46
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74978198"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084530"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Konfigurace zásad ochrany obsahu pomocí Azure Portal
 
 > [!NOTE]
-> K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).   > do Media Services V2 se přidávají žádné nové funkce ani funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).   > do Media Services V2 se přidávají žádné nové funkce ani funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 >
 
  Pomocí Azure Media Services můžete své médium zabezpečit od okamžiku, kdy počítač opustí úložiště, zpracování a doručování. Media Services můžete použít k dynamickému šifrování obsahu pomocí standard AES (Advanced Encryption Standard) (AES) pomocí 128 bitových šifrovacích klíčů. Můžete ji také použít se společným šifrováním (CENC) pomocí technologie PlayReady nebo Widevine DRM (Správa digitálních práv) a Apple FairPlay. 
@@ -75,7 +76,7 @@ Pokud licenci nakonfigurujete jako trvalou, uloží se do trvalého úložiště
 ### <a name="basic"></a>Základní
 Když vyberete **základní**, vytvoří se šablona se všemi výchozími hodnotami.
 
-### <a name="advanced"></a>Pokročilý
+### <a name="advanced"></a>Upřesnit
 Další informace o šabloně Widevine Rights najdete v tématu [Přehled šablon licencí Widevine](media-services-widevine-license-template-overview.md).
 
 ![Pokročilá ochrana obsahu](./media/media-services-portal-content-protection/media-services-content-protection005.png)
@@ -132,4 +133,3 @@ Když pro prostředek vyberete možnost **šifrování** , zobrazí se dvě mož
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

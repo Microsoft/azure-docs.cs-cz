@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: syntetizace řeči, SWIFT-Speech Service'
+title: 'Rychlý Start: syntetizace řeči v SWIFT ve službě macOS-Speech'
 titleSuffix: Azure Cognitive Services
 description: Naučte se, jak pomocí sady Speech SDK syntetizovat řeč v SWIFT v macOS.
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: yulili
-ms.openlocfilehash: 1ed68b2ba00a89ff7b20b8ed61457dfb268917e4
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 6dae832b0777ca2caf993e126ddfea074919a0dc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391260"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084785"
 ---
 # <a name="quickstart-synthesize-speech-in-swift-on-macos-using-the-speech-sdk"></a>Rychlý Start: syntetizace řeči v SWIFT v macOS pomocí sady Speech SDK
 
 V tomto článku se naučíte, jak vytvořit aplikaci v macOS v SWIFT pomocí sady Cognitive Services Speech SDK pro syntetiz řeči z textu a jak ji přehrát s výchozím zvukovým výstupem.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, tady je seznam požadavků:
 

@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: a411fc9a95bef595a8fc49cad77189bb88fb7661
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77dc21b4a04ec5de440b1a17da4747a3dcc711f9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699630"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083714"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Odebrání serverů a zakázání ochrany
 
@@ -168,11 +169,11 @@ Hostitelé Hyper-V, které nejsou spravovány nástrojem VMM, se shromažďují 
    - **Zakázat replikaci a odebrat (doporučeno)** – Tato možnost odebere replikovanou položku z Azure Site Recovery a replikace pro tento počítač se zastaví. Konfigurace replikace na místním virtuálním počítači se vyčistí a Site Recovery se fakturace pro tento chráněný Server zastaví.
    - **Odebrat** – Tato možnost se má použít jenom v případě, že se zdrojové prostředí odstraní nebo není dostupné (Nepřipojeno). Tím se odebere replikovaná položka z Azure Site Recovery (fakturace je zastavená). Konfigurace replikace na místním virtuálním počítači **se** nevyčistí. 
 
- > [!NOTE]
-     > Pokud jste zvolili možnost **Odebrat** , spusťte následující sadu skriptů pro vyčištění nastavení replikace na místním serveru Hyper-V.
+    > [!NOTE]
+    > Pokud jste zvolili možnost **Odebrat** , spusťte následující sadu skriptů pro vyčištění nastavení replikace na místním serveru Hyper-V.
 
-> [!NOTE]
-> Pokud jste už provedli převzetí služeb při selhání virtuálního počítače, který je spuštěný v Azure, pamatujte na to, že zakázat ochranu neodebere nebo neovlivní virtuální počítač se službou převzít
+    > [!NOTE]
+    > Pokud jste už provedli převzetí služeb při selhání virtuálního počítače, který je spuštěný v Azure, pamatujte na to, že zakázat ochranu neodebere nebo neovlivní virtuální počítač se službou převzít
 
 1. Pro odebrání replikace virtuálního počítače na zdrojovém serveru hostitele Hyper-V. Nahraďte SQLVM1 názvem vašeho virtuálního počítače a spusťte skript z PowerShellu pro správu.
 
@@ -195,8 +196,11 @@ Hostitelé Hyper-V, které nejsou spravovány nástrojem VMM, se shromažďují 
      > Pokud jste zvolili možnost **Odebrat** , pak tun následující skripty a vyčistěte tak nastavení replikace na místním serveru VMM.
 3. Spusťte tento skript na zdrojovém serveru VMM pomocí PowerShellu (požadovaná oprávnění správce) z konzoly VMM. Nahraďte zástupné symboly **SQLVM1** názvem vašeho virtuálního počítače.
 
-        $vm = get-scvirtualmachine -Name "SQLVM1"
-        Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```powershell
+    $vm = get-scvirtualmachine -Name "SQLVM1"
+    Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```
+
 4. Výše uvedené kroky vymažou nastavení replikace na serveru VMM. Pokud chcete zastavit replikaci pro virtuální počítač běžící na hostitelském serveru Hyper-V, spusťte tento skript. Nahraďte SQLVM1 názvem vašeho virtuálního počítače a host01.contoso.com názvem hostitelského serveru Hyper-V.
 
 ```powershell
@@ -219,17 +223,21 @@ Hostitelé Hyper-V, které nejsou spravovány nástrojem VMM, se shromažďují 
 
 3. Spusťte tento skript na zdrojovém serveru VMM pomocí PowerShellu (požadovaná oprávnění správce) z konzoly VMM. Nahraďte zástupné symboly **SQLVM1** názvem vašeho virtuálního počítače.
 
-        $vm = get-scvirtualmachine -Name "SQLVM1"
-        Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```powershell
+    $vm = get-scvirtualmachine -Name "SQLVM1"
+    Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```
+
 4. Na sekundárním serveru VMM spuštěním tohoto skriptu vyčistěte nastavení pro sekundární virtuální počítač:
 
-        $vm = get-scvirtualmachine -Name "SQLVM1"
-        Remove-SCVirtualMachine -VM $vm -Force
+    ```powershell
+    $vm = get-scvirtualmachine -Name "SQLVM1"
+    Remove-SCVirtualMachine -VM $vm -Force
+    ```
+
 5. Na sekundárním serveru VMM aktualizujte virtuální počítače na hostitelském serveru Hyper-V, aby se sekundární virtuální počítač znovu zjistil v konzole VMM.
 6. Výše uvedené kroky vymažou nastavení replikace na serveru VMM. Pokud chcete zastavit replikaci pro virtuální počítač, spusťte následující skript s primárním a sekundárním virtuálním počítačem. Nahraďte SQLVM1 názvem vašeho virtuálního počítače.
 
-        Remove-VMReplication –VMName “SQLVM1”
-
-
-
-
+    ```powershell
+    Remove-VMReplication –VMName "SQLVM1"
+    ```

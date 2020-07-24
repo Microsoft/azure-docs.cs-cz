@@ -5,11 +5,12 @@ ms.assetid: 4444dbf7-363c-47e2-b24a-dbd45cb08491
 ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 1295080d0eec7a4e88029cdadd85863f5f40d034
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1b0ce62905424032c2100a1a032fa43ba97578f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74689250"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084853"
 ---
 # <a name="restore-an-app-in-azure"></a>Obnovení aplikace v Azure
 V tomto článku se dozvíte, jak obnovit aplikaci v [Azure App Service](../app-service/overview.md) , kterou jste předtím zálohovali (viz [zálohování aplikace v Azure](manage-backup.md)). Můžete obnovit svou aplikaci s propojenými databázemi na vyžádání do předchozího stavu nebo vytvořit novou aplikaci založenou na jednom z záloh vaší původní aplikace. Azure App Service podporuje následující databáze pro zálohování a obnovení:
@@ -28,14 +29,14 @@ Obnovení ze zálohy je k dispozici pro aplikace běžící na úrovni **Standar
     ![Zvolit obnovit hned][ChooseRestoreNow]
 2. Na stránce **obnovení** nejprve vyberte zdroj zálohy.
    
-    ![](./media/web-sites-restore/021ChooseSource1.png)
+    ![Snímek obrazovky, který ukazuje, kde vybrat zdroj zálohy](./media/web-sites-restore/021ChooseSource1.png)
    
     Možnost **zálohování aplikace** zobrazuje všechny existující zálohy aktuální aplikace a můžete ji snadno vybrat.
     Možnost **úložiště** vám umožní vybrat libovolný záložní soubor zip z existujícího účtu Azure Storage a kontejneru v předplatném.
     Pokud se pokoušíte obnovit zálohu jiné aplikace, použijte možnost **úložiště** .
 3. Pak zadejte cíl pro obnovení aplikace v **umístění obnovení**.
    
-    ![](./media/web-sites-restore/022ChooseDestination1.png)
+    ![Snímek obrazovky, který ukazuje, kde určit cíl pro obnovení aplikace](./media/web-sites-restore/022ChooseDestination1.png)
    
    > [!WARNING]
    > Pokud zvolíte možnost **přepsat**, všechna existující data v aktuální aplikaci budou smazána a přepsána. Než kliknete na **OK**, ujistěte se, že je přesně to, co chcete udělat.
@@ -76,12 +77,12 @@ Na stránce Podrobnosti se zobrazí dostupné informace týkající se operace o
 
 ## <a name="automate-with-scripts"></a>Automatizace pomocí skriptů
 
-Správu zálohování můžete automatizovat pomocí skriptů pomocí rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) nebo [Azure PowerShell](/powershell/azure/overview).
+Správu zálohování můžete automatizovat pomocí skriptů pomocí rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) nebo [Azure PowerShell](/powershell/azure/).
 
 Ukázky najdete v těchto tématech:
 
 - [Ukázky Azure CLI](samples-cli.md)
-- [Ukázky Azure PowerShellu](samples-powershell.md)
+- [Ukázky Azure PowerShell](samples-powershell.md)
 
 <!-- ## Next Steps
 You can backup and restore App Service apps using REST API. -->

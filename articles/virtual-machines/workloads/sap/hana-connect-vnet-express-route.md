@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f7ac8e69c4e149fdd0f365e19f7a0282a547af43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c7e8d4875a8bf3f53ac536ae95ac7499a74d45c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77617187"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082150"
 ---
 # <a name="connect-a-virtual-network-to-hana-large-instances"></a>Připojení virtuální sítě k velkým instancím HANA
 
@@ -95,7 +96,7 @@ New-AzVirtualNetworkGatewayConnection -Name $myConnectionName `
 ```
 
 > [!NOTE]
-> Poslední parametr příkazu New-AzVirtualNetworkGatewayConnection, **ExpressRouteGatewayBypass** je nový parametr, který umožňuje rychlou cestu ExpressRoute. Funkce, která omezuje latenci sítě mezi jednotkami velkých instancí HANA a virtuálními počítači Azure. Tato funkce byla přidána v květnu 2019. Další podrobnosti najdete v článku [architektura sítě SAP Hana (velké instance)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture). Před spuštěním příkazů se ujistěte, že používáte nejnovější verze rutin PowerShellu.
+> Poslední parametr příkazu New-AzVirtualNetworkGatewayConnection, **ExpressRouteGatewayBypass** je nový parametr, který umožňuje rychlou cestu ExpressRoute. Funkce, která omezuje latenci sítě mezi jednotkami velkých instancí HANA a virtuálními počítači Azure. Tato funkce byla přidána v květnu 2019. Další podrobnosti najdete v článku [architektura sítě SAP Hana (velké instance)](./hana-network-architecture.md). Před spuštěním příkazů se ujistěte, že používáte nejnovější verze rutin PowerShellu.
 
 Pokud chcete bránu připojit k více než jednomu okruhu ExpressRoute přidruženému k vašemu předplatnému, možná budete muset tento krok spustit více než jednou. Například pravděpodobně budete chtít připojit stejnou bránu virtuální sítě k okruhu ExpressRoute, který připojuje virtuální síť k místní síti.
 
@@ -138,7 +139,7 @@ je potřeba vzít v úvahu:
 - K dispozici je omezení čísla ASN (autonomního systému), které se dá použít k inzerování místních tras do rozsáhlých instancí HANA. Vaše místní zařízení nesmí inzerovat žádné trasy s privátním čísla ASN v rozsahu 65000 – 65020 nebo 65515. 
 - Pro scénář připojení místního přímého přístupu k velkým instancím HANA musíte vypočítat poplatek za okruh, který vás připojí k Azure. Pro ceny si prohlédněte ceny za [Global REACH doplněk](https://azure.microsoft.com/pricing/details/expressroute/).
 
-Pokud chcete získat jeden nebo oba scénáře použité pro vaše nasazení, otevřete zprávu o podpoře v Azure, jak je popsáno v tématu [otevření žádosti o podporu pro velké instance Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#open-a-support-request-for-hana-large-instances) .
+Pokud chcete získat jeden nebo oba scénáře použité pro vaše nasazení, otevřete zprávu o podpoře v Azure, jak je popsáno v tématu [otevření žádosti o podporu pro velké instance Hana](./hana-li-portal.md#open-a-support-request-for-hana-large-instances) .
 
 Požadovaná data a klíčová slova, která potřebujete použít pro Microsoft, aby bylo možné směrovat a provádět na vaší žádosti, vypadá takto:
 

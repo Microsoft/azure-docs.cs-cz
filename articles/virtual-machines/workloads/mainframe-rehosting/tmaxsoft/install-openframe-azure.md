@@ -8,12 +8,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: 1ad6e52c421d9cfec4640d3a330b5507d6ed3e9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41b31d5c4a01183d4620dcd6ec6f4729f078d382
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72436045"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082388"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>Instalace TmaxSoft OpenFrame v Azure
 
@@ -96,7 +96,7 @@ Zatmění pro Windows: vývojová platforma podporovaná nástrojem TmaxSoft<br/
 
 <!-- markdownlint-enable MD033 -->
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Naplánujte si útratu několika dní a sestavte veškerý požadovaný software a dokončete všechny ruční procesy.
 
@@ -122,7 +122,7 @@ Prostředí OpenFrame můžete nastavit pomocí různých vzorů nasazení, ale 
 
     ![Seznam prostředků v Azure Portal](media/vm-01.png)
 
-3. Klikněte na tlačítko **Add** (Přidat).
+3. Klikněte na **Přidat**.
 
     ![Přidat možnost v Azure Portal](media/vm-02.png)
 
@@ -349,7 +349,7 @@ Tibero nabízí několik klíčových funkcí v prostředí OpenFrame v Azure:
      )
     ```
 
-7. Vytvořte databázi. Zobrazí se výstup:
+7. Vytvořte databázi. Objeví se následující výstup:
 
     ```
     Change core dump dir to /opt/tmaxdb/tibero6/bin/prof.
@@ -1167,7 +1167,7 @@ OSC je prostředí OpenFrame podobné IBM CICS, které podporuje vysokorychlostn
      Po dokončení se zobrazí zpráva "instalace byla dokončena".
 
 4. Ověřte, že se profil bash aktualizoval pomocí proměnných OSC.
-5. Zkontrolujte soubor OpenFrame \_ OSC7 \_ 0 \_ Fix2 \_ InstallLog. log. Výsledek by měl vypadat přibližně takto:
+5. Zkontrolujte soubor OpenFrame \_ OSC7 \_ 0 \_ Fix2 \_ InstallLog. log. Měl by vypadat přibližně takto:
 
      ```
      Summary 
@@ -1476,6 +1476,6 @@ Tím se dokončí instalace součástí OpenFrame.
 
 Pokud zvažujete migraci v rámci sálového počítače, máte k dispozici náš rozšiřující partnerský ekosystém, který vám může pomáhat. Podrobné pokyny k výběru partnerského řešení najdete v tématu věnovaném nástroji pro [modernizaci platforem](https://datamigration.microsoft.com/).
 
--   [Začínáme s Azure](https://docs.microsoft.com/azure/)
--   [Dokumentace k Host Integration Server (její)](https://docs.microsoft.com/host-integration-server/)
--   [Průvodce načtením a posunutím virtuálního datového centra Azure](https://blogs.msdn.microsoft.com/azurecat/2018/03/12/new-whitepaper-azure-virtual-datacenter-lift-and-shift-guide/)
+-   [Začínáme s Azure](../../../../index.yml)
+-   [Dokumentace k Host Integration Server (její)](/host-integration-server/)
+-   [Průvodce načtením a posunutím virtuálního datového centra Azure](/archive/blogs/azurecat/new-whitepaper-azure-virtual-datacenter-lift-and-shift-guide)

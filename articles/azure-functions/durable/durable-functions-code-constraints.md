@@ -5,11 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4ed604302ca187ad4953e865d68dc73030a37c02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14e0b86f11c3eabf93e7d4f0ebf563e59c0c21e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77562135"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081861"
 ---
 # <a name="orchestrator-function-code-constraints"></a>Omezení kódu funkce nástroje Orchestrator
 
@@ -17,7 +18,7 @@ Durable Functions je rozšíření [Azure Functions](../functions-overview.md) ,
 
 ## <a name="orchestrator-code-constraints"></a>Omezení kódu orchestrátoru
 
-Funkce Orchestrator používají k zajištění spolehlivého provádění a zachování stavu místní proměnné použití [zdroje událostí](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) . Chování při opětovném [přehrání](durable-functions-orchestrations.md#reliability) kódu Orchestrator vytvoří omezení pro typ kódu, který můžete zapsat do funkce Orchestrator. Například funkce Orchestrator musí být *deterministické*: funkce Orchestrator bude opakovaně přehrána několikrát a ta musí mít stejný výsledek pokaždé.
+Funkce Orchestrator používají k zajištění spolehlivého provádění a zachování stavu místní proměnné použití [zdroje událostí](/azure/architecture/patterns/event-sourcing) . Chování při opětovném [přehrání](durable-functions-orchestrations.md#reliability) kódu Orchestrator vytvoří omezení pro typ kódu, který můžete zapsat do funkce Orchestrator. Například funkce Orchestrator musí být *deterministické*: funkce Orchestrator bude opakovaně přehrána několikrát a ta musí mít stejný výsledek pokaždé.
 
 ### <a name="using-deterministic-apis"></a>Použití deterministického rozhraní API
 

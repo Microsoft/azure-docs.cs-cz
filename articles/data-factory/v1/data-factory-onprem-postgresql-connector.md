@@ -13,10 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 37c83e77cadae002ff701a08c4b36a86f7cab9a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79281233"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082830"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Přesun dat z PostgreSQL pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -31,7 +32,7 @@ Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Fact
 
 Data z místního úložiště dat PostgreSQL můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných jako jímky aktivitou kopírování najdete v části [podporovaná úložiště dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Data Factory v současné době podporuje přesun dat z databáze PostgreSQL do jiných úložišť dat, ale ne pro přesun dat z jiných úložišť dat do databáze PostgreSQL.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Služba Data Factory podporuje připojení k místním zdrojům PostgreSQL pomocí brány Správa dat. Další informace o Správa dat bráně a podrobné pokyny k nastavení brány najdete v tématu [přesun dat mezi místními umístěními a v cloudovém](data-factory-move-data-between-onprem-and-cloud.md) článku.
 
@@ -69,14 +70,14 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou službu PostgreSQL.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | typ |Vlastnost Type musí být nastavená na: **OnPremisesPostgreSql** . |Yes |
 | server |Název serveru PostgreSQL. |Yes |
 | database |Název databáze PostgreSQL |Yes |
-| XSD |Název schématu v databázi. V názvu schématu se rozlišují velká a malá písmena. |No |
+| schema |Název schématu v databázi. V názvu schématu se rozlišují velká a malá písmena. |No |
 | authenticationType |Typ ověřování, který se používá pro připojení k databázi PostgreSQL. Možné hodnoty jsou: anonymní, základní a Windows. |Yes |
-| uživatelské jméno |Pokud používáte základní ověřování nebo ověřování systému Windows, zadejte uživatelské jméno. |No |
+| username |Pokud používáte základní ověřování nebo ověřování systému Windows, zadejte uživatelské jméno. |No |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |No |
 | gatewayName |Název brány, kterou by služba Data Factory měla použít pro připojení k místní databázi PostgreSQL. |Yes |
 
@@ -85,7 +86,7 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou s
 
 Oddíl typeProperties se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl typeProperties pro datovou sadu **relačních** objektů typu (což zahrnuje PostgreSQL DataSet) má následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | tableName |Název tabulky instance databáze PostgreSQL, na kterou odkazuje propojená služba Vlastnost tableName rozlišuje velká a malá písmena. |Ne (Pokud je zadán **dotaz** na **RelationalSource** ) |
 
@@ -103,7 +104,7 @@ Pokud je zdroj typu **RelationalSource** (který zahrnuje PostgreSQL), jsou v č
 > [!NOTE]
 > V názvech schémat a tabulek se rozlišují velká a malá písmena. Uzavřete je do `""` dotazu (dvojité uvozovky).
 
-**Příklad:**
+**Případě**
 
  `"query": "select * from \"MySchema\".\"MyTable\""`
 
@@ -308,7 +309,7 @@ Při přesunu dat na PostgreSQL se z typu PostgreSQL na typ .NET použijí násl
 | bigserial |serial8 |Int64 |
 | bit [(n)] | |Byte [], řetězec |
 | bitové proměnlivost [(n)] |varbit |Byte [], řetězec |
-| Boolean |bool |Logická hodnota |
+| boolean |bool |Logická hodnota |
 | seznam | |Byte [], řetězec |
 | Byte | |Byte [], řetězec |
 | znak [(n)] |Char [(n)] |Řetězec |
@@ -318,7 +319,7 @@ Při přesunu dat na PostgreSQL se z typu PostgreSQL na typ .NET použijí násl
 | kruh | |Byte [], řetězec |
 | date | |Datum a čas |
 | daterange | |Řetězec |
-| Dvojitá přesnost |float8 |Double |
+| Dvojitá přesnost |float8 |dvojité |
 | inet | |Byte [], řetězec |
 | intarry | |Řetězec |
 | int4range | |Řetězec |
@@ -334,7 +335,7 @@ Při přesunu dat na PostgreSQL se z typu PostgreSQL na typ .NET použijí násl
 | číslice [(p, s)] |Decimal [(p, s)] |Desetinné číslo |
 | numrange | |Řetězec |
 | identifikátor | |Int32 |
-| cesta | |Byte [], řetězec |
+| program | |Byte [], řetězec |
 | pg_lsn | |Int64 |
 | Vyberte | |Byte [], řetězec |
 | postupně | |Byte [], řetězec |

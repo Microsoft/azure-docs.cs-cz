@@ -3,11 +3,12 @@ title: Přehled AMQP 1,0 v Azure Service Bus
 description: Přečtěte si, jak Azure Service Bus podporuje rozšířený protokol řízení front zpráv (AMQP) (AMQP), což je otevřený standardní protokol.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 8ddeadde85e3e0b574c93db0227dcba6ad746f64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1113ffd268c991ba8a9c8f574b90d555a81ae840
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338054"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083867"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>Podpora AMQP 1,0 v Service Bus
 Azure Service Bus cloudová služba i místní [Service Bus pro Windows Server (Service Bus 1,1)](https://msdn.microsoft.com/library/dn282144.aspx) podporují protokol AMQP (Advanced Message Queueing Protocol) 1,0. AMQP umožňuje sestavovat hybridní aplikace pro různé platformy s využitím otevřeného standardního protokolu. Můžete sestavovat aplikace pomocí komponent sestavených pomocí různých jazyků a platforem, které běží v různých operačních systémech. Všechny tyto komponenty se mohou připojit k Service Bus a hladce si vyměňovat strukturované obchodní zprávy efektivně a s plnou věrností.
@@ -53,7 +54,7 @@ Podpora AMQP 1,0 v Azure Service Bus znamená, že teď můžete využít Servic
 
 Následující obrázek znázorňuje ukázkové nasazení, ve kterém klienti Java běžící na systému Linux, napsané pomocí standardního rozhraní API služby JMS (Java Message Service) a klientů .NET běžících na Windows, zprávy Exchange prostřednictvím Service Bus pomocí AMQP 1,0.
 
-![][0]
+![Diagram znázorňující jednu Service Bus výměnu zpráv se dvěma prostředími Linux a dvěma prostředími Windows.][0]
 
 **Obrázek 1: Příklad scénáře nasazení znázorňujícího zasílání zpráv pro různé platformy pomocí Service Bus a AMQP 1,0**
 
@@ -69,7 +70,7 @@ V tuto chvíli jsou známy následující klientské knihovny pro práci s Servi
 
 **Obrázek 2: tabulka klientských knihoven AMQP 1,0**
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 * AMQP 1,0 je otevřený a spolehlivý protokol pro zasílání zpráv, který můžete použít k vytváření hybridních aplikací pro různé platformy. AMQP 1,0 je OASIS Standard.
 * Podpora AMQP 1,0 je teď k dispozici v Azure Service Bus a také Service Bus pro Windows Server (Service Bus 1,1). Ceny jsou stejné jako u existujících protokolů.
 

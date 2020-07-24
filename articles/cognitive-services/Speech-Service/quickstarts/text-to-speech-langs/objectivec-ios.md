@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: syntetizace řeči, objektivní-C-Speech Service'
+title: 'Rychlý Start: syntetizace řeči v cíli – C použití sady Speech SDK'
 titleSuffix: Azure Cognitive Services
 description: Naučte se, jak syntetizovat řeč v cíli – C v iOS pomocí sady Speech SDK
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: yulili
-ms.openlocfilehash: 7a1cc2c45988e0c5a8c757e4d280b48dbbe56daa
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: fa1b62a987cb6c158c8d7f1fceb57bc47e5800eb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391379"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084836"
 ---
 # <a name="quickstart-synthesize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>Rychlý Start: syntetizace řeči v cíli – C v iOS pomocí sady Speech SDK
 
 V tomto článku se naučíte, jak vytvořit aplikaci pro iOS v cíli – C pomocí sady Cognitive Services Speech SDK pro syntetizaci řeči z textu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, tady je seznam požadavků:
 

@@ -1,6 +1,6 @@
 ---
-title: Prostředí virtuálních počítačů s Windows – Azure
-description: Základní prvky prostředí virtuálních počítačů s Windows.
+title: Prostředí virtuálních počítačů s Windows (2019) – Azure
+description: Seznamte se se základními prvky prostředí virtuálního počítače s Windows (2019 verze), jako jsou klienti a fondy hostitelů.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 153532b3c33158ee1a43db7883eb7a9ec621ade7
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 8cb41b4f94b14a94c79b490e38889825fd9d8d1a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86241671"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082643"
 ---
-# <a name="windows-virtual-desktop-environment"></a>Prostředí Windows Virtual Desktop
+# <a name="windows-virtual-desktop-environment-fall-2019-release"></a>Prostředí virtuálních počítačů s Windows (verze 2019)
 
 >[!IMPORTANT]
 >Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objekty virtuálních klientů Windows, které byly zavedeny v aktualizaci jarní 2020, přečtěte si [Tento článek](../environment-setup.md).

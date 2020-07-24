@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
 ms.author: memildin
-ms.openlocfilehash: 1f0a11616fe996f02d6464d23724156906176041
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 67017bdc98b997c728c4d5dcfab92e0804498060
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771151"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084003"
 ---
 # <a name="quickstart-onboard-your-azure-stack-virtual-machines-to-security-center"></a>Rychlý Start: připojení virtuálních počítačů s Azure Stack k Security Center
 Po zaregistrování předplatného Azure můžete povolit Security Center k ochraně virtuálních počítačů běžících na Azure Stack tím, že z webu Azure Stack Marketplace přidáte rozšíření pro správu virtuálního počítače **Azure monitor, Update a Configuration** .
 
 V tomto rychlém startu se dozvíte, jak přidat rozšíření virtuálního počítače pro **Azure monitor, aktualizaci a správu konfigurace** na virtuálním počítači (Linux a Windows se podporují i v případě, že běží) v Azure Stack.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud chcete začít využívat Security Center, musíte mít předplatné pro Microsoft Azure. Pokud nemáte předplatné, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
 Než začnete s tímto rychlým startem, musíte mít předplatné Azure na úrovni Standard Security Center. Pokyny k upgradu najdete v tématu [Připojení předplatného Azure ke službě Security Center úrovně Standard](security-center-get-started.md). Po dobu 30 dnů můžete vyzkoušet Security Center úroveň Standard zdarma. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="select-your-workspace-in-azure-security-center"></a>Vyberte svůj pracovní prostor v Azure Security Center
 
-1. Přihlaste se k [portálu Azure Portal](https://azure.microsoft.com/features/azure-portal/).
-2. V nabídce **Microsoft Azure** vyberte možnost **Security Center**. Otevře se obrazovka **Security Center – Přehled**. 
+1. Přihlaste se k webu [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
+2. V nabídce **Microsoft Azure** vyberte možnost **Security Center**. **Security Center –** zobrazí se přehled. 
 
    ![Přehled služby Security Center][2]
 
@@ -61,7 +61,7 @@ Nyní musíte přidat rozšíření **Azure monitor, Update a Configuration Mana
 
 1. Na nové kartě prohlížeče se přihlaste k portálu **Azure Stack** .
 2. Přejít na stránku **virtuální počítače** , vyberte virtuální počítač, který chcete chránit pomocí Security Center. Informace o tom, jak vytvořit virtuální počítač na Azure Stack, najdete v [tomto rychlém startu pro virtuální počítače s Windows](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-windows-portal) nebo v [tomto rychlém startu pro virtuální počítače](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-linux-portal)se systémem Linux.
-3. Vyberte **Extensions** (Rozšíření). Zobrazí se seznam rozšíření virtuálních počítačů nainstalovaných na tomto virtuálním počítači.
+3. Vyberte **Rozšíření**. Zobrazí se seznam rozšíření virtuálních počítačů nainstalovaných na tomto virtuálním počítači.
 4. Klikněte na kartu **Přidat** . Otevře se okno nabídky **nový prostředek** a zobrazí se seznam dostupných rozšíření virtuálních počítačů. 
 5. Vyberte rozšíření **pro správu Azure monitor, aktualizace a konfigurace** a klikněte na **vytvořit**. Otevře se okno **instalovat konfiguraci rozšíření** .
 

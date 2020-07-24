@@ -13,17 +13,18 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
-ms.openlocfilehash: a21b8f2fea7433e9f65fd790321a28ea47a38c79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9391bb4867717b6780b50cf90b998254227d2310
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76544714"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082609"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Rozšíření VM VM pro Linux a Windows
 
 Software Chef poskytuje automatizační platformu DevOps pro Linux a Windows, která umožňuje současnou správu fyzických i virtuálních serverových konfigurací. Rozšíření VM VM je rozšíření, které umožňuje pro virtuální počítače službu pro vypínání.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="operating-system"></a>Operační systém
 
@@ -66,7 +67,7 @@ Následující JSON zobrazuje schéma rozšíření virtuálního počítače pr
 
 ### <a name="core-property-values"></a>Hodnoty základních vlastností
 
-| Name | Hodnota/příklad | Typ dat
+| Název | Hodnota/příklad | Typ dat
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | řetězec (datum) |
 | vydavatel | `Chef.Bootstrap.WindowsAzure` | řetězec |
@@ -75,17 +76,17 @@ Následující JSON zobrazuje schéma rozšíření virtuálního počítače pr
 
 ### <a name="settings"></a>Nastavení
 
-| Name | Hodnota/příklad | Typ dat | Povinné?
+| Název | Hodnota/příklad | Typ dat | Povinné?
 | ---- | ---- | ---- | ----
-| nastavení/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | řetězec (URL) | Ano |
-| nastavení/bootstrap_options/validation_client_name | `myorg-validator` | řetězec | Ano |
-| nastavení/runlist | `recipe[mycookbook::default]` | řetězec | Ano |
+| nastavení/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | řetězec (URL) | Y |
+| nastavení/bootstrap_options/validation_client_name | `myorg-validator` | řetězec | Y |
+| nastavení/runlist | `recipe[mycookbook::default]` | řetězec | Y |
 
 ### <a name="protected-settings"></a>Chráněná nastavení
 
-| Name | Příklad | Typ dat | Povinné?
+| Název | Příklad | Typ dat | Povinné?
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | řetězec | Ano |
+| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | řetězec | Y |
 
 <!--
 ### Linux-specific settings
@@ -105,7 +106,7 @@ Rozšíření virtuálních počítačů Azure je možné nasadit pomocí šablo
 
 Ukázková šablona Správce prostředků, která obsahuje rozšíření VM VM, najdete v [galerii Azure pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm).
 
-Konfiguraci JSON pro rozšíření virtuálního počítače můžete vnořit do prostředku virtuálního počítače nebo umístit na kořenovou nebo nejvyšší úroveň šablony Správce prostředků JSON. Umístění konfigurace JSON má vliv na hodnotu názvu a typu prostředku. Další informace najdete v tématu [Nastavení názvu a typu pro podřízené prostředky](../../azure-resource-manager/resource-manager-template-child-resource.md).
+Konfiguraci JSON pro rozšíření virtuálního počítače můžete vnořit do prostředku virtuálního počítače nebo umístit na kořenovou nebo nejvyšší úroveň šablony Správce prostředků JSON. Umístění konfigurace JSON má vliv na hodnotu názvu a typu prostředku. Další informace najdete v tématu [Nastavení názvu a typu pro podřízené prostředky](../../azure-resource-manager/templates/child-resource-name-type.md).
 
 ## <a name="azure-cli-deployment"></a>Nasazení Azure CLI
 

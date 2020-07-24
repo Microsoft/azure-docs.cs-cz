@@ -14,13 +14,19 @@
       href: data-lake-analytics-data-lake-tools-for-vscode.md
     - name: Azure PowerShell
       href: data-lake-analytics-get-started-powershell.md
-    - name: Azure CLI
+    - name: Rozhraní příkazového řádku Azure
       href: data-lake-analytics-get-started-cli.md
 - name: ukázky
   items:
     - name: Integrované služby Azure Policy
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md
+- name: Koncepty
+  items:
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení pro srovnávací test zabezpečení Azure
+          href: security-baseline.md
 - name: Postup
   items:
     - name: Správa služby Data Lake Analytics
@@ -87,7 +93,7 @@
               href: data-lake-analytics-data-lake-tools-develop-usql-database.md
             - name: Procházení a zobrazování úloh
               href: data-lake-analytics-data-lake-tools-view-jobs.md
-            - name: 'Ladění vlastního kódu v C#'
+            - name: Ladění vlastního kódu v C#
               href: data-lake-analytics-debug-u-sql-jobs.md
             - name: Řešení potíží s opakovanými úlohami
               href: data-lake-analytics-data-lake-tools-debug-recurring-job.md

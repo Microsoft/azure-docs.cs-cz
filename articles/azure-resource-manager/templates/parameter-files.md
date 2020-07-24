@@ -3,12 +3,12 @@ title: Vytvoření souboru parametrů
 description: Vytvoří soubor parametrů pro předávání hodnot během nasazování šablony Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 06/19/2020
-ms.openlocfilehash: 7c03e161c7b3a18020de6a06d356720f5e4c31fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8039b63978e52b69b0f8ffb4dd4e052769f3c5e6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117501"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082932"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Vytvořit soubor Správce prostředků parametrů
 
@@ -186,8 +186,8 @@ Následující příklad ukazuje formáty různých typů parametrů.
 
 Přečtěte si:
 
-- [Nasazení prostředků pomocí šablon ARM a Azure CLI](./deploy-powershell.md#pass-parameter-values)
-- [Nasazení prostředků pomocí šablon ARM a Azure PowerShell](./deploy-cli.md#parameters)
+- [Nasazení prostředků pomocí šablon ARM a Azure CLI](./deploy-cli.md#parameters)
+- [Nasazení prostředků pomocí šablon ARM a Azure PowerShell](./deploy-powershell.md#pass-parameter-values)
 
 ## <a name="file-name"></a>Název souboru
 

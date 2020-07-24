@@ -7,11 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 231fbe3a30cc9507ebb9b401bd2fe07a451c59a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3ab49d0ad24c2b2c8859408ed103178cede5b8b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987676"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082099"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Propojení virtuálních sítí z různých modelů nasazení pomocí portálu
 
@@ -33,7 +34,7 @@ Pokud ještě nemáte bránu virtuální sítě a nechcete ji vytvořit, možná
 
 * Tyto kroky předpokládají, že oba virtuální sítě již byly vytvořeny. Pokud tento článek používáte jako cvičení a nemáte virtuální sítě, existují odkazy na postupy, které vám pomůžou je vytvořit.
 * Ověřte, že se rozsahy adres pro virtuální sítě nemění mezi sebou, nebo se překrývají s žádným z rozsahů pro další připojení, ke kterým je možné brány připojit.
-* Nainstalujte nejnovější rutiny PowerShellu pro Správce prostředků i pro správu služeb (Classic). V tomto článku používáme jak Azure Portal, tak i PowerShell. K vytvoření připojení z klasické virtuální sítě do virtuální sítě Správce prostředků je potřeba PowerShell. Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview). 
+* Nainstalujte nejnovější rutiny PowerShellu pro Správce prostředků i pro správu služeb (Classic). V tomto článku používáme jak Azure Portal, tak i PowerShell. K vytvoření připojení z klasické virtuální sítě do virtuální sítě Správce prostředků je potřeba PowerShell. Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/). 
 
 ### <a name="example-settings"></a><a name="values"></a>Příklad nastavení
 
@@ -77,7 +78,7 @@ V následující tabulce je uveden příklad, jak jsou definovány příklady vi
 | Virtual Network | Adresní prostor | Oblast | Připojí se k místní síťové lokalitě. |
 |:--- |:--- |:--- |:--- |
 | ClassicVNet |(10.0.0.0/24) |USA – západ | RMVNetLocal (192.168.0.0/16) |
-| RMVNet | (192.168.0.0/16) |USA – východ |ClassicVNetLocal (10.0.0.0/24) |
+| RMVNet | (192.168.0.0/16) |East US |ClassicVNetLocal (10.0.0.0/24) |
 
 ## <a name="section-1---configure-the-classic-vnet-settings"></a><a name="classicvnet"></a>Oddíl 1 – Konfigurace nastavení klasické virtuální sítě
 
@@ -172,7 +173,7 @@ V tomto kroku vytvoříte bránu virtuální sítě pro svou virtuální síť. 
 | Virtual Network | Adresní prostor | Oblast | Připojí se k místní síťové lokalitě. |Veřejná IP adresa brány|
 |:--- |:--- |:--- |:--- |:--- |
 | ClassicVNet |(10.0.0.0/24) |USA – západ | RMVNetLocal (192.168.0.0/16) |Veřejná IP adresa, která je přiřazená bráně ClassicVNet|
-| RMVNet | (192.168.0.0/16) |USA – východ |ClassicVNetLocal (10.0.0.0/24) |Veřejná IP adresa, která je přiřazená bráně RMVNet.|
+| RMVNet | (192.168.0.0/16) |East US |ClassicVNetLocal (10.0.0.0/24) |Veřejná IP adresa, která je přiřazená bráně RMVNet.|
 
 Brána místní sítě určuje rozsah adres a veřejnou IP adresu přidruženou k vaší klasické virtuální síti a její bráně virtuální sítě. Pokud provedete tyto kroky jako cvičení, přečtěte si příklady hodnot.
 

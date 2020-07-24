@@ -8,13 +8,13 @@ ms.author: magottei
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 862b3056445bddb358e6485ce5fec4de4d53eace
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 07/12/2020
+ms.openlocfilehash: 725ee57a06d3d547142fdd39ef03e1c7e7c296a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039275"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084139"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Připojení a indexování obsahu Azure SQL pomocí indexeru Azure Kognitivní hledání
 
@@ -325,8 +325,8 @@ Při použití techniky obnovitelného odstranění můžete při vytváření n
 | smalldatetime, DateTime, datetime2, Date, DateTimeOffset |EDM. DateTimeOffset, Edm. String | |
 | uniqueidentifer |Edm.String | |
 | geografické |Edm.GeographyPoint |Podporují se jenom geografické instance typu POINT s SRID 4326 (což je výchozí nastavení). |
-| rowversion |Není k dispozici |Sloupce verze řádku nelze uložit do indexu hledání, ale lze je použít ke sledování změn. |
-| čas, TimeSpan, binární, varbinary, image, XML, geometrie, typy CLR |Není k dispozici |Nepodporuje se |
+| rowversion |– |Sloupce verze řádku nelze uložit do indexu hledání, ale lze je použít ke sledování změn. |
+| čas, TimeSpan, binární, varbinary, image, XML, geometrie, typy CLR |– |Nepodporováno |
 
 ## <a name="configuration-settings"></a>Nastavení konfigurace
 SQL indexer zpřístupňuje několik nastavení konfigurace:
@@ -346,11 +346,11 @@ Tato nastavení se používají v `parameters.configuration` objektu v definici 
     }
 ```
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 **Otázka: můžu použít službu Azure SQL indexer s databázemi SQL běžícími na virtuálních počítačích s IaaS v Azure?**
 
-Ano. Je ale potřeba, abyste službě Search povolili připojení k vaší databázi. Další informace najdete v tématu [Konfigurace připojení ze služby azure kognitivní hledání indexer pro SQL Server na virtuálním počítači Azure](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md).
+Yes. Je ale potřeba, abyste službě Search povolili připojení k vaší databázi. Další informace najdete v tématu [Konfigurace připojení ze služby azure kognitivní hledání indexer pro SQL Server na virtuálním počítači Azure](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md).
 
 **Otázka: můžu použít službu Azure SQL indexer s databázemi SQL běžícími místně?**
 
@@ -362,11 +362,11 @@ Ne. Tento scénář nepodporujeme, protože nebyl testován indexer na jiné dat
 
 **Otázka: je možné vytvořit více indexerů, které jsou spuštěny podle plánu?**
 
-Ano. V jednom uzlu ale může běžet jenom jeden indexer. Pokud potřebujete více indexerů současně spuštěných, zvažte možnost škálovat službu vyhledávání na více než jednu jednotku vyhledávání.
+Yes. V jednom uzlu ale může běžet jenom jeden indexer. Pokud potřebujete více indexerů současně spuštěných, zvažte možnost škálovat službu vyhledávání na více než jednu jednotku vyhledávání.
 
 **Otázka: spouští indexer vliv na moje úlohy dotazů?**
 
-Ano. Indexer běží na jednom z uzlů ve službě vyhledávání a prostředky tohoto uzlu se sdílejí mezi indexováním a obsluhou přenosů dotazů a dalších požadavků na rozhraní API. Pokud spouštíte náročné úlohy indexování a dotazování a dojde k vysoké míře 503 chyb nebo zvýšení doby odezvy, zvažte možnost [škálování služby vyhledávání](search-capacity-planning.md).
+Yes. Indexer běží na jednom z uzlů ve službě vyhledávání a prostředky tohoto uzlu se sdílejí mezi indexováním a obsluhou přenosů dotazů a dalších požadavků na rozhraní API. Pokud spouštíte náročné úlohy indexování a dotazování a dojde k vysoké míře 503 chyb nebo zvýšení doby odezvy, zvažte možnost [škálování služby vyhledávání](search-capacity-planning.md).
 
 **Otázka: je možné použít sekundární repliku v [clusteru s podporou převzetí služeb při selhání](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) jako zdroj dat?**
 

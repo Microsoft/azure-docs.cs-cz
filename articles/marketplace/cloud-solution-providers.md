@@ -3,16 +3,16 @@ title: Cloud Solution Provider – Microsoft Commercial Marketplace
 description: Naučte se prodávat vaše nabídky prostřednictvím kanálu partnera programu Microsoft Cloud (CSP) na komerčním webu Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: keferna
 ms.author: keferna
-ms.date: 04/16/2020
-ms.openlocfilehash: d6c3af312717627a1719c5f1029ae638e7d4f827
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/14/2020
+ms.openlocfilehash: 8ac69d7d611aa75584955ed6ed83ab79c70ed73a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104431"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082797"
 ---
 # <a name="cloud-solution-provider-program"></a>Program Cloud Solution Provider
 
@@ -30,31 +30,31 @@ Následující nabídky mají nárok na to, aby je bylo možné prodávat partne
 - Spravované aplikace
 
 > [!NOTE]
-> Ve výchozím nastavení se mohou v kontejnerech a prostředích SKU pro vlastní licence (BYOL) prodávat v programu CSP.
+> Do kontejnerů a přineste si vlastní licenci (BYOL), ve kterých se ve výchozím nastavení prodávají partneři v programu CSP.
 
-## <a name="how-to-configure-an-offering"></a>Postup konfigurace nabídky
+## <a name="how-to-configure-an-offer"></a>Konfigurace nabídky
 
-Nastavení výslovných přihlášení k programu CSP se konfiguruje v partnerském centru nebo v prostředí pro vytváření nabídek portál partnerů cloudu. [Přečtěte si další informace o změně prostředí pro publikování](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293).
+Nakonfigurujte nastavení výslovných přihlášení programu CSP při vytváření nabídky v partnerském centru. [Přečtěte si další informace o změně prostředí pro publikování](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293).
 
 ### <a name="partner-center-opt-in"></a>Výslovný souhlas partnerského centra
 
-V partnerském centru najdete přihlašovací informace v modulu cloudu pro prodejce CSP.
+Přihlašovací možnosti se nacházejí v modulu poskytovatelů CSP pro prodejce:
 
 ![Cílová skupina pro prodejce CSP](media/marketplace-publishers-guide/csp-reseller-audience.png)
 
-V modulu pro prodej prodejců CSP máte tři možnosti, jak vybírat z těchto možností:
+Vyberte si ze tří možností:
 
-- Možnost One: libovolný partner v programu CSP
-- Možnost 2: konkrétní partneři v programu CSP, který vyberete
-- Možnost tři: žádní partneři v programu CSP
+1. Libovolný partner v programu CSP.
+2. Konkrétní partneři v programu CSP, který je vybrán.
+3. V programu CSP nejsou žádní partneři.
 
-#### <a name="option-one-any-partner-in-the-csp-program"></a>Možnost One: libovolný partner v programu CSP
+#### <a name="option-1-any-partner-in-the-csp-program"></a>Možnost 1: libovolný partner v programu CSP
 
 ![Libovolný partner v programu CSP](media/marketplace-publishers-guide/csp-reseller-option-one.png)
 
  Když vyberete tuto možnost, všichni partneři v programu CSP budou mít nárok na prodej vaší nabídky svým zákazníkům.
 
-#### <a name="option-two-specific-partners-in-the-csp-program-i-select"></a>Možnost 2: konkrétní partneři v programu CSP, který vyberete
+#### <a name="option-2-specific-partners-in-the-csp-program-i-select"></a>Možnost 2: konkrétní partneři v programu CSP, který vyberete
 
 ![Konkrétní partneři v programu CSP, který jsem vybral](media/marketplace-publishers-guide/csp-reseller-option-two.png)
 
@@ -87,17 +87,11 @@ Pokud aktualizujete seznam CSP již publikované nabídky, přidejte další par
 
 Pokud máte nabídku, která už má seznam autorizovaných partnerů a chcete použít stejný seznam pro jinou nabídku, použijte **Import/export**. Přejděte na nabídku, která má seznam CSP, a vyberte **exportovat zprostředkovatele CSP**. Funkce vytvoří soubor. csv, který lze importovat do jiné nabídky.
 
-#### <a name="option-three-no-partners-in-the-csp-program"></a>Možnost tři: žádní partneři v programu CSP
+#### <a name="option-3-no-partners-in-the-csp-program"></a>Možnost 3: žádní partneři v programu CSP
 
 ![Žádní partneři v programu CSP](media/marketplace-publishers-guide/csp-reseller-option-three.png)
 
 Když vyberete tuto možnost, nebudete svoji nabídku mít v programu CSP. Tento výběr můžete kdykoli změnit.
-
-### <a name="cloud-partner-portal-opt-in"></a>portál partnerů cloudu výslovný souhlas
-
-V portál partnerů cloudu se výslovný souhlas nastavuje na kartě Marketplace nebo prezentace. Možnost zvolit konkrétní partnery v programu CSP je k dispozici pouze v partnerském centru.
-
-![Prostředí pro výslovný souhlas zprostředkovatele CSP v CPP](media/marketplace-publishers-guide/csp-opt-in.png)
 
 ## <a name="deauthorize-partners-in-the-csp-program"></a>Zrušení autorizace partnerů v programu CSP
 
@@ -115,9 +109,6 @@ Pokud partner v programu CSP neprodal váš produkt svým zákazníkům a chcete
 4. Pro **vyberte problém, který nejlépe popisuje problém**, vyberte **aktualizovat existující nabídku**.
 5. Vyberte možnost **Další** , aby se přesměrovala na **stránku podrobnosti o problému** , kde můžete zadat další podrobnosti o vašem problému.
 6. Jako název problému použijte **deautorizovat CSP** a vyplňte zbývající části požadovaných oddílů.
-
-
-
 
 ## <a name="navigate-between-options"></a>Navigace mezi možnostmi
 
@@ -182,12 +173,6 @@ Aby mohli partneři v programu Cloud Solution Provider efektivně představovat 
 Pokud jste se přihlásili do kanálu CSP v partnerském centru, musí vydavatelé zadat adresu URL, která hostuje relevantní marketingové materiály a kontaktní informace kanálu, do kanálu CSP v modulu seznam nabídek:
 
 ![Informace o prostředcích CSP partnerského centra](media/marketplace-publishers-guide/pc-csp-channel.png)
-
-### <a name="cloud-partner-portal-csp-channel"></a>portál partnerů cloudu kanál CSP
-
-Pokud jste se rozhodli do kanálu CSP v portál partnerů cloudu, vydavatelé musí zadat adresu URL, která hostuje relevantní marketingové materiály a kontaktní informace kanálu k kanálu CSP:
-
-![portál partnerů cloudu informace o promateriálcích CSP](media/marketplace-publishers-guide/cpp-csp-information.png)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 9cb516b6d13b4b57a89bb276683857c62a758618
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0bcc67e80861df2827237298444175c3abdb6602
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021870"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084040"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolace ve veřejném cloudu Azure
 
@@ -63,9 +64,9 @@ Koncept kontejnerů tenantů je hluboko v adresářové službě na všech vrstv
 
 I v případě, že jsou metadata z více Azure Active Directory tenantů uložena na stejném fyzickém disku, neexistuje žádná relace mezi kontejnery, která je definována adresářovou službou, která je následně vyřízena správcem klienta.
 
-### <a name="azure-role-based-access-control-rbac"></a>Access Control na základě rolí v Azure (RBAC)
+### <a name="azure-role-based-access-control-azure-rbac"></a>Řízení přístupu na základě role v Azure (Azure RBAC)
 
-Správa [na Access Control základě rolí v Azure (RBAC)](../../role-based-access-control/overview.md) vám pomůže sdílet různé komponenty dostupné v rámci předplatného Azure tím, že poskytuje jemně odstupňovanou správu přístupu pro Azure. Azure RBAC umožňuje oddělení povinností v rámci vaší organizace a udělení přístupu na základě toho, co uživatelé potřebují k provádění svých úloh. Místo udělení všech neomezených oprávnění v předplatném Azure nebo prostředcích můžete povolení jenom určitých akcí.
+[Řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md) pomáhá sdílet různé komponenty dostupné v rámci předplatného Azure tím, že poskytuje jemně odstupňovanou správu přístupu pro Azure. Azure RBAC umožňuje oddělení povinností v rámci vaší organizace a udělení přístupu na základě toho, co uživatelé potřebují k provádění svých úloh. Místo udělení všech neomezených oprávnění v předplatném Azure nebo prostředcích můžete povolení jenom určitých akcí.
 
 Azure RBAC má tři základní role, které se vztahují na všechny typy prostředků:
 
@@ -144,7 +145,7 @@ Kontroler prostředků infrastruktury Azure zodpovídá za přidělování prost
 
 Hypervisor Azure vynutil oddělení paměti a procesů mezi virtuálními počítači a bezpečně směruje síťový provoz do klientů hostovaného operačního systému. Tím se eliminuje možnost útoku na kanál na úrovni virtuálního počítače a na straně stran.
 
-V Azure je kořenový virtuální počítač speciální: používá posílený operační systém, který se nazývá kořenový operační systém, který hostuje agenta prostředků infrastruktury (FA). V rámci služby Host operačních systémech na virtuálních počítačích zákazníků se používá v systému, ve kterém se dají spravovat agenti hosta (GA). A také umožňuje spravovat uzly úložiště.
+V Azure je kořenový virtuální počítač speciální: používá posílený operační systém, který se nazývá kořenový operační systém, který hostuje agenta prostředků infrastruktury (FA). V případě, že se v hostovaných operačních systémech na virtuálních počítačích zákazníků používají služby hosta (GA), používá se ve funkci. A také umožňuje spravovat uzly úložiště.
 
 Kolekce hypervisoru Azure, kořenového operačního systému/DM a virtuálních počítačů a prostředků zákazníka se skládá z výpočetního uzlu. Objekt, který se spravuje pomocí řadiče prostředků infrastruktury (FC), který existuje mimo výpočetní a úložné uzly (výpočetní prostředky a clustery úložiště jsou spravované pomocí samostatného programu FCs). Pokud zákazník aktualizuje konfigurační soubor aplikace, když je spuštěný, technologie FC komunikuje s FA, který pak kontaktuje na základě změny konfigurace. V případě selhání hardwaru bude FC automaticky najít dostupný hardware a restartovat virtuální počítač.
 
@@ -208,9 +209,9 @@ Data úložiště IP je možné chránit před neautorizovanými uživateli pros
 Azure nabízí pro ochranu dat následující typy šifrování:
 
 - Šifrování během přenosu
-- Šifrování v klidovém stavu
+- Šifrování neaktivních uložených dat
 
-#### <a name="encryption-in-transit"></a>Šifrování během přenosu
+#### <a name="encryption-in-transit"></a>Šifrování při přenosu
 
 Šifrování při přenosu je mechanismus ochrany dat při přenosu mezi sítěmi. Pomocí Azure Storage můžete zabezpečit data pomocí:
 
@@ -318,4 +319,4 @@ Nasazení Azure má několik vrstev izolace sítě. Následující diagram znáz
 
 - Seznamte [se s možnostmi izolace sítě pro počítače ve virtuálních sítích Windows Azure](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/). To zahrnuje Klasický scénář front-endu a back-endu, ve kterém můžou počítače v určité back-mailové síti nebo v podsítích umožňovat konkrétním koncovým bodů připojení jenom určitých klientů nebo jiných počítačů na základě seznamu povolených IP adres.
 
-- Přečtěte si informace o [izolaci virtuálních počítačů v Azure](../../virtual-machines/windows/isolation.md). Azure COMPUTE nabízí velikosti virtuálních počítačů, které jsou izolované na konkrétní typ hardwaru a vyhrazené pro jednoho zákazníka.
+- Přečtěte si informace o [izolaci virtuálních počítačů v Azure](../../virtual-machines/isolation.md). Azure COMPUTE nabízí velikosti virtuálních počítačů, které jsou izolované na konkrétní typ hardwaru a vyhrazené pro jednoho zákazníka.

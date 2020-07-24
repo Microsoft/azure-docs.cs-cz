@@ -6,11 +6,13 @@ ms.service: spring-cloud
 ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: db5363c5d8adaf29e2c460d9ce36afa2d29ae8e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: b7b3236fe1e4052689657316df851753de7edbe5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791652"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083680"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Řešení běžných problémů s jarním cloudem v Azure
 
@@ -106,7 +108,7 @@ Ale pokud se pokusíte nastavit instanci služby jarní cloudovou službu Azure 
 * Předplatné je aktivní.
 * Toto umístění [podporuje](spring-cloud-faq.md) služba Azure jaře Cloud.
 * Skupina prostředků pro instanci je už vytvořená.
-* Název prostředku odpovídá pravidlu pojmenování. Musí obsahovat jenom malá písmena, číslice a spojovníky. Prvním znakem musí být písmeno. Posledním znakem musí být písmeno nebo číslice. Hodnota musí být v rozmezí 2 až 32 znaků.
+* Název prostředku odpovídá pravidlu pojmenování. Musí obsahovat jenom malá písmena, číslice a spojovníky. Prvním znakem musí být písmeno. Posledním znakem musí být písmeno nebo číslo. Hodnota musí být v rozmezí 2 až 32 znaků.
 
 Pokud chcete nastavit instanci služby jarní cloudovou službu Azure pomocí šablony Správce prostředků, nejdřív se seznamte s [pochopením struktury a syntaxe šablon Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates).
 
@@ -157,7 +159,7 @@ Proměnné prostředí informují cloudové cloudové rozhraní Azure, které za
 > [!WARNING]
 > Tento postup zpřístupňuje proměnné prostředí pomocí testovacího koncového bodu.  Nepokračujte, pokud je váš koncový bod testu veřejně přístupný nebo pokud jste k aplikaci přiřadili název domény.
 
-1. Přejděte do části `https://<your application test endpoint>/actuator/health` (Soubor > Nový > Jiné).  
+1. Přejděte na `https://<your application test endpoint>/actuator/health`.  
     - Podobná odpověď `{"status":"UP"}` označuje, že byl koncový bod povolen.
     - Pokud je odpověď záporná, zahrňte do souboru *POM.xml* následující závislost:
 
@@ -172,7 +174,7 @@ Proměnné prostředí informují cloudové cloudové rozhraní Azure, které za
 
 1. Restartujte aplikaci.
 
-1. Přejít na `https://<your application test endpoint>/actuator/env` odpověď a zkontrolovat odpověď.  Mělo by to vypadat takto:
+1. Přejít na `https://<your application test endpoint>/actuator/env` odpověď a zkontrolovat odpověď.  Měl by vypadat takto:
 
     ```json
     {

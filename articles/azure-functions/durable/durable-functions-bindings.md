@@ -4,11 +4,12 @@ description: Použití aktivačních procedur a vazeb pro rozšíření Durable 
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1f42c6c9b0086d49e539040334c83cfc0c6feb42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 899bc3fdc94b8232acd3edf3e0cbab3c481ff8f2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698057"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081844"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Vazby pro Durable Functions (Azure Functions)
 
@@ -18,7 +19,7 @@ Rozšíření [Durable Functions](durable-functions-overview.md) zavádí dvě n
 
 Aktivační událost orchestrace umožňuje vytvářet [trvalé funkce nástroje Orchestrator](durable-functions-types-features-overview.md#orchestrator-functions). Tato aktivační událost podporuje spouštění nových instancí funkcí Orchestrator a obnovení stávajících instancí funkcí Orchestrator, které čekají na úkol.
 
-Když použijete nástroje sady Visual Studio pro Azure Functions, aktivační událost orchestrace se nakonfiguruje pomocí atributu .NET [OrchestrationTriggerAttribute](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.WebJobs.Extensions.DurableTask.OrchestrationTriggerAttribute?view=azure-dotnet) .
+Když použijete nástroje sady Visual Studio pro Azure Functions, aktivační událost orchestrace se nakonfiguruje pomocí atributu .NET [OrchestrationTriggerAttribute](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.orchestrationtriggerattribute?view=azure-dotnet) .
 
 Při psaní funkcí Orchestrator v skriptovacích jazycích (například skriptování v jazyce JavaScript nebo C#) je aktivační událost Orchestration definována následujícím objektem JSON v poli `bindings` *function.jsv* souboru:
 
@@ -463,7 +464,7 @@ Třídy entit mají zvláštní mechanismy pro interakci s vazbami a vkládání
 
 Následující kód je příkladem jednoduché entity *čítače* implementované jako trvalá funkce napsaná v JavaScriptu. Tato funkce definuje tři operace, `add` , `reset` a `get` , každý z nich pracuje na celočíselném stavu.
 
-**function.jsna**
+**function.json**
 ```json
 {
   "bindings": [
@@ -601,7 +602,7 @@ Konkrétně není vhodné signalizovat `Get` operaci, protože není vrácena ž
 
 Tady je příklad funkce aktivované frontou, která signalizuje entitu "čítač" v JavaScriptu.
 
-**function.jsna**
+**function.json**
 ```json
 {
     "bindings": [

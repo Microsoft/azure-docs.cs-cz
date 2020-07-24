@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: 2268c074480f99ca23117ca2ffd2c87c1dbb10a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84e4e34ab7b9f0250ae7bc94248fa98cbf23cd6c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76513231"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084377"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Migrace z Media Indexer a Media Indexer 2 na Video Indexer
 
-Vyřadí se procesory [Azure Media Indexer](media-services-index-content.md) media a [Azure Media Indexer 2 ve verzi Preview](media-services-process-content-with-indexer2.md) . Informace o datech vyřazení najdete v tématu tyto [starší součásti](legacy-components.md) . [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) nahrazuje tyto starší verze procesorů médií.
+Vyřadí se procesory [Azure Media Indexer](media-services-index-content.md) media a [Azure Media Indexer 2 ve verzi Preview](media-services-process-content-with-indexer2.md) . Informace o datech vyřazení najdete v tématu tyto [starší součásti](legacy-components.md) . [Azure Media Services video indexer](../video-indexer/index.yml) nahrazuje tyto starší verze procesorů médií.
 
 Azure Media Services Video Indexer je postavená na Azure Media Analytics, Azure Kognitivní hledání Cognitive Services (například Face API, Microsoft Translator, rozhraní API pro počítačové zpracování obrazu a Custom Speech Service). Umožňuje extrahovat přehledy z videí pomocí zvukových modelů a videomodelů Video Indexeru. Pokud chcete zjistit, jaké scénáře se Video Indexer můžou použít v, jaké funkce nabízí a jak začít, přečtěte si téma [video indexer video a zvukové modely](../video-indexer/video-indexer-overview.md). 
 
@@ -41,13 +42,13 @@ Tento článek popisuje kroky migrace z Azure Media Indexer a Azure Media Indexe
 
 ## <a name="getting-started-with-video-indexer"></a>Začínáme s Video Indexer
 
-V následující části najdete relevantní odkazy: [Jak můžu začít s video indexer?](https://docs.microsoft.com/azure/media-services/video-indexer/video-indexer-overview#how-can-i-get-started-with-video-indexer) 
+V následující části najdete relevantní odkazy: [Jak můžu začít s video indexer?](../video-indexer/video-indexer-overview.md#how-can-i-get-started-with-video-indexer) 
 
 ## <a name="getting-started-with-media-services-v3-apis"></a>Začínáme s rozhraními API pro Media Services V3
 
 Rozhraní Azure Media Services V3 API umožňuje z vašich videí a zvukových souborů extrahovat přehledy pomocí [přednastavených funkcí analyzátoru Azure Media Services V3](../latest/analyzing-video-audio-files-concept.md). 
 
-**AudioAnalyzerPreset** umožňuje extrahovat z zvukového souboru nebo videosouboru více zvukových přehledů. Výstup obsahuje soubor VTT nebo TTML pro záznam zvuku a soubor JSON (se všemi dalšími dalšími informacemi o službě Audio Insights). Zvukové poznatky zahrnují klíčová slova, indexování mluvčích a analýzu mínění řeči. AudioAnalyzerPreset podporuje také rozpoznávání jazyka pro konkrétní jazyky. Podrobné informace najdete v tématu [transformace](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset).
+**AudioAnalyzerPreset** umožňuje extrahovat z zvukového souboru nebo videosouboru více zvukových přehledů. Výstup obsahuje soubor VTT nebo TTML pro záznam zvuku a soubor JSON (se všemi dalšími dalšími informacemi o službě Audio Insights). Zvukové poznatky zahrnují klíčová slova, indexování mluvčích a analýzu mínění řeči. AudioAnalyzerPreset podporuje také rozpoznávání jazyka pro konkrétní jazyky. Podrobné informace najdete v tématu [transformace](/rest/api/media/transforms/createorupdate#audioanalyzerpreset).
 
 ### <a name="get-started"></a>Začínáme
 
@@ -59,12 +60,12 @@ Pokud chcete začít, podívejte se na:
 
 ## <a name="getting-started-with-cognitive-services-speech-services"></a>Začínáme se službou Cognitive Services Speech Services
 
-[Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/) poskytuje službu pro převod řeči na text, která transcribes zvukové streamy na text v reálném čase, které mohou aplikace, nástroje nebo zařízení spotřebovat nebo zobrazit. K [přizpůsobení vlastního akustického modelu, jazykového modelu nebo modelu výslovnosti](../../cognitive-services/speech-service/how-to-custom-speech-train-model.md)můžete použít převod řeči na text. Další informace najdete v tématu [Cognitive Services převodu řeči na text](../../cognitive-services/speech-service/speech-to-text.md). 
+[Azure Cognitive Services](../../cognitive-services/index.yml) poskytuje službu pro převod řeči na text, která transcribes zvukové streamy na text v reálném čase, které mohou aplikace, nástroje nebo zařízení spotřebovat nebo zobrazit. K [přizpůsobení vlastního akustického modelu, jazykového modelu nebo modelu výslovnosti](../../cognitive-services/speech-service/how-to-custom-speech-train-model.md)můžete použít převod řeči na text. Další informace najdete v tématu [Cognitive Services převodu řeči na text](../../cognitive-services/speech-service/speech-to-text.md). 
 
 > [!NOTE] 
-> Služba převod řeči na text nebere v úvahu formáty videosouborů a převádí jenom [Některé formáty zvuku](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#audio-formats). 
+> Služba převod řeči na text nebere v úvahu formáty videosouborů a převádí jenom [Některé formáty zvuku](../../cognitive-services/speech-service/rest-speech-to-text.md#audio-formats). 
 
-Další informace o službě převod textu na řeč a o tom, jak začít, najdete v tématu [co je převod z řeči na text](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-to-text) .
+Další informace o službě převod textu na řeč a o tom, jak začít, najdete v tématu [co je převod z řeči na text](../../cognitive-services/speech-service/speech-to-text.md) .
 
 ## <a name="known-differences-from-deprecated-services"></a>Známé rozdíly oproti zastaralým službám 
 
@@ -82,5 +83,3 @@ Lístek podpory můžete otevřít tak, že přejdete na [novou žádost o podpo
 
 * [Starší verze komponent](legacy-components.md)
 * [Stránka s cenami](https://azure.microsoft.com/pricing/details/media-services/#encoding)
-
-

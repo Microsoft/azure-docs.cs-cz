@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: 2ad817afd8f4e80e99055646dca34b9bb05d100f
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 1956090f1b927d9fd4e205eaa57bf1952cb1b070
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044307"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083986"
 ---
 # <a name="enhanced-secure-score-in-azure-security-center"></a>Rozšířené zabezpečené skóre v Azure Security Center
 
@@ -172,7 +172,7 @@ Následující tabulka uvádí ovládací prvky zabezpečení v Azure Security C
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Implementovat osvědčené postupy zabezpečení (maximální skóre 0)</p></strong>Mezi moderní postupy zabezpečení se předpokládá porušení sítě v hraniční síti. Z tohoto důvodu se řada osvědčených postupů v tomto ovládacím prvku zaměřuje na správu identit.<br>Ztráta klíčů a přihlašovacích údajů je běžný problém. <a href="https://docs.microsoft.com/azure/key-vault/key-vault-overview">Azure Key Vault</a> chránit klíče a tajné kódy šifrováním klíčů, souborů PFX a hesel.<br>Virtuální privátní sítě (VPN) představují zabezpečený způsob přístupu k virtuálním počítačům. Pokud sítě VPN nejsou k dispozici, používejte složitá přístupová hesla a dvojúrovňové ověřování, jako je například <a href="https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks">Azure Multi-Factor Authentication</a>. Dvojúrovňové ověřování zabraňuje slabým místům, které jsou podstatné při spoléhání jenom na uživatelská jména a hesla.<br>Použití silného ověřování a autorizačních platforem je další osvědčené postupy. Použití federovaných identit umožňuje organizacím delegovat správu autorizovaných identit. To je důležité i v případě, že se zaměstnanci ukončí a jejich přístup je potřeba odvolat.</td>
-    <td class="tg-lboi"; width=55%>-Pro vaše předplatné by se mělo určit maximálně 3 vlastníci.<br>-Z vašeho předplatného by se měly odebrat externí účty s oprávněním ke čtení.<br>-Pro účty s oprávněním ke čtení vašeho předplatného by se měla povolit vícefaktorové ověřování.<br>-Přístup k účtům úložiště pomocí brány firewall a konfigurací virtuální sítě by měl být omezený.<br>-Všechna autorizační pravidla s výjimkou RootManageSharedAccessKey by měla být odebrána z oboru názvů centra událostí.<br>-Pro SQL servery by se měl zřídit správce Azure Active Directory.<br>-Autorizační pravidla v instanci centra událostí by měla být definovaná.<br>-Účty úložiště by se měly migrovat na nové prostředky Azure Resource Manager.<br>-Virtuální počítače by se měly migrovat na nové prostředky Azure Resource Manager.<br>-Pokročilá nastavení zabezpečení dat pro SQL Database by měla obsahovat e-mailovou adresu pro příjem výstrah zabezpečení.<br>-Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat<br>-V rozšířených nastaveních zabezpečení dat spravované instance SQL by se měly povolit všechny rozšířené typy ochrany před hrozbami.<br>-E-mailová oznámení správcům a vlastníkům předplatného by měla být povolená v nastavení SQL Server Advanced Data Security<br>-V rozšířených nastaveních zabezpečení dat SQL serveru by se měly nastavit rozšířené typy ochrany před internetovými útoky na ALL.<br>-Podsítě by měly být přidružené ke skupině zabezpečení sítě.<br>-Všechny typy rozšířené ochrany před hrozbami by měly být povolené v SQL Database pokročilé nastavení zabezpečení dat pro váš server.<br>-Tisk Měla by být povolená ochrana před zneužitím systému Windows <br>-Tisk Měl by být nainstalovaný agent konfigurace hosta.<br>-Virtuální počítače, které nejsou přístupné z Internetu, by měly být chráněné pomocí skupin zabezpečení sítě</td>
+    <td class="tg-lboi"; width=55%>-Pro vaše předplatné by se mělo určit maximálně 3 vlastníci.<br>-Z vašeho předplatného by se měly odebrat externí účty s oprávněním ke čtení.<br>-Pro účty s oprávněním ke čtení vašeho předplatného by se měla povolit vícefaktorové ověřování.<br>-Přístup k účtům úložiště pomocí brány firewall a konfigurací virtuální sítě by měl být omezený.<br>-Všechna autorizační pravidla s výjimkou RootManageSharedAccessKey by měla být odebrána z oboru názvů centra událostí.<br>-Pro SQL servery by se měl zřídit správce Azure Active Directory.<br>-Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat<br>-Autorizační pravidla v instanci centra událostí by měla být definovaná.<br>-Účty úložiště by se měly migrovat na nové prostředky Azure Resource Manager.<br>-Virtuální počítače by se měly migrovat na nové prostředky Azure Resource Manager.<br>-Podsítě by měly být přidružené ke skupině zabezpečení sítě.<br>-Tisk Měla by být povolená ochrana před zneužitím systému Windows <br>-Tisk Měl by být nainstalovaný agent konfigurace hosta.<br>-Virtuální počítače, které nejsou přístupné z Internetu, by měly být chráněné pomocí skupin zabezpečení sítě</td>
   </tr>
 </tbody>
 </table>
@@ -195,7 +195,7 @@ Ne. Nemění se, dokud neopravíte všechna doporučení pro jeden prostředek. 
 Ne. V době, kdy se nacházely souběžně, aby se přechod usnadnil. Předchozí model je nyní zastaralý. 
 
 ### <a name="if-a-recommendation-isnt-applicable-to-me-and-i-disable-it-in-the-policy-will-my-security-control-be-fulfilled-and-my-secure-score-updated"></a>Pokud doporučení neplatí pro mě a je v zásadách zakázané, bude řízení zabezpečení splněné a mé zabezpečené skóre se aktualizovalo?
-Ano. Doporučujeme zakázat doporučení, pokud jsou ve vašem prostředí nepoužitá. Pokyny, jak zakázat konkrétní doporučení, najdete v tématu [zakázání zásad zabezpečení](https://docs.microsoft.com/azure/security-center/tutorial-security-policy#disable-security-policies).
+Yes. Doporučujeme zakázat doporučení, pokud jsou ve vašem prostředí nepoužitá. Pokyny, jak zakázat konkrétní doporučení, najdete v tématu [zakázání zásad zabezpečení](https://docs.microsoft.com/azure/security-center/tutorial-security-policy#disable-security-policies).
 
 ### <a name="if-a-security-control-offers-me-zero-points-towards-my-secure-score-should-i-ignore-it"></a>Pokud řízení zabezpečení nabízí nulové body směrem k mému zabezpečenému skóre, je vhodné je ignorovat?
 V některých případech se zobrazí maximální skóre v rámci ovládacího prvku větší než nula, ale dopad je nula. Když je přírůstkové skóre pro opravu prostředků zanedbatelné, zaokrouhlí se na nulu. Tato doporučení neignorujte, protože stále přinášejí vylepšení zabezpečení. Jedinou výjimkou je ovládací prvek "další osvědčené postupy". Oprava tato doporučení nezvýší vaše skóre, ale zvýší vaše celkové zabezpečení.
