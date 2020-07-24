@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/12/2020
-ms.openlocfilehash: 03468d8ff39cfbe64d6ef3707098732e22e5dd9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 023d6734195dabefff12210c2e63a0a4f4f9ac93
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85100977"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007652"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Kopírování dat ze služby Amazon Simple Storage pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -64,7 +64,7 @@ Následující části obsahují podrobné informace o vlastnostech, které se p
 
 Pro propojenou službu Amazon S3 jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost **Type** musí být nastavená na **AmazonS3**. | Yes |
 | accessKeyId | ID tajného přístupového klíče |Yes |
@@ -107,7 +107,7 @@ Tady je příklad:
 
 V části `location` nastavení v datové sadě založené na formátu jsou podporovány následující vlastnosti služby Amazon S3:
 
-| Vlastnost   | Popis                                                  | Vyžadováno |
+| Vlastnost   | Popis                                                  | Povinné |
 | ---------- | ------------------------------------------------------------ | -------- |
 | typ       | Vlastnost **Type** v rámci `location` datové sady musí být nastavená na **AmazonS3Location**. | Yes      |
 | interval intervalu | Název intervalu S3.                                          | Yes      |
@@ -115,7 +115,7 @@ V části `location` nastavení v datové sadě založené na formátu jsou podp
 | fileName   | Název souboru v daném intervalu a cestě ke složce. Pokud chcete k filtrování souborů použít zástupný znak, toto nastavení nechte a určete v nastavení zdroje aktivity. | No       |
 | verze | Verze objektu S3, pokud je povolená Správa verzí S3 Pokud není zadán, bude načtena nejnovější verze. |No |
 
-**Příklad:**
+**Případě**
 
 ```json
 {
@@ -152,7 +152,7 @@ V části `location` nastavení v datové sadě založené na formátu jsou podp
 
 V části `storeSettings` nastavení ve zdroji kopírování založené na formátu jsou podporovány následující vlastnosti služby Amazon S3:
 
-| Vlastnost                 | Popis                                                  | Vyžadováno                                                    |
+| Vlastnost                 | Popis                                                  | Povinné                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
 | typ                     | Vlastnost **Type** v poli `storeSettings` musí být nastavená na **AmazonS3ReadSettings**. | Yes                                                         |
 | ***Vyhledejte soubory ke zkopírování:*** |  |  |
@@ -160,7 +160,7 @@ V části `storeSettings` nastavení ve zdroji kopírování založené na form�
 | MOŽNOST 2: Předpona S3<br>-prefix | Předpona názvu klíče S3 v rámci daného intervalu nakonfigurovaného v datové sadě pro filtrování zdrojových souborů S3 Jsou vybrané klíče S3, jejichž názvy začínají na `bucket_in_dataset/this_prefix` . Využívá filtr na straně služby S3's, který poskytuje lepší výkon než filtr zástupných znaků. | No |
 | MOŽNOST 3: zástupný znak<br>- wildcardFolderPath | Cesta ke složce se zástupnými znaky v daném kontejneru nakonfigurovaném pro filtrování zdrojových složek. <br>Povolené zástupné znaky jsou: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku). Použijte `^` k ukončení, jestli má název složky zástupný znak nebo tento řídicí znak uvnitř. <br>Další příklady najdete v [příkladech složky a filtru souborů](#folder-and-file-filter-examples). | No                                            |
 | MOŽNOST 3: zástupný znak<br>- wildcardFileName | Název souboru se zástupnými znaky v daném intervalu a cestě ke složce (nebo cesta ke složce se zástupnými znaky) pro filtrování zdrojových souborů. <br>Povolené zástupné znaky jsou: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku). Použijte `^` k ukončení, jestli má název složky zástupný znak nebo tento řídicí znak uvnitř.  Další příklady najdete v [příkladech složky a filtru souborů](#folder-and-file-filter-examples). | Yes |
-| MOŽNOST 3: seznam souborů<br>- fileListPath | Určuje, že se má zkopírovat daná sada souborů. Najeďte na textový soubor, který obsahuje seznam souborů, které chcete zkopírovat, jeden soubor na řádek, což je relativní cesta k cestě nakonfigurované v datové sadě.<br/>Při použití této možnosti nezadávejte název souboru v datové sadě. Další příklady najdete v [příkladech seznamu souborů](#file-list-examples). |No |
+| MOŽNOST 4: seznam souborů<br>- fileListPath | Určuje, že se má zkopírovat daná sada souborů. Najeďte na textový soubor, který obsahuje seznam souborů, které chcete zkopírovat, jeden soubor na řádek, což je relativní cesta k cestě nakonfigurované v datové sadě.<br/>Při použití této možnosti nezadávejte název souboru v datové sadě. Další příklady najdete v [příkladech seznamu souborů](#file-list-examples). |No |
 | ***Další nastavení:*** |  | |
 | zahrnout | Určuje, zda mají být data rekurzivně čtena z podsložek nebo pouze ze zadané složky. Všimněte si, že pokud je **rekurzivní** nastavení nastaveno na **hodnotu true** a jímka je úložiště založené na souborech, prázdná složka nebo podsložka není kopírována ani vytvořena v jímky. <br>Povolené hodnoty jsou **true** (výchozí) a **false**.<br>Tato vlastnost se při konfiguraci nepoužívá `fileListPath` . |No |
 | deleteFilesAfterCompletion | Uvádí, zda budou binární soubory po úspěšném přesunutí do cílového úložiště odstraněny ze zdrojového úložiště. Odstranění souboru je vázané na soubor, takže když aktivita kopírování selže, uvidíte, že některé soubory se už zkopírovaly do cílového umístění a odstranily ze zdroje, zatímco ostatní jsou pořád ve zdrojovém úložišti. <br/>Tato vlastnost je platná jenom ve scénáři binárního kopírování, kde zdroje dat ukládají objekty blob, ADLS Gen1, ADLS Gen2, S3, Google Cloud Storage, File, Azure File, SFTP nebo FTP. Výchozí hodnota: false. |No |
@@ -168,7 +168,7 @@ V části `storeSettings` nastavení ve zdroji kopírování založené na form�
 | modifiedDatetimeEnd      | Stejné jako výše.                                               | No                                                          |
 | maxConcurrentConnections | Počet souběžných připojení k úložišti dat. Určete pouze v případě, že chcete omezit souběžná připojení k úložišti dat. | No                                                          |
 
-**Příklad:**
+**Případě**
 
 ```json
 "activities":[
@@ -253,7 +253,7 @@ Chcete-li získat informace o vlastnostech, ověřte [aktivitu odstranit](delete
 
 ### <a name="legacy-dataset-model"></a>Model zastaralé sady dat
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost **Type** datové sady musí být nastavená na **AmazonS3Object**. |Yes |
 | interval intervalu | Název intervalu S3. Filtr zástupných znaků se nepodporuje. |Ano pro aktivitu kopírování nebo vyhledávání, ne pro aktivitu GetMetadata |
@@ -333,13 +333,13 @@ Chcete-li získat informace o vlastnostech, ověřte [aktivitu odstranit](delete
 
 ### <a name="legacy-source-model-for-the-copy-activity"></a>Starší zdrojový model pro aktivitu kopírování
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **FileSystemSource**. |Yes |
 | zahrnout | Určuje, zda mají být data rekurzivně čtena z podsložek nebo pouze ze zadané složky. Všimněte si, že pokud je **rekurzivní** nastavení nastaveno na **hodnotu true** a jímka je úložiště založené na souborech, prázdná složka nebo podsložka nebude kopírována ani vytvořena v jímky.<br/>Povolené hodnoty jsou **true** (výchozí) a **false**. | No |
 | maxConcurrentConnections | Počet připojení, která mají být souběžně propojena s úložištěm dat. Určete pouze v případě, že chcete omezit souběžná připojení k úložišti dat. | No |
 
-**Příklad:**
+**Případě**
 
 ```json
 "activities":[

@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 11/27/2019
-ms.openlocfilehash: 7b5e4174da3ffa0dff5c840e5da1d98435e8d07b
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 07/21/2020
+ms.openlocfilehash: c54979efbbd164a11614b92d9a337a86e2f221fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985546"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007737"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Přehled modelu vCore – Azure SQL Database a Azure SQL Managed instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,7 @@ Model nákupu Virtual Core (vCore), který používá Azure SQL Database a Azure
 - Vyšší omezení výpočetní kapacity, paměti, vstupně-výstupních operací a úložiště.
 - Řízení vytváření hardwaru pro lepší porovnání požadavků na výpočetní a paměťové úlohy.
 - Cenové slevy pro [zvýhodněné hybridní využití Azure (AHB)](../azure-hybrid-benefit.md) a [REZERVOVANOU instanci (ri)](reserved-capacity-overview.md).
-- Větší transparentnost v podrobnostech o hardwaru, které vysílaly výpočetní výkon; usnadňuje plánování migrací z místních nasazení.
+- Větší transparentnost v podrobnostech o hardwaru, které vynucuje výpočetní výkon, který usnadňuje plánování migrace z místních nasazení.
 
 ## <a name="service-tiers"></a>Úrovně služby
 
@@ -38,7 +38,7 @@ Mezi možnosti vrstvy služeb v modelu vCore patří Pro obecné účely, Pro d�
 |IOPS a propustnost (přibližná)|**SQL Database**: Přečtěte si o omezeních prostředků pro izolované [databáze](resource-limits-vcore-single-databases.md) a [elastické fondy](resource-limits-vcore-elastic-pools.md).<br/>**Spravovaná instance SQL**: Přečtěte si téma [Přehled omezení prostředků spravované instance Azure SQL](../managed-instance/resource-limits.md#service-tier-characteristics).|Viz omezení prostředků pro izolované [databáze](resource-limits-vcore-single-databases.md) a [elastické fondy](resource-limits-vcore-elastic-pools.md).|Škálovatelná architektura je Vícevrstvá architektura s ukládáním do mezipaměti na více úrovních. Platnost IOPS a propustnosti budou záviset na zatížení.|
 |Dostupnost|1 replika, žádné repliky na úrovni čtení|3 repliky, 1 [replika pro čtení a škálování](read-scale-out.md)<br/>zóna – redundantní vysoká dostupnost (HA)|1 replika pro čtení i zápis a 0-4 replik v režimu [čtení a škálování](read-scale-out.md)|
 |Zálohování|[Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)](../../storage/common/geo-redundant-design.md), 7-35 dní (ve výchozím nastavení 7 dnů)|[RA-GRS](../..//storage/common/geo-redundant-design.md), 7-35 dní (ve výchozím nastavení 7 dnů)|Zálohování na základě snímků ve vzdáleném úložišti Azure. Obnoví použití těchto snímků pro rychlé obnovení. Zálohy jsou okamžité a neovlivňují výkon vstupně-výstupních operací ve výpočetním prostředí. Obnovení je rychlé a nejedná se o datovou operaci (trvá to jen v minutách).|
-|V paměti|Nepodporuje se|Podporuje se|Nepodporuje se|
+|V paměti|Nepodporováno|Podporováno|Nepodporováno|
 |||
 
 
@@ -69,7 +69,7 @@ Zřízená výpočetní vrstva poskytuje určité množství výpočetních pros
 
 ## <a name="hardware-generations"></a>Generace hardwaru
 
-Mezi možnosti generování hardwaru v modelu vCore patří obecné 4/5, M-Series (Preview) a Fsv2-Series (Preview). Generování hardwaru obecně definuje omezení výpočetních hodnot a paměti a další vlastnosti, které mají vliv na výkon úlohy.
+Možnosti generování hardwaru v modelu vCore zahrnují obecné 4/5, M-Series a Fsv2-Series. Generování hardwaru obecně definuje omezení výpočetních hodnot a paměti a další vlastnosti, které mají vliv na výkon úlohy.
 
 ### <a name="gen4gen5"></a>COMPUTE GEN4 –/Gen5
 
@@ -77,21 +77,21 @@ Mezi možnosti generování hardwaru v modelu vCore patří obecné 4/5, M-Serie
 
 Oblasti, ve kterých je COMPUTE GEN4 –/Gen5 k dispozici, najdete v tématu [dostupnost COMPUTE GEN4 –/Gen5](#gen4gen5-1).
 
-### <a name="fsv2-seriespreview"></a>Fsv2-Series (Preview)
+### <a name="fsv2-series"></a>Řada Fsv2
 
 - Fsv2-Series je hardwarově optimalizovaná možnost hardwaru, která poskytuje nízkou latenci procesoru a vysokou rychlost práce pro nejvíce náročné úlohy procesoru.
 - V závislosti na zatížení může Fsv2-Series doručovat větší výkon procesoru na vCore než Gen5 a velikost vCore 72 může poskytovat větší výkon procesoru pro méně nákladů než 80 virtuální jádra v Gen5. 
 - Fsv2 poskytuje méně paměti a databázi tempdb na vCore než jiný hardware, takže zatížení citlivá na tato omezení mohou místo toho brát v úvahu Gen5 nebo M-Series.  
 
-Fsv2-Series se podporuje jenom na úrovni Pro obecné účely.  Oblasti, ve kterých je Fsv2-Series k dispozici, najdete v tématu [dostupnost Fsv2-Series](#fsv2-series).
+Fsv2-Series se podporuje jenom na úrovni Pro obecné účely. Oblasti, ve kterých je Fsv2-Series k dispozici, najdete v tématu [dostupnost Fsv2-Series](#fsv2-series).
 
 
-### <a name="m-seriespreview"></a>Řada M-Series (Preview)
+### <a name="m-series"></a>Řada M
 
 - Řada M-Series je hardwarově optimalizovaná možnost hardwaru pro úlohy, které přidávají větší nároky na paměť a vyšší výpočetní limity než služba Gen5.
-- Řada M-Series poskytuje 29 GB na vCore a 128 virtuální jádra, což zvyšuje limit paměti relativní vzhledem k Gen5, 8rychlostní až skoro 4 TB.
+- Řada M-Series poskytuje 29 GB na vCore a až 128 virtuální jádra, což zvyšuje limit paměti vzhledem k Gen5, 8rychlostní až skoro 4 TB.
 
-Řada M-Series je podporována pouze v Pro důležité obchodní informace vrstvě a nepodporuje redundanci zóny.  Předplatné musí být placeného typu nabídky, včetně průběžných plateb nebo smlouva Enterprise (EA).  V oblastech, kde je dostupná řada M-Series, najdete informace v tématu [dostupnost řady m-Series](#m-series).
+Řada M-Series je podporována pouze v Pro důležité obchodní informace vrstvě a nepodporuje redundanci zóny.  Předplatné musí být placeného typu nabídky, včetně průběžných plateb nebo smlouva Enterprise (EA). V oblastech, kde je dostupná řada M-Series, najdete informace v tématu [dostupnost řady m-Series](#m-series).
 
 <!--
 To enable M-series hardware for a subscription and region, a support request must be opened. The subscription must be a paid offer type including Pay-As-You-Go or Enterprise Agreement (EA).  If the support request is approved, then the selection and provisioning experience of M-series follows the same pattern as for other hardware generations. For regions where M-series is available, see [M-series availability](#m-series).
@@ -100,12 +100,12 @@ To enable M-series hardware for a subscription and region, a support request mus
 ### <a name="compute-and-memory-specifications"></a>Specifikace výpočtů a paměti
 
 
-|Generování hardwaru  |Compute  |Memory (Paměť)  |
+|Generování hardwaru  |Compute  |Paměť  |
 |:---------|:---------|:---------|
 |COMPUTE GEN4 –     |– Procesory Intel E5-2673 V3 (Haswell) 2,4 GHz<br>-Zřídit až 24 virtuální jádra (1 vCore = 1 fyzický jádro)  |– 7 GB na vCore<br>– Zřídit až 168 GB|
 |Gen5     |**Zřízené výpočetní prostředky**<br>– Procesory Intel E5-2673 v4 (Broadwell) 2,3-GHz a Intel SP-8160 (Skylake) * procesory<br>-Zřídit až 80 virtuální jádra (1 vCore = 1 Hyper-thread)<br><br>**Bezserverové výpočetní prostředí**<br>– Procesory Intel E5-2673 v4 (Broadwell) 2,3-GHz a Intel SP-8160 (Skylake) * procesory<br>– Automatické škálování až na 16 virtuální jádra (1 vCore = 1 Hyper-thread)|**Zřízené výpočetní prostředky**<br>-5,1 GB na vCore<br>– Zřídit až 408 GB<br><br>**Bezserverové výpočetní prostředí**<br>– Automatické škálování až na 24 GB na vCore<br>– Automatické škálování až do 48 GB max.|
-|Řada Fsv2     |– Procesory Intel Xeon Platinum 8168 (SkyLake)<br>– S trvalou frekvencí 3,4 GHz a maximální jednotnou rychlostí Turbo 3,7 GHz v jádře.<br>-Zřídit 72 virtuální jádra (1 vCore = 1 = 1 Hyper-thread)|-1,9 GB na vCore<br>-Zřizování 136 GB|
-|Řada M     |– Intel Xeon E7-8890 V3 2,5 GHz a procesory Intel Xeon Platinum 8280M 2,7 GHz (Cascade Lake)<br>-Zřídit 128 virtuální jádra (1 vCore = 1 = 1 Hyper-thread)|– 29 GB na vCore<br>-Zřizování 3,7 TB|
+|Řada Fsv2     |– Procesory Intel Xeon Platinum 8168 (Skylake)<br>– S trvalou frekvencí 3,4 GHz a maximální jednotnou rychlostí Turbo 3,7 GHz v jádře.<br>-Zřídit až 72 virtuální jádra (1 vCore = 1 Hyper-thread)|-1,9 GB na vCore<br>– Zřídit až 136 GB|
+|Řada M     |– Intel Xeon E7-8890 V3 2,5 GHz a procesory Intel Xeon Platinum 8280M 2,7 GHz (Cascade Lake)<br>-Zřídit až 128 virtuální jádra (1 vCore = 1 Hyper-thread)|– 29 GB na vCore<br>– Zřídit až 3,7 TB|
 
 \*V zobrazení dynamické správy [Sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) se generování hardwaru pro databáze Gen5 využívající procesory Intel SP-8160 (Skylake) zobrazí jako Gen6. Omezení prostředků pro všechny databáze Gen5 jsou stejná bez ohledu na typ procesoru (Broadwell nebo Skylake).
 
@@ -154,7 +154,7 @@ Na stránce spravovaná instance SQL vyberte odkaz **cenová úroveň** umístě
 
 ![Změna hardwaru spravované instance SQL](./media/service-tiers-vcore/change-managed-instance-hardware.png)
 
-Na stránce **cenová úroveň** budete moci změnit generování hardwaru, jak je popsáno v předchozích krocích.
+Na stránce cenová úroveň budete moci změnit generování hardwaru, jak je popsáno v předchozích krocích.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -166,7 +166,7 @@ Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" 
 
 Další podrobnosti najdete v příkazu [set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance) .
 
-# <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Použijte následující příkaz CLI:
 

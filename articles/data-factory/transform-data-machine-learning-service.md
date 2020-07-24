@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.author: daperlov
 author: djpmsft
 manager: anandsub
-ms.date: 10/10/2019
-ms.openlocfilehash: f033651eb7e52ba60cce9b74941a4ef0eb376d2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/16/2020
+ms.openlocfilehash: 83a7f072af64b0fe8f7f3d7c982cf3466288f63e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81418996"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007193"
 ---
 # <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>Spouštění Azure Machine Learningch kanálů v Azure Data Factory
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Spusťte kanály Azure Machine Learning jako krok v Azure Data Factorych kanálech. Aktivita spuštění kanálu Machine Learning umožňuje scénáře předpovědi dávek, jako je identifikace možných výchozích hodnot půjček, určení mínění a analýza vzorců chování zákazníků.
 
@@ -52,14 +52,14 @@ Níže uvedené video funkce obsahují šest minut Úvod a ukázku této funkce.
 
 Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | --------
-name | Název aktivity v kanálu | Řetězec | Ano
-typ | Typ aktivity je "AzureMLExecutePipeline". | Řetězec | Ano
-linkedServiceName | Propojená služba k Azure Machine Learning | Odkaz na propojenou službu | Ano
-mlPipelineId | ID publikovaného kanálu Azure Machine Learning | Řetězec (nebo výraz s hodnotou resultType řetězce) | Ano
-experiment | Název experimentu historie spuštění Machine Learning spuštění kanálu | Řetězec (nebo výraz s hodnotou resultType řetězce) | Ne
-mlPipelineParameters | Páry klíč-hodnota, které se mají předat publikovanému koncovému bodu kanálu Azure Machine Learning. Klíče se musí shodovat s názvy parametrů kanálu definovaných v publikovaném kanálu Machine Learning. | Objekt s páry klíč-hodnota (nebo výraz s objektem resultType) | Ne
-mlParentRunId | ID spuštění nadřazeného Azure Machine Learning kanálu | Řetězec (nebo výraz s hodnotou resultType řetězce) | Ne
-continueOnStepFailure | Určuje, jestli se má pokračovat v provádění dalších kroků v Machine Learning spuštění kanálu v případě, že dojde k chybě. | Boolean | No
+name | Název aktivity v kanálu | Řetězec | Yes
+typ | Typ aktivity je "AzureMLExecutePipeline". | Řetězec | Yes
+linkedServiceName | Propojená služba k Azure Machine Learning | Odkaz na propojenou službu | Yes
+mlPipelineId | ID publikovaného kanálu Azure Machine Learning | Řetězec (nebo výraz s hodnotou resultType řetězce) | Yes
+experiment | Název experimentu historie spuštění Machine Learning spuštění kanálu | Řetězec (nebo výraz s hodnotou resultType řetězce) | No
+mlPipelineParameters | Páry klíč-hodnota, které se mají předat publikovanému koncovému bodu kanálu Azure Machine Learning. Klíče se musí shodovat s názvy parametrů kanálu definovaných v publikovaném kanálu Machine Learning. | Objekt s páry klíč-hodnota (nebo výraz s objektem resultType) | No
+mlParentRunId | ID spuštění nadřazeného Azure Machine Learning kanálu | Řetězec (nebo výraz s hodnotou resultType řetězce) | No
+continueOnStepFailure | Určuje, jestli se má pokračovat v provádění dalších kroků v Machine Learning spuštění kanálu v případě, že dojde k chybě. | boolean | No
 
 ## <a name="next-steps"></a>Další kroky
 Podívejte se na následující články, které vysvětlují, jak transformovat data jinými způsoby:
