@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: e519010f902e99a3118485b3c8bc57cd47188a1f
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 6d1c7a48332aa49bc5c506ceeae287bc3affef16
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224549"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074075"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Zotavení po havárii pro databázi Oracle Database 12c v prostředí Azure
 
@@ -78,7 +78,7 @@ Toto je souhrn nastavení Azure:
 ![Snímek obrazovky se stránkou topologie DR](./media/oracle-disaster-recovery/oracle_topology_02.png)
 
 ### <a name="approach-2-site-to-site-vpn"></a>Přístup 2: síť VPN typu Site-to-site
-VPN typu Site-to-site je lepší přístup. Další informace o nastavení sítě VPN najdete v tématu [vytvoření virtuální sítě s připojením VPN typu Site-to-site pomocí](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)rozhraní příkazového řádku (CLI).
+VPN typu Site-to-site je lepší přístup. Další informace o nastavení sítě VPN najdete v tématu [vytvoření virtuální sítě s připojením VPN typu Site-to-site pomocí](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)rozhraní příkazového řádku (CLI).
 
 #### <a name="topology"></a>Topologie
 
@@ -95,7 +95,7 @@ Toto je souhrn nastavení Azure:
 
 ![Snímek obrazovky se stránkou topologie DR](./media/oracle-disaster-recovery/oracle_topology_03.png)
 
-## <a name="additional-reading"></a>Další čtení
+## <a name="additional-reading"></a>Další materiály ke čtení
 
 - [Návrh a implementace databáze Oracle v Azure](oracle-design.md)
 - [Konfigurace Oracle Data Guardu](configure-oracle-dataguard.md)
