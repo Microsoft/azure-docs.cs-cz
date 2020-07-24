@@ -1,5 +1,5 @@
 ---
-title: Omezení instalace rozšíření virtuálních počítačů pomocí Azure Policy
+title: Omezení instalace rozšíření virtuálních počítačů (Windows) pomocí Azure Policy
 description: Použijte Azure Policy k omezení nasazení rozšíření.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 96cd16c08421a4e365391c0db0b257f71a06551f
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: e4959c9dca909afde4bf6d351d79ecca1e4022a0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919799"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069766"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Omezení instalace rozšíření na virtuálních počítačích s Windows pomocí Azure Policy
 
@@ -98,7 +98,7 @@ Až skončíte, stiskněte **klávesu CTRL + O** a pak **zadáním** uložte sou
 
 ## <a name="create-the-policy"></a>Vytvoření zásady
 
-Definice zásady je objekt, který slouží k uložení konfigurace, kterou chcete použít. Definice zásady používá soubory pravidel a parametrů k definování zásad. Pomocí rutiny [New-AzPolicyDefinition](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicydefinition) vytvořte definici zásady.
+Definice zásady je objekt, který slouží k uložení konfigurace, kterou chcete použít. Definice zásady používá soubory pravidel a parametrů k definování zásad. Pomocí rutiny [New-AzPolicyDefinition](/powershell/module/az.resources/new-azpolicydefinition) vytvořte definici zásady.
 
  Pravidla a parametry zásad jsou soubory, které jste vytvořili a uložili ve službě cloud Shell jako soubory. JSON.
 
@@ -117,9 +117,9 @@ $definition = New-AzPolicyDefinition `
 
 ## <a name="assign-the-policy"></a>Přiřazení zásady
 
-Tento příklad přiřadí zásadu ke skupině prostředků pomocí [New-AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment). Žádný virtuální počítač vytvořený ve skupině prostředků **myResourceGroup** nebude moct nainstalovat agenta přístupu k virtuálním počítačům ani rozšíření vlastních skriptů. 
+Tento příklad přiřadí zásadu ke skupině prostředků pomocí [New-AzPolicyAssignment](/powershell/module/az.resources/new-azpolicyassignment). Žádný virtuální počítač vytvořený ve skupině prostředků **myResourceGroup** nebude moct nainstalovat agenta přístupu k virtuálním počítačům ani rozšíření vlastních skriptů. 
 
-Použijte [příkaz Get-AzSubscription | Rutina Format-Table](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription) pro získání ID předplatného, které se má použít místo v příkladu.
+Použijte [příkaz Get-AzSubscription | Rutina Format-Table](/powershell/module/az.accounts/get-azsubscription) pro získání ID předplatného, které se má použít místo v příkladu.
 
 ```azurepowershell-interactive
 $scope = "/subscriptions/<subscription id>/resourceGroups/myResourceGroup"
@@ -150,7 +150,7 @@ Set-AzVMAccessExtension `
    -Location EastUS 
 ```
 
-V portálu by změna hesla měla selhat s "nasazení šablony se nezdařilo z důvodu porušení zásad". zpráva.
+V portálu by změna hesla měla selhat s "nasazení šablony se nezdařilo z důvodu porušení zásad". .
 
 ## <a name="remove-the-assignment"></a>Odebrat přiřazení
 

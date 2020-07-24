@@ -7,11 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: victorh
-ms.openlocfilehash: f021eed959ef88a1ef3671e1d0ace8080710c92a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 560d836f99f7a1be85007bb9d488f80a68d7999b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80810233"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067976"
 ---
 # <a name="azure-application-gateway-features"></a>Funkce Azure Application Gateway
 
@@ -23,9 +24,9 @@ Application Gateway obsahuje následující funkce:
 
 - [Ukončení SSL (Secure Sockets Layer) (SSL/TLS)](#secure-sockets-layer-ssltls-termination)
 - [Automatické škálování](#autoscaling)
-- [Redundance zóny](#zone-redundancy)
+- [Zónová redundance](#zone-redundancy)
 - [Statická virtuální IP adresa](#static-vip)
-- [Firewall webových aplikací](#web-application-firewall)
+- [Web Application Firewall (Brána firewall webových aplikací)](#web-application-firewall)
 - [Kontroler Ingress pro AKS](#ingress-controller-for-aks)
 - [Směrování na základě adresy URL](#url-based-routing)
 - [Hostování několika webů](#multiple-site-hosting)
@@ -34,7 +35,7 @@ Application Gateway obsahuje následující funkce:
 - [Provoz přes protokoly Websocket a HTTP/2](#websocket-and-http2-traffic)
 - [Vyprázdnění připojení](#connection-draining)
 - [Vlastní chybové stránky](#custom-error-pages)
-- [Přepsání hlaviček HTTP](#rewrite-http-headers)
+- [Přepsat hlavičky a adresu URL protokolu HTTP](#rewrite-http-headers-and-url)
 - [Velikosti](#sizing)
 
 ## <a name="secure-sockets-layer-ssltls-termination"></a>Ukončení SSL (Secure Sockets Layer) (SSL/TLS)
@@ -49,7 +50,7 @@ Application Gateway Standard_v2 podporuje automatické škálování a umožňuj
 
 Další informace o funkcích Application Gateway Standard_v2 najdete v tématu Automatické [škálování v2 SKU](application-gateway-autoscaling-zone-redundant.md).
 
-## <a name="zone-redundancy"></a>Redundance zóny
+## <a name="zone-redundancy"></a>Zónová redundance
 
 Application Gateway Standard_v2 může zahrnovat více Zóny dostupnosti, což nabízí lepší odolnost proti chybám a odstraňuje nutnost zřídit samostatné aplikační brány v každé zóně.
 
@@ -57,7 +58,7 @@ Application Gateway Standard_v2 může zahrnovat více Zóny dostupnosti, což n
 
 SKU služby Application Gateway Standard_v2 podporuje výhradně statický typ VIP. Tím se zajistí, že se virtuální IP adresa přidružená k aplikační bráně nemění ani po dobu života Application Gateway.
 
-## <a name="web-application-firewall"></a>Firewall webových aplikací
+## <a name="web-application-firewall"></a>Web Application Firewall (Brána firewall webových aplikací)
 
 Firewall webových aplikací (WAF) je služba, která poskytuje centralizovanou ochranu webových aplikací před běžným zneužitím a ohrožením zabezpečení. WAF je založená na pravidlech z [OWASP (Open Web Application Security Project) základních sad pravidel](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,1 (jenom WAF_v2), 3,0 a 2.2.9. 
 
@@ -82,13 +83,13 @@ Další informace najdete v tématu [Přehled směrování na základě cest URL
 
 ## <a name="multiple-site-hosting"></a>Hostování několika webů
 
-Hostování několika webů umožňuje konfigurovat více než jeden web ve stejné instanci aplikační brány. Tato funkce umožňuje nakonfigurovat efektivnější topologii nasazení přidáním až 100 webů do jedné Application Gateway (pro zajištění optimálního výkonu). Každý web se dá přesměrovat na vlastní fond. Aplikační brána může například obsluhovat provoz pro `contoso.com` a `fabrikam.com` ze dvou fondů serverů s názvem ContosoServerPool a FabrikamServerPool.
+Pomocí Application Gateway můžete nakonfigurovat směrování na základě názvu hostitele nebo názvu domény pro více než jednu webovou aplikaci na stejné aplikační bráně. Umožňuje pro nasazení nakonfigurovat efektivnější topologii přidáním až 100 webů do jedné aplikační brány. Každou stránku lze přesměrovat na vlastní back-endový fond. Například tři domény, contoso.com, fabrikam.com a adatum.com, odkazují na IP adresu služby Application Gateway. Vytvořili jste tři naslouchací procesy pro více webů a nakonfigurujete každého naslouchacího procesu pro příslušný port a nastavení protokolu. 
 
-Žádosti na adresu `http://contoso.com` se směrují na ContosoServerPool a žádosti na adresu `http://fabrikam.com` na FabrikamServerPool.
+Požadavky na `http://contoso.com` jsou směrovány na fondserverucontoso, `http://fabrikam.com` jsou směrovány do fondserverufabrikam a tak dále.
 
-Podobně je možné ve stejném nasazení aplikační brány hostovat dvě poddomény stejné nadřazené domény. Příklady použití subdomén můžou zahrnovat adresy `http://blog.contoso.com` a `http://app.contoso.com` hostované v jednom nasazení aplikační brány.
+Podobně je možné ve stejném nasazení aplikační brány hostovat dvě poddomény stejné nadřazené domény. Příklady použití subdomén můžou zahrnovat adresy `http://blog.contoso.com` a `http://app.contoso.com` hostované v jednom nasazení aplikační brány. Další informace najdete v tématu [Application Gateway hostování více lokalit](multiple-site-overview.md).
 
-Další informace najdete v tématu [Application Gateway hostování více lokalit](multiple-site-overview.md).
+Můžete také definovat názvy hostitelů se zástupnými znaky v rámci naslouchacího procesu pro více webů a až 5 názvů hostitelů na naslouchací proces. Další informace najdete v tématu [názvy hostitelů se zástupnými znaky ve službě Listener (Preview)](multiple-site-overview.md#wildcard-host-names-in-listener-preview).
 
 ## <a name="redirection"></a>Přesměrování
 
@@ -126,11 +127,11 @@ Další informace najdete v tématu [Přehled konfigurace Application Gateway](c
 
 ## <a name="custom-error-pages"></a>Vlastní chybové stránky
 
-Služba Application Gateway vám umožní vytvořit vlastní chybové stránky místo zobrazení výchozích chybových stránek. U vlastní chybové stránky můžete použít vlastní značky a rozložení.
+Služba Application Gateway vám umožní vytvořit vlastní chybové stránky místo zobrazení výchozích chybových stránek. U vlastní chybové stránky můžete použít vlastní branding a rozložení.
 
 Další informace najdete v tématu [vlastní chyby](custom-error.md).
 
-## <a name="rewrite-http-headers"></a>Přepsání hlaviček HTTP
+## <a name="rewrite-http-headers-and-url"></a>Přepsat hlavičky a adresu URL protokolu HTTP
 
 Hlavičky protokolu HTTP umožňují klientovi a serveru předat další informace s požadavkem nebo odpovědí. Přepsání těchto hlaviček HTTP vám pomůže dosáhnout několika důležitých scénářů, například:
 
@@ -138,9 +139,11 @@ Hlavičky protokolu HTTP umožňují klientovi a serveru předat další informa
 - Odebrání polí hlavičky odpovědi, která mohou odhalit citlivé informace.
 - Odstranění informací o portech z předávaných hlaviček od X-po.
 
-Application Gateway podporuje možnost přidávat, odebírat nebo aktualizovat požadavky HTTP a hlavičky odpovědí, zatímco pakety požadavků a odpovědí přecházejí mezi klienty klienta a back-endové fondy. Poskytuje taky možnost přidat podmínky, abyste zajistili, že zadaná záhlaví se přepíší jenom v případě, že jsou splněné určité podmínky.
+SKU Application Gateway a WAF v2 podporuje možnost přidávat, odebírat nebo aktualizovat požadavky HTTP a hlavičky odpovědí, zatímco pakety požadavků a odpovědí přecházejí mezi klientem klienta a back-endové fondy. Můžete také přepsat adresy URL, parametry řetězce dotazu a název hostitele. Pomocí přepsání adresy URL a směrování na základě cesty URL můžete zvolit směrování požadavků do jednoho ze back-end fondů založených na původní cestě nebo přepsané cestě pomocí možnosti znovu vyhodnotit mapu cest. 
 
-Další informace najdete v tématu [přepis hlaviček protokolu HTTP](rewrite-http-headers.md).
+Poskytuje taky možnost přidat podmínky, abyste zajistili, že zadaná záhlaví nebo adresa URL se přepíší jenom v případě, že jsou splněné určité podmínky. Tyto podmínky jsou založené na informacích o žádosti a odpovědi.
+
+Další informace najdete v tématu [přepis hlaviček protokolu HTTP a adresy URL](rewrite-http-headers-url.md).
 
 ## <a name="sizing"></a>Velikosti
 

@@ -6,18 +6,14 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 9588777305ca42603623075b908eee5d76164c84
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 1b537e57edd777d78ce40d0ac4c5c6a7acca7659
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206755"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068213"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Ověřování a autorizace v Azure App Service a Azure Functions
-
-> [!NOTE]
-> V tuto chvíli ASP.NET Core aktuálně nepodporuje naplnění aktuálního uživatele funkcí ověřování/autorizace.
->
 
 Azure App Service poskytuje integrovanou podporu ověřování a autorizace, takže se můžete přihlašovat uživatelům a přistupovat k datům tak, že ve své webové aplikaci, rozhraní RESTful API a mobilním back-endu napíšete minimální nebo žádný kód a také [Azure Functions](../azure-functions/functions-overview.md). Tento článek popisuje, jak App Service pomáhá zjednodušit ověřování a autorizaci pro vaši aplikaci.
 
@@ -28,6 +24,9 @@ Zabezpečené ověřování a autorizace vyžadují důkladné porozumění zabe
 >
 > ASP.NET Core 2,1 a novější verze hostované pomocí App Service jsou již pro tuto zásadní změnu opraveny a odpovídajícím způsobem zpracovávat Chrome 80 a starší prohlížeče. Kromě toho se na App Service instance nasazuje stejná oprava pro ASP.NET Framework 4.7.2 v průběhu ledna 2020. Další informace, včetně informací o tom, jak zjistit, jestli vaše aplikace tuto opravu přijala, najdete v článku [aktualizace souborů cookie Azure App Service SameSite](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/).
 >
+
+> [!NOTE]
+> Funkce ověřování/autorizace se také někdy označuje jako "snadné ověření".
 
 Informace specifické pro nativní mobilní aplikace najdete v tématech [ověřování a autorizace uživatelů pro mobilní aplikace s Azure App Service](../app-service-mobile/app-service-mobile-auth.md).
 
@@ -53,6 +52,10 @@ Pro všechny jazykové architektury App Service vytvoří deklarace v příchoz�
 Pro [Azure Functions](../azure-functions/functions-overview.md)není `ClaimsPrincipal.Current` vyplněno pro kód .NET, ale stále můžete najít deklarace identity uživatelů v hlavičce požadavku nebo získat `ClaimsPrincipal` objekt z kontextu požadavku nebo dokonce prostřednictvím parametru vazby. Další informace najdete v tématu [Working with identity klientů](../azure-functions/functions-bindings-http-webhook-trigger.md#working-with-client-identities) .
 
 Další informace najdete v tématu [přístup k deklaracím uživatelů](app-service-authentication-how-to.md#access-user-claims).
+
+> [!NOTE]
+> V tuto chvíli ASP.NET Core aktuálně nepodporuje naplnění aktuálního uživatele funkcí ověřování/autorizace. Existují však některé [třetí strany Open Source komponenty middlewaru,](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth) které vám pomůžou tuto mezeru vyplnit.
+>
 
 ### <a name="token-store"></a>Úložiště tokenů
 
@@ -134,10 +137,6 @@ Pomocí této možnosti nemusíte v aplikaci psát žádný ověřovací kód. P
 
 > [!CAUTION]
 > Omezení přístupu tímto způsobem se vztahuje na všechna volání aplikace, která nemusí být žádoucí pro aplikace, které mají veřejně dostupnou domovskou stránku, stejně jako v mnoha aplikacích s jednou stránkou.
-
-> [!NOTE]
-> Ověřování/autorizace bylo dříve označováno jako jednoduché ověřování.
->
 
 ## <a name="more-resources"></a>Další zdroje informací
 

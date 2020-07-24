@@ -4,21 +4,23 @@ description: Tento článek poskytuje přehled podpory Azure Application Gateway
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 03/11/2020
+ms.date: 07/20/2020
 ms.author: amsriva
 ms.topic: conceptual
-ms.openlocfilehash: 4d945a255dacd35c61c3c80574b7d46b56de4aab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3e6bc6d2dd5568dcc11a37c6ab44bd3b4089c66
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80257406"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067907"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Hostování více webů ve službě Application Gateway
 
-Hostování více webů umožňuje konfigurovat více než jednu webovou aplikaci na stejném portu služby Application Gateway. Tato funkce umožňuje nakonfigurovat efektivnější topologii nasazení přidáním až 100 webů do jedné aplikační brány. Každou stránku lze přesměrovat na vlastní back-endový fond. V následujícím příkladu brána Application Gateway obsluhuje provoz pro `contoso.com` a `fabrikam.com` ze dvou fondů back-end serverů s názvem Fondserverucontoso a fondserverufabrikam.
+Hostování více webů umožňuje konfigurovat více než jednu webovou aplikaci na stejném portu služby Application Gateway. Umožňuje pro nasazení nakonfigurovat efektivnější topologii přidáním až 100 webů do jedné aplikační brány. Každou stránku lze přesměrovat na vlastní back-endový fond. Například tři domény, contoso.com, fabrikam.com a adatum.com, odkazují na IP adresu služby Application Gateway. Vytvořili jste tři naslouchací procesy pro více webů a nakonfigurujete každého naslouchacího procesu pro příslušný port a nastavení protokolu. 
 
-![imageURLroute](./media/multiple-site-overview/multisite.png)
+Můžete také definovat názvy hostitelů se zástupnými znaky v rámci naslouchacího procesu pro více webů a až 5 názvů hostitelů na naslouchací proces. Další informace najdete v tématu [názvy hostitelů se zástupnými znaky v naslouchacího procesu](#wildcard-host-names-in-listener-preview).
+
+:::image type="content" source="./media/multiple-site-overview/multisite.png" alt-text="Application Gateway více lokalit":::
 
 > [!IMPORTANT]
 > Pravidla se zpracovávají v pořadí, v jakém jsou uvedena na portálu pro SKU v1. V případě SKU verze V2 mají přesné shody vyšší prioritu. Důrazně doporučujeme nakonfigurovat naslouchací procesy pro více webů před konfigurací základního naslouchacího procesu.  Tím se zajistí směrování provozu do správného back-endu. Pokud je základní naslouchací proces uveden jako první a odpovídá příchozímu požadavku, požadavek se zpracuje tímto naslouchacím procesem.
@@ -26,6 +28,56 @@ Hostování více webů umožňuje konfigurovat více než jednu webovou aplikac
 Žádosti na adresu `http://contoso.com` se směrují na ContosoServerPool a žádosti na adresu `http://fabrikam.com` na FabrikamServerPool.
 
 Podobně můžete hostovat více subdomén stejné nadřazené domény ve stejném nasazení služby Application Gateway. Můžete například hostovat `http://blog.contoso.com` a `http://app.contoso.com` v jediném nasazení aplikační brány.
+
+## <a name="wildcard-host-names-in-listener-preview"></a>Názvy hostitelů se zástupnými znaky v naslouchací službě (Preview)
+
+Application Gateway umožňuje směrování na hostiteli pomocí naslouchacího procesu HTTP (S) více lokalit. Nyní máte možnost použít v názvu hostitele zástupné znaky, jako je hvězdička (*) a otazník (?), a až 5 názvů hostitelů pro naslouchací proces HTTP (S) více lokalit. Například, `*.contoso.com`.
+
+Pomocí zástupného znaku v názvu hostitele můžete vyhledat více názvů hostitelů v rámci jednoho naslouchacího procesu. `*.contoso.com`Můžete například porovnat s, stejně `ecom.contoso.com` `b2b.contoso.com` jako `customer1.b2b.contoso.com` a tak dále. Pomocí pole názvů hostitelů můžete pro naslouchací proces nakonfigurovat více než jeden název hostitele, aby bylo možné směrovat požadavky do back-endu fondu. Naslouchací proces může například obsahovat, `contoso.com, fabrikam.com` který bude přijímat žádosti pro názvy hostitelů.
+
+:::image type="content" source="./media/multiple-site-overview/wildcard-listener-diag.png" alt-text="Naslouchací proces se zástupnými znaky":::
+
+>[!NOTE]
+> Tato funkce je ve verzi Preview a je dostupná jenom pro Standard_v2 a WAF_v2 SKU Application Gateway. Další informace o verzi Preview najdete v tématu věnovaném [podmínkám použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+V [Azure Portal](create-multiple-sites-portal.md)je můžete definovat v samostatných textových polích, jak je znázorněno na snímku obrazovky níže.
+
+:::image type="content" source="./media/multiple-site-overview/wildcard-listener-example.png" alt-text="Příklad konfigurace pro naslouchací proces se zástupnými znaky":::
+
+>[!NOTE]
+>Pokud vytváříte nový naslouchací proces pro více webů nebo přidáte více názvů hostitelů do stávajícího naslouchacího procesu pro více webů z Azure Portal, bude ve výchozím nastavení přidána do `HostNames` parametru konfigurace naslouchacího procesu, který do stávajícího `HostName` parametru v konfiguraci přidá více možností.
+
+V [Azure PowerShell](tutorial-multiple-sites-powershell.md)je nutné použít `-HostNames` místo `-HostName` . U názvů hostitelů můžete uvést až 5 názvů hostitelů jako hodnot oddělených čárkami a použít zástupné znaky. Například `-HostNames "*.contoso.com,*.fabrikam.com"`.
+
+V rozhraní příkazového [řádku Azure](tutorial-multiple-sites-cli.md)je nutné použít `--host-names` místo `--host-name` . U názvů hostitelů můžete uvést až 5 názvů hostitelů jako hodnot oddělených čárkami a použít zástupné znaky. Například `--host-names "*.contoso.com,*.fabrikam.com"`.
+
+### <a name="allowed-characters-in-the-host-names-field"></a>Povolené znaky v poli názvy hostitelů:
+
+* `(A-Z,a-z,0-9)`– alfanumerické znaky
+* `-`– spojovník nebo mínus
+* `.`– tečka jako oddělovač
+*   `*`– může odpovídat více znakům v povoleném rozsahu.
+*   `?`– může odpovídat jednomu znaku v povoleném rozsahu.
+
+### <a name="conditions-for-using-wildcard-characters-and-multiple-host-names-in-a-listener"></a>Podmínky použití zástupných znaků a více názvů hostitelů v naslouchací službě:
+
+*   V jednom naslouchací službě můžete uvést až 5 názvů hostitelů.
+*   Hvězdičku `*` lze v rámci názvu doménového stylu nebo názvu hostitele zmínit pouze jednou. Například Component1 *. component2*. component3. `(*.contoso-*.com)`je platný.
+*   Název hostitele může obsahovat jenom dvě hvězdičky `*` . Například `*.contoso.*` je platný a `*.contoso.*.*.com` je neplatný.
+*   Název hostitele může obsahovat maximálně 4 zástupných znaků. Například `????.contoso.com` , `w??.contoso*.edu.*` jsou platné, ale `????.contoso.*` neplatné.
+*   Použití hvězdičky `*` a otazníku `?` společně v součásti názvu hostitele ( `*?` nebo `?*` nebo `**` ) je neplatné. Například `*?.contoso.com` a `**.contoso.com` jsou neplatné.
+
+### <a name="considerations-and-limitations-of-using-wildcard-or-multiple-host-names-in-a-listener"></a>Doporučení a omezení používání zástupných znaků nebo více názvů hostitelů v naslouchací službě:
+
+*   [Ukončení protokolu SSL a kompletní protokol SSL](ssl-overview.md) vyžadují, abyste nakonfigurovali protokol jako https a nahráli certifikát, který se má použít v konfiguraci naslouchacího procesu. Pokud se jedná o naslouchací proces více lokalit, můžete zadat i název hostitele, obvykle se jedná o CN certifikátu SSL. Pokud zadáváte více názvů hostitelů v naslouchacího procesu nebo používáte zástupné znaky, je nutné vzít v úvahu následující skutečnosti:
+    *   Pokud se jedná o zástupný název hostitele, jako je *. contoso.com, musíte nahrát certifikát se zástupnými znaky s CN jako *. contoso.com.
+    *   Pokud je ve stejném naslouchací službě uveden více názvů hostitelů, je nutné nahrát certifikát sítě SAN (alternativní názvy předmětu) s propojenými názvy, které odpovídají názvům hostitelů uvedeným v tématu.
+*   Nemůžete použít regulární výraz k uvedení názvu hostitele. Pro vytvoření vzoru názvu hostitele můžete použít jenom zástupné znaky, jako je hvězdička (*) a otazník (?).
+*   U kontroly stavu back-endu nelze pro každé nastavení HTTP přidružit více [vlastních sond](application-gateway-probe-overview.md) . Místo toho můžete testovat jeden z webů v back-endu nebo použít "127.0.0.1" k testování místního hostitele back-end serveru. Pokud však v naslouchací službě používáte zástupný znak nebo více názvů hostitelů, budou požadavky na všechny určené vzorce domény směrovány do fondu back-end v závislosti na typu pravidla (základní nebo založené na cestě).
+*   Vlastnosti "hostname" přebírají jako vstup jeden řetězec, kde můžete uvést pouze jeden název domény bez zástupných znaků a "názvy hostitelů" přebírají pole řetězců jako vstup, kde můžete uvést až 5 názvů domén se zástupnými znaky. Současně však nelze současně použít obě vlastnosti.
+*   Pomocí cílového naslouchacího procesu, který používá zástupný znak nebo více názvů hostitelů, nelze vytvořit pravidlo [přesměrování](redirect-overview.md) .
+
+Podrobný průvodce konfigurací názvů hostitelů se zástupnými znaky v rámci naslouchacího procesu pro více webů najdete v tématu [vytvoření více lokalit pomocí Azure Portal](create-multiple-sites-portal.md) nebo [použití Azure PowerShell](tutorial-multiple-sites-powershell.md) nebo [pomocí Azure CLI](tutorial-multiple-sites-cli.md) .
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>Hlavičky hostitele a Identifikace názvu serveru (SNI)
 
@@ -41,92 +93,8 @@ Application Gateway podporuje několik aplikací, které každé naslouchá na r
 
 Služba Application Gateway se při hostování více než jednoho webu na stejné veřejné IP adrese a portu spoléhá na hlavičky hostitele HTTP 1.1. Weby hostované v aplikační bráně můžou také podporovat snižování zátěže TLS s rozšířením Indikace názvu serveru (SNI) TLS. Tento scénář znamená, že klientský prohlížeč a back-endová webová farma musí podporovat HTTP/1.1 a rozšíření protokolu TLS, jak je definováno v dokumentu RFC 6066.
 
-## <a name="listener-configuration-element"></a>Konfigurační prvek naslouchacího procesu
-
-Existující prvky konfigurace HTTPListener jsou vylepšené pro podporu názvů hostitelů a prvků indikace názvu serveru. Používá se Application Gateway ke směrování provozu do příslušného back-endu. 
-
-Následující příklad kódu je fragment prvku HttpListeners ze souboru šablony:
-
-```json
-"httpListeners": [
-    {
-        "name": "appGatewayHttpsListener1",
-        "properties": {
-            "FrontendIPConfiguration": {
-                "Id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/frontendIPConfigurations/DefaultFrontendPublicIP"
-            },
-            "FrontendPort": {
-                "Id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/frontendPorts/appGatewayFrontendPort443'"
-            },
-            "Protocol": "Https",
-            "SslCertificate": {
-                "Id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/sslCertificates/appGatewaySslCert1'"
-            },
-            "HostName": "contoso.com",
-            "RequireServerNameIndication": "true"
-        }
-    },
-    {
-        "name": "appGatewayHttpListener2",
-        "properties": {
-            "FrontendIPConfiguration": {
-                "Id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/frontendIPConfigurations/appGatewayFrontendIP'"
-            },
-            "FrontendPort": {
-                "Id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/frontendPorts/appGatewayFrontendPort80'"
-            },
-            "Protocol": "Http",
-            "HostName": "fabrikam.com",
-            "RequireServerNameIndication": "false"
-        }
-    }
-],
-```
-
-Na stránce [Šablona Resource Manageru používající hostování více webů](https://github.com/Azure/azure-quickstart-templates/blob/master/201-application-gateway-multihosting) najdete kompletní nasazení založené na šabloně.
-
-## <a name="routing-rule"></a>Pravidlo směrování
-
-V pravidle směrování není vyžadována žádná změna. Stále byste měli volit pravidlo směrování „Základní“ k provázání příslušných naslouchacích procesů webů s odpovídajícími back-endovými fondy adres.
-
-```json
-"requestRoutingRules": [
-{
-    "name": "<ruleName1>",
-    "properties": {
-        "RuleType": "Basic",
-        "httpListener": {
-            "id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/httpListeners/appGatewayHttpsListener1')]"
-        },
-        "backendAddressPool": {
-            "id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/backendAddressPools/ContosoServerPool')]"
-        },
-        "backendHttpSettings": {
-            "id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/backendHttpSettingsCollection/appGatewayBackendHttpSettings')]"
-        }
-    }
-
-},
-{
-    "name": "<ruleName2>",
-    "properties": {
-        "RuleType": "Basic",
-        "httpListener": {
-            "id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/httpListeners/appGatewayHttpListener2')]"
-        },
-        "backendAddressPool": {
-            "id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/backendAddressPools/FabrikamServerPool')]"
-        },
-        "backendHttpSettings": {
-            "id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/backendHttpSettingsCollection/appGatewayBackendHttpSettings')]"
-        }
-    }
-
-}
-]
-```
-
 ## <a name="next-steps"></a>Další kroky
 
-Po získání informací o hostování více webů přejděte k tématu [Vytvoření služby Application Gateway používající hostování více webů](tutorial-multiple-sites-powershell.md) a vytvořte službu Application Gateway se schopností podporovat více než jednu webovou aplikaci.
+Po získání informací o hostování více webů si přečtěte téma [vytvoření více lokalit pomocí Azure Portal](create-multiple-sites-portal.md) nebo [pomocí Azure PowerShell](tutorial-multiple-sites-powershell.md) nebo pomocí rozhraní příkazového [řádku Azure](tutorial-multiple-sites-cli.md) , kde najdete podrobné pokyny k vytvoření Application Gateway pro hostování více webů.
 
+Na stránce [Šablona Resource Manageru používající hostování více webů](https://github.com/Azure/azure-quickstart-templates/blob/master/201-application-gateway-multihosting) najdete kompletní nasazení založené na šabloně.

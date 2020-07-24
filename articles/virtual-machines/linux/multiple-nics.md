@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: ecbff4beadd9d10a8489c89cc322c0bb67ec5f40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 054462834d2712b8db10b40f2d7befdf330eec48
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706677"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069505"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Vytvoření virtuálního počítače se systémem Linux v Azure s několika síťovými kartami
 
@@ -167,7 +167,7 @@ Azure Resource Manager šablony používají k definování vašeho prostředí 
 }
 ```
 
-Přečtěte si další informace o [vytváření více instancí pomocí *kopírování*](../../resource-group-create-multiple.md). 
+Přečtěte si další informace o [vytváření více instancí pomocí *kopírování*](../../azure-resource-manager/templates/copy-resources.md). 
 
 Můžete také použít a `copyIndex()` k názvu prostředku připojit číslo, což vám umožní vytvořit `myNic1` , `myNic2` atd. Následující příklad ukazuje, jak připojit hodnotu indexu:
 

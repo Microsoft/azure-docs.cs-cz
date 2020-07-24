@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: ee6d437915f6c87ce9ef5f9c711d90793a96048c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b4890181721d08b741d327adb74bd097be5c9f2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77920123"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069167"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Podrobný postup řešení potíží s SSH při připojování k virtuálnímu počítači s Linuxem v Azure
 Je možné, že klient SSH nebude moci kontaktovat službu SSH na virtuálním počítači. Pokud jste provedli obecnější [kroky při řešení potíží](troubleshoot-ssh-connection.md)se službou SSH, budete muset vyřešit potíže s připojením. Tento článek vás provede podrobnými kroky pro řešení potíží, které určují, kde se připojení SSH nedaří a jak ho vyřešit.
@@ -105,9 +106,9 @@ Pokud nemáte jiný virtuální počítač ve stejné virtuální síti, můžet
 Pokud můžete vytvořit připojení SSH s virtuálním počítačem ve stejné virtuální síti, podívejte se do těchto oblastí:
 
 * **Konfigurace koncového bodu pro provoz SSH na cílovém virtuálním počítači.** Privátní port TCP koncového bodu by měl odpovídat portu TCP, na kterém naslouchá služba SSH na virtuálním počítači. (Výchozí port je 22). Ověřte číslo portu TCP SSH v Azure Portal tak, že vyberete **možnost virtuální počítače**  >  *název*virtuálního počítače  >  **Settings**  >  **koncové body**.
-* **Seznam ACL pro koncový bod provozu SSH na cílovém virtuálním počítači.** Seznam ACL umožňuje zadat povolený nebo zakázaný příchozí provoz z Internetu na základě jeho zdrojové IP adresy. Nesprávně nakonfigurované seznamy řízení přístupu (ACL) můžou zabránit příchozímu provozu SSH do koncového bodu. Zkontrolujte seznamy ACL, abyste měli jistotu, že příchozí provoz z veřejných IP adres vašeho proxy serveru nebo jiného hraničního serveru je povolený. Další informace najdete v tématu [informace o seznamech řízení přístupu k síti (ACL)](../../virtual-network/virtual-networks-acl.md).
+* **Seznam ACL pro koncový bod provozu SSH na cílovém virtuálním počítači.** Seznam ACL umožňuje zadat povolený nebo zakázaný příchozí provoz z Internetu na základě jeho zdrojové IP adresy. Nesprávně nakonfigurované seznamy řízení přístupu (ACL) můžou zabránit příchozímu provozu SSH do koncového bodu. Zkontrolujte seznamy ACL, abyste měli jistotu, že příchozí provoz z veřejných IP adres vašeho proxy serveru nebo jiného hraničního serveru je povolený. Další informace najdete v tématu [informace o seznamech řízení přístupu k síti (ACL)](/previous-versions/azure/virtual-network/virtual-networks-acl).
 
-Chcete-li odstranit koncový bod jako zdroj problému, odeberte aktuální koncový bod, vytvořte jiný koncový bod a zadejte název SSH (port TCP 22 pro číslo veřejného a soukromého portu). Další informace najdete v tématu [nastavení koncových bodů na virtuálním počítači v Azure](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Chcete-li odstranit koncový bod jako zdroj problému, odeberte aktuální koncový bod, vytvořte jiný koncový bod a zadejte název SSH (port TCP 22 pro číslo veřejného a soukromého portu). Další informace najdete v tématu [nastavení koncových bodů na virtuálním počítači v Azure](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints?toc=/azure/virtual-machines/windows/classic/toc.json).
 
 <a id="nsg"></a>
 
@@ -115,14 +116,14 @@ Chcete-li odstranit koncový bod jako zdroj problému, odeberte aktuální konco
 Skupiny zabezpečení sítě umožňují podrobnější kontrolu nad povoleným příchozím a odchozím provozem. Můžete vytvořit pravidla, která budou zahrnovat podsítě a cloudové služby ve službě Azure Virtual Network. Zkontrolujte pravidla skupiny zabezpečení sítě, abyste měli jistotu, že je povolený provoz SSH do a z Internetu.
 Další informace najdete v tématu [informace o skupinách zabezpečení sítě](../../virtual-network/security-overview.md).
 
-K ověření konfigurace NSG můžete také použít ověřování pomocí protokolu IP. Další informace najdete v tématu [Přehled monitorování sítě Azure](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview). 
+K ověření konfigurace NSG můžete také použít ověřování pomocí protokolu IP. Další informace najdete v tématu [Přehled monitorování sítě Azure](../../network-watcher/network-watcher-monitoring-overview.md). 
 
 ## <a name="source-5-linux-based-azure-virtual-machine"></a>Zdroj 5: virtuální počítač Azure založený na Linux
 Poslední zdrojem možných problémů je samotný virtuální počítač Azure.
 
 ![Diagram, který zvýrazňuje virtuální počítač Azure se systémem Linux](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot5.png)
 
-Pokud jste to ještě neudělali, postupujte podle pokynů [pro resetování virtuálních počítačů se systémem Linux pomocí hesla](../linux/reset-password.md).
+Pokud jste to ještě neudělali, postupujte podle pokynů [pro resetování virtuálních počítačů se systémem Linux pomocí hesla](./reset-password.md).
 
 Zkuste z počítače znovu připojit. Pokud se to pořád nepovede, jsou zde některé z možných problémů:
 
@@ -131,5 +132,5 @@ Zkuste z počítače znovu připojit. Pokud se to pořád nepovede, jsou zde ně
 * Místní brána firewall na cílovém virtuálním počítači obsahuje pravidla, která zabraňují příchozímu nebo odchozímu provozu SSH.
 * Zjišťování neoprávněných vniknutí nebo software pro monitorování sítě, který běží na virtuálním počítači Azure, brání připojení SSH.
 
-## <a name="additional-resources"></a>Další zdroje
-Další informace o řešení potíží s přístupem k aplikacím najdete v tématu [řešení potíží s přístupem k aplikaci spuštěné na virtuálním počítači Azure](../linux/troubleshoot-app-connection.md) .
+## <a name="additional-resources"></a>Další zdroje informací
+Další informace o řešení potíží s přístupem k aplikacím najdete v tématu [řešení potíží s přístupem k aplikaci spuštěné na virtuálním počítači Azure](./troubleshoot-app-connection.md) .

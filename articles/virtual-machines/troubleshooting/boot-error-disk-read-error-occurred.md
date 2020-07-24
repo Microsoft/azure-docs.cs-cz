@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/01/2020
 ms.author: v-miegge
-ms.openlocfilehash: dea09b1ac29db99e1c52a31a605007fa4129e8ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f59903ed111be1fe414f4b3ded250d754c91d323
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300523"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069141"
 ---
 # <a name="troubleshoot-boot-error---disk-read-error-occurred"></a>Řešení potíží při spuštění – došlo k chybě čtení z disku
 
@@ -26,7 +27,7 @@ Tento článek popisuje kroky pro řešení problémů, při kterých není mož
 
 ## <a name="symptoms"></a>Příznaky
 
-Když pomocí [diagnostiky spouštění](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) zobrazíte snímek obrazovky virtuálního počítače, uvidíte, že snímek obrazovky zobrazuje výzvu se zprávou "došlo k chybě při čtení disku. Stiskněte Ctrl+Alt+Del a proveďte restartování.
+Když pomocí [diagnostiky spouštění](./boot-diagnostics.md) zobrazíte snímek obrazovky virtuálního počítače, uvidíte, že snímek obrazovky zobrazuje výzvu se zprávou "došlo k chybě při čtení disku. Stiskněte Ctrl+Alt+Del a proveďte restartování.
 
    ![Chybová zpráva: došlo k chybě čtení disku. Stisknutím kombinace kláves Ctrl + Alt + Del restartujte počítač.](./media/disk-read-error-occurred/1.png)
 
@@ -50,7 +51,7 @@ Tato chybová zpráva znamená, že je struktura disku poškozená a není čite
 
 ### <a name="create-and-access-a-repair-vm"></a>Vytvoření a přístup k opravnému virtuálnímu počítači
 
-1. Pomocí kroků 1-3 příkazů pro [opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) Připravte opravný virtuální počítač.
+1. Pomocí kroků 1-3 příkazů pro [opravu virtuálního počítače](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) Připravte opravný virtuální počítač.
 1. Pomocí Připojení ke vzdálené ploše se připojte k opravnému virtuálnímu počítači.
 
 ### <a name="set-partition-status-to-active"></a>Nastavit stav oddílu na aktivní
@@ -142,4 +143,4 @@ Virtuální počítače 1. generace by měly nejdřív ověřit, že oddíl s op
    
 ### <a name="rebuild-the-vm"></a>Opětovné sestavení virtuálního počítače
 
-K opětovnému sestavení virtuálního počítače použijte [Krok 5 příkazů pro opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) .
+K opětovnému sestavení virtuálního počítače použijte [Krok 5 příkazů pro opravu virtuálního počítače](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) .

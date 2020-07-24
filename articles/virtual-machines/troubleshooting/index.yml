@@ -10,12 +10,12 @@ metadata:
   author: genlin
   ms.author: genli
   ms.date: 09/09/2019
-  ms.openlocfilehash: 4111df079f6e4c0d49ab1381add835d493b3540a
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 1b70dfb508ef00f370f0a6fa1456ab7178ec0eae
+  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77519236"
+  ms.lasthandoff: 07/23/2020
+  ms.locfileid: "87069047"
 landingContent:
 - title: Řešení potíží se selháními nasazení
   linkLists:
@@ -28,65 +28,65 @@ landingContent:
     - text: Řešení chyb kvůli neplatné šabloně
       url: ../../azure-resource-manager/templates/error-invalid-template.md
     - text: Řešení chyb kvůli nedostupné skladové položce
-      url: https://docs.microsoft.com/azure/azure-resource-manager/templates/error-sku-not-available
+      url: ../../azure-resource-manager/templates/error-sku-not-available.md
 - title: Pokyny k nasazení virtuálního počítače
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Příprava disku VHD nebo VHDX s Windows pro nahrání do Azure
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image
+      url: ../windows/prepare-for-upload-vhd-image.md
     - text: Nasazování nebo vytváření klientských operačních systémů Windows v Azure
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/client-images
+      url: ../windows/client-images.md
     - text: Řešení chyb spojených s kvótami
-      url: https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors
+      url: ../../azure-resource-manager/templates/error-resource-quota.md
 - title: Nejde se připojit k virtuálnímu počítači
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Rychlé kroky pro řešení běžných potíží s připojením RDP
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-rdp-connection
+      url: ./troubleshoot-rdp-connection.md
     - text: Řešení potíží s připojením RDP virtuálních počítačů Azure podle ID události
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/event-id-troubleshoot-vm-rdp-connecton
+      url: ./event-id-troubleshoot-vm-rdp-connecton.md
     - text: Řešení chyb ověřování při připojování k virtuálnímu počítači Azure pomocí protokolu RDP
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-authentication-error-rdp-vm
+      url: ./troubleshoot-authentication-error-rdp-vm.md
     - text: Síťová karta hosta virtuálního počítače je zablokovaná
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-nic-disabled
+      url: ./troubleshoot-rdp-nic-disabled.md
 - title: Resetování hesla
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Jak resetovat službu Vzdálená plocha nebo její přihlašovací heslo ve virtuálním počítači s Windows
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/reset-rdp
+      url: ./reset-rdp.md
     - text: Resetování místního hesla Windows pro virtuální počítač Azure s využitím offline metody
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/reset-local-password-without-agent
+      url: ./reset-local-password-without-agent.md
     - text: Řešení konkrétních chybových zpráv protokolu RDP pro virtuální počítač s Windows v Azure
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-specific-rdp-errors
+      url: ./troubleshoot-specific-rdp-errors.md
     - text: Řešení potíží s připojením ke vzdálené ploše virtuálního počítače Azure
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-connection
+      url: ./troubleshoot-rdp-connection.md
 - title: Virtuální počítač nejde spustit
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Chyba kontroly disku při spouštění
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-check-disk-boot-error
+      url: ./troubleshoot-check-disk-boot-error.md
     - text: Chyba spuštění nástroje BitLocker
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-bitlocker-boot-error
+      url: ./troubleshoot-bitlocker-boot-error.md
     - text: Chyba aktualizace konfigurace při spuštění
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-vm-boot-configure-update
+      url: ./troubleshoot-vm-boot-configure-update.md
     - text: Běžná chyba typu modrá obrazovka
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-common-blue-screen-error
+      url: ./troubleshoot-common-blue-screen-error.md
 - title: Virtuální počítač nejde spustit nebo zastavit
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Řešení problémů s nasazením virtuálního počítače
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/restart-resize-error-troubleshooting
+      url: ./restart-resize-error-troubleshooting.md
     - text: Řešení potíží se selháními přidělení (model nasazení Classic)
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/allocation-failure-classic
+      url: ./allocation-failure-classic.md
     - text: Chyba aktualizace konfigurace při spuštění
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-vm-boot-configure-update
+      url: ./troubleshoot-vm-boot-configure-update.md
     - text: Stavy a životní cyklus virtuálních počítačů
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/states-lifecycle
+      url: ../windows/states-lifecycle.md
 - title: Neočekávané restartování virtuálního počítače
   linkLists:
   - linkListType: how-to-guide
@@ -96,50 +96,50 @@ landingContent:
     - text: Diagnostika a zotavení z chyb při spuštění po restartování
       url: https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/
     - text: Principy plánované údržby virtuálních počítačů v Azure
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates
+      url: ../maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
     - text: Spuštění virtuálního počítače Azure se zaseklo při aktualizaci Windows
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-stuck-updating-boot-error
+      url: ./troubleshoot-stuck-updating-boot-error.md
 - title: Problémy se správou virtuálních disků
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Virtuální disky – nejčastější dotazy
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/faq-for-disks
+      url: ../windows/faq-for-disks.md
     - text: Řešení potíží s přidělováním při změně velikosti virtuálního počítače
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/allocation-failure
+      url: ./allocation-failure.md
     - text: Vysvětlení dočasné jednotky na virtuálním počítači
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#temporary-disk
+      url: ../windows/managed-disks-overview.md#temporary-disk
     - text: Přehled spravovaných disků Azure
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview
+      url: ../windows/managed-disks-overview.md
 - title: Problémy se šifrováním disků
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Řešení potíží se šifrováním disků Azure
-      url: https://docs.microsoft.com/azure/security/azure-security-disk-encryption-tsg
+      url: ../../security/fundamentals/azure-disk-encryption-vms-vmss.md
     - text: Šifrování disků Azure – nejčastější dotazy
-      url: https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq
+      url: ../../security/fundamentals/azure-disk-encryption-vms-vmss.md
     - text: Postup při řešení potíží s rozšířeními Azure
-      url: https://docs.microsoft.com/azure/virtual-machines/extensions/troubleshoot
+      url: ../extensions/troubleshoot.md
 - title: Problémy s výkonem virtuálního počítače
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Řešení potíží se sdílenými galeriemi imagí – pomalá replikace
-      url: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/troubleshooting-shared-images#replication-is-slow
+      url: ../windows/troubleshooting-shared-images.md#replication-is-slow
 - title: Problémy s rozšířením virtuálního počítače
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Obecné postupy při řešení potíží s rozšířeními
-      url: https://docs.microsoft.com/azure/virtual-machines/extensions/troubleshoot
+      url: ../extensions/troubleshoot.md
     - text: Instalace rozšíření na virtuálním počítači
-      url: https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/diagnostics-windows
+      url: ../extensions/diagnostics-windows.md
     - text: Rozšíření vlastních skriptů pro virtuální počítače
-      url: https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/custom-script-windows#tips-and-tricks
+      url: ../extensions/custom-script-windows.md#tips-and-tricks
 - title: Zálohování a obnovení
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Řešení potíží se zálohováním virtuálních počítačů Azure na webu Azure Portal
-      url: https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot
+      url: ../../backup/backup-azure-vms-troubleshoot.md

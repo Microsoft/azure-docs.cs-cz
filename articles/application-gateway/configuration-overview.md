@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: absha
-ms.openlocfilehash: 0245a23e46770840295904685c913826950c0642
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 892ace66c4994f4c2e263d529d69e505ed9c1c1f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517837"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068018"
 ---
 # <a name="application-gateway-configuration-overview"></a>Přehled konfigurace Application Gateway
 
@@ -286,7 +286,7 @@ Pomocí pravidel pro přepsání můžete přidat, odebrat nebo aktualizovat ž�
 Parametry hlaviček a adres URL lze nastavit na statické hodnoty nebo na jiné hlavičky a proměnné serveru. To pomáhá s důležitými případy použití, jako je například extrakce IP adres klientů, odebrání citlivých informací o back-endu, přidání dalších zabezpečení atd.
 Další informace najdete tady:
 
- - [Přehled hlaviček protokolu HTTP přepisu](rewrite-http-headers-url.md)
+ - [Přehled přepsaných hlaviček a adres URL protokolu HTTP](rewrite-http-headers-url.md)
  - [Konfigurace přepsání hlaviček HTTP](rewrite-http-headers-portal.md)
  - [Konfigurace přepsání adresy URL](rewrite-url-portal.md)
 

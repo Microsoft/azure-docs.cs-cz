@@ -6,11 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 11/09/2017
 ms.custom: seodec18
-ms.openlocfilehash: b1c44fb9f44eb75e6d2a766213c5db094ebe79b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93f823a623145f8dd8bf5118de973dfbc095bfb4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537640"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068192"
 ---
 # <a name="azure-app-service-plan-overview"></a>Přehled plánu služby App Service
 
@@ -26,8 +27,8 @@ Při vytváření plánu App Service v určité oblasti (například Západní E
 _Cenová úroveň_ plánu App Service určuje, jaké App Service funkce získáte a kolik platíte za plán. Kategorií cenových úrovní existuje několik:
 
 - **Shared COMPUTE**: **Free** and **Shared**, dvě základní úrovně, spustí aplikaci na stejném virtuálním počítači Azure jako jiné aplikace App Service, včetně aplikací jiných zákazníků. Tyto úrovně přidělují kvóty procesoru každé aplikaci, která na sdílených prostředcích běží, a u těchto prostředků není možné škálovat na více instancí.
-- **Vyhrazené výpočetní**prostředky: úrovně **Basic**, **Standard**, **Premium**a **PremiumV2** spouštějí aplikace na vyhrazených virtuálních počítačích Azure. Stejné výpočetní prostředky sdílí pouze aplikace v rámci stejného plánu služby App Service. Čím vyšší cenová úroveň, tím více instancí virtuálních počítačů můžete škálovat.
-- **Izolované**: Tato úroveň spouští vyhrazené virtuální počítače Azure ve vyhrazených virtuálních sítích Azure. Poskytuje izolaci sítě nad výpočetní izolací pro vaše aplikace. Nabízí nejvyšší úroveň škálování na více instancí.
+- **Vyhrazené výpočetní**prostředky: úrovně **Basic**, **Standard**, **Premium**a **PremiumV2** spouštějí aplikace na vyhrazených virtuálních počítačích Azure. Stejné výpočetní prostředky sdílejí jen aplikace ve stejném plánu služby App Service. Čím vyšší cenová úroveň, tím více instancí virtuálních počítačů můžete škálovat.
+- **Izolované**: Tato úroveň spouští vyhrazené virtuální počítače Azure ve vyhrazených virtuálních sítích Azure. Poskytuje izolaci sítě nad výpočetní izolací pro vaše aplikace. Tato úroveň nabízí maximální škálování na více instancí.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -78,8 +79,10 @@ Neúčtují se vám žádné poplatky za použití funkcí App Service, které j
 
 > [!NOTE]
 > Pokud integraci App Service s jinou službou Azure, možná budete muset zvážit poplatky z těchto dalších služeb. Pokud například používáte Azure Traffic Manager k geograficky škálované aplikace, Azure Traffic Manager taky účtujeme podle svého využití. Pokud chcete odhadnout náklady na různé služby v Azure, podívejte se do [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/). 
->
->
+
+Chcete optimalizovat a uložit své útraty do cloudu?
+
+[!INCLUDE [cost-management-horizontal](../../includes/cost-management-horizontal.md)]
 
 ## <a name="what-if-my-app-needs-more-capabilities-or-features"></a>Co když moje aplikace potřebuje více funkcí nebo funkcí?
 

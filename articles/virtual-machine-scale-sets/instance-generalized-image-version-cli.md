@@ -1,5 +1,5 @@
 ---
-title: Vytvoření sady škálování z generalizované image
+title: Vytvoření sady škálování z generalizované Image pomocí Azure CLI
 description: Vytvořte sadu škálování pomocí generalizované image v galerii sdílených imagí.
 author: cynthn
 ms.service: virtual-machine-scale-sets
@@ -9,13 +9,14 @@ ms.topic: how-to
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 59e29be2aade993c8aeae64b4aa4918b36a26b26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3cde06b652befa8fbb655273c19f65bd2f38e850
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82797133"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069837"
 ---
-# <a name="create-a-scale-set-from-a-generalized-image"></a>Vytvoření sady škálování z generalizované image
+# <a name="create-a-scale-set-from-a-generalized-image-with-azure-cli"></a>Vytvoření sady škálování z generalizované Image pomocí Azure CLI
 
 Vytvořte sadu škálování z generalizované verze Image uložené v [galerii sdílených imagí](shared-image-galleries.md) pomocí Azure CLI. Pokud chcete vytvořit sadu škálování pomocí specializované verze image, přečtěte si téma [vytvoření instance sady škálování z specializované image](instance-specialized-image-version-cli.md).
 

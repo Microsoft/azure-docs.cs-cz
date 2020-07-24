@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: mimckitt
-ms.openlocfilehash: 5aeae50c9cb7497c20f785f2a32c96f5a4fdec1e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 9bb9b993b88b8f4b31bc56c6bb3fc16972bb6e41
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186975"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069814"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Použití PowerShellu k povolení Azure Diagnostics ve virtuálním počítači s Windows
 
@@ -29,7 +29,7 @@ Azure Diagnostics je schopnost v Azure, která umožňuje shromažďování diag
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-resource-manager-deployment-model"></a>Povolit rozšíření diagnostiky, pokud používáte model nasazení Správce prostředků
 Diagnostické rozšíření můžete povolit během vytváření virtuálního počítače s Windows pomocí modelu nasazení Azure Resource Manager přidáním konfigurace rozšíření do šablony Správce prostředků. V tématu [Vytvoření virtuálního počítače s Windows pomocí monitorování a diagnostiky použijte šablonu Azure Resource Manager](diagnostics-template.md).
 
-Pokud chcete povolit diagnostické rozšíření na existujícím virtuálním počítači vytvořeném pomocí modelu nasazení Správce prostředků, můžete použít rutinu [set-AzVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmdiagnosticsextension) prostředí PowerShell, jak je znázorněno níže.
+Pokud chcete povolit diagnostické rozšíření na existujícím virtuálním počítači vytvořeném pomocí modelu nasazení Správce prostředků, můžete použít rutinu [set-AzVMDiagnosticsExtension](/powershell/module/az.compute/set-azvmdiagnosticsextension) prostředí PowerShell, jak je znázorněno níže.
 
 ```azurepowershell
 $vm_resourcegroup = "myvmresourcegroup"
@@ -52,7 +52,7 @@ Pokud je účet úložiště diagnostiky v jiném předplatném, než je virtuá
 Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName $diagnosticsstorage_name -StorageAccountKey $diagnosticsstorage_key
 ```
 
-Jakmile je na virtuálním počítači povolené rozšíření diagnostiky, můžete získat aktuální nastavení pomocí rutiny [Get-AzVmDiagnosticsExtension](https://docs.microsoft.com/powershell/module/az.compute/get-azvmdiagnosticsextension) .
+Jakmile je na virtuálním počítači povolené rozšíření diagnostiky, můžete získat aktuální nastavení pomocí rutiny [Get-AzVmDiagnosticsExtension](/powershell/module/az.compute/get-azvmdiagnosticsextension) .
 
 ```azurepowershell
 Get-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name
@@ -67,13 +67,13 @@ $xmlconfig = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64
 Write-Host $xmlconfig
 ```
 
-Pomocí rutiny [Remove-AzVmDiagnosticsExtension](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmdiagnosticsextension) můžete odebrat diagnostické rozšíření z virtuálního počítače.  
+Pomocí rutiny [Remove-AzVmDiagnosticsExtension](/powershell/module/az.compute/remove-azvmdiagnosticsextension) můžete odebrat diagnostické rozšíření z virtuálního počítače.  
 
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-classic-deployment-model"></a>Povolit rozšíření diagnostiky, pokud používáte klasický model nasazení
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
-Pomocí rutiny [set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) můžete povolit diagnostické rozšíření na virtuálním počítači, který vytvoříte prostřednictvím modelu nasazení Classic. Následující příklad ukazuje, jak vytvořit nový virtuální počítač pomocí modelu nasazení Classic s povoleným rozšířením Diagnostika.
+Pomocí rutiny [set-AzureVMDiagnosticsExtension](/powershell/module/servicemanagement/azure.service/set-azurevmdiagnosticsextension) můžete povolit diagnostické rozšíření na virtuálním počítači, který vytvoříte prostřednictvím modelu nasazení Classic. Následující příklad ukazuje, jak vytvořit nový virtuální počítač pomocí modelu nasazení Classic s povoleným rozšířením Diagnostika.
 
 ```azurepowershell
 $VM = New-AzureVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
@@ -82,7 +82,7 @@ $VM = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path
 New-AzVM -Location $Location -ServiceName $Service_Name -VM $VM
 ```
 
-Pokud chcete povolit diagnostické rozšíření na stávajícím virtuálním počítači, který se vytvořil prostřednictvím modelu nasazení Classic, použijte k získání konfigurace virtuálního počítače rutinu [Get-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azurevm) . Potom aktualizujte konfiguraci virtuálních počítačů tak, aby zahrnovala diagnostické rozšíření pomocí rutiny [set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) . Nakonec použijte aktualizovanou konfiguraci pro virtuální počítač pomocí [Update-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/update-azurevm).
+Pokud chcete povolit diagnostické rozšíření na stávajícím virtuálním počítači, který se vytvořil prostřednictvím modelu nasazení Classic, použijte k získání konfigurace virtuálního počítače rutinu [Get-AzureVM](/powershell/module/servicemanagement/azure.service/get-azurevm) . Potom aktualizujte konfiguraci virtuálních počítačů tak, aby zahrnovala diagnostické rozšíření pomocí rutiny [set-AzureVMDiagnosticsExtension](/powershell/module/servicemanagement/azure.service/set-azurevmdiagnosticsextension) . Nakonec použijte aktualizovanou konfiguraci pro virtuální počítač pomocí [Update-AzureVM](/powershell/module/servicemanagement/azure.service/update-azurevm).
 
 ```azurepowershell
 $VM = Get-AzureVM -ServiceName $Service_Name -Name $VM_Name
@@ -212,5 +212,4 @@ Konfigurace se musí aktualizovat, aby obsahovala následující:
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o používání funkce Azure Diagnostics a dalších technik k řešení problémů najdete v tématu [Povolení diagnostiky v Azure Cloud Services a Virtual Machines](../../cloud-services/cloud-services-dotnet-diagnostics.md).
-* [Schéma konfigurací diagnostiky](https://msdn.microsoft.com/library/azure/mt634524.aspx) vysvětluje různé možnosti konfigurace XML pro diagnostické rozšíření.
-
+* [Schéma konfigurací diagnostiky](/azure/azure-monitor/platform/diagnostics-extension-versions) vysvětluje různé možnosti konfigurace XML pro diagnostické rozšíření.

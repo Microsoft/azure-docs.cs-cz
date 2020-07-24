@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2df092d49f2dfe9153b52be677e8ee6314dd9b60
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf9e00e8acba241f1445977dcc53724b9981039f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82982968"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068681"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>Vytvoření clusteru instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání s Windows pomocí sdílené složky v Azure
 
@@ -31,7 +32,7 @@ Clustering s podporou převzetí služeb při selhání ve Windows serveru je z�
 
 Cluster s podporou převzetí služeb při selhání je skupina s 1 + n nezávislými servery (uzly), které vzájemně spolupracují za účelem zvýšení dostupnosti aplikací a služeb. Pokud dojde k selhání uzlu, clustering s podporou převzetí služeb při selhání ve Windows serveru vypočítá počet selhání, ke kterým může dojít, a udržujte cluster v pořádku, aby poskytoval aplikace a služby. Pro zajištění clusteringu s podporou převzetí služeb při selhání můžete vybrat z různých režimů kvora.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Než začnete s úkoly popsanými v tomto článku, přečtěte si tento článek:
 
 * [Architektura a scénáře s vysokou dostupností pro Azure Virtual Machines pro SAP NetWeaver][sap-high-availability-architecture-scenarios]
@@ -113,7 +114,7 @@ Prostory úložiště s přímým přístupem se používá jako sdílený disk 
 Při volbě Prostory úložiště s přímým přístupem zvažte tyto případy použití:
 
 - Virtuální počítače, které se používají k sestavení Prostory úložiště s přímým přístupem clusteru, se musí nasadit v sadě dostupnosti Azure.
-- Pro zotavení po havárii Prostory úložiště s přímým přístupem clusteru můžete použít [služby Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#replicated-machines---storage).
+- Pro zotavení po havárii Prostory úložiště s přímým přístupem clusteru můžete použít [služby Azure Site Recovery](../../../site-recovery/azure-to-azure-support-matrix.md#replicated-machines---storage).
 - Roztažení clusteru prostorů úložiště s přímým přístupem v různých Zóny dostupnosti Azurech se nepodporuje.
 
 ### <a name="sap-prerequisites-for-scale-out-file-shares-in-azure"></a>Požadavky SAP pro sdílené složky se škálováním na více instancí v Azure
