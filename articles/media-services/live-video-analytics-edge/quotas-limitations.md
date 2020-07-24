@@ -3,11 +3,12 @@ title: Live video Analytics o kvótách IoT Edge – Azure
 description: Tento článek popisuje Live video Analytics o IoT Edge kvót a omezeních.
 ms.topic: conceptual
 ms.date: 05/22/2020
-ms.openlocfilehash: 9b01db8f1120174806f4b687f7e9ebc4e2386f3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90141fa850c9ab3e3abbea15001249da0736ac45
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261048"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091806"
 ---
 # <a name="quotas-and-limitations"></a>Kvóty a omezení
 
@@ -46,11 +47,8 @@ V rámci verze Preview existují omezení různých uzlů, která se dají vzáj
 * Procesor brány signálu
    * Musí být okamžitě podřízené zdroji RTSP.
 * Jímka assetu 
-   * Může existovat maximálně jeden takový uzel na topologii grafu.
-      * Pokud se použije jímka assetu, pak nemůže být jímka souboru k dispozici nebo naopak.
    * Musí být okamžitě podřízená se zdrojem nebo procesorem brány signálu pro RTSP.
 * Jímka souborů
-   * Může existovat maximálně jeden takový uzel na topologii grafu (viz část Poznámka týkající se jímky assetů).
    * Musí být okamžitě podřízená z procesoru brány signálu.
    * Nejde hned za procesor rozšíření HTTP nebo procesor pro detekci pohybu.
 * IoT Hub jímka

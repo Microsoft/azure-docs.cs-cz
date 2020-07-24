@@ -8,11 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: e764e6a474b9843d43f9e8af9cf3b6a8ddf37189
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 37189df6b1c9bf3f9fca185226f2ee3eeb3ddd7d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811643"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092724"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Konfigurace vlastního názvu domény pro cloudovou službu Azure
 Když vytvoříte cloudovou službu, Azure ji přiřadí subdoménou **cloudapp.NET**. Pokud se například vaše cloudová služba jmenuje "contoso", budou mít vaši uživatelé přístup k vaší aplikaci na adrese URL, jako je `http://contoso.cloudapp.net` . Azure také přiřadí virtuální IP adresu.
@@ -42,7 +43,7 @@ Záznam CNAME mapuje *konkrétní* doménu, například **contoso.com** nebo **w
 > [!NOTE]
 > Někteří registrátori domén umožňují mapovat subdomény jenom při použití záznamu CNAME, jako je například \. contoso.com www, a ne kořenových názvů, jako je například contoso.com. Další informace o záznamech CNAME najdete v dokumentaci poskytnuté registrátorem, v [záznamu Wikipedii záznamu CNAME](https://en.wikipedia.org/wiki/CNAME_record)nebo v dokumentu [název domény IETF – implementace a specifikace](https://tools.ietf.org/html/rfc1035) .
 
-### <a name="a-record"></a>Záznam
+### <a name="a-record"></a>Záznam A
 Záznam *A* mapuje doménu, jako je například **contoso.com** nebo **Webová \. contoso.com**, *nebo doména se zástupnými znaky* , jako je například ** \* . contoso.com**, na IP adresu. V případě cloudové služby Azure je virtuální IP adresa služby. Hlavní výhodou záznamu A v rámci záznamu CNAME je, že můžete mít jednu položku, která používá zástupný znak, například \* **. contoso.com**, který zpracovává požadavky na více dílčích domén, jako je **mail.contoso.com**, **Login.contoso.com**nebo **Webová \. contso.com**.
 
 > [!NOTE]
@@ -62,7 +63,7 @@ Chcete-li vytvořit záznam CNAME, je nutné přidat novou položku do tabulky D
        ![část rychlý přehled znázorňující adresu URL webu][csurl]
 
        **ANI**
-   * Nainstalujte a nakonfigurujte [Azure PowerShell](/powershell/azure/overview)a pak použijte tento příkaz:
+   * Nainstalujte a nakonfigurujte [Azure PowerShell](/powershell/azure/)a pak použijte tento příkaz:
 
        ```powershell
        Get-AzureDeployment -ServiceName yourservicename | Select Url
@@ -95,7 +96,7 @@ Pokud chcete vytvořit záznam A, musíte nejdřív najít virtuální IP adresu
        ![část rychlý přehled znázorňující virtuální IP adresu][vip]
 
        **ANI**
-   * Nainstalujte a nakonfigurujte [Azure PowerShell](/powershell/azure/overview)a pak použijte tento příkaz:
+   * Nainstalujte a nakonfigurujte [Azure PowerShell](/powershell/azure/)a pak použijte tento příkaz:
 
        ```powershell
        get-azurevm -servicename yourservicename | get-azureendpoint -VM {$_.VM} | select Vip

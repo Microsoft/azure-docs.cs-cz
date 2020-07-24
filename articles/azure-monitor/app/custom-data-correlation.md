@@ -6,11 +6,12 @@ author: eternovsky
 ms.author: evternov
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 121e4699bd6a72f6865d3a6ffdef58c1b3806047
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17de697686485d695586ffa798196efb4a34c251
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79082757"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092911"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>Korelace Application Insightsch dat s vlastními zdroji dat
 
@@ -34,15 +35,15 @@ Pokud ho ještě nemáte, zřiďte nový Log Analytics pracovní prostor pomocí
 
 Chcete-li začít odesílat data protokolu do Azure Monitor. Existuje několik možností:
 
-- U synchronního mechanismu můžete buď přímo zavolat [rozhraní API kolekce dat](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) nebo použít náš konektor aplikace logiky – stačí vyhledat "Azure Log Analytics" a vybrat možnost Odeslat data:
+- U synchronního mechanismu můžete buď přímo zavolat [rozhraní API kolekce dat](../platform/data-collector-api.md) nebo použít náš konektor aplikace logiky – stačí vyhledat "Azure Log Analytics" a vybrat možnost Odeslat data:
 
   ![Výběr a akce snímku obrazovky](./media/custom-data-correlation/01-logic-app-connector.png)  
 
-- Pro asynchronní možnost použijte rozhraní API kolekce dat k sestavení kanálu zpracování. Podrobnosti najdete v [tomto článku](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api) .
+- Pro asynchronní možnost použijte rozhraní API kolekce dat k sestavení kanálu zpracování. Podrobnosti najdete v [tomto článku](../platform/create-pipeline-datacollector-api.md) .
 
 ## <a name="correlating-data"></a>Korelace dat
 
-Application Insights je založená na platformě Azure Monitor log. Proto můžeme pomocí [spojení mezi prostředky](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search) korelovat všechna data, která jsme ingestují do Azure monitor s využitím našich Application Insightsch dat.
+Application Insights je založená na platformě Azure Monitor log. Proto můžeme pomocí [spojení mezi prostředky](../log-query/cross-workspace-query.md) korelovat všechna data, která jsme ingestují do Azure monitor s využitím našich Application Insightsch dat.
 
 Například můžeme ingestovat náš inventář a umístění testovacího prostředí do tabulky s názvem "LabLocations_CL" v pracovním prostoru Log Analytics s názvem "myLA". Pokud jsme pak chtěli zkontrolovat naše požadavky sledované v Application Insights App s názvem "myAI" a korelovat názvy počítačů, které tyto požadavky sloužily, do umístění těchto počítačů uložených v dřív zmíněné vlastní tabulce, můžeme spustit následující dotaz z kontextu Application Insights nebo Azure Monitor:
 
@@ -56,5 +57,5 @@ app('myAI').requests
 
 ## <a name="next-steps"></a>Další kroky
 
-- Podívejte se na reference k [rozhraní API kolekce dat](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) .
-- Další informace o [spojeních mezi prostředky](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search).
+- Podívejte se na reference k [rozhraní API kolekce dat](../platform/data-collector-api.md) .
+- Další informace o [spojeních mezi prostředky](../log-query/cross-workspace-query.md).

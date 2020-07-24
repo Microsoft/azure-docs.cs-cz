@@ -3,15 +3,16 @@ title: Průvodce onboardingem programu Microsoft Business Applications ISV (Inde
 description: Tady je postup připojení Business Applications programu ISV Connect.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 6/25/2020
+ms.topic: article
+author: qianw211
 ms.author: dsindona
-ms.openlocfilehash: 37d8c26bd41f06a39d4404c142aef5faa0bf199c
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 7/14/2020
+ms.openlocfilehash: 65d18bca4f8f7b5d655d91ece1c9d966311b701b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170237"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092214"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Průvodce onboardingem programu Microsoft Business Applications ISV (Independent Software Vendor) Connect
 
@@ -38,7 +39,7 @@ Pokud chcete nastavit a spravovat účet pro program ISV Connect, proveďte krok
 
 1.  Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard).
 2.  Vyberte **Nastavení** (ikona ozubeného kolečka) a vyberte **Nastavení vývojáře**.
-3.  Vyberte možnost **smlouvy**. 
+3.  Vyberte možnost **smlouvy**.
 4.  Vyberte odkaz verze a Prohlédněte si smlouvu.
 5.  Pokud souhlasíte a souhlasíte se smlouvou, vyberte **přijmout smlouvu**.
 
@@ -75,9 +76,8 @@ Posledním krokem k registraci v programu Business Applications ISV Connect je p
 
 Zeptejte se svého správce účtu nebo se obraťte na [podporu partnera Microsoftu](https://aka.ms/marketplacepublishersupport) , kde získáte pomoc s vaším účtem. Obecné informace o Business Applications programu ISV Connect najdete v těchto tématech:
 
-- **[Business Applications pro nezávislé výrobce softwaru (online článek)](https://aka.ms/bizappsisvweb)**
-
-- **[Přehled nového programu pro Business Applications nezávislým výrobcům softwaru (PDF)](https://aka.ms/bizappsisvprogram)**
-
-- **[Zásady programu ISV Connect](https://aka.ms/bizappsisvpolicies)**
-
+- [Business Applications pro nezávislé výrobce softwaru](https://partner.microsoft.com/solutions/business-applications/isv-overview) (online článek)
+- [Přehled nového programu pro Business Applications nezávislým](https://aka.ms/BizAppsISVProgram) výrobcům softwaru (PDF)
+- [Nejčastější dotazy k programu ISV Connect pro Business Applications](https://assetsprod.microsoft.com/business-applications-partner-faq.pdf) (PDF)
+- [Nadcházející program pro Business Applications nezávislým](https://cloudblogs.microsoft.com/dynamics365/bdm/2019/04/17/upcoming-program-for-business-applications-isvs/) výrobcům softwaru (Blogový příspěvek)
+- [Zásady programu ISV Connect](https://aka.ms/bizappsisvpolicies) (PDF)

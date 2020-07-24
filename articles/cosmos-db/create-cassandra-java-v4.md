@@ -1,5 +1,5 @@
 ---
-title: Vytvoření aplikace Java pomocí Azure Cosmos DB rozhraní API Cassandra
+title: Aplikace Java s Azure Cosmos DB rozhraní API Cassandra pomocí sady Java 4,0 SDK
 description: Tento rychlý start ukazuje, jak použít rozhraní Apache Cassandra API služby Azure Cosmos DB k vytvoření aplikace profilu pomocí webu Azure Portal a Javy.
 ms.service: cosmos-db
 author: TheovanKraay
@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 59ea78fed27b41199699d5413f605288bbf1a608
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: d0d6b8fbedb88544a5c33a6d04c99ceb50294d22
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118385"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092656"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data-v4-driver"></a>Rychlý Start: Vytvoření aplikace Java pro správu dat rozhraní API Cassandra Azure Cosmos DB (v4 Driver)
 
@@ -29,7 +29,7 @@ ms.locfileid: "85118385"
 
 V tomto rychlém startu vytvoříte účet Azure Cosmos DB rozhraní API Cassandra a použijete Cassandra aplikaci Java naklonovaná z GitHubu k vytvoření databáze Cassandra a kontejneru pomocí [ovladačů v4. x Apache Cassandra](https://github.com/datastax/java-driver/tree/4.x) pro Java. Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure.
 - [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Najeďte `JAVA_HOME` proměnnou prostředí na složku, ve které je nainstalovaná JDK.
@@ -155,7 +155,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
     :::image type="content" source="./media/create-cassandra-java/copy-username-connection-string-azure-portal.png" alt-text="Zobrazení a zkopírování uživatelského jména z webu Azure Portal, stránka Připojovací řetězec":::
 
-2. Pomocí tlačítka ![Tlačítko pro kopírování](./media/create-cassandra-java/copy-button-azure-portal.png) na pravé straně obrazovky zkopírujte hodnotu KONTAKTNÍ BOD.
+2. Pomocí :::image type="icon" source="./media/create-cassandra-java/copy-button-azure-portal.png"::: tlačítka na pravé straně obrazovky Zkopírujte hodnotu kontaktní bod.
 
 3. Otevřete soubor *config. Properties* ze složky *C:\git-samples\azure-cosmosdb-Cassandra-Java-Getting-started\java-examples\src\main\resources* . 
 

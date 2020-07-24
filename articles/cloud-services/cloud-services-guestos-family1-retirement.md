@@ -9,11 +9,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: 0e60a8a563819b38bbe67a0b532c6dcada6821b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f08352d4a79b8c27b2c163516f44edf578fbe3a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83835627"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092639"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>Oznámení o vyřazení hostovaného operačního systému řady 1 z provozu
 Vyřazení řady operačních systémů 1 bylo poprvé oznámeno 1. června 2013.
@@ -31,7 +32,7 @@ Vaše Cloud Services jsou ovlivněny, pokud platí některá z následujících 
 2. V souboru ServiceConfiguration. cscfg pro vaši cloudovou službu nemáte hodnotu pro osFamily explicitně zadanou. V současné době používá systém v tomto případě výchozí hodnotu "1".
 3. Azure Portal uvádí hodnotu vaší řady hostovaných operačních systémů jako Windows Server 2008.
 
-Pokud chcete zjistit, které z vašich cloudových služeb běží na kterých řadě operačních systémů, můžete spustit následující skript v Azure PowerShell, ale musíte nejdřív [nastavit Azure PowerShell](/powershell/azureps-cmdlets-docs) . Další informace o skriptu najdete v tématu [řada hostovaných operačních systémů Azure 1 konec životnosti: červen 2014](https://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx).
+Pokud chcete zjistit, které z vašich cloudových služeb běží na kterých řadě operačních systémů, můžete spustit následující skript v Azure PowerShell, ale musíte nejdřív [nastavit Azure PowerShell](/powershell/azure/) . Další informace o skriptu najdete v tématu [řada hostovaných operačních systémů Azure 1 konec životnosti: červen 2014](https://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx).
 
 ```Powershell
 foreach($subscription in Get-AzureSubscription) {

@@ -12,15 +12,16 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: ab99b974aed6f8cd5e1da2ee9b427f593b405889
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e01d5c8d57752c11b2890c1d109b58a223d260f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73571243"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091924"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>Transformace a úlohy v Media Services
 
-Toto téma obsahuje podrobné informace o [transformacích](https://docs.microsoft.com/rest/api/media/transforms) a [úlohách](https://docs.microsoft.com/rest/api/media/jobs) a vysvětluje vztah mezi těmito entitami.
+Toto téma obsahuje podrobné informace o [transformacích](/rest/api/media/transforms) a [úlohách](/rest/api/media/jobs) a vysvětluje vztah mezi těmito entitami.
 
 ## <a name="overview"></a>Přehled
 
@@ -57,7 +58,7 @@ Pomocí **transformací** můžete nakonfigurovat běžné úlohy pro kódován�
 
 ### <a name="viewing-schema"></a>Zobrazení schématu
 
-V Media Services V3 jsou předvolby silně typované entity v rozhraní API. Definici "schématu" těchto objektů najdete v tématu [Open API Specification (nebo Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). Přednastavené definice (například **StandardEncoderPreset**) můžete zobrazit také v referenční dokumentaci k sadě sdk pro [REST API](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)nebo v jiné Media Services V3.
+V Media Services V3 jsou předvolby silně typované entity v rozhraní API. Definici "schématu" těchto objektů najdete v tématu [Open API Specification (nebo Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). Přednastavené definice (například **StandardEncoderPreset**) můžete zobrazit také v referenční dokumentaci k sadě sdk pro [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset), [.NET](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)nebo v jiné Media Services V3.
 
 ### <a name="creating-transforms"></a>Vytváření transformací
 
@@ -65,7 +66,7 @@ Transformace můžete vytvořit pomocí REST, CLI nebo kterékoli z publikovaný
 
 ### <a name="updating-transforms"></a>Aktualizace transformací
 
-Pokud potřebujete aktualizovat [transformaci](https://docs.microsoft.com/rest/api/media/transforms), použijte operaci **aktualizace** . Je určen pro provádění změn v popisu nebo priorit podkladových TransformOutputs. Tyto aktualizace se doporučuje provést po dokončení všech probíhajících úloh. Pokud máte v úmyslu přepsat tento recept, je nutné vytvořit novou transformaci.
+Pokud potřebujete aktualizovat [transformaci](/rest/api/media/transforms), použijte operaci **aktualizace** . Je určen pro provádění změn v popisu nebo priorit podkladových TransformOutputs. Tyto aktualizace se doporučuje provést po dokončení všech probíhajících úloh. Pokud máte v úmyslu přepsat tento recept, je nutné vytvořit novou transformaci.
 
 ### <a name="transform-object-diagram"></a>Graf transformace objektu
 
@@ -77,7 +78,7 @@ Vyberte obrázek pro zobrazení celé velikosti.
 
 ## <a name="jobs"></a>Úlohy
 
-**Úloha** je skutečný požadavek na Media Services, jak použít **transformaci** na dané vstupní video nebo zvukový obsah. Po vytvoření transformace můžete odesílat úlohy pomocí rozhraní Media Services API nebo kterékoli z publikovaných sad SDK. **Úloha** určuje informace, jako je umístění vstupního videa a umístění výstupu. Můžete určit umístění vstupního videa pomocí: adresy URL protokolu HTTPS, adresy URL SAS nebo [prostředků](https://docs.microsoft.com/rest/api/media/assets).  
+**Úloha** je skutečný požadavek na Media Services, jak použít **transformaci** na dané vstupní video nebo zvukový obsah. Po vytvoření transformace můžete odesílat úlohy pomocí rozhraní Media Services API nebo kterékoli z publikovaných sad SDK. **Úloha** určuje informace, jako je umístění vstupního videa a umístění výstupu. Můžete určit umístění vstupního videa pomocí: adresy URL protokolu HTTPS, adresy URL SAS nebo [prostředků](/rest/api/media/assets).  
 
 ### <a name="job-input-from-https"></a>Vstup úlohy z HTTPS
 
@@ -93,7 +94,7 @@ Průběh a stav úloh lze získat monitorováním událostí pomocí Event Grid.
 
 ### <a name="updating-jobs"></a>Aktualizace úloh
 
-Operaci aktualizace entity [úlohy](https://docs.microsoft.com/rest/api/media/jobs) lze použít k úpravě *popisu* a vlastností *priority* po odeslání úlohy. Změna vlastnosti *priority* je platná pouze v případě, že je úloha stále ve stavu queueed. Pokud úloha začala zpracovávat nebo skončila, změna priority nemá žádný vliv.
+Operaci aktualizace entity [úlohy](/rest/api/media/jobs) lze použít k úpravě *popisu* a vlastností *priority* po odeslání úlohy. Změna vlastnosti *priority* je platná pouze v případě, že je úloha stále ve stavu queueed. Pokud úloha začala zpracovávat nebo skončila, změna priority nemá žádný vliv.
 
 ### <a name="job-object-diagram"></a>Diagram objektu úlohy
 
@@ -115,7 +116,7 @@ Podívejte se na článek o [komunitě Azure Media Services](media-services-comm
 
 ## <a name="see-also"></a>Viz také
 
-* [Kódy chyb](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
+* [Kódy chyb](/rest/api/media/jobs/get#joberrorcode)
 * [Filtrování, řazení, stránkování Media Services entit](entities-overview.md)
 
 ## <a name="next-steps"></a>Další kroky

@@ -4,11 +4,12 @@ description: Tento článek popisuje, jak pomocí Průzkumníka služby Backup p
 ms.reviewer: dcurwin
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: e891ee1ccfbe929aaa8ac35518b40f5514da714f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f514f899f2db70ecb2924c2e627f3bed28e3dcad
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83715201"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092792"
 ---
 # <a name="monitor-your-backups-with-backup-explorer"></a>Monitorování záloh pomocí Průzkumníka zálohování
 
@@ -93,8 +94,8 @@ Můžete vybrat ikonu "připnout" v horní části každé tabulky nebo grafu, a
 
 ## <a name="cross-tenant-views"></a>Zobrazení mezi klienty
 
-Pokud jste uživatelem Azure Lighthouse, který má delegovaný přístup k předplatným napříč více klientskými prostředími, můžete použít výchozí filtr předplatného. Můžete zobrazit předplatná, pro která chcete zobrazit data, a to tak, že vyberete ikonu filtr v pravém horním rohu Azure Portal. Když použijete tuto funkci, Průzkumník služby Backup agreguje informace o všech trezorech v rámci vybraných předplatných. Další informace najdete v tématu [co je Azure Lighthouse?](https://docs.microsoft.com/azure/lighthouse/overview).
+Pokud jste uživatelem Azure Lighthouse, který má delegovaný přístup k předplatným napříč více klientskými prostředími, můžete použít výchozí filtr předplatného. Můžete zobrazit předplatná, pro která chcete zobrazit data, a to tak, že vyberete ikonu filtr v pravém horním rohu Azure Portal. Když použijete tuto funkci, Průzkumník služby Backup agreguje informace o všech trezorech v rámci vybraných předplatných. Další informace najdete v tématu [co je Azure Lighthouse?](../lighthouse/overview.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-[Naučte se používat Azure Monitor pro získání přehledů o vašich zálohovaných datech.](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor)
+[Naučte se používat Azure Monitor pro získání přehledů o vašich zálohovaných datech.](./backup-azure-monitoring-use-azuremonitor.md)

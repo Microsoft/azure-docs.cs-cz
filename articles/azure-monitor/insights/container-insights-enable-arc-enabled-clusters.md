@@ -3,12 +3,12 @@ title: Nakonfigurujte cluster Kubernetes s povoleným ARC Azure pomocí Azure Mo
 description: Tento článek popisuje, jak nakonfigurovat monitorování pomocí Azure Monitor pro kontejnery v clusterech s podporou Kubernetes ARC Azure.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: b1adbd5c1f9f0710a814c91872d3f8a9f1afb50f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8002b20f37ca5149c58ca3e29402916ebbc1333
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261048"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092877"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Povolit monitorování clusteru Kubernetes s povoleným ARC Azure
 
@@ -32,7 +32,7 @@ Následující je oficiálně podporovaná s Azure Monitor pro kontejnery:
 
 - Podporovaná verze operačního systému Linux pro hlavní a pracovní uzly jsou: Ubuntu (18,04 LTS a 16,04 LTS).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že máte následující:
 
@@ -63,7 +63,7 @@ Než začnete, ujistěte se, že máte následující:
     >[!IMPORTANT]
     >Minimální verze agenta podporovaná pro monitorování clusterů Kubernetes s podporou ARC je ciprod04162020 nebo novější.
 
-- Pokud povolíte monitorování pomocí skriptované metody PowerShellu, je potřeba [PowerShell Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell?view=powershell-6) .
+- Pokud povolíte monitorování pomocí skriptované metody PowerShellu, je potřeba [PowerShell Core](/powershell/scripting/install/installing-powershell?view=powershell-6) .
 
 - [Bash verze 4](https://www.gnu.org/software/bash/) je vyžadována, pokud povolíte monitorování pomocí skriptové metody bash.
 
@@ -206,7 +206,7 @@ Hodnota konfigurace proxy má následující syntaxi:`[protocol://][user:passwor
 
 |Vlastnost| Popis |
 |--------|-------------|
-|Protocol (Protokol) | http nebo https |
+|Protokol | http nebo https |
 |uživatel | Volitelné uživatelské jméno pro ověřování proxy |
 |heslo | Volitelné heslo pro ověřování proxy serveru |
 |proxyhost | Adresa nebo plně kvalifikovaný název domény proxy server |

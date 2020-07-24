@@ -2,13 +2,13 @@
 title: Přehled Service Fabric a kontejnerů
 description: Přehled Service Fabric a použití kontejnerů k nasazení aplikací mikroslužeb. Tento článek poskytuje přehled o tom, jak můžou být kontejnery použity, a dostupné možnosti v Service Fabric.
 ms.topic: conceptual
-ms.date: 8/8/2018
-ms.openlocfilehash: 7c92910a92c8fa3061a1a0d53611734cf681484f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 7/9/2020
+ms.openlocfilehash: cd0ec7dd2247fdd791df362fa34542178c17df4d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259233"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091653"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric a kontejnery
 
@@ -53,7 +53,7 @@ Kurz založený na systému Linux najdete v tématu [Vytvoření první Service 
 
 #### <a name="windows-server-containers"></a>Kontejnery Windows Serveru
 
-Windows Server 2016 poskytuje dva různé typy kontejnerů, které se liší podle úrovně izolace. Kontejnery Windows serveru a kontejnery Docker jsou podobné, protože oba mají izolovaný obor názvů a systém souborů a zároveň sdílejí jádro s hostitelem, na kterém běží. V systému Linux byla tato izolace tradičně poskytována cgroups a obory názvů a kontejnery Windows serveru se chovají podobně.
+Windows Server 2016 a novější poskytují dva různé typy kontejnerů, které se liší podle úrovně izolace. Kontejnery Windows serveru a kontejnery Docker jsou podobné, protože oba mají izolovaný obor názvů a systém souborů a zároveň sdílejí jádro s hostitelem, na kterém běží. V systému Linux byla tato izolace tradičně poskytována cgroups a obory názvů a kontejnery Windows serveru se chovají podobně.
 
 Kontejnery Windows s podporou technologie Hyper-V poskytují větší izolaci a zabezpečení, protože žádný kontejner nesdílí jádro operačního systému s žádným jiným kontejnerem nebo s hostitelem. V této vyšší úrovni izolace zabezpečení jsou kontejnery s podporou technologie Hyper-V cílené na potenciálně nepřátelské a víceklientské scénáře.
 Kurz založený na systému Windows najdete v tématu [Vytvoření první Service Fabric aplikace typu kontejner ve Windows](service-fabric-get-started-containers.md).
@@ -73,7 +73,10 @@ Tady jsou typické příklady, kde je kontejner dobrou volbou:
 
 ## <a name="service-fabric-support-for-containers"></a>Podpora služby Service Fabric pro kontejnery
 
-Service Fabric podporuje nasazení kontejnerů Docker v systémech Linux a kontejnerů Windows serveru v systému Windows Server 2016 společně s podporou režimu izolace technologie Hyper-V. 
+Service Fabric podporuje nasazení kontejnerů Docker v systémech Linux a kontejnerů Windows serveru v systému Windows Server 2016 a novějších společně s podporou režimu izolace technologie Hyper-V.
+
+> [!NOTE]
+> Kontejnery nejsou podporované v místních clusterech s jedním uzlem Service Fabric (žádné clustery Linux v OneBox ani clustery Windows v místních instalacích Service Fabric).
 
 Service Fabric poskytuje [model aplikace](service-fabric-application-model.md) , ve kterém kontejner představuje hostitele aplikace, ve kterém je umístěno více replik služby. Service Fabric také podporuje [scénář hostující spustitelný soubor](service-fabric-guest-executables-introduction.md) , ve kterém nepoužíváte předdefinované Service Fabric programovací modely, ale místo toho zabalíte existující aplikaci, která je napsaná pomocí libovolného jazyka nebo architektury uvnitř kontejneru. Tento scénář je běžným případem použití kontejnerů.
 

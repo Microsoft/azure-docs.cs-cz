@@ -1,6 +1,6 @@
 ---
-title: Aktualizace modelů strojového učení pomocí Azure Data Factory
-description: Popisuje, jak vytvořit vytváření prediktivních kanálů pomocí Azure Data Factory a strojového učení.
+title: Aktualizace modelů Azure Machine Learning Studio (Classic) pomocí Azure Data Factory
+description: Popisuje postup vytvoření prediktivních kanálů pomocí Azure Data Factory a Azure Machine Learning Studio (Classic).
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -10,33 +10,34 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/16/2018
-ms.openlocfilehash: e8fb39e8762d31f00029a0eeea33f1e630fb15a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/16/2020
+ms.openlocfilehash: 83950c2d3c5439886ff787b69d9da4d0c214de31
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82927390"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092537"
 ---
-# <a name="update-ml-studio-classicv-models-by-using-update-resource-activity"></a>Aktualizace modelů ML Studio (Classic) v pomocí aktivity aktualizovat prostředek
+# <a name="update-azure-machine-learning-studio-classic-models-by-using-update-resource-activity"></a>Aktualizace modelů Azure Machine Learning Studio (Classic) pomocí aktivity aktualizovat prostředek
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Tento článek doplňuje hlavní článek o integraci Azure Data Factory-ML Studio (Classic): [vytváření prediktivních kanálů pomocí Azure Machine Learning a Azure Data Factory](transform-data-using-machine-learning.md). Pokud jste to ještě neudělali, přečtěte si hlavní článek před čtením tohoto článku.
+Tento článek doplňuje hlavní článek o integraci Azure Data Factory-Azure Machine Learning Studio (Classic): [vytváření prediktivních kanálů pomocí Azure Machine Learning Studio (Classic) a Azure Data Factory](transform-data-using-machine-learning.md). Pokud jste to ještě neudělali, přečtěte si hlavní článek před čtením tohoto článku.
 
 ## <a name="overview"></a>Přehled
-V rámci procesu zprovozňování ML Studio (klasického modelu) je váš model vyškolený a uložený. Pak ho použijete k vytvoření prediktivní webové služby. Webovou službu je pak možné spotřebovat na webech, řídicích panelech a mobilních aplikacích.
+V rámci procesu zprovozňování Azure Machine Learning Studio (klasického modelu) je váš model vyškolený a uložený. Pak ho použijete k vytvoření prediktivní webové služby. Webovou službu je pak možné spotřebovat na webech, řídicích panelech a mobilních aplikacích.
 
-Modely, které vytvoříte pomocí Machine Learning, nejsou obvykle statické. Jakmile budou nová data k dispozici nebo když spotřebitel rozhraní API má svá vlastní data, model musí být znovu provlakované. 
+Modely, které vytvoříte pomocí Azure Machine Learning Studio (Classic), nejsou obvykle statické. Jakmile budou nová data k dispozici nebo když spotřebitel rozhraní API má svá vlastní data, model musí být znovu provlakované. 
 
-Rekurze se může vyskytnout často. S aktivitou spuštění služby Batch a aktualizací aktivity prostředku můžete zprovoznění Azure Machine Learning model přeškolení a aktualizovat prediktivní webovou službu pomocí Data Factory.
+Rekurze se může vyskytnout často. S aktivitou spuštění služby Batch a aktualizací aktivity prostředku můžete zprovoznění Azure Machine Learning Studio (klasický) model přeškolení a aktualizovat prediktivní webovou službu pomocí Data Factory.
 
 Následující obrázek znázorňuje vztah mezi školicími a prediktivními webovými službami.
 
 ![webové služby](./media/update-machine-learning-models/web-services.png)
 
-## <a name="ml-studio-classic-update-resource-activity"></a>Aktivita aktualizace prostředku ML Studio (Classic)
+## <a name="azure-machine-learning-studio-classic-update-resource-activity"></a>Aktivita aktualizace prostředku Azure Machine Learning Studio (Classic)
 
-Následující fragment kódu JSON definuje aktivitu spuštění dávky ML Studio (Classic).
+Následující fragment kódu JSON definuje aktivitu spuštění dávky Azure Machine Learning Studio (Classic).
 
 ```json
 {
@@ -58,12 +59,12 @@ Následující fragment kódu JSON definuje aktivitu spuštění dávky ML Studi
 }
 ```
 
-| Vlastnost                      | Popis                              | Vyžadováno |
+| Vlastnost                      | Popis                              | Povinné |
 | :---------------------------- | :--------------------------------------- | :------- |
 | name                          | Název aktivity v kanálu     | Yes      |
-| description                   | Text popisující, co aktivita dělá.  | No       |
-| typ                          | U Azure Machine Learning aktivita aktualizace prostředku je typ aktivity **povinná**. | Yes      |
-| linkedServiceName             | Azure Machine Learning propojená služba, která obsahuje vlastnost updateResourceEndpoint. | Yes      |
+| Popis                   | Text popisující, co aktivita dělá.  | No       |
+| typ                          | U Azure Machine Learning Studio (Classic) aktivita aktualizace prostředku je typ aktivity **povinná**. | Yes      |
+| linkedServiceName             | Propojená služba Azure Machine Learning Studio (Classic), která obsahuje vlastnost updateResourceEndpoint. | Yes      |
 | trainedModelName              | Název modulu trained model v experimentu webové služby, který se má aktualizovat | Yes      |
 | trainedModelLinkedServiceName | Název propojené služby Azure Storage, která uchovává soubor ilearner, který je nahraný operací Update | Yes      |
 | trainedModelFilePath          | Relativní cesta k souboru v trainedModelLinkedService, která představuje soubor ilearner, který je nahraný operací Update | Yes      |
@@ -72,17 +73,17 @@ Následující fragment kódu JSON definuje aktivitu spuštění dávky ML Studi
 
 Celý proces zprovozňováního přeškolení modelu a aktualizace prediktivních webových služeb zahrnuje následující kroky:
 
-- Vyvolejte **webovou službu školení** pomocí **aktivity spuštění dávky**. Vyvolání webové služby školení je stejné jako vyvolání prediktivní webové služby popsané v tématu [vytváření prediktivních kanálů pomocí Azure Machine Learning a Data Factory aktivity spuštění dávky](transform-data-using-machine-learning.md). Výstupem webové služby školení je soubor iLearner, který můžete použít k aktualizaci prediktivní webové služby.
+- Vyvolejte **webovou službu školení** pomocí **aktivity spuštění dávky**. Vyvolání webové služby školení je stejné jako vyvolání prediktivní webové služby popsané v tématu [vytváření prediktivních kanálů pomocí Azure Machine Learning Studioch (klasických) a Data Factory aktivit spuštění dávky](transform-data-using-machine-learning.md). Výstupem webové služby školení je soubor iLearner, který můžete použít k aktualizaci prediktivní webové služby.
 - Vyvolejte **koncový bod prostředku aktualizace** **prediktivní webové služby** pomocí **aktivity aktualizovat prostředek** a aktualizujte webovou službu pomocí nově vyučeného modelu.
 
-## <a name="azure-machine-learning-linked-service"></a>Propojená služba Azure Machine Learning
+## <a name="azure-machine-learning-studio-classic-linked-service"></a>Propojená služba Azure Machine Learning Studio (Classic)
 
-Pro výše uvedený kompletní pracovní postup je potřeba vytvořit dvě propojené služby Azure Machine Learning:
+Pro výše uvedený kompletní pracovní postup je potřeba vytvořit dvě propojené služby Azure Machine Learning Studio (Classic):
 
-1. Propojená služba Azure Machine Learning k webové službě školení. Tato propojená služba se používá v aktivitě provádění dávky stejným způsobem jako v případě, že jsou uvedena v části [vytváření prediktivních kanálů pomocí Azure Machine Learning a Data Factory aktivity spuštění dávky](transform-data-using-machine-learning.md). Rozdíl je výstupem webové služby školení je soubor iLearner, který se pak používá k aktualizaci prediktivní webové služby pomocí aktivity aktualizovat prostředek.
-2. Propojená služba Azure Machine Learning k koncovému bodu prostředku aktualizace prediktivní webové služby. Tato propojená služba se používá při aktualizaci aktivity prostředku k aktualizaci prediktivní webové služby pomocí souboru iLearner vráceného z výše uvedeného kroku.
+1. Propojená služba Azure Machine Learning Studio (Classic) s webovou službou školení, Tato propojená služba je využívána aktivitami provádění dávky stejným způsobem jako v případě, že jsou uvedena v části [vytváření prediktivních kanálů pomocí Azure Machine Learning Studio (Classic) a Data Factory aktivity spuštění dávky](transform-data-using-machine-learning.md). Rozdíl je výstupem webové služby školení je soubor iLearner, který se pak používá k aktualizaci prediktivní webové služby pomocí aktivity aktualizovat prostředek.
+2. Propojená služba Azure Machine Learning Studio (Classic) do koncového bodu prostředku aktualizace prediktivní webové služby. Tato propojená služba se používá při aktualizaci aktivity prostředku k aktualizaci prediktivní webové služby pomocí souboru iLearner vráceného z výše uvedeného kroku.
 
-Pro druhou Azure Machine Learning propojenou službu se konfigurace liší v případě, že webová služba Azure Machine Learning je klasický webový servis nebo nová webová služba. Rozdíly jsou popsány samostatně v následujících oddílech.
+U druhé propojené služby Azure Machine Learning Studio (Classic) se konfigurace liší v případě, že vaše webová služba Azure Machine Learning Studio (Classic) je klasický webový servis nebo nová webová služba. Rozdíly jsou popsány samostatně v následujících oddílech.
 
 ## <a name="web-service-is-new-azure-resource-manager-web-service"></a>Webová služba je nová Azure Resource Manager webové služby.
 
@@ -92,7 +93,7 @@ Pokud je webová služba novým typem webové služby, který zveřejňuje Azure
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview
 ```
 
-Můžete získat hodnoty pro držitele v adrese URL při dotazování webové služby na [portálu Azure Machine Learning Web Services](https://services.azureml.net/).
+Můžete získat hodnoty pro držitele v adrese URL při dotazování webové služby na [portálu Web Services Azure Machine Learning Studio (Classic)](https://services.azureml.net/).
 
 Nový typ koncového bodu prostředku aktualizace vyžaduje ověření objektu služby. Pokud chcete použít ověřování instančního objektu, zaregistrujte entitu aplikace ve službě Azure Active Directory (Azure AD) a udělte jí roli **Přispěvatel** nebo **vlastník** předplatného nebo skupiny prostředků, do které patří webová služba. Přečtěte si téma [Vytvoření instančního objektu a přiřazení oprávnění ke správě prostředků Azure](../active-directory/develop/howto-create-service-principal-portal.md). Poznamenejte si následující hodnoty, které použijete k definování propojené služby:
 
@@ -126,18 +127,18 @@ Tady je ukázka definice propojené služby:
 }
 ```
 
-Další podrobnosti najdete v následujícím scénáři. Obsahuje příklad pro přeškolení a aktualizaci Azure Machine Learningch modelů studia z kanálu Azure Data Factory.
+Další podrobnosti najdete v následujícím scénáři. Obsahuje příklad pro přeškolení a aktualizace modelů Azure Machine Learning Studio (Classic) z kanálu Azure Data Factory.
 
 
-## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>Ukázka: přeškolení a aktualizace Azure Machine Learningho modelu
+## <a name="sample-retraining-and-updating-an-azure-machine-learning-studio-classic-model"></a>Ukázka: přeškolení a aktualizace modelu Azure Machine Learning Studio (Classic)
 
-V této části najdete ukázkový kanál, který používá **aktivitu spuštění Azure Machine Learning studia dávky** k přeškolování modelu. Kanál také používá **aktivitu prostředku Azure Machine Learning Studio Update** k aktualizaci modelu ve webové službě bodování. Oddíl také poskytuje fragmenty JSON pro všechny propojené služby, datové sady a kanály v příkladu.
+V této části najdete ukázkový kanál, který používá **aktivitu spuštění dávkového zpracování Azure Machine Learning Studio (Classic)** k přeškolení modelu. Kanál také používá **aktivitu aktualizace prostředku Azure Machine Learning Studio (Classic)** k aktualizaci modelu ve webové službě bodování. Oddíl také poskytuje fragmenty JSON pro všechny propojené služby, datové sady a kanály v příkladu.
 
 ### <a name="azure-blob-storage-linked-service"></a>Propojená služba úložiště objektů BLOB v Azure:
 Azure Storage obsahuje následující data:
 
-* školicí data. Vstupní data pro webovou službu Azure Machine Learning studia školení.
-* soubor iLearner Výstup z webové služby Azure Machine Learning Studio Training Tento soubor je také vstupem aktivity aktualizovat prostředek.
+* školicí data. Vstupní data pro výukovou webovou službu Azure Machine Learning Studio (Classic)
+* soubor iLearner Výstup z webové služby Azure Machine Learning Studio (klasický) školení. Tento soubor je také vstupem aktivity aktualizovat prostředek.
 
 Tady je ukázka definice JSON propojené služby:
 
@@ -153,8 +154,8 @@ Tady je ukázka definice JSON propojené služby:
 }
 ```
 
-### <a name="linked-service-for-azure-machine-learning-studio-training-endpoint"></a>Propojená služba pro školicí koncový bod služby Azure Machine Learning Studio
-Následující fragment kódu JSON definuje propojenou službu Azure Machine Learning, která odkazuje na výchozí koncový bod webové služby školení.
+### <a name="linked-service-for-azure-machine-learning-studio-classic-training-endpoint"></a>Propojená služba pro Azure Machine Learning Studio (Classic) – koncový bod školení
+Následující fragment kódu JSON definuje propojenou službu Azure Machine Learning Studio (Classic), která odkazuje na výchozí koncový bod webové služby školení.
 
 ```JSON
 {
@@ -169,16 +170,16 @@ Následující fragment kódu JSON definuje propojenou službu Azure Machine Lea
 }
 ```
 
-V **Azure Machine Learning Studiu**proveďte následující kroky a získejte hodnoty pro **mlEndpoint** a **apiKey**:
+V **Azure Machine Learning Studio (Classic)** proveďte následující kroky a získejte hodnoty pro **mlEndpoint** a **apiKey**:
 
 1. V nabídce vlevo klikněte na položku **webové služby** .
 2. Klikněte na **webovou službu školení** v seznamu webových služeb.
 3. Klikněte na Kopírovat vedle textového pole **klíč rozhraní API** . Vložte klíč do schránky do editoru JSON Data Factory.
-4. V **Azure Machine Learning Studiu**klikněte na odkaz **spuštění dávky** .
+4. V **Azure Machine Learning Studio (Classic)** klikněte na odkaz **spuštění dávky** .
 5. Zkopírujte **identifikátor URI žádosti** z oddílu **žádosti** a vložte ho do Data Factory Editor JSON.
 
-### <a name="linked-service-for-azure-machine-learning-studio-updatable-scoring-endpoint"></a>Propojená služba pro vyhodnocování koncového bodu služby Azure Machine Learning Studio:
-Následující fragment kódu JSON definuje propojenou službu Azure Machine Learning, která odkazuje na aktualizovatelný koncový bod webové služby bodování.
+### <a name="linked-service-for-azure-machine-learning-studio-classic-updatable-scoring-endpoint"></a>Propojená služba pro Azure Machine Learning Studio (Classic) aktualizovatelný koncový bod:
+Následující fragment kódu JSON definuje propojenou službu Azure Machine Learning Studio (Classic), která odkazuje na aktualizovatelný koncový bod webové služby bodování.
 
 ```JSON
 {

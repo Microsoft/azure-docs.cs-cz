@@ -3,15 +3,16 @@ title: Poznámky k verzi pro Application Insights | Microsoft Docs
 description: Přidejte značky nasazení nebo sestavení do grafů Průzkumníka metrik v Application Insights.
 ms.topic: conceptual
 ms.date: 07/01/2019
-ms.openlocfilehash: 0ad773ca6a7102ac718d43dfbbf6a4f834e681a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f6ffed8ae2039ec36ec8bd86518e6b359da65ec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81010703"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87093030"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Poznámky na grafech metrik v Application Insights
 
-Poznámky ukazují, kde jste nasadili nové sestavení nebo jiné významné události. Poznámky usnadňují zjištění, zda vaše změny měly vliv na výkon vaší aplikace. Mohou být automaticky vytvořeny [Azure Pipelinesm](https://docs.microsoft.com/azure/devops/pipelines/tasks/) systémem sestavení. Můžete také vytvořit poznámky k označení libovolné události, kterou chcete, vytvořením z PowerShellu.
+Poznámky ukazují, kde jste nasadili nové sestavení nebo jiné významné události. Poznámky usnadňují zjištění, zda vaše změny měly vliv na výkon vaší aplikace. Mohou být automaticky vytvořeny [Azure Pipelinesm](/azure/devops/pipelines/tasks/) systémem sestavení. Můžete také vytvořit poznámky k označení libovolné události, kterou chcete, vytvořením z PowerShellu.
 
 ## <a name="release-annotations-with-azure-pipelines-build"></a>Poznámky k verzi s Azure Pipelines Build
 

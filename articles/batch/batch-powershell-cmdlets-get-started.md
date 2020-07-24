@@ -4,11 +4,12 @@ description: Rychlý úvod do rutin prostředí Azure PowerShell, jejichž pomoc
 ms.topic: how-to
 ms.date: 01/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6108ac9c9f5f10de69369d7aed31cd0ce317044e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c80da92c7acad5180c763d259357f5369f225f7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83779606"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092775"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Správa prostředků služby Batch pomocí rutin PowerShellu
 
@@ -18,9 +19,9 @@ Pomocí rutin PowerShellu pro službu Azure Batch můžete provádět a převád
 
 Tento článek je založený na rutinách v AZ Batch Module 1.0.0. Moduly Azure PowerShellu doporučujeme pravidelně aktualizovat, abyste mohli využívat výhody, které vám přinášejí aktualizace a vylepšení služby.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* [Nainstalujte a nakonfigurujte modul Azure PowerShellu](/powershell/azure/overview). Pokud chcete nainstalovat konkrétní modul Azure Batch, například předběžnou verzi modulu, přejděte do [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/Az.Batch/1.0.0).
+* [Nainstalujte a nakonfigurujte modul Azure PowerShellu](/powershell/azure/). Pokud chcete nainstalovat konkrétní modul Azure Batch, například předběžnou verzi modulu, přejděte do [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/Az.Batch/1.0.0).
 
 * Spusťte rutinu **Connect-AzAccount** pro připojení k vašemu předplatnému (rutiny Azure Batch dodávané v modulu Azure Resource Manager):
 
@@ -99,7 +100,7 @@ $context = Get-AzBatchAccountKeys -AccountName <account_name>
 > [!NOTE]
 > Ve výchozím nastavení se k ověřování používá primární klíč účtu, ale změnou hodnoty vlastnosti **KeyInUse** objektu BatchAccountContext lze klíč vybrat explicitně: `$context.KeyInUse = "Secondary"`.
 
-### <a name="azure-active-directory-authentication"></a>Ověřování pomocí Azure Active Directory
+### <a name="azure-active-directory-authentication"></a>Ověřování služby Azure Active Directory
 
 ```powershell
 $context = Get-AzBatchAccount -AccountName <account_name>

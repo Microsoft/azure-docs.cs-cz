@@ -4,18 +4,19 @@ description: Upravte výchozí Azure Monitor koncové body sady Application Insi
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.custom: references_regions
-ms.openlocfilehash: d0c9467497a8bd108d37a340d2cdbb887061e3a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50a072cd7e509642c36c783e3cc0fd78e4d5adc0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194839"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092860"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Application Insights přepsání výchozích koncových bodů
 
 Pokud chcete odesílat data z Application Insights do určitých oblastí, budete muset přepsat výchozí adresy koncových bodů. Každá sada SDK vyžaduje mírně odlišnou změnu, která je popsána v tomto článku. Tyto změny vyžadují, abyste si naupravovali vzorový kód a nahradili zástupné hodnoty pro `QuickPulse_Endpoint_Address` , `TelemetryChannel_Endpoint_Address` a `Profile_Query_Endpoint_address` skutečnými adresami koncových bodů pro konkrétní oblast. Na konci tohoto článku najdete odkazy na adresy koncových bodů v oblastech, kde je tato konfigurace nutná.
 
 > [!NOTE]
-> [Připojovací řetězce](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) jsou novou upřednostňovanou metodou nastavení vlastních koncových bodů v rámci Application Insights.
+> [Připojovací řetězce](./sdk-connection-string.md?tabs=net) jsou novou upřednostňovanou metodou nastavení vlastních koncových bodů v rámci Application Insights.
 
 ---
 
@@ -76,7 +77,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
 
 # <a name="azure-functions"></a>[Azure Functions](#tab/functions)
 
-Pro Azure Functions se teď doporučuje použít [připojovací řetězce](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) nastavené v nastavení aplikace funkce. Chcete-li získat přístup k nastavení aplikace pro funkci v podokně funkce vyberte **Nastavení**  >  **Konfigurace**  >  **nastavení aplikace**. 
+Pro Azure Functions se teď doporučuje použít [připojovací řetězce](./sdk-connection-string.md?tabs=net) nastavené v nastavení aplikace funkce. Chcete-li získat přístup k nastavení aplikace pro funkci v podokně funkce vyberte **Nastavení**  >  **Konfigurace**  >  **nastavení aplikace**. 
 
 Název: `APPLICATIONINSIGHTS_CONNECTION_STRING` hodnota:`Connection String Value`
 
@@ -155,7 +156,7 @@ Pokyny k úpravě koncového bodu ingestování pro sadu SDK opencensus-Python s
 
 ## <a name="regions-that-require-endpoint-modification"></a>Oblasti, které vyžadují úpravu koncového bodu
 
-V současné době jsou k [disAzure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights) a [Azure Čína](https://docs.microsoft.com/azure/china/resources-developer-guide)jedinými oblastmi, které vyžadují úpravy koncových bodů.
+V současné době jsou k [disAzure Government](../../azure-government/compare-azure-government-global-azure.md#application-insights) a [Azure Čína](/azure/china/resources-developer-guide)jedinými oblastmi, které vyžadují úpravy koncových bodů.
 
 |Oblast |  Název koncového bodu | Hodnota |
 |-----------------|:------------|:-------------|
@@ -179,5 +180,5 @@ Pokud aktuálně používáte [REST API Application Insights](https://dev.applic
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o vlastních úpravách Azure Government najdete v podrobných pokynech k [monitorování a správě Azure](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights).
-- Další informace o Azure Číně najdete v [Azure Čína PlayBook](https://docs.microsoft.com/azure/china/).
+- Další informace o vlastních úpravách Azure Government najdete v podrobných pokynech k [monitorování a správě Azure](../../azure-government/compare-azure-government-global-azure.md#application-insights).
+- Další informace o Azure Číně najdete v [Azure Čína PlayBook](/azure/china/).

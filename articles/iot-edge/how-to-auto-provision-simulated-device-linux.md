@@ -8,16 +8,16 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d6e60329f3c61811aa8a42528244b2883ff4b685
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb1511736b993032df8ca52fac01243f1feafdf4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85834093"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092383"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Vytvoření a zřízení zařízení IoT Edge s čipem TPM v systému Linux
 
-Tento článek ukazuje, jak otestovat Automatické zřizování na zařízení se systémem Linux IoT Edge pomocí čipu TPM (Trusted Platform Module). Azure IoT Edge zařízení [Služba Device Provisioning](../iot-dps/index.yml)můžete automaticky zřídit. Pokud nejste obeznámeni s procesem automatického zřizování, před pokračováním zkontrolujte [Koncepty automatického zřizování](../iot-dps/concepts-auto-provisioning.md) .
+Tento článek ukazuje, jak otestovat Automatické zřizování na zařízení se systémem Linux IoT Edge pomocí čipu TPM (Trusted Platform Module). Zařízení Azure IoT Edge se [službou Device Provisioning](../iot-dps/index.yml)můžete automaticky zřizovat. Pokud nejste obeznámeni s procesem automatického zřizování, před pokračováním zkontrolujte [Koncepty automatického zřizování](../iot-dps/concepts-auto-provisioning.md) .
 
 Úkoly jsou následující:
 
@@ -31,7 +31,7 @@ Tento článek ukazuje, jak otestovat Automatické zřizování na zařízení s
 >
 > Pokud používáte fyzické zařízení, můžete přeskočit k [informacím o načtení zřizování z fyzického zařízení](#retrieve-provisioning-information-from-a-physical-device) v tomto článku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Vývojový počítač s Windows, který má [povolenou technologii Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v). Tento článek používá Windows 10, na kterém běží virtuální počítač s Ubuntu serverem.
 * Aktivní IoT Hub.
@@ -55,7 +55,7 @@ Virtuální přepínač umožňuje virtuálnímu počítači připojit se k fyzi
 
 4. Dejte novému virtuálnímu přepínači název, například **EdgeSwitch**. Ujistěte se, že typ připojení je nastavený na **externí síť**, a pak vyberte **OK**.
 
-5. Automaticky otevírané okno vás upozorní, že může dojít k přerušení připojení k síti. Pokračujte výběrem **Ano** .
+5. Automaticky otevírané okno vás upozorní, že může dojít k přerušení připojení k síti. Vyberte **Ano**, abyste mohli pokračovat.
 
 Pokud se při vytváření nového virtuálního přepínače zobrazí chyby, zajistěte, aby žádné jiné přepínače nepoužívaly adaptér sítě Ethernet a aby žádné jiné přepínače nepoužívaly stejný název.
 

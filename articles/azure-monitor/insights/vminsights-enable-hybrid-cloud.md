@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 734f61c2e96002516e9e15af88d2c6b0fce00e98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 013515e0608bf790ceef8dc13d9d547496306610
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79480738"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092843"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-environment"></a>Povolení Azure Monitor pro virtuální počítače pro hybridní prostředí
 
@@ -18,7 +19,7 @@ ms.locfileid: "79480738"
 
 Tento článek vysvětluje, jak povolit Azure Monitor pro virtuální počítače pro virtuální počítače nebo fyzické počítače hostované ve vašem datovém centru nebo jiném cloudovém prostředí. Na konci tohoto procesu budete úspěšně začali monitorovat virtuální počítače ve vašem prostředí a zjistit, jestli se vyskytly problémy s výkonem nebo dostupností.
 
-Než začnete, zkontrolujte [požadavky](vminsights-enable-overview.md) a ověřte, že vaše předplatné a prostředky splňují požadavky. Přečtěte si požadavky a metody nasazení pro [Log Analytics Linux a Windows Agent](../../log-analytics/log-analytics-agent-overview.md).
+Než začnete, zkontrolujte [požadavky](vminsights-enable-overview.md) a ověřte, že vaše předplatné a prostředky splňují požadavky. Přečtěte si požadavky a metody nasazení pro [Log Analytics Linux a Windows Agent](../platform/log-analytics-agent.md).
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
@@ -81,7 +82,7 @@ Soubory pro agenta závislostí jsou umístěny v následujících adresářích
 | Soubory | Umístění |
 |:--|:--|
 | Základní soubory | /opt/microsoft/dependency-agent |
-| Soubory protokolů | /var/opt/microsoft/dependency-agent/log |
+| Soubory protokolu | /var/opt/microsoft/dependency-agent/log |
 | Konfigurační soubory | /etc/opt/microsoft/dependency-agent/config |
 | Spustitelné soubory služby | /opt/microsoft/dependency-agent/bin/microsoft-dependency-agent<br>/opt/microsoft/dependency-agent/bin/microsoft-dependency-agent-manager |
 | Binární soubory úložiště | /var/opt/microsoft/dependency-agent/storage |
@@ -155,7 +156,7 @@ Pokud nevíte, jak nasadit prostředky pomocí šablony, přečtěte si téma:
 * [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../../azure-resource-manager/templates/deploy-powershell.md)
 * [Nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
-Pokud chcete používat rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat a používat rozhraní příkazového řádku (CLI). Musíte používat Azure CLI verze 2.0.27 nebo novější. Pro identifikaci vaší verze spusťte `az --version` . Pokud chcete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Pokud chcete používat rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat a používat rozhraní příkazového řádku (CLI). Musíte používat Azure CLI verze 2.0.27 nebo novější. Pro identifikaci vaší verze spusťte `az --version` . Pokud chcete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli).
 
 ### <a name="create-and-execute-a-template"></a>Vytvoření a spuštění šablony
 
@@ -222,7 +223,7 @@ Pokud chcete používat rozhraní příkazového řádku Azure, musíte nejdří
     ```
    Po povolení monitorování může trvat asi 10 minut, než budete moct zobrazit stav a metriky pro hybridní počítač.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="vm-doesnt-appear-on-the-map"></a>Virtuální počítač se na mapě nezobrazí.
 
@@ -234,7 +235,7 @@ Pokud se instalace agenta závislostí zdařila, ale váš počítač se na map�
 
     **Linux**: vyhledejte běžící proces Microsoft-Dependency-agent.
 
-2. Jste na [cenové úrovni bezplatné Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)? Bezplatný plán umožňuje až pět jedinečných počítačů. Žádné následné počítače se na mapě nezobrazí, i když už předchozí pět neposílá data.
+2. Jste na [cenové úrovni bezplatné Log Analytics](./solutions.md)? Bezplatný plán umožňuje až pět jedinečných počítačů. Žádné následné počítače se na mapě nezobrazí, i když už předchozí pět neposílá data.
 
 3. Odesílá počítač data protokolu a výkonu do Azure Monitor protokolů? Pro váš počítač proveďte následující dotaz:
 

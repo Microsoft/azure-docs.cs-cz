@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: juliako
-ms.openlocfilehash: 7d3a85e6fcc5b9d1c5ca1511cd7edd05ff5d9ae4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fc201cc1f3d4d26ca7b9e949d2917688e6fea8c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80582688"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091976"
 ---
-# <a name="streaming-endpoint-origin-errors"></a>Chyby koncového bodu streamování (Origin) 
+# <a name="streaming-endpoint-origin-errors"></a>Chyby koncového bodu streamování (zdroj) 
 
 V tomto tématu jsou popsány chyby, které se mohou vysílat ze [služby Azure Media Services streaming Endpoint](streaming-endpoint-concept.md).
 
-## <a name="400-bad-request"></a>400 Chybný požadavek
+## <a name="400-bad-request"></a>400 – Chybný požadavek
 
 Požadavek obsahuje neplatné informace a je odmítnut s těmito kódy chyb a z jednoho z následujících důvodů:
 
@@ -66,7 +66,7 @@ Operace se pokouší jednat o prostředek, který již neexistuje. Prostředek m
 |MPE_METADATA_NOT_FOUND |0x80890257 |V manifestu se nepovedlo najít určitá metadata nebo nejde najít přenesení změn ze služby Storage. |
 |MPE_STORAGE_RESOURCE_NOT_FOUND |0x808900ED |Chyba operace úložiště, prostředek nebyl nalezen. |
 
-## <a name="409-conflict"></a>409 konflikt
+## <a name="409-conflict"></a>409 – Konflikt
 
 IDENTIFIKÁTOR poskytnutý pro prostředek v `PUT` operaci nebo byl `POST` proveden existujícím prostředkem. K vyřešení tohoto problému použijte jiné ID prostředku.
 
@@ -82,7 +82,7 @@ IDENTIFIKÁTOR poskytnutý pro prostředek v `PUT` operaci nebo byl `POST` prove
 
 ## <a name="412-precondition-failure"></a>412 selhání předběžné podmínky
 
-Operace určila eTag, která se liší od verze dostupné na serveru, což je optimistická chyba souběžnosti. Po přečtení nejnovější verze prostředku a aktualizaci eTag u žádosti zkuste žádost zopakovat.
+Operace určila eTag, která se liší od verze dostupné na serveru, což je optimistická chyba souběžnosti. Po načtení nejnovější verze prostředku a aktualizaci značky ETag v požadavku zkuste požadavek zopakovat.
 
 |Kód chyby|Hexadecimální hodnota |Popis chyby|
 |---|---|---|
@@ -163,13 +163,13 @@ Informace o živých článcích a ukázkách najdete tady:
 - [Koncept: živé události a živé výstupy](live-events-outputs-concept.md)
 - [Ukázka: kurz živého streamování](stream-live-tutorial-with-api.md)
 
-## <a name="416-range-not-satisfiable"></a>416 rozsah nesplňující požadavky
+## <a name="416-range-not-satisfiable"></a>416 Neuspokojivý rozsah
 
 |Kód chyby|Hexadecimální hodnota |Popis chyby|
 |---|---|---|
 |MPE_STORAGE_INVALID_RANGE|0x808900F1|Chyba operace úložiště, Vrácená chyba HTTP 416, neplatný rozsah.|
 
-## <a name="500-internal-server-error"></a>500 – Interní chyba serveru
+## <a name="500-internal-server-error"></a>500 – Vnitřní chyba serveru
 
 Při zpracování požadavku Media Services dojde k nějaké chybě, která brání v pokračování zpracování.  
 
@@ -184,10 +184,10 @@ Při zpracování požadavku Media Services dojde k nějaké chybě, která brá
 
 ## <a name="503-service-unavailable"></a>503 – Nedostupná služba
 
-Server momentálně nemůže přijímat požadavky. Tato chyba může být způsobena nadměrnými požadavky na službu. Mechanismus omezování Media Services omezuje využívání prostředků u aplikací, které provedou nadměrné požadavky na službu.
+Server momentálně nemůže přijímat požadavky. Příčinou této chyby může být nadměrné množství požadavků na službu. Mechanismus omezování služby Media Services omezuje využití prostředků pro aplikace, které provádějí nadměrné množství požadavků na službu.
 
 > [!NOTE]
-> Pokud chcete získat podrobnější informace o příčině chyby 503, přečtěte si chybovou zprávu a řetězec kódu chyby. Tato chyba vždy neznamená omezení.
+> Podrobnější informace o důvodu, proč se zobrazuje chyba 503, najdete v chybové zprávě a řetězci kódu chyby. Tato chyba ne vždy znamená, že dochází k omezování.
 > 
 
 |Kód chyby|Hexadecimální hodnota |Popis chyby|
@@ -198,9 +198,9 @@ Server momentálně nemůže přijímat požadavky. Tato chyba může být způs
 
 Podívejte se na článek o [komunitě Azure Media Services](media-services-community.md) a podívejte se na různé způsoby, jak můžete klást otázky, sdělit svůj názor a získávat aktualizace Media Services.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
-- [Kódy chyb kódování](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
+- [Kódy chyb kódování](/rest/api/media/jobs/get#joberrorcode)
 - [Azure Media Services koncepty](concepts-overview.md)
 - [Kvóty a omezení](limits-quotas-constraints.md)
 

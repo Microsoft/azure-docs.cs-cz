@@ -11,16 +11,16 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
-ms.openlocfilehash: 9c80056fd62173ff1e5a6ed3979adba71b7706cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01972ab02aa901af6144c02171efd36314e2f514
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80582764"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091942"
 ---
 # <a name="streaming-policies"></a>Zásady streamování
 
-V Azure Media Services V3 umožňují [zásady streamování](https://docs.microsoft.com/rest/api/media/streamingpolicies) definovat protokoly streamování a možnosti šifrování pro vaše [Lokátory streamování](streaming-locators-concept.md). Media Services V3 poskytuje některé předdefinované zásady streamování, abyste je mohli použít přímo pro zkušební verze nebo pro produkční prostředí. 
+V Azure Media Services V3 umožňují [zásady streamování](/rest/api/media/streamingpolicies) definovat protokoly streamování a možnosti šifrování pro vaše [Lokátory streamování](streaming-locators-concept.md). Media Services V3 poskytuje některé předdefinované zásady streamování, abyste je mohli použít přímo pro zkušební verze nebo pro produkční prostředí. 
 
 Aktuálně dostupné předdefinované zásady streamování:<br/>
 * Predefined_DownloadOnly
@@ -44,11 +44,11 @@ Kliknutím na obrázek zobrazíte jeho plnou velikost.
 
 Při šifrování obsahu je potřeba vytvořit [zásadu klíče obsahu](content-key-policy-concept.md), **zásady klíčů obsahu** není potřeba pro vymazání streamování nebo stahování. 
 
-Pokud máte zvláštní požadavky (například pokud chcete zadat různé protokoly, potřebujete použít službu pro doručování klíčů, nebo potřebujete použít jasné zvukové stopy), můžete [vytvořit](https://docs.microsoft.com/rest/api/media/streamingpolicies/create) vlastní zásadu streamování. 
+Pokud máte zvláštní požadavky (například pokud chcete zadat různé protokoly, potřebujete použít službu pro doručování klíčů, nebo potřebujete použít jasné zvukové stopy), můžete [vytvořit](/rest/api/media/streamingpolicies/create) vlastní zásadu streamování. 
 
 ## <a name="get-a-streaming-policy-definition"></a>Získání definice zásad streamování  
 
-Pokud chcete zobrazit definici zásady streamování, použijte [Get](https://docs.microsoft.com/rest/api/media/streamingpolicies/get) a zadejte název zásady. Příklad:
+Pokud chcete zobrazit definici zásady streamování, použijte [Get](/rest/api/media/streamingpolicies/get) a zadejte název zásady. Příklad:
 
 ### <a name="rest"></a>REST
 

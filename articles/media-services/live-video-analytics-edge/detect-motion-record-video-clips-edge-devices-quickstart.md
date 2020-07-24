@@ -3,12 +3,12 @@ title: Detekce videa o pohybových &ch na hraničních zařízeních – Azure
 description: V tomto rychlém startu se dozvíte, jak používat Live video Analytics na IoT Edge k analýze živého informačního kanálu z kamery (simulované) IP adresy, zjistit, jestli je k dispozici nějaký pohyb, a pokud ano, zaznamenejte videoklip MP4 do místního systému souborů na hraničním zařízení.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 32f1ae5e9edbdbe522afb39bd56584cd2423dd33
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: 14dcc7b298244a1d53a9b820c641ea87c4f9a016
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84817081"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091857"
 ---
 # <a name="quickstart-detect-motion-and-record-video-on-edge-devices"></a>Rychlý Start: detekce a nahrávání videa na hraničních zařízeních
  
@@ -16,7 +16,7 @@ V tomto rychlém startu se dozvíte, jak používat Live video Analytics na IoT 
 
 Tento článek je založen na vzorovém kódu napsaném v jazyce C#. Sestavuje se v rychlém startu k [detekci pohybu a generování událostí](detect-motion-emit-events-quickstart.md) . 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 * [Visual Studio Code](https://code.visualstudio.com/)s následujícími příponami:
@@ -164,7 +164,7 @@ Ujistěte se, že jste dokončili postup [přípravy na monitorování událost�
      * Konečné volání `GraphTopologyList` ukazuje, že seznam je nyní prázdný.
 
 ## <a name="interpret-results"></a>Interpretace výsledků 
-Když spustíte graf médií, výsledky z uzlu procesoru snímače pohybu procházejí uzlem IoT Hub jímky do služby IoT Hub. Zprávy, které vidíte v okně **výstup** Visual Studio Code obsahují `body` oddíl a `applicationProperties` oddíl. Další informace najdete v tématu [Vytvoření a čtení zpráv IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
+Když spustíte graf médií, výsledky z uzlu procesoru snímače pohybu procházejí uzlem IoT Hub jímky do služby IoT Hub. Zprávy, které vidíte v okně **výstup** Visual Studio Code obsahují `body` oddíl a `applicationProperties` oddíl. Další informace najdete v tématu [Vytvoření a čtení zpráv IoT Hub](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
 V následujících zprávách modul Live video Analytics definuje vlastnosti aplikace a obsah těla.
 
@@ -254,7 +254,7 @@ Přehrání klipu MP4:
 
     ![Výstup](./media/quickstarts/samples-output.png) 
 
-1. Pomocí [zabezpečeného kopírování (SCP)](https://docs.microsoft.com/azure/virtual-machines/linux/copy-files-to-linux-vm-using-scp) zkopírujte soubory do místního počítače. 
+1. Pomocí [zabezpečeného kopírování (SCP)](../../virtual-machines/linux/copy-files-to-linux-vm-using-scp.md) zkopírujte soubory do místního počítače. 
 1. Hrajte soubory pomocí [VLC Media Playeru](https://www.videolan.org/vlc/) nebo jiného přehrávače MP4.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
@@ -267,4 +267,4 @@ Pokud máte v úmyslu vyzkoušet ostatní rychlé starty, potom ponechejte prost
 * Přečtěte si další výzvy pro pokročilé uživatele:
 
     * Místo používání simulátoru RTSP použijte [fotoaparát IP](https://en.wikipedia.org/wiki/IP_camera) , který podporuje RTSP. Kamery protokolu IP, které podporují protokol RTSP, najdete na stránce vyhovující [ONVIF produktů](https://www.onvif.org/conformant-products) . Vyhledejte zařízení, která jsou v souladu s profily G, S nebo T.
-    * Místo použití virtuálního počítače se systémem Linux v Azure použijte zařízení AMD64 nebo x64 Linux. Toto zařízení musí být ve stejné síti jako kamera IP. Postupujte podle pokynů v části [Instalace modulu runtime Azure IoT Edge v systému Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux). Pak postupujte podle pokynů v části [nasazení prvního IoT Edge modulu do zařízení s Virtual Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) a zaregistrujte zařízení ve službě Azure IoT Hub.
+    * Místo použití virtuálního počítače se systémem Linux v Azure použijte zařízení AMD64 nebo x64 Linux. Toto zařízení musí být ve stejné síti jako kamera IP. Postupujte podle pokynů v části [Instalace modulu runtime Azure IoT Edge v systému Linux](../../iot-edge/how-to-install-iot-edge-linux.md). Pak postupujte podle pokynů v části [nasazení prvního IoT Edge modulu do zařízení s Virtual Linux](../../iot-edge/quickstart-linux.md) a zaregistrujte zařízení ve službě Azure IoT Hub.

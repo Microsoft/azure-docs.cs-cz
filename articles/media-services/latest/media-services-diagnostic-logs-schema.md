@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
-ms.openlocfilehash: 37baed076ca074c1d558af36649e90959a0034c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2bc688a61235a31c3d6b6e88cbb90c0d14cca179
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75750869"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092010"
 ---
 # <a name="diagnostic-logs-schemas"></a>Schémata diagnostických protokolů
 
@@ -29,7 +30,7 @@ Tento článek popisuje Media Services schémat diagnostických protokolů.
 
 ## <a name="top-level-diagnostic-logs-schema"></a>Schéma diagnostických protokolů nejvyšší úrovně
 
-Podrobný popis schématu diagnostických protokolů nejvyšší úrovně najdete v tématu [podporované služby, schémata a kategorie pro diagnostické protokoly Azure](../../azure-monitor/platform/tutorial-dashboards.md).
+Podrobný popis schématu diagnostických protokolů nejvyšší úrovně najdete v tématu [podporované služby, schémata a kategorie pro diagnostické protokoly Azure](../../azure-monitor/platform/resource-logs-schema.md).
 
 ## <a name="key-delivery-log-schema"></a>Schéma protokolu doručení klíčů
 
@@ -37,7 +38,7 @@ Podrobný popis schématu diagnostických protokolů nejvyšší úrovně najdet
 
 Tyto vlastnosti jsou specifické pro schéma protokolu doručení klíčů.
 
-|Name|Description|
+|Název|Popis|
 |---|---|
 |keyId|ID požadovaného klíče|
 |keyType|Může to být jedna z následujících hodnot: "Clear" (bez šifrování), "FairPlay", "PlayReady" nebo "Widevine".|

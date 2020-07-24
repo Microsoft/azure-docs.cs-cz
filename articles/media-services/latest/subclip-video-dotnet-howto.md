@@ -13,24 +13,24 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/09/2019
 ms.author: juliako
-ms.openlocfilehash: 3d584ee742aa93cdecf4b04d942afb2ed83a7357
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31fa7fe6b16b7ba97b8ce5e6697f1aaaf88aa294
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67305145"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091891"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---net"></a>Rozříznout video při kódování pomocí Media Services-.NET
 
-Video můžete při kódování pomocí [úlohy](https://docs.microsoft.com/rest/api/media/jobs)oříznout nebo vystřihnout. Tato funkce funguje s libovolnou [transformací](https://docs.microsoft.com/rest/api/media/transforms) , která je sestavená buď pomocí přednastavení [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) , nebo z [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) předvoleb.
+Video můžete při kódování pomocí [úlohy](/rest/api/media/jobs)oříznout nebo vystřihnout. Tato funkce funguje s libovolnou [transformací](/rest/api/media/transforms) , která je sestavená buď pomocí přednastavení [BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) , nebo z [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) předvoleb.
 
 Následující příklad jazyka C# vytvoří úlohu, která ořízne video v Assetu, když odešle úlohu kódování. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kroků popsaných v tomto tématu je třeba provést následující kroky:
 
-- [Vytvoření účtu Azure Media Services](create-account-cli-how-to.md)
+- [Vytvoření účtu Azure Media Services](./create-account-howto.md)
 - Vytvořte transformaci a vstupní a výstupní prostředky. Informace o tom, jak vytvořit transformace a vstupní a výstupní prostředky, najdete v kurzech k [nahrávání, kódování a streamování pomocí .NET](stream-files-tutorial-with-api.md) .
 - Přečtěte si téma o [pojmu kódování](encoding-concept.md) .
 

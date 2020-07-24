@@ -7,11 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: reference
 ms.date: 09/10/2019
 ms.author: sngun
-ms.openlocfilehash: 1db7937cb574ce62986f25e0bfa688dc54b5c606
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7257246f618e3028534f3ebd60eaf6f94a3a4720
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84700595"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092503"
 ---
 # <a name="azure-cosmos-db-gremlin-compatibility"></a>Azure Cosmos DB kompatibilita Gremlin
 Modul Azure Cosmos DB Graph úzce sleduje specifikace kroků procházení [Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) , ale existují rozdíly v implementaci, které jsou specifické pro Azure Cosmos DB. Seznam podporovaných kroků Gremlin najdete v článku [Podpora přenosových protokolů GREMLIN API](gremlin-support.md) .
@@ -68,7 +69,7 @@ Modul Azure Cosmos DB Graph úzce sleduje specifikace kroků procházení [Apach
     g.V().has('category', 'A').fold().union(unfold(), __.V().has('category', 'B'))
     ```
 
-    Výkon dotazů můžete zkontrolovat pomocí kroku [Gremlin `executionProfile()` ] (Graph-Execution-Profile.MD.
+    Výkon dotazů můžete zkontrolovat pomocí [ `executionProfile()` kroku Gremlin](graph-execution-profile.md).
 
 ## <a name="next-steps"></a>Další kroky
 * Přejděte na stránku [Cosmos DB hlas uživatele](https://feedback.azure.com/forums/263030-azure-cosmos-db) , kde můžete sdílet zpětnou vazbu a pomáhat týmu soustředit se na funkce, které jsou pro vás důležité.

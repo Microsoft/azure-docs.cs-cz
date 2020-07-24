@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/19/2016
-ms.openlocfilehash: 80d971abd248ca8253a374b488c693ea9aa2ea3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 39f564bea8d300d2966afe27ff0239c527f038cf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77672323"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092809"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Odeslat cloudovou službu, virtuální počítač nebo Service Fabric diagnostická data do Application Insights
 Služba Cloud Services, Virtual Machines, Virtual Machine Scale Sets a Service Fabric k shromažďování dat používá rozšíření Azure Diagnostics.  Diagnostika Azure odesílá data do tabulek Azure Storage.  Můžete však také přesměrovat všechny nebo podmnožiny dat do jiných umístění pomocí rozšíření Azure Diagnostics 1,5 nebo novější.
@@ -212,7 +213,6 @@ V předchozí konfiguraci mají následující řádky následující význam:
 - **Data objektu BLOB shromážděná rozšířením Azure Diagnostics nemůžete odeslat Application Insights.** Například cokoli, co je uvedeno v uzlu *adresáře* . V případě výpisů stavu systému se do úložiště objektů BLOB odesílá skutečný výpis stavu systému a do Application Insights se pošle jenom oznámení, že se vygeneroval výpis stavu systému.
 
 ## <a name="next-steps"></a>Další kroky
-* Naučte se [zobrazovat informace o diagnostice Azure](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices) v Application Insights.
+* Naučte se [zobrazovat informace o diagnostice Azure](../app/cloudservices.md) v Application Insights.
 * K povolení rozšíření diagnostiky Azure pro vaši aplikaci použijte [PowerShell](../../cloud-services/cloud-services-diagnostics-powershell.md) .
 * Použití sady [Visual Studio](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) pro povolení rozšíření Azure Diagnostics pro vaši aplikaci
-

@@ -3,21 +3,24 @@ title: Vytvoření účtu obchodního tržiště v partnerském centru
 description: Naučte se vytvořit účet Microsoft Commercial Marketplace v partnerském centru.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: guide
-ms.date: 04/14/2020
-ms.openlocfilehash: 4a178feb4bdf0bc361185e21e47ccdceac3a7f21
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+ms.date: 07/01/2020
+ms.openlocfilehash: 5a55d66bfed19f6d88d4ff13a9f59d7e791664cc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110006"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092180"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Vytvoření účtu obchodního tržiště v partnerském centru
 
 Pokud chcete publikovat své nabídky [Azure Marketplace](https://azuremarketplace.microsoft.com/) nebo [Microsoft AppSource](https://appsource.microsoft.com/), musíte vytvořit účet v programu komerčního obchodu v partnerském centru. Tento článek popisuje, jak vytvořit účet partnerského centra a jak přidat nové vydavatele do programu komerčního tržiště.
 
 >[!IMPORTANT]
->Pokud máte účet v [portál partnerů cloudu](https://cloudpartner.azure.com) , který se přesunul do partnerského centra, nemusíte vytvářet nový účet. Další informace najdete v tématu [vydavatelé, kteří přecházejí z portál partnerů cloudu](#for-publishers-who-are-moving-from-the-cloud-partner-portal).
+>Pokud chcete publikovat nabídky na komerčním webu Marketplace, musíte použít pracovní účet přidružený ke společnosti nebo organizaci. Osobní účty se nepodporují.
+
+>[!IMPORTANT]
+>Pokud jste měli účet v portál partnerů cloudu (CPP), přesunuli jsme ho do partnerského centra. nemusíte vytvářet nový účet. Další informace najdete v tématu [vydavatelé, kteří se přesunuli z portál partnerů cloudu](#for-publishers-who-moved-from-the-cloud-partner-portal).
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -43,7 +46,7 @@ Tuto metodu použijte, pokud už nejste partnerem partnerského centra a nezapsa
 - [Zadejte svůj profil vydavatele.](#provide-your-publisher-profile)
 
 >[!IMPORTANT]
->Pokud máte účet [portál partnerů cloudu](https://cloudpartner.azure.com) , který se přesunul do partnerského centra, nemusíte vytvářet nový účet. Další informace najdete v tématu [vydavatelé, kteří přecházejí z portál partnerů cloudu](#for-publishers-who-are-moving-from-the-cloud-partner-portal).
+>Pokud jste v portál partnerů cloudu účet, přesunuli jsme ho do partnerského centra. nemusíte vytvářet nový účet. Další informace najdete v tématu [vydavatelé, kteří se přesunuli z portál partnerů cloudu](#for-publishers-who-moved-from-the-cloud-partner-portal).
 
 ### <a name="register-on-the-partner-center-enrollment-page"></a>Zaregistrovat na stránce pro registraci v partnerském centru
 
@@ -94,7 +97,7 @@ U obou typů registrace budete:
 Ujistěte se, že máte informace o účtu užitečné.
 
 >[!IMPORTANT]
->Pokud máte účet v [portál partnerů cloudu](https://cloudpartner.azure.com/) , který se přesunul do partnerského centra, nemusíte vytvářet nový účet. Další informace najdete v tématu [vydavatelé, kteří přecházejí z portál partnerů cloudu](#for-publishers-who-are-moving-from-the-cloud-partner-portal).
+>Pokud jste v portál partnerů cloudu účet, přesunuli jsme ho do partnerského centra. nemusíte vytvářet nový účet. Další informace najdete v tématu [vydavatelé, kteří se přesunuli z portál partnerů cloudu](#for-publishers-who-moved-from-the-cloud-partner-portal).
 
 ### <a name="what-if-im-already-enrolled-in-the-microsoft-partner-network"></a>Co když už je zaregistrované v Microsoft Partner Network?
 
@@ -154,15 +157,13 @@ Až se přihlásíte k partnerskému centru, dokončete nastavování účtu pom
 
 V partnerském centru jste nyní vytvořili účet komerčního tržiště. Další informace najdete v tématu [Přehled komerčního tržiště](./commercial-marketplace-overview.md). Nápovědu k přidávání vydavatelů najdete v tématu [Přidání nových vydavatelů do komerčního tržiště](#add-new-publishers-to-the-commercial-marketplace-program).
 
-## <a name="for-publishers-who-are-moving-from-the-cloud-partner-portal"></a>Vydavatelům, kteří se pohybují z portál partnerů cloudu
+## <a name="for-publishers-who-moved-from-the-cloud-partner-portal"></a>Pro vydavatele, kteří se přesunuli z portál partnerů cloudu
 
-Pokud jste svůj účet migrovali z [portál partnerů cloudu](https://cloudpartner.azure.com), nemusíte vytvářet nový účet partnerského centra. Po přihlášení ke stávajícímu účtu portál partnerů cloudu byste měli v oznámení na nový účet partnerského centra přijmout vlastní odkaz i v oznámení banneru.
+Pokud jste účet portál partnerů cloudu, přesunuli jsme ho do partnerského centra. Nemusíte vytvářet nový účet partnerského centra. Po přihlášení ke stávajícímu účtu portál partnerů cloudu byste měli v oznámení na nový účet partnerského centra přijmout vlastní odkaz i v oznámení banneru.
 
 Po výběru vlastního odkazu a povolení nového účtu partnerského centra se můžete vrátit ke svému účtu tak, že přejdete na [řídicí panel komerčního tržiště](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) v partnerském centru.
 
-Informace o smlouvě o publikování a profilu společnosti se migrují na váš nový účet partnerského centra a všechny dříve nastavené informace profilu výběr účtu, uživatelské účty a oprávnění a aktivní nabídky, které jsou spojené s vaším účtem portál partnerů cloudu.
-
-Po přesunu informací o účtu z portál partnerů cloudu do partnerského centra už nebudete používat portál partnerů cloudu k provádění aktualizací účtu nebo ke správě uživatelů, oprávnění a fakturace. Po omezené době se všechny aktualizace účtů, které provedete v partnerském centru, automaticky aktualizují ve vašem účtu portál partnerů cloudu jen pro čtení, dokud nebude nakonec zastaralá.
+Informace o smlouvě o publikování a profilu společnosti se přesunou na nový účet partnerského centra spolu s případnými informacemi o profilu výběr účtu, uživatelskými účty a oprávněními a aktivními nabídkami, které byly přidruženy k vašemu portál partnerů cloudumu účtu.
 
 ## <a name="add-new-publishers-to-the-commercial-marketplace-program"></a>Přidání nových vydavatelů do programu komerčního tržiště
 

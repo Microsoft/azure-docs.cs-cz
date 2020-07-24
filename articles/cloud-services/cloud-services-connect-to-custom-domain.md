@@ -7,18 +7,19 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: d40e392984d2675c748bda00c61cdaeb1c0932da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa918a3a6894205ed36c4b576608e7a71e523a92
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75387016"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092707"
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Připojení rolí Azure Cloud Services k vlastnímu řadiči domény služby AD hostovanému v Azure
 Napřed nastavíme Virtual Network (VNet) v Azure. Pak do virtuální sítě přidáte řadič Doména služby Active Directory (hostovaný na virtuálním počítači Azure). V dalším kroku přidáme existující role cloudové služby do předem vytvořené virtuální sítě a pak je připojíte k řadiči domény.
 
 Než začneme, mějte na paměti několik věcí, které je potřeba vzít v úvahu:
 
-1. V tomto kurzu se používá PowerShell, takže se ujistěte, že máte Azure PowerShell nainstalované a připravené k použití. Pokud potřebujete pomoc s nastavením Azure PowerShell, přečtěte si téma [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview).
+1. V tomto kurzu se používá PowerShell, takže se ujistěte, že máte Azure PowerShell nainstalované a připravené k použití. Pokud potřebujete pomoc s nastavením Azure PowerShell, přečtěte si téma [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/).
 2. Váš řadič domény služby AD a instance webové služby nebo role pracovního procesu musí být ve virtuální síti.
 
 Postupujte podle tohoto podrobného průvodce a pokud narazíte na nějaké problémy, ponechte nám na konci tohoto článku komentář. Někdo se vrátí zpět (Ano, poznámky pro čtení).

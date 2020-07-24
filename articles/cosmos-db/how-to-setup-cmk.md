@@ -4,13 +4,14 @@ description: Naučte se konfigurovat klíče spravované zákazníkem pro účet
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/19/2020
+ms.date: 07/16/2020
 ms.author: thweiss
-ms.openlocfilehash: 443e037f89508b0fc3b01ba90f884c139f4c64be
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 989fbb123e39f85aeeb8eba9961f9aeab1e76c84
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027767"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092595"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurace klíčů spravovaných zákazníkem pro váš účet služby Azure Cosmos DB s využitím služby Azure Key Vault
 
@@ -227,7 +228,15 @@ Rotace klíče spravovaného zákazníkem používaného vaším účtem Azure C
 
   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-rot.png" alt-text="Vytvořit novou verzi klíče":::
 
-- Zaměňte klíč, který se právě používá, úplně jiný, a to tak, že aktualizujete `keyVaultKeyUri` vlastnost svého účtu. Tady je postup, jak to udělat v PowerShellu:
+- Zaměňte klíč, který se aktuálně používá, úplně jiný, a to tak, že na svém účtu aktualizujete identifikátor URI klíče. V Azure Portal přejděte na účet Azure Cosmos a v nabídce vlevo vyberte **šifrování dat** :
+
+    :::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text="Položka nabídky šifrování dat":::
+
+    Potom nahraďte **identifikátor URI klíče** novým klíčem, který chcete použít, a vyberte **Uložit**:
+
+    :::image type="content" source="./media/how-to-setup-cmk/portal-key-swap.png" alt-text="Aktualizovat identifikátor URI klíče":::
+
+    V prostředí PowerShell můžete dosáhnout stejného výsledku:
 
     ```powershell
     $resourceGroupName = "myResourceGroup"
@@ -286,7 +295,11 @@ V současné době se neberou klíče na úrovni kontejneru.
 
 ### <a name="how-can-i-tell-if-customer-managed-keys-are-enabled-on-my-azure-cosmos-account"></a>Jak poznám, jestli jsou na mém účtu Azure Cosmos povolené klíče spravované zákazníkem?
 
-Můžete programově načíst podrobnosti účtu Azure Cosmos a vyhledat přítomnost této `keyVaultKeyUri` Vlastnosti. Další způsoby, jak to provést [v prostředí PowerShell](#using-powershell) a [používání Azure CLI](#using-azure-cli), najdete výše.
+V Azure Portal přejděte na účet Azure Cosmos a sledujte položku **šifrování dat** v nabídce vlevo. Pokud tato položka existuje, ve vašem účtu jsou povolené klíče spravované zákazníkem:
+
+:::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text="Položka nabídky šifrování dat":::
+
+Můžete také programově načíst podrobnosti účtu Azure Cosmos a vyhledat přítomnost této `keyVaultKeyUri` Vlastnosti. Další způsoby, jak to provést [v prostředí PowerShell](#using-powershell) a [používání Azure CLI](#using-azure-cli), najdete výše.
 
 ### <a name="how-do-customer-managed-keys-affect-a-backup"></a>Jaký vliv mají klíče spravované zákazníkem na zálohu?
 

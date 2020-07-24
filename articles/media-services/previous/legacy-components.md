@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2020
 ms.author: juliako
-ms.openlocfilehash: 94a70a1234d902787f248890f0cb538a4ba9c2f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8d961ab58e900a6d619ec64297c783abdb7b6ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77921075"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091687"
 ---
 # <a name="azure-media-services-legacy-components"></a>Azure Media Services starší součásti
 
@@ -34,13 +35,13 @@ Také oznamujeme vyřazení následujících Media Analytics mediálních proces
  
 |Název procesoru médií|Datum vyřazení|Další poznámky|
 |---|---|
-|[Azure Media Indexer 2](media-services-process-content-with-indexer2.md)|1. ledna 2020|Tento multimediální procesor se nahrazuje [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). Další informace najdete v tématu [migrace z Azure Media Indexer 2 do Azure Media Services video indexer](migrate-indexer-v1-v2.md).|
-|[Azure Media Indexer](media-services-index-content.md)|1. března 2023|Tento multimediální procesor se nahrazuje [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). Další informace najdete v tématu [migrace z Azure Media Indexer do Azure Media Services video indexer](migrate-indexer-v1-v2.md)|
+|[Azure Media Indexer 2](media-services-process-content-with-indexer2.md)|1. ledna 2020|Tento multimediální procesor se nahrazuje [Azure Media Services video indexer](../video-indexer/index.yml). Další informace najdete v tématu [migrace z Azure Media Indexer 2 do Azure Media Services video indexer](migrate-indexer-v1-v2.md).|
+|[Azure Media Indexer](media-services-index-content.md)|1. března 2023|Tento multimediální procesor se nahrazuje [Azure Media Services video indexer](../video-indexer/index.yml). Další informace najdete v tématu [migrace z Azure Media Indexer do Azure Media Services video indexer](migrate-indexer-v1-v2.md)|
 |[Detekce pohybu](media-services-motion-detection.md)|1. června 2020|V tuto chvíli nejsou k dispozici žádné náhradní plány.|
 |[Shrnutí videa](media-services-video-summarization.md)|1. června 2020|V tuto chvíli nejsou k dispozici žádné náhradní plány.|
-|[Optické rozpoznávání znaků pro video](media-services-video-optical-character-recognition.md)|1. června 2020|Tento multimediální procesor se nahrazuje [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). Zvažte také použití [Azure Media Services V3 API](https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept). <br/>Viz [Compare Azure Media Services V3 předvolby a video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets)|
-|[Detektor tváří](media-services-face-and-emotion-detection.md)|1. června 2020|Tento multimediální procesor se nahrazuje [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). Zvažte také použití [Azure Media Services V3 API](https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept). <br/>Viz [Compare Azure Media Services V3 předvolby a video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets)|
-|[Content Moderator](media-services-content-moderation.md)|1. června 2020|Tento multimediální procesor se nahrazuje [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). Zvažte také použití [Azure Media Services V3 API](https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept). <br/>Viz [Compare Azure Media Services V3 předvolby a video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets)|
+|[Optické rozpoznávání znaků pro video](media-services-video-optical-character-recognition.md)|1. června 2020|Tento multimediální procesor se nahrazuje [Azure Media Services video indexer](../video-indexer/index.yml). Zvažte také použití [Azure Media Services V3 API](../latest/analyzing-video-audio-files-concept.md). <br/>Viz [Compare Azure Media Services V3 předvolby a video indexer](../video-indexer/compare-video-indexer-with-media-services-presets.md)|
+|[Detektor tváří](media-services-face-and-emotion-detection.md)|1. června 2020|Tento multimediální procesor se nahrazuje [Azure Media Services video indexer](../video-indexer/index.yml). Zvažte také použití [Azure Media Services V3 API](../latest/analyzing-video-audio-files-concept.md). <br/>Viz [Compare Azure Media Services V3 předvolby a video indexer](../video-indexer/compare-video-indexer-with-media-services-presets.md)|
+|[Content Moderator](media-services-content-moderation.md)|1. června 2020|Tento multimediální procesor se nahrazuje [Azure Media Services video indexer](../video-indexer/index.yml). Zvažte také použití [Azure Media Services V3 API](../latest/analyzing-video-audio-files-concept.md). <br/>Viz [Compare Azure Media Services V3 předvolby a video indexer](../video-indexer/compare-video-indexer-with-media-services-presets.md)|
 
 ## <a name="next-steps"></a>Další kroky
 

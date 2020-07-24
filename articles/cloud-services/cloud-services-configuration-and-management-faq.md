@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: c418ed87bd74471ce8c2e8186bd6244eaf6f21de
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 477f38e18f1bee881e4a9df23dd37048f39549be
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921576"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092741"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy s konfigurací a správou pro Azure Cloud Services: nejčastější dotazy
 
@@ -127,7 +128,7 @@ $cert = New-SelfSignedCertificate -DnsName yourdomain.cloudapp.net -CertStoreLoc
 $password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
 Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
 ```
-K dispozici je možnost zvolit si objekt BLOB nebo místní pro umístění odeslaných souborů csdef a cscfg. Pomocí [New-AzureDeployment](/powershell/module/servicemanagement/azure/new-azuredeployment?view=azuresmps-4.0.0)můžete nastavit každou hodnotu umístění.
+K dispozici je možnost zvolit si objekt BLOB nebo místní pro umístění odeslaných souborů csdef a cscfg. Pomocí [New-AzureDeployment](/powershell/module/servicemanagement/azure.service/new-azuredeployment?view=azuresmps-4.0.0)můžete nastavit každou hodnotu umístění.
 
 Možnost monitorovat metriky na úrovni instance. Další možnosti monitorování jsou k dispozici v tématu [jak monitorovat Cloud Services](cloud-services-how-to-monitor.md).
 
@@ -197,7 +198,7 @@ Systémy Windows 10 a Windows Server 2016 obsahují podporu protokolu HTTP/2 na 
 5. Restartujte server.
 6. Ve svém **výchozím** webu a v části **Bindings (vazby**) vytvořte novou vazbu TLS s právě vytvořeným certifikátem podepsaným svým držitelem. 
 
-Další informace naleznete v tématech:
+Další informace najdete tady:
 
 - [HTTP/2 ve službě IIS](https://blogs.iis.net/davidso/http2)
 - [Video: HTTP/2 ve Windows 10: prohlížeč, aplikace a webový server](https://channel9.msdn.com/Events/Build/2015/3-88)
@@ -296,7 +297,7 @@ Nastavení deníku nejde konfigurovat, takže je nemůžete vypnout.
 V úloze po spuštění můžete povolit antimalwarové rozšíření pomocí skriptu PowerShellu. K implementaci použijte postup v těchto článcích: 
  
 - [Vytvoření spouštěcí úlohy PowerShellu](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
-- [Set-AzureServiceAntimalwareExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
+- [Set-AzureServiceAntimalwareExtension](/powershell/module/servicemanagement/azure.service/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
 
 Další informace o scénářích antimalwarového nasazení a o tom, jak je povolit z portálu, najdete v tématu [scénáře nasazení antimalwaru](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios).
 

@@ -7,11 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: tracking-python
-ms.openlocfilehash: ca186fa62605953bfb90c1a4669fc8283eb78469
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 432ff655ef072d491227d297e620612203f73d3f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559781"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092979"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v Application Insights
 
@@ -33,7 +34,7 @@ V prostředí mikroslužeb můžou trasování z komponent přejít na jiné pol
 
 ## <a name="example"></a>Příklad
 
-Pojďme se podívat na příklad. Aplikace s názvem ceny akcií zobrazuje aktuální cenu na trhu na populaci pomocí externího rozhraní API s názvem Stock. Aplikace burzovních cen má stránku s názvem skladová stránka, kterou klientský webový prohlížeč otevře pomocí `GET /Home/Stock` . Aplikace se dotazuje na skladové rozhraní API pomocí volání HTTP `GET /api/stock/value` .
+Podívejme se na příklad. Aplikace s názvem ceny akcií zobrazuje aktuální cenu na trhu na populaci pomocí externího rozhraní API s názvem Stock. Aplikace burzovních cen má stránku s názvem skladová stránka, kterou klientský webový prohlížeč otevře pomocí `GET /Home/Stock` . Aplikace se dotazuje na skladové rozhraní API pomocí volání HTTP `GET /api/stock/value` .
 
 Výslednou telemetrii můžete analyzovat spuštěním dotazu:
 
@@ -301,15 +302,15 @@ Po spuštění tohoto kódu se v konzole nástroje zobrazí následující:
 ```
 Všimněte si, že je k `spanId` dispozici pro zprávu protokolu v rámci rozsahu. To je totéž `spanId` , co patří do rozpětí s názvem `hello` .
 
-Data protokolu můžete exportovat pomocí `AzureLogHandler` . Další informace najdete v [tomto článku](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#logs).
+Data protokolu můžete exportovat pomocí `AzureLogHandler` . Další informace najdete v [tomto článku](./opencensus-python.md#logs).
 
 ## <a name="telemetry-correlation-in-net"></a>Korelace telemetrie v .NET
 
 V průběhu času .NET definovalo několik způsobů, jak sladit protokoly telemetrie a diagnostiky:
 
-- `System.Diagnostics.CorrelationManager`umožňuje sledování [LogicalOperationStack a ActivityId](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx).
-- `System.Diagnostics.Tracing.EventSource`a trasování událostí pro Windows (ETW) definuje metodu [SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx) .
-- `ILogger`používá [rozsahy protokolů](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes).
+- `System.Diagnostics.CorrelationManager`umožňuje sledování [LogicalOperationStack a ActivityId](/dotnet/api/system.diagnostics.correlationmanager?view=netcore-3.1).
+- `System.Diagnostics.Tracing.EventSource`a trasování událostí pro Windows (ETW) definuje metodu [SetCurrentThreadActivityId](/dotnet/api/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid?view=netcore-3.1#overloads) .
+- `ILogger`používá [rozsahy protokolů](/aspnet/core/fundamentals/logging#log-scopes).
 - Windows Communication Foundation (WCF) a kabel HTTP nahoru "aktuální" šíření kontextu.
 
 Tyto metody ale nepovolily automatickou podporu distribuovaného trasování. `DiagnosticSource`podporuje automatickou korelaci mezi počítači. Knihovny .NET podporují `DiagnosticSource` a umožňují automatické šíření mezipočítačového kontextu korelace prostřednictvím přenosu, jako je například http.
@@ -327,7 +328,7 @@ Sada Application Insights SDK, počínaje verzí 2.4.0-Beta1, používá `Diagno
 <a name="java-correlation"></a>
 ## <a name="telemetry-correlation-in-java"></a>Korelace telemetrie v jazyce Java
 
-[Agent Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) a [Java SDK](../../azure-monitor/app/java-get-started.md) verze 2.0.0 nebo novější podporují automatickou korelaci telemetrie. Automaticky se naplní `operation_id` pro veškerou telemetrii (jako jsou trasování, výjimky a vlastní události) vydaná v rámci požadavku. Také šíří hlavičky korelace (popsané dříve) pro volání služby-služba prostřednictvím protokolu HTTP, pokud je nakonfigurován [Agent Java SDK](../../azure-monitor/app/java-agent.md) .
+[Agent Java](./java-in-process-agent.md) a [Java SDK](../../azure-monitor/app/java-get-started.md) verze 2.0.0 nebo novější podporují automatickou korelaci telemetrie. Automaticky se naplní `operation_id` pro veškerou telemetrii (jako jsou trasování, výjimky a vlastní události) vydaná v rámci požadavku. Také šíří hlavičky korelace (popsané dříve) pro volání služby-služba prostřednictvím protokolu HTTP, pokud je nakonfigurován [Agent Java SDK](../../azure-monitor/app/java-agent.md) .
 
 > [!NOTE]
 > Agent Application Insights Java automaticky shromažďuje požadavky a závislosti pro JMS, Kafka, síťovinu/webtoků a další. V případě sady Java SDK jsou pro funkci korelace podporovány pouze volání prostřednictvím Apache HttpClient. Automatické šíření kontextu napříč technologiemi zasílání zpráv (například Kafka, RabbitMQ a Azure Service Bus) není v sadě SDK podporováno. 

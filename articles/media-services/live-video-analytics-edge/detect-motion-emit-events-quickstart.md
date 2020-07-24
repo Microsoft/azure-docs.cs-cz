@@ -3,12 +3,12 @@ title: Detekce událostí pohybu a vygenerování – Azure
 description: V tomto rychlém startu se dozvíte, jak pomocí nástroje Live video Analytics na IoT Edge detekovat události pohybu a vysílat programově voláním přímých metod.
 ms.topic: quickstart
 ms.date: 05/29/2020
-ms.openlocfilehash: 69486515125c624b3ef5d44aba6e6d8f7694a3cc
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: fca773d0583bee3bef4e7254bcca95866b2205e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84816714"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091908"
 ---
 # <a name="quickstart-detect-motion-and-emit-events"></a>Rychlý Start: detekce událostí pohybu a vygenerování
 
@@ -18,7 +18,7 @@ V tomto rychlém startu se dozvíte, jak začít se službou Live video Analytic
 
 Tento článek je založen na [vzorovém kódu](https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp) napsaném v jazyce C#.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure, který má aktivní předplatné. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 * [Visual Studio Code](https://code.visualstudio.com/) s následujícími příponami:
@@ -36,11 +36,11 @@ Tento kurz vyžaduje následující prostředky Azure:
 * IoT Hub
 * Účet úložiště
 * Účet Azure Media Services
-* Virtuální počítač Linux v Azure s nainstalovaným [modulem runtime IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)
+* Virtuální počítač Linux v Azure s nainstalovaným [modulem runtime IoT Edge](../../iot-edge/how-to-install-iot-edge-linux.md)
 
 Pro tento rychlý Start doporučujeme, abyste k nasazení požadovaných prostředků ve vašem předplatném Azure použili [skript pro nastavení prostředků Live video Analytics](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) . Postup je následující:
 
-1. Otevřete službu [Azure Cloud Shell](https://shell.azure.com).
+1. Otevřete [Azure Cloud Shell](https://shell.azure.com).
 1. Pokud používáte Cloud Shell poprvé, budete vyzváni k výběru předplatného pro vytvoření účtu úložiště a sdílené složky Microsoft Azure souborů. Vyberte **vytvořit úložiště** a vytvořte účet úložiště pro informace o cloud Shell relaci. Tento účet úložiště je oddělený od účtu, který vytvoří skript pro použití s vaším účtem Azure Media Services.
 1. V rozevírací nabídce na levé straně okna Cloud Shell vyberte **bash** jako své prostředí.
 
@@ -119,7 +119,7 @@ Manifest nasazení definuje, které moduly jsou nasazeny do hraničního zaříz
 
 Pomocí těchto kroků vygenerujte manifest ze souboru šablony a potom ho nasaďte do hraničního zařízení.
 
-1. Otevřete Visual Studio Code.
+1. Otevřete nástroj Visual Studio Code.
 1. Vedle podokna **Azure IoT Hub** vyberte ikonu **Další akce** a nastavte připojovací řetězec IoT Hub. Můžete zkopírovat řetězec z *Src/Cloud-to-Device-Console-App/appsettings.jsv* souboru. 
 
     ![Nastavení připojovacího řetězce IOT](./media/quickstarts/set-iotconnection-string.png)
@@ -228,7 +228,7 @@ Pomocí těchto kroků spusťte vzorový kód:
 
 ## <a name="interpret-results"></a>Interpretace výsledků
 
-Když spustíte graf médií, výsledky z uzlu procesoru snímače pohybu procházejí uzlem IoT Hub jímky do služby IoT Hub. Zprávy, které vidíte v okně **výstup** Visual Studio Code obsahují `body` oddíl a `applicationProperties` oddíl. Další informace najdete v tématu [Vytvoření a čtení zpráv IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
+Když spustíte graf médií, výsledky z uzlu procesoru snímače pohybu procházejí uzlem IoT Hub jímky do služby IoT Hub. Zprávy, které vidíte v okně **výstup** Visual Studio Code obsahují `body` oddíl a `applicationProperties` oddíl. Další informace najdete v tématu [Vytvoření a čtení zpráv IoT Hub](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
 V následujících zprávách modul Live video Analytics definuje vlastnosti aplikace a obsah těla.
 
@@ -294,7 +294,7 @@ Tady je příklad této zprávy:
 }  
 ```
 
-V tomto příkladu: 
+V tomto příkladu: 
 
 * V `applicationProperties` aplikaci `subject` odkazuje na uzel v grafu médií, ze kterého byla zpráva generována. V tomto případě zpráva pochází z uzlu procesoru detekce pohybu.
 * V `applicationProperties` nástroji `eventType` označuje, že tato událost je analytická událost.

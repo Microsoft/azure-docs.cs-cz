@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 850f4e3754af790e6b9bab5c68c9bd10849bba37
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9fac5d3efabc5d9f796c91d688f35e01aeefdca3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965276"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092758"
 ---
 # <a name="rendering-using-azure"></a>Vykreslování s využitím Azure
 
@@ -79,7 +79,7 @@ Existuje několik způsobů, jak použít Azure Batch, všechny, které platí t
 * Rozhraní API:
   * Pište kód pomocí rozhraní [REST](/rest/api/batchservice), [.NET](/dotnet/api/overview/azure/batch), [Python](/python/api/overview/azure/batch), [Java](/java/api/overview/azure/batch)nebo dalších podporovaných rozhraní API.  Vývojáři mohou integrovat Azure Batch možností do svých stávajících aplikací nebo pracovních postupů, ať už v cloudu, nebo na základě místního prostředí.  Například [modul plug-in Autodesk Maya](https://github.com/Azure/azure-batch-maya) využívá rozhraní API služby Batch pro Python k vyvolání služby Batch, vytváření a správě fondů, odesílání úloh a úloh a stav monitorování.
 * Nástroje příkazového řádku:
-  * Ke skriptování dávkového použití lze použít [příkazový řádek Azure](/cli/azure/) nebo [Azure PowerShell](/powershell/azure/overview) .
+  * Ke skriptování dávkového použití lze použít [příkazový řádek Azure](/cli/azure/) nebo [Azure PowerShell](/powershell/azure/) .
   * Konkrétně Podpora šablon Batch CLI zjednodušuje vytváření fondů a odesílání úloh.
 * Uživatelská rozhraní
   * [Batch Explorer](https://github.com/Azure/BatchExplorer) je klientský nástroj pro různé platformy, který umožňuje spravovat a monitorovat účty Batch, ale poskytuje některé bohatší funkce v porovnání s uživatelským rozhraním Azure Portal.  K dispozici je sada šablon fondů a úloh, které jsou upraveny pro každou podporovanou aplikaci a lze je použít ke snadnému vytváření fondů a k odesílání úloh.
