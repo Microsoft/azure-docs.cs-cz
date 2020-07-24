@@ -14,19 +14,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: d75ba63955deb3fb6ef4a1207754097b0b3be532
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 533990ef0ea88be7f1f06021d7aa398e89f6390b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962675"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060318"
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Použití Azure Queue Storage k monitorování Media Servicesch oznámení úloh pomocí .NET 
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 
-Když spouštíte úlohy kódování, často potřebujete způsob, jak sledovat průběh úloh. Můžete nakonfigurovat Media Services pro doručování oznámení do služby [Azure Queue Storage](../../storage/storage-dotnet-how-to-use-queues.md). Průběh úlohy můžete monitorovat pomocí získání oznámení z úložiště front. 
+Když spouštíte úlohy kódování, často potřebujete způsob, jak sledovat průběh úloh. Můžete nakonfigurovat Media Services pro doručování oznámení do služby [Azure Queue Storage](../../storage/queues/storage-dotnet-how-to-use-queues.md). Průběh úlohy můžete monitorovat pomocí získání oznámení z úložiště front. 
 
 Zprávy doručené do fronty úložiště je možné zpřístupnit odkudkoli na světě. Architektura zasílání zpráv úložiště fronty je spolehlivá a vysoce škálovatelná. Použití jiných metod při cyklickém dotazování na úložiště front pro zprávy se doporučuje.
 
@@ -34,13 +34,13 @@ Jedním z běžných scénářů, jak naslouchat oznámením Media Services, je,
 
 Tento článek ukazuje, jak získat oznamovací zprávy z fronty úložiště.  
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 Při vývoji Media Services aplikací, které používají úložiště Queue, zvažte následující:
 
-* Queue Storage neposkytuje záruku pro objednané doručení FIFO (First-in-first-out). Další informace najdete v tématu [porovnání a srovnání front Azure a front Azure Service Bus](https://msdn.microsoft.com/library/azure/hh767287.aspx).
+* Queue Storage neposkytuje záruku pro objednané doručení FIFO (First-in-first-out). Další informace najdete v tématu [porovnání a srovnání front Azure a front Azure Service Bus](/previous-versions/azure/hh767287(v=azure.100)).
 * Queue Storage není služba nabízených oznámení. Musíte se dotázat na frontu.
-* Můžete mít libovolný počet front. Další informace najdete v tématu [REST API služby Queue](https://docs.microsoft.com/rest/api/storageservices/Queue-Service-REST-API).
-* Služba Queue Storage má určitá omezení a konkrétní informace, o kterých je třeba vědět. Tyto jsou popsány v tématu [fronty Azure a fronty Azure Service Bus v porovnání a kontrast](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted).
+* Můžete mít libovolný počet front. Další informace najdete v tématu [REST API služby Queue](/rest/api/storageservices/queue-service-rest-api).
+* Služba Queue Storage má určitá omezení a konkrétní informace, o kterých je třeba vědět. Tyto jsou popsány v tématu [fronty Azure a fronty Azure Service Bus v porovnání a kontrast](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md).
 
 ## <a name="net-code-example"></a>Příklad kódu .NET
 

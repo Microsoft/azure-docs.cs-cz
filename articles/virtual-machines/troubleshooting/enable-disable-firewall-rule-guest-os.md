@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: f9484b81622e208077f0659975f42f46d90d2137
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 17616a223292ec07186b0a3fba264400423977ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232232"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058764"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Povolení nebo zakázání pravidla brány firewall na hostovaném operačním systému virtuálního počítače Azure
 
@@ -77,7 +77,7 @@ Pokud je virtuální počítač online a dá se k němu přistoupit na jiném vi
 
 Pokud je virtuální počítač online a dá se k němu přistoupit na jiném virtuálním počítači ve stejné virtuální síti, můžete na základě druhého virtuálního počítače udělat zmírňující rizika.
 
-1.  Na virtuálním počítači pro řešení potíží stáhněte [Nástroj PsTools](https://docs.microsoft.com/sysinternals/downloads/pstools).
+1.  Na virtuálním počítači pro řešení potíží stáhněte [Nástroj PsTools](/sysinternals/downloads/pstools).
 
 2.  Otevřete instanci CMD a získejte přístup k virtuálnímu počítači přes jeho interní IP adresu (DIP). 
 

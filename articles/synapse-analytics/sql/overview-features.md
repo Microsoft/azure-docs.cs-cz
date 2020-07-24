@@ -1,5 +1,5 @@
 ---
-title: Rozdíly ve funkcích T-SQL v Azure synapse SQL
+title: Rozdíly ve funkcích T-SQL v synapse SQL
 description: Seznam funkcí jazyka Transact-SQL, které jsou k dispozici v synapse SQL.
 services: synapse analytics
 author: jovanpop-msft
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 43882316c1f8d3f52d434d916e8aea79226a3177
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e1223a9cd5bd3a092bc35c9ba03f7352c6ac7eed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495461"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059400"
 ---
 # <a name="transact-sql-features-supported-in-azure-synapse-sql"></a>Funkce jazyka Transact-SQL podporované v Azure synapse SQL
 
@@ -38,11 +38,11 @@ Modely spotřeby v synapse SQL umožňují použití různých databázových ob
 | **Externí tabulky** | [Ano](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest). Viz Podporované [formáty dat](#data-formats). | [Ano](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest). Viz Podporované [formáty dat](#data-formats). |
 | **Ukládání dotazů do mezipaměti** | Ano, více forem (ukládání do mezipaměti založené na SSD, ukládání do mezipaměti sady výsledků v paměti). Kromě toho se podporují materializované zobrazení. | No |
 | **Proměnné tabulky** | [Ne](/sql/t-sql/data-types/table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), použít dočasné tabulky | No |
-| **[Distribuce tabulky](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**               | Ano | No |
-| **[Indexy tabulek](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**                           | Ano | No |
-| **[Oddíly tabulky](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**                     | Ano | No |
+| **[Distribuce tabulky](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**               | Yes | No |
+| **[Indexy tabulek](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**                           | Yes | No |
+| **[Oddíly tabulky](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**                     | Yes | No |
 | **[Statistika](develop-tables-statistics.md)**            | Ano | Ano |
-| **[Správa úloh, třídy prostředků a řízení souběžnosti](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)** | Ano    | No |
+| **[Správa úloh, třídy prostředků a řízení souběžnosti](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)** | Yes    | No |
 
 ## <a name="query-language"></a>Dotazovací jazyk
 
@@ -51,12 +51,12 @@ Jazyky dotazů používané v synapse SQL mohou mít různé podporované funkce
 |   | Zřízené | Bez serveru |
 | --- | --- | --- |
 | **Příkaz SELECT** | Yes. Klauzule dotazu Transact-SQL [pro XML/for JSON](/sql/t-sql/queries/select-for-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)a [porovnávání](/sql/t-sql/queries/match-sql-graph?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) nejsou podporovány. | Yes. Klauzule dotazu Transact-SQL [pro příkazy jazyka XML](/sql/t-sql/queries/select-for-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [porovnávání](/sql/t-sql/queries/match-sql-graph?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [předpovědi](/sql/t-sql/queries/predict-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)a dotazování nejsou podporovány. [Posunutí/načtení](/sql/t-sql/queries/select-order-by-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#using-offset-and-fetch-to-limit-the-rows-returned) a [Pivot/Unpivot](/sql/t-sql/queries/from-using-pivot-and-unpivot?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) lze použít k dotazování systémových objektů (ne externích dat). |
-| **Příkaz INSERT** | Ano | No |
-| **Příkaz UPDATE** | Ano | No |
-| **Příkaz DELETE** | Ano | No |
-| **Příkaz MERGE** | Ano | No |
-| **[Transakce](develop-transactions.md)** | Ano | No |
-| **[Štítky](develop-label.md)** | Ano | No |
+| **Příkaz INSERT** | Yes | No |
+| **Příkaz UPDATE** | Yes | No |
+| **Příkaz DELETE** | Yes | No |
+| **Příkaz MERGE** | Yes | No |
+| **[Transakce](develop-transactions.md)** | Yes | No |
+| **[Štítky](develop-label.md)** | Yes | No |
 | **Načtení dat** | Yes. Preferovaný nástroj je příkaz [copy](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) , ale systém podporuje hromadnou zátěž (BCP) i [CETAS](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) pro načítání dat. | No |
 | **Export dat** | Yes. Pomocí [CETAS](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest). | Yes. Pomocí [CETAS](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest). |
 | **Typy** | Ano, všechny typy Transact-SQL s výjimkou [Cursor](/sql/t-sql/data-types/cursor-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [hierarchyid](/sql/t-sql/data-types/hierarchyid-data-type-method-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [ntext, text a image](/sql/t-sql/data-types/ntext-text-and-image-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [rowversion](/sql/t-sql/data-types/rowversion-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [prostorových typů](/sql/t-sql/spatial-geometry/spatial-types-geometry-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [SQL \_ variant](/sql/t-sql/data-types/sql-variant-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)a [XML](/sql/t-sql/xml/xml-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Ano, všechny typy Transact-SQL s výjimkou [Cursor](/sql/t-sql/data-types/cursor-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [hierarchyid](/sql/t-sql/data-types/hierarchyid-data-type-method-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [ntext, text a image](/sql/t-sql/data-types/ntext-text-and-image-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [rowversion](/sql/t-sql/data-types/rowversion-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [prostorových typů](/sql/t-sql/spatial-geometry/spatial-types-geometry-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [SQL \_ variant](/sql/t-sql/data-types/sql-variant-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [XML](/sql/t-sql/xml/xml-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)a typu tabulky |
@@ -75,9 +75,9 @@ Synapse SQL vám umožní používat integrované funkce zabezpečení k zabezpe
 
 |   | Zřízené | Bez serveru |
 | --- | --- | --- |
-| **Přihlášení** | Není k dispozici (databáze podporuje pouze obsažené uživatele) | Ano |
-| **Uživatelé** |  Není k dispozici (databáze podporuje pouze obsažené uživatele) | Ano |
-| **[Uživatelé s omezením](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)** | Yes. **Poznámka:** správce může být bez omezení jenom u jednoho uživatele Azure AD. | Ano |
+| **Přihlášení** | Není k dispozici (databáze podporuje pouze obsažené uživatele) | Yes |
+| **Uživatelé** |  Není k dispozici (databáze podporuje pouze obsažené uživatele) | Yes |
+| **[Uživatelé s omezením](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)** | Yes. **Poznámka:** správce může být bez omezení jenom u jednoho uživatele Azure AD. | Yes |
 | **Ověřování uživatelského jména a hesla SQL**| Ano | Ano |
 | **Ověřování Azure Active Directory (AAD)**| Ano, uživatelé Azure AD | Ano, přihlášení a uživatelé Azure AD |
 | **Předávací ověřování pro úložiště Azure Active Directory (AAD)** | Ano | Ano |
@@ -93,7 +93,7 @@ Synapse SQL vám umožní používat integrované funkce zabezpečení k zabezpe
 | **Role/skupiny** | Ano (databáze s rozsahem) | Ano (u serveru i z oboru databáze) |
 | **&amp;Funkce identity zabezpečení** | Některé funkce a operátory zabezpečení jazyka Transact-SQL: `CURRENT_USER` , `HAS_DBACCESS` , `IS_MEMBER` , `IS_ROLEMEMBER` , `SESSION_USER` , `SUSER_NAME` , `SUSER_SNAME` , `SYSTEM_USER` , `USER` , `USER_NAME` , `EXECUTE AS` ,`OPEN/CLOSE MASTER KEY` | Některé funkce a operátory zabezpečení jazyka Transact-SQL: `CURRENT_USER` , `HAS_DBACCESS` , `HAS_PERMS_BY_NAME` , `IS_MEMBER', 'IS_ROLEMEMBER` , `IS_SRVROLEMEMBER` , `SESSION_USER` , `SUSER_NAME` , `SUSER_SNAME` , `SYSTEM_USER` , `USER` , `USER_NAME` , `EXECUTE AS` a `REVERT` . Funkce zabezpečení nelze použít k dotazování na externí data (uložení výsledku do proměnné, kterou lze použít v dotazu).  |
 | **POVĚŘENÍ V OBORU DATABÁZE** | Ano | Ano |
-| **PŘIHLAŠOVACÍ ÚDAJE V OBORU SERVERU** | No | Ano |
+| **PŘIHLAŠOVACÍ ÚDAJE V OBORU SERVERU** | No | Yes |
 | **Zabezpečení na úrovni řádku** | [Ano](https://docs.microsoft.com/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsynapse-analytics%2Ftoc.json&bc=%2Fazure%2Fsynapse-analytics%2Fbreadcrumb%2Ftoc.json&view=sql-server-ver15) | No |
 | **Transparentní šifrování dat** | [Ano](/azure/sql-database/transparent-data-encryption-azure-sql?toc=%2Fazure%2Fsynapse-analytics%2Ftoc.json&bc=%2Fazure%2Fsynapse-analytics%2Fbreadcrumb%2Ftoc.json&tabs=azure-portal) | No | 
 | **Klasifikace & Discovery Data** | [Ano](/azure/sql-database/sql-database-data-discovery-and-classification?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | No |
@@ -112,10 +112,10 @@ Můžete použít různé nástroje pro připojení k synapse SQL k dotazování
 |   | Zřízené | Bez serveru |
 | --- | --- | --- |
 | **Synapse Studio** | Ano, skripty SQL | Ano, skripty SQL |
-| **Power BI** | Ano | [Ano](tutorial-connect-power-bi-desktop.md) |
+| **Power BI** | Yes | [Ano](tutorial-connect-power-bi-desktop.md) |
 | **Služba Azure Analysis** | Ano | Ano |
-| **Azure Data Studio** | Ano | Ano, verze 1.18.0 nebo vyšší. Podporují se skripty SQL a notebooky SQL. |
-| **SQL Server Management Studio** | Ano | Ano, verze 18,5 nebo vyšší |
+| **Azure Data Studio** | Yes | Ano, verze 1.18.0 nebo vyšší. Podporují se skripty SQL a notebooky SQL. |
+| **SQL Server Management Studio** | Yes | Ano, verze 18,5 nebo vyšší |
 
 > [!NOTE]
 > SSMS můžete použít pro připojení k SQL na vyžádání (Preview) a dotazování. Od verze 18,5 se tato podpora částečně podporuje a můžete ji použít jenom pro připojení a dotazování.
@@ -128,7 +128,7 @@ Data, která se analyzují, se dají ukládat do různých typů úložiště. V
 
 |   | Zřízené | Bez serveru |
 | --- | --- | --- |
-| **Interní úložiště** | Ano | No |
+| **Interní úložiště** | Yes | No |
 | **Azure Data Lake v2** | Ano | Ano |
 | **Azure Blob Storage** | Ano | Ano |
 | **Analytické úložiště Azure CosmosDB** | No | Ano, pomocí [odkazu synapse](/azure/cosmos-db/synapse-link?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (v části [gatedd Preview](/azure/cosmos-db/synapse-link?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#limitations)) |
@@ -144,7 +144,7 @@ Data, která se analyzují, se dají ukládat v různých formátech úložišt�
 | **Parquet** | [Ano](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | [Ano](query-parquet-files.md), včetně souborů s [vnořenými typy](query-parquet-nested-types.md) |
 | **ORC podregistru** | [Ano](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | No |
 | **Podregistr RC** | [Ano](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | No |
-| **JSON** | Ano | [Ano](query-json-files.md) |
+| **JSON** | Yes | [Ano](query-json-files.md) |
 | **Avro** | No | No |
 | **[Rozdíl – Lake](https://delta.io/)** | No | No |
 | **[CDM](https://docs.microsoft.com/common-data-model/)** | No | No |

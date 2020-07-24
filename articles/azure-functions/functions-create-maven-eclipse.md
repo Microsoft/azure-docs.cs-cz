@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 1e4c989e4550c1ea504a08d3cc975f2add5a4ba2
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 6f521cccdc8814fad8605460bf87c0d0fca20378
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054725"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055618"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Vytvoření první funkce pomocí Java a zatmění 
 
@@ -28,7 +28,7 @@ K vývoji aplikace Functions pomocí Java a zatmění je nutné mít nainstalova
 -  [Java Developer Kit](https://www.azul.com/downloads/zulu/), verze 8.
 -  [Apache Maven](https://maven.apache.org)verze 3,0 nebo vyšší.
 -  [Zatmění](https://www.eclipse.org/downloads/packages/)s podporou Java a Maven.
--  [Azure CLI](https://docs.microsoft.com/cli/azure)
+-  [Azure CLI](/cli/azure)
 
 > [!IMPORTANT] 
 > Pro dokončení tohoto rychlého startu musí být proměnná prostředí JAVA_HOME nastavená na umístění instalace sady JDK.
@@ -43,7 +43,7 @@ Doporučujeme také nainstalovat [Azure Functions Core Tools, verzi 2](functions
 1. Nezapomeňte vyplnit hodnoty pro všechna pole `resourceGroup` , včetně, `appName` a `appRegion` (použijte jiný název_aplikace kromě **fabrikam-Function-20170920120101928**) a nakonec **dokončete**.
     ![Create2 Maven pro zatmění](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 
-Maven přesune soubory projektu do nové složky s názvem _artifactId_. Generovaný kód v projektu je jednoduchá funkce [aktivovaná protokolem HTTP](/azure/azure-functions/functions-bindings-http-webhook) , která vypisuje tělo triggeru požadavku HTTP.
+Maven přesune soubory projektu do nové složky s názvem _artifactId_. Generovaný kód v projektu je jednoduchá funkce [aktivovaná protokolem HTTP](./functions-bindings-http-webhook.md) , která vypisuje tělo triggeru požadavku HTTP.
 
 ## <a name="run-functions-locally-in-the-ide"></a>Místní spuštění funkcí v integrovaném vývojovém prostředí
 

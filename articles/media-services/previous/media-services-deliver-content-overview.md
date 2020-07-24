@@ -1,25 +1,21 @@
 ---
-title: Doručování obsahu zákazníkům | Microsoft Docs
+title: Doručování obsahu zákazníkům
 description: Toto téma poskytuje přehled toho, co je součástí doručování obsahu pomocí Azure Media Services.
 services: media-services
-documentationcenter: ''
 author: Juliako
 manager: femila
-editor: ''
 ms.assetid: 89ede54a-6a9c-4814-9858-dcfbb5f4fed5
 ms.service: media-services
 ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 60d75a23609e962547c8c753086e9bef1d4c84eb
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 7a6a717f663e6e1ee5c2371c35557c7c374246fa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956589"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060358"
 ---
 # <a name="deliver-content-to-customers"></a>Doručování obsahu zákazníkům
 Při doručování obsahu streamování nebo videa na vyžádání zákazníkům je vaším cílem doručovat vysoce kvalitní video do různých zařízení v různých síťových podmínkách.
@@ -55,7 +51,7 @@ Můžete definovat filtry pro prostředky pomocí Media Services. Tyto filtry js
 
 Další informace najdete v tématu [filtry a dynamické manifesty](media-services-dynamic-manifest-overview.md).
 
-## <a name="locators"></a><a id="locators"/>Lokátory
+## <a name="locators"></a><a name="locators"></a>Lokátory
 Pokud chcete uživateli poskytnout adresu URL, která se dá použít ke streamování nebo stažení vašeho obsahu, musíte nejdřív publikovat Asset vytvořením lokátoru. Lokátor poskytuje vstupní bod pro přístup k souborům obsaženým v prostředku. Služba Media Services podporuje dva typy lokátorů:
 
 * OnDemandOrigin lokátory. Používají se ke streamování médií (například MPEG-POMLČKy, HLS nebo Smooth Streaming) nebo postupně stahovaných souborů.
@@ -70,9 +66,9 @@ Lokátory mají datum vypršení platnosti. Azure Portal nastaví datum vypršen
 > 
 > 
 
-Pokud chcete aktualizovat datum vypršení platnosti lokátoru, použijte rozhraní [REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) API nebo [.NET](https://go.microsoft.com/fwlink/?LinkID=533259). Upozorňujeme, že při aktualizaci data vypršení platnosti lokátoru SAS se změní adresa URL.
+Pokud chcete aktualizovat datum vypršení platnosti lokátoru, použijte rozhraní [REST](/rest/api/media/operations/locator#update_a_locator) API nebo [.NET](https://go.microsoft.com/fwlink/?LinkID=533259). Upozorňujeme, že při aktualizaci data vypršení platnosti lokátoru SAS se změní adresa URL.
 
-Lokátory nejsou určené ke správě řízení přístupu pro jednotlivé uživatele. Pomocí řešení Digital Rights Management (DRM) můžete jednotlivým uživatelům udělit různá přístupová práva. Další informace najdete v tématu [zabezpečení médií](https://msdn.microsoft.com/library/azure/dn282272.aspx).
+Lokátory nejsou určené ke správě řízení přístupu pro jednotlivé uživatele. Pomocí řešení Digital Rights Management (DRM) můžete jednotlivým uživatelům udělit různá přístupová práva. Další informace najdete v tématu [zabezpečení médií](/previous-versions/azure/dn282272(v=azure.100)).
 
 Při vytváření lokátoru může dojít k prodlevě 30 sekund v důsledku požadovaného úložiště a procesu šíření v Azure Storage.
 
@@ -87,7 +83,7 @@ Pokud chcete uživatelům poskytnout adresy URL streamování, musíte nejdřív
 
 Streamování přes TLS můžete odeslat jenom v případě, že koncový bod streamování, ze kterého dodáváte obsah, byl vytvořen po 10. září 2014. Pokud jsou vaše adresy URL streamování založené na koncových bodech streamování vytvořených po 10. září 2014, adresa URL obsahuje "streaming.mediaservices.windows.net". Adresy URL streamování obsahující "origin.mediaservices.windows.net" (starý formát) nepodporují protokol TLS. Pokud je vaše adresa URL ve starém formátu a chcete být schopná streamovat přes TLS, vytvořte nový koncový bod streamování. Použijte adresy URL na základě nového koncového bodu streamování pro streamování obsahu přes TLS.
 
-## <a name="streaming-url-formats"></a><a id="URLs"/>Formáty adresy URL pro streamování
+## <a name="streaming-url-formats"></a><a name="URLs"></a>Formáty adresy URL pro streamování
 
 ### <a name="mpeg-dash-format"></a>Formát pro MPEG-SPOJOVNÍK
 {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
@@ -192,4 +188,3 @@ Někteří starší klienti Smooth Streaming nemusí podporovat opakované znač
 
 ## <a name="related-topics"></a>Související témata
 [Po navracení klíčů úložiště aktualizovat Lokátory Media Services](media-services-roll-storage-access-keys.md)
-

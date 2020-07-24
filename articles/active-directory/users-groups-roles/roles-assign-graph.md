@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44299a55424f9b0338ee49d2742aeedf16db22e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b27bd52ad8794222d52d37032b0cd4fdf99f47b7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732085"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057923"
 ---
 # <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>Přiřaďte vlastní role správců pomocí rozhraní Microsoft Graph API v Azure Active Directory 
 
@@ -26,11 +26,11 @@ Můžete automatizovat způsob přiřazování rolí uživatelským účtům pom
 
 ## <a name="required-permissions"></a>Požadovaná oprávnění
 
-Připojte se ke svojí organizaci Azure AD pomocí účtu globálního správce nebo správce privilegovaných identit k přiřazení nebo odebrání rolí.
+Připojte se k vaší organizaci Azure AD pomocí účtu správce globálního správce nebo privilegované role, abyste mohli role přiřadit nebo odebrat.
 
 ## <a name="post-operations-on-roleassignment"></a>Operace POST na RoleAssignment
 
-Požadavek HTTP na vytvoření přiřazení role mezi uživatelem a definicí role
+### <a name="example-1-create-a-role-assignment-between-a-user-and-a-role-definition"></a>Příklad 1: vytvoření přiřazování rolí mezi uživatelem a definicí role
 
 POST
 
@@ -45,7 +45,7 @@ Text
 {
     "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
     "roleDefinitionId":"194ae4cb-b126-40b2-bd5b-6091b380977d",
-    "resourceScopes":"/"
+    "directoryScopeId":"/"  // Don't use "resourceScope" attribute in Azure AD role assignments. It will be deprecated soon.
 }
 ```
 
@@ -55,7 +55,7 @@ Odpověď
 HTTP/1.1 201 Created
 ```
 
-Požadavek HTTP na vytvoření přiřazení role, kde neexistuje definice objektu zabezpečení nebo role
+### <a name="example-2-create-a-role-assignment-where-the-principal-or-role-definition-does-not-exist"></a>Příklad 2: vytvoření přiřazení role, kde neexistuje definice objektu zabezpečení nebo role
 
 POST
 
@@ -69,7 +69,7 @@ Text
 {
     "principalId":" 2142743c-a5b3-4983-8486-4532ccba12869",
     "roleDefinitionId":"194ae4cb-b126-40b2-bd5b-6091b380977d",
-    "resourceScopes":"/"
+    "directoryScopeId":"/"  //Don't use "resourceScope" attribute in Azure AD role assignments. It will be deprecated soon.
 }
 ```
 
@@ -78,11 +78,31 @@ Odpověď
 ``` HTTP
 HTTP/1.1 404 Not Found
 ```
+### <a name="example-3-create-a-role-assignment-on-a-single-resource-scope"></a>Příklad 3: vytvoření přiřazení role v jednom oboru prostředků
 
-Požadavek HTTP na vytvoření jednoho přiřazení role v oboru prostředků u předdefinované definice role.
+POST
 
-> [!NOTE] 
-> Předdefinované role v současnosti mají omezení, kde můžou být vymezené jenom na rozsah "/" v rámci organizace nebo na obor "/AU/*". Obory jednoho prostředku nefungují pro předdefinované role, ale fungují pro vlastní role.
+``` HTTP
+https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
+```
+
+Text
+
+``` HTTP
+{
+    "principalId":" 2142743c-a5b3-4983-8486-4532ccba12869",
+    "roleDefinitionId":"e9b2b976-1dea-4229-a078-b08abd6c4f84",    //role template ID of a custom role
+    "directoryScopeId":"/13ff0c50-18e7-4071-8b52-a6f08e17c8cc"  //object ID of an application
+}
+```
+
+Odpověď
+
+``` HTTP
+HTTP/1.1 201 Created
+```
+
+### <a name="example-4-create-an-administrative-unit-scoped-role-assignment-on-a-built-in-role-definition-which-is-not-supported"></a>Příklad 4: vytvoření přiřazení role s oborem správy u předdefinované definice role, která není podporovaná
 
 POST
 
@@ -95,8 +115,8 @@ Text
 ``` HTTP
 {
     "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
-    "roleDefinitionId":"194ae4cb-b126-40b2-bd5b-6091b380977d",
-    "resourceScopes":"/ab2e1023-bddc-4038-9ac1-ad4843e7e539"
+    "roleDefinitionId":"29232cdf-9323-42fd-ade2-1d097af3e4de",    //role template ID of Exchange Administrator
+    "directoryScopeId":"/administrativeUnits/13ff0c50-18e7-4071-8b52-a6f08e17c8cc"    //object ID of an administrative unit
 }
 ```
 
@@ -110,23 +130,17 @@ HTTP/1.1 400 Bad Request
         "code":"Request_BadRequest",
         "message":
         {
-            "lang":"en",
-            "value":"Provided authorization scope is not supported for built-in role definitions."},
-            "values":
-            [
-                {
-                    "item":"scope",
-                    "value":"/ab2e1023-bddc-4038-9ac1-ad4843e7e539"
-                }
-            ]
+            "message":"The given built-in role is not supported to be assigned to a single resource scope."
         }
     }
 }
 ```
 
+Pro rozsah jednotek správy je povolena pouze podmnožina předdefinovaných rolí. V [této dokumentaci](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-admin-units-assign-roles) najdete seznam integrovaných rolí podporovaných prostřednictvím jednotky pro správu.
+
 ## <a name="get-operations-on-roleassignment"></a>ZÍSKAT operace na RoleAssignment
 
-Požadavek HTTP na získání přiřazení role pro daný objekt zabezpečení
+### <a name="example-5-get-role-assignments-for-a-given-principal"></a>Příklad 5: získání přiřazení rolí pro daný objekt zabezpečení
 
 GET
 
@@ -138,21 +152,25 @@ Odpověď
 
 ``` HTTP
 HTTP/1.1 200 OK
-{ 
-    "id":"mhxJMipY4UanIzy2yE-r7JIiSDKQoTVJrLE9etXyrY0-1"
-    "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
-    "roleDefinitionId":"10dae51f-b6af-4016-8d66-8c2a99b929b3",
-    "resourceScopes":"/"
-} ,
 {
-    "id":"CtRxNqwabEKgwaOCHr2CGJIiSDKQoTVJrLE9etXyrY0-1"
-    "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
-    "roleDefinitionId":"3671d40a-1aac-426c-a0c1-a3821ebd8218",
-    "resourceScopes":"/"
+"value":[
+            { 
+                "id":"mhxJMipY4UanIzy2yE-r7JIiSDKQoTVJrLE9etXyrY0-1"
+                "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
+                "roleDefinitionId":"10dae51f-b6af-4016-8d66-8c2a99b929b3",
+                "directoryScopeId":"/"  
+            } ,
+            {
+                "id":"CtRxNqwabEKgwaOCHr2CGJIiSDKQoTVJrLE9etXyrY0-1"
+                "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
+                "roleDefinitionId":"fe930be7-5e62-47db-91af-98c3a49a38b1",
+                "directoryScopeId":"/"
+            }
+        ]
 }
 ```
 
-Požadavek HTTP na získání přiřazení role pro danou definici role
+### <a name="example-6-get-role-assignments-for-a-given-role-definition"></a>Příklad 6: získání přiřazení rolí pro danou definici role
 
 GET
 
@@ -165,14 +183,18 @@ Odpověď
 ``` HTTP
 HTTP/1.1 200 OK
 {
-    "id":"CtRxNqwabEKgwaOCHr2CGJIiSDKQoTVJrLE9etXyrY0-1"
-    "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
-    "roleDefinitionId":"3671d40a-1aac-426c-a0c1-a3821ebd8218",
-    "resourceScopes":"/"
+"value":[
+            {
+                "id":"CtRxNqwabEKgwaOCHr2CGJIiSDKQoTVJrLE9etXyrY0-1"
+                "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
+                "roleDefinitionId":"fe930be7-5e62-47db-91af-98c3a49a38b1",
+                "directoryScopeId":"/"
+            }
+     ]
 }
 ```
 
-Požadavek HTTP na získání přiřazení role podle ID
+### <a name="example-7-get-a-role-assignment-by-id"></a>Příklad 7: získání přiřazení role podle ID
 
 GET
 
@@ -188,13 +210,44 @@ HTTP/1.1 200 OK
     "id":"mhxJMipY4UanIzy2yE-r7JIiSDKQoTVJrLE9etXyrY0-1",
     "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
     "roleDefinitionId":"10dae51f-b6af-4016-8d66-8c2a99b929b3",
-    "resourceScopes":"/"
+    "directoryScopeId":"/"
+}
+```
+
+### <a name="example-8-get-role-assignments-for-a-given-scope"></a>Příklad 8: získání přiřazení rolí pro daný obor
+
+
+GET
+
+``` HTTP
+GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments?$filter=directoryScopeId eq '/d23998b1-8853-4c87-b95f-be97d6c6b610'
+```
+
+Odpověď
+
+``` HTTP
+HTTP/1.1 200 OK
+{
+"value":[
+            { 
+                "id":"mhxJMipY4UanIzy2yE-r7JIiSDKQoTVJrLE9etXyrY0-1"
+                "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
+                "roleDefinitionId":"10dae51f-b6af-4016-8d66-8c2a99b929b3",
+                "directoryScopeId":"/d23998b1-8853-4c87-b95f-be97d6c6b610"
+            } ,
+            {
+                "id":"CtRxNqwabEKgwaOCHr2CGJIiSDKQoTVJrLE9etXyrY0-1"
+                "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
+                "roleDefinitionId":"3671d40a-1aac-426c-a0c1-a3821ebd8218",
+                "directoryScopeId":"/d23998b1-8853-4c87-b95f-be97d6c6b610"
+            }
+        ]
 }
 ```
 
 ## <a name="delete-operations-on-roleassignment"></a>ODSTRANĚNÍ operací na RoleAssignment
 
-Požadavek HTTP na odstranění přiřazení role mezi uživatelem a definicí role
+### <a name="example-9-delete-a-role-assignment-between-a-user-and-a-role-definition"></a>Příklad 9: odstranění přiřazení rolí mezi uživatelem a definicí role
 
 DELETE
 
@@ -207,7 +260,7 @@ Odpověď
 HTTP/1.1 204 No Content
 ```
 
-Požadavek HTTP na odstranění přiřazení role, která už neexistuje
+### <a name="example-10-delete-a-role-assignment-that-no-longer-exists"></a>Příklad 10: odstranění přiřazení role, které už neexistuje
 
 DELETE
 
@@ -221,7 +274,7 @@ Odpověď
 HTTP/1.1 404 Not Found
 ```
 
-Požadavek HTTP na odstranění přiřazení role mezi samoobslužnou a vestavěnou definicí role
+### <a name="example-11-delete-a-role-assignment-between-self-and-global-administrator-role-definition"></a>Příklad 11: odstranění přiřazení role mezi definicí role sebe a globálního správce
 
 DELETE
 
@@ -240,12 +293,14 @@ HTTP/1.1 400 Bad Request
         "message":
         {
             "lang":"en",
-            "value":"Cannot remove self from built-in role definitions."},
+            "value":"Removing self from Global Administrator built-in role is not allowed"},
             "values":null
         }
     }
 }
 ```
+
+Uživatelům bráníme v odstranění vlastní globální role správce, aby se předešlo situaci, kdy má tenant nula globálních správců. Odebrání jiných rolí přiřazených k sobě je povoleno.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -6,12 +6,12 @@ author: TomGeske
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: thomasge
-ms.openlocfilehash: dfc3a546f4845d5eb2e4e144b66b5d97e4a68829
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f99b304d2e238d72b47b09261ede19b44827264a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518024"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057369"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>Integrace Azure Active Directory se službou Azure Kubernetes pomocí Azure CLI (starší verze)
 
@@ -79,7 +79,7 @@ serverApplicationSecret=$(az ad sp credential reset \
     --query password -o tsv)
 ```
 
-Služba Azure AD potřebuje oprávnění k provádění následujících akcí:
+Instanční objekt služby Azure AD potřebuje oprávnění k provedení následujících akcí:
 
 * Čtení dat z adresáře
 * Přihlášení a čtení profilu uživatele

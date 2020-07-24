@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: 9e9f9c71701ceb1c76bc162f22e166b4565e731b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 3f5c7021461b407e90d61ed045c112aab3c1c4e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86062663"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056009"
 ---
 ## <a name="configure-your-local-environment"></a>Konfigurace místního prostředí
 
@@ -44,10 +44,12 @@ Než začnete, musíte mít následující:
 + [.NET Core SDK 2.2 +](https://www.microsoft.com/net/download)
 ::: zone-end
 ::: zone pivot="programming-language-java"  
-+ [Sada Java Developer Kit](https://aka.ms/azure-jdks), verze 8.
++ [Sada Java Developer Kit](https://aka.ms/azure-jdks), verze 8. 
+
+    > [!IMPORTANT]
+    > + Podpora funkcí pro Java 11 je momentálně ve verzi Preview a Maven Archetype ve výchozím nastavení vytvoří nasazení Java 8. Chcete-li místo toho spustit aplikaci Function App na Java 11, je nutné ručně aktualizovat soubor pom.xml s hodnotami jazyka Java 11. Další informace najdete v tématu [verze Java](../articles/azure-functions/functions-reference-java.md#java-versions). 
+    > + `JAVA_HOME`Aby se tento rychlý Start dokončil, musí být proměnná prostředí nastavená na umístění instalace správné verze JDK.
 
 + [Apache Maven](https://maven.apache.org)verze 3,0 nebo vyšší.
 
-> [!IMPORTANT]
-> Pro dokončení tohoto rychlého startu musí být proměnná prostředí JAVA_HOME nastavená na umístění instalace sady JDK.
 ::: zone-end

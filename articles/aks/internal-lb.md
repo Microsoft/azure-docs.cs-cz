@@ -5,12 +5,12 @@ description: Naučte se vytvářet a používat interní nástroj pro vyrovnáv�
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 0789a866ebda270f3e5e8b150e072c7aedea7f04
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58aadc4fadb93a4f6eb47214f580f7a2bebdf49c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82790605"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056831"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Použití interního nástroje pro vyrovnávání zatížení se službou Azure Kubernetes Service (AKS)
 
@@ -65,7 +65,7 @@ internal-app   LoadBalancer   10.0.248.59   10.240.0.7    80:30555/TCP   2m
 
 ## <a name="specify-an-ip-address"></a>Zadat IP adresu
 
-Pokud chcete použít konkrétní IP adresu s interním nástrojem pro vyrovnávání zatížení, přidejte do manifestu YAML nástroje pro vyrovnávání zatížení vlastnost *loadBalancerIP* . Zadaná IP adresa se musí nacházet ve stejné podsíti jako cluster AKS a nesmí se k prostředku přiřazovat.
+Pokud chcete použít konkrétní IP adresu s interním nástrojem pro vyrovnávání zatížení, přidejte do manifestu YAML nástroje pro vyrovnávání zatížení vlastnost *loadBalancerIP* . Zadaná IP adresa se musí nacházet ve stejné podsíti jako cluster AKS a nesmí se k prostředku přiřazovat. Nepoužívejte například IP adresu v rozsahu určeném pro Kubernetes podsíť.
 
 ```yaml
 apiVersion: v1

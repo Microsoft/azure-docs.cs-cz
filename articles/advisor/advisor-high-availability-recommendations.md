@@ -3,12 +3,12 @@ title: Vylepšení spolehlivosti aplikace pomocí služby Advisor
 description: Pomocí Azure Advisor můžete zajistit a zlepšit spolehlivost vašich důležitých nasazení v Azure.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 928e0b098cb2cf117eff40d2257fc79dbe114f85
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1eba688a67a8684cdbb6846b389f83e61b349abe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124618"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057666"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Zlepšení spolehlivosti aplikace pomocí Azure Advisor
 
@@ -59,7 +59,7 @@ Pokud je pro geografické směrování nakonfigurovaný profil Traffic Manager, 
 
 ## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-after-accidental-overwrite-or-deletion"></a>Použití obnovitelného odstranění v účtu služby Azure Storage k uložení a obnovení dat po náhodném přepsání nebo odstranění
 
-Povolte [obnovitelné odstranění](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) na svém účtu úložiště, aby se odstraněné objekty blob přešly do neodstraněného stavu místo trvalého odstranění. Při přepsání dat se vygeneruje obnovitelně odstraněný snímek, do kterého se uloží stav přepsaných dat. Použití obnovitelného odstranění umožňuje obnovení z náhodného odstranění nebo přepsání. Advisor identifikuje účty služby Azure Storage, které nemají povolené obnovitelné odstranění, a navrhuje, abyste je povolili.
+Povolte [obnovitelné odstranění](../storage/blobs/soft-delete-overview.md) na svém účtu úložiště, aby se odstraněné objekty blob přešly do neodstraněného stavu místo trvalého odstranění. Při přepsání dat se vygeneruje obnovitelně odstraněný snímek, do kterého se uloží stav přepsaných dat. Použití obnovitelného odstranění umožňuje obnovení z náhodného odstranění nebo přepsání. Advisor identifikuje účty služby Azure Storage, které nemají povolené obnovitelné odstranění, a navrhuje, abyste je povolili.
 
 ## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>Konfigurace brány VPN na aktivní – aktivní pro odolnost připojení
 
@@ -107,7 +107,7 @@ Od 1. července 2020 nebudete moct vytvářet nové clustery Kafka pomocí Kafka
 Od 1. července 2020 nebudete moci vytvářet nové clustery Spark pomocí Spark 2,1 nebo 2,2 ve službě HDInsight 3,6. Pomocí Spark 2,3 ve službě HDInsight 4,0 nebudete moct vytvářet nové clustery Spark. Stávající clustery budou fungovat beze změny, jen bez podpory Microsoftu. 
 
 ## <a name="enable-virtual-machine-replication"></a>Povolení replikace virtuálních počítačů
-Virtuální počítače, které nemají povolenou replikaci do jiné oblasti, nejsou odolné vůči nemožnostem regionálních výpadků. Replikace virtuálních počítačů redukuje nepříznivý dopad na firmu během výpadků v oblasti Azure. Advisor detekuje virtuální počítače, u kterých není replikace povolená, a doporučuje ji povolit. Pokud povolíte replikaci, můžete v případě výpadku rychle vytvořit virtuální počítače ve vzdálené oblasti Azure. [Přečtěte si další informace o replikaci virtuálních počítačů.](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
+Virtuální počítače, které nemají povolenou replikaci do jiné oblasti, nejsou odolné vůči nemožnostem regionálních výpadků. Replikace virtuálních počítačů redukuje nepříznivý dopad na firmu během výpadků v oblasti Azure. Advisor detekuje virtuální počítače, u kterých není replikace povolená, a doporučuje ji povolit. Pokud povolíte replikaci, můžete v případě výpadku rychle vytvořit virtuální počítače ve vzdálené oblasti Azure. [Přečtěte si další informace o replikaci virtuálních počítačů.](../site-recovery/azure-to-azure-quickstart.md)
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Jak získat přístup k doporučením vysoké dostupnosti v Advisoru
 

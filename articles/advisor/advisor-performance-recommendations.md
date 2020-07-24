@@ -3,12 +3,12 @@ title: Zlepšení výkonu aplikací Azure pomocí služby Advisor
 description: Využijte doporučení k výkonu v Azure Advisor ke zlepšení rychlosti a odezvy vašich důležitých podnikových aplikací.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 45fb1f8844067cb34b415c3897db3b1233ab5c7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ecd6a45dc255f4748ed5074a3adb3d948f4122e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124482"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057569"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Zlepšení výkonu aplikací Azure pomocí Azure Advisor
 
@@ -16,7 +16,7 @@ Doporučení k výkonu v Azure Advisor mohou pomoci zlepšit rychlost a rychlost
 
 ## <a name="reduce-dns-time-to-live-on-your-traffic-manager-profile-to-fail-over-to-healthy-endpoints-faster"></a>Snižte čas na živý účet DNS v profilu Traffic Manager, aby se převzaly služby při selhání do funkčních koncových bodů rychleji.
 
-[Nastavení TTL (Time-to-Live)](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-performance-considerations) můžete v profilu Azure Traffic Manager použít k určení, jak rychle přepnout koncové body, pokud daný koncový bod přestane reagovat na dotazy. Pokud omezíte hodnoty TTL, budou klienti směrováni do funkčních koncových bodů rychleji.
+[Nastavení TTL (Time-to-Live)](../traffic-manager/traffic-manager-performance-considerations.md) můžete v profilu Azure Traffic Manager použít k určení, jak rychle přepnout koncové body, pokud daný koncový bod přestane reagovat na dotazy. Pokud omezíte hodnoty TTL, budou klienti směrováni do funkčních koncových bodů rychleji.
 
 Azure Advisor identifikuje profily Traffic Manager, u kterých je nakonfigurované delší hodnoty TTL. V závislosti na tom, jestli je profil nakonfigurovaný pro [rychlé převzetí služeb při selhání](https://azure.microsoft.com/roadmap/fast-failover-and-tcp-probing-in-azure-traffic-manager/), doporučuje nakonfigurovat hodnotu TTL na 20 sekund nebo 60 sekund.
 
@@ -27,7 +27,7 @@ Azure Advisor poskytuje konzistentní a konsolidované zobrazení doporučení p
 > [!NOTE]
 > Než budete moct získat doporučení, je nutné, aby se databáze používala přibližně týden a v tomto týdnu musí být konzistentní aktivita. SQL Database Advisor se dá snadněji optimalizovat pro konzistentní vzory dotazů, než pro náhodné nárůsty aktivity.
 
-Další informace najdete v tématu [SQL Database Advisor](https://azure.microsoft.com/documentation/articles/sql-database-advisor/).
+Další informace najdete v tématu [SQL Database Advisor](../azure-sql/database/database-advisor-implement-performance-recommendations.md).
 
 ## <a name="upgrade-your-storage-client-library-to-the-latest-version-for-better-reliability-and-performance"></a>Upgrade klientské knihovny pro úložiště na nejnovější verzi, aby se zajistila vyšší spolehlivost a výkon
 
@@ -39,7 +39,7 @@ Azure Advisor integruje doporučení pro zlepšení vašich App Servicech zkuše
 * Detekce instancí, kde jsou prostředky paměti nebo procesoru vyčerpány modulem runtime aplikace a možnostmi zmírnění rizik.
 * Detekce instancí, kde společně umístěné prostředky, jako jsou webové aplikace a databáze, může zvýšit výkon a snížit náklady.
 
-Další informace najdete v tématu [osvědčené postupy pro Azure App Service](https://azure.microsoft.com/documentation/articles/app-service-best-practices/).
+Další informace najdete v tématu [osvědčené postupy pro Azure App Service](../app-service/app-service-best-practices.md).
 
 ## <a name="use-managed-disks-to-prevent-disk-io-throttling"></a>Použití spravovaných disků k zabránění omezování vstupně-výstupních operací disku
 
@@ -53,11 +53,11 @@ Azure Premium Storage poskytuje podporu vysoce výkonných disků s nízkou late
 
 ## <a name="remove-data-skew-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>Pokud chcete zvýšit výkon dotazů, odeberte na vašich SQL Data Warehouse tabulkách zešikmení dat.
 
-Při spuštění úlohy může zkosit data způsobit zbytečné přesuny dat nebo kritická místa prostředků. Advisor detekuje povýšení distribučních dat o více než 15%. Doporučuje se znovu distribuovat data a znovu navštívit vaše výběry pro distribuční klíč tabulky. Další informace o tom, jak identifikovat a odebrat zkosení, najdete v tématu [řešení potíží s funkcí zkosit](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice).
+Při spuštění úlohy může zkosit data způsobit zbytečné přesuny dat nebo kritická místa prostředků. Advisor detekuje povýšení distribučních dat o více než 15%. Doporučuje se znovu distribuovat data a znovu navštívit vaše výběry pro distribuční klíč tabulky. Další informace o tom, jak identifikovat a odebrat zkosení, najdete v tématu [řešení potíží s funkcí zkosit](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute.md#how-to-tell-if-your-distribution-column-is-a-good-choice).
 
 ## <a name="create-or-update-outdated-table-statistics-in-your-sql-data-warehouse-tables-to-increase-query-performance"></a>Umožňuje vytvořit nebo aktualizovat statistiku zastaralých tabulek v tabulkách SQL Data Warehouse, aby se zvýšil výkon dotazů.
 
-Poradce identifikuje tabulky, které nemají aktuální [statistiku tabulek](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics) , a doporučuje vytvořit nebo aktualizovat statistiku. Optimalizátor dotazů v Azure SQL Data Warehouse využívá aktuální statistiku k odhadu mohutnosti nebo počtu řádků ve výsledcích dotazu. Tyto odhady umožňují, aby Optimalizátor dotazů vytvořil plán dotazů, který poskytuje nejrychlejší výkon.
+Poradce identifikuje tabulky, které nemají aktuální [statistiku tabulek](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-statistics.md) , a doporučuje vytvořit nebo aktualizovat statistiku. Optimalizátor dotazů v Azure SQL Data Warehouse využívá aktuální statistiku k odhadu mohutnosti nebo počtu řádků ve výsledcích dotazu. Tyto odhady umožňují, aby Optimalizátor dotazů vytvořil plán dotazů, který poskytuje nejrychlejší výkon.
 
 ## <a name="improve-mysql-connection-management"></a>Vylepšení správy připojení k MySQL
 
@@ -76,7 +76,7 @@ Poradce identifikuje tabulky, které nejsou replikované tabulky, ale může vyu
 - Typ distribuce tabulky 
 - Počet oddílů v tabulce SQL Data Warehouse. 
 
-Další heuristiky mohou být k dispozici v doporučení pro kontext. Další informace o tom, jak se toto doporučení stanoví, najdete v tématu [SQL Data Warehouse doporučení](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-concept-recommendations#replicate-tables). 
+Další heuristiky mohou být k dispozici v doporučení pro kontext. Další informace o tom, jak se toto doporučení stanoví, najdete v tématu [SQL Data Warehouse doporučení](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations.md#replicate-tables). 
 
 ## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-the-latest-azure-features"></a>Pokud chcete získat nejnovější funkce Azure, migrujte svůj účet úložiště na Azure Resource Manager.
 
@@ -88,7 +88,7 @@ Migrujte model nasazení účtu úložiště na Azure Resource Manager, abyste m
 Služba Advisor identifikuje všechny samostatné účty úložiště, které používají model nasazení Classic, a doporučuje migraci na model nasazení Správce prostředků.
 
 > [!NOTE]
-> Klasické výstrahy v Azure Monitor byly vyřazeny v srpnu 2019. Doporučujeme vám upgradovat klasický účet úložiště, aby používal Správce prostředků k uchování funkcí upozorňování s novou platformou. Další informace najdete v tématu [vyřazení klasických výstrah](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement#retirement-of-classic-monitoring-and-alerting-platform).
+> Klasické výstrahy v Azure Monitor byly vyřazeny v srpnu 2019. Doporučujeme vám upgradovat klasický účet úložiště, aby používal Správce prostředků k uchování funkcí upozorňování s novou platformou. Další informace najdete v tématu [vyřazení klasických výstrah](../azure-monitor/platform/monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform).
 
 ## <a name="design-your-storage-accounts-to-prevent-reaching-the-maximum-subscription-limit"></a>Navrhněte svoje účty úložiště, abyste zabránili dosažení maximálního limitu předplatného.
 
@@ -120,17 +120,17 @@ Advisor detekuje nepodporované verze Kubernetes.
 Vysoké využití procesoru po delší dobu může způsobit pomalý výkon pro vaše úlohy. Zvýšení velikosti procesoru vám pomůže optimalizovat modul runtime databázových dotazů a zvýšit celkový výkon. Advisor identifikuje servery s vysokým využitím procesoru, které by zřejmě běžely s využitím procesoru s omezenou kapacitou, a doporučuje škálovat výpočetní výkon.
 
 ### <a name="reduce-memory-constraints-on-your-azure-database-for-mysql-azure-database-for-postgresql-and-azure-database-for-mariadb-servers-or-move-to-a-memory-optimized-sku"></a>Snížení omezení paměti na vašich Azure Database for MySQL, Azure Database for PostgreSQL a Azure Database for MariaDB serverech nebo přesun do paměťově optimalizované SKU
-Poměr přístupů do mezipaměti může mít za následek pomalejší výkon dotazů a zvýšené IOPS. Tato podmínka může být způsobena nesprávným plánem dotazů nebo úlohou náročnými na paměť. Oprava plánu dotazů nebo [zvýšení paměti](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers) Azure Database for PostgreSQL, Azure Database for MySQL nebo Azure Database for MariaDB Server, pomůže optimalizovat provádění databázových úloh. Azure Advisor identifikuje servery ovlivněné touto vysokou změnou fondu vyrovnávací paměti. Doporučuje se provést jednu z následujících akcí: 
+Poměr přístupů do mezipaměti může mít za následek pomalejší výkon dotazů a zvýšené IOPS. Tato podmínka může být způsobena nesprávným plánem dotazů nebo úlohou náročnými na paměť. Oprava plánu dotazů nebo [zvýšení paměti](../postgresql/concepts-pricing-tiers.md) Azure Database for PostgreSQL, Azure Database for MySQL nebo Azure Database for MariaDB Server, pomůže optimalizovat provádění databázových úloh. Azure Advisor identifikuje servery ovlivněné touto vysokou změnou fondu vyrovnávací paměti. Doporučuje se provést jednu z následujících akcí: 
 - Oprava plánu dotazu
 - Přejít na SKU, která má více paměti 
 - Zvyšte velikost úložiště a získejte více IOPS.
 
 ### <a name="use-an-azure-database-for-mysql-or-azure-database-for-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>Použití Azure Database for MySQL nebo Azure Database for PostgreSQL čtení repliky k horizontálnímu navýšení kapacity pro úlohy náročné na čtení
-Advisor používá heuristiky založené na úlohách, jako je poměr čtení a zápisů na serveru během posledních sedmi dnů, pro identifikaci úloh náročných na čtení. Azure Database for PostgreSQL nebo Azure Database for MySQL prostředek s vysokým poměrem pro čtení a zápis může vést ke vzniku kolizí s PROCESORem nebo pamětí a vést k zpomalení výkonu dotazů. Přidání [repliky](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) pomůže škálovat čtení na server repliky a zabránit omezením na procesor nebo paměť na primárním serveru. Poradce identifikuje servery s úlohami náročnými na čtení a doporučuje přidat [repliku čtení](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas)   pro přesměrování některých úloh čtení.
+Advisor používá heuristiky založené na úlohách, jako je poměr čtení a zápisů na serveru během posledních sedmi dnů, pro identifikaci úloh náročných na čtení. Azure Database for PostgreSQL nebo Azure Database for MySQL prostředek s vysokým poměrem pro čtení a zápis může vést ke vzniku kolizí s PROCESORem nebo pamětí a vést k zpomalení výkonu dotazů. Přidání [repliky](../postgresql/howto-read-replicas-portal.md) pomůže škálovat čtení na server repliky a zabránit omezením na procesor nebo paměť na primárním serveru. Poradce identifikuje servery s úlohami náročnými na čtení a doporučuje přidat [repliku čtení](../postgresql/concepts-read-replicas.md)   pro přesměrování některých úloh čtení.
 
 
 ### <a name="scale-your-azure-database-for-mysql-azure-database-for-postgresql-or-azure-database-for-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Škálování Azure Database for MySQL, Azure Database for PostgreSQL nebo Azure Database for MariaDB serveru na vyšší SKLADOVOU položku, aby nedocházelo k omezením připojení
-Každé nové připojení k vašemu databázovému serveru zabírá paměť. Pokud dojde k selhání připojení k serveru z důvodu [horního limitu](https://docs.microsoft.com/azure/postgresql/concepts-limits) paměti, výkon databázového serveru se sníží. Azure Advisor identifikuje servery běžící s mnoha selháními připojení. Doporučuje se upgradovat limity pro připojení vašeho serveru a poskytnout tak více paměti serveru tím, že provedete jednu z následujících akcí:
+Každé nové připojení k vašemu databázovému serveru zabírá paměť. Pokud dojde k selhání připojení k serveru z důvodu [horního limitu](../postgresql/concepts-limits.md) paměti, výkon databázového serveru se sníží. Azure Advisor identifikuje servery běžící s mnoha selháními připojení. Doporučuje se upgradovat limity pro připojení vašeho serveru a poskytnout tak více paměti serveru tím, že provedete jednu z následujících akcí:
 - Horizontální navýšení kapacity 
 - Používejte paměťově optimalizované skladové položky, které mají více výpočetních prostředků na jádro.
 
@@ -168,4 +168,4 @@ Další informace o doporučení Advisoru najdete tady:
 * [Doporučení pro spolehlivost Advisoru](advisor-high-availability-recommendations.md)
 * [Doporučení pro zabezpečení Advisoru](advisor-security-recommendations.md)
 * [Doporučení provozní kvality Advisoru](advisor-operational-excellence-recommendations.md)
-* [REST API Advisoru](https://docs.microsoft.com/rest/api/advisor/)
+* [REST API Advisoru](/rest/api/advisor/)

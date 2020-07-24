@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 7ced455e8124abed75dc7b2bbf7f92eb13613347
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1eb430f94ef545fa74ed225c427a121a47f7cf8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85556581"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055778"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>Vytvoření první funkce Azure pomocí Java a IntelliJ
 
@@ -44,7 +44,7 @@ K vývoji funkcí Java a IntelliJ nainstalujte následující software:
 2. Pokud se chcete přihlásit ke svému účtu Azure, otevřete boční panel **Azure Explorer** a na horním panelu klikněte na ikonu **Azure Sign In** (Přihlášení k Azure). Tuto možnost najdete také v nabídce IDEA **Tools / Azure / Azure Sign In** (Nástroje / Azure / Přihlášení k Azure).
     ![Příkaz k přihlášení k Azure v IntelliJ][intellij-azure-login]
 
-3. V okně **Azure Sign In** (Přihlášení k Azure) vyberte **Device Login** (Přihlášení zařízení) a pak klikněte na **Sign in** (Přihlásit se) ([další možnosti přihlášení](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/sign-in-instructions)).
+3. V okně **Azure Sign In** (Přihlášení k Azure) vyberte **Device Login** (Přihlášení zařízení) a pak klikněte na **Sign in** (Přihlásit se) ([další možnosti přihlášení](/azure/developer/java/toolkit-for-intellij/sign-in-instructions)).
 
    ![Okno Azure Sign In (Přihlášení k Azure) s vybranou možností Device Login (Přihlášení zařízení)][intellij-azure-popup]
 
@@ -156,7 +156,7 @@ V této části použijete Azure Toolkit for IntelliJ k vytvoření místního p
 Vytvořili jste projekt funkcí jazyka Java pomocí funkce aktivované protokolem HTTP, spustíte ji na místním počítači a nasadíte ji do Azure. Nyní svou funkci rozšíříte do...
 
 > [!div class="nextstepaction"]
-> [Přidání výstupní vazby fronty Azure Storage](/azure/azure-functions/functions-add-output-binding-storage-queue-java)
+> [Přidání výstupní vazby fronty Azure Storage](./functions-add-output-binding-storage-queue-java.md)
 
 
 [marketplace]:./media/functions-create-first-java-intellij/marketplace.png

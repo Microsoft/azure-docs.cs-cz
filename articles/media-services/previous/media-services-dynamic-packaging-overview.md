@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: juliako
-ms.openlocfilehash: 079094965775c140c0343da98e40fd008995d45a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c4654ce175e64c375c96164aed274bf8078d196
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74901188"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060127"
 ---
 # <a name="dynamic-packaging"></a>Dynamické balení
 
@@ -26,7 +27,7 @@ ms.locfileid: "74901188"
 > * [Verze 2](media-services-dynamic-packaging-overview.md)
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 
 Microsoft Azure Media Services lze použít k doručování mnoha mediálních formátů zdrojového souboru, formátů datových proudů médií a formátů ochrany obsahu na nejrůznější technologie klienta (například iOS, XBOX, Silverlight, Windows 8). Tito klienti rozumí různým protokolům, například iOS vyžaduje formát HTTP Live Streaming (HLS) v4 a Silverlight a Xbox vyžadují Smooth Streaming. Pokud máte sadu adaptivních přenosů (s více přenosovými rychlostmi) souborů MP4 (ISO Base Media 14496-12) nebo sadu adaptivní přenosové rychlosti Smooth Streaming soubory, které chcete sloužit klientům, kteří porozuměli formátu MPEG, HLS nebo Smooth Streaming, měli byste využít Media Services dynamické balení.
 
@@ -69,4 +70,3 @@ Dynamické balení podporuje soubory MP4, které obsahují zvuk zakódovaný pom
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

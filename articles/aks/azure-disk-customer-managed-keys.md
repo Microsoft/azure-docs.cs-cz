@@ -3,20 +3,17 @@ title: Použití klíče spravovaného zákazníkem k šifrování disků Azure 
 description: Přineste si vlastní klíče (BYOK) k šifrování AKS operačního systému a datových disků.
 services: container-service
 ms.topic: article
-ms.date: 01/12/2020
-ms.openlocfilehash: 6452facc999456c35aa5d1c3bfe6b2f59141b7c5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/17/2020
+ms.openlocfilehash: d8443c9c7a0af7bfb7f146904c913663d82786b8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252041"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057295"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Přineste si vlastní klíče (BYOK) s disky Azure ve službě Azure Kubernetes Service (AKS).
 
 Azure Storage šifruje všechna data v účtu úložiště v klidovém umístění. Ve výchozím nastavení se data šifrují pomocí klíčů spravovaných Microsoftem. Pro další kontrolu nad šifrovacími klíči můžete zadat [klíče spravované zákazníkem][customer-managed-keys] , které se použijí pro šifrování v klidovém prostředí pro AKS clustery i pro datové disky.
-
-> [!NOTE]
-> Clustery AKS s BYOK Linux a Windows jsou dostupné v [oblastech Azure][supported-regions] , které podporují šifrování na straně serveru Azure Managed disks.
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -164,7 +161,6 @@ kubectl apply -f byok-azure-disk.yaml
 
 ## <a name="limitations"></a>Omezení
 
-* BYOK je aktuálně dostupná jenom v GA a ve verzi Preview v určitých [oblastech Azure][supported-regions] .
 * Šifrování datových disků podporované s Kubernetes verzí 1,17 a vyšší   
 * K dispozici pouze v oblastech, kde je podporována podpora BYOK
 * Šifrování pomocí klíčů spravovaných zákazníkem se momentálně používá jenom pro nové clustery AKS. stávající clustery nejde upgradovat.

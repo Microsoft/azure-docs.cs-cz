@@ -5,16 +5,16 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 6950f1dd81ef2c70f2c45fb4c547ed7676067790
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eead2d6ae2860bf06f1b878c1bb1692d74c06df6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847648"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055977"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>Přehled vazeb Azure Blob Storage pro Azure Functions
 
-Azure Functions se integruje s [Azure Storage](https://docs.microsoft.com/azure/storage/) prostřednictvím [triggerů a vazeb](./functions-triggers-bindings.md). Integrace s úložištěm objektů BLOB umožňuje vytvářet funkce, které reagují na změny v datech objektů blob, i na hodnoty pro čtení a zápis.
+Azure Functions se integruje s [Azure Storage](../storage/index.yml) prostřednictvím [triggerů a vazeb](./functions-triggers-bindings.md). Integrace s úložištěm objektů BLOB umožňuje vytvářet funkce, které reagují na změny v datech objektů blob, i na hodnoty pro čtení a zápis.
 
 | Akce | Typ |
 |---------|---------|

@@ -5,18 +5,18 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/10/2020
 ms.author: baanders
-ms.openlocfilehash: 839f35faf4e96528a94ee237dd09aab6c1692162
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b637ef2be51ef2bbbe9fa7e1a2374927647ca382
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258106"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061694"
 ---
 ## <a name="visualization"></a>Vizualizace
 
 Primárním způsobem, jak pracovat s vaší instancí digitálních vláken Azure, je prostřednictvím [rozhraní API a sad SDK](../articles/digital-twins/how-to-use-apis-sdks.md), což může být užitečné k zobrazení vizualizace vláken a grafů, které vytváříte v instanci.
 
-[**Průzkumník digitálních vláken Azure**](https://github.com/Azure-Samples/digital-twins-explorer) je ukázková aplikace pro vizualizaci a práci s digitálními vlákna Azure. Podle pokynů uvedených v ukázce Stáhněte a spusťte kód aplikace. 
+[**Průzkumník digitálních vláken Azure**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) je ukázková aplikace pro vizualizaci a práci s digitálními vlákna Azure. Podle pokynů uvedených v ukázce Stáhněte a spusťte kód aplikace. 
 
 V této ukázce vidíte vizuální znázornění digitálních vláken a grafu, které vytvářejí, mimo jiné aktivity vytváření a správy.
 

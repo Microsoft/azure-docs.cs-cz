@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/07/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: fc0464c226b8edc2dae01f8ea54c3e5b2e11f2d6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: bb4c689da38606561c657a3e4d85fd9e391267bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244256"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056741"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Použití Azure RBAC pro autorizaci Kubernetes (Preview)
 
@@ -35,14 +35,14 @@ Možnost spravovat RBAC pro prostředky Kubernetes z Azure vám dává možnost 
 - Zaregistrujte se do verze Preview <https://aka.ms/aad-rbac-sign-up-form> .
 - Ujistěte se, že máte `EnableAzureRBACPreview` povolený příznak funkce.
 - Ujistěte se, že máte `AAD-V2` povolený příznak funkce.
-- Ujistěte se, že máte `aks-preview` nainstalovanou příponu CLI v 0.4.55 nebo novější verzi.
+- Ujistěte se, že máte `aks-preview` nainstalovanou [příponu CLI][az-extension-add] v 0.4.55 nebo novější verzi.
 - Ujistěte se, že máte nainstalovanou verzi [kubectl v 1.18.3 +][az-aks-install-cli].
 
 #### <a name="register-enableazurerbacpreview-and-aad-v2-preview-features"></a>`EnableAzureRBACPreview`Funkce registrace a `AAD-V2` verze Preview
 
 Pokud chcete vytvořit cluster AKS, který používá Azure RBAC pro autorizaci Kubernetes, musíte `EnableAzureRBACPreview` `AAD-V2` ve svém předplatném povolit příznaky funkcí a.
 
-Zaregistrujte `EnableAzureRBACPreview` příznak funkce pomocí příkazu [AZ Feature Register][az-feature-register] , jak je znázorněno v následujícím příkladu:
+`EnableAzureRBACPreview` `AAD-V2` Pomocí příkazu [AZ Feature Register][az-feature-register] Zaregistrujte příznaky funkcí a, jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.ContainerService" --name "EnableAzureRBACPreview"
@@ -64,9 +64,9 @@ Až budete připraveni, aktualizujte registraci poskytovatele prostředků *Micr
 az provider register --namespace Microsoft.ContainerService
 ```
 
-#### <a name="install-aks-preview-cli-extension"></a>Nainstalovat rozšíření CLI AKS-Preview
+#### <a name="install-aks-preview-cli-extension"></a>Instalace rozšíření rozhraní příkazového řádku aks-preview
 
-Pokud chcete vytvořit cluster AKS, který používá Azure RBAC, potřebujete rozšíření *AKS-Preview* CLI verze 0.4.55 nebo vyšší. Nainstalujte rozšíření Azure CLI *AKS-Preview* pomocí příkazu [AZ Extension Add][az-extension-add] a potom zkontrolujte, jestli nejsou dostupné aktualizace, pomocí příkazu [AZ Extension Update][az-extension-update] :
+Pokud chcete vytvořit cluster AKS, který používá Azure RBAC, potřebujete rozšíření *AKS-Preview* CLI verze 0.4.55 nebo vyšší. Pomocí příkazu [AZ Extension Add][az-extension-add] nainstalujte rozšíření Azure CLI *AKS-Preview* , nebo pomocí příkazu [AZ Extension Update][az-extension-update] nainstalujte všechny dostupné aktualizace:
 
 ```azurecli-interactive
 # Install the aks-preview extension

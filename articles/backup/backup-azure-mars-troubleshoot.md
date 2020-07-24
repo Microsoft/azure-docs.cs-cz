@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak řešit potíže s instalací a r
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: ddff3ca8a89d8d5674be00fdebc70b0232cdbd13
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b810b5abfb15a39d19a0571b6ac36a6c86bf0b4f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539053"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054642"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Řešení potíží s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -75,6 +75,12 @@ Doporučujeme, abyste před zahájením řešení potíží s agentem služby Az
 | Chyba  | Možná příčina | Doporučené akce |
 | ---     | ---     | ---    |
 | <br /><ul><li>Agent Microsoft Azure Recovery Services se nemohl připojit k Microsoft Azure Backup. (ID: 100050) Zkontrolujte nastavení sítě a ujistěte se, že se můžete připojit k Internetu.<li>(407) je vyžadováno ověřování proxy serveru. |Proxy blokuje připojení. |  <ul><li>V Internet Exploreru přejdete na **nástroje**  >  **Internet Options Internet možnosti**  >  **zabezpečení**  >  **Internetu**. Vyberte **vlastní úroveň** a přejděte dolů k části **Stažení souboru** . Vyberte **Povolit**.<p>Je také možné, že budete muset přidat do důvěryhodných webů v aplikaci Internet Explorer [adresy URL a IP adresy](install-mars-agent.md#verify-internet-access) .<li>Změňte nastavení na použití proxy server. Pak zadejte podrobnosti o proxy server.<li> Pokud má počítač omezený přístup k Internetu, zajistěte, aby nastavení brány firewall na počítači nebo proxy umožňovalo tyto [adresy URL a IP adresy](install-mars-agent.md#verify-internet-access). <li>Pokud máte na serveru nainstalovaný antivirový software, vylučte tyto soubory z antivirového vyhledávání: <ul><li>CBEngine.exe (místo dpmra.exe).<li>CSC.exe (souvisí s .NET Framework). Pro každou verzi .NET Framework nainstalovanou na serveru existuje CSC.exe. Vylučte soubory CSC.exe pro všechny verze .NET Framework na příslušném serveru. <li>Umístění pomocné složky nebo mezipaměti. <br>Výchozí umístění pro pomocnou složku nebo cestu k mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch.<li>Složka Bin v adresáři C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
+
+## <a name="the-specified-vault-credential-file-cannot-be-used-as-it-is-not-downloaded-from-the-vault-associated-with-this-server"></a>Zadaný soubor s přihlašovacími údaji trezoru se nedá použít, protože není stažený z trezoru přidruženého k tomuto serveru.
+
+| Chyba  | Možná příčina | Doporučené akce |
+| ---     | ---     | ---    |
+| Zadaný soubor s přihlašovacími údaji trezoru nejde použít, protože není stažený z trezoru přidruženého k tomuto serveru. (ID: 100110) Zadejte prosím příslušné přihlašovací údaje trezoru. | Soubor s přihlašovacími údaji trezoru pochází z jiného trezoru, než je ten, na který tento server je už zaregistrovaný. | Ujistěte se, že cílový počítač a zdrojový počítač jsou zaregistrované ve stejném trezoru Recovery Services. Pokud je cílový server již zaregistrován v jiném trezoru, zaregistrujte se do správného trezoru pomocí možnosti **Registrace serveru** .  
 
 ## <a name="backup-jobs-completed-with-warning"></a>Úlohy zálohování se dokončily s upozorněním.
 

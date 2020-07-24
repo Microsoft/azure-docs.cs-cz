@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fd2e5a4d057e1074c6cce0f374846bc9e0a64950
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0ea178655646f7f130476acaffc35c60181968ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525088"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058714"
 ---
 # <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>Přístup k řešení VMware pomocí portálu CloudSimple z Azure Portal
 
@@ -23,7 +23,7 @@ Pro přístup k portálu CloudSimple je podporováno jednotné přihlašování.
 
 Uživatelé s rolemi Builtin **Owner** a **Přispěvatel** mají přístup k portálu CloudSimple.  Role musí být nakonfigurované ve skupině prostředků, ve které je nasazená služba CloudSimple.  Role je také možné nakonfigurovat v objektu služby CloudSimple.  Další informace o kontrole role najdete v článku [zobrazení přiřazení rolí](../role-based-access-control/check-access.md) . Přístup k portálu CloudSimple mají jenom uživatelé s předdefinovaným **vlastníkem** a rolemi **přispěvatele** .  Role musí být nakonfigurované v předplatném.  Další informace o kontrole role najdete v článku [zobrazení přiřazení rolí](../role-based-access-control/check-access.md) .
 
-Pokud používáte vlastní role, role by měla mít následující operace ```Actions``` .  Další informace o vlastních rolích najdete v tématu [vlastní role pro prostředky Azure](../role-based-access-control/custom-roles.md).  Pokud je některá z operací součástí ```NotActions``` , uživatel nemá přístup k portálu CloudSimple.
+Pokud používáte vlastní role, role by měla mít následující operace ```Actions``` .  Další informace o vlastních rolích najdete v tématu [vlastní role Azure](../role-based-access-control/custom-roles.md).  Pokud je některá z operací součástí ```NotActions``` , uživatel nemá přístup k portálu CloudSimple.
 
 ```
 Microsoft.VMwareCloudSimple/*

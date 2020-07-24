@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: e4185de879fa6136531e6d4c64908befa1d3bc45
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: df4292a40335e58c64b8ebc50ffb6ac1ceee8836
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531182"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059903"
 ---
 # <a name="connect-your-proofpoint-tap-to-azure-sentinel-with-azure-function"></a>Připojení Proofpoint klepnutím do Azure Sentinel pomocí funkce Azure Functions
+
+> [!IMPORTANT]
+> Datový konektor Proofpoint klepněte v Azure Sentinel je aktuálně ve verzi Public Preview.
+> Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Konektor pro Proofpoint cíleného útoku (klepnutím) umožňuje snadno připojit všechny vaše [Proofpointy klepnutím](https://www.proofpoint.com/us/products/advanced-threat-protection/targeted-attack-protection) na protokoly řešení zabezpečení pomocí služby Azure Sentinel, zobrazit řídicí panely, vytvořit vlastní výstrahy a vylepšit šetření. Integrace mezi Proofpoint klepnutím a službou Azure Sentinel využívá Azure Functions k vyžádání dat protokolu pomocí REST API.
 

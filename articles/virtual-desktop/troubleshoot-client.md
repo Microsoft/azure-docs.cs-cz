@@ -8,11 +8,12 @@ ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 76348a0aee48cc6d768e8233e376f266eca31917
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0efff05f84bf02908dfc8b966b80539d309f491d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83006009"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059131"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>Řešení potíží s klientem vzdálené plochy
 
@@ -61,7 +62,7 @@ Pokud se v prohlížeči spustí nebo přestane pracovat, když používáte web
 
 ## <a name="web-client-does-not-show-my-resources"></a>Webový klient nezobrazuje mé prostředky
 
-Nejdřív se podívejte na účet Azure Active Directory, který používáte. Pokud jste se už přihlásili pomocí jiného účtu Azure Active Directory, než který chcete použít pro virtuální plochu Winodws, měli byste buď podepsat, nebo použít soukromé okno prohlížeče.
+Nejdřív se podívejte na účet Azure Active Directory, který používáte. Pokud jste se už přihlásili pomocí jiného účtu Azure Active Directory, než který chcete použít pro virtuální počítač s Windows, měli byste buď podepsat, nebo použít soukromé okno prohlížeče.
 
 Pokud používáte verzi Windows Virtual Desktop, která je 2019, připojte se k prostředkům pomocí odkazu webový klient v [tomto článku](./virtual-desktop-fall-2019/connect-web-2019.md) .
 

@@ -11,26 +11,26 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: f0ce0f7d90540274d24a7e0248e6f197b74033a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8da2355b62d7be36b10ac9a1ce4b53e87b4b288
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416986"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059225"
 ---
-# <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>Správa referenčních dat GA pro Azure Time Series Insights prostředí pomocí jazyka C #
+# <a name="manage-reference-data-for-an-azure-time-series-insights-gen-1-environment-using-c"></a>Správa referenčních dat pro prostředí Azure Time Series Insights Gen 1 pomocí jazyka C #
 
-Tento článek ukazuje, jak kombinovat C#, [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)a Azure Active Directory, aby programové požadavky rozhraní API [ODKAZOVALy na rozhraní](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)API Azure Time Series Insights GA Správa dat.
+Tento článek ukazuje, jak kombinovat C#, [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)a Azure Active Directory, aby programové požadavky rozhraní API [ODKAZOVALy na rozhraní](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)api Azure Time Series Insights Gen 1 Správa dat.
 
 > [!TIP]
 > Podívejte se na ukázky kódů GA C# na adrese [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) .
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Vzorový kód níže znázorňuje následující funkce:
 
 * Získání přístupového tokenu pomocí [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **PublicClientApplication**
-* Sekvenční vytváření, čtení, aktualizace a odstraňování operací s [referencí GA Správa dat API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api).
+* Sekvenční vytváření, čtení, aktualizace a odstraňování operací proti [referenčnímu rozhraní Správa dat API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)pro obecné 1.
 * Běžné kódy odpovědí včetně [běžných kódů chyb](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling).
     
     Reference Správa dat API každou položku zpracuje jednotlivě a chyba s jednou položkou nebrání úspěšnému dokončení ostatních položek. Pokud třeba vaše žádost obsahuje 100 položek a jedna položka obsahuje chybu, napíší se položky 99 a jedna z nich se odmítne.
@@ -39,7 +39,7 @@ Vzorový kód níže znázorňuje následující funkce:
 
 Před kompilací a spuštěním ukázkového kódu proveďte následující kroky:
 
-1. [Zřízení Azure Time Series Insightsho prostředí GA](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started
+1. [Zřízení Azure Time Series Insightsho prostředí s 1. generace](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started
 )
 
 1. [Vytvořte referenční datovou sadu](time-series-insights-add-reference-data-set.md) v rámci vašeho prostředí. Použijte následující schéma referenčních dat:
@@ -309,4 +309,4 @@ namespace CsharpTsiMsalGaSample
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si referenční dokumentaci k [rozhraní API Správa dat reference](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) pro ga.
+- Přečtěte si referenční dokumentaci k [rozhraní API Správa dat reference](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) pro obecné 1.

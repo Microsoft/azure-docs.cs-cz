@@ -4,18 +4,18 @@ description: Přečtěte si o rozdílech mezi ověřováním různých vlastnost
 author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
-ms.date: 10/12/2019
+ms.date: 07/21/2020
 ms.topic: conceptual
 ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 2a1507b008903085886f9392f3f4e5461997b6e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82b721d14d114b358939bebecff00bc762b075a6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80128859"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058328"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>Rozdíly v ověřování podle podporovaných typů účtů (signInAudience)
 
@@ -39,10 +39,10 @@ V následující tabulce jsou uvedeny rozdíly v ověřování různých vlastno
 | Certifikáty ( `keyCredentials` ) | Symetrický podpisový klíč | Symetrický podpisový klíč | Šifrovací a asymetrický podpisový klíč | 
 | Tajné klíče klienta ( `passwordCredentials` ) | Bez omezení * | Bez omezení * | Pokud je povoleno liveSDK: maximum ze 2 klientských tajných klíčů | 
 | Identifikátory URI pro přesměrování ( `replyURLs` ) | Další informace najdete v tématu [omezení a omezení adresy URL pro přesměrování/adresa URL pro odpověď](reply-url.md) . | | | 
-| Oprávnění rozhraní API ( `requiredResourceAccess` ) | Bez omezení * | Bez omezení * | Maximální povolený počet 30 oprávnění na prostředek (např. Microsoft Graph) | 
+| Oprávnění rozhraní API ( `requiredResourceAccess` ) | Bez omezení * | Bez omezení * | Maximální počet 50 prostředků na aplikaci a 30 oprávnění na prostředek (např. Microsoft Graph). Celkový limit 200 na aplikaci (prostředky × oprávnění). | 
 | Obory definované tímto rozhraním API ( `oauth2Permissions` ) | Maximální délka názvu rozsahu 120 znaků <br><br> Bez omezení * počtu definovaných oborů | Maximální délka názvu rozsahu 120 znaků <br><br> Bez omezení * počtu definovaných oborů |  Maximální délka názvu rozsahu 40 znaků <br><br> Je definovaných maximálně 100 oborů. | 
 | Autorizované klientské aplikace ( `preautorizedApplications` ) | Bez omezení * | Bez omezení * | Celkem maximum 500 <br><br> Je definovaných maximálně 100 klientských aplikací. <br><br> Maximálně 30 oborů definovaných na klienta | 
-| appRoles | Podporuje se <br> Bez omezení * | Podporuje se <br> Bez omezení * | Nepodporuje se | 
+| appRoles | Podporováno <br> Bez omezení * | Podporováno <br> Bez omezení * | Nepodporováno | 
 | Odhlašovací adresa URL | http://localhostje povoleno <br><br> Maximální délka 255 znaků | http://localhostje povoleno <br><br> Maximální délka 255 znaků | <br><br> https://localhostje povoleno, http://localhost pro MSA se nezdařila <br><br> Maximální délka 255 znaků <br><br> Schéma HTTP není povolené. <br><br> Zástupné znaky se nepodporují. | 
 
 * V rámci všech vlastností kolekce objektu aplikace je globální limit o 1000 položek.

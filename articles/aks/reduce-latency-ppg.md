@@ -4,26 +4,27 @@ description: Naučte se používat skupiny umístění pro Proximity k omezení 
 services: container-service
 manager: gwallace
 ms.topic: article
-ms.date: 06/22/2020
-ms.openlocfilehash: 1bcdfb4bb3c910feeac0521308e1e7d733fbd959
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/10/2020
+author: jluk
+ms.openlocfilehash: f6cb370d258a79420b03baf17ec964b091cdebb7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244068"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056591"
 ---
 # <a name="reduce-latency-with-proximity-placement-groups-preview"></a>Snížení latence se skupinami umístění blízkosti (Preview)
 
 > [!Note]
-> Když použijete skupiny umístění pro Proximity s AKS, bude se toto umístění vztahovat jenom na uzly agenta. Vylepšení uzlu na uzel a odpovídající hostované latenci pod Společné umístění nemá vliv na umístění řídicí plochy clusteru.
+> Při použití skupin umístění blízkosti na AKS se společné umístění týká pouze uzlů agentů. Vylepšení uzlu na uzel a odpovídající hostované latenci pod Společné umístění nemá vliv na umístění řídicí plochy clusteru.
 
-Při nasazování aplikace v Azure dojde k rozšiřování instancí virtuálních počítačů v různých oblastech nebo zónách dostupnosti k zajištění latence sítě, což může mít vliv na celkový výkon vaší aplikace. Skupina umístění blízkosti je logické seskupení, které se používá k zajištění, že jsou výpočetní prostředky Azure fyzicky umístěné blízko sebe. Některé aplikace, jako jsou hraní her, metodologie a vysoká frekvence obchodování (HFT), vyžadují nízkou latenci a úlohy, které se rychle dokončí. U scénářů s vysokým výkonem (HPC), jako jsou třeba, zvažte použití [skupin umístění blízkosti](../virtual-machines/linux/co-location.md#proximity-placement-groups) pro fondy uzlů vašeho clusteru.
+Při nasazování aplikace v Azure dojde k rozšiřování instancí virtuálních počítačů v různých oblastech nebo zónách dostupnosti k zajištění latence sítě, což může mít vliv na celkový výkon vaší aplikace. Skupina umístění blízkosti je logické seskupení, které se používá k zajištění, že jsou výpočetní prostředky Azure fyzicky umístěné blízko sebe. Některé aplikace, jako jsou hraní her, metodologie a vysoká frekvence obchodování (HFT), vyžadují nízkou latenci a úlohy, které se rychle dokončí. U scénářů s vysokým výkonem (HPC), jako jsou třeba, zvažte použití [skupin umístění blízkosti](../virtual-machines/linux/co-location.md#proximity-placement-groups) (PPG) pro fondy uzlů vašeho clusteru.
 
 ## <a name="limitations"></a>Omezení
 
-* Skupina umístění blízkosti zahrnuje jednu zónu dostupnosti.
-* Neexistuje žádná aktuální podpora pro clustery AKS, které používají skupiny dostupnosti virtuálních počítačů.
-* Stávající fondy uzlů nejde změnit tak, aby používaly skupinu umístění s blízkostí.
+* Skupina umístění blízkosti se může mapovat na maximálně jednu zónu dostupnosti.
+* Fond uzlů musí použít Virtual Machine Scale Sets k přidružení skupiny umístění blízkosti.
+* Fond uzlů může přidružit skupinu umístění blízkosti pouze při vytváření fondu uzlů.
 
 > [!IMPORTANT]
 > Funkce AKS ve verzi Preview jsou k dispozici na samoobslužné službě, na základě souhlasu. Verze Preview jsou k dispozici "tak jak jsou" a "jako dostupné" a jsou vyloučeny ze smluv o úrovni služeb a omezené záruky. AKS verze Preview jsou částečně pokryté zákaznickou podporou na základě nejlepších úsilí. V takovém případě tyto funkce nejsou určeny pro použití v produkčním prostředí. Další informace najdete v následujících článcích podpory:
@@ -40,7 +41,7 @@ Musíte mít nainstalované následující zdroje:
 ### <a name="set-up-the-preview-feature-for-proximity-placement-groups"></a>Nastavte funkci Preview pro skupiny umístění pro Proximity.
 
 > [!IMPORTANT]
-> Když použijete skupiny umístění pro Proximity s AKS, bude se toto umístění vztahovat jenom na uzly agenta. Vylepšení uzlu na uzel a odpovídající hostované latenci pod Společné umístění nemá vliv na umístění řídicí plochy clusteru.
+> Při použití skupin umístění blízkosti s fondy uzlů AKS se společné umístění týká pouze uzlů agentů. Vylepšení uzlu na uzel a odpovídající hostované latenci pod Společné umístění nemá vliv na umístění řídicí plochy clusteru.
 
 ```azurecli-interactive
 # register the preview feature
@@ -63,6 +64,7 @@ az extension add --name aks-preview
 # Update the extension to make sure you have the latest version installed
 az extension update --name aks-preview
 ```
+
 ## <a name="node-pools-and-proximity-placement-groups"></a>Fondy uzlů a skupiny umístění blízkosti
 
 První prostředek, který nasadíte se skupinou umístění blízkosti, se připojí ke konkrétnímu datovému centru. Další prostředky nasazené se stejnou skupinou umístění blízkosti se nacházejí ve stejném datovém centru. Jakmile se všechny prostředky, které používají skupinu umístění blízkosti, se zastavily (oddělují) nebo se odstraní, už se nepřipojí.
@@ -70,13 +72,23 @@ První prostředek, který nasadíte se skupinou umístění blízkosti, se při
 * K jedné skupině umístění blízkosti se dá přidružit mnoho fondů uzlů.
 * Fond uzlů může být přidružen pouze k jedné skupině umístění blízkosti.
 
+### <a name="configure-proximity-placement-groups-with-availability-zones"></a>Konfigurace skupin umístění blízkosti pomocí zón dostupnosti
+
+> [!NOTE]
+> I když skupiny umístění blízkosti vyžadují, aby fond uzlů používal maximálně jednu zónu dostupnosti, je pro virtuální počítače v jedné zóně stále platná [smlouva SLA pro virtuální počítače Azure s 99,9%](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_9/) .
+
+Skupiny umístění blízkosti jsou koncept fondu uzlů a přidružený ke každému fondu jednotlivých uzlů. Použití prostředku PPG nemá žádný vliv na dostupnost roviny ovládacího prvku AKS. To může mít vliv na to, jak by měl být cluster navržený pomocí zón. Pokud chcete zajistit, aby byl cluster rozložen mezi více zón, doporučujeme následující návrh.
+
+* Zřídí cluster s prvním fondem systému pomocí 3 zón a není přidružená žádná skupina umístění blízkosti. Tím se zajistí, že se systémová LUSKOVÁ půda nachází ve vyhrazeném fondu uzlů, který se rozprostře mezi několik zón.
+* Přidejte další fondy uživatelských uzlů s jedinečnou skupinou umístění a umístění blízkosti, která je přidružená ke každému fondu. Příkladem je nodepool1 v zóně 1 a PPG1, nodepool2 v zóně 2 a PPG2, nodepool3 v zóně 3 s PPG3. Tím zajistíte, že uzly budou rozloženy mezi více zón a každý fond uzlů je umístěn v určené zóně s vyhrazeným prostředkem PPG.
+
 ## <a name="create-a-new-aks-cluster-with-a-proximity-placement-group"></a>Vytvoří nový cluster AKS se skupinou umístění blízkosti.
 
-Následující příklad používá příkaz [AZ Group Create][az-group-create] k vytvoření skupiny prostředků s názvem *myResourceGroup* v oblasti *centralus* . Pomocí příkazu [AZ AKS Create][az-aks-create] se pak vytvoří cluster AKS s názvem *myAKSCluster* . 
+Následující příklad používá příkaz [AZ Group Create][az-group-create] k vytvoření skupiny prostředků s názvem *myResourceGroup* v oblasti *centralus* . Pomocí příkazu [AZ AKS Create][az-aks-create] se pak vytvoří cluster AKS s názvem *myAKSCluster* .
 
 Urychlené síťové služby významně zlepšují výkon sítě virtuálních počítačů. V ideálním případě používejte skupiny umístění pro Proximity ve spojení s akcelerovanými síťovými službami. Ve výchozím nastavení používá AKS k dispozici akcelerované síťové služby na [podporovaných instancích virtuálních počítačů](../virtual-network/create-vm-accelerated-networking-cli.md?toc=/azure/virtual-machines/linux/toc.json#limitations-and-constraints), které zahrnují většinu virtuálních počítačů Azure se dvěma nebo více vCPU.
 
-Vytvořte nový cluster AKS se skupinou umístění blízkosti:
+Vytvořte nový cluster AKS se skupinou umístění blízkosti přidruženou k prvnímu fondu uzlů systému:
 
 ```azurecli-interactive
 # Create an Azure resource group
@@ -110,7 +122,7 @@ Příkaz vytvoří výstup, který obsahuje hodnotu *ID* , kterou potřebujete p
 V níže uvedeném příkazu použijte ID prostředku skupiny umístění blízkosti pro hodnotu *myPPGResourceID* :
 
 ```azurecli-interactive
-# Create an AKS cluster that uses a proximity placement group for the initial node pool
+# Create an AKS cluster that uses a proximity placement group for the initial system node pool only. The PPG has no effect on the cluster control plane.
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \

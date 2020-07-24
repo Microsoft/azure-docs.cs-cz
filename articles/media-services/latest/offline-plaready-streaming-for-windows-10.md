@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
-ms.openlocfilehash: 63b835d5d6c442f19f6d1fbe1710547ab96e1b40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d5d6c7738516337b3db90bbc5d1a94515e96b3ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82160235"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060591"
 ---
 # <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>Online streamování PlayReady pro Windows 10 s Media Services V3
 
@@ -44,7 +44,7 @@ Výzva, kterou čelíme v implementaci offline režimu, je následující:
 * MP4 podporuje spousta hráčů, nástroje kodéru, ale neexistuje žádná vazba mezi kontejnerem MP4 a DRM.
 * V dlouhodobém horizontu CFF s CENC je způsob, jak jít. V současné době ale ekosystém podpory nástrojů/přehrávače ještě není. Musíme ještě dnes řešení.
  
-Nápad je: formát[PIFF](https://docs.microsoft.com/iis/media/smooth-streaming/protected-interoperable-file-format)(vyhlazené streamování) s H264/AAC má vazbu s PLAYREADY (AES-128 centrum). Jednotlivý plynulý soubor streamování. ISMV (za předpokladu, že zvuk je muxed ve videu) je to fMP4 a dá se použít k přehrávání. Pokud dojde k hladkému streamování obsahu prostřednictvím šifrování PlayReady, každý soubor. ISMV se bude nacházet s fragmentovaným MP4 chráněným jako PlayReady. Můžeme zvolit soubor. ISMV s upřednostňovanou přenosovou rychlostí a přejmenovat ho jako. MP4 ke stažení.
+Nápad je: formát[PIFF](/iis/media/smooth-streaming/protected-interoperable-file-format)(vyhlazené streamování) s H264/AAC má vazbu s PLAYREADY (AES-128 centrum). Jednotlivý plynulý soubor streamování. ISMV (za předpokladu, že zvuk je muxed ve videu) je to fMP4 a dá se použít k přehrávání. Pokud dojde k hladkému streamování obsahu prostřednictvím šifrování PlayReady, každý soubor. ISMV se bude nacházet s fragmentovaným MP4 chráněným jako PlayReady. Můžeme zvolit soubor. ISMV s upřednostňovanou přenosovou rychlostí a přejmenovat ho jako. MP4 ke stažení.
 
 K dispozici jsou dvě možnosti pro hostování MP4 chráněného MP4 pro progresivní stažení:
 

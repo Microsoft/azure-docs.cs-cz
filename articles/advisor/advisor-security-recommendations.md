@@ -3,12 +3,12 @@ title: Zvýšení zabezpečení prostředků pomocí Azure Advisor
 description: Pomocí Azure Advisor můžete zlepšit zabezpečení nasazení Azure.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: bf7a316c893600bed18b9392404af5792e2e31f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f130135ed53dc2ba87f46cbf6f9faf0f07cc0654
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85113853"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057659"
 ---
 # <a name="make-resources-more-secure-with-azure-advisor"></a>Zvýšení zabezpečení prostředků pomocí Azure Advisor
 
@@ -16,7 +16,7 @@ Azure Advisor poskytuje konzistentní a konsolidované zobrazení doporučení p
 
 Security Center pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně a nabízí lepší přehled o zabezpečení prostředků Azure a kontrolu nad nimi. Pravidelně analyzuje stav zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří doporučení. Doporučení vás provede procesem konfigurace potřebných ovládacích prvků. 
 
-Další informace o doporučeních zabezpečení najdete [v tématu Správa doporučení zabezpečení v Azure Security Center](https://azure.microsoft.com/documentation/articles/security-center-recommendations/).
+Další informace o doporučeních zabezpečení najdete [v tématu Správa doporučení zabezpečení v Azure Security Center](../security-center/security-center-recommendations.md).
 
 ## <a name="how-to-access-security-recommendations-in-azure-advisor"></a>Jak získat přístup k doporučením zabezpečení v Azure Advisor
 
@@ -33,5 +33,5 @@ Další informace o doporučení Advisoru najdete tady:
 * [Doporučení pro výkon Advisoru](advisor-performance-recommendations.md)
 * [Doporučení pro spolehlivost Advisoru](advisor-high-availability-recommendations.md)
 * [Doporučení provozní kvality Advisoru](advisor-operational-excellence-recommendations.md)
-* [REST API Advisoru](https://docs.microsoft.com/rest/api/advisor/)
+* [REST API Advisoru](/rest/api/advisor/)
  

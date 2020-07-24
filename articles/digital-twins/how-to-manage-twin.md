@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e37c680f6bf9e296230232c0d4e0fab5f50ad3cd
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 48b8175ed5f753ffe7b62d3e97f4fe20f60da5ca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142367"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061599"
 ---
 # <a name="manage-digital-twins"></a>Správa digitálních dvojčat
 
 Entity ve vašem prostředí jsou reprezentovány pomocí [digitálních vláken](concepts-twins-graph.md). Správa digitálních vláken může zahrnovat vytváření, úpravy a odebírání. K provedení těchto operací můžete použít [**rozhraní API DigitalTwins**](how-to-use-apis-sdks.md), [sadu .NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)nebo rozhraní příkazového [řádku Azure Digital vlákens](how-to-use-cli.md).
 
-Tento článek se zaměřuje na správu digitálních vláken; Chcete-li pracovat se vztahy a s [dvojitým grafem](concepts-twins-graph.md) v podobě celku, přečtěte si téma [Postup: Správa nefunkčního grafu s relacemi](how-to-manage-graph.md).
+Tento článek se zaměřuje na správu digitálních vláken; Chcete-li pracovat se vztahy a s [dvojitým grafem](concepts-twins-graph.md) v podobě celku, přečtěte si téma [*Postup: Správa nefunkčního grafu s relacemi*](how-to-manage-graph.md).
 
 > [!TIP]
 > Všechny funkce sady SDK přicházejí v synchronních a asynchronních verzích.
@@ -44,7 +44,7 @@ Hodnoty modelů a počátečních vlastností jsou k dispozici prostřednictvím
 
 ### <a name="initialize-properties"></a>Inicializovat vlastnosti
 
-Rozhraní API pro vytvoření vlákna přijímá objekt, který lze serializovat na platný popis JSON vlastností. V tématu [Koncepty: digitální vlákna a Dvojitá graf](concepts-twins-graph.md) pro Popis formátu JSON pro dvojitou hodnotu.
+Rozhraní API pro vytvoření vlákna přijímá objekt, který lze serializovat na platný popis JSON vlastností. V tématu [*Koncepty: digitální vlákna a Dvojitá graf*](concepts-twins-graph.md) pro Popis formátu JSON pro dvojitou hodnotu.
 
 Můžete vytvořit objekt parametru buď ručně, nebo pomocí poskytnuté pomocné třídy. Tady je příklad každé z nich.
 
@@ -91,7 +91,7 @@ object result = await client.GetDigitalTwin(id);
 
 Toto volání vrátí jako řetězec JSON dvojitá data. 
 
-Chcete-li načíst více vláken pomocí jediného volání rozhraní API, přečtěte si příklady rozhraní API pro dotazování v tématu [Postupy: vytvoření dotazu na nevlákenný graf](how-to-query-graph.md).
+Chcete-li načíst více vláken pomocí jediného volání rozhraní API, přečtěte si příklady rozhraní API pro dotazování v tématu [*Postupy: vytvoření dotazu na nevlákenný graf*](how-to-query-graph.md).
 
 Vezměte v úvahu následující model (napsaný v [digitálním DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL), který definuje *měsíc*:
 
@@ -155,7 +155,7 @@ Definované vlastnosti digitálního vlákna jsou vráceny jako vlastnosti nejvy
 
 Můžete analyzovat vrácený formát JSON pro vlákna pomocí knihovny analýzy JSON dle vašeho výběru, například `System.Text.Json` .
 
-Můžete také použít třídu pomocníka serializace `BasicDigitalTwin` , která je součástí sady SDK, což vrátí základní a vlastnosti ve formě předem analyzovaných formulářů. Zde naleznete příklad:
+Můžete také použít třídu pomocníka serializace `BasicDigitalTwin` , která je součástí sady SDK, což vrátí základní a vlastnosti ve formě předem analyzovaných formulářů. Tady je příklad:
 
 ```csharp
 Response<string> res = client.GetDigitalTwin(twin_id);
@@ -168,7 +168,7 @@ foreach (string prop in twin.CustomProperties.Keys)
 }
 ```
 
-Další informace o pomocných třídách serializace najdete v tématu [Postupy: použití rozhraní API a sad SDK pro digitální vlákna Azure](how-to-use-apis-sdks.md).
+Další informace o pomocných třídách serializace najdete v tématu [*Postupy: použití rozhraní API a sad SDK pro digitální vlákna Azure*](how-to-use-apis-sdks.md).
 
 ## <a name="update-a-digital-twin"></a>Aktualizace digitálního vlákna
 
@@ -337,13 +337,13 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
 
 ### <a name="delete-all-digital-twins"></a>Odstranit všechny digitální vlákna
 
-Příklad, jak odstranit všechny vlákna najednou, si můžete stáhnout ukázkovou aplikaci používanou v tomto [kurzu: Prozkoumejte základy s ukázkovou klientskou aplikací](tutorial-command-line-app.md). Soubor *CommandLoop.cs* to dělá ve `CommandDeleteAllTwins` funkci.
+Příklad, jak odstranit všechny vlákna najednou, si můžete stáhnout ukázkovou aplikaci používanou v tomto [*kurzu: Prozkoumejte základy s ukázkovou klientskou aplikací*](tutorial-command-line-app.md). Soubor *CommandLoop.cs* to dělá ve `CommandDeleteAllTwins` funkci.
 
 ## <a name="manage-twins-with-cli"></a>Správa dvojitých vláken pomocí rozhraní příkazového řádku
 
-Vlákna je také možné spravovat pomocí rozhraní příkazového řádku Azure Digital revlákens CLI. Příkazy najdete v tématu [Postupy: použití rozhraní příkazového řádku Azure Digital zdvojené](how-to-use-cli.md).
+Vlákna je také možné spravovat pomocí rozhraní příkazového řádku Azure Digital revlákens CLI. Příkazy najdete v tématu [*Postupy: použití rozhraní příkazového řádku Azure Digital zdvojené*](how-to-use-cli.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 Podívejte se, jak vytvořit a spravovat vztahy mezi vašimi digitálními dvojitými hodnotami:
-* [Postupy: Správa dvojitých grafů s relacemi](how-to-manage-graph.md)
+* [*Postupy: Správa dvojitých grafů s relacemi*](how-to-manage-graph.md)

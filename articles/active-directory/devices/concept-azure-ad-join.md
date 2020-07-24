@@ -5,32 +5,33 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 06/27/2019
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca08b81a71cd61e727b11bbeb88c0c235d25c5e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3839c7b87e5d07368727d037b585965dce91303a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554896"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058097"
 ---
 # <a name="azure-ad-joined-devices"></a>Zařízení připojená k Azure AD
 
 Služba Azure AD JOIN je určena pro organizace, které chtějí být pouze cloudové nebo cloudové. Každá organizace může nasadit zařízení připojená k Azure AD bez ohledu na velikost nebo odvětví. Připojení k Azure AD funguje i v hybridním prostředí a umožňuje přístup ke cloudovým i místním aplikacím a prostředkům.
 
-| Připojení k Azure AD | Description |
+| Připojení k Azure AD | Popis |
 | --- | --- |
 | **Definice** | Připojeno pouze k Azure AD vyžadování účtu organizace pro přihlášení k zařízení |
 | **Primární cílová skupina** | Vhodné pro cloudové i hybridní organizace. |
 |   | Platí pro všechny uživatele v organizaci. |
 | **Vlastnictví zařízení** | Organizace |
 | **Operační systémy** | Všechna zařízení s Windows 10 |
+|   | [Windows Server 2019 Virtual Machines běžící v Azure](howto-vm-sign-in-azure-ad-windows.md) (jádro serveru se nepodporuje) |
 | **Zřizování** | Samoobslužná služba: Windows OOBE nebo nastavení |
-|   | Hromadný zápis |
+|   | Hromadná registrace |
 |   | Windows Autopilot |
 | **Možnosti přihlášení zařízení** | Účty organizace pomocí: |
 |   | Heslo |
@@ -82,5 +83,5 @@ K nasazení služby Azure AD Join je možné použít jakoukoli z následující
 
 - [Plánování implementace připojení ke službě Azure AD](azureadjoin-plan.md)
 - [Jak spravovat místní skupinu Administrators na zařízeních připojených k Azure AD](assign-local-admin.md)
-- [Správa identit zařízení pomocí Azure Portal](device-management-azure-portal.md)
-- [Správa zastaralých zařízení ve službě Azure AD](manage-stale-devices.md)
+- [Správa identit zařízení přes Azure Portal](device-management-azure-portal.md)
+- [Správa zastaralých zařízení v Azure AD](manage-stale-devices.md)

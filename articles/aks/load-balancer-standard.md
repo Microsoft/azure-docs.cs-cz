@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 11f8442f188ea6ce7ee1de5a093362279da4594c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 417ca42e014c0bb197d7dd834b960f25fcfdf468
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251159"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056803"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Použití veřejné Standard Load Balancer ve službě Azure Kubernetes (AKS)
 
@@ -167,7 +167,7 @@ az aks update \
 
 #### <a name="create-the-cluster-with-your-own-public-ip-or-prefixes"></a>Vytvoření clusteru s vlastní veřejnou IP adresou nebo předponami
 
-Možná budete chtít uvést vlastní IP adresy nebo předpony IP pro výstup v době vytváření clusteru pro podporu scénářů, jako je například povolený koncový bod odchozích dat. Přidejte stejné parametry uvedené výše do vašeho kroku vytvoření clusteru a definujte vlastní veřejné IP adresy a předpony IP adres na začátku životního cyklu clusteru.
+Můžete chtít použít vlastní IP adresy nebo předpony IP pro výstup v době vytváření clusteru pro podporu scénářů, jako je přidání koncových bodů odchozího přenosu do seznamu povolených. Přidejte stejné parametry uvedené výše do vašeho kroku vytvoření clusteru a definujte vlastní veřejné IP adresy a předpony IP adres na začátku životního cyklu clusteru.
 
 Pomocí příkazu *AZ AKS Create* s parametrem *Load Balancer-Outbound-IPS* vytvořte nový cluster s vašimi veřejnými IP adresami na začátku.
 
@@ -293,6 +293,24 @@ spec:
   - MY_EXTERNAL_IP_RANGE
 ```
 
+## <a name="maintain-the-clients-ip-on-inbound-connections"></a>Udržovat IP adresu klienta při příchozích připojeních
+
+Ve výchozím nastavení služba typu `LoadBalancer` [v Kubernetes](https://kubernetes.io/docs/tutorials/services/source-ip/#source-ip-for-services-with-type-loadbalancer) a v AKS nezachová IP adresu klienta v připojení k části pod. Zdrojová IP adresa v paketu, který se doručí do uzlu pod, bude privátní IP adresa uzlu. Chcete-li zachovat IP adresu klienta, je nutné nastavit `service.spec.externalTrafficPolicy` na `local` definici služby. Následující manifest ukazuje příklad:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: azure-vote-front
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Local
+  ports:
+  - port: 80
+  selector:
+    app: azure-vote-front
+```
+
 ## <a name="additional-customizations-via-kubernetes-annotations"></a>Další přizpůsobení prostřednictvím poznámek Kubernetes
 
 Níže je uveden seznam poznámek podporovaných pro služby Kubernetes Services s typem `LoadBalancer` . Tyto poznámky platí pouze pro **příchozí** toky:
@@ -322,7 +340,7 @@ Hlavní příčinou vyčerpání SNAT je i anti-vzor pro způsob, jakým se u od
 4. Vyhodnotí, zda jsou následovány příslušné [vzory](#design-patterns) .
 5. Vyhodnoťte, jestli se má vyčerpání portů SNAT zmírnit pomocí [dalších odchozích IP adres a dalších přidělených odchozích portů](#configure-the-allocated-outbound-ports) .
 
-### <a name="design-patterns"></a>Způsoby návrhu
+### <a name="design-patterns"></a>Vzory návrhu
 Kdykoli je to možné, využijte výhod opětovného použití připojení a sdružování připojení. Tyto vzory se vyhne problémům s vyčerpáním prostředků a mají za následek předvídatelné chování. Primitivní prvky pro tyto vzory se dají najít v řadě vývojových knihoven a architektur.
 
 - Atomické žádosti (jedna žádost na připojení) obecně není vhodným návrhem. Taková omezení pro antipatterny se omezují na škálování, snižuje výkon a snižuje spolehlivost. Místo toho můžete znovu použít připojení HTTP/S a snížit tak počet připojení a přidružené porty SNAT. Škálování aplikace se zvýší a vylepšit výkon kvůli snížení nákladů na handshake, režijních a kryptografických operací při použití TLS.

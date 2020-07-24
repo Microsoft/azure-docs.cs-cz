@@ -3,15 +3,17 @@ title: Náhodné odstranění ochrany sdílených složek Azure
 description: Naučte se, jak obnovitelné odstranění může chránit sdílené složky Azure před náhodným odstraněním.
 ms.topic: conceptual
 ms.date: 02/02/2020
-ms.openlocfilehash: 09d74a135fc43a7758004d77af2ec4c478345a2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 7070cb1ee3881fbec2c6f44eae18f3bc51f8051d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84122406"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054367"
 ---
 # <a name="accidental-delete-protection-for-azure-file-shares-using-azure-backup"></a>Náhodné odstranění ochrany sdílených složek Azure pomocí Azure Backup
 
-Aby se zajistila ochrana před kyberútokům nebo náhodným odstraněním, je pro všechny sdílené složky v účtu úložiště povolené [obnovitelné odstranění](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion) , když nakonfigurujete zálohování pro jakoukoli sdílenou složku v příslušném účtu úložiště. Pomocí obnovitelného odstranění, a to i v případě, že škodlivý objekt actor odstraní sdílenou složku, obsah sdílené složky a body obnovení (snímky) se uchovávají minimálně 14 dalších dnů, což umožňuje obnovení sdílených složek bez ztráty dat.  
+Aby se zajistila ochrana před kyberútokům nebo náhodným odstraněním, je pro všechny sdílené složky v účtu úložiště povolené [obnovitelné odstranění](../storage/files/storage-files-prevent-file-share-deletion.md) , když nakonfigurujete zálohování pro jakoukoli sdílenou složku v příslušném účtu úložiště. Pomocí obnovitelného odstranění, a to i v případě, že škodlivý objekt actor odstraní sdílenou složku, obsah sdílené složky a body obnovení (snímky) se uchovávají minimálně 14 dalších dnů, což umožňuje obnovení sdílených složek bez ztráty dat.  
 
 Obnovitelné odstranění se podporuje jenom pro účty úložiště úrovně Standard a Premium a v současnosti se povoluje ze strany Azure Backup v [těchto oblastech](azure-file-share-support-matrix.md).
 
@@ -27,7 +29,7 @@ Při konfiguraci zálohování pro každou sdílenou složku v účtu úložišt
 
 ### <a name="can-i-configure-the-number-of-days-for-which-my-snapshots-and-restore-points-will-be-retained-in-soft-deleted-state-after-i-delete-the-file-share"></a>Můžu nakonfigurovat počet dní, po které se po odstranění sdílené složky budou uchovávat vaše snímky a body obnovení ve stavu tichého odstranění?
 
-Ano, doba uchovávání můžete nastavit podle vašich požadavků. [Tento dokument](https://docs.microsoft.com/azure/storage/files/storage-files-enable-soft-delete?tabs=azure-portal) popisuje kroky pro konfiguraci doby uchovávání. U účtů úložiště s zálohovanými sdílenými složkami musí být minimální nastavení uchovávání 14 dnů.
+Ano, doba uchovávání můžete nastavit podle vašich požadavků. [Tento dokument](../storage/files/storage-files-enable-soft-delete.md?tabs=azure-portal) popisuje kroky pro konfiguraci doby uchovávání. U účtů úložiště s zálohovanými sdílenými složkami musí být minimální nastavení uchovávání 14 dnů.
 
 ### <a name="does-azure-backup-reset-my-retention-setting-because-i-configured-it-to-less-than-14-days"></a>Obnoví Azure Backup nastavení zachování, protože jsem nakonfigurovali méně než 14 dní?
 
@@ -39,14 +41,14 @@ Během období podmíněného odstranění zůstanou náklady na chráněnou ins
 
 ### <a name="can-i-perform-a-restore-operation-when-my-data-is-in-soft-deleted-state"></a>Můžu provést operaci obnovení, když jsou moje data ve stavu tichého odstranění?
 
-Abyste mohli provádět operace obnovení, musíte nejdřív odstraněnou sdílenou složku zrušit. Operace zrušení odstranění zařadí sdílenou složku do zálohovaného stavu, ve kterém se můžete kdykoli vrátit k libovolnému bodu v čase. Informace o tom, jak zrušit odstranění sdílené složky, najdete na [tomto odkazu](https://docs.microsoft.com/azure/storage/files/storage-files-enable-soft-delete?tabs=azure-portal#restore-soft-deleted-file-share) nebo v tématu [zrušení odstranění sdílení souborů](./scripts/backup-powershell-script-undelete-file-share.md).
+Abyste mohli provádět operace obnovení, musíte nejdřív odstraněnou sdílenou složku zrušit. Operace zrušení odstranění zařadí sdílenou složku do zálohovaného stavu, ve kterém se můžete kdykoli vrátit k libovolnému bodu v čase. Informace o tom, jak zrušit odstranění sdílené složky, najdete na [tomto odkazu](../storage/files/storage-files-enable-soft-delete.md?tabs=azure-portal#restore-soft-deleted-file-share) nebo v tématu [zrušení odstranění sdílení souborů](./scripts/backup-powershell-script-undelete-file-share.md).
 
 ### <a name="how-can-i-purge-the-data-of-a-file-share-in-a-storage-account-that-has-at-least-one-protected-file-share"></a>Jak můžu vymazat data sdílené složky v účtu úložiště, který má alespoň jednu chráněnou sdílenou složku?
 
 Pokud máte v účtu úložiště aspoň jednu chráněnou sdílenou složku, znamená to, že pro všechny sdílené složky v tomto účtu je povolené obnovitelné odstranění a data se uchovávají po dobu 14 dnů od operace odstranění. Pokud ale chcete data Vymazat hned a nechcete, aby byla zachována, postupujte podle těchto kroků:
 
-1. Pokud jste sdílenou složku už odstranili, když je povolené obnovitelné odstranění, odstraňte nejprve sdílenou složku z [portálu souborů](https://docs.microsoft.com/azure/storage/files/storage-files-enable-soft-delete?tabs=azure-portal#restore-soft-deleted-file-share) nebo pomocí [skriptu pro odstranění sdílené složky](./scripts/backup-powershell-script-undelete-file-share.md).
-2. Pomocí kroků uvedených v [tomto dokumentu](https://docs.microsoft.com/azure/storage/files/storage-files-enable-soft-delete?tabs=azure-portal#disable-soft-delete)zakažte obnovitelné odstranění pro sdílené složky v účtu úložiště.
+1. Pokud jste sdílenou složku už odstranili, když je povolené obnovitelné odstranění, odstraňte nejprve sdílenou složku z [portálu souborů](../storage/files/storage-files-enable-soft-delete.md?tabs=azure-portal#restore-soft-deleted-file-share) nebo pomocí [skriptu pro odstranění sdílené složky](./scripts/backup-powershell-script-undelete-file-share.md).
+2. Pomocí kroků uvedených v [tomto dokumentu](../storage/files/storage-files-enable-soft-delete.md?tabs=azure-portal#disable-soft-delete)zakažte obnovitelné odstranění pro sdílené složky v účtu úložiště.
 3. Nyní odstraňte sdílenou složku, jejíž obsah chcete okamžitě vyprázdnit.
 
 >[!NOTE]
@@ -57,7 +59,7 @@ Pokud máte v účtu úložiště aspoň jednu chráněnou sdílenou složku, zn
 
 ### <a name="in-the-context-of-a-file-shares-soft-delete-setting-what-changes-does-azure-backup-do-when-i-unregister-a-storage-account"></a>V kontextu nastavení obnovitelného odstranění sdílené složky se u kterých změn Azure Backup udělat, když zruším registraci účtu úložiště?
 
-V době zrušení registrace Azure Backup kontroluje nastavení doby uchování pro sdílené složky a pokud je větší než 14 dní nebo méně než 14 dní, zůstane uchovávání tak, jak je. Pokud je však doba uchovávání 14 dnů, považujeme za povolenou Azure Backup, takže během procesu rušení registrace deaktivuje obnovitelné odstranění. Pokud chcete zrušit registraci účtu úložiště a přitom ponechat nastavení uchovávání, můžete ho znovu povolit z podokna účet úložiště po dokončení zrušení registrace. Postup konfigurace najdete na [tomto odkazu](https://docs.microsoft.com/azure/storage/files/storage-files-enable-soft-delete?tabs=azure-portal#restore-soft-deleted-file-share) .
+V době zrušení registrace Azure Backup kontroluje nastavení doby uchování pro sdílené složky a pokud je větší než 14 dní nebo méně než 14 dní, zůstane uchovávání tak, jak je. Pokud je však doba uchovávání 14 dnů, považujeme za povolenou Azure Backup, takže během procesu rušení registrace deaktivuje obnovitelné odstranění. Pokud chcete zrušit registraci účtu úložiště a přitom ponechat nastavení uchovávání, můžete ho znovu povolit z podokna účet úložiště po dokončení zrušení registrace. Postup konfigurace najdete na [tomto odkazu](../storage/files/storage-files-enable-soft-delete.md?tabs=azure-portal#restore-soft-deleted-file-share) .
 
 ## <a name="next-steps"></a>Další kroky
 

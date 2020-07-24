@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: 190cc74bc2967cdee7f3154e0d6a6fedd8ee90dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 06c10cffcfa5c68b1da8ba366ca270f1c2fa6ea4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565037"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060963"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Ověřování přístupu k prostředkům Azure pomocí spravovaných identit v Azure Logic Apps
 
@@ -31,7 +31,7 @@ Tento článek popisuje, jak pro vaši aplikaci logiky nastavit oba druhy spravo
 * [Omezení spravovaných identit pro Logic Apps](../logic-apps/logic-apps-limits-and-config.md#managed-identity)
 * [Služby Azure, které podporují ověřování Azure AD se spravovanými identitami](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). Spravovaná identita i cílový prostředek Azure, ke kterému potřebujete přístup, musí používat stejné předplatné Azure.
 
@@ -55,7 +55,7 @@ Chcete-li nastavit spravovanou identitu, kterou chcete použít, použijte odkaz
 Na rozdíl od uživatelsky přiřazených identit nemusíte ručně vytvářet identitu přiřazenou systémem. Chcete-li nastavit identitu přiřazenou systémem pro vaši aplikaci logiky, můžete použít následující možnosti:
 
 * [Azure Portal](#azure-portal-system-logic-app)
-* [Šablony Azure Resource Manageru](#template-system-logic-app)
+* [Šablony Azure Resource Manager](#template-system-logic-app)
 
 <a name="azure-portal-system-logic-app"></a>
 
@@ -74,7 +74,7 @@ Na rozdíl od uživatelsky přiřazených identit nemusíte ručně vytvářet i
 
    ![ID objektu pro identitu přiřazenou systémem](./media/create-managed-service-identity/object-id-system-assigned-identity.png)
 
-   | Vlastnost | Hodnota | Description |
+   | Vlastnost | Hodnota | Popis |
    |----------|-------|-------------|
    | **ID objektu** | <*Identita-Resource-ID*> | Globálně jedinečný identifikátor (GUID), který představuje identitu přiřazenou systémem pro vaši aplikaci logiky v tenantovi Azure AD. |
    ||||
@@ -120,7 +120,7 @@ Když Azure vytvoří definici prostředků aplikace logiky, `identity` objekt z
 }
 ```
 
-| Property (JSON) | Hodnota | Description |
+| Property (JSON) | Hodnota | Popis |
 |-----------------|-------|-------------|
 | `principalId` | <*ID objektu zabezpečení*> | Globálně jedinečný identifikátor (GUID) instančního objektu služby pro spravovanou identitu, která představuje vaši aplikaci logiky v tenantovi Azure AD. Tento identifikátor GUID se někdy zobrazuje jako "ID objektu" nebo `objectID` . |
 | `tenantId` | <*Azure-AD-tenant-ID*> | Globálně jedinečný identifikátor (GUID), který představuje tenanta Azure AD, ve kterém je teď aplikace logiky členem. V tenantovi služby Azure AD má instanční objekt stejný název jako instance aplikace logiky. |
@@ -133,7 +133,7 @@ Když Azure vytvoří definici prostředků aplikace logiky, `identity` objekt z
 Pokud chcete pro vaši aplikaci logiky nastavit spravovanou identitu přiřazenou uživatelem, musíte nejdřív vytvořit tuto identitu jako samostatný samostatný prostředek Azure. Tady jsou možnosti, které můžete použít:
 
 * [Azure Portal](#azure-portal-user-identity)
-* [Šablony Azure Resource Manageru](#template-user-identity)
+* [Šablony Azure Resource Manager](#template-user-identity)
 * Azure PowerShell
   * [Vytvoření uživatelsky přiřazené identity](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
   * [Přidat přiřazení role](../active-directory/managed-identities-azure-resources/howto-assign-access-powershell.md)
@@ -160,7 +160,7 @@ Pokud chcete pro vaši aplikaci logiky nastavit spravovanou identitu přiřazeno
 
    ![Vytvoření spravované identity přiřazené uživatelem](./media/create-managed-service-identity/create-user-assigned-identity.png)
 
-   | Vlastnost | Požaduje se | Hodnota | Description |
+   | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
    | **Název prostředku** | Yes | <*uživatelsky přiřazené-identity-Name*> | Název, kterému chcete přiřadit identitu přiřazenou uživatelem. V tomto příkladu se používá "Fabrikam-User-Assign-identity". |
    | **Předplatné** | Yes | <*Azure – předplatné – název*> | Název předplatného Azure, které se má použít |
@@ -232,7 +232,7 @@ Tento příklad ukazuje definici prostředků aplikace logiky pro požadavek HTT
 }
 ```
 
-| Property (JSON) | Hodnota | Description |
+| Property (JSON) | Hodnota | Popis |
 |-----------------|-------|-------------|
 | `principalId` | <*ID objektu zabezpečení*> | Globálně jedinečný identifikátor (GUID) uživatelsky přiřazené spravované identity v tenantovi Azure AD |
 | `clientId` | <*ID klienta*> | Globálně jedinečný identifikátor (GUID) pro novou identitu vaší aplikace logiky, který se používá pro volání během běhu |
@@ -291,7 +291,7 @@ Pokud šablona obsahuje také definici prostředků spravované identity, může
 }
 ```
 
-| Property (JSON) | Hodnota | Description |
+| Property (JSON) | Hodnota | Popis |
 |-----------------|-------|-------------|
 | `tenantId` | <*Azure-AD-tenant-ID*> | Globálně jedinečný identifikátor (GUID), který představuje klienta služby Azure AD, kde je uživatelem přiřazená identita nyní členem. V tenantovi služby Azure AD má instanční objekt stejný název jako název identity přiřazené uživatelem. |
 | `principalId` | <*ID objektu zabezpečení*> | Globálně jedinečný identifikátor (GUID) uživatelsky přiřazené spravované identity v tenantovi Azure AD |
@@ -306,8 +306,8 @@ Než budete moct použít spravovanou identitu vaší aplikace logiky k ověřov
 
 * [Azure Portal](#azure-portal-assign-access)
 * [Šablona Azure Resource Manageru](../role-based-access-control/role-assignments-template.md)
-* Azure PowerShell ([New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment)) – Další informace najdete v tématu [Přidání přiřazení role pomocí Azure RBAC a Azure PowerShell](../role-based-access-control/role-assignments-powershell.md).
-* Azure CLI ([AZ role Assignment Create](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create)) – Další informace najdete v tématu [Přidání přiřazení role pomocí Azure RBAC a Azure CLI](../role-based-access-control/role-assignments-cli.md).
+* Azure PowerShell ([New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)) – Další informace najdete v tématu [Přidání přiřazení role pomocí Azure RBAC a Azure PowerShell](../role-based-access-control/role-assignments-powershell.md).
+* Azure CLI ([AZ role Assignment Create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create)) – Další informace najdete v tématu [Přidání přiřazení role pomocí Azure RBAC a Azure CLI](../role-based-access-control/role-assignments-cli.md).
 * [Azure REST API](../role-based-access-control/role-assignments-rest.md)
 
 <a name="azure-portal-assign-access"></a>
@@ -384,21 +384,21 @@ Tyto kroky ukazují, jak používat spravovanou identitu s triggerem nebo akcí 
    | **Identifikátor URI** | Yes | Adresa URL koncového bodu pro přístup k cílovému prostředku Azure nebo entitě. Syntaxe identifikátoru URI obvykle zahrnuje [ID prostředku](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) pro prostředek nebo službu Azure. |
    | **Hlavičky** | No | Všechny hodnoty hlaviček, které potřebujete nebo chcete zahrnout do odchozího požadavku, jako je typ obsahu |
    | **Dotazy** | No | Všechny parametry dotazů, které potřebujete nebo chcete zahrnout do žádosti, jako je například parametr konkrétní operace nebo verze rozhraní API pro operaci, kterou chcete spustit |
-   | **Authentication** | Yes | Typ ověřování, který se má použít pro ověřování přístupu k cílovému prostředku nebo entitě |
+   | **Ověřování** | Yes | Typ ověřování, který se má použít pro ověřování přístupu k cílovému prostředku nebo entitě |
    ||||
 
-   Jako konkrétní příklad Předpokládejme, že chcete spustit [operaci Snapshot BLOB](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob) u objektu BLOB v účtu Azure Storage, kde jste předtím nastavili přístup k vaší identitě. Ale [konektor Azure Blob Storage](https://docs.microsoft.com/connectors/azureblob/) v současnosti tuto operaci nenabízí. Místo toho můžete tuto operaci spustit pomocí [akce http](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) nebo jiné [operace REST API služby BLOB Service](https://docs.microsoft.com/rest/api/storageservices/operations-on-blobs).
+   Jako konkrétní příklad Předpokládejme, že chcete spustit [operaci Snapshot BLOB](/rest/api/storageservices/snapshot-blob) u objektu BLOB v účtu Azure Storage, kde jste předtím nastavili přístup k vaší identitě. Ale [konektor Azure Blob Storage](/connectors/azureblob/) v současnosti tuto operaci nenabízí. Místo toho můžete tuto operaci spustit pomocí [akce http](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) nebo jiné [operace REST API služby BLOB Service](/rest/api/storageservices/operations-on-blobs).
 
    > [!IMPORTANT]
    > Pokud chcete získat přístup k účtům Azure Storage za brány firewall pomocí požadavků HTTP a spravovaných identit, ujistěte se, že jste také nastavili účet úložiště s [výjimkou, která umožňuje přístup důvěryhodnými službami Microsoftu](../connectors/connectors-create-api-azureblobstorage.md#access-trusted-service).
 
-   Pokud chcete spustit [operaci objektu BLOB snímku](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob), akce http určuje tyto vlastnosti:
+   Pokud chcete spustit [operaci objektu BLOB snímku](/rest/api/storageservices/snapshot-blob), akce http určuje tyto vlastnosti:
 
-   | Vlastnost | Požaduje se | Příklad hodnoty | Description |
+   | Vlastnost | Požaduje se | Příklad hodnoty | Popis |
    |----------|----------|---------------|-------------|
    | **Metoda** | Yes | `PUT`| Metoda HTTP, kterou používá operace objektu BLOB snímku |
    | **Identifikátor URI** | Yes | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | ID prostředku pro soubor Azure Blob Storage v globálním (veřejném) prostředí Azure, které používá tuto syntaxi |
-   | **Hlavičky** | Ano, pro Azure Storage | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` | `x-ms-blob-type` `x-ms-version` Hodnoty hlaviček a, které jsou požadovány pro operace Azure Storage. <p><p>**Důležité**: v odchozích triggerech http a požadavcích akcí pro Azure Storage hlavička vyžaduje `x-ms-version` vlastnost a verzi rozhraní API pro operaci, kterou chcete spustit. <p>Další informace najdete v těchto tématech: <p><p>- [Hlavičky žádosti – objekt BLOB snímku](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob#request) <br>- [Správa verzí pro služby Azure Storage Services](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
+   | **Hlavičky** | Ano, pro Azure Storage | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` | `x-ms-blob-type` `x-ms-version` Hodnoty hlaviček a, které jsou požadovány pro operace Azure Storage. <p><p>**Důležité**: v odchozích triggerech http a požadavcích akcí pro Azure Storage hlavička vyžaduje `x-ms-version` vlastnost a verzi rozhraní API pro operaci, kterou chcete spustit. <p>Další informace najdete v těchto tématech: <p><p>- [Hlavičky žádosti – objekt BLOB snímku](/rest/api/storageservices/snapshot-blob#request) <br>- [Správa verzí pro služby Azure Storage Services](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
    | **Dotazy** | Ano, pro tuto operaci | `comp` = `snapshot` | Název a hodnota parametru dotazu pro operaci objektu BLOB snímku. |
    |||||
 
@@ -441,7 +441,7 @@ Tyto kroky ukazují, jak používat spravovanou identitu s triggerem nebo akcí 
    Další informace o autorizaci přístupu ke službě Azure AD pro Azure Storage najdete v těchto tématech:
 
    * [Autorizace přístupu k Azure Blob a frontám pomocí Azure Active Directory](../storage/common/storage-auth-aad.md)
-   * [Autorizovat přístup k Azure Storage pomocí Azure Active Directory](https://docs.microsoft.com/rest/api/storageservices/authorize-with-azure-active-directory#use-oauth-access-tokens-for-authentication)
+   * [Autorizovat přístup k Azure Storage pomocí Azure Active Directory](/rest/api/storageservices/authorize-with-azure-active-directory#use-oauth-access-tokens-for-authentication)
 
 1. Pokračujte v sestavování aplikace logiky způsobem, který požadujete.
 
@@ -452,7 +452,7 @@ Tyto kroky ukazují, jak používat spravovanou identitu s triggerem nebo akcí 
 Pokud chcete přestat používat spravovanou identitu pro vaši aplikaci logiky, máte tyto možnosti:
 
 * [Azure Portal](#azure-portal-disable)
-* [Šablony Azure Resource Manageru](#template-disable)
+* [Šablony Azure Resource Manager](#template-disable)
 * Azure PowerShell
   * [Odebrat přiřazení role](../role-based-access-control/role-assignments-powershell.md)
   * [Odstranění identity přiřazené uživatelem](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)

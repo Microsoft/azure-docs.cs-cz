@@ -4,11 +4,12 @@ description: V tomto článku se seznámíte s možnostmi monitorování a oznam
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: f4b91302723119e707d12a86480bbaff2eb4bec5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 645bf701a8f8561b2cb4f19378036ada82c4bedd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485093"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054549"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Monitorování úloh Azure Backup
 
@@ -27,7 +28,7 @@ Tady jsou uvedené úlohy z následujících řešení Azure Backup:
 - Zálohování virtuálních počítačů Azure
 - Zálohování souborů Azure
 - Zálohování úloh Azure, jako je SQL a SAP HANA
-- Agent Azure Backup (MAB)
+- Agent Microsoft Azure Recovery Services (MARS)
 
 Úlohy z nástroje System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup Server (MABS) se nezobrazí.
 
@@ -43,7 +44,7 @@ Výstrahy jsou primárně ve scénářích, kdy se uživatelům pošle oznámen�
 Následující scénáře jsou definovány službou jako scénáře s možností upozorňování.
 
 - Selhání zálohování nebo obnovení
-- Zálohování proběhlo úspěšně s upozorněními pro agenta Azure Backup (MAB)
+- Zálohování bylo úspěšné s upozorněními pro agenta Microsoft Azure Recovery Services (MARS).
 - Zastavení ochrany s uchováním dat/zastavení ochrany pomocí odstranění dat
 
 ### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>Tady jsou uvedené výstrahy z následujících řešení Azure Backup.
@@ -51,7 +52,7 @@ Následující scénáře jsou definovány službou jako scénáře s možností
 - Zálohování virtuálních počítačů Azure
 - Zálohování souborů Azure
 - Zálohování úloh Azure, jako je SQL, SAP HANA
-- Agent Azure Backup (MAB)
+- Agent Microsoft Azure Recovery Services (MARS) 
 
 > [!NOTE]
 > Výstrahy z nástroje System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup Server (MABS) se tady nezobrazují.

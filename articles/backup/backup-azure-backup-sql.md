@@ -3,11 +3,12 @@ title: Zálohování SQL Server do Azure jako úlohy DPM
 description: Úvod k zálohování SQL Server databází pomocí služby Azure Backup
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: f6a612bc56d1fa6b70ac89ed48f28d1ae48da2e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd091f9446cafdb6ff91ae5679c703e07457169c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195776"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055386"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Zálohování SQL Server do Azure jako úlohy DPM
 
@@ -20,6 +21,34 @@ Zálohování databáze SQL Server do Azure a její obnovení z Azure:
 1. Vytvořte zásady zálohování pro ochranu SQL Serverch databází v Azure.
 1. Vytváření záložních kopií na vyžádání v Azure.
 1. Obnovte databázi z Azure.
+
+## <a name="prerequisites-and-limitations"></a>Požadavky a omezení
+
+* Pokud máte databázi se soubory ve vzdálené sdílené složce, ochrana se nezdaří a ID chyby bude 104. DPM nepodporuje ochranu pro SQL Server dat ve vzdálené sdílené složce souborů.
+* Aplikace DPM nemůže chránit databáze, které jsou uloženy ve vzdálených sdílených složkách protokolu SMB.
+* Ujistěte se, že [repliky skupin dostupnosti jsou nakonfigurovány jen pro čtení](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15).
+* Účet System **NTAUTHORITY\SYSTEM.** musíte explicitně přidat do skupiny Sysadmin na SQL Server.
+* Když provedete obnovení do alternativního umístění pro částečně databázi s omezením, je nutné zajistit, aby byla v cílové instanci SQL povolena funkce [databáze s omezením](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable) .
+* Když provádíte obnovení do alternativního umístění databáze datového proudu souborů, musíte zajistit, aby cílová instance SQL měla povolenou funkci [databáze streamování souborů](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15) .
+* Ochrana SQL Serveru AlwaysOn:
+  * Aplikace DPM při spuštění dotazu při vytváření skupiny ochrany vyhledá skupiny dostupnosti.
+  * Aplikace zjistí převzetí služeb při selhání a pokračuje v ochraně databáze.
+  * Aplikace DPM podporuje konfigurace clusteru více lokalit pro instanci SQL Serveru.
+* Když chráníte databáze využívající funkci AlwaysOn, má nástroj DPM tato omezení:
+  * Nástroj DPM bude ctít zásady zálohování pro skupiny dostupnosti, které jsou nastaveny v systému SQL Server na základě předvoleb zálohování:
+    * Preferovat sekundární – zálohy se budou objevovat na sekundární replice s výjimkou případu, kdy je primární replika jedinou replikou online. Pokud je k dispozici více sekundárních replik, bude pro zálohování vybrán uzel s nejvyšší prioritou zálohování. Pokud je k dispozici pouze primární replika, pak by záloha měla být provedena na primární replice.
+    * Pouze sekundární – záloha se nebude provádět na primární replice. Pokud je online jenom primární replika, zálohování neproběhne.
+    * Primární – zálohování se musí vždy odehrávat na primární replice.
+    * Jakákoli replika – zálohy můžou probíhat na libovolné replice dostupnosti ve skupině dostupnosti. Uzel, z něhož se bude zálohovat, bude založen na prioritách zálohy pro jednotlivé uzly.
+  * Všimněte si, že:
+    * K zálohování může dojít z jakékoli čitelné repliky – primární, synchronní sekundární, asynchronní sekundární.
+    * Pokud je některá z replik vyloučená ze zálohy, například pokud je možnost **vyloučit repliku** povolená nebo je označená jako nečitelná, pak se tato replika v žádné z možností nevybrala k zálohování.
+    * Pokud je k dispozici více replik a jejich čtení, bude pro zálohování vybrán uzel s nejvyšší prioritou zálohování.
+    * Pokud se zálohování na vybraném uzlu nepovede, operace zálohování se nezdařila.
+    * Obnovení do původního umístění není podporováno.
+* SQL Server 2014 nebo vyšší problémy se zálohováním:
+  * SQL Server 2014 Přidal novou funkci pro vytvoření [databáze pro místní SQL Server v úložišti objektů BLOB v systému Windows Azure](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15). Aplikaci DPM nelze použít k ochraně této konfigurace.
+  * U možnosti "Preferovat sekundární" zálohování pro možnost SQL AlwaysOn Existují známé problémy. DPM vždycky provede zálohu ze sekundárního serveru. Pokud není možné najít sekundární, zálohování se nepovede.
 
 ## <a name="before-you-start"></a>Než začnete
 
@@ -100,7 +129,7 @@ Pokud chcete chránit SQL Server databáze v Azure, vytvořte nejdřív zásady 
 
     ![Zvolit zásady uchovávání informací](./media/backup-azure-backup-sql/pg-retentionschedule.png)
 
-    V tomto příkladu:
+    V tomto příkladu:
 
     * Zálohy se účtují každý den v 12:00 PM a 8:00 odp. Uchovávají se po dobu 180 dnů.
     * Záloha v sobotu v 12:00./odp. se uchovává po dobu 104 týdnů.

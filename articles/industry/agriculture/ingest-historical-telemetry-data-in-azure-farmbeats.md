@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
-ms.openlocfilehash: 3833b27e9f90cbffa2320c84877d4eb5bb6520f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7d83c327eb1c37478c0c2e5725136d43a91a009
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82613264"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061222"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Ingestování historických telemetrických dat
 
@@ -33,7 +33,7 @@ Musíte povolit integraci partnera s instancí Azure FarmBeats. Tento krok vytvo
 - Tajný klíč klienta
 - Připojovací řetězec EventHub
 
-Postupujte následovně:
+Postupujte takto:
 
 > [!NOTE]
 > Chcete-li provést následující postup, musíte být správcem.
@@ -61,8 +61,14 @@ Postupujte následovně:
     ```azurepowershell-interactive 
     cd
     ```
+    
+6. Spusťte následující příkaz. Tím se k tomu připojí ověřený účet, který se bude používat pro žádosti Azure AD.
 
-6. Spusťte následující příkaz. Tím se stáhne skript do domovského adresáře.
+    ```azurepowershell-interactive 
+    Connect-AzureAD
+    ```
+
+7. Spusťte následující příkaz. Tím se stáhne skript do domovského adresáře.
 
     ```azurepowershell-interactive 
 
@@ -70,7 +76,7 @@ Postupujte následovně:
 
     ```
 
-7. Spusťte následující skript. Skript zobrazí výzvu k zadání ID tenanta, které se dá získat ze **Azure Active Directory**  >  stránky s**přehledem** Azure Active Directory.
+8. Spusťte následující skript. Skript zobrazí výzvu k zadání ID tenanta, které se dá získat ze **Azure Active Directory**  >  stránky s**přehledem** Azure Active Directory.
 
     ```azurepowershell-interactive 
 
@@ -78,7 +84,7 @@ Postupujte následovně:
 
     ```
 
-8. Postupujte podle pokynů na obrazovce a zaznamenejte hodnoty pro **koncový bod rozhraní API**, **ID tenanta**, **ID klienta**, **tajný klíč klienta**a **připojovací řetězec EventHub**.
+9. Postupujte podle pokynů na obrazovce a zaznamenejte hodnoty pro **koncový bod rozhraní API**, **ID tenanta**, **ID klienta**, **tajný klíč klienta**a **připojovací řetězec EventHub**.
 
 
 ## <a name="create-device-or-sensor-metadata"></a>Vytvořit zařízení nebo metadata senzorů
@@ -102,7 +108,7 @@ Postupujte následovně:
 |          Manufacturer            |         Název výrobce    |
 |  ProductCode                    |  Kód produktu nebo číslo modelu zařízení Například EnviroMonitor # 6800.  |
 |            Porty          |     Název portu a typ, který je digitální nebo analogový.
-|     Name                 |  Název, který identifikuje prostředek. Například název modelu nebo název produktu.
+|     Název                 |  Název, který identifikuje prostředek. Například název modelu nebo název produktu.
       Popis     | Poskytněte smysluplný popis modelu.
 |    Vlastnosti          |    Další vlastnosti od výrobce.   |
 |    **Zařízení**             |                      |
@@ -111,7 +117,7 @@ Postupujte následovně:
 |  ReportingInterval        |   Interval generování sestav v sekundách.
 |  Umístění            |  Zeměpisná šířka zařízení (-90 až + 90), zeměpisná délka (-180 až 180) a zvýšení úrovně (v metrech).
 |ParentDeviceId       |    ID nadřazeného zařízení, ke kterému je připojeno toto zařízení Například uzel, který je připojen k bráně. Uzel má jako bránu parentDeviceId.  |
-|    Name            | Název, který identifikuje prostředek. Partneři zařízení musí poslat název, který je konzistentní s názvem zařízení na straně partnera. Pokud je název partnerského zařízení definovaný uživatelem, je potřeba rozšířit stejný uživatelsky definovaný název na FarmBeats.|
+|    Název            | Název, který identifikuje prostředek. Partneři zařízení musí poslat název, který je konzistentní s názvem zařízení na straně partnera. Pokud je název partnerského zařízení definovaný uživatelem, je potřeba rozšířit stejný uživatelsky definovaný název na FarmBeats.|
 |     Popis       |      Zadejte smysluplný popis. |
 |     Vlastnosti    |  Další vlastnosti od výrobce.
 |     **SensorModel**        |          |
@@ -123,7 +129,7 @@ Postupujte následovně:
 |    Typ > SensorMeasures    |Typ měření dat telemetrie senzorů. Systémem definované typy jsou AmbientTemperature, CO2, Depth, ElectricalConductivity, LeafWetness, Length, LiquidLevel, dusičnan, O2, PH, fosforečnan, PointInTime, draselný, přítlak, RainGauge, RelativeHumidity, slanost, SoilMoisture, SoilTemperature, SolarRadiation, TimeDuration, UVRadiation, UVIndex, WindDirection, WindRun, WindSpeed, evapotranspiration,,, nominální hodnota. Pokud chcete přidat další informace, podívejte se na rozhraní/ExtendedType API.|
 |        Jednotka > SensorMeasures              | Jednotka dat telemetrie snímačů. Jednotky definované systémem jsou jednotky jednotek, Celsia, Fahrenheita, Kelviny, Rankine, Pascal, rtuť, PSI, milimetr, centimetry, měřič, palce, nohy, kilometry, KiloMeter, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, stupeň, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, MilliLiter, litr, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour,/ExtendedType,,,|
 |    SensorMeasures > AggregationType    |  Hodnoty mohou být None, Average, maximum, minima nebo StandardDeviation.  |
-|          Name            | Název, který identifikuje prostředek. Například název modelu nebo název produktu.  |
+|          Název            | Název, který identifikuje prostředek. Například název modelu nebo název produktu.  |
 |    Popis        | Poskytněte smysluplný popis modelu.|
 |   Vlastnosti       |  Další vlastnosti od výrobce.|
 |    **Elektrické**      |          |
@@ -132,7 +138,7 @@ Postupujte následovně:
 | Umístění          |  Zeměpisná šířka (-90 až + 90), zeměpisná délka (-180 až 180) a zvýšení úrovně (v metrech).|
 |   Název > portu        |  Název a typ portu, ke kterému je senzor připojen na zařízení. Tento název musí být stejný jako definovaný v modelu zařízení.|
 |    DeviceID  |    ID zařízení, ke kterému je senzor připojen. |
-| Name            |   Název, který identifikuje prostředek. Například název senzoru nebo název produktu a číslo modelu nebo kód produktu.|
+| Název            |   Název, který identifikuje prostředek. Například název senzoru nebo název produktu a číslo modelu nebo kód produktu.|
 |    Popis      | Zadejte smysluplný popis.|
 |    Vlastnosti        |Další vlastnosti od výrobce.|
 
@@ -421,7 +427,7 @@ Tady je příklad zprávy telemetrie:
 }
 ```
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>Po ingestování historických/streamových dat ze senzorů nejde zobrazit data telemetrie.
 

@@ -13,11 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a2c9500ecefed02b28c066de80137d8f0882fd5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41329f2f5500db35ee76c9880bdbef984413004b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731498"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057889"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Hromadné vytvoření uživatelů v Azure Active Directory
 
@@ -47,6 +48,7 @@ Stáhněte si a vyplňte šablonu CSV hromadného nahrání, která vám umožn�
 - Požadované sloupce jsou uvedeny jako první.
 - Nedoporučujeme přidávat do šablony nové sloupce. Všechny další sloupce, které přidáte, se ignorují a nezpracovávají.
 - Doporučujeme si stáhnout nejnovější verzi šablony CSV, jak je to možné.
+- Nezapomeňte zkontrolovat, že není k dispozici žádný nezamýšlený prázdný znak před nebo za libovolným polem. V případě **hlavního názvu uživatele**by tyto prázdné znaky způsobily selhání importu.
 
 ## <a name="to-create-users-in-bulk"></a>Hromadné vytváření uživatelů
 

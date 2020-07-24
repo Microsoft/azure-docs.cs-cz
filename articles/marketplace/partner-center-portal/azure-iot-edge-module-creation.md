@@ -1,20 +1,20 @@
 ---
 title: Vytvoření nabídky modulu Azure IoT Edge s partnerským centrem v Azure Marketplace
-description: Naučte se vytvářet, konfigurovat a publikovat nabídku IoT Edge modulu v Azure Marketplace pomocí partnerského centra.
+description: Naučte se, jak vytvořit, nakonfigurovat a publikovat nabídku IoT Edge modulu v Azure Marketplace pomocí partnerského centra.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: anbene
 ms.author: mingshen
-ms.date: 06/17/2020
-ms.openlocfilehash: 11deb9b8146924d1a493872219ad85556d13c405
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/22/2020
+ms.openlocfilehash: b2a1e523e2af8c0be9c4211dfc8a0ffd2a889ca0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520268"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053660"
 ---
-# <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>Vytvoření, konfigurace a publikování nabídky modulu IoT Edge v Azure Marketplace
+# <a name="create-an-iot-edge-module-offer"></a>Vytvoření nabídky modulu IoT Edge
 
 Tento článek popisuje, jak vytvořit a publikovat nabídku modulu Internet věcí (IoT) Edge pro Azure Marketplace. Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centru](create-account.md) , pokud jste to ještě neudělali. Ujistěte se, že je váš účet zaregistrovaný v programu komerčního tržiště.
 
@@ -230,7 +230,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 4. podmínky a ujednání
 5. Adresa zásad ochrany osobních údajů (odkaz)
 6. Název
-7. Souhrn
+7. Shrnutí
 8. Popis
 9. Užitečné odkazy
 10. Snímky obrazovky a videa

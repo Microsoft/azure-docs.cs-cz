@@ -4,13 +4,14 @@ description: Vytvářejte zálohy virtuálních počítačů s konzistentním vz
 ms.reviewer: anuragm
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.openlocfilehash: 36eeb9f63c67a01bf37412101e23be035596de94
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d578df45235b3bef314245e4eb7a0976c4d48d6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74173012"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054846"
 ---
-# <a name="application-consistent-backup-of-azure-linux-vms"></a>Zálohování virtuálních počítačů Azure Linux konzistentní vzhledem k aplikacím
+# <a name="application-consistent-backup-of-azure-linux-vms"></a>Zálohování virtuálních počítačů Azure s Linuxem konzistentní vzhledem k aplikacím
 
 Při pořizování záložních snímků virtuálních počítačů to znamená, že se vaše aplikace spustí, když se po obnovení spustí virtuální počítače. Jak si představit, konzistence aplikací je mimořádně důležitá. Aby bylo zajištěno, že vaše virtuální počítače se systémem Linux jsou konzistentní vzhledem k aplikacím, můžete k použití zálohování konzistentního vzhledem k aplikacím použít rozhraní předzálohovacího skriptu pro Linux a post-Script. Rozhraní předzálohovacích a pozálohovacích skriptů podporuje Azure Resource Manager nasazených virtuálních počítačů se systémem Linux. Skripty pro konzistenci aplikací nepodporují Service Manager nasazených virtuálních počítačů nebo virtuálních počítačů s Windows.
 
@@ -64,9 +65,9 @@ Předběžné skripty vyvolávají nativní aplikační rozhraní API, které ne
 
     - **ScriptsExecutionPollTimeSeconds**: Nastavte dobu, po kterou má rozšíření při každém cyklickém dotazování na spuštění skriptu přejít do režimu spánku. Například pokud je hodnota 2, rozšíření ověří, zda bylo provedeno předběžné/následné spuštění skriptu každé 2 sekundy. Minimální a maximální hodnota, kterou může trvat, je 1 a 5 v uvedeném pořadí. Hodnota by měla být výhradně celé číslo.
 
-6. Rozhraní Script Framework je nyní nakonfigurováno. Pokud je zálohování virtuálního počítače už nakonfigurované, další záloha vyvolá skripty a spustí zálohování konzistentní s aplikacemi. Pokud není zálohování virtuálních počítačů nakonfigurované, nakonfigurujte ho pomocí [zálohování virtuálních počítačů Azure do trezorů Recovery Services.](https://docs.microsoft.com/azure/backup/backup-azure-vms-first-look-arm)
+6. Rozhraní Script Framework je nyní nakonfigurováno. Pokud je zálohování virtuálního počítače už nakonfigurované, další záloha vyvolá skripty a spustí zálohování konzistentní s aplikacemi. Pokud není zálohování virtuálních počítačů nakonfigurované, nakonfigurujte ho pomocí [zálohování virtuálních počítačů Azure do trezorů Recovery Services.](./backup-azure-vms-first-look-arm.md)
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Nezapomeňte přidat vhodné protokolování při psaní předzálohovacího skriptu a následného skriptu a zkontrolujte protokoly skriptu a opravte případné problémy se skripty. Pokud stále máte problémy se spouštěním skriptů, další informace najdete v následující tabulce.
 
@@ -85,4 +86,4 @@ Nezapomeňte přidat vhodné protokolování při psaní předzálohovacího skr
 
 ## <a name="next-steps"></a>Další kroky
 
-[Konfigurace zálohování virtuálních počítačů do trezoru Recovery Services](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms)
+[Konfigurace zálohování virtuálních počítačů do trezoru Recovery Services](./backup-azure-vms-first-look-arm.md)

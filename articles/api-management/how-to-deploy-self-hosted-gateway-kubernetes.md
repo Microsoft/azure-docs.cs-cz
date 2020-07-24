@@ -9,12 +9,12 @@ ms.workload: mobile
 ms.topic: article
 ms.author: apimpm
 ms.date: 04/23/2020
-ms.openlocfilehash: 51ce2e0dec8b38c9285f4f4e71dd35056b292b66
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: abcda4ea4b14f058325318661daa574494268780
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254278"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056373"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>Nasazení brány v místním prostředí v Kubernetes
 
@@ -33,9 +33,9 @@ Tento článek popisuje postup nasazení komponenty samoobslužné brány Azure 
 1. V části **nasazení a infrastruktura**vyberte **brány** .
 2. Vyberte prostředek samoobslužné brány, který chcete nasadit.
 3. Vyberte **nasazení**.
-4. Přístupový token v textovém poli **token** se pro vás automaticky vygeneroval na základě výchozích hodnot **vypršení platnosti** a **tajného klíče** . V případě potřeby vyberte hodnoty v jednom nebo obou ovládacích prvcích pro vygenerování nového tokenu.
+4. K automatickému vygenerování přístupového tokenu v textovém poli **tokenu** na základě výchozích hodnot **vypršení platnosti** a **tajného klíče** . V případě potřeby vyberte hodnoty v jednom nebo obou ovládacích prvcích pro vygenerování nového tokenu.
 5. V části **skripty pro nasazení**vyberte kartu **Kubernetes** .
-6. Vyberte odkaz **<název brány> soubor. yml** a Stáhněte soubor YAML.
+6. Vyberte odkaz soubor ** \<gateway-name\> . yml** a Stáhněte soubor YAML.
 7. Výběrem ikony **kopírování** v pravém dolním rohu textového pole **nasadit** uložte `kubectl` příkazy do schránky.
 8. Příkazy vložte do okna terminálu (nebo příkazu). První příkaz vytvoří tajný klíč Kubernetes, který obsahuje přístupový token vygenerovaný v kroku 4. Druhý příkaz použije konfigurační soubor stažený v kroku 6 do clusteru Kubernetes a očekává, že se soubor nachází v aktuálním adresáři.
 9. Spusťte příkazy pro vytvoření nezbytných Kubernetes objektů ve [výchozím oboru názvů](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) a spusťte z [Image kontejneru z image kontejneru](https://aka.ms/apim/sputnik/dhub) , kterou jste stáhli z Microsoft Container Registry.
@@ -106,6 +106,12 @@ Překlad názvů DNS hraje kritickou roli v možnosti brány v místním prostř
 Soubor YAML, který je součástí Azure Portal, používá výchozí zásady [ClusterFirst](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) . Tato zásada způsobuje, že se požadavky na překlad adres IP nevyřešily DNS clusteru, aby se předaly nadřazenému serveru DNS, který je zděděný z uzlu.
 
 Další informace o překladu názvů v Kubernetes najdete na [webu Kubernetes](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service). Zvažte přizpůsobení [zásad DNS](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) nebo [Konfigurace DNS](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-config) podle potřeby pro vaši instalaci.
+
+### <a name="custom-domain-names-and-ssl-certificates"></a>Vlastní názvy domén a certifikáty SSL
+
+Pokud pro koncové body API Management používáte vlastní názvy domén, zejména pokud používáte vlastní název domény pro koncový bod správy, možná budete muset aktualizovat hodnotu `config.service.endpoint` v souboru ** \<gateway-name\> . yaml** , aby se výchozí název domény nahradil názvem vlastní domény. Ujistěte se, že koncový bod správy je v clusteru Kubernetes k dispozici ze seznamu pod místní bránou.
+
+Pokud v tomto scénáři není certifikát SSL, který je používán koncovým bodem správy, podepsaný známým certifikátem certifikační autority, je nutné zajistit, aby byl certifikát certifikační autority důvěryhodný v rámci samoobslužné brány.
 
 ### <a name="configuration-backup"></a>Zálohování konfigurace
 Další informace o chování samoobslužné brány v přítomnosti dočasného výpadku připojení k Azure najdete v tématu [Přehled samoobslužné brány](self-hosted-gateway-overview.md#connectivity-to-azure).

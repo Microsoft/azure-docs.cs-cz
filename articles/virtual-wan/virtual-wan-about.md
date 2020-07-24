@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 909f120275c58b04d8674f0610c40e13b96804b6
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 9e4c3615d16834a0517b46f1be7221eef28c602c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143925"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058746"
 ---
 # <a name="about-azure-virtual-wan"></a>Informace o službě Azure Virtual WAN
 
@@ -110,7 +110,7 @@ Virtual WAN nabízí pokročilá vylepšení směrování. Možnost nastavení v
 
 ### <a name="global-vnet-peering"></a><a name="global"></a>Globální partnerský vztah virtuální sítě
 
-Globální VNet peering poskytuje mechanismus pro propojení dvou virtuální sítě v různých oblastech. Virtuální síťová připojení ve virtuální síti WAN připojují virtuální sítě k virtuálním rozbočovačům. Uživatel nemusí explicitně nastavovat globální partnerský vztah virtuální sítě. Virtuální sítě připojené k virtuálnímu rozbočovači se účtují za stejné oblasti jako poplatky za partnerský vztah virtuální sítě. Virtuální sítě připojené k virtuálnímu rozbočovači v jiné oblasti účtují globální poplatky VNet peering.
+Globální VNet peering poskytuje mechanismus pro propojení dvou virtuální sítě v různých oblastech. Virtuální síťová připojení ve virtuální síti WAN připojují virtuální sítě k virtuálním rozbočovačům. Uživatel nemusí explicitně nastavovat globální partnerský vztah virtuální sítě. Virtuální sítě připojené k virtuálnímu rozbočovači ve stejné oblasti účtují poplatky za partnerské vztahy virtuální sítě. Virtuální sítě připojené k virtuálnímu rozbočovači v jiné oblasti účtují globální poplatky VNet peering.
 
 ### <a name="expressroute-traffic-encryption"></a><a name="encryption"></a>Šifrování provozu ExpressRoute
 
@@ -128,7 +128,7 @@ Směrovací tabulky teď mají funkce pro přidružení a šíření. Již exist
 
 * **Základní virtuální zákazníci sítě WAN s již existujícími trasami ve virtuálním centru**: Pokud chcete používat nové možnosti směrovací tabulky, počkejte prosím, než se dokončí v Azure, a počkejte prosím na dokončení zavedení v Azure. Pokud máte již existující trasy v části směrování pro centrum v Azure Portal, budete je muset nejdřív odstranit a pak **upgradovat** základní virtuální síť WAN na standard Virtual WAN. Viz [upgrade virtuální sítě WAN z úrovně Basic na standard](upgrade-virtual-wan.md).
 
-## <a name="faq"></a><a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a><a name="faq"></a>Časté otázky
 
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
 

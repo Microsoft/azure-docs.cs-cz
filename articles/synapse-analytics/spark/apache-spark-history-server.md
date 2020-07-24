@@ -1,5 +1,5 @@
 ---
-title: Použití rozšířeného serveru pro historii Spark k ladění aplikací – Apache Spark v Azure synapse
+title: Použití serveru rozšířených historií Spark k ladění aplikací
 description: Pomocí rozšířeného serveru pro historii Spark můžete ladit a diagnostikovat aplikace Spark v Azure synapse Analytics.
 services: synapse-analytics
 author: euangMS
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: b4ee5d064d17d7b11305c6c86dc1d29ddccc642e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8dece3478e00c6f9279767e57e3bb8aca865f45
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194990"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059984"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Použití serveru historie rozšířených Apache Spark k ladění a diagnostice Apache Spark aplikací
 
@@ -120,13 +120,13 @@ Uzel grafu zobrazuje barvy zobrazené v legendě heatmapu.
 
 Pokud chcete úlohu přehrát, vyberte **přehrávání**. Kdykoli můžete zastavit výběr **zastavit** . Barvy úlohy při přehrávání zobrazují různé stavy:
 
-|Barva|Význam|
+|Color|Význam|
 |-|-|
 |Green|Úspěch: úloha se úspěšně dokončila.|
 |Oranžový|Opakování: instance úloh, které selhaly, ale neovlivňují konečný výsledek úlohy. Tyto úlohy měly duplicitní nebo opakované instance, které mohou být později úspěšné.|
 |Blue|Spuštěno: úloha je spuštěná.|
 |White|Čekání nebo přeskočení: úloha čeká na spuštění, nebo se fáze přeskočila.|
-|Červený|Nezdařilo se: úloha se nezdařila.|
+|Red|Nezdařilo se: úloha se nezdařila.|
 
 Následující obrázek ukazuje zelenou, oranžovou a modrou stavovou barvu.
 
@@ -157,7 +157,7 @@ Když najedete myší na uzel grafu, zobrazí se popis tlačítka, když dojde k
 
 Na kartě graf úlohy mají fáze popis a zobrazí se malá ikona, pokud má úlohy, které splňují následující podmínky:
 
-|Podmínka|Description|
+|Podmínka|Popis|
 |-|-|
 |Zkosit data|velikost přečtených dat > Průměrná velikost čtení dat všech úkolů v této fázi * 2 a velikost pro čtení dat > 10 MB|
 |Časové zkosení|čas spuštění > Průměrná doba provádění všech úkolů v této fázi * 2 a doba spuštění > 2 minuty|

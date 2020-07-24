@@ -4,11 +4,12 @@ description: Přečtěte si, jak zobrazit informace o řešení potíží v prot
 services: container-service
 ms.topic: article
 ms.date: 03/05/2019
-ms.openlocfilehash: b7a74803af916f9e9de72dd528273007ce37832f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2ef38aa76f4ef9152e7bc55a1d74c84ef426f0ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77595378"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056765"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Získání protokolů kubelet z uzlů clusteru Azure Kubernetes Service (AKS)
 
@@ -31,6 +32,12 @@ Jakmile se připojíte k uzlu, spusťte následující příkaz, který načte p
 ```console
 sudo journalctl -u kubelet -o cat
 ```
+
+> [!NOTE]
+> V případě uzlů Windows se data protokolu nacházejí v `C:\k` a lze je zobrazit pomocí příkazu *more* :
+> ```
+> more C:\k\kubelet.log
+> ```
 
 Následující vzorový výstup zobrazuje data protokolu *kubelet* :
 

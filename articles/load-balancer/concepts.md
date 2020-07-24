@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/05/2020
+ms.date: 07/13/2020
 ms.author: allensu
-ms.openlocfilehash: cb8b3b58f1029a722121f491d202e245300d1aee
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 40b738c0f074f06b2f15a260cacda876aa78daf6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801008"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060804"
 ---
 # <a name="azure-load-balancer-concepts"></a>Azure Load Balancer koncepty
 
@@ -42,9 +42,9 @@ Další informace najdete v tématu [Konfigurace distribučního režimu pro Azu
 
 Následující obrázek ukazuje distribuci na základě hodnoty hash:
 
-  ![Distribuce na základě hodnoty hash](./media/load-balancer-overview/load-balancer-distribution.png)
+![Distribuce na základě hodnoty hash](./media/load-balancer-overview/load-balancer-distribution.png)
 
-  *Obrázek: Distribuce na základě hodnoty hash*
+*Obrázek: Distribuce na základě hodnoty hash*
 
 ## <a name="application-independence-and-transparency"></a>Nezávislost a průhlednost aplikace
 
@@ -54,16 +54,38 @@ Nástroj pro vyrovnávání zatížení přímo nekomunikuje s protokolem TCP ne
 * Datové části aplikace jsou pro nástroj pro vyrovnávání zatížení transparentní. Je možné, že bude podporována jakákoli aplikace UDP nebo TCP.
 * Vzhledem k tomu, že nástroj pro vyrovnávání zatížení nekomunikuje s datovou částí TCP a poskytuje přesměrování zpracování TLS, můžete vytvořit komplexní šifrované scénáře. Použití nástroje pro vyrovnávání zatížení získává velký rozsah pro aplikace TLS tím, že ukončuje připojení TLS na samotném virtuálním počítači. Například kapacita klíče relace TLS je omezená jenom typem a počtem virtuálních počítačů, které přidáte do fondu back-end.
 
-## <a name="load-balancer-terminology"></a>Load Balancer terminologie
-| Koncepce | Co to znamená? | Podrobný dokument |
-| ---------- | ---------- | ----------|
-Odchozí připojení | Toky z back-endu fondu do veřejných IP adres se mapují na front-end. Azure překládá odchozí připojení k veřejné IP adrese front-endu prostřednictvím odchozího pravidla vyrovnávání zatížení. Tato konfigurace má následující výhody. Snadný upgrade a zotavení po havárii služeb, protože front-end lze dynamicky namapovat na jinou instanci služby. Jednodušší Správa seznamů řízení přístupu (ACL). Seznamy řízení přístupu vyjádřené jako IP adresy front-endu se nemění, protože služby se škálují nahoru nebo dolů nebo se znovu nasazují. Překlad odchozích připojení k menšímu počtu IP adres, než jsou počítače, snižuje zátěž pro implementaci seznamů bezpečných příjemců.| Další informace o překladu zdrojového síťového adres (SNAT) a Azure Load Balancer najdete v části [SNAT a Azure Load Balancer](load-balancer-outbound-connections.md).
-Zóny dostupnosti | Load Balancer úrovně Standard podporuje další možnosti v oblastech, kde jsou k dispozici Zóny dostupnosti. Tyto funkce jsou přírůstkové pro všechny služby Load Balancer úrovně Standard.  Konfigurace Zóny dostupnosti jsou k dispozici pro oba typy standardního nástroje pro vyrovnávání zatížení. veřejné a interní. Zóna redundantní ve frontě zadržela selhání zóny pomocí vyhrazené infrastruktury ve všech zónách současně. Navíc můžete zaručit front-end pro konkrétní zónu. Oblast front-endu se obsluhuje pomocí vyhrazené infrastruktury v jedné zóně. Pro back-end fond je k dispozici vyrovnávání zatížení mezi zónami. Každý prostředek virtuálního počítače ve virtuální síti může být součástí fondu back-endu. Nástroj pro vyrovnávání zatížení úrovně Basic nepodporuje zóny.| Další informace najdete [v podrobné diskuzi o schopnostech souvisejících s zóny dostupnosti](load-balancer-standard-availability-zones.md) a [zóny dostupnosti přehled](../availability-zones/az-overview.md) .
-| Porty HA | Pravidla vyrovnávání zatížení portu HA můžete nakonfigurovat tak, aby se škálování aplikace a vysoce spolehlivě zajistila. Tato pravidla poskytují vyrovnávání zatížení podle toku na krátkodobém portu IP adresy front-endu interního nástroje pro vyrovnávání zatížení. Tato funkce je užitečná v případě, že je nepraktické nebo nežádoucí zadání jednotlivých portů. Pravidlo portů HA umožňuje vytvořit scénáře aktivní – pasivní nebo aktivní – aktivní n + 1. Tyto scénáře jsou pro síťová virtuální zařízení a všechny aplikace, které vyžadují velké rozsahy vstupních portů. Sondu stavu lze použít k určení, které back-endy by měly přijímat nové toky.  Skupinu zabezpečení sítě můžete použít k emulaci scénáře rozsahu portů. Nástroj pro vyrovnávání zatížení úrovně Basic nepodporuje porty HA. | Přečtěte si [podrobné informace o portech ha](load-balancer-ha-ports-overview.md) .
-| Několik front-endů | Nástroj pro vyrovnávání zatížení podporuje více pravidel s více front-endu.  Standard Load Balancer rozšiřuje tuto schopnost na odchozí scénáře. Odchozí pravidla jsou inverzní k příchozímu pravidlu. Odchozí pravidlo vytvoří přidružení pro odchozí připojení. Load Balancer úrovně Standard používá všechny front-endové služby přidružené k prostředku virtuálního počítače prostřednictvím pravidla vyrovnávání zatížení. Kromě toho parametr pravidla vyrovnávání zatížení umožňuje potlačit pravidlo vyrovnávání zatížení pro účely odchozího připojení, které umožňuje výběr určitých front-endu, včetně žádného. Za účelem porovnání vybere nástroj Load Balancer úrovně Single-Endu s náhodným stavem. Není možnost řídit, který front-end byl vybrán.|
+## <a name="outbound-connections"></a>Odchozí připojení 
+
+Toky z back-endu fondu do veřejných IP adres se mapují na front-end. Azure překládá odchozí připojení k veřejné IP adrese front-endu prostřednictvím odchozího pravidla vyrovnávání zatížení. Tato konfigurace má následující výhody. Snadný upgrade a zotavení po havárii služeb, protože front-end lze dynamicky namapovat na jinou instanci služby. Jednodušší Správa seznamů řízení přístupu (ACL). Seznamy řízení přístupu vyjádřené jako IP adresy front-endu se nemění, protože služby se škálují nahoru nebo dolů nebo se znovu nasazují. Překlad odchozích připojení k menšímu počtu IP adres, než jsou počítače, snižuje zátěž pro implementaci seznamů bezpečných příjemců. Další informace o překladu zdrojového síťového adres (SNAT) a Azure Load Balancer najdete v části [SNAT a Azure Load Balancer](load-balancer-outbound-connections.md).
+
+## <a name="availability-zones"></a>Zóny dostupnosti 
+
+Load Balancer úrovně Standard podporuje další možnosti v oblastech, kde jsou k dispozici Zóny dostupnosti. Zóny dostupnosti konfigurace jsou k dispozici pro oba typy Standard Load Balancer; veřejné a interní. Zóna redundantní ve frontě zadržela selhání zóny pomocí vyhrazené infrastruktury ve všech zónách současně. Navíc můžete zaručit front-end pro konkrétní zónu. Oblast front-endu se obsluhuje pomocí vyhrazené infrastruktury v jedné zóně. Pro back-end fond je k dispozici vyrovnávání zatížení mezi zónami. Každý prostředek virtuálního počítače ve virtuální síti může být součástí fondu back-endu. Nástroj pro vyrovnávání zatížení úrovně Basic nepodporuje zóny. Další informace najdete [v podrobné diskuzi o schopnostech souvisejících s zóny dostupnosti](load-balancer-standard-availability-zones.md) a [zóny dostupnosti přehled](../availability-zones/az-overview.md) .
+
+## <a name="ha-ports"></a>Porty HA
+
+Pravidla vyrovnávání zatížení portu HA můžete nakonfigurovat tak, aby se škálování aplikace a vysoce spolehlivě zajistila. Tato pravidla poskytují vyrovnávání zatížení podle toku na krátkodobém portu IP adresy front-endu interního nástroje pro vyrovnávání zatížení. Tato funkce je užitečná v případě, že je nepraktické nebo nežádoucí zadání jednotlivých portů. Pravidlo portů HA umožňuje vytvořit scénáře aktivní – pasivní nebo aktivní – aktivní n + 1. Tyto scénáře jsou pro síťová virtuální zařízení a všechny aplikace, které vyžadují velké rozsahy vstupních portů. Sondu stavu lze použít k určení, které back-endy by měly přijímat nové toky.  Skupinu zabezpečení sítě můžete použít k emulaci scénáře rozsahu portů. Nástroj pro vyrovnávání zatížení úrovně Basic nepodporuje porty HA. Přečtěte si [podrobnou diskuzi o portech ha](load-balancer-ha-ports-overview.md).
+
+## <a name="multiple-frontends"></a>Několik front-endů 
+
+Nástroj pro vyrovnávání zatížení podporuje více pravidel s více front-endu.  Standard Load Balancer rozšiřuje tuto schopnost na odchozí scénáře. Odchozí pravidla jsou inverzní k příchozímu pravidlu. Odchozí pravidlo vytvoří přidružení pro odchozí připojení. Load Balancer úrovně Standard používá všechny front-endové služby přidružené k prostředku virtuálního počítače prostřednictvím pravidla vyrovnávání zatížení. Kromě toho parametr pravidla vyrovnávání zatížení umožňuje potlačit pravidlo vyrovnávání zatížení pro účely odchozího připojení, které umožňuje výběr určitých front-endu, včetně žádného. Za účelem porovnání vybere nástroj Load Balancer úrovně Single-Endu s náhodným stavem. Není možnost řídit, který front-end byl vybrán.
+
+## <a name="floating-ip"></a>Plovoucí IP adresa
+
+Některé scénáře aplikací dávají přednost nebo vyžadují, aby se stejný port používal ve více instancích aplikace na jednom virtuálním počítači ve fondu back-endu. Mezi běžné příklady opakovaného použití portů patří clustering pro vysokou dostupnost, síťová virtuální zařízení a vystavování více koncových bodů TLS bez nutnosti opětovného šifrování. Pokud chcete znovu použít port back-end v rámci více pravidel, musíte v definici pravidla povolit plovoucí IP adresu.
+
+**Plovoucí IP adresa** je terminologie Azure, která je součástí toho, co je známo jako přímé vrácení serveru (DSR). DSR se skládá ze dvou částí: 
+
+- Topologie toků
+- Schéma mapování IP adres
+
+Na úrovni platformy Azure Load Balancer vždy pracuje s topologií toku DSR bez ohledu na to, zda je povolena plovoucí IP adresa. To znamená, že výstupní část toku je vždy správně přepsána do toku přímo zpět k původnímu zdroji.
+Bez plovoucí IP adresy poskytuje Azure tradiční schéma mapování IP adres pro vyrovnávání zatížení, které umožňuje snadné použití (IP instance virtuálních počítačů). Povolením plovoucí IP adresy změní mapování IP adres na front-end IP adresu nástroje pro vyrovnávání zatížení, aby byla umožněna další flexibilita. Další informace najdete [tady](load-balancer-multivip-overview.md).
 
 
-## <a name="limitations"></a><a name = "limitations"></a>Omezení
+## <a name="limitations"></a><a name = "limitations"></a>Určitá
+
+- Plovoucí IP adresa se v současné době nepodporuje u sekundárních konfigurací IP pro scénáře interního vyrovnávání zatížení.
 
 - Pravidlo nástroje pro vyrovnávání zatížení nemůže zahrnovat dvě virtuální sítě.  Front-endové a jejich instance back-endu se musí nacházet ve stejné virtuální síti.  
 

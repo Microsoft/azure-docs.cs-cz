@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: mvc, devcenter, seo, tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 819fdec23d00929db34942434f66a6ffa5d4a1d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f13d3bbd3f5b9d8197c48822ea54f08d3d86bfc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833736"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056089"
 ---
 # <a name="quickstart-create-a-function-in-azure-using-visual-studio-code"></a>Rychlé zprovoznění: Vytvoření funkce v Azure s využitím Visual Studio Code
 
@@ -40,7 +40,7 @@ K dispozici je také verze tohoto článku [na bázi CLI](functions-create-first
 ::: zone-end
 ::: zone pivot="programming-language-java"  
 > [!NOTE]
-> Pokud Visual Studio Code nejste preferovaným vývojářským nástrojem, podívejte se na naše podobné kurzy pro vývojáře v jazyce Java, které využívají [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java), [GRADLE](/azure/azure-functions/functions-create-first-java-gradle) a [IntelliJ nápad](/azure/developer/java/toolkit-for-intellij/quickstart-functions).
+> Pokud Visual Studio Code nejste preferovaným vývojářským nástrojem, podívejte se na naše podobné kurzy pro vývojáře v jazyce Java, které využívají [Maven](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java), [GRADLE](./functions-create-first-java-gradle.md) a [IntelliJ nápad](/azure/developer/java/toolkit-for-intellij/quickstart-functions).
 ::: zone-end  
 
 ## <a name="configure-your-environment"></a>Konfigurace prostředí

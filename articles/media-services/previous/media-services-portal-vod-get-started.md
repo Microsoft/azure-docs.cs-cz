@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 5a09d672f44ce8835571277ab35f7545c7f5f33e
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 62754c455ec6aad4a3990bf4af749dcdcd425e55
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058278"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060231"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>Začínáme s doručováním obsahu na vyžádání pomocí webu Azure Portal
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 
 Tento kurz vás provede jednotlivými kroky implementace základní služby pro doručování video obsahu na vyžádání pomocí aplikace Azure Media Services na webu Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 K dokončení kurzu potřebujete následující položky:
 
-* Účet Azure. Podrobnosti najdete v článku [bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 
+* Účet Azure: Podrobnosti najdete v článku [bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 
 * Účet Media Services. Chcete-li vytvořit účet Media Services, přečtěte si téma [jak vytvořit účet Media Services](media-services-portal-create-account.md).
 
 Tento kurz sestává z následujících úloh:
@@ -51,7 +51,7 @@ Jedním z nejběžnějších scénářů při práci se službou Azure Media Ser
 
 Spuštění koncového bodu streamování:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com/).
 2. Vyberte **Nastavení**  >  **koncových bodů streamování**. 
 3. Vyberte výchozí koncový bod streamování. Zobrazí se okno **výchozí koncový bod streamování – podrobnosti** .
 4. Vyberte ikonu **Spustit**.
@@ -125,7 +125,7 @@ Adresa URL sdíleného přístupového podpisu má následující formát:
 > 
 > 
 
-K aktualizaci data vypršení platnosti lokátoru můžete použít rozhraní [REST API](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) nebo [.NET API](https://go.microsoft.com/fwlink/?LinkID=533259). 
+K aktualizaci data vypršení platnosti lokátoru můžete použít rozhraní [REST API](/rest/api/media/operations/locator#update_a_locator) nebo [.NET API](https://go.microsoft.com/fwlink/?LinkID=533259). 
 
 > [!NOTE]
 > Při aktualizaci data vypršení platnosti lokátoru sdíleného přístupového podpisu se změní adresa URL.
@@ -135,7 +135,7 @@ K aktualizaci data vypršení platnosti lokátoru můžete použít rozhraní [R
 2. Vyberte **Nastavení**  >  **prostředky**. Vyberte asset, který chcete publikovat.
 3. Vyberte tlačítko **Publikovat**.
 4. Vyberte typ lokátoru.
-5. Vyberte možnost **Přidat**.
+5. Vyberte **Přidat**.
    
     ![Publikování videa](./media/media-services-portal-vod-get-started/media-services-publish1.png)
 

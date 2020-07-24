@@ -1,14 +1,14 @@
 ---
-title: Vylepšení znalostní báze Knowledge Base – QnA Maker
+title: Otázky, které jsou navržené aktivními kurzy – QnA Maker
 description: Vylepšete kvalitu znalostní báze s aktivním učením. Zkontrolujte, přijměte nebo odmítněte, přidejte bez odebrání nebo změny existujících otázek.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 88ccbc52e0eb3447d0b99cac9ba41761e292a6fd
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: bb95ddc40e122e2589d0396b94f0de921aab9350
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231773"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053929"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Přijetí dotazů na aktivní učení ve znalostní bázi Knowledge Base
 
@@ -139,7 +139,7 @@ Tělo JSON má několik nastavení:
 
 |Vlastnost těla zprávy JSON|Typ|Účel|
 |--|--|--|--|
-|`feedbackRecords`|pole|Seznam zpětné vazby|
+|`feedbackRecords`|array|Seznam zpětné vazby|
 |`userId`|řetězec|ID uživatele osoby, která přijímá navrhované otázky. Formát ID uživatele je až vám. Například e-mailová adresa může být platným ID uživatele ve vaší architektuře. Nepovinný parametr.|
 |`userQuestion`|řetězec|Přesný text dotazu uživatele. Povinná hodnota.|
 |`qnaID`|číslo|ID otázky nalezené v [odpovědi GenerateAnswer](metadata-generateanswer-usage.md#generateanswer-response-properties) |

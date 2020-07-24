@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Naučte se, jak nainstalovat a nakonfigurovat NGINX příchozího řadiče pro interní privátní síť v clusteru Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 07/02/2020
-ms.openlocfilehash: eecf34c6ad622c374e6f43670972279e297662a9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/21/2020
+ms.openlocfilehash: a20ef3155e41a438aed7cea7e7d9814b3add4d14
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251582"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056972"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>Vytvoření kontroleru příchozího přenosu dat do interní virtuální sítě ve službě Azure Kubernetes (AKS)
 
@@ -35,7 +35,7 @@ Tento článek také vyžaduje, abyste spustili Azure CLI verze 2.0.64 nebo nov�
 
 Ve výchozím nastavení se kontroler NGINX příchozího přenosu dat vytvoří pomocí dynamického přiřazení veřejné IP adresy. Běžným požadavkem na konfiguraci je použití interní privátní sítě a IP adresy. Tento přístup umožňuje omezit přístup k vašim službám na interní uživatele bez přístupu k externímu přístupu.
 
-Pomocí následujícího ukázkového souboru manifestu vytvořte soubor s názvem *internal-YAML.* Tento příklad přiřadí *10.240.0.42* prostředku *loadBalancerIP* . Zadejte vlastní interní IP adresu pro použití s řadičem příchozího přenosu dat. Ujistěte se, že se tato IP adresa už ve vaší virtuální síti nepoužívá.
+Pomocí následujícího ukázkového souboru manifestu vytvořte soubor s názvem *internal-YAML.* Tento příklad přiřadí *10.240.0.42* prostředku *loadBalancerIP* . Zadejte vlastní interní IP adresu pro použití s řadičem příchozího přenosu dat. Ujistěte se, že se tato IP adresa už ve vaší virtuální síti nepoužívá. Pokud používáte existující virtuální síť a podsíť, musíte nakonfigurovat cluster AKS se správnými oprávněními ke správě virtuální sítě a podsítě. Další informace najdete v tématu [použití sítě kubenet s vlastními rozsahy IP adres ve službě Azure Kubernetes Service (AKS)][aks-configure-kubenet-networking] nebo [Konfigurace sítě Azure CNI v Azure KUBERNETES Service (AKS)][aks-configure-advanced-networking] .
 
 ```yaml
 controller:
@@ -185,7 +185,7 @@ V následujícím příkladu je přenos do adresy `http://10.240.0.42/` směrov�
 Vytvořte soubor s názvem `hello-world-ingress.yaml` a zkopírujte ho do následujícího příkladu YAML.
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress
@@ -358,3 +358,5 @@ Můžete také:
 [aks-http-app-routing]: http-application-routing.md
 [aks-ingress-own-tls]: ingress-own-tls.md
 [client-source-ip]: concepts-network.md#ingress-controllers
+[aks-configure-kubenet-networking]: configure-kubenet.md
+[aks-configure-advanced-networking]: configure-azure-cni.md

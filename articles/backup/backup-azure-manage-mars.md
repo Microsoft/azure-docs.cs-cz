@@ -4,11 +4,12 @@ description: Naučte se spravovat a monitorovat zálohy agenta Microsoft Azure R
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 2cd536e191702e2619030c2e0fa06262d2e004ee
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 376e2d53165ab822f75e635b42106e1fe13282a9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057819"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054988"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Správa záloh agenta Microsoft Azure Recovery Services (MARS) pomocí služby Azure Backup
 
@@ -22,7 +23,7 @@ Když upravíte zásady zálohování, můžete přidat nové položky, odebrat 
 - **Odebráním položek** pomocí této možnosti odeberete položky, které se mají zálohovat.
   - Použijte **Nastavení vyloučení** pro odebrání všech položek ve svazku namísto **Odebrání položek**.
   - Vymazání všech výběrů ve svazku způsobí, že se původní zálohy položek uchovávají v závislosti na nastavení uchování v době poslední zálohy bez rozsahu pro úpravy.
-  - Když se tyto položky znovu vyberou, navedou se k prvnímu úplnému zálohování a nové změny zásad se pro staré zálohy neaplikují.
+  - Po opětovném výběru těchto položek se navede na první úplné zálohování a nové změny zásad se nepoužijí na staré zálohy.
   - Když se vybere celý svazek, zachová se minulá záloha bez jakéhokoli oboru pro úpravu zásad uchovávání informací.
 - **Nastavení vyloučení** Tato možnost slouží k vyloučení určitých položek, které se mají zálohovat.
 
@@ -94,7 +95,7 @@ Existují dva způsoby, jak zabránit ochraně zálohování souborů a složek:
   - Pokud se rozhodnete obnovit ochranu, můžete použít možnost *znovu povolit plán zálohování* . Pak by se data zachovala na základě nových zásad uchovávání informací.
 - **Zastavte ochranu a odstraňte zálohovaná data**.
   - Tato možnost zastaví všechny budoucí úlohy zálohování z ochrany vašich dat a odstraní všechny body obnovení.
-  - Obdržíte e-mail s upozorněním na odstranění zálohovacích dat se zprávou, že *vaše data této zálohované položky se odstranila. Tato data budou dočasně k dispozici po dobu 14 dnů, po jejímž uplynutí bude tato data trvale odstraněna* a doporučená akce znovu *zabezpečí zálohovanou položku během 14 dnů pro obnovení dat.*
+  - Obdržíte e-mail s upozorněním na odstranění záložních dat se zprávou, že *vaše data této zálohované položky se odstranila. Tato data budou dočasně k dispozici po dobu 14 dnů, po jejímž uplynutí bude tato data trvale odstraněna* a doporučená akce znovu *zabezpečí zálohovanou položku během 14 dnů pro obnovení dat.*
   - Chcete-li obnovit ochranu, znovu proveďte ochranu do 14 dnů od operace delete.
 
 ### <a name="stop-protection-and-retain-backup-data"></a>Zastavení ochrany a uchování zálohovaných dat
@@ -108,10 +109,10 @@ Existují dva způsoby, jak zabránit ochraně zálohování souborů a složek:
 1. Na stránce **změnit nebo zastavit naplánované zálohování** vyberte možnost **zastavit použití tohoto plánu zálohování, ale uložte uložené zálohy, dokud nebude plán znovu aktivován**. Pak vyberte **Další**.
 
     ![Upravte nebo zastavte naplánované zálohování.](./media/backup-azure-manage-mars/stop-schedule-backup.png)
-1. V části **pozastavit naplánované zálohování** zkontrolujte informace a klikněte na **Dokončit**.
+1. V části **pozastavit naplánované zálohování**zkontrolujte informace a klikněte na **Dokončit**.
 
     ![Upravte nebo zastavte naplánované zálohování.](./media/backup-azure-manage-mars/pause-schedule-backup.png)
-1. V nabídce **upravit proces zálohování** ověřte, že je v úspěšném stavu pozastavení zálohování plánu, a kliknutím na **Zavřít** dokončete akci.
+1. V nabídce **upravit proces zálohování**ověřte, že je v plánu úspěšné ukončení zálohování, a klikněte na **Zavřít** .
 
 ### <a name="stop-protection-and-delete-backup-data"></a>Zastavení ochrany a odstranění zálohovaných dat
 
@@ -155,17 +156,18 @@ Pokud jste zastavili ochranu při zachování dat a rozhodli jste se obnovit och
 
 K šifrování a dešifrování dat se používá přístupové heslo při zálohování nebo obnovení místního nebo místního počítače pomocí agenta MARS do systému nebo z Azure. Pokud jste heslo ztratili nebo zapomněli, můžete heslo znovu vygenerovat (Pokud je váš počítač pořád zaregistrovaný v trezoru Recovery Services a konfigurace zálohování), postupujte podle následujících kroků:
 
-- V konzole agenta Mars přejděte do **podokna akce**  >  **změnit vlastnosti** >. Pak přejdete na **kartu šifrování**.<br>
-- Zaškrtněte políčko **změnit heslo** .<br>
-- Zadejte nové heslo nebo klikněte na **vygenerovat heslo**.
-- Kliknutím na tlačítko **Procházet** uložte nové heslo.
+1. V konzole agenta Mars přejděte do **podokna akce**  >  **změnit vlastnosti** >. Pak přejdete na **kartu šifrování**.<br>
+1. Zaškrtněte políčko **změnit heslo** .<br>
+1. Zadejte nové heslo nebo klikněte na **vygenerovat heslo**.
+1. Kliknutím na tlačítko **Procházet** uložte nové heslo.
 
     ![Vygenerujte heslo.](./media/backup-azure-manage-mars/passphrase.png)
-- Změny aplikujete kliknutím na **OK** .  Pokud je [funkce zabezpečení](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#enable-security-features) v Azure Portal pro trezor Recovery Services povolená, zobrazí se výzva k zadání bezpečnostního kódu PIN. Chcete-li získat kód PIN, postupujte podle kroků uvedených v tomto [článku](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#authentication-to-perform-critical-operations).<br>
-- Vložte bezpečnostní kód PIN z portálu a kliknutím na **OK** změny aplikujte.<br>
+
+1. Změny aplikujete kliknutím na **OK** .  Pokud je [funkce zabezpečení](./backup-azure-security-feature.md#enable-security-features) v Azure Portal pro trezor Recovery Services povolená, zobrazí se výzva k zadání bezpečnostního kódu PIN. Chcete-li získat kód PIN, postupujte podle kroků uvedených v tomto [článku](./backup-azure-security-feature.md#authentication-to-perform-critical-operations).<br>
+1. Vložte bezpečnostní kód PIN z portálu a kliknutím na **OK** změny aplikujte.<br>
 
     ![Vygenerujte heslo.](./media/backup-azure-manage-mars/passphrase2.png)
-- Ujistěte se, že je přístupové heslo bezpečně uložené v alternativním umístění (jiné než zdrojový počítač), nejlépe v Azure Key Vault. Pokud máte více počítačů zálohovaných pomocí agentů MARS, Sledujte všechna hesla.
+1. Ujistěte se, že je přístupové heslo bezpečně uložené v alternativním umístění (jiné než zdrojový počítač), nejlépe v Azure Key Vault. Pokud máte více počítačů zálohovaných pomocí agentů MARS, Sledujte všechna hesla.
 
 ## <a name="managing-backup-data-for-unavailable-machines"></a>Správa zálohovaných dat pro nedostupné počítače
 
@@ -182,13 +184,14 @@ Pro tyto počítače služba Azure Backup zajišťuje, že poslední bod obnoven
 Správa zásad zálohování pro MARS se provádí prostřednictvím konzoly MARS a nikoli prostřednictvím portálu. Pokud potřebujete pro existující body obnovení před vypršením platnosti zvětšit nastavení uchovávání, pak je potřeba obnovit počítač, nainstalovat konzolu MARS a tuto zásadu napřed.
 
 - Chcete-li obnovit počítač, proveďte následující kroky:
-  - [Obnovení virtuálního počítače do alternativního cílového počítače](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)
-  - Vytvořte znovu cílový počítač se stejným názvem hostitele, jako má zdrojový počítač.
-  - Nainstalujte agenta a znovu ho zaregistrujte do stejného trezoru a se stejným heslem.
-  - Spusťte klienta MARS a prodlužte dobu uchovávání podle vašich požadavků.
+  1. [Obnovení virtuálního počítače do alternativního cílového počítače](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)
+  1. Vytvořte znovu cílový počítač se stejným názvem hostitele, jako má zdrojový počítač.
+  1. Nainstalujte agenta a znovu ho zaregistrujte do stejného trezoru a se stejným heslem.
+  1. Spusťte klienta MARS a prodlužte dobu uchovávání podle vašich požadavků.
 - Váš nově obnovený počítač chráněný pomocí MARS bude i nadále provádět zálohování.  
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o podporovaných scénářích a omezeních najdete v tématu [matice podpory pro agenta Mars](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent).
+- Informace o podporovaných scénářích a omezeních najdete v tématu [matice podpory pro agenta Mars](./backup-support-matrix-mars-agent.md).
 - Přečtěte si další informace o [chování uchovávání zásad zálohování na vyžádání](backup-windows-with-mars-agent.md#set-up-on-demand-backup-policy-retention-behavior).
+- Nejčastější dotazy najdete v tématu [Nejčastější dotazy k agentovi Mars](backup-azure-file-folder-backup-faq.md).

@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 44002a8f4ab3b644e3530ee2d2fc06a7af271fbe
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 34f2cfa06cbdbb75b8fd610cd1f76fb33dde4cde
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531178"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059841"
 ---
 # <a name="connect-your-qualys-vm-to-azure-sentinel-with-azure-function"></a>Připojení virtuálního počítače s Qualys ke službě Azure Sentinel pomocí funkce Azure Functions
+
+> [!IMPORTANT]
+> Datový konektor virtuálního počítače Qualys ve službě Azure Sentinel je aktuálně ve verzi Public Preview.
+> Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Konektor pro správu ohrožení zabezpečení Qualys (VM) umožňuje snadno připojit všechny protokoly řešení zabezpečení [virtuálních počítačů Qualys](https://www.qualys.com/apps/vulnerability-management/) s Azure Sentinel, zobrazit řídicí panely, vytvořit vlastní výstrahy a vylepšit šetření. Integrace mezi virtuálními počítači Qualys a službou Azure Sentinel používá Azure Functions k vyžádání dat protokolu pomocí REST API.
 

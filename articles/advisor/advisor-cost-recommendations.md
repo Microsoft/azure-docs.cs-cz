@@ -3,12 +3,12 @@ title: Snížení nákladů na službu pomocí Azure Advisor
 description: Využijte Azure Advisor k optimalizaci nákladů na nasazení Azure.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: ad8340595b10ce9c729c9c89f0099434c15a9ff2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6fa57726ee37d78438b4e07d329f1af00f157d7e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078557"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057746"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Snížení nákladů na službu pomocí Azure Advisor
 
@@ -89,7 +89,7 @@ Pokud chcete ušetřit 60% nákladů, doporučujeme ukládat snímky ve službě
 Pomocí inteligentních informací o počtu, celkové velikosti a transakcích služby Azure Blob Storage zjistí služba Advisor, jestli byste měli povolit správu životního cyklu na úrovni dat na jednom nebo několika účtech úložiště. Vyzve vás k vytvoření pravidel pro správu životního cyklu, která budou automaticky vrstvit vaše data na studená nebo archivní úložiště pro optimalizaci nákladů na úložiště a zachování vašich dat v úložišti objektů BLOB v Azure kvůli kompatibilitě aplikací.
 
 ## <a name="create-an-ephemeral-os-disk-recommendation"></a>Doporučení k vytvoření dočasného disku s operačním systémem
-[Dočasný disk s operačním systémem](https://docs.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks) vám umožní: 
+[Dočasný disk s operačním systémem](../virtual-machines/windows/ephemeral-os-disks.md) vám umožní: 
 - Ušetřete náklady na úložiště pro disky s operačním systémem. 
 - Získejte nižší latenci čtení a zápisu na disky s operačním systémem. 
 - Získejte rychlejší operace obnovení imagí virtuálních počítačů obnovením operačního systému (a dočasného disku) do původního stavu.
@@ -99,7 +99,7 @@ Je vhodnější použít dočasný disk s operačním systémem pro krátkodobé
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Přístup k cenovým doporučením v Azure Advisor
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
 
 1. Vyhledejte a vyberte [**Advisor**](https://aka.ms/azureadvisordashboard) na libovolné stránce.
 
@@ -114,4 +114,3 @@ Další informace o doporučení Advisoru najdete tady:
 * [Doporučení pro vysokou dostupnost poradce](advisor-high-availability-recommendations.md)
 * [Doporučení pro zabezpečení Advisoru](advisor-security-recommendations.md)
 * [Doporučení provozní kvality Advisoru](advisor-operational-excellence-recommendations.md)
-

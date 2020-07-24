@@ -4,12 +4,12 @@ description: Přečtěte si, jak řešit problémy a řešit běžné problémy 
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: f334f501335e9e384cfcc35b356e61ab66efe7a8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a65e5e2b507f45fe51a8f6406edae4d96affe227
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243677"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056510"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -80,7 +80,11 @@ AKS má řídicí plochy vysoké úrovně, které se vertikálně škálují pod
     - https://github.com/helm/helm/issues/4821
     - https://github.com/helm/helm/issues/3500
     - https://github.com/helm/helm/issues/4543
+- **[Je interní provoz mezi uzly blokován?](#im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout)**
 
+## <a name="im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout"></a>Přijímám `TCP timeouts` , například`dial tcp <Node_IP>:10250: i/o timeout`
+
+Tyto časové limity můžou souviset s vnitřním přenosem mezi blokovanými uzly. Ověřte, že tento provoz není blokovaný, například [skupiny zabezpečení sítě](concepts-security.md#azure-network-security-groups) v podsíti pro uzly clusteru.
 
 ## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>V existujícím clusteru se snažím povolit Access Control na základě rolí (RBAC). Jak to můžu udělat?
 
@@ -217,7 +221,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 |--|:--:|
 | 1.10 | 1.10.2 nebo novější |
 | 1,11 | 1.11.0 nebo novější |
-| 1,12 a novější | Nelze použít |
+| 1,12 a novější | – |
 
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Při nastavování UID a GID v mountOptions pro disk Azure došlo k chybě.
@@ -274,7 +278,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 | 1.12 | 1.12.9 nebo novější |
 | 1.13 | 1.13.6 nebo novější |
 | 1,14 | 1.14.2 nebo novější |
-| 1,15 a novější | Nelze použít |
+| 1,15 a novější | – |
 
 Pokud používáte verzi Kubernetes, která nemá opravu pro tento problém a váš uzel obsahuje zastaralý seznam disků, můžete zmírnit odpojením všech neexistujících disků z virtuálního počítače jako hromadnou operaci. **Samostatné odpojení neexistujících disků může selhat.**
 
@@ -293,7 +297,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 | 1.12 | 1.12.10 nebo novější |
 | 1.13 | 1.13.8 nebo novější |
 | 1,14 | 1.14.4 nebo novější |
-| 1,15 a novější | Nelze použít |
+| 1,15 a novější | – |
 
 Pokud používáte verzi Kubernetes, která nemá opravu pro tento problém, a váš uzel je ve stavu selhání, můžete zmírnit ruční aktualizací stavu virtuálního počítače pomocí jedné z následujících akcí:
 
@@ -402,7 +406,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 |--|:--:|
 | 1.12 | 1.12.6 nebo novější |
 | 1.13 | 1.13.4 nebo novější |
-| 1,14 a novější | Nelze použít |
+| 1,14 a novější | – |
 
 ### <a name="azure-files-mount-fails-because-of-storage-account-key-changed"></a>Připojení k souborům Azure selhalo kvůli změně klíče účtu úložiště.
 

@@ -5,38 +5,38 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 04/13/2020
-ms.openlocfilehash: 5bc160076e6a06c7ddcc99d989eb6d9c7fb3fe0f
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 06/30/2020
+ms.openlocfilehash: 2140cbbc43af7f80c0c5fc2d7cea85cb31bd7bfe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042284"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059348"
 ---
-# <a name="quickstart-explore-azure-time-series-insights"></a>Rychlý start: Prozkoumání služby Azure Time Series Insights
+# <a name="quickstart-explore-azure-time-series-insights-gen1"></a>Rychlý Start: Prozkoumejte Azure Time Series Insights Gen1
 
-Tento rychlý Start Azure Time Series Insights Exploreru vám pomůže začít pracovat s Time Series Insights v bezplatném ukázkovém prostředí. V tomto rychlém startu se dozvíte, jak pomocí webového prohlížeče vizualizovat velké objemy dat IoT a klíčových funkcí, které jsou všeobecně dostupné.
+Tento rychlý Start Azure Time Series Insights Exploreru vám pomůže začít pracovat s Azure Time Series Insights v bezplatném ukázkovém prostředí. V tomto rychlém startu se dozvíte, jak pomocí webového prohlížeče vizualizovat velké objemy dat IoT a klíčových funkcí, které jsou všeobecně dostupné.
 
 Azure Time Series Insights je plně spravovaná služba pro analýzy, ukládání a vizualizace, která usnadňuje zkoumání a analýzy miliard událostí IoT současně. Poskytuje globální přehled o datech, abyste mohli rychle ověřit vaše řešení IoT a vyhnout se nákladným výpadkům důležitých zařízení. Azure Time Series Insights vám pomůže odhalit skryté trendy, odhalit anomálie a provádět analýzy hlavních příčin téměř v reálném čase.
 
 Pro větší flexibilitu můžete přidat Azure Time Series Insights do existující aplikace prostřednictvím svých výkonných [rozhraní REST API](./concepts-query-overview.md) a [klientské sady SDK](https://github.com/microsoft/tsiclient). Rozhraní API můžete použít k ukládání, dotazování a zpracování dat časových řad v klientské aplikaci podle vašeho výběru. Můžete také použít sadu SDK klienta k přidání součástí uživatelského rozhraní do existující aplikace.
 
-Tento rychlý Start Time Series Insights Exploreru nabízí Průvodce funkcemi, které jsou všeobecně dostupné.
+Tento rychlý Start Azure Time Series Insights Exploreru nabízí Průvodce funkcemi.
 
 > [!IMPORTANT]
 > Vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) , pokud jste ho ještě nevytvořili.
 
 ## <a name="prepare-the-demo-environment"></a>Příprava ukázkového prostředí
 
-1. V prohlížeči přejdete do [ukázky obecné dostupnosti](https://insights.timeseries.azure.com/demo).
+1. V prohlížeči přejdete na [ukázku Gen1](https://insights.timeseries.azure.com/demo).
 
-1. Pokud se zobrazí výzva, přihlaste se k Průzkumníkovi Time Series Insights pomocí svých přihlašovacích údajů k účtu Azure.
+1. Pokud se zobrazí výzva, přihlaste se k Průzkumníkovi Azure Time Series Insights pomocí svých přihlašovacích údajů k účtu Azure.
 
-1. Zobrazí se stránka Time Series Insights Rychlá prohlídka. Kliknutím na tlačítko **Další** zahájíte rychlou prohlídku.
+1. Zobrazí se stránka Azure Time Series Insights Rychlá prohlídka. Kliknutím na tlačítko **Další** zahájíte rychlou prohlídku.
 
    [![Úvodní Start – výběr další](media/quickstart/quickstart-welcome.png)](media/quickstart/quickstart-welcome.png#lightbox)
 
@@ -50,7 +50,7 @@ Tento rychlý Start Time Series Insights Exploreru nabízí Průvodce funkcemi, 
 
    [![Výběr časového rámce](media/quickstart/quickstart-select-time.png)](media/quickstart/quickstart-select-time.png#lightbox)
 
-   Time Series Insights zobrazí vizualizaci grafu pro zadaný časový rámec. V rámci spojnicového grafu můžete provádět různé akce. Můžete například filtrovat, připnout, řadit a Stack.
+   Azure Time Series Insights zobrazí vizualizaci grafu pro časový rámec, který jste zadali. V rámci spojnicového grafu můžete provádět různé akce. Můžete například filtrovat, připnout, řadit a Stack.
 
    Chcete-li se vrátit na **panel pro výběr času**, vyberte šipku dolů, jak je znázorněno níže:
 
@@ -91,6 +91,4 @@ Teď, když jste dokončili kurz, vyčistěte prostředky, které jste vytvořil
 
 ## <a name="next-steps"></a>Další kroky
 
-Jste připraveni vytvořit vlastní prostředí Time Series Insights:
-> [!div class="nextstepaction"]
-> [Plánování prostředí Time Series Insights](time-series-insights-environment-planning.md)
+* Jste připraveni vytvořit vlastní prostředí Azure Time Series Insights. Přečtěte si téma [plánování Azure Time Series Insightsho prostředí](time-series-insights-environment-planning.md).

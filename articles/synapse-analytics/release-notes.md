@@ -1,5 +1,5 @@
 ---
-title: Poznámky k verzi
+title: 'Poznámky k verzi: Azure synapse Analytics (pracovní prostory)'
 description: Poznámky k verzi pro Azure synapse Analytics (pracovní prostory)
 services: synapse-analytics
 author: julieMSFT
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 514694dc2e3f06db2fb80f6b3ba0106343be11d8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: add5c89e83f33980803bf571239023859653c4f1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658502"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059603"
 ---
 # <a name="azure-synapse-analytics-preview-release-notes"></a>Poznámky k verzi Azure synapse Analytics (Preview)
 

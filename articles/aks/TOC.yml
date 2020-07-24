@@ -66,6 +66,9 @@
       items:
         - name: Přehled
           href: best-practices.md
+        - name: Základní architektura pro cluster AKS
+          href: /azure/architecture/reference-architectures/containers/aks/secure-baseline-aks/
+          maintainContext: true
         - name: Pro operátory clusteru
           items:
             - name: Víceklientská architektura a izolace clusteru

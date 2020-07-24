@@ -3,17 +3,18 @@ title: Zálohování sdílených složek Azure pomocí REST API
 description: Naučte se používat REST API k zálohování sdílených složek Azure v trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: 2cf385830ec1be17cb62432e6ef9cba7d82a9db1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7059dbae9d448b710880f1f9d72b843a6d77d98b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710605"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055018"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>Zálohování sdílené složky Azure pomocí Azure Backup přes REST API
 
 Tento článek popisuje, jak zálohovat sdílenou složku Azure pomocí Azure Backup přes REST API.
 
-V tomto článku se předpokládá, že jste už vytvořili trezor služby Recovery Services a zásady pro konfiguraci zálohování pro sdílenou složku. Pokud jste to ještě neudělali, přečtěte si téma [Vytvoření trezoru](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatevault) a [Vytvoření zásad](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatepolicy) REST APIch výukových kurzů pro vytváření nových trezorů a zásad.
+V tomto článku se předpokládá, že jste už vytvořili trezor služby Recovery Services a zásady pro konfiguraci zálohování pro sdílenou složku. Pokud jste to ještě neudělali, přečtěte si téma [Vytvoření trezoru](./backup-azure-arm-userestapi-createorupdatevault.md) a [Vytvoření zásad](./backup-azure-arm-userestapi-createorupdatepolicy.md) REST APIch výukových kurzů pro vytváření nových trezorů a zásad.
 
 V tomto článku budeme používat následující zdroje:
 
@@ -31,7 +32,7 @@ V tomto článku budeme používat následující zdroje:
 
 ### <a name="discover-storage-accounts-with-unprotected-azure-file-shares"></a>Zjištění účtů úložiště s nechráněnými sdílenými složkami Azure
 
-Trezor musí v předplatném zjistit všechny účty úložiště Azure, které se dají zálohovat do trezoru Recovery Services. Tato operace se aktivuje pomocí [operace aktualizace](https://docs.microsoft.com/rest/api/backup/protectioncontainers/refresh). Je to asynchronní operace *post* , která zajišťuje, že trezor získá nejnovější seznam všech nechráněných sdílených složek Azure v aktuálním předplatném a ukládá je do mezipaměti. Jakmile je sdílená složka uložená v mezipaměti, služba Recovery Services může ke sdílené složce přistupovat a chránit ji.
+Trezor musí v předplatném zjistit všechny účty úložiště Azure, které se dají zálohovat do trezoru Recovery Services. Tato operace se aktivuje pomocí [operace aktualizace](/rest/api/backup/protectioncontainers/refresh). Je to asynchronní operace *post* , která zajišťuje, že trezor získá nejnovější seznam všech nechráněných sdílených složek Azure v aktuálním předplatném a ukládá je do mezipaměti. Jakmile je sdílená složka uložená v mezipaměti, služba Recovery Services může ke sdílené složce přistupovat a chránit ji.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01&$filter={$filter}
@@ -55,7 +56,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 #### <a name="responses"></a>Odpovědi
 
-Operace Refresh je [asynchronní operace](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). To znamená, že tato operace vytvoří další operaci, která musí být sledována samostatně.
+Operace Refresh je [asynchronní operace](../azure-resource-manager/management/async-operations.md). To znamená, že tato operace vytvoří další operaci, která musí být sledována samostatně.
 
 Při vytvoření jiné operace vrátí dvě odpovědi: 202 (přijato) a po dokončení této operace 200 (OK).
 
@@ -107,7 +108,7 @@ Date   : Mon, 27 Jan 2020 10:53:04 GMT
 
 ### <a name="get-list-of-storage-accounts-that-can-be-protected-with-recovery-services-vault"></a>Získat seznam účtů úložiště, které se dají chránit pomocí služby Recovery Services trezor
 
-Pokud chcete potvrdit, že se ukládá do mezipaměti, uveďte seznam všech chráněných účtů úložiště v rámci předplatného. Pak v odpovědi Najděte požadovaný účet úložiště. To se provádí pomocí operace [Get ProtectableContainers](https://docs.microsoft.com/rest/api/backup/protectablecontainers/list) .
+Pokud chcete potvrdit, že se ukládá do mezipaměti, uveďte seznam všech chráněných účtů úložiště v rámci předplatného. Pak v odpovědi Najděte požadovaný účet úložiště. To se provádí pomocí operace [Get ProtectableContainers](/rest/api/backup/protectablecontainers/list) .
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectableContainers?api-version=2016-12-01&$filter=backupManagementType eq 'AzureStorage'
@@ -159,7 +160,7 @@ Vzhledem k tomu, že jsme v těle odpovědi našli *testvault2* účet úložiš
 
 ### <a name="register-storage-account-with-recovery-services-vault"></a>Registrace účtu úložiště pomocí Recovery Servicesového trezoru
 
-Tento krok je nutný jenom v případě, že jste předtím nezaregistrovali účet úložiště v trezoru. Trezor můžete zaregistrovat prostřednictvím [operace ProtectionContainers-Register](https://docs.microsoft.com/rest/api/backup/protectioncontainers/register).
+Tento krok je nutný jenom v případě, že jste předtím nezaregistrovali účet úložiště v trezoru. Trezor můžete zaregistrovat prostřednictvím [operace ProtectionContainers-Register](/rest/api/backup/protectioncontainers/register).
 
 ```http
 PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}?api-version=2016-12-01
@@ -208,7 +209,7 @@ Text žádosti o vytvoření je následující:
  }
 ```
 
-Úplný seznam definic těla žádosti a další podrobnosti najdete v tématu [ProtectionContainers-Register](https://docs.microsoft.com/rest/api/backup/protectioncontainers/register#azurestoragecontainer).
+Úplný seznam definic těla žádosti a další podrobnosti najdete v tématu [ProtectionContainers-Register](/rest/api/backup/protectioncontainers/register#azurestoragecontainer).
 
 Jedná se o asynchronní operaci a vrátí dvě odpovědi: "202 přijatý" při přijetí operace a "200 OK" po dokončení operace.  Chcete-li sledovat stav operace, použijte hlavičku umístění k získání nejnovějšího stavu operace.
 
@@ -240,7 +241,7 @@ Můžete ověřit, zda byla registrace úspěšná z hodnoty parametru *registra
 
 ### <a name="inquire-all-unprotected-files-shares-under-a-storage-account"></a>Dotázat se na všechny nechráněné sdílené soubory v rámci účtu úložiště
 
-V účtu úložiště se můžete dotazovat na chránitelné položky pomocí operace [prošetření kontejnerů ochrany](https://docs.microsoft.com/rest/api/backup/protectioncontainers/inquire) . Je to asynchronní operace a výsledky by se měly sledovat pomocí hlavičky umístění.
+V účtu úložiště se můžete dotazovat na chránitelné položky pomocí operace [prošetření kontejnerů ochrany](/rest/api/backup/protectioncontainers/inquire) . Je to asynchronní operace a výsledky by se měly sledovat pomocí hlavičky umístění.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/inquire?api-version=2016-12-01
@@ -275,7 +276,7 @@ Date  : Mon, 27 Jan 2020 10:53:05 GMT
 
 ### <a name="select-the-file-share-you-want-to-back-up"></a>Vyberte sdílenou složku, kterou chcete zálohovat.
 
-V rámci předplatného můžete zobrazit seznam všech chráněných položek a vyhledat požadovanou sdílenou složku, která se bude zálohovat pomocí operace [získat backupprotectableItems](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list) .
+V rámci předplatného můžete zobrazit seznam všech chráněných položek a vyhledat požadovanou sdílenou složku, která se bude zálohovat pomocí operace [získat backupprotectableItems](/rest/api/backup/backupprotectableitems/list) .
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectableItems?api-version=2016-12-01&$filter={$filter}
@@ -350,7 +351,7 @@ Odpověď obsahuje seznam všech nechráněných sdílených složek a obsahuje 
 
 ### <a name="enable-backup-for-the-file-share"></a>Povolit zálohování pro sdílenou složku
 
-Až bude příslušná sdílená složka "identifikovaná" s popisným názvem, vyberte zásadu, která se má chránit. Další informace o existujících zásadách v trezoru najdete v tématu věnovaném [rozhraní API zásad seznamu](https://docs.microsoft.com/rest/api/backup/backuppolicies/list). Pak vyberte [příslušnou zásadu](https://docs.microsoft.com/rest/api/backup/protectionpolicies/get) odkazem na název zásady. Pokud chcete vytvořit zásady, Projděte si [kurz vytvoření zásad](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatepolicy).
+Až bude příslušná sdílená složka "identifikovaná" s popisným názvem, vyberte zásadu, která se má chránit. Další informace o existujících zásadách v trezoru najdete v tématu věnovaném [rozhraní API zásad seznamu](/rest/api/backup/backuppolicies/list). Pak vyberte [příslušnou zásadu](/rest/api/backup/protectionpolicies/get) odkazem na název zásady. Pokud chcete vytvořit zásady, Projděte si [kurz vytvoření zásad](./backup-azure-arm-userestapi-createorupdatepolicy.md).
 
 Povolení ochrany je asynchronní operace *Put* , která vytvoří chráněnou položku.
 
@@ -466,11 +467,11 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 Chcete-li aktivovat zálohování na vyžádání, níže jsou uvedené součásti textu žádosti.
 
-| Name       | Typ                       | Description                       |
+| Název       | Typ                       | Popis                       |
 | ---------- | -------------------------- | --------------------------------- |
 | Vlastnosti | AzurefilesharebackupReques | Vlastnosti BackupRequestResource |
 
-Úplný seznam definic těla žádosti a další podrobnosti najdete v tématu [spuštění zálohování chráněných položek REST API dokumentu](https://docs.microsoft.com/rest/api/backup/backups/trigger#request-body).
+Úplný seznam definic těla žádosti a další podrobnosti najdete v tématu [spuštění zálohování chráněných položek REST API dokumentu](/rest/api/backup/backups/trigger#request-body).
 
 Příklad textu žádosti
 
@@ -488,7 +489,7 @@ Příklad textu žádosti
 
 ### <a name="responses"></a>Odpovědi
 
-Aktivace zálohování na vyžádání je [asynchronní operace](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). To znamená, že tato operace vytvoří další operaci, která musí být sledována samostatně.
+Aktivace zálohování na vyžádání je [asynchronní operace](../azure-resource-manager/management/async-operations.md). To znamená, že tato operace vytvoří další operaci, která musí být sledována samostatně.
 
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a 200 (OK) po dokončení této operace.
 
@@ -539,7 +540,7 @@ Po dokončení operace vrátí 200 (OK) ID výsledné úlohy zálohování v tě
 }
 ```
 
-Vzhledem k tomu, že úloha zálohování je dlouhodobě spuštěná operace, je nutné ji sledovat, jak je vysvětleno v tématu [Monitorování úloh pomocí REST APIho dokumentu](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-managejobs#tracking-the-job).
+Vzhledem k tomu, že úloha zálohování je dlouhodobě spuštěná operace, je nutné ji sledovat, jak je vysvětleno v tématu [Monitorování úloh pomocí REST APIho dokumentu](./backup-azure-arm-userestapi-managejobs.md#tracking-the-job).
 
 ## <a name="next-steps"></a>Další kroky
 

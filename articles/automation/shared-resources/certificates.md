@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 918e34114faa7a57e54ec45c1cca8036462a8fa1
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 61e2cdf63e5553ba8d796115284dad9a538c2b81
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187383"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056281"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>Správa certifikátů v Azure Automation
 
@@ -34,7 +34,7 @@ Rutiny v následující tabulce vytvářejí a spravují certifikáty služby Au
 |[Remove-AzAutomationCertificate](/powershell/module/Az.Automation/Remove-AzAutomationCertificate?view=azps-3.7.0)|Odebere certifikát z automatizace.|
 |[Set-AzAutomationCertificate](/powershell/module/Az.Automation/Set-AzAutomationCertificate?view=azps-3.7.0)|Nastaví vlastnosti pro existující certifikát, včetně nahrání souboru certifikátu a nastavení hesla pro soubor **. pfx** .|
 
-Pomocí rutiny [Add-AzureCertificate](/powershell/module/servicemanagement/azure/add-azurecertificate) lze také nahrát certifikát služby pro zadanou cloudovou službu.
+Pomocí rutiny [Add-AzureCertificate](/powershell/module/servicemanagement/azure.service/add-azurecertificate) lze také nahrát certifikát služby pro zadanou cloudovou službu.
 
 ## <a name="internal-cmdlets-to-access-certificates"></a>Interní rutiny pro přístup k certifikátům
 

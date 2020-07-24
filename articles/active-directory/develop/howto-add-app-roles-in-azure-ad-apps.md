@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/24/2018
+ms.date: 07/15/2020
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 940ef671ab58074aaded49acb70db68a4971c1f2
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 0ec314e6b5abde60102dacfc81c9303cef16e887
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187026"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058618"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Postupy: Přidání rolí aplikace do aplikace a jejich přijetí v tokenu
 
@@ -34,7 +34,7 @@ Tyto aplikační role jsou definovány v [Azure Portal](https://portal.azure.com
 
 ### <a name="declare-app-roles-using-azure-portal"></a>Deklarace rolí aplikace pomocí Azure Portal
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
 1. Na panelu nástrojů portálu vyberte ikonu **adresář + předplatné** .
 1. V seznamu **Oblíbené** nebo **všechny adresáře** vyberte tenanta služby Active Directory, do kterého chcete aplikaci zaregistrovat.
 1. V Azure Portal vyhledejte a vyberte **Azure Active Directory**.
@@ -76,7 +76,7 @@ Následující příklad ukazuje `appRoles` , který lze přiřadit k `users` .
 > [!NOTE]
 >`displayName`Nesmí obsahovat mezery.
 
-Můžete definovat aplikační role pro cílení `users` , `applications` nebo obojí. Pokud je k dispozici pro `applications` , role aplikace se zobrazí jako oprávnění aplikace v okně **požadovaná oprávnění** . Následující příklad ukazuje aplikační roli, která je zacílená směrem k `Application` .
+Můžete definovat aplikační role pro cílení `users` , `applications` nebo obojí. Pokud je k dispozici pro `applications` , role aplikací se zobrazí jako oprávnění aplikace v části **spravovat** oddíl > **oprávnění rozhraní api > přidat oprávnění > moje rozhraní API > zvolit oprávnění rozhraní API > aplikace**. Následující příklad ukazuje aplikační roli, která je zacílená směrem k `Application` .
 
 ```Json
 "appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
@@ -118,6 +118,10 @@ Po přidání rolí aplikace do aplikace můžete těmto rolím přiřadit uživ
 1. Zvolte roli a stiskněte tlačítko **Vybrat** .
 1. Stisknutím tlačítka **přiřadit** v dolní části dokončíte přiřazení uživatelů a skupin do aplikace.
 1. Ověřte, že se uživatelé a skupiny, které jste přidali, zobrazují v seznamu aktualizovaných **uživatelů a skupin** .
+
+### <a name="receive-roles-in-tokens"></a>Přijímání rolí v tokenech
+
+Když se uživatelé, kteří jsou přiřazeni k různým rolím aplikace, přihlásí k aplikaci, jejich tokeny budou mít přiřazené role v `roles` deklaraci identity.
 
 ## <a name="more-information"></a>Další informace
 

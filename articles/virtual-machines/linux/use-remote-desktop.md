@@ -13,17 +13,18 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 2e97442d4104f52c1a76ba8cd1d81c99508bb242
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc442886c4c4c26db5f5cde908ea647e2ee2f1bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81605187"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059008"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Instalace a konfigurace vzdálené plochy pro připojení k virtuálnímu počítači se systémem Linux v Azure
 Virtuální počítače se systémem Linux v Azure jsou obvykle spravovány z příkazového řádku pomocí připojení Secure Shell (SSH). Když je novinkou pro Linux nebo rychlé řešení potíží, může být používání vzdálené plochy jednodušší. Tento článek podrobně popisuje, jak nainstalovat a nakonfigurovat desktopové prostředí ([desktop Xfce](https://www.xfce.org)) a vzdálenou plochu ([xrdp](http://xrdp.org)) pro virtuální počítač se systémem Linux pomocí modelu nasazení Správce prostředků.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Tento článek vyžaduje existující virtuální počítač s Ubuntu 18,04 LTS v Azure. Pokud potřebujete vytvořit virtuální počítač, použijte jednu z následujících metod:
 
 - Rozhraní příkazového [řádku Azure](quick-create-cli.md)
@@ -104,7 +105,7 @@ Po ověření se desktop Xfce desktopové prostředí načte a bude vypadat podo
 Pokud Váš místní klient RDP používá ověřování na úrovni sítě (NLA), možná budete muset toto nastavení připojení zakázat. XRDP v současné době nepodporuje NLA. Můžete se také podívat na alternativní řešení protokolu RDP, která podporují NLA, například [FreeRDP](https://www.freerdp.com).
 
 
-## <a name="troubleshoot"></a>Řešení potíží
+## <a name="troubleshoot"></a>Odstranit potíže
 Pokud se k VIRTUÁLNÍmu počítači se systémem Linux nemůžete připojit pomocí klienta vzdálené plochy, pomocí nástroje `netstat` na virtuálním počítači se systémem Linux ověřte, zda váš virtuální počítač naslouchá připojením RDP následujícím způsobem:
 
 ```bash
@@ -132,11 +133,10 @@ tail -f /var/log/syslog
 
 Jiné distribuce systému Linux, například Red Hat Enterprise Linux a SUSE, mohou mít různé způsoby, jak restartovat služby a alternativní umístění souborů protokolu ke kontrole.
 
-Pokud neobdržíte žádnou odpověď v klientovi vzdálené plochy a nezobrazují žádné události v systémovém protokolu, toto chování indikuje, že přenos z vzdálené plochy se nemůže připojit k virtuálnímu počítači. Zkontrolujte pravidla skupiny zabezpečení sítě, abyste měli jistotu, že máte pravidlo, které povoluje TCP na portu 3389. Další informace najdete v tématu [řešení potíží s připojením k aplikacím](../windows/troubleshoot-app-connection.md).
+Pokud neobdržíte žádnou odpověď v klientovi vzdálené plochy a nezobrazují žádné události v systémovém protokolu, toto chování indikuje, že přenos z vzdálené plochy se nemůže připojit k virtuálnímu počítači. Zkontrolujte pravidla skupiny zabezpečení sítě, abyste měli jistotu, že máte pravidlo, které povoluje TCP na portu 3389. Další informace najdete v tématu [řešení potíží s připojením k aplikacím](../troubleshooting/troubleshoot-app-connection.md).
 
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o vytváření a používání klíčů SSH s virtuálními počítači se systémem Linux najdete v tématu [vytváření klíčů ssh pro virtuální počítače se systémem Linux v Azure](mac-create-ssh-keys.md).
 
 Informace o použití SSH ze systému Windows najdete v tématu [použití klíčů ssh v systému Windows](ssh-from-windows.md).
-

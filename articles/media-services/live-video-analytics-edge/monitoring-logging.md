@@ -3,11 +3,12 @@ title: Monitorování a protokolování – Azure
 description: Tento článek poskytuje přehled živé analýzy videí na IoT Edge monitorování a protokolování.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: 807b0623159e0b50285b89da2835e9dd6cb037aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82e4a5879e4c88e462edcddb02866ec9b671d7fe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261209"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060456"
 ---
 # <a name="monitoring-and-logging"></a>Monitorování a protokolování
 
@@ -97,7 +98,7 @@ Live video Analytics na IoT Edge generuje události nebo data telemetrie podle n
      }
    }
    ```
-Události generované modulem jsou odesílány do [centra IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)a v takovém případě je lze směrovat do jiných cílů. 
+Události generované modulem jsou odesílány do [centra IoT Edge](../../iot-edge/iot-edge-runtime.md#iot-edge-hub)a v takovém případě je lze směrovat do jiných cílů. 
 
 ## <a name="controlling-events"></a>Řízení událostí
 
@@ -109,7 +110,7 @@ Pro řízení provozních a diagnostických událostí, které jsou publikovány
    
 Události analýzy jsou generovány uzly, jako je například procesor detekce pohybu nebo procesor rozšíření HTTP, a jímka centra IoT slouží k jejich posílání do centra IoT Edge. 
 
-[Směrování všech výše uvedených událostí](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) můžete řídit prostřednictvím požadované vlastnosti vlákna modulu $edgeHub v manifestu (v manifestu nasazení):
+[Směrování všech výše uvedených událostí](../../iot-edge/module-composition.md#declare-routes) můžete řídit prostřednictvím požadované vlastnosti vlákna modulu $edgeHub v manifestu (v manifestu nasazení):
 
 ```
  "$edgeHub": {
@@ -125,27 +126,27 @@ Události analýzy jsou generovány uzly, jako je například procesor detekce p
  }
 ```
 
-Ve výše uvedeném příkladu je lvaEdge název pro Live video Analytics v modulu IoT Edge a pravidlo směrování následuje po schématu definovaném v části [deklarace tras](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes).
+Ve výše uvedeném příkladu je lvaEdge název pro Live video Analytics v modulu IoT Edge a pravidlo směrování následuje po schématu definovaném v části [deklarace tras](../../iot-edge/module-composition.md#declare-routes).
 
 > [!NOTE]
 > Aby se zajistilo, že události analýzy dosáhnou centra IoT Edge, musí se jednat o uzel jímky služby IoT Hub za provozu libovolného uzlu procesoru pro detekci pohybu nebo libovolného uzlu procesoru rozšíření HTTP.
 
 ## <a name="event-schema"></a>Schéma událostí
 
-Události pocházejí z hraničního zařízení a můžou se spotřebovat na hranici nebo v cloudu. Události generované živou analýzou videa na IoT Edge odpovídají [vzoru zasílání zpráv streamování](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct) , který vytvořila služba Azure IoT Hub, s vlastnostmi systému, vlastnostmi aplikace a textem.
+Události pocházejí z hraničního zařízení a můžou se spotřebovat na hranici nebo v cloudu. Události generované živou analýzou videa na IoT Edge odpovídají [vzoru zasílání zpráv streamování](../../iot-hub/iot-hub-devguide-messages-construct.md) , který vytvořila služba Azure IoT Hub, s vlastnostmi systému, vlastnostmi aplikace a textem.
 
-### <a name="summary"></a>Souhrn
+### <a name="summary"></a>Shrnutí
 
 Každá událost, pokud je pozorována prostřednictvím IoT Hub, bude mít sadu společných vlastností, jak je popsáno níže.
 
-|Vlastnost   |Typ vlastnosti| Typ dat   |Description|
+|Vlastnost   |Typ vlastnosti| Typ dat   |Popis|
 |---|---|---|---|
 |ID zprávy |systém |guid|  Jedinečné ID události|
 |téma| applicationProperty |řetězec|    Azure Resource Manager cesta pro Media Services účet.|
 |závislosti|   applicationProperty |řetězec|    Dílčí cesta k entitě, která vysílá událost|
 |eventTime| applicationProperty|    řetězec| Čas, kdy byla událost vygenerována.|
-|Typ| applicationProperty |řetězec|    Identifikátor typu události (viz níže).|
-|text|text  |odkazy objektů|    Konkrétní data události.|
+|eventType| applicationProperty |řetězec|    Identifikátor typu události (viz níže).|
+|text|text  |object|    Konkrétní data události.|
 |dataVersion    |applicationProperty|   řetězec  |{Hlavní}. Moll|
 
 ### <a name="properties"></a>Vlastnosti
@@ -179,7 +180,7 @@ Typy událostí jsou přiřazeny k oboru názvů podle následujícího schémat
 
 #### <a name="event-classes"></a>Třídy událostí
 
-|Název třídy|Description|
+|Název třídy|Popis|
 |---|---|
 |Analýzy  |Události generované jako součást analýzy obsahu|
 |Diagnostika    |Události, které pomáhají diagnostikovat problémy a výkon.|
@@ -197,9 +198,9 @@ Příklady:
 
 Čas události je popsán v ISO8601 String a v čase, kdy k události došlo.
 
-## <a name="logging"></a>protokolování
+## <a name="logging"></a>Protokolování
 
-Stejně jako u jiných IoT Edgech modulů můžete také [prozkoumávat protokoly kontejnerů](https://docs.microsoft.com/azure/iot-edge/troubleshoot#check-container-logs-for-issues) na hraničním zařízení. Informace, které jsou zapsány v protokolech, mohou být řízeny [následujícími dvojitými vlastnostmi modulu](module-twin-configuration-schema.md) :
+Stejně jako u jiných IoT Edgech modulů můžete také [prozkoumávat protokoly kontejnerů](../../iot-edge/troubleshoot.md#check-container-logs-for-issues) na hraničním zařízení. Informace, které jsou zapsány v protokolech, mohou být řízeny [následujícími dvojitými vlastnostmi modulu](module-twin-configuration-schema.md) :
 
 * logLevel
 
@@ -221,7 +222,7 @@ Stejně jako u jiných IoT Edgech modulů můžete také [prozkoumávat protokol
 
 V některých případech možná budete muset vygenerovat podrobnější protokoly než ty, které jsou popsané výše, a pomoci tak podpoře Azure vyřešit problém. Tuto akci lze provést dvěma kroky.
 
-Nejdřív [propojíte úložiště modulu s úložištěm zařízení](https://docs.microsoft.com/azure/iot-edge/how-to-access-host-storage-from-module#link-module-storage-to-device-storage) přes createOptions. Pokud prohlížíte [šablonu manifestu nasazení](https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp/blob/master/src/edge/deployment.template.json) z rychlého startu, zobrazí se:
+Nejdřív [propojíte úložiště modulu s úložištěm zařízení](../../iot-edge/how-to-access-host-storage-from-module.md#link-module-storage-to-device-storage) přes createOptions. Pokud prohlížíte [šablonu manifestu nasazení](https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp/blob/master/src/edge/deployment.template.json) z rychlého startu, zobrazí se:
 
 ```
 "createOptions": {
@@ -238,7 +239,7 @@ Výše vám umožní, aby modul Edge zapisoval protokoly do cesty úložiště (
 
 Modul pak bude zapisovat protokoly ladění v binárním formátu do cesty úložiště (zařízení)/var/local/MediaServices/debuglogs/, kterou můžete sdílet s podporou Azure.
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 [Nejčastější dotazy](faq.md#monitoring-and-metrics)
 

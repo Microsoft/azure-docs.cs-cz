@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 895e33a111fe5bb881d198ee4995b9534ca3d528
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 2e2a7f09ac6ff3be119a07ed0a2162525801ceef
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135875"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061861"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Vytváření vlastních sad SDK pro digitální vlákna Azure pomocí AutoRest
 
-Teď jediná publikovaná sada SDK pro datovou rovinu pro interakci s rozhraními API digitálních vláken Azure je určena pro .NET (C#). V tématu [Postupy: použití rozhraní API a sad SDK pro digitální vlákna Azure](how-to-use-apis-sdks.md)si můžete přečíst o sadě .NET SDK a obecně o rozhraních API. Pokud pracujete v jiném jazyce, v tomto článku se dozvíte, jak vygenerovat vlastní sadu SDK v jazyce podle vašeho výběru pomocí funkce AutoRest.
+Teď jediná publikovaná sada SDK pro datovou rovinu pro interakci s rozhraními API digitálních vláken Azure je určena pro .NET (C#). V tématu [*Postupy: použití rozhraní API a sad SDK pro digitální vlákna Azure*](how-to-use-apis-sdks.md)si můžete přečíst o sadě .NET SDK a obecně o rozhraních API. Pokud pracujete v jiném jazyce, v tomto článku se dozvíte, jak vygenerovat vlastní sadu SDK v jazyce podle vašeho výběru pomocí funkce AutoRest.
 
 ## <a name="set-up-your-machine"></a>Nastavení počítače
 
@@ -37,19 +37,19 @@ npm install -g autorest@2.0.4413
 Pokud chcete spustit AutoRest proti souboru Swagger digitálních vláken Azure, použijte následující postup:
 1. Zkopírujte soubor Swagger digitálních vláken Azure a jeho doprovodnou složku příkladů do pracovního adresáře.
 2. Pomocí okna příkazového řádku přepněte do tohoto pracovního adresáře.
-3. Spusťte AutoRest pomocí následujícího příkazu. `<language>`Zástupný text nahraďte vaším jazykem podle vlastního výběru: `--python` ,, atd `--java` `--go` . (úplný seznam možností najdete v [souboru Readme pro AutoRest](https://github.com/Azure/autorest).)
+3. Spusťte AutoRest pomocí následujícího příkazu. `<language>`Zástupný text nahraďte vaším jazykem podle vlastního výběru: `--python` , `--java` , `--go` a tak dále. (Můžete najít úplný seznam možností v [souboru Readme pro AutoRest](https://github.com/Azure/autorest).)
 
 ```cmd/sh
 autorest --input-file=adtApiSwagger.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
 ```
 
-V důsledku toho se v pracovním adresáři zobrazí nová složka s názvem *ADTApi* . Vygenerované soubory sady SDK budou mít *ADTApi*oboru názvů, který budete dál používat v ostatních příkladech použití v tomto článku.
+V důsledku toho se v pracovním adresáři zobrazí nová složka s názvem *ADTApi* . Vygenerované soubory sady SDK budou mít obor názvů *ADTApi*. Tento obor názvů budete používat i v ostatních příkladech použití v tomto článku.
 
 AutoRest podporuje široké spektrum generátorů kódů jazyka.
 
 ## <a name="add-the-sdk-to-a-visual-studio-project"></a>Přidat sadu SDK do projektu sady Visual Studio
 
-Můžete zahrnout soubory generované AutoRest přímo do řešení .NET. Vzhledem k tomu, že budete pravděpodobně potřebovat sadu SDK digitálních vláken Azure v několika samostatných projektech (klientské aplikace, Azure Functions aplikace atd.), může být užitečné sestavit samostatný projekt (knihovnu tříd .NET) ze generovaných souborů. Pak můžete zahrnout tento projekt knihovny tříd do několika řešení jako odkaz na projekt.
+Můžete zahrnout soubory generované AutoRest přímo do řešení .NET. Je ale možné, že budete chtít zahrnout sadu Azure Digital SDK do několika samostatných projektů (klientské aplikace, Azure Functions aplikace atd.). Z tohoto důvodu může být užitečné sestavit samostatný projekt (knihovnu tříd .NET) ze generovaných souborů. Pak můžete zahrnout tento projekt knihovny tříd do několika řešení jako odkaz na projekt.
 
 V této části jsou uvedeny pokyny k sestavení sady SDK jako knihovny tříd, což je vlastní projekt a lze je zahrnout do jiných projektů. Tyto kroky spoléhají na **Visual Studio** ( [tady](https://visualstudio.microsoft.com/downloads/)si můžete nainstalovat nejnovější verzi).
 
@@ -73,7 +73,7 @@ Pokud je chcete přidat, otevřete *nástroje > správce balíčků nuget > spra
 
 1. Na panelu se ujistěte, že je vybraná karta *Procházet* .
 2. Hledání *Microsoft. REST*
-3. Vyberte balíčky *ClientRuntime* a *ClientRuntime. Azure* a přidejte je do svého řešení.
+3. Vyberte `ClientRuntime` balíčky a a `ClientRuntime.Azure` přidejte je do svého řešení.
 
 Nyní můžete sestavit projekt a zahrnout ho jako odkaz na projekt v libovolné aplikaci digitálního vlákna v Azure, kterou zapisujete.
 
@@ -115,7 +115,7 @@ AutoRest generuje dva typy vzorů stránkování pro sadu SDK:
 
 Ve vzoru stránkování bez dotazu existují dvě verze každého volání:
 * Verze, která provede počáteční volání (například `DigitalTwins.ListEdges()` )
-* Verze, která získá následné stránky s příponou "Next" (například `DigitalTwins.ListEdgesNext()` )
+* Verze, na které se mají získat následující stránky Tato volání mají příponu "Next" (například). `DigitalTwins.ListEdgesNext()`
 
 Tady je fragment kódu, který ukazuje, jak načíst stránkovaný seznam odchozích vztahů z digitálních vláken Azure:
 ```csharp
@@ -188,4 +188,4 @@ try
 ## <a name="next-steps"></a>Další kroky
 
 Projděte si postup vytvoření klientské aplikace, kde můžete použít sadu SDK:
-* [Kurz: vytvoření kódu klientské aplikace](tutorial-code.md)
+* [*Kurz: vytvoření kódu klientské aplikace*](tutorial-code.md)

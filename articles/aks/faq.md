@@ -2,13 +2,13 @@
 title: Nejčastější dotazy ke službě Azure Kubernetes (AKS)
 description: Vyhledejte odpovědi na některé běžné dotazy ke službě Azure Kubernetes Service (AKS).
 ms.topic: conceptual
-ms.date: 05/14/2020
-ms.openlocfilehash: ba4ceaf0d7f9e3b344b2a6efbb84f2145c4a2f65
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.date: 07/21/2020
+ms.openlocfilehash: 4d93a4f3b58fc38710184f345fd467b2beb32b1a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86275712"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057200"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy ohledně služby Azure Kubernetes Service (AKS)
 
@@ -24,11 +24,11 @@ Ne. Clustery AKS jsou regionální prostředky a nemůžou zahrnovat oblasti. Po
 
 ## <a name="can-i-spread-an-aks-cluster-across-availability-zones"></a>Je možné rozložit cluster AKS napříč zónami dostupnosti?
 
-Ano. Cluster AKS můžete nasadit v rámci jedné nebo více [zón dostupnosti][availability-zones] v [oblastech, které je podporují][az-regions].
+Yes. Cluster AKS můžete nasadit v rámci jedné nebo více [zón dostupnosti][availability-zones] v [oblastech, které je podporují][az-regions].
 
 ## <a name="can-i-limit-who-has-access-to-the-kubernetes-api-server"></a>Můžu omezit, kdo má přístup k serveru rozhraní Kubernetes API?
 
-Ano. K dispozici jsou dvě možnosti omezení přístupu k serveru rozhraní API:
+Yes. K dispozici jsou dvě možnosti omezení přístupu k serveru rozhraní API:
 
 - Použijte [rozsahy povolených IP adres serveru API][api-server-authorized-ip-ranges] , pokud chcete zachovat veřejný koncový bod pro Server rozhraní API, ale omezte přístup na sadu důvěryhodných IP adres.
 - Pokud chcete omezit Server API tak, aby byl dostupný *jenom* v rámci vaší virtuální sítě, použijte [Privátní cluster][private-clusters] .
@@ -62,7 +62,7 @@ Pro povolení této architektury zahrnuje každé nasazení AKS dvě skupiny pro
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>Můžu pro skupinu prostředků uzlu AKS zadat vlastní název?
 
-Ano. Ve výchozím nastavení AKS pojmenuje skupinu prostředků uzlu *MC_resourcegroupname_clustername_location*, ale můžete také zadat vlastní název.
+Yes. Ve výchozím nastavení AKS pojmenuje skupinu prostředků uzlu *MC_resourcegroupname_clustername_location*, ale můžete také zadat vlastní název.
 
 Pokud chcete zadat vlastní název skupiny prostředků, nainstalujte rozšíření Azure CLI [AKS-Preview][aks-preview-cli] verze *0.3.2* nebo novější. Při vytváření clusteru AKS pomocí příkazu [AZ AKS Create][az-aks-create] použijte parametr *--Node-Resource-Group* a zadejte název skupiny prostředků. Pokud k nasazení clusteru AKS [použijete šablonu Azure Resource Manager][aks-rm-template] , můžete definovat název skupiny prostředků pomocí vlastnosti *nodeResourceGroup* .
 
@@ -79,7 +79,7 @@ Při práci s skupinou prostředků uzlu Pamatujte na to, že nemůžete:
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group"></a>Můžu změnit značky a další vlastnosti prostředků AKS ve skupině prostředků uzlu?
 
-Pokud upravíte nebo odstraníte značky vytvořené v Azure a další vlastnosti prostředku v rámci skupiny prostředků uzlu, můžete získat neočekávané výsledky, jako je například škálování a upgrade chyb. AKS umožňuje vytvářet a upravovat vlastní značky vytvořené koncovými uživateli. Můžete chtít vytvořit nebo upravit vlastní značky, například pro přiřazení obchodní jednotky nebo nákladového centra. Toho je možné dosáhnout vytvořením zásad Azure s oborem ve spravované skupině prostředků.
+Pokud upravíte nebo odstraníte značky vytvořené v Azure a další vlastnosti prostředku v rámci skupiny prostředků uzlu, můžete získat neočekávané výsledky, jako je například škálování a upgrade chyb. AKS umožňuje vytvářet a upravovat vlastní značky vytvořené koncovými uživateli. Tyto značky můžete přidat při [vytváření fondu uzlů](use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool). Můžete chtít vytvořit nebo upravit vlastní značky, například pro přiřazení obchodní jednotky nebo nákladového centra. Toho je možné dosáhnout také vytvořením zásad Azure s oborem ve spravované skupině prostředků.
 
 Úprava **značek vytvořených v Azure** u prostředků v rámci skupiny prostředků uzlu v clusteru AKS se ale nejedná o nepodporovanou akci, která zruší cíl na úrovni služby (SLO). Další informace najdete v tématu [AKS nabízí smlouvu o úrovni služeb?](#does-aks-offer-a-service-level-agreement)
 
@@ -137,7 +137,7 @@ Uzly agenta AKS se účtují jako standardní virtuální počítače Azure, tak
 
 ## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>Můžu svůj cluster přesunout nebo migrovat mezi klienty Azure?
 
-`az aks update-credentials`Příkaz se dá použít k přesunutí clusteru AKS mezi klienty Azure. Postupujte podle pokynů v části [Zvolte možnost aktualizovat nebo vytvořit instanční objekt](./update-credentials.md) a pak [aktualizujte cluster AKS pomocí nových přihlašovacích údajů](./update-credentials.md#update-aks-cluster-with-new-service-principal-credentials).
+Přesunutí clusteru AKS mezi klienty se aktuálně nepodporuje.
 
 ## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>Můžu cluster přesunout/migrovat mezi předplatnými?
 

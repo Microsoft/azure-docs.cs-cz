@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
 ms.date: 6/10/2020
-ms.openlocfilehash: 3ba7e4b73fb0ac8d6318b7bfee73300800d5b7ee
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: b41e3d729fa6e5b0be9a55cc45de38f81bed494b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85340772"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061121"
 ---
 # <a name="azure-iot-support-and-help-options"></a>Možnosti pomoci a podpory Azure IoT
 
@@ -26,7 +26,7 @@ Tady jsou návrhy, kde můžete získat nápovědu pro vývoj řešení Azure Io
 
 Prozkoumejte celou řadu [možností podpory Azure a vyberte plán](https://azure.microsoft.com/support/plans) , který nejlépe vyhovuje, ať už jste vývojář, který spouštíte jako cestu v cloudu, nebo velkou organizaci, která nasazuje strategické aplikace, které jsou důležité pro podnikání. Zákazníci Azure můžou vytvářet a spravovat žádosti o podporu v Azure Portal.
 
-* [portál Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [Azure Portal pro vládu USA](https://portal.azure.us)
 
 ## <a name="post-a-question-on-microsoft-qa"></a>Odeslat otázku do Microsoft Q&A
@@ -77,7 +77,7 @@ Pokud chcete požádat o nové funkce, publikujte je na základě zpětné vazby
 
 | Služba                       | Adresa URL zpětné vazby Azure |
 |-------------------------------|---------------|
-| Azure IoT Hub                    | https://feedback.azure.com/forums/321918-azure-iot |
+| Azure IoT (hub, DPS, sady SDK)                    | https://feedback.azure.com/forums/321918-azure-iot |
 | Azure IoT Central             | https://feedback.azure.com/forums/911455-azure-iot-central |
 | Katalog zařízení Azure IoT      | https://feedback.azure.com/forums/916948-azure-iot-device-catalog |
 | Azure IoT Edge                | https://feedback.azure.com/forums/907045-azure-iot-edge |

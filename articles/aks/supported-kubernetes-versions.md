@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 019ae80020dafb54f2c06dd504797f21069914ae
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fc50934b4c301b4eea509ecc22e00c62ca091d75
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507059"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056554"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Podporované verze Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -135,7 +135,7 @@ Historii předchozích verzí najdete [tady](https://en.wikipedia.org/wiki/Kuber
 
 \*Čeká na nedokončené odesílání data vydání.
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 **Co se stane, když uživatel upgraduje cluster Kubernetes s menší verzí, která se nepodporuje?**
 
@@ -162,13 +162,13 @@ Pokud byl cluster nepodporován pro více než tři (3) menší verze a byl nale
 
 Rovina ovládacího prvku musí být v rámci okna verzí ze všech fondů uzlů. Podrobnosti o upgradu roviny ovládacího prvku nebo fondů uzlů najdete v dokumentaci k [upgradu fondů uzlů](use-multiple-node-pools.md#upgrade-a-cluster-control-plane-with-multiple-node-pools).
 
-**Můžu při upgradu přeskočit verzi?**
+**Můžu během upgradu clusteru přeskočit několik verzí AKS?**
 
-Ne. následující osvědčené postupy Kubernetes AKS umožňuje upgrady jenom na okamžitě další opravu nebo podverzi. Na Azure Portal se zobrazí jenom verze, na které můžete upgradovat, a v rozhraní příkazového řádku, které můžete spustit, `az aks get-upgrades -n MyAKSCluster -g MyResourceGroup` abyste viděli dostupné upgrady z aktuální verze.
+Pokud upgradujete podporovaný cluster AKS, nelze podverze Kubernetes vynechat. Například upgrady mezi *1.12. x*  ->  *1.13. x* nebo *1.13. x*  ->  *1.14. x* jsou povoleny, ale *1.12. x*  ->  *1.14. x* není.
 
-**Jak můžu upgradovat na podporovanou verzi, pokud jsem více verzí za nejnovější podporovanou verzí?**
+Chcete-li provést upgrade, z *1.12. x*  ->  *1.14. x*, nejprve upgradujte z *1.12. x*  ->  *1.13. x*a potom proveďte upgrade z *1.13. x*  ->  *1.14. x*.
 
-Pokud chcete zůstat v rámci podpory, musíte se z aktuálně podporovaného seznamu vyhnout nedodržení více verzí, ale pokud jste v této situaci AKS, vždycky umožní upgrade na minimální podporovanou verzi.
+Přeskočení více verzí lze provést pouze při upgradu z nepodporované verze zpět do podporované verze. Například upgradujte z nepodporovaného prvku *1.10. x* --> podporovanou *1.15. x* je možné dokončit.
 
 ## <a name="next-steps"></a>Další kroky
 

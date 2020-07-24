@@ -3,12 +3,12 @@ title: Úvod do Azure Advisor
 description: K optimalizaci nasazení Azure použijte Azure Advisor.
 ms.topic: article
 ms.date: 02/01/2019
-ms.openlocfilehash: 0c6c79dd764f92475b3b0121ae46706c0dfc0bcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17b68e220b7011dee2cc8fca440d58d980c28e6d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117773"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057686"
 ---
 # <a name="introduction-to-azure-advisor"></a>Úvod do Azure Advisor
 
@@ -51,13 +51,13 @@ Doporučení Poradce můžete zobrazit také prostřednictvím rozhraní prostř
 
 ### <a name="what-permissions-do-i-need-to-access-advisor"></a>Jaká oprávnění potřebuji pro přístup k Advisoru?
  
-K doporučením Advisoru se dostanete jako *vlastník*, *Přispěvatel*nebo *Čtenář* předplatného.
+K doporučením Advisoru se dostanete jako *vlastník*, *Přispěvatel*nebo *Čtenář* předplatného, skupiny prostředků nebo prostředku.
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>K jakým prostředkům poradce poskytuje doporučení?
 
 Služba Advisor poskytuje doporučení pro Application Gateway, App Services, skupiny dostupnosti, Azure cache, Azure Data Factory, Azure Database for MySQL, Azure Database for PostgreSQL, Azure Database for MariaDB, Azure ExpressRoute, Azure Cosmos DB, veřejné IP adresy Azure, SQL Data Warehouse, SQL servery, účty úložiště, profily Traffic Manager a virtuální počítače.
 
-Azure Advisor také obsahuje doporučení z [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-recommendations) , která mohou obsahovat doporučení pro další typy prostředků.
+Azure Advisor také obsahuje doporučení z [Azure Security Center](../security-center/security-center-recommendations.md) , která mohou obsahovat doporučení pro další typy prostředků.
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>Můžu odložit nebo zrušit doporučení?
 

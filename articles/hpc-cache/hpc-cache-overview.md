@@ -4,14 +4,15 @@ description: Popisuje řešení Azure HPC cache, což je přístupové akcelerá
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 05/29/2020
+ms.date: 07/16/2020
 ms.author: v-erkel
-ms.openlocfilehash: c0d32beeedba61bc2ecdc444685f7e81073459be
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.custom: references_regions
+ms.openlocfilehash: 8c8223872ec3ef1d875e10ead8f327db01a924c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433691"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053684"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Co je Azure HPC Cache?
 
@@ -53,22 +54,16 @@ Nasazení mezipaměti HPC Azure vám může pomoci zrychlit kvantitativní výpo
 
 ## <a name="region-availability"></a>Dostupnost v oblastech
 
-Mezipaměť prostředí Azure HPC je dostupná v těchto oblastech Azure:
+Navštivte stránku [globální infrastruktura Azure podle oblastí](https://azure.microsoft.com/global-infrastructure/services/?products=hpc-cache) a zjistěte, kde je mezipaměť HPC Azure k dispozici.
 
-| Severní Amerika      | Evropa         | Asie            | Austrálie      |
-|--------------------|----------------|-----------------|----------------|
-| USA – východ            | Severní Evropa   | Jižní Korea – střed   | Austrálie – východ |
-| USA – východ 2          | Západní Evropa    | Jihovýchodní Asie  |               |
-| USA – středojih | | | |
-| USA – západ 2        | | | |
+[Funkce klíčů spravovaných zákazníkem](customer-keys.md) je podporovaná jenom v těchto oblastech Azure:
 
-[Funkce klíčů spravovaných zákazníkem](customer-keys.md) je podporovaná jenom v těchto oblastech:
-
-* USA – východ
-* USA – středojih
-* USA – západ 2
-
-Nejnovější informace o dostupnosti najdete na [stránce produktu Azure HPC cache](https://azure.microsoft.com/services/hpc-cache) .
+* East US
+* Středojižní USA
+* Západní USA 2
+* Západní Evropa
+* USA (Gov) – Arizona
+* USA (Gov) – Virginia
 
 ## <a name="service-availability"></a>Dostupnost služby
 
@@ -79,5 +74,5 @@ Vyžádejte si přístup vyplněním [tohoto formuláře](https://aka.ms/onboard
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o jeho funkcích najdete na [stránce produktu Azure HPC cache](https://azure.microsoft.com/services/hpc-cache) .
-* Další informace o [požadavcích](hpc-cache-prereqs.md) produktu
+* Další informace o [požadavcích](hpc-cache-prerequisites.md) produktu
 * [Vytvoření mezipaměti prostředí Azure HPC](hpc-cache-create.md) z Azure Portal

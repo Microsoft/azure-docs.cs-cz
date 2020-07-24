@@ -8,14 +8,14 @@ metadata:
   ms.topic: landing-page
   ms.collection: collection
   author: ekpgh
-  ms.author: rohogue
+  ms.author: v-erkel
   ms.date: 11/07/2019
-  ms.openlocfilehash: 3cee41dd9cb4852eab884345404ba89eff8d9d91
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: a31fb7a2878766e960e602e5167df4f92a978f25
+  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77651028"
+  ms.lasthandoff: 07/23/2020
+  ms.locfileid: "87061286"
 landingContent:
 - title: Informace o službě Azure HPC Cache
   linkLists:
@@ -28,7 +28,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Konfigurace požadavků pro Azure HPC Cache
-      url: hpc-cache-prereqs.md
+      url: hpc-cache-prerequisites.md
     - text: Vytvoření mezipaměti
       url: hpc-cache-create.md
     - text: Přidání úložiště

@@ -6,12 +6,12 @@ ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
-ms.openlocfilehash: 2eb1a016e04a4150a76112c68683926810f5c66d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fa834e3ac4946c4f617e857342f850445eebfd30
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80674094"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055440"
 ---
 # <a name="quickstart-create-your-first-http-triggered-function-with-kotlin-and-intellij"></a>Rychlý Start: Vytvoření první funkce aktivované protokolem HTTP pomocí Kotlin a IntelliJ
 
@@ -26,7 +26,7 @@ Pokud chcete vyvíjet funkci s Kotlin a IntelliJ, nainstalujte následující so
 - [Java Developer Kit](https://aka.ms/azure-jdks) (JDK), verze 8
 - [Apache Maven](https://maven.apache.org), verze 3,0 nebo novější
 - [INTELLIJ nápad](https://www.jetbrains.com/idea/download), verze z komunity nebo Ultimate s Maven
-- [Azure CLI](https://docs.microsoft.com/cli/azure)
+- [Azure CLI](/cli/azure)
 - [Verze 2. x](functions-run-local.md#v2) Azure Functions Core Tools. Poskytuje místní vývojové prostředí pro psaní, spouštění a ladění Azure Functions.
 
 > [!IMPORTANT]
@@ -40,12 +40,12 @@ Pokud chcete vyvíjet funkci s Kotlin a IntelliJ, nainstalujte následující so
 1. V okně **Přidat Archetype** vyplňte pole následujícím způsobem:
     - ID _skupiny_: com. Microsoft. Azure
     - _ArtifactId_: Azure-Functions-Kotlin-Archetype
-    - _Verze_: použití nejnovější verze z [centrálního úložiště](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-kotlin-archetype)
-    ![vytvoření projektu Maven z Archetype v IntelliJ nápadu](media/functions-create-first-kotlin-intellij/functions-create-intellij.png)  
+    - _Verze_: použití nejnovější verze z [centrálního úložiště](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-kotlin-archetype) 
+     ![ Vytvoření projektu Maven z Archetype v IntelliJ nápadu](media/functions-create-first-kotlin-intellij/functions-create-intellij.png)  
 1. Vyberte **OK**a pak vyberte **Další**.
 1. Zadejte podrobnosti pro aktuální projekt a vyberte **Dokončit**.
 
-Maven vytvoří soubory projektu v nové složce se stejným názvem, jako má hodnota _ArtifactId_ . Generovaný kód projektu je jednoduchá funkce [aktivovaná protokolem HTTP](/azure/azure-functions/functions-bindings-http-webhook) , která vypisuje tělo triggeru požadavku HTTP.
+Maven vytvoří soubory projektu v nové složce se stejným názvem, jako má hodnota _ArtifactId_ . Generovaný kód projektu je jednoduchá funkce [aktivovaná protokolem HTTP](./functions-bindings-http-webhook.md) , která vypisuje tělo triggeru požadavku HTTP.
 
 ## <a name="run-functions-locally-in-the-ide"></a>Místní spuštění funkcí v integrovaném vývojovém prostředí
 
@@ -55,7 +55,7 @@ Maven vytvoří soubory projektu v nové složce se stejným názvem, jako má h
 1. Importovat změny ručně nebo povolit [Automatický import](https://www.jetbrains.com/help/idea/creating-and-optimizing-imports.html).
 1. Otevřete panel nástrojů **Maven projekty** .
 1. Rozbalte **životní cyklus**a pak otevřete **balíček**. Řešení je sestaveno a zabaleno v nově vytvořeném cílovém adresáři.
-1. Rozbalení **modulů plug-in** > **Azure – funkce** a otevření **Azure-Functions: Run** spustí Azure Functions místní modul runtime.  
+1. Rozbalení **modulů plug-in**  >  **Azure – funkce** a otevření **Azure-Functions: Run** spustí Azure Functions místní modul runtime.  
   ![Panel nástrojů Maven pro Azure Functions](media/functions-create-first-kotlin-intellij/functions-intellij-kotlin-maven-toolbar.png)  
 
 1. Až skončíte s testováním funkce, zavřete dialogové okno spustit. Pouze jeden hostitel funkce může být aktivní a spuštěn místně v jednom okamžiku.
@@ -87,7 +87,7 @@ Maven vytvoří soubory projektu v nové složce se stejným názvem, jako má h
    az login
    ```
 
-1. Nasaďte svůj kód do nové funkce pomocí cíle `azure-functions:deploy` Maven. Můžete také vybrat možnost **Azure-Functions: Deploy** v okně projekty Maven.
+1. Nasaďte svůj kód do nové funkce pomocí `azure-functions:deploy` cíle Maven. Můžete také vybrat možnost **Azure-Functions: Deploy** v okně projekty Maven.
 
    ```
    mvn azure-functions:deploy
@@ -106,4 +106,4 @@ Maven vytvoří soubory projektu v nové složce se stejným názvem, jako má h
 ## <a name="next-steps"></a>Další kroky
 
 Teď, když jste nasadili svou první funkci Kotlin do Azure, Projděte si [příručku pro vývojáře Java Functions](functions-reference-java.md) , kde najdete další informace o vývoji funkcí Java a Kotlin.
-- Přidejte do projektu další funkce s různými triggery pomocí cíle `azure-functions:add` Maven.
+- Přidejte do projektu další funkce s různými triggery pomocí `azure-functions:add` cíle Maven.

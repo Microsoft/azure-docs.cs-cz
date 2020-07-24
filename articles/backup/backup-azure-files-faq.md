@@ -3,15 +3,16 @@ title: Nejčastější dotazy k zálohování Souborů Azure
 description: V tomto článku najdete odpovědi na běžné otázky týkající se ochrany sdílených složek Azure pomocí služby Azure Backup.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: ded1551dad1be34c116e61b9bf59f372169bca5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 134d9520a3c2348b23ec27c6e14eb56468f2002d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488694"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054969"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Dotazy týkající se zálohování Souborů Azure
 
-V tomto článku najdete odpovědi na běžné dotazy týkající se zálohování Souborů Azure. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Dotazy týkající se Azure Backup služby můžete také publikovat na stránce s [dotazem Microsoft Q&pro diskuzi](https://docs.microsoft.com/answers/topics/azure-backup.html).
+V tomto článku najdete odpovědi na běžné dotazy týkající se zálohování Souborů Azure. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Dotazy týkající se Azure Backup služby můžete také publikovat na stránce s [dotazem Microsoft Q&pro diskuzi](/answers/topics/azure-backup.html).
 
 K rychlému procházení částmi tohoto článku použijte odkazy vpravo v části **V tomto článku**.
 
@@ -27,7 +28,7 @@ Zkontrolujte, jestli už příslušná sdílená složka Azure není chráněná
 
 ### <a name="can-i-protect-file-shares-connected-to-a-sync-group-in-azure-files-sync"></a>Můžu chránit sdílené složky připojené ke skupině synchronizace ve službě Azure File Sync?
 
-Ano. Ochrana sdílených složek Azure připojených ke skupinám synchronizace je povolená.
+Yes. Ochrana sdílených složek Azure připojených ke skupinám synchronizace je povolená.
 
 ### <a name="when-trying-to-back-up-file-shares-i-clicked-on-a-storage-account-for-discovering-the-file-shares-in-it-however-i-didnt-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>Při pokusu o zálohování sdílených složek jsem kliknul/a na účet úložiště, abych zjistil/a, které sdílené složky obsahuje. Nechrání se však. Návody chránit tyto sdílené složky pomocí jiného trezoru?
 
@@ -35,7 +36,7 @@ Při pokusu o zálohování vyberte účet úložiště, ve kterém se budou obj
 
 ### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Můžu změnit trezor, do kterého zálohujte své sdílené složky?
 
-Ano. Z připojeného trezoru ale budete muset [Zastavit ochranu sdílené složky](manage-afs-backup.md#stop-protection-on-a-file-share) , zrušit [registraci](manage-afs-backup.md#unregister-a-storage-account) tohoto účtu úložiště a pak ho chránit z jiného trezoru.
+Yes. Z připojeného trezoru ale budete muset [Zastavit ochranu sdílené složky](manage-afs-backup.md#stop-protection-on-a-file-share) , zrušit [registraci](manage-afs-backup.md#unregister-a-storage-account) tohoto účtu úložiště a pak ho chránit z jiného trezoru.
 
 ### <a name="how-many-azure-file-shares-can-i-protect-in-a-vault"></a>Kolik sdílených složek Azure můžu chránit v jednom trezoru?
 
@@ -55,11 +56,11 @@ V jakémkoli okamžiku můžete mít až 200 snímků jedné sdílené složky. 
 
 ### <a name="can-i-recover-from-a-deleted-azure-file-share"></a>Můžu obnovit odstraněnou sdílenou složku Azure?
 
-Pokud je sdílená složka ve stavu tichého odstranění, je třeba nejprve zrušit odstranění sdílené složky, aby se operace obnovení mohla provést. Operace zrušení odstranění zařadí sdílenou složku do aktivního stavu, ve kterém se můžete kdykoli vrátit k libovolnému bodu v čase. Informace o tom, jak zrušit odstranění sdílené složky, najdete na [tomto odkazu](https://docs.microsoft.com/azure/storage/files/storage-files-enable-soft-delete?tabs=azure-portal#restore-soft-deleted-file-share) nebo v tématu [zrušení odstranění sdílení souborů](./scripts/backup-powershell-script-undelete-file-share.md). Pokud je sdílená složka trvale smazána, nebudete moci obnovit obsah a snímky.
+Pokud je sdílená složka ve stavu tichého odstranění, je třeba nejprve zrušit odstranění sdílené složky, aby se operace obnovení mohla provést. Operace zrušení odstranění zařadí sdílenou složku do aktivního stavu, ve kterém se můžete kdykoli vrátit k libovolnému bodu v čase. Informace o tom, jak zrušit odstranění sdílené složky, najdete na [tomto odkazu](../storage/files/storage-files-enable-soft-delete.md?tabs=azure-portal#restore-soft-deleted-file-share) nebo v tématu [zrušení odstranění sdílení souborů](./scripts/backup-powershell-script-undelete-file-share.md). Pokud je sdílená složka trvale smazána, nebudete moci obnovit obsah a snímky.
 
 ### <a name="can-i-restore-from-backups-if-i-stopped-protection-on-an-azure-file-share"></a>Můžu provést obnovení ze zálohy po zastavení ochrany sdílené složky Azure?
 
-Ano. Pokud jste při zastavování ochrany zvolili možnost **Zachovat zálohovaná data**, můžete provést obnovení ze všech stávajících bodů obnovení.
+Yes. Pokud jste při zastavování ochrany zvolili možnost **Zachovat zálohovaná data**, můžete provést obnovení ze všech stávajících bodů obnovení.
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Co se stane, když zruším probíhající úlohu obnovení?
 
@@ -69,7 +70,7 @@ Pokud je probíhající úloha obnovení zrušena, proces obnovení se zastaví 
 
 ### <a name="can-i-use-powershell-to-configuremanagerestore-backups-of-azure-file-shares"></a>Můžu ke konfiguraci/správě a obnovení záloh sdílených složek Azure použít PowerShell?
 
-Ano. Informace [najdete v podrobné dokumentaci.](backup-azure-afs-automation.md)
+Yes. Informace [najdete v podrobné dokumentaci.](backup-azure-afs-automation.md)
 
 ### <a name="can-i-access-the-snapshots-taken-by-azure-backups-and-mount-them"></a>Můžu získat přístup k snímkům pořízeným službou Azure Backup a připojit je?
 
@@ -104,8 +105,8 @@ Tady je příklad toho, jak to funguje:
 | -------------- | ------------------------------ | --------- |
 | Každý den          | Každý den v 9 ODP.              | 50 dní   |
 | Každý týden         | V neděli v 9 ODP.              | 3 týdny   |
-| měsíčně        | Poslední pondělí v 9 ODP.         | 1 měsíc   |
-| Roční         | V lednu na třetí neděli v 9 ODP. | 4 roky   |
+| Měsíčně        | Poslední pondělí v 9 ODP.         | 1 měsíc   |
+| Ročně         | V lednu na třetí neděli v 9 ODP. | 4 roky   |
 
 #### <a name="impact"></a>Dopad
 
@@ -139,7 +140,7 @@ Tady je příklad toho, jak to funguje:
 | -------------- | ---------------------- | --------- |
 | Každý den          | Každý den v 9 ODP.     | 10 dní   |
 | Každý týden         | V pondělí v 9 ODP.      | 2 týdny   |
-| měsíčně        | Poslední pondělí v 9 ODP. | 2 měsíce  |
+| Měsíčně        | Poslední pondělí v 9 ODP. | 2 měsíce  |
 
 #### <a name="impact-of-change"></a>Dopad změny
 
