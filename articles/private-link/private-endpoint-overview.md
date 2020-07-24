@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: c739c6483832c08a91f2a5318853bf48e5d41854
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d61527a7a57c82c0e1485ef249306618def9a57c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496957"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077932"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co je to privátní koncový bod Azure?
 
@@ -78,6 +78,13 @@ Prostředek privátního propojení je cílovým cílem daného privátního kon
 |**Azure Event Grid** | Microsoft. EventGrid/domény    | doména |
 |**WebApps Azure** | Microsoft. Web/weby    | místa |
 |**Azure Machine Learning** | Microsoft. MachineLearningServices/pracovní prostory    | pracovní prostor |
+|**SignalR** | Microsoft. SignalRService/Signaler    | signalR |
+|**Azure Monitor** | Microsoft. Insights/privateLinkScopes    | azuremonitor |
+|**Cognitive Services** | (Microsoft. Cognitiveservices Account/účty    | account |
+|**Synchronizace souborů Azure** | Microsoft. StorageSync/storageSyncServices    | Buňk |
+    
+  
+
   
  
 ## <a name="network-security-of-private-endpoints"></a>Zabezpečení sítě privátních koncových bodů 

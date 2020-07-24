@@ -3,11 +3,12 @@ title: Správa podepsaných imagí
 description: Naučte se, jak povolit důvěryhodnost obsahu pro službu Azure Container Registry, a nahrajte a vyžádat si podepsané image. Vztah důvěryhodnosti obsahu je funkcí úrovně Premium Service.
 ms.topic: article
 ms.date: 09/06/2019
-ms.openlocfilehash: 74bc61f71fc001d5333fcd3c9ac47fa4dd90218c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34bb56bab869cb1f12541b65c59b06a73b215377
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84509555"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076854"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Důvěryhodnost obsahu ve službě Azure Container Registry
 
@@ -75,7 +76,7 @@ Do vašeho registru můžou odesílat důvěryhodné image pouze uživatelé neb
 
 Následují podrobnosti o udělení role `AcrImageSigner` na webu Azure Portal a v Azure CLI.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 
 Přejděte do registru v Azure Portal a pak vyberte **řízení přístupu (IAM)**  >  **Přidat přiřazení role**. V části **Přidat přiřazení role**vyberte `AcrImageSigner` v části **role**, **Vyberte** jednoho nebo více uživatelů nebo instančních objektů a pak klikněte na **Uložit**.
 
@@ -113,7 +114,7 @@ az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee 
 Hodnota `<service principal ID>` může být **ID aplikace**, **ID objektu** nebo jeden z **hlavních názvů služby** instančního objektu. Další informace o práci s instančními objekty a službou Azure Container Registry najdete v tématu [Ověřování ve službě Azure Container Registry pomocí instančních objektů](container-registry-auth-service-principal.md).
 
 > [!IMPORTANT]
-> Po změně jakékoli role spusťte příkaz `az acr login` a aktualizujte místní token identity pro rozhraní příkazového řádku Azure CLI tak, aby se nové role mohly projevit. Informace o ověřování rolí pro identitu najdete v tématu [Správa přístupu k prostředkům Azure pomocí RBAC a Azure CLI](../role-based-access-control/role-assignments-cli.md) a [řešení potíží s funkcí RBAC pro prostředky Azure](../role-based-access-control/troubleshooting.md).
+> Po změně jakékoli role spusťte příkaz `az acr login` a aktualizujte místní token identity pro rozhraní příkazového řádku Azure CLI tak, aby se nové role mohly projevit. Informace o ověřování rolí pro identitu najdete v tématu [Správa přístupu k prostředkům Azure pomocí RBAC a Azure CLI](../role-based-access-control/role-assignments-cli.md) a [řešení potíží s Azure RBAC](../role-based-access-control/troubleshooting.md).
 
 ## <a name="push-a-trusted-image"></a>Odeslání důvěryhodné image
 

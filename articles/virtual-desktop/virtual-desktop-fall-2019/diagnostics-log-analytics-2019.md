@@ -1,6 +1,6 @@
 ---
-title: Windows Virtual Desktop Diagnostics Log Analytics – Azure
-description: Jak používat Log Analytics s funkcí diagnostiky virtuálních klientů Windows
+title: Windows Virtual Desktop Diagnostic Log Analytics (2019) – Azure
+description: Naučte se používat Log Analytics s funkcí diagnostiky Virtual desktopu (verze 2019).
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: beb48b90afd54b044eb6d0ceaff32b53ebfcdc34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4c59268f63252813c7e08608d5d8ee499b11f53
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85205964"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077622"
 ---
-# <a name="use-log-analytics-for-the-diagnostics-feature"></a>Použití Log Analytics pro diagnostickou funkci
+# <a name="use-log-analytics-for-the-diagnostics-feature-fall-2019-release"></a>Použití Log Analytics pro diagnostickou funkci (verze 2019.)
 
 >[!IMPORTANT]
 >Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objekty virtuálních klientů Windows, které byly zavedeny v aktualizaci jarní 2020, přečtěte si [Tento článek](../diagnostics-log-analytics.md).

@@ -6,12 +6,12 @@ author: MS-jgol
 ms.author: jgol
 ms.date: 05/31/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 87342dcd316b0364522baa01e632b704665c998e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9be0808d4edc9662c1d3a4144f3102242560564
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85363753"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075349"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>Co je automatické instrumentace nebo připojení s nekódováním Azure Monitor Application Insights?
 
@@ -26,14 +26,14 @@ Po přidání dalších a dalších integrací se matice schopností automatick�
 |Prostředí/poskytovatel prostředků | .NET            | .NET Core       | Java            | Node.js         |
 |------------------------------|-----------------|-----------------|-----------------|-----------------|
 |Azure App Service ve Windows  | GA, OnBD *       | GA, výslovný souhlas      | Privátní verze Preview | Privátní verze Preview |
-|Azure App Service v systému Linux    | Není k dispozici             | Nepodporuje se   | Public Preview  | Public Preview  |
-|Azure App Service na AKS      | Není k dispozici             | V návrhu       | V návrhu       | V návrhu       |
+|Azure App Service v systému Linux    | –             | Nepodporováno   | Public Preview  | Public Preview  |
+|Azure App Service na AKS      | –             | V návrhu       | V návrhu       | V návrhu       |
 |Azure Functions – Basic       | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       |
-|Azure Functions – závislosti| Nepodporuje se   | Nepodporuje se   | Public Preview  | Nepodporuje se   |
-|Azure Kubernetes Service      | Není k dispozici             | V návrhu       | Prostřednictvím agenta   | V návrhu       |
-|Okna virtuálních počítačů Azure             | Public Preview  | Nepodporuje se   | Nepodporuje se   | Nepodporuje se   |
-|Okna místních virtuálních počítačů       | GA, výslovný souhlas      | Nepodporuje se   | Prostřednictvím agenta   | Nepodporuje se   |
-|Samostatný agent – libovolný env.   | Nepodporuje se   | Nepodporuje se   | Public Preview  | Nepodporuje se   |
+|Azure Functions – závislosti| Nepodporováno   | Nepodporováno   | Public Preview  | Nepodporováno   |
+|Azure Kubernetes Service      | –             | V návrhu       | Prostřednictvím agenta   | V návrhu       |
+|Okna virtuálních počítačů Azure             | Public Preview  | Nepodporováno   | Nepodporováno   | Nepodporováno   |
+|Okna místních virtuálních počítačů       | GA, výslovný souhlas      | Nepodporováno   | Prostřednictvím agenta   | Nepodporováno   |
+|Samostatný agent – libovolný env.   | Nepodporováno   | Nepodporováno   | Public Preview  | Nepodporováno   |
 
 * OnBD ve výchozím nastavení je krátké – Application Insights se po nasazení aplikace do podporovaných prostředí automaticky povolí. 
 
@@ -41,7 +41,7 @@ Po přidání dalších a dalších integrací se matice schopností automatick�
 
 ### <a name="windows"></a>Windows
 
-[Monitorování aplikací v Azure App Service](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=net) je k dispozici pro aplikaci .NET a je ve výchozím nastavení povoleno, rozhraní .NET Core lze povolit jediným kliknutím a jazyky Java a Node.js jsou v privátní verzi Preview.
+[Monitorování aplikací v Azure App Service](./azure-web-apps.md?tabs=net) je k dispozici pro aplikaci .NET a je ve výchozím nastavení povoleno, rozhraní .NET Core lze povolit jediným kliknutím a jazyky Java a Node.js jsou v privátní verzi Preview.
 
 ### <a name="linux"></a>Linux 
 
@@ -49,24 +49,24 @@ Monitorování aplikací Java a Node.js v App Service je ve verzi Public Preview
 
 ## <a name="azure-functions"></a>Azure Functions
 
-Základní monitorování pro Azure Functions je ve výchozím nastavení povolené pro shromažďování protokolů, výkonu, chybových dat a požadavků HTTP. Pro aplikace Java můžete povolit rozšířené monitorování s distribuovaným trasováním a získat podrobnosti o kompletní transakci. Tato funkce pro jazyk Java je ve verzi Public Preview a můžete [ji povolit v Azure Portal](https://docs.microsoft.com/azure/azure-monitor/app/monitor-functions).
+Základní monitorování pro Azure Functions je ve výchozím nastavení povolené pro shromažďování protokolů, výkonu, chybových dat a požadavků HTTP. Pro aplikace Java můžete povolit rozšířené monitorování s distribuovaným trasováním a získat podrobnosti o kompletní transakci. Tato funkce pro jazyk Java je ve verzi Public Preview a můžete [ji povolit v Azure Portal](./monitor-functions.md).
 
 ## <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
-Instrumentace služby Azure Kubernetes bez kódu je teď k dispozici pro aplikace v jazyce Java prostřednictvím [samostatného agenta](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent). 
+Instrumentace služby Azure Kubernetes bez kódu je teď k dispozici pro aplikace v jazyce Java prostřednictvím [samostatného agenta](./java-in-process-agent.md). 
 
 ## <a name="azure-windows-vms-and-virtual-machine-scale-set"></a>Virtuální počítače Azure s Windows a sada škálování virtuálních počítačů
 
-Pro aplikace .NET je k dispozici [Automatické instrumentace pro virtuální počítače Azure a sadu škálování virtuálního počítače](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps) . 
+Pro aplikace .NET je k dispozici [Automatické instrumentace pro virtuální počítače Azure a sadu škálování virtuálního počítače](./azure-vm-vmss-apps.md) . 
 
 ## <a name="on-premises-servers"></a>Místní servery
-Můžete snadno povolit monitorování pro [místní Windows servery pro aplikace .NET](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) a pro [aplikace v jazyce Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent).
+Můžete snadno povolit monitorování pro [místní Windows servery pro aplikace .NET](./status-monitor-v2-overview.md) a pro [aplikace v jazyce Java](./java-in-process-agent.md).
 
 ## <a name="other-environments"></a>Další prostředí
-Univerzální samostatný agent Java funguje v jakémkoli prostředí, není potřeba instrumentovat kód. [Postupujte podle pokynů v průvodci](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) a zapněte si Application Insights a přečtěte si o úžasnéch funkcích agenta Java. Agent je ve verzi Public Preview a dostupný ve všech oblastech. 
+Univerzální samostatný agent Java funguje v jakémkoli prostředí, není potřeba instrumentovat kód. [Postupujte podle pokynů v průvodci](./java-in-process-agent.md) a zapněte si Application Insights a přečtěte si o úžasnéch funkcích agenta Java. Agent je ve verzi Public Preview a dostupný ve všech oblastech. 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přehled Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)
+* [Přehled Application Insights](./app-insights-overview.md)
 * [Mapa aplikace](./../../azure-monitor/app/app-map.md)
 * [Monitorování výkonu na konci](./../../azure-monitor/learn/tutorial-performance.md)

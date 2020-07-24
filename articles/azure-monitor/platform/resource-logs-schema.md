@@ -4,11 +4,12 @@ description: Pochopte podporované služby a schéma událostí pro protokoly pr
 ms.subservice: logs
 ms.topic: reference
 ms.date: 06/15/2020
-ms.openlocfilehash: 37c4093e52caf091489c60a8cdf497cffeffe9ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a97afa3f960393637b8af63c56fba419f853465
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85413854"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077052"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Společné schéma pro protokoly prostředků Azure a schématu pro konkrétní služby
 
@@ -22,7 +23,7 @@ Kombinace typu prostředku (k dispozici ve `resourceId` Vlastnosti) a `category`
 
 ## <a name="top-level-common-schema"></a>Společné schéma nejvyšší úrovně
 
-| Name | Požadováno/volitelné | Description |
+| Název | Požadováno/volitelné | Popis |
 |---|---|---|
 | time | Vyžadováno | Časové razítko (UTC) události. |
 | resourceId | Vyžadováno | ID prostředku prostředku, který vyvolal událost. Pro služby tenanta se jedná o formulář/tenants/tenant-ID/Providers/Provider-Name. |
@@ -59,7 +60,7 @@ Schéma pro protokoly prostředků se liší v závislosti na kategoriích prost
 | Cognitive Services | [Protokolování pro Azure Cognitive Services](../../cognitive-services/diagnostic-logging.md) |
 | Container Registry | [Protokolování pro Azure Container Registry](../../container-registry/container-registry-diagnostics-audit-logs.md) |
 | Content Delivery Network | [Protokoly Azure pro CDN](../../cdn/cdn-azure-diagnostic-logs.md) |
-| CosmosDB | [Protokolování Azure Cosmos DB](../../cosmos-db/logging.md) |
+| CosmosDB | [Protokolování Azure Cosmos DB](../../cosmos-db/monitor-cosmos-db.md) |
 | Data Factory | [Monitorování datových továren pomocí Azure Monitor](../../data-factory/monitor-using-azure-monitor.md) |
 | Data Lake Analytics |[Přístup k protokolům pro Azure Data Lake Analytics](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[Přístup k protokolům pro Azure Data Lake Store](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
@@ -73,9 +74,9 @@ Schéma pro protokoly prostředků se liší v závislosti na kategoriích prost
 | Logic Apps |[Vlastní schéma sledování Logic Apps B2B](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Network Security Groups (Skupiny zabezpečení sítě) |[Analýza protokolu pro skupiny zabezpečení sítě (NSG)](../../virtual-network/virtual-network-nsg-manage-log.md) |
 | Ochrana před útoky DDoS | [Spravovat Azure DDoS Protection Standard](../../virtual-network/manage-ddos-protection.md) |
-| Vyhrazená služba Power BI | [Protokolování Power BI Embedded v Azure](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
+| Vyhrazená služba Power BI | [Protokolování Power BI Embedded v Azure](/power-bi/developer/azure-pbie-diag-logs) |
 | Recovery Services | [Datový model pro Azure Backup](../../backup/backup-azure-reports-data-model.md)|
-| Search |[Povolení a použití Analýza provozu vyhledávání](../../search/search-traffic-analytics.md) |
+| Hledat |[Povolení a použití Analýza provozu vyhledávání](../../search/search-traffic-analytics.md) |
 | Service Bus |[Protokoly Azure Service Bus](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
 | Databáze SQL | [Protokolování Azure SQL Database](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md) |
 | Stream Analytics |[Protokoly úloh](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
@@ -88,6 +89,6 @@ Schéma pro protokoly prostředků se liší v závislosti na kategoriích prost
 
 * [Podívejte se na kategorie protokolu prostředků, které můžete shromažďovat.](resource-logs-categories.md)
 * [Další informace o protokolech prostředků](../../azure-monitor/platform/platform-logs-overview.md)
-* [**Event Hubs** protokolů prostředku prostředku streamování](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
-* [Změna nastavení diagnostiky protokolu prostředků pomocí Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
-* [Analýza protokolů z Azure Storage pomocí Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md)
+* [**Event Hubs** protokolů prostředku prostředku streamování](./resource-logs.md#send-to-azure-event-hubs)
+* [Změna nastavení diagnostiky protokolu prostředků pomocí Azure Monitor REST API](/rest/api/monitor/diagnosticsettings)
+* [Analýza protokolů z Azure Storage pomocí Log Analytics](./resource-logs.md#send-to-log-analytics-workspace)

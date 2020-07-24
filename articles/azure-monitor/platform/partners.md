@@ -4,11 +4,12 @@ description: Přečtěte si o partnerech Azure Monitor a o tom, jak můžete zí
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: be309bf6caeb716fee86e4542363f5554b4568fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f40d38d182e1a8c233b15f711fd557a5d72e8f30
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248967"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077323"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor integrace partnerů
 
@@ -269,8 +270,8 @@ Turbonomic zajišťuje automatizaci úloh pro hybridní cloudy tím, že součas
 
 - [Další informace o Azure Monitor](../../azure-monitor/overview.md)
 - [Přístup k metrikám pomocí REST API](rest-api-walkthrough.md)
-- [Streamování protokolu aktivit na službu, která není od Microsoftu](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
-- [Streamování protokolů prostředků na službu od jiného výrobce než Microsoftu](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
+- [Streamování protokolu aktivit na službu, která není od Microsoftu](./activity-log.md#legacy-collection-methods)
+- [Streamování protokolů prostředků na službu od jiného výrobce než Microsoftu](./resource-logs.md#send-to-azure-event-hubs)
 
 
 
@@ -301,4 +302,3 @@ Turbonomic zajišťuje automatizaci úloh pro hybridní cloudy tím, že součas
 [splunk-doc]: https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk "Dokumentaci k Splunk."
 [sumologic-doc]: https://www.sumologic.com/azure "Dokumentaci k SumoLogic."
 [turbonomic-doc]: https://turbonomic.com/ "Úvod do Turbonomic"
-

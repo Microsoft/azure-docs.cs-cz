@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 07/17/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: b853817b670f59bbfeef9ecd81c70dc63cbd367b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 108dd37370290a68d620a61f84b4553ed59792ab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804619"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077870"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)
 
@@ -109,7 +109,7 @@ Následující doporučení pro použití sdílených přístupových podpisů p
 - **Definujte zásady uloženého přístupu pro SAS služby.** Zásady uloženého přístupu vám umožňují odvolat oprávnění pro SAS služby bez nutnosti znovu vygenerovat klíče účtu úložiště. V budoucnosti (nebo nekonečné) nastavte vypršení platnosti a ujistěte se, že je pravidelně aktualizované, aby se do budoucna přesunula víc.
 - **Využijte dobu vypršení platnosti služby SAS SAS nebo účtu SAS účtu ad hoc.** Tímto způsobem platí, že i když dojde k ohrožení zabezpečení SAS, je platná pouze po krátkou dobu. Tento postup je zvlášť důležitý, pokud nemůžete odkazovat na zásadu uloženého přístupu. Doba vypršení platnosti také omezuje množství dat, která lze zapsat do objektu blob, omezením času, který je k dispozici pro nahrání.
 - **Klienti v případě potřeby automaticky Obnovují SAS.** Klienti by měli obnovit správný čas před vypršením platnosti, aby bylo možné pokusy o opakování, pokud služba poskytující SAS není dostupná. Pokud se má vaše SAS použít pro malý počet okamžitých, krátkodobých operací, které se mají dokončit v rámci období vypršení platnosti, může to být zbytečné, protože se neočekává obnovení SAS. Pokud ale máte klienta, který provádí zpracování požadavků prostřednictvím SAS, pak se možnost vypršení platnosti stane hrát. Klíčovým aspektem je vyrovnávání nutnosti, aby SAS bylo krátkodobé (jak bylo uvedeno dříve), aby se zajistilo, že klient požaduje prodloužení na začátku. (aby nedocházelo k přerušení, protože platnost SAS vypršela před úspěšným obnovením).
-- **Čas spuštění SAS buďte opatrní.** Pokud jste **teď**nastavili čas zahájení pro SAS, a to kvůli posunu hodin (rozdílů v aktuálním čase podle různých počítačů), můžou se chyby při prvních několika minutách považovat za občasné. V části Obecné nastavte čas spuštění aspoň 15 minut v minulosti. Nebo ji vůbec nenastavte, což zajistí, že bude platit okamžitě ve všech případech. To samé platí i pro čas vypršení platnosti, ale mějte na paměti, že v obou směrech každé žádosti můžete obdržet až 15 minut hodinového zkosení. Pro klienty, kteří používají verzi REST starší než 2012-02-12, je maximální doba trvání SAS, která neodkazuje na zásadu uloženého přístupu 1 hodina, a všechny zásady, které nastavují delší dobu, než se nezdaří.
+- **Čas spuštění SAS buďte opatrní.** Pokud nastavíte čas zahájení pro SAS na aktuální čas, může docházet k chybám, které se během prvních několika minut dostanou nepřetržitě v důsledku různých počítačů s mírnými variacemi aktuální čas (označované jako časové zkosení). V části Obecné nastavte čas spuštění aspoň 15 minut v minulosti. Nebo ji vůbec nenastavte, což zajistí, že bude platit okamžitě ve všech případech. To samé platí i pro čas vypršení platnosti, ale mějte na paměti, že v obou směrech každé žádosti můžete obdržet až 15 minut hodinového zkosení. Pro klienty, kteří používají verzi REST starší než 2012-02-12, je maximální doba trvání SAS, která neodkazuje na zásadu uloženého přístupu 1 hodina, a všechny zásady, které nastavují delší dobu, než se nezdaří.
 - **Buďte opatrní ve formátu data a času SAS.** Pokud nastavíte čas zahájení nebo vypršení platnosti pro SAS, pro některé nástroje (například pro nástroj příkazového řádku AzCopy) potřebujete, aby byl formát DateTime "+% Y-% m-% dT% H:%M:% SZ", konkrétně včetně sekund, aby fungoval s použitím tokenu SAS.  
 - **Být specifické pro prostředek, který má být k dispozici.** Osvědčeným postupem zabezpečení je poskytnout uživateli minimální požadovaná oprávnění. Pokud uživatel potřebuje k jedné entitě oprávnění ke čtení, přidělte jim přístup pro čtení k této jedné entitě, a ne přístup pro čtení, zápis a odstranění u všech entit. To také pomáhá snížit škody, pokud dojde k ohrožení zabezpečení SAS, protože SAS má méně energie jako útočník.
 - **Seznamte se s tím, že se Váš účet bude účtovat podle veškerého využití, včetně SAS.** Pokud zadáte přístup pro zápis do objektu blob, uživatel se může rozhodnout nahrát objekt BLOB 200 GB. Pokud jste jim udělili oprávnění ke čtení, můžou si ho stáhnout desetkrát, což za vás bude mít 2 TB za cenu. Znovu poskytněte omezená oprávnění, která pomáhají zmírnit potenciální akce uživatelů se zlými úmysly. Používejte krátkodobé SAS k omezení této hrozby (ale zaměříte se tak na konci času).

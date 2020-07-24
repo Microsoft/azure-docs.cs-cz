@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2016
 ms.author: matd
-ms.openlocfilehash: f2a514b6f44df7be15f18aa8f7c42668c872ab4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05ee60986703096c004c4d15764028b73d04c0bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509689"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077889"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>StorSimple jako cíl zálohování s Veeam
 
@@ -104,7 +104,7 @@ V následujících tabulkách jsou uvedeny úvodní pokyny k modelům zařízen�
 | Scénář zálohování  | Kapacita místního úložiště  | Kapacita cloudového úložiště  |
 |---|---|---|
 | Primární záloha  | Poslední zálohy uložené v místním úložišti pro rychlé obnovení, aby splňovaly cíl bodu obnovení (RPO) | Historie zálohování (RPO) se vejde do kapacity cloudu |
-| Sekundární zálohování | Sekundární kopie zálohovaných dat se dá ukládat do kapacity cloudu.  | Není k dispozici  |
+| Sekundární zálohování | Sekundární kopie zálohovaných dat se dá ukládat do kapacity cloudu.  | –  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>StorSimple jako primární cíl zálohování
 
@@ -260,7 +260,7 @@ Na základě předchozích předpokladů vytvořte TiB StorSimple vrstvený svaz
 | Uchování typu zálohování | Velikost (TiB) | Multiplikátor GFS\* | Celková kapacita (TiB)  |
 |---|---|---|---|
 | Týdně úplné | 1 | 4  | 4 |
-| Denní přírůstkový | 0,5 | 20 (počet cyklů s rovným počtem týdnů za měsíc) | 12 (2 pro další kvótu) |
+| Denní přírůstkový | 0.5 | 20 (počet cyklů s rovným počtem týdnů za měsíc) | 12 (2 pro další kvótu) |
 | Úplně měsíčně | 1 | 12 | 12 |
 | Celý rok na celé | 1  | 10 | 10 |
 | Požadavek GFS |   | 38 |   |
@@ -319,8 +319,8 @@ Tady je příklad plánu GFS rotace na čtyři týdny, měsíčně a ročně:
 | Frekvence/typ zálohování | Do bloku | Přírůstkové (dny 1-5)  |   
 |---|---|---|
 | Týdně (týdny 1-4) | Sobota | Pondělí – pátek |
-| měsíčně  | Sobota  |   |
-| Roční | Sobota  |   |
+| Měsíčně  | Sobota  |   |
+| Ročně | Sobota  |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-backup-job"></a>Přiřazení svazků StorSimple k úloze zálohování Veeam
@@ -399,8 +399,8 @@ GFS rotace týdně, měsíčně a ročního plánu
 | Týden 2 | StorSimple týdny 2-4 |   |   |   |   |   |
 | Týden 3 | StorSimple týdny 2-4 |   |   |   |   |   |
 | Týden 4 | StorSimple týdny 2-4 |   |   |   |   |   |
-| měsíčně | StorSimple měsíčně |   |   |   |   |   |
-| Roční | StorSimple ročně  |   |   |   |   |   |
+| Měsíčně | StorSimple měsíčně |   |   |   |   |   |
+| Ročně | StorSimple ročně  |   |   |   |   |   |
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-copy-job"></a>Přiřazení svazků StorSimple k úloze kopírování Veeam
 
@@ -468,7 +468,7 @@ Následující část popisuje, jak vytvořit krátký skript pro spuštění a 
 
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>Spuštění nebo odstranění snímku v cloudu
 
-1. [Nainstalujte prostředí Azure PowerShell](/powershell/azure/overview).
+1. [Nainstalujte prostředí Azure PowerShell](/powershell/azure/).
 2. Stáhněte a nastavte [Manage-CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) powershellový skript.
 3. Na serveru, na kterém je spuštěný skript, spusťte PowerShell jako správce. Ujistěte se, že spouštíte skript s nástrojem `-WhatIf $true` , kde zjistíte, jaké změny bude skript provádět. Až se ověření dokončí, předejte `-WhatIf $false` . Spusťte následující příkaz:
    ```powershell
@@ -507,7 +507,7 @@ Havárie může být způsobeno nejrůznějšími faktory. V následující tabu
 | Selhání lokality, které vede ke ztrátě záložního serveru i StorSimple | Operace zálohování a obnovení jsou přerušeny. | Nejprve obnovte StorSimple a pak obnovte Veeam. | Nejprve obnovte StorSimple a pak obnovte Veeam. Pokud po obnovení zařízení potřebujete provést obnovení, všechny pracovní sady dat se z cloudu načtou do nového zařízení. Všechny operace jsou v cloudových rychlostech. |
 
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 
 Následující dokumenty byly odkazovány na tento článek:
 

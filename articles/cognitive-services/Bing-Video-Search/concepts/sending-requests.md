@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: aahi
 ms.openlocfilehash: b27aa1409d543c157069d2701c49ef54a097e552
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220289"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075214"
 ---
 # <a name="sending-search-requests-to-the-bing-video-search-api"></a>Odesílání požadavků hledání do rozhraní API Bingu pro vyhledávání videí
 
@@ -37,7 +37,7 @@ Pokud chcete získat výsledky hledání videa, odešlete požadavek GET na nás
 https://api.cognitive.microsoft.com/bing/v7.0/videos/search
 ```
    
-Požadavek musí používat protokol HTTPS.
+Tento požadavek musí používat protokol HTTPS.
 
 Doporučujeme, aby všechny požadavky pocházely ze serveru. Distribuce klíče v rámci klientské aplikace nabízí více příležitostí pro přístup kyberzločinců. Volání ze serveru také poskytuje jediný bod upgradu pro budoucí verze rozhraní API.
 

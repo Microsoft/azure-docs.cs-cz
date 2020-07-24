@@ -6,11 +6,13 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/20/2019
-ms.openlocfilehash: 4a836ae195674556c486592a421c188f7c40e3f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 433cd9e7b8cfe69ce5008366db884659cccbc149
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484351"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076018"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>Ověřování Azure jaře cloudu s Key Vault v akcích GitHubu
 Trezor klíčů je bezpečné místo pro ukládání klíčů. Podnikoví uživatelé potřebují ukládat přihlašovací údaje pro prostředí CI/CD v oboru, který řídí. Klíč pro získání přihlašovacích údajů v trezoru klíčů by měl být omezený na obor prostředků.  Má přístup jenom k oboru trezoru klíčů, ne k celému oboru Azure. Je to jako klíč, který může otevřít pouze silné pole, nikoli hlavní klíč, který může otevřít všechny dveře v budově. Je to způsob, jak získat klíč s jiným klíčem, který je užitečný pro CICD pracovní postup. 

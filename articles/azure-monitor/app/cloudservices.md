@@ -3,18 +3,19 @@ title: Application Insights pro Azure Cloud Services | Microsoft Docs
 description: Efektivní sledování webových rolí a rolí pracovních procesů s využitím Application Insights
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.openlocfilehash: 17813d17a1c40caac5587e37e279be6376992b90
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf75bb145a3b0d7c861d3c92af972b39de11bcdf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537589"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075419"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights pro Azure Cloud Services
-[Application Insights][start] můžou monitorovat [aplikace cloudových služeb Azure](https://azure.microsoft.com/services/cloud-services/) kvůli dostupnosti, výkonu, selhání a využití díky kombinování dat ze Application Insights sad SDK s [Azure Diagnosticsmi](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) daty z vašich cloudových služeb. Na základě zpětné vazby ohledně výkonu a efektivity vaší aplikace při běžném používání můžete informovaně rozhodovat o směrování návrhu v každé fázi vývoje.
+[Application Insights][start] můžou monitorovat [aplikace cloudových služeb Azure](https://azure.microsoft.com/services/cloud-services/) kvůli dostupnosti, výkonu, selhání a využití díky kombinování dat ze Application Insights sad SDK s [Azure Diagnosticsmi](../platform/diagnostics-extension-overview.md) daty z vašich cloudových služeb. Na základě zpětné vazby ohledně výkonu a efektivity vaší aplikace při běžném používání můžete informovaně rozhodovat o směrování návrhu v každé fázi vývoje.
 
 ![Řídicí panel přehled](./media/cloudservices/overview-graphs.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Než začnete, budete potřebovat:
 
 * Předplatné [Azure](https://azure.com) . Přihlaste se pomocí účet Microsoft pro Windows, Xbox Live nebo jiné cloudové služby Microsoftu. 
@@ -30,7 +31,7 @@ Tato možnost zobrazí aplikaci za běhu a poskytne vám veškerou telemetrii, k
 
 Pokud potřebujete tuto možnost, jste hotovi. 
 
-Vaše další kroky [zobrazují metriky z vaší aplikace](../../azure-monitor/platform/metrics-charts.md)a [dotazují se na data s analýzou](../../azure-monitor/app/analytics.md). 
+Vaše další kroky [zobrazují metriky z vaší aplikace](../../azure-monitor/platform/metrics-charts.md)a [dotazují se na data s analýzou](../log-query/log-query-overview.md). 
 
 Chcete-li monitorovat výkon v prohlížeči, můžete také chtít nastavit [testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) a [přidat kód na webové stránky](../../azure-monitor/app/javascript.md).
 
@@ -131,7 +132,7 @@ V sadě Visual Studio nakonfigurujte sadu SDK Application Insights pro každý p
 
 Tento krok je nutný pouze v případě, že chcete zachytit úplné dotazy SQL na .NET Framework. 
 
-1. V `\*.csdef` úloze přidat [spouštěcí úlohu](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks) pro každou roli jako 
+1. V `\*.csdef` úloze přidat [spouštěcí úlohu](../../cloud-services/cloud-services-startup-tasks.md) pro každou roli jako 
 
     ```xml
     <Startup>
@@ -177,7 +178,7 @@ Pokud žádná data neexistují, udělejte toto:
 Další informace naleznete v tématu [Poradce při potížích][qna].
 
 ## <a name="view-azure-diagnostics-events"></a>Zobrazit Azure Diagnostics události
-Informace o [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) v Application Insights najdete v následujících umístěních:
+Informace o [Azure Diagnostics](../platform/diagnostics-extension-overview.md) v Application Insights najdete v následujících umístěních:
 
 * Čítače výkonu se zobrazují jako vlastní metriky. 
 * Protokoly událostí systému Windows se zobrazují jako trasování a vlastní události.
@@ -241,7 +242,7 @@ Pro prostředí s bohatou diagnostikou si můžete zobrazit, co vedlo k žádost
 
 Chcete-li dosáhnout tohoto zobrazení pro role pracovního procesu, můžete použít vlastní inicializátor telemetrie k nastavení běžného atributu kontextu Operation.Id pro všechny telemetrie. To vám umožní zobrazit na první pohled, zda došlo k potížím s latencí nebo chybou v důsledku závislosti nebo kódu. 
 
-Jak na to:
+Zde je uveden postup:
 
 * Nastavte ID korelace na CallContext [, jak je znázorněno v tomto příkladu](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36). V tomto případě používáme ID žádosti jako ID korelace.
 * Přidejte vlastní implementaci TelemetryInitializer, abyste mohli nastavit Operation.Id na ID korelace, které bylo dříve nastaveno. Příklad naleznete v tématu [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13).
@@ -258,7 +259,7 @@ Pro celkový přehled systému můžete na jednom [řídicím panelu](../../azur
 
 Pokud váš systém používá jiné služby Azure, například Stream Analytics, zahrňte také jejich sledovací grafy. 
 
-Pokud máte mobilní klientskou aplikaci, použijte [App Center](../../azure-monitor/learn/mobile-center-quickstart.md). V [Analytics](../../azure-monitor/app/analytics.md) můžete vytvářet dotazy pro zobrazení počtu událostí a můžete je připnout na řídicí panel.
+Pokud máte mobilní klientskou aplikaci, použijte [App Center](../../azure-monitor/learn/mobile-center-quickstart.md). V [Analytics](../log-query/log-query-overview.md) můžete vytvářet dotazy pro zobrazení počtu událostí a můžete je připnout na řídicí panel.
 
 ## <a name="example"></a>Příklad
 V [příkladu](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) se monitoruje služba s webovou rolí a dvěma rolemi pracovních procesů.
@@ -283,6 +284,6 @@ Vytvořili jste sestavení pro .NET 4.6? Rozhraní .NET 4,6 se v rolích Azure C
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [netlogs]: ../../azure-monitor/app/asp-net-trace-logs.md
 [portal]: https://portal.azure.com/
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
+[qna]: ../faq.md
 [redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../azure-monitor/app/app-insights-overview.md 
+[start]: ../../azure-monitor/app/app-insights-overview.md

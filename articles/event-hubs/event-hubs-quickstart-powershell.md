@@ -3,12 +3,12 @@ title: 'Rychlý Start: vytvoření centra událostí pomocí prostředí PowerSh
 description: Tento rychlý start popisuje, jak pomocí Azure PowerShellu vytvořit centrum událostí a pak odesílat a přijímat události pomocí sady .NET Standard SDK.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 397373dba183c951b1381e6546e064637bc150c6
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: cc82058fb55fba4b5a88ca09ad6e16bac6c82852
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85314638"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074904"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>Rychlý start: Vytvoření centra událostí pomocí Azure PowerShellu
 
@@ -16,7 +16,7 @@ Azure Event Hubs je platforma pro streamování velkých objemů dat a služba p
 
 V tomto rychlém startu vytvoříte centrum událostí pomocí Azure PowerShellu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -28,7 +28,7 @@ Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud používáte PowerShell místně, k dokončení tohoto rychlého startu je potřeba, abyste měli nejnovější verzi PowerShellu. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace a konfigurace Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Pokud používáte PowerShell místně, k dokončení tohoto rychlého startu je potřeba, abyste měli nejnovější verzi PowerShellu. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace a konfigurace Azure PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -57,7 +57,7 @@ Povolené období pro `MessageRetentionInDays` je v rozmezí od 1 do 7 dnů.
 New-AzEventHub -ResourceGroupName myResourceGroup -NamespaceName namespace_name -EventHubName eventhub_name -MessageRetentionInDays 3
 ```
 
-Gratulujeme! Pomocí Azure PowerShellu jste vytvořili obor názvů služby Event Hubs a v něm centrum událostí. 
+Blahopřejeme! Pomocí Azure PowerShellu jste vytvořili obor názvů služby Event Hubs a v něm centrum událostí. 
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -66,15 +66,15 @@ V tomto článku jste vytvořili obor názvů služby Event Hubs a použili jste
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](get-started-java-send-v2.md)
 - [Python](get-started-python-send-v2.md)
-- [JavaScript](get-started-java-send-v2.md)
+- [JavaScript](get-started-node-send-v2.md)
 - [Přejít](event-hubs-go-get-started-send.md)
 - [C (jenom odesílání)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (jenom příjem)](event-hubs-storm-getstarted-receive.md)
 
 
 [Vytvoření bezplatného účtu]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
-[Install and Configure Azure PowerShell]: https://docs.microsoft.com/powershell/azure/install-az-ps
-[New-AzResourceGroup]: https://docs.microsoft.com/powershell/module/az.resources/new-Azresourcegroup
+[Install and Configure Azure PowerShell]: /powershell/azure/install-az-ps
+[New-AzResourceGroup]: /powershell/module/az.resources/new-azresourcegroup
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [3]: ./media/event-hubs-quickstart-powershell/sender1.png
 [4]: ./media/event-hubs-quickstart-powershell/receiver1.png

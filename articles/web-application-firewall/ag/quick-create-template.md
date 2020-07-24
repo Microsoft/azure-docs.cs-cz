@@ -1,39 +1,41 @@
 ---
-title: 'Rychlý Start: vytvoření služby Azure WAF V2 v šabloně Application Gateway-Správce prostředků'
+title: 'Rychlý Start: vytvoření služby Azure WAF V2 v šabloně Application Gateway-Azure Resource Manager'
 titleSuffix: Azure Application Gateway
-description: Naučte se používat šablonu Správce prostředků k vytvoření brány firewall webových aplikací V2 v Azure Application Gateway.
+description: Naučte se používat šablonu Azure Resource Manager (šablonu ARM) k vytvoření brány firewall webových aplikací V2 v Azure Application Gateway.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: quickstart
 ms.date: 04/02/2020
 ms.author: victorh
-ms.openlocfilehash: 6759071e73adfd3af4ac780da6db3a0e6e967ea1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 081bab0cd930d90ca0d359461e4a41b15ba4911b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81617985"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075513"
 ---
-# <a name="quickstart-create-an-azure-waf-v2-on-application-gateway---resource-manager-template"></a>Rychlý Start: vytvoření služby Azure WAF V2 v šabloně Application Gateway-Správce prostředků
+# <a name="quickstart-create-an-azure-waf-v2-on-application-gateway-using-an-arm-template"></a>Rychlý Start: vytvoření služby Azure WAF v2 na Application Gateway pomocí šablony ARM
 
-V tomto rychlém startu použijete šablonu Správce prostředků k vytvoření brány firewall webových aplikací Azure V2 v Application Gateway.
+V tomto rychlém startu použijete šablonu Azure Resource Manager (šablona ARM) k vytvoření brány firewall webových aplikací Azure V2 v Application Gateway.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
+
+[![Nasazení do Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-wafv2%2Fazuredeploy.json)
+
 ## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-a-web-application-firewall"></a>Vytvoření firewallu webových aplikací
+## <a name="review-the-template"></a>Kontrola šablony
 
 Tato šablona vytvoří jednoduchou službu Firewall webových aplikací V2 v Azure Application Gateway. To zahrnuje IP adresu front-endu s veřejnou IP adresou, nastavení HTTP, pravidlo se základním naslouchacím procesem na portu 80 a back-endového fondu. Vytvoří se zásada WAF s vlastním pravidlem pro blokování provozu do back-endu fondu na základě typu shody IP adresy.
 
-### <a name="review-the-template"></a>Kontrola šablony
-
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/blob/master/ag-docs-wafv2/azuredeploy.json) .
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/ag-docs-wafv2/).
 
 :::code language="json" source="~/quickstart-templates/ag-docs-wafv2/azuredeploy.json" range="001-404" highlight="314-358":::
 
@@ -48,9 +50,9 @@ V šabloně je definováno víc prostředků Azure:
 - [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) : dvě pro virtuální počítače
 - [**Microsoft. COMPUTE/VirtualMachine/Extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) : Konfigurace služby IIS a webových stránek
 
-### <a name="deploy-the-template"></a>Nasazení šablony
+## <a name="deploy-the-template"></a>Nasazení šablony
 
-Nasadit šablonu Správce prostředků do Azure:
+Nasazení šablony ARM do Azure:
 
 1. Vyberte **nasadit do Azure** a přihlaste se k Azure a otevřete šablonu. Šablona vytvoří Aplikační bránu, síťovou infrastrukturu a dva virtuální počítače ve fondu back-end se službou IIS.
 
@@ -61,11 +63,11 @@ Nasadit šablonu Správce prostředků do Azure:
 
 ## <a name="validate-the-deployment"></a>Ověření nasazení
 
-I když služba IIS není nutná k vytvoření aplikační brány, nainstaluje se na servery back-end a ověří, jestli Azure na aplikační bráně úspěšně vytvořil WAF v2. 
+I když služba IIS není nutná k vytvoření aplikační brány, nainstaluje se na servery back-end a ověří, jestli Azure na aplikační bráně úspěšně vytvořil WAF v2.
 
 Použijte službu IIS k otestování služby Application Gateway:
 
-1. Na stránce s **přehledem** vyhledejte veřejnou IP adresu pro aplikační bránu. ![Zaznamenejte si veřejnou IP adresu](../../application-gateway/media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) aplikační brány nebo vyberte **všechny prostředky**, do vyhledávacího pole zadejte *myAGPublicIPAddress* a potom ho vyberte ve výsledcích hledání. Azure zobrazí veřejnou IP adresu na stránce **Přehled** .
+1. Na stránce s **přehledem** vyhledejte veřejnou IP adresu pro aplikační bránu. ![ Zaznamenejte si veřejnou IP adresu aplikační brány ](../../application-gateway/media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) nebo vyberte **všechny prostředky**, do vyhledávacího pole zadejte *myAGPublicIPAddress* a potom ho vyberte ve výsledcích hledání. Azure zobrazí veřejnou IP adresu na stránce **Přehled** .
 2. Zkopírujte veřejnou IP adresu a vložte ji do adresního řádku prohlížeče, abyste mohli procházet tuto IP adresu.
 3. Ověřte odpověď. **403 zakázaná** odpověď ověřuje, že se WAF úspěšně vytvořil a blokuje připojení k back-end fondu.
 4. Změňte vlastní pravidlo tak, aby **umožňovalo provoz**.

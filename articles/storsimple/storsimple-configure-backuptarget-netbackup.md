@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
-ms.openlocfilehash: 87885d9b476582fcce53b8b960d24093693af4ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34c66c3d5739fdc23323a302e3bedfb1b6301d86
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509383"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077897"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>StorSimple jako cíl zálohování s NetBackup
 
@@ -102,7 +102,7 @@ V následujících tabulkách jsou uvedeny úvodní pokyny k modelům zařízen�
 | Scénář zálohování  | Kapacita místního úložiště  | Kapacita cloudového úložiště  |
 |---|---|---|
 | Primární záloha  | Poslední zálohy uložené v místním úložišti pro rychlé obnovení, aby splňovaly cíl bodu obnovení (RPO) | Historie zálohování (RPO) se vejde do kapacity cloudu |
-| Sekundární zálohování | Sekundární kopie zálohovaných dat se dá ukládat do kapacity cloudu.  | Není k dispozici  |
+| Sekundární zálohování | Sekundární kopie zálohovaných dat se dá ukládat do kapacity cloudu.  | –  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>StorSimple jako primární cíl zálohování
 
@@ -253,7 +253,7 @@ Na základě předchozích předpokladů vytvořte TiB StorSimple vrstvený svaz
 | Uchování typu zálohování | Velikost (TiB) | Multiplikátor GFS\* | Celková kapacita (TiB)  |
 |---|---|---|---|
 | Týdně úplné | 1 | 4  | 4 |
-| Denní přírůstkový | 0,5 | 20 (počet cyklů s rovným počtem týdnů za měsíc) | 12 (2 pro další kvótu) |
+| Denní přírůstkový | 0.5 | 20 (počet cyklů s rovným počtem týdnů za měsíc) | 12 (2 pro další kvótu) |
 | Úplně měsíčně | 1 | 12 | 12 |
 | Celý rok na celé | 1  | 10 | 10 |
 | Požadavek GFS |   | 38 |   |
@@ -303,8 +303,8 @@ Tady je příklad plánu GFS rotace na čtyři týdny, měsíčně a ročně:
 | Frekvence/typ zálohování | Do bloku | Přírůstkové (dny 1-5)  |   
 |---|---|---|
 | Týdně (týdny 1-4) | Sobota | Pondělí – pátek |
-| měsíčně  | Sobota  |   |
-| Roční | Sobota  |   |
+| Měsíčně  | Sobota  |   |
+| Ročně | Sobota  |   |
 
 ## <a name="assigning-storsimple-volumes-to-a-netbackup-backup-job"></a>Přiřazení svazků StorSimple k úloze zálohování NetBackup
 
@@ -414,8 +414,8 @@ Následující tabulka ukazuje, jak nastavit zálohování pro spouštění na m
 | Týden 2 | StorSimple týdny 2-4 |   |   |   |   |   |
 | Týden 3 | StorSimple týdny 2-4 |   |   |   |   |   |
 | Týden 4 | StorSimple týdny 2-4 |   |   |   |   |   |
-| měsíčně | StorSimple měsíčně |   |   |   |   |   |
-| Roční | StorSimple ročně  |   |   |   |   |   |
+| Měsíčně | StorSimple měsíčně |   |   |   |   |   |
+| Ročně | StorSimple ročně  |   |   |   |   |   |
 
 
 ## <a name="assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>Přiřazení svazků StorSimple k úloze archivace a duplikování NetBackup
@@ -472,7 +472,7 @@ Po definování počátečních fondů disků musíte definovat tři další zá
 | Uchování typu zálohování | Velikost (TiB) | Multiplikátor GFS\* | Celková kapacita (TiB)  |
 |---|---|---|---|
 | Týdně úplné |  1  |  4 | 4  |
-| Denní přírůstkový  | 0,5  | 20 (počet cyklů se rovná počtu týdnů za měsíc) | 12 (2 pro další kvótu) |
+| Denní přírůstkový  | 0.5  | 20 (počet cyklů se rovná počtu týdnů za měsíc) | 12 (2 pro další kvótu) |
 | Úplně měsíčně  | 1 | 12 | 12 |
 | Celý rok na celé | 1  | 10 | 10 |
 | Požadavek GFS  |     |     | 38 |
@@ -507,7 +507,7 @@ Následující část popisuje, jak vytvořit krátký skript pro spuštění a 
 
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>Spuštění nebo odstranění snímku v cloudu
 
-1. [Nainstalujte prostředí Azure PowerShell](/powershell/azure/overview).
+1. [Nainstalujte prostředí Azure PowerShell](/powershell/azure/).
 2. Stáhněte a nastavte [Manage-CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) powershellový skript.
 3. Na serveru, na kterém je spuštěný skript, spusťte PowerShell jako správce. Ujistěte se, že spouštíte skript s nástrojem `-WhatIf $true` , kde zjistíte, jaké změny bude skript provádět. Až se ověření dokončí, předejte `-WhatIf $false` . Spusťte následující příkaz:
    ```powershell

@@ -1,5 +1,5 @@
 ---
-title: Vytvoření sady škálování z generalizované image
+title: Vytvoření sady škálování z generalizované image s Azure PowerShell
 description: Vytvořte sadu škálování pomocí generalizované image v galerii sdílených imagí.
 author: cynthn
 ms.service: virtual-machine-scale-sets
@@ -9,11 +9,12 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: f61977c1c1be07ffe744608c1bf8ec5a8013f8d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b8c9d46a5bc5dde3e39bfa5673247ca752d2a89
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82797081"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077564"
 ---
 # <a name="create-a-scale-set-from-a-generalized-image"></a>Vytvoření sady škálování z generalizované image
 

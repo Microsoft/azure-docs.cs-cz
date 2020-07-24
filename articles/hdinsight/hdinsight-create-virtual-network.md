@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/16/2020
-ms.openlocfilehash: e8619bd7159bbbd418548a5e014dd92f7b9c9e84
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8e68bd2d164e3a8de60a9061363b839c4dfd4777
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086377"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074765"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>Vytváření virtuálních sítí pro clustery Azure HDInsight
 
@@ -27,7 +27,7 @@ Před spuštěním některé z ukázek kódu v tomto článku se porozumí síť
 
 Další požadavky pro ukázky v tomto článku zahrnují následující položky:
 
-* Pokud používáte PowerShell, budete muset nainstalovat [modul AZ Module](https://docs.microsoft.com/powershell/azure/overview).
+* Pokud používáte PowerShell, budete muset nainstalovat [modul AZ Module](https://docs.microsoft.com/powershell/azure/).
 * Pokud chcete použít rozhraní příkazového řádku Azure a ještě není nainstalované, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 > [!IMPORTANT]  

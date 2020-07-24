@@ -3,16 +3,16 @@ title: Zálohování sdílených složek Azure v Azure Portal
 description: Naučte se používat Azure Portal k zálohování sdílených složek Azure v trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: 76bf8e00dede5f227cb862f9c9474844e349e298
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58bcd7ecd7c6fac80f5b78fb2c8b568b63e3e1b2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391145"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077132"
 ---
 # <a name="back-up-azure-file-shares"></a>Zálohování sdílených složek Azure
 
-Tento článek vysvětluje, jak používat Azure Portal k zálohování [sdílených složek Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction).
+Tento článek vysvětluje, jak používat Azure Portal k zálohování [sdílených složek Azure](../storage/files/storage-files-introduction.md).
 
 V tomto článku se dozvíte, jak:
 
@@ -20,7 +20,7 @@ V tomto článku se dozvíte, jak:
 * Zjistit sdílené složky a nakonfigurovat zálohy.
 * Spusťte úlohu zálohování na vyžádání a vytvořte bod obnovení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Identifikujte nebo vytvořte [trezor Recovery Services](#create-a-recovery-services-vault) ve stejné oblasti jako účet úložiště, který hostuje sdílenou složku.
 * Ujistěte se, že se sdílená složka nachází v jednom z [podporovaných typů účtů úložiště](azure-file-share-support-matrix.md).

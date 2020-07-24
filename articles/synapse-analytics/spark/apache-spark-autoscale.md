@@ -1,5 +1,5 @@
 ---
-title: Automatické škálování Apache Spark instancí Azure synapse
+title: Automaticky škálovat Apache Spark instance
 description: Automatické škálování Apache Spark instancí pomocí funkce automatického škálování Azure synapse
 author: euangMS
 ms.author: euang
@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 03/31/2020
-ms.openlocfilehash: 86e9b7425c8c75495a17b66af710d2c55e6e59ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c6278d24e52159424c3e346b2382c93f4ab8160
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194276"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075805"
 ---
 # <a name="automatically-scale-azure-synapse-analytics-apache-spark-pools"></a>Automatické škálování Apache Sparkch fondů Azure synapse Analytics
 
@@ -24,7 +24,7 @@ Apache Spark funkce automatického škálování fondu služby Azure synapse Ana
 
 Automatické škálování nepřetržitě monitoruje instanci Spark a shromažďuje následující metriky:
 
-|Metric|Popis|
+|Metrika|Popis|
 |---|---|
 |Celkový počet vyřízených PROCESORů|Celkový počet jader potřebných ke spuštění provádění všech nevyřízených uzlů.|
 |Celkový počet nevyřízených paměti|Celková paměť (v MB) požadovaná k zahájení provádění všech nevyřízených uzlů.|

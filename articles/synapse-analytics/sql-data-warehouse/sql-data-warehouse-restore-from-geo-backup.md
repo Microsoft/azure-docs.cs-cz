@@ -11,12 +11,12 @@ ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2b7e980f2ffd31bd10b481fe4fc8e0617c40717a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c8d78c164cefbab03d9d3fa783c75ded9773d38
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85205080"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075808"
 ---
 # <a name="geo-restore-for-sql-pool"></a>Geografické obnovení pro fond SQL
 
@@ -36,7 +36,7 @@ K obnovení z geografické zálohy použijte rutinu [Get-AzSqlDatabaseGeoBackup]
 > K Gen2 můžete použít geografické obnovení. Provedete to tak, že jako volitelný parametr zadáte Gen2 ServiceObjectiveName (např. DW1000**c**).
 >
 
-1. Než začnete, nezapomeňte [nainstalovat Azure PowerShell](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+1. Než začnete, nezapomeňte [nainstalovat Azure PowerShell](/powershell/azure/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 2. Otevřete PowerShell.
 3. Připojte se k účtu Azure a seznamte se se všemi předplatnými přidruženými k vašemu účtu.
 4. Vyberte předplatné, které obsahuje datový sklad, který se má obnovit.
@@ -77,7 +77,7 @@ Pokud je zdrojová databáze povolena TDE, obnovená databáze bude TDE povolena
 Postupujte podle kroků uvedených níže a obnovte fond SQL z geografické zálohy:
 
 1. Přihlaste se ke svému účtu [Azure Portal](https://portal.azure.com/) .
-2. Klikněte na **+ vytvořit prostředek**.
+2. Klikněte na **+ Vytvořit prostředek**.
 
    ![Nový datový sklad](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
 
@@ -89,7 +89,7 @@ Postupujte podle kroků uvedených níže a obnovte fond SQL z geografické zál
 
    ![Základy](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
 
-5. Pro možnost **použít existující datový** parametr vyberte **zálohovat** a v možnostech posouvání vyberte příslušnou zálohu. Klikněte na tlačítko **zkontrolovat + vytvořit**.
+5. Pro možnost **použít existující datový** parametr vyberte **zálohovat** a v možnostech posouvání vyberte příslušnou zálohu. Klikněte na **Zkontrolovat a vytvořit**.
 
    ![zálohování](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
 

@@ -3,15 +3,15 @@ title: Průvodce programováním v .NET – Azure Event Hubs (starší verze) | 
 description: Tento článek poskytuje informace o tom, jak napsat kód pro Azure Event Hubs pomocí sady Azure .NET SDK.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: de731d591c367e386fe8ef1eef03f1b90e0fa126
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0186357ec7f0f8541acf33c524a57cdb8e8dc55c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314537"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074853"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Průvodce programováním v rozhraní .NET pro Azure Event Hubs (starší balíček Microsoft. Azure. EventHubs)
-Tento článek popisuje některé běžné scénáře psaní kódu pomocí Azure Event Hubs. Předpokládá se předběžná znalost služby Event Hubs. Koncepční přehled služby Event Hubs naleznete v tématu [Přehled služby Event Hubs](event-hubs-what-is-event-hubs.md).
+Tento článek popisuje některé běžné scénáře psaní kódu pomocí Azure Event Hubs. Předpokládá se předběžná znalost služby Event Hubs. Koncepční přehled služby Event Hubs naleznete v tématu [Přehled služby Event Hubs](./event-hubs-about.md).
 
 > [!WARNING]
 > Tato příručka je určena pro starý balíček **Microsoft. Azure. EventHubs** . Doporučujeme, abyste při [migraci](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md) kódu používali nejnovější balíček [Azure. Messaging. EventHubs](get-started-dotnet-standard-send-v2.md) .  
@@ -96,7 +96,7 @@ Jedna dávka nesmí překročit omezení 1 MB události. Kromě toho každá zpr
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>Asynchronní odesílání a škálované odesílání
 
-Události se odesílají do centra událostí asynchronně. Odesílání asynchronně zvyšuje rychlost, s jakou klient může odesílat události. [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) vrátí objekt [Task](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) . K řízení možností opakování klienta můžete použít třídu [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy) na klientovi.
+Události se odesílají do centra událostí asynchronně. Odesílání asynchronně zvyšuje rychlost, s jakou klient může odesílat události. [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) vrátí objekt [Task](/dotnet/api/system.threading.tasks.task?view=netcore-3.1) . K řízení možností opakování klienta můžete použít třídu [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy) na klientovi.
 
 ## <a name="event-consumers"></a>Příjemci událostí
 Třída [EventProcessorHost][] zpracovává data z center událostí (Event Hubs). Tuto implementaci byste měli používat při vytváření čtenářů událostí na platformě .NET. Třída [EventProcessorHost][] poskytuje pro implementace zpracovatelů událostí bezpečné prostředí runtime, které umožňuje bezpečné použití vláken a více procesů. Taky poskytuje možnost vytváření kontrolních bodů a správy „půjčování“ oddílu.
@@ -149,8 +149,8 @@ Další informace o odvolání zdroje a o tom, jak jako zdroj odesílat do centr
 
 Další informace o scénářích služby Event Hubs naleznete pod těmito odkazy:
 
-* [Přehled rozhraní API služby Event Hubs](event-hubs-api-overview.md)
-* [Co je Event Hubs](event-hubs-what-is-event-hubs.md)
+* [Přehled rozhraní API služby Event Hubs](./event-hubs-samples.md)
+* [Co je Event Hubs](./event-hubs-about.md)
 * [Dostupnost a konzistence ve službě Event Hubs](event-hubs-availability-and-consistency.md)
 * [Referenční dokumentace rozhraní API třídy EventProcessorHost](/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost)
 

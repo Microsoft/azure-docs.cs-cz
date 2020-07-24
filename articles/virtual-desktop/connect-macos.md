@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 04/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f2b4696886c898eec5895c4ccb59347cf2a49f03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bcd7bf46a3def963a4f9fe8913c4f8afcdce743f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208990"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075645"
 ---
-# <a name="connect-with-the-macos-client"></a>Připojení s klientem macOS
+# <a name="connect-to-windows-virtual-desktop-with-the-macos-client"></a>Připojení k virtuálnímu počítači s Windows pomocí klienta macOS
 
 > Platí pro: macOS 10,12 nebo novější
 
@@ -41,7 +41,7 @@ Přihlášení k odběru informačního kanálu:
 2. Zadejte adresu URL informačního kanálu. Může se jednat o adresu URL nebo e-mailovou adresu:
    - Pokud použijete adresu URL, použijte tu, kterou vám správce poskytl. Obvykle je adresa URL <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery> .
    - Pokud chcete používat e-mail, zadejte svou e-mailovou adresu. To klientovi oznamuje, aby vyhledal adresu URL přidruženou k vaší e-mailové adrese, pokud váš správce nakonfiguroval server tímto způsobem.
-3. Vyberte možnost **Přidat**.
+3. Vyberte **Přidat**.
 4. Po zobrazení výzvy se přihlaste pomocí svého uživatelského účtu.
 
 Po přihlášení by se měl zobrazit seznam dostupných prostředků.

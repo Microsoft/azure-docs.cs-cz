@@ -3,18 +3,18 @@ title: Metriky v Azure Monitor – Azure Event Hubs | Microsoft Docs
 description: Tento článek poskytuje informace o tom, jak pomocí monitorování Azure monitorovat Azure Event Hubs
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 76df9920c517e8370409bca26e5a6533c7253c1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7841007fa1736c88c30108099f86b99d3dad0fb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314587"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074863"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Metriky Azure Event Hubs ve službě Azure Monitor
 
 Event Hubs metriky poskytují stav prostředků Event Hubs ve vašem předplatném Azure. S bohatou sadou dat metrik můžete posoudit celkový stav Center událostí nejen na úrovni oboru názvů, ale také na úrovni entity. Tyto statistiky můžou být důležité, protože vám pomohou monitorovat stav Center událostí. Metriky taky můžou pomoct řešit problémy s hlavními příčinami, aniž byste museli kontaktovat podporu Azure.
 
-Azure Monitor poskytuje jednotná uživatelská rozhraní pro monitorování napříč různými službami Azure. Další informace najdete v tématu [monitorování v Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview.md) a na webu GitHub [s ukázkou načítání Azure monitor metriky s rozhraním .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) Sample.
+Azure Monitor poskytuje jednotná uživatelská rozhraní pro monitorování napříč různými službami Azure. Další informace najdete v tématu [monitorování v Microsoft Azure](../azure-monitor/overview.md) a na webu GitHub [s ukázkou načítání Azure monitor metriky s rozhraním .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) Sample.
 
 ## <a name="access-metrics"></a>Metriky přístupu
 
@@ -50,7 +50,7 @@ Všechny hodnoty metrik jsou odesílány do Azure Monitor každou minutu. Časov
 
 Spočítá počet požadavků na data a operace správy.
 
-| Název metriky | Description |
+| Název metriky | Popis |
 | ------------------- | ----------------- |
 | Příchozí žádosti  | Počet požadavků provedených ve službě Azure Event Hubs v zadaném období. <br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: EntityName |
 | Úspěšné požadavky    | Počet úspěšných požadavků provedených ve službě Azure Event Hubs v zadaném období. <br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: EntityName |
@@ -60,13 +60,13 @@ Spočítá počet požadavků na data a operace správy.
 
 ## <a name="throughput-metrics"></a>Metriky propustnosti
 
-| Název metriky | Description |
+| Název metriky | Popis |
 | ------------------- | ----------------- |
 |Omezené žádosti |Počet žádostí, které byly omezeny, protože bylo překročeno použití jednotek propustnosti.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: EntityName|
 
 ## <a name="message-metrics"></a>Metriky zpráv
 
-| Název metriky | Description |
+| Název metriky | Popis |
 | ------------------- | ----------------- |
 |Příchozí zprávy |Počet událostí nebo zpráv odeslaných do Event Hubs v zadaném období.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: EntityName|
 |Odchozí zprávy |Počet událostí nebo zpráv načtených z Event Hubs v zadaném období.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: EntityName|
@@ -75,7 +75,7 @@ Spočítá počet požadavků na data a operace správy.
 
 ## <a name="connection-metrics"></a>Metriky připojení
 
-| Název metriky | Description |
+| Název metriky | Popis |
 | ------------------- | ----------------- |
 |ActiveConnections |Počet aktivních připojení v oboru názvů i u entity.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: EntityName|
 |Otevřená připojení |Počet otevřených připojení.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: EntityName|
@@ -85,7 +85,7 @@ Spočítá počet požadavků na data a operace správy.
 
 Pokud povolíte funkci Capture pro centra událostí, můžete sledovat metriky Event Hubs zachycení. Následující metriky popisují, co můžete monitorovat s povoleným zachytáváním.
 
-| Název metriky | Description |
+| Název metriky | Popis |
 | ------------------- | ----------------- |
 |Backlog zachytávání |Počet bajtů, které se ještě mají zachytit do vybraného cíle.<br/><br/> Jednotka: bajtů <br/> Typ agregace: celkem <br/> Dimenze: EntityName|
 |Zachycené zprávy |Počet zpráv nebo událostí, které jsou zachyceny do vybraného cíle v zadaném období.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: EntityName|
@@ -95,7 +95,7 @@ Pokud povolíte funkci Capture pro centra událostí, můžete sledovat metriky 
 
 Azure Event Hubs podporuje pro metriky v Azure Monitor následující dimenze. Přidávání dimenzí do metrik je volitelné. Pokud dimenze nepřidáte, jsou metriky zadány na úrovni oboru názvů. 
 
-| Název metriky | Description |
+| Název metriky | Popis |
 | ------------------- | ----------------- |
 |EntityName| Event Hubs podporuje entity centra událostí pod oborem názvů.|
 
@@ -103,7 +103,7 @@ Azure Event Hubs podporuje pro metriky v Azure Monitor následující dimenze. P
 Směrování dat monitorování (protokoly aktivit, diagnostické protokoly atd.) do centra událostí s Azure Monitor umožňuje snadnou integraci s nástroji pro správu informací a zabezpečení událostí (SIEM). Další informace najdete v následujících článcích nebo blogových příspěvcích:
 
 - [Streamování dat monitorování Azure do centra událostí pro využití externím nástrojem](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)
-- [Úvod do Azure Log Integration](../security/fundamentals/azure-log-integration-overview.md)
+- [Úvod do Azure Log Integration](/previous-versions/azure/security/fundamentals/azure-log-integration-overview)
 - [Použití Azure Monitor k integraci s nástroji SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
 V případě, že nástroj SIEM spotřebovává data protokolu z centra událostí, pokud se nezobrazí žádné příchozí zprávy nebo se v grafu metriky nezobrazí příchozí zprávy, ale v grafu metriky nejsou žádné odchozí zprávy, postupujte takto:
@@ -114,7 +114,7 @@ V případě, že nástroj SIEM spotřebovává data protokolu z centra událost
 
 ## <a name="next-steps"></a>Další kroky
 
-* Podívejte se na téma [Přehled monitorování Azure](../monitoring-and-diagnostics/monitoring-overview.md).
+* Podívejte se na téma [Přehled monitorování Azure](../azure-monitor/overview.md).
 * [Načtěte Azure monitor metriky pomocí ukázky .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) na GitHubu. 
 
 Další informace o službě Event Hubs naleznete pod těmito odkazy:
@@ -129,6 +129,3 @@ Další informace o službě Event Hubs naleznete pod těmito odkazy:
 
 [1]: ./media/event-hubs-metrics-azure-monitor/event-hubs-monitor1.png
 [2]: ./media/event-hubs-metrics-azure-monitor/event-hubs-monitor2.png
-
-
-

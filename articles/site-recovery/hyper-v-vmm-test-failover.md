@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 0363911574a076b13cb72591fb2564364e096c76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b6055cdf930c93ba096a21ebc0b74c204540a79
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710673"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076076"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>Spuštění postupu zotavení po havárii pro virtuální počítače Hyper-V do sekundární lokality
 
@@ -42,9 +43,9 @@ Spustíte testovací převzetí služeb při selhání z primární lokality do 
 
 Při spuštění testovacího převzetí služeb při selhání se zobrazí výzva k výběru nastavení sítě pro počítače testovací repliky, jak je shrnuto v tabulce.
 
-| **Nastavení** | **Podrobnosti** | |
+| **Možnost** | **Podrobnosti** | |
 | --- | --- | --- |
-| **Žádné** | Testovací virtuální počítač se vytvoří na hostiteli, na kterém je umístěný virtuální počítač repliky. Není přidaný do cloudu a není připojený k žádné síti.<br/><br/> Počítač můžete po vytvoření připojit k síti virtuálních počítačů.| |
+| **Žádný** | Testovací virtuální počítač se vytvoří na hostiteli, na kterém je umístěný virtuální počítač repliky. Není přidaný do cloudu a není připojený k žádné síti.<br/><br/> Počítač můžete po vytvoření připojit k síti virtuálních počítačů.| |
 | **Použít existující** | Testovací virtuální počítač se vytvoří na hostiteli, na kterém je umístěný virtuální počítač repliky. Není přidaný do cloudu.<br/><br/>Vytvořte síť virtuálních počítačů, která je izolovaná od produkční sítě.<br/><br/>Pokud používáte síť na bázi VLAN, doporučujeme pro tento účel vytvořit samostatnou logickou síť (nepoužitou v produkčním prostředí). Tato logická síť slouží k vytváření sítí virtuálních počítačů pro testovací převzetí služeb při selhání.<br/><br/>Logická síť by měla být přidružená alespoň k jednomu ze síťových adaptérů všech serverů Hyper-V, které jsou hostiteli virtuálních počítačů.<br/><br/>U logických sítí VLAN by se měly izolované síťové lokality, které přidáte do logické sítě.<br/><br/>Pokud používáte logickou síť založenou na virtualizaci sítě Windows, Azure Site Recovery automaticky vytvoří izolované sítě virtuálních počítačů. | |
 | **Vytvoření sítě** | Dočasná testovací síť je vytvořena automaticky na základě nastavení, které zadáte v **logické síti** a v příslušných síťových lokalitách.<br/><br/> Převzetí služeb při selhání kontroluje, jestli jsou virtuální počítače vytvořené.<br/><br/> Tuto možnost byste měli použít, pokud plán obnovení používá více než jednu síť virtuálních počítačů.<br/><br/> Pokud používáte sítě virtualizace sítě Windows, tato možnost umožňuje automaticky vytvořit sítě virtuálních počítačů se stejnými nastaveními (podsítě a fondy IP adres) v síti virtuálního počítače repliky. Tyto sítě virtuálních počítačů se vyčistí automaticky po dokončení testovacího převzetí služeb při selhání.<br/><br/> Testovací virtuální počítač se vytvoří na hostiteli, na kterém existuje virtuální počítač repliky. Není přidaný do cloudu.|
 
@@ -102,17 +103,17 @@ Připravte server DNS pro testovací převzetí služeb při selhání následuj
 * **DHCP**: Pokud virtuální počítače používají protokol DHCP, měla by být na testovacím serveru DHCP aktualizována IP adresa testovacího serveru DNS. Pokud používáte typ sítě virtualizace sítě systému Windows, server VMM funguje jako server DHCP. Proto by se měla v síti testovacího převzetí služeb při selhání aktualizovat IP adresa DNS. V takovém případě se virtuální počítače registrují na příslušný server DNS.
 * **Statická adresa**: Pokud virtuální počítače používají statickou IP adresu, měla by být v síti testovacího převzetí služeb při selhání aktualizována IP adresa testovacího serveru DNS. Možná budete muset aktualizovat DNS s použitím IP adresy testovacích virtuálních počítačů. K tomuto účelu můžete použít následující vzorový skript:
 
-        Param(
-        [string]$Zone,
-        [string]$name,
-        [string]$IP
-        )
-        $Record = Get-DnsServerResourceRecord -ZoneName $zone -Name $name
-        $newrecord = $record.clone()
-        $newrecord.RecordData[0].IPv4Address  =  $IP
-        Set-DnsServerResourceRecord -zonename $zone -OldInputObject $record -NewInputObject $Newrecord
-
-
+  ```powershell
+  Param(
+  [string]$Zone,
+  [string]$name,
+  [string]$IP
+  )
+  $Record = Get-DnsServerResourceRecord -ZoneName $zone -Name $name
+  $newrecord = $record.clone()
+  $newrecord.RecordData[0].IPv4Address  =  $IP
+  Set-DnsServerResourceRecord -zonename $zone -OldInputObject $record -NewInputObject $Newrecord
+  ```
 
 ## <a name="run-a-test-failover"></a>Spuštění testovacího převzetí služeb při selhání
 

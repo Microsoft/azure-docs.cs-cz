@@ -8,13 +8,13 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 07/01/2020
-ms.openlocfilehash: 436c2620b83513a2b814e050b2ae6407930b082d
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.date: 07/08/2020
+ms.openlocfilehash: 5f6a198445f9c9bd8e02cd8b6df3405431263e0b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232045"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076413"
 ---
 # <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>Upgrade verzí sady Azure Search .NET Management SDK
 
@@ -26,7 +26,7 @@ Sady SDK pro správu cílí na konkrétní verzi REST API správy. Další infor
 
 | SDK version (Verze sady SDK) | Odpovídající verze REST API | Přidání nebo změna chování funkce |
 |-------------|--------------------------------|-------------------------------------|
-| [3.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/3.0.0) | API-Version = 2020-30-20 | Přidá zabezpečení koncového bodu (brány firewall IP a integrace pomocí [privátního odkazu Azure](../private-link/private-endpoint-overview.md)). |
+| [3,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/3.0.0) | API-Version = 2020-30-20 | Přidá zabezpečení koncového bodu (brány firewall IP a integrace pomocí [privátního odkazu Azure](../private-link/private-endpoint-overview.md)). |
 | [2,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/2.0.0) | API-Version = 2019-10-01 | Vylepšení použitelnosti. Zásadní změna [klíčů dotazu seznamu](https://docs.microsoft.com/rest/api/searchmanagement/querykeys/listbysearchservice) (přestává se ukončit). |
 | [1,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/1.0.1) | API-Version = 2015-08-19  | První verze |
 

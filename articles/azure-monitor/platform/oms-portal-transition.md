@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 680cd9b44cc447f9bdea38cb9d04fc661fba9c79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b33bd5ba20e21d757e412e9dac7c474308c4561d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77659250"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077152"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Přesun portálu OMS do Azure
 
@@ -40,7 +41,7 @@ I když většina funkcí bude i nadále fungovat bez provedení migrace, musít
 - Musíte [migrovat vaše uživatelská oprávnění](#user-access-and-role-migration) do Azure Portal.
 - Podrobnosti o přechodu Update Management řešení najdete v tématu [migrace nasazení aktualizace OMS do Azure](../../automation/migrate-oms-update-deployments.md) .
 
-Přečtěte si [Nejčastější dotazy k přechodu z portálu OMS na Azure Portal pro Log Analytics uživatele](oms-portal-faq.md) , kde najdete informace o tom, jak přejít na Azure Portal. 
+Přečtěte si [Nejčastější dotazy k přechodu z portálu OMS na Azure Portal pro Log Analytics uživatele](../overview.md) , kde najdete informace o tom, jak přejít na Azure Portal. 
 
 ## <a name="user-access-and-role-migration"></a>Přístup uživatelů a migrace rolí
 Správa přístupu Azure Portal je bohatší a výkonnější než Správa přístupu na portálu OMS. Podrobnosti o správě přístupu v Log Analytics najdete v tématu věnovaném [navrhování Azure monitor v pracovním prostoru protokoly](design-logs-deployment.md) .
@@ -69,7 +70,7 @@ Pomocí portálu OMS už nebudete moct vytvářet nové pracovní prostory. Podl
 
 ### <a name="alert-extension"></a>Rozšíření výstrahy  
 
-Výstrahy se [rozšířily na Azure Portal](alerts-extend.md) existující výstrahy budou dál uvedené na portálu OMS, ale můžete je spravovat jenom v Azure Portal. Pokud k upozorněním přistupujete programově pomocí Log Analytics výstrahy REST API nebo šablony prostředků výstrah Log Analytics, budete muset místo akcí v volání rozhraní API, šablonách Azure Resource Manager a příkazech PowerShellu používat skupiny akcí.
+Výstrahy se [rozšířily na Azure Portal](./alerts-unified-log.md) existující výstrahy budou dál uvedené na portálu OMS, ale můžete je spravovat jenom v Azure Portal. Pokud k upozorněním přistupujete programově pomocí Log Analytics výstrahy REST API nebo šablony prostředků výstrah Log Analytics, budete muset místo akcí v volání rozhraní API, šablonách Azure Resource Manager a příkazech PowerShellu používat skupiny akcí.
 
 ### <a name="alert-management-solution"></a>Řešení pro správu výstrah
 V rámci změny z předchozího oznámení bude [řešení pro správu výstrah](alert-management-solution.md) dál dostupné a plně podporované v Azure Portal. Řešení můžete dál instalovat z Azure Marketplace.
@@ -101,7 +102,7 @@ Toto řešení analyzuje protokoly toků NSG a poskytuje přehledy o následují
 Můžete se i nadále spoléhat na nastavení diagnostiky a odesílat protokoly NSG, aby bylo možné Log Analytics, takže stávající uložená hledání, upozornění a řídicí panely budou fungovat i nadále. Zákazníci, kteří už toto řešení nainstalovali, ho můžou dál používat, dokud si nevšimnete. Od 5. září se řešení analýzy skupin zabezpečení sítě odebere z webu Marketplace a zpřístupní se prostřednictvím komunity jako [Šablona Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Operationalinsights).
 
 ## <a name="system-center-operations-manager"></a>System Center Operations Manager
-Pokud jste [Log Analytics skupinu pro správu Operations Manager k](om-agents.md), bude i nadále fungovat bez jakýchkoli změn. V případě nových připojení je potřeba při [konfiguraci Operations Management Suite](https://blogs.technet.microsoft.com/momteam/2018/07/25/microsoft-system-center-operations-manager-management-pack-to-configure-operations-management-suite/)postupovat podle pokynů v sadě Microsoft System Center Operations Manager Management Pack.
+Pokud jste [Log Analytics skupinu pro správu Operations Manager k](om-agents.md), bude i nadále fungovat bez jakýchkoli změn. V případě nových připojení je potřeba při [konfiguraci Operations Management Suite](https://techcommunity.microsoft.com/t5/system-center-blog/bg-p/SystemCenterBlog)postupovat podle pokynů v sadě Microsoft System Center Operations Manager Management Pack.
 
 ## <a name="next-steps"></a>Další kroky
-- V tématu [běžné otázky týkající se přechodu z portálu OMS na Azure Portal Log Analytics uživatele](oms-portal-faq.md) , kde najdete pokyny k přesunu z portálu oms do Azure Portal.
+- V tématu [běžné otázky týkající se přechodu z portálu OMS na Azure Portal Log Analytics uživatele](../overview.md) , kde najdete pokyny k přesunu z portálu oms do Azure Portal.

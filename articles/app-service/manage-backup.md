@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: d611be27d8d576748019dee46022ca4cb70e966a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b917ef9234ef2e0d36526bc1688dfae2020d6b51
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253439"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075475"
 ---
 # <a name="back-up-your-app-in-azure"></a>Zálohování aplikace v Azure
 Funkce zálohování a obnovení v [Azure App Service](overview.md) umožňuje snadno vytvářet zálohy aplikací ručně nebo podle plánu. Zálohy můžete nakonfigurovat tak, aby se zachovaly až do neurčitého množství času. Aplikaci můžete obnovit do snímku předchozího stavu přepsáním existující aplikace nebo obnovením do jiné aplikace.
@@ -159,12 +159,12 @@ Záloha databáze pro aplikaci je uložena v kořenové složce souboru ZIP. V p
 
 ## <a name="automate-with-scripts"></a>Automatizace pomocí skriptů
 
-Správu zálohování můžete automatizovat pomocí skriptů pomocí rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) nebo [Azure PowerShell](/powershell/azure/overview).
+Správu zálohování můžete automatizovat pomocí skriptů pomocí rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) nebo [Azure PowerShell](/powershell/azure/).
 
 Ukázky najdete v těchto tématech:
 
 - [Ukázky Azure CLI](samples-cli.md)
-- [Ukázky Azure PowerShellu](samples-powershell.md)
+- [Ukázky Azure PowerShell](samples-powershell.md)
 
 <a name="nextsteps"></a>
 

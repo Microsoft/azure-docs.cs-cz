@@ -7,17 +7,18 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: a0dcc53d84edb4dd697213106c02626df24acfd8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bae6da2e299065bada3b4e8a9657f00ef07e138b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869399"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075560"
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>Postup otevření portů a koncových bodů pro virtuální počítač v Azure pomocí PowerShellu
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 ## <a name="quick-commands"></a>Rychlé příkazy
-K vytvoření skupiny zabezpečení sítě a pravidel seznamu ACL potřebujete [nejnovější verzi Azure PowerShell nainstalovanou](/powershell/azureps-cmdlets-docs). [Tyto kroky můžete provést také pomocí Azure Portal](nsg-quickstart-portal.md).
+K vytvoření skupiny zabezpečení sítě a pravidel seznamu ACL potřebujete [nejnovější verzi Azure PowerShell nainstalovanou](/powershell/azure/). [Tyto kroky můžete provést také pomocí Azure Portal](nsg-quickstart-portal.md).
 
 Přihlaste se ke svému účtu Azure:
 
@@ -27,7 +28,7 @@ Connect-AzAccount
 
 V následujících příkladech nahraďte názvy parametrů vlastními hodnotami. Příklady názvů parametrů zahrnují *myResourceGroup*, *myNetworkSecurityGroup*a *myVnet*.
 
-Vytvořte pravidlo pomocí [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig). Následující příklad vytvoří pravidlo s názvem *myNetworkSecurityGroupRule* , které povoluje přenosy *tcp* na portu *80*:
+Vytvořte pravidlo pomocí [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig). Následující příklad vytvoří pravidlo s názvem *myNetworkSecurityGroupRule* , které povoluje přenosy *tcp* na portu *80*:
 
 ```powershell
 $httprule = New-AzNetworkSecurityRuleConfig `
@@ -43,7 +44,7 @@ $httprule = New-AzNetworkSecurityRuleConfig `
     -DestinationPortRange 80
 ```
 
-Dále vytvořte skupinu zabezpečení sítě pomocí příkazu [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) a přiřaďte právě vytvořené pravidlo protokolu HTTP následujícím způsobem. Následující příklad vytvoří skupinu zabezpečení sítě s názvem *myNetworkSecurityGroup*:
+Dále vytvořte skupinu zabezpečení sítě pomocí příkazu [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) a přiřaďte právě vytvořené pravidlo protokolu HTTP následujícím způsobem. Následující příklad vytvoří skupinu zabezpečení sítě s názvem *myNetworkSecurityGroup*:
 
 ```powershell
 $nsg = New-AzNetworkSecurityGroup `
@@ -53,7 +54,7 @@ $nsg = New-AzNetworkSecurityGroup `
     -SecurityRules $httprule
 ```
 
-Teď k podsíti přiřadíme skupinu zabezpečení sítě. Následující příklad přiřadí existující virtuální síť s názvem *myVnet* k proměnné *$VNet* pomocí [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork):
+Teď k podsíti přiřadíme skupinu zabezpečení sítě. Následující příklad přiřadí existující virtuální síť s názvem *myVnet* k proměnné *$VNet* pomocí [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork):
 
 ```powershell
 $vnet = Get-AzVirtualNetwork `
@@ -61,7 +62,7 @@ $vnet = Get-AzVirtualNetwork `
     -Name "myVnet"
 ```
 
-Přidružte skupinu zabezpečení sítě k vaší podsíti pomocí [set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworksubnetconfig). Následující příklad přidruží podsíť s názvem *mySubnet* ke skupině zabezpečení sítě:
+Přidružte skupinu zabezpečení sítě k vaší podsíti pomocí [set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig). Následující příklad přidruží podsíť s názvem *mySubnet* ke skupině zabezpečení sítě:
 
 ```powershell
 $subnetPrefix = $vnet.Subnets|?{$_.Name -eq 'mySubnet'}
@@ -73,7 +74,7 @@ Set-AzVirtualNetworkSubnetConfig `
     -NetworkSecurityGroup $nsg
 ```
 
-Nakonec aktualizujte svou virtuální síť pomocí [set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetwork) , aby se provedené změny projevily:
+Nakonec aktualizujte svou virtuální síť pomocí [set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) , aby se provedené změny projevily:
 
 ```powershell
 Set-AzVirtualNetwork -VirtualNetwork $vnet
@@ -91,4 +92,3 @@ V tomto příkladu jste vytvořili jednoduché pravidlo pro povolení přenosů 
 * [Přehled Azure Resource Manager](../../azure-resource-manager/management/overview.md)
 * [Co je skupina zabezpečení sítě?](../../virtual-network/security-overview.md)
 * [Přehled Azure Load Balancer](../../load-balancer/load-balancer-overview.md)
-

@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: 28d7f6a9fa5d128783f2eb1dfcbcb75775cc499e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: efae9cd2a73bf6df89007ac313ca6dfe6efe6ddd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113101"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075952"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Řešení potíží s latencí s využitím protokolů Analýzy úložiště
 
@@ -97,7 +97,7 @@ Následující kroky ukazují, jak identifikovat a řešit potíže s latencí p
 
    Následující tabulka poskytuje informace o typem operace OperationType a výsledcích stavem žádosti s vysokou latencí:
 
-   |   |Stavem žádosti =<br>Úspěch|Stavem žádosti =<br>VEDE NetworkError|Doporučení|
+   | Typ objektu BLOB |Stavem žádosti =<br>Success|Stavem žádosti =<br>VEDE NetworkError|Doporučení|
    |---|---|---|---|
    |GetBlob|Ano|No|[**Operace getblob:** Stavem žádosti = úspěch](#getblob-operation-requeststatus--success)|
    |GetBlob|No|Ano|[**Operace getblob:** Stavem žádosti = (SAS) NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|

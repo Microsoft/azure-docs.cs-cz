@@ -4,18 +4,18 @@ description: Jak spravovat službu Azure blockchain pomocí Azure CLI
 ms.date: 11/22/2019
 ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: fc00bedee5ff55033a1d65c6d5d6bfa766f0f01e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b41bc44c9efbf71621fcfba06e668f42caa0f8c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208157"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076941"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>Správa služby Azure blockchain pomocí Azure CLI
 
 Kromě Azure Portal můžete použít rozhraní příkazového řádku Azure ke správě členů blockchain a uzlů transakcí pro službu Azure blockchain.
 
-Ujistěte se, že máte nainstalované nejnovější rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) a přihlásili jste se k účtu Azure v nástroji `az login` .
+Ujistěte se, že máte nainstalované nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) a přihlásili jste se k účtu Azure v nástroji `az login` .
 
 V následujících příkladech nahraďte příklady `<parameter names>` vlastními hodnotami.
 
@@ -229,7 +229,7 @@ az role assignment create \
 | **zmocněn** | ID uživatele Azure AD. Například `user@contoso.com`. |
 | **oboru** | Rozsah přiřazení role Může to být buď člen blockchain nebo uzel transakce. |
 
-**Příklad:**
+**Případě**
 
 Udělit přístup k uzlu pro uživatele Azure AD k blockchain **členu**:
 
@@ -240,7 +240,7 @@ az role assignment create \
                             --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1
 ```
 
-**Příklad:**
+**Případě**
 
 Udělit přístup k uzlu pro uživatele Azure AD na **uzel blockchain transakce**:
 
@@ -265,7 +265,7 @@ az role assignment create \
 | **nabyvatel – ID objektu** | ID skupiny nebo ID aplikace služby Azure AD. |
 | **oboru** | Rozsah přiřazení role Může to být buď člen blockchain nebo uzel transakce. |
 
-**Příklad:**
+**Případě**
 
 Udělení přístupu k uzlu pro **roli aplikace**
 

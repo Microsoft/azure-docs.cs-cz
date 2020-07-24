@@ -1,6 +1,6 @@
 ---
-title: Monitorování kanálu spouští Azure synapse Studio (Preview).
-description: Pomocí Azure synapse studia monitorujte spuštění kanálu pracovního prostoru.
+title: Monitorování spuštění kanálu pomocí synapse studia
+description: Pomocí nástroje synapse Studio monitorujte spuštění kanálu pracovního prostoru.
 services: synapse-analytics
 author: matt1883
 ms.service: synapse-analytics
@@ -9,22 +9,22 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 16400d7f292ad5844add3d4a5fc019e84bd27127
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 385b06dd7756c3bebf6557f9ea0b518473a37d49
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194888"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075904"
 ---
-# <a name="use-azure-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>Použití Azure synapse studia ke sledování spuštění kanálu pracovního prostoru
+# <a name="use-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>Použití synapse studia ke sledování spuštění kanálu pracovního prostoru
 
-Pomocí služby Azure synapse Analytics můžete vytvářet komplexní kanály, které mohou automatizovat a orchestrovat přesun dat, transformaci dat a výpočetní aktivity ve vašem řešení. Tyto kanály můžete vytvářet a monitorovat pomocí Azure synapse studia (Preview).
+Pomocí služby Azure synapse Analytics můžete vytvářet komplexní kanály, které mohou automatizovat a orchestrovat přesun dat, transformaci dat a výpočetní aktivity ve vašem řešení. Tyto kanály můžete vytvářet a monitorovat pomocí synapse studia (Preview).
 
 Tento článek vysvětluje, jak monitorovat spuštění vašeho kanálu, což vám umožní sledovat nejnovější stav, problémy a průběh vašich kanálů.
 
 ## <a name="access-the-list-of-pipeline-runs"></a>Přístup k seznamu spuštění kanálu
 
-Pokud chcete zobrazit seznam spuštění kanálu ve vašem pracovním prostoru, nejdřív [otevřete Azure synapse Studio](https://web.azuresynapse.net/) a vyberte svůj pracovní prostor.
+Pokud chcete zobrazit seznam spuštění kanálu ve vašem pracovním prostoru, nejdřív [otevřete synapse Studio](https://web.azuresynapse.net/) a vyberte svůj pracovní prostor.
 
 ![Přihlášení k pracovnímu prostoru](./media/common/login-workspace.png)
 

@@ -7,10 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79274681"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075261"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Zdroje dat protokolu událostí systému Windows v Azure Monitor
 Protokoly událostí systému Windows jsou jedním z nejběžnějších [zdrojů dat](agent-data-sources.md) pro shromažďování dat pomocí agentů Windows, protože mnoho aplikací zapisuje do protokolu událostí systému Windows.  Kromě určení libovolných vlastních protokolů vytvořených aplikacemi, které je třeba monitorovat, můžete shromažďovat události ze standardních protokolů, jako je například systém a aplikace.
@@ -54,12 +55,12 @@ Záznamy událostí systému Windows mají typ **události** a mají vlastnosti 
 | Zdroj |Zdroj události |
 | SourceSystem |Typ agenta, ze kterého byla událost shromážděna <br> OpsManager – Agent pro Windows, buď přímá připojení, nebo Operations Manager spravovaná <br> Linux – všichni agenti se systémem Linux  <br> AzureStorage – Azure Diagnostics |
 | TimeGenerated |Datum a čas vytvoření události v systému Windows. |
-| UserName |Uživatelské jméno účtu, který událost zaznamenal. |
+| Uživatelské jméno |Uživatelské jméno účtu, který událost zaznamenal. |
 
 ## <a name="log-queries-with-windows-events"></a>Dotazy protokolu s událostmi systému Windows
 Následující tabulka uvádí různé příklady dotazů protokolu, které načítají záznamy událostí systému Windows.
 
-| Dotaz | Description |
+| Dotaz | Popis |
 |:---|:---|
 | Událost |Všechny události systému Windows. |
 | Událost &#124;, kde EventLevelName = = "Error" |Všechny události systému Windows se závažností chyby. |

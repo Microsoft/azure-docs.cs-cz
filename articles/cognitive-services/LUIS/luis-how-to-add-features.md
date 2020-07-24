@@ -1,5 +1,5 @@
 ---
-title: Funkce – LUIS
+title: Použití funkcí ke zlepšení seznamu LUIS slov
 titleSuffix: Azure Cognitive Services
 description: Pomocí Language Understanding (LUIS) můžete přidat funkce aplikace, které můžou zlepšit detekci nebo předpovědi záměrů a entit, které kategorie a vzory.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 7d9f1e520ab5c96b9c5288383324b165a4cd74f0
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 25698fe2b05cbfb564e441e488bfa93221a9618a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344437"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075208"
 ---
 # <a name="use-features-to-boost-signal-of-word-list"></a>Použití funkcí k posílení signálu v seznamu slov
 
@@ -43,7 +43,7 @@ Seznamte se s [Koncepty](luis-concept-feature.md) a zjistěte, kdy a proč použ
 
 1. Seznam frází se může vztahovat na celou aplikaci s **globálním** nastavením nebo na konkrétní model (záměr nebo entitu). Pokud vytvoříte seznam frází jako _funkci_ z záměru nebo entity, přepínač není nastaven pro globální. V tomto případě je významem přepínače, že funkce je v místním prostředí pouze pro tento model, tedy nikoli z _globálních_ do aplikace.
 
-1. Vyberte **Done** (Hotovo). Nová funkce se přidá na stránku **funkcí ml** .
+1. Vyberte **Hotovo**. Nová funkce se přidá na stránku **funkcí ml** .
 
 <a name="edit-phrase-list"></a>
 <a name="delete-phrase-list"></a>

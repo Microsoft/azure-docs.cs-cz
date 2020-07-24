@@ -8,27 +8,27 @@ ms.topic: include
 ms.date: 6/9/2020
 ms.author: aschhab
 ms.custom: include file
-ms.openlocfilehash: 3fd4c6416241302a4969d9b3de26fa6b8316c1f7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e4b9925459463ff66685c797f0edaba13883f4d5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122287"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076216"
 ---
-V následující tabulce jsou uvedené funkce **služby JMS (Java Message Service)** , které jsou aktuálně podporované a nepodporované nástrojem Azure Service Bus.
+V následující tabulce jsou uvedené funkce JMS (Java Message Service), které Azure Service Bus aktuálně podporuje. Zobrazuje také funkce, které nejsou podporovány.
 
 
 | Funkce | Status |
 |---|---|
-| Fronty   | Podporuje se |
-| Témata   | Podporuje se |
-| Dočasné fronty | Podporuje se |
-| Dočasná témata | Podporuje se |
-| Selektory zpráv | Podporuje se |
-| Prohlížeče front | Podporuje se |
-| Sdílená trvalá předplatná | Podporuje se|
-| Nesdílené trvalé odběry | Podporuje se |
-| Sdílená netrvalá předplatná | Podporuje se |
-| Nesdílené odběry, které nejsou trvalé | Podporuje se |
-| Distribuované transakce | **Nepodporuje se** |
-| Trvalé trvají | **Nepodporuje se** |
+| Fronty   | Podporováno |
+| Témata   | Podporováno |
+| Dočasné fronty | Podporováno |
+| Dočasná témata | Podporováno |
+| Selektory zpráv | Podporováno |
+| Prohlížeče front | Podporováno |
+| Sdílená trvalá předplatná | Podporováno|
+| Nesdílené trvalé odběry | Podporováno |
+| Sdílená netrvalá předplatná | Podporováno |
+| Nesdílené odběry, které nejsou trvalé | Podporováno |
+| Distribuované transakce | Nepodporováno |
+| Trvalé trvají | Nepodporováno |

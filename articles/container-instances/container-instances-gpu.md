@@ -3,12 +3,12 @@ title: Nasazení instance kontejneru s podporou GPU
 description: Naučte se nasazovat služby Azure Container Instances pro spouštění kontejnerových aplikací náročných na výpočetní prostředky pomocí prostředků GPU.
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: a25efc90573eb338b81f4a6532a632a140c7ab7d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3ddeb7da2667b774724fe05227cefeec5227101a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259586"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076861"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Nasazení instancí kontejnerů, které používají prostředky GPU
 
@@ -43,7 +43,7 @@ Chcete-li použít GPU v instanci kontejneru, zadejte *prostředek GPU* s násle
 * **Count** – počet GPU: **1**, **2**nebo **4**.
 * **SKU** – SKU GPU: **K80**, **P100**nebo **V100**. Každá SKU se mapuje na grafický procesor NVIDIA Tesla v jedné z následujících rodin virtuálních počítačů s podporou GPU Azure:
 
-  | SKU | Řada virtuálních počítačů |
+  | Skladová položka | Řada virtuálních počítačů |
   | --- | --- |
   | K80 | [NC](../virtual-machines/nc-series.md) |
   | P100 | [NCv2](../virtual-machines/ncv2-series.md) |
@@ -63,7 +63,7 @@ Při nasazování prostředků GPU nastavte prostředky procesoru a paměti, kte
 
 * **Ovladače CUDA** – instance kontejnerů s prostředky GPU jsou předem zřízené pomocí ovladačů NVIDIA CUDA a modulu runtime kontejnerů, takže můžete používat image kontejnerů vyvinuté pro úlohy CUDA.
 
-  V této fázi podporujeme CUDA 9,0. Můžete například použít následující základní image pro soubor Docker:
+  V této fázi podporujeme jenom CUDA 9,0. Pro soubor Docker můžete použít například následující základní Image:
   * [NVIDIA/CUDA: 9.0 – Base-Ubuntu 16.04](https://hub.docker.com/r/nvidia/cuda/)
   * [tensorflow/tensorflow: 1.12.0-GPU-py3](https://hub.docker.com/r/tensorflow/tensorflow)
     

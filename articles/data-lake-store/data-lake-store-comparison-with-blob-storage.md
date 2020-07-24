@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 3565af1f3e0a002cf3852faef9c2853ff88d46e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ab1e2ed4aeace0ec98cb358f32a07f64c3dfea2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82691729"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075043"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Porovnávání Azure Data Lake Storage Gen1 a Azure Blob Storage
 
@@ -19,8 +19,8 @@ ms.locfileid: "82691729"
 
 Tabulka v tomto článku shrnuje rozdíly mezi Azure Data Lake Storage Gen1 a Azure Blob Storage a dalšími klíčovými aspekty zpracování velkých objemů dat. Azure Blob Storage je univerzální účelově škálovatelné úložiště objektů, které je navržené pro širokou škálu scénářů úložiště. Azure Data Lake Storage Gen1 je úložiště typu Hyper-Scale optimalizované pro úlohy analýzy velkých objemů dat.
 
-|  | Azure Data Lake Storage Gen1 | Azure Blob Storage |
-| --- | --- | --- |
+| Kategorie | Azure Data Lake Storage Gen1 | Azure Blob Storage |
+| -------- | ---------------------------- | ------------------ |
 | Účel |Optimalizované úložiště pro úlohy analýzy velkých objemů dat |Úložiště objektů pro obecné účely pro širokou škálu scénářů úložiště, včetně analýz velkých objemů dat |
 | Případy použití |Batch, interaktivní, Stream Analytics a data strojového učení, jako jsou soubory protokolů, data IoT, klikněte na streamy, velké datové sady. |Jakýkoli typ textu nebo binárních dat, jako je back-end aplikace, zálohovaná data, mediální úložiště pro streamování a data pro obecné účely. Kromě toho plná podpora pro úlohy analýzy; Batch, interaktivní, Stream Analytics a data strojového učení, jako jsou soubory protokolů, data IoT, klikněte na streamy, velké datové sady. |
 | Klíčové koncepty |Data Lake Storage Gen1 účet obsahuje složky, které zase obsahují data uložená jako soubory. |Účet úložiště obsahuje kontejnery, které zase obsahují data ve formě objektů BLOB. |
@@ -40,6 +40,6 @@ Tabulka v tomto článku shrnuje rozdíly mezi Azure Data Lake Storage Gen1 a Az
 | Geografická redundance |Místně redundantní (více kopií dat v jedné oblasti Azure) |Místně redundantní (LRS), zóna redundantní (ZRS), globálně redundantní (GRS), globálně redundantní přístup pro čtení (RA-GRS). Další informace najdete [tady](../storage/common/storage-redundancy.md) . |
 | Stav služby |Obecná dostupnost |Obecná dostupnost |
 | Regionální dostupnost |Podívejte se [sem](https://azure.microsoft.com/regions/#services) |K dispozici ve všech oblastech Azure |
-| Price |Zobrazit [ceny](https://azure.microsoft.com/pricing/details/data-lake-store/) |Zobrazit [ceny](https://azure.microsoft.com/pricing/details/storage/) |
+| Cena |Zobrazit [ceny](https://azure.microsoft.com/pricing/details/data-lake-store/) |Zobrazit [ceny](https://azure.microsoft.com/pricing/details/storage/) |
 
 

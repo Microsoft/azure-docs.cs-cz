@@ -6,11 +6,13 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: brendm
-ms.openlocfilehash: 81ca6b2c365b0dd8a249a337f51d78516cb2cc61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 6af23f566e8768dd1213095402b7af029d494476
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83657188"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076029"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Zotavení po havárii v cloudu Azure jaře
 
@@ -41,8 +43,8 @@ Budete potřebovat dvě instance služby jarního cloudu Azure nasazené ve dvou
 
 | Název služby | Umístění | Aplikace |
 |--|--|--|
-| Služba – ukázka-a | USA – východ | Brána/ověřování-služba/účet-služba |
-| Service-Sample-b | Západní Evropa | Brána/ověřování-služba/účet-služba |
+| Služba – ukázka-a | East US | Brána/ověřování-služba/účet-služba |
+| Service-Sample-b | West Europe | Brána/ověřování-služba/účet-služba |
 
 2. Pokud chcete nastavit vlastní doménu pro tyto dvě existující instance služby, nastavte vlastní doménu pro službu dodržovat [vlastní doménový dokument](spring-cloud-tutorial-custom-domain.md) . Po úspěšném vytvoření se obě instance služby sváže s vlastní doménou: bcdr-test.contoso.com
 

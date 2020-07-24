@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: c85eef1a5d035e23c7e63632ac92c21440b15cae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40b5f4ee0c30e38c6cd5bd01c724ed783921670d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82101548"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077424"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Jak nasadit Windows 10 v Azure s právy pro hostování s více klienty 
 Pro zákazníky s Windows 10 Enterprise E3/E5 podle uživatele nebo přístup k virtuálnímu počítači s Windows na úrovni uživatele (licence pro předplatné uživatele nebo licence k předplatnému uživatele) umožňuje víceklientské hostování pro Windows 10 přístup k cloudu a spouštění Windows 10 Virtual Machines v Azure bez placení na jinou licenci. Další informace najdete v tématu hostování s více [klienty pro Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
@@ -55,7 +55,7 @@ Další informace najdete tady:
 
 
 ## <a name="deploying-windows-10-with-multitenant-hosting-rights"></a>Nasazení Windows 10 s právy pro hostování s více klienty
-Ujistěte se, že máte [nainstalovanou a nakonfigurovanou nejnovější Azure PowerShell](/powershell/azure/overview). Po přípravě virtuálního pevného disku nahrajte virtuální pevný disk na účet Azure Storage pomocí `Add-AzVhd` rutiny následujícím způsobem:
+Ujistěte se, že máte [nainstalovanou a nakonfigurovanou nejnovější Azure PowerShell](/powershell/azure/). Po přípravě virtuálního pevného disku nahrajte virtuální pevný disk na účet Azure Storage pomocí `Add-AzVhd` rutiny následujícím způsobem:
 
 ```powershell
 Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.vhd" `
@@ -63,7 +63,7 @@ Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.
 ```
 
 
-Nasazení **pomocí Azure Resource Managerho nasazení šablony** V rámci šablon Správce prostředků lze zadat další parametr pro `licenseType` . Můžete si přečíst další informace o [vytváření šablon Azure Resource Manager](../../resource-group-authoring-templates.md). Po nahrání virtuálního pevného disku do Azure upravte Správce prostředků šablonu tak, aby obsahovala typ licence jako součást zprostředkovatele výpočetní služby, a šablonu nasaďte jako normální:
+Nasazení **pomocí Azure Resource Managerho nasazení šablony** V rámci šablon Správce prostředků lze zadat další parametr pro `licenseType` . Můžete si přečíst další informace o [vytváření šablon Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md). Po nahrání virtuálního pevného disku do Azure upravte Správce prostředků šablonu tak, aby obsahovala typ licence jako součást zprostředkovatele výpočetní služby, a šablonu nasaďte jako normální:
 ```json
 "properties": {
     "licenseType": "Windows_Client",
@@ -106,7 +106,5 @@ LicenseType              :
 >
 
 ## <a name="next-steps"></a>Další kroky
-- Další informace o [konfiguraci VDA pro Windows 10](https://docs.microsoft.com/windows/deployment/vda-subscription-activation)
+- Další informace o [konfiguraci VDA pro Windows 10](/windows/deployment/vda-subscription-activation)
 - Další informace o [víceklientské hostování pro Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)
-
-

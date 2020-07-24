@@ -4,18 +4,18 @@ description: Pomocí konektoru Ethereem blockchain s Azure Logic Apps můžete a
 ms.date: 10/14/2019
 ms.topic: how-to
 ms.reviewer: chrisseg
-ms.openlocfilehash: c7b45134e8b5c3e33e5d05d59c006abe103e5bda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61dbda7cd7f486c7a8d838084875b34803833502
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85200728"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077033"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>Použití konektoru Ethereem blockchain s Azure Logic Apps
 
-Pomocí [konektoru Ethereem blockchain](https://docs.microsoft.com/connectors/blockchainethereum/) s [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) provádět akce inteligentních kontraktů a reagovat na události inteligentních kontraktů. Řekněme například, že chcete vytvořit mikroslužbu založenou na REST, která vrací informace z hlavní knihy blockchain. Pomocí aplikace logiky můžete přijmout požadavky HTTP, které dotazují na informace uložené v blockchain knize.
+Pomocí [konektoru Ethereem blockchain](/connectors/blockchainethereum/) s [Azure Logic Apps](../../logic-apps/index.yml) provádět akce inteligentních kontraktů a reagovat na události inteligentních kontraktů. Řekněme například, že chcete vytvořit mikroslužbu založenou na REST, která vrací informace z hlavní knihy blockchain. Pomocí aplikace logiky můžete přijmout požadavky HTTP, které dotazují na informace uložené v blockchain knize.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Dokončete volitelný rychlý úvodní požadavek [: pomocí Visual Studio Code se připojte k síti konsorcia služeb Azure blockchain](connect-vscode.md). Rychlý Start vás provede instalací [sady Azure blockchain Development Kit pro ethereem](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) a nastavením vašeho vývojového prostředí blockchain.
 
@@ -176,7 +176,7 @@ Adresa koncového bodu RPC služby Azure blockchain se vyžaduje pro připojení
 
 **Použití Azure Portal:**
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
 1. Přejít na člena služby Azure blockchain. Vyberte **uzly transakce** a výchozí odkaz na uzel transakce.
 
     ![Stránka uzly transakce s výběrem (výchozí uzel)](./media/ethereum-logic-app/transaction-nodes.png)

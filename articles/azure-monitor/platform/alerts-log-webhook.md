@@ -7,13 +7,14 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 6c9bacfc4354351cbbf2eb735414ff3334cd7d0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3311819f021533a28a41daf2c2f08193218fae96
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84323667"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075272"
 ---
-# <a name="webhook-actions-for-log-alert-rules"></a>Akce Webhooku pro pravidla upozornění protokolu
+# <a name="webhook-actions-for-log-alert-rules"></a>Akce webhooku pro pravidla výstrah protokolu
 Když [se v Azure vytvoří výstraha protokolu](alerts-log.md), máte možnost [ji nakonfigurovat pomocí skupin akcí](action-groups.md) , aby se provedla jedna nebo více akcí. Tento článek popisuje různé akce Webhooku, které jsou k dispozici, a ukazuje, jak nakonfigurovat vlastní Webhook založený na formátu JSON.
 
 > [!NOTE]
@@ -36,7 +37,7 @@ Akce Webhooku vyžadují vlastnosti v následující tabulce.
 Webhooky zahrnují adresu URL a datovou část formátovanou ve formátu JSON, kterou data odesílaná do externí služby. Ve výchozím nastavení datová část zahrnuje hodnoty v následující tabulce. Tuto datovou část si můžete nahradit vlastní vlastní. V takovém případě použijte proměnné v tabulce pro každý z parametrů k zahrnutí jejich hodnot do vlastní datové části.
 
 
-| Parametr | Proměnná | Description |
+| Parametr | Proměnná | Popis |
 |:--- |:--- |:--- |
 | *AlertRuleName* |#alertrulename |Název pravidla výstrahy. |
 | *Závažnost* |#severity |Závažnost nastavená pro výstrahu protokolu, která se vyvolala. |
@@ -264,6 +265,5 @@ Následující ukázková datová část je určena pro vlastní akci Webhooku p
 - Přečtěte si informace o [upozorněních protokolu v Azure Alerts](alerts-unified-log.md).
 - Naučte se [Spravovat výstrahy protokolu v Azure](alerts-log.md).
 - Vytváření a Správa [skupin akcí v Azure](action-groups.md).
-- Přečtěte si další informace o [Application Insights](../../azure-monitor/app/analytics.md).
+- Přečtěte si další informace o [Application Insights](../log-query/log-query-overview.md).
 - Přečtěte si další informace o [dotazech protokolu](../log-query/log-query-overview.md). 
-

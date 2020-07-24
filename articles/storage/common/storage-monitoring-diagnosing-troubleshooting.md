@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 94d952bcb0693941624199370de092a581d7479b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7af711ebe21c46663ecd8e803b0f636c34c362ee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518585"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076054"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorování, diagnostika a řešení problémů s Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -23,10 +23,6 @@ ms.locfileid: "86518585"
 Diagnostiku a řešení problémů v distribuované aplikaci hostované v cloudovém prostředí může být složitější než v tradičních prostředích. Aplikace se dají nasadit v infrastruktuře PaaS nebo IaaS, místně, na mobilním zařízení nebo v některé kombinaci těchto prostředí. Síťový provoz vaší aplikace obvykle může procházet veřejné a privátní sítě a vaše aplikace může kromě jiných úložišť dat, jako jsou relační databáze a dokumenty dokumentů, používat víc technologií úložiště, jako jsou Microsoft Azure Storage tabulky, objekty blob, fronty nebo soubory.
 
 Aby bylo možné tyto aplikace spravovat úspěšně, měli byste je monitorovat aktivně a pochopit, jak diagnostikovat a řešit potíže se všemi aspekty a jejich závislými technologiemi. Jako uživatel služby Azure Storage Services byste měli průběžně monitorovat služby úložiště, které vaše aplikace používá k jakýmkoli neočekávaným změnám v chování (například pomalejší než obvyklá doba odezvy), a používat protokolování ke shromažďování podrobnějších dat a k analýze problému podrobněji. Diagnostické informace, které získáte z monitorování a protokolování, vám pomůžou určit hlavní příčinu problému, ke kterému vaše aplikace došlo. Pak můžete problém vyřešit a určit vhodné kroky, které můžete provést, abyste ho mohli opravit. Azure Storage je základní služba Azure a tvoří důležitou část většiny řešení, která zákazníci nasazují do infrastruktury Azure. Azure Storage obsahuje možnosti pro zjednodušení monitorování, diagnostikování a odstraňování potíží s úložištěm ve vašich cloudových aplikacích.
-
-> [!NOTE]
-> Soubory Azure v tuto chvíli nepodporují protokolování.
->
 
 Praktickou příručku pro komplexní řešení potíží v aplikacích Azure Storage najdete v tématu [komplexní řešení potíží pomocí Azure Storage metrik a protokolování, AzCopy a analyzátoru zpráv](../storage-e2e-troubleshooting.md).
 

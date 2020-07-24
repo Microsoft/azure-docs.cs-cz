@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 07/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 73811aa58b09e394468596f42e0ff221b2bb240b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1f813d0ada516f6090b97e5858cefab110636f90
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261811"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077602"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Připojení s desktopovým klientem Windows
 
@@ -25,7 +25,7 @@ ms.locfileid: "86261811"
 > V současnosti je ve verzi Public Preview na jaře 2020 aktualizace virtuálních počítačů s Windows. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-K prostředkům virtuálních klientů Windows na zařízeních s Windows 7, Windows 10 a Windows 10 IoT Enterprise můžete přistupovat pomocí desktopového klienta Windows.
+K prostředkům virtuálních klientů Windows na zařízeních s Windows 7, Windows 10 a Windows 10 IoT Enterprise můžete přistupovat pomocí desktopového klienta Windows. Klient nepodporuje Window 8 ani Windows 8.1.
 
 >[!NOTE]
 >Klient Windows automaticky nastaví výchozí hodnotu 2019 Release pro Windows Virtual Desktop. Pokud však klient zjistí, že uživatel má také prostředky Azure Resource Manager, automaticky přidá prostředky nebo upozorní uživatele, že jsou k dispozici.

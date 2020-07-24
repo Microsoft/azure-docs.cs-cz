@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: a92e96a835f24ac54fa55b05086a35b9a91d609e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 550b4fb7ba17d911618e0b60d16c0a9f9d1f2cfa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80298338"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077275"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Připojení počítačů bez přístupu k Internetu pomocí Log Analytics brány v Azure Monitor
 
@@ -149,7 +149,7 @@ Chcete-li nainstalovat bránu pomocí Průvodce instalací, postupujte podle tě
 
 ## <a name="install-the-log-analytics-gateway-using-the-command-line"></a>Instalace brány Log Analytics pomocí příkazového řádku
 
-Staženým souborem pro bránu je balíček Instalační služba systému Windows, který podporuje tichou instalaci z příkazového řádku nebo jiné automatizované metody. Pokud neznáte standardní možnosti příkazového řádku pro Instalační služba systému Windows, přečtěte si téma [Možnosti příkazového řádku](https://docs.microsoft.com/windows/desktop/Msi/command-line-options).
+Staženým souborem pro bránu je balíček Instalační služba systému Windows, který podporuje tichou instalaci z příkazového řádku nebo jiné automatizované metody. Pokud neznáte standardní možnosti příkazového řádku pro Instalační služba systému Windows, přečtěte si téma [Možnosti příkazového řádku](/windows/desktop/msi/command-line-options).
  
 V následující tabulce jsou vysvětlené parametry podporované instalačním programem.
 
@@ -185,11 +185,11 @@ Po dokončení instalace můžete potvrdit přijetí nastavení (s výjimkou už
 
 ## <a name="configure-network-load-balancing"></a>Konfigurace vyrovnávání zatížení sítě
 
-Bránu pro vysokou dostupnost můžete nakonfigurovat pomocí služby Vyrovnávání zatížení sítě (NLB) pomocí služby Vyrovnávání zatížení [sítě (NLB)](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing), [Azure Load Balancer](../../load-balancer/load-balancer-overview.md)nebo hardwarových nástrojů pro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení spravuje provoz pomocí přesměrování požadovaných připojení od Log Analyticsch agentů nebo serverů pro správu Operations Manager napříč svými uzly. Pokud dojde k výpadku jednoho serveru brány, přenos se přesměruje na jiné uzly.
+Bránu pro vysokou dostupnost můžete nakonfigurovat pomocí služby Vyrovnávání zatížení sítě (NLB) pomocí služby Vyrovnávání zatížení [sítě (NLB)](/windows-server/networking/technologies/network-load-balancing), [Azure Load Balancer](../../load-balancer/load-balancer-overview.md)nebo hardwarových nástrojů pro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení spravuje provoz pomocí přesměrování požadovaných připojení od Log Analyticsch agentů nebo serverů pro správu Operations Manager napříč svými uzly. Pokud dojde k výpadku jednoho serveru brány, přenos se přesměruje na jiné uzly.
 
 ### <a name="microsoft-network-load-balancing"></a>Vyrovnávání zatížení sítě Microsoftu
 
-Informace o tom, jak navrhnout a nasadit cluster programu pro vyrovnávání zatížení sítě Windows Server 2016, najdete v tématu [Vyrovnávání zatížení sítě](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing). Následující postup popisuje, jak nakonfigurovat cluster programu pro vyrovnávání zatížení sítě společnosti Microsoft.  
+Informace o tom, jak navrhnout a nasadit cluster programu pro vyrovnávání zatížení sítě Windows Server 2016, najdete v tématu [Vyrovnávání zatížení sítě](/windows-server/networking/technologies/network-load-balancing). Následující postup popisuje, jak nakonfigurovat cluster programu pro vyrovnávání zatížení sítě společnosti Microsoft.  
 
 1. Přihlaste se k systému Windows Server, který je členem clusteru programu NLB, s účtem správce.  
 2. V Správce serveru otevřete Správce vyrovnávání zatížení sítě, klikněte na **nástroje**a potom klikněte na **Správce vyrovnávání zatížení sítě**.
@@ -201,7 +201,7 @@ Informace o tom, jak navrhnout a nasadit cluster programu pro vyrovnávání zat
 
     ![Správce vyrovnávání zatížení sítě – přidat hostitele do clusteru: připojit](./media/gateway/nlb03.png) 
 
-### <a name="azure-load-balancer"></a>Nástroj pro vyrovnávání zatížení Azure
+### <a name="azure-load-balancer"></a>Azure Load Balancer
 
 Informace o tom, jak navrhnout a nasadit Azure Load Balancer, najdete v tématu [co je Azure Load Balancer?](../../load-balancer/load-balancer-overview.md). Pokud chcete nasadit základní nástroj pro vyrovnávání zatížení, postupujte podle kroků uvedených v tomto [rychlém](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) startu s výjimkou kroků uvedených v části **Vytvoření back-endové serverů**.   
 
@@ -248,7 +248,7 @@ Pokud chcete použít bránu OMS k podpoře Operations Manager, musíte mít:
 
 Pokud je vaše skupina pro správu Operations Manager v pracovním prostoru Log Analytics registrována poprvé, neuvidíte možnost zadat konfiguraci proxy serveru pro skupinu pro správu v konzole Operations Console. Tato možnost je k dispozici pouze v případě, že je skupina pro správu zaregistrována ve službě.  
 
-Pokud chcete nakonfigurovat integraci, aktualizujte konfiguraci proxy serveru pomocí příkazu Netsh v systému, na kterém je spuštěná konzola Operations Console, a na všech serverech pro správu ve skupině pro správu. Postupujte následovně:
+Pokud chcete nakonfigurovat integraci, aktualizujte konfiguraci proxy serveru pomocí příkazu Netsh v systému, na kterém je spuštěná konzola Operations Console, a na všech serverech pro správu ve skupině pro správu. Postupujte takto:
 
 1. Otevřete příkazový řádek se zvýšenými oprávněními:
 
@@ -340,7 +340,7 @@ Chyba v kroku 3 znamená, že modul nebyl naimportován. K této chybě může d
 | `Remove-OMSGatewayAllowedClientCertificate` |Subject (povinné) |Odebere klientský certifikát ze seznamu povolených. |`Remove-OMSGatewayAllowed` <br> `ClientCertificate` <br> `-Subject mycert` |  
 | `Get-OMSGatewayAllowedClientCertificate` | |Získá aktuálně povolené předměty klientského certifikátu (jenom místně konfigurovaná povolená témata, ale nestahují automaticky povolené subjekty). |`Get-`<br>`OMSGatewayAllowed`<br>`ClientCertificate` |  
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud chcete shromažďovat události zaznamenané bránou, měli byste mít nainstalovaného agenta Log Analytics.
 
@@ -350,7 +350,7 @@ Pokud chcete shromažďovat události zaznamenané bránou, měli byste mít nai
 
 Následující tabulka ukazuje ID událostí a popisy pro události protokolu Log Analytics brány.
 
-| **ID** | **Popis** |
+| **ÚČET** | **Popis** |
 | --- | --- |
 | 400 |Jakákoli chyba aplikace, která nemá žádné konkrétní ID. |
 | 401 |Nesprávná konfigurace Například listenPort = "text" místo Integer. |

@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/25/2019
-ms.openlocfilehash: 1a5a2682198f9ce9f5cb39f21e244c723ca513d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: 1f0fb1ee8580c0c7f6eb30228b65e0a3780ef0a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416653"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076794"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory"></a>Kopírování dat z marketingového cloudu Salesforce pomocí Azure Data Factory
 
@@ -34,7 +34,7 @@ Tento konektor marketingového cloudu Salesforce se podporuje pro následující
 
 Data z marketingového cloudu Salesforce můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která jsou v rámci aktivity kopírování podporovaná jako zdroje a jímky, najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
 
-Konektor marketingu pro služby Salesforce podporuje ověřování OAuth 2. Je postavená na [marketingovém cloudu Salesforce REST API](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/index-api.htm).
+Cloudový konektor Salesforce podporuje ověřování OAuth 2 a podporuje jak starší, tak i rozšířené typy balíčků. Konektor je postaven na [REST API Salesforce marketing cloudu](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/index-api.htm).
 
 >[!NOTE]
 >Tento konektor nepodporuje načítání vlastních objektů nebo vlastních rozšíření dat.
@@ -49,16 +49,20 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu Salesforce marketing cloudu jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **SalesforceMarketingCloud** . | Ano |
-| clientId | ID klienta přidružené k aplikaci Salesforce Marketing Cloud.  | Ano |
-| clientSecret | Tajný klíč klienta přidružený k aplikaci Salesforce Marketing Cloud. Toto pole můžete označit jako SecureString, abyste ho bezpečně ukládali do podavače ADF, nebo Uložit heslo v Azure Key Vault a nechat si z něj při kopírování dat získat z přihlašovacích údajů možnost z [přihlašovacích údajů v Key Vault Store](store-credentials-in-key-vault.md). | Ano |
-| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | Ne |
-| useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | Ne |
-| usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | Ne |
+| typ | Vlastnost Type musí být nastavená na: **SalesforceMarketingCloud** . | Yes |
+| connectionProperties | Skupina vlastností, která definuje, jak se připojit k marketingovému cloudu Salesforce | Yes |
+| ***V části `connectionProperties` :*** | | |
+| authenticationType | Určuje metodu ověřování, která se má použít. Povolené hodnoty jsou `Enhanced sts OAuth 2.0` nebo `OAuth_2.0` .<br><br>Balíček starší verze marketingového cloudu Salesforce podporuje jenom `OAuth_2.0` a přitom rozšiřuje požadavky na balíčky `Enhanced sts OAuth 2.0` . <br>Od 1. srpna 2019 odebral marketingový Cloud Salesforce možnost vytvářet starší balíčky. Všechny nové balíčky jsou vylepšené balíčky. | Yes |
+| Hostitel | U rozšířeného balíčku by měl být hostitelem vaše [subdomény](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/your-subdomain-tenant-specific-endpoints.htm) , která je reprezentovaná řetězcem se 28 znaky začínající písmenem "MC", `mc563885gzs27c5t9-63k636ttgm` např. <br>V případě starší verze balíčku zadejte `www.exacttargetapis.com` . | Yes |
+| clientId | ID klienta přidružené k aplikaci Salesforce Marketing Cloud.  | Yes |
+| clientSecret | Tajný klíč klienta přidružený k aplikaci Salesforce Marketing Cloud. Toto pole můžete označit jako SecureString, abyste ho bezpečně ukládali v ADF, nebo uložit tajný kód do Azure Key Vault a nechat si z něj při kopírování dat získat aktivitu z přihlašovacích údajů pro Store. Další informace najdete [v části přihlašovací údaje úložiště v Key Vault](store-credentials-in-key-vault.md). | Yes |
+| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | No |
+| useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | No |
+| usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | No |
 
-**Příklad:**
+**Příklad: použití vylepšeného ověřování STS OAuth 2 pro vylepšené balíčky** 
 
 ```json
 {
@@ -66,14 +70,66 @@ Pro propojenou službu Salesforce marketing cloudu jsou podporovány následují
     "properties": {
         "type": "SalesforceMarketingCloud",
         "typeProperties": {
-            "clientId" : "<clientId>",
+            "connectionProperties": {
+                "host": "<subdomain e.g. mc563885gzs27c5t9-63k636ttgm>",
+                "authenticationType": "Enhanced sts OAuth 2.0",
+                "clientId": "<clientId>",
+                "clientSecret": {
+                     "type": "SecureString",
+                     "value": "<clientSecret>"
+                },
+                "useEncryptedEndpoints": true,
+                "useHostVerification": true,
+                "usePeerVerification": true
+            }
+        }
+    }
+}
+
+```
+
+**Příklad: použití ověřování OAuth 2 pro starší verzi balíčku** 
+
+```json
+{
+    "name": "SalesforceMarketingCloudLinkedService",
+    "properties": {
+        "type": "SalesforceMarketingCloud",
+        "typeProperties": {
+            "connectionProperties": {
+                "host": "www.exacttargetapis.com",
+                "authenticationType": "OAuth_2.0",
+                "clientId": "<clientId>",
+                "clientSecret": {
+                     "type": "SecureString",
+                     "value": "<clientSecret>"
+                },
+                "useEncryptedEndpoints": true,
+                "useHostVerification": true,
+                "usePeerVerification": true
+            }
+        }
+    }
+}
+
+```
+
+Pokud jste použili propojenou službu marketingu marketingového cloudu s následující datovou částí, je tato funkce stále podporovaná tak, jak je, a až budete chtít začít používat novou podporu balíčku, která bude rozšířena.
+
+```json
+{
+    "name": "SalesforceMarketingCloudLinkedService",
+    "properties": {
+        "type": "SalesforceMarketingCloud",
+        "typeProperties": {
+            "clientId": "<clientId>",
             "clientSecret": {
                  "type": "SecureString",
                  "value": "<clientSecret>"
             },
-            "useEncryptedEndpoints" : true,
-            "useHostVerification" : true,
-            "usePeerVerification" : true
+            "useEncryptedEndpoints": true,
+            "useHostVerification": true,
+            "usePeerVerification": true
         }
     }
 }
@@ -86,9 +142,9 @@ Pro propojenou službu Salesforce marketing cloudu jsou podporovány následují
 
 Pokud chcete kopírovat data z marketingového cloudu Salesforce, nastavte vlastnost Type datové sady na **SalesforceMarketingCloudObject**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **SalesforceMarketingCloudObject** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **SalesforceMarketingCloudObject** . | Yes |
 | tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
 **Příklad**
@@ -116,12 +172,12 @@ Pokud chcete kopírovat data z marketingového cloudu Salesforce, nastavte vlast
 
 Pokud chcete kopírovat data z marketingového cloudu Salesforce, nastavte typ zdroje v aktivitě kopírování na **SalesforceMarketingCloudSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **SalesforceMarketingCloudSource** . | Ano |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **SalesforceMarketingCloudSource** . | Yes |
 | query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
-**Příklad:**
+**Případě**
 
 ```json
 "activities":[

@@ -1,5 +1,5 @@
 ---
-title: 'SSMS: Connect a Query synapse SQL'
+title: Připojení k synapse SQL pomocí SQL Server Management Studio (SSMS)
 description: Pomocí SQL Server Management Studio (SSMS) se můžete připojit a dotazovat synapse SQL ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 72006879c7181a8cefe56248215099eeb784d816
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: dc467eebbd7346777765af7143d13c76627ab648
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658222"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077715"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>Připojení k synapse SQL pomocí SQL Server Management Studio (SSMS)
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ ms.locfileid: "83658222"
 > [!NOTE]
 > Pokud má přihlášení AAD otevřené připojení po dobu delší než 1 hodinu, dotaz, který se spoléhá na AAD, selže. To zahrnuje dotazování na úložiště pomocí předávacího a příkazového příkazu AAD, které komunikují s AAD (třeba vytvoření externího poskytovatele). To má vliv na všechny nástroje, které udržují připojení otevřené, jako v editoru dotazů v SSMS a REKLAMách. Nástroje, které otevřou nové připojení k provedení dotazu, nejsou ovlivněné, například synapse Studio.
 > Pokud chcete tento problém zmírnit, můžete restartovat SSMS nebo připojení a odpojení v REKLAMách. .
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že máte následující požadavky:  
 

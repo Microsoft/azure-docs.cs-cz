@@ -7,12 +7,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 07/15/2020
-ms.openlocfilehash: 238ede3e79b7d7c5a22d24dfc52530fe391b600b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8c6486a3a64dcbe3dd37770844296da73724f3a3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519622"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076340"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co je nového v Azure Kognitivní hledání
 
@@ -24,9 +24,9 @@ Zjistěte, co je nového ve službě. Pomocí záložky můžete tuto stránku u
 
 |Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategorie | Popis | Dostupnost  |
 |---------|------------------|-------------|---------------|
-| [**Klientská knihovna v .NET**](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) | Azure SDK | Nová knihovna klienta vydaná týmem Azure SDK navržená tak, aby byla konzistentní s jinými klientskými knihovnami .NET. Verze 11. | Všeobecně k dispozici. </br> Nainstalujte [balíčekAzure.Search.Documents](https://www.nuget.org/packages/Azure.Search.Documents/) z NuGet. |
-| [**Klientská knihovna v Pythonu**](https://docs.microsoft.com/python/api/overview/azure/search-documents-readme?view=azure-python)  | Azure SDK | Nová knihovna klienta vydaná týmem Azure SDK navržená tak, aby byla konzistentní s jinými klientskými knihovnami Pythonu. Verze 11. | Všeobecně k dispozici. </br> Nainstalujte [balíček Azure-Search-Documents](https://pypi.org/project/azure-search-documents/) z PyPI. |
-| [**Klientská knihovna JavaScript**](https://azuresdkdocs.blob.core.windows.net/$web/javascript/azure-search-documents/11.0.0/index.html)  | Azure SDK | Nová knihovna klienta vydaná týmem Azure SDK navržená tak, aby byla konzistentní s jinými klientskými knihovnami JavaScript. Verze 11. | Všeobecně k dispozici. </br> Nainstalujte [ @azure/search-documents balíček](https://www.npmjs.com/package/@azure/search-documents) z npm. |
+| [Klientská knihovnaAzure.Search.Documents](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) | Sada Azure SDK pro .NET | Klientská knihovna .NET vydaná týmem Azure SDK navržená tak, aby byla konzistentní s jinými klientskými knihovnami .NET. <br/><br/>Verze 11 cílí na rozhraní REST API pro hledání verze = 2020-06-30, ale zatím nepodporuje znalostní bázi Knowledge Store, Geo-Filters ani [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder?view=azure-dotnet). | Všeobecně k dispozici. </br> Nainstalujte [balíčekAzure.Search.Documents](https://www.nuget.org/packages/Azure.Search.Documents/) z NuGet. |
+| [Klientská knihovnaazure.search.documents](https://docs.microsoft.com/python/api/overview/azure/search-documents-readme?view=azure-python)  | Azure SDK pro Python| Klientská knihovna Python vydaná týmem Azure SDK navržená tak, aby byla konzistentní s jinými klientskými knihovnami Pythonu. <br/><br/>Verze 11 cílí na rozhraní REST API pro hledání verze = 2020-06-30. | Všeobecně k dispozici. </br> Nainstalujte [balíček Azure-Search-Documents](https://pypi.org/project/azure-search-documents/) z PyPI. |
+| [@azure/search-documentsKlientská knihovna](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest)  | Azure SDK for JavaScript | Klientská knihovna pro JavaScript vydaná týmem Azure SDK navržená tak, aby byla konzistentní s jinými klientskými knihovnami JavaScript. <br/><br/>Verze 11 cílí na rozhraní REST API pro hledání verze = 2020-06-30. | Všeobecně k dispozici. </br> Nainstalujte [ @azure/search-documents balíček](https://www.npmjs.com/package/@azure/search-documents) z npm. |
 
 ### <a name="june-2020"></a>Červen 2020
 
@@ -34,7 +34,7 @@ Zjistěte, co je nového ve službě. Pomocí záložky můžete tuto stránku u
 |---------|------------------|-------------|---------------|
 [**Knowledge Store**](knowledge-store-concept-intro.md) | Obohacení AI | Výstup indexeru s obohaceným AI, který ukládá obsah v Azure Storage pro použití v jiných aplikacích a procesech. | Všeobecně k dispozici. </br> Použijte [Search REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) nebo novější nebo na portálu. |
 | [**Hledat REST API 2020-06-30**](https://docs.microsoft.com/rest/api/searchservice/) | REST | Nová stabilní verze rozhraní REST API. Kromě znalostní báze Knowledge Store zahrnuje tato verze vylepšení vyhledávání relevance a bodování. | Všeobecně k dispozici. |
-| [**Okapi BM25 – algoritmus relevance**](https://en.wikipedia.org/wiki/Okapi_BM25) | Dotazy | Nový algoritmus hodnocení relevance se automaticky používá pro všechny nové služby vyhledávání vytvořené po 15. červenci. Pro služby, které jste vytvořili dřív, se můžete rozhodnout, že nastavíte `similarity` vlastnost u polí index. | Všeobecně k dispozici. </br> Použijte [Search REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) nebo novější, nebo REST API 2019-05-06. |
+| [**Okapi BM25 – algoritmus relevance**](https://en.wikipedia.org/wiki/Okapi_BM25) | Dotaz | Nový algoritmus hodnocení relevance se automaticky používá pro všechny nové služby vyhledávání vytvořené po 15. červenci. Pro služby, které jste vytvořili dřív, se můžete rozhodnout, že nastavíte `similarity` vlastnost u polí index. | Všeobecně k dispozici. </br> Použijte [Search REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) nebo novější, nebo REST API 2019-05-06. |
 | **executionEnvironment** | Zabezpečení (indexery) | Explicitně nastavte tuto vlastnost konfigurace indexeru tak, aby `private` vynutila všechna připojení k externím zdrojům dat v rámci privátního koncového bodu. Platí pouze pro služby vyhledávání, které využívají privátní propojení Azure. | Všeobecně k dispozici. </br> K nastavení tohoto obecného parametru konfigurace použijte [Search REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) . |
 
 ### <a name="may-2020-microsoft-build"></a>Květen 2020 (Microsoft Build)
@@ -46,7 +46,7 @@ Zjistěte, co je nového ve službě. Pomocí záložky můžete tuto stránku u
 | [**Privátní odkaz na Azure pro soukromý koncový bod hledání**](service-create-private-endpoint.md) | Zabezpečení| Propojte vyhledávací službu z veřejného Internetu tak, že ji spustíte jako prostředek privátního propojení, který je přístupný jenom pro klientské aplikace a další služby Azure ve stejné virtuální síti. | Všeobecně k dispozici. </br> Použijte [správu REST API 2020-03-13](https://docs.microsoft.com/rest/api/searchmanagement/) nebo novější nebo na portálu. |
 | [**Identita spravovaná systémem (verze Preview)**](search-howto-managed-identities-data-sources.md) | Zabezpečení (indexery) | Zaregistrujte vyhledávací službu jako důvěryhodnou službu s Azure Active Directory pro nastavení připojení k podporovanému zdroji dat Azure pro indexování. Platí pro [indexery](search-indexer-overview.md) , které ingestují obsah ze zdrojů dat Azure, jako jsou Azure SQL Database, Azure Cosmos DB a Azure Storage. | Verze Public Preview. </br> K registraci vyhledávací služby použijte portál. |
 | [**parametr dotazu SessionID**](index-similarity-and-scoring.md), [scoringStatistics = Global – parametr](index-similarity-and-scoring.md#scoring-statistics) | Dotaz (relevance) | Přidejte sessionID do dotazu a navažte relaci pro výpočet skóre hledání s scoringStatistics = Global pro shromažďování skóre ze všech horizontálních oddílů a pro přesnější výpočty skóre hledání. | Všeobecně k dispozici. </br> Použijte [Search REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) nebo novější, nebo REST API 2019-05-06. |
-| [**featuresMode (Preview)**](index-similarity-and-scoring.md#featuresMode-param) | Dotazy | Přidejte tento parametr dotazu, abyste rozšířili skóre relevance tak, aby se zobrazilo více podrobností: skóre podobnosti za pole, frekvence termínů a počet jedinečných tokenů podle pole. Tyto datové body můžete využívat v algoritmech vlastního bodování. Ukázku, která tuto schopnost předvádí, najdete v tématu věnovaném [Přidání strojového učení (LearnToRank) k vyhledávání relevance](https://github.com/Azure-Samples/search-ranking-tutorial). | Verze Public Preview. </br> Použijte [Search REST API 2020-06-30-Preview](https://docs.microsoft.com/rest/api/searchservice/index-preview) nebo REST API 2019-05-06-Preview. |
+| [**featuresMode (Preview)**](index-similarity-and-scoring.md#featuresMode-param) | Dotaz | Přidejte tento parametr dotazu, abyste rozšířili skóre relevance tak, aby se zobrazilo více podrobností: skóre podobnosti za pole, frekvence termínů a počet jedinečných tokenů podle pole. Tyto datové body můžete využívat v algoritmech vlastního bodování. Ukázku, která tuto schopnost předvádí, najdete v tématu věnovaném [Přidání strojového učení (LearnToRank) k vyhledávání relevance](https://github.com/Azure-Samples/search-ranking-tutorial). | Verze Public Preview. </br> Použijte [Search REST API 2020-06-30-Preview](https://docs.microsoft.com/rest/api/searchservice/index-preview) nebo REST API 2019-05-06-Preview. |
 
 ### <a name="march-2020"></a>Březen 2020
 

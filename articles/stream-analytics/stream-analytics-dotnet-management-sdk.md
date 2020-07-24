@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: ae352ead9e3ba6980c82ea48dca3db872b8d1e6d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: de152a636d8751616744887a521b2f94bbd386a1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043440"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077758"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Management .NET SDK: nastavení a spuštění analytických úloh pomocí rozhraní Azure Stream Analytics API pro .NET
 Naučte se, jak nastavit a spustit analytické úlohy pomocí rozhraní Stream Analytics API pro .NET pomocí sady Management .NET SDK. Nastavte projekt, vytvořte vstupní a výstupní zdroje, transformace a spusťte a zastavte úlohy. Pro úlohy analýzy můžete streamovat data z úložiště objektů BLOB nebo z centra událostí.
@@ -25,12 +25,12 @@ Azure Stream Analytics je plně spravovaná služba, která poskytuje vysoce dos
 > [!NOTE]
 > Aktualizovali jsme ukázkový kód v tomto článku se sadou Azure Stream Analytics Management .NET SDK V2 verze 2. x. Ukázku kódu pomocí sady SDK používá lagecy (1. x), viz [použití sady Management .NET SDK v1. x pro Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Než začnete tento článek, musíte mít následující požadavky:
 
 * Nainstalujte Visual Studio 2019 nebo 2015.
 * Stáhněte a nainstalujte sadu [Azure .NET SDK](https://azure.microsoft.com/downloads/).
-* Vytvořte ve svém předplatném skupinu prostředků Azure. Následující příklad je ukázkový skript Azure PowerShell. Informace o Azure PowerShell najdete v tématu [instalace a konfigurace Azure PowerShell](/powershell/azure/overview);  
+* Vytvořte ve svém předplatném skupinu prostředků Azure. Následující příklad je ukázkový skript Azure PowerShell. Informace o Azure PowerShell najdete v tématu [instalace a konfigurace Azure PowerShell](/powershell/azure/);  
 
    ```powershell
    # Log in to your Azure account

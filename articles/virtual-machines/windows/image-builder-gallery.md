@@ -7,11 +7,12 @@ ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 65e8818e19ac5ad20bb87fd8eb27a4c36c2839cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0db618d63964c6f271f9a14b91849e704cfd7820
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83656669"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077517"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Verze Preview: vytvoření bitové kopie systému Windows a její distribuce do galerie sdílených imagí 
 
@@ -23,7 +24,7 @@ Pro distribuci image do galerie sdílených imagí šablona používá [sharedIm
 
 Azure image Builder automaticky spustí nástroj Sysprep a provede generalizaci bitové kopie, jedná se o obecný příkaz nástroje Sysprep, který můžete v případě potřeby [přepsat](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#vms-created-from-aib-images-do-not-create-successfully) . 
 
-Počítejte s tím, kolikrát vlastní nastavení vrstev. Příkaz Sysprep můžete spustit až 8 krát na jedné imagi Windows. Po spuštění nástroje Sysprep 8 je nutné znovu vytvořit bitovou kopii systému Windows. Další informace najdete v tématu [omezení počtu, kolikrát můžete nástroj Sysprep spustit](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep). 
+Počítejte s tím, kolikrát vlastní nastavení vrstev. Příkaz Sysprep můžete spustit až 8 krát na jedné imagi Windows. Po spuštění nástroje Sysprep 8 je nutné znovu vytvořit bitovou kopii systému Windows. Další informace najdete v tématu [omezení počtu, kolikrát můžete nástroj Sysprep spustit](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep). 
 
 > [!IMPORTANT]
 > Azure image Builder je momentálně ve verzi Public Preview.
@@ -97,7 +98,7 @@ New-AzResourceGroup `
 
 
 ## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>Vytvoření uživatelsky přiřazené identity a nastavení oprávnění pro skupinu prostředků
-Nástroj image Builder použije poskytnutou [identitu uživatele](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell) k vložení image do galerie sdílených imagí Azure (SIG). V tomto příkladu vytvoříte definici role Azure, která má podrobné akce k provedení distribuce image do SIG. Definice role se pak přiřadí identitě User-identity.
+Nástroj image Builder použije poskytnutou [identitu uživatele](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md) k vložení image do galerie sdílených imagí Azure (SIG). V tomto příkladu vytvoříte definici role Azure, která má podrobné akce k provedení distribuce image do SIG. Definice role se pak přiřadí identitě User-identity.
 
 ```powershell
 # setup role def names, these need to be unique
@@ -239,7 +240,7 @@ Vytvoření image a její replikace do obou oblastí může chvíli trvat. Před
 Informace o možnostech automatizace získání stavu sestavení image najdete v [souboru Readme](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/readme.md#get-status-of-the-image-build-and-query) pro tuto šablonu na GitHubu.
 
 
-## <a name="create-the-vm"></a>Vytvořte virtuální počítač.
+## <a name="create-the-vm"></a>Vytvoření virtuálního počítače
 
 Vytvořte virtuální počítač z verze image, kterou vytvořila služba Azure image Builder.
 

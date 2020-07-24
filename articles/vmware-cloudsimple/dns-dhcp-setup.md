@@ -8,17 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ef1266b783034cf18dc2b3ea4be5ebc01bc12c70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7531a22d5b0f44fdaae837a75d17ea18852acf0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024683"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077294"
 ---
 # <a name="set-up-dns-and-dhcp-applications-and-workloads-in-your-cloudsimple-private-cloud"></a>Nastavení aplikací a úloh DNS a DHCP v privátním cloudu CloudSimple
 
 Aplikace a úlohy běžící v prostředí privátního cloudu vyžadují překlad IP adres a služby DHCP pro vyhledání a přiřazení IP adresy.  K poskytování těchto služeb se vyžaduje správná infrastruktura DHCP a DNS.  Virtuální počítač můžete nakonfigurovat tak, aby poskytoval tyto služby v prostředí vašeho privátního cloudu.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Distribuovaná skupina portů s nakonfigurovanou sítí VLAN
 * Nastavení směrování na místní nebo internetové servery DNS
@@ -32,5 +33,5 @@ Linux nabízí různé balíčky pro nastavení serverů DNS.  Tady je [Příkla
 
 Tato témata Microsoftu popisují, jak nastavit server Windows jako server DNS a jako server DHCP.
 
-* [Windows Server jako server DNS](https://docs.microsoft.com/windows-server/networking/dns/dns-top)
-* [Windows Server jako server DHCP](https://docs.microsoft.com/windows-server/networking/technologies/dhcp/dhcp-top)
+* [Windows Server jako server DNS](/windows-server/networking/dns/dns-top)
+* [Windows Server jako server DHCP](/windows-server/networking/technologies/dhcp/dhcp-top)

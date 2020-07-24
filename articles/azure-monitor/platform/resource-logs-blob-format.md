@@ -7,16 +7,17 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 001dfbc78c0027249143e933684523d47af383d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45b18352d88877a5d611f203d87da83fd0d58c6b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79096778"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077116"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-platform-logs-archived-to-a-storage-account"></a>Příprava na změnu formátu Azure Monitor protokoly platformy archivované na účet úložiště
 
 > [!WARNING]
-> Pokud odesíláte [protokoly prostředků Azure nebo metriky do účtu úložiště pomocí nastavení diagnostiky](resource-logs-collect-storage.md) nebo [protokolů aktivit v účtu úložiště pomocí profilů protokolů](resource-logs-collect-storage.md), formát dat v účtu úložiště se změní na řádky JSON od 1. listopadu 2018. Níže uvedené pokyny popisují dopad a způsob aktualizace nástrojů pro zpracování nového formátu.
+> Pokud odesíláte [protokoly prostředků Azure nebo metriky do účtu úložiště pomocí nastavení diagnostiky](./resource-logs.md#send-to-azure-storage) nebo [protokolů aktivit v účtu úložiště pomocí profilů protokolů](./resource-logs.md#send-to-azure-storage), formát dat v účtu úložiště se změní na řádky JSON od 1. listopadu 2018. Níže uvedené pokyny popisují dopad a způsob aktualizace nástrojů pro zpracování nového formátu.
 >
 
 ## <a name="what-changed"></a>Co se změnilo
@@ -28,9 +29,9 @@ Azure Monitor nabízí možnost, která umožňuje odesílat protokoly prostřed
 * Nastavení diagnostiky mezi před 1. listopadu pokračuje v generování dat v aktuálním formátu do 1. listopadu.
 * Tato změna nastala v rámci všech oblastí veřejné cloudové oblasti. Tato změna se neprojeví v Microsoft Azure provozovaných v cloudech 21Vianet, Azure Německo nebo Azure Government.
 * Tato změna má vliv na následující typy dat:
-  * [Protokoly prostředků Azure](archive-diagnostic-logs.md) ([tady najdete seznam prostředků](diagnostic-logs-schema.md))
+  * [Protokoly prostředků Azure](./resource-logs.md#send-to-azure-storage) ([tady najdete seznam prostředků](./resource-logs-schema.md))
   * [Metriky prostředků Azure, které se exportují pomocí nastavení diagnostiky](diagnostic-settings.md)
-  * [Data protokolu aktivit Azure, která se exportují pomocí profilů protokolů](activity-log-collect.md)
+  * [Data protokolu aktivit Azure, která se exportují pomocí profilů protokolů](./activity-log.md)
 * Tato změna nemá vliv na:
   * Protokoly toku sítě
   * Protokoly služby Azure nejsou k dispozici prostřednictvím Azure Monitor zatím (například protokoly Azure App Service prostředků, protokoly analýzy úložiště)
@@ -122,7 +123,7 @@ Nový formát používá [řádky JSON](http://jsonlines.org/), kde každá udá
 {"time": "2016-01-05T01:33:56.5264523Z","resourceId": "/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSOGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT","operationName": "VaultGet","operationVersion": "2015-06-01","category": "AuditEvent","resultType": "Success","resultSignature": "OK","resultDescription": "","durationMs": "83","callerIpAddress": "104.40.82.76","correlationId": "","identity": {"claim": {"http://schemas.microsoft.com/identity/claims/objectidentifier": "d9da5048-2737-4770-bd64-XXXXXXXXXXXX","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "live.com#username@outlook.com","appid": "1950a258-227b-4e31-a9cf-XXXXXXXXXXXX"}},"properties": {"clientInfo": "azure-resource-manager/2.0","requestUri": "https://control-prod-wus.vaultcore.azure.net/subscriptions/361da5d4-a47a-4c79-afdd-XXXXXXXXXXXX/resourcegroups/contosoresourcegroup/providers/Microsoft.KeyVault/vaults/contosokeyvault?api-version=2015-06-01","id": "https://contosokeyvault.vault.azure.net/","httpStatusCode": 200}}
 ```
 
-Tento nový formát umožňuje Azure Monitor vkládat soubory protokolu pomocí [doplňovacích objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs), které jsou efektivnější pro nepřetržité připojení nových dat událostí.
+Tento nový formát umožňuje Azure Monitor vkládat soubory protokolu pomocí [doplňovacích objektů BLOB](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs), které jsou efektivnější pro nepřetržité připojení nových dat událostí.
 
 ## <a name="how-to-update"></a>Postup aktualizace
 
@@ -132,6 +133,5 @@ Vlastní nástroje by se měly aktualizovat tak, aby zpracovávala jak aktuáln�
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si o [archivaci protokolů prostředků prostředků do účtu úložiště](./../../azure-monitor/platform/archive-diagnostic-logs.md) .
-* Další informace o [archivaci dat protokolu aktivit do účtu úložiště](./../../azure-monitor/platform/archive-activity-log.md)
-
+* Přečtěte si o [archivaci protokolů prostředků prostředků do účtu úložiště](./resource-logs.md#send-to-azure-storage) .
+* Další informace o [archivaci dat protokolu aktivit do účtu úložiště](./activity-log.md#legacy-collection-methods)

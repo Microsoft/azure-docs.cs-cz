@@ -1,5 +1,5 @@
 ---
-title: Optimalizace transakcí pro fond SQL
+title: Optimalizujte transakce pro fond SQL.
 description: Naučte se optimalizovat výkon transakčního kódu ve fondu SQL (datový sklad) a současně minimalizovat riziko pro dlouhé vrácení zpět.
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 0c55cc6e0fc15b663667a5131e2dd333106418cd
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ef87d5da2c2d56a4fdc3873410bb5a6e5c711d01
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957058"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075716"
 ---
 # <a name="optimizing-transactions-in-sql-pool"></a>Optimalizace transakcí ve fondu SQL
 
@@ -68,7 +68,7 @@ CTAS a vložit... VYBRAT jsou operace hromadného načtení. Obě jsou však ovl
 
 | Primární index | Scénář načtení | Režim protokolování |
 | --- | --- | --- |
-| Halda |Všechny |**Minimální** |
+| Halda |Libovolný |**Minimální** |
 | Clusterovaný index |Prázdná cílová tabulka |**Minimální** |
 | Clusterovaný index |Načtené řádky se nepřesahují s existujícími stránkami v cíli. |**Minimální** |
 | Clusterovaný index |Načtené řádky se překrývají s existujícími stránkami v cíli. |Do bloku |

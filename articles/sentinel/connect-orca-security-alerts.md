@@ -1,5 +1,5 @@
 ---
-title: Připojit výstrahy Orca k Azure Sentinel | Microsoft Docs
+title: Připojit výstrahy zabezpečení Orca do Azure Sentinel | Microsoft Docs
 description: Naučte se připojit data výstrah zabezpečení Orca k Azure Sentinel, zobrazit řídicí panely, vytvořit vlastní výstrahy a vylepšit šetření.
 services: sentinel
 documentationcenter: na
@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 1f2f67281079142f0c4fe4985738dc48332a107d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 735f4b447d7258a9b444f3b75a6537dec20b1307
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531299"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076269"
 ---
-# <a name="connect-your-orca-alerts-to-azure-sentinel"></a>Připojte svoje výstrahy Orca k Azure Sentinel 
+# <a name="connect-your-orca-security-alerts-to-azure-sentinel"></a>Připojte výstrahy zabezpečení Orca k Azure Sentinel 
+
+> [!IMPORTANT]
+> Konektor zabezpečení pro výstrahy zabezpečení nástroje Orca v Azure Sentinel je aktuálně ve verzi Public Preview.
+> Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Pomocí nástroje Orca Security Alerts Connector můžete snadno přenést výstrahy řešení zabezpečení [Orca](https://orca.security/) do Azure Sentinel, abyste je mohli zobrazit v sešitech, používat je k vytváření vlastních výstrah a začlenit je ke zlepšení šetření. Integrace mezi nástroji Orca Security Alerts a Azure Sentinel využívá REST API.
 

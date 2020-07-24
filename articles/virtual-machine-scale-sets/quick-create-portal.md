@@ -9,11 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 3a607f03bf238b1b05a91c772a7ac77a79574515
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 33f7f407c1df45131b0ebb5b14e8fcad2626bffd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027218"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077545"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Rychlý start: Vytvoření škálovací sady virtuálních počítačů na webu Azure Portal
 
@@ -36,15 +37,16 @@ Nejdřív vytvořte pomocí portálu veřejné Standard Load Balancer. Název a 
 
     | Nastavení                 | Hodnota   |
     | ---| ---|
-    | Předplatné  | Vyberte své předplatné.    |    
+    | Předplatné  | Vyberte předplatné.    |    
     | Skupina prostředků | Vyberte **vytvořit nový** a do textového pole zadejte *myVMSSResourceGroup* .|
-    | Name           | *myLoadBalancer*         |
+    | Název           | *myLoadBalancer*         |
     | Oblast         | Vyberte **USA – východ**.       |
-    | Typ          | Vyberte možnost **veřejné**.       |
-    | SKU           | Vyberte **Standard**.       |
+    | Typ          | Vyberte **Veřejný**.       |
+    | Skladová položka           | Vyberte **Standard**.       |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. |
-    | Název veřejné IP adresy  | *MyPip*   |
-    | Přiřazení| Static |
+    | Název veřejné IP adresy  | *myPip*   |
+    | Přiřazení| Statická |
+    | Zóna dostupnosti | Vyberte **zóna – redundantní**. |
 
 1. Až budete hotovi, vyberte **zkontrolovat + vytvořit** . 
 1. Jakmile ověření projde, vyberte **vytvořit**. 
@@ -54,11 +56,11 @@ Nejdřív vytvořte pomocí portálu veřejné Standard Load Balancer. Název a 
 ## <a name="create-virtual-machine-scale-set"></a>Vytvoření škálovací sady virtuálních počítačů
 Škálovací sadu můžete nasadit s použitím image Windows Serveru nebo image Linuxu, jako je například RHEL, CentOS, Ubuntu nebo SLES.
 
-1. Do vyhledávacího pole zadejte **Scale set** . Ve výsledcích klikněte v části **Marketplace**na možnost **Virtual Machine Scale Sets**. Otevře se stránka **vytvořit sadu škálování virtuálního počítače** . 
+1. Do vyhledávacího pole zadejte **Scale set** . Ve výsledcích klikněte v části **Marketplace**na možnost **Virtual Machine Scale Sets**. Na stránce **sady škálování virtuálních počítačů** vyberte **vytvořit** a otevře se stránka **vytvořit sadu škálování virtuálního počítače** . 
 1. Přesvědčte se, že je na kartě **Základy** v části **Podrobnosti o projektu** vybrané správné předplatné a pak ve Skupině prostředků vyberte **Vytvořit nový**. Jako název zadejte *myVMSSResourceGroup* a pak vyberte **OK** . 
 1. Jako název sady škálování zadejte *myScaleSet* .
 1. V **oblasti oblast**vyberte oblast, která je blízko vaší oblasti.
-1. Ponechte výchozí hodnotu **škálovací sady virtuálních počítačů** pro nástroj **Orchestrator**.
+1. Ponechte výchozí hodnotu **škálovací sady virtuálních počítačů** pro **režim orchestrace**.
 1. Vyberte obrázek Marketplace pro **Obrázek**. V tomto příkladu jsme zvolili *Ubuntu Server 18,04 LTS*.
 1. Zadejte požadované uživatelské jméno a vyberte upřednostňovaný typ ověřování.
    - **Heslo** musí mít alespoň 12 znaků a musí splňovat tři ze čtyř bezpečnostních požadavků: jedno malé písmeno, jedno velké písmeno, jedna číslice a jeden speciální znak. Další informace najdete v [požadavcích na uživatelské jméno a heslo](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm).

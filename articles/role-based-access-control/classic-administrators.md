@@ -14,11 +14,12 @@ ms.workload: identity
 ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 298ec15700537f2368ef33ead267e85f5f22bfd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76b41e25a95f23b66edfbd4715037074537221f9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791788"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076435"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Správci předplatného Azure Classic
 
@@ -29,7 +30,7 @@ Tento článek popisuje, jak přidat nebo změnit role spolusprávce a správců
 ## <a name="add-a-co-administrator"></a>Přidání spolusprávce
 
 > [!TIP]
-> Spolusprávce musíte přidat jenom v případě, že uživatel potřebuje spravovat nasazení Azure Classic pomocí [modulu Azure Service Management PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure). Pokud uživatel používá ke správě klasických prostředků jenom Azure Portal, nebudete muset pro tohoto uživatele přidat klasického správce.
+> Spolusprávce musíte přidat jenom v případě, že uživatel potřebuje spravovat nasazení Azure Classic pomocí [modulu Azure Service Management PowerShell](/powershell/module/servicemanagement/azure.service). Pokud uživatel používá ke správě klasických prostředků jenom Azure Portal, nebudete muset pro tohoto uživatele přidat klasického správce.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce služby nebo spolusprávce.
 
@@ -37,7 +38,7 @@ Tento článek popisuje, jak přidat nebo změnit role spolusprávce a správců
 
     Spolusprávci lze přiřadit pouze v oboru předplatného.
 
-1. Klikněte na **Řízení přístupu (IAM)** .
+1. Klikněte na **Řízení přístupu (IAM)**.
 
 1. Klikněte na kartu **Classic Administrators** .
 
@@ -82,7 +83,7 @@ Informace, které porovnávají uživatele členů a uživatele typu Host, najde
 
 1. Otevřete [Předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) a vyberte předplatné.
 
-1. Klikněte na **Řízení přístupu (IAM)** .
+1. Klikněte na **Řízení přístupu (IAM)**.
 
 1. Klikněte na kartu **Classic Administrators** .
 
@@ -137,7 +138,7 @@ Správce účtu je uživatel, který původně zaregistroval předplatné Azure,
 
 Pomocí těchto kroků zobrazíte správce účtu.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
 
 1. Otevřete [Předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) a vyberte předplatné.
 

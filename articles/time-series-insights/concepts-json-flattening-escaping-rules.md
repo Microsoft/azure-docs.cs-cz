@@ -1,6 +1,6 @@
 ---
-title: Pravidla sloučení a uvozovacích znaků JSON – Azure Time Series Insights | Microsoft Docs
-description: Seznamte se se sloučením JSON, uvozovacími znaky a zpracováním pole v Azure Time Series Insights.
+title: Pravidla sloučení a uvozovacích znaků JSON – Azure Time Series Insights Gen2 | Microsoft Docs
+description: Seznamte se se sloučením JSON, uvozovacími znaky a zpracováním pole v Azure Time Series Insights Gen2.
 author: lyrana
 ms.author: lyhughes
 manager: deepakpalled
@@ -8,19 +8,18 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/04/2020
-ms.custom: seodec18
-ms.openlocfilehash: 45eeebcc092513a0344acaff52c31c2cebfb377c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 07/07/2020
+ms.openlocfilehash: d33b9b4cb50c1be7b316aad2a736bfd6fb074833
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86049786"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075684"
 ---
 # <a name="ingestion-rules"></a>Pravidla pro přijímání
 ### <a name="json-flattening-escaping-and-array-handling"></a>Sloučení JSON, uvozovací znaky a zpracování pole
 
-Vaše Azure Time Series Insights prostředí bude dynamicky vytvářet sloupce teplého a studeného úložiště, a to podle konkrétní sady zásad vytváření názvů. Když je událost ingestovaná, použije se pro datovou část a názvy vlastností JSON sada pravidel. Mezi ně patří uvozovací znaky určitých speciálních znaků a sloučení vnořených objektů JSON. Je důležité znát tato pravidla, abyste porozuměli tomu, jak bude mít tvar JSON vliv na to, jak se vaše události ukládají a dotazují. Úplný seznam pravidel najdete v následující tabulce. Příklady & B také ukazují, jak je možné efektivně dávkovat více časových řad v poli.
+Prostředí Azure Time Series Insights Gen2 bude dynamicky vytvářet sloupce teplého a studeného úložiště, a to podle konkrétní sady zásad vytváření názvů. Když je událost ingestovaná, použije se pro datovou část a názvy vlastností JSON sada pravidel. Mezi ně patří uvozovací znaky určitých speciálních znaků a sloučení vnořených objektů JSON. Je důležité znát tato pravidla, abyste porozuměli tomu, jak bude mít tvar JSON vliv na to, jak se vaše události ukládají a dotazují. Úplný seznam pravidel najdete v následující tabulce. Příklady & B také ukazují, jak je možné efektivně dávkovat více časových řad v poli.
 
 > [!IMPORTANT]
 >
@@ -28,8 +27,8 @@ Vaše Azure Time Series Insights prostředí bude dynamicky vytvářet sloupce t
 
 | Pravidlo | Ukázkový kód JSON |Název sloupce v úložišti |
 |---|---|---|
-| Datový typ TSI je připojen ke konci názvu sloupce jako znak "_ \<dataType\> ". | ```"type": "Accumulated Heat"``` | type_string |
-| [Vlastnost časového razítka](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) zdroje události bude uložena v části TSI jako "timestamp" v úložišti a hodnota uložená v UTC. Vlastnost časového razítka zdroje událostí můžete přizpůsobit tak, aby splňovala požadavky vašeho řešení, ale název sloupce v teplém a studeném úložišti je "timestamp". Další vlastnosti formátu JSON, které nejsou časové razítko zdroje událostí, budou uloženy s názvem "_datetime" v názvu sloupce, jak je uvedeno v pravidle výše.  | ```"ts": "2020-03-19 14:40:38.318"``` | časové razítko |
+| Azure Time Series Insights datový typ Gen2 se přidá na konec názvu sloupce jako "_ \<dataType\> ". | ```"type": "Accumulated Heat"``` | type_string |
+| [Vlastnost časového razítka](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) zdroje události bude uložena v Azure Time Series Insights Gen2 jako "timestamp" v úložišti a hodnota uložená v UTC. Vlastnost časového razítka zdroje událostí můžete přizpůsobit tak, aby splňovala požadavky vašeho řešení, ale název sloupce v teplém a studeném úložišti je "timestamp". Další vlastnosti formátu JSON, které nejsou časové razítko zdroje událostí, budou uloženy s názvem "_datetime" v názvu sloupce, jak je uvedeno v pravidle výše.  | ```"ts": "2020-03-19 14:40:38.318"``` | časové razítko |
 | Názvy vlastností JSON, které obsahují speciální znaky. [\ a ' jsou uvozeny pomocí znaků [a].  |  ```"id.wasp": "6A3090FD337DE6B"``` | [' ID. WASP '] _string |
 | V rámci [a] Existují další uvozovací znaky jednoduchých uvozovek a zpětná lomítka. Jedna uvozovka se zapíše jako \ a zpětné lomítko se zapíše jako\\\ | ```"Foo's Law Value": "17.139999389648"``` | [' \' Hodnota právního "foo '] _double |
 | Vnořené objekty JSON jsou shrnuty s tečkou jako s oddělovačem. Je podporováno vnořování až na 10 úrovní. |  ```"series": {"value" : 316 }``` | Series. value_long |
@@ -186,4 +185,4 @@ Výše uvedená konfigurace a datová část vytvoří tři sloupce a jednu udá
 
 ## <a name="next-steps"></a>Další kroky
 
-* Princip [omezení propustnosti](concepts-streaming-throughput-limitations.md) vašeho prostředí
+* Princip [omezení propustnosti](./concepts-streaming-ingress-throughput-limits.md) vašeho prostředí

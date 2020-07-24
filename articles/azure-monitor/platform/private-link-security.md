@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: 14ecd1a35f8aae8365b7c7dc458712acdb894e62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6045fa475b3bb112afee9ceacd8d6b136087feab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85602580"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077199"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Použití privátního odkazu Azure k bezpečnému připojení sítí k Azure Monitor
 
@@ -70,6 +70,23 @@ Pokud se například vaše interní virtuální sítě VNet1 a VNet2 by měly p�
 
 ![Diagram topologie AMPLS B](./media/private-link-security/ampls-topology-b-1.png)
 
+### <a name="consider-limits"></a>Zvážit omezení
+
+Při plánování nastavení privátního propojení byste měli zvážit několik omezení:
+
+* Virtuální síť se může připojit jen k 1 AMPLS objektu. To znamená, že objekt AMPLS musí poskytovat přístup ke všem prostředkům Azure Monitor, ke kterým má virtuální síť přístup.
+* Prostředek Azure Monitor (pracovní prostor nebo Application Insights komponenta) se může připojit k 5 AMPLSs.
+* Objekt AMPLS se může připojit k 20 Azure Monitor prostředkům nejvíce.
+* Objekt AMPLS se může připojit k 10 soukromým koncovým bodům.
+
+V následující topologii:
+* Každá virtuální síť se připojuje k AMPLS objektu, takže se nemůže připojit k ostatním AMPLSs.
+* AMPLS B se připojuje k 2 virtuální sítě: pomocí 2/10 z jeho možných připojení typu privátní koncový bod.
+* AMPLS se připojí k 2 pracovním prostorům a 1 komponentě Insight Application Insights: pomocí Azure Monitor 3/20 dostupných prostředků.
+* Pracovní prostor 2 se připojuje k AMPLS a a AMPLS B: pomocí 2/5 z jeho možných připojení AMPLS.
+
+![Diagram omezení AMPLS](./media/private-link-security/ampls-limits.png)
+
 ## <a name="example-connection"></a>Příklad připojení
 
 Začněte vytvořením prostředku oboru privátního propojení Azure Monitor.
@@ -81,7 +98,7 @@ Začněte vytvořením prostředku oboru privátního propojení Azure Monitor.
 2. Klikněte na **vytvořit**.
 3. Vyberte předplatné a skupinu prostředků.
 4. Zadejte název AMPLS. Je nejvhodnější použít název, který je jasný a jaký je účel a hranice zabezpečení, pro které se rozsah používá, aby někdo nechtěně nenarušil hranice zabezpečení sítě. Například "AppServerProdTelem".
-5. Klikněte na tlačítko **zkontrolovat + vytvořit**. 
+5. Klikněte na **Zkontrolovat a vytvořit**. 
 
    ![Vytvořit Azure Monitor obor privátních odkazů](./media/private-link-security/ampls-create-1d.png)
 
@@ -137,13 +154,13 @@ Nyní jste vytvořili nový privátní koncový bod, který je připojen k tomut
 
 ## <a name="configure-log-analytics"></a>Konfigurace Log Analytics
 
-Přejděte na web Azure Portal. Ve vašem prostředku pracovního prostoru Azure Monitor Log Analytics je položka nabídky **izolace sítě** na levé straně. Z této nabídky můžete řídit dva různé stavy. 
+Přejděte na Azure Portal. V Log Analytics prostředku pracovního prostoru je na levé straně položka nabídky **izolace sítě** . Z této nabídky můžete řídit dva různé stavy. 
 
 ![Izolace sítě LA](./media/private-link-security/ampls-log-analytics-lan-network-isolation-6.png)
 
 Nejprve můžete připojit tento prostředek Log Analytics k jakýmkoli Azure Monitorm oborům privátního propojení, ke kterým máte přístup. Klikněte na tlačítko **Přidat** a vyberte Azure monitor obor privátních odkazů.  Kliknutím na **použít** ho připojte. Na této obrazovce se zobrazí všechny připojené obory. Když se toto připojení připojuje k tomuto pracovnímu prostoru, umožní síťovému provozu v připojených virtuálních sítích. Vytvoření připojení má stejný účinek jako připojení z oboru, jako jsme provedli [připojení Azure Monitorch prostředků](#connect-azure-monitor-resources).  
 
-Za druhé můžete řídit, jak se tento prostředek dá oslovit mimo rozsahy privátních odkazů uvedených výše. Pokud nastavíte možnost **povolí přístup k veřejné síti pro** ingestování na **ne**, počítače mimo připojené obory nemůžou do tohoto pracovního prostoru nahrávat data. Pokud nastavíte možnost **povolí přístup k veřejné síti pro dotazy** na **ne**, počítače mimo rozsah nebudou mít přístup k datům v tomto pracovním prostoru. Tato data zahrnují přístup k sešitům, řídicím panelům, klientským prostředím založeném na rozhraní API pro dotazy, přehledům v Azure Portal a dalším. Prostředí běžící mimo Azure Portal, které spotřebovává Log Analytics data, musí být spuštěná také v rámci virtuální sítě propojené s privátní sítí.
+Za druhé můžete řídit, jak se tento prostředek dá oslovit mimo rozsahy privátních odkazů uvedených výše. Pokud nastavíte možnost **povolí přístup k veřejné síti pro** ingestování na **ne**, počítače mimo připojené obory nemůžou do tohoto pracovního prostoru nahrávat data. Pokud nastavíte možnost **povolí přístup k veřejné síti pro dotazy** na **ne**, počítače mimo rozsah nebudou mít přístup k datům v tomto pracovním prostoru. Tato data zahrnují přístup k sešitům, řídicím panelům, klientským prostředím založeném na rozhraní API pro dotazy, přehledům v Azure Portal a dalším. Prostředí spuštěné mimo Azure Portal a dotaz Log Analytics data musí být spuštěná také v rámci virtuální sítě s privátním propojením.
 
 Přístup tímto způsobem se omezuje jenom na data v pracovním prostoru. Změny konfigurace, včetně zapnutí nebo vypnutí těchto nastavení přístupu, se spravují pomocí Azure Resource Manager. Omezte přístup k Správce prostředků pomocí příslušných rolí, oprávnění, síťových ovládacích prvků a auditování. Další informace najdete v tématu [Azure monitor role, oprávnění a zabezpečení](roles-permissions-security.md).
 
@@ -152,7 +169,7 @@ Přístup tímto způsobem se omezuje jenom na data v pracovním prostoru. Změn
 
 ## <a name="configure-application-insights"></a>Konfigurace Application Insights
 
-Přejděte na web Azure Portal. Ve složce Azure Monitor Application Insights prostředek součásti je **izolace sítě** položky nabídky na levé straně. Z této nabídky můžete řídit dva různé stavy.
+Přejděte na Azure Portal. Ve složce Azure Monitor Application Insights prostředek součásti je **izolace sítě** položky nabídky na levé straně. Z této nabídky můžete řídit dva různé stavy.
 
 ![Izolace sítě AI](./media/private-link-security/ampls-application-insights-lan-network-isolation-6.png)
 
@@ -162,26 +179,26 @@ Za druhé můžete řídit, jak se tento prostředek dá oslovit mimo rozsahy pr
 
 Všimněte si, že prostředí pro využívání mimo portál musí také běžet v rámci veřejné virtuální sítě, která obsahuje monitorované úlohy. 
 
-K privátnímu odkazu budete muset přidat prostředky hostující monitorovaná zatížení. Zde najdete [dokumentaci](https://docs.microsoft.com/azure/app-service/networking/private-endpoint) , jak to udělat App Services.
+K privátnímu odkazu budete muset přidat prostředky hostující monitorovaná zatížení. Zde najdete [dokumentaci](../../app-service/networking/private-endpoint.md) , jak to udělat App Services.
 
 Přístup tímto způsobem se omezuje jenom na data v prostředku Application Insights. Změny konfigurace, včetně zapnutí nebo vypnutí těchto nastavení přístupu, se spravují pomocí Azure Resource Manager. Místo toho omezte přístup k Správce prostředků pomocí příslušných rolí, oprávnění, síťových ovládacích prvků a auditování. Další informace najdete v tématu [Azure monitor role, oprávnění a zabezpečení](roles-permissions-security.md).
 
 > [!NOTE]
 > Aby bylo možné plně zabezpečit Application Insights na základě pracovních prostorů, musíte uzamknout přístup k prostředkům Application Insights a také k příslušnému pracovnímu prostoru Log Analytics.
 >
-> Diagnostika na úrovni kódu (Profiler/ladicí program) vyžaduje poskytnutí vlastního účtu úložiště pro podporu privátního odkazu. Zde najdete [dokumentaci](https://docs.microsoft.com/azure/azure-monitor/app/profiler-bring-your-own-storage) , jak to provést.
+> Diagnostika na úrovni kódu (Profiler/ladicí program) vyžaduje poskytnutí vlastního účtu úložiště pro podporu privátního odkazu. Zde najdete [dokumentaci](../app/profiler-bring-your-own-storage.md) , jak to provést.
 
 ## <a name="use-apis-and-command-line"></a>Použití rozhraní API a příkazového řádku
 
 Proces popsaný výše můžete automatizovat pomocí Azure Resource Manager šablon a rozhraní příkazového řádku.
 
-Chcete-li vytvořit a spravovat obory privátních propojení, použijte příkaz [AZ monitor Private-Link-Scope](https://docs.microsoft.com/cli/azure/monitor/private-link-scope?view=azure-cli-latest). Pomocí tohoto příkazu můžete vytvořit obory, přidružit Log Analytics pracovní prostory a Application Insights komponenty a přidávat/odebírat a schvalovat soukromé koncové body.
+Chcete-li vytvořit a spravovat obory privátních propojení, použijte příkaz [AZ monitor Private-Link-Scope](/cli/azure/monitor/private-link-scope?view=azure-cli-latest). Pomocí tohoto příkazu můžete vytvořit obory, přidružit Log Analytics pracovní prostory a Application Insights komponenty a přidávat/odebírat a schvalovat soukromé koncové body.
 
-Ke správě přístupu k síti použijte příznaky `[--ingestion-access {Disabled, Enabled}]` a `[--query-access {Disabled, Enabled}]` v [Log Analytics pracovní prostory](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest) nebo [Application Insights součásti](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest).
+Ke správě přístupu k síti použijte příznaky `[--ingestion-access {Disabled, Enabled}]` a `[--query-access {Disabled, Enabled}]` v [Log Analytics pracovní prostory](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest) nebo [Application Insights součásti](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest).
 
 ## <a name="collect-custom-logs-over-private-link"></a>Shromažďovat vlastní protokoly přes privátní propojení
 
-Účty úložiště se používají v procesu přijímání vlastních protokolů. Ve výchozím nastavení se používají účty úložiště spravované službou. Pokud ale chcete ingestovat vlastní protokoly na soukromých odkazech, musíte použít vlastní účty úložiště a přidružit je k Log Analyticsm pracovním prostorům. Další informace o tom, jak tyto účty nastavit pomocí [příkazového řádku](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage?view=azure-cli-latest), najdete v tématu.
+Účty úložiště se používají v procesu přijímání vlastních protokolů. Ve výchozím nastavení se používají účty úložiště spravované službou. Pokud ale chcete ingestovat vlastní protokoly na soukromých odkazech, musíte použít vlastní účty úložiště a přidružit je k Log Analyticsm pracovním prostorům. Další informace o tom, jak tyto účty nastavit pomocí [příkazového řádku](/cli/azure/monitor/log-analytics/workspace/linked-storage?view=azure-cli-latest), najdete v tématu.
 
 Další informace o zavedení vlastního účtu úložiště najdete v tématu [účty úložiště vlastněné zákazníkem pro](private-storage.md) ingestování protokolů.
 
@@ -189,7 +206,7 @@ Další informace o zavedení vlastního účtu úložiště najdete v tématu [
 
 ### <a name="agents"></a>Agenti
 
-Nejnovější verze agentů systému Windows a Linux musí být používány v privátních sítích, aby bylo možné přijímat zabezpečené ingestování telemetrie do Log Analytics pracovních prostorů. Starší verze nemůžou nahrávat data monitorování v privátní síti.
+V privátních sítích se musí používat nejnovější verze agentů Windows a Linux, aby bylo možné zajistit zabezpečenou příjem dat pro Log Analytics pracovních prostorů. Starší verze nemůžou nahrávat data monitorování v privátní síti.
 
 **Agent Log Analytics pro Windows**
 
@@ -204,13 +221,13 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -X
 $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace key>
 ```
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 
 Chcete-li použít Azure Monitor portálu, jako je Application Insights a Log Analytics, je nutné, aby byla rozšíření Azure Portal a Azure Monitor dostupná v privátních sítích. Do brány firewall přidejte [značky služby](../../firewall/service-tags.md) **azureactivedirectory selhala**, **AzureResourceManager**, **AzureFrontDoor. FirstParty**a **AzureFrontDoor. front-endu** .
 
 ### <a name="programmatic-access"></a>Programový přístup
 
-Pokud chcete použít REST API, [CLI](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest) nebo PowerShell s Azure monitor v privátních sítích, přidejte do brány firewall [značky služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)  **azureactivedirectory selhala** a **AzureResourceManager** .
+Pokud chcete použít REST API, [CLI](/cli/azure/monitor?view=azure-cli-latest) nebo PowerShell s Azure monitor v privátních sítích, přidejte do brány firewall [značky služby](../../virtual-network/service-tags-overview.md)  **azureactivedirectory selhala** a **AzureResourceManager** .
 
 Přidání těchto značek vám umožní provádět akce, jako je například dotazování dat protokolu, vytváření a Správa Log Analyticsch pracovních prostorů a komponent AI.
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: 48a5c192051d8e715deb7e354827ff4cd4152bcd
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 5be217cd2afbb95c4c02a958c1299db599c349d0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077877"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074783"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Vytvoření aplikace .NET HDInsight bez interaktivního ověřování
 
@@ -25,7 +25,7 @@ Z aplikace bez interaktivního rozhraní .NET potřebujete:
 * ID klienta aplikace Azure Active Directory (Azure AD). Viz [Vytvoření aplikace Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) a [získání ID aplikace](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
 * Tajný klíč aplikace služby Azure AD. Viz [získat klíč pro ověření aplikace](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Cluster An HDInsight. Podívejte se na [Úvodní kurz](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
@@ -35,7 +35,7 @@ Přiřaďte aplikaci Azure AD [roli](../role-based-access-control/built-in-roles
 
 **Přidání role vlastníka do aplikace Azure AD**
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
 1. Přejděte do skupiny prostředků, která obsahuje cluster HDInsight, na kterém spustíte dotaz na podregistr později v tomto článku. Pokud máte velký počet skupin prostředků, můžete použít filtr a vyhledat ten, který chcete.
 1. V nabídce skupina prostředků vyberte **řízení přístupu (IAM)**.
 1. Kliknutím na kartu **přiřazení rolí** zobrazíte aktuální přiřazení rolí.
@@ -123,4 +123,4 @@ Přiřaďte aplikaci Azure AD [roli](../role-based-access-control/built-in-roles
 
 * [Vytvořte Azure Active Directory aplikace a instanční objekt v Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md).
 * Přečtěte si, jak [ověřit instanční objekt pomocí služby Azure Resource Manager](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
-* Přečtěte si o [Access Control na základě rolí Azure (RBAC)](../role-based-access-control/role-assignments-portal.md).
+* Přečtěte si o [řízení přístupu na základě role v Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md).

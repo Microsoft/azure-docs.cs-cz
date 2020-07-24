@@ -5,15 +5,15 @@ services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 07/10/2020
+ms.date: 07/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9b1bdfc326ff217e68785d823b4af046af3241b7
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 9f7a3b51afa11562123a280da8634e100a22e6b6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225103"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075616"
 ---
 # <a name="safe-url-list"></a>Seznam bezpečných adres URL
 
@@ -33,6 +33,7 @@ Virtuální počítače Azure, které vytvoříte pro virtuální počítače s 
 |catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
 |kms.core.windows.net|1688|Aktivace Windows|Internet|
 |wvdportalstorageblob.blob.core.windows.net|443|Podpora Azure Portal|AzureCloud|
+| 169.254.169.254 | 80 | [Koncový bod služby metadat instance Azure](../virtual-machines/windows/instance-metadata-service.md) | – |
 
 >[!IMPORTANT]
 >Virtuální počítač s Windows teď podporuje značku plně kvalifikovaného názvu domény. Další informace najdete v tématu [použití Azure firewall k ochraně nasazení virtuálních ploch](../firewall/protect-windows-virtual-desktop.md)v systému Windows.
@@ -59,8 +60,8 @@ Následující tabulka uvádí volitelné adresy URL, ke kterým můžou mít vi
 >Pro adresy URL, které se týkají provozu služby, je nutné použít zástupný znak (*). Pokud nechcete používat * pro přenosy související s agentem, vyhledáte adresy URL bez zástupných znaků:
 >
 >1. Zaregistrujte virtuální počítače do fondu hostitelů virtuálních počítačů s Windows.
->2. Otevřete **Prohlížeč událostí**a potom v **systému Windows protokoly**  >  **aplikace**  >  **WVD-agent** a vyhledejte událost s ID 3702.
->3. Seznam povolených adres URL, které najdete v části ID události 3702. Adresy URL v rámci události s ID 3702 jsou specifické pro oblast. Pro každou oblast, ve které chcete nasadit virtuální počítače, budete muset zopakovat proces odblokování s příslušnými adresami URL.
+>2. Otevřete **Prohlížeč událostí**a potom v **systému Windows protokoly**  >  **aplikace**  >  **WVD-agent** a vyhledejte událost s ID 3701.
+>3. Seznam povolených adres URL, které najdete v části ID události 3701. Adresy URL v rámci události s ID 3701 jsou specifické pro oblast. Pro každou oblast, ve které chcete nasadit virtuální počítače, budete muset zopakovat proces odblokování s příslušnými adresami URL.
 
 ## <a name="remote-desktop-clients"></a>Klienti služby Vzdálená plocha
 

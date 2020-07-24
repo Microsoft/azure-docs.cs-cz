@@ -1,5 +1,5 @@
 ---
-title: Používání transakcí
+title: Použití transakcí
 description: Tipy pro implementaci transakcí ve fondu SQL (datový sklad) pro vývoj řešení
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 07c507eb139c4c4d339db1ede46956cb09a61dcf
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d87da234e675059ba2c170f4322d0ba53965dc89
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962913"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075703"
 ---
 # <a name="using-transactions-in-sql-pool"></a>Používání transakcí ve fondu SQL
 

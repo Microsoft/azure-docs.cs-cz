@@ -9,12 +9,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
-ms.openlocfilehash: 58f41742519effc3959a3868345ed77c64db6341
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8f8a333c880850b239fbaba1ea405b94a1460e8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85508499"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076740"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Správa klíčů účtu úložiště pomocí Key Vault a Azure CLI
 
@@ -46,9 +46,9 @@ Key Vault je aplikace Microsoftu, která je předem registrovaná ve všech klie
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Veřejný Azure | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
-| Jiné  | Všechny | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Jiné  | Libovolný | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li dokončit tuto příručku, je třeba nejprve provést následující akce:
 
@@ -90,7 +90,7 @@ az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --storage
 Všimněte si, že oprávnění k účtům úložiště nejsou k dispozici na stránce zásady přístupu na účtu úložiště v Azure Portal.
 ### <a name="create-a-key-vault-managed-storage-account"></a>Vytvoření spravovaného účtu úložiště Key Vault
 
- Pomocí příkazu Azure CLI [AZ klíčů Storage](/cli/azure/keyvault/storage?view=azure-cli-latest#az-keyvault-storage-add) vytvořte účet spravovaného úložiště Key Vault. Nastavte dobu regenerace 90 dní. Po 90 dnech Key Vault znovu vygeneruje `key1` a zahodí aktivní klíč z `key2` na `key1` . `key1`je pak označen jako aktivní klíč. Zadejte příkaz pro následující hodnoty parametrů:
+ Pomocí příkazu Azure CLI [AZ klíčů Storage](/cli/azure/keyvault/storage?view=azure-cli-latest#az-keyvault-storage-add) vytvořte účet spravovaného úložiště Key Vault. Nastavte dobu regenerace 90 dní. Když je čas na otočení, Trezor klíčů znovu vygeneruje klíč, který není aktivní, a pak nastaví nově vytvořený klíč jako aktivní. Pouze jeden z klíčů slouží k vystavování tokenů SAS v jednom okamžiku, jedná se o aktivní klíč. Zadejte příkaz pro následující hodnoty parametrů:
 
 - `--vault-name`: Předejte název vašeho trezoru klíčů. Název vašeho trezoru klíčů zjistíte pomocí příkazu Azure CLI AZ Key [trezor list](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-list) .
 - `-n`: Předejte název svého účtu úložiště. Název svého účtu úložiště zjistíte pomocí příkazu Azure CLI [AZ Storage Account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) .

@@ -5,12 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: bee705e33267a765c1fb5300c0bfe2d04ff2015d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: f473a4621c6b2214717b5036eae5abeaa564fb72
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85099642"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076619"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>Použití koncových bodů a pravidel služby Virtual Network pro Azure Database for PostgreSQL-Single server
 
@@ -24,8 +25,9 @@ Aby bylo možné vytvořit pravidlo virtuální sítě, musí nejprve existovat 
 > Tato funkce je dostupná ve všech oblastech veřejného cloudu Azure, kde Azure Database for PostgreSQL nasazené pro Pro obecné účely a paměťově optimalizované servery.
 > V případě partnerského vztahu virtuálních sítí platí, že pokud přenos prochází přes společnou bránu virtuální sítě s koncovými body služby a měl by se přesměrovat na partnera, vytvořte prosím pravidlo seznamu ACL/virtuální sítě, které povolí službě Azure Virtual Machines ve virtuální síti brány pro přístup k serveru Azure Database for PostgreSQL.
 
-<a name="anch-terminology-and-description-82f" />
+Můžete také zvážit použití [privátního odkazu](concepts-data-access-and-security-private-link.md) pro připojení. Privátní odkaz poskytuje ve vaší virtuální síti privátní IP adresu pro server Azure Database for PostgreSQL.
 
+<a name="anch-terminology-and-description-82f"></a>
 ## <a name="terminology-and-description"></a>Terminologie a popis
 
 **Virtuální síť:** Můžete mít virtuální sítě přidružené k vašemu předplatnému Azure.
@@ -37,12 +39,6 @@ Aby bylo možné vytvořit pravidlo virtuální sítě, musí nejprve existovat 
 **Pravidlo virtuální sítě:** Pravidlo virtuální sítě pro server Azure Database for PostgreSQL je podsíť, která je uvedená v seznamu řízení přístupu (ACL) vašeho serveru Azure Database for PostgreSQL. Aby byl v seznamu ACL pro váš Azure Database for PostgreSQL Server, podsíť musí obsahovat název typu **Microsoft. SQL** .
 
 Pravidlo virtuální sítě přikáže serveru Azure Database for PostgreSQL, aby přijímal komunikaci z každého uzlu, který je v podsíti.
-
-
-
-
-
-
 
 <a name="anch-details-about-vnet-rules-38q"></a>
 
@@ -62,11 +58,6 @@ Možnost IP můžete vyřazením získat *statickou* IP adresu pro virtuální p
 
 Přístup ke statickým IP adresám se ale může obtížně spravovat a při velkém rozsahu je nákladný. Pravidla virtuální sítě je snazší vytvářet a spravovat.
 
-### <a name="c-cannot-yet-have-azure-database-for-postgresql-on-a-subnet-without-defining-a-service-endpoint"></a>C. V podsíti se ještě nedá Azure Database for PostgreSQL bez definování koncového bodu služby.
-
-Pokud byl váš **Microsoft. SQL** Server uzlem v podsíti ve vaší virtuální síti, můžou všechny uzly v rámci virtuální sítě komunikovat se serverem Azure Database for PostgreSQL. V takovém případě můžou vaše virtuální počítače komunikovat s Azure Database for PostgreSQL bez nutnosti používat pravidla virtuální sítě nebo pravidla protokolu IP.
-
-Od srpna 2018 však služba Azure Database for PostgreSQL ještě nepatří mezi služby, které je možné přiřadit přímo do podsítě.
 
 <a name="anch-details-about-vnet-rules-38q"></a>
 
@@ -119,6 +110,8 @@ Pro Azure Database for PostgreSQL funkce pravidla virtuální sítě má násled
 
 - Podpora koncových bodů služby virtuální sítě je určená jenom pro Pro obecné účely a paměťově optimalizované servery.
 
+- Pokud je v podsíti povolený **Microsoft. SQL** , znamená to, že pro připojení chcete použít jenom pravidla virtuální sítě. [Nevirtuální pravidla brány firewall](concepts-firewall-rules.md) prostředků v této podsíti nebudou fungovat.
+
 - V bráně firewall se rozsahy IP adres vztahují na následující síťové položky, ale pravidla virtuální sítě ne:
     - [Virtuální privátní síť (VPN) typu Site-to-Site (S2S)][vpn-gateway-indexmd-608y]
     - Místně prostřednictvím [ExpressRoute][expressroute-indexmd-744v]
@@ -131,7 +124,7 @@ Aby bylo možné Azure Database for PostgreSQL komunikaci z okruhu, musíte vytv
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>Přidání pravidla brány firewall virtuální sítě na server bez zapnutí koncových bodů služby virtuální sítě
 
-Pouze nastavení pravidla brány firewall nezabezpečuje Server do virtuální sítě. Aby se zabezpečení projevilo, musíte taky **zapnout koncové body** služby virtuální sítě. Při zapnutí koncových bodů služby **ve**vaší virtuální síti dojde k výpadku, dokud se přechod neukončí na **zapnuto**. **Off** To platí zejména v kontextu velkých virtuální sítě. Pomocí příznaku **IgnoreMissingServiceEndpoint** můžete snížit nebo odstranit výpadky během přechodu.
+Pouze nastavení pravidla brány firewall virtuální sítě nezabezpečuje Server s virtuální sítí. Aby se zabezpečení projevilo, musíte taky **zapnout koncové body** služby virtuální sítě. Při zapnutí koncových bodů služby **ve**vaší virtuální síti dojde k výpadku, dokud se přechod neukončí na **zapnuto**. **Off** To platí zejména v kontextu velkých virtuální sítě. Pomocí příznaku **IgnoreMissingServiceEndpoint** můžete snížit nebo odstranit výpadky během přechodu.
 
 Příznak **IgnoreMissingServiceEndpoint** můžete nastavit pomocí Azure CLI nebo portálu.
 

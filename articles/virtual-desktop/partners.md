@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 06/12/2020
+ms.date: 07/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a0853266e4fda4393ba49fb740755e6b8bd03cf5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: d78de3d8e7fadc4b6760fef85fb4b850cc25111e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038051"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075772"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integrace s partnery virtuálních počítačů s Windows
 
@@ -48,7 +48,22 @@ Jako zprostředkovatel schváleného pro virtuální počítače s Windows můž
 
 10ZiG's celosvětového trhu v tenkých a nulových zařízeních koncových bodů klienta a software pro správu virtuálních ploch je exemplified podle toho, jak pracují pro zákazníky. Jeho tenký klientský hardware se dodává s Thoughtfully funkcemi a možnostmi pro zvýhodnění, které jsou navržené tak, aby zákazníci dostávali správná klientská zařízení podle svých potřeb. 10ZiG přizpůsobí svá zařízení tak, aby se vešla do zákaznických prostředí pomocí klientů se systémem Windows a Linux, které poskytují nejlepší možný výkon ve virtuálních plochách i mimo Cloud.
 
-- [Přejít na web partnera](https://www.10zig.com/).
+- [Přejít na web partnera](https://www.10zig.com/about/microsoft-wvd).
+
+## <a name="automai"></a>Automai
+
+![Logo Automai](./media/partners/automai.png)
+
+K otestování klíčových obchodních procesů v prostředí virtuálního počítače s Windows můžete použít robotickou platformu Automai, abyste mohli nasadit své nasazení do provozu.
+
+Pomocí nástroje Automai ScenarioBuilder a modulu pracovního postupu založeného na grafickém uživatelském rozhraní můžou IT týmy nahrávat reálné pracovní postupy koncového uživatele a automaticky je přeložit do skriptů. Automai pak pomocí procesů roboty běžící z jednotlivých stolních počítačů emuluje aktivitu koncových uživatelů v simulaci a nahlásí výsledky. To značně zjednodušuje testovací procesy, aby správci IT mohli zátěžový test vyzkoušet i u většiny složitých scénářů.
+
+Až budete připraveni na spuštění, můžete použít všechny skripty pracovního postupu, které jste vytvořili pro zátěžové testování, a nepřetržitě monitorovat výkon v produkčním prostředí. Roboty Automai může dělat více než jenom monitorování dostupnosti. Roboty může také testovat pracovní postupy koncových uživatelů z klíčových umístění a pořizovat snímky obrazovky a shromažďovat zprávy o chybách v reálném čase. To vede k tomu, že je aktivnější než reaktivní přístup k opravám chyb pro aplikace virtuálních ploch Windows.
+
+Automai umožňuje používat stejné skripty pro testování výkonu, funkční testování, sledování výkonu a dokonce i automatické automatizace procesů, a to vše na jedné platformě.
+
+- [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4B76N).
+- [Přejít na web partnera](https://www.automai.com/wvd-testing-monitoring?hs_preview=EyZXkOWu-30742040580).
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
@@ -112,6 +127,17 @@ Jedinečné licence na plovoucí koncové body Ekran systémových klientů je a
 
 - [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yqY8).
 - [Přejít na stránku partner](https://www.ekransystem.com/product/supported-platforms/windows-virtual-desktop-monitoring).
+
+## <a name="fabulatech"></a>FabulaTech
+
+![Logo FabulaTech](./media/partners/fabulatech.png)
+
+FabulaTech se bez problémů integruje s klienty virtuálních klientů Windows. Po nainstalování se FabulaTech software automaticky začne pracovat, když navážete připojení ke vzdálené ploše.
+
+Když se uživatel přihlásí ke svému virtuálnímu klientovi, FabulaTech software vytvoří virtuální zařízení. Můžete například vytvořit virtuální webovou kameru, skener nebo čtečku otisků prstů. Všechny aplikace spuštěné ve vzdálené relaci mají přístup k virtuálnímu zařízení, jako by se jednalo o fyzické zařízení. Virtuální zařízení můžete nakonfigurovat ve virtuální ploše Windows pomocí nabídky ikony na hlavním panelu systému, což znamená, že toto řešení můžete také použít u tenkých klientů. Nad tím se veškerá komunikace provádí přes existující připojení ke vzdálené ploše, což znamená, že je brána firewall nastavená za vás. Vše funguje přímo z okna.
+
+- [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4B4zO).
+- [Přejít na web partnera](https://www.fabulatech.com/partners/microsoft-windows-virtual-desktop/).
 
 ## <a name="flexxible-it"></a>Flexxible
 

@@ -14,18 +14,18 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: fb2d2d33d380819a88da57a78c449e22256bf41b
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: daebf7c6a5fc9056e16b77a40ee9f90db598749f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169523"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076622"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>Použití Notification Hubs z PHP
 
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-Ke všem funkcím Notification Hubs můžete přistupovat z back-endu Java/PHP/Ruby pomocí rozhraní REST centra oznámení, jak je popsáno v tématu MSDN [Notification HUBS REST API](https://msdn.microsoft.com/library/dn223264.aspx).
+Ke všem funkcím Notification Hubs můžete přistupovat z back-endu Java/PHP/Ruby pomocí rozhraní REST centra oznámení, jak je popsáno v tématu MSDN [Notification HUBS REST API](/previous-versions/azure/reference/dn223264(v=azure.100)).
 
 V tomto tématu si ukážeme, jak:
 
@@ -56,7 +56,7 @@ $hub->sendNotification($notification, null);
 Pokud jste to ještě neučinili, postupujte podle návodu [Začínáme] až do poslední části, kde je nutné implementovat back-end.
 Také Pokud chcete použít kód z [ukázky obálky php REST] a přejít přímo k části [dokončení kurzu](#complete-tutorial) .
 
-Všechny podrobnosti o implementaci úplné obálky REST najdete na [webu MSDN](https://msdn.microsoft.com/library/dn530746.aspx). V této části popíšeme implementaci PHP hlavních kroků potřebných pro přístup k Notification Hubs koncovým bodům REST:
+Všechny podrobnosti o implementaci úplné obálky REST najdete na [webu MSDN](/previous-versions/azure/reference/dn530746(v=azure.100)). V této části popíšeme implementaci PHP hlavních kroků potřebných pro přístup k Notification Hubs koncovým bodům REST:
 
 1. Analýza připojovacího řetězce
 2. Generování autorizačního tokenu
@@ -102,7 +102,7 @@ class NotificationHub {
 
 ### <a name="create-a-security-token"></a>Vytvoření tokenu zabezpečení
 
-Informace o tom, jak [vytvořit token zabezpečení SAS](https://docs.microsoft.com/previous-versions/azure/reference/dn495627(v=azure.100)#create-sas-security-token), najdete v dokumentaci k Azure.
+Informace o tom, jak [vytvořit token zabezpečení SAS](/previous-versions/azure/reference/dn495627(v=azure.100)#create-sas-security-token), najdete v dokumentaci k Azure.
 
 Přidejte do `generateSasToken` `NotificationHub` třídy metodu pro vytvoření tokenu na základě identifikátoru URI aktuální žádosti a přihlašovacích údajů extrahovaných z připojovacího řetězce.
 
@@ -151,7 +151,7 @@ class Notification {
 
 Tato třída je kontejnerem pro nativní tělo oznámení nebo sadu vlastností pro případ oznámení šablony a sadu hlaviček, která obsahuje formát (nativní platforma nebo šablona) a vlastnosti specifické pro platformu (například vlastnost vypršení platnosti Apple a hlavičky WNS).
 
-Všechny dostupné možnosti najdete v [dokumentaci k rozhraním REST API pro Notification Hubs](https://msdn.microsoft.com/library/dn495827.aspx) a ve formátech konkrétních platforem oznámení.
+Všechny dostupné možnosti najdete v [dokumentaci k rozhraním REST API pro Notification Hubs](/previous-versions/azure/reference/dn495827(v=azure.100)) a ve formátech konkrétních platforem oznámení.
 
 V ozbrojení této třídy teď můžeme zapsat metody odeslání oznámení uvnitř `NotificationHub` třídy:
 
@@ -290,4 +290,3 @@ Další informace najdete v tématu také [středisko pro vývojáře PHP](https
 
 [Ukázka obálky PHP REST]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
 [Posílání nabízených oznámení do aplikací pro iOS pomocí Azure Notification Hubs](ios-sdk-get-started.md))
-

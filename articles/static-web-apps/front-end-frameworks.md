@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 06/10/2020
+ms.date: 07/18/2020
 ms.author: cshoe
-ms.openlocfilehash: 41f0c44ad65af5fdf2560da3f977a28f135af878
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3220b9d56ff7107245a0a00aac44bb58f87099f9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84976706"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075968"
 ---
 # <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps-preview"></a>Konfigurace front-endové architektur a knihoven pomocí Azure static Web Apps Preview
 
@@ -28,7 +28,7 @@ Záměr sloupců tabulky je vysvětlen následujícími položkami:
 
 - **Vlastní sestavení příkazu**: když rozhraní vyžaduje příkaz jiný než `npm run build` nebo `npm run azure:build` , můžete definovat [vlastní příkaz buildu](github-actions-workflow.md#custom-build-commands).
 
-| Rozhraní .NET Framework | Umístění artefaktu aplikace | Vlastní sestavení – příkaz |
+| Rozhraní .NET Framework | Umístění artefaktů aplikace | Vlastní sestavení – příkaz |
 |--|--|--|
 | [Alpine.js](https://github.com/alpinejs/alpine/) | `/` | není k dispozici <sup>2</sup> |
 | [Angular](https://angular.io/) | `dist/<APP_NAME>` | `npm run build -- --prod` |
@@ -55,7 +55,7 @@ Záměr sloupců tabulky je vysvětlen následujícími položkami:
 | [Svelte](https://svelte.dev/) | `public` | Není k dispozici |
 | [Three.js](https://threejs.org/) | `/` | Není k dispozici |
 | [TypeScript](https://www.typescriptlang.org/) | `dist` | Není k dispozici |
-| [Vue](http://vuejs.com/) | `dist` | Není k dispozici |
+| [Vue.js](https://vuejs.org/) | `dist` | Není k dispozici |
 
 <sup>1</sup> výše uvedená tabulka není vyčerpávajícím seznamem architektur a knihoven, které pracují se službou Azure static Web Apps.
 

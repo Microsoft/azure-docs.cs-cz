@@ -99,6 +99,8 @@
       href: concepts-security.md
     - name: Podpora TLS
       href: tls-support.md
+    - name: Podpora virtuálních sítí
+      href: virtual-network-support.md
     - name: Služba
       href: concepts-service.md
     - name: Principy IP adres DPS

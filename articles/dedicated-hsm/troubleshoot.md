@@ -1,5 +1,5 @@
 ---
-title: Co je Dedicated HSM? – Vyhrazený modul HARDWAROVÉho zabezpečení Azure | Microsoft Docs
+title: Řešení potíží s vyhrazeným modulem HSM – vyhrazený modul zabezpečení Azure | Microsoft Docs
 description: Přehled vyhrazeného modulu HARDWAROVÉho zabezpečení Azure poskytuje klíčové možnosti úložiště v Azure, které vyhovují certifikaci FIPS 140-2 Level 3.
 services: dedicated-hsm
 author: msmbaldwin
@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 80a215363a319b9ee082bd6c5e5f8004fc5b715b
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: c398049cfe1d5ec2ee090d4fabf8008803efecb1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85209568"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075002"
 ---
-# <a name="troubleshooting"></a>Poradce při potížích
+# <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>Řešení potíží s vyhrazenou službou HSM Azure
 
 Vyhrazená služba HSM v Azure má dvě odlišné charakteristiky. Za prvé, registraci a nasazení v Azure zařízení HSM se svými základními síťovými součástmi. Za druhé se konfigurace zařízení HSM připravuje pro použití nebo integraci s danými úlohami nebo aplikacemi. I když se zařízení HSM Thales Luna Network v Azure shodují, protože byste si koupili přímo od Thales, je fakt, že se jedná o prostředek v Azure, vytváří několik jedinečných důležitých informací. Tyto informace a případné Doporučené postupy pro řešení potíží a osvědčené postupy jsou popsané tady, abyste zajistili vysokou viditelnost a přístup k důležitým informacím. Po použití služby jsou konečné informace k dispozici prostřednictvím žádostí o podporu přímo od společnosti Microsoft nebo Thales. 
 
@@ -100,7 +100,7 @@ Při inicializaci modulu hardwarového zabezpečení (HSM) bezpečně ukládat p
 
 Poskytování nesprávných přihlašovacích údajů HSM může mít destruktivní důsledky. Níže jsou uvedené výchozí chování pro role HSM.
 
-| Role | Prahová hodnota (počet pokusů) | Výsledek příliš velkého počtu chybných pokusů o přihlášení | Obnovení |
+| Role | Prahová hodnota (počet pokusů) | Výsledek příliš velkého počtu chybných pokusů o přihlášení | Obnovovací |
 |--|--|--|--|
 | HSM | 3 |  Modul hardwarového zabezpečení (HSM) je nulový (všechny identity objektů HSM a všechny oddíly se odešlou).  |  Modul HARDWAROVÉho zabezpečení musí být znovu inicializovaný. Obsah je možné obnovit ze zálohy. | 
 | Rozdělit na oddíly | 10 |  Oddíl je nulový. |  Oddíl je nutné znovu inicializovat. Obsah se může obnovit ze zálohy. |  

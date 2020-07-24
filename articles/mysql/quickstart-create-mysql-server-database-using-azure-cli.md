@@ -6,81 +6,75 @@ ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 01/09/2019
+ms.date: 07/15/2020
 ms.custom: mvc
-ms.openlocfilehash: acf5f3cdf761e1773d6e9384a4ceb99a645ed7cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 638fa5af3af1e81020e79c7c70f0c91f06676daf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74773500"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076682"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>Rychlý Start: vytvoření serveru Azure Database for MySQL pomocí Azure CLI
 
 > [!TIP]
 > Zvažte použití jednoduššího příkazu [AZ MySQL up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) Azure CLI (aktuálně ve verzi Preview). Vyzkoušejte si [rychlý Start](./quickstart-create-server-up-azure-cli.md).
 
-Tento rychlý start popisuje, jak za pět minut vytvořit pomocí Azure CLI server Azure Database for MySQL ve skupině prostředků Azure. Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech.
-
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+V tomto rychlém startu se dozvíte, jak pomocí příkazů rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) v [Azure Cloud Shell](https://shell.azure.com) vytvořit Azure Database for MySQL server během pěti minut. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+> [!NOTE]
+> Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
 
-Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém tento prostředek existuje nebo ve kterém se fakturuje. Ve svém účtu vyberte pomocí příkazu [az account set](/cli/azure/account#az-account-set) určité ID předplatného.
+## <a name="prerequisites"></a>Předpoklady
+Tento článek vyžaduje, abyste v místním prostředí používali Azure CLI verze 2,0 nebo novější. Pokud chcete zjistit nainstalovanou verzi, spusťte příkaz `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+
+K účtu se budete muset přihlásit pomocí příkazu [AZ Login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) . Poznamenejte si vlastnost **ID** , která se vztahuje k **ID předplatného** pro váš účet Azure. 
+
 ```azurecli-interactive
-az account set --subscription 00000000-0000-0000-0000-000000000000
+az login
 ```
 
-## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
-Vytvořte [skupinu prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) pomocí příkazu [az group create](/cli/azure/group#az-group-create). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky jako skupina.
+Pomocí příkazu [AZ Account set](/cli/azure/account) vyberte konkrétní předplatné ve vašem účtu. Poznamenejte si hodnotu **ID** z výstupu **AZ Login** , který se použije jako hodnota argumentu **Subscription** v příkazu. Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Pokud chcete získat veškeré předplatné, použijte příkaz [AZ Account list](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list).
 
-Následující příklad vytvoří skupinu prostředků s názvem `myresourcegroup` v umístění `westus`.
+```azurecli
+az account set --subscription <subscription id>
+```
+
+## <a name="create-an-azure-database-for-mysql-server"></a>Vytvoření serveru Azure Database for MySQL
+Vytvořte [skupinu prostředků Azure](../azure-resource-manager/management/overview.md) pomocí příkazu [AZ Group Create](/cli/azure/group) a pak vytvořte svůj server MySQL v této skupině prostředků. Měli byste zadat jedinečný název. Následující příklad vytvoří skupinu prostředků s názvem `myresourcegroup` v umístění `westus`.
 
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
 ```
 
-## <a name="create-an-azure-database-for-mysql-server"></a>Vytvoření serveru Azure Database for MySQL
-Vytvořte Azure Database for MySQL server pomocí příkazu **[AZ MySQL server Create](/cli/azure/mysql/server#az-mysql-server-create)** . Server může spravovat více databází. Obvykle se pro jednotlivé projekty nebo uživatele používají samostatné databáze.
+Vytvořte server Azure Database for MySQL pomocí příkazu [az mysql server create](/cli/azure/mysql/server#az-mysql-server-create). Server může obsahovat více databází.
+
+```azurecli
+az mysql server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 
+```
+
+Zde jsou uvedeny podrobnosti o argumentech výše: 
 
 **Nastavení** | **Ukázková hodnota** | **Popis**
 ---|---|---
-jméno | mydemoserver | Zvolte jedinečný název serveru, který identifikuje váš server Azure Database for MySQL. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí se skládat ze 3 až 63 znaků.
+name | mydemoserver | Zadejte jedinečný název serveru Azure Database for MySQL. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí se skládat ze 3 až 63 znaků.
 resource-group | myresourcegroup | Zadejte název skupiny prostředků Azure.
-sku-name | GP_Gen5_2 | Název sku. Dodržuje konvenci {cenová úroveň}\_{výpočetní generace}\_{virtuální jádra} ve zkráceném zápisu. Další informace o parametru sku-name najdete pod touto tabulkou.
-backup-retention | 7 | Určuje, jak dlouho se mají uchovávat zálohy. Jednotkou jsou dny. Rozsah je 7 až 35. 
-geo-redundant-backup | Zakázáno | Určuje, jestli pro tento server mají nebo nemají být povolené geograficky redundantní zálohy. Povolené hodnoty: Enabled, Disabled.
 location | westus | Lokace Azure pro server.
-ssl-enforcement | Povoleno | Určuje, jestli pro tento server má nebo nemá být povolený protokol SSL. Povolené hodnoty: Enabled, Disabled.
-velikost úložiště | 51200 | Kapacita úložiště serveru (jednotkou jsou megabajty). Platná velikost úložiště je minimálně 5 120 MB a navyšuje se v přírůstcích 1 024 MB. Další informace o limitech velikosti úložiště najdete v dokumentu o [cenových úrovních](./concepts-pricing-tiers.md). 
-version | 5.7 | Hlavní verze MySQL.
 admin-user | myadmin | Uživatelské jméno pro přihlášení správce. Nemůže být ** azure_superuser **, ** admin **, ** administrátor **, ** root **, ** host ** nebo ** public**.
 admin-password | *bezpečné heslo* | Heslo uživatele, který je správcem. Musí mít 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice a jiné než alfanumerické znaky.
+sku-name|GP_Gen5_2|Zadejte název cenové úrovně a konfiguraci výpočtů. Postupuje podle konvence {cenové úrovně}_{COMPUTE_} {virtuální jádra} ve zkráceném znění. Další informace najdete v [cenové úrovni](./concepts-pricing-tiers.md) .
 
+>[!IMPORTANT] 
+>- Výchozí verze MySQL na serveru je 5,7. V současné době jsou k dispozici i verze 5,6 a 8,0.
+>- Chcete-li zobrazit všechny argumenty příkazu **AZ MySQL server Create** , přečtěte si tento [referenční dokument](/cli/azure/mysql/server#az-mysql-server-create).
+>- Protokol SSL je ve výchozím nastavení povolen na vašem serveru. Další infroamtion na SSL najdete v tématu [Konfigurace připojení SSL](howto-configure-ssl.md) .
 
-Hodnota parametru sku-name má formát {cenová_úroveň}\_{výpočetní_generace}\_{počet_virtuálních_jader} jako v následujících příkladech:
-+ `--sku-name B_Gen5_1`mapuje se na Basic, Gen 5 a 1 vCore. Tato možnost je k dispozici nejmenší SKU.
-+ `--sku-name GP_Gen5_32` se mapuje na úroveň pro obecné účely 5. generace se 32 virtuálními jádry.
-+ `--sku-name MO_Gen5_2` se mapuje na úroveň optimalizovanou pro paměť 5. generace se 2 virtuálními jádry.
+## <a name="configure-a-server-level-firewall-rule"></a>Konfigurace pravidla brány firewall na úrovni serveru 
+Ve výchozím nastavení je nově vytvořený server chráněný pomocí pravidel brány firewall a není veřejně přístupný. Pravidlo brány firewall můžete nakonfigurovat na serveru pomocí příkazu [AZ MySQL server firewall-Rule Create](/cli/azure/mysql/server/firewall-rule) . To vám umožní připojit se k místnímu serveru.
 
-Vysvětlení platných hodnot pro jednotlivé oblasti a úrovně najdete v dokumentaci k [cenovým úrovním](./concepts-pricing-tiers.md).
-
-Následující příklad vytvoří server MySQL 5.7 v umístění USA – západ, `mydemoserver` ve vaší skupině prostředků `myresourcegroup` a s přihlašovacím jménem správce serveru `myadmin`. Toto je **pro obecné účely** server **Gen 4** s **2 virtuální jádra**. Nahraďte položku `<server_admin_password>` vlastní hodnotou.
-
-```azurecli-interactive
-az mysql server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 5.7
-```
-
-> [!NOTE]
-> Zvažte použití cenové úrovně Basic, pokud je pro vaše zatížení vhodné světlé výpočetní prostředky a vstupně-výstupní operace. Upozorňujeme, že servery vytvořené v cenové úrovni Basic se nedají později škálovat na Pro obecné účely nebo paměťově optimalizované. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/mysql/) .
-> 
-
-## <a name="configure-firewall-rule"></a>Konfigurace pravidla brány firewall
-Pomocí příkazu **[AZ MySQL server firewall-Rule Create](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-create)** Vytvořte Azure Database for MySQL pravidlo brány firewall na úrovni serveru. Pravidlo brány firewall na úrovni serveru umožňuje externí aplikaci, jako je například nástroj příkazového řádku **mysql.exe** nebo MySQL Workbench, aby se k vašemu serveru připojila prostřednictvím brány firewall služby Azure MySQL. 
-
-Následující příklad vytvoří pravidlo brány firewall `AllowMyIP`, které povolí připojení z konkrétní IP adresy 192.168.0.1. Nahraďte ji za IP adresu nebo rozsah IP adres, které odpovídají umístění, ze kterého se budete připojovat. 
+Následující příklad vytvoří pravidlo brány firewall `AllowMyIP`, které povolí připojení z konkrétní IP adresy 192.168.0.1. Nahraďte IP adresu, ze které se budete připojovat. V případě potřeby můžete použít rozsah IP adres. Nevíte, jak hledat vaši IP adresu, a pak přejít na [https://whatismyipaddress.com/](https://whatismyipaddress.com/) adresu a získat IP adresu.
 
 ```azurecli-interactive
 az mysql server firewall-rule create --resource-group myresourcegroup --server mydemoserver --name AllowMyIP --start-ip-address 192.168.0.1 --end-ip-address 192.168.0.1
@@ -88,17 +82,6 @@ az mysql server firewall-rule create --resource-group myresourcegroup --server m
 
 > [!NOTE]
 > Připojení ke službě Azure Database for MySQL komunikují přes port 3306. Pokud se pokoušíte připojit z podnikové sítě, odchozí provoz přes port 3306 nemusí být povolený. V takovém případě se k serveru nemůžete připojit, dokud vaše IT oddělení neotevře port 3306.
-> 
-
-
-## <a name="configure-ssl-settings"></a>Konfigurace nastavení SSL
-Ve výchozím nastavení se připojení SSL mezi serverem a klientskými aplikacemi vynucuje. Toto výchozí nastavení zajišťuje zabezpečení dat „v pohybu“ prostřednictvím šifrování datového proudu přes internet. Pro zjednodušení tohoto rychlého startu zakažte u svého serveru připojení SSL. Pro provozní servery se zakázání protokolu SSL nedoporučuje. Další informace najdete v tématu [Konfigurace připojení SSL v aplikaci pro zabezpečené připojení k Azure Database for MySQL](./howto-configure-ssl.md).
-
-Následující příklad zakazuje vynucování SSL na serveru MySQL.
- 
- ```azurecli-interactive
- az mysql server update --resource-group myresourcegroup --name mydemoserver --ssl-enforcement Disabled
- ```
 
 ## <a name="get-the-connection-information"></a>Získání informací o připojení
 
@@ -138,83 +121,11 @@ Výsledek je ve formátu JSON. Poznamenejte si **fullyQualifiedDomainName** a **
 }
 ```
 
-## <a name="connect-to-the-server-using-the-mysqlexe-command-line-tool"></a>Připojení k serveru pomocí nástroje příkazového řádku mysql.exe
-Připojte se k serveru pomocí nástroje příkazového řádku **mysql.exe**. MySQL můžete stáhnout [odsud](https://dev.mysql.com/downloads/) a nainstalovat do svého počítače. 
-
-Zadejte další příkazy: 
-
-1. Připojení k serveru pomocí nástroje příkazového řádku **mysql**:
-   ```bash
-   mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p
-   ```
-
-2. Zobrazení stavu serveru:
-   ```sql
-   mysql> status
-   ```
-   Pokud vše půjde dobře, měl by výstupem nástroje příkazového řádku být následující text:
-
-```dos
-C:\Users\>mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p
-Enter password: ***********
-Welcome to the MySQL monitor.  Commands end with ; or \g.
-Your MySQL connection id is 65512
-Server version: 5.6.26.0 MySQL Community Server (GPL)
-
-Copyright (c) 2000, 2016, Oracle and/or its affiliates. All rights reserved.
-
-Oracle is a registered trademark of Oracle Corporation and/or its
-affiliates. Other names may be trademarks of their respective
-owners.
-
-Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-
-mysql> status
---------------
-mysql  Ver 14.14 Distrib 5.6.35, for Win64 (x86_64)
-
-Connection id:          65512
-Current database:
-Current user:           myadmin@116.230.243.143
-SSL:                    Not in use
-Using delimiter:        ;
-Server version:         5.6.26.0 MySQL Community Server (GPL)
-Protocol version:       10
-Connection:             mydemoserver.mysql.database.azure.com via TCP/IP
-Server characterset:    latin1
-Db     characterset:    latin1
-Client characterset:    gbk
-Conn.  characterset:    gbk
-TCP port:               3306
-Uptime:                 2 days 9 hours 47 min 20 sec
-
-Threads: 4  Questions: 34833  Slow queries: 2  Opens: 84  Flush tables: 4  Open tables: 1  Queries per second avg: 0.167
---------------
-
-mysql>
+## <a name="connect-to-azure-database-for-mysql-server-using-mysql-command-line-client"></a>Připojení k Azure Database for MySQL serveru pomocí klienta příkazového řádku MySQL
+K serveru se můžete připojit pomocí oblíbeného nástroje klienta, **[mysql.exe](https://dev.mysql.com/downloads/)** nástroje příkazového řádku s [Azure Cloud Shell](../cloud-shell/overview.md). Alternativně můžete použít příkazový řádek MySQL v místním prostředí.
+```bash
+ mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p
 ```
-
-> [!TIP]
-> Další příkazy najdete v [Referenční příručce k MySQL 5.7 – v kapitole 4.5.1](https://dev.mysql.com/doc/refman/5.7/en/mysql.html).
-
-## <a name="connect-to-the-server-using-the-mysql-workbench-gui-tool"></a>Připojení k serveru pomocí nástroje grafického uživatelského rozhraní MySQL Workbench
-1. Na klientském počítači spusťte aplikaci MySQL Workbench. MySQL Workbench můžete stáhnout a nainstalovat [odtud](https://dev.mysql.com/downloads/workbench/).
-
-2. V dialogovém okně pro **nastavení nového připojení** zadejte na kartě **Parametry** následující informace:
-
-   ![nastavení nového připojení](./media/quickstart-create-mysql-server-database-using-azure-cli/setup-new-connection.png)
-
-| **Nastavení** | **Navrhovaná hodnota** | **Popis** |
-|---|---|---|
-|   Název připojení | My Connection | Zadejte jmenovku pro toto připojení (může být libovolná). |
-| Způsob připojení | zvolte Standardní (TCP/IP) | Pro připojení k Azure Database for MySQL použijte protokol TCP/IP. |
-| Název hostitele | mydemoserver.mysql.database.azure.com | Název serveru, který jste si předtím poznamenali. |
-| Port | 3306 | Použije se výchozí port pro MySQL. |
-| Uživatelské jméno | myadmin@mydemoserver | Přihlašovací jméno správce serveru, které jste si předtím poznamenali. |
-| Heslo | **** | Použijte heslo správce, které jste nakonfigurovali v předchozích krocích. |
-
-Pokud chcete otestovat, jestli jsou všechny parametry správně nakonfigurované, klikněte na **Test připojení**.
-Teď se můžete kliknutím na toto připojení úspěšně připojit k serveru.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Pokud tyto prostředky nepotřebujete pro další rychlý start nebo kurz, můžete je pomocí následujícího příkazu odstranit: 
@@ -223,7 +134,8 @@ Pokud tyto prostředky nepotřebujete pro další rychlý start nebo kurz, můž
 az group delete --name myresourcegroup
 ```
 
-Pokud chcete odstranit jenom nově vytvořený server, můžete spustit příkaz **[az mysql server delete](/cli/azure/mysql/server#az-mysql-server-delete)**.
+Pokud chcete odstranit jenom nově vytvořený server, můžete spustit příkaz [az mysql server delete](/cli/azure/mysql/server#az-mysql-server-delete).
+
 ```azurecli-interactive
 az mysql server delete --resource-group myresourcegroup --name mydemoserver
 ```
@@ -231,4 +143,6 @@ az mysql server delete --resource-group myresourcegroup --name mydemoserver
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Návrh databáze MySQL pomocí Azure CLI](./tutorial-design-database-using-cli.md)
+>[Vytvoření aplikace v PHP ve Windows pomocí MySQL](../app-service/app-service-web-tutorial-php-mysql.md) 
+> [Sestavení aplikace PHP v systému Linux pomocí MySQL](../app-service/containers/tutorial-php-mysql-app.md) 
+> [Sestavení jarní aplikace založené na jazyce Java pomocí MySQL](https://docs.microsoft.com/azure/developer/java/spring-framework/spring-app-service-e2e?tabs=bash)

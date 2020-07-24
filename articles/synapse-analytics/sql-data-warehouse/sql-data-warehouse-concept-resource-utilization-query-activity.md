@@ -11,11 +11,12 @@ ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 4dc054d26f0cb64a8f7faf2ffa4b2b688562f404
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 334d37ad36336d1aa737894482fd8f66e929c822
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213546"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077690"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Monitorování využití prostředků a aktivity dotazů v Azure synapse Analytics
 
@@ -25,13 +26,13 @@ Azure synapse Analytics poskytuje bohatě monitorovaný přehled v rámci Azure 
 
 V Azure Portal pro synapse SQL jsou k dispozici následující metriky. Tyto metriky se procházejí [Azure monitor](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics).
 
-| Název metriky             | Description                                                  | Typ agregace |
+| Název metriky             | Popis                                                  | Typ agregace |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
 | Procento CPU          | Využití CPU ve všech uzlech pro datový sklad      | AVG, min, Max    |
 | Procento datových V/V      | Využití v/v na všech uzlech pro datový sklad       | AVG, min, Max    |
 | Procento paměti       | Využití paměti (SQL Server) ve všech uzlech pro datový sklad | AVG, min, Max   |
-| Aktivní dotazy          | Počet aktivních dotazů zpracovávaných v systému             | Součet              |
-| Dotazy ve frontě          | Počet dotazů ve frontě čekajících na zahájení provádění          | Součet              |
+| Aktivní dotazy          | Počet aktivních dotazů zpracovávaných v systému             | Sčítání              |
+| Dotazy ve frontě          | Počet dotazů ve frontě čekajících na zahájení provádění          | Sčítání              |
 | Úspěšná připojení  | Počet úspěšných připojení (přihlášení) k databázi | Sum, Count       |
 | Neúspěšná připojení      | Počet neúspěšných připojení (přihlášení) k databázi | Sum, Count       |
 | Blokováno bránou firewall     | Počet přihlášení k datovému skladu, který byl zablokován     | Sum, Count       |
@@ -41,9 +42,6 @@ V Azure Portal pro synapse SQL jsou k dispozici následující metriky. Tyto met
 | Procento přístupů do mezipaměti    | (Neúspěšné přístupy do mezipaměti a Neúspěšné přístupy do mezipaměti) * 100 kde jsou přístupy do mezipaměti součtem všech segmentů columnstore v místní mezipaměti SSD a neúspěšných přístupů do mezipaměti jsou segmenty columnstore v místní mezipaměti SSD vyčtené ve všech uzlech. | AVG, min, Max    |
 | Procento využité mezipaměti   | (využitá mezipaměť/kapacita mezipaměti) * 100, kde použitá mezipaměť je součet všech bajtů v místní mezipaměti SSD napříč všemi uzly a kapacita mezipaměti je součet kapacity úložiště místní mezipaměti SSD napříč všemi uzly. | AVG, min, Max    |
 | Místní procento databáze tempdb | Místní využití databáze tempdb napříč všemi výpočetními uzly – hodnoty se generují každých pět minut. | AVG, min, Max    |
-| Velikost úložiště dat (GB) | Celková velikost databáze To zahrnuje použití, rezervované a nepřidělené místo. Pro databázi se uchovává nepřidělené místo pro optimalizaci výkonu dotazů a zatížení. | Součet |
-| Velikost zotavení po havárii (GB) | Celková velikost geografického zálohování pořízeného každých 24 hodin | Součet |
-| Velikost úložiště snímků (GB) | Celková velikost snímků pořízených k zadání bodů obnovení databáze. To zahrnuje automatizované a uživatelem definované snímky. | Součet |
 
 Co je potřeba vzít v úvahu při prohlížení metrik a nastavení výstrah:
 

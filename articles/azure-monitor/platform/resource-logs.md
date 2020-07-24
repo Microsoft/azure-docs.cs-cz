@@ -4,15 +4,15 @@ description: Naučte se streamovat protokoly prostředků Azure do pracovního p
 author: bwren
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 492aae69895d62c784d15cd77405d0c52ec13e3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a7b24de860b543778d7e6ceabc95d10bf7c44c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84947031"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077076"
 ---
 # <a name="azure-resource-logs"></a>Protokoly prostředků Azure
 Protokoly prostředků Azure jsou [protokoly platforem](platform-logs-overview.md) , které poskytují přehled o operacích provedených v rámci prostředku Azure. Obsah protokolů prostředků se liší podle typu prostředku a služby Azure. Protokoly prostředků nejsou ve výchozím nastavení shromažďovány. Musíte vytvořit nastavení diagnostiky pro každý prostředek Azure, abyste odesílali své protokoly prostředků do Log Analyticsho pracovního prostoru pro použití s [protokoly Azure monitor](data-platform-logs.md), Azure Event Hubs k posílání mimo Azure nebo Azure Storage k archivaci.
@@ -85,17 +85,15 @@ V předchozím příkladu by se vytvořily tři tabulky:
 
 
 ### <a name="select-the-collection-mode"></a>Výběr režimu kolekce
-Většina prostředků Azure zapíše data do pracovního prostoru v režimu **diagnostiky Azure** nebo **specifického prostředku** , a to bez toho, abyste si zvolili. Podrobnosti o tom, který režim používá, najdete v [dokumentaci ke každé službě](diagnostic-logs-schema.md) . Všechny služby Azure nakonec budou používat režim specifický pro prostředky. V rámci tohoto přechodu vám některé prostředky umožní vybrat režim v nastavení diagnostiky. Pro všechna nová nastavení diagnostiky zadejte režim specifický pro určitý prostředek, protože to usnadňuje správu dat a může vám pomohou se vyhnout složitým migracím později.
+Většina prostředků Azure zapíše data do pracovního prostoru v režimu **diagnostiky Azure** nebo **specifického prostředku** , a to bez toho, abyste si zvolili. Podrobnosti o tom, který režim používá, najdete v [dokumentaci ke každé službě](./resource-logs-schema.md) . Všechny služby Azure nakonec budou používat režim specifický pro prostředky. V rámci tohoto přechodu vám některé prostředky umožní vybrat režim v nastavení diagnostiky. Pro všechna nová nastavení diagnostiky zadejte režim specifický pro určitý prostředek, protože to usnadňuje správu dat a může vám pomohou se vyhnout složitým migracím později.
   
    ![Selektor režimu nastavení diagnostiky](media/resource-logs-collect-workspace/diagnostic-settings-mode-selector.png)
 
-
-
-
 > [!NOTE]
-> V současné době lze **diagnostiku Azure** a režim **specifický pro prostředky** vybrat pouze při konfiguraci nastavení diagnostiky v Azure Portal. Pokud nakonfigurujete nastavení pomocí rozhraní příkazového řádku, PowerShellu nebo rozhraní REST API, bude se používat jako výchozí pro **Azure Diagnostics**.
+> Příklad nastavení režimu kolekce pomocí šablony Resource Manageru najdete v tématu [Správce prostředků ukázek šablon pro nastavení diagnostiky v Azure monitor](../samples/resource-manager-diagnostic-settings.md#diagnostic-setting-for-recovery-services-vault).
 
-Existující nastavení diagnostiky můžete upravit do režimu specifického pro prostředky. V tomto případě zůstanou shromážděná data v tabulce _AzureDiagnostics_ , dokud je neodeberete podle nastavení uchování pro daný pracovní prostor. Ve vyhrazené tabulce budou shromažďována nová data. Použijte operátor [Union](https://docs.microsoft.com/azure/kusto/query/unionoperator) k dotazování dat napříč oběma tabulkami.
+
+Existující nastavení diagnostiky můžete upravit do režimu specifického pro prostředky. V tomto případě zůstanou shromážděná data v tabulce _AzureDiagnostics_ , dokud je neodeberete podle nastavení uchování pro daný pracovní prostor. Ve vyhrazené tabulce budou shromažďována nová data. Použijte operátor [Union](/azure/kusto/query/unionoperator) k dotazování dat napříč oběma tabulkami.
 
 Dál Sledujte Blog o [aktualizacích Azure](https://azure.microsoft.com/updates/) , kde najdete oznámení o službách Azure, které podporují režim specifický pro prostředky.
 
@@ -191,7 +189,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
 
 Každý objekt blob PT1H.json obsahuje objekt blob ve formátu JSON událostí, ke kterým došlo během hodiny zadané v adrese URL objektu blob (například h=12). Během aktuální hodiny se události připojují do souboru PT1H.json, když k nim dojde. Hodnota minut (m = 00) je vždy 00, protože události protokolu prostředku jsou v jednotlivých objektech blob za hodinu rozděleny.
 
-V rámci PT1H.jsv souboru je každá událost uložená v následujícím formátu. Použije se společné schéma nejvyšší úrovně, ale pro každou službu Azure je jedinečné, jak je popsáno v tématu [schéma protokolů prostředků](diagnostic-logs-schema.md).
+V rámci PT1H.jsv souboru je každá událost uložená v následujícím formátu. Použije se společné schéma nejvyšší úrovně, ale pro každou službu Azure je jedinečné, jak je popsáno v tématu [schéma protokolů prostředků](./resource-logs-schema.md).
 
 ``` JSON
 {"time": "2016-07-01T00:00:37.2040000Z","systemId": "46cdbb41-cb9c-4f3d-a5b4-1d458d827ff1","category": "NetworkSecurityGroupRuleCounter","resourceId": "/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/RESOURCEGROUPS/TESTRESOURCEGROUP/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/TESTNSG","operationName": "NetworkSecurityGroupCounters","properties": {"vnetResourceGuid": "{12345678-9012-3456-7890-123456789012}","subnetPrefix": "10.3.0.0/24","macAddress": "000123456789","ruleName": "/subscriptions/ s1id1234-5679-0123-4567-890123456789/resourceGroups/testresourcegroup/providers/Microsoft.Network/networkSecurityGroups/testnsg/securityRules/default-allow-rdp","direction": "In","type": "allow","matchedConnections": 1988}}

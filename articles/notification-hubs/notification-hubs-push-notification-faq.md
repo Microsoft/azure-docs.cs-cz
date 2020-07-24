@@ -15,12 +15,12 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: 0fe4ae76645ec2a0ae8aae93b9db987ece9a45b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85ebb7f5ac52f4eea25f9e6f1a2b1b5ac6f4caa5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255122"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077926"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Nabízená oznámení s Azure Notification Hubs: nejčastější dotazy
 
@@ -119,7 +119,7 @@ Vzhledem k povaze nabízených oznámení (jsou dodávány externím PNS specifi
 
 Při registraci mobilní aplikace portálu pro vývojáře platformy (například Apple nebo Google) se odesílají identifikátory aplikace a tokeny zabezpečení. Back-end aplikace poskytuje tyto tokeny PNS platformy, aby bylo možné odesílat nabízená oznámení do zařízení. Tokeny zabezpečení můžou být ve formě certifikátů (například Apple iOS nebo Windows Phone) nebo klíčů zabezpečení (například Google Android nebo Windows). Musí být nakonfigurovány v centrech oznámení. Konfigurace se obvykle provádí na úrovni centra oznámení, ale je možné ji také provést na úrovni oboru názvů ve scénáři s více klienty.
 
-#### <a name="namespaces"></a>Obory názvů
+#### <a name="namespaces"></a>Jmenné prostory
 
 Obory názvů lze použít pro seskupení nasazení. Můžou se také použít k reprezentaci všech Center oznámení pro všechny klienty stejné aplikace ve scénáři s více klienty.
 
@@ -138,7 +138,7 @@ Registrace z back-endu aplikace jsou užitečné v případě, že je nutné ov�
 
 ### <a name="what-is-the-push-notification-delivery-security-model"></a>Co je model zabezpečení doručení nabízených oznámení?
 
-Azure Notification Hubs používá model zabezpečení na základě [sdíleného přístupového podpisu](../storage/common/storage-dotnet-shared-access-signature-part-1.md). Tokeny sdíleného přístupového podpisu můžete použít na úrovni kořenového oboru názvů nebo na úrovni podrobného centra oznámení. Tokeny sdíleného přístupového podpisu je možné nastavit tak, aby se lišily od různých autorizačních pravidel, například pro odesílání oprávnění zpráv nebo pro naslouchání oprávněním pro oznámení. Další informace najdete v dokumentu [modelu zabezpečení Notification Hubs] .
+Azure Notification Hubs používá model zabezpečení na základě [sdíleného přístupového podpisu](../storage/common/storage-sas-overview.md). Tokeny sdíleného přístupového podpisu můžete použít na úrovni kořenového oboru názvů nebo na úrovni podrobného centra oznámení. Tokeny sdíleného přístupového podpisu je možné nastavit tak, aby se lišily od různých autorizačních pravidel, například pro odesílání oprávnění zpráv nebo pro naslouchání oprávněním pro oznámení. Další informace najdete v dokumentu [modelu zabezpečení Notification Hubs] .
 
 ### <a name="how-should-i-handle-sensitive-payload-in-push-notifications"></a>Jak můžu v nabízených oznámeních zpracovat citlivou datovou část?
 
@@ -179,7 +179,7 @@ Azure Notification Hubs šifruje všechna neaktivní zákaznická data s výjimk
 
 ### <a name="is-there-audit-log-capability"></a>Je k dispozici možnost protokolu auditu?
 
-Ano. Všechny operace správy Notification Hubs aktualizují protokol aktivit Azure, ke kterému se v [Azure Portal]zveřejňuje. Protokol aktivit Azure nabízí přehledy o operacích provedených u prostředků ve vašich předplatných. Pomocí protokolu aktivit můžete určit, kdo a kdy se mají u prostředků ve vašem předplatném provádět operace zápisu (PUT, POST, DELETE). Můžete také pochopit stav operací a dalších relevantních vlastností. Naopak. Protokol aktivit nezahrnuje operaci čtení (GET).
+Yes. Všechny operace správy Notification Hubs aktualizují protokol aktivit Azure, ke kterému se v [Azure Portal]zveřejňuje. Protokol aktivit Azure nabízí přehledy o operacích provedených u prostředků ve vašich předplatných. Pomocí protokolu aktivit můžete určit, kdo a kdy se mají u prostředků ve vašem předplatném provádět operace zápisu (PUT, POST, DELETE). Můžete také pochopit stav operací a dalších relevantních vlastností. Naopak. Protokol aktivit nezahrnuje operaci čtení (GET).
 
 ## <a name="monitoring-and-troubleshooting"></a>Monitorování a řešení potíží
 
@@ -203,15 +203,15 @@ Můžete také programově přistupovat k metrikám. Další informace najdete v
 [Azure Portal]: https://portal.azure.com
 [Ceny Notification Hubs]: https://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
-[Rozhraní REST API pro Notification Hubs]: https://msdn.microsoft.com/library/azure/dn530746.aspx
+[Rozhraní REST API pro Notification Hubs]: /previous-versions/azure/reference/dn530746(v=azure.100)
 [Mobile Services Pricing]: https://azure.microsoft.com/pricing/details/mobile-services/
-[Pokyny k registraci back-endu]: https://msdn.microsoft.com/library/azure/dn743807.aspx
-[Pokyny k registraci back-endu 2]: https://msdn.microsoft.com/library/azure/dn530747.aspx
-[Model zabezpečení Notification Hubs]: https://msdn.microsoft.com/library/azure/dn495373.aspx
-[Kurz zabezpečeného nabízení oznámení Notification Hubs]: https://azure.microsoft.com/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/
-[Řešení potíží s Notification Hubs]: https://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
+[Pokyny k registraci back-endu]: /previous-versions/azure/azure-services/dn743807(v=azure.100)
+[Pokyny k registraci back-endu 2]: /previous-versions/azure/azure-services/dn530747(v=azure.100)
+[Model zabezpečení Notification Hubs]: /previous-versions/azure/azure-services/dn495373(v=azure.100)
+[Kurz zabezpečeného nabízení oznámení Notification Hubs]: ./notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md
+[Řešení potíží s Notification Hubs]: ./notification-hubs-push-notification-fixer.md
 [Notification Hubs metriky]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
-[Registrace – export/import]: https://docs.microsoft.com/azure/notification-hubs/export-modify-registrations-bulk
+[Registrace – export/import]: ./export-modify-registrations-bulk.md
 [Azure Portal]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
 [App Service Pricing]: https://azure.microsoft.com/pricing/details/app-service/

@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b864cc8bc0e5d39967a2307bd98bda082b6cfd5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05f31993b7491dbfb0bff46c8fd2362b6bab0d4e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515223"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077785"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Zotavení po havárii a převzetí služeb při selhání zařízení StorSimple Virtual Array prostřednictvím webu Azure Portal
 
@@ -43,7 +44,7 @@ Zotavení po havárii probíhá prostřednictvím funkce převzetí služeb při
 
 ## <a name="prerequisites-for-device-failover"></a>Požadavky na převzetí služeb při selhání zařízení
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 V případě převzetí služeb při selhání zařízení se ujistěte, že jsou splněné následující předpoklady:
 
@@ -121,12 +122,12 @@ Provedením následujících kroků obnovíte zařízení na cílové virtuáln�
 
 5. V okně **deaktivovat** se zobrazí výzva k potvrzení. Deaktivace zařízení je *trvalý* proces, který nelze vrátit zpět. Také budete upozorněni na to, že vaše sdílené složky nebo svazky převedete do režimu offline na hostiteli. Zadejte název zařízení, který chcete potvrdit, a klikněte na **deaktivovat**.
    
-    ![](./media/storsimple-virtual-array-failover-dr/failover1.png)
+    ![Snímek obrazovky okna deaktivovat Pole název zařízení je vyplněno a zvýrazní se tlačítko deaktivovat.](./media/storsimple-virtual-array-failover-dr/failover1.png)
 6. Spustí se deaktivace. Po úspěšném dokončení deaktivace vám obdržíte oznámení.
    
-    ![](./media/storsimple-virtual-array-failover-dr/failover2.png)
+    ![Snímek obrazovky s indikátorem průběhu indikující, že zařízení je deaktivováno.](./media/storsimple-virtual-array-failover-dr/failover2.png)
 7. Na stránce zařízení se teď stav zařízení změní na **deaktivovaný**.
-    ![](./media/storsimple-virtual-array-failover-dr/failover3.png)
+    ![Snímek obrazovky se stránkou zařízení. Zobrazí se vlastnosti deaktivovaného zařízení, včetně stavu, který je uvedený jako deaktivovaný.](./media/storsimple-virtual-array-failover-dr/failover3.png)
 8. V okně **zařízení** vyberte a klikněte na deaktivované zdrojové zařízení pro převzetí služeb při selhání. 
 9. V okně **řídicí panel zařízení** klikněte na **převzít služby při selhání**. 
 10. V okně **převzetí služeb při selhání** postupujte takto:
@@ -139,22 +140,22 @@ Provedením následujících kroků obnovíte zařízení na cílové virtuáln�
 
     4. Klikněte na **převzetí služeb při selhání**.
     
-        ![](./media/storsimple-virtual-array-failover-dr/failover4.png)
+        ![Snímek obrazovky okna pro převzetí služeb při selhání se zdrojovým a cílovým zařízením, zaškrtnutou možností a zvýrazněným tlačítkem pro převzetí služeb při selhání.](./media/storsimple-virtual-array-failover-dr/failover4.png)
 11. Úloha převzetí služeb při selhání se inicializuje a obdržíte oznámení. Pokud chcete monitorovat převzetí služeb při selhání, přejdete na **zařízení > úlohy** .
     
-     ![](./media/storsimple-virtual-array-failover-dr/failover5.png)
+     ![Snímek obrazovky s indikátorem průběhu indikující, že zařízení převezme služby při selhání.](./media/storsimple-virtual-array-failover-dr/failover5.png)
 12. V okně **úlohy** uvidíte úlohu převzetí služeb při selhání vytvořenou pro zdrojové zařízení. Tato úloha provede předkontroly zotavení po havárii.
     
-    ![](./media/storsimple-virtual-array-failover-dr/failover6.png)
+    ![Snímek obrazovky znázorňující úspěšné spuštění úlohy převzetí služeb při selhání](./media/storsimple-virtual-array-failover-dr/failover6.png)
     
      Po úspěšném dokončení kontroly zotavení po havárii budou úlohy převzetí služeb při selhání zavedeny úlohy obnovení pro každou sdílenou složku nebo svazek, které existují na vašem zdrojovém zařízení.
     
-    ![](./media/storsimple-virtual-array-failover-dr/failover7.png)
+    ![Snímek obrazovky zobrazující podrobnosti úlohy převzetí služeb při selhání, například stav, zařízení a doba trvání.](./media/storsimple-virtual-array-failover-dr/failover7.png)
 13. Po dokončení převzetí služeb při selhání přejdete do okna **zařízení** .
     
     1. Vyberte a klikněte na zařízení StorSimple, které se použilo jako cílové zařízení pro proces převzetí služeb při selhání.
     2. Přejít na **nastavení > správa > sdílené složky** (nebo **svazky** , pokud server iSCSI). V okně **akcie** můžete zobrazit všechny sdílené složky (svazky) ze starého zařízení.
-        ![](./media/storsimple-virtual-array-failover-dr/failover9.png)
+        ![Snímek obrazovky okna zařízení Cílové zařízení je uvedené ve stavu online.](./media/storsimple-virtual-array-failover-dr/failover9.png)
 14. Budete muset [vytvořit alias DNS](https://support.microsoft.com/kb/168322) , aby se všechny aplikace, které se snaží připojit, mohly přesměrovat na nové zařízení.
 
 ## <a name="errors-during-dr"></a>Chyby během zotavení po havárii

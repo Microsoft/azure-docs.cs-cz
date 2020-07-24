@@ -11,11 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: f7c7358dc405b3db2b3f014bb99a96fa56580314
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a77bb5211d13f9b0566f4226163918a5310287bd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213920"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075729"
 ---
 # <a name="partitioning-tables-in-synapse-sql-pool"></a>Dělení tabulek v synapse fondu SQL
 
@@ -31,21 +32,33 @@ Dělení může přinést údržbu dat a výkon dotazů. Bez ohledu na to, jestl
 
 Hlavní výhodou dělení v synapse fondu SQL je zlepšení efektivity a výkonu načítání dat pomocí odstranění oddílu, přepínání a sloučení. Ve většině případů jsou data rozdělená na sloupec data, který je úzce svázaný s pořadím, ve kterém jsou data načtena do databáze. Jednou z největších výhod používání oddílů pro zachování dat, která brání protokolování transakcí. I když stačí vkládat, aktualizovat nebo odstraňovat data, může být nejjednodušším přístupem, přičemž při vytváření oddílů během procesu načítání může podstatně dojít k výraznému zlepšení výkonu.
 
-Přepínání oddílů lze použít pro rychlé odebrání nebo nahrazení oddílu tabulky.  Například tabulka faktů prodeje může obsahovat jenom data za posledních 36 měsíců. Na konci každého měsíce se z tabulky odstraní nejstarší měsíc prodejních dat.  Tato data je možné odstranit pomocí příkazu DELETE a odstranit data po nejstarší měsíc. Odstranění velkého množství dat řádek po řádku s příkazem Delete může trvat příliš mnoho času a také může vytvořit riziko velkých transakcí, u kterých dojde k chybnému vrácení zpět, pokud se něco nepovede. Lepším přístupem je vyřazení nejstaršího oddílu dat. V případě, že odstranění jednotlivých řádků může trvat hodiny, může odstranění celého oddílu trvat několik sekund.
+Přepínání oddílů lze použít pro rychlé odebrání nebo nahrazení oddílu tabulky.  Například tabulka faktů prodeje může obsahovat jenom data za posledních 36 měsíců. Na konci každého měsíce se z tabulky odstraní nejstarší měsíc prodejních dat.  Tato data je možné odstranit pomocí příkazu DELETE a odstranit data po nejstarší měsíc. 
+
+Odstranění velkého množství dat řádek po řádku s příkazem Delete může trvat příliš mnoho času a také může vytvořit riziko velkých transakcí, u kterých dojde k chybnému vrácení zpět, pokud se něco nepovede. Lepším přístupem je vyřazení nejstaršího oddílu dat. V případě, že odstranění jednotlivých řádků může trvat hodiny, může odstranění celého oddílu trvat několik sekund.
 
 ### <a name="benefits-to-queries"></a>Výhody pro dotazy
 
-K vylepšení výkonu dotazů je také možné použít dělení na oddíly. Dotaz, který aplikuje filtr na dělená data, může omezit kontrolu jenom na opravňující oddíly. Tato metoda filtrování se může vyhnout úplné kontrole tabulky a kontroluje jenom menší podmnožinu dat. Díky zavedení clusterovaných indexů columnstore jsou výhody eliminace predikátu méně užitečné, ale v některých případech může existovat výhoda pro dotazy. Například pokud je tabulka faktů prodeje rozdělena do 36 měsíců pomocí pole Datum prodeje, pak dotazy, které filtrují datum prodeje, mohou přeskočit hledání v oddílech, které se neshodují s filtrem.
+K vylepšení výkonu dotazů je také možné použít dělení na oddíly. Dotaz, který aplikuje filtr na dělená data, může omezit kontrolu jenom na opravňující oddíly. Tato metoda filtrování se může vyhnout úplné kontrole tabulky a kontroluje jenom menší podmnožinu dat. Díky zavedení clusterovaných indexů columnstore jsou výhody eliminace predikátu méně užitečné, ale v některých případech může existovat výhoda pro dotazy. 
+
+Například pokud je tabulka faktů prodeje rozdělena do 36 měsíců pomocí pole Datum prodeje, pak dotazy, které filtrují datum prodeje, mohou přeskočit hledání v oddílech, které se neshodují s filtrem.
 
 ## <a name="sizing-partitions"></a>Změna velikosti oddílů
 
-Zatímco rozdělení do oddílů lze využít ke zlepšení výkonu některých scénářů, vytvoření tabulky s **příliš mnoha** oddíly může za určitých okolností snížit výkon.  Tyto otázky jsou obzvláště pravdivé pro clusterované tabulky columnstore. Aby bylo vytváření oddílů užitečné, je důležité pochopit, kdy použít dělení a počet oddílů, které se mají vytvořit. Neexistuje žádné pevné rychlé pravidlo, které by bylo příliš mnoho oddílů, záleží na vašich datech a na počtu oddílů, které načítáte současně. Úspěšné schéma rozdělení na oddíly má obvykle desítky na stovky oddílů, nikoli tisíce.
+Zatímco rozdělení do oddílů lze využít ke zlepšení výkonu některých scénářů, vytvoření tabulky s **příliš mnoha** oddíly může za určitých okolností snížit výkon.  Tyto otázky jsou obzvláště pravdivé pro clusterované tabulky columnstore. 
 
-Při vytváření oddílů v **clusterovaných tabulkách columnstore** je důležité vzít v úvahu, kolik řádků patří do jednotlivých oddílů. Pro zajištění optimální komprese a výkonu clusterovaných tabulek columnstore je potřeba minimálně 1 000 000 řádků na distribuci a oddíl. Před vytvořením oddílů už synapse fond SQL každou tabulku rozdělí do 60 distribuovaných databází. Všechny oddíly přidané do tabulky jsou navíc k distribucím vytvořeným na pozadí. Pokud v tomto příkladu tabulka faktů prodeje obsahuje 36 měsíčních oddílů a vzhledem k tomu, že synapse fond SQL má 60 distribucí, tabulka faktů prodeje by měla obsahovat 60 000 000 řádků za měsíc nebo 2 100 000 000 řádky, když jsou vyplněny všechny měsíce. Pokud tabulka obsahuje méně než Doporučený minimální počet řádků na oddíl, zvažte použití méně oddílů, aby se zvýšil počet řádků na oddíl. Další informace najdete v článku věnovaném [indexování](sql-data-warehouse-tables-index.md) , který obsahuje dotazy, které mohou vyhodnocovat kvalitu indexů columnstore clusteru.
+Aby bylo vytváření oddílů užitečné, je důležité pochopit, kdy použít dělení a počet oddílů, které se mají vytvořit. Neexistuje žádné pevné rychlé pravidlo, které by bylo příliš mnoho oddílů, záleží na vašich datech a na počtu oddílů, které načítáte současně. Úspěšné schéma rozdělení na oddíly má obvykle desítky na stovky oddílů, nikoli tisíce.
+
+Při vytváření oddílů v **clusterovaných tabulkách columnstore** je důležité vzít v úvahu, kolik řádků patří do jednotlivých oddílů. Pro zajištění optimální komprese a výkonu clusterovaných tabulek columnstore je potřeba minimálně 1 000 000 řádků na distribuci a oddíl. Před vytvořením oddílů už synapse fond SQL každou tabulku rozdělí do 60 distribuovaných databází. 
+
+Všechny oddíly přidané do tabulky jsou navíc k distribucím vytvořeným na pozadí. Pokud v tomto příkladu tabulka faktů prodeje obsahuje 36 měsíčních oddílů a vzhledem k tomu, že synapse fond SQL má 60 distribucí, tabulka faktů prodeje by měla obsahovat 60 000 000 řádků za měsíc nebo 2 100 000 000 řádky, když jsou vyplněny všechny měsíce. Pokud tabulka obsahuje méně než Doporučený minimální počet řádků na oddíl, zvažte použití méně oddílů, aby se zvýšil počet řádků na oddíl. 
+
+Další informace najdete v článku věnovaném [indexování](sql-data-warehouse-tables-index.md) , který obsahuje dotazy, které mohou vyhodnocovat kvalitu indexů columnstore clusteru.
 
 ## <a name="syntax-differences-from-sql-server"></a>Rozdíly v syntaxi od SQL Server
 
-Synapse fond SQL zavádí způsob, jak definovat oddíly, které jsou jednodušší než SQL Server. Funkce dělení a schémata se v Synapsem fondu SQL nepoužívají, protože jsou v SQL Server. Místo toho je třeba určit dělený sloupcový a hraniční body. I když se syntaxe dělení může mírně lišit od SQL Server, základní koncepty jsou stejné. SQL Server a synapse fond SQL podporují jeden sloupec oddílu na tabulku, což může být oddíl s rozsahem. Další informace o dělení najdete v tématu [dělené tabulky a indexy](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Synapse fond SQL zavádí způsob, jak definovat oddíly, které jsou jednodušší než SQL Server. Funkce dělení a schémata se v Synapsem fondu SQL nepoužívají, protože jsou v SQL Server. Místo toho je třeba určit dělený sloupcový a hraniční body. 
+
+I když se syntaxe dělení může mírně lišit od SQL Server, základní koncepty jsou stejné. SQL Server a synapse fond SQL podporují jeden sloupec oddílu na tabulku, což může být oddíl s rozsahem. Další informace o dělení najdete v tématu [dělené tabulky a indexy](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 Následující příklad používá příkaz [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) k rozdělení tabulky FactInternetSales do sloupce OrderDateKey:
 
@@ -236,7 +249,11 @@ UPDATE STATISTICS [dbo].[FactInternetSales];
 
 ### <a name="load-new-data-into-partitions-that-contain-data-in-one-step"></a>Načtení nových dat do oddílů, které obsahují data v jednom kroku
 
-Načítání dat do oddílů pomocí přepínání oddílů je pohodlný způsob, jak vytvořit nová data v tabulce, která nejsou viditelná pro uživatele přepínačem v nových datech.  Může to být náročné na zaneprázdněné systémy, aby se mohla zabývat kolize uzamčení spojeného s přepínáním oddílů.  Chcete-li vymazat stávající data v oddílu, je k dismailu `ALTER TABLE` nutné použít k přepnutí dat.  `ALTER TABLE`V nových datech se pak vyžadoval jiný.  V synapse fondu SQL `TRUNCATE_TARGET` je možnost podporována v `ALTER TABLE` příkazu.  Pomocí `TRUNCATE_TARGET` `ALTER TABLE` příkazu přepíše existující data v oddílu novými daty.  Níže je uveden příklad, který používá `CTAS` k vytvoření nové tabulky s existujícími daty, vkládání nových dat a následné přepínání všech dat zpět do cílové tabulky, která Přepisuje stávající data.
+Načítání dat do oddílů pomocí přepínání oddílů je pohodlný způsob, jak připravit nová data v tabulce, která není viditelná pro uživatele.  Může to být náročné na zaneprázdněné systémy, aby se mohla zabývat kolize uzamčení spojeného s přepínáním oddílů.  
+
+Chcete-li vymazat stávající data v oddílu, je k dismailu `ALTER TABLE` nutné použít k přepnutí dat.  `ALTER TABLE`V nových datech se pak vyžadoval jiný.  
+
+V synapse fondu SQL `TRUNCATE_TARGET` je možnost podporována v `ALTER TABLE` příkazu.  Pomocí `TRUNCATE_TARGET` `ALTER TABLE` příkazu přepíše existující data v oddílu novými daty.  Níže je uveden příklad, který používá `CTAS` k vytvoření nové tabulky s existujícími daty, vkládání nových dat a následné přepínání všech dat zpět do cílové tabulky, která Přepisuje stávající data.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_NewSales]
@@ -338,7 +355,7 @@ Chcete-li se vyhnout definici tabulky z **rusting** v systému správy zdrojové
     DROP TABLE #partitions;
     ```
 
-S tímto přístupem kód ve správě zdrojového kódu zůstává statický a hodnoty hranic pro oddíly můžou být dynamické; vývoj databáze v průběhu času.
+V rámci tohoto přístupu kód ve správě zdrojového kódu zůstává statický a hodnoty hranic pro oddíly můžou být dynamické; vývoj databáze v průběhu času.
 
 ## <a name="next-steps"></a>Další kroky
 

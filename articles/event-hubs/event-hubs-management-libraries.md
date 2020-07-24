@@ -3,12 +3,12 @@ title: Knihovny pro správu – Azure Event Hubs | Microsoft Docs
 description: Tento článek poskytuje informace o knihovně, kterou můžete použít ke správě oborů názvů a entit Azure Event Hubs v rozhraní .NET.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: f3129ae5586a3096dda89eea3af21eefd1606f30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79656d95cf925c21b0f0c5f2b3bafe6348e0b553
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85312985"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074831"
 ---
 # <a name="event-hubs-management-libraries"></a>Knihovny pro správu Event Hubs
 
@@ -20,13 +20,13 @@ Knihovny pro správu služby Azure Event Hubs můžete použít k dynamickému z
 * Vytvoření, aktualizace, odstranění Event Hubs
 * Vytvoření, aktualizace, odstranění skupiny uživatelů
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít používat Event Hubs knihovny pro správu, je třeba ověřit pomocí Azure Active Directory (AAD). Služba AAD vyžaduje, abyste se ověřili jako instanční objekt, který poskytuje přístup k prostředkům Azure. Informace o vytváření instančního objektu najdete v jednom z těchto článků:  
 
 * [Použití Azure Portal k vytvoření aplikace služby Active Directory a instančního objektu, který má přístup k prostředkům](../active-directory/develop/howto-create-service-principal-portal.md)
 * [Vytvoření instančního objektu pro přístup k prostředkům pomocí Azure PowerShellu](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
-* [Vytvoření instančního objektu pro přístup k prostředkům pomocí Azure CLI](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md)
+* [Vytvoření instančního objektu pro přístup k prostředkům pomocí Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli)
 
 Tyto kurzy vám poskytnou `AppId` (ID klienta), `TenantId` a `ClientSecret` (ověřovací klíč), které se používají k ověřování pomocí knihoven pro správu. Pro skupinu prostředků, na které chcete spustit, musíte mít oprávnění **vlastníka** .
 

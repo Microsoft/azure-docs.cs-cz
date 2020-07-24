@@ -7,25 +7,25 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 07/09/2020
-ms.openlocfilehash: da09cb8aa112cdf927c1a67401ab3f6a92e85ece
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 59d19bd2a1dca2a3bc3c6ec3aee9e63b8f12b5d3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225116"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075188"
 ---
 # <a name="cognitive-services-docs-whats-new-for-june-1-2020---june-30-2020"></a>Cognitive Services Docs: co je nového pro 1. června 2020 – 30. června 2020
 
 Vítá vás novinky v Cognitive Services docs od 1. června 2020 do 30. června 2020. V tomto článku jsou uvedené některé hlavní změny v dokumentaci v průběhu tohoto období.
 
-## <a name="computer-vision"></a>Computer Vision
+## <a name="computer-vision"></a>Počítačové zpracování obrazu
 
 ### <a name="updated-articles"></a>Aktualizované články
 
 - [Rychlý Start: extrakce vytištěného textu a ručního textu pomocí Počítačové zpracování obrazu REST API a Java](/azure/cognitive-services/computer-vision/quickstarts/java-hand-text)
 - [Rychlý Start: extrakce vytištěného textu a ručního textu pomocí Počítačové zpracování obrazu REST API a Pythonu](/azure/cognitive-services/computer-vision/quickstarts/python-hand-text)
 
-## <a name="face"></a>Tvář
+## <a name="face"></a>Rozpoznávání tváře
 
 ### <a name="updated-articles"></a>Aktualizované články
 
@@ -69,16 +69,16 @@ Vítá vás novinky v Cognitive Services docs od 1. června 2020 do 30. června 
 ### <a name="new-articles"></a>Nové články
 
 - [Koncepce vlastních příkazů (Preview)](/azure/cognitive-services/speech-service/custom-commands-references)
-- [Přidání potvrzení do příkazu](/azure/cognitive-services/speech-service/how-to-custom-commands-add-confirmations)
-- [Konfigurovat parametr jako entitu externího katalogu](/azure/cognitive-services/speech-service/how-to-custom-commands-add-external-catalog-string-entity)
+- [Přidání potvrzení do příkazu](/azure/cognitive-services/speech-service/how-to-custom-commands-add-interaction-rules#add-confirmations-to-a-command)
+- [Konfigurovat parametr jako entitu externího katalogu](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameter-configuration#configure-parameter-as-external-catalog-entity)
 - [Použití šablon generování jazyka pro odezvy řeči](/azure/cognitive-services/speech-service/how-to-custom-commands-add-language-generation-templates)
-- [Implementace oprav v příkazu](/azure/cognitive-services/speech-service/how-to-custom-commands-add-one-step-correction)
+- [Implementace oprav v příkazu](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameter-configuration)
 - [Přidání parametrů do příkazů](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameters-to-commands)
-- [Přidat jednoduché příkazy](/azure/cognitive-services/speech-service/how-to-custom-commands-add-simple-commands)
-- [Přidat ověření do vlastních parametrů příkazu](/azure/cognitive-services/speech-service/how-to-custom-commands-add-validations)
-- [Vytvoření vlastní aplikace příkazů](/azure/cognitive-services/speech-service/how-to-custom-commands-create-empty-project)
+- [Přidat jednoduché příkazy](/azure/cognitive-services/speech-service/how-to-custom-commands-create-application-with-simple-commands)
+- [Přidat ověření do vlastních parametrů příkazu](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameter-configuration#add-validation-to-parameters)
+- [Vytvoření vlastní aplikace příkazů](/azure/cognitive-services/speech-service/how-to-custom-commands-create-application-with-simple-commands#create-empty-application)
 - [CI/CD pro Custom Speech](/azure/cognitive-services/speech-service/how-to-custom-speech-continuous-integration-continuous-deployment)
-- [Vytvoření hlasového asistenta end to-end pomocí vlastních příkazů](/azure/cognitive-services/speech-service/quickstart-custom-commands-e2e-application)
+- [Vytvoření hlasového asistenta end to-end pomocí vlastních příkazů](/azure/cognitive-services/speech-service/quickstart-custom-commands-application)
 - [Rychlý Start: testování modelu pomocí zvukového souboru v studiu řeči](/azure/cognitive-services/speech-service/quickstarts/speech-studio-test-model)
 - [Seznamte se se základy rozpoznávání mluvčího](/azure/cognitive-services/speech-service/speaker-recognition-basics)
 - [Co je služba Azure rozpoznávání mluvčího?](/azure/cognitive-services/speech-service/speaker-recognition-overview)
@@ -100,7 +100,7 @@ Vítá vás novinky v Cognitive Services docs od 1. června 2020 do 30. června 
 - [Rychlý Start: použití REST API Pythonu k volání služby Analýza textu rozpoznávání](/azure/cognitive-services/text-analytics/quickstarts/python)
 - [Rychlý start: Volání rozhraní API pro analýzu textu ve službách Cognitive Services s využitím jazyka Ruby](/azure/cognitive-services/text-analytics/quickstarts/ruby)
 
-## <a name="translator"></a>Překladač
+## <a name="translator"></a>Translator
 
 ### <a name="updated-articles"></a>Aktualizované články
 

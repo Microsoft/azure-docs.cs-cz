@@ -16,11 +16,12 @@ ms.date: 02/25/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/04/2019
-ms.openlocfilehash: 1f3c16e6fe1855cf7882d83e620c70d15ce3cb92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3bad65dbecd6e4a7d9bcb7fbdee6faafc31ead86
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77657518"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078017"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Diagnostika zrušených oznámení v Azure Notification Hubs
 
@@ -103,7 +104,7 @@ Každá dávka se odešle do služby nabízených oznámení, která zase přijm
 
 V takovém případě je registrace z databáze odebrána. Pak zopakujeme doručení oznámení pro zbývající zařízení v této dávce.
 
-Pokud chcete získat další informace o chybách při neúspěšném pokusu o doručení proti registraci, můžete použít Notification Hubs rozhraní REST API [na telemetrii zpráv: získat telemetrii zpráv s oznámeními](https://docs.microsoft.com/rest/api/notificationhubs/get-notification-message-telemetry) a [PNS zpětnou vazbu](https://msdn.microsoft.com/library/azure/mt705560.aspx). Vzorový kód najdete v [příkladu odeslání REST](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/).
+Pokud chcete získat další informace o chybách při neúspěšném pokusu o doručení proti registraci, můžete použít Notification Hubs rozhraní REST API [na telemetrii zpráv: získat telemetrii zpráv s oznámeními](/rest/api/notificationhubs/get-notification-message-telemetry) a [PNS zpětnou vazbu](/previous-versions/azure/reference/mt705560(v=azure.100)). Vzorový kód najdete v [příkladu odeslání REST](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/).
 
 ## <a name="push-notification-service-issues"></a>Problémy se službou nabízených oznámení
 
@@ -125,9 +126,9 @@ Tady jsou cesty pro diagnostiku hlavní příčiny odhozených oznámení v Noti
 
 #### <a name="push-notification-service-developer-portal"></a>Portál pro vývojáře služby nabízených oznámení
 
-Ověřte přihlašovací údaje v příslušném portálu pro vývojáře služby nabízených oznámení (APNs, FCM, Služba oznamování systému Windows atd.). Další informace najdete v tématu [kurz: posílání oznámení do Univerzální platforma Windows aplikací pomocí Azure Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification).
+Ověřte přihlašovací údaje v příslušném portálu pro vývojáře služby nabízených oznámení (APNs, FCM, Služba oznamování systému Windows atd.). Další informace najdete v tématu [kurz: posílání oznámení do Univerzální platforma Windows aplikací pomocí Azure Notification Hubs](./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
 
-#### <a name="azure-portal"></a>portál Azure
+#### <a name="azure-portal"></a>Portál Azure Portal
 
 Pokud chcete zkontrolovat přihlašovací údaje, které jste získali z portálu pro vývojáře služby nabízených oznámení, přejděte na kartu **zásady přístupu** v Azure Portal.
 
@@ -162,7 +163,7 @@ K odeslání zprávy testovacího oznámení můžete použít stránku pro **od
 ![Visual Studio: odeslání testu](./media/notification-hubs-push-notification-fixer/test-send-vs.png)
 
 > [!NOTE]
-> Pomocí sady Visual Studio můžete upravovat registraci pouze během vývoje a testování a s omezeným počtem registrací. Pokud potřebujete upravovat registrace hromadně, zvažte použití funkcí pro export a import, které jsou popsány v tématu [Postupy: Export a změna hromadných](https://msdn.microsoft.com/library/dn790624.aspx)zápisů.
+> Pomocí sady Visual Studio můžete upravovat registraci pouze během vývoje a testování a s omezeným počtem registrací. Pokud potřebujete upravovat registrace hromadně, zvažte použití funkcí pro export a import, které jsou popsány v tématu [Postupy: Export a změna hromadných](/previous-versions/azure/azure-services/dn790624(v=azure.100))zápisů.
 
 #### <a name="service-bus-explorer"></a>Service Bus Explorer
 
@@ -170,7 +171,7 @@ Mnoho zákazníků používá [Service Bus Exploreru](https://github.com/paolosa
 
 ### <a name="verify-message-notifications"></a>Ověření oznámení zprávy
 
-#### <a name="azure-portal"></a>portál Azure
+#### <a name="azure-portal"></a>Portál Azure Portal
 
 Pokud chcete vašim klientům poslat testovací oznámení, aniž byste museli ukončit a spustit službu back-end, vyberte v části **Podpora a řešení potíží**možnost **Odeslat test odeslat**.
 
@@ -184,7 +185,7 @@ Můžete také odeslat testovací oznámení ze sady Visual Studio.
 
 Další informace o použití Notification Hubs se sadou Visual Studio Průzkumník serveru najdete v těchto článcích:
 
-* [Jak zobrazit registrace zařízení pro centra oznámení](https://docs.microsoft.com/previous-versions/windows/apps/dn792122(v=win.10))
+* [Jak zobrazit registrace zařízení pro centra oznámení](/previous-versions/windows/apps/dn792122(v=win.10))
 * [Hluboká podrobně: Visual Studio 2013 Update 2 RC a Azure SDK 2,3]
 * [Oznamujeme vydání verze Visual Studio 2013 Update 3 a Azure SDK 2,4.]
 
@@ -247,7 +248,7 @@ Tato zpráva znamená, že přihlašovací údaje nakonfigurované v Notificatio
 
 ### <a name="review-telemetry"></a>Kontrola telemetrie
 
-#### <a name="azure-portal"></a>portál Azure
+#### <a name="azure-portal"></a>Portál Azure Portal
 
 Na portálu můžete získat rychlý přehled o všech aktivitách v centru oznámení.
 
@@ -265,7 +266,7 @@ Na portálu můžete získat rychlý přehled o všech aktivitách v centru ozn�
 
 #### <a name="programmatic-access"></a>Programový přístup
 
-Další informace o programovém přístupu najdete v tématu [programový přístup](https://docs.microsoft.com/previous-versions/azure/azure-services/dn458823(v=azure.100)).
+Další informace o programovém přístupu najdete v tématu [programový přístup](/previous-versions/azure/azure-services/dn458823(v=azure.100)).
 
 > [!NOTE]
 > Několik funkcí souvisejících s telemetriemi, jako je export a import registrací a přístup k telemetrie prostřednictvím rozhraní API, jsou k dispozici pouze na úrovni služby Standard. Pokud se pokusíte použít tyto funkce z úrovně služby Free nebo Basic, zobrazí se zpráva o výjimce, pokud použijete sadu SDK. Pokud používáte funkce přímo z rozhraní REST API, zobrazí se chyba HTTP 403 (zakázáno).
@@ -287,13 +288,13 @@ Další informace o programovém přístupu najdete v tématu [programový pří
 <!-- LINKS -->
 [Přehled Notification Hubs]: notification-hubs-push-notification-overview.md
 [Začínáme s Azure Notification Hubs]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
-[Šablony]: https://msdn.microsoft.com/library/dn530748.aspx
+[Šablony]: /previous-versions/azure/azure-services/dn530748(v=azure.100)
 [Přehled služby APN]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html
 [O zprávách FCM]: https://firebase.google.com/docs/cloud-messaging/concept-options
-[Export and modify registrations in bulk]: https://msdn.microsoft.com/library/dn790624.aspx
+[Export and modify registrations in bulk]: /previous-versions/azure/azure-services/dn790624(v=azure.100)
 [Service Bus Explorer code]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Explorer-f2abca5a
-[View device registrations for notification hubs]: https://msdn.microsoft.com/library/windows/apps/xaml/dn792122.aspx
+[View device registrations for notification hubs]: /previous-versions/windows/apps/dn792122(v=win.10)
 [Hluboká podrobně: Visual Studio 2013 Update 2 RC a Azure SDK 2,3]: https://azure.microsoft.com/blog/2014/04/09/deep-dive-visual-studio-2013-update-2-rc-and-azure-sdk-2-3/#NotificationHubs
 [Oznamujeme vydání verze Visual Studio 2013 Update 3 a Azure SDK 2,4.]: https://azure.microsoft.com/blog/2014/08/04/announcing-release-of-visual-studio-2013-update-3-and-azure-sdk-2-4/
-[EnableTestSend]: https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.enabletestsend?view=azure-dotnet
-[Programmatic telemetry access]: https://msdn.microsoft.com/library/azure/dn458823.aspx
+[EnableTestSend]: /dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.enabletestsend?view=azure-dotnet
+[Programmatic telemetry access]: /previous-versions/azure/azure-services/dn458823(v=azure.100)
