@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: e0f9bbf4e0d8edd153798b39f880f0adb8be6587
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 04a25b6b0b243744cc81c8b71a1f03e7c7375a68
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502268"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102557"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Vysvětlení restartování virtuálních počítačů – údržba vs. výpadek
 Existují tři scénáře, které mohou vést k ovlivnění virtuálního počítače v Azure: neplánovaná údržba hardwaru, neočekávané výpadky a plánovaná údržba.
@@ -99,7 +99,7 @@ Když se přihlásíte k odběru [plánovaných událostí](https://docs.microso
 
 
 ## <a name="combine-a-load-balancer-with-availability-zones-or-sets"></a>Kombinování nástroje pro vyrovnávání zatížení se zónami nebo sadami dostupnosti
-Zkombinujte [Azure Load Balancer](../articles/load-balancer/load-balancer-overview.md) se zónou dostupnosti nebo nastavte, aby se získala nejvyšší odolnost aplikace. Azure Load Balancer rozděluje provoz mezi víc virtuálních počítačů. Azure Load Balancer je součástí virtuálních počítačů úrovně Standard. Ne všechny úrovně virtuálních počítačů zahrnují nástroj Azure Load Balancer. Další informace o vyrovnávání zatížení virtuálních počítačů najdete v článku [Vyrovnávání zatížení virtuálních počítačů](../articles/virtual-machines/virtual-machines-linux-load-balance.md).
+Zkombinujte [Azure Load Balancer](../articles/load-balancer/load-balancer-overview.md) se zónou dostupnosti nebo nastavte, aby se získala nejvyšší odolnost aplikace. Azure Load Balancer rozděluje provoz mezi víc virtuálních počítačů. Azure Load Balancer je součástí virtuálních počítačů úrovně Standard. Ne všechny úrovně virtuálních počítačů zahrnují nástroj Azure Load Balancer. Další informace o vyrovnávání zatížení virtuálních počítačů najdete v článku [Vyrovnávání zatížení virtuálních počítačů](../articles/virtual-machines/linux/tutorial-load-balancer.md).
 
 Pokud nástroj pro vyrovnávání zatížení není nakonfigurovaný k vyrovnávání provozu mezi víc virtuálních počítačů, všechny plánované události údržby ovlivní jediný virtuální počítač obsluhující provoz a způsobí výpadek vrstvy aplikace. Umístěním více virtuálních počítačů na stejné vrstvě aplikace do stejné skupiny dostupnosti a pod jeden nástroj pro vyrovnávání zatížení umožníte nepřetržitou obsluhu provozu alespoň jednou instancí.
 

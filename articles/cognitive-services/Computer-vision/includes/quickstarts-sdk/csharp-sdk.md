@@ -9,18 +9,18 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: a8d27b77e210236216883bf630464324a47d2e80
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: c1406b5e7297b1d48b23d9dfa684e0d76b68139f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85073319"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102578"
 ---
 <a name="HOLTop"></a>
 
 [Referenční dokumentace](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ComputerVision)  |  [Balíček (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/)  |  [Ukázky](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Nejnovější verze [.NET Core SDK](https://dotnet.microsoft.com/download/).
@@ -70,7 +70,7 @@ Do třídy **programu** aplikace vytvořte proměnné pro koncový bod a klíč 
 V adresáři aplikace nainstalujte Počítačové zpracování obrazu klientskou knihovnu pro .NET pomocí následujícího příkazu:
 
 ```dotnetcli
-dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --version 5.0.0
+dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --version 6.0.0-preview.1
 ```
 
 Pokud používáte integrované vývojové prostředí (IDE) sady Visual Studio, je knihovna klienta k dispozici jako balíček NuGet ke stažení.
@@ -79,7 +79,7 @@ Pokud používáte integrované vývojové prostředí (IDE) sady Visual Studio,
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce sady Počítačové zpracování obrazu .NET SDK.
 
-|Name|Popis|
+|Název|Popis|
 |---|---|
 | [ComputerVisionClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet) | Tato třída je potřebná pro všechny funkce Počítačové zpracování obrazu. Vytvoříte jeho instanci s informacemi o předplatném a použijete ho k provádění většiny operací s imagí.|
 |[ComputerVisionClientExtensions](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclientextensions?view=azure-dotnet)| Tato třída obsahuje další metody pro **ComputerVisionClient**.|
@@ -135,7 +135,7 @@ Vložte libovolný z následujících bloků kódu do metody **AnalyzeImageUrl**
 }
 ```
 
-### <a name="analyze"></a>Analyzovat
+### <a name="analyze"></a>Analýza
 
 Metoda **AnalyzeImageAsync** vrací objekt **ImageAnalysis** , který obsahuje všechny extrahované informace.
 
@@ -211,7 +211,7 @@ Následující kód Vytiskne informace o typu obrázku &mdash; , ať už se jedn
 
 ## <a name="read-printed-and-handwritten-text"></a>Číst vytištěné a ručně psaný text
 
-Počítačové zpracování obrazu může číst zobrazený text v obrázku a převést jej na datový proud znaků. Kód v této části definuje metodu, `ExtractTextUrl` která používá objekt klienta k detekci a extrakci vytištěného nebo rukopisného textu v obrázku.
+Počítačové zpracování obrazu může číst zobrazený text v obrázku a převést jej na datový proud znaků. Další informace o rozpoznávání textu naleznete v koncepčním dokumentu [optického rozpoznávání znaků (OCR)](../../concept-recognizing-text.md#read-api) . Kód v této části definuje metodu, `BatchReadFileUrl` která používá objekt klienta ke zjištění a extrakci textu v obrázku.
 
 Přidejte volání metody do `Main` metody.
 
@@ -219,7 +219,7 @@ Přidejte volání metody do `Main` metody.
 
 ### <a name="set-up-test-image"></a>Nastavit testovací image
 
-Ve vaší třídě **programu** uložte odkaz na adresu URL obrázku, ze kterého chcete extrahovat text.
+Ve třídě **program** uložte odkaz na adresu URL obrázku, ze kterého chcete extrahovat text. Tento fragment kódu obsahuje vzorové obrázky pro tisk i rukopisný text.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extracttext_url)]
 
@@ -228,13 +228,13 @@ Ve vaší třídě **programu** uložte odkaz na adresu URL obrázku, ze kteréh
 
 ### <a name="call-the-read-api"></a>Volání rozhraní API pro čtení
 
-Definujte novou metodu pro čtení textu. Přidejte následující kód, který volá metodu **BatchReadFileAsync** pro daný obrázek. Tato operace vrátí ID operace a spustí asynchronní proces pro čtení obsahu obrázku.
+Definujte novou metodu pro čtení textu. Přidejte následující kód, který volá metodu **ReadAsync** pro daný obrázek. Tato operace vrátí ID operace a spustí asynchronní proces pro čtení obsahu obrázku.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extract_call)]
 
 ### <a name="get-read-results"></a>Získat výsledky čtení
 
-Potom Získejte ID operace vrácené voláním **BatchReadFileAsync** a použijte ji k dotazování služby na výsledky operace. Následující kód kontroluje operaci v intervalu 1 sekund, dokud nebudou vráceny výsledky. Pak zobrazí extrahovaná textová data do konzoly.
+Potom Získejte ID operace vrácené voláním **ReadAsync** a použijte ji k dotazování služby na výsledky operace. Následující kód kontroluje operaci v intervalu 1 sekund, dokud nebudou vráceny výsledky. Pak zobrazí extrahovaná textová data do konzoly.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extract_response)]
 

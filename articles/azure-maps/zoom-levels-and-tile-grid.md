@@ -1,18 +1,19 @@
 ---
-title: Úrovně přiblížení a mřížka dlaždic | Mapy Microsoft Azure
+title: Úrovně přiblížení a mřížka dlaždic ve Microsoft Azure Maps
 description: V tomto článku se dozvíte o úrovních přiblížení a mřížce dlaždic v mapách Microsoft Azure.
-author: Philmea
-ms.author: philmea
-ms.date: 01/22/2020
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 07/14/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: ''
-ms.openlocfilehash: b7dde6e1a77cebd1e88cc574d99e781ab55f0934
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+manager: philmea
+ms.openlocfilehash: 9493ad21847cca230606ff1641c9ac02c3355f53
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83123900"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87093047"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Úrovně přiblížení a mřížka dlaždic
 
@@ -23,15 +24,11 @@ Azure Maps použít souřadnicový systém kulové Mercator (EPSG: 3857). Projek
 
 Pro optimalizaci výkonu načítání a zobrazování map je mapa rozdělena na čtvercové dlaždice. Sada Azure Maps SDK používá dlaždice s velikostí 512 x 512 pixelů pro mapy cest a menší 256 × 256 pixelů pro satelitní obrazové bloky. Azure Maps poskytuje rastrové a vektorové dlaždice pro 23 úrovní přiblížení, očíslované od 0 do 22. Na úrovni přiblížení 0 se celý svět vejde na jednu dlaždici:
 
-<center>
-
-![Dlaždice světové mapy](./media/zoom-levels-and-tile-grid/world0.png)</center>
+:::image type="content" source="./media/zoom-levels-and-tile-grid/world0.png" alt-text="Dlaždice světové mapy":::
 
 Úroveň přiblížení 1 používá k vykreslení světa čtyři dlaždice: 2 x 2 čtverec
 
-<center>
-
-![rozložení dlaždice mapy 2x2](media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png)</center>
+:::image type="content" source="./media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png" alt-text="rozložení dlaždice mapy 2x2":::
 
 Každá další úroveň přiblížení rozděluje dlaždice předchozí ikony a vytvoří mřížku 2<sup>přiblížení x 2</sup> <sup>přiblížení</sup>. Úroveň přiblížení 22 je mřížka 2<sup>22</sup> x 2<sup>22</sup>nebo 4 194 304 x 4 194 304 (17 592 186 044 416 dlaždic celkem).
 
@@ -61,7 +58,7 @@ V následující tabulce je uveden úplný seznam hodnot pro úroveň přiblíž
 |17|1.2|307,2|
 |18|0.6|152,8|
 |19|0.3|76,4|
-|20|0,15|38,2|
+|20|0.15|38,2|
 |21|0,075|19,1|
 |22|0,0375|9,55|
 |23|0,01875|4,775|
@@ -79,11 +76,7 @@ var mapHeight = mapWidth;
 
 Vzhledem k tomu, že se šířka a výška mapy liší v každé úrovni přiblížení, jsou souřadnice v pixelech. Pixel v levém horním rohu mapy má vždy souřadnice pixelu (0, 0). Pixel v pravém dolním rohu mapy má souřadnice pixelu *(Width-1, Height-1)* nebo odkazující na rovnice v předchozí části *(vlastnost TileSize \* 2<sup>zoom</sup>– 1, vlastnost TileSize \* 2<sup>zoom</sup>-1)*. Pokud například použijete 512 čtvercových dlaždic na úrovni 2, souřadnicový pixel rozsah od (0, 0) do (2047, 2047), například:
 
-<center>
-
-![Mapa znázorňující rozměry v pixelech](media/zoom-levels-and-tile-grid/map-width-height.png)
-
-</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-width-height.png" alt-text="Mapa znázorňující rozměry v pixelech":::
 
 Poskytnutá Zeměpisná šířka a délka ve stupních a úroveň podrobností je souřadnice XY v pixelech vypočtené takto:
 
@@ -109,9 +102,7 @@ var numberOfTilesHigh = numberOfTilesWide;
 
 Na každé dlaždici se v pravém dolním rohu předávají souřadnice XY od (0, 0) vlevo nahoře *(2<sup>přiblížení</sup>– 1, 2<sup>přiblížení</sup>– 1)* . Například na úrovni přiblížení 2 je dlaždice v rozsahu od (0, 0) do (7, 7) následujícím způsobem:
 
-<center>
-
-![Mapa souřadnic dlaždice](media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png)</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png" alt-text="Mapa souřadnic dlaždice":::
 
 S ohledem na dvojici souřadnic XY bodových pixelů lze snadno určit souřadnice XY pro dlaždici, která obsahuje tento pixel:
 
@@ -125,17 +116,13 @@ Dlaždice jsou volány pomocí úrovně přiblížení. Souřadnice x a y odpov�
 
 Když určíte, která úroveň zvětšení se má použít, zapamatujte si, že každé umístění je na jeho dlaždici na pevné pozici. V důsledku toho počet dlaždic potřebných k zobrazení daného expanse oblasti závisí na konkrétním umístění mřížky lupy na světové mapě. Například pokud existují dva body 900 metrů, může trvat pouze tři dlaždice, aby bylo *možné* Zobrazit trasu mezi nimi na úrovni přiblížení 17. Pokud je však západní bod na pravé straně dlaždice a na levé straně dlaždice, může to mít čtyři dlaždice:
 
-<center>
-
-![Zvětšit zkušební měřítko](media/zoom-levels-and-tile-grid/zoomdemo_scaled.png)</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/zoomdemo_scaled.png" alt-text="Zvětšit zkušební měřítko":::
 
 Po určení úrovně přiblížení lze vypočítat hodnoty x a y. Levá horní dlaždice v každé mřížce lupy je x = 0, y = 0; pravá dolní dlaždice je na ose x = 2<sup>přiblížení-1</sup>, y = 2<sup>přiblížení-1</sup>.
 
 Tady je mřížka lupy pro úroveň přiblížení 1:
 
-<center>
-
-![Mřížka lupy pro úroveň přiblížení 1](media/zoom-levels-and-tile-grid/api_x_y.png)</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/api_x_y.png" alt-text="Mřížka lupy pro úroveň přiblížení 1":::
 
 ## <a name="quadkey-indices"></a>Quadkey indexy
 
@@ -156,9 +143,7 @@ quadkey = 100111 (base 2) = 213 (base 4) = "213"
 
 `Qquadkeys`mít několik zajímavých vlastností. Za prvé se délka `quadkey` (počet číslic) rovná úrovni přiblížení odpovídající dlaždice. Za druhé, `quadkey` Každá dlaždice začíná na `quadkey` své nadřazené dlaždici (obsahující dlaždici na předchozí úrovni). Jak je znázorněno v následujícím příkladu, dlaždice 2 je nadřízenou dlaždici 20 až 23:
 
-<center>
-
-![Jehlan dlaždice Quadkey](media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png)</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png" alt-text="Jehlan dlaždice Quadkey":::
 
 Nakonec `quadkeys` Zadejte jednorozměrný klíč indexu, který obvykle zachovává blízkost dlaždic v prostoru XY. Jinými slovy, dvě dlaždice, které mají okolní souřadnice XY `quadkeys` , jsou obvykle relativně blízko dohromady. To je důležité pro optimalizaci výkonu databáze, protože sousední dlaždice se ve skupinách často požadují a je žádoucí, aby tyto dlaždice zůstaly na stejných blocích na disku, aby se minimalizoval počet čtení z disku.
 

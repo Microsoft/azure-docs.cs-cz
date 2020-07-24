@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: ba2c4cad2e98730493862683cd6cdfdeef322c71
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ce9d759596ad4117433a336dae0546950f2f1183
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75469476"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102581"
 ---
-Pokud si přejete přejít přímo do, zobrazte si nebo stáhněte všechny <a href="https://aka.ms/speech/github-csharp">ukázky sady Speech SDK C#</a> na GitHubu. V opačném případě můžeme začít.
+Všechny <a href="https://aka.ms/speech/github-csharp">ukázky sady Speech SDK C#</a> můžete zobrazit nebo stáhnout na GitHubu. 

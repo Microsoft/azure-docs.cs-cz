@@ -8,13 +8,14 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 0b278841fc3693d79821d25caf7c9a208341dea1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc0dd5e76227c0814659b74afc2ac46c8ca4de73
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85242181"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102555"
 ---
-## <a name="common-scenarios"></a>Typické scénáře
+## <a name="common-scenarios"></a>Obvyklé scénáře
 Při navýšení zátěže můžou významně těžit z následujících scénářů:
 - **Zlepšení časů spuštění** – s využitím shlukování se vaše instance spustí výrazně rychleji. Například výchozí disk s operačním systémem pro virtuální počítače s podporou Premium je disk P4, což je zřízený výkon až 120 vstupně-výstupních operací a 25 MB/s. V případě shlukování může P4 přejít až na 3500 IOPS a 170 MB/s, což umožňuje čas spuštění zrychlit 6X.
 - **Zpracování úloh služby Batch** – některé úlohy aplikace jsou cyklické v podstatě a vyžadují pro většinu času základní výkon a vyžadují pro krátkou dobu vyšší výkon. Příkladem je účetní program, který zpracovává transakce denně, které vyžadují malé množství provozu na disku. Pak na konci měsíce slučuje sestavy, které potřebují mnohem větší objem provozu na disku.
@@ -27,7 +28,7 @@ Systém shlukování zatížení se vztahuje stejným způsobem na úrovni virtu
 
 ![Diagram shlukování s intervaly](media/managed-disks-bursting/bucket-diagram.jpg)
 
-Až na vás, jak budete chtít používat 30 minut shlukování. Můžete ji použít po dobu 30 minut po sobě jdoucí nebo občasně v průběhu dne. Když je produkt nasazený, je připravený na celý kredit a když dojde k vyčerpání kreditů, které trvá méně než jeden den, aby bylo možné plně obzásobit všechny kredity. Můžete nashromáždit a strávit své kredity na základě vašeho uvážení a 30 minutový interval nemusí být znovu nanejvýš na nárůst. Jedna z věcí, kterou si můžete všimnout při akumulaci, je to, že se u každého prostředku liší, protože vychází z nevyužitých vstupně-výstupních operací a MB/s pod jejich objemy výkonu. To znamená, že vyšší nároky na základní výkon můžou snížit množství jejich nárůstu rychleji než nižší směrné produkty. Například volnoběh disku P1 bez aktivity bude mít 120 vstupně-výstupních operací za sekundu, zatímco P20 disk během volnoběhu bez aktivity narůstá 2 300 vstupně-výstupních operací za sekundu.
+Až na vás, jak budete chtít používat 30 minut shlukování. Můžete ji použít po dobu 30 minut po sobě jdoucí nebo občasně v průběhu dne. Když je produkt nasazený, je připravený s úplnými kredity a při vyčerpání kreditů, které trvá déle než jeden den, získáte plnou zásobu kreditů. Můžete nashromáždit a strávit své kredity na základě vašeho uvážení a 30 minutový interval nemusí být znovu nanejvýš na nárůst. Jedna z věcí, kterou si můžete všimnout při akumulaci, je to, že se u každého prostředku liší, protože vychází z nevyužitých vstupně-výstupních operací a MB/s pod jejich objemy výkonu. To znamená, že vyšší nároky na základní výkon můžou snížit množství jejich nárůstu rychleji než nižší směrné produkty. Například volnoběh disku P1 bez aktivity bude mít 120 vstupně-výstupních operací za sekundu, zatímco P20 disk během volnoběhu bez aktivity narůstá 2 300 vstupně-výstupních operací za sekundu.
 
 ## <a name="bursting-states"></a>Stavy shlukování
 Existují tři stavy, ve kterých může být prostředek zapnutý s povoleným roztržením:

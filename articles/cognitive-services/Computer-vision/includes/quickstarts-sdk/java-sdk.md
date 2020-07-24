@@ -9,18 +9,18 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 3d52e83aa574dcd506270dc8e2f244a9f96add53
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 6506dd0a0aea1957db85658e4f70aed4df72d071
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85073321"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102579"
 ---
 <a name="HOLTop"></a>
 
 [Referenční dokumentace](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable)  |  [Artefakt (Maven)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/)  |  [Ukázky](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Aktuální verze sady [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
@@ -91,7 +91,7 @@ dependencies {
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce Počítačové zpracování obrazu Java SDK.
 
-|Name|Popis|
+|Název|Popis|
 |---|---|
 | [ComputerVisionClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) | Tato třída je potřebná pro všechny funkce Počítačové zpracování obrazu. Vytvoří se jeho instance s informacemi o předplatném a Vy ho použijete k vytvoření instancí jiných tříd.|
 |[ComputerVision](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision?view=azure-java-stable)| Tato třída pochází z objektu klienta a přímo zpracovává všechny operace obrázků, jako je analýza obrázků, detekce textu a generování miniatur.|
@@ -140,7 +140,7 @@ Dále určete, které vizuální funkce chcete ve své analýze extrahovat. Úpl
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_features)]
 
-### <a name="analyze"></a>Analyzovat
+### <a name="analyze"></a>Analýza
 Tato metoda vytiskne podrobné výsledky do konzoly pro každý obor analýzy obrázků. Doporučujeme obklopit toto volání metody v bloku try/catch. Metoda **analyzeImageInStream** vrací objekt **ImageAnalysis** , který obsahuje všechny extrahované informace.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_analyze)]
@@ -210,7 +210,7 @@ Počítačové zpracování obrazu může číst zobrazený text v obrázku a p�
 
 ### <a name="call-the-recognize-api"></a>Volání rozhraní API pro rozpoznávání
 
-Nejprve použijte následující kód k volání metody **recognizePrintedTextInStream** pro daný obrázek. Když přidáte tento kód do projektu, je třeba nahradit hodnotu `localTextImagePath` cestou k místní imagi. 
+Nejprve použijte následující kód k volání metody **recognizePrintedTextInStream** pro daný obrázek. Když přidáte tento kód do projektu, je třeba nahradit hodnotu `localTextImagePath` cestou k místní imagi. Můžete si stáhnout [ukázkovou bitovou kopii](https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/cognitive-services/Computer-vision/Images/readsample.jpg) , kterou chcete použít.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_call)]
 

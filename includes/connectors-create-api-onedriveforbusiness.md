@@ -3,28 +3,40 @@ ms.service: logic-apps
 ms.topic: include
 author: ecfan
 ms.author: estfan
-ms.date: 11/03/2016
-ms.openlocfilehash: 3a0cb48e7fe5f3eef101f644e4f72fcfa2689d6e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/21/2020
+ms.openlocfilehash: 06a503e800309d8689735417931820d9f16a6e75
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74789442"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102562"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Účet [OneDrivu](https://OneDrive.com) 
+* Účet [OneDrivu pro firmy](https://OneDrive.com) 
 
-Než budete moct účet OneDrivu pro firmy použít v aplikaci logiky, musíte aplikaci logiky autorizovat, aby se připojila k vašemu účtu OneDrivu pro firmy. Naštěstí to můžete provést snadno v rámci aplikace logiky na webu Azure Portal. 
+Než budete moct použít účet OneDrivu pro firmy s Logic Apps, musíte autorizovat Logic Apps a připojit se k účtu OneDrivu pro firmy v Azure Portal.
 
-Tady je postup, jak autorizovat aplikaci logiky pro připojení k účtu OneDrivu pro firmy:
+Pomocí následujícího postupu autorizujete Logic Apps připojení k účtu OneDrivu pro firmy:  
 
-1. Pokud chcete vytvořit připojení k OneDrivu pro firmy, v návrháři aplikace logiky vyberte v rozevíracím seznamu **Zobrazit spravovaná rozhraní API Microsoftu** a potom do vyhledávacího pole zadejte *OneDrive pro firmy* . Vyberte aktivační událost nebo akci, kterou chcete použít:  
-   ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-1.png)
-2. Pokud jste ještě nevytvořili žádná připojení k OneDrivu pro firmy, zobrazí se výzva k zadání přihlašovacích údajů pro OneDrive pro firmy. Tyto přihlašovací údaje budou použity k autorizaci aplikace logiky k připojení a přístup k datům účtu OneDrivu pro firmy:  
-   ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-2.png)
-3. Zadejte uživatelské jméno a heslo pro OneDrive pro firmy, abyste mohli autorizovat vaši aplikaci logiky:  
-   ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-3.png)   
-4. Všimněte si, že připojení bylo vytvořeno a vy teď můžete pokračovat dalšími kroky ve vaší aplikaci logiky:  
-   ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-4.png)   
+1. Přihlaste se k webu Azure Portal. 
 
+1. V části **služby Azure**vyberte **Logic Apps**. Pak v seznamu vyberte název vaší aplikace logiky.
+
+1. V nabídce aplikace logiky vyberte **Návrhář aplikace logiky** v části **vývojové nástroje**.
+
+1. V Návrháři Logic Apps v rozevíracím seznamu vyberte **Zobrazit spravovaná rozhraní API Microsoftu** a potom do vyhledávacího pole zadejte *OneDrive pro firmy* . Vyberte aktivační událost nebo akci, která se má použít:  
+
+   ![Snímek obrazovky návrháře Logic Apps, který zobrazuje Trigger opakování s akcemi rozhraní API OneDrivu pro firmy.](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-1.png)
+
+2. Pokud jste ještě nevytvořili žádná připojení k OneDrivu pro firmy, postupujte podle pokynů k zadání přihlašovacích údajů pro OneDrive pro firmy. Tyto přihlašovací údaje se používají k autorizaci aplikace logiky pro přístup k datům účtu OneDrivu pro firmy:  
+
+   ![Snímek obrazovky návrháře Logic Apps a zobrazení výzvy k přihlášení pro OneDrive pro firmy](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-2.png)
+
+3. Zadání uživatelského jména a hesla OneDrivu pro firmy k autorizaci vaší aplikace logiky:  
+
+   ![Snímek přihlašovací stránky OneDrivu pro firmy, na které se zobrazuje výzva k přihlášení](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-3.png)   
+
+4. Připojení je teď uvedené v kroku. Vyberte Uložit a pak pokračujte v vytváření aplikace logiky. 
+
+   ![Snímek obrazovky návrháře Logic Apps zobrazující aktivační událost s uvedeným připojením OneDrivu pro firmy.](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-4.png)   

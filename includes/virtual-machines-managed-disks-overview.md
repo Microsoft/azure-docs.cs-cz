@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/24/2020
+ms.date: 07/17/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c37c5a125bce23f8f2a813b5df4516323c2a2c12
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 2ef1fab7a6f32f45ee3047a24610085a2133a339
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83343442"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102556"
 ---
 ## <a name="benefits-of-managed-disks"></a>Výhody spravovaných disků
 
@@ -45,22 +45,30 @@ K ochraně před místními haváriemi se [Azure Backup](../articles/backup/back
 
 ### <a name="upload-your-vhd"></a>Nahrání virtuálního pevného disku
 
- Přímé nahrávání usnadňuje přenos VHD na spravovaný disk Azure. Dříve museli byste postupovat podle dalšího Zahrnutého procesu, který zahrnuje přípravu vašich dat v účtu úložiště. Nyní je k dispozici méně kroků. Nahrávání na místní virtuální počítače do Azure je snazší, nahrajte na velké spravované disky a proces zálohování a obnovení se zjednodušuje. Také snižuje náklady tím, že vám umožní nahrávat data na spravované disky přímo bez jejich připojení k virtuálním počítačům. K nahrání virtuálních pevných disků do velikosti 32 TiB můžete použít přímé nahrávání.
+Přímé nahrávání usnadňuje přenos VHD na spravovaný disk Azure. Dříve museli byste postupovat podle dalšího Zahrnutého procesu, který zahrnuje přípravu vašich dat v účtu úložiště. Nyní je k dispozici méně kroků. Nahrávání na místní virtuální počítače do Azure je snazší, nahrajte na velké spravované disky a proces zálohování a obnovení se zjednodušuje. Také snižuje náklady tím, že vám umožní nahrávat data na spravované disky přímo bez jejich připojení k virtuálním počítačům. K nahrání virtuálních pevných disků do velikosti 32 TiB můžete použít přímé nahrávání.
 
- Informace o tom, jak přenést virtuální pevný disk do Azure, najdete v článcích [CLI](../articles/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli.md) nebo [PowerShell](../articles/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md) .
+Informace o tom, jak přenést virtuální pevný disk do Azure, najdete v článcích [CLI](../articles/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli.md) nebo [PowerShell](../articles/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md) .
 
-## <a name="encryption"></a>Šifrování
+## <a name="security"></a>Zabezpečení
+
+### <a name="private-links"></a>Privátní odkazy
+
+Managed disks podporuje používání privátních odkazů k importu nebo exportu spravovaného disku, který je interní do vaší sítě. Privátní odkazy umožňují vygenerovat identifikátor URI sdíleného přístupového podpisu (SAS) pro nepřipojené spravované disky a snímky, které můžete použít k exportu dat do jiných oblastí pro regionální rozšiřování, zotavení po havárii a analýzu forenzní. Identifikátor URI SAS můžete použít také k přímému nahrání virtuálního pevného disku na prázdný disk z místního prostředí. Teď můžete využít [privátní odkazy](../articles/private-link/private-link-overview.md) k omezení exportu a importu spravovaných disků tak, aby se mohly vyskytovat jenom v rámci vaší virtuální sítě Azure. Soukromé odkazy vám umožní zajistit, aby data byla přenášena pouze v rámci zabezpečené páteřní sítě Microsoftu.
+
+Informace o tom, jak povolit privátní odkazy pro import nebo Export spravovaného disku, najdete v článcích o [CLI](../articles/virtual-machines/linux/disks-export-import-private-links-cli.md) nebo na [portálu](../articles/virtual-machines/disks-enable-private-links-for-import-export-portal.md) .
+
+### <a name="encryption"></a>Šifrování
 
 Managed disks nabízí dva různé druhy šifrování. První je šifrování na straně serveru (SSE), které provádí služba úložiště. Druhá je Azure Disk Encryption (ADE), kterou můžete povolit na discích s operačním systémem a datových discích pro vaše virtuální počítače.
 
-### <a name="server-side-encryption"></a>Šifrování na straně serveru
+#### <a name="server-side-encryption"></a>Šifrování na straně serveru
 
-[Šifrování na straně serveru Azure](../articles/virtual-machines/windows/disk-encryption.md) zajišťuje šifrování v klidovém prostředí a chrání vaše data, aby splňovala závazky zabezpečení vaší organizace a dodržování předpisů. Šifrování na straně serveru je ve výchozím nastavení povolené pro všechny spravované disky, snímky a image ve všech oblastech, kde jsou dostupné spravované disky. (Dočasné disky se naopak nešifrují Šifrování služby Storage; Podívejte se na [diskové role: dočasné disky](#temporary-disk)).
+Šifrování na straně serveru poskytuje šifrování v klidovém prostředí a chrání vaše data, aby splňovala závazky zabezpečení vaší organizace a dodržování předpisů. Šifrování na straně serveru je ve výchozím nastavení povolené pro všechny spravované disky, snímky a image ve všech oblastech, kde jsou dostupné spravované disky. (Dočasné disky na druhé straně nejsou šifrovány šifrováním na straně serveru, pokud nepovolíte šifrování na hostiteli; viz [role disku: dočasné disky](#temporary-disk)).
 
-Můžete buď dovolit, aby Azure spravoval vaše klíče za vás, jedná se o klíče spravované platformou, nebo můžete klíče spravovat sami, jedná se o klíče spravované zákazníkem. Další podrobnosti najdete na [stránce s nejčastějšími dotazy Managed disks](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) .
+Můžete buď dovolit, aby Azure spravoval vaše klíče za vás, jedná se o klíče spravované platformou, nebo můžete klíče spravovat sami, jedná se o klíče spravované zákazníkem. Podrobnosti najdete v článku [o šifrování na straně serveru Azure Disk Storage](../articles/virtual-machines/windows/disk-encryption.md) .
 
 
-### <a name="azure-disk-encryption"></a>Azure Disk Encryption
+#### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
 Azure Disk Encryption umožňuje šifrovat operační systém a datové disky používané virtuálním počítačem s IaaS. Toto šifrování zahrnuje spravované disky. V systému Windows se jednotky šifrují pomocí standardní technologie šifrování BitLockeru v oboru. Pro Linux jsou disky šifrované pomocí technologie DM-crypt. Proces šifrování je integrovaný s Azure Key Vault, abyste mohli řídit a spravovat klíče pro šifrování disků. Další informace najdete v tématu [Azure Disk Encryption pro virtuální](../articles/virtual-machines/linux/disk-encryption-overview.md) počítače se [systémem Linux nebo Azure Disk Encryption pro virtuální počítače s Windows](../articles/virtual-machines/windows/disk-encryption-overview.md).
 
@@ -82,9 +90,9 @@ Tento disk má maximální kapacitu 2 048 GiB.
 
 ### <a name="temporary-disk"></a>Dočasný disk
 
-Každý virtuální počítač obsahuje dočasný disk, což není spravovaný disk. Dočasný disk poskytuje krátkodobé úložiště pro aplikace a procesy a je určen pouze k ukládání dat, jako jsou například stránky nebo odkládací soubory. Data na dočasném disku se můžou během události [údržby](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) nebo při [opětovném nasazení virtuálního počítače](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)ztratit. Během úspěšného standardního restartování virtuálního počítače se uchovávají data na dočasném disku.  
+Každý virtuální počítač obsahuje dočasný disk, což není spravovaný disk. Dočasný disk poskytuje krátkodobé úložiště pro aplikace a procesy a je určen pouze k ukládání dat, jako jsou například stránky nebo odkládací soubory. Data na dočasném disku mohou být ztracena během [události údržby](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) nebo při [opětovném nasazení virtuálního počítače](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json). Během úspěšného standardního restartování virtuálního počítače se uchovávají data na dočasném disku.  
 
-Na virtuálních počítačích se systémem Azure Linux je dočasný disk typicky/dev/sdb a na virtuálních počítačích s Windows dočasný disk je ve výchozím nastavení D: Dočasný disk není šifrovaný šifrováním na straně serveru (viz [šifrování](#encryption)).
+Na virtuálních počítačích se systémem Azure Linux je dočasný disk typicky/dev/sdb a na virtuálních počítačích s Windows dočasný disk je ve výchozím nastavení D: Pokud na hostiteli nepovolíte šifrování, dočasný disk není zašifrovaný šifrováním na straně serveru.
 
 ## <a name="managed-disk-snapshots"></a>Snímky spravovaných disků
 

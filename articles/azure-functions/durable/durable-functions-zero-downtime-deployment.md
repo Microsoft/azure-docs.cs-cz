@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 45f87898f7da432e5bdd09061e74c33a1a8fe41b
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 11bbc30179cc27f4799b1fd2869cb312dfa34473
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165698"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87093064"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Nasazení s nulovou dobou výpadku pro Durable Functions
 
-[Model spolehlivého spuštění](durable-functions-checkpointing-and-replay.md) Durable Functions vyžaduje, aby orchestrace byly deterministické, což vytvoří další výzvu, která se při nasazení aktualizací zváží. Pokud nasazení obsahuje změny signatur funkcí aktivity nebo logiky nástroje Orchestrator, instance orchestrace v rámci letu selžou. Tato situace je obzvláště problémem pro instance dlouhotrvajících orchestrací, což může představovat hodiny nebo dny v práci.
+[Model spolehlivého spuštění](./durable-functions-orchestrations.md) Durable Functions vyžaduje, aby orchestrace byly deterministické, což vytvoří další výzvu, která se při nasazení aktualizací zváží. Pokud nasazení obsahuje změny signatur funkcí aktivity nebo logiky nástroje Orchestrator, instance orchestrace v rámci letu selžou. Tato situace je obzvláště problémem pro instance dlouhotrvajících orchestrací, což může představovat hodiny nebo dny v práci.
 
 Aby nedošlo k těmto selháním, máte dvě možnosti: 
 - Nastavte zpoždění nasazení, dokud se nedokončí všechny spuštěné instance orchestrace.
@@ -52,7 +52,7 @@ Tento scénář nastavíte pomocí následujícího postupu.
 
 1. U každého slotu nastavte [nastavení aplikace AzureWebJobsStorage](../functions-app-settings.md#azurewebjobsstorage) na připojovací řetězec sdíleného účtu úložiště. Tento připojovací řetězec účtu úložiště používá modul runtime Azure Functions. Tento účet je používán modulem runtime Azure Functions a spravuje klíče funkce.
 
-1. Pro každou slot vytvořte nové nastavení aplikace, například `DurableManagementStorage` . Nastavte jeho hodnotu na připojovací řetězec různých účtů úložiště. Tyto účty úložiště používá rozšíření Durable Functions pro [spolehlivé provádění](durable-functions-checkpointing-and-replay.md). Pro jednotlivé sloty použijte samostatný účet úložiště. Toto nastavení neoznačujte jako nastavení slotu nasazení.
+1. Pro každou slot vytvořte nové nastavení aplikace, například `DurableManagementStorage` . Nastavte jeho hodnotu na připojovací řetězec různých účtů úložiště. Tyto účty úložiště používá rozšíření Durable Functions pro [spolehlivé provádění](./durable-functions-orchestrations.md). Pro jednotlivé sloty použijte samostatný účet úložiště. Toto nastavení neoznačujte jako nastavení slotu nasazení.
 
 1. V částihost.jsaplikace Function App [na durableTask souboru](durable-functions-bindings.md#hostjson-settings)zadejte `azureStorageConnectionStringName` název nastavení aplikace, které jste vytvořili v kroku 3.
 
@@ -172,4 +172,3 @@ Další informace najdete v tématu [Správa instancí v Durable Functions v Azu
 
 > [!div class="nextstepaction"]
 > [Durable Functions správy verzí](durable-functions-versioning.md)
-

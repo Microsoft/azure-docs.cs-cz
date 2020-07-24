@@ -7,11 +7,11 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/15/2020
 ms.author: ralphe
-ms.openlocfilehash: 0f7cbdeef8b6721dcd91c6910a10c8f90441a1ee
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 1658f924d4c40fe58f5ee868d68ce021263e8b05
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76264554"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102577"
 ---
-Pokud si přejete přejít přímo v, zobrazte si nebo stáhněte všechny [ukázky sady Speech SDK pro sadu Speech](https://aka.ms/speech/github-cpp) na GitHubu. V opačném případě můžeme začít.
+Všechny [ukázky sady Speech SDK pro sadu Speech](https://aka.ms/speech/github-cpp) můžete zobrazit nebo stáhnout na GitHubu. 

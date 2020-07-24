@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d63ec0c2d82ec316a61771b4642731c932b045cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e7386e21442b5a76aae656a36e2858b52ecef65
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84224950"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102561"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
 
@@ -36,15 +36,17 @@ Po nainstalování se přihlaste k relaci PowerShellu pomocí `Connect-AzAccount
 
 Chcete-li vytvořit přírůstkový snímek s Azure PowerShell, nastavte konfiguraci pomocí parametru [New-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) s `-Incremental` parametrem a pak jej předejte jako proměnnou do [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) prostřednictvím `-Snapshot` parametru.
 
-Nahraďte `<yourDiskNameHere>` , `<yourResourceGroupNameHere>` a `<yourDesiredSnapShotNameHere>` hodnotami a pak můžete použít následující skript k vytvoření přírůstkového snímku:
-
 ```PowerShell
+$diskName = "yourDiskNameHere>"
+$resourceGroupName = "yourResourceGroupNameHere"
+$snapshotName = "yourDesiredSnapshotNameHere"
+
 # Get the disk that you need to backup by creating an incremental snapshot
-$yourDisk = Get-AzDisk -DiskName <yourDiskNameHere> -ResourceGroupName <yourResourceGroupNameHere>
+$yourDisk = Get-AzDisk -DiskName $diskName -ResourceGroupName $resourceGroupName
 
 # Create an incremental snapshot by setting the SourceUri property with the value of the Id property of the disk
 $snapshotConfig=New-AzSnapshotConfig -SourceUri $yourDisk.Id -Location $yourDisk.Location -CreateOption Copy -Incremental 
-New-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere> -SnapshotName <yourDesiredSnapshotNameHere> -Snapshot $snapshotConfig 
+New-AzSnapshot -ResourceGroupName $resourceGroupName -SnapshotName $snapshotName -Snapshot $snapshotConfig 
 ```
 
 Můžete identifikovat přírůstkové snímky ze stejného disku s `SourceResourceId` vlastnostmi a a `SourceUniqueId` vlastnostmi snímků. `SourceResourceId`je ID prostředku Azure Resource Manager nadřazeného disku. `SourceUniqueId`je hodnota zděděná z `UniqueId` Vlastnosti disku. Pokud byste chtěli odstranit disk a pak vytvořit nový disk se stejným názvem, změní se hodnota `UniqueId` Vlastnosti.
@@ -52,7 +54,7 @@ Můžete identifikovat přírůstkové snímky ze stejného disku s `SourceResou
 Pomocí a můžete `SourceResourceId` `SourceUniqueId` vytvořit seznam všech snímků přidružených k určitému disku. Nahraďte `<yourResourceGroupNameHere>` hodnotou a pak můžete použít následující příklad k vypsání stávajících přírůstkových snímků:
 
 ```PowerShell
-$snapshots = Get-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere>
+$snapshots = Get-AzSnapshot -ResourceGroupName $resourceGroupName
 
 $incrementalSnapshots = New-Object System.Collections.ArrayList
 foreach ($snapshot in $snapshots)

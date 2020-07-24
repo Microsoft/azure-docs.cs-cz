@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 479891513eb48e4ced4c1dff2feb3215b3c8ea57
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a505900f4452ed1597231a95051a8f72235616f3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86544576"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102586"
 ---
 [Referenční dokumentace](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src)  |  [Balíček (Maven)](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md)
 
@@ -73,7 +73,7 @@ V `main` metodě aplikace vytvořte proměnné pro koncový bod a klíč Azure p
 
 
 ```java
-public static void Main(string[] args)
+public static void main(String[] args)
 {
     String key = System.getenv("FORM_RECOGNIZER_KEY");
     String endpoint = System.getenv("FORM_RECOGNIZER_ENDPOINT");
@@ -133,9 +133,9 @@ Také budete muset přidat odkazy na adresy URL pro školení a testování dat.
 > Fragmenty kódu v této příručce používají vzdálené formuláře, ke kterým přistupovali pomocí adres URL. Chcete-li místo toho zpracovat dokumenty v místním formuláři, přečtěte si související metody v [referenční dokumentaci](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview).
 
 ```java
-    string trainingDataUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>";
-    string formUrl = "<SAS-URL-of-a-form-in-blob-storage>";
-    string receiptUrl = "https://docs.microsoft.com/azure/cognitive-services/form-recognizer/media"
+    String trainingDataUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>";
+    String formUrl = "<SAS-URL-of-a-form-in-blob-storage>";
+    String receiptUrl = "https://docs.microsoft.com/azure/cognitive-services/form-recognizer/media"
     + "/contoso-allinone.jpg";
 
     // Call Form Recognizer scenarios:
@@ -179,7 +179,7 @@ Vrácená hodnota je kolekce objektů **FormPage** : jedna pro každou stránku 
     contentResult.forEach(formPage -> {
         // Table information
         System.out.println("----Recognizing content ----");
-        System.out.printf("Has width: %d and height: %d, measured with unit: %s.%n", formPage.getWidth(),
+        System.out.printf("Has width: %f and height: %f, measured with unit: %s.%n", formPage.getWidth(),
             formPage.getHeight(),
             formPage.getUnit());
         formPage.getTables().forEach(formTable -> {
@@ -202,7 +202,7 @@ Chcete-li rozpoznat potvrzení z identifikátoru URI, použijte metodu **beginRe
 
 ```java
 private static void AnalyzeReceipt(
-    FormRecognizerClient recognizerClient, string receiptUri)
+    FormRecognizerClient recognizerClient, String receiptUri)
 {
     SyncPoller<OperationResult, List<RecognizedReceipt>> syncPoller =
         formRecognizerClient.beginRecognizeReceiptsFromUrl(receiptUri);
@@ -303,7 +303,7 @@ Následující metoda naplňuje model v dané sadě dokumentů a vytiskne stav m
 
 ```java
 private static String TrainModel(
-    FormRecognizerClient trainingClient, string trainingDataUrl)
+    FormRecognizerClient trainingClient, String trainingDataUrl)
 {
     String trainingSetSource = "{unlabeled_training_set_SAS_URL}";
     SyncPoller<OperationResult, CustomFormModel> trainingPoller =
@@ -500,7 +500,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 * [Azure Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Od klientů pro rozpoznávání vyvolat `ErrorResponseException` výjimky. Pokud se například pokusíte zadat neplatnou adresu URL zdroje souboru, bude `ErrorResponseException` vyvolána chyba, která signalizuje chybu. V následujícím fragmentu kódu je chyba zpracována řádným zachycením výjimky a zobrazením dalších informací o chybě.
 

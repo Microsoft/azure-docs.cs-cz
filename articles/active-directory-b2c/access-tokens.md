@@ -8,14 +8,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/12/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: de5c478ac6641fe5b1e342c063d134f70084b2ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be43b74e7128f9b250d25f8bdb2642c6f7b41d2a
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85201442"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87115538"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Vyžádání přístupového tokenu v Azure Active Directory B2C
 
@@ -26,7 +27,7 @@ V tomto článku se dozvíte, jak požádat o přístupový token pro webovou ap
 > [!NOTE]
 > **Služba Azure AD B2C nepodporuje řetězy webového rozhraní API (za běhu).** – Mnoho architektur zahrnuje webové rozhraní API, které potřebuje volat jiné webové rozhraní API pro příjem dat, jak je zabezpečené Azure AD B2C. Tento scénář je běžný u klientů, které mají back-end webového rozhraní API, který zase volá jinou službu. Tento scénář zřetězeného webového rozhraní API můžete podporovat pomocí udělení přihlašovacích údajů nosiče OAuth 2,0 JWT, jinak označovaného jako tok za běhu. Tok prováděný jménem se ale v Azure AD B2C v tuto chvíli neimplementuje.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Vytvořte uživatelský tok](tutorial-create-user-flows.md) , který uživatelům umožní přihlásit se k aplikaci a přihlásit se k ní.
 - Pokud jste to ještě neudělali, [přidejte aplikaci webového rozhraní API do tenanta Azure Active Directory B2C](add-web-api-application.md).

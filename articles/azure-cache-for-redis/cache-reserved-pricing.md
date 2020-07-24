@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 8af8db6b6853d6b8cbd4ba1105f05ebb9bcf771b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4ea8db464c7cae57b80837ced9f8886a8b3cf4a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84974836"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87093013"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>Platba za Azure cache pro výpočetní prostředky Redis s využitím rezervované kapacity
 
@@ -32,7 +32,7 @@ Podrobnosti o tom, jak se zákazníkům z podnikových zákazníků a průběžn
 
 Velikost rezervace by měla být založená na celkové velikosti paměti používané existující nebo již nasazenou mezipamětí v konkrétní oblasti a pomocí stejné úrovně služeb.
 
-Řekněme například, že spouštíte dvě mezipamětí – jeden na 13 GB a druhý v 26 GB. Budete potřebovat alespoň jeden rok. Řekněme, že plánujete škálovat stávající 13 GB mezipaměti na 26 GB po dobu v měsíci, abyste splnili sezónní poptávku, a pak znovu naplánovali možnosti horizontálního navýšení kapacity. V takovém případě můžete koupit jednu mezipaměť 1 – 1. mezipaměť P2 nebo 3 – mezipaměť P1 na jednoletou rezervaci k maximalizaci úspor. Získáte slevu na celkové množství vyrovnávací paměti, kterou rezervujete, a nezávisle na tom, jak se tato částka přiděluje napříč mezipamětí.
+Řekněme například, že spouštíte dvě mezipamětí – jeden na 13 GB a druhý v 26 GB. Budete potřebovat alespoň jeden rok. Řekněme, že plánujete škálovat stávající 13 GB mezipaměti na 26 GB po dobu v měsíci, abyste splnili sezónní poptávku, a pak znovu naplánovali možnosti horizontálního navýšení kapacity. V takovém případě můžete koupit jednu mezipaměť 1 P2 a 1, nebo 3% mezipamětí na základě jednorázové rezervace k maximalizaci úspor. Získáte slevu na celkové množství vyrovnávací paměti, kterou rezervujete, a nezávisle na tom, jak se tato částka přiděluje napříč mezipamětí.
 
 
 ## <a name="buy-azure-cache-for-redis-reserved-capacity"></a>Koupit mezipaměť Azure pro Redis rezervovanou kapacitu
@@ -48,14 +48,14 @@ Velikost rezervace by měla být založená na celkové velikosti paměti použ�
 
 V následující tabulce jsou popsána povinná pole.
 
-| Pole | Description |
+| Pole | Popis |
 | :------------ | :------- |
 | Předplatné   | Předplatné použité pro platbu za mezipaměť Azure pro rezervaci rezervované kapacity Redis Platební metodou předplatného se účtují náklady na front-end v mezipaměti Azure pro rezervaci rezervované kapacity Redis. Typ předplatného musí být smlouva Enterprise (číslo nabídky: MS-AZR-0017P nebo MS-AZR-0148P) nebo samostatná smlouva s cenami s průběžnými platbami (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P). V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití. U jednotlivých předplatných s průběžnými platbami se poplatky účtují na základě platební karty nebo platby na faktuře v předplatném.
 | Rozsah | Rozsah rezervace může zahrnovat jedno nebo víc předplatných (sdílený rozsah). Pokud vyberete: </br></br> **Shared**, na službu Azure cache pro instance Redis spuštěné v rámci vašeho fakturačního kontextu se použije sleva rezervace. U podnikových zákazníků je sdíleným oborem registrace a zahrnuje všechna předplatná v rámci registrace. U zákazníků s průběžnými platbami jsou v rozsahu Sdílený všechna předplatná s průběžnými platbami vytvořená správcem účtu.</br></br> **Jedno předplatné**– pro instance Redis v tomto předplatném se pro instance služby Azure Cache používá sleva rezervace. </br></br> **Jedna skupina prostředků**– pro instance Redis ve vybraném předplatném a vybrané skupině prostředků v rámci tohoto předplatného se použije sleva rezervované pro Azure cache.
 | Oblast | Oblast Azure, která je pokrytá mezipamětí Azure pro rezervaci rezervované kapacity Redis
 | Cenová úroveň | Úroveň služby pro servery Azure cache pro Redis.
-| Pojem | Jeden rok nebo tři roky
-| Množství | Množství výpočetních prostředků zakoupených v mezipaměti Azure pro rezervaci rezervované kapacity Redis. Množství je počet mezipamětí ve vybrané oblasti Azure a úrovni služby, které jsou rezervované, a obdrží fakturační slevu. Pokud například používáte nebo plánujete spustit mezipaměť Azure pro servery Redis s celkovou kapacitou mezipaměti 26 GB v oblasti Východní USA, pak byste zadali počet 26 pro maximalizaci výhod všech mezipamětí.
+| Termín | Jeden rok nebo tři roky
+| Množství | Množství výpočetních prostředků zakoupených v mezipaměti Azure pro rezervaci rezervované kapacity Redis. Množství je počet mezipamětí ve vybrané oblasti Azure a úrovni služby, které jsou rezervované, a obdrží fakturační slevu. Pokud například používáte nebo plánujete spustit mezipaměť Azure pro servery Redis s celkovou kapacitou mezipaměti 26 GB v oblasti Východní USA, zadejte množství, které vám poskytne ekvivalent 26 GB pro maximalizaci výhod všech mezipamětí. Může se jednat o 1 – P3 nebo 2 P2 Caches.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Zrušení, výměna nebo refundace rezervací
 

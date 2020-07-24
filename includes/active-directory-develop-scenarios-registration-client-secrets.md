@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/18/2018
+ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: a5d34ac7eea50b67bd679d8cb8ddecf7ca277abd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3acdbb93dd20f0b89e4f99d64f5f7a30ce40623
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76773388"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102559"
 ---
 ## <a name="register-secrets-or-certificates"></a>Registrace tajných klíčů nebo certifikátů
 
@@ -31,12 +31,10 @@ Správa přihlašovacích údajů klienta se stane na stránce **certifikáty & 
 
 ![Stránka & tajných klíčů certifikátů](../articles/active-directory/develop/media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets.png)
 
-- Při registraci důvěrné klientské aplikace vygeneruje služba Azure AD tajný klíč aplikace (také nazvaný tajný klíč klienta). K této generaci dojde, když vyberete **nový tajný klíč klienta**. V tomto okamžiku je nutné zkopírovat tajný řetězec do schránky pro použití ve vaší aplikaci, než vyberete **Uložit**. Tento řetězec se už nebude prezentovat.
+- Pokud chcete vytvořit *tajný klíč klienta* , vyberte **nový tajný klíč klienta** v registraci aplikace v Azure Portal. Když vytváříte tajný klíč klienta, je _nutné_ před navigací z podokna **certifikáty & tajných** kódů nahrát řetězec tajného kódu. Řetězec tajného klíče se už nezobrazuje znovu.
 - Během registrace aplikace použijete tlačítko **Odeslat certifikát** k nahrání certifikátu. Azure AD podporuje jenom certifikáty, které jsou v aplikaci registrované přímo, a nedodržují řetězy certifikátů.
 
 Podrobnosti najdete v tématu [rychlý Start: Konfigurace klientské aplikace pro přístup k webovým rozhraním API | Přidejte do své aplikace přihlašovací údaje](../articles/active-directory/develop/quickstart-configure-app-access-web-apis.md#add-credentials-to-your-web-application).
-
-
 
 ### <a name="register-client-secrets-by-using-powershell"></a>Registrace klientských tajných klíčů pomocí PowerShellu
 

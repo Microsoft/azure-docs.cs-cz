@@ -10,14 +10,14 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5e014634ecb251f05710de16daee30d72dae619e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 74007f5d10d58cf9680d4531304098cabe9b6d8b
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81685898"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87115667"
 ---
-# <a name="about-azure-key-vault-certificates"></a>Informace o Azure Key Vaultch certifikátů
+# <a name="about-azure-key-vault-certificates"></a>Informace o certifikátech ve službě Azure Key Vault
 
 Podpora certifikátů Key Vault poskytuje správu certifikátů x509 a následující chování:  
 
@@ -66,7 +66,7 @@ V odpovědi jsou k dispozici další atributy jen pro čtení, které jsou k dis
 -   *NBF*: IntDate: obsahuje hodnotu data certifikátu x509.  
 
 > [!Note] 
-> Pokud Key Vault certifikát vyprší, bude se adresovat klíč a tajný kód nebude fungovat.  
+> Pokud vyprší platnost certifikátu ve službě Key Vault, jeho adresovatelný klíč a tajný klíč přestanou fungovat.  
 
 ### <a name="tags"></a>Značky
 
@@ -81,10 +81,10 @@ Zásady certifikátu obsahují informace o tom, jak vytvořit a spravovat život
 
 Když se od začátku vytvoří certifikát Key Vault, musí se zadat zásada. Zásada určuje, jak se má vytvořit tato Key Vault verze certifikátu nebo další verze certifikátu Key Vault. Jakmile je zásada navázána, nepožaduje se u následných operací vytvoření budoucích verzí. Pro všechny verze Key Vaultho certifikátu existuje jenom jedna instance zásady.  
 
-Zásady certifikátu na nejvyšší úrovni obsahují následující informace:  
+Zásady certifikátu na nejvyšší úrovni obsahují následující informace (jejich definice najdete [tady](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)):  
 
 -   Vlastnosti certifikátu x509: obsahuje název subjektu, alternativní názvy subjektu a další vlastnosti používané k vytvoření žádosti o certifikát x509.  
--   Klíčové vlastnosti: obsahuje typ klíče, délku klíče, exportovatelné a znovu použít klíčová pole. Tato pole instruují Trezor klíčů, jak vygenerovat klíč.  
+-   Klíčové vlastnosti: obsahuje typ klíče, délku klíče, exportovatelné a ReuseKeyOnRenewal pole. Tato pole instruují Trezor klíčů, jak vygenerovat klíč.  
 -   Vlastnosti tajného klíče: obsahuje tajné vlastnosti, jako je typ obsahu adresovatelných tajných klíčů, aby se vygenerovala tajná hodnota pro načtení certifikátu jako tajného klíče.  
 -   Akce životního cyklu: obsahuje akce životního cyklu pro certifikát KV. Každá akce životnosti obsahuje:  
 
@@ -150,7 +150,7 @@ Pokud je zásada certifikátu nastavená na automatické obnovení, pošle se na
 
 ## <a name="certificate-access-control"></a>Access Control certifikátu
 
- Řízení přístupu pro certifikáty je spravované pomocí Key Vault a poskytuje Key Vault, které tyto certifikáty obsahují. Zásady řízení přístupu pro certifikáty se liší od zásad řízení přístupu pro klíče a tajné klíče ve stejné Key Vault. Uživatelé mohou vytvořit jeden nebo více trezorů pro ukládání certifikátů, aby bylo možné zachovat vhodné segmentaci a správu certifikátů.  
+ Řízení přístupu k certifikátům zajišťuje služba Key Vault, ve které se certifikáty nacházejí. Zásady řízení přístupu pro certifikáty se liší od zásad řízení přístupu pro klíče a tajné klíče ve stejné Key Vault. Uživatelé mohou vytvořit jeden nebo více trezorů pro ukládání certifikátů, aby bylo možné zachovat vhodné segmentaci a správu certifikátů.  
 
  Následující oprávnění se dají použít, pro jednotlivé hlavní objekty, v položce řízení přístupu tajných klíčů v trezoru klíčů a pozorně zrcadlí operace povolené u tajného objektu:  
 
@@ -183,4 +183,4 @@ Další informace najdete v referenčních informacích o [operacích certifiká
 - [Informace o klíčích](../keys/about-keys.md)
 - [Informace o tajných kódech](../secrets/about-secrets.md)
 - [Ověřování, žádosti a odpovědi](../general/authentication-requests-and-responses.md)
-- [Průvodce vývojáře pro Key Vault](../general/developers-guide.md)
+- [Průvodce vývojáře pro službu Key Vault](../general/developers-guide.md)
