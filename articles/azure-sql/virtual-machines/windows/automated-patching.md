@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f1f564a36a3f0103832bc81bbbc65d2818c03143
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 822d74c6f080a1bb1e5e5af38bdf2c221af16d52
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232001"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086757"
 ---
 # <a name="automated-patching-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Automatizované opravy pro SQL Server na virtuálních počítačích Azure (Správce prostředků)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -51,7 +51,7 @@ Pokud chcete používat automatizované opravy, vezměte v úvahu následující
 
 **Azure PowerShell**:
 
-* Pokud plánujete nakonfigurovat automatizované opravy pomocí PowerShellu, [nainstalujte nejnovější příkazy Azure PowerShell](/powershell/azure/overview) .
+* Pokud plánujete nakonfigurovat automatizované opravy pomocí PowerShellu, [nainstalujte nejnovější příkazy Azure PowerShell](/powershell/azure/) .
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
@@ -114,7 +114,7 @@ Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -VMName $vmname -ResourceG
 
 Na základě tohoto příkladu popisuje následující tabulka praktický efekt na cílovém virtuálním počítači Azure:
 
-| Parametr | Efekt |
+| Parametr | Účinek |
 | --- | --- |
 | **DayOfWeek** |Opravy se nainstalují každý čtvrtek. |
 | **MaintenanceWindowStartingHour** |Začněte s aktualizacemi na 11:10:00. |

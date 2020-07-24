@@ -6,14 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/05/2020
+ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 0e24bcb54fd26d4a3d983681b3348ef736b277cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ff0bb6d593a199bd249441cf484d1f0580774ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82884342"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086043"
 ---
 # <a name="enable-and-manage-blob-versioning"></a>Povolení a správa verzí objektů BLOB
 
@@ -67,7 +68,7 @@ Další informace o nasazení prostředků pomocí šablon v Azure Portal najdet
 
 ## <a name="modify-a-blob-to-trigger-a-new-version"></a>Úprava objektu BLOB tak, aby aktivoval novou verzi
 
-Následující příklad kódu ukazuje, jak aktivovat vytvoření nové verze pomocí klientské knihovny Azure Storage pro .NET verze 12. Před spuštěním tohoto příkladu se ujistěte, že jste povolili správu verzí pro váš účet úložiště.
+Následující příklad kódu ukazuje, jak aktivovat vytvoření nové verze pomocí klientské knihovny Azure Storage pro .NET, verze [12.5.0-Preview. 5](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.0-preview.5) nebo novější. Před spuštěním tohoto příkladu se ujistěte, že jste povolili správu verzí pro váš účet úložiště.
 
 Tento příklad vytvoří objekt blob bloku a pak aktualizuje metadata objektu BLOB. Aktualizace metadat objektu BLOB aktivuje vytvoření nové verze. Příklad načte počáteční verzi a aktuální verzi a zobrazí, že metadata obsahují pouze aktuální verze.
 

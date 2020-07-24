@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: mimckitt
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d100f054da5f82bc4dea51e054a28cca07f5de7b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d14ddf297afc68fd4e17795c4106271bc026c5a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81258826"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085669"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Použití monitorování a diagnostiky pomocí virtuálních počítačů s Windows a Azure Resource Manager šablon
 Rozšíření Azure Diagnostics poskytuje funkce pro monitorování a diagnostiku na virtuálním počítači Azure se systémem Windows. Tyto možnosti můžete na virtuálním počítači povolit zahrnutím rozšíření jako části šablony Azure Resource Manager. Další informace o začlenění všech rozšíření v rámci šablony virtuálního počítače najdete v tématu [vytváření Azure Resource Manager šablon s rozšířeními virtuálních počítačů](../windows/template-description.md#extensions) . Tento článek popisuje, jak můžete přidat rozšíření Azure Diagnostics do šablony virtuálního počítače s Windows.  
@@ -78,7 +79,7 @@ Hodnota vlastnosti *Name* se dá použít k odkazování na rozšíření ve sku
 
 *TypeHandlerVersion* určuje verzi rozšíření, která se má použít. Nastavení podverze *autoUpgradeMinorVersion* na **hodnotu true** zajistí, že získáte nejnovější podverzi rozšíření, která je k dispozici. Důrazně doporučujeme, abyste vždycky nastavili *autoUpgradeMinorVersion* vždy na **true** , abyste vždy používali nejnovější dostupné diagnostické rozšíření se všemi novými funkcemi a opravami chyb. 
 
-Element *Settings* obsahuje vlastnosti konfigurace pro rozšíření, které lze nastavit a načíst zpět z rozšíření (někdy označovaného jako veřejná konfigurace). Vlastnost *xmlcfg* obsahuje konfiguraci založenou na XML pro diagnostické protokoly, čítače výkonu atd. shromažďované agentem diagnostiky. Další informace o samotném schématu XML najdete v tématu věnovaném [schématu konfigurace diagnostiky](https://msdn.microsoft.com/library/azure/dn782207.aspx) . Běžnou praxí je uložit skutečnou konfiguraci XML jako proměnnou v šabloně Azure Resource Manager a potom zřetězit a kódování Base64, aby se nastavila hodnota pro *xmlcfg*. Další informace o tom, jak soubor XML ukládat do proměnných, najdete v části o [proměnných konfigurace diagnostiky](#diagnostics-configuration-variables) . Vlastnost *storageAccount* Určuje název účtu úložiště, do kterého se budou přenášet diagnostická data. 
+Element *Settings* obsahuje vlastnosti konfigurace pro rozšíření, které lze nastavit a načíst zpět z rozšíření (někdy označovaného jako veřejná konfigurace). Vlastnost *xmlcfg* obsahuje konfiguraci založenou na XML pro diagnostické protokoly, čítače výkonu atd. shromažďované agentem diagnostiky. Další informace o samotném schématu XML najdete v tématu věnovaném [schématu konfigurace diagnostiky](/azure/azure-monitor/platform/diagnostics-extension-schema-windows) . Běžnou praxí je uložit skutečnou konfiguraci XML jako proměnnou v šabloně Azure Resource Manager a potom zřetězit a kódování Base64, aby se nastavila hodnota pro *xmlcfg*. Další informace o tom, jak soubor XML ukládat do proměnných, najdete v části o [proměnných konfigurace diagnostiky](#diagnostics-configuration-variables) . Vlastnost *storageAccount* Určuje název účtu úložiště, do kterého se budou přenášet diagnostická data. 
 
 Vlastnosti v *protectedSettings* (někdy označované jako soukromá konfigurace) lze nastavit, ale po nastavení nelze číst znovu. Povaha jen pro zápis *protectedSettings* je užitečná pro ukládání tajných kódů, jako je klíč účtu úložiště, do kterého se zapisují diagnostická data.    
 
@@ -116,7 +117,7 @@ Předchozí fragment kódu JSON pro diagnostiku definuje proměnnou *accountid* 
 
 Vlastnost *xmlcfg* pro rozšíření diagnostiky je definována pomocí více proměnných, které jsou zřetězeny dohromady. Hodnoty těchto proměnných jsou v XML, takže musí být při nastavení proměnných JSON správně uvozeny řídicími znaky.
 
-Následující příklad popisuje konfigurační XML diagnostiky, který shromažďuje standardní čítače výkonu na úrovni systému spolu s některými protokoly událostí systému Windows a protokoly infrastruktury diagnostiky. Byl označený a správně naformátovaný, aby bylo možné konfiguraci přímo vložit do oddílu Variables vaší šablony. V tématu [schéma konfigurace diagnostiky](https://msdn.microsoft.com/library/azure/dn782207.aspx) si můžete přečíst příklad kódu XML pro snadnější čtení.
+Následující příklad popisuje konfigurační XML diagnostiky, který shromažďuje standardní čítače výkonu na úrovni systému spolu s některými protokoly událostí systému Windows a protokoly infrastruktury diagnostiky. Byl označený a správně naformátovaný, aby bylo možné konfiguraci přímo vložit do oddílu Variables vaší šablony. V tématu [schéma konfigurace diagnostiky](/azure/azure-monitor/platform/diagnostics-extension-schema-windows) si můžete přečíst příklad kódu XML pro snadnější čtení.
 
 ```json
 "wadlogs": "<WadCfg> <DiagnosticMonitorConfiguration overallQuotaInMB=\"4096\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration\"> <DiagnosticInfrastructureLogs scheduledTransferLogLevelFilter=\"Error\"/> <WindowsEventLog scheduledTransferPeriod=\"PT1M\" > <DataSource name=\"Application!*[System[(Level = 1 or Level = 2)]]\" /> <DataSource name=\"Security!*[System[(Level = 1 or Level = 2)]]\" /> <DataSource name=\"System!*[System[(Level = 1 or Level = 2)]]\" /></WindowsEventLog>",
@@ -178,4 +179,4 @@ Každá tabulka WADMetrics obsahuje následující sloupce:
 ## <a name="next-steps"></a>Další kroky
 * Úplnou ukázkovou šablonu virtuálního počítače s Windows s diagnostickým rozšířením najdete v tématu [201-VM-monitoring-Diagnostics-Extension](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-monitoring-diagnostics-extension) .   
 * Nasazení šablony Azure Resource Manager pomocí [Azure PowerShell](../windows/ps-template.md) nebo [příkazového řádku Azure](../linux/create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* Další informace o [vytváření šablon Azure Resource Manager](../../resource-group-authoring-templates.md)
+* Další informace o [vytváření šablon Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md)

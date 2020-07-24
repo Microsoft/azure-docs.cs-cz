@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
-ms.openlocfilehash: 0d76bf29efeb40f9f29f80b6e3e6414f5e9b6fc8
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 3ab706b9cdf3c071fd5d3ceca732cff6b660db6b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203264"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086553"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>Připojení HDInsightu k místní síti
 
@@ -42,10 +42,10 @@ V následujícím diagramu jsou zelenými řádky požadavky na prostředky, kte
 
 ![Diagram postupu při řešení požadavků DNS v konfiguraci](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](./hdinsight-hadoop-linux-use-ssh-unix.md).
-* Pokud používáte PowerShell, budete potřebovat [AZ Module](https://docs.microsoft.com/powershell/azure/overview).
+* Pokud používáte PowerShell, budete potřebovat [AZ Module](https://docs.microsoft.com/powershell/azure/).
 * Pokud chcete použít rozhraní příkazového řádku Azure a ještě jste ho nenainstalovali, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="create-virtual-network-configuration"></a>Vytvořit konfiguraci virtuální sítě
@@ -63,7 +63,7 @@ Pomocí následujících dokumentů se naučíte, jak vytvořit Virtual Network 
 
 Tyto kroky používají [Azure Portal](https://portal.azure.com) k vytvoření virtuálního počítače Azure. Další způsoby vytvoření virtuálního počítače najdete v tématu [Vytvoření virtuálního počítače – Azure CLI](../virtual-machines/linux/quick-create-cli.md) a [Vytvoření virtuálního počítače – Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md).  K vytvoření virtuálního počítače se systémem Linux, který používá software DNS [BIND](https://www.isc.org/downloads/bind/) , použijte následující postup:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
   
 1. V horní nabídce vyberte **+ vytvořit prostředek**.
 

@@ -1,5 +1,5 @@
 ---
-title: Problémy s diagnostikou virtuálních počítačů s Windows – Azure
+title: Problémy s diagnostikou virtuálních počítačů s Windows – klesnout 2019 – Azure
 description: Jak používat funkci diagnostiky virtuálních klientských počítačů Windows k diagnostice problémů.
 services: virtual-desktop
 author: Heidilohr
@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b1822f6a5bf0d3ac4217a43978dfcc739044e812
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0aad1c780c6695c771d3cfea04509acde65c051e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84235553"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085856"
 ---
 # <a name="identify-and-diagnose-issues"></a>Identifikace a diagnostika problémů
 

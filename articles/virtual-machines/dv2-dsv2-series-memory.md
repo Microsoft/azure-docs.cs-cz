@@ -7,11 +7,12 @@ ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 7dbc1f111225ecbe40329594479a8469f8bd8418
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12c6246af59172b303cebd2d3344469f88ce1966
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84694704"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085737"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>Paměťově optimalizovaná Dv2 a Dsv2-Series
 
@@ -26,6 +27,10 @@ ACU: 210–250
 Premium Storage: nepodporováno
 
 Ukládání Premium Storage do mezipaměti: nepodporováno
+
+Migrace za provozu: podporováno
+
+Aktualizace pro zachování paměti: podporováno
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS/čtení MB/s/zápis MB/s | Maximální počet datových disků/propustnost: IOPS | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
 |---|---|---|---|---|---|---|
@@ -48,6 +53,10 @@ Premium Storage: podporováno
 
 Ukládání Premium Storage do mezipaměti: podporováno
 
+Migrace za provozu: podporováno
+
+Aktualizace pro zachování paměti: podporováno
+
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS11_v2 <sup>3</sup> | 2  | 14  | 28  | 8  | 8000/64 (72)    | 6400/96   | 2/1500  |
@@ -66,9 +75,9 @@ jsou k dispozici <sup>3</sup> omezené základní velikosti.
 ## <a name="other-sizes"></a>Jiné velikosti
 
 - [Obecné účely](sizes-general.md)
-- [Optimalizované z hlediska paměti](sizes-memory.md)
-- [Optimalizované z hlediska úložiště](sizes-storage.md)
-- [Optimalizované z hlediska GPU](sizes-gpu.md)
+- [Optimalizované pro paměť](sizes-memory.md)
+- [Optimalizované pro úložiště](sizes-storage.md)
+- [Optimalizované z hlediska GPU.](sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 - [Předchozí generace](sizes-previous-gen.md)
 

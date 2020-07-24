@@ -10,12 +10,12 @@ metadata:
   author: cynthn
   ms.author: cynthn
   ms.date: 09/19/2019
-  ms.openlocfilehash: 12c3447bc7e46e45d05711e1b0c7a59f8d8d0218
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 5155b6196c6a7337877b8464775e179fb4aebb9f
+  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77115819"
+  ms.lasthandoff: 07/23/2020
+  ms.locfileid: "87085516"
 landingContent:
 - title: Nejnovější funkce
   linkLists:
@@ -32,28 +32,28 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: Azure CLI
-      url: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-cli
-    - text: Azure Portal
-      url: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal
-    - text: Azure Powershell
-      url: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-powershell
+      url: ./quick-create-cli.md
+    - text: portál Azure
+      url: ./quick-create-portal.md
+    - text: Azure PowerShell
+      url: ./quick-create-powershell.md
 - title: Podrobní průvodci
   linkLists:
   - linkListType: tutorial
     links:
     - text: Vytvoření a správa virtuálních počítačů s Linuxem
-      url: /azure/virtual-machines/linux/tutorial-manage-vm
+      url: ./tutorial-manage-vm.md
     - text: Disky virtuálních počítačů
-      url: /azure/virtual-machines/linux/tutorial-manage-disks
+      url: ./tutorial-manage-disks.md
     - text: Automatizace konfigurace virtuálních počítačů
-      url: /azure/virtual-machines/linux/tutorial-automate-vm-deployment
+      url: ./tutorial-automate-vm-deployment.md
     - text: Vytváření vlastních imagí virtuálních počítačů
-      url: /azure/virtual-machines/linux/tutorial-custom-images
+      url: ./tutorial-custom-images.md
     - text: Správa virtuálních počítačů s virtuálními sítěmi
-      url: /azure/virtual-machines/linux/tutorial-virtual-network
+      url: ./tutorial-virtual-network.md
 - title: Školení umožňující postupovat vlastním tempem
   linkLists:
   - linkListType: learn
     links:
     - text: " Vytvoření virtuálního počítače s Linuxem v Azure"
-      url: https://docs.microsoft.com/learn/modules/create-linux-virtual-machine-in-azure/
+      url: /learn/modules/create-linux-virtual-machine-in-azure/

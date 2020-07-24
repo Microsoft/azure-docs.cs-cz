@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/14/2020
-ms.openlocfilehash: cd0918da2a1bf6d953eb6006dc71f0611d3ed1c8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 3f8a5bdc9e1240303216df1dec31c78a560c55eb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076092"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086490"
 ---
 # <a name="run-apache-sqoop-jobs-with-azure-powershell-in-hdinsight"></a>Spouštění úloh Apache Sqoop pomocí Azure PowerShell ve službě HDInsight
 
@@ -21,9 +21,9 @@ ms.locfileid: "86076092"
 
 Naučte se používat Azure PowerShell ke spouštění úloh Apache Sqoop v Azure HDInsight k importu a exportu dat mezi clusterem HDInsight a Azure SQL Database nebo SQL Server.  Tento článek je pokračováním [v použití Apache Sqoop se systémem Hadoop ve službě HDInsight](./hdinsight-use-sqoop.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Pracovní stanice s Azure PowerShell [AZ Module](https://docs.microsoft.com/powershell/azure/overview) installed.
+* Pracovní stanice s Azure PowerShell [AZ Module](https://docs.microsoft.com/powershell/azure/) installed.
 
 * Dokončení [Nastavení testovacího prostředí](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) [pro použití Apache Sqoop se systémem Hadoop ve službě HDInsight](./hdinsight-use-sqoop.md).
 

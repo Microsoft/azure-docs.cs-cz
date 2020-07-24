@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mingshen
 ms.author: mingshen
 ms.date: 06/17/2020
-ms.openlocfilehash: cea4a43724629793123098084098299e3915be7c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c659bbe3e5f5645bb42b3a9c94a5e5fb7ebe75f0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109645"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086468"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Vytvoření nabídky kontejneru Azure v Azure Marketplace
 
@@ -133,7 +133,7 @@ Tato stránka umožňuje definovat podrobnosti nabídky, které se zobrazí na k
 > [!NOTE]
 > Podrobnosti nabídky nejsou v anglickém jazyce nutné, pokud popis nabídky začíná frází "Tato aplikace je k dispozici pouze v [jazykovém jazyce, který není v angličtině]." Také je v pořádku poskytnutí užitečného odkazu na nabídku obsahu v jazyce, který se liší od toho, který se používá v podrobnostech seznamu nabídky.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Název
 
 Název, který zde zadáte, se zobrazí jako název vaší nabídky. Toto pole je předem vyplněno textem, který jste zadali do pole **alias nabídky** při vytváření nabídky. Tento název můžete později změnit.
 
@@ -151,7 +151,7 @@ Krátký popis vaší nabídky Může to být až 100 znaků dlouhé a použív�
 
 Podrobnější popis vaší nabídky. Může to být až 256 znaků dlouhé a používá se ve výsledcích hledání na webu Marketplace.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Popis
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -250,17 +250,17 @@ Než budete pokračovat, vyberte **Uložit koncept** .
 
 ### <a name="plan-overview"></a>Přehled plánu
 
-Tato karta vám umožní v rámci stejné nabídky zadat různé možnosti plánu. Tyto plány se dřív odkazovaly na skladové položky nebo skladové jednotky. Plány se můžou lišit v souvislosti s dostupnými cloudy, jako jsou globální cloudy, cloudy státní správy a image, na kterou plán odkazuje. Pokud chcete zobrazit seznam nabídek na komerčním webu Marketplace, musíte nastavit aspoň jeden plán.
+Tato karta vám umožní v rámci stejné nabídky zadat různé možnosti plánu. Plány (dříve nazývané SKU) se mohou lišit v souvislosti s dostupnými cloudy, jako jsou globální cloudy, cloudy státní správy a bitová kopie, na kterou plán odkazuje. Pokud chcete zobrazit seznam nabídek na komerčním webu Marketplace, musíte nastavit aspoň jeden plán.
 
 Po vytvoření plánů se zobrazí karta **Přehled plánu** :
 
 - Názvy plánů
 - Cenový model
-- Dostupnost cloudu (globální nebo státní správa)
+- Oblasti Azure (globální nebo státní správa)
 - Stav aktuálního publikování
 - Jakékoli dostupné akce
 
-Akce, které jsou k dispozici v přehledu plánu, se liší v závislosti na aktuálním stavu plánu. Mezi ně patří:
+Akce, které jsou k dispozici v přehledu plánu, se liší v závislosti na aktuálním stavu plánu. Patří sem:
 
 - **Odstranit koncept** – Pokud je stav plánu koncept.
 - **Zastavit prodejní plán** – Pokud je stav plánu publikovaný živě
@@ -293,7 +293,7 @@ Před [publikováním](../../azure-government/documentation-government-manage-ma
 
 #### <a name="azure-government-certifications"></a>Azure Government certifikace
 
-Tato možnost se dá zobrazit jenom v případě, že je v **cloudové dostupnosti**vybraná možnost **Azure Government** .
+Tato možnost se dá zobrazit jenom v případě, že je v **oblastech Azure**vybraná možnost **Azure Government** .
 
 Služba Azure Government Services zpracovává data, která se vztahují na určité předpisy a požadavky státní správy. Příklad: FedRAMP, NIST 800,171 (DIB), ITAR, finanční úřad 1075, DoD – L4 a CJIS.
 

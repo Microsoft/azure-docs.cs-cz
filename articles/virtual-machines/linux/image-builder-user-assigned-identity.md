@@ -7,17 +7,18 @@ ms.date: 05/02/2019
 ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
-ms.openlocfilehash: 0c0e688c628d553c8b732081f1a8b8debff8846e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79349f9da45a623581c40276c8e69d490c1dd253
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82930654"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085550"
 ---
 # <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>Vytvoření image a použití spravované identity přiřazené uživatelem pro přístup k souborům v Azure Storage 
 
 Azure image Builder podporuje používání skriptů nebo kopírování souborů z několika umístění, jako je GitHub a Azure Storage atd. Aby je bylo možné použít, musí být externě přístupné pro Azure image Builder, ale můžete chránit Azure Storage objekty BLOB pomocí tokenů SAS.
 
-V tomto článku se dozvíte, jak vytvořit přizpůsobenou Image pomocí Tvůrce imagí virtuálních počítačů Azure, kde služba pro přizpůsobení image používá [spravovanou identitu přiřazenou uživatelem](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) pro přístup k souborům ve službě Azure Storage, a to bez toho, aby bylo možné soubory zpřístupnit, nebo nastavit tokeny SAS.
+V tomto článku se dozvíte, jak vytvořit přizpůsobenou Image pomocí Tvůrce imagí virtuálních počítačů Azure, kde služba pro přizpůsobení image používá [spravovanou identitu přiřazenou uživatelem](../../active-directory/managed-identities-azure-resources/overview.md) pro přístup k souborům ve službě Azure Storage, a to bez toho, aby bylo možné soubory zpřístupnit, nebo nastavit tokeny SAS.
 
 V následujícím příkladu vytvoříte dvě skupiny prostředků, jednu se použije pro vlastní image a druhá bude hostovat účet Azure Storage, který obsahuje soubor skriptu. To simuluje scénář reálného života, kde můžete mít artefakty sestavení nebo soubory obrázků v různých účtech úložiště mimo tvůrce imagí. Vytvoříte identitu přiřazenou uživatelem a potom udělíte oprávnění ke čtení souboru skriptu, ale nenastavíte žádný veřejný přístup k tomuto souboru. Pak použijete modul úprav prostředí ke stažení a spuštění tohoto skriptu z účtu úložiště.
 
@@ -94,7 +95,7 @@ az group create -n $strResourceGroup -l $location
 
 Vytvořte uživatelem přiřazenou identitu a nastavte oprávnění pro skupinu prostředků.
 
-Nástroj image Builder použije poskytnutou [identitu uživatele](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity) k vložení image do skupiny prostředků. V tomto příkladu vytvoříte definici role Azure, která má podrobné akce k provedení distribuce image. Definice role se pak přiřadí identitě User-identity.
+Nástroj image Builder použije poskytnutou [identitu uživatele](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) k vložení image do skupiny prostředků. V tomto příkladu vytvoříte definici role Azure, která má podrobné akce k provedení distribuce image. Definice role se pak přiřadí identitě User-identity.
 
 ```console
 # create user assigned identity for image builder to access the storage account where the script is located

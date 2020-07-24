@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: e2ccce13e4ef09426d0f3a02dcbce2f330b0ead8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f34e3a3d1e0245180ce923fc3ec7353ab1a176be
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712288"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086349"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Kodeky a standardní formáty kodéru médií
 
@@ -29,7 +30,7 @@ ms.locfileid: "84712288"
 Tento dokument obsahuje seznam nejběžnějších formátů souborů pro import a export, které můžete použít s Media Encoder Standard.
 
 ## <a name="input-containerfile-formats"></a>Vstupní formáty kontejneru nebo souborů
-| Formáty souborů (přípony souborů) | Podporuje se |
+| Formáty souborů (přípony souborů) | Podporováno |
 | --- | --- |
 | FLV (s kodeky H.264 a AAC) (.flv) |Yes |
 | MXF (.mxf) |Yes |
@@ -38,7 +39,7 @@ Tento dokument obsahuje seznam nejběžnějších formátů souborů pro import 
 | Windows Media Video (WMV) a ASF (.wmv, .asf) |Yes |
 | AVI (nekomprimovaný s 8bitovým nebo 10bitovým kódováním) (.avi) |Yes |
 | MP4 (.mp4, .m4a, .m4v) a ISMV (.isma, .ismv) |Yes |
-| [Microsoft Digital Video Recording (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) (.dvr-ms) |Yes |
+| [Microsoft Digital Video Recording (DVR-MS)](/previous-versions/windows/desktop/mstv/about-the-dvr-ms-file-format) (.dvr-ms) |Yes |
 | Matroska a WebM (.mkv) |Yes |
 | WAVE a WAV (.wav) |Yes |
 | QuickTime (.mov) |Yes |
@@ -58,7 +59,7 @@ nebo
 * Soubory MXF, GXF a QuickTime, kde se zvuk přenáší jako samostatné stopy PCM, ale mapování kanálů (na stereo nebo prostorový zvuk 5.1) je možné odvodit z metadat souboru
 
 ## <a name="input-video-codecs"></a>Vstupní kodeky videa
-| Vstupní kodeky videa | Podporuje se |
+| Vstupní kodeky videa | Podporováno |
 | --- | --- |
 | AVC s 8bitovou nebo 10bitovou hloubkou až do vzorkování 4:2:2, včetně AVCIntra |8bitová hloubka, 4:2:0 a 4:2:2 |
 | Avid DNxHD (v souborech MXF) |Yes |
@@ -81,7 +82,7 @@ nebo
 | HEVC/H. 265| Hlavní a hlavní profily 10 (&#42;)<br/>Hlavní Podpora profilů pro 10 je určená pro obsah 8bit 4:2:0. |
 
 ## <a name="input-audio-codecs"></a>Vstupní zvukové kodeky
-| Kodeky vstupního zvuku | Podporuje se |
+| Kodeky vstupního zvuku | Podporováno |
 | --- | --- |
 | AAC (AAC-LC, AAC-HE a AAC-HEv2; až do prostorového zvuku 5.1) |Yes |
 | MPEG Layer 2 |Yes |
@@ -115,4 +116,3 @@ V následující tabulce jsou uvedeny kodeky a formáty souborů, které jsou po
 [Kódování obsahu na vyžádání pomocí Azure Media Services](media-services-encode-asset.md)
 
 [Postup při kódování pomocí Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md)
-

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: cbb97dd260e5aee53595afc24e577ce08334e2b2
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 858e185a0e4fa406fb4645475673acc13a0d37f3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027014"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086669"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Řízení přístupu na základě role ve službě Azure Cosmos DB
 
@@ -41,14 +41,14 @@ Podokno **řízení přístupu (IAM)** v Azure Portal slouží ke konfiguraci ř
 
 Kromě předdefinovaných rolí můžou uživatelé také vytvářet [vlastní role](../role-based-access-control/custom-roles.md) v Azure a tyto role použít pro instanční objekty ve všech předplatných v rámci svého tenanta služby Active Directory. Vlastní role poskytují uživatelům způsob, jak vytvořit definice rolí RBAC s vlastní sadou operací poskytovatele prostředků. Informace o tom, které operace jsou k dispozici pro vytváření vlastních rolí pro Azure Cosmos DB najdete v tématu [Azure Cosmos DB operace poskytovatele prostředků](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb) .
 
-## <a name="preventing-changes-from-cosmos-sdk"></a>Zabránění změnám ze sady Cosmos SDK
+## <a name="preventing-changes-from-the-azure-cosmos-db-sdks"></a><a id="prevent-sdk-changes"></a>Zabránění změnám z Azure Cosmos DB SDK
+
+Poskytovatel prostředků Azure Cosmos DB může být uzamčený, aby se zabránilo jakýmkoli změnám prostředků z klienta připojujícího se pomocí klíčů účtu (což jsou aplikace připojující se přes sadu Azure Cosmos SDK). To zahrnuje také změny provedené z Azure Portal. Tato funkce může být žádoucí pro uživatele, kteří mají vyšší úroveň řízení a zásad správného řízení pro produkční prostředí. Zabránění změnám v sadě SDK také umožňuje používat funkce, jako jsou zámky prostředků a diagnostické protokoly pro operace roviny řízení. Klientům, kteří se připojují z Azure Cosmos DB SDK, se nebude moct měnit žádná vlastnost pro účty, databáze, kontejnery a propustnost Azure Cosmos. Operace týkající se čtení a zápisu dat do kontejnerů Cosmos nejsou ovlivněny.
+
+Když je tato funkce povolená, můžou se změny libovolného prostředku provádět jenom od uživatele s pravou rolí RBAC a Azure Active Directory přihlašovacích údajů, včetně identit spravovaných služeb.
 
 > [!WARNING]
-> Povolení této funkce může mít nebezpečné vliv na vaši aplikaci. Před povolením této funkce si důkladně přečtěte.
-
-Poskytovatel prostředků Azure Cosmos DB může být uzamčený, aby se zabránilo jakýmkoli změnám prostředků provedeným z libovolného klienta připojujícího se pomocí klíčů účtu (tj. aplikace připojující prostřednictvím Cosmos SDK). To zahrnuje také změny provedené z Azure Portal. To může být žádoucí pro uživatele, kteří mají vyšší úrovně řízení a řízení pro produkční prostředí, a umožňují funkce, jako jsou zámky prostředků, a také povolení diagnostických protokolů pro operace roviny řízení. Klientům, kteří se připojují prostřednictvím Cosmos DB SDK, bude znemožněna změna jakékoli vlastnosti pro účty Cosmos, databáze, kontejnery a propustnost. Operace zahrnující čtení a zápis dat do kontejnerů Cosmos nejsou ovlivněné.
-
-Když je tato možnost nastavená, dají se změny libovolného prostředku udělat jenom od uživatele s patřičnou rolí RBAC a Azure Active Directory přihlašovacích údajů včetně identit spravovaných služeb.
+> Povolení této funkce může mít vliv na vaši aplikaci. Ujistěte se, že před povolením rozumíte dopadu.
 
 ### <a name="check-list-before-enabling"></a>Před povolením ověřte seznam.
 
@@ -56,7 +56,7 @@ Toto nastavení zabrání jakýmkoli změnám prostředků Cosmos z libovolného
 
 - Jakékoli změny účtu Cosmos, včetně jakýchkoli vlastností nebo přidávání nebo odebírání oblastí.
 
-- Vytváření a odstraňování podřízených prostředků, jako jsou databáze a kontejnery. To zahrnuje prostředky pro jiné rozhraní API, jako jsou Cassandra, MongoDB, Gremlin a zdroje tabulek.
+- Vytváření a odstraňování podřízených prostředků, jako jsou databáze a kontejnery. To zahrnuje prostředky pro jiná rozhraní API, jako jsou Cassandra, MongoDB, Gremlin a tabulkové prostředky.
 
 - Aktualizuje se propustnost u prostředků na úrovni databáze nebo kontejneru.
 
@@ -64,11 +64,11 @@ Toto nastavení zabrání jakýmkoli změnám prostředků Cosmos z libovolného
 
 - Úprava uložených procedur, triggerů nebo uživatelsky definovaných funkcí.
 
-Pokud vaše aplikace (nebo uživatelé prostřednictvím Azure Portal) provádějí některé z těchto akcí, bude nutné provést migraci, aby je bylo možné provádět prostřednictvím [šablon ARM](manage-sql-with-resource-manager.md), [PowerShellu](manage-with-powershell.md), rozhraní příkazového [řádku Azure CLI](manage-with-cli.md), [REST](/rest/api/cosmos-db-resource-provider/) nebo [knihovny pro správu Azure](https://github.com/Azure-Samples/cosmos-management-net). Všimněte si, že Správa Azure je dostupná v [několika jazycích](https://docs.microsoft.com/azure/?product=featured#languages-and-tools).
+Pokud vaše aplikace (nebo uživatelé prostřednictvím Azure Portal) provádějí některé z těchto akcí, bude nutné provést migraci, aby je bylo možné provádět prostřednictvím [šablon ARM](manage-sql-with-resource-manager.md), [PowerShellu](manage-with-powershell.md), rozhraní příkazového [řádku Azure CLI](manage-with-cli.md), REST nebo [knihovny pro správu Azure](https://github.com/Azure-Samples/cosmos-management-net). Všimněte si, že Správa Azure je dostupná v [několika jazycích](https://docs.microsoft.com/azure/?product=featured#languages-and-tools).
 
 ### <a name="set-via-arm-template"></a>Nastavit přes šablonu ARM
 
-Pokud chcete tuto vlastnost nastavit pomocí šablony ARM, aktualizujte stávající šablonu nebo exportujte novou šablonu pro aktuální nasazení a pak `"disableKeyBasedMetadataWriteAccess": true` do vlastností prostředků databaseAccounts přidejte. Níže je uveden základní příklad šablony Azure Resource Manager s tímto nastavením vlastnosti.
+Chcete-li tuto vlastnost nastavit pomocí šablony ARM, aktualizujte stávající šablonu nebo exportujte novou šablonu pro aktuální nasazení a pak zahrňte `"disableKeyBasedMetadataWriteAccess": true` do vlastností `databaseAccounts` prostředků. Níže je uveden základní příklad šablony Azure Resource Manager s tímto nastavením vlastnosti.
 
 ```json
 {
@@ -111,5 +111,5 @@ Update-AzCosmosDBAccount -ResourceGroupName [ResourceGroupName] -Name [CosmosDBA
 ## <a name="next-steps"></a>Další kroky
 
 - [Co je řízení přístupu na základě role v Azure (Azure RBAC)](../role-based-access-control/overview.md)
-- [Vlastní role pro prostředky Azure](../role-based-access-control/custom-roles.md)
+- [Vlastní role Azure](../role-based-access-control/custom-roles.md)
 - [Azure Cosmos DB operace poskytovatele prostředků](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)

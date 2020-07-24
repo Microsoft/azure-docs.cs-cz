@@ -4,18 +4,20 @@ description: Rozhraní API pro publikování zadané nabídky
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 04/08/2020
-ms.openlocfilehash: e3bc420a60c514e704a6caa38acee155b4981552
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 1dede788242f858468c00e9f30f70ebdbe60cd1b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115583"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086400"
 ---
 # <a name="publish-an-offer"></a>Publikování nabídky
 
 > [!NOTE]
-> Rozhraní API pro portál partnerů cloudu jsou integrovaná do partnerského centra a budou fungovat i po migraci nabídek do partnerského centra. Integrace přináší malé změny. Projděte si změny uvedené v části [portál partnerů cloudu rozhraní API](./cloud-partner-portal-api-overview.md) , abyste zajistili, že váš kód bude i nadále fungovat po migraci do partnerského centra.
+> Rozhraní API pro portál partnerů cloudu jsou integrovaná s a budou pokračovat v práci v partnerském centru. Přechod přináší malé změny. Projděte si změny uvedené v části [portál partnerů cloudu rozhraní API](./cloud-partner-portal-api-overview.md) , abyste zajistili, že kód pokračuje v práci po přechodu do partnerského centra. Rozhraní API CPP by se mělo používat jenom pro existující produkty, které už jsou integrované před přechodem do partnerského centra; nové produkty by měly používat rozhraní API pro odesílání v partnerském centru.
 
 Spustí proces publikování pro určenou nabídku. Toto volání je dlouhodobě běžící operace.
 
@@ -31,7 +33,7 @@ Spustí proces publikování pro určenou nabídku. Toto volání je dlouhodobě
 |  verze-api   | Nejnovější verze rozhraní API                        |   Datum         |
 |  |  |
 
-## <a name="header"></a>Záhlaví
+## <a name="header"></a>Hlavička
 ------
 
 |  **Název**        |    **Hodnota**          |
@@ -44,7 +46,7 @@ Spustí proces publikování pro určenou nabídku. Toto volání je dlouhodobě
 ## <a name="body-example"></a>Příklad textu
 ------------
 
-### <a name="request"></a>Žádost
+### <a name="request"></a>Request
 
 ``` json
   { 
@@ -62,7 +64,6 @@ Spustí proces publikování pro určenou nabídku. Toto volání je dlouhodobě
 |  oznámení – e-maily    | Čárkami oddělený seznam e-mailových adres, které se mají upozornit na průběh operace publikování. |
 |  |  |
 
-
 ### <a name="response"></a>Odpověď
 
 #### <a name="migrated-offers"></a>Migrované nabídky
@@ -73,14 +74,12 @@ Spustí proces publikování pro určenou nabídku. Toto volání je dlouhodobě
 
 `Location: /api/operations/contoso$contoso-offer$2$preview?api-version=2017-10-31`
 
-
 ### <a name="response-header"></a>Hlavička odpovědi
 
 |  **Název**             |    **Hodnota**                                                                 |
 |  -------------------- | ---------------------------------------------------------------------------- |
 | Umístění    | Relativní cesta pro načtení stavu této operace     |
 |  |  |
-
 
 ### <a name="response-status-codes"></a>Stavové kódy odpovědí
 

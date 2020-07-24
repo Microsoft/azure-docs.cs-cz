@@ -7,13 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 07/21/2020
 tags: connectors
-ms.openlocfilehash: 01c1a2b3f9455f19877f1b16b7fff5a7c2e77c76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8985f951b8ff37beb7a1f63e8200321fc706ce6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85323160"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086604"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Připojení k systémům SAP z Azure Logic Apps
 
@@ -38,7 +39,7 @@ V tomto článku se dozvíte, jak vytvořit ukázkové aplikace logiky, které s
 
 <a name="pre-reqs"></a>
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete postupovat podle tohoto článku, budete potřebovat tyto položky:
 
@@ -133,7 +134,7 @@ Tyto požadavky platí v případě, že aplikace logiky běží v [prostředí 
 
   * Pokud se připojení SAP nezdaří s chybovou zprávou, zkontrolujte prosím informace účtu nebo oprávnění a zkuste to znovu. soubory sestavení můžou být v nesprávném umístění. Ujistěte se, že jste zkopírovali soubory sestavení do instalační složky brány dat.
 
-    Pro usnadnění odstraňování potíží [použijte prohlížeč protokolu vazby sestavení .NET](https://docs.microsoft.com/dotnet/framework/tools/fuslogvw-exe-assembly-binding-log-viewer), který vám umožní ověřit, zda jsou soubory sestavení ve správném umístění. Volitelně můžete vybrat možnost **registrace globální mezipaměti sestavení** při instalaci knihovny klienta SAP.
+    Pro usnadnění odstraňování potíží [použijte prohlížeč protokolu vazby sestavení .NET](/dotnet/framework/tools/fuslogvw-exe-assembly-binding-log-viewer), který vám umožní ověřit, zda jsou soubory sestavení ve správném umístění. Volitelně můžete vybrat možnost **registrace globální mezipaměti sestavení** při instalaci knihovny klienta SAP.
 
 <a name="sap-library-versions"></a>
 
@@ -186,7 +187,7 @@ V tomto příkladu se používá aplikace logiky, kterou můžete aktivovat pomo
 V Azure Logic Apps musí každá aplikace logiky začínat [triggerem](../logic-apps/logic-apps-overview.md#logic-app-concepts), který se aktivuje, když dojde ke konkrétní události nebo když dojde ke splnění určité podmínky. Pokaždé, když se Trigger aktivuje, modul Logic Apps vytvoří instanci aplikace logiky a začne spouštět pracovní postup vaší aplikace.
 
 > [!NOTE]
-> Když aplikace logiky přijme IDoc pakety z SAP, [aktivační událost žádosti](https://docs.microsoft.com/azure/connectors/connectors-native-reqres) nepodporuje "jednoduché" schéma XML generované v dokumentaci ke službě SAP WE60 IDOC. Schéma XML "obyčejného" je však podporováno pro scénáře, které odesílají zprávy z Logic Apps *do* SAP. Můžete použít Trigger žádosti s IDoc XML SAP, ale ne s IDoc přes RFC. Nebo můžete transformovat XML na potřebný formát. 
+> Když aplikace logiky přijme IDoc pakety z SAP, [aktivační událost žádosti](../connectors/connectors-native-reqres.md) nepodporuje "jednoduché" schéma XML generované v dokumentaci ke službě SAP WE60 IDOC. Schéma XML "obyčejného" je však podporováno pro scénáře, které odesílají zprávy z Logic Apps *do* SAP. Můžete použít Trigger žádosti s IDoc XML SAP, ale ne s IDoc přes RFC. Nebo můžete transformovat XML na potřebný formát. 
 
 V tomto příkladu vytvoříte aplikaci logiky s koncovým bodem v Azure, abyste mohli odesílat *požadavky HTTP POST* do vaší aplikace logiky. Když aplikace logiky obdrží tyto požadavky HTTP, Trigger se aktivuje a spustí další krok v pracovním postupu.
 
@@ -261,7 +262,7 @@ V Azure Logic Apps [Akce](../logic-apps/logic-apps-overview.md#logic-app-concept
       > [!TIP]
       > Zadejte hodnotu pro **akci SAP** prostřednictvím editoru výrazů. Tímto způsobem můžete použít stejnou akci u různých typů zpráv.
 
-      Další informace o operacích IDoc najdete v tématu [schémata zpráv pro operace IDOC](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations).
+      Další informace o operacích IDoc najdete v tématu [schémata zpráv pro operace IDOC](/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations).
 
    1. Klikněte do pole **vstupní zpráva** , aby se zobrazil seznam dynamického obsahu. V tomto seznamu v části **když se přijme požadavek HTTP**, vyberte pole **body** .
 
@@ -273,7 +274,7 @@ V Azure Logic Apps [Akce](../logic-apps/logic-apps-overview.md#logic-app-concept
 
       ![Dokončení akce SAP](./media/logic-apps-using-sap-connector/SAP-app-server-complete-action.png)
 
-1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
+1. Uložte aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
 <a name="add-response"></a>
 
@@ -289,7 +290,30 @@ Teď přidejte akci odpovědi do pracovního postupu aplikace logiky a zahrňte 
 
    ![Dokončit akci SAP](./media/logic-apps-using-sap-connector/select-sap-body-for-response-action.png)
 
-1. Uložte svou aplikaci logiky.
+1. Uložte aplikaci logiky.
+
+#### <a name="add-rfc-request-response"></a>Přidat požadavek RFC – odpověď
+
+> [!NOTE]
+> Aktivační událost SAP přijímá IDocs nad tRFC, která nemá parametr odpovědi navržený. 
+
+Je nutné vytvořit vzor požadavků a odpovědí, pokud potřebujete přijmout odpovědi pomocí vzdáleného volání funkce (RFC) a Logic Apps ze SAP ABAP. Pokud chcete přijímat IDocs ve vaší aplikaci logiky, měli byste provést první akci [požadavku HTTP](../connectors/connectors-native-reqres.md#add-a-response-action) se stavovým kódem `200 OK` a bez obsahu. Tento doporučený krok dokončí Asynchronní přenos SAP LUW přes tRFC hned, což ponechá konverzaci SAP CPIC k dispozici. Potom můžete do aplikace logiky přidat další akce pro zpracování přijatých IDoc bez blokování dalších přenosů.
+
+Pokud chcete implementovat vzor požadavků a odpovědí, musíte nejdřív zjistit schéma RFC pomocí [ `generate schema` příkazu](#generate-schemas-for-artifacts-in-sap). Vygenerované schéma má dva možné kořenové uzly: 
+
+1. Uzel žádosti, což je volání, které obdržíte od SAP.
+1. Uzel odpovědi, který odpovídá vaší odpovědi zpět na SAP.
+
+V následujícím příkladu se v modulu RFC generuje vzor požadavků a odpovědí `STFC_CONNECTION` . Požadavek XML je analyzován za účelem extrakce hodnoty uzlu, ve které požadavky SAP `<ECHOTEXT>` . Odpověď vloží aktuální časové razítko jako dynamickou hodnotu. Po odeslání `STFC_CONNECTION` dokumentu RFC z aplikace logiky do SAP obdržíte podobnou odpověď.
+
+```http
+
+<STFC_CONNECTIONResponse xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+  <ECHOTEXT>@{first(xpath(xml(triggerBody()?['Content']), '/*[local-name()="STFC_CONNECTION"]/*[local-name()="REQUTEXT"]/text()'))}</ECHOTEXT>
+  <RESPTEXT>Azure Logic Apps @{utcNow()}</RESPTEXT>
+
+
+```
 
 ### <a name="test-your-logic-app"></a>Testování aplikace logiky
 
@@ -378,7 +402,7 @@ V tomto příkladu se používá aplikace logiky, která se aktivuje, když apli
 
    ![Příklad triggeru, který přijímá více zpráv](media/logic-apps-using-sap-connector/example-trigger.png)
 
-   Další informace o akci SAP najdete v tématu [schémata zpráv pro IDOC operace](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations) .
+   Další informace o akci SAP najdete v tématu [schémata zpráv pro IDOC operace](/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations) .
 
 1. Nyní uložte aplikaci logiky, abyste mohli začít přijímat zprávy ze systému SAP. Na panelu nástrojů návrháře vyberte **Uložit**.
 
@@ -421,11 +445,11 @@ Pokud nemůžete odesílat IDoc pakety z SAP do triggeru vaší aplikace logiky,
 
 <a name="find-extended-error-logs"></a>
 
-#### <a name="find-extended-error-logs"></a>Najít rozšířené protokoly chyb
+## <a name="find-extended-error-logs"></a>Najít rozšířené protokoly chyb
 
 V případě úplných chybových zpráv se podívejte na rozšířené protokoly adaptéru SAP. 
 
-V případě verzí pro místní bránu dat od června 2020 a novějších můžete [Povolit protokoly brány v nastavení aplikace](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app).
+V případě verzí pro místní bránu dat od června 2020 a novějších můžete [Povolit protokoly brány v nastavení aplikace](/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app).
 
 V případě verzí pro místní bránu dat od dubna 2020 a novějších jsou protokoly ve výchozím nastavení zakázané. Pokud chcete načíst rozšířené protokoly, postupujte podle těchto kroků:
 
@@ -480,7 +504,7 @@ K odeslání IDocs z SAP do aplikace logiky potřebujete následující minimál
 
 #### <a name="create-rfc-destination"></a>Vytvořit cíl RFC
 
-1. Pokud chcete otevřít **konfiguraci nastavení připojení RFC** , použijte v rozhraní SAP kód transakce **Sm59** (T Code) s předponou **/n** .
+1. Pokud chcete otevřít **konfiguraci nastavení připojení RFC** , v rozhraní SAP použijte kód transakce **sm59** (T-Code) s předponou **/n** .
 
 1. Vyberte **připojení TCP/IP**  >  **vytvořit**.
 
@@ -500,7 +524,7 @@ K odeslání IDocs z SAP do aplikace logiky potřebujete následující minimál
 
 #### <a name="create-abap-connection"></a>Vytvořit připojení ABAP
 
-1. Pokud chcete otevřít **konfiguraci nastavení připojení RFC** , v rozhraní SAP použijte kód transakce **Sm59*** (T Code) s předponou **/n** .
+1. Pokud chcete otevřít **konfiguraci nastavení připojení RFC** , v rozhraní SAP použijte kód transakce **Sm59*** (T-Code) s předponou **/n** .
 
 1. Vyberte **připojení ABAP**  >  **vytvořit**.
 
@@ -512,7 +536,7 @@ K odeslání IDocs z SAP do aplikace logiky potřebujete následující minimál
 
 #### <a name="create-receiver-port"></a>Vytvořit port přijímače
 
-1. Chcete-li otevřít **porty v nastavení zpracování IDOC** , použijte v rozhraní SAP kód transakce **We21** (T Code) s předponou **/n** .
+1. Chcete-li otevřít **porty v nastavení zpracování IDOC** , v rozhraní SAP použijte kód transakce **WE21** (T-Code) s předponou **/n** .
 
 1. Vyberte **porty**  >  **transakční RFC**  >  **vytvořit**.
 
@@ -524,7 +548,7 @@ K odeslání IDocs z SAP do aplikace logiky potřebujete následující minimál
 
 #### <a name="create-sender-port"></a>Vytvořit port odesílatele
 
-1.  Chcete-li otevřít **porty v nastavení zpracování IDOC** , použijte v rozhraní SAP kód transakce **We21** (T Code) s předponou **/n** .
+1.  Chcete-li otevřít **porty v nastavení zpracování IDOC** , v rozhraní SAP použijte kód transakce **WE21** (T-Code) s předponou **/n** .
 
 1. Vyberte **porty**  >  **transakční RFC**  >  **vytvořit**.
 
@@ -536,7 +560,7 @@ K odeslání IDocs z SAP do aplikace logiky potřebujete následující minimál
 
 #### <a name="create-logical-system-partner"></a>Vytvořit partnera logického systému
 
-1. Chcete-li otevřít **zobrazení změna "logické systémy": Přehled** nastavení v rozhraní SAP, použijte kód transakce **Bd54** (T Code).
+1. Chcete-li otevřít **zobrazení změna "logické systémy": Přehled** nastavení v rozhraní SAP, použijte kód transakce **bd54** (T-Code).
 
 1. Přijměte zobrazenou zprávu upozornění: **Upozornění: tabulka je mezi klientem**
 
@@ -552,7 +576,7 @@ K odeslání IDocs z SAP do aplikace logiky potřebujete následující minimál
 
 V produkčních prostředích musíte vytvořit dva profily partnerů. První profil je pro odesílatele, který je vaší organizací a systémem SAP. Druhý profil je pro příjemce, což je vaše aplikace logiky.
 
-1. Pokud chcete otevřít nastavení **partnerských profilů** , použijte ve svém rozhraní SAP kód transakce **We20** (T Code) s předponou **/n** .
+1. Pokud chcete otevřít nastavení **partnerských profilů** , použijte v rozhraní SAP kód transakce **we20** (T-Code) s předponou **/n** .
 
 1. V části **profily partnerů**vyberte **Typ partnera LS**  >  **vytvořit**.
 
@@ -580,7 +604,7 @@ V produkčních prostředích musíte vytvořit dva profily partnerů. První pr
 
 #### <a name="test-sending-messages"></a>Testování odesílání zpráv
 
-1. Chcete-li otevřít **Nástroj test Tool pro IDOC zpracování** , použijte v rozhraní SAP kód transakce **We19** (T Code) s předponou **/n** .
+1. Chcete-li otevřít **Nástroj test Tool pro IDOC zpracování** , v rozhraní SAP použijte kód transakce **we19** (T-Code) s předponou **/n** .
 
 1. V části **Šablona pro test**vyberte **typ zprávy**a zadejte typ zprávy, například **CREMAS**. Vyberte **Vytvořit**.
 
@@ -592,7 +616,7 @@ V produkčních prostředích musíte vytvořit dva profily partnerů. První pr
 
 1. Pokud chcete spustit odchozí IDoc zpracování, vyberte **pokračovat**. Po dokončení zpracování se zobrazí zpráva **IDOC odeslána do systému SAP nebo externího programu** .
 
-1.  Chcete-li zjistit chyby zpracování, použijte kód transakce **SM58** (T Code) s předponou **/n** .
+1.  Chcete-li zjistit chyby zpracování, použijte kód transakce **SM58** (T-Code) s předponou **/n** .
 
 ## <a name="receive-idoc-packets-from-sap"></a>Příjem paketů IDoc ze SAP
 
@@ -632,12 +656,262 @@ Můžete použít šablonu pro rychlý Start pro tento model výběrem této ša
 
 V tomto příkladu se používá aplikace logiky, kterou můžete aktivovat pomocí požadavku HTTP. Chcete-li generovat schémata pro zadané IDoc a BAPI, odešle **schéma** akce SAP do systému SAP požadavek.
 
-Tato akce SAP vrátí schéma XML, nikoli obsah nebo data samotného dokumentu XML. Schémata vrácená v odpovědi se odesílají na účet pro integraci pomocí konektoru Azure Resource Manager. Schémata obsahují tyto části:
+Tato akce SAP vrátí [schéma XML](#sample-xml-schemas), nikoli obsah nebo data samotného dokumentu XML. Schémata vrácená v odpovědi se odesílají na účet pro integraci pomocí konektoru Azure Resource Manager. Schémata obsahují tyto části:
 
 * Struktura zprávy požadavku. Tyto informace slouží k vytvoření seznamu BAPI `get` .
 * Struktura zprávy s odpovědí. Tyto informace slouží k analýze odpovědi. 
 
 K odeslání zprávy s požadavkem použijte obecnou akci SAP **Odeslat zprávu do SAP**nebo cílené akce **BAPI volání** .
+
+### <a name="sample-xml-schemas"></a>Vzorová schémata XML
+
+Pokud se naučíte generovat schéma XML pro použití při vytváření ukázkového dokumentu, přečtěte si následující ukázky. Tyto příklady ukazují, jak můžete pracovat s mnoha typy datových částí, včetně:
+
+* [Žádosti RFC](#xml-samples-for-rfc-requests)
+* [Žádosti BAPI](#xml-samples-for-bapi-requests)
+* [Žádosti IDoc](#xml-samples-for-idoc-requests)
+* Jednoduché nebo složité datové typy schématu XML
+* Parametry tabulky
+* Volitelné chování XML
+
+Schéma XML můžete začít pomocí volitelného prologu XML. Konektor SAP funguje s prologem XML nebo bez něj.
+
+```xml
+
+<?xml version="1.0" encoding="utf-8">
+
+```
+
+#### <a name="xml-samples-for-rfc-requests"></a>Ukázky XML pro žádosti RFC
+
+Následující příklad je základní volání RFC. Název RFC je `STFC_CONNECTION` . Tato žádost používá výchozí obor názvů `xmlns=` , ale můžete přiřadit a používat aliasy oboru názvů, jako je `xmmlns:exampleAlias=` . Hodnota oboru názvů je obor názvů pro všechny dokumenty RFC v SAP pro služby společnosti Microsoft. V požadavku je jednoduchý vstupní parametr `<REQUTEXT>` .
+
+```xml
+
+<STFC_CONNECTION xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+  <REQUTEXT>exampleInput</REQUTEXT>
+</STFC_CONNECTION>
+
+```
+
+V následujícím příkladu je volání RFC s parametrem tabulky. Toto ukázkové volání a jeho skupina testovacích dokumentů RFC jsou k dispozici jako součást všech systémů SAP. Název parametru tabulky je `TCPICDAT` . Typ řádku tabulky je `ABAPTEXT` a tento element se opakuje pro každý řádek v tabulce. Tento příklad obsahuje jeden řádek s názvem `LINE` . Žádosti s parametrem tabulky mohou obsahovat libovolný počet polí, kde číslo je kladné celé číslo (*n*). 
+
+```xml
+
+<STFC_WRITE_TO_TCPIC xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+  <RESTART_QNAME>exampleQName</RESTART_QNAME>
+    <TCPICDAT>
+      <ABAPTEXT xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+        <LINE>exampleFieldInput1</LINE>
+      <ABAPTEXT xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+        <LINE>exampleFieldInput2</LINE>
+      <ABAPTEXT xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+        <LINE>exampleFieldInput3</LINE>
+      </ABAPTEXT>
+    </TCPICDAT>
+</STFC_WRITE_TO_TCPIC>
+
+```
+
+V následujícím příkladu je volání RFC s parametrem tabulky, který má anonymní pole. Anonymní pole je v případě, že k poli není přiřazen žádný název. Komplexní typy jsou deklarovány v rámci samostatného oboru názvů, ve kterém deklarace nastaví novou výchozí hodnotu pro aktuální uzel a všechny jeho podřízené prvky. V příkladu se používá hexadecimální kód `x002F` jako řídicí znak pro symbol */* , protože tento symbol je vyhrazen v názvu pole SAP.
+
+```xml
+
+<RFC_XML_TEST_1 xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+  <IM_XML_TABLE>
+    <RFC_XMLCNT xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+      <_x002F_AnonymousField>exampleFieldInput</_x002F_AnonymousField>
+    </RFC_XMLCNT>
+  </IM_XML_TABLE>
+</RFC_XML_TEST_1>
+
+```
+
+Následující příklad obsahuje předpony pro obory názvů. Můžete deklarovat všechny předpony najednou nebo můžete deklarovat libovolné množství předpon jako atributy uzlu. Alias oboru názvů RFC `ns0` se používá jako kořenový adresář a parametry pro základní typ. Všimněte si, že komplexní typy jsou deklarovány v rámci jiného oboru názvů pro typy RFC s aliasem `ns3` namísto regulárního oboru názvů RFC s aliasem `ns0` .
+
+```xml
+
+<ns0:BBP_RFC_READ_TABLE xmlns:ns0="http://Microsoft.LobServices.Sap/2007/03/Rfc/" xmlns:ns3="http://Microsoft.LobServices.Sap/2007/03/Types/Rfc/">
+  <ns0:DELIMITER>0</ns0:DELIMITER>
+  <ns0:QUERY_TABLE>KNA1</ns0:QUERY_TABLE>
+  <ns0:ROWCOUNT>250</ns0:ROWCOUNT>
+  <ns0:ROWSKIPS>0</ns0:ROWSKIPS>
+  <ns0:FIELDS>
+    <ns3:RFC_DB_FLD>
+      <ns3:FIELDNAME>KUNNR</ns3:FIELDNAME>
+    </ns3:RFC_DB_FLD>
+  </ns0:FIELDS>
+</ns0:BBP_RFC_READ_TABLE>
+
+```
+
+#### <a name="xml-samples-for-bapi-requests"></a>Ukázky XML pro žádosti BAPI
+
+> [!TIP]
+> Pokud používáte návrháře Logic Apps k úpravám vaší žádosti BAPI, můžete použít následující funkce hledání: 
+> 
+> * Vyberte objekt v návrháři, aby se zobrazila rozevírací nabídka dostupných metod.
+> * Filtrování typů obchodních objektů podle klíčového slova pomocí prohledávatelných seznamů poskytovaných voláním rozhraní API BAPI.
+
+> [!NOTE]
+> SAP zpřístupňuje obchodní objekty externím systémům tím, že je popisuje v reakci na RFC `RPY_BOR_TREE_INIT` , které Logic Apps problémy bez vstupního filtru. Logic Apps zkontroluje výstupní tabulku `BOR_TREE` . `SHORT_TEXT`Pole se používá pro názvy obchodních objektů. Obchodní objekty nevracené SAP ve výstupní tabulce nejsou k dispozici pro Logic Apps.
+> Pokud používáte vlastní obchodní objekty, musíte tyto obchodní objekty publikovat a uvolnit v SAP. V opačném případě SAP neuvádí vlastní obchodní objekty ve výstupní tabulce `BOR_TREE` . Nemůžete získat přístup k vlastním obchodním objektům v Logic Apps, dokud nezveřejňujete obchodní objekty ze SAP. 
+
+Následující příklad načte seznam bank pomocí metody BAPI `GETLIST` . Tato ukázka obsahuje obchodní objekt pro banku, `BUS1011` . 
+
+```xml
+
+<GETLIST xmlns="http://Microsoft.LobServices.Sap/2007/03/Bapi/BUS1011">
+  <BANK_CTRY>US</BANK_CTRY>
+  <MAX_ROWS>10</MAX_ROWS>
+</GETLIST>
+
+```
+
+Následující příklad vytvoří objekt banky pomocí `CREATE` metody. V tomto příkladu se používá stejný obchodní objekt jako předchozí příklad `BUS1011` . Při použití `CREATE` metody k vytvoření banky nezapomeňte změny potvrdit, protože tato metoda není ve výchozím nastavení potvrzena.
+
+> [!TIP]
+> Ujistěte se, že dokument XML dodržuje jakákoli ověřovací pravidla konfigurovaná v systému SAP. Například v tomto ukázkovém dokumentu musí být bankovní klíč ( `<BANK_KEY>` ) číslo směrování banky, označovaný také jako ABA číslo v USA.
+
+```xml
+
+<CREATE xmlns="http://Microsoft.LobServices.Sap/2007/03/Bapi/BUS1011">
+  <BANK_ADDRESS>
+    <BANK_NAME xmlns="http://Microsoft.LobServices.Sap/2007/03/Types/Rfc">ExampleBankName</BANK_NAME>
+    <REGION xmlns="http://Microsoft.LobServices.Sap/2007/03/Types/Rfc">ExampleRegionName</REGION>
+    <STREET xmlns="http://Microsoft.LobServices.Sap/2007/03/Types/Rfc">ExampleStreetAddress</STREET>
+    <CITY xmlns="http://Microsoft.LobServices.Sap/2007/03/Types/Rfc">Redmond</CITY>
+  </BANK_ADDRESS>
+  <BANK_COUNTRY>US</BANK_COUNTRY>
+  <BANK_KEY>123456789</BANK_KEY>
+</CREATE>
+
+```
+
+Následující příklad získá podrobnosti pro banku pomocí čísla směrování banky, což je hodnota pro `<BANK_KEY>` . 
+
+```xml
+
+<GETDETAIL xmlns="http://Microsoft.LobServices.Sap/2007/03/Bapi/BUS1011">
+  <BANK_COUNTRY>US</BANK_COUNTRY>
+  <BANK_KEY>123456789</BANK_KEY>
+</GETDETAIL>
+
+```
+
+#### <a name="xml-samples-for-idoc-requests"></a>Ukázky XML pro žádosti IDoc
+
+K vygenerování jednoduchého schématu XML pro SAP IDoc použijte **přihlašovací aplikaci SAP** a kód T-Code `WE-60` . Přístup k dokumentaci SAP prostřednictvím grafického uživatelského rozhraní a generování schémat XML ve formátu XSD pro vaše typy a rozšíření IDoc. Vysvětlení obecných formátů a datových částí SAP a jejich vestavěných dialogových oken najdete v dokumentaci ke službě [SAP](https://help.sap.com/viewer/index).
+
+Tento příklad deklaruje kořenový uzel a obory názvů. Identifikátor URI v ukázkovém kódu `http://Microsoft.LobServices.Sap/2007/03/Idoc/3/ORDERS05//700/Send` deklaruje následující konfiguraci:
+
+* `/IDoc`je kořenová Poznámka pro všechny IDocs
+* `/3`je verze typů záznamů pro společné definice segmentů.
+* `/ORDERS05`je IDoc typ
+* `//`je prázdný segment, protože není k dispozici rozšíření IDoc.
+* `/700`je verze SAP
+* `/Send`je akce odeslání informací do SAP
+
+```xml
+
+<ns0:Send xmlns:ns0="http://Microsoft.LobServices.Sap/2007/03/Idoc/3/ORDERS05//700/Send" xmlns:ns3="http://schemas.microsoft.com/2003/10/Serialization" xmlns:ns1="http://Microsoft.LobServices.Sap/2007/03/Types/Idoc/Common/" xmlns:ns2="http://Microsoft.LobServices.Sap/2007/03/Idoc/3/ORDERS05//700">
+  <ns0:idocData>
+
+```
+
+Uzel můžete opakovat `idocData` pro odeslání dávky IDOCs v jednom volání. V následujícím příkladu je k dispozici jeden záznam ovládacího prvku, `EDI_DC40` a více datových záznamů.
+
+```xml
+
+<...>
+  <ns0:idocData>
+    <ns2:EDI_DC40>
+      <ns1:TABNAM>EDI_DC40</ns1:TABNAM>
+<...>
+      <ns1:ARCKEY>Cor1908207-5</ns1:ARCKEY>
+    </ns2:EDI_DC40>
+    <ns2:E2EDK01005>
+      <ns2:DATAHEADERCOLUMN_SEGNAM>E23DK01005</ns2:DATAHEADERCOLUMN_SEGNAM>
+      <ns2:CURCY>USD</ns2:CURCY>
+    </ns2:E2EDK01005>
+    <ns2:E2EDK03>
+<...>
+  </ns0:idocData>
+
+```
+
+Následující příklad je ukázkový záznam ovládacího prvku IDoc, který používá předponu `EDI_DC` . Hodnoty je nutné aktualizovat tak, aby odpovídaly vaší instalaci SAP a IDoc typu. Například váš klientský kód IDoc nemusí být `800` . Obraťte se na tým SAP, abyste měli jistotu, že používáte správné hodnoty pro instalaci SAP.
+
+```xml
+
+<ns2:EDI_DC40>
+  <ns:TABNAM>EDI_DC40</ns1:TABNAM>
+  <ns:MANDT>800</ns1:MANDT>
+  <ns:DIRECT>2</ns1:DIRECT>
+  <ns:IDOCTYP>ORDERS05</ns1:IDOCTYP>
+  <ns:CIMTYP></ns1:CIMTYP>
+  <ns:MESTYP>ORDERS</ns1:MESTYP>
+  <ns:STD>X</ns1:STD>
+  <ns:STDVRS>004010</ns1:STDVRS>
+  <ns:STDMES></ns1:STDMES>
+  <ns:SNDPOR>SAPENI</ns1:SNDPOR>
+  <ns:SNDPRT>LS</ns1:SNDPRT>
+  <ns:SNDPFC>AG</ns1:SNDPFC>
+  <ns:SNDPRN>ABAP1PXP1</ns1:SNDPRN>
+  <ns:SNDLAD></ns1:SNDLAD>
+  <ns:RCVPOR>BTSFILE</ns1:RCVPOR>
+  <ns:RCVPRT>LI</ns1:RCVPRT>
+
+```
+
+Následující příklad je ukázkový datový záznam s prostými segmenty. V tomto příkladu se používá formát data SAP. Dokumenty se silným typem můžou používat nativní formáty data XML, jako je například `2020-12-31 23:59:59` .
+
+```xml
+
+<ns2:E2EDK01005>
+  <ns2:DATAHEADERCOLUMN_SEGNAM>E2EDK01005</ns2:DATAHEADERCOLUMN_SEGNAM>
+    <ns2:CURCY>USD</ns2:CURCY>
+    <ns2:BSART>OR</ns2:BSART>
+    <ns2:BELNR>1908207-5</ns2:BELNR>
+    <ns2:ABLAD>CC</ns2:ABLAD>
+  </ns2>
+  <ns2:E2EDK03>
+    <ns2:DATAHEADERCOLUMN_SEGNAM>E2EDK03</ns2:DATAHEADERCOLUMN_SEGNAM>
+      <ns2:IDDAT>002</ns2:IDDAT>
+      <ns2:DATUM>20160611</ns2:DATUM>
+  </ns2:E2EDK03>
+
+```
+
+Následující příklad je datový záznam se seskupenými segmenty. To zahrnuje nadřazený uzel skupiny, `E2EDKT1002GRP` a několik podřízených uzlů, včetně `E2EDKT1002` a `E2EDKT2001` . 
+
+```xml
+
+<ns2:E2EDKT1002GRP>
+  <ns2:E2EDKT1002>
+    <ns2:DATAHEADERCOLUMN_SEGNAM>E2EDKT1002</ns2:DATAHEADERCOLUMN_SEGNAM>
+      <NS2:TDID>ZONE</ns2:TDID>
+  </ns2:E2EDKT1002>
+  <ns2:E2EDKT2001>
+    <ns2:DATAHEADERCOLUMN_SEGNAM>E2EDKT2001</ns2:DATAHEADERCOLUMN_SEGNAM>
+      <ns2:TDLINE>CRSD</ns2:TDLINE>
+  </ns2:E2EDKT2001>
+</ns2:E2EDKT1002GRP>
+
+```
+
+Doporučenou metodou je vytvořit identifikátor IDoc pro použití s tRFC. Tento identifikátor transakce můžete nastavit `tid` pomocí [operace Odeslat IDOC](https://docs.microsoft.com/connectors/sap/#send-idoc) v rozhraní SAP Connector API.
+
+Následující příklad je alternativní metoda pro nastavení identifikátoru transakce nebo `tid` . V tomto příkladu jsou zavřeny poslední uzel segment záznamu dat a IDoc data uzel. Pak identifikátor GUID `guid` je použit jako identifikátor tRFC k detekci duplicit. 
+
+```xml
+
+    </E2STZUM002GRP>
+  </idocData>
+  <guid>8820ea40-5825-4b2f-ac3c-b83adc34321c</guid>
+</Send>
+
+```
 
 ### <a name="add-an-http-request-trigger"></a>Přidání triggeru požadavku HTTP
 
@@ -708,9 +982,9 @@ Na panelu nástrojů návrháře vyberte **Uložit**.
 
    ![Zobrazit dvě položky](media/logic-apps-using-sap-connector/schema-generator-example.png)
 
-   Další informace o akci SAP najdete v tématu [schémata zpráv pro IDOC operace](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations).
+   Další informace o akci SAP najdete v tématu [schémata zpráv pro IDOC operace](/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations).
 
-1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
+1. Uložte aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
 ### <a name="test-your-logic-app"></a>Testování aplikace logiky
 
@@ -753,7 +1027,7 @@ V případě potřeby můžete vygenerovaná schémata stáhnout nebo uložit v 
    > }
    > ```
 
-1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
+1. Uložte aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
 ### <a name="test-your-logic-app"></a>Testování aplikace logiky
 
@@ -867,11 +1141,36 @@ Tady je příklad, který ukazuje tento vzor:
 
    ![Odeslat vlastnosti akce IDOC](./media/logic-apps-using-sap-connector/send-idoc-action-details.png)
 
-1. Chcete-li explicitně potvrdit ID transakce, přidejte akci **Potvrdit ID transakce** . Klikněte do pole **ID transakce** , aby se zobrazil seznam dynamického obsahu. V tomto seznamu vyberte hodnotu **ID transakce** , která se vrátí z akce **Odeslat IDOC** .
+1. Chcete-li explicitně potvrdit ID transakce, přidejte akci **Potvrdit ID transakce** a ujistěte se, že [neposíláte duplicitní IDOCs do SAP](#avoid-sending-duplicate-idocs). Klikněte do pole **ID transakce** , aby se zobrazil seznam dynamického obsahu. V tomto seznamu vyberte hodnotu **ID transakce** , která se vrátí z akce **Odeslat IDOC** .
 
    ![Akce potvrzení ID transakce](./media/logic-apps-using-sap-connector/explicit-transaction-id.png)
 
    Po spuštění tohoto kroku je aktuální transakce označena jako úplná na obou koncích na straně konektoru SAP a na straně systému SAP.
+
+#### <a name="avoid-sending-duplicate-idocs"></a>Vyhněte se posílání duplicitních IDocs
+
+Pokud dojde k potížím s duplicitními IDocs, které se odesílají do SAP z aplikace logiky, vytvořte pomocí těchto kroků řetězcovou proměnnou, která bude sloužit jako identifikátor transakce IDoc. Vytvoření tohoto identifikátoru transakce pomáhá zabránit duplicitám síťových přenosů, když dojde k problémům, jako jsou dočasné výpadky, problémy se sítí nebo ztracené potvrzování.
+
+> [!NOTE]
+> Systémy SAP zapomenou v zadaném čase identifikátor transakce nebo 24 hodin ve výchozím nastavení. V důsledku toho SAP nikdy nedokáže potvrdit identifikátor transakce, pokud ID nebo identifikátor GUID nejsou známy.
+> Pokud se potvrzení pro identifikátor transakce nezdaří, toto selhání indikuje, že komunikaci SSL (se systémem SAP selhal před tím, než SAP dokázala potvrdit potvrzení.
+
+1. V Návrháři Logic Apps přidejte do své aplikace logiky **proměnnou inicializovat** akci. 
+1. V editoru pro **proměnnou inicializovat**akci nakonfigurujte následující nastavení. Pak změny uložte.
+    1. Jako **název**zadejte název proměnné. Například, `IDOCtransferID`.
+    2. Jako typ proměnné vyberte **typ** **řetězec** .
+    3. V poli **hodnota**vyberte textové pole a **Zadejte počáteční hodnotu** . tím otevřete nabídku dynamického obsahu. Vyberte kartu **výrazy** . V seznamu funkcí zadejte funkci `guid()` . Pak kliknutím na **OK** uložte změny. Pole **hodnota** je nyní nastaveno na `guid()` funkci, která generuje identifikátor GUID.
+1. Po akci **inicializovat proměnnou** přidejte akci **Odeslat IDOC**.
+1. V editoru akce **Odeslat IDOC**nakonfigurujte následující nastavení. Pak změny uložte.
+    1. Jako **typ IDOC** vyberte typ zprávy a zadejte zprávu do zprávy **input IDOC**.
+    1. V případě **verze SAP Release**vyberte hodnoty konfigurace SAP.
+    1. V případě **verze typů záznamů**vyberte hodnoty konfigurace SAP.
+    1. Pro **Potvrdit TID**vyberte možnost **ne**.
+    1. Vyberte **Přidat nový**  >  **identifikátor GUID ID transakce**seznamu parametrů. Výběrem textového pole otevřete nabídku dynamického obsahu. Na kartě **proměnné** vyberte název proměnné, kterou jste vytvořili. Například, `IDOCtransferID`.
+1. V záhlaví akce **Odeslat IDOC**vyberte **...**  >  **Nastavení**. V případě **zásady opakování**vyberte **žádná**  >  **Dokončená**.
+1. Po **odeslání IDOC**akce přidejte **ID transakce potvrdit**akci.
+1. V editoru pro akci **Potvrdit ID transakce**nakonfigurujte následující nastavení. Pak změny uložte.
+    1. Jako **ID transakce**zadejte název proměnné znovu. Například, `IDOCtransferID`.
 
 ## <a name="known-issues-and-limitations"></a>Známé problémy a omezení
 
@@ -883,7 +1182,7 @@ Tady jsou aktuálně známé problémy a omezení pro spravovaný konektor SAP (
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Další technické podrobnosti o této spojnici, jako jsou triggery, akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete na [referenční stránce konektoru](https://docs.microsoft.com/connectors/sap/).
+Další technické podrobnosti o této spojnici, jako jsou triggery, akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete na [referenční stránce konektoru](/connectors/sap/).
 
 > [!NOTE]
 > V případě Logic Apps v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Tato verze konektoru ISE-Label používá místo toho [omezení zpráv ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .

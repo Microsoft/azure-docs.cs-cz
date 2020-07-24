@@ -5,29 +5,31 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 01/18/2019
-ms.openlocfilehash: e393b6a499ad2b84f25ca1a1c062ca4ef2eec21c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: MaggiePucciEvans
+ms.author: evansma
+ms.date: 07/14/2020
+ms.openlocfilehash: 853aeb03dc1a19c1960709aedf09e71164ed62d4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120734"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086366"
 ---
-# <a name="marketplace-rewards"></a>Ceny Marketplace
+# <a name="marketplace-rewards"></a>Marketplace Rewards
 
-Ceny na Marketplace jsou navržené tak, aby vám podporovaly v konkrétní fázi růstu, počínaje osvětou aktivitami, které vám pomůžou získat vaše první zákazníky. Při zvětšování na webu Marketplace budete odemykat nové výhody, které vám pomohou převést zákazníky a uzavřít obchody. 
+Ceny na webu Marketplace vám v konkrétní fázi růstu a od aktivit pro sledování, které vám pomůžou získat své první zákazníky, vám pomůžou. Při růstu prostřednictvím komerčního tržiště odemknete nové výhody, které vám pomohou převést zákazníky a uzavřít obchody.
 
-Program vytvoří pozitivní smyčku zpětné vazby: výhody v jednotlivých fázích růstu jsou navržené tak, aby vás pokračovaly v další fázi, což vám umožní rozšířit vaši firmu na zákazníky Microsoftu, pole Microsoftu a prostřednictvím kanálu Microsoftu prostřednictvím komerčního tržiště, které využijí vaší platformy. 
+Program vytvoří pozitivní smyčku zpětné vazby: výhody v jednotlivých fázích růstu vám pomůžou s průběhem další fáze, což vám umožní rozšířit vaši firmu na zákazníky Microsoftu, pole Microsoftu a prostřednictvím kanálu Microsoftu prostřednictvím komerčního tržiště jako platformy.
 
 Vaše výhody se liší v závislosti na tom, jestli je vaše nabídka [seznam, zkušební verze nebo Transact](../determine-your-listing-type.md#choose-a-publishing-option)).
 
-Na základě vašich nároků vám bude kontaktován člen týmu útraty, pokud vaše nabídka bude živá. 
+Na základě vašich nároků vám bude kontaktován člen týmu útraty, pokud vaše nabídka bude živá.
 
-U partnerů pro Transact-to, jak budete rozšiřovat účtované prodeje prostřednictvím platformy Marketplace, můžete pro každou úroveň odemknout větší výhody. 
+U partnerů pro Transact-to, jak budete rozšiřovat účtované prodeje prostřednictvím platformy Marketplace, můžete pro každou úroveň odemknout větší výhody.
 
-Minimálním požadavkem pro publikování v prodejní místa je MPNID, takže tyto výhody jsou dostupné všem partnerům bez ohledu na stav kompetence MPN nebo partnerský typ. Každý partner je oprávněn rozšířit svou firmu na webu Marketplace jako platformu. 
+Minimálním požadavkem pro publikování v prodejní místa je MPNID, takže tyto výhody jsou dostupné všem partnerům bez ohledu na stav kompetence MPN nebo partnerský typ. Každý partner je oprávněn rozšířit svou firmu na webu Marketplace jako platformu.
 
-Získáte podporu při porozumění dostupných zdrojích a implementaci osvědčených postupů, které můžete také [zkontrolovat sami](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/). 
+Získáte podporu při porozumění dostupných zdrojích a implementaci osvědčených postupů, které můžete také [zkontrolovat sami](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/).
 
 [Tady](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace)si přečtěte nárok na program Marketplace pro vyvýšení ceny.
 
@@ -43,15 +45,12 @@ Postup, jak začít, je snadné:
     1. Zadejte kontaktní telefon a upřednostňovaný jazyk této kontaktní osoby pro marketing. Po zadání těchto informací vyberte **Přiřadit uživatele**.
     1. Po aktualizaci marketingového kontaktu vyberte možnost **aktivovat** pro zvýhodnění, které chcete začít používat. Po aktivaci výhody bude vaši kontaktní osobu pro marketing do týdne kontaktovat člen týmu programu Rewards.
 
-**Technické výhody**
+## <a name="technical-benefits"></a>Technické výhody
 
-1. Můžete využít svůj technický přínos k vyžádání technické pomoci během fází předprodejní, návrhu, nasazení a vývoje aplikací v cloudových a hybridních řešeních. Pokud chcete požádat o pomoc, vyplňte formulář žádosti a pak vyberte **Odeslat žádost**.
+1. Můžete využít svůj technický přínos k vyžádání technické pomoci během fází předběžného prodeje, návrhu, nasazení a vývoje aplikací v cloudových a hybridních řešeních. Pokud chcete požádat o pomoc, vyplňte formulář žádosti a pak vyberte **Odeslat žádost**.
 2. Používání výhod sponzorství Azure bude při odemčení těchto výhod sdíleno prostřednictvím e-mailu.
 
->[!Note]
->Pokud je vaše nabídka živá déle než čtyři týdny a neobdrželi jste zprávu, zkontrolujte prosím v organizaci, která je vlastníkem příslušné nabídky, a to buď pomocí portál partnerů cloudu nebo v partnerském centru. Měly by mít komunikaci a další kroky.
-
->[!Note] 
->Pokud nemůžete určit vlastníka nebo pokud vlastník opustil vaši společnost, můžete lístek podpory vyvolat na adrese https://aka.ms/marketplacepublishersupport .
+>[!NOTE]
+>Pokud je vaše nabídka živá déle než čtyři týdny a neobdrželi jste zprávu, vraťte se do partnerského centra a zjistěte, kdo ve vaší organizaci tuto nabídku vlastní. Měly by mít komunikaci a další kroky. Pokud nemůžete určit vlastníka nebo pokud vlastník opustil vaši společnost, otevřete lístek podpory na adrese https://aka.ms/marketplacepublishersupport .
 
 Rozsah aktivit, které jsou k dispozici, se rozšíří při zvětšování nabídek na webu Marketplace. Všechny výpisy obdrží základní úroveň doporučení optimalizace a povýšení v rámci samoobslužného e-mailu s prostředky a osvědčenými postupy.

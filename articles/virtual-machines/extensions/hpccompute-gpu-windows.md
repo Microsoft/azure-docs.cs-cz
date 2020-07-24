@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: akjosh
-ms.openlocfilehash: 8390f3273c7c8b5ca3b97d5da5184ab784b15c4b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4491171062e582db8388c3eff380d67ea1a0c51c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511037"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085652"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Rozšíření ovladače NVIDIA GPU pro Windows
 
@@ -139,7 +139,7 @@ az vm extension set \
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Odstraňování potíží
+### <a name="troubleshoot"></a>Odstranit potíže
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí Azure PowerShell a Azure CLI. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz.
 
@@ -154,7 +154,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 Výstup spuštění rozšíření je protokolován do následujícího adresáře:
 
 ```cmd
-C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
+C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverWindows\
 ```
 
 ### <a name="error-codes"></a>Kódy chyb

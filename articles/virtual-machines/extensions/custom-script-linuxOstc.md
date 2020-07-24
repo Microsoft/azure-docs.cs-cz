@@ -1,5 +1,5 @@
 ---
-title: Spouštění vlastních skriptů na virtuálních počítačích se systémem Linux v Azure
+title: Spustit rozšíření vlastních skriptů verze 1 (zastaralé) na virtuálních počítačích se systémem Linux v Azure
 description: Automatizace úloh konfigurace virtuálních počítačů se systémem Linux pomocí rozšíření vlastních skriptů v1
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
-ms.openlocfilehash: 1ca20f2c8cda84c241391f67ac542faa4a1f5ecd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fe915fd58f60e4ad5b1e28b51911678ef2f866c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82594708"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085703"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Použití rozšíření vlastních skriptů Azure verze 1 s virtuálními počítači se systémem Linux
 
@@ -118,15 +118,15 @@ Tyto položky by měly být považovány za citlivá data a specifikována v kon
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Name | Hodnota/příklad | Typ dat |
+| Název | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | vydavatel | Microsoft. OSTCExtensions | řetězec |
 | typ | CustomScriptForLinux | řetězec |
 | typeHandlerVersion | 1.5 | int |
-| Identifikátory URI (např.) | `https://github.com/MyProject/Archive/MyPythonScript.py` | pole |
+| Identifikátory URI (např.) | `https://github.com/MyProject/Archive/MyPythonScript.py` | array |
 | commandToExecute (např.) | Python MyPythonScript.py\<my-param1\> | řetězec |
-| enableInternalDNSCheck | true | Boolean |
+| enableInternalDNSCheck | true | boolean |
 | storageAccountName (např.) | examplestorageacct | řetězec |
 | storageAccountKey (např.) | TmJK/1N3AbAZ3q/+ hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg = = | řetězec |
 
@@ -258,7 +258,7 @@ az vm extension set
   --protected-settings ./protected-config.json
 ```
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Když se rozšíření vlastních skriptů spustí, skript se vytvoří nebo stáhne do adresáře, který je podobný následujícímu příkladu. Výstup příkazu je také uložen do tohoto adresáře v `stdout` souborech a `stderr` .
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 01/16/2020
-ms.openlocfilehash: 62170df567f552699304710902a1f83b84728af2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 113808a3e2bab6c4cb9d2ea5f155a027abf1b5bc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120700"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086332"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Aktualizace stávající nabídky na komerčním marketplace
 
@@ -20,19 +20,19 @@ Stávající nabídky si můžete prohlédnout na kartě **Přehled** na [portá
 
 Aktualizace stávající nabídky, která je aktuálně živá na webu Marketplace:
 
-1. Vyberte název nabídky, kterou chcete aktualizovat. Stav nabídky může být uvedený jako **Live**, **publikování probíhá**, **koncept**, **nutná pozornost**nebo **neprodávaná na webu Marketplace** (Pokud jste předtím zvolili možnost ukončit prodej této nabídky). Po výběru se otevře stránka s **přehledem nabídky** pro tuto nabídku.
-2. Pro oblast, kterou chcete aktualizovat, vyberte na kartě Přehled možnost **aktualizovat** nebo položku nabídky z levé navigace. Můžete chtít aktualizovat **nastavení nabídek**, **vlastnosti**, **seznam nabídek**, **Náhled**, **technickou konfiguraci**, **Přehled plánu**nebo **testovací jednotku**. 
-3. Proveďte požadované změny a pak vyberte **Uložit**. Tento postup opakujte, dokud nebudou všechny změny dokončeny.
+1. Vyberte název nabídky, kterou chcete aktualizovat. Stav nabídky může být uveden jako **Náhled**, **Live**, **publikování probíhá**, **koncept**, **nutná pozornost**nebo **není k dispozici** (Pokud jste se předtím rozhodli tuto nabídku přestat prodávat). Po výběru se otevře stránka s **přehledem nabídky** pro tuto nabídku.
+2. Vyberte možnost **aktualizovat** na kartě na stránce Přehled nabídky nebo položku nabídky na levém navigačním panelu pro oblast, kterou chcete aktualizovat. Můžete chtít aktualizovat **nastavení nabídek**, **vlastnosti**, **seznam nabídek**, **Náhled**, **technickou konfiguraci**, **Přehled plánu**nebo **testovací jednotku**.
+3. Proveďte požadované změny a vyberte **Uložit koncept**. Tento postup opakujte, dokud nebudou všechny změny dokončeny.
 
 ## <a name="review-and-publish-an-updated-offer"></a>Kontrola a publikování aktualizované nabídky
 
-Až budete připraveni publikovat aktualizovanou nabídku, vyberte **publikovat** z libovolné stránky. Otevře se stránka **Kontrola a publikování** . Na této stránce můžete:
+Až budete připraveni publikovat aktualizovanou nabídku, vyberte možnost **zkontrolovat a publikovat** na libovolné stránce. Otevře se stránka **Kontrola a publikování** . Na této stránce můžete:
 
 - Podívejte se na téma stav dokončení pro části nabídky, kterou jste aktualizovali: 
     - **Nepublikované změny**: oddíl se aktualizoval a je dokončený. Byla poskytnuta všechna požadovaná data a v aktualizacích nebyly zavedeny žádné chyby.
     - **Nedokončeno**: aktualizace provedené v oddílu zavedly chyby, které je třeba opravit, nebo vyžadují, aby byly k dispozici další informace.
 - Poskytněte týmu certifikace Další informace, aby se zajistilo plynulé testování.
-- Kliknutím na **Odeslat**aktualizujte aktualizovanou nabídku pro publikování.  Po zpřístupnění verze Preview aktualizované nabídky vám pošleme e-mail, abyste mohli zkontrolovat a odhlásit.
+- Odešlete aktualizovanou nabídku pro publikování výběrem možnosti **publikovat**.  Po zpřístupnění verze Preview aktualizované nabídky vám pošleme e-mail, abyste mohli zkontrolovat a odhlásit.
 
 > [!IMPORTANT]
 > Abyste mohli publikovat aktualizovanou nabídku vaší zamýšlené cílové skupině (veřejné nebo soukromé), musíte si prohlédnout svou nabídku Preview a vybrat **Přejít do živého** .
@@ -51,9 +51,10 @@ Chcete-li přidat nový plán v rámci existující nabídky, kterou jste již p
 Chcete-li provést změny v plánu v rámci stávající nabídky, kterou jste již publikovali:
 
 1. Na stránce s **přehledem nabídky** pro existující nabídku otevřené vyberte plán, který chcete změnit. Pokud plán není dostupný ze seznamu **Přehled plánů** , vyberte **Zobrazit všechny plány**.
-1. Můžete vybrat **název**plánu, **cenový model**nebo **dostupnost**. *V současné době jsou plány k dispozici pouze v angličtině (USA)*.
-1. Po provedení všech nutných změn názvu plánu, popisu nebo dostupnosti cílové skupiny vyberte **Uložit** . 
-1. Až budete připraveni publikovat aktualizace, vyberte **publikovat** . Otevře se stránka **[Kontrola a publikování](#review-and-publish-an-updated-offer)** a zobrazí se stav dokončení vašich aktualizací.
+1. Vyberte **název**plánu, **cenový model**nebo **dostupnost**. *V současné době jsou plány k dispozici pouze v angličtině (USA)*.
+1. Po provedení změn v názvu plánu, popisu nebo dostupnosti cílové skupiny vyberte **Uložit koncept** .
+1. Až budete připraveni publikovat aktualizace, vyberte **zkontrolovat a publikovat** . Otevře se stránka **[Kontrola a publikování](#review-and-publish-an-updated-offer)** a zobrazí se stav dokončení vašich aktualizací.
+1. Odešlete aktualizovaný plán pro publikování kliknutím na **publikovat**. Po zpřístupnění verze Preview aktualizované nabídky vám pošleme e-mail, abyste mohli zkontrolovat a odhlásit.
 
 ## <a name="compare-changes-to-marketplace-offers"></a>Porovnat změny nabídek Marketplace
 
@@ -142,19 +143,21 @@ Pokud chcete nabídku publikovat později, budete muset spustit proces publikov�
 
 ## <a name="stop-selling-an-offer-or-plan"></a>Zastavení prodeje nabídky nebo plánu
 
-Chcete-li ukončit prodej nabídky po jejím publikování, vyberte možnost **ukončit prodej** na stránce s **přehledem nabídky** . Pokud chcete ukončit prodej plánu, vyberte **zastavit prodej** na stránce **Přehled plánu** . (Možnost ukončit prodej plánu je dostupná jenom v případě, že v nabídce máte více než jeden plán. Můžete zvolit, že chcete ukončit prodej jednoho plánu, aniž by to mělo vliv na jiné plány v rámci vaší nabídky.)
+Pokud chcete ukončit prodej nabídky po jejím publikování, vyberte možnost **ukončit prodej** na stránce s **přehledem nabídky** .
 
-Jakmile ověříte, že chcete ukončit prodej nabídky nebo plánu, během několika hodin už se na webu Marketplace nebude zobrazovat a žádní noví zákazníci si je nebudou moct stáhnout.
+Jakmile ověříte, že chcete ukončit prodej této nabídky, už během několika hodin se na webu Marketplace nebude zobrazovat a žádní noví zákazníci je nebudou moct stáhnout.
 
-Všichni zákazníci, kteří si nabídku nebo plán dříve získali, ho můžou dál používat. Můžou je znovu stáhnout, ale neobdrží aktualizace, pokud nabídku aktualizujete a znovu publikujete nebo naplánujete později. 
+Pokud chcete ukončit prodej plánu, vyberte **zastavit prodej** na stránce **Přehled plánu** . Možnost ukončit prodej plánu je dostupná jenom v případě, že nabídka obsahuje víc než jeden plán. Můžete zvolit, že chcete ukončit prodej jednoho plánu, aniž by to mělo vliv na jiné plány v rámci vaší nabídky. Po potvrzení, že chcete ukončit prodej plánu, je nutné znovu publikovat nabídku, aby se změna projevila. Po opětovném publikování nabídky už se plán na webu Marketplace nebude zobrazovat a žádní noví zákazníci je nebudou moct stáhnout.
 
-Po skončení žádosti o ukončení prodeje nabídky nebo plánu se na portálu pro partnery na komerčním webu na portálu pro partnery zobrazí i nadále. Chcete-li odstranit koncept, vyberte možnost **Odstranit koncept** ze stránky **Přehled nabídky** nebo **plán** . 
+Všichni zákazníci, kteří si nabídku nebo plán dříve získali, ho můžou dál používat. Můžou je znovu stáhnout, ale nebudou dostávat aktualizace, pokud nabídku aktualizujete a znovu publikujete nebo naplánujete později.
+
+Po dokončení žádosti o ukončení prodeje nabídky nebo plánu se na portálu pro komerční tržiště v partnerském centru stále zobrazuje stav **není k dispozici** .
 
 Pokud se rozhodnete tuto nabídku nebo plán prodat znovu, postupujte podle pokynů pro [aktualizaci existující nabídky](#update-an-existing-offer-in-the-commercial-marketplace). Nezapomeňte, že po provedení změn budete muset nabídku nebo plán znovu **publikovat** .
 
 ## <a name="remove-offers-from-existing-customers"></a>Odebrat nabídky od stávajících zákazníků
 
-Pokud chcete odebrat nabídky od stávajících zákazníků, [Zaprotokolujte žádost o podporu](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff). V seznamu **typ problému** vyberte konkrétní typ nabídky a v seznamu **kategorie** vyberte **Odebrat publikovanou nabídku** . Odešlete žádost. Tým podpory vás provede procesem odebrání nabídky.
+Pokud chcete odebrat nabídky od stávajících zákazníků, [Zaprotokolujte žádost o podporu](https://aka.ms/marketplacepublishersupport). V seznamu témat podpory vyberte možnost nabídka **komerčního tržiště**nebo vyřazení  >  **aplikace, odebrání nebo ukončení** , a odešlete žádost. Tým podpory vás provede procesem odebrání nabídky.
 
 ## <a name="sync-private-plan-audiences"></a>Synchronizovat veřejné skupiny plánů
 

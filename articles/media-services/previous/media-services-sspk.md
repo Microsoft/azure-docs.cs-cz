@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 7fce1fc529f3af71cac17d8011fe065c6381a419
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d4822f453e27a5e2fa7b97d77056b6bee1041d9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84677148"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086230"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Licencování &reg; sady pro portování klienta Microsoft Smooth Streaming 
 ## <a name="overview"></a>Přehled
@@ -28,7 +29,7 @@ Níže je uveden seznam architektury vysoké úrovně a služba IIS Smooth Strea
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
-## <a name="description"></a>Description
+## <a name="description"></a>Popis
 SSPK je licencovaná pro výrazy, které nabízejí skvělou obchodní hodnotu. SSPK License poskytuje odvětví s:
 
 * Zdroj Smooth Streaminging Kit pro portování v C++ 
@@ -123,6 +124,7 @@ Dočasné a konečné licence SSPK mohou odesílat technické dotazy [smoothpk@m
 * Hongkong Konka Ltd
 * InnoLux Corporation
 * Innopia Technologies, Inc
+* K-Tronics (Suzhou) technologie co., Ltd. 
 * Kaonmedia co., Ltd.
 * KDDI Corporation
 * Megabajtů Fame elektronika co. omezeno

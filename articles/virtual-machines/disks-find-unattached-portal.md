@@ -7,11 +7,12 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: ad01155259ea03806f56c6e75b315ff85b606220
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a5e2c368fd956abb98b2b4c9ccd1060677f3e06
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300432"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085754"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks---azure-portal"></a>Vyhledání a odstranění nepřipojených spravovaných a nespravovaných disků Azure – Azure Portal
 
@@ -21,7 +22,7 @@ Při odstranění virtuálního počítače v Azure se ve výchozím nastavení 
 
 Pokud máte nepřipojené spravované disky a už je nepotřebujete, následující postup vysvětluje, jak je najít z Azure Portal:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com/).
 1. Vyhledejte a vyberte **disky**.
 
     V okně **disky** se zobrazí seznam všech disků. Každý disk, který má **-** ve sloupci **vlastník** "", je nepřipojený disk.
@@ -39,7 +40,7 @@ Nespravované disky jsou soubory VHD, které se ukládají jako [objekty blob st
 
 Pokud máte nespravované disky, které nejsou připojené k virtuálnímu počítači, už je nepotřebujete, a chcete je odstranit, následující postup vysvětluje, jak to udělat z Azure Portal:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com/).
 1. Vyhledejte a vyberte **disky (klasické)**.
 
     Zobrazí se seznam všech nespravovaných disků. Libovolný disk, který má **-** ve sloupci **připojeno k** , je nepřipojený disk.
@@ -60,4 +61,4 @@ Pokud máte nespravované disky, které nejsou připojené k virtuálnímu poč�
 
 Pokud chcete automatizovaný způsob hledání a odstraňování nepřipojených účtů úložiště, přečtěte si článek o rozhraních [CLI](linux/find-unattached-disks.md) nebo [PowerShellu](windows/find-unattached-disks.md) .
 
-Další informace najdete v tématu [odstranění účtu úložiště](../storage/common/storage-account-create.md#delete-a-storage-account) a [Identifikace osamocených disků pomocí prostředí PowerShell](https://blogs.technet.microsoft.com/ukplatforms/2018/02/21/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell/) .
+Další informace najdete v tématu [odstranění účtu úložiště](../storage/common/storage-account-create.md#delete-a-storage-account) a [Identifikace osamocených disků pomocí prostředí PowerShell](/archive/blogs/ukplatforms/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell) .

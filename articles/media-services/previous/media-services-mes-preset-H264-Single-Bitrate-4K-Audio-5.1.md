@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 9c4b133ae74438def30f4fcd9e49a5ca5e6f9cd4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e1153b58063f85b57fba99da495d6842a75a819
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61463561"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086281"
 ---
 # <a name="h264-single-bitrate-4k-audio-51"></a>H264 Single Bitrate 4K Audio 5.1
 `Media Encoder Standard`definuje sadu přednastavení kódování, kterou můžete použít při vytváření úloh kódování. Můžete buď použít `preset name` k určení formátu, ve kterém chcete mediální soubor zakódovat. Nebo můžete vytvořit vlastní přednastavení založené na JSON nebo XML (pomocí kódování UTF-8 nebo UTF-16). Pak byste měli předat vlastní předvolbu kodéru. Seznam všech přednastavených názvů podporovaných tímto `Media Encoder Standard` kodérem najdete v tématu [Předvolby úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  
@@ -29,7 +29,7 @@ ms.locfileid: "61463561"
  Tato předvolba vytvoří jeden soubor MP4 s přenosovou rychlostí 18000 KB/s a zvukem AAC 5,1. Podrobné informace o profilu, přenosové rychlosti, vzorkovací frekvenci atd. z této předvolby najdete v souboru XML nebo JSON definovaném níže. Vysvětlení toho, co každý prvek znamená, a platné hodnoty pro každý prvek naleznete v [Media Encoder Standard schématu](media-services-mes-schema.md).  
   
 > [!NOTE]
->  Měli byste získat typ rezervované jednotky Premium s kódováním 4K. Další informace najdete v tématu [Jak škálovat kódování](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
+>  Měli byste získat typ rezervované jednotky Premium s kódováním 4K. Další informace najdete v tématu [Jak škálovat kódování](./media-services-scale-media-processing-overview.md).  
   
  XML  
   

@@ -6,11 +6,13 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
-ms.openlocfilehash: 57850b45820ec259337a8ad5b67bfebfd6762c24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 56f392210aac6045a9dc8cc3522d36092162f26c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84790581"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086111"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Analýza protokolů a metrik pomocí nastavení diagnostiky
 
@@ -27,7 +29,7 @@ Vyberte kategorii protokolu a kategorii metrik, které chcete monitorovat.
 
 ## <a name="logs"></a>Protokoly
 
-|Protokol | Description |
+|Protokol | Popis |
 |----|----|
 | **ApplicationConsole** | Protokol konzoly všech zákaznických aplikací. |
 | **SystemLogs** | V současné době se v této kategorii v této kategorii jenom protokoly [jarního cloudového konfiguračního serveru](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) . |

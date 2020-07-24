@@ -7,11 +7,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: mimckitt
-ms.openlocfilehash: 0825a29b45ea701315a57ff5248731e64e29de32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7ca47e0fbb9acbac67f2cc9af6e1e7555690046
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81261631"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085601"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Úvod do Linuxu na Azure
 Tento článek poskytuje přehled o spuštění virtuálního počítače s FreeBSD v Azure.
@@ -30,7 +31,7 @@ Agent zodpovídá za komunikaci mezi virtuálním počítačem FreeBSD a prostř
 Stejně jako v budoucích verzích FreeBSD je strategie aktuální a v krátké době jsou k dispozici nejnovější verze, které jsou publikovány týmem vydanými technickým vydáním FreeBSD.
 
 ### <a name="create-a-freebsd-vm-through-azure-cli-on-freebsd"></a>Vytvoření virtuálního počítače s FreeBSD prostřednictvím rozhraní příkazového řádku Azure v FreeBSD
-Nejdřív je potřeba nainstalovat rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) , i když na počítači FreeBSD tento příkaz
+Nejdřív je potřeba nainstalovat rozhraní příkazového [řádku Azure CLI](/cli/azure/get-started-with-azure-cli) , i když na počítači FreeBSD tento příkaz
 
 ```bash 
 curl -L https://aka.ms/InstallAzureCli | bash

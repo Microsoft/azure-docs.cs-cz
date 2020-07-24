@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: JnHs
 ms.author: jenhayes
 ms.date: 07/07/2020
-ms.openlocfilehash: 70f0dbff2530b11e92bd0b0cc55ad92a8679ebe9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3bb663dcdf007bf77d1b9f2b46af532774af22e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121788"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086383"
 ---
 # <a name="create-a-managed-service-offer"></a>Vytvoření nabídky spravované služby
 
@@ -90,7 +90,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Portal:
 3. Užitečné odkazy
 4. Screenshoty
 
-### <a name="name"></a>Name
+### <a name="name"></a>Název
 
 Název, který sem zadáte, se zákazníkům zobrazí jako název seznamu nabídek. Toto pole je předem vyplněno textem, který jste zadali pro možnost **alias nabídky** při vytváření nabídky, ale můžete tuto hodnotu změnit. Tento název může být ochranných známek (a může obsahovat symboly ochranných známek a autorských práv). Název nesmí být delší než 50 znaků a nesmí obsahovat žádné emoji.
 
@@ -102,7 +102,7 @@ Zadejte krátký popis vaší nabídky (až 100 znaků), který se dá použít 
 
 Zadejte delší popis vaší nabídky (až 256 znaků). Toto dlouhé Shrnutí se dá použít taky ve výsledcích hledání na webu Marketplace.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Popis
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -177,7 +177,7 @@ Než budete pokračovat, vyberte **Uložit koncept** .
 
 ## <a name="plan-overview"></a>Přehled plánu
 
-Každá nabídka musí mít jeden nebo více plánů (někdy označovaných jako SKU). Můžete přidat více plánů pro podporu různých sad funkcí v různých cenách nebo upravit konkrétní plán pro omezené cílové skupiny konkrétních zákazníků. Zákazníci si můžou prohlédnout plány, které jsou pro ně k dispozici v rámci nadřízené nabídky.
+Každá nabídka musí mít jeden nebo více plánů (dříve nazývané SKU). Můžete přidat více plánů pro podporu různých sad funkcí v různých cenách nebo upravit konkrétní plán pro omezené cílové skupiny konkrétních zákazníků. Zákazníci si můžou prohlédnout plány, které jsou pro ně k dispozici v rámci nadřízené nabídky.
 
 Na stránce **Přehled plánu** vyberte **+ vytvořit nový plán**. Pak zadejte **ID plánu** a **název plánu**. Obě tyto hodnoty můžou obsahovat jenom malé alfanumerické znaky, pomlčky a podtržítka, maximálně 50 znaků. Tyto hodnoty můžou zákazníci zobrazovat a po publikování této nabídky je nepůjde změnit.
 
@@ -242,7 +242,7 @@ Až dokončíte všechny oddíly pro svůj plán, můžete vybrat **+ vytvořit 
 
 Než budete pokračovat, vyberte **Uložit koncept** .
 
-## <a name="publish"></a>Publikování
+## <a name="publish"></a>Publikovat
 
 ### <a name="submit-offer-to-preview"></a>Odeslat nabídku do verze Preview
 

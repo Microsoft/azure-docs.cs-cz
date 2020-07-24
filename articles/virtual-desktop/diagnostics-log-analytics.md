@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7a138308b48a24a78c55bdc0105379e31482456d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ceb58182b34a4eccbed0dc1cdd1c351ae7868da
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85209381"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085907"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Použití Log Analytics pro diagnostickou funkci
 
@@ -96,7 +96,7 @@ K Log Analytics pracovním prostorům můžete přistupovat Azure Portal nebo Az
 
 ### <a name="access-log-analytics-on-a-log-analytics-workspace"></a>Přístup k Log Analytics v pracovním prostoru Log Analytics
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 
 2. Vyhledejte **Log Analytics pracovní prostor**.
 
@@ -133,52 +133,16 @@ Pro aktivity připojení Log Analytics jenom sestavy v těchto zprostředkujíc�
 
 ## <a name="example-queries"></a>Ukázky dotazů
 
-Následující ukázkové dotazy ukazují, jak funkce diagnostiky generuje sestavu pro nejčastěji používané aktivity ve vašem systému.
+Přístup k ukázkovým dotazům prostřednictvím uživatelského rozhraní Azure Monitor Log Analytics:
+1. Otevřete pracovní prostor Log Analytics a pak vyberte **protokoly**. Ukázkové uživatelské rozhraní dotazu se zobrazí automaticky.
+1. Změňte filtr na **kategorie**.
+1. Pokud chcete zkontrolovat dostupné dotazy, vyberte **virtuální počítač s Windows** .
+1. Zvolením **příkazu Spustit** spusťte vybraný dotaz. 
 
-Pokud chcete získat seznam připojení, která udělali vaši uživatelé, spusťte tuto rutinu:
+Přečtěte si další informace o rozhraní ukázkových dotazů v [uložených dotazech v Azure Monitor Log Analytics](../azure-monitor/log-query/saved-queries.md).
 
-```kusto
-WVDConnections
-| project-away TenantId,SourceSystem
-| summarize arg_max(TimeGenerated, *), StartTime =  min(iff(State== 'Started', TimeGenerated , datetime(null) )), ConnectTime = min(iff(State== 'Connected', TimeGenerated , datetime(null) ))   by CorrelationId
-| join kind=leftouter (
-    WVDErrors
-    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId
-    ) on CorrelationId
-| join kind=leftouter (
-   WVDCheckpoints
-   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId
-   | mv-apply Checkpoints on
-    (
-        order by todatetime(Checkpoints['Time']) asc
-        | summarize Checkpoints=makelist(Checkpoints)
-    )
-   ) on CorrelationId
-| project-away CorrelationId1, CorrelationId2
-| order by  TimeGenerated desc
-```
+Následující seznam dotazů vám umožní zkontrolovat informace o připojení a problémy pro jednoho uživatele. Tyto dotazy můžete spustit v [Editoru dotazů Log Analytics](../azure-monitor/log-query/get-started-portal.md#write-and-run-basic-queries). Pro každý dotaz nahraďte `userupn` hlavní název uživatele (UPN), kterého chcete vyhledat.
 
-Postup zobrazení aktivity informačního kanálu pro uživatele:
-
-```kusto
-WVDFeeds
-| project-away TenantId,SourceSystem
-| join kind=leftouter (
-    WVDErrors
-    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId
-    ) on CorrelationId
-| join kind=leftouter (
-   WVDCheckpoints
-   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId
-   | mv-apply Checkpoints on
-    (
-        order by todatetime(Checkpoints['Time']) asc
-        | summarize Checkpoints=makelist(Checkpoints)
-    )
-   ) on CorrelationId
-| project-away CorrelationId1, CorrelationId2
-| order by  TimeGenerated desc
-```
 
 Vyhledání všech připojení pro jednoho uživatele:
 
@@ -199,7 +163,6 @@ WVDConnections
 |sort by TimeGenerated asc, CorrelationId
 |summarize dcount(CorrelationId) by bin(TimeGenerated, 1d)
 ```
-
 
 Postup zjištění trvání relace podle uživatele:
 
@@ -224,7 +187,7 @@ WVDErrors
 |take 100
 ```
 
-Zjistit, zda došlo k určité chybě:
+Zjistit, zda došlo k určité chybě pro jiné uživatele:
 
 ```kusto
 WVDErrors
@@ -232,27 +195,7 @@ WVDErrors
 | summarize count(UserName) by CodeSymbolic
 ```
 
-Zjištění výskytu chyby napříč všemi uživateli:
 
-```kusto
-WVDErrors
-| where ServiceError =="false"
-| summarize usercount = count(UserName) by CodeSymbolic
-| sort by usercount desc
-| render barchart
-```
-
-Chcete-li se dotazovat aplikace na uživatele otevřené, spusťte tento dotaz:
-
-```kusto
-WVDCheckpoints
-| where TimeGenerated > ago(7d)
-| where Name == "LaunchExecutable"
-| extend App = parse_json(Parameters).filename
-| summarize Usage=count(UserName) by tostring(App)
-| sort by Usage desc
-| render columnchart
-```
 >[!NOTE]
 >- Když uživatel otevře celou plochu, jejich využití aplikace v relaci není sledováno jako kontrolní body v tabulce WVDCheckpoints.
 >- Sloupec ResourcesAlias v tabulce WVDConnections ukazuje, jestli se uživatel připojil k celé ploše nebo publikované aplikaci. V tomto sloupci se zobrazuje jenom první aplikace, kterou otevřel během připojení. Všechny publikované aplikace, které uživatel otevře, jsou sledovány v WVDCheckpoints.

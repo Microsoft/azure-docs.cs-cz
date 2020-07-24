@@ -7,12 +7,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 1/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: d7a2d21dcd8c9474bdf068d7940e497333f35115
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: a4f7d330db9a4a0d9b435ebe7527e55e37c254e2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130213"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086213"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>Nastavení zotavení po havárii virtuálních počítačů Hyper-V do sekundární lokality pomocí prostředí PowerShell (Správce prostředků)
 
@@ -20,7 +20,7 @@ Tento článek popisuje, jak automatizovat kroky pro replikaci virtuálních po�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Prostudujte si [architekturu a komponenty scénáře](hyper-v-vmm-architecture.md).
 - Zkontrolujte [požadavky na podporu](./vmware-physical-secondary-support-matrix.md) pro všechny komponenty.
@@ -47,8 +47,8 @@ Připravte Virtual Machine Manager následujícím způsobem:
 
 Ujistěte se, že jste Azure PowerShell připraveni k tomu:
 
-- Pokud už používáte PowerShell, upgradujte na verzi 0.8.10 nebo novější. [Přečtěte si další informace](/powershell/azureps-cmdlets-docs) o tom, jak nastavit PowerShell.
-- Po nastavení a konfiguraci PowerShellu si Projděte [rutiny služby](/powershell/azure/overview).
+- Pokud už používáte PowerShell, upgradujte na verzi 0.8.10 nebo novější. [Přečtěte si další informace](/powershell/azure/) o tom, jak nastavit PowerShell.
+- Po nastavení a konfiguraci PowerShellu si Projděte [rutiny služby](/powershell/azure/).
 - Další informace o tom, jak používat hodnoty parametrů, vstupy a výstupy v prostředí PowerShell, najdete [v příručce Začínáme](/powershell/azure/get-started-azureps) .
 
 ## <a name="set-up-a-subscription"></a>Nastavení předplatného

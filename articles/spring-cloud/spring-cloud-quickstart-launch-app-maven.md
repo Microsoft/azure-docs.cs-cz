@@ -6,12 +6,13 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: f374e0611b887e2a2c787569d9fe58bc1a5c84e9
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.custom: devx-track-java
+ms.openlocfilehash: 9ae6524dc1d53580d0dc7de1179ccf9db8cebc61
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594062"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086128"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Rychlý Start: spuštění aplikace pro jarní Cloud z Azure pomocí modulu plug-in Maven
 
@@ -47,9 +48,9 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba:
 1. Zadejte **Podrobnosti projektu** pro ukázkovou aplikaci následujícím způsobem:
 
     1. Vyberte **předplatné** , ke kterému se bude aplikace přidružit.
-    1. Vyberte nebo vytvořte skupinu prostředků pro aplikaci. Doporučujeme vytvořit novou skupinu prostředků.  Následující příklad ukazuje novou skupinu prostředků s názvem `myspringservice`.
-    1. Zadejte název pro novou jarní cloudovou službu Azure.  Název musí být dlouhý 4 až 32 znaků a může obsahovat jenom malá písmena, číslice a spojovníky. První znak názvu služby musí být písmeno a poslední znak musí být písmeno nebo číslo.  Služba v následujícím příkladu má název `contosospringcloud`.
-    1. Z poskytnutých možností vyberte umístění pro vaši aplikaci.  V tomto příkladu vybereme `East US`.
+    1. Vyberte nebo vytvořte skupinu prostředků pro aplikaci. Doporučujeme vytvořit novou skupinu prostředků.  Následující příklad ukazuje novou skupinu prostředků s názvem `myspringservice` .
+    1. Zadejte název pro novou jarní cloudovou službu Azure.  Název musí být dlouhý 4 až 32 znaků a může obsahovat jenom malá písmena, číslice a spojovníky. První znak názvu služby musí být písmeno a poslední znak musí být písmeno nebo číslo.  Služba v následujícím příkladu má název `contosospringcloud` .
+    1. Z poskytnutých možností vyberte umístění pro vaši aplikaci.  V tomto příkladu vybereme `East US` .
     1. Vyberte **zkontrolovat + vytvořit** a podívejte se na Shrnutí nové služby.  Pokud vše vypadá správně, vyberte **vytvořit**.
 
     > [!div class="mx-imgBorder"]
@@ -63,7 +64,7 @@ Nasazení služby trvá asi 5 minut. Po nasazení služby vyberte **Přejít na 
 ## <a name="set-up-your-configuration-server"></a>Nastavení konfiguračního serveru
 
 1. Na stránce **Přehled** služby vyberte možnost **konfigurační server**.
-1. V části **výchozí úložiště** nastavte **identifikátor URI** na **https://github.com/Azure-Samples/piggymetrics-config**a pak kliknutím na **použít** uložte změny.
+1. V části **výchozí úložiště** nastavte **identifikátor URI** na **https://github.com/Azure-Samples/piggymetrics-config** a pak kliknutím na **použít** uložte změny.
 
     > [!div class="mx-imgBorder"]
     > ![Definování a použití nastavení konfigurace](media/maven-qs-apply-config.jpg)
@@ -96,7 +97,7 @@ Nasazení služby trvá asi 5 minut. Po nasazení služby vyberte **Přejít na 
     mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.1.0:config
     ```
 
-    a. Vyberte moduly `gateway`,`auth-service`a. `account-service`
+    a. Vyberte moduly `gateway` , `auth-service` a `account-service` .
 
     b. Vyberte své předplatné a cluster jarních cloudových služeb Azure.
 
@@ -120,7 +121,7 @@ Nasazení služby trvá asi 5 minut. Po nasazení služby vyberte **Přejít na 
 V tomto rychlém startu jste nasadili jarní cloudovou aplikaci z úložiště Maven. Další informace o jarním cloudu Azure najdete v kurzu o přípravě aplikace na nasazení.
 
 > [!div class="nextstepaction"]
-> [Příprava aplikace Azure jaře Cloud pro nasazení](spring-cloud-tutorial-prepare-app-deployment.md)
-> další[informace o modulech plug-in Maven pro Azure](https://github.com/microsoft/azure-maven-plugins)
+> [Příprava aplikace pro jarní cloudy Azure pro nasazení](spring-cloud-tutorial-prepare-app-deployment.md) 
+>  Další [informace o modulech plug-in Maven pro Azure](https://github.com/microsoft/azure-maven-plugins)
 
 Další ukázky jsou k dispozici na GitHubu: [ukázky Azure pro jarní Cloud](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql).

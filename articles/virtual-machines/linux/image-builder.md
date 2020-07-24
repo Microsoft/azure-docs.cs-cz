@@ -8,15 +8,16 @@ ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: b0df0fc43fcd125c6fc96fd2abbe3857d0d23afa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9bd5e9075d15d0f559f674694fc867cd661450d8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84141972"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085533"
 ---
-# <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>Verze Preview: vytvoření image pro Linux a její distribuce do galerie sdílených imagí 
+# <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery-by-using-azure-cli"></a>Preview: vytvoření image pro Linux a její distribuce do galerie sdílených imagí pomocí Azure CLI
 
-V tomto článku se dozvíte, jak můžete pomocí Tvůrce imagí Azure a rozhraní příkazového řádku Azure vytvořit verzi image v [galerii sdílených imagí](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)a pak tuto image distribuovat globálně. Můžete to provést také pomocí [Azure PowerShell](../windows/image-builder-gallery.md).
+V tomto článku se dozvíte, jak můžete pomocí Tvůrce imagí Azure a rozhraní příkazového řádku Azure vytvořit verzi image v [galerii sdílených imagí](../windows/shared-image-galleries.md)a pak tuto image distribuovat globálně. Můžete to provést také pomocí [Azure PowerShell](../windows/image-builder-gallery.md).
 
 
 K nakonfigurování image budeme používat šablonu Sample. JSON. Soubor. JSON, který používáme, je tady: [helloImageTemplateforSIG.js](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json). 
@@ -92,7 +93,7 @@ az group create -n $sigResourceGroup -l $location
 ```
 
 ## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>Vytvoření uživatelsky přiřazené identity a nastavení oprávnění pro skupinu prostředků
-Nástroj image Builder použije poskytnutou [identitu uživatele](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity) k vložení image do galerie sdílených imagí Azure (SIG). V tomto příkladu vytvoříte definici role Azure, která má podrobné akce k provedení distribuce image do SIG. Definice role se pak přiřadí identitě User-identity.
+Nástroj image Builder použije poskytnutou [identitu uživatele](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) k vložení image do galerie sdílených imagí Azure (SIG). V tomto příkladu vytvoříte definici role Azure, která má podrobné akce k provedení distribuce image do SIG. Definice role se pak přiřadí identitě User-identity.
 
 ```bash
 # create user assigned identity for image builder to access the storage account where the script is located
@@ -196,7 +197,7 @@ az resource invoke-action \
 Vytvoření image a její replikace do obou oblastí může chvíli trvat. Před přechodem k vytvoření virtuálního počítače počkejte na dokončení této části.
 
 
-## <a name="create-the-vm"></a>Vytvořte virtuální počítač.
+## <a name="create-the-vm"></a>Vytvoření virtuálního počítače
 
 Vytvořte virtuální počítač z verze image, kterou vytvořila služba Azure image Builder.
 

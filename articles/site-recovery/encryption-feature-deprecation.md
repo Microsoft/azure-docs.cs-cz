@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: rajanaki
-ms.openlocfilehash: b9d333467864f67bc357314830ff885af4232ba0
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 79c129fee6d0339eed752abe94059fa566859bc0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133195"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086179"
 ---
 # <a name="deprecation-of-site-recovery-data-encryption-feature"></a>Vyřazení funkce šifrování dat Site Recovery
 
@@ -22,14 +22,14 @@ Tento dokument popisuje podrobnosti vyřazení a nápravné akce, které je tře
 ## <a name="deprecation-information"></a>Informace o zastaralosti
 
 
-Funkce šifrování dat Site Recovery byla k dispozici pro zákazníky, kteří chrání virtuální počítače Hyper-V, aby bylo zajištěno, že byla replikovaná data chráněna před hrozbami zabezpečení. Tato funkce bude zastaralá od **30. prosince 2019**. V rámci funkce REST, která používá [šifrování služby Storage](../storage/common/storage-service-encryption.md) (SSE), ji nahrazujete pokročilým [šifrováním](https://azure.microsoft.com/blog/azure-site-recovery-encryption-at-rest/) . Pomocí SSE se data šifrují před tím, než se uloží do úložiště a dešifrují při načtení, a po převzetí služeb při selhání do Azure se vaše virtuální počítače spustí ze zašifrovaných účtů úložiště, což vám umožní zlepšit cíl doby obnovení (RTO).
+Funkce šifrování dat Site Recovery byla k dispozici pro zákazníky, kteří chrání virtuální počítače Hyper-V, aby bylo zajištěno, že byla replikovaná data chráněna před hrozbami zabezpečení. Tato funkce bude zastaralá od **30. dubna 2022**. V rámci funkce REST, která používá [šifrování služby Storage](../storage/common/storage-service-encryption.md) (SSE), ji nahrazujete pokročilým [šifrováním](https://azure.microsoft.com/blog/azure-site-recovery-encryption-at-rest/) . Pomocí SSE se data šifrují před tím, než se uloží do úložiště a dešifrují při načtení, a po převzetí služeb při selhání do Azure se vaše virtuální počítače spustí ze zašifrovaných účtů úložiště, což vám umožní zlepšit cíl doby obnovení (RTO).
 
 Upozorňujeme, že pokud jste stávající zákazník používající tuto funkci, měli byste obdržet komunikaci s podrobnostmi o vyřazení a nápravných krocích. 
 
 
 ## <a name="what-are-the-implications"></a>Jaké jsou důsledky?
 
-Po **30. prosinci 2019**nebude možné provést převzetí služeb při selhání všemi virtuálními počítači, které pořád používají vyřazení šifrovací funkce. 
+Po **30. dubna 2022**nebudou moct převzetí služeb při selhání provádět žádné virtuální počítače, které pořád používají vyřazenou funkci šifrování. 
 
 ## <a name="required-action"></a>Požadovaná akce
 Pokud chcete pokračovat v úspěšných operacích převzetí služeb při selhání a replikace, postupujte podle níže uvedených kroků:
@@ -44,4 +44,3 @@ Po dokončení počáteční replikace do účtů úložiště s povoleným SSE 
 
 ## <a name="next-steps"></a>Další kroky
 Naplánujte provedení nápravných kroků a nejdříve je spusťte. Pokud máte dotazy týkající se tohoto vyřazení, obraťte se na podpora Microsoftu. Další informace o scénáři technologie Hyper-V do Azure najdete v [tomto](hyper-v-vmm-architecture.md)článku.
-

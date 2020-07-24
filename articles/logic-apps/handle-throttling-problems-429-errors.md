@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: fbfd52065bc0522668488492de2181f252f86a4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 495847d31682aff64fed3c81b1d5d68cf67dfd38
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81272674"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086434"
 ---
 # <a name="handle-throttling-problems-429---too-many-requests-errors-in-azure-logic-apps"></a>Zpracování potíží s omezením (429-počet chybných požadavků) v Azure Logic Apps
 
@@ -21,7 +22,7 @@ V [Azure Logic Apps](../logic-apps/logic-apps-overview.md)vaše aplikace logiky 
 Tady jsou některé běžné typy omezení, které vaše aplikace logiky může mít:
 
 * [Aplikace logiky](#logic-app-throttling)
-* [Připojovací](#connector-throttling)
+* [Konektor](#connector-throttling)
 * [Cílová služba nebo systém](#destination-throttling)
 
 <a name="logic-app-throttling"></a>
@@ -76,7 +77,7 @@ Chcete-li na této úrovni zvládnout omezování, máte tyto možnosti:
 
 ## <a name="connector-throttling"></a>Omezení konektoru
 
-Každý konektor má své vlastní omezení omezení, které můžete najít na stránce technické reference pro konektor. Například [konektor Azure Service Bus](https://docs.microsoft.com/connectors/servicebus/) má omezení omezování, které umožňuje až 6 000 volání za minutu, zatímco konektor SQL Server má omezení [, která se liší v závislosti na typu operace](https://docs.microsoft.com/connectors/sql/).
+Každý konektor má své vlastní omezení omezení, které můžete najít na stránce technické reference pro konektor. Například [konektor Azure Service Bus](/connectors/servicebus/) má omezení omezování, které umožňuje až 6 000 volání za minutu, zatímco konektor SQL Server má omezení [, která se liší v závislosti na typu operace](/connectors/sql/).
 
 Některé triggery a akce, jako je HTTP, mají ["zásady opakování"](../logic-apps/logic-apps-exception-handling.md#retry-policies) , které můžete přizpůsobit na základě [omezení zásad opakování](../logic-apps/logic-apps-limits-and-config.md#retry-policy-limits) pro implementaci zpracování výjimek. Tato zásada určuje, jestli a jak často Trigger nebo akce opakuje požadavek, když původní požadavek vyprší nebo vyprší časový limit, a výsledkem je odpověď 408, 429 nebo 5xx. Takže když se omezení zahájí a vrátí 429, Logic Apps se podle podporované zásady opakování.
 

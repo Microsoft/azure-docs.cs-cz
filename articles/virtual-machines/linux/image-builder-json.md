@@ -3,17 +3,17 @@ title: Vytvoření šablony Azure image Builder (Preview)
 description: Naučte se, jak vytvořit šablonu pro použití s nástrojem Azure image Builder.
 author: danielsollondon
 ms.author: danis
-ms.date: 06/23/2020
+ms.date: 07/09/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 191f0468a01c98ec60b85ea7aca6333807bf4b80
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: d48153fa747ed9757eb8467eaf1d7c17cde3630e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221200"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085584"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Verze Preview: Vytvoření šablony Azure image Builder 
 
@@ -24,7 +24,7 @@ Toto je základní formát šablony:
 ```json
  { 
     "type": "Microsoft.VirtualMachineImages/imageTemplates", 
-    "apiVersion": "2019-05-01-preview", 
+    "apiVersion": "2020-02-14", 
     "location": "<region>", 
     "tags": {
         "<name": "<value>",
@@ -39,9 +39,8 @@ Toto je základní formát šablony:
             "vmSize": "<vmSize>",
             "osDiskSizeGB": <sizeInGB>,
             "vnetConfig": {
-                "name": "<vnetName>",
-                "subnetName": "<subnetName>",
-                "resourceGroupName": "<vnetRgName>"
+                "subnetId": "/subscriptions/<subscriptionID>/resourceGroups/<vnetRgName>/providers/Microsoft.Network/virtualNetworks/<vnetName>/subnets/<subnetName>"
+                }
             },
         "source": {}, 
         "customize": {}, 
@@ -54,11 +53,11 @@ Toto je základní formát šablony:
 
 ## <a name="type-and-api-version"></a>Typ a verze rozhraní API
 
-`type`Je typ prostředku, který musí být `"Microsoft.VirtualMachineImages/imageTemplates"` . V `apiVersion` průběhu času se změny rozhraní API změní, ale měla by být `"2019-05-01-preview"` pro verzi Preview.
+`type`Je typ prostředku, který musí být `"Microsoft.VirtualMachineImages/imageTemplates"` . V `apiVersion` průběhu času se změny rozhraní API změní, ale měla by být `"2020-02-14"` pro verzi Preview.
 
 ```json
     "type": "Microsoft.VirtualMachineImages/imageTemplates",
-    "apiVersion": "2019-05-01-preview",
+    "apiVersion": "2020-02-14",
 ```
 
 ## <a name="location"></a>Umístění
@@ -101,9 +100,8 @@ Pokud neurčíte žádné vlastnosti virtuální sítě, vytvoří Tvůrce imag�
 
 ```json
     "vnetConfig": {
-        "name": "<vnetName>",
-        "subnetName": "<subnetName>",
-        "resourceGroupName": "<vnetRgName>"
+        "subnetId": "/subscriptions/<subscriptionID>/resourceGroups/<vnetRgName>/providers/Microsoft.Network/virtualNetworks/<vnetName>/subnets/<subnetName>"
+        }
     }
 ```
 ## <a name="tags"></a>Značky
@@ -120,10 +118,9 @@ Tento volitelný oddíl lze použít k zajištění, aby byly před pokračován
 
 Další informace najdete v tématu [Definování závislostí prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies#dependson).
 
-## <a name="identity"></a>Identity
-Ve výchozím nastavení podporuje tvůrce imagí použití skriptů nebo kopírování souborů z více umístění, jako je GitHub a Azure Storage. Aby je bylo možné použít, musí být veřejně přístupné.
+## <a name="identity"></a>Identita
 
-Můžete také použít spravovanou identitu přiřazenou uživatelem Azure, kterou jste definovali, a zapnout tak přístup k tvůrci imagí Azure Storage, pokud mu byla v účtu úložiště Azure udělena minimální hodnota "úložiště BLOB data Reader". To znamená, že nemusíte mít externě přístup k objektům blob úložiště nebo nastavit tokeny SAS.
+Požadováno – Pokud má Tvůrce imagí oprávnění ke čtení a zápisu obrázků, přečtěte si téma z Azure Storage musíte vytvořit uživatelem přiřazenou identitu Azure, která má oprávnění k jednotlivým prostředkům. Podrobnosti o tom, jak nástroj image Builder funguje, a relevantní postup najdete v [dokumentaci](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements).
 
 
 ```json
@@ -135,9 +132,10 @@ Můžete také použít spravovanou identitu přiřazenou uživatelem Azure, kte
         },
 ```
 
-Úplný příklad najdete v tématu [použití spravované identity přiřazené uživatelem Azure pro přístup k souborům v Azure Storage](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage).
 
-Podpora tvůrce imagí pro uživatelem přiřazenou identitu: • podporuje jenom jednu identitu • nepodporuje vlastní názvy domén.
+Podpora tvůrce imagí pro uživatelem přiřazenou identitu:
+* Podporuje jenom jedinou identitu.
+* Nepodporuje vlastní názvy domén.
 
 Další informace najdete v tématu [co jsou spravované identity pro prostředky Azure?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 Další informace o nasazení této funkce najdete v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí Azure CLI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity).
@@ -153,11 +151,6 @@ Rozhraní API vyžaduje typ SourceType, který definuje zdroj pro sestavení ima
 
 > [!NOTE]
 > Pokud používáte stávající vlastní image Windows, můžete spustit příkaz Sysprep až 8 časů na jedné imagi Windows, další informace najdete v dokumentaci k [nástroji Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) .
-
-### <a name="iso-source"></a>Zdroj ISO
-Tato funkce je zastaralá od tvůrce imagí, protože teď [RHEL vlastní image předplatného](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/byos), přečtěte si prosím následující časové osy:
-    * 31. března 2020: šablony prostředků již nadále nepřijmou šablony imagí se zdroji RHEL ISO.
-    * 30. dubna 2020 – šablony obrázků obsahující zdroje ISO RHEL nebudou zpracovány již.
 
 ### <a name="platformimage-source"></a>PlatformImage zdroj 
 Azure image Builder podporuje image Windows serveru a klienta a Azure Marketplace pro Linux. úplný seznam najdete [tady](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#os-support) . 
@@ -181,6 +174,21 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 
 V této verzi můžete použít ' nejnovější ', verze je vyhodnocena, když dojde k sestavení obrázku, nikoli při odeslání šablony. Pokud tuto funkci použijete s cílem Galerie sdílených imagí, můžete se vyhnout opětovnému odeslání šablony a znovu spustit sestavení image v intervalech, takže se vaše image znovu vytvoří z nejaktuálnějších imagí.
 
+#### <a name="support-for-market-place-plan-information"></a>Podpora informací o plánu na místě na trhu
+Můžete také zadat informace o plánu, například:
+```json
+    "source": {
+        "type": "PlatformImage",
+        "publisher": "RedHat",
+        "offer": "rhel-byos",
+        "sku": "rhel-lvm75",
+        "version": "latest",
+        "planInfo": {
+            "planName": "rhel-lvm75",
+            "planProduct": "rhel-byos",
+            "planPublisher": "redhat"
+       }
+```
 ### <a name="managedimage-source"></a>ManagedImage zdroj
 
 Nastaví zdrojovou Image jako existující spravovanou bitovou kopii zobecněného virtuálního pevného disku nebo virtuálního počítače. Zdrojová image spravovaná musí být podporovaného operačního systému a musí být ve stejné oblasti jako šablona Azure image Builder. 
@@ -206,6 +214,7 @@ Nastaví zdrojovou bitovou kopii existující verze image v galerii sdílených 
 ```
 
 `imageVersionId`Měla by být ResourceID verze image. K vypsání verzí imagí použijte příkaz [AZ SIG Image-Version list](/cli/azure/sig/image-version#az-sig-image-version-list) .
+
 
 ## <a name="properties-buildtimeoutinminutes"></a>Vlastnosti: buildTimeoutInMinutes
 
@@ -254,7 +263,9 @@ Při použití `customize` :
 
  
 Oddíl Customization je pole. Azure image Builder se spustí prostřednictvím úprav v sekvenčním pořadí. Jakékoli selhání v jakémkoliv úpravách způsobí selhání procesu sestavení. 
- 
+
+> [!NOTE]
+> Vložené příkazy lze zobrazit v definici šablony obrázku a podpora Microsoftu při pomoci s případem podpory. Pokud máte citlivé informace, měl by se přesunout do skriptů v Azure Storage, kde Access vyžaduje ověření.
  
 ### <a name="shell-customizer"></a>Přizpůsobení prostředí
 
@@ -293,7 +304,7 @@ Přizpůsobení vlastností:
 Příkazy, které se mají spustit s oprávněními superuživatele, musí mít předponu `sudo` .
 
 > [!NOTE]
-> Když spustíte úpravce prostředí se zdrojem RHEL ISO, musíte zajistit, aby vaše první prostředí pro přizpůsobení způsobilo registraci na serveru s Red Hat nárokem, a to ještě před tím, než dojde k přizpůsobení. Po dokončení přizpůsobení by se měl skript na serveru nároků zrušit.
+> Vložené příkazy jsou uloženy jako součást definice šablony obrázku. Tyto příkazy lze zobrazit při výpisu definice bitové kopie a tyto jsou také podpora Microsoftu v případě případu podpory pro účely řešení potíží. Pokud máte citlivé příkazy nebo hodnoty, důrazně doporučujeme, abyste je přesunuli do skriptů a pomocí identity uživatele ověřili Azure Storage.
 
 ### <a name="windows-restart-customizer"></a>Restart Windows – úprav 
 Úpravce restartování vám umožní restartovat virtuální počítač s Windows a počkat na jeho návrat do režimu online. to vám umožní nainstalovat software, který vyžaduje restart.  
@@ -485,7 +496,7 @@ runOutputName=<runOutputName>
 
 az resource show \
         --ids "/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.VirtualMachineImages/imageTemplates/ImageTemplateLinuxRHEL77/runOutputs/$runOutputName"  \
-        --api-version=2019-05-01-preview
+        --api-version=2020-02-14
 ```
 
 Výstup:
@@ -569,13 +580,22 @@ Než budete moct distribuovat do galerie imagí, musíte vytvořit galerii a def
 Distribuovat vlastnosti pro galerie sdílených imagí:
 
 - **typ** – sharedImage  
-- **galleryImageId** – ID Galerie sdílených imagí Formát je:/subscriptions/ \<subscriptionId> /ResourceGroups/ \<resourceGroupName> /providers/Microsoft.COMPUTE/Galleries/ \<sharedImageGalleryName> /images/ \<imageGalleryName> .
+- **galleryImageId** – ID Galerie sdílených imagí, kterou lze zadat ve dvou formátech:
+    * Automatické vytváření verzí – nástroj image Builder vygeneruje číslo verze monotónní, což je užitečné v případě, že chcete zachovat obnovování imagí ze stejné šablony: formát je: `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<sharedImageGalleryName>/images/<imageGalleryName>` .
+    * Explicitní verze – můžete předat číslo verze, které má Tvůrce obrázků použít. Formát je následující:`/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/galleries/<sharedImageGalName>/images/<imageDefName>/versions/<version e.g. 1.1.1>`
+
 - **runOutputName** – jedinečný název pro identifikaci distribuce.  
 - **artifactTags** – volitelné uživatelsky definované páry klíč-hodnota.
-- **replicationRegions** – pole oblastí pro replikaci. Jedna z oblastí musí být oblast, ve které je galerie nasazena.
- 
+- **replicationRegions** – pole oblastí pro replikaci. Jedna z oblastí musí být oblast, ve které je galerie nasazena. Přidání oblastí bude znamenat zvýšení času sestavení, protože sestavení není dokončeno až do dokončení replikace.
+- **excludeFromLatest** (volitelné) to umožňuje označit verzi image, kterou vytvoříte, se v definici SIG nepoužívá jako nejnovější verze, výchozí hodnota je false.
+- **storageAccountType** (nepovinný) AIB podporuje zadání těchto typů úložiště pro verzi image, která se má vytvořit:
+    * "Standard_LRS"
+    * "Standard_ZRS"
+
+
 > [!NOTE]
-> Pro galerii můžete použít Azure image Builder v jiné oblasti, ale služba Azure image Builder bude potřebovat přenést image mezi datacentry a to bude trvat déle. Nástroj image Builder automaticky nastaví verzi obrázku na základě monotónní celého čísla, nemůžete ho aktuálně zadat. 
+> Pokud šablona obrázku a odkazovaná `image definition` není ve stejném umístění, zobrazí se další čas pro vytváření imagí. Tvůrce imagí aktuálně neobsahuje `location` parametr pro prostředek verze image, a proto ho převezmeme od nadřazeného objektu `image definition` . Pokud je například definice obrázku v westus a chcete, aby byla verze image replikovaná do eastus, objekt BLOB se zkopíruje do do westus. z tohoto důvodu se vytvoří prostředek verze image v westus a pak se replikuje do eastus. Chcete-li se vyhnout další době replikace, zajistěte, aby byla `image definition` šablona image a ve stejném umístění.
+
 
 ### <a name="distribute-vhd"></a>Distribuovat: VHD  
 Můžete vytvořit výstup do virtuálního pevného disku. Pak můžete zkopírovat VHD a použít ho k publikování na webu Azure MarketPlace nebo použít s Azure Stack.  
@@ -608,8 +628,45 @@ az resource show \
 
 > [!NOTE]
 > Až se virtuální pevný disk vytvoří, zkopírujte ho do jiného umístění, co nejrychleji. Virtuální pevný disk je uložený v účtu úložiště v dočasné skupině prostředků vytvořené při odeslání šablony image do služby Azure image Builder. Pokud odstraníte šablonu image, ztratíte tím virtuální pevný disk. 
- 
+
+## <a name="image-template-operations"></a>Operace s obrázkem šablony
+
+### <a name="starting-an-image-build"></a>Spuštění sestavení obrázku
+Chcete-li spustit sestavení, je nutné vyvolat ' Run ' na prostředku šablony obrázku, příklady `run` příkazů:
+
+```PowerShell
+Invoke-AzResourceAction -ResourceName $imageTemplateName -ResourceGroupName $imageResourceGroup -ResourceType Microsoft.VirtualMachineImages/imageTemplates -ApiVersion "2020-02-14" -Action Run -Force
+```
+
+
+```bash
+az resource invoke-action \
+     --resource-group $imageResourceGroup \
+     --resource-type  Microsoft.VirtualMachineImages/imageTemplates \
+     -n helloImageTemplateLinux01 \
+     --action Run 
+```
+
+### <a name="cancelling-an-image-build"></a>Rušení sestavení obrázku
+Pokud používáte sestavení bitové kopie, které se domníváte, že je nesprávné, čeká se na vstup uživatele, nebo jste se už neúspěšně dokončí, můžete sestavení zrušit.
+
+Sestavení může být kdykoli zrušeno. Pokud byla fáze distribuce zahájena, můžete stále zrušit, ale budete muset vyčistit všechny bitové kopie, které nemusí být dokončeny. Příkaz Cancel nečeká na dokončení akce zrušit, monitorujte prosím `lastrunstatus.runstate` , abyste zrušili průběh pomocí těchto [příkazů](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#get-statuserror-of-the-template-submission-or-template-build-status)stavu.
+
+
+Příklady `cancel` příkazů:
+
+```powerShell
+Invoke-AzResourceAction -ResourceName $imageTemplateName -ResourceGroupName $imageResourceGroup -ResourceType Microsoft.VirtualMachineImages/imageTemplates -ApiVersion "2020-02-14" -Action Cancel -Force
+```
+
+```bash
+az resource invoke-action \
+     --resource-group $imageResourceGroup \
+     --resource-type  Microsoft.VirtualMachineImages/imageTemplates \
+     -n helloImageTemplateLinux01 \
+     --action Cancel 
+```
+
 ## <a name="next-steps"></a>Další kroky
 
 V [GitHubu pro Azure image Builder](https://github.com/danielsollondon/azvmimagebuilder)jsou k dispozici ukázkové soubory. JSON pro různé scénáře.
- 

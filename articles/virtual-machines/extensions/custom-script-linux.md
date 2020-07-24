@@ -1,5 +1,5 @@
 ---
-title: Spouštění vlastních skriptů na virtuálních počítačích se systémem Linux v Azure
+title: Spuštění rozšíření vlastních skriptů na virtuálních počítačích se systémem Linux v Azure
 description: Automatizace úloh konfigurace virtuálních počítačů se systémem Linux pomocí rozšíření vlastních skriptů v2
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: 92bb254873669ae7c0894d633f17b5701b7ddc97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 367116948034fd4bedbeec15e655a09b179865d6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82594725"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085720"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Použití rozšíření vlastních skriptů Azure verze 2 s linuxovými virtuálními počítači
 Rozšíření vlastních skriptů verze 2 stáhne a spustí skripty na virtuálních počítačích Azure. Toto rozšíření je užitečné pro konfiguraci po nasazení, instalaci softwaru nebo jakoukoli jinou úlohu konfigurace nebo správy. Můžete stáhnout skripty z Azure Storage nebo jiného přístupného internetového umístění, nebo je můžete poskytnout modulu runtime rozšíření. 
@@ -38,14 +38,14 @@ Pokud chcete místo toho použít novou verzi 2, přepněte prosím nová a exis
 
 ### <a name="operating-system"></a>Operační systém
 
-Rozšíření vlastních skriptů pro Linux se spustí v operačním systému rozšiřujícího rozšíření podporovaného rozšíření. Další informace najdete v tomto [článku](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+Rozšíření vlastních skriptů pro Linux se spustí v operačním systému rozšiřujícího rozšíření podporovaného rozšíření. Další informace najdete v tomto [článku](../linux/endorsed-distros.md).
 
 ### <a name="script-location"></a>Umístění skriptu
 
 K přístupu k úložišti objektů BLOB v Azure můžete použít rozšíření pro použití přihlašovacích údajů služby Azure Blob Storage. Případně umístění skriptu může být libovolná tam, kde může virtuální počítač směrovat na tento koncový bod, jako je GitHub, interní souborový server atd.
 
 ### <a name="internet-connectivity"></a>Připojení k Internetu
-Pokud potřebujete stáhnout skript externě, jako je GitHub nebo Azure Storage, pak je potřeba otevřít další porty skupiny zabezpečení sítě brány firewall/sítě. Pokud je například skript umístěný v Azure Storage, můžete přístup pomocí značek služeb Azure NSG pro [úložiště](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)zpřístupnit.
+Pokud potřebujete stáhnout skript externě, jako je GitHub nebo Azure Storage, pak je potřeba otevřít další porty skupiny zabezpečení sítě brány firewall/sítě. Pokud je například skript umístěný v Azure Storage, můžete přístup pomocí značek služeb Azure NSG pro [úložiště](../../virtual-network/security-overview.md#service-tags)zpřístupnit.
 
 Pokud je váš skript na místním serveru, můžete přesto potřebovat další porty skupiny zabezpečení brány firewall/sítě.
 
@@ -56,7 +56,8 @@ Pokud je váš skript na místním serveru, můžete přesto potřebovat další
 * Pro spuštění skriptu je povolených 90 minut, což bude mít za následek neúspěšné zřízení rozšíření.
 * Neumísťujte do skriptu restartování, což způsobí problémy s dalšími nainstalovanými rozšířeními a po restartování po restartování nebude rozšíření pokračovat. 
 * Pokud máte skript, který způsobí restartování, nainstalujte aplikace a spusťte skripty atd. Restartování byste měli naplánovat pomocí úlohy cron nebo pomocí nástrojů, jako je DSC nebo Puppet rozšíření.
-* Rozšíření spustí pouze jeden skript, pokud chcete spustit skript při každém spuštění, můžete použít [bitovou kopii Cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init) a použít [skripty na spouštěcí](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) modul. Případně můžete použít skript k vytvoření jednotky systémové služby.
+* Rozšíření spustí pouze jeden skript, pokud chcete spustit skript při každém spuštění, můžete použít [bitovou kopii Cloud-init](../linux/using-cloud-init.md) a použít [skripty na spouštěcí](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) modul. Případně můžete použít skript k vytvoření jednotky systémové služby.
+* Pro virtuální počítač můžete použít jenom jednu verzi rozšíření. Aby bylo možné spustit druhý vlastní skript, je nutné odebrat rozšíření vlastních skriptů a znovu ho znovu použít s aktualizovaným skriptem. 
 * Pokud chcete naplánovat, kdy se skript spustí, měli byste použít rozšíření k vytvoření úlohy cron. 
 * Když je skript spuštěný, na webu Azure Portal nebo v rozhraní příkazového řádku se rozšíření zobrazí pouze v přechodném stavu. Pokud chcete častěji aktualizovat stav spuštěného skriptu, budete muset vytvořit vlastní řešení.
 * Rozšíření vlastních skriptů nepodporují nativně proxy servery, ale můžete použít nástroj pro přenos souborů, který podporuje proxy servery ve vašem skriptu, jako je například *kudrlinkou*. 
@@ -110,16 +111,16 @@ Tyto položky by měly být považovány za citlivá data a specifikována v kon
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Name | Hodnota/příklad | Typ dat | 
+| Název | Hodnota/příklad | Typ dat | 
 | ---- | ---- | ---- |
 | apiVersion | 2019-03-01 | date |
 | vydavatel | Microsoft. Compute. Extensions | řetězec |
 | typ | CustomScript | řetězec |
 | typeHandlerVersion | 2.1 | int |
-| Identifikátory URI (např.) | `https://github.com/MyProject/Archive/MyPythonScript.py` | pole |
+| Identifikátory URI (např.) | `https://github.com/MyProject/Archive/MyPythonScript.py` | array |
 | commandToExecute (např.) | Python MyPythonScript.py\<my-param1> | řetězec |
 | script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo = | řetězec |
-| skipDos2Unix (např.) | false (nepravda) | Boolean |
+| skipDos2Unix (např.) | false (nepravda) | boolean |
 | časové razítko (např.) | 123456789 | 32-bitové celé číslo |
 | storageAccountName (např.) | examplestorageacct | řetězec |
 | storageAccountKey (např.) | TmJK/1N3AbAZ3q/+ hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg = = | řetězec |
@@ -134,7 +135,7 @@ Tyto položky by měly být považovány za citlivá data a specifikována v kon
 * `fileUris`: (volitelné, pole řetězců) adresy URL pro soubory, které mají být staženy.
 * `storageAccountName`: (volitelné, řetězec) název účtu úložiště. Pokud zadáte přihlašovací údaje úložiště, `fileUris` musí být všechny adresy URL pro objekty blob Azure.
 * `storageAccountKey`: (volitelné, String) přístupový klíč účtu úložiště
-* `managedIdentity`: (volitelné, objekt JSON) [spravovaná identita](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) pro stahování souborů
+* `managedIdentity`: (volitelné, objekt JSON) [spravovaná identita](../../active-directory/managed-identities-azure-resources/overview.md) pro stahování souborů
   * `clientId`: (volitelné, String) ID klienta spravované identity
   * `objectId`: (volitelné, String) ID objektu spravované identity
 
@@ -212,9 +213,9 @@ CustomScript používá k provedení skriptu následující algoritmus.
 > [!NOTE]
 > Tato vlastnost **musí** být určena pouze v chráněných nastaveních.
 
-CustomScript (verze 2,1 a vyšší) podporuje [spravovanou identitu](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) pro stahování souborů z adres URL, které jsou k dispozici v nastavení "identifikátory URI". Umožňuje CustomScript získat přístup k Azure Storage privátním objektům blob nebo kontejnerům bez toho, aby uživatel musel předávat tajné kódy, jako jsou tokeny SAS nebo klíče účtu úložiště.
+CustomScript (verze 2,1 a vyšší) podporuje [spravovanou identitu](../../active-directory/managed-identities-azure-resources/overview.md) pro stahování souborů z adres URL, které jsou k dispozici v nastavení "identifikátory URI". Umožňuje CustomScript získat přístup k Azure Storage privátním objektům blob nebo kontejnerům bez toho, aby uživatel musel předávat tajné kódy, jako jsou tokeny SAS nebo klíče účtu úložiště.
 
-Aby bylo možné tuto funkci používat, musí uživatel přidat identitu přiřazenou [systémem](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity) nebo [uživatelem přiřazenou](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity) k virtuálnímu počítači nebo VMSS, kde se očekává spuštění CustomScript, a [udělit spravované identitě přístup k kontejneru Azure Storage nebo objektu BLOB](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access).
+Aby bylo možné tuto funkci používat, musí uživatel přidat identitu přiřazenou [systémem](../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity) nebo [uživatelem přiřazenou](../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-user-assigned-identity) k virtuálnímu počítači nebo VMSS, kde se očekává spuštění CustomScript, a [udělit spravované identitě přístup k kontejneru Azure Storage nebo objektu BLOB](../../active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage.md#grant-access).
 
 Pokud chcete použít identitu přiřazenou systémem na cílovém virtuálním počítači nebo VMSS, nastavte pole managedidentity na prázdný objekt JSON. 
 
@@ -378,7 +379,7 @@ az vm extension set \
   --protected-settings ./protected-config.json
 ```
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 Když se rozšíření vlastních skriptů spustí, skript se vytvoří nebo stáhne do adresáře, který je podobný následujícímu příkladu. Výstup příkazu je také uložen do tohoto adresáře v `stdout` souborech a `stderr` .
 
 ```bash

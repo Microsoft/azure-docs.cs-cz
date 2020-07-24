@@ -8,11 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/13/2020
-ms.openlocfilehash: 104975e6424ed96d43434a588997957033c31d93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1839cfe0f7295af583b7bd5397957a223e888d3e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77560350"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086485"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Správa clusterů Apache Hadoop ve službě HDInsight pomocí Azure PowerShell
 
@@ -22,11 +23,11 @@ Azure PowerShell lze použít k řízení a automatizaci nasazení a správy úl
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Prostředí PowerShell [AZ Module](https://docs.microsoft.com/powershell/azure/overview) installed.
+Prostředí PowerShell [AZ Module](https://docs.microsoft.com/powershell/azure/) installed.
 
 ## <a name="create-clusters"></a>Vytváření clusterů
 

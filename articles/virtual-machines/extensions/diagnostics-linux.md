@@ -9,19 +9,19 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 824ba9e1f9b4325c1e0974ed1c22b465ec4b85a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddbd64049307dcfd9b27cde1418eef2378b4f6b4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298952"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085686"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Použití diagnostického rozšíření Linuxu k monitorování metrik a protokolů
 
 Tento dokument popisuje verzi 3,0 a novější diagnostické rozšíření pro Linux.
 
 > [!IMPORTANT]
-> Informace o verzi 2,3 a starší najdete v [tomto dokumentu](../linux/classic/diagnostic-extension-v2.md).
+> Informace o verzi 2,3 a starší najdete v [tomto dokumentu](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2).
 
 ## <a name="introduction"></a>Úvod
 
@@ -65,10 +65,10 @@ Podporované distribuce a verze:
 - Debian 9, 8, 7
 - RHEL 7, 6.7 +
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
-* **Agent Azure Linux verze 2.2.0 nebo novější**. Většina imagí z Galerie virtuálních počítačů Azure pro Linux zahrnuje verzi 2.2.7 nebo novější. Spusťte `/usr/sbin/waagent -version` a potvrďte verzi nainstalovanou na virtuálním počítači. Pokud na virtuálním počítači běží starší verze agenta hosta, aktualizujte ho podle [těchto pokynů](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) .
-* Rozhraní příkazového **řádku Azure** Nastavte na svém počítači prostředí [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) .
+* **Agent Azure Linux verze 2.2.0 nebo novější**. Většina imagí z Galerie virtuálních počítačů Azure pro Linux zahrnuje verzi 2.2.7 nebo novější. Spusťte `/usr/sbin/waagent -version` a potvrďte verzi nainstalovanou na virtuálním počítači. Pokud na virtuálním počítači běží starší verze agenta hosta, aktualizujte ho podle [těchto pokynů](./update-linux-agent.md) .
+* Rozhraní příkazového **řádku Azure** Nastavte na svém počítači prostředí [Azure CLI](/cli/azure/install-azure-cli) .
 * Příkaz wget, pokud ho ještě nemáte: Spusťte `sudo apt-get install wget` .
 * Existující předplatné Azure a existující účet úložiště v rámci něj pro ukládání dat.
 
@@ -173,7 +173,7 @@ Tato sada informací o konfiguraci obsahuje citlivé informace, které by měly 
 }
 ```
 
-Name | Hodnota
+Název | Hodnota
 ---- | -----
 storageAccountName | Název účtu úložiště, ve kterém se má rozšíření zapsat data
 storageAccountEndPoint | volitelné Koncový bod identifikující Cloud, ve kterém existuje účet úložiště. Pokud toto nastavení chybí, LAD se výchozí nastavení pro veřejný cloud Azure, `https://core.windows.net` . Pokud chcete použít účet úložiště v Azure Německo, Azure Government nebo Azure Čína, nastavte tuto hodnotu odpovídajícím způsobem.
@@ -243,7 +243,7 @@ Pokud jste vytvořili SAS vhodným až do půlnoci UTC od 1. ledna 2018, může 
 https://contosohub.servicebus.windows.net/syslogmsgs?sr=contosohub.servicebus.windows.net%2fsyslogmsgs&sig=xxxxxxxxxxxxxxxxxxxxxxxxx&se=1514764800&skn=writer
 ```
 
-Další informace o generování a načítání informací o tokenech SAS pro Event Hubs naleznete na [této webové stránce](https://docs.microsoft.com/rest/api/eventhub/generate-sas-token#powershell).
+Další informace o generování a načítání informací o tokenech SAS pro Event Hubs naleznete na [této webové stránce](/rest/api/eventhub/generate-sas-token#powershell).
 
 #### <a name="the-jsonblob-sink"></a>Jímka JsonBlob
 
@@ -432,7 +432,7 @@ Prvek | Hodnota
 ------- | -----
 namespace | volitelné Obor názvů OMI, ve kterém má být dotaz proveden. Je-li tento parametr zadán, je použita výchozí hodnota "root/SCX", kterou implementuje [poskytovatelé služeb System Center pro různé platformy](https://github.com/Microsoft/SCXcore).
 query | Dotaz OMI, který se má spustit.
-tabulka | volitelné Tabulka úložiště Azure v určeném účtu úložiště (viz [Nastavení chráněná](#protected-settings)).
+table | volitelné Tabulka úložiště Azure v určeném účtu úložiště (viz [Nastavení chráněná](#protected-settings)).
 frequency | volitelné Počet sekund mezi provedením dotazu. Výchozí hodnota je 300 (5 minut); minimální hodnota je 15 sekund.
 jímky | volitelné Čárkami oddělený seznam názvů dalších umyvadel, na které by měly být publikovány nezpracované ukázkové výsledky metriky. Žádná agregace těchto nezpracovaných vzorků se počítá rozšířením nebo metrikami Azure.
 
@@ -458,7 +458,7 @@ Je třeba zadat buď Table, nebo "jímky", nebo obojí.
 Prvek | Hodnota
 ------- | -----
  – soubor | Úplná cesta k souboru protokolu, který má být sledován a zachycen. Cesta musí pojmenovat jeden soubor. nemůže obsahovat název adresáře ani zástupné znaky. Uživatelský účet omsagent musí mít k této cestě k souboru přístup pro čtení.
-tabulka | volitelné Tabulka úložiště Azure v určeném účtu úložiště (jak je uvedeno v chráněných konfiguracích), do kterého se zapisují nové řádky z "koncového" souboru.
+table | volitelné Tabulka úložiště Azure v určeném účtu úložiště (jak je uvedeno v chráněných konfiguracích), do kterého se zapisují nové řádky z "koncového" souboru.
 jímky | volitelné Čárkami oddělený seznam názvů dalších umyvadel, na které se odesílají řádky protokolu.
 
 Je třeba zadat buď Table, nebo "jímky", nebo obojí.
@@ -468,7 +468,7 @@ Je třeba zadat buď Table, nebo "jímky", nebo obojí.
 Předdefinovaná zprostředkovatel metriky je zdrojem metrik, které jsou zajímavé pro širokou škálu uživatelů. Tyto metriky spadají do pěti širších tříd:
 
 * Procesor
-* Memory (Paměť)
+* Paměť
 * Síť
 * Filesystem
 * Disk
@@ -580,7 +580,7 @@ Za předpokladu, že vaše chráněná nastavení jsou v souboru ProtectedSettin
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
 ```
 
-Příkaz předpokládá, že používáte režim správy prostředků Azure v rozhraní příkazového řádku Azure CLI. Pokud chcete nakonfigurovat LAD pro virtuální počítače s modelem nasazení Classic, přepněte do režimu ASM ( `azure config mode asm` ) a vynechejte název skupiny prostředků v příkazu. Další informace najdete v dokumentaci k rozhraní příkazového [řádku pro více platforem](https://docs.microsoft.com/azure/xplat-cli-connect).
+Příkaz předpokládá, že používáte režim správy prostředků Azure v rozhraní příkazového řádku Azure CLI. Pokud chcete nakonfigurovat LAD pro virtuální počítače s modelem nasazení Classic, přepněte do režimu ASM ( `azure config mode asm` ) a vynechejte název skupiny prostředků v příkazu. Další informace najdete v dokumentaci k rozhraní příkazového [řádku pro více platforem](/azure/xplat-cli-connect).
 
 ### <a name="powershell"></a>PowerShell
 
@@ -763,10 +763,10 @@ Tento snímek relace Průzkumník služby Microsoft Azure Storage zobrazuje vyge
 
 ![image](./media/diagnostics-linux/stg_explorer.png)
 
-V příslušné [dokumentaci k EventHubs](../../event-hubs/event-hubs-what-is-event-hubs.md) se dozvíte, jak využívat zprávy publikované do koncového bodu EventHubs.
+V příslušné [dokumentaci k EventHubs](../../event-hubs/event-hubs-about.md) se dozvíte, jak využívat zprávy publikované do koncového bodu EventHubs.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Vytvořte výstrahy metriky v [Azure monitor](../../monitoring-and-diagnostics/insights-alerts-portal.md) pro metriky, které shromažďujete.
-* Vytvořte [grafy monitorování](../../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) pro vaše metriky.
+* Vytvořte výstrahy metriky v [Azure monitor](../../azure-monitor/platform/alerts-classic-portal.md) pro metriky, které shromažďujete.
+* Vytvořte [grafy monitorování](../../azure-monitor/platform/data-platform.md) pro vaše metriky.
 * Naučte se [vytvořit sadu škálování virtuálního počítače](../linux/tutorial-create-vmss.md) pomocí vašich metrik k řízení automatického škálování.
