@@ -2,16 +2,17 @@
 title: 'VPN Gateway: tenant Azure AD pro připojení VPN P2S: ověřování Azure AD'
 description: P2S VPN můžete použít pro připojení k virtuální síti pomocí ověřování Azure AD.
 services: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 04/17/2020
 ms.author: alzam
-ms.openlocfilehash: 2dda6cb84fc881b4ca628ff1cecdec7c00555e8b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74999b2bf1a34e3c7b8190dd04206b2b541c465f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85414299"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087029"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Vytvoření tenanta Azure Active Directory pro připojení typu point-to-site přes protokol OpenVPN
 
@@ -54,7 +55,7 @@ Postup v [tomto článku](../active-directory/fundamentals/add-users-azure-activ
 
 4. Pak poskytněte souhlas správce. Zkopírujte a vložte adresu URL, která se vztahuje k umístění vašeho nasazení, do adresního řádku v prohlížeči:
 
-    Public
+    Veřejný
 
     ```
     https://login.microsoftonline.com/common/oauth2/authorize?client_id=41b23e61-6c1e-4545-b367-cd054e0ed4b4&response_type=code&redirect_uri=https://portal.azure.com&nonce=1234&prompt=admin_consent

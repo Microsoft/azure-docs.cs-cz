@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: 9a6ee4f5b18c6747796f33bc433d1d40982205a3
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 89a87e1658f413b0a8cd757525450de30277d943
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185003"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086876"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Nejčastější dotazy ke službě Azure Cache for Redis
 Seznamte se s odpověďmi na běžné otázky, vzory a osvědčené postupy pro službu Azure cache pro Redis.
@@ -19,7 +19,6 @@ Seznamte se s odpověďmi na běžné otázky, vzory a osvědčené postupy pro 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Co když tady není odpověď na moji otázku?
 Pokud tady uvedený dotaz není, dejte nám prosím jistotu a my vám pomůžeme najít odpověď.
 
-* V komentářích na konci těchto nejčastějších dotazů můžete poslat otázku a začít s týmem Azure cache a dalšími členy komunity o tomto článku.
 * Pokud chcete oslovit širší cílovou skupinu, můžete odeslat otázku na stránce s [dotazem k Microsoft Q&pro Azure cache](https://docs.microsoft.com/answers/topics/azure-cache-redis.html) a spojit se s týmem Azure cache a dalšími členy komunity.
 * Pokud chcete vytvořit žádost o funkci, můžete odeslat své žádosti a nápady do [Azure cache pro Redis uživatelského hlasu](https://feedback.azure.com/forums/169382-cache).
 * Můžete také poslat e-mail na [externí zpětnou vazbu v mezipaměti Azure](mailto:azurecache@microsoft.com).
@@ -43,7 +42,7 @@ Následující nejčastější dotazy se týkají základních konceptů a dotaz
 * [V jaké oblasti mám najít mezipaměť?](#in-what-region-should-i-locate-my-cache)
 * [Kde se nacházejí moje data z mezipaměti?](#where-do-my-cached-data-reside)
 * [Jak se fakturuje Azure cache pro Redis?](#how-am-i-billed-for-azure-cache-for-redis)
-* [Můžu použít Azure cache pro Redis s Azure Governmentm cloudem, cloudem Azure Čína nebo Microsoft Azure (Německo)?](#can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany)
+* [Můžu použít mezipaměť Azure pro Redis s cloudem Azure Government, Azure Čína 21Vianet Cloud nebo Microsoft Azure (Německo)?](#can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-21vianet-cloud-or-microsoft-azure-germany)
 
 ## <a name="development-faqs"></a>Nejčastější dotazy týkající se vývoje
 * [Co dělají konfigurační možnosti StackExchange. Redis?](#what-do-the-stackexchangeredis-configuration-options-do)
@@ -73,10 +72,10 @@ Nejčastější dotazy v této části se týkají běžných otázek monitorov�
 * [Proč byl můj klient odpojený od mezipaměti?](#why-was-my-client-disconnected-from-the-cache)
 
 ## <a name="prior-cache-offering-faqs"></a>Předchozí mezipaměť – Nejčastější dotazy
-* [Která nabídka Azure cache je pro mě ta pravá?](#which-azure-cache-offering-is-right-for-me)
+* [Které nabídky mezipaměti Azure jsou pro mě pravé?](#which-azure-cache-offerings-is-right-for-me)
 
 ### <a name="what-is-azure-cache-for-redis"></a>Co je Azure Cache for Redis?
-Mezipaměť Azure pro Redis je založená na oblíbeném open source softwaru [Redis](https://redis.io/). Poskytuje přístup k zabezpečené, vyhrazené mezipaměti Azure pro Redis, která je spravovaná Microsoftem a přístupná z libovolné aplikace v Azure. Podrobnější přehled najdete na stránce produktu [Azure cache for Redis](https://azure.microsoft.com/services/cache/) na Azure.com.
+[Mezipaměť Azure pro Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-overview) je založená na oblíbeném open source softwaru [Redis](https://redis.io/). Poskytuje přístup k zabezpečené, vyhrazené mezipaměti Azure pro Redis, která je spravovaná Microsoftem a přístupná z libovolné aplikace v Azure. Podrobnější přehled najdete na stránce produktu [Azure cache pro Redis](https://azure.microsoft.com/services/cache/) .
 
 ### <a name="how-can-i-get-started-with-azure-cache-for-redis"></a>Jak můžu začít pracovat s Azure cache pro Redis?
 Existuje několik způsobů, jak můžete začít s Azure cache pro Redis.
@@ -160,9 +159,9 @@ Aby bylo možné používat tyto funkce, budete muset explicitně nakonfigurovat
 <a name="cache-billing"></a>
 
 ### <a name="how-am-i-billed-for-azure-cache-for-redis"></a>Jak se fakturuje Azure cache pro Redis?
-Ceny za Azure cache for Redis [najdete tady](https://azure.microsoft.com/pricing/details/cache/). Na stránce s cenami se zobrazují ceny jako hodinové sazby. Mezipaměti se účtují po minutách od doby, kdy se mezipaměť vytvoří, až do doby, kdy se mezipaměť odstraní. Neexistuje možnost pro zastavení nebo pozastavení fakturace v mezipaměti.
+Ceny za Azure cache for Redis [najdete tady](https://azure.microsoft.com/pricing/details/cache/). Na stránce s cenami se zobrazují ceny jako hodiny a měsíční sazba. Mezipaměti se účtují po minutách od doby, kdy se mezipaměť vytvoří, až do doby, kdy se mezipaměť odstraní. Neexistuje možnost pro zastavení nebo pozastavení fakturace v mezipaměti.
 
-### <a name="can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany"></a>Můžu použít Azure cache pro Redis s Azure Governmentm cloudem, cloudem Azure Čína nebo Microsoft Azure (Německo)?
+### <a name="can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-21vianet-cloud-or-microsoft-azure-germany"></a>Můžu použít mezipaměť Azure pro Redis s cloudem Azure Government, Azure Čína 21Vianet Cloud nebo Microsoft Azure (Německo)?
 Ano, mezipaměť Azure pro Redis je dostupná v cloudu Azure Government, Azure Čína 21Vianet a Microsoft Azure (Německo). Adresy URL pro přístup a správu Azure cache pro Redis se v porovnání s veřejným cloudem Azure liší.
 
 | Cloud   | Přípona DNS pro Redis            |
@@ -204,7 +203,7 @@ Obvykle jsou výchozí hodnoty klienta dostatečné. Možnosti můžete vyladit 
   * Pro aplikaci použijte jednu instanci ConnectionMultiplexer. Pomocí LazyConnection můžete vytvořit jednu instanci, která je vrácena vlastností připojení, jak je znázorněno v [části připojení k mezipaměti pomocí třídy ConnectionMultiplexer](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache).
   * `ConnectionMultiplexer.ClientName`Pro účely diagnostiky nastavte vlastnost na jedinečný název instance aplikace.
   * `ConnectionMultiplexer`Pro vlastní úlohy použijte více instancí.
-      * Pokud máte v aplikaci proměnlivé zatížení, můžete postupovat podle tohoto modelu. Například:
+      * Pokud máte v aplikaci proměnlivé zatížení, můžete postupovat podle tohoto modelu. Příklad:
       * Můžete mít jeden multiplexor pro zvládnutí velkých klíčů.
       * Můžete mít jeden multiplexor pro zvládnutí malých klíčů.
       * Pro každý ConnectionMultiplexer, který používáte, můžete nastavit různé hodnoty pro vypršení časového limitu připojení a logiku opakování.
@@ -260,7 +259,7 @@ Můžete použít kterýkoli z příkazů uvedených v [Redis příkazech](https
 <a name="cache-reference"></a>
 
 ### <a name="why-doesnt-azure-cache-for-redis-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services"></a>Proč mezipaměť Azure pro Redis nemá odkaz knihovny tříd MSDN jako některé z ostatních služeb Azure?
-Microsoft Azure cache pro Redis je založená na oblíbené open source mezipaměti Azure pro Redis. Dá se k němu přistupovat širokou škálou [Redis klientů](https://redis.io/clients) pro řadu programovacích jazyků. Každý klient má své vlastní rozhraní API, které umožňuje volání instance Azure cache for Redis pomocí [příkazů Redis](https://redis.io/commands).
+Microsoft Azure cache pro Redis vychází z oblíbeného Open Source úložiště dat Redis. Dá se k němu přistupovat širokou škálou [Redis klientů](https://redis.io/clients) pro řadu programovacích jazyků. Každý klient má své vlastní rozhraní API, které umožňuje volání instance Azure cache for Redis pomocí [příkazů Redis](https://redis.io/commands).
 
 Vzhledem k tomu, že každý klient je jiný, není na webu MSDN žádný odkaz na centralizované třídy a každý klient udržuje vlastní referenční dokumentaci. Kromě referenční dokumentace je k dispozici několik kurzů, které ukazují, jak začít s Azure cache pro Redis pomocí různých jazyků a klientů mezipaměti. Pokud chcete získat přístup k těmto kurzům, přečtěte si článek [Jak používat Azure cache pro Redis](cache-dotnet-how-to-use-azure-redis-cache.md) a na stejné úrovni jako v obsahu.
 
@@ -392,7 +391,7 @@ S těmito informacemi doporučujeme, aby zákazníci nastavili minimální hodno
 
 Jak nakonfigurovat toto nastavení:
 
-* Toto nastavení doporučujeme změnit programově pomocí metody [fondu vláken. SetMinThreads – (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) v `global.asax.cs` . Například:
+* Toto nastavení doporučujeme změnit programově pomocí metody [fondu vláken. SetMinThreads – (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) v `global.asax.cs` . Příklad:
 
     ```csharp
     private readonly int minThreads = 200;
@@ -467,9 +466,9 @@ Níže jsou uvedeny některé běžné důvody pro odpojení mezipaměti.
   * Azure použil opravu instance, ve které byla mezipaměť nasazená.
     * Může to být pro aktualizace serveru Redis nebo obecnou údržbu virtuálních počítačů.
 
-### <a name="which-azure-cache-offering-is-right-for-me"></a>Která nabídka Azure cache je pro mě ta pravá?
+### <a name="which-azure-cache-offerings-is-right-for-me"></a>Které nabídky mezipaměti Azure jsou pro mě pravé?
 > [!IMPORTANT]
-> Od 30. listopadu 2016 se na základě [oznámení](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)za minulé roky **vyřadí** služba azure Managed Cache Service a Azure mezipaměť hostovaná v instanci role. Naším doporučením je použití [Azure cache pro Redis](https://azure.microsoft.com/services/cache/). Informace o migraci najdete v tématu [migrace z Managed Cache Service do Azure cache pro Redis](cache-migrate-to-redis.md).
+> Podle [oznámení](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)2016 se služba Azure Managed Cache Service a služba Azure mezipaměť hostovaná v instanci role **vyřadí** do 30. listopadu 2016. Naším doporučením je použití [Azure cache pro Redis](https://azure.microsoft.com/services/cache/). Informace o migraci najdete v tématu [migrace z Managed Cache Service do Azure cache pro Redis](cache-migrate-to-redis.md).
 >
 >
 

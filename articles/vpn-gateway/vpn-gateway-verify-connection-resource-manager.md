@@ -7,11 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 05/16/2017
 ms.author: cherylmc
-ms.openlocfilehash: 93a7c0bb15c17b6939d6d53018e4fed84b1ae020
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 38015d62077350e0e6f6ed8e7a43f748db58d213
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984575"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086982"
 ---
 # <a name="verify-a-vpn-gateway-connection"></a>Ověření VPN Gatewayho připojení
 
@@ -23,7 +24,7 @@ V tomto článku se dozvíte, jak ověřit připojení brány VPN pro model nasa
 
 ## <a name="powershell"></a>PowerShell
 
-Pokud chcete ověřit připojení brány VPN pro model nasazení Správce prostředků pomocí PowerShellu, nainstalujte nejnovější verzi [rutin Azure Resource Manager PowerShellu](/powershell/azure/overview).
+Pokud chcete ověřit připojení brány VPN pro model nasazení Správce prostředků pomocí PowerShellu, nainstalujte nejnovější verzi [rutin Azure Resource Manager PowerShellu](/powershell/azure/).
 
 [!INCLUDE [PowerShell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
@@ -46,4 +47,4 @@ Pokud chcete ověřit připojení brány VPN pro model nasazení Classic pomocí
 
 ## <a name="next-steps"></a>Další kroky
 
-* Do virtuálních sítí můžete přidat virtuální počítače. Kroky jsou uvedeny v tématu [Vytvoření virtuálního počítače](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Do virtuálních sítí můžete přidat virtuální počítače. Kroky jsou uvedeny v tématu [Vytvoření virtuálního počítače](../virtual-machines/windows/quick-create-portal.md).

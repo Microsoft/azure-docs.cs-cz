@@ -2,13 +2,13 @@
 title: Propojení šablon pro nasazení
 description: Popisuje způsob použití propojených šablon v šabloně Azure Resource Manager k vytvoření modulárního řešení šablon. Ukazuje, jak předat hodnoty parametrů, určit soubor parametrů a dynamicky vytvořené adresy URL.
 ms.topic: conceptual
-ms.date: 06/26/2020
-ms.openlocfilehash: 6b28268a522dde4fe16ccf9d0d01738c3b6a9b5d
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 07/21/2020
+ms.openlocfilehash: 40da2443828a07f2171922fcc6d8976d464d0ad4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170645"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086808"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Použití propojené a vnořené šablony při nasazování prostředků Azure
 
@@ -315,6 +315,11 @@ Při odkazování na propojenou šablonu `uri` nemůže být hodnota nesmí být
 > Můžete odkazovat na šablony pomocí parametrů, které jsou nakonec vyřešeny na něco, co používá **protokol HTTP** nebo **https**, například pomocí parametru, například `_artifactsLocation` :`"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
 
 Správce prostředků musí být schopné získat přístup k šabloně. Jednou z možností je umístit propojenou šablonu do účtu úložiště a použít identifikátor URI pro tuto položku.
+
+[Specifikace šablon](./template-specs.md) (aktuálně v privátní verzi Preview) umožňují sdílet šablony ARM s ostatními uživateli ve vaší organizaci. K zabalení hlavní šablony a jejích propojených šablon lze také použít specifikace šablon. Další informace najdete tady:
+
+- [Kurz: Vytvoření specifikace šablony s propojenými šablonami](./template-specs-create-linked.md).
+- [Kurz: nasazení specifikace šablony jako propojené šablony](./template-specs-deploy-linked-template.md).
 
 ### <a name="parameters-for-linked-template"></a>Parametry pro propojenou šablonu
 

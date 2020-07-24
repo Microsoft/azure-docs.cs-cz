@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 02/25/2020
-ms.openlocfilehash: 013433d60b9f3e7f251f8d80d7b9b8f24b2395b3
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: faa338e32577e713472601fde52e038a685b7826
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206194"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086825"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Přehled omezení prostředků spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -128,7 +128,7 @@ Spravovaná instance SQL aktuálně podporuje nasazení pouze u následujících
 ## <a name="regional-resource-limitations"></a>Omezení regionálních prostředků
 
 > [!Note]
-> Pokud chcete získat nejnovější informace o dostupnosti pro předplatná v oblasti, nejdřív si Projděte [oficiální Blogový příspěvek COVID-19](https://aka.ms/sqlcapacity).
+> Chcete-li získat nejnovější informace o dostupnosti oblastí pro odběry, nejprve zaškrtněte [políčko Vybrat oblast](https://aka.ms/sqlcapacity).
 
 Podporované typy předplatného můžou obsahovat omezený počet prostředků na oblast. SQL Managed instance má dvě výchozí omezení na každou oblast Azure (to se dá zvýšit na vyžádání vytvořením speciální [žádosti o podporu v Azure Portal](../database/quota-increase-request.md) v závislosti na typu typu předplatného:
 

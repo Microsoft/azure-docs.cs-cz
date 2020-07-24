@@ -13,11 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 32ef66c0a6d585e785fccb038a2b499c7f7f66db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf630f6028248d799a3953d25db27a2150602586
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84204765"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087007"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Překlad názvů pro prostředky ve virtuálních sítích Azure
 
@@ -46,8 +47,8 @@ To, který typ překladu názvů použijete, závisí na tom, jak spolu vaše pr
 | Překlad názvů z App Service Web Apps v jedné virtuální síti na virtuální počítače v jiné virtuální síti |Servery DNS spravované zákazníky, které předávají dotazy mezi virtuálními sítěmi pro překlad prostřednictvím Azure (DNS proxy). Přečtěte si téma [Překlad adres IP pomocí vlastního serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
 | Rozlišení místních počítačů a názvů služeb z virtuálních počítačů nebo instancí rolí v Azure. |Servery DNS spravované zákazníky (místní řadič domény, místní řadič domény jen pro čtení nebo sekundární služba DNS, která se synchronizuje pomocí zónových přenosů, například). Přečtěte si téma [Překlad adres IP pomocí vlastního serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
 | Překlad názvů hostitelů Azure z místních počítačů. |Předává dotazy do služby DNS spravované zákazníkem proxy server v odpovídající virtuální síti, proxy server předává dotazy do Azure pro řešení. Přečtěte si téma [Překlad adres IP pomocí vlastního serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
-| Reverzní DNS pro interní IP adresy |[Azure DNS privátní zóny](../dns/private-dns-overview.md) nebo [překlad IP adres poskytované Azure](#azure-provided-name-resolution) [pomocí vlastního serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Nelze použít |
-| Překlad názvů mezi virtuálními počítači nebo instancemi rolí umístěných v různých cloudových službách, nikoli ve virtuální síti. |Neužívá se. Připojení mezi virtuálními počítači a instancemi rolí v různých cloudových službách není podporováno mimo virtuální síť. |Nelze použít|
+| Reverzní DNS pro interní IP adresy |[Azure DNS privátní zóny](../dns/private-dns-overview.md) nebo [překlad IP adres poskytované Azure](#azure-provided-name-resolution) [pomocí vlastního serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Není |
+| Překlad názvů mezi virtuálními počítači nebo instancemi rolí umístěných v různých cloudových službách, nikoli ve virtuální síti. |Neužívá se. Připojení mezi virtuálními počítači a instancemi rolí v různých cloudových službách není podporováno mimo virtuální síť. |Není|
 
 ## <a name="azure-provided-name-resolution"></a>Překlad názvů poskytovaných službou Azure
 
@@ -69,7 +70,7 @@ Překlad názvů poskytovaných Azure zahrnuje tyto funkce:
 * Můžete použít překlad IP adres mezi virtuálními počítači ve virtuálních sítích, které používají model nasazení Azure Resource Manager, aniž byste museli plně kvalifikovaný název domény. Virtuální sítě v modelu nasazení Classic vyžadují při překladu názvů v různých cloudových službách plně kvalifikovaný název domény. 
 * Můžete použít názvy hostitelů, které nejlépe popisují vaše nasazení, a ne pracovat s automaticky generovanými názvy.
 
-### <a name="considerations"></a>Důležité informace
+### <a name="considerations"></a>Požadavky
 
 Body, které je potřeba vzít v úvahu při použití překladu IP adres poskytované Azure:
 * Příponu DNS vytvořenou v Azure nejde upravit.
@@ -176,7 +177,7 @@ Pokud používáte překlad adres poskytovaný službou Azure, poskytuje Azure D
 V případě potřeby můžete určit interní příponu DNS pomocí PowerShellu nebo rozhraní API:
 
 * Pro virtuální sítě v Azure Resource Manager modely nasazení je přípona k dispozici prostřednictvím [síťového rozhraní REST API](https://docs.microsoft.com/rest/api/virtualnetwork/networkinterfaces), rutiny [Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) prostředí PowerShell a příkazu [AZ Network nic show](/cli/azure/network/nic#az-network-nic-show) Azure CLI.
-* V klasických modelech nasazení je přípona k dispozici prostřednictvím volání metody [Get rozhraní API](https://msdn.microsoft.com/library/azure/ee460804.aspx) nebo rutiny [Get-AzureVM-Debug](/powershell/module/servicemanagement/azure/get-azurevm) .
+* V klasických modelech nasazení je přípona k dispozici prostřednictvím volání metody [Get rozhraní API](https://msdn.microsoft.com/library/azure/ee460804.aspx) nebo rutiny [Get-AzureVM-Debug](/powershell/module/servicemanagement/azure.service/get-azurevm) .
 
 Pokud předávání dotazů do Azure nevyhovuje vašim potřebám, měli byste poskytnout vlastní řešení DNS. Vaše řešení DNS potřebuje:
 
@@ -214,7 +215,7 @@ Pokud používáte model nasazení Azure Resource Manager, můžete zadat server
 > [!NOTE]
 > Pokud se rozhodnete pro vlastní server DNS pro virtuální síť, musíte zadat aspoň jednu IP adresu serveru DNS. v opačném případě bude virtuální síť ignorovat konfiguraci a místo toho použít službu DNS poskytovanou službou Azure.
 
-Pokud používáte model nasazení Classic, můžete zadat servery DNS pro virtuální síť v Azure Portal nebo v [souboru konfigurace sítě](https://msdn.microsoft.com/library/azure/jj157100). Pro Cloud Services můžete zadat servery DNS prostřednictvím [konfiguračního souboru služby](https://msdn.microsoft.com/library/azure/ee758710) nebo pomocí prostředí PowerShell s rutinou [New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm).
+Pokud používáte model nasazení Classic, můžete zadat servery DNS pro virtuální síť v Azure Portal nebo v [souboru konfigurace sítě](https://msdn.microsoft.com/library/azure/jj157100). Pro Cloud Services můžete zadat servery DNS prostřednictvím [konfiguračního souboru služby](https://msdn.microsoft.com/library/azure/ee758710) nebo pomocí prostředí PowerShell s rutinou [New-AzureVM](/powershell/module/servicemanagement/azure.service/new-azurevm).
 
 > [!NOTE]
 > Pokud změníte nastavení DNS pro virtuální síť nebo virtuální počítač, který je již nasazený, bude nutné provést obnovení zapůjčení služby DHCP u všech ovlivněných virtuálních počítačů ve virtuální síti. Pro virtuální počítače s operačním systémem Windows to můžete provést tak, že na `ipconfig /renew` virtuálním počítači zadáte přímo. Postup se liší v závislosti na operačním systému. Podívejte se na příslušnou dokumentaci pro typ operačního systému.
