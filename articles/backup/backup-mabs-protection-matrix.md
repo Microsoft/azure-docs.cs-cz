@@ -3,12 +3,12 @@ title: MABS (Azure Backup Server) v3 UR1 Protection Matrix
 description: Tento článek obsahuje matrici podpory obsahující všechny úlohy, datové typy a instalace, které Azure Backup Server chrání.
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: cfcb8fbf9f793cfbe11d2c25b3d2caa7018d0fd4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 974820389e84f727a9aab284716b3be9020c6dd8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538730"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032591"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS (Azure Backup Server) v3 UR1 Protection Matrix
 
@@ -54,7 +54,7 @@ Následující části obsahují podrobnosti o matici podpory ochrany pro MABS:
 
 | **Úloha** | **Verze**                               | **Instalace Azure Backup Server**                      | **Podporované Azure Backup Server** | **Ochrana a obnovení**                                 |
 | ------------ | ----------------------------------------- | ------------------------------------------------------------ | ---------------------------------- | ------------------------------------------------------------ |
-| Linux        | Linux spuštěný jako Hyper-V nebo host VMware | Fyzický server, místní virtuální počítač Hyper-V, virtuální počítač s Windows ve VMWare | V3 UR1                             | Technologie Hyper-V musí být spuštěná v systému Windows Server 2012 R2 nebo Windows Server 2016. Ochrana: celý virtuální počítač   <br><br>   Obnovení: Celý virtuální počítač   <br><br>    Podporovány jsou pouze snímky konzistentních souborů.    <br><br>   Úplný seznam podporovaných distribucí a verzí systému Linux najdete v článku [Linux v distribucích, které jsou schváleny v Azure](../virtual-machines/linux/endorsed-distros.md). |
+| Linux        | Linux spuštěný jako Hyper-V nebo host VMware | Fyzický server, místní virtuální počítač Hyper-V, virtuální počítač s Windows ve VMWare | V3 UR1                             | Technologie Hyper-V musí být spuštěná v systému Windows Server 2012 R2, Windows Server 2016 nebo Windows Server 2019. Ochrana: celý virtuální počítač   <br><br>   Obnovení: Celý virtuální počítač   <br><br>    Podporovány jsou pouze snímky konzistentních souborů.    <br><br>   Úplný seznam podporovaných distribucí a verzí systému Linux najdete v článku [Linux v distribucích, které jsou schváleny v Azure](../virtual-machines/linux/endorsed-distros.md). |
 
 ## <a name="azure-expressroute-support"></a>Podpora Azure ExpressRoute
 

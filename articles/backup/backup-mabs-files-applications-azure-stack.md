@@ -3,11 +3,12 @@ title: Zálohování souborů ve Azure Stack virtuálních počítačích
 description: Pomocí Azure Backup můžete zálohovat a obnovovat Azure Stack soubory a aplikace do prostředí Azure Stack.
 ms.topic: conceptual
 ms.date: 06/05/2018
-ms.openlocfilehash: 2bcdf7f720708db1487d7d5cdaee41dc93c05728
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07a64e5457963ea4a6d3b39b3f2326dbcfc5e63a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74172318"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032761"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Zálohování souborů a aplikací na Azure Stack
 
@@ -43,15 +44,15 @@ Pokud chcete nakonfigurovat Azure Backup Server k ochraně souborů v Azure Stac
 
     ![Otevře se Průvodce novou skupinou ochrany.](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
 
-    Společnost Microsoft doporučuje umístit všechna data, která budou sdílet zásady ochrany, do jedné skupiny ochrany. Kompletní informace o plánování a nasazování skupin ochrany najdete v článku aplikace System Center DPM, [nasazení skupin ochrany](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801).
+    Společnost Microsoft doporučuje umístit všechna data, která budou sdílet zásady ochrany, do jedné skupiny ochrany. Kompletní informace o plánování a nasazování skupin ochrany najdete v článku aplikace System Center DPM, [nasazení skupin ochrany](/system-center/dpm/create-dpm-protection-groups).
 
-4. Na obrazovce **Vybrat způsob ochrany dat** zadejte název skupiny ochrany. Zaškrtněte políčko pro možnost **krátkodobá ochrana pomocí:** a **Chci online ochranu**. Klikněte na **Další**.
+4. Na obrazovce **Vybrat způsob ochrany dat** zadejte název skupiny ochrany. Zaškrtněte políčko pro možnost **krátkodobá ochrana pomocí:** a **Chci online ochranu**. Klikněte na **Next** (Další).
 
     ![Otevře se Průvodce novou skupinou ochrany.](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
 
     Chcete-li vybrat možnost Chci **online ochranu**, musíte nejprve vybrat možnost **Chci krátkodobou ochranu pomocí:** disk. Azure Backup Server není chráněn na pásku, takže disk je jedinou volbou pro krátkodobou ochranu.
 
-5. Na obrazovce **zadat krátkodobé cíle** zvolte, jak dlouho chcete zachovat body obnovení uložené na disk a kdy se mají ukládat přírůstkové zálohy. Klikněte na **Další**.
+5. Na obrazovce **zadat krátkodobé cíle** zvolte, jak dlouho chcete zachovat body obnovení uložené na disk a kdy se mají ukládat přírůstkové zálohy. Klikněte na **Next** (Další).
 
     > [!IMPORTANT]
     > **Neměli byste uchovávat data** obnovení (zálohování) na discích s Azure Backup Server po dobu delší než pět dní.
@@ -132,5 +133,5 @@ Chcete-li zobrazit Azure Backup Server entit v Azure Portal, můžete postupovat
 
 Informace o použití Azure Backup Server k ochraně dalších úloh naleznete v jednom z následujících článků:
 
-* [Zálohování farmy služby SharePoint](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
-* [Zálohování serveru SQL](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)
+* [Zálohování farmy služby SharePoint](./backup-mabs-sharepoint-azure-stack.md)
+* [Zálohování serveru SQL](./backup-mabs-sql-azure-stack.md)

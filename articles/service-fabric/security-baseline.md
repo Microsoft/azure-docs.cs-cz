@@ -1,20 +1,20 @@
 ---
-title: Základní Service Fabric zabezpečení pro Azure Security test
+title: Základní hodnoty zabezpečení Azure pro Service Fabric
 description: Základní Service Fabric zabezpečení poskytuje postupy a prostředky pro implementaci doporučení zabezpečení uvedených v srovnávacím testu zabezpečení Azure.
 author: msmbaldwin
 ms.service: service-fabric
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d9d5d686c692c45acfff4fa811ed668c17f19861
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 97285ae9eadee3717f0b1a1510627392250424b7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531298"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037861"
 ---
-# <a name="service-fabric-security-baseline-for-azure-security-benchmark"></a>Základní Service Fabric zabezpečení pro Azure Security test
+# <a name="azure-security-baseline-for-service-fabric"></a>Základní hodnoty zabezpečení Azure pro Service Fabric
 
 Základní plán zabezpečení Azure pro Service Fabric obsahuje doporučení, která vám pomůžou vylepšit stav zabezpečení vašeho nasazení.
 

@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: 06cb3fe5d551ddfc95fcbd37cd9620adebd825c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e31a10b1086679b7c2493f5a6d6b62f75e363dd4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70883923"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036467"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Použití sériové konzoly pro přístup k GRUB a jednomu uživatelskému režimu
 Při spouštění virtuálního počítače (VM) je pravděpodobně první věcí, kterou vidíte, při spuštění virtuálního počítače. Vzhledem k tomu, že se zobrazuje před spuštěním operačního systému, GRUB není přístupná přes SSH. V GRUB můžete upravit konfiguraci spouštění pro spuštění do režimu jednoho uživatele mimo jiné.
@@ -36,7 +37,7 @@ Pokud chcete přejít do režimu jednoho uživatele, zadejte GRUB při spouště
 ## <a name="general-grub-access"></a>Obecný přístup GRUB
 Pokud chcete získat přístup k GRUB, restartujte virtuální počítač a otevřete podokno sériová konzola. Některé distribuce vyžadují vstup z klávesnice k zobrazení GRUB a ostatní se automaticky zobrazují GRUB po dobu několika sekund, které umožňují vstupu klávesnice uživatele zrušit časový limit.
 
-Aby bylo možné získat přístup k režimu jednoho uživatele, je třeba zajistit, aby byl na VIRTUÁLNÍm počítači povolený GRUB. V závislosti na vaší distribuci může být potřeba, aby se zajistilo, že bude GRUB povolená nějaká instalace. Informace specifické pro distribuci najdete v další části a naší [podpoře pro Linux na Azure](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/) .
+Aby bylo možné získat přístup k režimu jednoho uživatele, je třeba zajistit, aby byl na VIRTUÁLNÍm počítači povolený GRUB. V závislosti na vaší distribuci může být potřeba, aby se zajistilo, že bude GRUB povolená nějaká instalace. Informace specifické pro distribuci najdete v další části.
 
 ### <a name="restart-your-vm-to-access-grub-in-serial-console"></a>Restartování virtuálního počítače pro přístup k GRUB v sériových konzolách
 Virtuální počítač můžete restartovat v rámci sériové konzoly tak, že ho najedete myší na tlačítko **restartovat** a pak vyberete **restartovat virtuální počítač**. V dolní části podokna se zobrazí oznámení o restartování.
@@ -112,7 +113,7 @@ Pokud jste nastavili GRUB a root Access pomocí předchozích pokynů, můžete 
 
    Než budete moct přejít do režimu jednoho uživatele, zobrazí se výzva k zadání hesla správce. Toto heslo je ten, který jste vytvořili v předchozím postupu.
 
-    ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
+    ![Animovaný obrázek znázorňující rozhraní příkazového řádku Uživatel vybere Server, vyhledá konec řádku jádra a pak zadá zadaný text.](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
 
 ### <a name="enter-single-user-mode-without-root-account-enabled-in-rhel"></a>Zadat režim jednoho uživatele bez povoleného kořenového účtu v RHEL
 Pokud jste nepovolili kořenového uživatele podle předchozích pokynů, můžete resetovat kořenové heslo pomocí následujících kroků:
@@ -136,7 +137,7 @@ Pokud jste nepovolili kořenového uživatele podle předchozích pokynů, můž
 1. Teď jste v kořenovém adresáři. Můžete resetovat své kořenové heslo tak, že zadáte `passwd` a potom použijete předchozí pokyny k zadání režimu jednoho uživatele. 
 1. Až budete hotovi, zadejte příkaz `reboot -f` k restartování.
 
-![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
+![Animovaný obrázek znázorňující rozhraní příkazového řádku Uživatel vybere Server, vyhledá konec řádku jádra a zadá zadané příkazy.](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
 > [!NOTE]
 > V předchozích pokynech se vám povedete do nouzového prostředí, abyste mohli provádět i úlohy, jako je například úpravy `fstab` . Doporučujeme ale obvykle, abyste obnovili své kořenové heslo a použili ho k zadání režimu pro jeden uživatel.
@@ -240,7 +241,7 @@ Pokud chcete povolit režim jednoho uživatele v Oracle Linux, postupujte podle 
 ## <a name="next-steps"></a>Další kroky
 Další informace o sériové konzole najdete v těchto tématech:
 * [Dokumentace k sériové konzole pro Linux](serial-console-linux.md)
-* [Použití sériové konzoly k povolení GRUB v různých distribucích](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)
+* [Použití sériové konzoly k povolení GRUB v různých distribucích](/archive/blogs/linuxonazure/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time)
 * [Použití sériové konzoly pro volání NMI a SysRq](serial-console-nmi-sysrq.md)
 * [Sériová Konzola pro virtuální počítače s Windows](serial-console-windows.md)
 * [Diagnostika spouštění](boot-diagnostics.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 502fbe3bc7b1de2038bc444ae5daf180cfc80203
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 832bf1dd06d550f82090a336bc4cceac8cd8a9be
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298986"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038184"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>Krok 1: nasazení serveru pro překládání protokolů
 
@@ -33,7 +33,7 @@ V tomto kroku určíte a nakonfigurujete počítač se systémem Linux, který p
     - naslouchání zpráv syslog z řešení zabezpečení na portu TCP 514
     - předávání pouze zpráv, které identifikuje jako CEF agenta Log Analytics na localhost pomocí portu TCP 25226
  
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Na určeném počítači se systémem Linux musíte mít zvýšená oprávnění (sudo).
 - Je nutné, aby byl v počítači se systémem Linux nainstalován Python.<br>Použijte `python -version` příkaz pro kontrolu.
@@ -75,8 +75,10 @@ Zvolením démona syslog zobrazíte příslušný popis.
 
         Obsah `security-config-omsagent.conf` souboru:
 
-            :rawmsg, regex, "CEF"|"ASA"
-            *.* @@127.0.0.1:25226
+        ```console
+        :rawmsg, regex, "CEF"|"ASA"
+        *.* @@127.0.0.1:25226
+        ```
 
 1. **Restartování procesu démona syslogu**
 
@@ -107,9 +109,11 @@ Zvolením démona syslog zobrazíte příslušný popis.
 
         Obsah `security-config-omsagent.conf` souboru:
 
-            filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
-            destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
-            log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
+        ```console
+        filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
+        destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
+        log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
+        ```
 
 1. **Restartování procesu démona syslogu**
 

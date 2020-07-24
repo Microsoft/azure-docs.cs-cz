@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: overview
-ms.date: 01/17/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2a6b5c22e2988ed33e6dc15a4729e7bfe938c5f
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 5e65149b2524d2785039be78caad4ce84924e7e3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82786913"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035107"
 ---
 # <a name="what-is-azure-active-directory-authentication"></a>Co je Azure Active Directory ověřování?
 
 Jednou z hlavních funkcí platformy identity je ověření, nebo *ověření*přihlašovacích údajů, když se uživatel přihlásí k zařízení, aplikaci nebo službě. V Azure Active Directory (Azure AD) ověřování zahrnuje víc než jenom ověření uživatelského jména a hesla. K vylepšení zabezpečení a omezení nutnosti pomoci helpdesku zahrnuje ověřování Azure AD následující komponenty:
 
 * Samoobslužné resetování hesla
-* Azure Multi-Factor Authentication
+* Vícefaktorové ověřování Azure
 * Hybridní integrace pro zápis změn hesel zpátky do místního prostředí
 * Hybridní integrace, která vynutila zásady ochrany hesel pro místní prostředí
 * Ověřování bez hesla
@@ -50,7 +50,7 @@ Samoobslužné resetování hesla funguje v následujících scénářích:
 
 Když uživatel aktualizuje nebo obnoví heslo pomocí samoobslužného resetování hesla, může se toto heslo také zapsat zpátky do místního prostředí Active Directory. Zpětný zápis hesla zajistí, že uživatel může ihned použít aktualizované přihlašovací údaje s místními zařízeními a aplikacemi.
 
-## <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
+## <a name="azure-multi-factor-authentication"></a>Vícefaktorové ověřování Azure
 
 Multi-Factor Authentication je proces, při kterém se uživateli zobrazí výzva během procesu přihlašování pro další forma identifikace, jako je například zadání kódu na jejich cellphone nebo poskytnutí kontroly otiskem prstu.
 

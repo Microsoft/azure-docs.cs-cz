@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 7d2d3871dd9836e2c68155aa82ce01dced128bf3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ea7953be25473357f7ed572fa8b76076edc6f75a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531262"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038113"
 ---
 # <a name="connect-your-illusive-attack-management-system-to-azure-sentinel"></a>Připojte svůj systém pro správu útoků Illusive k Azure Sentinel
+
+> [!IMPORTANT]
+> Konektor dat systému správy útoků Illusive v Azure Sentinel je aktuálně ve verzi Public Preview.
+> Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Tento článek vysvětluje, jak připojit váš [systém pro správu útoků Illusive](https://www.illusivenetworks.com/technology/platform/attack-detection-system) k Azure Sentinel. Konektor dat systému správy útoků Illusive umožňuje sdílet data analýzy a protokoly incidentů Illusive pomocí služby Azure Sentinel a zobrazit tyto informace na vyhrazených řídicích panelech, které nabízí přehled o riziku napadení vaší organizace (řídicí panel ASM), a sledovat neoprávněný pohyb v síti vaší organizace (na řídicím panelu ADS).
 
@@ -34,7 +38,7 @@ Nakonfigurujte systém pro správu útoků tak, aby předal zprávy syslog ve fo
 
 1. Přihlaste se ke konzole Illusive a přejděte do části nastavení->vytváření sestav.
 
-1. Najít Serversץ syslog
+1. Najděte servery syslog.
 
 1. Zadejte následující informace:
    - Název hostitele: IP adresa agenta pro systém Linux nebo název hostitele plně kvalifikovaného názvu domény
@@ -44,7 +48,7 @@ Nakonfigurujte systém pro správu útoků tak, aby předal zprávy syslog ve fo
 
 1. Chcete-li přidat server syslog, klikněte na tlačítko Přidat.
 
-1. Pokud chcete použít příslušné schéma v Log Analytics pro systém správy útoků Illusive, vyhledejte CommonSecurityLog.
+1. Pokud chcete použít příslušné schéma v **protokolech** pro systém správy útoků Illusive, vyhledejte **CommonSecurityLog**.
 
 ## <a name="next-steps"></a>Další kroky
 

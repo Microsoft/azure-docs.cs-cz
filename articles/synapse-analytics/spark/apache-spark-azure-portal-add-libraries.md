@@ -1,5 +1,5 @@
 ---
-title: Přidávání a Správa knihoven pro Apache Spark ve službě Azure synapse Analytics
+title: Přidat a spravovat knihovny pro Apache Spark
 description: Naučte se přidávat a spravovat knihovny používané Apache Spark ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: euangMS
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 85635ff3a52236d0c53b72c68eda0d71debe1f61
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: b0231b28894ea7233e5f6e588300f03cb8784e5b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145915"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036450"
 ---
 # <a name="add-and-manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Přidávání a Správa knihoven pro Apache Spark ve službě Azure synapse Analytics
 

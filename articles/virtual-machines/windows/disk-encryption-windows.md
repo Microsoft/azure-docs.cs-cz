@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b423cc4cd933f84fccae5c2116be7abbdc288c67
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: edc52198208aa86772704bde7637a2801688da59
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203664"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036127"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Scénáře služby Azure Disk Encryption na virtuálních počítačích s Windows
 
@@ -238,7 +238,7 @@ Azure Disk Encryption nefunguje v následujících scénářích, funkcích a te
 - Virtuální počítače s Gen2 (viz: [Podpora pro virtuální počítače 2. generace v Azure](generation-2.md#generation-1-vs-generation-2-capabilities))
 - Virtuální počítače řady Lsv2 (viz: [Lsv2-Series](../lsv2-series.md))
 - Virtuální počítače řady M-Series s Akcelerátor zápisu disky.
-- Použití [šifrování na straně serveru u klíčů spravovaných zákazníkem](disk-encryption.md) na virtuální počítače zašifrované přes ADE a naopak.
+- Použití ADE na virtuální počítač, který má datový disk zašifrovaný pomocí [klíčů spravovaných zákazníkem](disk-encryption.md) (SSE + CMK), nebo použití SSE + CMK na datový disk na virtuálním počítači zašifrovaném pomocí ADE.
 - Migrace virtuálního počítače zašifrovaného přes ADE na [serveru pomocí klíčů spravovaných zákazníkem](disk-encryption.md).
 
 

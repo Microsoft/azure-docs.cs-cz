@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: c77b700cab4afd411c3a2df824ee8335cb394cda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e6a834e98d3b8447a68d149bb40e75d74959f39
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "64868312"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038465"
 ---
 # <a name="upload-files-into-an-azure-media-services-account-from-azure-storsimple"></a>Odesílání souborů do účtu Azure Media Services z Azure StorSimple | Dokumentace Microsoftu  
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 >
 > 
 > Azure StorSimple Data Manager je nyní ve verzi Private Preview. 
@@ -34,7 +34,7 @@ ms.locfileid: "64868312"
 
 Ve službě Media Services můžete digitální soubory nahrát do assetu. Asset může obsahovat video, zvuk, obrázky, kolekce miniatur, textové stopy a soubory titulků (a metadata o těchto souborech.) Po nahrání souborů je váš obsah bezpečně uložen v cloudu pro další zpracování a streamování.
 
-[Azure StorSimple](https://docs.microsoft.com/azure/storsimple/) používá cloudové úložiště jako rozšíření místního řešení a automaticky rozprostírá data mezi místní úložiště a cloudové úložiště. Zařízení StorSimple před odesláním do cloudu data deduplikuje a komprimuje, takže odesílání velkých souborů do cloudu je velmi efektivní. Služba [StorSimple Data Manager](../../storsimple/storsimple-data-manager-overview.md) poskytuje rozhraní API, která vám umožní extrahovat data z StorSimple a prezentovat je jako prostředky AMS.
+[Azure StorSimple](../../storsimple/index.yml) používá cloudové úložiště jako rozšíření místního řešení a automaticky rozprostírá data mezi místní úložiště a cloudové úložiště. Zařízení StorSimple před odesláním do cloudu data deduplikuje a komprimuje, takže odesílání velkých souborů do cloudu je velmi efektivní. Služba [StorSimple Data Manager](../../storsimple/storsimple-data-manager-overview.md) poskytuje rozhraní API, která vám umožní extrahovat data z StorSimple a prezentovat je jako prostředky AMS.
 
 ## <a name="get-started"></a>Začínáme
 
@@ -45,7 +45,7 @@ Ve službě Media Services můžete digitální soubory nahrát do assetu. Asset
 
     Při spuštění úlohy se vytvoří fronta úložiště. Tato fronta je naplňována zprávami o transformovaných objektech blob, jakmile jsou připravené. Název této fronty je stejný jako název definice úlohy. Tuto frontu můžete použít k určení, kdy je prostředek připravený, a zavolat požadovanou operaci Media Services, která pro něj má být spuštěná. Tuto frontu můžete například použít k aktivaci funkce Azure, která obsahuje potřebný kód Media Services.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 [Pomocí sady .NET SDK můžete aktivovat úlohy v Data Manager](../../storsimple/storsimple-data-manager-dotnet-jobs.md)
 

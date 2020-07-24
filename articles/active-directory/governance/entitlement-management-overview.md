@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f05fa9f9f31011f04aee0d2bedbcd4c4dad5d39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 710c81c7b5c6abbf499f2cb43570db94df1a3db5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338198"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034398"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Co je správa nároků Azure AD?
 
@@ -41,7 +41,7 @@ Podnikové organizace často čelí problémům při správě přístupu zaměst
 Tyto problémy jsou složené pro uživatele, kteří potřebují přístup z jiné organizace, jako jsou externí uživatelé, kteří pocházejí z organizací dodavatelských řetězců nebo jiných obchodních partnerů. Příklad:
 
 - Nikdo ze všech konkrétních jednotlivců v adresářích jiných organizací nemůže znát jejich pozvání.
-- I když byli schopni pozvat tyto uživatele, nikdo z těchto organizací nemusí pamatovat na správu všech přístupů uživatele konzistentně.
+- I když byli schopni pozvat tyto uživatele, nikdo z těchto organizací nemusí pamatovat na správu všech přístupů uživatelů konzistentně.
 
 Správa nároků Azure AD může tyto výzvy vyřešit.  Pokud chcete získat další informace o tom, jak zákazníci používají správu nároků služby Azure AD, můžete si přečíst [případovou studii Avanade](https://customers.microsoft.com/story/avanade-professional-services-azure-canada) a [případovou studii na střed](https://customers.microsoft.com/story/757467-centrica-energy-azure).  Toto video poskytuje přehled o správě nároků a jeho hodnotě:
 
@@ -114,7 +114,7 @@ Přístupové balíčky nenahrazují jiné mechanismy pro přiřazení přístup
 
 Chcete-li lépe pochopit správu nároků a její dokumentaci, můžete se vrátit k následujícímu seznamu podmínek.
 
-| Pojem | Popis |
+| Termín | Popis |
 | --- | --- |
 | přístup k balíčku | Sada prostředků, které tým nebo projekt potřebuje a řídí se zásadami. Přístupový balíček je vždycky obsažený v katalogu. Vytvořili jste nový balíček pro přístup pro scénář, ve kterém uživatelé potřebují požádat o přístup.  |
 | žádost o přístup | Žádost o přístup k prostředkům v balíčku pro přístup Požadavek obvykle prochází schvalovacím pracovním postupem.  V případě schválení obdrží žádající uživatel přiřazení balíčku přístupu. |
@@ -165,4 +165,4 @@ Tady je několik ukázkových scénářů licencí, které vám pomůžou určit
 ## <a name="next-steps"></a>Další kroky
 
 - [Kurz: vytvoření prvního balíčku pro přístup](entitlement-management-access-package-first.md)
-- [Typické scénáře](entitlement-management-scenarios.md)
+- [Obvyklé scénáře](entitlement-management-scenarios.md)

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: terrylan
-ms.openlocfilehash: 3925e39824d1702ff43a6b981ac997ddab658b96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6058b0d72eafe3a44ebdbabf291af05c08e772b3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80548659"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038269"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Doporučení zabezpečení pro Azure Marketplace image
 
@@ -27,9 +27,8 @@ Před odesláním na Image vždycky spusťte detekci ohrožení zabezpečení. P
 
 ## <a name="open-source-based-images"></a>Otevřené image založené na zdroji
 
-|||
-|--------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Kategorie**                                                 | **Zda**                                                                                                                                                                                                                                                                              |
+| Kategorie | Zaškrtnout |
+| -------- | ----- |
 | Zabezpečení                                                     | Nainstalujte všechny nejnovější opravy zabezpečení pro distribuci systému Linux.                                                                                                                                                                                                              |
 | Zabezpečení                                                     | Postupujte podle pokynů pro odvětví a zabezpečte image virtuálního počítače pro konkrétní distribuci systému Linux.                                                                                                                                                                                     |
 | Zabezpečení                                                     | Omezte prostor pro útoky tím, že podržíte minimální nároky jenom na nezbytné role, funkce, služby a síťové porty Windows serveru.                                                                                                                                               |
@@ -50,9 +49,8 @@ Před odesláním na Image vždycky spusťte detekci ohrožení zabezpečení. P
 
 ## <a name="windows-server-based-images"></a>Image založené na Windows serveru
 
-|||
-|-------------| -------------------------|
-| **Kategorie**                                                     | **Zda**                                                                                                                                                                |
+| Kategorie | Zaškrtnout |
+|--------- | ----- |
 | Zabezpečení                                                         | Použijte zabezpečenou základní bitovou kopii operačního systému. Virtuální pevný disk, který se používá pro zdroj všech imagí založených na Windows serveru, musí být z imagí operačního systému Windows Server, které poskytuje Microsoft Azure. |
 | Zabezpečení                                                         | Nainstalujte všechny nejnovější aktualizace zabezpečení.                                                                                                                                     |
 | Zabezpečení                                                         | Aplikace by neměly záviset na jménech uživatelů s omezeným oprávněním, jako je správce, kořen nebo správce.                                                                |

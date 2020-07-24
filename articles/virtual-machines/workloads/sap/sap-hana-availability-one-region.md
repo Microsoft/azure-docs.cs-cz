@@ -15,20 +15,21 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ef7161e653ec582708f242b67c643d960d75e27f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27b6e2e3cedcc8eca84644562639e0436e48245d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78255465"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035855"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>Dostupnost SAP HANA v rámci jedné oblasti Azure
-Tento článek popisuje několik scénářů dostupnosti v rámci jedné oblasti Azure. Azure má spoustu oblastí a šíří se po celém světě. Seznam oblastí Azure najdete v tématu [oblasti Azure](https://azure.microsoft.com/regions/). Pro nasazení SAP HANA na virtuálních počítačích v rámci jedné oblasti Azure nabízí Microsoft nasazení jednoho virtuálního počítače s instancí HANA. Pro zvýšení dostupnosti můžete nasadit dva virtuální počítače se dvěma instancemi HANA v rámci [skupiny dostupnosti Azure](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) , která pro dostupnost používá replikaci systému Hana. 
+Tento článek popisuje několik scénářů dostupnosti v rámci jedné oblasti Azure. Azure má spoustu oblastí a šíří se po celém světě. Seznam oblastí Azure najdete v tématu [oblasti Azure](https://azure.microsoft.com/regions/). Pro nasazení SAP HANA na virtuálních počítačích v rámci jedné oblasti Azure nabízí Microsoft nasazení jednoho virtuálního počítače s instancí HANA. Pro zvýšení dostupnosti můžete nasadit dva virtuální počítače se dvěma instancemi HANA v rámci [skupiny dostupnosti Azure](../../windows/tutorial-availability-sets.md) , která pro dostupnost používá replikaci systému Hana. 
 
-V současné době Azure nabízí [zóny dostupnosti Azure](https://docs.microsoft.com/azure/availability-zones/az-overview). Tento článek podrobně popisuje Zóny dostupnosti. Ale obsahuje obecnou diskuzi o používání skupin dostupnosti versus Zóny dostupnosti.
+V současné době Azure nabízí [zóny dostupnosti Azure](../../../availability-zones/az-overview.md). Tento článek podrobně popisuje Zóny dostupnosti. Ale obsahuje obecnou diskuzi o používání skupin dostupnosti versus Zóny dostupnosti.
 
 Oblasti Azure, kde jsou nabízeny Zóny dostupnosti mají více datových center. Datová centra jsou nezávislá na zdroji napájení, chlazení a síti. Důvodem nabídky různých zón v rámci jedné oblasti Azure je nasazení aplikací ve dvou nebo třech Zóny dostupnosti, které jsou nabízeny. Nasazení napříč zónami, problémy v oblasti napájení a sítě, které ovlivňují jenom jednu infrastrukturu zóny dostupnosti Azure, je vaše nasazení aplikací v oblasti Azure pořád funkční. Může dojít k nějaké omezené kapacitě. Například virtuální počítače v jedné zóně se můžou ztratit, ale virtuální počítače v dalších dvou zónách budou pořád v provozu. 
  
-Skupina dostupnosti Azure je logická schopnost seskupení, která pomáhá zajistit selhání prostředků virtuálních počítačů, které umístíte do skupiny dostupnosti, při jejich nasazení v datovém centru Azure. Azure zajišťuje, že virtuální počítače, které umístíte do skupiny dostupnosti, se budou spouštět napříč několika fyzickými servery, výpočetními racky, jednotkami úložiště a síťovými přepínači. V některých dokumentaci k Azure se tato konfigurace označuje jako umístění v různých [doménách aktualizace a selhání](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability). Tato místa se většinou nacházejí v datovém centru Azure. Za předpokladu, že problémy se zdrojem energie a sítí by ovlivnily vaše datacentrum, bude to mít vliv na veškerou kapacitu v jedné oblasti Azure.
+Skupina dostupnosti Azure je logická schopnost seskupení, která pomáhá zajistit selhání prostředků virtuálních počítačů, které umístíte do skupiny dostupnosti, při jejich nasazení v datovém centru Azure. Azure zajišťuje, že virtuální počítače, které umístíte do skupiny dostupnosti, se budou spouštět napříč několika fyzickými servery, výpočetními racky, jednotkami úložiště a síťovými přepínači. V některých dokumentaci k Azure se tato konfigurace označuje jako umístění v různých [doménách aktualizace a selhání](../../windows/manage-availability.md). Tato místa se většinou nacházejí v datovém centru Azure. Za předpokladu, že problémy se zdrojem energie a sítí by ovlivnily vaše datacentrum, bude to mít vliv na veškerou kapacitu v jedné oblasti Azure.
 
 Umístění datových center, která představuje Zóny dostupnosti Azure, představuje kompromis mezi poskytováním přijatelné latence sítě mezi službami nasazenými v různých zónách a vzdáleností mezi datovými centry. Přirozené haváriích v ideálním případě by neovlivnily napájení, síťové napájení a infrastrukturu pro všechny Zóny dostupnosti v této oblasti. Jelikož však Monumental přirozené haváriích, Zóny dostupnosti nemusí vždy poskytovat požadovanou dostupnost v rámci jedné oblasti. Zamyslete se na hurikán Marie, který se dorazí na ostrov Portoriko od 20. září 2017. Hurikán v podstatě vyvolal téměř 100% nedostupnosti na úrovni 90-míle.
 
@@ -81,7 +82,7 @@ Architektura vypadá takto:
 
 Toto nastavení není vhodné pro dosažení skvělého cíle bodu obnovení (RPO) a doby obnovení (RTO). RTOí času, zejména by znamenalo, že je potřeba plně obnovit úplnou databázi pomocí zkopírovaných záloh. Tato instalace se ale hodí pro obnovu nezamýšlených odstranění dat v hlavních instancích. Pomocí této instalace se můžete kdykoli vrátit k určitému časovému okamžiku, extrahovat data a importovat Odstraněná data do vaší hlavní instance. Proto může být vhodné použít metodu záložního kopírování v kombinaci s jinou funkcí vysoké dostupnosti. 
 
-Při kopírování záloh můžete použít menší virtuální počítač, než je hlavní virtuální počítač, na kterém je spuštěná instance SAP HANA. Mějte na paměti, že k menším virtuálním počítačům můžete připojit menší počet virtuálních pevných disků. Informace o omezeních jednotlivých typů virtuálních počítačů najdete v tématu [velikosti pro virtuální počítače Linux v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+Při kopírování záloh můžete použít menší virtuální počítač, než je hlavní virtuální počítač, na kterém je spuštěná instance SAP HANA. Mějte na paměti, že k menším virtuálním počítačům můžete připojit menší počet virtuálních pevných disků. Informace o omezeních jednotlivých typů virtuálních počítačů najdete v tématu [velikosti pro virtuální počítače Linux v Azure](../../linux/sizes.md).
 
 ### <a name="sap-hana-system-replication-without-automatic-failover"></a>Replikace systému SAP HANA bez automatického převzetí služeb při selhání
 
@@ -107,7 +108,7 @@ V tomto scénáři se data, která se replikují do instance HANA ve druhém vir
 
 ### <a name="sap-hana-system-replication-with-automatic-failover"></a>Replikace systému SAP HANA s automatickým převzetím služeb při selhání
 
-Ve standardních a nejběžnějších konfiguracích dostupnosti v rámci jedné oblasti Azure mají dva virtuální počítače Azure se systémem SLES Linux definovaný cluster s podporou převzetí služeb při selhání. Cluster SLES Linux je založený na rozhraní [Pacemaker](/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) v kombinaci se zařízením [STONITH](/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) . 
+Ve standardních a nejběžnějších konfiguracích dostupnosti v rámci jedné oblasti Azure mají dva virtuální počítače Azure se systémem SLES Linux definovaný cluster s podporou převzetí služeb při selhání. Cluster SLES Linux je založený na rozhraní [Pacemaker](./high-availability-guide-suse-pacemaker.md) v kombinaci se zařízením [STONITH](./high-availability-guide-suse-pacemaker.md#create-azure-fence-agent-stonith-device) . 
 
 Z SAP HANA perspektivy se použije synchronizovaný režim replikace a nakonfiguruje se automatické převzetí služeb při selhání. Ve druhém virtuálním počítači funguje SAP HANA instance jako aktivní pohotovostní uzel. Pohotovostní uzel přijímá synchronní datový proud záznamů změn z primární instance SAP HANA. Vzhledem k tomu, že aplikace potvrdí transakce v primárním uzlu HANA, vyčká primární uzel HANA o potvrzení potvrzení do aplikace, dokud sekundární SAP HANA uzel nepotvrdí, že přijal záznam pro zápis. SAP HANA nabízí dva synchronní režimy replikace. Podrobnosti a popis rozdílů mezi těmito dvěma synchronními režimy replikace najdete v článku režimy replikace článků SAP [pro replikaci SAP HANA systému](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/c039a1a5b8824ecfa754b55e0caffc01.html).
 
@@ -126,5 +127,4 @@ Podrobné pokyny k nastavení těchto konfigurací v Azure najdete tady:
 
 Další informace o dostupnosti SAP HANA napříč oblastmi Azure najdete v těchto tématech:
 
-- [SAP HANA dostupnost napříč oblastmi Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions) 
-
+- [SAP HANA dostupnost napříč oblastmi Azure](./sap-hana-availability-across-regions.md) 

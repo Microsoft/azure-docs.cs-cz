@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: caf73ffbc18a603ace22acfbd0da490048da698a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2fe1b8bdc80a5265add22bd3602050034471fe2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71058122"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036433"
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>Řešení potíží s připojením aplikace na virtuálních počítačích v Azure
 
@@ -117,7 +117,7 @@ Pokud nemůžete získat přístup k aplikaci, ověřte následující nastaven�
   
   * Ověřte, jestli konfigurace koncového bodu pro virtuální počítač povoluje příchozí provoz, obzvláště protokol (TCP nebo UDP) a čísla veřejných a privátních portů.
   * Ověřte, že seznamy řízení přístupu (ACL) na koncovém bodu nebrání příchozímu provozu z Internetu.
-  * Další informace najdete v tématu [nastavení koncových bodů na virtuální počítač](../windows/classic/setup-endpoints.md).
+  * Další informace najdete v tématu [nastavení koncových bodů na virtuální počítač](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints).
 * Pro virtuální počítače vytvořené pomocí modelu nasazení Správce prostředků:
   
   * Ověřte, jestli Konfigurace příchozího pravidla NAT pro virtuální počítač povoluje příchozí přenosy, zejména protokol (TCP nebo UDP), a čísla veřejných a privátních portů.
@@ -138,11 +138,9 @@ Pokud máte přístup k aplikaci, ujistěte se, že vaše zařízení Internet E
 
 ## <a name="step-4-if-you-cannot-access-the-application-use-ip-verify-to-check-the-settings"></a>Krok 4 Pokud nemůžete získat přístup k aplikaci, zkontrolujte nastavení pomocí ověřování IP. 
 
-Další informace najdete v tématu [Přehled monitorování sítě Azure](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview). 
+Další informace najdete v tématu [Přehled monitorování sítě Azure](../../network-watcher/network-watcher-monitoring-overview.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 [Řešení potíží s připojením ke vzdálené ploše na virtuálním počítači Azure se systémem Windows](troubleshoot-rdp-connection.md)
 
 [Řešení potíží s připojením Secure Shell (SSH) k virtuálnímu počítači Azure se systémem Linux](troubleshoot-ssh-connection.md)
-
-

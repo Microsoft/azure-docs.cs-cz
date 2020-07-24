@@ -6,12 +6,13 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: brendm
-ms.openlocfilehash: 7ef7614b32dd88e804b1a74749ee87504f9cea40
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.custom: devx-track-java
+ms.openlocfilehash: 1fcec8b591192bba862bf91040e5d6ca1ef9bcd8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205457"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037725"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Principy metrik pro jarní cloud Azure
 
@@ -90,7 +91,7 @@ V následujících tabulkách jsou uvedeny dostupné metriky a podrobnosti.
 >[!div class="mx-tdCol2BreakAll"]
 >| Název | Název metriky pružinového válce | Jednotka | Podrobnosti |
 >|----|----|----|------------|
->| Tomcat. Global. Error | Tomcat. Global. Error | Počet | Počet chyb, ke kterým došlo ve zpracovaných žádostech |
+>| Tomcat. Global. Error | Tomcat. Global. Error | Count | Počet chyb, ke kterým došlo ve zpracovaných žádostech |
 
 ### <a name="performance"></a>Výkon
 >[!div class="mx-tdCol2BreakAll"]
@@ -105,28 +106,28 @@ V následujících tabulkách jsou uvedeny dostupné metriky a podrobnosti.
 >| JVM. GC. Live. data. Size | JVM. GC. Live. data. Size | Bajty | Velikost staré generace fondu paměti po úplném GC. |
 >| JVM. GC. Memory. propagovaný | JVM. GC. Memory. propagovaný | Bajty | Počet kladných zvýšení velikosti staré paměti generace před GC na po GC. |
 >| JVM. GC. Memory. alokovaný | JVM. GC. Memory. alokovaný | Bajty | Zvýšeno na zvýšení velikosti fondu paměti pro mladé generaci po jednom GC do dalšího. |
->| JVM. GC. Pause. Total. Count | JVM. GC. Pause (celkový počet) | Počet | Celkový počet GC po zahájení této JMV, včetně mladého a starého GC. |
+>| JVM. GC. Pause. Total. Count | JVM. GC. Pause (celkový počet) | Count | Celkový počet GC po zahájení této JMV, včetně mladého a starého GC. |
 >| JVM. GC. Pause. Total. time | JVM. GC. Pause (celkem-Time) | Milisekund | Celkový čas GC spotřebovaný po spuštění tohoto JMVu, včetně mladého a starého GC. |
 
-### <a name="request"></a>Žádost
+### <a name="request"></a>Request
 >[!div class="mx-tdCol2BreakAll"]
 >| Název | Název metriky pružinového válce | Jednotka | Podrobnosti |
 >|----|----|----|------------|
 >| Tomcat. Global. odesláno | Tomcat. Global. odesláno | Bajty | Množství odeslaného webového serveru datového Tomcat |
 >| Tomcat. Global. Received | Tomcat. Global. Received | Bajty | Množství přijatého webového serveru datového Tomcat |
->| Tomcat. Global. Request. Total. Count | Tomcat. Global. Request (celkový počet) | Počet | Celkový počet zpracovaných požadavků Tomcat webového serveru |
+>| Tomcat. Global. Request. Total. Count | Tomcat. Global. Request (celkový počet) | Count | Celkový počet zpracovaných požadavků Tomcat webového serveru |
 >| Tomcat. Global. Request. max | Tomcat. Global. Request. max | Milisekund | Maximální doba, po kterou webový server Tomcat zpracuje požadavek |
 
 ### <a name="session"></a>Relace
 >[!div class="mx-tdCol2BreakAll"]
 >| Název | Název metriky pružinového válce | Jednotka | Podrobnosti |
 >|----|----|----|------------|
->| Tomcat. Sessions. Active. max | Tomcat. Sessions. Active. max | Počet | Maximální počet relací, které byly aktivní ve stejnou dobu |
+>| Tomcat. Sessions. Active. max | Tomcat. Sessions. Active. max | Count | Maximální počet relací, které byly aktivní ve stejnou dobu |
 >| Tomcat. Sessions. Alive. max | Tomcat. Sessions. Alive. max | Milisekund | Nejdelší čas (v sekundách), po který vypršela relace s ukončenou platností |
->| Tomcat. Sessions. Created | Tomcat. Sessions. Created | Počet | Počet relací, které byly vytvořeny |
->| Tomcat. Sessions. vypršela platnost | Tomcat. Sessions. vypršela platnost | Počet | Počet relací, jejichž platnost vypršela |
->| Tomcat. Sessions. odmítnuto | Tomcat. Sessions. odmítnuto | Počet | Počet relací, které nebyly vytvořeny, protože bylo dosaženo maximálního počtu aktivních relací. |
->| Tomcat. Sessions. Active. Current | Tomcat. Sessions. Active. Current | Počet | Počet aktivních relací Tomcat |
+>| Tomcat. Sessions. Created | Tomcat. Sessions. Created | Count | Počet relací, které byly vytvořeny |
+>| Tomcat. Sessions. vypršela platnost | Tomcat. Sessions. vypršela platnost | Count | Počet relací, jejichž platnost vypršela |
+>| Tomcat. Sessions. odmítnuto | Tomcat. Sessions. odmítnuto | Count | Počet relací, které nebyly vytvořeny, protože bylo dosaženo maximálního počtu aktivních relací. |
+>| Tomcat. Sessions. Active. Current | Tomcat. Sessions. Active. Current | Count | Počet aktivních relací Tomcat |
 
 ## <a name="see-also"></a>Viz také
 * [Začínáme s Průzkumníkem metrik Azure](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)

@@ -3,11 +3,12 @@ title: Používání služby Search v Azure Application Insights | Microsoft Doc
 description: Hledání a filtrování nezpracovaných telemetrie odesílaných vaší webovou aplikací
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.openlocfilehash: 8039a55784f63030f330d6c1e2061e99b8b63bbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a264f25f92bed1b93848c323fd59eafd7b09215
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695653"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033611"
 ---
 # <a name="using-search-in-application-insights"></a>Použití vyhledávání v Application Insights
 
@@ -98,7 +99,7 @@ Vyhledejte úplná slova, nikoli podřetězce. Použijte uvozovky k uzavření s
 
 Tady jsou hledané výrazy, které můžete použít:
 
-| Ukázkový dotaz | Efekt |
+| Ukázkový dotaz | Účinek |
 | --- | --- |
 | `apple` |Najde všechny události v časovém rozsahu, jehož pole obsahují slovo "Apple". |
 | `apple AND banana` <br/>`apple banana` |Najde události, které obsahují obě slova. Použijte velká písmena "a", nikoli "a". <br/>Krátká forma. |
@@ -147,4 +148,4 @@ Data POST neprotokolují automaticky, ale můžete použít [TrackTrace nebo log
 * [Zápis složitých dotazů do analýz](../../azure-monitor/log-query/get-started-portal.md)
 * [Odeslání protokolů a vlastní telemetrie do Application Insights](../../azure-monitor/app/asp-net-trace-logs.md)
 * [Nastavení testů dostupnosti a odezvy](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Řešení potíží](../../azure-monitor/app/troubleshoot-faq.md)
+* [Řešení potíží](../faq.md)

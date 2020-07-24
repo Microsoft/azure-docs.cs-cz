@@ -1,44 +1,47 @@
 ---
-title: Požadavky na data SSPR Azure AD – Azure Active Directory
-description: Požadavky na data pro Samoobslužné resetování hesla služby Azure AD a způsob jejich navýšení
+title: Předem naplnit kontaktní informace pro Samoobslužné resetování hesla – Azure Active Directory
+description: Naučte se, jak předem naplnit kontaktní informace uživatelům Azure Active Directory Samoobslužné resetování hesla (SSPR), aby mohli funkci používat bez dokončení procesu registrace.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 12/09/2019
+ms.date: 07/17/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42f7e120745357d3bd5735cca568bdd6971ea061
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 116fa2a4c71fc8ebc67387cf02090bbd664b862a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80652362"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035379"
 ---
-# <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Nasazení resetování hesla bez nutnosti registrace koncového uživatele
+# <a name="pre-populate-user-authentication-contact-information-for-azure-active-directory-self-service-password-reset-sspr"></a>Doplňte kontaktní údaje pro ověření uživatele pro Azure Active Directory Samoobslužné resetování hesla (SSPR).
 
-Pokud chcete nasadit Samoobslužné resetování hesla (SSPR) Azure Active Directory (Azure AD), musí být k dispozici data ověřování. Některé organizace mají své uživatele, kteří sami vstupují svá ověřovací data. Jiné organizace dávají přednost synchronizaci s daty, která již existují ve službě Active Directory. Tato synchronizovaná data jsou dostupná pro Azure AD a SSPR bez nutnosti zásahu uživatele, pokud splňujete následující požadavky:
+Chcete-li použít Samoobslužné resetování hesla (SSPR) Azure Active Directory (Azure AD), musí být k dispozici kontaktní informace pro ověření uživatele. Některé organizace mají uživatele k registraci ověřovacích dat sami. Jiné organizace upřednostňují synchronizaci z ověřovacích dat, která již existují v Active Directory Domain Services (služba AD DS). Tato synchronizovaná data jsou zpřístupněna pro Azure AD a SSPR bez nutnosti zásahu uživatele. Když uživatelé potřebují změnit nebo resetovat svoje heslo, můžou to udělat, i když předtím zaregistrovali své kontaktní údaje.
 
-* Správně naformátujte data v místním adresáři.
-* Nakonfigurujte [Azure AD Connect pomocí expresního nastavení](../hybrid/how-to-connect-install-express.md).
+Pokud splňujete následující požadavky, můžete předem vyplnit kontaktní údaje pro ověření:
 
-Aby telefonní čísla fungovala správně, musí být ve formátu *+ CountryCode PhoneNumber*, například + 1 4255551234.
+* Data v místním adresáři máte správně naformátovaná.
+* Nakonfigurovali jste [Azure AD Connect](../hybrid/how-to-connect-install-express.md) pro vašeho TENANTA Azure AD.
+
+Telefonní čísla musí být ve formátu *+ CountryCode PhoneNumber*, například *+ 1 4251234567*.
 
 > [!NOTE]
-> Musí existovat mezera mezi kódem země a telefonním číslem.
+> Mezi kódem země a telefonním číslem musí být mezera.
 >
-> Resetování hesla nepodporuje telefonní linky. I ve formátu + 1 4255551234X12345 jsou rozšíření odebrána před tím, než je volání umístěno.
+> Resetování hesla nepodporuje telefonní linky. I ve formátu *+ 1 4251234567X12345* jsou rozšíření odebrána před tím, než je volání umístěno.
 
 ## <a name="fields-populated"></a>Vyplněná pole
 
-Pokud použijete výchozí nastavení v Azure AD Connect, provedou se následující mapování:
+Pokud v Azure AD Connect použijete výchozí nastavení, provedou se následující mapování k naplnění kontaktních údajů ověřování pro SSPR:
 
-| Místní služby Active Directory | Azure AD |
-| --- | --- |
-| telephoneNumber | Telefon do kanceláře |
-| mobil | Mobilní telefon |
+| Místní služby Active Directory | Azure AD     |
+|------------------------------|--------------|
+| telephoneNumber              | Telefon do kanceláře |
+| mobil                       | Mobilní telefon |
 
 Jakmile uživatel ověří své číslo mobilního telefonu, pole *telefon* v části **kontaktní údaje pro ověření** ve službě Azure AD se také vyplní tímto číslem.
 
@@ -48,10 +51,12 @@ Na stránce **metody ověřování** pro uživatele Azure AD v Azure Portal mů�
 
 ![Kontaktní údaje pro ověření uživatele v Azure AD][Contact]
 
-* Pokud je pole **telefon** vyplněné a v zásadách SSPR je povolený **mobilní telefon** , uživatel uvidí toto číslo na registrační stránce pro resetování hesla a během pracovního postupu pro resetování hesla.
-* Pole **alternativní telefon** se pro resetování hesla nepoužívá.
-* Pokud je v zásadách SSPR zadáno pole **e-mail** a je povolen **e-mail** , uživatel uvidí tento e-mail na registrační stránce pro resetování hesla a během pracovního postupu pro resetování hesla.
-* Pokud je v zásadách SSPR zadáno **alternativní pole e-mail** a v zásadách je povolen **e-mail** , uživateli se tento e-mail na registrační stránce pro resetování **hesla nezobrazí.**
+Následující požadavky se vztahují na tyto kontaktní údaje pro ověření:
+
+* Pokud je pole *telefon* vyplněné a v zásadách SSPR je povolený *mobilní telefon* , uživatel uvidí toto číslo na registrační stránce pro resetování hesla a během pracovního postupu pro resetování hesla.
+* Pole *alternativní telefon* se pro resetování hesla nepoužívá.
+* Pokud je v zásadách SSPR zadáno pole *e-mail* a je povolen *e-mail* , uživatel uvidí tento e-mail na registrační stránce pro resetování hesla a během pracovního postupu pro resetování hesla.
+* Pokud je v zásadách SSPR zadáno *alternativní pole e-mail* a v zásadách je povolen *e-mail* , uživateli se tento e-mail na registrační stránce pro resetování hesla nezobrazí.
 
 ## <a name="security-questions-and-answers"></a>Bezpečnostní otázky a odpovědi
 
@@ -65,19 +70,25 @@ Po registraci uživatele registrační stránka nastaví následující pole:
 * **E-mail pro ověření**
 * **Bezpečnostní otázky a odpovědi**
 
-Pokud jste zadali hodnotu pro **mobilní telefon** nebo **alternativní e-mail**, můžou uživatelé tyto hodnoty hned použít k resetování hesel, i když nejsou zaregistrovaní u služby. Uživatelé tyto hodnoty uvidí i při prvním zápisu a můžou je upravovat, pokud chtějí. Po úspěšném zaregistrování jsou tyto hodnoty trvale uložené v polích **telefon ověřování** a **e-mail pro ověření** v uvedeném pořadí.
+Pokud jste zadali hodnotu pro *mobilní telefon* nebo *alternativní e-mail*, můžou uživatelé tyto hodnoty hned použít k resetování hesel, i když nejsou zaregistrovaní u služby.
+
+Uživatelé tyto hodnoty uvidí i při prvním zápisu a můžou je upravovat, pokud chtějí. Po úspěšné registraci jsou tyto hodnoty trvale uložené v polích *telefon ověřování* a E-mail pro *ověření* v uvedeném pořadí.
 
 ## <a name="set-and-read-the-authentication-data-through-powershell"></a>Nastavení a čtení ověřovacích dat prostřednictvím PowerShellu
 
 Následující pole lze nastavit pomocí prostředí PowerShell:
 
-* **Alternativní e-mail**
-* **Mobilní telefon**
-* **Telefon do kanceláře**: dá se nastavit jenom v případě, že neprovádíte synchronizaci s místním adresářem.
+* *Alternativní e-mail*
+* *Mobilní telefon*
+* *Telefon do kanceláře*
+    * Dá se nastavit jenom v případě, že neprovádíte synchronizaci s místním adresářem.
+
+> [!IMPORTANT]
+> Mezi PowerShellem V1 a PowerShellem v2 je známý nedostatek parity v funkcích příkazu. [Microsoft Graph REST API (beta) pro metody ověřování](/graph/api/resources/authenticationmethods-overview) je aktuální technický fokus pro zajištění moderní interakce.
 
 ### <a name="use-powershell-version-1"></a>Použití PowerShellu verze 1
 
-Abyste mohli začít, musíte [si stáhnout a nainstalovat modul Azure AD PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule). Po instalaci nástroje můžete pomocí následujících kroků nakonfigurovat jednotlivá pole.
+Začněte tím, [že si stáhnete a nainstalujete modul Azure AD PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule). Po instalaci použijte následující postup ke konfiguraci jednotlivých polí.
 
 #### <a name="set-the-authentication-data-with-powershell-version-1"></a>Nastavení ověřovacích dat s využitím PowerShellu verze 1
 
@@ -85,10 +96,10 @@ Abyste mohli začít, musíte [si stáhnout a nainstalovat modul Azure AD PowerS
 Connect-MsolService
 
 Set-MsolUser -UserPrincipalName user@domain.com -AlternateEmailAddresses @("email@domain.com")
-Set-MsolUser -UserPrincipalName user@domain.com -MobilePhone "+1 1234567890"
-Set-MsolUser -UserPrincipalName user@domain.com -PhoneNumber "+1 1234567890"
+Set-MsolUser -UserPrincipalName user@domain.com -MobilePhone "+1 4251234567"
+Set-MsolUser -UserPrincipalName user@domain.com -PhoneNumber "+1 4252345678"
 
-Set-MsolUser -UserPrincipalName user@domain.com -AlternateEmailAddresses @("email@domain.com") -MobilePhone "+1 1234567890" -PhoneNumber "+1 1234567890"
+Set-MsolUser -UserPrincipalName user@domain.com -AlternateEmailAddresses @("email@domain.com") -MobilePhone "+1 4251234567" -PhoneNumber "+1 4252345678"
 ```
 
 #### <a name="read-the-authentication-data-with-powershell-version-1"></a>Přečtěte si data ověřování pomocí PowerShellu verze 1.
@@ -115,9 +126,9 @@ Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthentic
 
 ### <a name="use-powershell-version-2"></a>Použití prostředí PowerShell verze 2
 
-Abyste mohli začít, musíte [si stáhnout a nainstalovat modul Azure AD verze 2 PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0). Po instalaci nástroje můžete pomocí následujících kroků nakonfigurovat jednotlivá pole.
+Začněte tím, [že si stáhnete a nainstalujete modul Azure AD verze 2 PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0).
 
-Pokud chcete rychle nainstalovat z nedávných verzí PowerShellu, která podporuje instalační modul, spusťte následující příkazy. (První řádek zkontroluje, jestli je modul už nainstalovaný.)
+Pokud chcete rychle nainstalovat z nedávných verzí PowerShellu, které podporují `Install-Module` , spusťte následující příkazy. První řádek zkontroluje, zda je modul již nainstalován:
 
 ```PowerShell
 Get-Module AzureADPreview
@@ -125,16 +136,18 @@ Install-Module AzureADPreview
 Connect-AzureAD
 ```
 
+Po instalaci modulu použijte následující postup ke konfiguraci jednotlivých polí.
+
 #### <a name="set-the-authentication-data-with-powershell-version-2"></a>Nastavení ověřovacích dat pomocí prostředí PowerShell verze 2
 
 ```PowerShell
 Connect-AzureAD
 
 Set-AzureADUser -ObjectId user@domain.com -OtherMails @("email@domain.com")
-Set-AzureADUser -ObjectId user@domain.com -Mobile "+1 2345678901"
-Set-AzureADUser -ObjectId user@domain.com -TelephoneNumber "+1 1234567890"
+Set-AzureADUser -ObjectId user@domain.com -Mobile "+1 4251234567"
+Set-AzureADUser -ObjectId user@domain.com -TelephoneNumber "+1 4252345678"
 
-Set-AzureADUser -ObjectId user@domain.com -OtherMails @("emails@domain.com") -Mobile "+1 1234567890" -TelephoneNumber "+1 1234567890"
+Set-AzureADUser -ObjectId user@domain.com -OtherMails @("emails@domain.com") -Mobile "+1 4251234567" -TelephoneNumber "+1 4252345678"
 ```
 
 #### <a name="read-the-authentication-data-with-powershell-version-2"></a>Přečtěte si data ověřování pomocí prostředí PowerShell verze 2.
@@ -151,16 +164,9 @@ Get-AzureADUser | select DisplayName,UserPrincipalName,otherMails,Mobile,Telepho
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Jak dokončit úspěšné zavedení SSPR?](howto-sspr-deployment.md)
-* [Resetování nebo změna hesla](../user-help/active-directory-passwords-update-your-own-password.md)
-* [Registrace pro samoobslužné resetování hesla](../user-help/active-directory-passwords-reset-register.md)
-* [Máte dotaz k licencování?](concept-sspr-licensing.md)
-* [Které metody ověřování jsou dostupné pro uživatele?](concept-sspr-howitworks.md#authentication-methods)
-* [Jaké jsou možnosti zásad se SSPR?](concept-sspr-policy.md)
-* [Co je zpětný zápis hesla a proč byste se o něj měli starat?](howto-sspr-writeback.md)
-* [Jak hlásit aktivitu v SSPR?](howto-sspr-reporting.md)
-* [Jaké jsou všechny možnosti v SSPR a co znamenají?](concept-sspr-howitworks.md)
-* [Myslím, že je něco přerušeno. Návody řešit potíže s SSPR?](active-directory-passwords-troubleshoot.md)
-* [Mám otázku, která není zodpovězená jinde](active-directory-passwords-faq.md)
+Jakmile budou pro uživatele předem vyplněny kontaktní informace pro ověření, proveďte následující kurz, který povolí Samoobslužné resetování hesla:
+
+> [!div class="nextstepaction"]
+> [Povolit Samoobslužné resetování hesla služby Azure AD](tutorial-enable-sspr.md)
 
 [Contact]: ./media/howto-sspr-authenticationdata/user-authentication-contact-info.png "Globální správci můžou upravovat kontaktní údaje pro ověření uživatele."

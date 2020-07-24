@@ -11,26 +11,26 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/08/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: d6b1d5c66c1dd15fa12638dd451d1ce2fa8fa79f
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 194864d223d908cc2d8b1d7f14efe81e16bbd058
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146728"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031503"
 ---
 # <a name="connect-to-azure-storage-services"></a>Připojení ke službám Azure Storage
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto článku se dozvíte, jak se **připojit ke službám úložiště Azure prostřednictvím Azure Machine Learning úložiště dat**. Úložiště dat ukládají informace o připojení, například ID předplatného a autorizaci tokenů ve vašem [Key Vault](https://azure.microsoft.com/services/key-vault/) přidružené k pracovnímu prostoru, takže můžete bezpečně přistupovat k úložišti, aniž byste je museli zakódovat ve svých skriptech. 
 
-**Pro Nepodporovaná řešení úložišť**a za účelem úspory nákladů na výstup dat během experimentů ml [přesuňte data](#move) do podporovaných řešení Azure Storage.  Z [těchto řešení Azure Storage](#matrix)můžete vytvořit úložiště dat. 
+**Pro Nepodporovaná řešení úložišť**a za účelem úspory nákladů na výstup dat během experimentů ml [přesuňte data](#move) do podporovaného řešení úložiště Azure.  Z [těchto řešení Azure Storage](#matrix)můžete vytvořit úložiště dat. 
 
 Informace o tom, kde je úložiště dat vhodné v rámci celkového pracovního postupu pro přístup k datům v Azure Machine Learning, najdete v článku [zabezpečený přístup k datům](concept-data.md#data-workflow) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Budete potřebovat:
-- Předplatné Azure. Pokud předplatné Azure ještě nemáte, napřed si vytvořte bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
 - Účet služby Azure Storage s [kontejnerem objektů blob Azure](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) nebo [sdílenou složkou Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction).
 
@@ -92,8 +92,9 @@ Po vytvoření úložiště dat se toto ověřování provede jenom u metod, kte
 ### <a name="python-sdk"></a>Python SDK
 
 Všechny metody registru jsou ve [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) třídě a mají formulář `register_azure_*` .
+
 > [!IMPORTANT]
-> Pokud plánujete vytvořit úložiště dat pro účty úložiště, které jsou ve virtuální síti, přečtěte si část přístup k datům v rámci virtuální sítě.
+> Pokud plánujete vytvořit úložiště dat pro účty úložiště, které jsou ve virtuální síti, přečtěte si část [přístup k datům v rámci virtuální sítě](#access-data-in-a-virtual-network) .
 
 Můžete najít informace, které potřebujete k naplnění `register_azure_*()` metody v [Azure Portal](https://portal.azure.com).
 
@@ -185,7 +186,7 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 Vytvořte nové úložiště dat v několika krocích v Azure Machine Learning Studiu:
 
 > [!IMPORTANT]
-> Pokud je váš účet úložiště dat ve virtuální síti, je potřeba, abyste zajistili, že Studio bude mít přístup k vašim datům. V tématu [izolace sítě & ochrana osobních údajů] (postupy: povolení – virtuální síť. MD # Machine-Learning-Studio) se ujistěte, že se uplatní příslušné kroky konfigurace. 
+> Pokud je váš účet úložiště dat ve virtuální síti, je potřeba, abyste zajistili, že Studio bude mít přístup k vašim datům. V tématu [izolace sítě & ochraně osobních údajů](how-to-enable-virtual-network.md#machine-learning-studio) se ujistěte, že jsou použité příslušné kroky konfigurace. 
 
 1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com/).
 1. V levém podokně v části **Spravovat**vyberte **úložiště** .

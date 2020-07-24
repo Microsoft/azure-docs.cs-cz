@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 07/21/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 903560f5c0400a906918f0c17eafb2e1e09bdd30
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e4ec4925da40cf6051b88d77fbbc35d93ececf87
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518500"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036722"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage redundance
 
@@ -59,11 +59,11 @@ Microsoft doporučuje používat ZRS v primární oblasti pro scénáře, které
 
 Následující tabulka uvádí, které typy účtů úložiště podporují ZRS, ve kterých oblastech:
 
-|    Typ účtu úložiště    |    Podporované oblasti    |    Podporované služby    |
-|----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-|    Obecné účely v2<sup>1</sup>    | Jihovýchodní Asie<br /> Austrálie – východ<br /> Evropa – sever<br />  Evropa – západ<br /> Francie – střed<br /> Japan East<br /> Jižní Afrika – sever<br /> Spojené království – jih<br /> USA – střed<br /> USA – východ<br /> USA – východ 2<br /> USA – západ 2    |    Objekty blob bloku<br /> Objekty blob stránky<sup>2</sup><br /> Sdílené složky (Standard)<br /> Tabulky<br /> Fronty<br /> |
-|    BlockBlobStorage<sup>1</sup>    | Jihovýchodní Asie<br /> Austrálie – východ<br /> Evropa – západ<br /> USA – východ    |    Pouze objekty blob bloku    |
-|    Úložiště    | Jihovýchodní Asie<br /> Austrálie – východ<br /> Evropa – západ<br /> USA – východ    |    Jenom soubory Azure    |
+| Typ účtu úložiště | Podporované oblasti | Podporované služby |
+|--|--|--|
+| Obecné účely v2<sup>1</sup> | Jihovýchodní Asie<br /> Austrálie – východ<br /> Evropa – sever<br />  Evropa – západ<br /> Francie – střed<br /> Japan East<br /> Jižní Afrika – sever<br /> Spojené království – jih<br /> USA – střed<br /> USA – východ<br /> USA – východ 2<br /> USA – západ 2 | Objekty blob bloku<br /> Objekty blob stránky<sup>2</sup><br /> Sdílené složky (Standard)<br /> Tabulky<br /> Fronty<br /> |
+| BlockBlobStorage<sup>1</sup> | Jihovýchodní Asie<br /> Austrálie – východ<br /> Evropa – západ<br /> USA – východ | Jenom objekty blob bloku úrovně Premium |
+| Úložiště | Jihovýchodní Asie<br /> Austrálie – východ<br /> Evropa – západ<br /> USA – východ | Jenom soubory úrovně Premium – jenom sdílené složky |
 
 <sup>1</sup> úroveň archivu se v současnosti nepodporuje u účtů ZRS.<br />
 <sup>2</sup> účty úložiště, které obsahují Azure Managed disks pro virtuální počítače, vždycky používají LRS. Nespravované disky Azure by měly také používat LRS. Je možné vytvořit účet úložiště pro nespravované disky Azure, které používají GRS, ale nedoporučuje se v důsledku potenciálních problémů s konzistencí přes asynchronní geografickou replikaci. Ani spravované ani nespravované disky nepodporují ZRS nebo GZRS. Další informace o službě Managed disks najdete v tématu [ceny za službu Azure Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/).
@@ -122,6 +122,9 @@ Informace o cenách najdete v podrobnostech o cenách [objektů BLOB](https://az
 
 Geograficky redundantní úložiště (s GRS nebo GZRS) replikuje vaše data do jiného fyzického umístění v sekundární oblasti, aby se chránila před oblastními výpadky. Tato data jsou však k dispozici pro čtení pouze v případě, že zákazník nebo společnost Microsoft zahájí převzetí služeb při selhání z primární do sekundární oblasti. Když povolíte přístup pro čtení do sekundární oblasti, data je možné kdykoli číst, a to i v případě, že primární oblast nebude k dispozici. Pro přístup pro čtení do sekundární oblasti povolte geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) nebo geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS).
 
+> [!NOTE]
+> Soubory Azure nepodporují geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) a geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS).
+
 ### <a name="design-your-applications-for-read-access-to-the-secondary"></a>Návrh aplikací pro přístup pro čtení sekundárního
 
 Pokud je váš účet úložiště nakonfigurovaný pro přístup pro čtení do sekundární oblasti, můžete navrhovat aplikace pro bezproblémové přesunutí na čtení dat ze sekundární oblasti, pokud z nějakého důvodu dojde k nedostupnosti primární oblasti. 
@@ -146,11 +149,11 @@ Tabulky v následujících částech shrnují možnosti redundance, které jsou 
 
 Následující tabulka popisuje klíčové parametry pro každou možnost redundance:
 
-| Parametr                                                                                                 | LRS                             | ZRS                              | GRS/RA – GRS                                  | GZRS/RA – GZRS                              |
-| :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
-| Procentuální hodnota odolnosti objektů v průběhu daného roku<sup>1</sup>                                          | alespoň 99,999999999% (11 9 's) | minimálně 99,9999999999% (12 9 's) | minimálně 99.99999999999999% (16 9) | minimálně 99.99999999999999% (16 9) |
-| Smlouva SLA o dostupnosti pro žádosti o čtení<sup>1</sup>  | Minimálně 99,9% (99% pro studenou úroveň přístupu) | Minimálně 99,9% (99% pro studenou úroveň přístupu) | Minimálně 99,9% (99% pro studenou úroveň přístupu) pro GRS<br /><br />Minimálně 99,99% (99,9% pro studenou úroveň přístupu) pro RA-GRS | Minimálně 99,9% (99% pro studenou úroveň přístupu) pro GZRS<br /><br />Minimálně 99,99% (99,9% pro studenou úroveň přístupu) pro RA-GZRS |
-| Smlouva SLA o dostupnosti pro žádosti o zápis<sup>1</sup>  | Minimálně 99,9% (99% pro studenou úroveň přístupu) | Minimálně 99,9% (99% pro studenou úroveň přístupu) | Minimálně 99,9% (99% pro studenou úroveň přístupu) | Minimálně 99,9% (99% pro studenou úroveň přístupu) |
+| Parametr | LRS | ZRS | GRS/RA – GRS | GZRS/RA – GZRS |
+|:-|:-|:-|:-|:-|
+| Procentuální hodnota odolnosti objektů v průběhu daného roku<sup>1</sup> | alespoň 99,999999999% (11 9 's) | minimálně 99,9999999999% (12 9 's) | minimálně 99.99999999999999% (16 9) | minimálně 99.99999999999999% (16 9) |
+| Smlouva SLA o dostupnosti pro žádosti o čtení<sup>1</sup> | Minimálně 99,9% (99% pro studenou úroveň přístupu) | Minimálně 99,9% (99% pro studenou úroveň přístupu) | Minimálně 99,9% (99% pro studenou úroveň přístupu) pro GRS<br /><br />Minimálně 99,99% (99,9% pro studenou úroveň přístupu) pro RA-GRS | Minimálně 99,9% (99% pro studenou úroveň přístupu) pro GZRS<br /><br />Minimálně 99,99% (99,9% pro studenou úroveň přístupu) pro RA-GZRS |
+| Smlouva SLA o dostupnosti pro žádosti o zápis<sup>1</sup> | Minimálně 99,9% (99% pro studenou úroveň přístupu) | Minimálně 99,9% (99% pro studenou úroveň přístupu) | Minimálně 99,9% (99% pro studenou úroveň přístupu) | Minimálně 99,9% (99% pro studenou úroveň přístupu) |
 
 <sup>1</sup> informace o tom, jak Azure Storage garantuje odolnost a dostupnost, najdete v [Azure Storage smlouvě SLA](https://azure.microsoft.com/support/legal/sla/storage/).
 
@@ -158,12 +161,12 @@ Následující tabulka popisuje klíčové parametry pro každou možnost redund
 
 Následující tabulka uvádí, zda jsou vaše data v daném scénáři odolná a dostupná v závislosti na tom, jaký typ redundance je platný pro váš účet úložiště:
 
-| Scénář výpadku                                                                                                 | LRS                             | ZRS                              | GRS/RA – GRS                                  | GZRS/RA – GZRS                              |
-| :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
-| Uzel v datovém centru nebude dostupný.                                                                 | Ano                             | Ano                              | Ano                                  | Ano                                 |
-| Nebudete mít k dispozici celé datové centrum (oblast nebo mimo oblast).                                           | No                              | Ano                              | Ano<sup>1</sup>                                  | Ano                                  |
-| V primární oblasti dojde k výpadku v rámci oblasti.                                                                                     | No                              | No                               | Ano<sup>1</sup>                                  | Ano<sup>1</sup>                                  |
-| Přístup pro čtení do sekundární oblasti je k dispozici, pokud primární oblast nebude k dispozici. | No                              | No                               | Ano (s RA-GRS)                                   | Ano (s RA-GZRS)                                 |
+| Scénář výpadku | LRS | ZRS | GRS/RA – GRS | GZRS/RA – GZRS |
+|:-|:-|:-|:-|:-|
+| Uzel v datovém centru nebude dostupný. | Ano | Ano | Ano | Ano |
+| Nebudete mít k dispozici celé datové centrum (oblast nebo mimo oblast). | No | Yes | Ano<sup>1</sup> | Yes |
+| V primární oblasti dojde k výpadku v rámci oblasti. | No | No | Ano<sup>1</sup> | Ano<sup>1</sup> |
+| Přístup pro čtení do sekundární oblasti je k dispozici, pokud primární oblast nebude k dispozici. | No | No | Ano (s RA-GRS) | Ano (s RA-GZRS) |
 
 <sup>1</sup> převzetí služeb při selhání účtu se vyžaduje k obnovení dostupnosti pro zápis, pokud primární oblast nebude k dispozici. Další informace najdete v tématu [převzetí služeb při selhání při zotavení po havárii a účtu úložiště](storage-disaster-recovery-guidance.md).
 
@@ -171,9 +174,9 @@ Následující tabulka uvádí, zda jsou vaše data v daném scénáři odolná 
 
 Následující tabulka uvádí, které možnosti redundance jsou podporovány jednotlivými typy účtů úložiště. Informace o typech účtů úložiště najdete v tématu [Přehled účtu úložiště](storage-account-overview.md).
 
-| LRS                             | ZRS                              | GRS/RA – GRS                                  | GZRS/RA – GZRS                              |
-| :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
-| Účty pro obecné účely verze 2<br /> Účty pro obecné účely verze 1<br /> Úložiště objektů blob bloku<br /> Blob Storage<br /> File Storage                | Účty pro obecné účely verze 2<br /> Úložiště objektů blob bloku<br /> File Storage                             | Účty pro obecné účely verze 2<br /> Účty pro obecné účely verze 1<br /> Blob Storage                     | Účty pro obecné účely verze 2                     |
+| LRS | ZRS | GRS/RA – GRS | GZRS/RA – GZRS |
+|:-|:-|:-|:-|
+| Účty pro obecné účely verze 2<br /> Účty pro obecné účely verze 1<br /> Úložiště objektů blob bloku<br /> Blob Storage<br /> File Storage | Účty pro obecné účely verze 2<br /> Úložiště objektů blob bloku<br /> File Storage | Účty pro obecné účely verze 2<br /> Účty pro obecné účely verze 1<br /> Blob Storage | Účty pro obecné účely verze 2 |
 
 Všechna data pro všechny účty úložiště se zkopírují podle možnosti redundance pro účet úložiště. Zkopírují se objekty, mezi které patří objekty blob bloku, doplňovací objekty blob, objekty blob stránky, fronty, tabulky a soubory. Data na všech úrovních, včetně archivní úrovně, se zkopírují. Další informace o úrovních objektů BLOB najdete v tématu [Azure Blob Storage: horká, studená a archivní úroveň přístupu](../blobs/storage-blob-storage-tiers.md).
 

@@ -3,12 +3,13 @@ title: Vytvoření a konfigurace trezorů Recovery Services
 description: V tomto článku se dozvíte, jak vytvořit a nakonfigurovat trezory Recovery Services, které ukládají zálohy a body obnovení.
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 65f7265dccc5fe28d3503e72bdd6e49123871594
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.custom: references_regions
+ms.openlocfilehash: 244562efdc4c274a79ea27cdfa00dd51ae671fa4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970518"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032948"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Vytvoření a konfigurace trezoru Recovery Services
 
@@ -21,7 +22,7 @@ Azure Backup automaticky zpracovává úložiště pro trezor. Musíte určit zp
 > [!NOTE]
 > Změna **typu replikace úložiště** (místně redundantní/geograficky redundantní) pro trezor služby Recovery Services je potřeba provést před konfigurací záloh v trezoru. Když nakonfigurujete zálohování, možnost změnit je zakázaná.
 >
->- Pokud jste ještě nenakonfigurovali zálohu, zkontrolujte a upravte nastavení [podle těchto pokynů](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) .
+>- Pokud jste ještě nenakonfigurovali zálohu, zkontrolujte a upravte nastavení [podle těchto pokynů](#set-storage-redundancy) .
 >- Pokud jste už zálohu nakonfigurovali a musíte se přesunout z GRS na LRS, [Přečtěte si tato alternativní řešení](#how-to-change-from-grs-to-lrs-after-configuring-backup).
 
 1. V okně **Trezory služby Recovery Services** klikněte na nový trezor. V části **Nastavení** klikněte na **vlastnosti**.
@@ -33,14 +34,14 @@ Azure Backup automaticky zpracovává úložiště pro trezor. Musíte určit zp
 
    - Pokud používáte Azure jako primární koncový bod úložiště záloh, doporučujeme, abyste používali výchozí **geograficky redundantní** nastavení.
    - Pokud Azure nepoužíváte jako primární koncový bod úložiště záloh, vyberte **Místně redundantní** – snížíte tím náklady na úložiště Azure.
-   - Přečtěte si další informace o [geografické](../storage/common/storage-redundancy-grs.md) a [místní](../storage/common/storage-redundancy-lrs.md) redundanci.
+   - Přečtěte si další informace o [geografické](../storage/common/storage-redundancy.md) a [místní](../storage/common/storage-redundancy.md) redundanci.
 
 >[!NOTE]
 >Nastavení replikace úložiště pro trezor nejsou relevantní pro zálohování sdílené složky Azure, protože aktuální řešení je založené na snímku a do trezoru se nepřenesla žádná data. Snímky se ukládají do stejného účtu úložiště jako zálohovaná sdílená složka.
 
 ## <a name="set-cross-region-restore"></a>Nastavení obnovení mezi oblastmi
 
-Jedna z možností obnovení (CRR) umožňuje obnovení virtuálních počítačů Azure v sekundární oblasti, která je [spárována se službou Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Tato možnost vám umožní:
+Jedna z možností obnovení (CRR) umožňuje obnovení virtuálních počítačů Azure v sekundární oblasti, která je [spárována se službou Azure](../best-practices-availability-paired-regions.md). Tato možnost vám umožní:
 
 - postupovat v případě, že dojde k auditu nebo požadavkům na dodržování předpisů
 - Pokud dojde k havárii v primární oblasti, obnovte virtuální počítač nebo jeho disk.
@@ -83,10 +84,10 @@ Naučte se [monitorovat úlohy obnovení sekundární oblasti](backup-azure-arm-
 Důrazně doporučujeme před konfigurací záloh v trezoru zkontrolovat výchozí nastavení pro **typ replikace úložiště** a **nastavení zabezpečení** .
 
 - **Typ replikace úložiště** je ve výchozím nastavení nastaven na **geograficky redundantní** (GRS). Po nakonfigurování zálohy bude možnost úprav zakázána.
-  - Pokud jste ještě nenakonfigurovali zálohu, zkontrolujte a upravte nastavení [podle těchto pokynů](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) .
+  - Pokud jste ještě nenakonfigurovali zálohu, zkontrolujte a upravte nastavení [podle těchto pokynů](#set-storage-redundancy) .
   - Pokud jste už zálohu nakonfigurovali a musíte se přesunout z GRS na LRS, [Přečtěte si tato alternativní řešení](#how-to-change-from-grs-to-lrs-after-configuring-backup).
 
-- **Obnovitelné odstranění** je ve výchozím nastavení **povolené** u nově vytvořených trezorů za účelem ochrany zálohovaných dat před náhodnými nebo škodlivými odstraněními. Chcete-li zkontrolovat a upravit nastavení, [postupujte podle těchto kroků](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#enabling-and-disabling-soft-delete) .
+- **Obnovitelné odstranění** je ve výchozím nastavení **povolené** u nově vytvořených trezorů za účelem ochrany zálohovaných dat před náhodnými nebo škodlivými odstraněními. Chcete-li zkontrolovat a upravit nastavení, [postupujte podle těchto kroků](./backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete) .
 
 ### <a name="how-to-change-from-grs-to-lrs-after-configuring-backup"></a>Postup změny z GRS na LRS po konfiguraci zálohování
 
@@ -123,7 +124,7 @@ Pokud potřebujete zachovat aktuální chráněná data v trezoru GRS a pokračo
   - Zálohovaná data bude možné obnovit pouze v případě neplatných bodů obnovení v trezoru GRS.
   - V trezoru LRS se musí vytvořit nová počáteční replika dat.
 
-- U virtuálního počítače Azure můžete [Zastavit ochranu pomocí zachování dat](backup-azure-manage-vms.md#stop-protecting-a-vm) pro virtuální počítač v trezoru GRS, přesunout virtuální počítač do jiné skupiny prostředků a pak chránit virtuální počítač v trezoru LRS. Přečtěte si [doprovodné materiály a omezení](https://docs.microsoft.com/azure/azure-resource-manager/management/move-limitations/virtual-machines-move-limitations) pro přesun virtuálního počítače do jiné skupiny prostředků.
+- U virtuálního počítače Azure můžete [Zastavit ochranu pomocí zachování dat](backup-azure-manage-vms.md#stop-protecting-a-vm) pro virtuální počítač v trezoru GRS, přesunout virtuální počítač do jiné skupiny prostředků a pak chránit virtuální počítač v trezoru LRS. Přečtěte si [doprovodné materiály a omezení](../azure-resource-manager/management/move-limitations/virtual-machines-move-limitations.md) pro přesun virtuálního počítače do jiné skupiny prostředků.
 
   Virtuální počítač se dá v jednom okamžiku chránit jenom v jednom trezoru. Virtuální počítač v nové skupině prostředků ale můžete chránit v LRS trezoru, protože se považuje za jiný virtuální počítač.
 

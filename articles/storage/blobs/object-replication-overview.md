@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 2d8d4c369cef8bf996628e8c89a424f04dcdbe71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: abec9811cd407c1fab91cfb60412aabdd969690d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888068"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036977"
 ---
 # <a name="object-replication-for-block-blobs-preview"></a>Replikace objektů pro objekty blob bloku (Preview)
 
@@ -63,6 +63,8 @@ Replikace objektů se podporuje jenom pro účty úložiště pro obecné účel
 - Francie – střed
 - Kanada – východ
 - Střední Kanada
+- USA – východ 2
+- USA – střed
 
 Aby bylo možné používat replikaci objektů, musí být zdrojový i cílový účet umístěn v jedné z těchto oblastí. Účty můžou být ve dvou různých oblastech.
 
@@ -74,7 +76,7 @@ Během období Preview se replikace dat mezi účty úložiště nevztahují na 
 ### <a name="prerequisites-for-object-replication"></a>Požadavky na replikaci objektů
 
 Replikace objektů vyžaduje, aby byly povolené následující funkce Azure Storage: 
-- [Změnit kanál](storage-blob-change-feed.md)
+- [Změna kanálu](storage-blob-change-feed.md)
 - [Správa verzí](versioning-overview.md)
 
 Před konfigurací replikace objektů povolte příslušné požadavky. Ve zdrojovém účtu musí být povolený kanál změn a na zdrojovém i cílovém účtu musí být povolená Správa verzí objektů BLOB. Další informace o povolení těchto funkcí najdete v těchto článcích:

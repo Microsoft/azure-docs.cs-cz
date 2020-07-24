@@ -6,19 +6,19 @@ author: cynthn
 ms.topic: article
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: e014dbe440f1b7baf39c290b8b7ab8fcaea0bada
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: cf0d6639f215cd0fce8dc4bbc50b4e37f48d3f7a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165851"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036243"
 ---
 # <a name="change-the-availability-set-for-a-vm"></a>Změna skupiny dostupnosti pro virtuální počítač
 Následující postup popisuje, jak změnit skupinu dostupnosti virtuálního počítače pomocí Azure PowerShell. Virtuální počítač se dá přidat do skupiny dostupnosti jenom při jeho vytvoření. Chcete-li změnit skupinu dostupnosti, je nutné odstranit a znovu vytvořit virtuální počítač. 
 
 Tento článek se týká virtuálních počítačů se systémy Linux a Windows.
 
-Tento článek byl naposledy testován na 2/12/2019 pomocí [Azure Cloud Shell](https://shell.azure.com/powershell) a [modulu AZ PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) Version 1.2.0.
+Tento článek byl naposledy testován na 2/12/2019 pomocí [Azure Cloud Shell](https://shell.azure.com/powershell) a [modulu AZ PowerShell](/powershell/azure/install-az-ps) Version 1.2.0.
 
 V tomto příkladu se nekontroluje, jestli je virtuální počítač připojený k nástroji pro vyrovnávání zatížení. Pokud je váš virtuální počítač připojený k nástroji pro vyrovnávání zatížení, budete muset skript aktualizovat, aby tento případ zpracovával. 
 
@@ -107,4 +107,3 @@ Následující skript poskytuje příklad shromažďování požadovaných infor
 ## <a name="next-steps"></a>Další kroky
 
 Přidáním dalšího [datového disku](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)přidejte do virtuálního počítače další úložiště.
-

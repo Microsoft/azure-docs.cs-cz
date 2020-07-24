@@ -5,11 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 53c9653b44a6c9d26d49d37b351cf6000676e2d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 711f5293b205c1f500c6d9e08154342285ef959b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75651966"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033192"
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Microsoft. Network. VirtualNetworkCombo – element uživatelského rozhraní
 
@@ -19,11 +20,11 @@ Skupina ovládacích prvků pro výběr nové nebo existující virtuální sít
 
 Když uživatel vybere novou virtuální síť, uživatel může přizpůsobit název a předponu adresy každé podsítě. Konfigurace podsítí je volitelná.
 
-![Microsoft. Network. VirtualNetworkCombo New](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-new.png)
+![Microsoft. Network. VirtualNetworkCombo New](./media/managed-application-elements/microsoft-network-virtualnetworkcombo-new.png)
 
 Když uživatel vybere existující virtuální síť, musí namapovat každou podsíť, kterou šablona nasazení vyžaduje pro existující podsíť. Konfigurace podsítí v tomto případě je povinná.
 
-![Microsoft. Network. VirtualNetworkCombo – existující](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-existing.png)
+![Microsoft. Network. VirtualNetworkCombo – existující](./media/managed-application-elements/microsoft-network-virtualnetworkcombo-existing.png)
 
 ## <a name="schema"></a>Schéma
 

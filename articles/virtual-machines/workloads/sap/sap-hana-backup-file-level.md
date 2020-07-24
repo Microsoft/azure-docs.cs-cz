@@ -12,19 +12,20 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: 93b67936166eb73db5e9a15db42c2c6135794108
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9d66dc4f0e2e637ac8512022336f257f5d585a9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78271391"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035736"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>SAP HANA Azure Backup na úrovni souborů
 
 ## <a name="introduction"></a>Úvod
 
-V tomto článku se seznámíte s [příručkou pro zálohování SAP HANA v Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide), která poskytuje přehled a informace o tom, jak začít, a další podrobnosti o Azure Backupch služby a snímcích úložiště. 
+V tomto článku se seznámíte s [příručkou pro zálohování SAP HANA v Azure Virtual Machines](./sap-hana-backup-guide.md), která poskytuje přehled a informace o tom, jak začít, a další podrobnosti o Azure Backupch služby a snímcích úložiště. 
 
-Různé typy virtuálních počítačů v Azure umožňují, aby byl připojený jiný počet virtuálních pevných disků. Přesné podrobnosti jsou popsány v části [velikosti pro virtuální počítače se systémem Linux v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes). Pro testy uvedené v této dokumentaci jsme použili GS5 virtuální počítač Azure, který umožňuje 64 připojených datových disků. V případě větších SAP HANA systémů už může být u souborů dat a protokolů, které jsou v kombinaci s softwarovým obložením pro optimální propustnost v/v, zavedený velký počet disků. Další podrobnosti o navrhovaných konfiguracích disků pro nasazení SAP HANA na virtuálních počítačích Azure najdete v článku [SAP HANA konfigurace úložiště virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage). Tato doporučení zahrnují taky doporučení na místo na disku pro místní zálohování.
+Různé typy virtuálních počítačů v Azure umožňují, aby byl připojený jiný počet virtuálních pevných disků. Přesné podrobnosti jsou popsány v části [velikosti pro virtuální počítače se systémem Linux v Azure](../../linux/sizes.md). Pro testy uvedené v této dokumentaci jsme použili GS5 virtuální počítač Azure, který umožňuje 64 připojených datových disků. V případě větších SAP HANA systémů už může být u souborů dat a protokolů, které jsou v kombinaci s softwarovým obložením pro optimální propustnost v/v, zavedený velký počet disků. Další podrobnosti o navrhovaných konfiguracích disků pro nasazení SAP HANA na virtuálních počítačích Azure najdete v článku [SAP HANA konfigurace úložiště virtuálních počítačů Azure](./hana-vm-operations-storage.md). Tato doporučení zahrnují taky doporučení na místo na disku pro místní zálohování.
 
 Standardní způsob, jak spravovat zálohování nebo obnovení na úrovni souboru, je zálohování na základě souborů prostřednictvím SAP HANA studia nebo prostřednictvím příkazů SAP HANA SQL. Další informace najdete v článku [SAP HANA SQL a Přehled systémových zobrazení](https://help.sap.com/hana/SAP_HANA_SQL_and_System_Views_Reference_en.pdf).
 
@@ -34,15 +35,15 @@ Na tomto obrázku je znázorněno dialogové okno položky nabídky zálohován�
 
 I když je tato volba zvukem jednoduchá a přímá, je k dispozici nějaký ohled. Virtuální počítač Azure má omezení počtu datových disků, které se dají připojit. V závislosti na velikosti požadavků databáze a propustnosti disku nemusí být možné ukládat SAP HANA záložní soubory do systémů souborů virtuálního počítače. to může zahrnovat softwarové obložení na více datových disků. V tomto článku jsou k dispozici různé možnosti přesunutí těchto souborů zálohy a Správa omezení velikosti souborů a výkonu při zpracování terabajtů dat.
 
-Další možností, která nabízí větší volnost v oblasti celkové kapacity, je úložiště objektů BLOB v Azure. I když je jeden objekt BLOB taky omezený na 1 TB, celková kapacita jednoho kontejneru objektů BLOB je v současnosti 500 TB. Kromě toho zákazníkům dává možnost vybrat si, že se nazývá &quot; studená služba &quot; BLOB Storage, která má cenovou výhodu. Podrobnosti o studeném úložišti objektů BLOB najdete v tématu [Azure Blob Storage: horká, studená a archivní úroveň přístupu](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal) .
+Další možností, která nabízí větší volnost v oblasti celkové kapacity, je úložiště objektů BLOB v Azure. I když je jeden objekt BLOB taky omezený na 1 TB, celková kapacita jednoho kontejneru objektů BLOB je v současnosti 500 TB. Kromě toho zákazníkům dává možnost vybrat si, že se nazývá &quot; studená služba &quot; BLOB Storage, která má cenovou výhodu. Podrobnosti o studeném úložišti objektů BLOB najdete v tématu [Azure Blob Storage: horká, studená a archivní úroveň přístupu](../../../storage/blobs/storage-blob-storage-tiers.md?tabs=azure-portal) .
 
-Pro zajištění vyšší bezpečnosti použijte geograficky replikovaný účet úložiště pro uložení záloh SAP HANA. Podrobnosti o redundanci úložiště a replikaci úložiště najdete v tématu [Azure Storage redundance](https://docs.microsoft.com/azure/storage/common/storage-redundancy) .
+Pro zajištění vyšší bezpečnosti použijte geograficky replikovaný účet úložiště pro uložení záloh SAP HANA. Podrobnosti o redundanci úložiště a replikaci úložiště najdete v tématu [Azure Storage redundance](../../../storage/common/storage-redundancy.md) .
 
 Jedna z nich by mohla umístit vyhrazené virtuální pevné disky pro SAP HANA zálohy ve vyhrazeném účtu úložiště záloh, který je geograficky replikovaný. Nebo jinak může zkopírovat virtuální pevné disky, které udržují SAP HANA zálohy do geograficky replikovaného účtu úložiště, nebo do účtu úložiště, který je v jiné oblasti.
 
 ## <a name="azure-blobxfer-utility-details"></a>Podrobnosti o nástroji Azure blobxfer
 
-K ukládání adresářů a souborů v Azure Storage může jeden použít CLI nebo PowerShell nebo vyvíjet nástroj pomocí jedné ze [sad SDK Azure](https://azure.microsoft.com/downloads/). Pro kopírování dat do služby Azure Storage je k dispozici také nástroj AzCopy připravený k použití. (viz [přenos dat pomocí nástroje příkazového řádku AzCopy](../../../storage/common/storage-use-azcopy.md)).
+K ukládání adresářů a souborů v Azure Storage může jeden použít CLI nebo PowerShell nebo vyvíjet nástroj pomocí jedné ze [sad SDK Azure](https://azure.microsoft.com/downloads/). Pro kopírování dat do služby Azure Storage je k dispozici také nástroj AzCopy připravený k použití. (viz [přenos dat pomocí nástroje příkazového řádku AzCopy](../../../storage/common/storage-use-azcopy-v10.md)).
 
 Proto se blobxfer použil k kopírování souborů zálohy SAP HANA. Je to open source, který používá mnoho zákazníků v produkčních prostředích a je dostupný na [GitHubu](https://github.com/Azure/blobxfer). Tento nástroj umožňuje jedné kopírování dat přímo do úložiště objektů blob Azure nebo sdílené složky Azure. Nabízí také řadu užitečných funkcí, jako je MD5 hash nebo automatické paralelismuy při kopírování adresáře s více soubory.
 
@@ -64,7 +65,7 @@ Opakuje stejnou zálohu na softwarovém poli RAID s prokládáním přes pět p�
 ## <a name="copy-sap-hana-backup-files-to-azure-blob-storage"></a>Kopírování souborů SAP HANA zálohování do Azure Blob Storage
 Údaje o výkonu, čísla doby trvání zálohování a kopírovaná čísla doba kopírování nemusí představovat nejnovější stav technologie Azure. Microsoft neustále vylepšuje úložiště Azure, aby poskytoval větší propustnost a nižší latence. Proto jsou tato čísla pouze pro demonstrační účely. V oblasti Azure, kterou si zvolíte, je potřeba otestovat své individuální potřeby, abyste mohli posoudit, že je to pro vás nejvhodnější metoda.
 
-Další možností pro rychlé uložení SAP HANAch záložních souborů je úložiště objektů BLOB v Azure. Jeden kontejner objektů BLOB má omezení o velikosti přibližně 500 TB, dostatečně pro SAP HANA systémy, používá M32ts, M32ls, M64ls a GS5 typy virtuálních počítačů Azure, aby se zajistilo dostatečné SAP HANA zálohování. Zákazníci si můžou vybrat mezi &quot; horkou &quot; a &quot; studeným &quot; úložištěm objektů BLOB (viz [Azure Blob Storage: horká, studená a archivní úroveň přístupu](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal)).
+Další možností pro rychlé uložení SAP HANAch záložních souborů je úložiště objektů BLOB v Azure. Jeden kontejner objektů BLOB má omezení o velikosti přibližně 500 TB, dostatečně pro SAP HANA systémy, používá M32ts, M32ls, M64ls a GS5 typy virtuálních počítačů Azure, aby se zajistilo dostatečné SAP HANA zálohování. Zákazníci si můžou vybrat mezi &quot; horkou &quot; a &quot; studeným &quot; úložištěm objektů BLOB (viz [Azure Blob Storage: horká, studená a archivní úroveň přístupu](../../../storage/blobs/storage-blob-storage-tiers.md?tabs=azure-portal)).
 
 Pomocí nástroje blobxfer je snadné zkopírovat SAP HANA záložní soubory přímo do úložiště objektů BLOB v Azure.
 
@@ -89,12 +90,12 @@ Při kopírování záloh provedených na místních discích do jiných umíst�
 
 ## <a name="copy-sap-hana-backup-files-to-nfs-share"></a>Kopírovat SAP HANA záložní soubory do sdílené složky NFS
 
-Microsoft Azure nabízí nativní sdílené složky systému souborů NFS prostřednictvím [Azure NetApp Files](https://azure.microsoft.com/services/netapp/). V kapacitě můžete pro ukládání a správu záloh vytvářet různé svazky v desítkách TBs. Tyto svazky můžete také na základě technologie NetApp snímků. Azure NetApp Files (ANF) se nabízí ve třech různých úrovních služeb, které poskytují jinou propustnost úložiště. Další podrobnosti najdete v článku [úrovně služeb pro Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels). Můžete vytvořit a připojit svazek systému souborů NFS z ANF, jak je popsáno v článku [rychlý Start: nastavení Azure NetApp Files a vytvoření svazku NFS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes?tabs=azure-portal).
+Microsoft Azure nabízí nativní sdílené složky systému souborů NFS prostřednictvím [Azure NetApp Files](https://azure.microsoft.com/services/netapp/). V kapacitě můžete pro ukládání a správu záloh vytvářet různé svazky v desítkách TBs. Tyto svazky můžete také na základě technologie NetApp snímků. Azure NetApp Files (ANF) se nabízí ve třech různých úrovních služeb, které poskytují jinou propustnost úložiště. Další podrobnosti najdete v článku [úrovně služeb pro Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-service-levels.md). Můžete vytvořit a připojit svazek systému souborů NFS z ANF, jak je popsáno v článku [rychlý Start: nastavení Azure NetApp Files a vytvoření svazku NFS](../../../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md?tabs=azure-portal).
 
 Kromě použití nativních svazků NFS systému Azure prostřednictvím ANF existují různé možnosti vytváření vlastních nasazení, která poskytují sdílené složky systému souborů NFS v Azure. Všechny mají nevýhodu, kterou potřebujete k nasazení a správě těchto řešení sami. Některé z těchto možností jsou popsány v těchto článcích:
 
-- [Vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)
-- [GlusterFS na virtuálních počítačích Azure s Red Hat Enterprise Linuxem pro SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs)
+- [Vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server](./high-availability-guide-suse-nfs.md)
+- [GlusterFS na virtuálních počítačích Azure s Red Hat Enterprise Linuxem pro SAP NetWeaver](./high-availability-guide-rhel-glusterfs.md)
 
 Sdílené složky NFS vytvořené pomocí výše popsaných prostředků se dají použít k přímému spuštění záloh HANA proti nebo kopírování záloh provedených na místních discích do těchto sdílených složek NFS.
 
@@ -103,7 +104,7 @@ Sdílené složky NFS vytvořené pomocí výše popsaných prostředků se daj�
 
 ## <a name="copy-sap-hana-backup-files-to-azure-files"></a>Kopírování souborů SAP HANA zálohování do souborů Azure
 
-Sdílenou složku služby soubory Azure je možné připojit v rámci virtuálního počítače Azure Linux. Článek [použití služby Azure File Storage se systémem Linux](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-linux) poskytuje podrobné informace o tom, jak provést konfiguraci. Pro omezení souborů Azure nebo souborů Azure Premium si přečtěte článek věnované [škálovatelnosti a cílům výkonu Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets).
+Sdílenou složku služby soubory Azure je možné připojit v rámci virtuálního počítače Azure Linux. Článek [použití služby Azure File Storage se systémem Linux](../../../storage/files/storage-how-to-use-files-linux.md) poskytuje podrobné informace o tom, jak provést konfiguraci. Pro omezení souborů Azure nebo souborů Azure Premium si přečtěte článek věnované [škálovatelnosti a cílům výkonu Azure Files](../../../storage/files/storage-files-scale-targets.md).
 
 > [!NOTE]
 > Služba SMB se systémem souborů CIFS není podporovaná SAP HANA k zápisu záloh HANA proti. Viz také [SAP Support note #1820529](https://launchpad.support.sap.com/#/notes/1820529). V důsledku toho můžete toto řešení použít jenom jako konečný cíl zálohování databáze HANA, které bylo provedeno přímo na místních připojených discích.

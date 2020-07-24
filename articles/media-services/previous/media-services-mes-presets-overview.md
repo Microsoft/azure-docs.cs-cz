@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 50c52369a5a957a4dd6279cac5079e2dea023106
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d264b0ae0b06079a45cd1e862144a6920133901
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61463399"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038438"
 ---
 # <a name="sample-presets-for-media-encoder-standard-mes"></a>Přednastavené ukázky pro Media Encoder Standard (status)
 
@@ -29,7 +29,7 @@ ms.locfileid: "61463399"
 Media Services plně podporuje přizpůsobení všech hodnot v předvolbách, aby splňovaly vaše specifické požadavky na kódování a požadavky. Pokud potřebujete přizpůsobit předdefinované kódování, měli byste začít s jedním z níže uvedených systémů, které jsou v této části k dispozici jako šablona pro vlastní konfiguraci. Vysvětlení toho, co každý prvek v těchto přednastaveních znamená, a platné hodnoty pro každý prvek naleznete v tématu [Media Encoder Standard schématu](media-services-mes-schema.md) .  
   
 > [!NOTE]
->  Při použití předvolby pro kódování 4k byste měli získat `S3` typ rezervované jednotky. Další informace najdete v tématu [Jak škálovat kódování](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
+>  Při použití předvolby pro kódování 4k byste měli získat `S3` typ rezervované jednotky. Další informace najdete v tématu [Jak škálovat kódování](./media-services-scale-media-processing-overview.md).  
 
 #### <a name="video-rotation-default-setting-in-presets"></a>Výchozí nastavení rotace videa v předvolbách:
 Při práci s Media Encoder Standard je ve výchozím nastavení zapnuté otočení videa. Pokud se vaše video nahrálo v režimu na výšku v mobilním zařízení, pak se tyto předvolby před kódováním otočí do režimu na šířku.
@@ -86,4 +86,4 @@ Při práci s Media Encoder Standard je ve výchozím nastavení zapnuté otoče
   
  [H264 s jednou přenosovou rychlostí: nízká kvalita SD pro Android](media-services-mes-preset-H264-Single-Bitrate-Low-Quality-SD-for-Android.md) vytvoří jeden soubor MP4 s přenosovou rychlostí 56 kb/s a stereofonním zvukem AAC.  
   
- Další informace týkající se Media Services Encoder najdete v tématu [kódování na vyžádání pomocí Azure Media Services](https://azure.microsoft.com/documentation/articles/media-services-encode-asset/).
+ Další informace týkající se Media Services Encoder najdete v tématu [kódování na vyžádání pomocí Azure Media Services](./media-services-encode-asset.md).

@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 07/17/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 67a54a2cd4fa071fd47bcebb9aa53fd11fefd61e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 001de375edab7505ed4687d848aca0ad0965dbfb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80154912"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034903"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Proč aktualizovat na Microsoft Identity Platform (v2.0)?
 
@@ -141,34 +141,7 @@ Registrace aplikací, které podporují pracovní a školní účty a osobní ú
 
 ### <a name="restrictions-on-redirect-urls"></a>Omezení adres URL pro přesměrování
 
-Aplikace registrované pro platformu Microsoft identity jsou omezené na omezenou sadu hodnot adresy URL pro přesměrování. Adresa URL pro přesměrování webových aplikací a služeb musí začínat schématem `https` a všechny hodnoty adresy URL pro přesměrování musí sdílet jednu doménu DNS.  Registrační systém porovnává celý název DNS stávající adresy URL pro přesměrování na název DNS adresy URL pro přesměrování, kterou přidáváte. `http://localhost`je také podporován jako adresa URL pro přesměrování.  
-
-Požadavek na přidání názvu DNS selže, pokud platí některá z následujících podmínek:  
-
-* Celý název DNS nové adresy URL pro přesměrování se neshoduje s názvem DNS existující adresy URL pro přesměrování.
-* Celý název DNS nové adresy URL pro přesměrování není subdoménou stávající adresy URL pro přesměrování.
-
-#### <a name="example-1"></a>Příklad 1
-
-Pokud má aplikace adresu URL pro přesměrování `https://login.contoso.com` , můžete přidat adresu URL pro přesměrování, kde se název DNS přesně shoduje, jak je znázorněno v následujícím příkladu:
-
-`https://login.contoso.com/new`
-
-Nebo můžete odkazovat na subdoménu DNS login.contoso.com, jak je znázorněno v následujícím příkladu:
-
-`https://new.login.contoso.com`
-
-#### <a name="example-2"></a>Příklad 2
-
-Pokud chcete mít aplikaci, která má `login-east.contoso.com` a `login-west.contoso.com` jako adresy URL přesměrování, musíte tyto adresy URL pro přesměrování přidat v tomto pořadí:
-
-`https://contoso.com`  
-`https://login-east.contoso.com`  
-`https://login-west.contoso.com`  
-
-Můžete přidat druhé 2, protože se jedná o subdomény první adresy URL pro přesměrování, contoso.com.
-
-Pro konkrétní aplikaci můžete mít jenom 20 adres URL odpovědí – toto omezení platí pro všechny typy aplikací, které registrace podporuje (jednostránkové aplikace (SPA), nativní klient, webovou aplikaci a službu).  
+Nejaktuálnější informace o omezeních adres URL pro přesměrování u aplikací registrovaných pro platformu Microsoft identity najdete v tématu [omezení adresy URL pro přesměrování a omezení adresy URL](https://docs.microsoft.com/azure/active-directory/develop/reply-url) v dokumentaci k platformě Microsoft identity.
 
 Informace o tom, jak zaregistrovat aplikaci pro použití s platformou Microsoft identity, najdete v tématu [Registrace aplikace s využitím nového prostředí registrace aplikací](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
 

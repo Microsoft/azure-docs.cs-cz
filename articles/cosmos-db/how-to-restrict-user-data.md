@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/9/2019
 ms.author: tvoellm
-ms.openlocfilehash: 88899dc697839b16c2b0cd24ac9233f87da26b41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16452337eeda86a9b019897954179bfe6db6e1b2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261218"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031988"
 ---
 # <a name="restrict-user-access-to-data-operations-only"></a>Omezení přístupu uživatelů jenom na datové operace
 
@@ -51,7 +51,7 @@ Select-AzSubscription $MySubscriptionId
 
 ## <a name="create-the-custom-azure-active-directory-role"></a>Vytvoření vlastní role Azure Active Directory
 
-Následující skript vytvoří přiřazení role Azure Active Directory s přístupem pouze ke klíčům pro účty Azure Cosmos. Role je založena na [vlastních rolích prostředků Azure](../role-based-access-control/custom-roles.md) a [podrobných akcích pro Azure Cosmos DB](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb). Tyto role a akce jsou součástí `Microsoft.DocumentDB` oboru názvů Azure Active Directory.
+Následující skript vytvoří přiřazení role Azure Active Directory s přístupem pouze ke klíčům pro účty Azure Cosmos. Role je založená na [vlastních rolích Azure](../role-based-access-control/custom-roles.md) a [podrobných akcích pro Azure Cosmos DB](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb). Tyto role a akce jsou součástí `Microsoft.DocumentDB` oboru názvů Azure Active Directory.
 
 1. Nejprve vytvořte dokument JSON s názvem `AzureCosmosKeyOnlyAccess.json` s následujícím obsahem:
 

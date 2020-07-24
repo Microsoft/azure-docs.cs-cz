@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 561ec6d59349fca585beda8b1bd60073d2603077
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f09e84d20b1a3c568eea015d92b93a99b8cf024e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552178"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036790"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 
@@ -289,7 +289,7 @@ Další informace o šifrování v přenosu najdete v tématu [vyžadování zab
 ### <a name="azure-file-share-encryption-at-rest"></a>Šifrování sdílené složky Azure v klidovém formátu
 [!INCLUDE [storage-files-encryption-at-rest](../../../includes/storage-files-encryption-at-rest.md)]
 
-## <a name="storage-tiers"></a>Vrstvy úložiště
+## <a name="storage-tiers"></a>Úrovně úložiště
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
 
 ### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>Povolit standardní sdílené složky pro rozsah až 100 TiB
@@ -303,37 +303,37 @@ Azure File Sync je k dispozici v následujících oblastech:
 
 | Cloud Azure | Zeměpisná oblast | Oblast Azure | Kód oblasti |
 |-------------|-------------------|--------------|-------------|
-| Public | Asie | Východní Asie | `eastasia` |
-| Public | Asie | Jihovýchodní Asie | `southeastasia` |
-| Public | Austrálie | Austrálie – východ | `australiaeast` |
-| Public | Austrálie | Austrálie – jihovýchod | `australiasoutheast` |
-| Public | Brazílie | Brazílie – jih | `brazilsouth` |
-| Public | Kanada | Střední Kanada | `canadacentral` |
-| Public | Kanada | Kanada – východ | `canadaeast` |
-| Public | Evropa | Severní Evropa | `northeurope` |
-| Public | Evropa | Západní Evropa | `westeurope` |
-| Public | Francie | Francie – střed | `francecentral` |
-| Public | Francie | Francie – jih * | `francesouth` |
-| Public | Indie | Indie – střed | `centralindia` |
-| Public | Indie | Indie – jih | `southindia` |
-| Public | Japonsko | Japonsko – východ | `japaneast` |
-| Public | Japonsko | Japonsko – západ | `japanwest` |
-| Public | Jižní Korea | Jižní Korea – střed | `koreacentral` |
-| Public | Jižní Korea | Jižní Korea – jih | `koreasouth` |
-| Public | Jižní Afrika | Jižní Afrika – sever | `southafricanorth` |
-| Public | Jižní Afrika | Jižní Afrika – západ * | `southafricawest` |
-| Public | Spojené arabské emiráty | Spojené arabské emiráty střed * | `uaecentral` |
-| Public | Spojené arabské emiráty | Spojené arabské emiráty sever | `uaenorth` |
-| Public | UK | Spojené království – jih | `uksouth` |
-| Public | UK | Spojené království – západ | `ukwest` |
-| Public | USA | USA – střed | `centralus` |
-| Public | USA | USA – východ | `eastus` |
-| Public | USA | USA – východ 2 | `eastus2` |
-| Public | USA | USA – středosever | `northcentralus` |
-| Public | USA | USA – středojih | `southcentralus` |
-| Public | USA | USA – středozápad | `westcentralus` |
-| Public | USA | USA – západ | `westus` |
-| Public | USA | USA – západ 2 | `westus2` |
+| Veřejný | Asie | Východní Asie | `eastasia` |
+| Veřejný | Asie | Southeast Asia | `southeastasia` |
+| Veřejný | Austrálie | Austrálie – východ | `australiaeast` |
+| Veřejný | Austrálie | Australia Southeast | `australiasoutheast` |
+| Veřejný | Brazílie | Brazil South | `brazilsouth` |
+| Veřejný | Kanada | Střední Kanada | `canadacentral` |
+| Veřejný | Kanada | Kanada – východ | `canadaeast` |
+| Veřejný | Evropa | Severní Evropa | `northeurope` |
+| Veřejný | Evropa | West Europe | `westeurope` |
+| Veřejný | Francie | Francie – střed | `francecentral` |
+| Veřejný | Francie | Francie – jih * | `francesouth` |
+| Veřejný | Indie | Indie – střed | `centralindia` |
+| Veřejný | Indie | Indie – jih | `southindia` |
+| Veřejný | Japonsko | Japan East | `japaneast` |
+| Veřejný | Japonsko | Japonsko – západ | `japanwest` |
+| Veřejný | Jižní Korea | Jižní Korea – střed | `koreacentral` |
+| Veřejný | Jižní Korea | Jižní Korea – jih | `koreasouth` |
+| Veřejný | Jižní Afrika | Jižní Afrika – sever | `southafricanorth` |
+| Veřejný | Jižní Afrika | Jižní Afrika – západ * | `southafricawest` |
+| Veřejný | Spojené arabské emiráty | Spojené arabské emiráty střed * | `uaecentral` |
+| Veřejný | Spojené arabské emiráty | Spojené arabské emiráty sever | `uaenorth` |
+| Veřejný | UK | Spojené království – jih | `uksouth` |
+| Veřejný | UK | Spojené království – západ | `ukwest` |
+| Veřejný | USA | Střední USA | `centralus` |
+| Veřejný | USA | East US | `eastus` |
+| Veřejný | USA | USA – východ 2 | `eastus2` |
+| Veřejný | USA | USA – středosever | `northcentralus` |
+| Veřejný | USA | Středojižní USA | `southcentralus` |
+| Veřejný | USA | USA – středozápad | `westcentralus` |
+| Veřejný | USA | USA – západ | `westus` |
+| Veřejný | USA | Západní USA 2 | `westus2` |
 | US Gov | USA | USA (Gov) – Arizona | `usgovarizona` |
 | US Gov | USA | USA (Gov) – Texas | `usgovtexas` |
 | US Gov | USA | USA (Gov) – Virginia | `usgovvirginia` |
@@ -360,7 +360,7 @@ K migraci dat do nasazení Azure File Sync je taky možné použít Data Box. Ve
 Při migraci dat do nového nasazení Azure File Sync vzdálení zákazníci se systémem Windows kopírují data přímo do sdílené složky Azure místo na jejich souborové servery. I když Azure File Sync identifikuje všechny nové soubory ve sdílené složce Azure a synchronizuje je zpátky do sdílených složek Windows, je to všeobecně mnohem pomalejší než načítání dat prostřednictvím souborového serveru Windows. Při používání nástrojů pro kopírování Azure, jako je AzCopy, je důležité použít nejnovější verzi. V [tabulce nástroje pro kopírování souborů](storage-files-migration-overview.md#file-copy-tools) najdete přehled nástrojů pro kopírování v Azure, abyste měli jistotu, že můžete kopírovat všechna důležitá metadata souboru, jako jsou například časová razítka a seznamy ACL.
 
 ## <a name="antivirus"></a>Antivirus
-Vzhledem k tomu, že antivirová práce funguje, prohledává soubory pro známý škodlivý kód, antivirový produkt může způsobit odvolání vrstvených souborů. Ve verzích 4,0 a vyšších Azure File Sync agenta mají vrstvený soubor FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS nastaven atribut zabezpečení systému Windows. Doporučujeme, abyste se od dodavatele softwaru dozvěděli, jak nakonfigurovat jejich řešení tak, aby přeskočilo čtení souborů s touto sadou atributů (mnoho z nich provede automaticky). 
+Vzhledem k tomu, že antivirová práce funguje, hledá známý škodlivý kód, antivirový produkt může způsobit odvolání vrstvených souborů, což má za následek vysoké náklady na výstup. Ve verzích 4,0 a vyšších Azure File Sync agenta mají vrstvený soubor FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS nastaven atribut zabezpečení systému Windows. Doporučujeme, abyste se od dodavatele softwaru dozvěděli, jak nakonfigurovat jejich řešení tak, aby přeskočilo čtení souborů s touto sadou atributů (mnoho z nich provede automaticky). 
 
 Interní antivirová řešení Microsoftu, Windows Defender a System Center Endpoint Protection (SCEP), automaticky přeskočí čtení souborů s nastavením tohoto atributu. Otestovali jsme je a zjistili jsme jeden malý problém: Když přidáte server do existující skupiny synchronizace, soubory menší než 800 bajtů se odvolají (stáhnou) na novém serveru. Tyto soubory zůstanou na novém serveru a nebudou vrstveny, protože nesplňují požadavek na velikost vrstev (>64 KB).
 
@@ -368,9 +368,9 @@ Interní antivirová řešení Microsoftu, Windows Defender a System Center Endp
 > Dodavatelé antivirové ochrany můžou zkontrolovat kompatibilitu mezi jejich produktem a Azure File Sync pomocí [Azure File Sync sady testů kompatibility antivirové ochrany](https://www.microsoft.com/download/details.aspx?id=58322), která je k dispozici ke stažení na webu Microsoft Download Center.
 
 ## <a name="backup"></a>Backup 
-Podobně jako u antivirových řešení můžou řešení zálohování způsobit odvolání vrstvených souborů. K zálohování sdílené složky Azure místo místního záložního produktu doporučujeme použít řešení zálohování v cloudu.
+Pokud je zapnutá vrstva cloudu, neměla by se používat řešení, která přímo zálohují koncový bod serveru nebo virtuální počítač, na kterém je umístěný koncový bod serveru. Vrstvení cloudu způsobí, že se jenom podmnožina vašich dat uloží na koncový bod serveru s úplnou datovou sadou, která je umístěná ve sdílené složce Azure. V závislosti na použitém řešení zálohování se vrstvené soubory buď přeskočí a nezálohují (protože mají nastaven atribut FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS), nebo se budou znovu volat na disk a výsledkem jsou poplatky za vysoké náklady na výstup. K přímému zálohování sdílené složky Azure doporučujeme použít řešení zálohování v cloudu. Další informace najdete v tématech [o zálohování sdílených složek Azure nebo o](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json) tom, jak se obraťte na poskytovatele služby Backup, aby bylo možné zjistit, jestli podporují zálohování sdílených složek Azure.
 
-Pokud používáte místní řešení zálohování, měli byste zálohy provádět na serveru ve skupině synchronizace, která má zakázanou vrstvu v cloudu. Při provádění obnovení použijte možnosti obnovení na úrovni svazku nebo souboru. Soubory obnovené pomocí možnosti obnovení na úrovni souborů budou synchronizovány do všech koncových bodů ve skupině synchronizace a stávající soubory budou nahrazeny verzí obnovenou ze zálohy.  Obnovení na úrovni svazku nebude nahrazovat novější verze souborů ve sdílené složce Azure nebo v jiných koncových bodech serveru.
+Pokud dáváte přednost použití místního řešení zálohování, měli byste zálohy provádět na serveru ve skupině synchronizace, která má zakázanou vrstvu v cloudu. Při provádění obnovení použijte možnosti obnovení na úrovni svazku nebo souboru. Soubory obnovené pomocí možnosti obnovení na úrovni souborů budou synchronizovány do všech koncových bodů ve skupině synchronizace a stávající soubory budou nahrazeny verzí obnovenou ze zálohy.  Obnovení na úrovni svazku nebude nahrazovat novější verze souborů ve sdílené složce Azure nebo v jiných koncových bodech serveru.
 
 > [!Note]  
 > Úplné obnovení systému (BMR) může způsobit neočekávané výsledky a aktuálně se nepodporuje.
@@ -383,7 +383,7 @@ Pokud používáte místní řešení zálohování, měli byste zálohy provád
 
 ## <a name="next-steps"></a>Další kroky
 * [Zvážení brány firewall a nastavení proxy serveru](storage-sync-files-firewall-and-proxy.md)
-* [Plánování nasazení služby Soubory Azure](storage-files-planning.md)
+* [Plánování nasazení Azure Files](storage-files-planning.md)
 * [Nasazení služby Soubory Azure](storage-files-deployment-guide.md)
 * [Nasazení Synchronizace souborů Azure](storage-sync-files-deployment-guide.md)
 * [Sledování služby Synchronizace souborů Azure](storage-sync-files-monitoring.md)

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: caa62483373a240991cfec96437cea7849d9b19c
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 1b349b1e3c4a2fac4cd260dbe83469a776951ab0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84697822"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033638"
 ---
 # <a name="durable-orchestrations"></a>Trvalé orchestrace
 
@@ -41,9 +41,9 @@ ID instance orchestrace je povinný parametr pro většinu [operací správy ins
 
 ## <a name="reliability"></a>Spolehlivost
 
-Služba Orchestrator Functions spolehlivě udržuje jejich stav spouštění pomocí vzoru návrhu pro vytváření [událostí](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) . Místo přímého ukládání aktuálního stavu orchestrace používá nepřímý úkol úložiště pouze připojit k zaznamenání celé řady akcí, které orchestrace funkce provádí. Úložiště jen pro připojení má mnoho výhod v porovnání s "výpisem" celého běhového stavu. Mezi výhody patří vyšší výkon, škálovatelnost a rychlost odezvy. Získáte také konečnou konzistenci pro transakční data a úplné záznamy a historii auditu. Záznamy auditu podporují spolehlivé kompenzační akce.
+Služba Orchestrator Functions spolehlivě udržuje jejich stav spouštění pomocí vzoru návrhu pro vytváření [událostí](/azure/architecture/patterns/event-sourcing) . Místo přímého ukládání aktuálního stavu orchestrace používá nepřímý úkol úložiště pouze připojit k zaznamenání celé řady akcí, které orchestrace funkce provádí. Úložiště jen pro připojení má mnoho výhod v porovnání s "výpisem" celého běhového stavu. Mezi výhody patří vyšší výkon, škálovatelnost a rychlost odezvy. Získáte také konečnou konzistenci pro transakční data a úplné záznamy a historii auditu. Záznamy auditu podporují spolehlivé kompenzační akce.
 
-Durable Functions používá zdrojové události transparentně. Na pozadí `await` vrátí operátor (C#) nebo `yield` (JavaScript) ve funkci Orchestrator řízení vlákna nástroje Orchestrator zpátky do trvalého dispečeru rozhraní úloh. Dispečer pak potvrdí všechny nové akce, které naplánovala funkce Orchestrator (například volání jedné nebo více podřízených funkcí nebo naplánování trvalého časovače) do úložiště. Transparentní akce potvrzení připojí k historii spuštění instance Orchestration. Historie je uložená v tabulce úložiště. Akce potvrzení pak přidá zprávy do fronty, aby naplánovala skutečnou práci. V tomto okamžiku může být funkce Orchestrator uvolněna z paměti.
+Durable Functions používá zdrojové události transparentně. Na pozadí `await` operátor (C#) nebo `yield` (JavaScript/Python) ve funkci Orchestrator poskytuje kontrolu nad vláknem nástroje Orchestrator zpátky do trvalého dispečeru rozhraní úloh. Dispečer pak potvrdí všechny nové akce, které naplánovala funkce Orchestrator (například volání jedné nebo více podřízených funkcí nebo naplánování trvalého časovače) do úložiště. Transparentní akce potvrzení připojí k historii spuštění instance Orchestration. Historie je uložená v tabulce úložiště. Akce potvrzení pak přidá zprávy do fronty, aby naplánovala skutečnou práci. V tomto okamžiku může být funkce Orchestrator uvolněna z paměti.
 
 Když je funkce orchestrace předána více práce (například přijetí zprávy odpovědi nebo vypršení platnosti časovače), nástroj Orchestrator probudí a znovu spustí celou funkci od začátku až po opětovné sestavení místního stavu. Při opakovaném přehrání, pokud se kód pokusí zavolat funkci (nebo provést jakoukoli jinou asynchronní práci), bude architektura trvalého úkolu vyzvat k historii spuštění aktuální orchestrace. Pokud zjistí, že [funkce Activity](durable-functions-types-features-overview.md#activity-functions) již byla provedena a způsobila výsledek, přehraje výsledek této funkce a kód nástroje Orchestrator pokračuje v běhu. Opětovné přehrání pokračuje, dokud nebude kód funkce dokončen nebo dokud nebude naplánována nová asynchronní práce.
 
@@ -91,9 +91,23 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    result1 = yield context.call_activity('SayHello', "Tokyo")
+    result2 = yield context.call_activity('SayHello', "Seattle")
+    result3 = yield context.call_activity('SayHello', "London")
+    return [result1, result2, result3]
+
+main = df.Orchestrator.create(orchestrator_function)
+```
 ---
 
-V každém z těchto `await` příkazů (C#) nebo `yield` (JavaScript), trvalá architektura pro úlohy uvádí stav provádění funkce do některého odolného back-endu úložiště (obvykle Azure Table Storage). Tento stav je označován jako *Historie orchestrace*.
+V každém z nich `await` (C#) nebo `yield` (JavaScript/Python) příkaz, dohlíží k trvalému stavu spuštění funkce do nějakého back-endu odolného úložiště (obvykle Azure Table Storage). Tento stav je označován jako *Historie orchestrace*.
 
 ### <a name="history-table"></a>Tabulka historie
 
@@ -110,7 +124,7 @@ Po dokončení kontrolního bodu je možné odebrat funkci Orchestrator z pamět
 
 Po dokončení bude historie dříve zobrazených funkcí vypadat podobně jako v následující tabulce v Azure Table Storage (pro ilustraci se zkráceně):
 
-| PartitionKey (InstanceId)                     | Typ události             | Časové razítko               | Vstup | Name             | Výsledek                                                    | Status |
+| PartitionKey (InstanceId)                     | Typ události             | Timestamp               | Vstup | Název             | Výsledek                                                    | Status |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
 | eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852 Z | null  | E1_HelloSequence |                                                           |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362 Z |       |                  |                                                           |                     |
@@ -133,7 +147,7 @@ Několik poznámek na hodnotách sloupců:
 
 * **PartitionKey**: obsahuje ID instance orchestrace.
 * **EventType**: představuje typ události. Může být jeden z následujících typů:
-  * **OrchestrationStarted**: funkce Orchestrator obnovila z await nebo je spuštěná poprvé. `Timestamp`Sloupec se používá k naplnění deterministické hodnoty pro `CurrentUtcDateTime` rozhraní API (.NET) a `currentUtcDateTime` (JavaScript).
+  * **OrchestrationStarted**: funkce Orchestrator obnovila z await nebo je spuštěná poprvé. `Timestamp`Sloupec se používá k naplnění deterministické hodnoty pro `CurrentUtcDateTime` rozhraní API (.NET), `currentUtcDateTime` (JavaScript) a `current_utc_datetime` (Python).
   * **ExecutionStarted**: funkce Orchestrator zahájila první spuštění. Tato událost také obsahuje vstup funkce ve `Input` sloupci.
   * **TaskScheduled**: naplánovala se funkce Activity. Název funkce aktivity je zachycen ve `Name` sloupci.
   * **TaskCompleted**: byla dokončena funkce aktivity. Výsledek funkce je ve `Result` sloupci.
@@ -151,7 +165,7 @@ Několik poznámek na hodnotách sloupců:
 > [!WARNING]
 > I když je to užitečné jako ladicí nástroj, neprovádějte žádnou závislost v této tabulce. Může se změnit, jak se vyvíjí rozšíření Durable Functions.
 
-Pokaždé, když se funkce obnoví z jazyka `await` (C#) nebo `yield` (JavaScript), trvalá architektura úlohy znovu spustí funkci Orchestrator od začátku. Při každém opakovaném spuštění prochází historii spouštění a určí, zda aktuální asynchronní operace proběhla.  Pokud tato operace proběhla, rozhraní přehraje výstup této operace okamžitě a přesune se k dalšímu `await` (C#) nebo `yield` (JavaScript). Tento proces pokračuje, dokud nebude celá historie znovu přehrána. Po opětovném přehrání aktuální historie budou místní proměnné obnoveny na jejich předchozí hodnoty.
+Pokaždé, když se funkce obnoví z `await` (C#) nebo `yield` (JavaScript/Python), reaktivuje se znovu funkce Orchestrator od nuly. Při každém opakovaném spuštění prochází historii spouštění a určí, zda aktuální asynchronní operace proběhla.  Pokud tato operace proběhla, rozhraní přehraje výstup této operace okamžitě a přesune se k dalšímu `await` (C#) nebo `yield` (JavaScript/Python). Tento proces pokračuje, dokud nebude celá historie znovu přehrána. Po opětovném přehrání aktuální historie budou místní proměnné obnoveny na jejich předchozí hodnoty.
 
 ## <a name="features-and-patterns"></a>Funkce a vzory
 
@@ -165,7 +179,7 @@ Další informace a příklady najdete v článku o [dílčích orchestrcích](d
 
 ### <a name="durable-timers"></a>Trvalé časovače
 
-Orchestrace můžou naplánovat *trvalé časovače* pro implementaci zpoždění nebo nastavení zpracování časového limitu u asynchronních akcí. Používejte odolné časovače ve funkcích nástroje Orchestrator místo `Thread.Sleep` a `Task.Delay` (C#) nebo `setTimeout()` a `setInterval()` (JavaScript).
+Orchestrace můžou naplánovat *trvalé časovače* pro implementaci zpoždění nebo nastavení zpracování časového limitu u asynchronních akcí. Používejte odolné časovače ve funkcích nástroje Orchestrator místo `Thread.Sleep` a `Task.Delay` (C#) nebo `setTimeout()` a (JavaScript) `setInterval()` , nebo `time.sleep()` (Python).
 
 Další informace a příklady najdete v článku o [trvalých časovačích](durable-functions-timers.md) .
 
@@ -252,6 +266,18 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    url = context.get_input()
+    res = yield context.call_http('GET', url)
+    if res.status_code >= 400:
+        # handing of error code goes here
+```
 ---
 
 Kromě podpory základních vzorů požadavků a odpovědí podporuje metoda automatické zpracování běžných asynchronních vzorů cyklického dotazování HTTP 202 a zároveň podporuje ověřování pomocí externích služeb pomocí [spravovaných identit](../../active-directory/managed-identities-azure-resources/overview.md).
@@ -267,7 +293,7 @@ Není možné předat více parametrů funkci Activity přímo. Doporučení je 
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-V rozhraní .NET můžete také použít objekty [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) . Následující ukázka používá nové funkce [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) přidané v [jazyce C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples):
+V rozhraní .NET můžete také použít objekty [ValueTuples](/dotnet/csharp/tuples) . Následující ukázka používá nové funkce [ValueTuples](/dotnet/csharp/tuples) přidané v [jazyce C# 7](/dotnet/csharp/whats-new/csharp-7#tuples):
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]
@@ -322,7 +348,7 @@ module.exports = df.orchestrator(function*(context) {
 };
 ```
 
-#### <a name="activity"></a>Aktivita
+#### <a name="getweather-activity"></a>`GetWeather`Akce
 
 ```javascript
 module.exports = async function (context, location) {
@@ -330,6 +356,36 @@ module.exports = async function (context, location) {
 
     // ...
 };
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+#### <a name="orchestrator"></a>Orchestrator
+
+```python
+from collections import namedtuple
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    Location = namedtuple('Location', ['city', 'state'])
+    location = Location(city='Seattle', state= 'WA')
+
+    weather = yield context.call_activity("GetWeather", location)
+
+    # ...
+
+```
+#### <a name="getweather-activity"></a>`GetWeather`Akce
+
+```python
+from collections import namedtuple
+
+Location = namedtuple('Location', ['city', 'state'])
+
+def main(location: Location) -> str:
+    city, state = location
+    return f"Hello {city}, {state}!"
 ```
 
 ---

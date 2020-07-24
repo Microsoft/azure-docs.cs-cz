@@ -7,12 +7,12 @@ ms.date: 11/22/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: c69aa91596ff203445aa4fa3ccd59001ffe16649
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 69e2c118ec298ebddf16d428ea2278de42e91309
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78197483"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036688"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>Rychlý Start: Klientská knihovna Azure Queue Storage V12 pro .NET
 
@@ -31,9 +31,14 @@ Použijte klientskou knihovnu Azure Queue Storage V12 pro .NET pro:
 * Odstranění zpráv z fronty
 * Odstranění fronty
 
-[Dokumentace k referenční dokumentaci k](/dotnet/api/azure.storage.queues) | rozhraní API[Ukázka](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples) balíčku[zdrojového kódu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues) | knihovny[(NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0) | 
+Další prostředky:
 
-## <a name="prerequisites"></a>Požadavky
+* [Referenční dokumentace k rozhraní API](/dotnet/api/azure.storage.queues)
+* [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues)
+* [Balíček (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0)
+* [Ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * Účet úložiště Azure – [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
@@ -115,8 +120,8 @@ Na následujícím diagramu jsou vztahy těchto prostředků.
 Pro interakci s těmito prostředky použijte následující třídy .NET:
 
 * [QueueServiceClient](/dotnet/api/azure.storage.queues.queueserviceclient): `QueueServiceClient` umožňuje spravovat všechny fronty v účtu úložiště.
-* [QueueClient](/dotnet/api/azure.storage.queues.queueclient): `QueueClient` třída umožňuje spravovat a manipulovat s jednotlivou frontou a jejími zprávami.
-* [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage): `QueueMessage` třída představuje jednotlivé objekty vracené při volání [ReceiveMessages](/dotnet/api/azure.storage.queues.queueclient.receivemessages) ve frontě.
+* [QueueClient](/dotnet/api/azure.storage.queues.queueclient): `QueueClient` Třída umožňuje spravovat a manipulovat s jednotlivou frontou a jejími zprávami.
+* [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage): `QueueMessage` Třída představuje jednotlivé objekty vracené při volání [ReceiveMessages](/dotnet/api/azure.storage.queues.queueclient.receivemessages) ve frontě.
 
 ## <a name="code-examples"></a>Příklady kódu
 
@@ -194,7 +199,7 @@ SendReceipt receipt = await queueClient.SendMessageAsync("Third message");
 
 ### <a name="peek-at-messages-in-a-queue"></a>Prohlížet zprávy ve frontě
 
-Podívejte se na zprávy ve frontě voláním metody [PeekMessagesAsync](/dotnet/api/azure.storage.queues.queueclient.peekmessagesasync) . `PeekMessagesAsync` Metoda načítá jednu nebo více zpráv před frontou, ale nemění viditelnost zprávy.
+Podívejte se na zprávy ve frontě voláním metody [PeekMessagesAsync](/dotnet/api/azure.storage.queues.queueclient.peekmessagesasync) . `PeekMessagesAsync`Metoda načítá jednu nebo více zpráv před frontou, ale nemění viditelnost zprávy.
 
 Přidejte tento kód na konec `Main` metody:
 
@@ -213,7 +218,7 @@ foreach (PeekedMessage peekedMessage in peekedMessages)
 
 ### <a name="update-a-message-in-a-queue"></a>Aktualizace zprávy ve frontě
 
-Aktualizujte obsah zprávy voláním metody [UpdateMessageAsync](/dotnet/api/azure.storage.queues.queueclient.updatemessageasync) . `UpdateMessageAsync` Metoda může změnit časový limit viditelnosti zprávy a její obsah. Obsah zprávy musí být řetězec kódovaný v kódování UTF-8, který má velikost až 64 KB. Spolu s novým obsahem zprávy předejte hodnoty z rozhraní `SendReceipt` , které bylo uloženo dříve v kódu. `SendReceipt` Hodnoty identifikují, která zpráva se má aktualizovat.
+Aktualizujte obsah zprávy voláním metody [UpdateMessageAsync](/dotnet/api/azure.storage.queues.queueclient.updatemessageasync) . `UpdateMessageAsync`Metoda může změnit časový limit viditelnosti zprávy a její obsah. Obsah zprávy musí být řetězec kódovaný v kódování UTF-8, který má velikost až 64 KB. Spolu s novým obsahem zprávy předejte hodnoty z rozhraní `SendReceipt` , které bylo uloženo dříve v kódu. `SendReceipt`Hodnoty identifikují, která zpráva se má aktualizovat.
 
 ```csharp
 Console.WriteLine("\nUpdating the third message in the queue...");

@@ -3,11 +3,12 @@ title: Povolení zálohování při vytvoření virtuálního počítače Azure
 description: Popisuje, jak povolit zálohování při vytváření virtuálního počítače Azure pomocí Azure Backup.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 7739109eb8bad88c9b723e67e13adc78c127499a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7fb6fd25f5031669633641ea02f34180f6f795d4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80672813"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032846"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Povolení zálohování při vytvoření virtuálního počítače Azure
 
@@ -29,7 +30,7 @@ Pokud jste k vašemu účtu ještě přihlášeni, přihlaste se k [Azure Portal
 
 2. V Azure Marketplace klikněte na **COMPUTE**a pak vyberte image virtuálního počítače.
 
-3. Nastavte virtuální počítač v souladu s pokyny pro [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) nebo [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) .
+3. Nastavte virtuální počítač v souladu s pokyny pro [Windows](../virtual-machines/windows/quick-create-portal.md) nebo [Linux](../virtual-machines/linux/quick-create-portal.md) .
 
 4. Na kartě **Správa** v části **Povolit zálohování**klikněte **na zapnuto**.
 5. Azure Backup zálohy do trezoru Recovery Services. Pokud nemáte existující trezor, klikněte na **vytvořit nový** .

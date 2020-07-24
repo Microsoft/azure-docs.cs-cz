@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: 85b0fdd56b51a89cfbf88fac58aec4cb2f110142
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7be7ce55e527d76abee0118a762c0ca666f9bdb3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738885"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031673"
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>Migrace virtuálních sítí přidružených k ExpressRoute z modelu Classic na Správce prostředků
 
@@ -22,16 +22,16 @@ Tento článek vysvětluje, jak migrovat virtuální sítě přidružené k Expr
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* Ověřte, že máte nejnovější verze Azure PowerShell modulů. Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview). Pokud chcete nainstalovat modul PowerShell Service Management (který je potřebný pro model nasazení Classic), přečtěte si téma [Instalace modulu správy služby Azure PowerShell](/powershell/azure/servicemanagement/install-azure-ps).
+* Ověřte, že máte nejnovější verze Azure PowerShell modulů. Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/). Pokud chcete nainstalovat modul PowerShell Service Management (který je potřebný pro model nasazení Classic), přečtěte si téma [Instalace modulu správy služby Azure PowerShell](/powershell/azure/servicemanagement/install-azure-ps).
 * Než začnete s [konfigurací, ujistěte](expressroute-prerequisites.md)se, že jste zkontrolovali požadavky, [požadavky na směrování](expressroute-routing.md)a [pracovní postupy](expressroute-workflows.md) .
 * Přečtěte si informace, které jsou k dispozici v části [přesunutí okruhu ExpressRoute z modelu Classic na správce prostředků](expressroute-move.md). Ujistěte se, že plně rozumíte omezením a omezením.
 * Ověřte, že okruh je plně funkční v modelu nasazení Classic.
 * Ujistěte se, že máte skupinu prostředků vytvořenou v modelu nasazení Správce prostředků.
 * Přečtěte si následující dokumentaci k migraci prostředků:
 
-    * [Platformou podporovaná migrace prostředků IaaS z nasazení Classic do Azure Resource Manageru](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
-    * [Podrobné technické informace o platformou podporované migraci z modelu Classic na Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
-    * [Nejčastější dotazy: migrace prostředků IaaS podporovaných platformou z klasických na Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
+    * [Platformou podporovaná migrace prostředků IaaS z nasazení Classic do Azure Resource Manageru](../virtual-machines/windows/migration-classic-resource-manager-overview.md)
+    * [Podrobné technické informace o platformou podporované migraci z modelu Classic na Azure Resource Manager](../virtual-machines/windows/migration-classic-resource-manager-deep-dive.md)
+    * [Nejčastější dotazy: migrace prostředků IaaS podporovaných platformou z klasických na Azure Resource Manager](../virtual-machines/windows/migration-classic-resource-manager-faq.md)
     * [Kontrola nejčastějších chyb migrace a zmírnění rizik](../virtual-machines/windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="supported-and-unsupported-scenarios"></a>Podporované a nepodporované situace
@@ -82,7 +82,7 @@ Tato část popisuje kroky, které je třeba provést při migraci virtuální s
    ```
 
 ## <a name="next-steps"></a>Další kroky
-* [Platformou podporovaná migrace prostředků IaaS z nasazení Classic do Azure Resource Manageru](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
-* [Podrobné technické informace o platformou podporované migraci z modelu Classic na Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
-* [Nejčastější dotazy: migrace prostředků IaaS podporovaných platformou z klasických na Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
+* [Platformou podporovaná migrace prostředků IaaS z nasazení Classic do Azure Resource Manageru](../virtual-machines/windows/migration-classic-resource-manager-overview.md)
+* [Podrobné technické informace o platformou podporované migraci z modelu Classic na Azure Resource Manager](../virtual-machines/windows/migration-classic-resource-manager-deep-dive.md)
+* [Nejčastější dotazy: migrace prostředků IaaS podporovaných platformou z klasických na Azure Resource Manager](../virtual-machines/windows/migration-classic-resource-manager-faq.md)
 * [Kontrola nejčastějších chyb migrace a zmírnění rizik](../virtual-machines/windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

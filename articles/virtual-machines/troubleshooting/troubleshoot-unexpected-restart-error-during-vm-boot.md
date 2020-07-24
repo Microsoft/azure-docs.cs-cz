@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/22/2020
 ms.author: v-mibufo
-ms.openlocfilehash: daefaca45adb061295928c64b6a0e328a12d8a3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 186b1c46303be59e191a1754361e07a2003b997a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85268980"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036178"
 ---
 # <a name="os-start-up--computer-restarted-unexpectedly-or-encountered-an-unexpected-error"></a>Spouštění operačního systému – počítač se neočekávaně restartoval nebo narazil na neočekávanou chybu.
 
@@ -27,7 +27,7 @@ Tento článek popisuje kroky pro řešení problémů, ve kterých se virtuáln
 
 ## <a name="symptom"></a>Příznak
 
-Když pomocí [diagnostiky spouštění](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) zobrazíte snímek obrazovky virtuálního počítače, uvidíte, že snímek obrazovky zobrazuje chybu instalace systému Windows s následující chybou:
+Když pomocí [diagnostiky spouštění](./boot-diagnostics.md) zobrazíte snímek obrazovky virtuálního počítače, uvidíte, že snímek obrazovky zobrazuje chybu instalace systému Windows s následující chybou:
 
 **Počítač se neočekávaně restartoval nebo došlo k neočekávané chybě. Instalace systému Windows nemůže pokračovat. Chcete-li nainstalovat systém Windows, klikněte na tlačítko OK a restartujte počítač a poté instalaci spusťte znovu.**
 
@@ -37,7 +37,7 @@ Když pomocí [diagnostiky spouštění](https://docs.microsoft.com/azure/virtua
 
 ## <a name="cause"></a>Příčina
 
-Počítač se pokouší provést počáteční spuštění [generalizované image](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation), ale dojde k problému, protože se zpracovává vlastní soubor odpovědí (unattend.xml). Vlastní soubory odpovědí se v Azure nepodporují. 
+Počítač se pokouší provést počáteční spuštění [generalizované image](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation), ale dojde k problému, protože se zpracovává vlastní soubor odpovědí (unattend.xml). Vlastní soubory odpovědí se v Azure nepodporují. 
 
 Soubor odpovědí je speciální soubor XML, který obsahuje nastavení definic a hodnot pro nastavení konfigurace, která chcete automatizovat během instalace instalace operačního systému Windows Server. Mezi možnosti konfigurace patří pokyny, jak rozdělit disky na oddíly, kde najít bitovou kopii Windows, která se má nainstalovat, použít kódy Product Key a další příkazy, které byste chtěli spustit.
 
@@ -57,7 +57,7 @@ K této situaci dochází, když se image připravuje pro použití v Azure, ale
 
 - V předchozím příkazu nahraďte `<NameOfYourAnswerFile.XML>` názvem souboru.
 
-Pokud chcete tento problém vyřešit, postupujte podle pokynů [pro Azure na stránce Příprava/zachycení image](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed) a Příprava nové generalizované image. Během programu Sysprep Nepoužívejte `/unattend:<answerfile>` příznak. Místo toho použijte pouze následující příznaky:
+Pokud chcete tento problém vyřešit, postupujte podle pokynů [pro Azure na stránce Příprava/zachycení image](../windows/upload-generalized-managed.md) a Příprava nové generalizované image. Během programu Sysprep Nepoužívejte `/unattend:<answerfile>` příznak. Místo toho použijte pouze následující příznaky:
 
 `sysprep /oobe /generalize /shutdown`
 

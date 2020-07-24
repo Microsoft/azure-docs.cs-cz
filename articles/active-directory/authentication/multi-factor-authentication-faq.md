@@ -5,17 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/13/2020
+ms.date: 07/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa25cffd84ee9255fed8bbaa0f2fb6adf762b47e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6f5cabace81d53edf36ac6be0a2eb8830e6cc5f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84483786"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035073"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Nejčastější dotazy ohledně služby Azure Multi-Factor Authentication
 
@@ -55,6 +56,8 @@ Volitelná pole lze nakonfigurovat v Multi-Factor Authentication Server.
 
 Výsledek ověření (úspěch nebo odmítnutí) a důvod zamítnutí je uložen s ověřovacími daty. Tato data jsou k dispozici v sestavách ověřování a využití.
 
+Další informace najdete v tématu data [o sídle a zákaznických datech pro Azure Multi-Factor Authentication](concept-mfa-data-residency.md).
+
 ### <a name="what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users"></a>Které krátké kódy SMS slouží k posílání zpráv SMS uživatelům?
 
 V USA používáme následující krátké kódy SMS:
@@ -69,7 +72,9 @@ V Kanadě používáme následující krátké kódy SMS:
 * *759731*
 * *673801*
 
-Neexistuje žádná záruka na konzistentní doručování zpráv SMS nebo hlasové Multi-Factor Authentication s využitím stejného čísla. V zájmu našich uživatelů můžeme kdykoli přidat nebo odebrat krátké kódy, protože provádíme úpravy postupů pro zlepšení poskytování služby SMS. Pro země nebo oblasti kromě USA a Kanady nepodporujeme krátké kódy.
+Neexistuje žádná záruka na konzistentní doručování zpráv SMS nebo hlasové Multi-Factor Authentication s využitím stejného čísla. V zájmu našich uživatelů můžeme kdykoli přidat nebo odebrat krátké kódy, protože provádíme úpravy postupů pro zlepšení poskytování služby SMS.
+
+Pro země nebo oblasti kromě USA a Kanady nepodporujeme krátké kódy.
 
 ## <a name="billing"></a>Fakturace
 
@@ -185,7 +190,7 @@ V některých případech Ano.
 
 Pro jednosměrné služby SMS s Azure MFA serverem v 7.0 nebo vyšší můžete nakonfigurovat nastavení časového limitu nastavením klíče registru. Jakmile cloudová služba MFA pošle textovou zprávu, ověřovací kód (nebo jednorázové heslo) se vrátí na server MFA. Server MFA ukládá kód do paměti po dobu 300 sekund ve výchozím nastavení. Pokud uživatel nezadá kód před uplynutím 300 sekund, je jeho ověřování zamítnuto. Pomocí těchto kroků můžete změnit výchozí nastavení časového limitu:
 
-1. Přejděte do části `HKLM\Software\Wow6432Node\Positive Networks\PhoneFactor` (Soubor > Nový > Jiné).
+1. Přejděte na `HKLM\Software\Wow6432Node\Positive Networks\PhoneFactor`.
 2. Vytvořte klíč registru **typu DWORD** s názvem *pfsvc_pendingSmsTimeoutSeconds* a nastavte dobu v sekundách, po kterou má Azure MFA Server ukládat jednorázová hesla.
 
 >[!TIP]
@@ -229,7 +234,7 @@ Existuje několik důvodů, proč se uživatelům zobrazí výzva k registraci i
 - Organizace vytvořila a povolila zásady registrace MFA, které se pro uživatele nastavily.
 - Uživatel, který byl dříve zaregistrován pro MFA, ale zvolil metodu ověřování, kterou správce od zakázání zakázal. Uživatel musí proto znovu projít registrací MFA a vybrat novou výchozí metodu ověřování.
 
-## <a name="errors"></a>chyby
+## <a name="errors"></a>Chyby
 
 * [Co by uživatelé měli dělat, pokud se při použití oznámení mobilní aplikace zobrazí chybová zpráva "žádost o ověření není pro aktivovaný účet"?](#what-should-users-do-if-they-see-an-authentication-request-is-not-for-an-activated-account-error-message-when-using-mobile-app-notifications)
 * [Co by uživatelé měli dělat, pokud se při přihlašování k aplikaci bez prohlížeče uvidí chybová zpráva 0x800434D4L?](#what-should-users-do-if-they-see-a-0x800434d4l-error-message-when-signing-in-to-a-non-browser-application)

@@ -5,11 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6d1e4a84904ef7022d9ce85803bf10285bf0b8ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7580ac0650706d6aee49bbf0e8235e8c5dab33f4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75652473"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033342"
 ---
 # <a name="microsoftcommoninfobox-ui-element"></a>Microsoft. Common. InfoBox – element uživatelského rozhraní
 
@@ -17,7 +18,7 @@ Ovládací prvek, který přidá informace do textového pole. Pole obsahuje dů
 
 ## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
 
-![Microsoft. Common. InfoBox](./media/managed-application-elements/microsoft.common.infobox.png)
+![Microsoft. Common. InfoBox](./media/managed-application-elements/microsoft-common-infobox.png)
 
 
 ## <a name="schema"></a>Schéma

@@ -6,12 +6,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 04/23/2020
-ms.openlocfilehash: 8d002fae52fec1fafb2ad8e63bd8e3b779a1537c
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.custom: devx-track-java
+ms.openlocfilehash: 2e001e5e927d9d4c5dc4c3eb74f7b5ad33617b99
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984819"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037572"
 ---
 # <a name="security-controls-for-azure-spring-cloud-service"></a>Ovládací prvky zabezpečení pro službu Azure Spring Cloud
 Ovládací prvky zabezpečení jsou integrované do služby Azure jaře Cloud Service.
@@ -30,4 +31,4 @@ Ovládací prvky zabezpečení jsou integrované do služby Azure jaře Cloud Se
 
 | Řízení zabezpečení | Ano/Ne | Poznámky | Dokumentace |
 |:-------------|:-------|:-------------------------------|:----------------------|
-| Značka služby | Yes | Pomocí značky služby **AzureSpringCloud** můžete definovat odchozí řízení přístupu k síti pro [skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) nebo [Azure firewall](https://docs.microsoft.com/azure/firewall/service-tags), aby se povolil provoz do cloudových aplikací Azure.<br><br>*Poznámka:* V současné době je v současnosti jenom nová **instance služby jarní** cloudová služba Azure vytvořená po 2020/07/07. | [Značky služeb](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) |
+| Značka služby | Yes | Pomocí značky služby **AzureSpringCloud** můžete definovat odchozí řízení přístupu k síti pro [skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) nebo [Azure firewall](https://docs.microsoft.com/azure/firewall/service-tags), aby se povolil provoz do cloudových aplikací Azure.<br><br>*Poznámka:* V současné době je v současnosti jenom nová **instance služby jarní** cloudová služba Azure vytvořená po 2020/07/14. | [Značky služeb](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) |

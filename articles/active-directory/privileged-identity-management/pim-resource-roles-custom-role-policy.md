@@ -1,6 +1,6 @@
 ---
-title: Použití vlastních rolí pro prostředky Azure v PIM – Azure AD | Microsoft Docs
-description: Naučte se používat vlastní role pro prostředky Azure v Azure AD Privileged Identity Management (PIM).
+title: Použití vlastních rolí Azure v PIM – Azure AD | Microsoft Docs
+description: Naučte se používat vlastní role Azure v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,14 +14,14 @@ ms.subservice: pim
 ms.date: 11/08/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa51508746d0024be0a5acfaeeac62e86db67d3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1c9255de6b9f449a89a994cb3286139daa28ea9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743741"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034095"
 ---
-# <a name="use-custom-roles-for-azure-resources-in-privileged-identity-management"></a>Použití vlastních rolí pro prostředky Azure v Privileged Identity Management
+# <a name="use-azure-custom-roles-in-privileged-identity-management"></a>Použití vlastních rolí Azure v Privileged Identity Management
 
 Je možné, že budete muset použít nastavení striktní Privileged Identity Management (PIM) pro některé uživatele v privilegované roli ve vaší organizaci Azure Active Directory (Azure AD) a zajistit tak větší autonomii pro ostatní. Vezměte v úvahu například scénář, ve kterém vaše organizace zajímá několik smluvních partnerů, které pomáhají při vývoji aplikace, která se spustí v rámci předplatného Azure.
 
@@ -31,7 +31,7 @@ Postupujte podle kroků uvedených v následující části a nastavte cílené 
 
 ## <a name="create-the-custom-role"></a>Vytvoření vlastní role
 
-Pokud chcete vytvořit vlastní roli pro prostředek, postupujte podle kroků popsaných v tématu [Vytvoření vlastních rolí pro Azure založené na rolích Access Control](../role-based-access-control-custom-roles.md).
+Pokud chcete vytvořit vlastní roli pro prostředek, postupujte podle kroků popsaných v tématu [vlastní role Azure](../role-based-access-control-custom-roles.md).
 
 Když vytváříte vlastní roli, zahrňte popisný název, abyste si mohli snadno zapamatovat, která integrovaná role má být duplicitní.
 

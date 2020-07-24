@@ -3,11 +3,12 @@ title: Novinky v Microsoft Azure Backup Serveru
 description: Microsoft Azure Backup Server poskytuje rozšířené možnosti zálohování pro ochranu virtuálních počítačů, souborů a složek, úloh a dalších.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 5f8d0aa83f6d54575b76847efa892864b32c456d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d9d04d9f763549ce15e57f768432cd933cf1414c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629091"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032438"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Novinky ve Microsoft Azure Backup serveru (MABS)
 
@@ -22,7 +23,7 @@ Microsoft Azure Backup Server (MABS) verze 3 UR1 je nejnovější aktualizace a 
 
 MABS v2 představil [moderní úložiště zálohování](backup-mabs-add-storage.md) (MBS), což zlepšuje využití a výkon úložiště. MB používá jako základní systém souborů ReFS a je navržená tak, aby používala hybridní úložiště, jako třeba vrstvené úložiště.
 
-Aby bylo možné dosáhnout škálování a výkonu pomocí aplikace MBS, doporučujeme, abyste v kombinaci s úložištěm HDD DPM používali malé procento (4% celkového úložiště) úložiště Flash (SSD) s MABS V3 UR1 jako vrstvený svazek. MABS V3 UR1 s vrstveném úložištěm přináší 50-70% rychlejší zálohy. Postup pro konfiguraci vrstveného úložiště najdete v článku o aplikaci DPM nakonfigurovaném [pomocí sady MBS s Tiered Storage](https://docs.microsoft.com/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage) .
+Aby bylo možné dosáhnout škálování a výkonu pomocí aplikace MBS, doporučujeme, abyste v kombinaci s úložištěm HDD DPM používali malé procento (4% celkového úložiště) úložiště Flash (SSD) s MABS V3 UR1 jako vrstvený svazek. MABS V3 UR1 s vrstveném úložištěm přináší 50-70% rychlejší zálohy. Postup pro konfiguraci vrstveného úložiště najdete v článku o aplikaci DPM nakonfigurovaném [pomocí sady MBS s Tiered Storage](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage) .
 
 ### <a name="support-for-refs-volumes-and-refs-volumes-with-deduplication-enabled"></a>Podpora svazků ReFS a svazků ReFS s povoleným odstraněním duplicit
 
@@ -38,7 +39,7 @@ Pomocí MABS V3 UR1 můžete zálohovat svazky a úlohy ReFS nasazené na svazku
 
 ### <a name="azure-vmware-solution-protection-support"></a>Podpora ochrany řešení Azure VMware
 
-S MABS V3 UR1 teď můžete chránit virtuální počítače nasazené v [Řešení Azure VMware](https://docs.microsoft.com/azure/azure-vmware/).
+S MABS V3 UR1 teď můžete chránit virtuální počítače nasazené v [Řešení Azure VMware](../azure-vmware/index.yml).
 
 ### <a name="vmware-parallel-backups"></a>Paralelní zálohování VMware
 
@@ -55,7 +56,7 @@ U MABS V3 UR1 je pro kritické operace přidána další vrstva ověřování. P
 
 ### <a name="offline-backup-improvements"></a>Vylepšení zálohování offline
 
-MABS V3 UR1 vylepšuje možnosti zálohování offline pomocí služby Azure import/export. Další informace najdete [tady](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export): aktualizované kroky.
+MABS V3 UR1 vylepšuje možnosti zálohování offline pomocí služby Azure import/export. Další informace najdete [tady](./backup-azure-backup-server-import-export.md): aktualizované kroky.
 
 >[!NOTE]
 >Aktualizace také přináší verzi Preview pro offline zálohování pomocí Azure Data Box v MABS. [SystemCenterFeedback@microsoft.com](mailto:SystemCenterFeedback@microsoft.com)Pro další informace se obraťte na kontakt.
@@ -69,7 +70,7 @@ MABS V3 UR1 obsahuje nový parametr **[-CheckReplicaFragmentation]**. Nový para
 S MABS V3 UR1 už není podporovaná podpora pro 32 agenta ochrany. Po upgradu serveru MABS V3 na UR1 nebude možné chránit 32 úloh. Všechna stávající 32 agenti ochrany budou v zakázaném stavu a plánované zálohy selžou s chybou **agenta** . Pokud chcete zachovat data záloh pro tyto agenty, můžete ochranu zastavit pomocí možnosti zachovat data. V opačném případě je možné agenta ochrany odebrat.
 
 >[!NOTE]
->Podívejte se na [aktualizovanou matrici ochrany](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix) a Naučte se podporované úlohy ochrany pomocí MABS ur 1.
+>Podívejte se na [aktualizovanou matrici ochrany](./backup-mabs-protection-matrix.md) a Naučte se podporované úlohy ochrany pomocí MABS ur 1.
 
 ## <a name="whats-new-in-mabs-v3-rtm"></a>Co je nového v MABS V3 RTM
 
@@ -83,7 +84,7 @@ S Moderní úložiště zálohování (MBS) ve službě MABS v2 jsme oznámili �
 
 ### <a name="prevent-unexpected-data-loss"></a>Ochrana před neočekávanou ztrátou dat
 
-V podnicích je MABS spravován týmem správců. I když existují pokyny pro úložiště, které by se měly použít pro zálohování, nesprávný svazek MABS jako úložiště záloh může vést ke ztrátě důležitých dat. S MABS V3 můžete takové scénáře zabránit tak, že tyto svazky nakonfigurujete jako ty, které nejsou dostupné pro úložiště pomocí [těchto rutin PowerShellu](https://docs.microsoft.com/azure/backup/backup-mabs-add-storage).
+V podnicích je MABS spravován týmem správců. I když existují pokyny pro úložiště, které by se měly použít pro zálohování, nesprávný svazek MABS jako úložiště záloh může vést ke ztrátě důležitých dat. S MABS V3 můžete takové scénáře zabránit tak, že tyto svazky nakonfigurujete jako ty, které nejsou dostupné pro úložiště pomocí [těchto rutin PowerShellu](./backup-mabs-add-storage.md).
 
 ### <a name="custom-size-allocation"></a>Přidělení vlastní velikosti
 
@@ -114,7 +115,7 @@ MABS V3 se dá nainstalovat pomocí SQL 2017 jako databáze MABS. SQL Server mů
 MABS V3 se dá nainstalovat na Windows Server 2019. Pokud chcete používat MABS v3 s WS2019, můžete buď upgradovat operační systém na WS2019 před instalací nebo upgradem na MABS v3, nebo můžete upgradovat svůj operační systém po instalaci/upgrade V3 na WS2016.
 
 MABS v3 je plná verze, která se dá nainstalovat přímo na Windows Server 2016, Windows Server 2019 nebo se dá upgradovat z MABS v2. Před upgradem na nebo instalaci záložního serveru V3 si přečtěte informace o požadavcích na instalaci.
-Další informace o postupu instalace/upgradu pro MABS najdete [zde](https://docs.microsoft.com/azure/backup/backup-azure-microsoft-azure-backup#software-package).
+Další informace o postupu instalace/upgradu pro MABS najdete [zde](./backup-azure-microsoft-azure-backup.md#software-package).
 
 > [!NOTE]
 >

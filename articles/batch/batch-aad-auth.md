@@ -4,12 +4,12 @@ description: Služba Batch podporuje službu Azure AD k ověřování ze služby
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: a8601c69c37e973118a7ec9521070864caffb101
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 7daf26d7c52e07be999bb93edd6fe694f79d1be2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170305"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032455"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Ověřování řešení služby Batch ve službě Active Directory
 
@@ -193,7 +193,7 @@ Tady je příklad definice vlastní role:
 }
 ```
 
-Obecnější informace o vytvoření vlastní role najdete v tématu [vlastní role pro prostředky Azure](../role-based-access-control/custom-roles.md).
+Obecnější informace o vytvoření vlastní role najdete v tématu [vlastní role Azure](../role-based-access-control/custom-roles.md).
 
 ### <a name="get-the-tenant-id-for-your-azure-active-directory"></a>Získat ID tenanta pro vaši Azure Active Directory
 

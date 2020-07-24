@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: na
 ms.date: 10/04/2016
 ms.author: sedusch
-ms.openlocfilehash: 9525f339861b5de8dc22da753f7c36dcc6eede8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ceeb20b138307b40fcd6f8c03d614fc3e811473
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70078993"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035770"
 ---
 # <a name="using-sap-on-linux-virtual-machines-in-azure"></a>Používání SAP pro virtuální počítače se systémem Linux v Azure
 Cloud Computing je často používaný termín, který získává v oblasti IT čím dál větší význam – od malých firem až po velké a nadnárodní společnosti. Microsoft Azure je platforma cloudových služeb od společnosti Microsoft, která nabízí široké spektrum nových možností. Nyní mohou zákazníci rychle zřizovat a zrušit aplikace jako cloudové služby, takže už nejsou omezeni technickými nebo rozpočtovými limity. Namísto investování času a prostředků do hardwarové infrastruktury se společností můžou zaměřit na aplikace, obchodní procesy a jejich výhody pro zákazníky a uživatele.
 
-S Microsoft Azuremi virtuálními počítači nabízí Microsoft komplexní platformu IaaS (infrastruktura jako služba). Služba Azure Virtual Machines teď v rámci IaaS podporuje aplikace využívající SAP NetWeaver. Níže uvedené dokumenty White Paper popisují, jak plánovat a implementovat aplikace SAP NetWeaver na virtuálních počítačích s Windows v Azure. Na [virtuální počítače s Windows](../../virtual-machines-windows-classic-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)můžete také implementovat aplikace založené na SAP NetWeaver.
+S Microsoft Azuremi virtuálními počítači nabízí Microsoft komplexní platformu IaaS (infrastruktura jako služba). Služba Azure Virtual Machines teď v rámci IaaS podporuje aplikace využívající SAP NetWeaver. Níže uvedené dokumenty White Paper popisují, jak plánovat a implementovat aplikace SAP NetWeaver na virtuálních počítačích s Windows v Azure. Na [virtuální počítače s Windows](./get-started.md?toc=/azure/virtual-machines/windows/classic/toc.json)můžete také implementovat aplikace založené na SAP NetWeaver.
 
 [!INCLUDE [virtual-machines-common-classic-sap-get-started](../../../../includes/virtual-machines-common-classic-sap-get-started.md)]
 
@@ -36,5 +36,4 @@ Shrnutí: v tomto okamžiku neexistuje oficiální podpora SAP pro provozování
 
 Aktualizováno: prosinec 2015
 
-[Tento článek najdete tady.](suse-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
+[Tento článek najdete tady.](./sap-deployment-checklist.md?toc=/azure/virtual-machines/linux/toc.json)

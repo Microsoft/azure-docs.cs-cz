@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 4253e496aca4cbf71fab7ef0ee388b1356df5c16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82103da3f2547baab62d0d95cf9a6084ef099cba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84456789"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033763"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Výběr a nasazení agenta zabezpečení na zařízení IoT
 
@@ -43,19 +44,18 @@ Agent zabezpečení založený na jazyce C má nižší nároky na paměť a je 
 
 |     | Agent zabezpečení založený na jazyce C | Agent zabezpečení založený na jazyce C# |
 | --- | ----------- | --------- |
-| Open Source | K dispozici v rámci [licence MIT](https://en.wikipedia.org/wiki/MIT_License) na [GitHubu](https://aka.ms/iot-security-github-c) | K dispozici v rámci [licence MIT](https://en.wikipedia.org/wiki/MIT_License) na [GitHubu](https://aka.ms/iot-security-github-cs) |
-| Vývojový jazyk    | C | C# |
-| Podporované platformy Windows? | No | Yes |
-| Požadavky Windows | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
-| Podporované platformy Linux? | Ano, x64 a x86 | Ano, pouze x64 |
-| Požadované součásti systému Linux | libunwind8, libcurl3, UUID – modul runtime, audit, audispd – moduly plug-in | libunwind8, libcurl3, UUID-runtime, audited, audispd-plugins, sudo, netstat, softwaru iptables |
-| Nároky na disk | 10,5 MB | 90 MB |
-| Nároky na paměť (v průměru) | 5,5 MB | 33 MB |
-| [Ověřování](concept-security-agent-authentication-methods.md) pro IoT Hub | Ano | Ano |
-| [Shromažďování](how-to-agent-configuration.md#supported-security-events) dat zabezpečení | Ano | Ano |
-| Agregace událostí | Ano | Ano |
-| Vzdálená konfigurace prostřednictvím [modulu zabezpečení je dvojitá](concept-security-module.md) . | Ano | Ano |
-|
+| **Open Source** | K dispozici v rámci [licence MIT](https://en.wikipedia.org/wiki/MIT_License) na [GitHubu](https://aka.ms/iot-security-github-c) | K dispozici v rámci [licence MIT](https://en.wikipedia.org/wiki/MIT_License) na [GitHubu](https://aka.ms/iot-security-github-cs) |
+| **Vývojový jazyk**    | C | C# |
+| **Podporované platformy Windows?** | No | Yes |
+| **Požadavky Windows** | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
+| **Podporované platformy Linux?** | Ano, x64 a x86 | Ano, pouze x64 |
+| **Předpoklady pro Linux** | libunwind8, libcurl3, UUID – modul runtime, audit, audispd – moduly plug-in | libunwind8, libcurl3, UUID-runtime, audited, audispd-plugins, sudo, netstat, softwaru iptables |
+| **Nároky na disk** | 10,5 MB | 90 MB |
+| **Nároky na paměť (v průměru)** | 5,5 MB | 33 MB |
+| **[Ověřování](concept-security-agent-authentication-methods.md) pro IoT Hub** | Ano | Ano |
+| **[Shromažďování](how-to-agent-configuration.md#supported-security-events) dat zabezpečení** | Ano | Ano |
+| **Agregace událostí** | Ano | Ano |
+| **Vzdálená konfigurace prostřednictvím [modulu zabezpečení je dvojitá](concept-security-module.md) .** | Ano | Ano |
 
 ## <a name="security-agent-installation-guidelines"></a>Pokyny k instalaci agenta zabezpečení
 

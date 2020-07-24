@@ -11,11 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 348082ad96a5efa4d8f866c3675044edf7b6f8a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e3425407fdb131fb1499b2cd085fbe6d427804a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80652158"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035294"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Možnosti vytváření sestav správy hesel v Azure AD
 
@@ -50,9 +51,9 @@ V prostředí Azure Portal jsme vylepšili způsob, jakým můžete zobrazit akt
 6. V nabídce **filtru** v horní části podokna vyberte rozevírací seznam **Služba** a změňte ji na typ služby **Samoobslužná správa hesel** .
 7. Volitelně můžete seznam filtrovat podle konkrétní **aktivity** , na kterou vás zajímáte.
 
-### <a name="converged-registration-preview"></a>Sblížená registrace (Preview)
+### <a name="combined-registration"></a>Kombinovaná registrace
 
-Pokud se účastníte ve verzi Public Preview sblížené registrace, v části **Security**  >  **metody ověřování**zabezpečení budou nalezeny informace týkající se aktivity uživatele v protokolech auditu.
+Pokud jste povolili [kombinovanou registraci](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined), budou se v části **Security**  >  **metody ověřování**zabezpečení najít informace týkající se aktivity uživatele v protokolech auditu.
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Popis sloupců sestavy v Azure Portal
 

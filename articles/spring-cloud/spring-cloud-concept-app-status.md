@@ -6,12 +6,13 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: brendm
-ms.openlocfilehash: 70a9e6392e21422d7513197fbf7a1a75e1f6ab8f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: e3ef202a1a98b8193b55bcc4c2cb616d4a2000d8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82569001"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037759"
 ---
 # <a name="understanding-app-status-in-azure-spring-cloud"></a>Principy stavu aplikací v Azure Spring Cloudu
 
@@ -31,7 +32,7 @@ Chcete-li zobrazit celkový stav typu aplikace, vyberte možnost **aplikace** v 
 
 | Výčet | Definice |
 |:--:|:----------------:|
-| Spuštěno | Nasazení by mělo být spuštěné. |
+| Spuštěný | Nasazení by mělo být spuštěné. |
 | Zastaveno | Nasazení by se mělo zastavit. |
 
 **Stav zřizování je přístupný pouze z rozhraní příkazového řádku.  Je hlášena jako jedna z následujících hodnot:**
@@ -40,8 +41,8 @@ Chcete-li zobrazit celkový stav typu aplikace, vyberte možnost **aplikace** v 
 |:--:|:----------------:|
 | Vytváření | Prostředek se vytváří. |
 | Doplnění | Prostředek se aktualizuje. |
-| Úspěch | Úspěšně dodány prostředky a nasazují binární soubor. |
-| Failed | Nepovedlo se dosáhnout cíle *úspěšného* dokončení. |
+| Úspěšný | Úspěšně dodány prostředky a nasazují binární soubor. |
+| Neúspěšný | Nepovedlo se dosáhnout cíle *úspěšného* dokončení. |
 | odstraňování | Prostředek se odstraňuje. Tím se zabrání operace a prostředek není v tomto stavu k dispozici. |
 
 ## <a name="app-instances-status"></a>Stav instancí aplikace
@@ -57,8 +58,8 @@ Pokud chcete zobrazit stav konkrétní instance nasazené aplikace, klikněte na
 | Výčet | Definice |
 |:--:|:----------------:|
 | Spouštění | Binární soubor byl úspěšně nasazen do dané instance. Instance, která spouští soubor JAR, může selhat, protože jar nemůže správně fungovat. |
-| Spuštěno | Instance funguje. |
-| Failed | Instance aplikace nedokázala spustit binární soubor uživatele po několika opakovaných pokusech. |
+| Spuštěný | Instance funguje. |
+| Neúspěšný | Instance aplikace nedokázala spustit binární soubor uživatele po několika opakovaných pokusech. |
 | Ukončena | Instance aplikace se vypíná. |
 
 **Stav zjišťování instance je hlášen jako jedna z následujících hodnot:**
@@ -70,5 +71,5 @@ Pokud chcete zobrazit stav konkrétní instance nasazené aplikace, klikněte na
 | DOLŮ | Instance aplikace není zaregistrovaná na Eureka nebo je zaregistrovaná, ale nemůže přijímat přenosy. |
 
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 * [Příprava pružinové aplikace Java pro nasazení v jarním cloudu Azure](spring-cloud-tutorial-prepare-app-deployment.md)

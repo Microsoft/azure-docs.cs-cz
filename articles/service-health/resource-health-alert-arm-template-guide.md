@@ -3,12 +3,12 @@ title: Šablona pro vytvoření výstrah Resource Health
 description: Vytvářejte výstrahy programově, které vás upozorní, když vaše prostředky Azure nebudou k dispozici.
 ms.topic: conceptual
 ms.date: 9/4/2018
-ms.openlocfilehash: 18a3b2df2d159d2903c69debd79cccfc6d0af63e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 399c37f123d06e251514d0cafc3c1c4918ce3edd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255876"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037922"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurace upozornění na stav prostředků s využitím šablon Resource Manageru
 
@@ -25,7 +25,7 @@ Azure Resource Health vás informují o aktuálním a historickém stavu vašich
 
 Pokud chcete postupovat podle pokynů na této stránce, musíte předem nastavit pár věcí:
 
-1. Je potřeba nainstalovat [modul Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) .
+1. Je potřeba nainstalovat [modul Azure PowerShell](/powershell/azure/install-az-ps) .
 2. Musíte [vytvořit nebo znovu použít skupinu akcí](../azure-monitor/platform/action-groups.md) nakonfigurovanou pro upozorňování
 
 ## <a name="instructions"></a>Pokyny
@@ -454,5 +454,5 @@ Další informace o Resource Health:
 
 
 Vytvořit výstrahy Service Health:
--  [Konfigurace upozornění pro Service Health](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 
+-  [Konfigurace upozornění pro Service Health](./alerts-activity-log-service-notifications-portal.md) 
 -  [Schéma událostí protokolu aktivit Azure](../azure-monitor/platform/activity-log-schema.md)

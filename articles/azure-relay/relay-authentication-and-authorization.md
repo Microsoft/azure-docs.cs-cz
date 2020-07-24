@@ -3,12 +3,12 @@ title: Ověřování a autorizace Azure Relay | Microsoft Docs
 description: Tento článek poskytuje přehled ověřování pomocí protokolu SAS (Shared Access Signature) ve službě Azure Relay.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 63e075bc9bf75005a92866f9fa0f90ddaba2f016
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b0a5c7a092155a006419eedd170a63abed42bb3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316945"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033373"
 ---
 # <a name="azure-relay-authentication-and-authorization"></a>Azure Relay ověřování a autorizace
 
@@ -20,7 +20,7 @@ Aplikace se můžou ověřit, aby Azure Relay používali ověřování pomocí 
 
 Klíče pro SAS můžete nakonfigurovat v oboru názvů přenosu. Na rozdíl od Service Bus zasílání zpráv [přenosová Hybrid Connections](relay-hybrid-connections-protocol.md) podporuje neautorizované nebo anonymní odesílatele. Anonymní přístup pro entitu můžete povolit při jejím vytváření, jak je znázorněno na následujícím snímku obrazovky na portálu:
 
-![][0]
+![Dialogové okno s názvem "vytvořit hybridní připojení" má textové pole "název" a zaškrtávací políčko s názvem vyžaduje ověření klienta, které je zaškrtnuté.][0]
 
 Chcete-li použít SAS, můžete nakonfigurovat objekt [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) v oboru názvů Relay, který se skládá z následujících:
 

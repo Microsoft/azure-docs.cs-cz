@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: Kinect, Windows, v2, Azure Kinect, porovnání, SDK, rozdíly, hardware, software
-ms.openlocfilehash: ec105cef0c52b02c763487fbe5b2d8c018315f4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a8d399370f354524858bdd658ffd65c0494dd4d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67452511"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031571"
 ---
 # <a name="azure-kinect-and-kinect-windows-v2-comparison"></a>Porovnání Azure Kinect a Kinect Windows v2
 
@@ -22,8 +22,8 @@ Nástroje pro vývoj hardwaru a softwaru ve službě Azure Kinect DK mají rozd�
 
 V následující tabulce jsou uvedeny rozdíly vysoké úrovně mezi službou Azure Kinect Development Kit a Kinect pro Windows v2.
 
-|    |      | Azure Kinect DK |  Kinect pro Windows v2 |
-|----------|---------------|--------| ------------|
+| Funkce | Typ | Azure Kinect DK | Kinect pro Windows v2 |
+| ------- | ---- | --------------- | --------------------- |
 | **Zvuk** | Podrobnosti  | 7. kruhové pole MIC | 4 – lineární pole s podporou MIC |
 | **Snímač pohybu** | Podrobnosti | Gyro na 3 osy akcelerometr – osa 3 | akcelerometr – 3 osy |
 | **Kamera RGB**    | Podrobnosti | 3840 x 2160 px @30 FPS | 1920 x 1080 px @30 FPS |
@@ -44,11 +44,11 @@ Další podrobnosti najdete v [hardwarovém dokumentu Azure Kinect DK](hardware-
 
 Následující tabulka poskytuje porovnání funkcí přístupu snímače zařízení nízké úrovně.
 
-| **Funkce**| **Kinect Azure** | **Kinect pro Windows** | **Poznámky** |
+| **Funkce**| **Azure Kinect** | **Kinect pro Windows** | **Poznámky** |
 |---------|---------|------------|---------|
 | **Úrovní** | ✔️ | ✔️ |    |   |
 | **IR** | ✔️ | ✔️ |  |
-| **Barva** | ✔️ | ✔️ | Formát barev podporuje rozdíly, Azure Kinect DK podporuje tyto ovládací prvky kamery: expozici, vyvážení bílé, jas, kontrast, sytost, ostrost a řízení získání. |
+| **Color** | ✔️ | ✔️ | Formát barev podporuje rozdíly, Azure Kinect DK podporuje tyto ovládací prvky kamery: expozici, vyvážení bílé, jas, kontrast, sytost, ostrost a řízení získání. |
 | **Zvuk** | ✔️ | ✔️ | K Azure Kinect DK MICS se dostanete prostřednictvím sady Speech SDK nebo rozhraní API systému Windows Native. |
 | **IMU** | ✔️ |  | Azure Kinect DK má plné IMU na ose 6 a Kinect pro Windows poskytuje jenom 1 osu. |
 | **Data kalibrace** | ✔️ | ✔️ | Kalibrace modelu kamery kompatibilního s OpenCV |
@@ -71,7 +71,7 @@ Sada funkcí sady Azure Kinect SDK se liší od Kinect pro Windows v2, jak je po
 | | BodyIndexFrame | Sada SDK pro sledování textu  |
 | Mapování souřadnic|CoordinateMapper| [SADA senzorů – transformace obrázků](use-image-transformation.md) |
 |Sledování obličeje | FaceFrame | [Cognitive Services: Face](https://azure.microsoft.com/services/cognitive-services/face/)       |
-|    Rozpoznávání řeči    |    Není k dispozici                      |    [Cognitive Services: řeč](https://azure.microsoft.com/services/cognitive-services/directory/speech/)     |
+|    Rozpoznávání řeči    |    –                      |    [Cognitive Services: řeč](https://azure.microsoft.com/services/cognitive-services/directory/speech/)     |
 
 ## <a name="next-steps"></a>Další kroky
 

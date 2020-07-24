@@ -6,17 +6,19 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: e932930e43e6131e8e1e82fe2f42246c967a19fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 5cfc13700decf0176b283f5f1f9bd81503c1b10a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84206006"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037589"
 ---
 # <a name="manage-and-monitor-app-with-azure-spring-boot-actuator"></a>Správa a monitorování aplikací s využitím ovladače Azure Spring Boot
 
 Po nasazení nového binárního souboru do aplikace budete možná chtít zjistit funkčnost a zobrazit informace o spuštěné aplikaci. Tento článek vysvětluje, jak získat přístup k rozhraní API z testovacího koncového bodu, který poskytuje Azure jarní Cloud, a zpřístupňuje funkce připravené pro produkční prostředí pro vaši aplikaci.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 V tomto článku se předpokládá, že máte aplikaci s pružinou spuštění 2. x, která se dá úspěšně nasadit a spustit v Azure jaře Cloud Service.  Další informace najdete v tématu [rychlý Start: spuštění stávající cloudové aplikace Azure pro jaře pomocí Azure Portal](spring-cloud-quickstart-launch-app-portal.md)
 
 ## <a name="verify-app-through-test-endpoint"></a>Ověření aplikace prostřednictvím testovacího koncového bodu

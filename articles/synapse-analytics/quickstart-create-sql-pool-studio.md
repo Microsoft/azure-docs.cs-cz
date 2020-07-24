@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: vytvoření synapse fondu SQL (ve verzi Preview) pomocí synapse studia'
+title: 'Rychlý Start: vytvoření synapse fondu SQL pomocí synapse studia'
 description: Podle kroků v této příručce vytvořte nový synapse fond SQL pomocí synapse studia.
 services: synapse-analytics
 author: julieMSFT
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 3/19/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4aac32ec69a4572a0988a22f1bc3b7bdf3f947d7
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: f85731a7f3ffef0adf35812ee8da4e0bbd89124f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274267"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036569"
 ---
-# <a name="quickstart-create-a-synapse-sql-pool-preview-using-synapse-studio"></a>Rychlý Start: vytvoření synapse fondu SQL (ve verzi Preview) pomocí synapse studia
+# <a name="quickstart-create-a-synapse-sql-pool-using-synapse-studio"></a>Rychlý Start: vytvoření synapse fondu SQL pomocí synapse studia
 
 Azure synapse Analytics nabízí různé analytické moduly, které vám pomůžou ingestovat, transformovat, modelovat a analyzovat vaše data. Fond SQL nabízí výpočetní a úložné funkce založené na T-SQL. Po vytvoření fondu SQL ve vašem pracovním prostoru synapse se dají data načíst, namodelovat, zpracovávat a doručovat pro rychlejší analytické poznatky.
 

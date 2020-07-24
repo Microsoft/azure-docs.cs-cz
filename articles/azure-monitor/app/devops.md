@@ -3,11 +3,12 @@ title: Sledování výkonu webové aplikace – Azure Application Insights
 description: Jak Application Insights zapadá do cyklu devOps
 ms.topic: conceptual
 ms.date: 12/21/2018
-ms.openlocfilehash: 24095aade80022d1e1ebb38357971512bfc873c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa62e8840c14e87d24db029d6bb7a215124a0511
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669688"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033678"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Hloubková diagnostika webových aplikací a služeb pomocí Application Insights
 ## <a name="why-do-i-need-application-insights"></a>Proč potřebuji Application Insights?
@@ -109,7 +110,7 @@ Mapa aplikace automaticky zjišťuje topologii vaší aplikace, vyhledává info
 ![Mapa aplikace](./media/devops/0050.png)
 
 ## <a name="application-insights-analytics"></a>Analýzy Application Insights
-Pomocí [analýzy](../../azure-monitor/app/analytics.md)můžete psát libovolné dotazy v výkonném jazyce podobném jazyku SQL.  Diagnostikování celého zásobníku aplikací je jednoduché, protože se připojí různé perspektivy a můžete klást správné otázky ke korelaci výkonu služby s obchodními metrikami a zákaznickým prostředím. 
+Pomocí [analýzy](../log-query/log-query-overview.md)můžete psát libovolné dotazy v výkonném jazyce podobném jazyku SQL.  Diagnostikování celého zásobníku aplikací je jednoduché, protože se připojí různé perspektivy a můžete klást správné otázky ke korelaci výkonu služby s obchodními metrikami a zákaznickým prostředím. 
 
 Můžete zadat dotaz na veškerou instanci telemetrie a nezpracovaná data metrik uložená na portálu. Tento jazyk zahrnuje filtry, spojení, agregace a další operace. Můžete vypočítat pole a provádět statistickou analýzu. K dispozici jsou tabulkové i grafické vizualizace.
 
@@ -159,4 +160,3 @@ Začínáme s Application Insights je snadné. Hlavní možnosti jsou:
 * [Servery služby IIS](../../azure-monitor/app/monitor-performance-live-website-now.md)a také pro [Azure App Service](../../azure-monitor/app/app-insights-overview.md).
 * Instrumentujte svůj projekt během vývoje. To můžete provést pro aplikace [ASP.NET](../../azure-monitor/app/asp-net.md) nebo [Java](../../azure-monitor/app/java-get-started.md) a také [Node.js](../../azure-monitor/app/nodejs.md) a hostitele [jiných typů](../../azure-monitor/app/platforms.md). 
 * Vyinstrumentujte [jakoukoli webovou stránku](../../azure-monitor/app/javascript.md) přidáním krátkého fragmentu kódu.
-

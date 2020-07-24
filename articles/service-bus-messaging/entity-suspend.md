@@ -3,12 +3,12 @@ title: Azure Service Bus – pozastavení entit zasílání zpráv
 description: Tento článek vysvětluje, jak dočasně pozastavit a znovu aktivovat entity Azure Service Bus zpráv (fronty, témata a odběry).
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 4c4e554ada8c66b56d5d466c7becfc813701402a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da7c25c8ef9f3daa32984ac26aa62710ab775951
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340000"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038133"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>Pozastavení a opětovná aktivace entit zasílání zpráv (zakázat)
 
@@ -20,7 +20,7 @@ Přerušení nebo opětovnou aktivaci může provést buď uživatel, nebo syst�
 
 Na portálu umožňuje oddíl **vlastnosti** příslušné entity změnit stav; na následujícím snímku obrazovky vidíte přepínač pro frontu:
 
-![][1]
+![Snímek obrazovky funkce Service Bus s zvýrazněným nastavením vlastností a možností stavu fronty nastavenou na aktivní a popsaný červeně.][1]
 
 Portál povoluje pouze úplné zakazování front. Operace odesílání a přijímání můžete také zakázat samostatně pomocí Service Bus rozhraní API [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) v sadě .NET Framework SDK nebo se šablonou Azure Resource Manager prostřednictvím Azure CLI nebo Azure PowerShell.
 

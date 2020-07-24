@@ -14,21 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
-ms.openlocfilehash: 121c9258353505b6147aa059d327bc711e9fede4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf8da1d88529a823ff4399fb955c8a5e0abbd20e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368427"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038235"
 ---
 # <a name="connect-your-alcide-kaudit-to-azure-sentinel"></a>Připojení Alcide kAudit k Azure Sentinel
+
+> [!IMPORTANT]
+> Datový konektor Alcide kAudit v Azure Sentinel je aktuálně ve verzi Public Preview.
+> Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [Alcide kAudit](https://www.alcide.io/kaudit-K8s-forensics/) pomáhá identifikovat chování neobvyklé Kubernetes a soustředit se na Kubernetes porušení a incidenty při zkrácení doby detekce. Tento článek vysvětluje, jak připojit řešení Alcide kAudit k Sentinel Azure. Datový konektor Alcide kAudit umožňuje snadno přenést data protokolu kAudit do služby Azure Sentinel, takže ji můžete zobrazit v sešitech, použít ji k vytvoření vlastních výstrah a začlenit je k vylepšení šetření. Integrace mezi Alcide kAudit a službou Azure Sentinel využívá REST API.
 
 > [!NOTE]
 > Data budou uložená v geografickém umístění pracovního prostoru, na kterém běží Azure Sentinel.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - V pracovním prostoru Azure Sentinel musíte mít oprávnění ke čtení a zápisu.
 

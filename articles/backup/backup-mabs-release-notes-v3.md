@@ -4,11 +4,12 @@ description: Tento článek poskytuje informace o známých problémech a altern
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: 2f67b73612bd970c903b179a4a02c787ee0320b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f4900bb129ee67cd75d2b793f4179e3135569a6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629186"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032557"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Poznámky k verzi pro Microsoft Azure Backup Server
 
@@ -53,13 +54,13 @@ V tomto článku jsou uvedené známé problémy a řešení pro Microsoft Azure
 
 **Alternativní řešení:** Proveďte následující kroky, pokud chcete upgradovat na MABS V3 pomocí nástroje Ruština Install Package:
 
-1. [Zálohujte](https://docs.microsoft.com/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server?view=sql-server-2017#SSMSProcedure) databázi SQL a odinstalujte MABS v2 (při odinstalaci si můžete zachovat chráněná data).
+1. [Zálohujte](/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server#SSMSProcedure) databázi SQL a odinstalujte MABS v2 (při odinstalaci si můžete zachovat chráněná data).
 2. Upgradujte na SQL 2017 (Enterprise) a odinstalujte hlášení v rámci upgradu.
-3. [Nainstalovat](https://docs.microsoft.com/sql/reporting-services/install-windows/install-reporting-services?view=sql-server-2017#install-your-report-server) SQL Server Reporting Services (SSRS).
-4. [Nainstalovat](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) SQL Server Management Studio (SSMS).
-5. Nakonfigurujte vytváření sestav pomocí parametrů popsaných v [konfiguraci služby SSRS pomocí SQL 2017](https://docs.microsoft.com/azure/backup/backup-azure-microsoft-azure-backup#upgrade-mabs).
+3. [Nainstalovat](/sql/reporting-services/install-windows/install-reporting-services#install-your-report-server) SQL Server Reporting Services (SSRS).
+4. [Nainstalovat](/sql/ssms/download-sql-server-management-studio-ssms) SQL Server Management Studio (SSMS).
+5. Nakonfigurujte vytváření sestav pomocí parametrů popsaných v [konfiguraci služby SSRS pomocí SQL 2017](./backup-azure-microsoft-azure-backup.md#upgrade-mabs).
 6. [Nainstalovat](backup-azure-microsoft-azure-backup.md) MABS V3.
-7. [Obnovit](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms?view=sql-server-2017) SQL pomocí SSMS a spusťte nástroj DPM-Sync, jak je popsáno [zde](https://docs.microsoft.com/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019#using-dpmsync).
+7. [Obnovit](/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms) SQL pomocí SSMS a spusťte nástroj DPM-Sync, jak je popsáno [zde](/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019#using-dpmsync).
 8. Aktualizujte vlastnost ' verze databáze ' v tabulce dbo. tbl_DLS_GlobalSetting pomocí následujícího příkazu:
 
     ```sql
