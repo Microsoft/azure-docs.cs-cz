@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: dd04087db32f0bbfa75dafa7e12c355e5ab7b515
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da75498d6e4616b287ddb11c69df2469baaf2655
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77670062"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067629"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Použití mikroměřiče s Azure Application Insights Java SDK
 Měření míry monitorování aplikací pro mikroměřiče pro kód aplikace založené na JVM a umožňuje exportovat data do oblíbených monitorovacích systémů. V tomto článku se dozvíte, jak používat mikroměřiče s Application Insights pro aplikace pro spouštění pružinového spouštění i pro aplikace bez pružiny.
@@ -270,4 +271,4 @@ Do konfiguračního souboru přidejte následující kód vazby:
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o mikroměřiči najdete v oficiální [dokumentaci k mikroměřiči](https://micrometer.io/docs).
-* Další informace o jaře v Azure najdete v [dokumentaci k oficiální jaře na platformě Azure](https://docs.microsoft.com/java/azure/spring-framework/?view=azure-java-stable).
+* Další informace o jaře v Azure najdete v [dokumentaci k oficiální jaře na platformě Azure](/java/azure/spring-framework/?view=azure-java-stable).

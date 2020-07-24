@@ -7,16 +7,16 @@ author: bwren
 ms.author: bwren
 ms.date: 08/19/2019
 ms.custom: mvc, sec-javascript-october2019
-ms.openlocfilehash: 2e63b2ca0ee7246009068e6a2875795a14aeddb3
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 91a4e2f6a770282e9d031c31fdf1af15f0cd00bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84695364"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067554"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Shromažďování dat z virtuálního počítače Azure pomocí Azure Monitor
 
-[Azure monitor](../overview.md) může shromažďovat data přímo z virtuálních počítačů Azure do pracovního prostoru Log Analytics a získat tak podrobnou analýzu a korelaci. Když nainstalujete rozšíření Log Analytics VM pro [Windows](../../virtual-machines/extensions/oms-windows.md) a [Linux](../../virtual-machines/extensions/oms-linux.md) , umožníte Azure monitor shromažďovat data z vašich virtuálních počítačů Azure. V tomto rychlém startu se dozvíte, jak nakonfigurovat a shromažďovat data z virtuálních počítačů se systémem Azure Linux nebo Windows pomocí rozšíření virtuálního počítače v několika snadných krocích.  
+[Azure monitor](../overview.md) může shromažďovat data přímo z virtuálních počítačů Azure do pracovního prostoru Log Analytics a analyzovat podrobnosti a korelace. Když nainstalujete rozšíření Log Analytics VM pro [Windows](../../virtual-machines/extensions/oms-windows.md) a [Linux](../../virtual-machines/extensions/oms-linux.md) , umožníte Azure monitor shromažďovat data z vašich virtuálních počítačů Azure. V tomto rychlém startu se dozvíte, jak nakonfigurovat a shromažďovat data z virtuálních počítačů se systémem Azure Linux nebo Windows pomocí rozšíření virtuálního počítače v několika snadných krocích.  
  
 Tento rychlý start předpokládá, že máte existující virtuální počítač Azure. Pokud ne, můžete [vytvořit virtuální počítač s Windows](../../virtual-machines/windows/quick-create-portal.md) nebo [vytvořit virtuální počítač s Linuxem](../../virtual-machines/linux/quick-create-cli.md) podle našich rychlých startů pro virtuální počítače.
 
@@ -28,7 +28,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 1. V Azure Portal vyberte **všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics pracovní prostory**.
 
-    ![portál Azure](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
+    ![Portál Azure Portal](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
 2. Vyberte **vytvořit**a pak vyberte volby pro následující položky:
 
@@ -141,4 +141,4 @@ Teď, když shromažďujete data o provozu a výkonu z virtuálních počítač�
 Pokud chcete zjistit, jak zobrazit a analyzovat data, pokračujte k následujícímu kurzu.
 
 > [!div class="nextstepaction"]
-> [Zobrazení nebo analýza dat v Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md)
+> [Zobrazení nebo analýza dat v Log Analytics](../log-query/get-started-portal.md)

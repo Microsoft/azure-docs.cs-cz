@@ -6,16 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/15/2019
-ms.openlocfilehash: 51584ccf5f845be8a06b1e049cae11e636edef11
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82960845e357579b82c493958287cb602d75182e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77659828"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067396"
 ---
 # <a name="log-analytics-smart-analytics-examples"></a>Příklady inteligentních analýz Log Analytics
 Tento článek obsahuje příklady použití funkcí inteligentní analýzy v Log Analytics k analýze aktivity uživatelů. Tyto příklady můžete použít k analýze vlastních aplikací monitorovaných Application Insights nebo použití konceptů v těchto dotazech pro podobnou analýzu dalších dat. 
 
-Podrobnosti o různých klíčových slovech použitých v těchto ukázkách najdete v referenčních informacích k [jazyku Kusto](https://docs.microsoft.com/azure/kusto/query/) . Pokud jste Log Analytics, Projděte si [lekci o vytváření dotazů](get-started-queries.md) .
+Podrobnosti o různých klíčových slovech použitých v těchto ukázkách najdete v referenčních informacích k [jazyku Kusto](/azure/kusto/query/) . Pokud jste Log Analytics, Projděte si [lekci o vytváření dotazů](get-started-queries.md) .
 
 ## <a name="cohorts-analytics"></a>Kohorty Analytics
 

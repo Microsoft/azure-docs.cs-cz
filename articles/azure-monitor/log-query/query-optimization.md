@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 9ae0aec6b87a746ed1f141dcf98f599acd20ab3a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a454d04701160492539f5c9caba57c9e617401e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82864245"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067487"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Optimalizace dotazů protokolu v Azure Monitor
 Protokoly Azure Monitor používají k ukládání dat protokolu službu [Azure Průzkumník dat (ADX)](/azure/data-explorer/) a spouštějí dotazy k analýze těchto dat. Vytváří, spravuje a udržuje clustery ADX za vás a optimalizuje je pro vaši úlohu analýzy protokolů. Když spustíte dotaz, bude optimalizován a směrován do příslušného clusteru ADX, který ukládá data pracovního prostoru. Protokoly Azure Monitor a Azure Průzkumník dat využívají řadu automatických mechanismů optimalizace dotazů. I když automatické optimalizace poskytují výrazné zvýšení, jsou v některých případech, kdy můžete výrazně vylepšit výkon dotazů. V tomto článku se dozvíte o požadavcích na výkon a o některých technikech jejich řešení.
@@ -156,7 +157,7 @@ Heartbeat
 > Tento ukazatel prezentuje jenom procesor z bezprostředního clusteru. Dotaz ve více oblastech by představoval jenom jednu z oblastí. V dotazu s více pracovními prostory nemusí obsahovat všechny pracovní prostory.
 
 ### <a name="avoid-full-xml-and-json-parsing-when-string-parsing-works"></a>Vyhněte se úplným analýzám XML a JSON, když funguje analýza řetězce.
-Úplná analýza objektu XML nebo JSON může využívat vysoké prostředky procesoru a paměti. V mnoha případech, pokud je potřeba pouze jeden nebo dva parametry a objekty XML nebo JSON jsou jednoduché, je snazší je analyzovat jako řetězce pomocí [operátoru Parse](/azure/kusto/query/parseoperator) nebo jiných [technik analýzy textu](/azure/azure-monitor/log-query/parse-text). Zvýšení výkonu bude důležitější jako počet záznamů v objektu XML nebo JSON. Je zásadní, když počet záznamů dosáhne desítky milionů.
+Úplná analýza objektu XML nebo JSON může využívat vysoké prostředky procesoru a paměti. V mnoha případech, pokud je potřeba pouze jeden nebo dva parametry a objekty XML nebo JSON jsou jednoduché, je snazší je analyzovat jako řetězce pomocí [operátoru Parse](/azure/kusto/query/parseoperator) nebo jiných [technik analýzy textu](./parse-text.md). Zvýšení výkonu bude důležitější jako počet záznamů v objektu XML nebo JSON. Je zásadní, když počet záznamů dosáhne desítky milionů.
 
 Následující dotaz například vrátí přesně stejné výsledky jako dotazy výše bez provedení úplné analýzy XML. Všimněte si, že některé předpoklady struktury souborů XML, jako je tento element FilePath, jsou uvedeny po hodnotě hash typu souboru a žádná z nich má atributy. 
 
@@ -218,6 +219,64 @@ SecurityEvent
 | where EventID == 4624 //Logon GUID is relevant only for logon event
 | summarize LoginSessions = dcount(LogonGuid) by Account
 ```
+
+### <a name="avoid-multiple-scans-of-same-source-data-using-conditional-aggregation-functions-and-materialize-function"></a>Vyhněte se několika kontrolám stejných zdrojových dat pomocí podmíněných agregačních funkcí a funkcí vyhodnotit.
+Pokud má dotaz několik dílčích dotazů, které jsou sloučeny pomocí operátorů JOIN nebo Union, každý dílčí dotaz prohledá celý zdroj samostatně a potom sloučí výsledky. To násobí počet pokusů, kolikrát jsou data ve velkých sadách dat velmi kritická.
+
+K tomu, abyste se vyhnuli, je třeba použít podmíněné agregační funkce. Většina [agregačních funkcí](/azure/data-explorer/kusto/query/summarizeoperator#list-of-aggregation-functions) , které jsou používány v rámci souhrnného operátora, má vytvořenou verzi s podmínkou, která umožňuje použít jediný operátor Shrnutí s více podmínkami. 
+
+Například následující dotazy zobrazují počet událostí přihlášení a počet událostí spuštění procesu pro každý účet. Vrátí stejné výsledky, ale první kontroluje data dvakrát, druhá je prohledává jenom jednou:
+
+```Kusto
+//Scans the SecurityEvent table twice and perform expensive join
+SecurityEvent
+| where EventID == 4624 //Login event
+| summarize LoginCount = count() by Account
+| join 
+(
+    SecurityEvent
+    | where EventID == 4688 //Process execution event
+    | summarize ExecutionCount = count(), ExecutedProcesses = make_set(Process) by Account
+) on Account
+```
+
+```Kusto
+//Scan only once with no join
+SecurityEvent
+| where EventID == 4624 or EventID == 4688 //early filter
+| summarize LoginCount = countif(EventID == 4624), ExecutionCount = countif(EventID == 4688), ExecutedProcesses = make_set_if(Process,EventID == 4688)  by Account
+```
+
+Další případ, kdy jsou poddotazy zbytečné, je předběžné filtrování pro [operátor Analyze](/azure/data-explorer/kusto/query/parseoperator?pivots=azuremonitor) , aby se zajistilo, že zpracuje pouze záznamy, které odpovídají konkrétnímu vzoru. To není nutné, protože operátor Parse a jiné podobné operátory vrátí prázdné výsledky, pokud se vzor neshoduje. Tady jsou dva dotazy, které vracejí přesně stejné výsledky, zatímco druhý dotaz kontroluje data pouze jednou. V druhém dotazu jsou jednotlivé příkazy Analyze relevantní pouze pro své události. Operátor extend pak ukazuje, jak odkazovat na prázdnou situaci dat.
+
+```Kusto
+//Scan SecurityEvent table twice
+union(
+SecurityEvent
+| where EventID == 8002 
+| parse EventData with * "<FilePath>" FilePath "</FilePath>" * "<FileHash>" FileHash "</FileHash>" *
+| distinct FilePath
+),(
+SecurityEvent
+| where EventID == 4799
+| parse EventData with * "CallerProcessName\">" CallerProcessName1 "</Data>" * 
+| distinct CallerProcessName1
+)
+```
+
+```Kusto
+//Single scan of the SecurityEvent table
+SecurityEvent
+| where EventID == 8002 or EventID == 4799
+| parse EventData with * "<FilePath>" FilePath "</FilePath>" * "<FileHash>" FileHash "</FileHash>" * //Relevant only for event 8002
+| parse EventData with * "CallerProcessName\">" CallerProcessName1 "</Data>" *  //Relevant only for event 4799
+| extend FilePath = iif(isempty(CallerProcessName1),FilePath,"")
+| distinct FilePath, CallerProcessName1
+```
+
+Pokud výše uvedené nedovoluje vyhnout se použití poddotazů, je další technika Nápověda k dotazovacímu stroji, že v každém z nich je v každém z nich použita jedna zdrojová data pomocí [funkce vyhodnotit ()](/azure/data-explorer/kusto/query/materializefunction?pivots=azuremonitor). To je užitečné, když zdrojová data přicházejí z funkce, která se v dotazu používá několikrát.
+
+
 
 ### <a name="reduce-the-number-of-columns-that-is-retrieved"></a>Snižte počet načtených sloupců.
 

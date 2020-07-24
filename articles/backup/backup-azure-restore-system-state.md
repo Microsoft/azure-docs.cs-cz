@@ -3,12 +3,12 @@ title: Obnovení stavu systému na Windows Server
 description: Podrobné vysvětlení obnovení stavu systému Windows Server ze zálohy v Azure.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 5212e5ea0ed3a8c0e0a8e9d4fa45f1eb6c901bf5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 8ba4cb5d5617b6a051aec8c54a595e701f62fb87
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184450"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067357"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Obnovení stavu systému na Windows Server
 
@@ -183,7 +183,7 @@ Tento článek bude projednávat jenom první scénář, který volá nonauthora
         >[!NOTE]
         >Pokud obnovujete všechna data služby Active Directory (a v doménové struktuře nezbývá žádné funkční řadiče domény), v kroku 9 výše se ujistěte, že jste vybrali **provést autoritativní obnovení souborů služby Active Directory**.
 
-    * K provedení obnovení z příkazového řádku použijte nástroj [Wbadmin](https://docs.microsoft.com/windows-server/administration/windows-commands/wbadmin-start-systemstaterecovery) .
+    * K provedení obnovení z příkazového řádku použijte nástroj [Wbadmin](/windows-server/administration/windows-commands/wbadmin-start-systemstaterecovery) .
 
         Budete potřebovat identifikátor verze zálohy, kterou chcete použít. Seznam identifikátorů verzí můžete získat spuštěním tohoto příkazu:
 
@@ -193,7 +193,7 @@ Tento článek bude projednávat jenom první scénář, který volá nonauthora
 
         Pak použijte tento identifikátor verze ke spuštění obnovení.
 
-        Pokud například chcete provést [nonauthorative obnovení služba AD DS a autoritativní obnovení složky SYSVOL](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore) pomocí zálohy od 04/30/2020 v 9:00 am, která je uložená ve sdíleném prostředku `\\servername\share` pro `server01` , zadejte:
+        Pokud například chcete provést [nonauthorative obnovení služba AD DS a autoritativní obnovení složky SYSVOL](/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore) pomocí zálohy od 04/30/2020 v 9:00 am, která je uložená ve sdíleném prostředku `\\servername\share` pro `server01` , zadejte:
 
         ```cmd
         wbadmin start systemstaterecovery -version:04/30/2020-09:00 -backupTarget:\\servername\share -machine:server01 -authsysvol

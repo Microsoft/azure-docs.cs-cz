@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 05/18/2020
+ms.date: 07/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 086491484592c8015bdb519bb498e73da3836f6f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 122f88e8bf14d3e3b082930716cffc3621afd336
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103904"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067696"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Správa a údržba agenta připojeného počítače
 
@@ -142,6 +142,9 @@ Nástroj Azcmagent (Azcmagent.exe) se používá ke konfiguraci agenta Azure ARC
 * **-v nebo--verbose** – Povolit podrobné protokolování
 
 **Připojení**, **odpojení**a opětovné **připojení** můžete provést ručně, pokud jste přihlášeni interaktivně, nebo automatizovat pomocí stejného instančního objektu, který jste použili k registraci více agentů nebo pomocí [přístupového tokenu](../../active-directory/develop/access-tokens.md)platformy Microsoft identity. Pokud jste nepoužívali instanční objekt k registraci počítače pomocí ARC Azure pro servery (Preview), přečtěte si následující [článek](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) a vytvořte instanční objekt.
+
+>[!NOTE]
+>Aby bylo možné spustit **azcmagent**, musíte mít oprávnění *root* Access pro počítače se systémem Linux.
 
 ### <a name="connect"></a>Připojit
 
