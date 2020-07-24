@@ -5,20 +5,46 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 06/24/2020
+ms.date: 07/19/2020
 ms.author: abnarain
-ms.openlocfilehash: e77d621d5699c434e691de0a523e58e49166d8d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 521756081db938e749849e6f3630dbd60700d24f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315147"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023814"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Řešení potíží s místním hostováním Integration runtime
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek popisuje běžné metody řešení potíží pro prostředí Integration runtime v místním prostředí v Azure Data Factory.
+
+## <a name="gather-self-hosted-integration-runtime-logs-from-azure-data-factory"></a>Shromažďování protokolů Integration runtime v místním prostředí z Azure Data Factory
+
+Pro neúspěšné aktivity běžící v místním prostředí IR/Shared IR Azure Data Factory podporuje zobrazování a nahrávání protokolů chyb. Pomocí následujících kroků můžete získat ID zprávy o chybách a pak zadat ID sestavy, kde najdete související známé problémy.
+
+1. Přejít na stránku **spuštění aktivit**
+
+1. Ve sloupci **Chyba** klikněte níže na tlačítko níže.
+
+    ![Stránka spuštění aktivit](media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page.png)
+
+1. Zobrazí se související protokoly pro spuštění neúspěšné aktivity. Další pomoc získáte kliknutím na tlačítko **Odeslat protokoly** .
+
+    ![Odeslat protokoly](media/self-hosted-integration-runtime-troubleshoot-guide/send-logs.png)
+
+1. Můžete zvolit protokoly, které chcete odeslat. V případě prostředí *IR*v místním prostředí můžete nahrávat protokoly týkající se neúspěšné aktivity nebo všech protokolů v uzlu IR v místním prostředí. Pro *sdílené infračervené*prostředí můžete nahrávat jenom protokoly týkající se neúspěšné aktivity.
+
+    ![Zvolit protokoly](media/self-hosted-integration-runtime-troubleshoot-guide/choose-logs.png)
+
+1. Po nahrání protokolů Udržujte záznam ID sestavy, pokud k vyřešení problému potřebujete další pomoc.
+
+    ![Nahrát protokoly](media/self-hosted-integration-runtime-troubleshoot-guide/upload-logs.png)
+
+> [!NOTE]
+> Žádosti o zobrazení a nahrání protokolu se spustí ve všech online autohostovaných instancích IR. Ujistěte se prosím, že všechny chybějící protokoly jsou online u všech místně hostovaných instancí IR. 
+
 
 ## <a name="common-errors-and-resolutions"></a>Běžné chyby a jejich řešení
 
@@ -281,7 +307,7 @@ Další pomoc při řešení potíží najdete v následujících zdrojích info
 
 *  [Blog Data Factory](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Žádosti o Data Factory funkcí](https://feedback.azure.com/forums/270578-data-factory)
-*  [Videa k Azure](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
+*  [Videa Azure](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Stránka s otázkou Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
 *  [Fórum přetečení zásobníku pro Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Informace o Twitteru týkající se Data Factory](https://twitter.com/hashtag/DataFactory)

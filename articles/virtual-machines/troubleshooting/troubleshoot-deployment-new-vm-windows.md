@@ -15,11 +15,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: daberry
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 78db1ba0eaff0dce83ed13e9f20c3c5a5b96bf9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b2f21cab4740013eb2de1d69f558c95461c493e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83120959"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028392"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Řešení potíží s nasazením při vytváření nového virtuálního počítače s Windows v Azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -36,7 +37,7 @@ Pokud chcete začít řešit potíže, Shromážděte protokoly aktivit a Identi
 
 [Zobrazení operací nasazení](../../azure-resource-manager/templates/deployment-history.md)
 
-[Zobrazení protokolů aktivit pro správu prostředků Azure](../../resource-group-audit.md)
+[Zobrazení protokolů aktivit pro správu prostředků Azure](../../azure-resource-manager/management/view-activity-logs.md)
 
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-issue1](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-issue1-include.md)]
 
@@ -52,7 +53,7 @@ Pokud chcete začít řešit potíže, Shromážděte protokoly aktivit a Identi
 
 **Rozlišení**
 
-Chcete-li tyto chyby vyřešit, použijte [příkaz Add-AzVhd k nahrání původního virtuálního pevného disku](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd), který je k dispozici místně, se stejným nastavením jako v operačním systému (generalizovaná/specializovaná). Pokud se chcete nahrát jako zobecněné, nezapomeňte nejdřív spustit nástroj Sysprep.
+Chcete-li tyto chyby vyřešit, použijte [příkaz Add-AzVhd k nahrání původního virtuálního pevného disku](/powershell/module/az.compute/add-azvhd), který je k dispozici místně, se stejným nastavením jako v operačním systému (generalizovaná/specializovaná). Pokud se chcete nahrát jako zobecněné, nezapomeňte nejdřív spustit nástroj Sysprep.
 
 **Zachytit chyby:**
 
@@ -89,5 +90,3 @@ K této chybě dochází v situacích, kdy je nový požadavek na virtuální po
 
 ## <a name="next-steps"></a>Další kroky
 Pokud narazíte na problémy při spuštění zastaveného virtuálního počítače s Windows nebo změníte velikost existujícího virtuálního počítače s Windows v Azure, přečtěte si téma [řešení potíží s nasazením správce prostředků potíží s restartováním nebo změnou velikosti stávajícího virtuálního počítače s Windows v Azure](restart-resize-error-troubleshooting.md).
-
-

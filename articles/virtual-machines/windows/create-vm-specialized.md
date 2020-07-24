@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 7d378f111104feb678d3d89f4a4c51998c67f2e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49554c053af0ceecf2b7f0b1162b7212694239db
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84234537"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028086"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Vytvoření virtuálního počítače s Windows ze specializovaného disku pomocí PowerShellu
 
@@ -32,7 +33,7 @@ Doporučujeme omezit počet souběžných nasazení na 20 virtuálních počíta
 
 ## <a name="option-1-use-an-existing-disk"></a>Možnost 1: použití existujícího disku
 
-Pokud máte virtuální počítač, který jste odstranili a chcete znovu použít disk s operačním systémem k vytvoření nového virtuálního počítače, použijte [příkaz Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk).
+Pokud máte virtuální počítač, který jste odstranili a chcete znovu použít disk s operačním systémem k vytvoření nového virtuálního počítače, použijte [příkaz Get-AzDisk](/powershell/module/az.compute/get-azdisk).
 
 ```powershell
 $resourceGroupName = 'myResourceGroup'
@@ -67,7 +68,7 @@ Pokud chcete zkopírovat existující virtuální počítač do jiné oblasti, m
 
 ### <a name="take-a-snapshot-of-the-os-disk"></a>Pořídit snímek disku s operačním systémem
 
-Můžete pořídit snímek celého virtuálního počítače (včetně všech disků) nebo jenom jednoho disku. Následující kroky ukazují, jak pořídit snímek jenom disku s operačním systémem virtuálního počítače pomocí rutiny [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) . 
+Můžete pořídit snímek celého virtuálního počítače (včetně všech disků) nebo jenom jednoho disku. Následující kroky ukazují, jak pořídit snímek jenom disku s operačním systémem virtuálního počítače pomocí rutiny [New-AzSnapshot](/powershell/module/az.compute/new-azsnapshot) . 
 
 Nejdřív nastavte některé parametry. 
 
@@ -115,7 +116,7 @@ Pokud chcete pomocí tohoto snímku vytvořit virtuální počítač, který mus
 
 ### <a name="create-a-new-disk-from-the-snapshot"></a>Vytvoření nového disku ze snímku
 
-Pomocí [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk)vytvořte ze snímku spravovaný disk. V tomto příkladu se pro název disku používá *myOSDisk* .
+Pomocí [New-AzDisk](/powershell/module/az.compute/new-azdisk)vytvořte ze snímku spravovaný disk. V tomto příkladu se pro název disku používá *myOSDisk* .
 
 Vytvořte novou skupinu prostředků pro nový virtuální počítač.
 
@@ -235,7 +236,7 @@ $vm = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
 
 ### <a name="add-the-os-disk"></a>Přidat disk s operačním systémem 
 
-Přidejte disk s operačním systémem do konfigurace pomocí [set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk). V tomto příkladu se nastaví velikost disku na *128 GB* a připojí se spravovaný disk jako disk s operačním *systémem Windows* .
+Přidejte disk s operačním systémem do konfigurace pomocí [set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk). V tomto příkladu se nastaví velikost disku na *128 GB* a připojí se spravovaný disk jako disk s operačním *systémem Windows* .
  
 ```powershell
 $vm = Set-AzVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType Standard_LRS `
@@ -244,7 +245,7 @@ $vm = Set-AzVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType Stand
 
 ### <a name="complete-the-vm"></a>Dokončete virtuální počítač. 
 
-Vytvořte virtuální počítač pomocí [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) s konfiguracemi, které jsme právě vytvořili.
+Vytvořte virtuální počítač pomocí [New-AzVM](/powershell/module/az.compute/new-azvm) s konfiguracemi, které jsme právě vytvořili.
 
 ```powershell
 New-AzVM -ResourceGroupName $destinationResourceGroup -Location $location -VM $vm
@@ -269,4 +270,3 @@ $vmList.Name
 
 ## <a name="next-steps"></a>Další kroky
 Přihlaste se k novému virtuálnímu počítači. Další informace najdete v tématu [jak se připojit a přihlásit se k virtuálnímu počítači Azure s Windows](connect-logon.md).
-

@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 03/15/2020
+ms.date: 07/15/2020
 ms.author: apimpm
-ms.openlocfilehash: ecbd4d97bb092ccbdb286e4865bf04e770ca9473
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d479f18e8764a69cdc81f99d723534e4895b0e4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207885"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025077"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Přehled portálu pro vývojáře Azure API Management
 
@@ -29,6 +29,9 @@ Tento článek popisuje rozdíly mezi místně hostovanými a spravovanými verz
 ![Portál pro vývojáře API Management](media/api-management-howto-developer-portal/cover.png)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
+
+> [!NOTE]
+> <a name="migrate-from-legacy"></a>Nový portál pro vývojáře není kompatibilní se starší verzí portálu pro vývojáře a automatizovaná migrace není možná. Je potřeba ručně znovu vytvořit obsah (stránky, text, multimediální soubory) a přizpůsobit vzhled nového portálu. Pokyny najdete [v kurzu na portálu pro vývojáře](api-management-howto-developer-portal-customize.md) .
 
 ## <a name="managed-and-self-hosted-versions"></a><a name="managed-vs-self-hosted"></a>Spravované a samostatně hostované verze
 
@@ -82,19 +85,13 @@ Pokud nechcete obnovit obsah portálu, můžete zvážit použití nově dostupn
 
 Pokud byl portál zřízen po oznámení obecné dostupnosti, měl by již být součástí nového výchozího obsahu. Z vaší strany se nevyžaduje žádná akce.
 
-### <a name="how-can-i-migrate-from-the-old-developer-portal-to-the-developer-portal"></a>Jak se dá migrovat z původního portálu pro vývojáře na portál pro vývojáře?
-
-Portály nejsou kompatibilní a je potřeba migrovat obsah ručně.
-
-### <a name="does-the-portal-have-all-the-features-of-the-old-portal"></a>Má portál všechny funkce starého portálu?
+### <a name="does-the-portal-have-all-the-features-of-the-legacy-portal"></a>Má portál všechny funkce starší verze portálu?
 
 Portál pro vývojáře už nepodporuje *aplikace* a *problémy*.
 
-Ověřování pomocí OAuth v interaktivní konzole pro vývojáře ještě není podporované. Průběh můžete sledovat prostřednictvím [problému na GitHubu](https://github.com/Azure/api-management-developer-portal/issues/208).
+### <a name="has-the-legacy-portal-been-deprecated"></a>Je starší verze portálu zastaralá?
 
-### <a name="has-the-old-portal-been-deprecated"></a>Byl starý portál zastaralý?
-
-Starý portál pro vývojáře a vydavatele teď představují *starší* funkce – budou dostávat jenom aktualizace zabezpečení. Nové funkce se implementují jenom na novém portálu pro vývojáře.
+Starší verze portálu pro vývojáře a vydavatele jsou nyní *starší* než funkce – budou přijímat pouze aktualizace zabezpečení. Nové funkce se implementují jenom na novém portálu pro vývojáře.
 
 Vyřazení starší verze portálů bude oznámeno samostatně. Pokud máte dotazy, obavy nebo komentáře, vyvolejte je [ve vyhrazeném problému GitHubu](https://github.com/Azure/api-management-developer-portal/issues/121).
 
@@ -203,7 +200,7 @@ Selhání volání může být způsobeno také certifikátem TLS/SSL, který je
 
 ### <a name="whats-the-browser-support-for-the-portal"></a>Jaká je podpora prohlížeče pro portál?
 
-| Prohlížeč                     | Podporuje se       |
+| Prohlížeč                     | Podporováno       |
 |-----------------------------|-----------------|
 | Apple Safari                | Ano<sup>1</sup> |
 | Google Chrome               | Ano<sup>1</sup> |

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: overview
-ms.date: 03/26/2020
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c25d5ee7ed730747317ea52286174968eb0e2fd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8399f7101697af429b8c073c101dbfea203e98ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103700"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025587"
 ---
 # <a name="what-is-a-device-identity"></a>Co je identita zařízení?
 
@@ -45,9 +45,9 @@ Pokud chcete v Azure AD získat zařízení, máte několik možností:
 - **Připojené k Azure AD**
    - Zařízení, která jsou připojená k Azure AD, jsou vlastněna organizací a jsou přihlášená pomocí účtu Azure AD patřícího do této organizace. Existují jenom v cloudu.
       - Windows 10 
-      - [Windows Server 2019 Virtual Machines běžící v Azure] (./howto-vm-sign-in-azure-ad-windows.md) (Jádro serveru není podporované.)
+      - [Windows Server 2019 Virtual Machines běžící v Azure](howto-vm-sign-in-azure-ad-windows.md) (jádro serveru se nepodporuje)
 - **k hybridní službě Azure AD**.
-   - Zařízení, která jsou připojená k hybridní službě Azure AD, jsou vlastněna organizací a jsou přihlášená pomocí účtu Azure AD patřícího do této organizace. Existují v cloudu i v místním prostředí.
+   - Zařízení, která jsou připojená k hybridní službě Azure AD, jsou vlastněna organizací a jsou přihlášená pomocí účtu Active Directory Domain Services, který patří do této organizace. Existují v cloudu i v místním prostředí.
       - Windows 7, 8,1 nebo 10
       - Windows Server 2008 nebo novější
 
@@ -86,7 +86,7 @@ Zařízení, která jsou připojená k Azure AD nebo hybridní služba Azure AD,
 
 Získání zařízení v rámci služby Azure AD se dá provádět samoobslužným způsobem nebo řízeným procesem zřizování správců.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Správa identit zařízení ve službě Azure AD vám umožní:
 

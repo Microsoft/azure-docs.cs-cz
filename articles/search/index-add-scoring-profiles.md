@@ -8,12 +8,12 @@ ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 4bc5897401a62d45e8b1c987d7ef50e0c8a6de08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae41cc620960bd49603e6712759585796e76fe67
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565355"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029939"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Přidání profilů vyhodnocování do indexu služby Azure Cognitive Search
 
@@ -254,7 +254,7 @@ Skóre hledání je vypočítáno na základě statistických vlastností dat a 
 ##  <a name="set-interpolations"></a><a name="bkmk_interpolation"></a>Nastavit interpoly  
  Interpolace umožňují nastavit tvar sklonu, který se používá pro bodování. Vzhledem k tomu, že je bodování vysoké, je sklon vždy nižší, ale interpolace určuje křivku sklonu dolů. Můžete použít následující interpolace:  
 
-|||  
+| Interpolace | Popis |  
 |-|-|  
 |`linear`|U položek, které jsou v rozsahu Max a min, se zvýšení použité pro položku provede v nepřetržitém snížení množství. Lineární je výchozí interpolací pro profil vyhodnocování.|  
 |`constant`|Pro položky, které jsou v rozsahu od začátku do konce, se pro výsledky řazení použije konstantní zvýšení.|  
@@ -281,6 +281,6 @@ Skóre hledání je vypočítáno na základě statistických vlastností dat a 
 
 ## <a name="see-also"></a>Viz také  
 
-+ [Odkaz na REST API](https://docs.microsoft.com/rest/api/searchservice/)   
++ [Reference k rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/)   
 + [Vytvoření rozhraní API pro index](https://docs.microsoft.com/rest/api/searchservice/create-index)   
 + [Sada Azure Kognitivní hledání .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  

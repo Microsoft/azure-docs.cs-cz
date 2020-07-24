@@ -4,12 +4,12 @@ description: Vytvoření a Správa blockchain Data Manager pro službu Azure blo
 ms.date: 03/30/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: b7b897f35cb864e2a1fa904bbb3ec13b56986598
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f067f4413f6ad8541cd36a7581f9243bed4e195f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85200456"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023734"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>Konfigurace Blockchain Data Manageru s využitím Azure CLI
 
@@ -23,9 +23,9 @@ Pokud chcete nakonfigurovat instanci Data Manager blockchain, postupujte takto:
 * Přidání aplikace blockchain
 * Spustit instanci
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Nainstalujte nejnovější rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) a přihlaste se pomocí `az login` .
+* Nainstalujte nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) a přihlaste se pomocí `az login` .
 * Kompletní [rychlé zprovoznění: pomocí Visual Studio Code se připojte k síti konsorcia služeb Azure blockchain](connect-vscode.md). Služba Azure blockchain Service úrovně *Standard* se doporučuje při použití blockchain data Manager.
 * Vytvoření [tématu Event Grid](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
 * Další informace o [obslužných rutinách událostí v Azure Event Grid](../../event-grid/event-handlers.md)
@@ -36,11 +36,11 @@ Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použ
 
 Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče tak, že přejdete na [https://shell.azure.com/bash](https://shell.azure.com/bash) . Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
 
-Pokud dáváte přednost instalaci a používání rozhraní příkazového řádku místně, musíte použít Azure CLI verze 2.0.51 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Pokud dáváte přednost instalaci a používání rozhraní příkazového řádku místně, musíte použít Azure CLI verze 2.0.51 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](https://docs.microsoft.com/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *eastus* :
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *eastus* :
 
 ```azurecli-interactive
 az group create --name myRG --location eastus
@@ -79,7 +79,7 @@ Příklad konfigurace JSON pro vytvoření instance blockchain Manageru v oblast
 }
 ```
 
-| Prvek | Description |
+| Element | Popis |
 |---------|-------------|
 | location | Oblast, kde se má vytvořit prostředek sledovacího procesu |
 | properties | Vlastnosti, které se mají nastavit při vytváření prostředku sledovacího procesu |
@@ -147,7 +147,7 @@ Příklad konfigurace JSON pro vytvoření vstupního prostředku v oblasti *vý
 }
 ```
 
-| Prvek | Description |
+| Element | Popis |
 |---------|-------------|
 | location | Oblast, kde se má vytvořit vstupní prostředek |
 | inputType | Typ hlavní knihy člena služby Azure blockchain. V současné době se podporuje **ethereem** . |
@@ -219,7 +219,7 @@ Příklad konfigurace JSON pro vytvoření výstupního prostředku v oblasti *v
 }
 ```
 
-| Prvek | Description |
+| Element | Popis |
 |---------|-------------|
 | location | Oblast, ve které se má vytvořit výstupní prostředek. |
 | outputType | Typ výstupu. V současné době se podporuje **EventGrid** . |
@@ -301,7 +301,7 @@ Příklad konfigurace JSON pro vytvoření prostředku aplikace v oblasti *vých
 }
 ```
 
-| Prvek | Description |
+| Element | Popis |
 |---------|-------------|
 | location | Oblast, kde se má vytvořit prostředek aplikace |
 | artifactType | Typ aplikace V současné době se podporuje **EthereumSmartContract** . |
@@ -347,7 +347,7 @@ az resource invoke-action \
 
 | Parametr | Popis |
 |-----------|-------------|
-| action | Spusťte sledovací proces pomocí rutiny **Start** . |
+| akce | Spusťte sledovací proces pomocí rutiny **Start** . |
 | identifikační | ID prostředku sledovacího procesu. \<Subscription ID\>Hodnoty, \<Resource group\> a nahraďte \<Watcher name\> hodnotou prostředku sledovacího procesu.|
 
 ### <a name="start-instance-example"></a>Příklad spuštění instance
@@ -372,7 +372,7 @@ az resource invoke-action \
 
 | Parametr | Popis |
 |-----------|-------------|
-| action | Pomocí **stop** zastavte sledovací proces. |
+| akce | Pomocí **stop** zastavte sledovací proces. |
 | identifikační | Název sledovacího procesu. \<Subscription ID\>Hodnoty, \<Resource group\> a nahraďte \<Watcher name\> hodnotou prostředku sledovacího procesu. |
 
 ### <a name="stop-watcher-example"></a>Příklad zastavení sledovacího procesu

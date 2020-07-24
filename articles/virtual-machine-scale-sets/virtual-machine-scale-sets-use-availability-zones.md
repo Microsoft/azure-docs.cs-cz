@@ -9,11 +9,12 @@ ms.subservice: availability
 ms.date: 08/08/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: daa469bef999f33feb44983e3b5a7073b4df655e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1c91bf9138e37c6de381ab34ab80413d3040981
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83197357"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029310"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Vytvoření sady škálování virtuálních počítačů, která používá Zóny dostupnosti
 
@@ -60,7 +61,7 @@ Pokud chcete použít Zóny dostupnosti, musí být vaše sada škálování vyt
 - [Azure Portal](#use-the-azure-portal)
 - Azure CLI
 - [Azure PowerShell](#use-azure-powershell)
-- [Šablony Azure Resource Manageru](#use-azure-resource-manager-templates)
+- [Šablony Azure Resource Manager](#use-azure-resource-manager-templates)
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
@@ -91,7 +92,7 @@ az vmss create \
 
 ### <a name="zone-redundant-scale-set"></a>Sada škálování s redundantní zónou
 
-Chcete-li vytvořit zónu s redundantní sadou škálování, použijte veřejnou IP adresu *standardní* SKU a nástroj pro vyrovnávání zatížení. Pro zajištění rozšířené redundance vytvoří *standardní* SKU síťové prostředky redundantní v zóně. Další informace najdete v tématu [přehled Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md) a [Standard Load Balancer a zóny dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md).
+Chcete-li vytvořit zónu s redundantní sadou škálování, použijte veřejnou IP adresu *standardní* SKU a nástroj pro vyrovnávání zatížení. Pro zajištění rozšířené redundance vytvoří *standardní* SKU síťové prostředky redundantní v zóně. Další informace najdete v tématu [přehled Azure Load Balancer Standard](../load-balancer/load-balancer-overview.md) a [Standard Load Balancer a zóny dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md).
 
 Chcete-li vytvořit zónu s redundantní sadou škálování, určete více zón s `--zones` parametrem. Následující příklad vytvoří zónu redundantní sady škálování s názvem *myScaleSet* napříč zónami *1, 2, 3*:
 
@@ -208,7 +209,7 @@ Chcete-li vytvořit zónu s redundantní sadou škálování, zadejte ve `zones`
 }
 ```
 
-Pokud vytvoříte veřejnou IP adresu nebo nástroj pro vyrovnávání zatížení, zadejte vlastnost *"SKU": {"Name": "Standard"}* pro vytváření redundantních síťových prostředků zóny. Také je nutné vytvořit skupinu zabezpečení sítě a pravidla pro povolení jakéhokoli provozu. Další informace najdete v tématu [přehled Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md) a [Standard Load Balancer a zóny dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md).
+Pokud vytvoříte veřejnou IP adresu nebo nástroj pro vyrovnávání zatížení, zadejte vlastnost *"SKU": {"Name": "Standard"}* pro vytváření redundantních síťových prostředků zóny. Také je nutné vytvořit skupinu zabezpečení sítě a pravidla pro povolení jakéhokoli provozu. Další informace najdete v tématu [přehled Azure Load Balancer Standard](../load-balancer/load-balancer-overview.md) a [Standard Load Balancer a zóny dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md).
 
 Úplný příklad redundantní sady škálování a síťových prostředků v zóně najdete v [této ukázkové správce prostředků šabloně](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json) .
 

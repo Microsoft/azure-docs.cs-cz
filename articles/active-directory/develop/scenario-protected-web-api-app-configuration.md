@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 073eca94ad93c69811b02abe2c8649940a394e8e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 992c29cb8380cf6acbe970b2fd5e958b6b2b33dc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80882467"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026709"
 ---
 # <a name="protected-web-api-code-configuration"></a>Chráněné webové rozhraní API: Konfigurace kódu
 
@@ -90,11 +91,33 @@ Tato část popisuje, jak nakonfigurovat nosný token.
 }
 ```
 
+#### <a name="case-where-you-used-a-custom-app-id-uri-for-your-web-api"></a>Případ, kdy jste pro vaše webové rozhraní API použili vlastní identifikátor URI ID aplikace
+
+Pokud jste přijali identifikátor URI ID aplikace navržený portálem pro registraci aplikací, nemusíte zadávat cílovou skupinu (viz [identifikátor URI a obory ID aplikace](scenario-protected-web-api-app-registration.md#application-id-uri-and-scopes)). V opačném případě byste měli přidat `Audience` vlastnost, jejíž hodnota je identifikátor URI ID aplikace pro vaše webové rozhraní API.
+
+```Json
+{
+  "AzureAd": {
+    "Instance": "https://login.microsoftonline.com/",
+    "ClientId": "[Client_id-of-web-api-eg-2ec40e65-ba09-4853-bcde-bcb60029e596]",
+    "TenantId": "common",
+    "Audience": "custom App ID URI for your web API"
+  },
+  // more lines
+}
+```
+
 ### <a name="code-initialization"></a>Inicializace kódu
 
 Když se aplikace zavolá na akci kontroleru, která obsahuje atribut **[Authorization]** , ASP.NET a ASP.NET Core extrahuje přístupový token z tokenu Bearer autorizační hlavičky. Přístupový token se pak přesměruje do middlewaru JwtBearer, který volá rozšíření Microsoft IdentityModel pro .NET.
 
-V ASP.NET Core se tento middleware Inicializuje v souboru Startup.cs.
+#### <a name="using-microsoftidentityweb-templates"></a>Používání šablon Microsoft. identity. Web
+
+Můžete vytvořit webové rozhraní API od nuly pomocí šablon Microsoft. identity. Web Project. Podrobnosti najdete v tématu [Šablona projektu Microsoft. identity. Web-Web API](https://aka.ms/ms-id-web/webapi-project-templates) .
+
+#### <a name="starting-from-an-existing-aspnet-core-31-application"></a>Počínaje existující aplikací ASP.NET Core 3,1
+
+Dnes ASP.NET Core 3,1 používá knihovnu Microsoft. AspNetCore. AzureAD. UI. Middleware se inicializuje v souboru Startup.cs.
 
 ```csharp
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -103,33 +126,37 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 Middleware se do webového rozhraní API přidá pomocí této instrukce:
 
 ```csharp
- services.AddAuthentication(AzureADDefaults.JwtBearerAuthenticationScheme)
-         .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
+// This method gets called by the runtime. Use this method to add services to the container.
+public void ConfigureServices(IServiceCollection services)
+{
+  services.AddAuthentication(AzureADDefaults.JwtBearerAuthenticationScheme)
+          .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
+}
 ```
 
- V současné době šablony ASP.NET Core vytvářejí webová rozhraní API Azure Active Directory (Azure AD), která přihlásí uživatele v rámci vaší organizace nebo v jakékoli organizaci. Nepodepisují uživatele pomocí osobních účtů. Ale můžete změnit šablony tak, aby používaly koncový bod Microsoft Identity Platform přidáním tohoto kódu do Startup.cs:
+ V současné době šablony ASP.NET Core vytvářejí webová rozhraní API Azure Active Directory (Azure AD), která přihlásí uživatele v rámci vaší organizace nebo v jakékoli organizaci. Nepodepisují uživatele pomocí osobních účtů. Šablony ale můžete změnit tak, aby používaly koncový bod Microsoft Identity Platform pomocí [Microsoft. identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web), který je k dispozici jako balíček NuGet, a nahradit kód v *Startup.cs*:
 
 ```csharp
-services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationScheme, options =>
-{
-    // This is a Microsoft identity platform web API.
-    options.Authority += "/v2.0";
-
-    // The web API accepts as audiences both the Client ID (options.Audience) and api://{ClientID}.
-    options.TokenValidationParameters.ValidAudiences = new []
-    {
-     options.Audience,
-     $"api://{options.Audience}"
-    };
-
-    // Instead of using the default validation (validating against a single tenant,
-    // as we do in line-of-business apps),
-    // we inject our own multitenant validation logic (which even accepts both v1 and v2 tokens).
-    options.TokenValidationParameters.IssuerValidator = AadIssuerValidator.GetIssuerValidator(options.Authority).Validate;;
-});
+using Microsoft.Identity.Web;
 ```
 
-Předchozí fragment kódu se extrahuje z přírůstkového kurzu ASP.NET Core webového rozhraní API v [Microsoft. identity. Web/WebApiServiceCollectionExtensions. cs # L50-L63](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/154282843da2fc2958fad151e2a11e521e358d42/Microsoft.Identity.Web/WebApiServiceCollectionExtensions.cs#L50-L63). Metoda **AddProtectedWebApi** , která obsahuje více než fragment kódu, je volána z Startup.cs.
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+ // Adds Microsoft Identity platform (AAD v2.0) support to protect this API
+ services.AddMicrosoftWebApiAuthentication(Configuration, "AzureAd");
+
+ services.AddControllers();
+}
+```
+
+> [!NOTE]
+> Pokud používáte Microsoft. identity. Web a nenastavíte `Audience` v *appsettings.jsna*, použije se následující:
+> -  `$"{ClientId}"`Pokud jste nastavili [verzi přístupového tokenu](scenario-protected-web-api-app-registration.md#accepted-token-version) na `2` nebo pro Azure AD B2C webová rozhraní API.
+> - `$"api://{ClientId}`ve všech ostatních případech (pro [přístupové tokeny](access-tokens.md)v 1.0).
+> Podrobnosti najdete v tématu Microsoft. identity. Web [Source Code](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/Resource/RegisterValidAudience.cs#L70-L83).
+
+Předchozí fragment kódu je extrahován z [přírůstkového kurzu ASP.NET Core webového rozhraní API](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/63087e83326e6a332d05fee6e1586b66d840b08f/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Startup.cs#L23-L28). Podrobnosti o **AddMicrosoftWebApiAuthentication** jsou k dispozici v [Microsoft. identity. Web](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiServiceCollectionExtensions.cs#L27). Tato metoda volá [AddMicrosoftWebAPI](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiAuthenticationBuilderExtensions.cs#L58), která sám instruuje middleware k ověření tokenu. Podrobnosti najdete ve [zdrojovém kódu](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiAuthenticationBuilderExtensions.cs#L104-L122).
 
 ## <a name="token-validation"></a>Ověření tokenu
 
@@ -149,7 +176,7 @@ Kroky ověření jsou zachyceny ve validátorech, které jsou poskytovány pomoc
 
 Tato tabulka popisuje validátory:
 
-| Hodnocení | Description |
+| Hodnocení | Popis |
 |---------|---------|
 | **ValidateAudience** | Ověří, jestli je token pro aplikaci, která token ověřuje za vás. |
 | **ValidateIssuer** | Zajišťuje, že token byl vydán důvěryhodnou službou STS, což znamená, že je od někoho, kterému důvěřujete. |
@@ -158,13 +185,40 @@ Tato tabulka popisuje validátory:
 | **ValidateSignature** | Zaručí, že token nebyl zfalšován. |
 | **ValidateTokenReplay** | Zajistí, že token nebude znovu přehráván. Pro některé protokoly jednorázová se používá zvláštní případ. |
 
+#### <a name="customizing-token-validation"></a>Přizpůsobení ověření tokenu
+
 Validátory jsou přidruženy k vlastnostem třídy **TokenValidationParameters** . Vlastnosti jsou inicializovány z konfigurace ASP.NET a ASP.NET Core.
 
-Ve většině případů nemusíte měnit parametry. Mezi aplikace, které nejsou jedenmi klienty, patří výjimka. Tyto webové aplikace přijímají uživatele z libovolné organizace nebo z osobních účtů Microsoft. Vystavitelé v tomto případě musí být ověřeni.
+Ve většině případů nemusíte měnit parametry. Mezi aplikace, které nejsou jedenmi klienty, patří výjimka. Tyto webové aplikace přijímají uživatele z libovolné organizace nebo z osobních účtů Microsoft. Vystavitelé v tomto případě musí být ověřeni. Microsoft. identity. Web se zajímá také o ověření vystavitele. Podrobnosti najdete v článku Microsoft. identity. Web [AadIssuerValidator](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web/Resource/AadIssuerValidator.cs).
+
+Pokud chcete přizpůsobit parametry ověření tokenu, v ASP.NET Core použijte následující fragment kódu v *Startup.cs*:
+
+```c#
+services.AddMicrosoftWebApiAuthentication(Configuration);
+services.Configure<JwtBearerOptions>(JwtBearerDefaults.AuthenticationScheme, options =>
+{
+  var existingOnTokenValidatedHandler = options.Events.OnTokenValidated;
+  options.Events.OnTokenValidated = async context =>
+  {
+       await existingOnTokenValidatedHandler(context);
+      // Your code to add extra configuration that will be executed after the current event implementation.
+      options.TokenValidationParameters.ValidIssuers = new[] { /* list of valid issuers */ };
+      options.TokenValidationParameters.ValidAudiences = new[] { /* list of valid audiences */};
+  }
+});
+```
+
+V případě ASP.NET MVC ukazuje následující ukázka kódu, jak provést vlastní ověření tokenu:
+
+https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation
 
 ## <a name="token-validation-in-azure-functions"></a>Ověřování tokenu v Azure Functions
 
-Tokeny příchozích přístupových oprávnění můžete také ověřit v Azure Functions. Příklady takového ověřování najdete v [Microsoft .NET](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions), [NodeJS](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions)a [Pythonu](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions).
+Tokeny příchozích přístupových oprávnění můžete také ověřit v Azure Functions. Příklady takového ověřování najdete v následujících ukázkách kódu na GitHubu:
+
+- .NET: [Azure-Samples/MS-identity-dotnet-WebApi-azurefunctions](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions)
+- Node.js: [Azure-Samples/MS-identity-NodeJS-WebApi-azurefunctions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions)
+- Python: [Azure-Samples/MS-identity-Python-WebApi-azurefunctions)](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions)
 
 ## <a name="next-steps"></a>Další kroky
 

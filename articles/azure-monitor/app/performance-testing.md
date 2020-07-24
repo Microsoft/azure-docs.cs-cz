@@ -4,16 +4,17 @@ description: Nastavení výkonu a zátěžových testů pomocí Azure Applicatio
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 0bfb60b876add70be6cbcd3d726fb3317a8dfcf9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8885a2e511c11317f593706255437e52819adcae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669858"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024346"
 ---
 # <a name="performance-testing"></a>Testování výkonu
 
 > [!NOTE]
-> Služba zátěžového testování založená na cloudu je zastaralá. Další informace o zastaralosti, dostupnosti služby a alternativních službách najdete [tady](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops).
+> Služba zátěžového testování založená na cloudu je zastaralá. Další informace o zastaralosti, dostupnosti služby a alternativních službách najdete [tady](/azure/devops/test/load-test/overview?view=azure-devops).
 
 Application Insights umožňuje generovat zátěžové testy pro vaše weby. Podobně jako u [testů dostupnosti](monitor-web-app-availability.md)můžete odeslat buď základní požadavky, nebo [požadavky na více kroků](availability-multistep.md) od agentů Azure Testers po celém světě. Testy výkonu vám umožní simulovat až 20 000 současných uživatelů po dobu až 60 minut.
 

@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
-ms.openlocfilehash: fdf29924da31db0347938df89e698cb258c2336b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e188a0e8ee8b5f2037c07c3f15fd78a42852ce9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708293"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023224"
 ---
 # <a name="filters"></a>Filtry
 
@@ -38,8 +38,8 @@ Media Services vám umožní vytvořit **filtry účtu** a **filtry assetů** pr
 
 Existují dva typy filtrů: 
 
-* [Filtry účtu](https://docs.microsoft.com/rest/api/media/accountfilters) (globální) – dá se použít pro všechny prostředky v účtu Azure Media Services, které mají dobu života účtu.
-* [Filtry assetu](https://docs.microsoft.com/rest/api/media/assetfilters) (místní) – lze použít pouze na prostředek, ke kterému byl filtr přidružen při vytváření, a má životnost assetu. 
+* [Filtry účtu](/rest/api/media/accountfilters) (globální) – dá se použít pro všechny prostředky v účtu Azure Media Services, které mají dobu života účtu.
+* [Filtry assetu](/rest/api/media/assetfilters) (místní) – lze použít pouze na prostředek, ke kterému byl filtr přidružen při vytváření, a má životnost assetu. 
 
 **Filtry účtu** a typy **filtrů prostředků** mají přesně stejné vlastnosti pro definování/popis filtru. Kromě při vytváření **filtru assetů**je třeba zadat název assetu, ke kterému chcete filtr přidružit.
 
@@ -47,7 +47,7 @@ V závislosti na vašem scénáři se rozhodujete, jaký typ filtru je vhodněj�
 
 Pomocí následujících vlastností popíšete filtry. 
 
-|Name|Description|
+|Název|Popis|
 |---|---|
 |firstQuality|První přenosová rychlost filtru.|
 |presentationTimeRange|Časový rozsah prezentace. Tato vlastnost se používá pro filtrování počátečních a koncových bodů, délky okna prezentace a živé počáteční pozice. <br/>Další informace najdete v tématu [PresentationTimeRange](#presentationtimerange).|
@@ -57,7 +57,7 @@ Pomocí následujících vlastností popíšete filtry.
 
 Tuto vlastnost použijte s **filtry assetů**. Nedoporučuje se nastavovat vlastnost s **filtry účtu**.
 
-|Name|Description|
+|Název|Popis|
 |---|---|
 |**endTimestamp**|Platí pro video na vyžádání (VoD).<br/>V případě prezentace živého streamování se netichě ignoruje a použije se při ukončení prezentace a datový proud se VoD.<br/>Jedná se o dlouhou hodnotu, která představuje absolutní koncový bod prezentace, zaokrouhlený na nejbližší další skupinu GOP Start. Jednotka je časové měřítko, takže endTimestamp 1800000000 bude trvat 3 minuty.<br/>Pomocí startTimestamp a endTimestamp ořízněte fragmenty, které budou v seznamu testů (manifest).<br/>Například startTimestamp = 40000000 a endTimestamp = 100000000 pomocí výchozí časové osy vygeneruje seznam testů, který obsahuje fragmenty ze 4 sekund a 10 sekund z prezentace VoD. Pokud fragment přechází na hranici, bude v manifestu obsažen celý fragment.|
 |**forceEndTimestamp**|Platí jenom pro živé streamování.<br/>Určuje, zda musí být přítomna vlastnost endTimestamp. Pokud je nastaveno na true, musí se zadat endTimestamp nebo se vrátí špatný kód žádosti.<br/>Povolené hodnoty: false, true.|
@@ -72,7 +72,7 @@ V závislosti na tom, které stopy streamu (živé streamování nebo video na v
 
 Filtrovat podmínky vlastností sledování popisují typy sledování, hodnoty (popsané v následující tabulce) a operace (EQUAL, NotEqual). 
 
-|Name|Description|
+|Název|Popis|
 |---|---|
 |**Rychlostí**|Použijte přenosovou rychlost stopy pro filtrování.<br/><br/>Doporučená hodnota je rozsah přenosové rychlosti v bitech za sekundu. Například "0-2427000".<br/><br/>Poznámka: když můžete použít určitou hodnotu přenosové rychlosti, třeba 250000 (bity za sekundu), tento přístup se nedoporučuje, protože přesné přenosové rychlosti můžou kolísat od jednoho Assetu k druhému.|
 |**FourCC**|Použijte hodnotu FourCC stopy pro filtrování.<br/><br/>Hodnota je prvním prvkem formátu kodeků, jak je uvedeno v [dokumentu RFC 6381](https://tools.ietf.org/html/rfc6381). V současné době jsou podporovány následující kodeky: <br/>Video: "avc1", "hev1", "hvc1"<br/>Pro zvuk: "mp4a", "ES-3"<br/><br/>Chcete-li určit hodnoty FourCC pro stopy v Assetu, Získejte a prověřte soubor manifestu.|
@@ -139,7 +139,7 @@ Následující příklad definuje filtr živého streamování:
 
 ## <a name="associating-filters-with-streaming-locator"></a>Přidružení filtrů k lokátoru streamování
 
-Můžete určit seznam [filtrů Asset nebo Account](filters-concept.md) na [lokátoru streamování](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body). [Dynamický balíček](dynamic-packaging-overview.md) používá tento seznam filtrů společně s nastavením, které klient ZADÁ v adrese URL. Tato kombinace generuje [dynamický manifest](filters-dynamic-manifest-overview.md), který je založen na filtrech v URL + filtry, které zadáte na lokátoru streamování. 
+Můžete určit seznam [filtrů Asset nebo Account](filters-concept.md) na [lokátoru streamování](/rest/api/media/streaminglocators/create#request-body). [Dynamický balíček](dynamic-packaging-overview.md) používá tento seznam filtrů společně s nastavením, které klient ZADÁ v adrese URL. Tato kombinace generuje [dynamický manifest](filters-dynamic-manifest-overview.md), který je založen na filtrech v URL + filtry, které zadáte na lokátoru streamování. 
 
 Podívejte se na následující příklady:
 
@@ -161,4 +161,3 @@ Následující články ukazují, jak vytvořit filtry prostřednictvím kódu p
 - [Vytváření filtrů pomocí rozhraní REST API](filters-dynamic-manifest-rest-howto.md)
 - [Vytváření filtrů pomocí .NET](filters-dynamic-manifest-dotnet-howto.md)
 - [Vytváření filtrů pomocí rozhraní příkazového řádku](filters-dynamic-manifest-cli-howto.md)
-

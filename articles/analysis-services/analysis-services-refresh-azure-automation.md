@@ -6,12 +6,12 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: c3c9827814b7d638745761dbb5f3c7d2e581491b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5314c933b01a1fb9c4ea9902a6fbb698c104d195
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389968"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025400"
 ---
 # <a name="refresh-with-azure-automation"></a>Aktualizace pomocí Azure Automation
 
@@ -19,11 +19,11 @@ Pomocí Azure Automation a PowerShellových runbooků můžete provádět operac
 
 Příklad v tomto článku používá [modul SQL SQLServer](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps). Ukázková sada Runbook PowerShellu, která demonstruje aktualizaci modelu, je k dispozici dále v tomto článku.  
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 Všechna volání musí být ověřena pomocí platného tokenu Azure Active Directory (OAuth 2).  Příklad v tomto článku používá k ověření Azure Analysis Services instanční objekt (SPN). Další informace najdete v tématu [Vytvoření instančního objektu pomocí služby Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 > [!IMPORTANT]
 > Následující příklad předpokládá, že je brána firewall Azure Analysis Services zakázaná. Pokud je povolená brána firewall, musí být do pravidla brány firewall zahrnutá veřejná IP adresa iniciátoru žádosti.
@@ -64,7 +64,10 @@ Objekt služby, který vytvoříte, musí mít na serveru oprávnění správce 
 
     ![Importovat Runbook](./media/analysis-services-refresh-azure-automation/8.png)
 
-4. Vyhledejte soubor **Refresh-Model.ps1** , zadejte **název** a **Popis**a pak klikněte na **vytvořit**.
+4. Vyhledejte soubor [Refresh-Model.ps1](#sample-powershell-runbook) , zadejte **název** a **Popis**a pak klikněte na **vytvořit**.
+
+    > [!NOTE]
+    > Pokud chcete vytvořit soubor s názvem Refresh-Model.ps1 a uložit ho do sady Runbook, použijte v části [ukázkový powershellový Runbook](#sample-powershell-runbook) na konci tohoto dokumentu.
 
     ![Importovat Runbook](./media/analysis-services-refresh-azure-automation/9.png)
 
@@ -222,5 +225,5 @@ else
 
 ## <a name="next-steps"></a>Další kroky
 
-[ukázky](analysis-services-samples.md)  
+[Ukázky](analysis-services-samples.md)  
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)

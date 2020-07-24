@@ -12,19 +12,20 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 3c16724dc3eb99549b692df93ee6cd5f1fc0bf30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b695bad791388dc51123a118344b8fda0f54ca8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484038"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027695"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurace nastavení služby Azure Multi-Factor Authentication
 
-Pokud chcete přizpůsobit činnost koncového uživatele pro Azure Multi-Factor Authentication, můžete nakonfigurovat možnosti pro nastavení, jako jsou prahové hodnoty uzamčení účtu nebo výstrahy a oznámení o podvodech. Některá nastavení jsou přímo v Azure Portal pro Azure Active Directory (Azure AD) a některá na samostatném portálu Azure Multi-Factor Authentication.]
+Pokud chcete přizpůsobit činnost koncového uživatele pro Azure Multi-Factor Authentication, můžete nakonfigurovat možnosti pro nastavení, jako jsou prahové hodnoty uzamčení účtu nebo výstrahy a oznámení o podvodech. Některá nastavení jsou přímo v Azure Portal pro Azure Active Directory (Azure AD), která jsou na samostatném portálu Azure Multi-Factor Authentication.
 
 V Azure Portal jsou k dispozici následující nastavení Azure Multi-Factor Authentication:
 
-| Funkce | Description |
+| Funkce | Popis |
 | ------- | ----------- |
 | [Uzamčení účtu](#account-lockout) | Dočasné uzamčení účtů pomocí Azure Multi-Factor Authentication v případě, že je na řádku příliš mnoho zamítnutých pokusů o ověření. Tato funkce se vztahuje jenom na uživatele, kteří do ověřování zadají kód PIN. (MFA Server) |
 | [Blokovat/odblokovat uživatele](#block-and-unblock-users) | Zablokovat konkrétním uživatelům, aby mohli přijímat žádosti o Multi-Factor Authentication Azure Všechny pokusy o ověření zablokovaných uživatelů se automaticky zamítnou. Uživatelé zůstávají zablokovaný po dobu 90 dnů od doby, kdy jsou zablokované nebo jsou ručně odblokované. |
@@ -32,7 +33,7 @@ V Azure Portal jsou k dispozici následující nastavení Azure Multi-Factor Aut
 | [Oznámení](#notifications) | Povolí oznámení událostí z MFA serveru. |
 | [Tokeny OATH](concept-authentication-methods.md#oath-tokens) | Používá se v cloudových prostředích Azure MFA ke správě tokenů OATH pro uživatele. |
 | [Nastavení telefonního hovoru](#phone-call-settings) | Nakonfigurujte nastavení související s telefonními hovory a pozdravy pro cloudová a místní prostředí. |
-| Poskytovatelé | Tím se zobrazí všechna existující zprostředkovatelé ověřování, které jste mohli k vašemu účtu přidružit. Od 1. září 2018 se nevytvoří Noví zprostředkovatelé ověřování. |
+| Zprostředkovatelé | Tím se zobrazí všechna existující zprostředkovatelé ověřování, které jste mohli k vašemu účtu přidružit. Od 1. září 2018 se nevytvoří Noví zprostředkovatelé ověřování. |
 
 ![Azure Portal – nastavení Multi-Factor Authentication Azure AD](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-portal.png)
 
@@ -314,7 +315,7 @@ Na portálu nastavení služby můžete zvolit metody ověřování, které jsou
 
 K dispozici jsou následující metody ověřování:
 
-| Metoda | Description |
+| Metoda | Popis |
 |:--- |:--- |
 | Zavolat na telefon |Místo automatizovaného hlasového hovoru. Uživatel přijme hovor a stiskem tlačítka # na klávesnici telefonu provede ověření. Telefonní číslo není synchronizované s místní službou Active Directory. |
 | Textová zpráva na telefon |Pošle textovou zprávu obsahující ověřovací kód. Uživateli se zobrazí výzva k zadání ověřovacího kódu do přihlašovacího rozhraní. Tento proces se nazývá jednosměrný server SMS. Dvoucestné SMS znamená, že uživatel musí zpětně vytvořit text konkrétního kódu. Obousměrná zpráva SMS je zastaralá a není podporovaná ani po 14. listopadu 2018. Správci by měli povolit jinou metodu pro uživatele, kteří dříve používali oboustranný SMS.|

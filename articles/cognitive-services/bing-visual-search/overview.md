@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: scottwhi
-ms.openlocfilehash: 14acebb71538dddfd2421fbb27794f456b6c9c8f
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 192517aa16e0fe56eb5b7dc8b852116af500b715
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611505"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023717"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Co je rozhraní API pro vizuální vyhledávání Bingu?
 
@@ -37,7 +37,7 @@ Pomocí Vizuální vyhledávání Bingu můžete zjistit následující přehled
 | Nákupy zdrojů                     | Místa, kde si můžete koupit položku zobrazenou ve vstupní imagi.            |
 | Související hledání                     | Související hledání provedené jinými uživateli nebo, která jsou založena na obsahu obrázku.            |
 | Webové stránky, které obsahují obrázek     | Webové stránky, které obsahují vstupní image.            |
-| Složení                              | Webové stránky, které obsahují recepty pro vytváření misky ve vstupní imagi.            |
+| Návody                              | Webové stránky, které obsahují recepty pro vytváření misky ve vstupní imagi.            |
 | Entity                             | Dobře známé osoby, místa a věci. |
 
 Kromě přehledů Vizuální vyhledávání Bingu vrací různé výrazy (tj. značky) odvozené ze vstupní image. Značky umožňují uživatelům prozkoumat koncepty nalezené v imagi. Pokud je vstupní obrázek například slavných Athlete, jedna z značek může být název Athlete, další značka by mohla být sportovní. Nebo, pokud je vstupní obrázek z Apple výsečového grafu, značky by mohly být Apple koláče, koláče a desserts.
@@ -57,9 +57,17 @@ Rozhraní API pro vizuální vyhledávání Bingu je webová služba RESTful, kt
 Nejprve vyzkoušejte rozhraní API pro vizuální vyhledávání Bingu [interaktivní ukázku](https://azure.microsoft.com/services/cognitive-services/bing-visual-search/).
 Ukázka vám ukáže, jak rychle upravit vyhledávací dotaz a projeďte web pro obrázky.
 
-Pokud chcete rychle začít s prvním požadavkem, přečtěte si rychlý Start: [C#](quickstarts/csharp.md)  |  [Java](quickstarts/java.md)  |  [node.js](quickstarts/nodejs.md)  |  [Python](quickstarts/python.md).
+Pokud chcete rychle začít s prvním požadavkem, přečtěte si rychlý Start:
 
-## <a name="see-also"></a>Viz také:
+* [C#](quickstarts/csharp.md)
+
+* [Java](quickstarts/java.md)
+
+* [node.js](quickstarts/nodejs.md)
+
+* [Python](quickstarts/python.md)
+
+## <a name="see-also"></a>Viz také
 
 * Odkazy na [vizuální vyhledávání obrázky](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch) popisují definice a informace o koncových bodech, hlavičkách požadavků, odpovědích a parametrech dotazů, které můžete použít k vyžádání výsledků hledání na základě bitové kopie.
 

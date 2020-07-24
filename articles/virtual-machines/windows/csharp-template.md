@@ -8,18 +8,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: cynthn
-ms.openlocfilehash: dfcc0c550af9df6c884c8cd864ed90daf5f78e2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25d8dc467ce8f7e34faaeaa2c61fd0c5da1da4e8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82082913"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027950"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>Nasazení virtuálního počítače Azure pomocí C# a šablony Správce prostředků
 
 V tomto článku se dozvíte, jak nasadit šablonu Azure Resource Manager pomocí jazyka C#. Šablona, kterou vytvoříte, nasadí jeden virtuální počítač se systémem Windows Server v nové virtuální síti s jednou podsítí.
 
-Podrobný popis prostředku virtuálního počítače najdete v tématu [virtuální počítače v šabloně Azure Resource Manager](template-description.md). Další informace o všech prostředcích v šabloně najdete v tématu [Azure Resource Manager návodu](../../azure-resource-manager/resource-manager-template-walkthrough.md)k vytvoření šablony.
+Podrobný popis prostředku virtuálního počítače najdete v tématu [virtuální počítače v šabloně Azure Resource Manager](template-description.md). Další informace o všech prostředcích v šabloně najdete v tématu [Azure Resource Manager návodu](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)k vytvoření šablony.
 
 Provedení těchto kroků trvá přibližně 10 minut.
 
@@ -27,7 +27,7 @@ Provedení těchto kroků trvá přibližně 10 minut.
 
 V tomto kroku se ujistěte, že je nainstalovaná aplikace Visual Studio a Vy vytvoříte konzolovou aplikaci, která se používá k nasazení šablony.
 
-1. Pokud jste to ještě neudělali, nainstalujte [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Na stránce úlohy vyberte **vývoj pro desktopy .NET** a pak klikněte na **nainstalovat**. V souhrnu vidíte, že se pro vás automaticky vybraly **.NET Framework nástroje pro vývoj 4-4,6** . Pokud jste již nainstalovali aplikaci Visual Studio, můžete přidat úlohu rozhraní .NET pomocí spouštěče sady Visual Studio.
+1. Pokud jste to ještě neudělali, nainstalujte [Visual Studio](/visualstudio/install/install-visual-studio). Na stránce úlohy vyberte **vývoj pro desktopy .NET** a pak klikněte na **nainstalovat**. V souhrnu vidíte, že se pro vás automaticky vybraly **.NET Framework nástroje pro vývoj 4-4,6** . Pokud jste již nainstalovali aplikaci Visual Studio, můžete přidat úlohu rozhraní .NET pomocí spouštěče sady Visual Studio.
 2. V aplikaci Visual Studio klikněte na **soubor**  >  **Nový**  >  **projekt**.
 3. V **šablonách**  >  **Visual C#** vyberte **Konzolová aplikace (.NET Framework)**, jako název projektu zadejte *myDotnetProject* , vyberte umístění projektu a pak klikněte na **OK**.
 
@@ -325,5 +325,5 @@ Spuštění této konzolové aplikace z začátku do konce by mělo trvat přibl
 
 ## <a name="next-steps"></a>Další kroky
 
-* V případě, že došlo k potížím s nasazením, je dalším krokem postup [při řešení běžných chyb při nasazení Azure pomocí Azure Resource Manager](../../resource-manager-common-deployment-errors.md).
+* V případě, že došlo k potížím s nasazením, je dalším krokem postup [při řešení běžných chyb při nasazení Azure pomocí Azure Resource Manager](../../azure-resource-manager/templates/common-deployment-errors.md).
 * Zjistěte, jak nasadit virtuální počítač a jeho podpůrné prostředky pomocí tématu [nasazení virtuálního počítače Azure pomocí jazyka C#](csharp.md).

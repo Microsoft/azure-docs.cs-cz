@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: 08e718739971283418d151bef9ad75333e313d85
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: eb2ce196687b2ca6a762a879570e4f8ebac788df
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250426"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025111"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integrace API Management v interní virtuální síti s Application Gateway
 
@@ -88,6 +88,11 @@ V této příručce zveřejníme také portál pro **vývojáře** pro externí 
 
 > [!WARNING]
 > Chcete-li zabránit Application Gateway WAF z narušení stahování specifikace OpenAPI na portálu pro vývojáře, je nutné zakázat pravidlo brány firewall `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"` .
+> 
+> Application Gateway WAF pravidla, která můžou narušit funkčnost portálu, zahrnují:
+> 
+> - `920330`, `931130` , `942100` , `942110` , `942180` , `942200` , `942260` , `942370` , `949110` , `980130` pro režim správy
+> - `942200`, `942260` , `942370` , `942430` , `942440` pro publikovaný portál
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Vytvoření skupiny prostředků pro Resource Manager
 

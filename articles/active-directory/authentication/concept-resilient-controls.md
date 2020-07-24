@@ -12,11 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15d2b029937c58d45a2c1148c568cd396cea336a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec20a1bda8021e61f5147142a8e6bddd6cf5d166
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84634638"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027610"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Vytvoření odolné strategie správy řízení přístupu pomocí Azure Active Directory
 
@@ -220,7 +221,7 @@ Zakázat rozšíření serveru NPS:
 -   Zjistěte, jestli je primární ověřování pro síť VPN úspěšné.
 
 Jakmile se služba obnoví a jste připraveni znovu vymáhat MFA pro uživatele, povolte rozšíření serveru NPS: 
--   Důležité je klíč registru ze zálohy HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 
+-   Importujte klíč registru ze zálohy HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 
 -   Restartujte službu NPS (Network Policy Service), aby se změny projevily. 
 -   Určete, zda je primární ověřování a také sekundární ověřování pro síť VPN úspěšné.
 -   Zkontrolujte servery NPS a protokol VPN a určete, kteří uživatelé se přihlásili během nouzového okna.

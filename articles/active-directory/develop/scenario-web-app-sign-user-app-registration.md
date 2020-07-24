@@ -8,14 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7d2eb5356b1abc54508fd6bf8d35fd9fc39d02ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1adff446e6d41e30db109d0871811dc651f1f4f5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80881575"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026239"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Webová aplikace, která přihlašuje uživatele: registrace aplikace
 
@@ -40,9 +41,9 @@ Pomocí těchto odkazů můžete spustit vytvoření webové aplikace:
 > Portál, který se má použít, se liší v závislosti na tom, jestli vaše aplikace běží ve veřejném cloudu Microsoft Azure nebo v národním nebo svrchovaném cloudu. Další informace najdete v tématu [národní cloudy](./authentication-national-cloud.md#app-registration-endpoints).
 
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft. Případně se přihlaste k Azure Portal výběru pro národní Cloud.
-1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte svůj účet v pravém horním rohu. Potom nastavte relaci portálu na požadovaného tenanta Azure Active Directory (Azure AD).
-1. V levém podokně vyberte službu **Azure Active Directory** a pak vyberte **Registrace aplikací**  >  **Nová registrace**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft. Případně se přihlaste k [Azure Portal výběru](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#app-registration-endpoints) pro národní Cloud.
+2. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte svůj účet v pravém horním rohu. Potom nastavte relaci portálu na požadovaného tenanta Azure Active Directory (Azure AD).
+3. V levém podokně vyberte službu **Azure Active Directory** a pak vyberte **Registrace aplikací**  >  **Nová registrace**.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -50,12 +51,14 @@ Pomocí těchto odkazů můžete spustit vytvoření webové aplikace:
    1. Vyberte podporované typy účtů pro vaši aplikaci. (Viz [podporované typy účtů](./v2-supported-account-types.md).)
    1. V části **název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace. Například zadejte **AspNetCore-WebApp**.
    1. Pro **identifikátor URI přesměrování**přidejte typ aplikace a cíl identifikátoru URI, který bude po úspěšném ověření akceptovat vrácené odpovědi na tokeny. Zadejte například **https://localhost:44321** . Pak vyberte **Registrovat**.
+   ![evidenc](media/scenario-webapp/scenario-webapp-app-registration-1.png)
 1. Vyberte nabídku **ověřování** a přidejte následující informace:
    1. Pro **adresu URL odpovědi**přidejte **https://localhost:44321/signin-oidc** typ **Web**.
    1. V části **Upřesnit nastavení** nastavte **adresu URL pro odhlášení** na **https://localhost:44321/signout-oidc** .
    1. V části **Implicitní udělení** vyberte **Tokeny ID**.
    1. Vyberte **Uložit**.
-
+  ![evidenc](media/scenario-webapp/scenario-webapp-app-registration-2.png)
+ 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 1. Jakmile se zobrazí **Stránka Registrovat aplikaci** , zadejte informace o registraci vaší aplikace:
@@ -88,7 +91,7 @@ Pomocí těchto odkazů můžete spustit vytvoření webové aplikace:
 
    1. Zadejte popis klíče.
    1. Vyberte dobu trvání klíče **v 1 roce**.
-   1. Vyberte možnost **Přidat**.
+   1. Vyberte **Přidat**.
    1. Jakmile se zobrazí hodnota klíče, zkopírujte ji pro pozdější verzi. Tato hodnota se znovu nezobrazí nebo ji nebude možné získat jakýmkoli jiným způsobem.
 
 # <a name="python"></a>[Python](#tab/python)
@@ -104,7 +107,7 @@ Pomocí těchto odkazů můžete spustit vytvoření webové aplikace:
 
    1. Zadejte popis klíče.
    1. Vyberte dobu trvání klíče **v intervalu 1 roku**.
-   1. Vyberte možnost **Přidat**.
+   1. Vyberte **Přidat**.
    1. Když se zobrazí hodnota klíče, zkopírujte ji. Budete ho potřebovat později.
 ---
 
@@ -116,7 +119,7 @@ Pomocí těchto odkazů můžete spustit vytvoření webové aplikace:
 > - MyOrg (jenom účty v této organizační složce)
 > - AnyOrg (účty v jakékoli organizační složce)
 >
-> Můžete vytvořit aplikaci, která se přihlásí uživatelům pomocí svých osobních účtů Microsoft (například Skype, Xbox nebo Outlook.com). Nejdřív vytvořte víceklientské aplikace. Podporované typy účtů jsou účty v jakémkoli organizačním adresáři. Pak změňte `signInAudience` vlastnost v manifestu aplikace z Azure Portal. Další informace najdete v tématu [krok 1,3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) v kurzu ASP.NET Core. Tento krok můžete zobecnit do Web Apps v libovolném jazyce.
+> Můžete vytvořit aplikaci, která se přihlásí uživatelům pomocí svých osobních účtů Microsoft (například Skype, Xbox nebo Outlook.com). Nejdřív vytvořte víceklientské aplikace. Podporované typy účtů jsou účty v jakémkoli organizačním adresáři. Poté změňte [`accessTokenAcceptedVersion`](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#accesstokenacceptedversion-attribute) vlastnost na hodnotu **2** a [`signInAudience`](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#signinaudience-attribute) vlastnost na `AzureADandPersonalMicrosoftAccount` v [manifestu aplikace](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) z Azure Portal. Další informace najdete v tématu [krok 1,3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) v kurzu ASP.NET Core. Tento krok můžete zobecnit do Web Apps v libovolném jazyce.
 
 ## <a name="next-steps"></a>Další kroky
 

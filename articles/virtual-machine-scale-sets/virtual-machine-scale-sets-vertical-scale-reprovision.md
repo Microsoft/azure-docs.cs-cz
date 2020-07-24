@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 04/18/2019
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 597a9e3b018f4ddb68710dff65094f35828b3c4b
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 37602f7b9a8669ce0e8db984f7f7617cffdd431c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232657"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029276"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Vertikální automatické škálování se sadami škálování virtuálních počítačů
 
@@ -87,9 +87,9 @@ Můžete nastavit svislé škálování, které se aktivuje na základě výstra
 > 
 
 ## <a name="create-an-azure-automation-account-with-run-as-capability"></a>Vytvoření účtu Azure Automation s možností spuštění jako
-První věc, kterou potřebujete udělat, je vytvořit účet Azure Automation, který hostuje Runbooky používané pro škálování instancí sady škálování virtuálních počítačů. Nedávno [Azure Automation](https://azure.microsoft.com/services/automation/) zavedli funkci účet Spustit jako, která umožňuje nastavit instanční objekt pro automatické spouštění Runbooků jménem uživatele. Další informace naleznete v tématu:
+První věc, kterou potřebujete udělat, je vytvořit účet Azure Automation, který hostuje Runbooky používané pro škálování instancí sady škálování virtuálních počítačů. Nedávno [Azure Automation](https://azure.microsoft.com/services/automation/) zavedli funkci účet Spustit jako, která umožňuje nastavit instanční objekt pro automatické spouštění Runbooků jménem uživatele. Další informace najdete tady:
 
-* [Ověření runbooků pomocí účtu Spustit v Azure jako](../automation/automation-sec-configure-azure-runas-account.md)
+* [Ověření runbooků pomocí účtu Spustit v Azure jako](../automation/manage-runas-account.md)
 
 ## <a name="import-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>Import Azure Automationch sad Runbook se vertikálním škálováním do předplatného
 
@@ -156,7 +156,7 @@ Další informace o tom, jak vytvářet výstrahy, najdete v následujících č
 * [Ukázky Azure Monitor PowerShellu](../azure-monitor/samples/powershell-samples.md)
 * [Azure Monitor ukázky rozhraní příkazového řádku pro různé platformy](../azure-monitor/samples/cli-samples.md)
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Tento článek ukázal jednoduché příklady vertikálního škálování. Pomocí těchto stavebních bloků – účet Automation, Runbooky, Webhooky, výstrahy – můžete připojit bohatou řadu událostí s přizpůsobenou sadou akcí.
 

@@ -7,17 +7,18 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 03/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: 444c3afefcf4cfdafc817af3b7bc6ce4463853c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1dcba7da09cff3b7123521a4daf1028ab17e199a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678354"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029140"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Vlastní data a Cloud-init v Azure Virtual Machines
 
 Do virtuálního počítače s Microsoft Azure může být potřeba vložit skript nebo jiná metadata v době zřizování.  V jiných cloudech se tento koncept často označuje jako data uživatelů.  V Microsoft Azure máme podobnou funkci nazvanou vlastní data. 
 
-Vlastní data jsou k dispozici pouze pro virtuální počítač při prvním spuštění/počáteční instalaci, zavoláme toto "zřizování". Zřizování je proces, při kterém se k virtuálnímu počítači zpřístupní parametry pro vytvoření virtuálního počítače (například název hostitele, uživatelské jméno, heslo, certifikáty, vlastní data, klíče atd.) a Agent zřizování je zpracuje, jako je například [Agent pro Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) a [Cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init#troubleshooting-cloud-init). 
+Vlastní data jsou k dispozici pouze pro virtuální počítač při prvním spuštění/počáteční instalaci, zavoláme toto "zřizování". Zřizování je proces, při kterém se k virtuálnímu počítači zpřístupní parametry pro vytvoření virtuálního počítače (například název hostitele, uživatelské jméno, heslo, certifikáty, vlastní data, klíče atd.) a Agent zřizování je zpracuje, jako je například [Agent pro Linux](./extensions/agent-linux.md) a [Cloud-init](./linux/using-cloud-init.md#troubleshooting-cloud-init). 
 
 
 ## <a name="passing-custom-data-to-the-vm"></a>Předávání vlastních dat virtuálnímu počítači
@@ -33,7 +34,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-V Azure Resource Manager (ARM) existuje [funkce Base64](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-string#base64).
+V Azure Resource Manager (ARM) existuje [funkce Base64](../azure-resource-manager/templates/template-functions-string.md#base64).
 
 ```json
 "name": "[parameters('virtualMachineName')]",
@@ -73,21 +74,21 @@ Když povolíte vlastní data a spustíte skript, dojde k zpoždění vytvářen
 
 Pokud chcete řešit potíže s vlastním prováděním dat, přečtěte si */var/log/waagent.log* .
 
-* Cloud-init – ve výchozím nastavení budou ve výchozím nastavení zpracovávat vlastní data. Cloud-init akceptuje [více formátů](https://cloudinit.readthedocs.io/en/latest/topics/format.html) vlastních dat, jako je konfigurace Cloud-init, skriptů atd. Podobně jako u agenta pro Linux, kdy Cloud-init zpracovává vlastní data. Pokud dojde k chybám při provádění zpracování konfigurace nebo skriptů, nepovažuje se za závažné selhání zřizování a budete muset vytvořit cestu oznámení, která vás upozorní na stav dokončení daného skriptu. U agenta pro Linux ale Cloud-init nečeká na dokončení konfigurace uživatelských dat uživatelů, než se dohlásí k platformě, kterou je virtuální počítač připravený. Další informace o cloud-init v Azure najdete v [dokumentaci](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init).
+* Cloud-init – ve výchozím nastavení budou ve výchozím nastavení zpracovávat vlastní data. Cloud-init akceptuje [více formátů](https://cloudinit.readthedocs.io/en/latest/topics/format.html) vlastních dat, jako je konfigurace Cloud-init, skriptů atd. Podobně jako u agenta pro Linux, kdy Cloud-init zpracovává vlastní data. Pokud dojde k chybám při provádění zpracování konfigurace nebo skriptů, nepovažuje se za závažné selhání zřizování a budete muset vytvořit cestu oznámení, která vás upozorní na stav dokončení daného skriptu. U agenta pro Linux ale Cloud-init nečeká na dokončení konfigurace uživatelských dat uživatelů, než se dohlásí k platformě, kterou je virtuální počítač připravený. Další informace o cloud-init v Azure najdete v [dokumentaci](./linux/using-cloud-init.md).
 
 
-Řešení potíží s vlastním prováděním dat najdete v [dokumentaci k](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init#troubleshooting-cloud-init)řešení problémů.
+Řešení potíží s vlastním prováděním dat najdete v [dokumentaci k](./linux/using-cloud-init.md#troubleshooting-cloud-init)řešení problémů.
 
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 ### <a name="can-i-update-custom-data-after-the-vm-has-been-created"></a>Můžu aktualizovat vlastní data po vytvoření virtuálního počítače?
-Pro jednotlivé virtuální počítače se vlastní data v modelu virtuálních počítačů nedají aktualizovat, ale pro VMSS můžete aktualizovat vlastní data VMSS prostřednictvím [REST API](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/update) (neplatí pro PS nebo AZ CLI Clients). Když aktualizujete vlastní data v modelu VMSS:
+Pro jednotlivé virtuální počítače se vlastní data v modelu virtuálních počítačů nedají aktualizovat, ale pro VMSS můžete aktualizovat vlastní data VMSS prostřednictvím [REST API](/rest/api/compute/virtualmachinescalesets/update) (neplatí pro PS nebo AZ CLI Clients). Když aktualizujete vlastní data v modelu VMSS:
 * Existující instance v VMSS nezískají aktualizované vlastní data, až do doby, než se obnoví z image.
 * Existující instance v VMSS, které jsou upgradovány, nebudou mít aktualizované vlastní data.
 * Nové instance získají nová vlastní data.
 
 ### <a name="can-i-place-sensitive-values-in-custom-data"></a>Můžu na vlastní data umístit citlivé hodnoty?
-**Nedoporučujeme** ukládat citlivá data do vlastních dat. Další informace najdete v tématu [osvědčené postupy zabezpečení a šifrování Azure](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices).
+**Nedoporučujeme** ukládat citlivá data do vlastních dat. Další informace najdete v tématu [osvědčené postupy zabezpečení a šifrování Azure](../security/fundamentals/data-encryption-best-practices.md).
 
 
 ### <a name="is-custom-data-made-available-in-imds"></a>Jsou vlastní data zpřístupněná v IMDS?

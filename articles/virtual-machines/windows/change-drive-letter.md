@@ -9,19 +9,19 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
-ms.openlocfilehash: 15df3178f2860fa066a82cb1429e0c1a6e5c2b08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 511c3aa65bf0a10e42d7a54c98662cc388a5d711
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82083418"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028220"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>Použití jednotky D: jako datové jednotky na virtuálním počítači s Windows
 Pokud vaše aplikace potřebuje k ukládání dat použít jednotku D, postupujte podle těchto pokynů, abyste pro dočasný disk použili jiné písmeno jednotky. Nikdy nepoužívejte dočasný disk k ukládání dat, která je třeba zachovat.
 
 Při změně velikosti nebo **zastavení (zrušení přidělení)** virtuálního počítače může tato operace aktivovat umístění virtuálního počítače do nového hypervisoru. Toto umístění může také aktivovat plánovaná nebo neplánovaná událost údržby. V tomto scénáři se dočasný disk znovu přiřadí k prvnímu dostupnému písmenu jednotky. Pokud máte aplikaci, která konkrétně vyžaduje jednotku D:, je třeba pomocí následujících kroků dočasně přesunout pagefile.sys, připojit nový datový disk a přiřadit mu písmeno D a pak pagefile.sys přesunout zpátky na dočasnou jednotku. Až to bude hotové, Azure se znovu nevrátí, pokud se virtuální počítač přesune do jiného hypervisoru.
 
-Další informace o tom, jak Azure používá dočasný disk, najdete v článku o [objasnění dočasné jednotky na Microsoft Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
+Další informace o tom, jak Azure používá dočasný disk, najdete v článku o [objasnění dočasné jednotky na Microsoft Azure Virtual Machines](/archive/blogs/mast/understanding-the-temporary-drive-on-windows-azure-virtual-machines)
 
 ## <a name="attach-the-data-disk"></a>Připojit datový disk
 Nejdřív budete potřebovat připojit datový disk k virtuálnímu počítači. Pokud to chcete provést pomocí portálu, přečtěte si téma [Postup připojení spravovaného datového disku v Azure Portal](attach-managed-disk-portal.md).
@@ -59,4 +59,3 @@ Nejdřív budete potřebovat připojit datový disk k virtuálnímu počítači.
 
 ## <a name="next-steps"></a>Další kroky
 * Úložiště, které je k dispozici pro virtuální počítač, můžete zvýšit [připojením dalšího datového disku](attach-managed-disk-portal.md).
-

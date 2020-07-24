@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/05/2020
 ms.author: v-miegge
-ms.openlocfilehash: 118c81dd52951729bfbbb97a510e693861666ee6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 909481964f8aa3272715e235fa011562225a9422
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83665135"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028358"
 ---
 # <a name="troubleshoot-windows-stop-error--directory-service-initialization-failure"></a>Řešení potíží s Windows stop – Chyba při inicializaci adresářové služby
 
@@ -26,7 +27,7 @@ Tento článek popisuje kroky pro řešení problémů, při kterých se virtuá
 
 ## <a name="symptom"></a>Příznak
 
-Když pomocí [diagnostiky spouštění](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) zobrazíte snímek obrazovky virtuálního počítače, snímek obrazovky ukazuje, že se virtuální počítač musí restartovat kvůli chybě, a to zobrazení stop Code **0XC00002E1** v systému Windows Server 2008 R2 nebo **0xC00002E2** v systému Windows Server 2012 nebo novějším.
+Když pomocí [diagnostiky spouštění](./boot-diagnostics.md) zobrazíte snímek obrazovky virtuálního počítače, snímek obrazovky ukazuje, že se virtuální počítač musí restartovat kvůli chybě, a to zobrazení stop Code **0XC00002E1** v systému Windows Server 2008 R2 nebo **0xC00002E2** v systému Windows Server 2012 nebo novějším.
 
 ![Stav úvodní obrazovky systému Windows Server 2012: Váš počítač byl příčinou problému a je třeba jej restartovat. Jenom shromažďujeme nějaké informace o chybách a pak se za vás restartuje...](./media/troubleshoot-directory-service-initialization-failure/1.png)
 
@@ -61,7 +62,7 @@ Tato chyba může být způsobena některou z následujících podmínek:
 
 ### <a name="create-and-access-a-repair-vm"></a>Vytvoření a přístup k opravnému virtuálnímu počítači
 
-1. Pomocí [kroků 1-3 příkazů pro opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) Připravte opravný virtuální počítač.
+1. Pomocí [kroků 1-3 příkazů pro opravu virtuálního počítače](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) Připravte opravný virtuální počítač.
 1. Pomocí Připojení ke vzdálené ploše připojit k opravnému virtuálnímu počítači.
 
 ### <a name="free-up-space-on-disk"></a>Uvolněte místo na disku.
@@ -69,11 +70,11 @@ Tato chyba může být způsobena některou z následujících podmínek:
 Když je disk připojený k opravnému virtuálnímu počítači, zkontrolujte, jestli má disk s interní databází Active Directory dostatek místa pro správné provedení.
 
 1. Ověřte, jestli je disk plný, a to tak, že kliknete pravým tlačítkem na jednotku a vyberete **vlastnosti**.
-1. Pokud disk má méně než 300 MB volného místa, [rozbalte ho do velikosti 1 TB pomocí PowerShellu](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk).
+1. Pokud disk má méně než 300 MB volného místa, [rozbalte ho do velikosti 1 TB pomocí PowerShellu](../windows/expand-os-disk.md).
 1. Pokud disk dosáhl 1 TB využitého místa, proveďte Vyčištění disku.
 
-   1. Pomocí PowerShellu [odpojte datový disk](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-powershell) od PŘERUŠENÉHO virtuálního počítače.
-   1. Po odpojení od poškozeného virtuálního počítače [Připojte datový disk](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps#attach-an-existing-data-disk-to-a-vm) k FUNGUJÍCÍmu virtuálnímu počítači.
+   1. Pomocí PowerShellu [odpojte datový disk](../windows/detach-disk.md#detach-a-data-disk-using-powershell) od PŘERUŠENÉHO virtuálního počítače.
+   1. Po odpojení od poškozeného virtuálního počítače [Připojte datový disk](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm) k FUNGUJÍCÍmu virtuálnímu počítači.
    1. Uvolněte další místo pomocí [nástroje Vyčištění disku](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) .
 
 1. **Volitelné** – Pokud je potřeba více místa, otevřete instanci cmd a zadejte `defrag <LETTER ASSIGNED TO THE OS DISK>: /u /x /g` příkaz pro provedení defragmentace na jednotce:
@@ -182,7 +183,7 @@ Pokud chcete povolit shromažďování výpisů paměti a sériovou konzolu, spu
 
 ### <a name="rebuild-the-vm"></a>Opětovné sestavení virtuálního počítače
 
-1. Pomocí [kroku 5 příkazů pro opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) znovu sestavte virtuální počítač.
+1. Pomocí [kroku 5 příkazů pro opravu virtuálního počítače](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) znovu sestavte virtuální počítač.
 
 ### <a name="reconfigure-the-storage-area-network-policy"></a>Překonfigurujte zásady sítě oblasti úložiště.
 

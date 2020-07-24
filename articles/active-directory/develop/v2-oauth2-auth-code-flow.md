@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 07/22/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 198ab9505c550ad5bf8dc75211864a562b45979f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0470ab635f34291b4c92259e556329d6b2f401c7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553668"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026080"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity Platform a tok autorizačního kódu OAuth 2,0
 
@@ -64,7 +64,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > Pro spuštění této žádosti klikněte na odkaz níže. Po přihlášení by měl být v prohlížeči přesměrován na adresu na adresním `https://localhost/myapp/` `code` řádku.
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
-| Parametr    | Požadováno/volitelné | Description |
+| Parametr    | Požadováno/volitelné | Popis |
 |--------------|-------------|--------------|
 | `tenant`    | vyžadováno    | `{tenant}`Hodnotu v cestě k požadavku lze použít k řízení, kdo se může přihlásit k aplikaci. Povolené hodnoty jsou `common` `organizations` `consumers` identifikátory klientů,, a. Další podrobnosti najdete v tématu [základy protokolu](active-directory-v2-protocols.md#endpoints).  |
 | `client_id`   | vyžadováno    | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci.  |
@@ -120,7 +120,7 @@ error=access_denied
 
 Následující tabulka popisuje různé chybové kódy, které mohou být vráceny v `error` parametru chybové odpovědi.
 
-| Kód chyby  | Description    | Akce klienta   |
+| Kód chyby  | Popis    | Akce klienta   |
 |-------------|----------------|-----------------|
 | `invalid_request` | Chyba protokolu, například chybějící požadovaný parametr. | Opravte a odešlete požadavek znovu. Toto je chyba vývoje obvykle zachycena při počátečním testování. |
 | `unauthorized_client` | Klientská aplikace nemá oprávnění vyžadovat autorizační kód. | K této chybě obvykle dochází, když klientská aplikace není registrovaná v Azure AD nebo není přidaná do tenanta Azure AD uživatele. Aplikace může uživatele vyzvat k instalaci aplikace a jejímu přidání do Azure AD. |
@@ -154,12 +154,12 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > [!TIP]
 > Zkuste tento požadavek provést v nástroji post! (Nezapomeňte nahradit `code` ) [ ![ Pokus o spuštění této žádosti v předzálohovacím](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
-| Parametr  | Požadováno/volitelné | Description     |
+| Parametr  | Požadováno/volitelné | Popis     |
 |------------|-------------------|----------------|
 | `tenant`   | vyžadováno   | `{tenant}`Hodnotu v cestě k požadavku lze použít k řízení, kdo se může přihlásit k aplikaci. Povolené hodnoty jsou `common` `organizations` `consumers` identifikátory klientů,, a. Další podrobnosti najdete v tématu [základy protokolu](active-directory-v2-protocols.md#endpoints).  |
 | `client_id` | vyžadováno  | ID aplikace (klienta), které stránka [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) přiřazená k vaší aplikaci. |
 | `grant_type` | vyžadováno   | Musí být `authorization_code` pro tok autorizačního kódu.   |
-| `scope`      | vyžadováno   | Mezerou oddělený seznam oborů. Rozsahy požadované v této nožkě musí být stejné jako podmnožina oborů požadovaných v první nožkě. Rozsahy musí být z jednoho prostředku, společně s OIDC obory ( `profile` , `openid` , `email` ). Podrobnější vysvětlení oborů najdete v tématu [oprávnění, souhlas a obory](v2-permissions-and-consent.md). |
+| `scope`      | optional   | Mezerou oddělený seznam oborů. Rozsahy musí být z jednoho prostředku, společně s OIDC obory ( `profile` , `openid` , `email` ). Podrobnější vysvětlení oborů najdete v tématu [oprávnění, souhlas a obory](v2-permissions-and-consent.md). Toto je rozšíření Microsoftu pro tok autorizačního kódu, které umožňuje aplikacím deklarovat prostředek, který chce mít token při uplatnění tokenu.|
 | `code`          | vyžadováno  | Authorization_code, kterou jste získali v první nožkě toku. |
 | `redirect_uri`  | vyžadováno  | Stejná redirect_uri hodnota, která byla použita k získání authorization_code. |
 | `client_secret` | vyžadováno pro důvěrné webové aplikace | Tajný klíč aplikace, který jste vytvořili na portálu pro registraci aplikací pro vaši aplikaci. Nepoužívejte tajný klíč aplikace v nativní aplikaci nebo v jedné stránce, protože client_secrets nejde spolehlivě uložit na zařízení nebo webové stránky. Vyžaduje se pro webové aplikace a webová rozhraní API, které mají možnost bezpečně ukládat client_secret na straně serveru.  Tajný klíč klienta musí být před odesláním zakódovaný na adrese URL. Další informace o kódování identifikátoru URI naleznete v tématu [Obecná specifikace syntaxe identifikátoru URI](https://tools.ietf.org/html/rfc3986#page-12). |
@@ -217,7 +217,7 @@ Chybové odpovědi budou vypadat takto:
 
 ### <a name="error-codes-for-token-endpoint-errors"></a>Chybové kódy pro chyby koncového bodu tokenu
 
-| Kód chyby         | Description        | Akce klienta    |
+| Kód chyby         | Popis        | Akce klienta    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | Chyba protokolu, například chybějící požadovaný parametr. | Opravte registraci žádosti nebo aplikace a odešlete žádost znovu.   |
 | `invalid_grant`    | Autorizační kód nebo ověřovatel kódu PKCE je neplatný nebo vypršela jeho platnost. | Vyzkoušejte nový požadavek na `/authorize` koncový bod a ověřte, zda byl zadán správný parametr code_verifier.  |

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: daberry
-ms.openlocfilehash: f85389d8fc2269b346df22854bb7ddce08844a88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f48963a4d18e80cb67bfbbdc532d34f89b8b5d8a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83118222"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028443"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Řešení potíží s nasazením Správce prostředků při vytváření nového virtuálního počítače se systémem Linux v Azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -35,7 +36,7 @@ Pokud chcete začít řešit potíže, Shromážděte protokoly aktivit a Identi
 
 [Zobrazení operací nasazení](../../azure-resource-manager/templates/deployment-history.md)
 
-[Zobrazení protokolů aktivit pro správu prostředků Azure](../../resource-group-audit.md)
+[Zobrazení protokolů aktivit pro správu prostředků Azure](../../azure-resource-manager/management/view-activity-logs.md)
 
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-issue1](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-issue1-include.md)]
 
@@ -87,5 +88,4 @@ K této chybě dochází v situacích, kdy je nový požadavek na virtuální po
   * Přidejte nový virtuální počítač do stejné virtuální sítě.
 
 ## <a name="next-steps"></a>Další kroky
-Pokud narazíte na problémy při spuštění zastaveného virtuálního počítače se systémem Linux nebo změníte velikost stávajícího virtuálního počítače se systémem Linux v Azure, přečtěte si téma [řešení potíží s nasazením správce prostředků při restartování nebo změně velikosti stávajícího virtuálního počítače se systémem Linux v Azure](../linux/restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
+Pokud narazíte na problémy při spuštění zastaveného virtuálního počítače se systémem Linux nebo změníte velikost stávajícího virtuálního počítače se systémem Linux v Azure, přečtěte si téma [řešení potíží s nasazením správce prostředků při restartování nebo změně velikosti stávajícího virtuálního počítače se systémem Linux v Azure](./troubleshoot-deploy-vm-linux.md?toc=/azure/virtual-machines/linux/toc.json)

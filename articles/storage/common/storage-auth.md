@@ -10,12 +10,12 @@ ms.date: 04/15/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 1db26e6e1308299325e15b4c856fc2ebbaed8326
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a56fdf8bc3bfa93c12cce66664e68b223fa97ff2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807614"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029531"
 ---
 # <a name="authorizing-access-to-data-in-azure-storage"></a>Autorizace přístupu k datům v Azure Storage
 
@@ -23,13 +23,13 @@ Pokaždé, když přistupujete k datům v účtu úložiště, klient vytvoří 
 
 Následující tabulka popisuje možnosti, které Azure Storage nabídky pro autorizaci přístupu k prostředkům:
 
-|  |Sdílený klíč (klíč účtu úložiště)  |Sdílený přístupový podpis (SAS)  |Azure Active Directory (Azure AD)  |Místní Active Directory Domain Services (Preview) |Anonymní veřejný přístup pro čtení  |
-|---------|---------|---------|---------|---------|---------|
-|Objekty blob Azure     |[Doložen](/rest/api/storageservices/authorize-with-shared-key/)         |[Doložen](storage-sas-overview.md)         |[Doložen](storage-auth-aad.md)         |Nepodporuje se|[Doložen](../blobs/storage-manage-access-to-resources.md)         |
-|Soubory Azure (SMB)     |[Doložen](/rest/api/storageservices/authorize-with-shared-key/)         |Nepodporuje se         |[Podporováno, pouze s doménovou službou AAD](../files/storage-files-active-directory-overview.md)         |[Podporuje se přihlašovací údaje musí synchronizovat do Azure AD.](../files/storage-files-active-directory-overview.md)|Nepodporuje se         |
-|Soubory Azure (REST)     |[Doložen](/rest/api/storageservices/authorize-with-shared-key/)         |[Doložen](storage-sas-overview.md)         |Nepodporuje se         |Nepodporuje se |Nepodporuje se         |
-|Fronty Azure     |[Doložen](/rest/api/storageservices/authorize-with-shared-key/)         |[Doložen](storage-sas-overview.md)         |[Doložen](storage-auth-aad.md)         |Nepodporuje se | Nepodporuje se         |
-|Tabulky Azure     |[Doložen](/rest/api/storageservices/authorize-with-shared-key/)         |[Doložen](storage-sas-overview.md)         |Nepodporuje se         |Nepodporuje se| Nepodporuje se         |
+| Artefakt Azure | Sdílený klíč (klíč účtu úložiště) | Sdílený přístupový podpis (SAS) | Azure Active Directory (Azure AD) | Místní Active Directory Domain Services (Preview) | Anonymní veřejný přístup pro čtení |
+| -------------- | -------------------------------- | ----------------------------- | --------------------------------- | ------------------------------------------------------ | ---------------------------- |
+|Objekty blob Azure     |[Podporováno](/rest/api/storageservices/authorize-with-shared-key/)         |[Podporováno](storage-sas-overview.md)         |[Podporováno](storage-auth-aad.md)         |Nepodporováno|[Podporováno](../blobs/storage-manage-access-to-resources.md)         |
+|Soubory Azure (SMB)     |[Podporováno](/rest/api/storageservices/authorize-with-shared-key/)         |Nepodporováno         |[Podporováno, pouze s doménovou službou AAD](../files/storage-files-active-directory-overview.md)         |[Podporuje se přihlašovací údaje musí synchronizovat do Azure AD.](../files/storage-files-active-directory-overview.md)|Nepodporováno         |
+|Soubory Azure (REST)     |[Podporováno](/rest/api/storageservices/authorize-with-shared-key/)         |[Podporováno](storage-sas-overview.md)         |Nepodporováno         |Nepodporováno |Nepodporováno         |
+|Fronty Azure     |[Podporováno](/rest/api/storageservices/authorize-with-shared-key/)         |[Podporováno](storage-sas-overview.md)         |[Podporováno](storage-auth-aad.md)         |Nepodporuje se | Nepodporováno         |
+|Tabulky Azure     |[Podporováno](/rest/api/storageservices/authorize-with-shared-key/)         |[Podporováno](storage-sas-overview.md)         |Nepodporováno         |Nepodporováno| Nepodporováno         |
 
 Každá možnost autorizace je stručně popsána níže:
 

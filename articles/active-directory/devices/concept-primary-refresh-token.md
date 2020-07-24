@@ -5,17 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 05/29/2019
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ccd51bd69c982aeae25dbf52d1e5d076542cf35
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9971eb554825a968f8cfa72d6a0cf78d7c0bcb76
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83771192"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025876"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Co je primární obnovovací token?
 
@@ -64,7 +65,7 @@ PRT se vydává během ověřování uživatelů na zařízení s Windows 10 ve 
 Ve scénářích zařízení registrovaných v Azure AD je modul plug-in Azure AD WAM primární autoritou pro PRT, protože k tomuto účtu Azure AD neprobíhá přihlášení k Windows.
 
 > [!NOTE]
-> Zprostředkovatelé identity třetích stran musí podporovat protokol WS-Trust, aby bylo možné PRT vystavování na zařízeních s Windows 10. Bez WS-Trust se PRT nedá vystavovat uživatelům na zařízeních připojených k hybridní službě Azure AD nebo na zařízeních připojených k Azure AD.
+> Zprostředkovatelé identity třetích stran musí podporovat protokol WS-Trust, aby bylo možné PRT vystavování na zařízeních s Windows 10. Bez WS-Trust se PRT nedá vystavit uživatelům na zařízeních připojených k hybridní službě Azure AD nebo na zařízeních připojených k Azure AD. V AD FS se vyžadují jenom koncové body usernamemixed. AD FS/Services/Trust/2005/windowstransport a AD FS/Services/Trust/13/windowstransport by měly být povolené jenom jako intranetové koncové body a **nesmí být zveřejněné** jako extranetové koncové body prostřednictvím služby Proxy webových aplikací.
 
 ## <a name="what-is-the-lifetime-of-a-prt"></a>Jaká je životnost PRT?
 
@@ -144,7 +145,7 @@ Následující diagramy znázorňují základní podrobnosti o vydávání, obno
 > [!NOTE]
 > V zařízeních připojených k Azure AD se tato výměna provádí synchronně, aby vydávala PRT, než se uživatel může přihlásit k Windows. V zařízeních připojených k hybridní službě Azure AD je místní služba Active Directory primární autoritou. Proto uživatel čeká jenom na to, dokud nezíská lístek TGT k přihlášení, zatímco vystavení PRT proběhne asynchronně. Tento scénář se nevztahuje na zařízení registrovaná v Azure AD, protože přihlášení nepoužívá přihlašovací údaje Azure AD.
 
-| Krok | Description |
+| Krok | Popis |
 | :---: | --- |
 | A | Uživatel zadá heslo do uživatelského rozhraní pro přihlášení. LogonUI předá přihlašovací údaje ve vyrovnávací paměti ověření pro LSA, které v nástroji předává internímu CloudAP. CloudAP přepošle tento požadavek do modulu plug-in CloudAP. |
 | B | Modul plug-in CloudAP inicializuje požadavek na zjištění sféry k identifikaci poskytovatele identity pro daného uživatele. Pokud má tenant uživatele nastavení zprostředkovatele federace, Azure AD vrátí koncový bod výměny metadat poskytovatele federačního koncového bodu (MEX). Pokud ne, Azure AD vrátí, že uživatel je spravovaný, což znamená, že se uživatel může ověřit pomocí Azure AD. |
@@ -157,7 +158,7 @@ Následující diagramy znázorňují základní podrobnosti o vydávání, obno
 
 ![PRT obnovení v následných přihlášeních](./media/concept-primary-refresh-token/prt-renewal-subsequent-logons.png)
 
-| Krok | Description |
+| Krok | Popis |
 | :---: | --- |
 | A | Uživatel zadá heslo do uživatelského rozhraní pro přihlášení. LogonUI předá přihlašovací údaje ve vyrovnávací paměti ověření pro LSA, které v nástroji předává internímu CloudAP. CloudAP přepošle tento požadavek do modulu plug-in CloudAP. |
 | B | Pokud se uživatel dřív přihlásil k uživateli, Windows iniciuje přihlášení do mezipaměti a ověří přihlašovací údaje pro přihlášení uživatele v. Každé 4 hodiny modul plug-in CloudAP inicializuje asynchronní obnovení PRT. |
@@ -167,11 +168,14 @@ Následující diagramy znázorňují základní podrobnosti o vydávání, obno
 | F | Azure AD ověřuje signaturu klíče relace porovnáním s klíčem relace vloženým v PRT, ověří hodnotu nonce a ověří, jestli je zařízení v tenantovi platné, a vydá nové PRT. Jak je uvedeno dříve, PRT je znovu spojen s klíčem relace šifrovaným pomocí přenosového klíče (tkpub). |
 | G | Modul plug-in CloudAP předá šifrovaný PRT a klíč relace do CloudAP. CloudAP vyžádá čip TPM, aby dešifroval klíč relace pomocí přenosového klíče (tkpriv) a znovu ho zašifroval pomocí vlastního klíče TPM. CloudAP ukládá šifrovaný klíč relace ve své mezipaměti spolu s PRT. |
 
+> [!NOTE]
+> PRT se dá obnovit externě bez nutnosti připojení VPN, když jsou koncové body usernamemixed povolené externě.
+
 ### <a name="prt-usage-during-app-token-requests"></a>PRT využití během žádostí o tokeny aplikace
 
 ![PRT využití během žádostí o tokeny aplikace](./media/concept-primary-refresh-token/prt-usage-app-token-requests.png)
 
-| Krok | Description |
+| Krok | Popis |
 | :---: | --- |
 | A | Aplikace (například Outlook, OneNote atd.) inicializuje požadavek na token pro WAM. Služba WAM pak požádá modul plug-in Azure AD WAM, aby vyžádala požadavek na token. |
 | B | Pokud je aktualizační token pro aplikaci již k dispozici, modul plug-in Azure AD použije ho k vyžádání přístupového tokenu. K zajištění ověření vazby zařízení modul plug-in WAM podepíše požadavek pomocí klíče relace. Azure AD ověří klíč relace a vydá přístupový token a nový obnovovací token pro aplikaci, který je zašifrovaný klíčem relace. Modul plug-in WAM požaduje modul plug-in cloudového bodu k dešifrování tokenů, což zase požaduje čip TPM k dešifrování pomocí klíče relace. Výsledkem je, že modul plug-in WAM získá tokeny. V dalším kroku modul plug-in WAM poskytuje aplikaci přístup jenom k přístupovému tokenu, zatímco znovu šifruje obnovovací token pomocí DPAPI a ukládá ho do vlastní mezipaměti.  |
@@ -183,7 +187,7 @@ Následující diagramy znázorňují základní podrobnosti o vydávání, obno
 
 ![Procházení jednotného přihlašování pomocí PRT](./media/concept-primary-refresh-token/browser-sso-using-prt.png)
 
-| Krok | Description |
+| Krok | Popis |
 | :---: | --- |
 | A | Uživatel se do Windows přihlásí pomocí svých přihlašovacích údajů, aby mohl získat PRT. Jakmile uživatel otevře prohlížeč, prohlížeč (nebo rozšíření) načte adresy URL z registru. |
 | B | Když uživatel otevře přihlašovací adresu URL služby Azure AD, prohlížeč nebo rozšíření ověří adresu URL pomocí těch, které jsou získány z registru. Pokud se shodují, prohlížeč vyvolá nativního klientského hostitele pro získání tokenu. |

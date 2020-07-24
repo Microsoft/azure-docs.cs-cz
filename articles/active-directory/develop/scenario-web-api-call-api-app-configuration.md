@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/16/2019
+ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 38e319efb100d326d55f6f821e7c903306a7c7d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eff5f68569d1878e1b802f2db4151d246bcc07c0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80991003"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026420"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Webové rozhraní API, které volá webová rozhraní API: Konfigurace kódu
 
@@ -26,120 +27,74 @@ Kód, který použijete ke konfiguraci webového rozhraní API tak, aby volal po
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-## <a name="code-subscribed-to-ontokenvalidated"></a>Kód přihlášený k odběru OnTokenValidated
+## <a name="client-secrets-or-client-certificates"></a>Klientské tajné klíče nebo klientské certifikáty
 
-Nad konfigurací kódu pro všechna chráněná webová rozhraní API se musíte přihlásit k odběru ověření tokenu nosiče, který obdržíte při volání rozhraní API:
+Vzhledem k tomu, že vaše webové rozhraní API nyní volá webové rozhraní API pro příjem dat, je nutné zadat tajný klíč klienta nebo klientský certifikát v *appsettings.js* souboru.
 
-```csharp
-/// <summary>
-/// Protects the web API with the Microsoft identity platform, or Azure Active Directory (Azure AD) developer platform
-/// This supposes that the configuration files have a section named "AzureAD"
-/// </summary>
-/// <param name="services">The service collection to which to add authentication</param>
-/// <param name="configuration">Configuration</param>
-/// <returns></returns>
-public static IServiceCollection AddProtectedApiCallsWebApis(this IServiceCollection services,
-                                                             IConfiguration configuration,
-                                                             IEnumerable<string> scopes)
+```JSON
 {
-    services.AddTokenAcquisition();
-    services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationScheme, options =>
-    {
-        // When an access token for our own web API is validated, we add it
-        // to the MSAL.NET cache so that it can be used from the controllers.
-        options.Events = new JwtBearerEvents();
-
-        options.Events.OnTokenValidated = async context =>
-        {
-            context.Success();
-
-            // Adds the token to the cache and handles the incremental consent
-            // and claim challenges
-            AddAccountToCacheFromJwt(context, scopes);
-            await Task.FromResult(0);
-        };
-    });
-    return services;
+  "AzureAd": {
+    "Instance": "https://login.microsoftonline.com/",
+    "ClientId": "[Client_id-of-web-api-eg-2ec40e65-ba09-4853-bcde-bcb60029e596]",
+    "TenantId": "common"
+  
+   // To call an API
+   "ClientSecret": "[Copy the client secret added to the app from the Azure portal]",
+   "ClientCertificates": [
+  ]
+ }
 }
 ```
 
-## <a name="on-behalf-of-flow"></a>Tok za běhu
+Místo tajného kódu klienta můžete zadat klientský certifikát. Následující fragment kódu ukazuje použití certifikátu uloženého v Azure Key Vault.
 
-Metoda AddAccountToCacheFromJwt () potřebuje:
-
-- Vytvořte instanci důvěrné klientské aplikace MSAL (Microsoft Authentication Library).
-- Zavolejte `AcquireTokenOnBehalf` metodu. Toto volání vyměňuje nosný token, který byl získán klientem pro webové rozhraní API proti nosnému tokenu pro stejného uživatele, ale má volání rozhraní API pro jedno rozhraní API.
-
-### <a name="instantiate-a-confidential-client-application"></a>Vytvoření instance aplikace důvěrného klienta
-
-Tento tok je dostupný jenom v důvěrném toku klienta, takže chráněné webové rozhraní API poskytuje přihlašovací údaje klienta (tajný klíč klienta nebo certifikát) ke [třídě ConfidentialClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) prostřednictvím `WithClientSecret` `WithCertificate` metody nebo.
-
-![Seznam metod IConfidentialClientApplication](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
-
-```csharp
-IConfidentialClientApplication app;
-
-#if !VariationWithCertificateCredentials
-app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
-           .WithClientSecret(config.ClientSecret)
-           .Build();
-#else
-// Building the client credentials from a certificate
-X509Certificate2 certificate = ReadCertificate(config.CertificateName);
-app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
-    .WithCertificate(certificate)
-    .Build();
-#endif
-```
-
-Místo toho, aby bylo možné prokázat svoji identitu prostřednictvím tajného klíče klienta nebo certifikátu, můžou důvěrné klientské aplikace prokázat svoji identitu pomocí kontrolních výrazů klienta.
-Další informace o tomto pokročilém scénáři najdete v tématu [důvěrné kontrolní výrazy klienta](msal-net-client-assertions.md).
-
-### <a name="how-to-call-on-behalf-of"></a>Jak volat jménem
-
-OBO volání provádíte voláním [metody AcquireTokenOnBehalf](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder) na `IConfidentialClientApplication` rozhraní.
-
-`UserAssertion`Třída je sestavená z tokenu nosiče, který je webovým rozhraním API přijatý z jeho vlastních klientů. Existují [dva konstruktory](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet):
-* Ten, který přebírá nosný token JSON Web Token (JWT)
-* Ten, který přebírá libovolný typ uživatelského kontrolního výrazu, je jiný druh tokenu zabezpečení, jehož typ je pak uveden v dalším parametru s názvem.`assertionType`
-
-![Vlastnosti a metody UserAssertion](https://user-images.githubusercontent.com/13203188/37082180-afc4b708-21e3-11e8-8af8-a6dcbd2dfba8.png)
-
-V praxi se tok OBO často používá k získání tokenu pro rozhraní API pro příjem dat a jeho uložení do mezipaměti tokenů uživatele MSAL.NET. To provedete tak, aby ostatní části webového rozhraní API mohly později zavolat na [přepsání](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet) ``AcquireTokenOnSilent`` pro volání rozhraní API pro příjem dat. Toto volání má vliv na obnovení tokenů, pokud je to potřeba.
-
-```csharp
-private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityToken jwtToken, ClaimsPrincipal principal, HttpContext httpContext)
+```JSON
 {
-    try
-    {
-        UserAssertion userAssertion;
-        IEnumerable<string> requestedScopes;
-        if (jwtToken != null)
-        {
-            userAssertion = new UserAssertion(jwtToken.RawData, "urn:ietf:params:oauth:grant-type:jwt-bearer");
-            requestedScopes = scopes ?? jwtToken.Audiences.Select(a => $"{a}/.default");
-        }
-        else
-        {
-            throw new ArgumentOutOfRangeException("tokenValidationContext.SecurityToken should be a JWT Token");
-        }
-
-        // Create the application
-        var application = BuildConfidentialClientApplication(httpContext, principal);
-
-        // .Result to make sure that the cache is filled in before the controller tries to get access tokens
-        var result = application.AcquireTokenOnBehalfOf(requestedScopes.Except(scopesRequestedByMsalNet),
-                                                        userAssertion)
-                                .ExecuteAsync()
-                                .GetAwaiter().GetResult();
-     }
-     catch (MsalException ex)
-     {
-         Debug.WriteLine(ex.Message);
-         throw;
-     }
+  "AzureAd": {
+    "Instance": "https://login.microsoftonline.com/",
+    "ClientId": "[Client_id-of-web-api-eg-2ec40e65-ba09-4853-bcde-bcb60029e596]",
+    "TenantId": "common"
+  
+   // To call an API
+   "ClientCertificates": [
+      {
+        "SourceType": "KeyVault",
+        "KeyVaultUrl": "https://msidentitywebsamples.vault.azure.net",
+        "KeyVaultCertificateName": "MicrosoftIdentitySamplesCert"
+      }
+  ]
+ }
 }
 ```
+
+Microsoft. identity. Web nabízí několik způsobů, jak popsat certifikáty, jak pomocí konfigurace, tak pomocí kódu. Podrobnosti najdete v tématu [Microsoft. identity. Web wiki – používání certifikátů](https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates) na GitHubu.
+
+## <a name="startupcs"></a>Startup.cs
+
+Pokud chcete, aby vaše webové rozhraní API volalo webové rozhraní API pro příjem dat, použijte Microsoft. identity. Web, přidejte `.AddMicrosoftWebApiCallsWebApi()` řádek po `.AddMicrosoftWebApiAuthentication(Configuration)` a pak zvolte implementaci mezipaměti tokenů, například `.AddInMemoryTokenCaches()` v *Startup.cs*:
+
+```csharp
+using Microsoft.Identity.Web;
+
+public class Startup
+{
+  ...
+  public void ConfigureServices(IServiceCollection services)
+  {
+   // ...
+   services.AddMicrosoftWebApiAuthentication(Configuration)
+           .AddMicrosoftWebApiCallsWebApi()
+           .AddInMemoryTokenCaches();
+  // ...
+  }
+  // ...
+}
+```
+
+Stejně jako u Web Apps můžete zvolit různé implementace mezipaměti tokenů. Podrobnosti najdete v tématu [Microsoft Identity web wiki – serializace mezipaměti tokenu](https://aka.ms/ms-id-web/token-cache-serialization) na GitHubu.
+
+Pokud jste si jisti, že vaše webové rozhraní API bude potřebovat konkrétní obory, můžete je v případě potřeby předat jako argumenty `AddMicrosoftWebApiCallsWebApi` .
+
 # <a name="java"></a>[Java](#tab/java)
 
 Tok spouštěný za běhu (OBO) slouží k získání tokenu pro volání webového rozhraní API pro příjem dat. V tomto toku vaše webové rozhraní API obdrží token nosiče s delegovanými oprávněními z klientské aplikace a potom tento token vymění pro jiný přístupový token pro volání webového rozhraní API pro příjem dat.
@@ -219,7 +174,7 @@ Webové rozhraní API v Pythonu bude muset použít nějaký middleware k ověř
 
 Můžete si také prohlédnout příklad implementace toku OBO v [Node.js a Azure Functions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/MiddleTierAPI/MyHttpTrigger/index.js#L61).
 
-## <a name="protocol"></a>Protocol (Protokol)
+## <a name="protocol"></a>Protokol
 
 Další informace o protokolu OBO naleznete [v tématu Microsoft Identity Platform a OAuth 2,0 na základě toku](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow).
 

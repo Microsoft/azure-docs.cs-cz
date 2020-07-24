@@ -9,11 +9,12 @@ ms.subservice: security
 ms.date: 09/05/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 030e2c23d68a3fbbc96dd7591583cb27b650d011
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4480ad425d9a3953fd5779f99d27b5b6b037e61e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83200017"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029412"
 ---
 # <a name="security-controls-for-azure-virtual-machine-scale-sets"></a>Řízení zabezpečení pro Azure Virtual Machine Scale Sets
 
@@ -28,13 +29,13 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Vir
 | Podpora koncového bodu služby| Yes | |
 | Podpora vkládání virtuální sítě| Yes | |
 | Izolace sítě a podpora brány firewall| Yes |  |
-| Podpora vynuceného tunelování| Yes | Další informace najdete v tématu [Konfigurace vynuceného tunelování pomocí modelu nasazení Azure Resource Manager](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm). |
+| Podpora vynuceného tunelování| Yes | Další informace najdete v tématu [Konfigurace vynuceného tunelování pomocí modelu nasazení Azure Resource Manager](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md). |
 
 ## <a name="monitoring--logging"></a>Monitorování protokolování &
 
 | Řízení zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora monitorování Azure (Log Analytics, App Insights atd.)| Yes | Podívejte se na téma [monitorování a aktualizace virtuálního počítače se systémem Linux v Azure](/azure/virtual-machines/linux/tutorial-monitoring) a [monitorování a aktualizace virtuálního počítače s Windows v Azure](/azure/virtual-machines/windows/tutorial-monitoring). |
+| Podpora monitorování Azure (Log Analytics, App Insights atd.)| Yes | Podívejte se na téma [monitorování a aktualizace virtuálního počítače se systémem Linux v Azure](../virtual-machines/linux/tutorial-monitor.md) a [monitorování a aktualizace virtuálního počítače s Windows v Azure](../virtual-machines/windows/tutorial-monitor.md). |
 | Protokolování a audit roviny řízení a správy| Yes |  |
 | Protokolování a audit roviny dat | No |  |
 
@@ -42,7 +43,7 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Vir
 
 | Řízení zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Authentication| Yes |  |
+| Ověřování| Yes |  |
 | Autorizace| Yes |  |
 
 ## <a name="data-protection"></a>Ochrana dat
@@ -50,12 +51,12 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Vir
 | Řízení zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
 | Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft | Yes | Virtual Machine Scale Sets najdete v tématu [Azure Disk Encryption](disk-encryption-overview.md). |
-| Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Yes | Azure Virtual Machines podporuje šifrování [ExpressRoute](/azure/expressroute) a virtuální sítě. Viz [šifrování v přenosech na virtuálních počítačích](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms). |
+| Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Yes | Azure Virtual Machines podporuje šifrování [ExpressRoute](../expressroute/index.yml) a virtuální sítě. Viz [šifrování v přenosech na virtuálních počítačích](../security/fundamentals/encryption-overview.md#in-transit-encryption-in-vms). |
 | Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | Yes | Klíče spravované zákazníkem jsou podporovaným scénářem šifrování Azure; Viz téma [Azure Disk Encryption Virtual Machine Scale Sets](disk-encryption-overview.md)|
-| Šifrování na úrovni sloupce (Azure Data Services)| Není k dispozici | |
+| Šifrování na úrovni sloupce (Azure Data Services)| – | |
 | Zašifrovaná volání rozhraní API| Yes | Přes HTTPS a TLS. |
 
-## <a name="configuration-management"></a>Správa konfigurace
+## <a name="configuration-management"></a>Správa konfigurací
 
 | Řízení zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|

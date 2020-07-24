@@ -8,12 +8,12 @@ ms.date: 07/10/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: e0773515809ffdc50167a3cba1f767ac8635bcee
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9f61835887c26e41b3338286065df4ca9d05f513
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502567"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029004"
 ---
 # <a name="enable-end-to-end-encryption-using-encryption-at-host---azure-cli"></a>Povolení kompletního šifrování pomocí šifrování u hostitele – Azure CLI
 
@@ -43,34 +43,144 @@ Jakmile je tato funkce povolená, budete muset nastavit Azure Key Vault a DiskEn
 
 [!INCLUDE [virtual-machines-disks-encryption-create-key-vault-cli](../../../includes/virtual-machines-disks-encryption-create-key-vault-cli.md)]
 
-## <a name="enable-encryption-at-host-for-disks-attached-to-vm-and-virtual-machine-scale-sets"></a>Povolit šifrování na hostiteli pro disky připojené k virtuálnímu počítači a sadě škálování virtuálních počítačů
+## <a name="examples"></a>Příklady
 
-Šifrování můžete povolit na hostiteli nastavením nové vlastnosti EncryptionAtHost v securityProfile virtuálních počítačů nebo virtuálních počítačů pomocí rozhraní API verze **2020-06-01** a vyšší.
+### <a name="create-a-vm-with-encryption-at-host-enabled-with-customer-managed-keys"></a>Vytvořte virtuální počítač se šifrováním na hostiteli, který je povolený pomocí klíčů spravovaných zákazníkem. 
 
-`"securityProfile": { "encryptionAtHost": "true" }`
-
-## <a name="example-scripts"></a>Ukázkové skripty
-
-### <a name="enable-encryption-at-host-for-disks-attached-to-a-vm-with-customer-managed-keys"></a>Povolení šifrování na hostiteli pro disky připojené k virtuálnímu počítači pomocí klíčů spravovaných zákazníkem
-
-Vytvořte virtuální počítač se spravovanými disky pomocí identifikátoru URI prostředku DiskEncryptionSet, který jste vytvořili dříve.
-
-Nahraďte `<yourPassword>` , `<yourVMName>` , `<yourVMSize>` , `<yourDESName>` , `<yoursubscriptionID>` , a `<yourResourceGroupName>` a `<yourRegion>` potom spusťte skript.
+Vytvořte virtuální počítač se spravovanými disky pomocí identifikátoru URI prostředku DiskEncryptionSet vytvořeného dříve pro šifrování mezipaměti operačních systémů a datových disků pomocí klíčů spravovaných zákazníkem. Dočasné disky se šifrují pomocí klíčů spravovaných platformou. 
 
 ```azurecli
-az group deployment create -g <yourResourceGroupName> \
---template-uri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/EncryptionAtHost/CreateVMWithDisksEncryptedAtHostWithCMK.json" \
---parameters "virtualMachineName=<yourVMName>" "adminPassword=<yourPassword>" "vmSize=<yourVMSize>" "diskEncryptionSetId=/subscriptions/<yoursubscriptionID>/resourceGroups/<yourResourceGroupName>/providers/Microsoft.Compute/diskEncryptionSets/<yourDESName>" "region=<yourRegion>"
+rgName=yourRGName
+vmName=yourVMName
+location=eastus
+vmSize=Standard_DS2_v2
+image=UbuntuLTS 
+diskEncryptionSetName=yourDiskEncryptionSetName
+
+diskEncryptionSetId=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [id] -o tsv)
+
+az vm create -g $rgName \
+-n $vmName \
+-l $location \
+--encryption-at-host \
+--image $image \
+--size $vmSize \
+--generate-ssh-keys \
+--os-disk-encryption-set $diskEncryptionSetId \
+--data-disk-sizes-gb 128 128 \
+--data-disk-encryption-sets $diskEncryptionSetId $diskEncryptionSetId
 ```
 
-### <a name="enable-encryption-at-host-for-disks-attached-to-a-vm-with-platform-managed-keys"></a>Povolit šifrování na hostiteli pro disky připojené k virtuálnímu počítači pomocí klíčů spravovaných platformou
+### <a name="create-a-vm-with-encryption-at-host-enabled-with-platform-managed-keys"></a>Vytvořte virtuální počítač se šifrováním na hostiteli, který je povolený pomocí klíčů spravovaných platformou. 
 
-Nahraďte `<yourPassword>` , `<yourVMName>` ,, `<yourVMSize>` `<yourResourceGroupName>` a a `<yourRegion>` potom spusťte skript.
+Vytvořte virtuální počítač s povoleným šifrováním na hostiteli, aby se zašifroval mezipaměť s operačním systémem/datovými disky a dočasné disky pomocí klíčů spravovaných platformou. 
 
 ```azurecli
-az group deployment create -g <yourResourceGroupName> \
---template-uri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/EncryptionAtHost/CreateVMWithDisksEncryptedAtHostWithPMK.json" \
---parameters "virtualMachineName=<yourVMName>" "adminPassword=<yourPassword>" "vmSize=<yourVMSize>" "region=<yourRegion>"
+rgName=yourRGName
+vmName=yourVMName
+location=eastus
+vmSize=Standard_DS2_v2
+image=UbuntuLTS 
+
+az vm create -g $rgName \
+-n $vmName \
+-l $location \
+--encryption-at-host \
+--image $image \
+--size $vmSize \
+--generate-ssh-keys \
+--data-disk-sizes-gb 128 128 \
+```
+
+### <a name="update-a-vm-to-enable-encryption-at-host"></a>Aktualizujte virtuální počítač, aby se povolilo šifrování na hostiteli. 
+
+```azurecli
+rgName=yourRGName
+vmName=yourVMName
+
+az vm update -n $vmName \
+-g $rgName \
+--set securityProfile.encryptionAtHost=true
+```
+
+### <a name="check-the-status-of-encryption-at-host-for-a-vm"></a>Ověření stavu šifrování na hostiteli pro virtuální počítač
+
+```azurecli
+rgName=yourRGName
+vmName=yourVMName
+
+az vm show -n $vmName \
+-g $rgName \
+--query [securityProfile.encryptionAtHost] -o tsv
+```
+
+### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-customer-managed-keys"></a>Vytvořte sadu škálování virtuálního počítače s šifrováním na hostiteli, který je povolený pomocí klíčů spravovaných zákazníkem. 
+
+Pomocí identifikátoru URI prostředku DiskEncryptionSet vytvořeného dříve vytvořte v sadě prostředků škálování virtuálního počítače se službou Managed disks a Zašifrujte mezipaměť operačních systémů a datových disků pomocí klíčů spravovaných zákazníkem. Dočasné disky se šifrují pomocí klíčů spravovaných platformou. 
+
+```azurecli
+rgName=yourRGName
+vmssName=yourVMSSName
+location=westus2
+vmSize=Standard_DS3_V2
+image=UbuntuLTS 
+diskEncryptionSetName=yourDiskEncryptionSetName
+
+diskEncryptionSetId=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [id] -o tsv)
+
+az vmss create -g $rgName \
+-n $vmssName \
+--encryption-at-host \
+--image UbuntuLTS \
+--upgrade-policy automatic \
+--admin-username azureuser \
+--generate-ssh-keys \
+--os-disk-encryption-set $diskEncryptionSetId \
+--data-disk-sizes-gb 64 128 \
+--data-disk-encryption-sets $diskEncryptionSetId $diskEncryptionSetId
+```
+
+### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-platform-managed-keys"></a>Vytvořte sadu škálování virtuálního počítače s šifrováním na hostiteli, který je povolený pomocí klíčů spravovaných platformou. 
+
+Vytvořte sadu škálování virtuálního počítače s šifrováním na hostiteli povoleno pro šifrování mezipaměti s operačním systémem/datovými disky a dočasné disky pomocí klíčů spravovaných platformou. 
+
+```azurecli
+rgName=yourRGName
+vmssName=yourVMSSName
+location=westus2
+vmSize=Standard_DS3_V2
+image=UbuntuLTS 
+
+az vmss create -g $rgName \
+-n $vmssName \
+--encryption-at-host \
+--image UbuntuLTS \
+--upgrade-policy automatic \
+--admin-username azureuser \
+--generate-ssh-keys \
+--data-disk-sizes-gb 64 128 \
+```
+
+### <a name="update-a-virtual-machine-scale-set-to-enable-encryption-at-host"></a>Pokud chcete povolit šifrování na hostiteli, aktualizujte sadu škálování virtuálního počítače. 
+
+```azurecli
+rgName=yourRGName
+vmssName=yourVMName
+
+az vmss update -n $vmssName \
+-g $rgName \
+--set virtualMachineProfile.securityProfile.encryptionAtHost=true
+```
+
+### <a name="check-the-status-of-encryption-at-host-for-a-virtual-machine-scale-set"></a>Ověřte stav šifrování na hostiteli pro sadu škálování virtuálního počítače.
+
+```azurecli
+rgName=yourRGName
+vmssName=yourVMName
+
+az vmss show -n $vmssName \
+-g $rgName \
+--query [virtualMachineProfile.securityProfile.encryptionAtHost] -o tsv
 ```
 
 ## <a name="finding-supported-vm-sizes"></a>Hledání podporovaných velikostí virtuálních počítačů

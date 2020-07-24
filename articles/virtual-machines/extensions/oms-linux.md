@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: 905a42c5a9bc297e2c27408a58a5b3019755fdef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7ebb23cfc0ffdcfcac7ecb4ecbd9b9a665e6130
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736649"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029089"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Rozšíření Log Analytics pro virtuální počítače pro Linux
 
@@ -32,7 +32,7 @@ Protokoly Azure Monitor poskytují možnosti monitorování, upozorňování a n
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="operating-system"></a>Operační systém
 
@@ -104,7 +104,7 @@ Následující JSON zobrazuje schéma pro rozšíření agenta Log Analytics. P�
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Name | Hodnota/příklad |
+| Název | Hodnota/příklad |
 | ---- | ---- |
 | apiVersion | 2018-06-01 |
 | vydavatel | Microsoft. EnterpriseCloud. Monitoring |
@@ -186,7 +186,7 @@ az vm extension set \
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Řešení potíží
+### <a name="troubleshoot"></a>Odstranit potíže
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí rozhraní příkazového řádku Azure CLI. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí Azure CLI.
 
@@ -204,7 +204,7 @@ Výstup spuštění rozšíření se zaznamená do následujícího souboru:
 
 | Kód chyby | Význam | Možná akce |
 | :---: | --- | --- |
-| 9 | Povolit s názvem předčasně | [Aktualizujte agenta Azure Linux](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) na nejnovější dostupnou verzi. |
+| 9 | Povolit s názvem předčasně | [Aktualizujte agenta Azure Linux](./update-linux-agent.md) na nejnovější dostupnou verzi. |
 | 10 | Virtuální počítač je už připojený k Log Analyticsmu pracovnímu prostoru. | Pokud chcete připojit virtuální počítač k pracovnímu prostoru určenému ve schématu rozšíření, nastavte stopOnMultipleConnections na hodnotu false ve veřejném nastavení nebo odeberte tuto vlastnost. Tento virtuální počítač se pro každý pracovní prostor, ke kterému je připojený, účtuje jednou. |
 | 11 | Rozšíření se zadala neplatná konfigurace. | Pomocí předchozích příkladů nastavte všechny hodnoty vlastností, které jsou nezbytné pro nasazení. |
 | 17 | Chyba instalace balíčku Log Analytics | 

@@ -8,11 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 2aa7110ab4e52fdc5c3804bd27be5f41081fb435
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d594f4d8019a7c23da79506cd702adbe9f25038d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758503"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028936"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Použití sériové konzoly pro přístup ke GRUB a režimu jednoho uživatele
 GRUB je celkový jednotný zaváděcí program pro spouštění. Z GRUB můžete změnit konfiguraci spouštění tak, aby se spouštěla do režimu jednoho uživatele, mimo jiné.
@@ -77,7 +78,7 @@ Pokud jste nastavili GRUB a root Access s výše uvedenými pokyny, můžete zad
 1. Stisknutím kombinace kláves CTRL + X ukončete a restartujte s použitým nastavením.
 1. Až budete moct zadat režim single user, budete vyzváni k zadání hesla správce – toto je stejné heslo, které jste vytvořili v předchozích pokynech.    
 
-    ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
+    ![Animovaný obrázek znázorňující rozhraní příkazového řádku Uživatel vybere Server, vyhledá konec řádku jádra a pak zadá zadaný text.](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
 
 ### <a name="enter-single-user-mode-without-root-account-enabled-in-rhel"></a>Zadat režim single user bez povoleného kořenového účtu v RHEL
 Pokud jste neprošli výše uvedenými kroky pro povolení kořenového uživatele, můžete resetovat své kořenové heslo. Použijte následující pokyny:
@@ -94,7 +95,7 @@ Pokud jste neprošli výše uvedenými kroky pro povolení kořenového uživate
 1. Po spuštění do režimu jednoho uživatele zadejte do jailbreak. `chroot /sysroot` `sysroot`
 1. Nyní jste kořen. Můžete resetovat své kořenové heslo pomocí `passwd` a pak pomocí výše uvedených pokynů zadat režim single user. `reboot -f`Po dokončení zadejte a restartujte počítač.
 
-![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
+![Animovaný obrázek znázorňující rozhraní příkazového řádku Uživatel vybere Server, vyhledá konec řádku jádra a zadá zadané příkazy.](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
 > Poznámka: při spuštění prostřednictvím výše uvedených pokynů přejdete do nouzového prostředí, takže můžete provádět i úlohy, jako je například úpravy `fstab` . Obecně přijatý návrh je však resetování kořenového hesla a jeho použití k zadání režimu Single User. 
 
@@ -119,7 +120,7 @@ Ve výchozím nastavení se Ubuntu obrázky automaticky nezobrazí na obrazovce 
 1. Změňte `GRUB_TIMEOUT` hodnotu na nenulovou hodnotu.
 1. Otevřete `/etc/default/grub` v textovém editoru podle vašeho výběru.
 1. Odkomentovat `GRUB_HIDDEN_TIMEOUT=1` řádek
-1. Spusťte `sudo update-grub`.
+1. Spuštěním příkazu `sudo update-grub`
 
 ### <a name="single-user-mode-in-ubuntu"></a>Režim single user v Ubuntu
 Ubuntu se automaticky přetáhne do režimu jednoho uživatele, pokud se nedokáže normálně spustit. Chcete-li ručně zadat režim jednoho uživatele, postupujte podle následujících pokynů:
@@ -156,7 +157,7 @@ GRUB přístup v SLES vyžaduje konfiguraci zaváděcího programu pro spouště
 1. Pokud chcete zadat GRUB, restartujte virtuální počítač a stiskněte libovolný klíč během spouštěcí sekvence, abyste mohli GRUB zůstat na obrazovce.
     - Výchozí časový limit pro GRUB je 1. To můžete změnit změnou `GRUB_TIMEOUT` proměnné v`/etc/default/grub`
 
-![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-grub-config.gif)
+![Animovaný obrázek znázorňující rozhraní příkazového řádku Uživatel zadá zadaný text, vybere zadanou možnost a uloží nastavení.](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-grub-config.gif)
 
 ### <a name="single-user-mode-in-suse-sles"></a>Režim single user v SUSE SLES
 V případě, že se SLES nemůže normálně spustit, bude automaticky vyřazeno z nouzového prostředí. Chcete-li ručně zadat nouzové prostředí, postupujte podle následujících pokynů:
@@ -177,7 +178,7 @@ Oracle Linux se dodává s GRUB, které jsou povolené. Pokud chcete zadat GRUB,
 Postupujte podle pokynů pro RHEL výše a povolte jeden uživatelský režim v Oracle Linux.
 
 ## <a name="next-steps"></a>Další kroky
-* Hlavní stránka dokumentace pro Linux na sériové konzole se nachází [tady](serial-console.md).
+* Hlavní stránka dokumentace pro Linux na sériové konzole se nachází [tady](../troubleshooting/serial-console-linux.md).
 * Použití sériové konzoly pro [volání NMI a SysRq](serial-console-nmi-sysrq.md)
-* Pro virtuální počítače s [Windows](../windows/serial-console.md) je dostupná taky konzola sériového portu.
-* Další informace o [diagnostice spouštění](boot-diagnostics.md)
+* Pro virtuální počítače s [Windows](../troubleshooting/serial-console-windows.md) je dostupná taky konzola sériového portu.
+* Další informace o [diagnostice spouštění](../troubleshooting/boot-diagnostics.md)

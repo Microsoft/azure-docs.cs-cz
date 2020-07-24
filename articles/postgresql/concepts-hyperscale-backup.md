@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: bcc94b62812f1668bf8c5e5abb268fddf3da1fa5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22bc3d6efca24a88b28217b2e06ac79d33f16b2e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82515440"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030075"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>Zálohování a obnovení v Azure Database for PostgreSQL – Citus (škálování)
 
@@ -32,7 +32,11 @@ Aktuální ceny za úložiště zálohování najdete na [stránce s cenami](htt
 
 ## <a name="restore"></a>Obnovení
 
-V Azure Database for PostgreSQL vytvoří cluster Citus (s obnovením) nový cluster z původních záloh uzlů.
+V Azure Database for PostgreSQL vytvoří cluster Citus (s obnovením) nový cluster z původních záloh uzlů. 
+
+> [!IMPORTANT]
+>Cluster s škálováním na úrovni Standard můžete obnovit jenom v rámci stejného předplatného a skupiny prostředků a s jiným názvem clusteru.
+
 
 > [!IMPORTANT]
 > Odstraněné clustery Citus) se nedají obnovit. Pokud cluster odstraníte, odstraní se všechny uzly patřící do clusteru a nebude možné je obnovit. Pro ochranu prostředků clusteru, po nasazení, před náhodným odstraněním nebo neočekávaným změnám můžou správci využít [zámky pro správu](/azure/azure-resource-manager/management/lock-resources).

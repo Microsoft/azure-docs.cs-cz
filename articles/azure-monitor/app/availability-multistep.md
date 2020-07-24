@@ -3,11 +3,12 @@ title: Monitorování pomocí multi-step web Tests – Azure Application Insight
 description: Nastavení webových testů s více kroky pro monitorování webových aplikací s využitím Azure Application Insights
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 04361f7b3306c5f7c164a849d8b05d7cf4756999
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2df8b7450423c901665090608da83f68b43b30e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83873347"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024769"
 ---
 # <a name="multi-step-web-tests"></a>Vícekrokové webové testy
 
@@ -16,7 +17,7 @@ Zaznamenanou posloupnost adres URL a interakcí můžete sledovat na webu prost�
 > [!NOTE]
 > Webové testy s více kroky závisejí na souborech WebTest sady Visual Studio. Bylo [oznámeno](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/) , že Visual Studio 2019 bude poslední verzí s funkcí webového testu. Je důležité si uvědomit, že i když nebudou přidány žádné nové funkce, funkce webového testu v aplikaci Visual Studio 2019 je stále nadále podporována a bude nadále podporována během životního cyklu podpory produktu. Tento Azure Monitor produktový tým se zabývá otázkami ohledně [budoucích testů dostupnosti](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)s více kroky.  
 > </br>
-> Webové testy s více kroky **nejsou podporovány** v cloudu [Azure Government](https://docs.microsoft.com/azure/azure-government/) .
+> Webové testy s více kroky **nejsou podporovány** v cloudu [Azure Government](../../azure-government/index.yml) .
 
 
 ## <a name="pre-requisites"></a>Požadavky
@@ -36,7 +37,7 @@ Pro vyhledání požadovaných testovacích nástrojů. Spusťte **instalační 
 > [!WARNING]
 > Nedoporučujeme používat nahrávání více kroků. Zapisovač byl vyvinut pro statické stránky HTML se základními interakcemi a neposkytuje funkční prostředí pro moderní webové stránky.
 
-Pokyny k vytváření webových testů sady Visual Studio najdete v [oficiální dokumentaci k sadě Visual studio 2019](https://docs.microsoft.com/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019).
+Pokyny k vytváření webových testů sady Visual Studio najdete v [oficiální dokumentaci k sadě Visual studio 2019](/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019).
 
 ## <a name="upload-the-web-test"></a>Nahrát webový test
 
@@ -105,7 +106,7 @@ Ve všech případech musíte v aplikaci vytvořit účet jenom pro účely test
 
 **Ověřování SAML**
 
-|Název vlastnosti| Description|
+|Název vlastnosti| Popis|
 |----|-----|
 | Identifikátor URI cílové skupiny | Identifikátor URI cílové skupiny pro token SAML.  Toto je identifikátor URI pro Access Control Service (ACS) – včetně oboru názvů služby ACS a názvu hostitele. |
 | Heslo certifikátu | Heslo pro klientský certifikát, kterým bude udělen přístup k vloženému privátnímu klíči. |
@@ -138,7 +139,7 @@ Porovnáním různých relací identifikujte token předaný zpět z webu ověř
 Uložte webový test pomocí sady Visual Studio.
 Parametrizujte tokeny, nastavte parametr při vrácení tokenu z ověřovatele a použijte ho v dotazu na web. (Sada Visual Studio se pokusí o parametrizaci testu, ale nebude tokeny parametrizovat správně.)
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Vyhrazený [článek týkající se řešení potíží](troubleshoot-availability.md).
 

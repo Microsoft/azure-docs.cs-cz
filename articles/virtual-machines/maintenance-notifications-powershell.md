@@ -7,17 +7,18 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 79ef649502af8962253121ea18804966b1fa043e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4858a2e448955877107f6928b0aa01726e5db082
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84677929"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028581"
 ---
 # <a name="handling-planned-maintenance-using-powershell"></a>Zpracování plánované údržby pomocí PowerShellu
 
 **Tento článek se týká virtuálních počítačů, na kterých běží Linux i Windows.**
 
-Pomocí Azure PowerShell můžete zjistit, kdy se virtuální počítače naplánovaly na [údržbu](maintenance-notifications.md). Informace o plánované údržbě jsou k dispozici pomocí rutiny [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) , když použijete `-status` parametr.
+Pomocí Azure PowerShell můžete zjistit, kdy se virtuální počítače naplánovaly na [údržbu](maintenance-notifications.md). Informace o plánované údržbě jsou k dispozici pomocí rutiny [Get-AzVM](/powershell/module/az.compute/get-azvm) , když použijete `-status` parametr.
   
 Informace o údržbě jsou vráceny pouze v případě, že je naplánována údržba. Pokud není naplánována žádná údržba, která by měla vliv na virtuální počítač, rutina nevrátí žádné informace o údržbě. 
 
@@ -28,7 +29,7 @@ Get-AzVM -ResourceGroupName myResourceGroup -Name myVM -Status
 
 V MaintenanceRedeployStatus se vrátí následující vlastnosti: 
 
-| Hodnota | Description   |
+| Hodnota | Popis   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | Určuje, jestli můžete v tomto okamžiku spustit údržbu virtuálního počítače. |
 | PreMaintenanceWindowStartTime         | Začátek samoobslužného okna údržby, když můžete na svém VIRTUÁLNÍm počítači iniciovat údržbu |
@@ -39,7 +40,7 @@ V MaintenanceRedeployStatus se vrátí následující vlastnosti:
 
 
 
-Stav údržby pro všechny virtuální počítače ve skupině prostředků můžete také získat pomocí [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) a nespecifikovat virtuální počítač.
+Stav údržby pro všechny virtuální počítače ve skupině prostředků můžete také získat pomocí [Get-AzVM](/powershell/module/az.compute/get-azvm) a nespecifikovat virtuální počítač.
  
 ```powershell
 Get-AzVM -ResourceGroupName myResourceGroup -Status

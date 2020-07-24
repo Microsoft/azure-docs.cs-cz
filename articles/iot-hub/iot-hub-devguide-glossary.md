@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 78899f44ba6610f17d19b025f61d968a629c8ad6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b7a81357cc6ee2608d2acd3051dcac3e5d0e07e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565883"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023462"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Glosář IoT Hubch podmínek
 
@@ -58,13 +58,13 @@ K dispozici jsou sady _SDK služeb_ pro několik jazyků, které umožňují vyt
 
 [Nástroje Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) jsou open source rozšíření Visual Studio Code pro různé platformy, které pomáhá spravovat IoT Hub a zařízení Azure v vs Code. Pomocí nástrojů Azure IoT můžou vývojáři IoT vyvíjet projekt IoT v VS Code snadno.
 
-## <a name="azure-portal"></a>portál Azure
+## <a name="azure-portal"></a>Portál Azure Portal
 
 [Portál Microsoft Azure](https://portal.azure.com) je centrální místo, kde můžete zřídit a spravovat prostředky Azure. Uspořádává svůj _obsah pomocí oken_.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-[Azure PowerShell](/powershell/azure/overview) je kolekce rutin, které můžete použít ke správě Azure pomocí Windows PowerShellu. Pomocí rutin můžete vytvářet, testovat, nasazovat a spravovat řešení a služby dodávané prostřednictvím platformy Azure.
+[Azure PowerShell](/powershell/azure/) je kolekce rutin, které můžete použít ke správě Azure pomocí Windows PowerShellu. Pomocí rutin můžete vytvářet, testovat, nasazovat a spravovat řešení a služby dodávané prostřednictvím platformy Azure.
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 

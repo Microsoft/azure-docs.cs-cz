@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4b40c284c8d034d92f29eb25d754d9294ac2e3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d1a4495b1d637b1cf8592f8c17e63ad456ea3c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386772"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027457"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Přidání vlastního pracovního postupu schválení pro samoobslužné přihlášení
 
@@ -61,11 +61,11 @@ Svůj schvalovací systém musíte zaregistrovat jako aplikaci v tenantovi Azure
 
 V dalším kroku [vytvoříte konektory rozhraní API](self-service-sign-up-add-api-connector.md#create-an-api-connector) pro uživatelský tok samoobslužné registrace. Vaše systémové rozhraní API pro schvalování potřebuje dva konektory a odpovídající koncové body, podobně jako v níže uvedených příkladech. Tyto konektory API jsou následující:
 
-- **Zkontroluje stav schválení**. Jakmile se uživatel přihlásí pomocí poskytovatele identity, požádejte ho, aby zkontroloval, jestli má uživatel existující žádost o schválení nebo už byl zamítnutý. Pokud váš systém schvalování provede jenom rozhodnutí o automatickém schválení, nemusí být tento konektor API potřebný. V následujícím příkladu je konektor rozhraní API pro kontrolu stavu schválení.
+- **Zkontroluje stav schválení**. Jakmile se uživatel přihlásí pomocí poskytovatele identity, požádejte ho, aby zkontroloval, jestli má uživatel existující žádost o schválení nebo už byl zamítnutý. Pokud váš systém schvalování provede jenom rozhodnutí o automatickém schválení, nemusí být tento konektor API potřebný. Příklad "konektoru rozhraní API" kontroly stavu schválení.
 
   ![Zkontroluje konfiguraci konektoru rozhraní API stavu schválení.](./media/self-service-sign-up-add-approvals/check-approval-status-api-connector-config-alt.png)
 
-- **Žádost o schválení** – odeslání volání schvalovacímu systému poté, co uživatel dokončí stránku kolekce atributů, ale před vytvořením uživatelského účtu pro vyžádání schválení. Žádost o schválení se dá automaticky udělit nebo ručně zkontrolovat. Následuje příklad konektoru rozhraní API "schválení žádosti". Vyberte všechny **deklarace identity, které zasílají** , aby schvalovací systém mohl učinit rozhodnutí o schválení.
+- **Žádost o schválení** – odeslání volání schvalovacímu systému poté, co uživatel dokončí stránku kolekce atributů, ale před vytvořením uživatelského účtu pro vyžádání schválení. Žádost o schválení se dá automaticky udělit nebo ručně zkontrolovat. Příklad konektoru rozhraní API "schválení žádosti". Vyberte všechny **deklarace identity, které zasílají** , aby schvalovací systém mohl učinit rozhodnutí o schválení.
 
   ![Konfigurace požadavku na schválení konektoru rozhraní API](./media/self-service-sign-up-add-approvals/create-approval-request-api-connector-config-alt.png)
 
@@ -94,14 +94,14 @@ Váš systém schvalování může použít [typy odezvy rozhraní API](self-ser
 
 ### <a name="request-and-responses-for-the-check-approval-status-api-connector"></a>Požadavek a odpovědi na konektor rozhraní API pro kontrolu stavu schválení
 
-Níže je příklad žádosti přijaté rozhraním API z konektoru rozhraní API pro kontrolu stavu schválení:
+Příklad požadavku přijatého rozhraním API z konektoru rozhraní API pro kontrolu stavu schválení:
 
 ```http
 POST <Approvals-API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@outlook.com",
+ "email": "johnsmith@outlook.com",
  "identities": [
      {
      "signInType":"federated",
@@ -119,7 +119,7 @@ Koncový bod rozhraní API pro **kontrolu stavu schválení** by měl vrátit od
 
 - Uživatel dřív nepožadoval schválení.
 
-Následuje příklad reakce na pokračování:
+Příklad odpovědi na pokračování:
 
 ```http
 HTTP/1.1 200 OK
@@ -166,14 +166,14 @@ Content-type: application/json
 
 ### <a name="request-and-responses-for-the-request-approval-api-connector"></a>Žádost a odpovědi pro konektor API "schválení žádosti"
 
-Následuje příklad požadavku HTTP přijatého rozhraním API z konektoru API "schválení žádosti":
+Příklad požadavku HTTP přijatého rozhraním API z konektoru API "schválení žádosti":
 
 ```http
 POST <Approvals-API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@outlook.com",
+ "email": "johnsmith@outlook.com",
  "identities": [
      {
      "signInType":"federated",
@@ -194,7 +194,7 @@ Koncový bod rozhraní API pro **schválení žádosti** by měl vrátit odpově
 
 - Uživatel může být **_automaticky schválen_**.
 
-Následuje příklad reakce na pokračování:
+Příklad odpovědi na pokračování:
 
 ```http
 HTTP/1.1 200 OK
@@ -257,14 +257,14 @@ Po získání ručního schválení vytvoří vlastní systém schvalování [u�
 
 Pokud se uživatel přihlásil pomocí účtu Google nebo Facebook, můžete použít [rozhraní API pro vytvoření uživatele](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0&tabs=http).
 
-1. Systém schvalování používá požadavek HTTP od toku uživatele.
+1. Schvalovací systém přijme požadavek HTTP od toku uživatele.
 
 ```http
 POST <Approvals-API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@outlook.com",
+ "email": "johnsmith@outlook.com",
  "identities": [
      {
      "signInType":"federated",
@@ -305,9 +305,9 @@ Content-type: application/json
 
 | Parametr                                           | Povinné | Popis                                                                                                                                                            |
 | --------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| userPrincipalName (Hlavní název uživatele)                                   | Yes      | Dá se vygenerovat tak, že se převezme deklarace, která se `email_address` pošle do rozhraní API, nahradí se `@` znak za `_` a předá ho do `#EXT@<tenant-name>.onmicrosoft.com` . |
+| userPrincipalName (Hlavní název uživatele)                                   | Yes      | Dá se vygenerovat tak, že se převezme deklarace, která se `email` pošle do rozhraní API, nahradí se `@` znak za `_` a předá ho do `#EXT@<tenant-name>.onmicrosoft.com` . |
 | accountEnabled                                      | Yes      | Musí být nastaven na hodnotu `true` .                                                                                                                                                 |
-| pošta                                                | Yes      | Ekvivalent k `email_address` deklaraci identity odeslané do rozhraní API.                                                                                                               |
+| pošta                                                | Yes      | Ekvivalent k `email` deklaraci identity odeslané do rozhraní API.                                                                                                               |
 | userType                                            | Yes      | Musí být `Guest` . Určí tohoto uživatele jako uživatel typu Host.                                                                                                                 |
 | nebyly                                          | Yes      | Informace o federované identitě.                                                                                                                                    |
 | \<otherBuiltInAttribute>                            | No       | Jiné předdefinované atributy jako `displayName` , `city` a další. Názvy parametrů jsou stejné jako parametry odesílané konektorem rozhraní API.                            |
@@ -324,7 +324,7 @@ POST <Approvals-API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@fabrikam.onmicrosoft.com",
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
  "displayName": "John Smith",
  "city": "Redmond",
  "extension_<extensions-app-id>_CustomAttribute": "custom attribute value",
@@ -332,7 +332,7 @@ Content-type: application/json
 }
 ```
 
-2. Systém schvalování vytvoří pozvánku pomocí `email_address` konektoru rozhraní API.
+2. Systém schvalování vytvoří pozvánku pomocí `email` konektoru rozhraní API.
 
 ```http
 POST https://graph.microsoft.com/v1.0/invitations
@@ -344,7 +344,7 @@ Content-type: application/json
 }
 ```
 
-Následuje příklad odpovědi:
+Příklad odpovědi:
 
 ```http
 HTTP/1.1 201 OK

@@ -1,20 +1,20 @@
 ---
-title: Azure Database for PostgreSQL – směrný plán zabezpečení s ochranou rozsahu pro Azure Security test
+title: Základní hodnoty zabezpečení Azure pro Azure Database for PostgreSQL – škálovatelné
 description: Azure Database for PostgreSQL – směrný plán zabezpečení s ochranou rozsahu poskytuje pokyny a prostředky pro implementaci doporučení zabezpečení, která jsou určená v srovnávacím testu zabezpečení Azure.
 author: msmbaldwin
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ca08ac30c5d8e925197a0df1d327bf9a0923b046
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dd6d3ef6f610dcbdc511297e459cc5856bebe033
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531223"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030041"
 ---
-# <a name="azure-database-for-postgresql---hyperscale-security-baseline-for-azure-security-benchmark"></a>Azure Database for PostgreSQL – směrný plán zabezpečení s ochranou rozsahu pro Azure Security test
+# <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale"></a>Základní hodnoty zabezpečení Azure pro Azure Database for PostgreSQL – škálovatelné
 
 Základní plán zabezpečení Azure pro Azure Database for PostgreSQL – škálovatelné řešení obsahuje doporučení, která vám pomůžou vylepšit stav zabezpečení vašeho nasazení.
 

@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/13/2020
+ms.date: 07/20/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8ef25df8fdb11715ebba954e31a97939d6ac0e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 860616cbea598e40494155e250254b3c607c1173
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476831"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027491"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Povolení vícefaktorového ověřování Azure pro jednotlivé uživatele za účelem zabezpečení událostí přihlášení
 
@@ -39,8 +39,8 @@ Uživatelské účty v Azure Multi-Factor Authentication mají následující t�
 | Status | Popis | Neprohlížečové aplikace ovlivněny | Ovlivněné aplikace v prohlížeči | Moderní ověřování ovlivněno |
 |:---:| --- |:---:|:--:|:--:|
 | Zakázáno | Výchozí stav nového uživatele, který není zaregistrovaný v Azure Multi-Factor Authentication. | No | No | No |
-| Povoleno | Uživatel je zaregistrovaný ve službě Azure Multi-Factor Authentication, ale nezaregistroval metody ověřování. Obdrží výzvu k registraci při příštím přihlášení. | Ne.  Budou dál fungovat, dokud se proces registrace nedokončí. | Ano. Po vypršení platnosti relace se vyžaduje registrace služby Azure Multi-Factor Authentication.| Ano. Po vypršení platnosti přístupového tokenu se vyžaduje registrace Azure Multi-Factor Authentication. |
-| Vynuceno | Uživatel je zaregistrovaný a dokončil proces registrace pro Azure Multi-Factor Authentication. | Ano. Aplikace vyžadují hesla aplikací. | Ano. Při přihlášení se vyžaduje Azure Multi-Factor Authentication. | Ano. Při přihlášení se vyžaduje Azure Multi-Factor Authentication. |
+| Povoleno | Uživatel je zaregistrovaný ve službě Azure Multi-Factor Authentication, ale nezaregistroval metody ověřování. Obdrží výzvu k registraci při příštím přihlášení. | Ne.  Budou dál fungovat, dokud se proces registrace nedokončí. | Yes. Po vypršení platnosti relace se vyžaduje registrace služby Azure Multi-Factor Authentication.| Yes. Po vypršení platnosti přístupového tokenu se vyžaduje registrace Azure Multi-Factor Authentication. |
+| Vynuceno | Uživatel je zaregistrovaný a dokončil proces registrace pro Azure Multi-Factor Authentication. | Yes. Aplikace vyžadují hesla aplikací. | Yes. Při přihlášení se vyžaduje Azure Multi-Factor Authentication. | Yes. Při přihlášení se vyžaduje Azure Multi-Factor Authentication. |
 
 Stav uživatele odráží, jestli ho správce zaregistroval v Azure Multi-Factor Authentication a jestli dokončil proces registrace.
 
@@ -78,11 +78,11 @@ Jakmile povolíte uživatele, upozorněte je e-mailem. Sdělte uživatelům, že
 
 ## <a name="change-state-using-powershell"></a>Změna stavu pomocí PowerShellu
 
-Pokud chcete změnit stav uživatele pomocí [Azure AD PowerShellu](/powershell/azure/overview), změňte `$st.State` parametr pro uživatelský účet. Existují tři možné stavy pro uživatelský účet:
+Pokud chcete změnit stav uživatele pomocí [Azure AD PowerShellu](/powershell/azure/), změňte `$st.State` parametr pro uživatelský účet. Existují tři možné stavy pro uživatelský účet:
 
-* *Enabled* (Povoleno)
+* *Povoleno*
 * *Vynuceno*
-* *Disabled* (Zakázáno)  
+* *Zakázáno*  
 
 Nepřesouvat uživatele přímo do *Vynutilého* stavu. Pokud to uděláte, aplikace nezaložené na prohlížeči přestanou fungovat, protože uživatel se nedostal přes Azure Multi-Factor Authentication registraci a nezískal [heslo aplikace](howto-mfa-app-passwords.md).
 
@@ -177,12 +177,12 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 ```
 
 > [!NOTE]
-> Nedávno jsme změnili chování a tento skript PowerShellu. Dříve byl skript uložen mimo metody MFA, zakázal MFA a obnovil metody. Už to není nutné, když výchozí chování pro Disable nevymaže tyto metody.
->
 > Pokud je MFA znovu zapnuté u objektu uživatele, který už obsahuje podrobnosti o registraci, jako je telefon nebo e-mail, musí správci tento uživatel znovu zaregistrovat MFA prostřednictvím Azure Portal nebo PowerShellu. Pokud se uživatel znovu neregistruje, jejich stav MFA nepřejde z *Enabled* na *vynutilo* v UŽIVATELSKÉM rozhraní pro správu MFA.
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o konfiguraci nastavení Azure Multi-Factor Authentication, jako jsou důvěryhodné IP adresy, vlastní hlasové zprávy a výstrahy na podvod, najdete v tématu [Konfigurace nastavení azure Multi-Factor Authentication](howto-mfa-mfasettings.md). Pokud chcete spravovat uživatelská nastavení pro Azure Multi-Factor Authentication, přečtěte si téma [Správa uživatelských nastavení pomocí Azure Multi-Factor Authentication](howto-mfa-userdevicesettings.md).
+Pokud chcete nakonfigurovat nastavení Azure Multi-Factor Authentication, přečtěte si téma [Konfigurace nastavení azure Multi-Factor Authentication](howto-mfa-mfasettings.md).
+
+Pokud chcete spravovat uživatelská nastavení pro Azure Multi-Factor Authentication, přečtěte si téma [Správa uživatelských nastavení pomocí Azure Multi-Factor Authentication](howto-mfa-userdevicesettings.md).
 
 Informace o tom, proč se uživateli zobrazila výzva k provedení MFA, najdete v tématu [sestavy služby Azure Multi-Factor Authentication](howto-mfa-reporting.md).

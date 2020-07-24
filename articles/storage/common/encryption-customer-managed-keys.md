@@ -5,17 +5,17 @@ description: K ochraně dat ve vašem účtu úložiště můžete použít vlas
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/12/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 5dedd70b51361936808724ef70b96cdf9cfa13f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d53818c91d32bc7435d1328c2ae73a8eb3172cd4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515413"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029786"
 ---
 # <a name="use-customer-managed-keys-with-azure-key-vault-to-manage-azure-storage-encryption"></a>Použití klíčů spravovaných zákazníkem se Azure Key Vault ke správě šifrování Azure Storage
 
@@ -47,13 +47,13 @@ Data v objektech blob a souborových službách jsou vždycky chráněná pomoc�
 
 ## <a name="enable-customer-managed-keys-for-a-storage-account"></a>Povolení klíčů spravovaných zákazníkem pro účet úložiště
 
-Klíče spravované zákazníkem se můžou povolit jenom u stávajících účtů úložiště. U trezoru klíčů musí být zřízené zásady přístupu, které udělují klíčová oprávnění ke spravované identitě, která je přidružená k účtu úložiště. Spravovaná identita je k dispozici až po vytvoření účtu úložiště.
-
 Když nakonfigurujete klíč spravovaný zákazníkem, Azure Storage zabalí kořenový šifrovací klíč dat pro účet s klíčem spravovaným zákazníkem v přidruženém trezoru klíčů. Povolení klíčů spravovaných zákazníkem nemá vliv na výkon a projeví se okamžitě.
 
-Když upravíte klíč, který se používá pro Azure Storage šifrování, povolením nebo zakázáním klíčů spravovaných zákazníkem, aktualizací verze klíče nebo zadáním jiného klíče, pak se změní šifrování kořenového klíče, ale data v Azure Storagem účtu není nutné znovu šifrovat.
-
 Když povolíte nebo zakážete spravované klíče zákazníka nebo upravíte klíč nebo verzi klíče, změní se ochrana kořenového šifrovacího klíče, ale data v Azure Storagem účtu nemusí být znovu zašifrovaná.
+
+Klíče spravované zákazníkem se můžou povolit jenom u stávajících účtů úložiště. U trezoru klíčů je potřeba nakonfigurovat zásady přístupu, které udělují oprávnění ke spravované identitě, která je přidružená k účtu úložiště. Spravovaná identita je k dispozici až po vytvoření účtu úložiště.
+
+Mezi uživatelsky spravovanými klíči a klíči spravovanými Microsoftem můžete kdykoli přepínat. Další informace o klíčích spravovaných Microsoftem najdete v tématu [o správě šifrovacích klíčů](storage-service-encryption.md#about-encryption-key-management).
 
 Další informace o použití klíčů spravovaných zákazníkem s Azure Key Vault pro šifrování Azure Storage najdete v jednom z těchto článků:
 
@@ -66,15 +66,22 @@ Další informace o použití klíčů spravovaných zákazníkem s Azure Key Va
 
 ## <a name="store-customer-managed-keys-in-azure-key-vault"></a>Ukládání klíčů spravovaných zákazníkem v Azure Key Vault
 
-Pokud chcete povolit klíče spravované zákazníkem v účtu úložiště, musíte použít Azure Key Vault k uložení klíčů. V trezoru klíčů musíte povolit jak **obnovitelné odstranění** , tak i **Nemazat** vlastnosti.
+Pokud chcete povolit klíče spravované zákazníkem v účtu úložiště, musíte k uložení klíčů použít Trezor klíčů Azure. V trezoru klíčů musíte povolit jak **obnovitelné odstranění** , tak i **Nemazat** vlastnosti.
 
 Šifrování úložiště Azure podporuje klíče RSA a RSA-HSM velikostí 2048, 3072 a 4096. Další informace o klíčích najdete v tématu **Key Vault Keys** v tématu [informace o Azure Key Vaultch klíčích, tajných klíčích a certifikátech](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
 
+Použití Azure Key Vault má přidružené náklady. Další informace najdete v tématu [Key Vault ceny](/pricing/details/key-vault/).
+
 ## <a name="rotate-customer-managed-keys"></a>Otočit klíče spravované zákazníkem
 
-Klíč spravovaný zákazníkem můžete v Azure Key Vault otočit podle vašich zásad dodržování předpisů. Při otočení klíče musíte aktualizovat účet úložiště, aby používal nový identifikátor URI verze klíče. Informace o tom, jak aktualizovat účet úložiště pro použití nové verze klíče v Azure Portal, najdete v části s názvem **aktualizace verze klíče** v tématu [konfigurace klíčů spravovaných zákazníkem pro Azure Storage pomocí Azure Portal](storage-encryption-keys-portal.md).
+Klíč spravovaný zákazníkem můžete v Azure Key Vault otočit podle vašich zásad dodržování předpisů. Máte dvě možnosti, jak otočit klíč spravovaný zákazníkem:
 
-Otáčení klíče neaktivuje opětovné šifrování dat v účtu úložiště. Od uživatele není vyžadována žádná další akce.
+- **Automatické otočení:** Pokud chcete konfigurovat automatické rotaci klíčů spravovaných zákazníkem, vynechejte verzi klíče, pokud povolíte šifrování s použitím klíčů spravovaných zákazníkem pro účet úložiště. Pokud je verze klíče vynechaná, Azure Storage každý den kontroluje, jestli je ve službě Azure Key Vault k dispozici nová verze klíče spravovaného zákazníkem. Pokud je k dispozici nová verze klíče, Azure Storage automaticky použije nejnovější verzi klíče.
+- **Ruční rotace:** Pokud chcete pro Azure Storage šifrování použít určitou verzi klíče, zadejte ji, když povolíte šifrování pomocí klíčů spravovaných zákazníkem pro účet úložiště. Pokud zadáte verzi klíče, pak Azure Storage používá tuto verzi pro šifrování, dokud neaktualizujete ručně verzi klíče.
+
+    Když se klíč ručně otočí, musíte aktualizovat účet úložiště, aby používal nový identifikátor URI verze klíče. Informace o tom, jak aktualizovat účet úložiště pro použití nové verze klíče v Azure Portal, najdete v tématu [Ruční aktualizace verze klíče](storage-encryption-keys-portal.md#manually-update-the-key-version).
+
+Otáčení klíče spravovaného zákazníkem neaktivuje opětovné šifrování dat v účtu úložiště. Od uživatele není vyžadována žádná další akce.
 
 ## <a name="revoke-access-to-customer-managed-keys"></a>Odvolat přístup k klíčům spravovaným zákazníkem
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/03/2020
-ms.openlocfilehash: 3c4252f926163b00d3b4f4bf4a26373988017ac1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d74e3f196e58e522eb9377ca9f18fd05ec8460ae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255001"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023989"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperškálování úrovně služby
 
@@ -179,13 +179,13 @@ Povolené oblasti:
 - Austrálie – východ
 - Austrálie – jihovýchod
 - Austrálie – střed
-- Brazílie – jih
+- Brazil South
 - Střední Kanada
-- USA – střed
+- Střední USA
 - Čína – východ 2
 - Čína – sever 2
 - Východní Asie
-- USA – východ
+- East US
 - Východní USA 2
 - Francie – střed
 - Německo – středozápad
@@ -198,8 +198,8 @@ Povolené oblasti:
 - Norsko – východ
 - Norsko – západ
 - Jižní Afrika – sever
-- USA – středojih
-- Jihovýchodní Asie
+- Středojižní USA
+- Southeast Asia
 - Švýcarsko – západ
 - Spojené království – jih
 - Spojené království – západ
@@ -208,17 +208,17 @@ Povolené oblasti:
 - US Govt Arizona
 - US Govt Texas
 - USA – středozápad
-- Západní Evropa
+- West Europe
 - USA – západ
-- USA – západ 2
+- Západní USA 2
 
 ## <a name="known-limitations"></a>Známá omezení
 
 Jedná se o aktuální omezení úrovně služby škálování na úrovni služeb (GA).  Aktivně pracujeme na odebrání tolika těchto omezení, co je možné.
 
-| Problém | Description |
+| Problém | Popis |
 | :---- | :--------- |
-| Podokno Správa zálohování serveru nezobrazuje databáze s škálovatelnými škálováními. Budou filtrovány ze zobrazení.  | Škálování má samostatnou metodu pro správu záloh, takže nastavení dlouhodobého uchovávání a nastavení uchovávání záloh na určitém místě v čase se nevztahují. Proto se databáze s škálovatelným škálováním nezobrazí v podokně Správa zálohování.|
+| Podokno Správa zálohování serveru nezobrazuje databáze s škálovatelnými škálováními. Budou filtrovány ze zobrazení.  | Škálování má samostatnou metodu pro správu záloh, takže nastavení dlouhodobého uchovávání a nastavení uchovávání záloh na určitém místě v čase se nevztahují. Proto se databáze s škálovatelným škálováním nezobrazí v podokně Správa zálohování.<br><br>Pro databáze migrované do škálování z jiných Azure SQL Database úrovní služeb se zálohy před migrací uchovávají po dobu [uchovávání záloh](automated-backups-overview.md#backup-retention) zdrojové databáze. Tyto zálohy lze použít k [obnovení](recovery-using-backups.md#programmatic-recovery-using-automated-backups) zdrojové databáze k určitému bodu v čase před migrací.|
 | Obnovení k určitému bodu v čase | Nemůžete obnovit databázi s neškálovatelným škálováním jako databázi s škálovatelnými škálováními a databázi s měřítkem ve formátu. V případě databáze bez škálování na úrovni služby, která byla migrována do škálování, změnou její úrovně služeb, obnovení do bodu v čase před migrací a v rámci doby uchovávání záloh databáze je možné [programově](recovery-using-backups.md#programmatic-recovery-using-automated-backups). Obnovená databáze nebude škálovatelná. |
 | Pokud má databáze minimálně jeden datový soubor větší než 1 TB, migrace se nezdařila | V některých případech je možné tento problém obejít tak, že velké soubory zmenšíte na méně než 1 TB. Pokud migrujete databázi používanou během procesu migrace, ujistěte se, že žádný soubor nezíská větší velikost než 1 TB. Pomocí následujícího dotazu určete velikost databázových souborů. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | Spravovaná instance SQL | Spravovaná instance Azure SQL se v současné době nepodporuje u databází s podporou škálování na více instancí. |

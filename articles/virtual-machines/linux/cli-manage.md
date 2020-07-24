@@ -6,17 +6,18 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 05/12/2017
 ms.author: rclaus
-ms.openlocfilehash: 253f2ab1b192d22f43e4082766adf4ec4f86fe71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65c0838c06207435934e36d421b2cafc12ee39bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78969254"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029021"
 ---
 # <a name="common-azure-cli-commands-for-managing-azure-resources"></a>Běžné příkazy Azure CLI pro správu prostředků
 
 Rozhraní příkazového řádku Azure umožňuje vytvářet a spravovat prostředky Azure v systémech macOS, Linux a Windows. Tento článek podrobně popisuje některé nejběžnější příkazy pro vytváření a správu virtuálních počítačů (VM).
 
-Tento článek vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete upgrade, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli). [Cloud Shell](/azure/cloud-shell/quickstart) můžete použít také v prohlížeči.
+Tento článek vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete upgrade, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli). [Cloud Shell](../../cloud-shell/quickstart.md) můžete použít také v prohlížeči.
 
 ## <a name="basic-azure-resource-manager-commands-in-azure-cli"></a>Základní příkazy Azure Resource Manageru v Azure CLI
 Podrobnější nápovědu ke konkrétním přepínačům a možnostem příkazového řádku najdete v online nápovědě k příkazům a možnostech zadáním `az <command> <subcommand> --help` .
@@ -59,6 +60,3 @@ Podrobnější nápovědu ke konkrétním přepínačům a možnostem příkazov
 
 ## <a name="next-steps"></a>Další kroky
 Další příklady příkazů rozhraní příkazového řádku najdete v kurzu [vytváření a správa virtuálních počítačů se systémem Linux pomocí kurzu Azure CLI](tutorial-manage-vm.md) .
-
-
-

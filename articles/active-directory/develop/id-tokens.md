@@ -9,16 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 07/21/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: e0e327d169c246d023be1aca27d6844b9b92f03e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fbbf5f9d01ed4a469967dac87faa3b130905757
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82926710"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027100"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Tokeny ID platformy Microsoft identity
 
@@ -50,7 +51,7 @@ Zobrazit ukázkový token v 2.0 v [JWT.MS](https://jwt.ms/#id_token=eyJ0eXAiOiJK
 
 ### <a name="header-claims"></a>Deklarace hlaviček
 
-|Deklarovat | Formát | Description |
+|Deklarovat | Formát | Popis |
 |-----|--------|-------------|
 |`typ` | Řetězec – vždycky "JWT" | Označuje, že token je token JWT.|
 |`alg` | Řetězec | Určuje algoritmus, který se použil k podepsání tokenu. Příklad: "RS256" |
@@ -61,7 +62,7 @@ Zobrazit ukázkový token v 2.0 v [JWT.MS](https://jwt.ms/#id_token=eyJ0eXAiOiJK
 
 V tomto seznamu jsou uvedeny deklarace identity JWT, které jsou ve výchozím nastavení ve většině id_tokens (s výjimkou popsaných případů).  Vaše aplikace ale může použít [volitelné deklarace identity](active-directory-optional-claims.md) k vyžádání dalších deklarací JWT v id_token.  Ty můžou být v rozsahu od `groups` deklarace identity až po informace o jménu uživatele.
 
-|Deklarovat | Formát | Description |
+|Deklarovat | Formát | Popis |
 |-----|--------|-------------|
 |`aud` |  Řetězec – identifikátor URI ID aplikace | Identifikuje zamýšleného příjemce tokenu. V aplikaci `id_tokens` je cílovou skupinou ID aplikace vaší aplikace, které je přiřazeno vaší aplikaci v Azure Portal. Vaše aplikace by měla tuto hodnotu ověřit a token zamítnout, pokud se hodnota neshoduje. |
 |`iss` |  Řetězec, identifikátor URI služby STS | Identifikuje službu tokenů zabezpečení (STS), která vytvoří a vrátí token, a tenanta Azure AD, ve kterém byl uživatel ověřený. Pokud byl token vydán koncovým bodem v 2.0, identifikátor URI skončí `/v2.0` .  Identifikátor GUID, který označuje, že uživatel je uživatelem uživatele z účet Microsoft je `9188040d-6c67-4c5b-b112-36a304b66dad` . Vaše aplikace by měla použít část s identifikátorem GUID k omezení sady klientů, kteří se mohou k aplikaci přihlásit, pokud jsou k dispozici. |
@@ -86,10 +87,10 @@ V tomto seznamu jsou uvedeny deklarace identity JWT, které jsou ve výchozím n
 |`ver` | Řetězec, buď 1,0 nebo 2,0 | Určuje verzi id_token. |
 
 > [!NOTE]
-> Id_token V1 a v2 mají rozdíly v množství informací, které budou prováděny podle výše uvedených příkladů. Verze v podstatě určuje koncový bod platformy Azure AD, ze kterého byl vydán. [Implementace Azure AD OAuth](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform) se vyvinula během let. V současné době máme dva různé koncové body oAuth pro aplikace AzureAD. Můžete použít libovolný z nových koncových bodů, které jsou zařazeny do kategorie v2 nebo jako staré, což se označuje jako v1. Koncové body OAuth obou z nich jsou odlišné. Koncový bod v2 je novější, kde se snažíme migrovat všechny funkce koncového bodu V1 a doporučit novým vývojářům použití koncového bodu v2.
+> Id_token v 1.0 a v 22.0 mají rozdíly v množství informací, které budou prováděny podle výše uvedených příkladů. Verze v podstatě určuje koncový bod platformy Azure AD, ze kterého byl vydán. [Implementace Azure AD OAuth](about-microsoft-identity-platform.md) se vyvinula v průběhu let. V současné době existují dva různé koncové body Outh pro aplikace Azure AD. Můžete použít libovolný z nových koncových bodů, které jsou zařazeny do kategorie v 2.0 nebo v 1.0. Koncové body OAuth obou z nich jsou odlišné. Koncový bod v 2.0 je novější a funkce koncového bodu v 1.0 se migrují do tohoto koncového bodu. Noví vývojáři by měli použít koncový bod v 2.0.
 >
-> - V1: Azure Active Directory koncové body:`https://login.microsoftonline.com/common/oauth2/authorize`
-> - V2: koncové body platformy Microsoft identity:`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
+> - v 1.0: koncové body Azure AD:`https://login.microsoftonline.com/common/oauth2/authorize`
+> - v 2.0: koncové body Microsoft identitypPlatform:`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
 
 ## <a name="validating-an-id_token"></a>Ověřování id_token
 

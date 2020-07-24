@@ -5,23 +5,23 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 10/29/2019
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 152f7ab6ccb9f01c7fe70553501c8cf8afa1c650
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8c9fbf2d86c2e066566bab11b1701909be64a37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554886"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025842"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlášení k virtuálnímu počítači s Windows v Azure pomocí ověřování Azure Active Directory (Preview)
 
-Organizace teď můžou používat ověřování Azure Active Directory (AD) pro své virtuální počítače Azure s **Windows serverem 2019 Datacenter Edition** nebo **Windows 10 1809** a novějším. Použití Azure AD k ověřování na virtuálních počítačích vám poskytne způsob, jak centrálně řídit a vysazovat zásady. Nástroje, jako je Access Control na základě rolí Azure (RBAC) a podmíněný přístup Azure AD, umožňují řídit, kdo má přístup k virtuálnímu počítači. V tomto článku se dozvíte, jak vytvořit a nakonfigurovat virtuální počítač s Windows serverem 2019 pro použití ověřování Azure AD.
+Organizace teď můžou používat ověřování Azure Active Directory (AD) pro své virtuální počítače Azure s **Windows serverem 2019 Datacenter Edition** nebo **Windows 10 1809** a novějším. Použití Azure AD k ověřování na virtuálních počítačích vám poskytne způsob, jak centrálně řídit a vysazovat zásady. Nástroje, jako je řízení přístupu na základě role Azure (Azure RBAC) a podmíněný přístup Azure AD, umožňují řídit, kdo má přístup k virtuálnímu počítači. V tomto článku se dozvíte, jak vytvořit a nakonfigurovat virtuální počítač s Windows serverem 2019 pro použití ověřování Azure AD.
 
 > [!NOTE]
 > Přihlášení Azure AD pro virtuální počítače Azure s Windows je funkce veřejné verze Preview Azure Active Directory. Další informace o verzích Preview najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -32,7 +32,7 @@ K přihlášení k virtuálním počítačům s Windows v Azure přinášíme sp
 - Už nemusíte spravovat účty místních správců.
 - Azure RBAC vám umožňuje udělit odpovídající přístup k virtuálním počítačům podle potřeby a odebrat je, když už nepotřebujete.
 - Než povolíte přístup k virtuálnímu počítači, podmíněný přístup Azure AD může vynutil další požadavky, jako třeba: 
-   - Ověřování pomocí služby Multi-Factor Authentication
+   - Vícefaktorové ověřování
    - Kontroly rizika přihlašování
 - Automatizujte a škálujte připojení Azure AD k virtuálním počítačům Azure s Windows, které jsou součástí nasazení infrastruktury virtuálních klientských počítačů.
 
@@ -84,7 +84,7 @@ Vytvoření virtuálního počítače s Windows serverem 2019 Datacenter v Azure
 1. Přihlaste se k [Azure Portal](https://portal.azure.com)s účtem, který má přístup k vytváření virtuálních počítačů, a vyberte **+ vytvořit prostředek**.
 1. Do vyhledávacího panelu webu Marketplace zadejte **Windows Server** .
    1. Klikněte na **Windows Server** a zvolte **Windows Server 2019 Datacenter** v rozevíracím seznamu vybrat plán softwaru.
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na **vytvořit**.
 1. Na kartě Správa povolte možnost **Přihlásit se pomocí přihlašovacích údajů AAD (Preview)** v části Azure Active Directory z možností vypnuto na **zapnuto**.
 1. Ujistěte se, že je v části Identita nastavená **spravovaná identita systému** **na zapnuto**. Tato akce by se měla provést automaticky po povolení přihlášení s přihlašovacími údaji Azure AD.
 1. Projděte si zbytek zkušeností při vytváření virtuálního počítače. V této verzi Preview budete muset vytvořit uživatelské jméno a heslo správce pro virtuální počítač.
@@ -202,6 +202,9 @@ Před autorizací přístupu k virtuálním počítačům s Windows v Azure, kte
 > [!NOTE]
 > Pokud použijete "vyžadovat vícefaktorové ověřování" jako udělení řízení přístupu pro vyžádání přístupu k aplikaci pro přihlášení k virtuálnímu počítači Azure s Windows, musíte jako součást klienta zadat službu Multi-Factor Authentication, která inicializuje relaci RDP k cílovému virtuálnímu počítači s Windows v Azure. Jediným způsobem, jak toho dosáhnout na klientovi s Windows 10, je použít PIN kód Windows Hello pro firmy nebo biometrické ověřování s klientem RDP. Do klienta RDP v systému Windows 10 verze 1809 byla přidána podpora biometrického ověřování. Ověřování pomocí Windows Hello pro firmy na vzdálené ploše je dostupné jenom pro nasazení, která používají model důvěryhodnosti certifikátů a aktuálně nejsou k dispozici pro model vztahu důvěryhodnosti klíče.
 
+> [!WARNING]
+> Pro přihlášení k VIRTUÁLNÍm počítačům se nepodporují Azure Multi-Factor Authentication s povoleným/vydaným uživatelem.
+
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Přihlášení pomocí přihlašovacích údajů Azure AD k virtuálnímu počítači s Windows
 
 > [!IMPORTANT]
@@ -221,7 +224,7 @@ Nyní jste přihlášeni k virtuálnímu počítači s Windows serverem 2019 Azu
 > [!NOTE]
 > Můžete uložit. Soubor RDP místně ve vašem počítači, aby se spouštěla budoucí připojení vzdálené plochy k virtuálnímu počítači, nemusíte v Azure Portal přejít na stránku Přehled virtuálního počítače a použít možnost připojit.
 
-## <a name="troubleshoot"></a>Řešení potíží
+## <a name="troubleshoot"></a>Odstranit potíže
 
 ### <a name="troubleshoot-deployment-issues"></a>Řešení problémů při nasazování
 

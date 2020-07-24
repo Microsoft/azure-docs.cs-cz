@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 51e4862fe55428f112841ef7176cdb916653de0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0853b08ced0b9ca328d5e7f506ca54299aebeee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82083270"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028188"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Použití klienta Windows v Azure pro scénáře vývoje a testování
 V Azure můžete použít Windows 7, Windows 8 nebo Windows 10 Enterprise (x64) pro scénáře vývoje a testování, pokud máte příslušné předplatné sady Visual Studio (dříve MSDN). Tento článek popisuje požadavky na způsobilost pro používání Windows 7, Windows 8.1, Windows 10 Enterprise v Azure a používání následujících imagí Azure Gallery.
@@ -58,5 +58,4 @@ ID nabídky si můžete prohlédnout také na [kartě předplatné](https://acco
 ![Podrobnosti ID nabídky na portálu účtů Azure](./media/client-images/offer-id-azure-account-portal.png) 
 
 ## <a name="next-steps"></a>Další kroky
-Virtuální počítače teď můžete nasadit pomocí [PowerShellu](quick-create-powershell.md), [Správce prostředků šablon](ps-template.md)nebo sady [Visual Studio](../../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
-
+Virtuální počítače teď můžete nasadit pomocí [PowerShellu](quick-create-powershell.md), [Správce prostředků šablon](ps-template.md)nebo sady [Visual Studio](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md).

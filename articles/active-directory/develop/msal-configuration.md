@@ -13,12 +13,12 @@ ms.date: 09/12/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.openlocfilehash: f6816da35aad51e88449361d2a80542c4349ffac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3de252b22d7b33e45c3b45e2b6c05e4b33df663d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479415"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027049"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Konfigurační soubor knihovny Microsoft Authentication Library pro Android
 
@@ -65,7 +65,7 @@ Seznam autorit, které jsou známé a důvěryhodné pro vás. Kromě zde uveden
     "type": "AAD",
     "audience": {
         "type": "AzureADMyOrg",
-        "tenantId": "contoso.com" // Provide your specific tenant ID here
+        "tenant_id": "contoso.com" // Provide your specific tenant ID here
     }
 },
 // Example AzureAD Multiple Organizations
@@ -106,7 +106,7 @@ Seznam autorit, které jsou známé a důvěryhodné pro vás. Kromě zde uveden
 | `type` | Řetězec | Yes | Zrcadlí cílovou skupinu nebo typ účtu, na které vaše aplikace cílí. Možné hodnoty: `AAD` ,`B2C` |
 | `audience` | Objekt | No | Platí pouze v případě typu Type = `AAD` . Určuje identitu, na kterou aplikace cílí. Použití hodnoty z registrace vaší aplikace |
 | `authority_url` | Řetězec | Yes | Vyžadováno pouze v případě typu Type = `B2C` . Určuje adresu URL nebo zásadu pro autoritu, kterou by měla vaše aplikace používat.  |
-| `default` | Boolean | Yes | Je- `"default":true` li zadán jeden nebo více autorit, je vyžadován jeden. |
+| `default` | boolean | Yes | Je- `"default":true` li zadán jeden nebo více autorit, je vyžadován jeden. |
 
 #### <a name="audience-properties"></a>Vlastnosti cílové skupiny
 
@@ -149,9 +149,9 @@ Následující globální nastavení slouží k protokolování:
 
 | Vlastnost | Typ dat  | Vyžadováno | Poznámky |
 | ----------|-------------|-----------|---------|
-| `pii_enabled`  | Boolean | No | Bez ohledu na to, jestli se mají posílat osobní údaje |
+| `pii_enabled`  | boolean | No | Bez ohledu na to, jestli se mají posílat osobní údaje |
 | `log_level`   | řetězec | No | Které zprávy protokolu mají být ve výstupu. Mezi podporované úrovně protokolu patří `ERROR` , `WARNING` , `INFO` a `VERBOSE` . |
-| `logcat_enabled` | Boolean | No | Bez ohledu na to, zda se má kromě rozhraní protokolování nakládat do log Cat |
+| `logcat_enabled` | boolean | No | Bez ohledu na to, zda se má kromě rozhraní protokolování nakládat do log Cat |
 
 ### <a name="account_mode"></a>account_mode
 

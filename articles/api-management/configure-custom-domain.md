@@ -12,14 +12,14 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 981d3134e957e1f19b9cd88ee13a72fc45d79277
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 53442f0727544221f28bfdb58d8069163eb374e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252891"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024856"
 ---
-# <a name="configure-a-custom-domain-name"></a>Konfigurace názvu vlastní domény
+# <a name="configure-a-custom-domain-name-for-your-azure-api-management-instance"></a>Konfigurace vlastního názvu domény pro instanci Azure API Management
 
 Když vytvoříte instanci služby Azure API Management, Azure mu přiřadí subdoménu `azure-api.net` (například `apim-service-name.azure-api.net` ). Můžete ale zpřístupnit API Management koncových bodů pomocí vlastního názvu domény, například **contoso.com**. V tomto kurzu se dozvíte, jak namapovat stávající vlastní název DNS na koncové body vystavené instancí API Management.
 
@@ -64,7 +64,7 @@ K provedení kroků popsaných v tomto článku musíte mít:
 1. Vyberte koncový bod, který chcete aktualizovat.
 1. V okně na pravé straně klikněte na **vlastní**.
 
-    - Do pole **vlastní název domény**zadejte název, který chcete použít. Například `api.contoso.com`.
+    - Do pole **vlastní název domény**zadejte název, který chcete použít. Například, `api.contoso.com`.
     - V části **certifikát**vyberte certifikát z Key Vault. Můžete také nahrát platnou hodnotu. Soubor PFX a zadejte **heslo**, pokud je certifikát chráněn heslem.
 
     > [!NOTE]

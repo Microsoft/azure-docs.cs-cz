@@ -13,12 +13,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 0b0efc7e5dd4a60e33ddd61c19283a048cf4ab78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f56427dabdee715412596557fa075c5eb4df500
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478293"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027304"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace
 
@@ -54,7 +54,7 @@ Pokud požadavek SAML neobsahuje element pro NameIDPolicy, bude Azure AD vystavo
 
 V rozevíracím seznamu **zvolit formát identifikátoru názvu** můžete vybrat jednu z následujících možností.
 
-| Formát NameID | Description |
+| Formát NameID | Popis |
 |---------------|-------------|
 | **Výchozí** | Azure AD bude používat výchozí formát zdroje. |
 | **Trvalý** | Služba Azure AD bude používat jako formát NameID jako trvalá. |
@@ -68,7 +68,7 @@ Dočasná NameID je také podporována, ale v rozevíracím seznamu není k disp
 
 Vyberte požadovaný zdroj pro `NameIdentifier` deklaraci (nebo NameId). Můžete vybrat z následujících možností.
 
-| Name | Description |
+| Název | Popis |
 |------|-------------|
 | E-mail | E-mailová adresa uživatele |
 | Třídy | Hlavní název uživatele (UPN) uživatele |
@@ -164,7 +164,7 @@ Přidání podmínky deklarace identity:
 
 1. V části **Spravovat deklaraci identity**rozbalte podmínky deklarace identity.
 2. Vyberte typ uživatele.
-3. Vyberte skupiny, do kterých má uživatel patřit. V rámci všech deklarací pro danou aplikaci můžete vybrat až 10 jedinečných skupin. 
+3. Vyberte skupiny, do kterých má uživatel patřit. V rámci všech deklarací pro danou aplikaci můžete vybrat až 50 jedinečných skupin. 
 4. Vyberte **zdroj** , ve kterém bude deklarace identity získávat svou hodnotu. Můžete vybrat atribut uživatele z rozevíracího seznamu zdrojový atribut nebo použít transformaci na atribut uživatele před jeho vygenerováním jako deklarace identity.
 
 Pořadí, ve kterém přidáte podmínky, je důležité. Azure AD vyhodnotí podmínky shora dolů a určí, která hodnota se má v deklaracích generovat. 

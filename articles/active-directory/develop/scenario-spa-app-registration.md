@@ -12,11 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 9dc5b446e2ab26ca43c2a300e1af1237353325a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 238bcc6c706f2fab969c98b73ca879d064498693
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682392"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026505"
 ---
 # <a name="single-page-application-app-registration"></a>Jednostránkové aplikace: registrace aplikace
 
@@ -26,7 +27,7 @@ K registraci jednostránkové aplikace (SPA) na platformě Microsoft Identity pr
 
 U aplikací založených na MSAL.js 1,0 a 2,0 začněte provedením následujících kroků a vytvořte prvotní registraci aplikace.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Pokud má váš účet přístup k více klientům, v horní nabídce vyberte filtr **adresář + předplatné** a pak vyberte tenanta, který by měl obsahovat registraci aplikace, kterou chcete vytvořit.
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com). Pokud má váš účet přístup k více klientům, v horní nabídce vyberte filtr **adresář + předplatné** a pak vyberte tenanta, který by měl obsahovat registraci aplikace, kterou chcete vytvořit.
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Registrace aplikací**.
 1. Vyberte **Nová registrace**, zadejte **název** aplikace a zvolte **podporované typy účtů** pro aplikaci. Nezadávejte **identifikátor URI přesměrování**. **NOT** Popis různých typů účtů najdete v tématu [Registrace nové aplikace pomocí Azure Portal](quickstart-register-app.md#register-a-new-application-using-the-azure-portal).
@@ -37,7 +38,7 @@ V dalším kroku nakonfigurujte registraci aplikace pomocí **identifikátoru UR
 - [MSAL.js 2,0 s tokem kódu ověřování](#redirect-uri-msaljs-20-with-auth-code-flow) (doporučeno)
 - [MSAL.js 1,0 s implicitním tokem](#redirect-uri-msaljs-10-with-implicit-flow)
 
-## <a name="redirect-uri-msaljs-20-with-auth-code-flow"></a>Identifikátor URI pro přesměrování: MSAL.js 2,0 s tokem kódu ověřování
+## <a name="redirect-uri-msaljs-20-with-auth-code-flow"></a>Identifikátor URI pro přesměrování: [MSAL.js 2,0 s tokem kódu ověřování](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)
 
 Pomocí těchto kroků přidejte identifikátor URI přesměrování pro aplikaci, která používá MSAL.js 2,0 nebo novější. MSAL.js 2.0 + podporuje tok autorizačního kódu s PKCE a CORS v reakci na [omezení souborů cookie třetích stran v prohlížeči](reference-third-party-cookies-spas.md). V MSAL.js 2.0 + není podporován tok implicitního udělení.
 
@@ -49,7 +50,9 @@ Pomocí těchto kroků přidejte identifikátor URI přesměrování pro aplikac
 
 Právě jste dokončili registraci jednostránkové aplikace (SPA) a nakonfigurovali identifikátor URI pro přesměrování, ke kterému bude klient přesměrován, a budou odeslány všechny tokeny zabezpečení. Když nakonfigurujete identifikátor URI pro přesměrování pomocí dlaždice **jednostránkové aplikace** v podokně **Přidat platformu** , registrace vaší aplikace je nakonfigurovaná tak, aby podporovala tok autorizačního kódu s PKCE a CORS.
 
-## <a name="redirect-uri-msaljs-10-with-implicit-flow"></a>Identifikátor URI pro přesměrování: MSAL.js 1,0 s implicitním tokem
+Další pokyny najdete v tomto [kurzu](tutorial-v2-javascript-auth-code.md) .
+
+## <a name="redirect-uri-msaljs-10-with-implicit-flow"></a>Identifikátor URI pro přesměrování: [MSAL.js 1,0 s implicitním tokem](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core)
 
 Pomocí těchto kroků přidejte identifikátor URI pro přesměrování pro jednostránkovou aplikaci, která používá MSAL.js 1,3 nebo starší a implicitně udělený tok. Aplikace, které používají MSAL.js 1,3 nebo starší, nepodporují tok kódu ověřování.
 
@@ -63,6 +66,8 @@ Pomocí těchto kroků přidejte identifikátor URI pro přesměrování pro jed
 1. Vyberte **Konfigurovat** a dokončete přidávání identifikátoru URI přesměrování.
 
 Právě jste dokončili registraci jednostránkové aplikace (SPA) a nakonfigurovali identifikátor URI pro přesměrování, ke kterému bude klient přesměrován, a budou odeslány všechny tokeny zabezpečení. Výběrem jednoho nebo obou **tokenů ID** a **přístupových tokenů**jste povolili postup implicitního udělení.
+
+Další pokyny najdete v tomto [kurzu](tutorial-v2-javascript-spa.md) . 
 
 ## <a name="note-about-authorization-flows"></a>Poznámka o autorizačních tocích
 

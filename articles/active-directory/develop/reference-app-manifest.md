@@ -1,5 +1,6 @@
 ---
 title: Princip Azure Active Directory manifestu aplikace
+titleSuffix: Microsoft identity platform
 description: Podrobné pokrytí manifestu Azure Active Directory aplikace, který představuje konfiguraci identity aplikace v tenantovi Azure AD a používá se k usnadnění autorizace OAuth, používání souhlasu a dalších.
 services: active-directory
 author: rwike77
@@ -12,18 +13,18 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: e31c2c69e36b97f5584ee32e6c452525389f7f42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba490a1e88a242f19daf1a74fe38f02e659571da
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479245"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026743"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Manifest aplikace Azure Active Directory
 
-Manifest aplikace obsahuje definici všech atributů objektu aplikace na platformě Microsoft identity. Slouží také jako mechanismus pro aktualizaci objektu aplikace. Další informace o entitě aplikace a jejím schématu naleznete v dokumentaci k [entitě aplikace Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity).
+Manifest aplikace obsahuje definici všech atributů objektu aplikace na platformě Microsoft identity. Slouží také jako mechanismus pro aktualizaci objektu aplikace. Další informace o entitě aplikace a jejím schématu naleznete v dokumentaci k [entitě aplikace Graph API](/graph/api/resources/application).
 
-Atributy aplikace můžete nakonfigurovat pomocí Azure Portal nebo programově pomocí [REST API](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity) nebo [PowerShellu](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#applications). Existují však situace, kdy budete muset upravit manifest aplikace a nakonfigurovat atribut aplikace. Mezi tyto scénáře patří:
+Atributy aplikace můžete nakonfigurovat pomocí Azure Portal nebo programově pomocí [REST API](/graph/api/resources/application) nebo [PowerShellu](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#applications). Existují však situace, kdy budete muset upravit manifest aplikace a nakonfigurovat atribut aplikace. Mezi tyto scénáře patří:
 
 * Pokud jste aplikaci zaregistrovali jako víceklientské a osobní účty Microsoft Azure AD, nemůžete v uživatelském rozhraní měnit podporované účty Microsoft. Místo toho je nutné použít editor manifestu aplikace ke změně podporovaného typu účtu.
 * Pokud potřebujete definovat oprávnění a role, které vaše aplikace podporuje, je nutné změnit manifest aplikace.
@@ -32,7 +33,7 @@ Atributy aplikace můžete nakonfigurovat pomocí Azure Portal nebo programově 
 
 Konfigurace manifestu aplikace:
 
-1. Přejít na [Azure Portal](https://portal.azure.com). Vyhledejte a vyberte službu **Azure Active Directory** .
+1. Přejděte na [Azure Portal](https://portal.azure.com). Vyhledejte a vyberte službu **Azure Active Directory** .
 1. Vyberte **Registrace aplikací**.
 1. Vyberte aplikaci, kterou chcete nakonfigurovat.
 1. Na stránce **Přehled** aplikace vyberte část **Manifest**. Otevře se webový editor manifestu, který umožňuje upravovat manifest v rámci portálu. Volitelně můžete vybrat **Stáhnout** a upravit manifest místně a potom použít **nahrávání** pro jeho opakované použití do aplikace.
@@ -433,7 +434,7 @@ Příklad:
 | parentalControlSettings | Řetězec |
 
 - `countriesBlockedForMinors`Určuje země nebo oblasti, ve kterých je aplikace blokovaná pro nezletilé.
-- `legalAgeGroupRule`Určuje pravidlo pro věkovou skupinu platné pro uživatele aplikace. Lze nastavit na `Allow` , `RequireConsentForPrivacyServices` ,, `RequireConsentForMinors` `RequireConsentForKids` nebo `BlockMinors` .  
+- `legalAgeGroupRule`Určuje pravidlo pro věkovou skupinu platné pro uživatele aplikace. Lze nastavit na `Allow` , `RequireConsentForPrivacyServices` ,, `RequireConsentForMinors` `RequireConsentForKids` nebo `BlockMinors` .
 
 Příklad:
 
@@ -493,7 +494,7 @@ Příklad:
 | :--- | :--- |
 | publicClient | Logická hodnota|
 
-Určuje, jestli je tato aplikace veřejným klientem (například nainstalovaná aplikace spuštěná v mobilním zařízení). 
+Určuje, jestli je tato aplikace veřejným klientem (například nainstalovaná aplikace spuštěná v mobilním zařízení).
 
 Tato vlastnost je k dispozici pouze v prostředí **Registrace aplikací (starší verze)** . Nahradili `allowPublicClient` v prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
 
@@ -669,7 +670,7 @@ Při pokusu o nahrání dříve staženého manifestu se může zobrazit jedna z
 
 Když se zobrazí jedna z těchto chyb, doporučujeme, abyste provedli následující akce:
 
-1. Upravte atributy jednotlivě v editoru manifestu namísto nahrávání dříve staženého manifestu. Použijte [referenční tabulku manifestu](#manifest-reference) k pochopení syntaxe a sémantiky starých a nových atributů, abyste mohli úspěšně upravit atributy, které vás zajímají. 
+1. Upravte atributy jednotlivě v editoru manifestu namísto nahrávání dříve staženého manifestu. Použijte [referenční tabulku manifestu](#manifest-reference) k pochopení syntaxe a sémantiky starých a nových atributů, abyste mohli úspěšně upravit atributy, které vás zajímají.
 1. Pokud váš pracovní postup vyžaduje, abyste uložili manifesty ve zdrojovém úložišti pro pozdější použití, doporučujeme, abyste uložili manifesty v úložišti, které jste viděli v prostředí **Registrace aplikací** .
 
 ## <a name="next-steps"></a>Další kroky

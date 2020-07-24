@@ -3,14 +3,14 @@ title: Přehled Azure Automation Hybrid Runbook Worker
 description: Tento článek poskytuje přehled Hybrid Runbook Worker, které můžete použít ke spouštění Runbooků na počítačích v místním datovém centru nebo poskytovateli cloudu.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/24/2020
+ms.date: 07/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0960dfe067e5092f3d64f66cad1d49c2bea28ae6
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 69680fbb442b4e636b72f480ed21f36924362a13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186244"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024822"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Přehled funkce Hybrid Runbook Worker
 
@@ -77,6 +77,17 @@ Značka služby pro službu Azure Automation poskytuje pouze IP adresy, které s
 >[!NOTE]
 >Služba tag **GuestAndHybridManagement** aktuálně nepodporuje provádění úloh sady Runbook v izolovaném prostoru Azure, a to pouze přímo na Hybrid Runbook Worker.
 
+## <a name="support-for-impact-level-5-il5"></a>Podpora pro úroveň dopadu 5 (IL5)
+
+Azure Automation Hybrid Runbook Worker lze v Azure Government použít pro podporu úloh úrovně dopadu 5 v obou následujících dvou konfiguracích:
+
+* [Izolovaný virtuální počítač](../azure-government/documentation-government-impact-level-5.md#isolated-virtual-machines). Při nasazení vybírají všichni fyzické hostitele pro daný virtuální počítač potřebnou úroveň izolace potřebnou k podpoře úloh IL5.
+
+* [Vyhrazené hostitele Azure](../azure-government/documentation-government-impact-level-5.md#azure-dedicated-hosts), které poskytují fyzické servery, které mohou hostovat jeden nebo více virtuálních počítačů vyhrazených pro jedno předplatné Azure.
+
+>[!NOTE]
+>Výpočetní izolaci prostřednictvím role Hybrid Runbook Worker je k dispozici pro cloudy Azure komerčních i státních úřadů USA. 
+
 ## <a name="update-management-on-hybrid-runbook-worker"></a>Update Management v Hybrid Runbook Worker
 
 Pokud je povolená Azure Automation [Update Management](automation-update-management.md) , bude se každý počítač připojený k vašemu Log Analytics pracovnímu prostoru automaticky konfigurovat jako Hybrid Runbook Worker. Každý pracovní proces může podporovat Runbooky cílené na správu aktualizací.
@@ -85,13 +96,7 @@ Počítač nakonfigurovaný tímto způsobem není zaregistrovaný u žádné Hy
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>Update Management adres pro Hybrid Runbook Worker
 
-Nad standardními adresami a porty, které Hybrid Runbook Worker vyžaduje, Update Management potřebuje adresy v další tabulce. Komunikace s těmito adresami používá port 443.
-
-|Veřejný partnerský vztah Azure  |Azure Government  |
-|---------|---------|
-|`*.ods.opinsights.azure.com`     | `*.ods.opinsights.azure.us`         |
-|`*.oms.opinsights.azure.com`     | `*.oms.opinsights.azure.us`        |
-|`*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`|
+Update Management další požadavky na konfiguraci sítě, které jsou popsané v části [Plánování sítě](automation-update-management.md#ports) , najdete na standardních adresách a portech potřebných pro Hybrid Runbook Worker.
 
 ## <a name="azure-automation-state-configuration-on-a-hybrid-runbook-worker"></a>Konfigurace stavu Azure Automation na Hybrid Runbook Worker
 
@@ -114,4 +119,5 @@ Protože mají přístup k prostředkům mimo Azure, Runbooky spouštěné v Hyb
 ## <a name="next-steps"></a>Další kroky
 
 * Informace o tom, jak konfigurovat Runbooky pro automatizaci procesů v místním datovém centru nebo v jiném cloudovém prostředí, najdete v tématu [spouštění Runbooků na Hybrid Runbook Worker](automation-hrw-run-runbooks.md).
+
 * Informace o tom, jak řešit potíže s procesy Hybrid Runbook Worker, najdete v tématu [řešení potíží s Hybrid Runbook Worker](troubleshoot/hybrid-runbook-worker.md#general).

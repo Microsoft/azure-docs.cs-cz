@@ -5,20 +5,20 @@ ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
 ms.date: 06/26/2020
-ms.openlocfilehash: 093448ad0280ada039f1d4e5abd0e83e4be19b03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d790a6f02fdc07609e374639c6e452b9088262e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482101"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024567"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-application-insights"></a>Azure Functions monitorování pomocí Azure Monitor Application Insights
 
-[Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) nabízí integrovanou integraci s Azure Application Insights k monitorování funkcí. 
+[Azure Functions](../../azure-functions/functions-overview.md) nabízí integrovanou integraci s Azure Application Insights k monitorování funkcí. 
 
 Application Insights shromažďuje údaje o protokolech, výkonu a chybách a automaticky detekuje anomálie výkonu. Application Insights obsahuje výkonné analytické nástroje, které vám pomohou diagnostikovat problémy a pochopit, jak se vaše funkce používají. Když máte přehled o datech aplikace, můžete průběžně vylepšit výkon a použitelnost. Můžete dokonce použít Application Insights během vývoje projektu místní funkce aplikace Function App. 
 
-Požadovaná Application Insights instrumentace je integrovaná do Azure Functions. Jediná věc, kterou potřebujete, je platný klíč instrumentace pro připojení aplikace Function App k prostředku Application Insights. Klíč instrumentace by se měl přidat do nastavení vaší aplikace, když se v Azure vytvoří prostředek Function App. Pokud vaše aplikace Function ještě tento klíč nemá, můžete ji nastavit ručně. Další informace najdete v tématu [monitorování Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-monitoring?tabs=cmd).
+Požadovaná Application Insights instrumentace je integrovaná do Azure Functions. Jediná věc, kterou potřebujete, je platný klíč instrumentace pro připojení aplikace Function App k prostředku Application Insights. Klíč instrumentace by se měl přidat do nastavení vaší aplikace, když se v Azure vytvoří prostředek Function App. Pokud vaše aplikace Function ještě tento klíč nemá, můžete ji nastavit ručně. Další informace najdete v tématu [monitorování Azure Functions](../../azure-functions/functions-monitoring.md?tabs=cmd).
 
 ## <a name="distributed-tracing-for-java-applications-on-windows-public-preview"></a>Distribuované trasování pro aplikace v jazyce Java ve Windows (Public Preview)
 
@@ -40,8 +40,8 @@ ApplicationInsightsAgent_EXTENSION_VERSION -> ~2
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další pokyny a informace o monitorování [monitorování Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-monitoring)
-* Získání přehledu o [distribuovaném trasování](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)
-* Podívejte se, co [Mapa aplikace](https://docs.microsoft.com/azure/azure-monitor/app/app-map?tabs=net) může pro vaši firmu dělat
-* Přečtěte si o [požadavcích a závislostech pro aplikace v jazyce Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) .
-* Další informace o [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) a [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)
+* Přečtěte si další pokyny a informace o monitorování [monitorování Azure Functions](../../azure-functions/functions-monitoring.md)
+* Získání přehledu o [distribuovaném trasování](./distributed-tracing.md)
+* Podívejte se, co [Mapa aplikace](./app-map.md?tabs=net) může pro vaši firmu dělat
+* Přečtěte si o [požadavcích a závislostech pro aplikace v jazyce Java](./java-in-process-agent.md) .
+* Další informace o [Azure monitor](../overview.md) a [Application Insights](./app-insights-overview.md)

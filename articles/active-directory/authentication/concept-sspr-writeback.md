@@ -5,21 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 07/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42768c61cc46ba97e9bd16a06c85f20219672fdd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f76073a1ed98dcc51cf7e14219beca914b5b77a4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83639804"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027593"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Jak funguje zpětný zápis hesla samoobslužné služby pro resetování hesla v Azure Active Directory?
 
 Samoobslužné resetování hesla (SSPR) pro Azure Active Directory (Azure AD) umožňuje uživatelům resetovat hesla v cloudu, ale většina společností má i místní prostředí Active Directory Domain Services (služba AD DS), ve kterém jejich uživatelé existují. Zpětný zápis hesla je funkce povolená u [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) , která umožňuje v reálném čase zapisovat změny hesel v cloudu zpátky do stávajícího místního adresáře. Když uživatelé v této konfiguraci mění nebo resetují hesla pomocí SSPR v cloudu, aktualizovaná hesla se taky zapisují zpátky do místního služba AD DS prostředí.
+
+> [!IMPORTANT]
+> Tento koncepční článek vysvětluje správce, jak funguje zpětný zápis hesla samoobslužné služby pro resetování hesla. Pokud už jste koncoví uživatelé zaregistrovali pro Samoobslužné resetování hesla a potřebujete se zpátky do svého účtu, pokračujte na https://aka.ms/sspr .
+>
+> Pokud váš IT tým nepovolil možnost resetovat si vlastní heslo, obraťte se na helpdesk a získáte další pomoc.
 
 Zpětný zápis hesla se podporuje v prostředích, která používají následující modely hybridních identit:
 
@@ -36,7 +42,12 @@ Zpětný zápis hesla poskytuje následující funkce:
 * **Nevyžaduje žádná pravidla brány firewall pro příchozí připojení**: zpětný zápis hesla používá jako základní komunikační kanál Azure Service Bus Relay. Veškerá komunikace je odchozí přes port 443.
 
 > [!NOTE]
-> Účty správců, které existují v chráněných skupinách v místní službě AD, se dají používat se zpětným zápisem hesla. Správci můžou změnit heslo v cloudu, ale nemůžou pomocí resetování hesla resetovat zapomenuté heslo. Další informace o chráněných skupinách najdete v tématu [chráněné účty a skupiny ve službě Active Directory](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory).
+> Účty správců, které existují v chráněných skupinách v místní službě AD, se dají používat se zpětným zápisem hesla. Správci můžou změnit heslo v cloudu, ale nemůžou pomocí resetování hesla resetovat zapomenuté heslo. Další informace o chráněných skupinách najdete [v tématu chráněné účty a skupiny v služba AD DS](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory).
+
+Pokud chcete začít se zpětným zápisem SSPR, dokončete následující kurz:
+
+> [!div class="nextstepaction"]
+> [Kurz: povolení zpětného zápisu pro Samoobslužné resetování hesla (SSPR)](tutorial-enable-writeback.md)
 
 ## <a name="how-password-writeback-works"></a>Jak funguje zpětný zápis hesla
 
@@ -52,14 +63,14 @@ Při pokusu o resetování nebo změně hesla v cloudu se může zobrazit násle
 1. Jakmile zpráva dosáhne služby Service Bus, koncový bod pro resetování hesla se automaticky probudí a zjistí, že se čeká na vyřízení žádosti o resetování.
 1. Služba pak vyhledá uživatele pomocí atributu kotva cloudu. Aby bylo toto vyhledávání úspěšné, musí být splněny následující podmínky:
 
-   * Objekt uživatele musí existovat v prostoru konektoru služby Active Directory.
+   * Objekt uživatele musí existovat v prostoru konektoru služba AD DS.
    * Objekt uživatele musí být propojený s odpovídajícím objektem úložiště metaverse (MV).
-   * Objekt uživatele musí být propojený s odpovídajícím objektem Azure Active Directory konektoru.
-   * Odkaz z objektu konektoru služby Active Directory na MV musí mít pravidlo synchronizace `Microsoft.InfromADUserAccountEnabled.xxx` na tomto odkazu.
+   * Objekt uživatele musí být propojený s odpovídajícím objektem konektoru služby Azure AD.
+   * Odkaz z objektu služba AD DSového konektoru na MV musí mít pravidlo synchronizace `Microsoft.InfromADUserAccountEnabled.xxx` na tomto odkazu.
 
-   Když se volání dostane z cloudu, modul synchronizace používá atribut **cloudAnchor** k vyhledání objektu prostoru konektoru Azure Active Directory. Pak následuje odkaz zpátky na objekt MV a pak následuje odkaz zpátky na objekt služby Active Directory. Vzhledem k tomu, že může existovat více objektů služby Active Directory (více doménových struktur) pro stejného uživatele, synchronizační modul spoléhá na `Microsoft.InfromADUserAccountEnabled.xxx` odkaz pro výběr správné.
+   Když se volání doplní z cloudu, modul synchronizace používá atribut **cloudAnchor** k vyhledání objektu prostoru konektoru služby Azure AD. Pak následuje odkaz zpátky na objekt MV a potom následuje odkaz zpátky na objekt služba AD DS. Vzhledem k tomu, že může existovat více služba AD DS objektů (více doménových struktur) pro stejného uživatele, synchronizační modul spoléhá na `Microsoft.InfromADUserAccountEnabled.xxx` odkaz pro výběr správné.
 
-1. Po nalezení uživatelského účtu se provede pokus o resetování hesla přímo v příslušné doménové struktuře služby Active Directory.
+1. Po nalezení uživatelského účtu se provede pokus o resetování hesla přímo v příslušné služba AD DS doménové struktuře.
 1. Je-li operace set hesla úspěšná, uživatel má informaci, že heslo bylo změněno.
 
    > [!NOTE]
@@ -68,7 +79,7 @@ Při pokusu o resetování nebo změně hesla v cloudu se může zobrazit násle
 1. Pokud operace nastavení hesla neproběhne úspěšně, vyzve uživatele k zadání chyby. Operace může selhat z následujících důvodů:
     * Služba byla mimo provoz.
     * Heslo, které vybralo, nesplňuje zásady organizace.
-    * Nepovedlo se najít uživatele v místní službě Active Directory.
+    * Nepovedlo se najít uživatele v místním služba AD DSovém prostředí.
 
    Chybové zprávy poskytují uživatelům pokyny, aby se mohli pokusit o vyřešení bez zásahu správce.
 
@@ -85,7 +96,7 @@ Zpětný zápis hesla je vysoce Zabezpečená služba. Aby bylo zajištěno, že
    1. Šifrované heslo se umístí do zprávy HTTPS, která se pošle přes zašifrovaný kanál pomocí certifikátů Microsoft TLS/SSL k předávání Service Bus.
    1. Po doručení zprávy ve službě Service Bus se Váš místní agent probudí a ověří ve službě Service Bus pomocí silného hesla, které bylo dříve vygenerováno.
    1. Místní agent převezme šifrovanou zprávu a dešifruje ji pomocí privátního klíče.
-   1. Místní Agent se pokusí nastavit heslo prostřednictvím rozhraní služba AD DS SetPassword API. Tento krok umožňuje vynucení místních zásad hesel ve službě Active Directory (například složitost, stáří, historie a filtry) v cloudu.
+   1. Místní Agent se pokusí nastavit heslo prostřednictvím rozhraní služba AD DS SetPassword API. Tento krok umožňuje vynucení služba AD DS místních zásad hesel (například složitost, stáří, historie a filtry) v cloudu.
 * **Zásady pro vypršení platnosti zprávy**
    * Pokud se zpráva nachází v Service Bus, protože vaše místní služba nefunguje, vyprší časový limit a po několika minutách se odeberou. Časový limit a odebrání zprávy zvyšují zabezpečení ještě více.
 
@@ -94,9 +105,9 @@ Zpětný zápis hesla je vysoce Zabezpečená služba. Aby bylo zajištěno, že
 Jakmile uživatel odešle resetování hesla, požadavek na obnovení projde několika kroky šifrování, než dorazí do místního prostředí. Tyto kroky šifrování zajišťují maximální spolehlivost a zabezpečení služby. Jsou popsány takto:
 
 1. **Šifrování hesla pomocí 2048 klíče RSA**: když uživatel odešle heslo pro zápis zpátky do místního počítače, vlastní odeslané heslo se zašifruje pomocí 2048 klíče RSA.
-1. **Šifrování na úrovni balíčku pomocí AES-GCM**: celý balíček, heslo plus požadovaná metadata se šifrují pomocí AES-GCM. Toto šifrování brání komukoli s přímým přístupem k základnímu ServiceBus kanálu v zobrazení nebo manipulaci s obsahem.
-1. **Veškerá komunikace probíhá přes protokol TLS/SSL**: veškerá komunikace s ServiceBus se odehrává v kanálu SSL/TLS. Toto šifrování zabezpečuje obsah od neautorizovaných třetích stran.
-1. **Automatická výměna klíčů každých šest měsíců**: všechny klíče převezmou každých šest měsíců nebo se pokaždé, když se zpětný zápis hesla zakáže, a pak znovu povolí Azure AD Connect, aby se zajistilo maximální zabezpečení a bezpečnost služby.
+1. **Šifrování na úrovni balíčku pomocí AES-GCM**: celý balíček, heslo plus požadovaná metadata se šifrují pomocí AES-GCM. Toto šifrování zabrání komukoli s přímým přístupem k základnímu Service Busmu kanálu v zobrazení nebo manipulaci s obsahem.
+1. **Veškerá komunikace probíhá přes protokol TLS/SSL**: veškerá komunikace s Service Bus se odehrává v kanálu SSL/TLS. Toto šifrování zabezpečuje obsah od neautorizovaných třetích stran.
+1. **Automatická výměna klíčů každých šest měsíců**: všechny klíče převezmou každých šest měsíců nebo se pokaždé, když se zpětný zápis hesla zakáže, a pak znovu povolí Azure AD Connect, aby se zajistilo maximum zabezpečení a zabezpečení služby.
 
 ### <a name="password-writeback-bandwidth-usage"></a>Využití šířky pásma zpětného zápisu hesla
 

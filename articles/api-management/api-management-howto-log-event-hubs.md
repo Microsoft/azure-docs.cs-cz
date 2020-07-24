@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: f594d4467e64ead40ff3c26aaf3e3a44cb673a98
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e2bf63558b4bbd55262aa16f70bfba934a42c3ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250290"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024958"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Jak protokolovat události do Azure Event Hubs v Azure API Management
 Vysoce škálovatelná služba Azure Event Hubs slouží ke zpracování příchozích dat. Dokáže přijímat miliony událostí za sekundu a umožňuje zpracovávat a analyzovat masivní objemy dat vytvářených zařízeními a aplikacemi připojenými k vaší síti. Event Hubs slouží jako "přední dveře" pro kanál událostí a jakmile se data shromažďují do centra událostí, je možné je transformovat a ukládat pomocí libovolného zprostředkovatele analýz v reálném čase nebo adaptérů pro dávkování/ukládání. Event Hubs oddělí vytvoření proudu událostí od spotřeby těchto události, aby spotřebitelé událostí mohli k událostem přistupovat podle svého vlastního plánu.
@@ -66,6 +66,9 @@ Nahraďte `logger-id` hodnotou, kterou jste použili pro `{loggerId}` v adrese U
 Můžete použít libovolný výraz, který vrátí řetězec jako hodnotu `log-to-eventhub` prvku. V tomto příkladu se protokoluje řetězec ve formátu JSON, který obsahuje datum a čas, název služby, ID žádosti, IP adresu požadavku a název operace.
 
 Kliknutím na **Uložit** uložte aktualizovanou konfiguraci zásad. Jakmile je zásada uložena, je zásada aktivní a události budou protokolovány do určeného centra událostí.
+
+> [!NOTE]
+> Maximální podporovaná velikost zprávy, kterou je možné odeslat do centra událostí z této zásady API Management, je 200 kilobajtů (KB). Pokud je zpráva odeslaná do centra událostí větší než 200 KB, automaticky se zkrátí a zkrácená zpráva se přenese do Center událostí.
 
 ## <a name="preview-the-log-in-event-hubs-by-using-azure-stream-analytics"></a>Náhled Event Hubs přihlášení pomocí Azure Stream Analytics
 

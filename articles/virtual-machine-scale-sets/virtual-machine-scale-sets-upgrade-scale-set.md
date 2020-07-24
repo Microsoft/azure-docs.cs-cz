@@ -9,11 +9,12 @@ ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 9498babd9605c46d752c5fe1eb1b077f6d911351
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7a61ed039a3d8ed643e3b1b3d79384e35847986
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83121010"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029293"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Úprava škálovací sady virtuálních počítačů
 
@@ -319,13 +320,13 @@ Existuje jeden typ úprav vlastností globální sady škálování, který nedo
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/reimage?api-version={apiVersion}
     ```
 
-- Azure PowerShell s [set-AzVmssVm](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm):
+- Azure PowerShell s [set-AzVmssVm](/powershell/module/az.compute/set-azvmssvm):
 
     ```powershell
     Set-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId -Reimage
     ```
 
-- Azure CLI pomocí [AZ VMSS ReImage](https://docs.microsoft.com/cli/azure/vmss):
+- Azure CLI pomocí [AZ VMSS ReImage](/cli/azure/vmss):
 
     ```azurecli
     az vmss reimage --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
@@ -368,12 +369,12 @@ Pokud se aplikace nasadí do sady škálování prostřednictvím rozšíření,
 Je taky běžné, že se aplikace nasazují pomocí vlastní image. Tento scénář je popsaný v následující části.
 
 ### <a name="os-updates"></a>Aktualizace operačního systému
-Pokud používáte image platformy Azure, můžete bitovou kopii aktualizovat úpravou *element imagereference* (Další informace najdete v [dokumentaci k REST API](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)).
+Pokud používáte image platformy Azure, můžete bitovou kopii aktualizovat úpravou *element imagereference* (Další informace najdete v [dokumentaci k REST API](/rest/api/compute/virtualmachinescalesets/createorupdate)).
 
 >[!NOTE]
 > U imagí platformy je běžné zadání "poslední" pro verzi odkazu image. Při vytváření, škálování a obnovení bitové kopie virtuálních počítačů se vytvoří virtuální počítače s nejnovější dostupnou verzí. **Neznamená to ale** , že bitová kopie operačního systému se v průběhu času automaticky aktualizuje, protože se uvolní nové verze imagí. Samostatná funkce je aktuálně ve verzi Preview, která poskytuje automatické upgrady operačního systému. Další informace najdete v dokumentaci k [automatickým upgradem operačního systému](virtual-machine-scale-sets-automatic-upgrade.md).
 
-Pokud používáte vlastní image, můžete bitovou kopii aktualizovat aktualizací ID *element imagereference* (Další informace najdete v [dokumentaci k REST API](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)).
+Pokud používáte vlastní image, můžete bitovou kopii aktualizovat aktualizací ID *element imagereference* (Další informace najdete v [dokumentaci k REST API](/rest/api/compute/virtualmachinescalesets/createorupdate)).
 
 ## <a name="examples"></a>Příklady
 

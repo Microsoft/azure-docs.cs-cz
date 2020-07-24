@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/15/2020
-ms.openlocfilehash: 2cdac18ed20c90861fe23f0a9ccbd02680d380af
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/20/2020
+ms.openlocfilehash: 5be50453dff9acaf4a9876eec1d95b56abebf745
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496685"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029837"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Verze rozhraní API v Azure Kognitivní hledání
 
@@ -24,7 +24,7 @@ V rámci pravidla publikuje tým Azure Kognitivní hledání nové verze pouze v
 Stejné pravidlo platí pro aktualizace sady SDK. Sada Azure Kognitivní hledání SDK dodržuje pravidla [sémantických verzí](https://semver.org/) , což znamená, že jeho verze má tři části: hlavní, vedlejší a číslo sestavení (například 1.1.0). Nová hlavní verze sady SDK se uvolní jenom pro změny, které přeruší zpětnou kompatibilitu. Nepodstatné aktualizace funkcí zvýší dílčí verzi a opravy chyb zvýší pouze verzi buildu.
 
 > [!Important]
-> Sady Azure SDK pro .NET, Java, Python a JavaScript slouží k zavádění nových klientských knihoven pro Azure Kognitivní hledání. V současné době žádná z knihoven Azure SDK nepodporuje nejnovější vyhledávací rozhraní REST API (2020-06-30) nebo rozhraní REST API pro správu (2020-03-13), ale mění se v průběhu času. Tuto stránku můžete pravidelně kontrolovat nebo je to [nového](whats-new.md) u oznámení o funkčních vylepšeních. 
+> Sady Azure SDK pro .NET, Java, Python a JavaScript slouží k zavádění nových klientských knihoven pro Azure Kognitivní hledání. V současné době žádná z knihoven Azure SDK plně nepodporuje nejaktuálnější rozhraní API pro vyhledávání (2020-06-30) nebo rozhraní REST API pro správu (2020-03-13), ale mění se v průběhu času. Tuto stránku můžete pravidelně kontrolovat nebo je to [nového](whats-new.md) u oznámení o funkčních vylepšeních. 
 
 ## <a name="rest-apis"></a>Rozhraní REST API
 
@@ -69,7 +69,7 @@ Historie verzí balíčku je dostupná na NuGet.org. Tato tabulka obsahuje odkaz
 
 | SDK version (Verze sady SDK) | Status | Popis |
 |-------------|--------|------------------------------|
-| [Azure.Search.Documents 11,0](https://www.nuget.org/packages/Azure.Search.Documents/1.0.0-preview.4) | Stable | Nová knihovna klienta ze sady Azure .NET SDK vydaná v červenci 2020. července. Cílí na rozhraní REST API pro hledání verze = 2019-05-06. |
+| [Azure.Search.Documents 11,0](https://www.nuget.org/packages/Azure.Search.Documents/1.0.0-preview.4) | Stable | Nová knihovna klienta ze sady Azure .NET SDK vydaná v červenci 2020. července. Cílí na hledání REST API-Version = 2020-06-30 REST API, ale ještě nepodporují, geografické filtry nebo [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder?view=azure-dotnet). |
 | [Microsoft. Azure. Search 10,0](https://www.nuget.org/packages/Microsoft.Azure.Search/) | Stable | Vydáno 2019. května. Cílí na rozhraní REST API pro hledání verze = 2019-05-06.|
 | [Microsoft. Azure. Search 8,0 – Preview](https://www.nuget.org/packages/Microsoft.Azure.Search/8.0.0-preview) | Preview | vydáno v dubnu 2019. Cílí na hledání REST API-Version = 2019-05 -06-Preview.|
 | [Microsoft. Azure. Management. Search 3.0.0](https://docs.microsoft.com/dotnet/api/overview/azure/search/management?view=azure-dotnet) | Stable | Cílí na rozhraní REST API pro správu verze = 2015 – 08-19.  |

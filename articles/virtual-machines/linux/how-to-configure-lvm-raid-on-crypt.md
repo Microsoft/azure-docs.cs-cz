@@ -7,11 +7,12 @@ ms.topic: article
 ms.author: jofrance
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4e342ff44af38b8e79dc8695c1270b1f5c68e0a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3be8863d86fd1525e6f64b46ddf5ca3c702ecdea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80657448"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029225"
 ---
 # <a name="configure-lvm-and-raid-on-encrypted-devices"></a>Konfigurace LVM a RAID na šifrovaných zařízeních
 
@@ -40,15 +41,15 @@ Fyzické svazky (PVs) se vytvoří v zašifrované vrstvě. Fyzické svazky slou
 
 Podobným způsobem se zařízení RAID vytvoří v horní části zašifrované vrstvy na discích. Na zařízení RAID se vytvoří systém souborů a jako běžné zařízení se přidají do/etc/fstab.
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 
 Doporučujeme použít LVM-on-crypt. RAID je možnost, když LVM nejde použít kvůli konkrétnímu omezení aplikace nebo prostředí.
 
-Použijete možnost **EncryptFormatAll** . Další informace o této možnosti najdete v tématu [použití funkce EncryptFormatAll pro datové disky na virtuálních počítačích se systémem Linux](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-linux#use-encryptformatall-feature-for-data-disks-on-linux-vms).
+Použijete možnost **EncryptFormatAll** . Další informace o této možnosti najdete v tématu [použití funkce EncryptFormatAll pro datové disky na virtuálních počítačích se systémem Linux](./disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms).
 
 I když můžete použít tuto metodu, když šifrujete i operační systém, právě šifrujeme datové jednotky.
 
-V těchto postupech se předpokládá, že už jste si přečetli požadavky v [Azure Disk Encryption scénářích na virtuálních počítačích s Linux](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-linux) a v [rychlém startu: vytvoření a šifrování virtuálního počítače se systémem Linux pomocí Azure CLI](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-cli-quickstart).
+V těchto postupech se předpokládá, že už jste si přečetli požadavky v [Azure Disk Encryption scénářích na virtuálních počítačích s Linux](./disk-encryption-linux.md) a v [rychlém startu: vytvoření a šifrování virtuálního počítače se systémem Linux pomocí Azure CLI](./disk-encryption-cli-quickstart.md).
 
 Verze Azure Disk Encryption s dvojím průchodem je na cestě pro vyřazení a neměla by se používat pro nová šifrování.
 
@@ -459,4 +460,3 @@ df -h
 ## <a name="next-steps"></a>Další kroky
 
 - [Řešení potíží se službou Azure Disk Encryption](disk-encryption-troubleshooting.md)
-

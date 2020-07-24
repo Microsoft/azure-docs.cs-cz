@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: a1a55ceec2679034125ddd202402cabcbf71e17e
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: fc8304fb068152c800d7b71f77fb601956fb6510
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698309"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023395"
 ---
 # <a name="changelog"></a>Protokol změn #
 
@@ -72,7 +72,7 @@ ms.locfileid: "83698309"
 
 ### <a name="changes"></a>Změny ###
 
-- Mění [Živé titulky] Změnili jste název rozhraní API pro popisky CEA z 608 na 708. Další informace najdete v tématu [Nastavení popisků CEA708](https://docs.microsoft.com/javascript/api/azuremediaplayer/amp.player.cea708captionssettings) .-->
+- Mění [Živé titulky] Změnili jste název rozhraní API pro popisky CEA z 608 na 708. Další informace najdete v tématu [Nastavení popisků CEA708](/javascript/api/azuremediaplayer/amp.player.cea708captionssettings) .-->
 
 ## <a name="220-official-release"></a>2.2.0 (oficiální verze) ##
 
@@ -448,7 +448,7 @@ ms.locfileid: "83698309"
 
 ### <a name="features-160"></a>Funkce 1.6.0 ###
 
-- [Funkce] 33% omezení velikosti azuremediaplayer. min. js
+- [Funkce] 33% omezení velikosti azuremediaplayer.min.js
 - Zapnut [AzureHtml5JS | Edge] [netestovaný] Podpora pro DD + audio streamy na okraji (po počátečním výběru se nemění žádný kodek). Aplikace musí v tuto chvíli vybrat správný zvukový stream.
 - Zapnut Ovládací prvky pro klávesové zkratky (další podrobnosti najdete v dokumentaci)
 - Zapnut Tip času průběhu najetí myší na přesný čas hledání

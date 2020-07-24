@@ -12,13 +12,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
-ms.openlocfilehash: 0e5aaf07b49546aca9f44dcb9a43a79127c82341
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c301c66c3b668ae48314c4d1eb06657d8573209c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73890247"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030398"
 ---
-# <a name="peer-two-virtual-networks"></a>Vytvoření partnerského vztahu mezi dvěma virtuálními sítěmi
+# <a name="use-an-azure-cli-sample-script-to-connect-two-virtual-networks"></a>Připojení dvou virtuálních sítí pomocí ukázkového skriptu Azure CLI
 
 Tento skript vytvoří a spojí dvě virtuální sítě ve stejné oblasti prostřednictvím sítě Azure. Po spuštění skriptu vytvoříte partnerský vztah mezi dvěma virtuálními sítěmi.
 

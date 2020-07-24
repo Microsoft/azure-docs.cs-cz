@@ -13,17 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 493340764f507c4fa364a5000f65cc232630b243
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 571df9c07e71682e2be51a73e3837c79cb074c3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77167032"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028460"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Příkazy Windows – CMD a PowerShell
 
 Tato část obsahuje příklady příkazů pro provádění běžných úloh ve scénářích, kdy možná budete potřebovat konzolu SAC použít pro přístup k VIRTUÁLNÍmu počítači s Windows, například když potřebujete řešit chyby připojení RDP.
 
-Konzola SAC byla součástí všech verzí systému Windows, protože systém Windows Server 2003 je ve výchozím nastavení zakázán. Konzola SAC spoléhá na `sacdrv.sys` ovladač jádra, `Special Administration Console Helper` službu ( `sacsvr` ) a `sacsess.exe` proces. Další informace najdete v tématu [nástroje a nastavení služby pro nouzovou správu](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10)).
+Konzola SAC byla součástí všech verzí systému Windows, protože systém Windows Server 2003 je ve výchozím nastavení zakázán. Konzola SAC spoléhá na `sacdrv.sys` ovladač jádra, `Special Administration Console Helper` službu ( `sacsvr` ) a `sacsess.exe` proces. Další informace najdete v tématu [nástroje a nastavení služby pro nouzovou správu](/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10)).
 
 Konzola SAC umožňuje připojit se k běžícímu operačnímu systému prostřednictvím sériového portu. Při spuštění příkazu CMD z konzoly SAC se `sacsess.exe` spustí `cmd.exe` v běžícím operačním systému. Pokud se k VIRTUÁLNÍmu počítači připojíte pomocí funkce sériová konzola, můžete to zobrazit v části Správce úloh. Rozhraní CMD, ke kterému přistupujete přes konzolu SAC, je totéž `cmd.exe` , co používáte při připojení přes RDP. K dispozici jsou všechny stejné příkazy a nástroje, včetně možnosti Spustit PowerShell z této instance CMD. To je zásadní rozdíl mezi konzolou SAC a prostředím Windows Recovery Environment (WinRE) v konzole SAC vám umožní spravovat běžící operační systém, kde se WinRE spouští do jiného minimálního operačního systému. I když virtuální počítače Azure nepodporují možnost přístupu k rozhraní WinRE s funkcí sériové konzoly, můžete virtuální počítače Azure spravovat přes konzolu SAC.
 
@@ -90,7 +91,7 @@ nebo
 ### <a name="set-nic-to-use-dhcp"></a>Nastavit síťovou kartu pro použití DHCP
 `netsh interface ip set address name="<interface name>" source=dhcp`
 
-Další informace o nástroji `netsh` získáte [kliknutím sem](https://docs.microsoft.com/windows-server/networking/technologies/netsh/netsh-contexts).
+Další informace o nástroji `netsh` získáte [kliknutím sem](/windows-server/networking/technologies/netsh/netsh-contexts).
 
 Virtuální počítače Azure by měly být vždy nakonfigurované v hostovaném operačním systému, aby k získání IP adresy používaly protokol DHCP. Nastavení statické IP adresy Azure pořád používá protokol DHCP k přidělení statické IP adresy virtuálnímu počítači.
 ### <a name="ping"></a>Ping
@@ -182,11 +183,11 @@ Tento příklad vrátí verzi souboru ovladače virtuální síťové karty, kte
 ### <a name="scan-for-system-file-corruption"></a>Vyhledat poškození systémového souboru
 `sfc /scannow`
 
-Viz také [Oprava bitové kopie systému Windows](https://docs.microsoft.com/windows-hardware/manufacture/desktop/repair-a-windows-image).
+Viz také [Oprava bitové kopie systému Windows](/windows-hardware/manufacture/desktop/repair-a-windows-image).
 ### <a name="scan-for-system-file-corruption"></a>Vyhledat poškození systémového souboru
 `dism /online /cleanup-image /scanhealth`
 
-Viz také [Oprava bitové kopie systému Windows](https://docs.microsoft.com/windows-hardware/manufacture/desktop/repair-a-windows-image).
+Viz také [Oprava bitové kopie systému Windows](/windows-hardware/manufacture/desktop/repair-a-windows-image).
 ### <a name="export-file-permissions-to-text-file"></a>Exportovat oprávnění souboru do textového souboru
 `icacls %programdata%\Microsoft\Crypto\RSA\MachineKeys /t /c > %temp%\MachineKeys_permissions_before.txt`
 ### <a name="save-file-permissions-to-acl-file"></a>Uložit oprávnění souboru do souboru ACL
@@ -435,7 +436,7 @@ Pomocí dotazu na metadata instance Azure z virtuálního počítače Azure mů�
 
 Dotazování metadat instance vyžaduje v pořádku připojení k hostované síti, protože provádí volání REST prostřednictvím hostitele Azure do služby metadat instance. Takže pokud se můžete dotazovat na metadata instance, získáte informace o tom, že host bude schopný komunikovat přes síť do služby hostované v Azure.
 
-Další informace najdete v tématu [Služba metadat instance Azure](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service).
+Další informace najdete v tématu [Služba metadat instance Azure](../windows/instance-metadata-service.md).
 
 ### <a name="instance-metadata"></a>Metadata instance
 `$im = invoke-restmethod -headers @{"metadata"="true"} -uri http://169.254.169.254/metadata/instance?api-version=2017-08-01 -method get`

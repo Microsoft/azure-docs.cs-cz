@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf21f2ea5aacb36f3a76034e99b748bf4c6c363b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16203ab972f6117cec41e43ee5dd89cda7e95ede
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554770"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025691"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Postupy: plánování implementace služby Hybrid Azure Active Directory JOIN
 
@@ -30,7 +30,7 @@ Přenosem zařízení do Azure AD maximalizujete produktivitu uživatelů díky 
 
 Pokud máte místní prostředí Active Directory (AD) a chcete se připojit k počítačům připojeným k doméně AD do služby Azure AD, můžete to provést pomocí hybridního připojení k Azure AD. Tento článek poskytuje související kroky pro implementaci hybridního připojení k Azure AD ve vašem prostředí. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že jste obeznámeni se [Seznámkou se správou identit zařízení v Azure Active Directory](../device-management-introduction.md).
 
@@ -92,12 +92,12 @@ Jako první krok plánování byste měli zkontrolovat prostředí a určit, jes
 ### <a name="handling-devices-with-azure-ad-registered-state"></a>Zpracování zařízení s registrovaným stavem Azure AD
 Pokud jsou vaše zařízení připojená k doméně Windows 10 [registrovaná](overview.md#getting-devices-in-azure-ad) ve vašem tenantovi, může to vést k duálnímu stavu připojení k hybridní službě Azure AD a k zaregistrovanému zařízení Azure AD. Pro automatické vyřešení tohoto scénáře doporučujeme upgradovat na Windows 10 1803 (s použitím KB4489894) nebo novějším. Ve verzích starších než 1803 budete muset před povolením hybridního připojení k Azure AD ručně odebrat stav registrovaný pro službu Azure AD. V 1803 a vyšších verzích byly provedeny následující změny, aby nedocházelo k tomuto duálnímu stavu:
 
-- Veškerý stávající stav registrovaný pro uživatele Azure AD by se automaticky odebral <i>poté, co je zařízení připojené k hybridní službě Azure AD a přihlásí se stejný uživatel</i>. Pokud třeba uživatel A měl na zařízení zaregistrován stav služby Azure AD, bude se duální stav pro uživatele A vyčistit jenom v případě, že se uživatel k zařízení přihlásí. Pokud se na jednom zařízení nachází více uživatelů, dvojí stav se vyčistí jednotlivě při přihlášení uživatelů.
+- Veškerý stávající stav registrovaný pro uživatele Azure AD by se automaticky odebral <i>poté, co je zařízení připojené k hybridní službě Azure AD a přihlásí se stejný uživatel</i>. Pokud třeba uživatel A měl na zařízení zaregistrován stav služby Azure AD, bude se duální stav pro uživatele A vyčistit jenom v případě, že se uživatel k zařízení přihlásí. Pokud se na jednom zařízení nachází více uživatelů, dvojí stav se vyčistí jednotlivě při přihlášení uživatelů. Kromě odebrání stavu registrovaného ve službě Azure AD bude Windows 10 také rušit registraci zařízení v Intune nebo jiné MDM, pokud k registraci došlo jako součást registrace Azure AD prostřednictvím automatického zápisu.
 - Registraci zařízení připojeného k doméně můžete zabránit tím, že se zaregistrujete do služby Azure AD tak, že do HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin přidáte následující hodnotu registru: "BlockAADWorkplaceJoin" = DWORD: 00000001.
 - Pokud máte v systému Windows 10 1803 nakonfigurovanou možnost Windows Hello pro firmy, uživatel musí po vyčištění duálního stavu znovu nastavit Windows Hello pro firmy. Tento problém se vyřešil pomocí KB4512509.
 
 > [!NOTE]
-> Zařízení zaregistrované v Azure AD se neodebere automaticky, pokud ho spravuje Intune.
+> I když Windows 10 automaticky odstraní místně registrovaný stav služby Azure AD, objekt zařízení ve službě Azure AD se okamžitě neodstraní, pokud ho spravuje Intune. Odebrání stavu registrovaného pro Azure AD můžete ověřit spuštěním dsregcmd/status a zvažte, jestli zařízení není zaregistrované v Azure AD na základě toho.
 
 ### <a name="additional-considerations"></a>Další aspekty
 - Pokud vaše prostředí používá infrastrukturu virtuálních klientských počítačů (VDI), přečtěte si téma [Identita zařízení a virtualizace plochy](/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure).
@@ -159,12 +159,12 @@ V některých případech se vaše místní uživatelské názvy UPN můžou li�
 
 V následující tabulce najdete podrobné informace o podpoře místních UPN služby AD ve Windows 10 – připojení k hybridní službě Azure AD.
 
-| Typ místního hlavního názvu uživatele služby AD | Typ domény | Verze Windows 10 | Description |
+| Typ místního hlavního názvu uživatele služby AD | Typ domény | Verze Windows 10 | Popis |
 | ----- | ----- | ----- | ----- |
 | Balíček | Federovaní | Z verze 1703 | Obecná dostupnost |
 | Bez směrování | Federovaní | Z verze 1803 | Obecná dostupnost |
 | Balíček | Spravované | Z verze 1803 | Všeobecně dostupná služba Azure AD SSPR ve Windows zamykací obrazovky není podporovaná. |
-| Bez směrování | Spravované | Nepodporuje se | |
+| Bez směrování | Spravované | Nepodporováno | |
 
 ## <a name="next-steps"></a>Další kroky
 

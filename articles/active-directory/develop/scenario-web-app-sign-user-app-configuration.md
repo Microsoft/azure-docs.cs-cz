@@ -8,14 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 72168c54bd7968ce9c0315d3f3e47bae09e45004
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6cc846d8d330459587745795edf21c5ac04f2291
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85052218"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026335"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Webová aplikace, která podepisuje uživatele: Konfigurace kódu
 
@@ -26,9 +27,9 @@ Přečtěte si, jak nakonfigurovat kód pro webovou aplikaci, která se přihlá
 <!-- This section can be in an include for web app and web APIs -->
 Knihovny, které slouží k ochraně webové aplikace (a webového rozhraní API):
 
-| Platforma | Knihovna | Description |
+| Platforma | Knihovna | Popis |
 |----------|---------|-------------|
-| ![.NET](media/sample-v2-code/logo_NET.png) | [Rozšíření modelu identity pro .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Rozšíření Microsoft Identity Model pro .NET, které používá přímo ASP.NET a ASP.NET Core, navrhuje sadu knihoven DLL spouštěných v .NET Framework i .NET Core. Z webové aplikace ASP.NET nebo ASP.NET Core můžete ověřování tokenu řídit pomocí třídy **TokenValidationParameters** (konkrétně v některých partnerských scénářích). |
+| ![.NET](media/sample-v2-code/logo_NET.png) | [Rozšíření modelu identity pro .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Rozšíření Microsoft Identity Model pro .NET, které používá přímo ASP.NET a ASP.NET Core, navrhuje sadu knihoven DLL spouštěných v .NET Framework i .NET Core. Z webové aplikace ASP.NET nebo ASP.NET Core můžete ověřování tokenu řídit pomocí třídy **TokenValidationParameters** (konkrétně v některých partnerských scénářích). V praxi je složitá složitost zapouzdřená do knihovny [Microsoft. identity. Web](https://aka.ms/ms-identity-web) . |
 | ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL v Javě](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Podpora webových aplikací v jazyce Java |
 | ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | Podpora webových aplikací v Pythonu |
 
@@ -62,7 +63,7 @@ Můžete chtít použít tuto ukázku k tomu, abyste si mohli zobrazit úplné p
 
 ## <a name="configuration-files"></a>Konfigurační soubory
 
-Webové aplikace, které přihlásí uživatele pomocí platformy Microsoft identity, jsou obvykle konfigurovány prostřednictvím konfiguračních souborů. Nastavení, která je třeba vyplnit, jsou následující:
+Webové aplikace, které přihlásí uživatele pomocí platformy Microsoft identity, jsou konfigurovány prostřednictvím konfiguračních souborů. Nastavení, která je třeba vyplnit, jsou následující:
 
 - Instance cloudu ( `Instance` ), pokud chcete, aby aplikace běžela v národních cloudech, například
 - Cílová skupina v ID tenanta ( `TenantId` )
@@ -210,13 +211,21 @@ V ASP.NET Core Web Apps (a webová rozhraní API) je aplikace chráněná, proto
 Pokud chcete přidat ověřování s platformou Microsoft identity (dřív Azure AD v 2.0), budete muset přidat následující kód. Komentáře v kódu by měly být vysvětlivekné.
 
 > [!NOTE]
-> Pokud spustíte projekt s výchozím ASP.NET Core webový projekt v rámci sady Visual Studio nebo pomocí `dotnet new mvc --auth SingleAuth` nebo `dotnet new webapp --auth SingleAuth` , zobrazí se kód podobný následujícímu: `services.AddAuthentication(AzureADDefaults.AuthenticationScheme).AddAzureAD(options => Configuration.Bind("AzureAd", options));` .
-> 
+> Pokud chcete začít přímo s novou šablonou ASP.NET Core pro Microsoft Identity Platform, která využívá Microsoft. identity. Web, můžete si stáhnout balíček NuGet verze Preview obsahující šablony projektu pro .NET Core 3,1 a .NET 5,0. Po instalaci pak můžete přímo vytvořit instanci ASP.NET Core webových aplikací (MVC nebo Blazor). Podrobnosti najdete v tématu [šablony projektů Microsoft. identity. Web Web App](https://aka.ms/ms-id-web/webapp-project-templates) . Toto je nejjednodušší způsob, jak se provede všemi kroky uvedenými za vás.
+>
+> Pokud dáváte přednost spuštění projektu s aktuálním výchozím ASP.NET Corem webovým projektem v sadě Visual Studio nebo pomocí `dotnet new mvc --auth SingleAuth` nebo `dotnet new webapp --auth SingleAuth` , zobrazí se kód podobný následujícímu:
+>
+>```c#
+>  services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
+>          .AddAzureAD(options => Configuration.Bind("AzureAd", options));
+> ```
+>
 > Tento kód používá starší verzi balíčku NuGet **Microsoft. AspNetCore. Authentication. AzureAD. UI** , která se používá k vytvoření aplikace Azure AD v 1.0. Tento článek vysvětluje, jak vytvořit aplikaci Microsoft Identity Platform (Azure AD v 2.0), která tento kód nahrazuje.
+>
 
-1. Do svého projektu přidejte balíčky NuGet [Microsoft. identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) a [Microsoft. identity. Web. UI](https://www.nuget.org/packages/Microsoft.Identity.Web.UI) . Odeberte balíček NuGet Microsoft. AspNetCore. Authentication. AzureAD. UI, pokud je přítomný.
+1. Do svého projektu přidejte balíčky NuGet [Microsoft. identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) a [Microsoft. identity. Web. UI](https://www.nuget.org/packages/Microsoft.Identity.Web.UI) . Odeberte balíček NuGet Microsoft. AspNetCore. Authentication. AzureAD. UI, pokud je k dispozici.
 
-2. Aktualizujte kód `ConfigureServices` tak, aby používal `AddSignIn` `AddMicrosoftIdentityUI` metody a.
+2. Aktualizujte kód `ConfigureServices` tak, aby používal `AddMicrosoftWebAppAuthentication` `AddMicrosoftIdentityUI` metody a.
 
    ```c#
    public class Startup
@@ -225,7 +234,7 @@ Pokud chcete přidat ověřování s platformou Microsoft identity (dřív Azure
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-     services.AddSignIn(Configuration, "AzureAd");
+     services.AddMicrosoftWebAppAuthentication(Configuration, "AzureAd");
 
      services.AddRazorPages().AddMvcOptions(options =>
      {
@@ -250,18 +259,23 @@ Pokud chcete přidat ověřování s platformou Microsoft identity (dřív Azure
    ```
 
 Ve výše uvedeném kódu:
-- `AddSignIn`Metoda rozšíření je definována v **Microsoft. identity. Web**. Její
+- `AddMicrosoftWebAppAuthentication`Metoda rozšíření je definována v **Microsoft. identity. Web**. Její
   - Přidá ověřovací službu.
   - Konfiguruje možnosti pro čtení konfiguračního souboru (zde z části "AzureAD").
   - Nakonfiguruje možnosti připojení OpenID, aby autorita byla koncovým bodem Microsoft Identity Platform.
   - Ověří vystavitele tokenu.
   - Zajistí, aby deklarace odpovídající názvu byly namapovány z `preferred_username` deklarace identity v tokenu ID.
 
-- Kromě objektu konfigurace můžete zadat název konfiguračního oddílu při volání `AddSignIn` . Ve výchozím nastavení je to `AzureAd` .
+- Kromě objektu konfigurace můžete zadat název konfiguračního oddílu při volání `AddMicrosoftWebAppAuthentication` . Ve výchozím nastavení je to `AzureAd` .
 
-- `AddSignIn`obsahuje další parametry pro pokročilé scénáře. Například trasování událostí middlewaru OpenID Connect může pomoct při odstraňování potíží s webovou aplikací, pokud ověřování nefunguje. Nastavením volitelného parametru zobrazíte `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` `true` informace o tom, jak jsou zpracovány sadou ASP.NET Core middleware v průběhu reakce http na identitu uživatele v nástroji `HttpContext.User` .
+- `AddMicrosoftWebAppAuthentication`obsahuje další parametry pro pokročilé scénáře. Například trasování událostí middlewaru OpenID Connect může pomoct při odstraňování potíží s webovou aplikací, pokud ověřování nefunguje. Nastavením volitelného parametru zobrazíte `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` `true` informace o tom, jak jsou zpracovány sadou ASP.NET Core middleware v průběhu reakce http na identitu uživatele v nástroji `HttpContext.User` .
 
-- `AddMicrosoftIdentityUI`Metoda rozšíření je definována v **Microsoft. identity. Web. UI**. Poskytuje výchozí kontroler pro zpracování odhlášení.
+- `AddMicrosoftIdentityUI`Metoda rozšíření je definována v **Microsoft. identity. Web. UI**. Poskytuje výchozí kontroler pro zpracování přihlášení a odhlášení.
+
+Další informace o tom, jak Microsoft. identity. Web umožňuje vytvářet webové aplikace, najdete v tématu.<https://aka.ms/ms-id-web/webapp>
+
+> [!WARNING]
+> V současné době Microsoft. identity. Web nepodporuje scénář **individuálních uživatelských účtů** (při ukládání uživatelských účtů v aplikaci) při použití Azure AD jako a externího poskytovatele přihlášení. Podrobnosti najdete zde: [AzureAD/Microsoft-Identity-web # 133](https://github.com/AzureAD/microsoft-identity-web/issues/133)
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

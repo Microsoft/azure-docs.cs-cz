@@ -7,18 +7,18 @@ ms.author: lechen
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
 ms.custom: tracking-python
-ms.openlocfilehash: e1a866799a62c457c2734524c58bb848b8f067e6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 35d56c5318046a0f9ffc52f61fac886c473cf0bc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107440"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024363"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Nastavení Azure Monitor pro aplikaci Python
 
 Azure Monitor podporuje distribuované trasování, shromažďování metrik a protokolování aplikací Pythonu prostřednictvím integrace s [OpenCensus](https://opencensus.io). Tento článek vás provede procesem nastavení OpenCensus pro Python a odeslání dat monitorování do Azure Monitor.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
 - Instalace Pythonu Tento článek používá [Python 3.7.0](https://www.python.org/downloads/release/python-370/), i když jiné verze budou nejspíš fungovat s menšími změnami. Sada SDK podporuje pouze Python v 2.7 a v 3.4-v 3.7.
@@ -32,12 +32,12 @@ Instalace OpenCensus Azure Monitor vývozců:
 python -m pip install opencensus-ext-azure
 ```
 
-Úplný seznam balíčků a integrací najdete v tématu [OpenCensus Packages](https://docs.microsoft.com/azure/azure-monitor/app/nuget#common-packages-for-python-using-opencensus).
+Úplný seznam balíčků a integrací najdete v tématu [OpenCensus Packages](./nuget.md#common-packages-for-python-using-opencensus).
 
 > [!NOTE]
 > `python -m pip install opencensus-ext-azure`Příkaz předpokládá, že máte `PATH` nastavenou proměnnou prostředí pro instalaci Pythonu. Pokud jste tuto proměnnou nenakonfigurovali, musíte zadat úplnou cestu k adresáři, kde se nachází spustitelný soubor Pythonu. Výsledkem je příkaz podobný tomuto: `C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure` .
 
-Sada SDK používá tři Azure Monitor vývozců k posílání různých typů telemetrie do Azure Monitor. Jedná se o trasování, metriky a protokoly. Další informace o těchto typech telemetrie najdete v tématu [Přehled datové platformy](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform). Pomocí následujících pokynů můžete odeslat tyto typy telemetrie prostřednictvím tří vývozců.
+Sada SDK používá tři Azure Monitor vývozců k posílání různých typů telemetrie do Azure Monitor. Jedná se o trasování, metriky a protokoly. Další informace o těchto typech telemetrie najdete v tématu [Přehled datové platformy](../platform/data-platform.md). Pomocí následujících pokynů můžete odeslat tyto typy telemetrie prostřednictvím tří vývozců.
 
 ## <a name="telemetry-type-mappings"></a>Mapování typů telemetrie
 
@@ -111,7 +111,7 @@ Tady jsou vývozci, kteří OpenCensus poskytují mapování na typy telemetrie,
 1. Exportér odesílá data protokolu do Azure Monitor. Data můžete najít v části `traces` . 
 
     > [!NOTE]
-    > V tomto kontextu `traces` není stejný jako `tracing` . Tady `traces` odkazuje na typ telemetrie, který se zobrazí v Azure monitor při využití `AzureLogHandler` . Ale `tracing` odkazuje na koncept v OpenCensus a vztahuje se na [distribuované trasování](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing).
+    > V tomto kontextu `traces` není stejný jako `tracing` . Tady `traces` odkazuje na typ telemetrie, který se zobrazí v Azure monitor při využití `AzureLogHandler` . Ale `tracing` odkazuje na koncept v OpenCensus a vztahuje se na [distribuované trasování](./distributed-tracing.md).
 
     > [!NOTE]
     > Kořenový protokolovací nástroj je nakonfigurovaný s úrovní upozornění. To znamená, že všechny protokoly, které odesíláte méně závažnosti, se ignorují a pak se nebudou odesílat do Azure Monitor. Další informace najdete v [dokumentaci](https://docs.python.org/3/library/logging.html#logging.Logger.setLevel).
@@ -216,11 +216,11 @@ Informace o vzorkování v OpenCensus se podíváme na [vzorkování v OpenCensu
 
 #### <a name="log-correlation"></a>Korelace protokolů
 
-Podrobnosti o tom, jak rozšířit protokoly pomocí dat kontextu trasování, najdete v tématu OpenCensus Python [logs Integration](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation).
+Podrobnosti o tom, jak rozšířit protokoly pomocí dat kontextu trasování, najdete v tématu OpenCensus Python [logs Integration](./correlation.md#log-correlation).
 
 #### <a name="modify-telemetry"></a>Úprava telemetrie
 
-Podrobnosti o tom, jak upravit sledovanou telemetrii před odesláním do Azure Monitor, najdete v tématu OpenCensus Python [telemetrie](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors).
+Podrobnosti o tom, jak upravit sledovanou telemetrii před odesláním do Azure Monitor, najdete v tématu OpenCensus Python [telemetrie](./api-filtering-sampling.md#opencensus-python-telemetry-processors).
 
 
 ### <a name="metrics"></a>Metriky
@@ -347,16 +347,16 @@ V současné době jsou odesílány tyto čítače výkonu:
 - Využití procesoru procesem (procento)
 - Zpracovat soukromé bajty (bajty)
 
-Tyto metriky byste měli být schopní zobrazit v `performanceCounters` . Další informace najdete v tématu [čítače výkonu](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters).
+Tyto metriky byste měli být schopní zobrazit v `performanceCounters` . Další informace najdete v tématu [čítače výkonu](./performance-counters.md).
 
 #### <a name="modify-telemetry"></a>Úprava telemetrie
 
-Informace o tom, jak upravit sledovanou telemetrii před odesláním do Azure Monitor, najdete v tématu OpenCensus [telemetrie](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)Python.
+Informace o tom, jak upravit sledovanou telemetrii před odesláním do Azure Monitor, najdete v tématu OpenCensus [telemetrie](./api-filtering-sampling.md#opencensus-python-telemetry-processors)Python.
 
 ### <a name="tracing"></a>Trasování
 
 > [!NOTE]
-> V OpenCensus `tracing` odkazuje na [distribuované trasování](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing). `AzureExporter`Odeslání `requests` a `dependency` telemetrie Azure monitor.
+> V OpenCensus `tracing` odkazuje na [distribuované trasování](./distributed-tracing.md). `AzureExporter`Odeslání `requests` a `dependency` telemetrie Azure monitor.
 
 1. Nejdřív vygenerujte data trasování místně. V Pythonu nečinné nebo v editoru podle vlastního výběru zadejte následující kód:
 
@@ -420,8 +420,8 @@ Informace o tom, jak upravit sledovanou telemetrii před odesláním do Azure Mo
         main()
     ```
 
-1. Když teď spouštíte skript Pythonu, měli byste být pořád vyzváni k zadání hodnot, ale v prostředí se tiskne jenom hodnota. Vytvořená `SpanData` je odeslána do Azure monitor. Data emitovaného rozsahu najdete v části `dependencies` . Další informace o odchozích žádostech najdete v tématu OpenCensus [v Pythonu](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-dependency).
-Další informace o příchozích požadavcích naleznete v tématu OpenCensus Python [requests](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-request).
+1. Když teď spouštíte skript Pythonu, měli byste být pořád vyzváni k zadání hodnot, ale v prostředí se tiskne jenom hodnota. Vytvořená `SpanData` je odeslána do Azure monitor. Data emitovaného rozsahu najdete v části `dependencies` . Další informace o odchozích žádostech najdete v tématu OpenCensus [v Pythonu](./opencensus-python-dependency.md).
+Další informace o příchozích požadavcích naleznete v tématu OpenCensus Python [requests](./opencensus-python-request.md).
 
 #### <a name="sampling"></a>Vzorkování
 
@@ -429,11 +429,11 @@ Informace o vzorkování v OpenCensus se podíváme na [vzorkování v OpenCensu
 
 #### <a name="trace-correlation"></a>Korelace trasování
 
-Další informace o korelaci telemetrie v datech trasování najdete v OpenCensus [korelace telemetrie](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)Pythonu.
+Další informace o korelaci telemetrie v datech trasování najdete v OpenCensus [korelace telemetrie](./correlation.md#telemetry-correlation-in-opencensus-python)Pythonu.
 
 #### <a name="modify-telemetry"></a>Úprava telemetrie
 
-Další informace o tom, jak upravit sledovanou telemetrii před odesláním do Azure Monitor, najdete v tématu OpenCensus Python [telemetrie](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors).
+Další informace o tom, jak upravit sledovanou telemetrii před odesláním do Azure Monitor, najdete v tématu OpenCensus Python [telemetrie](./api-filtering-sampling.md#opencensus-python-telemetry-processors).
 
 ## <a name="configure-azure-monitor-exporters"></a>Konfigurace Azure Monitor vývozců
 
@@ -442,7 +442,7 @@ Jak je znázorněno, existují tři různé Azure Monitor vývozců, kteří pod
 Každý vývozce přijímá stejné argumenty pro konfiguraci a předává je prostřednictvím konstruktorů. Podrobnosti o každé z nich můžete zobrazit tady:
 
 - `connection_string`: Připojovací řetězec, který se používá pro připojení k vašemu Azure Monitor prostředku. Má přednost před `instrumentation_key` .
-- `enable_standard_metrics`: Používá se pro `AzureMetricsExporter` . Signalizuje, že vývozce automaticky pošle metriky [čítače výkonu](https://docs.microsoft.com/azure/azure-monitor/platform/app-insights-metrics#performance-counters) Azure monitor. Výchozí hodnota je `True` .
+- `enable_standard_metrics`: Používá se pro `AzureMetricsExporter` . Signalizuje, že vývozce automaticky pošle metriky [čítače výkonu](../platform/app-insights-metrics.md#performance-counters) Azure monitor. Výchozí hodnota je `True` .
 - `export_interval`: Používá se k určení frekvence v sekundách exportu.
 - `instrumentation_key`: Klíč instrumentace, který se používá pro připojení k vašemu Azure Monitor prostředku.
 - `logging_sampling_rate`: Používá se pro `AzureLogHandler` . Poskytuje vzorkovací frekvenci [0, 1,0] pro export protokolů. Výchozí hodnota je 1,0.
@@ -462,7 +462,7 @@ V seznamu pod položkou **aktivní**:
 - U telemetrie odesílaných pomocí Azure Monitorch metriky se v části zobrazuje metrika `customMetrics` .
 - U telemetrie odesílaných pomocí nástroje Azure Monitorch protokolů se zobrazí protokoly v části `traces` . Výjimky se zobrazí v části `exceptions` .
 
-Podrobnější informace o používání dotazů a protokolů najdete [v tématu protokoly v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs).
+Podrobnější informace o používání dotazů a protokolů najdete [v tématu protokoly v Azure monitor](../platform/data-platform-logs.md).
 
 ## <a name="learn-more-about-opencensus-for-python"></a>Další informace o OpenCensus pro Python
 

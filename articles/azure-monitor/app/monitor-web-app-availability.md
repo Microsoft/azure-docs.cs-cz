@@ -4,11 +4,12 @@ description: Nastavení testů webu ve službě Application Insights. Zasílán�
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 61358051a8ddc32bc01ec5e231f4c28ebfa18ee0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6daa2e4abb1b6580fd70f104e85f3a917f47dcdc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77670028"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024584"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Monitorování dostupnosti jakéhokoli webu
 
@@ -22,7 +23,7 @@ Existují tři typy testů dostupnosti:
 
 * [Testování ping adresy URL](#create-a-url-ping-test): jednoduchý test, který můžete vytvořit na portálu Azure.
 * [Webový test s více kroky](availability-multistep.md): záznam sekvence webových požadavků, které je možné přehrát zpětně testovat složitější scénáře. Webové testy s více kroky jsou vytvořeny v Visual Studio Enterprise a nahrány na portál pro provádění.
-* [Testy dostupnosti vlastních stop](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): Pokud se rozhodnete vytvořit vlastní aplikaci pro spuštění testů dostupnosti, `TrackAvailability()` lze použít metodu k odeslání výsledků do Application Insights.
+* [Testy dostupnosti vlastních stop](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): Pokud se rozhodnete vytvořit vlastní aplikaci pro spuštění testů dostupnosti, `TrackAvailability()` lze použít metodu k odeslání výsledků do Application Insights.
 
 **Pro každý prostředek Application Insights můžete vytvořit testy dostupnosti až 100.**
 
@@ -44,13 +45,13 @@ Pokud chcete vytvořit svou první žádost o dostupnost, otevřete podokno dost
 
 |Nastavení| Vysvětlení
 |----|----|----|
-|**URL** |  Adresa URL může být libovolná webová stránka, kterou chcete otestovat, ale musí být viditelná z veřejného internetu. Adresa URL může obsahovat řetězec dotazu. To znamená, že můžete také trochu vyzkoušet svou databázi. Pokud se adresa URL přeloží na přesměrování, budeme ji sledovat až po 10 přesměrování.|
+|**Adresa URL** |  Adresa URL může být libovolná webová stránka, kterou chcete otestovat, ale musí být viditelná z veřejného internetu. Adresa URL může obsahovat řetězec dotazu. To znamená, že můžete také trochu vyzkoušet svou databázi. Pokud se adresa URL přeloží na přesměrování, budeme ji sledovat až po 10 přesměrování.|
 |**Analyzovat závislé požadavky**| Test žádostí o obrázky, skripty, soubory stylu a další soubory, které jsou součástí testované webové stránky. Zaznamenaná doba odezvy zahrnuje i čas potřebný k získání těchto souborů. Test se nezdaří, pokud některý z těchto prostředků nelze úspěšně stáhnout v časovém limitu pro celý test. Pokud tato možnost není zaškrtnutá, test si vyžádá pouze soubor na zadané adrese URL. Povolení této možnosti má za následek přísnější kontrolu. Test se nezdařil pro případy, které nemusí být při ručním procházení lokality patrné.
 |**Povolit opakování**|v případě, že se test nezdařil, bude opakován po krátkém intervalu. Selhání je nahlášeno pouze v případě tří po sobě jdoucích neúspěšných pokusů. Následné testy jsou pak provedeny s obvyklou frekvencí testu. Opakování je dočasně pozastaveno do dalšího úspěchu. Toto pravidlo platí nezávisle na každém umístění testu. **Tuto možnost doporučujeme**. V průměru přibližně 80 % selhání při opakování zmizí.|
 |**Frekvence testování**| Nastaví, jak často se test spouští z každého umístění testu. S výchozí pětiminutovou frekvencí a pěti testovanými místy bude váš web testován v průměru každou minutu.|
 |**Testovací umístění**| Jsou místa, odkud naše servery odesílají webové požadavky na adresu URL. **Náš minimální počet doporučených testovacích umístění je pět** , abyste měli jistotu, že můžete odlišit problémy na webu od problémů se sítí. Můžete vybrat až 16 umístění.
 
-**Pokud vaše adresa URL není viditelná z veřejného Internetu, můžete vybrat možnost selektivně otevřít bránu firewall, aby povolovala pouze testovací transakce**. Další informace o výjimkách brány firewall pro testovací agenty dostupnosti najdete v [Průvodci IP adresou](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses#availability-tests).
+**Pokud vaše adresa URL není viditelná z veřejného Internetu, můžete vybrat možnost selektivně otevřít bránu firewall, aby povolovala pouze testovací transakce**. Další informace o výjimkách brány firewall pro testovací agenty dostupnosti najdete v [Průvodci IP adresou](./ip-addresses.md#availability-tests).
 
 > [!NOTE]
 > Důrazně doporučujeme testování z více umístění s **minimálně pěti umístěními**. K tomu je potřeba zabránit falešným poplachům, které mohou být způsobeny přechodnými problémy s konkrétním umístěním. Kromě toho jsme zjistili, že optimální konfigurace má mít **počet testovacích umístění stejný jako prahová hodnota umístění výstrahy + 2**.
@@ -112,7 +113,7 @@ Kliknutím na řádek výjimky zobrazíte podrobnosti o výjimce na straně serv
 
 ![Diagnostika na straně serveru](./media/monitor-web-app-availability/open-instance-4.png)
 
-Kromě nezpracovaných výsledků můžete také zobrazit dvě klíčové metriky dostupnosti v [Průzkumník metrik](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started):
+Kromě nezpracovaných výsledků můžete také zobrazit dvě klíčové metriky dostupnosti v [Průzkumník metrik](../platform/metrics-getting-started.md):
 
 1. Dostupnost: procento testů, které proběhly úspěšně, vzhledem k celkovému počtu provedení testu.
 2. Doba trvání testu: průměrná doba trvání u všech provedení testu.
@@ -122,7 +123,7 @@ Kromě nezpracovaných výsledků můžete také zobrazit dvě klíčové metrik
 * [Automatické nastavení testu dostupnosti pomocí skriptů PowerShell](../../azure-monitor/app/powershell.md#add-an-availability-test).
 * Nastavení [webhook](../../azure-monitor/platform/alerts-webhooks.md), který je volán při vydání výstrahy.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Vyhrazený [článek týkající se řešení potíží](troubleshoot-availability.md).
 
@@ -130,5 +131,3 @@ Vyhrazený [článek týkající se řešení potíží](troubleshoot-availabili
 
 * [Výstrahy dostupnosti](availability-alerts.md)
 * [Vícekrokové webové testy](availability-multistep.md)
-
-

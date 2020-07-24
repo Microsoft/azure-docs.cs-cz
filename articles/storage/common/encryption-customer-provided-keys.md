@@ -1,25 +1,25 @@
 ---
 title: Zadání šifrovacího klíče pro požadavek na úložiště objektů BLOB
 titleSuffix: Azure Storage
-description: Klienti, kteří provádějí požadavky na úložiště objektů BLOB v Azure, mají možnost zadat šifrovací klíč na základě jednotlivých požadavků (Preview). Zahrnutí šifrovacího klíče na žádost poskytuje podrobnou kontrolu nad nastavením šifrování pro operace BLOB Storage.
+description: Klienti, kteří provádějí požadavky na úložiště objektů BLOB v Azure, mají možnost zadat šifrovací klíč na základě jednotlivých požadavků. Zahrnutí šifrovacího klíče na žádost poskytuje podrobnou kontrolu nad nastavením šifrování pro operace BLOB Storage.
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/12/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 0e5a85bcc4ded3b4bf3fcbcaf095d7c8ef01c458
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fec3d760450fb5cc20deed14dac03f58f23c2b4b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805319"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029735"
 ---
-# <a name="provide-an-encryption-key-on-a-request-to-blob-storage-preview"></a>Zadání šifrovacího klíče pro požadavek na úložiště objektů BLOB (Preview)
+# <a name="provide-an-encryption-key-on-a-request-to-blob-storage"></a>Zadání šifrovacího klíče pro požadavek na úložiště objektů BLOB
 
-Klienti, kteří provádějí požadavky na úložiště objektů BLOB v Azure, mají možnost zadat šifrovací klíč na základě jednotlivých požadavků (Preview). Zahrnutí šifrovacího klíče na žádost poskytuje podrobnou kontrolu nad nastavením šifrování pro operace BLOB Storage. Klíče poskytované zákazníkem mohou být uloženy v Azure Key Vault nebo v jiném úložišti klíčů.
+Klienti, kteří provádějí požadavky na úložiště objektů BLOB v Azure, mají možnost zadat šifrovací klíč na základě jednotlivých požadavků. Zahrnutí šifrovacího klíče na žádost poskytuje podrobnou kontrolu nad nastavením šifrování pro operace BLOB Storage. Klíče poskytované zákazníkem mohou být uloženy v Azure Key Vault nebo v jiném úložišti klíčů.
 
 ## <a name="encrypting-read-and-write-operations"></a>Šifrování operací čtení a zápisu
 
@@ -39,7 +39,7 @@ Každý snímek objektu BLOB může mít vlastní šifrovací klíč.
 
 V případě volání REST můžou klienti pomocí následujících hlaviček bezpečně předat informace o šifrovacím klíči na žádost do úložiště objektů BLOB:
 
-|Hlavička požadavku | Description |
+|Hlavička požadavku | Popis |
 |---------------|-------------|
 |`x-ms-encryption-key` |Vyžaduje se pro požadavky zápisu i čtení. Hodnota šifrovacího klíče AES-256 kódovaná v kódování Base64. |
 |`x-ms-encryption-key-sha256`| Vyžaduje se pro požadavky zápisu i čtení. SHA256 šifrovacího klíče zakódovaného ve formátu base64. |

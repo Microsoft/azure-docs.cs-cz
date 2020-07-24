@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0498a2015b75221763ab5fdd4f6e94428922bd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6238e89b3941668f831f3128bb0e723a4097e48
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386738"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027508"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>Přidání konektoru API do toku uživatele
 
@@ -76,7 +76,7 @@ POST <API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@fabrikam.onmicrosoft.com",
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
  "identities": [ //Sent for Google and Facebook identity providers
      {
      "signInType":"federated",
@@ -99,7 +99,7 @@ Pokud deklarace identity pro odeslání nemá hodnotu v okamžiku volání konco
 Vlastní atributy lze vytvořit pro uživatele pomocí **extension_ \<extensions-app-id> _AttributeName** formátu. Rozhraní API by mělo očekávat deklarace identity v tomto stejném serializovaném formátu. Vaše rozhraní API může vracet deklarace identity s nebo bez `<extensions-app-id>` . Další informace o vlastních atributech najdete v tématu [definování vlastních atributů pro vlastní toky podepisování](user-flow-add-custom-attributes.md).
 
 > [!TIP] 
-> [**identity (identity)**](https://docs.microsoft.com/graph/api/resources/objectidentity?view=graph-rest-1.0) a **e-mailová adresa (' email_address ')** můžete použít k identifikaci uživatele předtím, než budou mít účet ve vašem tenantovi. Deklarace identity identity se pošle, když se uživatel ověří s Google nebo Facebookem a email_address se vždycky pošle.
+> [**identity (identity)**](https://docs.microsoft.com/graph/api/resources/objectidentity?view=graph-rest-1.0) a deklarace **e-mailové adresy (e-mail)** se dají použít k identifikaci uživatele dřív, než budou mít účet ve vašem tenantovi. Deklarace identity identity se pošle, když se uživatel ověří přes Google nebo Facebook a e-mail se vždycky pošle.
 
 ## <a name="expected-response-types-from-the-web-api"></a>Očekávané typy odezvy z webového rozhraní API
 
@@ -136,15 +136,15 @@ Content-type: application/json
 | Parametr                                          | Typ              | Vyžadováno | Popis                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | verze                                            | Řetězec            | Yes      | Verze rozhraní API.                                                                                                                                                                                                                                                                |
-| action                                             | Řetězec            | Yes      | Hodnota musí být `Continue` .                                                                                                                                                                                                                                                              |
+| akce                                             | Řetězec            | Yes      | Hodnota musí být `Continue` .                                                                                                                                                                                                                                                              |
 | \<builtInUserAttribute>                            | \<attribute-type> | No       | Hodnoty mohou být uloženy v adresáři, pokud jsou vybrány jako **deklarace pro příjem** v konfiguraci konektoru rozhraní API a **atributy uživatele** pro tok uživatele. Hodnoty mohou být vráceny v tokenu, pokud je vybrána jako **deklarace identity aplikace**.                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | No       | Vrácená deklarace může volitelně obsahovat `_<extensions-app-id>_` . Hodnoty se ukládají v adresáři, pokud se vybírají jako **deklarace, aby se přijímaly** v konfiguraci konektoru rozhraní API a **atributu uživatele** pro tok uživatele. Vlastní atributy se v tokenu nedají poslat zpátky. |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | No       | Vrácená deklarace identity nemusí obsahovat `_<extensions-app-id>_` . Hodnoty se ukládají v adresáři, pokud se vybírají jako **deklarace, aby se přijímaly** v konfiguraci konektoru rozhraní API a **atributu uživatele** pro tok uživatele. Vlastní atributy se v tokenu nedají poslat zpátky. |
 
 ### <a name="blocking-response"></a>Blokování odpovědi
 
 Odezva na blokování ukončuje tok uživatele. Může být záměrně vydaný rozhraním API, aby se zastavilo pokračování toku uživatelů tím, že se uživateli zobrazí stránka blokování. Stránka blokování zobrazuje `userMessage` rozhraní API, které poskytuje.
 
-Níže je příklad blokující reakce:
+Příklad odpovědi na blokování:
 
 ```http
 HTTP/1.1 200 OK
@@ -162,7 +162,7 @@ Content-type: application/json
 | Parametr   | Typ   | Vyžadováno | Popis                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
 | verze     | Řetězec | Yes      | Verze rozhraní API.                                                    |
-| action      | Řetězec | Yes      | Hodnota musí být`ShowBlockPage`                                              |
+| akce      | Řetězec | Yes      | Hodnota musí být`ShowBlockPage`                                              |
 | userMessage | Řetězec | Yes      | Zpráva, která se zobrazí uživateli.                                            |
 | kód        | Řetězec | No       | Kód chyby Lze použít pro účely ladění. Nezobrazuje se uživateli. |
 
@@ -192,12 +192,12 @@ Content-type: application/json
 | Parametr   | Typ    | Vyžadováno | Popis                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
 | verze     | Řetězec  | Yes      | Verze rozhraní API.                                                    |
-| action      | Řetězec  | Yes      | Hodnota musí být `ValidationError` .                                           |
-| status      | Integer | Yes      | `400`Pro odpověď ValidationError musí být hodnota.                        |
+| akce      | Řetězec  | Yes      | Hodnota musí být `ValidationError` .                                           |
+| status      | Celé číslo | Yes      | `400`Pro odpověď ValidationError musí být hodnota.                        |
 | userMessage | Řetězec  | Yes      | Zpráva, která se zobrazí uživateli.                                            |
 | kód        | Řetězec  | No       | Kód chyby Lze použít pro účely ladění. Nezobrazuje se uživateli. |
 
-#### <a name="end-user-experience-with-a-validation-error-response"></a>Činnost koncového uživatele při ověření – chybová odezva
+#### <a name="end-user-experience-with-a-validation-error-response"></a>Činnost koncového uživatele při ověřování – chybová odezva
 
 ![Stránka příklad ověření](./media/api-connectors-overview/validation-error-postal-code.png)
 

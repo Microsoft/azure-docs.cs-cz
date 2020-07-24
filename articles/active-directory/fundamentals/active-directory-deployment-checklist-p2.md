@@ -3,21 +3,22 @@ title: Kontrolní seznam pro nasazení Azure AD
 description: Azure Active Directory kontrolní seznam nasazení funkcí
 services: active-directory
 ms.service: active-directory
-ms.subservice: ''
+ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f84226a631014b51338d47887fe3bafc969dc571
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 082e4a35582e9fe643aefc13c0c46a1c75f443e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77063641"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025383"
 ---
-# <a name="azure-active-directory-feature-deployment-guide"></a>Průvodce nasazením funkce Azure Active Directory
+# <a name="azure-active-directory-feature-deployment-guide"></a>Průvodce nasazením funkcí Azure Active Directory
 
 Může se zdát, že těžké nasadit Azure Active Directory (Azure AD) pro vaši organizaci a zajistit jejich zabezpečení. Tento článek popisuje běžné úkoly, které zákazníci vyhledají ve fázích, a to v průběhu 30, 60, 90 dnů nebo víc, aby zvýšili jejich stav zabezpečení. I organizace, které už mají nasazenou službu Azure AD, můžou pomocí tohoto průvodce zajistit, aby jejich investice byly na maximum.
 
@@ -25,7 +26,7 @@ Dobře plánovaná a spuštěná infrastruktura identity PAVES způsob zabezpeč
 
 Zákazníci navíc můžou ověřit své [zabezpečené skóre identity](identity-secure-score.md) a zjistit, jak se budou zarovnávat podle osvědčených postupů Microsoftu. Před a po implementaci těchto doporučení Zkontrolujte své zabezpečené skóre, abyste viděli, jak dobře pracujete v porovnání s ostatními uživateli ve vašem odvětví a s jinými organizacemi vaší velikosti.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Mnohé z doporučení v tomto průvodci můžete implementovat pomocí Azure AD Free nebo bez licence vůbec. Tam, kde jsou licence požadovány, je pro splnění této smlouvy nutné zadat, jaká licence je vyžadována minimálně.
 
@@ -52,10 +53,11 @@ V této fázi můžou správci ve službě Azure AD před importem nebo vytvoře
 | [Zakázat pravidelná resetování hesla pro cloudové uživatelské účty](../authentication/concept-sspr-policy.md#set-a-password-to-never-expire) | Periodické resetování hesla připomáhají uživatelům zvyšovat stávající hesla. Použijte pokyny v dokumentu pokyny pro heslo od Microsoftu a zrcadlte své místní zásady na uživatele jenom pro Cloud. | Azure AD Free |
 | [Přizpůsobení Azure Active Directoryho inteligentního uzamčení](../authentication/howto-password-smart-lockout.md) | Zastavení uzamčení od cloudových uživatelů při jejich replikaci do místních uživatelů Active Directory | |
 | [Povolit extranetové inteligentní uzamčení pro AD FS](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) | AD FS uzamčení extranetu chrání před útoky hrubou silou hesla, zatímco umožňuje platným AD FSm uživatelům nadále používat své účty. | |
+| [Blokování staršího ověřování do Azure AD s podmíněným přístupem](../conditional-access/block-legacy-authentication.md) | Zablokuje starší protokoly ověřování jako POP, SMTP, IMAP a MAPI, které nemůžou vyhovět Multi-Factor Authentication, takže jim vyhovuje vstupnímu bodu pro nežádoucí osoby. | Azure AD Premium P1 |
 | [Nasazení Multi-Factor Authentication Azure AD pomocí zásad podmíněného přístupu](../authentication/howto-mfa-getstarted.md) | Vyžaduje, aby uživatelé prováděli dvoustupňové ověřování při přístupu k citlivým aplikacím pomocí zásad podmíněného přístupu. | Azure AD Premium P1 |
 | [Povolit Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md) | Povolte sledování rizikových přihlášení a napadených přihlašovacích údajů uživatelům ve vaší organizaci. | Azure AD Premium P2 |
 | [Použití zjišťování rizik ke spuštění vícefaktorového ověřování a změn hesel](../authentication/tutorial-risk-based-sspr-mfa.md) | Povolte automatizaci, která může aktivovat události, jako je vícefaktorové ověřování, resetování hesla a blokování přihlášení na základě rizika. | Azure AD Premium P2 |
-| [Povolení sblížené registrace pro Samoobslužné resetování hesla a Multi-Factor Authentication Azure AD (Preview)](../authentication/concept-registration-mfa-sspr-converged.md) | Umožněte uživatelům, aby se zaregistrovali z jednoho společného prostředí pro Azure Multi-Factor Authentication a Samoobslužné resetování hesla. | Azure AD Premium P1 |
+| [Povolení kombinované registrace pro Samoobslužné resetování hesla a službu Azure AD Multi-Factor Authentication](../authentication/concept-registration-mfa-sspr-combined.md) | Umožněte uživatelům, aby se zaregistrovali z jednoho společného prostředí pro Azure Multi-Factor Authentication a Samoobslužné resetování hesla. | Azure AD Premium P1 |
 
 ## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>Fáze 2: import uživatelů, povolení synchronizace a Správa zařízení
 

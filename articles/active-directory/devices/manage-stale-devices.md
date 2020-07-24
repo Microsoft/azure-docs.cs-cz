@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 292ba1d52b107acd164408767747e5a33cb0c67d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 94a4b2a44902dde798f760f970ccff2c1e8f15c5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252691"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025624"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Postupy: Správa zastaralých zařízení v Azure AD
 
@@ -56,7 +57,7 @@ Ke získání hodnoty časového razítka aktivity máte dvě možnosti:
 
     ![Časové razítko aktivity](./media/manage-stale-devices/01.png)
 
-- Rutina [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0)
+- Rutina [Get-AzureADDevice](/powershell/module/azuread/Get-AzureADDevice)
 
     ![Časové razítko aktivity](./media/manage-stale-devices/02.png)
 
@@ -88,7 +89,7 @@ Pokud je zařízení pod kontrolou Intune nebo jiných řešení MDM, před zak�
 
 ### <a name="system-managed-devices"></a>Zařízení spravovaná systémem
 
-Neodstraňujte zařízení spravovaná systémem. Jedná se o obecně zařízení, jako je například autopilot. Po odstranění nebude možné tato zařízení znovu zřídit. Nová rutina `get-msoldevice` standardně vylučuje zařízení spravovaná systémem. 
+Neodstraňujte zařízení spravovaná systémem. Jedná se o obecně zařízení, jako je například autopilot. Po odstranění nebude možné tato zařízení znovu zřídit. Nová rutina `Get-AzureADDevice` standardně vylučuje zařízení spravovaná systémem. 
 
 ### <a name="hybrid-azure-ad-joined-devices"></a>Hybridní zařízení připojená k Azure AD
 
@@ -128,26 +129,25 @@ I když zastaralá zařízení můžete uklidit na webu Azure Portal, je efektiv
 
 Typická rutina se skládá z následujících kroků:
 
-1. Připojení ke službě Azure Active Directory pomocí rutiny [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0)
+1. Připojení k Azure Active Directory pomocí rutiny [Connect-AzureAD](/powershell/module/azuread/connect-azuread)
 1. Získání seznamu zařízení
-1. Zakázání zařízení pomocí rutiny [Disable-MsolDevice](/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0) 
+1. Zakažte zařízení pomocí rutiny [set-AzureADDevice](/powershell/module/azuread/Set-AzureADDevice) (zakázat pomocí možnosti-AccountEnabled). 
 1. Před odstraněním zařízení vyčkejte po období odkladu, jehož délku ve dnech si zvolíte.
-1. Odebrání zařízení pomocí rutiny [Remove-MsolDevice](/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0)
+1. Odeberte zařízení pomocí rutiny [Remove-AzureADDevice](/powershell/module/azuread/Remove-AzureADDevice) .
 
 ### <a name="get-the-list-of-devices"></a>Získání seznamu zařízení
 
 Všechna zařízení získáte a vrácená data uložíte do souboru CSV takto:
 
 ```PowerShell
-Get-MsolDevice -all | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, Approxi
-mateLastLogonTimestamp | export-csv devicelist-summary.csv
+Get-AzureADDevice -All:$true | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-summary.csv
 ```
 
 Pokud máte ve svém adresáři velký počet zařízení, použijte filtr časových razítek k zúžení počtu vrácených zařízení. Všechna zařízení s časovým razítkem starším než určité datum a vrácená data uložíte do souboru CSV takto: 
 
 ```PowerShell
 $dt = [datetime]’2017/01/01’
-Get-MsolDevice -all -LogonTimeBefore $dt | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-Jan-1-2017-summary.csv
+Get-AzureADDevice | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-Jan-1-2017-summary.csv
 ```
 
 ## <a name="what-you-should-know"></a>Co byste měli vědět

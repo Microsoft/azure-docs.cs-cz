@@ -7,12 +7,12 @@ ms.date: 06/17/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: c8a5e1b1324ca49d8b540998a82ebf125b3c5364
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5be21eea9dbb9ea0925ac014fce6272ce8c32a0d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84975856"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028137"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>Verze Preview: Vytvoření virtuálního počítače s Windows pomocí Azure image Builder pomocí PowerShellu
 
@@ -21,11 +21,11 @@ Tento článek ukazuje, jak můžete vytvořit přizpůsobenou image Windows pom
 > [!CAUTION]
 > Azure image Builder je momentálně ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb. Nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
-Pokud se rozhodnete použít prostředí PowerShell místně, Tento článek vyžaduje, abyste nainstalovali modul AZ PowerShell a připojili se k účtu Azure pomocí rutiny [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) . Další informace o instalaci modulu AZ PowerShell najdete v tématu [Install Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Pokud se rozhodnete použít prostředí PowerShell místně, Tento článek vyžaduje, abyste nainstalovali modul AZ PowerShell a připojili se k účtu Azure pomocí rutiny [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) . Další informace o instalaci modulu AZ PowerShell najdete v tématu [Install Azure PowerShell](/powershell/azure/install-az-ps).
 
 > [!IMPORTANT]
 > I když jsou moduly PowerShellu **AZ. ImageBuilder** a **AZ. ManagedServiceIdentity** ve verzi Preview, musíte je nainstalovat samostatně pomocí `Install-Module` rutiny s `AllowPrerelease` parametrem. Až budou tyto moduly PowerShellu všeobecně dostupné, stanou se součástí budoucích verzí v budoucnu AZ PowerShell Module releases a k dispozici nativně z Azure Cloud Shell.
@@ -36,7 +36,7 @@ Pokud se rozhodnete použít prostředí PowerShell místně, Tento článek vy�
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
-Pokud máte více předplatných Azure, vyberte příslušné předplatné, ve kterém se prostředky mají fakturovat. Vyberte konkrétní předplatné pomocí rutiny [set-AzContext](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext) .
+Pokud máte více předplatných Azure, vyberte příslušné předplatné, ve kterém se prostředky mají fakturovat. Vyberte konkrétní předplatné pomocí rutiny [set-AzContext](/powershell/module/az.accounts/set-azcontext) .
 
 ```azurepowershell-interactive
 Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
@@ -100,7 +100,7 @@ Write-Output $subscriptionID
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte [skupinu prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) pomocí rutiny [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) . Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure jako skupina.
+Vytvořte [skupinu prostředků Azure](../../azure-resource-manager/management/overview.md) pomocí rutiny [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure jako skupina.
 
 Následující příklad vytvoří skupinu prostředků na základě názvu v `$imageResourceGroup` proměnné v oblasti určené v `$location` proměnné. Tato skupina prostředků se používá k uložení artefaktu šablony konfigurace image a image.
 
@@ -168,7 +168,7 @@ New-AzRoleAssignment @RoleAssignParams
 ```
 
 > [!NOTE]
-> Pokud se zobrazí chyba: "_New-AzRoleDefinition: překročil se limit definice role. Nedají se vytvořit žádné další definice rolí._", přečtěte si téma [řešení potíží s Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting).
+> Pokud se zobrazí chyba: "_New-AzRoleDefinition: překročil se limit definice role. Nedají se vytvořit žádné další definice rolí._", přečtěte si téma [řešení potíží s Azure RBAC](../../role-based-access-control/troubleshooting.md).
 
 ## <a name="create-a-shared-image-gallery"></a>Vytvoření služby Shared Image Gallery
 
@@ -200,7 +200,7 @@ New-AzGalleryImageDefinition @GalleryParams
 
 ## <a name="create-an-image"></a>Vytvoření image
 
-Vytvoří zdrojový objekt tvůrce imagí Azure. Platné hodnoty parametrů najdete [v tématu Vyhledání imagí virtuálních počítačů s Windows v Azure Marketplace s Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage) .
+Vytvoří zdrojový objekt tvůrce imagí Azure. Platné hodnoty parametrů najdete [v tématu Vyhledání imagí virtuálních počítačů s Windows v Azure Marketplace s Azure PowerShell](./cli-ps-findimage.md) .
 
 ```azurepowershell-interactive
 $SrcObjParams = @{
