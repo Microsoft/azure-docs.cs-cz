@@ -3,12 +3,12 @@ title: Přehled funkcí zabezpečení
 description: Seznamte se s možnostmi zabezpečení v Azure Backup, které vám pomůžou chránit data záloh a splňovat požadavky vaší firmy na zabezpečení.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: ce6d8a43b48be5189f0459c9f82c69354f40689f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 750ad7b10969ef5f83e0b5058e350066d3f97351
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513197"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062595"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Přehled funkcí zabezpečení v Azure Backup
 
@@ -16,7 +16,7 @@ Jedním z nejdůležitějších kroků, které můžete provést při ochraně d
 
 ## <a name="management-and-control-of-identity-and-user-access"></a>Správa a řízení identit a přístupu uživatelů
 
-Účty úložiště používané trezory služby Recovery Services jsou izolované a uživatelé k nim nemají k dispozici žádné škodlivé účely. Přístup je povolený jenom prostřednictvím operací správy Azure Backup, jako je například obnovení. Azure Backup vám umožní řídit spravované operace prostřednictvím jemně odstupňovaného přístupu pomocí [Access Control na základě role (RBAC) založené na rolích Azure](./backup-rbac-rs-vault.md). RBAC umožňuje oddělení povinností v rámci týmu a udělení přístupu pouze k uživatelům potřebným ke své práci.
+Účty úložiště používané trezory služby Recovery Services jsou izolované a uživatelé k nim nemají k dispozici žádné škodlivé účely. Přístup je povolený jenom prostřednictvím operací správy Azure Backup, jako je například obnovení. Azure Backup vám umožní řídit spravované operace prostřednictvím jemně odstupňovaného přístupu pomocí [řízení přístupu na základě role Azure (RBAC)](./backup-rbac-rs-vault.md). RBAC umožňuje oddělení povinností v rámci týmu a udělení přístupu pouze k uživatelům potřebným ke své práci.
 
 Azure Backup poskytuje tři [předdefinované role](../role-based-access-control/built-in-roles.md) pro řízení operací správy zálohování:
 

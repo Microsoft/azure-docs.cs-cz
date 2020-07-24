@@ -2,67 +2,51 @@
 title: Koncepty – Network vzájemné propojení
 description: Seznamte se s klíčovými aspekty a případy použití sítě a vzájemné propojení v řešení Azure VMware (AVS).
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 2378ad56e2754b2d2fde7f895f6673e7d7d561c9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/23/2020
+ms.openlocfilehash: c0416da9c745ccf92970ff39f623a782d5784983
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539138"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062843"
 ---
 # <a name="azure-vmware-solution-avs-preview-networking-and-interconnectivity-concepts"></a>Azure VMware Solution (AVS) Preview sítě a vzájemné propojení koncepty
 
-Vzájemné propojení sítě mezi privátními cloudy Azure VMware (AVS) a místními prostředími nebo virtuálními sítěmi v Azure umožňuje přístup k privátnímu cloudu a jeho používání. V tomto článku jsou popsány některé klíčové koncepty sítě a vzájemné propojení, které tvoří základ pro vzájemné propojení.
+Vzájemné propojení sítě mezi privátními a místními cloudy Azure VMware Solution (AVS) a místními prostředími nebo virtuálními sítěmi v Azure vám umožní přístup k privátnímu cloudu a jeho používání. V tomto článku se podíváme na několik klíčových konceptů, které zajišťují základ sítí a vzájemné propojení.
 
-Užitečnou perspektivou pro vzájemné propojení je zvážit dva typy implementace privátního cloudu služby AVS: implementace se základními vzájemné propojení pouze pro Azure a implementacemi s úplným místním prostředím a privátním cloudem vzájemné propojení.
+Užitečnou perspektivou pro vzájemné propojení je zvážit dva typy implementace privátního cloudu pro funkci AVS:
+
+1. [**Basic Azure jenom vzájemné propojení**](#azure-virtual-network-interconnectivity) umožňuje spravovat a používat privátní cloud jenom s jednou virtuální sítí v Azure. Tato implementace je nejlépe vhodná pro vyhodnocení a implementace služby AVS, které nevyžadují přístup z místních prostředí.
+
+1. [**Úplné místní implementace do privátního cloudu vzájemné propojení**](#on-premises-interconnectivity) rozšiřuje základní implementaci jenom pro Azure tak, aby zahrnovala vzájemné propojení mezi místními a soukromými cloudy služby AVS.
+ 
+Další informace o požadavcích a dvou typech implementací privátního cloudu pro funkci AVS najdete v následujících částech.
+
+## <a name="avs-private-cloud-use-cases"></a>Případy použití privátního cloudu pro funkci AVS
 
 Případy použití pro privátní cloudy služby AVS zahrnují:
 - nové úlohy virtuálních počítačů VMware v cloudu
-- Zatížení virtuálních počítačů do cloudu
-- Migrace úloh virtuálních počítačů do cloudu
-- zotavení po havárii
+- Zatížení virtuálních počítačů do cloudu (jenom v místním prostředí až po funkci AVS)
+- Migrace zatížení virtuálního počítače do cloudu (jenom místní až na službu AVS)
+- zotavení po havárii (AVS do AVS nebo místní pro funkci AVS)
 - spotřeba služeb Azure
 
- Všechny případy použití pro službu AVS jsou povolené s připojením z místního prostředí k privátnímu cloudu. Základní model vzájemné propojení se nejlépe hodí pro hodnocení a implementace služby AVS, které nevyžadují přístup z místních prostředí.
+ Všechny případy použití pro službu AVS jsou povolené s připojením z místního prostředí k privátnímu cloudu. 
 
-V následujících částech jsou popsány dva typy vzájemné propojení privátního cloudu pro funkci AVS.  Největší základní vzájemné propojení je "připojení k virtuální síti Azure"; umožňuje spravovat a používat privátní cloud jenom s jednou virtuální sítí v Azure. Vzájemné propojení popsané v části "místní připojení" rozšiřuje připojení k virtuální síti, a zahrnuje taky vzájemné propojení mezi místními prostředími a privátními cloudy služby AVS.
+## <a name="virtual-network-and-expressroute-circuit-requirements"></a>Požadavky na virtuální síť a okruh ExpressRoute
+ 
+Když ve svém předplatném vytvoříte připojení z virtuální sítě, okruh ExpressRoute se vytvoří prostřednictvím partnerského vztahu, použije autorizační klíč a ID partnerského vztahu, které požadujete v Azure Portal. Partnerský vztah je privátní a jedno připojení mezi Vaším privátním cloudem a virtuální sítí.
 
-## <a name="azure-virtual-network-interconnectivity"></a>Vzájemné propojení virtuální sítě Azure
+> [!NOTE] 
+> Okruh ExpressRoute není součástí nasazení privátního cloudu. Místní okruh ExpressRoute překračuje rozsah tohoto dokumentu. Pokud vyžadujete místní připojení k privátnímu cloudu, můžete použít některý ze stávajících okruhů ExpressRoute nebo si ho koupit v Azure Portal.
 
-Základní vzájemné propojení sítě, která je vytvořená v době nasazení privátního cloudu, se zobrazí v následujícím diagramu. Zobrazuje logické sítě založené na ExpressRoute mezi virtuální sítí v Azure a privátním cloudem. Vzájemné propojení splňuje tři z hlavních případů použití:
-- Příchozí přístup k sítím pro správu, kde se nachází Server vCenter a správce NSX-T.
-    - Dostupné z virtuálních počítačů v rámci předplatného Azure, nikoli z vašich místních systémů.
-- Odchozí přístup z virtuálních počítačů do služeb Azure.
-- Příchozí přístup a spotřeba úloh využívajících privátní cloud.
+Při nasazení privátního cloudu obdržíte IP adresy pro vCenter a správce NSX-T. Pro přístup k těmto rozhraním pro správu budete muset ve svém předplatném vytvořit další prostředky ve virtuální síti. Můžete najít postupy pro vytváření těchto prostředků a vytváření privátních partnerských vztahů ExpressRoute v kurzech.
 
-![Základní připojení virtuální sítě k privátnímu cloudu](./media/concepts/adjacency-overview-drawing-single.png)
+Logické sítě privátního cloudu jsou dodávány s předem zřízeným NSX-T. Pro vás předběžně zřídí bránu 0 a bránu 1. Můžete vytvořit segment a připojit ho k existující bráně 1-1 nebo ji připojit k nové bráně, kterou definujete. Logické síťové komponenty NSX-T poskytují konektivitu mezi úlohami v severozápadním a v západním rozsahu a také poskytují připojení k Internetu a službám Azure v oblasti USA – jih. 
 
-Okruh ExpressRoute v této virtuální síti ke scénáři privátního cloudu se naváže při vytváření připojení z virtuální sítě ve vašem předplatném k okruhu ExpressRoute vašeho privátního cloudu. Partnerský vztah používá autorizační klíč a ID okruhu, které požadujete v Azure Portal. Připojení ExpressRoute vytvořené prostřednictvím partnerského vztahu je privátní připojení typu 1:1 mezi Vaším privátním cloudem a virtuální sítí. Můžete spravovat svůj privátní cloud, využívat úlohy v privátním cloudu a přistupovat ke službám Azure přes toto připojení ExpressRoute.
+## <a name="routing-and-subnet-requirements"></a>Požadavky na směrování a podsíť
 
-Při nasazení privátního cloudu služby AVS se vyžaduje jeden adresní prostor privátní sítě v/22. Tento adresní prostor se nesmí překrývat s adresními prostory používanými v jiných virtuálních sítích v rámci vašeho předplatného. V rámci tohoto adresního prostoru se sítě pro správu, zřizování a vMotion zřídí automaticky. Směrování je založené na protokolu BGP a ve výchozím nastavení je automaticky zřízené a povolené pro každé nasazení privátního cloudu.
-
-Po nasazení privátního cloudu máte k dispozici IP adresy pro vCenter a správce NSX-T. Pro přístup k těmto rozhraním pro správu vytvoříte ve virtuální síti ve svém předplatném další prostředky. Postupy pro vytváření těchto prostředků a vytvoření privátního partnerského vztahu ExpressRoute jsou k dispozici v kurzech.
-
-Budete navrhovat logické sítě privátního cloudu a implementujete je pomocí NSX-T. K privátnímu cloudu se dodává předem zřízené NSX-T. Brána-0 & brány – jedna brána je předem zřízená pro vás. Můžete vytvořit segment a připojit ho k existující bráně úrovně 1 nebo připojit k nové bráně 1, kterou můžete definovat. Logické síťové komponenty NSX-T poskytují konektivitu mezi úlohami v severozápadním a v západním rozsahu a také poskytují připojení k Internetu a službám Azure v oblasti USA – jih. 
-
-## <a name="on-premises-interconnectivity"></a>Místní vzájemné propojení
-
-K privátním cloudům služby AVS se taky můžete připojit k místním prostředím. Tento typ vzájemné propojení je rozšíření základního vzájemné propojení popsané v předchozí části.
-
-![připojení k virtuální síti a místnímu úplnému privátnímu cloudu](./media/concepts/adjacency-overview-drawing-double.png)
-
-K zajištění úplného vzájemné propojení privátního cloudu použijete Azure Portal k povolení ExpressRoute Global Reach mezi privátním cloudovým okruhem ExpressRoute a místním okruhem ExpressRoute. Tato konfigurace rozšiřuje základní připojení tak, aby zahrnovalo přístup k privátním cloudům z místních prostředí.
-
-Pro připojení z místního prostředí k privátnímu cloudu v Azure se vyžaduje místní okruh ExpressRoute virtuální sítě do Azure. Tento okruh ExpressRoute je ve vašem předplatném a není součástí nasazení privátního cloudu. Místní okruh ExpressRoute překračuje rozsah tohoto dokumentu. Pokud vyžadujete místní připojení k privátnímu cloudu, můžete použít některý ze stávajících okruhů ExpressRoute nebo si ho koupit v Azure Portal.
-
-Po propojení s Global Reach budou dva okruhy ExpressRoute směrovat síťový provoz mezi místními prostředími a Vaším privátním cloudem. V předchozím diagramu se zobrazí vzájemné propojení z místního prostředí do privátního cloudu. Vzájemné propojení reprezentovaný v diagramu umožňuje následující případy použití:
-
-- Horká a studená vMotiona přes vCenter
-- Místní přístup ke správě privátního cloudu z místního prostředí
-
-Pokud chcete povolit úplné připojení, můžete v Azure Portal požádat o autorizační klíč a ID privátního partnerského vztahu pro Global Reach. Klíč a ID slouží k navázání Global Reach mezi okruhem ExpressRoute v předplatném a okruhem ExpressRoute pro váš nový privátní cloud. [Kurz pro vytvoření privátního cloudu](tutorial-create-private-cloud.md) vám poskytne postupy pro vyžádání a používání klíče a ID.
-
-Požadavky na směrování řešení vyžadují, abyste naplánovali adresní prostory sítě privátního cloudu, abyste se vyhnuli překrytí s ostatními virtuálními sítěmi a místními sítěmi. Privátní cloudy služby AVS vyžadují minimálně `/22` blok síťových adres CIDR pro podsítě, které jsou uvedené níže. Tato síť doplňuje vaše místní sítě. Aby bylo možné se připojit k místním prostředím a virtuálním sítím, musí se jednat o blok síťových adres, který se nepřekrývá.
+Směrování je založené na protokolu BGP (Routing Border Gateway Protocol), které se ve výchozím nastavení automaticky zřídí a povoluje pro každé nasazení privátního cloudu. U privátních cloudů služby AVS se vyžaduje plánování adresních prostorů sítě privátního cloudu s minimální délkou bloků síťových adres CIDR, které jsou v níže uvedené tabulce. Blok adres by neměl překrývat bloky adres používané v jiných virtuálních sítích, které jsou ve vašem předplatném a v místních sítích. V rámci tohoto bloku adres se automaticky zřídí Správa, zřizování a vMotion sítě.
 
 Příklad `/22` bloku síťových adres CIDR:`10.10.0.0/22`
 
@@ -70,10 +54,35 @@ Podsítě:
 
 | Využití sítě             | Podsíť | Příklad        |
 | ------------------------- | ------ | -------------- |
-| Správa privátního cloudu            | `/24`    | `10.10.0.0/24`   |
-| vMotion síť       | `/24`    | `10.10.1.0/24`   |
-| Úlohy virtuálních počítačů | `/24`   | `10.10.2.0/24`   |
-| Partnerský vztah ExpressRoute | `/24`    | `10.10.3.8/30`   |
+| Správa privátního cloudu  | `/24`  | `10.10.0.0/24` |
+| vMotion síť           | `/24`  | `10.10.1.0/24` |
+| Úlohy virtuálních počítačů              | `/24`  | `10.10.2.0/24` |
+| Partnerský vztah ExpressRoute      | `/24`  | `10.10.3.8/30` |
+
+
+## <a name="azure-virtual-network-interconnectivity"></a>Vzájemné propojení virtuální sítě Azure
+
+V rámci virtuální sítě do implementace privátního cloudu můžete spravovat svůj privátní cloud služby AVS, využívat úlohy v privátním cloudu a přistupovat ke službám Azure přes připojení ExpressRoute. 
+
+Následující diagram znázorňuje základní vzájemné propojení sítě, která se vytvořila v době nasazení privátního cloudu. Zobrazuje logické sítě založené na ExpressRoute mezi virtuální sítí v Azure a privátním cloudem. Vzájemné propojení splňuje tři z hlavních případů použití:
+* Příchozí přístup k serveru vCenter a správce NSX-T, který je přístupný z virtuálních počítačů ve vašem předplatném Azure, a ne z vašich místních systémů. 
+* Odchozí přístup z virtuálních počítačů do služeb Azure. 
+* Příchozí přístup a spotřeba úloh využívajících privátní cloud.
+
+:::image type="content" source="media/concepts/adjacency-overview-drawing-single.png" alt-text="Základní připojení virtuální sítě k privátnímu cloudu" border="false":::
+
+## <a name="on-premises-interconnectivity"></a>Místní vzájemné propojení
+
+V rámci virtuální sítě a do úplného nasazení privátního cloudu máte přístup k privátním cloudům služby AVS z místních prostředí. Tato implementace je rozšířením základní implementace popsané v předchozí části. Podobně jako u základní implementace se vyžaduje okruh ExpressRoute, ale s touto implementací se používá pro připojení z místních prostředí k privátnímu cloudu v Azure. 
+
+V následujícím diagramu vidíte místní vzájemné propojení privátního cloudu, které umožňují následující případy použití:
+* Horká a studená vMotiona přes vCenter
+* Místní pro přístup ke správě privátního cloudu pro funkci AVS
+
+:::image type="content" source="media/concepts/adjacency-overview-drawing-double.png" alt-text="Připojení k virtuální síti a místnímu úplnému privátnímu cloudu" border="false":::
+
+V případě úplného vzájemné propojení do privátního cloudu povolte ExpressRoute Global Reach a pak si vyžádejte autorizační klíč a ID privátního partnerského vztahu pro Global Reach v Azure Portal. Autorizační klíč a ID partnerského vztahu se používají k navázání Global Reach mezi okruhem ExpressRoute v rámci vašeho předplatného a okruhem ExpressRoute pro nový privátní cloud. Po propojení dva okruhy ExpressRoute směrují síťový provoz mezi místními prostředími do privátního cloudu.  Postupy pro vyžádání a používání autorizačního klíče a ID partnerského vztahu najdete v [kurzu vytvoření partnerského vztahu ExpressRoute Global REACH v privátním cloudu](tutorial-expressroute-global-reach-private-cloud.md) .
+
 
 ## <a name="next-steps"></a>Další kroky 
 

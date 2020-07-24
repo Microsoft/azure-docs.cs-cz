@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: syntetizace řeči, SWIFT-Speech Service'
+title: 'Rychlý Start: syntetizace řeči v SWIFT na iOS – služba pro rozpoznávání řeči'
 titleSuffix: Azure Cognitive Services
 description: Naučte se, jak pomocí sady Speech SDK syntetizovat řeč v SWIFT v systému iOS.
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: yulili
-ms.openlocfilehash: 8ce7d963e1d4a3514a0e60435634ba4f4a9cb009
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: e71717bdacbc3c6eb08fbdc8d56ec19c26a1d114
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391277"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062281"
 ---
 # <a name="quickstart-synthesize-speech-in-swift-on-ios-using-the-speech-sdk"></a>Rychlý Start: syntetizace řeči v SWIFT v systému iOS pomocí sady Speech SDK
 
 V tomto článku se naučíte, jak vytvořit aplikaci pro iOS v SWIFT pomocí sady Cognitive Services Speech SDK pro syntetizaci řeči z textu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, tady je seznam požadavků:
 

@@ -3,16 +3,16 @@ title: Koncept – integrace nasazení řešení Azure VMware (AVS) do architekt
 description: Přečtěte si o doporučeních pro integraci nasazení řešení Azure VMware (AVS) v existující nebo nové architektuře hub a paprsků v Azure.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 82937e04fc0a5101c353702b92b6b068d027d7ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d95ed81c5188eab0dc508f5320549c4a402e151
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85375033"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062932"
 ---
 # <a name="integrate-azure-vmware-solution-avs-in-a-hub-and-spoke-architecture"></a>Integrace řešení Azure VMware (AVS) v architektuře hub a paprsků
 
-V tomto článku poskytujeme doporučení pro integraci nasazení řešení Azure VMware (AVS) do existující nebo nové [architektury hub a paprsků](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/shared-services) v Azure. 
+V tomto článku poskytujeme doporučení pro integraci nasazení řešení Azure VMware (AVS) do existující nebo nové [architektury hub a paprsků](/azure/architecture/reference-architectures/hybrid-networking/shared-services) v Azure. 
 
 Scénář centra a paprsků předpokládá hybridní cloudové prostředí s úlohami na:
 
@@ -24,7 +24,7 @@ Scénář centra a paprsků předpokládá hybridní cloudové prostředí s úl
 
 *Centrum* je Virtual Network Azure, která funguje jako centrální bod připojení k místnímu a síťovému privátnímu cloudu. *Paprsky* jsou virtuální sítě, které jsou v partnerském vztahu s rozbočovačem a umožňují komunikaci mezi virtuálními sítěmi.
 
-Přenosy dat mezi místním datacentrem, privátním cloudem AVS a centrem procházejí ExpressRoute připojeními. Paprskové virtuální sítě obvykle obsahují úlohy založené na IaaS, ale můžou mít PaaS služby, jako je [App Service Environment](../app-service/environment/intro.md), které mají přímou integraci s Virtual Network nebo jiné PaaS služby s povoleným [privátním propojením Azure](https://docs.microsoft.com/azure/private-link/) . 
+Přenosy dat mezi místním datacentrem, privátním cloudem AVS a centrem procházejí ExpressRoute připojeními. Paprskové virtuální sítě obvykle obsahují úlohy založené na IaaS, ale můžou mít PaaS služby, jako je [App Service Environment](../app-service/environment/intro.md), které mají přímou integraci s Virtual Network nebo jiné PaaS služby s povoleným [privátním propojením Azure](../private-link/index.yml) . 
 
 Diagram znázorňuje příklad nasazení centra a paprsků v Azure připojeného k místním prostředím a funkci AVS přes ExpressRoute.
 
@@ -50,7 +50,7 @@ Architektura má následující hlavní součásti:
 
     -   **IaaS paprsk:** IaaS paprsk bude hostovat úlohy založené na Azure IaaS, včetně sad dostupnosti virtuálních počítačů a virtuálních počítačů s měřítkem, a odpovídajících síťových komponent.
 
-    -   **PaaS paprsk:** PaaS uzel hostuje služby Azure PaaS pomocí privátního [koncového bodu s privátním koncovým bodem](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) a [soukromým odkazem](https://docs.microsoft.com/azure/private-link/private-link-overview).
+    -   **PaaS paprsk:** PaaS uzel hostuje služby Azure PaaS pomocí privátního [koncového bodu s privátním koncovým bodem](../private-link/private-endpoint-overview.md) a [soukromým odkazem](../private-link/private-link-overview.md).
 
 -   **Azure firewall:** Slouží jako centrální kus pro segmentování provozu mezi paprsky, Prem a AVS.
 
@@ -58,7 +58,7 @@ Architektura má následující hlavní součásti:
 
 ## <a name="network-and-security-considerations"></a>Otázky k síti a zabezpečení
 
-Připojení ExpressRoute umožňují provoz do toku mezi místními, službou AVS a prostředky infrastruktury sítě Azure. K implementaci tohoto připojení používá službu AVS [Global REACH ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) .
+Připojení ExpressRoute umožňují provoz do toku mezi místními, službou AVS a prostředky infrastruktury sítě Azure. K implementaci tohoto připojení používá službu AVS [Global REACH ExpressRoute](../expressroute/expressroute-global-reach.md) .
 
 K místnímu připojení můžou ExpressRoute Global Reach také použít, ale není to povinné.
 
@@ -72,11 +72,11 @@ K místnímu připojení můžou ExpressRoute Global Reach také použít, ale n
   :::image type="content" source="media/hub-spoke/avs-to-hub-vnet-traffic-flow.png" alt-text="Tok přenosů ze síťové komunikace ze sítě na rozbočovač":::
 
 
-Další podrobnosti o funkci AVS Networking a vzájemné propojení koncepty najdete v [dokumentaci k produktu služby AVS](https://docs.microsoft.com/azure/azure-vmware/concepts-networking).
+Další podrobnosti o funkci AVS Networking a vzájemné propojení koncepty najdete v [dokumentaci k produktu služby AVS](./concepts-networking.md).
 
 ### <a name="traffic-segmentation"></a>Segmentace provozu
 
-[Azure firewall](https://docs.microsoft.com/azure/firewall/) je střední část topologie hub a paprsků, která je nasazená ve virtuální síti rozbočovače. Pomocí Azure Firewall nebo jiného síťového virtuálního zařízení s podporou Azure navažte pravidla provozu a segmentujte komunikaci mezi různými paprsky, místními procesy a úlohami služby AVS.
+[Azure firewall](../firewall/index.yml) je střední část topologie hub a paprsků, která je nasazená ve virtuální síti rozbočovače. Pomocí Azure Firewall nebo jiného síťového virtuálního zařízení s podporou Azure navažte pravidla provozu a segmentujte komunikaci mezi různými paprsky, místními procesy a úlohami služby AVS.
 
 Vytvořte směrovací tabulky a nasměrujte provoz na Azure Firewall.  U virtuálních sítí paprsků vytvořte trasu, která nastaví výchozí trasu na vnitřní rozhraní Azure Firewall. tímto způsobem se v případě, že zatížení v Virtual Network potřebuje spojit s adresním prostorem služby AVS, může ji brána firewall vyhodnotit a použít odpovídající pravidlo provozu pro povolení nebo zamítnutí.  
 
@@ -104,7 +104,7 @@ Azure Application Gateway V1 a v2 byly testovány pomocí webových aplikací, k
 
 Přístup k prostředí služby AVS pomocí JumpBox, což je virtuální počítač s Windows 10 nebo Windows Server nasazený v podsíti sdílené služby ve virtuální síti centrální sítě.
 
-Z hlediska zabezpečení je nejvhodnější nasadit službu [Microsoft Azure bastionu](https://docs.microsoft.com/azure/bastion/) v rámci virtuální sítě rozbočovače. Azure bastionu poskytuje bezproblémové připojení RDP a SSH k virtuálním počítačům nasazeným v Azure bez nutnosti zřídit pro tyto prostředky veřejné IP adresy. Po zřízení služby Azure bastionu můžete k vybranému virtuálnímu počítači přistupovat z Azure Portal. Po navázání připojení se otevře nová karta, kde se zobrazí plocha JumpBox a z této plochy můžete získat přístup k rovině správy privátního cloudu služby AVS.
+Z hlediska zabezpečení je nejvhodnější nasadit službu [Microsoft Azure bastionu](../bastion/index.yml) v rámci virtuální sítě rozbočovače. Azure bastionu poskytuje bezproblémové připojení RDP a SSH k virtuálním počítačům nasazeným v Azure bez nutnosti zřídit pro tyto prostředky veřejné IP adresy. Po zřízení služby Azure bastionu můžete k vybranému virtuálnímu počítači přistupovat z Azure Portal. Po navázání připojení se otevře nová karta, kde se zobrazí plocha JumpBox a z této plochy můžete získat přístup k rovině správy privátního cloudu služby AVS.
 
 > [!IMPORTANT]
 > Neposkytněte virtuálnímu počítači s JumpBox veřejnou IP adresu nebo zveřejňujte port 3389/TCP veřejnému Internetu. 
@@ -137,21 +137,19 @@ Místní a službu AVS servery je možné nakonfigurovat s použitím podmíněn
 
 ## <a name="identity-considerations"></a>Požadavky na identitu
 
-Pro účely identity je nejlepší přístup k nasazení aspoň jednoho řadiče domény služby Active Directory v centru pomocí podsítě sdílené služby, která je v ideálním případě dvě v rámci distribuované zóny nebo skupiny dostupnosti virtuálního počítače. Další informace najdete v tématu [cetrum architektury Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain) pro rozšíření místní domény AD do Azure.
+Pro účely identity je nejlepší přístup k nasazení aspoň jednoho řadiče domény služby Active Directory v centru pomocí podsítě sdílené služby, která je v ideálním případě dvě v rámci distribuované zóny nebo skupiny dostupnosti virtuálního počítače. Další informace najdete v tématu [cetrum architektury Azure](/azure/architecture/reference-architectures/identity/adds-extend-domain) pro rozšíření místní domény AD do Azure.
 
 Navíc můžete nasadit další řadič domény na straně služby AVS, který bude fungovat jako identita a zdroj DNS v prostředí vSphere.
 
 V případě vCenter a jednotného přihlašování nastavte zdroj identity v Azure Portal pro **správu \> \> zdrojů identity identity**.
 
-Jako osvědčený postup doporučujeme integrovat [doménu AD s Azure Active Directory](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/azure-ad).
+Jako osvědčený postup doporučujeme integrovat [doménu AD s Azure Active Directory](/azure/architecture/reference-architectures/identity/azure-ad).
 
 <!-- LINKS - external -->
-[Azure Architecture Center]: https://docs.microsoft.com/azure/architecture/
+[Azure Architecture Center]: /azure/architecture/
 
-[Hub & Spoke topology]: https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke
+[Hub & Spoke topology]: /azure/architecture/reference-architectures/hybrid-networking/hub-spoke
 
-[Azure networking documentation]: https://docs.microsoft.com/azure/networking/
+[Azure networking documentation]: ../networking/index.yml
 
 <!-- LINKS - internal -->
-
-

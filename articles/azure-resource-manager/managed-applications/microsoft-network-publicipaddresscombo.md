@@ -5,11 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0393673663df8f3ca580ff34e16bee910b955f8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5def6db9d551b3882204c9f997f164a0df7ac223
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75651914"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063281"
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft. Network. PublicIpAddressCombo – element uživatelského rozhraní
 
@@ -17,7 +18,7 @@ Skupina ovládacích prvků pro výběr nové nebo existující veřejné IP adr
 
 ## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
 
-![Microsoft.Network.PublicIpAddressCombo](./media/managed-application-elements/microsoft.network.publicipaddresscombo.png)
+![Microsoft.Network.PublicIpAddressCombo](./media/managed-application-elements/microsoft-network-publicipaddresscombo.png)
 
 - Pokud uživatel vybere možnost None pro veřejnou IP adresu, bude textové pole Popisek názvu domény skryté.
 - Pokud uživatel vybere existující veřejnou IP adresu, bude textové pole Popisek názvu domény zakázané. Jeho hodnota je popisek názvu domény vybrané IP adresy.

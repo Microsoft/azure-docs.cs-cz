@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: cd2f88d78a967b46c1983e7eb96328c14d90a81a
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 730109a096b352b6d179693293128b465e0be83f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343995"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063262"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Privátní odkaz Azure pro Azure SQL Database a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -146,7 +146,7 @@ Výsledkem je, že jedna IP adresa je nahoru. který odpovídá IP adrese privá
 
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>Ověření připojení pomocí SQL Server Management Studio (SSMS)
 > [!NOTE]
-> Pro klienty použijte **plně kvalifikovaný název domény (FQDN)** serveru v připojovacích řetězcích. Jakékoli pokusy o přihlášení provedené přímo na IP adresu se nezdaří. Toto chování je záměrné, protože privátní koncový bod směruje provoz do brány SQL v oblasti a je nutné zadat plně kvalifikovaný název domény, aby přihlášení bylo úspěšné.
+> Pro klienty () použijte **plně kvalifikovaný název domény (FQDN)** serveru v připojovacích řetězcích `<server>.database.windows.net` . Jakékoli pokusy o přihlášení provedené přímo na IP adrese nebo pomocí plně kvalifikovaného názvu domény () privátního propojení `<server>.privatelink.database.windows.net` se nezdaří. Toto chování je záměrné, protože privátní koncový bod směruje provoz do brány SQL v oblasti a pro úspěšné přihlášení musí být zadán správný plně kvalifikovaný název domény.
 
 Pokud se [chcete k SQL Database připojit pomocí SSMS](connect-query-ssms.md), postupujte podle těchto kroků. Po připojení k SQL Database pomocí SSMS ověřte, že se připojujete z privátní IP adresy virtuálního počítače Azure spuštěním následujícího dotazu:
 

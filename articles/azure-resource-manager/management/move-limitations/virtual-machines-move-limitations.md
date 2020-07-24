@@ -2,13 +2,13 @@
 title: Přesun virtuálních počítačů Azure do nového předplatného nebo skupiny prostředků
 description: K přesunutí virtuálních počítačů do nové skupiny prostředků nebo předplatného použijte Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 07/06/2020
-ms.openlocfilehash: c85ec175d802a29de7a8a87ee7a51c0916762a5a
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 07/21/2020
+ms.openlocfilehash: e812f2cee44fc48dccbd8ab66a3343e087790803
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044545"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063091"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Pokyny pro přesunutí virtuálních počítačů
 
@@ -20,7 +20,7 @@ Následující scénáře se zatím nepodporují:
 
 * Managed Disks v Zóny dostupnosti nejde přesunout do jiného předplatného.
 * Virtual Machine Scale Sets se standardní SKU Load Balancer nebo veřejnou IP adresou standardní SKU nejde přesunout.
-* Virtuální počítače vytvořené z prostředků z Marketplace s připojenými plány se nedají přesouvat mezi skupinami prostředků nebo předplatnými. Zrušte zřízení virtuálního počítače v aktuálním předplatném a znovu ho nasaďte do nového předplatného.
+* Virtuální počítače vytvořené z prostředků z Marketplace s připojenými plány se nedají přesunout mezi předplatnými. Zrušte zřízení virtuálního počítače v aktuálním předplatném a znovu ho nasaďte do nového předplatného.
 * Virtuální počítače ve stávající virtuální síti nejde přesunout do nového předplatného, když nepřesouváte všechny prostředky ve virtuální síti.
 * Virtuální počítače s nízkou prioritou a virtuální počítače s nízkou prioritou se nedají přesouvat mezi skupinami prostředků nebo předplatnými.
 * Virtuální počítače ve skupině dostupnosti se nedají přesunout jednotlivě.
