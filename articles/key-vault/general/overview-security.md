@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: cd8557a33971be9fd0913bfdf84397d344901581
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d6dd38c3d1802c3b5bec82edbda4f9d344fa28b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83834374"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090514"
 ---
 # <a name="azure-key-vault-security"></a>Zabezpečení služby Azure Key Vault
 
@@ -65,7 +65,7 @@ Zásady přístupu Key Vault udělují oprávnění nezávisle na klíčích, ta
 > [!IMPORTANT]
 > Zásady přístupu Key Vault nepodporují podrobné oprávnění na úrovni objektu, jako je konkrétní klíč, tajný klíč nebo certifikát. Když je uživateli udělené oprávnění k vytváření a odstraňování klíčů, můžou tyto operace provádět u všech klíčů v tomto trezoru klíčů.
 
-K nastavení zásad přístupu pro Trezor klíčů použijte [Azure Portal](https://portal.azure.com/), rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest), [Azure PowerShell](/powershell/azureps-cmdlets-docs)nebo [rozhraní REST API pro správu Key Vault](/rest/api/keyvault/).
+K nastavení zásad přístupu pro Trezor klíčů použijte [Azure Portal](https://portal.azure.com/), rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest), [Azure PowerShell](/powershell/azure/)nebo [rozhraní REST API pro správu Key Vault](/rest/api/keyvault/).
 
 Přístup k rovině dat můžete omezit pomocí [koncových bodů služby virtuální sítě pro Azure Key Vault](overview-vnet-service-endpoints.md)). Můžete nakonfigurovat [brány firewall a pravidla virtuální sítě](network-security.md) pro další vrstvu zabezpečení.
 

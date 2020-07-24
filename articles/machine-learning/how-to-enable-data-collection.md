@@ -11,12 +11,12 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: d7e3aeba14373861d831056678576c52f6b2184f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9ae1ec7eb566871402d44a0f24878b4ea92197f6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536313"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090225"
 ---
 # <a name="collect-data-from-models-in-production"></a>Shromažďování dat z modelů v produkčním prostředí
 
@@ -71,7 +71,7 @@ Cesta k výstupním datům v objektu BLOB se řídí touto syntaxí:
 
 ## <a name="enable-data-collection"></a>Povolení shromažďování dat
 
-Shromažďování dat můžete povolit bez ohledu na model, který nasazujete prostřednictvím Azure Machine Learning nebo jiných nástrojů.
+[Shromažďování dat](https://docs.microsoft.com/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?view=azure-ml-py) můžete povolit bez ohledu na model, který nasazujete prostřednictvím Azure Machine Learning nebo jiných nástrojů.
 
 Chcete-li povolit shromažďování dat, je třeba:
 

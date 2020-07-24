@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 79b6d7f84cd54979421357efa94c5c6de38fb4f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a143752a5a6cbd32bf18fc5544831bb860097d3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261388"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089851"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Nejčastější dotazy týkající se shromažďování dat, agentů a pracovních prostorů
 
@@ -259,7 +259,7 @@ Když Security Center detekuje podezřelou aktivitu na virtuálním počítači,
 
 ## <a name="will-security-center-work-using-an-oms-gateway"></a>Bude Security Center pracovat s bránou OMS?
 
-Ano. Azure Security Center využívá Azure Monitor ke shromažďování dat z virtuálních počítačů a serverů Azure pomocí agenta Log Analytics.
+Yes. Azure Security Center využívá Azure Monitor ke shromažďování dat z virtuálních počítačů a serverů Azure pomocí agenta Log Analytics.
 Ke shromáždění dat se musí každý virtuální počítač a Server připojit k Internetu pomocí protokolu HTTPS. Připojení může být přímo, pomocí proxy serveru nebo pomocí [brány OMS](../azure-monitor/platform/gateway.md).
 
 

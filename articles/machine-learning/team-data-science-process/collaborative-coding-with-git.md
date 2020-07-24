@@ -10,11 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 0708e395eff90ff5b889c05f0fd5e7a98205c5bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 739be373992fcd994f085f8571675779e450bfee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76721893"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090208"
 ---
 # <a name="collaborative-coding-with-git"></a>Kódování založené na spolupráci s využitím Gitu
 
@@ -28,7 +29,7 @@ Chcete-li připojit pracovní položku k nové větvi, **vyberte tři** tečky (
 
 ![1](./media/collaborative-coding-with-git/1-sprint-board-view.png)
 
-V dialogovém okně **vytvořit větev** zadejte název nové větve a základní Azure Repos úložiště Git a větev. Základní úložiště musí být ve stejném projektu Azure DevOps jako pracovní položka. Základní větví může být hlavní větev nebo jiná existující větev. Vyberte **vytvořit větev**. 
+V dialogovém okně **vytvořit větev** zadejte název nové větve a základní Azure Repos úložiště Git a větev. Základní úložiště musí být ve stejném projektu Azure DevOps jako pracovní položka. Základní větví může být jakákoli existující větev. Vyberte **vytvořit větev**. 
 
 ![2](./media/collaborative-coding-with-git/2-create-a-branch.png)
 
@@ -50,7 +51,7 @@ Po přepnutí do pracovní větve můžete začít vyvíjet artefakty kódu nebo
 
 Je dobrým zvykem vytvořit větev Git pro každou pracovní položku uživatelského scénáře. Pak můžete pro každou pracovní položku úkolu vytvořit větev na základě větve uživatelského scénáře. Uspořádejte větve v hierarchii, které odpovídají vztahu uživatelský scénář – úkol, pokud máte více lidí pracujících v různých uživatelských scénářích pro stejný projekt nebo v různých úlohách pro stejný uživatelský scénář. Můžete minimalizovat konflikty tím, že každý člen týmu pracuje na jiné větvi nebo v jiném kódu nebo jiné artefakty při sdílení větve. 
 
-Následující diagram znázorňuje doporučenou strategii větvení pro TDSP. Možná nebudete potřebovat tolik větví, jak je znázorněno zde, zejména v případě, že na projektu pracuje pouze jedna nebo dvě osoby, nebo pouze jedna osoba pracuje na všech úkolech uživatelského scénáře. Ale oddělení vývojové větve od hlavní větve je vždycky dobrým zvykem a může přispět k tomu, aby se větev vydaných verzí přerušila vývojovým aktivitami. Úplný popis modelu větve Git najdete v [úspěšném modelu větvení Git](https://nvie.com/posts/a-successful-git-branching-model/).
+Následující diagram znázorňuje doporučenou strategii větvení pro TDSP. Možná nebudete potřebovat tolik větví, jak je znázorněno zde, zejména v případě, že na projektu pracuje pouze jedna nebo dvě osoby, nebo pouze jedna osoba pracuje na všech úkolech uživatelského scénáře. Ale oddělení vývojové větve od primární větve je vždycky dobrým zvykem a může přispět k tomu, aby se větev vydaných verzí přerušila vývojovým aktivitami. Úplný popis modelu větve Git najdete v [úspěšném modelu větvení Git](https://nvie.com/posts/a-successful-git-branching-model/).
 
 ![3](./media/collaborative-coding-with-git/3-git-branches.png)
 
@@ -97,7 +98,7 @@ Potvrďte, že je žádost označená jako **Dokončená**.
 
 ![11](./media/collaborative-coding-with-git/11-spring-merge-pullrequest.png)
 
-Až se vrátíte do **úložišť** v levém navigačním panelu, uvidíte, že jste přešli do hlavní větve, protože se `script` větev odstranila.
+Až se vrátíte do **úložišť** v levém navigačním panelu, uvidíte, že jste přešli do hlavní větve od chvíle, kdy se `script` větev odstranila.
 
 ![12](./media/collaborative-coding-with-git/12-spring-branch-deleted.png)
 

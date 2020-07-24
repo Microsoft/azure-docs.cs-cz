@@ -3,12 +3,12 @@ title: Postup zastavení monitorování hybridního clusteru Kubernetes | Micros
 description: Tento článek popisuje, jak můžete zastavit monitorování clusteru hybridního Kubernetes pomocí Azure Monitor pro kontejnery.
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 86a774737d5269d77c4053ad61ab870b13288aa7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8369c82b83cfbaa7128383c6203aaf584916cae9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84885855"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091194"
 ---
 # <a name="how-to-stop-monitoring-your-hybrid-cluster"></a>Postup zastavení monitorování hybridního clusteru
 
@@ -120,4 +120,4 @@ Dokončení změny konfigurace může trvat několik minut. Vzhledem k tomu, že
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud se pracovní prostor Log Analytics vytvořil jenom pro podporu monitorování clusteru a už ho nepotřebujete, musíte ho ručně odstranit. Pokud nejste obeznámeni s tím, jak pracovní prostor odstranit, přečtěte si téma [odstranění pracovního prostoru Azure Log Analytics](../../log-analytics/log-analytics-manage-del-workspace.md).
+Pokud se pracovní prostor Log Analytics vytvořil jenom pro podporu monitorování clusteru a už ho nepotřebujete, musíte ho ručně odstranit. Pokud nejste obeznámeni s tím, jak pracovní prostor odstranit, přečtěte si téma [odstranění pracovního prostoru Azure Log Analytics](../platform/delete-workspace.md).

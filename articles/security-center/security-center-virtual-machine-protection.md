@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: 8faff37e127e80447e0f066ef17e2885d4bcb597
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d79d1bf846cc023b86c3e33b17c91cce77ffe9ee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85799730"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089868"
 ---
 # <a name="protect-your-machines-and-applications"></a>Ochrana počítačů a aplikací
 Když Azure Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří doporučení, která vás provedou procesem konfigurace potřebných ovládacích prvků k posílení a ochraně vašich prostředků.
@@ -156,7 +157,7 @@ Vyberte doporučení, abyste zobrazili popis doporučení a seznam špatných pr
 
 
 
-### <a name="containers"></a><a name="containers"></a>Containers
+### <a name="containers"></a><a name="containers"></a>Kontejnery
 
 Když otevřete kartu **kontejnery** v závislosti na vašem prostředí, může se zobrazit některý ze tří typů prostředků:
 

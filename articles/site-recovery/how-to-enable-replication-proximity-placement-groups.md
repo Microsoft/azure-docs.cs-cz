@@ -5,12 +5,12 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
-ms.openlocfilehash: c125f11400a75d221a62aa62020001104e05d167
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: ec516ac1cd9c2a6201bfc77bd1169bcd8ea83e44
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134892"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091500"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>Replikace virtuálních počítačů Azure běžících ve skupinách umístění s blízkými změnami do jiné oblasti
 
@@ -22,7 +22,7 @@ Tento článek popisuje, jak replikovat, převzetí služeb při selhání a nav
 
 V typickém scénáři můžete mít virtuální počítače běžící ve skupině umístění s blízkostí, abyste se vyhnuli latenci sítě mezi různými úrovněmi vaší aplikace. I když to může zajistit optimální latenci sítě, chcete tyto aplikace ochránit pomocí Site Recovery pro jakékoli selhání úrovně oblasti. Site Recovery replikuje data z jedné oblasti do jiné oblasti Azure a v případě převzetí služeb při selhání zobrazí počítače v oblasti zotavení po havárii.
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 
 - Nejlepším úsilím pro převzetí služeb při selhání a navrácení služeb po obnovení z provozu do skupiny umístění s blízkými akcemi. Pokud se ale virtuální počítač nemůže během převzetí služeb při selhání nebo navrácení služeb po obnovení přenést do umístění blízkosti, pak se virtuální počítače vytvoří mimo skupinu umístění blízkosti.
 -  Pokud je skupina dostupnosti připnuté do skupiny umístění blízkosti a během virtuálních počítačů s podporou převzetí služeb při selhání/navrácení služeb po obnovení mají v sadě dostupnosti omezení přidělení, vytvoří se virtuální počítače mimo skupinu dostupnosti a umístění blízkosti.
@@ -31,7 +31,7 @@ V typickém scénáři můžete mít virtuální počítače běžící ve skupi
 > [!Note]
 > Azure Site Recovery nepodporuje navrácení služeb po obnovení ze spravovaných disků pro scénáře Hyper-V do Azure. Z tohoto důvodu není podporováno navrácení služeb po obnovení ze skupiny umístění v Azure do technologie Hyper-V.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. Ujistěte se, že máte Azure PowerShell AZ Module. Pokud potřebujete nainstalovat nebo upgradovat Azure PowerShell, postupujte podle pokynů v tomto [Průvodci a nainstalujte a nakonfigurujte Azure PowerShell](/powershell/azure/install-az-ps).
 
@@ -68,7 +68,7 @@ $datadiskId1 = $vm.StorageProfile.DataDisks[0].ManagedDisk.Id
 $RecoveryReplicaDiskAccountType = $vm.StorageProfile.DataDisks[0].ManagedDisk.StorageAccountType
 $RecoveryTargetDiskAccountType = $vm.StorageProfile.DataDisks[0].ManagedDisk.StorageAccountType
 
-$DataDisk1ReplicationConfig  = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $CacheStorageAccount.Id ` -DiskId $datadiskId1 -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType ` -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
+$DataDisk1ReplicationConfig  = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $EastUSCacheStorageAccount.Id ` -DiskId $datadiskId1 -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType ` -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
 
 #Create a list of disk replication configuration objects for the disks of the virtual machine that are to be replicated.
 

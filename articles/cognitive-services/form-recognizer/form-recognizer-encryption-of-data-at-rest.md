@@ -1,20 +1,20 @@
 ---
 title: Služba rozpoznávání formulářů zašifrování dat v klidovém formátu
 titleSuffix: Azure Cognitive Services
-description: Rozpoznávání formulářů v klidovém kódování.
+description: Microsoft nabízí šifrovací klíče spravované Microsoftem a umožňuje také spravovat Cognitive Services předplatná s vlastními klíči, které se nazývají Customer Customer Key (CMK). Tento článek obsahuje informace o šifrování dat v klidovém formátu pro rozpoznávání formulářů a o tom, jak povolit a spravovat CMK.
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 07/10/2020
 ms.author: egeaney
-ms.openlocfilehash: b897de94ad8cdb628520f9386b076f762a5cc230
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cf2a6a96517d1c3d63989bc511957019f078cd42
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537948"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090871"
 ---
 # <a name="form-recognizer-encryption-of-data-at-rest"></a>Rozpoznávání vydaných dat v klidovém formátu
 
@@ -31,5 +31,3 @@ Nástroj pro rozpoznávání formulářů Azure automaticky šifruje vaše data 
 
 * [Formulář žádosti o klíč spravovaný zákazníkem formuláře](https://aka.ms/cogsvc-cmk)
 * [Další informace o Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
-
-

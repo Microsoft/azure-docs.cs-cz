@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 2b5c28fccc411a8372ebd6015f796c8309146dfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2edf1574784ec93448495086fdd05c988a3e55a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476763"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090531"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Průvodce vývojáře pro službu Azure Key Vault
 
@@ -40,7 +40,7 @@ Než budete pracovat s klíči, tajnými klíči a certifikáty ve vašem trezor
 
 - [Vytváření a Správa trezorů klíčů pomocí rozhraní příkazového řádku](../secrets/quick-create-cli.md)
 - [Vytváření a Správa trezorů klíčů pomocí PowerShellu](../secrets/quick-create-powershell.md)
-- [Vytváření a Správa trezorů klíčů pomocí portu Azure](../secrets/quick-create-portal.md)
+- [Vytváření a Správa trezorů klíčů pomocí Azure Portal](../secrets/quick-create-portal.md)
 - [Vytváření a Správa trezorů klíčů pomocí Pythonu](../secrets/quick-create-python.md)
 - [Vytváření a Správa trezorů klíčů pomocí Java](../secrets/quick-create-java.md)
 - [Vytváření a Správa trezorů klíčů pomocí Node.js](../secrets/quick-create-node.md)
@@ -75,11 +75,11 @@ Další informace o verzi sady .NET SDK 2. x najdete v [poznámkách k verzi](do
 
 V Node.js jsou rozhraní API pro správu Key Vault a rozhraní Key Vault objektů API oddělené. Následující přehledový článek vám umožní přístup k oběma. 
 
-[Azure Key Vault moduly pro Node.js](/javascript/api/overview/azure/key-vault?view=azure-node-latest)
+[Azure Key Vault moduly pro Node.js](https://docs.microsoft.com/javascript/api/overview/azure/key-vault-index?view=azure-node-latest)
 
 #### <a name="python"></a>Python
 
-[Knihovny Azure Key Vault pro Python](/python/api/overview/azure/key-vault?view=azure-python)
+[Knihovny Azure Key Vault pro Python](https://docs.microsoft.com/python/api/overview/azure/key-vault-index?view=azure-python)
 
 #### <a name="azure-cli"></a>Azure CLI
 
@@ -100,7 +100,7 @@ Kompletní příklady použití Key Vault s vašimi aplikacemi najdete v těchto
 
 Následující články a scénáře poskytují pokyny pro práci s Azure Key Vault pro konkrétní úkoly:
 
-- [Změna ID tenanta trezoru klíčů po přesunu předplatného](subscription-move-fix.md) – když přesunete předplatné Azure z tenanta A na tenanta b, stávající trezory klíčů budou pro objekty zabezpečení (uživatelé a aplikace) v tenantovi b nepřístupné. Opravte to pomocí této příručky.
+- [Změna ID tenanta trezoru klíčů po přesunu předplatného](move-subscription.md) – když přesunete předplatné Azure z tenanta A na tenanta b, stávající trezory klíčů budou pro objekty zabezpečení (uživatelé a aplikace) v tenantovi b nepřístupné. Opravte to pomocí této příručky.
 - Přístup k trezoru klíčů v [Key Vault za bránou firewall](access-behind-firewall.md) – klientská aplikace trezoru klíčů musí mít přístup k několika koncovým bodům pro různé funkce.
 - [Postup generování a přenosu klíčů chráněných modulem HSM pro Azure Key Vault](../keys/hsm-protected-keys.md) – pomůže vám naplánovat, vygenerovat a následně přenést vlastní klíče chráněné HSM, které se budou používat s Azure Key Vault.
 - [Jak během nasazení předat zabezpečené hodnoty (třeba hesla)](../../azure-resource-manager/templates/key-vault-parameter.md) – Pokud potřebujete před nasazením předat zabezpečenou hodnotu (třeba heslo), můžete tuto hodnotu Uložit jako tajný klíč v Azure Key Vault a odkazovat na hodnotu v jiných šablonách správce prostředků.

@@ -3,12 +3,12 @@ title: Vytváření upozornění Resource Health pomocí webu Azure Portal
 description: Vytvořte výstrahu pomocí Azure Portal, která vás upozorní, když vaše prostředky Azure nebudou k dispozici.
 ms.topic: conceptual
 ms.date: 6/23/2020
-ms.openlocfilehash: b44df4f63fa2ae2bde9be431e2df268144a036fa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3a0f4704880d040106a2e4112d621b6d8ffbede6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529212"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091568"
 ---
 # <a name="configure-resource-health-alerts-using-azure-portal"></a>Konfigurace upozornění na stav prostředků s využitím webu Azure Portal
 
@@ -45,7 +45,7 @@ Výstraha Resource Health pomocí Azure Portal
 1. Na webu Azure [Portal](https://portal.azure.com/)vyberte **Service Health**.
 
     ![Service Health výběr](./media/resource-health-alert-monitor-guide/service-health-selection.png)
-2. V části **Resource Health** vyberte možnost **Resource Health**.
+2. V části **Resource Health** vyberte možnost **Service Health**.
 3. Vyberte **Přidat upozornění na stav prostředku** a vyplňte pole.
 4. V části cíl výstrahy vyberte **předplatné**, **typy prostředků**, **skupiny prostředků** a **prostředek** , pro které chcete být upozorňováni.
 

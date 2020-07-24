@@ -3,12 +3,12 @@ title: Prostředí pro správu napříč tenanty
 description: Správa delegovaných prostředků v Azure umožňuje prostředí pro správu mezi klienty.
 ms.date: 07/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1b3aa15dd968b4cded831934103a02420d020b9a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: be4f9581e8a276b4296faedb65691232dee2ea95
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521033"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090412"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
@@ -53,7 +53,7 @@ Většinu úkolů a služeb je možné provádět na delegovaných prostředcíc
   - Spravujte připojené počítače pomocí konstrukcí Azure, například Azure Policy a označování.
   - Zajistěte, aby se stejná sada zásad používala v hybridních prostředích zákazníků.
   - Pomocí Azure Security Center můžete monitorovat dodržování předpisů v hybridních prostředích zákazníků.
-- Správa hybridních clusterů Kubernetes ve velkém měřítku – [Azure ARC pro Kubernetes (Preview)](../../azure-arc/kubernetes/overview.md):
+- Správa hybridních clusterů Kubernetes ve velkém měřítku – [Kubernetes s podporou ARC Azure (Preview)](../../azure-arc/kubernetes/overview.md):
   - [Připojení clusteru Kubernetes ke službě Azure ARC](../../azure-arc/kubernetes/connect-cluster.md) k delegovaným předplatným nebo skupinám prostředků v Azure
   - [Použití GitOps](../../azure-arc/kubernetes/use-gitops-connected-cluster.md) pro připojené clustery
   - Vynutilit zásady mezi připojenými clustery

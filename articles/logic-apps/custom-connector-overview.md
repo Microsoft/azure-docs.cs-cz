@@ -6,28 +6,29 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 1/30/2018
-ms.openlocfilehash: d91d46e0119c22f4f2538ab5ea982ca4418256cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3305524a4e2e06f1e3433c018124495a4cd82f28
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74792650"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090361"
 ---
 # <a name="custom-connectors-in-logic-apps"></a>Vlastní konektory v Logic Apps
 
-Pomocí [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps), [Power Automate](https://flow.microsoft.com) a [Power Apps](https://powerapps.microsoft.com) můžete vytvářet pracovní postupy a aplikace i bez psaní kódu. Abychom vám pomohli integrovat aplikace, data a obchodní procesy, nabízejí tyto služby tyto služby: [~ 200 konektory](https://docs.microsoft.com/connectors/) – pro služby a produkty Microsoftu a také pro další služby, jako jsou GitHub, Salesforce, Twitter a další.
+Pomocí [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps), [Power Automate](https://flow.microsoft.com) a [Power Apps](https://powerapps.microsoft.com) můžete vytvářet pracovní postupy a aplikace i bez psaní kódu. Abychom vám pomohli integrovat aplikace, data a obchodní procesy, nabízejí tyto služby tyto služby: [~ 200 konektory](/connectors/) – pro služby a produkty Microsoftu a také pro další služby, jako jsou GitHub, Salesforce, Twitter a další.
 
-V některých případech ale možná chcete volat rozhraní API, služby a systémy, které nejsou k dispozici ve formě připravených konektorů. Pokud chcete podporovat scénáře více šité na míru, můžete vytvořit *vlastní konektory* s jejich vlastními triggery a akcemi. Web dokumentace konektorů obsahuje kompletní základní a rozšířené kurzy týkající se vlastních konektorů. Můžete začít s [přehledem vlastního konektoru](https://docs.microsoft.com/connectors/custom-connectors/), ale můžete také přejít přímo na tato témata, kde najdete podrobnosti o konkrétní oblasti:
+V některých případech ale možná chcete volat rozhraní API, služby a systémy, které nejsou k dispozici ve formě připravených konektorů. Pokud chcete podporovat scénáře více šité na míru, můžete vytvořit *vlastní konektory* s jejich vlastními triggery a akcemi. Web dokumentace konektorů obsahuje kompletní základní a rozšířené kurzy týkající se vlastních konektorů. Můžete začít s [přehledem vlastního konektoru](/connectors/custom-connectors/), ale můžete také přejít přímo na tato témata, kde najdete podrobnosti o konkrétní oblasti:
 
-* [Vytvoření konektoru Logic Apps](https://docs.microsoft.com/connectors/custom-connectors/create-logic-apps-connector)
+* [Vytvoření konektoru Logic Apps](/connectors/custom-connectors/create-logic-apps-connector)
 
-* [Vytvoření vlastního konektoru z definice OpenAPI](https://docs.microsoft.com/connectors/custom-connectors/define-openapi-definition)
+* [Vytvoření vlastního konektoru z definice OpenAPI](/connectors/custom-connectors/define-openapi-definition)
 
-* [Vytvoření vlastního konektoru z kolekce Postman](https://docs.microsoft.com/connectors/custom-connectors/define-postman-collection)
+* [Vytvoření vlastního konektoru z kolekce Postman](/connectors/custom-connectors/define-postman-collection)
 
-* [Použití vlastního konektoru z aplikace logiky](https://docs.microsoft.com/connectors/custom-connectors/use-custom-connector-logic-apps)
+* [Použití vlastního konektoru z aplikace logiky](/connectors/custom-connectors/use-custom-connector-logic-apps)
 
-* [Sdílení vlastních konektorů ve vaší organizaci](https://docs.microsoft.com/connectors/custom-connectors/share)
+* [Sdílení vlastních konektorů ve vaší organizaci](/connectors/custom-connectors/share)
 
-* [Odeslání konektoru k certifikaci Microsoftu](https://docs.microsoft.com/connectors/custom-connectors/submit-certification)
+* [Odeslání konektoru k certifikaci Microsoftu](/connectors/custom-connectors/submit-certification)
 
-* [Nejčastější dotazy k vlastním konektorům](https://docs.microsoft.com/connectors/custom-connectors/faq)
+* [Nejčastější dotazy k vlastním konektorům](/connectors/custom-connectors/faq)

@@ -1,5 +1,5 @@
 ---
-title: Model určení skóre obrázků
+title: Využijte modul & hloubkového vzdělávání pro vlaky na světě.
 titleSuffix: Azure Machine Learning
 description: Naučte se používat kvalitní modul pro výuku & vysokého modulu pro výuku k vytvoření doporučení modelu.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/12/2020
-ms.openlocfilehash: 2ac5e5874ebb34b68cbfe8be1986852c67b97c21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 234217b6571307db04941cc0b9989d3438cde1b7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84740054"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090174"
 ---
 # <a name="train-wide--deep-recommender"></a>Pro vlak v široké & Doporučené
 Tento článek popisuje, jak v nástroji Azure Machine Learning Designer (Preview) použít modul pro **výuku široké & hloubky** , který vám umožní naučit model doporučení. Tento modul je založený na širokém & hlubokou výuku, který navrhuje Google.

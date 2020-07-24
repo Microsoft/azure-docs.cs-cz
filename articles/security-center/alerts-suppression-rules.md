@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 05/04/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 18b1b4cb959603f5898e7c725102f35d7abc90cf
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 2dce179365b2640ade3675f19dbacf6fc27b26c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848997"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089936"
 ---
 # <a name="suppress-alerts-from-azure-security-centers-threat-protection"></a>Potlačit výstrahy z Azure Security Center ochrany před hrozbami
 
@@ -23,9 +23,7 @@ Tato stránka vysvětluje, jak můžete pomocí pravidel potlačení výstrah po
 
 - Stav verze: verze **Preview**
 - Požadované role: **Správce zabezpečení** a **vlastník** můžou pravidla vytvořit nebo odstranit. **Čtenáři zabezpečení** a **čtenáři** můžou zobrazit pravidla.
-- Cloud 
-    - ✔ Komerční cloudy
-    - ✔ National/Svrchovan (US Gov, Čína gov, ostatní gov)
+- Cloudy: ✔ komerční cloudy ✔ National/Svrchovan (US Gov, Čína gov, jiné gov)
 
 
 ## <a name="what-are-suppression-rules"></a>Jaká jsou pravidla pro potlačení?

@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 4f5be29dd42b03e86abb2be392ea42f875536fb5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d478723af7d13cc3480f6c2a80bf9b76ba4b84f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84193520"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091347"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Řízení přístupu ve službě Azure Data Lake Storage Gen2
 
@@ -64,9 +65,9 @@ Seznam řízení přístupu nemůžete použít k zajištění úrovně přístu
 
 Chcete-li nastavit oprávnění na úrovni souborů a adresářů, přečtěte si některé z následujících článků:
 
-|||
+| Prostředí | Článek |
 |--------|-----------|
-|Azure Storage Explorer |[Správa adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 pomocí Průzkumník služby Azure Storage](data-lake-storage-explorer.md#managing-access)|
+|Azure Storage Explorer |[Správa adresářů, souborů a seznamů ACL ve službě Azure Data Lake Storage Gen2 pomocí Průzkumníka služby Azure Storage](data-lake-storage-explorer.md#managing-access)|
 |.NET |[Správa adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 pomocí .NET](data-lake-storage-directory-file-acl-dotnet.md)|
 |Java|[Správa adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 pomocí jazyka Java](data-lake-storage-directory-file-acl-java.md)|
 |Python|[Použití Pythonu ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-python.md)|
@@ -111,7 +112,7 @@ Zápis **RWX** se používá k označení **Číst + Zapisovat + Provést**. Pou
 |--------------|------------|------------------------|
 | 7            | `RWX`        | Číst + Zapisovat + Provést |
 | 5            | `R-X`        | Číst + Provést         |
-| 4            | `R--`        | Čtení                   |
+| 4            | `R--`        | Číst                   |
 | 0            | `---`        | Žádná oprávnění         |
 
 #### <a name="permissions-inheritance"></a>Dědičnost oprávnění

@@ -3,12 +3,12 @@ title: Začínáme se službou Live video Analytics v IoT Edge – Azure
 description: V tomto rychlém startu se dozvíte, jak začít pracovat se službou Live video Analytics na IoT Edge. Naučte se detekovat pohyb v živém streamu videa.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 98ab333a495c31889bee2a9cddab778a12876af5
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: ccdbbffb3da240aab7897dd93a6c4ae85c550eba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84816910"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090072"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Rychlý Start: Začínáme – Live video Analytics na IoT Edge
 
@@ -18,7 +18,7 @@ Po dokončení kroků nastavení budete moct spustit simulovaný živý datový 
 
 ![Analýza živých videí na základě detekce pohybu](./media/analyze-live-video/motion-detection.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure, který má aktivní předplatné. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 * [Visual Studio Code](https://code.visualstudio.com/) ve vývojovém počítači. Ujistěte se, že máte [rozšíření Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
@@ -34,7 +34,7 @@ Tento kurz vyžaduje následující prostředky Azure:
 * IoT Hub
 * Účet úložiště
 * Účet Azure Media Services
-* Virtuální počítač Linux v Azure s nainstalovaným [modulem runtime IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)
+* Virtuální počítač Linux v Azure s nainstalovaným [modulem runtime IoT Edge](../../iot-edge/how-to-install-iot-edge-linux.md)
 
 Pro tento rychlý Start doporučujeme, abyste k nasazení požadovaných prostředků ve vašem předplatném Azure použili [skript pro nastavení prostředků Live video Analytics](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) . Postup je následující:
 
@@ -561,7 +561,7 @@ V okně **výstup** se zobrazí následující zpráva:
 
 Všimněte si těchto podrobností:
 
-* Zpráva obsahuje `body` oddíl a `applicationProperties` oddíl. Další informace najdete v tématu [Vytvoření a čtení zpráv IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
+* Zpráva obsahuje `body` oddíl a `applicationProperties` oddíl. Další informace najdete v tématu [Vytvoření a čtení zpráv IoT Hub](../../iot-hub/iot-hub-devguide-messages-construct.md).
 * V `applicationProperties` , `subject` odkazuje na uzel v, `MediaGraph` ze kterého byla zpráva generována. V tomto případě zpráva pochází z procesoru detekce pohybu.
 * V `applicationProperties` nástroji `eventType` označuje, že tato událost je analytická událost.
 * `eventTime`Hodnota je čas, kdy došlo k události.

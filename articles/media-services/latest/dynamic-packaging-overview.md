@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 06/11/2020
 ms.author: juliako
-ms.openlocfilehash: 20389c8298f4e970c4b3ba93d96f811fdc905003
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: f019ebd59b2d0b9d6bae8a5dc4904f1bcae0e6c1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791601"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090106"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamické balení v Media Services V3
 
@@ -28,7 +28,7 @@ Microsoft Azure Media Services lze použít ke kódování mnoha mediálních fo
 V Media Services představuje [koncový bod streamování](streaming-endpoint-concept.md) (Origin) dynamické (za běhu) balení a službu origining, která může doručovat obsah živě a na vyžádání přímo do aplikace klienta v přehrávači. Používá jeden z běžných protokolů multimediálních datových proudů uvedených v následující části. *Dynamické balení* je funkce, která nabízí standard pro všechny koncové body streamování (Standard nebo Premium).
 
 > [!NOTE]
-> Pomocí [Azure Portal](https://portal.azure.com/) můžete spravovat V3 [Live události](live-events-outputs-concept.md), zobrazit [prostředky](assets-concept.md)v3 a získat informace o přístupu k rozhraním API. Pro všechny ostatní úlohy správy (například transformace a úlohy) použijte [REST API](https://docs.microsoft.com/rest/api/media/), [CLI](https://aka.ms/ams-v3-cli-ref)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
+> Pomocí [Azure Portal](https://portal.azure.com/) můžete spravovat V3 [Live události](live-events-outputs-concept.md), zobrazit [prostředky](assets-concept.md)v3 a získat informace o přístupu k rozhraním API. Pro všechny ostatní úlohy správy (například transformace a úlohy) použijte [REST API](/rest/api/media/), [CLI](https://aka.ms/ams-v3-cli-ref)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
 
 ## <a name="to-prepare-your-source-files-for-delivery"></a>Příprava zdrojových souborů na doručení
 
@@ -47,7 +47,7 @@ Pokud plánujete ochranu obsahu pomocí Media Services dynamického šifrování
 
 Váš klient streamování může určit následující formáty HLS:
 
-|Protocol (Protokol)|Příklad|
+|Protokol|Příklad|
 |---|---|
 |HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`||
 |HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`||
@@ -57,7 +57,7 @@ Váš klient streamování může určit následující formáty HLS:
 
 Váš klient streamování může určit následující formáty MPEG-SPOJOVNÍK:
 
-|Protocol (Protokol)|Příklad|
+|Protokol|Příklad|
 |---|---|
 |MPEG-SPOJOVNÍK CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` ||
 |MPEG-SPOJOVNÍK CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` ||
@@ -66,7 +66,7 @@ Váš klient streamování může určit následující formáty MPEG-SPOJOVNÍK
 
 Váš klient streamování může určit následující formáty Smooth Streaming:
 
-|Protocol (Protokol)|Poznámky a příklady| 
+|Protokol|Poznámky a příklady| 
 |---|---|
 |Technologie Smooth Streaming| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`||
 |Smooth Streaming 2,0 (starší manifest)|Ve výchozím nastavení obsahuje Smooth Streaming formát manifestu značku opakování (značka r). Někteří hráči ale nepodporují `r-tag` . Klienti s těmito hráči můžou používat formát, který zakazuje značku r:<br/><br/>`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=fmp4-v20)`|
@@ -126,7 +126,7 @@ Informace o živém streamování v Media Services V3 najdete v tématu [Přehle
 Dynamické balení podporuje soubory MP4, které obsahují video kódované pomocí [H. 264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC nebo AVC1) nebo [H. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 nebo hvc1).
 
 > [!NOTE]
-> Rozlišení až 4K a snímkových frekvencí až 60 snímků za sekundu byly testovány s *dynamickým balením*. [Kodér úrovně Premium](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) podporuje kódování do H. 265 prostřednictvím starších rozhraní API v2.
+> Rozlišení až 4K a snímkových frekvencí až 60 snímků za sekundu byly testovány s *dynamickým balením*. [Kodér úrovně Premium](../previous/media-services-encode-asset.md#media-encoder-premium-workflow) podporuje kódování do H. 265 prostřednictvím starších rozhraní API v2.
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>Zvukové kodeky podporované dynamickým balením
 

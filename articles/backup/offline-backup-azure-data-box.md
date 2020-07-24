@@ -3,12 +3,12 @@ title: Offline zálohování pomocí Azure Data Box
 description: Naučte se, jak můžete použít Azure Data Box k osazení velkých počátečních zálohovaných dat offline od agenta MARS do trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: a60d749f270c9efab0649b49b5c0c41945faddf5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e377ccde714c1486ff731d24d5a0cd64364bca37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513689"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091024"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Azure Backup offline zálohování pomocí Azure Data Box
 
@@ -153,7 +153,7 @@ Agent MARS funguje v kontextu místního systému, takže vyžaduje, aby byla k 
 K zajištění toho, aby zařízení Data Box bylo možné připojit jako místní systém pomocí protokolu NFS:
 
 1. Povolte na Windows serveru s nainstalovaným agentem MARS klienta pro funkci NFS. Zadejte alternativní zdrojový soubor *WIM: D: \zdroje\install.wim: 4*.
-1. Stáhněte si PSExec ze <https://download.sysinternals.com/files/PSTools.zip> serveru s nainstalovaným agentem Mars.
+1. Stáhněte si PsExec ze stránky [Sysinternals](/sysinternals/downloads/psexec) na server s nainstalovaným agentem Mars.
 1. Otevřete příkazový řádek se zvýšenými oprávněními a spusťte následující příkaz s adresářem, který obsahuje *PSExec.exe* jako aktuální adresář.
 
     ```cmd
@@ -247,7 +247,7 @@ V této části najdete popis kroků, které je potřeba provést po úspěšné
 
 - Poté, co agent MARS úspěšně vytvoří bod obnovení, který odpovídá prvotnímu zálohování, můžete odstranit účet úložiště nebo konkrétní obsah přidružený k Azure Data Box úlohy.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Agent Microsoft Azure Recovery Services (MARS) vytvoří ve vašem tenantovi aplikaci Azure Active Directory (Azure AD). Tato aplikace vyžaduje certifikát pro ověřování, který se vytvoří a nahraje při konfiguraci zásad pro počáteční nastavení offline. K vytvoření a nahrání certifikátu do aplikace Azure AD používáme Azure PowerShell.
 

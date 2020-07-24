@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 05/08/2020
-ms.openlocfilehash: ad4e80c98097955703e4a6fb3c64e93a338f2720
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/22/2020
+ms.openlocfilehash: 93366bf963350bf9cbdbda15ec4070c21a1dc975
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121159"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090140"
 ---
 # <a name="common-questions-about-microsoft-commercial-marketplace"></a>Běžné otázky týkající se komerčního tržiště Microsoftu
 
@@ -46,7 +46,7 @@ Pokud se chcete dozvědět víc, podívejte se na video při [prodeji přes web 
 
 ### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Existuje poplatek za výpis pro komerční tržiště Microsoftu?
 
-Ne, v našem komerčním tržišti nejsou žádné náklady na publikování nabídek. Budeme udržovat malé procento prodeje, jako poplatek za transakce a investovat ho do programu na webu Marketplace, inovace platforem a komerční operace na webu Marketplace.
+Ne, v našem komerčním tržišti nejsou žádné náklady na publikování nabídek. Budeme udržovat malé procento prodeje, jako poplatek za transakce a investovat ho do programu na webu Marketplace, inovace platforem a komerční operace na webu Marketplace. Tento poplatek za transakce se snižuje pro nabídky [Azure IP pro spoluprodejní](https://docs.microsoft.com/azure/marketplace/marketplace-co-sell) motivovaní.
 
 ### <a name="how-do-i-sign-up-to-be-a-publisher-in-the-microsoft-commercial-marketplace"></a>Návody se zaregistrovat jako Vydavatel na komerčním webu Microsoft Marketplace?
 
@@ -305,13 +305,13 @@ Další informace najdete na webu [Výběr účtu a daňové formuláře](partne
 
 Zákazníci můžou v rámci určeného časového období zrušit odběry, aby mohli získat refundaci. U měsíčních předplatných je to 24 hodin a pro roční předplatné je 14 dní. Nabídky, které se účtují podle spotřeby po použití řešení, nejsou způsobilé k refundaci.
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Prostředky
 
 ### <a name="where-can-i-find-more-information-about-the-commercial-marketplace"></a>Kde můžu najít další informace o komerčním tržišti?
 
 Tady je několik zdrojů, které vám pomohou začít:
 
-- [Úvod do komerčního tržiště Microsoftu](/azure/marketplace/marketplace-publishers-guide)
+- [Úvod do komerčního marketplace Microsoftu](/azure/marketplace/marketplace-publishers-guide)
 - [Centrum partnerů Microsoftu pro komerční web Marketplace](https://partner.microsoft.com/asset/collection/commercial-marketplace#/)
 - [Vítá vás komerční marketplace](index.yml)
 
@@ -341,6 +341,6 @@ Informace o centru pro správu Microsoftu najdete v tématu [Správa předplatn�
 
 - [Azure Government](https://azure.microsoft.com/global-infrastructure/government)
 - [Centrum zabezpečení Microsoftu](https://www.microsoft.com/trust-center)
-- [Dokumentace k Azure Government](../azure-government/index.yml)
+- [Dokumentace ke službě Azure Government](../azure-government/index.yml)
 - [Azure Government Marketplace](../azure-government/documentation-government-manage-marketplace.md)
 - [Azure Government dodržování předpisů](../azure-government/documentation-government-plan-compliance.md)

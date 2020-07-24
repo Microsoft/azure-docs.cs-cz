@@ -3,8 +3,8 @@ title: 'Známé problémy: Online migrace z PostgreSQL do Azure Database for Pos
 titleSuffix: Azure Database Migration Service
 description: Přečtěte si o známých problémech a omezeních migrace při online migracích z PostgreSQL k Azure Database for PostgreSQL používání Azure Database Migration Service.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: arunkumarthiags
+ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 3d1bc627ccb8814ab2dfb61fb0653ef0ac644038
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 564581a102ac3fab504e82db00ef54b3e45d0c19
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80235267"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090735"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>Známé problémy/omezení migrace pro online migrace z PostgreSQL do Azure DB pro PostgreSQL
 
@@ -91,12 +91,12 @@ Známé problémy a omezení související s online migracemi z PostgreSQL do Az
 
 Při pokusu o provedení online migrace z AWS VP PostgreSQL pro Azure Database for PostgreSQL se může vyskytnout následující chyby.
 
-- **Chyba**: výchozí hodnota sloupce {Column} v tabulce {table} v databázi {Database} je odlišná na zdrojovém a cílovém serveru. Hodnota na zdrojovém serveru: {value on source}. Hodnota na cílovém serveru: {value on target}.
+- **Chyba:** Výchozí hodnota sloupce {column} v tabulce {table} v databázi {database} se na zdrojovém a cílovém serveru liší. Hodnota na zdrojovém serveru: {value on source}. Hodnota na cílovém serveru: {value on target}.
 
   **Omezení**: k této chybě dochází, pokud je výchozí hodnota ve schématu sloupce odlišná mezi zdrojovou a cílovou databází.
   **Alternativní řešení**: Zajistěte, aby schéma na cíli odpovídalo schématu na zdroji. Podrobnosti o migraci schématu najdete v [online dokumentaci k migraci pro Azure PostgreSQL](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema).
 
-- **Chyba**: v cílové databázi {Database} je {Number of Tables} tabulek, ve kterých má zdrojová databáze {Database} tabulky {Number of Tables}. Počet tabulek ve zdrojové i cílové databázi musí být stejný.
+- **Chyba:** Cílová databáze {database} obsahuje {number of tables} tabulek, ale zdrojová databáze {database} obsahuje {number of tables} tabulek. Počet tabulek ve zdrojové i cílové databázi musí být stejný.
 
   **Omezení**: k této chybě dochází, pokud se počet tabulek liší od zdrojové a cílové databáze.
 

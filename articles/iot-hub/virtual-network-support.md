@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: 32ff08c62e53384b64981e1c40a3485b17a8ce11
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: f15f0c3f6b442419d3d2e3a253d15465e130eae2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85918754"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090599"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Podpora IoT Hub pro virtuální sítě s privátním odkazem a spravovanou identitou
 
@@ -47,6 +47,8 @@ Než budete pokračovat, ujistěte se, že jsou splněné následující předpo
 * Pro zařízení, která fungují v místních sítích, nastavte [virtuální privátní síť (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) nebo soukromý partnerský vztah [ExpressRoute](https://azure.microsoft.com/services/expressroute/) do virtuální sítě Azure.
 
 ### <a name="set-up-a-private-endpoint-for-iot-hub-ingress"></a>Nastavení privátního koncového bodu pro IoT Hub příchozí přenosy
+
+Privátní koncový bod funguje pro IoT Hub rozhraní API zařízení (jako jsou zprávy typu zařízení-Cloud) a také rozhraní API služby (například vytváření a aktualizace zařízení).
 
 1. V Azure Portal vyberte **sítě**, **připojení privátních koncových bodů**a klikněte na **koncový bod + Private**.
 

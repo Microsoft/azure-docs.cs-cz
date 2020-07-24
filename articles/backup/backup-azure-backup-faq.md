@@ -3,12 +3,12 @@ title: Odpovědi na časté dotazy
 description: 'Odpovědi na běžné dotazy týkající se funkcí služby Azure Backup, včetně trezorů služby Recovery Services, co může zálohovat, jak to funguje, šifrování a omezení. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 96733ffaae101bb2cf716fda7500a8269ce8e357
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 6d05c06b1d27cd9d1bc396bddad49fcc89ba3ec3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970480"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091075"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Nejčastější dotazy
 
@@ -18,7 +18,7 @@ V tomto článku najdete odpovědi na běžné dotazy týkající se služby Azu
 
 ### <a name="is-there-any-limit-on-the-number-of-vaults-that-can-be-created-in-each-azure-subscription"></a>Je v rámci předplatného Azure nějak omezený počet trezorů, které lze vytvořit?
 
-Ano. Na jedno předplatné můžete vytvořit až 500 trezorů služby Recovery Services pro každou podporovanou oblast služby Azure Backup. Pokud potřebujete další trezory, vytvořte další předplatné.
+Yes. Na jedno předplatné můžete vytvořit až 500 trezorů služby Recovery Services pro každou podporovanou oblast služby Azure Backup. Pokud potřebujete další trezory, vytvořte další předplatné.
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>Je nějak omezený počet serverů nebo počítačů, které lze zaregistrovat k trezoru?
 
@@ -39,7 +39,7 @@ Data serveru, která chcete obnovovat dohromady, by při nastavování zálohov�
 
 ### <a name="can-i-move-my-vault-between-subscriptions"></a>Dá se přesunout trezor mezi předplatnými?
 
-Ano. Informace o přesunu trezoru služby Recovery Services najdete v tomto [článku](backup-azure-move-recovery-services-vault.md).
+Yes. Informace o přesunu trezoru služby Recovery Services najdete v tomto [článku](backup-azure-move-recovery-services-vault.md).
 
 ### <a name="can-i-move-backup-data-to-another-vault"></a>Dají se zálohovaná data přesunout do jiného trezoru?
 
@@ -69,7 +69,7 @@ Pokud jste už zálohu nakonfigurovali a musíte se přesunout z GRS na LRS, př
 
 ### <a name="are-there-limits-on-backup-scheduling"></a>Existují pro plánování zálohování nějaká omezení?
 
-Ano.
+Yes.
 
 - Počítače s Windows Serverem nebo Windows můžete zálohovat až třikrát denně. Pro zásady plánování můžete nastavit denní nebo týdenní plány.
 - DPM můžete zálohovat až dvakrát denně. Pro zásady plánování můžete nastavit denní, týdenní, měsíční nebo roční plány.
@@ -79,7 +79,7 @@ Ano.
 
 Azure Backup podporuje pro zálohování souborů a složek a aplikací chráněných pomocí Azure Backup Serveru a DPM následující operační systémy.
 
-**OS** | **SKU** | **Podrobnosti**
+**OS** | **Skladová jednotka (SKU)** | **Podrobnosti**
 --- | --- | ---
 Pracovní stanice | |
 Windows 10, 64bitová verze | Enterprise, Pro, Home | Na počítačích by měly být spuštěné nejnovější aktualizace Service Pack a aktualizace služeb.
@@ -111,13 +111,13 @@ Windows 8 nebo novější | 54 400 GB
 Windows 7 |1700 GB
 Windows Server 2012 nebo novější | 54 400 GB
 Windows Server 2008, Windows Server 2008 R2 | 1700 GB
-Virtuální počítač Azure | Viz [matice podpory pro zálohování virtuálních počítačů Azure](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-storage-support) .
+Virtuální počítač Azure | Viz [matice podpory pro zálohování virtuálních počítačů Azure](./backup-support-matrix-iaas.md#vm-storage-support) .
 
 ### <a name="how-is-the-data-source-size-determined"></a>Jak se určuje velikost zdroje dat?
 
 Následující tabulka vysvětluje, jak je určená velikost jednotlivých zdrojů dat.
 
-**Nastavení** | **Podrobnosti**
+**Zdroj dat** | **Podrobnosti**
 --- | ---
 Svazek |Množství dat zálohovaných z jednoho svazku virtuálního počítače
 Databáze SQL Serveru |Velikost databáze s jedinou zálohovanou velikostí.
@@ -127,7 +127,7 @@ BMR a stav systému |Každá jednotlivá kopie BMR nebo stavu systému zálohova
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>Existuje nějaké omezení množství dat zálohovaných s využitím trezoru služby Recovery Services?
 
-Celkové množství dat, které můžete zálohovat pomocí trezoru Recovery Services, není nijak omezené. Jednotlivé zdroje dat (kromě virtuálních počítačů Azure) můžou mít velikost maximálně 54 400 GB. Další informace o omezeních najdete [v části omezení trezoru v matici podpory](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support).
+Celkové množství dat, které můžete zálohovat pomocí trezoru Recovery Services, není nijak omezené. Jednotlivé zdroje dat (kromě virtuálních počítačů Azure) můžou mít velikost maximálně 54 400 GB. Další informace o omezeních najdete [v části omezení trezoru v matici podpory](./backup-support-matrix.md#vault-support).
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>Proč je velikost dat přenášených do trezoru služby Recovery Services menší než velikost dat vybraných k zálohování?
 
@@ -201,11 +201,11 @@ Pokud se použije nová zásada, plán a uchovávání se budou řídit touto no
 
 ### <a name="is-the-data-sent-to-azure-encrypted"></a>Jsou data odesílaná do Azure šifrovaná?
 
-Ano. Data se na místním počítači šifrují pomocí AES256. Data se odesílají prostřednictvím zabezpečeného spojení HTTPS. Data přenášená v cloudu jsou propojením HTTPS chráněná jenom mezi úložištěm a službou Recovery Service. Data přenášená mezi službou Recovery Service a uživatelským počítačem zabezpečuje protokol iSCSI. K ochraně tunelu iSCSI se využívá zabezpečené tunelové propojení.
+Yes. Data se na místním počítači šifrují pomocí AES256. Data se odesílají prostřednictvím zabezpečeného spojení HTTPS. Data přenášená v cloudu jsou propojením HTTPS chráněná jenom mezi úložištěm a službou Recovery Service. Data přenášená mezi službou Recovery Service a uživatelským počítačem zabezpečuje protokol iSCSI. K ochraně tunelu iSCSI se využívá zabezpečené tunelové propojení.
 
 ### <a name="is-the-backup-data-on-azure-encrypted-as-well"></a>Jsou šifrovaná i zálohovaná data v Azure?
 
-Ano. Data v Azure jsou v klidovém stavu zašifrovaná.
+Yes. Data v Azure jsou v klidovém stavu zašifrovaná.
 
 - V případě místního zálohování se šifrování v klidovém stavu zajišťuje pomocí hesla, které zadáte při zálohování do Azure.
 - Pro virtuální počítače Azure jsou neaktivní uložená data zašifrovaná pomocí Šifrování služby Storage (SSE).

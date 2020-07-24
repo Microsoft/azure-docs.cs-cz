@@ -12,27 +12,27 @@ ms.topic: article
 ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
-ms.openlocfilehash: 7c1b446ccf04199449f012e738f6a03660735f50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b718a0a67381e2b1eb19d2397ecf86e4a9c196d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80382949"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090123"
 ---
 # <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>Jak kódovat pomocí vlastní transformace – Azure CLI
 
 Při kódování pomocí Azure Media Services můžete rychle začít s jedním z doporučených integrovaných přednastavení, a to na základě doporučených postupů v oboru, jak je znázorněno v rychlém startu [souborů streamování](stream-files-cli-quickstart.md#create-a-transform-for-adaptive-bitrate-encoding) . Můžete také vytvořit vlastní předvolby, která bude cílit na konkrétní scénář nebo požadavky na zařízení.
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 
 Při vytváření vlastních přednastavení platí následující požadavky:
 
 * Všechny hodnoty pro výšku a šířku v obsahu AVC musí být násobkem 4.
 * V Azure Media Services V3 jsou všechny přenosové rychlosti kódování v bitech za sekundu. To se liší od přednastavení s našimi rozhraními API v2, která jako jednotku používala kilobity za sekundu. Pokud je například přenosová rychlost v v2 zadaná jako 128 (kilobit/s), ve verzi V3 by se nastavila na 128000 (bity za sekundu).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-[Vytvořte účet Media Services](create-account-cli-how-to.md).
+[Vytvořte účet Media Services](./create-account-howto.md).
 
 Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services.
 
@@ -140,6 +140,6 @@ az ams transform create -a amsaccount -g amsResourceGroup -n customTransformName
 
 Pokud Media Services chcete použít transformaci na zadané video nebo zvuk, musíte úlohu v rámci této transformace odeslat. Kompletní příklad, který ukazuje, jak odeslat úlohu v transformaci, najdete v tématu [rychlý Start: Stream video soubory – Azure CLI](stream-files-cli-quickstart.md).
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 [Azure CLI](/cli/azure/ams)

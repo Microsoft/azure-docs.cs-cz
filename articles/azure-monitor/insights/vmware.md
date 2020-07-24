@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: c1622ef16155206d779c6d703fc7da568d233e7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bda1acde914aa068fe3a87d307a29583f87af34f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77664775"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091177"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Řešení VMware Monitoring (nepoužívané) v Azure Monitor
 
@@ -80,7 +81,7 @@ V následující tabulce jsou uvedeny metody shromažďování dat a další pod
 
 V následující tabulce jsou uvedeny příklady datových polí shromažďovaných řešením VMware Monitoring:
 
-| název pole | description |
+| název pole | Popis |
 | --- | --- |
 | Device_s |Úložná zařízení VMware |
 | ESXIFailure_s |typy selhání |
@@ -155,7 +156,7 @@ Ukládání dotazů na protokol je standardní funkce v Azure Monitor a může p
 ![DockerDashboardView](./media/vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>Vytváření výstrah z dotazů
-Po vytvoření dotazů můžete chtít použít dotazy, které vás upozorní, když dojde k určitým událostem. Informace o tom, jak vytvářet výstrahy, najdete [v tématu výstrahy v Log Analytics](../platform/alerts-overview.md) . Příklady dotazů na dotazy a další příklady dotazů naleznete v příspěvku k [VMware pomocí Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) Blogový příspěvek.
+Po vytvoření dotazů můžete chtít použít dotazy, které vás upozorní, když dojde k určitým událostem. Informace o tom, jak vytvářet výstrahy, najdete [v tématu výstrahy v Log Analytics](../platform/alerts-overview.md) . Příklady dotazů na dotazy a další příklady dotazů naleznete v příspěvku k [VMware pomocí Log Analytics](/archive/blogs/msoms/monitor-vmware-using-oms-log-analytics) Blogový příspěvek.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 ### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>Co musím udělat v nastavení hostitele ESXi? Jaký dopad bude mít v mém aktuálním prostředí?
@@ -171,7 +172,7 @@ Ano, můžete. V vSphere můžete použít nastavení úrovně protokolu hostite
 Došlo k chybě hostitele ESXi pro časové razítko syslog. Další informace najdete v [článku znalostní báze VMware](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2111202). Po použití alternativního řešení by měl hostitel fungovat normálně.
 
 ### <a name="can-i-have-multiple-esxi-hosts-forwarding-syslog-data-to-a-single-vm-with-omsagent"></a>Můžu více hostitelů ESXi předávat data syslogu do jednoho virtuálního počítače pomocí omsagent?
-Ano. K jednomu virtuálnímu počítači s omsagent může předávat víc hostitelů ESXi.
+Yes. K jednomu virtuálnímu počítači s omsagent může předávat víc hostitelů ESXi.
 
 ### <a name="why-dont-i-see-data-flowing-into-log-analytics"></a>Proč se mi nezobrazuje tok dat do Log Analytics?
 Může existovat několik důvodů:

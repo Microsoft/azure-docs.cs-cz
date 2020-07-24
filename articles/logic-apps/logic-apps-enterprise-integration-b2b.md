@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: b576fc99e2f203bb3d690a8135ee76cee26b3de8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fd96777a5fe74d44aeed5f6de82e54b2663a024
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82792356"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090378"
 ---
 # <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>Příjem a potvrzení zpráv B2B AS2 pomocí Azure Logic Apps a Enterprise Integration Pack
 
@@ -20,7 +21,7 @@ Když máte účet pro integraci, který definuje obchodní partnery a smlouvy, 
 
 Tento článek ukazuje, jak vytvořit aplikaci logiky, která přijímá požadavek HTTP pomocí triggeru žádosti, dekóduje obsah zprávy pomocí akcí AS2 a X12 a potom vrátí odpověď pomocí akce Response.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ještě nemáte předplatné, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -34,7 +35,7 @@ Tento článek ukazuje, jak vytvořit aplikaci logiky, která přijímá požada
 
   Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md) a [rychlý Start: Vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-* [Účet pro integraci](../logic-apps/logic-apps-enterprise-integration-accounts.md) , který je přidružený k vašemu předplatnému Azure a propojený s vaší aplikací logiky. Vaše aplikace logiky i účet pro integraci musí existovat ve stejném umístění nebo oblasti Azure.
+* [Účet pro integraci](./logic-apps-enterprise-integration-create-integration-account.md) , který je přidružený k vašemu předplatnému Azure a propojený s vaší aplikací logiky. Vaše aplikace logiky i účet pro integraci musí existovat ve stejném umístění nebo oblasti Azure.
 
 * Alespoň dva [obchodní partneři](../logic-apps/logic-apps-enterprise-integration-partners.md) , které jste už definovali v účtu pro integraci společně s [AS2 a X12 smlouvami](logic-apps-enterprise-integration-agreements.md) pro tyto partnery.
 
@@ -142,7 +143,7 @@ Chcete-li oznámit obchodnímu partnerovi, že byla zpráva přijata, můžete v
 
    1. Pro případ, že se akce **dekódování AS2** nepovede, vyberte v obrazci **Při false** možnost **přidat akci**. V části **zvolit akci**zadejte do vyhledávacího pole `response` a vyberte možnost **odpověď**. Nastavte akci **odpovědi** , která vrátí stav a požadovanou chybu.
 
-1. Uložte svou aplikaci logiky.
+1. Uložte aplikaci logiky.
 
 ## <a name="add-decode-x12-message-action"></a>Přidat akci dekódovat zprávu X12
 
@@ -166,7 +167,7 @@ Chcete-li oznámit obchodnímu partnerovi, že byla zpráva přijata, můžete v
 
     ![Převést obsah kódovaný v kódování Base64 na řetězec](./media/logic-apps-enterprise-integration-b2b/x12-decode-message-content.png)
 
-1. Uložte svou aplikaci logiky.
+1. Uložte aplikaci logiky.
 
    Pokud pro tuto aplikaci logiky potřebujete další kroky, například k dekódování obsahu zprávy a výstupu obsahu ve formátu objektu JSON, pokračujte v sestavování aplikace logiky.
 

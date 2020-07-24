@@ -1,21 +1,21 @@
 ---
-title: Zabezpečení
+title: Zabezpečení Azure Cognitive Services
 titleSuffix: Azure Cognitive Services
 description: Přečtěte si o různých faktorech zabezpečení pro Cognitive Services využití.
 services: cognitive-services
-author: aahill
+author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.author: aahi
+ms.date: 07/10/2020
+ms.author: erhopf
 ms.custom: tracking-python
-ms.openlocfilehash: d97b944d5d18a39d6eaf84b55363f487a2c17dbf
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 51a9829a7ea19665e1081a48207f176b1a8e68c0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611403"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090837"
 ---
 # <a name="azure-cognitive-services-security"></a>Zabezpečení Azure Cognitive Services
 
@@ -31,7 +31,7 @@ Všechny koncové body Cognitive Services vystavené přes protokol HTTP vynutil
 
 Pro uživatele rozhraní .NET zvažte <a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">osvědčené postupy <span class="docon docon-navigate-external x-hidden-focus"></span> zabezpečení transportní vrstvy </a>.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 Při projednávání ověřování je k dispozici několik běžných konceptů. Ověřování a autorizace jsou často mezi sebou zaměňovány. Identita je také hlavní součástí zabezpečení. Identita je kolekce informací o <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">objektu zabezpečení <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. Zprostředkovatelé identity (IdP) poskytují identity službám ověřování. Ověřování je aktem, který ověřuje identitu uživatele. Autorizace je specifikace přístupových práv a oprávnění k prostředkům pro danou identitu. Mezi některé z Cognitive Services nabídek patří řízení přístupu na základě role (RBAC). RBAC se dá použít ke zjednodušení některých proceduryů, které se podílejí na ruční správě objektů zabezpečení. Další podrobnosti najdete v tématu [řízení přístupu na základě role pro prostředky Azure](../role-based-access-control/overview.md).
 
@@ -203,9 +203,19 @@ Customer Lockbox je k dispozici pro tuto službu pro rozpoznávání:
 
 * Translator
 
-V případě Language Understanding nebudou mít technici Microsoftu přístup k žádným zákaznickým datům v SKU E0. Chcete-li požádat o možnost použití skladové položky E0, vyplňte a odešlete [formulář žádosti o služby Luis](https://aka.ms/cogsvc-cmk). Bude to trvat přibližně 3-5 pracovních dnů, než se vrátí na stav vaší žádosti. V závislosti na poptávce můžete být do fronty zařazené a schválené, protože místo bude k dispozici. Po schválení pro použití skladové položky E0 s LUIS budete muset vytvořit nový prostředek Language Understanding z Azure Portal a vybrat E0 jako cenovou úroveň. Uživatelé nebudou moct upgradovat z F0 na novou SKLADOVOU položku E0.
+Pro následující služby nebudou Microsoft technici přistupovat k žádným zákaznickým datům ve vrstvě E0: 
 
-Služba Speech v současné době nepodporuje Customer Lockbox. Zákaznická data ale můžete ukládat pomocí BYOS ("Přineste si vlastní úložiště"), což vám umožní dosáhnout podobných ovládacích prvků dat [Customer Lockbox](../security/fundamentals/customer-lockbox-overview.md). Pamatujte, že data služby Speech Service zůstanou a jsou zpracována v oblasti, ve které byl prostředek řeči vytvořen. To platí pro veškerá data v klidovém režimu a data při přenosu. Pokud používáte funkce vlastního nastavení, jako je Custom Speech a vlastní hlas, všechna zákaznická data se přenesou, ukládají a zpracovávají ve stejné oblasti, ve které se nachází BYOS (Pokud se používá) a prostředek služby Speech.
+* Language Understanding
+* Rozpoznávání tváře
+* Content Moderator
+* Personalizace
+
+> [!IMPORTANT]
+> V případě nástroje pro **rozpoznávání formulářů**nebudou Microsoft technici přistupovat k žádným zákaznickým datům v prostředcích vytvořených po 10. červenci 2020.
+
+Chcete-li požádat o možnost použití skladové položky E0, vyplňte a odešlete [formulář žádosti](https://aka.ms/cogsvc-cmk). Bude to trvat přibližně 3-5 pracovních dnů, než se vrátí na stav vaší žádosti. V závislosti na poptávce můžete být do fronty zařazené a schválené, protože místo bude k dispozici. Po schválení pro použití skladové položky E0 s LUIS budete muset vytvořit nový prostředek z Azure Portal a vybrat E0 jako cenovou úroveň. Uživatelé nebudou moct upgradovat z F0 na novou SKLADOVOU položku E0.
+
+Služba Speech v současné době nepodporuje Customer Lockbox. Zákaznická data ale můžou být uložená pomocí možnosti Přineste si vlastní úložiště (BYOS), což vám umožní dosáhnout podobných ovládacích prvků dat Customer Lockbox. Pamatujte, že data služby Speech Service zůstanou a jsou zpracována v oblasti, ve které byl prostředek řeči vytvořen. To platí pro veškerá data v klidovém režimu a data při přenosu. Pokud používáte funkce vlastního nastavení, jako je Custom Speech a vlastní hlas, všechna zákaznická data se přenesou, ukládají a zpracovávají ve stejné oblasti, ve které se nachází BYOS (Pokud se používá) a prostředek služby Speech.
 
 > [!IMPORTANT]
 > Společnost **Microsoft nepoužívá** zákaznická data ke zlepšení svých modelů řeči. Pokud je navíc protokolování koncových bodů zakázané a nepoužívá se žádné vlastní nastavení, neukládají se žádná zákaznická data. 

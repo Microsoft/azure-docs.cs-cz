@@ -3,12 +3,12 @@ title: Postup zastavení monitorování clusteru Azure Red Hat OpenShift V3 | Mi
 description: Tento článek popisuje, jak můžete zastavit monitorování clusteru Azure Red Hat OpenShift pomocí Azure Monitor for Containers.
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: e1d3200af62ad185fa942fa2c8f7f3b4e6bfd89b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26c8a574894e117694545508174d0ce7d0f0f5ed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82196189"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091211"
 ---
 # <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>Postup zastavení monitorování clusteru Azure Red Hat OpenShift V3
 
@@ -22,7 +22,7 @@ Pokud nejste obeznámeni s konceptem nasazení prostředků pomocí šablony, p�
 * [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../../azure-resource-manager/templates/deploy-powershell.md)
 * [Nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
-Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat a používat rozhraní příkazového řádku (CLI). Musíte používat Azure CLI verze 2.0.65 nebo novější. Pro identifikaci vaší verze spusťte `az --version` . Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat a používat rozhraní příkazového řádku (CLI). Musíte používat Azure CLI verze 2.0.65 nebo novější. Pro identifikaci vaší verze spusťte `az --version` . Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli).
 
 ### <a name="create-template"></a>Vytvoření šablony
 
@@ -128,4 +128,4 @@ ProvisioningState       : Succeeded
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud byl pracovní prostor vytvořen jenom pro podporu monitorování clusteru a už ho nepotřebujete, musíte ho ručně odstranit. Pokud nejste obeznámeni s tím, jak pracovní prostor odstranit, přečtěte si téma [odstranění pracovního prostoru Azure Log Analytics](../../log-analytics/log-analytics-manage-del-workspace.md).
+Pokud byl pracovní prostor vytvořen jenom pro podporu monitorování clusteru a už ho nepotřebujete, musíte ho ručně odstranit. Pokud nejste obeznámeni s tím, jak pracovní prostor odstranit, přečtěte si téma [odstranění pracovního prostoru Azure Log Analytics](../platform/delete-workspace.md).

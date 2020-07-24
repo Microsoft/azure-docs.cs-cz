@@ -14,11 +14,12 @@ ms.author: blazem
 ms.reviewer: jroth
 manager: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 465338bb793ad7b4fc406e9d1c073b9dc0dc06c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d632d078db55696dad7bb05e72368b13610b5978
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74034013"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091415"
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure"></a>Povolit transparentní šifrování dat (TDE) pro Stretch Database v Azure
 > [!div class="op_single_selector"]
@@ -36,9 +37,9 @@ Pokud chcete povolit TDE pro databázi Azure, která ukládá data migrovaná z 
 
 1. Otevřete databázi v [Azure Portal](https://portal.azure.com)
 2. V okně databáze klikněte na tlačítko **Nastavení** .
-3. Vybrat možnost **transparentní šifrování dat**![][1]
-4. Vyberte nastavení **zapnuto** a pak vyberte **Uložit** .
-   ![][2]
+3. Vyberte snímek obrazovky s možností **transparentního šifrování dat** ![ Azure Portal a zobrazte okno nastavení. V části Obecné se zvýrazní transparentní šifrování dat.][1]
+4. Vyberte nastavení **zapnuto** a pak vyberte **Uložit** 
+    ![ snímek obrazovky Azure Portal, když se zobrazí okno transparentní šifrování dat. Šifrování dat je zapnuté a zvýrazní se tlačítko Uložit.][2]
 
 ## <a name="disabling-encryption"></a>Zakázání šifrování
 Pokud chcete zakázat TDE pro databázi Azure, která ukládá data migrovaná z databáze SQL Server s povolenou funkcí Stretch, proveďte následující akce:

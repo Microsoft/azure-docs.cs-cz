@@ -6,17 +6,18 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 46989ed2468469443d4e91a1834bc20b12c25a1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb1af437fc663fcb95c768ec295862209a26064e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76908069"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090395"
 ---
 # <a name="view-and-create-queries-for-monitoring-and-tracking-in-azure-monitor-logs-for-azure-logic-apps"></a>Zobrazení a vytváření dotazů pro monitorování a sledování v protokolech Azure Monitor pro Azure Logic Apps
 
-Můžete zobrazit základní dotazy, které vytvářejí výsledky z [Azure monitor protokoly](../log-analytics/log-analytics-overview.md) a vytvářet dotazy, které filtrují výsledky na základě konkrétních kritérií. Můžete například vyhledat zprávy na základě konkrétního kontrolního čísla výměny. Dotazy používají [dotazovací jazyk Kusto](https://aka.ms/LogAnalyticsLanguageReference), který můžete upravit, pokud chcete zobrazit různé výsledky. Další informace najdete v tématu [Azure monitor dotazy protokolu](../azure-monitor/log-query/query-language.md).
+Můžete zobrazit základní dotazy, které vytvářejí výsledky z [Azure monitor protokoly](../azure-monitor/log-query/log-query-overview.md) a vytvářet dotazy, které filtrují výsledky na základě konkrétních kritérií. Můžete například vyhledat zprávy na základě konkrétního kontrolního čísla výměny. Dotazy používají [dotazovací jazyk Kusto](https://aka.ms/LogAnalyticsLanguageReference), který můžete upravit, pokud chcete zobrazit různé výsledky. Další informace najdete v tématu [Azure monitor dotazy protokolu](../azure-monitor/log-query/query-language.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pracovní prostor služby Log Analytics. Pokud nemáte pracovní prostor Log Analytics, přečtěte si, [jak vytvořit pracovní prostor Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
 

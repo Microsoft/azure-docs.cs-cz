@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: aa2af4302613aad23bfd78b4883bbb46c5e5ddbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3571455db6ecc600bf0948087b40c281d72512ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76961124"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091245"
 ---
 # <a name="enable-cloudsimple-private-cloud-dns-servers-to-forward-dns-lookup-of-on-premises-resources-to-your-dns-servers"></a>Povolit serverům DNS privátního cloudu CloudSimple přesměrování vyhledávání místních prostředků DNS na servery DNS
 
@@ -31,7 +32,7 @@ Předávání vyhledávání DNS pro místní server DNS vám umožní používa
 Aby předávání DNS fungovalo, musí být síťové připojení k vaší místní síti přítomné z vaší privátní cloudové sítě.  Připojení k síti můžete nastavit pomocí:
 
 * [Připojení z místního prostředí k CloudSimple pomocí ExpressRoute](on-premises-connection.md)
-* [Nastavení brány VPN typu Site-to-site](https://docs.microsoft.com/azure/vmware-cloudsimple/vpn-gateway#set-up-a-site-to-site-vpn-gateway)
+* [Nastavení brány VPN typu Site-to-site](./vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)
 
 Aby bylo možné přeposlání DNS fungovat, musí být v tomto připojení otevřené porty brány firewall.  Používané porty jsou port TCP 53 nebo port UDP 53.
 

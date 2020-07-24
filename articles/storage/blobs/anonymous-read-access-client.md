@@ -6,21 +6,21 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/29/2020
+ms.date: 07/22/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: f4263d372b82779fe68a6a15cc7db61a31359e14
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: ac5fad935e5c37df3a8bd64189a59612eaf097aa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209390"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091364"
 ---
 # <a name="access-public-containers-and-blobs-anonymously-with-net"></a>Anonymní přístup k veřejným kontejnerům a objektům blob pomocí .NET
 
-Azure Storage podporuje anonymní veřejný přístup pro čtení kontejnerů a objektů BLOB. Klienti mají anonymní přístup k veřejným kontejnerům a objektům blob pomocí Azure Storage klientských knihoven a také pomocí dalších nástrojů a nástrojů, které podporují přístup k datům Azure Storage.
+Azure Storage podporuje volitelné veřejné oprávnění ke čtení pro kontejnery a objekty blob. Klienti mají anonymní přístup k veřejným kontejnerům a objektům blob pomocí Azure Storage klientských knihoven a také pomocí dalších nástrojů a nástrojů, které podporují přístup k datům Azure Storage.
 
-Tento článek ukazuje, jak přistupovat k veřejnému kontejneru nebo objektu BLOB z rozhraní .NET. Informace o konfiguraci anonymního přístupu pro čtení na kontejneru naleznete v tématu. Informace o tom, jak zabránit všem anonymním přístupům k účtu úložiště, najdete v tématu.
+Tento článek ukazuje, jak přistupovat k veřejnému kontejneru nebo objektu BLOB z rozhraní .NET. Informace o konfiguraci anonymního přístupu pro čtení v kontejneru najdete v tématu [Konfigurace anonymního veřejného přístupu pro čtení pro kontejnery a objekty blob](anonymous-read-access-configure.md). Informace o tom, jak zabránit všem anonymním přístupům k účtu úložiště, najdete v tématu [zabránění anonymnímu veřejnému přístupu pro čtení kontejnerů a objektů BLOB](anonymous-read-access-prevent.md).
 
 Klient, který přistupuje k kontejnerům a objektům blob anonymně, může používat konstruktory, které nevyžadují přihlašovací údaje. V následujících příkladech je znázorněno několik různých způsobů, jak odkazovat na kontejnery a objekty blob anonymně.
 

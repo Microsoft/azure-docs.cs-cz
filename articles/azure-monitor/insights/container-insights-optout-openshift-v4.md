@@ -3,12 +3,12 @@ title: Postup zastavení monitorování clusteru Azure a Red Hat OpenShift v4 | 
 description: Tento článek popisuje, jak můžete přestat sledovat cluster Azure Red Hat OpenShift a Red Hat OpenShift verze 4 s Azure Monitor for Containers.
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 768c4db8d72778b555a4f343cf2e23b8fa861991
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf61457b9c8cff40eb3fee2c93c7184fbaae6db5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82196436"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091143"
 ---
 # <a name="how-to-stop-monitoring-your-azure-and-red-hat-openshift-v4-cluster"></a>Postup zastavení monitorování clusteru Azure a Red Hat OpenShift v4
 
@@ -49,4 +49,4 @@ Dokončení změny konfigurace může trvat několik minut. Vzhledem k tomu, že
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud se pracovní prostor Log Analytics vytvořil jenom pro podporu monitorování clusteru a už ho nepotřebujete, musíte ho ručně odstranit. Pokud nejste obeznámeni s tím, jak pracovní prostor odstranit, přečtěte si téma [odstranění pracovního prostoru Azure Log Analytics](../../log-analytics/log-analytics-manage-del-workspace.md).
+Pokud se pracovní prostor Log Analytics vytvořil jenom pro podporu monitorování clusteru a už ho nepotřebujete, musíte ho ručně odstranit. Pokud nejste obeznámeni s tím, jak pracovní prostor odstranit, přečtěte si téma [odstranění pracovního prostoru Azure Log Analytics](../platform/delete-workspace.md).

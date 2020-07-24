@@ -4,11 +4,12 @@ description: Získejte odpovědi na běžné dotazy týkající se zálohování
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 11657a5dda79fc550f4c07d4020d75c671335da4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2781646e548f4f530b26ca41466f158597e817d9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248256"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090973"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Nejčastější dotazy týkající se SQL Server databází, které běží na zálohování virtuálních počítačů Azure
 
@@ -38,7 +39,7 @@ Automatické zaretušování je ve výchozím nastavení povolené pro všechny 
 
 ## <a name="can-i-control-how-many-concurrent-backups-run-on-the-sql-server"></a>Můžu řídit, kolik souběžných záloh běží na SQL serveru?
 
-Ano. Rychlost, s jakou se zásady zálohování spouštějí, můžete omezit tak, aby se minimalizoval dopad na instanci SQL Server. Postup změny nastavení:
+Yes. Rychlost, s jakou se zásady zálohování spouštějí, můžete omezit tak, aby se minimalizoval dopad na instanci SQL Server. Postup změny nastavení:
 
 1. V SQL Server instanci v adresáři *C:\Program Files\Azure úlohy Backup\bin* vytvořte *ExtensionSettingsOverrides.jsv* souboru.
 2. V *ExtensionSettingsOverrides.jsv* souboru změňte nastavení **DefaultBackupTasksThreshold** na nižší hodnotu (například 5). <br>
@@ -48,7 +49,7 @@ Výchozí hodnota DefaultBackupTasksThreshold je **20**.
 
 3. Uložte změny a zavřete soubor.
 4. V SQL Server instance otevřete **Správce úloh**. Restartujte službu **AzureWLBackupCoordinatorSvc** .<br/> <br/>
- I když tato metoda pomáhá, pokud zálohovací aplikace spotřebovává velké množství prostředků, je SQL Server [Správce zdrojů](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor?view=sql-server-2017) obecnější způsob, jak určit omezení pro procesor, fyzickou/v/a paměť, které mohou používat příchozí žádosti o aplikace.
+ I když tato metoda pomáhá, pokud zálohovací aplikace spotřebovává velké množství prostředků, je SQL Server [Správce zdrojů](/sql/relational-databases/resource-governor/resource-governor) obecnější způsob, jak určit omezení pro procesor, fyzickou/v/a paměť, které mohou používat příchozí žádosti o aplikace.
 
 > [!NOTE]
 > V uživatelském prostředí můžete stále pokračovat a naplánovat tolik záloh v daném čase, ale budou zpracovány v posuvných intervalech, 5, podle výše uvedeného příkladu.

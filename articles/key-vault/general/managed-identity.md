@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: bb5288d043ab5638bb33c357cea55c64b03fcf1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2d4af5086e3cf4099013969cd359f8e11873c6d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81432122"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090616"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>Zajištění Key Vault ověřování pomocí spravované identity
 
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak vytvořit spravovanou identitu pro aplikaci Ap
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 K dokončení této příručky musíte mít následující prostředky. 
 
@@ -35,14 +35,14 @@ K dokončení této příručky musíte mít následující prostředky.
    - [Vytvoření trezoru klíčů pomocí Azure PowerShell](../secrets/quick-create-powershell.md)
    - [Vytvořte Trezor klíčů pomocí Azure Portal](../secrets/quick-create-portal.md).
 - Stávající aplikace App Service, pro kterou má být udělen přístup k trezoru klíčů. Můžete ho rychle vytvořit podle kroků v [dokumentaci App Service](../../app-service/overview.md).
-- Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) nebo [Azure PowerShell](/powershell/azure/overview). Alternativně můžete použít [Azure Portal](https://portal.azure.com).
+- Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) nebo [Azure PowerShell](/powershell/azure/). Alternativně můžete použít [Azure Portal](https://portal.azure.com).
 
 
 ## <a name="adding-a-system-assigned-identity"></a>Přidání identity přiřazené systémem 
 
 Nejdřív musíte do aplikace přidat identitu přiřazenou systémem. 
  
-### <a name="azure-portal"></a>portál Azure 
+### <a name="azure-portal"></a>Portál Azure Portal 
 
 Pokud chcete na portálu nastavit spravovanou identitu, nejdřív vytvořte aplikaci jako normální a pak tuto funkci povolte. 
 
@@ -52,7 +52,7 @@ Pokud chcete na portálu nastavit spravovanou identitu, nejdřív vytvořte apli
 
 1. V rámci karty **přiřazené systémem** přepněte **stav** na **zapnuto**. Klikněte na **Uložit**. 
 
-    ![](../media/managed-identity-system-assigned.png)
+   ![Snímek obrazovky, který ukazuje uložení identity přiřazené systémem.](../media/managed-identity-system-assigned.png)
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -88,7 +88,7 @@ Poznamenejte si `PrincipalId` , který bude potřeba v další části.
 ```
 ## <a name="grant-your-app-access-to-key-vault"></a>Udělit aplikaci přístup k Key Vault 
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 
 1.  Přejděte na prostředek Key Vault. 
 
@@ -100,7 +100,7 @@ Poznamenejte si `PrincipalId` , který bude potřeba v další části.
 
 1.  Kliknutím na **Přidat** dokončete přidávání nových zásad přístupu.
 
-    ![](../media/managed-identity-access-policy.png)
+    ![Snímek obrazovky, který ukazuje přidání nové zásady přístupu v Azure Portal.](../media/managed-identity-access-policy.png)
 
 ### <a name="azure-cli"></a>Azure CLI
 

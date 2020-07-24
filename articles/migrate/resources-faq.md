@@ -3,12 +3,12 @@ title: Nejčastější dotazy k Azure Migrate
 description: Získejte odpovědi na běžné otázky týkající se služby Azure Migrate.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 9b71888b284fd9cc125def4758d1e3800a92acf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 307a1d417b54ad9546c6e409ad8b105ea443da0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81530313"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090004"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate: běžné otázky
 
@@ -19,7 +19,7 @@ Tento článek obsahuje odpovědi na běžné otázky týkající se Azure Migra
 
 ## <a name="what-is-azure-migrate"></a>Co je Azure Migrate?
 
-Azure Migrate poskytuje centrální centrum pro sledování zjišťování, hodnocení a migrace vašich místních aplikací a úloh a privátních a veřejných cloudových virtuálních počítačů do Azure. Centrum poskytuje Azure Migrate nástroje pro posuzování a migraci a nabídky nezávislých výrobců softwaru. [Další informace](migrate-services-overview.md).
+Azure Migrate poskytuje centrální centrum pro sledování zjišťování, hodnocení a migrace vašich místních aplikací a úloh a privátních a veřejných cloudových virtuálních počítačů do Azure. Centrum poskytuje Azure Migrate nástroje pro posuzování a migraci a nabídky nezávislých výrobců softwaru. [Přečtěte si další informace](migrate-services-overview.md).
 
 ## <a name="what-can-i-do-with-azure-migrate"></a>Co se dá dělat s Azure Migrate?
 
@@ -32,6 +32,10 @@ Pomocí Azure Migrate můžete zjišťovat, hodnotit a migrovat místní infrast
 [Azure Site Recovery](../site-recovery/site-recovery-overview.md) je řešení zotavení po havárii. 
 
 Azure Migrate: Nástroj pro migraci serveru používá některé funkce back-Site Recovery Endu pro migraci některých místních počítačů do migrace typu "a Shift".
+
+## <a name="i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version"></a>Mám projekt s předchozím klasickým prostředím Azure Migrate. Návody začít používat novou verzi?
+
+Nemůžete upgradovat projekty nebo součásti v předchozí verzi na novou verzi. Musíte [vytvořit nový Azure Migrate projekt](create-manage-projects.md)a přidat do něj [Nástroje pro posouzení a migraci](how-to-add-tool-first-time.md) . Pomocí kurzů můžete pochopit, jak jsou dostupné nástroje pro posouzení a migraci. Pokud byl pracovní prostor Log Analytics připojený k klasickému projektu, můžete ho po odstranění klasického projektu připojit k projektu aktuální verze.
 
 ## <a name="whats-the-difference-between-azure-migrate-server-assessment-and-the-map-toolkit"></a>Jaký je rozdíl mezi Azure Migrate: posouzení serveru a MAPOVou Toolkit?
 

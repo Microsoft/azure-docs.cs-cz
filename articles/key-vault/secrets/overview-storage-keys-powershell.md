@@ -8,11 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 8cd9c1ba85666a6556e24e4966e1e6cb9b7ef124
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77cbd5a3c293b137f49a11263580ef45407c6c2b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84449304"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090463"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Správa klíčů účtu úložiště pomocí Key Vault a Azure PowerShell
 
@@ -46,9 +47,9 @@ Key Vault je aplikace Microsoftu, která je předem registrovaná ve všech klie
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Veřejný Azure | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
-| Jiné  | Všechny | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Jiné  | Libovolný | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li dokončit tuto příručku, je třeba nejprve provést následující akce:
 
@@ -163,7 +164,7 @@ Tags                :
 
 ### <a name="enable-key-regeneration"></a>Povolit opakované generování klíče
 
-Pokud chcete, Key Vault pravidelně znovu vygenerovat klíče účtu úložiště, můžete použít rutinu Azure PowerShell [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) a nastavit dobu obnovení. V tomto příkladu nastavíme dobu obnovení tři dny. Po třech dnech Key Vault znovu vygeneruje "key2" a přepínat aktivní klíč z "key2" na "klíč1" (nahraďte ' primary ' a ' Secondary ' pro účty klasického úložiště).
+Pokud chcete, Key Vault pravidelně znovu vygenerovat klíče účtu úložiště, můžete použít rutinu Azure PowerShell [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) a nastavit dobu obnovení. V tomto příkladu nastavíme dobu obnovení tři dny. Když je čas na otočení, Key Vault znovu vygeneruje klíč, který není aktivní, a pak nastaví nově vytvořený klíč jako aktivní. K vystavování tokenů SAS v jednom okamžiku se používá jenom jeden z klíčů. Toto je aktivní klíč.
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)

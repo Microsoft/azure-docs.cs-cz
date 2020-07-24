@@ -3,8 +3,8 @@ title: 'Známé problémy: Online migrace do Azure Database for MySQL'
 titleSuffix: Azure Database Migration Service
 description: Přečtěte si o známých problémech a omezeních migrace pro online migrace do Azure Database for MySQL při použití Azure Database Migration Service.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: arunkumarthiags
+ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 8c3de28ea934302086a5b14e61482e6a4ab9a7ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a2e28439efaa1983c4deeff4c6746108fc28e4e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80235282"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090701"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Problémy online migrace & omezení pro Azure DB for MySQL s Azure Database Migration Service
 
@@ -135,6 +135,8 @@ Při pokusu o provedení online migrace z AWS VP MySQL do Azure Database for MyS
     ```
 
 - V Azure Database Migration Service je limit databází pro migraci v jedné aktivitě migrace čtyři.
+
+- Azure DMS nepodporuje referenční akci CASCADE, která pomáhá automaticky odstranit nebo aktualizovat shodný řádek v podřízené tabulce při odstranění nebo aktualizaci řádku v nadřazené tabulce. Další informace najdete v části referenční akce článku [omezení cizího klíče](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)v dokumentaci k MySQL. Azure DMS vyžaduje, abyste při počátečním načtení dat vyřadíte omezení cizího klíče v cílovém databázovém serveru a nemůžete použít referenční akce. Pokud vaše zatížení závisí na aktualizaci související podřízené tabulky prostřednictvím této referenční akce, doporučujeme místo toho provést [Výpis a obnovení](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore) . 
 
 - **Chyba:** Velikost řádku je moc velká (> 8126). Změna některých sloupců na TEXT nebo objekt BLOB může pomáhat. V aktuálním formátu řádku je předpona objektu BLOB 0 bajtů uložená jako vložená.
 

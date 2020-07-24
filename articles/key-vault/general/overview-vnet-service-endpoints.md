@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: eff74fca5ac21a7df431b55cd5c307d3e994010b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34e1b7e58a3ceb6c1c2d2b6bc4efd34ee93e9e4e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84792128"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090480"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Koncové body služby virtuální sítě pro Azure Key Vault
 
@@ -39,7 +39,7 @@ Tady je několik příkladů použití koncových bodů služby:
 
 Tady jsou kroky nutné ke konfiguraci bran firewall a virtuálních sítí. Tento postup platí bez ohledu na to, jestli používáte PowerShell, rozhraní příkazového řádku Azure nebo Azure Portal.
 
-1. Povolením [protokolování Key Vault](logging.md)) zobrazíte podrobné protokoly přístupu. To pomáhá diagnostikovat, pokud pravidla brány firewall a virtuální sítě brání přístupu k trezoru klíčů. (Tento krok je volitelný, ale důrazně se doporučuje.)
+1. Povolte [protokolování Key Vault](logging.md) pro zobrazení podrobných protokolů přístupu. To pomáhá diagnostikovat, pokud pravidla brány firewall a virtuální sítě brání přístupu k trezoru klíčů. (Tento krok je volitelný, ale důrazně se doporučuje.)
 2. Povolte **koncové body služby pro Trezor klíčů** pro cílové virtuální sítě a podsítě.
 3. Nastavte brány firewall a pravidla virtuální sítě pro Trezor klíčů, abyste omezili přístup k tomuto trezoru klíčů z konkrétních virtuálních sítí, podsítí a rozsahů IPv4 adres.
 4. Pokud tento trezor klíčů potřebuje přístup k jakýmkoli důvěryhodným službám Microsoftu, povolte možnost povolit **důvěryhodným službám Azure** připojení k Key Vault.
@@ -80,7 +80,7 @@ Tady je seznam důvěryhodných služeb, které mají povolený přístup k trez
 |Azure Event Hubs|[Povolení přístupu k trezoru klíčů pro základní klíče spravované zákazníkem](https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key)|
 |Azure Service Bus|[Povolení přístupu k trezoru klíčů pro základní klíče spravované zákazníkem](https://docs.microsoft.com/azure/service-bus-messaging/configure-customer-managed-key)|
 |Azure Import/Export| [Použití klíčů spravovaných zákazníkem v Azure Key Vault pro službu import/export](https://docs.microsoft.com/azure/storage/common/storage-import-export-encryption-key-portal)
-|Azure Container Registry|[Šifrování registru pomocí klíčů spravovaných zákazníkem](../../container-registry/container-registry-customer-managed-keys.md)
+|Azure Container Registry|[Šifrování registru pomocí klíčů spravovaných zákazníkem](../../container-registry/container-registry-customer-managed-keys.md)<br><br/>[Přenos artefaktů do jiného registru](../../container-registry/container-registry-transfer-images.md)
 
 > [!NOTE]
 > Aby mohly příslušné služby získat přístup k Key Vault, musíte nastavit příslušné zásady přístupu Key Vault.

@@ -3,17 +3,18 @@ title: Řešení potíží se službou Azure Event Hubs pro Apache Kafka
 description: Tento článek popisuje, jak řešit problémy s Azure Event Hubs pro Apache Kafka
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: c2403fd51729ef8809b9a70383ad6f9fd91e52b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 034541aa6ea683c0e294ca8790b02f0dc60b5440
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322674"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090565"
 ---
 # <a name="apache-kafka-troubleshooting-guide-for-event-hubs"></a>Průvodce odstraňováním potíží s Apache Kafka pro Event Hubs
 Tento článek popisuje tipy k odstraňování problémů, ke kterým může dojít při použití Event Hubs pro Apache Kafka. 
 
 ## <a name="server-busy-exception"></a>Zaneprázdněná výjimka serveru
-Můžete obdržet výjimku zaneprázdnění serveru z důvodu omezení Kafka. U klientů AMQP Event Hubs hned po omezení služby okamžitě vrací výjimku **zaneprázdnění serveru** . Je ekvivalentní se zprávou "zkusit znovu později". V Kafka jsou zprávy před dokončením zpožděny. Délka zpoždění se vrátí v milisekundách jako `throttle_time_ms` v odpovědi na zpracování nebo načtení. Ve většině případů tyto opožděné požadavky nejsou protokolovány jako ServerBusy výjimky na Event Hubs řídicích panelech. Místo toho `throttle_time_ms` by měla být použita hodnota odpovědi jako ukazatel, který propustnost překročila zřízenou kvótu.
+Můžete obdržet výjimku zaneprázdnění serveru z důvodu omezení Kafka. U klientů AMQP Event Hubs hned po omezení služby okamžitě vrací výjimku **zaneprázdnění serveru** . Je ekvivalentní se zprávou "zkusit znovu později". V Kafka jsou zprávy před dokončením zpožděny. Délka zpoždění se vrátí v milisekundách jako `throttle_time_ms` v odpovědi na zpracování nebo načtení. Ve většině případů tyto opožděné požadavky nejsou zaprotokolovány jako výjimky zaneprázdněnosti serveru v Event Hubs řídicích panelech. Místo toho `throttle_time_ms` by měla být použita hodnota odpovědi jako ukazatel, který propustnost překročila zřízenou kvótu.
 
 Pokud je přenos nadměrný, služba má následující chování:
 
@@ -48,13 +49,13 @@ Zkontrolujte následující položky, pokud se při použití Kafka na Event Hub
 - **Brána firewall blokující provoz** – zajistěte, aby brána firewall neblokovala port **9093** .
 - **TopicAuthorizationException** – nejběžnější příčiny této výjimky jsou:
     - Překlep v připojovacím řetězci v konfiguračním souboru nebo
-    - Probíhá pokus o použití Event Hubs pro Kafka v oboru názvů úrovně Basic. Event Hubs pro Kafka se [podporují jenom pro obory názvů Standard a vyhrazené úrovně](https://azure.microsoft.com/pricing/details/event-hubs/).
+    - Probíhá pokus o použití Event Hubs pro Kafka v oboru názvů úrovně Basic. Funkce Event Hubs for Kafka je [podporována pouze pro obory názvů Standard a vyhrazené úrovně](https://azure.microsoft.com/pricing/details/event-hubs/).
 - **Neshoda verzí Kafka** – Event Hubs pro ekosystémy Kafka podporuje Kafka verze 1,0 a novější. Některé aplikace využívající Kafka verze 0,10 a novější můžou občas fungovat kvůli zpětné kompatibilitě protokolu Kafka, ale důrazně doporučujeme používat starší verze rozhraní API. Kafka verze 0,9 a starší nepodporují požadované protokoly SASL a nelze se připojit k Event Hubs.
 - **Podivné kódování v hlavičkách AMQP při použití s Kafka** – při posílání událostí do centra událostí přes AMQP jsou jakákoli AMQP hlavičky datové části serializovány v kódování AMQP. Kafka uživatelé nepoužívají k deserializaci hlaviček z AMQP. Chcete-li načíst hodnoty hlaviček, ručně dekóduje hlavičky AMQP. Případně se můžete vyhnout používání hlaviček AMQP, pokud víte, že budete spotřebovávat prostřednictvím protokolu Kafka. Další informace najdete v [tomto problému GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka/issues/56).
 - **SASL ověřování** – připravujeme vaše rozhraní, aby spolupracovalo s ověřovacím protokolem SASL, který vyžadovaná Event Hubs může být obtížnější, než aby splňovalo oči. Podívejte se, jestli můžete řešit problémy s konfigurací pomocí prostředků vašeho rozhraní na SASL ověřování. 
 
 ## <a name="limits"></a>Omezení
-Apache Kafka vs. Event Hubs Kafka. Ve většině případů má Event Hubs pro ekosystémy Kafka stejné výchozí hodnoty, vlastnosti, kódy chyb a obecné chování, které Apache Kafka dělá. Instance, které se tyto dva výslovně liší (nebo kde Event Hubs ukládá omezení Kafka), jsou uvedeny níže:
+Apache Kafka vs. Event Hubs Kafka. Ve většině případů má Event Hubs Kafka stejné výchozí hodnoty, vlastnosti, kódy chyb a obecné chování, které Apache Kafka provádí. Instance, které tyto dva explicitně liší (nebo kde Event Hubs ukládá omezení Kafka), jsou uvedeny níže:
 
 - Maximální délka `group.id` vlastnosti je 256 znaků.
 - Maximální velikost `offset.metadata.max.bytes` je 1024 bajtů.
@@ -67,4 +68,4 @@ Další informace o Event Hubs a Event Hubs pro Kafka najdete v následujících
 - [Apache Kafka příručka pro vývojáře pro Event Hubs](apache-kafka-developer-guide.md)
 - [Průvodce migrací Apache Kafka pro Event Hubs](apache-kafka-migration-guide.md)
 - [Nejčastější dotazy – Event Hubs pro Apache Kafka](apache-kafka-frequently-asked-questions.md)
-- [Doporučené konfigurace](https://github.com/Azure/azure-event-hubs-for-kafka/blob/master/CONFIGURATION.md)
+- [Doporučené konfigurace](apache-kafka-configurations.md)

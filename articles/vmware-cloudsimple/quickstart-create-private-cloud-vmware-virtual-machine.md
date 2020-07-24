@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4ac818cfd267b781366c0e32c9f93cc885dff99c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 000e30f2656b88c068654fd8099cdff0ce0a4b37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77566144"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091262"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>Vytváření virtuálních počítačů VMware v privátním cloudu
 
@@ -101,7 +102,7 @@ CloudSimple přiřadí výchozímu uživatelskému účtu vCenter s uživatelsk�
 
 Aplikace a úlohy běžící v prostředí privátního cloudu vyžadují překlad IP adres a služby DHCP pro vyhledání a přiřazení IP adresy. K poskytování těchto služeb se vyžaduje správná infrastruktura DHCP a DNS. Virtuální počítač v vCenter můžete nakonfigurovat tak, aby poskytoval tyto služby ve vašem prostředí privátního cloudu.
 
-Požadavky
+Předpoklady
 
 * Distribuovaná skupina portů s nakonfigurovanou sítí VLAN
 
@@ -121,9 +122,9 @@ Linux nabízí různé balíčky pro nastavení serverů DNS.  Tady je odkaz na 
 
 Tato témata Microsoftu popisují, jak nastavit server Windows jako server DNS a jako server DHCP.
 
-[Windows Server jako server DNS](https://docs.microsoft.com/windows-server/networking/dns/dns-top)
+[Windows Server jako server DNS](/windows-server/networking/dns/dns-top)
 
-[Windows Server jako server DHCP](https://docs.microsoft.com/windows-server/networking/technologies/dhcp/dhcp-top)
+[Windows Server jako server DHCP](/windows-server/networking/technologies/dhcp/dhcp-top)
 
 ## <a name="customize-networking-configuration-optional"></a>Přizpůsobení konfigurace sítě (volitelné)
 
@@ -138,7 +139,7 @@ Síťové stránky na portálu CloudSimple umožňují zadat konfiguraci pro tab
 5. V případě potřeby změňte časový limit nečinnosti pomocí posuvníku.
 6. Zadejte místní IP adresu, pro kterou chcete přiřadit veřejnou IP adresu.
 7. V případě potřeby zadejte přidružený název DNS.
-8. Klikněte na **Done** (Hotovo).
+8. Klikněte na **Hotovo**.
 
     ![Veřejná IP adresa](media/quick-create-pc-public-ip.png)
 

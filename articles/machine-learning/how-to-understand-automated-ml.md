@@ -10,11 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 12/05/2019
-ms.openlocfilehash: 119f26f8d5a425462382a873d7ca4bcfdd6f3d03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18addfc6b7a0002aba26b668481d6bedb612fffc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214498"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090344"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Vysvětlení výsledků automatizovaného strojového učení
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -22,11 +23,11 @@ ms.locfileid: "85214498"
 V tomto článku se dozvíte, jak zobrazit a pochopit grafy a metriky pro jednotlivé běhy automatizovaného strojového učení. 
 
 Přečtěte si další informace:
-+ [Metriky, grafy a křivky pro modely klasifikace](#classification)
-+ [Metriky, grafy a grafy pro regresní modely](#regression)
++ [Metriky a grafy pro modely klasifikace](#classification)
++ [Metriky a grafy pro regresní modely](#regression)
 + [Závažnost modelu a důležitost funkcí](#explain-model)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
@@ -75,28 +76,34 @@ Thee následující metriky a grafy jsou k dispozici pro každý model klasifika
 
 Následující metriky jsou uloženy v každé iteraci spuštění pro úlohu klasifikace.
 
-Metric|Popis|Výpočet|Další parametry
+Metrika|Popis|Výpočet|Další parametry
 --|--|--|--
-AUC_Macro| AUC je oblast pod křivkou s provozní charakteristikou přijímače. Makro je aritmetická střední hodnota AUC pro každou třídu.  | [Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | Average = "Macro"|
-AUC_Micro| AUC je oblast pod křivkou s provozní charakteristikou přijímače. Hodnota mikro je vypočítána globálně kombinací skutečných kladných hodnot a falešně pozitivních hodnot z každé třídy.| [Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | Average = "mikro"|
-AUC_Weighted  | AUC je oblast pod křivkou s provozní charakteristikou přijímače. Váže se aritmetický průměr skóre pro každou třídu, vážená o počet hodnot true instance v každé třídě.| [Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|Average = vážený
-accuracy|Přesnost je procento předpokládaných popisků, které přesně odpovídají skutečným popiskům. |[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html) |Žádná|
-average_precision_score_macro|Průměrná přesnost shrnuje křivku pro odvolání přesnosti jako vážený průměr přesností dosaženého při každé prahové hodnotě, přičemž se zvýší počet odvolání z předchozí prahové hodnoty použité jako váha. Makro je aritmetický průměr skóre každé třídy přesnosti.|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|Average = "Macro"|
-average_precision_score_micro|Průměrná přesnost shrnuje křivku pro odvolání přesnosti jako vážený průměr přesností dosaženého při každé prahové hodnotě, přičemž se zvýší počet odvolání z předchozí prahové hodnoty použité jako váha. Hodnota mikro je vypočítána globálně kombinací pravdivé kladné hodnoty a falešně pozitivních hodnot při každém přerušení.|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|Average = "mikro"|
-average_precision_score_weighted|Průměrná přesnost shrnuje křivku pro odvolání přesnosti jako vážený průměr přesností dosaženého při každé prahové hodnotě, přičemž se zvýší počet odvolání z předchozí prahové hodnoty použité jako váha. Vážená průměrná hodnota průměrného skóre přesnosti pro každou třídu, vážená o počet true instancí v každé třídě.|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|Average = vážený|
-balanced_accuracy|Vyvážená přesnost je aritmetickým průměrem odvolání jednotlivých tříd.|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|Average = "Macro"|
-f1_score_macro|Známkou F1 je harmonický průměr přesnosti a odvolání. Makro je aritmetický průměr skóre F1 pro každou třídu.|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|Average = "Macro"|
-f1_score_micro|Známkou F1 je harmonický průměr přesnosti a odvolání. Hodnota mikro je vypočítávána globálně vynásobením celkového počtu skutečných kladných hodnot, falešně negativních hodnot a falešně pozitivních hodnot.|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|Average = "mikro"|
-f1_score_weighted|Známkou F1 je harmonický průměr přesnosti a odvolání. Vážený průměr podle četnosti třídy F1 pro každou třídu|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|Average = vážený|
-log_loss|Jedná se o funkci ztráty použitou v rámci (MULTINOMIAL) logistické regrese a rozšíření, jako jsou například sítě neuronové, definované jako negativní protokol – pravděpodobnost hodnot true pro pravděpodobnostní třídění předpovědi. V případě jedné ukázky s true Label YT v {0,1} a odhadované pravděpodobnosti YP, že YT = 1 je ztráta protokolu-log P (yt&#124;YP) =-(yt log (YP) + (1-YT) log (1-YP)).|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|Žádná|
-norm_macro_recall|Normalizované odvolání makra představuje normalizované odvolání makra, takže náhodný výkon má skóre 0 a dokonalý výkon má skóre 1. Toho je dosaženo norm_macro_recall: = (recall_score_macro-R)/(1-R), kde R je očekávaná hodnota recall_score_macro pro náhodný předpovědi (tj. R = 0,5 pro binární klasifikaci a R = (1/C) pro problémy klasifikace C-Class).|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|Average = "Macro" |
-precision_score_macro|Přesnost je procentuální podíl přesně předpokládaných prvků, které jsou správně označeny. Makro je aritmetický průměr přesnosti pro každou třídu.|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|Average = "Macro"|
-precision_score_micro|Přesnost je procentuální podíl přesně předpokládaných prvků, které jsou správně označeny. Hodnota mikro se vypočítává globálně pomocí inventarizace celkových skutečných hodnot a falešně pozitivních hodnot.|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|Average = "mikro"|
-precision_score_weighted|Přesnost je procentuální podíl přesně předpokládaných prvků, které jsou správně označeny. Váže se aritmetický průměr pro každou třídu, vážený podle počtu skutečných instancí v každé třídě.|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|Average = vážený|
-recall_score_macro|Odvolání je procento správně označených prvků určité třídy. Makro je aritmetický průměr odvolání každé třídy.|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|Average = "Macro"|
-recall_score_micro|Odvolání je procento správně označených prvků určité třídy. Hodnota mikro se vypočítává globálně pomocí inventarizace celkových skutečných hodnot, falešně negativních hodnot a falešně pozitivních hodnot.|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|Average = "mikro"|
-recall_score_weighted|Odvolání je procento správně označených prvků určité třídy. Váže se aritmetický průměr pro každou třídu, vážený podle počtu skutečných instancí v každé třídě.|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|Average = vážený|
-weighted_accuracy|Vážená přesnost je přesnost, při které se váha předaná jednotlivým příkladům rovná poměru skutečných instancí v této skutečné třídě v tomto příkladu.|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|sample_weight je vektor, který se rovná podílu třídy pro každý prvek v cíli.|
+AUC_macro| AUC je oblast pod křivkou s provozní charakteristikou přijímače. Makro je aritmetická střední hodnota AUC pro každou třídu.  | [Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | Average = "Macro"|
+AUC_micro| AUC je oblast pod křivkou s provozní charakteristikou přijímače. Hodnota mikro je vypočítána globálně kombinací skutečných kladných hodnot a falešně pozitivních hodnot z každé třídy.| [Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | Average = "mikro"|
+AUC_weighted  | AUC je oblast pod křivkou s provozní charakteristikou přijímače. Váže se aritmetický průměr skóre pro každou třídu, vážená o počet hodnot true instance v každé třídě.| [Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|Average = vážený
+accuracy|Přesnost je procento předpokládaných popisků, které přesně odpovídají skutečným popiskům. |[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html) |Žádné|
+average_precision_score_macro|Průměrná přesnost shrnuje křivku pro odvolání přesnosti jako vážený průměr přesností dosaženého při každé prahové hodnotě, přičemž se zvýší počet odvolání z předchozí prahové hodnoty použité jako váha. Makro je aritmetický průměr skóre každé třídy přesnosti.|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|Average = "Macro"|
+average_precision_score_micro|Průměrná přesnost shrnuje křivku pro odvolání přesnosti jako vážený průměr přesností dosaženého při každé prahové hodnotě, přičemž se zvýší počet odvolání z předchozí prahové hodnoty použité jako váha. Hodnota mikro je vypočítána globálně kombinací pravdivé kladné hodnoty a falešně pozitivních hodnot při každém přerušení.|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|Average = "mikro"|
+average_precision_score_weighted|Průměrná přesnost shrnuje křivku pro odvolání přesnosti jako vážený průměr přesností dosaženého při každé prahové hodnotě, přičemž se zvýší počet odvolání z předchozí prahové hodnoty použité jako váha. Vážená průměrná hodnota průměrného skóre přesnosti pro každou třídu, vážená o počet true instancí v každé třídě.|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|Average = vážený|
+balanced_accuracy|Vyvážená přesnost je aritmetickým průměrem odvolání jednotlivých tříd.|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|Average = "Macro"|
+f1_score_macro|Známkou F1 je harmonický průměr přesnosti a odvolání. Makro je aritmetický průměr skóre F1 pro každou třídu.|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|Average = "Macro"|
+f1_score_micro|Známkou F1 je harmonický průměr přesnosti a odvolání. Hodnota mikro je vypočítávána globálně vynásobením celkového počtu skutečných kladných hodnot, falešně negativních hodnot a falešně pozitivních hodnot.|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|Average = "mikro"|
+f1_score_weighted|Známkou F1 je harmonický průměr přesnosti a odvolání. Vážený průměr podle četnosti třídy F1 pro každou třídu|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|Average = vážený|
+log_loss|Jedná se o funkci ztráty použitou v rámci (MULTINOMIAL) logistické regrese a rozšíření, jako jsou například sítě neuronové, definované jako negativní protokol – pravděpodobnost hodnot true pro pravděpodobnostní třídění předpovědi. V případě jedné ukázky s true Label YT v {0,1} a odhadované pravděpodobnosti YP, že YT = 1 je ztráta protokolu-log P (yt&#124;YP) =-(yt log (YP) + (1-YT) log (1-YP)).|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|Žádné|
+norm_macro_recall|Normalizované odvolání makra představuje normalizované odvolání makra, takže náhodný výkon má skóre 0 a dokonalý výkon má skóre 1. Toho je dosaženo norm_macro_recall: = (recall_score_macro-R)/(1-R), kde R je očekávaná hodnota recall_score_macro pro náhodný předpovědi (tj. R = 0,5 pro binární klasifikaci a R = (1/C) pro problémy klasifikace C-Class).|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|Average = "Macro" |
+precision_score_macro|Přesnost je procentuální podíl přesně předpokládaných prvků, které jsou správně označeny. Makro je aritmetický průměr přesnosti pro každou třídu.|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|Average = "Macro"|
+precision_score_micro|Přesnost je procentuální podíl přesně předpokládaných prvků, které jsou správně označeny. Hodnota mikro se vypočítává globálně pomocí inventarizace celkových skutečných hodnot a falešně pozitivních hodnot.|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|Average = "mikro"|
+precision_score_weighted|Přesnost je procentuální podíl přesně předpokládaných prvků, které jsou správně označeny. Váže se aritmetický průměr pro každou třídu, vážený podle počtu skutečných instancí v každé třídě.|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|Average = vážený|
+recall_score_macro|Odvolání je procento správně označených prvků určité třídy. Makro je aritmetický průměr odvolání každé třídy.|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|Average = "Macro"|
+recall_score_micro|Odvolání je procento správně označených prvků určité třídy. Hodnota mikro se vypočítává globálně pomocí inventarizace celkových skutečných hodnot, falešně negativních hodnot a falešně pozitivních hodnot.|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|Average = "mikro"|
+recall_score_weighted|Odvolání je procento správně označených prvků určité třídy. Váže se aritmetický průměr pro každou třídu, vážený podle počtu skutečných instancí v každé třídě.|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|Average = vážený|
+weighted_accuracy|Vážená přesnost je přesnost, při které se váha předaná jednotlivým příkladům rovná poměru skutečných instancí v této skutečné třídě v tomto příkladu.|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|sample_weight je vektor, který se rovná podílu třídy pro každý prvek v cíli.|
+
+### <a name="binary-vs-multiclass-metrics"></a>Binární a vícevrstvé metriky
+
+AutoML nerozlišuje mezi binárními a mi metrikami. Stejné metriky ověřování jsou hlášeny, zda má datová sada dvě třídy nebo více než dvě třídy. Některé metriky jsou však určeny pro klasifikaci s více třídami. Při použití na binární datovou sadu tyto metriky nepovažují žádnou třídu za `true` třídu, jak je možné očekávat. Metriky, které jsou jasně určeny pro více tříd, jsou s příponou `micro` , `macro` nebo `weighted` . Mezi příklady patří,,, `average_precision_score` `f1_score` `precision_score` `recall_score` a `AUC` .
+
+Konkrétní příklad usnadňuje zrušení tohoto rozlišení: místo výpočtu odvolání jako `tp / (tp + fn)` je průměrná hodnota vyvrácení ( `micro` , `macro` nebo) ve více třídách `weighted` v obou třídách binární datové sady klasifikace. To je ekvivalentní k výpočtu odvolání pro `true` třídu a `false` třídu samostatně a pak přebírá průměr dvou.
 
 <a name="confusion-matrix"></a>
 
@@ -143,15 +150,13 @@ V závislosti na cíli podnikového problému se může způsobit, že se křivk
 ### <a name="roc-chart"></a>Graf ROC
 
 #### <a name="what-is-a-roc-chart"></a>Co je graf ROC?
-Provozní charakteristika přijímače (nebo ROC) je graf správně klasifikovaných popisků vs. nesprávně klasifikované popisky pro konkrétní model. Křivka ROC může být méně informativní při výuce modelů u datových sad s vysokým posunem, protože se nezobrazují falešně pozitivní popisky.
+Provozní charakteristika (nebo ROC) přijímače je graf správně klasifikovaných popisků vs. nesprávně klasifikované popisky pro konkrétní model. Křivka ROC může být méně informativní při výuce modelů u datových sad s vysokou nevyrovnanou třídou, protože většina třídy může drowN příspěvek z minoritních tříd.
 
 #### <a name="what-does-automated-ml-do-with-the-roc-chart"></a>K čemu se v grafu ROC používá automatizovaná ML?
-Automatizované ML generuje průměrnou přesnost v makru – odvolání, průměrnou přesnost přesnosti – odvolání a přesnost odvolání přidruženou ke všem třídám pro model. 
-
-Makro – průměr vypočítává metriku nezávisle na každé třídě a pak vypočítá průměr a současně zpracuje všechny třídy. Střední hodnota však agreguje příspěvky všech tříd pro výpočet průměru. Mikroprůměr je vhodnější, pokud je v datové sadě přítomna nerovnováha tříd.
+Oblast v grafu ROC můžete vizualizovat jako poměr správně klasifikovaných vzorků. Pokročilý uživatel grafu ROC může nahlížet nad rámec oblasti pod křivkou a získat Intuition pro pravdivé kladné a falešně pozitivní míry jako funkci prahové hodnoty klasifikace nebo hranice rozhodnutí.
 
 #### <a name="what-does-a-good-model-look-like"></a>Co vypadá dobrý model?
-V ideálním případě bude mít model číslo bližší až 100% true kladné míry a nablíže k 0% falešně pozitivní hodnotě. 
+Nejlepší model je křivka ROC, která přistupuje k levému hornímu rohu s 100% true a hodnotou 0% falešně pozitivní hodnotou. Náhodný model se zobrazí jako plochý čára od levého dolního rohu k pravému hornímu rohu. Horší než náhodné by byly DIP pod řádkem y = x.
 
 ##### <a name="example-1-a-classification-model-with-low-true-labels-and-high-false-labels"></a>Příklad 1: klasifikační model s dolními popisky s nízkou hodnotou a horními nepravdivými popisky
 ![Klasifikační model s dolními popisky s nízkou hodnotou a horními nepravdivými popisky](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-1.png)
@@ -161,7 +166,8 @@ V ideálním případě bude mít model číslo bližší až 100% true kladné 
 <a name="lift-curve"></a>
 ### <a name="lift-chart"></a>Nazvednutí grafu
 #### <a name="what-is-a-lift-chart"></a>Co je graf výtahu?
-K vyhodnocení výkonu modelu klasifikace se používají výtahové grafy. Ukazuje, kolik lépe můžete očekávat s generovaným modelem v porovnání s bez modelu z hlediska přesnosti.
+K vyhodnocení výkonu modelů klasifikace se používají výtahové grafy. Graf výtahu ukazuje, kolikrát je model lépe vykonává v porovnání s náhodným modelem. Díky tomu získáte relativní výkon, který vezme v úvahu skutečnost, že klasifikace je těžší při zvýšení počtu tříd. Náhodný model nesprávně odhadne větší zlomek vzorků z datové sady s deseti třídami v porovnání s datovou sadou se dvěma třídami.
+
 #### <a name="what-does-automated-ml-do-with-the-lift-chart"></a>Co dělá automatizované ML s grafem výtahu?
 Můžete porovnat výtah modelu sestavený automaticky s Azure Machine Learning do směrného plánu, aby bylo možné zobrazit hodnoty pro konkrétní model.
 #### <a name="what-does-a-good-model-look-like"></a>Co vypadá dobrý model?
@@ -171,10 +177,10 @@ Můžete porovnat výtah modelu sestavený automaticky s Azure Machine Learning 
 ##### <a name="example-2-a-classification-model-that-performs-better-than-a-random-selection-model"></a>Příklad 2: model klasifikace, který provádí lepší, než model náhodného výběru
 ![Model klasifikace, který zajišťuje lepší](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve2.png)
 <a name="gains-curve"></a>
-### <a name="gains-chart"></a>Graf zisků
-#### <a name="what-is-a-gains-chart"></a>Co je graf zisků?
+### <a name="cumulative-gains-chart"></a>Graf kumulativních zisků
+#### <a name="what-is-a-cumulative-gains-chart"></a>Co je kumulativní graf zisků?
 
-Graf zisků vyhodnocuje výkon klasifikačního modelu podle každé části dat. Zobrazuje se pro každý percentil sady dat, kolik lepších výsledků můžete očekávat v porovnání s modelem náhodného výběru.
+Kumulativní graf kurzů vyhodnocuje výkon klasifikačního modelu podle každé části dat. Pro každý percentil sady dat graf znázorňuje, kolik dalších ukázek bylo přesně klasifikováno.
 
 #### <a name="what-does-automated-ml-do-with-the-gains-chart"></a>Co dělá automatizované ML s grafem zisků?
 Pomocí grafu kumulativních zisků vám pomůžete vybrat přerušení klasifikace pomocí procenta, které odpovídá požadovanému zisku z modelu. Tyto informace poskytují další způsob, jak si prohlédnout výsledky v doprovodném grafu výtahu.
@@ -195,7 +201,7 @@ Pro všechny problémy s klasifikací můžete zkontrolovat kalibrační čáru 
 
 Makro – průměr vypočítává metriku nezávisle na každé třídě a pak vypočítá průměr a současně zpracuje všechny třídy. Střední hodnota však agreguje příspěvky všech tříd pro výpočet průměru. 
 #### <a name="what-does-a-good-model-look-like"></a>Co vypadá dobrý model?
- Dobře kalibrovaný model zarovnává se čárou y = x, kde je v jeho předpovědi rozumně oprávněně zajistině. Model s vysokou jistotou se zarovnává s čárou y = 0, kde předpokládaná pravděpodobnost je přítomna, ale neexistuje žádná skutečná pravděpodobnost. 
+Dobře kalibrovaný model zarovnává se čárou y = x, kde správně předpovídá pravděpodobnost, že vzorky patří do jednotlivých tříd. Model s nadjistým využitím předpovídání pravděpodobností téměř nula a jedna, zřídka nejisté o třídě jednotlivých vzorků.
 
 
 ##### <a name="example-1-a-well-calibrated-model"></a>Příklad 1: dobře kalibrovaný model
@@ -217,19 +223,19 @@ Thee následující metriky a grafy jsou k dispozici pro každý regresní model
 
 Následující metriky jsou uloženy v každé iteraci spuštění pro úlohu regrese nebo předpovědi.
 
-|Metric|Popis|Výpočet|Další parametry
+|Metrika|Popis|Výpočet|Další parametry
 --|--|--|--|
-explained_variance|Vysvětlení odchylky je poměr, ke kterému chcete vytvořit matematické modely pro variaci dané datové sady. Jedná se o procento snížení odchylky původních dat s odchylkou chyb. Pokud je střední hodnota chyb 0, je rovna vysvětlit odchylku.|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|Žádná|
-r2_score|R2 je koeficient určení nebo procento snížení počtu kvadratických chyb v porovnání se základním modelem, který má za následek výstup středníku. |[Výpočet](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|Žádná|
-spearman_correlation|Korelace Spearman je neparametrová míra monotonicity vztahu mezi dvěma datovými sadami. Na rozdíl od korelace Pearsonova nepředpokládá korelace Spearman, že obě datové sady jsou normálně distribuovány. Podobně jako u jiných korelačních korelace se tato hodnota liší v rozsahu-1 až + 1 s 0, což neimplikuje žádnou korelaci. Korelace-1 nebo + 1 implikuje přesný vztah monotónní. Kladné korelace znamenají, že při zvýšení hodnoty x, takže ano. Záporná korelace implikuje za následek, že při zvyšování hodnoty x se sníží hodnota y.|[Výpočet](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|Žádná|
-mean_absolute_error|Střední absolutní chyba je očekávaná hodnota absolutní hodnoty rozdíl mezi cílem a předpovědí.|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|Žádná|
-normalized_mean_absolute_error|Normalizovaná střední chyba znamená absolutní chybu dělenou rozsahem dat.|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|Rozdělit podle rozsahu dat|
-median_absolute_error|Střední absolutní chyba je medián všech absolutních rozdílů mezi cílem a předpovědi. Tato ztráta je robustní pro odlehlé hodnoty.|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|Žádná|
-normalized_median_absolute_error|Normalizovaná absolutní chyba mediánu je absolutní chyba mediánu dělená rozsahem dat.|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|Rozdělit podle rozsahu dat|
-root_mean_squared_error|Kořenová střední Chyba je druhá odmocnina očekávaného čtvercového rozdílu mezi cílem a předpovědí.|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|Žádná|
-normalized_root_mean_squared_error|Normalizovaný základní Průměrná chyba je kořenová chyba, která je dělená rozsahem dat.|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|Rozdělit podle rozsahu dat|
-root_mean_squared_log_error|Hodnota původní střední Chyba protokolu je druhá odmocnina očekávaného čtvercového logaritmu chyby.|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Žádná|
-normalized_root_mean_squared_log_error|Normalizovaná chyba na čtvercovém středním významu protokolu je chyba v kořenovém středním významu protokolu dělená rozsahem dat|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Rozdělit podle rozsahu dat|
+explained_variance|Vysvětlení odchylky je poměr, ke kterému chcete vytvořit matematické modely pro variaci dané datové sady. Jedná se o procento snížení odchylky původních dat s odchylkou chyb. Pokud je střední hodnota chyb 0, je rovna vysvětlit odchylku.|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|Žádné|
+r2_score|R2 je koeficient určení nebo procento snížení počtu kvadratických chyb v porovnání se základním modelem, který má za následek výstup středníku. |[Kalkulační](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|Žádné|
+spearman_correlation|Korelace Spearman je neparametrová míra monotonicity vztahu mezi dvěma datovými sadami. Na rozdíl od korelace Pearsonova nepředpokládá korelace Spearman, že obě datové sady jsou normálně distribuovány. Podobně jako u jiných korelačních korelace se tato hodnota liší v rozsahu-1 až + 1 s 0, což neimplikuje žádnou korelaci. Korelace-1 nebo + 1 implikuje přesný vztah monotónní. Kladné korelace znamenají, že při zvýšení hodnoty x, takže ano. Záporná korelace implikuje za následek, že při zvyšování hodnoty x se sníží hodnota y.|[Kalkulační](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|Žádné|
+mean_absolute_error|Střední absolutní chyba je očekávaná hodnota absolutní hodnoty rozdíl mezi cílem a předpovědí.|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|Žádné|
+normalized_mean_absolute_error|Normalizovaná střední chyba znamená absolutní chybu dělenou rozsahem dat.|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|Rozdělit podle rozsahu dat|
+median_absolute_error|Střední absolutní chyba je medián všech absolutních rozdílů mezi cílem a předpovědi. Tato ztráta je robustní pro odlehlé hodnoty.|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|Žádné|
+normalized_median_absolute_error|Normalizovaná absolutní chyba mediánu je absolutní chyba mediánu dělená rozsahem dat.|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|Rozdělit podle rozsahu dat|
+root_mean_squared_error|Kořenová střední Chyba je druhá odmocnina očekávaného čtvercového rozdílu mezi cílem a předpovědí.|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|Žádné|
+normalized_root_mean_squared_error|Normalizovaný základní Průměrná chyba je kořenová chyba, která je dělená rozsahem dat.|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|Rozdělit podle rozsahu dat|
+root_mean_squared_log_error|Hodnota původní střední Chyba protokolu je druhá odmocnina očekávaného čtvercového logaritmu chyby.|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Žádné|
+normalized_root_mean_squared_log_error|Normalizovaná chyba na čtvercovém středním významu protokolu je chyba v kořenovém středním významu protokolu dělená rozsahem dat|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Rozdělit podle rozsahu dat|
 
 ### <a name="predicted-vs-true-chart"></a><a name="pvt"></a>Předpokládaný vs. pravdivý graf
 #### <a name="what-is-a-predicted-vs-true-chart"></a>Co je předpokládaný graf vs. true?
@@ -249,11 +255,11 @@ Po každém spuštění můžete zobrazit předpokládaný a pravdivý graf pro 
 
 ### <a name="histogram-of-residuals-chart"></a><a name="histo"></a>Histogram grafu zbytků
 #### <a name="what-is-a-residuals-chart"></a>Co je graf zbytků?
-Reziduální představuje pozorovanou hodnotu y – předpovězené y. Chcete-li zobrazit marži chyby s nízkou špičkou, histogram zbytku by měl být ve tvaru špičky uprostřed na střed 0. 
+Reziduální je rozdíl mezi předpověď a skutečnou hodnotou ( `y_pred - y_true` ). Chcete-li zobrazit marži chyby s nízkou špičkou, histogram zbytku by měl být ve tvaru špičky uprostřed na střed 0. 
 #### <a name="what-does-automated-ml-do-with-the-residuals-chart"></a>Co dělá automatizované ML s grafem zbytků?
 Automatizovaná ML automaticky poskytuje graf reziduálního grafu pro zobrazení distribuce chyb v předpovědi.
 #### <a name="what-does-a-good-model-look-like"></a>Co vypadá dobrý model?
-Dobrým modelem bude obvykle křivka zvonku nebo chyby s nulovou hodnotou.
+Dobrým modelem budou obvykle blízko sebe nula.
 
 ##### <a name="example-1-a-regression-model-with-bias-in-its-errors"></a>Příklad 1: regresní model s posunem v jeho chybách
 ![SA regresní model s posunem v jeho chybách](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression3.png)

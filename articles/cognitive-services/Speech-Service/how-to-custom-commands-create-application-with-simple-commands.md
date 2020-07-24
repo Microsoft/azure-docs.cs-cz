@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 8e0927ccd8c94f589adf6eb11004b728f697b6e1
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 6552d13ab68d8028cd95b18f2d0895d53bba462c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362403"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090956"
 ---
 # <a name="create-application-with-simple-commands"></a>Vytvoření aplikace s jednoduchými příkazy
 
@@ -84,7 +84,7 @@ V dalším kroku musí mít příkaz pravidlo dokončení. Toto pravidlo přiká
     | Nastavení    | Navrhovaná hodnota                          | Popis                                        |
     | ---------- | ---------------------------------------- | -------------------------------------------------- |
     | **Název**       | ConfirmationResponse                  | Název popisující účel pravidla          |
-    | **Podmínky** | Žádná                                     | Podmínky, které určují, kdy se pravidlo dá spustit    |
+    | **Podmínky** | Žádné                                     | Podmínky, které určují, kdy se pravidlo dá spustit    |
     | **Akce**    | Odeslat odezvu na řeč > jednoduchý editor > první variaci >`Ok, turning the tv on` | Akce, která se má provést, když je podmínka pravidla pravdivá |
     
 
@@ -96,11 +96,10 @@ V dalším kroku musí mít příkaz pravidlo dokončení. Toto pravidlo přiká
 1. Akci uložte kliknutím na **Uložit** .
 1. Zpátky v části **pravidla dokončování** vyberte **Uložit** a uložte všechny změny. 
 
-
- > [!NOTE]
+    > [!NOTE]
     > Není nutné používat výchozí pravidlo dokončení, které je součástí příkazu. V případě potřeby můžete stávající výchozí pravidlo dokončování odstranit a přidat vlastní pravidlo.
 
-### <a name="try-it-out"></a>Vyzkoušejte si to.
+### <a name="try-it-out"></a>Vyzkoušet
 
 Testování chování pomocí panelu chat testu
 1. Vyberte ikonu **výuky** v pravém horním rohu okna.
@@ -126,7 +125,7 @@ Pak upravte existující pravidla dokončení **dokončeno** následujícím zp�
 | Nastavení    | Navrhovaná hodnota                          |
 | ---------- | ---------------------------------------- |
 | Název  | ConfirmationResponse                  |
-| Podmínky | Žádná                                     |
+| Podmínky | Žádné                                     |
 | Akce    | Odeslat odezvu na řeč > jednoduchý editor > první variaci >`Ok, setting temperature to 40 degrees` |
 
 Výběrem **Uložit** uložte všechny změny do příkazu.
@@ -137,15 +136,15 @@ Vytvořte nový příkaz **SetAlarm** pomocí ukázkové věty "**Nastavení ala
 | Nastavení    | Navrhovaná hodnota                          |
 | ---------- | ---------------------------------------- |
 | Název pravidla  | ConfirmationResponse                  |
-| Podmínky | Žádná                                     |
+| Podmínky | Žádné                                     |
 | Akce    | Odeslat odezvu na řeč > jednoduchý editor > první variaci >`Ok, setting an alarm for 9 am tomorrow` |
 
 Výběrem **Uložit** uložte všechny změny do příkazu.
 
-## <a name="try-it-out"></a>Vyzkoušejte si to.
+## <a name="try-it-out"></a>Vyzkoušet
 
 Testování chování pomocí panelu chat testu
-1. Vyberte **vlak**. Po úspěšném školení vyberte **test** a vyzkoušejte:
+1. Vyberte **Train** (Trénování). Po úspěšném školení vyberte **test** a vyzkoušejte:
     - Zadáte: Nastavte teplotu na 40 stupňů.
     - Očekávaná odpověď: OK, nastavení teploty na 40 stupňů
     - Zadáte: zapnout televizor

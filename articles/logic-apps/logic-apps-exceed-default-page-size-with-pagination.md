@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 04/11/2019
-ms.openlocfilehash: 9f114dd0428e13b3e1a205fea353b38b1f8a6f97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d46bf711a46e27b81a1284b5fc55cf403b7da048
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83835355"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090259"
 ---
 # <a name="get-more-data-items-or-records-by-using-pagination-in-azure-logic-apps"></a>Získání dalších dat, položek nebo záznamů pomocí stránkování v Azure Logic Apps
 
@@ -26,18 +27,18 @@ Zapnutí nastavení stránkování načítá stránky výsledků na základě ve
 
 Tady je seznam s pouze některými konektory, kde můžete překročit výchozí velikost stránky pro konkrétní akce:
 
-* [Azure Blob Storage](https://docs.microsoft.com/connectors/azureblob/)
-* [Dynamics 365](https://docs.microsoft.com/connectors/dynamicscrmonline/)
-* [Excel](https://docs.microsoft.com/connectors/excel/)
-* [HTTP](https://docs.microsoft.com/azure/connectors/connectors-native-http)
-* [IBM DB2](https://docs.microsoft.com/connectors/db2/)
-* [Microsoft Teams](https://docs.microsoft.com/connectors/teams/)
-* [Oracle Database](https://docs.microsoft.com/connectors/oracle/)
-* [Salesforce](https://docs.microsoft.com/connectors/salesforce/)
-* [SharePoint](https://docs.microsoft.com/connectors/sharepointonline/)
-* [SQL Server](https://docs.microsoft.com/connectors/sql/)
+* [Azure Blob Storage](/connectors/azureblob/)
+* [Dynamics 365](/connectors/dynamicscrmonline/)
+* [Excel](/connectors/excel/)
+* [HTTP](../connectors/connectors-native-http.md)
+* [IBM DB2](/connectors/db2/)
+* [Microsoft Teams](/connectors/teams/)
+* [Oracle Database](/connectors/oracle/)
+* [Salesforce](/connectors/salesforce/)
+* [SharePoint](/connectors/sharepointonline/)
+* [SQL Server](/connectors/sql/)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -83,4 +84,4 @@ Když zapnete stránkování pro akci, která tuto funkci podporuje, zahrnuje de
 
 ## <a name="get-support"></a>Získání podpory
 
-Otázky najdete na stránce s [dotazem na&Microsoft Q pro Azure Logic Apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
+Otázky najdete na stránce s [dotazem na&Microsoft Q pro Azure Logic Apps](/answers/topics/azure-logic-apps.html).

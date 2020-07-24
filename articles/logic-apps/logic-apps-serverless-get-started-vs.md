@@ -6,17 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
-ms.openlocfilehash: 2e27958dd9379a26ca7e7f4d7e427e5afa216e29
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86ee81f3802b7ec7f8189123192c20143a08cf3d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75981151"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090242"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>Sestavte svou první aplikaci bez serveru pomocí Azure Logic Apps a Azure Functions v aplikaci Visual Studio
 
 Cloudové aplikace můžete rychle vyvíjet a nasazovat pomocí nástrojů a možností bez serveru v Azure, například [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [Azure Functions](../azure-functions/functions-overview.md). Tento článek ukazuje, jak začít vytvářet aplikace bez serveru, která používá aplikaci logiky, která volá funkci Azure ve Visual Studiu. Další informace o řešeních bez serveru v Azure najdete v tématu [Azure bez serveru s funkcemi a Logic Apps](../logic-apps/logic-apps-serverless-overview.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li vytvořit aplikaci bez serveru v aplikaci Visual Studio, budete potřebovat:
 
@@ -31,9 +32,9 @@ Chcete-li vytvořit aplikaci bez serveru v aplikaci Visual Studio, budete potře
     > Když nainstalujete Visual Studio 2019 nebo 2017, ujistěte se, že jste vybrali úlohu **vývoj pro Azure** .
 
   * [Microsoft Azure SDK pro .NET (verze 2.9.1 nebo novější)](https://azure.microsoft.com/downloads/). 
-  Další informace o sadě [Azure SDK pro .NET](https://docs.microsoft.com/dotnet/azure/dotnet-tools?view=azure-dotnet).
+  Další informace o sadě [Azure SDK pro .NET](/dotnet/azure/dotnet-tools?view=azure-dotnet).
 
-  * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation).
+  * [Azure PowerShell.](https://github.com/Azure/azure-powershell#installation)
 
   * Azure Logic Apps nástroje pro verzi sady Visual Studio, kterou chcete:
 
@@ -43,7 +44,7 @@ Chcete-li vytvořit aplikaci bez serveru v aplikaci Visual Studio, budete potře
 
     * [Visual Studio 2015](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2015)
   
-    Azure Logic Apps Tools můžete stáhnout a nainstalovat přímo z Visual Studio Marketplace nebo si můžete přečíst, [jak toto rozšíření nainstalovat v rámci sady Visual Studio](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions). 
+    Azure Logic Apps Tools můžete stáhnout a nainstalovat přímo z Visual Studio Marketplace nebo si můžete přečíst, [jak toto rozšíření nainstalovat v rámci sady Visual Studio](/visualstudio/ide/finding-and-using-visual-studio-extensions). 
     Po dokončení instalace nezapomeňte sadu Visual Studio restartovat.
 
   * [Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools) pro funkce místního ladění.
@@ -135,7 +136,7 @@ Pokud chcete aplikaci logiky upravit po nasazení, otevřete aplikaci logiky pom
 
 ## <a name="create-your-azure-functions-project"></a>Vytvoření projektu Azure Functions
 
-Pokud chcete vytvořit projekt funkcí a funkci pomocí JavaScriptu, Pythonu, F #, PowerShellu, Batch nebo bash, postupujte podle kroků v části [práce s Azure Functions Core Tools](../azure-functions/functions-run-local.md). Chcete-li vyvíjet funkci Azure Functions v rámci vašeho řešení pomocí jazyka C#, použijte knihovnu tříd C# podle kroků v části [publikování knihovny tříd .NET jako Function App](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/16/publishing-a-net-class-library-as-a-function-app/).
+Pokud chcete vytvořit projekt funkcí a funkci pomocí JavaScriptu, Pythonu, F #, PowerShellu, Batch nebo bash, postupujte podle kroků v části [práce s Azure Functions Core Tools](../azure-functions/functions-run-local.md). Chcete-li vyvíjet funkci Azure Functions v rámci vašeho řešení pomocí jazyka C#, použijte knihovnu tříd C# podle kroků v části [publikování knihovny tříd .NET jako Function App](https://azure.microsoft.com/blog/).
 
 ## <a name="deploy-functions-from-visual-studio"></a>Nasazení funkcí ze sady Visual Studio
 

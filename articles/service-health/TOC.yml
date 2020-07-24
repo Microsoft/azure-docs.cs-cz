@@ -24,7 +24,7 @@
 - name: Postup
   items:
     - name: Konfigurace výstrah pro události Service Health
-      href: alerts-activity-log-service-notifications.md
+      href: ./alerts-activity-log-service-notifications-portal.md
     - name: Zobrazení oznámení o stavu služby s využitím webu Azure Portal
       href: service-notifications.md
     - name: Odesílání oznámení mimo systémy prostřednictvím webhooku

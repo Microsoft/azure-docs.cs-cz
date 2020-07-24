@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: e80ec71bef8c34331fac076b7b08be48a9571c2e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: db1de363856fd560fea97f8f9cdf542717c4cca3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107695"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090089"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>Sestavení plánu migrace s využitím Azure Migrate
 
@@ -151,7 +151,7 @@ Před dokončením plánu migrace zajistěte, aby tyto klíčové předpoklady m
 
 - V případě potřeby získáte podporu pro vaši implementaci. Mnoho organizací si pro podporu migrace do cloudu vyžádá externí pomoc. Pokud chcete rychle a bez obav přejít na Azure s přizpůsobenou asistencí, vezměte v úvahu [poskytovatele spravované služby Azure expert](https://www.microsoft.com/solution-providers/search?cacheId=9c2fed4f-f9e2-42fb-8966-4c565f08f11e&ocid=CM_Discovery_Checklist_PDF)   nebo [FastTrack for Azure](https://azure.microsoft.com/programs/azure-fasttrack/?ocid=CM_Discovery_Checklist_PDF).  
 
-Vytvořte účinný plán migrace do cloudu, který obsahuje podrobné informace o seznamu nebo skupinách aplikací, které chcete migrovat, omezení dostupnosti vaší aplikace a databáze a o požadované milníky migrace. Plán migrace by měl také počítat s tím, jak dlouho bude kopírování dat trvat, a zahrnovat considerate vyrovnávací paměť pro testování po migraci a aktivity přímou migraci. Testování po migraci musí zahrnovat případy použití funkce, integrace, zabezpečení a testování výkonu, aby migrované aplikace fungovaly podle očekávání a všechny databázové objekty a relace dat byly úspěšně přeneseny do cloudu. Testování po migraci musí zahrnovat případy použití funkce, integrace, zabezpečení a testování výkonu, aby migrované aplikace fungovaly podle očekávání a všechny databázové objekty a relace dat byly úspěšně přeneseny do cloudu.  
+Vytvořte účinný plán migrace do cloudu, který obsahuje podrobné informace o seznamu nebo skupinách aplikací, které chcete migrovat, omezení dostupnosti vaší aplikace a databáze a o požadované milníky migrace. Plán migrace by měl také počítat s tím, jak dlouho bude kopírování dat trvat, a zahrnovat considerate vyrovnávací paměť pro testování po migraci a aktivity přímou migraci. Testování po migraci musí zahrnovat případy použití funkce, integrace, zabezpečení a testování výkonu, aby migrované aplikace fungovaly podle očekávání a všechny databázové objekty a relace dat byly úspěšně přeneseny do cloudu.  
 
 Pomocí této analýzy můžete sestavit plán migrace a deklarovat okno údržby pro migraci vašich aplikací a databází s minimálním počtem nulových výpadků a omezením potenciálního provozního nebo podnikového dopadu při migraci.  
 

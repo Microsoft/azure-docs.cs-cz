@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/21/2020
 ms.author: juliako
-ms.openlocfilehash: 9788c4663908497b51fbaaf7f824125d857e7c81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 33c762e2f2a9bed90991f7b85e0fb83fbb43765c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83774413"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090157"
 ---
 # <a name="get-credentials-to-access-media-services-api"></a>Získání přihlašovacích údajů pro přístup k rozhraní Media Services API  
 
@@ -28,13 +29,13 @@ Když použijete ověřování Azure AD pro přístup k rozhraní Azure Media Se
     Ověří službu. Aplikace, které běžně používají tuto metodu ověřování, jsou aplikace, které spouštějí služby démon, služby střední vrstvy nebo naplánované úlohy: webové aplikace, aplikace Function App, Logic Apps, rozhraní API nebo mikroslužba.
 - **Ověřování uživatelů**
 
-    Ověřte osobu, která aplikaci používá k interakci s Media Servicesmi prostředky. Interaktivní aplikace by měla nejdřív vyzvat uživatele k zadání přihlašovacích údajů. Příkladem je aplikace konzoly pro správu používaná autorizovanými uživateli k monitorování úloh kódování nebo živého streamování. 
+    Ověřte osobu, která aplikaci používá k interakci s Media Servicesmi prostředky. Interaktivní aplikace by měla nejdřív vyzvat uživatele k zadání přihlašovacích údajů. Příkladem je aplikace konzoly pro správu, kterou autorizovaní uživatelé používají k monitorování úloh kódování nebo živého streamování. 
 
 Tento článek popisuje kroky pro získání přihlašovacích údajů pro přístup k rozhraní Media Services API. Vyberte z následujících karet.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- Účet Azure. Pokud účet nemáte, začněte s [bezplatnou zkušební verzí Azure](https://azure.microsoft.com/pricing/free-trial/). 
+- Účet Azure: Pokud účet nemáte, začněte s [bezplatnou zkušební verzí Azure](https://azure.microsoft.com/pricing/free-trial/). 
 - Účet Media Services. Další informace najdete v tématu [Vytvoření účtu Azure Media Services pomocí Azure Portal](create-account-howto.md).
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
@@ -55,7 +56,7 @@ Ověřuje službu pomocí aplikace Azure Active Directory (Azure AD) a tajného 
 
 V části **Správa aplikace AAD a tajného klíče** můžete vybrat nebo vytvořit novou aplikaci Azure AD a vygenerovat tajný klíč. Pro účely zabezpečení nelze tajný klíč zobrazit po zavření okna. Aplikace používá ID aplikace a tajný klíč k ověření k získání platného tokenu pro Media Services.
 
-Ujistěte se, že máte dostatečná oprávnění k registraci aplikace v tenantovi Azure AD a přiřazení aplikace k roli v předplatném Azure. Další informace najdete v tématu [požadovaná oprávnění](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
+Ujistěte se, že máte dostatečná oprávnění k registraci aplikace v tenantovi Azure AD a přiřazení aplikace k roli v předplatném Azure. Další informace najdete v tématu [požadovaná oprávnění](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
 #### <a name="connect-to-media-services-api"></a>Připojení k rozhraní Media Services API
 

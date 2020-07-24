@@ -17,12 +17,12 @@ ms.date: 04/29/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: cb984a944067ddb1449f58b464e596fd138dc7c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2921fb2895b8e42c0564c6e815a08da1d7e9d12d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82592005"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089970"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Posílání nabízených oznámení pomocí Azure Notification Hubs a Node.js
 
@@ -44,7 +44,7 @@ Mezi zahrnuté scénáře patří odesílání nabízených oznámení do aplika
 
 ## <a name="notification-hubs"></a>Notification Hubs
 
-Azure Notification Hubs poskytují snadno použitelná škálovatelnou infrastrukturu pro více platforem pro posílání nabízených oznámení na mobilní zařízení. Podrobnosti o infrastruktuře služby najdete na stránce [Azure Notification Hubs](https://msdn.microsoft.com/library/windowsazure/jj927170.aspx) .
+Azure Notification Hubs poskytují snadno použitelná škálovatelnou infrastrukturu pro více platforem pro posílání nabízených oznámení na mobilní zařízení. Podrobnosti o infrastruktuře služby najdete na stránce [Azure Notification Hubs](/previous-versions/azure/azure-services/jj927170(v=azure.100)) .
 
 ## <a name="create-a-nodejs-application"></a>Vytvoření aplikace Node.js
 
@@ -89,7 +89,7 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 ![Azure Portal – Notification Hubs](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
 
 > [!NOTE]
-> Připojovací řetězec můžete také načíst pomocí rutiny **Get-AzureSbNamespace** , kterou poskytuje [Azure PowerShell](/powershell/azureps-cmdlets-docs) , nebo pomocí příkazu pro **zobrazení oboru názvů Azure SB** v [rozhraní příkazového řádku Azure (Azure CLI)](../cli-install-nodejs.md).
+> Připojovací řetězec můžete také načíst pomocí rutiny **Get-AzureSbNamespace** , kterou poskytuje [Azure PowerShell](/powershell/azure/) , nebo pomocí příkazu pro **zobrazení oboru názvů Azure SB** v [rozhraní příkazového řádku Azure (Azure CLI)](/cli/azure/install-classic-cli).
 
 ## <a name="general-architecture"></a>Obecná architektura
 
@@ -155,11 +155,11 @@ notificationHubService.apns.send(null, payload, function(error){
 - **Tags** – identifikátor značky. Pokud není zadaná žádná značka, pošle se oznámení všem klientům.
 - **Datová** část XML zprávy.
 - **TargetName**  -  Cílový_název `toast` pro informační zprávy. `token`pro oznámení na dlaždici.
-- **NotificationClass** – priorita oznámení Platné hodnoty najdete v části **elementy hlavičky protokolu HTTP** v [nabízených oznámeních z dokumentu serveru](https://msdn.microsoft.com/library/hh221551.aspx) .
+- **NotificationClass** – priorita oznámení Platné hodnoty najdete v části **elementy hlavičky protokolu HTTP** v [nabízených oznámeních z dokumentu serveru](/previous-versions/windows/xna/bb200104(v=xnagamestudio.41)) .
 - **Možnosti** – nepovinné hlavičky požadavku.
 - **Zpětné volání** – funkce zpětného volání.
 
-Seznam platných `TargetName` `NotificationClass` a hlavičkových možností najdete na stránce s [nabízenými oznámeními ze serveru](https://msdn.microsoft.com/library/hh221551.aspx) .
+Seznam platných `TargetName` `NotificationClass` a hlavičkových možností najdete na stránce s [nabízenými oznámeními ze serveru](/previous-versions/windows/xna/bb200104(v=xnagamestudio.41)) .
 
 Následující vzorový kód používá `MpnsService` instanci zveřejněnou `NotificationHubService` pro odeslání informačního oznámení nabízeného oznámení:
 
@@ -182,7 +182,7 @@ notificationHubService.mpns.send(null, payload, 'toast', 22, function(error){
 - **Možnosti** – nepovinné hlavičky požadavku.
 - **Zpětné volání** – funkce zpětného volání.
 
-Seznam platných typů a hlaviček požadavků najdete v [záhlaví žádostí a odpovědí služby nabízených oznámení](https://msdn.microsoft.com/library/windows/apps/hh465435.aspx).
+Seznam platných typů a hlaviček požadavků najdete v [záhlaví žádostí a odpovědí služby nabízených oznámení](/previous-versions/windows/apps/hh465435(v=win.10)).
 
 Následující kód používá `WnsService` instanci zveřejněnou `NotificationHubService` pro odeslání informačního oznámení do aplikace UWP:
 
@@ -199,7 +199,7 @@ notificationHubService.wns.send(null, payload , 'wns/toast', function(error){
 
 Výše uvedené ukázkové fragmenty kódu vám umožní snadno sestavit infrastrukturu služby, která zajistí doručování nabízených oznámení do široké škály zařízení. Teď, když jste se seznámili se základy používání Notification Hubs s node.js, použijte následující odkazy, kde najdete další informace o tom, jak můžete tyto možnosti rozšířit dále.
 
-- Viz Referenční příručka MSDN pro [Azure Notification Hubs](https://msdn.microsoft.com/library/azure/jj927170.aspx).
+- Viz Referenční příručka MSDN pro [Azure Notification Hubs](/previous-versions/azure/azure-services/jj927170(v=azure.100)).
 - Další ukázky a podrobnosti o implementaci najdete v sadě [Azure SDK pro úložiště uzlů] na GitHubu.
 
 [Azure SDK pro Node]: https://github.com/WindowsAzure/azure-sdk-for-node
@@ -222,14 +222,14 @@ Výše uvedené ukázkové fragmenty kódu vám umožní snadno sestavit infrast
 [3]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-05.png
 [4]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-06.png
 [5]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-07.png
-[SqlFilter.SqlExpression]: https://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
-[Azure Service Bus Notification Hubs]: https://msdn.microsoft.com/library/windowsazure/jj927170.aspx
-[SqlFilter]: https://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx
+[SqlFilter.SqlExpression]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter?view=azure-dotnet#microsoft_servicebus_messaging_sqlfilter_sqlexpression
+[Azure Service Bus Notification Hubs]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[SqlFilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter?view=azure-dotnet#microsoft_servicebus_messaging_sqlfilter
 [Web Site with WebMatrix]: /develop/nodejs/tutorials/web-site-with-webmatrix/
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Previous Management Portal]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/previous-portal.png
-[nodejswebsite]: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-nodejs
-[webmatrix]: https://docs.microsoft.com/aspnet/web-pages/videos/introduction/create-a-website-using-webmatrix
+[nodejswebsite]: ../app-service/app-service-web-get-started-nodejs.md
+[webmatrix]: /aspnet/web-pages/videos/introduction/create-a-website-using-webmatrix
 [Node.js Cloud Service with Storage]: /develop/nodejs/tutorials/web-app-with-storage/
 [Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
 [Azure Portal]: https://portal.azure.com

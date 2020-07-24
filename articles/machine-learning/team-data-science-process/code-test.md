@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
-ms.openlocfilehash: 9612114bb368898ccf31b2c8692869b84544b652
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc837405e03ffac41d216a5ba18384208b07aaf1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76721958"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090293"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Testování kódu pro datové vědy v Azure pomocí vědeckého procesu týmového zpracování dat a Azure DevOps Services
 Tento článek obsahuje předběžné pokyny pro testování kódu v pracovním postupu pro datové vědy. Toto testování dává pracovníkům dat systematický a efektivní způsob kontroly kvality a očekávaného výsledku jejich kódu. Používáme projekt vědeckého zpracování týmových dat (TDSP) [, který používá datovou sadu pro příjem dat z Ski dospělé](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) , kterou jsme publikovali dříve, a ukazuje, jak se dá provést testování kódu. 
@@ -141,7 +142,7 @@ Pomocí následujících kroků můžete nastavit a spustit testování kódu a 
 
     ![Tlačítko "Uložit & front"](./media/code-test/save_and_queue_build_definition.PNG)
 
-Nyní se při každém vložení nového potvrzení do úložiště kódu automaticky spustí proces sestavení. (Zde používáme jako úložiště hlavní server, ale můžete definovat libovolnou větev.) Proces spustí soubor **test1.py** v počítači agenta, aby bylo zajištěno, že vše definované v kódu bude spuštěno správně. 
+Nyní se při každém vložení nového potvrzení do úložiště kódu automaticky spustí proces sestavení. Můžete definovat libovolnou větev. Proces spustí soubor **test1.py** v počítači agenta, aby bylo zajištěno, že vše definované v kódu bude spuštěno správně. 
 
 Pokud jsou výstrahy správně nastavené, budete po dokončení sestavení upozorněni na e-mail. Můžete také zjistit stav sestavení v Azure DevOps. Pokud dojde k chybě, můžete si prohlédnout podrobnosti o sestavení a zjistit, který kus je poškozený.
 

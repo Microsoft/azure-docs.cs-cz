@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 786655f8e8ee7e21f2615361b0bb1ea336ccb479
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 207b597bc865c8234d447759ab8b0f53dc35413c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84190741"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090276"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Běžné scénáře, ukázky, kurzy a návody pro Azure Logic Apps
 
@@ -35,10 +36,10 @@ Tady jsou příklady, které popisují běžně používané triggery:
     * [Plánování a spouštění opakujících se automatizovaných úloh, procesů a pracovních postupů pomocí Azure Logic Apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)
     * [Kurz: vytvoření automatických opakovaných pracovních postupů založených na plánu pomocí Azure Logic Apps](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)
 
-  * Aktivační událost **po přijetí e-mailu** umožní vaší aplikaci logiky kontrolovat nové e-maily od libovolného poskytovatele pošty, který podporuje Logic Apps, například [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md), [Gmail](https://docs.microsoft.com/connectors/gmail/), [Outlook.com](https://docs.microsoft.com/connectors/outlook/)atd.
+  * Aktivační událost **po přijetí e-mailu** umožní vaší aplikaci logiky kontrolovat nové e-maily od libovolného poskytovatele pošty, který podporuje Logic Apps, například [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md), [Gmail](/connectors/gmail/), [Outlook.com](/connectors/outlook/)atd.
 
     > [!IMPORTANT]
-    > Pokud chcete použít konektor Gmail, můžou tento konektor používat jenom obchodní účty G-Suite bez omezení v Logic Apps. Pokud máte účet příjemce Gmail, můžete tento konektor použít jenom pro konkrétní služby schválené v Google, nebo můžete [vytvořit klientskou aplikaci Google pro ověřování pomocí konektoru Gmail](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Další informace najdete v tématu [zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
+    > Pokud chcete použít konektor Gmail, můžou tento konektor používat jenom obchodní účty G-Suite bez omezení v Logic Apps. Pokud máte účet příjemce Gmail, můžete tento konektor použít jenom pro konkrétní služby schválené v Google, nebo můžete [vytvořit klientskou aplikaci Google pro ověřování pomocí konektoru Gmail](/connectors/gmail/#authentication-and-bring-your-own-application). Další informace najdete v tématu [zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
     Další informace najdete v těchto tématech:<p>
 
@@ -98,17 +99,17 @@ V některých případech vaše aplikace logiky a účty pro integraci potřebuj
 
 Můžete plně vyvíjet a nasazovat aplikace logiky pomocí sady Visual Studio, Azure DevOps nebo jakéhokoli jiného nástroje pro správu zdrojového kódu a automatizovaných nástrojů sestavení. Pro podporu nasazení pro pracovní postupy a závislá připojení v šabloně prostředků Logic Apps používá šablony nasazení prostředků Azure. Nástroje sady Visual Studio automaticky generují tyto šablony, které lze vrátit se změnami do správy zdrojového kódu. Pro oznamování a diagnostické protokoly pro stav spuštění pracovního postupu Azure Logic Apps také nabízí monitorování a výstrahy.
 
-### <a name="deploy"></a>Nasazení
+### <a name="deploy"></a>Nasadit
 
 * [Rychlý Start: vytváření automatizovaných úloh, procesů a pracovních postupů pomocí Azure Logic Apps – Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [Přehled: Automatizace nasazení aplikace logiky](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 * [Vytváření šablon Azure Resource Manageru pro automatizaci nasazení pro Azure Logic Apps](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
 * [Nasazování šablon Azure Resource Manageru pro Azure Logic Apps](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)
-* [Ukázka: připojení k Azure Service Bus frontám z Azure Logic Apps a nasazení pomocí Azure Pipelines ve službě Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Ukázka: připojení k Azure Storage účtům z Azure Logic Apps a nasazení pomocí Azure Pipelines ve službě Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Ukázka: nastavení akce aplikace funkcí pro Azure Logic Apps a nasazení pomocí Azure Pipelines ve službě Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Ukázka: připojení k účtu pro integraci z Azure Logic Apps a nasazení pomocí Azure Pipelines ve službě Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
-* [Ukázka: orchestrace Azure Pipelines pomocí Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-pipeline-orchestration/azure-devops-orchestration-with-logic-apps/)
+* [Ukázka: připojení k Azure Service Bus frontám z Azure Logic Apps a nasazení pomocí Azure Pipelines ve službě Azure DevOps](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Ukázka: připojení k Azure Storage účtům z Azure Logic Apps a nasazení pomocí Azure Pipelines ve službě Azure DevOps](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Ukázka: nastavení akce aplikace funkcí pro Azure Logic Apps a nasazení pomocí Azure Pipelines ve službě Azure DevOps](/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Ukázka: připojení k účtu pro integraci z Azure Logic Apps a nasazení pomocí Azure Pipelines ve službě Azure DevOps](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
+* [Ukázka: orchestrace Azure Pipelines pomocí Azure Logic Apps](/samples/azure-samples/azure-logic-apps-pipeline-orchestration/azure-devops-orchestration-with-logic-apps/)
 
 ### <a name="manage"></a>Spravovat
 
@@ -142,7 +143,7 @@ Azure Logic Apps se integruje s mnoha službami, například Azure Functions, Az
 * [Kurz: Vytvoření řídicího panelu pro sociální zařízení AI pomocí Power BI a Azure Logic Apps](https://aka.ms/logicappsdemo)
 * [Kurz: Monitorování změn virtuálních počítačů s využitím služeb Azure Event Grid a Logic Apps](../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md)
 * [Kurz: vzdálené monitorování a oznámení IoT pomocí Azure Logic Apps připojení ke službě IoT Hub a poštovní schránce](../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md)
-* [Blog: volejte služby SOAP pomocí Azure Logic Apps](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
+* [Blog: volejte služby SOAP pomocí Azure Logic Apps](/archive/blogs/logicapps/using-soap-services-with-logic-apps)
 
 ## <a name="end-to-end-scenarios"></a>Kompletní scénáře
 

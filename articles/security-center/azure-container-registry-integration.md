@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2020
+ms.date: 07/19/2020
 ms.author: memildin
-ms.openlocfilehash: f3ef633ff0271d74eea7320faadf17685976d3b6
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 2f995f3f6defd73575d9e1bf19326a828f1e6038
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970463"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089902"
 ---
 # <a name="azure-container-registry-integration-with-security-center"></a>Azure Container Registry integrace s Security Center
 
@@ -30,6 +30,11 @@ Pokud pracujete na úrovni Standard Azure Security Center, můžete přidat sadu
 
 - Stav vydání: **Obecná dostupnost**
 - Požadované role: **Čtenář zabezpečení** a [role čtecího zařízení Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+- Podporované Registry:
+    - ✔ Registry ACR hostované na Linux, které jsou přístupné z veřejného Internetu a poskytují přístup k prostředí.
+    - ✘ Registry ACR hostované v systému Windows.
+    - ✘ ' Private ' Registry-Security Center vyžaduje, aby vaše registry byly přístupné z veřejného Internetu. Pokud jste omezili přístup k registrům pomocí brány firewall, koncového bodu služby nebo pomocí privátního koncového bodu (například privátního odkazu Azure), Security Center se momentálně nemůžete připojit k registru nebo ho vyhledat.
+    - ✘ Image Super minimalist, jako jsou [pomocné obrázky Docker](https://hub.docker.com/_/scratch/) nebo Image Distroless, které obsahují jenom aplikaci a její závislosti modulu runtime bez správce balíčků, prostředí nebo operačního systému.
 - Cloud 
     - ✔ Komerční cloudy
     - Cloud pro státní správu USA ✘
@@ -40,7 +45,7 @@ Pokud pracujete na úrovni Standard Azure Security Center, můžete přidat sadu
 
 Pokaždé, když se do registru vloží obrázek, Security Center automaticky vyhledá tento obrázek. Pokud chcete spustit kontrolu obrázku, nahrajte ho do úložiště.
 
-Až se kontrola dokončí (obvykle po přibližně 10 minutách, ale může to být až 40 minut), nálezy jsou dostupné jako Security Center doporučení, jako je:
+Až se kontrola dokončí (obvykle přibližně 2 minuty, ale může to být až 15 minut), nálezy jsou dostupné jako Security Center doporučení, jako je:
 
 [![Ukázka Azure Security Center doporučení týkající se ohrožení zabezpečení zjištěného v hostované imagi Azure Container Registry (ACR)](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 
@@ -59,11 +64,6 @@ Security Center v předplatném identifikuje Registry ACR založené na ARM a hl
 
 ## <a name="acr-with-security-center-faq"></a>ACR s nejčastějšími dotazy k Security Center
 
-### <a name="what-types-of-images-can-azure-security-center-scan"></a>Jaké typy imagí mohou Azure Security Center prohledávat?
-Security Center prohledává image založené na operačním systému Linux, které poskytují přístup k prostředí. 
-
-Qualys skener nepodporuje image Super minimalist, jako jsou [pomocné obrázky Docker](https://hub.docker.com/_/scratch/) , nebo Image Distroless, které obsahují jenom vaši aplikaci a její závislosti za běhu bez správce balíčků, prostředí nebo operačního systému.
-
 ### <a name="how-does-azure-security-center-scan-an-image"></a>Jak Azure Security Center naskenovat obrázek?
 Bitová kopie je načítána z registru. Pak se spustí v izolovaném izolovaném prostoru (sandbox) se skenerem Qualys, který extrahuje seznam známých chyb zabezpečení.
 
@@ -73,7 +73,7 @@ Security Center filtruje a klasifikuje závěry ze skeneru. Když je obrázek v 
 Při každém nabízení se spouštějí kontroly imagí.
 
 ### <a name="can-i-get-the-scan-results-via-rest-api"></a>Můžu získat výsledky kontroly prostřednictvím REST API?
-Ano. Výsledky se nacházejí v rámci [dílčích posouzení rozhraní REST API](/rest/api/securitycenter/subassessments/list/). Můžete také použít Azure Resource Graph (ARG), Kusto rozhraní API pro všechny vaše prostředky: dotaz může načíst konkrétní kontrolu.
+Yes. Výsledky se nacházejí v rámci [dílčích posouzení rozhraní REST API](/rest/api/securitycenter/subassessments/list/). Můžete také použít Azure Resource Graph (ARG), Kusto rozhraní API pro všechny vaše prostředky: dotaz může načíst konkrétní kontrolu.
  
 
 

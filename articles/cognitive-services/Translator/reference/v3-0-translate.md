@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/17/2020
 ms.author: swmachan
-ms.openlocfilehash: 563f4693c358c570caa2566f58002ddfe6c7bc69
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 512632faae453ebdf7cb7b279fe2d29b25d23d6b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584633"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090854"
 ---
 # <a name="translator-30-translate"></a>Překladatel 3,0: překlad
 
@@ -59,7 +59,7 @@ Parametry žádosti předané řetězci dotazu jsou:
   </tr>  
   <tr>
     <td>textType</td>
-    <td><em>Volitelný parametr</em>.<br/>Definuje, zda je převáděný text prostý text nebo text HTML. Libovolný kód HTML musí být dobře vytvořený, kompletní element. Možné hodnoty jsou: <code>plain</code> (výchozí) nebo <code>html</code> .</td>
+    <td><em>Volitelný parametr</em>.<br/>Definuje, zda je převáděný text prostý text nebo text HTML. Libovolný kód HTML musí být dobře vytvořený, kompletní element. Možné hodnoty jsou: <code>plain</code> (výchozí) nebo <code>html</code>.</td>
   </tr>
   <tr>
     <td>category</td>
@@ -317,6 +317,7 @@ Překlad více řetězců najednou je pouhým určením pole řetězců v textu 
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
 ```
 
+Odpověď obsahuje překlad všech částí textu v přesně stejném pořadí jako v žádosti.
 Tělo odpovědi:
 
 ```
@@ -390,7 +391,7 @@ V případě <code>ProfanityMarker=Tag</code> vulgárních slov jsou slova ohran
   </tr>
 </table> 
 
-Například:
+Příklad:
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"

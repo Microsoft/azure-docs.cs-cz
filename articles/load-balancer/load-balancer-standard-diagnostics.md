@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 9003d35ce2eea18aa912a866802b026bb923aa08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 034a49793d3a3e416f307741e49446979eb33bb3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81272691"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090446"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Diagnostika služby Standard Load Balancer s metrikami, upozorněními a stavem prostředků
 
@@ -34,17 +35,20 @@ Azure Load Balancer poskytuje multidimenzionální metriky prostřednictvím met
 
 Různé konfigurace Standard Load Balancer poskytují následující metriky:
 
-| Metrika | Typ prostředku | Description | Doporučená agregace |
+| Metrika | Typ prostředku | Popis | Doporučená agregace |
 | --- | --- | --- | --- |
 | Dostupnost cesty k datům | Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer průběžně kontroluje cestu dat z určité oblasti k front-endu nástroje pro vyrovnávání zatížení, a to až ke stacku SDN, který podporuje váš virtuální počítač. Pokud zůstanou instance v pořádku, měření se řídí stejnou cestou jako provoz s vyrovnáváním zatížení vaší aplikace. Ověřuje se také cesta dat, kterou využívají vaši zákazníci. Měření je pro vaši aplikaci neviditelné a nemá vliv na ostatní operace.| Průměr |
 | Stav sondy stavu | Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer používá distribuovanou službu pro zjišťování stavu, která monitoruje stav koncového bodu vaší aplikace podle nastavení konfigurace. Tato metrika poskytuje agregované zobrazení nebo filtrované zobrazení jednotlivých koncových bodů instancí ve fondu nástroje pro vyrovnávání zatížení. Můžete zjistit, jak Load Balancer vidí stav vaší aplikace na základě vaší konfigurace sondy stavu. |  Průměr |
 | Pakety SYN (synchronizace) | Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer neukončuje připojení přes protokol TCP (Transmission Control Protocol) ani nepracuje s toky paketů protokolu TCP nebo UDP. Toky a jejich metody handshake probíhají vždy mezi zdrojem a instancí virtuálního počítače. Při řešení potíží se scénáři souvisejícími s protokolem TCP můžete využít čítače paketů SYN, pomocí kterých můžete zjistit množství pokusů o přihlášení přes protokol TCP. Tato metrika hlásí počet přijatých paketů TCP SYN.| Průměr |
 | Připojení SNAT | Veřejný nástroj pro vyrovnávání zatížení |Standard Load Balancer hlásí počet odchozích toků maskovaných za front-end veřejné IP adresy. Porty překladu adres na základě zdroje (SNAT) jsou vyčerpatelný prostředek. Tato metrika může poskytnout další informace o tom, do jaké míry se vaše aplikace spoléhá na SNAT u odchozích toků. Hlásí se čítače úspěšných a neúspěšných odchozích toků SNAT, které je možné použít k řešení potíží a porozumění stavu odchozích toků.| Průměr |
-| Přidělené porty SNAT | Veřejný nástroj pro vyrovnávání zatížení | Standard Load Balancer oznamuje počet přidělených portů SNAT na back-end instanci. | Průměr: |
+| Přidělené porty SNAT | Veřejný nástroj pro vyrovnávání zatížení | Standard Load Balancer oznamuje počet přidělených portů SNAT na back-end instanci. | Vypočítat. |
 | Používané porty SNAT | Veřejný nástroj pro vyrovnávání zatížení | Standard Load Balancer oznamuje počet portů SNAT, které se využívají na instanci back-endu. | Průměr | 
 | Čítače bajtů |  Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer hlásí objem zpracovaných dat na front-end. Můžete si všimnout nerovnoměrné distribuce bajtů napříč instancemi back-endu. Očekává se, že Load Balancer algoritmus Azure je založený na tocích | Průměr |
 | Čítače paketů |  Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer hlásí množství zpracovaných paketů na front-end.| Průměr |
 
+  >[!NOTE]
+  >Při distribuci provozu z interního nástroje pro vyrovnávání zatížení prostřednictvím paketu síťové virtuální zařízení nebo brány firewall syn nejsou k dispozici metriky čítačů bajtů a paketů a budou zobrazeny jako nula. 
+  
 ### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>Zobrazit metriky nástroje pro vyrovnávání zatížení v Azure Portal
 
 Azure Portal zpřístupňuje metriky nástroje pro vyrovnávání zatížení prostřednictvím stránky metriky, která je k dispozici na stránce prostředků nástroje pro vyrovnávání zatížení pro konkrétní prostředek a Azure Monitor stránku. 
@@ -250,11 +254,11 @@ Zobrazení stavu prostředků veřejné Standard Load Balancer:
  
 V následující tabulce jsou uvedeny různé stavy prostředků a jejich popisy: 
 
-| Stav prostředku | Description |
+| Stav prostředku | Popis |
 | --- | --- |
 | K dispozici | Váš prostředek standardního nástroje pro vyrovnávání zatížení je v pořádku a dostupný. |
 | Neaktivní | Váš prostředek standardního nástroje pro vyrovnávání zatížení není v pořádku. Diagnostikujte stav tak, že vyberete **Azure monitor**  >  **metriky**.<br>(*Nedostupný* stav může také znamenat, že prostředek není připojený k vašemu standardnímu nástroji pro vyrovnávání zatížení.) |
-| Není známo | Stav prostředku pro prostředek standardního nástroje pro vyrovnávání zatížení se ještě neaktualizoval.<br>(*Neznámý* stav může také znamenat, že prostředek není připojen k vašemu standardnímu nástroji pro vyrovnávání zatížení.)  |
+| Neznámý | Stav prostředku pro prostředek standardního nástroje pro vyrovnávání zatížení se ještě neaktualizoval.<br>(*Neznámý* stav může také znamenat, že prostředek není připojen k vašemu standardnímu nástroji pro vyrovnávání zatížení.)  |
 
 ## <a name="next-steps"></a>Další kroky
 

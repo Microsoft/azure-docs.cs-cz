@@ -3,16 +3,16 @@ title: Šifrování zálohovaných dat pomocí klíčů spravovaných zákazník
 description: Přečtěte si, jak Azure Backup umožňuje šifrovat zálohovaná data pomocí klíčů spravovaných zákazníkem (CMK).
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: ee64b9f2c6d260d91763cbe2d339640a9fab9967
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: c26466582cbe5a10610f6766160c2b0bc51a4828
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86172550"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091092"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Šifrování zálohovaných dat pomocí klíčů spravovaných zákazníkem
 
-Azure Backup slouží k šifrování zálohovaných dat pomocí klíčů spravovaných zákazníkem (CMK) namísto použití klíčů spravovaných platformou, které jsou ve výchozím nastavení povolené. Klíče, které slouží k šifrování zálohovaných dat, musí být uloženy v [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/).
+Azure Backup slouží k šifrování zálohovaných dat pomocí klíčů spravovaných zákazníkem (CMK) namísto použití klíčů spravovaných platformou, které jsou ve výchozím nastavení povolené. Klíče, které slouží k šifrování zálohovaných dat, musí být uloženy v [Azure Key Vault](../key-vault/index.yml).
 
 Šifrovací klíč, který se používá k šifrování záloh, může být jiný než ten, který se používá pro zdroj. Data jsou chráněná pomocí šifrovacího klíče založeného na standardu AES 256 (klíč DEK), který je zase chráněný pomocí vašich klíčů (KEK). Díky tomu máte plnou kontrolu nad daty a klíči. Chcete-li šifrování zakázat, je nutné, aby měl Recovery Services trezoru udělen přístup k šifrovacímu klíči v Azure Key Vault. Klíč můžete změnit podle potřeby.
 
@@ -31,7 +31,7 @@ Tento článek popisuje následující:
 
 - Tato funkce v současné době nepodporuje **zálohování pomocí agenta Mars**a možná nebudete moct používat CMK šifrované úložiště pro stejné. Agent MARS používá šifrování založené na uživatelském heslu. Tato funkce také nepodporuje zálohování klasických virtuálních počítačů.
 
-- Tato funkce nesouvisí s [Azure Disk Encryption](https://docs.microsoft.com/azure/security/fundamentals/azure-disk-encryption-vms-vmss), která používá šifrování disků virtuálního počítače založeného na hostu pomocí nástroje BitLocker (pro Windows) a dm-crypt (pro Linux).
+- Tato funkce nesouvisí s [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md), která používá šifrování disků virtuálního počítače založeného na hostu pomocí nástroje BitLocker (pro Windows) a dm-crypt (pro Linux).
 
 - Trezor Recovery Services lze zašifrovat pouze s klíči uloženými v Azure Key Vault nacházející se ve **stejné oblasti**. Klíče také musí být pouze **klíče RSA 2048** a měly by být v **povoleném** stavu.
 
@@ -92,7 +92,7 @@ Pro přístup k Azure Key Vault, který obsahuje šifrovací klíč, teď musít
 
 ### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>Povolení ochrany obnovitelného odstranění a vyprázdnění na Azure Key Vault
 
-U Azure Key Vault, který ukládá šifrovací klíč, je potřeba **Povolit ochranu před odstraněním a vyprázdněním** . Můžete to provést z uživatelského rozhraní Azure Key Vault, jak je znázorněno níže. (Případně tyto vlastnosti lze nastavit při vytváření Key Vault). Přečtěte si další informace o těchto Key Vaultch [vlastnostech.](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete)
+U Azure Key Vault, který ukládá šifrovací klíč, je potřeba **Povolit ochranu před odstraněním a vyprázdněním** . Můžete to provést z uživatelského rozhraní Azure Key Vault, jak je znázorněno níže. (Případně tyto vlastnosti lze nastavit při vytváření Key Vault). Přečtěte si další informace o těchto Key Vaultch [vlastnostech.](../key-vault/general/overview-soft-delete.md)
 
 ![Povolit ochranu před odstraněním a vyprázdněním](./media/encryption-at-rest-with-cmk/soft-delete-purge-protection.png)
 
@@ -160,7 +160,7 @@ Přiřazení klíče:
 
         ![Vyberte klíč z trezoru klíčů.](./media/encryption-at-rest-with-cmk/key-vault.png)
 
-1. Klikněte na **Save** (Uložit).
+1. Klikněte na **Uložit**.
 
 1. **Sledování průběhu aktualizace šifrovacího klíče:** Průběh přiřazení klíče můžete sledovat pomocí **protokolu aktivit** v úložišti Recovery Services. Stav by se brzy změnil na **úspěšný**. Váš trezor teď bude šifrovat všechna data se zadaným klíčem jako KEK.
 
@@ -193,13 +193,13 @@ Než budete pokračovat v konfiguraci ochrany, důrazně doporučujeme, abyste m
 >
 >Pokud byly všechny výše uvedené kroky potvrzené, pokračujte v konfiguraci zálohování.
 
-Proces konfigurace a zálohování trezoru Recovery Services šifrovaných pomocí klíčů spravovaných zákazníkem je stejný jako trezor, který používá klíče spravované platformou bez jakýchkoli **změn v prostředí**. To platí pro [zálohování virtuálních počítačů Azure](https://docs.microsoft.com/azure/backup/quick-backup-vm-portal) a také zálohování úloh spuštěných uvnitř virtuálního počítače (například [SAP HANA](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db) [SQL Server](https://docs.microsoft.com/azure/backup/tutorial-sql-backup) databáze).
+Proces konfigurace a zálohování trezoru Recovery Services šifrovaných pomocí klíčů spravovaných zákazníkem je stejný jako trezor, který používá klíče spravované platformou bez jakýchkoli **změn v prostředí**. To platí pro [zálohování virtuálních počítačů Azure](./quick-backup-vm-portal.md) a také zálohování úloh spuštěných uvnitř virtuálního počítače (například [SAP HANA](./tutorial-backup-sap-hana-db.md) [SQL Server](./tutorial-sql-backup.md) databáze).
 
 ## <a name="restoring-data-from-backup"></a>Obnovování dat ze zálohy
 
 ### <a name="vm-backup"></a>Zálohování virtuálního počítače
 
-Data uložená v úložišti Recovery Services lze obnovit podle kroků popsaných [zde](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms). Při obnovení z trezoru Recovery Services šifrovaných pomocí klíčů spravovaných zákazníkem se můžete rozhodnout, že se obnovená data zašifrují pomocí sady Disk Encryption (DES).
+Data uložená v úložišti Recovery Services lze obnovit podle kroků popsaných [zde](./backup-azure-arm-restore-vms.md). Při obnovení z trezoru Recovery Services šifrovaných pomocí klíčů spravovaných zákazníkem se můžete rozhodnout, že se obnovená data zašifrují pomocí sady Disk Encryption (DES).
 
 #### <a name="restoring-vm--disk"></a>Obnovení virtuálního počítače nebo disku
 

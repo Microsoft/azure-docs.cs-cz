@@ -3,11 +3,13 @@ title: Matice podpory pro Azure Backup
 description: Poskytuje souhrn nastavení podpory a omezení pro službu Azure Backup.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 4946a4627d037053e441152182278c26b4f693fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: f84be4082eb6bc845459b6d88cb3157b2330f23d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84655619"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091007"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Matice podpory pro Azure Backup
 
@@ -31,10 +33,10 @@ Následující tabulka popisuje funkce trezorů Recovery Services:
 --- | ---
 **Trezory v předplatném** | V jednom předplatném je až 500 Recovery Services trezory.
 **Počítače v trezoru** | Až 1 000 virtuálních počítačů Azure v jednom trezoru.<br/><br/> V jednom trezoru se dají zaregistrovat až 50 serverů MABS.
-**Zdroje dat** | Maximální velikost jednotlivého [zdroje dat](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#how-is-the-data-source-size-determined) je 54 400 GB. Toto omezení se nevztahuje na zálohy virtuálních počítačů Azure. Na celkové množství dat, která můžete zálohovat do trezoru, neplatí žádná omezení.
+**Zdroje dat** | Maximální velikost jednotlivého [zdroje dat](./backup-azure-backup-faq.md#how-is-the-data-source-size-determined) je 54 400 GB. Toto omezení se nevztahuje na zálohy virtuálních počítačů Azure. Na celkové množství dat, která můžete zálohovat do trezoru, neplatí žádná omezení.
 **Zálohy do trezoru** | **Virtuální počítače Azure:** Jednou denně.<br/><br/>**Počítače chráněné aplikací DPM/MABS:** Dvakrát denně.<br/><br/> **Počítače zálohované přímo pomocí agenta Mars:** Třikrát denně.
 **Zálohy mezi trezory** | Zálohování je v rámci jedné oblasti.<br/><br/> Potřebujete trezor v každé oblasti Azure, která obsahuje virtuální počítače, které chcete zálohovat. Nemůžete zálohovat do jiné oblasti.
-**Přesunout trezory** | [Trezory můžete přesouvat](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault) mezi předplatnými nebo mezi skupinami prostředků ve stejném předplatném. Přesun trezorů mezi oblastmi se ale nepodporuje.
+**Přesunout trezory** | [Trezory můžete přesouvat](./backup-azure-move-recovery-services-vault.md) mezi předplatnými nebo mezi skupinami prostředků ve stejném předplatném. Přesun trezorů mezi oblastmi se ale nepodporuje.
 **Přesun dat mezi trezory** | Přesouvání zálohovaných dat mezi trezory se nepodporuje.
 **Upravit typ úložiště trezoru** | Před uložením záloh můžete upravit typ replikace úložiště (geograficky redundantní úložiště nebo místně redundantní úložiště) pro trezor. Po zahájení zálohování v trezoru se typ replikace nedá upravit.
 
@@ -55,7 +57,7 @@ Co je se podporuje, pokud chcete zálohovat místní počítače:
 
 **Počtu** | **Podrobnosti**
 --- | ---
-**Datové disky virtuálních počítačů Azure** | Podívejte se na [podporu pro zálohování virtuálních počítačů Azure](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-storage-support).
+**Datové disky virtuálních počítačů Azure** | Podívejte se na [podporu pro zálohování virtuálních počítačů Azure](./backup-support-matrix-iaas.md#vm-storage-support).
 **Velikost datového disku virtuálního počítače Azure** | Velikost jednotlivých disků může být až 32 TB a pro všechny disky ve virtuálním počítači je v kombinaci maximálně 256 TB.
 
 ### <a name="azure-vm-backup-options"></a>Možnosti zálohování virtuálních počítačů Azure
@@ -75,11 +77,11 @@ Co je se podporuje, pokud chcete zálohovat počítače se systémem Linux:
 
 **Typ zálohy** | **Linux (schváleno Azure)**
 --- | ---
-**Přímá záloha místního počítače se systémem Linux** | Není podporováno. Agenta MARS lze nainstalovat pouze do počítačů se systémem Windows.
+**Přímá záloha místního počítače se systémem Linux** | Nepodporováno Agenta MARS lze nainstalovat pouze do počítačů se systémem Windows.
 **Použití rozšíření agenta pro zálohování virtuálního počítače Azure se systémem Linux** | Zálohování konzistentní s aplikací pomocí [vlastních skriptů](backup-azure-linux-app-consistent.md).<br/><br/> Obnovení na úrovni souborů.<br/><br/> Obnovte vytvořením virtuálního počítače z bodu obnovení nebo disku.
 **Použití DPM k zálohování místních počítačů se systémem Linux** | Zálohování virtuálních počítačů hosta v systému Linux na technologii Hyper-V a VMWare.<br/><br/> Obnovení virtuálních počítačů s virtuálními počítači hosta Hyper-V a VMWare Linux.
 **Zálohování místních počítačů se systémem Linux pomocí MABS** | Zálohování virtuálních počítačů hosta v systému Linux na technologii Hyper-V a VMWare.<br/><br/> Obnovení virtuálních počítačů s virtuálními počítači hosta Hyper-V a VMWare Linux.
-**Použití MABS nebo DPM k zálohování virtuálních počítačů Azure se systémem Linux** | Není podporováno.
+**Použití MABS nebo DPM k zálohování virtuálních počítačů Azure se systémem Linux** | Nepodporováno
 
 ## <a name="daylight-saving-time-support"></a>Podpora letního času
 
@@ -128,8 +130,8 @@ Zálohování podporuje komprimaci provozu zálohování, jak je shrnuto v násl
 
 **Počítač** | **Komprimovat do MABS/DPM (TCP)** | **Komprimovat do trezoru (HTTPS)**
 --- | --- | ---
-**Přímá záloha místních počítačů s Windows** | NA | ![Yes][green]
-**Zálohování virtuálních počítačů Azure pomocí rozšíření virtuálního počítače** | NA | NA
+**Přímá záloha místních počítačů s Windows** | Není k dispozici | ![Yes][green]
+**Zálohování virtuálních počítačů Azure pomocí rozšíření virtuálního počítače** | Není k dispozici | Není k dispozici
 **Zálohování místních nebo Azure počítačů pomocí MABS/DPM** | ![Ano][green] | ![Ano][green]
 
 ## <a name="retention-limits"></a>Omezení uchování
@@ -148,12 +150,12 @@ Zálohování podporuje komprimaci provozu zálohování, jak je shrnuto v násl
 
 Azure Backup přidal funkci obnovení mezi oblastmi, aby se posílila dostupnost dat a schopnost odolnosti, což zákazníkům umožňuje úplné řízení obnovení dat do sekundární oblasti. Pokud chcete tuto funkci nakonfigurovat, přejděte [na článek nastavení obnovení mezi oblastmi.](backup-create-rs-vault.md#set-cross-region-restore) Tato funkce je podporována pro následující typy správy:
 
-| Typ správy zálohování | Podporuje se                                                    | Podporované oblasti |
+| Typ správy zálohování | Podporováno                                                    | Podporované oblasti |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Virtuální počítač Azure               | Ano.   Podporováno pro šifrované virtuální počítače a virtuální počítače s méně než 4 TB disků | Všechny veřejné oblasti Azure.  |
-| Agent MARS/místní | No                                                           | Není k dispozici               |
-| SQL/SAP HANA          | No                                                           | Není k dispozici               |
-| BUŇK                    | No                                                           | Není k dispozici               |
+| Virtuální počítač Azure               | Yes.   Podporováno pro šifrované virtuální počítače a virtuální počítače s méně než 4 TB disků | Všechny veřejné oblasti Azure.  |
+| Agent MARS/místní | No                                                           | –               |
+| SQL/SAP HANA          | No                                                           | –               |
+| BUŇK                    | No                                                           | –               |
 
 ## <a name="next-steps"></a>Další kroky
 

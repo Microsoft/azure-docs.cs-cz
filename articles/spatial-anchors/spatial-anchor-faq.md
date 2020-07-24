@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 05/18/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 4bf55daa64319cfd47efd2e38a368d76f3814b4e
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 9f6f428a930f03259986373ca70a95d5df1f7dc3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84296665"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091483"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Nejčastější dotazy týkající se prostorových kotev Azure
 
@@ -88,9 +88,9 @@ Odpověď **: Ano**, máme omezení omezování.  Neočekáváme, že získáte 
 
 To znamená, že tato služba je v těchto oblastech i v případě, že výpočetní výkon i úložiště jsou v provozu. V takovém případě neexistují žádná omezení, kde se nacházejí vaši klienti. 
 
-**Otázka: Chcete účtovat za prostorové kotvy Azure? Budete někdy účtovat?**
+**Otázka: Chcete účtovat za prostorové kotvy Azure?**
 
-**A:** Podrobnosti o cenách najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/spatial-anchors/)ve verzi Preview.
+**A:** Podrobnosti o cenách najdete na naší stránce s [cenami](https://azure.microsoft.com/pricing/details/spatial-anchors/).
 
 ## <a name="technical-faqs"></a>Technické Nejčastější dotazy
 
