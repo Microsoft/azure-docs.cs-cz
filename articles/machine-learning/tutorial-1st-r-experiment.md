@@ -10,15 +10,19 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: cb4afac3b1e73a95fa3fe703fc5bd9d3f621f23a
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 53b1c22e93c342373cae2bbb14958f4810a79630
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134680"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092316"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Kurz: použití R k vytvoření modelu Machine Learning (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
+> [!IMPORTANT]
+> Sada Azure Machine Learning R SDK je aktuálně ve verzi Public Preview.
+> Verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 V tomto kurzu použijete Azure Machine Learning R SDK (Preview) k vytvoření modelu logistické regrese, který předpovídá pravděpodobnost závažnosti při havárii auta. Uvidíte, jak Azure Machine Learning prostředky cloudu fungují s R, abyste zajistili škálovatelné prostředí pro školení a nasazení modelu.  
 
@@ -34,7 +38,7 @@ V tomto kurzu provedete následující úlohy:
 > * Nasazení koncového bodu předpovědi
 > * Testování modelu z R
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru

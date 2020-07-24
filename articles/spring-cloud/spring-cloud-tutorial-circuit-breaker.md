@@ -6,12 +6,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 04/06/2020
-ms.openlocfilehash: a92c5fde68227bf94342dd380250429675bd084d
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.custom: devx-track-java
+ms.openlocfilehash: 8cc8f347330904bfab980b79cf5c5f351ce16629
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248851"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089477"
 ---
 # <a name="use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>Použití řídicího panelu pro dělení na okruhy pomocí Azure jarního cloudu
 Jarní [cloudová Netflix turbína](https://github.com/Netflix/Turbine) se běžně používá k agregaci více datových proudů [hystrix](https://github.com/Netflix/Hystrix) metrik, aby bylo možné datové proudy sledovat v jednom zobrazení pomocí řídicího panelu hystrix. V tomto kurzu se dozvíte, jak je používat v Azure jarním cloudu.

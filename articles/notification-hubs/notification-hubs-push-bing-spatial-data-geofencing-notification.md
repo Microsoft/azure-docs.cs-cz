@@ -18,12 +18,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: ff37a3ecb55c6ee034d3fd2558909c3b4ef1d375
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 3065cd6f185c0fdfaea1d6c0d02d2fee69bd04c7
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223427"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116926"
 ---
 # <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>Kurz: odeslání nabízených oznámení na základě polohy pomocí Notification Hubs a prostorových dat Bingu
 
@@ -63,7 +63,7 @@ V tomto kurzu provedete následující kroky:
 
     Soubor kanálu představuje tuto entitu:
 
-    ![Snímek obrazovky s bodem sítě San Francisco Waterfront s červeným mnohoúhelníkem, který je v oblasti Piers.](./media/notification-hubs-geofence/bing-maps-geofence.png)
+    ![Snímek obrazovky s mapou sítě San Francisco Waterfront s červeným mnohoúhelníkem, který je v oblasti Piers.](./media/notification-hubs-geofence/bing-maps-geofence.png)
 5. Na stránce **Nahrát zdroj dat** proveďte následující akce:
    1. Jako **Formát dat** vyberte **kanál**.
    2. Procházejte a vyberte `NotificationHubGeofence.pipe` soubor, který jste vytvořili v předchozím kroku.
@@ -164,7 +164,7 @@ V tomto kurzu provedete následující kroky:
     }
     ```
 
-    Další informace o tom, jak získat umístění uživatele v aplikacích pro UWP, najdete v tématu[získání umístění uživatele](https://msdn.microsoft.com/library/windows/apps/mt219698.aspx).
+    Další informace o tom, jak získat umístění uživatele v aplikacích pro UWP, najdete v tématu[získání umístění uživatele](/windows/uwp/maps-and-location/get-location).
 5. Pokud chcete zkontrolovat, že získávání polohy skutečně funguje, otevřete kód hlavní stránky (`MainPage.xaml.cs`). Vytvořte novou obslužnou rutinu události pro událost `Loaded` v konstruktoru `MainPage`.
 
     ```csharp
@@ -393,7 +393,7 @@ V tomto kurzu provedete následující kroky:
 
 Pokud chcete řešení připravit na reálný provoz, může být zapotřebí podniknout několik kroků.
 
-1. Nejprve je potřeba zajistit, že monitorované geografické zóny jsou dynamické. To vyžaduje další práci s rozhraním API služby Bing, aby bylo možné nahrávat nové hranice do existujícího zdroje dat. Další informace najdete v [dokumentaci rozhraní API pro Bing Spatial Data Services](https://msdn.microsoft.com/library/ff701734.aspx).
+1. Nejprve je potřeba zajistit, že monitorované geografické zóny jsou dynamické. To vyžaduje další práci s rozhraním API služby Bing, aby bylo možné nahrávat nové hranice do existujícího zdroje dat. Další informace najdete v [dokumentaci rozhraní API pro Bing Spatial Data Services](/bingmaps/spatial-data-services/).
 2. Abyste zajistili doručování správným účastníkům, můžete požadovat cílení pomocí [tagování](notification-hubs-tags-segment-push-message.md).
 
-Řešení uvedené v tomto kurzu popisuje scénář, při kterém můžete mít širokou škálu cílových platforem, proto se monitorování geografické zóny neomezuje schopnostmi specifickými pro daný systém. Je ale nutné dodat, že Univerzální platforma Windows nabízí integrované možnosti pro [detekci monitorované geografické zóny](https://msdn.microsoft.com/windows/uwp/maps-and-location/set-up-a-geofence).
+Řešení uvedené v tomto kurzu popisuje scénář, při kterém můžete mít širokou škálu cílových platforem, proto se monitorování geografické zóny neomezuje schopnostmi specifickými pro daný systém. Je ale nutné dodat, že Univerzální platforma Windows nabízí integrované možnosti pro [detekci monitorované geografické zóny](/windows/uwp/maps-and-location/set-up-a-geofence).

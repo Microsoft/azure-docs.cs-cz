@@ -7,12 +7,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: V tomto kurzu se dozvíte, jak používat Azure Dev Spaces a Visual Studio k ladění a rychlé iteraci aplikace .NET Core ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
-ms.openlocfilehash: ba90cbc8bc0267f1fba8c9495886bdc8ce2ac5e3
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 722f2f5b86bd67df7c7250cdbfc44ebcc048c773
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995900"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090786"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>Vytvořte Kubernetes vývojového prostoru: Visual Studio a .NET Core s Azure Dev Spaces
 
@@ -23,10 +23,10 @@ V tomto průvodci se naučíte:
 - Vyvíjet nezávisle dvě samostatné služby a pomocí zjišťování služby DNS v Kubernetes volat jinou službu
 - Produktivně vyvíjet a testovat kód v týmovém prostředí
 
-> [!Note]
+> [!NOTE]
 > **Pokud se vám pozastavila** kdykoli, přečtěte si část [Poradce při potížích](troubleshooting.md) .
 
-## <a name="install-the-azure-cli"></a>Instalace rozhraní příkazového řádku Azure CLI
+## <a name="install-the-azure-cli"></a>Instalace Azure CLI
 Azure Dev Spaces vyžaduje minimální nastavení místního počítače. Většina konfigurace vývojového prostoru se ukládá do cloudu, aby ji šlo sdílet s ostatními uživateli. Nejdřív si stáhněte a spusťte [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ### <a name="sign-in-to-azure-cli"></a>Přihlášení k Azure CLI
@@ -36,7 +36,7 @@ Přihlaste se k Azure. V okně terminálu zadejte následující příkaz:
 az login
 ```
 
-> [!Note]
+> [!NOTE]
 > Pokud nemáte předplatné Azure, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 
 #### <a name="if-you-have-multiple-azure-subscriptions"></a>Pokud máte více předplatných Azure...
@@ -91,31 +91,31 @@ V této části vytvoříte webovou aplikaci ASP.NET Core a získáte její spu�
 
 V sadě Visual Studio vytvořte nový projekt. V současné době se musí jednat o projekt **Webová aplikace ASP.NET Core**. Pojmenujte projekt**webendu**.
 
-![](media/get-started-netcore-visualstudio/NewProjectDialog1.png)
+![Dialogové okno Nový projekt zobrazuje vytvoření webové aplikace v jazyce C s názvem webendu v umístění C:\Source\Repos. V rozevíracím seznamu řešení se zobrazuje možnost vytvořit nové řešení a zaškrtávací políčko vytvořit adresář pro řešení je zaškrtnuté.](media/get-started-netcore-visualstudio/NewProjectDialog1.png)
 
 Vyberte šablonu **Webová aplikace (model-zobrazení-kontroler)** a ujistěte se, že jsou ve dvou rozevíracích seznamech v horní části dialogového okna vybrané položky **.NET Core** a **ASP.NET Core 2.0**. Kliknutím na tlačítko **OK** vytvořte projekt.
 
-![](media/get-started-netcore-visualstudio/NewProjectDialog2.png)
+![V dialogovém okně Nová webová aplikace sítě NET Core, ve dvou rozevíracích seznamech zobrazuje "dot NET Core" a "A S P-tečkou NET Core 2 Point 0". V poli tlačítek šablony projektu pod seznamem je vybrána šablona "webová aplikace (model-zobrazení-kontroler)". Zaškrtávací políčko Povolit podporu Docker není zaškrtnuté.](media/get-started-netcore-visualstudio/NewProjectDialog2.png)
 
 ### <a name="enable-dev-spaces-for-an-aks-cluster"></a>Povolení služby Dev Spaces pro cluster AKS
 
 V projektu, který jste právě vytvořili, vyberte v rozevíracím okně nastavení spouštění **Azure Dev Spaces**, jak je znázorněno na následujícím obrázku.
 
-![](media/get-started-netcore-visualstudio/LaunchSettings.png)
+![Rozevírací seznam je v horní části okna s označením Microsoft Visual Studio celá verze Preview. Je vybráno "Azure Dev Spaces".](media/get-started-netcore-visualstudio/LaunchSettings.png)
 
 V dalším zobrazeném dialogovém okně zkontrolujte, jestli jste přihlášení pomocí správného účtu, a potom vyberte existující cluster Kubernetes.
 
-![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.PNG)
+![Dialog Azure Dev Spaces obsahuje tato pole: "předplatné", cluster Azure Kubernetes Service a "Space".](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.PNG)
 
 V rozevíracím seznamu **Space** (Prostor) zatím nechte vybranou položku `default`. O této možnosti se později dozvíte víc. Zaškrtněte políčko **Publicly Accessible** (Veřejně přístupný), aby byla webová aplikace přístupná prostřednictvím veřejného koncového bodu. Toto nastavení není povinné, ale v rámci tohoto názorného postupu nám pomůže předvést některé koncepty. Nemusíte si ale dělat starosti, v každém případě totiž budete moct ladit svůj web pomocí sady Visual Studio.
 
-![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog2.png)
+![Zaškrtávací políčko veřejně přístupné je zaškrtnuto.](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog2.png)
 
 Klikněte na **OK** a vyberte nebo vytvořte cluster.
 
 Pokud zvolíte cluster, který není povolený pro práci s Azure Dev Spaces, zobrazí se zpráva s dotazem, jestli ho chcete nakonfigurovat.
 
-![](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
+![Zpráva se načte: "Přidat prostředek Azure Dev Spaces? Než bude možné použít Azure Dev Spaces, musí být vybraný cluster A K S. Chtěli byste to udělat? " K dispozici jsou tlačítka "O K" a "Storno".](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
 
 Vyberte **OK**.
 
@@ -124,9 +124,9 @@ Vyberte **OK**.
 
  K provedení této akce se spustí úloha na pozadí. Dokončí se za několik minut. Pokud chcete zjistit, jestli se úloha pořád vytváří, podržte ukazatel myši nad ikonou **úloh na pozadí** v levém dolním rohu stavového řádku, jak znázorňuje následující obrázek.
 
-![](media/get-started-netcore-visualstudio/BackgroundTasks.PNG)
+![V místním okně, které se zobrazí při najetí myší, se zobrazí zpráva "vytvoření ' My A K S ' ve skupině prostředků.](media/get-started-netcore-visualstudio/BackgroundTasks.PNG)
 
-> [!Note]
+> [!NOTE]
 > Dokud se vývojový prostor úspěšně nevytvoří, nemůžete ladit aplikaci.
 
 ### <a name="look-at-the-files-added-to-project"></a>Prohlédnutí souborů přidaných do projektu
@@ -138,7 +138,7 @@ Uvidíte, že se přidal soubor s názvem `Dockerfile`. Tento soubor obsahuje in
 
 Nakonec uvidíte soubor `azds.yaml`, který obsahuje konfiguraci v době vývoje, kterou vývojový prostor potřebuje.
 
-![](media/get-started-netcore-visualstudio/ProjectFiles.png)
+![Soubor "a z d s tečkou YAML" se v řešení webendu zobrazuje v okně Průzkumník řešení.](media/get-started-netcore-visualstudio/ProjectFiles.png)
 
 ## <a name="debug-a-container-in-kubernetes"></a>Ladění kontejneru v Kubernetes
 Po úspěšném vytvoření vývojového prostoru můžete začít ladit aplikaci. Nastavte v kódu zarážku, třeba na řádku 20 v souboru `HomeController.cs`, kde je nastavená proměnná `Message`. Ladění spustíte kliknutím na **F5**. 
@@ -160,7 +160,7 @@ Azure Dev Spaces neslouží jenom ke spuštění kódu v prostředí Kubernetes.
     <h2>Hello k8s in Azure!</h2>`
     ```
 
-2. Uložte soubor.
+2. Soubor uložte.
 3. Přejděte do prohlížeče a aktualizujte stránku. Na webové stránce by se měl zobrazit aktualizovaný kód HTML.
 
 Co se stalo? Úpravy souborů obsahu jako HTML a CSS nevyžadují rekompilaci ve webové aplikaci .NET Core. Aktivní relace F5 totiž automaticky synchronizuje všechny upravené soubory obsahu do kontejneru spuštěného v AKS, abyste změny obsahu viděli okamžitě.
@@ -170,7 +170,7 @@ Aktualizace souborů s kódem je o něco pracnější, protože aplikace .NET Co
 
 1. Zastavte ladicí program v sadě Visual Studio.
 1. Otevřete soubor s kódem, který se jmenuje `Controllers/HomeController.cs`, a upravte zprávu, která se zobrazí na stránce O aplikaci: `ViewData["Message"] = "Your application description page.";`
-1. Uložte soubor.
+1. Soubor uložte.
 1. Stisknutím klávesy **F5** znovu spusťte ladění. 
 
 Místo opětovného sestavení a nasazení nové image kontejneru po každé provedené změně, což často dlouho trvá, rekompiluje služba Azure Dev Spaces kód po přírůstcích ve stávajícím kontejneru, aby se zrychlil cyklus úprav/ladění.

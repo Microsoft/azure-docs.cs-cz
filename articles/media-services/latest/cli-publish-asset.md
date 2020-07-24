@@ -14,20 +14,20 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/25/2019
 ms.author: juliako
-ms.openlocfilehash: 44cf234fd8419164f7dd7f8320952a5c6c0842e0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ccc981af63391527473452e2f53e7abd108fb739
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74896120"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092146"
 ---
 # <a name="cli-example-publish-an-asset"></a>Ukázka CLI: Publikování assetu
 
 Skript Azure CLI v tomto článku znázorňuje, jak vytvořit streamovací lokátor a získat zpět adresy URL pro streamování. 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
-[Vytvořte účet Media Services](create-account-cli-how-to.md).
+[Vytvořte účet Media Services](./create-account-howto.md).
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 

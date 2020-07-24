@@ -1,5 +1,5 @@
 ---
-title: Kurz – vytvoření a Správa sady škálování virtuálních počítačů Azure
+title: 'Kurz: vytvoření & Správa škálování virtuálního počítače Azure – Azure PowerShell'
 description: Zjistěte, jak pomocí Azure PowerShellu vytvořit škálovací sadu virtuálních počítačů a provádět několik běžných úloh správy, jako je spuštění a zastavení instance nebo změna kapacity škálovací sady.
 author: ju-shim
 ms.author: jushiman
@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 05/18/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 43816c815c206da7e3fec197e54e9e7889c6de47
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: a657f8a4fd7b92aeb858b919052ca732bf630ae9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735349"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091330"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Kurz: Vytvoření a správa škálovací sady virtuálních počítačů pomocí Azure PowerShellu
 
@@ -45,7 +45,7 @@ Název skupiny prostředků zadáte při vytváření nebo úpravě škálovací
 
 
 ## <a name="create-a-scale-set"></a>Vytvoření škálovací sady
-Nejprve pomocí rutiny [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) nastavte uživatelské jméno a heslo správce instancí virtuálních počítačů:
+Nejprve pomocí rutiny [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) nastavte uživatelské jméno a heslo správce instancí virtuálních počítačů:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
@@ -66,6 +66,9 @@ New-AzVmss `
 ```
 
 Vytvoření a konfigurace všech prostředků škálovací sady a instancí virtuálních počítačů trvá několik minut.
+
+> [!IMPORTANT]
+> Pokud se nemůžete připojit k sadě škálování, možná budete muset vytvořit skupinu zabezpečení sítě přidáním parametru *[-SecurityGroupName "mySecurityGroup"](/powershell/module/az.compute/new-azvmss)* .
 
 
 ## <a name="view-the-vm-instances-in-a-scale-set"></a>Zobrazení instancí virtuálních počítačů ve škálovací sadě
@@ -200,14 +203,14 @@ Velikost instance virtuálního počítače neboli *skladová položka* určuje 
 ### <a name="vm-instance-sizes"></a>Velikosti instancí virtuálních počítačů
 V následující tabulce jsou běžné velikosti virtuálních počítačů rozdělené podle způsobů použití.
 
-| Typ                     | Běžné velikosti           |    Description       |
+| Typ                     | Běžné velikosti           |    Popis       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [Obecné účely](../virtual-machines/windows/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Vyvážený poměr procesorů k paměti. Ideální pro vývoj nebo testování a pro malé až střední řešení aplikací a dat.  |
-| [Optimalizované z hlediska výpočetních služeb](../virtual-machines/windows/sizes-compute.md)   | Fs, F             | Vysoký poměr procesorů k paměti. Vhodné pro aplikace se středním provozem, síťová zařízení a dávkové procesy.        |
-| [Optimalizované z hlediska paměti](../virtual-machines/windows/sizes-memory.md)    | Esv3, Ev3, M, GS, G, DSv2, DS, Dv2, D   | Vysoký poměr paměti k jádrům. Velmi vhodné pro relační databáze, střední a velké mezipaměti a analýzu v paměti.                 |
-| [Optimalizované z hlediska úložiště](../virtual-machines/windows/sizes-storage.md)      | Ls                | Vysoká propustnost disku a V/V. Ideální pro databáze NoSQL, SQL a velké objemy dat.                                                         |
-| [GPU](../virtual-machines/windows/sizes-gpu.md)          | NV, NC            | Specializované virtuální počítače určené pro náročné vykreslování grafiky a úpravy videa.       |
-| [Vysoký výkon](../virtual-machines/windows/sizes-hpc.md) | H, A8-11          | Naše procesorově nejvýkonnější virtuální počítače s volitelnými síťovými rozhraními s vysokou propustností (RDMA). 
+| [Obecné účely](../virtual-machines/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Vyvážený poměr procesorů k paměti. Ideální pro vývoj nebo testování a pro malé až střední řešení aplikací a dat.  |
+| [Optimalizované pro výpočty](../virtual-machines/sizes-compute.md)   | Fs, F             | Vysoký poměr procesorů k paměti. Vhodné pro aplikace se středním provozem, síťová zařízení a dávkové procesy.        |
+| [Optimalizované pro paměť](../virtual-machines/sizes-memory.md)    | Esv3, Ev3, M, GS, G, DSv2, DS, Dv2, D   | Vysoký poměr paměti k jádrům. Velmi vhodné pro relační databáze, střední a velké mezipaměti a analýzu v paměti.                 |
+| [Optimalizované pro úložiště](../virtual-machines/sizes-storage.md)      | Ls                | Vysoká propustnost disku a V/V. Ideální pro databáze NoSQL, SQL a velké objemy dat.                                                         |
+| [GPU](../virtual-machines/sizes-gpu.md)          | NV, NC            | Specializované virtuální počítače určené pro náročné vykreslování grafiky a úpravy videa.       |
+| [Vysoký výkon](../virtual-machines/sizes-hpc.md) | H, A8-11          | Naše procesorově nejvýkonnější virtuální počítače s volitelnými síťovými rozhraními s vysokou propustností (RDMA). 
 
 ### <a name="find-available-vm-instance-sizes"></a>Vyhledání dostupných velikostí instancí virtuálních počítačů
 Pokud chcete zobrazit seznam velikostí instancí virtuálních počítačů, které jsou k dispozici v konkrétní oblasti, použijte příkaz [Get-AzVMSize](/powershell/module/az.compute/get-azvmsize) . 

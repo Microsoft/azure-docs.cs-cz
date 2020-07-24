@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: c658283ed610dcd14fca82b14217cba979388fc2
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 73ffe7fe6336d9547ebbbf4c894bd1b9398e0900
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85252912"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092928"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Kurz: zabezpečení databáze v Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,7 +44,7 @@ Další informace najdete v článcích [Přehled zabezpečení Azure SQL Databa
 > [!TIP]
 > Následující Microsoft Learn modul vám pomůže získat zdarma informace o tom, jak [zabezpečit databázi v Azure SQL Database](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu se ujistěte, že máte následující požadavky:
 
@@ -52,7 +52,7 @@ K dokončení tohoto kurzu se ujistěte, že máte následující požadavky:
 - [Server](logical-servers.md) a jediná databáze
   - Vytvořte je pomocí [Azure Portal](single-database-create-quickstart.md), [CLI](az-cli-script-samples-content-guide.md)nebo [PowerShellu](powershell-script-content-guide.md) .
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -146,7 +146,7 @@ Informace o konfiguraci služby Azure AD najdete v těchto tématech:
 - [Přidání vlastního názvu domény do Azure AD](../../active-directory/fundamentals/add-custom-domain.md)
 - [Microsoft Azure teď podporuje federaci s Windows serverem AD.](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)
 - [Správa adresáře služby Azure AD](../../active-directory/fundamentals/active-directory-whatis.md)
-- [Správa Azure AD pomocí PowerShellu](/powershell/azure/overview?view=azureadps-2.0)
+- [Správa Azure AD pomocí PowerShellu](/powershell/azure/?view=azureadps-2.0)
 - [Porty a protokoly vyžadované hybridní identitou](../../active-directory/hybrid/reference-connect-ports.md)
 
 ## <a name="manage-database-access"></a>Správa přístupu k databázi
@@ -159,7 +159,7 @@ Chcete-li přidat uživatele, vyberte typ ověření databáze:
 
 - **Ověřování Azure AD**, používání identit spravovaných službou Azure AD
 
-### <a name="sql-authentication"></a>Ověřování pomocí SQL
+### <a name="sql-authentication"></a>Ověřování SQL
 
 Přidání uživatele s ověřováním SQL:
 
@@ -250,7 +250,7 @@ Postup při povolení pokročilých zabezpečení dat:
 
 1. Na stránce **SQL Server** najděte část **zabezpečení** a vyberte **Upřesnit zabezpečení dat**.
 
-   1. Tuto funkci povolíte výběrem možnosti **v** části **Upřesnit zabezpečení dat** . Vyberte účet úložiště pro ukládání výsledků posouzení ohrožení zabezpečení. Pak vyberte **Uložit**.
+   1. Tuto funkci povolíte výběrem možnosti **v** části **Upřesnit zabezpečení dat** . Vyberte účet úložiště pro ukládání výsledků posouzení ohrožení zabezpečení. Potom vyberte **Uložit**.
 
       ![Navigační podokno](./media/secure-database-tutorial/threat-settings.png)
 
@@ -340,7 +340,7 @@ Povolení nebo ověření šifrování:
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili, abyste vylepšili zabezpečení databáze pomocí několika jednoduchých kroků. Naučili jste se tyto postupy:
+V tomto kurzu jste se naučili, abyste vylepšili zabezpečení databáze pomocí několika jednoduchých kroků. Naučili jste se:
 
 > [!div class="checklist"]
 >

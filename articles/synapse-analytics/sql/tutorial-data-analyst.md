@@ -1,5 +1,5 @@
 ---
-title: 'Kurz pro analytiky dat: použití SQL na vyžádání (Preview) k analýze otevřených datových sad Azure v Azure synapse Studio (Preview)'
+title: Použití SQL na vyžádání (Preview) k analýze otevřených datových sad Azure v Azure synapse Studio (Preview)
 description: V tomto kurzu se naučíte, jak snadno provádět analýzu průzkumného data s kombinací různých otevřených datových sad Azure pomocí SQL na vyžádání (Preview) a vizualizovat výsledky v Azure synapse studiu.
 services: synapse-analytics
 author: azaricstefan
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: afe231186adec95b09a75d7fe59552ca8a07049b
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 2fc98e927fcf9686f0f39dae600f944b485c5a06
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213138"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089137"
 ---
-# <a name="use-sql-on-demand-preview-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio-preview"></a>Použití SQL na vyžádání (Preview) k analýze otevřených datových sad Azure a vizualizaci výsledků v Azure synapse Studio (Preview)
+# <a name="use-sql-on-demand-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>Použití SQL na vyžádání k analýze otevřených datových sad Azure a vizualizaci výsledků v Azure synapse studiu
 
 V tomto kurzu se dozvíte, jak provádět analýzu průzkumnéch dat kombinací různých otevřených datových sad Azure pomocí SQL na vyžádání a pak vizualizace výsledků v Azure synapse studiu.
 

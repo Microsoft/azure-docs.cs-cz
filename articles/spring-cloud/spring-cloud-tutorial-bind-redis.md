@@ -6,18 +6,19 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 10/31/2019
 ms.author: brendm
-ms.openlocfilehash: ddf239fc6415b3dbee6051d4199cd29e5244e4d2
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: devx-track-java
+ms.openlocfilehash: 6bbd54be46effe324199639477f9ca4ab31bea98
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142139"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091398"
 ---
 # <a name="bind-azure-cache-for-redis-to-your-azure-spring-cloud-application"></a>Vytvoření vazby mezipaměti Azure pro Redis do vaší aplikace pro jarní Cloud v Azure 
 
 Místo ruční konfigurace aplikací pro spouštění pružiny můžete automaticky navazovat výběr služeb Azure na své aplikace s využitím jarního cloudu Azure. Tento článek ukazuje, jak vytvořit propojení aplikace s mezipamětí Azure cache pro Redis.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nasazená instance cloudu Azure pro jaře
 * Služba Azure cache pro instanci služby Redis

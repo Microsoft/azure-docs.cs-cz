@@ -10,11 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b3f337798525860748cf7b535c2bce478dad8e27
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 9c5b07d402219907337a590e1131691fb1e24cc2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042998"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090582"
 ---
 # <a name="azure-key-vault-logging"></a>Protokolování v Azure Key Vaultu
 
@@ -37,12 +38,12 @@ Tento kurz vám pomůže začít s protokolováním v Azure Key Vault. Vytvoří
 
 Přehled informací o Key Vault najdete v tématu [co je Azure Key Vault?](overview.md)). Informace o tom, kde je Key Vault k dispozici, najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/key-vault/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete:
 
 * Existující trezor klíčů, který již používáte.  
-* Azure PowerShell minimální verze 1.0.0. Chcete-li nainstalovat Azure PowerShell a přidružit ho ke svému předplatnému Azure, prohlédněte si téma [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview). Pokud jste již nainstalovali Azure PowerShell a neznáte verzi, v konzole Azure PowerShell zadejte `$PSVersionTable.PSVersion` .  
+* Azure PowerShell minimální verze 1.0.0. Chcete-li nainstalovat Azure PowerShell a přidružit ho ke svému předplatnému Azure, prohlédněte si téma [Instalace a konfigurace Azure PowerShellu](/powershell/azure/). Pokud jste již nainstalovali Azure PowerShell a neznáte verzi, v konzole Azure PowerShell zadejte `$PSVersionTable.PSVersion` .  
 * Dostatečné úložiště v Azure pro vaše protokoly Key Vault.
 
 ## <a name="connect-to-your-key-vault-subscription"></a><a id="connect"></a>Připojení k předplatnému trezoru klíčů
@@ -69,7 +70,7 @@ Pak můžete zadat předplatné, které je přidružené k trezoru klíčů, kte
 Set-AzContext -SubscriptionId <subscription ID>
 ```
 
-Ukazatel PowerShellu na pravé předplatné je důležitý krok, zejména pokud máte k vašemu účtu přidruženo několik předplatných. Další informace o konfiguraci prostředí Azure PowerShell najdete v tématu [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
+Ukazatel PowerShellu na pravé předplatné je důležitý krok, zejména pokud máte k vašemu účtu přidruženo několik předplatných. Další informace o konfiguraci prostředí Azure PowerShell najdete v tématu [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/).
 
 ## <a name="create-a-storage-account-for-your-logs"></a><a id="storage"></a>Vytvoření účtu úložiště pro vaše protokoly
 
@@ -96,7 +97,7 @@ $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 
 ## <a name="enable-logging-using-azure-powershell"></a><a id="enable"></a>Povolit protokolování pomocí Azure PowerShell
 
-Pokud chcete povolit protokolování pro Key Vault, použijeme rutinu **set-AzDiagnosticSetting** spolu s proměnnými, které jsme vytvořili pro nový účet úložiště a trezoru klíčů. Také nastavíme příznak **-Enabled** na **$true** a nastavíte kategorii na **AuditEvent** (jediná kategorie pro protokolování Key Vault):
+Pokud chcete povolit protokolování pro Key Vault, použijeme rutinu **set-AzDiagnosticSetting** spolu s proměnnými, které jsme vytvořili pro nový účet úložiště a trezoru klíčů. Také nastavíme příznak **-Enabled** na **$true** a nastavení kategorie `AuditEvent` (jediná kategorie pro protokolování Key Vault):
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
@@ -264,21 +265,21 @@ Jednotlivé objekty blob jsou uloženy jako text ve formátu JSON blob. Pojďme 
 
 V následující tabulce jsou uvedené názvy a popisy polí:
 
-| Název pole | Description |
+| Název pole | Popis |
 | --- | --- |
 | **interval** |Datum a čas ve standardu UTC. |
 | **Prostředku** |ID prostředku Azure Resource Manager. U protokolů Key Vault se jedná vždy o Key Vault Resource ID. |
 | **operationName** |Název operace, jak popisuje následující tabulka. |
 | **operationVersion** |Verze REST API požadovaná klientem |
-| **kategorií** |Typ výsledku. V případě protokolů Key Vault je **AuditEvent** jedinou dostupnou hodnotou. |
-| **resultType** |Výsledek žádosti o REST API |
+| **kategorií** |Typ výsledku. V případě protokolů Key Vault `AuditEvent` je jediná dostupná hodnota. |
+| **Hodnotu** |Výsledek žádosti o REST API |
 | **resultSignature** |Stav HTTP. |
 | **resultDescription** |Další popis výsledku, je-li k dispozici. |
-| **durationMs** |Doba trvání obsloužení požadavku REST API v milisekundách. Nezahrnuje latenci sítě, takže čas naměřený na straně klienta se může lišit. |
+| **Trvání v MS** |Doba trvání obsloužení požadavku REST API v milisekundách. Nezahrnuje latenci sítě, takže čas naměřený na straně klienta se může lišit. |
 | **callerIpAddress** |IP adresa klienta, který odeslal požadavek. |
-| **correlationId** |Volitelný GUID, který může klient předat pro korelaci protokolů na straně klienta s protokoly na straně služby (Key Vault). |
+| **ID** |Volitelný GUID, který může klient předat pro korelaci protokolů na straně klienta s protokoly na straně služby (Key Vault). |
 | **odcizen** |Identita z tokenu, který byl předložen v žádosti REST API. Obvykle se jedná o "uživatel", "instanční objekt" nebo kombinaci "User + appId", jako v případě požadavku, který je výsledkem rutiny Azure PowerShell. |
-| **vlastnosti** |Informace, které se liší v závislosti na operaci (**OperationName**). Ve většině případů toto pole obsahuje informace o klientovi (uživatelský agent, který předává klient), přesný REST API identifikátor URI žádosti a stavový kód HTTP. Kromě toho, když se vrátí objekt jako výsledek požadavku (například **Vytvoření** nebo **VaultGet**), obsahuje taky identifikátor URI klíče (as "ID"), identifikátor URI trezoru nebo tajný identifikátor URI. |
+| **vlastnosti** |Informace, které se liší v závislosti na operaci (**OperationName**). Ve většině případů toto pole obsahuje informace o klientovi (uživatelský agent, který předává klient), přesný REST API identifikátor URI žádosti a stavový kód HTTP. Kromě toho, když se vrátí objekt jako výsledek požadavku (například **Vytvoření** nebo **VaultGet**), obsahuje taky identifikátor URI klíče (jako `id` ), identifikátor URI trezoru nebo tajný identifikátor URI. |
 
 Hodnoty polí **OperationName** jsou ve formátu *ObjectVerb* . Příklad:
 
@@ -290,7 +291,7 @@ Následující tabulka uvádí hodnoty **OperationName** a odpovídající REST 
 
 | operationName | REST API – příkaz |
 | --- | --- |
-| **Authentication** |Ověřování prostřednictvím Azure Active Directoryho koncového bodu |
+| **Ověřování** |Ověřování prostřednictvím Azure Active Directoryho koncového bodu |
 | **VaultGet** |[Získání informací o trezoru klíčů](https://msdn.microsoft.com/library/azure/mt620026.aspx) |
 | **VaultPut** |[Vytvoření nebo aktualizace trezoru klíčů](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
 | **VaultDelete** |[Odstranění trezoru klíčů](https://msdn.microsoft.com/library/azure/mt620022.aspx) |
@@ -320,9 +321,9 @@ Následující tabulka uvádí hodnoty **OperationName** a odpovídající REST 
 
 ## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>Použití protokolů Azure Monitor
 
-Můžete použít řešení Key Vault v protokolech Azure Monitor ke kontrole Key Vault protokolů **AuditEvent** . V protokolech Azure Monitor použijete dotazy protokolu k analýze dat a získání informací, které potřebujete. 
+K revizi protokolů Key Vault můžete použít řešení Key Vault v protokolech Azure Monitor `AuditEvent` . V protokolech Azure Monitor použijete dotazy protokolu k analýze dat a získání informací, které potřebujete. 
 
-Další informace, včetně postupu nastavení, najdete [v tématu Azure Key Vault řešení v protokolech Azure monitor](../../azure-monitor/insights/azure-key-vault.md). Tento článek obsahuje také pokyny, pokud potřebujete migrovat ze starého řešení Key Vault, které bylo nabídnuto během verze Preview Azure Monitorch protokolů, kde jste nakonfigurovali protokoly do účtu služby Azure Storage a nakonfigurovali Azure Monitor protokoly pro čtení.
+Další informace, včetně postupu nastavení, najdete [v tématu Azure Key Vault v Azure monitor](../../azure-monitor/insights/key-vault-insights-overview.md).
 
 ## <a name="next-steps"></a><a id="next"></a>Další kroky
 

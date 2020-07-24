@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4cea4fa293083298858a775eff01b9acf17d6c7c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f894d4f29ce8729ff88faa72b0d6c470fd6f87c9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81458603"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088678"
 ---
 # <a name="create-a-vm-with-nginx"></a>Vytvoření virtuálního počítače se serverem NGINX
 
@@ -62,14 +62,14 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače a vš
 
 | Příkaz | Poznámky |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm) | Vytvoří virtuální počítač. Tento příkaz také určuje image virtuálního počítače, která se má použít, a přihlašovací údaje pro správu.  |
-| [az vm open-port](https://docs.microsoft.com/cli/azure/network/nsg/rule) | Vytvoří pravidlo skupiny zabezpečení sítě, které povolí příchozí provoz. V této ukázce se otevře port 80 pro přenosy HTTP. |
-| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | Přidá do virtuálního počítače rozšíření virtuálního počítače a spustí ho. V této ukázce se rozšíření vlastních skriptů používá k instalaci serveru NGINX.|
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
+| [az group create](/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az vm create](/cli/azure/vm) | Vytvoří virtuální počítač. Tento příkaz také určuje image virtuálního počítače, která se má použít, a přihlašovací údaje pro správu.  |
+| [az vm open-port](/cli/azure/network/nsg/rule) | Vytvoří pravidlo skupiny zabezpečení sítě, které povolí příchozí provoz. V této ukázce se otevře port 80 pro přenosy HTTP. |
+| [azure vm extension set](/cli/azure/vm/extension) | Přidá do virtuálního počítače rozšíření virtuálního počítače a spustí ho. V této ukázce se rozšíření vlastních skriptů používá k instalaci serveru NGINX.|
+| [az group delete](/cli/azure/vm/extension) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
+Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 
 Další ukázkové skripty rozhraní příkazového řádku pro virtuální počítače najdete v [dokumentaci k virtuálním počítačům Azure s Linuxem](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

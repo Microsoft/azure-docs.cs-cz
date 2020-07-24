@@ -9,12 +9,12 @@ ms.subservice: availability
 ms.date: 03/27/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 7a8be9b9cebc72e9605af0aaa581783a75246eef
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: d52882eef56a2f99e778b20707aa3aa1a6d4ff18
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701546"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088933"
 ---
 # <a name="create-a-zone-redundant-virtual-machine-scale-set-with-azure-cli"></a>Vytvoření sady škálování virtuálních počítačů redundantních v zóně pomocí Azure CLI
 Tento skript vytvoří škálovací sadu virtuálních počítačů s Ubuntu napříč několika zónami dostupnosti. Po spuštění skriptu můžete k virtuálnímu počítači přistupovat přes protokol RDP.
@@ -43,4 +43,4 @@ Tento skript k vytvoření skupiny prostředků, škálovací sady virtuálních
 | [az group delete](/cli/azure/ad/group) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure/overview).
+Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure/overview).

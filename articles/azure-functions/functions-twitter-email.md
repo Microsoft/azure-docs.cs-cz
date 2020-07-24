@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: aa4087f3eafcd217eedc707697d093155b13b9e6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a7cdeb7bfde7396026b782382b34228c309b37d7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116316"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088139"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Vytvoření funkce, která se integruje s Azure Logic Apps
 
@@ -32,13 +32,13 @@ V tomto kurzu se naučíte:
 > * Propojení aplikace logiky s funkcí
 > * Odeslání e-mailu na základě odpovědi z funkce
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + Aktivní účet na [Twitteru](https://twitter.com/). 
 + Účet [Outlook.com](https://outlook.com/) (pro odesílání oznámení).
 
 > [!NOTE]
-> Pokud chcete použít konektor Gmail, můžou tento konektor používat jenom obchodní účty G-Suite bez omezení v Logic Apps. Máte-li účet příjemce Gmail, můžete použít konektor Gmail s pouze konkrétními aplikacemi a službami, které jsou schváleny pro Google, nebo můžete [vytvořit klientskou aplikaci Google, která bude použita pro ověřování v konektoru Gmail](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Další informace najdete v tématu [zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
+> Pokud chcete použít konektor Gmail, můžou tento konektor používat jenom obchodní účty G-Suite bez omezení v Logic Apps. Máte-li účet příjemce Gmail, můžete použít konektor Gmail s pouze konkrétními aplikacemi a službami, které jsou schváleny pro Google, nebo můžete [vytvořit klientskou aplikaci Google, která bude použita pro ověřování v konektoru Gmail](/connectors/gmail/#authentication-and-bring-your-own-application). Další informace najdete v tématu [zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
 + Tento článek využívá jako výchozí bod prostředky, které jste vytvořili v tématu [Vytvoření první funkce na webu Azure Portal](functions-create-first-azure-function.md).
 Pokud jste tento krok zatím neprovedli, vraťte se k němu a vytvořte aplikaci funkcí.
@@ -47,7 +47,7 @@ Pokud jste tento krok zatím neprovedli, vraťte se k němu a vytvořte aplikaci
 
 Rozhraní API služeb Cognitive Services jsou v Azure k dispozici jako samostatné prostředky. K rozpoznávání mínění v monitorovaných tweetech použijte rozhraní API pro analýzu textu.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com/).
 
 2. Klikněte na **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
 
@@ -146,7 +146,7 @@ Teď máte funkci, která kategorizuje skóre mínění. Dále vytvoříte aplik
     | ----------------- | ------------ | ------------- |
     | **Název** | TweetSentiment | Zvolte vhodný název vaší aplikace. |
     | **Skupina prostředků** | myResourceGroup | Zvolte stejnou existující skupinu prostředků jako předtím. |
-    | **Umístění** | USA – východ | Zvolte umístění, které je blízko vás. |    
+    | **Umístění** | East US | Zvolte umístění, které je blízko vás. |    
 
 4. Po zadání odpovídajících hodnot nastavení klikněte na **Vytvořit** a vytvořte aplikaci logiky. 
 
@@ -169,7 +169,7 @@ Nejprve vytvořte připojení ke svému účtu na Twitteru. Aplikace logiky se d
     | Nastavení      |  Navrhovaná hodnota   | Popis                                        |
     | ----------------- | ------------ | ------------- |
     | **Hledaný text** | #Azure | Použijte hashtag, který je dostatečně oblíbený, aby ve zvoleném intervalu generoval nové tweety. Pokud použijete úroveň Free a zvolený hashtag je příliš oblíbený, můžete ve svém rozhraní API služeb Cognitive Services rychle vyčerpat kvótu transakcí. |
-    | **Doba** | 15 | Uplynulý čas mezi požadavky na Twitter v jednotkách frekvence. |
+    | **Interval** | 15 | Uplynulý čas mezi požadavky na Twitter v jednotkách frekvence. |
     | **Frekvence** | Minuta | Jednotka frekvence použitá pro dotazování Twitteru.  |
 
 3.  Kliknutím na **Uložit** se připojte ke svému účtu na Twitteru. 
@@ -239,8 +239,8 @@ Poslední částí pracovního postupu je aktivace e-mailu, když má skóre mí
     
 | Nastavení      |  Navrhovaná hodnota   | Popis  |
 | ----------------- | ------------ | ------------- |
-| **Akce** | Zadejte svou e-mailovou adresu. | E-mailová adresa, která přijímá oznámení. |
-| **Subjekt** | Rozpoznáno špatné mínění v tweetu  | Řádek předmětu e-mailového oznámení.  |
+| **Schopn** | Zadejte svou e-mailovou adresu. | E-mailová adresa, která přijímá oznámení. |
+| **Předmět** | Rozpoznáno špatné mínění v tweetu  | Řádek předmětu e-mailového oznámení.  |
 | **Text** | Text tweetu, Umístění | Klikněte na parametry **Text tweetu** a **Umístění**. |
 
 1. Klikněte na **Uložit**.
@@ -304,4 +304,3 @@ V dalším kurzu se dozvíte, jak pro svou funkci vytvořit rozhraní API bez se
 > [Vytvoření rozhraní API bez serveru pomocí služby Azure Functions](functions-create-serverless-api.md)
 
 Další informace o službě Logic Apps najdete v tématu [Azure Logic Apps](../logic-apps/logic-apps-overview.md).
-

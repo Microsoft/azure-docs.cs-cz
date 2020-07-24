@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: tutorial
 ms.date: 06/27/2020
 ms.author: punagpal
-ms.openlocfilehash: 95e3e2be175fa810b1b966a7dda5a0e53e23d780
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: aeed0c90eeecd59e23a1d87a3ebc1e1a836a84ec
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536735"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116836"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>Kurz: příjem dat ze zařízení prostřednictvím Azure IoT Hub
 
@@ -96,7 +96,7 @@ Pomocí zařízení (reálné nebo simulované) odešlete ukázkovou zprávu o k
 Prostředky pro sledování FHIR vytvořené službou IoT Connector můžete zobrazit v rozhraní Azure API pro FHIR pomocí post. Nastavte svého poskytovatele [pro přístup k rozhraní API Azure pro FHIR](access-fhir-postman-tutorial.md) a `GET` vyžádejte si požadavek na `https://your-fhir-server-url/Observation?code=http://loinc.org|8867-4` zobrazení pozorovacích prostředků FHIR s hodnotou srdce odeslanou v předchozí ukázkové zprávě.
 
 > [!TIP]
-> Ujistěte se, že váš usx'er má odpovídající přístup k rozhraní Azure API pro rovinu dat FHIR. Pomocí [Access Control založeného na rolích Azure](configure-azure-rbac.md) můžete přiřadit požadované role roviny dat.
+> Ujistěte se, že váš uživatel má odpovídající přístup k rozhraní Azure API pro rovinu dat FHIR. Pomocí [Access Control založeného na rolích Azure](configure-azure-rbac.md) můžete přiřadit požadované role roviny dat.
 
 
 ## <a name="next-steps"></a>Další kroky
@@ -106,12 +106,12 @@ V této příručce pro rychlý Start jste nastavili Azure IoT Hub k směrován�
 Pochopení různých fází toku dat v rámci služby IoT Connector.
 
 >[!div class="nextstepaction"]
->[Tok dat konektor IoT](iot-data-flow.md)
+>[Tok dat konektoru IoT](iot-data-flow.md)
 
 Naučte se konfigurovat konektor IoT pomocí šablon pro mapování zařízení a FHIR.
 
 >[!div class="nextstepaction"]
->[Šablony mapování pro IoT Connector](iot-mapping-templates.md)
+>[Šablony mapování konektoru IoT](iot-mapping-templates.md)
 
 FHIR je registrovaná ochranná známka HL7 a používá se s povolením HL7.
 

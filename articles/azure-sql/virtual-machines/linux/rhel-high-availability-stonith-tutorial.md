@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: cd4128328ac0c3e9f03ecc80abb6e7b17537b2ee
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: af1df529ae0f6bb03a8d3f36e51619f273780dfe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85483053"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086791"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Kurz: Konfigurace skupin dostupnosti pro SQL Server virtuálních počítačů s RHEL v Azure 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -497,7 +497,7 @@ Description : The fence-agents-azure-arm package contains a fence agent for Azur
  
 ### <a name="create-a-custom-role-for-the-fence-agent"></a>Vytvoření vlastní role pro agenta plotu
 
-Postupujte podle kurzu a [vytvořte vlastní roli pro prostředky Azure pomocí Azure CLI](../../../role-based-access-control/tutorial-custom-role-cli.md#create-a-custom-role).
+Postupujte podle kurzu a [vytvořte vlastní roli Azure pomocí Azure CLI](../../../role-based-access-control/tutorial-custom-role-cli.md#create-a-custom-role).
 
 Váš soubor JSON by měl vypadat nějak takto:
 
@@ -571,7 +571,7 @@ Přiřaďte vlastní roli `Linux Fence Agent Role-<username>` vytvořenou v posl
 5. Klikněte na **Přidat přiřazení role** .
 6. Vyberte roli `Linux Fence Agent Role-<username>` ze seznamu **rolí** .
 7. V seznamu **Vybrat** zadejte název aplikace, kterou jste vytvořili výše.`<resourceGroupName>-app`
-8. Klikněte na **Uložit** .
+8. Klikněte na **Uložit**.
 9. Opakujte výše uvedené kroky pro uzel všechny uzly clusteru.
 
 ### <a name="create-the-stonith-devices"></a>Vytvoření zařízení STONITH
@@ -951,17 +951,17 @@ Po [vytvoření prostředků skupiny dostupnosti v clusteru Pacemaker](/sql/linu
 
 1. Použijte jeden z následujících příkazů na základě dříve zvoleného prostředí a vytvořte prostředek `ag_cluster` ve skupině dostupnosti `ag1` .
 
-      **RHEL 7** 
+    **RHEL 7**
   
-        ```bash
-        sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s master notify=true
-        ```
+    ```bash
+    sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s master notify=true
+    ```
 
-      **RHEL 8** 
+    **RHEL 8**
   
-        ```bash
-        sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s promotable notify=true
-        ```
+    ```bash
+    sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s promotable notify=true
+    ```
 
 2. Zkontrolujte svůj prostředek a ujistěte se, že jsou online, než budete pokračovat pomocí následujícího příkazu:
 

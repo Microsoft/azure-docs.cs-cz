@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: připojení SQL na vyžádání k Power BI Desktop & vytvoření sestavy'
+title: Připojit SQL na vyžádání a Power BI Desktop & vytvořit sestavu
 description: V tomto kurzu se naučíte připojit SQL na vyžádání v Azure synapse Analytics a Power BI plochu a vytvořit ukázkovou sestavu založenou na zobrazení.
 services: synapse analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2f4a1ab6dc2f5cb8576931ea5fc1da85f5597624
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 325a2015e4107a20dfaec22e904cf3cc6ce3085d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213223"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089171"
 ---
 # <a name="tutorial-use-sql-on-demand-with-power-bi-desktop--create-a-report"></a>Kurz: použití SQL na vyžádání pomocí Power BI Desktop & vytvoření sestavy
 
@@ -27,7 +27,7 @@ V tomto kurzu se naučíte:
 > - Připojení Power BI Desktop k SQL na vyžádání
 > - Vytvořit sestavu na základě zobrazení
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
@@ -100,7 +100,7 @@ Ukázková data obsahují následující sady dat:
 
 Naplnění žen a rasy u každého 2000 okresu v USA, který je ve formátu Parquet Decennial a 2010.
 
-| Cesta ke složce                                                  | Description                                                  |
+| Cesta ke složce                                                  | Popis                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | /Release                                                    | Nadřazená složka pro data v ukázkovém účtu úložiště               |
 | /Release/us_population_county/                               | Datové soubory v USA ve formátu Parquet jsou rozdělené podle roku pomocí schématu dělení na oddíly nebo Hadoop. |

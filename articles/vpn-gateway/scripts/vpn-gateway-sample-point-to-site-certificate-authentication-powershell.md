@@ -3,20 +3,20 @@ title: 'Ukázkový skript Azure PowerShellu: Konfigurace sítě VPN typu Point-t
 description: Konfigurace sítě VPN typu Point-to-Site s ověřováním nativním certifikátem Azure pomocí certifikátů podepsaných držitelem Tento článek používá PowerShell.
 services: vpn-gateway
 documentationcenter: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.devlang: powershell
 ms.topic: sample
 ms.date: 01/10/2020
 ms.author: alzam
-ms.openlocfilehash: 6a82aedb20adb404cad6a51644b13a59be85ac2e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a76cad8cb89e016d231566089ce30a337ea91d8f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75867209"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086961"
 ---
-# <a name="create-a-vpn-gateway-and-add-point-to-site-configuration-using-powershell"></a>Vytvoření brány sítě VPN a přidání konfigurace typu Point-to-Site pomocí PowerShellu
+# <a name="configure-a-point-to-site-vpn-using-native-azure-certificate-authentication"></a>Konfigurace sítě VPN typu Point-to-site s použitím nativního ověřování certifikátů Azure
 
 Tento skript vytvoří bránu sítě VPN založenou na směrování a přidá konfiguraci typu Point-to-Site pomocí ověřování prostřednictvím nativního certifikátu Azure.
 
@@ -121,4 +121,4 @@ Tento skript pomocí následujících příkazů vytvoří nasazení. Každá po
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
+Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/).

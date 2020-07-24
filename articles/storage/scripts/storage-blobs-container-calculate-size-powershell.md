@@ -10,12 +10,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: de51ed7d91ba1102f5a9cd376ab95f49dd54d9f3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c95f66a492f1fdb6f3c0aef6390f0b925dcf6e53
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067073"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089362"
 ---
 # <a name="calculate-the-size-of-a-blob-container-with-powershell"></a>Výpočet velikosti kontejneru objektů BLOB pomocí prostředí PowerShell
 
@@ -53,6 +53,6 @@ Tento skript k výpočtu velikosti kontejneru úložiště objektů blob použí
 
 Skript, který počítá velikost kontejneru pro účely fakturace, najdete v tématu [Výpočet velikosti kontejneru úložiště objektů BLOB pro účely fakturace](../scripts/storage-blobs-container-calculate-billing-size-powershell.md).
 
-Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
+Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/).
 
 Další ukázkové skripty PowerShellu pro úložiště najdete v [ukázkách PowerShellu pro Azure Storage](../blobs/storage-samples-blobs-powershell.md).
