@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
-ms.openlocfilehash: e7055964f9515189450fac5c993f6acda946bfd4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f4bca70fbec5cf847a6bb5c0b97ed3496d6c2f8c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524161"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039993"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Začínáme s konektorem Oracle Database
 
@@ -77,7 +77,7 @@ V tomto článku se dozvíte, jak používat konektor Oracle Database v aplikaci
 
     V následujícím příkladu se data úlohy vracejí z databáze lidských zdrojů: 
 
-    ![Dialogové okno s názvem načíst řádek (Preview) má dvě textová pole: "název tabulky", který obsahuje text "HRJOBS" a má rozevírací seznam a "ID řádku", který obsahuje "SA_REP".](./media/connectors-create-api-oracledatabase/table-rowid.png)
+    ![Dialogové okno s názvem získat řádek (Preview) obsahuje dvě textová pole: "název tabulky", který obsahuje "úlohy" H R "a má rozevírací seznam a" řádek i d ", který obsahuje" S A _ REP ".](./media/connectors-create-api-oracledatabase/table-rowid.png)
 
 7. V tomto dalším kroku můžete k sestavení pracovního postupu použít kterýkoli z dalších konektorů. Pokud chcete testovat získávání dat od Oracle, pošlete sami sobě e-mail s daty Oracle pomocí jedné z konektorů pro odesílání e-mailů, jako je Office 365 Outlook. Pomocí dynamických tokenů z tabulky Oracle Sestavte `Subject` a `Body` svůj e-mail:
 

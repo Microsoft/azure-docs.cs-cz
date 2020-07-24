@@ -7,12 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: bb9bc847944a4228a7b583e21d0aa957f1910a29
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 7e5f7bd9ec3cc9a66adb8743ce2a56d8b2ead204
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087176"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041549"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorování Azure SQL Database pomocí Azure SQL Analytics (Preview)
 
@@ -31,10 +31,10 @@ Praktické přehledy o používání řešení Azure SQL Analytics a typických 
 
 Azure SQL Analytics je pouze cloudové řešení monitorování, které podporuje streamování diagnostické telemetrie pro všechny vaše databáze SQL Azure. Vzhledem k tomu, že Azure SQL Analytics nepoužívá agenty pro připojení k Azure Monitor, nepodporuje monitorování SQL Server hostovaných místně nebo na virtuálních počítačích.
 
-| Připojený zdroj | Podporuje se | Description |
+| Připojený zdroj | Podporováno | Popis |
 | --- | --- | --- |
 | [Nastavení diagnostiky](../platform/diagnostic-settings.md) | **Ano** | Data metriky a protokolu Azure se odesílají do protokolů Azure Monitor přímo pomocí Azure. |
-| [Účet úložiště Azure](../platform/collect-azure-metrics-logs.md) | No | Azure Monitor nečtou data z účtu úložiště. |
+| [Účet úložiště Azure](../platform/resource-logs.md#send-to-log-analytics-workspace) | No | Azure Monitor nečtou data z účtu úložiště. |
 | [Agenti systému Windows](../platform/agent-windows.md) | No | Přímo agenti Windows nepoužívají Azure SQL Analytics. |
 | [Agenti systému Linux](../learn/quick-collect-linux-computer.md) | No | Přímo agenti Linux nepoužívají Azure SQL Analytics. |
 | [Skupina pro správu nástroje System Center Operations Manager](../platform/om-agents.md) | No | Azure SQL Analytics nepoužívá přímé připojení od Operations Managerho agenta k Azure Monitor. |
@@ -43,11 +43,11 @@ Azure SQL Analytics je pouze cloudové řešení monitorování, které podporuj
 
 Následující tabulka obsahuje přehled podporovaných možností pro dvě verze řídicího panelu Azure SQL Analytics, jeden pro Azure SQL Database a druhý pro databáze spravované instance Azure SQL.
 
-| Možnost Azure SQL Analytics | Description | Podpora SQL Database | Podpora spravované instance SQL |
+| Možnost Azure SQL Analytics | Popis | Podpora SQL Database | Podpora spravované instance SQL |
 | --- | ------- | ----- | ----- |
 | Prostředek podle typu | Perspektiva, která počítá všechny monitorované prostředky. | Ano | Ano |
 | Insights | Poskytuje hierarchické procházení k podrobnostem Intelligent Insights do výkonu. | Ano | Ano |
-| chyby | Poskytuje hierarchické procházení k podrobnostem o chybách SQL, k nimž došlo v databázích. | Ano | Ano |
+| Chyby | Poskytuje hierarchické procházení k podrobnostem o chybách SQL, k nimž došlo v databázích. | Ano | Ano |
 | Časové limity | Poskytuje hierarchické procházení podrobností k časovým limitům SQL, k nimž došlo v databázích. | Yes | No |
 | Blokování | Poskytuje hierarchické procházení do bloků SQL, ke kterým došlo v databázích. | Yes | No |
 | Databáze čeká | Poskytuje hierarchickou hloubkovou statistiku SQL na úrovni databáze. Obsahuje souhrny celkové čekací doby a dobu čekání na typ čekání. |Yes | No |

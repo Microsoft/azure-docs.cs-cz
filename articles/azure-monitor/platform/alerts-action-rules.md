@@ -4,12 +4,12 @@ description: Vysvětlení toho, jaká pravidla akcí v Azure Monitor jsou a jak 
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 573567386ba9cbaf8b36440fda5073f899fcdfc7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 083db4ad046ee586f139309b62eedf0fcc2ffa6a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112336"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045714"
 ---
 # <a name="action-rules-preview"></a>Pravidla akcí (Preview)
 
@@ -21,14 +21,13 @@ Pravidla akcí vám pomůžou definovat nebo potlačit akce v jakémkoli oboru A
 
 ### <a name="suppression-of-alerts"></a>Potlačení výstrah
 
-Existuje mnoho scénářů, kde je vhodné potlačit oznámení, která generují výstrahy. Tyto scénáře jsou v rozsahu od potlačení při plánovaném časovém období údržby, aby se potlačily v nepracovních hodinách. Například tým zodpovědný za **ContosoVM** chce potlačit oznámení o výstrahách pro nadcházející víkend, protože **ContosoVM** provádí plánovanou údržbu. 
+Existuje mnoho scénářů, kde je vhodné potlačit oznámení, která generují výstrahy. Tyto scénáře jsou v rozsahu od potlačení při plánovaném časovém období údržby, aby se potlačily v nepracovních hodinách. Například tým zodpovědný za **ContosoVM** chce potlačit oznámení o výstrahách pro nadcházející víkend, protože **ContosoVM** provádí plánovanou údržbu.
 
 I když tým může zakázat každé pravidlo upozornění, které je nakonfigurováno na **ContosoVM** ručně (a znovu ho povolit po údržbě), není to jednoduchý proces. Pravidla akcí vám pomůžou definovat potlačení výstrah ve velkém měřítku s možností pružně konfigurovat dobu potlačení. V předchozím příkladu může tým definovat jedno pravidlo pro akci na **ContosoVM** , které potlačí všechna oznámení o upozorněních na víkend.
 
-
 ### <a name="actions-at-scale"></a>Škálovatelné akce
 
-I když pravidla výstrah umožňují definovat skupinu akcí, která se aktivuje při vygenerování výstrahy, zákazníci často mají společnou skupinu akcí v rámci jejich oboru operací. Například tým zodpovědný za skupinu prostředků **ContosoRG** bude pravděpodobně definovat stejnou skupinu akcí pro všechna pravidla upozornění definovaná v rámci **ContosoRG**. 
+I když pravidla výstrah umožňují definovat skupinu akcí, která se aktivuje při vygenerování výstrahy, zákazníci často mají společnou skupinu akcí v rámci jejich oboru operací. Například tým zodpovědný za skupinu prostředků **ContosoRG** bude pravděpodobně definovat stejnou skupinu akcí pro všechna pravidla upozornění definovaná v rámci **ContosoRG**.
 
 Pravidla akcí vám pomůžou tento proces zjednodušit. Když definujete akce se škálováním, může se aktivovat skupina akcí pro všechny výstrahy, které se generují v konfigurovaném oboru. V předchozím příkladu může tým definovat jedno pravidlo akce na **ContosoRG** , které aktivuje stejnou skupinu akcí pro všechny výstrahy, které jsou v ní vygenerované.
 
@@ -37,11 +36,13 @@ Pravidla akcí vám pomůžou tento proces zjednodušit. Když definujete akce s
 
 ## <a name="configuring-an-action-rule"></a>Konfigurace pravidla akce
 
+### <a name="portal"></a>[Azure Portal](#tab/portal)
+
 Přístup k této funkci získáte tak, že na úvodní stránce **výstrahy** v Azure monitor vyberete **Spravovat akce** . Pak vyberte **pravidla akce (Preview)**. K pravidlům můžete přistupovat tak, že na řídicím panelu cílové stránky zobrazíte výstrahy a zvolíte **pravidla akcí (Preview)** .
 
 ![Pravidla akce z Azure Monitor cílové stránky](media/alerts-action-rules/action-rules-landing-page.png)
 
-Vyberte **+ nové pravidlo akce**. 
+Vyberte **+ nové pravidlo akce**.
 
 ![Přidat nové pravidlo akce](media/alerts-action-rules/action-rules-new-rule.png)
 
@@ -49,7 +50,7 @@ Případně můžete vytvořit pravidlo akce při konfiguraci pravidla upozorně
 
 ![Přidat nové pravidlo akce](media/alerts-action-rules/action-rules-alert-rule.png)
 
-Nyní byste měli vidět stránku Flow pro vytváření pravidel akcí. Nakonfigurujte následující prvky: 
+Nyní byste měli vidět stránku Flow pro vytváření pravidel akcí. Nakonfigurujte následující prvky:
 
 ![Tok vytváření nového pravidla akce](media/alerts-action-rules/action-rules-new-rule-creation-flow.png)
 
@@ -61,9 +62,9 @@ Nejdřív vyberte obor (předplatné Azure, skupinu prostředků nebo cílový p
 
 ### <a name="filter-criteria"></a>Kritéria filtru
 
-Můžete také definovat filtry pro jejich zúžení do určité podmnožiny výstrah. 
+Můžete také definovat filtry pro jejich zúžení do určité podmnožiny výstrah.
 
-Jsou k dispozici tyto filtry: 
+Jsou k dispozici tyto filtry:
 
 * **Závažnost**: možnost výběru jedné nebo více závažných Závažnost výstrahy. **Závažnost = Sev1** znamená, že pravidlo akce platí pro všechny výstrahy nastavené na Sev1.
 * **Služba monitorování**: filtr založený na službě pro monitorování původu. Tento filtr je také vícenásobný výběr. Například **monitor služba = "Application Insights"** znamená, že pravidlo akce platí pro všechny výstrahy založené na Application Insights.
@@ -73,7 +74,7 @@ Jsou k dispozici tyto filtry:
 * **Popis**: regulární výraz (regulární výraz) se shoduje s tím, že definuje řetězec shodný s popisem definovaným jako součást pravidla výstrahy. Například **Popis obsahuje ' prod '** bude odpovídat všem výstrahám, které obsahují řetězec "prod" v jejich popiscích.
 * **Kontext výstrahy (datová část)**: porovnání regulárního výrazu definujícího shodu řetězce s poli kontextu výstrahy v datové části výstrahy. Například **kontext výstrahy (datová část) obsahuje řetězec ' Computer-01 '** bude odpovídat všem výstrahám, jejichž datové části obsahují řetězec "Computer-01".
 
-Tyto filtry jsou společně s navzájem aplikovány. Pokud například nastavíte **typ prostředku = Virtual Machines** a **závažnost = Sev0**, pak jste vyfiltroval všechny výstrahy **Sev0** jenom na vašich virtuálních počítačích. 
+Tyto filtry jsou společně s navzájem aplikovány. Pokud například nastavíte **typ prostředku = Virtual Machines** a **závažnost = Sev0**, pak jste vyfiltroval všechny výstrahy **Sev0** jenom na vašich virtuálních počítačích.
 
 ![Filtry pravidla akcí](media/alerts-action-rules/action-rules-new-rule-creation-flow-filters.png)
 
@@ -92,7 +93,7 @@ Pokud vyberete **potlačení**, nakonfigurujte dobu trvání pro potlačení akc
 
 #### <a name="action-group"></a>Skupina akcí
 
-Pokud vyberete možnost **Skupina akcí** v přepínači, buď přidejte existující skupinu akcí, nebo vytvořte novou. 
+Pokud vyberete možnost **Skupina akcí** v přepínači, buď přidejte existující skupinu akcí, nebo vytvořte novou.
 
 > [!NOTE]
 > K pravidlu akce můžete přidružit jenom jednu skupinu akcí.
@@ -102,9 +103,85 @@ Pokud vyberete možnost **Skupina akcí** v přepínači, buď přidejte existuj
 ### <a name="action-rule-details"></a>Podrobnosti pravidla akce
 
 Nakonec pro pravidlo akce nakonfigurujte následující podrobnosti:
-* Name
+* Název
 * Skupina prostředků, ve které je uložená
-* Description 
+* Popis
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pomocí příkazu [AZ monitor Action-Rule Create](/cli/azure/ext/alertsmanagement/monitor/action-rule#ext-alertsmanagement-az-monitor-action-rule-create) můžete vytvořit pravidla akcí pomocí Azure CLI.  `az monitor action-rule`Odkaz je pouze jedním z mnoha odkazů na rozhraní příkazového [řádku Azure CLI pro Azure monitor](/cli/azure/azure-cli-reference-for-monitor).
+
+### <a name="prepare-your-environment"></a>Příprava prostředí
+
+1. [Instalace Azure CLI](/cli/azure/install-azure-cli)
+
+   Pokud budete chtít, můžete k dokončení kroků v tomto článku použít také Azure Cloud Shell.  Azure Cloud Shell je interaktivní prostředí prostředí, které používáte v prohlížeči.  Spusťte Cloud Shell pomocí jedné z následujících metod:
+
+   - Otevřete Cloud Shell tak, že na[https://shell.azure.com](https://shell.azure.com)
+
+   - Vyberte tlačítko **Cloud Shell** na řádku nabídek v pravém horním rohu [Azure Portal](https://portal.azure.com)
+
+1. Přihlásit se.
+
+   Pokud používáte místní instalaci rozhraní příkazového řádku, přihlaste se pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) .  Proces ověřování dokončíte podle kroků zobrazených v terminálu.
+
+    ```azurecli
+    az login
+    ```
+
+1. Nainstalovat `alertsmanagement` rozšíření
+
+   `az monitor action-rule`Příkaz je experimentálním rozšířením základního rozhraní příkazového řádku Azure. Další informace o odkazech na rozšíření v [používání rozšíření pomocí Azure CLI](/cli/azure/azure-cli-extensions-overview?).
+
+   ```azurecli
+   az extension add --name alertsmanagement
+   ```
+
+   Očekává se následující upozornění.
+
+   ```output
+   The installed extension `alertsmanagement` is experimental and not covered by customer support.  Please use with discretion.
+   ```
+
+### <a name="create-action-rules-with-the-azure-cli"></a>Vytváření pravidel akcí pomocí Azure CLI
+
+Informace o požadovaných a volitelných parametrech najdete v referenčním obsahu Azure CLI pro [AZ monitor Action-Rule Create](/cli/azure/ext/alertsmanagement/monitor/action-rule#ext-alertsmanagement-az-monitor-action-rule-create) .
+
+Vytvořte pravidlo akce pro potlačení oznámení ve skupině prostředků.
+
+```azurecli
+az monitor action-rule create --resource-group MyResourceGroupName \
+                              --name MyNewActionRuleName \
+                              --location Global \
+                              --status Enabled \
+                              --rule-type Suppression \
+                              --scope-type ResourceGroup \
+                              --scope /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/MyResourceGroupName \
+                              --suppression-recurrence-type Always \
+                              --alert-context Contains Computer-01 \
+                               --monitor-service Equals "Log Analytics"
+```
+
+Vytvořte pravidlo akce pro potlačení oznámení pro všechny výstrahy Sev4 na všech virtuálních počítačích v rámci předplatného, a to každý víkend.
+
+```azurecli
+az monitor action-rule create --resource-group MyResourceGroupName \
+                              --name MyNewActionRuleName \
+                              --location Global \
+                              --status Enabled \
+                              --rule-type Suppression \
+                              --severity Equals Sev4 \
+                              --target-resource-type Equals Microsoft.Compute/VirtualMachines \
+                              --suppression-recurrence-type Weekly \
+                              --suppression-recurrence 0 6 \
+                              --suppression-start-date 12/09/2018 \
+                              --suppression-end-date 12/18/2018 \
+                              --suppression-start-time 06:00:00 \
+                              --suppression-end-time 14:00:00
+
+```
+
+* * *
 
 ## <a name="example-scenarios"></a>Ukázkové scénáře
 
@@ -132,7 +209,7 @@ Společnost Contoso chce potlačit oznámení pro všechny výstrahy protokolu v
 
 ### <a name="scenario-3-action-group-defined-at-a-resource-group"></a>Scénář 3: Skupina akcí definovaná ve skupině prostředků
 
-Společnost Contoso definovala [výstrahu metriky na úrovni předplatného](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor). Ale chce definovat akce, které se spustí konkrétně pro výstrahy vygenerované ze skupiny prostředků **ContosoRG**.
+Společnost Contoso definovala [výstrahu metriky na úrovni předplatného](./alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor). Ale chce definovat akce, které se spustí konkrétně pro výstrahy vygenerované ze skupiny prostředků **ContosoRG**.
 
 **Řešení:** Vytvořit pravidlo akce s:
 * Scope = **ContosoRG**
@@ -140,15 +217,39 @@ Společnost Contoso definovala [výstrahu metriky na úrovni předplatného](htt
 * Skupina akcí nastavená na **ContosoActionGroup**
 
 > [!NOTE]
-> *Skupiny akcí definované v rámci pravidel akcí a pravidel výstrah pracují nezávisle bez odstranění duplicit.* Pokud je v dříve popsaném scénáři pro pravidlo výstrahy definována skupina akcí, aktivuje se ve spojení se skupinou akcí definovanou v pravidle akce. 
+> *Skupiny akcí definované v rámci pravidel akcí a pravidel výstrah pracují nezávisle bez odstranění duplicit.* Pokud je v dříve popsaném scénáři pro pravidlo výstrahy definována skupina akcí, aktivuje se ve spojení se skupinou akcí definovanou v pravidle akce.
 
 ## <a name="managing-your-action-rules"></a>Správa pravidel akcí
+
+### <a name="portal"></a>[Azure Portal](#tab/portal)
 
 Pravidla akcí můžete zobrazit a spravovat ze zobrazení seznamu:
 
 ![Zobrazení seznamu pravidel akcí](media/alerts-action-rules/action-rules-list-view.png)
 
 Z tohoto místa můžete pravidla akcí povolit, zakázat nebo odstranit ve velkém měřítku zaškrtnutím políčka vedle nich. Když vyberete pravidlo akce, otevře se stránka konfigurace. Stránka vám pomůže aktualizovat definici pravidla akcí a povolit nebo zakázat.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pravidla akcí můžete zobrazit a spravovat pomocí příkazu [AZ monitor Action-Rule](/cli/azure/ext/alertsmanagement/monitor) z Azure CLI.
+
+Než budete spravovat pravidla akcí pomocí Azure CLI, připravte prostředí podle pokynů uvedených v tématu [Konfigurace pravidla akce](#configuring-an-action-rule).
+
+```azurecli
+# List all action rules for a subscription
+az monitor action-rule list
+
+# Get details of an action rule
+az monitor action-rule show --resource-group MyResourceGroupName --name MyActionRuleName
+
+# Update an action rule.
+az monitor action-rule update --resource-group MyResourceGroupName --name MyActionRuleName --status Disabled
+
+# Delete an action rule.
+az monitor action-rule delete --resource-group MyResourceGroupName --name MyActionRuleName
+```
+
+* * *
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
@@ -160,7 +261,7 @@ Chcete-li nejlépe používat výstrahy protokolu s pravidly akcí, vytvořte v�
 
 ![Pravidla akcí a výstrahy protokolu (počet výsledků)](media/alerts-action-rules/action-rules-log-alert-metric-measurement.png)
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 ### <a name="while-im-configuring-an-action-rule-id-like-to-see-all-the-possible-overlapping-action-rules-so-that-i-avoid-duplicate-notifications-is-it-possible-to-do-that"></a>I když konfigurujem pravidlo akce, chci zobrazit všechna možná překrývající se pravidla akcí, aby se zamezilo duplicitním oznámením. Je to možné?
 
@@ -181,12 +282,12 @@ Po definování cílového prostředku pro pravidlo výstrahy se můžete podív
 * Podmnožina: pravidlo upozornění, které definujete, se nachází na předplatném a pravidlo akce je v rámci předplatného ve skupině prostředků.
 * Nadmnožina: pravidlo výstrahy, které definujete, je ve skupině prostředků a pravidlo akce je v předplatném, které obsahuje skupinu prostředků.
 * Průsečík: pravidlo upozornění, které definujete, je na **VM1** a **VM2**a pravidlo akce je na **VM2** a **VM3**.
-    
+
 ![Překrývající se pravidla akcí](media/alerts-action-rules/action-rules-alert-rule-overlapping.png)
 
 ### <a name="can-i-see-the-alerts-that-have-been-suppressed-by-an-action-rule"></a>Můžu zobrazit výstrahy, které byly potlačeny pravidlem akce?
 
-Na [stránce seznam výstrah](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-managing-alert-instances)můžete zvolit další sloupec s názvem **potlačení stavu**. Pokud bylo oznámení pro instanci výstrahy potlačeno, bude tento stav zobrazen v seznamu.
+Na [stránce seznam výstrah](./alerts-managing-alert-instances.md)můžete zvolit další sloupec s názvem **potlačení stavu**. Pokud bylo oznámení pro instanci výstrahy potlačeno, bude tento stav zobrazen v seznamu.
 
 ![Potlačené instance výstrah](media/alerts-action-rules/action-rules-suppressed-alerts.png)
 
@@ -200,7 +301,7 @@ Potlačení vždy má přednost na stejném oboru.
 
    `action rule AR2 defined for VM2 and VM3 with action group AG1`
 
-Pro každou výstrahu v VM1 a VM3 se aktivuje skupina akcí AG1. Pro každé upozornění v **VM2**se skupina akcí AG1 spustí dvakrát, protože pravidla akcí neodstraňují duplicitní akce. 
+Pro každou výstrahu v VM1 a VM3 se aktivuje skupina akcí AG1. Pro každé upozornění v **VM2**se skupina akcí AG1 spustí dvakrát, protože pravidla akcí neodstraňují duplicitní akce.
 
 ### <a name="what-happens-if-i-have-a-resource-monitored-in-two-separate-action-rules-and-one-calls-for-action-while-another-for-suppression-for-example-vm2-in-the-following-scenario"></a>Co se stane, když mám prostředek monitorovaný ve dvou samostatných pravidlech akce a jednom volání akce, zatímco další pro potlačení? Například **VM2** v následujícím scénáři:
 
@@ -208,7 +309,7 @@ Pro každou výstrahu v VM1 a VM3 se aktivuje skupina akcí AG1. Pro každé upo
 
    `action rule AR2 defined for VM2 and VM3 with suppression`
 
-Pro každé upozornění v VM1 se aktivuje skupina akcí AG1. Akce a oznámení pro každou výstrahu v VM2 a VM3 se potlačí. 
+Pro každé upozornění v VM1 se aktivuje skupina akcí AG1. Akce a oznámení pro každou výstrahu v VM2 a VM3 se potlačí.
 
 ### <a name="what-happens-if-i-have-an-alert-rule-and-an-action-rule-defined-for-the-same-resource-calling-different-action-groups-for-example-vm1-in-the-following-scenario"></a>Co se stane, když mám pravidlo výstrahy a pravidlo akce definované pro stejný prostředek, který volá různé skupiny akcí? Například **VM1** v následujícím scénáři:
 
@@ -216,8 +317,8 @@ Pro každé upozornění v VM1 se aktivuje skupina akcí AG1. Akce a oznámení 
 
    `action rule AR1 defined for VM1 with action group AG1`
 
-Pro každé upozornění v VM1 se aktivuje skupina akcí AG1. Pokaždé, když se aktivuje pravidlo upozornění "rule1", bude také aktivovat AG2. Skupiny akcí definované v rámci pravidel akcí a pravidel výstrah pracují nezávisle bez odstranění duplicit. 
+Pro každé upozornění v VM1 se aktivuje skupina akcí AG1. Pokaždé, když se aktivuje pravidlo upozornění "rule1", bude také aktivovat AG2. Skupiny akcí definované v rámci pravidel akcí a pravidel výstrah pracují nezávisle bez odstranění duplicit.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Další informace o výstrahách v Azure](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)
+- [Další informace o výstrahách v Azure](./alerts-overview.md)

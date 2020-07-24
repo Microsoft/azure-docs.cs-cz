@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s prostředím PowerShell pro připojení k Azure synapse Studio (Preview)
+title: Řešení potíží s připojením synapse Studio (Preview) pomocí PowerShellu
 description: Řešení potíží s připojením ke službě Azure synapse Studio pomocí PowerShellu
 author: julieMSFT
 ms.service: synapse-analytics
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: bbc985407a6cb56f4f1b539f514ab092b5f7d0de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4afaf536a9c65758ad030e5cdeeee5fb97074d7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81431472"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046672"
 ---
 # <a name="diagnose-azure-synapse-studio-preview-connectivity-issues-with-powershell-script"></a>Diagnostika potíží s připojením ke službě Azure synapse Studio (Preview) pomocí skriptu PowerShellu
 

@@ -1,5 +1,5 @@
 ---
-title: Připojení ukázkového kódu zařízení pro IoT technologie Plug and Play Preview IoT Hub | Microsoft Docs
+title: Připojení kódu IoT technologie Plug and Play Preview k IoT Hub-C# | Microsoft Docs
 description: Pomocí jazyka C# (.NET) sestavíte a spustíte IoT technologie Plug and Play Preview ukázkový kód zařízení, který se připojuje ke centru IoT. K zobrazení informací odesílaných zařízením do centra použijte nástroj Azure IoT Explorer.
 author: dominicbetts
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 90d39635ac6302f816f39ca19cc00a39cfbbf850
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d598bbb792c071db281ebdc562402ba0198305ab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77121011"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044187"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-c"></a>Rychlý Start: připojení ukázkové aplikace technologie Plug and Play v rámci IoT pro IoT Hub (C#)
 
@@ -23,7 +23,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit ukázkovou aplikaci IoT techn
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto rychlého startu je potřeba na svém vývojovém počítači nainstalovat .NET Core 3,0. Tuto verzi .NET Core SDK můžete stáhnout pro více platforem od [stažení .NET Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0).
 

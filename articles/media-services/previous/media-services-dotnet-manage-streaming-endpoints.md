@@ -15,16 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b6c6fccd473ae57139c0b46bf32dc9468a4ba1a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa68c842495725c73a6a4b5629d38fb9c12a819f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74901281"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038728"
 ---
 # <a name="manage-streaming-endpoints-with-net-sdk"></a>Správa koncových bodů streamování pomocí sady .NET SDK  
 
 >[!NOTE]
->Nezapomeňte si projít článek s [přehledem](media-services-streaming-endpoints-overview.md) . Přečtěte si také [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint).
+>Nezapomeňte si projít článek s [přehledem](media-services-streaming-endpoints-overview.md) . Přečtěte si také [StreamingEndpoint](/rest/api/media/operations/streamingendpoint).
 
 Kód v tomto článku ukazuje, jak provádět následující úlohy pomocí sady Azure Media Services .NET SDK:
 
@@ -149,4 +150,3 @@ Prohlédněte si mapy kurzů k Media Services.
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

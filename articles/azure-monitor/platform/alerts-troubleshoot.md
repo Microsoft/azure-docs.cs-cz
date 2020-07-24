@@ -6,11 +6,12 @@ ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: 3e9eb9d0910e4c0e00e57eac80c09910f214db6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3eed095d87d1e1fa1f210b360822ceefdbe0521
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300769"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045238"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Řešení potíží s výstrahami Azure Monitor
 
@@ -240,13 +241,13 @@ Pokud při pokusu o vytvoření, aktualizaci nebo odstranění [pravidla akce](a
 
 1. **Zobrazila se vám Chyba oprávnění?**  
 
-    Měli byste buď mít [integrovanou roli Přispěvatel monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor), nebo specifická oprávnění související s pravidly a výstrahami akcí.
+    Měli byste buď mít [integrovanou roli Přispěvatel monitorování](../../role-based-access-control/built-in-roles.md#monitoring-contributor), nebo specifická oprávnění související s pravidly a výstrahami akcí.
 
 1. **Ověřili jste parametry pravidla akcí?**  
 
-    Podívejte se na [dokumentaci pravidla akce](alerts-action-rules.md)nebo příkaz [PowerShell set-AzActionRule pro pravidlo akce](https://docs.microsoft.com/powershell/module/az.alertsmanagement/Set-AzActionRule?view=azps-3.5.0) . 
+    Podívejte se na [dokumentaci pravidla akce](alerts-action-rules.md)nebo příkaz [PowerShell set-AzActionRule pro pravidlo akce](/powershell/module/az.alertsmanagement/set-azactionrule?view=azps-3.5.0) . 
 
 
 ## <a name="next-steps"></a>Další kroky
-- Pokud používáte upozornění protokolu, podívejte se také na téma [řešení potíží s výstrahami protokolu](alert-log-troubleshoot.md).
+- Pokud používáte upozornění protokolu, podívejte se také na téma [řešení potíží s výstrahami protokolu](./alerts-troubleshoot-log.md).
 - Vraťte se na [Azure Portal](https://portal.azure.com) a ověřte, jestli jste problém vyřešili výše uvedeným pokynů. 

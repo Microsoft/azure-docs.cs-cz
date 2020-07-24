@@ -3,12 +3,12 @@ title: Řešení potíží s připojením – Azure Event Hubs | Microsoft Docs
 description: Tento článek poskytuje informace o řešení problémů s připojením k Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 15c93873a25e70b0f9a88fc5ea621b90d58e7581
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b85c0895d1c8f165f494d29013adea014187dd23
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322375"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039323"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-hubs"></a>Řešení potíží s připojením – Azure Event Hubs
 K dispozici jsou různé důvody pro klientské aplikace, které se nemohou připojit k centru událostí. Problémy s připojením mohou být trvalé nebo přechodné. Pokud se problém projeví i po celou dobu (trvalý), možná budete chtít ověřit připojovací řetězec, nastavení brány firewall vaší organizace, nastavení brány firewall protokolu IP, nastavení zabezpečení sítě (koncové body služby, privátní koncové body atd.) a další. Pro přechodné problémy, upgrade na nejnovější verzi sady SDK, spuštění příkazů pro kontrolu zrušených paketů a získání trasování sítě může pomáhat při řešení problémů. 
@@ -29,7 +29,7 @@ U klientů Kafka ověřte, že jsou správně nakonfigurované producer.config n
 ### <a name="check-if-the-ports-required-to-communicate-with-event-hubs-are-blocked-by-organizations-firewall"></a>Ověřte, jestli jsou porty potřebné ke komunikaci s Event Hubs blokované bránou firewall organizace.
 Ověřte, že porty používané při komunikaci s Azure Event Hubs nejsou blokované v bráně firewall vaší organizace. V následující tabulce najdete Odchozí porty, které musíte otevřít ke komunikaci s Azure Event Hubs. 
 
-| Protocol (Protokol) | Porty | Podrobnosti | 
+| Protokol | Porty | Podrobnosti | 
 | -------- | ----- | ------- | 
 | AMQP | 5671 a 5672 | Viz [Průvodce protokolem AMQP](../service-bus-messaging/service-bus-amqp-protocol-guide.md) . | 
 | HTTP, HTTPS | 80, 443 |  |
@@ -48,7 +48,7 @@ telnet <yournamespacename>.servicebus.windows.net 5671
 ```
 
 ### <a name="verify-that-ip-addresses-are-allowed-in-your-corporate-firewall"></a>Ověřte, jestli jsou ve vaší podnikové bráně povolené IP adresy.
-Když pracujete s Azure, někdy je potřeba, abyste v podnikové bráně firewall nebo proxy povolili konkrétní rozsahy IP adres nebo adresy URL pro přístup ke všem službám Azure, které používáte nebo se pokoušíte použít. Ověřte, jestli je povolený provoz na IP adresách, které používá Event Hubs. Pro IP adresy, které používá Azure Event Hubs: Přečtěte si téma [rozsahy IP adres a značky služeb Azure – veřejný cloud](https://www.microsoft.com/download/details.aspx?id=56519) a [značka služby – EventHub](network-security.md#service-tags).
+Když pracujete s Azure, někdy je potřeba, abyste v podnikové bráně firewall nebo proxy povolili konkrétní rozsahy IP adres nebo adresy URL pro přístup ke všem službám Azure, které používáte nebo se pokoušíte použít. Ověřte, jestli je povolený provoz na IP adresách, které používá Event Hubs. Pro IP adresy, které používá Azure Event Hubs: Přečtěte si téma [rozsahy IP adres Azure a značky služeb – veřejný cloud](https://www.microsoft.com/download/details.aspx?id=56519).
 
 Ověřte také, zda je povolena IP adresa pro váš obor názvů. Chcete-li najít správné IP adresy, které mají být pro vaše připojení povoleny, postupujte takto:
 
@@ -75,13 +75,16 @@ Pokud používáte redundanci zóny pro svůj obor názvů, musíte provést ně
     ```
 3. Spusťte nástroj nslookup pro každý z nich s příponami S1, S2 a S3 k získání IP adres všech tří instancí spuštěných ve třech zónách dostupnosti. 
 
+### <a name="verify-that-azureeventgrid-service-tag-is-allowed-in-your-network-security-groups"></a>Ověřte, že ve skupinách zabezpečení sítě je povolený tag služby AzureEventGrid.
+Pokud je vaše aplikace spuštěná v podsíti a je přidružená skupina zabezpečení sítě, ověřte, jestli je povolený internetový odchozí nebo že je povolená značka služby AzureEventGrid. Podívejte se na [značky služby virtuální sítě](../virtual-network/service-tags-overview.md) a vyhledejte `EventHub` .
+
 ### <a name="check-if-the-application-needs-to-be-running-in-a-specific-subnet-of-a-vnet"></a>Ověřte, jestli aplikace potřebuje běžet v konkrétní podsíti virtuální sítě.
 Potvrďte, že vaše aplikace běží v podsíti virtuální sítě, která má přístup k oboru názvů. Pokud není, spusťte aplikaci v podsíti, která má přístup k oboru názvů, nebo přidejte IP adresu počítače, na kterém je spuštěná aplikace, do [brány firewall protokolu IP](event-hubs-ip-filtering.md). 
 
 Při vytváření koncového bodu služby virtuální sítě pro obor názvů centra událostí obor názvů akceptuje provoz pouze z podsítě, která je svázána s koncovým bodem služby. K tomuto chování existuje výjimka. Můžete přidat konkrétní IP adresy v bráně firewall protokolu IP a povolit tak přístup ke veřejnému koncovému bodu centra událostí. Další informace najdete v tématu [koncové body síťové služby](event-hubs-service-endpoints.md).
 
 ### <a name="check-the-ip-firewall-settings-for-your-namespace"></a>Ověřte nastavení brány firewall protokolu IP pro váš obor názvů.
-Ověřte, že IP adresa počítače, na kterém je spuštěná aplikace, není blokovaná bránou firewall protokolu IP.  
+Ověřte, že veřejná IP adresa počítače, na kterém je spuštěná aplikace, není blokovaná bránou firewall protokolu IP.  
 
 Ve výchozím nastavení jsou Event Hubs obory názvů přístupné z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na více než jenom na sadu IPv4 adres nebo rozsahů IPv4 adres v [CIDR (směrování mezi doménami bez třídy)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
 
@@ -110,7 +113,7 @@ Pokud je obor názvů Event Hubs nakonfigurovaný jenom přes privátní koncov�
 
 [Služba privátního propojení Azure](../private-link/private-link-overview.md) umožňuje přístup k Azure Event Hubs přes **privátní koncový bod** ve vaší virtuální síti. Privátní koncový bod je síťové rozhraní, které se připojuje soukromě a bezpečně ke službě využívající privátní propojení Azure. Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě a efektivně ho přinášejí do vaší virtuální sítě. Veškerý provoz do služby se dá směrovat prostřednictvím privátního koncového bodu, takže se nevyžadují žádné brány, zařízení NAT, ExpressRoute, připojení VPN ani veřejné IP adresy. Provoz mezi vaší virtuální sítí a službou prochází přes páteřní síť Microsoftu a eliminuje rizika vystavení na veřejném internetu. Můžete se připojit k instanci prostředku Azure, která poskytuje nejvyšší úroveň členitosti v řízení přístupu.
 
-Další informace najdete v tématu [Konfigurace privátních koncových bodů](private-link-service.md). 
+Další informace najdete v tématu [Konfigurace privátních koncových bodů](private-link-service.md). Podívejte se na část **ověření, jestli připojení privátního koncového bodu funguje** , abyste zkontrolovali, že se používá privátní koncový bod. 
 
 ### <a name="troubleshoot-network-related-issues"></a>Řešení potíží souvisejících se sítí
 Pokud chcete řešit problémy související se sítí pomocí Event Hubs, postupujte podle těchto kroků: 
@@ -160,7 +163,7 @@ Problémy s přechodným připojením mohou nastat kvůli upgradům a restartům
 - Aplikace se můžou po několik sekund odpojit od služby.
 - Žádosti můžou být v neomezeném omezení.
 
-Pokud kód aplikace využívá sadu SDK, zásady opakování jsou již vytvořeny a aktivní. Aplikace se znovu připojí bez významného dopadu na aplikaci nebo pracovní postup. V opačném případě se zkuste znovu připojit ke službě za několik minut a zjistit, jestli problémy zmizí. 
+Pokud kód aplikace využívá sadu SDK, zásady opakování jsou již vytvořeny a aktivní. Aplikace se znovu připojí bez významného dopadu na aplikaci nebo pracovní postup. Zachycení těchto přechodných chyb, zálohování a následné opakování volání zajistí, že váš kód bude odolný vůči těmto přechodným problémům.
 
 ## <a name="next-steps"></a>Další kroky
 Viz následující články:

@@ -2,12 +2,13 @@
 title: Režimy nasazení
 description: Popisuje, jak určit, jestli se má použít kompletní nebo přírůstkový režim nasazení s Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 01/17/2020
-ms.openlocfilehash: 1077d92f076797fb03c4fe750b353e2306f9b6de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/22/2020
+ms.openlocfilehash: f20f41e989e1a994b7806aecf6e7cee5a4c27014
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79460241"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040433"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Režimy nasazení Azure Resource Manager
 
@@ -20,6 +21,9 @@ Výchozí režim je přírůstkový.
 ## <a name="complete-mode"></a>Režim dokončení
 
 V režimu úplné Správce prostředků **odstraní** prostředky, které existují ve skupině prostředků, ale nejsou v šabloně zadané.
+
+> [!NOTE]
+> Vždy použijte [operaci citlivostní zpracování](template-deploy-what-if.md) před nasazením šablony v úplném režimu. Jak ukazuje, které prostředky se vytvoří, odstraní nebo upraví. Použijte co když, chcete-li se vyhnout neúmyslnému odstranění prostředků.
 
 Pokud vaše šablona obsahuje prostředek, který není nasazený, protože [Podmínka](conditional-resource-deployment.md) je vyhodnocena jako NEPRAVDA, výsledek závisí na tom, která REST API verze, kterou použijete k nasazení šablony. Pokud používáte verzi starší než 2019-05-10, prostředek se **neodstraní**. Při 2019-05-10 nebo novějším se prostředek **odstraní**. Nejnovější verze Azure PowerShell a Azure CLI odstraní prostředek.
 
@@ -49,6 +53,8 @@ V přírůstkovém režimu Správce prostředků **opustí nezměněné** prost�
 
 > [!NOTE]
 > Při opětovném nasazení stávajícího prostředku v přírůstkovém režimu jsou znovu aplikovány všechny vlastnosti. **Vlastnosti se přírůstkově přidávají**. Běžným srozumitelným pochopením je, že si nezůstane beze změny vlastností, které nejsou zadané v šabloně. Pokud nezadáte určité vlastnosti, Správce prostředků interpretuje nasazení jako přepsání těchto hodnot. Vlastnosti, které nejsou zahrnuty v šabloně, se obnoví na výchozí hodnoty. Zadejte všechny jiné než výchozí hodnoty pro prostředek, nikoli pouze ty, které aktualizujete. Definice prostředků v šabloně vždy obsahuje konečný stav prostředku. Nemůže představovat částečnou aktualizaci stávajícího prostředku.
+>
+> Ve výjimečných případech jsou vlastnosti, které zadáte pro prostředek, ve skutečnosti implementované jako podřízené prostředky. Když například zadáte hodnoty konfigurace lokality pro webovou aplikaci, tyto hodnoty se implementují v typu podřízeného prostředku `Microsoft.Web/sites/config` . Pokud webovou aplikaci znovu nasadíte a zadáte prázdný objekt pro hodnoty konfigurace lokality, podřízený prostředek se neaktualizuje. Pokud však zadáte nové hodnoty konfigurace lokality, bude se aktualizovat typ podřízeného prostředku.
 
 ## <a name="example-result"></a>Příklad výsledku
 

@@ -3,26 +3,27 @@ title: Vytvoření vlastní role Azure Resource Manager a přiřazení k instan�
 description: Tento článek poskytuje pokyny k vytvoření vlastní role Azure Resource Manager a přiřazení k instančnímu objektu pro živé video analýzy v IoT Edge pomocí Azure CLI.
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: be317ac1e86fd38c72b87734909004a64dc2938b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb4c9a1f90ab50f7070184fc9a394d9e6edb833a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261167"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043175"
 ---
 # <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal"></a>Vytvoření vlastní role Azure Resource Manager a přiřazení k instančnímu objektu
 
-Live video Analytics v instanci modulu IoT Edge potřebuje pro správné fungování aktivní účet Azure Media Services. Vztah mezi živým analýzou videa v modulu IoT Edge a účtem Azure Media Service je vytvořen pomocí sady vlastností funkčního modulu. Jednou z těchto dvojitých vlastností je [instanční objekt](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object) , který umožňuje instanci modulu komunikovat s a triggerem potřebných operací na účtu Media Services. K minimalizaci potenciálního zneužití nebo náhodnému úniku dat z hraničního zařízení by měl tento instanční objekt mít nejnižší úroveň oprávnění.
+Live video Analytics v instanci modulu IoT Edge potřebuje pro správné fungování aktivní účet Azure Media Services. Vztah mezi živým analýzou videa v modulu IoT Edge a účtem Azure Media Service je vytvořen pomocí sady vlastností funkčního modulu. Jednou z těchto dvojitých vlastností je [instanční objekt](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) , který umožňuje instanci modulu komunikovat s a triggerem potřebných operací na účtu Media Services. K minimalizaci potenciálního zneužití nebo náhodnému úniku dat z hraničního zařízení by měl tento instanční objekt mít nejnižší úroveň oprávnění.
 
 V tomto článku se dozvíte, jak vytvořit vlastní roli Azure Resource Manager s Azure Cloud Shell, která pak slouží k vytvoření instančního objektu.
 
-## <a name="prerequisites"></a>Požadavky  
+## <a name="prerequisites"></a>Předpoklady  
 
 Požadavky pro tento článek jsou následující:
 
 * Předplatné Azure s předplatným vlastníka.
 * Azure Active Directory s oprávněním k vytvoření aplikace a přiřazení instančního objektu k roli.
 
-Nejjednodušším způsobem, jak zkontrolovat, jestli má váš účet dostatečná oprávnění, je použít k tomu portál. Informace najdete v článku [Kontrola požadovaných oprávnění](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
+Nejjednodušším způsobem, jak zkontrolovat, jestli má váš účet dostatečná oprávnění, je použít k tomu portál. Informace najdete v článku [Kontrola požadovaných oprávnění](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
 ## <a name="overview"></a>Přehled  
 
@@ -48,7 +49,7 @@ Pokud nemáte účet Media Service, vytvořte ho pomocí následujících kroků
     ```
     az account set --subscription " <yourSubscriptionName or yourSubscriptionId>"
     ```
-1. Vytvořte [skupinu prostředků](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) a [účet úložiště](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create).
+1. Vytvořte [skupinu prostředků](/cli/azure/group?view=azure-cli-latest#az-group-create) a [účet úložiště](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create).
 1. Nyní vytvořte účet služby Azure Media Service pomocí následující šablony příkazů v Cloud Shell:
 
     ```
@@ -84,8 +85,8 @@ Tento příkaz vytvoří odpověď podobnou této:
 ```
 1. Výstup pro instanční objekt s ověřováním hesla zahrnuje klíč hesla, který v tomto případě je parametrem "AadSecret". 
 
-    Nezapomeňte tuto hodnotu zkopírovat – nedá se načíst. Pokud zapomenete heslo, [resetujte přihlašovací údaje instančního objektu](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#reset-credentials).
-1. AppId a klíč tenanta se zobrazí ve výstupu jako "AadClientId" a "AadTenantId" v uvedeném pořadí. Používají se při ověřování instančního objektu. Poznamenejte si jejich hodnoty, ale můžete je kdykoli načíst pomocí příkaz [AZ AD SP list](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list).
+    Nezapomeňte tuto hodnotu zkopírovat – nedá se načíst. Pokud zapomenete heslo, [resetujte přihlašovací údaje instančního objektu](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#reset-credentials).
+1. AppId a klíč tenanta se zobrazí ve výstupu jako "AadClientId" a "AadTenantId" v uvedeném pořadí. Používají se při ověřování instančního objektu. Poznamenejte si jejich hodnoty, ale můžete je kdykoli načíst pomocí příkaz [AZ AD SP list](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list).
 
 ### <a name="create-a-custom-role-definition"></a>Vytvoření vlastní definice role  
 
@@ -170,7 +171,7 @@ Výše uvedený příkaz vypíše objectId objektu služby.
 “objectId” : “<yourObjectId>”,
 ```
 
-Pomocí [příkazu AZ role Assignment vytvořit šablonu příkazu](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) propojte vlastní roli s objektem služby:
+Pomocí [příkazu AZ role Assignment vytvořit šablonu příkazu](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) propojte vlastní roli s objektem služby:
 
 ```
 az role assignment create --role “LVAEdge User” --assignee-object-id < objectId>    
@@ -178,7 +179,7 @@ az role assignment create --role “LVAEdge User” --assignee-object-id < objec
 
 Parametry:
 
-|Parametry|Description| 
+|Parametry|Popis| 
 |---|---|
 |--role |Název nebo ID vlastní role V našem případě: "LVAEdge uživatel".|
 |--nabyvatel-objektu-ID|ID objektu instančního objektu, který budete používat.|

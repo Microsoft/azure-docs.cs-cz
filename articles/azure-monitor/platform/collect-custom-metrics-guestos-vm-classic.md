@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: 7656b60c31e7da7841f9afb723167eb061fe3401
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87277c0c61f6d63e453386724dd472d2663e3148
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124467"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045211"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>Odeslání metriky hostovaného operačního systému do databáze Azure Monitor metriky pro virtuální počítač s Windows (Classic)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-[Rozšíření diagnostika](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) Azure monitor (označované jako "wad" nebo "Diagnostika") umožňuje shromažďovat metriky a protokoly ze hostovaného operačního systému (hostovaného operačního systému) spuštěného jako součást virtuálního počítače, cloudové služby nebo clusteru Service Fabric. Rozšíření může odesílat telemetrii do [mnoha různých umístění.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
+[Rozšíření diagnostika](./diagnostics-extension-overview.md) Azure monitor (označované jako "wad" nebo "Diagnostika") umožňuje shromažďovat metriky a protokoly ze hostovaného operačního systému (hostovaného operačního systému) spuštěného jako součást virtuálního počítače, cloudové služby nebo clusteru Service Fabric. Rozšíření může odesílat telemetrii do [mnoha různých umístění.](./data-platform.md?toc=/azure/azure-monitor/toc.json)
 
 Tento článek popisuje proces odeslání metrik výkonu hostovaného operačního systému pro virtuální počítač s Windows (Classic) do databáze metriky Azure Monitor. Počínaje diagnostikou verze 1,11 můžete zapisovat metriky přímo do úložiště metrik Azure Monitor, kde jsou již shromažďovány standardní metriky platforem. 
 
@@ -26,13 +26,13 @@ Ukládání do tohoto umístění vám umožní přístup ke stejným akcím, ja
 
 Proces, který je popsaný v tomto článku, funguje jenom na klasických virtuálních počítačích, na kterých běží operační systém Windows.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Musíte být [správcem služeb nebo spolusprávcem](../../cost-management-billing/manage/add-change-subscription-administrator.md) svého předplatného Azure. 
 
-- Vaše předplatné musí být zaregistrované ve službě [Microsoft. Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
+- Vaše předplatné musí být zaregistrované ve službě [Microsoft. Insights](../../azure-resource-manager/management/resource-providers-and-types.md). 
 
-- Musíte mít nainstalované buď [Azure PowerShell](/powershell/azure) , nebo [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) .
+- Musíte mít nainstalované buď [Azure PowerShell](/powershell/azure) , nebo [Azure Cloud Shell](../../cloud-shell/overview.md) .
 
 - Prostředek virtuálního počítače musí být v [oblasti, která podporuje vlastní metriky](metrics-custom-overview.md#supported-regions).
 
@@ -186,7 +186,7 @@ Udělte této aplikaci oprávnění vydavatele metrik monitorování pro prostř
 
 ## <a name="plot-the-metrics-in-the-azure-portal"></a>Vykreslit metriky v Azure Portal
 
-1.  Přejděte na web Azure Portal. 
+1.  Přejděte na Azure Portal. 
 
 1.  V nabídce vlevo vyberte **monitor.**
 
@@ -204,4 +204,3 @@ Udělte této aplikaci oprávnění vydavatele metrik monitorování pro prostř
 
 ## <a name="next-steps"></a>Další kroky
 - Přečtěte si další informace o [vlastních metrikách](metrics-custom-overview.md).
-

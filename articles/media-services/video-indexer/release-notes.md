@@ -12,11 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 06/02/2020
 ms.author: juliako
-ms.openlocfilehash: 5bd4c9aa3fde9e3fa596ce5a18b892edfab60af5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7667f7c5194762b227c3cddd5bea5ed9d50a96e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84325061"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042625"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Poznámky k verzi Azure Media Services Video Indexer
 
@@ -28,6 +29,18 @@ V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vý
 * Známé problémy
 * Opravy chyb
 * Zastaralé funkce
+
+## <a name="june-2020"></a>Červen 2020
+
+### <a name="search-by-topics"></a>Hledat podle témat
+
+Teď můžete pomocí rozhraní API pro hledání vyhledat videa s konkrétními tématy (jenom rozhraní API).
+
+Témata jsou přidána jako součást `textScope` (volitelný parametr). Podrobnosti najdete v tématu [rozhraní API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Search-Videos) .  
+
+### <a name="labels-enhancement"></a>Vylepšení popisků
+
+Popisek autor značky byl upgradován a nyní obsahuje více vizuálních popisků, které lze identifikovat.
 
 ## <a name="may-2020"></a>Květen 2020
 
@@ -162,7 +175,7 @@ V daty IBC 2019 bylo oznámeno více předběžných.
     Možnost rozpoznávat znaky skupinových reklam v animovaném obsahu prostřednictvím integrace s vlastními vizemi. Další informace naleznete v tématu [animovaná detekce znaků](animated-characters-recognition.md).
 * Identifikace ve více jazycích (Public Preview)
 
-    Detekuje segmenty v různých jazycích zvukové stopy a na základě nich vytvoří vícejazyčný přepis. Počáteční podpora: angličtina, španělština, němčina a francouzština. Další informace najdete v tématu [Automatické určení a přepisovat vícejazyčného obsahu](multi-language-identification-transcription.md).
+    Detekuje segmenty v různých jazycích zvukové stopy a na základě nich vytvoří vícejazyčný přepis. Počáteční podpora: angličtina, španělština, němčina a francouzština. Další informace najdete v tématu [Automatická identifikace a přepis vícejazyčného obsahu](multi-language-identification-transcription.md).
 * Extrakce pojmenovaná entita pro lidi a umístění
 
     Extrahuje značky, umístění a lidi z mluvené řeči a vizuálního textu prostřednictvím zpracování přirozeného jazyka (NLP).

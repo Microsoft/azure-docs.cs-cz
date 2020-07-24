@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 4d4587c701a054828fc34785e2ae680fef47625d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19acd39be11a33424008662eb27cd68ec0005f77
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80382915"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038949"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Monitorování diagnostických protokolů Media Services
 
@@ -26,9 +26,9 @@ ms.locfileid: "80382915"
 
 V tomto článku se dozvíte, jak směrovat data do účtu úložiště a pak je zobrazit.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- [Vytvořte účet Media Services](create-account-cli-how-to.md).
+- [Vytvořte účet Media Services](./create-account-howto.md).
 - Zkontrolujte [monitorování Media Services metriky a diagnostické protokoly](media-services-metrics-diagnostic-logs.md).
 
 ## <a name="route-data-to-the-storage-account-using-the-portal"></a>Směrování dat do účtu úložiště pomocí portálu
@@ -178,7 +178,7 @@ Na zobrazení události v účtu úložiště možná budete muset počkat až p
 
 * Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 * [Azure Monitor metriky](../../azure-monitor/platform/data-platform.md)
 * [Protokoly diagnostiky Azure Monitor](../../azure-monitor/platform/platform-logs-overview.md)

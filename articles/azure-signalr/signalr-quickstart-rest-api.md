@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 70053fbc47a5ba85e7bb18ab762868973d014beb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 707547cb39487111e2e9353de7e82c2409638324
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80548136"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045002"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Rychlý start: Vysílání zpráv v reálném čase z konzoly aplikace
 
@@ -19,7 +19,7 @@ Ve službě Azure SignalR je k dispozici [rozhraní REST API](https://github.com
 
 V tomto rychlém startu se dozvíte, jak odesílat zprávy z aplikace příkazového řádku do aplikací připojených klientů v jazyce C#.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Toto Rychlé zprovoznění je možné spustit v systémech macOS, Windows nebo Linux.
 
@@ -119,14 +119,14 @@ Služba Azure SignalR umožňuje v systému integraci služeb třetích stran.
 
 Následující tabulka uvádí všechny podporované verze rozhraní REST API k datu vydání tohoto článku. U každé verze také najdete definiční soubor.
 
-Version | Stav rozhraní API | Dveře | Specifikace
+Verze | Stav rozhraní API | Dveře | Specifikace
 --- | --- | --- | ---
-`1.0-preview` | K dispozici. | 5002 | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1-preview.json)
-`1.0` | K dispozici. | Standard | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1.json)
+`1.0-preview` | K dispozici | 5002 | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1-preview.json)
+`1.0` | K dispozici | Standard | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1.json)
 
 Dostupná rozhraní API pro jednotlivé verze najdete v následujícím seznamu.
 
-Rozhraní API | `1.0-preview` | `1.0`
+Rozhraní API | 1,0 – Preview | 1.0
 --- | --- | ---
 [Všesměrové vysílání pro všechny](#broadcast) | **&#x2713;** | **&#x2713;**
 [Všesměrové vysílání do skupiny](#broadcast-group) | **&#x2713;** | **&#x2713;**
@@ -146,7 +146,7 @@ Odesílání některým uživatelům | **&#x2713;** (zastaralé) | `N / A`
 <a name="broadcast"> </a>
 ### <a name="broadcast-to-everyone"></a>Všesměrové vysílání pro všechny
 
-Version | Metoda HTTP v rozhraní API | Adresa URL požadavku | Text požadavku
+Verze | Metoda HTTP v rozhraní API | Adresa URL požadavku | Text požadavku
 --- | --- | --- | ---
 `1.0-preview` | `POST` | `https://<instance-name>.service.signalr.net:5002/api/v1-preview/hub/<hub-name>` | `{"target": "<method-name>", "arguments": [...]}`
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>` | Stejný jako výše uvedený
@@ -154,7 +154,7 @@ Version | Metoda HTTP v rozhraní API | Adresa URL požadavku | Text požadavku
 <a name="broadcast-group"> </a>
 ### <a name="broadcast-to-a-group"></a>Všesměrové vysílání do skupiny
 
-Version | Metoda HTTP v rozhraní API | Adresa URL požadavku | Text požadavku
+Verze | Metoda HTTP v rozhraní API | Adresa URL požadavku | Text požadavku
 --- | --- | --- | ---
 `1.0-preview` | `POST` | `https://<instance-name>.service.signalr.net:5002/api/v1-preview/hub/<hub-name>/group/<group-name>` | `{"target": "<method-name>", "arguments": [...]}`
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>` | Stejný jako výše uvedený
@@ -162,7 +162,7 @@ Version | Metoda HTTP v rozhraní API | Adresa URL požadavku | Text požadavku
 <a name="send-user"> </a>
 ### <a name="sending-to-a-user"></a>Odesílání uživateli
 
-Version | Metoda HTTP v rozhraní API | Adresa URL požadavku | Text požadavku
+Verze | Metoda HTTP v rozhraní API | Adresa URL požadavku | Text požadavku
 --- | --- | --- | ---
 `1.0-preview` | `POST` | `https://<instance-name>.service.signalr.net:5002/api/v1-preview/hub/<hub-name>/user/<user-id>` | `{"target": "<method-name>", "arguments": [...]}`
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/users/<user-id>` | Stejný jako výše uvedený
@@ -170,14 +170,14 @@ Version | Metoda HTTP v rozhraní API | Adresa URL požadavku | Text požadavku
 <a name="add-user-to-group"> </a>
 ### <a name="adding-a-user-to-a-group"></a>Přidání uživatele do skupiny
 
-Version | Metoda HTTP v rozhraní API | Adresa URL požadavku
+Verze | Metoda HTTP v rozhraní API | Adresa URL požadavku
 --- | --- | ---
 `1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>`
 
 <a name="remove-user-from-group"> </a>
 ### <a name="removing-a-user-from-a-group"></a>Odebrání uživatele ze skupiny
 
-Version | Metoda HTTP v rozhraní API | Adresa URL požadavku
+Verze | Metoda HTTP v rozhraní API | Adresa URL požadavku
 --- | --- | ---
 `1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>`
 
@@ -204,7 +204,7 @@ Verze rozhraní API | Metoda HTTP v rozhraní API | Adresa URL požadavku
 <a name="send-connection"> </a>
 ### <a name="send-message-to-a-connection"></a>Odeslat zprávu na připojení
 
-Verze rozhraní API | Metoda HTTP v rozhraní API | Adresa URL požadavku | Text žádosti
+Verze rozhraní API | Metoda HTTP v rozhraní API | Adresa URL požadavku | Text požadavku
 ---|---|---|---
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>` | `{ "target":"<method-name>", "arguments":[ ... ] }`
 
@@ -242,7 +242,7 @@ Verze rozhraní API | Metoda HTTP v rozhraní API | Adresa URL požadavku
 Stavový kód odpovědi | Popis
 ---|---
 `200` | Služba je dobrá
-`503` | Služba není k dispozici
+`5xx` | Chyba služby
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 

@@ -6,14 +6,14 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 04/28/2020
 ms.reviewer: sdash
-ms.openlocfilehash: 8f03099cf2890882a1c1d4ba9d69fcb64d0db600
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8544ad292d9e8982e236566fb53189c70922232c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82233954"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041379"
 ---
-# <a name="troubleshooting"></a>Řešení potíží
+# <a name="troubleshooting"></a>Poradce při potížích
 
 Tento článek vám pomůže vyřešit běžné problémy, ke kterým může dojít při použití monitorování dostupnosti.
 
@@ -35,7 +35,7 @@ Tento článek vám pomůže vyřešit běžné problémy, ke kterým může doj
 |----|---------|
 |Pokus o připojení se nezdařil, protože připojená strana nereagovala po určitém časovém intervalu správně.  | Testovací agenti v určitých umístěních jsou blokovány bránou firewall.|
 |    |K opětovnému směrování určitých IP adres dochází prostřednictvím (nástroje pro vyrovnávání zatížení, správci geografického provozu a Azure Express Route). 
-|    |Pokud používáte Azure ExpressRoute, existují scénáře, kdy se pakety můžou vyřadit v případech, kdy [dojde k asymetrickému směrování](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing).|
+|    |Pokud používáte Azure ExpressRoute, existují scénáře, kdy se pakety můžou vyřadit v případech, kdy [dojde k asymetrickému směrování](../../expressroute/expressroute-asymmetric-routing.md).|
 
 ## <a name="test-failure-with-a-protocol-violation-error"></a>Selhání testu s chybou porušení protokolu
 
@@ -66,11 +66,11 @@ Zkontrolujte konfiguraci klasických výstrah a potvrďte, že je váš e-mail p
 
 ### <a name="i-did-not-receive-the-webhook-notification"></a>Nedostali jsme oznámení Webhooku?
 
-Zkontrolujte, zda je k dispozici aplikace, která přijímá oznámení Webhooku, a úspěšně zpracuje žádosti Webhooku. Další informace najdete v [tomto](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) tématu.
+Zkontrolujte, zda je k dispozici aplikace, která přijímá oznámení Webhooku, a úspěšně zpracuje žádosti Webhooku. Další informace najdete v [tomto](../platform/alerts-log-webhook.md) tématu.
 
 ### <a name="i-am-getting--403-forbidden-errors-what-does-this-mean"></a>Zobrazují se chyby 403 zakázáno, co to znamená?
 
-Tato chyba označuje, že je potřeba přidat výjimky brány firewall, aby mohli agenti dostupnosti otestovat cílovou adresu URL. Úplný seznam IP adres agenta, který se má použít, najdete v [článku věnovaném výjimkám IP](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses#availability-tests).
+Tato chyba označuje, že je potřeba přidat výjimky brány firewall, aby mohli agenti dostupnosti otestovat cílovou adresu URL. Úplný seznam IP adres agenta, který se má použít, najdete v [článku věnovaném výjimkám IP](./ip-addresses.md#availability-tests).
 
 ### <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>Občasné selhání testu s chybou porušení protokolu
 
@@ -97,7 +97,7 @@ Významy těchto dvou výrazů jsou zaměnitelné. Testy dostupnosti jsou obecn�
    Existují dvě možná řešení:
 
    * Nakonfigurujte bránu firewall, aby povolovala příchozí požadavky z [IP adres našich agentů webového testu](../../azure-monitor/app/ip-addresses.md).
-   * Napište vlastní kód, který pravidelně testuje interní server. Spusťte kód na testovacím serveru jako proces na pozadí za vaší bránou firewall. Testovací proces můžete odesílat své výsledky do Application Insights pomocí rozhraní API [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) v balíčku Core SDK. To vyžaduje, aby měl váš testovací server odchozí přístup ke koncovému bodu ingestování Application Insights, ale to je mnohem menší riziko zabezpečení než případné povolení příchozích požadavků. Výsledky se zobrazí v oknech webové testy dostupnosti, i když se prostředí mírně zjednoduší z toho, co je k dispozici pro testy vytvořené prostřednictvím portálu. Vlastní testy dostupnosti se také zobrazí jako výsledky dostupnosti v analýzách, vyhledávání a metrikách.
+   * Napište vlastní kód, který pravidelně testuje interní server. Spusťte kód na testovacím serveru jako proces na pozadí za vaší bránou firewall. Testovací proces můžete odesílat své výsledky do Application Insights pomocí rozhraní API [TrackAvailability()](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) v balíčku Core SDK. To vyžaduje, aby měl váš testovací server odchozí přístup ke koncovému bodu ingestování Application Insights, ale to je mnohem menší riziko zabezpečení než případné povolení příchozích požadavků. Výsledky se zobrazí v oknech webové testy dostupnosti, i když se prostředí mírně zjednoduší z toho, co je k dispozici pro testy vytvořené prostřednictvím portálu. Vlastní testy dostupnosti se také zobrazí jako výsledky dostupnosti v analýzách, vyhledávání a metrikách.
 
 ### <a name="uploading-a-multi-step-web-test-fails"></a>Nahrávání vícekrokového webového testu se nezdaří
 

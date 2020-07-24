@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 3d02c335f6e950300a7ced36643e6276c3d8d16a
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 79f06bd5d6af05e334faf4e1f6d8cd3e358f89ba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957371"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039187"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Návrh systému ochrany obsahu s více variantami DRM s využitím řízení přístupu 
 
@@ -132,12 +133,12 @@ Mapování jsou uvedena v následující tabulce.
 
 | **Stavební blok** | **Technologie** |
 | --- | --- |
-| **Přehrávač** |[Přehrávač médií Azure](https://azure.microsoft.com/services/media-services/media-player/) |
+| **Player** |[Přehrávač médií Azure](https://azure.microsoft.com/services/media-services/media-player/) |
 | **Zprostředkovatel identity (IDP)** |Azure Active Directory (Azure AD) |
 | **Služba tokenů zabezpečení (STS)** |Azure AD |
 | **Pracovní postup ochrany DRM** |Azure Media Services dynamickou ochranu |
 | **Doručování licencí DRM** |* Media Services doručování licencí (PlayReady, Widevine, FairPlay) <br/>* Licenční server Axinom <br/>* Vlastní licenční server PlayReady |
-| **Zdroj** |Koncový bod streamování Azure Media Services |
+| **Zdroji** |Koncový bod streamování Azure Media Services |
 | **Správa klíčů** |Není nutné pro implementaci reference. |
 | **Správa obsahu** |Konzolová aplikace v jazyce C# |
 
@@ -213,7 +214,7 @@ Další informace najdete v tématu [ověřování tokenu JWT v Azure Media Serv
 Informace o službě Azure AD:
 
 * Informace o vývojářích najdete v [příručce pro vývojáře Azure Active Directory](../../active-directory/develop/v2-overview.md).
-* Informace o Správci najdete ve [správě adresáře tenanta Azure AD](../../active-directory/fundamentals/active-directory-administer.md).
+* Informace o Správci najdete ve [správě adresáře tenanta Azure AD](../../active-directory/fundamentals/active-directory-whatis.md).
 
 ### <a name="some-issues-in-implementation"></a>Některé problémy v implementaci
 
@@ -281,7 +282,7 @@ I když Azure byl původně povolený jenom pomocí účet Microsoft uživatelů
 
 Vzhledem k tomu, že Azure AD důvěřuje účet Microsoft doméně, můžete do vlastního tenanta Azure AD přidat libovolné účty z následujících domén a použít účet pro přihlášení:
 
-| **Název domény** | **Domain (Doména)** |
+| **Název domény** | **Doména** |
 | --- | --- |
 | **Vlastní doména tenanta Azure AD** |somename.onmicrosoft.com |
 | **Firemní doména** |microsoft.com |

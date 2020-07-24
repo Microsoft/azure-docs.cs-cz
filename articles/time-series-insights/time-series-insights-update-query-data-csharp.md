@@ -1,31 +1,31 @@
 ---
-title: Dotazování dat z prostředí verze Preview pomocí C#-Azure Time Series Insights | Microsoft Docs
-description: Naučte se, jak zadávat dotazy na data z Azure Time Series Insights prostředí pomocí aplikace napsané v jazyce C#.
+title: Dotazování dat z prostředí Gen2 pomocí C#-Azure Time Series Insights | Microsoft Docs
+description: Naučte se, jak zadávat dotazy na data z prostředí Azure Time Series Insights Gen2 pomocí aplikace napsané v jazyce C#.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: fbc2cbc29cb23a21e7d3713091fc22f01bb1b15a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa3faad88fb5474b34ff6855690882141b2e4843
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81379813"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046303"
 ---
-# <a name="query-data-from-the-azure-time-series-insights-preview-environment-using-c"></a>Dotazování dat z prostředí Azure Time Series Insights Preview pomocí jazyka C #
+# <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c"></a>Dotazování dat z prostředí Azure Time Series Insights Gen2 pomocí jazyka C #
 
-Tento příklad jazyka C# ukazuje, jak zadávat dotazy na data z [rozhraní API pro přístup k datům](https://docs.microsoft.com/rest/api/time-series-insights/preview) ve verzi Preview v prostředích služby Azure Time Series Insights Preview.
+Tento příklad v jazyce C# ukazuje, jak zadávat dotazy na data z [rozhraní API pro přístup k datům Gen2](https://docs.microsoft.com/rest/api/time-series-insights/preview) v prostředích Azure Time Series Insights Gen2.
 
 > [!TIP]
-> Zobrazit náhled ukázek kódu C# v [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample) .
+> Prohlédněte si ukázky kódu C# Gen2 na adrese [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample) .
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Vzorový kód níže znázorňuje následující funkce:
 
@@ -34,23 +34,23 @@ Vzorový kód níže znázorňuje následující funkce:
 * Jak předat token přístupu, který získal přístup v `Authorization` hlavičce dalších požadavků na přístup k rozhraní API pro přístup k datům. 
 * Ukázka poskytuje rozhraní konzoly, které demonstruje, jak jsou požadavky HTTP provedeny:
 
-    * [Rozhraní API pro prostředí Preview](https://docs.microsoft.com/rest/api/time-series-insights/preview#preview-environments-apis)
-        * Získat rozhraní API pro [dostupnost prostředí](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/getavailability) a [získat rozhraní API pro schéma událostí](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/geteventschema)
-    * [Rozhraní API pro náhled dotazů](https://docs.microsoft.com/rest/api/time-series-insights/preview#query-apis)
-        * Získat [API pro události](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#getevents), získat rozhraní [API řady](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#getseries)a [získat agregované rozhraní API řady](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#aggregateseries)
-    * [Rozhraní API modelu časové řady](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#aggregateseries)
-        * [Rozhraní](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeserieshierarchies/get) API pro [dávkování](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeserieshierarchies/executebatch) hierarchií a hierarchií
-        * Rozhraní API pro [získání typů](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriestypes/get) a [typů rozhraní Batch API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriestypes/executebatch)
-        * Rozhraní [API pro dávku](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriesinstances/executebatch) instancí a instance rozhraní API pro [načtení instancí](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriesinstances/get)
+    * [Rozhraní API pro prostředí Gen2](https://docs.microsoft.com/rest/api/time-series-insights/preview#preview-environments-apis)
+        * Získat rozhraní API pro [dostupnost prostředí](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/getavailability) a [získat rozhraní API pro schéma událostí](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/geteventschema)
+    * [Rozhraní API pro dotazy Gen2](https://docs.microsoft.com/rest/api/time-series-insights/preview#query-apis)
+        * Získat [API pro události](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents), získat rozhraní [API řady](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries)a [získat agregované rozhraní API řady](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
+    * [Rozhraní API modelu časové řady](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
+        * [Rozhraní](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/get) API pro [dávkování](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch) hierarchií a hierarchií
+        * Rozhraní API pro [získání typů](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/get) a [typů rozhraní Batch API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
+        * Rozhraní [API pro dávku](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch) instancí a instance rozhraní API pro [načtení instancí](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/get)
 * Rozšířené možnosti [vyhledávání](https://docs.microsoft.com/rest/api/time-series-insights/preview#search-features) a [TSX](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)
 
 ## <a name="prerequisites-and-setup"></a>Požadavky a instalace
 
 Před kompilací a spuštěním ukázkového kódu proveďte následující kroky:
 
-1. [Zřídí verzi Preview Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-how-to-manage#create-the-environment) prostředí.
+1. [Zřídí prostředí Gen2 Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-how-to-manage#create-the-environment) .
 1. Nakonfigurujte Azure Time Series Insights prostředí pro Azure Active Directory, jak je popsáno v tématu [ověřování a autorizace](time-series-insights-authentication-and-authorization.md). 
-1. Spusťte [GenerateCode.bat](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/GenerateCode.bat) , jak je uvedeno v [Readme.MD](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/Readme.md) a vygenerujte závislosti klienta Time Series Insights Preview.
+1. Spusťte [GenerateCode.bat](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/GenerateCode.bat) , jak je uvedeno v [Readme.MD](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/Readme.md) a vygenerujte závislosti klienta Azure Time Series Insights Gen2.
 1. Otevřete `TSIPreviewDataPlaneclient.sln` řešení a nastavte `DataPlaneClientSampleApp` jako výchozí projekt v sadě Visual Studio.
 1. Požadované závislosti projektu nainstalujte pomocí kroků popsaných [níže](#project-dependencies) a zkompilujte příklad do spustitelného `.exe` souboru.
 1. Spusťte `.exe` soubor dvojitým kliknutím na něj.
@@ -81,4 +81,4 @@ Případně přidejte jednotlivé balíčky pomocí [NuGet 2.12 +](https://www.n
 
 - Další informace o dotazování najdete v referenčních informacích k [rozhraní API pro dotazy](https://docs.microsoft.com/rest/api/time-series-insights/preview-query).
 
-- Přečtěte si, jak [připojit aplikaci JavaScriptu pomocí klientské sady SDK](https://github.com/microsoft/tsiclient) pro Time Series Insights.
+- Přečtěte si, jak [připojit aplikaci JavaScriptu pomocí klientské sady SDK](https://github.com/microsoft/tsiclient) pro Azure Time Series Insights.

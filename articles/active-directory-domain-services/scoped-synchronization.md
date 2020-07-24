@@ -11,11 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 5f2c823b0932db42876be6ab04ebcd82783729aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 097c894594987e92038beeaf4b17a3e67538fdad
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734417"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046059"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>Konfigurace vymezené synchronizace z Azure AD na Azure Active Directory Domain Services
 
@@ -39,8 +40,8 @@ Následující tabulka popisuje, jak použít vymezenou synchronizaci:
 
 Pomocí Azure Portal nebo PowerShellu můžete nakonfigurovat vymezená nastavení synchronizace:
 
-| Akce | | |
-|--|--|--|
+| Akce | Použití<br>Portál Azure Portal | Použití<br>PowerShell |
+| ------ | ------------------- | ----------------- |
 | Vytvoření spravované domény a konfigurace vymezené synchronizace | [Azure Portal](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
 | Upravit vymezenou synchronizaci | [Azure Portal](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
 | Zakázat synchronizaci s vymezeným oborem | [Azure Portal](#disable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#disable-scoped-synchronization-using-powershell) |

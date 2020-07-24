@@ -12,15 +12,16 @@ ms.topic: article
 ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 57a8d308955719be0d84b87fb3a23c6f510c2836
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3669919a8ddf4ffcbcf0d3e7e060c62f4c8df1c6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84234902"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039138"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>K vyhledání optimální přenosové hodnoty pro dané řešení použijte předvolbu kódování zohledňující obsah.
 
-Aby bylo možné připravit obsah pro doručování [datovým proudem s adaptivní přenosovou rychlostí](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), je nutné zakódovat video s více přenosovými rychlostmi (vysoká až nízká). Tím se zajistí řádné snížení kvality, protože přenosová rychlost je snížena, takže se jedná o rozlišení videa. Například kódování s více přenosovými rychlostmi používá pro kódovací žebřík, který se označuje jako tabulka rozlišení a přenosové rychlosti, informace o Media Services [vestavěných přednastavení kódování](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset).
+Aby bylo možné připravit obsah pro doručování [datovým proudem s adaptivní přenosovou rychlostí](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), je nutné zakódovat video s více přenosovými rychlostmi (vysoká až nízká). Tím se zajistí řádné snížení kvality, protože přenosová rychlost je snížena, takže se jedná o rozlišení videa. Například kódování s více přenosovými rychlostmi používá pro kódovací žebřík, který se označuje jako tabulka rozlišení a přenosové rychlosti, informace o Media Services [vestavěných přednastavení kódování](/rest/api/media/transforms/createorupdate#encodernamedpreset).
 
 Měli byste znát obsah, který zpracováváte, a přizpůsobit nebo ladit žebřík pro kódování na složitost jednotlivého videa. U každého řešení existuje přenosová rychlost, nad kterou se jakékoliv zvýšení kvality neperceptive – kodér pracuje s touto optimální přenosovou hodnotou. Další úrovní optimalizace je výběr rozlišení na základě obsahu – například video prezentace v PowerPointu nepřináší dál nižší verzi než 720p. Dále může být kodér vydaný pro optimalizaci nastavení pro každý snímek ve videu. 
 
@@ -81,7 +82,7 @@ TransformOutput[] output = new TransformOutput[]
 ## <a name="next-steps"></a>Další kroky
 
 * [Kurz: nahrávání, kódování a streamování videí pomocí Media Services V3](stream-files-tutorial-with-api.md)
-* [Kurz: kódování vzdáleného souboru na základě adresy URL a streamu pro video](stream-files-tutorial-with-rest.md)
+* [Kurz: Kódování vzdáleného souboru na základě adresy URL a streamování videa – REST](stream-files-tutorial-with-rest.md)
 * [Kurz: kódování vzdáleného souboru na základě adresy URL a streamu pro video – CLI](stream-files-cli-quickstart.md)
 * [Kurz: kódování vzdáleného souboru na základě adresy URL a streamu pro video – .NET](stream-files-dotnet-quickstart.md)
 * [Kurz: kódování vzdáleného souboru na základě adresy URL a streamu Node.jsvidea](stream-files-nodejs-quickstart.md)

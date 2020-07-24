@@ -6,11 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 05/11/2020
-ms.openlocfilehash: 4d0d56dc4d6e7fa7765439e7387d67bb80a6ec9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a31c089971b7e70e70c5906480deb2b17c197b9f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83124631"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043606"
 ---
 # <a name="known-issues"></a>Známé problémy #
 
@@ -49,7 +50,7 @@ Aktuální verze má následující známé problémy:
 
 - Prostředky, které jsou jenom zvuk, se nebudou přehrávat přes AzureHtml5JS tech.
   - Pokud se chcete vrátit zpět k prostředkům bez zvuku, můžete to udělat tak, že vložíte prázdný zvuk pomocí [nástroje Azure Media Services Explorer](https://aka.ms/amse) .
-  - Pokyny pro vložení tichého zvuku najdete [tady](https://azure.microsoft.com/documentation/articles/media-services-advanced-encoding-with-mes/#silent_audio) .
+  - Pokyny pro vložení tichého zvuku najdete [tady](../previous/media-services-advanced-encoding-with-mes.md#silent_audio) .
 
 ## <a name="flash"></a>Blikající ##
 
@@ -74,7 +75,7 @@ Aktuální verze má následující známé problémy:
 - Existují problémy s titulky a titulky na tomto Techu. Tyto pracovníky můžou nebo nemusí být k dispozici ani zobrazitelné na této technické nabídce.
 - Výsledkem omezené šířky pásma ve HLS/technickém scénáři Html5 je přehrávání zvuku bez videa.
 
-### <a name="microsoft"></a>Microsoft ###
+### <a name="microsoft"></a>Partnerský vztah Microsoftu ###
 
 - Přehrávání IE8 aktuálně nefunguje v důsledku nekompatibility s ECMAScript 5.
 - V IE a některých verzích hraničních zařízení nemůže být celá obrazovka vložená pomocí klávesy tabulátorem k tlačítku a výběrem nebo pomocí klávesové zkratky F/f.

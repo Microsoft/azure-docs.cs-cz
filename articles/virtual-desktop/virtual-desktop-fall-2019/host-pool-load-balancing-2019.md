@@ -1,6 +1,6 @@
 ---
-title: Vyrovnávání zatížení fondu hostitelů virtuálních počítačů s Windows – Azure
-description: Metody vyrovnávání zatížení fondu hostitelů pro prostředí virtuálních počítačů s Windows
+title: Vyrovnávání zatížení fondu hostitelů virtuálních počítačů s Windows (2019) – Azure
+description: Přečtěte si informace o metodách vyrovnávání zatížení fondu hostitelů pro prostředí pro virtuální plochu s Windows (verze 2019).
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e2bfbd580d0e114cf4a135879340745107183b6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50819fc6b1e13aeb1c0eddf306ecdfbe8147a44f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82614808"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046272"
 ---
-# <a name="host-pool-load-balancing-methods"></a>Metody vyrovnávání zatížení fondu hostitelů
+# <a name="host-pool-load-balancing-methods-fall-2019-release"></a>Metody vyrovnávání zatížení fondu hostitelů (vydání 2019 verze)
 
 >[!IMPORTANT]
 >Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objekty virtuálních klientů Windows, které byly zavedeny v aktualizaci jarní 2020, přečtěte si [Tento článek](../host-pool-load-balancing.md).

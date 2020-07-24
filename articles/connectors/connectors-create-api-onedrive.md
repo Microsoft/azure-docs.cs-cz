@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/18/2016
 tags: connectors
-ms.openlocfilehash: 8dd54fec963b8f4775a8ade6277b071d62ca3850
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9fe4988b5499943f4b11ec5d640209ceb68e84ec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524198"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040230"
 ---
 # <a name="access-and-manage-files-in-onedrive-connector-by-using-azure-logic-apps"></a>Přístup k souborům v konektoru OneDrive a jejich správa pomocí Azure Logic Apps
 
@@ -40,7 +40,7 @@ Trigger je událost, která se dá použít ke spuštění pracovního postupu d
 
 1. V návrháři aplikace logiky zadejte `onedrive` seznam aktivačních událostí:  
 
-   ![Dialogové okno s názvem "Zobrazit spravovaná rozhraní API společnosti Microsoft" obsahuje pole, které obsahuje "OneDrive". Níže je uveden seznam čtyř aktivačních událostí. První z nich je "OneDrive – při vytvoření souboru". Druhá je vybraná možnost OneDrive – při úpravě souboru.](./media/connectors-create-api-onedrive/onedrive-1.png)
+   ![Dialogové okno s názvem "Zobrazit Microsoft spravované A P I" obsahuje pole, které obsahuje "OneDrive". Níže je uveden seznam čtyř aktivačních událostí. První z nich je "OneDrive – při vytvoření souboru". Druhá je vybraná možnost OneDrive – při úpravě souboru.](./media/connectors-create-api-onedrive/onedrive-1.png)
 
 2. Vyberte, **kdy se má soubor upravovat**. Pokud připojení již existuje, vyberte složku kliknutím na tlačítko Zobrazit výběr.
 
@@ -68,7 +68,7 @@ Akce je operace prováděná pracovním postupem, který je definován v aplikac
 
 3. Do vyhledávacího pole zadejte `onedrive` seznam všech dostupných akcí.
 
-   ![Dialogové okno s názvem "Zobrazit spravovaná rozhraní API společnosti Microsoft" obsahuje pole, které obsahuje "OneDrive". Níže je uveden seznam osmi akcí. První je "OneDrive – vytvořit soubor" a je vybraný.](./media/connectors-create-api-onedrive/onedrive-actions.png) 
+   ![Dialogové okno s názvem "Zobrazit Microsoft spravované A P I" obsahuje pole, které obsahuje "OneDrive". Níže je uveden seznam osmi akcí. První je "OneDrive – vytvořit soubor" a je vybraný.](./media/connectors-create-api-onedrive/onedrive-actions.png) 
 
 4. V našem příkladu vyberte **OneDrive – vytvořit soubor**. Pokud již existuje připojení, vyberte **cestu ke složce** , kam chcete soubor vložit, zadejte **název souboru**a zvolte požadovaný **obsah souboru** :  
 

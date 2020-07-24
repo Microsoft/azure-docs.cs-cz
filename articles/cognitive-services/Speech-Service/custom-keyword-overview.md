@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: hasshah
-ms.openlocfilehash: 0a6df626f9567b51a8371c17004b454f9c5b4597
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 60bcdac0d7e19c424b007980294898638814d586
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83202037"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044866"
 ---
 # <a name="what-is-a-keyword"></a>Co je klíčové slovo?
 
@@ -33,10 +33,13 @@ Díky funkcím pro přizpůsobení, výkon a integraci vlastního klíčového s
 
 ## <a name="get-started-with-custom-keywords"></a>Začínáme s vlastními klíčovými slovy
 
-* Kurz: [Vytvoření vlastního klíčového slova pomocí řeči Studio](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws)
-* Kurz: jak [hlasově aktivovat svůj produkt pomocí sady Speech SDK, pomocí jazyka C#](tutorial-voice-enable-your-bot-speech-sdk.md)
-* Rychlý Start: [rozpoznání klíčových slov pomocí sady Speech SDK na Univerzální platforma Windows pomocí jazyka C#](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer)
-* Rychlý Start: [rozpoznání klíčových slov pomocí sady Speech SDK na Androidu pomocí Java](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer)
+* Základní klíčové slovo Basic pro základní použití a vzory návrhu najdete v tématu [základy vlastních klíčových slov](custom-keyword-basics.md) .
+* Jak [hlasově aktivovat svůj produkt pomocí sady Speech SDK, pomocí jazyka C#](tutorial-voice-enable-your-bot-speech-sdk.md)
+
+## <a name="see-samples-on-github"></a>Zobrazit ukázky na GitHubu
+
+* [Rozpoznání klíčových slov pomocí sady Speech SDK na Univerzální platforma Windows pomocí jazyka C #](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer)
+* [Rozpoznání klíčových slov pomocí sady Speech SDK, na Androidu pomocí Java](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer)
 
 ## <a name="next-steps"></a>Další kroky
 

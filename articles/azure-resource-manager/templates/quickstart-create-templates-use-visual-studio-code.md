@@ -5,12 +5,12 @@ author: neilpeterson
 ms.date: 04/17/2020
 ms.topic: quickstart
 ms.author: nepeters
-ms.openlocfilehash: d36f8a9a8650b504da206e884d9be8e43e1becdb
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 06e7d3f291d32cecdcbf4d1f22ff9976d8970109
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058142"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040524"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>Rychlý Start: vytvoření šablon Azure Resource Manager pomocí Visual Studio Code
 
@@ -18,7 +18,7 @@ Nástroje Azure Resource Manager pro Visual Studio Code poskytují podporu jazyk
 
 K dokončení tohoto rychlého startu potřebujete [Visual Studio Code](https://code.visualstudio.com/)s nainstalovanou [rozšířením nástroje Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) . Potřebujete také rozhraní příkazového [řádku Azure CLI](/cli/azure/?view=azure-cli-latest) nebo [modul Azure PowerShell](/powershell/azure/new-azureps-module-az?view=azps-3.7.0) nainstalovaný a ověřený.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="create-an-arm-template"></a>Vytvoření šablony ARM
 
@@ -102,7 +102,7 @@ Vyberte `New`  >  `All Parameters` > vyberte název a umístění souboru parame
 
 Tato akce vytvoří nový soubor parametrů a namapuje ho se šablonou, ze které byl vytvořen. Při výběru šablony můžete zobrazit a upravit aktuální mapování souborů nebo parametrů na stavovém řádku Visual Studio Code.
 
-![](./media/quickstart-create-templates-use-visual-studio-code/16.png)
+![Obrázek znázorňující mapování souboru nebo parametru na stavovém řádku Visual Studio Code.](./media/quickstart-create-templates-use-visual-studio-code/16.png)
 
 Teď, když je soubor parametrů namapován na šablonu, rozšíření ověří jak šablonu, tak i soubor parametrů společně. Chcete-li toto ověřování zobrazit v praxi, přidejte do `storageAccountName` parametru v souboru parametrů hodnotu se dvěma znaky a soubor uložte.
 

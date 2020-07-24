@@ -1,6 +1,6 @@
 ---
 title: Upgrade na úroveň Standard – Azure Security Center
-description: V tomto rychlém startu se dozvíte, jak upgradovat službu Security Center na cenovou úroveň Standard, která poskytuje dodatečné zabezpečení.
+description: V tomto rychlém startu se dozvíte, jak upgradovat na cenovou úroveň Security Center úrovně Standard pro další zabezpečení.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 3f0d624605f617a8e5ab914c49c4c94a40ebdcc6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f16df87ca72b66003d8870dcd9d778616ea840d4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80435790"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038541"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Rychlý start: Připojení předplatného Azure ke službě Security Center úrovně Standard
-Azure Security Center zajišťuje jednotnou správu zabezpečení a ochranu před hrozbami napříč vašimi hybridními cloudovými úlohami. Zatímco úroveň Free nabízí pouze omezené zabezpečení vašich prostředků Azure, úroveň Standard tyto možnosti rozšiřuje do místního prostředí a jiných cloudů. Security Center úrovně Standard pomáhá vyhledávat a opravovat ohrožení zabezpečení, blokovat škodlivou aktivitu pomocí ovládacích prvků přístupu a aplikací, detekovat hrozby s využitím analýz a inteligentních funkcí a rychle reagovat v případě útoku. Můžete vyzkoušet Security Center Standard bez jakýchkoli nákladů. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
+Azure Security Center zajišťuje jednotnou správu zabezpečení a ochranu před hrozbami napříč vašimi hybridními cloudovými úlohami. I když úroveň Free nabízí jenom omezené zabezpečení pro vaše prostředky Azure, úroveň Standard tyto možnosti rozšiřuje na místní a jiné cloudy. Security Center úrovně Standard pomáhá vyhledávat a opravovat ohrožení zabezpečení, blokovat škodlivou aktivitu pomocí ovládacích prvků přístupu a aplikací, detekovat hrozby s využitím analýz a inteligentních funkcí a rychle reagovat v případě útoku. Můžete vyzkoušet Security Center Standard bez jakýchkoli nákladů. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
 
 V tomto článku provedete upgrade na úroveň Standard pro zvýšení zabezpečení a nainstalujete agenta Log Analytics na virtuální počítače, abyste mohli monitorovat ohrožení zabezpečení a hrozby.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud chcete začít využívat Security Center, musíte mít předplatné pro Microsoft Azure. Pokud nemáte předplatné, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
-Pro upgrade předplatného na úroveň Standard musíte mít přiřazenou roli Vlastník předplatného, Přispěvatel předplatného nebo Správce zabezpečení.
+Pokud chcete upgradovat předplatné na úroveň Standard, musíte mít přiřazenou roli Vlastník předplatného, přispěvatele předplatného nebo správce zabezpečení.
 
 ## <a name="enable-your-azure-subscription"></a>Povolení předplatného Azure
 
-1. Přihlaste se k [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
-2. V nabídce **Microsoft Azure** vyberte možnost **Security Center**. Otevře se obrazovka **Security Center – Přehled**.
+1. Přihlaste se k webu [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
+2. V nabídce **Microsoft Azure** vyberte možnost **Security Center**. **Security Center –** zobrazí se přehled.
 
    ![Přehled služby Security Center][2]
 
@@ -49,8 +49,8 @@ Během několika minut od prvního spuštění služby Security Center se může
 
 Abyste mohli plně využít výhod Security Center, musíte provést následující kroky, abyste upgradovali na úroveň Standard a nainstalovali agenta Log Analytics.
 
-## <a name="upgrade-to-the-standard-tier"></a>Upgrade na úroveň Standard
-Pro účely rychlých startů a kurzů pro službu Security Center musíte provést upgrade na úroveň Standard. K dispozici je bezplatná zkušební verze Security Center Standard. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/). 
+## <a name="upgrade-to-the-standard-pricing-tier"></a>Upgrade na cenovou úroveň Standard
+Pro účely Security Center rychlých startů a kurzů musíte upgradovat na úroveň Standard. K dispozici je bezplatná zkušební verze Security Center Standard. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/). 
 
 1. V hlavní nabídce služby Security Center vyberte **Začínáme**.
  
@@ -84,11 +84,11 @@ Díky tomuto novému přehledu o vašich virtuálních počítačích Azure mů�
   ![Doporučení][8]
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Další rychlé starty a kurzy v této kolekci vycházejí z tohoto rychlého startu. Pokud budete chtít pokračovat v práci s následnými kurzy a rychlými starty, ponechte v provozu úroveň Standard a nechte zapnuté automatické zřizování. Pokud neplánujete pokračovat nebo se chcete vrátit na úroveň Free:
+Další rychlé starty a kurzy v této kolekci vycházejí z tohoto rychlého startu. Pokud máte v úmyslu pokračovat v práci s dalšími rychlými starty a kurzy, pokračujte v používání úrovně Standard a nechejte Automatické zřizování zapnuté. Pokud neplánujete pokračovat nebo se chcete vrátit na úroveň Free:
 
 1. Vraťte se do hlavní nabídky Security Center a vyberte **cenové & nastavení**.
 2. Klikněte na předplatné, které chcete změnit na úroveň Free.
-3. Vyberte položku **Cenová úroveň** a pak vyberte **Bezplatné**. Standardní úroveň předplatného se změní na bezplatnou.
+3. Vyberte **cenovou úroveň** a vyberte **volné** , pokud chcete změnit předplatné z úrovně Standard na úroveň Free.
 5. Vyberte **Uložit**.
 
 Pokud chcete vypnout automatické zřizování:
@@ -107,6 +107,11 @@ V tomto rychlém startu jste upgradovali na úroveň Standard a zřídili Log An
 
 > [!div class="nextstepaction"]
 > [Rychlý start: Připojení počítačů s Windows ke službě Azure Security Center](quick-onboard-windows-computer.md)
+
+Chcete optimalizovat a uložit své útraty do cloudu?
+
+> [!div class="nextstepaction"]
+> [Zahájení analýzy nákladů pomocí Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
 
 <!--Image references-->
 [2]: ./media/security-center-get-started/overview.png

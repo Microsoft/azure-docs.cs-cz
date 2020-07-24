@@ -7,11 +7,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 06bdedf1dac92a2010718ffd3eb5c6e43bb51e6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf8ea45f37e421d70a68c4a6e138f5203e92d78f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83798130"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045765"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Monitorování skupin prostředků pomocí Azure Monitor (Preview)
 
@@ -45,10 +46,10 @@ Stránka přehledy skupiny prostředků nabízí několik dalších nástrojů s
 
    |         |          |
    | ---------------- |:-----|
-   | [**Výstrahy**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)      |  Zobrazovat, vytvářet a spravovat výstrahy. |
-   | [**Metriky**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) | Vizualizujte a zkoumejte data založená na metrikách.    |
-   | [**Protokoly aktivit**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) | Události na úrovni předplatného, ke kterým došlo v Azure  |
-   | [**Mapa aplikace**](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) | Pokud chcete identifikovat problémová místa výkonu nebo výpadky selhání, přejděte k topologii distribuované aplikace. |
+   | [**Výstrahy**](../platform/alerts-overview.md)      |  Zobrazovat, vytvářet a spravovat výstrahy. |
+   | [**Metriky**](../platform/data-platform.md) | Vizualizujte a zkoumejte data založená na metrikách.    |
+   | [**Protokoly aktivit**](../platform/platform-logs-overview.md) | Události na úrovni předplatného, ke kterým došlo v Azure  |
+   | [**Mapa aplikace**](../app/app-map.md) | Pokud chcete identifikovat problémová místa výkonu nebo výpadky selhání, přejděte k topologii distribuované aplikace. |
 
 ## <a name="failures-and-performance"></a>Selhání a výkon
 
@@ -104,7 +105,7 @@ V takovém případě, pokud vyberete možnost upravit, uvidíte, že se tato sa
 
  ![Snímek obrazovky s zobrazeními výkonu a metrikami Azure](./media/resource-group-insights/0012-performance-metrics.png)
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="enabling-access-to-alerts"></a>Povolení přístupu k výstrahám
 
@@ -116,6 +117,6 @@ Azure Monitor pro skupiny prostředků spoléhá na to, že systém pro správu 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Azure Monitor sešity](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
-- [Azure Resource Health](https://docs.microsoft.com/azure/service-health/resource-health-overview)
-- [Výstrahy Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)
+- [Azure Monitor sešity](../platform/workbooks-overview.md)
+- [Azure Resource Health](../../service-health/resource-health-overview.md)
+- [Upozornění služby Azure Monitor](../platform/alerts-overview.md)

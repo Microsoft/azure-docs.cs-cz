@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 9bb22b12a7b3e972ff144bd121db4288801e2488
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07b5ae99b98c6c6bbf4dc903cd1b583eb655a825
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81732940"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041404"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Řešení potíží s agentem Application Insights (dříve s názvem Monitorování stavu v2)
 
@@ -54,7 +55,7 @@ Pomocí nástrojů pro řešení potíží se můžete podívat na příznaky ch
 
 ### <a name="conflict-with-iis-shared-configuration"></a>Konflikt se sdílenou konfigurací služby IIS
 
-Pokud máte cluster webových serverů, můžete použít [sdílenou konfiguraci](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211).
+Pokud máte cluster webových serverů, můžete použít [sdílenou konfiguraci](/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211).
 Do této sdílené konfigurace nelze vložit modul HTTP.
 Spusťte příkaz Enable na každém webovém serveru pro instalaci knihovny DLL do mezipaměti GAC každého serveru.
 
@@ -80,7 +81,7 @@ Tento problém sledujeme [tady](https://github.com/microsoft/ApplicationInsights
 
     
     
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
     
 ### <a name="troubleshooting-powershell"></a>Řešení potíží s PowerShellem
 

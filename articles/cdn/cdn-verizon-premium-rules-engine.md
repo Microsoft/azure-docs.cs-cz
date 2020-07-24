@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: how-to
 ms.date: 05/31/2019
 ms.author: allensu
-ms.openlocfilehash: 3c61407b2a0c9d0423d1f856101400771e27d846
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a49912bc2275e478d657f06587c4ddc830210d3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887421"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040218"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>Přepsat chování HTTP pomocí Azure CDN z modulu pravidel Verizon Premium
 
@@ -55,7 +55,7 @@ Chcete-li získat přístup k modulu pravidel, je nutné nejprve vybrat možnost
     ![Možnosti nového pravidla CDN](./media/cdn-rules-engine/cdn-new-rule.png)
    
    > [!IMPORTANT]
-   > Pořadí, ve kterém jsou uvedeny více pravidel, má vliv na způsob zpracování. Následné pravidlo může přepsat akce zadané předchozím pravidlem.
+   > Pořadí, ve kterém jsou uvedeny více pravidel, má vliv na způsob zpracování. Následné pravidlo může přepsat akce zadané předchozím pravidlem. Máte-li například pravidlo, které umožňuje přístup k prostředku na základě vlastnosti žádosti a pravidla, které odepře přístup všem požadavkům, druhé pravidlo přepíše první z nich. Pravidla přepíšou předchozí pravidla pouze v případě, že budou pracovat se stejnými vlastnostmi.
    >
 
 3. Do textového pole **název/popis** zadejte název.

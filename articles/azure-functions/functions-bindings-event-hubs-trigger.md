@@ -6,15 +6,16 @@ ms.assetid: daf81798-7acc-419a-bc32-b5a41c6db56b
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: b046017a4e6ae2eb08271792ed708e558dc23093
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72312df41a74ac8f2321b31287cbb3cd87d1a04b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79277671"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041743"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Vazby Azure Event Hubs pro Azure Functions
 
-Tento článek vysvětluje, jak pracovat s triggerem [Event Hubs služby Azure](../event-hubs/event-hubs-what-is-event-hubs.md) pro Azure Functions. Azure Functions podporuje triggery a [výstupní vazby](functions-bindings-event-hubs-output.md) pro Event Hubs.
+Tento článek vysvětluje, jak pracovat s triggerem [Event Hubs služby Azure](../event-hubs/event-hubs-about.md) pro Azure Functions. Azure Functions podporuje triggery a [výstupní vazby](functions-bindings-event-hubs-output.md) pro Event Hubs.
 
 Informace o nastavení a podrobnostech o konfiguraci najdete v tématu [Přehled](functions-bindings-event-hubs.md).
 

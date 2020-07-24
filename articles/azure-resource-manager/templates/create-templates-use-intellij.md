@@ -4,12 +4,12 @@ description: Naučte se, jak vytvořit první šablonu Azure Resource Manager s 
 ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: conceptual
-ms.openlocfilehash: fa09fbe8d239bbe10c0762d3aad7e19df23a9044
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: bce3d8ff2662ff62e1493cb26d797619b65c2762
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057445"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040740"
 ---
 # <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>Vytváření a nasazování šablon ARM pomocí IntelliJ NÁPADu
 
@@ -19,15 +19,15 @@ Naučte se nasadit šablonu Azure Resource Manager (ARM) do Azure s využitím N
 
 Po dokončení kurzu nasadíte účet Azure Storage. Stejný postup je možné použít k nasazení dalších prostředků Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 
 * Nainstalované prostředí [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) Ultimate Edition nebo Community Edition
 * Nainstalovaná sada [Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053). Další informace najdete v [průvodci správou modulů plug-in pro IntelliJ](https://www.jetbrains.com/help/idea/managing-plugins.html).
-* V sadě Azure Toolkit for IntelliJ musíte být [přihlášeni](/java/azure/intellij/azure-toolkit-for-intellij-sign-in-instructions) ke svému účtu Azure.
+* V sadě Azure Toolkit for IntelliJ musíte být [přihlášeni](/azure/developer/java/toolkit-for-intellij/sign-in-instructions) ke svému účtu Azure.
 
 ## <a name="deploy-a-quickstart-template"></a>Nasazení šablony pro rychlý Start
 

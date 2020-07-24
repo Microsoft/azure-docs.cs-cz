@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 1084be9a63e023257326de824ea200dcc1be74d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 96df96fd6145d1c6e58eb5dfc672ec324da75202
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83684644"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041606"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Řešení monitorování sítě Azure v Azure Monitor
 
@@ -23,18 +24,18 @@ Azure Monitor nabízí následující řešení pro monitorování sítí:
     * Protokoly Application Gateway Azure
     * Metriky Azure Application Gateway
 * Řešení pro monitorování a audit síťové aktivity v cloudové síti
-    * [Analýza provozu](https://docs.microsoft.com/azure/networking/network-monitoring-overview#traffic-analytics) 
+    * [Analýza provozu](../../networking/network-monitoring-overview.md#traffic-analytics) 
     * Azure Network Security Group Analytics
 
 ## <a name="network-performance-monitor-npm"></a>Network Performance Monitor (NPM)
 
-Řešení pro správu [Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) je řešení pro monitorování sítě, které monitoruje stav, dostupnost a dostupnost sítí.  Slouží k monitorování připojení mezi:
+Řešení pro správu [Network Performance Monitor](../../networking/network-monitoring-overview.md) je řešení pro monitorování sítě, které monitoruje stav, dostupnost a dostupnost sítí.  Slouží k monitorování připojení mezi:
 
 * Veřejný cloud a místní
 * Datová centra a umístění uživatelů (pobočky)
 * Podsítě hostující různé úrovně vícevrstvé aplikace.
 
-Další informace najdete v tématu [Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview).
+Další informace najdete v tématu [Network Performance Monitor](../../networking/network-monitoring-overview.md).
 
 ## <a name="azure-application-gateway-and-network-security-group-analytics"></a>Analýzy skupin zabezpečení sítě a Application Gateway Azure
 Použití řešení:
@@ -224,7 +225,7 @@ Použití aktualizovaných řešení:
 
 Data shromážděná před změnou nejsou v novém řešení viditelná. Můžete pokračovat v dotazování na tato data pomocí starého názvu typu a pole.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>Další kroky

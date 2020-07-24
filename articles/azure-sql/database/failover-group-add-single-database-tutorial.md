@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: 53645b6ba9f1463eac14ea974a17c356c1791db6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad4ef93b34639abffaf15c806fd86d550e03f0bc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255309"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045269"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>Kurz: Přidání Azure SQL Database do skupiny převzetí služeb při selhání
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "85255309"
 > - Vytvořte skupinu převzetí služeb při selhání pro databázi mezi dvěma servery.
 > - Testovací převzetí služeb při selhání.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 # <a name="the-portal"></a>[Portál](#tab/azure-portal)
 
@@ -42,9 +42,9 @@ Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující:
 K dokončení tohoto kurzu se ujistěte, že máte následující položky:
 
 - Předplatné Azure. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/) .
-- [Azure PowerShell](/powershell/azureps-cmdlets-docs)
+- [Azure PowerShell](/powershell/azure/)
 
-# <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 K dokončení tohoto kurzu se ujistěte, že máte následující položky:
 
@@ -172,7 +172,7 @@ Tato část kurzu používá následující rutiny PowerShellu:
 | [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | Získá jednu nebo více databází v Azure SQL Database. |
 | [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Přidá jednu nebo více databází do skupiny převzetí služeb při selhání v Azure SQL Database. |
 
-# <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Vytvořte skupinu převzetí služeb při selhání a přidejte do ní svou databázi pomocí Azure CLI.
 
@@ -291,7 +291,7 @@ Tato část kurzu používá následující rutiny PowerShellu:
 | [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Získá nebo zobrazí seznam Azure SQL Database skupin převzetí služeb při selhání. |
 | [Switch – AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Provede převzetí služeb při selhání skupiny převzetí služeb při selhání Azure SQL Database. |
 
-# <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Testovací převzetí služeb při selhání pomocí Azure CLI.
 
@@ -359,7 +359,7 @@ Tato část kurzu používá následující rutiny PowerShellu:
 |---|---|
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odebere skupinu prostředků. |
 
-# <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Odstraňte skupinu prostředků pomocí Azure CLI.
 
@@ -429,7 +429,7 @@ Další Azure SQL Database skripty můžete najít tady: [Azure PowerShell](powe
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste do skupiny převzetí služeb při selhání přidali Azure SQL Database databázi a otestujete převzetí služeb při selhání. Naučili jste se tyto postupy:
+V tomto kurzu jste do skupiny převzetí služeb při selhání přidali Azure SQL Database databázi a otestujete převzetí služeb při selhání. Naučili jste se:
 
 > [!div class="checklist"]
 >

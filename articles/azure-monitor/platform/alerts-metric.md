@@ -6,11 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.subservice: alerts
-ms.openlocfilehash: cefccd08ea66638f08f00e280fe2704444a7f916
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b535cda8fe7d98748eb0657a599a61ed1f8549d2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79369382"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045369"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Vytváření, zobrazení a správa upozornění na metriky pomocí služby Azure Monitor
 
@@ -52,7 +53,7 @@ Následující postup popisuje, jak vytvořit pravidlo upozornění na metriku v
 
 10. Volitelně můžete upřesnit podmínku úpravou **členitosti agregace** a **četnosti vyhodnocení**. 
 
-11. Klikněte na **Done** (Hotovo).
+11. Klikněte na **Hotovo**.
 
 12. Případně můžete přidat další kritéria, pokud chcete monitorovat složité pravidlo výstrahy. Aktuálně uživatelé mohou mít pravidla upozornění s dynamickými kritérii prahové hodnoty jako jedno kritérium.
 
@@ -89,7 +90,7 @@ Pravidla upozornění na metriky můžete zobrazit a spravovat pomocí okna spra
 
 ## <a name="with-azure-cli"></a>S využitím rozhraní příkazového řádku Azure
 
-Předchozí části popisují, jak vytvářet, zobrazovat a spravovat pravidla upozornění metrik pomocí Azure Portal. V této části se dozvíte, jak to samé provést pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)pro různé platformy. Nejrychlejší způsob, jak začít používat Azure CLI, je prostřednictvím [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest). V tomto článku použijeme Cloud Shell.
+Předchozí části popisují, jak vytvářet, zobrazovat a spravovat pravidla upozornění metrik pomocí Azure Portal. V této části se dozvíte, jak to samé provést pomocí [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)pro různé platformy. Nejrychlejší způsob, jak začít používat Azure CLI, je prostřednictvím [Azure Cloud Shell](../../cloud-shell/overview.md?view=azure-cli-latest). V tomto článku použijeme Cloud Shell.
 
 1. Přejděte na Azure Portal a klikněte na **Cloud Shell**.
 
@@ -139,4 +140,3 @@ Předchozí části popisují, jak vytvářet, zobrazovat a spravovat pravidla u
 - [Pochopte, jak fungují výstrahy metrik](alerts-metric-overview.md).
 - [Seznamte se s tím, jak výstrahy metrik s podmínkou dynamického prahu fungují](alerts-dynamic-thresholds.md)
 - [Princip schématu webového zavěšení pro výstrahy metrik](../../azure-monitor/platform/alerts-metric-near-real-time.md#payload-schema)
-

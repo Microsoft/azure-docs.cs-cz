@@ -6,32 +6,16 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 8fce451d9b806d2fa9a4f3d9e1c117de0aaa9fc0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bdde2076039a6f7687e06edef6dfd6f6f5148ce4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531311"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044135"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Známé problémy v případě digitálních vláken Azure
 
 Tento článek poskytuje informace o známých problémech souvisejících s digitálními podseznamy Azure.
-
-## <a name="managing-event-routes-in-the-azure-portal"></a>Správa tras událostí v Azure Portal
-
-Pokud jste se k portálu přihlásili pomocí osobního [**účet Microsoft (MSA)**](https://account.microsoft.com/account/Account), jako je například *@outlook.com* účet, zobrazí se vám při pokusu o správu Směrování událostí na portálu obrazovka, *která vám bude vyžadovat oprávnění k zobrazení tras událostí* , a to bez ohledu na úroveň oprávnění.
-
-:::image type="content" source="media/troubleshoot-known-issues/event-route-need-permission.png" alt-text="Snímek obrazovky z Azure Portal chyby oprávnění při pokusu o vytvoření směrování událostí v instanci digitálních vláken Azure":::
-
-### <a name="troubleshooting-steps"></a>Postup při řešení potíží
-
-Uživatelé, kteří v tuto chvíli nemůžou spravovat trasy událostí na portálu, můžou pořád spravovat trasy událostí pomocí rozhraní API nebo rozhraní příkazového řádku Azure pro digitální vlákna. Přechod na jeden z těchto nástrojů pro správu Směrování událostí je doporučovanou strategií pro zmírnění tohoto problému.
-
-Pokyny k této možnosti najdete v tématu [*Postupy: Správa koncových bodů a tras*](how-to-manage-routes.md).
-
-### <a name="possible-causes"></a>Možné příčiny
-
-K portálu jste se přihlásili pomocí osobního [účet Microsoft (MSA)](https://account.microsoft.com/account/Account), jako je třeba *@outlook.com* účet. Správa tras událostí v Azure Portal je v tuto chvíli dostupná jenom pro uživatele Azure na účtech podnikových domén.
 
 ## <a name="400-client-error-bad-request-in-cloud-shell"></a>"400 chyba klienta: Chybný požadavek" v Cloud Shell
 

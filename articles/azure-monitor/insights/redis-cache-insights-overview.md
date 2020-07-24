@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/21/2020
-ms.openlocfilehash: 469b402c694bcfae5a826c03ea35dbef2c365148
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70bf39011761bcf59c8270ecdcc0542e326aef42
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945405"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045856"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Prozkoumejte Azure Monitor pro Azure cache pro Redis (Preview)
 
@@ -44,7 +44,7 @@ Tato funkce nevyžaduje, abyste povolili nebo nenakonfigurovali cokoli. Ve vých
 
 Pokud chcete zobrazit využití a výkon účtů úložiště napříč všemi vašimi předplatnými, proveďte následující kroky:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
 
 1. Vyhledejte **monitorování**a vyberte **monitorování**.
 
@@ -120,7 +120,7 @@ Když v horní části stránky vyberete **selhání** , otevře se tabulka **se
 
 ### <a name="metric-definitions"></a>Definice metriky
 
-Úplný seznam definic metrik, které tvoří tyto sešity, najdete v [článku o dostupných metrikách a intervalech generování sestav](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-monitor#available-metrics-and-reporting-intervals).
+Úplný seznam definic metrik, které tvoří tyto sešity, najdete v [článku o dostupných metrikách a intervalech generování sestav](../../azure-cache-for-redis/cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
 
 ## <a name="view-from-an-azure-cache-for-redis-resource"></a>Zobrazení z mezipaměti Azure pro prostředek Redis
 
@@ -156,7 +156,7 @@ Výběr kterékoli z ostatních karet pro **výkon** nebo **operace** otevře p�
 
 ## <a name="pin-export-and-expand"></a>Připnout, exportovat a rozbalit
 
-Pokud chcete na [řídicím panelu Azure](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards)připnout libovolný oddíl metriky, vyberte symbol připínáček v pravém horním rohu.
+Pokud chcete na [řídicím panelu Azure](../../azure-portal/azure-portal-dashboards.md)připnout libovolný oddíl metriky, vyberte symbol připínáček v pravém horním rohu.
 
 ![Oddíl metriky se zvýrazněným symbolem připínáčku](./media/cosmosdb-insights-overview/pin.png)
 
@@ -180,12 +180,12 @@ Až uložíte vlastní sešit, otevřete ho tak, že přejdete do galerie sešit
 
 ![Panel příkazů se zvýrazněnou galerií](./media/cosmosdb-insights-overview/gallery.png)
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokyny k řešení potíží najdete v článku věnovaném [řešení potíží](troubleshoot-workbooks.md)s vyhrazenými sešity na základě sešitu.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Nakonfigurujte [výstrahy metrik](../platform/alerts-metric.md) a [oznámení o stavu služby](../../service-health/alerts-activity-log-service-notifications.md) , abyste nastavili automatizované výstrahy, které pomáhají při zjišťování problémů.
+* Nakonfigurujte [výstrahy metrik](../platform/alerts-metric.md) a [oznámení o stavu služby](../../service-health/alerts-activity-log-service-notifications-portal.md) , abyste nastavili automatizované výstrahy, které pomáhají při zjišťování problémů.
 
 * Přečtěte si o scénářích, které sešit podporuje, jak vytvářet a přizpůsobovat sestavy, a další informace najdete v tématu [vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../platform/workbooks-overview.md).

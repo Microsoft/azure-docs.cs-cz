@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: 94251dfa2d9fa732912ed20d825e64f542d79188
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b71c6d8e0890bde377fae761f4486803229ceff4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80055413"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045693"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimalizace prostředí s využitím řešení System Center Operations Manager Health Check (Preview)
 
@@ -54,7 +54,7 @@ K instalaci a konfiguraci řešení můžete použít následující informace.
 
 Řešení System Center Operations Manager Health Check shromažďuje data z následujících zdrojů:
 
-* Registr
+* Registry
 * Windows Management Instrumentation (WMI)
 * Protokol událostí
 * Data souborů
@@ -64,7 +64,7 @@ Data se shromažďují na management server a předají se Log Analytics každý
 
 ## <a name="operations-manager-run-as-accounts-for-log-analytics"></a>Účty Operations Manager Spustit jako pro Log Analytics
 
-Log Analytics vytváří sady Management Pack pro úlohy, které poskytují služby přidávající hodnoty. Každé zatížení vyžaduje oprávnění pro spouštění sad Management Pack v jiném kontextu zabezpečení, jako je například účet uživatele domény. Nakonfigurujte Operations Manager účet Spustit jako s privilegovanými přihlašovacími údaji. Další informace najdete v tématu [Postup vytvoření účtu Spustit jako](https://technet.microsoft.com/library/hh321655(v=sc.12).aspx) v dokumentaci k Operations Manager.
+Log Analytics vytváří sady Management Pack pro úlohy, které poskytují služby přidávající hodnoty. Každé zatížení vyžaduje oprávnění pro spouštění sad Management Pack v jiném kontextu zabezpečení, jako je například účet uživatele domény. Nakonfigurujte Operations Manager účet Spustit jako s privilegovanými přihlašovacími údaji. Další informace najdete v tématu [Postup vytvoření účtu Spustit jako](/previous-versions/system-center/system-center-2012-R2/hh321655(v=sc.12)) v dokumentaci k Operations Manager.
 
 Pomocí následujících informací nastavte pro System Center Operations Manager Health Check Operations Manager účet Spustit jako.
 
@@ -147,7 +147,7 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 
 Management Pack System Center Operations Manager Health Check řešení zahrnuje pravidlo s názvem *Microsoft System Center Operations Manager spustit pravidlo kontroly stavu*. Toto pravidlo zodpovídá za spuštění kontroly stavu. Pokud chcete pravidlo Povolit a nakonfigurovat frekvenci, použijte následující postupy.
 
-Ve výchozím nastavení je pravidlo kontroly stavu spouštění Microsoft System Center Operations Manager zakázané. Chcete-li spustit kontrolu stavu, je nutné povolit pravidlo na management server. Postupujte následovně.
+Ve výchozím nastavení je pravidlo kontroly stavu spouštění Microsoft System Center Operations Manager zakázané. Chcete-li spustit kontrolu stavu, je nutné povolit pravidlo na management server. Použijte k tomu následující postup.
 
 #### <a name="enable-the-rule-for-a-specific-management-server"></a>Povolení pravidla pro konkrétní server pro správu
 
@@ -268,7 +268,7 @@ Pokud máte doporučení, která chcete ignorovat, můžete vytvořit textový s
 - [Konfigurace pravidla System Center Operations Manager Health Check](#configure-the-health-check-rule)
 
 
-*Existuje způsob, jak nakonfigurovat četnost spouštění kontroly?* Ano. Viz [Konfigurace frekvence spouštění](#configure-the-run-frequency).
+*Existuje způsob, jak nakonfigurovat četnost spouštění kontroly?* Yes. Viz [Konfigurace frekvence spouštění](#configure-the-run-frequency).
 
 *Pokud je po přidání System Center Operations Manager Health Check řešení zjištěn jiný server, bude zkontrolován?* Ano, po zjištění, že je zjišťování zaškrtnuto, je ve výchozím nastavení každých 7 dní.
 

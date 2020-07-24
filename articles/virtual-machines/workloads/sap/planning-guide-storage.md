@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1e64624865a314a7487a7ce474c1e5e56e3d9277
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65fbd84a6fa4b03db9f5dfce81eeba23aceebbc9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362998"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042301"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Typy služby Azure Storage pro úlohy SAP
 Azure má spoustu typů úložiště, které se v různých možnostech, propustnosti, latenci a cenách liší. Některé typy úložiště nejsou ani omezené možnosti použitelné pro scénáře SAP. Vzhledem k tomu, že některé typy úložiště Azure jsou vhodné nebo optimalizované pro konkrétní scénáře úloh SAP. Zejména u SAP HANA některé typy úložiště Azure získali certifikaci pro použití s SAP HANA. V tomto dokumentu procházíme mezi různými typy úložišť a popisujete jejich schopnost a použitelnost pomocí úloh SAP a komponent SAP.
@@ -32,11 +32,11 @@ Přeoznačení jednotek používaných v rámci tohoto článku. Dodavatelé ve�
 
 Microsoft Azure úložiště HDD úrovně Standard, SSD úrovně Standard, Azure Premium Storage a Ultra disk udržuje základní virtuální pevný disk (s operačním systémem) a disky s připojenými daty virtuálních počítačů ve třech kopiích na třech různých uzlech úložiště. Převzetí služeb při selhání jinou replikou a osazení nové repliky v případě selhání uzlu úložiště je transparentní. V důsledku tohoto redundance **není nutné na** více discích Azure použít žádný druh záložní vrstvy úložiště. Tento fakt se nazývá Local redundantní úložiště (LRS). LRS je výchozí pro tyto typy úložiště v Azure. [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) poskytuje dostatečnou redundanci, aby bylo možné dosáhnout stejného SLA jako jiné nativní úložiště Azure.
 
-Existuje několik dalších metod redundance, které jsou popsány v článku [Azure Storage replikaci](https://docs.microsoft.com/azure/storage/common/storage-redundancy?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) , která platí pro některé z různých typů úložiště, které Azure nabízí. 
+Existuje několik dalších metod redundance, které jsou popsány v článku [Azure Storage replikaci](../../../storage/common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) , která platí pro některé z různých typů úložiště, které Azure nabízí. 
 
 ### <a name="azure-managed-disks"></a>Azure Managed disks
 
-Managed disks je typ prostředku v Azure Resource Manager, který se dá použít místo VHD, které jsou uložené v účtech Azure Storage. Managed Disks automaticky zarovnává se [skupinou dostupnosti] [virtuální počítače-spravovat-dostupnost] virtuálního počítače, ke kterému jsou připojené, a proto Zvyšte dostupnost vašeho virtuálního počítače a služeb, které běží na virtuálním počítači. Další informace najdete v [článku Přehled](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview).
+Managed disks je typ prostředku v Azure Resource Manager, který se dá použít místo VHD, které jsou uložené v účtech Azure Storage. Managed Disks automaticky zarovnává se [skupinou dostupnosti] [virtuální počítače-spravovat-dostupnost] virtuálního počítače, ke kterému jsou připojené, a proto Zvyšte dostupnost vašeho virtuálního počítače a služeb, které běží na virtuálním počítači. Další informace najdete v [článku Přehled](../../windows/managed-disks-overview.md).
 
 V souvislosti s odolností tento příklad ukazuje výhody spravovaných disků:
 
@@ -61,9 +61,9 @@ Trvalé úložiště je potřeba v úlohách SAP v různých součástech zásob
 - Sdílené složky nebo sdílené disky, které obsahují váš globální adresář pro přenos pro NetWeaver nebo S/4HANA. Obsah těchto sdílených složek je využíván softwarem spuštěným ve více virtuálních počítačích nebo při vytváření scénářů clusteru s podporou převzetí služeb při selhání s vysokou dostupností.
 - Adresář/sapmnt nebo běžné sdílené složky pro procesy EDI nebo podobné. Obsah těchto sdílených složek je využíván softwarem spuštěným ve více virtuálních počítačích nebo při vytváření scénářů clusteru s podporou převzetí služeb při selhání s vysokou dostupností.
 
-V následujících částech se pro úlohy SAP pojednávají různé typy úložišť Azure a jejich použitelnost, které se vztahují na výše uvedené tři scénáře. V článku o tom, [Jaké typy disků jsou k dispozici v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types), je popsána obecná kategorizace způsobu použití různých typů úložiště Azure. Doporučení pro používání různých typů úložiště Azure pro úlohy SAP se neúčtují podstatným rozdílem.
+V následujících částech se v několika dalších typech úložiště Azure a jejich použitelnost pro úlohy SAP prodiskutuje, které se vztahují na výše uvedené čtyři scénáře. V článku o tom, [Jaké typy disků jsou k dispozici v Azure](../../linux/disks-types.md), je popsána obecná kategorizace způsobu použití různých typů úložiště Azure. Doporučení pro používání různých typů úložiště Azure pro úlohy SAP se neúčtují podstatným rozdílem.
 
-Pro omezení podpory typů úložiště Azure pro NetWeaver/aplikační vrstvu SAP pro 4HANA si přečtěte [poznámku o podpoře SAP 2015553](https://launchpad.support.sap.com/#/notes/2015553) pro SAP HANA certifikovaný a podporované typy úložiště Azure Přečtěte si článek [SAP HANA konfigurace úložiště virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage).
+Pro omezení podpory typů úložiště Azure pro NetWeaver/aplikační vrstvu SAP pro 4HANA si přečtěte [poznámku o podpoře SAP 2015553](https://launchpad.support.sap.com/#/notes/2015553) pro SAP HANA certifikovaný a podporované typy úložiště Azure Přečtěte si článek [SAP HANA konfigurace úložiště virtuálních počítačů Azure](./hana-vm-operations-storage.md).
 
 Oddíly, které popisují různé typy úložiště Azure, vám poskytnou další informace o omezeních a možnostech pomocí úložiště podporovaného SAP. 
 
@@ -84,7 +84,7 @@ Než přejdete k podrobnostem, prezentujeme Shrnutí a doporučení, které už 
 | DBMS protokoluje řady virtuálních počítačů, které nejsou M/HANA/Mv2. | nepodporováno | vhodné (nepatří do výrobního typu) | vhodné pro až středně velké zatížení | doporučil | nepodporováno |
 
 
-<sup>1</sup> s využitím služby [Azure akcelerátor zápisu](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) pro řady virtuálních počítačů M/Mv2 pro svazky protokolu/opakování protokolů <sup>2</sup> pomocí ANF vyžaduje/Hana/data a také/Hana/log pro ANF. 
+<sup>1</sup> s využitím služby [Azure akcelerátor zápisu](../../windows/how-to-enable-write-accelerator.md) pro řady virtuálních počítačů M/Mv2 pro svazky protokolu/opakování protokolů <sup>2</sup> pomocí ANF vyžaduje/Hana/data a také/Hana/log pro ANF. 
 
 Vlastnosti, které můžete očekávat od různých typů úložišť, jako je:
 
@@ -101,7 +101,7 @@ Vlastnosti, které můžete očekávat od různých typů úložišť, jako je:
 | Geografická redundance | nepoužívá se pro spravované disky | nepoužívá se pro spravované disky | ne | ne | ne |
 
 
-<sup>1</sup> s využitím [Azure akcelerátor zápisu](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) pro řady virtuálních počítačů M/Mv2 pro svazky protokolů/opakování
+<sup>1</sup> s využitím [Azure akcelerátor zápisu](../../windows/how-to-enable-write-accelerator.md) pro řady virtuálních počítačů M/Mv2 pro svazky protokolů/opakování
 
 <sup>2</sup> náklady závisí na ZŘÍZENých vstupně-výstupních operacích a propustnosti.
 
@@ -123,7 +123,7 @@ Vlastnosti, které můžete očekávat od různých typů úložišť, jako je:
 * SLA pro IOPS a propustnost
 * Menší variabilita v/v latence
 
-Tento typ úložiště cílí na úlohy DBMS, provoz úložiště, který vyžaduje latenci s nízkou dobou v milisekundách, a v případě Azure Premium Storage se SLA na zatížení za vstupně-výstupní operace a náklady na propustnost, a to v případě, že se v případě Azure Premium Storage nejedná o skutečný objem dat, který je na těchto discích uložený. Můžete také vytvořit disky na Premium Storage, které nejsou přímo mapovány na kategorie velikosti uvedené v článku [SSD úrovně Premium](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#premium-ssd). K závěrům z tohoto článku patří:
+Tento typ úložiště cílí na úlohy DBMS, provoz úložiště, který vyžaduje latenci s nízkou dobou v milisekundách, a v případě Azure Premium Storage se SLA na zatížení za vstupně-výstupní operace a náklady na propustnost, a to v případě, že se v případě Azure Premium Storage nejedná o skutečný objem dat, který je na těchto discích uložený. Můžete také vytvořit disky na Premium Storage, které nejsou přímo mapovány na kategorie velikosti uvedené v článku [SSD úrovně Premium](../../linux/disks-types.md#premium-ssd). K závěrům z tohoto článku patří:
 
 - Úložiště je uspořádáno v oblastech. Například disk v rozsahu od 513 GiB do 1024 kapacity GiB sdílí stejné možnosti a stejné měsíční náklady
 - Počet IOPS na GiB nesleduje lineární napříč kategoriemi velikostí. Menší disky nižší než 32 GiB mají za GiB vyšší sazby za IOPS. U disků přesahujících 32 GiB až 1024 GiB je sazba IOPS za GiB mezi 4-5 IOPS za GiB. V případě větších disků až do 32 767 GiB je sazba IOPS za GiB nižší než 1.
@@ -137,8 +137,8 @@ Matrice schopností pro úlohu SAP vypadá takto:
 | Schopnost| Komentář| Poznámky a odkazy | 
 | --- | --- | --- | 
 | Základní virtuální pevný disk operačního systému | vhodnou | Všechny systémy |
-| Datový disk | vhodnou | Všechny systémy – [speciálně pro SAP HANA](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) |
-| Adresář globálního přenosu SAP | ANO | [Doložen](https://launchpad.support.sap.com/#/notes/2015553) |
+| Datový disk | vhodnou | Všechny systémy – [speciálně pro SAP HANA](../../windows/how-to-enable-write-accelerator.md) |
+| Adresář globálního přenosu SAP | ANO | [Podporováno](https://launchpad.support.sap.com/#/notes/2015553) |
 | SAP sapmnt | vhodnou | Všechny systémy |
 | Úložiště zálohování | vhodnou | pro krátkodobé ukládání záloh |
 | Sdílené složky/sdílený disk | není dostupná | Vyžaduje soubory Azure Premium nebo třetí stranu. |
@@ -146,15 +146,15 @@ Matrice schopností pro úlohu SAP vypadá takto:
 | Latence | nízké až střední | - |
 | SLA PRO IOPS | ANO | - |
 | IOPS lineární na kapacitu | poloviční lineární v závorkách  | [Ceny spravovaného disku](https://azure.microsoft.com/pricing/details/managed-disks/) |
-| Maximální počet IOPS na disk | 20 000 [závislý na velikosti disku](https://azure.microsoft.com/pricing/details/managed-disks/) | Zvážit také [omezení počtu virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/linux/sizes) |
+| Maximální počet IOPS na disk | 20 000 [závislý na velikosti disku](https://azure.microsoft.com/pricing/details/managed-disks/) | Zvážit také [omezení počtu virtuálních počítačů](../../linux/sizes.md) |
 | Smlouva SLA pro propustnost | ANO | - |
 | Propustnost lineární pro kapacitu | poloviční lineární v závorkách | [Ceny spravovaného disku](https://azure.microsoft.com/pricing/details/managed-disks/) |
-| Certified HANA | ANO | [speciálně pro SAP HANA](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) |
+| Certified HANA | ANO | [speciálně pro SAP HANA](../../windows/how-to-enable-write-accelerator.md) |
 | Možné snímky disku | ANO | - |
-| Možné snímky Azure Backup VM | ANO | s výjimkou [akcelerátor zápisu](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) disků uložených v mezipaměti  |
+| Možné snímky Azure Backup VM | ANO | s výjimkou [akcelerátor zápisu](../../windows/how-to-enable-write-accelerator.md) disků uložených v mezipaměti  |
 | Náklady | ÚROVNĚ | - |
 
-Azure Premium Storage nesplňuje SAP HANA klíčových ukazatelů výkonu úložiště s běžnými typy ukládání do mezipaměti, které nabízí Azure Premium Storage. Aby bylo možné splnit klíčové ukazatele výkonu latence úložiště pro zápisy do protokolu SAP HANA, je nutné použít službu Azure Akcelerátor zápisu Caching, jak je popsáno v článku [povolení akcelerátor zápisu](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator). Azure Akcelerátor zápisu přináší všechny ostatní systémy DBMS pro jejich zápisy do protokolu transakcí a zápisy do protokolu znovu. Proto se doporučuje používat v rámci všech nasazení SAP DBMS. Pro SAP HANA je povinná použití Azure Akcelerátor zápisu ve spojení se službou Azure Premium Storage.
+Azure Premium Storage nesplňuje SAP HANA klíčových ukazatelů výkonu úložiště s běžnými typy ukládání do mezipaměti, které nabízí Azure Premium Storage. Aby bylo možné splnit klíčové ukazatele výkonu latence úložiště pro zápisy do protokolu SAP HANA, je nutné použít službu Azure Akcelerátor zápisu Caching, jak je popsáno v článku [povolení akcelerátor zápisu](../../windows/how-to-enable-write-accelerator.md). Azure Akcelerátor zápisu přináší všechny ostatní systémy DBMS pro jejich zápisy do protokolu transakcí a zápisy do protokolu znovu. Proto se doporučuje používat v rámci všech nasazení SAP DBMS. Pro SAP HANA je povinná použití Azure Akcelerátor zápisu ve spojení se službou Azure Premium Storage.
 
 
 
@@ -162,7 +162,7 @@ Azure Premium Storage nesplňuje SAP HANA klíčových ukazatelů výkonu úlož
 
 
 ### <a name="azure-burst-functionality-for-premium-storage"></a>Funkce Azure Burst pro Premium Storage
-Pro disky Azure Premium Storage menší nebo rovny 512 GiB v kapacitě se nabízí funkce shlukování. Přesný způsob, jak funguje shlukování disku, je popsaný v článku o rozložení [disku na disk](https://docs.microsoft.com/azure/virtual-machines/linux/disk-bursting). Po přečtení článku rozumíte konceptu časově rozlišených vstupně-výstupních operací a propustnosti v časech, kdy je zatížení v/v pod nominálními IOPS a propustností disků (podrobnosti o nominální propustnosti najdete v tématu [ceny spravovaného disku](https://azure.microsoft.com/pricing/details/managed-disks/)). Chystáte se rozlišit rozdíl mezi vstupně-výstupními operacemi a propustností mezi aktuálním využitím a jmenovitými hodnotami disku. Počet shluků je omezen na maximálně 30 minut.
+Pro disky Azure Premium Storage menší nebo rovny 512 GiB v kapacitě se nabízí funkce shlukování. Přesný způsob, jak funguje shlukování disku, je popsaný v článku o rozložení [disku na disk](../../linux/disk-bursting.md). Po přečtení článku rozumíte konceptu časově rozlišených vstupně-výstupních operací a propustnosti v časech, kdy je zatížení v/v pod nominálními IOPS a propustností disků (podrobnosti o nominální propustnosti najdete v tématu [ceny spravovaného disku](https://azure.microsoft.com/pricing/details/managed-disks/)). Chystáte se rozlišit rozdíl mezi vstupně-výstupními operacemi a propustností mezi aktuálním využitím a jmenovitými hodnotami disku. Počet shluků je omezen na maximálně 30 minut.
 
 V ideálních případech, kde je možné naplánovat tuto funkci shlukování, se pravděpodobně jedná o svazky nebo disky, které obsahují datové soubory pro různé systémy DBMS. U vstupně-výstupních úloh, které jsou na těchto svazcích očekávány, se očekává, že budou vypadat jako v případě malých až středních systémů.
 
@@ -184,8 +184,8 @@ Disky Azure Ultra zajišťují vysokou propustnost, vysoké IOPS a představují
 Při vytváření Ultra disk máte tři dimenze, které můžete definovat:
 
 - Kapacita disku. Rozsahy jsou 4 GiB až 65 536 GiB.
-- Zřízené IOPS pro disk. Na kapacitu disku se vztahují různé maximální hodnoty. Další podrobnosti najdete v článku o [Ultra discích](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-disk) .
-- Zajištěná šířka pásma úložiště. Liší se maximální šířka pásma závislá na kapacitě disku. Další podrobnosti najdete v článku o [Ultra discích](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-disk) .
+- Zřízené IOPS pro disk. Na kapacitu disku se vztahují různé maximální hodnoty. Další podrobnosti najdete v článku o [Ultra discích](../../linux/disks-types.md#ultra-disk) .
+- Zajištěná šířka pásma úložiště. Liší se maximální šířka pásma závislá na kapacitě disku. Další podrobnosti najdete v článku o [Ultra discích](../../linux/disks-types.md#ultra-disk) .
 
 Náklady na jeden disk se určují podle tří dimenzí, které můžete pro konkrétní disky definovat samostatně. 
 
@@ -196,7 +196,7 @@ Matrice schopností pro úlohu SAP vypadá takto:
 | --- | --- | --- | 
 | Základní virtuální pevný disk operačního systému | nefunguje | - |
 | Datový disk | vhodnou | Všechny systémy  |
-| Adresář globálního přenosu SAP | ANO | [Doložen](https://launchpad.support.sap.com/#/notes/2015553) |
+| Adresář globálního přenosu SAP | ANO | [Podporováno](https://launchpad.support.sap.com/#/notes/2015553) |
 | SAP sapmnt | vhodnou | Všechny systémy |
 | Úložiště zálohování | vhodnou | pro krátkodobé ukládání záloh |
 | Sdílené složky/sdílený disk | není dostupná | Vyžaduje třetí stranu |
@@ -218,7 +218,7 @@ Matrice schopností pro úlohu SAP vypadá takto:
 
 
 ## <a name="azure-netapp-files-anf"></a>Soubory Azure NetApp (ANF)
-[Azure NetApp Files](https://azure.microsoft.com/services/netapp/) je výsledkem spolupráce mezi společností Microsoft a NetApp s cílem zajistit vysokou výkon nativních souborů NFS a sdílených složek SMB Azure. Důrazem je poskytnout úložiště s vysokou šířkou pásma a nízkou latencí, které umožňuje scénáře nasazení systému DBMS a v průběhu času umožňuje typickou provozní funkčnost úložiště NetApp i přes Azure. Sdílené složky NFS/SMB se nabízejí ve třech různých úrovních služeb, které rozlišují propustnost úložiště a cenu. Úrovně služeb jsou popsány v článku [úrovně služeb pro Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels). Pro různé typy úloh SAP se důrazně doporučuje následující úrovně služeb:
+[Azure NetApp Files](https://azure.microsoft.com/services/netapp/) je výsledkem spolupráce mezi společností Microsoft a NetApp s cílem zajistit vysokou výkon nativních souborů NFS a sdílených složek SMB Azure. Důrazem je poskytnout úložiště s vysokou šířkou pásma a nízkou latencí, které umožňuje scénáře nasazení systému DBMS a v průběhu času umožňuje typickou provozní funkčnost úložiště NetApp i přes Azure. Sdílené složky NFS/SMB se nabízejí ve třech různých úrovních služeb, které rozlišují propustnost úložiště a cenu. Úrovně služeb jsou popsány v článku [úrovně služeb pro Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-service-levels.md). Pro různé typy úloh SAP se důrazně doporučuje následující úrovně služeb:
 
 - Zpracování úloh SAP DBMS: výkon, ideální pro Ultra
 - SAPMNT sdílená složka: výkon, ideální pro Ultra
@@ -231,10 +231,10 @@ Matrice schopností pro úlohu SAP vypadá takto:
 
 - Poskytování sdílených složek SMB nebo NFS pro globální transportní adresář SAP
 - Sdílená složka sapmnt ve scénářích s vysokou dostupností, jak je popsáno v:
-    - [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure ve Windows pomocí protokolu SMB (Azure NetApp Files) pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)
-    - [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
-    - [Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v Red Hat Enterprise Linux s Azure NetApp Files pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
-- SAP HANA nasazení pomocí systému souborů NFS verze 4.1 sdílené složky pro svazky/Hana/Shared a/Hana/log a svazky se systémem souborů NFS v 4.1 nebo NFS v3 pro svazky popsané v článku [SAP HANA konfigurace úložiště virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
+    - [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure ve Windows pomocí protokolu SMB (Azure NetApp Files) pro aplikace SAP](./high-availability-guide-windows-netapp-files-smb.md)
+    - [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP](./high-availability-guide-suse-netapp-files.md)
+    - [Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v Red Hat Enterprise Linux s Azure NetApp Files pro aplikace SAP](./high-availability-guide-rhel-netapp-files.md)
+- SAP HANA nasazení pomocí systému souborů NFS verze 4.1 sdílené složky pro svazky/Hana/Shared a/Hana/log a svazky se systémem souborů NFS v 4.1 nebo NFS v3 pro svazky popsané v článku [SAP HANA konfigurace úložiště virtuálních počítačů Azure](./hana-vm-operations-storage.md)
 
 > [!NOTE]
 > Pro soubory NFS ani sdílené složky SMB založené na Azure NetApp Files nepodporují žádné další úlohy DBMS. Pokud se změní, budou poskytnuty aktualizace a změny.
@@ -258,9 +258,9 @@ Matrice schopností pro úlohu SAP vypadá takto:
 | Odolnost | LRS | Pro disky nejsou k dispozici žádné GRS ani ZRS. |
 | Latence | velmi nízké | - |
 | SLA PRO IOPS | ANO | - |
-| IOPS lineární na kapacitu | výhradně lineární  | Závislý na [úrovni služby](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) |
+| IOPS lineární na kapacitu | výhradně lineární  | Závislý na [úrovni služby](../../../azure-netapp-files/azure-netapp-files-service-levels.md) |
 | Smlouva SLA pro propustnost | ANO | - |
-| Propustnost lineární pro kapacitu | poloviční lineární v závorkách | Závislý na [úrovni služby](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) |
+| Propustnost lineární pro kapacitu | poloviční lineární v závorkách | Závislý na [úrovni služby](../../../azure-netapp-files/azure-netapp-files-service-levels.md) |
 | Certified HANA | ANO | - |
 | Možné snímky disku | ANO | - |
 | Možné snímky Azure Backup VM | NO | - |
@@ -312,7 +312,7 @@ Ve srovnání s úložištěm Azure Standard Hard přináší úložiště Azure
 | Základní virtuální pevný disk operačního systému | nevhodné | - |
 | Datový disk | nevhodné | - |
 | Adresář globálního přenosu SAP | NO | [Nepodporuje se](https://launchpad.support.sap.com/#/notes/2015553) |
-| SAP sapmnt | NO | Nepodporuje se |
+| SAP sapmnt | NO | Nepodporováno |
 | Úložiště zálohování | vhodnou | - |
 | Sdílené složky/sdílený disk | není dostupná | Vyžaduje soubory Azure nebo třetí stranu. |
 | Odolnost | LRS, GRS | Pro disky nejsou k dispozici žádné ZRS |
@@ -335,11 +335,11 @@ V opačném případě se jedná o typ jednotlivého virtuálního počítače, 
 
 | Typ úložiště| Linux | Windows | Komentáře |
 | --- | --- | --- | --- |
-| HDD úrovně Standard | [Velikosti pro virtuální počítače se systémem Linux v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes) | [Velikosti virtuálních počítačů s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) | Je nejspíš těžké dodotknout limity úložiště u středních nebo velkých virtuálních počítačů. |
-| SSD úrovně Standard | [Velikosti pro virtuální počítače se systémem Linux v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes) | [Velikosti virtuálních počítačů s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) | Je nejspíš těžké dodotknout limity úložiště u středních nebo velkých virtuálních počítačů. |
-| Premium Storage | [Velikosti pro virtuální počítače se systémem Linux v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes) | [Velikosti virtuálních počítačů s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) | Snadné navýšení IOPS nebo omezení propustnosti úložiště s konfigurací úložiště |
-| Úložiště Ultra disk | [Velikosti pro virtuální počítače se systémem Linux v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes) | [Velikosti virtuálních počítačů s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) | Snadné navýšení IOPS nebo omezení propustnosti úložiště s konfigurací úložiště |
-| Azure NetApp Files | [Velikosti pro virtuální počítače se systémem Linux v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes) | [Velikosti virtuálních počítačů s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) | Provoz úložiště používá šířku pásma propustnosti sítě a šířku pásma úložiště. |
+| HDD úrovně Standard | [Velikosti pro virtuální počítače se systémem Linux v Azure](../../linux/sizes.md) | [Velikosti virtuálních počítačů s Windows v Azure](../../windows/sizes.md) | Je nejspíš těžké dodotknout limity úložiště u středních nebo velkých virtuálních počítačů. |
+| SSD úrovně Standard | [Velikosti pro virtuální počítače se systémem Linux v Azure](../../linux/sizes.md) | [Velikosti virtuálních počítačů s Windows v Azure](../../windows/sizes.md) | Je nejspíš těžké dodotknout limity úložiště u středních nebo velkých virtuálních počítačů. |
+| Premium Storage | [Velikosti pro virtuální počítače se systémem Linux v Azure](../../linux/sizes.md) | [Velikosti virtuálních počítačů s Windows v Azure](../../windows/sizes.md) | Snadné navýšení IOPS nebo omezení propustnosti úložiště s konfigurací úložiště |
+| Úložiště Ultra disk | [Velikosti pro virtuální počítače se systémem Linux v Azure](../../linux/sizes.md) | [Velikosti virtuálních počítačů s Windows v Azure](../../windows/sizes.md) | Snadné navýšení IOPS nebo omezení propustnosti úložiště s konfigurací úložiště |
+| Azure NetApp Files | [Velikosti pro virtuální počítače se systémem Linux v Azure](../../linux/sizes.md) | [Velikosti virtuálních počítačů s Windows v Azure](../../windows/sizes.md) | Provoz úložiště používá šířku pásma propustnosti sítě a šířku pásma úložiště. |
 
 V případě omezení si můžete všimnout, že:
 
@@ -365,7 +365,7 @@ Při prokládaném je potřeba provést některá pravidla:
 
 Prokládání na více menších discích je nejlepším způsobem, jak dosáhnout dobrého poměru cen a výkonu pomocí Azure Premium Storage. Důrazně se rozumí, že proložení má ještě nějaké další nároky na nasazení a správu.
 
-Konkrétní doporučení pro velikost Stripe najdete v dokumentaci pro různé systémy DBMS, například [SAP HANA konfigurací úložiště virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage).
+Konkrétní doporučení pro velikost Stripe najdete v dokumentaci pro různé systémy DBMS, například [SAP HANA konfigurací úložiště virtuálních počítačů Azure](./hana-vm-operations-storage.md).
 
 
 
@@ -373,6 +373,6 @@ Konkrétní doporučení pro velikost Stripe najdete v dokumentaci pro různé s
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si články:
 
-- [Důvody pro nasazení Azure Virtual Machines DBMS pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
-- [Konfigurace úložiště virtuálních počítačů Azure SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
+- [Důvody pro nasazení Azure Virtual Machines DBMS pro úlohy SAP](./dbms_guide_general.md)
+- [Konfigurace úložiště virtuálních počítačů Azure SAP HANA](./hana-vm-operations-storage.md)
  

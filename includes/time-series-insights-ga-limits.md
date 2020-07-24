@@ -4,23 +4,23 @@ description: zahrnout soubor
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
-ms.date: 02/03/2020
+ms.date: 07/09/2020
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.custom: include file
-ms.openlocfilehash: 11469d992e0f5669cd3fc1e3864627dd0b8ae23d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e07f56bc2e820b325414e124c7825c1d356ca26
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81263335"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046402"
 ---
-V následující části jsou shrnuta klíčová omezení obecně dostupné.
+Následující shrnuje omezení klíčů v Azure Time Series Insights Gen1.
 
 ### <a name="sku-ingress-rates-and-capacities"></a>Míry příchozího přenosu SKU a kapacity
 
-Frekvence a míry příchozího přenosu SKU S1 a S2 poskytují flexibilitu při konfiguraci nového prostředí Time Series Insights. Kapacita SKU indikuje denní míru příchozího přenosu dat na základě počtu uložených událostí nebo bajtů, podle toho, co nastane dřív. Všimněte si, že příchozí přenos dat se měří *za minutu*a **omezování** se aplikuje pomocí algoritmu kontejneru tokenů. Příchozí přenos dat se měří v blocích po 1 KB. Například skutečná událost 0,8-KB bude měřena jako jedna událost a událost 2,6-KB se počítá jako tři události.
+Frekvence a míry příchozího přenosu SKU S1 a S2 poskytují flexibilitu při konfiguraci nového prostředí Azure Time Series Insights. Kapacita SKU indikuje denní míru příchozího přenosu dat na základě počtu uložených událostí nebo bajtů, podle toho, co nastane dřív. Všimněte si, že příchozí přenos dat se měří *za minutu*a **omezování** se aplikuje pomocí algoritmu kontejneru tokenů. Příchozí přenos dat se měří v blocích po 1 KB. Například skutečná událost 0,8-KB bude měřena jako jedna událost a událost 2,6-KB se počítá jako tři události.
 
 | Kapacita SKU S1 | Míra příchozího přenosu dat | Maximální kapacita úložiště
 | --- | --- | --- |
@@ -37,27 +37,27 @@ Frekvence a míry příchozího přenosu SKU S1 a S2 poskytují flexibilitu při
 
 Prostředí S2 SKU podporují podstatně více událostí za měsíc a mají výrazně vyšší kapacitu příchozího přenosu dat.
 
-| SKU  | Počet událostí za měsíc  | Počet událostí za minutu | Velikost události za minutu  |
+| Skladová položka  | Počet událostí za měsíc  | Počet událostí za minutu | Velikost události za minutu  |
 |---------|---------|---------|---------|---------|
 | S1     |   30 000 000   |  720    |  720 KB   |
  |S2     |   300 000 000   | 7 200   | 7 200 KB  |
 
 ### <a name="property-limits"></a>Omezení vlastností
 
-Omezení vlastností GA závisí na vybraném prostředí SKU. Zadané vlastnosti události mají odpovídající sloupce JSON, CSV a grafu, které se dají zobrazit v [Time Series Insights Exploreru](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart).
+Omezení vlastností Gen1 závisí na vybraném prostředí SKU. Zadané vlastnosti události mají odpovídající sloupce JSON, CSV a grafu, které se dají zobrazit v [Azure Time Series Insights Exploreru](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart).
 
-| SKU | Maximální vlastnosti |
+| Skladová položka | Maximální vlastnosti |
 | --- | --- |
 | S1 | 600 vlastnosti (sloupce) |
 | S2 | 800 vlastnosti (sloupce) |
 
 ### <a name="event-sources"></a>Zdroje událostí
 
-Podporuje se maximálně dva zdroje událostí na instanci. 
+Podporuje se maximálně dva zdroje událostí na instanci.
 
 * Naučte se [Přidat zdroj centra událostí](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
 * Nakonfigurujte [Zdroj služby IoT Hub](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub).
 
 ### <a name="api-limits"></a>Omezení rozhraní API
 
-Omezení REST API pro Time Series Insights Obecná dostupnost jsou uvedena v [referenční dokumentaci k REST API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#limits).
+REST API omezení pro Azure Time Series Insights Gen1 jsou uvedena v [referenční dokumentaci REST API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#limits).

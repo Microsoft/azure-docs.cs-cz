@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: d420f244b0d1e5ccf9a7aaa78c10f613cdbad38f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e844934852f3eb45f665a67bbdb7087a8ba0202
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564265"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039155"
 ---
 # <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>Přesunutí prostředků aplikace logiky do jiných skupin prostředků Azure, oblastí nebo předplatných
 
@@ -27,7 +27,7 @@ K migraci aplikace logiky nebo souvisejících prostředků do jiné skupiny pro
 
 * [Prostředí ISE (Integration Service Environment)](connect-virtual-network-vnet-isolated-environment-overview.md) můžete přesunout jenom do jiné skupiny prostředků, která existuje ve stejné oblasti Azure nebo předplatném Azure. ISE nejde přesunout do skupiny prostředků, která existuje v jiné oblasti Azure nebo předplatném Azure. Po takovém přesunutí musíte také aktualizovat všechny odkazy na ISE v pracovních postupech aplikace logiky, účtů pro integraci, připojeních atd.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Stejné předplatné Azure, které se použilo k vytvoření aplikace logiky nebo účtu pro integraci, který chcete přesunout
 
@@ -94,7 +94,7 @@ Některé prostředky Azure, například prostředky místní brány dat v Azure
 
 Například pro propojení aplikace logiky s účtem pro integraci musí oba prostředky existovat ve stejné oblasti. Ve scénářích, jako je například zotavení po havárii, obvykle chcete účty pro integraci se stejnou konfigurací a artefakty. V jiných scénářích budete možná potřebovat účty pro integraci s různými konfiguracemi a artefakty.
 
-Vlastní konektory v Azure Logic Apps jsou viditelné pro autory konektorů a uživatele, kteří mají stejné předplatné Azure a stejného Azure Active Directoryho tenanta. Tyto konektory jsou k dispozici ve stejné oblasti, ve které jsou nasazené Logic Apps. Další informace najdete v tématu [Sdílení vlastních konektorů ve vaší aplikaci](https://docs.microsoft.com/connectors/custom-connectors/share).
+Vlastní konektory v Azure Logic Apps jsou viditelné pro autory konektorů a uživatele, kteří mají stejné předplatné Azure a stejného Azure Active Directoryho tenanta. Tyto konektory jsou k dispozici ve stejné oblasti, ve které jsou nasazené Logic Apps. Další informace najdete v tématu [Sdílení vlastních konektorů ve vaší aplikaci](/connectors/custom-connectors/share).
 
 Šablona, kterou dostanete ze sady Visual Studio, obsahuje jenom definice prostředků pro vaši aplikaci logiky a její připojení. Takže pokud aplikace logiky používá jiné prostředky, například účet pro integraci a artefakty B2B, jako jsou partneři, smlouvy a schémata, musíte Exportovat šablonu tohoto účtu pro integraci pomocí Azure Portal. Tato šablona obsahuje definice prostředků pro integrační účet a artefakty. Šablona ale není plně Parametrizovaná. Proto je nutné ručně parametrizovat hodnoty, které chcete použít pro nasazení.
 

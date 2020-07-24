@@ -3,24 +3,25 @@ title: Připojení prostředí k Power BI-Azure Time Series Insights | Microsoft
 description: Naučte se, jak připojit Azure Time Series Insights, abyste Power BI mohli sdílet, sestavovat a zobrazovat data napříč vaší organizací.
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: ea46f37b0c09ca655b29ac3cfa2f168e18c85590
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 06/30/2020
+ms.openlocfilehash: b9d91921fc375a1209e8fa8df6e3c6ff56e55be0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85052444"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046701"
 ---
-# <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Vizualizace dat z Time Series Insights v Power BI
+# <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Vizualizace dat z Azure Time Series Insights v Power BI
 
-Azure Time Series Insights je platforma pro ukládání, správu, dotazování a vizualizaci dat časových řad v cloudu. [Power BI](https://powerbi.microsoft.com) je nástroj pro obchodní analýzu s bohatou schopností vizualizace, který umožňuje sdílet přehledy a výsledky napříč vaší organizací. Obě služby se teď dají integrovat tak, aby co nejlépe Time Series Insights základní možnosti vizualizace i Power BI.
+Azure Time Series Insights je platforma pro ukládání, správu, dotazování a vizualizaci dat časových řad v cloudu. [Power BI](https://powerbi.microsoft.com) je nástroj pro obchodní analýzu s bohatou schopností vizualizace, který umožňuje sdílet přehledy a výsledky napříč vaší organizací. Obě služby se teď dají integrovat tak, aby co nejlépe Azure Time Series Insights základní možnosti vizualizace i Power BI.
 
 Dozvíte se, jak provést tyto akce:
 
-* Připojení Time Series Insights k Power BI pomocí cloudového konektoru
+* Připojení Azure Time Series Insights k Power BI pomocí cloudového konektoru
 * Vytvářejte vizuály s daty v Power BI
 * Publikování sestavy pro Power BI a sdílení se zbytkem vaší organizace
 
@@ -28,19 +29,21 @@ V tomto případě se naučíte vizualizovat data časových řad prostřednictv
 
 Nezapomeňte si zaregistrovat [bezplatné předplatné Azure](https://azure.microsoft.com/free/) , pokud ho ještě nemáte.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Stáhněte a nainstalujte si nejnovější verzi [Power BI Desktop](https://powerbi.microsoft.com/downloads/)
-* Mít nebo vytvořit [instanci služby Azure Time Series Insights Preview](time-series-insights-update-how-to-manage.md)
+* Vytvoření nebo vytvoření [prostředí Azure Time Series Insights Gen2](time-series-insights-update-how-to-manage.md)
 
 > [!IMPORTANT]
-> Konektor Power BI je v prostředích s průběžnými *platbami* , které jsou nakonfigurované pro **záložní úložiště**, v Time Series Insights Preview.
+>
+> * Konektor je aktuálně podporovaný v Azure Time Series Insights prostředích Gen2 nakonfigurovaných jenom s využitím **výhradně pro úložiště**.
+> * Pokud máte přístup hosta k prostředí Azure Time Series Insights Gen2 z jiného tenanta Azure AD, nebudete mít přístup k konektoru. Přečtěte si o [zásadách přístupu k prostředí](./concepts-access-policies.md).
 
-## <a name="connect-data-from-time-series-insights-to-power-bi"></a>Připojení dat z Time Series Insights k Power BI
+## <a name="connect-data-from-azure-time-series-insights-to-power-bi"></a>Připojení dat z Azure Time Series Insights k Power BI
 
-Pokud chcete Power BI prostředí Time Series Insights připojit, postupujte takto:
+Pokud chcete Power BI prostředí Azure Time Series Insights připojit, postupujte takto:
 
-1. Otevřít Time Series Insights Explorer
+1. Otevřít Azure Time Series Insights Explorer
 1. Exportovat data jako dotaz nebo jako nezpracovaná data
 1. Otevřít Power BI Desktop
 1. Načíst z vlastního dotazu
@@ -49,10 +52,10 @@ Pokud chcete Power BI prostředí Time Series Insights připojit, postupujte tak
 
 Jak začít:
 
-1. Otevřete Průzkumníka Time Series Insights Preview a dohlédněte si data.
+1. Otevřete Azure Time Series Insights Průzkumníku Gen2 a dootevírejte data.
 1. Po vytvoření zobrazení, které jste splnili, přejděte do rozevírací nabídky **Další akce** a vyberte **připojit k Power BI**.
 
-    [![Export Průzkumníku Preview z Time Series Insights](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
+    [![Export Průzkumníka Azure Time Series Insights Gen2](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
 
 1. Nastavte parametry v této kartě:
 
@@ -64,11 +67,11 @@ Jak začít:
        > Data můžete kdykoli agregovat později v Power BI, ale po agregaci nelze vrátit zpět na nezpracovaná data. 
        
        > [!NOTE]
-       > Pro data na úrovni nezpracované události existuje limit počtu událostí 100 – K.
+       > Pro data na úrovni nezpracované události je povolený limit počtu událostí 250 000.
 
        [![Připojit](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
 
-   1. Pokud jste instanci Time Series Insights pro **záložní úložiště**nenakonfigurovali, zobrazí se upozornění.
+   1. Pokud jste nenakonfigurovali Azure Time Series Insights prostředí s využitím služby **teplé úložiště**, zobrazí se upozornění.
 
        [![Upozornění na teplé úložiště](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
 
@@ -81,9 +84,9 @@ Jak začít:
 
     [![Rozevírací seznam domů](media/how-to-connect-power-bi/power-bi-home-drop-down.png)](media/how-to-connect-power-bi/power-bi-home-drop-down.png#lightbox)
 
-1. Vyhledejte **Time Series Insights**, vyberte **Azure Time Series Insights (beta)** a pak se **Připojte**.
+1. Vyhledejte **Azure Time Series Insights**, vyberte **Azure Time Series Insights (beta)** a pak se **Připojte**.
 
-    [![Připojit Power BI k Time Series Insights](media/how-to-connect-power-bi/connect-to-time-series-insights.png)](media/how-to-connect-power-bi/connect-to-time-series-insights.png#lightbox)
+    [![Připojit Power BI k Azure Time Series Insights](media/how-to-connect-power-bi/connect-to-time-series-insights.png)](media/how-to-connect-power-bi/connect-to-time-series-insights.png#lightbox)
 
     Případně přejděte na kartu **Azure** , vyberte **Azure Time Series Insights (beta)** a pak se **Připojte**.
     
@@ -146,5 +149,3 @@ Rozhraní nyní bude odrážet požadované změny, které jste použili.
 * Přečtěte si o [Power BI konceptech konektoru](https://docs.microsoft.com/power-bi/desktop-query-overview) pro Azure Time Series Insights.
 
 * Přečtěte si další informace o [Power BI desktopu](https://docs.microsoft.com/power-bi/desktop-query-overview).
-
-* Přečtěte si Time Series Insights v Průzkumníkovi [GA](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart) a [Time Series Insights Preview](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart).

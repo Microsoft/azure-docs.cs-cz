@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 5c038f0be31acea52c2ef07d43f0dbaf3434a371
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b40bc8521755fae08e851e5b324979d5798e3dcd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "64709524"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042872"
 ---
 # <a name="encoding-error-codes"></a>Kódy chyb kódování
 
-V následující tabulce jsou uvedeny kódy chyb, které by mohly být vráceny v případě, že došlo k chybě při provádění úlohy kódování.  Chcete-li získat podrobnosti o chybě v kódu .NET, použijte třídu [ErrorDetails](https://msdn.microsoft.com/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx) . Pokud chcete získat podrobnosti o chybě v kódu REST, použijte REST API [ErrorDetail](https://msdn.microsoft.com/library/jj853026.aspx) .
+V následující tabulce jsou uvedeny kódy chyb, které by mohly být vráceny v případě, že došlo k chybě při provádění úlohy kódování.  Chcete-li získat podrobnosti o chybě v kódu .NET, použijte třídu [ErrorDetails](/previous-versions/azure/jj126075(v=azure.100)) . Pokud chcete získat podrobnosti o chybě v kódu REST, použijte REST API [ErrorDetail](/rest/api/media/operations/errordetail) .
 
 | ErrorDetail. Code | Možné příčiny chyby |
 | --- | --- |
-| Není známo |Neznámá chyba při provádění úlohy |
+| Neznámý |Neznámá chyba při provádění úlohy |
 | ErrorDownloadingInputAssetMalformedContent |Kategorie chyb, které pokrývají chyby při stahování vstupních assetů, jako jsou například chybné názvy souborů, soubory s nulovou délkou, nesprávné formáty atd. |
 | ErrorDownloadingInputAssetServiceFailure |Kategorie chyb, které pokrývají problémy na straně služby – například chyby sítě nebo úložiště při stahování. |
 | ErrorParsingConfiguration |Kategorie chyb, kde úloha \<see cref="MediaTask.PrivateData"/> (konfigurace) není platná, například konfigurace není platná pro Předvolby systému nebo obsahuje neplatný kód XML. |

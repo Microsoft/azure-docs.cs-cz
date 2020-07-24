@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 3/12/2020
 ms.author: lcozzens
-ms.openlocfilehash: bbf2039ad695f332b69bd5429ff527a4a2534e26
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 3ec2a0e38f3bead5fbab8a119099bb5bbc3ded2e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026980"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042124"
 ---
 # <a name="using-private-endpoints-for-azure-app-configuration"></a>Používání privátních koncových bodů pro konfiguraci aplikací Azure
 
@@ -23,10 +23,7 @@ Použití privátních koncových bodů pro vaše úložiště konfigurace aplik
 - Zvyšte zabezpečení virtuální sítě (VNet), která z virtuální sítě zajišťuje, že se data neřídí.
 - Bezpečně se připojte k úložišti konfigurace aplikace z místních sítí, které se připojují k virtuální síti pomocí [sítě VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) nebo [ExpressRoutes](../expressroute/expressroute-locations.md) s privátním partnerským vztahem.
 
-> [!NOTE]
-> Funkce privátního koncového bodu je teď obecně dostupná ve všech oblastech *s výjimkou* střed Indie. V **střed Indie** oblasti nabízí konfigurace aplikace Azure používání privátních koncových bodů jako veřejné verze Preview. Nabídky veřejné verze Preview umožňují zákazníkům experimentovat s novými funkcemi před jejich oficiální verzí.  Funkce a služby verze Public Preview nejsou určeny pro produkční použití.
-
-## <a name="conceptual-overview"></a>Koncepční přehled
+## <a name="conceptual-overview"></a>Základní přehled
 
 Privátní koncový bod je speciální síťové rozhraní pro službu Azure ve vaší [Virtual Network](../virtual-network/virtual-networks-overview.md) (virtuální síť). Když vytvoříte privátní koncový bod pro úložiště konfigurace aplikace, zajistíte zabezpečené připojení mezi klienty ve vaší virtuální síti a vaším úložištěm konfigurace. Privátnímu koncovému bodu je přiřazena IP adresa z rozsahu IP adres vaší virtuální sítě. Připojení mezi soukromým koncovým bodem a úložištěm konfigurace používá zabezpečený privátní odkaz.
 

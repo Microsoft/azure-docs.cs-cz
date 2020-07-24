@@ -1,5 +1,5 @@
 ---
-title: Interakce se zařízením IoT technologie Plug and Play Preview připojeným k řešení Azure IoT | Microsoft Docs
+title: Interakce se zařízením IoT technologie Plug and Play Preview připojeným k vašemu řešení – C# | Microsoft Docs
 description: Pomocí jazyka C# (.NET) se můžete připojit k zařízení IoT technologie Plug and Play Preview, které je připojené k řešení Azure IoT, a pracovat s nimi.
 author: dominicbetts
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 0953f68839217c1c75eb86f8399ce023f3863ab4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 226acdda94eb88825d60e35d48bfdd476ad1339c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76963967"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044088"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-c"></a>Rychlý Start: interakce se zařízením IoT technologie Plug and Play ve verzi Preview, které je připojené k vašemu řešení (C#)
 
@@ -21,7 +21,7 @@ ms.locfileid: "76963967"
 
 IoT technologie Plug and Play Preview zjednodušuje IoT tím, že vám umožní pracovat s funkcemi zařízení bez znalosti základní implementace zařízení. V tomto rychlém startu se dozvíte, jak pomocí jazyka C# (s .NET) připojit a řídit zařízení IoT technologie Plug and Play, které je připojené k vašemu řešení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto rychlého startu je potřeba na svém vývojovém počítači nainstalovat .NET Core (2. x. x nebo 3. x. x). Můžete si stáhnout upřednostňovanou verzi .NET Core SDK pro více platforem od [stažení .NET Core](https://dotnet.microsoft.com/download/dotnet-core/).
 
@@ -126,7 +126,7 @@ V tomto rychlém startu použijete k interakci s ukázkovým zařízením ukázk
     dotnet run
     ```
 
-1. Výstup terminálu _služby_ zobrazuje aktualizované informace o zařízení. Posuňte se `environmentalSensor` na součást, abyste viděli novou hodnotu jasu 42.
+1. Výstup terminálu _služby_ zobrazuje aktualizované informace o zařízení. Posuňte se na `environmentalSensor` součást, abyste viděli novou hodnotu jasu 42.
 
     ```json
         "environmentalSensor": {

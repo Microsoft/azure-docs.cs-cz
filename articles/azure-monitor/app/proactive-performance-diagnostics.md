@@ -4,11 +4,12 @@ description: Application Insights provádí inteligentní analýzu telemetrie ap
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: 22c1eeb00372b9b3c67d6a87f2300225a071438e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5152a3deb73c7069655ff016fbfc03f6b9cee16d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84016844"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045784"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Inteligentní zjišťování – anomálie výkonu
 
@@ -48,7 +49,7 @@ Oznámení obsahují diagnostické informace. Tady je příklad:
 
 ## <a name="configure-email-notifications"></a>Konfigurace e-mailových oznámení
 
-Oznámení inteligentní detekce jsou ve výchozím nastavení povolená a odesílají se uživatelům, kteří mají [Čtenář monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) a [monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) , přístup k předplatnému, ve kterém se Application Insights prostředek nachází. Pokud ho chcete změnit, buď v e-mailovém oznámení klikněte na **Konfigurovat** , nebo otevřete nastavení inteligentního zjišťování v Application Insights. 
+Oznámení inteligentní detekce jsou ve výchozím nastavení povolená a odesílají se uživatelům, kteří mají [Čtenář monitorování](../../role-based-access-control/built-in-roles.md#monitoring-reader) a [monitorování](../../role-based-access-control/built-in-roles.md#monitoring-contributor) , přístup k předplatnému, ve kterém se Application Insights prostředek nachází. Pokud ho chcete změnit, buď v e-mailovém oznámení klikněte na **Konfigurovat** , nebo otevřete nastavení inteligentního zjišťování v Application Insights. 
   
   ![Nastavení inteligentního zjišťování](media/proactive-performance-diagnostics/smart_detection_configuration.png)
   
@@ -56,7 +57,7 @@ Oznámení inteligentní detekce jsou ve výchozím nastavení povolená a odes�
 
 U e-mailů o inteligentních Detekcích se anomálie výkonu u každého Application Insights prostředku omezí na jeden e-mail za den. E-mail se pošle jenom v případě, že se v daném dni našel aspoň jeden nový problém. Žádná zpráva se neopakuje. 
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 * *Proto si zaměstnanci Microsoftu prohledají moje údaje?*
   * Ne. Služba je zcela automatická. Oznámení se zobrazí jenom vy. Vaše data jsou [soukromá](../../azure-monitor/app/data-retention-privacy.md).
@@ -69,12 +70,12 @@ U e-mailů o inteligentních Detekcích se anomálie výkonu u každého Applica
 * *Můžu vytvořit vlastní pravidla detekce anomálií nebo přizpůsobit stávající pravidla?*
 
   * Ještě ne, ale můžete:
-    * [Nastavte výstrahy](/azure/azure-monitor/platform/alerts-log) , které vás upozorní, když metrika přechází do prahové hodnoty.
+    * [Nastavte výstrahy](../platform/alerts-log.md) , které vás upozorní, když metrika přechází do prahové hodnoty.
     * [Exportujte telemetrii](../../azure-monitor/app/export-telemetry.md) do [databáze](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) nebo [Power BI](../../azure-monitor/app/export-power-bi.md ), kde ji můžete analyzovat sami.
 * *Jak často se provádí analýza?*
 
   * Analýzy provedeme denně na telemetrie z předchozího dne (celý den v časovém pásmu UTC).
-* *To znamená, že tyto [výstrahy metriky](/azure/azure-monitor/platform/alerts-log)nahrazují?*
+* *To znamená, že tyto [výstrahy metriky](../platform/alerts-log.md)nahrazují?*
   * Ne.  Nepotvrzuji jsme zjišťování všech chování, která by se vám mohla považovat za neobvyklou.
 
 
@@ -175,9 +176,9 @@ Tyto diagnostické nástroje vám pomůžou zkontrolovat telemetrii z vaší apl
 * [Profiler](profiler.md) 
 * [Snapshot Debugger](../../azure-monitor/app/snapshot-debugger.md)
 * [Analýzy](../../azure-monitor/log-query/get-started-portal.md)
-* [Inteligentní Diagnostika Analytics](../../azure-monitor/app/analytics.md)
+* [Inteligentní Diagnostika Analytics](../log-query/log-query-overview.md)
 
 Inteligentní detekce jsou zcela automatické. Možná byste ale chtěli nastavit ještě nějaké další výstrahy?
 
-* [Ručně nakonfigurované výstrahy metriky](/azure/azure-monitor/platform/alerts-log)
+* [Ručně nakonfigurované výstrahy metriky](../platform/alerts-log.md)
 * [Testy dostupnosti webu](../../azure-monitor/app/monitor-web-app-availability.md)

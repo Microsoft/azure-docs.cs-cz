@@ -8,12 +8,12 @@ ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: f6bda61960efd9a5e176f8792601e315ba96bcca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13ffd1eeb2df3c21a6167b056557b9141444f7c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553292"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038575"
 ---
 # <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Šifrování v klidovém formátu obsahu v Azure Kognitivní hledání používání klíčů spravovaných zákazníkem v Azure Key Vault
 
@@ -28,7 +28,7 @@ Klíče nemusí být ve stejném Key Vault. Jedna vyhledávací služba může h
 > [!IMPORTANT] 
 > Tato funkce je k dispozici na [REST API](https://docs.microsoft.com/rest/api/searchservice/) a [.net SDK verze 8,0-Preview](search-dotnet-sdk-migration-version-9.md). V tuto chvíli není v Azure Portal žádná podpora ke konfiguraci šifrovacích klíčů spravovaných zákazníkem. Vyhledávací služba musí být vytvořená po 2019. lednu a nemůže být volná (sdílená) služba.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto příkladu se používají následující služby. 
 
@@ -36,7 +36,7 @@ V tomto příkladu se používají následující služby.
 
 + [Vytvořte prostředek Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault) nebo v rámci svého předplatného Najděte existující trezor.
 
-+ Pro úlohy konfigurace se používá [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) nebo [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) .
++ Pro úlohy konfigurace se používá [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) nebo [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) .
 
 + K volání REST API lze použít [post](search-get-started-postman.md), [Azure POWERSHELL](search-create-index-rest-api.md) a [.NET SDK Preview](https://aka.ms/search-sdk-preview) . V tuto chvíli není k dispozici žádná podpora portálu pro šifrování spravované zákazníkem.
 

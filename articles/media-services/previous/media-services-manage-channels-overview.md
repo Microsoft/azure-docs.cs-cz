@@ -14,16 +14,17 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f875b4a5c4f1322f4a992dc3738ab1ce6431149d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b28e200cab2edb4c1f603e4c67264cdc1c46d7f8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81641129"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042842"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Přehled živého streamování pomocí Media Services
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 
 ## <a name="overview"></a>Přehled
 
@@ -76,7 +77,7 @@ Následující tabulka poskytuje návod pro porovnání dvou typů kanálů podp
 | Vstup s jednou přenosovou rychlostí je kódovaný do více přenosových rychlostí v cloudu. |No |Yes |
 | Maximální rozlišení, počet vrstev |1080p, 8 vrstev, 60 + fps |720p, 6 vrstev, 30 snímků za sekundu |
 | Vstupní protokoly |RTMP, Smooth Streaming |RTMP, Smooth Streaming |
-| Price |Podívejte se na [stránku s cenami](https://azure.microsoft.com/pricing/details/media-services/) a klikněte na kartu živé video. |Zobrazit [stránku s cenami](https://azure.microsoft.com/pricing/details/media-services/) |
+| Cena |Podívejte se na [stránku s cenami](https://azure.microsoft.com/pricing/details/media-services/) a klikněte na kartu živé video. |Zobrazit [stránku s cenami](https://azure.microsoft.com/pricing/details/media-services/) |
 | Maximální doba běhu |non |8 hodin |
 | Podpora pro vložení SLAT |No |Yes |
 | Podpora pro signalizaci AD |No |Yes |
@@ -105,7 +106,7 @@ Další informace najdete v článku o [práci s kanály, které mají povolené
 
 ### <a name="channel"></a>Kanál
 
-V Media Services [kanál](https://docs.microsoft.com/rest/api/media/operations/channel)s zodpovídá za zpracování obsahu živého streamování. Kanál poskytuje vstupní koncový bod (adresa URL pro příjem), který pak poskytnete pro živý překódování. Kanál přijímá živé vstupní proudy z živého překódování a zpřístupňuje je pro streamování prostřednictvím jednoho nebo více starají. Kanály také poskytují koncový bod verze Preview (adresa URL náhledu), který používáte k zobrazení náhledu a ověření datového proudu před dalším zpracováním a doručením.
+V Media Services [kanál](/rest/api/media/operations/channel)s zodpovídá za zpracování obsahu živého streamování. Kanál poskytuje vstupní koncový bod (adresa URL pro příjem), který pak poskytnete pro živý překódování. Kanál přijímá živé vstupní proudy z živého překódování a zpřístupňuje je pro streamování prostřednictvím jednoho nebo více starají. Kanály také poskytují koncový bod verze Preview (adresa URL náhledu), který používáte k zobrazení náhledu a ověření datového proudu před dalším zpracováním a doručením.
 
 Při vytváření kanálu můžete získat adresu URL pro ingestování a adresu URL náhledu. Aby se tyto adresy URL dostaly, kanál se nemusí nacházet ve stavu spuštěno. Až budete připraveni začít nahrávat data z živého přesílaného do kanálu, je nutné spustit kanál. Jakmile živý převedený kód začne ingestovat data, můžete zobrazit náhled streamu.
 
@@ -114,7 +115,7 @@ Každý účet Media Services může obsahovat více kanálů, více programů a
 Při vytváření kanálu můžete zadat povolené IP adresy v jednom z následujících formátů: IpV4 adresa se 4 čísly, rozsah adres CIDR.
 
 ### <a name="program"></a>Program
-[Program](https://docs.microsoft.com/rest/api/media/operations/program) umožňuje řídit publikování a ukládání segmentů v živém datovém proudu. Kanály spravují programy. Vztah kanálů a programů se velmi podobná tradičním médiím, kde kanál obsahuje nepřetržitý datový proud obsahu a program je vymezen na určité načasované události v tomto kanálu.
+[Program](/rest/api/media/operations/program) umožňuje řídit publikování a ukládání segmentů v živém datovém proudu. Kanály spravují programy. Vztah kanálů a programů se velmi podobná tradičním médiím, kde kanál obsahuje nepřetržitý datový proud obsahu a program je vymezen na určité načasované události v tomto kanálu.
 Nastavením vlastnosti **ArchiveWindowLength** můžete zadat počet hodin, po které chcete zachovávat zaznamenaný obsah pro program. Tuto hodnotu můžete nastavit v rozmezí od 5 minut po 25 hodin.
 
 ArchiveWindowLength také určuje maximální dobu, po kterou mohou klienti vyhledávat v čase z aktuální živé pozice. Programy můžou běžet po určenou dobu a obsah, který se do délky okna nevejde, bude vždy zahozen. Hodnota této vlastnosti také určuje, jak dlouho mohou klientské manifesty růst.
@@ -150,7 +151,7 @@ Následující tabulka ukazuje, jak se stavy kanálu mapují na režim fakturace
 | Stav kanálu | Indikátory uživatelského rozhraní portálu | Účtuje se fakturace? |
 | --- | --- | --- |
 | Spouštění |Spouštění |Ne (přechodný stav) |
-| Spuštěno |Připraveno (žádné spuštěné programy)<br/>nebo<br/>Streamování (aspoň jeden spuštěný program) |ANO |
+| Spuštěný |Připraveno (žádné spuštěné programy)<br/>nebo<br/>Streamování (aspoň jeden spuštěný program) |ANO |
 | Zastavování |Zastavování |Ne (přechodný stav) |
 | Zastaveno |Zastaveno |No |
 

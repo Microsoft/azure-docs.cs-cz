@@ -12,16 +12,16 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 900e76fff3e5ccf88fa1e25ebea97f26e406a358
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6780942d922f885c7afebd8e64f4f28654c3800e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610366"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042537"
 ---
 # <a name="deploy-micro-focus-enterprise-server-50-to-aks"></a>Nasazení Micro Enterprise serveru 5,0 na AKS
 
-V jiném [článku](https://docs.microsoft.com/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/run-enterprise-server-container)jsem popsaný postupem, jak spustit Micro Enterprise Server 5,0 v kontejneru Docker. V takovém případě bych vám ukázal, jak si postupovat v jednom kroku a nasadit tuto image Docker, kterou jste vytvořili ve službě Azure Kubernetes Service (AKS).
+V jiném [článku](./run-enterprise-server-container.md)jsem popsaný postupem, jak spustit Micro Enterprise Server 5,0 v kontejneru Docker. V takovém případě bych vám ukázal, jak si postupovat v jednom kroku a nasadit tuto image Docker, kterou jste vytvořili ve službě Azure Kubernetes Service (AKS).
 
 Služba Azure Kubernetes je spravovaná služba Orchestration založená na Kubernetes. Umožňuje nasazovat, škálovat a spravovat kontejnery Docker (a další aplikace založené na kontejnerech) v rámci clusteru hostitelů kontejnerů.
 
@@ -31,7 +31,7 @@ Toto je proces se třemi kroky. Musíte:
 
 2.  Vytvořte cluster Azure Kubernetes pro spuštění image Docker.
 
-3.  Spusťte aplikaci.
+3.  Aplikaci spusťte.
 
 Díky tomu můžete horizontální navýšení kapacity (a horizontální horizontální navýšení kapacity) v Azure využít k tomu, aby tato cloudová platforma platila na maximum.
 
@@ -119,4 +119,4 @@ Měli byste vidět ES-acctdemo jako běžící pod, jak je znázorněno na násl
 
 ![Snímek obrazovky s acctdemo jako běžící pod](media/deploy-image-9.png)
 
-Gratulujeme! Nyní používáte podnikový server ve službě Azure Kubernetes. V dalším článku se dozvíte, jak získat přístup ke konzole pro správu podnikového serveru a také jak využít Kubernetes k horizontálnímu navýšení kapacity nasazení.
+Blahopřejeme! Nyní používáte podnikový server ve službě Azure Kubernetes. V dalším článku se dozvíte, jak získat přístup ke konzole pro správu podnikového serveru a také jak využít Kubernetes k horizontálnímu navýšení kapacity nasazení.

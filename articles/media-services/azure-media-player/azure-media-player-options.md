@@ -6,11 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
-ms.openlocfilehash: e26215115b4c4484e5e05a2fd94a4d2c6680a4d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ab79a60f55fad6a45fadb6bf8890d2879caac62
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81727161"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043577"
 ---
 # <a name="options"></a>Možnosti #
 
@@ -62,7 +63,7 @@ Atribut Width nastaví šířku zobrazení videa.
 
 `<video width="640" ...>` nebo `{ "width": 640 }`
 
-### <a name="height"></a>height ###
+### <a name="height"></a>výška ###
 
 Atribut Height nastaví výšku zobrazení videa.
 
@@ -100,7 +101,7 @@ Nastavením této možnosti na true video element bude trvat celou šířku nad�
 `<video ... data-setup='{"playbackSpeed": {"enabled": true}}'>`
 
 
-Další vlastnosti `playbackSpeed` nastavení jsou dány objektem [PlaybackSpeedOptions](https://docs.microsoft.com/javascript/api/azuremediaplayer/amp.player.playbackspeedoptions) .
+Další vlastnosti `playbackSpeed` nastavení jsou dány objektem [PlaybackSpeedOptions](/javascript/api/azuremediaplayer/amp.player.playbackspeedoptions) .
 
 Příklad nastavení možností rychlosti přehrávání v JavaScriptu:
 

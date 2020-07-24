@@ -2,31 +2,70 @@
 title: 'Rychlý Start: Vytvoření aplikace Python pro Linux'
 description: Začněte s aplikacemi pro Linux v Azure App Service nasazením první aplikace v Pythonu do kontejneru Linux v App Service.
 ms.topic: quickstart
-ms.date: 04/03/2020
+ms.date: 06/30/2020
 ms.custom: seo-python-october2019, cli-validate, tracking-python
-ms.openlocfilehash: 622709098d8b45f6c7badfddd3006dc730a6bf14
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 1411c6ccc5228aa9248d5185bf44ecbfd496ed1f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561696"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042372"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Rychlý Start: Vytvoření aplikace v Pythonu v Azure App Service v systému Linux
 
 V tomto rychlém startu nasadíte webovou aplikaci v Pythonu, která se [App Service v systému Linux](app-service-linux-intro.md), vysoce škálovatelná služba s automatickými opravami pro hostování webů v Azure. Použijete místní [rozhraní příkazového řádku Azure (CLI)](/cli/azure/install-azure-cli) na počítači se systémem Mac, Linux nebo Windows. Webová aplikace, kterou nakonfigurujete, využívá bezplatnou App Serviceovou úroveň, takže v tomto článku nebudete mít žádné náklady.
 
-Pokud dáváte přednost nasazení aplikací prostřednictvím integrovaného vývojového prostředí (IDE), přečtěte si téma [nasazení aplikací Python pro App Service z Visual Studio Code](/azure/python/tutorial-deploy-app-service-on-linux-01).
+Pokud dáváte přednost nasazení aplikací prostřednictvím integrovaného vývojového prostředí (IDE), přečtěte si téma [nasazení aplikací Python pro App Service z Visual Studio Code](/azure/developer/python/tutorial-deploy-app-service-on-linux-01).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="set-up-your-initial-environment"></a>Nastavení počátečního prostředí
 
-- Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) .
-- <a href="https://www.python.org/downloads/" target="_blank">Python 3,7</a> (podporuje se taky Python 3,6)
-- <a href="https://git-scm.com/downloads" target="_blank">Git</a>
-- <a href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.0.80 nebo vyšší. Spuštěním příkazu `az --version` zkontrolujte svou verzi.
+Než začnete, musíte mít následující:
 
-## <a name="download-the-sample"></a>Stažení ukázky
+1. Mít účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+1. Nainstalujte <a href="https://www.python.org/downloads/" target="_blank">Python 3,6 nebo vyšší</a>.
+1. Nainstalujte rozhraní příkazového <a href="/cli/azure/install-azure-cli" target="_blank">řádku Azure CLI</a> 2.0.80 nebo novější, ve kterém spouštíte příkazy v jakémkoli prostředí pro zřizování a konfiguraci prostředků Azure.
 
-V okně terminálu naklonujte ukázkovou aplikaci do místního počítače spuštěním následujícího příkazu. 
+Otevřete okno terminálu a ověřte, jestli je verze Pythonu 3,6 nebo vyšší:
+
+# <a name="bash"></a>[Bash](#tab/bash)
+
+```bash
+python3 --version
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```cmd
+py -3 --version
+```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+py -3 --version
+```
+
+---
+
+Ověřte, jestli je verze Azure CLI 2.0.80á nebo vyšší:
+
+```azurecli
+az --version
+```
+
+Pak se přihlaste k Azure prostřednictvím rozhraní příkazového řádku:
+
+```azurecli
+az login
+```
+
+Tento příkaz otevře prohlížeč pro shromáždění vašich přihlašovacích údajů. Po dokončení příkazu se zobrazí výstup JSON obsahující informace o vašich předplatných.
+
+Po přihlášení můžete spustit příkazy Azure pomocí Azure CLI a pracovat s prostředky ve vašem předplatném.
+
+## <a name="clone-the-sample"></a>Vytvoření klonu ukázky
+
+Naklonujte ukázkové úložiště pomocí následujícího příkazu. (Pokud Git ještě nemáte,[nainstalujte Git](https://git-scm.com/downloads) .)
 
 ```terminal
 git clone https://github.com/Azure-Samples/python-docs-hello-world
@@ -38,38 +77,57 @@ Pak přejít do této složky:
 cd python-docs-hello-world
 ```
 
-Úložiště obsahuje soubor *Application.py* , který oznamuje App Service, že kód obsahuje aplikaci v baňce. Další informace najdete v tématu [proces spuštění a přizpůsobení kontejneru](how-to-configure-python.md).
+Vzorový kód obsahuje soubor *Application.py* , který oznamuje App Service, že kód obsahuje aplikaci v baňce. Další informace najdete v tématu [proces spuštění a přizpůsobení kontejneru](how-to-configure-python.md).
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
 
-V okně terminálu použijte následující příkazy (podle toho, jak je to vhodné pro váš operační systém) k instalaci požadovaných závislostí a spuštění integrovaného vývojového serveru. 
-
 # <a name="bash"></a>[Bash](#tab/bash)
+
+Nejdřív vytvořte virtuální prostředí a nainstalujte závislosti:
 
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+```
+
+Pak nastavte `FLASK_APP` proměnnou prostředí na vstupní modul aplikace a spusťte vývojový server baňky:
+
+```
 export FLASK_APP=application.py
 flask run
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
+Nejdřív vytvořte virtuální prostředí a nainstalujte závislosti:
+
 ```powershell
 py -3 -m venv env
 env\scripts\activate
 pip install -r requirements.txt
+```
+
+Pak nastavte `FLASK_APP` proměnnou prostředí na vstupní modul aplikace a spusťte vývojový server baňky:
+
+```powershell
 Set-Item Env:FLASK_APP ".\application.py"
 flask run
 ```
 
 # <a name="cmd"></a>[Cmd](#tab/cmd)
 
+Nejdřív vytvořte virtuální prostředí a nainstalujte závislosti:
+
 ```cmd
 py -3 -m venv env
 env\scripts\activate
 pip install -r requirements.txt
+```
+
+Pak nastavte `FLASK_APP` proměnnou prostředí na vstupní modul aplikace a spusťte vývojový server baňky:
+
+```cmd
 SET FLASK_APP=application.py
 flask run
 ```
@@ -80,60 +138,24 @@ Otevřete webový prohlížeč a v části použijte ukázkovou aplikaci `http:/
 
 ![Místní spuštění ukázkové aplikace v Pythonu](./media/quickstart-python/run-hello-world-sample-python-app-in-browser-localhost.png)
 
-V okně terminálu ukončete webový server stisknutím **kombinace kláves CTRL +** + **C** .
-
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
-
-Azure CLI poskytuje mnoho pohodlných příkazů, které můžete použít z místního terminálu ke zřízení a správě prostředků Azure z příkazového řádku. Pomocí příkazů můžete provádět stejné úlohy, které jste procházeli pomocí Azure Portal v prohlížeči. Můžete také použít příkazy rozhraní příkazového řádku ve skriptech k automatizaci procesů správy.
-
-Pokud chcete spustit příkazy Azure v rozhraní příkazového řádku Azure CLI, musíte se nejdřív přihlásit pomocí `az login` příkazu. Tento příkaz otevře prohlížeč pro shromáždění vašich přihlašovacích údajů.
-
-```azurecli
-az login
-```
+V okně terminálu ukončete Server pro vývoj v baňce stisknutím klávesy **CTRL +** + **C** .
 
 ## <a name="deploy-the-sample"></a>Nasazení ukázky
 
-[`az webapp up`](/cli/azure/webapp#az-webapp-up)Příkaz vytvoří webovou aplikaci na App Service a nasadí váš kód.
-
-Ve složce *Python-docs-Hello-World* , která obsahuje vzorový kód, spusťte následující `az webapp up` příkaz. Nahraďte `<app-name>` globálně jedinečným názvem aplikace (*platné znaky jsou `a-z` , `0-9` a `-` *).
-
+Nasaďte kód do místní složky (*Python-docs-Hello-World*) pomocí `az webapp up` příkazu:
 
 ```azurecli
 az webapp up --sku F1 -n <app-name>
 ```
 
-`--sku F1`Argument vytvoří webovou aplikaci na cenové úrovni Free. Tento argument vynecháte místo toho, abyste místo toho použili úroveň Premium, což stojí za hodinu.
+- Pokud `az` příkaz není rozpoznán, ujistěte se, že máte nainstalované rozhraní příkazového řádku Azure, jak je popsáno v tématu [Nastavení počátečního prostředí](#set-up-your-initial-environment).
+- Nahraďte `<app_name>` názvem, který je jedinečný v rámci všech Azure (*platné znaky jsou `a-z` , `0-9` a `-` *). Dobrým vzorem je použití kombinace názvu vaší společnosti a identifikátoru aplikace.
+- `--sku F1`Argument vytvoří webovou aplikaci na cenové úrovni Free. Vynechejte tento argument pro použití rychlejší úrovně Premium, což stojí za hodinu.
+- Volitelně můžete zahrnout argument `-l <location-name>` , kde `<location_name>` je oblast Azure, například **centralus**, **eastasia**, **westeurope**, **koreasouth**, **brazilsouth**, **centralindia**a tak dále. Seznam povolených oblastí pro váš účet Azure můžete načíst spuštěním [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) příkazu.
 
-Volitelně můžete zahrnout argument `-l <location-name>` , kde `<location_name>` je oblast Azure, například **centralus**, **eastasia**, **westeurope**, **koreasouth**, **brazilsouth**, **centralindia**a tak dále. Seznam povolených oblastí pro váš účet Azure můžete načíst spuštěním [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) příkazu.
+Dokončení příkazu může trvat několik minut. Při spuštění poskytuje zpráva o vytváření skupiny prostředků, App Service plánování a hostování aplikace, konfiguraci protokolování a následném nasazení souboru ZIP. Pak mu zobrazí zprávu "aplikaci můžete spustit v http:// &lt; App-name &gt; . azurewebsites.NET", což je adresa URL aplikace v Azure.
 
-`az webapp up`Úplné spuštění příkazu může trvat několik minut. Při spuštění se zobrazí podobné informace jako v následujícím příkladu, kde `<app-name>` bude název, který jste zadali dříve:
-
-<pre>
-Creating Resource group 'appsvc_rg_Linux_centralus' ...
-Resource group creation complete
-Creating App service plan 'appsvc_asp_Linux_centralus' ...
-App service plan creation complete
-Creating app '&lt;app-name&gt;' ....
-Configuring default logging for the app, if not already enabled
-Creating zip with contents of dir D:\Examples\python-docs-hello-world ...
-Getting scm site credentials for zip deployment
-Starting zip deployment. This operation can take a while to complete ...
-Deployment endpoint responded with status code 202
-You can launch the app at http://&lt;app-name&gt;.azurewebsites.net
-{
-  "URL": "http://&lt;app-name&gt;.net",
-  "appserviceplan": "appsvc_asp_Linux_centralus",
-  "location": "eastus",
-  "name": "&lt;app-name&gt;",
-  "os": "Linux",
-  "resourcegroup": "appsvc_rg_Linux_centralus",
-  "runtime_version": "python|3.7",
-  "runtime_version_detected": "-",
-  "sku": "FREE",
-  "src_path": "D:\\Examples\\python-docs-hello-world"
-}
-</pre>
+![Příklad výstupu příkazu AZ WebApp up](./media/quickstart-python/az-webapp-up-output.png)
 
 [!INCLUDE [AZ Webapp Up Note](../../../includes/app-service-web-az-webapp-up-note.md)]
 
@@ -145,7 +167,7 @@ Vzorový kód Pythonu spouští kontejner Linux v App Service pomocí integrovan
 
 ![Spuštění ukázkové aplikace v Pythonu v Azure](./media/quickstart-python/run-hello-world-sample-python-app-in-browser.png)
 
-**Gratulujeme!** Nasadili jste aplikaci v Pythonu, která App Service na Linux.
+**Blahopřejeme!** Nasadili jste aplikaci v Pythonu, která App Service na Linux.
 
 ## <a name="redeploy-updates"></a>Znovu nasadit aktualizace
 
@@ -165,9 +187,9 @@ Znovu nasaďte aplikaci znovu pomocí `az webapp up` příkazu:
 az webapp up
 ```
 
-Tento příkaz používá hodnoty, které jsou uložené v mezipaměti v souboru *. Azure/config* , včetně názvu aplikace, skupiny prostředků a plánu App Service.
+Tento příkaz používá hodnoty, které jsou uložené místně v souboru *. Azure/config* , včetně názvu aplikace, skupiny prostředků a plánu App Service.
 
-Po dokončení nasazení přepněte zpátky do okna prohlížeče, které se otevře na `http://<app-name>.azurewebsites.net` stránce, a aktualizujte stránku, která by měla upravenou zprávu zobrazit:
+Po dokončení nasazení přepněte zpátky do okna prohlížeče otevřeného na `http://<app-name>.azurewebsites.net` . Aktualizujte stránku, kde by se měla zobrazit upravená zpráva:
 
 ![Spuštění aktualizované ukázkové aplikace v Pythonu v Azure](./media/quickstart-python/run-updated-hello-world-sample-python-app-in-browser.png)
 
@@ -184,16 +206,11 @@ Chcete-li spustit datový proud protokolů, spusťte následující příkaz:
 az webapp log tail
 ```
 
-Aktualizujte aplikaci v prohlížeči, aby se generovaly protokoly konzoly, které by měly obsahovat řádky podobné následujícímu textu. Pokud se výstup nezobrazuje hned, zkuste to znovu za 30 sekund.
-
-<pre>
-2020-04-03T22:54:04.236405938Z Handling request to home page.
-2020-04-03T22:54:04.236497641Z 172.16.0.1 - - [03/Apr/2020:22:54:04 +0000] "GET / HTTP/1.1" 200 12 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.83 Safari/537.36 Edg/81.0.416.41"
-</pre>
+Aktualizujte aplikaci v prohlížeči, aby se generovaly protokoly konzoly, které obsahují zprávy popisující požadavky HTTP na aplikaci. Pokud se žádný výstup nezobrazuje hned, zkuste to znovu za 30 sekund.
 
 Soubory protokolu můžete také zkontrolovat v prohlížeči na adrese `https://<app-name>.scm.azurewebsites.net/api/logs/docker` .
 
-Pokud chcete streamování protokolů kdykoli zastavit, zadejte `Ctrl` + `C` .
+Pokud chcete streamování protokolů kdykoli zastavit, zadejte **CTRL** + **C**.
 
 ## <a name="manage-the-azure-app"></a>Správa aplikace Azure
 
@@ -205,7 +222,7 @@ Vyberte název aplikace Azure.
 
 ![Přejděte do aplikace Python v App Services Azure Portal](./media/quickstart-python/navigate-to-app-in-app-services-in-the-azure-portal.png)
 
-Zobrazí se stránka s přehledem vaší aplikace. Tady můžete provádět základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění.
+Výběr aplikace otevře svou stránku **Přehled** , kde můžete provádět základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění.
 
 ![Správa aplikace v Pythonu na stránce s přehledem v Azure Portal](./media/quickstart-python/manage-an-app-in-app-services-in-the-azure-portal.png)
 
@@ -215,11 +232,15 @@ V nabídce App Service najdete různé stránky pro konfiguraci vaší aplikace.
 
 V předchozích krocích jste vytvořili prostředky Azure ve skupině prostředků. V závislosti na vašem umístění má skupina prostředků název, jako je například "appsvc_rg_Linux_CentralUS". Pokud použijete App Service SKU jinou než bezplatnou úroveň F1, tyto prostředky účtují průběžné náklady (viz [ceny App Service](https://azure.microsoft.com/pricing/details/app-service/linux/)).
 
-Pokud neočekáváte, že tyto prostředky budete potřebovat v budoucnu, odstraňte skupinu prostředků spuštěním následujícího příkazu, kde nahraďte `<resource-group-name>` skupinu prostředků, která je zobrazená ve výstupu `az webapp up` příkazu, například "appsvc_rg_Linux_centralus". Dokončení příkazu může trvat několik minut.
+Pokud neočekáváte, že tyto prostředky budete potřebovat v budoucnu, odstraňte skupinu prostředků spuštěním následujícího příkazu:
 
 ```azurecli
-az group delete -n <resource-group-name>
+az group delete
 ```
+
+Příkaz používá název skupiny prostředků uložený v souboru *. Azure/config* .
+
+Dokončení příkazu může trvat několik minut.
 
 ## <a name="next-steps"></a>Další kroky
 

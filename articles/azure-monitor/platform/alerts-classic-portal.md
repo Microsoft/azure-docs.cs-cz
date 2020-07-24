@@ -5,11 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.openlocfilehash: e635c243a887690fb1f7a5dcd017c1130d74a747
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97c1819d665e6964343e853249a0d22aa07c3588
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114585"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045580"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Vytváření, zobrazování a Správa klasických výstrah metrik pomocí Azure Monitor
 
@@ -51,7 +52,7 @@ Po vytvoření výstrahy ji můžete vybrat a provést jednu z následujících 
 
 ## <a name="with-azure-cli"></a>S využitím rozhraní příkazového řádku Azure
 
-Předchozí části popisují, jak vytvářet, zobrazovat a spravovat pravidla upozornění metrik pomocí Azure Portal. V této části se dozvíte, jak to samé provést pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)pro různé platformy. Nejrychlejší způsob, jak začít používat Azure CLI, je prostřednictvím [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest).
+Předchozí části popisují, jak vytvářet, zobrazovat a spravovat pravidla upozornění metrik pomocí Azure Portal. V této části se dozvíte, jak to samé provést pomocí [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)pro různé platformy. Nejrychlejší způsob, jak začít používat Azure CLI, je prostřednictvím [Azure Cloud Shell](../../cloud-shell/overview.md?view=azure-cli-latest).
 
 ### <a name="get-all-classic-metric-alert-rules-in-a-resource-group"></a>Načíst všechna klasická pravidla upozornění na metriky ve skupině prostředků
 
@@ -87,7 +88,7 @@ az monitor alert delete --name <alert name> --resource-group <group name>
 
 V této části se dozvíte, jak pomocí příkazů PowerShellu vytvářet, zobrazovat a spravovat klasické výstrahy metriky. Příklady v článku ukazují, jak můžete použít rutiny Azure Monitor pro klasické výstrahy metrik.
 
-1. Pokud jste to ještě neudělali, nastavte PowerShell tak, aby se spouštěl v počítači. Další informace najdete v tématu [instalace a konfigurace PowerShellu](/powershell/azure/overview). Můžete si také projít celý seznam rutin Azure Monitor PowerShellu na [Azure monitor (Insights) rutiny](https://docs.microsoft.com/powershell/module/az.applicationinsights).
+1. Pokud jste to ještě neudělali, nastavte PowerShell tak, aby se spouštěl v počítači. Další informace najdete v tématu [instalace a konfigurace PowerShellu](/powershell/azure/). Můžete si také projít celý seznam rutin Azure Monitor PowerShellu na [Azure monitor (Insights) rutiny](/powershell/module/az.applicationinsights).
 
 2. Nejdřív se přihlaste ke svému předplatnému Azure.
 

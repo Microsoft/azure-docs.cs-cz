@@ -2,13 +2,13 @@
 title: Nastavení služby QnA Maker – QnA Maker
 description: Než budete moct vytvořit QnA Maker znalostní báze, musíte nejdřív nastavit službu QnA Maker v Azure. Každý, kdo má oprávnění k vytváření nových prostředků v předplatném, může nastavit službu QnA Maker.
 ms.topic: conceptual
-ms.date: 05/28/2020
-ms.openlocfilehash: 0a1b79c91e4e1bd9a57d6dcbb38432125573b9e6
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.date: 07/13/2020
+ms.openlocfilehash: 7ba8134f58a4f0e4e26a3246a44574df295e3c20
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214124"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040381"
 ---
 # <a name="manage-qna-maker-resources"></a>Správa prostředků QnA Maker
 
@@ -62,7 +62,7 @@ Tento postup slouží k vytvoření prostředků Azure potřebných ke správě 
 
 ## <a name="find-authoring-keys-in-the-azure-portal"></a>Hledání klíčů pro vytváření Azure Portal
 
-Klíče pro vytváření obsahu můžete zobrazit a obnovit z Azure Portal, kde jste vytvořili prostředek QnA Maker. Tyto klíče mohou být označovány jako klíče předplatného. 
+Klíče pro vytváření obsahu můžete zobrazit a obnovit z Azure Portal, kde jste vytvořili prostředek QnA Maker. Tyto klíče mohou být označovány jako klíče předplatného.
 
 1. V Azure Portal otevřete prostředek QnA Maker a vyberte prostředek, který má typ _Cognitive Services_ :
 
@@ -90,7 +90,11 @@ Klíče koncového bodu je možné spravovat z [portálu QnA maker](https://qnam
     >[!NOTE]
     >Pokud si myslíte, že jsou vaše klíče ohrožené, aktualizujte je. To může vyžadovat odpovídající změny vaší klientské aplikace nebo kódu bot.
 
-## <a name="upgrade-qna-maker-sku"></a>Aktualizace QnA Maker SKU
+### <a name="update-the-resources"></a>Aktualizace prostředků
+
+Přečtěte si, jak upgradovat prostředky používané ve znalostní bázi.
+
+### <a name="upgrade-qna-maker-sku"></a>Aktualizace QnA Maker SKU
 
 Pokud chcete mít ve znalostní bázi více otázek a odpovědí mimo aktuální úroveň, upgradujte svou cenovou úroveň služby QnA Maker.
 
@@ -104,7 +108,7 @@ Postup při upgradu SKU QnA Maker Management:
 
     ![Ceny QnA Maker](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-pricing-page.png)
 
-## <a name="upgrade-app-service"></a>App Service upgradu
+### <a name="upgrade-app-service"></a>App Service upgradu
 
  Pokud vaše znalostní báze potřebuje k poskytování více požadavků z klientské aplikace, upgradujte si App Service cenovou úroveň.
 
@@ -114,11 +118,11 @@ V Azure Portal klikněte na prostředek App Service a podle potřeby vyberte mo�
 
 ![Škálování QnA Maker App Service](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
 
-## <a name="upgrade-the-azure-cognitive-search-service"></a>Upgrade služby Azure Kognitivní hledání
+### <a name="upgrade-the-azure-cognitive-search-service"></a>Upgrade služby Azure Kognitivní hledání
 
 Pokud máte v úmyslu mít spoustu znalostní báze, upgradujte si cenovou úroveň služby Azure Kognitivní hledání.
 
-V současné době nemůžete provést místní upgrade SKU služby Azure Search. Můžete ale vytvořit nový prostředek služby Azure Search s požadovanou skladovou jednotkou, obnovit data do nového prostředku a pak ho propojit s QnA Makerm zásobníkem. Postupujte přitom takto:
+V současné době nemůžete provést místní upgrade SKU služby Azure Search. Můžete ale vytvořit nový prostředek služby Azure Search s požadovanou skladovou jednotkou, obnovit data do nového prostředku a pak ho propojit s QnA Makerm zásobníkem. Postupujte takto:
 
 1. Vytvořte nový prostředek Azure Search v Azure Portal a vyberte požadovanou SKU.
 
@@ -163,7 +167,11 @@ Aktuální verzi můžete zjistit na adrese https://www.qnamaker.ai/UserSettings
 
     ![Restartování instance App Service Qnamakerem](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
 
-## <a name="configure-qna-maker-to-use-different-cognitive-search-resource"></a>Konfigurace QnA Maker pro použití jiného prostředku Kognitivní hledání
+## <a name="cognitive-search-consideration"></a>Kognitivní hledání posouzení
+
+Kognitivní hledání, jako samostatný prostředek, má několik různých konfigurací, o kterých byste měli vědět.
+
+### <a name="configure-qna-maker-to-use-different-cognitive-search-resource"></a>Konfigurace QnA Maker pro použití jiného prostředku Kognitivní hledání
 
 Pokud vytvoříte službu QnA a její závislosti (například vyhledávání) prostřednictvím portálu, vytvoří se vyhledávací služba pro vás a bude propojena s QnA Makerovou službou. Po vytvoření těchto prostředků můžete aktualizovat nastavení App Service tak, aby používalo dříve existující vyhledávací službu, a odebrat tu, kterou jste právě vytvořili.
 
@@ -192,13 +200,41 @@ Pokud vytváříte službu QnA prostřednictvím šablon Azure Resource Manager,
 
 Přečtěte si další informace o tom, jak nakonfigurovat App Service [nastavení aplikace](../../../app-service/configure-common.md#configure-app-settings).
 
+### <a name="configuring-cognitive-search-as-a-private-endpoint-inside-a-vnet"></a>Konfigurace Kognitivní hledání privátního koncového bodu v rámci virtuální sítě
+
+Když se vytvoří instance hledání během vytváření prostředku QnA Maker, můžete vynutit Kognitivní hledání pro podporu konfigurace privátního koncového bodu, která se zcela vytvořila v rámci virtuální sítě zákazníka.
+
+Pro použití privátního koncového bodu musí být všechny prostředky vytvořeny ve stejné oblasti.
+
+* Prostředek QnA Maker
+* nový prostředek Kognitivní hledání
+* nový prostředek Virtual Network
+
+V [Azure Portal](https://portal.azure.com)proveďte následující kroky:
+
+1. Vytvořte [prostředek QnA maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker).
+1. Vytvořte nový prostředek Kognitivní hledání s možností připojení koncových bodů (data) nastavenou na _Private_. Vytvořte prostředek ve stejné oblasti, jako je QnA Maker prostředek vytvořený v kroku 1. Přečtěte si další informace o [vytvoření prostředku kognitivní hledání](../../../search/search-create-service-portal.md)a pak použijte tento odkaz k přechodu přímo na [stránku vytváření prostředku](https://ms.portal.azure.com/#create/Microsoft.Search).
+1. Vytvořte nový [prostředek Virtual Network](https://ms.portal.azure.com/#create/Microsoft.VirtualNetwork-ARM).
+1. Nakonfigurujte virtuální síť u prostředku služby App Service vytvořeného v kroku 1 tohoto postupu.
+    1. Vytvořte novou položku DNS ve virtuální síti pro nový prostředek Kognitivní hledání vytvořený v kroku 2. do Kognitivní hledání IP adresa.
+1. [Přidružte službu App Service k novému kognitivní hledání prostředku](#configure-qna-maker-to-use-different-cognitive-search-resource) vytvořenému v kroku 2. Pak můžete odstranit původní prostředek Kognitivní hledání vytvořený v kroku 1.
+
+Na [portálu QnA maker](https://www.qnamaker.ai/)vytvořte svou první znalostní bázi.
+
+
+### <a name="inactivity-policy-for-free-search-resources"></a>Zásady nečinnosti pro bezplatné vyhledávání prostředků
+
+Pokud nepoužíváte prostředek QnA maker, měli byste odebrat všechny prostředky. Pokud nepoužijete žádné nepoužívané prostředky, vaše znalostní báze přestane fungovat, pokud jste vytvořili prostředek pro vyhledávání.
+
+Bezplatné prostředky vyhledávání se odstraní po 90 dnech bez přijetí volání rozhraní API.
+
 ## <a name="configure-app-service-idle-setting-to-avoid-timeout"></a>Nakonfigurujte nastavení nečinné služby App Service tak, aby nevypršel časový limit.
 
-Služba App Service, která slouží jako modul runtime předpovědi QnA Maker pro publikovanou znalostní bázi, má konfiguraci časového limitu nečinnosti, která automaticky nastaví časový limit, pokud je služba nečinná. V případě QnA Maker to znamená, že rozhraní API pro generateAnswer prostředí předplatného občas vyprší časový limit po obdobích bez provozu.
+Služba App Service, která slouží jako modul runtime předpovědi QnA Maker pro publikovanou znalostní bázi, má konfiguraci časového limitu nečinnosti, při které se výchozí hodnota automaticky vyprší, pokud je služba nečinná. V případě QnA Maker to znamená, že rozhraní API pro generateAnswer prostředí předplatného občas vyprší časový limit po obdobích bez provozu.
 
 Aby se zajistilo, že se aplikace koncového bodu předpovědi načetla i v případě, že nedochází k provozu, nastavte nečinné na Always On.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
 1. Vyhledejte a vyberte službu App Service prostředku QnA Maker. Bude mít stejný název jako prostředek QnA Maker, ale bude mít jiný **typ** App Service.
 1. Najděte **Nastavení** a pak vyberte **Konfigurace**.
 1. V podokně Konfigurace vyberte **Obecná nastavení**a pak najít **vždycky zapnuto** **a jako hodnotu** vyberte.
@@ -210,11 +246,21 @@ Aby se zajistilo, že se aplikace koncového bodu předpovědi načetla i v př�
 1. Zobrazí se dotaz, jestli chcete aplikaci restartovat, aby používala nové nastavení. Vyberte **Pokračovat**.
 
 Přečtěte si další informace o tom, jak nakonfigurovat App Service [Obecná nastavení](../../../app-service/configure-common.md#configure-general-settings).
-## <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>Konfigurace App Service Environment pro hostování QNA maker App Service
+
+## <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>Konfigurace App Service Environment pro hostování QnA Maker App Service
 App Service Environment lze použít k hostování služby QnA Maker App Service. Pokud je App Service Environment interní, je nutné provést následující kroky:
 1. Vytvořte službu App Service a službu Azure Search.
-2. Vystavte službu App Service na veřejném DNS a seznamu povolených QnA Maker značky služby: CognitiveServicesManagement nebo zachovejte Internet.
-3. Vytvořte instanci služby QnA Maker rozpoznávání (Microsoft. Cognitiveservices Account/Accounts) pomocí Azure Resource Manager, kde QnA Maker koncový bod by měl být nastaven na App Service Environment. 
+2. Vystavte službu App Service a povolte QnA Maker dostupnost jako:
+    * Veřejně dostupné – výchozí
+    * Značka služby DNS:
+        * `CognitiveServicesManagement`
+    * IP adresy přidružené k QnA Maker jsou:
+        * 13.91.138.229
+        * 40.88.22.25
+        * 13.86.184.142
+        * 20.185.105.28
+        * 13.86.178.10
+1. Vytvořte instanci služby QnA Maker rozpoznávání (Microsoft. Cognitiveservices Account/Accounts) pomocí Azure Resource Manager, kde QnA Maker koncový bod by měl být nastaven na App Service Environment.
 
 ## <a name="business-continuity-with-traffic-manager"></a>Kontinuita podnikových aplikací pomocí Traffic Manageru
 

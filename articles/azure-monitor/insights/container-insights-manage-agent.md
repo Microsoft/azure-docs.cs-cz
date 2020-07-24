@@ -2,13 +2,13 @@
 title: Jak spravovat agenta Azure Monitor for Containers | Microsoft Docs
 description: Tento článek popisuje, jak spravovat nejběžnější úlohy údržby pomocí kontejnerového Log Analyticsho agenta používaného Azure Monitor for Containers.
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: fc5bc0d60cb4ef1e375a997cbb3fe4bd2aed3235
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/21/2020
+ms.openlocfilehash: 1a397dbc5ebc4952b09c504b70df6ad99c00b216
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107406"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041270"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>Správa Azure Monitor pro agenta kontejnerů
 
@@ -30,31 +30,12 @@ Proces upgradu agenta v clusterech AKS se skládá ze dvou přímých kroků. Pr
 
 Chcete-li nainstalovat novou verzi agenta, postupujte podle kroků popsaných v tématu [povolení monitorování pomocí rozhraní příkazového řádku Azure CLI](container-insights-enable-new-cluster.md#enable-using-azure-cli)k dokončení tohoto procesu.  
 
-Po opětovném povolení monitorování může trvat přibližně 15 minut, než budete moct zobrazit aktualizované metriky stavu pro cluster. Pokud chcete ověřit, jestli se agent úspěšně Upgradoval, spusťte příkaz:`kubectl logs omsagent-484hw --namespace=kube-system`
+Po opětovném povolení monitorování může trvat přibližně 15 minut, než budete moct zobrazit aktualizované metriky stavu pro cluster. Pokud chcete ověřit, jestli se agent úspěšně Upgradoval, můžete:
 
-Stav by měl vypadat podobně jako v následujícím příkladu, kde hodnota pro *OMI* a *omsagent* by měla odpovídat nejnovější verzi zadané v [historii vydání verze agenta](https://github.com/microsoft/docker-provider/tree/ci_feature_prod).  
+* Spusťte příkaz: `kubectl get pod <omsagent-pod-name> -n kube-system -o=jsonpath='{.spec.containers[0].image}'` . Ve vráceném stavu si všimněte hodnoty v části **Image** pro omsagent v oddílu *Containers* výstupu.
+* Na kartě **uzly** vyberte uzel clusteru a v podokně **vlastnosti** napravo si poznamenejte hodnotu v části **značka image agenta**.
 
-```console
-User@aksuser:~$ kubectl logs omsagent-484hw --namespace=kube-system
-:
-:
-instance of Container_HostInventory
-{
-    [Key] InstanceID=3a4407a5-d840-4c59-b2f0-8d42e07298c2
-    Computer=aks-nodepool1-39773055-0
-    DockerVersion=1.13.1
-    OperatingSystem=Ubuntu 16.04.3 LTS
-    Volume=local
-    Network=bridge host macvlan null overlay
-    NodeRole=Not Orchestrated
-    OrchestratorType=Kubernetes
-}
-Primary Workspace: b438b4f6-912a-46d5-9cb1-b44069212abc
-Status: Onboarded(OMSAgent Running)
-omi 1.4.2.5
-omsagent 1.6.0-163
-docker-cimprov 1.0.0.31
-```
+Zobrazená verze agenta by měla odpovídat nejnovější verzi uvedené na stránce [Historie verzí](https://github.com/microsoft/docker-provider/tree/ci_feature_prod) .
 
 ### <a name="upgrade-agent-on-hybrid-kubernetes-cluster"></a>Upgrade agenta na hybridním clusteru Kubernetes
 

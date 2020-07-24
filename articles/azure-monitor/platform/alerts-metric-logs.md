@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.subservice: alerts
-ms.openlocfilehash: 4c9998488013ce89b17a30a6c3948a02407d06bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53ea43213a48cb712eb6ce685f03b733b83948b1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945320"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045537"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Vytváření upozornění na metriky pro protokoly v Azure Monitor
 
@@ -68,10 +68,10 @@ Podrobné informace a ukázky – viz [vytváření a Správa upozornění na me
 - Signál vybraný pro výstrahu metriky pro vybraný *Log Analytics pracovní prostor* je typu **metrika** .
 - Filtrovat konkrétní podmínky nebo prostředek pomocí filtrů dimenzí; metriky pro protokoly jsou multidimenzionální
 - Při konfiguraci *logiky signálu*se dá vytvořit jedna výstraha pro rozsah více hodnot dimenze (například počítač).
-- Pokud **nepoužíváte** Azure Portal k vytvoření upozornění na metriku pro vybraný *pracovní prostor Log Analytics*; Uživatel pak musí ručně vytvořit explicitní pravidlo pro převod dat protokolu do metriky pomocí [naplánovaných pravidel dotazu Azure monitor](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules).
+- Pokud **nepoužíváte** Azure Portal k vytvoření upozornění na metriku pro vybraný *pracovní prostor Log Analytics*; Uživatel pak musí ručně vytvořit explicitní pravidlo pro převod dat protokolu do metriky pomocí [naplánovaných pravidel dotazu Azure monitor](/rest/api/monitor/scheduledqueryrules).
 
 > [!NOTE]
-> Při vytváření upozornění na metriku pro Log Analytics pracovní prostor prostřednictvím pravidla Azure Portal, které slouží k převodu dat protokolu do metriky prostřednictvím [Azure monitor-plánovaná pravidla dotazování](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) se automaticky vytvoří na pozadí *bez nutnosti zásahu uživatele nebo akce*. Upozornění na metriku pro vytváření protokolů pomocí jiných prostředků než Azure Portal najdete v části [Šablona prostředků pro výstrahy metriky pro protokoly](#resource-template-for-metric-alerts-for-logs) o vzorech, které se týkají vytvoření protokolu založeného na ScheduledQueryRule do pravidla převodu metriky před vytvořením upozornění na metriku – jinak nebudou pro výstrahu metriky vytvořené protokoly k dispozici žádná data.
+> Při vytváření upozornění na metriku pro Log Analytics pracovní prostor prostřednictvím pravidla Azure Portal, které slouží k převodu dat protokolu do metriky prostřednictvím [Azure monitor-plánovaná pravidla dotazování](/rest/api/monitor/scheduledqueryrules) se automaticky vytvoří na pozadí *bez nutnosti zásahu uživatele nebo akce*. Upozornění na metriku pro vytváření protokolů pomocí jiných prostředků než Azure Portal najdete v části [Šablona prostředků pro výstrahy metriky pro protokoly](#resource-template-for-metric-alerts-for-logs) o vzorech, které se týkají vytvoření protokolu založeného na ScheduledQueryRule do pravidla převodu metriky před vytvořením upozornění na metriku – jinak nebudou pro výstrahu metriky vytvořené protokoly k dispozici žádná data.
 
 ## <a name="resource-template-for-metric-alerts-for-logs"></a>Šablona prostředků pro výstrahy metriky pro protokoly
 

@@ -6,11 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5d775e876a0cce1ba13964d6d4777307a34fdf3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4481e62fb15b5ec21b48deb00f1438abf01aa27a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797910"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041463"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Analýza dopadu pomocí Application Insights
 
@@ -79,10 +80,10 @@ Způsob, jakým se nakonec počítá dopad, se liší podle toho, jestli analyzu
 
 ## <a name="next-steps"></a>Další kroky
 
-- Chcete-li povolit prostředí používání, začněte odesílat [vlastní události](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) nebo [zobrazení stránek](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
+- Chcete-li povolit prostředí používání, začněte odesílat [vlastní události](./api-custom-events-metrics.md#trackevent) nebo [zobrazení stránek](./api-custom-events-metrics.md#page-views).
 - Pokud jste už odeslali vlastní události nebo zobrazení stránky, prozkoumejte nástroje využití a zjistěte, jak uživatelé používají vaši službu.
     - [Trychtýře](usage-funnels.md)
     - [Uchovávání](usage-retention.md)
     - [Toky uživatele](usage-flows.md)
-    - [Workbooks](../../azure-monitor/platform/workbooks-overview.md)
+    - [Sešity](../../azure-monitor/platform/workbooks-overview.md)
     - [Přidat kontext uživatele](usage-send-user-context.md)

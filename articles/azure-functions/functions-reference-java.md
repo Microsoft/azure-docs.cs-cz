@@ -3,20 +3,26 @@ title: Referenční dokumentace pro vývojáře v jazyce Java pro Azure Function
 description: Naučte se vyvíjet funkce pomocí Java.
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 339615ac99f231fd293a7ea15c853d43da8f998a
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: f1c2c3a3b6c28813cc9ecd9eb794e26e1e60d5e2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057598"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041531"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions příručka pro vývojáře Java
 
-Modul runtime Azure Functions podporuje [jazyk Java se 8 LTS (Zulu 8.31.0.2-JRE 8.0.181-win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/). Tato příručka obsahuje informace o složitými rozhraními psaní Azure Functions pomocí jazyka Java.
+Tato příručka obsahuje podrobné informace, které vám pomůžou úspěšně vyvíjet Azure Functions pomocí jazyka Java.
 
-Vzhledem k tomu, že se jedná o jiné jazyky, Function App může mít jednu nebo více funkcí. Funkce jazyka Java je `public` Metoda upravená s poznámkou `@FunctionName` . Tato metoda definuje položku pro funkci jazyka Java a musí být v určitém balíčku jedinečná. Jeden Function App napsaný v jazyce Java může mít více tříd s více veřejnými metodami, které jsou opatřeny poznámkami `@FunctionName` .
+Pokud se Azure Functions vývojářům v jazyce Java, zvažte prosím, že si nejdřív přečtete jeden z následujících článků:
 
-V tomto článku se předpokládá, že už jste si přečetli [Azure Functions referenci pro vývojáře](functions-reference.md). Měli byste také provést jednu z následujících funkcí rychlý Start: [Vytvoření první funkce jazyka Java pomocí Visual Studio Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java) nebo [Vytvoření první funkce jazyka Java z příkazového řádku pomocí Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java).
+| Začínáme | Koncepty| 
+| -- | -- |  
+| <ul><li>[Funkce jazyka Java pomocí Visual Studio Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)</li><li>[Funkce Java/Maven s terminálem nebo příkazovým řádkem](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)</li><li>[Funkce jazyka Java s použitím Gradle](functions-create-first-java-gradle.md)</li><li>[Funkce jazyka Java pomocí zatmění](functions-create-maven-eclipse.md)</li><li>[Funkce jazyka Java využívající IntelliJ nápad](functions-create-maven-intellij.md)</li></ul> | <ul><li>[Příručka pro vývojáře](functions-reference.md)</li><li>[Možnosti hostování](functions-scale.md)</li><li>[Požadavky na výkon &nbsp;](functions-best-practices.md)</li></ul> |
+
+## <a name="java-function-basics"></a>Základní informace o funkcích jazyka Java
+
+Funkce jazyka Java je `public` Metoda upravená s poznámkou `@FunctionName` . Tato metoda definuje položku pro funkci jazyka Java a musí být v určitém balíčku jedinečná. Balíček může obsahovat více tříd s více veřejnými metodami, které jsou poznámy s `@FunctionName` . Jeden balíček se nasadí do aplikace Function App v Azure. Při spuštění v Azure poskytuje Function App kontext nasazení, spuštění a správy pro jednotlivé funkce jazyka Java.
 
 ## <a name="programming-model"></a>Programovací model 
 
@@ -48,7 +54,7 @@ mvn archetype:generate \
     -DarchetypeArtifactId=azure-functions-archetype 
 ```
 
-Pokud chcete začít s tímto Archetype, přečtěte si [rychlý Start Java](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java). 
+Pokud chcete začít s tímto Archetype, přečtěte si [rychlý Start Java](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java). 
 
 ## <a name="folder-structure"></a>Struktura složek
 
@@ -87,7 +93,7 @@ Do projektu lze umístit více než jednu funkci. Vyhněte se vkládání funkc�
 Použijte poznámky Java obsažené v balíčku [com. Microsoft. Azure. Functions. Annotation. *](/java/api/com.microsoft.azure.functions.annotation) pro svázání vstupu a výstupů s vašimi metodami. Další informace najdete v [referenční dokumentaci Java](/java/api/com.microsoft.azure.functions.annotation).
 
 > [!IMPORTANT] 
-> Musíte nakonfigurovat účet Azure Storage v [local.settings.jsna](/azure/azure-functions/functions-run-local#local-settings-file) pro spuštění služby Azure Blob Storage, úložiště Azure Queue Storage nebo služby Azure Table Storage místně.
+> Musíte nakonfigurovat účet Azure Storage v [local.settings.jsna](./functions-run-local.md#local-settings-file) pro spuštění služby Azure Blob Storage, úložiště Azure Queue Storage nebo služby Azure Table Storage místně.
 
 Příklad:
 
@@ -125,9 +131,58 @@ Tady je vygenerovaný odpovídající modul `function.json` [Azure-Functions-Mav
 
 ```
 
+## <a name="java-versions"></a>Verze Java
+
+_Podpora pro Java 11 je momentálně ve verzi Preview._
+
+Verze Java, která se používá při vytváření aplikace Function App, na které běží funkce v Azure, je určená v souboru pom.xml. Maven Archetype aktuálně generuje pom.xml pro jazyk Java 8, kterou můžete před publikováním změnit. Verze Java v pom.xml by měla odpovídat verzi, ve které jste svou aplikaci místně vyvinuli a otestovali. 
+
+### <a name="supported-versions"></a>Podporované verze
+
+V následující tabulce jsou uvedeny aktuální podporované verze jazyka Java pro každou hlavní verzi modulu runtime funkcí podle operačního systému:
+
+| Verze funkcí | Verze Java (Windows) | Verze Java (Linux) |
+| ----- | ----- | --- |
+| 3.x | 11 (Preview)<br/>8<sup>\*</sup> | 11 (Preview)<br/>8 |
+| 2.x | 8 | Není k dispozici |
+
+<sup>\*</sup>Toto je aktuální výchozí nastavení pom.xml generovaného archetypeem Maven.
+
+### <a name="specify-the-deployment-version"></a>Zadat verzi nasazení
+
+V současné době Maven Archetype vygeneruje pom.xml, která cílí na Java 8. Následující prvky v pom.xml je třeba aktualizovat, aby se vytvořila aplikace Function App, která spouští Java 11.
+
+| Prvek |  Hodnota Java 8 | Hodnota Java 11 | Popis |
+| ---- | ---- | ---- | --- |
+| **`Java.version`** | 1.8 | 11 | Verze jazyka Java, kterou používá modul Maven-Compiler-plugin. |
+| **`JavaVersion`** | 8 | 11 | Verze Java hostovaná aplikací Function App v Azure |
+
+Následující příklady znázorňují nastavení pro jazyk Java 8 v příslušných částech souboru pom.xml:
+
+#### `Java.version`
+:::code language="xml" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/pom.xml" range="12-19" highlight="14":::
+
+#### `JavaVersion`
+:::code language="xml" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/pom.xml" range="77-85" highlight="80":::
+
+> [!IMPORTANT]
+> Musíte mít správně nastavenou proměnnou prostředí JAVA_HOME do adresáře JDK, který se používá při kompilaci kódu pomocí Maven. Ujistěte se, že je verze JDK alespoň tak vysoká jako `Java.version` nastavení. 
+
+### <a name="specify-the-deployment-os"></a>Zadejte operační systém nasazení
+
+Maven také umožňuje určit operační systém, na kterém běží aplikace Function App v Azure. Pomocí `os` elementu vyberte operační systém. 
+
+| Prvek |  Windows | Linux | Docker |
+| ---- | ---- | ---- | --- |
+| **`os`** | Windows | Linux | Dockeru |
+
+Následující příklad ukazuje nastavení operačního systému v `runtime` části souboru pom.xml:
+
+:::code language="xml" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/pom.xml" range="77-85" highlight="79":::
+ 
 ## <a name="jdk-runtime-availability-and-support"></a>Dostupnost a podpora modulu runtime JDK 
 
-Pro místní vývoj aplikací funkcí Java Stáhněte a použijte [Azul Zulu Enterprise pro Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) Java 8 sady JDK ze [systémů Azul](https://www.azul.com/downloads/azure-only/zulu/). Při nasazení aplikací Function App do cloudu používá Azure Functions Azul Java 8 JDK runtime.
+Pro místní vývoj aplikací funkcí Java Stáhněte a použijte odpovídající [Azul Zulu Enterprise pro Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) Java sady JDK ze [systémů Azul](https://www.azul.com/downloads/azure-only/zulu/). Azure Functions používá modul runtime Java JDK Azul při nasazení aplikace Function App do cloudu.
 
 [Podpora Azure](https://azure.microsoft.com/support/) pro problémy s aplikacemi sady JDK a Functions je dostupná s [kvalifikovaným plánem podpory](https://azure.microsoft.com/support/plans/).
 
@@ -146,7 +201,7 @@ Další argumenty můžete zadat v nastavení aplikace s názvem `JAVA_OPTS` . D
 > [!IMPORTANT]  
 > V plánu spotřeby musíte také přidat nastavení WEBSITE_USE_PLACEHOLDER s hodnotou 0, aby přizpůsobení fungovalo. Toto nastavení zvyšuje dobu studeného startu pro funkce jazyka Java.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 
 V [Azure Portal](https://portal.azure.com)přidejte nastavení pomocí [karty nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings) `JAVA_OPTS` .
 
@@ -334,7 +389,7 @@ Tuto funkci jste vyvolali na HttpRequest. Zapisuje do fronty úložiště více 
 
 ## <a name="metadata"></a>Metadata
 
-Několik triggerů odesílá [metadata triggeru](/azure/azure-functions/functions-triggers-bindings) spolu se vstupními daty. K `@BindingName` navázání aktivačních metadat můžete použít poznámku.
+Několik triggerů odesílá [metadata triggeru](./functions-triggers-bindings.md) spolu se vstupními daty. K `@BindingName` navázání aktivačních metadat můžete použít poznámku.
 
 
 ```Java

@@ -7,11 +7,12 @@ ms.topic: article
 ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: fd1ffc8636e11ca20bc32b4b6f600e03d923d8b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9bfd601642ff9d6b5b5c5a1c2c508d1821e19c7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83125804"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042183"
 ---
 # <a name="use-an-app-service-environment"></a>Použití prostředí App Service Environment
 
@@ -164,7 +165,7 @@ Koncové body pro publikování pro aplikace ve službě ASE s interním nástro
 
 Pomocného programu má 1 TB úložiště pro všechny aplikace v pomocném formuláři. Plán App Service v izolované cenové SKU má limit 250 GB. V rámci pomocného mechanismu se 250 GB úložiště přidají za App Service plánu až do velikosti 1 TB. Můžete mít více App Service plánů než jenom čtyři, ale za omezení 1 TB se nepřidalo žádné další úložiště.
 
-## <a name="logging"></a>protokolování
+## <a name="logging"></a>Protokolování
 
 Pomocí Azure Monitor můžete integrovat své pomocného mechanismu pro odesílání protokolů o pomocném programu do Azure Storage, Azure Event Hubs nebo Log Analytics. Tyto položky jsou protokolovány Dnes:
 
@@ -250,6 +251,30 @@ Postup odstranění pomocného mechanismu řízení:
     ![Odstranění pomocného mechanismu][3]
 
 1. Vyberte **OK**.
+
+## <a name="ase-cli"></a>ROZHRANÍ PŘÍKAZOVÉHO ŘÁDKU
+
+Existují možnosti příkazového řádku pro správu do pomocného mechanismu služby.  Příkazy AZ CLI jsou uvedeny níže.
+
+```azurecli
+C:\>az appservice ase --help
+
+Group
+    az appservice ase : Manage App Service Environments v2.
+        This command group is in preview. It may be changed/removed in a future release.
+Commands:
+    create         : Create app service environment.
+    delete         : Delete app service environment.
+    list           : List app service environments.
+    list-addresses : List VIPs associated with an app service environment.
+    list-plans     : List app service plans associated with an app service environment.
+    show           : Show details of an app service environment.
+    update         : Update app service environment.
+
+For more specific examples, use: az find "az appservice ase"
+```
+
+
 
 <!--Image references-->
 [1]: ./media/using_an_app_service_environment/usingase-appcreate.png

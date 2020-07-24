@@ -4,12 +4,12 @@ description: Upozorňuje na neobvyklé změny v rychlosti neúspěšných požad
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: 35c1769672e11cd7d1ec2f628b9d763dc8b90ac3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27cf38a1cfcf8a9f87582ab3e78b48e78f3c63c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254782"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045809"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Inteligentní zjišťování – anomálie selhání
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) vás automaticky upozorní téměř v reálném čase, pokud vaše webová aplikace působí abnormální nárůst frekvence neúspěšných žádostí. Detekuje neobvyklé zvýšení rychlosti požadavků HTTP nebo volání závislostí, která jsou hlášena jako neúspěšná. V případě požadavků mají neúspěšné požadavky obvykle kódy odpovědí 400 nebo vyšší. V podrobnostech výstrahy jsou k dispozici analýzy vlastností selhání a souvisejících dat aplikací, které vám pomůžou při třídění a diagnostikování problému. K dispozici jsou také odkazy na portál Application Insights pro další diagnostiku. Tato funkce nevyžaduje žádné nastavení ani konfiguraci, protože používá algoritmy strojového učení pro předpověď běžné míry selhání.
@@ -61,13 +61,13 @@ Výstrahy spouští náš proprietární algoritmus strojového učení, takže 
 
 ## <a name="configure-alerts"></a>Konfigurace upozornění
 
-Pravidlo výstrahy inteligentního zjišťování můžete zakázat z portálu nebo pomocí Azure Resource Manager ([Viz příklad šablony](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config)).
+Pravidlo výstrahy inteligentního zjišťování můžete zakázat z portálu nebo pomocí Azure Resource Manager ([Viz příklad šablony](./proactive-arm-config.md)).
 
-Toto pravidlo upozornění se vytvoří s přidruženou [skupinou akcí](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) s názvem Application Insights inteligentní zjišťování, která obsahuje akce e-mailu a Webhooku, a dá se rozšířit tak, aby se aktivovaly další akce, když se výstraha aktivuje.
+Toto pravidlo upozornění se vytvoří s přidruženou [skupinou akcí](../platform/action-groups.md) s názvem Application Insights inteligentní zjišťování, která obsahuje akce e-mailu a Webhooku, a dá se rozšířit tak, aby se aktivovaly další akce, když se výstraha aktivuje.
 
 > [!NOTE]
-> E-mailová oznámení odesílaná z tohoto pravidla upozornění se teď posílají ve výchozím nastavení uživatelům přidruženým ke čtenářům monitorování předplatného a k monitorování rolí přispěvatele. Další informace, které jsou k dispozici, [najdete tady](https://docs.microsoft.com/azure/azure-monitor/app/proactive-email-notification).
-> Oznámení odesílaná z tohoto pravidla výstrahy následují po [běžném schématu výstrah](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema).
+> E-mailová oznámení odesílaná z tohoto pravidla upozornění se teď posílají ve výchozím nastavení uživatelům přidruženým ke čtenářům monitorování předplatného a k monitorování rolí přispěvatele. Další informace, které jsou k dispozici, [najdete tady](./proactive-email-notification.md).
+> Oznámení odesílaná z tohoto pravidla výstrahy následují po [běžném schématu výstrah](../platform/alerts-common-schema.md).
 >
 
 Otevřete stránku výstrahy. Pravidla výstrah upozorňující na chyby jsou zahrnuta společně se všemi výstrahami, které jste nastavili ručně, a vidíte, zda je aktuálně ve stavu výstrahy.
@@ -348,7 +348,7 @@ Inteligentní zjišťování anomálií selhání doplňuje jiné podobné, ale 
 
 *Některé výstrahy se týkají známých problémů a nechci je přijímat.*
 
-* Můžete použít funkci potlačení [pravidel akcí výstrah](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-action-rules) .
+* Můžete použít funkci potlačení [pravidel akcí výstrah](../platform/alerts-action-rules.md) .
 
 ## <a name="next-steps"></a>Další kroky
 Tyto diagnostické nástroje vám pomůžou zkontrolovat data z vaší aplikace:

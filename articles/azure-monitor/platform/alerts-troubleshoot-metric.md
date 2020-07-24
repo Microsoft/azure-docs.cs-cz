@@ -4,14 +4,14 @@ description: Běžné problémy se Azure Monitor výstrahami metrik a možnými 
 author: harelbr
 ms.author: harelbr
 ms.topic: reference
-ms.date: 07/15/2020
+ms.date: 07/21/2020
 ms.subservice: alerts
-ms.openlocfilehash: 0d569facb6c2b58222980cfa1488de3b1f5fb60f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 98cd7a4d31f4d7053426f44dd02a876759688cc7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515763"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045230"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Řešení potíží s výstrahami Azure Monitor metriky 
 
@@ -32,7 +32,7 @@ Pokud se domníváte, že výstraha metriky by měla být aktivována, ale nenar
 
 2. **Aktivováno, ale žádné oznámení** – Projděte si seznam aktivovaných [výstrah](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2) , abyste viděli, jestli můžete najít aktivované upozornění. Pokud se v seznamu zobrazí výstraha, ale došlo k potížím s některými jeho akcemi nebo oznámeními, přečtěte si [zde](./alerts-troubleshoot.md#action-or-notification-on-my-alert-did-not-work-as-expected)Další informace.
 
-3. **Již aktivní** – ověřte, zda již není aktivována výstraha v časové řadě metriky, pro kterou jste očekávali upozornění. Výstrahy metriky jsou stavové výstrahy, což znamená, že jakmile se výstraha aktivuje na konkrétní časové řadě metriky, neprojeví se další výstrahy v této časové řadě, dokud nebude problém nepozorovaný. Tato volba návrhu snižuje šum. Výstraha je vyřešena automaticky, pokud není splněna podmínka upozornění pro tři po sobě jdoucí hodnocení.
+3. **Již aktivní** – ověřte, zda již není aktivována výstraha v časové řadě metriky, pro kterou jste očekávali upozornění. Upozornění metrik jsou stavová, to znamená, že po aktivaci upozornění pro konkrétní časovou řadu metrik se další upozornění pro stejnou časovou řadu neaktivují, dokud nepřestane docházet k problému. Tato volba návrhu snižuje šum. Výstraha je vyřešena automaticky, pokud není splněna podmínka upozornění pro tři po sobě jdoucí hodnocení.
 
 4. **Použité dimenze** – Pokud jste vybrali některé [hodnoty dimenzí metriky](./alerts-metric-overview.md#using-dimensions), pravidlo výstrahy monitoruje každou jednotlivou časovou řadu metrik (definovanou kombinací hodnot dimenzí) pro porušení prahové hodnoty. Chcete-li také monitorovat agregovanou časovou řadu metrik (bez vybraných dimenzí), nakonfigurujte další pravidlo výstrahy pro metriku bez výběru dimenzí.
 
@@ -47,7 +47,7 @@ Pokud se domníváte, že výstraha o metrikě by neměla být aktivována, ale 
 1. Zkontrolujte seznam aktivovaných [výstrah](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2) a vyhledejte aktivované upozornění a kliknutím zobrazíte jeho podrobnosti. Projděte si informace uvedené v části **Proč se tato výstraha aktivuje?** Pokud chcete zobrazit graf metriky, **hodnotu metriky**a **prahovou hodnotu** v době, kdy byla výstraha aktivována.
 
     > [!NOTE] 
-    > Pokud používáte typ podmínky Dynamické prahové hodnoty a myslíte si, že použité prahové hodnoty nebyly správné, pomocí ikony zamračeného smajlíka nám poskytněte zpětnou vazbu. Tato zpětná vazba bude mít vliv na algoritmus Machine Learning algorithming a pomůže vám zlepšit budoucí zjišťování.
+    > Pokud používáte typ podmínky dynamického prahového hodnoty a myslíme na to, že použité prahové hodnoty nejsou správné, poskytněte prosím zpětnou vazbu pomocí ikony zamračení. Tato zpětná vazba bude mít vliv na algoritmus Machine Learning algorithming a pomůže vám zlepšit budoucí zjišťování.
 
 2. Pokud jste pro metriku vybrali více hodnot dimenzí, bude tato výstraha aktivována, pokud **kterákoli** z časových řad metriky (definovaná kombinací hodnot dimenzí) nedodržuje prahovou hodnotu. Další informace o používání dimenzí v upozorněních metrik najdete [tady](./alerts-metric-overview.md#using-dimensions).
 
@@ -67,7 +67,7 @@ Pokud se domníváte, že výstraha o metrikě by neměla být aktivována, ale 
 
 ## <a name="cant-find-the-metric-to-alert-on---virtual-machines-guest-metrics"></a>Nejde najít metriku pro upozornění na metriky hosta virtuálních počítačů.
 
-Pokud chcete upozornit na metriky virtuálních počítačů hostovaného operačního systému (třeba paměť, místo na disku), ujistěte se, že jste nainstalovali požadovaného agenta pro shromáždění těchto dat do Azure Monitor metrik:
+Pokud chcete upozornit na metriky virtuálních počítačů hostovaného operačního systému (například paměť, místo na disku), ujistěte se, že jste nainstalovali potřebného agenta pro shromažďování těchto dat do Azure Monitor metrik:
 - [Pro virtuální počítače s Windows](./collect-custom-metrics-guestos-resource-manager-vm.md)
 - [Pro virtuální počítače s Linuxem](./collect-custom-metrics-linux-telegraf.md)
 
@@ -106,12 +106,35 @@ Výstrahy metriky jsou ve výchozím stavu stav, a proto se další výstrahy ne
 > [!NOTE] 
 > Když se pravidlo upozornění na metriku nevrátí, zaaktivuje se nevyřešené výstrahy, takže i po nesplnění podmínky zůstane aktivované výstrahy v aktivovaném stavu, dokud nebude doba uchování 30 dnů.
 
+## <a name="define-an-alert-rule-on-a-custom-metric-that-isnt-emitted-yet"></a>Definovat pravidlo výstrahy pro vlastní metriku, která ještě nebyla vygenerována
+
+Při vytváření pravidla upozornění na metriky je název metriky ověřený proti [rozhraní API definice metriky](https://docs.microsoft.com/rest/api/monitor/metricdefinitions/list) , aby se zajistilo, že existuje. V některých případech byste chtěli vytvořit pravidlo upozornění pro vlastní metriky, dokonce i před tím, než se vygeneruje. Například při vytváření (pomocí šablony ARM) Application Insights prostředek, který vygeneruje vlastní metriku spolu s pravidlem výstrahy, které monitoruje tuto metriku.
+
+Aby nedošlo k selhání nasazení při pokusu o ověření definice vlastní metriky, můžete použít parametr *skipMetricValidation* v části kritéria pro pravidlo výstrahy, což způsobí přeskočení ověření metriky. Podívejte se na následující příklad, jak použít tento parametr v šabloně ARM (pro vytváření pravidel upozornění metriky v tématu úplné ukázky šablon [ARM).]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)
+
+```json
+"criteria": {
+    "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria",
+        "allOf": [
+            {
+                    "name" : "condition1",
+                        "metricName": "myCustomMetric",
+                "metricNamespace": "myCustomMetricNamespace",
+                        "dimensions":[],
+                        "operator": "GreaterThan",
+                        "threshold" : 10,
+                        "timeAggregation": "Average",
+                    "skipMetricValidation": true
+        }
+              ]
+        }
+```
 
 ## <a name="metric-alert-rules-quota-too-small"></a>Kvóta pravidel upozornění metrik je příliš malá.
 
 Povolený počet pravidel upozornění metrik na předplatné podléhá [omezením kvót](../service-limits.md).
 
-Pokud jste dosáhli limitu kvóty, může vám s řešením tohoto problému pomoct následující postup:
+Pokud jste dosáhli limitu kvóty, může vám tento problém vyřešit následující postup:
 1. Zkuste odstranit nebo zakázat pravidla upozornění na metriky, které už se nepoužívají.
 
 2. Přejděte na používání pravidel upozornění na metriky, která monitorují více prostředků. Díky této funkci může jedno pravidlo výstrahy monitorovat více prostředků pomocí pouze jednoho pravidla výstrahy započítaného na kvótu. Další informace o této možnosti a podporovaných typech prostředků najdete [tady](./alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor).
@@ -133,7 +156,7 @@ Chcete-li zjistit aktuální využití pravidel upozornění metriky, postupujte
 3. Ujistěte se, že nechcete filtrovat konkrétní skupinu prostředků, typ prostředku nebo prostředek.
 4. V ovládacím prvku rozevírací seznam **typ signálu** vyberte **metriky** .
 5. Ověřte, že je v ovládacím prvku rozevírací seznam **stavů** nastavená možnost **povoleno** .
-6. Celkový počet pravidel upozornění metrik se zobrazí nad seznamem pravidel.
+6. Celkový počet pravidel upozornění metrik se zobrazuje nad seznamem pravidel výstrah.
 
 ### <a name="from-api"></a>Pomocí rozhraní API
 
@@ -148,11 +171,11 @@ Pokud dochází k potížím při vytváření, aktualizaci, načítání nebo o
 ### <a name="resource-manager-templates"></a>Šablony Resource Manageru
 
 - Projděte si seznam [běžných chyb nasazení Azure](../../azure-resource-manager/templates/common-deployment-errors.md) a vyřešte případné potíže.
-- V [příkladech výstrahy metriky Azure Resource Manager příklady šablon](./alerts-metric-create-templates.md) , které vám zajistí správné předání všech parametrů.
+- V [příkladech výstrahy metriky Azure Resource Manager příklady šablon](./alerts-metric-create-templates.md) , abyste měli jistotu, že předáváte všechny parametry správně.
 
 ### <a name="rest-api"></a>REST API
 
-Projděte si [příručku k rozhraní REST API](/rest/api/monitor/metricalerts/) a ověřte, že správně předáváte všechny parametry.
+Přečtěte si [průvodce REST API](/rest/api/monitor/metricalerts/) , abyste ověřili, že všechny parametry předáváte správně.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -171,13 +194,13 @@ Ujistěte se, že používáte pro výstrahy metrik správné příkazy rozhran�
 
 ### <a name="general"></a>Obecné
 
-- Pokud se vám zobrazuje chyba `Metric not found`:
+- Pokud se vám zobrazuje `Metric not found` Chyba:
 
    - Metrika platformy: Ujistěte se, že používáte název **metriky** ze [stránky podporované metriky Azure monitor](./metrics-supported.md), a ne jako **Zobrazovaný název metriky** .
 
-   - Vlastní metrika: Ujistěte se, že je metrika už vysílaná (nemůžete vytvořit pravidlo upozornění pro vlastní metriku, která ještě neexistuje) a jestli poskytujete obor názvů vlastní metriky ( [tady](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)najdete příklad šablony ARM).
+   - Vlastní metrika: Ujistěte se, že je metrika už vysílaná (nemůžete vytvořit pravidlo upozornění pro vlastní metriku, která ještě neexistuje) a že poskytujete obor názvů vlastní metriky ( [tady](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)najdete příklad šablony ARM).
 
-- Pokud vytváříte [upozornění na metriky týkající se protokolů](./alerts-metric-logs.md), zkontrolujte, jestli jsou zahrnuté příslušné závislosti. Prohlédněte si [ukázkovou šablonu](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
+- Pokud vytváříte [výstrahy metriky v protokolech](./alerts-metric-logs.md), zajistěte, aby byly zahrnuty příslušné závislosti. Prohlédněte si [ukázkovou šablonu](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
 
 - Pokud vytváříte pravidlo upozornění, které obsahuje více kritérií, pamatujte na následující omezení:
 
@@ -197,7 +220,7 @@ Pokud chcete vytvořit pravidlo upozornění na metriky, musíte mít následuj�
 
 ## <a name="naming-restrictions-for-metric-alert-rules"></a>Omezení pojmenování pro pravidla upozornění na metriky
 
-Pro názvy pravidel upozornění metriky si prosím pamatujte následující omezení:
+Vezměte v úvahu následující omezení pro názvy pravidel upozornění metrik:
 
 - Po vytvoření se názvy pravidel upozornění metriky nedají změnit (Přejmenovat).
 - Názvy pravidel upozornění na metriky musí být v rámci skupiny prostředků jedinečné.
@@ -209,10 +232,10 @@ Pro názvy pravidel upozornění metriky si prosím pamatujte následující ome
 
 Výstrahy metrik podporují upozorňování na multidimenzionální metriky i podporu definující více podmínek (až 5 podmínek na pravidlo výstrahy).
 
-Při použití dimenzí v pravidle výstrahy obsahujícím více podmínek Pamatujte na následující omezení:
-1. V rámci každé podmínky můžete vybrat jenom jednu hodnotu na dimenzi.
-2. Nemůžete použít možnost vybrat všechny aktuální a budoucí hodnoty (vybrat \* ).
-3. Pokud metriky, které jsou konfigurovány v různých podmínkách, podporují stejnou dimenzi, pak musí být nakonfigurovaná hodnota dimenze explicitně nastavena stejným způsobem pro všechny tyto metriky (v příslušných podmínkách).
+Při použití dimenzí v pravidle výstrahy, které obsahuje více podmínek, vezměte v úvahu následující omezení:
+- V rámci každé podmínky můžete vybrat jenom jednu hodnotu na dimenzi.
+- Nemůžete použít možnost vybrat všechny aktuální a budoucí hodnoty (vybrat \* ).
+- Pokud metriky, které jsou konfigurovány v různých podmínkách, podporují stejnou dimenzi, pak musí být nakonfigurovaná hodnota dimenze explicitně nastavena stejným způsobem pro všechny tyto metriky (v příslušných podmínkách).
 Příklad:
     - Vezměte v úvahu pravidlo upozornění metriky, které je definováno v účtu úložiště, a monitorujte dvě podmínky:
         * Celkový počet **transakcí** > 5

@@ -1,6 +1,6 @@
 ---
-title: Interakce se zařízením IoT technologie Plug and Play Preview připojeným k řešení Azure IoT | Microsoft Docs
-description: Pomocí Node. js se můžete připojit k zařízení IoT technologie Plug and Play Preview, které je připojené k řešení Azure IoT, a pracovat s nimi.
+title: Interakce se zařízením IoT technologie Plug and Play Preview připojeným k řešení – Node.js | Microsoft Docs
+description: Pomocí Node.js se můžete připojit k zařízení IoT technologie Plug and Play Preview, které je připojené k řešení Azure IoT, a pracovat s ním.
 author: miagdp
 ms.author: miag
 ms.date: 12/27/2019
@@ -8,22 +8,22 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 9962763e647faddc5a2179f304aeb3fa8ca256e8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7f86ae8ffefa88fe1cdfa429b7de4671422839ff
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75550736"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044010"
 ---
-# <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-nodejs"></a>Rychlý Start: interakce se zařízením IoT technologie Plug and Play ve verzi Preview, které je připojené k vašemu řešení (Node. js)
+# <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-nodejs"></a>Rychlý Start: interakce se zařízením IoT technologie Plug and Play ve verzi Preview, které je připojené k vašemu řešení (Node.js)
 
 [!INCLUDE [iot-pnp-quickstarts-3-selector.md](../../includes/iot-pnp-quickstarts-3-selector.md)]
 
-IoT technologie Plug and Play Preview zjednodušuje IoT tím, že vám umožní pracovat s funkcemi zařízení bez znalosti základní implementace zařízení. V tomto rychlém startu se dozvíte, jak pomocí Node. js připojit a řídit zařízení IoT technologie Plug and Play, které je připojené k vašemu řešení.
+IoT technologie Plug and Play Preview zjednodušuje IoT tím, že vám umožní pracovat s funkcemi zařízení bez znalosti základní implementace zařízení. V tomto rychlém startu se dozvíte, jak pomocí Node.js připojit a řídit zařízení IoT technologie Plug and Play, které je připojené k vašemu řešení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-K dokončení tohoto rychlého startu potřebujete Node. js na svém vývojovém počítači. Nejnovější doporučenou verzi si můžete stáhnout z [NodeJS.org](https://nodejs.org)na víc platforem.
+K dokončení tohoto rychlého startu potřebujete Node.js na svém vývojovém počítači. Nejnovější doporučenou verzi si můžete stáhnout z [NodeJS.org](https://nodejs.org)na víc platforem.
 
 Aktuální verzi Node.js na počítači používaném pro vývoj můžete ověřit pomocí následujícího příkazu:
 
@@ -43,9 +43,9 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 
 ## <a name="run-the-sample-device"></a>Spuštění ukázkového zařízení
 
-V tomto rychlém startu použijete vzorový senzor prostředí, který je napsaný v Node. js jako zařízení IoT technologie Plug and Play. Následující pokyny ukazují, jak nainstalovat a spustit zařízení:
+V tomto rychlém startu použijete vzorový senzor prostředí, který je napsaný v Node.js jako zařízení technologie Plug and Play IoT. Následující pokyny ukazují, jak nainstalovat a spustit zařízení:
 
-1. Otevřete okno terminálu v adresáři dle vašeho výběru. Spuštěním následujícího příkazu naklonujte [ukázky Azure IoT pro úložiště GitHub Node. js](https://github.com/azure-samples/azure-iot-samples-node) do tohoto umístění:
+1. Otevřete okno terminálu v adresáři dle vašeho výběru. Spuštěním následujícího příkazu naklonujte [ukázky Azure IoT pro Node.js](https://github.com/azure-samples/azure-iot-samples-node) úložiště GitHub do tohoto umístění:
 
     ```cmd/sh
     git clone https://github.com/azure-samples/azure-iot-samples-node
@@ -73,7 +73,7 @@ V tomto rychlém startu použijete vzorový senzor prostředí, který je napsan
 
 ## <a name="run-the-sample-solution"></a>Spuštění ukázkového řešení
 
-V tomto rychlém startu použijete k interakci s ukázkovým zařízením ukázkové řešení IoT v Node. js.
+V tomto rychlém startu použijete k interakci s ukázkovým zařízením ukázkové řešení IoT v Node.js.
 
 1. Otevřete další okno terminálu (bude to váš terminál _služby_ ). Přejděte do složky naklonovaného úložiště a přejděte do složky **/Azure-IoT-Samples-Node/Digital-Twins/QuickStarts/Service** . Všechny závislosti Nainstalujte spuštěním následujícího příkazu:
 
@@ -95,7 +95,7 @@ V tomto rychlém startu použijete k interakci s ukázkovým zařízením ukázk
     reported state property as online
     ```
 
-1. Ve složce **/Azure-IoT-Samples-Node/Digital-Twins/QuickStarts/Service** otevřete soubor **get_digital_twin. js**. `<DEVICE_ID_GOES_HERE>` Zástupný symbol nahraďte ID zařízení a uložte soubor.
+1. Ve složce **/Azure-IoT-Samples-Node/Digital-Twins/QuickStarts/Service** otevřete soubor **get_digital_twin.js**. `<DEVICE_ID_GOES_HERE>`Zástupný symbol nahraďte ID zařízení a uložte soubor.
 
 1. Přejděte do terminálu _služby_ a pomocí následujícího příkazu spusťte ukázku pro čtení informací o zařízení:
 
@@ -120,7 +120,7 @@ V tomto rychlém startu použijete k interakci s ukázkovým zařízením ukázk
 
 ### <a name="update-a-writable-property"></a>Aktualizovat vlastnost s možností zápisu
 
-1. Otevřete soubor **update_digital_twin_property. js**.
+1. Otevřete soubor **update_digital_twin_property.js**.
 
 1. Na začátku souboru je k dispozici sada konstant definovaných pomocí zástupných symbolů velkých písmen. Nahraďte `<DEVICE_ID_GOES_HERE>` zástupný text skutečným ID zařízení, aktualizujte zbývající konstanty následujícími hodnotami a uložte soubor:
 
@@ -136,7 +136,7 @@ V tomto rychlém startu použijete k interakci s ukázkovým zařízením ukázk
     node update_digital_twin_property.js
     ```
 
-1. Výstup terminálu _služby_ zobrazuje aktualizované informace o zařízení. Posuňte se `environmentalSensor` na součást, abyste viděli novou hodnotu jasu 42.
+1. Výstup terminálu _služby_ zobrazuje aktualizované informace o zařízení. Posuňte se na `environmentalSensor` součást, abyste viděli novou hodnotu jasu 42.
 
     ```json
     "environmentalSensor": {
@@ -198,7 +198,7 @@ V tomto rychlém startu použijete k interakci s ukázkovým zařízením ukázk
 
 ### <a name="invoke-a-command"></a>Vyvolání příkazu
 
-1. Otevřete soubor **invoke_command. js**.
+1. Otevřete soubor **invoke_command.js**.
 
 1. Na začátku souboru nahraďte `<DEVICE_ID_GOES_HERE>` zástupný text skutečným ID zařízení. Aktualizujte zbývající konstanty následujícími hodnotami a pak soubor uložte:
 

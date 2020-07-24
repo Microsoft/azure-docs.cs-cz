@@ -4,13 +4,14 @@ description: Zobrazí seznam typů prostředků Azure, které se dají přesunou
 author: rayne-wiselman
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 05/31/2020
+ms.date: 07/21/2020
 ms.author: raynew
-ms.openlocfilehash: 0510df504c8de70cfb6a486f394db6da65dbfce2
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 70f981f2763dd36f0f417faec6c81e168e9856e7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057683"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040952"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>Podpora přesunu prostředků Azure napříč oblastmi
 
@@ -70,7 +71,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > - [Microsoft. DBforMySQL](#microsoftdbformysql)
 > - [Microsoft. DBforPostgreSQL](#microsoftdbforpostgresql)
 > - [Microsoft. DeploymentManager](#microsoftdeploymentmanager)
-> - [Microsoft. Devices](#microsoftdevices)
+> - [Microsoft.Devices](#microsoftdevices)
 > - [Microsoft. DevSpaces](#microsoftdevspaces)
 > - [Microsoft. DevTestLab](#microsoftdevtestlab)
 > - [Microsoft.DocumentDB](#microsoftdocumentdb)
@@ -185,7 +186,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | služba |  Ano (pomocí šablony) <br/><br/> [Přesunutí API Management napříč oblastmi](../../api-management/api-management-howto-migrate.md). | 
+> | service |  Ano (pomocí šablony) <br/><br/> [Přesunutí API Management napříč oblastmi](../../api-management/api-management-howto-migrate.md). | 
 
 ## <a name="microsoftappconfiguration"></a>Microsoft. AppConfiguration
 
@@ -542,14 +543,14 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | servery | Pokud je služba zřízená s geograficky redundantním úložištěm zálohování, můžete k obnovení v jiných oblastech použít geografické obnovení. [Další informace](../../mariadb/concepts-business-continuity.md#recover-from-an-azure-regional-data-center-outage)
+> | servery | K přesunutí stávajícího serveru můžete použít repliku čtení mezi oblastmi. [Přečtěte si další informace](../../postgresql/howto-move-regions-portal.md).<br/><br/> Pokud je služba zřízená s geograficky redundantním úložištěm zálohování, můžete k obnovení v jiných oblastech použít geografické obnovení. [Přečtěte si další informace](../../mariadb/concepts-business-continuity.md#recover-from-an-azure-regional-data-center-outage).
 
 ## <a name="microsoftdbformysql"></a>Microsoft. DBforMySQL
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | servery | No |  
+> | servery | K přesunutí stávajícího serveru můžete použít repliku čtení mezi oblastmi. [Přečtěte si další informace](../../mysql/howto-move-regions-portal.md).
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft. DBforPostgreSQL
 
@@ -557,7 +558,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
 > | servergroups | No | 
-> | servery | No |  
+> | servery | K přesunutí stávajícího serveru můžete použít repliku čtení mezi oblastmi. Další [informace](../../postgresql/howto-move-regions-portal.md).
 > | serversv2 | No | 
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft. DeploymentManager
@@ -572,14 +573,14 @@ Přejít na obor názvů poskytovatele prostředků:
 > | servicetopologies/služby/serviceunits | No | 
 > | kroky | No | 
 
-## <a name="microsoftdevices"></a>Microsoft. Devices
+## <a name="microsoftdevices"></a>Microsoft.Devices
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
 > | elasticpools | Ne. Prostředek není vystavený.
 > | elasticpools / iothubtenants | Ne. Prostředek není vystavený.
-> | iothubs | Ano. [Další informace](../../iot-hub/iot-hub-how-to-clone.md)
+> | iothubs | Yes. [Další informace](../../iot-hub/iot-hub-how-to-clone.md)
 > | provisioningservices | No | 
 
 ## <a name="microsoftdevspaces"></a>Microsoft. DevSpaces
@@ -717,7 +718,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | checknameavailability |  Ne.<br/><br/> IoT Central pracuje s geografickými oblastmi a ne oblastmi.
 > | zapisovací | No
 
-## <a name="microsoftiothub"></a>Microsoft. IoTHub
+## <a name="microsoftiothub"></a>Microsoft.IoTHub
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 

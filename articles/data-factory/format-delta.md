@@ -7,12 +7,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: daperlov
-ms.openlocfilehash: 74c2e738153b1afa5c90f4769b6d9b0e982af363
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: e9df7b00a384859fb29577be0ad05da233683f46
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225153"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044524"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Rozdílový formát v Azure Data Factory
 
@@ -23,6 +23,8 @@ Tento článek popisuje, jak kopírovat data do a z rozdílového jezera uložen
 > [!NOTE]
 > Rozdílových formátů konektoru pro mapování datových toků je aktuálně k dispozici ve verzi Public Preview.
 
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4ALTs]
+
 ## <a name="mapping-data-flow-properties"></a>Mapování vlastností toku dat
 
 Tento konektor je k dispozici jako [vložená datová sada](data-flow-source.md#inline-datasets) v mapování dat toků jako zdroj i jímka.
@@ -31,13 +33,13 @@ Tento konektor je k dispozici jako [vložená datová sada](data-flow-source.md#
 
 V níže uvedené tabulce jsou uvedeny vlastnosti podporované rozdílovým zdrojem. Tyto vlastnosti můžete upravit na kartě **Možnosti zdrojového kódu** .
 
-| Název | Popis | Vyžadováno | Povolené hodnoty | Vlastnost skriptu toku dat |
+| Název | Popis | Povinné | Povolené hodnoty | Vlastnost skriptu toku dat |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Formát | Formát musí být`delta` | ano | `delta` | formát |
 | Systém souborů | Kontejner/souborový systém rozdílových Lake | ano | Řetězec | Systému souborů |
 | Cesta ke složce | Přímo na rozdíl od rozdílových Lake | ano | Řetězec | folderPath |
 | Typ komprese | Typ komprese tabulky Delta | ne | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | Argument |
-| Úroveň komprese | Vyberte, jestli se komprese dokončí co nejrychleji, nebo jestli se má výsledný soubor optimálně komprimovat. | požadováno `compressedType` , pokud je zadáno. | compressionLevel |
+| Úroveň komprese | Vyberte, jestli se komprese dokončí co nejrychleji, nebo jestli se má výsledný soubor optimálně komprimovat. | požadováno `compressedType` , pokud je zadáno. | `Optimal` nebo `Fastest` | compressionLevel |
 | Doba jízdy | Vyberte, jestli se má dotazovat na starší snímek tabulky Delta. | ne | Dotaz podle časového razítka: časové razítko <br> Dotaz podle verze: celé číslo | timestampAsOf <br> versionAsOf |
 
 #### <a name="import-schema"></a>Importovat schéma
@@ -67,14 +69,14 @@ source(output(movieId as integer,
 
 V níže uvedené tabulce jsou uvedeny vlastnosti, které jsou podporovány rozdílovou jímkou. Tyto vlastnosti můžete upravit na kartě **Nastavení** .
 
-| Název | Popis | Vyžadováno | Povolené hodnoty | Vlastnost skriptu toku dat |
+| Název | Popis | Povinné | Povolené hodnoty | Vlastnost skriptu toku dat |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Formát | Formát musí být`delta` | ano | `delta` | formát |
 | Systém souborů | Kontejner/souborový systém rozdílových Lake | ano | Řetězec | Systému souborů |
 | Cesta ke složce | Přímo na rozdíl od rozdílových Lake | ano | Řetězec | folderPath |
 | Typ komprese | Typ komprese tabulky Delta | ne | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | Argument |
-| Úroveň komprese | Vyberte, jestli se komprese dokončí co nejrychleji, nebo jestli se má výsledný soubor optimálně komprimovat. | požadováno `compressedType` , pokud je zadáno. | compressionLevel |
-| Vacuum | Zadejte prahovou hodnotu uchování v hodinách pro starší verze tabulky. Výchozí hodnota je 0 nebo menší než 30 dní. | ano | Integer | sávací |
+| Úroveň komprese | Vyberte, jestli se komprese dokončí co nejrychleji, nebo jestli se má výsledný soubor optimálně komprimovat. | požadováno `compressedType` , pokud je zadáno. | `Optimal` nebo `Fastest` | compressionLevel |
+| Vacuum | Zadejte prahovou hodnotu uchování v hodinách pro starší verze tabulky. Výchozí hodnota je 0 nebo menší než 30 dní. | ano | Celé číslo | sávací |
 | Update – metoda | Určete, které operace aktualizace jsou povoleny na rozdílovém Lake. Pro metody, které nejsou vloženy, je nutné před označením řádků označit předchozí transformaci řádků. | ano | `true` nebo `false` | lze odstranit <br> vložitelný <br> aktualizovatelné <br> upsertable |
 
 ### <a name="delta-sink-script-example"></a>Příklad skriptu jímky v rozdílu

@@ -8,11 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 76bf38c9d15e977b39922fdfbc7d30f533707cda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5f558aaa367d156a8a4fa8633f113c6480236f5b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801372"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038610"
 ---
 # <a name="monitor-the-security-of-your-containers"></a>Monitorování zabezpečení kontejnerů
 
@@ -35,13 +36,11 @@ Tato stránka vysvětluje použití funkcí zabezpečení kontejnerů popsaných
 
 1. Pokud chcete spustit kontrolu obrázku, nahrajte ho do svého registru. 
 
-    Až se kontrola dokončí (obvykle po přibližně 10 minutách), výsledky jsou k dispozici v Security Center doporučení.
-    
+    Až se kontrola dokončí (obvykle přibližně 2 minuty, ale může to být až 15 minut), nálezy jsou dostupné jako Security Center doporučení, jako je:
 
 1. Pokud si chcete prohlédnout nálezy, navštivte stránku **doporučení** . Pokud byly zjištěny problémy, zobrazí se následující doporučení:
 
     ![Doporučení k nápravě problémů ](media/monitor-container-security/acr-finding.png)
-
 
 1. Vyberte doporučení. 
     Otevře se stránka s podrobnostmi o doporučení s dalšími informacemi. Tyto informace obsahují seznam registrů s ohroženými bitovými kopiemi ("ovlivněné prostředky") a nápravné kroky. 

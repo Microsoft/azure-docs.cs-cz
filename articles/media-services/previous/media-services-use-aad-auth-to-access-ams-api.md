@@ -13,18 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 8e1aeaf105ce371e965b433ac78e2b257f4bc18b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d73c280e3f5639b11e0d07b9ef2f775f48cd3c3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81682042"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038484"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Přístup k rozhraní API služby Azure Media Services s využitím ověřování Azure AD  
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 
-Rozhraní Azure Media Services API je rozhraní API pro RESTful. Můžete ji použít k provádění operací s prostředky médií pomocí REST API nebo pomocí dostupných klientských sad SDK. Azure Media Services nabízí Media Services klientskou sadu SDK pro Microsoft .NET. Aby bylo možné získat přístup k Media Services prostředkům a rozhraní Media Services API, musíte nejdřív ověřit. 
+Rozhraní Azure Media Services API je rozhraní API pro RESTful. Můžete ji použít k provádění operací s prostředky médií pomocí REST API nebo pomocí dostupných klientských sad SDK. Azure Media Services nabízí Media Services klientskou sadu SDK pro Microsoft .NET. Abyste mohli získat autorizaci pro přístup k prostředkům a rozhraní API služby Media Services, musíte se nejprve ověřit. 
 
 Media Services podporuje [ověřování založené na Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md). Služba Azure Media REST vyžaduje, aby uživatel nebo aplikace, která vytváří REST API žádosti, měla roli **Přispěvatel** nebo **vlastník** pro přístup k prostředkům. Další informace najdete v tématu [Začínáme s Access Control na základě rolí v Azure Portal](../../role-based-access-control/overview.md).  
 
@@ -45,8 +46,8 @@ Neautorizované požadavky selžou se stavovým kódem 401. Pokud se zobrazí te
  
 Pokud používáte ověřování Azure AD s Azure Media Services, máte dvě možnosti ověřování:
 
-- **Ověřování uživatelů**. Ověřte osobu, která aplikaci používá k interakci s Media Servicesmi prostředky. Interaktivní aplikace by nejdřív měla uživatele vyzvat k zadání přihlašovacích údajů uživatele. Příkladem je aplikace konzoly pro správu používaná autorizovanými uživateli k monitorování úloh kódování nebo živého streamování. 
-- **Ověřování instančního objektu**. Ověří službu. Aplikace, které běžně používají tuto metodu ověřování, jsou aplikace, které spouštějí služby démon, služby střední vrstvy nebo naplánované úlohy. Příklady jsou webové aplikace, aplikace Function App, Logic Apps, API a mikroslužby.
+- **Ověřování uživatelů**. Ověřte osobu, která aplikaci používá k interakci s Media Servicesmi prostředky. Interaktivní aplikace by nejdřív měla uživatele vyzvat k zadání přihlašovacích údajů uživatele. Příkladem je aplikace konzoly pro správu, kterou autorizovaní uživatelé používají k monitorování úloh kódování nebo živého streamování. 
+- **Ověřování instančního objektu**. Ověří službu. Mezi aplikace, které běžně využívají tuto metodu ověřování, patří aplikace spouštějící služby démonů, služby střední úrovně nebo naplánované úlohy. Příklady jsou webové aplikace, aplikace Function App, Logic Apps, API a mikroslužby.
 
 ### <a name="user-authentication"></a>Ověřování uživatelů 
 
@@ -138,7 +139,7 @@ Další informace o použití ověřování Azure AD ke komunikaci s požadavky 
 
 Pokud nepoužíváte sadu SDK klienta Media Services .NET, musíte ručně vytvořit žádost o token Azure AD pomocí parametrů popsaných v kroku 1. Další informace najdete v tématu [jak pomocí knihovny ověřování Azure AD získat token Azure AD](../../active-directory/azuread-dev/active-directory-authentication-libraries.md).
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Výjimka: vzdálený server vrátil chybu: (401) Neautorizováno.
 
@@ -148,12 +149,11 @@ Výjimka: vzdálený server vrátil chybu: (401) Neautorizováno.
 
 Následující články jsou přehledem konceptů ověřování Azure AD: 
 
-- [Scénáře ověřování řešené službou Azure AD](../../active-directory/develop/authentication-scenarios.md)
-- [Přidání, aktualizace nebo odebrání aplikace v Azure AD](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)
+- [Scénáře ověřování řešené službou Azure AD](../../active-directory/develop/authentication-vs-authorization.md)
+- [Přidání, aktualizace nebo odebrání aplikace v Azure AD](../../active-directory/develop/quickstart-register-app.md)
 - [Konfigurace a Správa Access Control na základě rolí pomocí prostředí PowerShell](../../role-based-access-control/role-assignments-powershell.md)
 
 ## <a name="next-steps"></a>Další kroky
 
 * Pro [přístup k ověřování Azure AD použijte Azure Portal pro využívání rozhraní API Azure Media Services](media-services-portal-get-started-with-aad.md).
 * Použijte ověřování Azure AD pro [přístup k rozhraní API Azure Media Services pomocí .NET](media-services-dotnet-get-started-with-aad.md).
-

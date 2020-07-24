@@ -1,5 +1,5 @@
 ---
-title: Interakce se zařízením IoT technologie Plug and Play Preview připojeným k řešení Azure IoT | Microsoft Docs
+title: Interakce se zařízením IoT technologie Plug and Play Preview připojeným k vašemu řešení – Java | Microsoft Docs
 description: Pomocí Java se můžete připojit k zařízení IoT technologie Plug and Play Preview, které je připojené k řešení Azure IoT, a pracovat s nimi.
 author: dominicbetts
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 53812e68fe397b81f29869565e0e4a0640a9ef23
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 43136e1a09cc771f39b92a83ca4c452fc1276091
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76964630"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044031"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-java"></a>Rychlý Start: interakce se zařízením IoT technologie Plug and Play ve verzi Preview, které je připojené k vašemu řešení (Java)
 
@@ -21,7 +21,7 @@ ms.locfileid: "76964630"
 
 IoT technologie Plug and Play Preview zjednodušuje IoT tím, že vám umožní pracovat s funkcemi zařízení bez znalosti základní implementace zařízení. V tomto rychlém startu se dozvíte, jak pomocí jazyka Java připojit a řídit zařízení IoT technologie Plug and Play, které je připojené k vašemu řešení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto rychlého startu potřebujete Java SE 8 na svém vývojovém počítači. Také je potřeba nainstalovat Maven 3.
 
@@ -88,7 +88,7 @@ V tomto rychlém startu použijete k interakci s ukázkovým zařízením ukázk
 
 ### <a name="read-a-property"></a>Číst vlastnost
 
-1. Když jste _zařízení_ připojili v terminálu, jedna z výstupních zpráv byla následující zprávou, která indikuje stav online. `state` Vlastnost, která určuje, jestli je zařízení online, má _hodnotu true_:
+1. Když jste _zařízení_ připojili v terminálu, jedna z výstupních zpráv byla následující zprávou, která indikuje stav online. `state`Vlastnost, která určuje, jestli je zařízení online, má _hodnotu true_:
 
     ```cmd/sh
     State of environmental sensor was set to true
@@ -131,7 +131,7 @@ V tomto rychlém startu použijete k interakci s ukázkovým zařízením ukázk
     java -jar update-digital-twin/target/update-digital-twin-with-deps.jar
     ```
 
-1. Výstup terminálu _služby_ zobrazuje aktualizované informace o zařízení. Posuňte se `environmentalSensor` na součást, abyste viděli novou hodnotu jasu 42.
+1. Výstup terminálu _služby_ zobrazuje aktualizované informace o zařízení. Posuňte se na `environmentalSensor` součást, abyste viděli novou hodnotu jasu 42.
 
     ```json
     "environmentalSensor": {

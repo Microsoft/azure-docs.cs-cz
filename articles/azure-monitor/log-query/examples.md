@@ -6,16 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/16/2020
-ms.openlocfilehash: 18cd74ac9298b7dd058de2b224f677ec0d8f2d64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 736daa8a09a8f08721c7b7d9c20f012f274b384a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79480279"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045525"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Příklady dotazů Azure Monitor protokolu
 Tento článek obsahuje různé příklady [dotazů](log-query-overview.md) pomocí [dotazovacího jazyka Kusto](/azure/kusto/query/) k načtení různých typů dat protokolu z Azure monitor. Pro konsolidaci a analýzu dat se používají různé metody, takže tyto ukázky můžete použít k identifikaci různých strategií, které můžete použít pro vlastní požadavky.  
 
-Podrobnosti o různých klíčových slovech použitých v těchto ukázkách najdete v referenčních informacích k [jazyku Kusto](https://docs.microsoft.com/azure/kusto/query/) . Pokud jste Azure Monitor, Projděte si [lekci o vytváření dotazů](get-started-queries.md) .
+Podrobnosti o různých klíčových slovech použitých v těchto ukázkách najdete v referenčních informacích k [jazyku Kusto](/azure/kusto/query/) . Pokud jste Azure Monitor, Projděte si [lekci o vytváření dotazů](get-started-queries.md) .
 
 ## <a name="events"></a>Události
 
@@ -36,7 +37,7 @@ Event
 search in (Event, SecurityEvent) "unmarshaling"
 ```
 
-## <a name="heartbeat"></a>Prezenční signál
+## <a name="heartbeat"></a>Tep
 
 ### <a name="chart-a-week-over-week-view-of-the-number-of-computers-sending-data"></a>Vytvoření grafu zobrazení počtu počítačů, které odesílají data z týdenního týdne
 
@@ -374,7 +375,7 @@ suspicious_users_that_later_logged_in
 
 ## <a name="usage"></a>Využití
 
-`Usage`Datový typ lze použít ke sledování přijímaných objemů dat podle řešení nebo datového typu. Existují další techniky, jak prozkoumat ingestované datové svazky podle [počítače](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-computer) nebo [předplatného Azure, skupiny prostředků nebo prostředku](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-azure-resource-resource-group-or-subscription).
+`Usage`Datový typ lze použít ke sledování přijímaných objemů dat podle řešení nebo datového typu. Existují další techniky, jak prozkoumat ingestované datové svazky podle [počítače](../platform/manage-cost-storage.md#data-volume-by-computer) nebo [předplatného Azure, skupiny prostředků nebo prostředku](../platform/manage-cost-storage.md#data-volume-by-azure-resource-resource-group-or-subscription).
 
 #### <a name="data-volume-by-solution"></a>Objem dat podle řešení
 

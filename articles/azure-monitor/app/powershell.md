@@ -3,11 +3,12 @@ title: Automatizace Azure Application Insights s využitím PowerShellu | Micros
 description: Automatizujte vytváření a správu prostředků, upozornění a testů dostupnosti v PowerShellu pomocí šablony Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: c4e7c4fe14d829338e98a4b7e73726b1e605707c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a0a3a5b186d57e8670201e601eee48ee858c976
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485426"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041624"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Správa prostředků Application Insights pomocí prostředí PowerShell
 
@@ -25,7 +26,7 @@ Na počítač, na kterém chcete spouštět skripty, nainstalujte modul Azure Po
 1. Nainstalujte [Instalace webové platformy Microsoft (verze 5 nebo novější)](https://www.microsoft.com/web/downloads/platform.aspx).
 2. Použijte ji k instalaci Microsoft Azure PowerShell.
 
-Kromě používání šablon Správce prostředků existuje bohatá sada [Application Insights rutin PowerShellu](https://docs.microsoft.com/powershell/module/az.applicationinsights), která usnadňuje konfiguraci Application Insights prostředků programově. Mezi možnosti povolené rutinami patří:
+Kromě používání šablon Správce prostředků existuje bohatá sada [Application Insights rutin PowerShellu](/powershell/module/az.applicationinsights), která usnadňuje konfiguraci Application Insights prostředků programově. Mezi možnosti povolené rutinami patří:
 
 * Vytváření a odstraňování Application Insightsch prostředků
 * Získá seznam Application Insightsch prostředků a jejich vlastností.
@@ -36,7 +37,7 @@ Kromě používání šablon Správce prostředků existuje bohatá sada [Applic
 
 ## <a name="create-application-insights-resources-using-a-powershell-cmdlet"></a>Vytvoření prostředků Application Insights pomocí rutiny prostředí PowerShell
 
-Tady je postup vytvoření nového prostředku Application Insights v datovém centru Azure Východní USA pomocí rutiny [New-AzApplicationInsights](https://docs.microsoft.com/powershell/module/az.applicationinsights/New-AzApplicationInsights) :
+Tady je postup vytvoření nového prostředku Application Insights v datovém centru Azure Východní USA pomocí rutiny [New-AzApplicationInsights](/powershell/module/az.applicationinsights/new-azapplicationinsights) :
 
 ```PS
 New-AzApplicationInsights -ResourceGroupName <resource group> -Name <resource name> -location eastus
@@ -226,7 +227,7 @@ Další vlastnosti jsou k dispozici prostřednictvím rutin:
 * `Get-AzApplicationInsightsApiKey`
 * `Get-AzApplicationInsightsContinuousExport`
 
-Informace o parametrech těchto rutin najdete v [podrobné dokumentaci](https://docs.microsoft.com/powershell/module/az.applicationinsights) .  
+Informace o parametrech těchto rutin najdete v [podrobné dokumentaci](/powershell/module/az.applicationinsights) .  
 
 ## <a name="set-the-data-retention"></a>Nastavení uchovávání dat
 
@@ -329,7 +330,7 @@ Set-ApplicationInsightsRetention `
 
 ## <a name="set-the-daily-cap"></a>Nastavení denního limitu
 
-Chcete-li získat vlastnosti denního limitu, použijte rutinu [set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) : 
+Chcete-li získat vlastnosti denního limitu, použijte rutinu [set-AzApplicationInsightsPricingPlan](/powershell/module/az.applicationinsights/set-azapplicationinsightspricingplan) : 
 
 ```PS
 Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> | Format-List
@@ -358,7 +359,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 <a id="price"></a>
 ## <a name="set-the-pricing-plan"></a>Nastavení cenového plánu 
 
-K získání aktuálního cenového plánu použijte rutinu [set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) :
+K získání aktuálního cenového plánu použijte rutinu [set-AzApplicationInsightsPricingPlan](/powershell/module/az.applicationinsights/set-azapplicationinsightspricingplan) :
 
 ```PS
 Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <resource name> | Format-List
@@ -403,12 +404,12 @@ Tím nastavíte denní limit na 200 GB za den, nakonfigurujete denní dobu reset
 
 ## <a name="add-a-metric-alert"></a>Přidat upozornění metriky
 
-Pokud chcete automatizovat vytváření výstrah metrik, Projděte si [článek šablona výstrahy metriky](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-a-simple-static-threshold-metric-alert) .
+Pokud chcete automatizovat vytváření výstrah metrik, Projděte si [článek šablona výstrahy metriky](../platform/alerts-metric-create-templates.md#template-for-a-simple-static-threshold-metric-alert) .
 
 
 ## <a name="add-an-availability-test"></a>Přidat test dostupnosti
 
-Pokud chcete automatizovat testy dostupnosti, Projděte si [článek šablona výstrahy metrik](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-an-availability-test-along-with-a-metric-alert).
+Pokud chcete automatizovat testy dostupnosti, Projděte si [článek šablona výstrahy metrik](../platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert).
 
 ## <a name="add-more-resources"></a>Přidat další zdroje
 
@@ -468,7 +469,7 @@ Azure by měl nastavit prostředky v přísném pořadí. Chcete-li zajistit, ab
 ## <a name="next-steps"></a>Další kroky
 Další články o automatizaci:
 
-* [Vytvořte rychlou metodu Application Insights prostředků](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically) bez použití šablony.
+* [Vytvořte rychlou metodu Application Insights prostředků](./create-new-resource.md#creating-a-resource-automatically) bez použití šablony.
 * [Nastavení výstrah](powershell-alerts.md)
 * [Vytvářejte webové testy](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [Odesílání Azure Diagnostics do Application Insights](powershell-azure-diagnostics.md)

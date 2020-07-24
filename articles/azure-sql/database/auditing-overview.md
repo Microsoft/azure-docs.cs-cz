@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 4f5ad6fd0444c40d95bf4c2f1105959bde07245d
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 24c3ec1ee16123cef0c4e2bd230bfdb66915fc9f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276307"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040580"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Auditování pro Azure SQL Database a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -79,6 +79,9 @@ Auditování můžete nakonfigurovat pro různé typy akcí a skupin akcí pomoc
 Azure SQL Database a Azure synapse audit ukládá 4000 znaků dat pro pole znaků v záznamu auditu. Pokud **příkaz** nebo **data_sensitivity_information** hodnoty vrácené z auditované akce obsahují více než 4000 znaků, všechna data za prvních 4000 znaků budou **zkrácena a nebudou auditována**.
 V následující části je popsána konfigurace auditování pomocí Azure Portal.
 
+  > [!NOTE]
+  > Povolení auditování u pozastaveného fondu SQL synapse není možné. Pokud chcete povolit auditování, zrušte pozastavení synapse fondu SQL. Přečtěte si další informace o [synapse fondu SQL](https://docs.microsoft.com/azure/synapse-analytics/sql/best-practices-sql-pool).
+
 1. Přejděte na [Azure Portal](https://portal.azure.com).
 2. V záhlaví zabezpečení v podokně **SQL Database** nebo **SQL serveru** přejděte na **audit** .
 3. Pokud dáváte přednost nastavení zásad auditování serveru, můžete vybrat odkaz **Zobrazit nastavení serveru** na stránce auditování databáze. Pak můžete zobrazit nebo upravit nastavení auditování serveru. Zásady auditování serveru se vztahují na všechny existující a nově vytvořené databáze na tomto serveru.
@@ -119,10 +122,6 @@ Pokud chcete nakonfigurovat zápis protokolů auditu do pracovního prostoru Log
 Další podrobnosti o Azure Monitorch protokolů v pracovních prostorech najdete v tématu [návrh nasazení Azure Monitorch protokolů](https://docs.microsoft.com/azure/azure-monitor/platform/design-logs-deployment)
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>Auditovat cíl centra událostí
-
-> [!WARNING]
-> Povolení auditování na serveru, na kterém je SQL Database fond, **vede k obnovení fondu SQL Database a znovu pozastaven** , což může účtovat poplatky za účtování.
-> Povolení auditování u pozastaveného fondu SQL Database není možné. Pokud ho chcete povolit, zrušte pozastavení SQL Database fondu.
 
 Pokud chcete nakonfigurovat zápis protokolů auditu do centra událostí, vyberte **centrum událostí (Preview)** a otevřete **Podrobnosti centra událostí**. Vyberte centrum událostí, kam budou zapsány protokoly, a pak klikněte na **OK**. Ujistěte se, že centrum událostí je ve stejné oblasti jako databáze a Server.
 

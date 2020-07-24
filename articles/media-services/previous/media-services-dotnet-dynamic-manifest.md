@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: cenkdin
-ms.openlocfilehash: b2099283bc3af19f7d23e5007377b8baac0066d8
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: cd1272b6c49d247d58486193fcbc488d566ec1b3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964817"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043036"
 ---
 # <a name="creating-filters-with-media-services-net-sdk"></a>Vytváření filtrů pomocí sady Media Services .NET SDK 
 > [!div class="op_single_selector"]
@@ -40,10 +40,10 @@ Poznámka: Pokud filtr aktualizujete, může trvat až dvě minuty, než koncov�
 ## <a name="types-used-to-create-filters"></a>Typy použité k vytváření filtrů
 Při vytváření filtrů se používají tyto typy: 
 
-* **IStreamingFilter**.  Tento typ je založený na následujícím [filtru](https://docs.microsoft.com/rest/api/media/operations/filter) REST API.
-* **IStreamingAssetFilter**. Tento typ je založený na následujících REST API [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
-* **PresentationTimeRange**. Tento typ je založený na následujících REST API [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
-* **FilterTrackSelectStatement** a **IFilterTrackPropertyCondition**. Tyto typy jsou založené na následujících rozhraních REST API [FilterTrackSelect a FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
+* **IStreamingFilter**.  Tento typ je založený na následujícím [filtru](/rest/api/media/operations/filter) REST API.
+* **IStreamingAssetFilter**. Tento typ je založený na následujících REST API [AssetFilter](/rest/api/media/operations/assetfilter)
+* **PresentationTimeRange**. Tento typ je založený na následujících REST API [PresentationTimeRange](/rest/api/media/operations/presentationtimerange)
+* **FilterTrackSelectStatement** a **IFilterTrackPropertyCondition**. Tyto typy jsou založené na následujících rozhraních REST API [FilterTrackSelect a FilterTrackPropertyCondition](/rest/api/media/operations/filtertrackselect)
 
 ## <a name="createupdatereaddelete-global-filters"></a>Vytváření, aktualizace, čtení a odstraňování globálních filtrů
 Následující kód ukazuje, jak použít .NET k vytváření, aktualizaci, čtení a odstraňování filtrů assetů.
@@ -137,4 +137,3 @@ Následující příklady ukazují, jak přidat filtry na adresy URL streamován
 
 ## <a name="see-also"></a>Viz také
 [Přehled dynamických manifestů](media-services-dynamic-manifest-overview.md)
-

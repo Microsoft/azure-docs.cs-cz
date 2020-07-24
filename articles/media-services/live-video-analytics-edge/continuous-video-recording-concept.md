@@ -3,11 +3,12 @@ title: Nepřetržité nahrávání videa – Azure
 description: Záznam průběžného nahrávání videa (CVR) označuje proces průběžného zaznamenávání videa ze zdroje videa. Toto téma popisuje, co je CVR.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 9a785125d4cfb2324224f4676e1d429342ec325c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76af97fe1398421f5f37cfca32127d926ce56bac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261244"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043303"
 ---
 # <a name="continuous-video-recording"></a>Nepřetržité nahrávání videa  
 
@@ -33,7 +34,7 @@ Live video Analytics na IoT Edge podporuje provoz v rámci méně než dokonalé
     "localMediaCacheMaximumSizeMiB": "2048",
     "localMediaCachePath": "/var/lib/azuremediaservices/tmp/",
 ```
-Tyto dvě vlastnosti jsou relevantní pro odolný záznam (pro uzel jímky assetu jsou také vyžadovány vlastnosti). Vlastnost localMediaCachePath instruuje jímku assetů, aby používala tuto cestu ke složce k ukládání dat médií do mezipaměti před odesláním do assetu. V tomto článku se seznámíte s [tím](https://docs.microsoft.com/azure/iot-edge/how-to-access-host-storage-from-module) , jak může modul Edge využít místní úložiště vašeho zařízení. Vlastnost localMediaCacheMaximumSizeMiB definuje, kolik místa na disku může jímka assetů použít jako mezipaměť (1 MiB = 1024 × 1024 bajtů). 
+Tyto dvě vlastnosti jsou relevantní pro odolný záznam (pro uzel jímky assetu jsou také vyžadovány vlastnosti). Vlastnost localMediaCachePath instruuje jímku assetů, aby používala tuto cestu ke složce k ukládání dat médií do mezipaměti před odesláním do assetu. V tomto článku se seznámíte s [tím](../../iot-edge/how-to-access-host-storage-from-module.md) , jak může modul Edge využít místní úložiště vašeho zařízení. Vlastnost localMediaCacheMaximumSizeMiB definuje, kolik místa na disku může jímka assetů použít jako mezipaměť (1 MiB = 1024 × 1024 bajtů). 
 
 Pokud váš modul Edge ztratí připojení po dlouhou dobu a obsah uložený ve složce mezipaměti dosáhne hodnoty localMediaCacheMaximumSizeMiB, bude jímka assetu začít zahození dat z mezipaměti, počínaje nejstarší daty. Například pokud zařízení ztratilo připojení na 10AM a mezipaměť dosáhne maximálního limitu na 18:00, pak se jímka assetu začne odstraňovat data zaznamenaná na 10AM. 
 

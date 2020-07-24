@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 6210d6ee4877c6ba84178340cf0a6610e402da31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d103e6a0f7a47aadce524325e58fbb7069a1e13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81641109"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042809"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Živé streamování využívající službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi
 
@@ -70,7 +71,7 @@ Následující tabulka ukazuje, jak se stavy kanálu mapují na režim fakturace
 | Stav kanálu | Indikátory uživatelského rozhraní portálu | Účtuje se fakturace? |
 | --- | --- | --- |
 | Spouštění |Spouštění |Ne (přechodný stav) |
-| Spuštěno |Připraveno (žádné spuštěné programy)<br/>nebo<br/>Streamování (aspoň jeden spuštěný program) |ANO |
+| Spuštěný |Připraveno (žádné spuštěné programy)<br/>nebo<br/>Streamování (aspoň jeden spuštěný program) |ANO |
 | Zastavování |Zastavování |Ne (přechodný stav) |
 | Zastaveno |Zastaveno |No |
 
@@ -174,7 +175,7 @@ Můžete definovat IP adresy, které můžou publikovat video na tento kanál. P
 Pokud žádné IP adresy nezadáte a nedefinujete žádné pravidlo, nebude povolená žádná IP adresa. Pokud chcete povolit libovolnou IP adresy, vytvořte pravidlo a nastavte 0.0.0.0/0.
 
 ## <a name="channel-preview"></a>Náhled kanálu
-### <a name="preview-urls"></a>Adresy URL náhledu
+### <a name="preview-urls"></a>Náhledové adresy URL
 Kanály poskytují koncový bod verze Preview (adresa URL náhledu), který používáte k zobrazení náhledu a ověření datového proudu před dalším zpracováním a doručením.
 
 Adresu URL náhledu můžete získat při vytváření kanálu. Aby se adresa URL získala, kanál nemusí být ve stavu **spuštěno** .
@@ -216,14 +217,14 @@ Určuje předvolby, které má živý kodér používat v rámci tohoto kanálu.
 
 #### <a name="output-video-stream"></a>Výstupní video stream
 
-| Rychlostí | impulzu | Vlastnost Height | MaxFPS | Profil | Název výstupního datového proudu |
+| Rychlostí | Width (Šířka) | Height (Výška) | MaxFPS | Profil | Název výstupního datového proudu |
 | --- | --- | --- | --- | --- | --- |
-| 3500 |1280 |720 |30 |Vysoká |Video_1280x720_3500kbps |
-| 2200 |960 |540 |30 |Vysoká |Video_960x540_2200kbps |
-| 1350 |704 |396 |30 |Vysoká |Video_704x396_1350kbps |
-| 850 |512 |288 |30 |Vysoká |Video_512x288_850kbps |
-| 550 |384 |216 |30 |Vysoká |Video_384x216_550kbps |
-| 200 |340 |192 |30 |Vysoká |Video_340x192_200kbps |
+| 3500 |1280 |720 |30 |Vysoké |Video_1280x720_3500kbps |
+| 2200 |960 |540 |30 |Vysoké |Video_960x540_2200kbps |
+| 1350 |704 |396 |30 |Vysoké |Video_704x396_1350kbps |
+| 850 |512 |288 |30 |Vysoké |Video_512x288_850kbps |
+| 550 |384 |216 |30 |Vysoké |Video_384x216_550kbps |
+| 200 |340 |192 |30 |Vysoké |Video_340x192_200kbps |
 
 #### <a name="output-audio-stream"></a>Výstupní zvukový stream
 
@@ -312,7 +313,7 @@ Následující tabulka ukazuje, jak se stavy kanálu mapují na režim fakturace
 | Stav kanálu | Indikátory uživatelského rozhraní portálu | Účtuje? |
 | --- | --- | --- |
 | Spouštění |Spouštění |Ne (přechodný stav) |
-| Spuštěno |Připraveno (žádné spuštěné programy)<br/>nebo<br/>Streamování (aspoň jeden spuštěný program) |Yes |
+| Spuštěný |Připraveno (žádné spuštěné programy)<br/>nebo<br/>Streamování (aspoň jeden spuštěný program) |Yes |
 | Zastavování |Zastavování |Ne (přechodný stav) |
 | Zastaveno |Zastaveno |No |
 
@@ -321,7 +322,7 @@ Následující tabulka ukazuje, jak se stavy kanálu mapují na režim fakturace
 > 
 > 
 
-## <a name="considerations"></a><a id="Considerations"></a>Důležité informace
+## <a name="considerations"></a><a id="Considerations"></a>Požadavky
 * Když se v kanálu **standardního** typu kódování vyskytne ztráta vstupního kanálu zdroje nebo příspěvků, nahradí se zdrojem videa nebo zvukem chyba SLAT a netichá. Kanál bude dál generovat SLAT, dokud se neobnoví informační kanál vstupů a příspěvků. Doporučujeme, aby živý kanál nebyl ponechán v takovém stavu déle než 2 hodiny. Po tomto okamžiku není zaručeno chování kanálu na vstupním připojení, ani v reakci na příkaz k obnovení není ani jeho chování. Budete muset kanál zastavit, odstranit ho a vytvořit nový.
 * Vstupní protokol nemůžete změnit, když kanál nebo jeho přidružené programy běží. Pokud požadujete různé protokoly, vytvořte samostatné kanály pro každý vstupní protokol.
 * Pokaždé, když znovu nakonfigurujete živý kodér, zavolejte na kanálu metodu **resetování** . Před resetováním kanálu musíte program zastavit. Po resetování kanálu restartujte program.
@@ -359,11 +360,10 @@ Prohlédněte si mapy kurzů k Media Services.
 
 [Vytváření kanálů, které provádějí živé kódování z každé přenosové rychlosti do datového proudu s adaptivní přenosovou rychlostí pomocí sady .NET SDK](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 
-[Správa kanálů pomocí REST API](https://docs.microsoft.com/rest/api/media/operations/channel)
+[Správa kanálů pomocí REST API](/rest/api/media/operations/channel)
 
 [Media Services koncepty](media-services-concepts.md)
 
 [Azure Media Services fragmentované specifikace ingestování MP4 v reálném čase](../media-services-fmp4-live-ingest-overview.md)
 
 [live-overview]: ./media/media-services-manage-live-encoder-enabled-channels/media-services-live-streaming-new.png
-
