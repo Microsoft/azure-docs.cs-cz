@@ -3,19 +3,26 @@ title: Vytvoření privátního clusteru služby Azure Kubernetes
 description: Zjistěte, jak vytvořit privátní cluster služby Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 6/18/2020
-ms.openlocfilehash: c788f2009bdc771bcdde20d1c3dbe9eafdbcffcb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 7/17/2020
+ms.openlocfilehash: 10cbd58807c213418a88b42887cdb76868eac34e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244221"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015645"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Vytvoření privátního clusteru služby Azure Kubernetes
 
-V privátním clusteru má Řídicí rovina nebo Server rozhraní API interní IP adresy, které jsou definované v dokumentu [RFC1918-Address Allocation for Private Internets](https://tools.ietf.org/html/rfc1918) . Pomocí privátního clusteru můžete zajistit, aby síťový provoz mezi vaším serverem API a fondy uzlů zůstaly jenom v privátní síti.
+V privátním clusteru má Řídicí rovina nebo Server rozhraní API interní IP adresy, které jsou definované v dokumentu [RFC1918-Address Allocation for Private Internets](https://tools.ietf.org/html/rfc1918) . Pomocí privátního clusteru můžete zajistit, aby síťový provoz mezi serverem API a fondy uzlů zůstaly jenom v privátní síti.
 
 Rovina ovládacího prvku nebo Server API se nachází v předplatném Azure spravovaném službou Azure Kubernetes (AKS). Cluster nebo fond uzlů zákazníka je v předplatném zákazníka. Server a cluster nebo fond uzlů můžou vzájemně komunikovat prostřednictvím [služby privátního propojení Azure][private-link-service] ve virtuální síti serveru API a privátního koncového bodu, který je vystavený v PODSÍTI clusteru AKS zákazníka.
+
+## <a name="region-availability"></a>Dostupnost v oblastech
+
+Privátní cluster je dostupný ve veřejných oblastech, kde [se podporuje AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service).
+
+* Azure Čína 21Vianet se momentálně nepodporuje.
+* US Gov – Texas se momentálně nepodporuje, protože nepodporuje chybějící podporu privátních odkazů.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -89,7 +96,7 @@ Jak už bylo zmíněno, partnerský vztah virtuálních sítí je jedním ze zp�
 
 1. Ve výchozím nastavení platí, že při zřizování privátního clusteru se ve skupině prostředků spravovaného clusterem vytvoří privátní koncový bod (1) a privátní zóna DNS (2). Cluster používá záznam A v privátní zóně k překladu IP adresy privátního koncového bodu pro komunikaci se serverem rozhraní API.
 
-2. Privátní zóna DNS je propojená jenom s virtuální sítí, ke které jsou připojené uzly clusteru (3). To znamená, že privátní koncový bod může být vyřešen pouze hostiteli v propojené virtuální síti. V případech, kdy ve virtuální síti není nakonfigurované žádné vlastní DNS (výchozí nastavení), to funguje bez problémů jako hostitelé – bod na 168.63.129.16 pro DNS, který může z důvodu odkazu vyřešit záznamy v privátní zóně DNS.
+2. Privátní zóna DNS je propojená jenom s virtuální sítí, ke které jsou připojené uzly clusteru (3). To znamená, že privátní koncový bod může být vyřešen pouze hostiteli v propojené virtuální síti. V případech, kdy ve virtuální síti není nakonfigurované žádné vlastní DNS (výchozí nastavení), to funguje bez problémů jako hostitelé – bod na 168.63.129.16 pro DNS, který dokáže vyřešit záznamy v privátní zóně DNS z důvodu propojení.
 
 3. Ve scénářích, kdy virtuální síť, která obsahuje váš cluster, má vlastní nastavení DNS (4), nasazení clusteru se nepovede, pokud privátní zóna DNS není propojená s virtuální sítí, která obsahuje vlastní překladače DNS (5). Tento odkaz se dá vytvořit ručně, až se privátní zóna vytvoří během zřizování clusteru nebo přes automatizaci při detekci vytváření zóny pomocí mechanismů nasazení založeného na událostech (například Azure Event Grid a Azure Functions).
 
@@ -99,7 +106,7 @@ Jak už bylo zmíněno, partnerský vztah virtuálních sítí je jedním ze zp�
 * Pokud chcete použít vlastní server DNS, přidejte Azure DNS IP 168.63.129.16 jako nadřazený server DNS do vlastního serveru DNS.
 
 ## <a name="limitations"></a>Omezení 
-* Pro koncový bod privátního serveru API se nedají použít rozsahy povolených IP adres, které se vztahují jenom na veřejný server API.
+* Pro koncový bod privátního serveru API se nedají použít rozsahy autorizovaných IP adres, které se vztahují jenom na veřejný server API.
 * [Zóny dostupnosti][availability-zones] se v současné době podporují pro určité oblasti. 
 * [Omezení služby privátního propojení Azure][private-link-service] se vztahují na soukromé clustery.
 * Pro Azure DevOps agenty hostované Microsoftem s privátními clustery není podporována podpora. Zvažte použití [agentů pro samoobslužné hostování][devops-agents]. 

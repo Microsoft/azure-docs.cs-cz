@@ -1,32 +1,32 @@
 ---
-title: 'Ladění a iterace na Kubernetes: Visual Studio Code & Node. js'
+title: 'Ladění a iterace na Kubernetes: Visual Studio Code & Node.js'
 services: azure-dev-spaces
 ms.date: 07/08/2019
 ms.topic: quickstart
-description: V tomto rychlém startu se dozvíte, jak používat Azure Dev Spaces a Visual Studio Code k ladění a rychlému iteraci aplikace Node. js ve službě Azure Kubernetes.
+description: V tomto rychlém startu se dozvíte, jak pomocí Azure Dev Spaces a Visual Studio Code ladit a rychle iterovat Node.js aplikace ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 18171a2f8d13bfcf3df76b1453c39c59cab89d7c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 370d49b5287a4d5beafc8c2cc5d8f48c269715db
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80240203"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006940"
 ---
-# <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-nodejs---azure-dev-spaces"></a>Rychlý Start: ladění a iterace v Kubernetes pomocí Visual Studio Code a Node. js – Azure Dev Spaces
+# <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-nodejs---azure-dev-spaces"></a>Rychlý Start: ladění a iterace v Kubernetes pomocí Visual Studio Code a Node.js-Azure Dev Spaces
 
-V tomto rychlém startu jste nastavili Azure Dev Spaces pomocí spravovaného clusteru Kubernetes a pomocí aplikace Node. js v Visual Studio Code mohli iterativní vývoj a ladění kódu v kontejnerech. Azure Dev Spaces umožňuje ladit a testovat všechny komponenty vaší aplikace ve službě Azure Kubernetes Service (AKS) s minimálním nastavením vývojového počítače. 
+V tomto rychlém startu jste nastavili Azure Dev Spaces pomocí spravovaného clusteru Kubernetes a pomocí Node.js aplikace v Visual Studio Code mohli iterativní vývoj a ladění kódu v kontejnerech. Azure Dev Spaces umožňuje ladit a testovat všechny komponenty vaší aplikace ve službě Azure Kubernetes Service (AKS) s minimálním nastavením vývojového počítače. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
-- [Nejnovější verzi Node. js](https://nodejs.org/download/).
+- [Nejnovější verzi Node.js](https://nodejs.org/download/).
 - [Visual Studio Code](https://code.visualstudio.com/download).
 - [Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) rozšíření pro Visual Studio Code.
 - Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [Git](https://www.git-scm.com/downloads).
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Vytvoření clusteru služby Azure Kubernetes
+## <a name="create-an-azure-kubernetes-service-cluster"></a>Vytvoření clusteru služby Azure Kubernetes Service
 
 Cluster AKS je potřeba vytvořit v [podporované oblasti][supported-regions]. Následující příkazy vytvoří skupinu prostředků s názvem *MyResourceGroup* a cluster AKS s názvem *MyAKS*.
 
@@ -40,7 +40,7 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 Pomocí `use-dev-spaces` příkazu povolte v clusteru AKS vývojářské prostory a postupujte podle pokynů. Následující příkaz povolí vývojové prostory v clusteru *MyAKS* ve skupině *MyResourceGroup* a vytvoří *výchozí* prostor pro vývoj.
 
 > [!NOTE]
-> `use-dev-spaces` Příkaz nainstaluje taky Azure dev Spaces CLI, pokud ještě není nainstalovaný. Azure Dev Spaces CLI nemůžete nainstalovat do Azure Cloud Shell.
+> `use-dev-spaces`Příkaz nainstaluje taky Azure dev Spaces CLI, pokud ještě není nainstalovaný. Azure Dev Spaces CLI nemůžete nainstalovat do Azure Cloud Shell.
 
 ```azurecli
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS
@@ -82,7 +82,7 @@ Chcete-li otevřít paletu příkazů v Visual Studio Code, vyberte **Zobrazit**
 
 ![Příprava konfiguračních souborů pro Azure Dev Spaces](./media/common/command-palette.png)
 
-Když Visual Studio Code také vyzve ke konfiguraci veřejného koncového bodu, vyberte `Yes` možnost Povolit veřejný koncový bod.
+Když Visual Studio Code také vyzve ke konfiguraci veřejného koncového bodu, vyberte možnost `Yes` Povolit veřejný koncový bod.
 
 ![Vybrat veřejný koncový bod](media/common/select-public-endpoint.png)
 
@@ -126,13 +126,13 @@ Chcete-li nasadit aktualizovanou verzi služby, můžete aktualizovat libovolný
 
 Spusťte službu pomocí **spouštěcího serveru (AZDS)**.
 
-Přejděte zpět do zobrazení Průzkumníka výběrem možnosti **Zobrazit** a **Průzkumník**. Otevřete *Server. js* a vložte kurzor do umístění 13 Kliknutím kamkoli na řádku 13. Pokud chcete nastavit zarážku, stiskněte **F9** nebo vyberte **ladit** a pak **přepínací zarážku**.
+Přejděte zpět do zobrazení Průzkumníka výběrem možnosti **Zobrazit** a **Průzkumník**. Otevřete *server.js* a Kliknutím kamkoli na řádku 13 umístěte kurzor do umístění. Pokud chcete nastavit zarážku, stiskněte **F9** nebo vyberte **ladit** a pak **přepínací zarážku**.
 
 V prohlížeči otevřete službu a Všimněte si, že se nezobrazí žádná zpráva. Vraťte se na Visual Studio Code a sledujte, že je zvýrazněna řádka 13. Zarážka, kterou jste nastavili, službu pozastavila na řádku 13. Pokud chcete službu obnovit, stiskněte klávesu **F5** nebo vyberte **ladit** a pak **pokračovat**. Vraťte se do prohlížeče a Všimněte si, že se teď zobrazí zpráva.
 
 Při spouštění služby v Kubernetes s připojeným ladicím programem máte úplný přístup k ladicím informacím, jako je zásobník volání, místní proměnné a informace o výjimkách.
 
-Odstraňte zarážku tak, že umístíte kurzor na řádek 13 v *serveru. js* a stisknete klávesu **F9**.
+Odstraňte zarážku tak, že umístíte kurzor na řádek 13 v *server.js* a stisknete **F9**.
 
 Vyberte **ladit** a pak **Zastavit ladění** , aby se ladicí program zastavil.
 
@@ -140,13 +140,13 @@ Vyberte **ladit** a pak **Zastavit ladění** , aby se ladicí program zastavil.
 
 Změňte režim ladění tak, aby se **připojil k serveru (AZDS)** , a spusťte službu:
 
-![](media/get-started-node/attach-nodejs.png)
+![Snímek obrazovky uživatelského rozhraní VS Code se zvolenou možností připojit k serveru (AZDS).](media/get-started-node/attach-nodejs.png)
 
 Tento příkaz vytvoří a spustí vaši službu v Azure Dev Spaces. Také spustí proces [nodemon](https://nodemon.io) v kontejneru služby a připojí k němu vs Code. Proces *nodemon* umožňuje automatické restartování při změně zdrojového kódu a umožňuje rychlejší vývoj vnitřních smyček podobně jako vývoj na místním počítači.
 
 Po spuštění služby přejděte k ní pomocí prohlížeče a s ním můžete pracovat.
 
-Když je služba spuštěná, vraťte se do VS Code a aktualizujte řádek 13 v *serveru. js*. Příklad:
+Když je služba spuštěná, vraťte se do VS Code a aktualizujte řádek 13 v *server.js*. Příklad:
 ```javascript
     res.send('Hello from webfrontend in Azure while debugging!');
 ```

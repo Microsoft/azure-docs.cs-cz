@@ -3,13 +3,13 @@ title: Použití pod zásadami zabezpečení ve službě Azure Kubernetes Servic
 description: Naučte se řídit přístup pomocí PodSecurityPolicy ve službě Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 06/30/2020
-ms.openlocfilehash: dd526b7825279d886c60fbb1820222a75abab03e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/21/2020
+ms.openlocfilehash: b5e9ec19392056115ae739d40c429d93d6ac810e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507076"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015574"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Preview – Zabezpečte svůj cluster pomocí zásad zabezpečení v Azure Kubernetes Service (AKS).
 
@@ -348,7 +348,7 @@ kubectl apply -f psp-deny-privileged-clusterrole.yaml
 Nyní vytvořte ClusterRoleBinding pro použití ClusterRole vytvořené v předchozím kroku. Vytvořte soubor s názvem `psp-deny-privileged-clusterrolebinding.yaml` a vložte následující YAML manifest:
 
 ```yaml
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: psp-deny-privileged-clusterrolebinding

@@ -7,12 +7,12 @@ ms.date: 12/4/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: a4c873e7ec1867b6ce53cd9f4c3d5c54242a6f16
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: a5037a86d7d6236f6fa8597dd33148417ddee116
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232334"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999550"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>Rychlý Start: Klientská knihovna Azure Queue Storage V12 pro jazyk Java
 
@@ -27,9 +27,14 @@ Použijte klientskou knihovnu Azure Queue Storage V12 pro jazyk Java:
 * Přijímání a odstraňování zpráv z fronty
 * Odstranění fronty
 
-[Referenční dokumentace k](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)  |  [Balíček (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue)  |  [Ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+Další prostředky:
 
-## <a name="prerequisites"></a>Požadavky
+* [Referenční dokumentace k rozhraní API](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html)
+* [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)
+* [Balíček (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue)
+* [Ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+
+## <a name="prerequisites"></a>Předpoklady
 
 * [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable) verze 8 nebo vyšší
 * [Apache Maven](https://maven.apache.org/download.cgi)

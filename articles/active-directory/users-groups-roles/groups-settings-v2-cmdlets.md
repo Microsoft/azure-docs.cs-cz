@@ -14,11 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03c5e3fe7fe84b968b59d0668619b3feddacc4f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce3a97678dea7e7b26caa3b1b091b023eca1a555
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727819"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015693"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Rutiny Azure Active Directory verze 2 pro správu skupin
 
@@ -49,7 +50,7 @@ Chcete-li ověřit, zda je modul připravený k použití, použijte následují
     Binary     2.0.0.115    azuread                      {Add-AzureADAdministrati...}
 ```
 
-Teď můžete začít používat rutiny v modulu. Úplný popis rutin v modulu Azure AD najdete v online referenční dokumentaci pro [Azure Active Directory PowerShell verze 2](/powershell/azure/install-adv2?view=azureadps-2.0).
+Teď můžete začít používat rutiny v modulu. Úplný popis rutin v modulu Azure AD najdete v online referenční dokumentaci pro [Azure Active Directory PowerShell verze 2](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0).
 
 > [!NOTE]
 > Rutiny Azure AD PowerShell nefungují s novým PowerShellem 7, protože jsou založené na .NET Core. Víme, že právě probíhá aktualizace. Počínaje teď doporučujeme použít modul Windows PowerShell 5. x, který se použije pro operace Azure AD PowerShellu. 
@@ -337,7 +338,7 @@ Zpětný zápis skupin Office 365 je funkce Public Preview služby Azure Active 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další Azure Active Directory dokumentaci PowerShellu najdete v [Azure Active Directory rutinách](/powershell/azure/install-adv2?view=azureadps-2.0).
+Další Azure Active Directory dokumentaci PowerShellu najdete v [Azure Active Directory rutinách](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0).
 
 * [Správa přístupu k prostředkům pomocí skupin služby Azure Active Directory](../fundamentals/active-directory-manage-groups.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
 * [Integrování místních identit do služby Azure Active Directory](../hybrid/whatis-hybrid-identity.md?context=azure/active-directory/users-groups-roles/context/ugr-context)

@@ -14,11 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b91eb361d4bcae304734817ee7f57141d6f06415
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd060972e562759fcc1071f2c6549578bd3d4ed9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727853"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015710"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Rutiny Azure Active Directory pro konfiguraci nastavení skupiny
 
@@ -31,7 +32,7 @@ Další informace o tom, jak zabránit uživatelům, kteří nejsou správci, ab
 
 Nastavení skupiny Office 365 jsou nakonfigurována pomocí objektu nastavení a objektu SettingsTemplate. Zpočátku se ve vašem adresáři nezobrazí žádné objekty nastavení, protože váš adresář je nakonfigurovaný s výchozím nastavením. Chcete-li změnit výchozí nastavení, je nutné vytvořit nový objekt nastavení pomocí šablony nastavení. Šablony nastavení jsou definovány společností Microsoft. Existuje několik různých šablon nastavení. Ke konfiguraci nastavení skupiny Office 365 pro svůj adresář použijte šablonu s názvem "Group. Unified". Pokud chcete nakonfigurovat nastavení skupiny Office 365 pro jednu skupinu, použijte šablonu s názvem "Group. Unified. host". Tato šablona se používá ke správě přístupu hosta ke skupině Office 365. 
 
-Rutiny jsou součástí modulu Azure Active Directory PowerShell v2. Pokyny ke stažení a instalaci modulu do počítače najdete v článku [Azure Active Directory PowerShell verze 2](https://docs.microsoft.com/powershell/azuread/). Verzi 2 tohoto modulu můžete nainstalovat z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureAD/).
+Rutiny jsou součástí modulu Azure Active Directory PowerShell v2. Pokyny ke stažení a instalaci modulu do počítače najdete v článku [Azure Active Directory PowerShell verze 2](https://docs.microsoft.com/powershell/azure/active-directory/overview). Verzi 2 tohoto modulu můžete nainstalovat z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureAD/).
 
 ## <a name="install-powershell-cmdlets"></a>Instalace rutin PowerShellu
 
@@ -318,9 +319,9 @@ Tento krok odebere nastavení na úrovni adresáře, která platí pro všechny 
    ```
 
 ## <a name="cmdlet-syntax-reference"></a>Reference k syntaxi rutin
-Další Azure Active Directory dokumentaci PowerShellu najdete v [Azure Active Directory rutinách](/powershell/azure/install-adv2?view=azureadps-2.0).
+Další Azure Active Directory dokumentaci PowerShellu najdete v [Azure Active Directory rutinách](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0).
 
-## <a name="additional-reading"></a>Další čtení
+## <a name="additional-reading"></a>Další materiály ke čtení
 
 * [Správa přístupu k prostředkům pomocí skupin služby Azure Active Directory](../fundamentals/active-directory-manage-groups.md)
 * [Integrování místních identit do služby Azure Active Directory](../hybrid/whatis-hybrid-identity.md)
