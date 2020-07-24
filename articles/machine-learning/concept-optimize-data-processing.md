@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Seznamte se s osvědčenými postupy pro optimalizaci rychlostí zpracování dat a o tom, jaké Integrace Azure Machine Learning podporuje pro zpracování dat ve velkém měřítku.
 services: machine-learning
 ms.service: machine-learning
-author: sgilley
 ms.author: sgilley
+author: sdgilley
 ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 09e48bd5c27dc4835ba0261ccd929f858fdb58b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0badd92a3156f76f99bf1f48fca2093a2bca2f5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481880"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012633"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Optimalizujte zpracování dat pomocí Azure Machine Learning
 
@@ -51,7 +51,7 @@ U více virtuálních procesorů vCPU Pamatujte na to, že chcete, aby se jeden 
 
 Pokud nemůžete přidat k počítači více paměti RAM, můžete použít následující postupy, které vám pomůžou minimalizovat zatížení procesoru a optimalizovat časy zpracování. Tato doporučení se vztahují k jednomu i distribuovaným systémům.
 
-Technika | Description
+Technika | Popis
 ----|----
 Komprese | Pro svá data použijte jiné reprezentace způsobem, který používá méně paměti a významně neovlivní výsledky vašeho výpočtu.<br><br>*Příklad:* Místo uložení položek jako řetězce s přibližně 10 bajtů nebo více za položku uložte je jako logická hodnota, true nebo false, kterou můžete uložit v 1 bajtu.
 Vytváření bloků | Načtení dat do paměti v podmnožinách (bloků), zpracování dat v jednom podmnožině v čase nebo paralelní více dílčích sad. Tato metoda funguje nejlépe, pokud potřebujete zpracovat všechna data, ale není nutné načítat všechna data do paměti najednou. <br><br>*Příklad:* Místo zpracování dat v plném roce v jednom okamžiku načtěte a zpracujte data po měsících.

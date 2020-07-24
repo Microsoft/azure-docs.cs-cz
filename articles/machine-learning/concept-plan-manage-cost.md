@@ -10,11 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: ae1beeebfddfe250ae20a70c3e78ec32774218d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fc9a1a1c3a08f0530649ae64926c673e2d666e0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82996321"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012684"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Plánování a Správa nákladů na Azure Machine Learning
 
@@ -80,7 +81,7 @@ Clustery AmlCompute jsou navržené tak, aby dynamicky škálovat na základě v
 
 Můžete také nakonfigurovat, jak dlouho je uzel nečinný, než se horizontální navýšení kapacity zmenší. Ve výchozím nastavení je doba nečinnosti, než bude horizontální navýšení kapacity nastavená na 120 sekund.
 
-+ Pokud provedete méně iterativní experimenty, zkraťte tuto dobu na úsporu nákladů. 
++ Pokud provedete méně iterativní experimenty, zkraťte tuto dobu na úsporu nákladů.
 + Pokud provádíte vysoce iterativní experimenty při vývoji a testování, možná budete muset čas prodloužit, abyste za každou změnu v školicím skriptu nebo prostředí nemuseli platit za konstantního škálování.
 
 Clustery AmlCompute se dají nakonfigurovat pro vaše měnící se požadavky na úlohy v Azure Portal pomocí [třídy AMLCOMPUTE SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) [AmlCompute CLI](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)s [rozhraními REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable).
@@ -106,31 +107,13 @@ Tady je několik možností, které máte:
 * V případě [ladění pomocí parametrů](how-to-tune-hyperparameters.md#early-termination)Definujte zásadu prvotního ukončení ze zásad Bandit, pozastavené zásady nebo zásadu výběru zkrácení. Chcete-li dále řídit Sweep parametrů, použijte parametry jako `max_total_runs` nebo `max_duration_minutes` .
 * V případě [automatizovaného strojového učení](how-to-configure-auto-train.md#exit)nastavte podobné zásady ukončení pomocí `enable_early_stopping` příznaku. K `iteration_timeout_minutes` `experiment_timeout_minutes` řízení maximální doby trvání běhu nebo pro celý experiment použijte také vlastnosti, jako je a.
 
-## <a name="use-low-priority-vms"></a>Použití virtuálních počítačů s nízkou prioritou
+## <a name="use-low-priority-vms"></a><a id="low-pri-vm"></a>Použití virtuálních počítačů s nízkou prioritou
 
 Azure umožňuje používat nadbytečnou nevyužitou kapacitu jako virtuální počítače s nízkou prioritou napříč sadami Virtual Machine Scale Sets, službou Batch a službou Machine Learning. Tato přidělení jsou předem emptible, ale v porovnání s vyhrazenými virtuálními počítači se přidávají za nižší cenu. Obecně doporučujeme používat pro úlohy služby Batch virtuální počítače s nízkou prioritou. Měli byste je také použít, pokud se přerušení budou obnovovat buď prostřednictvím opětovného odeslání (pro Batch Inferencing), nebo prostřednictvím restartu (pro školení s hloubkovým učením s kontrolními body).
 
 Virtuální počítače s nízkou prioritou mají jedinou kvótu oddělenou od hodnoty vyhrazené kvóty, kterou používá rodina virtuálních počítačů. Přečtěte si [Další informace o kvótách AmlCompute](how-to-manage-quotas.md).
 
-Prioritu virtuálního počítače nastavíte některým z těchto způsobů:
-
-* V nástroji Studio při vytváření virtuálního počítače vyberte možnost **Nízká priorita** .
-
-* V sadě Python SDK nastavte `vm_priority` atribut v konfiguraci zřizování.  
-
-    ```python
-    compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
-                                                               vm_priority='lowpriority',
-                                                               max_nodes=4)
-    ```
-
-* Pomocí rozhraní příkazového řádku nastavte `vm-priority` :
-
-    ```azurecli-interactive
-    az ml computetarget create amlcompute --name lowpriocluster --vm-size Standard_NC6 --max-nodes 5 --vm-priority lowpriority
-    ```
-
- Virtuální počítače s nízkou prioritou nefungují pro výpočetní instance, protože potřebují podporovat interaktivní poznámkové bloky. 
+ Virtuální počítače s nízkou prioritou nefungují pro výpočetní instance, protože potřebují podporovat interaktivní poznámkové bloky.
 
 ## <a name="use-reserved-instances"></a>Použití rezervovaných instancí
 
@@ -143,5 +126,5 @@ Azure Machine Learning COMPUTE podporuje rezervované instance, které jsou v po
 
 Přečtěte si další informace:
 * [Správa a zvýšení kvót prostředků](how-to-manage-quotas.md)
-* [Správa nákladů pomocí [analýzy nákladů](../cost-management-billing/costs/quick-acm-cost-analysis.md).
+* [Správa nákladů pomocí analýzy nákladů](../cost-management-billing/costs/quick-acm-cost-analysis.md).
 * [Azure Machine Learning výpočetní](how-to-set-up-training-targets.md#amlcompute)prostředky.

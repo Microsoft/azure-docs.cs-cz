@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 82ef70677dd0ede4ddfdd0899747c18f335da5a7
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8350437d04fd019aab8fb22be8ad0e9a4a2831d7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077027"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012174"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Přesun dat do SQL Serveru na virtuálním počítači Azure
 
@@ -38,13 +38,13 @@ V tomto dokumentu se předpokládá, že příkazy SQL se spouštějí z SQL Ser
 >
 >
 
-## <a name="prerequisites"></a><a name="prereqs"></a>Požadavky
+## <a name="prerequisites"></a><a name="prereqs"></a>Předpoklady
 V tomto kurzu se předpokládá, že máte následující:
 
-* **Předplatné Azure**. Pokud nemáte předplatné, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* **Předplatné Azure** Pokud nemáte předplatné, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 * **Účet služby Azure Storage**. K uložení dat v tomto kurzu použijete účet služby Azure Storage. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md). Po vytvoření účtu úložiště budete muset získat klíč účtu, který se používá pro přístup k úložišti. Viz [Správa přístupových klíčů účtu úložiště](../../storage/common/storage-account-keys-manage.md).
 * Zřízené **SQL Server na virtuálním počítači Azure**. Pokyny najdete v tématu [nastavení virtuálního počítače Azure SQL Server jako serveru IPython notebook pro pokročilou analýzu](../data-science-virtual-machine/setup-sql-server-virtual-machine.md).
-* Instalace a konfigurace **Azure PowerShell** lokálně. Pokyny najdete v tématu [instalace a konfigurace Azure PowerShell](/powershell/azure/overview).
+* Instalace a konfigurace **Azure PowerShell** lokálně. Pokyny najdete v tématu [instalace a konfigurace Azure PowerShell](/powershell/azure/).
 
 ## <a name="moving-data-from-a-flat-file-source-to-sql-server-on-an-azure-vm"></a><a name="filesource_to_sqlonazurevm"></a>Přesunutí dat ze zdroje plochého souboru do SQL Server na virtuálním počítači Azure
 Pokud jsou vaše data v nestrukturovaném souboru (uspořádaná ve formátu řádku nebo sloupce), můžete ji přesunout do SQL Server virtuálního počítače v Azure pomocí následujících metod:
@@ -209,7 +209,7 @@ Snímek obrazovky možností zálohování a obnovení databáze z SQL Server Ma
 
 ![Nástroj pro import SQL Server][1]
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Prostředky
 [Migrace databáze na SQL Server na virtuálním počítači Azure](../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md)
 
 [SQL Server na Azure Virtual Machines – přehled](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)

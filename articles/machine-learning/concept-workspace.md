@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/08/2020
-ms.openlocfilehash: 415c624153971e88afac3b18920a3ba3a8f2cfae
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 118c80b27d10714703d631f0e2560540eb2d39cf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147035"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012548"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Co je Azure Machine Learning pracovní prostor?
 
@@ -47,13 +47,18 @@ Diagram znázorňuje následující komponenty pracovního prostoru:
 
 S vaším pracovním prostorem můžete pracovat následujícími způsoby:
 
+> [!IMPORTANT]
+> Nástroje označené (Preview) jsou momentálně ve verzi Public Preview.
+> Verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 + Na webu:
     + [Azure Machine Learning Studio](https://ml.azure.com) 
     + [Azure Machine Learning Designer (Preview)](concept-designer.md) – dostupné jenom v pracovních prostorech [Enterprise Edition](overview-what-is-azure-ml.md#sku) .
 + V jakémkoli prostředí Pythonu s [Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
-+ V jakémkoli prostředí R s [Azure Machine Learning SDK pro R](https://azure.github.io/azureml-sdk-for-r/reference/index.html).
++ V jakémkoli prostředí R s [Azure Machine Learning SDK pro R (Preview)](https://azure.github.io/azureml-sdk-for-r/reference/index.html).
 + Na příkazovém řádku pomocí [rozšíření Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli)
 + [Rozšíření Azure Machine Learning VS Code](how-to-manage-resources-vscode.md#workspaces)
+
 
 ## <a name="machine-learning-with-a-workspace"></a>Strojové učení s pracovním prostorem
 

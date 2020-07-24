@@ -10,11 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: ccb95064f756ef035b7da92d029680f1c195982b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3e1cfa13a3fd568ab2f1253c015880c57f99ce7e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958731"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012481"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Datové platformy podporované v Data Science Virtual Machine
 
@@ -24,13 +25,13 @@ V DSVM jsou podporovány následující nástroje datové platformy.
 
 ## <a name="sql-server-developer-edition"></a>SQL Server Developer Edition
 
-| | |
+| Kategorie | Hodnota |
 | ------------- | ------------- |
-| Co je to?   | Instance místní relační databáze      |
+| Co to je?   | Instance místní relační databáze      |
 | Podporované edice DSVM      | Windows 2016: SQL Server 2017, Windows 2019: SQL Server 2019      |
-| Typická použití      | Rychlý vývoj místně s menší datovou sadou <br/> Spustit v-databázi R   |
-| Odkazy na ukázky      |    Do databáze SQL se načte malý vzorek datové sady měst v New Yorku:<br/>  `nyctaxi` <br/> Ukázka Jupyter znázorňující Microsoft Machine Learning Server a analýzy v databázi najdete na adrese:<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`  |
-| Související nástroje na DSVM       | SQL Server Management Studio <br/> Ovladače ODBC/JDBC<br/> pyodbc, RODBC<br />Apache Drill      |
+| Typická použití      | <ul><li>Rychlý vývoj místně s menší datovou sadou</li><li>Spustit v-databázi R</li></ul> |
+| Odkazy na ukázky      | <ul><li>Do databáze SQL se načte malý vzorek datové sady měst v New Yorku:<br/>  `nyctaxi`</li><li>Ukázka Jupyter znázorňující Microsoft Machine Learning Server a analýzy v databázi najdete na adrese:<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`</li></ul> |
+| Související nástroje na DSVM       | <ul><li>SQL Server Management Studio</li><li>Ovladače ODBC/JDBC</li><li>pyodbc, RODBC</li><li>Apache Drill</li></ul> |
 
 > [!NOTE]
 > Edici SQL Server Developer lze použít pouze pro účely vývoje a testování. K jeho spuštění v produkčním prostředí potřebujete licenci nebo jeden z SQL Server virtuálních počítačů.
@@ -61,13 +62,13 @@ Součástí DSVM jsou taky ovladače ODBC a JDBC, které vám pomůžou komuniko
 
 ## <a name="apache-spark-2x-standalone"></a>Apache Spark 2. x (samostatně)
 
-| | |
+| Kategorie | Hodnota |
 | ------------- | ------------- |
-| Co je to?   | Samostatná instance pro samostatnou Apache Spark platformu (jeden uzel v procesu); systém pro rychlé a rozsáhlé zpracování dat a strojové učení     |
+| Co to je?   | Samostatná instance pro samostatnou Apache Spark platformu (jeden uzel v procesu); systém pro rychlé a rozsáhlé zpracování dat a strojové učení     |
 | Podporované edice DSVM      | Linux     |
-| Typická použití      | * Rychlý vývoj aplikací Spark/PySpark v místním prostředí s menší datovou sadou a novějším nasazením ve velkých clusterech Spark, jako je Azure HDInsight<br/> * Test Microsoft Machine Learning Server – kontext Sparku <br />* K sestavování aplikací ML použijte knihovnu [MMLSpark](https://github.com/Azure/mmlspark) open source v SparkML nebo Microsoftu. |
-| Odkazy na ukázky      |    Ukázka Jupyter: <br />&nbsp;&nbsp;* ~/notebooks/SparkML/pySpark <br /> &nbsp;&nbsp;* ~/notebooks/MMLSpark <br /> Microsoft Machine Learning Server (kontext Spark):/dsvm/samples/MRS/MRSSparkContextSample.R |
-| Související nástroje na DSVM       | PySpark, Scala<br/>Jupyter (jádra Spark/PySpark)<br/>Microsoft Machine Learning Server, SPARKER, Sparklyr <br />Apache Drill      |
+| Typická použití      | <ul><li>Rychlý vývoj aplikací Spark/PySpark v místním prostředí s menší datovou sadou a novějším nasazením ve velkých clusterech Spark, jako je Azure HDInsight</li><li>Test Microsoft Machine Learning Server – kontext Sparku</li><li>Sestavování aplikací ML pomocí knihovny [MMLSpark](https://github.com/Azure/mmlspark) open source v SparkML nebo Microsoftu</li></ul> |
+| Odkazy na ukázky      |    Ukázka Jupyter:<ul><li>~/notebooks/SparkML/pySpark</li><li>~/notebooks/MMLSpark</li></ul><p>Microsoft Machine Learning Server (kontext Spark):/dsvm/samples/MRS/MRSSparkContextSample.R</p> |
+| Související nástroje na DSVM       | <ul><li>PySpark, Scala</li><li>Jupyter (jádra Spark/PySpark)</li><li>Microsoft Machine Learning Server, SPARKER, Sparklyr</li><li>Apache Drill</li></ul> |
 
 ### <a name="how-to-use-it"></a>Jak ji použít
 Úlohy Spark můžete odeslat na příkazovém řádku spuštěním `spark-submit` `pyspark` příkazu nebo. Můžete také vytvořit Poznámkový blok Jupyter vytvořením nového poznámkového bloku pomocí jádra Spark.

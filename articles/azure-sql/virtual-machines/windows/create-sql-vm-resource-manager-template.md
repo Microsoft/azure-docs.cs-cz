@@ -1,37 +1,41 @@
 ---
-title: Vytvoření virtuálního počítače s SQL Server (šablona Azure Resource Manager)
-description: Naučte se vytvářet SQL Server na virtuálním počítači Azure pomocí Azure Resource Manager šablony.
+title: Vytvoření virtuálního počítače s SQL Server pomocí šablony ARM
+description: Naučte se, jak vytvořit SQL Server na virtuálním počítači Azure pomocí šablony Azure Resource Manager (šablona ARM).
 author: MashaMSFT
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: virtual-machines-sql
-ms.openlocfilehash: 8b165f640548f28e5d94e5a791c0fe8545df4d78
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 1b6f54c823f59bb654ac86f041eefe80af3eb5ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852519"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003845"
 ---
-# <a name="create-sql-server-vm-azure-resource-manager-template"></a>Vytvoření virtuálního počítače s SQL Server (šablona Azure Resource Manager)
+# <a name="quickstart-create-sql-server-vm-using-an-arm-template"></a>Rychlý Start: Vytvoření virtuálního počítače s SQL Server pomocí šablony ARM
 
-Tuto šablonu Azure Resource Manager použijte k nasazení SQL Server na virtuálním počítači Azure (VM). 
+Pomocí této šablony Azure Resource Manager (šablony ARM) můžete nasadit SQL Server na virtuálním počítači Azure (VM). 
 
 [!INCLUDE [About Azure Resource Manager](../../../../includes/resource-manager-quickstart-introduction.md)]
+
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
+
+[![Nasazení do Azure](../../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-sql-vm-new-storage%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Požadavky
 
 Šablona nástroje SQL Server VM ARM vyžaduje následující:
 
-- Nejnovější verzi rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) nebo [PowerShellu](/powershell/scripting/install/installing-powershell?view=powershell-7). 
+- Nejnovější verzi rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) nebo [PowerShellu](/powershell/scripting/install/installing-powershell). 
 - Předem nakonfigurovaná [Skupina prostředků](../../../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) s připravenou [virtuální sítí](../../../virtual-network/quick-create-portal.md) a [podsítí](../../../virtual-network/virtual-network-manage-subnet.md#add-a-subnet).
 - Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 
 ## <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-sql-vm-new-storage/).
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-sql-vm-new-storage/).
 
 :::code language="json" source="~/quickstart-templates/101-sql-vm-new-storage/azuredeploy.json" highlight="169-310":::
 
@@ -43,7 +47,7 @@ V šabloně je definováno pět prostředků Azure:
 - [Microsoft. COMPUTE/virtualMachines](/azure/templates/microsoft.compute/virtualmachines): vytvoří virtuální počítač v Azure. 
 - [Microsoft. SqlVirtualMachine/SqlVirtualMachines](/azure/templates/microsoft.sqlvirtualmachine/sqlvirtualmachines): zaregistruje virtuální počítač u poskytovatele prostředků virtuálního počítače SQL. 
 
-Další SQL Server v šablonách virtuálních počítačů Azure najdete v [galerii šablon rychlý Start](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sqlvirtualmachine).
+Další SQL Server v šablonách virtuálních počítačů Azure najdete v [galerii šablon rychlý Start](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sqlvirtualmachine&pageNumber=1&sort=Popular).
 
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
@@ -116,7 +120,7 @@ Write-Host "Press [ENTER] to continue..."
 Podrobný kurz, který vás provede procesem vytvoření šablony, najdete v těchto tématech:
 
 > [!div class="nextstepaction"]
-> [Kurz: vytvoření a nasazení první šablony Azure Resource Manager](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [Kurz: vytvoření a nasazení první šablony ARM](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
 
 Další způsoby nasazení SQL Server virtuálního počítače najdete v těchto tématech: 
 - [Azure Portal](create-sql-vm-portal.md)

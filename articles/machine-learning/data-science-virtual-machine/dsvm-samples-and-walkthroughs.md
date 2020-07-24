@@ -10,11 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: d064e940997d13e51be4fd38e9f678b778ce31f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98a1cd883867aa2f785b15f4c7ae4f2266a421ae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74900050"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012565"
 ---
 # <a name="samples-on-azure-data-science-virtual-machines"></a>Ukázky Virtual Machines pro datové vědy v Azure
 
@@ -22,12 +23,12 @@ Azure Data věda Virtual Machines (DSVMs) zahrnuje komplexní sadu vzorového k�
 > [!NOTE]
 > Další informace o tom, jak spustit poznámkové bloky Jupyter na virtuálních počítačích pro datové vědy, najdete v části [Access Jupyter](#access-jupyter) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Aby bylo možné tyto ukázky spustit, musíte mít zřízenou Data Science Virtual Machine. Podívejte se na rychlé starty pro [Windows](./provision-vm.md) a [Ubuntu](./dsvm-ubuntu-intro.md).
+Aby bylo možné spustit tyto ukázky, je nutné zřídit [Ubuntu Data Science Virtual Machine](./dsvm-ubuntu-intro.md).
 
 ## <a name="available-samples"></a>Dostupné ukázky
-| Kategorie ukázek | Description | Umístění |
+| Kategorie ukázek | Popis | Umístění |
 | ------------- | ------------- | ------------- |
 | Jazyk R  | Ukázky ilustrují scénáře, jako je například připojení k úložištím cloudových dat založených na Azure a postup porovnání Open Source R a Microsoft Machine Learning Server. Také vysvětlují, jak zprovoznění modely na Microsoft Machine Learning Server a SQL Server. <br/> [Jazyk R](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|
 | Jazyk Python  | Ukázky popisují scénáře, jak se připojit k úložištím cloudových dat založenými na Azure a jak pracovat s Azure Machine Learning.  <br/> [Jazyk Python](#python-language) | <br/>`~notebooks` <br/><br/>|

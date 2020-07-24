@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 9d0964fb28451abe0a77276d6f9d605fcaac2514
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 72ccf2a765f50358635e4a803ed0b92e60bd7d19
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86156424"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012208"
 ---
 # <a name="azure-machine-learning-curated-environments"></a>Azure Machine Learning v nich uspořádaná prostředí
 
-V tomto článku jsou uvedena seznamovaná prostředí v Azure Machine Learning a balíčky a kanály, které jsou v nich předem nainstalované.
+V tomto článku jsou uvedena seznamovaná prostředí v Azure Machine Learning a balíčky a kanály, které jsou v nich předem nainstalované. Dodaná prostředí jsou poskytována Azure Machine Learning a jsou ve výchozím nastavení k dispozici ve vašem pracovním prostoru. Jsou zajištěny pomocí imagí Docker uložených v mezipaměti, což snižuje náklady na přípravu za běhu a umožňují rychlejší nasazení. Pomocí těchto prostředí můžete rychle začít s různými architekturami strojového učení.
 
 > [!NOTE]
 > Tento seznam se aktualizuje od června 2020. Seznam nejvyšších aktualizovaných seznamů získáte pomocí sady Python SDK. Další informace najdete v článku o [prostředích](./how-to-use-environments.md#use-a-curated-environment).

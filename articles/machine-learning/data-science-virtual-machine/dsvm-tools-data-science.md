@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: c414087270558e21340e50114c0563ff7e50064c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15c3f3994b9d519a4144fa2c2e1418e92cdbd6ae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80282303"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012402"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Machine Learning a nástroje pro datové vědy na Azure Data věda Virtual Machines
 Azure Data věda Virtual Machines (DSVMs) mají bohatou sadu nástrojů a knihoven pro strojové učení, které jsou dostupné v oblíbených jazycích, jako je Python, R nebo Helena.
@@ -26,9 +26,9 @@ Tady jsou některé z nástrojů pro strojové učení a knihovny v DSVMs.
 
 Podívejte se na kompletní odkaz na [sadu SDK Azure Machine Learning pro Python](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml).
 
-|    |           |
+| Kategorie | Hodnota |
 | ------------- | ------------- |
-| Co je to?   |   Azure Machine Learning je cloudová služba, kterou můžete použít k vývoji a nasazení modelů strojového učení. Modely můžete sledovat při sestavování, školení, škálování a správě pomocí sady Python SDK. Nasaďte modely jako kontejnery a spouštějte je v cloudu, v místním prostředí nebo na Azure IoT Edge.   |
+| Co to je?   |   Azure Machine Learning je cloudová služba, kterou můžete použít k vývoji a nasazení modelů strojového učení. Modely můžete sledovat při sestavování, školení, škálování a správě pomocí sady Python SDK. Nasaďte modely jako kontejnery a spouštějte je v cloudu, v místním prostředí nebo na Azure IoT Edge.   |
 | Podporované edice     | Windows (prostředí conda: AzureML), Linux (prostředí conda: py36)    |
 | Typická použití      | Obecná platforma pro strojové učení      |
 | Jak je nakonfigurovaná nebo nainstalovaná?      |  Instalace s podporou GPU   |
@@ -38,9 +38,9 @@ Podívejte se na kompletní odkaz na [sadu SDK Azure Machine Learning pro Python
 
 ## <a name="h2o"></a>H2O
 
-|    |           |
+| Kategorie | Hodnota |
 | ------------- | ------------- |
-| Co je to?   | Open Source platforma AI podporující v paměti, distribuované, rychlé a škálovatelné strojové učení.  |
+| Co to je?   | Open Source platforma AI podporující v paměti, distribuované, rychlé a škálovatelné strojové učení.  |
 | Podporované verze      | Linux   |
 | Typická použití      | Distribuované a škálovatelné strojové učení pro obecné účely   |
 | Jak je nakonfigurovaná nebo nainstalovaná?      | V nástroji je nainstalováno `/dsvm/tools/h2o` .      |
@@ -52,9 +52,9 @@ K dispozici je několik dalších knihoven strojového učení v DSVMs, jako je 
 
 ## <a name="lightgbm"></a>LightGBM
 
-|    |           |
+| Kategorie | Hodnota |
 | ------------- | ------------- |
-| Co je to?   | Rychlé a distribuované prostředí s vysokým výkonem (GBDT, GBRT, GBM nebo TRŽIŠTě) založené na algoritmech rozhodovacího stromu. Používá se pro hodnocení, klasifikaci a mnoho dalších úloh strojového učení.    |
+| Co to je?   | Rychlé a distribuované prostředí s vysokým výkonem (GBDT, GBRT, GBM nebo TRŽIŠTě) založené na algoritmech rozhodovacího stromu. Používá se pro hodnocení, klasifikaci a mnoho dalších úloh strojového učení.    |
 | Podporované verze      | Windows, Linux    |
 | Typická použití      | Architektura pro posilování přechodu na obecné účely      |
 | Jak je nakonfigurovaná nebo nainstalovaná?      | Ve Windows se LightGBM nainstaluje jako balíček Pythonu. V systému Linux je spustitelný soubor příkazového řádku v systému `/opt/LightGBM/lightgbm` , je nainstalován balíček R a jsou nainstalovány balíčky python.     |
@@ -62,9 +62,9 @@ K dispozici je několik dalších knihoven strojového učení v DSVMs, jako je 
 | Související nástroje      | MXNet, XgBoost  |
 
 ## <a name="rattle"></a>Rattle
-|    |           |
+| Kategorie | Hodnota |
 | ------------- | ------------- |
-| Co je to?   |   Grafické uživatelské rozhraní pro dolování dat pomocí jazyka R.   |
+| Co to je?   |   Grafické uživatelské rozhraní pro dolování dat pomocí jazyka R.   |
 | Podporované edice     | Windows, Linux     |
 | Typická použití      | Obecná data uživatelského rozhraní – nástroj dolování pro R    |
 | Jak ji použít nebo spustit      | Jako nástroj uživatelského rozhraní. V systému Windows spusťte příkazový řádek, spusťte R a potom v jazyce R spusťte příkaz `rattle()` . V systému Linux se připojte pomocí X2Go, spusťte terminál, spusťte R a potom v jazyce R spusťte příkaz `rattle()` . |
@@ -72,9 +72,9 @@ K dispozici je několik dalších knihoven strojového učení v DSVMs, jako je 
 | Související nástroje      |LightGBM, Weka, XGBoost   |
 
 ## <a name="vowpal-wabbit"></a>Vowpal Wabbit
-|    |           |
+| Kategorie | Hodnota |
 | ------------- | ------------- |
-| Co je to?   |   Rychlá a open source knihovna výukového systému, která je mimo jádro    |
+| Co to je?   |   Rychlá a open source knihovna výukového systému, která je mimo jádro    |
 | Podporované edice     | Windows, Linux     |
 | Typická použití      | Obecná knihovna strojového učení      |
 | Jak je nakonfigurovaná nebo nainstalovaná?      |  Windows: Instalační program MSI<br/>Linux: apt-get |
@@ -84,9 +84,9 @@ K dispozici je několik dalších knihoven strojového učení v DSVMs, jako je 
 
 
 ## <a name="weka"></a>Weka
-|    |           |
+| Kategorie | Hodnota |
 | ------------- | ------------- |
-| Co je to?   |  Kolekce algoritmů strojového učení pro úlohy dolování dat. Algoritmy mohou být buď aplikovány přímo na sadu dat, nebo volány z vlastního kódu Java. Weka obsahuje nástroje pro předběžné zpracování dat, klasifikaci, regresi, clusteringu, pravidla přidružení a vizualizaci. |
+| Co to je?   |  Kolekce algoritmů strojového učení pro úlohy dolování dat. Algoritmy mohou být buď aplikovány přímo na sadu dat, nebo volány z vlastního kódu Java. Weka obsahuje nástroje pro předběžné zpracování dat, klasifikaci, regresi, clusteringu, pravidla přidružení a vizualizaci. |
 | Podporované edice     | Windows, Linux     |
 | Typická použití      | Obecný nástroj pro strojové učení     |
 | Jak ji použít nebo spustit      | Ve Windows vyhledejte weka v nabídce **Start** . V systému Linux se přihlaste pomocí X2Go a pak navštivte **aplikace**  >  **vývoj**aplikací  >  **weka**. |
@@ -94,9 +94,9 @@ K dispozici je několik dalších knihoven strojového učení v DSVMs, jako je 
 | Související nástroje      |LightGBM, Rattle, XGBoost   |
 
 ## <a name="xgboost"></a>XGBoost 
-|    |           |
+| Kategorie | Hodnota |
 | ------------- | ------------- |
-| Co je to?   |   Rychlá, přenosná a distribuovaná knihovna pro posilování barev (GBDT, GBRT nebo GBM) pro Python, R, Java, Scala, C++ a další. Spouští se na jednom počítači a na Apache Hadoop a Sparku.    |
+| Co to je?   |   Rychlá, přenosná a distribuovaná knihovna pro posilování barev (GBDT, GBRT nebo GBM) pro Python, R, Java, Scala, C++ a další. Spouští se na jednom počítači a na Apache Hadoop a Sparku.    |
 | Podporované edice     | Windows, Linux     |
 | Typická použití      | Obecná knihovna strojového učení      |
 | Jak je nakonfigurovaná nebo nainstalovaná?      |  Instalace s podporou GPU   |
@@ -105,9 +105,9 @@ K dispozici je několik dalších knihoven strojového učení v DSVMs, jako je 
 | Související nástroje      | LightGBM, MXNet   |
 
 ## <a name="apache-drill"></a>Apache Drill
-|    |           |
+| Kategorie | Hodnota |
 | ------------- | ------------- |
-| Co je to?   | Open Source dotazovací modul SQL pro velké objemy dat    |
+| Co to je?   | Open Source dotazovací modul SQL pro velké objemy dat    |
 | Podporované verze DSVM      | Windows 2019, Linux  |
 | Jak je nakonfigurovaná a nainstalovaná na DSVM?      |  Nainstalováno v `/dsvm/tools/drill*` pouze v integrovaném režimu   |
 | Typická použití      |  Pro průzkum místních dat bez nutnosti extrakce, transformace, načítání (ETL). Dotazování různých zdrojů dat a formátů, včetně sdílených svazků clusteru, formátu JSON, relačních tabulek a Hadoop.     |

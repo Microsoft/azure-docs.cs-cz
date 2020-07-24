@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, tracking-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a748b9284407b5ecd8cc8f6225c6762e7017d4d9
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: d5a332acbf6550fcc3a4256e1bc0531b31dd6c6a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026113"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012250"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Vědecké zpracování týmových dat v akci: používání Azure synapse Analytics
 V tomto kurzu Vás provedeme vytvořením a nasazením modelu strojového učení s využitím Azure synapse Analytics pro veřejně dostupnou datovou sadu, která je datovou sadou [NYC taxislužby TRIPS](https://www.andresmh.com/nyctaxitrips/) . Model binární klasifikace vytváří předpověď bez ohledu na to, jestli je pro cestu placené nebo ne.  Mezi modely patří klasifikace s více třídami (bez ohledu na to, zda existuje Tip) a regrese (rozdělení pro placené částky Tip).
@@ -95,7 +95,7 @@ Pokud chcete zřídit instanci Azure synapse Analytics, postupujte podle dokumen
 
 * **Název serveru**: \<server Name> . Database.Windows.NET
 * **Název SQLDW (databáze)**
-* **Jmen**
+* **Uživatelské jméno**
 * **Heslo**
 
 **Nainstalujte Visual Studio a SQL Server Data Tools.** Pokyny najdete v tématu [Začínáme se sadou Visual Studio 2019 pro SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-install-visual-studio.md).
@@ -602,7 +602,7 @@ AND pickup_longitude != '0' AND dropoff_longitude != '0'
 
 **Výstup:** Tento dotaz vygeneruje tabulku (s 2 803 538 řádky) s využitím Pickup a dropoff Latitudes a zeměpisná délka a příslušné přímé vzdálenosti v mílích. Tady jsou výsledky pro první tři řádky:
 
-|  | pickup_latitude | pickup_longitude | dropoff_latitude | dropoff_longitude | DirectDistance |
+| (Číslo řádku) | pickup_latitude | pickup_longitude | dropoff_latitude | dropoff_longitude | DirectDistance |
 | --- | --- | --- | --- | --- | --- |
 | 1 |40,731804 |-74,001083 |40,736622 |-73,988953 |.7169601222 |
 | 2 |40,715794 |-74, 010635 |40,725338 |-74,00399 |.7448343721 |
@@ -1006,7 +1006,7 @@ Na následujícím obrázku je k dispozici ukázkový experiment pro bodování.
 
 ![Publikování v Azure ML][11]
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 Abyste rekapitulacei, co jsme udělali v tomto výukovém kurzu, vytvořili jste prostředí pro datové vědy v Azure, které pracovalo s velkou veřejnou datovou sadou, provedli jsme to prostřednictvím vědeckého procesu pro týmovou práci, veškerého způsobu získávání dat a následného nasazení Azure Machine Learning webové služby.
 
 ### <a name="license-information"></a>Informace o licenci
