@@ -10,22 +10,22 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: cdd1cf255c943c8dc6d55a5b749b30357bdcd373
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 24e04e166c13f787f756c97716e2bf0143eecbdb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876721"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128569"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>Nasazení kontejneru rozpoznávání jazyka Analýza textu do služby Azure Kubernetes
 
 Přečtěte si, jak nasadit kontejner rozpoznávání jazyka. Tento postup vám ukáže, jak vytvořit místní kontejnery Docker, nasdílet kontejnery do vlastního privátního registru kontejnerů, spustit kontejner v clusteru Kubernetes a otestovat ho ve webovém prohlížeči.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento postup vyžaduje několik nástrojů, které je třeba nainstalovat a spustit místně. Nepoužívejte Azure Cloud Shell.
 
-* Použijte předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+* Použijte předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
 * [Git](https://git-scm.com/downloads) pro váš operační systém, abyste mohli klonovat [ukázku](https://github.com/Azure-Samples/cognitive-services-containers-samples) použitou v tomto postupu.
 * Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * [Modul Docker](https://www.docker.com/products/docker-engine) a ověří, že rozhraní příkazového řádku Docker funguje v okně konzoly.
@@ -46,13 +46,13 @@ Ukázka má dvě image kontejneru, jednu pro front-end Web. Druhý obrázek je k
 
 ### <a name="the-language-frontend-container"></a>Kontejner s front-endového jazyka
 
-Tento web je ekvivalentní vaší vlastní aplikaci na straně klienta, která dává požadavky na koncový bod detekce jazyka. Po dokončení postupu obdržíte zjištěný jazyk řetězce znaků přístupem k kontejneru webu v prohlížeči pomocí `http://<external-IP>/<text-to-analyze>`. Příkladem této adresy URL je `http://132.12.23.255/helloworld!`. Výsledek v prohlížeči je `English`.
+Tento web je ekvivalentní vaší vlastní aplikaci na straně klienta, která dává požadavky na koncový bod detekce jazyka. Po dokončení postupu obdržíte zjištěný jazyk řetězce znaků přístupem k kontejneru webu v prohlížeči pomocí `http://<external-IP>/<text-to-analyze>` . Příkladem této adresy URL je `http://132.12.23.255/helloworld!` . Výsledek v prohlížeči je `English` .
 
 ### <a name="the-language-container"></a>Kontejner jazyka
 
 Kontejner pro detekci jazyka, v tomto konkrétním postupu, je přístupný všem externím žádostem. Kontejner se žádným způsobem nezměnil, takže je k dispozici standardní Cognitive Services rozhraní API pro detekci jazyka specifického pro kontejner.
 
-Pro tento kontejner je toto rozhraní API požadavkem POST pro detekci jazyka. Stejně jako u všech kontejnerů Cognitive Services můžete získat další informace o kontejneru z jeho hostované informace Swagger `http://<external-IP>:5000/swagger/index.html`.
+Pro tento kontejner je toto rozhraní API požadavkem POST pro detekci jazyka. Stejně jako u všech kontejnerů Cognitive Services můžete získat další informace o kontejneru z jeho hostované informace Swagger `http://<external-IP>:5000/swagger/index.html` .
 
 Port 5000 je výchozím portem používaným pro kontejnery Cognitive Services.
 
@@ -72,7 +72,7 @@ K nasazení kontejneru do služby Azure Kubernetes musí být k dispozici image 
     az group create --name cogserv-container-rg --location westus
     ```
 
-1. Vytvořte vlastní Azure Container Registry ve formátu vašeho jména `registry`, například. `pattyregistry` V názvu nepoužívejte pomlčky ani znaky podtržení.
+1. Vytvořte vlastní Azure Container Registry ve formátu vašeho jména `registry` , například `pattyregistry` . V názvu nepoužívejte pomlčky ani znaky podtržení.
 
     ```azurecli-interactive
     az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
@@ -127,7 +127,7 @@ K nasazení kontejneru do služby Azure Kubernetes musí být k dispozici image 
     docker build -t language-frontend -t pattiyregistry.azurecr.io/language-frontend:v1 .
     ```
 
-    Chcete-li sledovat verzi v registru kontejneru, přidejte značku ve formátu verze, například `v1`.
+    Chcete-li sledovat verzi v registru kontejneru, přidejte značku ve formátu verze, například `v1` .
 
 1. Nahrajte image do registru kontejneru. Může to trvat několik minut.
 
@@ -135,7 +135,7 @@ K nasazení kontejneru do služby Azure Kubernetes musí být k dispozici image 
     docker push pattyregistry.azurecr.io/language-frontend:v1
     ```
 
-    Pokud se zobrazí `unauthorized: authentication required` chyba, přihlaste se `az acr login --name <your-container-registry-name>` pomocí příkazu. 
+    Pokud se zobrazí `unauthorized: authentication required` Chyba, přihlaste se pomocí `az acr login --name <your-container-registry-name>` příkazu. 
 
     Po dokončení procesu by se měly výsledky podobat následujícímu:
 
@@ -158,7 +158,7 @@ K nasazení kontejneru do služby Azure Kubernetes musí být k dispozici image 
     docker pull mcr.microsoft.com/azure-cognitive-services/language:1.1.006770001-amd64-preview
     ```
 
-1. Označení Image pomocí registru kontejnerů. Vyhledejte nejnovější verzi a nahraďte verzi `1.1.006770001-amd64-preview` , pokud máte novější verzi. 
+1. Označení Image pomocí registru kontejnerů. Vyhledejte nejnovější verzi a nahraďte verzi, `1.1.006770001-amd64-preview` Pokud máte novější verzi. 
 
     ```console
     docker tag mcr.microsoft.com/azure-cognitive-services/language pattiyregistry.azurecr.io/language:1.1.006770001-amd64-preview
@@ -180,7 +180,7 @@ Následující kroky jsou potřebné k získání požadovaných informací pro 
     az ad sp create-for-rbac --skip-assignment
     ```
 
-    V kroku 3 `appId` uložte hodnotu výsledků pro parametr zmocnění `<appId>`. Uložte parametr `password` pro parametr `<client-secret>`Client-Secret pro další oddíl.
+    `appId`V kroku 3 uložte hodnotu výsledků pro parametr zmocnění `<appId>` . Uložte `password` parametr pro parametr Client-Secret pro další oddíl `<client-secret>` .
 
     ```output
     {
@@ -198,7 +198,7 @@ Následující kroky jsou potřebné k získání požadovaných informací pro 
     az acr show --resource-group cogserv-container-rg --name pattyregistry --query "id" --o table
     ```
 
-    V dalším kroku uložte výstup hodnoty `<acrId>`parametru Scope. Vypadá takto:
+    V dalším kroku uložte výstup hodnoty parametru scope `<acrId>` . Vypadá takto:
 
     ```output
     /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/cogserv-container-rg/providers/Microsoft.ContainerRegistry/registries/pattyregistry
@@ -206,7 +206,7 @@ Následující kroky jsou potřebné k získání požadovaných informací pro 
 
     Uložte celou hodnotu pro krok 3 v této části.
 
-1. Chcete-li udělit správnému přístupu ke clusteru AKS použití imagí uložených ve vašem registru kontejnerů, vytvořte přiřazení role. Hodnoty `<appId>` a `<acrId>` nahraďte hodnotami, které jste shromáždili v předchozích dvou krocích.
+1. Chcete-li udělit správnému přístupu ke clusteru AKS použití imagí uložených ve vašem registru kontejnerů, vytvořte přiřazení role. Hodnoty a nahraďte hodnotami, které jste `<appId>` `<acrId>` shromáždili v předchozích dvou krocích.
 
     ```azurecli-interactive
     az role assignment create --assignee <appId> --scope <acrId> --role Reader
@@ -214,7 +214,7 @@ Následující kroky jsou potřebné k získání požadovaných informací pro 
 
 ## <a name="create-azure-kubernetes-service"></a>Vytvoření služby Azure Kubernetes
 
-1. Vytvořte cluster Kubernetes. Všechny hodnoty parametrů jsou z předchozích sekcí s výjimkou parametru name. Vyberte název, který indikuje, kdo ho vytvořil, a jeho účel, `patty-kube`například.
+1. Vytvořte cluster Kubernetes. Všechny hodnoty parametrů jsou z předchozích sekcí s výjimkou parametru name. Vyberte název, který indikuje, kdo ho vytvořil, a jeho účel, například `patty-kube` .
 
     ```azurecli-interactive
     az aks create --resource-group cogserv-container-rg --name patty-kube --node-count 2  --service-principal <appId>  --client-secret <client-secret>  --generate-ssh-keys
@@ -305,29 +305,29 @@ Tato část používá rozhraní příkazového řádku **kubectl** ke komunikac
     aks-nodepool1-13756812-1   Ready     agent     6m        v1.9.11
     ```
 
-1. Zkopírujte následující soubor a pojmenujte `language.yml`ho. Soubor obsahuje `service` oddíl a `deployment` oddíl pro dva typy kontejnerů, kontejner `language-frontend` webu a kontejner `language` detekce.
+1. Zkopírujte následující soubor a pojmenujte ho `language.yml` . Soubor obsahuje `service` oddíl a `deployment` oddíl pro dva typy kontejnerů, `language-frontend` kontejner webu a `language` kontejner detekce.
 
     [!code-yml[Kubernetes orchestration file for the Cognitive Services containers sample](~/samples-cogserv-containers/Kubernetes/language/language.yml "Kubernetes orchestration file for the Cognitive Services containers sample")]
 
-1. Změňte řádky nasazení na `language.yml` základě jazyka, které jsou založené na následující tabulce, a přidejte tak vlastní názvy imagí registru kontejneru, tajný klíč klienta a nastavení analýzy textu.
+1. Změňte řádky nasazení na základě jazyka, které jsou `language.yml` založené na následující tabulce, a přidejte tak vlastní názvy imagí registru kontejneru, tajný klíč klienta a nastavení analýzy textu.
 
     Nastavení nasazení ve front-endu|Účel|
     |--|--|
     |Řádek 32<br> `image`majetek|Umístění obrázku pro Image front-end v Container Registry<br>`<container-registry-name>.azurecr.io/language-frontend:v1`|
-    |Řádek 44<br> `name`majetek|Container Registry tajný klíč pro obrázek, který se označuje `<client-secret>` jako v předchozí části.|
+    |Řádek 44<br> `name`majetek|Container Registry tajný klíč pro obrázek, který se označuje jako `<client-secret>` v předchozí části.|
 
 1. Změňte řádky nasazení jazyka `language.yml` podle následující tabulky a přidejte tak vlastní názvy imagí registru kontejneru, tajný klíč klienta a nastavení analýzy textu.
 
     |Nastavení nasazení jazyka|Účel|
     |--|--|
     |Řádek 78<br> `image`majetek|Umístění obrázku pro obrázek jazyka v Container Registry<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
-    |Řádek 95<br> `name`majetek|Container Registry tajný klíč pro obrázek, který se označuje `<client-secret>` jako v předchozí části.|
+    |Řádek 95<br> `name`majetek|Container Registry tajný klíč pro obrázek, který se označuje jako `<client-secret>` v předchozí části.|
     |Řádek 91<br> `apiKey`majetek|Váš klíč prostředku pro analýzu textu|
     |Řádek 92<br> `billing`majetek|Koncový bod fakturace pro váš prostředek textu Analytics.<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
-    Vzhledem k tomu, že **koncový bod** **apiKey** a Fakturovaný je nastaven jako součást definice orchestrace Kubernetes, nemusí kontejner webu znát tyto informace nebo je předat v rámci žádosti. Kontejner webu odkazuje na kontejner rozpoznávání jazyka podle jeho názvu `language`Orchestrator.
+    Vzhledem k tomu, že **koncový bod** **apiKey** a Fakturovaný je nastaven jako součást definice orchestrace Kubernetes, nemusí kontejner webu znát tyto informace nebo je předat v rámci žádosti. Kontejner webu odkazuje na kontejner rozpoznávání jazyka podle jeho názvu Orchestrator `language` .
 
-1. Načte definiční soubor Orchestration pro tuto ukázku ze složky, ve které jste vytvořili a uložili `language.yml`.
+1. Načte definiční soubor Orchestration pro tuto ukázku ze složky, ve které jste vytvořili a uložili `language.yml` .
 
     ```console
     kubectl apply -f language.yml
@@ -344,7 +344,7 @@ Tato část používá rozhraní příkazového řádku **kubectl** ke komunikac
 
 ## <a name="get-external-ips-of-containers"></a>Získat externí IP adresy kontejnerů
 
-V případě těchto dvou kontejnerů ověřte `language-frontend` , `language` že jsou spuštěné služby a a získejte externí IP adresu.
+V případě těchto dvou kontejnerů ověřte, že `language-frontend` `language` jsou spuštěné služby a a získejte externí IP adresu.
 
 ```console
 kubectl get all
@@ -381,13 +381,13 @@ Pokud se `EXTERNAL-IP` pro službu zobrazí jako čeká na vyřízení, spusťte
 
 ## <a name="test-the-language-detection-container"></a>Testování kontejneru rozpoznávání jazyka
 
-Otevřete prohlížeč a přejděte na externí IP adresu `language` kontejneru z předchozí části:. `http://<external-ip>:5000/swagger/index.html` K otestování koncového bodu detekce jazyka můžete použít `Try it` funkci rozhraní API.
+Otevřete prohlížeč a přejděte na externí IP adresu `language` kontejneru z předchozí části: `http://<external-ip>:5000/swagger/index.html` . `Try it`K otestování koncového bodu detekce jazyka můžete použít funkci rozhraní API.
 
 ![Zobrazit dokumentaci k Swagger kontejneru](../text-analytics/media/how-tos/container-instance-sample/language-detection-container-swagger-documentation.png)
 
 ## <a name="test-the-client-application-container"></a>Testování kontejneru klientské aplikace
 
-Změňte adresu URL v prohlížeči na externí IP adresu `language-frontend` kontejneru pomocí následujícího formátu:. `http://<external-ip>/helloworld` Text anglické jazykové verze `helloworld` je předpovězen jako. `English`
+Změňte adresu URL v prohlížeči na externí IP adresu `language-frontend` kontejneru pomocí následujícího formátu: `http://<external-ip>/helloworld` . Text anglické jazykové verze `helloworld` je předpovězen jako `English` .
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -405,15 +405,3 @@ az group delete --name cogserv-container-rg
 
 > [!div class="nextstepaction"]
 > [Kontejnery Cognitive Services](../cognitive-services-container-support.md)
-
-<!--
-kubectl get secrets
-
->az aks browse --resource-group diberry-cogserv-container-rg --name diberry-kubernetes-languagedetection
-
-kubectl proxy
-
-http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/pod/default/language-frontend-6d65bdb77c-8f4qv?namespace=default
-
-kubectl describe pod language-frontend-6d65bdb77c
--->

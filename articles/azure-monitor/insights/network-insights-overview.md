@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/07/2019
-ms.openlocfilehash: 0f5b2fbd13cb9658e255fde727e115df748aaed9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccc5578944dc6eea9a62360045272896d78e2fac
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77654864"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128671"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Azure Monitor pro sítě (Preview)
 Azure Monitor pro síť poskytuje komplexní přehled o stavu a metrikách pro všechny nasazené síťové prostředky bez jakékoli konfigurace. Rozšířené možnosti vyhledávání pomáhají identifikovat závislosti prostředků, jako je například identifikace prostředků, které hostují web, pouhým hledáním názvu hostovaného webu.
@@ -29,7 +30,7 @@ Zobrazení stavu prostředku a upozornění je možné přizpůsobit pomocí fil
 
 Vyhledávací pole lze použít k vyhledání prostředků a přidružených prostředků. Například veřejná IP adresa je přidružená k Application Gateway. Při hledání názvu DNS veřejných IP adres se určí jak veřejná, tak přidružená Application Gateway.
 
-![Search](media/network-insights-overview/search.png)
+![Hledat](media/network-insights-overview/search.png)
 
 
 ## <a name="resource-health-and-metric"></a>Resource Health a metrika
@@ -47,7 +48,7 @@ V zobrazení mřížky můžete kliknout na jednotlivé prvky. Kliknutím na iko
 Mřížka **výstrahy** na pravé straně poskytuje zobrazení všech výstrah vygenerovaných pro vybrané prostředky ve všech předplatných. Klikněte na tlačítko počty výstrah a přejděte na stránku podrobné výstrahy.
 
 ## <a name="dependency-view"></a>Zobrazení závislostí
-Zobrazení **závislostí** pomáhá vizualizovat způsob konfigurace prostředku. Zobrazení v současné době se podporuje jenom pro Application Gateway. Zobrazení závislostí lze zobrazit kliknutím na název prostředku Application Gateway v zobrazení mřížky metrik.
+Zobrazení **závislostí** pomáhá vizualizovat způsob konfigurace prostředku. Současné zobrazení závislosti je nyní podporováno pro Application Gateway, virtuální síť WAN a Load Balancer. V případě Application Gateway můžete například zobrazit zobrazení závislostí kliknutím na název prostředku Application Gateway v zobrazení mřížky metrik. To platí i pro virtuální sítě WAN a Load Balancer. 
 
 ![Zobrazení Application Gateway](media/network-insights-overview/application-gateway.png)
 
@@ -69,4 +70,4 @@ Kliknutím na **podrobné zobrazení metriky** spustíte předem nakonfigurovan�
 
 ## <a name="next-steps"></a>Další kroky 
 
-- Přečtěte si další informace o monitorování sítě v tom, co je [Azure Network Watcher?](/azure/network-watcher/network-watcher-monitoring-overview).
+- Přečtěte si další informace o monitorování sítě v tom, co je [Azure Network Watcher?](../../network-watcher/network-watcher-monitoring-overview.md).

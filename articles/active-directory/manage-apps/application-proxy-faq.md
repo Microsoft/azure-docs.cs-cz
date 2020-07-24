@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 10/03/2019
+ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 839ce418fa8ad72e18537cf673c8af0479409ba7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b95ae3c7fcf52a732304bb835f91c52b015801e
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386279"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128926"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Nejčastější dotazy k proxy aplikací služby Active Directory (Azure AD)
 
@@ -52,6 +52,9 @@ Doporučení najdete v tématu [Vysoká dostupnost a vyrovnávání zatížení 
 ### <a name="is-tls-termination-tlshttps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>Je u provozu z konektorových serverů do Azure podporováno ukončení protokolu TLS (kontrola nebo akcelerace TLS/HTTPS)?
 
 Konektor proxy aplikací provádí ověřování pomocí certifikátů v Azure. Ukončení protokolu TLS (kontrola TLS/HTTPS) ruší tuto metodu ověřování a není podporovaná. Přenos z konektoru do Azure musí obejít všechna zařízení, která provádějí ukončení protokolu TLS.  
+
+### <a name="is-tls-12-required-for-all-connections"></a>Vyžaduje se TLS 1,2 pro všechna připojení?
+Yes. Aby služba proxy aplikací poskytovala zákazníkům nejlepší šifrování, omezí přístup jenom na protokoly TLS 1,2. Tyto změny byly postupně nasazeny a platit od 31. srpna 2019. Zajistěte, aby byly všechny kombinace klienta a serveru a prohlížeče a serveru aktualizovány tak, aby používaly protokol TLS 1,2 pro zachování připojení ke službě proxy aplikací. Mezi ně patří klienti, kteří uživatelé používají pro přístup k aplikacím, které jsou publikované prostřednictvím proxy aplikací. Užitečné odkazy a prostředky najdete v tématu Příprava pro [TLS 1,2 v sadě Office 365](https://docs.microsoft.com/microsoft-365/compliance/prepare-tls-1.2-in-office-365) .
 
 ### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>Můžu umístit dopředné proxy zařízení mezi servery konektoru a back-end aplikační server?
 Ano, tento scénář je podporován od verze konektoru 1.5.1526.0. Podívejte [se na téma práce se stávajícími místními proxy servery](application-proxy-configure-connectors-with-proxy-servers.md).
@@ -93,6 +96,9 @@ Na stránce registrace aplikací můžete změnit adresu URL domovské stránky 
 
 Ne, pro publikované aplikace není k dispozici žádný požadavek služby IIS. Můžete publikovat webové aplikace běžící na jiných serverech než Windows Server. V závislosti na tom, jestli webový server podporuje Negotiate (ověřování protokolem Kerberos), ale možná nebudete moct používat předběžné ověřování s jiným systémem než Windows serverem. Na serveru, na kterém je konektor nainstalovaný, není služba IIS nutná.
 
+### <a name="can-i-configure-application-proxy-to-add-the-hsts-header"></a>Můžu nakonfigurovat proxy aplikace, aby přidala hlavičku HSTS?
+Proxy aplikace nepřidá automaticky hlavičku HTTP Strict-Transport-Security do odpovědí HTTPS, ale zachová hlavičku, pokud se nachází v původní odpovědi odeslané publikovanou aplikací. Nastavení, které povolí tuto funkci, se dokládá na plán. Pokud vás zajímá verze Preview, která umožňuje přidání tohoto obsahu do odpovědí, získáte aadapfeedback@microsoft.com Další informace.
+
 ## <a name="integrated-windows-authentication"></a>Integrované ověřování systému Windows
 
 ### <a name="when-should-i-use-the-principalsallowedtodelegatetoaccount-method-when-setting-up-kerberos-constrained-delegation-kcd"></a>Kdy mám použít metodu PrincipalsAllowedToDelegateToAccount při nastavování omezeného delegování protokolu Kerberos (KCD)?
@@ -133,7 +139,7 @@ Ano, očekává se. Scénář předběžného ověření vyžaduje ovládací pr
 
 ### <a name="is-the-remote-desktop-web-client-html5-supported"></a>Je webový klient (HTML5) vzdálené plochy podporován?
 
-Ne, tento scénář se momentálně nepodporuje. Podle našeho fóra pro názory na [UserVoice](https://aka.ms/aadapuservoice) si Projděte aktualizace této funkce.
+Ano, tento scénář je aktuálně ve verzi Public Preview. Informace najdete [v tématu publikování vzdálené plochy pomocí Azure proxy aplikací služby AD](application-proxy-integrate-with-remote-desktop-services.md).
 
 ### <a name="after-i-configured-the-pre-authentication-scenario-i-realized-that-the-user-has-to-authenticate-twice-first-on-the-azure-ad-sign-in-form-and-then-on-the-rdweb-sign-in-form-is-this-expected-how-can-i-reduce-this-to-one-sign-in"></a>Po nakonfigurovaném scénáři předběžného ověření jsem dřív, že se uživatel musí ověřit dvakrát: nejdřív ve formuláři přihlášení ke službě Azure AD a pak na formuláři pro přihlášení k RDWeb. Je to očekávané? Jak se dá snížit na jedno přihlášení?
 
@@ -167,7 +173,7 @@ Funkce (události protokolu, PowerShell a Vzdálená plocha) v centru pro správ
 
 ### <a name="does-using-link-translation-affect-performance"></a>Má použití překladu odkazů vliv na výkon?
 
-Ano. Překlad propojení má vliv na výkon. Služba proxy aplikací vyhledá v aplikaci odkazy na pevně zakódované a nahradí je jejich příslušnými, publikovanými externími adresami URL. teprve potom je prezentuje uživateli. 
+Yes. Překlad propojení má vliv na výkon. Služba proxy aplikací vyhledá v aplikaci odkazy na pevně zakódované a nahradí je jejich příslušnými, publikovanými externími adresami URL. teprve potom je prezentuje uživateli. 
 
 Pro nejlepší výkon doporučujeme použít stejné interní a externí adresy URL konfigurací [vlastních domén](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain). Pokud není možné používat vlastní domény, můžete zlepšit výkon překladu propojení pomocí rozšíření zabezpečeného přihlašování k aplikacím nebo prohlížeče Microsoft Edge na mobilních zařízeních. Přečtěte si téma [přesměrování pevně zakódované odkazů pro aplikace publikované s Azure proxy aplikací služby AD](application-proxy-configure-hard-coded-link-translation.md).
 

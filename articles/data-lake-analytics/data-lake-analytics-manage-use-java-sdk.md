@@ -3,25 +3,23 @@ title: Správa Azure Data Lake Analytics pomocí sady Azure Java SDK
 description: Tento článek popisuje, jak pomocí sady Azure Java SDK psát aplikace, které spravují Data Lake Analytics úlohy, zdroje dat, & uživatelé.
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.topic: how-to
 ms.date: 08/20/2019
-ms.openlocfilehash: 6409ac10a524f75709cbbf185efb03359606e88c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e5ff12479333c4b36cc7712e0e363a055b9f6dc6
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121363"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127651"
 ---
 # <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Správa Azure Data Lake Analytics pomocí aplikace Java
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
 Tento článek popisuje, jak spravovat účty Azure Data Lake Analytics, zdroje dat, uživatele a úlohy pomocí aplikace napsané pomocí Azure Java SDK. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * **Java Development Kit (JDK) 8** (pomocí java verze 1,8).
 * **IntelliJ** nebo jiný vhodný Java Development Environment. Pokyny v tomto dokumentu používají IntelliJ.
 * Vytvoření aplikace Azure Active Directory (AAD) a načtení **ID klienta**, **ID tenanta**, a **Klíče**. Další informace o aplikacích AAD a pokyny k získání ID klienta naleznete v tématu [Vytvoření aplikace Active Directory a objektu služby pomocí portálu](../active-directory/develop/howto-create-service-principal-portal.md). Identifikátor URI a klíč odpovědi jsou k dispozici na portálu, jakmile máte vytvořenou aplikaci a vygenerujete klíč.

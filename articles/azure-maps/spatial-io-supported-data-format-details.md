@@ -1,19 +1,19 @@
 ---
 title: Podrobnosti o podporovaném formátu dat | Mapy Microsoft Azure
 description: Přečtěte si, jak se v modulu pro prostorové vstupně-výstupní operace analyzují oddělená prostorová data.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3353620f1751e939a04543115fe704555fb3bc21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b7c82e4650c7680709e809d9f563d79f068601f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334085"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127923"
 ---
 # <a name="supported-data-format-details"></a>Podrobnosti o podporovaných formátech dat
 
@@ -405,9 +405,9 @@ Při kontrole řádku záhlaví budou všechny informace o typu, které jsou v n
 
 - EDM. Boolean
 - bool
-- Boolean
+- boolean
 
-#### <a name="dates"></a>Dates
+#### <a name="dates"></a>Kalendářní data
 
 - EDM. DateTime
 - date

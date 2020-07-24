@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
-ms.openlocfilehash: 675e10101d01d831aad7652c70cbfcf320085a3c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da59c0d54fa08194f9d77fc79754cbfbaca1a1e8
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70999165"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128399"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Osvědčené postupy pro zabezpečení webových a mobilních aplikací PaaS pomocí Azure Storage
 V tomto článku se zabýváme kolekcí Azure Storage osvědčených postupů zabezpečení pro zabezpečení vašich webových a mobilních aplikací PaaS (Platform as a Service). Tyto osvědčené postupy se odvozují z našich zkušeností s Azure a zkušeností zákazníků, jako je sami.
@@ -65,7 +65,7 @@ Organizace, které vynutily řízení přístupu k datům pomocí možností, ja
 Další informace o RBAC najdete v těchto tématech:
 
 - [Správa přístupu pomocí RBAC a portálu Azure Portal](/azure/role-based-access-control/role-assignments-portal)
-- [Předdefinované role pro prostředky Azure](/azure/role-based-access-control/built-in-roles)
+- [Předdefinované role Azure](/azure/role-based-access-control/built-in-roles)
 - [Průvodce zabezpečením Azure Storage](/azure/storage/common/storage-security-guide) 
 
 ## <a name="use-client-side-encryption-for-high-value-data"></a>Použití šifrování na straně klienta pro data s vysokou hodnotou

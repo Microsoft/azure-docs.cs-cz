@@ -3,14 +3,16 @@ title: Vytvoření nabídky aplikací Azure – Microsoft Commercial Marketplace
 description: Přečtěte si postup a požadavky pro vytvoření nové nabídky aplikací Azure na portálu pro komerční tržišti v partnerském centru. Nabídku aplikací Azure můžete zobrazit nebo prodávat v Azure Marketplace nebo prostřednictvím programu Cloud Solution Provider (CSP).
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: c5371b2d9379ca861addac07de50d7cdf9c34c8b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+author: qianw211
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 6789e32cbbb1257a668e7be87a8b73a0511b6fb0
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121962"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127430"
 ---
 # <a name="create-an-azure-application-offer"></a>Vytvoření nabídky aplikací Azure
 
@@ -65,7 +67,7 @@ Projděte si následující zdroje při přípravě nabídky aplikací Azure pro
 
 Vyberte jedno z následujících skriptovacích prostředí, které vám pomůžou při správě aplikace Azure:
 
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)
 * [Azure CLI](https://docs.microsoft.com/cli/azure)
 
 Do vývojového prostředí doporučujeme přidat následující nástroje:
@@ -185,8 +187,8 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 4. Podmínky použití
 5. Adresa zásad ochrany osobních údajů (odkaz)
 6. Název nabídky
-7. Souhrn
-8. Description
+7. Shrnutí
+8. Popis
 9. Snímky obrazovky a videa
 
 <br>Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Portal:
@@ -200,7 +202,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 3. Užitečné odkazy
 4. Screenshoty
 
-#### <a name="name"></a>Name
+#### <a name="name"></a>Název
 
 Název, který sem zadáte, se zákazníkům zobrazí jako název seznamu nabídek. Toto pole je předem vyplněno textem, který jste zadali pro možnost **alias nabídky** při vytváření nabídky, ale můžete tuto hodnotu změnit. Tento název může být ochranných známek (a může obsahovat symboly ochranných známek a autorských práv). Název nesmí být delší než 50 znaků a nesmí obsahovat žádné emoji.
 
@@ -212,7 +214,7 @@ Zadejte krátký popis vaší nabídky, maximálně 100 znaků. Tento popis se d
 
 Zadejte delší popis nabídky, maximálně 256 znaků. Tento popis se dá použít ve výsledcích hledání.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Popis
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -308,7 +310,7 @@ Technická konfigurace definuje podrobnosti (ID tenanta a ID aplikace), které s
 
 ## <a name="plan-overview"></a>Přehled plánu
 
-Tato karta vám umožní v rámci stejné nabídky poskytnout různé možnosti plánu. Tyto plány (označované jako SKU v portál partnerů cloudu) se můžou lišit podle typu plánu (šablona řešení vs. spravovaná aplikace), finanční zhodnocení nebo cílová skupina.  Pokud chcete zobrazit seznam nabídek na webu Marketplace, nakonfigurujte aspoň jeden plán.
+Tato karta vám umožní v rámci stejné nabídky poskytnout různé možnosti plánu. Tyto plány (dříve nazývané SKU) se můžou lišit v souvislosti s typem plánu (šablona řešení vs. spravovaná aplikace), finanční zhodnocení nebo cílová skupina. Pokud chcete zobrazit seznam nabídek na webu Marketplace, nakonfigurujte aspoň jeden plán.
 
 Po vytvoření se zobrazí vaše názvy plánů, ID, typ plánu, dostupnost (veřejné nebo soukromé), aktuální stav publikování a všechny dostupné akce na této kartě.
 
@@ -510,7 +512,7 @@ Určete, kdo má mít k této spravované aplikaci přístup pro správu v každ
 
 **Autorizace** – přidejte Azure Active Directory ID objektu uživatele, skupiny nebo aplikace, kterému chcete udělit oprávnění pro spravovanou skupinu prostředků. Identifikujte uživatele podle ID objektu zabezpečení, které najdete v okně [Azure Active Directory uživatelé na Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers).
 
-U každého objektu zabezpečení vyberte v seznamu (vlastník nebo přispěvatel) jednu z předdefinovaných rolí Azure AD. Vybraná role popisuje oprávnění, která bude mít objekt zabezpečení u prostředků v rámci předplatného zákazníka. Další informace najdete v tématu [Předdefinované role pro prostředky Azure](../../role-based-access-control/built-in-roles.md). Další informace o řízení přístupu na základě role (RBAC) najdete v tématu [Začínáme s RBAC v Azure Portal](../../role-based-access-control/overview.md).
+U každého objektu zabezpečení vyberte v seznamu (vlastník nebo přispěvatel) jednu z předdefinovaných rolí Azure AD. Vybraná role popisuje oprávnění, která bude mít objekt zabezpečení u prostředků v rámci předplatného zákazníka. Další informace najdete v tématu [předdefinované role Azure](../../role-based-access-control/built-in-roles.md). Další informace o řízení přístupu na základě role (RBAC) najdete v tématu [Začínáme s RBAC v Azure Portal](../../role-based-access-control/overview.md).
 
 >[!Note]
 >I když můžete přidat až 100 autorizací pro každý Cloud, je obecně snazší vytvořit skupinu uživatelů služby Active Directory a zadat její ID v ID objektu zabezpečení. To vám umožní přidat další uživatele do skupiny pro správu po nasazení plánu a snížit nutnost aktualizace plánu jenom na přidání dalších autorizací.
@@ -571,7 +573,7 @@ Popište možnosti prostředí Test Drive.
 
 Než budete pokračovat, vyberte **Uložit koncept** .
 
-## <a name="publish"></a>Publikování
+## <a name="publish"></a>Publikovat
 
 Po dokončení všech požadovaných částí nabídky vyberte v pravém horním rohu portálu možnost **zkontrolovat a publikovat** .
 

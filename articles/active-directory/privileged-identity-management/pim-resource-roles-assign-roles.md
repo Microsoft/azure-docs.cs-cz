@@ -15,25 +15,25 @@ ms.date: 07/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 985342b19baad8b9210e985c9c7dfb9482708a0c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 32b678058e2d24d277eaf56a1aadec3678e25a5b
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023707"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128161"
 ---
 # <a name="assign-azure-resource-roles-in-privileged-identity-management"></a>Přiřazení rolí prostředků Azure v Privileged Identity Management
 
 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) může spravovat předdefinované role prostředků Azure i vlastní role, včetně (ale ne omezení):
 
 - Vlastník
-- Správce přístupu uživatelů
+- Správce uživatelských přístupů
 - Přispěvatel
 - Správce zabezpečení
 - Správce zabezpečení
 
 > [!NOTE]
-> Uživatelé nebo členové skupiny, kteří jsou přiřazeni k rolím předplatného vlastník nebo správce přístupu uživatelů a globálním správcům služby Azure AD, kteří umožňují správu předplatného ve službě Azure AD, mají ve výchozím nastavení oprávnění správce prostředků. Tito správci můžou přiřadit role, konfigurovat nastavení rolí a kontrolovat přístup pomocí Privileged Identity Management pro prostředky Azure. Uživatel nemůže spravovat Privileged Identity Management pro prostředky bez oprávnění správce prostředků. Prohlédněte si seznam [předdefinovaných rolí pro prostředky Azure](../../role-based-access-control/built-in-roles.md).
+> Uživatelé nebo členové skupiny, kteří jsou přiřazeni k rolím předplatného vlastník nebo správce přístupu uživatelů a globálním správcům služby Azure AD, kteří umožňují správu předplatného ve službě Azure AD, mají ve výchozím nastavení oprávnění správce prostředků. Tito správci můžou přiřadit role, konfigurovat nastavení rolí a kontrolovat přístup pomocí Privileged Identity Management pro prostředky Azure. Uživatel nemůže spravovat Privileged Identity Management pro prostředky bez oprávnění správce prostředků. Prohlédněte si seznam [předdefinovaných rolí Azure](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="assign-a-role"></a>Přiřazení role
 

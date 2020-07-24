@@ -1,19 +1,19 @@
 ---
 title: Přidat vrstvu mapy Open Geospatial Consortium (OGC) | Mapy Microsoft Azure
 description: Naučte se překrýt vrstvu mapy OGC na mapě a jak používat různé možnosti ve třídě OgcMapLayer.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b753ecfc07cfb3806838f8a05dbe33ef0bb92730
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6efc6b27090ecc7171bb66deb303a4764d9b6f04
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334284"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128552"
 ---
 # <a name="add-a-map-layer-from-the-open-geospatial-consortium-ogc"></a>Přidat vrstvu mapy z Open Geospatial Consortium (OGC)
 
@@ -28,7 +28,7 @@ Následující části popisují funkce služby webové mapy, které jsou podpor
 - GetFeatureInfo vyžaduje, aby služba podporovala `EPSG:4326` nebo zpracovala reprojekce. 
 - Podporované operace:
 
-    | | |
+    | Operace | Popis |
     | :-- | :-- |
     | GetCapabilities | Načte metadata služby s podporovanými možnostmi. |
     | GetMap | Načte obrázek mapy pro zadanou oblast. |
@@ -42,7 +42,7 @@ Následující části popisují funkce služby webové mapy, které jsou podpor
 - Identifikátor TileMatrix musí být celočíselná hodnota, která odpovídá úrovni přiblížení na mapě. V mapě Azure je úroveň přiblížení hodnota mezi `"0"` a `"22"` . Takže se `"0"` podporuje, ale nepodporuje se `"00"` .
 - Podporované operace:
 
-    | | |
+    | Operace | Popis |
     | :-- | :-- |
     | GetCapabilities | Načte podporované operace a funkce. |
     | Getdlaždice | Načte z konkrétní dlaždice obrázek. |

@@ -3,15 +3,16 @@ title: Jak chránit hierarchii prostředků – zásady správného řízení Az
 description: Naučte se chránit svoji hierarchii prostředků pomocí nastavení hierarchie, která zahrnují nastavení výchozí skupiny pro správu.
 ms.date: 05/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 60c184d176ae62c1af525db656c56a83422cb94a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50b5ba1bccf3d603b6d273892d0c903d433786f3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83837413"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127992"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Jak chránit hierarchii prostředků
 
-Vaše prostředky, skupiny prostředků, předplatná, skupiny pro správu a tenant společně tvoří hierarchii prostředků. Nastavení v kořenové skupině pro správu, jako jsou například vlastní role RBAC nebo přiřazení zásad Azure Policy, můžou mít vliv na každý prostředek v hierarchii prostředků. Je důležité chránit hierarchii prostředků před změnami, které by mohly mít negativní vliv na všechny prostředky.
+Vaše prostředky, skupiny prostředků, předplatná, skupiny pro správu a tenant společně tvoří hierarchii prostředků. Nastavení v kořenové skupině pro správu, jako jsou například vlastní role Azure nebo přiřazení zásad Azure Policy, můžou mít vliv na každý prostředek v hierarchii prostředků. Je důležité chránit hierarchii prostředků před změnami, které by mohly mít negativní vliv na všechny prostředky.
 
 Skupiny pro správu teď mají nastavení hierarchie, které umožňuje správcům tenanta řídit toto chování. Tento článek obsahuje všechna dostupná nastavení hierarchie a jejich nastavení.
 

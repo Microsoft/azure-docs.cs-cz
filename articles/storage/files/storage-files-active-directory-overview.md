@@ -7,11 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: db256c8361af740ac536e059969a5085e57df485
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb57606259fe674519015fd2de741d6c1d08c5e9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84263335"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127192"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Přehled možností ověřování na základě identity souborů Azure pro přístup přes protokol SMB
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -20,7 +21,7 @@ Informace o tom, jak povolit místní ověřování Active Directory Domain Serv
 
 Informace o tom, jak povolit ověřování Azure služba AD DS pro sdílené složky Azure, najdete v tématu [povolení Azure Active Directory Domain Servicesho ověřování u souborů Azure](storage-files-identity-auth-active-directory-domain-service-enable.md).
 
-## <a name="glossary"></a>Glosář 
+## <a name="glossary"></a>Slovníček 
 Je užitečné pochopit některé klíčové podmínky týkající se ověřování služby Azure AD Domain Services přes SMB pro sdílené složky Azure:
 
 -   **Ověřování protokolu Kerberos**
@@ -45,7 +46,7 @@ Je užitečné pochopit některé klíčové podmínky týkající se ověřová
 
 -   **Access Control na základě rolí Azure (RBAC)**
 
-    Řízení přístupu na základě role v Azure umožňuje přesnou správu přístupu. Pomocí RBAC můžete spravovat přístup k prostředkům tím, že uživatelům udělíte nejnižší oprávnění potřebná k provádění svých úloh. Další informace o RBAC najdete v tématu [co je řízení přístupu na základě role (RBAC) v Azure?](../../role-based-access-control/overview.md).
+    Řízení přístupu na základě role Azure (Azure RBAC) umožňuje jemně odstupňovanou správu přístupu pro Azure. Pomocí RBAC můžete spravovat přístup k prostředkům tím, že uživatelům udělíte nejnižší oprávnění potřebná k provádění svých úloh. Další informace o RBAC najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC) v Azure?](../../role-based-access-control/overview.md).
 
 ## <a name="common-use-cases"></a>Běžné případy použití
 
@@ -104,7 +105,7 @@ Následující diagram znázorňuje místní služba AD DS ověřování sdílen
 
 :::image type="content" source="media/storage-files-active-directory-overview/Files-on-premises-AD-DS-Diagram.png" alt-text="Diagram":::
 
-### <a name="azure-ad-ds"></a>služba AD DS Azure
+### <a name="azure-ad-ds"></a>Azure AD DS
 
 Pro ověřování Azure služba AD DS byste měli povolit Azure AD Domain Services a připojení k doméně virtuálním počítačům, ze kterých plánujete přístup k datovým souborům. Váš virtuální počítač připojený k doméně se musí nacházet ve stejné virtuální síti (VNET) jako vaše služba AD DS Azure. 
 
@@ -145,7 +146,7 @@ Pro povolení ověřování na základě identity přes protokol SMB v účtu ú
 ## <a name="next-steps"></a>Další kroky
 Další informace o souborech Azure a ověřování na základě identity přes SMB najdete v těchto zdrojích informací:
 
-- [Plánování nasazení služby Soubory Azure](storage-files-planning.md)
+- [Plánování nasazení Azure Files](storage-files-planning.md)
 - [Povolit místní Active Directory Domain Services ověřování pomocí protokolu SMB pro sdílené složky Azure](storage-files-identity-auth-active-directory-enable.md)
 - [Povolení ověřování Azure Active Directory Domain Services u souborů Azure](storage-files-identity-auth-active-directory-domain-service-enable.md)
 - [Nejčastější dotazy](storage-files-faq.md)

@@ -2,19 +2,17 @@
 title: Správa Azure Data Lake Analytics pomocí sady Azure .NET SDK
 description: Tento článek popisuje, jak pomocí sady Azure .NET SDK psát aplikace, které spravují Data Lake Analytics úlohy, zdroje dat, & uživatelé.
 services: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: 811d172d-9873-4ce9-a6d5-c1a26b374c79
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 06/18/2017
-ms.openlocfilehash: aa2a128e25e3751813f056286fff4eb6caa24437
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 12043ead1c7d59cc3955bb927fabb54278c18bd5
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121380"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127685"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>Správa služby Azure Data Lake Analytics pomocí aplikace .NET
 
@@ -22,7 +20,7 @@ ms.locfileid: "86121380"
 
 Tento článek popisuje, jak spravovat účty Azure Data Lake Analytics, zdroje dat, uživatele a úlohy pomocí aplikace napsané pomocí sady Azure .NET SDK. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Visual Studio 2015, Visual Studio 2013 Update 4 nebo Visual Studio 2012 s nainstalovaným Visual C++**.
 * **Sada Microsoft Azure SDK pro .NET verze 2.5 nebo vyšší**.  Nainstalujte ji pomocí [Instalačního programu webové platformy](https://www.microsoft.com/web/downloads/platform.aspx).
@@ -57,7 +55,7 @@ string rg == "<value>"; // Resource  group name
 string clientid = "1950a258-227b-4e31-a9cf-717495945fc2"; // Sample client ID (this will work, but you should pick your own)
 ```
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 Máte k dispozici několik možností pro přihlášení k Azure Data Lake Analytics. Následující fragment kódu ukazuje příklad ověřování pomocí interaktivního ověřování uživatelů pomocí automaticky otevíraného okna.
 

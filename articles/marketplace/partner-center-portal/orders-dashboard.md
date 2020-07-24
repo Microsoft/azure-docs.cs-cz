@@ -1,16 +1,16 @@
 ---
-title: Řídicí panel objednávky partnerského centra v analýzách komerčního tržiště
-description: Naučte se, jak získat přístup k analytickým sestavám o objednávkách nabídek na webu Marketplace v grafickém a ke stažení.
+title: Partnerská řídicí panel objednávky v komerčních obchodech na webu Marketplace Microsoft AppSource a Azure Marketplace
+description: Naučte se, jak získat přístup k analytickým sestavám na vaše komerční nabídky na webu Marketplace v grafickém a ke stažení.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 07/01/2020
-ms.openlocfilehash: fe1f64994d344ad9b23895823b846da62d895128
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/22/2020
+ms.openlocfilehash: 7a704936b35ba5c747ab5884c61f3f5413ac5f07
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536126"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127311"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel Objednávky v analýzách komerčního marketplace
 
@@ -33,6 +33,8 @@ Pokud chcete získat přístup k **řídicímu panelu objednávky** v analytick�
 - [Trend objednávek a sedadel](#orders-and-seats-trend)
 - [Tabulka podrobností objednávky](#order-details-table)
 
+Maximální latence mezi vytvářením objednávek a vytvářením sestav v partnerském centru je 48 hodin.
+
 ## <a name="order-dashboard-details"></a>Objednat podrobnosti řídicího panelu
 
 Tato část popisuje analytické sestavy podrobněji.
@@ -53,7 +55,7 @@ Procentuální hodnota vedle Celková objednávka představuje množství nárů
 
 ### <a name="orders-by-geography"></a>Objednávky podle geografického
 
-Heatmapu **ORDER by geografie** zobrazuje počet objednávek na mapě světa a ukazuje, že jsou na základě země nebo oblasti zákazníka mapovány místa. Tato heatmapu funguje stejně jako **[Zákazník podle geografické heatmapu](./customer-dashboard.md#customer-by-geography)**.
+Mapa **Orders podle geografického** tepla zobrazuje počet objednávek na světové mapě a ukazuje na základě země nebo oblasti zákazníka mapované místa. Tato heatmapu funguje stejně jako **[Zákazník podle geografické heatmapu](./customer-dashboard.md#customer-by-geography)**.
 
 ![Partnerské centrum analyzuje objednávky podle geografického středu](./media/orders-by-geography.png)
 
@@ -63,7 +65,7 @@ Heatmapu **ORDER by geografie** zobrazuje počet objednávek na mapě světa a u
 
 - Horní nabídky se zobrazují v grafu a zbývající nabídky jsou seskupené jako "REST All".
 - V legendě můžete vybrat konkrétní nabídky, aby se zobrazily pouze nabídky v grafu.
-- Při najetí myší na řez v grafu se zobrazí počet objednávek a procento této nabídky ve srovnání s celkovým počtem objednávek napříč všemi nabídkami.
+- Najetí myší na řez v grafu zobrazuje počet objednávek a procento této nabídky ve srovnání s celkovým počtem objednávek napříč všemi nabídkami.
 - **Trend podle nabídky ORDER by** zobrazuje trendy růstu po měsících. Sloupec month (měsíc) představuje počet objednávek podle názvu nabídky. Spojnicový graf zobrazuje trend procenta nárůstu vykreslený na ose z.
 - Pomocí posuvníku v horní části grafu se můžete posunout doprava a doleva podél osy x a soustředit se na konkrétní datové body.
 - Graf trendu můžete zobrazit tak, že vyberete konkrétní položku v legendě.
@@ -71,7 +73,7 @@ Heatmapu **ORDER by geografie** zobrazuje počet objednávek na mapě světa a u
 
 ### <a name="orders-trend-per-site-versus-per-seat"></a>Trend objednávek na web versus na pracovišti
 
-Graf na **jeden web oproti pracovnímu** prstenci znázorňuje rozdělení na SaaS webu a objednávky SaaS na pracovní stanici zakoupené zákazníky (Tento graf obsahuje zrušené objednávky). Sloupcový graf představuje trend počtu SaaSů na webu a objednávek SaaS na pracovní stanici koupených zákazníky (Tento graf obsahuje zrušené objednávky).
+Prstencový graf na **pracovišti** v rámci jednotlivých míst představuje rozpis SaaSů na pracovišti a SaaS objednávek zakoupených zákazníky (Tento graf obsahuje zrušené objednávky). Sloupcový graf představuje trend počtu SaaSů na webu a objednávek SaaS na pracovní stanici koupených zákazníky (Tento graf obsahuje zrušené objednávky).
 
 ### <a name="orders-by-plans"></a>Objednávky podle plánů
 
@@ -79,10 +81,10 @@ Graf **objednávky podle plánů** představuje trend objednávek na úrovni pl�
 
 ### <a name="orders-and-seats-trend"></a>Trend objednávek a sedadel
 
-Graf **trendu objednávek a sedadel** představuje nejvyšší 50 nabídky s největším počtem objednávek. Tyto hodnoty jsou zobrazeny na kartě vedoucí a jsou seřazeny podle nejvyšší počet objednávek a procento objednávky.
+Graf **trendu objednávek a sedadel** představuje nejvyšší 50 nabídky s největším počtem objednávek. Tyto hodnoty se zobrazují na vodicí desce a seřazené podle nejvyšší počet objednávek a procento objednávky.
 
 - **Orders by plány** – vyberte nabídku pro zobrazení rozpisu počtu objednávek v horních pěti plánech v grafu.
-- **Křesla podle plánů** – měsíční trend sedadel pro 5 nejoblíbenějších plánů. Pokud nabídka, kterou jste vybrali, není na pracovní stanici, nezobrazí se v tomto plošném grafu žádná data.
+- **Křesla podle plánů** – měsíční trend sedadel pro 5 nejoblíbenějších plánů. Pokud nabídka, kterou jste vybrali, není nabídkou pro jednotlivé pracovní stanice, tady se nezobrazí žádná data.
 
 ### <a name="canceled-orders-by-offers"></a>Zrušené objednávky podle nabídek
 
@@ -98,8 +100,8 @@ Tabulka Podrobnosti objednávky zobrazuje číslovaný seznam 1000 hlavních obj
 - Každý sloupec v mřížce lze seřadit.
 - Data je možné extrahovat do souboru TSV, pokud je počet záznamů menší než 1000.
 - Pokud zaznamenává číslo přes 1000, vyexportovaná data se asynchronně nasadí na stránku ke stažení po dobu příštích 30 dnů.
-- Filtry lze použít v **tabulce podrobností objednávky** k zobrazení pouze těch dat, která vás zajímají. Data je možné filtrovat podle země/oblasti, typu licence Azure, typu licence Marketplace, typu nabídky, stavu objednávky, volných stop, ID předplatného Marketplace, ID zákazníka a názvu společnosti.
-- Vzhledem k tomu, že SaaS nabídky zakoupené prostřednictvím Azure Marketplace nebo AppSource nevyžadují předplatné Azure, ID předplatného na webu Marketplace se v části **podrobné údaje o objednávkách** zobrazí jako 00000000-0000-0000-0000-000000000000.
+- Použijte filtry v **tabulce Podrobnosti objednávky** , abyste zobrazili jenom data, která vás zajímají. Filtrovat podle země/oblasti, typu licence Azure, typu licence komerčního tržiště, typu nabídky, stavu objednávky, volných stop, ID předplatného komerčního tržiště, ID zákazníka a názvu společnosti.
+- Vzhledem k tomu, že SaaS nabízí nákup prostřednictvím Azure Marketplace nebo AppSource, nepotřebujete předplatné Azure, ID předplatného na webu Marketplace se v části **podrobné údaje o objednávkách** zobrazí jako 00000000-0000-0000-0000-000000000000.
 
 #### <a name="orders-page-filters"></a>Filtry stránek objednávky
 

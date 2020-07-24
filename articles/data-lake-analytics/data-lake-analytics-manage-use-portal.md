@@ -3,18 +3,16 @@ title: Správa Azure Data Lake Analytics pomocí Azure Portal
 description: Tento článek popisuje, jak použít Azure Portal ke správě účtů Data Lake Analytics, zdrojů dat, uživatelů a & úloh.
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: e9709f8ee700958b310b2fa94a546bb3ea4fc511
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7761da75c16e2f89ae145bad3b04cc179f415751
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121312"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127532"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Správa Azure Data Lake Analytics pomocí webu Azure Portal
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -29,7 +27,7 @@ Tento článek popisuje, jak spravovat účty Azure Data Lake Analytics, zdroje 
 
 ### <a name="create-an-account"></a>Vytvoření účtu
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
 2. Klikněte na **vytvořit prostředek**  >  **Intelligence + Analytics**  >  **Data Lake Analytics**.
 3. Vyberte hodnoty pro následující položky: 
    1. **Název**: název účtu Data Lake Analytics.

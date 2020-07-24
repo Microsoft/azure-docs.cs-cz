@@ -2,19 +2,19 @@
 title: Správa ověřování
 titleSuffix: Azure Maps
 description: Pomocí Azure Portal můžete spravovat ověřování v Microsoft Azure Maps.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 174606b4b070b69aba94f438a3f7177f0d5897f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69dda537beda1d1bec4f019e1d5cadd16bdd5b39
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84981709"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126852"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Správa ověřování v Azure Maps
 
@@ -43,13 +43,13 @@ Následující tabulka popisuje běžné scénáře ověřování a autorizace v
 > [!IMPORTANT]
 > Microsoft doporučuje implementovat Azure Active Directory (Azure AD) s řízením přístupu na základě role (RBAC) pro produkční aplikace.
 
-| Scénář                                                                                    | Authentication | Autorizace | Úsilí při vývoji | Provozní úsilí |
+| Scénář                                                                                    | Ověřování | Autorizace | Úsilí při vývoji | Provozní úsilí |
 | ------------------------------------------------------------------------------------------- | -------------- | ------------- | ------------------ | ------------------ |
-| [Důvěryhodná klientská aplikace typu démon/neinteraktivní](./how-to-secure-daemon-app.md)        | Sdílený klíč     | Není k dispozici           | Střední             | Vysoká               |
-| [Důvěryhodná klientská aplikace typu démon/neinteraktivní](./how-to-secure-daemon-app.md)        | Azure AD       | Vysoká          | Nízká                | Střední             |
+| [Důvěryhodná klientská aplikace typu démon/neinteraktivní](./how-to-secure-daemon-app.md)        | Sdílený klíč     | –           | Střední             | Vysoké               |
+| [Důvěryhodná klientská aplikace typu démon/neinteraktivní](./how-to-secure-daemon-app.md)        | Azure AD       | Vysoké          | Nízká                | Střední             |
 | [Aplikace webové stránky s interaktivním jedním přihlašováním](./how-to-secure-spa-users.md) | Azure AD       | Vysoká          | Střední             | Střední             |
 | [Aplikace webové stránky s neinteraktivním přihlašováním](./how-to-secure-spa-app.md)      | Azure AD       | Vysoká          | Střední             | Střední             |
-| [Webová aplikace s interaktivním jednotným přihlašováním](./how-to-secure-webapp-users.md)          | Azure AD       | Vysoká          | Vysoká               | Střední             |
+| [Webová aplikace s interaktivním jednotným přihlašováním](./how-to-secure-webapp-users.md)          | Azure AD       | Vysoké          | Vysoká               | Střední             |
 | [Zařízení nebo vstupní omezené zařízení IoT](./how-to-secure-device-code.md)                     | Azure AD       | Vysoká          | Střední             | Střední             |
 
 Odkazy v tabulce odkazují na podrobné informace o konfiguraci jednotlivých scénářů.

@@ -1,19 +1,19 @@
 ---
 title: Správa účtu Azure Maps v Azure Portal | Mapy Microsoft Azure
 description: V tomto článku se dozvíte, jak pomocí Azure Portal spravovat účet služby Microsoft Azure Maps.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 42247cc576e55c7c504e9832017af336439b11b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3317b063b5b05a57f08bbd15be827cd83075de34
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335552"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126954"
 ---
 # <a name="manage-your-azure-maps-account"></a>Správa účtu Azure Maps
 
@@ -23,9 +23,9 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 ## <a name="create-a-new-account"></a>Vytvoření nového účtu
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-2. Vyberte **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
+2. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek**.
 
 3. Vyhledejte a vyberte **Maps**. Potom vyberte **Vytvořit**.
 

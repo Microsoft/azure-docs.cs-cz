@@ -1,20 +1,20 @@
 ---
-title: Přehledy Marketplace – Microsoft Commercial Marketplace
+title: Marketplace Insights – komerční tržiště Microsoftu, Microsoft AppSource a Azure Marketplace
 description: Získejte přístup k souhrnným webovým analýzám Marketplace, které vám umožní měřit zapojení zákazníka v Microsoft AppSource a Azure Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 12/16/2019
-ms.openlocfilehash: 8b5f90449f27007febe93f1193c6d2245b076e7e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+ms.date: 07/22/2019
+ms.openlocfilehash: c72f3c9cce19896557fa9f4114b935fcc5ca8dc2
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120394"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128943"
 ---
 # <a name="marketplace-insights-dashboard-in-partner-center"></a>Řídicí panel přehledů Marketplace v partnerském centru
 
-Tento článek poskytuje informace o řídicím panelu přehledů Marketplace v partnerském centru. Tento řídicí panel zobrazuje souhrn Web Analytics pro Marketplace, který umožňuje vydavatelům měřit zapojení zákazníků na příslušné stránky s podrobnostmi o produktu, které jsou uvedené na webu Marketplace prodejní místa: Microsoft AppSource a Azure Marketplace.
+Tento článek poskytuje informace o řídicím panelu přehledů Marketplace v partnerském centru. Tento řídicí panel zobrazuje souhrn Web Analytics pro Marketplace, který umožňuje vydavatelům měřit zapojení zákazníků na příslušné stránky s podrobnostmi o produktu, které jsou uvedené na komerčním webu Marketplace prodejní místa: Microsoft AppSource a Azure Marketplace.
 
 ## <a name="marketplace-insights-dashboard"></a>Řídicí panel přehledů Marketplace
 
@@ -25,18 +25,20 @@ Můžete zobrazit grafické reprezentace následujících položek:
 - [Shrnutí webu Marketplace Insights](#marketplace-insights-summary)
 - [Návštěvy stránky podle geografického umístění](#page-visits-by-geography)  
 - [Návštěvy stránky versus trend jedinečných návštěvníků](#page-visits-versus-unique-visitors-trend)
-- [Volání akce versus jedinečné návštěvníky pomocí CTAs](#call-to-action-versus-unique-visitors-with-ctas)
+- [Volání akce (výzva) oproti jedinečným návštěvníkům s CTAs](#call-to-action-versus-unique-visitors-with-ctas)
 - [Návštěvy stránky a volání akce pomocí nabídek](#page-visits-and-calls-to-action-by-offers)
 - [Volání procenta trendu akce](#call-to-action-percentage-trend)
 - [Návštěvy stránky a volání akce podle domén odkazů](#page-visits-and-calls-to-action-by-referral-domains)
 - [Tabulka podrobností webu Marketplace Insights](#marketplace-insights-details-table)
+
+Maximální latence mezi uživateli, kteří navštěvují nabídky na Azure Marketplace nebo AppSource a vytváření sestav v partnerském centru, je 48 hodin.
 
 >[!NOTE]
 > Podrobné definice terminologie analýz najdete v tématu [Nejčastější dotazy a terminologie pro komerční analýzy na webu Marketplace](./faq-terminology.md).
 
 ### <a name="insights-dashboard-layout"></a>Rozložení řídicího panelu Insights
 
-Metriky Marketplace si můžete zobrazit různými způsoby:
+Prohlédněte si komerční metriky na webu Marketplace různými způsoby:
 
 - Karty prezentace
 - Filtry stránky
@@ -74,7 +76,7 @@ Toto číslo představuje jedinečný počet návštěvníků během vybraného 
 
 ### <a name="call-to-action"></a>Zavolat na akci
 
-Toto číslo představuje počet volání tlačítka **Akce** na stránce nabídky (Stránka s podrobnostmi o produktu). **Volání akce** se počítá při výběru tlačítek **načíst nyní**, **bezplatná zkušební verze**, **Kontaktní osoba**a **testovací jednotka** .
+Toto číslo představuje počet volání tlačítka **Akce** na stránce nabídky (Stránka s podrobnostmi o produktu). **Volání akce** se počítá, když uživatel vybere tlačítka **získat nyní**, **bezplatná zkušební verze**, **Kontaktní osoba**nebo **testovací jednotka** .
 
 ![Souhrn akcí v partnerském centru pro přehled](./media/insights-summary.png)
 
@@ -128,7 +130,7 @@ Tato tabulka obsahuje zobrazení seznamu návštěv stránky a volání akcí pr
 
 - Data je možné extrahovat do souboru CSV, pokud je počet záznamů menší než 1000.
 - Pokud je počet záznamů vyšší než 1000, exportovaná data budou asynchronně umístěna na stránku ke stažení po dobu příštích 30 dnů.
-- Filtry lze použít k zobrazení dat, která vás zajímají. Data je možné filtrovat podle názvů nabídek a názvů kampaní.  
+- Filtrovat data podle názvů a názvů kampaní pro zobrazení dat, která vás zajímají.
 
 ## <a name="next-steps"></a>Další kroky
 

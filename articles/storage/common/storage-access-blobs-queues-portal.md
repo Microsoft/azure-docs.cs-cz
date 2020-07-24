@@ -10,12 +10,12 @@ ms.date: 04/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 9b2de4f320801b20de5bcc9687a723dadb182ef8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db65ba904cdce7bec83b851c6b50316c89fcedfd
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807708"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128722"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Použití Azure Portal k přístupu k datům objektů BLOB nebo Queue
 
@@ -25,7 +25,7 @@ Můžete také určit, jak autorizovat jednotlivé operace nahrávání objektů
 
 ## <a name="permissions-needed-to-access-blob-or-queue-data"></a>Oprávnění potřebná pro přístup k datům objektů BLOB nebo front
 
-V závislosti na tom, jak chcete autorizovat přístup k datům objektů BLOB nebo Queue v Azure Portal, budete potřebovat specifická oprávnění. Ve většině případů jsou tato oprávnění k dispozici prostřednictvím řízení přístupu na základě role (RBAC). Další informace o RBAC najdete v tématu [co je řízení přístupu na základě role (RBAC)?](../../role-based-access-control/overview.md).
+V závislosti na tom, jak chcete autorizovat přístup k datům objektů BLOB nebo Queue v Azure Portal, budete potřebovat specifická oprávnění. Ve většině případů jsou tato oprávnění k dispozici prostřednictvím řízení přístupu na základě role (RBAC). Další informace o RBAC najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)?](../../role-based-access-control/overview.md).
 
 ### <a name="use-the-account-access-key"></a>Použití přístupového klíče účtu
 
@@ -57,7 +57,7 @@ Mezi předdefinované role, které podporují přístup k datům objektů BLOB n
 - [Přispěvatel dat fronty úložiště](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor): oprávnění ke čtení, zápisu a odstraňování front.
 - [Čtecí modul dat fronty úložiště](../../role-based-access-control/built-in-roles.md#storage-queue-data-reader): oprávnění jen pro čtení pro fronty.
 
-Vlastní role mohou podporovat různé kombinace stejných oprávnění poskytovaných integrovanými rolemi. Další informace o vytváření vlastních rolí RBAC najdete v tématech [vlastní role pro prostředky Azure](../../role-based-access-control/custom-roles.md) a [Principy definic rolí pro prostředky Azure](../../role-based-access-control/role-definitions.md).
+Vlastní role mohou podporovat různé kombinace stejných oprávnění poskytovaných integrovanými rolemi. Další informace o vytváření vlastních rolí Azure najdete v tématu [vlastní role Azure](../../role-based-access-control/custom-roles.md) a [pochopení definic rolí pro prostředky Azure](../../role-based-access-control/role-definitions.md).
 
 Výpis front s rolí správce předplatného s klasickou sadou není podporován. K vypsání front se musí uživatel přiřadit k rolím **čtenář** Azure Resource Manager, roli **čtečky dat fronty úložiště** nebo k roli **Přispěvatel dat fronty úložiště** .
 

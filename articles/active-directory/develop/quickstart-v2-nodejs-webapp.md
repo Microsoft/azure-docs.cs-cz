@@ -10,19 +10,19 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 5522d35faf1888c862e0c42328f08067e7b9be26
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-javascript
+ms.openlocfilehash: 165f3dab2413afc09a67175bb10471c2bd53ea32
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85339895"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129164"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Rychlý Start: přidání přihlášení pomocí OpenID připojení k webové aplikaci Node.js
 
 V tomto rychlém startu se dozvíte, jak nastavit ověřování OpenID Connect ve webové aplikaci vytvořené pomocí Node.js s využitím Express. Ukázka je navržená tak, aby běžela na jakékoli platformě.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení této ukázky budete potřebovat:
 
@@ -30,7 +30,7 @@ K provedení této ukázky budete potřebovat:
 
 * Buď [účet Microsoft](https://www.outlook.com) , nebo [Microsoft 365 vývojářský program](/office/developer-program/office-365-developer-program)
 
-## <a name="register-your-application"></a>Registrace vaší aplikace
+## <a name="register-your-application"></a>Registrace aplikace
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. Pokud je váš účet přítomen ve více než jednom tenantovi služby Azure AD:
     - V nabídce v pravém horním rohu stránky vyberte svůj profil a pak **Přepněte do adresáře**.

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: b7739320fa23bf4469548f61486da1a5ee6110da
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 075837d0c382f5bc6f436a63dfe227c17f0a57a3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507147"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128654"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Možnosti identit a přístupu pro Azure Kubernetes Service (AKS)
 
@@ -105,7 +105,7 @@ Azure RBAC je autorizačním systémem postaveným na [Azure Resource Manager](.
 
 Pomocí Azure RBAC můžete vytvořit *definici role* , která bude mít přehled o oprávněních, která se mají použít. Uživateli nebo skupině se pak přiřadí tato definice role prostřednictvím *přiřazení role* pro konkrétní *obor*, což může být individuální prostředek, skupina prostředků nebo celé předplatné.
 
-Další informace najdete v tématu [co je Azure RBAC?][azure-rbac]
+Další informace najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)?][azure-rbac]
 
 Existují dvě úrovně přístupu, které jsou potřeba k plnému provozu clusteru AKS: 
 1. [Přístup k prostředku AKS ve vašem předplatném Azure](#azure-rbac-to-authorize-access-to-the-aks-resource). Tento proces vám umožní řídit, jak škálovat nebo upgradovat cluster pomocí rozhraní AKS API, a také načíst vaše kubeconfig.

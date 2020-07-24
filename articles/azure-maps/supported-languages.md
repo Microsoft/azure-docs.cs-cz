@@ -1,18 +1,19 @@
 ---
 title: Podpora lokalizace | Mapy Microsoft Azure
 description: V tomto článku se dozvíte o podporovaných jazycích pro služby v Microsoft Azure Maps.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 2bab7b101b5461d854bb2db509b5cb243012a592
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d3adc4bc49379a9ec3408ab76b913a096840dbb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83746022"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127889"
 ---
 # <a name="localization-support-in-azure-maps"></a>Podpora lokalizace v Azure Maps
 
@@ -24,7 +25,7 @@ Azure Maps podporuje různé jazyky a zobrazení založené na zemi nebo oblasti
 Azure Maps byly lokalizovány do různých jazyků v rámci svých služeb. Následující tabulka uvádí podporované kódy jazyků pro každou službu.  
   
 
-| ID         | Name                   |  Maps | Search | Směrování | Weather | Incidenty provozu | JS – ovládací prvek mapy |
+| ID         | Název                   |  Mapy | Hledat | Směrování | Počasí | Incidenty provozu | JS – ovládací prvek mapy |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | AF-ZA      | Afrikánština              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | Arabština                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -146,7 +147,7 @@ Ve výchozím nastavení je parametr zobrazení nastavený na **sjednocené**, i
 
 Následující tabulka poskytuje podporovaná zobrazení.
 
-| Zobrazit         | Description                            |  Maps | Search | Ovládací prvek Mapa JS |
+| Zobrazit         | Popis                            |  Mapy | Hledat | Ovládací prvek Mapa JS |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | Spojené arabské emiráty (pohled na arabské písmo)    |   ✓   |        |     ✓          |
 | AR           | Argentina (pohled z argentinského)           |   ✓   |    ✓   |     ✓          |
