@@ -124,6 +124,9 @@
           href: network-security.md
         - name: Integrované ovládací prvky zabezpečení
           href: event-hubs-security-controls.md
+        - name: Mechanismy zabezpečení služby Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: Standardní hodnoty zabezpečení
           href: security-baseline.md
     - name: Průvodce protokolem AMQP 1.0
@@ -196,7 +199,7 @@
         - name: Nastavení diagnostických protokolů
           href: event-hubs-diagnostic-logs.md
         - name: Streamování dat Diagnostiky Azure pomocí Event Hubs
-          href: event-hubs-streaming-azure-diags-data.md
+          href: ../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md
         - name: Automatické škálování jednotek propustnosti
           href: event-hubs-auto-inflate.md
         - name: Knihovny pro správu Event Hubs
@@ -289,6 +292,8 @@
       href: /azure/templates/microsoft.eventhub/allversions
     - name: Kvóty
       href: event-hubs-quotas.md
+    - name: Konfigurace Apache Kafka
+      href: apache-kafka-configurations.md
 - name: Zdroje a prostředky
   items:
     - name: Získávání dovedností pomocí Microsoft Learn

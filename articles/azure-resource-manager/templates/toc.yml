@@ -10,6 +10,8 @@
       href: quickstart-create-templates-use-the-portal.md
     - name: Vytváření šablon – VS Code
       href: quickstart-create-templates-use-visual-studio-code.md
+    - name: Vytvoření a nasazení specifikace šablony
+      href: quickstart-create-template-specs.md
     - name: Služby Azure
       items:
         - name: Umělá inteligence a strojové učení
@@ -28,6 +30,8 @@
               href: ../../analysis-services/analysis-services-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Databricks
               href: /azure/databricks/scenarios/quickstart-create-databricks-workspace-resource-manager-template?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Data Factory
+              href: ../../data-factory/quickstart-create-data-factory-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Event Hubs
               href: ../../event-hubs/event-hubs-resource-manager-namespace-event-hub.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: HDInsight – Hadoop
@@ -114,6 +118,8 @@
           items:
             - name: Advisor
               href: ../../advisor/advisor-alerts-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Automation
+              href: ../../automation/quickstart-create-automation-account-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Backup
               href: ../../backup/quick-backup-vm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Správa nákladů + fakturace
@@ -201,6 +207,12 @@
         - name: 3. Vytvoření kanálu
           displayName: Devop
           href: deployment-tutorial-pipeline.md
+    - name: Specifikace šablon
+      items:
+        - name: Vytvoření s využitím propojených šablon
+          href: template-specs-create-linked.md
+        - name: Nasazení ve formě propojené šablony
+          href: template-specs-deploy-linked-template.md
     - name: Rozšířené šablony
       items:
         - name: Použití referenčních informací k šablonám
@@ -240,6 +252,8 @@
       href: template-best-practices.md
     - name: Nejčastější dotazy
       href: frequently-asked-questions.md
+    - name: Specifikace šablon
+      href: template-specs.md
     - name: Šablony pro konzistenci cloudu
       href: templates-cloud-consistency.md
     - name: Režimy nasazení

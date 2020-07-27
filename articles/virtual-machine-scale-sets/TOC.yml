@@ -5,7 +5,6 @@
     - name: Co jsou škálovací sady virtuálních počítačů?
       href: overview.md
 - name: Rychlé starty
-  expanded: true
   items:
     - name: Vytvoření na webu Azure Portal
       href: quick-create-portal.md
@@ -21,6 +20,7 @@
         - name: Škálovací sada pro Windows
           displayName: 'ARM, resource manager'
           href: quick-create-template-windows.md
+  expanded: true
 - name: Kurzy
   items:
     - name: 1. Vytvoření/správa škálovací sady
@@ -102,65 +102,71 @@
       href: ../azure-resource-manager/management/overview.md
       maintainContext: true
     - name: Oblasti
-      href: ../virtual-machines/windows/regions.md
+      href: ../virtual-machines/regions.md
     - name: Dostupnost a výkon
-      maintainContext: true
       items:
         - name: Dostupnost
-          href: availability.md
+          href: ../virtual-machines/availability.md?toc=%2fazure%2fvirtual-machine-scale-sets%2ftoc.json
         - name: Společné umístění
           href: co-location.md
         - name: Výkon sítě
           href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machine-scale-sets%2fwindows%2ftoc.json
         - name: Správa domén selhání ve škálovacích sadách
           href: virtual-machine-scale-sets-manage-fault-domains.md
+      maintainContext: true
     - name: Image
       href: shared-image-galleries.md
     - name: Velikosti a typy virtuálních počítačů
       href: ../virtual-machines/windows/sizes.md
-      maintainContext: true
       items:
         - name: Obecné účely
-          href: ../virtual-machines/windows/sizes-general.md
+          href: ../virtual-machines/sizes-general.md
           maintainContext: true
           items:
             - name: B-Series s možností zvládání výkonových špiček
-              href: ../virtual-machines/windows/b-series-burstable.md
+              href: ../virtual-machines/sizes-b-series-burstable.md
               maintainContext: true
         - name: Optimalizované z hlediska výpočetních služeb
-          href: ../virtual-machines/windows/sizes-compute.md
+          href: ../virtual-machines/sizes-compute.md
           maintainContext: true
         - name: Optimalizované z hlediska paměti
-          href: ../virtual-machines/windows/sizes-memory.md
+          href: ../virtual-machines/sizes-memory.md
           maintainContext: true
           items:
             - name: Virtuální procesory s omezením
               href: ../virtual-machines/windows/constrained-vcpu.md
               maintainContext: true
         - name: Optimalizované z hlediska úložiště
-          href: ../virtual-machines/windows/sizes-storage.md
+          href: ../virtual-machines/sizes-storage.md
           maintainContext: true
         - name: Optimalizované z hlediska GPU
-          href: ../virtual-machines/windows/sizes-gpu.md
+          href: ../virtual-machines/sizes-gpu.md
           maintainContext: true
           items:
             - name: Nastavení ovladačů NVIDIA GPU
               href: ../virtual-machines/windows/n-series-driver-setup.md
               maintainContext: true
         - name: Vysokovýkonné výpočetní prostředí
-          href: ../virtual-machines/windows/sizes-hpc.md
+          href: ../virtual-machines/sizes-hpc.md
+          maintainContext: true
+        - name: Virtuální počítače Azure bez dočasného disku
+          href: ../virtual-machines/azure-vms-no-temp-disk.md
+          maintainContext: true
+        - name: Zásady vytváření názvů velikostí virtuálních počítačů Azure
+          href: ../virtual-machines/vm-naming-conventions.md
           maintainContext: true
         - name: Výpočetní jednotky Azure (ACU)
-          href: ../virtual-machines/windows/acu.md
+          href: ../virtual-machines/acu.md
           maintainContext: true
         - name: Výsledky srovnávacích testů
           href: ../virtual-machines/windows/compute-benchmark-scores.md
           maintainContext: true
+      maintainContext: true
     - name: Schválené linuxové distribuce
       href: ../virtual-machines/linux/endorsed-distros.md
       maintainContext: true
     - name: Údržba a aktualizace
-      href: ../virtual-machines/windows/maintenance-and-updates.md
+      href: ../virtual-machines/maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
       maintainContext: true
     - name: Režimy orchestrace
       href: orchestration-modes.md
@@ -198,11 +204,13 @@
           href: ../virtual-machines/windows/security-policy.md
         - name: Azure Disk Encryption
           href: disk-encryption-overview.md
+        - name: Standardní hodnoty zabezpečení Azure
+          href: security-baseline.md
         - name: Integrované ovládací prvky zabezpečení
           href: virtual-machine-scale-sets-security-controls.md
       maintainContext: true
     - name: Monitorování
-      href: ../virtual-machines/windows/monitor.md
+      href: ../azure-monitor/insights/monitor-vm-azure.md
       maintainContext: true
     - name: Aspekty nasazování
       items:
@@ -349,7 +357,7 @@
           items:
             - name: Přehled
               href: shared-image-galleries.md
-            - name: Rozhraní příkazového řádku
+            - name: CLI
               href: shared-images-cli.md
             - name: PowerShell
               href: shared-images-powershell.md
@@ -381,9 +389,7 @@
 - name: Referenční informace
   items:
     - name: Azure PowerShell
-      href: /powershell/azure/overview
-    - name: Azure CLI
-      href: ../virtual-machines/azure-cli-arm-commands.md
+      href: /powershell/azure/
     - name: REST
       href: /rest/api/virtualmachinescalesets/
     - name: Šablony Azure

@@ -68,8 +68,8 @@
           href: url-route-overview.md
         - name: Přesměrování
           href: redirect-overview.md
-        - name: Přepsání hlaviček HTTP
-          href: rewrite-http-headers.md
+        - name: Přepsání hlaviček HTTP a adres URL
+          href: rewrite-http-headers-url.md
     - name: SSL
       items:
         - name: Ukončení protokolu SSL a kompletní SSL
@@ -198,14 +198,20 @@
               href: redirect-internal-site-cli.md
         - name: Přesměrování webového provozu s využitím Azure Powershellu
           href: tutorial-url-redirect-powershell.md
-    - name: Přepsání hlaviček HTTP
+    - name: Přepsání hlaviček HTTP a adres URL
       items:
-        - name: portál Azure
-          href: rewrite-http-headers-portal.md
-        - name: Azure PowerShell
-          href: add-http-header-rewrite-rule-powershell.md
-        - name: Vytvoření a přepsání hlaviček HTTP
-          href: tutorial-http-header-rewrite-powershell.md
+        - name: Přepsání hlaviček
+          items:
+            - name: portál Azure
+              href: rewrite-http-headers-portal.md
+            - name: Azure PowerShell
+              href: add-http-header-rewrite-rule-powershell.md
+            - name: Vytvoření a přepsání hlaviček HTTP
+              href: tutorial-http-header-rewrite-powershell.md
+        - name: Přepsání adresy URL
+          items:
+            - name: portál Azure
+              href: rewrite-url-portal.md
     - name: Konfigurace služby více tenantů a webové aplikace App Service
       items:
         - name: Portál
@@ -249,7 +255,7 @@
     - name: Azure CLI
       href: /cli/azure/network/application-gateway
     - name: Azure PowerShell
-      href: /powershell/azure/overview
+      href: /powershell/azure/
     - name: .NET
       href: /dotnet/api
     - name: Java

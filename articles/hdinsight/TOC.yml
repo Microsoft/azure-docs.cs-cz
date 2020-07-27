@@ -939,8 +939,6 @@
           href: ./control-network-traffic.md
         - name: Požadované IP adresy pro skupiny zabezpečení sítě a UDR
           href: ./hdinsight-management-ip-addresses.md
-        - name: Značky služby pro bránu Azure Firewall
-          href: ./hdinsight-service-tags.md
         - name: Šifrování disků s využitím klíčů spravovaných zákazníky
           href: ./disk-encryption.md
         - name: Synchronizace LDAP v Rangeru a Apache Ambari
@@ -967,8 +965,12 @@
           href: ./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
         - name: Použití brány firewall k omezení odchozího provozu
           href: ./hdinsight-restrict-outbound-traffic.md
+        - name: Vytvoření zásad koncového bodu služby
+          href: ./service-endpoint-policies.md
         - name: Konfigurace síťového virtuálního zařízení
           href: ./network-virtual-appliance.md
+        - name: Značky služby pro bránu Azure Firewall
+          href: ./hdinsight-service-tags.md
         - name: Řešení potíží
           items:
             - name: Problémy s ověřováním ESP

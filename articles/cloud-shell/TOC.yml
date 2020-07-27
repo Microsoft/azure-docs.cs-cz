@@ -32,6 +32,8 @@
       href: msi-authorization.md
     - name: Vložení Cloud Shellu
       href: embed-cloud-shell.md
+    - name: Cloud Shell ve službě Azure Virtual Network
+      href: private-vnet.md
 - name: Použití editoru Cloud Shell
   href: using-cloud-shell-editor.md
 - name: Řešení potíží a omezení
@@ -40,7 +42,7 @@
   items:
     - name: Azure CLI
       href: /cli/azure
-    - name: Azure Powershell
+    - name: Azure PowerShell
       href: /powershell/azure
 - name: Zdroje a prostředky
   items:

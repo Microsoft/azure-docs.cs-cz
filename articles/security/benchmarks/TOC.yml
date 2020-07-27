@@ -53,8 +53,10 @@
       href: ../../mysql/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Database for MariaDB
       href: ../../mariadb/security-baseline.md
-    - name: Standardní hodnoty zabezpečení pro Azure Database for PostgreSQL
+    - name: Standardní hodnoty zabezpečení pro Azure Database for PostgreSQL – Jeden server
       href: ../../postgresql/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Azure Database for PostgreSQL – Hyperscaleserver
+      href: ../../postgresql/postgresql-hyperscale-security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Databricks
       href: ../../azure-databricks/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Functions
@@ -79,6 +81,8 @@
       href: ../../cosmos-db/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Customer Lockbox
       href: ../fundamentals/customer-lockbox-security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Data Lake Analytics
+      href: ../../data-lake-analytics/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Event Hubs
       href: ../../event-hubs/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro ExpressRoute
@@ -91,7 +95,15 @@
       href: ../../logic-apps/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Network Watcher
       href: ../../network-watcher/security-baseline.md
+    - name: Standardní hodnoty pro Service Fabric
+      href: ../../service-fabric/security-baseline.md
     - name: Standardní hodnoty pro Stream Analytics
       href: ../../stream-analytics/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Synapse Analytics
       href: ../../synapse-analytics/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Virtual Machine Scale Sets
+      href: ../../virtual-machine-scale-sets/security-baseline.md
+    - name: Standardní hodnoty zabezpečení Linuxu pro Virtual Machines
+      href: ../../virtual-machines/linux/security-baseline.md
+    - name: Standardní hodnoty zabezpečení Windows pro Virtual Machines
+      href: ../../virtual-machines/windows/security-baseline.md

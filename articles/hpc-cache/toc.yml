@@ -11,7 +11,7 @@
 - name: Návody
   items:
     - name: Požadavky
-      href: hpc-cache-prereqs.md
+      href: hpc-cache-prerequisites.md
     - name: Vytvoření mezipaměti
       href: hpc-cache-create.md
     - name: Přidání úložiště
@@ -46,6 +46,8 @@
   items:
     - name: Otevření lístku podpory
       href: hpc-cache-support-ticket.md
+    - name: Nastavení rozhraní příkazového řádku Azure pro Azure HPC Cache
+      href: az-cli-prerequisites.md
     - name: Jak obejít nastavení brány firewall účtu úložiště objektů blob
       href: hpc-cache-blob-firewall-fix.md
     - name: Řešení potíží s vytvářením cílů úložiště NFS

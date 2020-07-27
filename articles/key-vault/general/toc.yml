@@ -1,20 +1,28 @@
 - name: Obecné
   href: index.yml
 - name: Přehled
-  expanded: true
   items:
     - name: Informace o službě Azure Key Vault
       href: overview.md
     - name: 'Informace o klíčích, tajných kódech a certifikátech'
       href: about-keys-secrets-certificates.md
+- name: Rychlé starty
+  expanded: true
+  items:
+    - name: Rozhraní příkazového řádku
+      href: quick-create-cli.md
+    - name: PowerShell
+      href: quick-create-powershell.md
+    - name: Portál
+      href: quick-create-portal.md
 - name: Kurzy
   items:
     - name: Virtuální počítač Azure
       items:
-        - name: Používání služby Azure Key Vault s virtuálním počítačem s Windows v .NET
-          href: tutorial-net-windows-virtual-machine.md
-        - name: Používání služby Azure Key Vault s virtuálním počítačem s Windows v Pythonu
-          href: tutorial-python-windows-virtual-machine.md
+        - name: Použití služby Azure Key Vault s virtuálním počítačem v .NET
+          href: tutorial-net-virtual-machine.md
+        - name: Použití služby Azure Key Vault s virtuálním počítačem v Pythonu
+          href: tutorial-python-virtual-machine.md
     - name: Azure Kubernetes Service
       items:
         - name: Integrace služby Azure Key Vault s protokolem Kubernetes
@@ -117,15 +125,11 @@
     - name: Přesun Key Vaultu
       items:
         - name: Přesun Key Vaultu do jiné skupiny prostředků
-          href: keyvault-moveresourcegroup.md
+          href: move-resourcegroup.md
         - name: Přesun Key Vaultu do jiného předplatného
-          href: keyvault-move-subscription.md
+          href: move-subscription.md
         - name: Přesun Key Vaultu do jiné oblasti
-          href: keyvault-moveregion.md
-    - name: Řešení potíží
-      items:
-        - name: Změna ID tenanta trezoru klíčů po přesunu předplatného
-          href: subscription-move-fix.md
+          href: move-region.md
 - name: Referenční informace
   items:
     - name: Kódy chyb rozhraní REST API –⁠ Azure Key Vault

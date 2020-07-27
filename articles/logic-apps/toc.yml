@@ -16,6 +16,8 @@
     - name: Vytváření aplikací logiky – šablona Resource Manageru
       displayName: Resource Manager
       href: quickstart-create-deploy-azure-resource-manager-template.md
+    - name: Vytváření a správa aplikací logiky – Azure CLI
+      href: quickstart-logic-apps-azure-cli.md
 - name: Kurzy
   items:
     - name: Vytváření pracovních postupů založených na plánech
@@ -27,7 +29,7 @@
 - name: ukázky
   items:
     - name: Ukázky kódu Azure
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-logic-apps'
+      href: /samples/browse/?products=azure-logic-apps
     - name: Šablony pro rychlý start Resource Manageru
       href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Logic'
     - name: Integrované služby Azure Policy
@@ -205,24 +207,18 @@
           href: ../connectors/connectors-create-api-sqlazure.md
         - name: Vyhledávání pomocí služby Bing
           href: ../connectors/connectors-create-api-bingsearch.md
-        - name: Box
-          href: ../connectors/connectors-create-api-box.md
         - name: Common Data Service
           href: ../connectors/connect-common-data-service.md
         - name: Vlastní rozhraní API a webové aplikace
           href: logic-apps-create-api-app.md
         - name: Zpoždění
           href: ../connectors/connectors-native-delay.md
-        - name: Dropbox
-          href: ../connectors/connectors-create-api-dropbox.md
         - name: Dynamics 365
           href: ../connectors/connectors-create-api-crmonline.md
         - name: EDIFACT
           href: logic-apps-enterprise-integration-edifact.md
         - name: Excel Online pro firmy nebo OneDrive
           href: ../connectors/connectors-create-api-excel.md
-        - name: Facebook
-          href: ../connectors/connectors-create-api-facebook.md
         - name: Systém souborů
           href: logic-apps-using-file-connector.md
         - name: Plochý soubor
@@ -249,18 +245,10 @@
           href: ../connectors/connectors-create-api-mq.md
         - name: Účet pro integraci
           href: logic-apps-enterprise-integration-metadata.md
-        - name: MailChimp
-          href: ../connectors/connectors-create-api-mailchimp.md
         - name: Zabezpečení Microsoft Graphu
           href: ../connectors/connectors-integrate-security-operations-create-api-microsoft-graph-security.md
-        - name: Microsoft Translator
-          href: ../connectors/connectors-create-api-microsofttranslator.md
         - name: Office 365 Outlook
           href: ../connectors/connectors-create-api-office365-outlook.md
-        - name: Uživatelé Office 365
-          href: ../connectors/connectors-create-api-office365-users.md
-        - name: Office 365 Video
-          href: ../connectors/connectors-create-api-office365-video.md
         - name: OneDrive
           href: ../connectors/connectors-create-api-onedrive.md
         - name: OneDrive pro firmy
@@ -269,16 +257,12 @@
           href: ../connectors/connectors-create-api-oracledatabase.md
         - name: Outlook.com
           href: ../connectors/connectors-create-api-outlook.md
-        - name: Project Online
-          href: ../connectors/connectors-create-api-projectonline.md
         - name: Opakování
           href: ../connectors/connectors-native-recurrence.md
         - name: Žádost a odpověď
           href: ../connectors/connectors-native-reqres.md
         - name: RosettaNet
           href: logic-apps-enterprise-integration-rosettanet.md
-        - name: RSS
-          href: ../connectors/connectors-create-api-rss.md
         - name: Salesforce
           href: ../connectors/connectors-create-api-salesforce.md
         - name: SAP (nové)
@@ -301,10 +285,6 @@
           href: ../connectors/connectors-create-api-sqlazure.md
         - name: Transformace XML
           href: logic-apps-enterprise-integration-transform.md
-        - name: Trello
-          href: ../connectors/connectors-create-api-trello.md
-        - name: Twitter
-          href: ../connectors/connectors-create-api-twitter.md
         - name: Twilio
           href: ../connectors/connectors-create-api-twilio.md
         - name: Wunderlist
@@ -313,8 +293,6 @@
           href: logic-apps-enterprise-integration-x12.md
         - name: Ověření XML
           href: logic-apps-enterprise-integration-xml-validation.md
-        - name: Yammer
-          href: ../connectors/connectors-create-api-yammer.md
     - name: Zabezpečení
       items:
         - name: Zabezpečení aplikací logiky
@@ -330,7 +308,7 @@
         - name: Správa aplikací logiky – Visual Studio
           href: manage-logic-apps-with-visual-studio.md
         - name: Správa účtů pro integraci
-          href: logic-apps-enterprise-integration-accounts.md
+          href: ./logic-apps-enterprise-integration-create-integration-account.md
         - name: Správa prostředí integrační služby
           href: ise-manage-integration-service-environment.md
         - name: Přesun prostředků aplikace logiky
@@ -381,7 +359,7 @@
         - name: Podniková integrace s využitím front a událostí
           href: /azure/architecture/reference-architectures/enterprise-integration/queues-events
     - name: 'Konektory: Úplné podrobnosti'
-      href: 'https://docs.microsoft.com/connectors/'
+      href: /connectors/
     - name: Konfigurace a omezení služeb
       href: logic-apps-limits-and-config.md
     - name: Cenový model a měření využití
@@ -414,7 +392,7 @@
 - name: Zdroje a prostředky
   items:
     - name: Získávání dovedností pomocí Microsoft Learn
-      href: 'https://docs.microsoft.com/learn/browse/?products=azure-logic-apps'
+      href: /learn/browse/?products=azure-logic-apps
     - name: Plány Azure Logic Apps do budoucna
       href: 'https://aka.ms/logicappsroadmap/'
     - name: Plány Azure do budoucna
@@ -428,7 +406,7 @@
     - name: Videa
       href: 'https://azure.microsoft.com/resources/videos/index/?services=logic-apps&sort=newest'
     - name: Stránka s dotazy na Microsoft Q&A
-      href: 'https://docs.microsoft.com/answers/topics/azure-logic-apps.html'
+      href: /answers/topics/azure-logic-apps.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-logic-apps'
     - name: Twitter

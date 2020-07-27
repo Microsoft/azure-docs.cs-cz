@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Dokumentace ke službě Azure Machine Learning
-summary: Naučte se používat Azure Machine Learning k trénování, nasazování a správě modelů strojového učení, experimentů AutoML a kanálů ve velkém. Kurzy, ukázky kódu, reference k rozhraní API a další materiály vám ukážou, jak postupovat.
+summary: Naučte se používat Azure Machine Learning k trénování, nasazování a správě modelů strojového učení, použití AutoML a spouštění kanálů ve velkém.  Kurzy, ukázky kódu, reference k rozhraní API a další materiály vám ukážou, jak postupovat.
 metadata:
   title: Dokumentace ke službě Azure Machine Learning
-  description: Naučte se používat Azure Machine Learning k trénování, nasazování a správě modelů strojového učení, experimentů AutoML a kanálů ve velkém. Kurzy, ukázky kódu, reference k rozhraní API a další materiály vám ukážou, jak postupovat.
+  description: Naučte se používat Azure Machine Learning k trénování, nasazování a správě modelů strojového učení, použití AutoML a spouštění kanálů ve velkém. Kurzy, ukázky kódu, reference k rozhraní API a další materiály vám ukážou, jak postupovat.
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: j-martens
   ms.author: jmartens
-  ms.date: 04/30/2020
-  ms.openlocfilehash: 57a16ca35699f11c55e12c494a4cbb93bac8a334
-  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.date: 07/30/2020
+  ms.openlocfilehash: 1006874272fa4798d9e56cbc76d7b039e697c413
+  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83592997"
+  ms.lasthandoff: 07/23/2020
+  ms.locfileid: "87047796"
 landingContent:
 - title: Začínáme se strojovým učením
   linkLists:
@@ -31,14 +31,14 @@ landingContent:
       url: tutorial-first-experiment-automated-ml.md
     - text: RStudio
       url: tutorial-1st-r-experiment.md
-- title: Použití webového prostředí sady Studio
+- title: Použití designera a AutoML v sadě Studio
   linkLists:
   - linkListType: overview
     links:
+    - text: Co je automatizované strojové učení (AutoML)?
+      url: concept-automated-ml.md
     - text: Co je designer (přetažení a vložení)?
       url: concept-designer.md
-    - text: Co je automatizované strojové učení?
-      url: concept-automated-ml.md
     - text: Jak vybrat algoritmus
       url: how-to-select-algorithms.md
   - linkListType: tutorial
@@ -51,7 +51,7 @@ landingContent:
       url: tutorial-designer-automobile-price-train-score.md
     - text: Vytvoření projektu pro označování obrázků
       url: tutorial-labeling.md
-- title: Použití sady Python SDK
+- title: Trénování s využitím sady Python SDK
   linkLists:
   - linkListType: tutorial
     links:
@@ -71,19 +71,19 @@ landingContent:
       url: how-to-machine-learning-interpretability.md
     - text: Hluboké učení vs. ML
       url: concept-deep-learning-vs-machine-learning.md
-    - text: Trénování s využitím Scikit-learn
+    - text: Trénování a registrace modelů Scikit-learn
       url: how-to-train-scikit-learn.md
-    - text: Trénování s využitím TensorFlow
+    - text: Trénování a registrace modelů TensorFlow
       url: how-to-train-tensorflow.md
-    - text: Trénování s využitím PyTorchu
+    - text: Trénování a registrace modelů PyTorch
       url: how-to-train-pytorch.md
-    - text: Trénování s využitím Keras
+    - text: Trénování a registrace modelů Keras
       url: how-to-train-keras.md
     - text: Zpětnovazební učení
       url: how-to-use-reinforcement-learning.md
     - text: Co jsou kanály ML?
       url: concept-ml-pipelines.md
-- title: Nasazení a správa modelů (MLOps)
+- title: 'MLOps: Nasazení a správa modelů'
   linkLists:
   - linkListType: how-to-guide
     links:

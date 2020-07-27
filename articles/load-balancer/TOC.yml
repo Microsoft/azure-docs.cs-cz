@@ -18,17 +18,19 @@
       href: quickstart-create-standard-load-balancer-powershell.md
     - name: Vytvoření nástroje pro vyrovnávání zatížení – šablona ARM
       href: quickstart-load-balancer-standard-public-template.md
-    - name: Vytvoření interního nástroje pro vyrovnávání zatížení – portál
-      href: tutorial-load-balancer-standard-internal-portal.md
-    - name: Vytvoření interního nástroje pro vyrovnávání zatížení – Azure CLI
-      href: load-balancer-get-started-ilb-arm-cli.md
-    - name: Vytvoření interního nástroje pro vyrovnávání zatížení – Azure PowerShell
-      href: load-balancer-get-started-ilb-arm-ps.md
-    - name: Vytvoření interního nástroje pro vyrovnávání zatížení – šablona ARM
-      href: load-balancer-get-started-ilb-arm-template.md
   expanded: true
 - name: Kurzy
   items:
+    - name: Interní nástroj pro vyrovnávání zatížení
+      items:
+        - name: Vytvoření interního nástroje pro vyrovnávání zatížení – portál
+          href: tutorial-load-balancer-standard-internal-portal.md
+        - name: Vytvoření interního nástroje pro vyrovnávání zatížení – Azure CLI
+          href: load-balancer-get-started-ilb-arm-cli.md
+        - name: Vytvoření interního nástroje pro vyrovnávání zatížení – Azure PowerShell
+          href: load-balancer-get-started-ilb-arm-ps.md
+        - name: Vytvoření interního nástroje pro vyrovnávání zatížení – šablona ARM
+          href: load-balancer-get-started-ilb-arm-template.md
     - name: Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: Vyrovnávání zatížení virtuálního počítače v konkrétní zóně dostupnosti
@@ -73,6 +75,8 @@
       href: load-balancer-security-controls.md
     - name: Správa back-endových fondů
       href: backend-pool-management.md
+    - name: Standard Load Balancer a Virtual Machine Scale Sets
+      href: load-balancer-standard-virtual-machine-scale-sets.md
 - name: Postup
   items:
     - name: Škálovací sady virtuálních počítačů
@@ -144,7 +148,7 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=load-balancer'
     - name: Azure PowerShell
       href: /powershell/module/az.network
-    - name: Azure CLI
+    - name: Rozhraní příkazového řádku Azure
       href: /cli/azure/network/lb
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.network.models

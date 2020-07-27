@@ -68,10 +68,14 @@
           href: boosted-decision-tree-regression.md
         - name: Regrese rozhodovacího lesa
           href: decision-forest-regression.md
+        - name: Rychlá kvantilová regrese rozhodovacích stromů
+          href: fast-forest-quantile-regression.md
         - name: Lineární regrese
           href: linear-regression.md
         - name: Regrese neurální sítě
           href: neural-network-regression.md
+        - name: Poissonova regrese
+          href: poisson-regression.md
     - name: Clustering
       items:
         - name: Clustering K-Means

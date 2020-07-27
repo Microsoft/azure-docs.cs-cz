@@ -157,6 +157,11 @@
       href: visualizations.md
     - name: Integrace partnerů
       href: platform/partners.md
+    - name: Zabezpečení
+      items:
+        - name: Mechanismy zabezpečení služby Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./platform/security-controls-policy.md
 - name: Návody
   items:
     - name: Scénáře
@@ -244,8 +249,6 @@
                       href: platform/diagnostics-extension-to-application-insights.md
                     - name: Historie verzí
                       href: platform/diagnostics-extension-versions.md
-                    - name: Formát protokolů prostředků řádků JSON
-                      href: platform/resource-logs-append-blobs.md
                     - name: Řešení potíží
                       href: platform/diagnostics-extension-troubleshooting.md
                 - name: Linux
@@ -264,9 +267,9 @@
                 - name: Agenti systému Linux
                   href: platform/agent-linux.md
                 - name: Rozšíření virtuálního počítače pro Windows
-                  href: ../virtual-machines/windows/extensions-oms.md?toc=/azure/azure-monitor/toc.json
+                  href: ../virtual-machines/extensions/oms-windows.md?toc=/azure/azure-monitor/toc.json
                 - name: Rozšíření virtuálního počítače pro Linux
-                  href: ../virtual-machines/linux/extensions-oms.md?toc=/azure/azure-monitor/toc.json
+                  href: ../virtual-machines/extensions/oms-linux.md?toc=/azure/azure-monitor/toc.json
                 - name: Brána Log Analytics
                   href: platform/gateway.md
                 - name: Správa agentů
@@ -430,7 +433,7 @@
         - name: Škálování s využitím vlastních metrik
           href: platform/autoscale-custom-metric.md
         - name: Škálování škálovacích sad virtuálních počítačů
-          href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=/azure/azure-monitor/toc.json
+          href: ../virtual-machine-scale-sets/tutorial-autoscale-powershell.md?toc=/azure/azure-monitor/toc.json
         - name: Škálování škálovacích sad virtuálních počítačů s využitím šablon Resource Manageru
           href: platform/autoscale-virtual-machine-scale-sets.md
         - name: Použití webhooků a e-mailových oznámení
@@ -446,7 +449,7 @@
             - name: Dostupnost
               href: app/monitor-web-app-availability.md
             - name: Upozornění metrik
-              href: app/alerts.md
+              href: ./platform/alerts-log.md
         - name: Pravidla upozornění metrik
           items:
             - name: Správa upozornění metrik
@@ -474,19 +477,20 @@
             - name: Upozornění pro událost protokolu aktivit
               href: platform/alerts-activity-log.md
             - name: Migrace událostí správy na upozornění protokolu aktivit
-              href: platform/migrate-management-alerts.md
+              href: ./platform/activity-log-alerts.md
             - name: Schéma webhooku
               href: platform/activity-log-alerts-webhook.md
         - name: Upozornění týkající se stavu služby
           items:
             - name: Zobrazení oznámení
-              href: platform/service-notifications.md
+              href: ../service-health/service-notifications.md
             - name: Konfigurace upozornění pro události oznámení
               href: platform/alerts-activity-log-service-notifications.md
         - name: Oznámení a akce
           items:
             - name: Pravidla akcí (Preview)
               href: platform/alerts-action-rules.md
+              displayName: 'Azure CLI, az monitor action rule'
             - name: Vytvoření skupiny akcí
               href: platform/action-groups.md
             - name: Běžné schéma upozornění
@@ -556,7 +560,7 @@
         - name: Přehled služby Application Insights
           href: app/app-insights-overview.md
         - name: Nejčastější dotazy
-          href: app/troubleshoot-faq.md
+          href: ./faq.md
         - name: Monitorování na základě kódu
           items:
             - name: Jádro ASP.NET
@@ -970,7 +974,11 @@
         - name: Analýza dat s využitím dotazů na protokoly
           href: insights/container-insights-log-search.md
         - name: Zobrazení výstrah
-          href: insights/container-insights-alerts.md
+          items:
+            - name: Vytváření pravidel upozornění protokolu
+              href: insights/container-insights-log-alerts.md
+            - name: Vytváření pravidel upozornění metriky
+              href: insights/container-insights-metric-alerts.md
         - name: Správa agentů
           href: insights/container-insights-manage-agent.md
         - name: Konfigurace získávání metrik v systému Prometheus
@@ -1016,6 +1024,7 @@
       items:
         - name: Přehled
           href: insights/solutions.md
+          displayName: 'Azure CLI, az monitor log-analytics'
         - name: Cílová řešení
           href: insights/solution-targeting.md
         - name: Dostupná řešení
@@ -1028,8 +1037,6 @@
               href: insights/capacity-performance.md
             - name: Monitorování Dockeru a kontejnerů s Windows
               href: insights/containers.md
-            - name: Key Vault Analytics
-              href: insights/azure-key-vault.md
             - name: Sítě
               items:
                 - name: Analýza sítě
@@ -1173,7 +1180,7 @@
     - name: Terminologické změny
       href: terminology.md
     - name: Reference pro data
-      href: 'https://docs.microsoft.com/azure/azure-monitor/reference/'
+      href: /azure/azure-monitor/reference/
     - name: Podporované metriky
       items:
         - name: Metriky platformy
@@ -1288,6 +1295,8 @@
         - name: Změna formátu úložiště objektů blob
           displayname: Diagnostic settings
           href: platform/resource-logs-blob-format.md
+        - name: Key Vault Analytics (zastaralé)
+          href: insights/azure-key-vault-deprecated.md
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna

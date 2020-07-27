@@ -44,7 +44,7 @@
       href: migrate-to-policy.md
     - name: Nastavení DNS
       href: dns-settings.md
-    - name: Nasazení několika veřejných IP adres
+    - name: Nasazení několika veřejných IP adres – PowerShell
       href: multiple-public-ip-powershell.md
 - name: Referenční informace
   items:

@@ -84,6 +84,8 @@
           href: troubleshoot-missing-data-download.md
         - name: Nedá se získat přístup k rozhraní Graph API pro generování sestav
           href: troubleshoot-graph-api.md
+        - name: Audit dat při ověřené změně domény
+          href: troubleshoot-audit-data-verified-domain.md
 - name: Referenční informace
   expanded: true
   items:

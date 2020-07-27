@@ -44,6 +44,9 @@
               displayName: 'compliance, fedramp, soc, fact, fisc, hitrust, pci, iso'
             - name: Osvědčené postupy
               href: database/security-best-practice.md
+            - name: Mechanismy zabezpečení služby Azure Policy
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./database/security-controls-policy.md
             - name: Standardní hodnoty zabezpečení
               href: database/security-baseline.md
             - name: Atributy zabezpečení
@@ -201,9 +204,11 @@
             - name: Java
               items:
                 - name: Použití JDBC služby Spring Data
-                  href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/sql-database/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
                 - name: Použití JPA služby Spring Data
-                  href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/sql-database/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                - name: Použití R2DBC služby Spring Data
+                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
 - name: SQL Database (SQL DB)
   items:
     - name: Dokumentace
@@ -230,8 +235,6 @@
               href: database/service-tier-hyperscale.md
             - name: Nejčastější dotazy k hyperškálování
               href: database/service-tier-hyperscale-frequently-asked-questions-faq.md
-            - name: Migrace z Premium RS
-              href: database/service-tiers-prs.md
     - name: Rychlé starty
       href: database/quickstart-content-reference-guide.md
       items:
@@ -392,6 +395,12 @@
                   href: database/connect-query-go.md
                 - name: Java
                   href: database/connect-query-java.md
+                - name: Java s JDBC služby Spring Data
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                - name: Java s JPA služby Spring Data
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                - name: Java s R2DBC služby Spring Data
+                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
                 - name: Node.js
                   href: database/connect-query-nodejs.md
                 - name: PHP
@@ -680,16 +689,20 @@
               href: managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md
     - name: Koncepty
       items:
-        - name: Transakční replikace
-          href: managed-instance/replication-transactional-overview.md
-        - name: Referenční informace k rozhraní API pro správu
-          href: managed-instance/api-references-create-manage-instance.md
         - name: Omezení prostředků
           href: managed-instance/resource-limits.md
         - name: Architektura připojení
           href: managed-instance/connectivity-architecture-overview.md
         - name: Rozdíly v jazyce T-SQL
           href: managed-instance/transact-sql-tsql-differences-sql-server.md
+        - name: Transakční replikace
+          href: managed-instance/replication-transactional-overview.md
+        - name: Operace správy
+          items:
+            - name: Přehled
+              href: managed-instance/management-operations-overview.md
+            - name: API – referenční informace
+              href: managed-instance/api-references-create-manage-instance.md
         - name: Machine Learning Services
           items:
             - name: Přehled
@@ -708,6 +721,8 @@
                       href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-functions?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
                     - name: Trénování a hodnocení modelu
                       href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-train-score-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Nasazování modelů ONNX
+                      href: /azure/azure-sql-edge/deploy-onnx?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current
                 - name: R
                   items:
                     - name: Spouštění skriptů jazyka R
@@ -866,6 +881,7 @@
             - name: PowerShell
               href: virtual-machines/windows/sql-vm-create-powershell-quickstart.md
             - name: Šablona ARM
+              displayName: Resource Manager
               href: virtual-machines/windows/create-sql-vm-resource-manager-template.md
         - name: Koncepty
           items:
@@ -952,8 +968,8 @@
                       href: virtual-machines/windows/automated-backup-sql-2014.md
                 - name: Skupina dostupnosti Always On
                   items:
-                    - name: Rozhraní Azure SQL VM CLI
-                      href: virtual-machines/windows/availability-group-az-cli-configure.md
+                    - name: PowerShell nebo Az CLI
+                      href: virtual-machines/windows/availability-group-az-commandline-configure.md
                     - name: Šablony Azure pro rychlé zprovoznění
                       href: virtual-machines/windows/availability-group-quickstart-template-configure.md
                     - name: Několik oblastí
@@ -995,7 +1011,7 @@
         - name: Referenční informace
           items:
             - name: Azure PowerShell
-              href: /powershell/azure/overview
+              href: /powershell/azure/
             - name: Azure CLI
               href: /cli/azure/
             - name: T-SQL
@@ -1010,6 +1026,8 @@
               href: virtual-machines/windows/frequently-asked-questions-faq.md
             - name: Ceny
               href: virtual-machines/windows/pricing-guidance.md
+            - name: Dokumentace k archivovaným klasickým RM
+              href: /previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-create
             - name: SQL Server Data Tools (SSDT)
               href: '/https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt'
             - name: SQL Server Management Studio (SSMS)

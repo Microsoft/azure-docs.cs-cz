@@ -60,6 +60,8 @@
         - name: Vaše výhody na trhu
           href: ./gtm-your-marketplace-benefits.md
           items:
+            - name: Zvýhodnění závazku využití Azure
+              href: ./azure-consumption-commitment-benefit.md
             - name: Zapojení partnerů do společného prodeje
               href: ./marketplace-co-sell.md
             - name: Upřednostňovaná řešení

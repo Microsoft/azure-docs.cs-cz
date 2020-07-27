@@ -12,7 +12,7 @@
   expanded: true
   items:
     - name: Použití rozšíření vlastních skriptů
-      href: /azure/virtual-machines/windows/tutorial-automate-vm-deployment
+      href: ../windows/tutorial-automate-vm-deployment.md
       maintainContext: true
 - name: Koncepty
   items:
@@ -58,6 +58,12 @@
           href: network-watcher-linux.md
         - name: Windows
           href: network-watcher-windows.md
+    - name: Ovladače InfiniBand
+      items:
+        - name: Linux
+          href: hpc-compute-infiniband-linux.md
+        - name: Windows
+          href: hpc-compute-infiniband-windows.md
     - name: Ovladače NVIDIA GPU
       items:
         - name: Linux

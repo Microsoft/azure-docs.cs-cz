@@ -59,13 +59,15 @@
     - name: Plánování
       items:
         - name: Volba úrovně mezipaměti
-          href: 'cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use'
+          href: cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use
         - name: Distribuovaná mezipaměť pomocí clusterování
           href: cache-how-to-premium-clustering.md
         - name: Zachování mezipaměti pomocí trvalosti dat Redis
           href: cache-how-to-premium-persistence.md
         - name: Zabezpečení mezipaměti pomocí virtuální sítě
           href: cache-how-to-premium-vnet.md
+        - name: Privátní připojení k mezipaměti
+          href: cache-private-link.md
         - name: Nastavení geografické replikace
           href: cache-how-to-geo-replication.md
         - name: Uložení s využitím rezervované kapacity
@@ -101,9 +103,9 @@
         - name: Import/export dat
           href: cache-how-to-import-export-data.md
         - name: Restartování
-          href: 'cache-administration.md#reboot'
+          href: cache-administration.md#reboot
         - name: Plán aktualizací
-          href: 'cache-administration.md#schedule-updates'
+          href: cache-administration.md#schedule-updates
         - name: Konfigurace přístupu k redis-cli.exe
           href: cache-how-to-redis-cli-tool.md
         - name: Odebrání TLS 1.0 a 1.1
@@ -113,7 +115,7 @@
         - name: Monitorování na webu Azure Portal
           href: cache-how-to-monitor.md
         - name: Nastavení výstrah pro výjimky
-          href: 'cache-how-to-monitor.md#operations-and-alerts'
+          href: cache-how-to-monitor.md#operations-and-alerts
     - name: Diagnostika a řešení potíží
       items:
         - name: Řešení potíží se serverem Redis
@@ -136,7 +138,7 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=redis-cache'
     - name: Azure PowerShell
       href: /powershell/module/az.rediscache
-    - name: Azure CLI
+    - name: Rozhraní příkazového řádku Azure
       href: /cli/azure/redis
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.redis

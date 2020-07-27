@@ -38,6 +38,8 @@
           href: virtual-wan-configure-automation-providers.md
     - name: Koncepce cen
       href: pricing-concepts.md
+    - name: Informace o NVA ve virtuálním centru
+      href: about-nva-hub.md
     - name: Směrování
       items:
         - name: Informace o směrováních virtuálních center
@@ -60,6 +62,10 @@
               href: scenario-route-between-hubs-firewall.md
             - name: Azure Firewall – vlastní
               href: scenario-route-between-vnets-firewall.md
+    - name: Monitorování
+      items:
+        - name: Informace o Azure Monitor Insights pro Virtual WAN (Preview)
+          href: azure-monitor-insights.md
     - name: Site-to-Site
       items:
         - name: Informace o zásadách protokolu IPsec
@@ -70,6 +76,8 @@
   items:
     - name: Upgrade SKU virtuální sítě WAN
       href: upgrade-virtual-wan.md
+    - name: Vytvoření NVA ve virtuálním centru (Preview)
+      href: How-to-nva-hub.md
     - name: ExpressRoute
       items:
         - name: Vytvoření připojení ExpressRoute

@@ -14,6 +14,9 @@
       href: automation-quickstart-create-runbook.md
     - name: Povolení platformy Desired State Configuration pro počítač
       href: automation-quickstart-dsc-configuration.md
+    - name: Vytvoření účtu Automation – šablona ARM
+      displayName: Resource Manager
+      href: quickstart-create-automation-account-template.md
 - name: Kurzy
   items:
     - name: Vytvoření grafického runbooku
@@ -58,7 +61,7 @@
         - name: Vytvoření účtu Automation s využitím webu Azure Portal
           href: automation-create-standalone-account.md
         - name: Vytvoření účtu Automation s využitím šablony Resource Manageru
-          href: automation-create-account-template.md
+          href: quickstart-create-automation-account-template.md
         - name: Konfigurace ověřování s využitím Amazon Web Services
           href: automation-config-aws-account.md
         - name: Konfigurace ověřování s využitím Azure AD
@@ -177,6 +180,18 @@
               href: automation-dsc-extension-history.md
             - name: Řešení problémů se službou State Configuration
               href: troubleshoot/desired-state-configuration.md
+            - name: Scénáře
+              items:
+                - name: Konfigurace dat na základě STIG
+                  href: automation-dsc-configuration-based-on-stig.md
+                - name: Konfigurace dat ve velkém
+                  href: automation-dsc-config-data-at-scale.md
+                - name: Vytvoření konfigurace z existujících serverů
+                  href: automation-dsc-config-from-server.md
+                - name: Převod konfigurací na složené prostředky
+                  href: automation-dsc-create-composite.md
+                - name: 'Oprava serverů, které nevyhovují předpisům'
+                  href: automation-dsc-remediate.md
         - name: Change Tracking a Inventory
           items:
             - name: Přehled

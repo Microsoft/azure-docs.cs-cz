@@ -5,6 +5,8 @@
   items:
     - name: Architektura řešení
       href: architecture.md
+    - name: Řešení zabezpečení pro Azure RTOS
+      href: iot-security-azure-rtos.md
     - name: Agenti zabezpečení
       href: security-agent-architecture.md
     - name: Modul zabezpečení hraničních zařízení
@@ -53,9 +55,9 @@
       items:
         - name: Výběr agenta pro nasazení
           href: how-to-deploy-agent.md
-        - name: 'Nasazení agenta zabezpečení založeného na C# v zařízení s Windows'
+        - name: Nasazení agenta zabezpečení založeného na C# v zařízení s Windows
           href: how-to-deploy-windows-cs.md
-        - name: 'Nasazení agenta zabezpečení založeného na C# v zařízení s Linuxem'
+        - name: Nasazení agenta zabezpečení založeného na C# v zařízení s Linuxem
           href: how-to-deploy-linux-cs.md
         - name: Nasazení agenta zabezpečení založeného na C v zařízení s Linuxem
           href: how-to-deploy-linux-c.md
@@ -65,7 +67,7 @@
           href: troubleshoot-agent.md
         - name: Místní konfigurace C
           href: azure-iot-security-local-configuration-c.md
-        - name: 'Místní konfigurace C#'
+        - name: Místní konfigurace C#
           href: azure-iot-security-local-configuration-csharp.md
     - name: Nasazení modulu zabezpečení hraničních zařízení
       href: how-to-deploy-edge.md

@@ -18,6 +18,8 @@
   items:
     - name: Vytvoření privátního clusteru Azure Red Hat OpenShift 4
       href: howto-create-private-cluster-4x.md
+    - name: Aktualizace tajného kódu pro načtení pro cluster Azure Red Hat OpenShift 4
+      href: howto-add-update-pull-secret.md
     - name: Konfigurace předávání DNS pro cluster Azure Red Hat OpenShift 4
       href: dns-forwarding.md
     - name: Konfigurace ověřování Active Directory pro cluster Azure Red Hat OpenShift 4
@@ -67,6 +69,10 @@
               href: cluster-administration-cluster-admin-role.md
             - name: 2. Správa omezení kontextu zabezpečení v Azure Red Hat OpenShiftu 3.11
               href: cluster-administration-security-context-constraints.md
+- name: Koncepty
+  items:
+    - name: Sítě v clusterech Azure Red Hat OpenShift 4
+      href: concepts-networking.md
 - name: Referenční informace
   items:
     - name: Rozhraní příkazového řádku platformy Azure Red Hat OpenShift

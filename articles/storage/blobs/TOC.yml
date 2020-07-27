@@ -280,6 +280,8 @@
           href: storage-blob-pageblob-overview.md
         - name: Statické weby
           href: storage-blob-static-website.md
+        - name: Podpora protokolu NFS 3.0
+          href: network-file-system-protocol-support.md
     - name: Postup
       items:
         - name: Vytvoření a správa účtů úložiště
@@ -469,12 +471,12 @@
                   href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Azure Data Factory
               href: ../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Připojení služby Blob Storage jako systému souborů v Linuxu
+            - name: Připojení úložiště z Linuxu s využitím NFS
+              href: network-file-system-protocol-support-how-to.md
+            - name: Připojení úložiště z Linuxu s využitím blobfuse
               href: storage-how-to-mount-container-linux.md
             - name: Přenos dat s využitím knihovny pro přesun dat
               href: ../common/storage-use-data-movement-library.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Nejčastější dotazy k migraci úložiště
-              href: ../common/storage-migration-faq.md
         - name: Vývoj s využitím objektů blob
           items:
             - name: C++
@@ -662,6 +664,9 @@
               href: security-recommendations.md
             - name: Řízení přístupu (adresáře a soubory)
               href: data-lake-storage-access-control.md
+            - name: Mechanismy zabezpečení služby Azure Policy
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./security-controls-policy.md
         - name: Kompatibilita
           items:
             - name: Přístup s více protokoly

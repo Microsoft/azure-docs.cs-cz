@@ -123,8 +123,10 @@
           href: azure-stack-edge-contact-microsoft-support.md
         - name: Monitorování
           href: azure-stack-edge-monitor.md
-        - name: Vrácení nebo výměna zařízení
+        - name: Vrácení zařízení
           href: azure-stack-edge-return-device.md
+        - name: Výměna zařízení
+          href: azure-stack-edge-replace-device.md
     - name: "Poznámky k\_verzi"
       items:
         - name: 2007 – aktuální
@@ -137,6 +139,14 @@
           href: data-box-gateway-1905-release-notes.md
         - name: Všeobecná dostupnost (GA)
           href: data-box-gateway-release-notes.md
+    - name: Referenční informace
+      items:
+        - name: Azure PowerShell
+          href: 'https://docs.microsoft.com/powershell/module/az.stackedge/?view=azps-4.4.0#stack_edge'
+        - name: REST API
+          href: 'https://docs.microsoft.com/rest/api/databoxedgegateway'
+        - name: .NET SDK
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
 - name: Zdroje a prostředky
   items:
     - name: Ukázky modulů Azure Stack Edge v C# (.NET)

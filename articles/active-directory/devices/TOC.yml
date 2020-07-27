@@ -75,6 +75,8 @@
           href: enterprise-state-roaming-faqs.md
 - name: Referenční informace
   items:
+    - name: Vynucení protokolu TLS 1.2
+      href: reference-device-registration-tls-1-2.md
     - name: Nastavení objektu zásad skupiny služby Enterprise State Roaming
       href: enterprise-state-roaming-group-policy-settings.md
     - name: Nastavení Windows služby Enterprise State Roaming

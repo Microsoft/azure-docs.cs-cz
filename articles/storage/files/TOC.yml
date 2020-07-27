@@ -23,7 +23,7 @@
       href: storage-sync-files-extend-servers.md
 - name: Koncepty
   items:
-    - name: Soubory Azure
+    - name: Azure Files
       items:
         - name: Plánování nasazení služby Soubory Azure
           href: storage-files-planning.md
@@ -33,6 +33,8 @@
           href: storage-files-networking-overview.md
         - name: Prevence náhodného odstranění dat
           href: storage-files-prevent-file-share-deletion.md
+        - name: Zálohování sdílených složek
+          href: ../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Šifrování neaktivních uložených dat
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Šifrování neaktivních uložených dat s využitím klíčů spravovaných zákazníkem
@@ -83,6 +85,54 @@
           href: storage-files-how-to-create-large-file-share.md
         - name: Vytvoření sdílené složky úrovně Premium
           href: storage-how-to-create-premium-fileshare.md
+    - name: Ochrana dat
+      items:
+        - name: Povolení obnovitelného odstranění
+          href: storage-files-enable-soft-delete.md
+        - name: Změna způsobu replikace dat
+          href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Správa redundance dat
+          items:
+            - name: Změna způsobu replikace dat
+              href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: Návrh aplikací s vysokou dostupností
+              href: ../common/geo-redundant-design.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Správa zotavení po havárii
+          items:
+            - name: Kontrola vlastnosti Čas poslední synchronizace
+              href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: Zahájení převzetí služeb při selhání účtu
+              href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Zálohování sdílených složek
+          items:
+            - name: Portál
+              href: ../../backup/backup-afs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: Rozhraní příkazového řádku
+              href: ../../backup/backup-afs-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: PowerShell
+              href: ../../backup/backup-azure-afs-automation.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: REST API
+              href: ../../backup/backup-azure-file-share-rest-api.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Obnovení sdílených složek
+          items:
+            - name: Portál
+              href: ../../backup/restore-afs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: Rozhraní příkazového řádku
+              href: ../../backup/restore-afs-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: PowerShell
+              href: ../../backup/restore-afs-powershell.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: REST API
+              href: ../../backup/restore-azure-file-share-rest-api.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Správa sdílených složek
+          items:
+            - name: Portál
+              href: ../../backup/manage-afs-backup.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: Rozhraní příkazového řádku
+              href: ../../backup/manage-afs-backup-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: PowerShell
+              href: ../../backup/manage-afs-powershell.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: REST API
+              href: ../../backup/manage-azure-file-share-rest-api.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Nasazení
       items:
         - name: Nasazení služby Soubory Azure
@@ -125,26 +175,10 @@
           href: storage-sync-files-server-registration.md
         - name: Přidání koncového bodu serveru Synchronizace souborů Azure
           href: storage-sync-files-server-endpoint.md
-        - name: Povolení obnovitelného odstranění
-          href: storage-files-enable-soft-delete.md
         - name: Správa úložiště v nezávislých cloudech Azure
           href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Změna způsobu replikace dat
-          href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Zahájení převzetí služeb při selhání účtu
           href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Správa redundance dat
-          items:
-            - name: Změna způsobu replikace dat
-              href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: Návrh aplikací s vysokou dostupností
-              href: ../common/geo-redundant-design.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Správa zotavení po havárii
-          items:
-            - name: Kontrola vlastnosti Čas poslední synchronizace
-              href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: Zahájení převzetí služeb při selhání účtu
-              href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Ověření
       items:
         - name: Povolení místní autorizace a ověřování AD DS
@@ -173,7 +207,7 @@
           href: storage-files-migration-overview.md
         - name: Cílení na hybridní nasazení
           items:
-            - name: Migrace hromadných dat do Azure File Sync s využitím Azure DataBoxu
+            - name: Migrace hromadných dat do Synchronizace souborů Azure s využitím Azure Data Boxu
               href: storage-sync-offline-data-transfer.md
             - name: Migrace z Linuxu na hybridní souborový server s využitím služby Synchronizace souborů Azure
               href: storage-files-migration-linux-hybrid.md
@@ -243,9 +277,11 @@
           href: storage-sync-files-troubleshoot.md
         - name: Řešení potíží s odstraňováním služby Azure Files
           href: storage-troubleshoot-cannot-delete-files-azure-file-share.md
+        - name: Řešení potíží se zálohováním sdílených složek
+          href: ../../backup/troubleshoot-azure-files.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
 - name: Referenční informace
   items:
-    - name: Referenční informace k úložišti sdílených složek Azure
+    - name: Referenční informace k Azure Files
       href: ../files/reference.md
     - name: Šablona Resource Manageru
       displayName: arm

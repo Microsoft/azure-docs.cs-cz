@@ -67,6 +67,8 @@
       href: concepts-app-templates.md
     - name: Co jsou šablony zařízení?
       href: concepts-device-templates.md
+    - name: Datové části zpráv
+      href: concepts-telemetry-properties-commands.md
     - name: Připojení zařízení
       href: concepts-get-connected.md
     - name: Připojení zařízení IoT

@@ -83,10 +83,10 @@
       href: application-provisioning-config-problem-scim-compatibility.md
     - name: Scénáře pro SCIM a Graph
       href: scim-graph-scenarios.md
-    - name: Výběr metody zřizování
-      href: isv-automatic-provisioning-multi-tenant-apps.md
     - name: Zřizování HR v cloudu
       items:
+        - name: Integrace SuccessFactors
+          href: sap-successfactors-integration-reference.md
         - name: Referenční informace k atributu SuccessFactors
           href: sap-successfactors-attribute-reference.md
         - name: Referenční informace k atributu Workday

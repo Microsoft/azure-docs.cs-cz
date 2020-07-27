@@ -46,6 +46,8 @@
           href: expand-existing-host-pool.md
         - name: Správa skupin aplikací s využitím PowerShellu
           href: manage-app-groups-powershell.md
+    - name: Odstranění fondu hostitelů
+      href: delete-host-pool.md
     - name: Vytvoření kontejneru profilů
       items:
         - name: Použití sdílené složky na bázi virtuálních počítačů
@@ -72,6 +74,8 @@
           href: set-up-customize-master-image.md
         - name: Instalace sady Office do hlavní image virtuálního pevného disku
           href: install-office-on-wvd-master-image.md
+    - name: Automatické škálování hostitelů relace
+      href: set-up-scaling-script.md
     - name: Vlastní kanál
       href: customize-feed-for-virtual-desktop-users.md
     - name: Použití diagnostiky služeb
@@ -108,6 +112,8 @@
       href: store-fslogix-profile.md
     - name: Integrace partnerů
       href: partners.md
+    - name: Windows Virtual Desktop – nejčastější dotazy
+      href: faq.md
     - name: Nejčastější dotazy k Windows 10 Enterprise pro více relací
       href: windows-10-multisession-faq.md
     - name: Umístění dat

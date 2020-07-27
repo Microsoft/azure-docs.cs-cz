@@ -6,6 +6,24 @@
   items:
     - name: Co je Azure Synapse Analytics?
       href: overview-what-is.md
+    - name: Začínáme
+      items:
+        - name: Úvod
+          href: get-started.md
+        - name: 'Krok 1: Vytvoření pracovního prostoru Synapse'
+          href: get-started-create-workspace.md
+        - name: 'Krok 2: Analýza s využitím fondu SQL'
+          href: get-started-analyze-sql-pool.md
+        - name: 'Krok 3: Analýza s využitím Sparku'
+          href: get-started-analyze-spark.md
+        - name: 'Krok 4: Analýza s využitím SQL na vyžádání'
+          href: get-started-analyze-sql-on-demand.md
+        - name: 'Krok 5: Analýza dat v účtu úložiště'
+          href: get-started-analyze-storage.md
+        - name: 'Krok 6: Orchestrace s využitím kanálů'
+          href: get-started-pipelines.md
+        - name: 'Krok 7: Vizualizace pomocí Power BI'
+          href: get-started-visualize-power-bi.md
     - name: Tahák
       href: overview-cheat-sheet.md
     - name: Nejčastější dotazy
@@ -46,8 +64,6 @@
       href: quickstart-connect-synapse-link-cosmos-db.md
 - name: Kurzy
   items:
-    - name: Začínáme
-      href: get-started.md
     - name: Spouštění aplikací Apache Spark pro fondy úloh Sparku
       href: ./spark/intellij-tool-synapse.md
     - name: Definice úloh Sparku
@@ -698,6 +714,8 @@
               href: ../data-factory/connector-web-table.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Xero
               href: ../data-factory/connector-xero.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Formát XML
+              href: ../data-factory/format-xml.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Zoho
               href: ../data-factory/connector-zoho.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Přesun dat
@@ -755,9 +773,11 @@
               href: ../data-factory/transform-data-using-spark.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Aktivita Streamování služby HDInsight
               href: ../data-factory/transform-data-using-hadoop-streaming.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Aktivita spouštění dávek ML
+            - name: Aktivita kanálu spuštění služby Machine Learning
+              href: ../data-factory/transform-data-machine-learning-service.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Aktivita Provedení dávky služby Machine Learning Studio (classic)
               href: ../data-factory/transform-data-using-machine-learning.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Aktivita prostředků aktualizace ML
+            - name: Aktivita Aktualizace prostředků služby Machine Learning Studio (classic)
               href: ../data-factory/update-machine-learning-models.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Aktivita Uložená procedura
               href: ../data-factory/transform-data-using-stored-procedure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -856,7 +876,7 @@
     - name: PowerShell
       href: /powershell/module/az.synapse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: Rozhraní REST API
-      href: ./sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+      href: /rest/api/synapse/
     - name: Systémová zobrazení
       href: sql/reference-tsql-system-views.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: T-SQL

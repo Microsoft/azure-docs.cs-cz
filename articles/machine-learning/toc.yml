@@ -96,6 +96,7 @@
     - name: Verze Enterprise vs. Basic
       href: concept-editions.md
     - name: Plánování a správa nákladů
+      displayName: low priority VM
       href: concept-plan-manage-cost.md
     - name: Designer (ML s přetahováním)
       items:
@@ -166,6 +167,9 @@
             - name: Zabezpečení webových služeb s využitím TLS
               displayName: ssl
               href: how-to-secure-web-service.md
+            - name: Zvýšení odolnosti
+              displayName: 'high availability, disaster recovery'
+              href: how-to-high-availability-machine-learning.md
             - name: Použití identity Azure AD v nasazeních AKS
               href: how-to-use-azure-ad-identity.md
             - name: Opětovné vygenerování přístupových klíčů k úložišti
@@ -217,6 +221,9 @@
         - name: Nastavení softwarových prostředí
           displayName: 'pip, Conda, anaconda'
           href: how-to-use-environments.md
+        - name: Použití soukromých balíčků Pythonu
+          displayName: 'pip, Conda, anaconda'
+          href: how-to-use-private-python-packages.md
         - name: Povolit protokolování
           displayName: 'troubleshoot, log, files, tracing'
           href: how-to-enable-logging.md
@@ -356,6 +363,9 @@
           href: how-to-deploy-and-where.md
         - name: Scénáře nasazení
           items:
+            - name: Použití existujících modelů
+              displayName: publish existing model
+              href: how-to-deploy-existing-model.md
             - name: Výpočetní instance Azure ML
               href: how-to-deploy-local-container-notebook-vm.md
             - name: Azure Kubernetes Service
@@ -374,18 +384,15 @@
               href: how-to-deploy-functions.md
             - name: Azure Cognitive Search
               href: how-to-deploy-model-cognitive-search.md
-            - name: Zařízení Azure IoT Edge
-              href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/context/ml-context
+            - name: Použití vlastní image Dockeru
+              href: how-to-deploy-custom-docker-image.md
+            - name: IoT Edge
+              href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
             - name: Odvozování FPGA
               href: how-to-deploy-fpga-web-service.md
-            - name: Vlastní image Dockeru
-              href: how-to-deploy-custom-docker-image.md
-            - name: Modely ML mimo Azure
-              displayName: publish existing model
-              href: how-to-deploy-existing-model.md
         - name: Řešení potíží a ladění
           href: how-to-troubleshoot-deployment.md
-        - name: Volání koncového bodu služby
+        - name: Vytváření klientů
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
         - name: Monitorování modelů
@@ -393,8 +400,6 @@
             - name: Shromažďování a vyhodnocování dat modelů
               displayName: track production
               href: how-to-enable-data-collection.md
-            - name: Zjišťování odchylek dat
-              href: how-to-monitor-data-drift.md
             - name: Monitorování pomocí Application Insights
               href: how-to-enable-app-insights.md
         - name: Nasazení šifrované služby odvozování
