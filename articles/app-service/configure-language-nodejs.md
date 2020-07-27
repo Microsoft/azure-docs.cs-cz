@@ -1,15 +1,16 @@
 ---
 title: Konfigurace aplikací pro Windows Node.js
 description: Naučte se konfigurovat aplikaci Node.js v nativních instancích systému Windows App Service. Tento článek ukazuje nejběžnější konfigurační úlohy.
+ms.custom: devx-track-javascript
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 9f4ccdd04b8d57784f452dc28fa4507fb7ea94c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0fc6ed5cb090653e381d82f484d355a514520c62
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84908076"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87170910"
 ---
 # <a name="configure-a-windows-nodejs-app-for-azure-app-service"></a>Konfigurace aplikace Node.js pro Windows pro Azure App Service
 
@@ -56,7 +57,7 @@ process.env.NODE_ENV
 
 Ve výchozím nastavení se App Service Automation Build spustí, `npm install --production` když rozpozná Node.js aplikace nasazené prostřednictvím Gitu (nebo pomocí nasazení zip s povolenou automatizací buildu). Pokud vaše aplikace vyžaduje některé z oblíbených nástrojů pro automatizaci, jako je grunt, Bower nebo Gulp, je potřeba pro její spuštění zadáním [vlastního skriptu nasazení](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) .
 
-Pokud chcete vašemu úložišti povolit spouštění těchto nástrojů, musíte je přidat k závislostem v *package.jsna.* Příklad:
+Pokud chcete vašemu úložišti povolit spouštění těchto nástrojů, musíte je přidat k závislostem v *package.jsna.* Například:
 
 ```json
 "dependencies": {
@@ -135,7 +136,7 @@ fi
 
 V App Service dojde k [ukončení protokolu SSL](https://wikipedia.org/wiki/TLS_termination_proxy) v nástrojích pro vyrovnávání zatížení sítě, takže všechny požadavky HTTPS dosáhnou vaší aplikace jako nešifrované požadavky HTTP. Pokud vaše logika aplikace potřebuje, aby zkontrolovala, jestli jsou požadavky uživatele zašifrované, zkontrolujte `X-Forwarded-Proto` záhlaví.
 
-Oblíbená webová rozhraní umožňují přístup k `X-Forwarded-*` informacím ve standardním vzoru aplikace. V [expresním](https://expressjs.com/)případě můžete použít [důvěryhodné proxy](https://expressjs.com/guide/behind-proxies.html). Příklad:
+Oblíbená webová rozhraní umožňují přístup k `X-Forwarded-*` informacím ve standardním vzoru aplikace. V [expresním](https://expressjs.com/)případě můžete použít [důvěryhodné proxy](https://expressjs.com/guide/behind-proxies.html). Například:
 
 ```javascript
 app.set('trust proxy', 1)
@@ -154,7 +155,7 @@ if (req.secure) {
 Pokud se pracovní Node.js aplikace chová jinak v App Service nebo obsahuje chyby, zkuste následující:
 
 - [Přístup ke streamu protokolů](#access-diagnostic-logs).
-- Otestujte aplikaci místně v provozním režimu. App Service spouští aplikace Node.js v produkčním režimu, takže je potřeba zajistit, aby váš projekt fungoval v produkčním režimu v místním prostředí. Příklad:
+- Otestujte aplikaci místně v provozním režimu. App Service spouští aplikace Node.js v produkčním režimu, takže je potřeba zajistit, aby váš projekt fungoval v produkčním režimu v místním prostředí. Například:
     - V závislosti na vaší *package.js*se můžou v produkčním režimu ( `dependencies` vs.) nainstalovat různé balíčky `devDependencies` .
     - Některé webové architektury můžou nasazovat statické soubory odlišně v produkčním režimu.
     - Při spuštění v produkčním režimu mohou některé webové architektury používat vlastní spouštěcí skripty.

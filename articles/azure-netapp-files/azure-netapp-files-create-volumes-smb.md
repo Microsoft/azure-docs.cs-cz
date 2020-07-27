@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/29/2020
+ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 6bd6ddc8b75b83355f6761ef0567ea949c86b61a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 848a5779538f4754ef038a1e88be63c33177bc82
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483699"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169966"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku SMB pro Azure NetApp Files
 
@@ -40,12 +40,12 @@ Podsíť musí být delegovaná na Azure NetApp Files.
 * V příslušném serveru služby Windows Active Directory (AD) musí být otevřeny správné porty.  
     Požadované porty jsou následující: 
 
-    |     Služba           |     Port     |     Protocol (Protokol)     |
+    |     Služba           |     Port     |     Protokol     |
     |-----------------------|--------------|------------------|
     |    Webové služby AD    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    Není k dispozici       |    Odpověď na ozvěnu    |
+    |    ICMPv4             |    –       |    Odpověď na ozvěnu    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
@@ -215,6 +215,12 @@ Toto nastavení se konfiguruje v **připojeních služby Active Directory** pod 
         ![Vytvoření svazku](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![Vytvoření podsítě](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
+
+    * Pokud chcete pro svazek použít existující zásadu snímku, rozbalte ji kliknutím na **Zobrazit Upřesnit oddíl** a v rozevírací nabídce vyberte zásadu snímku. 
+
+        Informace o vytváření zásad snímku najdete v tématu [Správa snímků](azure-netapp-files-manage-snapshots.md).
+
+        ![Zobrazit rozšířený výběr](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
 4. Klikněte na **protokol** a vyplňte následující informace:  
     * Jako typ protokolu pro svazek vyberte **SMB** . 

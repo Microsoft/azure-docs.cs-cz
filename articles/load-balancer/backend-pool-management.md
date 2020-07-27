@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: overview
 ms.date: 07/07/2020
 ms.author: allensu
-ms.openlocfilehash: f1718de6bc9a86f85cadf4531386e663d5a420d3
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 7fe7c1473579c62b110548a2c5e98f9bdfaf6bf9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86273757"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131459"
 ---
 # <a name="backend-pool-management"></a>Správa fondu back-endu
 Back-end fond je kritickou součástí nástroje pro vyrovnávání zatížení. Back-end fond definuje skupinu prostředků, které budou obsluhovat provoz pro dané pravidlo vyrovnávání zatížení.
@@ -110,7 +110,7 @@ New-AzVMConfig -VMName $vmname -VMSize $vmsize | Set-AzVMOperatingSystem -Window
 $vm1 = New-AzVM -ResourceGroupName $resourceGroup -Zone 1 -Location $location -VM $vmConfig
 ```
 
-### <a name="cli"></a>CLI
+### <a name="cli"></a>Rozhraní příkazového řádku
 Vytvořte back-end fond:
 
 ```azurecli-interactive
@@ -154,7 +154,7 @@ az vm create \
 --generate-ssh-keys
 ```
 
-### <a name="rest-api"></a>Rozhraní REST API
+### <a name="rest-api"></a>REST API
 Vytvořte back-end fond:
 
 ```
@@ -255,10 +255,12 @@ Veškerá správa back-end fondu se provádí přímo na objektu back-end fondu,
 
   >[!IMPORTANT] 
   >Tato funkce je aktuálně ve verzi Preview a má následující omezení:
-  >* Limit 100 IP adres, které se přidávají
+  >* Jenom standardní nástroj pro vyrovnávání zatížení
+  >* Limit 100 IP adres ve fondu back-endu
   >* Back-endové prostředky musí být ve stejné virtuální síti jako nástroj pro vyrovnávání zatížení.
   >* Tato funkce se v současnosti v Azure Portal nepodporuje.
-  >* Jenom standardní nástroj pro vyrovnávání zatížení
+  >* Tato funkce aktuálně nepodporuje kontejnery ACI.
+  >* Nástroje pro vyrovnávání zatížení nebo služby, které jsou front-end vyrovnávání zatížení, nelze umístit do back-endového fondu služby Load Balancer.
   
 ### <a name="powershell"></a>PowerShell
 Vytvořit nový back-end fond:
@@ -271,8 +273,7 @@ $vnetName = "myVnet"
 $location = "eastus"
 $nicName = "myNic"
 
-$backendPool = 
-New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName  
+$backendPool = New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -Name $backendPoolName  
 ```
 
 Aktualizovat back-end fond s novou IP adresou z existující virtuální sítě:
@@ -281,18 +282,17 @@ Aktualizovat back-end fond s novou IP adresou z existující virtuální sítě:
 $virtualNetwork = 
 Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup 
  
-$ip1 = 
-New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetwork $virtualNetwork  
+$ip1 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetwork $virtualNetwork  
  
 $backendPool.LoadBalancerBackendAddresses.Add($ip1) 
 
-Set-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup  -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName -BackendAddressPool $backendPool  
+Set-AzLoadBalancerBackendAddressPool -InputObject $backendPool
 ```
 
 Načtěte informace o fondu back-end pro nástroj pro vyrovnávání zatížení, abyste ověřili, že se back-endové adresy přidávají do back-endu.
 
 ```azurepowershell-interactive
-Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName -BackendAddressPool $backendPool  
+Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -Name $backendPoolName 
 ```
 Vytvořte síťové rozhraní a přidejte ho do fondu back-end. Nastavte IP adresu na jednu z back-endové adresy:
 
@@ -326,7 +326,7 @@ New-AzVMConfig -VMName $vmname -VMSize $vmsize | Set-AzVMOperatingSystem -Window
 $vm1 = New-AzVM -ResourceGroupName $resourceGroup -Zone 1 -Location $location -VM $vmConfig
 ```
 
-### <a name="cli"></a>CLI
+### <a name="cli"></a>Rozhraní příkazového řádku
 Pomocí rozhraní příkazového řádku můžete buď naplnit back-end fond prostřednictvím parametrů příkazového řádku nebo pomocí konfiguračního souboru JSON. 
 
 Vytvořte a naplňte back-end fond prostřednictvím parametrů příkazového řádku:
@@ -402,7 +402,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-### <a name="rest-api"></a>Rozhraní REST API
+### <a name="rest-api"></a>REST API
 
 Vytvořte back-end fond a definujte back-end adresy prostřednictvím žádosti o back-end fondu. Nakonfigurujte back-end adresy v těle JSON žádosti o vložení:
 

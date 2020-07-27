@@ -11,21 +11,25 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/17/2020
+ms.date: 07/23/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3846a4669cc2a77862e73dbb8e7743b19740e8a4
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 45601e820bc03b263fbf664a43ce34266dc4a488
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996498"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171571"
 ---
 # <a name="what-is-azure-role-based-access-control-azure-rbac"></a>Co je řízení přístupu na základě role Azure (Azure RBAC)?
 
 Správa přístupu ke cloudovým prostředkům je velmi důležitou funkcí pro jakoukoli organizaci, která používá cloud. Řízení přístupu na základě role v Azure (Azure RBAC) pomáhá spravovat, kdo má přístup k prostředkům Azure, co s těmito prostředky může dělat a k jakým oblastem mají přístup.
 
 Azure RBAC je autorizačním systémem postaveným na [Azure Resource Manager](../azure-resource-manager/management/overview.md) , který poskytuje jemně odstupňovanou správu přístupu k prostředkům Azure.
+
+Toto video poskytuje rychlý přehled služby Azure RBAC.
+
+>[!VIDEO https://www.youtube.com/embed/Dzhm-garKBM]
 
 ## <a name="what-can-i-do-with-azure-rbac"></a>Co můžu dělat s Azure RBAC?
 
@@ -57,26 +61,30 @@ Objekt *zabezpečení* je objekt, který představuje uživatele, skupinu, insta
 
 ![Definice role pro přiřazení role](./media/overview/rbac-role-definition.png)
 
-Azure obsahuje několik [předdefinovaných rolí](built-in-roles.md), které můžete využít. V následujícím seznamu najdete čtyři základní předdefinované role. První tři se vztahují ke všem typům prostředků.
+Azure obsahuje několik [předdefinovaných rolí](built-in-roles.md) , které můžete použít. V následujícím seznamu najdete čtyři základní předdefinované role. První tři se vztahují ke všem typům prostředků.
 
-- [Vlastník](built-in-roles.md#owner) – má úplný přístup ke všem prostředkům, včetně práva delegovat přístup na ostatní.
+- [Owner (vlastník](built-in-roles.md#owner) ) – má úplný přístup ke všem prostředkům, včetně práva delegovat přístup ostatním uživatelům.
 - [Přispěvatel](built-in-roles.md#contributor) – může vytvářet a spravovat všechny typy prostředků Azure, ale nemůže udělovat přístup jiným uživatelům.
 - [Čtenář](built-in-roles.md#reader) – může zobrazit existující prostředky Azure.
-- [Správce uživatelských přístupů](built-in-roles.md#user-access-administrator) – může spravovat uživatelský přístup k prostředkům Azure.
+- [Správce přístupu uživatele](built-in-roles.md#user-access-administrator) – umožňuje spravovat přístup uživatelů k prostředkům Azure.
 
 Zbývající předdefinované role umožňují správu konkrétních prostředků Azure. Role [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) například uživateli umožňuje vytvářet a spravovat virtuální počítače. Pokud předdefinované role nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní [vlastní role Azure](custom-roles.md).
+
+Toto video poskytuje rychlý přehled předdefinovaných rolí a vlastních rolí.
+
+>[!VIDEO https://www.youtube.com/embed/I1mefHptRgo]
 
 Azure obsahuje operace s daty, které umožňují udělit přístup k datům v rámci objektu. Pokud má uživatel například přístup ke čtení dat u účtu úložiště, bude moci číst objekty blob nebo zprávy v rámci daného účtu úložiště. Další informace najdete v tématu [vysvětlení definic rolí Azure](role-definitions.md).
 
 ### <a name="scope"></a>Rozsah
 
-*Obor* je sada prostředků, na které se vztahuje přístup. Když přiřadíte roli, můžete definováním oboru dále omezit akce, které jsou povoleny. To je užitečné v případě, kdy někomu chcete udělit roli [Přispěvatel webů](built-in-roles.md#website-contributor), ale pouze pro jednu skupinu prostředků.
+*Obor* je sada prostředků, na které se vztahuje přístup. Když přiřadíte roli, můžete definováním oboru dále omezit akce, které jsou povoleny. To je užitečné, pokud chcete, aby někomu byl [Přispěvatel webu](built-in-roles.md#website-contributor), ale jenom pro jednu skupinu prostředků.
 
-V Azure můžete zadat obor na více úrovních: na úrovni [skupiny pro správu](../governance/management-groups/overview.md), předplatného, skupiny prostředků nebo prostředku. Obory jsou strukturovány ve vztahu nadřazený-podřízený obor.
+V Azure můžete zadat obor na více úrovních: [skupina pro správu](../governance/management-groups/overview.md), předplatné, skupina prostředků nebo prostředek. Obory jsou strukturovány ve vztahu nadřazený-podřízený obor.
 
 ![Obor přiřazení role](./media/overview/rbac-scope.png)
 
-Když udělíte přístup na úrovni nadřízeného oboru, podřízené obory zdědí příslušná oprávnění. Příklad:
+Když udělíte přístup na úrovni nadřízeného oboru, podřízené obory zdědí příslušná oprávnění. Například:
 
 - Pokud uživateli přiřadíte roli [Vlastník](built-in-roles.md#owner) na úrovni oboru skupiny pro správu, může tento uživatel spravovat vše ve všech předplatných v příslušné skupině pro správu.
 - Pokud přiřadíte roli [Čtenář](built-in-roles.md#reader) skupině v oboru předplatného, členové takové skupiny mohou zobrazit všechny skupiny prostředků a prostředky v daném předplatném.

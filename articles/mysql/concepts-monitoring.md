@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 803437cc45fce9ab850682cf4725c0bf0d21bed6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9bb4a6c0f37ceaf1e9fc6c28f08b98bb4449e65
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85414109"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171300"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Monitorování v Azure Database for MySQL
 Sledování dat o vašich serverech vám pomůže při řešení potíží a optimalizaci pro vaše úlohy. Azure Database for MySQL poskytuje různé metriky, které poskytují přehled o chování serveru.
@@ -22,7 +22,7 @@ Všechny metriky Azure mají četnost jednosměrných minut a každá metrika po
 ### <a name="list-of-metrics"></a>Seznam metrik
 Tyto metriky jsou k dispozici pro Azure Database for MySQL:
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Description|
+|Metrika|Zobrazovaný název metriky|Jednotka|Popis|
 |---|---|---|---|
 |cpu_percent|Procento využití procesoru|Procento|Procento využití procesoru.|
 |memory_percent|Procentuální hodnota paměti|Procento|Procentuální podíl používané paměti.|
@@ -33,12 +33,12 @@ Tyto metriky jsou k dispozici pro Azure Database for MySQL:
 |serverlog_storage_usage|Využité úložiště protokolu serveru|Bajty|Velikost používaného úložiště protokolu serveru.|
 |serverlog_storage_limit|Limit úložiště protokolu serveru|Bajty|Maximální úložiště protokolu serveru pro tento server.|
 |storage_limit|Omezení úložiště|Bajty|Maximální úložiště pro tento server.|
-|active_connections|Aktivní připojení|Počet|Počet aktivních připojení k serveru.|
-|connections_failed|Neúspěšná připojení|Počet|Počet neúspěšných připojení k serveru|
-|seconds_behind_master|Prodleva replikace v sekundách|Počet|Doba v sekundách, po kterou server repliky zaostává na hlavním serveru.|
+|active_connections|Aktivní připojení|Count|Počet aktivních připojení k serveru.|
+|connections_failed|Neúspěšná připojení|Count|Počet neúspěšných připojení k serveru|
+|seconds_behind_master|Prodleva replikace v sekundách|Count|Doba v sekundách, po kterou server repliky zaostává na hlavním serveru.|
 |network_bytes_egress|Síťové výstupy|Bajty|Síť vyprší napříč aktivními připojeními.|
 |network_bytes_ingress|Síťové vstupy|Bajty|Síť v rámci aktivních připojení.|
-|backup_storage_used|Využité úložiště záloh|Bajty|Velikost využitého úložiště záloh.|
+|backup_storage_used|Využité úložiště záloh|Bajty|Velikost využitého úložiště záloh. Tato metrika představuje součet úložiště spotřebovaného všemi úplnými zálohami databáze, rozdílové zálohy a zálohy protokolů, které jsou zachovány na základě nastaveného období uchovávání záloh pro server. Frekvence zálohování je spravována službou a je vysvětlena v [článku koncepty](concepts-backup.md). V případě geograficky redundantního úložiště je využití úložiště zálohování dvakrát místní redundantní úložiště.|
 
 ## <a name="server-logs"></a>Protokoly serveru
 Na serveru můžete povolit protokolování pomalých dotazů a audit. Tyto protokoly jsou dostupné taky prostřednictvím diagnostických protokolů Azure v Azure Monitor protokoly, Event Hubs a účet úložiště. Další informace o protokolování najdete v článcích [protokoly auditu](concepts-audit-logs.md) a [pomalé dotazy v protokolech](concepts-server-logs.md) .

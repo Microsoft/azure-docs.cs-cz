@@ -3,20 +3,18 @@ title: 'Kurz: program pro přizpůsobování notebooků Azure'
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu se simuluje smyčka přizpůsobeného _system v poznámkovém bloku Azure, který navrhuje typ kávy, který si zákazník může objednat. Uživatelé a jejich předvolby jsou uloženy v uživatelské datové sadě. Informace o kávě jsou také k dispozici a uloženy v datové sadě kávy.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 04/27/2020
-ms.author: diberry
 ms.custom: tracking-python
-ms.openlocfilehash: 30897e1bdd5d139d3a11980430cbcc6b10052ecc
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 62e9140a1bab44d913e164304af13204f375f461
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608481"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131969"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Kurz: použití přizpůsobeného úložiště v Azure poznámkovém bloku
 
@@ -36,10 +34,10 @@ Aby bylo možné lépe přizpůsobovat informace, _systém_ ví, že v průběhu
 
 |Funkce kávy – akce|Typy teploty|Místa původu|Typy Roast|Organic|
 |--|--|--|--|--|
-|Cappacino|Hot|Keňa|Tmavý|Organic|
+|Cappacino|Horká|Keňa|Tmavý|Organic|
 |Studená Brew|Bez zájmu|Brazílie|Světlý|Organic|
 |Iced Mocha|Bez zájmu|Etiopie|Světlý|Neorganické|
-|Latte|Hot|Brazílie|Tmavý|Neorganické|
+|Latte|Horká|Brazílie|Tmavý|Neorganické|
 
 **Účelem** smyčky pro přizpůsobování je najít nejlepší shodu mezi uživateli a kávy co nejvíce času.
 

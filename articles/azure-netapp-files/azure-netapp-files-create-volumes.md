@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 12/01/2019
+ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: b8935dd4138095aa9b8e84ddf75c06307f9ce00d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7f14ac279f14feb3f83490ab96965d4355bed125
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483631"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169446"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Vytvoření svazku NFS pro Azure NetApp Files
 
@@ -31,7 +31,7 @@ Musíte mít už nastavený fond kapacity.
 Podsíť musí být delegovaná na Azure NetApp Files.  
 [Delegování podsítě na službu Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
 
-## <a name="considerations"></a>Důležité informace 
+## <a name="considerations"></a>Požadavky 
 
 * Rozhodnutí o tom, která verze systému souborů NFS se má použít  
   NFSv3 dokáže zvládnout širokou škálu případů použití a je běžně nasazená ve většině podnikových aplikací. Měli byste ověřit, jakou verzi (NFSv3 nebo NFSv 4.1) vaše aplikace vyžaduje, a vytvořit svazek s použitím příslušné verze. Pokud například používáte [Apache ActiveMQ](https://activemq.apache.org/shared-file-system-master-slave), doporučuje se zamykání souborů s nfsv 4.1 nad NFSv3. 
@@ -76,7 +76,7 @@ Podsíť musí být delegovaná na Azure NetApp Files.
         Pole **Dostupná kvóta** zobrazuje množství nevyužitého místa ve zvoleném fondu kapacity, které můžete použít k vytvoření nového svazku. Velikost nového svazku nesmí překročit dostupnou kvótu.  
 
     * **Virtuální síť**  
-        Zadejte virtuální síť Azure (Vnet), ze které chcete ke svazku přistupovat.  
+        Zadejte službu Azure Virtual Network (VNet), ze které chcete získat přístup ke svazku.  
 
         Virtuální síť, kterou zadáte, musí mít přidělenou podsíť Azure NetApp Files. Služba Azure NetApp Files se dá použít jenom ze stejné virtuální sítě nebo z virtuální sítě, která se nachází ve stejné oblasti jako svazek prostřednictvím partnerského vztahu virtuálních sítí. Ke svazku z místní sítě se můžete dostat i přes Express Route.   
 
@@ -89,6 +89,12 @@ Podsíť musí být delegovaná na Azure NetApp Files.
         ![Vytvoření svazku](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![Vytvoření podsítě](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
+
+    * Pokud chcete pro svazek použít existující zásadu snímku, rozbalte ji kliknutím na **Zobrazit Upřesnit oddíl** a v rozevírací nabídce vyberte zásadu snímku. 
+
+        Informace o vytváření zásad snímku najdete v tématu [Správa snímků](azure-netapp-files-manage-snapshots.md).
+
+        ![Zobrazit rozšířený výběr](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
 4. Klikněte na **protokol**a pak proveďte následující akce:  
     * Jako typ protokolu pro svazek vyberte **systém souborů NFS** .   

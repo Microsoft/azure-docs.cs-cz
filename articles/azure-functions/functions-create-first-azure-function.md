@@ -5,25 +5,31 @@ ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 030af8a289daaf03d17f8402e8d603e893657853
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd4ddc5b6b685813740aed63cc6f446bc66e8169
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83123602"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87170093"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Vytvoření první funkce na webu Azure Portal
 
 Azure Functions umožňuje spuštění kódu v prostředí bez serveru, aniž by bylo nutné nejprve vytvořit virtuální počítač nebo publikovat webovou aplikaci. V tomto článku se naučíte, jak pomocí Azure Functions vytvořit funkci triggeru HTTP "Hello World" v Azure Portal.
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+Doporučujeme, abyste [své funkce vyvinuli místně](functions-develop-local.md) a publikovali do aplikace Function App v Azure.  
+Pomocí jednoho z následujících odkazů můžete začít se zvoleným místním vývojovým prostředím a jazykem:
 
-Pokud jste vývojář jazyka C#, zvažte [Vytvoření první funkce v aplikaci Visual Studio 2019](functions-create-your-first-function-visual-studio.md) místo na portálu. 
+| Visual Studio Code | Terminál/příkazový řádek | Visual Studio |
+| --- | --- | --- |
+|  &bull;&nbsp;[Začínáme s C #](./functions-create-first-function-vs-code.md?pivots=programming-language-csharp)<br/>&bull;&nbsp;[Začínáme s jazykem Java](./functions-create-first-function-vs-code.md?pivots=programming-language-java)<br/>&bull;&nbsp;[Začínáme s JavaScriptem](./functions-create-first-function-vs-code.md?pivots=programming-language-javascript)<br/>&bull;&nbsp;[Začínáme s PowerShellem](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)<br/>&bull;&nbsp;[Začínáme s Pythonem](./functions-create-first-function-vs-code.md?pivots=programming-language-python) |&bull;&nbsp;[Začínáme s C #](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-csharp)<br/>&bull;&nbsp;[Začínáme s jazykem Java](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)<br/>&bull;&nbsp;[Začínáme s JavaScriptem](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-javascript)<br/>&bull;&nbsp;[Začínáme s PowerShellem](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-powershell)<br/>&bull;&nbsp;[Začínáme s Pythonem](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python) | [Začínáme s C #](functions-create-your-first-function-visual-studio.md) |
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí svého účtu Azure.
 
-## <a name="create-a-function-app"></a>Vytvoření Function App
+## <a name="create-a-function-app"></a>Vytvoření aplikace funkcí
 
 K hostování provádění funkcí musíte mít aplikaci Function App. Aplikace Function App umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování, škálování a sdílení prostředků.
 

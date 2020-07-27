@@ -27,7 +27,7 @@ Azure Key Vault umožňuje aplikacím a uživatelům Microsoft Azure ukládat a 
 
 Obecnější informace o Key Vault najdete v tématu [o Azure Key Vault](overview.md).
 
-## <a name="data-types"></a>Datové typy
+## <a name="data-types"></a>Typy dat
 
 V tématu Specifikace JOSE najdete relevantní datové typy pro klíče, šifrování a podepisování.  
 

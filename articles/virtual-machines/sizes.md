@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/21/2020
 ms.author: jushiman
-ms.openlocfilehash: b964ea596f6cc2a86cfa9bbd5196ee6187c74b79
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 04f139e7e747d2c0566ffada9e080bf4abb1ac86
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097061"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171666"
 ---
 # <a name="sizes-for-virtual-machines-in-azure"></a>Velikosti virtuálních počítačů v Azure
 
@@ -32,6 +32,8 @@ Tento článek popisuje dostupné velikosti a možnosti pro virtuální počíta
 - Dostupnost velikostí virtuálních počítačů v oblastech Azure najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/regions/services/).
 - Obecné omezení virtuálních počítačů Azure najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
+> [!NOTE]
+  > Další informace o tom, jak Azure vyjmenovává své virtuální počítače, najdete v tématu zásady [vytváření názvů virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
 
 ## <a name="rest-api"></a>REST API
 

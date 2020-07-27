@@ -16,18 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: f8da00e531a9712b7bbb459378e3c0448e3c028f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 40af7a7d3bcc4584260735ddbcbf84ac0936ce15
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131510"
+ms.locfileid: "87172102"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>Rychlý start: Vytvoření veřejného nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure CLI
 
 Začínáme s Azure Load Balancer pomocí rozhraní příkazového řádku Azure k vytvoření veřejného nástroje pro vyrovnávání zatížení a tří virtuálních počítačů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Rozhraní příkazového řádku Azure je nainstalované místně nebo Azure Cloud Shell
@@ -504,14 +504,14 @@ Přidejte síťová rozhraní virtuálního počítače do odchozího fondu nás
 #### <a name="vm1"></a>VM1
 * Ve fondu back-end adres **myBackEndPoolOutbound**.
 * Ve skupině prostředků **myResourceGroupLB**.
-* Přidruženo k síťovému rozhraní **myVMNic1** a **ipconfig1**.
+* Přidruženo k síťovému rozhraní **myNicVM1** a **ipconfig1**.
 * Přidruženo k **myLoadBalancer**nástroje pro vyrovnávání zatížení.
 
 ```azurecli-interactive
   az network nic ip-config address-pool add \
    --address-pool myBackendPoolOutbound \
    --ip-config-name ipconfig1 \
-   --nic-name myVMNic1 \
+   --nic-name myNicVM1 \
    --resource-group myResourceGroupLB \
    --lb-name myLoadBalancer
 ```
@@ -519,14 +519,14 @@ Přidejte síťová rozhraní virtuálního počítače do odchozího fondu nás
 #### <a name="vm2"></a>VM2
 * Ve fondu back-end adres **myBackEndPoolOutbound**.
 * Ve skupině prostředků **myResourceGroupLB**.
-* Přidruženo k síťovému rozhraní **myVMNic2** a **ipconfig1**.
+* Přidruženo k síťovému rozhraní **myNicVM2** a **ipconfig1**.
 * Přidruženo k **myLoadBalancer**nástroje pro vyrovnávání zatížení.
 
 ```azurecli-interactive
   az network nic ip-config address-pool add \
    --address-pool myBackendPoolOutbound \
    --ip-config-name ipconfig1 \
-   --nic-name myVMNic2 \
+   --nic-name myNicVM2 \
    --resource-group myResourceGroupLB \
    --lb-name myLoadBalancer
 ```
@@ -534,14 +534,14 @@ Přidejte síťová rozhraní virtuálního počítače do odchozího fondu nás
 #### <a name="vm3"></a>VM3
 * Ve fondu back-end adres **myBackEndPoolOutbound**.
 * Ve skupině prostředků **myResourceGroupLB**.
-* Přidruženo k síťovému rozhraní **myVMNic3** a **ipconfig1**.
+* Přidruženo k síťovému rozhraní **myNicVM3** a **ipconfig1**.
 * Přidruženo k **myLoadBalancer**nástroje pro vyrovnávání zatížení.
 
 ```azurecli-interactive
   az network nic ip-config address-pool add \
    --address-pool myBackendPoolOutbound \
    --ip-config-name ipconfig1 \
-   --nic-name myVMNic3 \
+   --nic-name myNicVM3 \
    --resource-group myResourceGroupLB \
    --lb-name myLoadBalancer
 ```

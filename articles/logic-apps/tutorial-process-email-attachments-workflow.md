@@ -3,16 +3,16 @@ title: Automatizace úloh s více službami Azure
 description: Kurz – vytvoření automatizovaných pracovních postupů pro zpracování e-mailů pomocí Azure Logic Apps, Azure Storage a Azure Functions
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/27/2020
-ms.openlocfilehash: 9835e4e65ba4bfce1b0f9f6dc74a944db4cdcb28
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 925759b63d1225c720ad439f15b82632a4921cbb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87048863"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132326"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Kurz: automatizace úloh pro zpracování e-mailů pomocí Azure Logic Apps, Azure Functions a Azure Storage
 
@@ -34,7 +34,7 @@ Jakmile budete hotovi, vaše aplikace logiky bude na základní úrovni vypadat 
 
 ![Hotová aplikace logiky na základní úrovni](./media/tutorial-process-email-attachments-workflow/overview.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -47,13 +47,11 @@ Jakmile budete hotovi, vaše aplikace logiky bude na základní úrovni vypadat 
 
 * Zdarma stáhnout a nainstalovat [Průzkumníka služby Microsoft Azure Storage](https://storageexplorer.com/). Tento nástroj vám umožní zkontrolovat, jestli máte kontejner úložiště správně nastavený.
 
-## <a name="sign-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
-
-Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašovacích údajů svého účtu Azure.
-
 ## <a name="set-up-storage-to-save-attachments"></a>Nastavení úložiště pro ukládání příloh
 
 Příchozí e-maily a přílohy můžete ukládat jako objekty blob v [kontejneru úložiště Azure](../storage/common/storage-introduction.md).
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašovacích údajů svého účtu Azure.
 
 1. Než budete moct vytvořit kontejner úložiště, vytvořte pomocí těchto nastavení na kartě **základy** v Azure Portal [účet úložiště](../storage/common/storage-account-create.md) :
 
@@ -261,7 +259,7 @@ Teď přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts
 
 1. Do návrháře v poli hledání zadejte `when new email arrives` jako filtr. Vyberte pro svého poskytovatele e-mailu tento trigger: **Při přijetí nového e-mailu – <*váš_poskytovatel_e-mailu*>**.
 
-   Příklad:
+   Například:
 
    ![Výběr triggeru pro konkrétního poskytovatele e-mailu: „Při přijetí nového e-mailu“](./media/tutorial-process-email-attachments-workflow/add-trigger-when-email-arrives.png)
 
@@ -280,8 +278,8 @@ Teď přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts
       | Nastavení | Hodnota | Popis |
       | ------- | ----- | ----------- |
       | **Složka** | Doručená pošta | E-mailová složka, která se má kontrolovat |
-      | **Má přílohu** | Yes | Načte jen e-maily s přílohami. <p>**Poznámka:** Trigger neodebere z vašeho účtu žádné e-maily. Kontroluje jenom nové zprávy a zpracovává jenom e-maily odpovídající filtru pro předmět. |
-      | **Zahrnout přílohy** | Yes | Místo samotné kontroly příloh je načtěte jako vstup do pracovního postupu. |
+      | **Má přílohu** | Ano | Načte jen e-maily s přílohami. <p>**Poznámka:** Trigger neodebere z vašeho účtu žádné e-maily. Kontroluje jenom nové zprávy a zpracovává jenom e-maily odpovídající filtru pro předmět. |
+      | **Zahrnout přílohy** | Ano | Místo samotné kontroly příloh je načtěte jako vstup do pracovního postupu. |
       | **Interval** | 1 | Počet intervalů, po které se má čekat mezi kontrolami |
       | **Frekvence** | Minuta | Jednota času pro každý interval mezi kontrolami |
       ||||

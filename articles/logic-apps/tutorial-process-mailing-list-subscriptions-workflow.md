@@ -3,16 +3,16 @@ title: Vytváření automatizovaných pracovních postupů založených na schv�
 description: Kurz – vytvoření automatizovaného pracovního postupu založeného na schválení, který zpracovává odběry seznamu adresátů pomocí Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/20/2019
-ms.openlocfilehash: c1ed32a95864c20690607912bc32c01e3e597a65
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d9d2f29ffc34c203e5f3b3ebf094e73fb9cdfb75
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87048594"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132394"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>Kurz: vytváření pracovních postupů pro automatizované schvalování pomocí Azure Logic Apps
 
@@ -21,6 +21,7 @@ V tomto kurzu se dozvíte, jak vytvořit [aplikaci logiky](../logic-apps/logic-a
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
+>
 > * Vytvoření prázdné aplikace logiky
 > * Přidání triggeru, který v e-mailech monitoruje žádosti o přihlášení k odběru
 > * Přidání akce, která odesílá e-maily ke schválení nebo zamítnutí těchto žádostí
@@ -33,7 +34,7 @@ Jakmile budete hotovi, vaše aplikace logiky bude na základní úrovni vypadat 
 
 ![Přehled dokončené aplikace logiky na vysoké úrovni](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-high-level-overview.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud předplatné nemáte, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -41,11 +42,9 @@ Jakmile budete hotovi, vaše aplikace logiky bude na základní úrovni vypadat 
 
 * E-mailový účet v Office 365 Outlooku nebo Outlook.com, který podporuje schvalovací pracovní postupy. V tomto článku se používá Office 365 Outlook. Pokud používáte jiný e-mailový účet, zůstává obecný postup stejný, ale vaše uživatelské rozhraní může vypadat trochu jinak.
 
-## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
-
-Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašovacích údajů svého účtu Azure.
-
 ## <a name="create-your-logic-app"></a>Vytvoření aplikace logiky
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašovacích údajů svého účtu Azure.
 
 1. V hlavní nabídce Azure vyberte **vytvořit prostředek**  >  **Integration**  >  **Logic App**.
 
@@ -205,9 +204,9 @@ Nyní přidejte akci, která přidá schváleného člena do seznamu adresátů.
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **ID seznamu** | Yes | `test-members-ML` | Název seznamu adresátů MailChimp. V tomto příkladu se používá "test-Members-ML". |
-   | **Stav** | Yes | `subscribed` | Vyberte stav předplatného pro nového člena. V tomto příkladu se používá "odebírané". <p>Další informace najdete v tématu [Správa odběratelů pomocí rozhraní API MailChimp](https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/). |
-   | **E-mailová adresa** | Yes | <*New-member-e-mailová adresa*> | V seznamu dynamického **obsahu vyberte v** části **při přijetí nového e-mailu**, který předá e-mailovou adresu nového člena. |
+   | **ID seznamu** | Ano | `test-members-ML` | Název seznamu adresátů MailChimp. V tomto příkladu se používá "test-Members-ML". |
+   | **Stav** | Ano | `subscribed` | Vyberte stav předplatného pro nového člena. V tomto příkladu se používá "odebírané". <p>Další informace najdete v tématu [Správa odběratelů pomocí rozhraní API MailChimp](https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/). |
+   | **E-mailová adresa** | Ano | <*New-member-e-mailová adresa*> | V seznamu dynamického **obsahu vyberte v** části **při přijetí nového e-mailu**, který předá e-mailovou adresu nového člena. |
    ||||
 
    Další informace o vlastnostech této akce najdete v referenčních informacích ke [konektoru MailChimp](/connectors/mailchimp/).
@@ -260,9 +259,9 @@ Dále nastavte e-maily, které se odešlou po úspěšném nebo neúspěšném p
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Schopn** | Yes | <*vaše e-mailová adresa*> | E-mailová adresa, na kterou se má odeslat e-mail s informací o úspěchu. Pro účely testování můžete použít svou vlastní e-mailovou adresu. |
-   | **Předmět** | Yes | <*Předmět pro úspěch – e-mail*> | Předmět e-mailu s informací o úspěchu. Pro účely tohoto kurzu zadejte tento text: <p>`Success! Member added to "test-members-ML": ` <p>V seznamu dynamického obsahu v části **Přidat člena do seznamu**vyberte vlastnost **e-mailová adresa** . |
-   | **Text** | Yes | <*text pro úspěch – e-mail*> | Obsah textu e-mailu s informací o úspěchu. Pro účely tohoto kurzu zadejte tento text: <p>`New member has joined "test-members-ML":` <p>V seznamu dynamický obsah vyberte vlastnost **e-mailová adresa** . <p>Do dalšího řádku zadejte tento text:`Member opt-in status: ` <p> V seznamu dynamického obsahu vyberte v části **Přidat člena do seznamu**vlastnost **stav** . |
+   | **Schopn** | Ano | <*vaše e-mailová adresa*> | E-mailová adresa, na kterou se má odeslat e-mail s informací o úspěchu. Pro účely testování můžete použít svou vlastní e-mailovou adresu. |
+   | **Předmět** | Ano | <*Předmět pro úspěch – e-mail*> | Předmět e-mailu s informací o úspěchu. Pro účely tohoto kurzu zadejte tento text: <p>`Success! Member added to "test-members-ML": ` <p>V seznamu dynamického obsahu v části **Přidat člena do seznamu**vyberte vlastnost **e-mailová adresa** . |
+   | **Text** | Ano | <*text pro úspěch – e-mail*> | Obsah textu e-mailu s informací o úspěchu. Pro účely tohoto kurzu zadejte tento text: <p>`New member has joined "test-members-ML":` <p>V seznamu dynamický obsah vyberte vlastnost **e-mailová adresa** . <p>Do dalšího řádku zadejte tento text:`Member opt-in status: ` <p> V seznamu dynamického obsahu vyberte v části **Přidat člena do seznamu**vlastnost **stav** . |
    |||||
 
 1. Uložte aplikaci logiky.
@@ -285,9 +284,9 @@ Dále nastavte e-maily, které se odešlou po úspěšném nebo neúspěšném p
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Schopn** | Yes | <*vaše e-mailová adresa*> | E-mailová adresa, na kterou se má odeslat e-mail s informací o neúspěchu. Pro účely testování můžete použít svou vlastní e-mailovou adresu. |
-   | **Předmět** | Yes | <*Předmět pro selhání – e-mail*> | Předmět e-mailu s informací o neúspěchu. Pro účely tohoto kurzu zadejte tento text: <p>`Failed, member not added to "test-members-ML": ` <p>V seznamu dynamického obsahu v části **Přidat člena do seznamu**vyberte vlastnost **e-mailová adresa** . |
-   | **Text** | Yes | <*tělo – chyba – e-mail*> | Obsah textu e-mailu s informací o neúspěchu. Pro účely tohoto kurzu zadejte tento text: <p>`Member might already exist. Check your MailChimp account.` |
+   | **Schopn** | Ano | <*vaše e-mailová adresa*> | E-mailová adresa, na kterou se má odeslat e-mail s informací o neúspěchu. Pro účely testování můžete použít svou vlastní e-mailovou adresu. |
+   | **Předmět** | Ano | <*Předmět pro selhání – e-mail*> | Předmět e-mailu s informací o neúspěchu. Pro účely tohoto kurzu zadejte tento text: <p>`Failed, member not added to "test-members-ML": ` <p>V seznamu dynamického obsahu v části **Přidat člena do seznamu**vyberte vlastnost **e-mailová adresa** . |
+   | **Text** | Ano | <*tělo – chyba – e-mail*> | Obsah textu e-mailu s informací o neúspěchu. Pro účely tohoto kurzu zadejte tento text: <p>`Member might already exist. Check your MailChimp account.` |
    |||||
 
 1. Uložte aplikaci logiky. 

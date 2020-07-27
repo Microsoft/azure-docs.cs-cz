@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ade9e3200909c781dc00cf4e3713395f55f173d
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 718d51c94d05e8e18f2b254b5e81e346a67205a1
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253731"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87170531"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) k GitHubu
 
@@ -87,7 +87,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://github.com/orgs/<Organization ID>`
 
-    c. Do pole **Adresa URL odpovědi** textox zadejte adresu URL pomocí následujícího vzoru:`https://github.com/orgs/<Organization ID>/saml/consume`
+    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://github.com/orgs/<Organization ID>/saml/consume`
 
 
     > [!NOTE]
@@ -177,7 +177,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Nastavení](./media/github-tutorial/tutorial_github_config_github_06.png)
 
-6. Klikněte na **Uložit** .
+6. Klikněte na **Uložit**.
 
 > [!NOTE]
 > Jednotné přihlašování se v GitHubu ověřuje na konkrétní organizaci v GitHubu a nenahrazuje ověřování samotného GitHubu. Proto, pokud vypršela platnost relace github.com uživatele, můžete být během procesu jednotného přihlašování požádáni o ověření pomocí ID nebo hesla GitHubu.

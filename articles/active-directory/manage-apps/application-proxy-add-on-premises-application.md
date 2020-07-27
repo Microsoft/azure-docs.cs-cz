@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fd1b815a56a21e502decb440806040c626c13d2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a7153200bc80f6e27a99123a1bba676d0188f607
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019637"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129028"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory
 
@@ -88,9 +88,6 @@ Povolení TLS 1,2:
 
 1. Restartujte server.
 
-> [!IMPORTANT]
-> Aby služba proxy aplikací poskytovala zákazníkům nejlepší šifrování, omezí přístup jenom na protokoly TLS 1,2. Tyto změny byly postupně nasazeny a platit od 31. srpna 2019. Zajistěte, aby byly všechny kombinace klienta a serveru a prohlížeče a serveru aktualizovány tak, aby používaly protokol TLS 1,2 pro zachování připojení ke službě proxy aplikací. Mezi ně patří klienti, kteří uživatelé používají pro přístup k aplikacím, které jsou publikované prostřednictvím proxy aplikací. Užitečné odkazy a prostředky najdete v tématu Příprava pro [TLS 1,2 v sadě Office 365](https://support.microsoft.com/help/4057306/preparing-for-tls-1-2-in-office-365) .
-
 ## <a name="prepare-your-on-premises-environment"></a>Příprava místního prostředí
 
 Začněte tím, že povolíte komunikaci s datovými centry Azure a připravíte své prostředí pro Azure Proxy aplikací služby AD. Pokud je v cestě brána firewall, ujistěte se, že je otevřená. Otevřená brána firewall umožňuje konektoru předávat žádosti pomocí protokolu HTTPS (TCP) na proxy aplikace.
@@ -113,7 +110,7 @@ Pokud brána firewall vynutila provoz na základě pocházejících uživatelů,
 
 Povolte přístup k následujícím adresám URL:
 
-| Adresa URL | Jak se používá |
+| URL | Jak se používá |
 | --- | --- |
 | \*. msappproxy.net<br>\*. servicebus.windows.net | Komunikace mezi konektorem a cloudovou službou proxy aplikací |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Konektor používá tyto adresy URL k ověření certifikátů. |
@@ -209,7 +206,7 @@ Teď, když jste připravili prostředí a nainstalovali konektor, jste připrav
     | **Přeložit adresy URL v hlavičkách** | Tuto hodnotu nechte jako **Ano** , pokud vaše aplikace nevyžadovala v žádosti o ověření hlavičku původního hostitele. |
     | **Přeložit adresy URL v těle aplikace** | Tuto hodnotu nechte jako **ne** , pokud jste nepevně zakódovanéi odkazy HTML na jiné místní aplikace a nepoužíváte vlastní domény. Další informace najdete v tématu [Překlad propojení pomocí proxy aplikace](application-proxy-configure-hard-coded-link-translation.md).<br><br>Tuto hodnotu nastavte na **Ano** , pokud plánujete monitorovat tuto aplikaci pomocí Microsoft Cloud App Security (MCAS). Další informace najdete v tématu [Konfigurace monitorování přístupu aplikace v reálném čase pomocí Microsoft Cloud App Security a Azure Active Directory](application-proxy-integrate-with-microsoft-cloud-application-security.md). |
 
-7. Vyberte **Přidat**.
+7. Vyberte možnost **Přidat**.
 
 ## <a name="test-the-application"></a>Testování aplikace
 

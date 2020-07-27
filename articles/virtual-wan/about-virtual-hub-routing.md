@@ -8,16 +8,17 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4949d5f2621957d6830625fe798601db4472a75d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 8c52b2141d2f29303939facf89d4a59fb3d333fd
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064906"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171883"
 ---
 # <a name="about-virtual-hub-routing"></a>Informace o směrováních virtuálních center
 
-Možnosti směrování ve virtuálním rozbočovači poskytuje směrovač, který spravuje všechna směrování mezi branami pomocí Border Gateway Protocol (BGP). Virtuální rozbočovač může obsahovat několik bran, jako je třeba Brána VPN typu Site-to-site, brána ExpressRoute, brána typu Point-to-site, Azure Firewall. Tento směrovač taky zajišťuje přenosové propojení mezi virtuálními sítěmi, které se připojují k virtuálnímu rozbočovači, a může podporovat až agregovanou propustnost 50 GB/s. Tyto možnosti směrování platí pro standardní virtuální zákazníky sítě WAN.
+Možnosti směrování ve virtuálním rozbočovači poskytuje směrovač, který spravuje všechna směrování mezi branami pomocí Border Gateway Protocol (BGP). Virtuální rozbočovač může obsahovat několik bran, jako je třeba Brána VPN typu Site-to-site, brána ExpressRoute, brána typu Point-to-site, Azure Firewall. Tento směrovač taky zajišťuje přenosové propojení mezi virtuálními sítěmi, které se připojují k virtuálnímu rozbočovači, a může podporovat až agregovanou propustnost 50 GB/s. Tyto možnosti směrování platí pro standardní virtuální zákazníky sítě WAN. 
 
 Pokud chcete nakonfigurovat směrování, přečtěte si téma [Jak konfigurovat směrování virtuálního rozbočovače](how-to-virtual-hub-routing.md).
 
@@ -60,7 +61,7 @@ Připojení dynamicky šíří trasy do směrovací tabulky. S připojením VPN,
 
 :::image type="content" source="./media/about-virtual-hub-routing/concepts-propagation.png" alt-text="Šíření":::
 
-### <a name="labels"></a><a name="static"></a>Štítky
+### <a name="labels"></a><a name="static"></a>Popisky
 Popisky poskytují mechanismus pro logickou skupinu směrovacích tabulek. To je užitečné hlavně při šíření tras z připojení k několika směrovacím tabulkám. Například výchozí směrovací tabulka má vestavěný popisek s názvem default. Když uživatelé šíří trasy připojení k výchozímu popisku, bude automaticky platit pro všechny výchozí směrovací tabulky napříč všemi rozbočovači ve virtuální síti WAN. 
 
 ### <a name="configuring-static-routes-in-a-virtual-network-connection"></a><a name="static"></a>Konfigurace statických tras v připojení k virtuální síti
@@ -79,6 +80,15 @@ Směrovací tabulky teď mají funkce pro přidružení a šíření. Již exist
 Pokud chcete používat nové funkce směrovací tabulky, počkejte prosím, než se dokončí platnost v Azure, do dne v týdnu od 3. Pokud máte již existující trasy v části směrování pro centrum v Azure Portal, bude nutné je nejprve odstranit a pak se pokusit vytvořit nové směrovací tabulky (k dispozici v části směrovací tabulky pro centrum v Azure Portal).
 
 * **Základní virtuální zákazníci sítě WAN s již existujícími trasami ve virtuálním centru**: Pokud chcete používat nové možnosti směrovací tabulky, počkejte prosím, než se dokončí v Azure, a počkejte prosím na dokončení zavedení v Azure. Pokud máte již existující trasy v části směrování pro centrum v Azure Portal, budete je muset nejdřív odstranit a pak **upgradovat** základní virtuální síť WAN na standard Virtual WAN. Viz [upgrade virtuální sítě WAN z úrovně Basic na standard](upgrade-virtual-wan.md).
+
+## <a name="virtual-wan-routing-considerations"></a><a name="considerations"></a>Doporučení pro směrování virtuálních sítí WAN
+
+Při konfiguraci směrování virtuální sítě WAN Vezměte v úvahu následující skutečnosti:
+
+* Všechna připojení větví (Point-to-site, Site-to-site a ExpressRoute) musí být přidružena k výchozí směrovací tabulce. V takovém případě se všechny větve budou učit stejné předpony.
+* Všechna připojení větví potřebují rozšířit své trasy do stejné sady směrovacích tabulek. Pokud se například rozhodnete, že by se větve měly rozšířit do výchozí směrovací tabulky, tato konfigurace by měla být konzistentní napříč všemi větvemi. V důsledku toho budou mít všechna připojení přidružená k výchozí směrovací tabulce přístup k všem větvím.
+* Větev-do větve prostřednictvím Azure Firewall není aktuálně podporována.
+* Při použití Azure Firewall ve více oblastech musí být všechny virtuální sítě s paprsky přidruženy ke stejné směrovací tabulce. Například podmnožina virtuální sítě projde skrze Azure Firewall, zatímco jiné virtuální sítěy obcházejí Azure Firewall ve stejném virtuálním rozbočovači není možné.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: b9cf070e1431c04a7e899a3b8875c8db796608d3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 163f440c9f98a1d53793fddab2590f7345944fda
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119884"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171009"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL cenové úrovně
 
 Server Azure Database for MySQL můžete vytvořit v jedné ze tří různých cenových úrovní: optimalizováno Basic, Pro obecné účely a paměť. Cenové úrovně jsou rozlišené o množství výpočtů v virtuální jádra, které se dá zřídit, paměť na vCore a technologie úložiště, která se používá k ukládání dat. Všechny prostředky jsou zřízené na úrovni serveru MySQL. Server může mít jednu nebo více databází.
 
-| Atribut   | **Základní** | **Pro obecné účely** | **Paměťově optimalizovaná** |
+| Atribut   | **Basic** | **Pro obecné účely** | **Paměťově optimalizovaná** |
 |:---|:----------|:--------------------|:---------------------|
 | Generování výpočtů | Gen 4, fin. 5 | Gen 4, fin. 5 | Gen 5 |
 | Virtuální jádra | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -83,9 +83,9 @@ Pokud jste například zřídili 1000 GB úložiště a skutečné využití dos
 
 Mějte na paměti, že úložiště je možné škálovat pouze nahoru, ne dolů.
 
-## <a name="backup"></a>Backup
+## <a name="backup-storage"></a>Úložiště zálohování 
 
-Služba automaticky provede zálohování vašeho serveru. Můžete vybrat dobu uchování z rozsahu 7 až 35 dní. Pro obecné účely a paměťově optimalizované servery se můžou rozhodnout pro zálohování geograficky redundantního úložiště. Další informace o zálohách [najdete v článku koncepty](concepts-backup.md).
+Azure Database for MySQL poskytuje úložiště zřízeného serveru jako úložiště pro zálohování až 100%, a to bez dalších nákladů. Jakékoli úložiště záloh, které využijete, se nad rámec této částky účtuje za GB za měsíc. Pokud například zřídíte Server s 250 GB úložiště, budete mít k dispozici až 250 GB dalších úložiště pro zálohy serveru zdarma. Úložiště pro zálohy převyšující 250 GB se účtuje podle [cenového modelu](https://azure.microsoft.com/pricing/details/mysql/). Pokud chcete pochopit faktory ovlivňující využití úložiště záloh, monitorování a řízení nákladů na úložiště zálohování, můžete se podívat na [dokumentaci k zálohování](concepts-backup.md).
 
 ## <a name="scale-resources"></a>Škálování prostředků
 

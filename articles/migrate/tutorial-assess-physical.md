@@ -3,12 +3,12 @@ title: Posouzení fyzických serverů pro migraci do Azure pomocí posouzení se
 description: Popisuje postup vyhodnocení místních fyzických serverů pro migraci do Azure pomocí Azure Migrate posouzení serveru.
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: 2c0662c6ccf66f09413891c99da789c50847277e
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 5b4d5241e4236d4c11f2e2a5a8feb7c73258cba0
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080762"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171381"
 ---
 # <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>Vyhodnotit fyzické servery pomocí Azure Migrate: posouzení serveru
 
@@ -27,7 +27,7 @@ Tento kurz je druhý v řadě, který ukazuje, jak vyhodnocovat a migrovat fyzic
 > [!NOTE]
 > Kurzy vám ukážou nejjednodušší cestu nasazení pro scénář, abyste mohli rychle nastavit zkušební verzi. Kurzy používají výchozí možnosti, pokud je to možné, a nezobrazují všechna možná nastavení a cesty. Podrobné pokyny najdete v článcích s postupy.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/pricing/free-trial/), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -60,7 +60,7 @@ Následujícím způsobem nastavte nový projekt Azure Migrate.
     ![Vytvoření projektu Azure Migrate](./media/tutorial-assess-physical/migrate-project.png)
 
 
-7. Klikněte na **Další**.
+7. Klikněte na **Next** (Další).
 8. V **nástroji vybrat nástroj pro posouzení**vyberte **Azure Migrate: vyhodnocení serveru**  >  **Další**.
 
     ![Vytvoření projektu Azure Migrate](./media/tutorial-assess-physical/assessment-tool.png)
@@ -179,13 +179,14 @@ Nastavte zařízení poprvé.
 Nyní se z zařízení připojte k fyzickým serverům, které se mají zjistit, a spusťte zjišťování.
 
 1. Klikněte na **Přidat přihlašovací údaje** a zadejte přihlašovací údaje účtu, které zařízení použije k zjišťování serverů.  
-2. Zadejte **operační systém**, popisný název přihlašovacích údajů a uživatelské jméno a heslo. Pak klikněte na **Přidat**.
+2. Přihlaste se pomocí uživatelského jména a hesla. Přihlášení pomocí klíče se nepodporuje. Uživatel musí být také kořenovým přihlášením nebo součástí místní skupiny správců.
+3. Zadejte **operační systém**, popisný název přihlašovacích údajů a uživatelské jméno a heslo. Pak klikněte na **Přidat**.
 Můžete přidat několik přihlašovacích údajů pro servery se systémem Windows a Linux.
 4. Klikněte na **Přidat server**a zadejte podrobnosti o serveru – plně kvalifikovaný název domény/IP adresa a popisný název přihlašovacích údajů (jedna položka na řádek) pro připojení k serveru.
-3. Klikněte na **Validate** (Ověřit). Po ověření se zobrazí seznam serverů, které se dají zjistit.
+5. Klikněte na **Validate** (Ověřit). Po ověření se zobrazí seznam serverů, které se dají zjistit.
     - Pokud se ověření serveru nepovede, zkontrolujte chybu přesunutím ukazatele myši na ikonu ve sloupci **stav** . Opravte problémy a znovu ověřte.
     - Pokud chcete odebrat server, vyberte > **Odstranit**.
-4. Po ověření klikněte na **Uložit a spusťte zjišťování a** spusťte proces zjišťování.
+6. Po ověření klikněte na **Uložit a spusťte zjišťování a** spusťte proces zjišťování.
 
 Spustí se zjišťování. Vybere se přibližně 1,5 minut na server, aby se metadata zjištěného serveru zobrazovala v Azure Portal.
 

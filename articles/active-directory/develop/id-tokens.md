@@ -14,12 +14,12 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 2fbbf5f9d01ed4a469967dac87faa3b130905757
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aca2e0a878470a644aff3a42411b69da9096fc78
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027100"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87170522"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Tokeny ID platformy Microsoft identity
 
@@ -87,7 +87,7 @@ V tomto seznamu jsou uvedeny deklarace identity JWT, které jsou ve výchozím n
 |`ver` | Řetězec, buď 1,0 nebo 2,0 | Určuje verzi id_token. |
 
 > [!NOTE]
-> Id_token v 1.0 a v 22.0 mají rozdíly v množství informací, které budou prováděny podle výše uvedených příkladů. Verze v podstatě určuje koncový bod platformy Azure AD, ze kterého byl vydán. [Implementace Azure AD OAuth](about-microsoft-identity-platform.md) se vyvinula v průběhu let. V současné době existují dva různé koncové body Outh pro aplikace Azure AD. Můžete použít libovolný z nových koncových bodů, které jsou zařazeny do kategorie v 2.0 nebo v 1.0. Koncové body OAuth obou z nich jsou odlišné. Koncový bod v 2.0 je novější a funkce koncového bodu v 1.0 se migrují do tohoto koncového bodu. Noví vývojáři by měli použít koncový bod v 2.0.
+> Id_token v 1.0 a v 2.0 mají rozdíly v množství informací, které budou prováděny podle výše uvedených příkladů. Verze v podstatě určuje koncový bod platformy Azure AD, ze kterého byl vydán. [Implementace Azure AD OAuth](about-microsoft-identity-platform.md) se vyvinula v průběhu let. V současné době existují dva různé koncové body Outh pro aplikace Azure AD. Můžete použít libovolný z nových koncových bodů, které jsou zařazeny do kategorie v 2.0 nebo v 1.0. Koncové body OAuth obou z nich jsou odlišné. Koncový bod v 2.0 je novější a funkce koncového bodu v 1.0 se migrují do tohoto koncového bodu. Noví vývojáři by měli použít koncový bod v 2.0.
 >
 > - v 1.0: koncové body Azure AD:`https://login.microsoftonline.com/common/oauth2/authorize`
 > - v 2.0: koncové body Microsoft identitypPlatform:`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`

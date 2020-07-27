@@ -1,16 +1,16 @@
 ---
 title: Vytvoření členu služby Azure blockchain – Azure CLI
 description: Vytvoření členu služby Azure blockchain pro konsorcium blockchain pomocí Azure CLI.
-ms.date: 07/16/2020
+ms.date: 07/23/2020
 ms.topic: quickstart
 ms.reviewer: ravastra
 ms.custom: references_regions
-ms.openlocfilehash: f459c9f577ac806c9121a46a200dd9f04ea5481a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2514447eaceb83da0bee81c1475a3137f0d1af07
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075240"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87170659"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>Rychlý Start: Vytvoření člena blockchain služby Azure blockchain pomocí Azure CLI
 
@@ -18,9 +18,9 @@ V tomto rychlém startu nasadíte nového člena blockchain a konsorcia ve služ
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Žádné
+Žádné.
 
 ## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 
@@ -30,15 +30,39 @@ Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém ho
 
 Pokud dáváte přednost instalaci a používání rozhraní příkazového řádku místně, musíte použít Azure CLI verze 2.0.51 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli).
 
-## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
+## <a name="prepare-your-environment"></a>Příprava prostředí
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *eastus* :
+1. Přihlásit se.
 
-```azurecli-interactive
-az group create \
-                 --name myResourceGroup \
-                 --location westus2
-```
+    Přihlaste se pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) , pokud používáte místní instalaci rozhraní příkazového řádku.
+
+    ```azurecli
+    az login
+    ```
+
+    Proces ověřování dokončíte podle kroků zobrazených v terminálu.
+
+1. Nainstalujte rozšíření Azure CLI.
+
+    Když pracujete s odkazy na rozšíření pro rozhraní příkazového řádku Azure CLI, musíte nejdřív nainstalovat rozšíření.  Rozšíření Azure CLI poskytují přístup k experimentálním a předběžným příkazům, které ještě nebyly dodány jako součást základního rozhraní příkazového řádku.  Další informace o rozšířeních, včetně aktualizace a odinstalace, najdete v tématu [použití rozšíření pomocí Azure CLI](/cli/azure/azure-cli-extensions-overview).
+
+    Nainstalujte [rozšíření pro službu Azure blockchain](/cli/azure/ext/blockchain/blockchain) spuštěním následujícího příkazu:
+
+    ```azurecli-interactive
+    az extension add --name blockchain
+    ```
+
+1. Vytvořte skupinu prostředků.
+
+    Služba Azure blockchain, stejně jako všechny prostředky Azure, musí být nasazená do skupiny prostředků. Skupiny prostředků vám umožňují organizaci a správu souvisejících prostředků Azure.
+
+    V tomto rychlém startu vytvořte skupinu prostředků s názvem _myResourceGroup_ v umístění _eastus_ pomocí následujícího příkazu [AZ Group Create](/cli/azure/group#az-group-create) :
+
+    ```azurecli-interactive
+    az group create \
+                     --name "myResourceGroup" \
+                     --location "eastus"
+    ```
 
 ## <a name="create-a-blockchain-member"></a>Vytvoření členu blockchain
 
@@ -47,12 +71,15 @@ az group create \
 Existuje několik parametrů a vlastností, které je třeba předat. Nahraďte ukázkové parametry hodnotami.
 
 ```azurecli-interactive
-az resource create \
-                    --resource-group myResourceGroup \
-                    --name myblockchainmember \
-                    --resource-type Microsoft.Blockchain/blockchainMembers \
-                    --is-full-object \
-                    --properties '{"location":"westus2", "properties":{"password":"strongMemberAccountPassword@1", "protocol":"Quorum", "consortium":"myConsortiumName", "consortiumManagementAccountPassword":"strongConsortiumManagementPassword@1"}, "sku":{"name":"S0"}}'
+az blockchain member create \
+                            --resource-group "MyResourceGroup" \
+                            --name "myblockchainmember" \
+                            --location "eastus" \
+                            --password "strongMemberAccountPassword@1" \
+                            --protocol "Quorum" \
+                            --consortium "myconsortium" \
+                            --consortium-management-account-password "strongConsortiumManagementPassword@1" \
+                            --sku "Basic"
 ```
 
 | Parametr | Popis |
@@ -61,9 +88,10 @@ az resource create \
 | **Jméno** | Jedinečný název, který identifikuje svého člena blockchain služby Azure blockchain. Název se používá pro adresu veřejného koncového bodu. Například, `myblockchainmember.blockchain.azure.com`.
 | **oblasti** | Oblast Azure, ve které je vytvořen člen blockchain. Například, `westus2`. Vyberte umístění co nejblíže vašim uživatelům nebo vašim dalším aplikacím Azure. Funkce nemusí být k dispozici v některých oblastech. Azure blockchain Data Manager je k dispozici v následujících oblastech Azure: Východní USA a Západní Evropa.
 | **heslo** | Heslo pro výchozí uzel transakce člena Při připojování k výchozímu koncovému bodu transakčního uzlu blockchain člena použijte heslo pro základní ověřování.
+| **protokol** | Protokol blockchain V současné době je protokol *kvora* podporován.
 | **konsorci** | Název konsorcia, která se má připojit nebo vytvořit Další informace o konsorciích najdete v článku [konsorcium služby Azure blockchain](consortium.md).
-| **consortiumAccountPassword** | Heslo účtu konsorcia se označuje také jako heslo k členskému účtu. Heslo pro členský účet slouží k šifrování privátního klíče pro účet Ethereem, který je vytvořen pro vašeho člena. Použijete členský účet a heslo členského účtu pro správu konsorcia.
-| **skuName** | Typ vrstvy Pro Basic použijte S0 for Standard a B0. Využijte *základní* vrstvu pro vývoj, testování a kontrolu konceptů. Použijte úroveň *Standard* pro nasazení produkčních úrovní. Úroveň *Standard* byste měli použít také v případě, že používáte blockchain data Manager nebo odesíláte velký objem privátních transakcí. Změna cenové úrovně mezi základními a standardními po vytvoření členů není podporována.
+| **Konsorcium-Správa-účet-heslo** | Heslo účtu konsorcia se označuje také jako heslo k členskému účtu. Heslo pro členský účet slouží k šifrování privátního klíče pro účet Ethereem, který je vytvořen pro vašeho člena. Použijete členský účet a heslo členského účtu pro správu konsorcia.
+| **skladové** | Typ vrstvy *Standard* nebo *Basic*. Využijte *základní* vrstvu pro vývoj, testování a kontrolu konceptů. Použijte úroveň *Standard* pro nasazení produkčních úrovní. Úroveň *Standard* byste měli použít také v případě, že používáte blockchain data Manager nebo odesíláte velký objem privátních transakcí. Změna cenové úrovně mezi základními a standardními po vytvoření členů není podporována.
 
 Vytvoření člena blockchain a podpůrných prostředků trvá přibližně 10 minut.
 

@@ -7,17 +7,17 @@ author: jasonnutter
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-javascript
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: f457e876cb9484fce29cba35c7570572b2771aed
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: a7553eea8941b93e589f38f8229ef35b70361f8e
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860048"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129181"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v úhlové aplikaci s jednou stránkou
 
@@ -26,7 +26,7 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se v úhlové aplik
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Node. js](https://nodejs.org/en/download/).
+* [Node.js](https://nodejs.org/en/download/).
 * [Visual Studio Code](https://code.visualstudio.com/download) pro úpravu souborů projektu nebo sady [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) pro spuštění projektu.
 
 > [!div renderon="docs"]
@@ -35,7 +35,7 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se v úhlové aplik
 >
 > ### <a name="option-1-express-register-and-automatically-configure-the-app-and-then-download-the-code-sample"></a>Možnost 1 (Express): registrace a Automatická konfigurace aplikace a stažení ukázky kódu
 >
-> 1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+> 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 > 1. Pokud má váš účet přístup k více než jednomu klientovi, vyberte účet v pravém horním rohu a pak nastavte relaci portálu na tenanta Azure Active Directory (Azure AD), který chcete použít.
 > 1. Otevřete nové podokno [Registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) v Azure Portal.
 > 1. Zadejte název aplikace a pak vyberte **Registrovat**.
@@ -45,7 +45,7 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se v úhlové aplik
 >
 > #### <a name="step-1-register-the-application"></a>Krok 1: registrace aplikace
 >
-> 1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+> 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 > 1. Pokud má váš účet přístup k více než jednomu klientovi, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na klienta služby Azure AD, kterého chcete použít.
 > 1. Postupujte podle pokynů k [registraci jednostránkové aplikace](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration) v Azure Portal.
 > 1. Přidejte novou platformu do podokna **ověřování** registrace vaší aplikace a zaregistrujte identifikátor URI přesměrování: `http://localhost:4200/` .
@@ -62,7 +62,7 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se v úhlové aplik
 
 #### <a name="step-2-download-the-code-sample"></a>Krok 2: stažení ukázky kódu
 >[!div renderon="docs"]
->Chcete-li spustit projekt s webovým serverem pomocí Node. js, [naklonujte ukázkové úložiště](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) nebo [Stáhněte základní soubory projektu](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular/archive/master.zip). Otevřete soubory pomocí editoru, jako je například Visual Studio Code.
+>Chcete-li spustit projekt s webovým serverem pomocí Node.js, [naklonujte ukázkové úložiště](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) nebo [si stáhněte základní soubory projektu](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular/archive/master.zip). Otevřete soubory pomocí editoru, jako je například Visual Studio Code.
 
 > [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
 > [Stažení ukázky kódu](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular/archive/master.zip)
@@ -107,9 +107,9 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se v úhlové aplik
 > > [!TIP]
 > > Hodnoty **ID aplikace (klienta)**, **ID adresáře (tenanta)** a **Podporované typy účtu** najdete na stránce **Přehled** aplikace na webu Azure Portal.
 
-Další informace o dostupných konfigurovatelných možnostech najdete v tématu [inicializace klientských aplikací](msal-js-initializing-client-applications.md). 
+Další informace o dostupných konfigurovatelných možnostech najdete v tématu [inicializace klientských aplikací](msal-js-initializing-client-applications.md).
 
-Zdrojový kód knihovny MSAL. js najdete v úložišti [AzureAD/Microsoft-Authentication-Library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) na GitHubu.
+Zdrojový kód knihovny MSAL.js můžete najít v úložišti [AzureAD/Microsoft-Authentication-Library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) na GitHubu.
 
 >[!div class="sxs-lookup" renderon="portal"]
 >#### <a name="step-3-run-the-project"></a>Krok 3: spuštění projektu
@@ -117,7 +117,7 @@ Zdrojový kód knihovny MSAL. js najdete v úložišti [AzureAD/Microsoft-Authen
 >[!div renderon="docs"]
 >#### <a name="step-4-run-the-project"></a>Krok 4: spuštění projektu
 
-Pokud používáte Node. js:
+Pokud používáte Node.js:
 
 1. Spusťte Server spuštěním následujících příkazů z adresáře projektu:
 
@@ -126,7 +126,7 @@ Pokud používáte Node. js:
    npm start
    ```
 
-1. Přejděte na **http://localhost:4200/** .
+1. Přejděte na **http://localhost:4200/**.
 1. Vyberte **Přihlásit**se.
 1. Vyberte **profil** , který chcete volat Microsoft Graph.
 
@@ -134,7 +134,7 @@ Poté, co prohlížeč načte aplikaci, vyberte **Přihlásit**. Při prvním p�
 
 ## <a name="how-the-sample-works"></a>Jak ukázka funguje
 
-![Diagram, který ukazuje, jak ukázková aplikace v tomto rychlém startu funguje](media/quickstart-v2-javascript/javascriptspa-intro.svg)
+![Diagram, který ukazuje, jak ukázková aplikace v tomto rychlém startu funguje](./media/quickstart-v2-angular/diagram-auth-flow-spa-angular.svg)
 
 
 ## <a name="next-steps"></a>Další kroky

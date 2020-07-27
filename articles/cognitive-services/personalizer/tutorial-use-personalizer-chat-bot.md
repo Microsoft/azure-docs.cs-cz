@@ -3,13 +3,12 @@ title: Použít přizpůsobování v programu chat robot – Přizpůsobte
 description: Přizpůsobte si robota chatu v C# .NET se smyčkou pro přizpůsobení a poskytněte tak správnému obsahu uživatele na základě akcí (s funkcemi) a funkcí kontextu.
 ms.topic: tutorial
 ms.date: 07/17/2020
-ms.author: diberry
-ms.openlocfilehash: d269dbf95356d1d8d0fb7c2f27e0828d016d0ac6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8e936b4017ad50434bc7d6b05b4217f82a9080e0
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101454"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131663"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>Kurz: použití přizpůsobeného prostředí v rozhraní .NET chat bot
 

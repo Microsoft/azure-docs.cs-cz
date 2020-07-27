@@ -3,12 +3,12 @@ title: Analýza živého videa pomocí vlastního modelu – Azure
 description: V tomto rychlém startu použijete počítačovou vizi k analýze živého kanálu videa z (simulované) kamery IP.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 2ff618e275624bc46c6fc3221507c5584047c51c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dc8c2d1f0620a92a13cb1f4c0b83c2452f964fd6
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043212"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87170612"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-model"></a>Rychlý Start: Analýza živého videa pomocí vlastního modelu
 
@@ -16,7 +16,7 @@ V tomto rychlém startu se dozvíte, jak používat Live video Analytics na IoT 
 
 Tento rychlý Start používá virtuální počítač Azure jako zařízení IoT Edge a používá simulovaný živý Stream videa. Vychází z ukázkového kódu napsaného v jazyce C# a sestavuje se v rychlém startu pro [detekci pohybů a generování událostí](detect-motion-emit-events-quickstart.md) . 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure, který zahrnuje aktivní předplatné. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 * [Visual Studio Code](https://code.visualstudio.com/)s následujícími příponami:
@@ -283,6 +283,8 @@ V části zprávy si všimněte následujících podrobností:
 Pokud máte v úmyslu vyzkoušet další rychlé starty, ponechte prostředky, které jste vytvořili. V opačném případě přejdete na Azure Portal, přejdete do skupin prostředků, vyberete skupinu prostředků, ve které jste spustili tento rychlý Start, a odstraníte všechny prostředky.
 
 ## <a name="next-steps"></a>Další kroky
+
+* Vyzkoušejte [zabezpečenou verzi modelu YOLOv3](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/tls-yolov3-onnx/readme.md) a nasaďte ji do zařízení IoT Edge. 
 
 Přečtěte si další výzvy pro pokročilé uživatele:
 

@@ -10,13 +10,14 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 07/24/2020
 ms.author: jingwang
-ms.openlocfilehash: a59d9291d1eaa4aa87d40914679e39c9cbf29cee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5d203664520aebadefd16c19813d7957dd37fc4
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84112642"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171248"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Získat aktivitu metadat v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -40,7 +41,7 @@ Aktivita získat metadata přebírá datovou sadu jako vstup a vrací informace 
 
 ### <a name="supported-connectors"></a>Podporované konektory
 
-**Úložiště souborů**
+**File Storage**
 
 | Konektory/metadata | itemName<br>(soubor/složka) | itemType<br>(soubor/složka) | velikost<br>souborů | vytvářejí<br>(soubor/složka) | lastModified<br>(soubor/složka) |childItems<br>složky |contentMD5<br>souborů | – struktura<br/>souborů | Sloupců<br>souborů | neexistuje<br>(soubor/složka) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
@@ -59,6 +60,7 @@ Aktivita získat metadata přebírá datovou sadu jako vstup a vrací informace 
 - Pro úložiště objektů BLOB v Azure `lastModified` platí pro kontejner a objekt blob, ale ne do virtuální složky.
 - `lastModified`filtr aktuálně platí pro filtrování podřízených položek, ale ne do zadané složky nebo souboru.
 - Pro aktivitu získat metadata není podporován filtr zástupných znaků u složek nebo souborů.
+- `structure`a `columnCount` nejsou podporovány při získávání metadat z binárních, JSON nebo souborů XML.
 
 **Relační databáze**
 
@@ -73,7 +75,7 @@ Aktivita získat metadata přebírá datovou sadu jako vstup a vrací informace 
 
 Můžete zadat následující typy metadat v seznamu pole získat aktivitu metadat pro načtení odpovídajících informací:
 
-| Typ metadat | Description |
+| Typ metadat | Popis |
 |:--- |:--- |
 | itemName | Název souboru nebo složky |
 | itemType | Typ souboru nebo složky Vrácená hodnota je `File` nebo `Folder` . |
@@ -92,7 +94,7 @@ Můžete zadat následující typy metadat v seznamu pole získat aktivitu metad
 >[!NOTE]
 >Když načtete metadata z úložišť souborů a nakonfigurujete `modifiedDatetimeStart` nebo `modifiedDatetimeEnd` , bude `childItems` ve výstupu obsaženo pouze soubory v dané cestě s časem poslední změny v zadaném rozsahu. V nezahrnuje položky v podsložkách.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Syntaxe
 
 **Aktivita získání metadat**
 
@@ -110,7 +112,7 @@ Můžete zadat následující typy metadat v seznamu pole získat aktivitu metad
 }
 ```
 
-**Integrován**
+**Datová sada**
 
 ```json
 {
@@ -136,12 +138,12 @@ Můžete zadat následující typy metadat v seznamu pole získat aktivitu metad
 
 V současné době aktivita získat metadata může vracet následující typy informací o metadatech:
 
-Vlastnost | Popis | Vyžadováno
+Vlastnost | Popis | Povinné
 -------- | ----------- | --------
-fieldList | Typy informací o metadatech, které jsou požadovány. Podrobnosti o podporovaných metadatech najdete v části [Možnosti metadat](#metadata-options) v tomto článku. | Yes 
-integrován | Referenční datová sada, jejíž metadata mají být načtena aktivitou získání metadat. Informace o podporovaných konektorech najdete v části [Možnosti](#capabilities) . Podrobnosti o syntaxi datové sady najdete v tématech konkrétního konektoru. | Yes
-formatSettings | Použijte při použití typu DataSet typu Format. | No
-storeSettings | Použijte při použití typu DataSet typu Format. | No
+fieldList | Typy informací o metadatech, které jsou požadovány. Podrobnosti o podporovaných metadatech najdete v části [Možnosti metadat](#metadata-options) v tomto článku. | Ano 
+integrován | Referenční datová sada, jejíž metadata mají být načtena aktivitou získání metadat. Informace o podporovaných konektorech najdete v části [Možnosti](#capabilities) . Podrobnosti o syntaxi datové sady najdete v tématech konkrétního konektoru. | Ano
+formatSettings | Použijte při použití typu DataSet typu Format. | Ne
+storeSettings | Použijte při použití typu DataSet typu Format. | Ne
 
 ## <a name="sample-output"></a>Ukázkový výstup
 

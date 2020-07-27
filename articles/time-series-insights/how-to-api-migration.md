@@ -8,14 +8,14 @@ ms.author: shresha
 manager: dpalled
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/22/2020
+ms.date: 07/23/2020
 ms.custom: shresha
-ms.openlocfilehash: 6cd06c31b56ce89a13af9bae8c77dc73efd69ef7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a5721748f023ea5f098b71d8d43dbda53721c54d
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097295"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171764"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>Migrace na nové verze rozhraní API Azure Time Series Insights Gen2
 
@@ -23,30 +23,30 @@ ms.locfileid: "87097295"
 
 Pokud jste vytvořili prostředí Azure Time Series Insights Gen2, pokud bylo v Public Preview (před 16. července 2020), aktualizujte prosím prostředí TSI, aby používalo nové všeobecně dostupné verze rozhraní API, a to podle postupu popsaného v tomto článku.
 
-Nová verze rozhraní API je `2020-07-31` a používá aktualizovanou [syntaxi výrazu časové řady](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax). 
+Nová verze rozhraní API je `2020-07-31` a používá aktualizovanou [syntaxi výrazu časové řady](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
 
 Uživatelé musí migrovat [proměnné modelu časové řady](./concepts-variables.md)svého prostředí, uložené dotazy, Power BI dotazy a libovolné vlastní nástroje, které volají koncové body rozhraní API. Pokud máte nějaké dotazy nebo obavy týkající se procesu migrace, odešlete lístek podpory prostřednictvím Azure Portal a zmiňujte si tento dokument.
 
 > [!IMPORTANT]
-> Verze Preview rozhraní API `2018-11-01-preview` bude i nadále podporována až do října 31 2020. Než se pustíte do provozu, dokončete prosím všechny příslušné kroky této migrace. 
+> Verze Preview rozhraní API `2018-11-01-preview` bude i nadále podporována až do října 31 2020. Než se pustíte do provozu, dokončete prosím všechny příslušné kroky této migrace.
 
 ## <a name="migrate-time-series-model-and-saved-queries"></a>Migrace modelu časové řady a uložených dotazů
 
-Aby uživatelé mohli migrovat [proměnné modelu časové řady](./concepts-variables.md) a uložené dotazy, je k dispozici integrovaný nástroj prostřednictvím [Průzkumníka Azure Time Series Insights](https://insights.timeseries.azure.com). Přejděte do prostředí, které chcete migrovat, a postupujte podle následujících kroků. **Migraci můžete dokončit částečně a vrátit se k jejímu dokončení později, ale žádná z aktualizací nebude možné vrátit zpět.** 
+Aby uživatelé mohli migrovat [proměnné modelu časové řady](./concepts-variables.md) a uložené dotazy, je k dispozici integrovaný nástroj prostřednictvím [Průzkumníka Azure Time Series Insights](https://insights.timeseries.azure.com). Přejděte do prostředí, které chcete migrovat, a postupujte podle následujících kroků. **Migraci můžete dokončit částečně a vrátit se k jejímu dokončení později, ale žádná z aktualizací nebude možné vrátit zpět.**
 
 > [!NOTE]
 > Aby bylo možné provádět aktualizace modelu časové řady a uložených dotazů, musíte být přispěvatelem tohoto prostředí. Pokud nejste přispěvatel, budete moct migrovat jenom svoje osobní uložené dotazy. Než budete pokračovat, zkontrolujte prosím [zásady přístupu k prostředí](./concepts-access-policies.md) a úroveň přístupu.
 
-1. V Průzkumníkovi se zobrazí výzva, aby se aktualizovala syntaxe používaná proměnnými modelu časové řady a uloženými dotazy. 
-   
+1. V Průzkumníkovi se zobrazí výzva, aby se aktualizovala syntaxe používaná proměnnými modelu časové řady a uloženými dotazy.
+
     [![Výzva](media/api-migration/ux-prompt.png)](media/v2-update-overview/overview-one.png#lightbox)
-    
-    Pokud oznámení omylem uzavřete, najdete ho na panelu oznámení. 
+
+    Pokud oznámení omylem uzavřete, najdete ho na panelu oznámení.
 
 1. Kliknutím na **Zobrazit aktualizace** otevřete nástroj pro migraci.
-    
-1. Klikněte na tlačítko **typy stahování**. Vzhledem k tomu, že migrace přepíše aktuální typy pro změnu syntaxe proměnných, bude nutné uložit kopii aktuálních typů. Nástroj vám po stažení typů upozorní. 
-   
+
+1. Klikněte na tlačítko **typy stahování**. Vzhledem k tomu, že migrace přepíše aktuální typy pro změnu syntaxe proměnných, bude nutné uložit kopii aktuálních typů. Nástroj vám po stažení typů upozorní.
+
     [![Typy stažení](media/api-migration/ux-migration-tool.png)](media/v2-update-overview/overview-one.png#lightbox)
 
 1. Klikněte na **Aktualizovat proměnné**. Nástroj vás upozorní, když byly proměnné aktualizovány.
@@ -56,39 +56,38 @@ Aby uživatelé mohli migrovat [proměnné modelu časové řady](./concepts-var
 
     [![Aktualizovat proměnné](media/api-migration/ux-migration-tool-downloaded-types.png)](media/v2-update-overview/overview-one.png#lightbox)
 
-2. Klikněte na **aktualizovat uložené dotazy**. Nástroj vás upozorní, když byly proměnné aktualizovány.
-   
+1. Klikněte na **aktualizovat uložené dotazy**. Nástroj vás upozorní, když byly proměnné aktualizovány.
+
     [![Aktualizace uložených dotazů](media/api-migration/ux-migration-tool-updated-variables.png)](media/v2-update-overview/overview-one.png#lightbox)
 
-3. Klikněte na **Hotovo**.
+1. Klikněte na **Hotovo**.
 
     [![Migrace dokončena](media/api-migration/ux-migration-tool-updated-saved-queries.png)](media/v2-update-overview/overview-one.png#lightbox)
 
-
-Projděte si aktualizované prostředí s použitím grafu některých nově vytvořených proměnných a uložených dotazů. Pokud při vytváření grafů dojde k neočekávanému chování, pošlete nám prosím svůj názor pomocí nástroje pro zpětnou vazbu v Průzkumníkovi. 
+Projděte si aktualizované prostředí s použitím grafu některých nově vytvořených proměnných a uložených dotazů. Pokud při vytváření grafů dojde k neočekávanému chování, pošlete nám prosím svůj názor pomocí nástroje pro zpětnou vazbu v Průzkumníkovi.
 
 ## <a name="migrate-power-bi-queries"></a>Migrace Power BI dotazů
 
-Pokud jste vygenerovali dotazy pomocí konektoru Power BI, provádí volání Azure Time Series Insights pomocí verze Preview rozhraní API a staré syntaxe výrazů časové řady. Tyto dotazy budou i nadále úspěšně získávat data, dokud není rozhraní API pro náhled zastaralé. 
+Pokud jste vygenerovali dotazy pomocí konektoru Power BI, provádí volání Azure Time Series Insights pomocí verze Preview rozhraní API a staré syntaxe výrazů časové řady. Tyto dotazy budou i nadále úspěšně získávat data, dokud není rozhraní API pro náhled zastaralé.
 
-Chcete-li aktualizovat dotazy na použití nové verze rozhraní API a nové syntaxe výrazů časové řady, bude nutné dotazy v Průzkumníkovi znovu vygenerovat. Přečtěte si další informace o tom, jak [vytvářet dotazy pomocí konektoru Power BI](./how-to-connect-power-bi.md). 
+Chcete-li aktualizovat dotazy na použití nové verze rozhraní API a nové syntaxe výrazů časové řady, bude nutné dotazy v Průzkumníkovi znovu vygenerovat. Přečtěte si další informace o tom, jak [vytvářet dotazy pomocí konektoru Power BI](./how-to-connect-power-bi.md).
 
 > [!NOTE]
-> Je nutné použít Power BI Desktop verze z července 2020. Pokud ne, může se zobrazit [neplatná chyba verze datové části dotazu](./how-to-diagnose-troubleshoot.md#problem-power-bi-connector-shows-unable-to-connect). 
+> Je nutné použít Power BI Desktop verze z července 2020. Pokud ne, může se zobrazit [neplatná chyba verze datové části dotazu](./how-to-diagnose-troubleshoot.md#problem-power-bi-connector-shows-unable-to-connect).
 
 ## <a name="migrate-custom-applications"></a>Migrace vlastních aplikací
 
-Pokud vaše vlastní aplikace provádí volání následujících koncových bodů REST, stačí aktualizovat verzi rozhraní API na `2020-07-31` v identifikátoru URI: 
+Pokud vaše vlastní aplikace provádí volání následujících koncových bodů REST, stačí aktualizovat verzi rozhraní API na `2020-07-31` v identifikátoru URI:
 
 - Rozhraní API modelu časové řady
   - Rozhraní API pro nastavení modelu
-    - [Čtěte](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/get)
+    - [Získat](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/get)
     - [Aktualizace](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/update)
-  - Rozhraní API instancí 
+  - Rozhraní API instancí
     - [Všechny operace Batch](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch)
     - [Seznam](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/list)
     - [Vyhledávání](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/search)
-    - [Navrhovat](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/suggest)
+    - [Návrh](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/suggest)
   - Rozhraní API hierarchie
     - [Všechny operace Batch](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch)
     - [Seznam](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/list)
@@ -96,8 +95,7 @@ Pokud vaše vlastní aplikace provádí volání následujících koncových bod
     - [Odstranit, získat operace](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
     - [Seznam](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/list)
 
-
-V následujících koncových bodech REST musíte aktualizovat verzi rozhraní API na identifikátor URI a zajistěte, aby `2020-07-31` všechny výskyty `tsx` vlastnosti používaly aktualizovanou [syntaxi výrazu časové řady](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax). 
+V následujících koncových bodech REST musíte aktualizovat verzi rozhraní API na identifikátor URI a zajistěte, aby `2020-07-31` všechny výskyty `tsx` vlastnosti používaly aktualizovanou [syntaxi výrazu časové řady](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
 
 - Rozhraní API typů
   - [Operace Put](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput)
@@ -106,12 +104,12 @@ V následujících koncových bodech REST musíte aktualizovat verzi rozhraní A
   - [Getseries](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries)
   - [GetAggregateSeries](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
 
-
 ### <a name="examples"></a>Příklady
 
 #### <a name="typesbatchput"></a>TypesBatchPut
 
-Původní text požadavku (používaný uživatelem `2018-11-01-preview` ): 
+Původní text požadavku (používaný uživatelem `2018-11-01-preview` ):
+
 ```JSON
 {
   "put": [
@@ -139,6 +137,7 @@ Původní text požadavku (používaný uživatelem `2018-11-01-preview` ):
 ```
 
 Tělo aktualizovaného požadavku (používá `2020-07-31` ):
+
 ```JSON
 {
   "put": [
@@ -169,7 +168,8 @@ Alternativně `filter` může být také `$event.Mode.String = 'outdoor'` . Aby 
 
 #### <a name="getevents"></a>GetEvents
 
-Původní text požadavku (používaný uživatelem `2018-11-01-preview` ): 
+Původní text požadavku (používaný uživatelem `2018-11-01-preview` ):
+
 ```JSON
 {
   "getEvents": {
@@ -195,6 +195,7 @@ Původní text požadavku (používaný uživatelem `2018-11-01-preview` ):
 ```
 
 Tělo aktualizovaného požadavku (používá `2020-07-31` ):
+
 ```JSON
 {
   "getEvents": {
@@ -219,10 +220,12 @@ Tělo aktualizovaného požadavku (používá `2020-07-31` ):
 }
 ```
 
-Alternativně `filter` může být také `($event['Value'].Double != null) OR ($event['Status'].String = 'Good')` . 
+Alternativně `filter` může být také `($event['Value'].Double != null) OR ($event['Status'].String = 'Good')` .
 
 #### <a name="getseries"></a>Getseries
-Původní text požadavku (používaný uživatelem `2018-11-01-preview` ): 
+
+Původní text požadavku (používaný uživatelem `2018-11-01-preview` ):
+
 ```JSON
 {
   "getSeries": {
@@ -252,6 +255,7 @@ Původní text požadavku (používaný uživatelem `2018-11-01-preview` ):
 ```
 
 Tělo aktualizovaného požadavku (používá `2020-07-31` ):
+
 ```JSON
 {
   "getSeries": {
@@ -280,10 +284,12 @@ Tělo aktualizovaného požadavku (používá `2020-07-31` ):
 }
 ```
 
-Alternativně `value` může být také `$event['Bar-Pressure-Offset'].Double` . Pokud není zadán žádný datový typ, je vždy považován datový typ za Double. Znak závorky musí být použit k úniku speciálního znaku ( `-` ). 
+Alternativně `value` může být také `$event['Bar-Pressure-Offset'].Double` . Pokud není zadán žádný datový typ, je vždy považován datový typ za Double. Znak závorky musí být použit k úniku speciálního znaku ( `-` ).
 
 #### <a name="getaggregateseries"></a>GetAggregateSeries
-Původní text požadavku (používaný uživatelem `2018-11-01-preview` ): 
+
+Původní text požadavku (používaný uživatelem `2018-11-01-preview` ):
+
 ```JSON
 {
   "aggregateSeries": {
@@ -314,6 +320,7 @@ Původní text požadavku (používaný uživatelem `2018-11-01-preview` ):
 ```
 
 Tělo aktualizovaného požadavku (používá `2020-07-31` ):
+
 ```JSON
   "aggregateSeries": {
     "timeSeriesId": [

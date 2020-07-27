@@ -25,6 +25,11 @@
       href: extension-resource-types.md
     - name: Omezení instancí prostředků
       href: resources-without-resource-group-limit.md
+    - name: Zabezpečení
+      items:
+        - name: Mechanismy zabezpečení služby Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
 - name: Postup
   items:
     - name: Přesun – skupiny prostředků / předplatná

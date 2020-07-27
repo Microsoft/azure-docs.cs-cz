@@ -6,11 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 3e6dfd5882e49ad903e8cff6f0ec7f3d6bd4a8b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92f35968156e787b844d28f866a832940cc8ef64
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77619631"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171606"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Zálohování a obnovení v Azure Database for PostgreSQL – jeden server
 
@@ -24,7 +25,26 @@ Tyto záložní soubory nelze exportovat. Zálohy lze použít pouze pro operace
 
 ### <a name="backup-frequency"></a>Frekvence zálohování
 
-Obecně platí, že k úplným zálohováním dochází týdně, rozdílové zálohování probíhá dvakrát denně pro servery s maximálním podporovaným úložištěm 4 TB. U serverů podporujících až 16 TB úložiště probíhá zálohování snímků alespoň jednou denně. Zálohování transakčních protokolů v obou případech probíhá každých pět minut. První snímek úplného zálohování je naplánován ihned po vytvoření serveru. Počáteční úplná záloha může trvat delší dobu jako u velkého obnoveného serveru. Nejdřívějším bodem v čase, kdy je možné obnovit nový server, je čas, kdy bylo dokončeno prvotní úplné zálohování. Když jsou snímky okamžité, servery s podporou až 16 TB úložiště je možné obnovit až do doby vytvoření.
+#### <a name="servers-with-up-to-4-tb-storage"></a>Servery s úložištěm až 4 TB
+
+Pro servery, které podporují až 4 TB maximálního úložiště, se k úplným zálohám dochází každý týden. Rozdílové zálohy se vyskytují dvakrát denně. K zálohování protokolu transakcí dochází každých pět minut.
+
+
+#### <a name="servers-with-up-to-16-tb-storage"></a>Servery s až 16 TB úložiště
+
+V podmnožině [oblastí Azure](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage)můžou všechny nově zřízené servery podporovat úložiště až o 16 TB. Zálohy na těchto velkých serverech úložiště jsou založené na snímcích. První úplné zálohování snímku je naplánováno ihned po vytvoření serveru. Tato první úplná záloha snímku se uchová jako základní záloha serveru. Následné zálohy snímků jsou jenom rozdílové zálohy. 
+
+Rozdílové zálohování snímků se vyskytuje alespoň jednou denně. Rozdílové zálohování snímků se nevyskytuje u pevného plánu. Rozdílové zálohování snímků probíhá každých 24 hodin, pokud transakční protokol (binlog v MySQL) překračuje 50 GB od poslední rozdílové zálohy. Za den je povolený maximálně šest rozdílových snímků. 
+
+K zálohování protokolu transakcí dochází každých pět minut. 
+
+### <a name="backup-retention"></a>Uchování záloh
+
+Zálohy se uchovávají na základě nastavení období uchovávání záloh na serveru. Můžete vybrat dobu uchování 7 až 35 dní. Výchozí doba uchování je 7 dní. Dobu uchování během vytváření serveru nebo později můžete nastavit tak, že aktualizujete konfiguraci zálohování pomocí [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal#set-backup-configuration) nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-restore-server-cli#set-backup-configuration). 
+
+Doba uchovávání záloh určuje, jak daleko se obnovení k určitému bodu v čase dá načíst, protože je založené na dostupných zálohách. Období uchovávání záloh lze také považovat za okno obnovení z perspektivy obnovení. Všechny zálohy potřebné k provedení obnovení k určitému bodu v čase v rámci období uchovávání záloh jsou uchovávány v úložišti záloh. Pokud je například doba uchování zálohy nastavená na 7 dní, okno obnovení se považuje za posledních 7 dní. V tomto scénáři jsou zachovány všechny zálohy potřebné k obnovení serveru za posledních 7 dní. Okno uchování zálohy po dobu sedmi dnů:
+- Starší servery s úložištěm se 4 TB budou uchovávat až 2 úplné zálohy databáze, všechny rozdílové zálohy a zálohy transakčního protokolu byly provedeny od nejstarší úplné zálohy databáze.
+-   Servery s velkým úložištěm (16 TB) uchovávají úplný snímek databáze, všechny rozdílové snímky a zálohy protokolů transakcí za posledních 8 dní.
 
 ### <a name="backup-redundancy-options"></a>Možnosti redundance zálohy
 
@@ -35,9 +55,11 @@ Azure Database for PostgreSQL poskytuje flexibilitu při výběru místně redun
 
 ### <a name="backup-storage-cost"></a>Náklady na úložiště zálohování
 
-Azure Database for PostgreSQL poskytuje úložiště zřízeného serveru jako úložiště pro zálohování až 100%, a to bez dalších nákladů. Obvykle je to vhodné pro uchovávání záloh sedmi dnů. Jakékoli další využité úložiště záloh se účtuje za GB-měsíc.
+Azure Database for PostgreSQL poskytuje úložiště zřízeného serveru jako úložiště pro zálohování až 100%, a to bez dalších nákladů. Jakékoli další využité úložiště záloh se účtuje za GB za měsíc. Pokud jste například zřídili Server s 250 GB úložiště, máte k dispozici 250 GB dalšího úložiště pro zálohy serveru bez dalších poplatků. Úložiště spotřebované za zálohy větší než 250 GB se účtuje podle [cenového modelu](https://azure.microsoft.com/pricing/details/postgresql/).
 
-Pokud jste například zřídili Server s 250 GB, máte k dispozici až 250 GB úložiště zálohování bez dalších poplatků. Účtují se za úložiště převyšující 250 GB.
+Pomocí metriky [úložiště zálohování](concepts-monitoring.md) v Azure monitor k dispozici v Azure Portal můžete monitorovat úložiště zálohování spotřebované serverem. Metrika využitého úložiště záloh představuje součet úložiště spotřebovaného všemi úplnými zálohami databáze, rozdílové zálohy a zálohy protokolů, které jsou zachovány na základě nastaveného období uchovávání záloh pro server. Frekvence zálohování je spravována službou a byla vysvětlena dříve. Těžká transakční aktivita na serveru může způsobit zvýšení využití úložiště zálohování bez ohledu na celkovou velikost databáze. V případě geograficky redundantního úložiště je využití úložiště zálohování dvakrát místní redundantní úložiště. 
+
+Hlavním prostředkem řízení nákladů na úložiště zálohování je nastavení vhodné doby uchovávání záloh a výběr správné možnosti redundance zálohování, která bude vyhovovat požadovaným cílům obnovení. Můžete vybrat dobu uchování z rozsahu 7 až 35 dní. Pro obecné účely a paměťově optimalizované servery se můžou rozhodnout pro zálohování geograficky redundantního úložiště.
 
 ## <a name="restore"></a>Obnovení
 

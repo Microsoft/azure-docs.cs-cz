@@ -7,11 +7,12 @@ ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 02/16/2017
-ms.openlocfilehash: 0d800102b6f6ff77944a2b625d3bcecef69c1ee9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dcf782a41dbb09135f7a4cd767a94ff90578b6ba
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75548750"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169357"
 ---
 # <a name="microsoft-threat-modeling-tool"></a>Microsoft Threat Modeling Tool
 
@@ -34,9 +35,9 @@ Tady jsou některé možnosti nástrojů a inovace, stačí jenom pár názvů:
 
 ## <a name="next-steps"></a>Další kroky
 
-Následující tabulka obsahuje důležité odkazy, které vám pomohou začít s Threat Modeling Tool:
+Následující tabulka obsahuje důležité odkazy, které vám pomohou začít s Threat Modeling Tool: viz také: [požadavky na systém](threat-modeling-tool-releases.md)
 
-| Krok  | Description                                                                                   |
+| Krok  | Popis                                                                                   |
 | ----- | --------------------------------------------------------------------------------------------- |
 | **1** | [Stáhnout Threat Modeling Tool](https://aka.ms/threatmodelingtool)                                |
 | **2** | [Přečtěte si Úvodní příručku](threat-modeling-tool-getting-started.md)    |
@@ -44,7 +45,7 @@ Následující tabulka obsahuje důležité odkazy, které vám pomohou začít 
 | **4** | [Další informace o generovaných kategoriích hrozeb](threat-modeling-tool-threats.md)   |
 | **5** | [Hledání rizik pro vygenerované hrozby](threat-modeling-tool-mitigations.md) |
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje a prostředky
 
 Tady je několik starších článků, které ještě jsou v současnosti relevantní pro modelování hrozeb:
 

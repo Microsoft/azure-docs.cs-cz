@@ -1,20 +1,20 @@
 ---
 title: 'Kurz: implementace prostorové analýzy IoT | Mapy Microsoft Azure'
 description: Integruje IoT Hub s rozhraními API služby Microsoft Azure Maps.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 1f0668a897f5bc88fbaeb770bc045e56dae2d48f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2bb5876424730e55d15cc52aeb98aa04af040821
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075494"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133397"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>Kurz: implementace prostorových analýz IoT pomocí Azure Maps
 
@@ -83,13 +83,13 @@ Následující obrázek představuje oblast geografické oblasti zvýrazněnou m
   ![Trasa geografické ploty](./media/tutorial-iot-hub-maps/geofence-route.png)
 
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 Abyste mohli dokončit kroky v tomto kurzu, musíte nejdřív vytvořit skupinu prostředků v Azure Portal. Chcete-li vytvořit skupinu prostředků, proveďte následující kroky:
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Vyberte **skupiny prostředků**.
     

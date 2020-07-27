@@ -12,12 +12,12 @@ ms.date: 04/10/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b7164aa71495100d7be4f1c0f6ef6de90644831b
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 0f3ecb918aa1f830edeafbe57b365441e1e534f4
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115968"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169324"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>Kurz: registrace webové aplikace v Azure Active Directory B2C
 
@@ -31,9 +31,9 @@ V tomto článku získáte informace o těchto tématech:
 
 Pokud místo toho používáte nativní aplikaci (například iOS, Android, Mobile & Desktop), zjistěte, [jak zaregistrovat nativní klientskou aplikaci](add-native-application.md).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud jste ještě nevytvořili vlastního [tenanta Azure AD B2C](tutorial-create-tenant.md), vytvořte ho hned teď. Můžete použít stávajícího klienta Azure AD B2C.
 
@@ -43,7 +43,7 @@ K registraci aplikace ve vašem tenantovi Azure AD B2C můžete využít nové j
 
 #### <a name="app-registrations"></a>[Registrace aplikací](#tab/app-reg-ga/)
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací**a pak vyberte **Nová registrace**.
@@ -63,13 +63,13 @@ K registraci aplikace ve vašem tenantovi Azure AD B2C můžete využít nové j
 
 Po dokončení registrace aplikace povolte tok implicitního udělení:
 
-1. V části **Spravovat**vyberte **ověřování**.
+1. V nabídce vlevo v části **Spravovat**vyberte **ověřování**.
 1. V části **implicitní udělení**vyberte zaškrtávací políčka **přístupové tokeny** i **tokeny ID** .
 1. Vyberte **Uložit**.
 
 #### <a name="applications-legacy"></a>[Aplikace (starší verze)](#tab/applications-legacy/)
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **aplikace (starší verze)** a pak vyberte **Přidat**.
@@ -96,7 +96,7 @@ Pokud vaše aplikace vyměňuje autorizační kód pro přístupový token, je n
 #### <a name="app-registrations"></a>[Registrace aplikací](#tab/app-reg-ga/)
 
 1. Na stránce **Azure AD B2C-registrace aplikací** vyberte aplikaci, kterou jste vytvořili, například *WebApp1*.
-1. V části **Spravovat**vyberte **certifikáty & tajných**kódů.
+1. V nabídce vlevo v části **Spravovat**vyberte **certifikáty & tajných**kódů.
 1. Vyberte **Nový tajný klíč klienta**.
 1. Do pole **Popis** zadejte popis tajného klíče klienta. Například *clientsecret1*.
 1. Pod položkou **konec platnosti**vyberte dobu, po kterou je tajný kód platný, a pak vyberte **Přidat**.

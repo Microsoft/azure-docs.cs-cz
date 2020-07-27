@@ -1,20 +1,20 @@
 ---
 title: 'Kurz: Vytvoření aplikace lokátoru úložiště pomocí Azure Maps | Mapy Microsoft Azure'
 description: V tomto kurzu se naučíte, jak vytvořit webovou aplikaci lokátoru úložiště pomocí webu Microsoft Azure Maps Web SDK.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 5caeb9ff5c289343e1869a55808bde7fbe035479
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bafb5d08508113c7d40b91f20b79be533ab1dd08
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517548"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131340"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Kurz: vytvoření lokátoru úložiště pomocí Azure Maps
 
@@ -33,7 +33,7 @@ Tento kurz vás provede procesem vytvoření jednoduchého lokátoru úložišt�
 
 Přejděte dopředu na [příklad lokátoru Live Storu](https://azuremapscodesamples.azurewebsites.net/?sample=Simple%20Store%20Locator) nebo [zdrojový kód](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli dokončit kroky v tomto kurzu, musíte nejdřív vytvořit účet Azure Maps a získat primární klíč (klíč předplatného). Postupujte podle pokynů v části [Vytvoření účtu](quick-demo-map-app.md#create-an-azure-maps-account) a vytvořte předplatné účtu Azure Maps s cenovou úrovní S1 a podle kroků v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) Získejte primární klíč pro svůj účet. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 

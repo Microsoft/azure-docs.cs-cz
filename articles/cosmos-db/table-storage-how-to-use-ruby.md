@@ -5,48 +5,59 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: ruby
 ms.topic: sample
-ms.date: 04/05/2018
+ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: 7994b478321c925b3eab73291a109d50b9066fef
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2229eea7b91168507ea9568a1e53930cf983b1df
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76770878"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171924"
 ---
 # <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>Jak používat službu Azure Table Storage a rozhraní Table API služby Azure Cosmos DB pomocí Ruby
+
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-## <a name="overview"></a>Přehled
-Tato příručka ukazuje, jak provádět běžné scénáře pomocí služby Azure Table Storage a rozhraní Table API služby Azure Cosmos DB. Ukázky jsou napsané v Ruby a využívají [klientskou knihovnu služby Azure Table Storage pro Ruby](https://github.com/azure/azure-storage-ruby/tree/master/table). Popsané scénáře zahrnují **vytvoření a odstranění tabulky a vkládání a dotazování entit v tabulce**.
+V tomto článku se dozvíte, jak vytvářet tabulky, ukládat data a provádět operace CRUD s daty. Vyberte buď Azure Table service, nebo rozhraní API pro tabulky Azure Cosmos DB. Ukázky popsané v tomto článku jsou napsané v Ruby a používají [knihovnu klienta Azure Storage Table pro Ruby](https://github.com/azure/azure-storage-ruby/tree/master/table). Zahrnuté scénáře zahrnují vytvoření tabulky, odstranění tabulky, vložení entit a dotazování entit z tabulky.
 
 ## <a name="create-an-azure-service-account"></a>Vytvoření účtu služby Azure
+
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-### <a name="create-an-azure-storage-account"></a>Vytvoření účtu úložiště Azure
+**Vytvoření účtu služby Azure Storage**
+
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
-### <a name="create-an-azure-cosmos-db-account"></a>Vytvoření účtu služby Azure Cosmos DB
+**Vytvoření účtu služby Azure Cosmos DB**
+
 [!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
-## <a name="add-access-to-storage-or-azure-cosmos-db"></a>Přidání přístupu ke službě Storage nebo Azure Cosmos DB
+## <a name="add-access-to-azure-storage-or-azure-cosmos-db"></a>Přidání přístupu do služby Azure Storage nebo Azure Cosmos DB
+
 Pokud chcete používat službu Azure Storage nebo Azure Cosmos DB, musíte stáhnout a použít balíček Azure pro Ruby, který obsahuje sadu knihoven usnadňujících práci a komunikujících se službami REST služby Table Storage.
 
 ### <a name="use-rubygems-to-obtain-the-package"></a>Získání balíčku pomocí RubyGems
+
 1. Použijte rozhraní příkazového řádku, jako je **PowerShell** (Windows), **Terminál** (Mac) nebo **Bash** (Unix).
 2. Zadáním příkazu **gem install azure-storage-table** do příkazového okna nainstalujte gem a závislosti.
 
 ### <a name="import-the-package"></a>Import balíčku
+
 Pomocí oblíbeného textového editoru přidejte následující řádek na začátek souboru Ruby, ve kterém chcete službu Storage používat:
 
 ```ruby
 require "azure/storage/table"
 ```
 
-## <a name="add-an-azure-storage-connection"></a>Přidání připojení ke službě Azure Storage
+## <a name="add-your-connection-string"></a>Přidat připojovací řetězec
+
+Můžete se buď připojit k účtu služby Azure Storage nebo účtu Azure Cosmos DB rozhraní API pro tabulky. Získejte připojovací řetězec na základě typu účtu, který používáte.
+
+### <a name="add-an-azure-storage-connection"></a>Přidání připojení ke službě Azure Storage
+
 Modul Azure Storage načte informace potřebné pro připojení k účtu služby Azure Storage z proměnných prostředí **AZURE_STORAGE_ACCOUNT** a **AZURE_STORAGE_ACCESS_KEY**. Pokud tyto proměnné prostředí nejsou nastavené, je potřeba zadat informace o účtu ještě před použitím objektu **Azure::Storage::Table::TableService** pomocí následujícího kódu:
 
 ```ruby
@@ -62,7 +73,8 @@ Získání těchto hodnot z klasického účtu úložiště nebo účtu úloži�
 4. V okně Přístupové klíče, které se zobrazí, uvidíte přístupový klíč 1 a přístupový klíč 2. Můžete použít libovolný z nich.
 5. Kliknutím na ikonu kopírování zkopírujte klíč do schránky.
 
-## <a name="add-an-azure-cosmos-db-connection"></a>Přidání připojení ke službě Azure Cosmos DB
+### <a name="add-an-azure-cosmos-db-connection"></a>Přidání připojení ke službě Azure Cosmos DB
+
 Pokud se chcete připojit ke službě Azure Cosmos DB, zkopírujte z webu Azure Portal primární připojovací řetězec a s jeho použitím vytvořte objekt **Client**. Objekt **Client** můžete předat při vytváření objektu **TableService**:
 
 ```ruby
@@ -71,6 +83,7 @@ table_client = Azure::Storage::Table::TableService.new(client: common_client)
 ```
 
 ## <a name="create-a-table"></a>Vytvoření tabulky
+
 Objekt **Azure::Storage::Table::TableService** umožňuje pracovat s tabulkami a entitami. Pokud chcete vytvořit tabulku, použijte metodu **create_table()**. Následující příklad vytvoří tabulku nebo vypíše chybu, pokud tabulka již existuje.
 
 ```ruby
@@ -83,6 +96,7 @@ end
 ```
 
 ## <a name="add-an-entity-to-a-table"></a>Přidání entity do tabulky
+
 Pokud chcete přidat entitu, nejprve vytvořte objekt hash definující vlastnosti entity. Nezapomeňte, že pro každou entitu musíte zadat **PartitionKey** a **RowKey**. Jedná se o jedinečné identifikátory entit a jsou to hodnoty, které je možné dotazovat mnohem rychleji než ostatní vlastnosti. Azure Storage používá **PartitionKey** k automatické distribuci entit tabulky do mnoha uzlů úložiště. Entity se stejnou hodnotou **PartitionKey** se ukládají na stejném uzlu. **RowKey** je jedinečné ID entity v rámci oddílu, do kterého patří.
 
 ```ruby
@@ -92,6 +106,7 @@ azure_table_service.insert_entity("testtable", entity)
 ```
 
 ## <a name="update-an-entity"></a>Aktualizace entity
+
 Existující entitu můžete aktualizovat několika metodami:
 
 * **update_entity():** Aktualizuje existující entitu tím, že ji nahradí.
@@ -110,6 +125,7 @@ azure_table_service.update_entity("testtable", entity)
 V případě metod **update_entity()** a **merge_entity()** platí, že pokud aktualizovaná entita neexistuje, operace aktualizace selže. Proto pokud chcete entitu uložit bez ohledu na to, jestli již existuje, měli byste místo toho použít metodu **insert_or_replace_entity()** nebo **insert_or_merge_entity()**.
 
 ## <a name="work-with-groups-of-entities"></a>Práce se skupinami entit
+
 Někdy má smysl odeslat více operací společně v dávce, aby se zajistilo jejich atomické zpracování serverem. Uděláte to tak, že nejprve vytvoříte objekt **Batch** a pak použijete metodu **execute_batch()** pro objekt **TableService**. Následující příklad ukazuje odeslání dvou entit s RowKey 2 a 3 v dávce. Poznámka: Tento přístup funguje pouze pro entity se stejnou hodnotou PartitionKey.
 
 ```ruby
@@ -123,6 +139,7 @@ results = azure_table_service.execute_batch(batch)
 ```
 
 ## <a name="query-for-an-entity"></a>Dotaz na entitu
+
 Pokud chcete zadat dotaz na entitu v tabulce, použijte metodu **get_entity()** a předejte do ní název tabulky, **PartitionKey** a **RowKey**.
 
 ```ruby
@@ -131,6 +148,7 @@ result = azure_table_service.get_entity("testtable", "test-partition-key",
 ```
 
 ## <a name="query-a-set-of-entities"></a>Dotaz na sadu entit
+
 Pokud chcete zadat dotaz na sadu entit v tabulce, vytvořte objekt hash dotazu a použijte metodu **query_entities()**. Následující příklad ukazuje získání všech entit se stejnou hodnotou **PartitionKey**:
 
 ```ruby
@@ -140,10 +158,10 @@ result, token = azure_table_service.query_entities("testtable", query)
 
 > [!NOTE]
 > Pokud je sada výsledků dotazu příliš velká na to, aby ji vrátil jeden dotaz, vrátí se token pro pokračování, pomocí kterého můžete načíst další stránky.
->
->
+
 
 ## <a name="query-a-subset-of-entity-properties"></a>Dotaz na podmnožinu vlastností entity
+
 Dotaz na tabulku dokáže z entity načíst pouze několik vlastností. Tato technika, označovaná jako projekce, snižuje šířku pásma a může zlepšit výkon dotazů, zejména u velkých entit. Použijte klauzuli select a předejte názvy vlastností, které chcete přenést do klienta.
 
 ```ruby
@@ -153,6 +171,7 @@ result, token = azure_table_service.query_entities("testtable", query)
 ```
 
 ## <a name="delete-an-entity"></a>Odstranění entity
+
 Pokud chcete odstranit entitu, použijte metodu **delete_entity()**. Předejte do ní název tabulky, která entitu obsahuje, a PartitionKey a RowKey entity.
 
 ```ruby
@@ -160,6 +179,7 @@ azure_table_service.delete_entity("testtable", "test-partition-key", "1")
 ```
 
 ## <a name="delete-a-table"></a>Odstranění tabulky
+
 Pokud chcete odstranit tabulku, použijte metodu **delete_table()** a předejte do ní název tabulky, kterou chcete odstranit.
 
 ```ruby
@@ -170,5 +190,4 @@ azure_table_service.delete_table("testtable")
 
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) je bezplatná samostatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linuxu.
 * [Středisko pro vývojáře Ruby](https://azure.microsoft.com/develop/ruby/)
-* [Klientská knihovna služby Microsoft Azure Table Storage pro Ruby](https://github.com/azure/azure-storage-ruby/tree/master/table) 
-
+* [Klientská knihovna služby Microsoft Azure Table Storage pro Ruby](https://github.com/azure/azure-storage-ruby/tree/master/table)

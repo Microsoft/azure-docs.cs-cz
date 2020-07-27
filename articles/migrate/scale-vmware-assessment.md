@@ -3,12 +3,12 @@ title: Vyhodnoťte velký počet virtuálních počítačů VMware pro migraci d
 description: Popisuje, jak vyhodnotit velký počet virtuálních počítačů VMware pro migraci do Azure pomocí služby Azure Migrate. e
 ms.topic: how-to
 ms.date: 03/23/2020
-ms.openlocfilehash: d404583b1bad474a5e24e8c7cf060aeb80d610bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6490a5448bb68dcccd61784d149e9765107400c2
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80336854"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171908"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Vyhodnocení velkého počtu virtuálních počítačů VMware pro migraci do Azure
 
@@ -34,8 +34,10 @@ Při plánování posouzení velkého počtu virtuálních počítačů VMware j
 
 - **Plánování Azure Migrate projektů**: Zjistěte, jak nasadit Azure Migrate projekty. Například pokud jsou datová centra v různých geografických oblastech nebo potřebujete ukládat metadata pro zjišťování, hodnocení nebo migraci v různých zeměpisných oblastech, možná budete potřebovat více projektů. 
 - **Zařízení pro plánování**: Azure Migrate pro průběžné zjišťování virtuálních počítačů používá místní zařízení Azure Migrate nasazené jako virtuální počítač VMware. Zařízení monitoruje změny prostředí, jako je například přidání virtuálních počítačů, disků nebo síťových adaptérů. Do Azure taky odesílají metadata a data o výkonu. Potřebujete zjistit, kolik zařízení potřebujete nasadit.
-- **Plánování účtů pro zjišťování**: zařízení Azure Migrate používá účet s přístupem k vCenter Server, aby bylo možné zjistit virtuální počítače pro účely posouzení a migrace. Pokud zjišťujete více než 10 000 virtuálních počítačů, nastavte více účtů.
+- **Plánování účtů pro zjišťování**: zařízení Azure Migrate používá účet s přístupem k vCenter Server, aby bylo možné zjistit virtuální počítače pro účely posouzení a migrace. Pokud zjišťujete více než 10 000 virtuálních počítačů, nastavte více účtů, pokud je to nutné, a mezi virtuálními počítači zjištěnými ze všech dvou zařízení v projektu se překrývají. 
 
+> [!NOTE]
+> Pokud nastavujete více zařízení, zajistěte, aby se mezi virtuálními počítači v poskytnutých účtech vCenter nepřekrývaly žádné překrytí. Zjišťování s takovým překrytím je nepodporovaný scénář. Pokud je virtuální počítač zjištěn více než jedním zařízením, výsledkem bude duplicita při zjišťování a při povolování replikace pro virtuální počítač pomocí Azure Portal v migraci serveru.
 
 ## <a name="planning-limits"></a>Omezení plánování
  
@@ -45,18 +47,19 @@ Pro plánování použijte omezení shrnutá v této tabulce.
 --- | --- 
 **Azure Migrate projekty** | Vyhodnoťte až 35 000 virtuálních počítačů v projektu.
 **Zařízení Azure Migrate** | Zařízení může na vCenter Server zjistit až 10 000 virtuálních počítačů.<br/> Zařízení se může připojit jenom k jednomu vCenter Server.<br/> Zařízení může být přidruženo pouze k jednomu Azure Migrate projektu.<br/>  K jednomu Azure Migrate projektu může být přidružen libovolný počet zařízení. <br/><br/> 
-**Skupiny** | Do jedné skupiny můžete přidat až 35 000 virtuálních počítačů.
+**Skupina** | Do jedné skupiny můžete přidat až 35 000 virtuálních počítačů.
 **Posouzení Azure Migrate** | V jednom posouzení můžete vyhodnotit až 35 000 virtuálních počítačů.
 
 Tato omezení jsou uvedená v některých ukázkových nasazeních:
 
 
 **Server vCenter** | **Virtuální počítače na serveru** | **Doporučení** | **Akce**
----|---|---
-Jeden | < 10 000 | Jeden Azure Migrate projekt.<br/> Jedno zařízení.<br/> Jeden účet vCenter pro zjišťování. | Nastavte zařízení, připojte se k vCenter Server pomocí účtu.
-Jeden | > 10 000 | Jeden Azure Migrate projekt.<br/> Více zařízení.<br/> Několik účtů vCenter. | Nastavte zařízení pro každý virtuální počítač 10 000.<br/><br/> Nastavte účty vCenter a vydělte inventář, abyste omezili přístup k účtu na méně než 10 000 virtuálních počítačů.<br/> Připojte každé zařízení k vCenter serveru pomocí účtu.<br/> Můžete analyzovat závislosti mezi počítači, které jsou zjištěny s různými zařízeními.
+---|---|---|---
+Jednu | < 10 000 | Jeden Azure Migrate projekt.<br/> Jedno zařízení.<br/> Jeden účet vCenter pro zjišťování. | Nastavte zařízení, připojte se k vCenter Server pomocí účtu.
+Jednu | > 10 000 | Jeden Azure Migrate projekt.<br/> Více zařízení.<br/> Několik účtů vCenter. | Nastavte zařízení pro každý virtuální počítač 10 000.<br/><br/> Nastavte účty vCenter a vydělte inventář, abyste omezili přístup k účtu na méně než 10 000 virtuálních počítačů.<br/> Připojte každé zařízení k vCenter serveru pomocí účtu.<br/> Můžete analyzovat závislosti mezi počítači, které jsou zjištěny s různými zařízeními. <br/> <br/> Zajistěte, aby v zadaných účtech vCenter nedošlo k překrytí mezi virtuálními počítači. Zjišťování s takovým překrytím je nepodporovaný scénář. Pokud je virtuální počítač zjištěn více než jedním zařízením, výsledkem je duplicita při zjišťování a v problémech při povolování replikace pro virtuální počítač pomocí Azure Portal v části migrace serveru.
 Několik | < 10 000 |  Jeden Azure Migrate projekt.<br/> Více zařízení.<br/> Jeden účet vCenter pro zjišťování. | Nastavte zařízení, připojte se k vCenter Server pomocí účtu.<br/> Můžete analyzovat závislosti mezi počítači, které jsou zjištěny s různými zařízeními.
-Několik | > 10 000 | Jeden Azure Migrate projekt.<br/> Více zařízení.<br/> Několik účtů vCenter. | Pokud vCenter Server Discovery < 10 000 virtuálních počítačů, nastavte zařízení pro jednotlivé vCenter Server.<br/><br/> Pokud vCenter Server Discovery > 10 000 virtuálních počítačů, nastavte zařízení pro každých 10 000 virtuálních počítačů.<br/> Nastavte účty vCenter a vydělte inventář, abyste omezili přístup k účtu na méně než 10 000 virtuálních počítačů.<br/> Připojte každé zařízení k vCenter serveru pomocí účtu.<br/> Můžete analyzovat závislosti mezi počítači, které jsou zjištěny s různými zařízeními.
+Několik | > 10 000 | Jeden Azure Migrate projekt.<br/> Více zařízení.<br/> Několik účtů vCenter. | Pokud vCenter Server Discovery < 10 000 virtuálních počítačů, nastavte zařízení pro jednotlivé vCenter Server.<br/><br/> Pokud vCenter Server Discovery > 10 000 virtuálních počítačů, nastavte zařízení pro každých 10 000 virtuálních počítačů.<br/> Nastavte účty vCenter a vydělte inventář, abyste omezili přístup k účtu na méně než 10 000 virtuálních počítačů.<br/> Připojte každé zařízení k vCenter serveru pomocí účtu.<br/> Můžete analyzovat závislosti mezi počítači, které jsou zjištěny s různými zařízeními. <br/><br/> Zajistěte, aby v zadaných účtech vCenter nedošlo k překrytí mezi virtuálními počítači. Zjišťování s takovým překrytím je nepodporovaný scénář. Pokud je virtuální počítač zjištěn více než jedním zařízením, výsledkem je duplicita při zjišťování a v problémech při povolování replikace pro virtuální počítač pomocí Azure Portal v části migrace serveru.
+
 
 
 ## <a name="plan-discovery-in-a-multi-tenant-environment"></a>Plánování zjišťování v prostředí s více klienty
@@ -65,7 +68,7 @@ Pokud plánujete pro více tenantů prostředí, můžete určit rozsah zjišťo
 
 - Rozsah zjišťování zařízení můžete nastavit vCenter Server datacentrech, clusterech nebo složkách clusterů, hostitelů nebo složek hostitelů nebo jednotlivých virtuálních počítačů.
 - Pokud je vaše prostředí sdíleno mezi klienty a chcete zjistit jednotlivé klienty samostatně, můžete nastavit rozsah přístupu k účtu vCenter, který zařízení používá ke zjišťování. 
-    - Můžete chtít obor podle složek virtuálních počítačů, pokud klienti sdílejí hostitele. Azure Migrate nemůže zjistit virtuální počítače, pokud má účet vCenter udělen přístup na úrovni složky virtuálního počítače vCenter. Pokud chcete určit obor zjišťování pomocí složek virtuálních počítačů, můžete to provést tak, že účet vCenter má přiřazený přístup jen pro čtení na úrovni virtuálního počítače. [Další informace](set-discovery-scope.md).
+    - Můžete chtít obor podle složek virtuálních počítačů, pokud klienti sdílejí hostitele. Azure Migrate nemůže zjistit virtuální počítače, pokud má účet vCenter udělen přístup na úrovni složky virtuálního počítače vCenter. Pokud chcete určit obor zjišťování pomocí složek virtuálních počítačů, můžete to provést tak, že účet vCenter má přiřazený přístup jen pro čtení na úrovni virtuálního počítače. [Přečtěte si další informace](set-discovery-scope.md).
 
 ## <a name="prepare-for-assessment"></a>Příprava na posouzení
 

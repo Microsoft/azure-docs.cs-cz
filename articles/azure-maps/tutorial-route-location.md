@@ -1,20 +1,20 @@
 ---
 title: 'Kurz: Vyhledání trasy do umístění | Mapy Microsoft Azure'
 description: V tomto kurzu se dozvíte, jak vykreslit cestu k umístění (bod zájmu) na mapě pomocí služby směrování Microsoft Azure Maps.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 0d3ce8a83c3da8e1abdd57119ed57999256b7613
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3a9304b5135ca682008cb3ff045b43ae297dc950
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075366"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133261"
 ---
 # <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>Kurz: směrování do bodu zájmu pomocí Azure Maps
 
@@ -25,7 +25,7 @@ V tomto kurzu se dozvíte, jak pomocí účtu Azure Maps a sady SDK Route Servic
 > * Nastavit souřadnice pro adresu
 > * Zadat dotaz na rozhraní API Route Service ohledně trasy k bodu zájmu
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete pokračovat, postupujte podle pokynů v tématu [Vytvoření účtu](quick-demo-map-app.md#create-an-azure-maps-account), potřebujete předplatné s cenovou úrovní S1. Použijte k získání primárního klíče pro váš účet postup uvedený v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) . Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 

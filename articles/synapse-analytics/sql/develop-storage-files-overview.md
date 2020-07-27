@@ -1,5 +1,5 @@
 ---
-title: Přístup k souborům v úložišti pomocí SQL na vyžádání (Preview) v rámci synapse SQL
+title: Přístup k souborům v úložišti na vyžádání SQL (Preview)
 description: Popisuje dotazování souborů úložiště pomocí prostředků SQL na vyžádání (ve verzi Preview) v rámci synapse SQL.
 services: synapse-analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: f786e92ca99c4c1700d00adf396ba1127b66ea7c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d7f990b059346c4c782ca923e663997317c4df16
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247094"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046882"
 ---
 # <a name="accessing-external-storage-in-synapse-sql-on-demand"></a>Přístup k externímu úložišti v synapse SQL (na vyžádání)
 
@@ -43,7 +43,7 @@ Uživatel může získat přístup k úložišti pomocí následujících pravid
 - Uživatel Azure AD – OPENROWSET bude používat identitu Azure AD volajícího pro přístup k Azure Storage nebo přístupu k úložišti s anonymním přístupem.
 - Uživatel SQL – OPENROWSET bude mít přístup k úložišti s anonymním přístupem.
 
-Objekty zabezpečení SQL mohou také použít OPENROWSET k přímému dotazování na soubory chráněné pomocí tokenů SAS nebo spravované identity pracovního prostoru. Pokud uživatel SQL tuto funkci spustí, musí mít oprávnění skupiny Power Users se změnou libovolného pověření vytvořit přihlašovací údaje v rozsahu serveru, které odpovídají adrese URL ve funkci (pomocí názvu a kontejneru úložiště) a oprávnění udělených referencí pro toto přihlašovací údaje volajícímu funkce OPENROWSET:
+Objekty zabezpečení SQL mohou také použít OPENROWSET k přímému dotazování na soubory chráněné pomocí tokenů SAS nebo spravované identity pracovního prostoru. Pokud uživatel SQL tuto funkci spustí, musí uživatel s `ALTER ANY CREDENTIAL` oprávněním vytvořit pověření v oboru serveru, které odpovídá adrese URL ve funkci (pomocí názvu a kontejneru úložiště) a oprávnění uděleným odkazům pro toto pověření pro volající funkci OPENROWSET:
 
 ```sql
 EXECUTE AS somepoweruser
@@ -87,8 +87,8 @@ POVĚŘENÍ v oboru databáze určuje, jak přistupovat k souborům na odkazovan
 Volající musí mít jedno z následujících oprávnění ke spuštění funkce OPENROWSET:
 
 - Jedno z oprávnění ke spuštění OPENROWSET:
-  - Správa HROMADných operací umožňuje přihlášení ke spuštění funkce OPENROWSET.
-  - Možnost spravovat HROMADnou operaci databáze umožňuje, aby uživatel s oborem databáze spustil funkci OPENROWSET.
+  - `ADMINISTER BULK OPERATIONS`povolí přihlášení k provedení funkce OPENROWSET.
+  - `ADMINISTER DATABASE BULK OPERATIONS`umožňuje, aby uživatel s oborem databáze spustil funkci OPENROWSET.
 - ODKAZUJE na přihlašovací údaje VYMEZENé databáze na přihlašovací údaje, na které se odkazuje v EXTERNÍm zdroji dat.
 
 #### <a name="accessing-anonymous-data-sources"></a>Přístup k anonymním zdrojům dat
@@ -151,13 +151,13 @@ V následující tabulce jsou uvedena požadovaná oprávnění pro výše uvede
 
 | Dotaz | Požadovaná oprávnění|
 | --- | --- |
-| OPENROWSET (BULK) bez DataSource | `ADMINISTER BULK ADMIN``ADMINISTER DATABASE BULK ADMIN`přihlašovací údaje, nebo přihlášení SQL musí mít přihlašovací údaje:: \<URL> pro úložiště chráněné přes SAS. |
-| OPENROWSET (hromadné) se zdrojem dat bez přihlašovacích údajů | `ADMINISTER BULK ADMIN`nebo `ADMINISTER DATABASE BULK ADMIN` , |
-| OPENROWSET (hromadné) se zdrojem dat s přihlašovacími údaji | `ADMINISTER BULK ADMIN`, `ADMINISTER DATABASE BULK ADMIN` nebo`REFERENCES DATABASE SCOPED CREDENTIAL` |
+| OPENROWSET (BULK) bez DataSource | `ADMINISTER BULK OPERATIONS``ADMINISTER DATABASE BULK OPERATIONS`přihlašovací údaje, nebo přihlášení SQL musí mít přihlašovací údaje:: \<URL> pro úložiště chráněné přes SAS. |
+| OPENROWSET (hromadné) se zdrojem dat bez přihlašovacích údajů | `ADMINISTER BULK OPERATIONS`nebo `ADMINISTER DATABASE BULK OPERATIONS` , |
+| OPENROWSET (hromadné) se zdrojem dat s přihlašovacími údaji | `REFERENCES DATABASE SCOPED CREDENTIAL`a jedna z `ADMINISTER BULK OPERATIONS` nebo`ADMINISTER DATABASE BULK OPERATIONS` |
 | VYTVOŘIT EXTERNÍ ZDROJ DAT | `ALTER ANY EXTERNAL DATA SOURCE` a `REFERENCES DATABASE SCOPED CREDENTIAL` |
 | VYTVOŘIT EXTERNÍ TABULKU | `CREATE TABLE`, `ALTER ANY SCHEMA` , `ALTER ANY EXTERNAL FILE FORMAT` a`ALTER ANY EXTERNAL DATA SOURCE` |
 | VYBRAT Z EXTERNÍ TABULKY | `SELECT TABLE` a `REFERENCES DATABASE SCOPED CREDENTIAL` |
-| CETAS | Vytvoření tabulky- `CREATE TABLE` , `ALTER ANY SCHEMA` , a `ALTER ANY DATA SOURCE` `ALTER ANY EXTERNAL FILE FORMAT` . Čtení dat: `ADMIN BULK OPERATIONS` nebo `REFERENCES CREDENTIAL` nebo pro `SELECT TABLE` jednotlivé tabulky, zobrazení nebo funkce v dotazech + R/W v úložišti |
+| CETAS | Vytvoření tabulky- `CREATE TABLE` , `ALTER ANY SCHEMA` , a `ALTER ANY DATA SOURCE` `ALTER ANY EXTERNAL FILE FORMAT` . Čtení dat: `ADMINISTER BULK OPERATIONS` nebo `REFERENCES CREDENTIAL` nebo pro `SELECT TABLE` jednotlivé tabulky, zobrazení nebo funkce v dotazech + R/W v úložišti |
 
 ## <a name="next-steps"></a>Další kroky
 

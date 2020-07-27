@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 442dfc1667027bd39b138d59a28542138cc4a1ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 690f59c643f1fe8c8cfc74758a0f8f13b129f78a
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085936"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87172068"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Škálování hostitelů relací pomocí Azure Automation
 
@@ -60,12 +60,12 @@ Nástroj má však také následující omezení:
 
 - Toto řešení se vztahuje jenom na virtuální počítače hostitelů s více relacemi ve fondu.
 - Toto řešení spravuje virtuální počítače v jakékoli oblasti, ale dá se použít jenom ve stejném předplatném jako účet Azure Automation a aplikaci Azure Logic.
-- Maximální doba běhu úlohy v Runbooku je 3 hodiny. Pokud spuštění nebo zastavení virtuálních počítačů ve fondu hostitelů trvá déle, úloha se nezdaří. Další podrobnosti najdete v tématu [sdílené prostředky](../../automation/automation-runbook-execution.md#fair-share) .
+- Maximální doba běhu úlohy v Runbooku je 3 hodiny. Pokud spuštění nebo zastavení virtuálních počítačů ve fondu hostitelů trvá déle, úloha se nezdaří. Další podrobnosti najdete v tématu [sdílené prostředky](../../automation/automation-runbook-execution.md#fair-share).
 
 >[!NOTE]
->Nástroj pro škálování řídí režim vyrovnávání zatížení fondu hostitelů, který je škálovatelný. Nastaví ji na geografickou vyrovnávání zatížení pro hodiny špičky i mimo špičku.
+>Nástroj pro škálování řídí režim vyrovnávání zatížení fondu hostitelů, který aktuálně mění velikost. Nástroj používá režim vyrovnávání zatížení pro špičku i dobu mimo špičku.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s nastavením nástroje pro škálování, ujistěte se, že máte připravené následující akce:
 
@@ -140,7 +140,7 @@ Teď, když máte účet Azure Automation, budete také muset vytvořit účet A
 
 [Azure Automation účet Spustit jako](../../automation/manage-runas-account.md) poskytuje ověřování pro správu prostředků v Azure pomocí rutin Azure. Když vytvoříte účet Spustit jako, vytvoří se v Azure Active Directory nový uživatel instančního objektu a přiřadí roli přispěvatele k uživatelskému objektu služby na úrovni předplatného. Účet Spustit jako pro Azure je skvělým způsobem, jak bezpečně ověřit pomocí certifikátů a hlavního názvu služby, aniž byste museli ukládat uživatelské jméno a heslo do objektu přihlašovacích údajů. Další informace o ověřování účtu Spustit jako najdete v tématu [omezení oprávnění účtu Spustit jako](../../automation/manage-runas-account.md#limit-run-as-account-permissions).
 
-Každý uživatel, který je členem role správců předplatného a spolusprávcem předplatného, může vytvořit účet Spustit jako podle pokynů pro další oddíl.
+Každý uživatel, který je členem role správců předplatného a spolusprávcem předplatného, může vytvořit účet Spustit jako.
 
 Vytvoření účtu Spustit jako ve vašem účtu Azure Automation:
 

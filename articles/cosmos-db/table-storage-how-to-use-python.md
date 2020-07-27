@@ -5,29 +5,31 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: python
 ms.topic: sample
-ms.date: 04/05/2018
+ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
 ms.custom: tracking-python
-ms.openlocfilehash: 0d24f5621786ce292d98ae1fc6dd8fafc5b69c55
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 3e21cc7a66f09b5e759b3d3a53ab95dd9710900d
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84556223"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171964"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Začínáme se službou Azure Table Storage a rozhraním Table API služby Azure Cosmos DB pomocí Pythonu
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-Azure Table Storage a Azure Cosmos DB jsou služby, které ukládají strukturovaná data NoSQL do cloudu a poskytují úložiště klíčů/atributů s návrhem bez použití schématu. Vzhledem k tomu, že jsou služby Table Storage a Azure Cosmos DB bez schématu, je snadné data přizpůsobovat měnícím se potřebám vaší aplikace. Přístup k datům služby Table Storage a rozhraní Table API je pro mnoho typů aplikací rychlý a nákladově efektivní a pro podobné objemy dat obvykle znamená nižší náklady než tradiční SQL.
+Služba Azure Table Storage a Azure Cosmos DB jsou služby, které ukládají strukturované NoSQL data v cloudu a poskytují úložiště klíčů a atributů s návrhem bez schématu. Vzhledem k tomu, že jsou služby Table Storage a Azure Cosmos DB bez schématu, je snadné data přizpůsobovat měnícím se potřebám vaší aplikace. Přístup k datům úložiště tabulek a tabulkového rozhraní API je rychlý a nákladově efektivní pro mnoho typů aplikací a obvykle se snižuje náklady než tradiční SQL pro podobné objemy dat.
 
-Table Storage nebo Azure Cosmos DB můžete používat k ukládání flexibilních datových sad, například uživatelských dat pro webové aplikace, adresářů, informací o zařízení nebo dalších typů metadat, které vaše služba vyžaduje. V tabulce můžete uložit libovolný počet entit a účet úložiště může obsahovat libovolný počet tabulek, až do limitu kapacity účtu úložiště.
+K ukládání flexibilních datových sad, například uživatelských dat pro webové aplikace, adresářů, informací o zařízení nebo jiných typů metadat, které vaše služba vyžaduje, můžete použít tabulkové úložiště nebo Azure Cosmos DB. V tabulce můžete uložit libovolný počet entit a účet úložiště může obsahovat libovolný počet tabulek, až do limitu kapacity účtu úložiště.
 
 ### <a name="about-this-sample"></a>O této ukázce
+
 Tato ukázka předvádí použití [sady Table SDK služby Azure Cosmos DB pro Python](https://pypi.python.org/pypi/azure-cosmosdb-table/) v běžných scénářích služby Azure Table Storage. Název sady SDK značí, že je určená k použití se službou Azure Cosmos DB, ale stejně tak funguje i se službou Azure Table Storage, obě služby mají pouze jiný koncový bod. Tyto scénáře se zkoumají na příkladech v Pythonu a znázorňují následující postupy:
+
 * Vytváření a odstraňování tabulek
 * Vkládání a dotazování entit
 * Úpravy entit
@@ -38,17 +40,20 @@ Při procházení scénářů v této ukázce můžete využít [referenční in
 
 Pro úspěšné dokončení této ukázky potřebujete následující položky:
 
-- [Python](https://www.python.org/downloads/) 2,7, 3,3, 3,4, 3,5 nebo 3,6
-- [Sada Table SDK služby Azure Cosmos DB pro Python](https://pypi.python.org/pypi/azure-cosmosdb-table/). Tato sada SDK umožňuje připojení ke službě Azure Table Storage i k rozhraní Table API služby Azure Cosmos DB.
-- [Účet služby Azure Storage](../storage/common/storage-account-create.md) nebo [účet služby Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)
+* [Python](https://www.python.org/downloads/) 2,7, 3,3, 3,4, 3,5 nebo 3,6
+* [Sada Table SDK služby Azure Cosmos DB pro Python](https://pypi.python.org/pypi/azure-cosmosdb-table/). Tato sada SDK umožňuje připojení ke službě Azure Table Storage i k rozhraní Table API služby Azure Cosmos DB.
+* [Účet služby Azure Storage](../storage/common/storage-account-create.md) nebo [účet služby Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)
 
 ## <a name="create-an-azure-service-account"></a>Vytvoření účtu služby Azure
+
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-### <a name="create-an-azure-storage-account"></a>Vytvoření účtu úložiště Azure
+**Vytvoření účtu služby Azure Storage**
+
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
-### <a name="create-an-azure-cosmos-db-table-api-account"></a>Vytvoření účtu rozhraní Table API služby Azure Cosmos DB
+**Vytvoření účtu rozhraní Table API služby Azure Cosmos DB**
+
 [!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="install-the-azure-cosmos-db-table-sdk-for-python"></a>Instalace sady Table SDK služby Azure Cosmos DB pro Python

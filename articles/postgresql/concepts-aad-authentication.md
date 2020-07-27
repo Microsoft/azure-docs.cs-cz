@@ -5,15 +5,15 @@ author: lfittl
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 737587ccf46d4af292dc11d37567249c13260f51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/23/2020
+ms.openlocfilehash: 0a19bd9d1547c16937ee575c08ea15a52589ccd0
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565490"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171047"
 ---
-# <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Použití Azure Active Directory k ověřování pomocí PostgreSQL
+# <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Ověřování v PostgreSQL s využitím Azure Active Directory
 
 Ověřování pomocí Microsoft Azure Active Directory (Azure AD) je mechanismus připojení k Azure Database for PostgreSQL pomocí identit definovaných ve službě Azure AD.
 Pomocí ověřování Azure AD můžete spravovat identity uživatelů databáze a další služby Microsoftu v centrálním umístění, které zjednodušuje správu oprávnění.

@@ -3,16 +3,16 @@ title: Vytváření automatizovaných pracovních postupů založených na plán
 description: Kurz – vytvoření opakovaného a automatizovaného pracovního postupu založeného na plánu pomocí Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: 977f138fad1f2eb1eae95049d2bd8a730ba5687e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 41f7b1309a9c7fa9a5f2abb3e2e59f08ef31382d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87048733"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124846"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Kurz: vytvoření automatizovaných pracovních postupů založených na plánech pomocí Azure Logic Apps
 
@@ -32,7 +32,7 @@ Jakmile budete hotovi, vaše aplikace logiky bude na základní úrovni vypadat 
 
 ![Přehled pracovního postupu vysoké úrovně aplikace logiky](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-overview.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud předplatné nemáte, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -43,11 +43,9 @@ Jakmile budete hotovi, vaše aplikace logiky bude na základní úrovni vypadat 
 
 * K získání doby trvání cesty pro nějakou trasu potřebujete přístupový klíč k rozhraní API Map Bing. Pokud chcete tento klíč získat, řiďte se kroky [postupu získání klíče k Mapám Bing](/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key).
 
-## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
-
-Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašovacích údajů svého účtu Azure.
-
 ## <a name="create-your-logic-app"></a>Vytvoření aplikace logiky
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašovacích údajů svého účtu Azure.
 
 1. V hlavní nabídce Azure vyberte **vytvořit prostředek**  >  **Integration**  >  **Logic App**.
 
@@ -94,8 +92,8 @@ Dále přidejte [Trigger](../logic-apps/logic-apps-overview.md#logic-app-concept
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Interval** | Yes | 1 | Počet intervalů, po které se má čekat mezi kontrolami |
-   | **Frekvence** | Yes | Týden | Jednotka času pro opakování |
+   | **Interval** | Ano | 1 | Počet intervalů, po které se má čekat mezi kontrolami |
+   | **Frekvence** | Ano | Týden | Jednotka času pro opakování |
    |||||
 
 1. V části **interval** a **frekvence**otevřete seznam **Přidat nový parametr** a vyberte tyto vlastnosti, které chcete přidat do triggeru.
@@ -143,8 +141,8 @@ Teď, když máte trigger, přidejte [akci](../logic-apps/logic-apps-overview.md
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Název připojení** | Yes | PřipojeníMapyBing | Zadejte název připojení. V tomto příkladu se používá "BingMapsConnection". |
-   | **Klíč rozhraní API** | Yes | <*váš klíč-Bing-Maps-Key*> | Zadejte klíč Map Bing, který jste dříve dostali. Pokud nemáte k dispozici klíč služby Mapy Bing, přečtěte si, [jak získat klíč](/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key). |
+   | **Název připojení** | Ano | PřipojeníMapyBing | Zadejte název připojení. V tomto příkladu se používá "BingMapsConnection". |
+   | **Klíč rozhraní API** | Ano | <*váš klíč-Bing-Maps-Key*> | Zadejte klíč Map Bing, který jste dříve dostali. Pokud nemáte k dispozici klíč služby Mapy Bing, přečtěte si, [jak získat klíč](/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key). |
    |||||
 
 1. Přejmenujte akci s tímto popisem: `Get route and travel time with traffic`
@@ -163,11 +161,11 @@ Teď, když máte trigger, přidejte [akci](../logic-apps/logic-apps-overview.md
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Bod na trase 1** | Yes | <*Začátek – umístění*> | Počátek vaší cesty |
-   | **Bod na trase 2** | Yes | <*koncové umístění*> | Cíl vaší trasy |
-   | **Optimalizace** | No | timeWithTraffic | Parametr k optimalizaci vaší trasy, jako je například vzdálenost, doba trvání cesty včetně dopravní situace atd. Vyberte parametr "timeWithTraffic". |
-   | **Jednotka vzdálenosti** | No | <*vaše preference*> | Jednotka vzdálenosti použitá pro trasu. V tomto příkladu se jako jednotka používá "km". |
-   | **Způsob cestování** | No | Autem | Způsob cestování pro danou trasu. Vyberte režim "řízení". |
+   | **Bod na trase 1** | Ano | <*Začátek – umístění*> | Počátek vaší cesty |
+   | **Bod na trase 2** | Ano | <*koncové umístění*> | Cíl vaší trasy |
+   | **Optimalizace** | Ne | timeWithTraffic | Parametr k optimalizaci vaší trasy, jako je například vzdálenost, doba trvání cesty včetně dopravní situace atd. Vyberte parametr "timeWithTraffic". |
+   | **Jednotka vzdálenosti** | Ne | <*vaše preference*> | Jednotka vzdálenosti použitá pro trasu. V tomto příkladu se jako jednotka používá "km". |
+   | **Způsob cestování** | Ne | Autem | Způsob cestování pro danou trasu. Vyberte režim "řízení". |
    ||||
 
    Další informace o těchto parametrech najdete v tématu [Výpočet trasy](/bingmaps/rest-services/routes/calculate-a-route).
@@ -194,9 +192,9 @@ Ve výchozím nastavení vrátí předchozí akce **získat trasu** aktuální d
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Název** | Yes | dobacesty | Název proměnné. V tomto příkladu se používá "Dobacesty". |
-   | **Typ** | Yes | Celé číslo | Datový typ proměnné |
-   | **Hodnota** | No| Výraz, který převede aktuální dobu trvání cesty ze sekund na minuty (viz postup pod touto tabulkou) | Počáteční hodnota proměnné |
+   | **Název** | Ano | dobacesty | Název proměnné. V tomto příkladu se používá "Dobacesty". |
+   | **Typ** | Ano | Celé číslo | Datový typ proměnné |
+   | **Hodnota** | Ne| Výraz, který převede aktuální dobu trvání cesty ze sekund na minuty (viz postup pod touto tabulkou) | Počáteční hodnota proměnné |
    ||||
 
    1. Chcete-li vytvořit výraz pro vlastnost **Value** , klikněte do pole, aby se zobrazil seznam dynamického obsahu. V případě potřeby zvětšete okno prohlížeče, dokud se seznam nezobrazí. V seznamu dynamický obsah vyberte možnost **výraz**.

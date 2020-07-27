@@ -10,13 +10,13 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 573aef4f0d340d0d32dc4977e0937bca9c6d3cef
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.custom: aaddev, identityplatformtop40, devx-track-javascript
+ms.openlocfilehash: 745132284ee48270b46b6bd2f785d8bec19404fb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84338920"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129674"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Přihlaste se uživatelům a zavolejte Microsoft Graph API z jednostránkové aplikace v JavaScriptu (SPA).
 
@@ -40,9 +40,9 @@ Ukázková aplikace vytvořená touto příručkou umožňuje, aby se v prostře
 
 Tato příručka používá následující knihovnu:
 
-|Knihovna|Description|
+|Knihovna|Popis|
 |---|---|
-|[msal. js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Knihovna Microsoft Authentication Library pro JavaScript|
+|[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Knihovna Microsoft Authentication Library pro JavaScript|
 
 ## <a name="set-up-your-web-server-or-project"></a>Nastavení webového serveru nebo projektu
 
@@ -52,15 +52,15 @@ Tato příručka používá následující knihovnu:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pro spuštění tohoto kurzu potřebujete místní webový server, jako je například [Node. js](https://nodejs.org/en/download/), [.net Core](https://www.microsoft.com/net/core)nebo IIS Express integrace se sadou [Visual Studio 2017](https://www.visualstudio.com/downloads/).
+* Pro spuštění tohoto kurzu potřebujete místní webový server, například [Node.js](https://nodejs.org/en/download/), [.net Core](https://www.microsoft.com/net/core)nebo IIS Express integraci se sadou [Visual Studio 2017](https://www.visualstudio.com/downloads/).
 
-* Pokyny v této příručce jsou založené na webovém serveru, který je sestavený v Node. js. Doporučujeme použít [Visual Studio Code](https://code.visualstudio.com/download) jako integrované vývojové prostředí (IDE).
+* Pokyny v této příručce jsou založené na webovém serveru, který je sestavený v Node.js. Doporučujeme použít [Visual Studio Code](https://code.visualstudio.com/download) jako integrované vývojové prostředí (IDE).
 
 * Moderní webový prohlížeč. Tato ukázka JavaScriptu používá konvence [ES6](http://www.ecma-international.org/ecma-262/6.0/) a jako **takový nepodporuje** **Internet Explorer**.
 
-## <a name="create-your-project"></a>Vytvořit projekt
+## <a name="create-your-project"></a>Vytvoření projektu
 
-Ujistěte se, že máte [Node. js](https://nodejs.org/en/download/) nainstalovaný, a pak vytvořte složku pro hostování aplikace. Tam budeme [implementovat jednoduchý webový](https://expressjs.com/) Server, který bude obsluhovat váš `index.html` soubor.
+Ujistěte se, že máte nainstalovanou [Node.js](https://nodejs.org/en/download/) a pak vytvořte složku pro hostování aplikace. Tam budeme [implementovat jednoduchý webový](https://expressjs.com/) Server, který bude obsluhovat váš `index.html` soubor.
 
 1. Pomocí terminálu (například Visual Studio Code Integrated Terminal) najděte složku vašeho projektu a pak zadejte:
 
@@ -190,7 +190,7 @@ Teď máte k dispozici jednoduchý Server, který bude sloužit pro SPA. Zamýš
    ```
 
    > [!TIP]
-   > Verzi MSAL. js můžete v předchozím skriptu nahradit nejnovější vydanou verzí ve [verzích MSAL. js](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases).
+   > Verzi MSAL.js v předchozím skriptu můžete nahradit nejnovější vydanou verzí v části [MSAL.js verze](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases).
 
 2. Nyní vytvořte soubor. js s názvem `ui.js` , který bude mít přístup k elementům DOM a aktualizován, a přidejte následující kód:
 
@@ -264,11 +264,11 @@ Teď máte k dispozici jednoduchý Server, který bude sloužit pro SPA. Zamýš
    }
    ```
 
-## <a name="register-your-application"></a>Registrace vaší aplikace
+## <a name="register-your-application"></a>Registrace aplikace
 
 Než budete pokračovat s ověřováním, zaregistrujte svou aplikaci na **Azure Active Directory**.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte účet v pravém horním rohu a pak nastavte relaci portálu na klienta služby Azure AD, kterého chcete použít.
 1. Přejít na stránku Microsoft Identity Platform for Developers [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
 1. Když se zobrazí stránka **Zaregistrovat aplikaci**, zadejte název pro vaši aplikaci.
@@ -280,9 +280,9 @@ Než budete pokračovat s ověřováním, zaregistrujte svou aplikaci na **Azure
 1. V části **Upřesnit nastavení**v části **implicitní udělení**vyberte zaškrtávací políčka **tokeny ID** a **přístupové tokeny** . Tokeny ID a přístupové tokeny jsou povinné, protože tato aplikace musí přihlašovat uživatele a volat rozhraní API.
 1. Vyberte **Uložit**.
 
-> ### <a name="set-a-redirect-url-for-nodejs"></a>Nastavení adresy URL pro přesměrování pro Node. js
+> ### <a name="set-a-redirect-url-for-nodejs"></a>Nastavit adresu URL pro přesměrování pro Node.js
 >
-> Pro Node. js můžete nastavit port webového serveru v souboru *index. js* . V tomto kurzu se používá port 3000, ale můžete použít jakýkoli jiný dostupný port.
+> V případě Node.js můžete port webového serveru nastavit v souboru *index.js* . V tomto kurzu se používá port 3000, ale můžete použít jakýkoli jiný dostupný port.
 >
 > Chcete-li nastavit adresu URL pro přesměrování v informacích o registraci aplikace, přepněte zpět do podokna **Registrace aplikace** a proveďte jednu z následujících akcí:
 >
@@ -409,13 +409,13 @@ Vytvořte nový soubor. js s názvem `authPopup.js` , který bude obsahovat vaš
 
 ### <a name="more-information"></a>Další informace
 
-Když uživatel poprvé vybere tlačítko pro **přihlášení** , `signIn` metoda se zavolá na `loginPopup` přihlášení uživatele. Tato metoda otevře automaticky otevírané okno s *koncovým bodem Microsoft Identity Platform* , kde se zobrazí výzva a ověří přihlašovací údaje uživatele. Po úspěšném přihlášení se uživatel přesměruje zpátky na původní stránku *index. html* . Obdrží se token, který se zpracovává, `msal.js` a informace obsažené v tokenu se ukládají do mezipaměti. Tento token je známý jako *token ID* a obsahuje základní informace o uživateli, jako je například zobrazované jméno uživatele. Pokud plánujete použít data poskytnutá tímto tokenem pro jakékoli účely, musíte se ujistit, že váš back-end Server ověří tento token, aby bylo zaručeno, že token byl vydán pro platného uživatele pro vaši aplikaci.
+Když uživatel poprvé vybere tlačítko pro **přihlášení** , `signIn` metoda se zavolá na `loginPopup` přihlášení uživatele. Tato metoda otevře automaticky otevírané okno s *koncovým bodem Microsoft Identity Platform* , kde se zobrazí výzva a ověří přihlašovací údaje uživatele. Po úspěšném přihlášení se uživatel přesměruje zpátky na původní *index.htmstránku l* . Obdrží se token, který se zpracovává, `msal.js` a informace obsažené v tokenu se ukládají do mezipaměti. Tento token je známý jako *token ID* a obsahuje základní informace o uživateli, jako je například zobrazované jméno uživatele. Pokud plánujete použít data poskytnutá tímto tokenem pro jakékoli účely, musíte se ujistit, že váš back-end Server ověří tento token, aby bylo zaručeno, že token byl vydán pro platného uživatele pro vaši aplikaci.
 
 Zabezpečené ověřování hesla vygenerované touto příručkou volá `acquireTokenSilent` nebo `acquireTokenPopup` získá *přístupový token* , který se používá k dotazování rozhraní API pro Microsoft Graph pro informace o profilu uživatele. Pokud potřebujete ukázku, která ověří token ID, podívejte se na [tuto](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub Active-Directory-JavaScript-singlepageapp-dotnet-WebApi-v2 Sample") ukázkovou aplikaci v GitHubu. Ukázka používá webové rozhraní API ASP.NET pro ověření tokenu.
 
 #### <a name="get-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
-Po počátečním přihlášení nechcete požádat uživatele o opětovné ověření pokaždé, když potřebují požádat o token pro přístup k prostředku. *AcquireTokenSilent* by proto mělo být použito většinou v čase k získání tokenů. Existují však situace, kdy potřebujete vynutit, aby uživatelé mohli pracovat s koncovým bodem Microsoft Identity Platform. Mezi příklady patří:
+Po počátečním přihlášení nechcete požádat uživatele o opětovné ověření pokaždé, když potřebují požádat o token pro přístup k prostředku. *AcquireTokenSilent* by proto mělo být použito většinou v čase k získání tokenů. Existují však situace, kdy potřebujete vynutit, aby uživatelé mohli pracovat s koncovým bodem Microsoft Identity Platform. Příklady:
 
 - Uživatelé musí znovu zadat své přihlašovací údaje, protože vypršela platnost hesla.
 - Vaše aplikace požaduje přístup k prostředku a potřebujete souhlas uživatele.
@@ -477,17 +477,17 @@ V ukázkové aplikaci vytvořené touto příručkou se `callMSGraph()` Metoda p
 
 ## <a name="test-your-code"></a>Testování kódu
 
-1. Nakonfigurujte server tak, aby naslouchal portu TCP, který je založený na umístění souboru *index. html* . Pro Node. js spusťte webový server, aby naslouchal na portu spuštěním následujících příkazů na příkazovém řádku ve složce aplikace:
+1. Nakonfigurujte server tak, aby naslouchal portu TCP, který je založený na umístění vašeho souboru *index.html* . V případě Node.js spusťte webový server pro naslouchání na portu spuštěním následujících příkazů na příkazovém řádku ve složce aplikace:
 
    ```bash
    npm install
    npm start
    ```
-1. V prohlížeči zadejte **http://localhost:3000** nebo **http://localhost:{port}** , kde *port* je port, na který webový server naslouchá. Měl by se zobrazit obsah souboru *index. html* a **přihlašovací** tlačítko.
+1. V prohlížeči zadejte **http://localhost:3000** nebo **http://localhost:{port}** , kde *port* je port, na který webový server naslouchá. Měl by se zobrazit obsah souboru *index.html* a **přihlašovací** tlačítko.
 
 ## <a name="test-your-application"></a>Testování aplikace
 
-Poté, co prohlížeč načte soubor *index. html* , vyberte možnost **Přihlásit**se. Budete vyzváni k přihlášení pomocí koncového bodu Microsoft Identity Platform:
+Poté, co prohlížeč načte soubor *index.html* , vyberte možnost **Přihlásit**se. Budete vyzváni k přihlášení pomocí koncového bodu Microsoft Identity Platform:
 
 ![Přihlašovací okno účtu v jazyce JavaScript SPA](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
 

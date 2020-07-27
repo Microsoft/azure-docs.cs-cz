@@ -7,21 +7,25 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 10/18/2019
-ms.openlocfilehash: e59648ee76b6715029c690329cbf8f4f1eee7243
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/24/2020
+ms.openlocfilehash: 6d990b94210383ba4b30569693f4471f43306ed2
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483648"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169837"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>Konfigurace zásad exportu pro svazek NFS
 
-Můžete volitelně nakonfigurovat zásady exportu pro řízení přístupu ke svazku Azure NetApp Files. Zásada exportu Azure NetApp Files podporuje pouze svazky systému souborů NFS.  Podporují se NFSv3 i názvů NFSv4. 
+Můžete nakonfigurovat zásady exportu pro řízení přístupu ke svazku Azure NetApp Files. Zásada exportu Azure NetApp Files podporuje svazky, které používají protokol NFS (NFSv3 a NFSv 4.1), a duální protokol (NFSv3 a SMB). 
+
+Můžete vytvořit až pět pravidel zásad pro export.
 
 ## <a name="steps"></a>Kroky 
 
-1.  V navigačním podokně Azure NetApp Files klikněte na **Exportovat zásadu** . 
+1.  Na stránce svazky vyberte svazek, pro který chcete nakonfigurovat zásadu exportu, a klikněte na **Exportovat zásadu**. 
+
+    Při vytváření svazku můžete také nakonfigurovat zásady exportu.
 
 2.  Zadejte do následujících polí informace pro vytvoření pravidla zásad exportu:   
     *  **Indexovacím**   
@@ -39,7 +43,11 @@ Můžete volitelně nakonfigurovat zásady exportu pro řízení přístupu ke s
         * Čtení a zápis
         * Jen pro čtení
 
-    ![Zásada exportu](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
+    * **Přístup ke kořenu**  
+        Určete, jestli má `root` účet přístup ke svazku.  Ve výchozím nastavení je přístup root nastavený na **zapnuto**a `root` účet má přístup ke svazku.
+
+        ![Zásada exportu](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
+
 
 
 ## <a name="next-steps"></a>Další kroky 

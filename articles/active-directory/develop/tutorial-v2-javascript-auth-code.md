@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
-ms.custom: aaddev
-ms.openlocfilehash: b1b3815085524a3e96ad607ac0ea8efb2c2e92fb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: aaddev, devx-track-javascript
+ms.openlocfilehash: 63e94916232c4b3c7a275e51bdcde496b75ae913
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026199"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129096"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>Kurz: přihlášení uživatelů a volání rozhraní API Microsoft Graph z jednostránkové aplikace v JavaScriptu (SPA) pomocí toku kódu ověřování
 
@@ -51,7 +51,7 @@ Pokud chcete před spuštěním nakonfigurovat ukázku kódu, přejděte k [krok
 
 Pokud chcete pokračovat v kurzu a sestavit aplikaci sami, přejděte k další části [požadavky](#prerequisites).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Node.js](https://nodejs.org/en/download/) pro spuštění místního serveru
 * [Visual Studio Code](https://code.visualstudio.com/download) nebo jiný Editor kódu
@@ -555,7 +555,7 @@ SPA, které jste vytvořili v tomto kurzu, volá nebo `acquireTokenSilent` `acqu
 
 #### <a name="get-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
-Po prvním přihlášení by vaše aplikace neměla požádat uživatele, aby se znovu ověřili pokaždé, když potřebují přístup k chráněnému prostředku (to znamená vyžádání tokenu). Chcete-li zabránit takové žádosti o opakované ověření, zavolejte `acquireTokenSilent` . Existují však situace, kdy může být nutné vynutit, aby uživatelé mohli pracovat s koncovým bodem Microsoft Identity Platform. Příklad:
+Po prvním přihlášení by vaše aplikace neměla požádat uživatele, aby se znovu ověřili pokaždé, když potřebují přístup k chráněnému prostředku (to znamená vyžádání tokenu). Chcete-li zabránit takové žádosti o opakované ověření, zavolejte `acquireTokenSilent` . Existují však situace, kdy může být nutné vynutit, aby uživatelé mohli pracovat s koncovým bodem Microsoft Identity Platform. Například:
 
 - Uživatelé musí znovu zadat své přihlašovací údaje, protože vypršela platnost hesla.
 - Vaše aplikace požaduje přístup k prostředku a potřebujete souhlas uživatele.

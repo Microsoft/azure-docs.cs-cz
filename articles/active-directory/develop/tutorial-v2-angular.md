@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ee7c95cc25e911ba0ffe1e2815f219e040aaca31
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: aaddev, identityplatformtop40, devx-track-javascript
+ms.openlocfilehash: eefc8f1e9dcf6744e276d3cd911f325a8759fa30
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058267"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129113"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Kurz: přihlášení uživatelů a volání rozhraní Microsoft Graph API z úhlové aplikace s jednou stránkou
 
@@ -49,7 +49,7 @@ V tomto kurzu se používá následující knihovna:
 
 Zdrojový kód knihovny MSAL.js můžete najít v úložišti [AzureAD/Microsoft-Authentication-Library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) na GitHubu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro spuštění tohoto kurzu budete potřebovat:
 
@@ -264,14 +264,14 @@ this.authService.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 
 V tomto kódu `scopes` obsahuje obory, které jsou požadovány k vrácení do přístupového tokenu pro rozhraní API.
 
-Příklad:
+Například:
 
 * `["user.read"]`pro Microsoft Graph
 * `["<Application ID URL>/scope"]`pro vlastní webová rozhraní API (tj. `api://<Application ID>/access_as_user` )
 
 #### <a name="get-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
-Někdy potřebujete, aby uživatel spolupracoval s koncovým bodem Microsoft Identity Platform. Příklad:
+Někdy potřebujete, aby uživatel spolupracoval s koncovým bodem Microsoft Identity Platform. Například:
 
 * Uživatelé možná budou muset znovu zadat svoje přihlašovací údaje, protože vypršela platnost hesla.
 * Vaše aplikace požaduje přístup k dalším oborům prostředků, ke kterým uživatel musí vyjádřit souhlas.

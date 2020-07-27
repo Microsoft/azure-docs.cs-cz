@@ -618,6 +618,14 @@
           href: vs-active-directory-webapi-what-happened.md
         - name: Diagnostika chyb při ověřování
           href: vs-active-directory-error.md
+    - name: Uvedení aplikace na trh
+      items:
+        - name: Publikování na App Service
+          href: v2-howto-get-appsource-certified.md
+        - name: Publikování v galerii aplikací Azure AD
+          href: v2-howto-app-gallery-listing.md
+        - name: Publikování na řídicí panel prodejce Office 365
+          href: 'https://docs.microsoft.com/office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store'
 - name: Referenční informace
   items:
     - name: Manifest aplikace
