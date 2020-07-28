@@ -302,6 +302,8 @@
         - name: Skript nasazení
           displayName: custom script
           href: deployment-script-template.md
+        - name: Vytvoření vývojového prostředí pro skripty nasazení
+          href: deployment-script-template-configure-dev.md
         - name: Modularizace šablon
           displayName: 'linked templates, nested templates'
           href: linked-templates.md
@@ -449,7 +451,7 @@
       href: /rest/api/resources/
     - name: Azure PowerShell
       href: /powershell/module/az.resources
-    - name: Azure CLI
+    - name: Rozhraní příkazového řádku Azure
       href: /cli/azure/resource
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.resourcemanager

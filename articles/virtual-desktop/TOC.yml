@@ -1,4 +1,4 @@
-- name: Vydání Windows Virtual Desktopu z jara 2020
+- name: Windows Virtual Desktop
   href: index.yml
 - name: Přehled
   items:
@@ -6,7 +6,7 @@
       href: overview.md
     - name: Co je nového?
       href: whats-new.md
-    - name: Dokumentace k vydání z podzimu 2019
+    - name: Dokumentace k Windows Virtual Desktopu (klasická verze)
       href: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
 - name: Kurzy
   items:

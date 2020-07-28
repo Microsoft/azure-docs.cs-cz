@@ -64,6 +64,8 @@
       href: manage-recording-policy-how-to.md
     - name: Analýza živého videa s využitím AI dle vašeho výběru
       href: analyze-with-ai-your-choice-how-to.md
+    - name: Vyvolání přímých metod s využitím portálu
+      href: use-azure-portal-to-invoke-direct-methods.md
     - name: Řešení potíží
       href: troubleshoot-how-to.md
 - name: Referenční informace

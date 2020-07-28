@@ -10,19 +10,19 @@
       items:
         - name: Úvod
           href: get-started.md
-        - name: 'Krok 1: Vytvoření pracovního prostoru Synapse'
+        - name: 1. Vytvoření pracovního prostoru Synapse
           href: get-started-create-workspace.md
-        - name: 'Krok 2: Analýza s využitím fondu SQL'
+        - name: 2. Analýza s využitím fondu SQL
           href: get-started-analyze-sql-pool.md
-        - name: 'Krok 3: Analýza s využitím Sparku'
+        - name: 3. Analýza s využitím Sparku
           href: get-started-analyze-spark.md
-        - name: 'Krok 4: Analýza s využitím SQL na vyžádání'
+        - name: 4. Analýza s využitím SQL na vyžádání
           href: get-started-analyze-sql-on-demand.md
-        - name: 'Krok 5: Analýza dat v účtu úložiště'
+        - name: 5. Analýza dat v účtu úložiště
           href: get-started-analyze-storage.md
-        - name: 'Krok 6: Orchestrace s využitím kanálů'
+        - name: 6. Orchestrace s využitím kanálů
           href: get-started-pipelines.md
-        - name: 'Krok 7: Vizualizace pomocí Power BI'
+        - name: 7. Vizualizace pomocí Power BI
           href: get-started-visualize-power-bi.md
     - name: Tahák
       href: overview-cheat-sheet.md
@@ -264,6 +264,8 @@
                   href: /sql/t-sql/statements/alter-materialized-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Ukládání sady výsledků dotazu do mezipaměti
               href: /sql/t-sql/statements/set-result-set-caching-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Predikce strojového učení
+              href: ./sql-data-warehouse/sql-data-warehouse-predict.md
             - name: Tabulky
               items:
                 - name: Přehled

@@ -156,6 +156,8 @@
       href: customer-managed-keys.md
     - name: Vytváření incidentů z upozornění
       href: create-incidents-from-alerts.md
+    - name: Lepší správa SOC s využitím metrik pro incidenty
+      href: manage-soc-with-incident-metrics.md
     - name: Vyhledávání
       href: hunting.md
       items:

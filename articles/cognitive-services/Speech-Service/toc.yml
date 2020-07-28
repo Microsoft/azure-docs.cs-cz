@@ -416,6 +416,8 @@
                   href: how-to-custom-commands-add-interaction-rules.md
                 - name: Přidání šablon generování jazyka pro hlasové odpovědi
                   href: how-to-custom-commands-add-language-generation-templates.md
+                - name: Použití sady Vlastní hlas
+                  href: how-to-custom-commands-use-custom-voice.md
             - name: Integrace
               items:
                 - name: Integrace s klientskou aplikací s využitím sady Speech SDK
@@ -452,6 +454,8 @@
               href: faq-voice-assistants.md
             - name: Speech SDK
               href: speech-sdk.md
+            - name: Šifrování vlastních příkazů pro neaktivní uložená data
+              href: custom-commands-encryption-of-data-at-rest.md
     - name: Direct Line Speech
       items:
         - name: Co je Direct Line Speech?
@@ -638,7 +642,7 @@
       href: how-to-migrate-from-bing-speech.md
     - name: Z rozhraní Translator Speech API
       href: how-to-migrate-from-translator-speech-api.md
-- name: Zdroje a prostředky
+- name: Zdroje informací
   items:
     - name: Podpora
       displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'

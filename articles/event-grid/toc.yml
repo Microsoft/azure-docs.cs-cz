@@ -8,6 +8,8 @@
       href: overview.md
     - name: Porovnání služeb zasílání zpráv
       href: compare-messaging-services.md
+    - name: "Poznámky k\_verzi"
+      href: whats-new.md
 - name: Rychlé starty
   expanded: true
   items:

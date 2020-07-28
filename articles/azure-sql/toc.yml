@@ -78,6 +78,8 @@
                   href: database/authentication-mfa-ssms-configure.md
                 - name: Podmíněný přístup
                   href: database/conditional-access-configure.md
+                - name: Instanční objekty (aplikace)
+                  href: database/authentication-aad-service-principal.md
             - name: Transparentní šifrování dat (TDE)
               items:
                 - name: Přehled
@@ -141,6 +143,8 @@
               href: database/long-term-backup-retention-configure.md
         - name: Zabezpečení
           items:
+            - name: Vytvoření uživatelů Azure AD typu host a nastavení jako správce Azure AD
+              href: database/authentication-aad-guest-users.md
             - name: Transparentní šifrování dat s využitím služby BYOK
               href: database/transparent-data-encryption-byok-configure.md
             - name: Ukládání kontrol ohrožení zabezpečení v úložišti
@@ -277,6 +281,8 @@
               href: database/transparent-data-encryption-byok-key-rotation.md
             - name: Odebrání ochrany transparentního šifrování dat
               href: database/transparent-data-encryption-byok-remove-tde-protector.md
+            - name: Vytváření uživatelů s využitím instančních objektů
+              href: database/authentication-aad-service-principal-tutorial.md
         - name: Přesun dat
           items:
             - name: Migrace s využitím DMS
@@ -1012,7 +1018,7 @@
           items:
             - name: Azure PowerShell
               href: /powershell/azure/
-            - name: Azure CLI
+            - name: Rozhraní příkazového řádku Azure
               href: /cli/azure/
             - name: T-SQL
               href: 'https://docs.microsoft.com/sql/t-sql/language-reference'

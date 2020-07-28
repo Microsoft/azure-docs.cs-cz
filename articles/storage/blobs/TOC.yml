@@ -351,7 +351,7 @@
                       items:
                         - name: PowerShell
                           href: storage-blob-user-delegation-sas-create-powershell.md
-                        - name: Azure CLI
+                        - name: Rozhraní příkazového řádku Azure
                           href: storage-blob-user-delegation-sas-create-cli.md
                         - name: .NET
                           href: storage-blob-user-delegation-sas-create-dotnet.md
@@ -405,11 +405,11 @@
                   href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Konfigurace bran firewall a virtuálních sítí
                   href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Konfigurace protokolu TLS (Transport Layer Security)
+                - name: Správa protokolu TLS (Transport Layer Security)
                   items:
-                    - name: Konfigurace minimální verze protokolu TLS pro účet úložiště
+                    - name: Vynucení minimální verze protokolu TLS pro příchozí požadavky
                       href: ../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Konfigurace TLS pro klientskou aplikaci
+                    - name: Konfigurace verze TLS pro klientskou aplikaci
                       href: ../common/transport-layer-security-configure-client-version.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Nastavení a správa zásad neměnnosti
               href: storage-blob-immutability-policies-manage.md
@@ -525,6 +525,10 @@
               href: ../common/storage-ref-azcopy-jobs-resume.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: azcopy jobs show
               href: ../common/storage-ref-azcopy-jobs-show.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: azcopy load
+              href: ../common/storage-ref-azcopy-load.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: azcopy load clfs
+              href: ../common/storage-ref-azcopy-load-avere-cloud-file-system.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: azcopy list
               href: ../common/storage-ref-azcopy-list.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: azcopy login

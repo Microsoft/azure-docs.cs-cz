@@ -31,6 +31,8 @@
       href: powershell-create-instance.md
     - name: Vytvoření spravované domény pomocí šablony
       href: template-create-instance.md
+    - name: Konfigurace synchronizace s vymezeným oborem s využitím Azure AD PowerShellu
+      href: powershell-scoped-synchronization.md
 - name: Koncepty
   items:
     - name: Základy správy

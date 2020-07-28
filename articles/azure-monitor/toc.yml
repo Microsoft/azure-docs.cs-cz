@@ -1020,6 +1020,10 @@
           href: insights/resource-group-insights.md
         - name: Řešení potíží s přehledy
           href: insights/troubleshoot-workbooks.md
+    - name: Analýza změn
+      items:
+        - name: Analýza změn
+          href: app/change-analysis.md
     - name: Řešení
       items:
         - name: Přehled
@@ -1073,30 +1077,6 @@
               href: insights/vmware.md
             - name: Řešení Wire Data
               href: insights/wire-data.md
-        - name: Zobrazení
-          items:
-            - name: Převod zobrazení na sešity
-              items:
-                - name: Přehled převodů
-                  href: platform/view-designer-conversion-overview.md
-                - name: Možnosti převodu
-                  href: platform/view-designer-conversion-options.md
-                - name: Přehled a přístup
-                  href: platform/view-designer-conversion-access.md
-                - name: Běžné úkoly
-                  href: platform/view-designer-conversion-tasks.md
-                - name: Převody dlaždic
-                  href: platform/view-designer-conversion-tiles.md
-                - name: Příklady
-                  href: platform/view-designer-conversion-examples.md
-            - name: Návrhář zobrazení
-              href: platform/view-designer.md
-            - name: Referenční informace k dlaždicím
-              href: platform/view-designer-tiles.md
-            - name: Referenční informace k části vizualizace
-              href: platform/view-designer-parts.md
-            - name: Filtry
-              href: platform/view-designer-filters.md
     - name: Workbooks
       items:
         - name: Přehled
@@ -1124,6 +1104,20 @@
                   href: platform/workbooks-time.md
                 - name: Parametry textu
                   href: platform/workbooks-text.md
+        - name: Převod zobrazení na sešity
+          items:
+            - name: Přehled převodů
+              href: platform/view-designer-conversion-overview.md
+            - name: Možnosti převodu
+              href: platform/view-designer-conversion-options.md
+            - name: Přehled a přístup
+              href: platform/view-designer-conversion-access.md
+            - name: Běžné úkoly
+              href: platform/view-designer-conversion-tasks.md
+            - name: Převody dlaždic
+              href: platform/view-designer-conversion-tiles.md
+            - name: Příklady
+              href: platform/view-designer-conversion-examples.md
     - name: Další vizualizace
       items:
         - name: Power BI
@@ -1217,6 +1211,8 @@
           href: app/azure-functions-supported-features.md
         - name: "Poznámky k\_verzi"
           items:
+            - name: Sady SDK pro monitorování na základě kódu
+              href: app/release-notes.md
             - name: Rozšíření webové aplikace
               href: app/web-app-extension-release-notes.md
         - name: Datový model
@@ -1297,6 +1293,16 @@
           href: platform/resource-logs-blob-format.md
         - name: Key Vault Analytics (zastaralé)
           href: insights/azure-key-vault-deprecated.md
+        - name: Zobrazení
+          items:
+            - name: Návrhář zobrazení
+              href: platform/view-designer.md
+            - name: Referenční informace k dlaždicím
+              href: platform/view-designer-tiles.md
+            - name: Referenční informace k části vizualizace
+              href: platform/view-designer-parts.md
+            - name: Filtry
+              href: platform/view-designer-filters.md
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna

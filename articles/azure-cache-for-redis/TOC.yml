@@ -72,7 +72,9 @@
           href: cache-how-to-geo-replication.md
         - name: Uložení s využitím rezervované kapacity
           href: cache-reserved-pricing.md
-        - name: Migrace ze služby Managed Cache Service
+        - name: Migrace na Azure Cache for Redis
+          href: cache-migration-guide.md
+        - name: Migrace ze služby Managed Cache Service (zastaralá)
           href: cache-migrate-to-redis.md
     - name: Automatizace
       items:

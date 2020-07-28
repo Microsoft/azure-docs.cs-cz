@@ -1,10 +1,10 @@
-- name: Vydání Windows Virtual Desktopu z podzimu 2019
+- name: Windows Virtual Desktop (klasická verze)
   href: ../index.yml
 - name: Přehled
   items:
     - name: Co je Windows Virtual Desktop?
       href: ../overview.md
-    - name: Dokumentace k vydání z jara 2020
+    - name: Dokumentace k Windows Virtual Desktopu
       href: ../create-host-pools-azure-marketplace.md
 - name: Kurzy
   items:

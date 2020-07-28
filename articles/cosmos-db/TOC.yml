@@ -574,6 +574,9 @@
           href: role-based-access-control.md
         - href: cosmos-db-advanced-threat-protection.md
           name: Rozšířená ochrana před internetovými útoky
+        - name: Mechanismy zabezpečení služby Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: Standardní hodnoty zabezpečení
           href: security-baseline.md
     - name: Připravenost pro podnikové zpracování
@@ -988,7 +991,7 @@
           href: how-to-manage-indexing-policy.md
         - name: Definování jedinečných klíčů
           href: how-to-define-unique-keys.md
-    - name: Řešení potíží s výkonem
+    - name: Výkon
       items:
         - name: Dotaz
           items:
@@ -996,28 +999,20 @@
               href: profile-sql-api-query.md
             - name: Ladění výkonu dotazů
               href: sql-api-query-metrics.md
-            - name: Řešení potíží s výkonem dotazů
-              href: troubleshoot-query-performance.md
         - name: .NET
           items:
             - name: Tipy ke zvýšení výkonu pro .NET SDK v3
               href: performance-tips-dotnet-sdk-v3-sql.md
             - name: Tipy ke zvýšení výkonu sadu .NET SDK v2
               href: performance-tips.md
-            - name: Řešení potíží se sadou .NET SDK
-              href: troubleshoot-dot-net-sdk.md
         - name: Java
           items:
             - name: Tipy ke zvýšení výkonu pro Java SDK v4
               href: performance-tips-java-sdk-v4-sql.md
-            - name: Řešení potíží se sadou Java SDK v4
-              href: troubleshoot-java-sdk-v4-sql.md
             - name: Sada Async Java SDK v2
               href: performance-tips-async-java.md
             - name: Sada Sync Java SDK v2
               href: performance-tips-java.md
-            - name: Řešení potíží – sada Async Java SDK v2
-              href: troubleshoot-java-async-sdk.md
         - name: Test výkonu – ukázková aplikace
           href: performance-testing.md
         - name: Nákladově efektivní čtení a zápisy
@@ -1026,6 +1021,36 @@
       items:
         - name: Migrace na Java V4 SDK
           href: migrate-java-v4-sdk.md
+    - name: Řešení potíží
+      items:
+        - name: Běžné chyby
+          items:
+            - name: Řešení potíží s výkonem dotazů
+              href: troubleshoot-query-performance.md
+            - name: Řešení potíží s časovým limitem žádosti o službu
+              href: troubleshoot-request-timeout.md
+            - name: Řešení potíží s příliš vysokou frekvencí požadavků
+              href: troubleshoot-request-rate-too-large.md
+            - name: Řešení potíží s nenalezením
+              href: troubleshoot-not-found.md
+            - name: Řešení potíží s neautorizací
+              href: troubleshoot-unauthorized.md
+        - name: .NET
+          items:
+            - name: Obecné řešení potíží se sadou .NET SDK
+              href: troubleshoot-dot-net-sdk.md
+            - name: Řešení potíží s příliš velkou hlavičkou požadavku
+              href: troubleshoot-dot-net-sdk-request-header-too-large.md
+            - name: Řešení potíží s časovým limitem požadavku
+              href: troubleshoot-dot-net-sdk-request-timeout.md
+            - name: Řešení potíží s nedostupností služby
+              href: troubleshoot-service-unavailable.md
+        - name: .Java
+          items:
+            - name: Řešení potíží se sadou Java SDK v4
+              href: troubleshoot-java-sdk-v4-sql.md
+            - name: Řešení potíží – sada Async Java SDK v2
+              href: troubleshoot-java-async-sdk.md
     - name: Kanál změn
       items:
         - name: Protokoly triggerů služby Azure Cosmos DB

@@ -121,7 +121,7 @@
                   href: ./partner-center-portal/create-azure-vm-technical-asset.md
                 - name: Nejčastější dotazy k technickým prostředkům virtuálního počítače Azure
                   href: ./partner-center-portal/common-issues-during-vhd-creation.md
-                - name: Certifikace image virtuálního počítače Azure
+                - name: Testovací virtuální počítač nasazený z VHD
                   href: ./partner-center-portal/azure-vm-image-certification.md
                 - name: Identifikátor URI sdíleného přístupového podpisu
                   items:
