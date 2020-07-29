@@ -13,6 +13,7 @@ ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 3e1c67ee91298b9e8d0c3c427988c9966771aeaa
 ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "85920560"

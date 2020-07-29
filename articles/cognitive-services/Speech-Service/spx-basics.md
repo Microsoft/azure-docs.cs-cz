@@ -12,6 +12,7 @@ ms.date: 04/04/2020
 ms.author: trbye
 ms.openlocfilehash: 3af3134f715dc124b4aee3ac0a7bfbf11df6a462
 ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/01/2020
 ms.locfileid: "85801865"
