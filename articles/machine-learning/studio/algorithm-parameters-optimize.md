@@ -1,6 +1,5 @@
 ---
-title: Optimalizovat algoritmy
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (Classic): optimalizace algoritmů – Azure'
 description: Vysvětluje, jak zvolit optimální sadu parametrů pro algoritmus v Azure Machine Learning Studio (Classic).
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 52853bb14b49d429100dabeffc46661289f55c84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc0e003e7c767fb3441e26787f5687473ac51f44
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711200"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292969"
 ---
-# <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio-classic"></a>Výběr parametrů pro optimalizaci algoritmů v Azure Machine Learning Studio (Classic)
+# <a name="choose-parameters-to-optimize-your-algorithms-in-machine-learning-studio-classic"></a>Výběr parametrů pro optimalizaci algoritmů v Machine Learning Studio (Classic)
+
+**platí pro:** ![ žádná](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasická) 
 
 Toto téma popisuje, jak zvolit správnou sadu parametrů pro algoritmus v Azure Machine Learning Studio (Classic). Většina algoritmů strojového učení má nastavené parametry. Při výukovém modelu je nutné zadat hodnoty pro tyto parametry. Účinnost proučeného modelu závisí na zvolených parametrech modelu. Proces nalezení optimální sady parametrů je známý jako *Výběr modelu*.
 

@@ -1,0 +1,198 @@
+---
+title: Jak spravovat IoT technologie Plug and Play digitálních vláken
+description: Jak spravovat zařízení IoT technologie Plug and Play ve verzi Preview pomocí digitálních vláken API
+author: prashmo
+ms.author: prashmo
+ms.date: 07/20/2020
+ms.topic: how-to
+ms.service: iot-pnp
+services: iot-pnp
+ms.openlocfilehash: f86bf17c34d88fa48df4933e979a590fbc89820b
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87352162"
+---
+# <a name="manage-iot-plug-and-play-digital-twins"></a>Správa IoT technologie Plug and Play digitálních vláken
+
+IoT technologie Plug and Play podporuje **získání digitálního** zdvojených operací a **aktualizaci digitálních** vláken, které umožňují spravovat digitální vlákna. Můžete použít buď [rozhraní REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin) , nebo jednu ze [sad SDK služby](libraries-sdks.md).
+
+V době psaní je digitální nevlákenná verze API pro verzi Public Preview `2020-05-31-preview` .
+
+## <a name="update-a-digital-twin"></a>Aktualizace digitálního vlákna
+
+Zařízení IoT technologie Plug and Play implementuje Model popsaný v tématu [Digital NEDTDLed Definition Language v2 (digitální vlákna)](https://github.com/Azure/opendigitaltwins-dtdl). Vývojáři řešení můžou k aktualizaci stavu komponenty a vlastností digitálního vlákna použít **rozhraní API aktualizace digitálního vlákna** .
+
+Zařízení IoT technologie Plug and Play, které se používá jako příklad v tomto článku, implementuje [model řadiče teploty](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) s [termostatem](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) komponentami.
+
+Následující fragment kódu ukazuje reakci na žádost o **získání digitálního vlákna** formátovanou jako objekt JSON. Další informace o formátu digitálního vlákna najdete v tématu [vysvětlení technologie Plug and Play digitálních vláken v IoT](./concepts-digital-twin.md#digital-twin-json-format):
+
+```json
+{
+    "$dtId": "sample-device",
+    "serialNumber": "alwinexlepaho8329",
+    "thermostat1": {
+        "maxTempSinceLastReboot": 25.3,
+        "targetTemperature": 20.4,
+        "$metadata": {
+            "targetTemperature": {
+                "desiredValue": 20.4,
+                "desiredVersion": 4,
+                "ackVersion": 4,
+                "ackCode": 200,
+                "ackDescription": "Successfully executed patch",
+                "lastUpdateTime": "2020-07-17T06:11:04.9309159Z"
+            },
+            "maxTempSinceLastReboot": {
+                "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
+            }
+        }
+    },
+    "$metadata": {
+        "$model": "dtmi:com:example:TemperatureController;1",
+        "serialNumber": {
+            "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
+        }
+    }
+}
+```
+
+Digitální vlákna umožňují aktualizovat celou komponentu nebo vlastnost pomocí [opravy JSON](http://jsonpatch.com/).
+
+Můžete například aktualizovat `targetTemperature` vlastnost následujícím způsobem:
+
+```json
+[
+    {
+        "op": "add",
+        "path": "/thermostat1/targetTemperature",
+        "value": 21.4
+    }
+]
+```
+
+Předchozí aktualizace nastaví požadovanou hodnotu vlastnosti v odpovídající úrovni kořenového adresáře nebo komponenty `$metadata` , jak je znázorněno v následujícím fragmentu kódu. IoT Hub aktualizuje požadovanou verzi vlastnosti:
+
+```json
+"thermostat1": {
+    "targetTemperature": 20.4,
+    "$metadata": {
+        "targetTemperature": {
+            "desiredValue": 21.4,
+            "desiredVersion": 5,
+            "ackVersion": 4,
+            "ackCode": 200,
+            "ackDescription": "Successfully executed patch",
+            "lastUpdateTime": "2020-07-17T06:11:04.9309159Z"
+        }
+    }
+}
+```
+
+### <a name="add-replace-or-remove-a-component"></a>Přidání, nahrazení nebo odebrání součásti
+
+Operace na úrovni součásti vyžadují prázdnou `$metadata` značku objektu v rámci hodnoty.
+
+Operace přidat nebo nahradit komponentu nastaví požadované hodnoty všech poskytovaných vlastností. Vymaže také požadované hodnoty pro všechny zapisovatelné vlastnosti, které nejsou součástí aktualizace.
+
+Odebrání komponenty vymaže požadované hodnoty všech vlastností, které jsou k zápisu k dispozici. Zařízení nakonec provede synchronizaci tohoto odebrání a zastaví vytváření sestav jednotlivých vlastností. Komponenta je pak odebrána z digitálního vlákna.
+
+Následující ukázka opravy JSON ukazuje, jak přidat, nahradit nebo odebrat komponentu:
+
+```json
+[
+    {
+        "op": "add",
+        "path": "/thermostat1",
+        "value": {
+            "targetTemperature": 21.4,
+            "anotherWritableProperty": 42,
+            "$metadata": {}
+        }
+    },
+    {
+        "op": "replace",
+        "path": "/thermostat1",
+        "value": {
+            "targetTemperature": 21.4,
+            "$metadata": {}
+        }
+    },
+    {
+        "op": "remove",
+        "path": "/thermostat2"
+    }
+]
+```
+
+### <a name="add-replace-or-remove-a-property"></a>Přidat, nahradit nebo odebrat vlastnost
+
+Operace přidat nebo nahradit nastaví požadovanou hodnotu vlastnosti. Zařízení může synchronizovat stav a ohlásit aktualizaci hodnoty spolu s `ack` kódem, verzí a popisem.
+
+Odebráním vlastnosti se vymaže požadovaná hodnota vlastnosti, pokud je nastavená. Zařízení pak může tuto vlastnost zastavit a tato vlastnost je odebrána z kořenové úrovně nebo ze součásti. Pokud je tato vlastnost poslední v součásti, je odebrána i tato součást.
+
+Následující ukázka opravy JSON ukazuje, jak přidat, nahradit nebo odebrat vlastnost v rámci součásti:
+
+```json
+[
+    {
+        "op": "add",
+        "path": "/thermostat1/targetTemperature",
+        "value": 21.4
+    },
+    {
+        "op": "replace",
+        "path": "/thermostat1/anotherWritableProperty",
+        "value": 42
+    },
+    {
+        "op": "remove",
+        "path": "/thermostat2/targetTemperature",
+    }
+]
+```
+
+### <a name="rules-for-setting-the-desired-value-of-a-digital-twin-property"></a>Pravidla pro nastavení požadované hodnoty vlastnosti digitálního vlákna
+
+**Název**
+
+Název komponenty nebo vlastnosti musí být platný název DTDL v2.
+
+Povolené znaky jsou a-z, A-Z, 0-9 (nikoli jako první znak) a podtržítko (nikoli jako první nebo poslední znak).
+
+Název může být 1-64 znaků dlouhý.
+
+**Hodnota vlastnosti**
+
+Hodnotou musí být platná [vlastnost DTDL v2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#property).
+
+Jsou podporovány všechny primitivní typy. V rámci složitých typů se podporují výčty, mapy a objekty. Další informace najdete v tématu [schémata DTDL v2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#schemas).
+
+Vlastnosti nepodporují pole ani žádné složité schéma s polem.
+
+Pro komplexní objekt je podporována maximální hloubka pěti úrovní.
+
+Všechny názvy polí v rámci složitého objektu by měly být platnými názvy DTDL v2.
+
+Všechny klíče mapy by měly být platnými názvy DTDL v2.
+
+## <a name="troubleshoot-update-digital-twin-api-errors"></a>Řešení potíží s aktualizací digitálního vlákna API – chyby
+
+Během veřejné verze Preview vygeneruje rozhraní API pro aktualizaci digitální dvojitou zprávu následující obecnou chybovou zprávu:
+
+`ErrorCode:ArgumentInvalid;'{propertyName}' exists within the device twin and is not digital twin conformant property. Please refer to aka.ms/dtpatch to update this to be conformant.`
+
+Ujistěte se, že oprava aktualizace dodržuje [pravidla pro nastavení požadované hodnoty vlastnosti digitálního vlákna](#rules-for-setting-the-desired-value-of-a-digital-twin-property) .
+
+Když aktualizujete komponentu, ujistěte se, že je nastaven [prázdný objekt $metadata značka](#add-replace-or-remove-a-component) .
+
+Aktualizace můžou selhat, pokud se hodnoty hlášené zařízením neshodují s [konvencemi Plug and Play IoT](./concepts-convention.md#writable-properties).
+
+## <a name="next-steps"></a>Další kroky
+
+Teď, když jste se naučili o digitálních prostředcích, tady je několik dalších prostředků:
+
+- [Interakce se zařízením z vašeho řešení](quickstart-service-node.md)
+- [Digitální zdvojené REST API IoT](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
+- [Průzkumník Azure IoT](howto-use-iot-explorer.md)

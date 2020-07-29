@@ -3,12 +3,12 @@ title: Označení prostředků, skupin prostředků a předplatných pro logicko
 description: Ukazuje, jak použít značky k uspořádání prostředků Azure k fakturaci a správě.
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: fa56fac79855b438a0cd1c10ed1008d69ca3e2fe
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 08612831007eeba781a473ca704d92a52ab0a638
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323872"
+ms.locfileid: "87337530"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Použití značek k uspořádání prostředků Azure a hierarchie správy
 
@@ -17,7 +17,7 @@ Značky můžete použít pro prostředky Azure, skupiny prostředků a odběry 
 Doporučení, jak implementovat strategii označování, najdete v článku [Průvodce vytvářením názvů prostředků a označování označením](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json).
 
 > [!IMPORTANT]
-> V názvech značek se operace nerozlišují malá a velká písmena. Značka s názvem značky, bez ohledu na velikost písmen, je aktualizována nebo načtena. Poskytovatel prostředků ale může uchovávat velká a malá písmena, která zadáte pro název značky. V sestavách nákladů se zobrazí velká a malá písmena.
+> V názvech značek se operace nerozlišují malá a velká písmena. Značka s názvem značky, bez ohledu na velikost písmen, je aktualizována nebo načtena. Poskytovatel prostředků ale může zachovat velikost písmen, které zadáte pro název značky. V sestavách nákladů se zobrazí velká a malá písmena.
 > 
 > Hodnoty značek rozlišují velká a malá písmena.
 

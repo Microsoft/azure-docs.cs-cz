@@ -1,6 +1,6 @@
 ---
-title: Vytvoření virtuálního počítače s Windows na úrovni 2019 PowerShellu pro fond hostitelů – Azure
-description: Postup vytvoření fondu hostitelů na virtuálním počítači s Windows pomocí rutin prostředí PowerShell.
+title: Vytvoření hostitelského fondu virtuálních počítačů s Windows (Classic) – Azure
+description: Postup vytvoření fondu hostitelů ve virtuální ploše Windows (Classic) pomocí rutin prostředí PowerShell.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 552a3fdd20d67d81fe0c6a81a965fd3231da643d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7bc1e229711ef24b07641c5767f5f60c17a3b97c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527638"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291284"
 ---
-# <a name="create-a-host-pool-with-powershell"></a>Vytvoření fondu hostitelů pomocí PowerShellu
+# <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-powershell"></a>Vytvoření fondu hostitelů ve virtuální ploše Windows (Classic) pomocí PowerShellu
 
 >[!IMPORTANT]
->Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objekty virtuálních klientů Windows, které byly zavedeny v aktualizaci jarní 2020, přečtěte si [Tento článek](../create-host-pools-powershell.md).
+>Tento obsah se vztahuje na virtuální plochu Windows (Classic), která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objektů virtuálních klientů Windows, přečtěte si [Tento článek](../create-host-pools-powershell.md).
 
 Fondy hostitelů jsou kolekce jednoho nebo více identických virtuálních počítačů v prostředích klienta virtuálních počítačů s Windows. Každý fond hostitelů může obsahovat skupinu aplikací, se kterou můžou uživatelé interaktivně pracovat, jako by na fyzickém počítači.
 

@@ -8,11 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7c83bc55a00774966681973b95d18cdc58dba19c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: ead175cbcaa9467cb5263ad95100facdda096991
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037201"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337802"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Řešení potíží s Azure Stream Analytics dotazy
 
@@ -27,9 +28,9 @@ Tento článek popisuje běžné problémy s vývojem Azure Stream Analyticsch d
     - Na Azure Portal na kartě **dotaz** vyberte **test**. K [otestování dotazu](stream-analytics-test-query.md)použijte stažená ukázková data. Prověřte případné chyby a pokuste se je opravit.   
     - Dotaz můžete také [místně otestovat](stream-analytics-live-data-local-testing.md) pomocí Azure Stream Analyticsch nástrojů pro aplikaci Visual Studio nebo [Visual Studio Code](visual-studio-code-local-run-live-input.md). 
 
-2.  [Ladit dotazy krok za krokem místně pomocí diagramu úloh](debug-locally-using-job-diagram.md) v nástroji Azure Stream Analytics Tools for Visual Studio. Diagram úlohy ukazuje, jak toky dat ze vstupních zdrojů (centra událostí, IoT Hub atd.) prostřednictvím více kroků dotazů a nakonec až po výstupní jímky. Každý krok dotazu je namapován na dočasnou sadu výsledků definovanou ve skriptu pomocí příkazu WITH. Můžete zobrazit data a také metriky v každé mezilehlé sadě výsledků, abyste našli zdroj problému.
+2.  [Ladit dotazy krok za krokem místně pomocí diagramu úloh](debug-locally-using-job-diagram-vs-code.md) v Azure Stream Analytics nástrojů pro Visual Studio Code. Diagram úlohy ukazuje, jak toky dat ze vstupních zdrojů (centra událostí, IoT Hub atd.) prostřednictvím více kroků dotazů a nakonec až po výstupní jímky. Každý krok dotazu je namapován na dočasnou sadu výsledků definovanou ve skriptu pomocí příkazu WITH. Můžete zobrazit data a také metriky v každé mezilehlé sadě výsledků, abyste našli zdroj problému.
 
-    ![Výsledek náhledu diagramu úlohy](./media/debug-locally-using-job-diagram/preview-result.png)
+    ![Výsledek náhledu diagramu úlohy](./media/debug-locally-using-job-diagram-vs-code/preview-result.png)
 
 3.  Pokud používáte [**časové razítko**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics), ověřte, zda mají události časové razítko větší, než je [čas spuštění úlohy](stream-analytics-out-of-order-and-late-events.md).
 
@@ -100,7 +101,7 @@ Tentokrát se data ve výstupu naformátují a vyplní podle očekávání.
 
 ![VYBRAT do konečné tabulky Stream Analytics dotaz](./media/stream-analytics-select-into/stream-analytics-select-into-final-table.png)
 
-## <a name="get-help"></a>Získání pomoci
+## <a name="get-help"></a>Podpora
 
 Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 

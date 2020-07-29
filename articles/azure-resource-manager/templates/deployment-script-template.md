@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/16/2020
+ms.date: 07/24/2020
 ms.author: jgao
-ms.openlocfilehash: fcdcf563cd88cbf6604877636432a406c1960cff
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 4094e610bb290fc11656dc192f3d0a495f679dc5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117039"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291796"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Použití skriptů nasazení v šablonách (Preview)
 
@@ -38,7 +38,7 @@ Prostředek skriptu nasazení je k dispozici pouze v oblastech, kde je k dispozi
 > [!IMPORTANT]
 > K provádění skriptů a odstraňování potíží je potřeba účet úložiště a instance kontejneru. Máte možnost zadat existující účet úložiště, jinak se služba skriptu automaticky vytvoří účet úložiště spolu s instancí kontejneru. Tyto dva automaticky vytvořené prostředky obvykle odstraní služba skriptu, když se spuštění skriptu nasazení dostane do stavu terminálu. Budou se vám účtovat prostředky, dokud se prostředky neodstraní. Další informace najdete v tématu [vyčištění prostředků skriptů nasazení](#clean-up-deployment-script-resources).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - **Spravovaná identita přiřazená uživatelem s rolí přispěvatele do cílové skupiny prostředků**. Tato identita se používá ke spouštění skriptů nasazení. K provedení operací mimo skupinu prostředků je potřeba udělit další oprávnění. Například pokud chcete vytvořit novou skupinu prostředků, přiřaďte identitu k úrovni předplatného.
 
@@ -147,7 +147,7 @@ Podrobnosti hodnoty vlastnosti:
 
     Pokud argumenty obsahují řídicí znaky, použijte [JsonEscaper](https://www.jsonescaper.com/) pro dvojitou sekvenci znaků. Vložte původní řídicí řetězec do nástroje a pak vyberte **Escape**.  Nástroj vypíše řetězec s dvojitým řídicím znakem. Například v předchozí ukázkové šabloně je argumentem **název \\ "Jan dole \\ "**.  Řetězec s řídicím řetězcem je **name \\ \\ \\ "Jan dole \\ \\ \\ "**.
 
-    Chcete-li předat parametr šablony ARM typu Object jako argument, převeďte objekt na řetězec pomocí funkce [String ()](./template-functions-string.md#string) a pak použijte funkci [Replace ()](./template-functions-string.md#replace) , která nahradí všechny ** \\ "** into ** \\ \\ \\ "**. Příklad:
+    Chcete-li předat parametr šablony ARM typu Object jako argument, převeďte objekt na řetězec pomocí funkce [String ()](./template-functions-string.md#string) a pak použijte funkci [Replace ()](./template-functions-string.md#replace) , která nahradí všechny ** \\ "** into ** \\ \\ \\ "**. Například:
 
     ```json
     replace(string(parameters('tables')), '\"', '\\\"')
@@ -203,7 +203,7 @@ Výstup bude vypadat následovně:
 
 ## <a name="use-external-scripts"></a>Použití externích skriptů
 
-Kromě vložených skriptů můžete použít také externí soubory skriptu. Podporují se jenom primární skripty PowerShellu s příponou souboru **ps1** . U skriptů CLI můžou primární skripty mít jakákoli rozšíření (nebo bez přípony), pokud jsou tyto skripty platné bash skripty. Chcete-li použít externí soubory skriptu, nahraďte parametr `scriptContent` `primaryScriptUri` . Příklad:
+Kromě vložených skriptů můžete použít také externí soubory skriptu. Podporují se jenom primární skripty PowerShellu s příponou souboru **ps1** . U skriptů CLI můžou primární skripty mít jakákoli rozšíření (nebo bez přípony), pokud jsou tyto skripty platné bash skripty. Chcete-li použít externí soubory skriptu, nahraďte parametr `scriptContent` `primaryScriptUri` . Například:
 
 ```json
 "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
@@ -288,7 +288,7 @@ Chcete-li zadat existující účet úložiště, přidejte následující JSON 
 ```
 
 - **storageAccountName**: zadejte název účtu úložiště.
-- **storageAccountKey "**: zadejte jeden z klíčů účtu úložiště. [`listKeys()`](./template-functions-resource.md#listkeys)K načtení klíče lze použít funkci. Příklad:
+- **storageAccountKey "**: zadejte jeden z klíčů účtu úložiště. [`listKeys()`](./template-functions-resource.md#listkeys)K načtení klíče lze použít funkci. Například:
 
     ```json
     "storageAccountSettings": {
@@ -335,7 +335,7 @@ Na stránce Přehled se zobrazí některé důležité informace o prostředku, 
 
 V nabídce vlevo můžete zobrazit obsah skriptu nasazení, argumenty předané skriptu a výstup.  Můžete také exportovat šablonu pro skript nasazení, včetně skriptu nasazení.
 
-### <a name="use-powershell"></a>Použití PowerShellu
+### <a name="use-powershell"></a>Použití prostředí PowerShell
 
 Pomocí Azure PowerShell můžete spravovat skripty nasazení v rámci předplatného nebo oboru skupiny prostředků:
 
@@ -556,48 +556,7 @@ Spuštění skriptu nasazení je operace idempotentní. Pokud se nezměnila žá
 
 ## <a name="configure-development-environment"></a>Konfigurace vývojového prostředí
 
-Jako vývojové prostředí skriptu nasazení můžete použít předem nakonfigurovanou image kontejneru Docker. Pokud chcete nainstalovat Docker, přečtěte si téma [získání Docker](https://docs.docker.com/get-docker/).
-Také je nutné nakonfigurovat sdílení souborů pro připojení adresáře, který obsahuje skripty nasazení, do kontejneru Docker.
-
-1. Načíst image kontejneru skriptu nasazení do místního počítače:
-
-    ```command
-    docker pull mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
-    ```
-
-    V příkladu se používá verze PowerShellu 2.7.0.
-
-    Načtení image CLI z Microsoft Container Registry (MCR):
-
-    ```command
-    docker pull mcr.microsoft.com/azure-cli:2.0.80
-    ```
-
-    V tomto příkladu je použita verze rozhraní příkazového řádku 2.0.80. Skript nasazení používá výchozí image kontejnerů rozhraní příkazového řádku, které najdete [tady](https://hub.docker.com/_/microsoft-azure-cli).
-
-1. Spusťte image Docker lokálně.
-
-    ```command
-    docker run -v <host drive letter>:/<host directory name>:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
-    ```
-
-    Nahraďte ** &lt; písmeno hostitelského ovladače>** a ** &lt; název adresáře hostitele>** existující složkou na sdílené jednotce.  Namapuje složku do složky **/data** v kontejneru. Příklady pro mapování D:\docker:
-
-    ```command
-    docker run -v d:/docker:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
-    ```
-
-    **–** znamená, že udržuje image kontejneru aktivní.
-
-    Příklad rozhraní příkazového řádku:
-
-    ```command
-    docker run -v d:/docker:/data -it mcr.microsoft.com/azure-cli:2.0.80
-    ```
-
-1. Následující snímek obrazovky ukazuje, jak spustit skript prostředí PowerShell s tím, že na sdílené jednotce máte soubor helloworld.ps1.
-
-    ![Správce prostředků skript nasazení skriptu Docker cmd](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
+Můžete použít předem nakonfigurovanou image kontejneru jako vývojové prostředí skriptu nasazení. Další informace najdete v tématu [Konfigurace vývojového prostředí pro skripty nasazení v šablonách](./deployment-script-template-configure-dev.md).
 
 Po úspěšném otestování skriptu ho můžete použít jako skript nasazení v šablonách.
 
@@ -618,8 +577,8 @@ Po úspěšném otestování skriptu ho můžete použít jako skript nasazení 
 | DeploymentScriptStorageAccountInvalidAccessKey | Pro existující účet úložiště je zadaný neplatný přístupový klíč. |
 | DeploymentScriptStorageAccountInvalidAccessKeyFormat | Neplatný formát klíče účtu úložiště Viz [Správa přístupových klíčů účtu úložiště](../../storage/common/storage-account-keys-manage.md). |
 | DeploymentScriptExceededMaxAllowedTime | Doba spuštění skriptu nasazení překročila hodnotu časového limitu zadanou v definici prostředku skriptu nasazení. |
-| DeploymentScriptInvalidOutputs | Výstupy skriptu nasazení nejsou platným objektem JSON. |
-| DeploymentScriptContainerInstancesServiceLoginFailure | Uživatelem přiřazená identita se nemohla přihlásit po deseti pokusech o 1 minutový interval. |
+| DeploymentScriptInvalidOutputs | Výstup skriptu nasazení není platný objekt JSON. |
+| DeploymentScriptContainerInstancesServiceLoginFailure | Uživatelem přiřazená identita se nemohla přihlásit po 10 pokusech o interval 1 minuty. |
 | DeploymentScriptContainerGroupNotFound | Skupina kontejnerů vytvořená službou skriptu nasazení byla odstraněna externím nástrojem nebo procesem. |
 | DeploymentScriptDownloadFailure | Nepovedlo se stáhnout podpůrný skript. Viz [použití podpůrného skriptu](#use-supporting-scripts).|
 | DeploymentScriptError | V uživatelském skriptu došlo k chybě. |

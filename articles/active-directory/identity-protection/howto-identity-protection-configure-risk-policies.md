@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e134c2e49df5b53ed37acddd86e41af17f43a048
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54a6c455f3702433398035a2eb6398c39b609ce9
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84464160"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337445"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>Postupy: konfigurace a povolení zásad rizik
 
@@ -54,7 +55,7 @@ Pokud chcete povolit rizika uživatele a zásady rizik přihlašování, proveď
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
 1. Přejděte na **Azure Active Directory**  >  **Security**  >  **Přehled ochrany identit**zabezpečení  >  **Overview**.
-1. Vyberte **Konfigurovat zásady rizik uživatelů**.
+1. Vyberte **zásady rizik uživatelů**.
    1. V části **přiřazení**
       1. **Uživatelé** – zvolte možnost **Všichni uživatelé** nebo **Vyberte jednotlivce a skupiny,** Pokud chcete omezit zavedení.
          1. Volitelně můžete vybrat možnost vyloučení uživatelů ze zásad.
@@ -63,7 +64,7 @@ Pokud chcete povolit rizika uživatele a zásady rizik přihlašování, proveď
       1. **Přístup** – doporučení Microsoftu je **Povolení přístupu** a **vyžadování změny hesla**.
    1. **Vyhovět zásadám**  -  **Zapnuto**
    1. **Uložit** – Tato akce vás vrátí na stránku **Přehled** .
-1. Vyberte **Konfigurovat zásady rizik přihlašování**.
+1. Vyberte **zásady rizik přihlašování**.
    1. V části **přiřazení**
       1. **Uživatelé** – zvolte možnost **Všichni uživatelé** nebo **Vyberte jednotlivce a skupiny,** Pokud chcete omezit zavedení.
          1. Volitelně můžete vybrat možnost vyloučení uživatelů ze zásad.

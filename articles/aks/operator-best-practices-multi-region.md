@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e4e2a1fc08851e4e625bfc59419fc274ebbce1c8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 578560eccb13ff4b9169e11b0674859acc1fc901
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251192"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285862"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro zajištění kontinuity podnikových procesů a zotavení po havárii ve službě Azure Kubernetes Service (AKS)
 
@@ -57,9 +57,9 @@ Traffic Manager provede hledání DNS a vrátí nejvhodnější koncový bod už
 
 Informace o nastavení koncových bodů a směrování najdete v tématu [Konfigurace metody směrování geografického provozu pomocí Traffic Manager](../traffic-manager/traffic-manager-configure-geographic-routing-method.md).
 
-### <a name="layer-7-application-routing-with-azure-front-door-service"></a>Směrování aplikace vrstvy 7 pomocí služby Azure front-dveří
+### <a name="application-routing-with-azure-front-door-service"></a>Směrování aplikací pomocí služby Azure front-dveří
 
-Traffic Manager používá k přenosu obrazce DNS (vrstva 3). [Služba front-dveří Azure](../frontdoor/front-door-overview.md) poskytuje možnost směrování HTTP/HTTPS (vrstva 7). Mezi další funkce služby front-dveří Azure patří ukončení protokolu TLS, vlastní doména, Firewall webových aplikací, přepsání adresy URL a spřažení relací. Zkontrolujte potřeby provozu aplikace a zjistěte, které řešení je nejvhodnější.
+Pomocí rozděleného protokolu libovolného vysílání založeného na protokolu TCP zajišťuje [Služba front](../frontdoor/front-door-overview.md) -Endu Azure, aby se koncoví uživatelé mohli rychle připojit k nejbližšímu bodu POP na dvířka (bod přítomnosti). Mezi další funkce služby front-dveří Azure patří ukončení protokolu TLS, vlastní doména, Firewall webových aplikací, přepsání adresy URL a spřažení relací. Zkontrolujte potřeby provozu aplikace a zjistěte, které řešení je nejvhodnější.
 
 ### <a name="interconnect-regions-with-global-virtual-network-peering"></a>Oblasti propojení s globálním partnerským vztahem virtuální sítě
 

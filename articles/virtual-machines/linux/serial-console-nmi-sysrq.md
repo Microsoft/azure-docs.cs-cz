@@ -3,16 +3,16 @@ title: Sériová konzola Azure pro volání SysRq a NMI
 description: Použití sériové konzoly pro volání SysRq a NMI na virtuálních počítačích Azure.
 author: asinn826
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 0a9ced48295fa4c396ed6c72fe021ed1e1be484b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d54d4266e4d1078676601a58ca9ac78ec3d4821b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86501887"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292217"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Použití sériové konzoly pro volání nemaskovaných přerušení a SysRq
 

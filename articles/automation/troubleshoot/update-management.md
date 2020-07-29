@@ -5,12 +5,12 @@ services: automation
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: 74250a54d7b835ceb37614450de07e9e3baefd83
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 1ec2aed0a2cceebe4685cf75c7007d1ce0785615
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86183150"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87293085"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Řešení problémů s Update Managementem
 
@@ -150,7 +150,7 @@ Chcete-li zaregistrovat poskytovatele prostředků služby Automation, postupujt
 
 1. V seznamu služeb Azure v dolní části portálu vyberte **všechny služby**a potom vyberte **předplatná** ve skupině obecné služby.
 
-2. Vyberte své předplatné.
+2. Vyberte předplatné.
 
 3. V části **Nastavení**vyberte **poskytovatelé prostředků**.
 
@@ -242,7 +242,7 @@ Použijte následující postup, chcete-li zjistit, zda dotazy fungují správn�
     | project id, location, name, tags
     ```
 
-   Zde naleznete příklad:
+   Tady je příklad:
 
     ```kusto
     where (subscriptionId in~ ("20780d0a-b422-4213-979b-6c919c91ace1", "af52d412-a347-4bc6-8cb7-4780fbb00490") and type =~ "microsoft.compute/virtualmachines" and properties.storageProfile.osDisk.osType == "Windows" and resourceGroup in~ ("testRG","withinvnet-2020-01-06-10-global-resources-southindia") and location in~ ("australiacentral","australiacentral2","brazilsouth") )
@@ -387,7 +387,7 @@ K této chybě může dojít z některého z následujících důvodů:
 * Počítač je vypnutý a nedosažitelný.
 * Počítač má problém s připojením k síti, a proto je hybridní pracovní proces na počítači nedosažitelný.
 * Byla zjištěna aktualizace MMA, která změnila ID zdrojového počítače.
-* Pokud jste dosáhli limitu 2000 souběžných úloh v účtu Automation, vaše spuštění aktualizace bylo omezené. Každé nasazení se považuje za úlohu a každý počítač v nasazení aktualizace se počítá jako úloha. Jakékoli jiné úlohy služby Automation nebo nasazení aktualizací, které aktuálně běží ve vašem účtu Automation, se počítá s limitem souběžných úloh.
+* Pokud jste dosáhli limitu 200 souběžných úloh v účtu Automation, vaše spuštění aktualizace bylo omezené. Každé nasazení se považuje za úlohu a každý počítač v nasazení aktualizace se počítá jako úloha. Jakékoli jiné úlohy služby Automation nebo nasazení aktualizací, které aktuálně běží ve vašem účtu Automation, se počítá s limitem souběžných úloh.
 
 ### <a name="resolution"></a>Řešení
 

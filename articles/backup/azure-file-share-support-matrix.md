@@ -4,12 +4,12 @@ description: Obsahuje souhrn nastavení podpory a omezení při zálohování sd
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: d0172ecab682b69f255eedb9270a6208b52dac45
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7d01f0f64fd183204fb7617040325e7d1b6e553e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514542"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289500"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Matice podpory pro zálohování sdílených složek Azure
 
@@ -20,10 +20,6 @@ ms.locfileid: "86514542"
 ### <a name="ga-regions-for-azure-file-shares-backup"></a>Oblasti GA pro zálohování sdílených složek Azure
 
 Zálohování sdílených složek Azure je k dispozici ve všech oblastech **s výjimkou** : Německo – střed (svrchovan), Německo – Severovýchod (svrchovan), Čína – východ Čína – východ 2 Čína – sever Čína – sever 2 US gov – Iowa
-
-### <a name="supported-regions-for-accidental-delete-protection"></a>Podporované oblasti pro náhodné odstranění ochrany
-
-Středozápadní USA, Austrálie, jižní východ, Kanada – střed Středozápadní USA, Indie – jih, Střed USA – sever, Japonsko – východ, Brazílie – jih, Střed USA – jih, Austrálie – východ, Východní USA, Východní USA 2
 
 ## <a name="supported-storage-accounts"></a>Podporované účty úložiště
 

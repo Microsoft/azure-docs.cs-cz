@@ -1,37 +1,37 @@
 ---
-title: Metody ověřování
+title: Ověřování pomocí map Microsoft Azure
 titleSuffix: Azure Maps
-description: V tomto článku se dozvíte o ověřování Azure Active Directory a sdíleného klíče. Oba se používají pro služby Microsoft Azure Maps. Přečtěte si, jak získat Azure Maps klíč předplatného.
+description: V tomto článku se dozvíte o ověřování Azure Active Directory a sdíleného klíče.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 06/12/2020
+ms.date: 07/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: e270a9a1a773442a4d1d28d9bbfe37639cac7c65
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: af3f9b4595be5af2477fdbef4e5f0a15224e8a93
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133380"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285828"
 ---
 # <a name="authentication-with-azure-maps"></a>Ověřování s využitím Azure Maps
 
-Azure Maps podporuje dva způsoby ověření požadavků: ověřování prostřednictvím sdíleného klíče a ověřování [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) . Tento článek popisuje tyto metody ověřování, které vám pomůžou s implementací služby Azure Maps Services.
+Azure Maps podporuje dva způsoby ověření požadavků: ověřování prostřednictvím sdíleného klíče a ověřování [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) . Tento článek vysvětluje obě metody ověřování, které vám pomůžou s implementací služby Azure Maps Services.
 
 > [!NOTE]
-> Abychom vylepšili zabezpečenou komunikaci s Azure Maps, teď podporujeme protokol TLS (Transport Layer Security) 1,2 a vychystáme podporu TLS 1,0 a 1,1. Aby nedošlo k přerušení služeb, **aktualizujte servery a aplikace tak, aby používaly protokol TLS 1,2 před 2. dubna 2020**.  Pokud aktuálně používáte TLS 1. x, vyhodnoťte připravenost TLS 1,2 a vytvořte plán migrace s testováním popsaným v tématu [řešení potíží](https://docs.microsoft.com/security/solving-tls1-problem)s protokolem TLS 1,0.
+> Abychom vylepšili zabezpečenou komunikaci s Azure Maps, teď podporujeme protokol TLS (Transport Layer Security) 1,2 a vychystáme podporu TLS 1,0 a 1,1. Pokud aktuálně používáte TLS 1. x, vyhodnoťte připravenost TLS 1,2 a vytvořte plán migrace s testováním popsaným v tématu [řešení potíží](https://docs.microsoft.com/security/solving-tls1-problem)s protokolem TLS 1,0.
 
 ## <a name="shared-key-authentication"></a>Ověřování sdíleného klíče
 
- Primární a sekundární klíče jsou generovány po vytvoření účtu Azure Maps. Při volání Azure Maps s použitím ověřování pomocí sdíleného klíče doporučujeme použít primární klíč jako klíč předplatného. Ověřování pomocí sdíleného klíče předává klíč generovaný Azure Maps účtem ke službě Azure Maps. Pro každý požadavek na Azure Maps služby přidejte *klíč předplatného* jako parametr do adresy URL. Sekundární klíč lze použít ve scénářích, jako jsou například klíčové změny.  
+ Primární a sekundární klíče jsou generovány po vytvoření účtu Azure Maps. Při volání Azure Maps s ověřováním pomocí sdíleného klíče doporučujeme použít primární klíč jako klíč předplatného. Ověřování pomocí sdíleného klíče předává klíč generovaný Azure Maps účtem ke službě Azure Maps. Pro každý požadavek na Azure Maps služby přidejte *klíč předplatného* jako parametr do adresy URL. Sekundární klíč lze použít ve scénářích, jako jsou například klíčové změny.  
 
 Informace o zobrazení klíčů v Azure Portal najdete v tématu [Správa ověřování](https://aka.ms/amauthdetails).
 
-> [!Tip]
-> Doporučujeme pravidelně znovu generovat klíče. Máte k dispozici dva klíče, abyste mohli při opětovném generování druhé klávesy zachovat připojení s jedním klíčem. Když klíče znovu vygenerujete, budete muset aktualizovat všechny aplikace, které mají přístup k vašemu účtu, a to pomocí nových klíčů.
+> [!TIP]
+> Z bezpečnostních důvodů se doporučuje střídat mezi primárním a sekundárním klíčem. Pokud chcete otočit klíče, aktualizujte aplikaci tak, aby používala sekundární klíč, nasaďte a pak stisknutím tlačítka cyklus/obnovení vedle primárního klíče Vygenerujte nový primární klíč. Starý primární klíč bude zakázán. Další informace o rotaci klíčů najdete v tématu [nastavení Azure Key Vault s použitím rotace a auditování klíčů](https://docs.microsoft.com/azure/key-vault/secrets/key-rotation-log-monitoring) .
 
 ## <a name="azure-ad-authentication"></a>Ověřování Azure AD
 
@@ -64,7 +64,7 @@ Poté, co aplikace získá přístupový token, sada SDK nebo aplikace pošle po
 | x-MS-Client-ID | 30d7cc....9f55        |
 | Autorizace  | Nosič eyJ0e... HNIVN |
 
-> [!Note]
+> [!NOTE]
 > `x-ms-client-id`je identifikátor GUID založený na účtu Azure Maps, který se zobrazí na stránce ověřování Azure Maps.
 
 Tady je příklad žádosti o Azure Maps trase, která používá token nosiče Azure AD OAuth:
@@ -108,7 +108,7 @@ Informace o zobrazení nastavení RBAC najdete v tématu [Konfigurace RBAC pro A
 
 #### <a name="custom-role-definitions"></a>Definice vlastních rolí
 
-Jedním z aspektů zabezpečení aplikací je použít princip nejnižších oprávnění. Princip předpokládá, že by měl objekt zabezpečení mít povolený jenom přístup, který se vyžaduje, a žádný další přístup. Vytváření vlastních definic rolí může podporovat případy použití, které pro řízení přístupu vyžadují další členitost. Pokud chcete vytvořit definici vlastní role, můžete vybrat konkrétní akce dat, které chcete zahrnout nebo vyloučit z definice. 
+Jedním z aspektů zabezpečení aplikací je použít princip nejnižších oprávnění. Tento princip předpokládá, že by měl objekt zabezpečení mít povolený jenom přístup, který je povinný, a nemá žádný další přístup. Vytváření vlastních definic rolí může podporovat případy použití, které pro řízení přístupu vyžadují další členitost. Pokud chcete vytvořit definici vlastní role, můžete vybrat konkrétní datové akce, které se mají zahrnout nebo vyloučit z definice.
 
 Vlastní definice role se pak dá použít v přiřazení role pro libovolný objekt zabezpečení. Další informace o definicích vlastních rolí Azure najdete v tématu [vlastní role Azure](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).
 
@@ -123,16 +123,22 @@ Tady je několik ukázkových scénářů, ve kterých můžou vlastní role zle
 
 ### <a name="understanding-scope"></a>Porozumění oboru
 
-Při vytváření přiřazení role je tato definice definovaná v rámci hierarchie prostředků Azure. V horní části hierarchie je [skupina pro správu](https://docs.microsoft.com/azure/governance/management-groups/overview) a nejnižší je prostředek Azure, například účet Azure Maps.
+Při vytváření přiřazení role je tato definice definovaná v rámci hierarchie prostředků Azure. V horní části hierarchie je [skupina pro správu](https://docs.microsoft.com/azure/governance/management-groups/overview) a nejnižší je prostředek Azure, třeba účet Azure Maps.
 Přiřazení role ke skupině prostředků může povolit přístup k několika účtům Azure Maps nebo prostředkům ve skupině.
 
-> [!Tip]
-> Obecné doporučení Microsoftu přiřazuje přístup k oboru Azure Maps účtu, protože brání **neúmyslnému přístupu k ostatním účtům Azure Maps** existujícím ve stejném předplatném Azure.
+> [!TIP]
+> Obecné doporučení Microsoftu je přiřadit přístup k oboru účtu Azure Maps, protože brání **neúmyslnému přístupu k ostatním účtům Azure Maps** existujícím ve stejném předplatném Azure.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o RBAC najdete v tématu [Přehled řízení přístupu na základě rolí](https://docs.microsoft.com/azure/role-based-access-control/overview) .
+Další informace o RBAC najdete v tématu.
+> [!div class="nextstepaction"]
+> [Řízení přístupu na základě rolí](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-* Další informace o ověřování aplikace s využitím Azure AD a Azure Maps najdete v tématu [Správa ověřování v Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication).
+Další informace o ověřování aplikace pomocí Azure AD a Azure Maps najdete v tématu.
+> [!div class="nextstepaction"]
+> [Správa ověřování v Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)
 
-* Další informace o ověřování Azure Maps Ovládací prvek Mapa a Azure AD najdete v tématu [použití Ovládací prvek Mapa Azure Maps](https://aka.ms/amaadmc).
+Další informace o ověřování Ovládací prvek Mapa Azure Maps s Azure AD najdete v tématu.
+> [!div class="nextstepaction"]
+> [Použití Azure Maps Ovládací prvek Mapa](https://aka.ms/amaadmc)

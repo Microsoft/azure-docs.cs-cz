@@ -1,6 +1,6 @@
 ---
 title: Řešení potíží se síťovými virtuálními zařízení v Azure | Microsoft Docs
-description: Naučte se řešit potíže se síťovými virtuálními zařízení v Azure.
+description: Řešení problémů se síťovým virtuálním zařízením (síťové virtuální zařízení) v Azure a ověření základních požadavků na platformu Azure pro konfigurace síťové virtuální zařízení.
 services: virtual-network
 documentationcenter: na
 author: genlin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 353ab1f15a6df8700a9abda22233dc052aa10095
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 112792d4ccee2be7f85e6a5a6c0caf64df9a019e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130704"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286066"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Problémy se síťovými virtuálními zařízení v Azure
 

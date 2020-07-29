@@ -3,15 +3,15 @@ title: Scénáře zotavení po havárii
 description: Seznamte se s tím, co dělat v případě, že přerušení služby Azure ovlivňuje virtuální počítače Azure.
 author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/31/2017
 ms.author: cynthn
-ms.openlocfilehash: 6481bfe265786ca8b79f96bbcac7fe4d58076911
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 43e7cb0906fc6008e8bdbfafec84ecfd8e8be6b6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525819"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289674"
 ---
 # <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>Co když služba Azure ovlivňuje přerušení virtuálních počítačů Azure
 V Microsoftu pracujeme na tom, abychom zajistili, že naše služby jsou vždycky k dispozici, až je budete potřebovat. Síly nad rámec našeho ovládacího prvku někdy ovlivňují způsob, jakým způsobují neplánované výpadky služeb.

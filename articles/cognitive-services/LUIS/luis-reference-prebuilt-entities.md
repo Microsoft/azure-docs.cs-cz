@@ -9,18 +9,26 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 10/03/2019
+ms.date: 07/20/2020
 ms.author: diberry
-ms.openlocfilehash: 831e766fbb10d616b3fbaf8f878228a9a51ece37
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7ec9cd8aade1edb7d2df2bab5cec8de445af7e44
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090939"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337972"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Entity na jazykovou verzi v modelu LUIS
 
-Language Understanding (LUIS) poskytuje předem připravené entity. Když je do vaší aplikace zahrnutá předdefinovaná entita, LUIS zahrne do odpovědi koncového bodu odpovídající předpověď entit. Všechny příklady projevy jsou také označeny entitou. Chování předem sestavených entit **nelze** změnit. Není-li uvedeno jinak, jsou předem připravené entity k dispozici ve všech národních prostředích aplikace LUIS (kultury). V následující tabulce jsou uvedeny předem připravené entity, které jsou podporovány pro každou jazykovou verzi.
+Language Understanding (LUIS) poskytuje předem připravené entity.
+
+## <a name="entity-resolution"></a>Řešení entit
+Když je do vaší aplikace zahrnutá předem sestavená entita, LUIS zahrnuje odpovídající řešení entity v odpovědi koncového bodu. Všechny příklady projevy jsou také označeny entitou.
+
+Chování předem sestavených entit se nedá změnit, ale pokud chcete řešení zlepšit, [přidejte předem vytvořenou entitu jako funkci do entity strojového učení nebo subentity](luis-concept-entity-types.md#effective-prebuilt-entities).
+
+## <a name="availability"></a>Dostupnost
+Není-li uvedeno jinak, jsou předem připravené entity k dispozici ve všech národních prostředích aplikace LUIS (kultury). V následující tabulce jsou uvedeny předem připravené entity, které jsou podporovány pro každou jazykovou verzi.
 
 |Kultura|Subkultury|Poznámky|
 |--|--|--|
@@ -50,7 +58,7 @@ Podporovány jsou následující entity:
 [Měna (peníze)](luis-reference-prebuilt-currency.md):<br>měny<br>zlomková jednotka (např. haléře)  |    V2, V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2, V3   |
 [Dimenze](luis-reference-prebuilt-dimension.md):<br>svazků<br>oblast<br>hmotnost<br>informace (např. bitů/Byte)<br>Délka (např. měřič)<br>rychlost (např. km za hodinu)  |    V2, V3   |
-[E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
+[Elektron](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    -   |
 [Číselná](luis-reference-prebuilt-number.md)   |    V2, V3   |
@@ -72,7 +80,7 @@ Podporovány jsou následující entity:
 [Měna (peníze)](luis-reference-prebuilt-currency.md):<br>měny<br>zlomková jednotka (např. haléře)  |    V2, V3   |
 [Hodnotu](luis-reference-prebuilt-deprecated.md)   |    -   |
 [Dimenze](luis-reference-prebuilt-dimension.md):<br>svazků<br>oblast<br>hmotnost<br>informace (např. bitů/Byte)<br>Délka (např. měřič)<br>rychlost (např. km za hodinu)  |    V2, V3   |
-[E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
+[Elektron](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Číselná](luis-reference-prebuilt-number.md)   |    V2, V3   |
@@ -94,7 +102,7 @@ Podporovány jsou následující entity:
 [Měna (peníze)](luis-reference-prebuilt-currency.md):<br>měny<br>zlomková jednotka (např. haléře)  |    V2, V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2, V3   |
 [Dimenze](luis-reference-prebuilt-dimension.md):<br>svazků<br>oblast<br>hmotnost<br>informace (např. bitů/Byte)<br>Délka (např. měřič)<br>rychlost (např. km za hodinu)  |    V2, V3   |
-[E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
+[Elektron](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    V2, V3   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Číselná](luis-reference-prebuilt-number.md)   |    V2, V3   |
@@ -116,7 +124,7 @@ Podporovány jsou následující entity:
 [Měna (peníze)](luis-reference-prebuilt-currency.md):<br>měny<br>zlomková jednotka (např. haléře)  |    V2, V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2, V3   |
 [Dimenze](luis-reference-prebuilt-dimension.md):<br>svazků<br>oblast<br>hmotnost<br>informace (např. bitů/Byte)<br>Délka (např. měřič)<br>rychlost (např. km za hodinu)  |    V2, V3   |
-[E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
+[Elektron](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Číselná](luis-reference-prebuilt-number.md)   |    V2, V3   |
@@ -138,7 +146,7 @@ Podporovány jsou následující entity:
 [Měna (peníze)](luis-reference-prebuilt-currency.md):<br>měny<br>zlomková jednotka (např. haléře)  |    V2, V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2, V3   |
 [Dimenze](luis-reference-prebuilt-dimension.md):<br>svazků<br>oblast<br>hmotnost<br>informace (např. bitů/Byte)<br>Délka (např. měřič)<br>rychlost (např. km za hodinu)  |    V2, V3   |
-[E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
+[Elektron](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Číselná](luis-reference-prebuilt-number.md)   |    V2, V3   |
@@ -160,7 +168,7 @@ Podporovány jsou následující entity:
 [Měna (peníze)](luis-reference-prebuilt-currency.md):<br>měny<br>zlomková jednotka (např. haléře)  |    V2, V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2, V3   |
 [Dimenze](luis-reference-prebuilt-dimension.md):<br>svazků<br>oblast<br>hmotnost<br>informace (např. bitů/Byte)<br>Délka (např. měřič)<br>rychlost (např. km za hodinu)  |    V2, V3   |
-[E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
+[Elektron](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Číselná](luis-reference-prebuilt-number.md)   |    V2, V3   |
@@ -184,7 +192,7 @@ Podporovány jsou následující entity:
 [Měna (peníze)](luis-reference-prebuilt-currency.md):<br>měny<br>zlomková jednotka (např. haléře)  |    V2, V3   |
 [Hodnotu](luis-reference-prebuilt-deprecated.md)   |    -   |
 [Dimenze](luis-reference-prebuilt-dimension.md):<br>svazků<br>oblast<br>hmotnost<br>informace (např. bitů/Byte)<br>Délka (např. měřič)<br>rychlost (např. km za hodinu)  |    V2, V3   |
-[E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
+[Elektron](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Číselná](luis-reference-prebuilt-number.md)   |    V2, V3   |
@@ -206,7 +214,7 @@ Podporovány jsou následující entity:
 [Měna (peníze)](luis-reference-prebuilt-currency.md):<br>měny<br>zlomková jednotka (např. haléře)  |    V2,-   |
 [Hodnotu](luis-reference-prebuilt-deprecated.md)   |    -   |
 [Dimenze](luis-reference-prebuilt-dimension.md):<br>svazků<br>oblast<br>hmotnost<br>informace (např. bitů/Byte)<br>Délka (např. měřič)<br>rychlost (např. km za hodinu)  |    V2,-   |
-[E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
+[Elektron](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Číselná](luis-reference-prebuilt-number.md)   |    V2,-   |
@@ -228,7 +236,7 @@ Podporovány jsou následující entity:
 [Měna (peníze)](luis-reference-prebuilt-currency.md):<br>měny<br>zlomková jednotka (např. haléře)  |    -   |
 [Hodnotu](luis-reference-prebuilt-deprecated.md)   |    -   |
 [Dimenze](luis-reference-prebuilt-dimension.md):<br>svazků<br>oblast<br>hmotnost<br>informace (např. bitů/Byte)<br>Délka (např. měřič)<br>rychlost (např. km za hodinu)  |    -   |
-[E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
+[Elektron](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Číselná](luis-reference-prebuilt-number.md)   |    -   |
@@ -250,7 +258,7 @@ Podporovány jsou následující entity:
 [Měna (peníze)](luis-reference-prebuilt-currency.md):<br>měny<br>zlomková jednotka (např. haléře)  |    V2, V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2, V3   |
 [Dimenze](luis-reference-prebuilt-dimension.md):<br>svazků<br>oblast<br>hmotnost<br>informace (např. bitů/Byte)<br>Délka (např. měřič)<br>rychlost (např. km za hodinu)  |    V2, V3   |
-[E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
+[Elektron](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Číselná](luis-reference-prebuilt-number.md)   |    V2, V3   |
@@ -272,7 +280,7 @@ Podporovány jsou následující entity:
 [Měna (peníze)](luis-reference-prebuilt-currency.md):<br>měny<br>zlomková jednotka (např. haléře)  |    V2, V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2, V3   |
 [Dimenze](luis-reference-prebuilt-dimension.md):<br>svazků<br>oblast<br>hmotnost<br>informace (např. bitů/Byte)<br>Délka (např. měřič)<br>rychlost (např. km za hodinu)  |    V2, V3   |
-[E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
+[Elektron](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Číselná](luis-reference-prebuilt-number.md)   |    V2, V3   |
@@ -294,7 +302,7 @@ Podporovány jsou následující entity:
 [Měna (peníze)](luis-reference-prebuilt-currency.md):<br>měny<br>zlomková jednotka (např. haléře)  |    -   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    -   |
 [Dimenze](luis-reference-prebuilt-dimension.md):<br>svazků<br>oblast<br>hmotnost<br>informace (např. bitů/Byte)<br>Délka (např. měřič)<br>rychlost (např. km za hodinu)  |    -   |
-[E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
+[Elektron](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Číselná](luis-reference-prebuilt-number.md)   |    V2, V3   |

@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: a5b8ac3d46f21f299f3e56dab24a1b5f342fb4b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6640a6e807bdcc7a08476a18467745330742ee2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84309947"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289276"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>Řešení potíží s navrácením služeb po obnovení z Azure do místního prostředí
 
@@ -28,7 +29,7 @@ Navrácení služeb po obnovení v podstatě zahrnuje dva hlavní kroky. V prvn�
 - Pokud se nemůžete připojit ke konfiguračnímu serveru z procesového serveru, pomocí programu Telnet ověřte připojení ke konfiguračnímu serveru na portu 443. Můžete se také pokusit testovat konfigurační server z procesového serveru z procesu. Procesový Server by měl mít také prezenční signál, pokud je připojený ke konfiguračnímu serveru.
 - Server s Windows Serverem 2008 R2 SP1, který je chráněný jako fyzický místní server, se nedá vrátit z Azure do místní lokality.
 - Nemůžete navrátit služby po obnovení v následujících případech:
-    - Migrovali jste počítače do Azure. [Další informace](migrate-overview.md#what-do-we-mean-by-migration).
+    - Migrovali jste počítače do Azure. 
     - Přesunuli jste virtuální počítač do jiné skupiny prostředků.
     - Odstranili jste virtuální počítač Azure.
     - Zakázali jste ochranu virtuálního počítače.
@@ -63,7 +64,7 @@ K tomuto problému může dojít, pokud už na hlavním cílovém serveru existu
 Řešení tohoto problému:
 
 * Vyberte jiný hlavní cílový server na jiném hostiteli, aby opětovná ochrana vytvořila počítač na jiném hostiteli, kde se názvy nekolidují.
-* Pomocí vMotion můžete také přesunout hlavní cíl na jiného hostitele, kde se kolize názvů nestane. Pokud je stávající virtuální počítač osamocený počítač, přejmenujte ho, aby se nový virtuální počítač mohl vytvořit na stejném hostiteli ESXi.
+* Pomocí VMotion můžete také přesunout hlavní cíl na jiného hostitele, kde se kolize názvů nestane. Pokud je stávající virtuální počítač osamocený počítač, přejmenujte ho, aby se nový virtuální počítač mohl vytvořit na stejném hostiteli ESXi.
 
 
 ### <a name="error-code-78093"></a>Kód chyby 78093
@@ -97,4 +98,4 @@ K tomuto problému dochází, když se místní virtuální počítač zavede na
 Řešení tohoto problému:
 
 * Zřídit více paměti na hostiteli ESXi.
-* Kromě toho můžete pomocí vMotion přesunout virtuální počítač na jiného hostitele ESXi, který má dostatek paměti pro spuštění virtuálního počítače.
+* Kromě toho můžete pomocí VMotion přesunout virtuální počítač na jiného hostitele ESXi, který má dostatek paměti pro spuštění virtuálního počítače.

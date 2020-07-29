@@ -11,13 +11,14 @@ ms.workload: identity
 ms.devlang: java
 ms.date: 09/14/2019
 ms.author: shoatman
-ms.custom: aaddev
+ms.custom: aaddev, devx-track-java
 ms.reviewer: shoatman
-ms.openlocfilehash: d0497ad68e7b29e6d8c83dd860ba8f509e229579
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1dabadfe30a28fdae409f8452aac2cca4b765418
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77611890"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87313485"
 ---
 # <a name="accounts--tenant-profiles-android"></a>Účty a profily tenantů (Android)
 
@@ -104,7 +105,7 @@ Jak už bylo zmíněno dříve, každý tenant, ve kterém existuje účet, mů�
 
 I když může být účet členem nebo hostem ve více organizacích, služba MSAL nedotazuje službu, aby získala seznam tenantů, kterých je účet členem. Místo toho MSAL sestaví seznam tenantů, ve kterých se účet nachází, v důsledku požadavků na tokeny, které byly provedeny.
 
-Deklarace identity vystavené u objektu účtu jsou vždycky deklarace identity z/{Authority} ' Home tenant ' pro účet. Pokud se tento účet nepoužil k vyžádání tokenu pro svého domovského tenanta, MSAL nemůže poskytnout deklarace prostřednictvím objektu Account.  Příklad:
+Deklarace identity vystavené u objektu účtu jsou vždycky deklarace identity z/{Authority} ' Home tenant ' pro účet. Pokud se tento účet nepoužil k vyžádání tokenu pro svého domovského tenanta, MSAL nemůže poskytnout deklarace prostřednictvím objektu Account.  Například:
 
 ```java
 // Psuedo Code
@@ -124,7 +125,7 @@ String issuer = account.getClaims().get("iss"); // The tenant specific authority
 
 ### <a name="access-tenant-profile-claims"></a>Přístup k deklaracím profilů tenanta
 
-Chcete-li získat přístup k deklaracím účtu, jak se zobrazují v jiných klientech, musíte nejprve přetypovat objekt Account na `IMultiTenantAccount` . Všechny účty můžou být víceklientské, ale počet profilů klientů dostupných prostřednictvím MSAL je založený na tom, na kterých klientech jste požádali o tokeny pomocí aktuálního účtu.  Příklad:
+Chcete-li získat přístup k deklaracím účtu, jak se zobrazují v jiných klientech, musíte nejprve přetypovat objekt Account na `IMultiTenantAccount` . Všechny účty můžou být víceklientské, ale počet profilů klientů dostupných prostřednictvím MSAL je založený na tom, na kterých klientech jste požádali o tokeny pomocí aktuálního účtu.  Například:
 
 ```java
 // Psuedo Code

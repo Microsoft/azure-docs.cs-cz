@@ -5,11 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 63b7a8c58bb6d277233268ed4fc0bc870fdd337f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f41ad80e0e39d66020d039d6229a4b0fc62627f1
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443396"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285998"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>Nastavení testovacího prostředí s virtuálními počítači GPU
 
@@ -27,13 +28,13 @@ V tomto procesu máte možnost vybrat buď **vizualizaci** , nebo **výpočetní
 
 Jak je popsáno v následující tabulce, *Výpočet* velikosti GPU procesorů je určený pro aplikace náročné na výpočetní výkon.  Například [obsáhlý Learning v typu třídy zpracování přirozeného jazyka](./class-type-deep-learning-natural-language-processing.md) používá velikost **malého GPU (COMPUTE)** .  Výpočetní procesor je vhodný pro tento typ třídy, protože studenti využívají architektury hloubkového učení a nástroje, které jsou k dispozici v [Data Science Virtual Machine image](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) , k výuce modelů pro obsáhlý Learning s velkými sadami dat.
 
-| Velikost | Cores | Paměť RAM | Description | 
+| Velikost | Cores | Paměť RAM | Popis | 
 | ---- | ----- | --- | ----------- | 
 | Malý grafický procesor (COMPUTE) | -&nbsp;6 &nbsp; jader<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Tato velikost nejlépe vyhovuje aplikacím náročným na počítač, jako je například umělá logika (AI) a obsáhlý Learning. |
 
-Velikosti GPU pro *vizualizaci* jsou určené pro aplikace náročné na grafiku.  Například [typ třídy SolidWorks Engineering](./class-type-solidworks.md) ukazuje použití velikosti **malého GPU (vizualizace)** .  Grafický procesor vizualizace je vhodný pro tento typ třídy, protože studenti pracují s prostředím SolidWorks 3D Computer-to design (CAD) pro modelování a vizualizaci tuhých objektů.
+Velikosti GPU pro *vizualizaci* jsou určené pro aplikace náročné na grafiku.  Například [typ třídy SolidWorks Engineering](./class-type-solidworks.md) ukazuje použití velikosti **malého GPU (vizualizace)** .  Grafický procesor vizualizace je vhodný pro tento typ třídy, protože studenti pracují s prostředím SOLIDWORKS 3D Computer-to design (CAD) pro modelování a vizualizaci tuhých objektů.
 
-| Velikost | Cores | Paměť RAM | Description | 
+| Velikost | Cores | Paměť RAM | Popis | 
 | ---- | ----- | --- | ----------- | 
 | Malý grafický procesor (vizualizace) | -&nbsp;6 &nbsp; jader<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Tato velikost je nejvhodnější pro vzdálenou vizualizaci, streamování, hraní a kódování využívající architektury, jako je OpenGL a DirectX. |
 | Střední GPU (vizualizace) | -&nbsp;12 &nbsp; jader<br>-&nbsp;112 &nbsp; GB &nbsp; RAM  | [Standard_NV12](https://docs.microsoft.com/azure/virtual-machines/nv-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Tato velikost je nejvhodnější pro vzdálenou vizualizaci, streamování, hraní a kódování využívající architektury, jako je OpenGL a DirectX. |
@@ -44,7 +45,7 @@ Pokud chcete využít možnosti GPU vašich virtuálních počítačů v testova
 ![Snímek obrazovky s "novým testovacím prostředím", který ukazuje možnost nainstalovat ovladače GPU](./media/how-to-setup-gpu/lab-gpu-drivers.png)
 
 Jak je znázorněno na předchozím obrázku, tato možnost je ve výchozím nastavení povolená, což zajistí, že jsou nainstalované *nejnovější* ovladače pro typ GPU a image, kterou jste vybrali.
-- Když vybíráte velikost *výpočetního* GPU, virtuální počítače v testovacím prostředí jsou napájené pomocí GPU [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) .  V tomto případě jsou nainstalovány nejnovější ovladače [COMPUTE Unified Device Architecture (CUDA)](https://www.nvidia.com/object/io_69526.html) , což umožňuje vysoce výkonné výpočetní prostředí.
+- Když vybíráte velikost *výpočetního* GPU, virtuální počítače v testovacím prostředí jsou napájené pomocí GPU [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) .  V tomto případě jsou nainstalovány nejnovější ovladače [COMPUTE Unified Device Architecture (CUDA)](http://developer.download.nvidia.com/compute/cuda/2_0/docs/CudaReferenceManual_2.0.pdf) , což umožňuje vysoce výkonné výpočetní prostředí.
 - Když vyberete velikost GPU pro *vizualizaci* , vaše testovací virtuální počítače jsou napájené technologií GPU [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) a [technologií Grid](https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/solutions/resources/documents1/NVIDIA_GRID_vPC_Solution_Overview.pdf).  V takovém případě jsou nainstalovány nejnovější ovladače mřížky, což umožňuje použití aplikací náročných na grafiku.
 
 ### <a name="install-the-drivers-manually"></a>Ruční instalace ovladačů
@@ -112,7 +113,7 @@ Postupujte podle pokynů v části "ověřit instalaci ovladače" v tématu [ins
 Viz následující články:
 
 - [Vytváření a správa testovacích prostředí v učebnách](how-to-manage-classroom-labs.md)
-- [Typ třídy SolidWorks počítačového návrhu (CAD)](class-type-solidworks.md)
+- [Typ třídy SOLIDWORKS počítačového návrhu (CAD)](class-type-solidworks.md)
 - [Typ třídy MATLAB (maticová laboratoř)](class-type-matlab.md)
 
 

@@ -3,16 +3,18 @@ title: Podporované verze clusteru v Azure Service Fabric
 description: Přečtěte si o verzích clusterů v Azure Service Fabric, včetně odkazu na nejnovější verze z blogu týmu Service Fabric.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 211197ced52ca094d375d3ae212957fa25a523fc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d849b4471bf11183dc02735c7373f858f0c773be
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091636"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289319"
 ---
 # <a name="supported-service-fabric-versions"></a>Podporované verze Service Fabric
 
 Ujistěte se, že cluster vždycky používá podporovanou verzi Azure Service Fabric. Minimálně 60 dní poté, co oznamuje vydání nové verze Service Fabric, podpora pro předchozí verze. Oznámení o nových vydáních najdete na [blogu týmu Service Fabric](https://azure.microsoft.com/updates/?product=service-fabric).
+
+Pro danou verzi modulu runtime Service Fabric můžete použít zadané nebo starší verze balíčků SDK/NuGet. Novější verze balíčků nejsou podporované a můžou mít problémy, které cílí na starší clustery, protože by mohly mít změny funkcí nebo protokolů, které tato prostředí nepodporují.
 
 Podrobnosti o tom, jak udržovat cluster s podporovanou Service Fabric verzí, najdete v následujících dokumentech:
 

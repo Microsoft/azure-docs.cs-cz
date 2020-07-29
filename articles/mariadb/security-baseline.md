@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 09d2fb709e21b7c1251c2caf224f4d5c3ce6aea1
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: fd195fee513b2eed9049c7841f791d73a41b876b
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026572"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87366828"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>Základní hodnoty zabezpečení Azure pro Azure Database for MariaDB
 
@@ -296,7 +296,7 @@ Jak připojit Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstar
 
 Pochopení správy přístupu pro MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-security#access-management
 
-Seznamte se s integrovanými rolemi RBAC pro předplatná Azure:https://docs.microsoft.com/azure/role-based-access-control/built-in-roles
+Principy předdefinovaných rolí Azure pro předplatná Azure:https://docs.microsoft.com/azure/role-based-access-control/built-in-roles
 
 
 **Monitorování Azure Security Center**: Ano
@@ -666,7 +666,7 @@ Vytváření a používání značek:https://docs.microsoft.com/azure/azure-reso
 
 **Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
 
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 
 - Povolené typy prostředků
 
@@ -712,7 +712,7 @@ Jak vytvářet dotazy pomocí Azure graphu:https://docs.microsoft.com/azure/gove
 
 **Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
 
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 
 - Povolené typy prostředků
 

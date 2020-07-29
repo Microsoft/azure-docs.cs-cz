@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: how-to
 ms.date: 06/30/2017
-ms.openlocfilehash: 80edafb9cffa43f7163c1b75c9faaaefbb97c616
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 1c22aa9fb91b0a86704b95586afc1779023e85b6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127413"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288950"
 ---
 # <a name="u-sql-programmability-guide"></a>Průvodce programovatelností U-SQL
 
@@ -125,7 +125,7 @@ Podrobnější informace najdete v [pokynech k registraci sestavení](https://bl
 
 
 ### <a name="use-assembly-versioning"></a>Použití správy verzí sestavení
-V současné době používá U-SQL verzi .NET Framework 4,5. Ujistěte se, že vaše vlastní sestavení jsou kompatibilní s touto verzí modulu runtime.
+V současné době používá U-SQL .NET Framework 4.7.2 verze. Ujistěte se, že vaše vlastní sestavení jsou kompatibilní s touto verzí modulu runtime.
 
 Jak bylo zmíněno dříve, U-SQL spouští kód ve formátu 64-bit (x64). Proto se ujistěte, že je váš kód zkompilován pro běh na platformě x64. V opačném případě se zobrazí chyba nesprávného formátu v předchozím příkladu.
 
@@ -941,13 +941,13 @@ public abstract class IAggregate<T1, T2, TResult> : IAggregate
 * T2: druhý parametr ke shromáždění
 * TResult: návratový typ ukončení
 
-Příklad:
+Například:
 
 ```csharp
 public class GuidAggregate : IAggregate<string, int, int>
 ```
 
-nebo
+– nebo –
 
 ```csharp
 public class GuidAggregate : IAggregate<string, string, string>

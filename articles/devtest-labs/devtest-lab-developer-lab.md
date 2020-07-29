@@ -3,12 +3,12 @@ title: Použití Azure DevTest Labs pro vývojáře | Microsoft Docs
 description: Seznamte se s Azure DevTest Labs funkcemi, které se dají použít k splnění požadavků na vývojáře a podrobných kroků, které můžete provést při nastavení testovacího prostředí.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: c6bb2c4d21ee6b6cb072c550c82c380b3a380f24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3fd8ae93c873d1450d4b09496dca3ad9014baa6d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481030"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87293032"
 ---
 # <a name="use-azure-devtest-labs-for-developers"></a>Použití Azure DevTest Labs pro vývojáře
 Azure DevTest Labs lze použít k implementaci mnoha klíčových scénářů. Jedním z nejzákladnějších je hostování počítačů pro vývojáře. V tomto scénáři poskytuje služba DevTest Labs následující výhody:
@@ -45,7 +45,7 @@ V tomto článku se dozvíte o různých funkcích Azure DevTest Labs, které se
    | --- | --- |
    | [Konfigurace imagí na Azure Marketplace](devtest-lab-configure-marketplace-images.md) |Naučte se, jak můžete přizpůsobovat Azure Marketplace imagí, a zpřístupnit je pro výběr jenom těch imagí, které pro vývojáře potřebujete.|
    | [Vytvoření vlastní image](devtest-lab-create-template.md) |Vytvořte vlastní image předinstalací softwaru, který potřebujete, aby mohli vývojáři rychle vytvořit virtuální počítač s použitím vlastní image.|
-   | [Informace o objektu pro vytváření imagí](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/) |Podívejte se na video, které popisuje, jak nastavit a použít objekt pro vytváření imagí.|
+   | [Informace o objektu pro vytváření imagí](./devtest-lab-faq.md#blog-post) |Podívejte se na video, které popisuje, jak nastavit a použít objekt pro vytváření imagí.|
 
 3. **Vytváření opakovaně použitelných šablon pro vývojářské počítače** 
    
@@ -124,4 +124,3 @@ V tomto článku se dozvíte o různých funkcích Azure DevTest Labs, které se
    | [Vytvoření testovacího prostředí pomocí šablony Správce prostředků](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Pomocí šablon Správce prostředků vytvořte cvičení v Azure DevTest Labs. |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
-

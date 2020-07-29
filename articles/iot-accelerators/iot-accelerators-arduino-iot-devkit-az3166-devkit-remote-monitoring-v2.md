@@ -9,11 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
-ms.openlocfilehash: 6e9f9c89cf2e5e40d37a1532e688490aae294181
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed14d4cb79cb5794fa666f1bb96e062d69128d0f
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73888868"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337666"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>Připojení zařízení IoT DevKit k akcelerátoru řešení vzdáleného monitorování
 
@@ -129,4 +130,3 @@ Teď, když jste se naučili připojit zařízení DevKit k akcelerátoru řeše
 
 * [Přehled akcelerátorů řešení Azure IoT](https://docs.microsoft.com/azure/iot-accelerators/)
 * [Přizpůsobení uživatelského rozhraní](iot-accelerators-remote-monitoring-customize.md)
-* [Připojení IoT DevKit k aplikaci Azure IoT Central](../iot-central/core/howto-connect-devkit.md)

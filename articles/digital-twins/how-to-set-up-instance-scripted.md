@@ -1,5 +1,5 @@
 ---
-title: Nastavení instance a ověřování (skriptované)
+title: Nastavení instance a ověřování (se skriptem)
 titleSuffix: Azure Digital Twins
 description: Podívejte se, jak nastavit instanci služby Azure Digital revlákens, včetně správného ověřování. Skriptovaná verze
 author: baanders
@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c601d01589a89667b630d04ddb19dfbe190cca9f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 522096b921faf34130f0c37f727d89c7bf95c530
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125771"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337904"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Nastavení instance a ověřování Azure pro digitální vlákna (skriptované)
 
@@ -49,7 +49,7 @@ Tady je postup, jak spustit skript nasazení v Cloud Shell.
     * Pro instanci: *ID předplatného* vašeho předplatného Azure, které se má použít.
     * Pro instanci: *umístění* , kam chcete instanci nasadit. Pokud chcete zjistit, které oblasti podporují digitální vlákna Azure, přejděte na [*produkty Azure dostupné v jednotlivých oblastech*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
     * Pro instanci: název *skupiny prostředků* . Můžete použít existující skupinu prostředků nebo zadat nový název, který chcete vytvořit.
-    * Pro instanci: *název* instance digitálního vlákna Azure. Název nové instance musí být v rámci oblasti jedinečný (to znamená, že pokud se zvolený název už používá v jiné instanci digitálních vláken Azure v této oblasti, zobrazí se výzva k výběru jiného názvu).
+    * Pro instanci: *název* instance digitálního vlákna Azure. Název nové instance musí být v rámci vašeho předplatného jedinečný (to znamená, že pokud má vaše předplatné jinou instanci digitálních vláken Azure v oblasti, která už používá zvolený název, zobrazí se výzva k výběru jiného názvu).
     * Pro registraci aplikace: *Zobrazovaný název aplikace Azure AD* , který se má přidružit k registraci. V této registraci aplikace nakonfigurujete přístupová oprávnění k [rozhraním API pro digitální vlákna Azure](how-to-use-apis-sdks.md). Později se klientská aplikace ověří proti registraci aplikace a v důsledku toho se jim přidělí nakonfigurovaná přístupová oprávnění k rozhraním API.
     * Pro registraci aplikace: *Adresa URL pro odpověď aplikace Azure AD* pro aplikaci Azure AD. Můžete použít `http://localhost` .
 

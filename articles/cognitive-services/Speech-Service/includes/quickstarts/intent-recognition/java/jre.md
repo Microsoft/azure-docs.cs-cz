@@ -6,18 +6,18 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 58f771120c5c81e27751af66b64e146c79bb6508
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 26b3b3bd061d3ec7c3efd5c613c5beec33867022
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81422196"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87298868"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete:
 
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=jre&pivots=programming-language-java" target="_blank">Nainstalujte sadu Speech SDK pro vývojové prostředí a vytvořte prázdný ukázkový projekt<span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=jre&pivots=programming-language-java" target="_blank">Nainstalujte sadu Speech SDK pro vývojové prostředí a vytvořte prázdný ukázkový projekt <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>Vytvoření aplikace v LUIS pro rozpoznávání záměrů
 
@@ -26,7 +26,7 @@ Než začnete:
 ## <a name="open-your-project"></a>Otevřete projekt
 
 1. Otevřete preferované integrované vývojové prostředí (IDE).
-2. Načtěte projekt a otevřete `Main.java`.
+2. Načtěte projekt a otevřete `Main.java` .
 
 ## <a name="start-with-some-boilerplate-code"></a>Začínáme s některým často používaným kódem
 
@@ -36,9 +36,9 @@ Pojďme přidat kód, který funguje jako kostra pro náš projekt.
 
 ## <a name="create-a-speech-configuration"></a>Vytvoření konfigurace řeči
 
-Předtím, než budete moci `IntentRecognizer` inicializovat objekt, je nutné vytvořit konfiguraci, která používá klíč a umístění prostředku předpovědi Luis.  
+Předtím, než budete moci inicializovat `IntentRecognizer` objekt, je nutné vytvořit konfiguraci, která používá klíč a umístění prostředku předpovědi Luis.  
 
-Vložte tento kód do bloku try/catch v `main()`. Ujistěte se, že tyto hodnoty aktualizujete:
+Vložte tento kód do bloku try/catch v `main()` . Ujistěte se, že tyto hodnoty aktualizujete:
 
 * Nahraďte `"YourLanguageUnderstandingSubscriptionKey"` klíčem předpovědi Luis.
 * Nahraďte `"YourLanguageUnderstandingServiceRegion"` umístěním Luis. Použít **identifikátor oblasti** z [oblasti](https://aka.ms/speech/sdkregion)
@@ -48,13 +48,13 @@ Vložte tento kód do bloku try/catch v `main()`. Ujistěte se, že tyto hodnoty
 
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=27)]
 
-Tato ukázka používá `FromSubscription()` metodu pro sestavení `SpeechConfig`. Úplný seznam dostupných metod naleznete v tématu [Třída SpeechConfig](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).
+Tato ukázka používá `FromSubscription()` metodu pro sestavení `SpeechConfig` . Úplný seznam dostupných metod naleznete v tématu [Třída SpeechConfig](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).
 
 Sada Speech SDK bude standardně rozpoznána pomocí en-US pro daný jazyk. informace o výběru zdrojového jazyka najdete v tématu [určení zdrojového jazyka pro převod řeči na text](../../../../how-to-specify-source-language.md) .
 
 ## <a name="initialize-an-intentrecognizer"></a>Inicializovat IntentRecognizer
 
-Teď vytvoříme `IntentRecognizer`. Vložte tento kód přímo pod konfiguraci řeči.
+Teď vytvoříme `IntentRecognizer` . Vložte tento kód přímo pod konfiguraci řeči.
 
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=30)]
 
@@ -62,12 +62,14 @@ Teď vytvoříme `IntentRecognizer`. Vložte tento kód přímo pod konfiguraci 
 
 Je potřeba přidružit k `LanguageUnderstandingModel` nástroji pro rozpoznávání záměru a přidat záměry, které chcete rozpoznat. Budeme používat záměry z předem připravené domény pro automatizaci domů.
 
-Vložte tento kód pod `IntentRecognizer`. Ujistěte se, že jste `"YourLanguageUnderstandingAppId"` nahradili ID aplikace Luis.
+Vložte tento kód pod `IntentRecognizer` . Ujistěte se, že jste nahradili `"YourLanguageUnderstandingAppId"` ID aplikace Luis.
 
 >[!TIP]
 > Pokud potřebujete nápovědu najít tuto hodnotu, přečtěte si téma [Vytvoření aplikace v Luis pro rozpoznávání záměrů](#create-a-luis-app-for-intent-recognition).
 
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=33-35)]
+
+Tento příklad používá `addIntent()` funkci k samostatnému přidání záměrů. Pokud chcete přidat všechny záměry z modelu, použijte `addAllIntents(model)` a předejte model.
 
 ## <a name="recognize-an-intent"></a>Rozpoznávání záměru
 
@@ -81,7 +83,7 @@ Vložte tento kód pod model:
 
 Když Služba rozpoznávání řeči vrátí výsledek rozpoznávání, budete s ním chtít něco dělat. My to Zjednodušme a vytiskneme výsledek do konzoly.
 
-Vložte tento kód pod volání `recognizeOnceAsync()`.
+Vložte tento kód pod volání `recognizeOnceAsync()` .
 
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=43-64)]
 
@@ -102,7 +104,7 @@ V tomto okamžiku váš kód by měl vypadat takto:
 
 ## <a name="build-and-run-your-app"></a>Sestavení a spuštění aplikace
 
-Stiskněte klávesu <kbd>F11</kbd>nebo vyberte **Spustit** > **ladění**.
+Stiskněte klávesu <kbd>F11</kbd>nebo vyberte **Spustit**  >  **ladění**.
 Následujících 15 sekund hlasového vstupu z mikrofonu se rozpozná a zaprotokoluje v okně konzoly.
 
 ## <a name="next-steps"></a>Další kroky

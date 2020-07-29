@@ -1,7 +1,7 @@
 ---
 title: Ukázka skriptu Azure PowerShell – konfigurace koncových bodů IPv6
 titlesuffix: Azure Virtual Network
-description: Povolení koncových bodů IPv6 pomocí prostředí PowerShell v Azure Virtual Network
+description: Konfigurace koncových bodů IPv6 ve virtuální síti pomocí skriptu Azure PowerShell a vyhledání odkazů na dokumentaci pro konkrétní příkaz, které vám pomůžou s ukázkou PowerShellu.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 667cf9d8a902a329b6b0cfc0d183e4f229e59372
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 83153023d7d58f215d5e62d8502baa01b99ed2e1
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068659"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291878"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-with-azure-powershell-script-sample-preview"></a>Konfigurace koncových bodů IPv6 ve virtuální síti pomocí ukázkového skriptu Azure PowerShell (Preview)
 
@@ -27,7 +27,7 @@ Skript můžete spustit ve službě Azure [Cloud Shell](https://shell.azure.com/
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Před nasazením duální aplikace stacku do Azure musíte nakonfigurovat předplatné jenom jednou pro tuto funkci verze Preview pomocí následujících Azure PowerShell:
 
 Zaregistrujte se následujícím způsobem:

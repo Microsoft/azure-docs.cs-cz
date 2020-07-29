@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: aa3faad88fb5474b34ff6855690882141b2e4843
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1057bb908e973c74b6dfb70931469e27f77512de
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046303"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292667"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c"></a>Dotazování dat z prostředí Azure Time Series Insights Gen2 pomocí jazyka C #
 
@@ -25,7 +25,7 @@ Tento příklad v jazyce C# ukazuje, jak zadávat dotazy na data z [rozhraní AP
 > [!TIP]
 > Prohlédněte si ukázky kódu C# Gen2 na adrese [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample) .
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Vzorový kód níže znázorňuje následující funkce:
 
@@ -39,9 +39,9 @@ Vzorový kód níže znázorňuje následující funkce:
     * [Rozhraní API pro dotazy Gen2](https://docs.microsoft.com/rest/api/time-series-insights/preview#query-apis)
         * Získat [API pro události](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents), získat rozhraní [API řady](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries)a [získat agregované rozhraní API řady](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
     * [Rozhraní API modelu časové řady](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
-        * [Rozhraní](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/get) API pro [dávkování](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch) hierarchií a hierarchií
-        * Rozhraní API pro [získání typů](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/get) a [typů rozhraní Batch API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
-        * Rozhraní [API pro dávku](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch) instancí a instance rozhraní API pro [načtení instancí](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/get)
+        * [Rozhraní](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies) API pro [dávkování](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch) hierarchií a hierarchií
+        * Rozhraní API pro [získání typů](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes) a [typů rozhraní Batch API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
+        * Rozhraní [API pro dávku](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch) instancí a instance rozhraní API pro [načtení instancí](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances)
 * Rozšířené možnosti [vyhledávání](https://docs.microsoft.com/rest/api/time-series-insights/preview#search-features) a [TSX](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)
 
 ## <a name="prerequisites-and-setup"></a>Požadavky a instalace
@@ -65,7 +65,7 @@ Vzorový kód má několik požadovaných závislostí, které lze zobrazit v so
 
 Stáhněte si balíčky v aplikaci Visual Studio 2019 tak, **Build**že vyberete  >  možnost**řešení** sestavení sestavení. 
 
-Případně přidejte jednotlivé balíčky pomocí [NuGet 2.12 +](https://www.nuget.org/). Příklad:
+Případně přidejte jednotlivé balíčky pomocí [NuGet 2.12 +](https://www.nuget.org/). Například:
 
 * `dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory --version 4.5.1`
 

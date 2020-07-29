@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/08/2020
-ms.openlocfilehash: 118c80b27d10714703d631f0e2560540eb2d39cf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 53f151c63c85e958aad3bd0eaf16c50294bf250f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012548"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287223"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Co je Azure Machine Learning pracovní prostor?
 
@@ -116,6 +116,9 @@ Když vytvoříte nový pracovní prostor, automaticky se vytvoří několik pro
 
 > [!NOTE]
 > Kromě vytváření nových verzí můžete používat i existující služby Azure.
+
+> [!IMPORTANT]
+> Pokud chcete použít existující účet Azure Storage, nemůže to být účet Premium (Premium_LRS a Premium_GRS). Nemůže mít také hierarchický obor názvů (používá se s Azure Data Lake Storage Gen2). Ve _výchozím_ účtu úložiště pracovního prostoru není podporován ani obor názvů Premium Storage ani hierarchický obor názvů. Můžete použít Storage úrovně Premium nebo hierarchický obor názvů s účty úložiště, _které nejsou výchozí_ .
 
 ## <a name="next-steps"></a>Další kroky
 

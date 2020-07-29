@@ -1,15 +1,15 @@
 ---
 title: Hlavní kniha prostředků infrastruktury pro službu Azure Kubernetes (AKS)
 description: Jak nasadit a nakonfigurovat síť sdružení prostředků infrastruktury pro hlavní knihu ve službě Azure Kubernetes
-ms.date: 07/07/2020
+ms.date: 07/27/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 1e90eeccb015b4d5ef78b79297565ddde9cfa305
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fe06af9364ceb1d97588cac88335cb39c45f0e0f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081269"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286049"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hlavní kniha prostředků infrastruktury pro službu Azure Kubernetes (AKS)
 
@@ -29,12 +29,14 @@ Než začnete používat šablonu řešení, porovnejte svůj scénář s běžn
 Možnost | Model služby | Běžný případ použití
 -------|---------------|-----------------
 Šablony řešení | IaaS | Šablony řešení jsou Azure Resource Manager šablony, pomocí kterých můžete zřídit plně nakonfigurovanou topologii sítě blockchain. Šablony nasazují a konfigurují Microsoft Azure COMPUTE, sítě a služby úložiště pro daný typ sítě blockchain. Šablony řešení jsou poskytovány bez smlouvy o úrovni služeb. Pro podporu použijte [stránku s otázkou Microsoft Q&](/answers/topics/azure-blockchain-workbench.html) .
-[Azure Blockchain Service](../service/overview.md) | PaaS | Služba Azure blockchain ve verzi Preview zjednodušuje vytváření, správu a řízení sítí konsorcia blockchain. Využijte Azure blockchain Service pro řešení, která vyžadují PaaS, správu konsorcia nebo jejich soukromí a transakce.
+[Služba Azure Blockchain](../service/overview.md) | PaaS | Služba Azure blockchain ve verzi Preview zjednodušuje vytváření, správu a řízení sítí konsorcia blockchain. Využijte Azure blockchain Service pro řešení, která vyžadují PaaS, správu konsorcia nebo jejich soukromí a transakce.
 [Azure Blockchain Workbench](../workbench/overview.md) | IaaS a PaaS | Azure blockchain Workbench Preview je kolekce služeb a funkcí Azure, které vám pomůžou vytvářet a nasazovat aplikace blockchain pro sdílení obchodních procesů a dat s jinými organizacemi. Využijte Azure blockchain Workbench pro vytváření prototypů řešení blockchain nebo blockchain aplikace pro zkoušku konceptu. Azure Blockchain Workbench se poskytuje bez smlouvy o úrovni služeb. Pro podporu použijte [stránku s otázkou Microsoft Q&](/answers/topics/azure-blockchain-workbench.html) .
 
 ## <a name="hyperledger-fabric-consortium-architecture"></a>Architektura konsorcia infrastruktury pro hlavní kniha
 
-Pokud chcete vytvořit síť prostředků infrastruktury hlavní knihy v Azure, je potřeba nasadit službu řazení a organizaci s partnerskými uzly. Různé základní komponenty, které jsou vytvořeny jako součást nasazení šablony, jsou:
+Pokud chcete vytvořit síť prostředků infrastruktury hlavní knihy v Azure, je potřeba nasadit službu řazení a organizaci s partnerskými uzly. Pomocí šablony řešení služby infrastruktury hlavní knihy v Azure Kubernetes můžete vytvářet uzly objednávek nebo partnerské uzly. Je nutné nasadit šablonu pro každý uzel, který chcete vytvořit.
+
+Různé základní komponenty, které jsou vytvořeny jako součást nasazení šablony, jsou:
 
 - **Uzly**: uzel, který je zodpovědný za řazení transakce v hlavní knize. Společně s ostatními uzly tvoří seřazené uzly službu řazení pro síť prostředků infrastruktury hlavní knihy.
 
@@ -58,22 +60,13 @@ Pokud chcete vytvořit síť prostředků infrastruktury hlavní knihy v Azure, 
 - **Spravovaný disk Azure**: Azure Managed disk pro hlavní knihu a databázi státních stavů partnerského uzlu jsou pro trvalé úložiště.
 - **Veřejná IP adresa**: koncový bod veřejné IP adresy clusteru AKS nasazený pro propojení s clusterem.
 
-## <a name="hyperledger-fabric-blockchain-network-setup"></a>Nastavení sítě blockchain infrastruktury pro hlavní knihu
+## <a name="deploy-the-ordererpeer-organization"></a>Nasazení organizace v řádu nebo v partnerském vztahu
 
 Začněte tím, že budete potřebovat předplatné Azure, které může podporovat nasazení několika virtuálních počítačů a standardních účtů úložiště. Pokud nemáte předplatné Azure, můžete si [vytvořit bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-Nastavte blockchain síť prostředků infrastruktury hlavní knihy pomocí následujících kroků:
+Pokud chcete začít s nasazením síťových součástí HLF, přejděte na [Azure Portal](https://portal.azure.com).
 
-- [Nasazení organizace v řádu nebo v partnerském vztahu](#deploy-the-ordererpeer-organization)
-- [Sestavení konsorcia](#build-the-consortium)
-
-## <a name="deploy-the-ordererpeer-organization"></a>Nasazení organizace v řádu nebo v partnerském vztahu
-
-Pokud chcete začít s nasazením síťových součástí HLF, přejděte na [Azure Portal](https://portal.azure.com). Vyberte **vytvořit prostředek > Blockchain** > Hledat v prostředcích **infrastruktury hlavní knihy ve službě Azure Kubernetes**.
-
-1. Vyberte **vytvořit** a spusťte tak nasazení šablony. Zobrazí se zobrazení **vytvoření prostředků infrastruktury hlavní knihy ve službě Azure Kubernetes** .
-
-    ![Šablona prostředků infrastruktury hlavní knihy v Azure Kubernetes Service](./media/hyperledger-fabric-consortium-azure-kubernetes-service/hyperledger-fabric-aks.png)
+1. Vyberte **vytvořit prostředek > Blockchain** > hledání **prostředků infrastruktury hlavní knihy ve službě Azure Kubernetes (Preview)**.
 
 2. Na stránce **základy** zadejte podrobnosti projektu.
 
@@ -90,7 +83,7 @@ Pokud chcete začít s nasazením síťových součástí HLF, přejděte na [Az
 
 5. Zadejte následující podrobnosti:
     - **Název organizace**: název organizace prostředků infrastruktury, která se vyžaduje pro různé operace roviny dat. Název organizace musí být pro každé nasazení jedinečný.
-    - **Součást sítě prostředků infrastruktury**: vyberte buď řazení služby nebo partnerské uzly na základě součásti sítě blockchain, kterou chcete nastavit.
+    - **Součást sítě prostředků infrastruktury**: vyberte buď řazení služby, nebo partnerských uzlů na základě součásti blockchain Network, kterou chcete nastavit.
     - **Počet uzlů** – následující dva typy uzlů:
         - Služba objednávání – vyberte počet uzlů pro zajištění odolnosti proti chybám v síti. Podporovaným počtem uzlů pro pořadí je jenom 3, 5 a 7.
         - Partnerské uzly – na základě vašeho požadavku můžete vybrat 1-10 uzlů.
@@ -136,7 +129,7 @@ Chcete-li vytvořit blockchain Consortium po nasazení služby řazení a partne
 > K dispozici jste skript Azure HLF (azhlf), který vám pomůžeme jenom o scénářích demo/DevTest. Kanál a konsorcium vytvořené tímto skriptem mají základní zásady HLF, které zjednodušují scénář demo/DevTest. V případě produkčního nastavení doporučujeme aktualizovat zásady kanálu/konsorcia HLF v souladu s požadavky vaší organizace na dodržování předpisů pomocí nativních rozhraní HLF API.
 
 
-Všechny příkazy ke spuštění skriptu Azure HLF můžete provést prostřednictvím příkazového řádku Azure bash. Rozhraní (CLI). K webové verzi prostředí Azure Shell se můžete přihlásit prostřednictvím  ![Šablona prostředků infrastruktury hlavní knihy v Azure Kubernetes Service](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) možnost v pravém horním rohu Azure Portal. Do příkazového řádku zadejte bash a přejděte do bash CLI.
+Všechny příkazy ke spuštění skriptu Azure HLF můžete provést prostřednictvím příkazového řádku Azure bash. Rozhraní (CLI). K webové verzi prostředí Azure Shell se můžete přihlásit pomocí   ![ Možnosti šablony prostředků infrastruktury služby Azure Kubernetes v ](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) pravém horním rohu Azure Portal. Do příkazového řádku zadejte bash a přejděte do bash CLI nebo na panelu nástrojů prostředí vyberte *bash* .
 
 Další informace najdete v tématu [Azure Shell](../../cloud-shell/overview.md) .
 
@@ -147,17 +140,17 @@ Následující obrázek ukazuje podrobný postup pro sestavování konsorcia mez
 
 ![Šablona prostředků infrastruktury hlavní knihy v Azure Kubernetes Service](./media/hyperledger-fabric-consortium-azure-kubernetes-service/process-to-build-consortium-flow-chart.png)
 
-Při počátečním nastavení klientské aplikace postupujte podle následujících příkazů: 
+Dokončete části pro počáteční nastavení klientské aplikace: 
 
-1.  [Stáhnout klientské soubory aplikace](#download-client-application-files)
-2.  [Nastavení proměnných prostředí](#setup-environment-variables)
-3.  [Importovat profil připojení k organizaci, uživatele s oprávněními správce a MSP](#import-organization-connection-profile-admin-user-identity-and-msp)
+1. Stáhnout klientské soubory aplikace
+1. Nastavení proměnných prostředí
+1. Importovat profil připojení k organizaci, uživatele s oprávněními správce a MSP
 
-Po dokončení počátečního nastavení můžete pomocí klientské aplikace dosáhnout níže uvedených operací:  
+Po dokončení počátečního nastavení použijte klientskou aplikaci k dosažení následujících operací:  
 
-- [Příkazy správy kanálů](#channel-management-commands)
-- [Příkazy správy konsorcia](#consortium-management-commands)
-- [Příkazy správy Chaincode](#chaincode-management-commands)
+- Správa kanálů
+- Správa konsorcia
+- Správa Chaincode
 
 ### <a name="download-client-application-files"></a>Stáhnout klientské soubory aplikace
 
@@ -168,19 +161,16 @@ curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kuberne
 cd azhlfTool
 npm install
 npm run setup
-
 ```
-Tyto příkazy naklonují kód klientské aplikace Azure HLF z veřejného úložiště GitHub následovaný načtením všech závislých balíčků npm. Po úspěšném provedení příkazu uvidíte složku node_modules v aktuálním adresáři. Všechny požadované balíčky jsou načteny do složky node_modules.
 
+Tyto příkazy naklonují kód klientské aplikace Azure HLF z veřejného úložiště GitHub následovaný načtením všech závislých balíčků npm. Po úspěšném provedení příkazu uvidíte složku node_modules v aktuálním adresáři. Všechny požadované balíčky jsou načteny do složky node_modules.
 
 ### <a name="setup-environment-variables"></a>Nastavení proměnných prostředí
 
 > [!NOTE]
 > Všechny proměnné prostředí následují po konvenci vytváření názvů prostředků Azure.
 
-
-**Nastavte níže uvedené proměnné prostředí pro klienta organizace v objednávce.**
-
+#### <a name="set-environment-variables-for-orderer-organization-client"></a>Nastavení proměnných prostředí pro klienta organizace na objednávce
 
 ```bash
 ORDERER_ORG_SUBSCRIPTION=<ordererOrgSubscription>
@@ -189,7 +179,8 @@ ORDERER_ORG_NAME=<ordererOrgName>
 ORDERER_ADMIN_IDENTITY="admin.$ORDERER_ORG_NAME"
 CHANNEL_NAME=<channelName>
 ```
-**Nastavte níže uvedené proměnné prostředí pro klienta partnerské organizace.**
+
+#### <a name="set-the-environment-variables-for-peer-organization-client"></a>Nastavení proměnných prostředí pro klienta partnerské organizace
 
 ```bash
 PEER_ORG_SUBSCRIPTION=<peerOrgSubscritpion>
@@ -202,7 +193,7 @@ CHANNEL_NAME=<channelName>
 > [!NOTE]
 > Na základě počtu partnerských organizace ve vaší konsorciu může být nutné opakovat rovnocenné příkazy a odpovídajícím způsobem nastavit proměnnou prostředí.
 
-**Nastavte následující proměnné prostředí pro nastavení Azure Storage účtu.**
+#### <a name="set-the-environment-variables-for-setting-up-azure-storage-account"></a>Nastavení proměnných prostředí pro nastavení Azure Storage účtu
 
 ```bash
 STORAGE_SUBSCRIPTION=<subscriptionId>
@@ -212,7 +203,7 @@ STORAGE_LOCATION=<azureStorageAccountLocation>
 STORAGE_FILE_SHARE=<azureFileShareName>
 ```
 
-Při vytváření účtu Azure Storage postupujte podle následujících kroků. Pokud už máte vytvořený účet Azure Storage, přeskočte tyto kroky.
+Pro vytvoření účtu Azure Storage použijte následující postup. Pokud už máte vytvořený účet Azure Storage, přeskočte tyto kroky.
 
 ```bash
 az account set --subscription $STORAGE_SUBSCRIPTION
@@ -220,14 +211,14 @@ az group create -l $STORAGE_LOCATION -n $STORAGE_RESOURCE_GROUP
 az storage account create -n $STORAGE_ACCOUNT -g  $STORAGE_RESOURCE_GROUP -l $STORAGE_LOCATION --sku Standard_LRS
 ```
 
-Při vytváření sdílené složky v účtu Azure Storage postupujte podle následujících kroků. Pokud už máte vytvořenou sdílenou složku, přeskočte tyto kroky.
+Pro vytvoření sdílené složky v účtu Azure Storage použijte následující postup. Pokud už máte vytvořenou sdílenou složku, přeskočte tyto kroky.
 
 ```bash
 STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
 az storage share create  --account-name $STORAGE_ACCOUNT  --account-key $STORAGE_KEY  --name $STORAGE_FILE_SHARE
 ```
 
-Postup generování připojovacího řetězce sdílené složky Azure podle následujících kroků
+K vygenerování připojovacího řetězce sdílené složky Azure použijte následující postup.
 
 ```bash
 STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
@@ -256,39 +247,13 @@ Pro organizaci v partnerském vztahu:
 ./azhlf msp import fromAzure -g $PEER_ORG_RESOURCE_GROUP -s $PEER_ORG_SUBSCRIPTION -o $PEER_ORG_NAME
 ```
 
-### <a name="channel-management-commands"></a>Příkazy správy kanálů
-
-> [!NOTE]
-> Než začnete s jakoukoli operací kanálu, ujistěte se, že je původní nastavení klientské aplikace hotové.  
-
-Následují dva příkazy správy kanálů:
-
-1. [Vytvořit kanál – příkaz](#create-channel-command)
-2. [Nastavení příkazu kotvních partnerských uzlů](#setting-anchor-peers-command)
-
-
-#### <a name="create-channel-command"></a>Vytvořit kanál – příkaz
+### <a name="create-channel-command"></a>Vytvořit kanál – příkaz
 
 Z klienta organizace s objednávkou, vystavení příkazu pro vytvoření nového kanálu. Tento příkaz vytvoří kanál, který v něm má pouze organizaci s přířazením.  
 
 ```bash
 ./azhlf channel create -c $CHANNEL_NAME -u $ORDERER_ADMIN_IDENTITY -o $ORDERER_ORG_NAME
 ```
-
-#### <a name="setting-anchor-peers-command"></a>Nastavení příkazu kotvních partnerských uzlů
-Z klienta partnerské organizace, vystavení níže příkaz pro nastavení partnerských partnerských vztahů pro organizaci partnerského vztahu na zadaném kanálu.
-
->[!NOTE]
-> Před spuštěním tohoto příkazu zajistěte, aby se v kanálu přidala partnerská organizace pomocí příkazů pro správu konsorcia.
-
-```bash
-./azhlf channel setAnchorPeers -c $CHANNEL_NAME -p <anchorPeersList> -o $PEER_ORG_NAME -u $PEER_ADMIN_IDENTITY
-```
-
-`<anchorPeersList>`je seznam uzlů oddělený mezerou, který se má nastavit jako kotvicí partner. Příklad:
-
-  - Nastavte `<anchorPeersList>` jako "peer1", pokud chcete nastavit pouze uzel peer1 jako kotvicího partnera.
-  - Nastavte `<anchorPeersList>` jako "peer1" "peer3", pokud chcete jako kotvový partner nastavit uzel peer1 i peer3.
 
 ### <a name="consortium-management-commands"></a>Příkazy správy konsorcia
 
@@ -324,6 +289,21 @@ V uvedeném pořadí proveďte následující příkazy, aby se do kanálu a kon
 
 Podobně pro přidání dalších partnerských organizací do kanálu aktualizujte proměnné partnerského prostředí podle požadované partnerské organizace a proveďte kroky 1 až 4.
 
+### <a name="set-anchor-peers-command"></a>Nastavit partnerský vztah (ů) pro kotvy
+
+Z klienta partnerské organizace vydejte příkaz pro nastavení partnerských partnerů pro organizaci partnerského vztahu na zadaném kanálu.
+
+>[!NOTE]
+> Před spuštěním tohoto příkazu zajistěte, aby se v kanálu přidala partnerská organizace pomocí příkazů pro správu konsorcia.
+
+```bash
+./azhlf channel setAnchorPeers -c $CHANNEL_NAME -p <anchorPeersList> -o $PEER_ORG_NAME -u $PEER_ADMIN_IDENTITY --ordererOrg $ORDERER_ORG_NAME
+```
+
+`<anchorPeersList>`je seznam uzlů oddělený mezerou, který se má nastavit jako kotvicí partner. Příklad:
+
+  - Nastavte `<anchorPeersList>` jako "peer1", pokud chcete nastavit pouze uzel peer1 jako kotvicího partnera.
+  - Nastavte `<anchorPeersList>` jako "peer1" "peer3", pokud chcete jako kotvový partner nastavit uzel peer1 i peer3.
 
 ### <a name="chaincode-management-commands"></a>Příkazy správy Chaincode
 
@@ -344,7 +324,7 @@ CC_VERSION=<chaincodeVersion>
 # Default value is 'golang'  
 CC_LANG=<chaincodeLanguage>  
 # CC_PATH contains the path where your chaincode is place.
-# If you are using chaincode_example02 to validate then CC_PATH=“/home/<username>/azhlfTool/chaincode/src/chaincode_example02/go”
+# If you are using chaincode_example02 to validate then CC_PATH=“/home/<username>/azhlfTool/samples/chaincode/src/chaincode_example02/go”
 CC_PATH=<chaincodePath>  
 # Channel on which chaincode is to be instantiated/invoked/queried  
 CHANNEL_NAME=<channelName>  
@@ -409,7 +389,7 @@ Příkaz spustit pod příkazem pro dotaz na chaincode:
 ```
 Předejte název funkce dotazu a seznam argumentů oddělených mezerami v  `<queryFunction>`    `<queryFuncArgs>`   uvedeném pořadí. Znovu se postará o chaincode_example02. přejít chaincode jako na odkaz a na hodnotu dotazu "a" ve světě nastavenou  `<queryFunction>`   na  `query` a  `<queryArgs>` na "a".  
 
-## <a name="troubleshoot"></a>Odstranit potíže
+## <a name="troubleshoot"></a>Řešení potíží
 
 **Ověření verze spuštěné šablony**
 

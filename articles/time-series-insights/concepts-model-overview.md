@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 07/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 98951dc29b7c8504cbf1654a810ebba933fef3a1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 74a20e46858aada48151809c5bedf1f93076827e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495376"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289969"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Model časové řady v Azure Time Series Insights Gen2
 
@@ -24,7 +24,7 @@ Tento článek popisuje model časových řad, možnosti a způsob, jak začít 
 > [!TIP]
 >
 > * Příklad modelu živé časové řady najdete v [ukázkovém prostředí farmy společnosti Contoso Wind](https://insights.timeseries.azure.com/preview/samples) .
-> * Naučte se [pracovat s modelem časových řad](time-series-insights-update-how-to-tsm.md) pomocí Azure Time Series Insights Gen2 Explorer.
+> * Naučte se [pracovat s modelem časových řad](/azure/time-series-insights/how-to-edit-your-model) pomocí Azure Time Series Insights Gen2 Explorer.
 
 ## <a name="summary"></a>Souhrn
 
@@ -75,7 +75,7 @@ Tyto součásti jsou kombinovány pro určení modelu časové řady a k uspoř�
 
 [![Graf s přehledem modelu časové řady](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-Model časových řad se dá vytvořit a spravovat pomocí [Azure Time Series Insights Gen2 Exploreru](time-series-insights-update-how-to-tsm.md). Nastavení modelu časové řady lze spravovat prostřednictvím [rozhraní API pro nastavení modelu](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api).
+Model časových řad se dá vytvořit a spravovat pomocí [Azure Time Series Insights Gen2 Exploreru](/azure/time-series-insights/concepts-model-overview). Nastavení modelu časové řady lze spravovat prostřednictvím [rozhraní API pro nastavení modelu](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api).
 
 ## <a name="time-series-model-instances"></a>Instance modelů časových řad
 
@@ -102,7 +102,7 @@ Instance jsou definovány pomocí **timeSeriesId**, **typeId**, **Name**, **Desc
 | timeSeriesId | Jedinečné ID časové řady, ke které je instance přidružena. Ve většině případů jsou instance jednoznačně identifikované vlastností, jako je deviceId nebo assetId. V některých případech lze použít více specifických IDENTIFIKÁTORů s kombinací až tří vlastností. |
 | typeId | Jedinečné ID řetězce s rozlišením velkých a malých písmen pro typ modelu časové řady, ke kterému je instance přidružena. Ve výchozím nastavení se všechny zjištěné nové instance přidružit k výchozímu typu.
 | name | Vlastnost **Name** je volitelná a rozlišuje velká a malá písmena. Pokud není **název** k dispozici, použije se výchozí hodnota **timeSeriesId**. Pokud je zadán název, je **timeSeriesId** stále k dispozici. [well](time-series-insights-update-explorer.md#4-time-series-well) |
-| Popis | Textový popis instance. |
+| description | Textový popis instance. |
 | hierarchyIds | Definuje, do kterých hierarchií patří instance. |
 | instanceFields | Vlastnosti instance a všech statických dat, která definují instanci. Definují hodnoty vlastností hierarchie nebo mimo hierarchii a zároveň podporují indexování k provádění operací vyhledávání. |
 
@@ -241,7 +241,7 @@ Typy modelů časových řad jsou definovány podle **ID**, **názvu**, **popisu
 | ---| ---|
 | id | Jedinečné ID řetězce rozlišující velká a malá písmena pro daný typ. |
 | name | Řetězec, který slouží k zadání názvu pro typ. |
-| Popis | Popis řetězce pro typ. |
+| description | Popis řetězce pro typ. |
 | proměnné | Zadejte proměnné přidružené k typu. |
 
 Typy odpovídají následujícímu příkladu JSON:
@@ -283,12 +283,13 @@ Typy odpovídají následujícímu příkladu JSON:
   ]
 }
 ```
+
 Typy modelů časových řad můžou mít mnoho proměnných, které určují pravidla vzorce a výpočtu pro události. Přečtěte si další informace o [Definování proměnných modelu časové řady](./concepts-variables.md) .
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o tom, jak upravit model prostřednictvím rozhraní API, najdete v referenční dokumentaci k [modelu časové řady](https://docs.microsoft.com/rest/api/time-series-insights/preview-model) .
+* Další informace o tom, jak upravit model prostřednictvím rozhraní API, najdete v referenční dokumentaci k [modelu časové řady](https://docs.microsoft.com/rest/api/time-series-insights/preview-model) .
 
-- Prozkoumejte vzorce a výpočty, které můžete vytvořit pomocí [proměnných modelu časové řady](./concepts-variables.md) .
+* Prozkoumejte vzorce a výpočty, které můžete vytvořit pomocí [proměnných modelu časové řady](./concepts-variables.md) .
 
-- Další informace o [dotazování na data](concepts-query-overview.md) v Azure Time Series Insights Gen2
+* Další informace o [dotazování na data](concepts-query-overview.md) v Azure Time Series Insights Gen2

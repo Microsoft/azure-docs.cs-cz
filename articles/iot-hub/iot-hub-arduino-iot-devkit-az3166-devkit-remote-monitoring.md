@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: 598e361949b000724645c841910b1682a7bbb1a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d75e7e7b4870f46c978fd70039441c8851844082
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81258452"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337955"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>Připojení MXChip IoT DevKit k akcelerátoru řešení vzdáleného monitorování Azure IoT
 
@@ -21,14 +22,14 @@ V tomto kurzu se naučíte, jak spustit ukázkovou aplikaci v DevKit a poslat da
 
 [MXChip IoT DevKit](https://aka.ms/iot-devkit) je vše v Arduino kompatibilní vývěsce s bohatými periferními zařízeními a snímači. Pro IT můžete vyvíjet pomocí [rozšíření Visual Studio Code Arduino](https://aka.ms/arduino). Obsahuje také katalog rostoucích [projektů](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) , který vám pomůže vyprototypit řešení Internet věcí (IoT), která využívají služby Microsoft Azure.
 
-## <a name="what-you-need"></a>Co potřebujete
+## <a name="what-you-need"></a>Co budete potřebovat
 
 Dokončete [průvodce Začínáme](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) :
 
 * Připojení DevKit k Wi-Fi
 * Příprava vývojového prostředí
 
-Aktivní předplatné Azure. Pokud ho nemáte, můžete se zaregistrovat přes jednu z těchto dvou metod:
+Musíte mít aktivní předplatné Azure. Pokud ho nemáte, můžete se zaregistrovat přes jednu z těchto dvou metod:
 
 * Aktivujte si [bezplatný 30denní zkušební účet Microsoft Azure](https://azure.microsoft.com/free/) .
 
@@ -133,7 +134,5 @@ Pokud narazíte na problémy, přečtěte si [Nejčastější dotazy k sadě IoT
 Teď, když jste se seznámili s postupem připojení zařízení DevKit k akcelerátoru řešení vzdáleného monitorování Azure IoT a vizualizaci dat snímačů, tady jsou doporučené další kroky:
 
 * [Přehled akcelerátorů řešení Azure IoT](https://docs.microsoft.com/azure/iot-suite/)
-
-* [Připojení zařízení IoT DevKit MXChip k aplikaci Azure IoT Central](/azure/iot-central/core/howto-connect-devkit)
 
 * [Sada IoT Developer Kit](https://microsoft.github.io/azure-iot-developer-kit/) 

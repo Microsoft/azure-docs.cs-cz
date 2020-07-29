@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: d01245a76c5210a1843307b543f98d4f1d59d2cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e7f5b6f3685a94b5497784360f8f12b22fb95012
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80877806"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87298860"
 ---
 ## <a name="create-an-azure-kubernetes-service-cluster-resource"></a>Vytvoření prostředku clusteru služby Azure Kubernetes
 
@@ -27,13 +27,13 @@ ms.locfileid: "80877806"
     |Předplatné|Vyberte odpovídající předplatné.|
     |Skupina prostředků|Vyberte dostupnou skupinu prostředků.|
     |Název clusteru Kubernetes|Zadejte název (malými písmeny).|
-    |Oblast|Vyberte okolní umístění.|
+    |Oblast|Vyberte umístění ve svém okolí.|
     |Verze Kubernetes|Libovolná hodnota je označena jako **(výchozí)**.|
     |Předpona názvu DNS|Vytvoří se automaticky, ale můžete přepsat.|
     |Velikost uzlu|DS2 v2 úrovně Standard:<br>`2 vCPUs`, `7 GB`|
     |Počet uzlů|Ponechte posuvník na výchozí hodnotu.|
 
-1. Na kartě **škálování** nechejte **virtuální uzly** a služba **VM Scale Sets** nastavené na výchozí hodnoty.
+1. Na kartě **fondy uzlů** ponechte **virtuální uzly** a služba **VM Scale Sets** nastavené na výchozí hodnoty.
 1. Na kartě **ověřování** ponechte **instanční objekt** a nastavte možnost **RBAC** na výchozí hodnoty.
 1. Na kartě **sítě** zadejte následující výběry:
 
@@ -42,7 +42,7 @@ ms.locfileid: "80877806"
     |Směrování aplikace HTTP|Ne|
     |Konfigurace sítě|Základní|
 
-1. Na kartě **monitorování** se ujistěte, že je **možnost povolit sledování kontejneru** nastavená na **hodnotu Ano**, a jako výchozí hodnotu ponechte **Log Analytics pracovní prostor** .
+1. Na kartě **integrace** se ujistěte, že je **monitorování kontejneru** nastaveno na **povoleno**, a jako výchozí hodnotu ponechte **Log Analytics pracovní prostor** .
 1. Na kartě **značky** ponechte páry název/hodnota prázdné pro nyní.
 1. Vyberte možnost **zkontrolovat a vytvořit**.
 1. Po úspěšném ověření vyberte **vytvořit**.
