@@ -4,19 +4,19 @@ description: Tato stránka popisuje některé běžné limity prostředků DTU p
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: seo-lt-2019 sqldbrb=1
+ms.custom: references_regions
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
-ms.openlocfilehash: 099094338deba63f678337b7ea13dd9ce9800084
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fa8901f2a219b0693cee17bc4d0ab78da615c415
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517684"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325096"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model---azure-sql-database"></a>Omezení prostředků pro izolované databáze pomocí modelu nákupu DTU – Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -38,14 +38,14 @@ V následujících tabulkách jsou uvedeny prostředky, které jsou k dispozici 
 | :--- | --: |
 | Maximální počet DTU | 5 |
 | Zahrnuté úložiště (GB) | 2 |
-| Maximální počet možností úložiště (GB) | 2 |
+| Maximální velikost úložiště (GB) | 2 |
 | Maximální úložiště OLTP v paměti (GB) |– |
 | Maximální počet souběžných pracovních procesů (požadavků) | 30 |
 | Maximální počet souběžných relací | 300 |
 |||
 
 > [!IMPORTANT]
-> Úroveň služeb Basic poskytuje méně než jeden vCore (CPU).  Pro úlohy náročné na procesor se doporučuje úroveň služby S3 nebo vyšší. 
+> Úroveň služeb Basic poskytuje méně než jeden vCore (CPU).  Pro úlohy náročné na procesor se doporučuje úroveň služby S3 nebo vyšší.
 >
 >V souvislosti s úložištěm dat je vrstva základní služby umístěna do objektů blob stránky úrovně Standard. Objekty blob stránky úrovně Standard využívají úložná média založená na pevných discích (HDD) a jsou nejvhodnější pro vývoj, testování a jiné zřídka používané úlohy, které jsou méně citlivé na variabilitu výkonu.
 >
@@ -55,15 +55,17 @@ V následujících tabulkách jsou uvedeny prostředky, které jsou k dispozici 
 | **Velikost výpočetního prostředí** | **S0** | **S1** | **S2** | **S3** |
 | :--- |---:| ---:|---:|---:|
 | Maximální počet DTU | 10 | 20 | 50 | 100 |
-| Zahrnuté úložiště (GB) | 250 | 250 | 250 | 250 |
-| Maximální počet možností úložiště (GB) | 250 | 250 | 250 | 250, 500, 750, 1024 |
+| Zahrnuté úložiště (GB) <sup>1</sup> | 250 | 250 | 250 | 250 |
+| Maximální velikost úložiště (GB) | 250 | 250 | 250 | 1024 |
 | Maximální úložiště OLTP v paměti (GB) | – | – | – | – |
 | Maximální počet souběžných pracovních procesů (požadavků)| 60 | 90 | 120 | 200 |
 | Maximální počet souběžných relací |600 | 900 | 1200 | 2400 |
 ||||||
 
+<sup>1</sup> Další informace o cenách, které vznikly v důsledku dodatečného zřízeného úložiště, najdete v tématu [SQL Database cenové možnosti](https://azure.microsoft.com/pricing/details/sql-database/single/) .
+
 > [!IMPORTANT]
-> Úrovně Standard S0, S1 a S2 poskytují méně než jeden vCore (CPU).  Pro úlohy náročné na procesor se doporučuje úroveň služby S3 nebo vyšší. 
+> Úrovně Standard S0, S1 a S2 poskytují méně než jeden vCore (CPU).  Pro úlohy náročné na procesor se doporučuje úroveň služby S3 nebo vyšší.
 >
 >V souvislosti s úložištěm dat jsou standardní úrovně služby S0 a S1 umístěné na standardních objektech blob stránky. Objekty blob stránky úrovně Standard využívají úložná média založená na pevných discích (HDD) a jsou nejvhodnější pro vývoj, testování a jiné zřídka používané úlohy, které jsou méně citlivé na variabilitu výkonu.
 >
@@ -73,29 +75,33 @@ V následujících tabulkách jsou uvedeny prostředky, které jsou k dispozici 
 | **Velikost výpočetního prostředí** | **S4** | **S6** | **S7** | **S9** | **S12** |
 | :--- |---:| ---:|---:|---:|---:|
 | Maximální počet DTU | 200 | 400 | 800 | 1600 | 3000 |
-| Zahrnuté úložiště (GB) | 250 | 250 | 250 | 250 | 250 |
-| Maximální počet možností úložiště (GB) | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 |
+| Zahrnuté úložiště (GB) <sup>1</sup> | 250 | 250 | 250 | 250 | 250 |
+| Maximální velikost úložiště (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
 | Maximální úložiště OLTP v paměti (GB) | – | – | – | – |– |
 | Maximální počet souběžných pracovních procesů (požadavků)| 400 | 800 | 1600 | 3200 |6000 |
 | Maximální počet souběžných relací |4800 | 9600 | 19200 | 30000 |30000 |
 |||||||
+
+<sup>1</sup> Další informace o cenách, které vznikly v důsledku dodatečného zřízeného úložiště, najdete v tématu [SQL Database cenové možnosti](https://azure.microsoft.com/pricing/details/sql-database/single/) .
 
 ### <a name="premium-service-tier"></a>Úroveň služby Premium
 
 | **Velikost výpočetního prostředí** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** |
 | :--- |---:|---:|---:|---:|---:|---:|
 | Maximální počet DTU | 125 | 250 | 500 | 1000 | 1750 | 4000 |
-| Zahrnuté úložiště (GB) | 500 | 500 | 500 | 500 | 4096 * | 4096 * |
-| Maximální počet možností úložiště (GB) | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096 * | 4096 * |
+| Zahrnuté úložiště (GB) <sup>1</sup> | 500 | 500 | 500 | 500 | 4096 <sup>2</sup> | 4096 <sup>2</sup> |
+| Maximální velikost úložiště (GB) | 1024 | 1024 | 1024 | 1024 | 4096 <sup>2</sup> | 4096 <sup>2</sup> |
 | Maximální úložiště OLTP v paměti (GB) | 1 | 2 | 4 | 8 | 14 | 32 |
 | Maximální počet souběžných pracovních procesů (požadavků)| 200 | 400 | 800 | 1600 | 2800 | 6400 |
 | Maximální počet souběžných relací | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 |||||||
 
-\*Od 1024 GB až 4096 GB v přírůstcích po 256 GB
+<sup>1</sup> Další informace o cenách, které vznikly v důsledku dodatečného zřízeného úložiště, najdete v tématu [SQL Database cenové možnosti](https://azure.microsoft.com/pricing/details/sql-database/single/) .
+
+<sup>2</sup> z 1024 gb až 4096 GB v přírůstcích po 256 GB.
 
 > [!IMPORTANT]
-> Ve všech oblastech je aktuálně k dispozici více než 1 TB úložiště na úrovni Premium s výjimkou: Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, Středozápadní USA, US DoD oblasti a státní správy USA – střed. V těchto oblastech je maximální velikost úložiště na úrovni Premium omezená na 1 TB.  Další informace najdete v tématu [aktuální omezení P11-P15](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  
+> Ve všech oblastech je aktuálně k dispozici více než 1 TB úložiště na úrovni Premium s výjimkou: Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, Středozápadní USA, US DoD oblasti a státní správy USA – střed. V těchto oblastech je maximální velikost úložiště na úrovni Premium omezená na 1 TB.  Další informace najdete v tématu [aktuální omezení P11-P15](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).
 > [!NOTE]
 > `tempdb`Omezení najdete v tématu [omezení tempdb](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database).
 

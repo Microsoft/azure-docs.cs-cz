@@ -11,12 +11,15 @@ ms.date: 07/18/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 2e1167c92dccdfa7600a4827c0081647c190d7d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+- 'Role: Operations'
+ms.openlocfilehash: be63cc2280691e85584ba4d6dd30fe751505a672
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252130"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325453"
 ---
 # <a name="control-access-to-iot-hub"></a>Řízení přístupu k IoT Hubu
 
@@ -43,7 +46,7 @@ Musíte mít příslušná oprávnění pro přístup ke všem koncovým bodům 
   | Zásady sdíleného přístupu | Oprávnění |
   | -------------------- | ----------- |
   | iothubowner | Všechna oprávnění |
-  | služba | **ServiceConnect** oprávnění |
+  | service | **ServiceConnect** oprávnění |
   | zařízení | **DeviceConnect** oprávnění |
   | registryRead | **RegistryRead** oprávnění |
   | registryReadWrite | **RegistryRead** a **RegistryWrite** oprávnění |
@@ -137,7 +140,7 @@ Token zabezpečení má následující formát:
 
 Tady jsou očekávané hodnoty:
 
-| Hodnota | Description |
+| Hodnota | Popis |
 | --- | --- |
 | označení |Řetězec pro podpis HMAC-SHA256 ve formátu: `{URL-encoded-resourceURI} + "\n" + expiry` . **Důležité**: klíč se dekóduje z formátu Base64 a používá se jako klíč k provedení výpočtu HMAC-SHA256. |
 | resourceUri |Předpona URI (podle segmentu) koncových bodů, ke kterým se dá dostat s tímto tokenem, počínaje názvem hostitele centra IoT (bez protokolu). Například `myHub.azure-devices.net/devices/device1`. |

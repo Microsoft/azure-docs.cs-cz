@@ -3,12 +3,12 @@ title: Sledování výkonu webové aplikace – Azure Application Insights
 description: Jak Application Insights zapadá do cyklu devOps
 ms.topic: conceptual
 ms.date: 12/21/2018
-ms.openlocfilehash: fa62e8840c14e87d24db029d6bb7a215124a0511
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d2c3326c3f655d4bdfeaa42ac272658b251b7f82
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033678"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324484"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Hloubková diagnostika webových aplikací a služeb pomocí Application Insights
 ## <a name="why-do-i-need-application-insights"></a>Proč potřebuji Application Insights?
@@ -85,7 +85,7 @@ Real Madrid používá modul Power BI k zobrazení telemetrie.
 ![Power BI zobrazení telemetrie Application Insights](./media/devops/080.png)
 
 ## <a name="smart-detection"></a>Inteligentní zjišťování
-[Proaktivní Diagnostika](../../azure-monitor/app/proactive-diagnostics.md) je nedávná funkce. Bez jakékoli speciální konfigurace Application Insights automaticky detekuje a upozorňuje na neobvyklé zvýšení sazeb za selhání vaší aplikace. Je dostatečně inteligentní, aby bylo možné ignorovat obtíže s příležitostnými chybami, a také hry, které jsou v rámci požadavků jednoduše přiměřené. Pokud například dojde k selhání v jedné ze služeb, na které jste zapracovali, nebo pokud nové sestavení, které jste právě nasadili, nefunguje dobře, budete o tom informovat, jakmile se podíváte na e-mail. (A k dispozici jsou Webhooky, abyste mohli aktivovat jiné aplikace.)
+[Proaktivní Diagnostika](./proactive-diagnostics.md) je nedávná funkce. Bez jakékoli speciální konfigurace Application Insights automaticky detekuje a upozorňuje na neobvyklé zvýšení sazeb za selhání vaší aplikace. Je dostatečně inteligentní, aby bylo možné ignorovat obtíže s příležitostnými chybami, a také hry, které jsou v rámci požadavků jednoduše přiměřené. Pokud například dojde k selhání v jedné ze služeb, na které jste zapracovali, nebo pokud nové sestavení, které jste právě nasadili, nefunguje dobře, budete o tom informovat, jakmile se podíváte na e-mail. (A k dispozici jsou Webhooky, abyste mohli aktivovat jiné aplikace.)
 
 Další aspekt této funkce provádí každodenní analýzu telemetrie a hledá neobvyklé vzorce výkonu, které je obtížné zjistit. Například může najít pomalý výkon přidružený k určité geografické oblasti nebo konkrétní verzi prohlížeče.
 
@@ -145,9 +145,9 @@ Během ladění máte možnost zachovat telemetrii ve vývojovém počítači, z
 Když je vyvolána výstraha, Application Insights může automaticky vytvořit pracovní položku v systému pro sledování práce.
 
 ## <a name="but-what-about"></a>Ale co...?
-* [Ochrana osobních údajů a úložiště](../../azure-monitor/app/data-retention-privacy.md) – vaše telemetrie se uchovávají na zabezpečených serverech Azure.
+* [Ochrana osobních údajů a úložiště](./data-retention-privacy.md) – vaše telemetrie se uchovávají na zabezpečených serverech Azure.
 * Výkon – dopad je velmi nízký. Telemetrii je dávkovaná.
-* [Ceny](../../azure-monitor/app/pricing.md) – můžete začít zdarma a pokračovat, i když jste v nedostatku objemu.
+* [Ceny](./pricing.md) – můžete začít zdarma a pokračovat, i když jste v nedostatku objemu.
 
 
 ## <a name="video"></a>Video
@@ -157,6 +157,7 @@ Když je vyvolána výstraha, Application Insights může automaticky vytvořit 
 ## <a name="next-steps"></a>Další kroky
 Začínáme s Application Insights je snadné. Hlavní možnosti jsou:
 
-* [Servery služby IIS](../../azure-monitor/app/monitor-performance-live-website-now.md)a také pro [Azure App Service](../../azure-monitor/app/app-insights-overview.md).
-* Instrumentujte svůj projekt během vývoje. To můžete provést pro aplikace [ASP.NET](../../azure-monitor/app/asp-net.md) nebo [Java](../../azure-monitor/app/java-get-started.md) a také [Node.js](../../azure-monitor/app/nodejs.md) a hostitele [jiných typů](../../azure-monitor/app/platforms.md). 
-* Vyinstrumentujte [jakoukoli webovou stránku](../../azure-monitor/app/javascript.md) přidáním krátkého fragmentu kódu.
+* [Servery služby IIS](./monitor-performance-live-website-now.md)a také pro [Azure App Service](./app-insights-overview.md).
+* Instrumentujte svůj projekt během vývoje. To můžete provést pro aplikace [ASP.NET](./asp-net.md) nebo [Java](./java-get-started.md) a také [Node.js](./nodejs.md) a hostitele [jiných typů](./platforms.md). 
+* Vyinstrumentujte [jakoukoli webovou stránku](./javascript.md) přidáním krátkého fragmentu kódu.
+

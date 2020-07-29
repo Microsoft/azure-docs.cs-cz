@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 40af7a7d3bcc4584260735ddbcbf84ac0936ce15
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: aa0d29c5c2a4cf8eebbf530b42a25d8924e031bc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172102"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290273"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>Rychlý start: Vytvoření veřejného nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure CLI
 
@@ -418,11 +418,17 @@ Odchozí pravidla nástroje pro vyrovnávání zatížení konfigurují odchozí
 
 Další informace o odchozích připojeních najdete v tématu [odchozí připojení v Azure](load-balancer-outbound-connections.md).
 
-### <a name="create-outbound-public-ip-address"></a>Vytvoření odchozí veřejné IP adresy
+### <a name="create-outbound-public-ip-address-or-public-ip-prefix"></a>Vytvořte odchozí veřejnou IP adresu nebo předponu veřejné IP adresy.
 
-Použijte [AZ Network Public-IP Create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) to:
+Pomocí [AZ Network Public-IP Create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) vytvořte jednu IP adresu pro odchozí připojení.  
 
-* Vytvořte záložní veřejnou IP adresu zóny Standard s názvem **myPublicIPOutbound**.
+Pomocí [AZ Network Public-IP prefix Create](https://docs.microsoft.com/cli/azure/network/public-ip/prefix?view=azure-cli-latest#az-network-public-ip-prefix-create) vytvořte předponu veřejné IP adresy pro odchozí připojení.
+
+Další informace o škálování odchozího NAT a odchozího připojení najdete v tématu [škálování odchozího překladu adres (NAT) s několika IP adresami](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#scale).
+
+#### <a name="public-ip"></a>Veřejná IP adresa
+
+* S názvem **myPublicIPOutbound**.
 * V **myResourceGroupLB**.
 
 ```azurecli-interactive
@@ -441,9 +447,35 @@ Vytvoření redundantní veřejné IP adresy v Zóna 1:
     --sku Standard \
     --zone 1
 ```
+#### <a name="public-ip-prefix"></a>Předpona veřejné IP adresy
+
+* S názvem **myPublicIPPrefixOutbound**.
+* V **myResourceGroupLB**.
+* Délka předpony **28**.
+
+```azurecli-interactive
+  az network public-ip prefix create \
+    --resource-group myResourceGroupLB \
+    --name myPublicIPPrefixOutbound \
+    --length 28
+```
+Postup při vytváření redundantní předpony veřejné IP adresy pro oblast v Zóna 1:
+
+```azurecli-interactive
+  az network public-ip prefix create \
+    --resource-group myResourceGroupLB \
+    --name myPublicIPPrefixOutbound \
+    --length 28 \
+    --zone 1
+```
+
 ### <a name="create-outbound-frontend-ip-configuration"></a>Vytvoření odchozí konfigurace IP adresy front-endu
 
 Vytvořte novou konfiguraci IP adresy front-endu pomocí [AZ Network disendu-IP Create ](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create):
+
+Vyberte příkazy veřejné IP adresy nebo předpony veřejných IP adres na základě rozhodnutí v předchozím kroku.
+
+#### <a name="public-ip"></a>Veřejná IP adresa
 
 * S názvem **myFrontEndOutbound**.
 * Ve skupině prostředků **myResourceGroupLB**.
@@ -456,6 +488,21 @@ Vytvořte novou konfiguraci IP adresy front-endu pomocí [AZ Network disendu-IP 
     --name myFrontEndOutbound \
     --lb-name myLoadBalancer \
     --public-ip-address myPublicIPOutbound 
+```
+
+#### <a name="public-ip-prefix"></a>Předpona veřejné IP adresy
+
+* S názvem **myFrontEndOutbound**.
+* Ve skupině prostředků **myResourceGroupLB**.
+* Přidruženo k **myPublicIPPrefixOutbound**předpony veřejných IP adres.
+* Přidruženo k **myLoadBalancer**nástroje pro vyrovnávání zatížení.
+
+```azurecli-interactive
+  az network lb frontend-ip create \
+    --resource-group myResourceGroupLB \
+    --name myFrontEndOutbound \
+    --lb-name myLoadBalancer \
+    --public-ip-prefix myPublicIPPrefixOutbound 
 ```
 
 ### <a name="create-outbound-pool"></a>Vytvořit odchozí fond
@@ -498,7 +545,7 @@ Vytvořte nové odchozí pravidlo pro odchozí back-end fond pomocí [AZ Network
 ```
 ### <a name="add-virtual-machines-to-outbound-pool"></a>Přidat virtuální počítače do odchozího fondu
 
-Přidejte síťová rozhraní virtuálního počítače do odchozího fondu nástroje pro vyrovnávání zatížení pomocí [AZ Network nic IP-config Address-Pool Add](https://docs.microsoft.com/cli/azure/network/nic/ip-config/address-pool?view=azure-cli-latest#az-network-nic-ip-config-address-pool-add):
+Přidejte virtuální počítače do odchozího fondu pomocí [AZ Network nic IP-config Address-Pool Add](https://docs.microsoft.com/cli/azure/network/nic/ip-config/address-pool?view=azure-cli-latest#az-network-nic-ip-config-address-pool-add):
 
 
 #### <a name="vm1"></a>VM1

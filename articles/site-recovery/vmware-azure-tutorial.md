@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 2ad06a7583789a9f4db974251e7c2e7387b72549
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 317cc5222b3444ae2ed242df694d317503c72a87
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076092"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290665"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Nastavení zotavení po havárii do Azure pro místní virtuální počítače VMware
 
@@ -84,7 +84,7 @@ Všechny tyto součásti jsou nainstalovány společně na jednom místním poč
 ## <a name="import-the-template-in-vmware"></a>Import šablony do VMware
 
 
-1. Pomocí klientské konzoly VMware vSphere Client se přihlaste k VMware vCenter Serveru nebo hostiteli vSphere ESXi.
+1. Přihlaste se k serveru VMware vCenter nebo vSphere hostitele ESXi pomocí klienta VMware vSphere.
 2. V nabídce **soubor** vyberte **nasadit šablonu OVF** a spusťte **Průvodce nasazením šablony OVF**.
 
      ![Šablona OVF](./media/vmware-azure-tutorial/vcenter-wizard.png)
@@ -113,7 +113,7 @@ Pokud chcete přidat další síťovou kartu ke konfiguračnímu serveru, přide
 
 Po nastavení konfiguračního serveru ho zaregistrujete v trezoru.
 
-1. Z klientské konzole VMware vSphere Client zapněte požadovaný virtuální počítač.
+1. Z konzoly klienta VMware vSphere zapněte virtuální počítač.
 2. Virtuální počítač se spustí do instalačního prostředí Windows Serveru 2016. Přijměte licenční smlouvu a zadejte heslo správce.
 3. Po dokončení instalace se přihlaste k virtuálnímu počítači jako správce.
 4. Při prvním přihlášení se během pár vteřin spustí nástroj pro konfiguraci služby Azure Site Recovery.

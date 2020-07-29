@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: bda1acde914aa068fe3a87d307a29583f87af34f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b9d27e602062ff2638d8eea23fe64497fd66512d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091177"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322903"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Řešení VMware Monitoring (nepoužívané) v Azure Monitor
 
@@ -27,7 +27,7 @@ ms.locfileid: "87091177"
 ## <a name="install-and-configure-the-solution"></a>Instalace a konfigurace řešení
 K instalaci a konfiguraci řešení můžete použít následující informace.
 
-* Přidejte řešení VMware Monitoring do svého předplatného pomocí postupu popsaného v tématu [instalace řešení monitorování](../insights/solutions.md#install-a-monitoring-solution).
+* Přidejte řešení VMware Monitoring do svého předplatného pomocí postupu popsaného v tématu [instalace řešení monitorování](./solutions.md#install-a-monitoring-solution).
 
 #### <a name="supported-vmware-esxi-hosts"></a>Podporovaná VMware ESXi hostitelé
 vSphere ESXi hostitele 5,5, 6,0 a 6,5
@@ -50,14 +50,14 @@ Vytvořte virtuální počítač s operačním systémem Linux pro příjem vše
     ![vspherefwproperties](./media/vmware/vsphere3.png)  
 1. Zkontrolujte konzolu vSphere a ověřte, jestli je syslog správně nastavený. Potvrďte u hostitele ESXI, že je nakonfigurovaný port **1514** .
 1. Stáhněte a nainstalujte agenta Log Analytics pro Linux na server Linux. Další informace najdete v [dokumentaci ke službě Log Analytics Agent pro Linux](https://github.com/Microsoft/OMS-Agent-for-Linux).
-1. Po instalaci agenta Log Analytics pro Linux přejděte do adresáře/etc/opt/Microsoft/omsagent/sysconf/omsagent.d a zkopírujte soubor vmware_esxi. conf do adresáře/etc/opt/Microsoft/omsagent/conf/omsagent.d a změňte vlastníka/skupinu a oprávnění souboru. Příklad:
+1. Po instalaci agenta Log Analytics pro Linux přejděte do adresáře/etc/opt/Microsoft/omsagent/sysconf/omsagent.d a zkopírujte soubor vmware_esxi. conf do adresáře/etc/opt/Microsoft/omsagent/conf/omsagent.d a změňte vlastníka/skupinu a oprávnění souboru. Například:
 
     ```
     sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/vmware_esxi.conf /etc/opt/microsoft/omsagent/conf/omsagent.d
    sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf
     ```
 1. Restartujte agenta Log Analytics pro Linux spuštěním `sudo /opt/microsoft/omsagent/bin/service_control restart` .
-1. Otestujte připojení mezi serverem Linux a hostitelem ESXi pomocí `nc` příkazu na hostiteli ESXi. Příklad:
+1. Otestujte připojení mezi serverem Linux a hostitelem ESXi pomocí `nc` příkazu na hostiteli ESXi. Například:
 
     ```
     [root@ESXiHost:~] nc -z 123.456.789.101 1514
@@ -81,7 +81,7 @@ V následující tabulce jsou uvedeny metody shromažďování dat a další pod
 
 V následující tabulce jsou uvedeny příklady datových polí shromažďovaných řešením VMware Monitoring:
 
-| název pole | Popis |
+| název pole | description |
 | --- | --- |
 | Device_s |Úložná zařízení VMware |
 | ESXIFailure_s |typy selhání |
@@ -200,3 +200,4 @@ Může existovat několik důvodů:
 * K zobrazení podrobných dat hostitele VMware použijte [dotazy protokolu](../log-query/log-query-overview.md) v Log Analytics.
 * [Vytvořte si vlastní řídicí panely](../learn/tutorial-logs-dashboards.md) zobrazující data hostitele VMware.
 * [Vytváření výstrah](../platform/alerts-overview.md) v případě, že dojde k určitým událostem hostitele VMware.
+

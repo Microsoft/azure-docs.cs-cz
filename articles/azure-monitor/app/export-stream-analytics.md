@@ -3,12 +3,12 @@ title: Export pomocí Stream Analytics z Azure Application Insights | Microsoft 
 description: Stream Analytics může průběžně transformovat, filtrovat a směrovat data, která exportujete z Application Insights.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 70f952dcd6f8d942ac272afed58a7fe0f47d8a6e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d90b965ca65af0acf7032067c77591a2ac4d4b02
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539954"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324348"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Použití Stream Analytics k zpracování exportovaných dat z Application Insights
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) je ideálním nástrojem pro zpracování dat [exportovaných z Application Insights](export-telemetry.md). Stream Analytics může vyžádat data z nejrůznějších zdrojů. Může data transformovat a filtrovat a pak je směrovat na celou řadu umyvadel.
@@ -16,7 +16,7 @@ ms.locfileid: "86539954"
 V tomto příkladu vytvoříme adaptér, který převezme data z Application Insights, přejmenuje a zpracuje některá pole a pošle je do Power BI.
 
 > [!WARNING]
-> K dispozici je mnohem lepší a jednodušší [způsob zobrazení Application Insights dat v Power BI](../../azure-monitor/app/export-power-bi.md ). Cesta znázorněná tady je pouze příklad, který ilustruje zpracování exportovaných dat.
+> K dispozici je mnohem lepší a jednodušší [způsob zobrazení Application Insights dat v Power BI](./export-power-bi.md). Cesta znázorněná tady je pouze příklad, který ilustruje zpracování exportovaných dat.
 > 
 > 
 
@@ -55,7 +55,7 @@ Průběžný export vždycky ukládá data do účtu Azure Storage, takže nejd�
 
     ![Výběr typů událostí](./media/export-stream-analytics/080.png)
 
-1. Nechte si shromažďovat data. Nasaďte se zpátky a umožněte lidem, aby na chvíli používali vaši aplikaci. Telemetrie se objeví v a v [diagnostickém vyhledávání](../../azure-monitor/app/diagnostic-search.md)uvidíte statistické grafy v [Průzkumníkovi metrik](../../azure-monitor/platform/metrics-charts.md) a jednotlivé události. 
+1. Nechte si shromažďovat data. Nasaďte se zpátky a umožněte lidem, aby na chvíli používali vaši aplikaci. Telemetrie se objeví v a v [diagnostickém vyhledávání](./diagnostic-search.md)uvidíte statistické grafy v [Průzkumníkovi metrik](../platform/metrics-charts.md) a jednotlivé události. 
    
     Data budou také exportována do vašeho úložiště. 
 2. Zkontrolujte exportovaná data. V aplikaci Visual Studio vyberte možnost **Zobrazit/Cloud Průzkumník**a otevřete Azure/úložiště. (Pokud nemáte tuto možnost nabídky, musíte nainstalovat sadu Azure SDK: otevřete dialogové okno Nový projekt a otevřete Visual C#/Cloud/získat Microsoft Azure SDK pro .NET.)
@@ -186,7 +186,7 @@ Počkejte, dokud nebude úloha spuštěna.
 
 ## <a name="see-results-in-power-bi"></a>Zobrazit výsledky v Power BI
 > [!WARNING]
-> K dispozici je mnohem lepší a jednodušší [způsob zobrazení Application Insights dat v Power BI](../../azure-monitor/app/export-power-bi.md ). Cesta znázorněná tady je pouze příklad, který ilustruje zpracování exportovaných dat.
+> K dispozici je mnohem lepší a jednodušší [způsob zobrazení Application Insights dat v Power BI](./export-power-bi.md). Cesta znázorněná tady je pouze příklad, který ilustruje zpracování exportovaných dat.
 > 
 > 
 
@@ -211,4 +211,5 @@ Noam Robert Zeev ukazuje, jak zpracovávat exportovaná data pomocí Stream Anal
 ## <a name="next-steps"></a>Další kroky
 * [Průběžný export](export-telemetry.md)
 * [Podrobný odkaz na datový model pro typy a hodnoty vlastností.](export-data-model.md)
-* [Application Insights](../../azure-monitor/app/app-insights-overview.md)
+* [Application Insights](./app-insights-overview.md)
+

@@ -4,19 +4,20 @@ description: Application Insights datový model pro telemetrii žádostí
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 57cc9c95137facaaf2ddf5bb212121f88e150f5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a352f4ce3528d395599a91b53031c74b0873152
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807651"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320557"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Telemetrie žádostí: datový model Application Insights
 
-Položka telemetrie žádosti (v [Application Insights](../../azure-monitor/app/app-insights-overview.md)) představuje logickou sekvenci spuštění spuštěnou externím požadavkem ve vaší aplikaci. Každé spuštění žádosti je identifikováno jedinečnými `ID` a `url` obsahujícími všechny parametry spuštění. Požadavky můžete seskupit podle logických požadavků `name` a definovat `source` tuto žádost. Spuštění kódu může mít za následek `success` nebo `fail` a má nějaký určitý `duration` . Úspěšnost i spuštění při selhání mohou být seskupeny `resultCode` . Počáteční čas pro telemetrii požadavků definovanou na úrovni obálky.
+Položka telemetrie žádosti (v [Application Insights](./app-insights-overview.md)) představuje logickou sekvenci spuštění spuštěnou externím požadavkem ve vaší aplikaci. Každé spuštění žádosti je identifikováno jedinečnými `ID` a `url` obsahujícími všechny parametry spuštění. Požadavky můžete seskupit podle logických požadavků `name` a definovat `source` tuto žádost. Spuštění kódu může mít za následek `success` nebo `fail` a má nějaký určitý `duration` . Úspěšnost i spuštění při selhání mohou být seskupeny `resultCode` . Počáteční čas pro telemetrii požadavků definovanou na úrovni obálky.
 
 Telemetrie žádostí podporuje standardní rozšiřitelný model pomocí Custom `properties` a `measurements` .
 
-## <a name="name"></a>Name
+## <a name="name"></a>Název
 
 Název žádosti představuje cestu kódu pořízenou pro zpracování žádosti. Nízká hodnota mohutnosti, která umožňuje lepší seskupení požadavků. V případě požadavků HTTP představuje šablonu metoda HTTP a cestu adresy URL, například `GET /values/{id}` bez skutečné `id` hodnoty.
 
@@ -26,7 +27,7 @@ Maximální délka: 1024 znaků
 
 ## <a name="id"></a>ID
 
-Identifikátor instance volání požadavku. Používá se pro korelaci mezi požadavkem a dalšími položkami telemetrie. ID by mělo být globálně jedinečné. Další informace najdete na stránce [korelace](../../azure-monitor/app/correlation.md) .
+Identifikátor instance volání požadavku. Používá se pro korelaci mezi požadavkem a dalšími položkami telemetrie. ID by mělo být globálně jedinečné. Další informace najdete na stránce [korelace](./correlation.md) .
 
 Maximální délka: 128 znaků
 
@@ -38,7 +39,7 @@ Maximální délka: 2048 znaků
 
 ## <a name="source"></a>Zdroj
 
-Zdroj požadavku Příkladem je klíč instrumentace volajícího nebo IP adresy volajícího. Další informace najdete na stránce [korelace](../../azure-monitor/app/correlation.md) .
+Zdroj požadavku Příkladem je klíč instrumentace volajícího nebo IP adresy volajícího. Další informace najdete na stránce [korelace](./correlation.md) .
 
 Maximální délka: 1024 znaků
 
@@ -52,7 +53,7 @@ Výsledek provedení žádosti Stavový kód HTTP pro požadavky HTTP. Může to
 
 Maximální délka: 1024 znaků
 
-## <a name="success"></a>Úspěch
+## <a name="success"></a>Success
 
 Označení úspěšného nebo neúspěšného volání. Toto pole je vyžadováno. Pokud není explicitně nastaveno na `false` -, je žádost považována za úspěšnou. Nastavte tuto hodnotu na, `false` Pokud byla operace přerušena výjimkou nebo vrátila kód výsledku chyby.
 
@@ -72,7 +73,8 @@ V [příspěvku na blogu](https://apmtips.com/posts/2016-12-03-request-success-a
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Zápis vlastní telemetrie žádostí](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)
+- [Zápis vlastní telemetrie žádostí](./api-custom-events-metrics.md#trackrequest)
 - Viz [datový model](data-model.md) pro typy Application Insights a datový model.
-- Naučte se, jak [nakonfigurovat ASP.NET Core](../../azure-monitor/app/asp-net.md) aplikaci pomocí Application Insights.
-- Podívejte se na [platformy](../../azure-monitor/app/platforms.md) podporované nástrojem Application Insights.
+- Naučte se, jak [nakonfigurovat ASP.NET Core](./asp-net.md) aplikaci pomocí Application Insights.
+- Podívejte se na [platformy](./platforms.md) podporované nástrojem Application Insights.
+

@@ -1,26 +1,26 @@
 ---
-title: 'Kurz: ochrana webového rozhraní API Node. js pomocí Azure AD B2C a udělení přístupu k jednostránkové aplikaci (SPA)'
+title: 'Kurz: ochrana Node.js webového rozhraní API pomocí Azure AD B2C a udělení přístupu k jednostránkové aplikaci (SPA)'
 titleSuffix: Azure AD B2C
-description: V tomto kurzu se naučíte, jak použít Active Directory B2C k ochraně webového rozhraní API Node. js a jeho volání z jednostránkové aplikace.
+description: V tomto kurzu se naučíte, jak použít Active Directory B2C k ochraně Node.js webového rozhraní API a jeho volání z jednostránkové aplikace.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.author: mimart
 ms.date: 04/04/2020
-ms.custom: mvc
+ms.custom: mvc, devx-track-javascript
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 50524159186987b7a30015c878fa3fac949afc79
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f01ef1a4cf5bc5b805da3dd4d825ef17f81ce53e
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80875663"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87170188"
 ---
-# <a name="tutorial-protect-and-grant-access-to-a-nodejs-web-api-from-a-single-page-application-with-azure-ad-b2c"></a>Kurz: Chraňte a udělte přístup k webovému rozhraní API Node. js z jednostránkové aplikace s Azure AD B2C
+# <a name="tutorial-protect-and-grant-access-to-a-nodejs-web-api-from-a-single-page-application-with-azure-ad-b2c"></a>Kurz: ochrana a udělení přístupu k Node.js webovému rozhraní API z jednostránkové aplikace s Azure AD B2C
 
-V tomto kurzu se dozvíte, jak volat webové rozhraní API Node. js chráněného Azure Active Directory B2C (Azure AD B2C) z jednostránkové aplikace.
+V tomto kurzu se dozvíte, jak volat Node.js webového rozhraní API chráněného Azure Active Directory B2C (Azure AD B2C) z jednostránkové aplikace.
 
 V tomto kurzu druhý v řadě dvou částí:
 
@@ -50,7 +50,7 @@ Obory poskytují způsob řízení přístupu k chráněným prostředkům. Webo
 
 [!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
-Poznamenejte si `demo.read` hodnotu **rozsah,** který se má použít v pozdějším kroku při konfiguraci jednostránkové aplikace. Úplná hodnota oboru je podobná `https://contosob2c.onmicrosoft.com/api/demo.read`.
+Poznamenejte si hodnotu **Scopes** `demo.read` rozsah, který se má použít v pozdějším kroku při konfiguraci jednostránkové aplikace. Úplná hodnota oboru je podobná `https://contosob2c.onmicrosoft.com/api/demo.read` .
 
 ## <a name="grant-permissions"></a>Udělení oprávnění
 
@@ -64,9 +64,9 @@ Vaše webová aplikace s jednou stránkou má teď udělená oprávnění k chr�
 
 ## <a name="configure-the-sample"></a>Konfigurace ukázky
 
-Když je teď webové rozhraní API zaregistrované a Vy jste definovali obory, nakonfigurujte kód webového rozhraní API tak, aby fungoval s vaším klientem Azure AD B2C. V tomto kurzu nakonfigurujete ukázkové webové rozhraní API Node. js, které stáhnete z GitHubu.
+Když je teď webové rozhraní API zaregistrované a Vy jste definovali obory, nakonfigurujte kód webového rozhraní API tak, aby fungoval s vaším klientem Azure AD B2C. V tomto kurzu nakonfigurujete ukázkové Node.js webové rozhraní API, které stáhnete z GitHubu.
 
-[Stáhněte si \*archiv. zip](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi/archive/master.zip) nebo naklonujte ukázkový projekt webového rozhraní API z GitHubu. Můžete také přejít přímo na projekt [Azure-Samples/Active-Directory-B2C-JavaScript-NodeJS-WebApi](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) na GitHubu.
+[Stáhněte si \* archiv. zip](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi/archive/master.zip) nebo naklonujte ukázkový projekt webového rozhraní API z GitHubu. Můžete také přejít přímo na projekt [Azure-Samples/Active-Directory-B2C-JavaScript-NodeJS-WebApi](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) na GitHubu.
 
 ```console
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi.git
@@ -74,8 +74,8 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 ### <a name="configure-the-web-api"></a>Konfigurace webového rozhraní API
 
-1. Otevřete soubor *config. js* v editoru kódu.
-1. Upravte hodnoty proměnných tak, aby odrážely ty, které jste vytvořili dříve. Aktualizujte `policyName` také tok uživatele, který jste vytvořili jako součást požadavků. Například *B2C_1_signupsignin1*.
+1. Otevřete *config.js* soubor v editoru kódu.
+1. Upravte hodnoty proměnných tak, aby odrážely ty, které jste vytvořili dříve. Aktualizujte také `policyName` tok uživatele, který jste vytvořili jako součást požadavků. Například *B2C_1_signupsignin1*.
 
     ```javascript
     const clientID = "<your-webapi-application-ID>"; // Application (client) ID
@@ -86,9 +86,9 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 #### <a name="enable-cors"></a>Povolení CORS
 
-Chcete-li povolit, aby vaše jednostránková aplikace volala webové rozhraní API Node. js, je nutné povolit [CORS](https://expressjs.com/en/resources/middleware/cors.html) ve webovém rozhraní API. V produkční aplikaci byste měli mít pozor na to, která doména požadavek vydává, ale v tomto kurzu umožníte žádostem z libovolné domény.
+Aby mohla vaše jednostránková aplikace volat Node.js webové rozhraní API, je potřeba povolit [CORS](https://expressjs.com/en/resources/middleware/cors.html) ve webovém rozhraní API. V produkční aplikaci byste měli mít pozor na to, která doména požadavek vydává, ale v tomto kurzu umožníte žádostem z libovolné domény.
 
-Pokud chcete povolit CORS, použijte následující middleware. V ukázce kódu webového rozhraní API Node. js v tomto kurzu už je to přidané do souboru *index. js* .
+Pokud chcete povolit CORS, použijte následující middleware. V ukázce kódu webového rozhraní API Node.js v tomto kurzu už je to přidané do *index.js* souboru.
 
 ```javascript
 app.use((req, res, next) => {
@@ -100,20 +100,20 @@ app.use((req, res, next) => {
 
 ### <a name="configure-the-single-page-application"></a>Konfigurace jednostránkové aplikace
 
-Jednostránkové aplikace (SPA) z [předchozího kurzu](tutorial-single-page-app.md) v řadě používá Azure AD B2C pro registraci a přihlašování uživatelů a ve výchozím nastavení volá webové rozhraní API Node. js chráněné *fabrikamb2c* ukázkovým klientem.
+Jednostránkové aplikace (SPA) z [předchozího kurzu](tutorial-single-page-app.md) v řadě používá Azure AD B2C pro registraci a přihlašování uživatelů a ve výchozím nastavení volá webové rozhraní API Node.js chráněné *fabrikamb2c* ukázkovým klientem.
 
-V této části provedete aktualizaci jednostránkové webové aplikace tak, aby volala webové rozhraní API Node. js chráněné *vaším* Azure AD B2C tenant (a který spustíte v místním počítači).
+V této části provedete aktualizaci jednostránkové webové aplikace tak, aby volala Node.js webové rozhraní API chráněné *vaším* klientem Azure AD B2C (a kterou spouštíte v místním počítači).
 
 Změna nastavení v zabezpečeném hesla:
 
-1. V projektu [Active-Directory-B2C-JavaScript-msal-singlepageapp][github-js-spa] , který jste stáhli nebo naklonoval v předchozím kurzu, otevřete soubor *apiConfig. js* ve složce *JavaScriptSPA* .
+1. V projektu [Active-Directory-B2C-JavaScript-msal-singlepageapp][github-js-spa] , který jste stáhli nebo naklonoval v předchozím kurzu, otevřete soubor *apiConfig.js* ve složce *JavaScriptSPA* .
 1. Nakonfigurujte ukázku s identifikátorem URI pro obor *demo. Read* , který jste vytvořili dříve, a adresu URL webového rozhraní API.
-    1. V `apiConfig` definici `b2cScopes` nahraďte hodnotu úplným identifikátorem URI pro *demo. Read* Scope (hodnota **oboru** , kterou jste si poznamenali dříve).
+    1. V `apiConfig` definici nahraďte `b2cScopes` hodnotu ÚPLNÝm identifikátorem URI pro *demo. Read* Scope (hodnota **oboru** , kterou jste si poznamenali dříve).
     1. Změňte doménu v `webApi` hodnotě na identifikátor URI přesměrování, který jste přidali při registraci aplikace webového rozhraní API v předchozím kroku.
 
-    Vzhledem k tomu, že rozhraní API `/hello` je dostupné na koncovém bodu, ponechte */Hello* v identifikátoru URI.
+    Vzhledem k tomu, že rozhraní API je dostupné na `/hello` koncovém bodu, ponechte */Hello* v identifikátoru URI.
 
-    `apiConfig` Definice by měla vypadat podobně jako následující blok kódu, ale s názvem vašeho tenanta B2C na místě `<your-tenant-name>`:
+    `apiConfig`Definice by měla vypadat podobně jako následující blok kódu, ale s názvem vašeho TENANTA B2C na místě `<your-tenant-name>` :
 
     ```javascript
     // The current application coordinates were pre-registered in a B2C tenant.
@@ -125,13 +125,13 @@ Změna nastavení v zabezpečeném hesla:
 
 ## <a name="run-the-spa-and-web-api"></a>Spuštění ZABEZPEČENÉho a webového rozhraní API
 
-Nyní jste připraveni otestovat přístup k rozhraní API s oborem aplikace na jednu stránku. Spusťte jak webové rozhraní API Node. js, tak ukázkovou jednostránkovou aplikaci JavaScriptu na místním počítači. Pak se přihlaste k jednostránkové aplikaci a výběrem tlačítka **rozhraní API volání** zahajte požadavek na chráněné rozhraní API.
+Nyní jste připraveni otestovat přístup k rozhraní API s oborem aplikace na jednu stránku. Na místním počítači spusťte webové rozhraní API Node.js a ukázkovou jednostránkovou aplikaci JavaScriptu. Pak se přihlaste k jednostránkové aplikaci a výběrem tlačítka **rozhraní API volání** zahajte požadavek na chráněné rozhraní API.
 
 I když jsou obě aplikace spuštěné v tomto kurzu místně, jste je nakonfigurovali tak, aby používaly Azure AD B2C pro zabezpečené registrace, přihlašování a udělení přístupu k chráněnému webovému rozhraní API.
 
-### <a name="run-the-nodejs-web-api"></a>Spuštění webového rozhraní API Node. js
+### <a name="run-the-nodejs-web-api"></a>Spuštění Node.js webového rozhraní API
 
-1. Otevřete okno konzoly a přejděte do adresáře obsahujícího ukázku webového rozhraní API Node. js. Příklad:
+1. Otevřete okno konzoly a přejděte do adresáře obsahujícího ukázku Node.js webového rozhraní API. Například:
 
     ```console
     cd active-directory-b2c-javascript-nodejs-webapi
@@ -152,7 +152,7 @@ I když jsou obě aplikace spuštěné v tomto kurzu místně, jste je nakonfigu
 
 ### <a name="run-the-single-page-app"></a>Spuštění jednostránkové aplikace
 
-1. Otevřete jiné okno konzoly a přejděte do adresáře, který obsahuje ukázku kódu JavaScript SPA. Příklad:
+1. Otevřete jiné okno konzoly a přejděte do adresáře, který obsahuje ukázku kódu JavaScript SPA. Například:
 
     ```console
     cd active-directory-b2c-javascript-msal-singlepageapp

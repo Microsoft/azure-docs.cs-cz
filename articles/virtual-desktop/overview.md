@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 07/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 473e3d52b1757faebd60c14966b425e9390a2685
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 26be41361a861795a9897442d9a0cc8bb14c1450
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248607"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292590"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop? 
 
@@ -133,19 +133,19 @@ Dostupné možnosti automatizace a nasazení závisí na tom, který operační 
 |Operační systém|Galerie imagí Azure|Ruční nasazení virtuálního počítače|Integrace šablon Azure Resource Manager|Zřizování fondů hostitelů na Azure Marketplace|
 |--------------------------------------|:------:|:------:|:------:|:------:|
 |Více relací Windows 10, verze 1903|Ano|Ano|Ano|Ano|
-|Více relací Windows 10, verze 1809|Ano|Yes|No|No|
-|Windows 10 Enterprise, verze 1903|Ano|Ano|Ano|Yes|
-|Windows 10 Enterprise, verze 1809|Ano|Yes|No|No|
-|Windows 7 Enterprise|Ano|Yes|No|No|
-|Windows Server 2019|Ano|Yes|No|No|
-|Windows Server 2016|Ano|Ano|Ano|Yes|
-|Windows Server 2012 R2|Ano|Yes|No|No|
+|Více relací Windows 10, verze 1809|Ano|Ano|Ne|Ne|
+|Windows 10 Enterprise, verze 1903|Ano|Ano|Ano|Ano|
+|Windows 10 Enterprise, verze 1809|Ano|Ano|Ne|Ne|
+|Windows 7 Enterprise|Ano|Ano|Ne|Ne|
+|Windows Server 2019|Ano|Ano|Ne|Ne|
+|Windows Server 2016|Ano|Ano|Ano|Ano|
+|Windows Server 2012 R2|Ano|Ano|Ne|Ne|
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud používáte verzi Windows Virtual Desktop pro 2019, můžete začít s naším kurzem na webu [Vytvoření tenanta ve Windows Virtual desktopu](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md).
+Pokud používáte virtuální plochu Windows (Classic), můžete začít s naším kurzem na webu [Vytvoření tenanta ve virtuálním počítači s Windows](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md).
 
-Pokud používáte 2020 verze virtuálního počítače s Windows, budete muset místo toho vytvořit fond hostitelů. Přejděte k následujícímu kurzu, abyste mohli začít.
+Pokud používáte virtuální plochu Windows s Azure Resource Manager integrací, budete místo toho muset vytvořit fond hostitelů. Přejděte k následujícímu kurzu, abyste mohli začít.
 
 > [!div class="nextstepaction"]
 > [Vytvoření fondu hostitelů s využitím webu Azure Portal](create-host-pools-azure-marketplace.md)

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: overview
 ms.date: 06/10/2020
 ms.author: victorh
-ms.openlocfilehash: a98a06dedf1d0ed9b92cc2028dfc208ff26df056
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6ea0b28f5e0f23e0f8bb30e8fe2b0f792bce0709
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517616"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287452"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Co je nového v Azure Application Gateway?
 
@@ -27,7 +27,7 @@ Azure Application Gateway se průběžně aktualizuje. V tomto článku najdete 
 
 |Funkce  |Popis  |Datum přidání  |
 |---------|---------|---------|
-| Názvy hostitelů se zástupnými znaky v posluchačích (Preview) | Nyní můžete definovat názvy hostitelů se zástupnými znaky v rámci naslouchacího procesu pro více webů a až 5 názvů hostitelů na naslouchací proces. Další informace najdete v tématech [názvy hostitelů se zástupnými znaky v naslouchacího procesu (Preview)](multiple-site-overview.md#wildcard-host-names-in-listener-preview) a [hostování více webů v Application Gateway pomocí Azure Portal](create-multiple-sites-portal.md) pro ste průvodce. | Červenec 2020 |
+| Názvy hostitelů se zástupnými znaky v posluchačích (Preview) | Nyní můžete definovat názvy hostitelů se zástupnými znaky v rámci naslouchacího procesu pro více webů a až 5 názvů hostitelů na naslouchací proces. Další informace najdete v tématu [názvy hostitelů se zástupnými znaky ve službě Listener (Preview)](multiple-site-overview.md#wildcard-host-names-in-listener-preview) . | Červenec 2020 |
 | Přepsání adresy URL (Preview) | Nyní můžete přepsat cestu adresy URL a parametry řetězce dotazu pomocí přepsání adresy URL. Další informace najdete v tématu přepis [hlaviček a adres URL protokolu HTTP](rewrite-http-headers-url.md) a další informace najdete [v tématu adresa URL pro přepis v Application Gateway pomocí Azure Portal](rewrite-url-portal.md) pro podrobného průvodce. | Červenec 2020 |
 | Vlastní port pro sondy stavu | SKU Application Gateway v2 nyní poskytuje možnost poskytnout vlastní port v konfiguraci sondy stavu. Další informace najdete v tématu [Přehled stavu testu](application-gateway-probe-overview.md) . | Červenec 2020 |
 | Application Gateway (AGIC) AKS Controller (verze Preview) |Řadič pro příchozí Application Gateway se teď dá nasadit jako nativní doplněk AKS v jednom řádku prostřednictvím Azure CLI. AKS doplněk umožňuje, aby se AGIC stala plně spravovaná služba a pořád běžela v clusteru AKS zákazníka. Další informace najdete v tématu [AGIC – rozdíly v doplňcích](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on). |Červen 2020 |

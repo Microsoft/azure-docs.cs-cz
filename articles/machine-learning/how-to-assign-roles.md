@@ -5,18 +5,18 @@ description: Naučte se, jak získat přístup k pracovnímu prostoru Azure Mach
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
-ms.reviewer: jmartens
-ms.author: larryfr
-author: Blackmist
-ms.date: 06/30/2020
-ms.custom: seodec18
-ms.openlocfilehash: ff8d532bf1c19ded9567e8c1e4b63e674c01d0d8
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.topic: conceptual
+ms.reviewer: Blackmist
+ms.author: nigup
+author: nishankgu
+ms.date: 07/24/2020
+ms.custom: how-to, seodec18
+ms.openlocfilehash: 2e787bb494c1e919a235b762b4d8c5250c8cda61
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125169"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321611"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Správa přístupu k pracovnímu prostoru Azure Machine Learning
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,14 +29,15 @@ Pracovní prostor služby Azure Machine Learning je prostředek Azure. Podobně 
 
 | Role | Úroveň přístupu |
 | --- | --- |
-| **Čtenář** | Akce jen pro čtení v pracovním prostoru. Čtenáři můžou v pracovním prostoru vypisovat a zobrazovat prostředky (včetně přihlašovacích údajů [úložiště dat](how-to-access-data.md) ), ale nemůžou tyto prostředky vytvářet ani aktualizovat. |
+| **Čtenář** | Akce jen pro čtení v pracovním prostoru. Čtenáři můžou v pracovním prostoru vypisovat a zobrazovat prostředky, včetně přihlašovacích údajů [úložiště dat](how-to-access-data.md) . Čtenáři tyto prostředky nemůžou vytvářet ani aktualizovat. |
 | **Přispěvatel** | Zobrazení, vytvoření, úprava nebo odstranění prostředků (kde je k dispozici) v pracovním prostoru. Přispěvatelé můžou například vytvořit experiment, vytvořit nebo připojit výpočetní cluster, odeslat běh a nasadit webovou službu. |
 | **Vlastník** | Úplný přístup k pracovnímu prostoru, včetně možnosti zobrazit, vytvořit, upravit nebo odstranit (kde se vztahují) prostředky v pracovním prostoru. Kromě toho můžete měnit přiřazení rolí. |
+| **Vlastní role** | Umožňuje přizpůsobit přístup k určitým operacím ovládacího prvku nebo datové roviny v pracovním prostoru. Například odeslání spuštění, vytvoření COMPUTE, nasazení modelu nebo registrace datové sady. |
 
 > [!IMPORTANT]
 > Přístup k rolím může být v Azure omezený na více úrovní. Například někdo s přístupem vlastníka k pracovnímu prostoru nemusí mít oprávnění vlastníka ke skupině prostředků, která obsahuje pracovní prostor. Další informace najdete v tématu [jak funkce RBAC funguje](/azure/role-based-access-control/overview#how-rbac-works).
 
-Další informace o konkrétních předdefinovaných rolích najdete v tématu [předdefinované role Azure](/azure/role-based-access-control/built-in-roles).
+Další informace o konkrétních předdefinovaných rolích najdete v tématu [předdefinované role pro Azure](/azure/role-based-access-control/built-in-roles).
 
 ## <a name="manage-workspace-access"></a>Správa přístupu k pracovnímu prostoru
 
@@ -45,9 +46,9 @@ Pokud jste vlastníkem pracovního prostoru, můžete přidat a odebrat role pro
 - [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 - [Azure CLI](/azure/role-based-access-control/role-assignments-cli)
 - [REST API](/azure/role-based-access-control/role-assignments-rest)
-- [Šablony Azure Resource Manager](/azure/role-based-access-control/role-assignments-template)
+- [Šablony Azure Resource Manageru](/azure/role-based-access-control/role-assignments-template)
 
-Pokud jste nainstalovali [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md), můžete k přiřazení rolí uživatelům použít taky příkaz CLI.
+Pokud jste nainstalovali [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md), můžete k přiřazení rolí uživatelům použít příkazy rozhraní příkazového řádku:
 
 ```azurecli-interactive 
 az ml workspace share -w <workspace_name> -g <resource_group_name> --role <role_name> --user <user_corp_email_address>
@@ -74,17 +75,18 @@ Pokud si s předdefinovanými rolemi nevystačíte, můžete vytvářet role vla
 > [!NOTE]
 > Abyste mohli vytvářet vlastní role v rámci tohoto prostředku, musíte být vlastníkem prostředku na této úrovni.
 
-Chcete-li vytvořit vlastní roli, nejprve Sestavte soubor JSON definice role, který určuje oprávnění a rozsah této role. Následující příklad definuje vlastní roli s názvem "data odborníka" vymezená na konkrétní úrovni pracovního prostoru:
+Chcete-li vytvořit vlastní roli, nejprve Sestavte soubor JSON definice role, který určuje oprávnění a rozsah této role. Následující příklad definuje vlastní roli s názvem "data odborníka vlastní" vymezenou v konkrétní úrovni pracovního prostoru:
 
-`data_scientist_role.json` :
+`data_scientist_custom_role.json` :
 ```json
 {
-    "Name": "Data Scientist",
+    "Name": "Data Scientist Custom",
     "IsCustom": true,
     "Description": "Can run experiment but can't create or delete compute.",
     "Actions": ["*"],
     "NotActions": [
         "Microsoft.MachineLearningServices/workspaces/*/delete",
+        "Microsoft.MachineLearningServices/workspaces/write",
         "Microsoft.MachineLearningServices/workspaces/computes/*/write",
         "Microsoft.MachineLearningServices/workspaces/computes/*/delete", 
         "Microsoft.Authorization/*/write"
@@ -97,6 +99,7 @@ Chcete-li vytvořit vlastní roli, nejprve Sestavte soubor JSON definice role, k
 
 > [!TIP]
 > Pole můžete změnit, pokud `AssignableScopes` chcete nastavit rozsah této vlastní role na úrovni předplatného, na úrovni skupiny prostředků nebo na konkrétní úrovni pracovního prostoru.
+> Výše uvedená vlastní role je jenom příklad, kde najdete některé navrhované [vlastní role pro službu Azure Machine Learning](#customroles).
 
 Tato vlastní role může dělat všechno v pracovním prostoru s výjimkou následujících akcí:
 
@@ -117,23 +120,233 @@ Po nasazení bude tato role k dispozici v zadaném pracovním prostoru. Nyní m�
 az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
 ```
 
-Další informace o vlastních rolích najdete v tématu [vlastní role Azure](/azure/role-based-access-control/custom-roles).
+Další informace o vlastních rolích najdete v tématu [vlastní role Azure](/azure/role-based-access-control/custom-roles). Další informace o operacích (akce a ne akce) použitelné s vlastními rolemi najdete v tématu [operace poskytovatele prostředků](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices).
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
 
-### <a name="q-what-are-the-permissions-needed-to-perform-various-actions-in-the-azure-machine-learning-service"></a>Otázka: Jaká jsou oprávnění potřebná k provádění různých akcí ve službě Azure Machine Learning?
+### <a name="q-what-are-the-permissions-needed-to-perform-some-common-scenarios-in-the-azure-machine-learning-service"></a>Otázka: Jaká jsou oprávnění potřebná k provádění některých běžných scénářů ve službě Azure Machine Learning?
 
-Následující tabulka představuje souhrn Azure Machine Learningch aktivit a oprávnění, která jsou potřebná k jejich provedení v nejmenším rozsahu. Jako příklad, pokud je možné aktivitu provést s rozsahem pracovního prostoru (sloupce 4), budou automaticky fungovat i všechny vyšší obory s tímto oprávněním. Všechny cesty v této tabulce jsou **relativní cesty** k `Microsoft.MachineLearningServices/` .
+Následující tabulka představuje souhrn Azure Machine Learningch aktivit a oprávnění, která jsou potřebná k jejich provedení v nejmenším rozsahu. Pokud například aktivitu lze provést s oborem pracovního prostoru (sloupcem 4), pak všechny vyšší obory s tímto oprávněním budou také fungovat automaticky:
+
+> [!IMPORTANT]
+> Všechny cesty v této tabulce, které začínají, `/` jsou **relativní cesty** k `Microsoft.MachineLearningServices/` :
 
 | Aktivita | Rozsah na úrovni předplatného | Rozsah na úrovni skupiny prostředků | Rozsah na úrovni pracovního prostoru |
-|---|---|---|---|
+| ----- | ----- | ----- | ----- |
 | Vytvořit nový pracovní prostor | Nevyžadováno | Vlastník nebo přispěvatel | Není k dispozici (vlastník nebo zdědí vyšší obor role po vytvoření) |
-| Vytvořit nový výpočetní cluster | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují:`workspaces/computes/write` |
-| Vytvořit nový virtuální počítač s poznámkovým blokem | Nevyžadováno | Vlastník nebo přispěvatel | Není možný |
-| Vytvořit novou výpočetní instanci | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují:`workspaces/computes/write` |
-| Aktivita roviny dat, jako je odeslání běhu, přístup k datům, nasazování modelu nebo publikování kanálu | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují:`workspaces/*/write` <br/> Pro povolení služby MSI pro přístup k datům ve vašem účtu úložiště budete taky potřebovat úložiště dat zaregistrované v pracovním prostoru. |
+| Aktualizace edice pracovního prostoru | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují:`/workspaces/write` |
+| Požádat o kvótu Amlcompute na úrovni předplatného nebo nastavit kvótu úrovně pracovního prostoru | Vlastník, přispěvatel nebo vlastní role </br>která`/locations/updateQuotas/action`</br> v oboru předplatného | Neautorizováno | Neautorizováno |
+| Vytvořit nový výpočetní cluster | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují:`/workspaces/computes/write` |
+| Vytvořit novou výpočetní instanci | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují:`/workspaces/computes/write` |
+| Odeslání libovolného typu běhu | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují:`"/workspaces/*/read", "/workspaces/environments/write", "/workspaces/experiments/runs/write", "/workspaces/metadata/artifacts/write", "/workspaces/metadata/snapshots/write", "/workspaces/environments/build/action", "/workspaces/experiments/runs/submit/action", "/workspaces/environments/readSecrets/action"` |
+| Publikování koncového bodu kanálu | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují:`"/workspaces/pipelines/write", "/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
+| Nasazení registrovaného modelu do prostředku AKS/ACI | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují:`"/workspaces/services/aks/write", "/workspaces/services/aci/write"` |
+| Bodování před nasazeným koncovým bodem AKS | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role umožňující: `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` (Pokud nepoužíváte ověřování AAD) nebo `"/workspaces/read"` (Pokud používáte ověřování pomocí tokenu) |
+| Přístup k úložišti pomocí interaktivních poznámkových bloků | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují:`"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*"` |
+| Vytvořit novou vlastní roli | Povolení vlastníka, přispěvatele nebo vlastní role`Microsoft.Authorization/roleDefinitions/write` | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují:`/workspaces/computes/write` |
 
+
+### <a name="q-are-we-publishing-azure-built-in-roles-for-the-machine-learning-service"></a>Otázka: Publikují se pro službu Machine Learning předdefinované role Azure?
+
+V současnosti nepublikujeme [předdefinované role Azure](/azure/role-based-access-control/built-in-roles) pro službu Machine Learning. Integrovanou roli se po publikování nedá aktualizovat a pořád ještě spravujeme definice rolí na základě zákaznických scénářů a zpětné vazby. 
+
+<a id="customroles"></a>
+
+### <a name="q-are-there-some-custom-role-templates-for-the-most-common-scenarios-in-machine-learning-service"></a>Otázka: Existují některé šablony vlastní role pro nejběžnější scénáře ve službě Machine Learning?
+
+Tady je několik běžných scénářů s vlastními navrhovanými definicemi rolí, které můžete použít jako základ k definování vlastních rolí:
+
+* Odborník na __data – vlastní__: umožňuje, aby datový vědecký pracovník prováděl všechny operace v pracovním prostoru **s výjimkou**:
+
+    * Vytváření výpočetních prostředků
+    * Nasazení modelů do provozního clusteru AKS
+    * Nasazení koncového bodu kanálu v produkčním prostředí
+
+    `data_scientist_custom_role.json` :
+    ```json
+    {
+        "Name": "Data Scientist Custom",
+        "IsCustom": true,
+        "Description": "Can run experiment but can't create or delete compute or deploy production endpoints.",
+        "Actions": [
+            "Microsoft.MachineLearningServices/workspaces/*/read",
+            "Microsoft.MachineLearningServices/workspaces/*/action",
+            "Microsoft.MachineLearningServices/workspaces/*/delete",
+            "Microsoft.MachineLearningServices/workspaces/*/write"
+        ],
+        "NotActions": [
+            "Microsoft.MachineLearningServices/workspaces/delete",
+            "Microsoft.MachineLearningServices/workspaces/write",
+            "Microsoft.MachineLearningServices/workspaces/computes/*/write",
+            "Microsoft.MachineLearningServices/workspaces/computes/*/delete", 
+            "Microsoft.Authorization/*",
+            "Microsoft.MachineLearningServices/workspaces/computes/listKeys/action",
+            "Microsoft.MachineLearningServices/workspaces/listKeys/action",
+            "Microsoft.MachineLearningServices/workspaces/services/aks/write",
+            "Microsoft.MachineLearningServices/workspaces/services/aks/delete",
+            "Microsoft.MachineLearningServices/workspaces/endpoints/pipelines/write"
+        ],
+        "AssignableScopes": [
+            "/subscriptions/<subscription_id>"
+        ]
+    }
+    ```
+
+* __Vlastní omezení pro datový vědecký pracovník__: v povolených akcích není k většímu omezení definice role bez zástupných znaků. Může provádět všechny operace v pracovním prostoru **s výjimkou**:
+
+    * Vytváření výpočetních prostředků
+    * Nasazení modelů do provozního clusteru AKS
+    * Nasazení koncového bodu kanálu v produkčním prostředí
+
+    `data_scientist_restricted_custom_role.json` :
+    ```json
+    {
+        "Name": "Data Scientist Restricted Custom",
+        "IsCustom": true,
+        "Description": "Can run experiment but can't create or delete compute or deploy production endpoints",
+        "Actions": [
+            "Microsoft.MachineLearningServices/workspaces/*/read",
+            "Microsoft.MachineLearningServices/workspaces/computes/start/action",
+            "Microsoft.MachineLearningServices/workspaces/computes/stop/action",
+            "Microsoft.MachineLearningServices/workspaces/computes/restart/action",
+            "Microsoft.MachineLearningServices/workspaces/computes/applicationaccess/action",
+            "Microsoft.MachineLearningServices/workspaces/notebooks/storage/read",
+            "Microsoft.MachineLearningServices/workspaces/notebooks/storage/write",
+            "Microsoft.MachineLearningServices/workspaces/notebooks/storage/delete",
+            "Microsoft.MachineLearningServices/workspaces/notebooks/samples/read",
+            "Microsoft.MachineLearningServices/workspaces/experiments/runs/write",
+            "Microsoft.MachineLearningServices/workspaces/experiments/write",
+            "Microsoft.MachineLearningServices/workspaces/experiments/runs/submit/action",
+            "Microsoft.MachineLearningServices/workspaces/pipelinedrafts/write",
+            "Microsoft.MachineLearningServices/workspaces/metadata/snapshots/write",
+            "Microsoft.MachineLearningServices/workspaces/metadata/artifacts/write",
+            "Microsoft.MachineLearningServices/workspaces/environments/write",
+            "Microsoft.MachineLearningServices/workspaces/models/write",
+            "Microsoft.MachineLearningServices/workspaces/modules/write",
+            "Microsoft.MachineLearningServices/workspaces/datasets/registered/write", 
+            "Microsoft.MachineLearningServices/workspaces/datasets/registered/delete",
+            "Microsoft.MachineLearningServices/workspaces/datasets/unregistered/write",
+            "Microsoft.MachineLearningServices/workspaces/datasets/unregistered/delete",
+            "Microsoft.MachineLearningServices/workspaces/computes/listNodes/action",
+            "Microsoft.MachineLearningServices/workspaces/environments/build/action"
+        ],
+        "NotActions": [
+            "Microsoft.MachineLearningServices/workspaces/computes/write",
+            "Microsoft.MachineLearningServices/workspaces/write",
+            "Microsoft.MachineLearningServices/workspaces/computes/delete",
+            "Microsoft.MachineLearningServices/workspaces/delete",
+            "Microsoft.MachineLearningServices/workspaces/computes/listKeys/action",
+            "Microsoft.MachineLearningServices/workspaces/listKeys/action",
+            "Microsoft.Authorization/*",
+            "Microsoft.MachineLearningServices/workspaces/datasets/registered/profile/read",
+            "Microsoft.MachineLearningServices/workspaces/datasets/registered/preview/read",
+            "Microsoft.MachineLearningServices/workspaces/datasets/unregistered/profile/read",
+            "Microsoft.MachineLearningServices/workspaces/datasets/unregistered/preview/read",
+            "Microsoft.MachineLearningServices/workspaces/datasets/registered/schema/read",    
+            "Microsoft.MachineLearningServices/workspaces/datasets/unregistered/schema/read",
+            "Microsoft.MachineLearningServices/workspaces/datastores/write",
+            "Microsoft.MachineLearningServices/workspaces/datastores/delete"
+        ],
+        "AssignableScopes": [
+            "/subscriptions/<subscription_id>"
+        ]
+    }
+    ```
+
+* __MLOps vlastní__: slouží k přiřazení role k instančnímu objektu a k automatizaci kanálů MLOps. Například pro odeslání spuštění proti již publikovanému kanálu:
+
+    `mlops_custom_role.json` :
+    ```json
+    {
+        "Name": "MLOps Custom",
+        "IsCustom": true,
+        "Description": "Can run pipelines against a published pipeline endpoint",
+        "Actions": [
+            "Microsoft.MachineLearningServices/workspaces/read",
+            "Microsoft.MachineLearningServices/workspaces/endpoints/pipelines/read",
+            "Microsoft.MachineLearningServices/workspaces/metadata/artifacts/read",
+            "Microsoft.MachineLearningServices/workspaces/metadata/snapshots/read",
+            "Microsoft.MachineLearningServices/workspaces/environments/read",    
+            "Microsoft.MachineLearningServices/workspaces/metadata/secrets/read",
+            "Microsoft.MachineLearningServices/workspaces/modules/read",
+            "Microsoft.MachineLearningServices/workspaces/experiments/runs/read",
+            "Microsoft.MachineLearningServices/workspaces/datasets/registered/read",
+            "Microsoft.MachineLearningServices/workspaces/datastores/read",
+            "Microsoft.MachineLearningServices/workspaces/environments/write",
+            "Microsoft.MachineLearningServices/workspaces/experiments/runs/write",
+            "Microsoft.MachineLearningServices/workspaces/metadata/artifacts/write",
+            "Microsoft.MachineLearningServices/workspaces/metadata/snapshots/write",
+            "Microsoft.MachineLearningServices/workspaces/environments/build/action",
+            "Microsoft.MachineLearningServices/workspaces/experiments/runs/submit/action"
+        ],
+        "NotActions": [
+            "Microsoft.MachineLearningServices/workspaces/computes/write",
+            "Microsoft.MachineLearningServices/workspaces/write",
+            "Microsoft.MachineLearningServices/workspaces/computes/delete",
+            "Microsoft.MachineLearningServices/workspaces/delete",
+            "Microsoft.MachineLearningServices/workspaces/computes/listKeys/action",
+            "Microsoft.MachineLearningServices/workspaces/listKeys/action",
+            "Microsoft.Authorization/*"
+        ],
+        "AssignableScopes": [
+            "/subscriptions/<subscription_id>"
+        ]
+    }
+    ```
+
+* __Správce pracovního prostoru__: umožňuje provádět všechny operace v rámci oboru pracovního prostoru, **s výjimkou**:
+
+    * Vytváří se nový pracovní prostor.
+    * Přiřazení kvót na úrovni předplatného nebo pracovního prostoru
+    * Upgrade edice pracovního prostoru
+
+    Správce pracovního prostoru také nemůže vytvořit novou roli. V rámci rozsahu jejich pracovního prostoru může přiřadit jenom existující předdefinované nebo vlastní role:
+
+    `workspace_admin_custom_role.json` :
+    ```json
+    {
+        "Name": "Workspace Admin Custom",
+        "IsCustom": true,
+        "Description": "Can perform all operations except quota management and upgrades",
+        "Actions": [
+            "Microsoft.MachineLearningServices/workspaces/*/read",
+            "Microsoft.MachineLearningServices/workspaces/*/action",
+            "Microsoft.MachineLearningServices/workspaces/*/write",
+            "Microsoft.MachineLearningServices/workspaces/*/delete",
+            "Microsoft.Authorization/roleAssignments/*"
+        ],
+        "NotActions": [
+            "Microsoft.MachineLearningServices/workspaces/write"
+        ],
+        "AssignableScopes": [
+            "/subscriptions/<subscription_id>"
+        ]
+    }
+    ```
+
+<a name="labeler"></a>
+* __Customer Label__: umožňuje definovat obor role pouze k označení dat popisků:
+
+    `labeler_custom_role.json` :
+    ```json
+    {
+        "Name": "Labeler Custom",
+        "IsCustom": true,
+        "Description": "Can label data for Labeling",
+        "Actions": [
+            "Microsoft.MachineLearningServices/workspaces/read",
+            "Microsoft.MachineLearningServices/workspaces/labeling/projects/read",
+            "Microsoft.MachineLearningServices/workspaces/labeling/labels/write"
+        ],
+        "NotActions": [
+            "Microsoft.MachineLearningServices/workspaces/labeling/projects/summary/read"
+        ],
+        "AssignableScopes": [
+            "/subscriptions/<subscription_id>"
+        ]
+    }
+    ```
 
 ### <a name="q-how-do-i-list-all-the-custom-roles-in-my-subscription"></a>Otázka: Návody vypsat všechny vlastní role v předplatném?
 
@@ -142,6 +355,39 @@ V rozhraní příkazového řádku Azure CLI spusťte následující příkaz.
 ```azurecli-interactive
 az role definition list --subscription <sub-id> --custom-role-only true
 ```
+
+### <a name="q-how-do-i-find-the-operations-supported-by-the-machine-learning-service"></a>Otázka: Návody najít operace podporované službou Machine Learning?
+
+V rozhraní příkazového řádku Azure CLI spusťte následující příkaz.
+
+```azurecli-interactive
+az provider operation show –n Microsoft.MachineLearningServices
+```
+
+Můžou se taky najít v seznamu [operací poskytovatele prostředků](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices).
+
+
+### <a name="q-what-are-some-common-gotchas-when-using-azure-rbac"></a>Otázka: Jaké jsou některé běžné možná úskalí při použití Azure RBAC?
+
+Tady je několik věcí, na kterých je potřeba vědět, když používáte řízení přístupu na základě rolí Azure:
+
+- Když vytvoříte prostředek v Azure, řekněme, že nejste přímo vlastníkem tohoto pracovního prostoru. Vaše role se zdědí z nejvyšší role oboru, ke které jste v tomto předplatném udělili autorizaci. Příklad: Pokud jste správce sítě a máte oprávnění k vytvoření pracovního prostoru Machine Learning, bude vám přiřazena role správce sítě v daném pracovním prostoru, nikoli role vlastníka.
+- Když ke stejnému uživateli AAD s konfliktními oddíly akcí/NotActions existují dvě přiřazení rolí, operace uvedené v NotActions z jedné role se nemusí projevit, pokud jsou uvedené i jako akce v jiné roli. Další informace o tom, jak Azure analyzuje přiřazení rolí, najdete v článku [jak Azure RBAC určuje, jestli má uživatel přístup k prostředku](/azure/role-based-access-control/overview#how-azure-rbac-determines-if-a-user-has-access-to-a-resource) .
+- K nasazení výpočetních prostředků v rámci virtuální sítě musíte pro daný prostředek virtuální sítě explicitně mít oprávnění "Microsoft. Network/virtualNetworks/JOIN/Action".
+- Může někdy trvat až 1 hodinu, než se vaše nové přiřazení role projeví u oprávnění uložených v mezipaměti napříč zásobníkem.
+
+
+### <a name="q-what-permissions-do-i-need-to-use-a-user-assigned-managed-identity-with-my-amlcompute-clusters"></a>Otázka: Jaká oprávnění potřebuji k použití spravované identity přiřazené uživatelem v mých clusterech Amlcompute?
+
+K přiřazení identity přiřazené uživateli v clusterech Amlcompute musí mít jeden oprávnění k zápisu, aby bylo možné vytvořit výpočetní prostředky a mít [roli spravovaného operátora identity](/azure/role-based-access-control/built-in-roles#managed-identity-operator). Pokud chcete získat další informace o RBAC se spravovanými identitami, přečtěte si téma [Správa identity přiřazené uživatelem](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal) .
+
+
+### <a name="q-do-we-support-role-based-access-controls-on-the-studio-portal"></a>Otázka: Podporujeme na portálu Studio řízení přístupu na základě rolí?
+
+Azure Machine Learning Studio podporuje řízení přístupu na základě rolí. 
+
+> [!IMPORTANT]
+> Po přiřazení vlastní role s konkrétními oprávněními pro odborníky na data v pracovním prostoru jsou odpovídající akce (například přidání výpočetního tlačítka) automaticky skryty od uživatelů. Skrytím těchto položek zabráníte jakýmkoli nejasnostem v zobrazení ovládacích prvků, které při použití vrátí oznámení neoprávněného přístupu ze služby.
 
 ### <a name="q-how-do-i-find-the-role-definition-for-a-role-in-my-subscription"></a>Otázka: Návody v předplatném najít definici role pro roli?
 

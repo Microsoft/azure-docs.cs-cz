@@ -1,25 +1,25 @@
 ---
-title: 'Kurz 3: nasazení modelu úvěrového rizika'
-titleSuffix: Azure Machine Learning Studio (classic)
+title: 'Kurz pro ML Studio (Classic) 3: nasazení modelů úvěrového rizika – Azure'
 description: Podrobný kurz, který ukazuje, jak vytvořit řešení prediktivní analýzy pro posuzování úvěrového rizika v Azure Machine Learning Studio (Classic). Tento kurz je třetí částí série kurzů s třemi částmi. Ukazuje, jak nasadit model jako webovou službu.
 keywords: úvěrové riziko, řešení prediktivní analýzy, posouzení rizik, nasazení, Webová služba
-author: sdgilley
-ms.author: sgilley
+author: likebupt
+ms.author: keli19
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
-ms.date: 02/11/2019
-ms.openlocfilehash: 9fb0b59374edf322e5e2221b90e912ee2c665bac
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 07/27/2020
+ms.openlocfilehash: 21b2308fb931d1c0932184dcc7946e99d3551b13
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79204149"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324858"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>Kurz 3: nasazení modelu úvěrového rizika – Azure Machine Learning Studio (Classic)
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+**platí pro:** ![ žádná](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasická) 
+
 
 V tomto kurzu se podíváme na proces vývoje řešení prediktivní analýzy. V Machine Learning Studio (Classic) vyvíjíte jednoduchý model.  Model pak nasadíte jako Azure Machine Learning webovou službu.  Tento nasazený model může vytvářet předpovědi s využitím nových dat. Tento kurz je **třetí částí série kurzů s třemi částmi**.
 
@@ -153,7 +153,7 @@ Nasazení nové webové služby odvozené z našeho experimentu:
 
 1. V případě **cenového plánu**můžete vybrat existující Cenový tarif nebo vybrat vytvořit nové a zadat název nového plánu a vybrat možnost měsíčního plánu. Plány plánu se ve výchozím nastavení naplánují pro výchozí oblast a vaše webová služba se v této oblasti nasadí.
 
-1. Klikněte na **nasadit**.
+1. Klikněte na **Deploy** (Nasadit).
 
 Po několika minutách se otevře stránka **rychlý Start** pro vaši webovou službu.
 
@@ -227,7 +227,10 @@ V předchozím kroku tohoto kurzu jste nasadili webovou službu, která využív
 Webová služba je webová služba Azure, která může přijímat a vracet data pomocí rozhraní REST API jedním ze dvou způsobů:  
 
 * **Požadavek nebo odpověď** – uživatel odešle do služby jeden nebo více řádků kreditních dat pomocí protokolu HTTP a služba odpoví jednou nebo více sadami výsledků.
-* **Dávkové spuštění** – uživatel ukládá jeden nebo více řádků kreditních dat do objektu blob Azure a pak odešle umístění objektu blob do služby. Služba porovnává všechny řádky dat ve vstupním objektu blob, uloží výsledky do jiného objektu BLOB a vrátí adresu URL tohoto kontejneru.  
+* **Dávkové spuštění** – uživatel ukládá jeden nebo více řádků kreditních dat do objektu blob Azure a pak odešle umístění objektu blob do služby. Služba porovnává všechny řádky dat ve vstupním objektu blob, uloží výsledky do jiného objektu BLOB a vrátí adresu URL tohoto kontejneru. 
+
+> [!NOTE]
+> Názvy sloupců funkcí v studiu (Classic) rozlišují **velká a malá písmena**. Ujistěte se, že vstupní data pro vyvolání webové služby mají stejné názvy sloupců jako v datové sadě školení.
 
 Další informace o přístupu a používání webové služby najdete v tématu věnovaném [využívání Azure Machine Learning webové služby pomocí šablony webové aplikace](/azure/machine-learning/studio/consume-web-services).
 

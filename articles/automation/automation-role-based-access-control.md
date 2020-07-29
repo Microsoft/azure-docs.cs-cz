@@ -1,17 +1,17 @@
 ---
 title: Správa oprávnění a zabezpečení rolí v Azure Automation
-description: V tomto článku se dozvíte, jak používat řízení přístupu na základě role (RBAC), které umožňuje správu přístupu pro prostředky Azure.
+description: Tento článek popisuje, jak používat řízení přístupu na základě role (RBAC), které umožňuje správu přístupu pro prostředky Azure.
 keywords: rbac v automation, řízení přístupu na základě rolí, rbac v azure
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 05/17/2018
+ms.date: 07/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9e997f80ceee54a1454128c1308032fefa603f5d
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: a970122c5f034e6215d2e829657c9eec99f14371
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186142"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87279878"
 ---
 # <a name="manage-role-permissions-and-security"></a>Správa oprávnění rolí a zabezpečení
 
@@ -69,7 +69,12 @@ Přispěvatel může spravovat všechno kromě přístupu. Následující tabulk
 
 ### <a name="automation-operator"></a>Operátor služby Automation
 
-Operátor automatizace může vytvářet a spravovat úlohy a číst názvy a vlastnosti sad Runbook pro všechny sady Runbook v účtu Automation.  Poznámka: Pokud chcete řídit přístup operátora k jednotlivým sadám Runbook, pak tuto roli nenastavujte a místo toho použijte role operátora úlohy Automation a operátora Runbooku služby Automation v kombinaci. Následující tabulka uvádí oprávnění udělená pro roli:
+Operátor automatizace může vytvářet a spravovat úlohy a číst názvy a vlastnosti sad Runbook pro všechny sady Runbook v účtu Automation.
+
+>[!NOTE]
+>Pokud chcete řídit přístup operátora k jednotlivým sadám Runbook, pak tuto roli nenastavujte. Místo toho používejte role operátora **úlohy automatizace** a **operátora Runbooku služby Automation** v kombinaci.
+
+Následující tabulka uvádí oprávnění udělená pro roli:
 
 |**Akce**  |**Popis**  |
 |---------|---------|
@@ -96,7 +101,9 @@ Operátor automatizace může vytvářet a spravovat úlohy a číst názvy a vl
 
 ### <a name="automation-job-operator"></a>Operátor úlohy služby Automation
 
-Role operátora úlohy Automation se uděluje v oboru účtu Automation.To umožňuje operátorovi oprávnění vytvářet a spravovat úlohy pro všechny Runbooky v účtu. Následující tabulka uvádí oprávnění udělená pro roli:
+Role operátora úlohy Automation se uděluje v oboru účtu Automation.To umožňuje operátorovi oprávnění vytvářet a spravovat úlohy pro všechny Runbooky v účtu. Pokud má role operátora úlohy udělená oprávnění ke čtení pro skupinu prostředků obsahující účet Automation, členové role mají možnost spouštět Runbooky. Ale nemají možnost je vytvářet, upravovat ani odstraňovat.
+
+Následující tabulka uvádí oprávnění udělená pro roli:
 
 |**Akce**  |**Popis**  |
 |---------|---------|
@@ -114,7 +121,7 @@ Role operátora úlohy Automation se uděluje v oboru účtu Automation.To umož
 
 ### <a name="automation-runbook-operator"></a>Operátor Runbooku služby Automation
 
-Role operátora Runbooku Automation se uděluje v oboru Runbooku. Operátor Runbooku služby Automation může zobrazit název a vlastnosti Runbooku.Tato role v kombinaci s rolí operátora úlohy Automation umožňuje operátorovi také vytvářet a spravovat úlohy pro sadu Runbook. Následující tabulka uvádí oprávnění udělená pro roli:
+Role operátora Runbooku Automation se uděluje v oboru Runbooku. Operátor Runbooku služby Automation může zobrazit název a vlastnosti Runbooku.Tato role v kombinaci s rolí **operátora úlohy služby Automation** umožňuje operátorovi také vytvářet a spravovat úlohy pro sadu Runbook. Následující tabulka uvádí oprávnění udělená pro roli:
 
 |**Akce**  |**Popis**  |
 |---------|---------|
@@ -254,7 +261,7 @@ V následujících částech jsou popsány minimální požadovaná oprávnění
 
 Služba Update Management dosáhne v rámci více služeb, aby poskytovala službu. Následující tabulka uvádí oprávnění potřebná ke správě nasazení správy aktualizací:
 
-|**Prostředek**  |**Role**  |**Scope**  |
+|**Prostředek**  |**Role**  |**Rozsah**  |
 |---------|---------|---------|
 |Účet Automation     | Přispěvatel Log Analytics       | Účet Automation        |
 |Účet Automation    | Přispěvatel virtuálních počítačů        | Skupina prostředků pro účet        |
@@ -283,13 +290,14 @@ V následující části se dozvíte, jak nakonfigurovat RBAC na svém účtu Au
 
 3. Do pole pro **Výběr** zadejte jméno uživatele, kterému chcete udělit oprávnění. Vyberte uživatele ze seznamu a klikněte na **Uložit**.
 
-   ![Přidávání uživatelů](media/automation-role-based-access-control/automation-04-add-users.png)
+   ![Přidání uživatelů](media/automation-role-based-access-control/automation-04-add-users.png)
 
    Nyní byste měli vidět, že uživatel byl přidán na stránku Uživatelé s přiřazenou vybranou rolí.
 
    ![Vypsání uživatelů](media/automation-role-based-access-control/automation-05-list-users.png)
 
    Roli můžete uživateli přiřadit také na stránce Role.
+
 4. Kliknutím na **role** na stránce řízení přístupu (IAM) otevřete stránku role. Můžete zobrazit název role a počet uživatelů a skupin přiřazených k této roli.
 
     ![Přiřazení role na stránce Uživatelé](media/automation-role-based-access-control/automation-06-assign-role-from-users-blade.png)
@@ -353,7 +361,7 @@ ObjectType         : User
 ```
 
 K přiřazení přístupu uživatelům, skupinám a aplikacím do konkrétního oboru použijte [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment?view=azps-3.7.0) .
-    
+
 **Příklad:** K přiřazení role "operátor služby Automation" pro uživatele v rozsahu účtu Automation použijte následující příkaz.
 
 ```azurepowershell-interactive

@@ -4,16 +4,16 @@ description: Monitorujte svou webovou aplikaci v reálném čase s vlastními me
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: e554595a7a88e1455f7426636dc69db99a7d3e94
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 4b84088c1213801e61a4c669bccb1a983c999310
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166480"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321934"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: monitorování & diagnostiky s 1 sekundou latencí
 
-Monitorujte svou živou webovou aplikaci v produkčním prostředí pomocí Live Metrics Stream z [Application Insights](../../azure-monitor/app/app-insights-overview.md). Vyberte a filtrujte metriky a čítače výkonu pro sledování v reálném čase bez nutnosti zásahu do služby. Zkontrolujte trasování zásobníku z ukázkových neúspěšných žádostí a výjimek. Společně s [ladicím programem](../../azure-monitor/app/snapshot-debugger.md) [profileru](../../azure-monitor/app/profiler.md) a snímků Live Metrics Stream poskytuje výkonný a nenáročný diagnostický nástroj pro váš živý Web.
+Monitorujte svou živou webovou aplikaci v produkčním prostředí pomocí Live Metrics Stream z [Application Insights](./app-insights-overview.md). Vyberte a filtrujte metriky a čítače výkonu pro sledování v reálném čase bez nutnosti zásahu do služby. Zkontrolujte trasování zásobníku z ukázkových neúspěšných žádostí a výjimek. Společně s [ladicím programem](./snapshot-debugger.md) [profileru](./profiler.md) a snímků Live Metrics Stream poskytuje výkonný a nenáročný diagnostický nástroj pro váš živý Web.
 
 Pomocí Live Metrics Stream můžete:
 
@@ -31,7 +31,7 @@ Pro aplikace ASP.NET, ASP.NET Core, Azure Functions, Java a Node.js se aktuáln�
 
 ## <a name="get-started"></a>Začínáme
 
-1. [Nainstalujte Application Insights](../../azure-monitor/azure-monitor-app-hub.yml) do své aplikace.
+1. [Nainstalujte Application Insights](../azure-monitor-app-hub.yml) do své aplikace.
 2. K povolení živého streamu metrik se vyžaduje kromě standardních Application Insights balíčků [Microsoft. ApplicationInsights. PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) .
 3. **Aktualizujte na nejnovější verzi** balíčku Application Insights. V aplikaci Visual Studio klikněte pravým tlačítkem myši na projekt a vyberte možnost **Spravovat balíčky NuGet**. Otevřete kartu **aktualizace** a vyberte všechny balíčky Microsoft. ApplicationInsights. *.
 
@@ -43,17 +43,17 @@ Pro aplikace ASP.NET, ASP.NET Core, Azure Functions, Java a Node.js se aktuáln�
 
 ### <a name="no-data-check-your-server-firewall"></a>Žádná data? Ověřit bránu firewall serveru
 
-Ověřte, že [Odchozí porty pro Live Metrics Stream](../../azure-monitor/app/ip-addresses.md#outgoing-ports) jsou otevřené v bráně firewall vašich serverů.
+Ověřte, že [Odchozí porty pro Live Metrics Stream](./ip-addresses.md#outgoing-ports) jsou otevřené v bráně firewall vašich serverů.
 
 ## <a name="how-does-live-metrics-stream-differ-from-metrics-explorer-and-analytics"></a>Jak se Live Metrics Stream liší od Průzkumník metrik a analýzy?
 
 | |Live Stream | Průzkumník metrik a analýzy |
 |---|---|---|
 |**Latence**|Data zobrazená během jedné sekundy|Agregované v průběhu minut|
-|**Bez uchování**|Data se v grafu přetrvají a pak se zahodí.|[Data zachovaná po 90 dnech](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
+|**Bez uchování**|Data se v grafu přetrvají a pak se zahodí.|[Data zachovaná po 90 dnech](./data-retention-privacy.md#how-long-is-the-data-kept)|
 |**Na vyžádání**|Data se streamují jenom v případě, že je otevřené podokno aktivní metriky. |Data se odesílají pokaždé, když je SDK nainstalovaná a povolená.|
-|Zadejte možnost pro **bezplatnou** SKU.|Za Live Stream data se neúčtují žádné poplatky.|V souladu s [cenami](../../azure-monitor/app/pricing.md)
-|**Vzorkování**|Přenáší se všechny vybrané metriky a čítače. Navzorkují se chyby a trasování zásobníku. TelemetryProcessors se neaplikují.|Události se dají [vzorkovat](../../azure-monitor/app/api-filtering-sampling.md) .|
+|**Free**|Za Live Stream data se neúčtují žádné poplatky.|V souladu s [cenami](./pricing.md)
+|**Vzorkování**|Přenáší se všechny vybrané metriky a čítače. Navzorkují se chyby a trasování zásobníku. TelemetryProcessors se neaplikují.|Události se dají [vzorkovat](./api-filtering-sampling.md) .|
 |**Řídicí kanál**|Řídicí signály filtru se odesílají do sady SDK. Doporučujeme tento kanál zabezpečit.|Komunikace je jedním ze způsobů, jak na portál|
 
 ## <a name="select-and-filter-your-metrics"></a>Výběr a filtrování metriky
@@ -64,7 +64,7 @@ Vlastní klíčový ukazatel výkonu můžete monitorovat tak, že použijete li
 
 ![Filtr míry požadavků](./media/live-stream/filter-request.png)
 
-Můžete monitorovat hodnotu odlišnou od počtu. Možnosti závisí na typu datového proudu, což může být jakákoli Application Insights telemetrie: požadavky, závislosti, výjimky, trasování, události nebo metriky. Může to být vlastní [měření](../../azure-monitor/app/api-custom-events-metrics.md#properties):
+Můžete monitorovat hodnotu odlišnou od počtu. Možnosti závisí na typu datového proudu, což může být jakákoli Application Insights telemetrie: požadavky, závislosti, výjimky, trasování, události nebo metriky. Může to být vlastní [měření](./api-custom-events-metrics.md#properties):
 
 ![Tvůrce dotazů podle míry požadavků s vlastní metrikou](./media/live-stream/query-builder-request.png)
 
@@ -206,10 +206,11 @@ Ve výchozím nastavení jsou aktivní metriky v sadě Node.js SDK zakázané. P
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Žádná data? Pokud je vaše aplikace v chráněné síti: Live Metrics Stream používá jiné IP adresy než jiná telemetrie Application Insights. Ujistěte se, že jsou [tyto IP adresy](../../azure-monitor/app/ip-addresses.md) v bráně firewall otevřené.
+Žádná data? Pokud je vaše aplikace v chráněné síti: Live Metrics Stream používá jiné IP adresy než jiná telemetrie Application Insights. Ujistěte se, že jsou [tyto IP adresy](./ip-addresses.md) v bráně firewall otevřené.
 
 ## <a name="next-steps"></a>Další kroky
-* [Monitorování využití pomocí Application Insights](../../azure-monitor/app/usage-overview.md)
-* [Pomocí diagnostického vyhledávání](../../azure-monitor/app/diagnostic-search.md)
-* [Profiler](../../azure-monitor/app/profiler.md)
-* [Snapshot Debugger](../../azure-monitor/app/snapshot-debugger.md)
+* [Monitorování využití pomocí Application Insights](./usage-overview.md)
+* [Pomocí diagnostického vyhledávání](./diagnostic-search.md)
+* [Profiler](./profiler.md)
+* [Snapshot Debugger](./snapshot-debugger.md)
+

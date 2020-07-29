@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: eaf22773e581f0b7557a64917e183573039d1cef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6e5ae96d097dab9c416f7e1f737cf4fe8a62aea
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77116162"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87279215"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>StorSimple for Cloud Solutions Provider – Nejčastější dotazy
 
@@ -43,7 +44,7 @@ Další informace najdete [v StorSimple v programu CSP](https://www.microsoft.co
 StorSimple je služba založená na využití. Zákazníci, kteří získávají virtuální pole StorSimple prostřednictvím zprostředkovatele CSP za využití služby Virtual Array a Azure, se účtují jako samostatné řádkové položky ve faktuře CSP. 
 
 ### <a name="is-the-storsimple-business-model-similar-to-that-of-other-services-such-as-the-office-365-and-the-enterprise-mobility-suite"></a>Je StorSimple obchodní model podobný jako u jiných služeb, jako je například sada Office 365 a sada Enterprise mobility? 
-Ano. Model je model zvýhodněné slevy stejně jako jiné služby založené na využití v Azure. Zvýhodněná sleva pro StorSimple je podobná jako u ostatních služeb Azure. Tento model poskytuje našim partnerům CSP možnost prodávat více a využívat využití Azure pomocí StorSimple Virtual Array.  
+Yes. Model je model zvýhodněné slevy stejně jako jiné služby založené na využití v Azure. Zvýhodněná sleva pro StorSimple je podobná jako u ostatních služeb Azure. Tento model poskytuje našim partnerům CSP možnost prodávat více a využívat využití Azure pomocí StorSimple Virtual Array.  
 
 ### <a name="which-storsimple-skus-are-available-at-launch"></a>Které skladové jednotky StorSimple jsou k dispozici při spuštění?
 Stejné SKU, které jsou k dispozici pro samostatné služby StorSimple Services. 
@@ -62,7 +63,7 @@ Existuje více řešení:
 - Můžou také zjišťovat nové obchodní modely poskytováním spravovaných služeb.
 
 ### <a name="what-are-the-incentives-available-for-storsimple-csp-partners-do-i-qualify-for-any-csp-program-incentives"></a>Jaké jsou pobídky dostupné pro partnery StorSimple CSP? Mám nárok na všechny pobídky programu CSP?
-Informace o motivech najdete v [motivech programu CSP](https://partner.microsoft.com/en-US/cloud-solution-provider/program-details).
+Informace o motivech najdete v [motivech programu CSP](https://partner.microsoft.com/cloud-solution-provider/program-details).
 
 
 ## <a name="deploy-and-manage-storsimple-as-a-partner"></a>Nasazení a Správa StorSimple jako partnera
@@ -71,16 +72,16 @@ Informace o motivech najdete v [motivech programu CSP](https://partner.microsoft
 K účtu Customers můžete přidat odběry virtuálních polí StorSimple prostřednictvím partnerského centra. Kromě toho můžete pomocí Azure Portal přidat uživatele k předplatným.
 
 ### <a name="is-the-azure-portal-approach-the-same-as-other-services-for-csp"></a>Má Azure Portal stejný přístup jako u jiných služeb pro poskytovatele CSP? 
-Ano. S StorSimple Virtual Array pro CSP je nejlepší způsob, jak partneři získat přístup k Azure Portal by měli být prostřednictvím [partnerského centra](https://partnercenter.microsoft.com/) , kde můžou spravovat zákazníky a předplatná. Pro správu předplatných StorSimple by se měl partner nebo zákazník (v závislosti na udělených oprávněních) přihlásit k Azure Portal. 
+Yes. S StorSimple Virtual Array pro CSP je nejlepší způsob, jak partneři získat přístup k Azure Portal by měli být prostřednictvím [partnerského centra](https://partnercenter.microsoft.com/) , kde můžou spravovat zákazníky a předplatná. Pro správu předplatných StorSimple by se měl partner nebo zákazník (v závislosti na udělených oprávněních) přihlásit k Azure Portal. 
 
 ### <a name="is-microsoft-shipping-a-new-portal-for-storsimple-for-csp"></a>Dodává se Microsoftu nový portál pro StorSimple pro CSP? 
 Ne. Pomocí Azure Portal budete moct spravovat virtuální pole StorSimple ve zprostředkovateli CSP.
 
 ### <a name="i-have-provisioned-a-standalone-storsimple-subscription-for-my-customer-do-i-have-to-use-the-azure-portal-to-administer-my-device"></a>Zřídil (a) jsem samostatné předplatné StorSimple pro svého zákazníka. Musím pro správu mého zařízení použít Azure Portal? 
-Ano. 
+Yes. 
 
 ### <a name="is-the-microsoft-account-team-compensated-as-a-result-of-sales-of-storsimple-through-csp"></a>Vyrovnal se tým účtu Microsoft v důsledku prodeje StorSimple prostřednictvím CSP?
-Ano. Tým pro partnery pro prodej a zákaznický účet pro koncového zákazníka bude kompenzovat prodej CSP. Očekává se, že partneři povedou při prodeji jejich rozlišené hodnoty a nabídek.
+Yes. Tým pro partnery pro prodej a zákaznický účet pro koncového zákazníka bude kompenzovat prodej CSP. Očekává se, že partneři povedou při prodeji jejich rozlišené hodnoty a nabídek.
 
 ## <a name="support-for-storsimple-and-csp"></a>Podpora pro StorSimple a CSP
 

@@ -4,15 +4,15 @@ description: Rozhraní API pro publikování zadané nabídky
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 1dede788242f858468c00e9f30f70ebdbe60cd1b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 60e75aff79913896bdf1dcdc8754b6ecf5620b06
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086400"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87272041"
 ---
 # <a name="publish-an-offer"></a>Publikování nabídky
 
@@ -46,7 +46,7 @@ Spustí proces publikování pro určenou nabídku. Toto volání je dlouhodobě
 ## <a name="body-example"></a>Příklad textu
 ------------
 
-### <a name="request"></a>Request
+### <a name="request"></a>Žádost
 
 ``` json
   { 

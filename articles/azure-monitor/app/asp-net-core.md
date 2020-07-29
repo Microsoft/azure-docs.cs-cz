@@ -3,12 +3,12 @@ title: Application Insights Azure pro ASP.NET Core aplikace | Microsoft Docs
 description: Monitorujte ASP.NET Core webové aplikace pro účely dostupnosti, výkonu a využití.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 1d5ce4fe2a3ceb3235b77916aa408c681f81b0de
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 770cc3f34487f837631a98c6f652d8746ae2c2df
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517225"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321390"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights pro ASP.NET Core aplikace
 
@@ -30,7 +30,7 @@ Příklad, který budeme používat, je [aplikace MVC](/aspnet/core/tutorials/fi
 > [!NOTE]
 > ASP.NET Core 3. X vyžaduje [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) nebo novější.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Funkční aplikace ASP.NET Core. Pokud potřebujete vytvořit aplikaci ASP.NET Core, postupujte podle tohoto [ASP.NET Core kurzu](/aspnet/core/getting-started/).
 - Platný klíč instrumentace Application Insights. Tento klíč je nutný k odeslání jakékoli telemetrie do Application Insights. Pokud potřebujete vytvořit nový prostředek Application Insights, abyste získali klíč instrumentace, přečtěte si téma [vytvoření prostředku Application Insights](./create-new-resource.md).
@@ -103,7 +103,7 @@ Příklad, který budeme používat, je [aplikace MVC](/aspnet/core/tutorials/fi
 
     * `ApplicationInsights:InstrumentationKey`
 
-    Příklad:
+    Například:
 
     * `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 
@@ -221,7 +221,7 @@ Seznam [konfigurovatelných nastavení v nástroji `ApplicationInsightsServiceOp
 
 Sada Application Insights SDK pro ASP.NET Core podporuje fixní i adaptivní vzorkování. Adaptivní vzorkování je ve výchozím nastavení povolené. 
 
-Další informace najdete v tématu [Konfigurace adaptivního vzorkování pro aplikace ASP.NET Core](../../azure-monitor/app/sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications).
+Další informace najdete v tématu [Konfigurace adaptivního vzorkování pro aplikace ASP.NET Core](./sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications).
 
 ### <a name="adding-telemetryinitializers"></a>Přidání TelemetryInitializers
 
@@ -459,8 +459,9 @@ Tato sada SDK vyžaduje `HttpContext` , a proto nefunguje v aplikacích, které 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Prozkoumejte toky uživatelů](../../azure-monitor/app/usage-flows.md) a pochopte, jak uživatelé procházejí vaší aplikací.
+* [Prozkoumejte toky uživatelů](./usage-flows.md) a pochopte, jak uživatelé procházejí vaší aplikací.
 * [Konfigurace kolekce snímků](./snapshot-debugger.md) pro zobrazení stavu zdrojového kódu a proměnných v okamžiku, kdy je vyvolána výjimka.
-* [Použijte rozhraní API](../../azure-monitor/app/api-custom-events-metrics.md) k posílání vlastních událostí a metrik pro podrobné zobrazení výkonu a využití vaší aplikace.
-* Pomocí [testů dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) můžete svou aplikaci průběžně kontrolovat z celého světa.
+* [Použijte rozhraní API](./api-custom-events-metrics.md) k posílání vlastních událostí a metrik pro podrobné zobrazení výkonu a využití vaší aplikace.
+* Pomocí [testů dostupnosti](./monitor-web-app-availability.md) můžete svou aplikaci průběžně kontrolovat z celého světa.
 * [Vkládání závislostí v ASP.NET Core](/aspnet/core/fundamentals/dependency-injection)
+

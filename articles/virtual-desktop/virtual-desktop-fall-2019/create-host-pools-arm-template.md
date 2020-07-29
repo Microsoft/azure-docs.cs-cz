@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager fondu hostitelů virtuálních počítačů s Windows – Azure
-description: Postup vytvoření fondu hostitelů na virtuálním počítači s Windows pomocí šablony Azure Resource Manager.
+title: Azure Resource Manager fondu hostitelů Windows Virtual Desktop (Classic) – Azure
+description: Postup vytvoření fondu hostitelů ve virtuální ploše Windows (Classic) pomocí šablony Azure Resource Manager.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 925d3ab7c01ef8dc4a2c5d590a56b4d558170472
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88027db54f9b7d4a7ef2ef32d4ea0434d8a26a10
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204757"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270256"
 ---
-# <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Vytvoření fondu hostitelů pomocí šablony Azure Resource Manageru
+# <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-an-azure-resource-manager-template"></a>Vytvoření fondu hostitelů ve virtuální ploše Windows (Classic) pomocí šablony Azure Resource Manager
 
 >[!IMPORTANT]
->Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows.
+>Tento obsah se vztahuje na virtuální plochu Windows (Classic), která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows.
 
 Fondy hostitelů jsou kolekce jednoho nebo více identických virtuálních počítačů v prostředích klienta virtuálních počítačů s Windows. Každý fond hostitelů může obsahovat skupinu aplikací, se kterou můžou uživatelé interaktivně pracovat, jako by na fyzickém počítači.
 
@@ -38,7 +38,7 @@ Když vytvoříte fond hostitelů virtuálních počítačů s Windows pomocí �
 
 Začněte tím, že přejdete na [tuto adresu URL GitHubu](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/Create%20and%20provision%20WVD%20host%20pool).
 
-### <a name="deploy-the-template-to-azure"></a>Nasazení šablony do Azure
+### <a name="deploy-the-template-to-azure"></a>Nasaďte šablonu do Azure.
 
 Pokud nasazujete v rámci podnikového předplatného, posuňte se dolů a vyberte **nasadit do Azure**a pak přeskočte před vyplněním parametrů na základě vašeho zdroje imagí.
 

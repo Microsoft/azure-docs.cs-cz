@@ -4,12 +4,12 @@ description: Ukázky použití poskytovatele služby Azure Application Insights 
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 419813eba371def9eeeb43e45b51b38d1f20c607
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 171aaeb624bfedb9aa7408a736c11faca316b392
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014469"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322631"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>Protokoly ApplicationInsightsLoggerProvider pro .NET Core ILogger
 
@@ -218,7 +218,7 @@ Můžete pořád používat starého poskytovatele. (Bude odebráno pouze v hlav
 ## <a name="console-application"></a>Konzolová aplikace
 
 > [!NOTE]
-> K dispozici je nová Application Insights SDK označovaná jako [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) , která se dá použít k povolení Application Insights (ILogger a jiné Application Insights telemetrie) pro jakékoli konzolové aplikace. Doporučuje se použít tento balíček a související pokyny [odsud.](../../azure-monitor/app/worker-service.md)
+> K dispozici je nová Application Insights SDK označovaná jako [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) , která se dá použít k povolení Application Insights (ILogger a jiné Application Insights telemetrie) pro jakékoli konzolové aplikace. Doporučuje se použít tento balíček a související pokyny [odsud.](./worker-service.md)
 
 Následující kód ukazuje ukázkovou konzolovou aplikaci, která je nakonfigurovaná tak, aby odesílala ILogger trasování do Application Insights.
 
@@ -392,7 +392,7 @@ Pokud při ladění ze sady Visual Studio dojde k dvojímu protokolování, nast
 
 ### <a name="i-updated-to-microsoftapplicationinsightsaspnet-sdk-version-271-and-logs-from-ilogger-are-captured-automatically-how-do-i-turn-off-this-feature-completely"></a>Aktualizoval (a) jsem se na [Microsoft. ApplicationInsights. ASPNET SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) verze 2.7.1 a protokoly z ILogger jsou zachyceny automaticky. Návody zcela tuto funkci vypnout?
 
-Informace o tom, jak filtrovat protokoly obecně, najdete v části [řízení úrovně protokolování](../../azure-monitor/app/ilogger.md#control-logging-level) . Pro vypnutí ApplicationInsightsLoggerProvider použijte `LogLevel.None` :
+Informace o tom, jak filtrovat protokoly obecně, najdete v části [řízení úrovně protokolování](#control-logging-level) . Pro vypnutí ApplicationInsightsLoggerProvider použijte `LogLevel.None` :
 
 **V kódu:**
 
@@ -499,4 +499,5 @@ Tento kód je vyžadován pouze v případě, že používáte samostatného zpr
 Přečtěte si další informace:
 
 * [Přihlašování ASP.NET Core](/aspnet/core/fundamentals/logging)
-* [Protokoly trasování .NET v Application Insights](../../azure-monitor/app/asp-net-trace-logs.md)
+* [Protokoly trasování .NET v Application Insights](./asp-net-trace-logs.md)
+

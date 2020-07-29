@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/09/2020
-ms.openlocfilehash: 3175e43a841334719de80f44a226b1c7b87690d9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1d7275c928b4d25e200a3a8d3d690c7575c056e7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540107"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323175"
 ---
 # <a name="workspace-based-resource-changes-preview"></a>Změny prostředků na základě pracovního prostoru (Preview)
 
@@ -243,7 +243,7 @@ Starší tabulka: customMetrics
 |user_AccountId|řetězec|UserAccountId|řetězec|
 |user_AuthenticatedId|řetězec|UserAuthenticatedId|řetězec|
 |user_Id|řetězec|UserId|řetězec|
-|Hodnota|real|odstraněn||
+|hodnota|real|odstraněn||
 |valueCount|int|ValueCount|int|
 |valueMax|real|ValueMax|real|
 |valueMin|real|ValueMin|real|
@@ -328,7 +328,7 @@ Starší tabulka: čítače výkonu
 |user_AccountId|řetězec|UserAccountId|řetězec|
 |user_AuthenticatedId|řetězec|UserAuthenticatedId|řetězec|
 |user_Id|řetězec|UserId|řetězec|
-|Hodnota|real|Hodnota|real|
+|hodnota|real|Hodnota|real|
 
 ### <a name="apprequests"></a>AppRequests
 
@@ -466,5 +466,6 @@ Starší tabulka: trasování
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Zkoumání metrik](../../azure-monitor/platform/metrics-charts.md)
+* [Zkoumání metrik](../platform/metrics-charts.md)
 * [Psaní analytických dotazů](../log-query/log-query-overview.md)
+

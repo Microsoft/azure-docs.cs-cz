@@ -9,12 +9,12 @@ ms.date: 06/15/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
-ms.openlocfilehash: 7052e9203532320a7de5197e983d40cb0a34b50d
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 9be1053600ab89a7879a04a7c08a44ddf3bc862a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374776"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291234"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Co je nového ve virtuálním počítači s Windows?
 
@@ -29,7 +29,7 @@ Tento článek se aktualizuje měsíčně. Nezapomeňte se podívat, jak často 
 
 ## <a name="june-2020"></a>Červen 2020
 
-Minulý měsíc představili jsme ve verzi Preview Standard Windows Virtual Desktop na jaře 2020 Update. Tato aktualizace má spoustu zajímavých nových funkcí, o kterých vám řekneme. Tady je co je novinka pro 2020 aktualizace.
+Minulý měsíc představili jsme virtuální plochu Windows s Azure Resource Manager Integration ve verzi Preview. Tato aktualizace má spoustu zajímavých nových funkcí, o kterých vám řekneme. Tady je co je novinka v této verzi virtuálního klienta Windows.
 
 ### <a name="windows-virtual-desktop-is-now-integrated-with-azure-resource-manager-preview"></a>Virtuální počítač s Windows je teď integrovaný do Azure Resource Manager (Preview).
 
@@ -39,22 +39,22 @@ Tady je tato změna pro vás:
 
 - Virtuální plocha Windows je teď integrovaná s Azure Portal. To znamená, že můžete všechno spravovat přímo na portálu, ale nevyžadují se žádné PowerShelly, webové aplikace ani nástroje třetích stran. Pokud chcete začít, podívejte se na náš kurz v [části Vytvoření fondu hostitelů pomocí Azure Portal](create-host-pools-azure-marketplace.md).
 
-- Před aktualizací 2020 můžete publikovat jenom vzdálené aplikace RemoteApp a plochy pro jednotlivé uživatele. Pomocí Azure Resource Manager nyní můžete publikovat prostředky do skupin Azure Active Directory.
+- Před touto aktualizací byste mohli jenom publikovat vzdálené aplikace RemoteApp a plochy pro jednotlivé uživatele. Pomocí Azure Resource Manager nyní můžete publikovat prostředky do skupin Azure Active Directory.
 
 - Starší verze virtuálního počítače s Windows obsahovaly čtyři předdefinované role správce, které můžete přiřadit k tenantovi nebo fondu hostitelů. Tyto role jsou teď v [řízení přístupu na základě role](../role-based-access-control/overview.md)v Azure. Tyto role můžete použít pro každý objekt Azure Resource Manager virtuální plochy Windows, který vám umožní plně funkční model delegování.
 
-- V případě aktualizace na jaře 2020 už nemusíte spouštět Azure Marketplace nebo šablonu GitHubu opakovaně, abyste mohli rozšířit fond hostitelů. K rozšíření fondu hostitelů stačí přejít do fondu hostitelů v Azure Portal a vybrat **+ Přidat** pro nasazení dalších hostitelů relací.
+- V této aktualizaci už nemusíte spouštět Azure Marketplace nebo šablonu GitHubu opakovaně, abyste mohli rozšířit fond hostitelů. K rozšíření fondu hostitelů stačí přejít do fondu hostitelů v Azure Portal a vybrat **+ Přidat** pro nasazení dalších hostitelů relací.
 
 - Nasazení fondu hostitelů je teď plně integrované s [galerií sdílených imagí Azure](../virtual-machines/windows/shared-image-galleries.md). Galerie sdílených imagí je samostatná služba Azure, která ukládá definice imagí virtuálních počítačů (VM), včetně správy verzí imagí. K kopírování a posílání imagí do jiných oblastí Azure pro místní nasazení můžete použít taky globální replikaci.
 
 - Funkce monitorování, které se použily k provedení prostřednictvím PowerShellu nebo webové aplikace diagnostické služby, se teď přesunuly na Log Analytics v Azure Portal. Nyní máte dvě možnosti vizualizace vašich sestav. Můžete spouštět dotazy Kusto a používat sešity k vytváření vizuálních sestav.
 
-- Už nebudete muset Azure Active Directory (Azure AD) vyjádřit souhlas s používáním virtuálního klienta Windows. V aktualizaci jarní 2020 aktualizace tenant Azure AD v předplatném Azure ověřuje vaše uživatele a poskytuje pro správce ovládací prvky RBAC.
+- Už nebudete muset Azure Active Directory (Azure AD) vyjádřit souhlas s používáním virtuálního klienta Windows. V této aktualizaci tenant Azure AD v předplatném Azure ověřuje vaše uživatele a poskytuje pro správce ovládací prvky RBAC.
 
 
 ### <a name="powershell-support"></a>Podpora prostředí PowerShell
 
-Do Azure PowerShell AZ Module byly přidány nové rutiny AzWvd s aktualizací jarní 2020. Tento nový modul se podporuje v PowerShell Core, který běží na .NET Core.
+Do Azure PowerShell AZ Module této aktualizace jsme přidali nové rutiny AzWvd. Tento nový modul se podporuje v PowerShell Core, který běží na .NET Core.
 
 Pokud chcete modul nainstalovat, postupujte podle pokynů v části [nastavení modulu PowerShell pro virtuální počítač s Windows](powershell-module.md).
 

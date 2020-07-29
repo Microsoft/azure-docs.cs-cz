@@ -3,11 +3,12 @@ title: Řešení potíží s Application Insights ve webovém projektu Java
 description: Průvodce odstraňováním potíží – monitorování živých aplikací Java pomocí Application Insights.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: ecc9a298d122919138683b48527574a1ff3e5edc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74b4bc009158d826955f851f22458e9570a58e7c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484786"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324144"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Řešení potíží a otázky a odpovědi v nástroji Application Insights
 Otázky nebo problémy s [Azure Application Insights v jazyce Java][java]? Tady je několik tipů.
@@ -23,7 +24,7 @@ Otázky nebo problémy s [Azure Application Insights v jazyce Java][java]? Tady 
 * Počkejte minutu a klikněte na tlačítko Aktualizovat. Grafy se pravidelně aktualizují, ale můžete je také aktualizovat ručně. Interval aktualizace závisí na časovém rozsahu grafu.
 * Ověřte, zda je v souboru ApplicationInsights.xml definován klíč instrumentace (ve složce Resources ve vašem projektu) nebo nakonfigurován jako proměnná prostředí.
 * Ověřte, že `<DisableTelemetry>true</DisableTelemetry>` soubor XML neobsahuje žádný uzel.
-* V bráně firewall možná budete muset pro odchozí přenosy na dc.services.visualstudio.com otevřít porty TCP 80 a 443. Zobrazit [úplný seznam výjimek brány firewall](../../azure-monitor/app/ip-addresses.md)
+* V bráně firewall možná budete muset pro odchozí přenosy na dc.services.visualstudio.com otevřít porty TCP 80 a 443. Zobrazit [úplný seznam výjimek brány firewall](./ip-addresses.md)
 * Na panelu Microsoft Azure Start se podívejte na mapu stavu služby. Pokud se zobrazí upozornění, počkejte, až se vrátí do OK, a pak zavřete a znovu otevřete okno aplikace Application Insights.
 * [Zapněte protokolování](#debug-data-from-the-sdk) přidáním `<SDKLogger />` prvku pod kořenovým uzlem v souboru ApplicationInsights.xml (ve složce Resources (prostředky) v projektu) a vyhledejte položky s AI: informace, varování/chyba pro všechny podezřelé protokoly. 
 * Ujistěte se, že sada Java SDK úspěšně zavedla správný soubor ApplicationInsights.xml. Podívejte se na výstupní zprávy konzoly pro příkaz "konfigurační soubor byl úspěšně nalezen".
@@ -37,7 +38,7 @@ Otázky nebo problémy s [Azure Application Insights v jazyce Java][java]? Tady 
 * Hledáte správný prostředek AI? Porovnejte iKey své aplikace s prostředkem, u kterého očekáváte telemetrii. Měly by být stejné.
 
 #### <a name="i-dont-see-all-the-data-im-expecting"></a>Nezobrazují se všechna data, která očekávám
-* Otevřete stránku využití a odhadované náklady a ověřte, zda je [vzorkování](../../azure-monitor/app/sampling.md) v provozu. (100% přenos znamená, že vzorkování není v provozu.) Službu Application Insights lze nastavit tak, aby přijímala pouze zlomek telemetrie, která přichází z vaší aplikace. To vám pomůže udržet se v rámci měsíční kvóty telemetrie.
+* Otevřete stránku využití a odhadované náklady a ověřte, zda je [vzorkování](./sampling.md) v provozu. (100% přenos znamená, že vzorkování není v provozu.) Službu Application Insights lze nastavit tak, aby přijímala pouze zlomek telemetrie, která přichází z vaší aplikace. To vám pomůže udržet se v rámci měsíční kvóty telemetrie.
 * Máte zapnuté vzorkování sady SDK? Pokud ano, budou se data vzorkovat podle sazby určené pro všechny příslušné typy.
 * Používáte starší verzi sady Java SDK? Od verze 2.0.1 jsme zavedli mechanismus odolnosti proti chybám, který zpracovává občasné chyby sítě a back-endu a také Trvalost dat na místních jednotkách.
 * Získáváte omezení z důvodu nadměrné telemetrie? Pokud zapnete protokolování informací, zobrazí se zpráva protokolu aplikace je omezená. Náš aktuální limit je 32 položek telemetrie za sekundu.
@@ -186,17 +187,17 @@ Application Insights používá `org.apache.http` . Toto je přemístěné v rá
 * [Napsat kód pro sledování využití vaší aplikace][track]
 * [Zachytávání diagnostických protokolů][javalogs]
 
-## <a name="get-help"></a>Získání pomoci
+## <a name="get-help"></a>Podpora
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * [Vystavení problému na GitHubu](https://github.com/Microsoft/ApplicationInsights-Java/issues)
 
 <!--Link references-->
 
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[data]: ../../azure-monitor/app/data-retention-privacy.md
+[availability]: ./monitor-web-app-availability.md
+[data]: ./data-retention-privacy.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[platforms]: ../../azure-monitor/app/platforms.md
-[track]: ../../azure-monitor/app/api-custom-events-metrics.md
+[platforms]: ./platforms.md
+[track]: ./api-custom-events-metrics.md
 [usage]: javascript.md
 

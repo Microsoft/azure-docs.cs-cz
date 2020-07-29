@@ -1,6 +1,6 @@
 ---
-title: Kurz – vytvoření spravované domény Azure služba AD DS s pokročilou konfigurací
-description: V tomto kurzu se naučíte, jak vytvořit a nakonfigurovat Azure Active Directory Domain Services spravovanou doménu a zadat pokročilé možnosti konfigurace pomocí Azure Portal.
+title: Kurz – vytvoření přizpůsobené Azure Active Directory Domain Services spravované domény | Microsoft Docs
+description: V tomto kurzu se naučíte, jak vytvořit a nakonfigurovat vlastní Azure Active Directory Domain Services spravovanou doménu a zadat pokročilé možnosti konfigurace pomocí Azure Portal.
 author: iainfoulds
 manager: daveba
 ms.service: active-directory
@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: b8eece33e13fca9fdef6b860513368f6c47a4628
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ead20713752b4eb28700541b4314241d86b6cc27
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518517"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87278539"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain-with-advanced-configuration-options"></a>Kurz: vytvoření a konfigurace spravované domény Azure Active Directory Domain Services s pokročilými možnostmi konfigurace
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
@@ -56,7 +56,7 @@ V tomto kurzu vytvoříte a nakonfigurujete spravovanou doménu pomocí Azure Po
 
 Chcete-li spustit průvodce **povolením Azure AD Domain Services** , proveďte následující kroky:
 
-1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Create a resource** (Vytvořit prostředek).
+1. V nabídce webu Azure Portal nebo na **domovské** stránce vyberte **Vytvořit prostředek**.
 1. Do panelu hledání zadejte *Domain Services* a pak zvolte *Azure AD Domain Services* z návrhů hledání.
 1. Na stránce Azure AD Domain Services vyberte **vytvořit**. Spustí se průvodce **povolením Azure AD Domain Services** .
 1. Vyberte **předplatné** Azure, ve kterém chcete vytvořit spravovanou doménu.
@@ -131,7 +131,7 @@ Vyplňte pole v okně *síť* následujícím způsobem:
     1. Pokud se rozhodnete vytvořit virtuální síť, zadejte název virtuální sítě, například *myVnet*, a pak zadejte rozsah adres, například *10.0.1.0/24*.
     1. Vytvořte vyhrazenou podsíť s jasným názvem, například *DomainServices*. Zadejte rozsah adres, například *10.0.1.0/24*.
 
-    [![](./media/tutorial-create-instance-advanced/create-vnet.png "Create a virtual network and subnet for use with Azure AD Domain Services")](./media/tutorial-create-instance-advanced/create-vnet-expanded.png#lightbox)
+    [![Vytvoření virtuální sítě a podsítě pro použití s Azure AD Domain Services](./media/tutorial-create-instance-advanced/create-vnet.png)](./media/tutorial-create-instance-advanced/create-vnet-expanded.png#lightbox)
 
     Nezapomeňte vybrat rozsah adres, který se nachází v rámci vašeho privátního rozsahu IP adres. Rozsahy IP adres, které nevlastníte, jsou ve veřejném adresním prostoru, což způsobí chyby v Azure služba AD DS.
 
@@ -159,7 +159,7 @@ Průvodce automaticky vytvoří skupinu *AAD DC Administrators* v adresáři Azu
 
 ## <a name="configure-synchronization"></a>Konfigurace synchronizace
 
-Azure služba AD DS umožňuje synchronizovat *všechny* uživatele a skupiny, které jsou dostupné ve službě Azure AD, nebo jenom *vymezenou* synchronizaci jenom konkrétních skupin. Pokud se rozhodnete synchronizovat *všechny* uživatele a skupiny, nemůžete se později rozhodnout jenom provést synchronizaci s vymezeným oborem. Další informace o vymezené synchronizaci najdete v tématu [Azure AD Domain Services s vymezeným rozsahem synchronizace][scoped-sync].
+Azure služba AD DS umožňuje synchronizovat *všechny* uživatele a skupiny, které jsou dostupné ve službě Azure AD, nebo jenom *vymezenou* synchronizaci jenom konkrétních skupin. Rozsah synchronizace můžete změnit hned nebo po nasazení spravované domény. Další informace najdete v tématu [Azure AD Domain Services v oboru synchronizace][scoped-sync].
 
 1. V tomto kurzu se rozhodnete synchronizovat **všechny** uživatele a skupiny. Tato volba synchronizace je výchozí možností.
 

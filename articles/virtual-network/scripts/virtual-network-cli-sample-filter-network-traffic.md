@@ -1,6 +1,6 @@
 ---
 title: Vyfiltrování provozu sítě virtuálních počítačů – ukázkový skript Azure CLI
-description: Ukázkový skript Azure CLI – Filtrování příchozího a odchozího síťového provozu virtuálního počítače
+description: Vyfiltrujte příchozí a odchozí síťový provoz virtuálního počítače (VM) pomocí ukázkového skriptu Azure CLI.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: d47678767bd73ab993cfd0e8d0bc9b532b2bfaaa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6832cf08abd179b6108f971227b5c054c5617337
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046113"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281629"
 ---
 # <a name="filter-inbound-and-outbound-vm-network-traffic-using-an-azure-cli-script-sample"></a>Filtrování příchozího a odchozího síťového provozu virtuálního počítače pomocí ukázkového skriptu Azure CLI
 

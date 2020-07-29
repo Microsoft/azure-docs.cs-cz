@@ -3,20 +3,20 @@ title: Použití PowerShellu k nastavení výstrah v Application Insights | Micr
 description: Automatizujte konfiguraci Application Insights, abyste získali e-maily o změnách metriky.
 ms.topic: conceptual
 ms.date: 07/23/2016
-ms.openlocfilehash: 00212aa8783a6bfc8e46d325a882781e33b7de51
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 74d477b6660c0f7ec2ee32b34169bb85886936e5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117159"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322461"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>Použití prostředí PowerShell k nastavení výstrahy v nástroji Application Insights
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Můžete automatizovat konfiguraci [výstrah](../../azure-monitor/platform/alerts-log.md) v [Application Insights](../../azure-monitor/app/app-insights-overview.md).
+Můžete automatizovat konfiguraci [výstrah](../platform/alerts-log.md) v [Application Insights](./app-insights-overview.md).
 
-Kromě toho můžete [nastavit Webhooky pro automatizaci odpovědi na výstrahu](../../azure-monitor/platform/alerts-webhooks.md).
+Kromě toho můžete [nastavit Webhooky pro automatizaci odpovědi na výstrahu](../platform/alerts-webhooks.md).
 
 > [!NOTE]
 > Pokud chcete současně vytvořit prostředky a výstrahy, zvažte [použití šablony Azure Resource Manager](powershell.md).
@@ -82,7 +82,7 @@ Add-AzMetricAlertRule -Name "slow responses" `
 ```
 
 ## <a name="example-2"></a>Příklad 2
-Mám aplikaci, ve které používám [TrackMetric ()](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) k hlášení metriky s názvem "salesPerHour". Pošle e-mail kolegům, pokud "salesPerHour" klesne pod 100, průměrně za 24 hodin.
+Mám aplikaci, ve které používám [TrackMetric ()](./api-custom-events-metrics.md#trackmetric) k hlášení metriky s názvem "salesPerHour". Pošle e-mail kolegům, pokud "salesPerHour" klesne pod 100, průměrně za 24 hodin.
 
 ```azurepowershell
 Add-AzMetricAlertRule -Name "poor sales" `
@@ -98,7 +98,7 @@ Add-AzMetricAlertRule -Name "poor sales" `
   -RuleType Metric
 ```
 
-Stejné pravidlo lze použít pro metriku nahlášenou pomocí [parametru měření](../../azure-monitor/app/api-custom-events-metrics.md#properties) jiného sledovacího volání, jako je například TrackEvent nebo trackPageView.
+Stejné pravidlo lze použít pro metriku nahlášenou pomocí [parametru měření](./api-custom-events-metrics.md#properties) jiného sledovacího volání, jako je například TrackEvent nebo trackPageView.
 
 ## <a name="metric-names"></a>Názvy metrik
 | Název metriky | Název obrazovky | Popis |
@@ -124,22 +124,23 @@ Stejné pravidlo lze použít pro metriku nahlášenou pomocí [parametru měře
 | `request.rate` |Počet požadavků |Míra všech žádostí na aplikaci za sekundu. |
 | `requestFailed.count` |Neúspěšné požadavky |Počet požadavků HTTP, jejichž výsledkem byl kód odpovědi >= 400 |
 | `view.count` |Zobrazení stránek |Počet požadavků uživatelů klienta na webovou stránku. Syntetická přenosová data se odfiltrují. |
-| {vlastní název metriky} |{Název metriky} |Hodnota metriky hlášené [TrackMetric](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) nebo v [parametru měření sledovacího hovoru](../../azure-monitor/app/api-custom-events-metrics.md#properties). |
+| {vlastní název metriky} |{Název metriky} |Hodnota metriky hlášené [TrackMetric](./api-custom-events-metrics.md#trackmetric) nebo v [parametru měření sledovacího hovoru](./api-custom-events-metrics.md#properties). |
 
 Metriky jsou odesílány různými moduly telemetrie:
 
 | Skupina metrik | Modul sběrače |
 | --- | --- |
-| basicExceptionBrowser,<br/>clientPerformance,<br/>zobrazení |[JavaScript v prohlížeči](../../azure-monitor/app/javascript.md) |
-| performanceCounter |[Výkon](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
-| remoteDependencyFailed |[Závislost](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
-| Request<br/>requestFailed |[Žádost serveru](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
+| basicExceptionBrowser,<br/>clientPerformance,<br/>zobrazení |[JavaScript v prohlížeči](./javascript.md) |
+| performanceCounter |[Výkon](./configuration-with-applicationinsights-config.md) |
+| remoteDependencyFailed |[Závislost](./configuration-with-applicationinsights-config.md) |
+| Request<br/>requestFailed |[Žádost serveru](./configuration-with-applicationinsights-config.md) |
 
 ## <a name="webhooks"></a>Webhooky
-[Odpověď na výstrahu můžete automatizovat](../../azure-monitor/platform/alerts-webhooks.md). Když se vygeneruje výstraha, Azure zavolá webovou adresu dle vašeho výběru.
+[Odpověď na výstrahu můžete automatizovat](../platform/alerts-webhooks.md). Když se vygeneruje výstraha, Azure zavolá webovou adresu dle vašeho výběru.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 * [Skript pro konfiguraci Application Insights](./create-new-resource.md#creating-a-resource-automatically)
 * [Vytvoření prostředků Application Insights a webového testu ze šablon](powershell.md)
 * [Automatizace Diagnostika Microsoft Azure Application Insights](powershell-azure-diagnostics.md)
-* [Automatizace odpovědi na výstrahu](../../azure-monitor/platform/alerts-webhooks.md)
+* [automatizace odpovědi na výstrahu](../platform/alerts-webhooks.md)
+

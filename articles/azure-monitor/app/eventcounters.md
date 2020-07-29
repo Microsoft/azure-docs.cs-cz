@@ -3,12 +3,12 @@ title: Čítače událostí v Application Insights | Microsoft Docs
 description: Monitorujte systém a vlastní .NET/.NET Core EventCounters v Application Insights.
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 06bf15bf60b1ee5e2c301935a30b3981d5233a08
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 42140f68a5f383a2a60fe8327f5023754366e6b7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539937"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324399"
 ---
 # <a name="eventcounters-introduction"></a>Úvod do EventCounters
 
@@ -124,7 +124,7 @@ customMetrics
 Podobně jako u jiné telemetrie má **customMetrics** také sloupec `cloud_RoleInstance` , který označuje identitu instance hostitelského serveru, na které je vaše aplikace spuštěná. Výše uvedený dotaz ukazuje hodnotu čítače na instanci a lze ji použít k porovnání výkonu různých instancí serveru.
 
 ## <a name="alerts"></a>Výstrahy
-Podobně jako u jiných metrik můžete [nastavit výstrahu](../../azure-monitor/platform/alerts-log.md) , která vás upozorní, pokud počítadlo události překročí zadaný limit. Otevřete podokno výstrahy a klikněte na Přidat výstrahu.
+Podobně jako u jiných metrik můžete [nastavit výstrahu](../platform/alerts-log.md) , která vás upozorní, pokud počítadlo události překročí zadaný limit. Otevřete podokno výstrahy a klikněte na Přidat výstrahu.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -148,4 +148,5 @@ EventCounter nevyžaduje žádná zvláštní oprávnění a podporuje se na vš
 
 ## <a name="next-steps"></a><a name="next"></a>Další kroky
 
-* [Sledování závislostí](../../azure-monitor/app/asp-net-dependencies.md)
+* [Sledování závislostí](./asp-net-dependencies.md)
+

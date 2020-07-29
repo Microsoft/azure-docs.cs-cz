@@ -8,13 +8,13 @@ ms.service: application-gateway
 ms.topic: quickstart
 ms.date: 03/05/2020
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: f60b26756c0affffbd45c8596fdf73d11ffa8e81
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: b36b5b1700df1767ad4323fed72ee05fdb05321f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80239516"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290964"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Rychlý start: Směrování webového provozu pomocí služby Azure Application Gateway – Azure CLI
 
@@ -33,7 +33,7 @@ Tento rychlý Start můžete také dokončit pomocí [Azure PowerShell](quick-cr
 
 ## <a name="create-resource-group"></a>Vytvoření skupiny prostředků
 
-V Azure přidělíte související prostředky skupině prostředků. Vytvořte skupinu prostředků pomocí `az group create`. 
+V Azure přidělíte související prostředky skupině prostředků. Vytvořte skupinu prostředků pomocí `az group create` . 
 
 V následujícím příkladu vytvoříte skupinu prostředků s názvem *myResourceGroupAG* v umístění *eastus*.
 
@@ -45,7 +45,7 @@ az group create --name myResourceGroupAG --location eastus
 
 Aby mohl Azure komunikovat mezi prostředky, které vytvoříte, potřebuje virtuální síť.  Podsíť aplikační brány může obsahovat jenom aplikační brány. Žádné další prostředky nejsou povoleny.  Můžete buď vytvořit novou podsíť pro Application Gateway nebo použít stávající. V tomto příkladu vytvoříte dvě podsítě: jednu pro aplikační bránu a druhou pro back-end servery. IP adresu front-endu Application Gateway můžete nakonfigurovat tak, aby byla veřejná nebo soukromá jako na základě vašeho případu použití. V tomto příkladu zvolíte veřejnou IP adresu front-endu.
 
-K vytvoření virtuální sítě a podsítě použijte `az network vnet create`. Spusťte `az network public-ip create` pro vytvoření veřejné IP adresy.
+K vytvoření virtuální sítě a podsítě použijte `az network vnet create` . Spusťte `az network public-ip create` pro vytvoření veřejné IP adresy.
 
 ```azurecli-interactive
 az network vnet create \
@@ -73,9 +73,9 @@ Back-end může obsahovat síťové adaptéry, sady škálování virtuálních 
 
 #### <a name="create-two-virtual-machines"></a>Vytvoření dvou virtuálních počítačů
 
-Nainstalujte webový server NGINX na virtuální počítače, abyste ověřili, že byla služba Application Gateway úspěšně vytvořená. Pomocí konfiguračního souboru Cloud-init můžete nainstalovat NGINX a spustit aplikaci Node. js "Hello World" na virtuálním počítači se systémem Linux. Další informace o cloud-init najdete v tématu [Podpora Cloud-init pro virtuální počítače v Azure](../virtual-machines/linux/using-cloud-init.md).
+Nainstalujte webový server NGINX na virtuální počítače, abyste ověřili, že byla služba Application Gateway úspěšně vytvořená. K instalaci NGINX a spuštění aplikace Node.js Hello World na virtuálním počítači se systémem Linux můžete použít konfigurační soubor Cloud-init. Další informace o cloud-init najdete v tématu [Podpora Cloud-init pro virtuální počítače v Azure](../virtual-machines/linux/using-cloud-init.md).
 
-V Azure Cloud Shell zkopírujte následující konfiguraci do souboru s názvem *Cloud-init. txt*a vložte ho do něj. Zadejte *Editor Cloud-init. txt* pro vytvoření souboru.
+Do Azure Cloud Shell zkopírujte a vložte následující konfiguraci do souboru s názvem *cloud-init.txt*. Zadejte *editor cloud-init.txt* pro vytvoření souboru.
 
 ```yaml
 #cloud-config
@@ -119,7 +119,7 @@ runcmd:
   - nodejs index.js
 ```
 
-Vytvořte síťová rozhraní pomocí `az network nic create`nástroje. Pokud chcete vytvořit virtuální počítače, použijte `az vm create`.
+Vytvořte síťová rozhraní pomocí nástroje `az network nic create` . Pokud chcete vytvořit virtuální počítače, použijte `az vm create` .
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -141,7 +141,7 @@ done
 
 ## <a name="create-the-application-gateway"></a>Vytvoření služby Application Gateway
 
-Vytvořte Aplikační bránu pomocí `az network application-gateway create`. Při vytváření aplikační brány pomocí Azure CLI zadáte informace o konfiguraci, například kapacitu, SKU a nastavení HTTP. Azure potom přidá privátní IP adresy síťových rozhraní jako servery ve fondu back-end služby Application Gateway.
+Vytvořte Aplikační bránu pomocí `az network application-gateway create` . Při vytváření aplikační brány pomocí Azure CLI zadáte informace o konfiguraci, například kapacitu, SKU a nastavení HTTP. Azure potom přidá privátní IP adresy síťových rozhraní jako servery ve fondu back-end služby Application Gateway.
 
 ```azurecli-interactive
 address1=$(az network nic show --name myNic1 --resource-group myResourceGroupAG | grep "\"privateIpAddress\":" | grep -oE '[^ ]+$' | tr -d '",')
@@ -167,9 +167,9 @@ Může trvat až 30 minut, než Azure vytvoří Aplikační bránu. Po vytvořen
 - **appGatewayFrontendIP**: nachází se na stránce **Konfigurace IP adresy front-endu** . Přiřadí *myAGPublicIPAddress* k **appGatewayHttpListener**.
 - **rule1**: nachází se na stránce **pravidel** . Určuje výchozí pravidlo směrování, které je přidruženo k **appGatewayHttpListener**.
 
-## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
+## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
-I když Azure nepotřebuje webový server NGINX k vytvoření aplikační brány, nainstalujete ho v tomto rychlém startu, abyste ověřili, jestli Azure úspěšně vytvořil Aplikační bránu. Pokud chcete získat veřejnou IP adresu nové služby Application Gateway, použijte `az network public-ip show`. 
+I když Azure nepotřebuje webový server NGINX k vytvoření aplikační brány, nainstalujete ho v tomto rychlém startu, abyste ověřili, jestli Azure úspěšně vytvořil Aplikační bránu. Pokud chcete získat veřejnou IP adresu nové služby Application Gateway, použijte `az network public-ip show` . 
 
 ```azurecli-interactive
 az network public-ip show \
@@ -187,7 +187,7 @@ Když aktualizujete prohlížeč, měl by se zobrazit název druhého virtuáln�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud již nepotřebujete prostředky, které jste vytvořili pomocí služby Application Gateway, odstraňte skupinu `az group delete` prostředků pomocí příkazu. Když odstraníte skupinu prostředků, odstraníte také aplikační bránu a všechny související prostředky.
+Pokud již nepotřebujete prostředky, které jste vytvořili pomocí služby Application Gateway, `az group delete` odstraňte skupinu prostředků pomocí příkazu. Když odstraníte skupinu prostředků, odstraníte také aplikační bránu a všechny související prostředky.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroupAG

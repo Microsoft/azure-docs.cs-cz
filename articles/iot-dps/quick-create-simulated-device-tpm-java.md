@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
-ms.custom: mvc
-ms.openlocfilehash: ce67b5e254a62def5f8b024e960cea7f8780e8b8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-java
+ms.openlocfilehash: a51799334749963a4771108857f448c5d081e7ea
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77605493"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323090"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-java-device-sdk-for-azure-iot-hub-device-provisioning-service"></a>Rychlý Start: vytvoření a zřízení simulovaného zařízení TPM pomocí sady Java SDK pro zařízení pro Azure IoT Hub Device Provisioning Service
 
@@ -79,9 +79,9 @@ V tomto rychlém startu vytvoříte simulované zařízení IoT na počítači s
     private static final String globalEndpoint = "[Your Provisioning Service Global Endpoint here]";
     private static final ProvisioningDeviceClientTransportProtocol PROVISIONING_DEVICE_CLIENT_TRANSPORT_PROTOCOL = ProvisioningDeviceClientTransportProtocol.HTTPS;
     ```
-    Uložte soubor.
+    Soubor uložte.
 
-1. Pomocí následujících příkazů Sestavte projekt, přejděte do cílové složky a spusťte vytvořený soubor. jar. `version` Zástupný symbol nahraďte vaší verzí Java.
+1. Pomocí následujících příkazů Sestavte projekt, přejděte do cílové složky a spusťte vytvořený soubor. jar. `version`Zástupný symbol nahraďte vaší verzí Java.
 
     ```cmd/sh
     mvn clean install

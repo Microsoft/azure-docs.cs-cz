@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 877d1442c346b321562cb396a77224a6b40c7df2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7b7915e1b7779c4d0359b9ac190574c43a624cbe
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087233"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87276393"
 ---
 # <a name="azure-importexport-system-requirements"></a>Požadavky na systém Azure Import/Export
 
@@ -50,7 +50,7 @@ Další informace o účtech úložiště najdete v tématu [Přehled účtů Az
 Každou úlohu můžete použít k přenosu dat do nebo z jednoho účtu úložiště. Jinými slovy, jedna úloha importu/exportu nemůže být rozložená mezi několik účtů úložiště. Informace o vytvoření nového účtu úložiště najdete v tématu [Vytvoření účtu úložiště](storage-account-create.md).
 
 > [!IMPORTANT]
-> U účtů úložiště, kde je povolená funkce [koncových bodů služby Virtual Network](../../virtual-network/virtual-network-service-endpoints-overview.md)   , použijte nastavení **Povolit důvěryhodné služby společnosti Microsoft...** , aby služba [Import/export](/storage-network-security.md) mohla provádět import/export dat do a z Azure.
+> U účtů úložiště, kde je povolená funkce [koncových bodů služby Virtual Network](../../virtual-network/virtual-network-service-endpoints-overview.md)   , použijte nastavení **Povolit důvěryhodné služby společnosti Microsoft...** , aby služba [Import/export](/azure/storage/common/storage-network-security) mohla provádět import/export dat do a z Azure.
 
 ## <a name="supported-storage-types"></a>Podporované typy úložiště
 

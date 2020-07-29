@@ -1,28 +1,28 @@
 ---
-title: 'Rychlý Start: použití mezipaměti Azure pro Redis s Node. js'
-description: V tomto rychlém startu se dozvíte, jak používat Azure cache pro Redis s Node. js a node_redis.
+title: 'Rychlý Start: použití mezipaměti Azure pro Redis s Node.js'
+description: V tomto rychlém startu se dozvíte, jak používat Azure cache pro Redis s Node.js a node_redis.
 author: yegu-ms
 ms.service: cache
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/21/2018
 ms.author: yegu
-ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 88703581c507b79c1b10e0f8741c99e64d204a7e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
+ms.openlocfilehash: 89a5a911cc0de82afa704c43226d7dca0c9f98a9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81010864"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281170"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>Rychlý Start: použití mezipaměti Azure pro Redis s Node. js
+# <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>Rychlý Start: použití mezipaměti Azure pro Redis s Node.js
 
-V tomto rychlém startu zahrňte Azure cache pro Redis do aplikace Node. js, abyste měli přístup k zabezpečené vyhrazené mezipaměti, která je přístupná z libovolné aplikace v Azure.
+V tomto rychlém startu zahrňte Azure cache pro Redis do aplikace Node.js, abyste měli přístup k zabezpečené vyhrazené mezipaměti, která je přístupná z libovolné aplikace v Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-- [node_redis](https://github.com/mranney/node_redis), které můžete nainstalovat pomocí příkazu `npm install redis`. 
+- [node_redis](https://github.com/mranney/node_redis), které můžete nainstalovat pomocí příkazu `npm install redis` . 
 
 Příklady použití dalších klientů Node.js najdete v individuální dokumentaci pro klienty Node.js uvedené v [klientech Node.js Redis](https://redis.io/clients#nodejs).
 
@@ -131,7 +131,7 @@ Po chvíli bude skupina prostředků včetně všech obsažených prostředků o
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste zjistili, jak používat Azure cache pro Redis z aplikace Node. js. Přejděte k dalšímu rychlému startu a použijte Azure cache pro Redis s webovou aplikací ASP.NET.
+V tomto rychlém startu jste zjistili, jak používat Azure cache pro Redis z aplikace Node.js. Přejděte k dalšímu rychlému startu a použijte Azure cache pro Redis s webovou aplikací ASP.NET.
 
 > [!div class="nextstepaction"]
 > [Vytvořte webovou aplikaci ASP.NET, která používá Azure cache pro Redis.](./cache-web-app-howto.md)

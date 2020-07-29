@@ -3,12 +3,12 @@ title: Čítače výkonu v Application Insights | Microsoft Docs
 description: Monitorovat systémové a vlastní čítače výkonu rozhraní .NET v Application Insights.
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.openlocfilehash: e60663d9e767db020fc93eba1f4c1c6babb32294
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eb5e20403cc826619eb1f67de2fc4179e17b5aa4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024414"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322512"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Čítače výkonu systému v Application Insights
 
@@ -131,7 +131,7 @@ Podobně jako u jiné telemetrie má **čítače výkonu** také sloupec `cloud_
 
 * *Míra výjimek* je čítač výkonu systému. CLR počítá všechny zpracovávané a neošetřené výjimky, které jsou vyvolány, a vydělí celkový součet v intervalu vzorkování o délku intervalu. Sada SDK Application Insights shromažďuje tento výsledek a odesílá je na portál.
 
-* *Výjimky* jsou počtem sestav TrackException přijatých portálem v intervalu vzorkování grafu. Obsahuje pouze ošetřené výjimky, u kterých jste napsali volání TrackException v kódu a nezahrnuje všechny [neošetřené výjimky](../../azure-monitor/app/asp-net-exceptions.md). 
+* *Výjimky* jsou počtem sestav TrackException přijatých portálem v intervalu vzorkování grafu. Obsahuje pouze ošetřené výjimky, u kterých jste napsali volání TrackException v kódu a nezahrnuje všechny [neošetřené výjimky](./asp-net-exceptions.md). 
 
 ## <a name="performance-counters-for-applications-running-in-azure-web-apps"></a>Čítače výkonu pro aplikace běžící v Azure Web Apps
 
@@ -147,9 +147,10 @@ Podpora čítačů výkonu v ASP.NET Core je omezená:
 * Verze sady SDK 2.8.0 a novější podporují čítač procesorů a paměti v systému Linux. V systému Linux není podporován žádný jiný čítač. Doporučený způsob, jak získat systémové čítače v systémech Linux (a dalších prostředích mimo Windows), je použití [EventCounters](eventcounters.md)
 
 ## <a name="alerts"></a>Výstrahy
-Podobně jako u jiných metrik můžete [nastavit výstrahu](../../azure-monitor/platform/alerts-log.md) , která vás upozorní, pokud počítadlo výkonu dosáhne mimo zadaný limit. Otevřete podokno výstrahy a klikněte na Přidat výstrahu.
+Podobně jako u jiných metrik můžete [nastavit výstrahu](../platform/alerts-log.md) , která vás upozorní, pokud počítadlo výkonu dosáhne mimo zadaný limit. Otevřete podokno výstrahy a klikněte na Přidat výstrahu.
 
 ## <a name="next-steps"></a><a name="next"></a>Další kroky
 
-* [Sledování závislostí](../../azure-monitor/app/asp-net-dependencies.md)
-* [Sledování výjimek](../../azure-monitor/app/asp-net-exceptions.md)
+* [Sledování závislostí](./asp-net-dependencies.md)
+* [Sledování výjimek](./asp-net-exceptions.md)
+

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 75394768cc41d3ca73398c2691b9ec0feb8c17f8
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a9786c1f596a9f59e63886fa503bddac58ee7a8e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202559"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325334"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Přehled agentů Azure Monitor
 
@@ -31,8 +31,8 @@ Následující tabulky poskytují rychlé porovnání Azure Monitor agentů pro 
 
 | | Diagnostika<br>rozšíření (WAD) | Log Analytics<br>agent | Závislost<br>agent |
 |:---|:---|:---|:---|
-| **Podporovaná prostředí** | Azure | Azure<br>Jiný Cloud<br>Místní | Azure<br>Jiný Cloud<br>Místní | 
-| **Požadavky agenta**  | Žádná | Žádná | Vyžaduje agenta Log Analytics |
+| **Podporovaná prostředí** | Azure | Azure<br>Jiný Cloud<br>Lokálně | Azure<br>Jiný Cloud<br>Místní | 
+| **Požadavky agenta**  | Žádné | Žádné | Vyžaduje agenta Log Analytics |
 | **Shromažďovaná data** | Protokoly událostí<br>Trasování událostí pro Windows – události<br>Výkon<br>Protokoly založené na souborech<br>Protokoly IIS<br>Protokoly aplikací .NET<br>Výpisy stavu systému<br>Protokoly diagnostiky agenta | Protokoly událostí<br>Výkon<IIS logs><br>Protokoly založené na souborech<br>Přehledy a řešení<br>Další služby | Podrobnosti procesu a závislosti<br>Metriky síťového připojení |
 | **Data odesílaná do** | Azure Storage<br>Azure Monitor metriky<br>Centrum událostí | Protokoly služby Azure Monitor | Protokoly služby Azure Monitor |
 
@@ -41,8 +41,8 @@ Následující tabulky poskytují rychlé porovnání Azure Monitor agentů pro 
 
 | | Diagnostika<br>rozšíření (LAD) | Telegraf<br>agent | Log Analytics<br>agent | Závislost<br>agent |
 |:---|:---|:---|:---|:---|
-| **Podporovaná prostředí** | Azure | Azure<br>Jiný Cloud<br>Místní | Azure<br>Jiný Cloud<br>Místní | Azure<br>Jiný Cloud<br>Místní |
-| **Požadavky agenta**  | Žádná | Žádná | Žádná | Vyžaduje agenta Log Analytics |
+| **Podporovaná prostředí** | Azure | Azure<br>Jiný Cloud<br>Lokálně | Azure<br>Jiný Cloud<br>Lokálně | Azure<br>Jiný Cloud<br>Místní |
+| **Požadavky agenta**  | Žádné | Žádné | Žádné | Vyžaduje agenta Log Analytics |
 | **Shromažďovaná data** | Syslog<br>Výkon | Výkon | Syslog<br>Výkon| Podrobnosti procesu a závislosti<br>Metriky síťového připojení |
 | **Data odesílaná do** | Azure Storage<br>Centrum událostí | Azure Monitor metriky | Protokoly služby Azure Monitor | Protokoly služby Azure Monitor |
 
@@ -76,7 +76,7 @@ Mezi omezení agenta Log Analytics patří:
 Diagnostické rozšíření Azure použijte v případě, že potřebujete:
 
 - Odeslat data do Azure Storage pro archivaci nebo ji analyzovat pomocí nástrojů, jako je [Průzkumník služby Azure Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md).
-- Odešlete data do [Azure monitor metriky](data-platform-metrics.md) , abyste je mohli analyzovat pomocí [Průzkumníka metrik](metrics-getting-started.md) a mohli využívat funkce, jako jsou [výstrahy metriky](../../azure-monitor/platform/alerts-metric-overview.md) téměř v reálném čase a [Automatické škálování](autoscale-overview.md) (jenom Windows).
+- Odešlete data do [Azure monitor metriky](data-platform-metrics.md) , abyste je mohli analyzovat pomocí [Průzkumníka metrik](metrics-getting-started.md) a mohli využívat funkce, jako jsou [výstrahy metriky](./alerts-metric-overview.md) téměř v reálném čase a [Automatické škálování](autoscale-overview.md) (jenom Windows).
 - Posílání dat do nástrojů třetích stran pomocí [Azure Event Hubs](diagnostics-extension-stream-event-hubs.md).
 - Shromažďovat [diagnostiku spouštění](../../virtual-machines/troubleshooting/boot-diagnostics.md) a prozkoumat problémy se spouštěním virtuálního počítače
 
@@ -91,7 +91,7 @@ Mezi omezení Azure Diagnostics Extension patří:
 
 Telegraf agenta použijte v případě, že potřebujete:
 
-* Odešlete data do [Azure monitor metriky](data-platform-metrics.md) , abyste je mohli analyzovat pomocí [Průzkumníka metrik](metrics-getting-started.md) a mohli využívat funkce, jako jsou [výstrahy metriky](../../azure-monitor/platform/alerts-metric-overview.md) téměř v reálném čase a [Automatické škálování](autoscale-overview.md) (jenom Linux). 
+* Odešlete data do [Azure monitor metriky](data-platform-metrics.md) , abyste je mohli analyzovat pomocí [Průzkumníka metrik](metrics-getting-started.md) a mohli využívat funkce, jako jsou [výstrahy metriky](./alerts-metric-overview.md) téměř v reálném čase a [Automatické škálování](autoscale-overview.md) (jenom Linux). 
 
 
 
@@ -120,3 +120,4 @@ Další podrobnosti o jednotlivých agentech získáte v následujících verzí
 - [Přehled agenta Log Analytics](log-analytics-agent.md)
 - [Přehled rozšíření Azure Diagnostics](diagnostics-extension-overview.md)
 - [Shromažďování vlastních metrik pro virtuální počítač se systémem Linux pomocí agenta InfluxData telegraf](collect-custom-metrics-linux-telegraf.md)
+

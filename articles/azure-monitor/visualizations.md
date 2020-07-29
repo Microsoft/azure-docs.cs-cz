@@ -6,20 +6,20 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 4c5290d9f5ec47969ae43e5986d31484927a0ac5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 195e606a66b1b49821fc1b46381fdc551f142a6a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081351"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325521"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Vizualizace dat z Azure Monitoru
 Tento článek poskytuje souhrn dostupných metod pro vizualizaci dat protokolů a metrik uložených v Azure Monitor.
 
 Vizualizace, jako jsou grafy a grafy, vám pomohou analyzovat data monitorování, aby bylo možné rozlišit problémy a identifikovat vzory. V závislosti na nástroji, který použijete, můžete také sdílet vizualizace s ostatními uživateli v rámci vaší organizace i mimo ni.
 
-## <a name="workbooks"></a>Sešity
-[Sešity](../azure-monitor/platform/workbooks-overview.md) jsou interaktivní dokumenty, které poskytují podrobné přehledy o vašich datech, vyšetřování a spolupráci v rámci týmu. Konkrétní příklady, kde jsou sešity užitečné, jsou průvodci odstraňováním potíží a Postmortem incidentů.
+## <a name="workbooks"></a>Workbooks
+[Sešity](./platform/workbooks-overview.md) jsou interaktivní dokumenty, které poskytují podrobné přehledy o vašich datech, vyšetřování a spolupráci v rámci týmu. Konkrétní příklady, kde jsou sešity užitečné, jsou průvodci odstraňováním potíží a Postmortem incidentů.
 
 ![sešit](media/visualizations/workbook.png)
 
@@ -141,7 +141,7 @@ K datům v protokolech a datech metrik v Azure Monitor prostřednictvím rozhran
 - Seznamte se s [daty shromažďovanými nástrojem Azure monitor](platform/data-platform.md).
 - Přečtěte si o [řídicích panelech Azure](../azure-portal/azure-portal-dashboards.md).
 - Přečtěte si o [zobrazeních v Azure monitor](platform/view-designer.md).
-- Seznamte se se [sešity](../azure-monitor/platform/workbooks-overview.md).
-- Přečtěte si informace o [importu dat protokolu do Power BI](../azure-monitor/platform/powerbi.md).
-- Seznamte se s [modulem plug-in zdroje dat Grafana Azure monitor](../azure-monitor/platform/grafana-plugin.md).
+- Seznamte se se [sešity](./platform/workbooks-overview.md).
+- Přečtěte si informace o [importu dat protokolu do Power BI](./platform/powerbi.md).
+- Seznamte se s [modulem plug-in zdroje dat Grafana Azure monitor](./platform/grafana-plugin.md).
 

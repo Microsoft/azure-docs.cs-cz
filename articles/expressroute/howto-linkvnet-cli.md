@@ -5,13 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 05/21/2019
+ms.date: 07/27/2020
 ms.author: cherylmc
-ms.openlocfilehash: 133a586612f8a5b864c84400ece63d9ba6ccb150
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d51409baf9d5ca6ce90f1367ac128d7d47a9757
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84729238"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325249"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>Připojení virtuální sítě k okruhu ExpressRoute pomocí rozhraní příkazového řádku
 
@@ -152,7 +153,7 @@ az network vpn-connection update --name ERConnection --resource-group ExpressRou
 Rozsah *RoutingWeight* je 0 až 32000. Výchozí hodnota je 0.
 
 ## <a name="configure-expressroute-fastpath"></a>Konfigurace ExpressRoute FastPath 
-Můžete povolit [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) , pokud je váš okruh ExpressRoute na [ExpressRoute Direct](expressroute-erdirect-about.md) a vaše virtuální síť. Brána je Ultra Performance nebo ErGw3AZ. FastPath vylepšuje cestu dat preformance, jako jsou pakety za sekundu a připojení za sekundu mezi vaší místní sítí a virtuální sítí. 
+Můžete povolit [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) , pokud je vaše brána virtuální sítě v ultra Performance nebo ErGw3AZ. FastPath vylepšuje cestu dat preformance, jako jsou pakety za sekundu a připojení za sekundu mezi vaší místní sítí a virtuální sítí. 
 
 **Konfigurace FastPath pro nové připojení**
 

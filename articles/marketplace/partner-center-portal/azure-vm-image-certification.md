@@ -1,28 +1,57 @@
 ---
-title: Certifikace virtuálních počítačů Azure – Azure Marketplace
+title: Testovací virtuální počítač nasazený z virtuálního počítače Azure Marketplace
 description: Přečtěte si, jak otestovat a odeslat nabídku virtuálních počítačů na komerčním webu Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: emuench
-ms.author: mingshen
+author: iqshahmicrosoft
+ms.author: iqshah
 ms.date: 04/09/2020
-ms.openlocfilehash: d3b89945c077b9c26bab1709bd6d1def20959e33
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3d4ec077ac0e92d26cf82ba96593a76a21ed885f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110041"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324671"
 ---
-# <a name="azure-virtual-machine-vm-image-certification"></a>Certifikace imagí virtuálních počítačů Azure
+# <a name="test-virtual-machine-vm-deployed-from-vhd"></a>Testovací virtuální počítač (VM) nasazený z VHD
 
-Tento článek popisuje, jak otestovat a odeslat image virtuálního počítače (VM) na komerčním tržišti, aby splňovala nejnovější Azure Marketplace požadavky na publikování.
+Tento článek popisuje, jak nasadit a otestovat virtuální počítač Azure z generalizované image virtuálního pevného disku vytvořené v předchozí části ([Vytvoření technického prostředku Azure VM)](create-azure-vm-technical-asset.md) , abyste zajistili, že bitová kopie VHD splňuje Azure Marketplace požadavky na publikování.
 
-Před odesláním nabídky virtuálního počítače dokončete tyto kroky:
+Provedením těchto kroků vygenerujete zprávu o kompatibilitě, která potvrzuje, že je možné použít bitovou kopii VHD na Azure Marketplace.
 
-1. Vytvoření a nasazení certifikátů.
-2. Nasaďte virtuální počítač Azure pomocí generalizované image.
-3. Spusťte ověřování.
+1. Vytvořte a Nasaďte certifikát vyžadovaný pro vzdálenou správu virtuálních počítačů, aby se Azure Key Vault.
+2. Nasaďte virtuální počítač Azure z generalizované image VHD vytvořené při [vytváření technického prostředku virtuálního počítače Azure](create-azure-vm-technical-asset.md).
+3. Spusťte testy na nasazeném virtuálním počítači, aby bylo zajištěno, že bitová kopie VHD bude připravena k publikování a použita k nasazení virtuálních počítačů.
+
+## <a name="running-scripts"></a>Spouštění skriptů
+
+Tento článek obsahuje tři skripty, které se mají spustit v prostředí PowerShell. Prostředí PowerShell pro stolní počítače funguje nejlépe, ale Azure Cloud Shell lze také použít s vybranou možností PowerShellu (v levém horním rohu okna).
+
+1. Ujistěte se, že je PowerShell nakonfigurovaný tak, aby spouštěl skripty.
+
+    - Vždycky otevřete PowerShell s možností **Spustit jako správce** .
+    - Ujistěte se, že můžete spouštět tyto skripty: `Set-ExecutionPolicy` a `RemoteSigned` .
+
+2. [Nainstalovat rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+
+3. Nainstalujte Azure PowerShell AZ Module.
+    1. **Možnost A**: ještě nejsou nainstalované žádné moduly.
+        - `Install-Module -Name Az -AllowClobber -Scope AllUsers`
+
+        Další informace najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-4.2.0).
+
+    2. **Možnost B**: aktuálně používá modul AzureRM.
+
+        - Odinstalace – AzureRM
+        - Instalace-modul-název AZ-AllowClobber-Scope AllUsers
+        - Enable-AzureRmAlias-Scope CurrentUser
+
+        Další informace najdete v tématu [migrace Azure PowerShell z AzureRM na az](https://docs.microsoft.com/powershell/azure/migrate-from-azurerm-to-az?view=azps-4.2.0).
+
+4. Uložte parametry relace.
+
+Skripty v této části používají proměnné/parametry relace. Pokud relaci zavřete, parametry se vymažou. Pro spuštění všech skriptů doporučujeme použít jednu relaci, aby se předešlo chybám hodnot parametrů. Pokud to není možné, budete muset parametry znovu inicializovat při otevírání nové relace, zejména pro pozdější skripty.
 
 ## <a name="create-and-deploy-certificates-for-azure-key-vault"></a>Vytvoření a nasazení certifikátů pro Azure Key Vault
 
@@ -40,7 +69,7 @@ Pro tuto práci můžete použít buď novou, nebo existující skupinu prostře
 
 #### <a name="create-the-security-certificate"></a>Vytvořit certifikát zabezpečení
 
-Úpravou a spuštěním následujícího skriptu Azure PowerShell vytvořte soubor certifikátu (. pfx) v místní složce. Nahraďte hodnoty parametrů, které jsou uvedeny v následující tabulce.
+Spuštěním tohoto skriptu vytvořte soubor certifikátu (. pfx) v místní složce. Certifikát patří plánovanému virtuálnímu počítači Azure, který se nasadí z image VHD. Virtuální počítač bude potřebovat název, umístění a heslo, jak je uvedeno v parametrech skriptu. Upravte následující Azure PowerShell **skript pro vytváření certifikace** a zadejte správné hodnoty parametrů skriptu zobrazených v tabulce.
 
 | **Parametr** | **Popis** |
 | --- | --- |
@@ -88,7 +117,7 @@ Pro tuto práci můžete použít buď novou, nebo existující skupinu prostře
 
 Zkopírujte obsah šablony níže do souboru na místním počítači. V následujícím příkladu skriptu je tento prostředek `C:\certLocation\keyvault.json` ).
 
-```json
+```JSON
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -278,13 +307,13 @@ Zkopírujte obsah šablony níže do souboru na místním počítači. V násled
 
     # Create a resource group
      Write-Host "Creating Resource Group $rgName"
-     Create-ResourceGroup -rgName $rgName -location $location
+     az group create --name $rgName --location $location
      Write-Host "-----------------------------------"
 
     # Create key vault and configure access
     New-AzResourceGroupDeployment -Name "kvdeploy$postfix" -ResourceGroupName $rgName -TemplateFile $kvTemplateJson -keyVaultName $kvname -tenantId $mytenantId -objectId $myobjectId
 
-    Set-AzKeyVaultAccessPolicy -VaultName $kvname -ObjectId $myobjectId -PermissionsToKeys all -PermissionsToSecrets all
+    Set-AzKeyVaultAccessPolicy -VaultName $kvname -ObjectId $myobjectId -PermissionsToKeys Decrypt,Encrypt,UnwrapKey,WrapKey,Verify,Sign,Get,List,Update,Create,Import,Delete,Backup,Restore,Recover,Purge -PermissionsToSecrets Get,List,Set,Delete,Backup,Restore,Recover,Purge
 
 ```
 
@@ -314,13 +343,15 @@ Certifikáty obsažené v souboru. pfx uložte do nového trezoru klíčů pomoc
 
 ```
 
-## <a name="deploy-an-azure-vm-using-your-generalized-image"></a>Nasazení virtuálního počítače Azure pomocí generalizované image
+## <a name="deploy-an-azure-vm-from-your-generalized-vhd-image"></a>Nasazení virtuálního počítače Azure z generalizované image VHD
 
 Tato část popisuje, jak nasadit zobecněnou image virtuálního pevného disku pro vytvoření nového prostředku virtuálního počítače Azure. Pro tento proces budeme používat dodanou šablonu Azure Resource Manager a skript Azure PowerShell.
 
 ### <a name="prepare-an-azure-resource-manager-template"></a>Příprava šablony Azure Resource Manager
 
-Zkopírujte následující šablonu Azure Resource Manager pro nasazení VHD do místního souboru s názvem VHDtoImage.jsv. Další skript požádá o umístění v místním počítači, aby se tento kód JSON použil.
+Zkopírujte jednu z následujících šablon Azure Resource Manager pro nasazení VHD (buď pro Windows nebo Linux) do místního souboru s názvem VHDtoImage.jsv. Další skript požádá o umístění v místním počítači, aby se tento kód JSON použil.
+
+#### <a name="for-windows-based-vms"></a>Pro virtuální počítače se systémem Windows
 
 ```JSON
 {
@@ -555,7 +586,242 @@ Zkopírujte následující šablonu Azure Resource Manager pro nasazení VHD do 
 
 ```
 
-Upravte tento soubor a zadejte hodnoty pro tyto parametry:
+#### <a name="for-linux-based-vms"></a>Pro virtuální počítače se systémem Linux
+
+```JSON
+{
+    "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "userStorageAccountName": {
+            "type": "string"
+        },
+        "userStorageContainerName": {
+            "type": "string",
+            "defaultValue": "vhds"
+        },
+        "dnsNameForPublicIP": {
+            "type": "string"
+        },
+        "adminUserName": {
+            "defaultValue": "isv",
+            "type": "string"
+        },
+        "adminPassword": {
+            "type": "securestring",
+            "defaultValue": "Password@123"
+        },
+        "osType": {
+            "type": "string",
+            "defaultValue": "linux",
+            "allowedValues": [
+                "windows",
+                "linux"
+            ]
+        },
+        "subscriptionId": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "vmSize": {
+            "type": "string"
+        },
+        "publicIPAddressName": {
+            "type": "string"
+        },
+        "vmName": {
+            "type": "string"
+        },
+        "virtualNetworkName": {
+            "type": "string"
+        },
+        "nicName": {
+            "type": "string"
+        },
+        "vaultName": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of the KeyVault"
+            }
+        },
+        "vaultResourceGroup": {
+            "type": "string",
+            "metadata": {
+                "description": "Resource Group of the KeyVault"
+            }
+        },
+        "certificateUrl": {
+            "type": "string",
+            "metadata": {
+                "description": "Url of the certificate with version in KeyVault e.g. https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7"
+            }
+        },
+        "vhdUrl": {
+            "type": "string",
+            "metadata": {
+                "description": "VHD Url..."
+            }
+        }
+    },
+        "variables": {
+            "addressPrefix": "10.0.0.0/16",
+            "subnet1Name": "Subnet-1",
+            "subnet2Name": "Subnet-2",
+            "subnet1Prefix": "10.0.0.0/24",
+            "subnet2Prefix": "10.0.1.0/24",
+            "publicIPAddressType": "Dynamic",
+            "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",
+            "subnet1Ref": "[concat(variables('vnetID'),'/subnets/',variables('subnet1Name'))]",
+            "osDiskVhdName": "[concat('http://',parameters('userStorageAccountName'),'.blob.core.windows.net/',parameters('userStorageContainerName'),'/',parameters('vmName'),'osDisk.vhd')]"
+        },
+        "resources": [
+            {
+                "apiVersion": "2015-05-01-preview",
+                "type": "Microsoft.Network/publicIPAddresses",
+                "name": "[parameters('publicIPAddressName')]",
+                "location": "[parameters('location')]",
+                "properties": {
+                    "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
+                    "dnsSettings": {
+                        "domainNameLabel": "[parameters('dnsNameForPublicIP')]"
+                    }
+                }
+            },
+            {
+                "apiVersion": "2015-05-01-preview",
+                "type": "Microsoft.Network/virtualNetworks",
+                "name": "[parameters('virtualNetworkName')]",
+                "location": "[parameters('location')]",
+                "properties": {
+                    "addressSpace": {
+                        "addressPrefixes": [
+                            "[variables('addressPrefix')]"
+                        ]
+                    },
+                    "subnets": [
+                        {
+                            "name": "[variables('subnet1Name')]",
+                            "properties": {
+                                "addressPrefix": "[variables('subnet1Prefix')]"
+                            }
+                        },
+                        {
+                            "name": "[variables('subnet2Name')]",
+                            "properties": {
+                                "addressPrefix": "[variables('subnet2Prefix')]"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "apiVersion": "2015-05-01-preview",
+                "type": "Microsoft.Network/networkInterfaces",
+                "name": "[parameters('nicName')]",
+                "location": "[parameters('location')]",
+                "dependsOn": [
+                    "[concat('Microsoft.Network/publicIPAddresses/', parameters('publicIPAddressName'))]",
+                    "[concat('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]"
+                ],
+                "properties": {
+                    "ipConfigurations": [
+                        {
+                            "name": "ipconfig1",
+                            "properties": {
+                                "privateIPAllocationMethod": "Dynamic",
+                                "publicIPAddress": {
+                                    "id": "[resourceId('Microsoft.Network/publicIPAddresses',parameters('publicIPAddressName'))]"
+                                },
+                                "subnet": {
+                                    "id": "[variables('subnet1Ref')]"
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "apiVersion": "2015-06-15",
+                "type": "Microsoft.Compute/virtualMachines",
+                "name": "[parameters('vmName')]",
+                "location": "[parameters('location')]",
+                "dependsOn": [
+                    "[concat('Microsoft.Network/networkInterfaces/', parameters('nicName'))]"
+                ],
+                "properties": {
+                    "hardwareProfile": {
+                        "vmSize": "[parameters('vmSize')]"
+                    },
+                    "osProfile": {
+                        "computername": "[parameters('vmName')]",
+                        "adminUsername": "[parameters('adminUsername')]",
+                        "adminPassword": "[parameters('adminPassword')]",
+                        "secrets": [
+                            {
+                                "sourceVault": {
+                                    "id": "[resourceId(parameters('vaultResourceGroup'), 'Microsoft.KeyVault/vaults', parameters('vaultName'))]"
+                                },
+                                "vaultCertificates": [
+                                    {
+                                        "certificateUrl": "[parameters('certificateUrl')]",
+                                        "certificateStore": "My"
+                                    }
+                                ]
+                            }
+                        ],
+                        "windowsConfiguration": {
+                            "provisionVMAgent": "true",
+                            "winRM": {
+                                "listeners": [
+                                    {
+                                        "protocol": "http"
+                                    },
+                                    {
+                                        "protocol": "https",
+                                        "certificateUrl": "[parameters('certificateUrl')]"
+                                    }
+                                ]
+                            },
+                            "enableAutomaticUpdates": "true"
+                        }
+                    },
+                    "storageProfile": {
+                        "osDisk": {
+                            "name": "[concat(parameters('vmName'),'-osDisk')]",
+                            "osType": "[parameters('osType')]",
+                            "caching": "ReadWrite",
+                            "image": {
+                                "uri": "[parameters('vhdUrl')]"
+                            },
+                            "vhd": {
+                                "uri": "[variables('osDiskVhdName')]"
+                            },
+                            "createOption": "FromImage"
+                        }
+                    },
+                    "networkProfile": {
+                        "networkInterfaces": [
+                            {
+                                "id": "[resourceId('Microsoft.Network/networkInterfaces',parameters('nicName'))]"
+                            }
+                        ]
+                    },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": false,
+                        "storageUri": "[concat('http://', parameters('userStorageAccountName'), '.blob.core.windows.net')]"
+                    }
+                }
+                }
+            }
+        ]
+    }
+
+```
+
+Zkopírujte a upravte následující skript, který poskytne hodnoty pro tyto parametry:
 
 | **Parametr** | **Popis** |
 | --- | --- |
@@ -592,24 +858,40 @@ $storageaccount = "testwinrm11815"
 
 $vhdUrl = "https://testwinrm11815.blob.core.windows.net/vhds/testvm1234562016651857.vhd"
 
-echo "New-AzResourceGroupDeployment -Name "dplisvvm$postfix" -ResourceGroupName "$rgName" -TemplateFile "C:\certLocation\VHDtoImage.json" -userStorageAccountName "$storageaccount" -dnsNameForPublicIP "$vmName" -subscriptionId "$mysubid" -location "$location" -vmName "$vmName" -vaultName "$kvname" -vaultResourceGroup "$rgName" -certificateUrl $objAzureKeyVaultSecret.Id  -vhdUrl "$vhdUrl" -vmSize "Standard\_A2" -publicIPAddressName "myPublicIP1" -virtualNetworkName "myVNET1" -nicName "myNIC1" -adminUserName "isv" -adminPassword $pwd"
+# Full pathname to the file VHDtoImage.json. inserted these highlighted lines
+$templateFile = "$certroopath\VHDtoImage.json"
+
+# Size of the virtual machine instance.
+$vmSize = "Standard_D2s_v3"
+
+# Name of the public IP address.
+$publicIPAddressName = "myPublicIP1"
+
+# Name of the virtual network
+$virtualNetworkName = "myVNET1"
+
+# Name of the network interface card for the virtual network
+$nicName = "myNIC1"
+
+# Username of the administrator account
+$adminUserName = "isv"
+
+# The OS of the virtual machine
+$osType = "windows"
+
+echo "New-AzResourceGroupDeployment -Name "dplisvvm$postfix" -ResourceGroupName "$rgName" -TemplateFile "C:\certLocation\VHDtoImage.json" -userStorageAccountName "$storageaccount" -dnsNameForPublicIP "$vmName" -subscriptionId "$mysubid" -location "$location" -vmName "$vmName" -vaultName "$kvname" -vaultResourceGroup "$rgName" -certificateUrl $objAzureKeyVaultSecret.Id -vhdUrl "$vhdUrl" -vmSize "Standard\_A2" -publicIPAddressName "myPublicIP1" -virtualNetworkName "myVNET1" -nicName "myNIC1" -adminUserName "isv" -adminPassword $pwd"
 
 # deploying VM with existing VHD
 
-New-AzResourceGroupDeployment -Name"dplisvvm$postfix" -ResourceGroupName"$rgName" -TemplateFile"C:\certLocation\VHDtoImage.json" -userStorageAccountName"$storageaccount" -dnsNameForPublicIP"$vmName" -subscriptionId"$mysubid" -location"$location" -vmName"$vmName" -vaultName"$kvname" -vaultResourceGroup"$rgName" -certificateUrl$objAzureKeyVaultSecret.Id  -vhdUrl"$vhdUrl" -vmSize"Standard\_A2" -publicIPAddressName"myPublicIP1" -virtualNetworkName"myVNET1" -nicName"myNIC1" -adminUserName"isv" -adminPassword$pwd
+New-AzResourceGroupDeployment -Name "dplisvvm$postfix" -ResourceGroupName "$rgName" -TemplateFile "C:\certLocation\VHDtoImage.json" -userStorageAccountName "$storageaccount" -dnsNameForPublicIP "$vmName" -subscriptionId "$mysubid" -location "$location" -vmName "$vmName" -vaultName "$kvname" -vaultResourceGroup "$rgName" -certificateUrl “$objAzureKeyVaultSecret.Id” -vhdUrl "$vhdUrl" -vmSize "Standard_A2" -publicIPAddressName "myPublicIP1" -virtualNetworkName"myVNET1" -nicName "myNIC1" -adminUserName "isv" -adminPassword “$pwd"
 
 ```
 
-## <a name="run-validations"></a>Spustit ověřování
-
-Existují dva způsoby, jak spustit ověřování na nasazené imagi:
-
-- Použití nástroje pro testování certifikace pro certifikaci v Azure
-- Použití rozhraní API pro samočinné testování
+## <a name="run-tests-on-the-deployed-vm"></a>Spuštění testů na nasazeném virtuálním počítači
 
 ### <a name="download-and-run-the-certification-test-tool"></a>Stažení a spuštění nástroje certifikace test
 
-Nástroj certifikace pro certifikaci pro Azure Certified běží na místním počítači s Windows, ale testuje virtuální počítač se systémem Windows nebo Linux na platformě Azure. Potvrzuje, že vaše uživatelská image virtuálního počítače se dá používat s Microsoft Azure a že se splnily pokyny a požadavky týkající se přípravy vašeho virtuálního pevného disku. Výstupem nástroje je zpráva o kompatibilitě, kterou nahrajete na portál partnerského centra a vyžádáte certifikaci virtuálního počítače.
+Nástroj certifikace pro certifikaci pro Azure Certified je nástroj pro samočinný test, který běží na místním počítači s Windows, ale testuje virtuální počítač se systémem Windows nebo Linux na platformě Azure. Potvrzuje, že vaše uživatelská image virtuálního počítače se dá používat s Microsoft Azure a že se splnily pokyny a požadavky týkající se přípravy vašeho virtuálního pevného disku. Tento nástroj zajistí, že je váš virtuální počítač připravený k publikování na základě Azure Marketplace požadavků. "
 
 1. Stáhněte a nainstalujte si nejnovější [Nástroj pro testování certifikace pro certifikaci Azure](https://www.microsoft.com/download/details.aspx?id=44299).
 2. Otevřete nástroj certifikace a pak vyberte **Spustit nový test**.
@@ -619,9 +901,9 @@ Nástroj certifikace pro certifikaci pro Azure Certified běží na místním po
 
 ### <a name="connect-the-certification-tool-to-a-vm-image"></a>Připojení certifikačního nástroje k imagi virtuálního počítače
 
-Nástroj se připojuje k virtuálním počítačům s Windows pomocí [Azure PowerShell](https://docs.microsoft.com/powershell/) a připojuje se k virtuálním počítačům Linux prostřednictvím [SSH.NET](https://www.ssh.com/ssh/protocol/).
+Nástroj se připojuje k virtuálním počítačům s Windows pomocí [Azure PowerShell](https://docs.microsoft.com/powershell/) a připojuje se k virtuálním počítačům Linux prostřednictvím [SSH.NET](https://www.ssh.com/ssh/protocol/). Vyberte jednu z následujících dvou možností, buď Linux, nebo Windows.
 
-### <a name="connect-the-certification-tool-to-a-linux-vm-image"></a>Připojení certifikačního nástroje k imagi virtuálního počítače se systémem Linux
+#### <a name="option-1-connect-the-certification-tool-to-a-linux-vm-image"></a>Možnost 1: připojení certifikačního nástroje k imagi virtuálního počítače se systémem Linux
 
 1. Vyberte režim **ověřování SSH** : ověřování hesla nebo ověření souboru klíče.
 2. Pokud používáte ověřování na základě hesla, zadejte hodnoty pro **název DNS virtuálního počítače**, **uživatelské jméno**a **heslo**. Můžete také změnit výchozí číslo **portu SSH** .
@@ -630,7 +912,7 @@ Nástroj se připojuje k virtuálním počítačům s Windows pomocí [Azure Pow
 
 3. Pokud používáte ověřování na základě klíčového souboru, zadejte hodnoty pro **název DNS virtuálního počítače**, **uživatelské jméno**a umístění **privátního klíče** . Můžete také zahrnout **heslo** nebo změnit výchozí číslo **portu SSH** .
 
-### <a name="connect-the-certification-tool-to-a-windows-based-vm-image"></a>**Připojení certifikačního nástroje k imagi virtuálního počítače se systémem Windows**
+#### <a name="option-2-connect-the-certification-tool-to-a-windows-based-vm-image"></a>Možnost 2: připojení certifikačního nástroje k imagi virtuálního počítače se systémem Windows
 
 1. Zadejte plně kvalifikovaný **název DNS virtuálního počítače** (například MyVMName.cloudapp.NET).
 2. Zadejte hodnoty **uživatelského jména** a **hesla**.

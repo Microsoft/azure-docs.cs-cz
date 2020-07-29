@@ -1,6 +1,6 @@
 ---
 title: Partnerské dva virtuální sítě – ukázka skriptu Azure PowerShell
-description: Ukázkový skript Azure PowerShellu – Vytvoření partnerského vztahu mezi dvěma virtuálními sítěmi
+description: Vytvořte a připojte dvě virtuální sítě ve stejné oblasti. Pomocí skriptu Azure pro dvě partnerské virtuální sítě připojte sítě přes síť Azure.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: 6efc96565714021b15eb0a44cb69f71fe78e817a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7cbcae51228e5bf722f3ea802a322483aed6c225
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068723"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286117"
 ---
 # <a name="peer-two-virtual-networks-script-sample"></a>Ukázkový skript pro vytvoření partnerského vztahu mezi dvěma virtuálními sítěmi
 

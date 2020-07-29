@@ -6,18 +6,18 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: tracking-python
-ms.openlocfilehash: c9d69c0f39d9cad52dc86c3ab33d202c88131ab0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6eae11e2157904b47582f78a601c8d2900e61247
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753206"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324586"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>Sledování příchozích požadavků pomocí OpenCensus Pythonu
 
 Příchozí data žádosti se shromažďují pomocí OpenCensus Pythonu a jejich různých integrací. Sledovat příchozí data požadavku odesílaná do vašich webových aplikací založených na oblíbených webových rozhraních `django` `flask` a `pyramid` . Data se pak odešlou do Application Insights v části Azure Monitor jako `requests` telemetrie.
 
-Nejdřív Instrumentujte svou aplikaci v Pythonu pomocí nejnovější [OpenCensus Python SDK](../../azure-monitor/app/opencensus-python.md).
+Nejdřív Instrumentujte svou aplikaci v Pythonu pomocí nejnovější [OpenCensus Python SDK](./opencensus-python.md).
 
 ## <a name="tracking-django-applications"></a>Sledování aplikací Django
 
@@ -119,8 +119,9 @@ Nejdřív Instrumentujte svou aplikaci v Pythonu pomocí nejnovější [OpenCens
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Mapa aplikace](../../azure-monitor/app/app-map.md)
-* [Dostupnost](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Vyhledávání](../../azure-monitor/app/diagnostic-search.md)
-* [Dotaz na protokol (Analytics)](../../azure-monitor/log-query/log-query-overview.md)
-* [Diagnostika transakcí](../../azure-monitor/app/transaction-diagnostics.md)
+* [Mapa aplikace](./app-map.md)
+* [Dostupnost](./monitor-web-app-availability.md)
+* [Vyhledávání](./diagnostic-search.md)
+* [Dotaz na protokol (Analytics)](../log-query/log-query-overview.md)
+* [Diagnostika transakcí](./transaction-diagnostics.md)
+

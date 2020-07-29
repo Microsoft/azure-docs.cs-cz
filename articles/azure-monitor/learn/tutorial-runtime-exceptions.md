@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: 317d5681ac3b09cb433cdc2bc3c83b6b1c8d37dc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b656774762f5930c5665166a701bda7333940307
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516358"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322427"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Vyhledání a diagnostika výjimek za běhu pomocí Azure Application Insights
 
@@ -27,7 +27,7 @@ Azure Application Insights shromažďuje telemetrii z vaší aplikace, kterou m�
 > * Vytvoření nové pracovní položky pro opravu chybného kódu
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -36,7 +36,7 @@ Pro absolvování tohoto kurzu potřebujete:
     - Vývoj pro Azure
 - Stáhnout a nainstalovat [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger).
 - Povolit [Visual Studio Snapshot Debugger](../app/snapshot-debugger.md).
-- Nasadit do Azure aplikaci .NET a [povolit sadu Application Insights SDK](../../azure-monitor/app/asp-net.md). 
+- Nasadit do Azure aplikaci .NET a [povolit sadu Application Insights SDK](../app/asp-net.md). 
 - Kurz popisuje identifikaci výjimky ve vaší aplikaci, proto upravte kód ve vašem prostředí vývoj nebo testování, aby generoval výjimku. 
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
@@ -63,7 +63,7 @@ Application Insights shromažďuje informace o selháních v aplikaci a umožňu
 
     ![Ukázky neúspěšných požadavků](media/tutorial-runtime-exceptions/failed-requests-search.png)
 
-6. Podrobnosti o neúspěšném požadavku se zobrazí v Ganttově grafu, který ukazuje, že v této transakci došlo ke dvěma chybám závislostí, které také přispěly k více než 50 % celkové doby trvání transakce. V tomto prostředí se zobrazuje veškerá telemetrie ze všech komponent distribuované aplikace, které souvisejí s tímto ID operace. [Další informace o novém prostředí](../../azure-monitor/app/transaction-diagnostics.md). Výběrem libovolné položky můžete na pravé straně zobrazit její podrobnosti. 
+6. Podrobnosti o neúspěšném požadavku se zobrazí v Ganttově grafu, který ukazuje, že v této transakci došlo ke dvěma chybám závislostí, které také přispěly k více než 50 % celkové doby trvání transakce. V tomto prostředí se zobrazuje veškerá telemetrie ze všech komponent distribuované aplikace, které souvisejí s tímto ID operace. [Další informace o novém prostředí](../app/transaction-diagnostics.md). Výběrem libovolné položky můžete na pravé straně zobrazit její podrobnosti. 
 
     ![Podrobnosti neúspěšné žádosti](media/tutorial-runtime-exceptions/failed-request-details.png)
 
@@ -112,4 +112,5 @@ Pokud propojíte Application Insights se sledovacím systémem, jako je Azure De
 Nyní, když jste se naučili, jak identifikovat výjimky za běhu, můžete přejít k dalšímu kurzu, ve kterém zjistíte, jak identifikovat a diagnostikovat potíže s výkonem.
 
 > [!div class="nextstepaction"]
-> [Identifikace potíží s výkonem](../../azure-monitor/learn/tutorial-performance.md)
+> [Identifikace potíží s výkonem](./tutorial-performance.md)
+

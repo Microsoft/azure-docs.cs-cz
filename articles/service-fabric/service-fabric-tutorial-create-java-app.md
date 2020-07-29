@@ -5,13 +5,13 @@ author: suhuruli
 ms.topic: tutorial
 ms.date: 09/01/2018
 ms.author: suhuruli
-ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: cf1ede2db8dbdc7557775cf7b22dde53b69280da
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: 0e1723854d18172f28a43aacb86ab9c29656cf0d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81314243"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322240"
 ---
 # <a name="tutorial-create-an-application-with-a-java-api-front-end-service-and-a-stateful-back-end-service-on-azure-service-fabric"></a>Kurz: Vytvoření aplikace s front-end službou Java API a stavovou back-end službou v Azure Service Fabric
 
@@ -40,7 +40,7 @@ V první části tohoto kurzu se naučíte:
 
 Než začnete s tímto kurzem:
 
-* Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Nastavte vývojové prostředí pro [Mac](service-fabric-get-started-mac.md) nebo [Linux](service-fabric-get-started-linux.md). Postupujte podle pokynů k instalaci modulu plug-in Eclipse, Gradle, sady Service Fabric SDK a Service Fabric CLI (sfctl).
 
 ## <a name="create-the-front-end-java-stateless-service"></a>Vytvoření bezstavové front-end služby v Javě
@@ -49,7 +49,7 @@ Nejprve vytvořte webový front-end hlasovací aplikace. Webové uživatelské r
 
 1. Otevřete Eclipse.
 
-2. Vytvořte projekt se **souborem** > **Nový** > **jiný** > **Service Fabric** > **Service Fabric projektu**.
+2. Vytvořte projekt se **souborem**  >  **Nový**  >  **jiný**  >  **Service Fabric**  >  **Service Fabric projektu**.
 
     ![Nový projekt Service Fabric v zatmění](./media/service-fabric-tutorial-create-java-app/service-fabric-project-wizard.png)
 
@@ -82,7 +82,7 @@ Chcete-li přidat uživatelské rozhraní, které může být vygenerováno bezs
 
 1. Rozbalte adresář *VotingApplication* a přejděte do adresáře *VotingApplication/VotingWebPkg/Code*.
 
-2. Klikněte pravým tlačítkem na adresář *kódu* a vyberte **Nová** > **Složka**.
+2. Klikněte pravým tlačítkem na adresář *kódu* a vyberte **Nová**  >  **Složka**.
 
 3. Pojmenujte složku *wwwroot* a vyberte **Dokončit**.
 
@@ -219,7 +219,7 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 
 ### <a name="add-the-httpcommunicationlistenerjava-file"></a>Přidání souboru HTTPCommunicationListener.java
 
-Naslouchací proces komunikace protokolu HTTP funguje jako kontroler, který nastaví server HTTP a zveřejní rozhraní API definující akce hlasování. Klikněte pravým tlačítkem na balíček *statelessservice* ve složce *VotingWeb/src/statelessservice* a potom vyberte **Nový** > **soubor**.  Pojmenujte soubor *HttpCommunicationListener. Java* a vyberte **Dokončit**.
+Naslouchací proces komunikace protokolu HTTP funguje jako kontroler, který nastaví server HTTP a zveřejní rozhraní API definující akce hlasování. Klikněte pravým tlačítkem na balíček *statelessservice* ve složce *VotingWeb/src/statelessservice* a potom vyberte **Nový**  >  **soubor**.  Pojmenujte soubor *HttpCommunicationListener. Java* a vyberte **Dokončit**.
 
 Nahraďte obsah souboru následujícím kódem a pak uložte provedené změny.  V pozdější části Aktualizace souboru HttpCommunicationListener.java se tento soubor upraví tak, aby vykresloval, načítal a zapisoval data hlasování z back-end služby.  Prozatím naslouchací událost jednoduše vrací statický kód HTML hlasovací aplikace.
 
@@ -399,7 +399,7 @@ Když je teď hotová kostra služby webového rozhraní API v Javě, můžeme p
 
 Service Fabric umožňuje konzistentně a spolehlivě ukládat data přímo v rámci služby s použitím spolehlivých kolekcí. Spolehlivé kolekce jsou sady vysoce dostupných a spolehlivých tříd kolekcí. Použití těchto tříd budou znát všichni, kteří už někdy používali kolekce v Javě.
 
-1. V Průzkumníku balíčků klikněte pravým tlačítkem na **hlasovací** tlačítko v rámci projektu aplikace a vyberte **Service Fabric** > **Přidat Service Fabric službu**.
+1. V Průzkumníku balíčků klikněte pravým tlačítkem na **hlasovací** tlačítko v rámci projektu aplikace a vyberte **Service Fabric**  >  **Přidat Service Fabric službu**.
 
 2. V dialogovém okně **Přidat službu** vyberte **stavová služba** a pojmenujte službu **VotingDataService** a vyberte **Přidat službu**.
 
@@ -546,7 +546,7 @@ Teď už jsou vytvořené kostry bezstavové front-end služby a back-end služb
 
  Dalším krokem je připojení bezstavové služby a služby back-end. Obě služby využívají rozhraní s názvem VotingRPC, které definuje operace hlasovací aplikace. Toto rozhraní se implementuje ve front-end i back-end službě za účelem umožnění vzdálených volání procedur (RPC) mezi těmito dvěma službami. Zatmění bohužel nepodporuje přidání podprojektů Gradle, takže balíček, který obsahuje toto rozhraní, se musí přidat ručně.
 
-1. V Průzkumníku balíčků klikněte pravým tlačítkem na projekt **hlasování** a vyberte **Nová** > **Složka**. Složku pojmenujte **VotingRPC/src/rpcmethods**.
+1. V Průzkumníku balíčků klikněte pravým tlačítkem na projekt **hlasování** a vyberte **Nová**  >  **Složka**. Složku pojmenujte **VotingRPC/src/rpcmethods**.
 
     ![Vytvoření balíčku VotingRPC v Průzkumníkovi balíčků zatmění](./media/service-fabric-tutorial-create-java-app/create-voting-rpc-package-java.png)
 
@@ -882,7 +882,7 @@ V této části se pro projekt nakonfigurují skripty Gradle.
 
 V tuto chvíli je aplikace připravená k nasazení do místního clusteru Service Fabric.
 
-1. Klikněte pravým tlačítkem myši na **hlasovací** projekt v Průzkumníkovi balíčků a vyberte **Service Fabric** > **sestavit aplikaci** pro sestavení aplikace.
+1. Klikněte pravým tlačítkem myši na **hlasovací** projekt v Průzkumníkovi balíčků a vyberte **Service Fabric**  >  **sestavit aplikaci** pro sestavení aplikace.
 
 2. Spusťte místní cluster Service Fabric. Provedení tohoto kroku závisí na vašem vývojovém prostředí (Mac nebo Linux).
 
@@ -900,9 +900,9 @@ V tuto chvíli je aplikace připravená k nasazení do místního clusteru Servi
     ```
     Přečtěte si podrobnější pokyny v [příručce pro instalaci systému Linux.](service-fabric-get-started-linux.md)
 
-4. V Průzkumníkovi balíčků pro zatmění klikněte pravým tlačítkem myši na **hlasovací** projekt a vyberte **Service Fabric** > **publikovat aplikaci** . 
-5. V okně **publikovat aplikaci** vyberte v rozevíracím seznamu **místní. JSON** a vyberte **publikovat**.
-6. Přejděte do webového prohlížeče a přihlaste se\/k http:/localhost: 8080 pro zobrazení spuštěné aplikace v místním clusteru Service Fabric. 
+4. V Průzkumníkovi balíčků pro zatmění klikněte pravým tlačítkem myši na **hlasovací** projekt a vyberte **Service Fabric**  >  **publikovat aplikaci** . 
+5. V okně **publikovat aplikaci** vyberte v rozevíracím seznamu **Local.jszapnuto** a vyberte **publikovat**.
+6. Přejděte do webového prohlížeče a přihlaste se k http: \/ /localhost: 8080 pro zobrazení spuštěné aplikace v místním clusteru Service Fabric. 
 
 ## <a name="next-steps"></a>Další kroky
 

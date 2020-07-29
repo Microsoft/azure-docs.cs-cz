@@ -9,13 +9,14 @@ ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
 ms.date: 05/12/2020
+ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: eb236c77fb9b5e2d5da16ff980693d1c9fce3d8d
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 8780caae20b779997e32750ed7829afd7d969a02
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611213"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320234"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Rychlý Start: odeslání dotazu do rozhraní API Bingu pro vyhledávání místních obchodních aplikací pomocí jazyka Java
 
@@ -54,7 +55,7 @@ Následující kód používá rozhraní API Bingu pro vyhledávání výsledků
 2. Ve svém oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Javy.
 3. Přidejte níže uvedený kód.
 4. Hodnotu `subscriptionKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
-5. Spusťte program.
+5. Spustíte program.
 
 ```java
 package localSearch;

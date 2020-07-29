@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.subservice: alerts
-ms.openlocfilehash: a5613198b404f629727f3040b308c030763a10b2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7e1073817013d45558a9679a4f70db0c002cfaa9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515797"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324076"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>Přepnout předvolby rozhraní API pro výstrahy protokolu
 
@@ -115,4 +115,5 @@ Jinak, pokud zadaný pracovní prostor analytického protokolu ještě není př
 
 - Přečtěte si o [výstrahách Azure monitor-log](alerts-unified-log.md).
 - Naučte se vytvářet [výstrahy protokolu v upozorněních Azure](alerts-log.md).
-- Přečtěte si další informace o [prostředí výstrah Azure](../../azure-monitor/platform/alerts-overview.md).
+- Přečtěte si další informace o [prostředí výstrah Azure](./alerts-overview.md).
+

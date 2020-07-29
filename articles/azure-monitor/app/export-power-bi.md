@@ -3,19 +3,20 @@ title: Export do Power BI z Azure Application Insights | Microsoft Docs
 description: Analytické dotazy se dají zobrazit v Power BI.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 0e17ca6e07ec76f0a7a1cb04f7aa13619fb9970c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51a553452643fc979846ab4604762f11c5b7ff68
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77663993"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324365"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Power BI informačního kanálu od Application Insights
-[Power BI](https://www.powerbi.com/) je sada obchodních nástrojů, která pomáhá analyzovat data a sdílet přehledy. V každém zařízení jsou k dispozici řídicí panely s bohatou dostupností. Můžete kombinovat data z mnoha zdrojů, včetně analytických dotazů z [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
+[Power BI](https://www.powerbi.com/) je sada obchodních nástrojů, která pomáhá analyzovat data a sdílet přehledy. V každém zařízení jsou k dispozici řídicí panely s bohatou dostupností. Můžete kombinovat data z mnoha zdrojů, včetně analytických dotazů z [Azure Application Insights](./app-insights-overview.md).
 
 Existují tři způsoby, jak exportovat data Application Insights do Power BI:
 
 * [**Exportujte analytické dotazy**](#export-analytics-queries). Toto je upřednostňovaná metoda. Napište libovolný dotaz, který chcete, a exportujte ho do Power BI. Tento dotaz můžete umístit na řídicí panel spolu s dalšími daty.
-* [**Průběžný export a Azure Stream Analytics**](../../azure-monitor/app/export-stream-analytics.md). Tato metoda je užitečná v případě, že chcete ukládat data po dlouhou dobu. Pokud nemáte požadavek na rozšířené uchovávání dat, použijte metodu export Analytics Query. Průběžný export a Stream Analytics zahrnují více práce na nastavení a další režijní náklady na úložiště.
+* [**Průběžný export a Azure Stream Analytics**](./export-stream-analytics.md). Tato metoda je užitečná v případě, že chcete ukládat data po dlouhou dobu. Pokud nemáte požadavek na rozšířené uchovávání dat, použijte metodu export Analytics Query. Průběžný export a Stream Analytics zahrnují více práce na nastavení a další režijní náklady na úložiště.
 * **Power BI adaptér**. Sada grafů je předdefinovaná, ale můžete přidat vlastní dotazy z jiných zdrojů.
 
 > [!NOTE]
@@ -30,7 +31,7 @@ Pokud chcete importovat Application Insights dotaz, použijte desktopovou verzi 
 Nainstalujte [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
 ### <a name="export-an-analytics-query"></a>Export analytického dotazu
-1. [Otevřete Analytics a napište dotaz](../../azure-monitor/log-query/get-started-portal.md).
+1. [Otevřete Analytics a napište dotaz](../log-query/get-started-portal.md).
 2. Otestujte a zužte dotaz, dokud nebudete spokojeni s výsledky. Před exportem se ujistěte, že dotaz běží v analýze správně.
 3. V nabídce **Export** vyberte možnost **Power BI (M)**. Uložte textový soubor.
    
@@ -55,7 +56,7 @@ Nainstalujte [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 8. Aktualizujte sestavu ručně v intervalech nebo na stránce Možnosti nastavte naplánovanou aktualizaci.
 
 ### <a name="export-a-funnel"></a>Export trychtýře
-1. [Nastavte trychtýř](../../azure-monitor/app/usage-funnels.md).
+1. [Nastavte trychtýř](./usage-funnels.md).
 2. Vyberte **Power BI**.
 
    ![Snímek obrazovky s tlačítkem Power BI](./media/export-power-bi/button.png)
@@ -111,7 +112,7 @@ Pokud omezení datové sady přicházející z analytického dotazu nesplňuje v
  ```
 
 ## <a name="about-sampling"></a>O vzorkování
-V závislosti na množství dat odesílaných vaší aplikací můžete použít funkci adaptivního vzorkování, která posílá pouze procento telemetrie. Totéž platí, pokud jste ručně nastavili vzorkování buď v sadě SDK, nebo na ingestování. [Přečtěte si další informace o vzorkování](../../azure-monitor/app/sampling.md).
+V závislosti na množství dat odesílaných vaší aplikací můžete použít funkci adaptivního vzorkování, která posílá pouze procento telemetrie. Totéž platí, pokud jste ručně nastavili vzorkování buď v sadě SDK, nebo na ingestování. [Přečtěte si další informace o vzorkování](./sampling.md).
 
 ## <a name="power-bi-adapter-deprecated"></a>Power BI adaptér (zastaralé)
 Tato metoda vytvoří úplný řídicí panel telemetrie za vás. Počáteční datová sada je předdefinovaná, ale do ní můžete přidat další data.
@@ -145,5 +146,5 @@ Po počátečním importu se řídicí panel a sestavy budou dál aktualizovat d
 
 ## <a name="next-steps"></a>Další kroky
 * [Power BI – informace](https://www.powerbi.com/learning/)
-* [Kurz analýzy](../../azure-monitor/log-query/get-started-portal.md)
+* [Kurz analýzy](../log-query/get-started-portal.md)
 

@@ -5,16 +5,16 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/04/2020
-ms.openlocfilehash: 1808623821d71169ec35beab1d33d4eb2c32c189
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e2603d921973aefdcc1a6f4a76bdf70d69dcb68f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008400"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320625"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Vytvoření a spuštění vlastních testů dostupnosti pomocí Azure Functions
 
-Tento článek popisuje, jak vytvořit funkci Azure pomocí TrackAvailability (), která se pravidelně spouští podle konfigurace zadané ve funkci TimerTrigger s vlastní obchodní logikou. Výsledky tohoto testu se odešlou do vašeho prostředku Application Insights, kde se budete moct dotazovat na data výsledků dostupnosti a upozornit na ně. To vám umožní vytvořit vlastní testy podobné tomu, co můžete dělat prostřednictvím [monitorování dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) na portálu. Přizpůsobené testy vám umožní psát složitější testy dostupnosti, než je možné pomocí uživatelského rozhraní portálu, monitorovat aplikaci v rámci virtuální sítě Azure, změnit adresu koncového bodu nebo vytvořit test dostupnosti, i když tato funkce není ve vaší oblasti dostupná.
+Tento článek popisuje, jak vytvořit funkci Azure pomocí TrackAvailability (), která se pravidelně spouští podle konfigurace zadané ve funkci TimerTrigger s vlastní obchodní logikou. Výsledky tohoto testu se odešlou do vašeho prostředku Application Insights, kde se budete moct dotazovat na data výsledků dostupnosti a upozornit na ně. To vám umožní vytvořit vlastní testy podobné tomu, co můžete dělat prostřednictvím [monitorování dostupnosti](./monitor-web-app-availability.md) na portálu. Přizpůsobené testy vám umožní psát složitější testy dostupnosti, než je možné pomocí uživatelského rozhraní portálu, monitorovat aplikaci v rámci virtuální sítě Azure, změnit adresu koncového bodu nebo vytvořit test dostupnosti, i když tato funkce není ve vaší oblasti dostupná.
 
 > [!NOTE]
 > Tento příklad je určený výhradně k tomu, aby vám ukázal, jak volání rozhraní API TrackAvailability () funguje v rámci funkce Azure Function. Nemusíte psát podkladový kód testu HTTP nebo obchodní logiku, který by byl nutný k tomu, aby se tento test vypnul na plně funkční test dostupnosti. Ve výchozím nastavení se při procházení tohoto příkladu vytvoří test dostupnosti, který bude vždy generovat selhání.
@@ -177,7 +177,7 @@ Pokud jste spustili vše, co je (bez přidání obchodní logiky), pak se test n
 
 ## <a name="query-in-logs-analytics"></a>Dotaz v protokolech (analýza)
 
-Pomocí protokolů (Analytics) můžete zobrazit výsledky, závislosti a další informace o dostupnosti. Další informace o protokolech najdete v článku [Přehled dotazů protokolu](../../azure-monitor/log-query/log-query-overview.md).
+Pomocí protokolů (Analytics) můžete zobrazit výsledky, závislosti a další informace o dostupnosti. Další informace o protokolech najdete v článku [Přehled dotazů protokolu](../log-query/log-query-overview.md).
 
 >[!div class="mx-imgBorder"]
 >![Výsledky dostupnosti](media/availability-azure-functions/availabilityresults.png)
@@ -187,5 +187,6 @@ Pomocí protokolů (Analytics) můžete zobrazit výsledky, závislosti a dalš�
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Mapa aplikace](../../azure-monitor/app/app-map.md)
-- [Diagnostika transakcí](../../azure-monitor/app/transaction-diagnostics.md)
+- [Mapa aplikace](./app-map.md)
+- [Diagnostika transakcí](./transaction-diagnostics.md)
+

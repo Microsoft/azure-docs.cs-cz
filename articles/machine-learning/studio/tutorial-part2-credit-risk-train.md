@@ -1,6 +1,5 @@
 ---
-title: 'Kurz 2: modely úvěrových rizik pro vlaky'
-titleSuffix: ML Studio (classic) - Azure
+title: 'Kurz pro ML Studio (Classic) 2: modely úvěrového riziku vlaku – Azure'
 description: Podrobný kurz, který ukazuje, jak vytvořit řešení prediktivní analýzy pro posuzování úvěrového rizika v Azure Machine Learning Studio (Classic). Tento kurz je druhou částí série kurzů s třemi částmi. Ukazuje, jak proškolit a vyhodnocovat modely.
 keywords: úvěrové riziko,řešení prediktivní analýzy,posouzení rizika
 author: sdgilley
@@ -10,16 +9,17 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 8feca17f10bb891f0ca5577b2363f95901da4a46
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c88a7e2a74d4ad7b9ee353b24c46e36d4365db5e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79217867"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324875"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>Kurz 2: modely úvěrových rizik výukového programu – Azure Machine Learning Studio (Classic)
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+**platí pro:** ![ žádná](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasická) 
+
 
 V tomto kurzu se podíváme na proces vývoje řešení prediktivní analýzy. V Machine Learning Studio (Classic) vyvíjíte jednoduchý model.  Model pak nasadíte jako Azure Machine Learning webovou službu.  Tento nasazený model může vytvářet předpovědi s využitím nových dat. Tento kurz je **druhou částí série kurzů s třemi částmi**.
 
@@ -84,7 +84,7 @@ Nyní potřebujete sdělit modul [vlakového modelu][train-model] , který má m
 
 1. Vyberte modul [vlakového modelu][train-model] . V podokně **vlastnosti** klikněte na **Spustit selektor sloupců**.
 
-1. V dialogovém okně **vybrat jeden sloupec** zadejte v poli Hledat v části **Dostupné sloupce**položku úvěrové riziko, vyberte níže "úvěrové riziko" a kliknutím na tlačítko se šipkou doprava (**>**) přesuňte "úvěrové riziko" na **vybrané sloupce**. 
+1. V dialogovém okně **vybrat jeden sloupec** zadejte v poli Hledat v části **Dostupné sloupce**položku úvěrové riziko, vyberte níže "úvěrové riziko" a kliknutím na tlačítko se šipkou doprava ( **>** ) přesuňte "úvěrové riziko" na **vybrané sloupce**. 
 
     ![Výběr sloupce úvěrového rizika pro modul vlakového modelu](./media/tutorial-part2-credit-risk-train/train-model-select-column.png)
 

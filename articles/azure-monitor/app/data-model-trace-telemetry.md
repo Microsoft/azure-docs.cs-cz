@@ -4,15 +4,16 @@ description: Application Insights datový model pro telemetrii trasování
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 31958b26cdb8a7897cf0051af6600014c07949fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8fea4bbf590816b2ef168a2ed16f197389ee282e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671949"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320540"
 ---
 # <a name="trace-telemetry-application-insights-data-model"></a>Sledovací telemetrie: datový model Application Insights
 
-Telemetrii trasování (v [Application Insights](../../azure-monitor/app/app-insights-overview.md)) představuje `printf` příkazy pro trasování stylu, které jsou prohledávány při hledání textu. `Log4Net`, `NLog` a další položky souborového protokolu založené na textu jsou přeloženy do instancí tohoto typu. Trasování nemá měření jako rozšiřitelnost.
+Telemetrii trasování (v [Application Insights](./app-insights-overview.md)) představuje `printf` příkazy pro trasování stylu, které jsou prohledávány při hledání textu. `Log4Net`, `NLog` a další položky souborového protokolu založené na textu jsou přeloženy do instancí tohoto typu. Trasování nemá měření jako rozšiřitelnost.
 
 ## <a name="message"></a>Zpráva
 
@@ -30,8 +31,9 @@ Maximální délka: 32768 znaků
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Prozkoumejte protokoly trasování .NET v Application Insights](../../azure-monitor/app/asp-net-trace-logs.md).
-- [Prozkoumejte protokoly trasování Java v Application Insights](../../azure-monitor/app/java-trace-logs.md).
+- [Prozkoumejte protokoly trasování .NET v Application Insights](./asp-net-trace-logs.md).
+- [Prozkoumejte protokoly trasování Java v Application Insights](./java-trace-logs.md).
 - Viz [datový model](data-model.md) pro typy Application Insights a datový model.
-- [Zápis vlastní telemetrie trasování](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)
-- Podívejte se na [platformy](../../azure-monitor/app/platforms.md) podporované nástrojem Application Insights.
+- [Zápis vlastní telemetrie trasování](./api-custom-events-metrics.md#tracktrace)
+- Podívejte se na [platformy](./platforms.md) podporované nástrojem Application Insights.
+

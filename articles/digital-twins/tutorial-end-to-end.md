@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: bd1c41f23164d8dda2712ef2c361498cdaed6105
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aae1797f7f1a252a4f094ee9f1b079fb60ba72f3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032288"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131731"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>Sestavení kompletního řešení
 
@@ -93,7 +93,7 @@ Dalším krokem je nastavení [aplikace Azure Functions](../azure-functions/func
 * *ProcessHubToDTEvents*: zpracovává příchozí IoT Hub data a podle toho aktualizuje digitální vlákna Azure.
 * *ProcessDTRoutedData*: zpracovává data z digitálních vláken a aktualizuje nadřazených vláken v rámci digitálních vláken Azure odpovídajícím způsobem.
 
-V této části publikujete předem napsanou aplikaci funkcí a zajistěte, aby aplikace Function App měla přístup k digitálním událostem Azure pomocí přiřazení identity Azure Active Directory (AAD). Dokončením těchto kroků umožníte zbývající část kurzu používat funkce uvnitř aplikace Function App. 
+V této části publikujete předem napsanou aplikaci funkcí a zajistěte, aby aplikace Function App měla přístup k digitálním událostem Azure pomocí přiřazení Azure Active Directory (Azure AD). Dokončením těchto kroků umožníte zbývající část kurzu používat funkce uvnitř aplikace Function App. 
 
 ### <a name="publish-the-app"></a>Publikování aplikace
 
@@ -141,7 +141,7 @@ V podokně *publikovat* , které se otevře zpátky v hlavním okně sady Visual
 
 ### <a name="assign-permissions-to-the-function-app"></a>Přiřazení oprávnění k aplikaci Function App
 
-Pokud chcete povolit aplikaci Function App přístup k digitálním událostem Azure, je dalším krokem konfigurace nastavení aplikace, přiřazení této aplikace k systému spravované identitou AAD a udělení oprávnění *vlastníka* této identity v instanci digitálních vláken Azure.
+Chcete-li povolit aplikaci Function App přístup k digitálním událostem Azure, je dalším krokem konfigurace nastavení aplikace, přiřazení aplikace identitě spravované systémem a udělení této oprávnění *vlastníka* identity v instanci digitálních vláken Azure.
 
 V Azure Cloud Shell pomocí následujícího příkazu nastavte nastavení aplikace, které vaše aplikace Function App použije k odkazování na vaši instanci digitálního vlákna.
 
@@ -423,7 +423,7 @@ Pomocí Azure Cloud Shell můžete odstranit všechny prostředky Azure ve skupi
 az group delete --name <your-resource-group>
 ```
 
-V dalším kroku odstraňte registraci aplikace AAD, kterou jste vytvořili pro klientskou aplikaci, pomocí tohoto příkazu:
+V dalším kroku odstraňte registraci aplikace Azure AD, kterou jste vytvořili pro klientskou aplikaci, pomocí tohoto příkazu:
 
 ```azurecli
 az ad app delete --id <your-application-ID>

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 04/15/2020
-ms.openlocfilehash: eab7b556dc45d03bf440a3bc63aa6bf2d799face
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/24/2020
+ms.openlocfilehash: 4c700a61de80968b17585faf92e268fef8d86f0e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103619"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323260"
 ---
 # <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>Integrujte svůj výpis na komerčním trhu s Azure Active Directory
 
@@ -33,17 +33,18 @@ Různé možnosti výpisu komerčního tržiště [a typy nabídek](determine-yo
 
 | Typ nabídky    | Služba Azure AD SSO vyžaduje, aby mě kontaktovala?  | Vyžaduje se jednotné přihlašování Azure AD pro zkušební verzi? | Vyžaduje se jednotné přihlašování Azure AD pro testovací jednotku?  | Pro Transact se vyžaduje jednotné přihlašování Azure AD. |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
-| Virtuální počítač | Není k dispozici | No | No | No |
-| Aplikace Azure (šablona řešení)  | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
-| Spravované aplikace  | Není k dispozici | Není k dispozici | Není k dispozici | No |
-| SaaS  | No | Ano | Ano | Ano |
-| Containers  | Není k dispozici | Není k dispozici | Není k dispozici | No |
-| Konzultační služby  | No | Není k dispozici | Není k dispozici | Není k dispozici |
+| Virtuální počítač | – | Ne | Ne | Ne |
+| Aplikace Azure (šablona řešení)  | – | – | – | – |
+| Spravované aplikace  | – | – | – | Ne |
+| SaaS  | Ne | Ano | Ano | Ano |
+| Containers  | – | – | – | Ne |
+| Konzultační služby  | Ne | – | – | – |
 
-Další informace o technických požadavcích na SaaS najdete v tématu [SaaS Applications nabízí průvodce publikováním](marketplace-saas-applications-technical-publishing-guide.md).
+Další informace o technických požadavcích SaaS najdete v tématu [Azure AD a SaaS nabídky v obchodě na komerčním webu Marketplace](./azure-ad-saas.md).
 
 ## <a name="azure-ad-integration"></a>Integrace Azure AD
 
+- Podrobnosti o tom, jak integrovat Azure AD pro nabídky SaaS (software jako služba), najdete [v tématu Azure AD a SaaS nabídky na komerčním webu Marketplace](./azure-ad-saas.md).
 - Informace o tom, jak povolit jednotné přihlašování integrací služby Azure AD do svého seznamu, najdete v tématu [Azure Active Directory pro vývojáře](../active-directory/develop/index.yml).
 - Pokud chcete získat podrobné informace o jednotném přihlašování Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](../active-directory/manage-apps/what-is-single-sign-on.md).
 

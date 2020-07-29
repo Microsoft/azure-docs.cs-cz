@@ -3,14 +3,15 @@ title: Použití mikroměřiče s Azure Application Insights Java SDK
 description: Podrobný návod k použití mikroměřiče s aplikacemi Application Insights pružinové spouštěcí a nepružinové spouštěcí aplikace.
 ms.topic: conceptual
 author: lgayhardt
+ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: da75498d6e4616b287ddb11c69df2469baaf2655
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2fbdf4e267e0f9a479a89d6f31e72f09d9e11bb0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067629"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322563"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Použití mikroměřiče s Azure Application Insights Java SDK
 Měření míry monitorování aplikací pro mikroměřiče pro kód aplikace založené na JVM a umožňuje exportovat data do oblíbených monitorovacích systémů. V tomto článku se dozvíte, jak používat mikroměřiče s Application Insights pro aplikace pro spouštění pružinového spouštění i pro aplikace bez pružiny.
@@ -20,7 +21,7 @@ Do pom.xml nebo sestavení souboru. Gradle přidejte následující závislosti:
 * [Application Insights jaře-Boot-Starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter) 2.5.0 nebo novější
 * 1.1.0 nebo novější v registru mikroměřiče Azure
 * [Pružina mikroměřiče starší verze](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 nebo vyšší (Tato znovu nasměruje kód pro automatické nastavování v rozhraní pružiny).
-* [Prostředek ApplicationInsights](../../azure-monitor/app/create-new-resource.md )
+* [Prostředek ApplicationInsights](./create-new-resource.md)
 
 Kroky
 
@@ -58,7 +59,7 @@ Do pom.xml nebo sestavení souboru. Gradle přidejte následující závislosti:
 
 * Application Insights pružiny-Boot-Starter 2.1.2 nebo vyšší
 * Azure-jaře-Boot – metriky – starts 2.0.7 nebo novější
-* [Prostředek Application Insights](../../azure-monitor/app/create-new-resource.md )
+* [Prostředek Application Insights](./create-new-resource.md)
 
 Kroky:
 
@@ -117,7 +118,7 @@ Do pom.xml nebo sestavení souboru. Gradle přidejte následující závislosti:
 
 * Application Insights 2.5.0 Web auto nebo novější
 * 1.1.0 nebo novější v registru mikroměřiče Azure
-* [Prostředek Application Insights](../../azure-monitor/app/create-new-resource.md )
+* [Prostředek Application Insights](./create-new-resource.md)
 
 Kroky:
 
@@ -272,3 +273,4 @@ Do konfiguračního souboru přidejte následující kód vazby:
 
 * Další informace o mikroměřiči najdete v oficiální [dokumentaci k mikroměřiči](https://micrometer.io/docs).
 * Další informace o jaře v Azure najdete v [dokumentaci k oficiální jaře na platformě Azure](/java/azure/spring-framework/?view=azure-java-stable).
+

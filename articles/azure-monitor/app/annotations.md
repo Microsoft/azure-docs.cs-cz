@@ -3,12 +3,12 @@ title: Poznámky k verzi pro Application Insights | Microsoft Docs
 description: Přidejte značky nasazení nebo sestavení do grafů Průzkumníka metrik v Application Insights.
 ms.topic: conceptual
 ms.date: 07/01/2019
-ms.openlocfilehash: 8f6ffed8ae2039ec36ec8bd86518e6b359da65ec
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8e9e0cb49343524e8a45831566cf802b1c8c5d9b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093030"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320659"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Poznámky na grafech metrik v Application Insights
 
@@ -34,7 +34,7 @@ Pro vaši organizaci Azure DevOps stačí rozšíření nainstalovat jenom jedno
 
 Vytvořte samostatný klíč rozhraní API pro každou ze šablon verze Azure Pipelines.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a otevřete prostředek Application Insights, který monitoruje vaši aplikaci. Pokud ho ještě nemáte, [vytvořte nový prostředek Application Insights](../../azure-monitor/app/app-insights-overview.md).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a otevřete prostředek Application Insights, který monitoruje vaši aplikaci. Pokud ho ještě nemáte, [vytvořte nový prostředek Application Insights](./app-insights-overview.md).
    
 1. Otevřete kartu **přístup přes rozhraní API** a zkopírujte **ID Application Insights**.
    
@@ -115,5 +115,6 @@ Skript můžete upravit například tak, aby bylo možné vytvořit poznámky za
 
 ## <a name="next-steps"></a>Další kroky
 
-* [vytvářet pracovní položky,](../../azure-monitor/app/diagnostic-search.md#create-work-item)
-* [Automatizace v prostředí PowerShell](../../azure-monitor/app/powershell.md)
+* [vytvářet pracovní položky,](./diagnostic-search.md#create-work-item)
+* [Automatizace v prostředí PowerShell](./powershell.md)
+
