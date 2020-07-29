@@ -7,21 +7,21 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 7/9/2020
 ms.subservice: alerts
-ms.openlocfilehash: 043ecc07c521f9c1c79835bcd67ff1d81cacfa34
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3b0215ea2f02441f93e6eb9b672744638ae93b11
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539461"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321135"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Vytvoření upozornění na metriku pomocí šablony Resource Manageru
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-V tomto článku se dozvíte, jak můžete pomocí [šablony Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) nakonfigurovat [novější výstrahy metriky](../../azure-monitor/platform/alerts-metric-near-real-time.md) v Azure monitor. Šablony Správce prostředků umožňují programově nastavit výstrahy konzistentně a reprodukovatelným způsobem napříč vašimi prostředími. V [této sadě typů prostředků](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)jsou aktuálně k dispozici novější výstrahy metriky.
+V tomto článku se dozvíte, jak můžete pomocí [šablony Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) nakonfigurovat [novější výstrahy metriky](./alerts-metric-near-real-time.md) v Azure monitor. Šablony Správce prostředků umožňují programově nastavit výstrahy konzistentně a reprodukovatelným způsobem napříč vašimi prostředími. V [této sadě typů prostředků](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)jsou aktuálně k dispozici novější výstrahy metriky.
 
 > [!IMPORTANT]
-> Šablona prostředků pro vytváření výstrah metrik pro typ prostředku: pracovní prostor Azure Log Analytics (tj.) `Microsoft.OperationalInsights/workspaces` vyžaduje další kroky. Podrobnosti najdete v článku o [výstraze metriky pro protokoly – šablona prostředků](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
+> Šablona prostředků pro vytváření výstrah metrik pro typ prostředku: pracovní prostor Azure Log Analytics (tj.) `Microsoft.OperationalInsights/workspaces` vyžaduje další kroky. Podrobnosti najdete v článku o [výstraze metriky pro protokoly – šablona prostředků](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
 
 Základní postup je následující:
 
@@ -3464,7 +3464,7 @@ az group deployment create \
 
 ## <a name="template-for-an-availability-test-along-with-a-metric-alert"></a>Šablona pro test dostupnosti společně s výstrahou metriky
 
-[Application Insights testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) vám pomůžou monitorovat dostupnost vašeho webu nebo aplikace z různých míst po celém světě. Výstrahy testu dostupnosti vás upozorní, když testy dostupnosti selžou z určitého počtu míst.
+[Application Insights testy dostupnosti](../app/monitor-web-app-availability.md) vám pomůžou monitorovat dostupnost vašeho webu nebo aplikace z různých míst po celém světě. Výstrahy testu dostupnosti vás upozorní, když testy dostupnosti selžou z určitého počtu míst.
 Výstrahy testu dostupnosti stejného typu prostředku jako výstrahy metriky (Microsoft. Insights/metricAlerts). Následující vzorovou Azure Resource Manager šablonu lze použít k nastavení jednoduchého testu dostupnosti a přidružené výstrahy.
 
 Uložte JSON níže jako availabilityalert.jspro účely tohoto Názorného postupu.
@@ -3628,3 +3628,4 @@ az group deployment create \
 - Přečtěte si další informace o [výstrahách v Azure](alerts-overview.md) .
 - Naučte [se vytvořit skupinu akcí pomocí šablon Správce prostředků](action-groups-create-resource-manager-template.md) .
 - Syntaxi a vlastnosti JSON najdete v referenčních informacích k šabloně [Microsoft. Insights/metricAlerts](/azure/templates/microsoft.insights/metricalerts) .
+

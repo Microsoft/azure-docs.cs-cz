@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 4e5d4af74ab54479a49963369cb99dbc19fca848
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 413616034dfe7d1f13612ba12ba86014af62c704
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505272"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325623"
 ---
 # <a name="logs-in-azure-monitor"></a>Protokoly v Azure Monitoru
 
@@ -42,14 +42,14 @@ V následující tabulce jsou uvedeny různé způsoby, jak můžete použít pr
 |  | Popis |
 |:---|:---|
 | **Analýza** | Pomocí [Log Analytics](../log-query/get-started-portal.md) v Azure Portal můžete zapisovat [dotazy protokolu](../log-query/log-query-overview.md) a interaktivně analyzovat data protokolu pomocí výkonného analytického modulu Průzkumník dat.<br>Pomocí [konzoly Application Insights Analytics](../log-query/log-query-overview.md) v Azure Portal můžete zapisovat dotazy protokolu a interaktivně analyzovat data protokolu z Application Insights. |
-| **Vizualizace** | Připněte výsledky dotazu vykreslené jako tabulky nebo grafy na [řídicí panel Azure](../../azure-portal/azure-portal-dashboards.md).<br>Vytvoří [sešit](../platform/workbooks-overview.md) pro kombinování s více sadami dat v interaktivní sestavě. <br>Exportujte výsledky dotazu do [Power BI](powerbi.md) , abyste mohli používat různé vizualizace a sdílet s uživateli mimo Azure.<br>Exportujte výsledky dotazu do [Grafana](grafana-plugin.md) a využijte jeho řídicí panely a kombinaci s jinými zdroji dat.|
+| **Vizualizace** | Připněte výsledky dotazu vykreslené jako tabulky nebo grafy na [řídicí panel Azure](../../azure-portal/azure-portal-dashboards.md).<br>Vytvoří [sešit](./workbooks-overview.md) pro kombinování s více sadami dat v interaktivní sestavě. <br>Exportujte výsledky dotazu do [Power BI](powerbi.md) , abyste mohli používat různé vizualizace a sdílet s uživateli mimo Azure.<br>Exportujte výsledky dotazu do [Grafana](grafana-plugin.md) a využijte jeho řídicí panely a kombinaci s jinými zdroji dat.|
 | **Výstraha** | Nakonfigurujte [pravidlo upozornění protokolu](alerts-log.md) , které pošle oznámení, nebo provede [automatizovanou akci](action-groups.md) , když výsledky dotazu odpovídají konkrétnímu výsledku.<br>Nakonfigurujte [pravidlo upozornění metriky](alerts-metric-logs.md) pro některé protokoly dat protokolů extrahované jako metriky. |
 | **Stahovat** | Přístup k výsledkům dotazu protokolu z příkazového řádku pomocí [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics).<br>Přístup k výsledkům dotazu protokolu z příkazového řádku pomocí [rutin prostředí PowerShell](/powershell/module/az.operationalinsights).<br>Přístup k výsledkům dotazu protokolu z vlastní aplikace pomocí [REST API](https://dev.loganalytics.io/). |
-| **Export** | Sestavte pracovní postup, který načte data protokolu a zkopíruje ho do externího umístění pomocí [Logic Apps](~/articles/logic-apps/index.yml). |
+| **Export** | Sestavte pracovní postup, který načte data protokolu a zkopíruje ho do externího umístění pomocí [Logic Apps](../../logic-apps/index.yml). |
 
 
 ## <a name="how-is-data-in-azure-monitor-logs-structured"></a>Jak se strukturují data v Azure Monitor strukturovaných protokolů?
-Data shromážděná protokolem Azure Monitor se ukládají do [pracovního prostoru Log Analytics](../platform/design-logs-deployment.md). Každý pracovní prostor obsahuje několik tabulek, z nichž každý ukládá data z určitého zdroje. Zatímco všechny tabulky sdílejí [některé společné vlastnosti](log-standard-properties.md), má každá z nich jedinečnou sadu vlastností v závislosti na druhu dat, která ukládá. Nový pracovní prostor bude mít standardní sadu tabulek a další tabulky, které budou zapisovat do pracovního prostoru, budou přidány do různých řešení monitorování a dalších služeb.
+Data shromážděná protokolem Azure Monitor se ukládají do [pracovního prostoru Log Analytics](./design-logs-deployment.md). Každý pracovní prostor obsahuje několik tabulek, z nichž každý ukládá data z určitého zdroje. Zatímco všechny tabulky sdílejí [některé společné vlastnosti](log-standard-properties.md), má každá z nich jedinečnou sadu vlastností v závislosti na druhu dat, která ukládá. Nový pracovní prostor bude mít standardní sadu tabulek a další tabulky, které budou zapisovat do pracovního prostoru, budou přidány do různých řešení monitorování a dalších služeb.
 
 Data protokolu z Application Insights používají stejný modul Log Analytics jako pracovní prostory, ale ukládají se samostatně pro každou monitorovanou aplikaci. Každá aplikace má standardní sadu tabulek pro uchovávání dat, jako jsou například žádosti o aplikace, výjimky a zobrazení stránek.
 
@@ -88,7 +88,7 @@ Azure Monitor může shromažďovat data protokolu z nejrůznějších zdrojů v
 | Metriky | Pošlete metriky platforem pro Azure Monitor prostředky do pracovního prostoru Log Analytics, abyste zachovali data protokolu pro delší období a prováděli složitou analýzu s jinými datovými typy pomocí [dotazovacího jazyka Kusto](/azure/kusto/query/). Další Log Analytics najdete v tématu [streamování protokolů prostředků Azure](./resource-logs.md#send-to-azure-storage). |
 | Azure Table Storage | Shromažďovat data ze služby Azure Storage, kde některé prostředky Azure napisují data monitorování. Další informace najdete v tématu [použití úložiště objektů BLOB v Azure pro službu IIS a úložiště tabulek Azure pro události s Log Analytics](diagnostics-extension-logs.md). |
 
-### <a name="virtual-machines"></a>Virtual Machines
+### <a name="virtual-machines"></a>Virtuální počítače
 
 | Data | Popis |
 |:---|:---|
@@ -133,3 +133,4 @@ Azure Monitor může shromažďovat data protokolu z nejrůznějších zdrojů v
 - Přečtěte si další informace o [Azure monitor datovou platformu](data-platform.md).
 - Seznamte [se s metrikami v Azure monitor](data-platform-metrics.md).
 - Přečtěte si o [dostupných datech monitorování](data-sources.md) různých prostředků v Azure.
+

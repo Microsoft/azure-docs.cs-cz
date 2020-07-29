@@ -3,12 +3,12 @@ title: Povolit Azure Monitor pro kontejnery | Microsoft Docs
 description: Tento článek popisuje, jak povolit a nakonfigurovat Azure Monitor pro kontejnery, abyste porozuměli tomu, jak váš kontejner vykonává a jaké byly zjištěny problémy související s výkonem.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 5131d7b8a357075345b5165398d5fa9fc06b5ad8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1cb393faded714593ce635669f585d5979ee69b8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499028"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320302"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>Povolit Azure Monitor pro kontejnery
 
@@ -28,11 +28,11 @@ Můžete povolit Azure Monitor pro kontejnery pro nové nasazení nebo pro jedno
 - Azure Portal
 - Azure PowerShell
 - Azure CLI
-- [Terraformu a AKS](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md)
+- [Terraformu a AKS](/azure/developer/terraform/create-k8s-cluster-with-tf-and-aks)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že jste splnili následující požadavky:
 
@@ -131,3 +131,4 @@ Pokud chcete povolit Azure Monitor pro kontejnery, použijte jednu z metod, kter
 ## <a name="next-steps"></a>Další kroky
 
 Teď, když jste povolili monitorování, můžete začít s analýzou výkonu clusterů Kubernetes hostovaných ve službě Azure Kubernetes Service (AKS), Azure Stack nebo jiném prostředí. Informace o tom, jak používat Azure Monitor pro kontejnery, najdete v tématu [zobrazení výkonu clusteru Kubernetes](container-insights-analyze.md).
+

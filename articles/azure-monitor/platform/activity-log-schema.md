@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/09/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 3d7085f54634ab1175fc0f916e24b7f03dc1bc9b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e50d6b6fe88cbad42d238ee2779abfe10e752f0e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073667"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327272"
 ---
 # <a name="azure-activity-log-event-schema"></a>Schéma událostí protokolu aktivit Azure
 [Protokol aktivit Azure](platform-logs-overview.md) poskytuje přehled o všech událostech na úrovni předplatného, ke kterým došlo v Azure. Tento článek popisuje kategorie protokolů aktivit a schéma pro každou z nich. 
@@ -137,7 +137,7 @@ Tato kategorie obsahuje záznam všech operací vytvoření, aktualizace, odstra
 | barev |Jedna z následujících hodnot: "admin", "Operation" |
 | podpory |Token JWT používaný službou Active Directory k ověření uživatele nebo aplikace k provedení této operace v Správce prostředků. |
 | correlationId |Obvykle identifikátor GUID ve formátu řetězce. Události, které sdílejí ID korelace, patří ke stejné akci Uber. |
-| Popis |Statický text popis události |
+| description |Statický text popis události |
 | eventDataId |Jedinečný identifikátor události |
 | eventName | Popisný název události správy |
 | category | Vždy "administrativní" |
@@ -281,7 +281,7 @@ Tato kategorie obsahuje záznam o všech událostech stavu prostředku, ke kter�
 | --- | --- |
 | barev | Vždy "admin, operace" |
 | correlationId | Identifikátor GUID ve formátu řetězce. |
-| Popis |Statický textový popis události výstrahy. |
+| description |Statický textový popis události výstrahy. |
 | eventDataId |Jedinečný identifikátor události výstrahy. |
 | category | Always "ResourceHealth" |
 | eventTimestamp |Časové razítko, kdy se událost vygenerovala službou Azure, zpracování žádosti odpovídající události |
@@ -376,7 +376,7 @@ Tato kategorie obsahuje záznam všech aktivací klasických výstrah Azure. Př
 | barev | Vždy "admin, operace" |
 | podpory | Objekt BLOB JSON s identifikátorem SPN (hlavní název služby) nebo typem prostředku modulu výstrah. |
 | correlationId | Identifikátor GUID ve formátu řetězce. |
-| Popis |Statický textový popis události výstrahy. |
+| description |Statický textový popis události výstrahy. |
 | eventDataId |Jedinečný identifikátor události výstrahy. |
 | category | Vždy "Výstraha" |
 | úroveň |Úroveň události Jedna z následujících hodnot: "kritická", "Error", "Warning" a "informativní" |
@@ -486,7 +486,7 @@ Tato kategorie obsahuje záznam všech událostí souvisejících s provozem mod
 | barev | Vždy "admin, operace" |
 | podpory | Objekt BLOB JSON s identifikátorem SPN (hlavní název služby) nebo typem prostředku modulu automatického škálování. |
 | correlationId | Identifikátor GUID ve formátu řetězce. |
-| Popis |Statický textový popis události automatického škálování. |
+| description |Statický textový popis události automatického škálování. |
 | eventDataId |Jedinečný identifikátor události automatického škálování |
 | úroveň |Úroveň události Jedna z následujících hodnot: "kritická", "Error", "Warning" a "informativní" |
 | resourceGroupName |Název skupiny prostředků pro nastavení automatického škálování. |
@@ -574,7 +574,7 @@ Tato kategorie obsahuje záznam výstrahy vygenerované Azure Security Center. P
 | --- | --- |
 | barev | Vždy "operace" |
 | correlationId | Identifikátor GUID ve formátu řetězce. |
-| Popis |Statický textový popis události zabezpečení |
+| description |Statický textový popis události zabezpečení |
 | eventDataId |Jedinečný identifikátor události zabezpečení |
 | eventName |Popisný název události zabezpečení |
 | category | Vždy "zabezpečení" |
@@ -655,7 +655,7 @@ Tato kategorie obsahuje záznam všech nových doporučení, která jsou vygener
 | --- | --- |
 | barev | Vždy "operace" |
 | correlationId | Identifikátor GUID ve formátu řetězce. |
-| Popis |Statický text popis události doporučení |
+| description |Statický text popis události doporučení |
 | eventDataId | Jedinečný identifikátor události doporučení |
 | category | Vždy "doporučení" |
 | ID |Jedinečný identifikátor prostředku události doporučení |
@@ -768,7 +768,7 @@ Tato kategorie obsahuje záznamy všech operací akcí prováděných pomocí [A
 | barev | Události zásad používají pouze kanál "operace". |
 | podpory | Token JWT používaný službou Active Directory k ověření uživatele nebo aplikace k provedení této operace v Správce prostředků. |
 | correlationId | Obvykle identifikátor GUID ve formátu řetězce. Události, které sdílejí ID korelace, patří ke stejné akci Uber. |
-| Popis | Toto pole je prázdné pro události zásad. |
+| description | Toto pole je prázdné pro události zásad. |
 | eventDataId | Jedinečný identifikátor události |
 | eventName | Buď "BeginRequest", nebo "EndRequest". "BeginRequest" se používá pro opožděné vyhodnocení auditIfNotExists a deployIfNotExists a když deployIfNotExists efekt spustí nasazení šablony. Všechny ostatní operace vrátí "EndRequest". |
 | category | Deklaruje událost protokolu aktivit jako patřící k zásadě. |
@@ -796,7 +796,7 @@ Tato kategorie obsahuje záznamy všech operací akcí prováděných pomocí [A
 Při streamování protokolu aktivit Azure do účtu úložiště nebo centra událostí data následují po [schématu protokolu prostředků](./resource-logs-schema.md). Následující tabulka poskytuje mapování vlastností z výše uvedených schémat na schéma protokolů prostředků.
 
 > [!IMPORTANT]
-> Formát dat protokolu aktivit zapsaný do účtu úložiště se změnil na řádky JSON od 1. listopadu 2018. Podrobnosti o změně tohoto formátu najdete v článku [Příprava změny formátu Azure monitor archivované protokoly prostředků do účtu úložiště](./resource-logs-append-blobs.md) .
+> Formát dat protokolu aktivit zapsaný do účtu úložiště se změnil na řádky JSON od 1. listopadu 2018. Podrobnosti o změně tohoto formátu najdete v článku [Příprava změny formátu Azure monitor archivované protokoly prostředků do účtu úložiště](/azure/azure-monitor/platform/resource-logs-blob-format) .
 
 
 | Vlastnost schématu pro protokoly prostředků | Vlastnost schématu REST API protokolu aktivit | Poznámky |
@@ -807,7 +807,7 @@ Při streamování protokolu aktivit Azure do účtu úložiště nebo centra ud
 | category | Součást názvu operace | Užitečných typu operace – "zapsat"/"odstranit"/"akci" |
 | resultType | stav. hodnota | |
 | resultSignature | dílčí stav. hodnota | |
-| resultDescription | Popis |  |
+| resultDescription | description |  |
 | durationMs | – | Vždycky 0 |
 | callerIpAddress | httpRequest. clientIpAddress |  |
 | correlationId | correlationId |  |
@@ -885,3 +885,4 @@ Následuje příklad události s použitím tohoto schématu..
 ## <a name="next-steps"></a>Další kroky
 * [Další informace o protokolu aktivit](platform-logs-overview.md)
 * [Vytvoření nastavení diagnostiky pro odesílání protokolu aktivit do Log Analytics pracovního prostoru, úložiště Azure nebo Center událostí](diagnostic-settings.md)
+

@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 06/25/2020
-ms.openlocfilehash: 072f8fd44fa45648afd15cb40cba26bb427c7b56
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/27/2020
+ms.openlocfilehash: 96783955eac6ade90a155236891307720616ed20
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539614"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323940"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Povolit Azure Monitor pro virtuální počítače – přehled
 
@@ -30,7 +30,7 @@ Nastavení Azure Monitor pro virtuální počítače:
 * Povolte několik virtuálních počítačů Azure, virtuálních počítačů ARC Azure, Azure VMSS nebo počítačů ARC Azure v rámci zadaného předplatného nebo skupiny prostředků pomocí PowerShellu.
 * Povolte Azure Monitor pro virtuální počítače k monitorování virtuálních počítačů nebo fyzických počítačů hostovaných ve vaší podnikové síti nebo jiném cloudovém prostředí.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že rozumíte informacím v následujících částech. 
 
@@ -54,10 +54,10 @@ Azure Monitor pro virtuální počítače podporuje pracovní prostor Log Analyt
 - Střední Kanada
 - Spojené království – jih
 - Severní Evropa
-- Západní Evropa
+- West Europe
 - Východní Asie
-- Jihovýchodní Asie
-- Central India
+- Southeast Asia
+- Indie – střed
 - Japan East
 - Austrálie – východ
 - Austrálie – jihovýchod
@@ -67,22 +67,16 @@ Azure Monitor pro virtuální počítače podporuje pracovní prostor Log Analyt
 >
 
 Pokud nemáte pracovní prostor Log Analytics, můžete ho vytvořit pomocí jednoho z prostředků:
-* [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
+* [Azure CLI](../learn/quick-create-workspace-cli.md)
 * [PowerShell](../platform/powershell-workspace-configuration.md)
-* [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)
-* [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)
+* [Azure Portal](../learn/quick-create-workspace.md)
+* [Azure Resource Manager](../platform/template-workspace-configuration.md)
 
-Pracovní prostor můžete také vytvořit, když povolíte monitorování pro jeden virtuální počítač Azure nebo sadu škálování virtuálního počítače v Azure Portal.
+- Virtuální počítač Azure
+- Sada škálování virtuálních počítačů Azure
+- Hybridní virtuální počítač připojený pomocí ARC Azure
 
-Chcete-li nastavit scénář ve velkém měřítku, který používá Azure Policy, Azure PowerShell nebo šablony Azure Resource Manager, je nutné nainstalovat řešení *VMInsights* . Můžete to provést pomocí jedné z následujících metod:
-
-* Použijte [Azure PowerShell](vminsights-enable-at-scale-powershell.md#set-up-a-log-analytics-workspace).
-* Na stránce Azure Monitor pro virtuální počítače [**pokrytí zásad**](vminsights-enable-at-scale-policy.md#manage-policy-coverage-feature-overview) vyberte **Konfigurovat pracovní prostor**. 
-
-### <a name="azure-arc-machines"></a>Počítače ARC Azure
-Azure Monitor pro virtuální počítače je k dispozici pro servery s podporou ARC Azure v oblastech, kde je k dispozici služba rozšíření ARC. Aby bylo možné povolit Azure Monitor pro virtuální počítače na serverech s povoleným obloukem, musí uživatelé používat verzi 0,9 nebo vyšší agenta ARC.
-
-### <a name="supported-operating-systems"></a>Podporované operační systémy
+## <a name="supported-operating-systems"></a>Podporované operační systémy
 
 Následující tabulka uvádí operační systémy Windows a Linux, které Azure Monitor pro virtuální počítače podporuje. Později v této části najdete úplný seznam, který podrobně popisuje hlavní a podverze operačního systému Linux a podporované verze jádra.
 
@@ -158,54 +152,40 @@ Následující tabulka uvádí operační systémy Windows a Linux, které Azure
 |:--|:--|
 | 9 | 4,9 | 
 
-### <a name="the-microsoft-dependency-agent"></a>Microsoft Dependency Agent
-
-Funkce map v Azure Monitor pro virtuální počítače získá svá data od agenta závislostí společnosti Microsoft. Agent závislostí spoléhá na Log Analytics agenta pro připojení k Log Analytics. Takže váš systém musí mít nainstalovaný agent Log Analytics a nakonfigurovaný s agentem závislostí.
-
-Bez ohledu na to, jestli povolíte Azure Monitor pro virtuální počítače pro jeden virtuální počítač Azure nebo použijete metodu nasazení na úrovni služby, použijte rozšíření agenta závislostí virtuálních počítačů Azure pro [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) nebo [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) a nainstalujte agenta jako součást prostředí.
-
->[!NOTE]
->Následující informace popsané v této části se vztahují také na [řešení Service map](service-map.md).  
-
-V hybridním prostředí můžete agenta závislostí stáhnout a nainstalovat ručně nebo pomocí automatizované metody.
-
-Následující tabulka popisuje připojené zdroje, které funkce mapy podporuje v hybridním prostředí.
+## <a name="supported-azure-arc-machines"></a>Podporované počítače ARC Azure
+Azure Monitor pro virtuální počítače je k dispozici pro servery s podporou ARC Azure v oblastech, kde je k dispozici služba rozšíření ARC. Je nutné, abyste spustili agenta ARC verze 0,9 nebo vyšší.
 
 | Připojený zdroj | Podporováno | Popis |
 |:--|:--|:--|
-| Agenti systému Windows | Ano | Společně s [agentem Log Analytics pro Windows](../../azure-monitor/platform/log-analytics-agent.md)potřebují agenti pro Windows agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
-| Agenti systému Linux | Ano | Společně s [agentem Log Analytics pro Linux](../../azure-monitor/platform/log-analytics-agent.md)musí mít agenti pro Linux agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
-| Skupina pro správu nástroje System Center Operations Manager | No | |
+| Agenti systému Windows | Ano | Společně s [agentem Log Analytics pro Windows](../platform/log-analytics-agent.md)potřebují agenti pro Windows agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
+| Agenti systému Linux | Ano | Společně s [agentem Log Analytics pro Linux](../platform/log-analytics-agent.md)musí mít agenti pro Linux agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
+| Skupina pro správu nástroje System Center Operations Manager | Ne | |
 
-Agenta závislostí si můžete stáhnout z těchto umístění:
+## <a name="agents"></a>Agenti
+Azure Monitor pro virtuální počítače vyžaduje, aby byly na každém virtuálním počítači nebo sadě škálování virtuálních počítačů, které mají být monitorovány, nainstalovány následující dva agenty. Jediným požadavkem k zaregistrování prostředků je instalace těchto agentů a jejich připojení k pracovnímu prostoru.
 
-| Soubor | Operační systém | Verze | SHA-256 |
-|:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.4.10090 | B4E1FF9C1E5CD254AA709AEF9723A81F04EC0763C327567C582CE99C0C5A0BAE  |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.4.10090 | A56E310D297CE3B343AE8F4A6F72980F1C3173862D6169F1C713C2CA09660A9F |
+- [Agent Log Analytics](../platform/log-analytics-agent.md). Shromažďuje události a data o výkonu z virtuálního počítače nebo sady škálování virtuálních počítačů a doručuje je do pracovního prostoru Log Analytics. Metody nasazení pro agenta Log Analytics v prostředcích Azure používají rozšíření virtuálního počítače pro [Windows](../../virtual-machines/extensions/oms-windows.md) a [Linux](../../virtual-machines/extensions/oms-linux.md).
+- Agent závislostí. Shromažďuje zjištěná data o procesech spuštěných na virtuálním počítači a o závislostech externích procesů, které používá [funkce map v Azure monitor pro virtuální počítače](vminsights-maps.md). Agent závislostí spoléhá na agenta Log Analytics k doručování svých dat do Azure Monitor. Metody nasazení pro agenta závislostí v prostředcích Azure používají rozšíření virtuálního počítače pro [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) a [Linux](../../virtual-machines/extensions/agent-dependency-linux.md).
 
-## <a name="role-based-access-control"></a>Řízení přístupu na základě role
+> [!NOTE]
+> Agent Log Analytics je stejný agent, kterého používá System Center Operations Manager. Azure Monitor pro virtuální počítače mohou monitorovat agenty, které jsou také sledovány pomocí Operations Manager Pokud jsou přímo připojeny, a nainstalovat na ně agenta závislostí. Agenty připojení k Azure Monitor prostřednictvím [připojení skupiny pro správu](../tform/../platform/om-agents.md) nelze monitorovat pomocí Azure monitor pro virtuální počítače.
 
-K povolení a přístupu k funkcím v Azure Monitor pro virtuální počítače musíte mít roli *přispěvatel Log Analytics* . Chcete-li zobrazit data o výkonu, stavu a mapování, musíte mít roli *Čtenář monitorování* pro virtuální počítač Azure. Pracovní prostor Log Analytics musí být nakonfigurován pro Azure Monitor pro virtuální počítače.
+Níže najdete několik metod pro nasazení těchto agentů. 
 
-Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analytics, najdete v tématu [Správa pracovních prostorů](../../azure-monitor/platform/manage-access.md).
+| Metoda | Popis |
+|:---|:---|
+| [Azure Portal](vminsights-enable-single-vm.md) | Nainstalujte oba agenty na jeden virtuální počítač, sadu škálování virtuálního počítače nebo hybridní virtuální počítače připojené pomocí Azure ARC. |
+| [Šablony Resource Manageru](vminsights-enable-powershell.md) | Nainstalujte oba agenty pomocí kterékoli z podporovaných metod pro nasazení Správce prostředků šablony, včetně CLI a PowerShellu. |
+| [Azure Policy](vminsights-enable-at-scale-policy.md) | Pokud se vytvoří virtuální počítač nebo sada škálování virtuálních počítačů, přiřaďte Azure Policy iniciativu k automatické instalaci agentů. |
+| [Ruční instalace](vminsights-enable-hybrid-cloud.md) | Nainstalujte agenty v hostovaném operačním systému do počítačů hostovaných mimo Azure, včetně ve vašem datovém centru nebo v jiných cloudových prostředích. |
 
-## <a name="how-to-enable-azure-monitor-for-vms"></a>Postup povolení Azure Monitor pro virtuální počítače
 
-Povolte Azure Monitor pro virtuální počítače pomocí jedné z metod popsaných v této tabulce:
 
-| Stav nasazení | Metoda | Popis |
-|------------------|--------|-------------|
-| Jeden virtuální počítač Azure, Azure VMSS nebo počítač ARC Azure | [Povolit z portálu](vminsights-enable-single-vm.md) | Vyberte si **přehledy** přímo z nabídky v Azure Portal. |
-| Několik virtuálních počítačů Azure, Azure VMSS nebo počítače s obloukem Azure | [Povolit prostřednictvím Azure Policy](vminsights-enable-at-scale-policy.md) | Při vytvoření virtuálního počítače nebo VMSS použijte Azure Policy k automatickému povolení. |
-| | [Povolit prostřednictvím šablon Azure PowerShell nebo Azure Resource Manager](vminsights-enable-at-scale-powershell.md) | Pomocí Azure PowerShell nebo Azure Resource Manager šablony můžete povolit více virtuálních počítačů Azure, virtuálního počítače Azure ARC nebo Azure VMSS v rámci zadaného předplatného nebo skupiny prostředků. |
-| Hybridní cloud | [Povolit pro hybridní prostředí](vminsights-enable-hybrid-cloud.md) | Nasazení do virtuálních počítačů nebo fyzických počítačů hostovaných ve vašem datovém centru nebo v jiných cloudových prostředích. |
 
 ## <a name="management-packs"></a>Sady Management Pack
+Pokud je pro Azure Monitor pro virtuální počítače nakonfigurovaný pracovní prostor Log Analytics, předají se dvě sady Management Pack na všechny počítače s Windows připojené k tomuto pracovnímu prostoru. Sady Management Pack jsou pojmenovány jako *Microsoft. IntelligencePacks. ApplicationDependencyMonitor* a *Microsoft. IntelligencePacks. VMInsights* a jsou zapisovány do *%ProgramFiles%\Microsoft monitoring Agent\Agent\Health Service State\Management Packs \* . 
 
-Pokud je Azure Monitor pro virtuální počítače povolená a nakonfigurovaná pomocí pracovního prostoru Log Analytics, Management Pack se přepošle do všech počítačů se systémem Windows, které do tohoto pracovního prostoru hlásí. Pokud jste [System Center Operations Manager skupinu pro správu](../../azure-monitor/platform/om-agents.md) s pracovním prostorem Log Analytics, Service map Management Pack je nasazen ze skupiny pro správu do počítačů se systémem Windows, které se hlásí do skupiny pro správu.  
-
-Management Pack má název *Microsoft. IntelligencePacks. ApplicationDependencyMonitor*. Jeho zápis do `%Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs\` složky. Zdroj dat, který používá Management Pack, je `%Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources\<AutoGeneratedID>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll` .
+Zdroj dat používaný Management Pack *ApplicationDependencyMonitor* je **% Program Files%\Microsoft monitoring Agent\Agent\Health Service State\Resources \<AutoGeneratedID>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll*. Zdroj dat používaný Management Pack *VMInsights* je *% Program Files%\Microsoft monitoring Agent\Agent\Health Service State\Resources \<AutoGeneratedID> \ Microsoft.VirtualMachineMonitoringModule.dll*.
 
 ## <a name="diagnostic-and-usage-data"></a>Diagnostika a data o používání
 
@@ -217,8 +197,7 @@ Další informace o shromažďování a používání dat naleznete v tématu [p
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
-Nyní, když jste povolili monitorování pro váš virtuální počítač, jsou informace o monitorování k dispozici pro analýzu v Azure Monitor pro virtuální počítače.
-
 ## <a name="next-steps"></a>Další kroky
 
 Informace o tom, jak používat funkci monitorování výkonu, najdete v tématu [zobrazení výkonu Azure monitor pro virtuální počítače](vminsights-performance.md). Pokud chcete zobrazit zjištěné závislosti aplikací, přečtěte si téma [zobrazení Azure monitor pro virtuální počítače mapa](vminsights-maps.md).
+

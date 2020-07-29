@@ -10,21 +10,23 @@ author: peterclu
 ms.author: peterlu
 ms.date: 03/29/2020
 ms.custom: designer
-ms.openlocfilehash: d2ed9a605b19287c2ea693187c445dc8a4b3b932
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: c1d927583ecf0ac5684c607b7d203c3224fe87b1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206318"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318823"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer-preview"></a>Příklady kanálů & datových sad pro návrháře Azure Machine Learning (Preview)
 
 Pomocí vestavěných příkladů v Návrháři Azure Machine Learning můžete rychle začít vytvářet vlastní kanály strojového učení. [Úložiště GitHub](https://github.com/Azure/MachineLearningDesigner) návrháře Azure Machine Learning obsahuje podrobnou dokumentaci, která vám pomůže pochopit některé běžné scénáře strojového učení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree).
 * Pracovní prostor Azure Machine Learning s SKU Enterprise.
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="use-sample-pipelines"></a>Použití ukázkových kanálů
 
@@ -63,7 +65,7 @@ Tady je postup použití ukázkového návrháře:
 
 Prozkoumejte tyto integrované regresní ukázky.
 
-| Ukázkový název | Description | 
+| Ukázkový název | Popis | 
 | --- | --- |
 | [Ukázka 1: regrese-automobilová předpověď ceny (základní)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-basic.md) | Předpovědět ceny aut pomocí lineární regrese. |
 | [Ukázka 2: regrese – předpověď ceny automobilu (rozšířené)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-compare-algorithms.md) | Předpovědět ceny aut pomocí rozhodovací doménové struktury a dalších zesílených rozhodovacích stromů. Porovnejte modely a Najděte nejlepší algoritmus.
@@ -72,7 +74,7 @@ Prozkoumejte tyto integrované regresní ukázky.
 
 Prozkoumejte tyto integrované ukázky klasifikace. Další informace o ukázkách se dozvíte bez odkazů na dokumentaci, a to tak, že otevřete ukázky a místo toho zobrazíte komentáře modulu.
 
-| Ukázkový název | Description | 
+| Ukázkový název | Popis | 
 | --- | --- |
 | [Ukázka 3: binární klasifikace s výběrem funkce – předpověď příjmů](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-predict-income.md) | Předpovídání výnosů jako vysoké nebo nízké, pomocí rozstředního rozhodovacího stromu se dvěma třídami K výběru funkcí použijte korelaci Pearsonova.
 | [Ukázka 4: binární klasifikace pomocí vlastního skriptu Pythonu – předpověď úvěrového rizika](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-credit-risk-cost-sensitive.md) | Klasifikujte úvěrové aplikace jako vysoké nebo nízké riziko. K vážení dat použijte modul spouštění skriptu Pythonu.
@@ -84,7 +86,7 @@ Prozkoumejte tyto integrované ukázky klasifikace. Další informace o ukázká
 
 Prozkoumejte tyto integrované příklady doporučených kroků. Další informace o ukázkách se dozvíte bez odkazů na dokumentaci, a to tak, že otevřete ukázky a místo toho zobrazíte komentáře modulu.
 
-| Ukázkový název | Description | 
+| Ukázkový název | Popis | 
 | --- | --- |
 | Ukázka 10: doporučení – hodnocení filmu tweety | Sestavte modul doporučený pro film z nadpisů a hodnocení filmů. |
 
@@ -92,7 +94,7 @@ Prozkoumejte tyto integrované příklady doporučených kroků. Další informa
 
 Přečtěte si další informace o ukázkách, které předvádějí nástroje a funkce machine learningu. Další informace o ukázkách se dozvíte bez odkazů na dokumentaci, a to tak, že otevřete ukázky a místo toho zobrazíte komentáře modulu.
 
-| Ukázkový název | Description | 
+| Ukázkový název | Popis | 
 | --- | --- |
 | [Ukázka 6: použití vlastního skriptu R – předpověď zpoždění letů](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-flight-delay.md) |
 | Ukázka 8: křížové ověřování pro předpověď v případě binární klasifikace – pro příjem | Pro vytvoření binárního klasifikátoru pro příjem z dospělého použijte vzájemné ověřování.

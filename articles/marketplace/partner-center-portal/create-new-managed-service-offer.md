@@ -4,15 +4,15 @@ description: Postup vytvoření nové nabídky spravované služby pro výpis v 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: JnHs
-ms.author: jenhayes
+author: Microsoft-BradleyWright
+ms.author: brwrigh
 ms.date: 07/07/2020
-ms.openlocfilehash: 3bb663dcdf007bf77d1b9f2b46af532774af22e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 193781e078f12dec553d98c15699c7e665966a87
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086383"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326613"
 ---
 # <a name="create-a-managed-service-offer"></a>Vytvoření nabídky spravované služby
 
@@ -42,7 +42,7 @@ Zadejte **ID nabídky**. Toto je jedinečný identifikátor každé nabídky ve 
 Zadejte **alias nabídky**. Toto je název, který se používá pro nabídku v partnerském centru.
 
 * Tento název se na webu Marketplace nepoužívá a liší se od názvu nabídky a dalších hodnot, které se zákazníkům zobrazují.
-* Po zvolení možnost **vytvořit**se nedá změnit alias th nabídky.
+* Po zvolení možnost **vytvořit**se alias nabídky nedá změnit.
 
 Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 

@@ -9,22 +9,22 @@ editor: ''
 ms.service: media-services
 ms.subservice: ''
 ms.workload: ''
-ms.topic: tutorial
+ms.topic: how-to
 ms.custom: ''
-ms.date: 07/21/2020
+ms.date: 07/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: 1fa25210bc8e4dc9f20e49e90b8e71082edb12c2
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 763dd82c8263a5e180468f9fbd7f86526295a80d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172711"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87279283"
 ---
-# <a name="tutorial-use-azure-portal-to-invoke-direct-methods"></a>Kurz: použití Azure Portal k vyvolání přímých metod
+# <a name="how-to-use-azure-portal-to-invoke-direct-methods"></a>Použití Azure Portal k vyvolání přímých metod
 
 IoT Hub poskytuje možnost vyvolat [přímé metody](/azure/iot-hub/iot-hub-devguide-direct-methods#method-invocation-for-iot-edge-modules) na hraničních zařízeních z cloudu. Modul Live video Analytics na IoT Edge (LVA) zveřejňuje několik [přímých metod](/azure/media-services/live-video-analytics-edge/direct-methods) , které se dají použít k definování, nasazení a vytvoření instance různých pracovních postupů pro analýzu živého videa.
 
-V tomto kurzu se dozvíte, jak volat přímé volání metod na živé analýzy videí pro modul IoT Edge pomocí Azure Portal.
+V tomto článku se dozvíte, jak volat přímé volání metod na živé analýzy videí pro IoT Edge modul přes Azure Portal.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,7 +41,7 @@ Použijte `GraphTopologyList` volání metody k načtení seznamu všech topolog
 1. Přihlaste se Azure Portal
 1. Najděte příslušnou skupinu prostředků z domovské stránky portálu a Najděte své IoT Hub, nebo pokud víte, že IoT Hub, vyberte ho.
     ![Skupina prostředků na domovské stránce portálu](media/use-azure-portal-to-invoke-directs-methods/portal-rg-home.png)
-1. Po na stránce IoT Hub vyberte v části Automatická správa zařízení možnost IoT Edge, která zobrazí seznam různých ID zařízení. Vyberte příslušné ID zařízení a uveďte moduly běžící na zařízení.
+1. Po na stránce IoT Hub vyberte IoT Edge v části Automatická správa zařízení a uveďte různá ID zařízení. Vyberte příslušné ID zařízení a uveďte moduly běžící na zařízení.
     ![stránka centra IoT Hub](media/use-azure-portal-to-invoke-directs-methods/iot-hub-page.png)
 1. Pokud chcete vytvořit stránku konfigurace, vyberte modul Live video Analytics v IoT Edge.<br><br>
     ![Pokud chcete vytvořit stránku konfigurace, vyberte modul Live video Analytics v IoT Edge.](media/use-azure-portal-to-invoke-directs-methods/modules.png)

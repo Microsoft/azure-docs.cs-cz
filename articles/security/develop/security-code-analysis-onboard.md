@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: a7fab9515051180fdb1b894602478768a60177ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd0057c5f5e365d6c91ae221a7add813855bb1ec
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362053"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323583"
 ---
 # <a name="onboarding-and-installing"></a>Onboarding a instalace
 
@@ -50,9 +50,9 @@ Pokud splňujete výše uvedené kvalifikace, obraťte se na partnera z níže u
 
 - Zóny – kontaktní údaje:cloudsupport@zones.com
 - Wortell – kontaktní údaje:info@wortell.nl
-- Logické informace – kontaktní údaje:Matthew.Curtis@us.logicalis.com 
+- Logické informace – kontaktní údaje:logicalisleads@us.logicalis.com
 
-### <a name="become-a-partner"></a>Staňte se partnerem
+### <a name="become-a-partner"></a>Stát se partnerem
 
 Tým Microsoft Security Code Analysis je, aby se připojil k partnerům Premier Support Partnerská smlouva. Partneři vám pomůžou zajistit bezpečnější vývoj tohoto rozšíření pro zákazníky, kteří si ho chtějí koupit, ale nemají smlouvu Enterprise support s Microsoftem. Zúčastnění partneři se můžou zaregistrovat [tady](http://www.microsoftpartnersupport.com/msrd/opin).
 
@@ -63,7 +63,7 @@ Tým Microsoft Security Code Analysis je, aby se připojil k partnerům Premier 
 1. Vyberte **Shared**.
 1. Vyberte rozšíření Microsoft Security Code Analysis, vyberte **nainstalovat**.
 1. V rozevíracím seznamu vyberte organizaci Azure DevOps, na kterou chcete rozšíření nainstalovat.
-1. Vyberte **Nainstalovat**. Po dokončení instalace můžete začít používat rozšíření.
+1. Vyberte **Install** (Nainstalovat). Po dokončení instalace můžete začít používat rozšíření.
 
 >[!NOTE]
 > I v případě, že nemáte přístup pro instalaci rozšíření, pokračujte v postupu instalace. Během procesu instalace můžete požádat o přístup správce vaší organizace Azure DevOps.

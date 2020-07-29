@@ -1,6 +1,6 @@
 ---
-title: Umístění dat pro virtuální počítače s Windows spadají do 2019 – Azure
-description: Stručný přehled, ve kterém jsou uložená data a metadata virtuálních počítačů s Windows v.
+title: Umístění dat pro virtuální plochu Windows (Classic) – Azure
+description: Stručný přehled, ve kterém jsou uložená data a metadata virtuálních ploch (Classic) Windows.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fa998ddf8225475bbcf657ed9feee951263d2743
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0e12e17914374a64ecd2d17a8e73c6ebf20328d9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077587"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270035"
 ---
-# <a name="data-locations-for-windows-virtual-desktop"></a>Umístění dat pro virtuální počítače s Windows
+# <a name="data-locations-for-windows-virtual-desktop-classic"></a>Umístění dat pro virtuální plochu Windows (Classic)
 
 >[!IMPORTANT]
->Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objekty virtuálních klientů Windows, které byly zavedeny v aktualizaci jarní 2020, přečtěte si [Tento článek](../data-locations.md).
+>Tento obsah se vztahuje na virtuální plochu Windows (Classic), která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objektů virtuálních klientů Windows, přečtěte si [Tento článek](../data-locations.md).
 
 Virtuální plocha Windows je aktuálně dostupná pro všechna geografická umístění. Na začátku se metadata služby dají ukládat jenom v geograficky USA (US). Správci mohou zvolit umístění pro ukládání uživatelských dat při vytváření virtuálních počítačů fondu hostitelů a přidružených služeb, jako jsou například souborové servery. Přečtěte si další informace o geografických grafech Azure na [mapě datacenter Azure](https://azuredatacentermap.azurewebsites.net/).
 

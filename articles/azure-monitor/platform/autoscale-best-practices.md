@@ -4,12 +4,12 @@ description: Automatické škálování vzorů v Azure pro Web Apps, škálován
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 47da813498ef2cd4d16aeaa5ab31eff24b1db267
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 414716fbbb36167e52c4f3b98c70ae7696ffea8f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539529"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327051"
 ---
 # <a name="best-practices-for-autoscale"></a>Osvědčené postupy pro automatické škálování
 Automatické škálování Azure Monitor platí jenom pro služby [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)a [API Management](../../api-management/api-management-key-concepts.md).
@@ -22,7 +22,7 @@ Automatické škálování Azure Monitor platí jenom pro služby [Virtual Machi
   Nastavení automatického škálování má maximálně, minimální a výchozí hodnotu instancí.
 * Úloha automatického škálování vždycky přečte přidruženou metriku ke škálování podle a zkontroluje, jestli překročila nakonfigurovanou prahovou hodnotu pro škálování na více instancí nebo pro škálování na více instancí. Můžete si prohlédnout seznam metrik, pomocí kterých se dá automatické škálování škálovat, na [Azure monitor automatické škálování běžných metrik](autoscale-common-metrics.md).
 * Všechny prahové hodnoty jsou vypočítány na úrovni instance. Například "horizontální navýšení kapacity na jednu instanci, pokud je průměrný procesor > 80%, pokud je počet instancí 2", znamená horizontální navýšení kapacity, pokud je průměrná hodnota procesoru napříč všemi instancemi větší než 80%.
-* Všechny chyby automatického škálování se zaznamenávají do protokolu aktivit. Pak můžete nakonfigurovat [upozornění protokolu aktivit](./../../azure-monitor/platform/activity-log-alerts.md) tak, abyste se mohli informovat prostřednictvím e-mailu, SMS nebo webhooků, kdykoli dojde k selhání automatického škálování.
+* Všechny chyby automatického škálování se zaznamenávají do protokolu aktivit. Pak můžete nakonfigurovat [upozornění protokolu aktivit](./activity-log-alerts.md) tak, abyste se mohli informovat prostřednictvím e-mailu, SMS nebo webhooků, kdykoli dojde k selhání automatického škálování.
 * Podobně se všechny úspěšné akce škálování publikují do protokolu aktivit. Pak můžete nakonfigurovat upozornění protokolu aktivit tak, abyste se mohli informovat prostřednictvím e-mailu, SMS nebo webhooků, kdykoli dojde k úspěšné akci automatického škálování. Můžete také nakonfigurovat oznámení e-mailu nebo Webhooku, abyste se dostali na úspěšné akce škálování přes kartu oznámení v nastavení automatického škálování.
 
 ## <a name="autoscale-best-practices"></a>Osvědčené postupy automatického škálování
@@ -151,3 +151,4 @@ Kromě používání výstrah protokolu aktivit můžete také nakonfigurovat oz
 ## <a name="next-steps"></a>Další kroky
 - [Vytvořením upozornění protokolu aktivit můžete monitorovat všechny operace modulu automatického škálování v rámci vašeho předplatného.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [Vytvoření upozornění protokolu aktivit pro monitorování všech neúspěšných škálování pro automatické škálování v rámci předplatného nebo horizontálního navýšení kapacity](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
+

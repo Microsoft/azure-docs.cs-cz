@@ -1,6 +1,6 @@
 ---
-title: Vytvoření fondu hostitelů tenanta virtuálních počítačů s Windows – Azure
-description: Řešení potíží a řešení problémů s fondem klientů a hostitelů během instalace prostředí klienta virtuální plochy Windows.
+title: Vytvoření fondu hostitelů tenanta pro Windows Virtual Desktop (Classic) – Azure
+description: Řešení potíží a řešení problémů s fondem klientů a hostitelů během instalace klientského prostředí pro virtuální počítače s Windows (Classic)
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: aad3bffeba4395ba415fb99a3667d04d18769a47
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: bd9a6dd5d11ab69635d610eee3f92a90e942b576
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026691"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87269593"
 ---
-# <a name="tenant-and-host-pool-creation"></a>Vytvoření tenanta a fondu hostitelů
+# <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>Vytvoření fondu tenanta a hostitele ve virtuální ploše Windows (Classic)
 
 >[!IMPORTANT]
->Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objekty virtuálních klientů Windows, které byly zavedeny v aktualizaci jarní 2020, přečtěte si [Tento článek](../troubleshoot-set-up-issues.md).
+>Tento obsah se vztahuje na virtuální plochu Windows (Classic), která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objektů virtuálních klientů Windows, přečtěte si [Tento článek](../troubleshoot-set-up-issues.md).
 
 Tento článek popisuje problémy při počátečním nastavení tenanta virtuální plochy Windows a související infrastruktury fondu hostitelů relací.
 

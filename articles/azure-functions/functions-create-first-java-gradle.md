@@ -2,15 +2,16 @@
 title: Publikování funkce do Azure pomocí Java a Gradle
 description: Vytvoření a publikování funkce aktivované protokolem HTTP do Azure pomocí jazyků Java a Gradle
 author: KarlErickson
+ms.custom: devx-track-java
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: 906f3d45edef6180557c54f0ff29cd11a1c96fa3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ce2169838faaee8da459f80979fa31318e9d50c9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055664"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322172"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Vytvoření a publikování funkce v Azure pomocí Java a Gradle
 
@@ -19,7 +20,7 @@ V tomto článku se dozvíte, jak sestavit a publikovat projekt funkce jazyka Ja
 > [!NOTE]
 > Pokud Gradle není preferovaným vývojářským nástrojem, Projděte si podobné kurzy pro vývojáře v jazyce Java, které využívají [Maven](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java), [IntelliJ](/azure/developer/java/toolkit-for-intellij/quickstart-functions) a [vs Code](./functions-create-first-function-vs-code.md?pivots=programming-language-java).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K vývoji funkcí pomocí Javy musíte mít nainstalovaný následující software:
 

@@ -2,15 +2,15 @@
 title: Nejčastější dotazy k šabloně ARM
 description: Nejčastější dotazy týkající se Azure Resource Manager šablon.
 ms.topic: conceptual
-ms.date: 05/30/2020
+ms.date: 07/27/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: fb4bac00c4d971e7b056c18fe609d77b077dbcbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e23334daf0f4f6d5a6917af49c786d47c4557375
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85296861"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327255"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>Nejčastější dotazy týkající se šablon ARM
 
@@ -48,7 +48,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se šabl
 
   Pokud se chcete dozvědět o novém jazyce šablony, [Zaregistrujte si oznámení](https://aka.ms/armLangUpdates).
 
-  Pro náhled specifikací šablon [Připojte seznam čekání](https://aka.ms/templateSpecsWaitlist).
+  Další informace o specifikacích šablon naleznete v tématu [Azure Resource Manager specifikace šablon (Preview)](template-specs.md).
 
 ## <a name="creating-and-testing-templates"></a>Vytváření a testování šablon
 
@@ -64,7 +64,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se šabl
 
 * **Můžu v šabloně ARM vytvořit skupinu prostředků a nasadit do ní prostředky?**
 
-  Ano, v šabloně můžete vytvořit skupinu prostředků, když nasadíte šablonu na úrovni předplatného Azure. Příklad vytvoření skupiny prostředků a nasazení prostředků najdete v tématu [Skupina prostředků a prostředky](deploy-to-subscription.md#resource-group-and-resources).
+  Ano, v šabloně můžete vytvořit skupinu prostředků, když nasadíte šablonu na úrovni předplatného Azure. Příklad vytvoření skupiny prostředků a nasazení prostředků najdete v tématu [Skupina prostředků a prostředky](deploy-to-subscription.md#resource-groups).
 
 * **Můžu vytvořit předplatné v šabloně ARM?**
 
@@ -100,9 +100,9 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se šabl
 
 * **Budete nabízet Nástroj pro převod šablon JSON na nový jazyk šablony?**
 
-  Ano.
+  Yes.
 
-## <a name="template-specs"></a>Specifikace šablony
+## <a name="template-specs"></a>Specifikace šablon
 
 * **Jak se můžu zapojit do verze Preview specifikací šablon?**
 
@@ -182,7 +182,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se šabl
 
 * **Můžu do Azure Pipelines integrovat šablony ARM?**
 
-  Ano. Vysvětlení používání šablon a kanálů najdete v tématu [kurz: průběžná integrace šablon Azure Resource Manager s Azure Pipelines](deployment-tutorial-pipeline.md) a [integrace šablon ARM s Azure Pipelines](add-template-to-azure-pipelines.md).
+  Yes. Vysvětlení používání šablon a kanálů najdete v tématu [kurz: průběžná integrace šablon Azure Resource Manager s Azure Pipelines](deployment-tutorial-pipeline.md) a [integrace šablon ARM s Azure Pipelines](add-template-to-azure-pipelines.md).
 
 * **Můžu k nasazení šablony použít akce GitHubu?**
 

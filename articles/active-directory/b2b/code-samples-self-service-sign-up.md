@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0814312bb12582dd9e9ebfafc60fba470f6a9a9
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: a3995395cfd6256689bedc7a4a3c83effc65c0b4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84905153"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87313536"
 ---
 # <a name="samples-for-external-identities-self-service-sign-up"></a>Ukázky pro samoobslužné registrace externích identit
 
@@ -24,7 +24,7 @@ Následující tabulky obsahují odkazy na ukázky kódu pro využití webových
 
 ## <a name="api-connector-azure-function-quickstarts"></a>Průvodce rychlým startem pro konektory API Azure
 
-| Ukázka                                                                                                                          | Description                                                                                                                                               |
+| Ukázka                                                                                                                          | Popis                                                                                                                                               |
 | ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [.NET Core](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-api-connector-azure-function-validate) | Tato ukázka .NET Core Azure Functions ukazuje, jak omezit podepisování na konkrétní domény tenanta a ověřit informace zadané uživatelem. |
 | [Node.js](https://github.com/Azure-Samples/active-directory-nodejs-external-identities-api-connector-azure-function-validate)   | Tato Node.js ukázka Azure Functions ukazuje, jak omezit podepisování na konkrétní domény tenanta a ověřit informace zadané uživatelem.  |
@@ -34,14 +34,13 @@ Následující tabulky obsahují odkazy na ukázky kódu pro využití webových
 
 ## <a name="custom-approval-workflows"></a>Pracovní postupy vlastního schválení
 
-| Ukázka | Description |
+| Ukázka | Popis |
 |--------| ----------- |
 | [Pracovní postup ručního schválení](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-api-connectors-approvals) | Tato ukázka demonstruje kompletní pracovní postup schvalování pro správu vytvoření uživatelského účtu hosta při samoobslužném přihlášení. |
 
 ## <a name="identity-verification"></a>Ověření identity
 
-| Ukázka                                                                                                            | Description                                                                                                                          |
+| Ukázka                                                                                                            | Popis                                                                                                                          |
 | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | [IDology](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-idology-identity-verification) | V této ukázce se dozvíte, jak ověřit identitu uživatele v rámci samoobslužné registrace pomocí konektoru rozhraní API pro integraci s IDology. |
-
-<!-- | [Experian](https://github.com/Azure-Samples/) | This sample shows how add identity verification to your self-service sign-up user flow by using an API connector to integrate with Experian. | -->
+| [Experian](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-experian-identity-verification) | V této ukázce se dozvíte, jak ověřit identitu uživatele v rámci samoobslužné registrace pomocí konektoru rozhraní API pro integraci s Experian. |

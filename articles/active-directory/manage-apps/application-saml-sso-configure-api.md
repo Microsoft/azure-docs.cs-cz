@@ -11,11 +11,12 @@ ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: 50ee9e3c22c885931e2586f65ba2fa3353fccfeb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b5de26afceb1127b42c937f1cb1005a660881d4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85355841"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87273418"
 ---
 # <a name="automate-saml-based-sso-app-configuration-with-microsoft-graph-api"></a>Automatizace konfigurace aplikace jednotného přihlašování založeného na SAML pomocí rozhraní Microsoft Graph API
 
@@ -335,7 +336,7 @@ Kromě základních deklarací identity nakonfigurujte následující deklarace 
 | `https://aws.amazon.com/SAML/Attributes/Role` | assignedroles| 
 | `https://aws.amazon.com/SAML/Attributes/RoleSessionName` | třídy |
 | `https://aws.amazon.com/SAML/Attributes/SessionDuration` | "900" |
-| role | assignedroles |
+| Role | assignedroles |
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` | třídy |
 
 Další informace najdete v tématu [přizpůsobení deklarací identity emitovaných v tokenu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping).
@@ -595,12 +596,12 @@ HTTP/1.1 204
 
 Přiřaďte k instančnímu objektu následujícího uživatele a přiřaďte AWS_Role1. 
 
-| Name  | ID  |
+| Název  | ID  |
 |---------|---------|
 | ID uživatele (principalId) | 6cad4079-4e79-4a3f-9efb-ea30a14bdb26 |
 | Typ (principalType) | Uživatel |
 | ID aplikační role (appRoleId) | 454dc4c2-8176-498e-99df-8c4efcde41ef |
-| servicePrincipalID (resourceId) | 515f62cb-d18a-4dca-bec3-bb0bf31deeea |
+| servicePrincipalID (resourceId) | f47a6776-bca7-4f2e-bc6c-eec59d058e3e |
 
 #### <a name="request"></a>Žádost
 
@@ -617,7 +618,7 @@ Content-type: appRoleAssignments/json
   "principalId": "6cad4079-4e79-4a3f-9efb-ea30a14bdb26",
   "principalType": "User",
   "appRoleId":"454dc4c2-8176-498e-99df-8c4efcde41ef",
-  "resourceId":"515f62cb-d18a-4dca-bec3-bb0bf31deeea"
+  "resourceId":"f47a6776-bca7-4f2e-bc6c-eec59d058e3e"
 }
 ```
 #### <a name="response"></a>Odpověď
@@ -638,7 +639,7 @@ Content-type: appRoleAssignments/json
     "principalId": "6cad4079-4e79-4a3f-9efb-ea30a14bdb26",
     "principalType": "User",
     "resourceDisplayName": "AWS API Created",
-    "resourceId": "515f62cb-d18a-4dca-bec3-bb0bf31deeea"
+    "resourceId": "f47a6776-bca7-4f2e-bc6c-eec59d058e3e"
 }
 ```
 

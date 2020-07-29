@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 4481e62fb15b5ec21b48deb00f1438abf01aa27a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fffb83fe680572c2448323a61b767a401c9a4834
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041463"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323702"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Analýza dopadu pomocí Application Insights
 
@@ -28,7 +28,7 @@ Ale Analýza výkonu je jenom podmnožinou možností dopadu. Vzhledem k tomu, �
 ![Převod snímků obrazovky prohlížeči](./media/usage-impact/0004-browsers.png)
 
 > [!NOTE]
-> Váš Application Insights prostředek musí obsahovat zobrazení stránky nebo vlastní události pro použití nástroje dopad. [Naučte se, jak nastavit aplikaci tak, aby automaticky shromáždila zobrazení stránek pomocí Application Insights JavaScript SDK](../../azure-monitor/app/javascript.md). Pamatujte také na to, že vzhledem k tomu, že analyzujete korelační, záleží na velikosti vzorku.
+> Váš Application Insights prostředek musí obsahovat zobrazení stránky nebo vlastní události pro použití nástroje dopad. [Naučte se, jak nastavit aplikaci tak, aby automaticky shromáždila zobrazení stránek pomocí Application Insights JavaScript SDK](./javascript.md). Pamatujte také na to, že vzhledem k tomu, že analyzujete korelační, záleží na velikosti vzorku.
 >
 >
 
@@ -85,5 +85,6 @@ Způsob, jakým se nakonec počítá dopad, se liší podle toho, jestli analyzu
     - [Trychtýře](usage-funnels.md)
     - [Uchovávání](usage-retention.md)
     - [Toky uživatele](usage-flows.md)
-    - [Sešity](../../azure-monitor/platform/workbooks-overview.md)
+    - [Workbooks](../platform/workbooks-overview.md)
     - [Přidat kontext uživatele](usage-send-user-context.md)
+

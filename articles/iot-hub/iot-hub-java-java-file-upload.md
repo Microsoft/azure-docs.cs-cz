@@ -12,11 +12,13 @@ ms.date: 06/28/2017
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: f0753827fe5f7f2b866726683d4cb1f205da4599
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+- devx-track-java
+ms.openlocfilehash: 38816b616179ec16e06e987f82b498085c34ba3f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81732471"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327578"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>Nahrání souborů ze zařízení do cloudu pomocí IoT Hub (Java)
 
@@ -28,7 +30,7 @@ V tomto kurzu se seznámíte s kódem v tématu [posílání zpráv z cloudu do 
 
 * Pomocí IoT Hub oznámení o nahrávání souborů můžete aktivovat zpracování souboru v back-endu vaší aplikace.
 
-[Odeslání telemetrie ze zařízení do rychlého startu centra IoT](quickstart-send-telemetry-java.md) a [posílání zpráv z cloudu na zařízení pomocí IoT Hub](iot-hub-java-java-c2d.md) kurzu zobrazuje základní funkce zasílání zpráv typu zařízení-Cloud a Cloud-zařízení IoT Hub. Kurz [Konfigurace směrování zpráv pomocí IoT Hub](tutorial-routing.md) popisuje způsob, jak spolehlivě ukládat zprávy typu zařízení-Cloud do úložiště objektů BLOB v Azure. V některých scénářích ale nemůžete snadno namapovat data, která zařízení odesílají do relativně malých zpráv ze zařízení do cloudu, které IoT Hub přijmout. Příklad:
+[Odeslání telemetrie ze zařízení do rychlého startu centra IoT](quickstart-send-telemetry-java.md) a [posílání zpráv z cloudu na zařízení pomocí IoT Hub](iot-hub-java-java-c2d.md) kurzu zobrazuje základní funkce zasílání zpráv typu zařízení-Cloud a Cloud-zařízení IoT Hub. Kurz [Konfigurace směrování zpráv pomocí IoT Hub](tutorial-routing.md) popisuje způsob, jak spolehlivě ukládat zprávy typu zařízení-Cloud do úložiště objektů BLOB v Azure. V některých scénářích ale nemůžete snadno namapovat data, která zařízení odesílají do relativně malých zpráv ze zařízení do cloudu, které IoT Hub přijmout. Například:
 
 * Velké soubory, které obsahují obrázky
 * Videa

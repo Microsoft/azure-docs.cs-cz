@@ -6,16 +6,16 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 19a0e94206691dc741020374bf5c827ba423515d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c53b43d811e5e2b9cd8d70e3c8e05af444895154
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008349"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320642"
 ---
 # <a name="availability-alerts"></a>Upozornění na dostupnost
 
-[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) odesílá do vaší aplikace webové požadavky v pravidelných intervalech z bodů po celém světě. Může vás upozornit, pokud vaše aplikace nereaguje nebo pokud reaguje příliš pomalu.
+[Azure Application Insights](./app-insights-overview.md) odesílá do vaší aplikace webové požadavky v pravidelných intervalech z bodů po celém světě. Může vás upozornit, pokud vaše aplikace nereaguje nebo pokud reaguje příliš pomalu.
 
 ## <a name="enable-alerts"></a>Povolení upozornění
 
@@ -65,9 +65,9 @@ Pomocí [nových sjednocených výstrah](../platform/alerts-overview.md)můžete
 
 ## <a name="automate-alerts"></a>Automatizace výstrah
 
-Pokud chcete tento proces automatizovat pomocí šablon Azure Resource Manager, přečtěte si dokumentaci k tématu [Vytvoření upozornění na metriku pomocí šablony Správce prostředků](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert) .
+Pokud chcete tento proces automatizovat pomocí šablon Azure Resource Manager, přečtěte si dokumentaci k tématu [Vytvoření upozornění na metriku pomocí šablony Správce prostředků](../platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert) .
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Vyhrazený [článek týkající se řešení potíží](troubleshoot-availability.md).
 
@@ -75,3 +75,4 @@ Vyhrazený [článek týkající se řešení potíží](troubleshoot-availabili
 
 * [Vícekrokové webové testy](availability-multistep.md)
 * [Testování webových testů adresy URL](monitor-web-app-availability.md)
+

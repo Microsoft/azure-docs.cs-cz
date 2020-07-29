@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d63cb1d7e2b0086a3d9ef6e3917ebefa11c7ccba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60d72a98a22fa85e87eb8560ad968415ca70f9a5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253371"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87275424"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Osvědčené postupy pro podmíněný přístup v Azure Active Directory
 
@@ -33,13 +33,13 @@ Když vytvoříte novou zásadu, neexistují žádní uživatelé, skupiny, apli
 
 ![Cloudové aplikace](./media/best-practices/02.png)
 
-Pokud chcete, aby vaše zásady fungovaly, musíte nakonfigurovat:
+Aby zásada fungovala, musíte nakonfigurovat:
 
-| Co           | Postup                                  | Proč |
+| Co           | Jak                                  | Proč |
 | :--            | :--                                  | :-- |
-| **Cloudové aplikace** |Vyberte jednu nebo více aplikací.  | Cílem zásad podmíněného přístupu je umožnit vám řídit, jak můžou autorizovaní uživatelé přistupovat ke cloudovým aplikacím.|
-| **Uživatelé a skupiny** | Vyberte aspoň jednoho uživatele nebo skupinu, kteří mají oprávnění pro přístup k vybraným cloudovým aplikacím. | Neaktivují se zásady podmíněného přístupu, které nemají přiřazené žádné uživatele a skupiny. |
-| **Řízení přístupu** | Vyberte alespoň jeden ovládací prvek přístupu. | Pokud jsou vaše podmínky splněné, musí procesor zásad zjistit, co dělat. |
+| **Cloudové aplikace** |Vyberte alespoň jednu aplikaci.  | Cílem zásad podmíněného přístupu je umožnit vám řídit, jak můžou autorizovaní uživatelé přistupovat ke cloudovým aplikacím.|
+| **Uživatelé a skupiny** | Vyberte nejméně jednoho uživatele nebo skupinu, kteří mají autorizaci pro přístup k vybraným cloudovým aplikacím. | Neaktivují se zásady podmíněného přístupu, které nemají přiřazené žádné uživatele a skupiny. |
+| **Ovládací prvky přístupu** | Vyberte alespoň jeden ovládací prvek přístupu. | Při splnění podmínek musí procesor zásad vědět, co má dělat. |
 
 ## <a name="what-you-should-know"></a>Co byste měli vědět
 
@@ -49,14 +49,21 @@ Při přístupu ke cloudové aplikaci se můžou použít víc než jedna zásad
 
 Všechny zásady se vynutily ve dvou fázích:
 
-- Fáze 1: 
-   - Kolekce podrobností: Shromážděte podrobnosti k identifikaci zásad, které by už byly splněné.
-   - V průběhu této fáze se uživatelům může zobrazit výzva k zadání certifikátu, pokud je dodržování předpisů zařízením součástí zásad podmíněného přístupu. Tato výzva se může vyskytnout pro aplikace prohlížeče, pokud operační systém zařízení není Windows 10.
-   - Fáze 1 vyhodnocení zásad probíhá u všech povolených zásad a zásad v [režimu pouze sestavy](concept-conditional-access-report-only.md).
-- Fáze 2:
-   - Vynucování: Přihlaste se k podrobnostem shromážděným ve fázi 1 a vyžádejte uživatele, aby splnili jakékoli další požadavky, které nebyly splněny.
-   - Použijte výsledky pro relaci. 
-   - Fáze 2 vyhodnocení zásad probíhá u všech povolených zásad.
+- Fáze 1: shromáždění podrobností relace 
+   - Shromážděte podrobnosti o relaci, jako je umístění uživatele a identita zařízení, které bude nutné pro vyhodnocení zásad. 
+   - V průběhu této fáze se uživatelům může zobrazit výzva k zadání certifikátu, pokud je dodržování předpisů zařízením součástí zásad podmíněného přístupu. Tato výzva se může vyskytnout pro aplikace prohlížeče, pokud operační systém zařízení není Windows 10. 
+   - Fáze 1 vyhodnocení zásad probíhá pro povolené zásady a zásady v [režimu pouze sestavy](concept-conditional-access-report-only.md).
+- Fáze 2: vynucení 
+   - Pomocí podrobností o relacích shromážděných ve fázi 1 identifikujte všechny požadavky, které nebyly splněny. 
+   - Pokud máte zásadu, která je nakonfigurovaná tak, aby blokovala přístup, pomocí ovládacího prvku udělení bloku zastavte vynucení a uživatel se zablokuje. 
+   - Uživatel pak bude vyzván k dokončení dalších požadavků na řízení udělení, které nebyly splněny během fáze 1 v následujícím pořadí, dokud nesplní zásady:  
+      - Vícefaktorové ověřování 
+      - Schválená klientská aplikace/zásada ochrany aplikací 
+      - Spravované zařízení (s odpovídajícím nebo hybridním připojením k Azure AD) 
+      - Podmínky použití 
+      - Vlastní ovládací prvky  
+      - Jakmile budou uděleny ovládací prvky, použijte ovládací prvky relace (vynutila aplikace, Microsoft Cloud App Security a životnost tokenu). 
+   - Fáze 2 vyhodnocení zásad probíhá u všech povolených zásad. 
 
 ### <a name="how-are-assignments-evaluated"></a>Jak se vyhodnocuje přiřazení?
 

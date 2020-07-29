@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5ea17edc61988f13df5137686d823a424f6752ce
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2defb00827e6f3ccf49c336007198b7d9ac176f6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080858"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87306107"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Práce s předchozí verzí Azure Migrate
 
@@ -127,7 +127,7 @@ Klient Windows 7, 8 a 10 | Azure poskytuje podporu [jenom pro předplatné sady 
 Stolní počítač s Windows 10 pro | Azure podporuje [práva hostování s více klienty.](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md) | Připraveno pro Azure s podmínkou
 Windows Vista, XP Professional | Mimo podporu. Počítač se může spustit v Azure, ale Azure neposkytuje žádnou podporu operačního systému. | Podmíněně připravené pro Azure doporučujeme před migrací do Azure upgradovat operační systém.
 Linux | Azure tyto [operační systémy pro Linux](../virtual-machines/linux/endorsed-distros.md)schválí. Jiné operační systémy Linux můžou být spouštěny v Azure, ale před migrací do Azure doporučujeme upgradovat operační systém na schválenou verzi. | Je připravený pro Azure, pokud je verze schválená.<br/><br/>Podmíněně připravený, pokud verze není schválená.
-Jiné operační systémy<br/><br/> Například Oracle Solaris, Apple Mac OS atd., FreeBSD atd. | Azure tyto operační systémy neschvaluje. Počítač se může spustit v Azure, ale Azure neposkytuje žádnou podporu operačního systému. | Podmíněně připravené pro Azure doporučujeme nainstalovat podporovaný operační systém před migrací do Azure.  
+Jiné operační systémy<br/><br/> Například Oracle Solaris, Apple macOS atd., FreeBSD atd. | Azure tyto operační systémy neschvaluje. Počítač se může spustit v Azure, ale Azure neposkytuje žádnou podporu operačního systému. | Podmíněně připravené pro Azure doporučujeme nainstalovat podporovaný operační systém před migrací do Azure.  
 Operační systém určený jako **jiný** v vCenter Server | Azure Migrate nemůže v tomto případě identifikovat operační systém. | Neznámá připravenost. Ujistěte se, že operační systém běžící v rámci virtuálního počítače je podporovaný v Azure.
 32 – bitové operační systémy | Počítač se může spustit v Azure, ale Azure možná neposkytne plnou podporu. | Předem připravené na Azure, zvažte upgrade operačního systému počítače z 32 na 64 operačního systému na, než se migruje do Azure.
 
@@ -210,7 +210,7 @@ Pokud chcete použít vizualizaci závislostí, přidružte pracovní prostor Lo
 1. Pokud chcete k projektu připojit Log Analytics pracovní prostor, klikněte v **přehledu**> **Essentials**na **vyžaduje konfiguraci**.
 2. Můžete vytvořit nový pracovní prostor nebo připojit stávající:
   - Chcete-li vytvořit nový pracovní prostor, zadejte název. Pracovní prostor se vytvoří v oblasti ve stejném [geografickém regionu Azure](https://azure.microsoft.com/global-infrastructure/geographies/) jako projekt migrace.
-  - Když připojíte existující pracovní prostor, můžete vybrat ze všech dostupných pracovních prostorů ve stejném předplatném jako projekt migrace. V seznamu jsou uvedeny pouze ty pracovní prostory, které byly vytvořeny v [podporované Service map oblasti](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites). Pokud chcete připojit pracovní prostor, ujistěte se, že máte přístup čtenář k pracovnímu prostoru.
+  - Když připojíte existující pracovní prostor, můžete vybrat ze všech dostupných pracovních prostorů ve stejném předplatném jako projekt migrace. V seznamu jsou uvedeny pouze ty pracovní prostory, které byly vytvořeny v [podporované Service map oblasti](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions). Pokud chcete připojit pracovní prostor, ujistěte se, že máte přístup čtenář k pracovnímu prostoru.
 
 > [!NOTE]
 > Pracovní prostor přidružený k projektu migrace nemůžete změnit.

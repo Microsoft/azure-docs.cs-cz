@@ -9,21 +9,23 @@ ms.custom:
 - mvc
 - amqp
 - mqtt
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: e42b403717eb83db06a9f719a6451cbca74c2929
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e26c3fc9ec420596a4ec152f7f176e44acc7b4c3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81770041"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321662"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Kurz: Použití simulovaného zařízení k otestování připojení k IoT Hubu
 
 V tomto kurzu použijete nástroje portálu Azure IoT Hub a rozhraní příkazového řádku Azure k otestování připojení zařízení. Tento kurz také využívá jednoduchý simulátor zařízení, který spustíte na svém stolním počítači.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -44,7 +46,7 @@ az extension add --name azure-iot
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-Aplikace simulátoru zařízení, kterou budete v tomto kurzu spouštět, je napsána v jazyce Node.js. Ve vývojovém počítači potřebujete Node. js v10 za účelem. x. x nebo novější.
+Aplikace simulátoru zařízení, kterou budete v tomto kurzu spouštět, je napsána v jazyce Node.js. Ve vývojovém počítači potřebujete Node.js v10 za účelem. x. x nebo novější.
 
 Node.js pro různé platformy si můžete stáhnout z webu [nodejs.org](https://nodejs.org).
 
@@ -161,7 +163,7 @@ Teď jste se ze zařízení úspěšně ověřili pomocí tokenu SAS vygenerovan
 
 Zařízení může k připojení do centra IoT použít kterýkoli z následujících protokolů:
 
-| Protocol (Protokol) | Odchozí port |
+| Protokol | Odchozí port |
 | --- | --- |
 | MQTT |8883 |
 | MQTT přes WebSockets |443 |

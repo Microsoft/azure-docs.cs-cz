@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 4d3d522de84ebd019fd432f5c4e5d89ac5ef8bcf
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 6d592064729bbdd64e485e0bd0373b2d471597e0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263733"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282479"
 ---
 # <a name="azure-media-player-plugin-gallery"></a>Galerie modulů plug-in Azure Media Player #
 
@@ -20,7 +20,7 @@ ms.locfileid: "84263733"
 | Název modulu plug-in                         | Ukázková adresa URL                    | Zdrojový kód                | Popis    |
 |-------------------------------------|-----------------------------|----------------------------|----------------|
 | Další funkce                 | | | |
-| **New!** AMP360Video                | [Demo](http://www.babylonjs.com/demos/amp360video/)                        | [GitHub](https://github.com/BabylonJS/Extensions/tree/master/Amp360Video)                     | Modul plug-in umožňuje vizualizovat 360 video v amp buď na vašem počítači, nebo na zařízeních kompatibilních s VR. Úplná dokumentace je k dispozici [zde](https://doc\.babylonjs\.com/extensions/amp360video): |
+| **New!** AMP360Video                | [Demo](http://www.babylonjs.com/demos/amp360video/)                        | [GitHub](https://github.com/BabylonJS/Extensions/tree/master/Amp360Video)                     | Modul plug-in umožňuje vizualizovat 360 video v amp buď na vašem počítači, nebo na zařízeních kompatibilních s VR. Úplná dokumentace je k dispozici [zde](https://doc.babylonjs.com/extensions/amp360video): |
 |  Popis Sprite                         | [Demo](http://www.skymedia.tv/asset/sprite)                        | [GitHub](https://github.com/RickShahid/SpriteTip)                    | Azure Media Player (AMP) modul plug-in pro vykreslování zobrazení časové osy miniatury obrazu, který je vygenerovaný z Azure Media Services (AMS) Media Encoder Standard (status) |
 | Překryvná Diagnostika                 | [Demo](https://openidconnectweb.azurewebsites.net/Diagnoverlay.html)                        | [GitHub](https://github.com/willzhan/diagnoverlay)                     | Tento modul plug-in zobrazí všechny klíčové parametry, statistiky videa, všechny události v životním cyklu přehrávání videa a informace o ochraně DRM, jako je ID klíče, adresy URL pro získání licence, pokud jsou chráněné.                                                                                                                                                                      |
 | Snímková frekvence a timecode kalkulačka | Není dostupná žádná ukázka. | [GitHub](https://github.com/mconverti/media-services-javascript-azure-media-player-framerate-timecode-calculator-plugin)                     | Tento modul plug-in vypočítá snímkový kmitočet videa na základě `tfhd` / `trun` polí MP4 prvního fragmentu videa MPEG-pomlčky, analyzuje hodnotu časového měřítka z manifestu klienta MPEG-spojovník a poskytuje způsob, jak vygenerovat timecode pro daný absolutní čas v přehrávači (a také poskytuje pro daný timecode absolutní čas). |
@@ -36,9 +36,9 @@ ms.locfileid: "84263733"
 | Usnadnění přístupu                      | | | |
 | Přiblížit                             | [Demo](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/zoom/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-zoom-plugin)                     | Tento modul plug-in na obrazovce hráčů zobrazuje škálu přiblížení umožňující přetahování, takže se můžou čtenáři přiblížit k obsahu. |
 | Živé titulky                       | Příspěvek na [blogu Azure](https://azure.microsoft.com/blog/live-real-time-captions-with-azure-media-services-and-player/),[SubPly](http://www.subply.com/en/Products/AzureLiveCaptions.htm) | – | *Další informace najdete v příspěvku.* Konečný pracovní postup, který je určený pro živý modul plug-in pro Azure Media Player, klikněte na odkaz vlevo a přejděte k webu SubPly a zjistěte další informace o řešení. |
-| Klávesové zkratky                            | <strike>[Ukázka](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/hotkeys/example.html)</strike>                        | <strike>[GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-hot-keys-plugin)</strike>                     | Modul plug-in klávesové zkratky umožňuje čtenářům řídit různé aspekty přehrávače s obecnými kombinacemi modulů plug-in, jako je F pro celou obrazovku, pro funkci ztlumení a šipky pro řízení indikátoru průběhu. *Poznámka: Tento modul plug-in už je integrovaný do AMP, ale můžete ho použít jako prostředek.* |
-| Sociální                              | | | |
-| Sdílení                               | [Demo](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/share/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-social-share-plugin)                     | Tento modul plug-in přidá na řídicí panel přehrávače tlačítko sdílet, aby mohli vaši uživatelé sdílet video, které sleduje s přáteli přes Facebook, Twitter nebo LinkedIn. |
+| Klávesové zkratky                            | <strike>[Ukázka](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/hotkeys/example.html)</strike>                        | <strike>[GitHubu](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-hot-keys-plugin)</strike>                     | Modul plug-in klávesové zkratky umožňuje čtenářům řídit různé aspekty přehrávače s obecnými kombinacemi modulů plug-in, jako je F pro celou obrazovku, pro funkci ztlumení a šipky pro řízení indikátoru průběhu. *Poznámka: Tento modul plug-in už je integrovaný do AMP, ale můžete ho použít jako prostředek.* |
+| Sociální sítě                              | | | |
+| Sdílet                               | [Demo](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/share/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-social-share-plugin)                     | Tento modul plug-in přidá na řídicí panel přehrávače tlačítko sdílet, aby mohli vaši uživatelé sdílet video, které sleduje s přáteli přes Facebook, Twitter nebo LinkedIn. |
 
 ## <a name="next-steps"></a>Další kroky ##
 

@@ -5,17 +5,17 @@ description: Přečtěte si, jak transformovat data v Návrháři Azure Machine 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 06/28/2020
-ms.custom: designer
-ms.openlocfilehash: 68ed1b83b1e82daa9c4578a6b3bec24792a8268d
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.topic: conceptual
+ms.custom: how-to, designer
+ms.openlocfilehash: 3858a5a3b39c7ecaaad17a6bb6c313caf7bbc0ae
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203788"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326983"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer-preview"></a>Transformuje data v Návrháři Azure Machine Learning (Preview).
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -31,6 +31,8 @@ V tomto článku získáte informace o těchto tématech:
 1. Zobrazit výsledky.
 
 Tento postup je nezbytným předpokladem pro [reučení modelů návrháře](how-to-retrain-designer.md) . V tomto článku se naučíte, jak používat transformované datové sady ke výukám více modelů s parametry kanálu.
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="transform-a-dataset"></a>Transformace datové sady
 

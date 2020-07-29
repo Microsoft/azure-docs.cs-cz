@@ -3,12 +3,12 @@ title: Běžné otázky týkající se migrace Azure Migrate serveru
 description: Získejte odpovědi na běžné otázky týkající se použití migrace serveru Azure Migrate k migraci počítačů.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 282f7ab27eead59fc87a95ea7d397268177f4f2c
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: af40aecaa1614542074cf87ce95eb81492233bdc
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224124"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321220"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Migrace Azure Migrate serveru: běžné otázky
 
@@ -80,7 +80,7 @@ Ne. Azure Migrate podporuje migraci jenom na spravované disky (HDD úrovně Sta
 
 ## <a name="how-many-vms-can-i-replicate-at-one-time-by-using-agentless-migration"></a>Kolik virtuálních počítačů je možné najednou replikovat pomocí migrace bez agentů?
 
-V současné době můžete migrovat 100 virtuálních počítačů na instanci vCenter Server současně. Migrace v dávkách s 10 virtuálními počítači
+V současné době můžete migrovat 300 virtuálních počítačů na instanci vCenter Server současně. Migrace v dávkách s 10 virtuálními počítači
 
 ## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>Návody omezení replikace při používání zařízení Azure Migrate pro bezagentskou replikaci VMware?  
 
@@ -106,10 +106,10 @@ Migrace počítačů jejich použitím jako fyzických serverů je užitečná v
 
 ## <a name="i-deployed-two-or-more-appliances-to-discover-vms-in-my-vcenter-server-however-when-i-try-to-migrate-the-vms-i-only-see-vms-corresponding-to-one-of-the-appliance"></a>Nasadil (a) jsem dva zařízení pro zjišťování virtuálních počítačů v mém vCenter Server. Při pokusu o migraci virtuálních počítačů se ale zobrazí jenom virtuální počítače, které odpovídají jednomu ze zařízení.
 
-I když to může být dobrý případ použití, momentálně ho nepodporujeme. Nasazení dvou (nebo více) zařízení pro zjišťování stejné sady virtuálních počítačů způsobí problémy se službou, při které je vlastnictví virtuálního počítače mezi těmito dvěma zařízeními přepínat. Z tohoto důvodu vidíte, že se virtuální počítače zobrazují a zmizí. V takových případech je potřeba problém vyřešit tak, že odstraníte jedno zařízení a provedete obnovení z pevného disku.
+Pokud je nastavené více zařízení, je nutné, aby se mezi virtuálními počítači na dostupných účtech vCenter překrývat. Zjišťování s takovým překrytím je nepodporovaný scénář.
 
 ## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>Potřebuji pro migraci virtuálních počítačů VMware Server VMware vCenter?
-Pokud chcete [migrovat virtuální počítače VMware](server-migrate-overview.md) pomocí agenta VMware nebo migrace bez agentů, musí být hostitelé ESXi, na kterých jsou virtuální počítače umístěné, spravované pomocí vCenter Server. Pokud nemáte vCenter Server, můžete migrovat virtuální počítače VMware tak, že je migrujete jako fyzické servery. [Další informace](migrate-support-matrix-physical-migration.md).
+Pokud chcete [migrovat virtuální počítače VMware](server-migrate-overview.md) pomocí agenta VMware nebo migrace bez agentů, musí být hostitelé ESXi, na kterých jsou virtuální počítače umístěné, spravované pomocí vCenter Server. Pokud nemáte vCenter Server, můžete migrovat virtuální počítače VMware tak, že je migrujete jako fyzické servery. [Přečtěte si další informace](migrate-support-matrix-physical-migration.md).
  
 ## <a name="next-steps"></a>Další kroky
 

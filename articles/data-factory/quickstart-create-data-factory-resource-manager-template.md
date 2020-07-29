@@ -11,12 +11,12 @@ ms.reviewer: maghan, jingwang
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 07/16/2020
-ms.openlocfilehash: ee641840839772d858cea775acb23e375d6aadea
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: eb423ebd354adeb8273755d34323b283d53eb8b5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117401"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283890"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-arm-template"></a>Rychlý Start: vytvoření Azure Data Factory pomocí šablony ARM
 
@@ -41,7 +41,7 @@ Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním 
 
 ### <a name="azure-subscription"></a>Předplatné Azure
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 
 ### <a name="create-a-file"></a>Vytvoření souboru
 
@@ -58,7 +58,7 @@ Uložte soubor do složky **C:\ADFv2QuickStartPSH** . (Pokud složka ještě nee
 
 Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-data-factory-v2-blob-to-blob-copy/).
 
-:::code language="json" source="~/quickstart-templates/101-data-factory-v2-blob-to-blob-copy/azuredeploy.json" range="1-196" highlight="40-187":::
+:::code language="json" source="~/quickstart-templates/101-data-factory-v2-blob-to-blob-copy/azuredeploy.json":::
 
 V šabloně jsou definované prostředky Azure:
 

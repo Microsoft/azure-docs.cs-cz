@@ -1,6 +1,6 @@
 ---
-title: Vytvoření tenanta ve virtuální ploše Windows – Azure
-description: Popisuje, jak nastavit klienty virtuálních klientů Windows v Azure Active Directory.
+title: Vytvoření tenanta ve virtuální ploše Windows (Classic) – Azure
+description: Popisuje, jak nastavit klienty virtuálních počítačů s Windows (Classic) v Azure Active Directory.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6a1e301b63eee348f59a1b9570c2c3ffcd78ecef
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: a1f2dbf1f7cfc8fbb6a29129c7e445ffef87b070
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362386"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286355"
 ---
-# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Kurz: vytvoření tenanta ve virtuální ploše Windows
+# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-classic"></a>Kurz: vytvoření tenanta ve virtuální ploše Windows (Classic)
 
 >[!IMPORTANT]
->Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows.
+>Tento obsah se vztahuje na virtuální plochu Windows (Classic), která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows.
 
 Vytvoření tenanta ve Windows Virtual desktopu je prvním krokem k vytvoření řešení virtualizace plochy. Tenant je skupina jednoho nebo více fondů hostitelů. Každý fond hostitelů se skládá z několika hostitelů relací, které běží jako virtuální počítače v Azure a jsou zaregistrované ve službě Virtual Desktop systému Windows. Každý fond hostitelů se taky skládá z jedné nebo několika skupin aplikací, které se používají k publikování prostředků vzdálené plochy a vzdálených aplikací pro uživatele. S klientem můžete vytvářet fondy hostitelů, vytvářet skupiny aplikací, přiřazovat uživatele a provádět připojení prostřednictvím služby.
 

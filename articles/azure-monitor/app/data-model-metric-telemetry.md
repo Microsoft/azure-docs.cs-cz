@@ -4,16 +4,16 @@ description: Application Insights datový model pro telemetrii metrik
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 44f0b070a7c0da416002d9bf7e509d643a96dc7a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f8e787b8a94987e7d68e12a0e4e69f4c63e21e19
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540005"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320574"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>Telemetrie metrik: datový model Application Insights
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md)podporují dva typy telemetrie metrik: jedno měření a předem agregovaná metrika. Jedno měření je pouze název a hodnota. Předem agregovaná metrika určuje minimální a maximální hodnotu metriky v intervalu agregace a směrodatnou odchylku.
+[Application Insights](./app-insights-overview.md)podporují dva typy telemetrie metrik: jedno měření a předem agregovaná metrika. Jedno měření je pouze název a hodnota. Předem agregovaná metrika určuje minimální a maximální hodnotu metriky v intervalu agregace a směrodatnou odchylku.
 
 Předběžně agregovaná telemetrie metriky předpokládá, že je agregované období jedna minuta.
 
@@ -65,6 +65,7 @@ Metrika s `CustomPerfCounter` nastavenou vlastní vlastností `true` , která oz
 
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se používat [rozhraní Application Insights API pro vlastní události a metriky](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric).
+- Naučte se používat [rozhraní Application Insights API pro vlastní události a metriky](./api-custom-events-metrics.md#trackmetric).
 - Viz [datový model](data-model.md) pro typy Application Insights a datový model.
-- Podívejte se na [platformy](../../azure-monitor/app/platforms.md) podporované nástrojem Application Insights.
+- Podívejte se na [platformy](./platforms.md) podporované nástrojem Application Insights.
+

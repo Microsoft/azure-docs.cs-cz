@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: 793a4b3e8ea0dde2e4ad755cbff5a07a36c44cb9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dad4262520da1ec88c634c98aa2af2bf66bab936
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515372"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322291"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>Ukázky šablon pro pravidla upozornění metrik v Azure Monitor Správce prostředků
 
@@ -23,7 +23,7 @@ V tomto článku najdete ukázky použití [šablon Azure Resource Manager](../.
 Seznam prostředků, které se dají používat s pravidly upozornění metrik, najdete [v tématu Podporované prostředky pro výstrahy metrik v Azure monitor](../platform/alerts-metric-near-real-time.md) . Vysvětlení schématu a vlastností pro pravidlo výstrahy je k dispozici na stránce [Upozornění na metriky – vytvořit nebo aktualizovat](/rest/api/monitor/metricalerts/createorupdate).
 
 > [!NOTE]
-> Šablona prostředků pro vytváření výstrah metrik pro typ prostředku: pracovní prostor Azure Log Analytics (tj.) `Microsoft.OperationalInsights/workspaces` vyžaduje další kroky. Podrobnosti najdete v tématu [Výstraha metriky pro protokoly – šablona prostředků](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
+> Šablona prostředků pro vytváření výstrah metrik pro typ prostředku: pracovní prostor Azure Log Analytics (tj.) `Microsoft.OperationalInsights/workspaces` vyžaduje další kroky. Podrobnosti najdete v tématu [Výstraha metriky pro protokoly – šablona prostředků](../platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
 
 
 
@@ -3127,7 +3127,7 @@ Tato ukázka vytvoří pravidlo upozornění na metriku dynamických prahových 
 
 
 ## <a name="availability-test-with-metric-alert"></a>Test dostupnosti s upozorněním na metriku
-[Application Insights testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) vám pomůžou monitorovat dostupnost vašeho webu nebo aplikace z různých míst po celém světě. Výstrahy testu dostupnosti vás upozorní, když testy dostupnosti selžou z určitého počtu míst. Výstrahy testu dostupnosti stejného typu prostředku jako výstrahy metriky (Microsoft. Insights/metricAlerts). Následující ukázka vytvoří jednoduchý test dostupnosti a přidruženou výstrahu.
+[Application Insights testy dostupnosti](../app/monitor-web-app-availability.md) vám pomůžou monitorovat dostupnost vašeho webu nebo aplikace z různých míst po celém světě. Výstrahy testu dostupnosti vás upozorní, když testy dostupnosti selžou z určitého počtu míst. Výstrahy testu dostupnosti stejného typu prostředku jako výstrahy metriky (Microsoft. Insights/metricAlerts). Následující ukázka vytvoří jednoduchý test dostupnosti a přidruženou výstrahu.
 
 > [!NOTE]
 > `&amp`; je odkaz na entitu HTML pro &. Parametry adresy URL jsou pořád oddělené jednou &, ale pokud si adresu URL ve formátu HTML zmiňujete, budete ji muset zakódovat. Takže pokud máte v hodnotě parametru pingURL nějaké "&", musíte ho řídicím znakem " `&amp` ;".
@@ -3266,3 +3266,4 @@ Tato ukázka vytvoří pravidlo upozornění na metriku dynamických prahových 
 - [Získejte další ukázkové šablony pro Azure monitor](resource-manager-samples.md).
 - [Přečtěte si další informace o výstrahách](../platform/alerts-overview.md).
 - [Získání ukázky pro vytvoření skupiny akcí pomocí šablony Správce prostředků](resource-manager-action-groups.md)
+

@@ -6,11 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8d2e573f34895207a455838b5fc64f95560943d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 02d1bd9d204d88ba90218b1254c66ac0da80be85
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77670912"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323498"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Řešení potíží s nástroji pro analýzu chování uživatelů v Application Insights
 Máte dotazy týkající se [nástrojů pro analýzy chování uživatelů v Application Insights](usage-overview.md): [Uživatelé, relace, události](usage-segmentation.md), [trychtýře](usage-funnels.md), [toky uživatelů](usage-flows.md), [uchovávání](usage-retention.md)nebo kohorty? Tady jsou některé odpovědi.
@@ -18,13 +19,13 @@ Máte dotazy týkající se [nástrojů pro analýzy chování uživatelů v App
 ## <a name="counting-users"></a>Počítání uživatelů
 **Nástroje pro analýzu chování uživatelů ukazují, že má moje aplikace jeden uživatel nebo relaci, ale ví, že moje aplikace má mnoho uživatelů a relací. Jak mohu tyto nesprávné počty opravit?**
 
-Všechny události telemetrie v Application Insights mají [ID anonymního uživatele](../../azure-monitor/app/data-model-context.md) a [ID relace](../../azure-monitor/app/data-model-context.md) jako dvě z jejich standardních vlastností. Ve výchozím nastavení se všechny nástroje pro analýzu využití počítají jako uživatelé a relace na základě těchto ID. Pokud se tyto standardní vlastnosti neplní jedinečnými identifikátory pro každého uživatele a relaci vaší aplikace, uvidíte v nástrojích analýzy využití nesprávný počet uživatelů a relací.
+Všechny události telemetrie v Application Insights mají [ID anonymního uživatele](./data-model-context.md) a [ID relace](./data-model-context.md) jako dvě z jejich standardních vlastností. Ve výchozím nastavení se všechny nástroje pro analýzu využití počítají jako uživatelé a relace na základě těchto ID. Pokud se tyto standardní vlastnosti neplní jedinečnými identifikátory pro každého uživatele a relaci vaší aplikace, uvidíte v nástrojích analýzy využití nesprávný počet uživatelů a relací.
 
-Pokud sledujete webovou aplikaci, nejjednodušší řešení je přidat do aplikace [sadu Application Insights JavaScript SDK](../../azure-monitor/app/javascript.md) a zajistit, aby byl fragment skriptu načtený na každé stránce, kterou chcete monitorovat. Sada JavaScript SDK automaticky generuje identifikátory anonymního uživatele a relace a potom naplní události telemetrie pomocí těchto ID, jak jsou odesílány z vaší aplikace.
+Pokud sledujete webovou aplikaci, nejjednodušší řešení je přidat do aplikace [sadu Application Insights JavaScript SDK](./javascript.md) a zajistit, aby byl fragment skriptu načtený na každé stránce, kterou chcete monitorovat. Sada JavaScript SDK automaticky generuje identifikátory anonymního uživatele a relace a potom naplní události telemetrie pomocí těchto ID, jak jsou odesílány z vaší aplikace.
 
 Pokud sledujete webovou službu (bez uživatelského rozhraní), [vytvořte inicializátor telemetrie, který naplní vlastnosti anonymního uživatele a ID relace](usage-send-user-context.md) podle pojmů jedinečných uživatelů a relací vaší služby.
 
-Pokud vaše aplikace posílá [ověřená ID uživatelů](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users), můžete se na základě uživatelských identifikátorů uživatelů v nástroji uživatelů na základě ID ověřených uživatelů spolehnout. V rozevíracím seznamu Zobrazit Vyberte možnost ověření uživatelé.
+Pokud vaše aplikace posílá [ověřená ID uživatelů](./api-custom-events-metrics.md#authenticated-users), můžete se na základě uživatelských identifikátorů uživatelů v nástroji uživatelů na základě ID ověřených uživatelů spolehnout. V rozevíracím seznamu Zobrazit Vyberte možnost ověření uživatelé.
 
 Nástroje pro analýzu chování uživatelů v současné době nepodporují počítání uživatelů nebo relací na základě vlastností kromě anonymního ID uživatele, ověřeného ID uživatele nebo ID relace.
 
@@ -47,6 +48,6 @@ Pokud vaše aplikace odesílá příliš mnoho vlastních názvů událostí, zm
 
 * [Přehled nástrojů pro analýzu chování uživatelů](usage-overview.md)
 
-## <a name="get-help"></a>Získání pomoci
+## <a name="get-help"></a>Podpora
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 

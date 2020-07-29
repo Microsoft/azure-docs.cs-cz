@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/09/2020
-ms.openlocfilehash: b4882ec9eb8b81ae27a1e8eed2e5b4349fbeac3f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4e36a21e9dbab6f9bf814cdeb86f175ded38ea8e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516188"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327289"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Struktura protokolů Azure Monitor
 Možnost rychle získat přehled o datech pomocí [dotazu protokolu](log-query-overview.md) je výkonná funkce Azure monitor. Chcete-li vytvořit efektivní a užitečné dotazy, měli byste pochopit některé základní koncepty, jako je například umístění dat, která potřebujete, a způsob jejího strukturování. Tento článek poskytuje základní koncepty, které potřebujete, abyste mohli začít.
@@ -89,4 +89,5 @@ Zatímco každá tabulka v protokolech Azure Monitor má vlastní schéma, exist
 
 ## <a name="next-steps"></a>Další kroky
 - Přečtěte si o použití [Log Analytics k vytváření a úpravám prohledávání protokolů](./log-query-overview.md).
-- Projděte si [kurz psaní dotazů](../log-query/get-started-queries.md) pomocí nového dotazovacího jazyka.
+- Projděte si [kurz psaní dotazů](./get-started-queries.md) pomocí nového dotazovacího jazyka.
+

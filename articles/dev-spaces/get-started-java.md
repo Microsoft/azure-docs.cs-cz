@@ -2,18 +2,19 @@
 title: 'Vytvoření Kubernetes vývojového prostoru: Visual Studio Code & Java'
 services: azure-dev-spaces
 author: stepro
+ms.custom: devx-track-java
 ms.author: stephpr
 ms.date: 09/26/2018
 ms.topic: tutorial
 description: V tomto kurzu se dozvíte, jak pomocí Azure Dev Spaces a Visual Studio Code ladit a rychle iterovat aplikaci Java ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 5616e92d64854d145c30aa3fd32bf61d65ca4221
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: e68b417365c1a68a159ea555e9261fe5418b828e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224311"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323617"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-java-with-azure-dev-spaces"></a>Vytvoření Kubernetes vývojového prostoru: Visual Studio Code a Java s Azure Dev Spaces
 
@@ -92,7 +93,7 @@ Pokud chcete v Azure Dev Spaces ladit aplikace v Javě, stáhněte si a nainstal
 
 V této části vytvoříte webovou aplikaci v Javě a spustíte ji v kontejneru v prostředí Kubernetes.
 
-### <a name="create-a-java-web-app"></a>Vytvoření webové aplikace v Javě
+### <a name="create-a-java-web-app"></a>Vytvoření webové aplikace Java
 Stáhněte si kód z GitHubu tak, že přejdete na adresu [https://github.com/Azure/dev-spaces](https://github.com/Azure/dev-spaces) a vyberete **klonovat nebo stáhnout** a stáhnete úložiště GitHub do svého místního prostředí. Kód tohoto průvodce je tady: `samples/java/getting-started/webfrontend`.
 
 ## <a name="preparing-code-for-docker-and-kubernetes-development"></a>Příprava kódu pro vývoj v Dockeru a Kubernetes
@@ -160,7 +161,7 @@ Azure Dev Spaces neslouží jenom ke spuštění kódu v prostředí Kubernetes.
     return "Hello from webfrontend in Azure!";
     ```
 
-1. Uložte soubor.
+1. Soubor uložte.
 1. V okně terminálu spusťte `azds up`.
 
 Tento příkaz znovu sestaví image kontejneru a znovu nasadí Helm chart. Pokud chcete vidět, jak se změny kódu projevily v běžící aplikaci, jednoduše aktualizujte prohlížeč.

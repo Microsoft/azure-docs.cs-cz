@@ -7,11 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 02/16/2018
 ms.subservice: alerts
-ms.openlocfilehash: b75bda626f887f1224c1b0f18a80887983a2367d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff3d055840d69623234a799c62b1d8a6efd96ec5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77665302"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327085"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>Chování výstrah SMS ve skupinách akcí
 
@@ -29,7 +30,7 @@ Přijímač SMS nakonfigurovaný jako součást skupiny akcí obdrží zprávu S
 * Krátký název skupiny akcí, na kterou se tato výstraha odeslala
 * Název výstrahy
 
-| REPLY | Description |
+| REPLY | Popis |
 | ----- | ----------- |
 | DEZAKTIVOVAT`<Action Group Short name>` | Zakáže další zprávu SMS ze skupiny akcí. |
 | ABY`<Action Group Short name>` | Opětovné povolení serveru SMS ze skupiny akcí |
@@ -43,5 +44,5 @@ Přijímač SMS nakonfigurovaný jako součást skupiny akcí obdrží zprávu S
 ## <a name="next-steps"></a>Další kroky
 Získejte [Přehled výstrah protokolu aktivit](alerts-overview.md) a Naučte se, jak získat výstrahy.  
 Další informace o [omezování míry SMS](alerts-rate-limiting.md)  
-Další informace o [skupinách akcí](../../azure-monitor/platform/action-groups.md)
+Další informace o [skupinách akcí](./action-groups.md)
 

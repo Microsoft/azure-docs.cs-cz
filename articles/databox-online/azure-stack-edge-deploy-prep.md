@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 06/03/2019
+ms.date: 07/22/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: e6b752eab3f6a8f40fad8b2f947a82f86a8ccfe5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c8f64bc81afb941e13dd310a7efd9432639ec281
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652063"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131833"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge"></a>Kurz: Příprava na nasazení Azure Stack Edge  
 
@@ -22,14 +22,14 @@ Toto je první kurz v sérii kurzů pro nasazení, které jsou potřeba k úpln�
 
 K dokončení této instalace a procesu konfigurace potřebujete oprávnění správce. Příprava portálu trvá méně než 10 minut.
 
-V tomto kurzu:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 >
 > * Vytvoření nového prostředku
 > * Získání aktivačního klíče
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="get-started"></a>Začínáme
 
@@ -57,32 +57,35 @@ Než začnete, ujistěte se, že:
 
 * Máte přístup vlastníka nebo přispěvatele na úrovni skupiny prostředků pro Azure Stack prostředky hraniční/Data Box Gateway, IoT Hub a Azure Storage.
 
-  * Pokud chcete vytvořit Azure Stack hraničního nebo Data Box Gatewayho prostředku, měli byste mít oprávnění jako Přispěvatel (nebo vyšší) vymezené na úrovni skupiny prostředků. Musíte se také ujistit, že `Microsoft.DataBoxEdge` je poskytovatel zaregistrován. Informace o tom, jak se zaregistrovat, najdete v tématu [registrace poskytovatele prostředků](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
+  * Pro udělení přístupu přispěvatele byste měli být **vlastníkem** na úrovni předplatného. Pokud chcete někomu udělit přístup někomu jinému, v Azure Portal přejděte na **všechny služby služby**  >  **Subscriptions**  >  **řízení přístupu (IAM)**  >  **+ Přidat**  >  **Přidání přiřazení role**. Další informace najdete v tématu [kurz: udělení přístupu uživatele k prostředkům Azure pomocí Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal).
+
+  * Pokud chcete vytvořit Azure Stack hraničního nebo Data Box Gatewayho prostředku, měli byste mít oprávnění jako Přispěvatel (nebo vyšší) vymezené na úrovni skupiny prostředků. Musíte se také ujistit, že `Microsoft.DataBoxEdge` je poskytovatel prostředků zaregistrovaný. Informace o tom, jak zaregistrovat poskytovatele prostředků, najdete v tématu [registrace poskytovatele prostředků](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
   * Pokud chcete vytvořit libovolný prostředek IoT Hub, ujistěte se, že je poskytovatel Microsoft. Devices zaregistrovaný. Informace o tom, jak se zaregistrovat, najdete v tématu [registrace poskytovatele prostředků](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
   * Pokud chcete vytvořit prostředek účtu úložiště, musíte pro něj znovu použít rozsah přístupu přispěvatele nebo vyšší úrovně. Azure Storage je ve výchozím nastavení registrovaný poskytovatel prostředků.
 * K Graph API Azure Active Directory máte oprávnění správce nebo uživatel. Další informace najdete v tématu [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
 * Máte účet služby Microsoft Azure Storage a přihlašovací údaje účtu.
+* Žádné zásady Azure nastavené vaším správcem systému neblokuje. Další informace o zásadách najdete v tématu [rychlý Start: vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal).
 
 ### <a name="for-the-azure-stack-edge-device"></a>Pro zařízení Azure Stack Edge
 
 Před nasazením fyzického zařízení se ujistěte, že:
 
-- Zkontrolovali jste bezpečnostní údaje, které byly součástí balíčku dodávek.
-- Máte slot 1U, který je ve vašem datacentru k dispozici ve standardu 19 "Rack pro připojení zařízení.
-- Máte přístup k plochému, stabilnímu a pracovnímu pracovnímu prostoru, kde může zařízení bezpečně klidovat.
-- Lokalita, ve které máte v úmyslu zařízení nastavit, má standardní sílu napájení z nezávislého zdroje nebo jednotky PDU (AC) (napájení) s nepřerušitelným zdrojem napájení (UPS).
-- Máte přístup k fyzickému zařízení.
+* Zkontrolovali jste bezpečnostní údaje, které byly součástí balíčku dodávek.
+* Máte slot 1U, který je ve vašem datacentru k dispozici ve standardu 19 "Rack pro připojení zařízení.
+* Máte přístup k plochému, stabilnímu a pracovnímu pracovnímu prostoru, kde může zařízení bezpečně klidovat.
+* Lokalita, ve které máte v úmyslu zařízení nastavit, má standardní sílu napájení z nezávislého zdroje nebo jednotky PDU (AC) (napájení) s nepřerušitelným zdrojem napájení (UPS).
+* Máte přístup k fyzickému zařízení.
 
 ### <a name="for-the-datacenter-network"></a>Síť datacentra
 
 Než začnete, ujistěte se, že:
 
-- Síť v datacentru je nakonfigurovaná podle požadavků na síť pro vaše zařízení Azure Stack Edge. Další informace najdete v tématu [požadavky na systém Azure Stack Edge](azure-stack-edge-system-requirements.md).
+* Síť v datacentru je nakonfigurovaná podle požadavků na síť pro vaše zařízení Azure Stack Edge. Další informace najdete v tématu [požadavky na systém Azure Stack Edge](azure-stack-edge-system-requirements.md).
 
-- Pro normální provozní podmínky Azure Stack hraničního zařízení máte následující:
+* Pro normální provozní podmínky Azure Stack hraničního zařízení máte následující:
 
-    - Minimální šířka pásma ke stažení, která zajistí, že se zařízení bude aktualizovat, musí mít minimálně 10 MB/s.
-    - Minimálně 20 MB/s vyhrazeným nahráváním a šířkou pásma pro přenos souborů.
+  * Minimální šířka pásma ke stažení, která zajistí, že se zařízení bude aktualizovat, musí mít minimálně 10 MB/s.
+  * Minimálně 20 MB/s vyhrazeným nahráváním a šířkou pásma pro přenos souborů.
 
 ## <a name="create-a-new-resource"></a>Vytvoření nového prostředku
 
@@ -127,7 +130,7 @@ Chcete-li vytvořit prostředek Azure Stack Edge, proveďte v Azure Portal násl
 
     ![Dodací adresa pro nové zařízení](media/azure-stack-edge-deploy-prep/data-box-edge-resource1.png)
 
-6. Vyberte **Další: zkontrolovat + vytvořit**.
+6. Vyberte **Další: Zkontrolovat a vytvořit**.
 
 7. Na kartě **Revize + vytvořit** si přečtěte **Podrobnosti o cenách**, **podmínky použití**a podrobnosti k vašemu prostředku. Zaškrtněte pole se seznamem pro **uživatele, kteří si prošli podmínka ochrany osobních údajů**.
 
@@ -173,6 +176,3 @@ Přejděte k dalšímu kurzu, kde se dozvíte, jak nainstalovat Azure Stack Edge
 
 > [!div class="nextstepaction"]
 > [Nainstalovat Azure Stack Edge](./azure-stack-edge-deploy-install.md)
-
-
-

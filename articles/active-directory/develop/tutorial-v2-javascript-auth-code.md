@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-javascript
-ms.openlocfilehash: 63e94916232c4b3c7a275e51bdcde496b75ae913
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 4613e22193de8dc374d1a9e1a293c317fb9c1b9b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129096"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311534"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>Kurz: přihlášení uživatelů a volání rozhraní API Microsoft Graph z jednostránkové aplikace v JavaScriptu (SPA) pomocí toku kódu ověřování
 
@@ -30,6 +30,8 @@ V tomto kurzu se dozvíte, jak vytvořit jednostránkovou aplikaci v JavaScriptu
 > * Zavolejte Microsoft Graph nebo vlastní rozhraní API, které vyžaduje přístupové tokeny získané z koncového bodu Microsoft Identity Platform.
 
 MSAL.js 2,0 vylepšuje MSAL.js 1,0 tím, že podporuje tok autorizačního kódu v prohlížeči místo implicitního toku udělení. MSAL.js **2,0 nepodporuje implicitní** tok.
+
+[!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
 
 ## <a name="how-the-tutorial-app-works"></a>Jak funguje aplikace tutorial
 
@@ -374,7 +376,7 @@ let username = "";
 
 function loadPage() {
     /**
-     * See here for more info on account retrieval: 
+     * See here for more info on account retrieval:
      * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-common/docs/Accounts.md
      */
     const currentAccounts = myMSALObj.getAllAccounts();
@@ -414,7 +416,7 @@ function signOut() {
 
 function getTokenPopup(request) {
     /**
-     * See here for more info on account retrieval: 
+     * See here for more info on account retrieval:
      * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-common/docs/Accounts.md
      */
     request.account = myMSALObj.getAccountByUsername(username);
@@ -424,13 +426,13 @@ function getTokenPopup(request) {
             // fallback to interaction when silent call fails
             return myMSALObj.acquireTokenPopup(request).then(tokenResponse => {
                 console.log(tokenResponse);
-                
+
                 return tokenResponse;
             }).catch(error => {
                 console.error(error);
             });
         } else {
-            console.warn(error);   
+            console.warn(error);
         }
     });
 }
@@ -479,7 +481,7 @@ function handleResponse(resp) {
         showWelcomeMessage(resp.account);
     } else {
         /**
-         * See here for more info on account retrieval: 
+         * See here for more info on account retrieval:
          * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-common/docs/Accounts.md
          */
         const currentAccounts = myMSALObj.getAllAccounts();
@@ -509,7 +511,7 @@ function signOut() {
 
 function getTokenRedirect(request) {
     /**
-     * See here for more info on account retrieval: 
+     * See here for more info on account retrieval:
      * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-common/docs/Accounts.md
      */
     request.account = myMSALObj.getAccountByUsername(username);
@@ -519,7 +521,7 @@ function getTokenRedirect(request) {
                 // fallback to interaction when silent call fails
                 return myMSALObj.acquireTokenRedirect(request);
             } else {
-                console.warn(error);   
+                console.warn(error);
             }
         });
 }

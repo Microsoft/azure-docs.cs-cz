@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.openlocfilehash: a3a59b6658e6ea0229f65492b20b5f5f2882d12a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 46b7479df6d087915cfe81895a786a528da6b9bb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499235"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327901"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Odeslání ID kontextů uživatele pro povolení prostředí využití v Azure Application Insights
 
@@ -22,7 +22,7 @@ Application Insights vám umožní monitorovat a sledovat uživatele pomocí sad
 - [Uživatelé, relace, události](./usage-segmentation.md)
 - [Trychtýře](./usage-funnels.md)
 - [Uchovávání informací](./usage-retention.md) Kohorty
-- [Sešity](../platform/workbooks-overview.md)
+- [Workbooks](../platform/workbooks-overview.md)
 
 Aby bylo možné sledovat, co uživatel pracuje v průběhu času, Application Insights potřebovat ID pro každého uživatele nebo relaci. Do každé vlastní události nebo zobrazení stránky zahrňte následující ID.
 
@@ -30,7 +30,7 @@ Aby bylo možné sledovat, co uživatel pracuje v průběhu času, Application I
 - Relace: zahrňte ID relace.
 
 > [!NOTE]
-> Toto je pokročilý článek s přehledem ručních kroků sledování aktivity uživatelů pomocí Application Insights. V případě mnoha webových aplikací se **tyto kroky nemusí vyžadovat**, protože výchozí sady SDK na straně serveru ve spojení se sadou [SDK na straně klienta nebo prohlížeče JavaScript](../../azure-monitor/app/website-monitoring.md )jsou často dostačující k automatickému sledování aktivity uživatelů. Pokud jste ještě nenakonfigurovali [monitorování na straně klienta](../../azure-monitor/app/website-monitoring.md ) kromě sady SDK na straně serveru, proveďte nejprve test a zjistěte, jestli se nástroje pro analýzu chování uživatelů provádějí podle očekávání.
+> Toto je pokročilý článek s přehledem ručních kroků sledování aktivity uživatelů pomocí Application Insights. V případě mnoha webových aplikací se **tyto kroky nemusí vyžadovat**, protože výchozí sady SDK na straně serveru ve spojení se sadou [SDK na straně klienta nebo prohlížeče JavaScript](./website-monitoring.md)jsou často dostačující k automatickému sledování aktivity uživatelů. Pokud jste ještě nenakonfigurovali [monitorování na straně klienta](./website-monitoring.md) kromě sady SDK na straně serveru, proveďte nejprve test a zjistěte, jestli se nástroje pro analýzu chování uživatelů provádějí podle očekávání.
 
 ## <a name="choosing-user-ids"></a>Výběr ID uživatelů
 
@@ -134,4 +134,5 @@ namespace MvcWebRole.Telemetry
     - [Uživatelé, relace a události](usage-segmentation.md)
     - [Trychtýře](usage-funnels.md)
     - [Uchovávání](usage-retention.md)
-    - [Sešity](../../azure-monitor/platform/workbooks-overview.md)
+    - [Workbooks](../platform/workbooks-overview.md)
+

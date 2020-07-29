@@ -10,11 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 4b1abe8efb4baaf260005df1a4ee5b6d1645715a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9bd2db8bcc427118a76f87e49ade422a74a11c1
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84169215"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87276920"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Zotavení po havárii a převzetí služeb při selhání účtu úložiště
 
@@ -131,7 +132,7 @@ Vzhledem k tomu, že poskytovatel prostředků Azure Storage převezme služby p
 
 ### <a name="azure-virtual-machines"></a>Virtuální počítače Azure
 
-Virtuální počítače Azure při převzetí služeb při selhání v rámci účtu převezmou služby při selhání. Pokud primární region přestane být k dispozici a převezmete služby při selhání do sekundární oblasti, budete muset po převzetí služeb při selhání znovu vytvořit všechny virtuální počítače. K převzetí služeb při selhání účtu taky může dojít ke ztrátě dat. Microsoft doporučuje následující pokyny pro [vysokou dostupnost](../../virtual-machines/windows/manage-availability.md) a [zotavení po havárii](../../virtual-machines/virtual-machines-disaster-recovery-guidance.md) , které jsou specifické pro virtuální počítače v Azure.
+Virtuální počítače Azure při převzetí služeb při selhání v rámci účtu převezmou služby při selhání. Pokud primární region přestane být k dispozici a převezmete služby při selhání do sekundární oblasti, budete muset po převzetí služeb při selhání znovu vytvořit všechny virtuální počítače. K převzetí služeb při selhání účtu taky může dojít ke ztrátě dat. Microsoft doporučuje následující pokyny pro [vysokou dostupnost](../../virtual-machines/windows/manage-availability.md) a [zotavení po havárii](../../virtual-machines/windows/backup-recovery.md) , které jsou specifické pro virtuální počítače v Azure.
 
 ### <a name="azure-unmanaged-disks"></a>Nespravované disky Azure
 
@@ -159,7 +160,7 @@ Pro převzetí služeb při selhání účtu se nepodporují následující funk
 - Nepovedlo se převzít služby účtů úložiště obsahující objekty blob bloku Premium. Účty úložiště, které podporují objekty blob bloku Premium, v současné době nepodporují geografickou redundanci.
 - Nepovedlo se převzít služby účtů úložiště obsahující jakékoli povolené kontejnery [zásad neměnnosti worm](../blobs/storage-blob-immutable-storage.md) . Odemčené nebo uzamčené časové uchovávání na základě času nebo zásady právního blokování brání převzetí služeb při selhání, aby se zachovalo dodržování předpisů
 
-## <a name="copying-data-as-an-alternative-to-failover"></a>Kopírování dat jako alternativu k převzetí služeb při selhání
+## <a name="copying-data-as-an-alternative-to-failover"></a>Kopírování dat jako alternativa k převzetí služeb při selhání
 
 Pokud je váš účet úložiště nakonfigurovaný pro přístup pro čtení sekundárního, můžete aplikaci navrhnout tak, aby se načetla ze sekundárního koncového bodu. Pokud v případě výpadku v primární oblasti nechcete převzít služby při selhání, můžete pomocí nástrojů, jako jsou [AzCopy](storage-use-azcopy.md), [Azure PowerShell](/powershell/module/az.storage/)nebo [knihovny pro přesun dat Azure](../common/storage-use-data-movement-library.md) , kopírovat data z účtu úložiště v sekundární oblasti do jiného účtu úložiště v neovlivněné oblasti. Pak můžete své aplikace nasměrovat na tento účet úložiště pro čtení i zápis.
 
@@ -170,7 +171,7 @@ Pokud je váš účet úložiště nakonfigurovaný pro přístup pro čtení se
 
 V extrémních situacích, kdy dojde ke ztrátě oblasti z důvodu významné havárie, může společnost Microsoft zahájit místní převzetí služeb při selhání. V takovém případě není nutná žádná akce s vaší částí. Dokud neproběhne převzetí služeb při selhání spravované Microsoftem, nebudete mít k účtu úložiště přístup pro zápis. Vaše aplikace se můžou číst ze sekundární oblasti, pokud je váš účet úložiště nakonfigurovaný pro RA-GRS nebo RA-GZRS.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 - [Použití geografické redundance k návrhu vysoce dostupných aplikací](geo-redundant-design.md)
 - [Zahájení převzetí služeb při selhání účtu](storage-initiate-account-failover.md)

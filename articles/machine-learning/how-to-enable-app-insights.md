@@ -5,18 +5,18 @@ description: Monitorování webových služeb nasazených pomocí Azure Machine 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: larryfr
 author: blackmist
-ms.date: 06/09/2020
-ms.custom: tracking-python
-ms.openlocfilehash: d28cd3b1d8722970505eb313bd8e80589ce9ff87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/23/2020
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: 2bc3eb72ff0c5d29fd72de848abf87dfe84e2a01
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743502"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320217"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Monitorování a shromažďování dat z koncových bodů webové služby ML
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,7 +36,7 @@ Kromě shromažďování výstupních dat a odpovědí koncového bodu můžete 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 * Azure Machine Learning pracovní prostor, místní adresář, který obsahuje vaše skripty a nainstalovanou sadu Azure Machine Learning SDK pro Python. Informace o tom, jak tyto požadavky získat, najdete v tématu [Jak konfigurovat vývojové prostředí](how-to-configure-environment.md) .
 
@@ -153,15 +153,20 @@ Pokud jste připraveni nasadit model pomocí těchto kroků, můžete Azure Appl
 1. Vyberte **Povolit diagnostiku Application Insights a shromažďování dat** .
 
     ![Povolit App Insights](./media/how-to-enable-app-insights/enable-app-insights.png)
-## <a name="evaluate-data"></a>Vyhodnotit data
+
+## <a name="view-metrics-and-logs"></a>Zobrazit metriky a protokoly
+
 Data vaší služby se ukládají do účtu Azure Application Insights v rámci stejné skupiny prostředků jako Azure Machine Learning.
 Zobrazení:
 
-1. V [Azure Portal](https://ms.portal.azure.com/) přejděte do svého pracovního prostoru Azure Machine Learning a klikněte na odkaz Application Insights.
+1. V [studiu](https://ml.azure.com/)přejdete do svého pracovního prostoru Azure Machine Learning.
+1. Vyberte **koncové body**.
+1. Vyberte nasazenou službu.
+1. Posuňte se dolů a vyhledejte **adresu url Application Insights** a klikněte na odkaz.
 
-    [![AppInsightsLoc](./media/how-to-enable-app-insights/AppInsightsLoc.png)](././media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
+    [![Najít adresu URL Application Insights](./media/how-to-enable-app-insights/appinsightsloc.png)](././media/how-to-enable-app-insights/appinsightsloc.png#lightbox)
 
-1. Na kartě **Přehled** nebo v části __monitorování__ v seznamu na levé straně vyberte __protokoly__.
+1. V Isights aplikace na kartě **Přehled** nebo v části __monitorování__ v levém seznamu vyberte __protokoly__.
 
     [![Karta Přehled monitorování](./media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
@@ -186,7 +191,7 @@ Můžete použít [průběžný export](https://docs.microsoft.com/azure/azure-m
 
 Azure Data Factory, kanály Azure ML nebo jiné nástroje pro zpracování dat se dají použít k transformaci dat podle potřeby. Po transformaci dat je můžete zaregistrovat v pracovním prostoru Azure Machine Learning jako datovou sadu. Postup najdete v tématu [jak vytvořit a zaregistrovat datové sady](how-to-create-register-datasets.md).
 
-   [![Průběžný export](./media/how-to-enable-app-insights/continuous-export-setup.png)](././media/how-to-enable-app-insights/continuous-export-setup.png)
+:::image type="content" source="media/how-to-enable-app-insights/continuous-export-setup.png" alt-text="Průběžný export":::
 
 
 ## <a name="example-notebook"></a>Příklad poznámkového bloku

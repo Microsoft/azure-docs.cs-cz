@@ -5,15 +5,127 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
-ms.date: 04/20/2020
-ms.openlocfilehash: fc8304fb068152c800d7b71f77fb601956fb6510
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/27/2020
+ms.openlocfilehash: 113249f56c1f5f9c035ec2ff6ccb7309dd355763
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023395"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281340"
 ---
 # <a name="changelog"></a>Protokol změn #
+
+## <a name="235-official-update-june-1-2020"></a>2.3.5 (oficiální aktualizace Červen 1 2020)
+
+### <a name="bug-fixes-235"></a>Opravy chyb 2.3.5
+
+- Přístup Naslouchací proces kláves ESC v podokně možnosti je připojen k dokumentu
+- Přístup Zabránit zobrazení uživatelského rozhraní přehrávače, pokud ovládací panel nebo nabídka Možnosti obsahuje fokus
+- Na řídicím panelu se zobrazuje nesprávná doba chodu, když je povolené nastavení displeje na zdi.
+
+### <a name="changes-235"></a>Změny 2.3.5
+
+- Přidání chybové zprávy pro kód chyby 0x00400005 a zdokumentované
+
+## <a name="234-official-update-march-4-2020"></a>2.3.4 (oficiální aktualizace, březen 4 2020)
+
+### <a name="bug-fixes-234"></a>Opravy chyb 2.3.4
+
+- Nejde nastavit PlayReady overrideLicenseAcquistionUrl
+- Nejde přehrát nějaký obsah s nekontinuitou.
+- Přístup Hodnota atributu ID pro výstrahu čtečky obrazovky musí být jedinečná.
+- Přístup Při navigaci v dialogovém okně Nastavení skrytých titulků se fokus zaměřuje mimo dialogové okno.
+
+### <a name="changes-234"></a>Změny 2.3.4
+
+- Obsah protokolu po úspěšném stažení, aby pomohl analyzovat chyby dešifrování 2.3.3 (oficiální aktualizace, listopad 12 2019)
+
+### <a name="features-234"></a>Funkce 2.3.4
+
+- Přidání podpory pro zobrazení času na zdi jako překryvu a na ovládacím panelu
+
+### <a name="bug-fixes-234"></a>Opravy chyb 2.3.4
+
+- Přepínač zvukové stopy funguje, ale výstup chyby v objektu IE11 a motiv nepodporuje vlastnost nebo metodu Enabled.
+- Pokud je vyrovnávací paměť plně načtená, přepínač zvukové stopy se nezdařil.
+- Přepínač zvukové stopy se nezdařil, když uživatel pozastaví video a přepne mezi zvukovým stopami velmi rychle.
+- Přístup Pro ovládací prvek video v přehrávači videa nejsou definovány popisy tlačítek
+- Chybějící tlačítka hlasitosti v Html5 v závislosti na tom, kdy se přijímá ' loadstart '
+- Přístup Neexistuje způsob, jak nastavit alternativní text pro plakátový obrázek.
+- Přístup Po výběru možnosti Hotovo v dialogovém okně Nastavení popisků došlo ke ztrátě fokusu aplikace
+- Přístup V části segmenty Preview jsou pro ' video ' definovány nesprávné atributy ARIA
+
+### <a name="changes-234"></a>Změny 2.3.4
+
+- Při přehrávání HLSu v iOS a MacOS Safari se odstranil prázdný popisek/záznam titulků.
+- Snížil se počet 412s pro popisky IMSC1.
+- Upozornění na výstup v konzole pro 10 po sobě jdoucích prázdných odpovědí na IMSC1 titulků, abychom usnadnili živé ladění
+
+## <a name="232-official-update-october-9-2019"></a>2.3.2 (oficiální aktualizace říjen 9 2019)
+
+### <a name="features"></a>Funkce
+
+– Přidala se podpora PlayReady pro PŘERUŠOVANé přehrávání pro prohlížeč chrom Edge.
+
+### <a name="bug-fixes-232"></a>Opravy chyb 2.3.2
+
+- Aktuální rychlost přehrávání se v nabídce rychlost přehrávání vizuálně nezobrazuje, pokud ji uživatel ručně nenastaví.
+- Přístup Podokno nastavení se nebalí s klíčem "ESC".
+- Přístup Klávesová zkratka AMP nefunguje, když je zapnutý Narrator
+
+### <a name="changes-232"></a>Změny 2.3.2
+
+- V případě prohlížečů, které nepodporují zvukový kodek E-AC3, jsou zvukové stopy E-AC3 v nabídce zvukové stopy skryté.
+- Pro prohlížeče, které podporují zvukový kodek E-AC3, je ve výchozím nastavení vybráno zvukové stopy E-AC3.
+- V případě prohlížečů, které nepodporují přepínání zvukového kodeku, jsou zvukové stopy s jiným kodekem z vybrané stopy v nabídce zvukové stopy skryté.
+
+## <a name="231-official-update-august-12-2019"></a>2.3.1 (oficiální aktualizace srpen 12 2019)
+
+### <a name="features-231"></a>Funkce 2.3.1
+
+- Signalizace události, když jsou EMSG boxy přijímány v podobě přerušovaného přehrávání – přidání podpory k zobrazení zvukových stop EC-3 v nabídce zvuk v prohlížečích podporujících ES-3 a umožnění přepínání zvukové stopy z AAC na EC3 a naopak v prohlížeči Edge na bázi Chromimum
+
+### <a name="bug-fixes-231"></a>Opravy chyb 2.3.1
+
+- Nabídka zvukové stopy je po odebrání běhů EC-3 poškozená.
+- Aktuální čas může být skvělý než doba trvání videa.
+- Nastavení rychlosti přehrávání prostřednictvím initialSpeed nefunguje
+- Někdy se může stát, že hráč po hledání vypadá zablokované.
+- Na okraji a v IE na dotykové obrazovce po přiblížení na stránku se stisknutí nebo najetí myší přes okno SeekBar nezíská přesně správný segment videa.
+- Přístup Označení standardu ARIA pro Play/Pause není popisný pro chybu v programu Video Player map Live segment Nenalezeno, aby se mohl správně připojit k chybě amp.
+- Přístup Role Aria používané pro Play/Pause musí odpovídat platným hodnotám (. VJS-text-Track-Display).
+- Přístup Některé role ARIA musí být obsažené v konkrétních nadřazených prvkůch.
+- Přístup K dispozici není žádný popis pro tlačítko Přehrát/pozastavit IMSC1 titulků videa. titulky se můžou po hledání v aktuální video/zvukové vyrovnávací paměti zmizet.
+
+### <a name="changes-231"></a>Změny 2.3.1
+
+- Po získání segmentDecryptError a přehrávači už je na živém okraji, Player teď aktualizuje manifest, místo abyste vyzkoušeli další segment.
+- Přidání dalšího protokolování pro diagnostiku
+- Aktualizovaná dokumentace k podpoře zahrňte FairPlay pro iOS Safari
+- Přidal se příklad pro možnost srclang možnosti IMSC1.
+- Přidání odsazení, textPadding, přepsání boxShadow pro textové stopy
+- Přidání ErrorCode (0x0020025B) pro odlišení toho, že se stahování segmentu nepovedlo kvůli nejenom vyvolání 0x00200259
+
+## <a name="230-official-release-april-30-2019"></a>2.3.0 (oficiální verze vydaná v dubnu 30 2019)
+
+### <a name="features-230"></a>Funkce 2.3.0
+
+- Přidání podpory pro titulky IMSC1 pro POMLČKu
+- Přidaná podpora pro prostředky pouze pro video pro POMLČKu
+- Přidání rozhraní API presentationTimeOffsetInSec
+
+### <a name="bug-fixes-230"></a>Opravy chyb 2.3.0
+
+- Profil heuristiky AMP LowLatency je v konfliktu s přehráváním zvukového videa v iOS a zrušením ztlumení pro některé jazyky mají špatné překlady.
+- Hodnota Aria-ValueNow posuvníku indikátoru průběhu je někdy nesprávná.
+- Hodnota role Aria zobrazovaného textu stopy není správná.
+
+### <a name="changes-230"></a>2.3.0 změny
+
+- Protokoly teď zahrnují velikost stažených fragmentů multimédií.
+- Odebrána podpora IE 9 a IE 10
+- Aktualizovala se ukázka CEA708, aby se zobrazovaly titulky zarovnané vlevo.
+- Zahrnout MediaError. Message do protokolů pro selhání přehrávání
 
 ## <a name="224-official-update-february-22-2019"></a>2.2.4 (oficiální aktualizace z února 22 2019) ##
 
@@ -31,7 +143,7 @@ ms.locfileid: "87023395"
 
 ## <a name="223-official-update-january-9-2019"></a>2.2.3 (oficiální aktualizace lednu 9 2019) ##
 
-### <a name="features"></a>Funkce ###
+### <a name="features-223"></a>Funkce 2.2.3 ###
 
 - Zapnut HLS Přidání nabídky zvukové stopy pro přehrávání Safari HLS
 

@@ -1,6 +1,5 @@
 ---
-title: Povolit protokolování webové služby
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (Classic): povolení protokolování webové služby – Azure'
 description: Naučte se, jak povolit protokolování pro webové služby Machine Learning Studio (Classic). Protokolování poskytuje další informace, které vám pomůžou při řešení potíží s rozhraními API.
 services: machine-learning
 author: likebupt
@@ -11,14 +10,17 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: how-to
 ms.date: 06/15/2017
-ms.openlocfilehash: 71516641ab5110511d58f7e453759271aff9885a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: baaad137e4a5bc5268642addb5779961b7be3b04
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84705827"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326235"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>Povolit protokolování pro webové služby Azure Machine Learning Studio (Classic)
+
+**platí pro:** ![ žádná](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasická) 
+
 
 Tento dokument poskytuje informace o schopnostech protokolování webových služeb Machine Learning Studio (Classic). Protokolování poskytuje další informace, mimo jiné číslo chyby a zprávu, která vám může pomoct řešit vaše volání rozhraní API pro Machine Learning Studio (Classic).  
 
@@ -50,7 +52,7 @@ Protokolování se povoluje na portálu [Web Services pro Azure Machine Learning
 
    1. V [Azure Portal](https://portal.azure.com)přejdete do účtu úložiště přidruženého k webové službě.
 
-   2. V části **Blob Service** klikněte na **Kontejnery**.
+   2. V části **BLOB Service**klikněte na **kontejnery**.
 
    3. Pokud kontejner **ml-Diagnostics** neexistuje, klikněte na **+ kontejner**, udělte kontejneru název "ml-Diagnostics" a vyberte **typ přístupu** jako "blob". Klikněte na **OK**.
 

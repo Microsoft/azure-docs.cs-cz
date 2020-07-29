@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 03d0367b3794069908b31ee7af1250fd70f1bdf7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7319adfc88eedb007677a78693ab0b2e514e646f
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525207"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171664"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -104,6 +104,7 @@ Informace o integraci služeb Azure do komponent SAP najdete v těchto tématech
 
 ## <a name="change-log"></a>Protokol změn
 
+- 07/23/2020: přidání [velké instance SAP HANA uložit v pomocí rezervovaného článku Azure](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md) – vysvětlení toho, co potřebujete znát, než si koupíte velké instance SAP HANA rezervaci a jak si koupit
 - 07/16/2020: Popište, jak použít Azure PowerShell k instalaci rozšíření nového virtuálního počítače pro SAP v [Průvodci nasazením](deployment-guide.md) .
 - 7/04/2020: vydání [služby Azure monitor pro řešení SAP (Preview)](./azure-monitor-overview.md)
 - 07/01/2020: Navrhněte levnější konfiguraci úložiště na základě nárůstu funkčnosti Azure Premium Storage v dokumentu [SAP HANA konfiguracích úložiště virtuálních počítačů Azure](./hana-vm-operations-storage.md) . 

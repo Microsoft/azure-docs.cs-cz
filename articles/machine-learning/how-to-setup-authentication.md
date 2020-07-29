@@ -8,15 +8,15 @@ ms.author: larryfr
 ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.date: 06/17/2020
-ms.custom: has-adal-ref
-ms.openlocfilehash: 34641e7a883f6b07fe63595cf5750df2569640f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to, has-adal-ref
+ms.openlocfilehash: 653ca578e9fafd245c22bcfd7db038d5c23da016
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84974683"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326949"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Nastavení ověřování pro Azure Machine Learning prostředky a pracovní postupy
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -46,7 +46,7 @@ Většina příkladů v dokumentaci a vzorcích používá interaktivní ověřo
     ws = Workspace.from_config()
     ```
 
-    `from_config()`Funkce vyhledá soubor JSON, který obsahuje informace o připojení k pracovnímu prostoru.
+    Funkce `from_config()` hledá soubor JSON obsahující informace o připojení k vašemu pracovnímu prostoru.
 
 * Použití `Workspace` konstruktoru k poskytnutí informací o předplatném, skupině prostředků a pracovním prostoru se také zobrazí výzva k zadání interaktivního ověřování.
 
@@ -328,7 +328,7 @@ Další informace o ověřování pro nasazený model najdete v tématu [Vytvoř
 
 ### <a name="token-based-web-service-authentication"></a>Ověřování webové služby založené na tokenech
 
-Pokud povolíte ověřování pomocí tokenu pro webovou službu, uživatelé musí pro přístup k této webové službě předložit Azure Machine Learning JSON Web Token. Platnost tokenu vyprší po zadaném časovém rámci a je nutné ji aktualizovat, aby bylo možné pokračovat v volání.
+Pokud povolíte ověřování pomocí tokenu pro webovou službu, uživatelé musí pro přístup k této webové službě předložit Azure Machine Learning JSON Web Token. Platnost tokenu po zadané době vyprší a je potřeba ji obnovit, pokud chcete provádět další volání.
 
 * Ověřování tokenu je **ve výchozím nastavení** při nasazení do služby Azure Kubernetes zakázané.
 * Ověřování tokenu se při nasazení do Azure Container Instances **nepodporuje** .
@@ -370,7 +370,7 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> Po čase tokenu budete muset požádat o nový token `refresh_by` . Pokud potřebujete aktualizovat tokeny mimo sadu Python SDK, jednu z možností je použít REST API s ověřováním instančního objektu pro pravidelné `service.get_token()` volání, jak je popsáno výše.
+> Po uplynutí doby `refresh_by` tokenu je potřeba vyžádat si nový token. Pokud potřebujete aktualizovat tokeny mimo sadu Python SDK, jednu z možností je použít REST API s ověřováním instančního objektu pro pravidelné `service.get_token()` volání, jak je popsáno výše.
 >
 > Důrazně doporučujeme vytvořit pracovní prostor Azure Machine Learning ve stejné oblasti jako cluster služby Azure Kubernetes.
 >

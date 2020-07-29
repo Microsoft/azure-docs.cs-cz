@@ -3,24 +3,24 @@ title: Analýza využití pomocí Azure Application Insights | Dokumentace Micro
 description: Pochopte uživatele a to, co dělají s vaší aplikací.
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 1acc803d66bef29a77266d4e38e1605ffd75f36f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bd0b95fe92171d2c5a1515941dbf86a0e31e04be
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014061"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323549"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Analýzy používání pomocí nástroje Application Insights
 
-Které funkce vaší webové nebo mobilní aplikace jsou nejoblíbenější? Dosáhnou vaši uživatelé své cíle s vaší aplikací? Vynechává se konkrétní body a později se vrátí?  [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) pomáhá získat výkonné přehledy o tom, jak uživatelé vaši aplikaci používají. Pokaždé, když aktualizujete aplikaci, můžete posoudit, jak dobře funguje pro uživatele. V tomto článku se seznámíte s tím, jak můžete provádět rozhodování o dalších cyklech vývoje na základě dat.
+Které funkce vaší webové nebo mobilní aplikace jsou nejoblíbenější? Dosáhnou vaši uživatelé své cíle s vaší aplikací? Vynechává se konkrétní body a později se vrátí?  [Azure Application Insights](./app-insights-overview.md) pomáhá získat výkonné přehledy o tom, jak uživatelé vaši aplikaci používají. Pokaždé, když aktualizujete aplikaci, můžete posoudit, jak dobře funguje pro uživatele. V tomto článku se seznámíte s tím, jak můžete provádět rozhodování o dalších cyklech vývoje na základě dat.
 
 ## <a name="send-telemetry-from-your-app"></a>Poslat telemetrii z vaší aplikace
 
 Nejlepší prostředí získáte instalací Application Insights jak v kódu aplikačního serveru, tak i na webových stránkách. Klientské a serverové součásti vaší aplikace odesílají telemetrii zpátky do Azure Portal k analýze.
 
-1. **Serverový kód:** Nainstalujte příslušný modul pro [ASP.NET](../../azure-monitor/app/asp-net.md), [Azure](../../azure-monitor/app/app-insights-overview.md), [Java](../../azure-monitor/app/java-get-started.md), [Node.js](../../azure-monitor/app/nodejs.md)nebo [jinou](../../azure-monitor/app/platforms.md) aplikaci.
+1. **Serverový kód:** Nainstalujte příslušný modul pro [ASP.NET](./asp-net.md), [Azure](./app-insights-overview.md), [Java](./java-get-started.md), [Node.js](./nodejs.md)nebo [jinou](./platforms.md) aplikaci.
 
-    * *Nechcete instalovat kód serveru? Stačí [vytvořit prostředek služby Azure Application Insights](../../azure-monitor/app/create-new-resource.md ).*
+    * *Nechcete instalovat kód serveru? Stačí [vytvořit prostředek služby Azure Application Insights](./create-new-resource.md).*
 
 2. **Kód webové stránky:** Před zavřením přidejte na svou webovou stránku následující skript ``</head>`` . Nahraďte klíč instrumentace příslušnou hodnotou pro váš Application Insights prostředek:
     
@@ -36,7 +36,7 @@ Nejlepší prostředí získáte instalací Application Insights jak v kódu apl
 
     Další informace o pokročilejších konfiguracích pro monitorování webů najdete v [referenčním článku o sadě JavaScript SDK](./javascript.md).
 
-3. **Kód mobilní aplikace:** Pomocí sady App Center SDK můžete shromažďovat události z vaší aplikace a pak tyto události poslat do Application Insights pro účely analýzy pomocí [této příručky](../../azure-monitor/learn/mobile-center-quickstart.md).
+3. **Kód mobilní aplikace:** Pomocí sady App Center SDK můžete shromažďovat události z vaší aplikace a pak tyto události poslat do Application Insights pro účely analýzy pomocí [této příručky](../learn/mobile-center-quickstart.md).
 
 4. **Získat telemetrii:** Spusťte projekt v režimu ladění po dobu několika minut a potom vyhledejte výsledky v okně Přehled v Application Insights.
 
@@ -103,7 +103,7 @@ Nebo na straně serveru:
 
 K těmto událostem můžete přiřadit hodnoty vlastností, abyste mohli události filtrovat nebo rozdělit při jejich kontrole na portálu. Kromě toho je ke každé události připojená standardní sada vlastností, jako je například anonymní ID uživatele, což vám umožňuje sledovat posloupnost aktivit jednotlivých uživatelů.
 
-Přečtěte si další informace o [vlastních událostech](../../azure-monitor/app/api-custom-events-metrics.md#trackevent) a [vlastnostech](../../azure-monitor/app/api-custom-events-metrics.md#properties).
+Přečtěte si další informace o [vlastních událostech](./api-custom-events-metrics.md#trackevent) a [vlastnostech](./api-custom-events-metrics.md#properties).
 
 ### <a name="slice-and-dice-events"></a>Události řezů a kostek
 
@@ -121,7 +121,7 @@ Pro tuto techniku připojíte jedinečné hodnoty vlastností ke všem telemetri
 
 Na portálu Application Insights vyfiltrujte a rozdělte data podle hodnot vlastností, aby bylo možné porovnat různé verze.
 
-K tomu je potřeba [nastavit inicializátor telemetrie](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer):
+K tomu je potřeba [nastavit inicializátor telemetrie](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer):
 
 **Aplikace v ASP.NET**
 
@@ -175,5 +175,6 @@ Všechny nové TelemetryClients automaticky přidají hodnotu vlastnosti, kterou
    - [Trychtýře](usage-funnels.md)
    - [Uchovávání](usage-retention.md)
    - [Toky uživatele](usage-flows.md)
-   - [Sešity](../../azure-monitor/platform/workbooks-overview.md)
+   - [Workbooks](../platform/workbooks-overview.md)
    - [Přidat kontext uživatele](usage-send-user-context.md)
+

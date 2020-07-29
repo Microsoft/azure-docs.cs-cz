@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 35590fd8aefb8b6a90adeef52fabe773663403c2
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 2f25cab211d24facea7863c15b6d7671a9657ae9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85510987"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290686"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>Kurz: Diagnostika, oprava a potvrzení změn ve vašem dovednosti
 
@@ -23,7 +23,7 @@ V tomto článku použijete Azure Portal k přístupu k relacím ladění, abyst
 > Relace ladění je funkce ve verzi Preview, která se poskytuje bez smlouvy o úrovni služeb, a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -73,7 +73,7 @@ V této části se účtují a poskytnutá kolekce používají k vytvoření zd
 1. V části **soubory**  >  **nové**vyberte kolekci, kterou chcete importovat.
 1. Po importu kolekce rozbalte seznam akce (...).
 1. Klikněte na **Upravit**.
-1. Zadejte název vašeho searchService (například pokud je koncový bod https://mydemo.search.windows.net , název služby je "mydemo").
+1. Zadejte název vašeho searchService (například pokud je koncový bod `https://mydemo.search.windows.net` , název služby je " `mydemo` ").
 1. Zadejte apiKey buď s primárním nebo sekundárním klíčem vaší vyhledávací služby.
 1. Zadejte storageConnectionString ze stránky klíče účtu Azure Storage.
 1. Zadejte ContainerName pro kontejner, který jste vytvořili v účtu úložiště.
@@ -249,7 +249,7 @@ Po skončení běhu indexeru by mělo být zelené zaškrtnutí a slovo úspěš
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás můžou stát peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
+Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 

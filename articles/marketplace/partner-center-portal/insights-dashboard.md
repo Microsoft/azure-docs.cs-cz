@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 07/22/2019
-ms.openlocfilehash: c72f3c9cce19896557fa9f4114b935fcc5ca8dc2
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 877d5436628fdeb973f6d7f30cc71e91eeb92364
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128943"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323277"
 ---
 # <a name="marketplace-insights-dashboard-in-partner-center"></a>Řídicí panel přehledů Marketplace v partnerském centru
 

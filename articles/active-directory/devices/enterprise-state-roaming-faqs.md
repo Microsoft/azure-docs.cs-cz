@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ad76835b0c72b691e1ef8810f2c58dedb8f597d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35669a7d80907e2335c68b1da9010f5879aa6c7c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78672381"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87274081"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Nejčastější dotazy k nastavení a datovému roamingu
 
@@ -25,18 +26,18 @@ Tento článek obsahuje odpovědi na některé otázky, které správci IT můž
 
 **Nastavení systému Windows**: nastavení počítače, která jsou součástí operačního systému Windows. Obecně platí, že se jedná o nastavení, která přizpůsobují počítač a obsahují následující široké kategorie:
 
-* *Motiv*, který obsahuje funkce, jako je například motiv plochy a nastavení hlavního panelu.
-* *Nastavení aplikace Internet Explorer*, včetně nedávno otevřených karet a oblíbených položek.
+* *Motiv* obsahující funkce jako motiv plochy a nastavení hlavního panelu
+* *Nastavení Internet Exploreru* včetně nedávno otevřených karet a oblíbených položek
 * *Nastavení prohlížeče Microsoft Edge*, například oblíbené položky a seznam pro čtení.
 * *Hesla*, včetně internetových hesel, profilů Wi-Fi a dalších.
-* *Jazykové předvolby*, které obsahují nastavení pro rozložení klávesnice, jazyk systému, datum a čas a další.
-* *Usnadnění funkcí přístupu*, jako je například motiv s vysokým kontrastem, Narrator a Lupa.
-* *Další nastavení systému Windows*, například nastavení myši.
+* *Jazykové předvolby* obsahující nastavení pro rozložení klávesnice, jazyk systému, datum a čas a další
+* *Funkce usnadnění přístupu*, například motiv s vysokým kontrastem, Předčítání a Lupa
+* *Další nastavení Windows*, například nastavení myši
 
 > [!NOTE]
 > Tento článek se týká starší verze prohlížeče založeného na HTML v Microsoft Edge, který se spouští s Windows 10 v červenci 2015. Článek neplatí pro nový prohlížeč založený na Microsoft Edge chrom vydaný 15. ledna 2020. Další informace o chování synchronizace pro nové Microsoft Edge najdete v článku o [synchronizaci Microsoft Edge](/deployedge/microsoft-edge-enterprise-sync).
 
-**Data aplikací**: univerzální aplikace pro Windows můžou zapisovat data nastavení do složky roamingu a veškerá data zapsaná do této složky se automaticky synchronizují. Pro návrh aplikace, aby tuto možnost využila, je k dispozici vývojářům jednotlivých aplikací. Další informace o tom, jak vyvíjet univerzální aplikaci pro Windows, která používá roaming, najdete na blogu věnovaném [rozhraní API úložiště aplikačních](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) údajů a [blogu vývojářům pro roaming pro Windows 8](https://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx).
+**Data aplikací**: univerzální aplikace pro Windows můžou zapisovat data nastavení do složky roamingu a veškerá data zapsaná do této složky se automaticky synchronizují. Pro návrh aplikace, aby tuto možnost využila, je k dispozici vývojářům jednotlivých aplikací. Další informace o tom, jak vyvíjet univerzální aplikaci pro Windows, která používá roaming, najdete na blogu věnovaném [rozhraní API úložiště aplikačních](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) údajů a [blogu vývojářům pro roaming pro Windows 8](https://blogs.windows.com/windowsdeveloper/2016/05/04/roaming-app-data-and-the-user-experience/).
 
 ## <a name="what-account-is-used-for-settings-sync"></a>Jaký účet se má použít k synchronizaci nastavení?
 

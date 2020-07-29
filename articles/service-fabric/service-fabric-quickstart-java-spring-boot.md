@@ -5,19 +5,19 @@ author: suhuruli
 ms.topic: quickstart
 ms.date: 01/29/2019
 ms.author: suhuruli
-ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: e2e511a8c3cd9f474d3cfb71d9ebdee9cfc48826
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: 3fadd1fb4fdc12660b67d5d8bbb7b25251619cff
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253656"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320387"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>Rychlý Start: nasazení aplikace v jazyce Java pružiny do Azure Service Fabric
 
 V tomto rychlém startu nasadíte do Azure Service Fabric aplikaci Java pružiny, která využívá známé nástroje příkazového řádku v systému Linux nebo MacOS. Azure Service Fabric je platforma distribuovaných systémů pro nasazování a správu mikroslužeb a kontejnerů. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 #### <a name="linux"></a>[Linux](#tab/linux)
 
@@ -105,7 +105,7 @@ V adresáři *GS-jaře-Boot/Complete* spusťte následující příkaz, který s
 
 V této fázi jste vytvořili aplikaci Service Fabric pro ukázku Spring Boot Getting Started, kterou můžete nasadit do Service Fabric.
 
-## <a name="run-the-application-locally"></a>Místní spuštění aplikace
+## <a name="run-the-application-locally"></a>Aplikaci spustíte místně.
 
 1. Zadáním následujícího příkazu spusťte místní cluster na počítačích Ubuntu:
 

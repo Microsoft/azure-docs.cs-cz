@@ -8,19 +8,19 @@ ms.date: 10/28/2019
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 530ddf7af5b95cfec948270affbd13b6d61d08ff
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eb96537f67c61fb31759da020068f784d0e89993
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081436"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323396"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Monitorování využití a odhadovaných nákladů v Azure Monitor
 
 > [!NOTE]
 > Tento článek popisuje, jak zobrazit využití a odhadované náklady napříč více funkcemi monitorování Azure. Mezi související články pro konkrétní součásti Azure Monitor patří:
 > - [Správa využití a nákladů pomocí Azure Monitorch protokolů](manage-cost-storage.md) popisuje, jak řídit náklady změnou doby uchovávání dat a jak analyzovat a upozorňovat na využití vašich dat.
-> - [Správa využití a nákladů pro Application Insights](../../azure-monitor/app/pricing.md) popisuje, jak analyzovat využití dat v Application Insights.
+> - [Správa využití a nákladů pro Application Insights](../app/pricing.md) popisuje, jak analyzovat využití dat v Application Insights.
 
 ## <a name="azure-monitor-pricing-model"></a>Azure Monitor cenový model
 
@@ -96,3 +96,4 @@ V závislosti na počtu uzlů sady, kterou vaše organizace zakoupila, může b�
 > [!WARNING]
 > Pokud má vaše organizace aktuální Microsoft Operations Management Suite E1 a E2, většinou je nejlepší udržovat pracovní prostory v Log Analytics v cenové úrovni pro jednotlivé uzly (OMS) a vaše Application Insights prostředky v cenové úrovni "Enterprise". 
 >
+

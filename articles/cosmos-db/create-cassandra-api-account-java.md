@@ -8,13 +8,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/06/2018
-ms.custom: seodec18
-ms.openlocfilehash: e114bf3a87f3018cc51c5752d57ce5911053542f
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.custom: seodec18, devx-track-java
+ms.openlocfilehash: fa25d07ff034cec50da515341bd9ca604ee28577
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118402"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319180"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>Kurz: vytvoření účtu rozhraní API Cassandra v Azure Cosmos DB pomocí aplikace Java k ukládání dat o klíčích a hodnotách
 
@@ -31,7 +31,7 @@ Tento kurz se zabývá následujícími úkony:
 
 ## <a name="prerequisites"></a>Požadavky 
 
-* Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), ještě než začnete. 
+* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete. 
 
 * Získejte nejnovější verzi sady [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable). 
 
@@ -40,7 +40,7 @@ Tento kurz se zabývá následujícími úkony:
 
 ## <a name="create-a-database-account"></a>Vytvoření účtu databáze 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/). 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/). 
 
 2. Vyberte **vytvořit**  >  **databáze**prostředků  >  **Azure Cosmos DB**. 
 

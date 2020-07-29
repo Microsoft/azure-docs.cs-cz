@@ -4,12 +4,12 @@ description: Sledování vlastních operací pomocí sady Azure Application Insi
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 49c2ad44dab5e4f57db2f11c17c269289e56d2d5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bd30f60928df3644b215f185d620393d1edda8c7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540039"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320370"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Sledování vlastních operací pomocí sady Application Insights .NET SDK
 
@@ -206,7 +206,7 @@ public async Task Process(BrokeredMessage message)
 Následující příklad ukazuje, jak sledovat operace [Azure Storage fronty](../../storage/queues/storage-dotnet-how-to-use-queues.md) a korelovat telemetrii mezi producentem, spotřebitelem a Azure Storage. 
 
 Fronta úložiště obsahuje rozhraní API HTTP. Všechna volání do fronty jsou sledována Application Insights kolektorem závislostí pro požadavky HTTP.
-Ve výchozím nastavení je nakonfigurované v aplikacích ASP.NET a ASP.NET Core s dalšími druhy aplikací, můžete se podívat na [dokumentaci konzolových aplikací](../../azure-monitor/app/console.md) .
+Ve výchozím nastavení je nakonfigurované v aplikacích ASP.NET a ASP.NET Core s dalšími druhy aplikací, můžete se podívat na [dokumentaci konzolových aplikací](./console.md) .
 
 Můžete taky chtít korelovat ID operace Application Insights s ID žádosti úložiště. Informace o tom, jak nastavit a získat klienta žádosti o úložiště a ID žádosti serveru, najdete v tématu [monitorování, diagnostika a řešení potíží s Azure Storage](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#end-to-end-tracing).
 
@@ -478,8 +478,9 @@ Každá operace Application Insights (požadavek nebo závislost) zahrnuje `Acti
 ## <a name="next-steps"></a>Další kroky
 
 - Seznamte se se základy [korelace telemetrie](correlation.md) v Application Insights.
-- Podívejte se, jak [prostředí pro diagnostiku transakcí](../../azure-monitor/app/transaction-diagnostics.md) a datovou [mapu aplikace](../../azure-monitor/app/app-map.md)jsou v relaci.
-- Seznamte se s [datovým modelem](../../azure-monitor/app/data-model.md) pro Application Insights typy a datový model.
-- Vykázat vlastní [události a metriky](../../azure-monitor/app/api-custom-events-metrics.md) na Application Insights.
+- Podívejte se, jak [prostředí pro diagnostiku transakcí](./transaction-diagnostics.md) a datovou [mapu aplikace](./app-map.md)jsou v relaci.
+- Seznamte se s [datovým modelem](./data-model.md) pro Application Insights typy a datový model.
+- Vykázat vlastní [události a metriky](./api-custom-events-metrics.md) na Application Insights.
 - Podívejte se na standardní [konfiguraci](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) pro kolekci vlastností kontextu.
 - Podívejte se na [uživatelskou příručku System. Diagnostics. Activity](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) , kde zjistíte, jak korelace telemetrie.
+

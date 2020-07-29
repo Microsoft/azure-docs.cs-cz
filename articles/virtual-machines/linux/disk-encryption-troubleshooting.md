@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: abd802f19917b048f6d006b8e3097b08efaf22e2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0e83d53122b3f80d73a573f0eff8c13888cbee11
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510476"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325198"
 ---
 # <a name="azure-disk-encryption-for-linux-vms-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Azure Disk Encryption pro virtuální počítače se systémem Linux
 
@@ -70,30 +70,54 @@ V některých případech se šifrování disku se systémem Linux jeví jako za
 
 Sekvence šifrování disku operačního systému Linux odpojí jednotku s operačním systémem dočasně. Pak provede blokové šifrování celého disku s operačním systémem, než ho znovu připojí v zašifrovaném stavu. Šifrování disku se systémem Linux nepovoluje souběžné použití virtuálního počítače, zatímco probíhá šifrování. Charakteristiky výkonu virtuálního počítače můžou v době potřebné k dokončení šifrování výrazně zatěžovat. Tyto vlastnosti zahrnují velikost disku a to, jestli je účet úložiště Standard nebo Premium (SSD).
 
-Chcete-li zjistit stav šifrování, proveďte dotaz na pole **ProgressMessage** , které se vrátí z příkazu [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) . Při šifrování jednotky operačního systému se virtuální počítač dostane do stavu údržby a zakáže SSH, aby se zabránilo jakémukoli přerušení probíhajícího procesu. Zpráva **EncryptionInProgress** zprávy pro většinu času, kdy probíhá šifrování. Po několika hodinách později se zobrazí zpráva **VMRestartPending** s výzvou k restartování virtuálního počítače. Příklad:
-
+Při šifrování jednotky operačního systému vstoupí virtuální počítač do stavu údržby a zakáže SSH, aby se zabránilo jakémukoli přerušení probíhajícího procesu.  Chcete-li zjistit stav šifrování, použijte příkaz Azure PowerShell [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) a podívejte se do pole **ProgressMessage** . **ProgressMessage** bude hlásit řadu stavů, jako jsou data a disky s operačním systémem šifrované:
 
 ```azurepowershell
-PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyVirtualMachineResourceGroup" -VMName "VirtualMachineName"
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyResourceGroup" -VMName "myVM"
+
+OsVolumeEncrypted          : EncryptionInProgress
+DataVolumesEncrypted       : EncryptionInProgress
+OsVolumeEncryptionSettings :
+ProgressMessage            : Transitioning
+
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyResourceGroup" -VMName "myVM"
+
+OsVolumeEncrypted          : EncryptionInProgress
+DataVolumesEncrypted       : EncryptionInProgress
+OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
+ProgressMessage            : Encryption succeeded for data volumes
+
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyResourceGroup" -VMName "myVM"
+
+OsVolumeEncrypted          : EncryptionInProgress
+DataVolumesEncrypted       : EncryptionInProgress
+OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
+ProgressMessage            : Provisioning succeeded
+
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyResourceGroup" -VMName "myVM"
+
 OsVolumeEncrypted          : EncryptionInProgress
 DataVolumesEncrypted       : EncryptionInProgress
 OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
 ProgressMessage            : OS disk encryption started
-
-PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyVirtualMachineResourceGroup" -VMName "VirtualMachineName"
-OsVolumeEncrypted          : VMRestartPending
-DataVolumesEncrypted       : Encrypted
-OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
-ProgressMessage            : OS disk successfully encrypted, please reboot the VM
 ```
 
-Až budete vyzváni k restartování virtuálního počítače a po restartování virtuálního počítače, musíte počkat 2-3 minut na restartování a dokončit kroky pro cíl. Stavová zpráva se změní, jakmile bude šifrování nakonec dokončeno. Po tom, co je tato zpráva k dispozici, se očekává, že šifrovaná jednotka operačního systému bude připravena k použití a že je virtuální počítač připravený k opětovnému použití.
+**ProgressMessage** zůstane pro většinu procesu šifrování **spuštěným šifrováním disku s operačním systémem** .  Až se šifrování dokončí a bude úspěšné, **ProgressMessage** vrátí:
 
-V následujících případech doporučujeme, abyste virtuální počítač obnovili zpátky na snímek nebo zálohu trvalou před šifrováním:
-   - Pokud se sekvence restartování popsané dříve nestane, neproběhne.
-   - Pokud informace o spuštění, zpráva o průběhu nebo jiné indikátory chyb hlásí, že se v průběhu tohoto procesu šifrování operačního systému nepovedlo. Příkladem zprávy je chyba "nezdařené odpojení", která je popsaná v této příručce.
+```azurepowershell
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyResourceGroup" -VMName "myVM"
 
-Před dalším pokusem znovu vyhodnoťte vlastnosti virtuálního počítače a ujistěte se, že jsou splněné všechny požadavky.
+OsVolumeEncrypted          : Encrypted
+DataVolumesEncrypted       : NotMounted
+OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
+ProgressMessage            : Encryption succeeded for all volumes
+```
+
+Po tom, co je tato zpráva k dispozici, se očekává, že šifrovaná jednotka operačního systému bude připravena k použití a že je virtuální počítač připravený k opětovnému použití.
+
+Pokud se v průběhu tohoto procesu nezdařila informace o spuštění, zpráva o průběhu nebo zpráva o chybách, které zakázaly šifrování operačního systému, obnovte tento virtuální počítač do snímku nebo zálohy těsně před šifrováním. Příkladem zprávy je chyba "nezdařené odpojení", která je popsaná v této příručce.
+
+Než se znovu pokusíte o šifrování, znovu vyhodnoťte vlastnosti virtuálního počítače a ujistěte se, že jsou splněné všechny požadavky.
 
 ## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>Řešení potíží s Azure Disk Encryption za bránou firewall
 
@@ -101,11 +125,11 @@ Viz [šifrování disků v izolované síti](disk-encryption-isolated-network.md
 
 ## <a name="troubleshooting-encryption-status"></a>Řešení potíží se stavem šifrování 
 
-Portál může zobrazit disk jako zašifrovaný, i když byl v rámci virtuálního počítače nešifrovaný.  K tomu může dojít, když se k přímému rozšifrování disku z virtuálního počítače používají příkazy nízké úrovně, místo abyste používali příkazy pro správu Azure Disk Encryption vyšší úrovně.  Příkazy vyšší úrovně nešifrují jenom disk v rámci virtuálního počítače, ale mimo virtuální počítač aktualizují důležitá nastavení šifrování na úrovni platformy a nastavení rozšíření přidružená k virtuálnímu počítači.  Pokud tyto možnosti nejsou zachovány, platforma nebude moci nahlásit stav šifrování ani zřídit virtuální počítač správně.   
+Portál může zobrazit disk jako zašifrovaný, i když byl v rámci virtuálního počítače nešifrovaný.  K tomu může dojít, když se k přímému rozšifrování disku z virtuálního počítače používají příkazy nízké úrovně, místo abyste používali příkazy pro správu Azure Disk Encryption vyšší úrovně.  Příkazy vyšší úrovně nešifrují jenom disk v rámci virtuálního počítače, ale mimo virtuální počítač aktualizují důležitá nastavení šifrování na úrovni platformy a nastavení rozšíření přidružená k virtuálnímu počítači.  Pokud tyto možnosti nejsou zachovány, platforma nebude moci nahlásit stav šifrování ani zřídit virtuální počítač správně.
 
 Pokud chcete Azure Disk Encryption zakázat pomocí prostředí PowerShell, použijte [příkaz disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) následovaný rutinou [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension). Spuštění Remove-AzVMDiskEncryptionExtension před zakázáním šifrování selže.
 
-Pokud chcete zakázat Azure Disk Encryption pomocí rozhraní příkazového řádku, použijte příkaz [AZ VM Encryption Disable](/cli/azure/vm/encryption). 
+Pokud chcete zakázat Azure Disk Encryption pomocí rozhraní příkazového řádku, použijte příkaz [AZ VM Encryption Disable](/cli/azure/vm/encryption).
 
 ## <a name="next-steps"></a>Další kroky
 

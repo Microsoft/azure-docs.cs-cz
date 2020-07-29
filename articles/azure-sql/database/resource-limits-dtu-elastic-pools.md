@@ -4,18 +4,19 @@ description: Tato stránka popisuje některé běžné limity prostředků DTU p
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
-ms.custom: seo-lt-2019 sqldbrb=1
+ms.custom: references_regions
 ms.devlang: ''
 ms.topic: conceptual
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 04/17/2020
-ms.openlocfilehash: 10b792a642f6c22ab804d6c5e5c3f7f722f0d3be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4377be82dfdb66ab7186d4472c8b1f5453b47809
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84043111"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325113"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>Omezení prostředků pro elastické fondy pomocí modelu nákupu DTU
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -47,8 +48,8 @@ V případě Azure SQL Database elastických fondů se v následujících tabulk
 | Počet eDTU na fond | **50** | **100** | **200** | **300** | **400** | **800** | **1200** | **1600** |
 |:---|---:|---:|---:| ---: | ---: | ---: | ---: | ---: |
 | Zahrnuté úložiště na fond (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
-| Maximální počet možností úložiště na fond (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
-| Maximální úložiště OLTP v paměti na fond (GB) | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
+| Maximální velikost úložiště na fond (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
+| Maximální úložiště OLTP v paměti na fond (GB) | – | – | – | – | – | – | – | – |
 | Maximální počet databáze na fond <sup>1</sup> | 100 | 200 | 500 | 500 | 500 | 500 | 500 | 500 |
 | Maximální počet souběžných pracovních procesů (požadavků) na fond <sup>2</sup> | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
 | Maximální počet souběžných relací na fond <sup>2</sup> | 30000 | 30000 | 30000 | 30000 |30000 | 30000 | 30000 | 30000 |
@@ -65,77 +66,85 @@ V případě Azure SQL Database elastických fondů se v následujících tabulk
 
 | Počet eDTU na fond | **50** | **100** | **200** | **300** | **400** | **800**|
 |:---|---:|---:|---:| ---: | ---: | ---: |
-| Zahrnuté úložiště na fond (GB) | 50 | 100 | 200 | 300 | 400 | 800 |
-| Maximální počet možností úložiště na fond (GB) | 50, 250, 500 | 100, 250, 500, 750 | 200, 250, 500, 750, 1024 | 300, 500, 750, 1024, 1280 | 400, 500, 750, 1024, 1280, 1536 | 800, 1024, 1280, 1536, 1792, 2048 |
-| Maximální úložiště OLTP v paměti na fond (GB) | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
-| Maximální počet databáze na fond <sup>1</sup> | 100 | 200 | 500 | 500 | 500 | 500 |
-| Maximální počet souběžných pracovních procesů (požadavků) na fond <sup>2</sup> | 100 | 200 | 400 | 600 | 800 | 1600 |
-| Maximální počet souběžných relací na fond <sup>2</sup> | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
+| Zahrnuté úložiště na fond (GB) <sup>1</sup> | 50 | 100 | 200 | 300 | 400 | 800 |
+| Maximální velikost úložiště na fond (GB) | 500 | 750 | 1024 | 1280 | 1536 | 2 048 |
+| Maximální úložiště OLTP v paměti na fond (GB) | – | – | – | – | – | – |
+| Maximální počet databáze na fond <sup>2</sup> | 100 | 200 | 500 | 500 | 500 | 500 |
+| Maximální počet souběžných pracovních procesů (požadavků) na fond <sup>3</sup> | 100 | 200 | 400 | 600 | 800 | 1600 |
+| Maximální počet souběžných relací na fond <sup>3</sup> | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 | Minimální možnosti eDTU na databázi | 0, 10, 20, 50 | 0, 10, 20, 50, 100 | 0, 10, 20, 50, 100, 200 | 0, 10, 20, 50, 100, 200, 300 | 0, 10, 20, 50, 100, 200, 300, 400 | 0, 10, 20, 50, 100, 200, 300, 400, 800 |
 | Maximální počet eDTU vybraných pro každou databázi | 10, 20, 50 | 10, 20, 50, 100 | 10, 20, 50, 100, 200 | 10, 20, 50, 100, 200, 300 | 10, 20, 50, 100, 200, 300, 400 | 10, 20, 50, 100, 200, 300, 400, 800 |
 | Maximální velikost úložiště na databázi (GB) | 500 | 750 | 1024 | 1024 | 1024 | 1024 |
 ||||||||
 
-<sup>1</sup> Další informace najdete [v tématu Správa prostředků v hustých elastických fondech](elastic-pool-resource-management.md) .
+<sup>1</sup> Další informace o cenách, které vznikly v důsledku dodatečného zřízeného úložiště, najdete v tématu [SQL Database cenové možnosti](https://azure.microsoft.com/pricing/details/sql-database/elastic/) .
 
-<sup>2</sup> pro maximální počet souběžných pracovních procesů (požadavků) pro každou jednotlivou databázi si prohlédněte [omezení prostředků databáze s jedinou databází](resource-limits-vcore-single-databases.md). Pokud například elastický fond používá Gen5 a maximální počet vCore na databázi je nastaven na hodnotu 2, maximální počet souběžných pracovních procesů je 200.  Pokud je maximální počet vCore na databázi nastavený na 0,5, pak je hodnota maximální počet souběžných pracovních procesů 50, protože na Gen5 existuje maximální 100 počet souběžných pracovních procesů na vCore. Pro jiné maximum vCore nastavení na databázi, které mají méně než 1 vCore nebo méně, je počet souběžných pracovních procesů podobně škálovat.
+<sup>2</sup> Další informace najdete [v tématu Správa prostředků v hustých elastických fondech](elastic-pool-resource-management.md) .
+
+<sup>3</sup> v případě maximálního počtu souběžných pracovních procesů (požadavků) pro každou jednotlivou databázi si prohlédněte [omezení prostředků databáze s jedinou databází](resource-limits-vcore-single-databases.md). Pokud například elastický fond používá Gen5 a maximální počet vCore na databázi je nastaven na hodnotu 2, maximální počet souběžných pracovních procesů je 200.  Pokud je maximální počet vCore na databázi nastavený na 0,5, pak je hodnota maximální počet souběžných pracovních procesů 50, protože na Gen5 existuje maximální 100 počet souběžných pracovních procesů na vCore. Pro jiné maximum vCore nastavení na databázi, které mají méně než 1 vCore nebo méně, je počet souběžných pracovních procesů podobně škálovat.
 
 ### <a name="standard-elastic-pool-limits-continued"></a>Limity elastického fondu úrovně Standard (pokračování)
 
 | Počet eDTU na fond | **1200** | **1600** | **2000** | **2500** | **3000** |
 |:---|---:|---:|---:| ---: | ---: |
-| Zahrnuté úložiště na fond (GB) | 1200 | 1600 | 2000 | 2500 | 3000 |
-| Maximální počet možností úložiště na fond (GB) | 1200, 1280, 1536, 1792, 2048, 2304, 2560 | 1600, 1792, 2048, 2304, 2560, 2816, 3072 | 2000, 2048, 2304, 2560, 2816, 3072, 3328, 3584 | 2500, 2560, 2816, 3072, 3328, 3584, 3840, 4096 | 3000, 3072, 3328, 3584, 3840, 4096 |
-| Maximální úložiště OLTP v paměti na fond (GB) | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
-| Maximální počet databáze na fond <sup>1</sup> | 500 | 500 | 500 | 500 | 500 |
-| Maximální počet souběžných pracovních procesů (požadavků) na fond <sup>2</sup> | 2400 | 3200 | 4000 | 5000 | 6000 |
-| Maximální počet souběžných relací na fond <sup>2</sup> | 30000 | 30000 | 30000 | 30000 | 30000 |
+| Zahrnuté úložiště na fond (GB) <sup>1</sup> | 1200 | 1600 | 2000 | 2500 | 3000 |
+| Maximální velikost úložiště na fond (GB) | 2560 | 3072 | 3584 | 4 096 | 4 096 |
+| Maximální úložiště OLTP v paměti na fond (GB) | – | – | – | – | – |
+| Maximální počet databáze na fond <sup>2</sup> | 500 | 500 | 500 | 500 | 500 |
+| Maximální počet souběžných pracovních procesů (požadavků) na fond <sup>3</sup> | 2400 | 3200 | 4000 | 5000 | 6000 |
+| Maximální počet souběžných relací na fond <sup>3</sup> | 30000 | 30000 | 30000 | 30000 | 30000 |
 | Minimální možnosti eDTU na databázi | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1 200 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000, 2 500 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000, 2 500, 3 000 |
 | Maximální počet eDTU vybraných pro každou databázi | 10, 20, 50, 100, 200, 300, 400, 800, 1 200 | 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600 | 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000 | 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000, 2 500 | 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000, 2 500, 3 000 |
-| Maximální počet možností úložiště na databázi (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
+| Maximální velikost úložiště na databázi (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
 |||||||
 
-<sup>1</sup> Další informace najdete [v tématu Správa prostředků v hustých elastických fondech](elastic-pool-resource-management.md) .
+<sup>1</sup> Další informace o cenách, které vznikly v důsledku dodatečného zřízeného úložiště, najdete v tématu [SQL Database cenové možnosti](https://azure.microsoft.com/pricing/details/sql-database/elastic/) .
 
-<sup>2</sup> pro maximální počet souběžných pracovních procesů (požadavků) pro každou jednotlivou databázi si prohlédněte [omezení prostředků databáze s jedinou databází](resource-limits-vcore-single-databases.md). Pokud například elastický fond používá Gen5 a maximální počet vCore na databázi je nastaven na hodnotu 2, maximální počet souběžných pracovních procesů je 200.  Pokud je maximální počet vCore na databázi nastavený na 0,5, pak je hodnota maximální počet souběžných pracovních procesů 50, protože na Gen5 existuje maximální 100 počet souběžných pracovních procesů na vCore. Pro jiné maximum vCore nastavení na databázi, které mají méně než 1 vCore nebo méně, je počet souběžných pracovních procesů podobně škálovat.
+<sup>2</sup> Další informace najdete [v tématu Správa prostředků v hustých elastických fondech](elastic-pool-resource-management.md) .
+
+<sup>3</sup> v případě maximálního počtu souběžných pracovních procesů (požadavků) pro každou jednotlivou databázi si prohlédněte [omezení prostředků databáze s jedinou databází](resource-limits-vcore-single-databases.md). Pokud například elastický fond používá Gen5 a maximální počet vCore na databázi je nastaven na hodnotu 2, maximální počet souběžných pracovních procesů je 200.  Pokud je maximální počet vCore na databázi nastavený na 0,5, pak je hodnota maximální počet souběžných pracovních procesů 50, protože na Gen5 existuje maximální 100 počet souběžných pracovních procesů na vCore. Pro jiné maximum vCore nastavení na databázi, které mají méně než 1 vCore nebo méně, je počet souběžných pracovních procesů podobně škálovat.
 
 ### <a name="premium-elastic-pool-limits"></a>Prémiové limity elastického fondu
 
 | Počet eDTU na fond | **125** | **250** | **500** | **1000** | **1500**|
 |:---|---:|---:|---:| ---: | ---: |
-| Zahrnuté úložiště na fond (GB) | 250 | 500 | 750 | 1024 | 1536 |
-| Maximální počet možností úložiště na fond (GB) | 250, 500, 750, 1024 | 500, 750, 1024 | 750, 1024 | 1024 | 1536 |
+| Zahrnuté úložiště na fond (GB) <sup>1</sup> | 250 | 500 | 750 | 1024 | 1536 |
+| Maximální velikost úložiště na fond (GB) | 1024 | 1024 | 1024 | 1024 | 1536 |
 | Maximální úložiště OLTP v paměti na fond (GB) | 1 | 2 | 4 | 10 | 12 |
-| Maximální počet databáze na fond <sup>1</sup> | 50 | 100 | 100 | 100 | 100 |
-| Maximální počet souběžných pracovních procesů na fond (požadavky) <sup>2</sup> | 200 | 400 | 800 | 1600 | 2400 |
-| Maximální počet souběžných relací na fond <sup>2</sup> | 30000 | 30000 | 30000 | 30000 | 30000 |
+| Maximální počet databáze na fond <sup>2</sup> | 50 | 100 | 100 | 100 | 100 |
+| Maximální počet souběžných pracovních procesů na fond (požadavky) <sup>3</sup> | 200 | 400 | 800 | 1600 | 2400 |
+| Maximální počet souběžných relací na fond <sup>3</sup> | 30000 | 30000 | 30000 | 30000 | 30000 |
 | Minimální počet eDTU na databázi | 0, 25, 50, 75, 125 | 0, 25, 50, 75, 125, 250 | 0, 25, 50, 75, 125, 250, 500 | 0, 25, 50, 75, 125, 250, 500, 1 000 | 0, 25, 50, 75, 125, 250, 500, 1 000|
 | Maximální počet eDTU na databázi | 25, 50, 75, 125 | 25, 50, 75, 125, 250 | 25, 50, 75, 125, 250, 500 | 25, 50, 75, 125, 250, 500, 1 000 | 25, 50, 75, 125, 250, 500, 1 000|
 | Maximální velikost úložiště na databázi (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
 |||||||
 
-<sup>1</sup> Další informace najdete [v tématu Správa prostředků v hustých elastických fondech](elastic-pool-resource-management.md) .
+<sup>1</sup> Další informace o cenách, které vznikly v důsledku dodatečného zřízeného úložiště, najdete v tématu [SQL Database cenové možnosti](https://azure.microsoft.com/pricing/details/sql-database/elastic/) .
 
-<sup>2</sup> pro maximální počet souběžných pracovních procesů (požadavků) pro každou jednotlivou databázi si prohlédněte [omezení prostředků databáze s jedinou databází](resource-limits-vcore-single-databases.md). Pokud například elastický fond používá Gen5 a maximální počet vCore na databázi je nastaven na hodnotu 2, maximální počet souběžných pracovních procesů je 200.  Pokud je maximální počet vCore na databázi nastavený na 0,5, pak je hodnota maximální počet souběžných pracovních procesů 50, protože na Gen5 existuje maximální 100 počet souběžných pracovních procesů na vCore. Pro jiné maximum vCore nastavení na databázi, které mají méně než 1 vCore nebo méně, je počet souběžných pracovních procesů podobně škálovat.
+<sup>2</sup> Další informace najdete [v tématu Správa prostředků v hustých elastických fondech](elastic-pool-resource-management.md) .
+
+<sup>3</sup> v případě maximálního počtu souběžných pracovních procesů (požadavků) pro každou jednotlivou databázi si prohlédněte [omezení prostředků databáze s jedinou databází](resource-limits-vcore-single-databases.md). Pokud například elastický fond používá Gen5 a maximální počet vCore na databázi je nastaven na hodnotu 2, maximální počet souběžných pracovních procesů je 200.  Pokud je maximální počet vCore na databázi nastavený na 0,5, pak je hodnota maximální počet souběžných pracovních procesů 50, protože na Gen5 existuje maximální 100 počet souběžných pracovních procesů na vCore. Pro jiné maximum vCore nastavení na databázi, které mají méně než 1 vCore nebo méně, je počet souběžných pracovních procesů podobně škálovat.
 
 ### <a name="premium-elastic-pool-limits-continued"></a>Limity elastického fondu úrovně Premium (pokračování)
 
 | Počet eDTU na fond | **2000** | **2500** | **3000** | **3500** | **4000**|
 |:---|---:|---:|---:| ---: | ---: |
-| Zahrnuté úložiště na fond (GB) | 2 048 | 2560 | 3072 | 3548 | 4 096 |
-| Maximální počet možností úložiště na fond (GB) | 2 048 | 2560 | 3072 | 3548 | 4 096|
+| Zahrnuté úložiště na fond (GB) <sup>1</sup> | 2 048 | 2560 | 3072 | 3548 | 4 096 |
+| Maximální velikost úložiště na fond (GB) | 2 048 | 2560 | 3072 | 3548 | 4 096|
 | Maximální úložiště OLTP v paměti na fond (GB) | 16 | 20 | 24 | 28 | 32 |
-| Maximální počet databáze na fond <sup>1</sup> | 100 | 100 | 100 | 100 | 100 |
-| Maximální počet souběžných pracovních procesů (požadavků) na fond <sup>2</sup> | 3200 | 4000 | 4800 | 5600 | 6400 |
-| Maximální počet souběžných relací na fond <sup>2</sup> | 30000 | 30000 | 30000 | 30000 | 30000 |
+| Maximální počet databáze na fond <sup>2</sup> | 100 | 100 | 100 | 100 | 100 |
+| Maximální počet souběžných pracovních procesů (požadavků) na fond <sup>3</sup> | 3200 | 4000 | 4800 | 5600 | 6400 |
+| Maximální počet souběžných relací na fond <sup>3</sup> | 30000 | 30000 | 30000 | 30000 | 30000 |
 | Minimální možnosti eDTU na databázi | 0, 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 0, 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 0, 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 0, 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 0, 25, 50, 75, 125, 250, 500, 1 000, 1 750, 4 000 |
 | Maximální počet eDTU vybraných pro každou databázi | 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 25, 50, 75, 125, 250, 500, 1 000, 1 750, 4 000 |
 | Maximální velikost úložiště na databázi (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
 |||||||
 
-<sup>1</sup> Další informace najdete [v tématu Správa prostředků v hustých elastických fondech](elastic-pool-resource-management.md) .
+<sup>1</sup> Další informace o cenách, které vznikly v důsledku dodatečného zřízeného úložiště, najdete v tématu [SQL Database cenové možnosti](https://azure.microsoft.com/pricing/details/sql-database/elastic/) .
 
-<sup>2</sup> pro maximální počet souběžných pracovních procesů (požadavků) pro každou jednotlivou databázi si prohlédněte [omezení prostředků databáze s jedinou databází](resource-limits-vcore-single-databases.md). Pokud například elastický fond používá Gen5 a maximální počet vCore na databázi je nastaven na hodnotu 2, maximální počet souběžných pracovních procesů je 200.  Pokud je maximální počet vCore na databázi nastavený na 0,5, pak je hodnota maximální počet souběžných pracovních procesů 50, protože na Gen5 existuje maximální 100 počet souběžných pracovních procesů na vCore. Pro jiné maximum vCore nastavení na databázi, které mají méně než 1 vCore nebo méně, je počet souběžných pracovních procesů podobně škálovat.
+<sup>2</sup> Další informace najdete [v tématu Správa prostředků v hustých elastických fondech](elastic-pool-resource-management.md) .
+
+<sup>3</sup> v případě maximálního počtu souběžných pracovních procesů (požadavků) pro každou jednotlivou databázi si prohlédněte [omezení prostředků databáze s jedinou databází](resource-limits-vcore-single-databases.md). Pokud například elastický fond používá Gen5 a maximální počet vCore na databázi je nastaven na hodnotu 2, maximální počet souběžných pracovních procesů je 200.  Pokud je maximální počet vCore na databázi nastavený na 0,5, pak je hodnota maximální počet souběžných pracovních procesů 50, protože na Gen5 existuje maximální 100 počet souběžných pracovních procesů na vCore. Pro jiné maximum vCore nastavení na databázi, které mají méně než 1 vCore nebo méně, je počet souběžných pracovních procesů podobně škálovat.
 
 > [!IMPORTANT]
 > Ve všech oblastech je aktuálně k dispozici více než 1 TB úložiště na úrovni Premium s výjimkou: Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, Středozápadní USA, US DoD oblasti a státní správy USA – střed. V těchto oblastech je maximální velikost úložiště na úrovni Premium omezená na 1 TB.  Další informace najdete v tématu [aktuální omezení P11-P15](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).

@@ -5,17 +5,18 @@ description: Naučte se, jak pomocí balíčků WhiteNoise použít pro Azure Ma
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
 ms.date: 07/09/2020
-ms.openlocfilehash: 0ef20eee7e73c3a73a2f2e895242d7c1fce307c9
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 2182c9bc7588947ece5a309018359a8bcfa3ff41
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206351"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320200"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>Použití rozdílového soukromí v Azure Machine Learning (Preview)
 
@@ -30,7 +31,7 @@ Rozdílová ochrana osobních údajů je zlatá standardní definice ochrany oso
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud předplatné Azure ještě nemáte, napřed si vytvořte bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+- Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 - [Python 3](https://www.python.org/downloads/)
 
 ## <a name="install-whitenoise-packages"></a>Nainstalovat balíčky WhiteNoise
@@ -148,11 +149,11 @@ Knihovnu můžete použít k vytvoření složitějších analytických grafů s
 
 | Statistika    | Mechanismy | Nástroje  |
 | ------------- |------------|------------|
-| Počet         | Gaussovské   | Změna typu       |
+| Count         | Gaussovské   | Změna typu       |
 | Histogram     | 2D  | Upnutí   |
 | Mean          | Laplace    | Digitalizaci   |
 | Quantiles     |            | Filtr     |
-| Součet           |            | Imputace |
+| Sčítání           |            | Imputace |
 | Variance/kovariance |      | Transformace  |
 
 Další podrobnosti najdete v [poznámkovém bloku základních analýz dat](https://github.com/opendifferentialprivacy/whitenoise-samples/blob/master/analysis/basic_data_analysis.ipynb) .
