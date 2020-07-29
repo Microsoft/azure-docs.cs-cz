@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: dcdce6ee6683c5770f97f5f3dc20e1c9b409ead0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3069e3caf81d9bb2f809b21c88383c419e3b90b3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477035"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282972"
 ---
 # <a name="troubleshoot-publisher-verification-preview"></a>Řešení potíží s ověřováním vydavatele (Preview)
 Pokud se vám nedaří dokončit proces nebo došlo k neočekávanému chování při [ověřování vydavatele (Preview)](publisher-verification-overview.md), měli byste začít následujícími kroky, pokud obdržíte chyby nebo neočekávané chování: 
@@ -37,7 +37,7 @@ Níže jsou uvedeny některé běžné problémy, ke kterým může dojít běhe
     1. Přejít na [stránku registrace MPN](https://partner.microsoft.com/dashboard/account/v3/enrollment/joinnow/basicpartnernetwork/new)
     1. Přihlaste se pomocí uživatelského účtu v primárním tenantovi Azure AD organizace. 
     1. Pokud účet MPN již existuje, bude rozpoznán a bude přidán k účtu. 
-    1. Přejděte na [stránku profil partnera](https://partner.microsoft.com/en-us/pcv/accountsettings/connectedpartnerprofile) , kde se zobrazí kontakt s ID MPN a primárním účtem.
+    1. Přejděte na [stránku profil partnera](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) , kde se zobrazí kontakt s ID MPN a primárním účtem.
 
 - **Nevím, kdo má globální správce Azure AD (taky označovaný jako správce společnosti nebo správce tenanta), jak je najít? Co správce aplikace nebo jiná role správce?**
     1. Přihlaste se k [portálu Azure AD](https://aad.portal.azure.com) pomocí uživatelského účtu v primárním tenantovi vaší organizace.
@@ -45,14 +45,14 @@ Níže jsou uvedeny některé běžné problémy, ke kterým může dojít běhe
     1. Klikněte na globální správce nebo na požadovanou roli správce.
     1. Zobrazí se seznam uživatelů s přiřazenou rolí.
 
-- Nevím **, kdo jsou správci (e) pro svůj účet MPN** Přejděte na [stránku správy uživatelů MPN](https://partner.microsoft.com/en-us/pcv/users) a vyfiltrujte si seznam uživatelů, abyste viděli, kteří uživatelé jsou v různých rolích správce.
+- Nevím **, kdo jsou správci (e) pro svůj účet MPN** Přejděte na [stránku správy uživatelů MPN](https://partner.microsoft.com/pcv/users) a vyfiltrujte si seznam uživatelů, abyste viděli, kteří uživatelé jsou v různých rolích správce.
 
 - **Zobrazuje se chyba oznamující, že ID programu MPN je neplatné nebo ke kterému nemám přístup.**
-    1. Přejít na svůj [partnerský profil](https://partner.microsoft.com/en-us/pcv/accountsettings/connectedpartnerprofile) a ověřit, zda: 
+    1. Přejít na svůj [partnerský profil](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) a ověřit, zda: 
         - ID MPN je správné. 
         - Neexistují žádné chyby nebo se zobrazuje zpráva "čeká na vyřízení akce" a stav ověření v souladu s platným obchodním profilem a informacemi o partnerovi znamená "autorizováno" nebo "úspěch".
-    1. Přejdete na [stránku správy tenanta MPN](https://partner.microsoft.com/en-us/dashboard/account/v3/tenantmanagement) a ověřte, že je tenant, ve kterém je aplikace registrovaná, a že se k němu přihlašujete pomocí uživatelského účtu, který je na seznamu přidružených tenantů.
-    1. Navštivte [stránku Správa uživatelů MPN](https://partner.microsoft.com/en-us/pcv/users) a potvrďte uživatele, ke kterému se přihlašujete, protože je to buď globální správce, správce programu MPN nebo správce účtů.
+    1. Přejdete na [stránku správy tenanta MPN](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement) a ověřte, že je tenant, ve kterém je aplikace registrovaná, a že se k němu přihlašujete pomocí uživatelského účtu, který je na seznamu přidružených tenantů.
+    1. Navštivte [stránku Správa uživatelů MPN](https://partner.microsoft.com/pcv/users) a potvrďte uživatele, ke kterému se přihlašujete, protože je to buď globální správce, správce programu MPN nebo správce účtů.
 
 - **Když se přihlásím k portálu Azure AD, nevidím žádné registrované aplikace. Proč?** 
     Registrace aplikací mohla být vytvořena pomocí jiného uživatelského účtu nebo v jiném tenantovi. Ujistěte se, že jste přihlášeni pomocí správného účtu v tenantovi, ve kterém byly vytvořeny registrace aplikací.
@@ -209,7 +209,7 @@ Tato funkce není u zákaznických účtů Microsoftu podporována. Podporují s
 
 Pokud jste zkontrolovali všechny předchozí informace a stále dochází k chybě z Microsoft Graph, Shromážděte co nejvíc z následujících informací, které souvisejí s chybnou žádostí a [kontaktujte podporu Microsoftu](developer-support-help-options.md#open-a-support-request).
 
-- Časové razítko 
+- Timestamp 
 - CorrelationId 
 - ObjectID nebo UserPrincipalName přihlášeného uživatele 
 - Identifikátor ObjectId cílové aplikace

@@ -4,25 +4,25 @@ description: Monitorujte webové aplikace pro účely dostupnosti, výkonu a vyu
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.reviewer: lmolkova
-ms.openlocfilehash: 955988cd16af5269c474061cf60fb18a040909e3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 28f86e32dd73e25079ca685538fd0cb6f351b2d9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091228"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87310459"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights pro konzolové aplikace .NET
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) umožňuje monitorovat webovou aplikaci pro účely dostupnosti, výkonu a využití.
+[Application Insights](./app-insights-overview.md) umožňuje monitorovat webovou aplikaci pro účely dostupnosti, výkonu a využití.
 
 K [Microsoft Azure](https://azure.com)potřebujete předplatné. Přihlaste se pomocí účet Microsoft, kterou můžete potřebovat pro Windows, Xbox Live nebo jiné cloudové služby Microsoftu. Váš tým může mít k Azure předplatné organizace: Požádejte vlastníka, aby vás do něho přidal pomocí účet Microsoft.
 
 > [!NOTE]
-> [Pro všechny](../../azure-monitor/app/worker-service.md) konzolové aplikace se *důrazně doporučuje* použít balíček [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) a související pokyny. Tento balíček cílí [`NetStandard2.0`](/dotnet/standard/net-standard) , a proto se dá použít v .NET Core 2,1 nebo vyšší a .NET Framework 4.7.2 nebo novější.
+> [Pro všechny](./worker-service.md) konzolové aplikace se *důrazně doporučuje* použít balíček [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) a související pokyny. Tento balíček cílí [`NetStandard2.0`](/dotnet/standard/net-standard) , a proto se dá použít v .NET Core 2,1 nebo vyšší a .NET Framework 4.7.2 nebo novější.
 
 ## <a name="getting-started"></a>Začínáme
 
-* Na webu [Azure Portal](https://portal.azure.com)[vytvořte prostředek Application Insights](../../azure-monitor/app/create-new-resource.md). Jako typ aplikace vyberte **Obecné**.
+* Na webu [Azure Portal](https://portal.azure.com)[vytvořte prostředek Application Insights](./create-new-resource.md). Jako typ aplikace vyberte **Obecné**.
 * Zkopírujte klíč instrumentace. Vyhledejte klíč v rozevíracím seznamu **základy** nového prostředku, který jste vytvořili.
 * Nainstalujte nejnovější balíček [Microsoft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) .
 * Před sledováním jakékoli telemetrie (nebo nastavením APPINSIGHTS_INSTRUMENTATIONKEY proměnné prostředí) nastavte v kódu klíč instrumentace. Potom byste měli být schopni ručně sledovat telemetrii a vidět ji na Azure Portal
@@ -96,7 +96,7 @@ Další informace najdete v tématu [Referenční dokumentace ke konfiguračním
 
 ### <a name="configuring-telemetry-collection-from-code"></a>Konfigurace kolekce telemetrie z kódu
 > [!NOTE]
-> Čtení konfiguračního souboru není v rozhraní .NET Core podporováno. Můžete zvážit použití [Application Insights SDK pro ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
+> Čtení konfiguračního souboru není v rozhraní .NET Core podporováno. Můžete zvážit použití [Application Insights SDK pro ASP.NET Core](./asp-net-core.md)
 
 * Při spuštění aplikace vytvořte a nakonfigurujte `DependencyTrackingTelemetryModule` instanci – musí být typu Singleton a musí být zachována pro dobu života aplikace.
 
@@ -207,5 +207,6 @@ namespace ConsoleApp
 ```
 
 ## <a name="next-steps"></a>Další kroky
-* [Sledujte závislosti](../../azure-monitor/app/asp-net-dependencies.md) , abyste viděli, jestli REST, SQL nebo jiné externí prostředky zpomalují vaši práci.
-* [Pomocí rozhraní API](../../azure-monitor/app/api-custom-events-metrics.md) můžete odesílat vlastní události a metriky pro podrobnější přehled o výkonu a využití vaší aplikace.
+* [Sledujte závislosti](./asp-net-dependencies.md) , abyste viděli, jestli REST, SQL nebo jiné externí prostředky zpomalují vaši práci.
+* [Pomocí rozhraní API](./api-custom-events-metrics.md) můžete odesílat vlastní události a metriky pro podrobnější přehled o výkonu a využití vaší aplikace.
+

@@ -9,12 +9,12 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: 808eef5424d678559ae94ffd04e41eacd0f16aee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41e3f1ff430293ebc7b3828a0fd7090923fc209c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80371109"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281476"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Integrace aplikací ovládaných přes obrazovku emulátoru 3270 na sálových počítačích IBM s Azure s využitím Azure Logic Apps a konektoru IBM 3270
 
@@ -174,7 +174,7 @@ V tomto režimu definujete tok nebo kroky pro navigaci na obrazovkách vaší ap
 
 <a name="create-plans"></a>
 
-### <a name="create-plans"></a>Vytvoření plánů
+### <a name="create-plans"></a>Vytváření plánů
 
 1. Na panelu nástrojů nástroje pro návrh 3270 vyberte možnost **Navigace** , takže zadáte navigační režim.
 
@@ -292,7 +292,7 @@ V tomto režimu definujete metodu, která je přidružena k vašemu navigačním
    |---------------|-----------------|
    | **Typ dat** | Byte, datum a čas, desetinné číslo, int, Long, Short, řetězec |
    | **Technika vyplňování polí** | Parametry podporují tyto typy výplně a v případě potřeby plní prázdné hodnoty: <p><p>- **Typ**: do pole zadejte znaky postupně. <p>- **Fill (vyplnit**): Nahraďte obsah pole znaky, pokud je to nutné, v případě potřeby vyplňte prázdné. <p>- **EraseEofType**: Vymažte pole a potom do pole zadejte postupně znaky. |
-   | **Řetězec formátu** | Některé typy dat parametrů používají formátovací řetězec, který informuje konektor 3270, jak převést text z obrazovky na datový typ .NET: <p><p>- **DateTime**: řetězec formátu data a času následuje za [řetězci vlastního formátu data a času rozhraní .NET](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Datum například `06/30/2019` používá řetězec formátu `MM/dd/yyyy` . <p>- **Decimal**: řetězec formátu Decimal používá [klauzuli obrázku COBOL](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html). Číslo například `100.35` používá řetězec formátu `999V99` . |
+   | **Řetězec formátu** | Některé typy dat parametrů používají formátovací řetězec, který informuje konektor 3270, jak převést text z obrazovky na datový typ .NET: <p><p>- **DateTime**: řetězec formátu data a času následuje za [řetězci vlastního formátu data a času rozhraní .NET](/dotnet/standard/base-types/custom-date-and-time-format-strings). Datum například `06/30/2019` používá řetězec formátu `MM/dd/yyyy` . <p>- **Decimal**: řetězec formátu Decimal používá [klauzuli obrázku COBOL](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html). Číslo například `100.35` používá řetězec formátu `999V99` . |
    |||
 
 ## <a name="save-and-view-metadata"></a>Uložení a zobrazení metadat
@@ -364,7 +364,7 @@ Po dokončení všech těchto kroků můžete použít akci, kterou vytvoříte 
    | **ID účtu pro integraci** | Ano | <*Integration-Account-Name*> | Název vašeho účtu pro integraci |
    | **Adresa URL SAS účtu pro integraci** | Ano | <*Integration-Account-SAS-URL*> | Adresa URL sdíleného přístupového podpisu (SAS) vašeho účtu pro integraci, kterou můžete vygenerovat z nastavení účtu integrace v Azure Portal. <p>1. v nabídce účet pro integraci vyberte v části **Nastavení**možnost **Adresa URL zpětného volání**. <br>2. v pravém podokně Zkopírujte hodnotu **vygenerované adresy URL zpětného volání** . |
    | **Server** | Ano | <*TN3270 – název serveru*> | Název serveru pro vaši službu TN3270 |
-   | **Přístavní** | Ne | <*TN3270-Server – Port*> | Port používaný serverem TN3270 Pokud necháte pole prázdné, použije konektor `23` jako výchozí hodnotu. |
+   | **Port** | Ne | <*TN3270-Server – Port*> | Port používaný serverem TN3270 Pokud necháte pole prázdné, použije konektor `23` jako výchozí hodnotu. |
    | **Typ zařízení** | Ne | <*IBM-Terminal-model*> | Název nebo číslo modelu terminálu IBM pro emulaci. Pokud necháte pole prázdné, použije konektor výchozí hodnoty. |
    | **Code Page** | Ne | <*číslo stránky kódu*> | Číslo kódové stránky pro hostitele Pokud necháte pole prázdné, použije konektor `37` jako výchozí hodnotu. |
    | **Název logické jednotky** | Ne | <*logická jednotka – název*> | Název konkrétní logické jednotky, která se má požadovat od hostitele |
@@ -372,7 +372,7 @@ Po dokončení všech těchto kroků můžete použít akci, kterou vytvoříte 
    | **Ověřit certifikát SSL hostitele?** | Ne | Zapnuto nebo vypnuto | Zapněte nebo vypněte ověřování pro certifikát serveru. |
    ||||
 
-   Příklad:
+   Například:
 
    ![Vlastnosti připojení](./media/connectors-create-api-3270/connection-properties.png)
 
@@ -384,7 +384,7 @@ Po dokončení všech těchto kroků můžete použít akci, kterou vytvoříte 
    | **Název metody** | Ano | <*název metody*> | Vyberte metodu v souboru HIDX, který chcete použít. Po výběru metody se zobrazí seznam **Přidat nový parametr** , takže můžete vybrat parametry pro použití s touto metodou. |
    ||||
 
-   Příklad:
+   Například:
 
    **Vybrat soubor HIDX**
 
@@ -409,7 +409,7 @@ Po dokončení všech těchto kroků můžete použít akci, kterou vytvoříte 
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Další technické podrobnosti o této spojnici, jako jsou triggery, akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete na [referenční stránce konektoru](https://docs.microsoft.com/connectors/si3270/).
+Další technické podrobnosti o této spojnici, jako jsou triggery, akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete na [referenční stránce konektoru](/connectors/si3270/).
 
 > [!NOTE]
 > V případě Logic Apps v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Tato verze konektoru ISE-Label používá místo toho [omezení zpráv ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
@@ -417,3 +417,4 @@ Další technické podrobnosti o této spojnici, jako jsou triggery, akce a omez
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)
+

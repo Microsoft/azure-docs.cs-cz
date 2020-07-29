@@ -4,15 +4,15 @@ description: Vytvořte nový virtuální počítač s Windows z virtuálního pe
 author: cynthn
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/18/2019
 ms.author: cynthn
-ms.openlocfilehash: d360ac5a57fe72b092a6694721905c066527bba3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a541dce94cc25958e3c3a6a058e015c8c5e3db0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82086449"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283244"
 ---
 # <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>Vytvoření virtuálního počítače z virtuálního pevného disku pomocí Azure Portal
 

@@ -3,15 +3,15 @@ title: Vytvoření virtuálního počítače se systémem Linux v Azure ze šabl
 description: Použití rozhraní příkazového řádku Azure k vytvoření virtuálního počítače se systémem Linux ze šablony Správce prostředků
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: cynthn
-ms.openlocfilehash: 28c688526bccc411bce6f4118dc55160083deba0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ef9650690435a3770e59326e757ab1c783fa7b23
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510918"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372752"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Postup vytvoření virtuálního počítače se systémem Linux pomocí šablon Azure Resource Manager
 

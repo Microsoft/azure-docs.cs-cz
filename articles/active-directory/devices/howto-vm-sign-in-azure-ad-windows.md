@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8c9fbf2d86c2e066566bab11b1701909be64a37
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 588e63e630caa4746b493d4530e301f72e5ccb5f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025842"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282938"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlášení k virtuálnímu počítači s Windows v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -208,7 +208,7 @@ Před autorizací přístupu k virtuálním počítačům s Windows v Azure, kte
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Přihlášení pomocí přihlašovacích údajů Azure AD k virtuálnímu počítači s Windows
 
 > [!IMPORTANT]
-> Vzdálené připojení k virtuálním počítačům připojeným ke službě Azure AD je povolené jenom z počítačů s Windows 10, které jsou připojené ke službě Azure AD nebo které je služba Azure AD připojená ke **stejnému** adresáři jako virtuální počítač. Navíc k protokolu RDP pomocí přihlašovacích údajů Azure AD musí uživatel patřit do jedné ze dvou rolí RBAC, přihlášení správce virtuálního počítače nebo přihlášení uživatele virtuálního počítače. V tuto chvíli se Azure bastionu nedá použít k přihlášení pomocí Azure Active Directory ověřování s rozšířením AADLoginForWindows. Podporován je pouze přímý protokol RDP.
+> Vzdálené připojení k virtuálním počítačům připojeným ke službě Azure AD je povolené jenom z počítačů s Windows 10, které jsou buď registrované v Azure AD (vyžaduje se minimální 20H1 sestavení), nebo jste připojeni ke službě Azure AD nebo ke **stejnému** adresáři jako virtuální počítač připojili službu Azure AD. Navíc k protokolu RDP pomocí přihlašovacích údajů Azure AD musí uživatel patřit do jedné ze dvou rolí RBAC, přihlášení správce virtuálního počítače nebo přihlášení uživatele virtuálního počítače. Pokud používáte počítač s Windows 10 registrovaný v Azure AD, musíte zadat přihlašovací údaje ve formátu AzureAD\UPN (např. AzureAD\john@contoso.com ). V tuto chvíli se služba Azure bastionu nedá použít k přihlášení pomocí Azure Active Directory ověřování s rozšířením AADLoginForWindows. podporován je pouze přímý protokol RDP.
 
 Přihlášení k virtuálnímu počítači s Windows serverem 2019 pomocí Azure AD: 
 
@@ -224,7 +224,7 @@ Nyní jste přihlášeni k virtuálnímu počítači s Windows serverem 2019 Azu
 > [!NOTE]
 > Můžete uložit. Soubor RDP místně ve vašem počítači, aby se spouštěla budoucí připojení vzdálené plochy k virtuálnímu počítači, nemusíte v Azure Portal přejít na stránku Přehled virtuálního počítače a použít možnost připojit.
 
-## <a name="troubleshoot"></a>Odstranit potíže
+## <a name="troubleshoot"></a>Řešení potíží
 
 ### <a name="troubleshoot-deployment-issues"></a>Řešení problémů při nasazování
 
@@ -342,7 +342,7 @@ Pokud se při inicializaci připojení ke vzdálené ploše na virtuální poč�
 Ověřte, že počítač s Windows 10, který používáte k inicializaci připojení ke vzdálené ploše, je ten, který je připojený k Azure AD, nebo jestli je hybridní služba Azure AD připojená ke stejnému adresáři Azure AD, ke kterému je připojený váš virtuální počítač. Další informace o identitě zařízení najdete v článku [co je identita zařízení](/azure/active-directory/devices/overview).
 
 > [!NOTE]
-> Windows 10 20H1 přidá podporu pro počítač se systémem Azure AD pro inicializaci připojení vzdálené plochy k vašemu VIRTUÁLNÍmu počítači. Připojte se k programu Windows Insider a vyzkoušejte si to a prozkoumejte nové funkce Windows 10.
+> Windows 10 Build 20H1 přidal podporu pro počítač se systémem Azure AD, který iniciuje připojení RDP k vašemu VIRTUÁLNÍmu počítači. Při použití registrovaného počítače Azure AD (ne připojeného k Azure AD nebo k hybridnímu Azure AD) jako klienta RDP pro inicializaci připojení k vašemu VIRTUÁLNÍmu počítači musíte zadat přihlašovací údaje ve formátu AzureAD\UPn (např. AzureAD\john@contoso.com ).
 
 Ověřte také, že rozšíření AADLoginForWindows nebylo po dokončení připojení služby Azure AD odinstalováno.
  

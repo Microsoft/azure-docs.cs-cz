@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 00369ae45a13414ce46f324e37afe24be24a48e0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 6a3a52c90187920be13628a6d2fa44159e1109d7
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132938"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371783"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>PlayBook pro adresování běžných požadavků na zabezpečení pomocí Azure SQL Database a spravované instance Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -62,7 +62,7 @@ Pokud není uvedeno jinak, doporučujeme, abyste provedli všechny osvědčené 
 
 Chystáme se dál aktualizovat doporučení a osvědčené postupy, které jsou tady uvedené. Zadáním odkazu na **zpětnou vazbu** na konci tohoto článku zadejte nebo opravte tento dokument.
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 Ověřování je proces, který označuje, že uživatel vyžádá. Azure SQL Database a spravovaná instance SQL podporují dva typy ověřování:
 
@@ -112,7 +112,7 @@ Centrální Správa identit nabízí následující výhody:
 > - Přístupový token Azure AD je uložený v mezipaměti na straně klienta a jeho životnost závisí na konfiguraci tokenu. Viz článek, [konfigurovatelné životnosti tokenů v Azure Active Directory](../../active-directory/develop/active-directory-configurable-token-lifetimes.md)
 > - Pokyny k řešení potíží s ověřováním Azure AD najdete na následujícím blogu: [řešení potíží s Azure AD](https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991).
 
-### <a name="azure-multi-factor-authentication"></a>Vícefaktorové ověřování Azure
+### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
 
 > Zmíněné v: #2 praxe metody OSA, ISO Access Control (AC)
 
@@ -324,7 +324,7 @@ Oddělení povinností, označované také jako oddělení cel, popisuje nutnost
 
 - Vždy nezapomeňte mít záznam auditu pro akce související se zabezpečením.
 
-- Definici předdefinovaných rolí RBAC můžete načíst, abyste viděli oprávnění, která se používají, a vytvořit vlastní roli na základě výňatků a kumulace těchto funkcí prostřednictvím PowerShellu.
+- Můžete načíst definici předdefinovaných rolí Azure a zobrazit použitá oprávnění a vytvořit vlastní roli založenou na výňatkech a jejich kumulacích přes PowerShell.
 
 - Vzhledem k tomu, že kterýkoli člen role databáze db_owner může změnit nastavení zabezpečení, jako je například transparentní šifrování dat (TDE), nebo změnit objekt SLO, mělo by být toto členství uděleno opatrně. Existuje však mnoho úloh, které vyžadují db_owner oprávnění. Úkol jako změna nastavení databáze, jako je například změna možností databáze. Auditování hraje klíčovou roli v jakémkoli řešení.
 

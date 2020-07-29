@@ -16,11 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 56132eae03a52af425e00bec93a63a697a2a55e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec4d91d90a952805781d6d38a0fc8a8fcef84f39
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84204731"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283465"
 ---
 # <a name="azure-operational-security-best-practices"></a>Osvědčené postupy pro provozní zabezpečení Azure
 Tento článek poskytuje sadu provozních osvědčených postupů pro ochranu vašich dat, aplikací a dalších prostředků v Azure.
@@ -181,7 +182,7 @@ Důležité je zajistit, aby byla aplikace dostatečně odolná pro zpracování
 
 Pro Azure Cloud Services nakonfigurujte jednotlivé role tak, aby používaly [víc instancí](../../cloud-services/cloud-services-choose-me.md).
 
-V případě [Azure Virtual Machines](/azure/virtual-machines/windows/overview)zajistěte, aby vaše architektura virtuálních počítačů zahrnovala více než jeden virtuální počítač a aby byl každý virtuální počítač součástí [skupiny dostupnosti](/azure/virtual-machines/virtual-machines-windows-manage-availability). Pro možnosti automatického škálování doporučujeme používat Virtual Machine Scale Sets.
+V případě [Azure Virtual Machines](../../virtual-machines/windows/overview.md)zajistěte, aby vaše architektura virtuálních počítačů zahrnovala více než jeden virtuální počítač a aby byl každý virtuální počítač součástí [skupiny dostupnosti](../../virtual-machines/windows/tutorial-availability-sets.md). Pro možnosti automatického škálování doporučujeme používat Virtual Machine Scale Sets.
 
 **Osvědčený postup**: vrstvení zabezpečení v aplikaci omezuje možnost úspěšného útoku. Implementujte zabezpečené návrhy pro vaše aplikace pomocí integrovaných možností platformy Azure.  
 **Podrobnosti**: riziko útoku se zvyšuje s velikostí (oblastí Surface) aplikace. Oblast Surface můžete snížit pomocí seznamu povolených adres, abyste zavřeli vystavený adresní prostor IP adres a naslouchající porty, které nejsou potřeba na nástrojích pro vyrovnávání zatížení ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) a [Azure Application Gateway](/azure/application-gateway/application-gateway-create-probe-portal)).

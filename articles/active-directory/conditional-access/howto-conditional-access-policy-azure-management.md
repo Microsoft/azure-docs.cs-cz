@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09d07717895c6faa506d692becb261e834e44890
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ee4c7776dbddf089d290d760d6c0689ba9c0102
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83995350"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283023"
 ---
 # <a name="conditional-access-require-mfa-for-azure-management"></a>Podmíněný přístup: vyžadovat MFA pro správu Azure
 
@@ -47,9 +48,9 @@ Následující kroky vám pomůžou vytvořit zásadu podmíněného přístupu,
 1. V části **přiřazení**vyberte **Uživatelé a skupiny** .
    1. V části **Zahrnout**vyberte **Všichni uživatelé**.
    1. V části **vyloučit**vyberte **Uživatelé a skupiny** a zvolte účty pro nouzový přístup nebo rozklad vaší organizace. 
-   1. Vyberte **Done** (Hotovo).
+   1. Vyberte **Hotovo**.
 1. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **vybrat aplikace**, zvolte **Správa Microsoft Azure**a pak vyberte **Vybrat** a pak **Hotovo**.
-1. V části **podmínky**  >  **klientské aplikace (Preview)** nastavte **Konfigurovat** na **Ano**a vyberte **Hotovo**.
+1. V části **podmínky**  >  **klientské aplikace (Preview)** v části **Vyberte klientské aplikace, na které se bude tato zásada vztahovat, aby** se vybrala všechna výchozí nastavení a vyberte **Hotovo**.
 1. V části **řízení přístupu**  >  **udělení**přístupu vyberte **udělit přístup**, **vyžadovat vícefaktorové ověřování**a vyberte **Vybrat**.
 1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
 1. Vyberte **vytvořit** a vytvořte tak, aby se zásady povolily.

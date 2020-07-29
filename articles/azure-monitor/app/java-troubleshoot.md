@@ -3,12 +3,13 @@ title: Řešení potíží s Application Insights ve webovém projektu Java
 description: Průvodce odstraňováním potíží – monitorování živých aplikací Java pomocí Application Insights.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 74b4bc009158d826955f851f22458e9570a58e7c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-java
+ms.openlocfilehash: 4b6a7070b6b1b76a3f763105f4dce795f3e5c4be
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324144"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372514"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Řešení potíží a otázky a odpovědi v nástroji Application Insights
 Otázky nebo problémy s [Azure Application Insights v jazyce Java][java]? Tady je několik tipů.

@@ -5,12 +5,13 @@ ms.topic: conceptual
 author: MSNev
 ms.author: newylie
 ms.date: 06/05/2020
-ms.openlocfilehash: a76ed65ebc1c56232d4fa42c6df20f619fe14ca3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 83f518326b38e9832c46997a0a2791eb9f35705e
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517055"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371630"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>Řešení potíží s načtením sady SDK pro webové aplikace v jazyce JavaScript
 

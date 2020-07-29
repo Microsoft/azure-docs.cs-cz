@@ -5,17 +5,18 @@ description: Vytvářejte Azure Machine Learning monitory datových sad (Preview
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.reviewer: sgilley
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 06/25/2020
-ms.openlocfilehash: 7ee9d37b19d4796f826fbd9831f6e84a92a12e7c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 270e93302a90c458ccbdfdc4d2ced8f0d3c263af
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031180"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319673"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Zjištění posunu dat (Preview) u datových sad
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,10 +41,10 @@ Metriky pro posun dat můžete zobrazit pomocí sady Python SDK nebo v Azure Mac
 > [!Important]
 > Sledování posunu dat pomocí sady SDK je k dispozici ve všech edicích. Sledování dat je však provedená v rámci studia pouze na webu je edice Enterprise.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K vytváření a práci s monitory datových sad potřebujete:
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).
 * [Nainstalovaná sada Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), která zahrnuje balíček AzureML-DataSet Sets.
 * Strukturovaná (tabulková) data s časovým razítkem zadaným v cestě k souboru, názvu souboru nebo sloupci v datech.
@@ -92,7 +93,7 @@ Monitory datových sad závisí na následujících službách Azure.
 | *Datová sada* | Při načítání školicích dat a porovnávání dat pro školení modelů posun používá Machine Learning datové sady.  Generování profilu dat se používá ke generování některých hlášených metrik, jako jsou minimální, maximální a jedinečné hodnoty, počet jedinečných hodnot. |
 | *Kanál a výpočetní prostředí pro AzureML* | Úloha výpočtu posunu je hostovaná v kanálu AzureML.  Úloha se aktivuje na vyžádání nebo podle plánu, aby běžela na výpočetním prostředí nakonfigurovaném v době vytváření odchodu sledování.
 | *Application Insights*| Posun vygeneruje metriky pro Application Insights patřící do pracovního prostoru Machine Learning.
-| *Azure Blob Storage*| Posun vygeneruje metriky ve formátu JSON do úložiště objektů BLOB v Azure.
+| *Úložiště objektů BLOB v Azure*| Posun vygeneruje metriky ve formátu JSON do úložiště objektů BLOB v Azure.
 
 ## <a name="how-dataset-monitors-data"></a>Jak datová sada monitoruje data
 
@@ -228,14 +229,14 @@ Klikněte na tlačítko **+ vytvořit monitorování** a pokračujte v průvodci
 
     | Nastavení | Popis | Tipy | Měnitelné | 
     | ------- | ----------- | ---- | ------- |
-    | Název | Název monitorování datové sady | | No |
-    | Funkce | Seznam funkcí, které se budou analyzovat pro posun dat v průběhu času. | Nastavte na výstupní funkce modelu pro měření posunu konceptu. Nepoužívejte funkce, které se přirozeně odunášeny v průběhu času (měsíc, rok, index atd.). Po úpravě seznamu funkcí můžete zpětně naplnit a sledovat sledování posunu dat. | Yes | 
-    | Cílový výpočetní objekt | Pokud chcete spustit úlohy monitorování datových sad, Azure Machine Learning výpočetní cíl. | | Yes | 
-    | Povolit | Povolí nebo zakáže plán na kanálu monitorování datových sad. | Zakažte plán k analýze historických dat s nastavením obnovení. Dá se povolit po vytvoření monitoru datové sady. | Yes | 
-    | Frekvence | Frekvence, která se použije k naplánování úlohy kanálu a k analýze historických dat, pokud se spustí zpětná výplň. Mezi možnosti patří denní, týdenní nebo měsíční. | Každé spuštění porovná data v cílové datové sadě podle četnosti: <li>Denně: porovnat poslední dokončený den v cílové datové sadě se směrným plánem <li>Týdně: porovnat poslední dokončený týden (pondělí-neděle) v cílové datové sadě se směrným plánem <li>Month: Compare poslední dokončený měsíc v cílové datové sadě se směrným plánem | No | 
-    | Latence | Čas, který je v hodinách, trvá pro doručení dat do datové sady. Pokud například trvá tři dny, než dorazí data do databáze SQL DB pro zapouzdření datové sady, nastavte latenci na 72. | Po vytvoření monitorování datové sady nelze změnit. | No | 
-    | e-mailové adresy, | E-mailové adresy pro výstrahy na základě porušení procentuální prahové hodnoty posunu dat | E-maily se odesílají prostřednictvím Azure Monitor. | Yes | 
-    | Prahová hodnota | Procentuální prahová hodnota posunu dat pro e-mailové upozornění. | Další výstrahy a události můžete nastavit u mnoha dalších metrik v přidruženém prostředku Application Insights pracovního prostoru. | Yes |
+    | Název | Název monitorování datové sady | | Ne |
+    | Funkce | Seznam funkcí, které se budou analyzovat pro posun dat v průběhu času. | Nastavte na výstupní funkce modelu pro měření posunu konceptu. Nepoužívejte funkce, které se přirozeně odunášeny v průběhu času (měsíc, rok, index atd.). Po úpravě seznamu funkcí můžete zpětně naplnit a sledovat sledování posunu dat. | Ano | 
+    | Cílový výpočetní objekt | Pokud chcete spustit úlohy monitorování datových sad, Azure Machine Learning výpočetní cíl. | | Ano | 
+    | Povolení | Povolí nebo zakáže plán na kanálu monitorování datových sad. | Zakažte plán k analýze historických dat s nastavením obnovení. Dá se povolit po vytvoření monitoru datové sady. | Ano | 
+    | Frekvence | Frekvence, která se použije k naplánování úlohy kanálu a k analýze historických dat, pokud se spustí zpětná výplň. Mezi možnosti patří denní, týdenní nebo měsíční. | Každé spuštění porovná data v cílové datové sadě podle četnosti: <li>Denně: porovnat poslední dokončený den v cílové datové sadě se směrným plánem <li>Týdně: porovnat poslední dokončený týden (pondělí-neděle) v cílové datové sadě se směrným plánem <li>Month: Compare poslední dokončený měsíc v cílové datové sadě se směrným plánem | Ne | 
+    | Latence | Čas, který je v hodinách, trvá pro doručení dat do datové sady. Pokud například trvá tři dny, než dorazí data do databáze SQL DB pro zapouzdření datové sady, nastavte latenci na 72. | Po vytvoření monitorování datové sady nelze změnit. | Ne | 
+    | e-mailové adresy, | E-mailové adresy pro výstrahy na základě porušení procentuální prahové hodnoty posunu dat | E-maily se odesílají prostřednictvím Azure Monitor. | Ano | 
+    | Prahová hodnota | Procentuální prahová hodnota posunu dat pro e-mailové upozornění. | Další výstrahy a události můžete nastavit u mnoha dalších metrik v přidruženém prostředku Application Insights pracovního prostoru. | Ano |
 
 Po dokončení průvodce se v seznamu zobrazí výsledné monitorování datových sad. Vyberte ji a přejdete na stránku podrobností tohoto monitorování.
 

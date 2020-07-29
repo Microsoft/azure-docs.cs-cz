@@ -4,16 +4,16 @@ description: Tento článek poskytuje pokyny k povolení Microsoft Azureho šifr
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
-ms.topic: article
+ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7664cebbd12e075e9b9ea7ea75021b61569a80cf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7452a08125008e3d25ffb7d0eff59f55ca9be0b1
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080280"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372650"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Scénáře použití služby Azure Disk Encryption na virtuálních počítačích se systémem Linux
 
@@ -409,7 +409,7 @@ Azure Disk Encryption nefunguje pro následující scénáře, funkce a technolo
 - Výpis stavu systému jádra (kdump).
 - Oracle ACFS (systém souborů clusteru ASM).
 - Virtuální počítače s Gen2 (viz: [Podpora pro virtuální počítače 2. generace v Azure](generation-2.md#generation-1-vs-generation-2-capabilities)).
-- Virtuální počítače řady Lsv2 (viz: [Lsv2-Series](../lsv2-series.md)).
+- Disky NVMe virtuálních počítačů Lsv2 Series (viz: [Lsv2-Series](../lsv2-series.md)).
 - Virtuální počítač s "vnořenými přípojnými body"; To znamená, že několik přípojných bodů v jedné cestě (například "/1stmountpoint/data/2stmountpoint").
 - Virtuální počítač s datovou jednotkou připojenou nad složku operačního systému.
 - Virtuální počítače řady M-Series s Akcelerátor zápisu disky.

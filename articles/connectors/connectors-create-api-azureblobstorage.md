@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: eb943bfe36be10d1e95d569a5c1bf48563e909c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34608a085c0d60e0ce07e5d198622f80a43f8b38
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711285"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284077"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Vytváření a správa objektů BLOB v Azure Blob Storage pomocí Azure Logic Apps
 
@@ -20,7 +20,7 @@ V tomto článku se dozvíte, jak můžete v rámci aplikace logiky pomocí kone
 
 Předpokládejme, že máte nástroj, který se aktualizuje na webu Azure. který funguje jako Trigger vaší aplikace logiky. Když k této události dojde, můžete aplikaci logiky aktualizovat nějaký soubor v kontejneru úložiště objektů blob, což je akce v aplikaci logiky.
 
-Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý Start: Vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Technické informace specifické pro konektor najdete v referenčních informacích k [Azure Blob Storage Connectoru](https://docs.microsoft.com/connectors/azureblobconnector/).
+Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý Start: Vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Technické informace specifické pro konektor najdete v referenčních informacích k [Azure Blob Storage Connectoru](/connectors/azureblobconnector/).
 
 > [!IMPORTANT]
 > Aplikace logiky nemají přímý přístup k účtům úložiště, které jsou za bránami firewall, pokud jsou ve stejné oblasti. Jako alternativní řešení můžete mít aplikace logiky a účet úložiště v různých oblastech. Další informace o povolení přístupu z Azure Logic Apps k účtům úložiště za branami firewall najdete v části [přístup k účtům úložiště za brány firewall](#storage-firewalls) dále v tomto tématu.
@@ -121,13 +121,13 @@ V tomto příkladu se načte jenom obsah objektu BLOB. Chcete-li zobrazit obsah,
 
 1. Po zobrazení výzvy k vytvoření připojení zadejte tyto informace:
 
-   | Vlastnost | Požaduje se | Hodnota | Description |
+   | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Název připojení** | Yes | <*název připojení*> | Název, který se má pro připojení vytvořit |
-   | **Účet úložiště** | Yes | <*účet úložiště*> | V seznamu vyberte svůj účet úložiště. |
+   | **Název připojení** | Ano | <*název připojení*> | Název, který se má pro připojení vytvořit |
+   | **Účet úložiště** | Ano | <*účet úložiště*> | V seznamu vyberte svůj účet úložiště. |
    ||||
 
-   Příklad:
+   Například:
 
    ![Vytvoření připojení účtu služby Azure Blob Storage](./media/connectors-create-api-azureblobstorage/create-storage-account-connection.png) 
 
@@ -137,7 +137,7 @@ V tomto příkladu se načte jenom obsah objektu BLOB. Chcete-li zobrazit obsah,
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Další technické podrobnosti o této spojnici, jako jsou triggery, akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete na [referenční stránce konektoru](https://docs.microsoft.com/connectors/azureblobconnector/).
+Další technické podrobnosti o této spojnici, jako jsou triggery, akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete na [referenční stránce konektoru](/connectors/azureblobconnector/).
 
 > [!NOTE]
 > V případě Logic Apps v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Tato verze konektoru ISE-Label používá místo toho [omezení zpráv ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
@@ -194,7 +194,7 @@ Pokud chcete nastavit výjimku a podporu spravovaných identit, postupujte podle
 1. V pracovním postupu aplikace logiky přidejte a nastavte akci HTTP nebo aktivační událost pro přístup k účtu úložiště nebo entitě.
 
    > [!IMPORTANT]
-   > V případě odchozí akce HTTP nebo triggerů volání Azure Storage účtů se ujistěte, že hlavička žádosti zahrnuje `x-ms-version` vlastnost a verzi rozhraní API pro operaci, kterou chcete spustit v účtu úložiště. Další informace najdete v tématu [ověření přístupu se spravovanou identitou](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) a správou [verzí pro Azure Storage služby](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests).
+   > V případě odchozí akce HTTP nebo triggerů volání Azure Storage účtů se ujistěte, že hlavička žádosti zahrnuje `x-ms-version` vlastnost a verzi rozhraní API pro operaci, kterou chcete spustit v účtu úložiště. Další informace najdete v tématu [ověření přístupu se spravovanou identitou](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) a správou [verzí pro Azure Storage služby](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests).
 
 1. Na této akci [Vyberte spravovanou identitu](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) , která se má použít pro ověřování.
 
@@ -207,3 +207,4 @@ Pokud pro [API Management](../api-management/api-management-key-concepts.md)pou�
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)
+

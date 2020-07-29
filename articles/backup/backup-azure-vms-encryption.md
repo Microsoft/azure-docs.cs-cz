@@ -3,12 +3,12 @@ title: Zálohování a obnovení šifrovaných virtuálních počítačů Azure
 description: Popisuje postup zálohování a obnovení šifrovaných virtuálních počítačů Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 1689ff89f15248f6771ccdce525cc136221e5577
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 20310c6c51a2467e9389bc77dd9ada4848c69be4
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538900"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371749"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Zálohování a obnovení šifrovaného virtuálního počítače Azure
 
@@ -47,16 +47,16 @@ Než začnete, udělejte toto:
 
 1. Ujistěte se, že máte jeden nebo více virtuálních počítačů se [systémem Windows](../virtual-machines/linux/disk-encryption-overview.md) nebo [Linux](../virtual-machines/linux/disk-encryption-overview.md) s povoleným ADE.
 2. [Seznamte se s maticí podpory](backup-support-matrix-iaas.md) pro zálohování virtuálních počítačů Azure.
-3. Pokud ho nemáte, [vytvořte](backup-azure-arm-vms-prepare.md#create-a-vault) Recovery Services úložiště záloh.
+3. Pokud ho nemáte, [vytvořte](backup-create-rs-vault.md) Recovery Services úložiště záloh.
 4. Pokud povolíte šifrování pro virtuální počítače, které jsou už povolené pro zálohování, stačí, když zadáte zálohu s oprávněním pro přístup k Key Vault tak, aby zálohy mohly pokračovat bez přerušení. [Přečtěte si další informace](#provide-permissions) o přiřazení těchto oprávnění.
 
 Kromě toho je možné, že v některých případech budete muset udělat několik věcí:
 
-- **Instalace agenta virtuálního počítače na virtuální počítač**: Azure Backup zálohuje virtuální počítače Azure tím, že nainstaluje rozšíření na agenta virtuálního počítače Azure, který běží na počítači. Pokud byl váš virtuální počítač vytvořený z image Azure Marketplace, Agent se nainstaluje a spustí. Pokud vytvoříte vlastní virtuální počítač nebo migrujete místní počítač, možná budete muset [agenta nainstalovat ručně](backup-azure-arm-vms-prepare.md#install-the-vm-agent).
+- **Instalace agenta virtuálního počítače na virtuální počítač**: Azure Backup zálohuje virtuální počítače Azure tím, že nainstaluje rozšíření na agenta virtuálního počítače Azure, který běží na počítači. Pokud byl váš virtuální počítač vytvořen z bitové kopie Azure Marketplace, je agent nainstalovaný a spuštěný. Pokud vytvoříte vlastní virtuální počítač nebo migrujete místní počítač, možná budete muset [agenta nainstalovat ručně](backup-azure-arm-vms-prepare.md#install-the-vm-agent).
 
 ## <a name="configure-a-backup-policy"></a>Konfigurace zásady zálohování
 
-1. Pokud jste ještě nevytvořili úložiště záloh Recovery Services, postupujte podle [těchto pokynů](backup-azure-arm-vms-prepare.md#create-a-vault) .
+1. Pokud jste ještě nevytvořili úložiště záloh Recovery Services, postupujte podle [těchto pokynů](backup-create-rs-vault.md) .
 2. Otevřete trezor na portálu a v části **Začínáme** vyberte **zálohovat** .
 
     ![Okno zálohování](./media/backup-azure-vms-encryption/select-backup.png)

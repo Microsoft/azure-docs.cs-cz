@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: fec93169a8c49422c9e310cddc08ae3412b89166
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b8a53ae598130086a9009dbec891052e863cdf0f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132275"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281357"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Správa modelů digitálních vláken Azure
 
@@ -65,8 +65,11 @@ Tento model definuje název a jedinečné ID pro místnost pacienta a vlastnosti
 
 V rámci této metody můžete přejít na, abyste definovali modely pro nemocnice, zóny nebo samotnou nemocnice.
 
-> [!TIP]
-> Pro analýzu a ověření DTDL je k dispozici knihovna na straně klienta. Generuje model objektu C# DTDL obsahu, který lze použít v modelem řízených scénářů, jako je například generování prvků uživatelského rozhraní. Tuto knihovnu můžete také použít k tomu, abyste se ujistili, že vaše modely nemají žádné chyby syntaxe, než je nahrajete. Další informace o této knihovně a přístup k předdefinovaným vzorům pro validátor DTDL naleznete v tématu [*How to: Analyze and Validate Models*](how-to-use-parser.md).
+### <a name="validate-syntax"></a>Ověřit syntaxi
+
+Pro analýzu a ověření DTDL je k dispozici knihovna na straně klienta. Generuje model objektu C# DTDL obsahu, který lze použít v modelem řízených scénářů, jako je například generování prvků uživatelského rozhraní. Tuto knihovnu můžete také použít k tomu, abyste se ujistili, že vaše modely nemají žádné chyby syntaxe, než je nahrajete. 
+
+Další informace o této knihovně a přístup k předdefinovaným vzorům pro validátor DTDL naleznete v tématu [*How to: Analyze and Validate Models*](how-to-use-parser.md).
 
 ## <a name="manage-models-with-apis"></a>Spravujte modely pomocí rozhraní API.
 
@@ -82,7 +85,10 @@ V následujících částech se dozvíte, jak provádět různé operace správy
 
 Po vytvoření modelů je můžete nahrát do instance digitálních vláken Azure.
 
-Zde je fragment kódu, který ukazuje, jak to provést:
+> [!TIP]
+> Před odesláním do instance digitálního vlákna Azure doporučujeme vaše modely ověřit offline. Můžete použít [knihovnu analyzátorů DTDL na straně klienta](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) a [ukázku validátoru DTDL](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) popsané v tématu [*Postupy: analýza a ověření modelů*](how-to-use-parser.md) pro kontrolu vašich modelů před jejich odesláním do služby.
+
+Až budete připraveni k nahrání modelu, můžete použít následující fragment kódu:
 
 ```csharp
 // 'client' is an instance of DigitalTwinsClient
@@ -109,7 +115,7 @@ foreach (string fileName in dtdlFiles)
 client.CreateModels(dtdlStrings);
 ```
 
-Soubory modelu mohou obsahovat více než jeden model. V takovém případě musí být modely umístěny do pole JSON. Příklad:
+Soubory modelu mohou obsahovat více než jeden model. V takovém případě musí být modely umístěny do pole JSON. Například:
 
 ```json
 [
@@ -126,10 +132,7 @@ Soubory modelu mohou obsahovat více než jeden model. V takovém případě mus
 ]
 ```
  
-Při nahrávání se ověří soubory modelu.
-
-> [!TIP] 
-> Všimněte si, že můžete také použít [knihovnu analyzátorů DTDL na straně klienta](how-to-use-parser.md) k ověření modelů na straně klienta.
+Při nahrávání se služba ověřuje pomocí souborů modelu.
 
 ### <a name="retrieve-models"></a>Načíst modely
 

@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 7b8c6e09616f261c371b010b38d2c0f81376a6f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f6a64cf30ecc684e05675d366ff5c9fc6642126
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84944759"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372157"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>Zápis auditu do účtu úložiště za virtuální sítí a branou firewall
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -120,7 +120,7 @@ Konfigurace auditu SQL pro zápis událostí do účtu úložiště za virtuáln
 2. Otevřete [Azure Portal](https://portal.azure.com). Přejděte na svůj účet úložiště. Vyhledejte **Access Control (IAM)** a klikněte na **Přidat přiřazení role**. Přiřaďte roli RBAC **Přispěvatel dat objektů BLOB úložiště** k serveru, který je hostitelem databáze, kterou jste zaregistrovali v Azure Active Directory (Azure AD) jako v předchozím kroku.
 
    > [!NOTE]
-   > Tento krok mohou provádět pouze členové s oprávněním vlastníka. Informace o různých předdefinovaných rolích pro prostředky Azure najdete [v tématu předdefinované role Azure](../../role-based-access-control/built-in-roles.md).
+   > Tento krok mohou provádět pouze členové s oprávněním vlastníka. Informace o různých předdefinovaných rolích Azure najdete [v tématu předdefinované role Azure](../../role-based-access-control/built-in-roles.md).
 
 3. Nakonfigurujte [zásady auditování objektů BLOB serveru](/rest/api/sql/server%20auditing%20settings/createorupdate)bez zadání *storageAccountAccessKey*:
 

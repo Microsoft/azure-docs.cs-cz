@@ -1,6 +1,5 @@
 ---
-title: Vytvoření více modelů a koncových bodů
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (Classic): vytvoření více &ch koncových bodů modelu – Azure'
 description: Pomocí PowerShellu můžete vytvořit několik modelů Machine Learning a koncových bodů webové služby se stejným algoritmem, ale s různými školicími datovými sadami.
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 5b158c2fbdbfba91055d64f92f64c51dc6c3d391
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9cb5b0b87b1d6adb8e0e5cda06049cfddba3d950
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955705"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283533"
 ---
 # <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>Vytvoření více koncových bodů webové služby z jednoho experimentu pomocí ML Studio (Classic) a PowerShellu
+
+**platí pro:** ![ žádná](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasická) 
 
 Tady je běžný problém strojového učení: chcete vytvořit mnoho modelů, které mají stejný pracovní postup školení a používat stejný algoritmus. Ale chcete, aby jako vstup měly jiné školicí datové sady. V tomto článku se dozvíte, jak to udělat ve velkém měřítku Azure Machine Learning Studio (Classic), a to pouze pomocí jednoho experimentu.
 

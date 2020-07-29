@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: a49e5fbe9eac689b630a0f3b443729faf29cdb0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 492f44353a9a43279afa4869640193f1baddd41c
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84974513"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372871"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Průzkumníkem služby Azure Storage
 
@@ -67,9 +67,9 @@ Pokud chcete získat přístup k kontejnerům nebo frontám objektů blob, můž
 
 U jiných typů prostředků momentálně nepoužíváme řešení související s RBAC. Jako alternativní řešení si můžete vyžádat identifikátor URI SAS, který se [připojí k vašemu prostředku](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
 
-### <a name="recommended-built-in-rbac-roles"></a>Doporučené předdefinované role RBAC
+### <a name="recommended-azure-built-in-roles"></a>Doporučené předdefinované role Azure
 
-K dispozici je několik integrovaných rolí RBAC, které mohou poskytnout oprávnění potřebná k použití Průzkumník služby Storage. Některé z těchto rolí:
+K dispozici je několik předdefinovaných rolí Azure, které mohou poskytnout oprávnění potřebná k použití Průzkumník služby Storage. Některé z těchto rolí:
 - [Vlastník](/azure/role-based-access-control/built-in-roles#owner): Správa všeho, včetně přístupu k prostředkům. **Poznámka**: Tato role vám poskytne přístup k klíčům.
 - [Přispěvatel](/azure/role-based-access-control/built-in-roles#contributor): umožňuje spravovat všechno, kromě přístupu k prostředkům. **Poznámka**: Tato role vám poskytne přístup k klíčům.
 - [Čtenář](/azure/role-based-access-control/built-in-roles#reader): čtení a výpis prostředků
@@ -243,7 +243,7 @@ Pokud se zobrazí tato chybová zpráva, když se pokusíte přidat vlastní př
 3. V závislosti na typu připojení, se kterým máte potíže, vyhledejte jeho klíč a zkopírujte jeho hodnotu do textového editoru. Hodnota je pole vlastních názvů připojení, například následující:
     * Účty úložiště
         * `StorageExplorer_CustomConnections_Accounts_v1`
-    * Kontejnery objektů BLOB
+    * Kontejnery objektů blob
         * `StorageExplorer_CustomConnections_Blobs_v1`
         * `StorageExplorer_CustomConnections_Blobs_v2`
     * Sdílené složky

@@ -5,12 +5,12 @@ description: Zjistěte, jak ručně vytvořit svazek se soubory Azure pro použi
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 144d93cbb3b66f260dbd9d92863ca5fb13ed00a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7f013d16b899418a5262f23dfcc595a1e270616
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82207662"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281204"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Ruční vytvoření a použití svazku se sdílenou složkou Azure ve službě Azure Kubernetes Service (AKS)
 
@@ -161,7 +161,7 @@ spec:
 
 Pokud používáte cluster verze 1.8.0-1.8.4, je možné určit kontext zabezpečení s hodnotou *runAsUser* nastavenou na *0*. Další informace o kontextu zabezpečení najdete v tématu [Konfigurace kontextu zabezpečení][kubernetes-security-context].
 
-Pokud chcete aktualizovat možnosti připojení, vytvořte soubor *azurefile-Mount-Options-PV. yaml* s *PersistentVolume*. Příklad:
+Pokud chcete aktualizovat možnosti připojení, vytvořte soubor *azurefile-Mount-Options-PV. yaml* s *PersistentVolume*. Například:
 
 ```yaml
 apiVersion: v1
@@ -187,7 +187,7 @@ spec:
   - nobrl
 ```
 
-Vytvořte soubor *azurefile-Mount-Options-PVC. yaml* s *PersistentVolumeClaim* , který používá *PersistentVolume*. Příklad:
+Vytvořte soubor *azurefile-Mount-Options-PVC. yaml* s *PersistentVolumeClaim* , který používá *PersistentVolume*. Například:
 
 ```yaml
 apiVersion: v1
@@ -219,7 +219,7 @@ NAME        STATUS   VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
 ```
 
-Aktualizujte své specifikace kontejneru, aby odkazovaly na *PersistentVolumeClaim* a aktualizovali pod. Příklad:
+Aktualizujte své specifikace kontejneru, aby odkazovaly na *PersistentVolumeClaim* a aktualizovali pod. Například:
 
 ```yaml
 ...
@@ -234,6 +234,8 @@ Aktualizujte své specifikace kontejneru, aby odkazovaly na *PersistentVolumeCla
 Související osvědčené postupy najdete [v tématu osvědčené postupy pro úložiště a zálohování v AKS][operator-best-practices-storage].
 
 Další informace o spolupráci AKS clusterů se soubory Azure najdete v tématu [modul plug-in Kubernetes pro soubory Azure][kubernetes-files].
+
+Parametry třídy úložiště najdete v tématu [statické zřizování (Přineste si vlastní sdílenou složku)](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/docs/driver-parameters.md#static-provisionbring-your-own-file-share).
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#create

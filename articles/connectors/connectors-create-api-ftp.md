@@ -7,11 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 12/15/2019
 tags: connectors
-ms.openlocfilehash: 5b61b51e79c71736e18aaa63ab032c05c512c8d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4cad2b658547d56d00efdd5e1496110f8e4a5e6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80656332"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284009"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Vytvoření, monitorování a správa souborů FTP pomocí Azure Logic Apps
 
@@ -112,7 +113,7 @@ Zde je příklad, který ukazuje, jak použít **při přidání nebo úpravě s
 
    ![Vybraná složka se zobrazí ve vlastnosti "složka".](./media/connectors-create-api-ftp/selected-folder-ftp-trigger.png)
 
-1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
+1. Uložte aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
 Teď, když má aplikace logiky Trigger, přidejte akce, které chcete spustit, když aplikace logiky najde nový nebo upravovaný soubor. V tomto příkladu můžete přidat akci FTP, která získá nový nebo aktualizovaný obsah.
 
@@ -152,7 +153,7 @@ Akce **získat metadata souboru** získá vlastnosti souboru, který je na serve
 
    ![Vybraná vlastnost ID](./media/connectors-create-api-ftp/selected-get-file-content-id-ftp-action.png)
 
-1. Uložte svou aplikaci logiky.
+1. Uložte aplikaci logiky.
 
 ## <a name="test-your-logic-app"></a>Testování aplikace logiky
 
@@ -166,11 +167,11 @@ Pokud chcete ověřit, že váš pracovní postup vrátí očekávaný obsah, p�
 
    ![Zadání informací o akci e-mailu](./media/connectors-create-api-ftp/selected-send-email-action.png)
 
-1. Uložte svou aplikaci logiky. Pokud chcete aplikaci logiky spustit a aktivovat, na panelu nástrojů vyberte **Spustit**a pak přidejte soubor do složky FTP, kterou vaše aplikace logiky teď monitoruje.
+1. Uložte aplikaci logiky. Pokud chcete aplikaci logiky spustit a aktivovat, na panelu nástrojů vyberte **Spustit**a pak přidejte soubor do složky FTP, kterou vaše aplikace logiky teď monitoruje.
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Další technické podrobnosti o této spojnici, jako jsou triggery, akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete na [referenční stránce konektoru](https://docs.microsoft.com/connectors/ftpconnector/).
+Další technické podrobnosti o této spojnici, jako jsou triggery, akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete na [referenční stránce konektoru](/connectors/ftpconnector/).
 
 > [!NOTE]
 > V případě Logic Apps v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Tato verze konektoru ISE-Label používá místo toho [omezení zpráv ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
@@ -178,3 +179,4 @@ Další technické podrobnosti o této spojnici, jako jsou triggery, akce a omez
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)
+

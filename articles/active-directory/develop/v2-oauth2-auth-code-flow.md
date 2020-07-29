@@ -13,12 +13,12 @@ ms.date: 07/22/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0470ab635f34291b4c92259e556329d6b2f401c7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 42356ec4277c8441b4833560f431740e9e2f56c8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026080"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311343"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity Platform a tok autorizačního kódu OAuth 2,0
 
@@ -34,9 +34,11 @@ V nejvyšší úrovni má celý tok ověřování pro aplikaci podobný bit jako
 
 ![Tok kódu ověřování OAuth](./media/v2-oauth2-auth-code-flow/convergence-scenarios-native.svg)
 
-## <a name="setup-required-for-single-page-apps"></a>Instalace se vyžaduje pro jednostránkové aplikace.
+## <a name="redirect-uri-setup-required-for-single-page-apps"></a>Pro jednostránkové aplikace se vyžaduje nastavení identifikátoru URI přesměrování.
 
-Tok autorizačního kódu pro aplikace s jednou stránkou vyžaduje další instalaci.  Při [vytváření aplikace](howto-create-service-principal-portal.md)je nutné označit identifikátor URI pro přesměrování vaší aplikace jako `spa` identifikátor URI přesměrování. To způsobí, že přihlašovací server povolí pro vaši aplikaci CORS (sdílení prostředků ve více zdrojích).  To je nutné pro uplatnění kódu pomocí XHR.
+Tok autorizačního kódu pro aplikace s jednou stránkou vyžaduje další instalaci.  Postupujte podle pokynů pro [Vytvoření jednostránkové aplikace](scenario-spa-app-registration.md#redirect-uri-msaljs-20-with-auth-code-flow) pro správné označení identifikátoru URI přesměrování, který je povolený pro CORS. Pokud chcete aktualizovat existující identifikátor URI pro přesměrování a povolit CORS, otevřete editor manifestu a `type` v části nastavte pole pro identifikátor URI přesměrování `spa` `replyUrlsWithType` . Můžete také kliknout na URI přesměrování v části Web na kartě ověřování a vybrat identifikátory URI, které chcete migrovat, pomocí toku autorizačního kódu.
+
+`spa`Typ přesměrování je zpětně kompatibilní s implicitním tokem. Aplikace, které aktuálně používají implicitní tok k získání tokenů, se můžou přesunout na `spa` typ URI přesměrování bez problémů a dál používat implicitní tok.
 
 Pokud se pokusíte použít tok autorizačního kódu a zobrazit tuto chybu:
 
@@ -229,7 +231,7 @@ Chybové odpovědi budou vypadat takto:
 | `temporarily_unavailable` | Server je dočasně zaneprázdněný pro zpracování žádosti. | Opakujte požadavek. Klientská aplikace může vysvětlit uživateli, že jeho odpověď je zpožděna z důvodu dočasné podmínky. |
 
 > [!NOTE]
-> U jednostránkovéch aplikací se může zobrazit `invalid_request` Chyba s oznámením, že je povolená možnost uplatnění tokenu mezi zdroji jenom pro typ klienta s jednou stránkou.  To znamená, že identifikátor URI přesměrování použitý k vyžádání tokenu nebyl označen jako `spa` identifikátor URI přesměrování.  Projděte si [Postup registrace aplikace](#setup-required-for-single-page-apps) , jak povolit tento tok.
+> U jednostránkovéch aplikací se může zobrazit `invalid_request` Chyba s oznámením, že je povolená možnost uplatnění tokenu mezi zdroji jenom pro typ klienta s jednou stránkou.  To znamená, že identifikátor URI přesměrování použitý k vyžádání tokenu nebyl označen jako `spa` identifikátor URI přesměrování.  Projděte si [Postup registrace aplikace](#redirect-uri-setup-required-for-single-page-apps) , jak povolit tento tok.
 
 ## <a name="use-the-access-token"></a>Použití přístupového tokenu
 

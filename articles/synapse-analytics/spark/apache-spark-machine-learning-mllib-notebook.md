@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 8cd189bf4037d42348d9a94c47cf0122e63af58f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b7ae2e3045b8f6e56b756ac1b2a4233ac8af9688
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089290"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373449"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Vytvoření aplikace Machine Learning pomocí Apache Spark MLlib a Azure synapse Analytics
 
@@ -225,7 +225,7 @@ train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, te
 Teď, když existují dva datarámce, je dalším úkolem vytvořit vzor modelu a spustit ho v rámci školení dataframe a pak ověřit proti testovacímu datasnímku. Měli byste experimentovat s různými verzemi vzorce modelu, abyste viděli dopad různých kombinací.
 
 > [!Note]
-> Pokud chcete model uložit, budete potřebovat roli Azure Storage Blob role RBAC přispěvatele dat. V části účet úložiště přejděte na Access Control (IAM) a vyberte přidat přiřazení role. Přiřazení role RBAC Přispěvatel dat objektů BLOB úložiště k vašemu serveru SQL Database. Tento krok mohou provádět pouze členové s oprávněním vlastníka. Informace o různých předdefinovaných rolích pro prostředky Azure najdete v tomto [Průvodci](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+> Pokud chcete model uložit, budete potřebovat roli Azure Storage Blob role RBAC přispěvatele dat. V části účet úložiště přejděte na Access Control (IAM) a vyberte přidat přiřazení role. Přiřazení role RBAC Přispěvatel dat objektů BLOB úložiště k vašemu serveru SQL Database. Tento krok mohou provádět pouze členové s oprávněním vlastníka. Informace o různých předdefinovaných rolích Azure najdete v tomto [Průvodci](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ```python
 ## Create a new LR object for the model
@@ -278,7 +278,7 @@ plt.show()
 
 Po dokončení používání aplikace vypněte Poznámkový blok a uvolněte ho tak, že zavřete kartu nebo v dolní části poznámkového bloku vyberete **ukončit relaci** ze stavového panelu.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 - [Přehled: Apache Spark ve službě Azure synapse Analytics](apache-spark-overview.md)
 

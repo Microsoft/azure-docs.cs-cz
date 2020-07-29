@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/16/2020
-ms.openlocfilehash: f3244ec3f85d5085d3dbc2e503eab59af5572c56
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ce078a3dad645f592bb33ed55ce508f68ce8f30a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075752"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281378"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari
 
@@ -49,7 +49,7 @@ Po otevření stránky si poznamenejte pruh v horní části. Tento panel obsahu
 
 ![Přehled řídicího panelu Apache Ambari](./media/hdinsight-hadoop-manage-ambari/apache-ambari-dashboard.png)
 
-|Položka |Description |
+|Položka |Popis |
 |---|---|
 |Logo Ambari|Otevře řídicí panel, který se dá použít k monitorování clusteru.|
 |Název clusteru # OPS|Zobrazí počet probíhajících operací Ambari. Když vyberete název clusteru nebo **# OPS** , zobrazí se seznam operací na pozadí.|
@@ -58,7 +58,7 @@ Po otevření stránky si poznamenejte pruh v horní části. Tento panel obsahu
 |Služby|Informace a konfigurační nastavení pro služby v clusteru.|
 |Hostitelé|Informace a nastavení konfigurace pro uzly v clusteru.|
 |Výstrahy|Protokol informací, upozornění a kritických výstrah.|
-|Správce|Softwarový zásobník/služby, které jsou nainstalovány v clusteru, informace o účtu služby a zabezpečení protokolu Kerberos.|
+|správce|Softwarový zásobník/služby, které jsou nainstalovány v clusteru, informace o účtu služby a zabezpečení protokolu Kerberos.|
 |Tlačítko Správce|Správa Ambari, uživatelské nastavení a odhlášení.|
 
 ## <a name="monitoring"></a>Monitorování
@@ -108,6 +108,7 @@ Chcete-li získat další informace o uzlech v clusteru, vyberte možnost **host
 
 Postranní panel **služby** na řídicím panelu poskytuje rychlý přehled o stavu služeb spuštěných v clusteru. K označení stavu nebo akcí, které by měly být provedeny, se používají různé ikony. Například pokud je potřeba recyklovat službu, zobrazí se žlutý symbol recyklace.
 
+
 ![Boční panel služeb Apache Ambari Services](./media/hdinsight-hadoop-manage-ambari/apache-ambari-service-bar.png)
 
 > [!NOTE]  
@@ -153,7 +154,7 @@ Na stránce **hostitelé** jsou uvedeni všichni hostitelé v clusteru. Chcete-l
 
 2. Pomocí nabídky **Akce** vyberte akci, kterou chcete provést:
 
-    |Položka |Description |
+    |Položka |Popis |
     |---|---|
     |Spustit všechny součásti|Spusťte všechny součásti na hostiteli.|
     |Zastavit všechny komponenty|Zastavte všechny součásti na hostiteli.|
@@ -162,7 +163,7 @@ Na stránce **hostitelé** jsou uvedeni všichni hostitelé v clusteru. Chcete-l
     |Vypnout režim údržby|Vrátí hostitele do normálního upozorňování.|
     |Zastavit|Zastaví na hostiteli datanode nebo NodeManagers.|
     |Spustit|Spustí na hostiteli datanode nebo NodeManagers.|
-    |Restartovat|Zastaví a spustí na hostiteli datanode nebo NodeManagers.|
+    |Restartování|Zastaví a spustí na hostiteli datanode nebo NodeManagers.|
     |Vyřazení|Odebere hostitele z clusteru. **Tuto akci nepoužívejte u clusterů HDInsight.**|
     |Reprovize|Přidá dříve vyřazeného hostitele do clusteru. **Tuto akci nepoužívejte u clusterů HDInsight.**|
 
@@ -170,10 +171,10 @@ Na stránce **hostitelé** jsou uvedeni všichni hostitelé v clusteru. Chcete-l
 
 Na stránce **řídicí panel** nebo **služby** pomocí tlačítka **Akce** v dolní části seznamu služeb zastavte a spusťte všechny služby.
 
-![Seznam akcí služby Apache Ambari](./media/hdinsight-hadoop-manage-ambari/ambari-service-actions.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/ambari-service-actions.png" alt-text="Seznam akcí služby Apache Ambari" border="true":::
 
 > [!WARNING]  
-> Když je v této nabídce uvedená **Služba Add Service** , neměla by se používat k přidávání služeb do clusteru HDInsight. Nové služby by se měly přidat pomocí akce skriptu během zřizování clusteru. Další informace o použití akcí skriptů najdete v tématu [Přizpůsobení clusterů HDInsight pomocí akcí skriptů](hdinsight-hadoop-customize-cluster-linux.md).
+> Nové služby by se měly přidat pomocí akce skriptu během zřizování clusteru. Další informace o použití akcí skriptů najdete v tématu [Přizpůsobení clusterů HDInsight pomocí akcí skriptů](hdinsight-hadoop-customize-cluster-linux.md).
 
 Zatímco tlačítko **Akce** může restartovat všechny služby, často chcete spustit, zastavit nebo restartovat konkrétní službu. Pomocí následujících kroků můžete provádět akce v jednotlivých službách:
 

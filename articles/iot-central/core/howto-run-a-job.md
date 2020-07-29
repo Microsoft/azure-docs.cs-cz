@@ -7,11 +7,12 @@ author: sarahhubbard
 ms.author: sahubbar
 ms.date: 06/08/2020
 ms.topic: how-to
-ms.openlocfilehash: dec9abc38bc0354ef3d22994a7988bfb006f5769
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6073f71eb21ba4a6739647964d4888044d6ee59a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609690"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283609"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Vytvoření a spuštění úlohy v aplikaci Azure IoT Central
 
@@ -42,7 +43,11 @@ V této části se dozvíte, jak vytvořit a spustit úlohu. Ukazuje, jak nastav
     > [!NOTE]
     > Můžete zobrazit 30 dní historie pro dříve spuštěné úlohy.
 
-7. Pokud chcete získat přehled o vaší úloze, vyberte úlohu, kterou chcete zobrazit v seznamu. Tento přehled obsahuje podrobnosti úlohy, zařízení a stavové hodnoty zařízení. Z tohoto přehledu můžete také vybrat **Stáhnout podrobnosti o úloze** a stáhnout soubor CSV s podrobnostmi o úloze, včetně zařízení a jejich stavových hodnot. Tyto informace mohou být užitečné při řešení potíží:
+7. Klikněte na uloženou úlohu a úlohu spusťte kliknutím na tlačítko Spustit. Zobrazí se místní nabídka spustit úlohu. Potvrďte kliknutím na tlačítko Spustit úlohu. 
+
+    ![Spustit úlohu](./media/howto-run-a-job/run-job.png)
+
+8. Úloha projde různými fázemi, které čekají, běží a jsou dokončeny. Podrobnosti provádění úlohy obsahují metriky výsledků, podrobnosti o době trvání a mřížku seznamu zařízení. Z tohoto přehledu můžete také vybrat **protokol výsledků** a stáhnout soubor CSV s podrobnostmi o úloze, včetně zařízení a jejich stavových hodnot. Tyto informace mohou být užitečné při řešení potíží.
 
     ![Zobrazení stavu zařízení](./media/howto-run-a-job/download-details.png)
 
@@ -50,13 +55,23 @@ V této části se dozvíte, jak vytvořit a spustit úlohu. Ukazuje, jak nastav
 
 Pokud chcete zastavit jednu ze spuštěných úloh, otevřete ji a vyberte **zastavit**. Stav úlohy se změní, aby odrážela zastavení úlohy. V části **Souhrn** se zobrazuje, která zařízení jsou dokončená, neúspěšná nebo pořád čekají na vyřízení.
 
-Pokud chcete spustit úlohu, která je aktuálně zastavená, vyberte ji a pak vyberte **Spustit**. Změna stavu úlohy se projeví v závislosti na tom, že úloha je nyní spuštěna. Oddíl **summary (souhrn** ) se stále aktualizuje s nejnovějším průběhem.
-
 ![Spravovat úlohu](./media/howto-run-a-job/manage-job.png)
+
+Jakmile je úloha v zastaveném stavu, můžete kliknutím na **pokračovat** obnovit provádění úlohy. Změna stavu úlohy se projeví v závislosti na tom, že úloha je nyní spuštěna. Oddíl **summary (souhrn** ) se stále aktualizuje s nejnovějším průběhem.
+
+![Zastavená úloha](./media/howto-run-a-job/stopped-job.png)
 
 ## <a name="copy-a-job"></a>Kopírování úlohy
 
-Chcete-li zkopírovat jednu ze stávajících úloh, vyberte ji na stránce **úlohy** a vyberte možnost **Kopírovat**. Otevře se kopie konfigurace úlohy, která se má upravit, a **kopie** se připojí k názvu úlohy. Novou úlohu můžete uložit nebo spustit:
+Pokud chcete zkopírovat jednu ze stávajících úloh, vyberte ji na stránce **úlohy** a vyberte **Podrobnosti o úloze**. Zobrazí se stránka s podrobnostmi o úloze. 
+
+![Podrobnosti o úloze](./media/howto-run-a-job/job-details.png)
+
+Klikněte na **Kopírovat** .
+
+![Podrobnosti o úloze](./media/howto-run-a-job/job-details-copy.png)
+
+Otevře se kopie konfigurace úlohy, která se má upravit, a **kopie** se připojí k názvu úlohy. Novou úlohu můžete uložit nebo spustit:
 
 ![Kopírovat úlohu](./media/howto-run-a-job/copy-job.png)
 
@@ -67,17 +82,17 @@ Po vytvoření úlohy se sloupec **stav** aktualizuje o nejnovější stavovou z
 | Zpráva o stavu       | Význam stavu                                          |
 | -------------------- | ------------------------------------------------------- |
 | Dokončeno            | Tato úloha se spustila na všech zařízeních.              |
-| Failed               | Tato úloha se nezdařila a na zařízeních se nedokončilo úplné spuštění.  |
-| Čekající na vyřízení              | Tato úloha se ještě na zařízeních nezačala spouštět.         |
-| Spuštěno              | Tato úloha se v tuto chvíli spouští na zařízeních.             |
+| Neúspěšný               | Tato úloha se nezdařila a na zařízeních se nedokončilo úplné spuštění.  |
+| Čekající              | Tato úloha se ještě na zařízeních nezačala spouštět.         |
+| Spuštěný              | Tato úloha se v tuto chvíli spouští na zařízeních.             |
 | Zastaveno              | Tuto úlohu zastavil uživatel ručně.           |
 
 Stavová zpráva je následován přehledem zařízení v úloze. Následující tabulka uvádí možné hodnoty stavu zařízení:
 
 | Zpráva o stavu       | Význam stavu                                                     |
 | -------------------- | ------------------------------------------------------------------ |
-| Úspěch            | Počet zařízení, na kterých byla úloha úspěšně provedena.       |
-| Failed               | Počet zařízení, na kterých se úloha nedokázala spustit.       |
+| Úspěšný            | Počet zařízení, na kterých byla úloha úspěšně provedena.       |
+| Neúspěšný               | Počet zařízení, na kterých se úloha nedokázala spustit.       |
 
 ### <a name="view-the-device-status-values"></a>Zobrazit hodnoty stavu zařízení
 
@@ -86,8 +101,8 @@ Pokud chcete zobrazit stav úlohy a všechna postižená zařízení, otevřete 
 | Zpráva o stavu       | Význam stavu                                                                |
 | -------------------- | ----------------------------------------------------------------------------- |
 | Dokončeno            | Úloha se spustila na tomto zařízení.                                     |
-| Failed               | V tomto zařízení se nepovedlo spustit úlohu. V této chybové zprávě se zobrazí další informace.  |
-| Čekající na vyřízení              | Tato úloha na tomto zařízení ještě nebyla spuštěna.                                   |
+| Neúspěšný               | V tomto zařízení se nepovedlo spustit úlohu. V této chybové zprávě se zobrazí další informace.  |
+| Čekající              | Tato úloha na tomto zařízení ještě nebyla spuštěna.                                   |
 
 Pokud chcete stáhnout soubor CSV, který obsahuje podrobnosti úlohy, a seznam zařízení a jejich hodnoty stavu, vyberte **Stáhnout**.
 

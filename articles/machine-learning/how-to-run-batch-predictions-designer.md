@@ -5,16 +5,17 @@ description: Naučte se naučit model a nastavit kanál předpovědi dávky pomo
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: peterlu
 author: peterclu
 ms.date: 02/24/2020
-ms.custom: Ignite2019, designer
-ms.openlocfilehash: a464ab001eec877ffc6dc0ab5e33e82493c226ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to, designer
+ms.openlocfilehash: 61465210c9ad476c6d8d2987330498aa0efa39d4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84429940"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319605"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer-preview"></a>Spouštění dávkových predikcí s využitím návrháře služby Azure Machine Learning (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -33,6 +34,8 @@ Informace o tom, jak pomocí sady SDK nastavit služby vyhodnocování služby B
 ## <a name="prerequisites"></a>Požadavky
 
 Tento postup předpokládá, že už máte školicí kanál. Úvod do návrháře s průvodcem najdete v [části první kurz návrháře](tutorial-designer-automobile-price-train-score.md). 
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="create-a-batch-inference-pipeline"></a>Vytvoření kanálu odvození dávky
 

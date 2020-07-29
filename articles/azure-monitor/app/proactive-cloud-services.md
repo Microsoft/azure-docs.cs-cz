@@ -4,11 +4,12 @@ description: Monitorujte problémy, jako jsou chyby při spuštění, selhání 
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.reviewer: harelbr
-ms.openlocfilehash: 997c5e063c4181a597520e60e2a7669401b9677d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cdfc6dc3ac74997743512ee07f9293699e3ad10
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669739"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87309286"
 ---
 # <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>Upozornění na problémy v Azure Cloud Services s využitím integrace diagnostiky Azure s Azure Application Insights
 
@@ -90,7 +91,7 @@ V okně **vytvořit pravidlo** v části **definovat podmínku upozornění** kl
 Do pole **vyhledávací dotaz** vložte Kombinovaný dotaz, který jste připravili v předchozím kroku.
 
 Pak přejděte do pole **prahová hodnota** a nastavte jeho hodnotu na 0. Volitelně můžete upravit **pole** **period** a frekvence.
-Klikněte na **Done** (Hotovo).
+Klikněte na **Hotovo**.
 
 ![Snímek obrazovky s konfigurací dotazu na logiku signálu](./media/proactive-cloud-services/003.png)
 
@@ -110,7 +111,7 @@ Po definování skupiny akcí potvrďte provedené změny a klikněte na **vytvo
 
 Další informace o automatickém zjišťování:
 
-[Anomálie selhání](../../azure-monitor/app/proactive-failure-diagnostics.md) 
- [Nevracení paměti](../../azure-monitor/app/proactive-potential-memory-leak.md) 
- [Anomálie výkonu](../../azure-monitor/app/proactive-performance-diagnostics.md)
+[Anomálie selhání](./proactive-failure-diagnostics.md) 
+ [Nevracení paměti](./proactive-potential-memory-leak.md) 
+ [Anomálie výkonu](./proactive-performance-diagnostics.md)
 

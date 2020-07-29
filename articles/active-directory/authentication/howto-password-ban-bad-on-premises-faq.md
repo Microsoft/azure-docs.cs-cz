@@ -11,11 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16537ba72eb9f11abd8de47256150818c121a140
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24db7981557cf76f9108a1dca37ea4c4c9f51951
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80652644"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283074"
 ---
 # <a name="azure-ad-password-protection-on-premises-frequently-asked-questions"></a>Nejčastější dotazy k ochraně hesel Azure AD
 
@@ -37,7 +38,7 @@ Portál Azure AD umožňuje úpravy místní ochrany heslem pro konfiguraci slu�
 
 **Otázka: Jak můžu použít výhody ochrany hesel Azure AD pro podmnožinu místních uživatelů?**
 
-Není podporováno. Po nasazení a povolení ochrany heslem Azure AD nezáleží na tom, že všichni uživatelé získají stejné výhody zabezpečení.
+Nepodporováno Po nasazení a povolení ochrany heslem Azure AD nezáleží na tom, že všichni uživatelé získají stejné výhody zabezpečení.
 
 **Otázka: Jaký je rozdíl mezi změnou hesla a nastavením hesla (nebo resetováním)?**
 
@@ -57,15 +58,15 @@ Služba Active Directory podporuje možnost testování hesla, aby bylo možné 
 
 **Otázka: je podporována instalace ochrany heslem služby Azure AD vedle jiných produktů založených na filtrech hesel?**
 
-Ano. Podpora více registrovaných knihoven DLL filtru hesel je základní funkcí Windows, která není specifická pro ochranu heslem Azure AD. Před přijetím hesla musí všechny knihovny DLL registrovaných filtrů hesel souhlasit.
+Yes. Podpora více registrovaných knihoven DLL filtru hesel je základní funkcí Windows, která není specifická pro ochranu heslem Azure AD. Před přijetím hesla musí všechny knihovny DLL registrovaných filtrů hesel souhlasit.
 
 **Otázka: Jak můžu nasadit a nakonfigurovat ochranu hesel Azure AD v prostředí služby Active Directory bez použití Azure?**
 
-Není podporováno. Ochrana heslem Azure AD je funkce Azure, která podporuje rozšíření do místního prostředí Active Directory.
+Nepodporováno Ochrana heslem Azure AD je funkce Azure, která podporuje rozšíření do místního prostředí Active Directory.
 
 **Otázka: Jak mohu změnit obsah zásady na úrovni služby Active Directory?**
 
-Není podporováno. Zásady se dají spravovat jenom pomocí portálu Azure AD. Podívejte se také na předchozí otázku.
+Nepodporováno Zásady se dají spravovat jenom pomocí portálu Azure AD. Podívejte se také na předchozí otázku.
 
 **Otázka: Proč je Služba DFSR nutná pro replikaci adresáře SYSVOL?**
 
@@ -98,7 +99,7 @@ Ne. Vzhledem k tomu, že proxy server je Bezstavová, není důležité použít
 
 **Otázka: je v pořádku nasazovat službu proxy ochrany heslem Azure AD vedle jiných služeb, jako je například Azure AD Connect?**
 
-Ano. Služba proxy ochrany heslem Azure AD a Azure AD Connect by nikdy neměly kolidovat přímo.
+Yes. Služba proxy ochrany heslem Azure AD a Azure AD Connect by nikdy neměly kolidovat přímo.
 
 Nastala nekompatibilita mezi verzí služby Microsoft Azure AD Connect agent, která je nainstalovaná softwarem proxy ochrany heslem Azure AD, a verzí služby, kterou instaluje software [proxy aplikací služby Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) . Výsledkem této nekompatibility může být, že služba aktualizace agenta nemůže kontaktovat Azure kvůli aktualizacím softwaru. Nedoporučujeme instalovat proxy ochranu heslem Azure AD a Proxy aplikací služby Azure Active Directory ve stejném počítači.
 
@@ -148,7 +149,7 @@ Následující odkazy nejsou součástí základní dokumentace k ochraně hesel
 
 [Ochrana heslem Azure AD je teď všeobecně dostupná!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-is-now-generally-available/ba-p/377487)
 
-[Průvodce ochranou útoků phishing – část 15: implementace služby ochrany heslem Microsoft Azure AD (v místním prostředí)](https://blogs.technet.microsoft.com/cloudready/2018/10/14/email-phishing-protection-guide-part-15-implement-the-microsoft-azure-ad-password-protection-service-for-on-premises-too/)
+[Průvodce ochranou útoků phishing – část 15: implementace služby ochrany heslem Microsoft Azure AD (v místním prostředí)](http://kmartins.com/2018/10/14/email-phishing-protection-guide-part-15-implement-the-microsoft-azure-ad-password-protection-service-for-on-premises-too/)
 
 [Ochrana hesel Azure AD a inteligentní uzamčení jsou teď v Public Preview!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-and-Smart-Lockout-are-now-in-Public/ba-p/245423#M529)
 

@@ -8,20 +8,17 @@ ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4bb54db8a18baa237f1c32c223b5f609638c7523
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3fdbd0ddb33785655cada2600acdecdced4aeb2f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080620"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283431"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-web-client"></a>Připojení k virtuálnímu počítači s Windows pomocí webového klienta
 
 >[!IMPORTANT]
->Tento obsah se vztahuje na jarní 2020 aktualizaci s Azure Resource Manager objekty virtuálních klientů Windows. Pokud používáte virtuální plochu Windows na verzi 2019 bez Azure Resource Manager objektů, přečtěte si [Tento článek](./virtual-desktop-fall-2019/connect-web-2019.md).
->
-> V současnosti je ve verzi Public Preview na jaře 2020 aktualizace virtuálních počítačů s Windows. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>Tento obsah se vztahuje na virtuální plochu Windows s Azure Resource Manager objekty virtuálních klientů Windows. Pokud používáte virtuální plochu Windows (Classic) bez Azure Resource Manager objektů, přečtěte si [Tento článek](./virtual-desktop-fall-2019/connect-web-2019.md).
 
 Webový klient umožňuje přístup k prostředkům virtuálního počítače s Windows z webového prohlížeče bez procesu instalace.
 
@@ -35,7 +32,7 @@ I když by měl prohlížeč podporující technologii HTML5 fungovat, oficiáln
 | Prohlížeč           | Podporovaný operační systém                     | Poznámky               |
 |-------------------|----------------------------------|---------------------|
 | Microsoft Edge    | Windows                          |                     |
-| Internet Explorer | Windows                          |                     |
+| Internet Explorer | Windows                          | Verze 11 nebo novější |
 | Apple Safari      | macOS                            |                     |
 | Mozilla Firefox   | Windows, macOS, Linux            | Verze 55 nebo novější |
 | Google Chrome     | Windows, macOS, Linux, operační systém Chrome |                     |
@@ -45,7 +42,7 @@ I když by měl prohlížeč podporující technologii HTML5 fungovat, oficiáln
 V prohlížeči přejděte na Azure Resource Manager integrovanou verzi webového klienta pro virtuální počítače s Windows <https://rdweb.wvd.microsoft.com/arm/webclient> a přihlaste se pomocí svého uživatelského účtu.
 
 >[!NOTE]
->Pokud používáte virtuální plochu Windows na verzi 2019 bez Integrace Azure Resource Manager, připojte se <https://rdweb.wvd.microsoft.com/webclient> místo toho k prostředkům.
+>Pokud používáte virtuální plochu Windows (Classic) bez Azure Resource Manager integrace, připojte se <https://rdweb.wvd.microsoft.com/webclient> místo toho k prostředkům.
 
 >[!NOTE]
 >Pokud jste se už přihlásili pomocí jiného účtu Azure Active Directory, než který chcete použít pro virtuální plochu Windows, měli byste se buď odhlásit, nebo použít soukromé okno prohlížeče.

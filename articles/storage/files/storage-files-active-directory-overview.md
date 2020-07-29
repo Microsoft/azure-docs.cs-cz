@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: cb57606259fe674519015fd2de741d6c1d08c5e9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 48441a48fe6f72e88e080967451d9904c3e586b2
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127192"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372313"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Přehled možností ověřování na základě identity souborů Azure pro přístup přes protokol SMB
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -21,7 +21,7 @@ Informace o tom, jak povolit místní ověřování Active Directory Domain Serv
 
 Informace o tom, jak povolit ověřování Azure služba AD DS pro sdílené složky Azure, najdete v tématu [povolení Azure Active Directory Domain Servicesho ověřování u souborů Azure](storage-files-identity-auth-active-directory-domain-service-enable.md).
 
-## <a name="glossary"></a>Slovníček 
+## <a name="glossary"></a>Glosář 
 Je užitečné pochopit některé klíčové podmínky týkající se ověřování služby Azure AD Domain Services přes SMB pro sdílené složky Azure:
 
 -   **Ověřování protokolu Kerberos**
@@ -123,7 +123,7 @@ Ověřování na základě identity můžete povolit buď pomocí Azure služba 
 
 ### <a name="configure-share-level-permissions-for-azure-files"></a>Konfigurace oprávnění na úrovni sdílené složky pro soubory Azure
 
-Jakmile povolíte Azure služba AD DS nebo místní služba AD DS ověřování, můžete použít předdefinované role RBAC nebo nakonfigurovat vlastní role pro identity Azure AD a přiřazovat přístupová práva ke všem sdíleným složkám v účtech úložiště. Přiřazené oprávnění umožňuje udělené identitě získat přístup pouze ke sdílené složce, nic jiného, ani kořenovému adresáři. Ke sdíleným složkám Azure se pořád potřebuje samostatně nakonfigurovat oprávnění pro adresáře nebo soubory.
+Jakmile povolíte Azure služba AD DS nebo místní služba AD DS ověřování, můžete použít předdefinované role Azure nebo nakonfigurovat vlastní role pro identity Azure AD a přiřazovat přístupová práva ke všem sdíleným složkám v účtech úložiště. Přiřazené oprávnění umožňuje udělené identitě získat přístup pouze ke sdílené složce, nic jiného, ani kořenovému adresáři. Ke sdíleným složkám Azure se pořád potřebuje samostatně nakonfigurovat oprávnění pro adresáře nebo soubory.
 
 ### <a name="configure-directory-or-file-level-permissions-for-azure-files"></a>Konfigurace oprávnění adresářů nebo souborů pro soubory Azure
 

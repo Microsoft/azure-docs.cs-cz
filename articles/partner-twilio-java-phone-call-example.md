@@ -12,12 +12,13 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: 571fecde9a02dc667e89da1d3245e4d153500014
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: devx-track-java
+ms.openlocfilehash: 9a28677063c6f6dd7bb7bcf6746dbc541308891f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169506"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305903"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>Jak uskutečnit telefonní hovor pomocí Twilio v aplikaci Java v Azure
 Následující příklad ukazuje, jak můžete pomocí Twilio uskutečnit volání z webové stránky hostované v Azure. Výsledná aplikace zobrazí uživateli výzvu k zadání hodnot telefonních hovorů, jak je znázorněno na následujícím snímku obrazovky.

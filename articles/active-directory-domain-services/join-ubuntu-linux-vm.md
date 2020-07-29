@@ -11,12 +11,13 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/13/2020
 ms.author: iainfou
-ms.openlocfilehash: 7eaf8b6b5cddc8a01b59cda0cafc819e06a5ec7c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: fasttrack-edit
+ms.openlocfilehash: d01d961a5d5b86f74bb785c3fddfa09843aa060c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005000"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283142"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Připojení virtuálního počítače s Ubuntu Linux k spravované doméně Azure Active Directory Domain Services
 
@@ -24,7 +25,7 @@ Pokud chcete umožnit uživatelům přihlašovat se k virtuálním počítačům
 
 V tomto článku se dozvíte, jak připojit virtuální počítač Ubuntu Linux ke spravované doméně.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
@@ -138,7 +139,7 @@ Teď, když jsou na virtuálním počítači nainstalované požadované balíč
     Název spravované domény se znovu musí zadat jenom velkými PÍSMENy. V následujícím příkladu se `contosoadmin@aaddscontoso.com` k inicializaci protokolu Kerberos používá účet s názvem. Zadejte vlastní uživatelský účet, který je součástí spravované domény:
 
     ```console
-    kinit contosoadmin@AADDSCONTOSO.COM
+    kinit -V contosoadmin@AADDSCONTOSO.COM
     ```
 
 1. Nakonec připojte virtuální počítač ke spravované doméně pomocí `realm join` příkazu. Použijte stejný uživatelský účet, který je součástí spravované domény, kterou jste zadali v předchozím `kinit` příkazu, například `contosoadmin@AADDSCONTOSO.COM` :
@@ -182,7 +183,7 @@ Jeden z balíčků nainstalovaných v předchozím kroku byl pro démona služby
 1. Chcete-li použít změnu, restartujte službu SSSD:
 
     ```console
-    sudo service sssd restart
+    sudo systemctl restart sssd
     ```
 
 ## <a name="configure-user-account-and-group-settings"></a>Konfigurace uživatelského účtu a nastavení skupiny

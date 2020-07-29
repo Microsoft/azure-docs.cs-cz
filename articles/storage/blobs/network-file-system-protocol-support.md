@@ -9,12 +9,12 @@ ms.date: 07/21/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: b76e25b2961bf3fb268da6622cbfcce3a50a3396
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ab8d262e4eac08ce21b7ad01402c3608d52a1aab
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097607"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372888"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Podpora protokolů systému souborů NFS (Network File System) 3,0 v úložišti objektů BLOB v Azure (Preview)
 
@@ -87,10 +87,8 @@ Následující funkce Azure Storage nejsou podporované, když ve svém účtu p
 
 - Možnost zakázat podporu systému souborů NFS 3,0 v účtu úložiště (po jeho povolení)
 
-- Možnost zapisovat do objektů BLOB pomocí systému souborů NFS 3,0 i dalších rozhraní REST API nebo sad SDK. 
-
-  Pokud chcete použít rozhraní REST API nebo sady SDK k zápisu do objektu blob, ujistěte se, že používáte systém souborů NFS 3,0 pouze k provádění operací čtení, jinak může dojít k poškození objektů BLOB.
-
+- Možnost zapisovat do objektů BLOB pomocí rozhraní REST API nebo sad SDK. 
+  
 ## <a name="nfs-30-features-not-yet-supported"></a>Funkce NFS 3,0, které ještě nejsou podporované
 
 U Azure Data Lake Storage Gen2 se zatím nepodporují tyto funkce NFS 3,0.

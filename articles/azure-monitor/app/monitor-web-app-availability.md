@@ -4,16 +4,16 @@ description: Nastavení testů webu ve službě Application Insights. Zasílán�
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 6daa2e4abb1b6580fd70f104e85f3a917f47dcdc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f9c5fa691456195943f97419c1175fd5b586878
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024584"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87310272"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Monitorování dostupnosti jakéhokoli webu
 
-Po nasazení webové aplikace nebo webu můžete nastavit opakované testy pro monitorování dostupnosti a odezvy. [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) odesílá do vaší aplikace webové požadavky v pravidelných intervalech z bodů po celém světě. Může vás upozornit, pokud vaše aplikace nereaguje nebo pokud reaguje příliš pomalu.
+Po nasazení webové aplikace nebo webu můžete nastavit opakované testy pro monitorování dostupnosti a odezvy. [Azure Application Insights](./app-insights-overview.md) odesílá do vaší aplikace webové požadavky v pravidelných intervalech z bodů po celém světě. Může vás upozornit, pokud vaše aplikace nereaguje nebo pokud reaguje příliš pomalu.
 
 Testy dostupnosti můžete nastavit pro libovolný koncový bod HTTP nebo HTTPS, který je přístupný z veřejného internetu. Na webu, který testujete, nemusíte dělat žádné změny. Ve skutečnosti to ani nemusí být lokalita, kterou vlastníte. Můžete testovat dostupnost REST API, na kterém je vaše služba závislá.
 
@@ -69,7 +69,7 @@ Pokud chcete vytvořit svou první žádost o dostupnost, otevřete podokno dost
 |Nastavení| Vysvětlení
 |----|----|----|
 |**Téměř v reálném čase (Preview)** | Doporučujeme používat upozornění téměř v reálném čase. Konfigurace tohoto typu upozornění se provádí po vytvoření testu dostupnosti.  |
-|**Klasický** | Pro nové testy dostupnosti už nedoporučujeme používat klasické výstrahy.|
+|**Standardním** | Pro nové testy dostupnosti už nedoporučujeme používat klasické výstrahy.|
 |**Prahová hodnota umístění výstrahy**|Doporučujeme minimálně 3/5 umístění. Optimální vztah mezi prahovou hodnotou umístění výstrahy a počtem testovacích umístění je **prahová hodnota pro umístění upozornění**  =  **v umístění testovacích umístění – 2, minimálně pět umístění testu.**|
 
 ## <a name="see-your-availability-test-results"></a>Zobrazení výsledků testu dostupnosti
@@ -107,9 +107,9 @@ Z výsledku testu dostupnosti můžete zobrazit podrobnosti transakce napříč 
 * Zaprotokoluje problém nebo pracovní položku v Gitu nebo Azure Boards pro sledování problému. Chyba bude obsahovat odkaz na tuto událost.
 * Otevřít výsledek webového testu v sadě Visual Studio.
 
-Další informace o prostředí diagnostiky koncových transakcí [najdete tady](../../azure-monitor/app/transaction-diagnostics.md).
+Další informace o prostředí diagnostiky koncových transakcí [najdete tady](./transaction-diagnostics.md).
 
-Kliknutím na řádek výjimky zobrazíte podrobnosti o výjimce na straně serveru, která způsobila selhání testu syntetické dostupnosti. Můžete také získat [snímek ladění](../../azure-monitor/app/snapshot-debugger.md) pro bohatší diagnostiku úrovně kódu.
+Kliknutím na řádek výjimky zobrazíte podrobnosti o výjimce na straně serveru, která způsobila selhání testu syntetické dostupnosti. Můžete také získat [snímek ladění](./snapshot-debugger.md) pro bohatší diagnostiku úrovně kódu.
 
 ![Diagnostika na straně serveru](./media/monitor-web-app-availability/open-instance-4.png)
 
@@ -120,10 +120,10 @@ Kromě nezpracovaných výsledků můžete také zobrazit dvě klíčové metrik
 
 ## <a name="automation"></a>Automation
 
-* [Automatické nastavení testu dostupnosti pomocí skriptů PowerShell](../../azure-monitor/app/powershell.md#add-an-availability-test).
-* Nastavení [webhook](../../azure-monitor/platform/alerts-webhooks.md), který je volán při vydání výstrahy.
+* [Automatické nastavení testu dostupnosti pomocí skriptů PowerShell](./powershell.md#add-an-availability-test).
+* Nastavení [webhook](../platform/alerts-webhooks.md), který je volán při vydání výstrahy.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Vyhrazený [článek týkající se řešení potíží](troubleshoot-availability.md).
 
@@ -131,3 +131,4 @@ Vyhrazený [článek týkající se řešení potíží](troubleshoot-availabili
 
 * [Výstrahy dostupnosti](availability-alerts.md)
 * [Vícekrokové webové testy](availability-multistep.md)
+

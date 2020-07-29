@@ -5,16 +5,17 @@ description: Řešení potíží s kódy chyb modulu v Návrháři Azure Machine
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: troubleshooting
+ms.topic: conceptual
+ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: 9b477fbf0744304b28b3f4ef06271ce7728800bf
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 8d044d8921db53d9d38ae93a68f22e0e5f414bf8
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206994"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372480"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Výjimky a kódy chyb pro návrháře (Preview)
 
@@ -356,7 +357,7 @@ Pro sloupce, které chcete použít pro seskupování nebo kategorizaci, proveď
 ## <a name="error-0018"></a>Chyba 0018  
  Pokud vstupní datová sada není platná, dojde k výjimce.  
 
-**Řešení:** Tato chyba v Azure Machine Learning se může objevit v mnoha kontextech, takže neexistuje jedno řešení. Obecně se v případě chyby značí, že data zadaná jako vstup modulu mají nesprávný počet sloupců nebo že datový typ neodpovídá požadavkům modulu. Zde je příklad:  
+**Řešení:** Tato chyba v Azure Machine Learning se může objevit v mnoha kontextech, takže neexistuje jedno řešení. Obecně se v případě chyby značí, že data zadaná jako vstup modulu mají nesprávný počet sloupců nebo že datový typ neodpovídá požadavkům modulu. Například:  
 
 -   Modul vyžaduje sloupec popisku, ale žádný sloupec není označený jako popisek nebo jste ještě nevybrali sloupec popisku.  
   
@@ -438,7 +439,7 @@ Pro sloupce, které chcete použít pro seskupování nebo kategorizaci, proveď
 ## <a name="error-0022"></a>Chyba 0022  
  K výjimce dojde v případě, že počet vybraných sloupců ve vstupní datové sadě se nerovná očekávanému počtu.  
 
- K této chybě v Azure Machine Learning může dojít v případě, že modul pro příjem dat nebo operace vyžaduje určitý počet sloupců nebo vstupů a zadali jste příliš málo nebo příliš mnoho sloupců nebo vstupů. Zde je příklad:  
+ K této chybě v Azure Machine Learning může dojít v případě, že modul pro příjem dat nebo operace vyžaduje určitý počet sloupců nebo vstupů a zadali jste příliš málo nebo příliš mnoho sloupců nebo vstupů. Například:  
 
 -   Zadejte sloupec nebo klíčový sloupec s jedním popiskem a náhodně vybrané více sloupců.  
   
@@ -1078,7 +1079,7 @@ Chybová zpráva z podregistru se obvykle hlásí zpět v protokolu chyb, takže
 + Ověřte, že dotaz funguje správně mimo Azure Machine Learning tím, že se přihlásí do konzoly podregistru clusteru Hadoop a spustí se dotaz.  
 + Zkuste umístit komentáře do skriptu v podregistru do samostatného řádku, a to na rozdíl v kombinování spustitelných příkazů a komentářů na jednom řádku.  
 
-### <a name="resources"></a>Prostředky
+### <a name="resources"></a>Zdroje a prostředky
 
 Nápovědu k dotazům na podregistr pro strojové učení najdete v následujících článcích:
 

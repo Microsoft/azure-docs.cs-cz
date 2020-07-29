@@ -1,6 +1,5 @@
 ---
-title: Vytvoření pracovního prostoru
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (Classic): vytvoření pracovního prostoru – Azure'
 description: Pokud chcete použít Azure Machine Learning Studio (Classic), musíte mít pracovní prostor Machine Learning Studio (Classic). Tento pracovní prostor obsahuje nástroje potřebné k vytváření, správě a publikování experimentů.
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: ede84fefed7db9d2afcc0ad65833ab2c0fefbc03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c30797ad757fa12c4dfdf4749536c1095259eb58
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696520"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283516"
 ---
-# <a name="create-and-share-an-azure-machine-learning-studio-classic-workspace"></a>Vytvoření a sdílení pracovního prostoru Azure Machine Learning Studio (Classic)
+# <a name="create-and-share-an-machine-learning-studio-classic-workspace"></a>Vytvoření a sdílení pracovního prostoru Machine Learning Studio (Classic)
+
+**platí pro:** ![ žádná](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasická) 
 
 Pokud chcete použít Azure Machine Learning Studio (Classic), musíte mít pracovní prostor Machine Learning Studio (Classic). Tento pracovní prostor obsahuje nástroje potřebné k vytváření, správě a publikování experimentů.
 
@@ -24,7 +26,7 @@ Pokud chcete použít Azure Machine Learning Studio (Classic), musíte mít prac
 
 Pokud chcete otevřít pracovní prostor v Machine Learning Studio (Classic), musíte být přihlášeni k účtu Microsoft, který jste použili k vytvoření pracovního prostoru, nebo potřebujete získat pozvánku od vlastníka, aby se připojil k pracovnímu prostoru. Z Azure Portal můžete spravovat pracovní prostor, který zahrnuje možnost konfigurace přístupu.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/)
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
     > [!NOTE]
     > Pokud se chcete přihlásit a vytvořit pracovní prostor studia (Classic), musíte být správcem předplatného Azure. 

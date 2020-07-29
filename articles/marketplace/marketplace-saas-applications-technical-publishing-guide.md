@@ -6,12 +6,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2020
-ms.openlocfilehash: c19799265679eeead96bf95943f274aa32c75ff2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.author: mingshen
+author: mingshen-ms
+ms.openlocfilehash: 20d14d656132b2809fe5a79d909c27799438a247
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121567"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280932"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>Průvodce publikováním nabídek aplikací SaaS
 
@@ -26,9 +28,9 @@ SaaS aplikace jsou k dispozici v Microsoft AppSource a Azure Marketplace.  Prode
 
 | Nabídka aplikací pro SaaS | Podnikové požadavky | Technické požadavky |  
 | --- | --- | --- |  
-| **Kontaktujte nás** | Ano | No |  
-| **Power BI/Dynamics** | Yes | Ano (Integrace Azure AD) |  
-| **Aplikace SaaS**| Yes | Ano (Integrace Azure AD) |     
+| **Kontaktujte nás** | Ano | Ne |  
+| **Power BI/Dynamics** | Ano | Ano (Integrace Azure AD) |  
+| **Aplikace SaaS**| Ano | Ano (Integrace Azure AD) |     
 
 ## <a name="saas-list"></a>Seznam SaaS
 

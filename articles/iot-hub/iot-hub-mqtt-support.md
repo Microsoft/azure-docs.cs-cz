@@ -10,12 +10,14 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 72c012ba9ce28c0ca5dd5a315cf94b8895558a0b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+- 'Role: IoT Device'
+- 'Role: Cloud Development'
+ms.openlocfilehash: df6de62eefc0971ece0e0035299425689af5f784
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001685"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87307620"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikace se službou IoT Hub pomocí protokolu MQTT
 
@@ -76,11 +78,11 @@ Aby se zajistilo, že připojení typu klient/IoT Hub zůstane aktivní, služba
 
 |Jazyk  |Výchozí interval Keep-Alive  |Konfigurovatelné  |
 |---------|---------|---------|
-|Node.js     |   180 sekund      |     No    |
-|Java     |    230 sekund     |     No    |
+|Node.js     |   180 sekund      |     Ne    |
+|Java     |    230 sekund     |     Ne    |
 |C     | 240 sekund |  [Ano](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
 |C#     | 300 sekund |  [Ano](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
-|Python (v2)   | 60 sekund |  No   |
+|Python   | 60 sekund |  Ne   |
 
 Po zadání [MQTT](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081)je interval testu Keep-Alive IoT Hub v době, kdy je hodnota keep-alive klienta 1,5. IoT Hub ale omezuje maximální časový limit na straně serveru na 29,45 minut (1767 sekund), protože všechny služby Azure jsou svázané s časovým limitem nečinnosti protokolu TCP pro vyrovnávání zatížení Azure, což je 29,45 minut. 
 
@@ -279,7 +281,7 @@ client.connect(iot_hub_name+".azure-devices.net", port=8883)
 
 ## <a name="sending-device-to-cloud-messages"></a>Posílání zpráv ze zařízení do cloudu
 
-Po úspěšném připojení může zařízení posílat zprávy, které se IoT Hub pomocí `devices/{device_id}/messages/events/` `devices/{device_id}/messages/events/{property_bag}` **názvu tématu**nebo. `{property_bag}`Prvek umožňuje zařízení odesílat zprávy s dalšími vlastnostmi ve formátu kódovaném adresou URL. Příklad:
+Po úspěšném připojení může zařízení posílat zprávy, které se IoT Hub pomocí `devices/{device_id}/messages/events/` `devices/{device_id}/messages/events/{property_bag}` **názvu tématu**nebo. `{property_bag}`Prvek umožňuje zařízení odesílat zprávy s dalšími vlastnostmi ve formátu kódovaném adresou URL. Například:
 
 ```text
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
@@ -366,7 +368,7 @@ Následující text popisuje, jak zařízení aktualizuje hlášené vlastnosti 
 
 3. Služba pak pošle zprávu odpovědi, která obsahuje novou hodnotu ETag pro nahlášenou kolekci vlastností v tématu `$iothub/twin/res/{status}/?$rid={request id}` . Tato zpráva odpovědi používá stejné **ID požadavku** jako požadavek.
 
-Tělo zprávy požadavku obsahuje dokument JSON, který obsahuje nové hodnoty pro hlášené vlastnosti. Každý člen v dokumentu JSON aktualizuje nebo přidá odpovídajícího člena do dokumentu vlákna v zařízení. Člen nastavený na `null` odstraní člena z objektu, který ho obsahuje. Příklad:
+Tělo zprávy požadavku obsahuje dokument JSON, který obsahuje nové hodnoty pro hlášené vlastnosti. Každý člen v dokumentu JSON aktualizuje nebo přidá odpovídajícího člena do dokumentu vlákna v zařízení. Člen nastavený na `null` odstraní člena z objektu, který ho obsahuje. Například:
 
 ```json
 {
@@ -404,7 +406,7 @@ Další informace najdete v tématu [Příručka vývojáře pro vlákna v zař�
 
 ## <a name="receiving-desired-properties-update-notifications"></a>Přijímání oznámení o aktualizaci požadovaných vlastností
 
-Když je zařízení připojené, IoT Hub odesílá oznámení do tématu `$iothub/twin/PATCH/properties/desired/?$version={new version}` , které obsahuje obsah aktualizace provedené back-endu řešení. Příklad:
+Když je zařízení připojené, IoT Hub odesílá oznámení do tématu `$iothub/twin/PATCH/properties/desired/?$version={new version}` , které obsahuje obsah aktualizace provedené back-endu řešení. Například:
 
 ```json
 {

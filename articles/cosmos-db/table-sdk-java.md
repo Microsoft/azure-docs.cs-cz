@@ -8,11 +8,13 @@ ms.topic: reference
 ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: c562aa462248ffcf7c71ad247e05f0a7de15cdb3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: fc78688a413bf182d2a0489189a3ad9348ac4d21
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84168042"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87308113"
 ---
 # <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>Azure Cosmos DB rozhraní API pro tabulky pro jazyk Java: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -27,7 +29,7 @@ ms.locfileid: "84168042"
 |---|---|
 |**Stažení sady SDK**|[Možnosti stažení](https://github.com/azure/azure-storage-java#download)|
 |**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní Java API](https://azure.github.io/azure-storage-java/)|
-|**Přispívání do sady SDK**|[GitHubu](https://github.com/Azure/azure-storage-java#contribute-code-or-provide-feedback)|
+|**Přispívání do sady SDK**|[GitHub](https://github.com/Azure/azure-storage-java#contribute-code-or-provide-feedback)|
 
 > [!IMPORTANT]
 > Pokud jste vytvořili účet Table API během období Preview, vytvořte [nový účet Table API](create-table-dotnet.md#create-a-database-account) pro práci s obecně dostupnými sadami Table API SDK.
@@ -50,6 +52,6 @@ Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SD
 ## <a name="faq"></a>Nejčastější dotazy
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 Další informace o Cosmos DB najdete na stránce služby [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) . 
 

@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 06/30/2020
+ms.date: 07/28/2020
 ms.author: victorh
-ms.openlocfilehash: 90f817ac3bbd475d8a84df44bc284f09fcd19ce3
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 748adbcc719df2cdcf734f308bd4b083e9ca6ec0
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565793"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372361"
 ---
 # <a name="azure-firewall-manager-deployment-overview"></a>Přehled nasazení Azure Firewall Manageru
 
@@ -65,6 +65,13 @@ Je k dispozici více než jeden způsob nasazení Azure Firewall Manageru, ale d
 > - Pro každou virtuální síť WAN na jednu oblast nemůžete mít více než jedno rozbočovač. Můžete ale do této oblasti přidat víc virtuálních sítí WAN, abyste to dosáhli.
 > - Pro rozbočovače v vWAN se nedají překrývat adresní prostory IP adres.
 > - Připojení k virtuální síti rozbočovače musí být ve stejné oblasti jako centrum.
+
+## <a name="convert-virtual-networks"></a>Převod virtuálních sítí
+
+Pokud převedete stávající virtuální síť na virtuální síť rozbočovače, platí následující informace:
+
+- Pokud má virtuální síť existující Azure Firewall, vyberte zásadu brány firewall, kterou chcete přidružit k existující bráně firewall. Stav zřizování brány firewall se aktualizuje, zatímco zásady brány firewall nahradí pravidla brány firewall. Během stavu zřizování brána firewall pokračuje v zpracování provozu a nedochází k výpadkům. Stávající pravidla můžete importovat do zásad brány firewall pomocí Správce brány firewall nebo Azure PowerShell.
+- Pokud virtuální síť nemá přidruženou Azure Firewall, je nasazená brána firewall a k nové bráně firewall je přidružená zásada brány firewall.
 
 ## <a name="next-steps"></a>Další kroky
 

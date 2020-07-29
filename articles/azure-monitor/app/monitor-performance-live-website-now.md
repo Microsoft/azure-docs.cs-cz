@@ -3,12 +3,12 @@ title: Monitorování živé webové aplikace v ASP.NET pomocí Azure Applicatio
 description: Monitorování výkonu webu bez opětovného nasazení. Funguje s ASP.NET webovými aplikacemi hostovanými místně nebo na virtuálních počítačích.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 93b150b831a01989093fd916d17e31aee27beb3a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 70a405d2c32641be2ed4038fbffebce0e1340f83
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499524"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87310442"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Instrumentace webových aplikací za běhu s Application Insights připojením bez kódu
 
@@ -22,7 +22,7 @@ Monitorování stavu slouží k instrumentaci aplikace .NET hostované ve služb
 - Pokud je vaše aplikace nasazená do virtuálního počítače Azure nebo Azure Virtual Machine Scale set, postupujte podle [těchto pokynů](azure-vm-vmss-apps.md).
 - Pokud je vaše aplikace nasazená ve službě Azure App Services, postupujte podle [těchto pokynů](azure-web-apps.md).
 - Pokud je vaše aplikace nasazená na virtuálním počítači Azure, můžete v Ovládacích panelech Azure přepnout na Application Insights monitorování.
-- (K dispozici jsou také samostatné články o instrumentaci [Cloud Services Azure](../../azure-monitor/app/cloudservices.md).)
+- (K dispozici jsou také samostatné články o instrumentaci [Cloud Services Azure](./cloudservices.md).)
 
 
 ![Snímek obrazovky s přehledem grafů Application Insights, které obsahují informace o neúspěšných požadavcích, dobu odezvy serveru a požadavky na server](./media/monitor-performance-live-website-now/overview-graphs.png)
@@ -40,13 +40,13 @@ Tady je rekapitulace toho, co každý způsob přináší:
 |  | Při sestavení | Za běhu |
 | --- | --- | --- |
 | **Vyžádá & výjimky.** |Ano |Ano |
-| **[Podrobnější výjimky](../../azure-monitor/app/asp-net-exceptions.md)** | |Ano |
-| **[Diagnostika závislostí](../../azure-monitor/app/asp-net-dependencies.md)** |Na platformě .NET 4.6+, ale méně podrobná |Ano, úplné podrobnosti: kódy výsledků, text příkazu SQL, příkaz HTTP|
-| **[Čítače výkonu systému](../../azure-monitor/app/performance-counters.md)** |Ano |Ano |
-| **[Rozhraní API pro vlastní telemetrii][api]** |Ano |No |
-| **[Integrace protokolu trasování](../../azure-monitor/app/asp-net-trace-logs.md)** |Ano |No |
-| **[Zobrazení stránky & uživatelských dat](../../azure-monitor/app/javascript.md)** |Ano |No |
-| **Nutnost znovu sestavit kód** |Ano | No |
+| **[Podrobnější výjimky](./asp-net-exceptions.md)** | |Ano |
+| **[Diagnostika závislostí](./asp-net-dependencies.md)** |Na platformě .NET 4.6+, ale méně podrobná |Ano, úplné podrobnosti: kódy výsledků, text příkazu SQL, příkaz HTTP|
+| **[Čítače výkonu systému](./performance-counters.md)** |Ano |Ano |
+| **[Rozhraní API pro vlastní telemetrii][api]** |Ano |Ne |
+| **[Integrace protokolu trasování](./asp-net-trace-logs.md)** |Ano |Ne |
+| **[Zobrazení stránky & uživatelských dat](./javascript.md)** |Ano |Ne |
+| **Nutnost znovu sestavit kód** |Ano | Ne |
 
 
 
@@ -70,7 +70,7 @@ Pokud je vaše aplikace hostovaná na serveru služby IIS, povolte Application I
 
 ## <a name="customize-monitoring-options"></a>Přizpůsobení možností monitorování
 
-Povolením Application Insights se do webové aplikace přidají knihovny DLL a soubor ApplicationInsights.config. Můžete [upravit soubor .config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) a změnit některé možnosti.
+Povolením Application Insights se do webové aplikace přidají knihovny DLL a soubor ApplicationInsights.config. Můžete [upravit soubor .config](./configuration-with-applicationinsights-config.md) a změnit některé možnosti.
 
 ## <a name="when-you-re-publish-your-app-re-enable-application-insights"></a>Když opětovně publikujete aplikaci, znovu povolte Application Insights
 
@@ -84,7 +84,7 @@ Pokud chcete znovu publikovat aniž byste přidali Application Insights do kódu
 4. Obnovte veškeré úpravy, které jste provedli v souboru .config.
 
 
-## <a name="troubleshooting"></a><a name="troubleshoot"></a>Při
+## <a name="troubleshooting"></a><a name="troubleshoot"></a>Řešení potíží
 
 ### <a name="confirm-a-valid-installation"></a>Potvrďte platnou instalaci. 
 
@@ -106,7 +106,7 @@ Tady je několik kroků, pomocí kterých můžete ověřit, že se instalace ú
 
 ### <a name="cant-connect-no-telemetry"></a>Nelze se připojit? Žádná telemetrie?
 
-* Otevřete v bráně firewall vašeho serveru [potřebné odchozí porty](../../azure-monitor/app/ip-addresses.md#outgoing-ports), aby Monitorování stavu mohlo fungovat.
+* Otevřete v bráně firewall vašeho serveru [potřebné odchozí porty](./ip-addresses.md#outgoing-ports), aby Monitorování stavu mohlo fungovat.
 
 ### <a name="unable-to-login"></a>Nelze se přihlásit
 
@@ -261,7 +261,7 @@ Desktopová aplikace, kterou instalujete s webovým serverem IIS. Pomáhá prov�
 ### <a name="when-do-i-use-status-monitor"></a>Kdy použít Monitorování stavu?
 
 * Při instrumentaci libovolné webové aplikace, která běží na serveru IIS, i když je už spuštěná.
-* Při povolení další telemetrie pro webové aplikace, které byly [vytvořené pomocí sady Application Insights SDK](../../azure-monitor/app/asp-net.md), v době kompilace. 
+* Při povolení další telemetrie pro webové aplikace, které byly [vytvořené pomocí sady Application Insights SDK](./asp-net.md), v době kompilace. 
 
 ### <a name="can-i-close-it-after-it-runs"></a>Můžu ji po spuštění zavřít?
 
@@ -319,7 +319,7 @@ Pro aplikace již instrumentované v době kompilace:
 
 Zobrazení telemetrických dat:
 
-* [Zkoumání metrik](../../azure-monitor/platform/metrics-charts.md) pro monitorování výkonu a využití
+* [Zkoumání metrik](../platform/metrics-charts.md) pro monitorování výkonu a využití
 * [Prohledávání událostí a protokolů][diagnostic] pro diagnostiku problémů
 * [Analýzy](../log-query/log-query-overview.md) pro pokročilejší dotazy
 
@@ -331,11 +331,12 @@ Přidání další telemetrie:
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
+[api]: ./api-custom-events-metrics.md
 [availability]: monitor-web-app-availability.md
-[client]: ../../azure-monitor/app/javascript.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[greenbrown]: ../../azure-monitor/app/asp-net.md
+[client]: ./javascript.md
+[diagnostic]: ./diagnostic-search.md
+[greenbrown]: ./asp-net.md
 [qna]: ../faq.md
-[roles]: ../../azure-monitor/app/resources-roles-access-control.md
-[usage]: ../../azure-monitor/app/javascript.md
+[roles]: ./resources-roles-access-control.md
+[usage]: ./javascript.md
+

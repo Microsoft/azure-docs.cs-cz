@@ -1,6 +1,5 @@
 ---
-title: Vytvoření koncových bodů webové služby
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (Classic): vytvoření koncových bodů webové služby – Azure'
 description: Vytvoření koncových bodů webové služby v Azure Machine Learning Studio (Classic). Každý koncový bod ve webové službě se nezávisle zabývá, omezuje a spravuje.
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: e465d739c485009f68d6d5c5ecbb0850d73a6e60
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac5fa2a4eb534a4cc6e7bf9542bfb250f216401c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696418"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282496"
 ---
 # <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>Vytvoření koncových bodů pro nasazené webové služby Azure Machine Learning Studio (Classic)
+
+**platí pro:** ![ žádná](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasická) 
+
 
 > [!NOTE]
 > Toto téma popisuje techniky, které se vztahují na **klasický** Machine Learning webovou službu.

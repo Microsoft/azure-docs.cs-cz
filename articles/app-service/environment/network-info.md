@@ -4,15 +4,15 @@ description: Přečtěte si informace o síťovém provozu s MECHANISMem zabezpe
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 06/29/2020
+ms.date: 07/27/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 10cb1149880c70d991dd5ab49acceab3283372a7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6fde04be99eaa61287b486eaefdcb92d66d88bc7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517849"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280915"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Důležité aspekty sítí pro službu App Service Environment #
 
@@ -109,7 +109,7 @@ Pokud změníte nastavení DNS virtuální sítě, ve které je váš přihláš
 Kromě funkčních závislostí pomocného mechanismu je několik dalších položek, které se týkají prostředí portálu. Některé funkce v Azure Portal závisí na přímém přístupu k _webu SCM_. Pro každou aplikaci v Azure App Service jsou k dispozici dvě adresy URL. První adresa URL má přístup k vaší aplikaci. Druhá adresa URL má přístup k webu SCM, který se také nazývá _Konzola Kudu_. K funkcím, které používají web SCM, patří:
 
 -   Web Jobs
--   Funkce
+-   Functions
 -   Streamování protokolů
 -   Kudu
 -   Rozšíření
@@ -158,13 +158,14 @@ Požadované položky v NSG, aby mohl funkce pomocného mechanismu provozu fungo
 * z podsítě služby přihlašování do podsítě pomocného mechanismu na všech portech
 
 **Odchozí**
+* UDP na všechny IP adresy na portu 53
 * UDP na všechny IP adresy na portu 123
 * TCP na všechny IP adresy na portech 80, 443
 * TCP ke značce služby IP AzureSQL na portech 1433
 * TCP na všechny IP adresy na portu 12000
 * do podsítě pomocného mechanismu pro všechny porty
 
-Tyto porty nezahrnují porty, které vaše aplikace vyžadují pro úspěšné použití. V takovém případě může být třeba, že vaše aplikace bude muset volat Server MySQL na portu 3306. port DNS, port 53, není nutné přidávat do služby DNS, protože není ovlivněný provoz NSG pravidly. Protokol NTP (Network Time Protocol) na portu 123 je protokol synchronizace času používaný operačním systémem. Koncové body NTP nejsou specifické pro App Services, se můžou lišit v závislosti na operačním systému a nejsou v dobře definovaném seznamu adres. Aby nedocházelo k problémům s synchronizací času, je nutné povolený provoz UDP na všechny adresy na portu 123. Odchozí přenos TCP na port 12000 je určen pro podporu a analýzu systému. Koncové body jsou dynamické a nejsou v dobře definované sadě adres.
+Tyto porty nezahrnují porty, které vaše aplikace vyžadují pro úspěšné použití. Vaše aplikace může například potřebovat zavolat Server MySQL na portu 3306. Protokol NTP (Network Time Protocol) na portu 123 je protokol synchronizace času používaný operačním systémem. Koncové body NTP nejsou specifické pro App Services, se můžou lišit v závislosti na operačním systému a nejsou v dobře definovaném seznamu adres. Aby nedocházelo k problémům s synchronizací času, je nutné povolený provoz UDP na všechny adresy na portu 123. Odchozí přenos TCP na port 12000 je určen pro podporu a analýzu systému. Koncové body jsou dynamické a nejsou v dobře definované sadě adres.
 
 Standardní porty pro přístup k aplikacím:
 

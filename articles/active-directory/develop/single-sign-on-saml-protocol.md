@@ -4,22 +4,22 @@ titleSuffix: Microsoft identity platform
 description: Tento článek popisuje protokol SAML jednotného přihlašování (SSO) v Azure Active Directory
 services: active-directory
 documentationcenter: .net
-author: rwike77
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.author: ryanwi
+ms.author: kenwith
 ms.custom: aaddev
-ms.reviewer: hirsin
-ms.openlocfilehash: a68c0248ce364be486610c406388586b69cbb3f4
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.reviewer: paulgarn
+ms.openlocfilehash: f3896bf795e3b1ca258f65fa2c6f4974f2115014
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076942"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282989"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Protokol SAML jednotného přihlašování
 
@@ -46,11 +46,11 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 </samlp:AuthnRequest>
 ```
 
-| Parametr | Typ | Description |
+| Parametr | Typ | Popis |
 | --- | --- | --- |
-| ID | Vyžadováno | Azure AD používá tento atribut k naplnění `InResponseTo` atributu vrácené odpovědi. ID nesmí začínat číslicí, takže běžnou strategií je předřadit řetězec jako "ID" do řetězcové reprezentace identifikátoru GUID. Například `id6c1c178c166d486687be4aaf5e482730` je platný identifikátor. |
-| Verze | Vyžadováno | Tento parametr by měl být nastaven na **2,0**. |
-| IssueInstant | Vyžadováno | Toto je řetězec DateTime s hodnotou UTC a [formátem Round-Trip ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD očekává hodnotu DateTime tohoto typu, ale nevyhodnotí ani nepoužije hodnotu. |
+| ID | Povinné | Azure AD používá tento atribut k naplnění `InResponseTo` atributu vrácené odpovědi. ID nesmí začínat číslicí, takže běžnou strategií je předřadit řetězec jako "ID" do řetězcové reprezentace identifikátoru GUID. Například `id6c1c178c166d486687be4aaf5e482730` je platný identifikátor. |
+| Verze | Povinné | Tento parametr by měl být nastaven na **2,0**. |
+| IssueInstant | Povinné | Toto je řetězec DateTime s hodnotou UTC a [formátem Round-Trip ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD očekává hodnotu DateTime tohoto typu, ale nevyhodnotí ani nepoužije hodnotu. |
 | AssertionConsumerServiceUrl | Volitelné | Je-li tento parametr zadán, musí odpovídat `RedirectUri` cloudové službě ve službě Azure AD. |
 | ForceAuthn | Volitelné | Jedná se o logickou hodnotu. Pokud má hodnotu true, znamená to, že se uživatel bude nuceně znovu ověřovat, i když má platnou relaci se službou Azure AD. |
 | Podpasse | Volitelné | Jedná se o logickou hodnotu, která určuje, jestli má služba Azure AD bez zásahu uživatele ověřit uživatele bez ohledu na to, jestli existuje. Pokud je to pravda, Azure AD se pokusí ověřit uživatele pomocí souboru cookie relace. |
@@ -101,7 +101,7 @@ Pokud je tato vlastnost k dispozici, nezahrnujte `ProxyCount` atribut `IDPListOp
 ### <a name="signature"></a>Podpis
 `Signature`Element v `AuthnRequest` elementech je nepovinný. Služba Azure AD neověřuje podepsané žádosti o ověření, pokud je k dispozici podpis. Ověření žadatele je poskytováno pouze v reakci na registrované adresy URL služby kontrolního výrazu.
 
-### <a name="subject"></a>Subjekt
+### <a name="subject"></a>Předmět
 Nezahrnujte `Subject` element. Azure AD nepodporuje zadání předmětu pro požadavek a vrátí chybu, pokud je k dispozici.
 
 ## <a name="response"></a>Odpověď
@@ -212,7 +212,7 @@ K vygenerování tohoto digitálního podpisu Azure AD používá podpisový kl�
     </ds:Signature>
 ```
 
-#### <a name="subject"></a>Subjekt
+#### <a name="subject"></a>Předmět
 
 Určuje objekt zabezpečení, který je předmětem příkazů v kontrolním výrazu. Obsahuje `NameID` element, který představuje ověřeného uživatele. `NameID`Hodnota je cílový identifikátor, který je směrován pouze k poskytovateli služeb, který je cílovou skupinou pro daný token. Je trvalý – dá se odvolat, ale nikdy se znovu nepřiřazuje. Je také neprůhledný, v tom případě neodhalí žádné informace o uživateli a nelze jej použít jako identifikátor pro dotazy na atributy.
 

@@ -3,12 +3,12 @@ title: Plánování nasazení clusteru Azure Service Fabric
 description: Přečtěte si o plánování a přípravě nasazení produkčního Service Fabric clusteru do Azure.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 462548d7f32a015701ef12e9777e8d9b1b1350f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1064e59491b7144aafade24bd50131478fe025eb
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610587"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281323"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Plánování a příprava nasazení clusteru
 
@@ -51,7 +51,7 @@ Jakékoli více než minimální počet uzlů by měl být založen na počtu re
 
 Dočasné disky s operačním systémem nejsou konkrétní funkcí Service Fabric, ale spíše funkcí *sady škálování virtuálních počítačů* Azure, které jsou namapované na Service Fabric typy uzlů. Použití s Service Fabric v šabloně Azure Resource Manager clusteru vyžaduje následující:
 
-1. Ujistěte se, že typy uzlů určují [podporované velikosti virtuálních počítačů Azure](../virtual-machines/windows/ephemeral-os-disks.md) pro dočasné disky s operačním systémem a že velikost virtuálního počítače má dostatečnou velikost mezipaměti, aby podporovala velikost disku s operačním systémem (viz *Poznámka* níže). Například:
+1. Ujistěte se, že typy uzlů určují [podporované velikosti virtuálních počítačů Azure](../virtual-machines/ephemeral-os-disks.md) pro dočasné disky s operačním systémem a že velikost virtuálního počítače má dostatečnou velikost mezipaměti, aby podporovala velikost disku s operačním systémem (viz *Poznámka* níže). Například:
 
     ```xml
     "vmNodeType1Size": {
@@ -97,7 +97,7 @@ Dočasné disky s operačním systémem nejsou konkrétní funkcí Service Fabri
 > Aby bylo možné provést migraci, uživatelé budou muset [Přidat](./virtual-machine-scale-set-scale-node-type-scale-out.md) nový typ NodeType s dočasnými disky, přesunout úlohy do nového uzlu NodeType & [Odebrat](./service-fabric-how-to-remove-node-type.md) existující uzel NodeType.
 >
 
-Další informace a další možnosti konfigurace najdete v tématu [dočasné disky s operačním systémem pro virtuální počítače Azure](../virtual-machines/windows/ephemeral-os-disks.md) . 
+Další informace a další možnosti konfigurace najdete v tématu [dočasné disky s operačním systémem pro virtuální počítače Azure](../virtual-machines/ephemeral-os-disks.md) . 
 
 
 ### <a name="select-the-durability-and-reliability-levels-for-the-cluster"></a>Vybrat úrovně trvanlivosti a spolehlivosti pro cluster

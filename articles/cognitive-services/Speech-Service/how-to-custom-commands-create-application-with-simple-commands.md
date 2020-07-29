@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 6552d13ab68d8028cd95b18f2d0895d53bba462c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d166257dd28773d89a4f1fd56de3cb1a22242523
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090956"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284162"
 ---
 # <a name="create-application-with-simple-commands"></a>Vytvoření aplikace s jednoduchými příkazy
 
@@ -95,6 +95,7 @@ V dalším kroku musí mít příkaz pravidlo dokončení. Toto pravidlo přiká
 
 1. Akci uložte kliknutím na **Uložit** .
 1. Zpátky v části **pravidla dokončování** vyberte **Uložit** a uložte všechny změny. 
+
 
     > [!NOTE]
     > Není nutné používat výchozí pravidlo dokončení, které je součástí příkazu. V případě potřeby můžete stávající výchozí pravidlo dokončování odstranit a přidat vlastní pravidlo.

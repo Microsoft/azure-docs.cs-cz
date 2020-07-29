@@ -4,16 +4,16 @@ description: Konfigurace, optimalizace a řešení potíží s AzCopy.
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/10/2020
+ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: acfe868f26d7509d1dd06554482b4fb3b29a5b22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e79f186688f3b6531ac24df4e3ae4201cf1903c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504351"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282428"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurace, optimalizace a řešení potíží s AzCopy
 
@@ -23,12 +23,12 @@ AzCopy je nástroj příkazového řádku, pomocí kterého můžete kopírovat 
 > Pokud hledáte obsah, který vám pomůžete začít s AzCopy, přečtěte si některé z následujících článků:
 > - [Začínáme s nástrojem AzCopy](storage-use-azcopy-v10.md)
 > - [Přenos dat pomocí AzCopy a BLOB Storage](storage-use-azcopy-blobs.md)
-> - [Přenos dat pomocí AzCopy a úložiště souborů](storage-use-azcopy-files.md)
+> - [Přenos dat s použitím AzCopy a úložiště souborů](storage-use-azcopy-files.md)
 > - [Přenos dat pomocí kontejnerů AzCopy a Amazon S3](storage-use-azcopy-s3.md)
 
 ## <a name="configure-proxy-settings"></a>Konfigurace nastavení proxy serveru
 
-Chcete-li nakonfigurovat nastavení proxy serveru pro AzCopy, nastavte `https_proxy` proměnnou prostředí. Pokud spustíte AzCopy ve Windows, AzCopy automaticky detekuje nastavení proxy serveru, takže toto nastavení nemusíte používat v systému Windows. Pokud se rozhodnete použít toto nastavení ve Windows, přepíše se automatické zjišťování.
+Chcete-li nakonfigurovat nastavení proxy serveru pro AzCopy, nastavte `https_proxy` proměnnou prostředí. Pokud používáte AzCopy ve Windows, AzCopy automaticky detekuje nastavení proxy serveru, takže ve Windows toto nastavení používat nemusíte. Pokud se rozhodnete toto nastavení použít ve Windows, přepíše se tím automatická detekce.
 
 | Operační systém | Příkaz  |
 |--------|-----------|
@@ -63,13 +63,13 @@ Tato část vám pomůže provést tyto optimalizační úlohy:
 
 ### <a name="run-benchmark-tests"></a>Spustit testy srovnávacích testů
 
-Test srovnávacího testu výkonu můžete spustit pro konkrétní kontejnery objektů BLOB nebo sdílené složky a zobrazit tak obecná statistiku výkonu a kritická místa výkonu identity. 
+Test srovnávacího testu výkonu můžete spustit pro konkrétní kontejnery objektů BLOB nebo sdílené složky a zobrazit tak obecná statistiku výkonu a kritická místa výkonu identity. Test můžete spustit nahráním nebo stažením vygenerovaných testovacích dat. 
 
 Pomocí následujícího příkazu spusťte test srovnávacího testu výkonu.
 
 |    |     |
 |--------|-----------|
-| **Syntax** | `azcopy benchmark 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
+| **Syntaxe** | `azcopy benchmark 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
 | **Příklad** | `azcopy benchmark 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
 > [!TIP]
@@ -77,9 +77,7 @@ Pomocí následujícího příkazu spusťte test srovnávacího testu výkonu.
 
 Tento příkaz spustí srovnávací test výkonu odesláním testovacích dat do zadaného cíle. Testovací data jsou generována v paměti, odeslána do cíle a poté po dokončení testu odstraněna z cílového umístění. Můžete určit, kolik souborů se má vygenerovat a jakou velikost byste chtěli použít při použití volitelných parametrů příkazu.
 
-Podrobné referenční dokumentace najdete v tématu [AzCopy Testing](storage-ref-azcopy-bench.md).
-
-Chcete-li zobrazit podrobné pokyny pro nápovědu k tomuto příkazu, zadejte `azcopy benchmark -h` a stiskněte klávesu ENTER.
+Pokud dáváte přednost spuštění tohoto testu stažením dat, nastavte `mode` parametr na `download` . Podrobné referenční dokumentace najdete v tématu [AzCopy Testing](storage-ref-azcopy-bench.md). 
 
 ### <a name="optimize-throughput"></a>Optimalizace propustnosti
 
@@ -89,9 +87,9 @@ Pomocí `cap-mbps` příznaku v příkazech můžete umístit strop pro míru pr
 azcopy jobs resume <job-id> --cap-mbps 10
 ```
 
-Při přenosu malých souborů se propustnost může snížit. Propustnost můžete zvýšit nastavením `AZCOPY_CONCURRENCY_VALUE` proměnné prostředí. Tato proměnná Určuje počet souběžných požadavků, které mohou nastat.  
+Při přenosu malých souborů se může propustnost snížit. Propustnost můžete zvýšit nastavením `AZCOPY_CONCURRENCY_VALUE` proměnné prostředí. Tato proměnná určuje povolený počet souběžných požadavků.  
 
-Pokud má počítač méně než 5 procesorů, pak je hodnota této proměnné nastavena na `32` . V opačném případě se výchozí hodnota rovná 16 vynásobenému počtem procesorů. Maximální výchozí hodnota této proměnné je `3000` , ale tuto hodnotu můžete nastavit ručně nebo dolů. 
+Pokud má počítač méně než 5 procesorů, pak je hodnota této proměnné nastavena na `32` . Jinak se výchozí hodnota rovná 16násobku počtu CPU. Maximální výchozí hodnota této proměnné je `3000` , ale tuto hodnotu můžete nastavit ručně nebo dolů. 
 
 | Operační systém | Příkaz  |
 |--------|-----------|

@@ -3,12 +3,13 @@ title: Odesílání a příjem událostí z Azure Event Hubs pomocí jazyka Java
 description: Tento článek popisuje postup vytvoření aplikace Java, která odesílá a přijímá události z Azure Event Hubs pomocí starého balíčku Azure-eventhubs.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 8c44cfa2a3130e714ac95989248aee634996df2a
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.custom: devx-track-java
+ms.openlocfilehash: 6efa21f4869dddef9d54001a8669b4b039240910
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85320313"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371970"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>Použití jazyka Java k posílání událostí nebo přijímání událostí z Azure Event Hubs (Azure-eventhubs)
 
@@ -135,7 +136,7 @@ Pomocí transformace řetězce na jeho kódování UTF-8 Vytvořte událost v je
 
 Sestavte a spusťte program a ujistěte se, že nejsou k dispozici žádné chyby.
 
-Gratulujeme! Nyní jste odeslali zprávy do centra událostí.
+Blahopřejeme! Nyní jste odeslali zprávy do centra událostí.
 
 ### <a name="appendix-how-messages-are-routed-to-eventhub-partitions"></a>Příloha: způsob směrování zpráv do oddílů EventHub
 

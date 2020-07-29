@@ -3,7 +3,7 @@ title: Konfigurace naslouchacího procesu skupiny dostupnosti & Load Balancer (A
 description: Podrobné pokyny pro vytvoření naslouchacího procesu pro skupinu dostupnosti Always On pro SQL Server ve virtuálních počítačích Azure
 services: virtual-machines
 documentationcenter: na
-author: MikeRayMSFT
+author: MashaMSFT
 editor: monicar
 ms.assetid: d1f291e9-9af2-41ba-9d29-9541e3adcfcf
 ms.service: virtual-machines-sql
@@ -11,13 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
-ms.author: mikeray
+ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a2eb6278a9e796c33178f895eede6fd8f2144e9a
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: a83755a08a3579484796cd56623cb3401d03d874
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921693"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284281"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Konfigurace nástroje pro vyrovnávání zatížení pro skupinu dostupnosti Always On SQL Server v Azure Virtual Machines
 
@@ -72,7 +73,7 @@ Nejdřív vytvořte Nástroj pro vyrovnávání zatížení.
    | **Typ** |**Interní**: většina implementací používá interní nástroj pro vyrovnávání zatížení, který umožňuje aplikacím v rámci stejné virtuální sítě připojit se ke skupině dostupnosti.  </br> **Externí**: umožňuje aplikacím připojit se ke skupině dostupnosti prostřednictvím veřejného internetového připojení. |
    | **Virtuální síť** |Vyberte virtuální síť, ve které se nacházejí instance SQL Server. |
    | **Podsíť** |Vyberte podsíť, ve které jsou instance SQL Server. |
-   | **Přiřazení IP adresy** |**Tras** |
+   | **Přiřazení IP adresy** |**staticky**. |
    | **Privátní IP adresa** |Zadejte dostupnou IP adresu z podsítě. Tuto IP adresu použijte při vytváření naslouchacího procesu v clusteru. V rámci skriptu PowerShellu dále v tomto článku použijte tuto adresu pro `$ILBIP` proměnnou. |
    | **Předplatné** |Pokud máte více předplatných, může se toto pole zobrazit. Vyberte předplatné, které chcete k tomuto prostředku přidružit. Obvykle se jedná o stejné předplatné, jako všechny prostředky pro skupinu dostupnosti. |
    | **Skupina prostředků** |Vyberte skupinu prostředků, ve které jsou instance SQL Server. |
@@ -117,9 +118,9 @@ Sonda definuje, jak Azure ověřuje, které instance SQL Server aktuálně vlast
    | Nastavení | Hodnota |
    | --- | --- |
    | **Název** |Textový název, který představuje test. Například **SQLAlwaysOnEndPointProbe**. |
-   | **Protocol (Protokol)** |**TCP** |
-   | **Přístavní** |Můžete použít libovolný dostupný port. Například *59999*. |
-   | **Doba** |*5* |
+   | **Protokol** |**TCP** |
+   | **Port** |Můžete použít libovolný dostupný port. Například *59999*. |
+   | **Interval** |*5* |
    | **Prahová hodnota pro poškozený stav** |*2* |
 
 4.  Vyberte **OK**. 
@@ -143,13 +144,13 @@ Pravidla vyrovnávání zatížení konfigurují způsob, jakým nástroj pro vy
    | Nastavení | Hodnota |
    | --- | --- |
    | **Název** |Textový název reprezentující pravidla vyrovnávání zatížení. Například **SQLAlwaysOnEndPointListener**. |
-   | **Protocol (Protokol)** |**TCP** |
-   | **Přístavní** |*1433* |
-   | **Back-endový port** |*1433*. Tato hodnota se ignoruje, protože toto pravidlo používá **plovoucí IP adresu (přímá návratová hodnota serveru)**. |
+   | **Protokol** |**TCP** |
+   | **Port** |*1433* |
+   | **Port back-endu** |*1433*. Tato hodnota se ignoruje, protože toto pravidlo používá **plovoucí IP adresu (přímá návratová hodnota serveru)**. |
    | **Sonda** |Použijte název testu, který jste vytvořili pro tento nástroj pro vyrovnávání zatížení. |
-   | **Trvalost relace** |**Žádné** |
+   | **Trvalost relace** |**Žádný** |
    | **Časový limit nečinnosti (minuty)** |*4* |
-   | **Plovoucí IP adresa (přímá návrat ze serveru)** |**Enabled** (Povoleno) |
+   | **Plovoucí IP adresa (přímá návrat ze serveru)** |**Povoleno** |
 
    > [!NOTE]
    > Možná se budete muset posunout dolů, aby se zobrazila všechna nastavení.
@@ -235,9 +236,9 @@ Chcete-li do nástroje pro vyrovnávání zatížení přidat IP adresu pomocí 
    |Nastavení |Hodnota
    |:-----|:----
    |**Název** |Název pro identifikaci testu.
-   |**Protocol (Protokol)** |TCP
-   |**Přístavní** |Nepoužívaný port TCP, který musí být k dispozici na všech virtuálních počítačích. Nedá se použít pro žádný jiný účel. Žádné dva naslouchací procesy nemohou používat stejný port testu. 
-   |**Doba** |Doba mezi pokusy o testování. Použijte výchozí hodnotu (5).
+   |**Protokol** |TCP
+   |**Port** |Nepoužívaný port TCP, který musí být k dispozici na všech virtuálních počítačích. Nedá se použít pro žádný jiný účel. Žádné dva naslouchací procesy nemohou používat stejný port testu. 
+   |**Interval** |Doba mezi pokusy o testování. Použijte výchozí hodnotu (5).
    |**Prahová hodnota pro poškozený stav** |Počet po sobě jdoucích prahových hodnot, které by se měly podařit před tím, než se virtuální počítač považuje za špatný.
 
 8. Výběrem **OK** uložte test. 
@@ -250,12 +251,12 @@ Chcete-li do nástroje pro vyrovnávání zatížení přidat IP adresu pomocí 
     |:-----|:----
     |**Název** |Název, který identifikuje pravidlo vyrovnávání zatížení. 
     |**IP adresa front-endu** |Vyberte IP adresu, kterou jste vytvořili. 
-    |**Protocol (Protokol)** |TCP
-    |**Přístavní** |Použijte port, který používají instance SQL Server. Výchozí instance používá port 1433, pokud jste ho nezměnili. 
-    |**Port back-endu** |Použijte stejnou hodnotu jako **port**.
-    |**Back-end fond** |Fond, který obsahuje virtuální počítače s instancemi SQL Server. 
+    |**Protokol** |TCP
+    |**Port** |Použijte port, který používají instance SQL Server. Výchozí instance používá port 1433, pokud jste ho nezměnili. 
+    |**Back-endový port** |Použijte stejnou hodnotu jako **port**.
+    |**Back-endový fond** |Fond, který obsahuje virtuální počítače s instancemi SQL Server. 
     |**Sonda stavu** |Vyberte test, který jste vytvořili.
-    |**Trvalost relace** |Žádná
+    |**Trvalost relace** |Žádné
     |**Časový limit nečinnosti (minuty)** |Výchozí (4)
     |**Plovoucí IP adresa (přímá návrat ze serveru)** | Povoleno
 
@@ -299,12 +300,12 @@ Pokud se skupina dostupnosti účastní distribuované skupiny dostupnosti, nás
    |:-----|:----
    |**Název** |Název, který identifikuje pravidlo vyrovnávání zatížení pro distribuovanou skupinu dostupnosti. 
    |**IP adresa front-endu** |Jako skupinu dostupnosti použijte stejnou IP adresu front-endu.
-   |**Protocol (Protokol)** |TCP
-   |**Přístavní** |5022 – port pro [naslouchací proces koncového bodu skupiny dostupnosti](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups)</br> Může to být libovolný dostupný port.  
-   |**Port back-endu** | 5022 – použijte stejnou hodnotu jako **port**.
-   |**Back-end fond** |Fond, který obsahuje virtuální počítače s instancemi SQL Server. 
+   |**Protokol** |TCP
+   |**Port** |5022 – port pro [naslouchací proces koncového bodu skupiny dostupnosti](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups)</br> Může to být libovolný dostupný port.  
+   |**Back-endový port** | 5022 – použijte stejnou hodnotu jako **port**.
+   |**Back-endový fond** |Fond, který obsahuje virtuální počítače s instancemi SQL Server. 
    |**Sonda stavu** |Vyberte test, který jste vytvořili.
-   |**Trvalost relace** |Žádná
+   |**Trvalost relace** |Žádné
    |**Časový limit nečinnosti (minuty)** |Výchozí (4)
    |**Plovoucí IP adresa (přímá návrat ze serveru)** | Povoleno
 

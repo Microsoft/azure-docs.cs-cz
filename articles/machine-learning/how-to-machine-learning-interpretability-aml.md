@@ -5,18 +5,18 @@ description: Naučte se, jak získat vysvětlení způsobu, jakým váš model s
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 04d9e82c56979a459734b8732c127922361a1100
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: 7f2ca2a84123d3bb7dd92a797d517a2490544efa
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072371"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87307008"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Vysvětlení modelů ML & předpovědi v Pythonu (Preview) pomocí balíčku pro interpretaci
 
@@ -86,7 +86,7 @@ Následující příklad ukazuje, jak použít balíček pro interpretaci na oso
                                  classes=classes)
     ```
 
-    nebo
+    – nebo –
 
     ```python
 
@@ -112,7 +112,7 @@ Následující příklad ukazuje, jak použít balíček pro interpretaci na oso
                                classes=classes)
     ```
 
-    nebo
+    – nebo –
 
     ```python
     from interpret.ext.blackbox import PFIExplainer

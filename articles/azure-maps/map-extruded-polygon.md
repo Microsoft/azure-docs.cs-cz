@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen
-ms.openlocfilehash: 11d4d9a6f9afee801b4f6bb4d764efe9365ae8e7
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: cd12242367c6f3b5b2c64df28f7f5e52cf1a4f97
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130422"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282870"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map"></a>Přidání vrstvy vysunutí mnohoúhelníku na mapu
 
@@ -45,7 +45,7 @@ Podívejte se na <a href='https://codepen.io/azuremaps/pen/eYYYNox'>mapu kartogr
 
 ## <a name="add-a-circle-to-the-map"></a>Přidání kruhu k mapě
 
-Azure Maps používá rozšířenou verzi schématu injson, která poskytuje definici pro kruhy, jak je uvedeno [zde](https://docs.microsoft.com/azure/azure-maps/extend-geojson#circle). Vytlačený kruh lze na mapě vykreslit vytvořením `point` funkce s `subType` vlastností `Circle` a číslovanou vlastností, která `Radius` představuje poloměr v **metrech**. Příklad:
+Azure Maps používá rozšířenou verzi schématu injson, která poskytuje definici pro kruhy, jak je uvedeno [zde](https://docs.microsoft.com/azure/azure-maps/extend-geojson#circle). Vytlačený kruh lze na mapě vykreslit vytvořením `point` funkce s `subType` vlastností `Circle` a číslovanou vlastností, která `Radius` představuje poloměr v **metrech**. Například:
 
 ```Javascript
 {

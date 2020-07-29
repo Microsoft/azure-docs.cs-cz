@@ -11,20 +11,49 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: eceb34b57a0b2dd62f93f7732a6b93221e3ecb56
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 152907908f12a41679b3161e0c4b39348926399e
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512659"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373789"
 ---
 # <a name="speech-service-release-notes"></a>Poznámky k verzi služby Speech Service
+
+## <a name="speech-sdk-1130-2020-july-release"></a>Sada Speech SDK 1.13.0:2020 – červenec
+
+**Poznámka**: sada Speech SDK v systému Windows závisí na sdílených Microsoft Visual C++ distribuovatelné pro Visual Studio 2015, 2017 a 2019. Stáhněte si ho a nainstalujte [odsud.](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
+
+**Nové funkce**
+- **C#**: Přidání podpory pro přepis asynchronní konverzace. Další informace [najdete v dokumentaci.](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-async-conversation-transcription)  
+- **JavaScript**: přidání podpory rozpoznávání mluvčího pro [prohlížeč](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/browser/speaker-recognition) i [node.js](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/speaker-recognition).
+- **JavaScript**: Přidání podpory pro automatické rozpoznání jazyka/ID jazyka. Další informace [najdete v dokumentaci.](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-javascript)
+- **Cíl-C**: Přidali jsme podporu pro konverzaci s více zařízeními a Přepisy konverzace. 
+- **Python**: Přidání komprimované zvukové podpory pro Python v systému Windows a Linux. Další informace [najdete v dokumentaci.](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams) 
+
+**Opravy chyb**
+- **Vše**: Opravili jsme problém, který způsobil, že se KeywordRecognizer po rozpoznávání nepřesunuly proudy vpřed.
+- **Vše**: Opravili jsme problém, který způsobil, že datový proud získaný z KeywordRecognitionResult neobsahuje klíčové slovo.
+- **Vše**: Opravili jsme problém, který SendMessageAsync skutečně neposílá zprávu po skončení čekání na tento kabel.
+- **Vše**: Opravili jsme chybu v rozhraních API rozpoznávání mluvčího, když uživatelé spouštějí několik VoiceProfileClient:: SpeakerRecEnrollProfileAsync a nečekali na jejich dokončení.
+- **All**: pevný povolit protokolování souborů v třídách VoiceProfileClient a SpeakerRecognizer.
+- **JavaScript**: byl vyřešen [problém](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/74) s omezením při minimalizaci prohlížeče.
+- **JavaScript**: byl opraven [problém](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/78) s nevrácenou pamětí v datových proudech.
+- **JavaScript**: přidání do mezipaměti odpovědí protokolu OCSP z NodeJS.
+- **Java**: Opravili jsme problém, který způsobil, že pole BigInteger vždycky vrátí hodnotu 0.
+- **iOS**: opraveno a [problém](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/702) s publikováním aplikací založených na sadě Speech SDK v iOS App Storu.
+
+**ukázky**
+- **C++**: [sem](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/cpp/windows/console/samples/speaker_recognition_samples.cpp)přidejte vzorový kód pro rozpoznávání mluvčího.
+
+**COVID-19 – zkrácené testování:** Vzhledem k tomu, že během posledních několika týdnů pracujete vzdáleně, nemůžeme provést tolik testování ručních ověření jako obvykle. Neudělali jsme žádné změny, které by bylo možné jakkoli rozdělit, a naše automatizované testy byly úspěšné. V nepravděpodobném případě, že jsme něco zmeškali, dejte nám prosím na [GitHubu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen)informace.<br>
+Buďte v pořádku!
 
 ## <a name="text-to-speech-2020-july-release"></a>Převod textu na řeč 2020 – červenec verze
 
 ### <a name="new-features"></a>Nové funkce
 
-* **Neuronové TTS, 15 novinek neuronové**– nové hlasy přidané do portfolia neuronové TTS jsou Salma v `ar-EG` arabštině (Egypt), Zariyah v `ar-SA` arabštině (Saúdská Arábie), alba v `ca-ES` Katalánština (Španělsko), Christel v dánštině ( `da-DK` Dánsko), Neerja v `es-IN` angličtině (Indie), Noora ve `fi-FI` finštině (Finsko), Swara v `hi-IN` hindštině (Indie), Colette v `nl-NL` holandštině (Netherland), Zofia v `pl-PL` polštině (Polsko), Fernanda v `pt-PT` portugalštině (Portugalsko), Dariya v `ru-RU` ruštině (Rusko), Hillevi v ruštině (Švédsku), Achara v thajštině (Thajsku), HiuGaai v `sv-SE` `th-TH` `zh-HK` čínštině (kantonština, tradiční) a HsiaoYu v `zh-TW` čínštině (tchajwanských mandarincích Zkontroluje všechny [podporované jazyky](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices).  
+* **Neuronové TTS, 15 novinek neuronové**– nové hlasy přidané do portfolia neuronové TTS jsou Salma v `ar-EG` arabštině (Egypt), Zariyah v `ar-SA` arabštině (Saúdská Arábie), alba v `ca-ES` Katalánština (Španělsko), Christel v dánštině ( `da-DK` Dánsko), Neerja v `es-IN` angličtině (Indie), Noora ve `fi-FI` finštině (Finsko), Swara v `hi-IN` hindštině (Indie), Colette v `nl-NL` holandštině (Nizozemsko), Zofia v `pl-PL` polštině (Polsko), Fernanda v `pt-PT` portugalštině (Portugalsko), Dariya v `ru-RU` ruštině (Rusko), Hillevi ve švédštině (Švédsku), Achara v thajštině (Thajsko), HiuGaai v `sv-SE` `th-TH` `zh-HK` čínštině (kantonština, tradiční) a HsiaoYu v `zh-TW` čínštině (tchajwanští. Zkontroluje všechny [podporované jazyky](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices).  
 
 * **Vlastní hlas, zjednodušené hlasové testování s výukovým tokem pro zjednodušení uživatelského prostředí**: Díky nové funkci testování se každý hlas automaticky testuje pomocí předdefinované testovací sady optimalizované pro jednotlivé jazyky, které budou pokrývat scénáře obecného a hlasového asistenta. Tyto sady testů pečlivě vyberou a testují, aby zahrnovaly typické případy použití a fonémy v jazyce. Kromě toho mohou uživatelé i nadále vybrat nahrávání vlastních testovacích skriptů při výuce modelu.
 
@@ -85,10 +114,10 @@ ms.locfileid: "86512659"
 
 ### <a name="samplessdk"></a>Ukázky/sada SDK
 
-* JavaScript: řeší problém s přehráváním v prohlížeči FireFox a Safari v macOS a iOS. 
+* JavaScript: řeší problém s přehráváním v prohlížeči Firefox a Safari v macOS a iOS. 
 
 ## <a name="speech-sdk-1121-2020-june-release"></a>Sada Speech SDK 1.12.1:2020 – červenou verzi
-**Rozpoznávání řeči (neboli SPX)**
+**Rozpoznávání řeči (označované také jako SPX)**
 -   Přidání funkcí vyhledávání v nápovědě k rozhraní příkazového řádku:
     -   `spx help find --text TEXT`
     -   `spx help find --topic NAME`
@@ -115,7 +144,7 @@ Buďte v pořádku!
 
 
 ## <a name="speech-sdk-1120-2020-may-release"></a>Sada Speech SDK 1.12.0:2020 – může vydávat
-**Rozpoznávání řeči (neboli SPX)**
+**Rozhraní příkazového řádku pro rozpoznávání řeči (také znám jako SPX)**
 - **SPX** je nový nástroj příkazového řádku, který umožňuje provádět rozpoznávání, syntézu, překlad, dávkování a vlastní správu řeči z příkazového řádku. Použijte ji k otestování hlasové služby nebo ke skriptování úloh služby Speech, které potřebujete provést. Stáhněte si nástroj a přečtěte si dokumentaci [zde](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-overview).
 
 **Nové funkce**
@@ -486,7 +515,7 @@ Toto je verze jenom pro JavaScript. Nepřidaly se žádné funkce. Byly proveden
   - Z `Recognizer` , můžete získat přístup k `Connection` objektu. Tento objekt vám umožňuje explicitně iniciovat připojení služby a přihlásit se k odběru událostí a odpojovat se.
     (Tato funkce ještě není dostupná z JavaScriptu a Pythonu.)
 - Podpora pro Ubuntu 18,04.
-- Telefon
+- Android
   - Povolená podpora ProGuard během generování APK
 
 **Vylepšen**

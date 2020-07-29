@@ -3,12 +3,12 @@ title: Ověření aplikace pro přístup k Azure Service Bus entit
 description: Tento článek poskytuje informace o ověřování aplikace s Azure Active Directory pro přístup k Azure Service Bus entit (fronty, témata atd.).
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 371fa42420c2cc90a581b05ac47d7a65f28fc473
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3f94f17a538fc86615f4ffeb8f351beb99e0cb33
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128484"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372344"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Ověřování a autorizace aplikace s Azure Active Directory pro přístup k Azure Service Busm entitám
 Azure Service Bus podporuje použití Azure Active Directory (Azure AD) k autorizaci požadavků na Service Bus entit (fronty, témata, odběry nebo filtry). Pomocí Azure AD můžete použít řízení přístupu na základě role (RBAC) k udělení oprávnění objektu zabezpečení, který může být uživatel, skupina nebo instanční objekt aplikace. Další informace o rolích a přiřazení rolí najdete v tématu [Principy různých rolí](../role-based-access-control/overview.md).
@@ -21,18 +21,18 @@ Když se objekt zabezpečení (uživatel, skupina nebo aplikace) pokusí o pří
 
 Krok ověřování vyžaduje, aby žádost o aplikaci obsahovala přístupový token OAuth 2,0 za běhu. Pokud je aplikace spuštěná v rámci entity Azure, jako je třeba virtuální počítač Azure, sada škálování virtuálního počítače nebo aplikace funkce Azure, může pro přístup k prostředkům použít spravovanou identitu. Informace o tom, jak ověřit požadavky prováděné spravovanou identitou pro Service Bus službu, najdete v tématu [ověření přístupu k prostředkům Azure Service Bus pomocí Azure Active Directory a spravovaných identit pro prostředky Azure](service-bus-managed-service-identity.md). 
 
-Autorizační krok vyžaduje, aby se k objektu zabezpečení přiřadila jedna nebo více rolí RBAC. Azure Service Bus poskytuje role RBAC, které zahrnují sady oprávnění pro prostředky Service Bus. Role, které jsou přiřazeny objektu zabezpečení, určují oprávnění, která bude mít objekt zabezpečení. Další informace o přiřazení rolí RBAC k Azure Service Bus najdete v tématu [předdefinované role RBAC pro Azure Service Bus](#built-in-rbac-roles-for-azure-service-bus). 
+Autorizační krok vyžaduje, aby se k objektu zabezpečení přiřadila jedna nebo více rolí RBAC. Azure Service Bus poskytuje role RBAC, které zahrnují sady oprávnění pro prostředky Service Bus. Role, které jsou přiřazeny objektu zabezpečení, určují oprávnění, která bude mít objekt zabezpečení. Další informace o přiřazení rolí RBAC k Azure Service Bus najdete v tématu [předdefinované role Azure pro Azure Service Bus](#azure-built-in-roles-for-azure-service-bus). 
 
 Nativní aplikace a webové aplikace, které vytvářejí požadavky na Service Bus, mohou být také autorizovány pomocí Azure AD. V tomto článku se dozvíte, jak požádat o přístupový token a použít ho k autorizaci žádostí o Service Bus prostředky. 
 
 
 ## <a name="assigning-rbac-roles-for-access-rights"></a>Přiřazení rolí RBAC pro přístupová práva
-Azure Active Directory (Azure AD) autorizuje přístupová práva k zabezpečeným prostředkům prostřednictvím [řízení přístupu na základě role (RBAC)](../role-based-access-control/overview.md). Azure Service Bus definuje sadu integrovaných rolí RBAC, které zahrnují společné sady oprávnění používané pro přístup k Service Busm entitám, a můžete také definovat vlastní role pro přístup k datům.
+Azure Active Directory (Azure AD) autorizuje přístupová práva k zabezpečeným prostředkům prostřednictvím [řízení přístupu na základě role (RBAC)](../role-based-access-control/overview.md). Azure Service Bus definuje sadu předdefinovaných rolí Azure, které zahrnují společné sady oprávnění používané pro přístup k Service Bus entitám, a můžete také definovat vlastní role pro přístup k datům.
 
 Když je role RBAC přiřazená k objektu zabezpečení Azure AD, poskytuje Azure přístup k těmto prostředkům pro daný objekt zabezpečení. Přístup může být vymezen na úrovni předplatného, skupiny prostředků nebo oboru názvů Service Bus. Objekt zabezpečení Azure AD může být uživatelem, skupinou, instančním objektem služby nebo [spravovanou identitou pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md).
 
-## <a name="built-in-rbac-roles-for-azure-service-bus"></a>Předdefinované role RBAC pro Azure Service Bus
-Pro Azure Service Bus už je Správa oborů názvů a všech souvisejících prostředků prostřednictvím Azure Portal a rozhraní API pro správu prostředků Azure chráněná pomocí modelu *řízení přístupu na základě role* (RBAC). Azure poskytuje níže vestavěné role RBAC pro autorizaci přístupu k oboru názvů Service Bus:
+## <a name="azure-built-in-roles-for-azure-service-bus"></a>Předdefinované role Azure pro Azure Service Bus
+Pro Azure Service Bus už je Správa oborů názvů a všech souvisejících prostředků prostřednictvím Azure Portal a rozhraní API pro správu prostředků Azure chráněná pomocí modelu *řízení přístupu na základě role* (RBAC). Azure poskytuje následující předdefinované role Azure pro autorizaci přístupu k oboru názvů Service Bus:
 
 - [Azure Service Bus vlastník dat](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner): povoluje přístup k datům Service Bus oboru názvů a jeho entit (fronty, témata, odběry a filtry).
 - [Azure Service Bus odesílatel dat](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender): Tato role slouží k poskytnutí přístupu pro přístup k oboru názvů Service Bus a jeho entitám.

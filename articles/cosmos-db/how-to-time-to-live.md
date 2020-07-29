@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 03/27/2020
 ms.author: anfeldma
-ms.openlocfilehash: bbddcb8627c78544d603e1ea3ca33bc410419da1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d145892c1fa0d71b462c5aab42ba89685d7a91a9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263618"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282292"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Konfigurace času na živé v Azure Cosmos DB
 
@@ -21,7 +21,7 @@ V Azure Cosmos DB můžete nastavit hodnotu TTL (Time to Live) na úrovni kontej
 
 Pomocí následujících kroků můžete povolit dobu provozu na kontejneru bez vypršení platnosti. Tuto možnost povolte, pokud chcete, aby hodnota TTL mohla být přepsána na úrovni položky. Hodnotu TTL můžete nastavit také zadáním nenulové hodnoty pro sekundy.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 2. Vytvořte nový účet Azure Cosmos nebo vyberte existující účet.
 
@@ -143,7 +143,7 @@ await client.GetDatabase("database").CreateContainerAsync(new ContainerPropertie
 {
     Id = "container",
     PartitionKeyPath = "/myPartitionKey",
-    DefaultTimeToLive = 90 * 60 * 60 * 24; // expire all documents after 90 days
+    DefaultTimeToLive = 90 * 60 * 60 * 24 // expire all documents after 90 days
 });
 ```
 ---
@@ -205,7 +205,7 @@ Kromě nastavení výchozí hodnoty TTL (Time to Live) na kontejneru můžete na
 
 Chcete-li povolit dobu provozu na položce, použijte následující postup:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 2. Vytvořte nový účet Azure Cosmos nebo vyberte existující účet.
 

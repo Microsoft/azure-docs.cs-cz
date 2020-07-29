@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af82a9d19f8dee9062d15a58e83ee3c2a8c59af6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a2830db6132e665d3f876a535fb645e936971b2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83995424"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283057"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>Podmíněný přístup: vyžadovat MFA pro správce
 
@@ -65,9 +66,9 @@ Následující kroky vám pomůžou vytvořit zásadu podmíněného přístupu,
       * Správce SharePointu
       * Správce uživatelů
    1. V části **vyloučit**vyberte **Uživatelé a skupiny** a zvolte účty pro nouzový přístup nebo rozklad vaší organizace. 
-   1. Vyberte **Done** (Hotovo).
+   1. Vyberte **Hotovo**.
 1. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **všechny cloudové aplikace**a vyberte **Hotovo**.
-1. V části **podmínky**  >  **klientské aplikace (Preview)** nastavte **Konfigurovat** na **Ano**a vyberte **Hotovo**.
+1. V části **podmínky**  >  **klientské aplikace (Preview)** v části **Vyberte klientské aplikace, na které se bude tato zásada vztahovat, aby** se vybrala všechna výchozí nastavení a vyberte **Hotovo**.
 1. V části **řízení přístupu**  >  **udělení**přístupu vyberte **udělit přístup**, **vyžadovat vícefaktorové ověřování**a vyberte **Vybrat**.
 1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
 1. Vyberte **vytvořit** a vytvořte tak, aby se zásady povolily.

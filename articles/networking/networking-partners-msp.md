@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: sukishen
-ms.openlocfilehash: d9a8b44cc6e78eda4a3e0b18d59d2372e7129c05
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 69129ad0ecda6b5893a5f758b8cac9a30dd0b093
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124169"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282105"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Informace o sítích Azure pro síťové služby MSP
 
@@ -40,6 +40,7 @@ Odkazy v této části použijte, pokud chcete získat další informace o služ
 |[NTT data](https://us.nttdata.com/en/digital/cloud-transformation)|[Spravované služby: implementace po deseti týdnech](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/nttdata-2932930.managed_service)|||||
 |[Equinix](https://www.equinix.com/)|[Cloudově optimalizovaná síť WAN Workshop](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/equinix.cloudoptimizedwan?tab=Overview)|[ExpressRoute strategie připojení – Workshop](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/equinix.expressroutestrategy?tab=Overview)||||
 |[IIJ](https://www.iij.ad.jp/biz/cloudex/)|[Implementace ExpressRoute: 1-Přehled lidských zdrojů](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/internet_initiative_japan_inc.iij_cxm_consulting)|[ExpressRoute: 2 – implementace týden](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/internet_initiative_japan_inc.iij_cxmer_consulting)||||
+|[Federované bezdrátové sítě](https://www.federatedwireless.com/caas/)||||[Federované bezdrátové připojení jako služba](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/federatedwireless1580839623708.fw_caas?tab=Overview)|
 |[Infosys](https://www.infosys.com/services/microsoft-cloud-business/pages/index.aspx)|[Infosys Integration + pro Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/infosysltd.infosys-integrate-for-azure?tab=Overview)|||||
 |[Interxion](https://www.interxion.com/products/interconnection/cloud-connect/support-your-cloud-strategy/)|[Posouzení sítě Azure – 5 dní](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/interxionhq.inxn_azure_networking_assessment)|||||
 |[Liquid Telecom](https://liquidcloud.africa/azure-networking)|[Připravenost na Cloud – hodnocení 2 hodin](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/liquidtelecommunicationsoperationslimited.liquid_cloud_readiness_assessment)|||||
@@ -54,7 +55,7 @@ Odkazy v této části použijte, pokud chcete získat další informace o služ
 |[Ostražití](https://vigilant.it/manage-cloud-service/)|[Kontroly stavu Azure: 5 dní posouzení](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[ExpressRoute: 5 dní implementace](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
 |[Vandis](https://www.vandis.com/microsoft-azure-practice/)||[Vandis spravované ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[Vandis spravované VWAN využívající Fortinet](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview); [Vandis spravované VWAN využívající Palo Alto Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview)|
 
-K dispozici jsou Azure Marketplace nabídky pro spravované služby ExpressRoute, Virtual WAN, služby zabezpečení a soukromé hraniční zóny od následujících partnerů Azure pro síťové rozhraní MSP: [Amdocs](https://www.amdocs.com/);  [Německý Telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406);  [IX dosáhnou](https://www.ixreach.com/services/sdn-cloud-connect/);  Pro [Cloud](https://intercloud.com/partners/microsoft-azure/);  [KINX](https://www.kinx.net/service/cloud/?lang=en); [OmniClouds](https://omniclouds.com/);  [Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms); [Federované bezdrátové sítě](https://www.federatedwireless.com/caas/)
+K dispozici jsou Azure Marketplace nabídky pro spravované služby ExpressRoute, Virtual WAN, služby zabezpečení a soukromé hraniční zóny od následujících partnerů Azure pro síťové rozhraní MSP: [Amdocs](https://www.amdocs.com/);  [Německý Telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406);  [IX dosáhnou](https://www.ixreach.com/services/sdn-cloud-connect/);  Pro [Cloud](https://intercloud.com/partners/microsoft-azure/);  [KINX](https://www.kinx.net/service/cloud/?lang=en); [OmniClouds](https://omniclouds.com/);  [Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms);
 
 ## <a name="expressroute-partners"></a><a name="expressroute"></a>Partneři ExpressRoute
 
