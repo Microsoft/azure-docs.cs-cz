@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 04/27/2020
-ms.openlocfilehash: 3559ae5c246129aa369cb49e7749e499002f1dc6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/27/2020
+ms.openlocfilehash: 873f0d7d2aa4493e77a10f62b0646f4f8233f6b9
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87048179"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337836"
 ---
 # <a name="execute-r-script-module"></a>Spustit modul skriptu R
 
@@ -119,6 +119,22 @@ Po dokončení spuštění kanálu můžete zobrazit náhled obrázku v pravém 
 > [!div class="mx-imgBorder"]
 > ![Náhled nahraného obrázku](media/module/upload-image-in-r-script.png)
 
+## <a name="access-to-registered-dataset"></a>Přístup k registrované datové sadě
+
+Můžete se podívat na následující vzorový kód pro [přístup k registrovaným datovým sadám](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets#access-datasets-in-your-script) v pracovním prostoru:
+
+```R
+        azureml_main <- function(dataframe1, dataframe2){
+  print("R script run.")
+  run = get_current_run()
+  ws = run$experiment$workspace
+  dataset = azureml$core$dataset$Dataset$get_by_name(ws, "YOUR DATASET NAME")
+  dataframe2 <- dataset$to_pandas_dataframe()
+  # Return datasets as a Named List
+  return(list(dataset1=dataframe1, dataset2=dataframe2))
+}
+```
+
 ## <a name="how-to-configure-execute-r-script"></a>Jak nakonfigurovat skript spouštěný v jazyce R
 
 Modul spuštění skriptu jazyka R obsahuje vzorový kód, který můžete použít jako výchozí bod. Pokud chcete nakonfigurovat modul skriptu Run R, poskytněte sadu vstupů a kódů, které se mají spustit.
@@ -177,6 +193,25 @@ Datové sady uložené v návrháři se při načtení s tímto modulem automati
  
     > [!NOTE]
     > Existující kód R může vyžadovat drobné změny ke spuštění v kanálu návrháře. Například vstupní data, která zadáte ve formátu CSV, by měla být explicitně převedena na datovou sadu, aby ji bylo možné použít ve svém kódu. Typy dat a sloupců používané v jazyce R se také liší v různých způsobech z dat a typů sloupců použitých v návrháři.
+
+    Pokud je váš skript větší než 16 KB, použijte port **sady skriptu** , aby se předešlo chybám, jako *je příkazový řádek, který překračuje limit 16597 znaků*. 
+    
+    Vytvořte balíček skriptu a dalších vlastních prostředků do souboru zip a odešlete soubor ZIP jako **datovou sadu** do studia. Pak můžete modul DataSet přetáhnout ze seznamu *Moje datové sady* v levém podokně modulu na stránce vytváření návrháře. Připojte modul DataSet k portu **skriptu** sady **spouštěného modulu R Script** .
+    
+    Následuje ukázkový kód pro využití skriptu ve skriptovém svazku:
+
+    ```R
+    azureml_main <- function(dataframe1, dataframe2){
+    # Source the custom R script: my_script.R
+    source("./Script Bundle/my_script.R")
+
+    # Use the function that defined in my_script.R
+    dataframe1 <- my_func(dataframe1)
+
+    sample <- readLines("./Script Bundle/my_sample.txt")
+    return (list(dataset1=dataframe1, dataset2=data.frame("Sample"=sample)))
+    }
+    ```
 
 1.  V případě **náhodného osazení**zadejte hodnotu, která se má použít v prostředí jazyka R, jako náhodná hodnota počáteční hodnoty. Tento parametr je ekvivalentní volání `set.seed(value)` v kódu R.  
 

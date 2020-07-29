@@ -13,12 +13,12 @@ ms.date: 05/19/2020
 ms.author: hirsin
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 1478ee1396390e26d333230b0254578ec748ef6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc93f4062851f01dd127c108ca60bc240a1940e6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477256"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311751"
 ---
 # <a name="handle-itp-in-safari-and-other-browsers-where-third-party-cookies-are-blocked"></a>Zpracování ITP v Safari a dalších prohlížečích, kde jsou soubory cookie třetích stran blokované
 
@@ -46,7 +46,7 @@ V případě platformy Microsoft Identity Platform jednostránkové a nativních
 
 Jednostránkové mají dvě další omezení:
 
-* [Identifikátor URI pro přesměrování musí být označený jako `spa` typ](v2-oauth2-auth-code-flow.md#setup-required-for-single-page-apps) . Pokud chcete povolit CORS u koncových bodů přihlášení.
+* [Identifikátor URI pro přesměrování musí být označený jako `spa` typ](v2-oauth2-auth-code-flow.md#redirect-uri-setup-required-for-single-page-apps) . Pokud chcete povolit CORS u koncových bodů přihlášení.
 * Aktualizace tokenů vydaných prostřednictvím toku autorizačního kódu pro `spa` přesměrování identifikátorů URI má 24hodinový čas, nikoli 90 dní.
 
 ![Tok kódu pro aplikace SPA](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)

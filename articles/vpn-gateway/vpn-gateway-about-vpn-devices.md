@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 07/13/2020
+ms.date: 07/28/2020
 ms.author: yushwang
-ms.openlocfilehash: 86f040ab4735276e77d537f65130ae125c4757e6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4a4214e89b72ba3b782a8b141203ac0f4bbca635
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086944"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367721"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>O zařízeních VPN a o parametrech protokolu IPsec/IKE pro připojení typu Site-to-Site ke službě VPN Gateway
 
@@ -66,7 +66,8 @@ Informace o konfiguraci zařízení VPN najdete v odkazech odpovídajících př
 | SonicWall |Řada TZ, řada NSA<br>Řada SuperMassive<br>Řada E-Class NSA |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |Není kompatibilní |[Průvodce konfigurací](https://www.sonicwall.com/support/knowledge-base/170505320011694) |
 | Sophos | XG Next Gen Firewall | XG v17 | (netestováno) | [Průvodce konfigurací](https://community.sophos.com/kb/127546)<br><br>[Průvodce konfigurací – vícenásobné SAs](https://community.sophos.com/kb/en-us/133154) |
 | Synology | MR2200ac <br>RT2600ac <br>RT1900ac | SRM 1.1.5/VpnPlusServer-1.2.0 | (netestováno) | [Průvodce konfigurací](https://www.synology.com/en-global/knowledgebase/SRM/tutorial/VPN/How_to_set_up_Site_to_Site_VPN_between_Synology_Router_and_MS_Azure) |
-| Ubiquiti | EdgeRouter | EdgeOS v 1.10 | (netestováno) | [BGP přes IKEv2/IPsec](https://help.ubnt.com/hc/en-us/articles/115012374708)<br><br>[VTI přes IKEv2/IPsec](https://help.ubnt.com/hc/en-us/articles/115012305347)
+| Ubiquiti | EdgeRouter | EdgeOS v 1.10 | (netestováno) | [BGP přes IKEv2/IPsec](https://help.ubnt.com/hc/en-us/articles/115012374708)<br><br>[VTI přes IKEv2/IPsec](https://help.ubnt.com/hc/en-us/articles/115012305347) |
+| Extrémně | 3E – 636L3 | 5.2.0. T3 – sestavení – 13  | (netestováno) | [Průvodce konfigurací](https://ultra-3eti.com/wp-content/uploads/2020/07/Azure-VPN-636L3-Site-to-Site-Test-Notes.pdf) |
 | WatchGuard |Vše |Fireware XTM<br> PolicyBased: v11.11.x<br>RouteBased: v11.12.x |[Průvodce konfigurací](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[Průvodce konfigurací](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
 | Zyxel |ZyWALL USG Series<br>Série ATP ZyWALL<br>ZyWALL Series VPN | ZLD v 4.32 + | (netestováno) | [VTI přes IKEv2/IPsec](https://businessforum.zyxel.com/discussion/2648/)<br><br>[BGP přes IKEv2/IPsec](https://businessforum.zyxel.com/discussion/2650/)|
 
@@ -143,7 +144,7 @@ V následujících tabulkách:
 | Algoritmy šifrování a hash |1. AES256, SHA256<br>2. AES256, SHA1<br>3. AES128, SHA1<br>4. 3DES, SHA1 |[Nabídky RouteBased QM SA](#RouteBasedOffers) |
 | Životnost SA (čas)            |3 600 sekund  |27 000 sekund                               |
 | Životnost SA (bajty)           |102 400 000 kB |102 400 000 kB                               |
-| Metoda Perfect Forward Secrecy (PFS) |No             |[Nabídky RouteBased QM SA](#RouteBasedOffers) |
+| Metoda Perfect Forward Secrecy (PFS) |Ne             |[Nabídky RouteBased QM SA](#RouteBasedOffers) |
 | Detekce mrtvých partnerských zařízení (DPD)     |Nepodporováno  |Podporováno                                    |
 
 
@@ -153,7 +154,7 @@ Následující tabulka uvádí nabídky IPsec SA (rychlý režim IKE). Nabídky 
 
 #### <a name="azure-gateway-as-initiator"></a>Služba Azure Gateway jako iniciátor
 
-|-  |**Šifrování**|**Ověřování**|**Skupina PFS**|
+|-  |**Šifrování**|**Authentication**|**Skupina PFS**|
 |---| ---          |---               |---          |
 | 1 |GCM AES256    |GCM (AES256)      |Žádné         |
 | 2 |AES256        |SHA1              |Žádné         |
@@ -164,7 +165,7 @@ Následující tabulka uvádí nabídky IPsec SA (rychlý režim IKE). Nabídky 
 
 #### <a name="azure-gateway-as-responder"></a>Služba Azure Gateway jako respondér
 
-|-  |**Šifrování**|**Ověřování**|**Skupina PFS**|
+|-  |**Šifrování**|**Authentication**|**Skupina PFS**|
 |---| ---          | ---              |---          |
 | 1 |GCM AES256    |GCM (AES256)      |Žádné         |
 | 2 |AES256        |SHA1              |Žádné         |

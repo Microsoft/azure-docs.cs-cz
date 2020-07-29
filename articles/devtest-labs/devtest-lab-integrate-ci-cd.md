@@ -3,12 +3,12 @@ title: Integrace Azure DevTest Labs do Azure Pipelines
 description: Naučte se integrovat Azure DevTest Labs do Azure Pipelines nepřetržité integrace a kanálu pro doručování.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 080577a74a1cb168453c6a027d77ae395072ccc1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 96f99d41d0a7ea07bf3854292f9c3bd6245414b3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85480571"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288921"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-pipelines-cicd-pipeline"></a>Integrace Azure DevTest Labs do kanálu CI/CD Azure Pipelines
 
@@ -109,7 +109,7 @@ Přidání proměnných pro hodnoty:
    
 1. Pro každou proměnnou vyberte **Přidat** a zadejte název a hodnotu:
    
-   |Name|Hodnota|
+   |Název|Hodnota|
    |---|---|
    |*vmName*|Název virtuálního počítače, který jste přiřadili v šabloně Správce prostředků|
    |*Jmen*|Uživatelské jméno pro přístup k virtuálnímu počítači|
@@ -218,5 +218,5 @@ Vlastní image můžete použít k vytvoření virtuálních počítačů, kdyko
 ## <a name="next-steps"></a>Další kroky
 - Naučte [se vytvářet prostředí s několika virtuálními počítači pomocí šablon Správce prostředků](devtest-lab-create-environment-from-arm.md).
 - Prozkoumejte další šablony Správce prostředků pro rychlý Start pro automatizaci DevTest Labs z [úložiště GitHub veřejné DevTest Labs](https://github.com/Azure/azure-quickstart-templates).
-- V případě potřeby si přečtěte stránku [řešení potíží s Azure DevOps](https://docs.microsoft.com/azure/devops/pipelines/troubleshooting) .
+- V případě potřeby si přečtěte stránku [řešení potíží s Azure DevOps](/azure/devops/pipelines/troubleshooting) .
  

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: 94724ea44b52ae885594fe55b67d74a03e339dab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 723c30856593044c91220b4e3ab267ab140c5ffd
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012857"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87366923"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Podnikové zabezpečení pro Azure Machine Learning
 
@@ -26,7 +26,7 @@ Když použijete cloudovou službu, osvědčeným postupem je omezit přístup j
 > [!NOTE]
 > Informace v tomto článku jsou v sadě Azure Machine Learning Python SDK verze 1.0.83.1 nebo vyšší.
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 Služba Multi-Factor Authentication je podporovaná, pokud je služba Azure Active Directory (Azure AD) nakonfigurovaná tak, aby ji používala. Toto je proces ověřování:
 
@@ -75,7 +75,7 @@ V následující tabulce jsou uvedené některé hlavní operace Azure Machine L
 | Zobrazení modelů a imagí | ✓ | ✓ | ✓ |
 | Volání webové služby | ✓ | ✓ | ✓ |
 
-Pokud předdefinované role nevyhovují vašim potřebám, můžete vytvořit vlastní role. Vlastní role se podporují jenom pro operace v pracovním prostoru a Výpočetní prostředky služby Machine Learning. Vlastní role mohou mít oprávnění číst, zapisovat nebo odstranit v pracovním prostoru a výpočetní prostředky v daném pracovním prostoru. Role může být dostupná na konkrétní úrovni pracovního prostoru, na konkrétní úrovni skupiny prostředků nebo na konkrétní úrovni předplatného. Další informace najdete v tématu [Správa uživatelů a rolí v pracovním prostoru Azure Machine Learning](how-to-assign-roles.md).
+Pokud předdefinované role nevyhovují vašim potřebám, můžete vytvořit vlastní role. Vlastní role se podporují pro řízení všech operací v pracovním prostoru, jako je vytváření výpočetních prostředků, odeslání běhu, registrace úložiště dat nebo nasazení modelu. Vlastní role můžou mít oprávnění ke čtení, zápisu a odstraňování různých prostředků pracovního prostoru, jako jsou clustery, úložiště dat, modely a koncové body. Role může být dostupná na konkrétní úrovni pracovního prostoru, na konkrétní úrovni skupiny prostředků nebo na konkrétní úrovni předplatného. Další informace najdete v tématu [Správa uživatelů a rolí v pracovním prostoru Azure Machine Learning](how-to-assign-roles.md).
 
 > [!WARNING]
 > Azure Machine Learning se podporuje při spolupráci Azure Active Directory Business-to-Business, ale v současné době se nepodporují u Azure Active Directory spolupráce od firmy po spotřebitele.
@@ -154,10 +154,6 @@ Pokud chcete k šifrování instance Azure Cosmos DB použít vlastní klíče (
 Pokud chcete ve svém předplatném povolit zřizování Cosmos DB instance pomocí klíčů spravovaných zákazníkem, proveďte následující akce:
 
 * Zaregistrujte poskytovatele prostředků Microsoft. MachineLearning a Microsoft.DocumentDB v rámci vašeho předplatného, pokud to ještě neudělalo.
-
-* Autorizaci aplikace Machine Learning (v části Správa identit a přístupu) s oprávněními přispěvatele v předplatném.
-
-    ![Autorizovat Azure Machine Learning App na portálu pro správu identit a přístupu](./media/concept-enterprise-security/authorize-azure-machine-learning.png)
 
 * Při vytváření pracovního prostoru Azure Machine Learning použijte následující parametry. Oba parametry jsou povinné a podporují se v šablonách SDK, CLI, REST API a Správce prostředků.
 

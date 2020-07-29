@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: rajosh
-ms.openlocfilehash: 8c06365531a4977b6b792e136e515b5b56c2c930
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b2917c10e13f110d7ac9784da16a10fc61eb9298
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110024"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288865"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a>Vytvoření posouzení řešení Azure VMware (AVS)
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jak vytvořit vyhodnocení řešení Azure VMware (AVS)
 
 - Ujistěte se, že jste [vytvořili](how-to-add-tool-first-time.md) projekt Azure Migrate.
 - Pokud jste již vytvořili projekt, ujistěte se, že jste [přidali](how-to-assess.md) Azure Migrate: nástroj Server Assessment Tool.
-- Chcete-li vytvořit posouzení, je třeba nastavit zařízení Azure Migrate pro [VMware](how-to-set-up-appliance-vmware.md), které zjišťuje místní počítače a odesílá data o metadatech a výkonu do Azure Migrate: posouzení serveru. [Další informace](migrate-appliance.md).
+- Chcete-li vytvořit posouzení, je třeba nastavit zařízení Azure Migrate pro [VMware](how-to-set-up-appliance-vmware.md), které zjišťuje místní počítače a odesílá data o metadatech a výkonu do Azure Migrate: posouzení serveru. [Přečtěte si další informace](migrate-appliance.md).
 - [Metadata serveru](tutorial-assess-import.md) můžete také importovat ve formátu hodnot oddělených čárkami (CSV).
 
 
@@ -111,7 +111,7 @@ Posouzení řešení Azure VMware (AVS) popisuje:
 
 3. Projděte si navrhovaný nástroj:
     - **VMware HCX nebo Enterprise**: pro počítače VMware je řešení Azure Hybrid Cloud Extension (HCX) navrhovaným nástrojem pro migraci, který vaše místní úlohy migruje do privátního cloudu řešení Azure VMware (AVS). [Další informace](../azure-vmware/hybrid-cloud-extension-installation.md)
-    - **Neznámé**: u počítačů importovaných prostřednictvím souboru CSV není výchozí nástroj pro migraci známý. Ale u počítačů VMware je navrženo použití řešení VMWare Hybrid Cloud Extension (HCX). 
+    - **Neznámý:** V případě počítačů importovaných prostřednictvím souboru CSV je výchozí nástroj pro migraci neznámý. Ale u počítačů VMware je navrženo použití řešení VMware Hybrid Cloud Extension (HCX). 
 
 4. Klikněte na stav **připravenosti na AVS** . Můžete si prohlédnout podrobnosti připravenosti na virtuální počítač a přejít k podrobnostem, kde najdete podrobnosti o virtuálním počítači, včetně výpočetních prostředků, úložiště a nastavení sítě.
 

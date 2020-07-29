@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 07/24/2020
 ms.author: aahi
-ms.openlocfilehash: 17582244aef173da6ac700c980f7bd7fb0fec307
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e6b90e17c96f7636fa509e31354f9413b312803f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81383082"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289037"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Nejčastější dotazy ke kontejnerům služby Speech Service (FAQ)
 
@@ -30,7 +30,7 @@ Pokud používáte službu Speech s kontejnery, využijte tuto kolekci nejčast�
 
 **Odpověď:** Při nastavování produkčního clusteru je potřeba zvážit několik věcí. První, nastavení jednoho jazyka, více kontejnerů, na stejném počítači by nemělo být velký problém. Pokud dochází k potížím, může se jednat o problém související s hardwarem, takže se nejprve podíváme na zdroj, tj. Specifikace procesoru a paměti.
 
-Vezměte v úvahu okamžik, `ja-JP` kontejner a poslední model. Akustický model je nejnáročnějším PROCESORem, zatímco model jazyka vyžaduje nejvíce paměti. Když jsme používali srovnávací testy, při zpracování zvuku v reálném čase (například z mikrofonu) bere v souvislosti s 0,6 PROCESORovým jádrům zpracování jediné žádosti o převod řeči na text. Pokud budete zvuk podávat rychleji než v reálném čase (například ze souboru), může toto využití zdvojnásobit (1,2 × jader). Níže uvedené množství paměti je provozní paměť pro dekódování řeči. Nebere *v úvahu skutečnou* úplnou velikost jazykového modelu, který se nachází v souborové mezipaměti. `ja-JP` To je další 2 GB. `en-US`může to být více (6-7 GB).
+Vezměte v úvahu okamžik, `ja-JP` kontejner a poslední model. Akustický model je nejnáročnějším PROCESORem, zatímco model jazyka vyžaduje nejvíce paměti. Když jsme používali srovnávací testy, při zpracování zvuku v reálném čase (například z mikrofonu) bere v souvislosti s 0,6 PROCESORovým jádrům zpracování jediné žádosti o převod řeči na text. Pokud budete zvuk podávat rychleji než v reálném čase (například ze souboru), může toto využití zdvojnásobit (1,2 × jader). Níže uvedené množství paměti je provozní paměť pro dekódování řeči. Nebere *v úvahu skutečnou* úplnou velikost jazykového modelu, který se nachází v souborové mezipaměti. To `ja-JP` je další 2 GB. `en-US` může to být více (6-7 GB).
 
 Pokud máte počítač, ve kterém je paměť omezených a pokoušíte se do něj nasadit více jazyků, je možné, že je mezipaměť souborů plná a operační systém je nucen k vynechání modelů stránek a. Pro spuštění přepisu, které by mohlo být katastrofální důsledky a může vést k zpomalení a dalším dopadům na výkon.
 
@@ -49,16 +49,16 @@ Nakonec můžete nastavit počet dekodérů, které chcete v *jednom* kontejneru
 
 <details>
 <summary>
-<b>Mohli byste pomáhat s plánováním kapacity a odhadem nákladů na premch kontejnerů řeči?</b>
+<b>Mohli byste pomáhat s plánováním kapacity a odhadem nákladů na kontejnery Prem řeči na text?</b>
 </summary>
 
 **Odpověď:** V případě kapacity kontejneru v režimu dávkového zpracování by každý dekodér mohl zvládnout 2 – 3x v reálném čase se dvěma jádry PROCESORU pro jedno rozpoznání. Nedoporučujeme udržovat pro jednu instanci kontejneru více než dva souběžné rozpoznávání, ale doporučujeme spouštět více instancí kontejnerů z důvodů spolehlivosti/dostupnosti za nástrojem pro vyrovnávání zatížení.
 
-I když můžeme mít každou instanci kontejneru spuštěnou s dalšími dekodéry. V osmi základních počítačích může být například možné nastavit 7 dekodérů na instanci kontejneru (při více než dvojnásobku každého), což vede k 15x propustnosti. Existuje parametr `DECODER_MAX_COUNT` , na který je třeba vědět. V případě problémů s vysokým případem, spolehlivosti a latence dojde k výraznému nárůstu propustnosti. V případě mikrofonu se bude nacházet v čase 1x v reálném čase. Celkové využití by mělo být v souvislosti s jedním jádrem pro jedno rozpoznávání.
+I když můžeme mít každou instanci kontejneru spuštěnou s dalšími dekodéry. V osmi základních počítačích může být například možné nastavit 7 dekodérů na instanci kontejneru (při více než dvojnásobku každého), což vede k 15x propustnosti. Existuje parametr, `DECODER_MAX_COUNT` na který je třeba vědět. V případě problémů s vysokým případem, spolehlivosti a latence dojde k výraznému nárůstu propustnosti. V případě mikrofonu se bude nacházet v čase 1x v reálném čase. Celkové využití by mělo být v souvislosti s jedním jádrem pro jedno rozpoznávání.
 
 Scénář zpracování 1 K hodinám za den v režimu dávkového zpracování v extrémním případě by mohl tyto 3 virtuální počítače zpracovat během 24 hodin, ale nezaručuje se jim. Pro řízení dní špičky, převzetí služeb při selhání, aktualizace a zajištění minimálního zálohování/BCP doporučujeme 4-5 počítačů místo 3 na cluster a s 2 + clustery.
 
-V případě hardwaru používáme jako referenci standardní `DS13_v2` virtuální počítač Azure (každý jádro musí být 2,6 GHz nebo vyšší, přičemž je povolená sada instrukcí AVX2).
+V případě hardwaru používáme jako referenci standardní virtuální počítač Azure `DS13_v2` (každý jádro musí být 2,6 GHz nebo vyšší, přičemž je povolená sada instrukcí AVX2).
 
 | Instance  | vCPU (celkem) | Paměť RAM    | Dočasné úložiště | Průběžné platby s AHB | Rezerva na 1 rok s AHB (úspory v%) | za 3 roky rezervované s AHB (úspory v%) |
 |-----------|---------|--------|--------------|------------------------|-------------------------------------|--------------------------------------|
@@ -97,7 +97,7 @@ Náklady na údržbu placené Microsoftu závisí na úrovni služby a obsahu sl
 
 **Odpověď:** V `speech_recognition_language=<YOUR_LANGUAGE>` případě, že klient používá klienta, musí být explicitně nakonfigurován v žádosti.
 
-Příklad:
+Například:
 
 ```python
 if not recognize_once(
@@ -168,7 +168,7 @@ StatusCode: InvalidArgument,
 Details: Voice does not match.
 ```
 
-**Odpověď 2:** V požadavku musíte zadat správný název hlasu, což rozlišuje velká a malá písmena. Přečtěte si úplné mapování názvu služby. Je nutné použít `en-US-JessaRUS`, protože `en-US-JessaNeural` není nyní k dispozici ve verzi kontejneru převodu textu na řeč.
+**Odpověď 2:** V požadavku musíte zadat správný název hlasu, což rozlišuje velká a malá písmena. Přečtěte si úplné mapování názvu služby. Je nutné použít `en-US-JessaRUS` , protože není `en-US-JessaNeural` nyní k dispozici ve verzi kontejneru převodu textu na řeč.
 
 **Chyba 3:**
 
@@ -301,7 +301,7 @@ Mohli byste vám pomáhat s plněním následujících metrik testu, včetně to
 - 1 koncový<sup>bod strany,</sup> který je v kontejneru.
 - <sup>1 koncový</sup> bod koncového bodu vrací Speech. fragment zprávy namísto `speech.hypothesis` zpráv. 3 koncové body částí<sup>vzdálené plochy</sup> se vrátí pro koncový bod diktování.
 - Uhlí Starter všechny použití `RecognizeOnce` (interaktivní režim)
-- Uhlík s kontrolním výrazem `speech.fragment` , který pro zprávy vyžadující, že nejsou vraceny v interaktivním režimu.
+- Uhlík s kontrolním výrazem, který pro `speech.fragment` zprávy vyžadující, že nejsou vraceny v interaktivním režimu.
 - Uhlík, který má kontrolní výraz v sestavení vydaných verzí (ukončuje se proces)
 
 Alternativní řešení je buď přepnout na použití průběžného rozpoznávání v kódu, nebo (rychlejší) připojit se k interaktivním nebo souvislým koncovým bodům v kontejneru.
@@ -366,7 +366,7 @@ V mém aktuálním plánu si můžete vzít existující zvukový soubor a rozd�
 
 V dokumentu se říká, jak vystavit jiný port, který mám dělat, ale kontejner LUIS pořád naslouchá na portu 5000?
 
-**Odpověď:** Zkuste `-p <outside_unique_port>:5000`. Například, `-p 5001:5000`.
+**Odpověď:** Zkuste `-p <outside_unique_port>:5000` . Například, `-p 5001:5000`.
 
 
 <br>
@@ -376,10 +376,10 @@ V dokumentu se říká, jak vystavit jiný port, který mám dělat, ale kontejn
 
 <details>
 <summary>
-<b>Jak získám jiná než dávková rozhraní API pro zpracování &lt;zvuku 15 sekund?</b>
+<b>Jak získám jiná než dávková rozhraní API pro zpracování zvuku &lt; 15 sekund?</b>
 </summary>
 
-**Odpověď:** `RecognizeOnce()` v interaktivním režimu se jenom zpracovávají až 15 sekund, protože režim je určený pro příkazy řeči, u kterých se očekává, že projevy bude krátká. Pokud použijete `StartContinuousRecognition()` funkci pro diktování nebo konverzaci, není limit 15 sekund.
+**Odpověď:** `RecognizeOnce()` v interaktivním režimu se jenom zpracovávají až 15 sekund, protože režim je určený pro příkazy řeči, u kterých se očekává, že projevy bude krátká. Pokud použijete funkci `StartContinuousRecognition()` pro diktování nebo konverzaci, není limit 15 sekund.
 
 
 <br>
@@ -392,29 +392,29 @@ V dokumentu se říká, jak vystavit jiný port, který mám dělat, ale kontejn
 
 Kolik souběžných požadavků povede k 4 jádrům, 4 GB popisovače RAM? Pokud budeme muset zajišťovat například 50 souběžných požadavků, kolik jader a paměti RAM se doporučuje?
 
-**Odpověď:** V reálném čase 8 s naší nejnovější `en-US`, doporučujeme použít více kontejnerů Docker nad rámec 6 souběžných požadavků. Získá crazier nad 16 jádry a stane se neuniformní přístupem k paměti (NUMA), který je citlivý na uzel. Následující tabulka popisuje minimální a doporučené přidělení prostředků pro každý kontejner řeči.
+**Odpověď:** V reálném čase 8 s naší nejnovější `en-US` , doporučujeme použít více kontejnerů Docker nad rámec 6 souběžných požadavků. Získá crazier nad 16 jádry a stane se neuniformní přístupem k paměti (NUMA), který je citlivý na uzel. Následující tabulka popisuje minimální a doporučené přidělení prostředků pro každý kontejner řeči.
 
 # <a name="speech-to-text"></a>[Převod řeči na text](#tab/stt)
 
-| Kontejner      | Minimální             | Doporučené         |
+| Kontejner      | Minimum             | Doporučeno         |
 |----------------|---------------------|---------------------|
 | Převod řeči na text | 2 jádra, 2 GB paměti | 4 jádra, 4 GB paměti |
 
 # <a name="custom-speech-to-text"></a>[Custom Speech na text](#tab/cstt)
 
-| Kontejner             | Minimální             | Doporučené         |
+| Kontejner             | Minimum             | Doporučeno         |
 |-----------------------|---------------------|---------------------|
 | Custom Speech na text | 2 jádra, 2 GB paměti | 4 jádra, 4 GB paměti |
 
 # <a name="text-to-speech"></a>[Převod textu na řeč](#tab/tts)
 
-| Kontejner      | Minimální             | Doporučené         |
+| Kontejner      | Minimum             | Doporučeno         |
 |----------------|---------------------|---------------------|
 | Převod textu na řeč | 1 jádro, 2 GB paměti | 2 jádra, 3 GB paměti |
 
 # <a name="custom-text-to-speech"></a>[Vlastní převod textu na řeč](#tab/ctts)
 
-| Kontejner             | Minimální             | Doporučené         |
+| Kontejner             | Minimum             | Doporučeno         |
 |-----------------------|---------------------|---------------------|
 | Vlastní převod textu na řeč | 1 jádro, 2 GB paměti | 2 jádra, 3 GB paměti |
 
@@ -422,7 +422,7 @@ Kolik souběžných požadavků povede k 4 jádrům, 4 GB popisovače RAM? Pokud
 
 - Každé jádro musí mít aspoň 2,6 GHz nebo rychlejší.
 - V případě souborů se omezuje omezení v sadě Speech SDK na 2x (prvních 5 sekund zvukového zvuku se neomezuje).
-- Dekodér je schopný o 2 – 3x v reálném čase. V tomto případě bude celkové využití procesoru blízko dvou jader pro jedno rozpoznávání. Proto nedoporučujeme udržovat více než dvě aktivní připojení na jednu instanci kontejneru. Extrémní strana by měla být o 10 dekodérech v dvojnásobné reálné době v osmi základních počítačích, jako `DS13_V2`je. Pro kontejner verze 1,3 a novější je k dispozici parametr, který byste si mohli `DECODER_MAX_COUNT=20`zkusit nastavit.
+- Dekodér je schopný o 2 – 3x v reálném čase. V tomto případě bude celkové využití procesoru blízko dvou jader pro jedno rozpoznávání. Proto nedoporučujeme udržovat více než dvě aktivní připojení na jednu instanci kontejneru. Extrémní strana by měla být o 10 dekodérech v dvojnásobné reálné době v osmi základních počítačích, jako je `DS13_V2` . Pro kontejner verze 1,3 a novější je k dispozici parametr, který byste si mohli zkusit nastavit `DECODER_MAX_COUNT=20` .
 - V případě mikrofonu se bude nacházet v čase 1x v reálném čase. Celkové využití by mělo být v souvislosti s jedním jádrem pro jedno rozpoznávání.
 
 Vezměte v úvahu celkový počet hodin zvukového zvuku. Pokud je toto číslo velké, aby se zlepšila spolehlivost a dostupnost, doporučujeme, abyste spustili více instancí kontejnerů, a to buď v jednom poli, nebo ve více polích za nástrojem pro vyrovnávání zatížení. Orchestraci můžete provést pomocí Kubernetes (K8S) a Helm nebo pomocí Docker.
@@ -439,7 +439,7 @@ Například pro zpracování 1000 hodin za 24 hodin jsme zkusili nastavit virtu�
 
 **Odpověď:** V kontejneru on-Prem je k dispozici velká a malá písmena (vytvořené). Interpunkce je závislá na jazyku a není podporovaná pro některé jazyky, včetně čínských a japonských.
 
-Pro existující *kontejnery máme podporu* implicitních a základních interpunkčních znamének, ale ve výchozím nastavení `off` je to. To znamená, že můžete získat `.` znak v příkladu, ale ne `。` znak. Pokud chcete povolit tuto implicitní logiku, tady je příklad, jak to udělat v Pythonu pomocí naší sady Speech SDK (ta by byla podobná v jiných jazycích):
+Pro existující *kontejnery máme podporu* implicitních a základních interpunkčních znamének, ale `off` ve výchozím nastavení je to. To znamená, že můžete získat `.` znak v příkladu, ale ne `。` znak. Pokud chcete povolit tuto implicitní logiku, tady je příklad, jak to udělat v Pythonu pomocí naší sady Speech SDK (ta by byla podobná v jiných jazycích):
 
 ```python
 speech_config.set_service_property(
@@ -536,7 +536,7 @@ auto synthesizer = SpeechSynthesizer::FromConfig(config);
 auto result = synthesizer->SpeakTextAsync("{{{text2}}}").get();
 ```
 
- `SetSpeechSynthesisVoiceName` Funkce je volána, protože kontejnery s aktualizovaným modulem pro převod textu na řeč vyžadují hlasový název.
+ `SetSpeechSynthesisVoiceName`Funkce je volána, protože kontejnery s aktualizovaným modulem pro převod textu na řeč vyžadují hlasový název.
 
 <br>
 </details>
@@ -553,11 +553,11 @@ auto result = synthesizer->SpeakTextAsync("{{{text2}}}").get();
 Jsou určené pro různé účely a jsou používány odlišně.
 
 [Ukázky](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py)Pythonu:
-- Pro jednoduché rozpoznávání (interaktivní režim) s vlastním koncovým bodem (to znamená; `SpeechConfig` s parametrem koncového bodu) `speech_recognize_once_from_file_with_custom_endpoint_parameters()`, přečtěte si téma.
-- V případě nepřetržitého rozpoznávání (režimu konverzace) a pouhým úpravou použití vlastního koncového bodu, `speech_recognize_continuous_from_file()`který je uveden výše, přečtěte si téma.
-- Chcete-li povolit diktování v ukázkách, jako jsou výše (pouze pokud to opravdu potřebujete), `speech_config`hned po vytvoření `speech_config.enable_dictation()`přidejte kód.
+- Pro jednoduché rozpoznávání (interaktivní režim) s vlastním koncovým bodem (tj. `SpeechConfig` s parametrem koncového bodu) naleznete v tématu `speech_recognize_once_from_file_with_custom_endpoint_parameters()` .
+- V případě nepřetržitého rozpoznávání (režimu konverzace) a pouhým úpravou použití vlastního koncového bodu, který je uveden výše, přečtěte si téma `speech_recognize_continuous_from_file()` .
+- Chcete-li povolit diktování v ukázkách, jako jsou výše (pouze pokud to opravdu potřebujete), hned po vytvoření `speech_config` přidejte kód `speech_config.enable_dictation()` .
 
-V jazyce C# Chcete-li povolit diktování `SpeechConfig.EnableDictation()` , volejte funkci.
+V jazyce C# Chcete-li povolit diktování, volejte `SpeechConfig.EnableDictation()` funkci.
 
 ### <a name="fromendpoint-apis"></a>`FromEndpoint`Třídy
 | Jazyk | Podrobnosti rozhraní API |
@@ -593,14 +593,14 @@ V jazyce C# Chcete-li povolit diktování `SpeechConfig.EnableDictation()` , vol
 > Parametry: hostitel (povinný), klíč předplatného (volitelné, pokud můžete službu použít bez ní).
 
 Formát pro hostitele je `protocol://hostname:port` `:port` volitelné (viz níže):
-- Pokud je kontejner spuštěn místně, název hostitele je `localhost`.
+- Pokud je kontejner spuštěn místně, název hostitele je `localhost` .
 - Pokud je kontejner spuštěn na vzdáleném serveru, použijte název hostitele nebo adresu IPv4 tohoto serveru.
 
 Příklady parametrů hostitele pro převod řeči na text:
 - `ws://localhost:5000`– nezabezpečené připojení k místnímu kontejneru pomocí portu 5000
 - `ws://some.host.com:5000`– nezabezpečené připojení k kontejneru běžícímu na vzdáleném serveru
 
-Ukázky Pythonu výše, ale použijte `host` parametr místo `endpoint`:
+Ukázky Pythonu výše, ale použijte `host` parametr místo `endpoint` :
 
 ```python
 speech_config = speechsdk.SpeechConfig(host="ws://localhost:5000")

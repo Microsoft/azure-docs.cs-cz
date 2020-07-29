@@ -3,12 +3,12 @@ title: Jak chránit hierarchii prostředků – zásady správného řízení Az
 description: Naučte se chránit svoji hierarchii prostředků pomocí nastavení hierarchie, která zahrnují nastavení výchozí skupiny pro správu.
 ms.date: 05/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 50b5ba1bccf3d603b6d273892d0c903d433786f3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 2f8d3d7ff85552fe18a49137450aefe91d0d02c9
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127992"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87366768"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Jak chránit hierarchii prostředků
 
@@ -23,7 +23,7 @@ Konfigurace nastavení hierarchie vyžaduje následující dvě operace RBAC v k
 - `Microsoft.Management/managementgroups/settings/write`
 - `Microsoft.Management/managementgroups/settings/read`
 
-Tyto operace umožňují uživateli číst a aktualizovat nastavení hierarchie. Operace neposkytují žádný jiný přístup k hierarchii skupiny pro správu ani k prostředkům v hierarchii. Obě tyto operace jsou k dispozici v integrovaném **Správci nastavení hierarchie**rolí RBAC.
+Tyto operace umožňují uživateli číst a aktualizovat nastavení hierarchie. Operace neposkytují žádný jiný přístup k hierarchii skupiny pro správu ani k prostředkům v hierarchii. Obě tyto operace jsou k dispozici ve **Správci nastavení hierarchie**integrované role Azure.
 
 ## <a name="setting---default-management-group"></a>Nastavení – výchozí skupina pro správu
 

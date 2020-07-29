@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 05/01/2020
+ms.date: 07/24/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 8d6c9ab2bacf94b3a27bfd1de0189d8b89b5efaf
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: bf8fa174611c7173c957ded49ff9135f90cebc08
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129436"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287210"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Řešení potíží s Azure RBAC
 
@@ -52,6 +52,22 @@ $ras.Count
 ## <a name="problems-with-azure-role-assignments"></a>Problémy s přiřazením rolí Azure
 
 - Pokud nemůžete přidat přiřazení role v Azure Portal v **řízení přístupu (IAM)** , protože možnost **Přidat**  >  **přiřazení role přidání** je zakázaná nebo se zobrazí chyba oprávnění "klient s ID objektu nemá autorizaci k provedení akce", ověřte, že jste aktuálně přihlášení pomocí uživatele, kterému je přiřazena role s oprávněním, jako je `Microsoft.Authorization/roleAssignments/write` [vlastník](built-in-roles.md#owner) nebo [Správce přístupu uživatele](built-in-roles.md#user-access-administrator) v oboru, ke kterému se snažíte přiřadit roli.
+- Pokud k přiřazení rolí používáte instanční objekt, může se zobrazit chyba "nedostatečná oprávnění k dokončení operace". Řekněme například, že máte instanční objekt, kterému byla přiřazena role vlastníka, a pokusíte se vytvořit následující přiřazení role jako instanční objekt pomocí Azure CLI:
+
+    ```azurecli
+    az login --service-principal --username "SPNid" --password "password" --tenant "tenantid"
+    az role assignment create --assignee "userupn" --role "Contributor"  --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
+    ```
+
+    Pokud se zobrazí chybová zpráva "nedostatečná oprávnění k dokončení operace", je pravděpodobně způsobeno tím, že rozhraní příkazového řádku Azure se snaží vyhledat identitu nabyvatele v Azure AD a instanční objekt ve výchozím nastavení nemůže službu Azure AD přečíst.
+
+    Existují dva způsoby, jak potenciálně vyřešit tuto chybu. Prvním způsobem je přiřazení role [čtenáři adresáře](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) k instančnímu objektu, aby bylo možné číst data v adresáři. Můžete také udělit [adresář. číst. všechna oprávnění](https://docs.microsoft.com/graph/permissions-reference) v Microsoft Graph.
+
+    Druhým způsobem, jak tuto chybu vyřešit, je vytvořit přiřazení role pomocí `--assignee-object-id` parametru místo `--assignee` . Pomocí rozhraní `--assignee-object-id` příkazového řádku Azure CLI přeskočí vyhledávání Azure AD. Budete muset získat ID objektu uživatele, skupiny nebo aplikace, ke které chcete přiřadit roli. Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure CLI](role-assignments-cli.md#new-service-principal).
+
+    ```azurecli
+    az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
+    ```
 
 ## <a name="problems-with-custom-roles"></a>Potíže s vlastními rolemi
 

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 07/08/2020
-ms.openlocfilehash: fe0d3819701e062fa2253bc6dd0c3a28eaeaadfb
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 07/27/2020
+ms.openlocfilehash: 7f37a598c31f340e66437a6478512fad1f79121f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171107"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285947"
 ---
 # <a name="evaluate-model-module"></a>Vyhodnotit modul modelu
 
@@ -80,9 +80,9 @@ Následující metriky jsou hlášeny při vyhodnocování binárních klasifika
   
 -   **Přesnost** měření modelu klasifikace jako poměru skutečných výsledků do celkového počtu případů je dobrá.  
   
--   **Přesnost** je poměr skutečných výsledků pro všechny pozitivní výsledky.  
+-   **Přesnost** je poměr skutečných výsledků pro všechny pozitivní výsledky. Precision = TP/(TP + FP)  
   
--   **Odvolání** je zlomek všech správných výsledků vrácených modelem.  
+-   **Odvolání** je zlomek celkového množství relevantních instancí, které byly skutečně načteny. Odvolání = transakční/(TP + FN)  
   
 -   **Skóre F1** je vypočítáváno jako vážený průměr přesnosti a odvolání v rozmezí 0 až 1, kde ideální hodnota skóre F1 je 1.  
   

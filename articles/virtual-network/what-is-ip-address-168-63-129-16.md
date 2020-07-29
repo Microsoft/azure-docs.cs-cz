@@ -1,6 +1,6 @@
 ---
 title: Co je IP adresa 168.63.129.16? | Dokumentace Microsoftu
-description: Přečtěte si o 168.63.129.16 IP adres a o tom, jak funguje s vašimi prostředky.
+description: Přečtěte si o 168.63.129.16 IP adres, konkrétně o tom, jak se používá k usnadnění komunikačního kanálu k prostředkům platformy Azure.
 services: virtual-network
 documentationcenter: na
 author: genlin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/15/2019
 ms.author: genli
-ms.openlocfilehash: bae1fbc89564ca17938e6a630146be5e5fb5b11f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f0bfa693086a3a097df219132d696a1d04e6f56
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550857"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286032"
 ---
 # <a name="what-is-ip-address-1686312916"></a>Co je IP adresa 168.63.129.16?
 

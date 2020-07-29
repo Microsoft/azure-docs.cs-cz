@@ -4,12 +4,12 @@ description: Tento článek poskytuje pokyny pro řízení infrastruktury Azure 
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: cebc32edf78df1fa6a72876f8c8e5d23525942b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d86728eefc46c74b49ac610e2207ce5e7ae6a9d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481574"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289345"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Řízení Azure DevTest Labs infrastruktury – migrace a integrace aplikací
 Po navázání vývojového a testovacího prostředí je potřeba vzít v úvahu následující otázky:
@@ -50,14 +50,14 @@ Dodatečný faktor k poznámení je ale frekvence změn balíčku softwaru. Poku
 Jak můžu snadno opakovat a přenést vlastní organizační image do prostředí DevTest Labs?
 
 ### <a name="answer"></a>Odpověď
-Podívejte se [na toto video ve vzoru pro vytváření imagí](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/). Tento scénář je pokročilý scénář a poskytují se jenom ukázkové skripty. Pokud se vyžadují nějaké změny, budete muset spravovat a udržovat skripty používané ve vašem prostředí.
+Podívejte se [na toto video ve vzoru pro vytváření imagí](./devtest-lab-faq.md#blog-post). Tento scénář je pokročilý scénář a poskytují se jenom ukázkové skripty. Pokud se vyžadují nějaké změny, budete muset spravovat a udržovat skripty používané ve vašem prostředí.
 
 Použití DevTest Labs k vytvoření vlastního kanálu obrázků v Azure Pipelines:
 
-- [Úvod: Příprava virtuálních počítačů během několika minut nastavením objektu pro vytváření imagí v Azure DevTest Labs](https://blogs.msdn.microsoft.com/devtestlab/2016/09/14/introduction-get-vms-ready-in-minutes-by-setting-up-image-factory-in-azure-devtest-labs/)
-- [Továrna imagí – část 2! Nastavení Azure Pipelines a výrobního prostředí pro vytváření virtuálních počítačů](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
-- [Továrna obrázků – část 3: uložení vlastních imagí a distribuce do více cvičení](https://blogs.msdn.microsoft.com/devtestlab/2018/01/10/image-factory-part-3-save-custom-images-and-distribute-to-multiple-labs/)
-- [Video: vytváření vlastních imagí pomocí Azure DevTest Labs](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/)
+- [Úvod: Příprava virtuálních počítačů během několika minut nastavením objektu pro vytváření imagí v Azure DevTest Labs](./devtest-lab-faq.md#blog-post)
+- [Továrna imagí – část 2! Nastavení Azure Pipelines a výrobního prostředí pro vytváření virtuálních počítačů](./devtest-lab-faq.md#blog-post)
+- [Továrna obrázků – část 3: uložení vlastních imagí a distribuce do více cvičení](./devtest-lab-faq.md#blog-post)
+- [Video: vytváření vlastních imagí pomocí Azure DevTest Labs](./devtest-lab-faq.md#blog-post)
 
 ## <a name="patterns-to-set-up-network-configuration"></a>Vzory pro nastavení konfigurace sítě
 
@@ -65,7 +65,7 @@ Použití DevTest Labs k vytvoření vlastního kanálu obrázků v Azure Pipeli
 Návody zajistěte, aby vývojové a testovací virtuální počítače nedokázaly získat přístup k veřejnému Internetu? Existují nějaké Doporučené vzory pro nastavení konfigurace sítě?
 
 ### <a name="answer"></a>Odpověď
-Ano. K dispozici jsou dvě aspekty, které byste měli zvážit – příchozí a odchozí provoz.
+Yes. K dispozici jsou dvě aspekty, které byste měli zvážit – příchozí a odchozí provoz.
 
 **Příchozí provoz** – Pokud virtuální počítač nemá veřejnou IP adresu, nemusíte ho kontaktovat internetem. Běžným přístupem je zajistit, že jsou nastavené zásady na úrovni předplatného, takže žádný uživatel nemůže vytvořit veřejnou IP adresu.
 

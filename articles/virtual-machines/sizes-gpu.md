@@ -4,16 +4,16 @@ description: Zobrazuje seznam různých velikostí GPU, které jsou dostupné pr
 author: vikancha-MSFT
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: efb26260d0e1f59e78c8328de298c3d4d92c19d3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 15b6de6a03bc5dd67650076beac603845b99ff59
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509305"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286185"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>Velikosti virtuálních počítačů optimalizované pro GPU
 
@@ -37,7 +37,7 @@ Aby bylo možné využívat možnosti GPU pro virtuální počítače řady Azur
 
 - Pro virtuální počítače, které jsou založené na technologii AMD GPU, najdete informace v tématu [instalace ovladačů AMD GPU na virtuálních počítačích řady N-Series](./windows/n-series-amd-driver-setup.md) se systémem Windows pro podporované operační systémy, ovladače, instalace a postupy ověření.
 
-## <a name="deployment-considerations"></a>Co je potřeba vzít v úvahu při nasazování
+## <a name="deployment-considerations"></a>Aspekty nasazování
 
 - Dostupnost virtuálních počítačů řady N-Series najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/regions/services/).
 

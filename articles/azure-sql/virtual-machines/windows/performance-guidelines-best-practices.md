@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/18/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 0e840a9f78a4d6a9fef83abd7b0f011b700f985f
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 3ce829a9fd58fb2940ee3265a66717af3dc9c0b5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231933"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289062"
 ---
 # <a name="performance-guidelines-for-sql-server-on-azure-virtual-machines"></a>Pokyny k výkonu pro SQL Server v Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -40,7 +40,7 @@ Tento článek poskytuje pokyny pro optimalizaci SQL Serverho výkonu v Microsof
 
 Následuje rychlý kontrolní seznam pro optimální výkon SQL Server v Azure Virtual Machines:
 
-| Plošný | Optimalizace |
+| Oblast | Optimalizace |
 | --- | --- |
 | [Velikost virtuálního počítače](#vm-size-guidance) | – Používejte velikosti virtuálních počítačů 4 nebo více vCPU, jako je [E4S_v3](../../../virtual-machines/ev3-esv3-series.md) nebo vyšší nebo [DS12_v2](../../../virtual-machines/dv2-dsv2-series-memory.md) nebo vyšší.<br/><br/> - [Řada ES, EAS, DS a Das](../../../virtual-machines/sizes-general.md) nabízí optimální vCPU poměr paměti nutný pro výkon úloh OLTP. <br/><br/> - [Řada M](../../../virtual-machines/m-series.md) nabízí nejvyšší vCPU poměr paměti nutný k zajištění kritického výkonu a je ideální pro úlohy datového skladu. <br/><br/> – Pomocí [kontrolního seznamu požadavků na výkon aplikace](../../../virtual-machines/windows/premium-storage-performance.md#application-performance-requirements-checklist) Shromážděte požadavky na [vstupně](../../../virtual-machines/windows/premium-storage-performance.md#iops)-výstupní operace cílového zatížení, [propustnost](../../../virtual-machines/windows/premium-storage-performance.md#throughput) a [latence](../../../virtual-machines/windows/premium-storage-performance.md#latency) v době špičky a pak vyberte [Velikost virtuálního počítače](../../../virtual-machines/sizes-general.md) , která se může škálovat na požadavky výkonu vaší úlohy.|
 | [Storage](#storage-guidance) | – Podrobné testování výkonu SQL Server v Azure Virtual Machines pomocí srovnávacích testů TPC-E a TPC_C najdete v blogu věnovaném [optimalizaci výkonu OLTP](https://techcommunity.microsoft.com/t5/SQL-Server/Optimize-OLTP-Performance-with-SQL-Server-on-Azure-VM/ba-p/916794). <br/><br/> – Použijte [prémiové SSD](https://techcommunity.microsoft.com/t5/SQL-Server/Optimize-OLTP-Performance-with-SQL-Server-on-Azure-VM/ba-p/916794) pro nejlepší ceny a výkonnostní výhody. Nakonfigurujte [mezipaměť jen pro čtení](../../../virtual-machines/windows/premium-storage-performance.md#disk-caching) pro datové soubory a žádnou mezipaměť pro soubor protokolu. <br/><br/> – Použijte [disky Ultra](../../../virtual-machines/windows/disks-types.md#ultra-disk) , pokud zatížení vyžaduje méně než 1 MS úložiště. Další informace najdete v tématu [migrace na disk s Ultra](storage-migrate-to-ultradisk.md) . <br/><br/> – Shromažďování požadavků na latenci úložiště pro soubory SQL Server dat, protokolů a dočasné databáze [monitorováním aplikace](../../../virtual-machines/windows/premium-storage-performance.md#application-performance-requirements-checklist) před volbou typu disku. Pokud se vyžadují <latence úložiště 1 ms, použijte Ultra disks, v opačném případě použijte disk SSD úrovně Premium. Pokud se pro soubor protokolu a ne pro datové soubory vyžadují nízké latence, [zajistěte, aby byl Ultra disk](../../../virtual-machines/windows/disks-enable-ultra-ssd.md) v požadovaném IOPS a úrovně propustnosti jenom pro soubor protokolu. <br/><br/> -  Pro SQL Server instanci clusteru s podporou převzetí služeb při selhání se u [souborů úrovně Premium](failover-cluster-instance-premium-file-share-manually-configure.md) doporučuje sdílené úložiště. Soubory úrovně Premium nepodporují ukládání do mezipaměti a nabízejí omezený výkon v porovnání s disky SSD úrovně Premium. Pro samostatné instance SQL vyberte na discích úrovně Premium disky spravované přes prémiové sdílené složky. ale Využijte prémiové sdílené složky pro sdílené úložiště instance clusteru s podporou převzetí služeb při selhání, aby se usnadnila údržba a flexibilní škálovatelnost. <br/><br/> – Standardní úložiště se doporučuje jenom pro účely vývoje a testování nebo pro záložní soubory a neměla by se používat pro produkční úlohy. <br/><br/> – Udržujte [účet úložiště](../../../storage/common/storage-create-storage-account.md) a SQL Server virtuální počítač ve stejné oblasti.<br/><br/> – Zakažte v účtu úložiště [geograficky redundantní úložiště](../../../storage/common/storage-redundancy.md) Azure (geografickou replikaci).  |
@@ -108,13 +108,17 @@ Pro virtuální počítače, které podporují prémiové SSD, můžete databáz
       1. Nastavte prokládání (velikost Stripe) na 64 KB (65 536 bajtů) pro úlohy OLTP a 256 KB (262 144 bajty) pro úlohy datového skladu, aby se předešlo dopadu na výkon v důsledku chybného zarovnání oddílu. Tato nastavení se musí nastavit pomocí PowerShellu.
       2. Nastavte počet sloupců = počet fyzických disků. Použijte PowerShell při konfiguraci více než 8 disků (ne Správce serveru uživatelského rozhraní). 
 
-    Například následující PowerShell vytvoří nový fond úložiště s velikostí proložení na 64 KB a počet sloupců 2:
+    Například následující PowerShell vytvoří nový fond úložiště s velikostí prokládání na 64 KB a počet sloupců rovný velikosti fyzického disku ve fondu úložiště:
 
     ```powershell
-    $PoolCount = Get-PhysicalDisk -CanPool $True
     $PhysicalDisks = Get-PhysicalDisk | Where-Object {$_.FriendlyName -like "*2" -or $_.FriendlyName -like "*3"}
-
-    New-StoragePool -FriendlyName "DataFiles" -StorageSubsystemFriendlyName "Storage Spaces*" -PhysicalDisks $PhysicalDisks | New-VirtualDisk -FriendlyName "DataFiles" -Interleave 65536 -NumberOfColumns 2 -ResiliencySettingName simple –UseMaximumSize |Initialize-Disk -PartitionStyle GPT -PassThru |New-Partition -AssignDriveLetter -UseMaximumSize |Format-Volume -FileSystem NTFS -NewFileSystemLabel "DataDisks" -AllocationUnitSize 65536 -Confirm:$false 
+    
+    New-StoragePool -FriendlyName "DataFiles" -StorageSubsystemFriendlyName "Storage Spaces*" `
+        -PhysicalDisks $PhysicalDisks | New- VirtualDisk -FriendlyName "DataFiles" `
+        -Interleave 65536 -NumberOfColumns $PhysicalDisks .Count -ResiliencySettingName simple `
+        –UseMaximumSize |Initialize-Disk -PartitionStyle GPT -PassThru |New-Partition -AssignDriveLetter `
+        -UseMaximumSize |Format-Volume -FileSystem NTFS -NewFileSystemLabel "DataDisks" `
+        -AllocationUnitSize 65536 -Confirm:$false 
     ```
 
   * Pro Windows 2008 R2 nebo starší můžete použít dynamické disky (svazky Stripe OS) a velikost Stripe je vždycky 64 KB. Tato možnost je zastaralá od Windows 8/Windows Serveru 2012. Informace najdete v tématu věnovaném podpoře na [virtuální diskové službě přechod na rozhraní API pro správu úložiště systému Windows](https://msdn.microsoft.com/library/windows/desktop/hh848071.aspx).

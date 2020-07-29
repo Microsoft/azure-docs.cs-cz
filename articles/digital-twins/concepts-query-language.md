@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b3ed5d6605097b31dfaa58a2d37e71d3a6702bee
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f7e9a76309b4d9dcd010b85d1b55f340374be5c4
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537484"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337921"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>O dotazovacím jazyku pro digitální vlákna Azure
 
@@ -28,7 +28,7 @@ Digitální vlákna Azure poskytuje rozsáhlé možnosti dotazování pro dvojit
 > U všech operací dotazů na digitální vlákna Azure se rozlišují velká a malá písmena.
 
 Tady jsou dostupné operace v jazyce úložiště dotazů digitálních vláken Azure:
-* Získejte vlákna podle vlastností digitálních vláken.
+* Získejte vlákna podle vlastností digitálních vláken (včetně [značek](how-to-use-tags.md)).
 * Získejte vlákna pomocí rozhraní digitálních vláken.
 * Získejte vlákna podle vlastností vztahu.
 * Získejte vlákna v několika typech vztahů ( `JOIN` dotazů). Existují omezení počtu `JOIN` povolených (jedna úroveň pro veřejnou verzi Preview).

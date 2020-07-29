@@ -10,13 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8418a45c9eba596339999c2bddf937a516d3e2d9
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: eb4a150a1680dd4101249458894ded652cde15a0
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223342"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87338040"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Rychlý Start: Konfigurace vlastností aplikace ve vašem tenantovi Azure Active Directory (Azure AD)
 
@@ -41,15 +40,15 @@ Po dokončení přidávání aplikace do tenanta služby Azure AD se zobrazí st
 Úprava vlastností aplikace:
 
 1. Na portálu Azure AD vyberte **podnikové aplikace**. Pak vyhledejte a vyberte aplikaci, kterou chcete nakonfigurovat.
-1. V části **Spravovat** vyberte **vlastnosti** a otevřete tak podokno **vlastnosti** pro úpravy.
+2. V části **Spravovat** vyberte **vlastnosti** a otevřete tak podokno **vlastnosti** pro úpravy.
 
     ![Snímek obrazovky s vlastnostmi, který zobrazuje vlastnosti upravitelné aplikace](media/add-application-portal/edit-properties.png)
 
-1. Poznáte možnosti, které je možné nakonfigurovat:
+3. Poznáte možnosti, které je možné nakonfigurovat:
     - **Povolit uživatelům přihlášení?** Určuje, zda se může přihlásit uživatel přiřazený k aplikaci.
     - Je **vyžadováno přiřazení uživatele?** Určuje, jestli se uživatelé, kteří nejsou přiřazeni k aplikaci, můžou přihlásit.
     - **Viditelná pro uživatele?** Určuje, jestli se uživatelé přiřazení k aplikaci uvidí na [přístupovém panelu](https://myapps.microsoft.com) a ve Spouštěči aplikací Office 365. (Další informace naleznete v nabídce dlaždice v levém horním rohu webu Office 365 nebo webu Microsoft 365.)
-1. Následující tabulky vám pomůžou zvolit nejvhodnější možnosti pro vaše potřeby.
+4. Následující tabulky vám pomůžou zvolit nejvhodnější možnosti pro vaše potřeby.
 
    - Chování pro *přiřazené* uživatele:
 
@@ -57,27 +56,27 @@ Po dokončení přidávání aplikace do tenanta služby Azure AD se zobrazí st
        |---|---|---|---|---|
        | Povolit uživatelům přihlášení? | Je přiřazení uživatelů povinné? | Uvidí ji uživatelé? | Mohou se přiřazení uživatelé přihlásit? | Zobrazí se aplikace přiřazeným uživatelům?* |
        | Ano | Ano | Ano | Ano | Ano  |
-       | Ano | Ano | No  | Ano | No   |
-       | Ano | No  | Ano | Ano | Ano  |
-       | Ano | No  | No  | Ano | No   |
-       | No  | Ano | Ano | No  | No   |
-       | No  | Ano | No  | No  | No   |
-       | No  | No  | Ano | No  | No   |
-       | No  | No  | No  | No  | No   |
+       | Ano | Ano | Ne  | Ano | Ne   |
+       | Ano | Ne  | Ano | Ano | Ano  |
+       | Ano | Ne  | Ne  | Ano | Ne   |
+       | Ne  | Ano | Ano | Ne  | Ne   |
+       | Ne  | Ano | Ne  | Ne  | Ne   |
+       | Ne  | Ne  | Ano | Ne  | Ne   |
+       | Ne  | Ne  | Ne  | Ne  | Ne   |
 
    - Chování pro *nepřiřazené* uživatele:
 
        | Vlastnost aplikace | Vlastnost aplikace | Vlastnost aplikace | Prostředí pro nepřiřazené uživatele | Prostředí pro nepřiřazené uživatele |
        |---|---|---|---|---|
        | Povolit uživatelům přihlášení? | Je přiřazení uživatelů povinné? | Uvidí ji uživatelé? | Mohou se nepřiřazení uživatelé přihlásit? | Zobrazí se aplikace nepřiřazeným uživatelům?* |
-       | Ano | Ano | Ano | No  | No   |
-       | Ano | Ano | No  | No  | No   |
-       | Ano | No  | Ano | Ano | No   |
-       | Ano | No  | No  | Ano | No   |
-       | No  | Ano | Ano | No  | No   |
-       | No  | Ano | No  | No  | No   |
-       | No  | No  | Ano | No  | No   |
-       | No  | No  | No  | No  | No   |
+       | Ano | Ano | Ano | Ne  | Ne   |
+       | Ano | Ano | Ne  | Ne  | Ne   |
+       | Ano | Ne  | Ano | Ano | Ne   |
+       | Ano | Ne  | Ne  | Ano | Ne   |
+       | Ne  | Ano | Ano | Ne  | Ne   |
+       | Ne  | Ano | Ne  | Ne  | Ne   |
+       | Ne  | Ne  | Ano | Ne  | Ne   |
+       | Ne  | Ne  | Ne  | Ne  | Ne   |
 
      * Zobrazí se aplikace uživateli na přístupovém panelu a ve spouštěči aplikací Office 365?
 
@@ -86,10 +85,10 @@ Po dokončení přidávání aplikace do tenanta služby Azure AD se zobrazí st
 Použití vlastního loga:
 
 1. Vytvořte logo 215 × 215 pixelů a uložte ho ve formátu. png.
-1. Na portálu Azure AD vyberte **podnikové aplikace**. Pak vyhledejte a vyberte aplikaci, kterou chcete nakonfigurovat.
-1. V části **Spravovat** vyberte **vlastnosti** a otevřete tak podokno **vlastnosti** pro úpravy. 
-1. Vyberte ikonu pro nahrání loga.
-1. Až budete hotovi, vyberte **Uložit**.
+2. Na portálu Azure AD vyberte **podnikové aplikace**. Pak vyhledejte a vyberte aplikaci, kterou chcete nakonfigurovat.
+3. V části **Spravovat** vyberte **vlastnosti** a otevřete tak podokno **vlastnosti** pro úpravy. 
+4. Vyberte ikonu pro nahrání loga.
+5. Až budete hotovi, vyberte **Uložit**.
 
     ![Snímek obrazovky s vlastnostmi, který ukazuje, jak změnit logo](media/add-application-portal/change-logo.png)
 

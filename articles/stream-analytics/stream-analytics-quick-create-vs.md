@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.openlocfilehash: 5e654fe5d31a225a855da8477e073ceeb1a68634
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: aff9bf83795043e0176d7a3f155844c8dbe0281a
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81767236"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337465"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>Rychlý Start: vytvoření úlohy Azure Stream Analytics pomocí sady Visual Studio
 
@@ -20,11 +20,11 @@ V tomto rychlém startu se dozvíte, jak vytvořit a spustit úlohu Stream Analy
 > [!NOTE]
 > Sady Visual Studio a nástroje pro Visual Studio Code nepodporují úlohy v oblastech Čína – východ, Čína – sever, Německo – střed a Německo – severovýchod.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
-* Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
+* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 
-* Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+* Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 * Nainstalujte Visual Studio 2019, Visual Studio 2015 nebo Visual Studio 2013 Update 4. Podporují se edice Enterprise (Ultimate nebo Premium), Professional a Community. Edice Express se nepodporuje.
 
@@ -34,17 +34,17 @@ V tomto rychlém startu se dozvíte, jak vytvořit a spustit úlohu Stream Analy
 
 Před definováním Stream Analytics úlohy byste měli připravit data, která jsou později nakonfigurovaná jako vstup úlohy. Chcete-li připravit vstupní data požadovaná úlohou, proveďte následující kroky:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
-2. Vyberte **vytvořit prostředek** > **Internet věcí** > **IoT Hub**.
+2. Vyberte **vytvořit prostředek**  >  **Internet věcí**  >  **IoT Hub**.
 
 3. V podokně **IoT Hub** zadejte následující informace:
    
    |**Nastavení**  |**Navrhovaná hodnota**  |**Popis**  |
    |---------|---------|---------|
-   |Předplatné  | \<Vaše předplatné\> |  Vyberte předplatné Azure, které chcete použít. |
+   |Předplatné  | \<Your subscription\> |  Vyberte předplatné Azure, které chcete použít. |
    |Skupina prostředků   |   asaquickstart-resourcegroup  |   Vyberte **Vytvořit nový** a zadejte název nové skupiny prostředků pro váš účet. |
-   |Oblast  |  \<Vyberte oblast nejbližší vašim uživatelům.\> | Vyberte zeměpisnou polohu, kde můžete IoT Hub hostovat. Použijte umístění, které je nejblíže vašim uživatelům. |
+   |Oblast  |  \<Select the region that is closest to your users\> | Vyberte zeměpisnou polohu, kde můžete IoT Hub hostovat. Použijte umístění, které je nejblíže vašim uživatelům. |
    |Název IoT Hub  | MyASAIoTHub  |   Vyberte název IoT Hub.   |
 
    ![Vytvořit IoT Hub](./media/stream-analytics-quick-create-vs/create-iot-hub.png)
@@ -67,7 +67,7 @@ Před definováním Stream Analytics úlohy byste měli připravit data, která 
 
 ## <a name="create-blob-storage"></a>Vytvoření úložiště objektů BLOB
 
-1. V levém horním rohu Azure Portal vyberte **vytvořit prostředek** > **Storage** > úložiště**účet**úložiště.
+1. V levém horním rohu Azure Portal vyberte **vytvořit prostředek**úložiště  >  **Storage**  >  **účet**úložiště.
 
 2. V podokně **vytvořit účet úložiště** zadejte název účtu úložiště, umístění a skupinu prostředků. Vyberte stejné umístění a skupinu prostředků jako IoT Hub, který jste vytvořili. Pak klikněte na tlačítko **zkontrolovat + vytvořit** a vytvořte účet.
 
@@ -116,7 +116,7 @@ Všimněte si prvků obsažených v projektu Azure Stream Analytics.
    |Typ zdroje   |  Datový proud |  Zvolte odpovídající vstupní zdroj: datový proud nebo referenční data.   |
    |Zdroj  |  IoT Hub |  Vyberte odpovídající vstupní zdroj.   |
    |Prostředek  | Zvolit zdroj dat z aktuálního účtu | Zvolte, jestli chcete data zadat ručně, nebo vyberte existující účet.   |
-   |Předplatné  |  \<Vaše předplatné\>   | Vyberte předplatné Azure, které obsahuje IoT Hub, které jste vytvořili.   |
+   |Předplatné  |  \<Your subscription\>   | Vyberte předplatné Azure, které obsahuje IoT Hub, které jste vytvořili.   |
    |IoT Hub  |  MyASAIoTHub   |  Vyberte nebo zadejte název IoT Hub. Názvy IoT Hub jsou automaticky zjištěny, pokud jsou vytvořeny ve stejném předplatném.   |
    
 3. U ostatních možností ponechejte výchozí hodnoty a výběrem možnosti **Uložit** uložte nastavení.  
@@ -134,7 +134,7 @@ Všimněte si prvků obsažených v projektu Azure Stream Analytics.
    |Alias pro výstup  |  Výstup   |  Zadejte název pro identifikaci výstupu úlohy.   |
    |Jímka   |  Blob Storage |  Zvolte odpovídající jímku.    |
    |Prostředek  |  Zadat nastavení zdroje dat ručně |  Zvolte, jestli chcete data zadat ručně, nebo vyberte existující účet.   |
-   |Předplatné  |  \<Vaše předplatné\>   | Zadejte předplatné Azure vytvořeného účtu úložiště. Účet úložiště můžete využívat v rámci stejného, ale i jiného předplatného. V tomto příkladu se předpokládá, že jste účet vytvořili v rámci stejného předplatného.   |
+   |Předplatné  |  \<Your subscription\>   | Zadejte předplatné Azure vytvořeného účtu úložiště. Účet úložiště můžete využívat v rámci stejného, ale i jiného předplatného. V tomto příkladu se předpokládá, že jste účet vytvořili v rámci stejného předplatného.   |
    |Účet úložiště  |  asaquickstartstorage   |  Vyberte nebo zadejte název účtu úložiště. Pokud jsou názvy vytvořeny v rámci stejného předplatného, zjišťují se automaticky.   |
    |Kontejner  |  container1   |  Vyberte existující kontejner, který jste vytvořili v účtu úložiště.   |
    |Vzor cesty  |  output   |  Zadejte název cesty k souboru, která se vytvoří v rámci kontejneru.   |
@@ -151,8 +151,8 @@ Všimněte si prvků obsažených v projektu Azure Stream Analytics.
 
    ```sql
    SELECT *
-   INTO BlobOutput
-   FROM IoTHubInput
+   INTO Output
+   FROM Input
    HAVING Temperature > 27
    ```
 

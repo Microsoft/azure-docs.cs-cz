@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f93a25854bc8b93e9bd75ea71037f6363d143914
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 79d80a5b94a753b43715c1ccd8fc2059ff84cfca
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145725"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87338023"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-azure-ad-tenant"></a>Rychlý Start: Přidání aplikace do tenanta Azure Active Directory (Azure AD)
 
@@ -53,7 +53,7 @@ Přidání aplikace do tenanta služby Azure AD:
 6. Můžete procházet galerii pro aplikaci, kterou chcete přidat, nebo vyhledat aplikaci zadáním jejího názvu do vyhledávacího pole. Pak vyberte aplikaci z výsledků. Ve formuláři můžete upravit název aplikace tak, aby odpovídala potřebám vaší organizace. V tomto příkladu jsme vybrali GitHub a změnili jsme název na **GitHub-test**.
     ![Ukazuje, jak přidat aplikaci z galerie.](media/add-application-portal/create-application.png)
     >[!TIP]
-    >Pokud aplikace, kterou hledáte, není v galerii, pak můžete kliknout na odkaz **vytvořit vlastní aplikaci**. Společnost Microsoft již spolupracuje s řadou vývojářů aplikací, aby je bylo možné předem nakonfigurovat pro práci s Azure AD. Toto jsou aplikace, které se zobrazují v galerii. Pokud ale aplikace, kterou chcete přidat, není uvedená v seznamu, můžete vytvořit novou, obecnou, aplikaci a nakonfigurovat ji sami nebo s pokyny pro vývojáře, který ho vytvořil.
+    >Pokud se aplikace, kterou hledáte, nenachází v galerii, můžete kliknout na odkaz **vytvořit vlastní aplikaci** a potom v části **co se s aplikací chcete dělat?** zvolte možnost **integrace jakékoli jiné aplikace, kterou v galerii nenajdete**. Společnost Microsoft již spolupracuje s řadou vývojářů aplikací, aby je bylo možné předem nakonfigurovat pro práci s Azure AD. Toto jsou aplikace, které se zobrazují v galerii. Pokud ale aplikace, kterou chcete přidat, není uvedená v seznamu, můžete vytvořit novou, obecnou, aplikaci a nakonfigurovat ji sami nebo s pokyny pro vývojáře, který ho vytvořil.
 7. Vyberte **Vytvořit**. Zobrazí se stránka Začínáme s možnostmi konfigurace aplikace pro vaši organizaci.
 
 Dokončili jste přidávání aplikace. V dalším rychlém startu se dozvíte, jak změnit logo a upravit další vlastnosti aplikace.

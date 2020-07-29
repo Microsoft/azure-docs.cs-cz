@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d82289366d79f44460b96d75781cac4fa50de53a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 9c7c1000ed5229886d4a964161042eca6517c230
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129725"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367431"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>Integrace digitálních vláken Azure s ostatními službami
 
@@ -20,11 +20,11 @@ Digitální vlákna Azure se obvykle používají společně s jinými službami
 
 ## <a name="data-ingress"></a>Příchozí datové přenosy
 
-Digitální vlákna Azure je možné řídit daty z IoT Hub. Díky tomu můžete shromažďovat telemetrii od fyzických zařízení ve vašem prostředí a zpracovávat tato data pomocí grafu digitálních vláken Azure v cloudu.
+Digitální vlákna Azure je možné řídit pomocí dat a událostí z libovolné služby – IoT Hub, Logic Apps, vaší vlastní služby a dalších. Díky tomu můžete shromažďovat telemetrii od fyzických zařízení ve vašem prostředí a zpracovávat tato data pomocí grafu digitálních vláken Azure v cloudu.
 
 Digitální vlákna Azure nemají vestavěnou IoT Hub. Můžete použít existující IoT Hub aktuálně v produkčním prostředí, nebo nasadit novou. Získáte tak úplný přístup ke všem funkcím správy zařízení IoT Hub.
 
-K ingestování dat z IoT Hub do digitálních vláken Azure použijte [funkci Azure](../azure-functions/functions-overview.md). Přečtěte si další informace o tomto modelu v tématu Postupy: ingestování [*telemetrie z IoT Hub*](how-to-ingest-iot-hub-data.md)nebo si to Vyzkoušejte sami v kurzu digitálních vláken Azure [*: připojení kompletního řešení*](tutorial-end-to-end.md).
+K ingestování dat z libovolného zdroje do digitálních vláken Azure použijte [funkci Azure](../azure-functions/functions-overview.md). Přečtěte si další informace o tomto modelu v tématu Postupy: ingestování [*telemetrie z IoT Hub*](how-to-ingest-iot-hub-data.md)nebo si to Vyzkoušejte sami v kurzu digitálních vláken Azure [*: připojení kompletního řešení*](tutorial-end-to-end.md).
 
 ## <a name="data-egress-services"></a>Služby pro výstup dat
 

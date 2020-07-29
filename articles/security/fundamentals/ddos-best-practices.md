@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
-ms.openlocfilehash: 9d44c1da27a1440e105ce76436bc284a537503c7
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 3b1a0d646c05be0de83837b33e77e34969c9254c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054436"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287797"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS Protection – navrhování odolných řešení
 
@@ -48,7 +48,7 @@ Důležité je zajistit, aby byla aplikace dostatečně odolná pro zpracování
 
 Škálovatelnost je to, jak dobře dokáže systém zvládnout zvýšené zatížení. Navrhněte své aplikace pro [horizontální škálování](/azure/architecture/guide/design-principles/scale-out) tak, aby splňovaly požadavky na zesilovací zatížení, konkrétně v případě útoku DDoS. Pokud vaše aplikace závisí na jedné instanci služby, vytvoří se v jednom bodě selhání. Zřizování více instancí zajistí, že bude váš systém pružnější a lépe škálovatelný.
 
-V případě [Azure App Service](/azure/app-service/app-service-value-prop-what-is)vyberte [plán App Service](/azure/app-service/overview-hosting-plans) , který nabízí více instancí. Pro Azure Cloud Services nakonfigurujte jednotlivé role tak, aby používaly [víc instancí](/azure/cloud-services/cloud-services-choose-me). V případě [Azure Virtual Machines](/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)zajistěte, aby architektura virtuálních počítačů (VM) zahrnovala více než jeden virtuální počítač a aby každý virtuální počítač byl součástí [skupiny dostupnosti](/azure/virtual-machines/virtual-machines-windows-manage-availability). Pro možnosti automatického škálování doporučujeme používat [Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview) .
+V případě [Azure App Service](/azure/app-service/app-service-value-prop-what-is)vyberte [plán App Service](/azure/app-service/overview-hosting-plans) , který nabízí více instancí. Pro Azure Cloud Services nakonfigurujte jednotlivé role tak, aby používaly [víc instancí](/azure/cloud-services/cloud-services-choose-me). V případě [Azure Virtual Machines](../../virtual-machines/index.yml)zajistěte, aby architektura virtuálních počítačů (VM) zahrnovala více než jeden virtuální počítač a aby každý virtuální počítač byl součástí [skupiny dostupnosti](../../virtual-machines/windows/tutorial-availability-sets.md). Pro možnosti automatického škálování doporučujeme používat [Virtual Machine Scale Sets](../../virtual-machine-scale-sets/overview.md) .
 
 ### <a name="defense-in-depth"></a>Hloubková ochrana
 

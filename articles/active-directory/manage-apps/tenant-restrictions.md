@@ -12,12 +12,12 @@ ms.date: 03/28/2019
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae90a682ea2d1abb8159ec28ed02ed122494f512
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0f45cc2444a14fc138d201e3d7f81e687f53d3ac
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019246"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285896"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Použití omezení tenanta ke správě přístupu k SaaS cloudovým aplikacím
 
@@ -57,7 +57,7 @@ Aby bylo možné použít omezení tenanta, klienti musí být schopni se připo
 
 K povolení omezení klientů prostřednictvím vaší proxy infrastruktury se vyžaduje následující konfigurace. Tyto doprovodné materiály jsou obecné, takže byste měli v dokumentaci dodavatele proxy serveru vyhledat konkrétní kroky implementace.
 
-#### <a name="prerequisites"></a>Předpoklady
+#### <a name="prerequisites"></a>Požadavky
 
 - Proxy musí být schopné provádět zachycení protokolu TLS, vkládání hlaviček HTTP a filtrovat cíle pomocí plně kvalifikovaného názvu domény nebo adresy URL.
 
@@ -68,6 +68,11 @@ K povolení omezení klientů prostřednictvím vaší proxy infrastruktury se v
 #### <a name="configuration"></a>Konfigurace
 
 Pro každý příchozí požadavek do login.microsoftonline.com, login.microsoft.com a login.windows.net vložte dvě hlavičky HTTP: *omezení přístupu k tenantovi* a *omezení přístupu-Access-Context*.
+
+> [!NOTE]
+> Když konfigurujete zachycení SSL a vkládání hlaviček, zajistěte, aby https://device.login.microsoftonline.com byl vyloučený provoz. Tato adresa URL se používá pro ověřování zařízení a provádění rušení a kontroly TLS může kolidovat s ověřováním klientských certifikátů, což může způsobit problémy s registrací zařízení a podmíněným přístupem na základě zařízení.
+
+
 
 Hlavičky by měly obsahovat následující prvky:
 
@@ -81,6 +86,9 @@ Hlavičky by měly obsahovat následující prvky:
 Aby uživatelé nemohli vkládat vlastní hlavičku HTTP s neschválenými klienty, musí proxy nahradit hlavičku *omezení-Access-to-tenant* , pokud už je v příchozím požadavku přítomná.
 
 Klienti musí mít nuceně používat proxy server pro všechny požadavky na login.microsoftonline.com, login.microsoft.com a login.windows.net. Například pokud jsou soubory PAC použity k přímému směrování klientů na používání proxy serveru, neměli by koncoví uživatelé moci upravovat ani zakazovat soubory PAC.
+
+> [!NOTE]
+> V konfiguraci proxy serveru nezahrnujte v cestě *. login.microsoftonline.com subdomény. To bude zahrnovat device.login.microsoftonline.com a může mít vliv na ověřování certifikátu klienta, které se používá při registraci zařízení a ve scénářích podmíněného přístupu na základě zařízení. Nakonfigurujte proxy server tak, aby vyloučil device.login.microsoftonline.com z přerušení a kontroly pomocí protokolu TLS a vkládání hlaviček.
 
 ## <a name="the-user-experience"></a>Činnost koncového uživatele
 
@@ -166,7 +174,7 @@ Fiddler je bezplatný proxy server pro ladění, který se dá použít k zachyc
       }
       ```
 
-      Pokud potřebujete povolení více tenantů, oddělte názvy klientů čárkou. Příklad:
+      Pokud potřebujete povolení více tenantů, oddělte názvy klientů čárkou. Například:
 
       `oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";`
 

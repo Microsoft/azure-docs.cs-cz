@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2018
 ms.author: terrylan
-ms.openlocfilehash: 413ec8b121838a4ffac4119421ec3266e141618b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db6e25b6304ee9ac41ca95d5a3a6eac0e91eb41b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80549257"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287772"
 ---
 # <a name="penetration-testing"></a>Testování průniku
 Jednou z výhod používání Azure pro testování a nasazení aplikací je, že můžete rychle vytvořit prostředí vytvořená. Nemusíte se starat o přemístění, získání a "rackování a skládání" vašeho vlastního místního hardwaru.
@@ -41,8 +41,6 @@ Mezi standardní testy, které můžete provádět:
 * Testuje vaše koncové body, aby se odkryla [5 hlavních chyb zabezpečení projektu webové aplikace (OWASP)](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project) .
 * [Přibližné testování](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/) vašich koncových bodů
 * [Kontrola portů](https://en.wikipedia.org/wiki/Port_scanner) v koncových bodech
-
-Jeden typ testu, který nemůžete provést, je libovolný druh útoku DOS [(Denial of Service)](https://en.wikipedia.org/wiki/Denial-of-service_attack) . To zahrnuje zahájení útoku DoS nebo provádění souvisejících testů, které mohou určit, Ukázat nebo simulovat jakýkoli typ útoku DoS.
 
 ## <a name="next-steps"></a>Další kroky
 

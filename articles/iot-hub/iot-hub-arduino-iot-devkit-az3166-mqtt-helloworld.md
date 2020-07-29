@@ -10,11 +10,12 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
 ms.custom: mqtt
-ms.openlocfilehash: 600e64ef5bc3329f0116359066bdcdaf42c13e2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3a8c065c226d1cc94d79b44d16f288fab205a56
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733496"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337853"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Odesílání zpráv na server MQTT
 
@@ -28,7 +29,7 @@ V tomto projektu se naučíte:
 - Jak používat klientskou knihovnu MQTT k posílání zpráv do zprostředkovatele MQTT.
 - Jak nakonfigurovat MXChip IoT DevKit jako klienta MQTT.
 
-## <a name="what-you-need"></a>Co potřebujete
+## <a name="what-you-need"></a>Co budete potřebovat
 
 Dokončete [průvodce Začínáme](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) :
 
@@ -80,14 +81,11 @@ Pokud narazíte na problémy, přečtěte si [Nejčastější dotazy ke službě
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 * [Připojení IoT DevKit AZ3166 k Azure IoT Hub v cloudu](iot-hub-arduino-iot-devkit-az3166-get-started.md)
 * [Třepačka, Třesce](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili, jak nakonfigurovat MXChip IoT DevKit jako klienta MQTT a použít klientskou knihovnu MQTT k posílání zpráv do zprostředkovatele MQTT, tady jsou doporučené další kroky:
-
-* [Přehled akcelerátoru řešení vzdáleného monitorování Azure IoT](https://docs.microsoft.com/azure/iot-suite/)
-* [Připojení zařízení IoT DevKit MXChip k aplikaci Azure IoT Central](/azure/iot-central/core/howto-connect-devkit)
+Teď, když jste se naučili, jak nakonfigurovat MXChip IoT DevKit jako klienta MQTT a použít klientskou knihovnu MQTT k posílání zpráv do zprostředkovatele MQTT, je zde doporučený další krok: [Přehled akcelerátoru řešení vzdáleného monitorování Azure IoT](https://docs.microsoft.com/azure/iot-suite/) .

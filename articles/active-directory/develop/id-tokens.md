@@ -14,12 +14,12 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: aca2e0a878470a644aff3a42411b69da9096fc78
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: af554b2055102b12a8c0e89c6301400f76021ede
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170522"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87313332"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Tokeny ID platformy Microsoft identity
 
@@ -27,11 +27,11 @@ ms.locfileid: "87170522"
 
 ## <a name="using-the-id_token"></a>Použití id_token
 
-Tokeny ID by se měly použít k ověření, že uživatel je vyhodnocený a získá další užitečné informace – neměl by se používat k autorizaci místo [přístupového tokenu](access-tokens.md). Deklarace identity, které poskytuje, lze použít pro UX v rámci aplikace, jako klíče v databázi a poskytnutí přístupu k klientské aplikaci.  Při vytváření klíčů pro databázi `idp` byste neměli používat, protože jsou v něm scénáře hostů.  Generování klíčů by se mělo provádět `sub` samostatně (což je vždycky jedinečné), které se `tid` používá pro směrování v případě potřeby.  Pokud potřebujete sdílet data napříč službami, `oid` + `sub` + `tid` bude fungovat, protože víc služeb získá stejný přístup `oid` .
+Tokeny ID by se měly použít k ověření, že uživatel je vyhodnocený a získá další užitečné informace – neměl by se používat k autorizaci místo [přístupového tokenu](access-tokens.md). Deklarace identity, které poskytuje, lze použít pro UX v rámci aplikace, jako [klíče v databázi](#using-claims-to-reliably-identify-a-user-subject-and-object-id)a poskytnutí přístupu k klientské aplikaci.  
 
 ## <a name="claims-in-an-id_token"></a>Deklarace identity v id_token
 
-`id_tokens`pro identitu Microsoft jsou [JWTs](https://tools.ietf.org/html/rfc7519) (webové tokeny JSON), což znamená, že se skládají z části záhlaví, datové části a podpisu. Hlavičku a podpis můžete použít k ověření pravosti tokenu, zatímco datová část obsahuje informace o uživateli, který požaduje váš klient. S výjimkou případů, kdy je uvedeno jinak, jsou všechny deklarace JWT uvedené zde uvedeny v tokenech v 1.0 i v 2.0.
+`id_tokens`jsou [JWTs](https://tools.ietf.org/html/rfc7519) (webové tokeny JSON), což znamená, že se skládají z hlavičky, datové části a části podpisu. Hlavičku a podpis můžete použít k ověření pravosti tokenu, zatímco datová část obsahuje informace o uživateli, který požaduje váš klient. S výjimkou případů, kdy je uvedeno jinak, jsou všechny deklarace JWT uvedené zde uvedeny v tokenech v 1.0 i v 2.0.
 
 ### <a name="v10"></a>v1.0
 
@@ -87,14 +87,25 @@ V tomto seznamu jsou uvedeny deklarace identity JWT, které jsou ve výchozím n
 |`ver` | Řetězec, buď 1,0 nebo 2,0 | Určuje verzi id_token. |
 
 > [!NOTE]
-> Id_token v 1.0 a v 2.0 mají rozdíly v množství informací, které budou prováděny podle výše uvedených příkladů. Verze v podstatě určuje koncový bod platformy Azure AD, ze kterého byl vydán. [Implementace Azure AD OAuth](about-microsoft-identity-platform.md) se vyvinula v průběhu let. V současné době existují dva různé koncové body Outh pro aplikace Azure AD. Můžete použít libovolný z nových koncových bodů, které jsou zařazeny do kategorie v 2.0 nebo v 1.0. Koncové body OAuth obou z nich jsou odlišné. Koncový bod v 2.0 je novější a funkce koncového bodu v 1.0 se migrují do tohoto koncového bodu. Noví vývojáři by měli použít koncový bod v 2.0.
+> Id_token v 1.0 a v 2.0 mají rozdíly v množství informací, které budou prováděny podle výše uvedených příkladů. Verze je založena na koncovém bodu, ze kterého byla vyžádána. I když existující aplikace nejspíš používají koncový bod Azure AD, měly by nové aplikace používat koncový bod Microsoft Identity Platform v 2.0.
 >
 > - v 1.0: koncové body Azure AD:`https://login.microsoftonline.com/common/oauth2/authorize`
-> - v 2.0: koncové body Microsoft identitypPlatform:`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
+> - v 2.0: koncové body platformy Microsoft identity:`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
+
+### <a name="using-claims-to-reliably-identify-a-user-subject-and-object-id"></a>Spolehlivá identifikace uživatele (subjektu a ID objektu) pomocí deklarací identity
+
+Když identifikujete uživatele (řekněme, že je vyhledáte v databázi nebo rozhodujete, jaká oprávnění mají), je důležité používat informace, které zůstanou v čase konstantní a jedinečné.  Starší verze aplikací někdy používají pole, jako je e-mailová adresa, telefonní číslo nebo hlavní název uživatele (UPN).  Všechny tyto změny se můžou v průběhu času měnit a dají se použít i v čase – Když zaměstnanec změní svůj název, nebo zaměstnanec má přiřazenou e-mailovou adresu, která odpovídá předchozímu, už není k dispozici zaměstnanec. Proto je **důležité** , aby vaše aplikace nepoužívala uživatelsky čitelné údaje k identifikaci uživatelsky čitelného čtení, obecně znamená, že někdo ho přečte a chcete ho změnit.  Místo toho použijte deklarace identity poskytované standardem OIDC nebo rozšíření deklarací identity poskytovaných Microsoftem `sub` a `oid` deklaracemi identity.
+
+Aby bylo možné správně ukládat informace pro jednotlivé uživatele, použití `sub` nebo `oid` samostatné (což jsou jedinečné identifikátory GUID), které se `tid` používají pro směrování nebo horizontálního dělení v případě potřeby.  Pokud potřebujete sdílet data napříč službami, `oid` + `tid` je nejlepší, protože všechny aplikace získají stejné `oid` a `tid` deklarace identity pro daného uživatele.  `sub`Deklarace identity na platformě Microsoft identity je "párové" – je jedinečná na základě kombinace příjemce, tenanta a uživatele tokenu.  Proto dvě aplikace, které vyžadují tokeny ID pro daného uživatele, obdrží různé `sub` deklarace identity, ale stejné `oid` deklarace identity pro tohoto uživatele.
+
+>[!NOTE]
+> Nepoužívejte `idp` deklaraci identity k ukládání informací o uživateli při pokusu o korelaci uživatelů napříč klienty.  Nebude fungovat, protože `oid` `sub` deklarace identity pro uživatele a změny v klientech navrhují, aby aplikace nemohly sledovat uživatele napříč klienty.  
+>
+> Hostované scénáře, kdy je uživatel doma v jednom tenantovi a ověřuje se v jiné, by měl uživatele zacházet, jako by se mu úplně zavedli.  Vaše dokumenty a oprávnění v tenantovi contoso by se neměly uplatňovat v tenantovi Fabrikam. To je důležité, aby se zabránilo náhodnému úniku dat napříč klienty.
 
 ## <a name="validating-an-id_token"></a>Ověřování id_token
 
-Ověřování `id_token` je podobné jako při [ověřování přístupového tokenu](access-tokens.md#validating-tokens) – váš klient by měl ověřit, jestli se token vrátil zpátky, a že se nepoškodil. Vzhledem k tomu `id_tokens` , že jsou vždy token JWT, existuje mnoho knihoven, aby bylo možné tyto tokeny ověřit – doporučujeme místo toho použít jednu z nich.
+Ověřování `id_token` je podobné jako při [ověřování přístupového tokenu](access-tokens.md#validating-tokens) – váš klient může ověřit, jestli se token vrátil zpátky, a že se mu nepovedlo manipulováno. Vzhledem k tomu `id_tokens` , že jsou vždy token JWT, existuje mnoho knihoven, aby bylo možné tyto tokeny ověřit – doporučujeme místo toho použít jednu z nich.  Všimněte si, že tokeny ID by měly ověřovat jenom důvěrné klienty (s tajným klíčem).  Veřejné aplikace (kód spuštěný zcela na zařízení nebo v síti, které neovládáte – například v prohlížeči nebo v domácí síti) nevyužívají k ověřování tokenu ID, protože uživatel se zlými úmysly může zachytit a upravit klíče používané k ověření tokenu.
 
 Postup ručního ověření tokenu najdete v podrobnostech v tématu [ověřování přístupového tokenu](access-tokens.md#validating-tokens). Po ověření podpisu tokenu by se měly v id_token ověřit následující deklarace identity JWT (můžou to udělat i vaše knihovna ověřování tokenů):
 

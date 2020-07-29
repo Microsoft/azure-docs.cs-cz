@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: df56f53b64a35737700529b80c004efeb31eaabc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4da024eb4eb3747b8e0d6b291ca5b00df12aaeab
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80348659"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367516"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Osvědčené postupy pro konfiguraci aplikací Azure
 
@@ -42,7 +42,7 @@ Je důležité si uvědomit, že klíče jsou v souladu s tím, jak kód aplikac
 
 Konfigurace aplikace považuje všechny klíče uložené s nimi jako nezávislé entity. Konfigurace aplikace se nepokouší odvodit žádnou relaci mezi klíči nebo zdědit hodnoty klíčů na základě jejich hierarchie. Můžete agregovat více sad klíčů, ale pomocí popisků, které jsou v kódu aplikace v kombinaci se správnými konfiguračními balíčky.
 
-Pojďme se podívat na příklad. Předpokládejme, že máte nastavení s názvem **Asset1**, jehož hodnota se může lišit v závislosti na vývojovém prostředí. Pomocí prázdného popisku a popisku s názvem "vývoj" vytvoříte klíč s názvem "Asset1". Do prvního popisku vložíte výchozí hodnotu pro **Asset1**a do druhé hodnoty vložíte určitou hodnotu "vývoj".
+Podívejme se na příklad. Předpokládejme, že máte nastavení s názvem **Asset1**, jehož hodnota se může lišit v závislosti na vývojovém prostředí. Pomocí prázdného popisku a popisku s názvem "vývoj" vytvoříte klíč s názvem "Asset1". Do prvního popisku vložíte výchozí hodnotu pro **Asset1**a do druhé hodnoty vložíte určitou hodnotu "vývoj".
 
 Ve vašem kódu nejdříve načtete hodnoty klíčů bez popisků a potom navedete stejnou sadu hodnot klíčů podruhé s označením "vývoj". Při druhém načtení hodnot se přepíší předchozí hodnoty klíčů. Konfigurační systém .NET Core umožňuje "sestavovat" více sad konfiguračních dat nad sebou. Pokud klíč existuje ve více než jedné sadě, použije se poslední sada, která ho obsahuje. V případě moderního programovacího rozhraní, jako je .NET Core, získáte tuto funkci zásobníku zdarma, pokud pro přístup ke konfiguraci aplikací použijete nativního poskytovatele konfigurace. Následující fragment kódu ukazuje, jak lze implementovat skládání do aplikace .NET Core:
 
@@ -81,7 +81,7 @@ Nadměrné požadavky na konfiguraci aplikací můžou mít za následek omezen�
 
 * Sledujte jeden *klíč ověřovacího klíče*místo sledování jednotlivých klíčů. Aktualizuje veškerou konfiguraci pouze v případě, že se změní klíč Sentinel. Příklad najdete v tématu [použití dynamické konfigurace v aplikaci ASP.NET Core](enable-dynamic-configuration-aspnet-core.md) .
 
-* Použijte Azure Event Grid k přijímání oznámení při změnách konfigurace, a ne při průběžném dotazování na změny. Další informace najdete v tématu [Směrování událostí konfigurace aplikace Azure do webového koncového bodu](./howto-app-configuration-event.md) .
+* Použijte Azure Event Grid k přijímání oznámení při změnách konfigurace, a ne při průběžném dotazování na změny. Další informace najdete v tématu [Směrování událostí konfigurace aplikace Azure do koncového bodu webu](./howto-app-configuration-event.md) .
 
 ## <a name="importing-configuration-data-into-app-configuration"></a>Import konfiguračních dat do konfigurace aplikace
 

@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: 6bebe8ac6b9869466938600d6267fd0062c84477
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dae797e73d52391288a5e8b7cf4a5c6ab2a122fc
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75977298"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337870"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>Monitorování dvířek – používání Azure Functions a SendGrid, odesílání e-mailů, když se otevřou dvířka           
 
@@ -29,14 +30,14 @@ V tomto projektu se naučíte:
 > - Připojte magnet k okraji dvířek.
 > - Připojte DevKit na dvířka jamb blízko k magnetu. Otevřením nebo zavřením dvířek se spustí senzor a výsledkem bude příjem e-mailových oznámení o události.
 
-## <a name="what-you-need"></a>Co potřebujete
+## <a name="what-you-need"></a>Co budete potřebovat
 
 Dokončete [průvodce Začínáme](iot-hub-arduino-iot-devkit-az3166-get-started.md) :
 
 * Připojení DevKit k Wi-Fi
 * Příprava vývojového prostředí
 
-Aktivní předplatné Azure. Pokud ho nemáte, můžete se zaregistrovat pomocí jedné z těchto metod:
+Musíte mít aktivní předplatné Azure. Pokud ho nemáte, můžete se zaregistrovat pomocí jedné z těchto metod:
 
 * Aktivujte si [bezplatný 30denní zkušební účet Microsoft Azure](https://azure.microsoft.com/free/).
 * Pokud jste předplatitelem MSDN nebo Visual studia, můžete svůj [kredit Azure](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) uplatnit.
@@ -196,7 +197,4 @@ Pokud narazíte na problémy, přečtěte si [Nejčastější dotazy ke službě
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjistili jste, jak připojit zařízení DevKit k akcelerátoru řešení vzdáleného monitorování Azure IoT a použít službu SendGrid k odeslání e-mailu. Tady jsou doporučené další kroky:
-
-* [Přehled akcelerátoru řešení vzdáleného monitorování Azure IoT](https://docs.microsoft.com/azure/iot-suite/)
-* [Připojení zařízení IoT DevKit MXChip k aplikaci Azure IoT Central](/azure/iot-central/core/howto-connect-devkit)
+Zjistili jste, jak připojit zařízení DevKit k akcelerátoru řešení vzdáleného monitorování Azure IoT a použít službu SendGrid k odeslání e-mailu. Tady je doporučený další krok:[Přehled akcelerátoru řešení Azure IoT Remote Monitoring](https://docs.microsoft.com/azure/iot-suite/) .

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 35fd95272530ed31f8ee197679e9368ca74ebef1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 852a8c8eb7e6a87739c58967eefd6c18e996b225
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089664"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367397"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Osvědčené postupy zabezpečení správy identit a řízení přístupu v Azure
 
@@ -204,7 +204,7 @@ Aby mohl váš tým zabezpečení vyhodnocovat a napravovat riziko, musí mít p
 Pomocí [RBAC](/azure/role-based-access-control/overview) můžete přiřadit oprávnění uživatelům, skupinám a aplikacím v určitém oboru. Role se dají přidělovat na úrovni předplatného, skupiny prostředků nebo konkrétního prostředku.
 
 **Osvědčené postupy**: oddělení funkcí v rámci týmu a udělení přístupu pouze uživatelům, kteří potřebují k provádění svých úloh. Místo udělení všech neomezených oprávnění v rámci předplatného Azure nebo prostředků Povolte jenom určité akce v konkrétním oboru.
-**Podrobnosti**: v Azure použijte [předdefinované role RBAC](/azure/role-based-access-control/built-in-roles) , abyste uživatelům přidělili oprávnění.
+**Podrobnosti**: k přiřazení oprávnění uživatelům použijte [předdefinované role Azure](/azure/role-based-access-control/built-in-roles) v Azure.
 
 > [!Note]
 > Konkrétní oprávnění vytvářejí nepotřebnou složitost a nejasnost a nahromadění do konfigurace starší verze, která je obtížné opravit, aniž by došlo k obavám. Vyhněte se oprávněním pro konkrétní prostředky. Místo toho použijte pro oprávnění v rámci předplatných skupiny pro správu oprávnění a skupin prostředků pro podnikové úrovni. Vyhněte se konkrétním uživatelským oprávněním. Místo toho přiřaďte přístup ke skupinám v Azure AD.

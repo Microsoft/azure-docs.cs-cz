@@ -3,12 +3,12 @@ title: Typy entit – LUIS
 description: Entita extrahuje data z utterance uživatele v předpokládaném modulu runtime. _Volitelným_a sekundárním účelem je zvýšit předpověď záměru nebo jiných entit pomocí entity jako funkce.
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 61dc0688cd304a672321f846a3ae5798c271345d
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: ced4a3e23b8e532b54d0b3cf974dab233b81b375
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84676484"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337615"
 ---
 # <a name="extract-data-with-entities"></a>Extrakce dat s entitami
 
@@ -30,7 +30,7 @@ Entity musí být označeny konzistentně ve všech školicích projevy pro kaž
 
  Můžete definovat vlastní entity nebo používat předem připravené entity k ukládání času pro běžné koncepty, jako je [datetimeV2](luis-reference-prebuilt-datetimev2.md), [ordinální](luis-reference-prebuilt-ordinal.md)číslo, [e-mail](luis-reference-prebuilt-email.md)a [telefonní číslo](luis-reference-prebuilt-phonenumber.md).
 
-|Promluva|Entita|Data|
+|Výrok|Entita|Data|
 |--|--|--|
 |Koupit 3 lístky do Praha|Předem připravené číslo<br>Cíl|3<br>New York|
 
@@ -49,7 +49,7 @@ Entita představuje koncept dat _uvnitř utterance_. Záměr klasifikuje _celou 
 
 Vezměte v úvahu následující čtyři projevy:
 
-|Promluva|Předpokládané záměr|Extrahované entity|Vysvětlení|
+|Výrok|Předpokládané záměr|Extrahované entity|Vysvětlení|
 |--|--|--|--|
 |Nápověda|Nápověda|-|Nic k extrakci.|
 |Poslat něco|sendSomething|-|Nic k extrakci. Model nemá požadovanou funkci pro extrakci `something` v tomto kontextu a není uveden žádný příjemce.|
@@ -77,6 +77,12 @@ Chcete-li efektivně sestavovat počítač se zjištěnými entitami:
 * Štítky by měly být v souladu s těmito záměry. To zahrnuje i projevy, které zadáte do záměru **none** , který obsahuje tuto entitu. V opačném případě model nebude moci určit sekvence efektivně.
 * Pokud jste získali entitu počítač s podentitami, ujistěte se, že různé objednávky a varianty entit a podentit jsou uvedeny v popisku projevy. Vzorový příklad projevy by měl zahrnovat všechny platné formuláře a zahrnout entity, které se zobrazí a jsou chybějící a také přeobjednány v rámci utterance.
 * Měli byste se vyhnout přebudování entit na velmi pevně danou sadu. K překrytí **dojde,** když model nebude správně generalizovat a jedná se o běžný problém v modelech strojového učení. To znamená, že aplikace nebude správně fungovat na nových datech. V takovém případě byste měli měnit příklad projevy, aby se aplikace mohla zobecnit nad rámec omezených příkladů, které zadáte. Měli byste změnit různé podentity s dostatečnou změnou modelu tak, aby se místo pouze v zobrazených příkladech promyslelo více konceptů.
+
+## <a name="effective-prebuilt-entities"></a>Efektivní předem připravené entity
+
+Pro sestavování efektivních entit, které extrahují společná data, například těch, které poskytují [předem připravené entity](luis-reference-prebuilt-entities.md), doporučujeme následující postup.
+
+Vylepšete extrakci dat tak, že jako funkci přinesete vlastní data do entity. Tímto způsobem se všechny další štítky z vašich dat učí v kontextu, kde ve vaší aplikaci existují jména osob.
 
 <a name="composite-entity"></a>
 <a name="list-entity"></a>

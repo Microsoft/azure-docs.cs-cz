@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: f37109cc2677ad5ef18c5677bda9308a78cebccf
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 7d6c0928196c9e8e1abf6aa7f724a58753ce3d2a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851313"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289049"
 ---
 # <a name="add-interaction-rules"></a>Přidání pravidel interakce
 
-V tomto článku se dozvíte o *pravidlech interakce*. Tato další pravidla zpracovávají konkrétnější nebo složitou situaci. Můžete vytvářet vlastní pravidla interakce, ale v tomto článku budete používat pravidla interakce v následujících cílových scénářích:
+V tomto článku se dozvíte o **pravidlech interakce**. Toto jsou další pravidla pro zpracování složitějších nebo složitých situací. I když nemůžete vytvářet vlastní pravidla interakce, můžete v tomto článku použít pravidla interakce v následujících cílových scénářích:
 
 * Potvrzení příkazů
 * Přidání opravy s jedním krokem do příkazů
@@ -30,8 +30,8 @@ Další informace o pravidlech interakce najdete v části [odkazy](./custom-com
 
 Musíte dokončit kroky v následujících článcích:
 > [!div class="checklist"]
-> * [Vytvoření aplikace s jednoduchými příkazy](./how-to-custom-commands-create-application-with-simple-commands.md)
-> * [Přidání parametrů do příkazů](./how-to-custom-commands-add-parameters-to-commands.md)
+> * [Postupy: vytváření aplikací pomocí jednoduchých příkazů](./how-to-custom-commands-create-application-with-simple-commands.md)
+> * [Postupy: Přidání parametrů k příkazům](./how-to-custom-commands-add-parameters-to-commands.md)
 
 ## <a name="add-confirmations-to-a-command"></a>Přidání potvrzení do příkazu
 
@@ -40,7 +40,7 @@ Chcete-li přidat potvrzení, použijte příkaz **SetTemperature** . Chcete-li 
 1. V levém podokně vyberte příkaz **SetTemperature** .
 1. Přidejte pravidla interakce výběrem možnosti **Přidat** v prostředním podokně. Pak vyberte příkaz **pravidla interakce**  >  **Potvrdit**.
 
-    Tato akce přidá tři pravidla interakce. Toto pravidlo vyzve uživatele k potvrzení data a času alarmu a očekává u dalšího tahu potvrzení (ano/ne).
+    Tato akce přidá tři pravidla interakce, která uživateli požádá o potvrzení data a času alarmu a očekává u dalšího tahu potvrzení (ano/ne).
 
     1. Upravte pravidlo interakce **příkazu potvrdit** jako pro následující konfiguraci:
         1. Pro **potvrzení teploty**změňte **název** .
@@ -76,13 +76,13 @@ Chcete-li přidat potvrzení, použijte příkaz **SetTemperature** . Chcete-li 
 Vyberte **výuka**, počkejte na dokončení školení a vyberte **test**.
 
 - **Vstup**: Nastavte teplotu na 80 stupňů.
-- **Výstup**: OK 80?
-- **Vstup**: ne.
+- **Výstup**: jste si jisti, že chcete nastavit teplotu jako 80 stupňů?
+- **Vstup**: ne
 - **Výstup**: žádný problém. Jakou teplotu pak?
-- **Vstup**: 83 stupňů.
-- **Výstup**: OK 83?
-- **Vstup**: Ano.
-- **Výstup**: OK, nastavení teploty na 83 stupňů.
+- **Vstup**: 72 stupňů
+- **Výstup**: jste si jisti, že chcete nastavit teplotu jako 72 stupňů?
+- **Vstup**: Ano
+- **Výstup**: OK, nastavení teploty na 83 stupňů
 
 
 ## <a name="implement-corrections-in-a-command"></a>Implementace oprav v příkazu
