@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: 4bb1af6ca2126b7ae58a6c836624ec78a071a5a5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3cd43963175594fcdc1c3c67d6b2493ce1ccd313
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075291"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321917"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications-with-istio---deprecated"></a>Nula monitorování aplikace instrumentace pro aplikace hostované v Kubernetes s Istio – zastaralé
 
@@ -18,12 +18,12 @@ ms.locfileid: "87075291"
 > Tato funkce je aktuálně zastaralá a již nebude podporována po 1. srpnu 2020.
 > V současné době se monitorování bez kódu dá povolit jenom pro [Java prostřednictvím samostatného agenta](./java-in-process-agent.md). Pro jiné jazyky použijte sady SDK k monitorování aplikací na AKS: [ASP.NET Core](./asp-net-core.md), [ASP.NET](./asp-net.md), [Node.js](./nodejs.md), [JavaScript](./javascript.md)a [Python](./opencensus-python.md).
 
-Azure Monitor teď využívá síť pro pracovní plochu v clusteru Kubernetes k tomu, aby poskytovala monitorování aplikací pro všechny hostované aplikace Kubernetes. Pomocí výchozích funkcí Application Insights, jako je [Mapa aplikací](../../azure-monitor/app/app-map.md) , můžete modelovat závislosti [Live Metrics Stream](../../azure-monitor/app/live-stream.md) pro monitorování v reálném čase, výkonné vizualizace s [výchozím řídicím panelem](../../azure-monitor/app/overview-dashboard.md), [průzkumníkem](../../azure-monitor/platform/metrics-getting-started.md)a [sešity](../../azure-monitor/platform/workbooks-overview.md). Tato funkce pomůže uživatelům, aby na všech svých Kubernetes úlohách v rámci vybraného oboru názvů Kubernetes zavedli slabá místa ve výkonu a hotspoty selhání. Díky tomu, že vaše stávající investice do sítě na síti s technologiemi, jako je Istio Azure Monitor, umožňují monitorování automaticky instrumentované aplikace bez jakýchkoli úprav kódu vaší aplikace.
+Azure Monitor teď využívá síť pro pracovní plochu v clusteru Kubernetes k tomu, aby poskytovala monitorování aplikací pro všechny hostované aplikace Kubernetes. Pomocí výchozích funkcí Application Insights, jako je [Mapa aplikací](./app-map.md) , můžete modelovat závislosti [Live Metrics Stream](./live-stream.md) pro monitorování v reálném čase, výkonné vizualizace s [výchozím řídicím panelem](./overview-dashboard.md), [průzkumníkem](../platform/metrics-getting-started.md)a [sešity](../platform/workbooks-overview.md). Tato funkce pomůže uživatelům, aby na všech svých Kubernetes úlohách v rámci vybraného oboru názvů Kubernetes zavedli slabá místa ve výkonu a hotspoty selhání. Díky tomu, že vaše stávající investice do sítě na síti s technologiemi, jako je Istio Azure Monitor, umožňují monitorování automaticky instrumentované aplikace bez jakýchkoli úprav kódu vaší aplikace.
 
 > [!NOTE]
-> Toto je jeden z mnoha způsobů, jak provádět monitorování aplikací v Kubernetes.Jakoukoli aplikaci hostovanou v Kubernetes můžete také instrumentovat pomocí [sady SDK Application Insights](../../azure-monitor/azure-monitor-app-hub.yml) bez nutnosti použití sítě. Pokud chcete monitorovat Kubernetes bez instrumentace aplikace pomocí sady SDK, můžete použít níže uvedenou metodu.
+> Toto je jeden z mnoha způsobů, jak provádět monitorování aplikací v Kubernetes.Jakoukoli aplikaci hostovanou v Kubernetes můžete také instrumentovat pomocí [sady SDK Application Insights](../azure-monitor-app-hub.yml) bez nutnosti použití sítě. Pokud chcete monitorovat Kubernetes bez instrumentace aplikace pomocí sady SDK, můžete použít níže uvedenou metodu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Cluster Kubernetes](../../aks/concepts-clusters-workloads.md).
 - Konzola má přístup ke clusteru, aby bylo možné spustit *kubectl*.
@@ -34,12 +34,12 @@ Azure Monitor teď využívá síť pro pracovní plochu v clusteru Kubernetes k
 
 Při použití nástroje s nulovým monitorováním aplikací instrumentace pro aplikace hostované v Kubernetes budete moct použít:
 
-- [Mapa aplikace](../../azure-monitor/app/app-map.md)
-- [Live Stream metriky](../../azure-monitor/app/live-stream.md)
-- [Řídicí panely](../../azure-monitor/app/overview-dashboard.md)
-- [Průzkumník metrik](../../azure-monitor/platform/metrics-getting-started.md)
-- [Distribuované – trasování](../../azure-monitor/app/distributed-tracing.md)
-- [Monitorování koncové transakce](../../azure-monitor/learn/tutorial-performance.md#identify-slow-server-operations)
+- [Mapa aplikace](./app-map.md)
+- [Live Stream metriky](./live-stream.md)
+- [Řídicí panely](./overview-dashboard.md)
+- [Průzkumník metrik](../platform/metrics-getting-started.md)
+- [Distribuované – trasování](./distributed-tracing.md)
+- [Monitorování koncové transakce](../learn/tutorial-performance.md#identify-slow-server-operations)
 
 ## <a name="installation-steps"></a>Kroky instalace
 
@@ -95,7 +95,7 @@ Aplikace spuštěné mimo síť nejsou ovlivněny.
 - Vygenerujte vzorový požadavek na vaši aplikaci a potvrďte tak, že monitorování funguje správně.
 - Během 3-5 minut byste měli začít zobrazovat telemetrii v Azure Portal. Ujistěte se, že se v portálu Application Insights prostředku na portálu nachází část s *mapou aplikace* .
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Níže je uvedený postup řešení potíží, který se použije v případě, že se telemetrie neobjeví v Azure Portal podle očekávání.
 
@@ -126,7 +126,7 @@ Níže je uvedený postup řešení potíží, který se použije v případě, 
    ```
    Vyhledejte případné chyby, zejména související s komunikací s *applicationinsightsadapter* adaptérem.
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 Nejnovější informace o průběhu tohoto projektu najdete na [githubu Application Insights Adapter pro projekt mixer Istio](https://github.com/Microsoft/Application-Insights-Istio-Adapter/blob/master/SETUP.md#faq).
 
@@ -141,4 +141,5 @@ kubectl delete -f <filename.yaml>
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jak Azure Monitor a kontejnery spolupracují, najdete [v tématu Azure monitor for Containers Overview](../../azure-monitor/insights/container-insights-overview.md) .
+Další informace o tom, jak Azure Monitor a kontejnery spolupracují, najdete [v tématu Azure monitor for Containers Overview](../insights/container-insights-overview.md) .
+

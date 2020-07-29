@@ -2,16 +2,17 @@
 title: Připojte funkci jazyka Java k Azure Storage
 description: Naučte se připojit funkci Java aktivovanou protokolem HTTP, která se Azure Storage pomocí výstupní vazby úložiště fronty.
 author: KarlErickson
+ms.custom: devx-track-java
 ms.author: karler
 ms.date: 10/14/2019
 ms.topic: quickstart
 zone_pivot_groups: java-build-tools-set
-ms.openlocfilehash: e5b1250170830af24ddc1f2e3b78965ebcea051e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9f512e3bbf7947361fa9890e9514693610c9f99d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540311"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321951"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>Připojte funkci jazyka Java k Azure Storage
 
@@ -21,7 +22,7 @@ V tomto článku se dozvíte, jak integrovat funkci, kterou jste vytvořili v [p
 
 Většina vazeb vyžaduje uložený připojovací řetězec, který funkce používá pro přístup k vázané službě. Aby bylo toto připojení snazší, použijte účet úložiště, který jste vytvořili v aplikaci Function App. Připojení k tomuto účtu je již Uloženo v nastavení aplikace s názvem `AzureWebJobsStorage` .  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto článkem, proveďte kroky v [části 1 rychlého startu Java](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser).
 

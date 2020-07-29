@@ -1,7 +1,7 @@
 ---
-title: Partnerský vztah Azure Virtual Network
+title: Partnerský vztah virtuální sítě Azure
 titlesuffix: Azure Virtual Network
-description: Seznamte se s partnerskými vztahy virtuálních sítí v Azure.
+description: Přečtěte si o partnerském vztahu virtuálních sítí v Azure, včetně toho, jak umožňuje připojit sítě v Azure Virtual Network.
 services: virtual-network
 documentationcenter: na
 author: altambaw
@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: kumud
-ms.openlocfilehash: e1a2babef17e23457e1f41d8ec0a20a442452c23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ba0caa2546fdb9d4845e2c7adf87a06d906dd12
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84232958"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87265156"
 ---
-# <a name="virtual-network-peering"></a>Partnerské vztahy virtuálních sítí
+# <a name="virtual-network-peering"></a>Partnerský vztah virtuální sítě
 
 Partnerské vztahy virtuálních sítí umožňují bezproblémové připojení sítí v [Azure Virtual Network](virtual-networks-overview.md). Virtuální sítě se zobrazí jako jedna pro účely připojení. Přenos dat mezi virtuálními počítači používá páteřní infrastrukturu Microsoftu. Podobně jako provoz mezi virtuálními počítači ve stejné síti se provoz směruje jenom přes *privátní* síť Microsoftu.
 

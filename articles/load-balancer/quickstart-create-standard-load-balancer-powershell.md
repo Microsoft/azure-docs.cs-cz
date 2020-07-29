@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/23/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 33c5db061860096b0411fbe91191f6c4a513e4c2
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: b8a95687b1567eb6e063ccc871a4a130c5f2db69
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172128"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290357"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Rychlý Start: vytvoření veřejného nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure PowerShell
 
@@ -635,7 +635,7 @@ New-AzVM -ResourceGroupName $rg -Zone $zn -Location $loc -VM $vmConfig
 Vytvoření a konfigurace tří virtuálních počítačů trvá několik minut.
 
 ## <a name="create-outbound-rule-configuration"></a>Vytvořit konfiguraci odchozího pravidla
-Odchozí pravidla nástroje pro vyrovnávání zatížení konfigurují odchozí SNAT pro virtuální počítače ve fondu back-endu. 
+Odchozí pravidla nástroje pro vyrovnávání zatížení konfigurují odchozí Zdrojová síťová adresa (SNAT) pro virtuální počítače ve fondu back-endu. 
 
 Další informace o odchozích připojeních najdete v tématu [odchozí připojení v Azure](load-balancer-outbound-connections.md).
 
@@ -690,7 +690,7 @@ Get-AzLoadBalancer -Name $lbn -ResourceGroupName $rg | Add-AzLoadBalancerFronten
 
 Vytvořte nový odchozí fond pomocí [Add-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/add-azloadbalancerbackendaddresspoolconfig). 
 
-Použijte fond a IP adresu front-endu na nástroj pro vyrovnávání zatížení pomocí [set-AzLoadBalancer](/powershell/module/az.network/set-azloadbalancer)::
+Použijte fond a IP adresu front-endu na nástroj pro vyrovnávání zatížení s [set-AzLoadBalancer](/powershell/module/az.network/set-azloadbalancer):
 
 * S názvem **myBackEndPoolOutbound**.
 
@@ -1409,7 +1409,7 @@ Vytvoření a konfigurace tří virtuálních počítačů trvá několik minut.
 
 Nainstalujte službu IIS s vlastní webovou stránkou na back-endové virtuální počítače následujícím způsobem:
 
-1. Získejte veřejné IP adresy tří virtuálních počítačů pomocí [Get-AzPublicIPAddress](/powershell/module/az.compute/get-azpublicipaddress).
+1. Získejte veřejné IP adresy tří virtuálních počítačů pomocí [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress).
 
    ```azurepowershell-interactive
    ## Variables for commands. ##

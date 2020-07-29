@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2019
-ms.openlocfilehash: f34389785c0f4a43bfcab3e50f2dcd132b2cb629
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8abd9d7f33a07141418ad67cc2128af40ad0bd51
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505801"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324756"
 ---
 # <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>Přechod z Log Analyticsho prohledávání protokolu do protokolů Azure Monitor
 Hledání protokolu v Log Analytics bylo nedávno nahrazeno novým prostředím pro analýzu Azure Monitor protokolů. Stránka pro prohledávání protokolu je nyní stále přístupná prostřednictvím položky nabídky **protokoly (Classic)** na stránce **Log Analytics pracovní prostory** v Azure Portal, ale bude odebrána 15. února 2019. Tento článek popisuje rozdíly mezi dvěma prostředími, které vám pomůžou při přechodu z prohledávání protokolu. 
@@ -44,7 +44,7 @@ Pokud chcete uložit aktuální dotaz do protokolů Azure Monitor, vyberte **Ulo
 ![Uložit dotaz na protokol](media/log-search-transition/save-query-logs.png)
 
 ## <a name="saved-queries"></a>Uložené dotazy
-V hledání v protokolu jsou uložené dotazy k dispozici prostřednictvím **uloženého hledání**položky panelu akcí. V Azure Monitor protokoly získáte přístup k uloženým dotazům z [Průzkumníku dotazů](../log-query/get-started-portal.md#save-queries).
+V hledání v protokolu jsou uložené dotazy k dispozici prostřednictvím **uloženého hledání**položky panelu akcí. V Azure Monitor protokoly získáte přístup k uloženým dotazům z [Průzkumníku dotazů](./get-started-portal.md#save-queries).
 
 ![Průzkumník dotazů](media/log-search-transition/query-explorer.png)
 
@@ -69,3 +69,4 @@ V Azure Monitor protokoly [vytvořte výstrahu z dotazu protokolu](../platform/a
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o nových [prostředích Azure monitor protokolů](get-started-portal.md).
+

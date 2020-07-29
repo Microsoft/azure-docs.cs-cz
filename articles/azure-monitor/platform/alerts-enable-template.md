@@ -6,17 +6,17 @@ ms.author: robb
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: fef975c9822cd44b94074874621e1c87a60ed27d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 380a1366994e970c208a6c3ad505414cb12bc0c2
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505444"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324093"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Vytvoření klasických upozornění na metriku pomocí šablony Resource Manageru
 > [!WARNING]
 > 
-> Tento článek popisuje vytvoření **klasických výstrah metrik** pomocí Správce prostředků šablon. Klasické výstrahy byly vyřazeny v srpnu 2019 a nastaveny tak, aby byly plně zastaralé v červnu 2020. Nemůžete vytvářet nové klasické výstrahy Public Azure. Některé regionální verze Azure můžou mít stále možnost, ale doporučujeme vám místo toho vytvořit [novější výstrahy metriky](../../azure-monitor/platform/alerts-metric-near-real-time.md) pomocí šablon, pokud je to možné. V [tomto článku](alerts-metric-create-templates.md) najdete podrobnosti.
+> Tento článek popisuje vytvoření **klasických výstrah metrik** pomocí Správce prostředků šablon. Klasické výstrahy byly vyřazeny v srpnu 2019 a nastaveny tak, aby byly plně zastaralé v červnu 2020. Nemůžete vytvářet nové klasické výstrahy Public Azure. Některé regionální verze Azure můžou mít stále možnost, ale doporučujeme vám místo toho vytvořit [novější výstrahy metriky](./alerts-metric-near-real-time.md) pomocí šablon, pokud je to možné. V [tomto článku](alerts-metric-create-templates.md) najdete podrobnosti.
 >
 
 V tomto článku se dozvíte, jak můžete pomocí [šablony Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) nakonfigurovat výstrahy metriky Azure Classic. To vám umožní automaticky nastavit výstrahy na svých prostředcích při jejich vytvoření, aby se zajistilo správné monitorování všech prostředků.
@@ -400,5 +400,6 @@ Výstraha na Správce prostředků šabloně je nejčastěji užitečná při vy
 
 ## <a name="next-steps"></a>Další kroky
 * [Přečtěte si další informace o výstrahách](alerts-overview.md)
-* [Přidání nastavení diagnostiky](../../azure-monitor/platform/diagnostic-settings-template.md) do šablony Správce prostředků
+* [Přidání nastavení diagnostiky](./diagnostic-settings-template.md) do šablony Správce prostředků
 * Syntaxi a vlastnosti JSON najdete v referenčních informacích k šabloně [Microsoft. Insights/alertrules](/azure/templates/microsoft.insights/alertrules) .
+

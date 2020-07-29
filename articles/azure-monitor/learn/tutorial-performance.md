@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 6e344908fff54a06f1885774c88b509096c26e08
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: 3c7185e07190895dfcc97555c6603049ed41c18c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84783142"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322495"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Vyhledání a diagnostika problémů s výkonem pomocí Azure Application Insights
 
@@ -32,8 +32,8 @@ Pro absolvování tohoto kurzu potřebujete:
 - Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s následujícími úlohami:
     - Vývoj pro ASP.NET a web
     - Vývoj pro Azure
-- Nasadit do Azure aplikaci .NET a [povolit sadu Application Insights SDK](../../azure-monitor/app/asp-net.md).
-- [Povolit Application Insights Profiler](../../azure-monitor/app/profiler.md#installation) pro vaši aplikaci.
+- Nasadit do Azure aplikaci .NET a [povolit sadu Application Insights SDK](../app/asp-net.md).
+- [Povolit Application Insights Profiler](../app/profiler.md#installation) pro vaši aplikaci.
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 Přihlaste se k Azure Portal v [https://portal.azure.com](https://portal.azure.com) .
@@ -56,12 +56,12 @@ Application Insights shromažďuje podrobnosti o výkonu různých operací ve v
 
 4.  Panel Výkon na pravé straně ukazuje distribuci doby trvání různých požadavků pro vybranou operaci.  Zmenšete časové okno tak, aby začínalo přibližně na 95. percentilu. Na kartě přehledu Nejčastější 3 závislosti můžete na první pohled zjistit, že na pomalé transakce mají pravděpodobně vliv externí závislosti.  Kliknutím na tlačítko s počtem ukázek zobrazíte seznam ukázek. Pak můžete vybrat libovolnou ukázku a zobrazit podrobnosti o transakci.
 
-5.  Na první pohled vidíte, na celkovou dobu trvání transakce má největší vliv volání tabulky Azure Fabrikamaccount. Také vidíte, že výjimka způsobila jeho selhání. Kliknutím na libovolnou položku v seznamu můžete na pravé straně zobrazit její podrobnosti. [Další informace o prostředí pro diagnostiku transakcí](../../azure-monitor/app/transaction-diagnostics.md)
+5.  Na první pohled vidíte, na celkovou dobu trvání transakce má největší vliv volání tabulky Azure Fabrikamaccount. Také vidíte, že výjimka způsobila jeho selhání. Kliknutím na libovolnou položku v seznamu můžete na pravé straně zobrazit její podrobnosti. [Další informace o prostředí pro diagnostiku transakcí](../app/transaction-diagnostics.md)
 
     ![Operace s podrobnostmi na konci](media/tutorial-performance/4-end-to-end.png)
     
 
-6.  [**Profiler**](../../azure-monitor/app/profiler-overview.md) vám pomůže s diagnostikou na úrovni kódu dál tím, že zobrazuje skutečný kód, který běžel pro danou operaci, a čas potřebný pro každý krok. Vzhledem k tomu, že se profiler spouští pravidelně, některé operace nemusejí mít trasování.  V průběhu času by trasování mělo mít více operací.  Pokud chcete pro operaci spustit profiler, klikněte na **Trasování Profileru**.
+6.  [**Profiler**](../app/profiler-overview.md) vám pomůže s diagnostikou na úrovni kódu dál tím, že zobrazuje skutečný kód, který běžel pro danou operaci, a čas potřebný pro každý krok. Vzhledem k tomu, že se profiler spouští pravidelně, některé operace nemusejí mít trasování.  V průběhu času by trasování mělo mít více operací.  Pokud chcete pro operaci spustit profiler, klikněte na **Trasování Profileru**.
 5.  Trasování zobrazí pro každou operaci jednotlivé události, takže můžete diagnostikovat původní příčinu v průběhu celé operace.  Klikněte na jeden z horních příkladů s nejdelší dobou trvání.
 6.  Kliknutím na možnost **Hot Path** zvýrazněte konkrétní cestu k událostem, která nejvíce přispívá k celkové době trvání operace.  V tomto příkladu vidíte, že nejpomalejší volání pochází z metody *FabrikamFiberAzureStorage.GetStorageTableData*. Částí, která trvá nejdéle, je metoda *CloudTable.CreateIfNotExist*. Pokud se tento řádek kódu provádí při každém volání funkce, budou se spotřebovávat zbytečná síťová volání a prostředky procesoru. Nejlepším způsobem, jak kód opravit, je vložit tento řádek do některé metody po spuštění, která se provede pouze jednou.
 
@@ -112,4 +112,5 @@ Stejně jako data shromážděná pro výkon serveru Application Insights zpří
 Nyní, když jste se naučili, jak identifikovat výjimky za běhu, přejděte k dalšímu kurzu, ve kterém zjistíte, jak jako reakci na chyby vytvářet upozornění.
 
 > [!div class="nextstepaction"]
-> [Upozornění na stav aplikace](../../azure-monitor/learn/tutorial-alert.md)
+> [Upozornění na stav aplikace](./tutorial-alert.md)
+

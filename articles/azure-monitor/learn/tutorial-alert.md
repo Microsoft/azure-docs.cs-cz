@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/10/2019
 ms.custom: mvc
-ms.openlocfilehash: 1c39bfdbcfb924505473b20b3d56a28d54c84f93
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 706f3913e25eca6240c186e45709faf6c77620bf
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505869"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324569"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Monitorování a upozornění na stav aplikace pomocí Azure Application Insights
 
@@ -24,7 +24,7 @@ Získáte informace o těchto tématech:
 > * Vytvořit test dostupnosti pro nepřetržitou kontrolu odezvy aplikace
 > * Při výskytu problému poslat e-mail správcům
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -73,4 +73,5 @@ Testy dostupnosti v Application Insights umožňují automaticky testovat aplika
 Teď, když jste se naučili, jak upozornit na problémy, přejděte k dalšímu kurzu, kde se dozvíte, jak analyzovat způsob interakce uživatelů s vaší aplikací.
 
 > [!div class="nextstepaction"]
-> [Pochopení uživatelů](../../azure-monitor/learn/tutorial-users.md)
+> [Pochopení uživatelů](./tutorial-users.md)
+

@@ -4,12 +4,12 @@ description: V tomto rychlém startu se dozvíte, jak nastavit monitorování we
 ms.topic: quickstart
 ms.date: 07/15/2019
 ms.custom: mvc
-ms.openlocfilehash: fa2ecd5d953ec0411a122dc7107ce23de1ae5bc6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eb6c0a8319257949cee8f35be6cdfac22f1fe5d4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014044"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323430"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>Rychlý Start: Začněte monitorovat web pomocí Azure Monitor Application Insights
 
@@ -17,7 +17,7 @@ V tomto rychlém startu se naučíte, jak na web přidat Open Source sadu Applic
 
 Azure Monitor Application Insights umožňuje snadné monitorování webu z hlediska dostupnosti, výkonu a využití. Můžete také rychle identifikovat a diagnostikovat chyby ve vaší aplikaci a nečekat na to, až je nahlásí uživatelé. Application Insights poskytuje možnosti monitorování na straně serveru i klienta nebo prohlížeče.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * Web, na který můžete přidat Application Insights JavaScript SDK.
@@ -26,7 +26,7 @@ Azure Monitor Application Insights umožňuje snadné monitorování webu z hled
 
 Application Insights můžou shromažďovat data telemetrie z jakékoli aplikace připojené k Internetu, která běží místně nebo v cloudu. Tato data zobrazíte pomocí následujících kroků:
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1. Vyberte **vytvořit**  >  **Nástroje pro správu**prostředků  >  **Application Insights**.
 
    > [!NOTE]
@@ -105,15 +105,15 @@ Application Insights můžou shromažďovat data telemetrie z jakékoli aplikace
 
    ![Graf analýzy uživatelských požadavků za časové období](./media/website-monitoring/analytics-query.png)
 
-1. Vraťte se na stránku **Přehled**. Pod hlavičkou **prozkoumat** vyberte možnost **prohlížeč**a pak vyberte možnost **výkon**.  Zobrazí se metriky související s výkonem vašeho webu. Existuje odpovídající zobrazení pro analýzu selhání a výjimek na vašem webu. Můžete vybrat **ukázky** pro přístup k [podrobnostem o koncových transakcích](../../azure-monitor/app/transaction-diagnostics.md).
+1. Vraťte se na stránku **Přehled**. Pod hlavičkou **prozkoumat** vyberte možnost **prohlížeč**a pak vyberte možnost **výkon**.  Zobrazí se metriky související s výkonem vašeho webu. Existuje odpovídající zobrazení pro analýzu selhání a výjimek na vašem webu. Můžete vybrat **ukázky** pro přístup k [podrobnostem o koncových transakcích](./transaction-diagnostics.md).
 
    ![Graf metrik serveru](./media/website-monitoring/browser-performance.png)
 
-1. V hlavní nabídce Application Insights pod hlavičkou **použití** vyberte [**Uživatelé**](../../azure-monitor/app/usage-segmentation.md) a začněte prozkoumat [analytické nástroje chování uživatele](../../azure-monitor/app/usage-overview.md). Protože provádíme testování z jednoho počítače, zobrazí se pouze data pro jednoho uživatele. Pro živý web by distribuce uživatelů mohla vypadat takto:
+1. V hlavní nabídce Application Insights pod hlavičkou **použití** vyberte [**Uživatelé**](./usage-segmentation.md) a začněte prozkoumat [analytické nástroje chování uživatele](./usage-overview.md). Protože provádíme testování z jednoho počítače, zobrazí se pouze data pro jednoho uživatele. Pro živý web by distribuce uživatelů mohla vypadat takto:
 
      ![Graf uživatelů](./media/website-monitoring/usage-users.png)
 
-1. Pro složitější web s více stránkami můžete použít nástroj [**toky uživatelů**](../../azure-monitor/app/usage-flows.md) ke sledování cest, které návštěvníci procházejí různými částmi vašeho webu.
+1. Pro složitější web s více stránkami můžete použít nástroj [**toky uživatelů**](./usage-flows.md) ke sledování cest, které návštěvníci procházejí různými částmi vašeho webu.
 
    ![Vizualizace nástroje Toky uživatelů](./media/website-monitoring/user-flows.png)
 
@@ -133,3 +133,4 @@ Pokud máte v úmyslu pokračovat v práci s dalšími rychlými starty nebo kur
 
 > [!div class="nextstepaction"]
 > [Vyhledání a diagnostika potíží s výkonem](../log-query/log-query-overview.md)
+

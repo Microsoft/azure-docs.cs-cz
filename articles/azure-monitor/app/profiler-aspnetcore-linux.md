@@ -6,24 +6,24 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6ef67addba2bcc96cfb51f9f217d7d43e729bdf4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f01eaf879e70406c6dbe17e6fc544f7aed367e8b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539903"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324110"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profil ASP.NET Core webové aplikace Azure Linux pomocí Application Insights Profiler
 
 Tato funkce je aktuálně ve verzi Preview.
 
-Zjistěte, kolik času se stráví v každé metodě živé webové aplikace při použití [Application Insights](../../azure-monitor/app/app-insights-overview.md). Application Insights Profiler je teď k dispozici pro ASP.NET Core webové aplikace hostované v systému Linux na Azure App Service. Tato příručka poskytuje podrobné pokyny, jak můžete shromažďovat trasování profileru pro ASP.NET Core webové aplikace pro Linux.
+Zjistěte, kolik času se stráví v každé metodě živé webové aplikace při použití [Application Insights](./app-insights-overview.md). Application Insights Profiler je teď k dispozici pro ASP.NET Core webové aplikace hostované v systému Linux na Azure App Service. Tato příručka poskytuje podrobné pokyny, jak můžete shromažďovat trasování profileru pro ASP.NET Core webové aplikace pro Linux.
 
 Po dokončení tohoto návodu může vaše aplikace shromažďovat trasování profileru, jako jsou trasování zobrazené v imagi. V tomto příkladu trasování profileru indikuje, že určitý webový požadavek je pomalý z důvodu času stráveného čekáním. *Horká cesta* v kódu, který zpomaluje aplikaci, je označená ikonou plamene. Metoda **About** v části **HomeController** zpomaluje webovou aplikaci, protože metoda volá funkci **Thread. Sleep** .
 
 ![Trasování profileru](./media/profiler-aspnetcore-linux/profiler-traces.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Následující pokyny platí pro všechna prostředí pro vývoj pro Windows, Linux a Mac:
 
 * Nainstalujte [.NET Core SDK 2.1.2 nebo novější](https://dotnet.microsoft.com/download/archives).
@@ -149,7 +149,7 @@ Další možnosti nasazení najdete v [tomto článku](../../app-service/contain
 
 ## <a name="add-application-insights-to-monitor-your-web-apps"></a>Přidání Application Insights pro monitorování webových aplikací
 
-1. [Vytvořte prostředek Application Insights](./../../azure-monitor/app/create-new-resource.md ).
+1. [Vytvořte prostředek Application Insights](./create-new-resource.md).
 
 2. Zkopírujte hodnotu **ikey** prostředku Application Insights a ve svých webových aplikacích nastavte následující nastavení:
 
@@ -171,3 +171,4 @@ Další možnosti nasazení najdete v [tomto článku](../../app-service/contain
 Pokud používáte vlastní kontejnery, které jsou hostovány Azure App Service, postupujte podle pokynů v části [povolení Service profiler pro kontejnerové ASP.NET Core aplikace](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp) , aby bylo možné povolit Application Insights Profiler.
 
 Nahlaste všechny problémy nebo návrhy do úložiště GitHub Application Insights: [ApplicationInsights-Profiler-AspNetCore: problémy](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues).
+

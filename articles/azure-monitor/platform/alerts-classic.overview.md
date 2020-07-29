@@ -4,17 +4,17 @@ description: Klasické výstrahy jsou zastaralé. Výstrahy umožňují sledovat
 ms.topic: conceptual
 ms.date: 05/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 7d120550d17dcac7410a259e131ad81feb0afdf9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 56dd601e8d961d65ec21eefcc2dd5fed5c75f9fe
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515950"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322359"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Co jsou klasická upozornění v Microsoft Azure?
 
 > [!NOTE]
-> Tento článek popisuje, jak vytvořit starší klasické výstrahy metrik. Azure Monitor teď podporuje [novější výstrahy na metriky téměř v reálném čase a nové prostředí výstrah](../../azure-monitor/platform/alerts-overview.md). Klasické výstrahy jsou [vyřazeny](./monitoring-classic-retirement.md), i když jsou v omezeném rozsahu používány pro prostředky, které ještě nepodporují nové výstrahy. 
+> Tento článek popisuje, jak vytvořit starší klasické výstrahy metrik. Azure Monitor teď podporuje [novější výstrahy na metriky téměř v reálném čase a nové prostředí výstrah](./alerts-overview.md). Klasické výstrahy jsou [vyřazeny](./monitoring-classic-retirement.md), i když jsou v omezeném rozsahu používány pro prostředky, které ještě nepodporují nové výstrahy. 
 >
 
 Výstrahy umožňují konfigurovat podmínky pro data a budou oznámeny, když se podmínky shodují s nejnovějšími daty monitorování.
@@ -40,8 +40,8 @@ Novější výstrahy metriky mají oproti klasickým výstrahám metrik tyto vý
 - **Podpora**multidimenzionálních metrik: můžete upozorňovat na multidimenzionální metriky, které vám umožní monitorovat zajímavý segment metriky.
 - **Větší kontrola nad podmínkami metriky**: můžete definovat rozsáhlejší pravidla upozornění. Novější výstrahy podporují monitorování maximálních, minimálních, průměrných a celkových hodnot metrik.
 - **Kombinované monitorování více metrik**: můžete monitorovat více metrik (aktuálně až dvou metrik) s jedním pravidlem. Výstraha se aktivuje, pokud obě metriky narušují jejich příslušné prahové hodnoty za zadané časové období.
-- **Lepší systém oznámení**: všechny novější výstrahy používají [skupiny akcí](../../azure-monitor/platform/action-groups.md)s názvem skupiny oznámení a akce, které se dají znovu použít v několika výstrahách.  Klasické výstrahy metrik a starší výstrahy Log Analytics nepoužívají skupiny akcí. 
-- **Metriky z protokolů** (Public Preview): data protokolu, která se budou Log Analytics, se teď dají extrahovat a převést na Azure monitor metriky a pak se na ně upozornit stejně jako na jiné metriky. Podívejte se na téma [výstrahy (Classic)](alerts-classic.overview.md) pro terminologii specifická pro klasické výstrahy. 
+- **Lepší systém oznámení**: všechny novější výstrahy používají [skupiny akcí](./action-groups.md)s názvem skupiny oznámení a akce, které se dají znovu použít v několika výstrahách.  Klasické výstrahy metrik a starší výstrahy Log Analytics nepoužívají skupiny akcí. 
+- **Metriky z protokolů** (Public Preview): data protokolu, která se budou Log Analytics, se teď dají extrahovat a převést na Azure monitor metriky a pak se na ně upozornit stejně jako na jiné metriky. Podívejte se na téma [výstrahy (Classic)]() pro terminologii specifická pro klasické výstrahy. 
 
 
 ## <a name="classic-alerts-on-azure-monitor-data"></a>Klasické výstrahy týkající se Azure Monitor dat
@@ -51,7 +51,7 @@ K dispozici jsou dva typy klasických výstrah – výstrahy metrik a výstrahy 
 
 * **Klasické výstrahy protokolu aktivit** – výstraha protokolu streamování, která se spouští na záznamu události protokolu aktivit, který odpovídá kritériím filtru. Tyto výstrahy mají pouze jeden stav "aktivováno". Modul výstrah jednoduše aplikuje kritéria filtru na každou novou událost. Nehledá starší položky. Tyto výstrahy vás můžou informovat, když dojde k novému Service Health incidentu nebo pokud uživatel nebo aplikace provádí v předplatném určitou operaci, například "odstranění virtuálního počítače".
 
-Data protokolu prostředků jsou dostupná prostřednictvím Azure Monitor, směrovat je do Log Analytics a používat upozornění na dotaz na protokol. Log Analytics teď používá [novou metodu upozorňování](../../azure-monitor/platform/alerts-overview.md) . 
+Data protokolu prostředků jsou dostupná prostřednictvím Azure Monitor, směrovat je do Log Analytics a používat upozornění na dotaz na protokol. Log Analytics teď používá [novou metodu upozorňování](./alerts-overview.md) . 
 
 Následující diagram shrnuje zdroje dat v Azure Monitor a koncepční, jak můžete tato data z těchto dat vyvarovat.
 
@@ -68,7 +68,7 @@ Azure používá následující výrazy k popisu klasických výstrah a jejich f
 ## <a name="how-do-i-receive-a-notification-from-an-azure-monitor-classic-alert"></a>Návody dostávat oznámení z Azure Monitor klasické výstrahy?
 Historické výstrahy Azure z různých služeb používaly vlastní integrované metody oznámení. 
 
-Azure Monitor vytvořili opakovaně použitelné seskupení oznámení nazvané *skupiny akcí*. Skupiny akcí určují sadu přijímačů pro oznámení. Kdykoli se aktivuje výstraha, která odkazuje na skupinu akcí, všichni příjemci obdrží toto oznámení. Skupiny akcí umožňují znovu použít seskupení přijímačů (například seznam techniků na základě volání) v mnoha objektech výstrah. Skupiny akcí podporují oznámení prostřednictvím publikování na adresu URL Webhooku kromě e-mailových adres, čísel SMS a mnoha dalších akcí.  Další informace najdete v tématu [skupiny akcí](../../azure-monitor/platform/action-groups.md). 
+Azure Monitor vytvořili opakovaně použitelné seskupení oznámení nazvané *skupiny akcí*. Skupiny akcí určují sadu přijímačů pro oznámení. Kdykoli se aktivuje výstraha, která odkazuje na skupinu akcí, všichni příjemci obdrží toto oznámení. Skupiny akcí umožňují znovu použít seskupení přijímačů (například seznam techniků na základě volání) v mnoha objektech výstrah. Skupiny akcí podporují oznámení prostřednictvím publikování na adresu URL Webhooku kromě e-mailových adres, čísel SMS a mnoha dalších akcí.  Další informace najdete v tématu [skupiny akcí](./action-groups.md). 
 
 Starší klasické výstrahy protokolu aktivit používají skupiny akcí.
 
@@ -96,3 +96,4 @@ Získejte informace o pravidlech výstrah a jejich konfiguraci pomocí:
 * Kontrola [schématu Webhooku upozornění protokolu aktivit](activity-log-alerts-webhook.md)
 * Další informace o [skupinách akcí](action-groups.md)
 * Konfigurace [novějších výstrah](alerts-metric.md)
+

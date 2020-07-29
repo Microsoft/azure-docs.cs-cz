@@ -3,12 +3,12 @@ title: Uchovávání dat a ukládání v Azure Application Insights | Microsoft 
 description: Prohlášení o zásadách uchovávání a ochrany osobních údajů
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 16483c9417c08ea60853d7e70b7121cd0af9db71
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 039e86f964649441967dff82270a3a6c460612f0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540056"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324467"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchovávání a ukládání dat v Application Insights
 
@@ -38,24 +38,24 @@ Application Insights sady SDK jsou dostupné pro řadu typů aplikací: webové 
 ## <a name="what-data-does-it-collect"></a>Jaká data shromažďuje?
 Existují tři zdroje dat:
 
-* Sada SDK, kterou můžete integrovat s aplikací buď [při vývoji](../../azure-monitor/app/asp-net.md) , nebo [v době běhu](../../azure-monitor/app/monitor-performance-live-website-now.md). Existují různé sady SDK pro různé typy aplikací. K dispozici je také [sada SDK pro webové stránky](../../azure-monitor/app/javascript.md), která se načte do prohlížeče koncového uživatele spolu se stránkou.
+* Sada SDK, kterou můžete integrovat s aplikací buď [při vývoji](./asp-net.md) , nebo [v době běhu](./monitor-performance-live-website-now.md). Existují různé sady SDK pro různé typy aplikací. K dispozici je také [sada SDK pro webové stránky](./javascript.md), která se načte do prohlížeče koncového uživatele spolu se stránkou.
   
-  * Každá sada SDK má několik [modulů](../../azure-monitor/app/configuration-with-applicationinsights-config.md), které používají různé techniky ke shromažďování různých typů telemetrie.
+  * Každá sada SDK má několik [modulů](./configuration-with-applicationinsights-config.md), které používají různé techniky ke shromažďování různých typů telemetrie.
   * Pokud nainstalujete sadu SDK ve vývoji, můžete použít její rozhraní API k posílání vlastní telemetrie, a to i ke standardním modulům. Tato vlastní telemetrie může zahrnovat všechna data, která chcete odeslat.
-* Na některých webových serverech existují také agenti, kteří se spouštějí společně s aplikací, a zasílat telemetrii o procesoru, paměti a obsazení sítě. Například virtuální počítače Azure, hostitelé Docker a [servery Java EE](../../azure-monitor/app/java-agent.md) můžou mít takové agenty.
-* [Testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) jsou procesy spouštěné Microsoftem, které odesílají požadavky do vaší webové aplikace v pravidelných intervalech. Výsledky se odesílají do služby Application Insights.
+* Na některých webových serverech existují také agenti, kteří se spouštějí společně s aplikací, a zasílat telemetrii o procesoru, paměti a obsazení sítě. Například virtuální počítače Azure, hostitelé Docker a [servery Java EE](./java-agent.md) můžou mít takové agenty.
+* [Testy dostupnosti](./monitor-web-app-availability.md) jsou procesy spouštěné Microsoftem, které odesílají požadavky do vaší webové aplikace v pravidelných intervalech. Výsledky se odesílají do služby Application Insights.
 
 ### <a name="what-kinds-of-data-are-collected"></a>Jaké druhy dat se shromažďují?
 Hlavní kategorie jsou:
 
-* [Telemetrie webového serveru](../../azure-monitor/app/asp-net.md) – požadavky HTTP.  Identifikátor URI, čas potřebný ke zpracování žádosti, kód odpovědi, IP adresa klienta. `Session id`.
-* [Webové stránky](../../azure-monitor/app/javascript.md) – počty stránek, uživatelů a relací. Doba načítání stránky Výjimek. Volání AJAX.
+* [Telemetrie webového serveru](./asp-net.md) – požadavky HTTP.  Identifikátor URI, čas potřebný ke zpracování žádosti, kód odpovědi, IP adresa klienta. `Session id`.
+* [Webové stránky](./javascript.md) – počty stránek, uživatelů a relací. Doba načítání stránky Výjimek. Volání AJAX.
 * Čítače výkonu – paměť, procesor, vstup/výstup, obsazenost sítě.
 * Kontext klienta a serveru – operační systém, národní prostředí, typ zařízení, prohlížeč a rozlišení obrazovky.
-* [Výjimky](../../azure-monitor/app/asp-net-exceptions.md) a zhroucení – **výpisy zásobníku**, `build id` typ procesoru. 
-* [Závislosti](../../azure-monitor/app/asp-net-dependencies.md) – volání externích služeb, jako jsou REST, SQL a AJAX. Identifikátor URI nebo připojovací řetězec, doba trvání, úspěch, příkaz
-* [Testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) – doba trvání testu a kroky, odpovědi.
-* [Protokoly trasování](../../azure-monitor/app/asp-net-trace-logs.md) a [vlastní telemetrie](../../azure-monitor/app/api-custom-events-metrics.md)  -  **cokoli, co kódujete do svých protokolů nebo telemetrie**.
+* [Výjimky](./asp-net-exceptions.md) a zhroucení – **výpisy zásobníku**, `build id` typ procesoru. 
+* [Závislosti](./asp-net-dependencies.md) – volání externích služeb, jako jsou REST, SQL a AJAX. Identifikátor URI nebo připojovací řetězec, doba trvání, úspěch, příkaz
+* [Testy dostupnosti](./monitor-web-app-availability.md) – doba trvání testu a kroky, odpovědi.
+* [Protokoly trasování](./asp-net-trace-logs.md) a [vlastní telemetrie](./api-custom-events-metrics.md)  -  **cokoli, co kódujete do svých protokolů nebo telemetrie**.
 
 [Další podrobnosti](#data-sent-by-application-insights).
 
@@ -71,16 +71,16 @@ V případě webových stránek otevřete okno ladění v prohlížeči.
 ![Stiskněte klávesu F12 a otevřete kartu síť.](./media/data-retention-privacy/08-browser.png)
 
 ### <a name="can-i-write-code-to-filter-the-telemetry-before-it-is-sent"></a>Můžu napsat kód pro filtrování telemetrie před odesláním?
-To je možné tím, že napíšete [modul plug-in procesoru telemetrie](../../azure-monitor/app/api-filtering-sampling.md).
+To je možné tím, že napíšete [modul plug-in procesoru telemetrie](./api-filtering-sampling.md).
 
 ## <a name="how-long-is-the-data-kept"></a>Jak dlouho se data uchovávají?
-Nezpracované datové body (tj. položky, které se dají dotazovat v analýze a prohledávat ve vyhledávání) jsou zachované až 730 dnů. Můžete [vybrat dobu uchovávání dat](./pricing.md#change-the-data-retention-period) 30, 60, 90, 120, 180, 270, 365, 550 nebo 730 dnů. Pokud potřebujete zachovat data déle než 730 dní, můžete pomocí [průběžného exportu](../../azure-monitor/app/export-telemetry.md) ji během příjmu dat zkopírovat do účtu úložiště. 
+Nezpracované datové body (tj. položky, které se dají dotazovat v analýze a prohledávat ve vyhledávání) jsou zachované až 730 dnů. Můžete [vybrat dobu uchovávání dat](./pricing.md#change-the-data-retention-period) 30, 60, 90, 120, 180, 270, 365, 550 nebo 730 dnů. Pokud potřebujete zachovat data déle než 730 dní, můžete pomocí [průběžného exportu](./export-telemetry.md) ji během příjmu dat zkopírovat do účtu úložiště. 
 
 Data uchovávaná déle než 90 dnů se účtují za přidání poplatků. Přečtěte si další informace o Application Insights cenách na [stránce s cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/).
 
 Agregovaná data (tj. počty, průměry a další statistická data, která vidíte v Průzkumníkovi metrik) se uchovávají po dobu 1 minuty po 90 dnech.
 
-[Snímky ladění](../../azure-monitor/app/snapshot-debugger.md) se ukládají po dobu 15 dnů. Tyto zásady uchovávání informací se nastavují na základě jednotlivých aplikací. Pokud potřebujete tuto hodnotu zvýšit, můžete požádat o zvýšení otevřením případu podpory v Azure Portal.
+[Snímky ladění](./snapshot-debugger.md) se ukládají po dobu 15 dnů. Tyto zásady uchovávání informací se nastavují na základě jednotlivých aplikací. Pokud potřebujete tuto hodnotu zvýšit, můžete požádat o zvýšení otevřením případu podpory v Azure Portal.
 
 ## <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
 Data jsou viditelná pro vás a v případě, že máte účet organizace, členové týmu. 
@@ -233,7 +233,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 
 ## <a name="personal-data-stored-in-application-insights"></a>Osobní údaje uložené v Application Insights
 
-Náš [článek Application Insights osobních údajů](../../azure-monitor/platform/personal-data-mgmt.md) popisuje tento problém podrobně.
+Náš [článek Application Insights osobních údajů](../platform/personal-data-mgmt.md) popisuje tento problém podrobně.
 
 #### <a name="can-my-users-turn-off-application-insights"></a>Je možné, že se moji uživatelé vypnou Application Insights?
 Ne přímo. Neposkytujeme přepínač, který můžou uživatelé používat k vypnutí Application Insights.
@@ -249,13 +249,13 @@ Sady SDK se mezi platformami liší a je možné nainstalovat několik součást
 | --- | --- |
 | [Přidání sady SDK Application Insights do webového projektu .NET][greenbrown] |ServerContext<br/>Odvodit<br/>Čítače výkonu<br/>Žádosti<br/>**Výjimky**<br/>Relace<br/>uživatelé |
 | [Instalace Monitorování stavu ve službě IIS][redfield] |Závislosti<br/>ServerContext<br/>Odvodit<br/>Čítače výkonu |
-| [Přidání sady SDK Application Insights do webové aplikace v jazyce Java][java] |ServerContext<br/>Odvodit<br/>Request<br/>Relace<br/>uživatelé |
+| [Přidání sady SDK Application Insights do webové aplikace v jazyce Java][java] |ServerContext<br/>Odvodit<br/>Žádost<br/>Relace<br/>uživatelé |
 | [Přidat sadu JavaScript SDK na webovou stránku][client] |Instance třídy ClientContext <br/>Odvodit<br/>stránka<br/>ClientPerf<br/>Ajax |
 | [Definovat výchozí vlastnosti][apiproperties] |**Vlastnosti** všech standardních a vlastních událostí |
 | [TrackMetric volání][api] |Číselné hodnoty<br/>**Vlastnosti** |
 | [Hovorová stopa *][api] |Název události<br/>**Vlastnosti** |
 | [TrackException volání][api] |**Výjimky**<br/>Výpis zásobníku<br/>**Vlastnosti** |
-| Sada SDK nemůže shromažďovat data. Příklad: <br/> – nejde získat přístup k čítačům výkonu.<br/> – výjimka v inicializátoru telemetrie |Diagnostika sady SDK |
+| Sada SDK nemůže shromažďovat data. Například: <br/> – nejde získat přístup k čítačům výkonu.<br/> – výjimka v inicializátoru telemetrie |Diagnostika sady SDK |
 
 Pro [sady SDK pro jiné platformy][platforms]se podívejte na jejich dokumenty.
 
@@ -286,7 +286,7 @@ Pro [sady SDK pro jiné platformy][platforms]se podívejte na jejich dokumenty.
 [Některá data můžete odpínat úpravou ApplicationInsights.config][config]
 
 > [!NOTE]
-> IP adresa klienta se používá k odvodit zeměpisnou polohu, ale ve výchozím nastavení se data IP už neukládají a do přidruženého pole se zapisují všechny nuly. Chcete-li získat další informace o zpracování osobních údajů, doporučujeme tento [článek](../../azure-monitor/platform/personal-data-mgmt.md#application-data). Pokud potřebujete ukládat údaje o IP adrese, Projděte si tyto možnosti podle [článku](./ip-collection.md) .
+> IP adresa klienta se používá k odvodit zeměpisnou polohu, ale ve výchozím nastavení se data IP už neukládají a do přidruženého pole se zapisují všechny nuly. Chcete-li získat další informace o zpracování osobních údajů, doporučujeme tento [článek](../platform/personal-data-mgmt.md#application-data). Pokud potřebujete ukládat údaje o IP adrese, Projděte si tyto možnosti podle [článku](./ip-collection.md) .
 
 ## <a name="credits"></a>Kredity
 Tento produkt zahrnuje data GeoLite2 vytvořená v MaxMind, která jsou dostupná z [https://www.maxmind.com](https://www.maxmind.com) .
@@ -295,13 +295,14 @@ Tento produkt zahrnuje data GeoLite2 vytvořená v MaxMind, která jsou dostupn�
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[apiproperties]: ../../azure-monitor/app/api-custom-events-metrics.md#properties
-[client]: ../../azure-monitor/app/javascript.md
-[config]: ../../azure-monitor/app/configuration-with-applicationinsights-config.md
-[greenbrown]: ../../azure-monitor/app/asp-net.md
-[java]: ../../azure-monitor/app/java-get-started.md
-[platforms]: ../../azure-monitor/app/platforms.md
+[api]: ./api-custom-events-metrics.md
+[apiproperties]: ./api-custom-events-metrics.md#properties
+[client]: ./javascript.md
+[config]: ./configuration-with-applicationinsights-config.md
+[greenbrown]: ./asp-net.md
+[java]: ./java-get-started.md
+[platforms]: ./platforms.md
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
-[redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[redfield]: ./monitor-performance-live-website-now.md
+[start]: ./app-insights-overview.md
+

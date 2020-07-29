@@ -10,13 +10,13 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 0fa70cfb287cc4a68892ada1044283a996d8dd50
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: e6652d28da6bf142125e6ec284af16c849b00b1e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873928"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322053"
 ---
 # <a name="quickstart-use-java-to-search-the-web-with-the-bing-web-search-rest-api-an-azure-cognitive-service"></a>Rychlý Start: použití jazyka Java k vyhledávání na webu pomocí Vyhledávání na webu Bingu REST API, Služba rozpoznávání Azure
 
@@ -49,7 +49,7 @@ import com.google.gson.JsonParser;
 
 ### <a name="declare-gson-in-the-maven-pom-file"></a>Deklarace knihovny Gson v souboru Maven POM
 
-Pokud používáte Maven, deklarujte gson v souboru POM. XML. Pokud jste knihovnu Gson nainstalovali lokálně, můžete tento krok přeskočit.
+Pokud používáte Maven, deklarujte gson v POM.xml. Pokud jste knihovnu Gson nainstalovali lokálně, můžete tento krok přeskočit.
 
 ```xml
 <dependency>

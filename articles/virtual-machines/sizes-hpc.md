@@ -4,17 +4,17 @@ description: Zobrazuje seznam různých velikostí dostupných pro vysoce výkon
 author: vermagit
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 041300efd9d756f2ef8145adb23d745b2345c7eb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ffbe61cd84d2c543f0db97a5d70ad13193f2a68d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058780"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87267111"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>Vysoce výkonné výpočetní velikosti virtuálních počítačů
 
@@ -96,7 +96,7 @@ Azure poskytuje několik možností pro vytváření clusterů virtuálních po�
 
 - **Sada Microsoft HPC Pack**  -  [HPC Pack](/powershell/high-performance-computing/overview) zahrnuje běhové prostředí pro MS-MPI, které používá síť Azure RDMA při nasazení na virtuální počítače Linux s podporou RDMA. Například nasazení najdete v tématu [Nastavení clusteru Linux RDMA se sadou HPC Pack pro spouštění aplikací MPI](/powershell/high-performance-computing/hpcpack-linux-openfoam).
 
-## <a name="deployment-considerations"></a>Co je potřeba vzít v úvahu při nasazování
+## <a name="deployment-considerations"></a>Aspekty nasazování
 
 - **Předplatné Azure** – Chcete-li nasadit více než několik několika instancí náročných na výpočetní výkon, vezměte v úvahu předplatné s průběžnými platbami nebo jiné možnosti nákupu. Pokud používáte [bezplatný účet Azure](https://azure.microsoft.com/free/), můžete použít pouze omezený počet výpočetních jader Azure.
 
@@ -118,7 +118,7 @@ Azure poskytuje několik možností pro vytváření clusterů virtuálních po�
 - [Optimalizované pro výpočty](sizes-compute.md)
 - [Optimalizované pro paměť](sizes-memory.md)
 - [Optimalizované pro úložiště](sizes-storage.md)
-- [Optimalizované z hlediska GPU.](sizes-gpu.md)
+- [Optimalizované z hlediska GPU](sizes-gpu.md)
 - [Předchozí generace](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>Další kroky

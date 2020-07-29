@@ -1,6 +1,5 @@
 ---
-title: 'Kurz 1: předpověď úvěrového rizika'
-titleSuffix: ML Studio (classic) - Azure
+title: 'Kurz pro ML Studio (Classic): předpověď úvěrového rizika – Azure'
 description: Podrobný kurz, který ukazuje, jak vytvořit řešení prediktivní analýzy pro posuzování úvěrového rizika v Azure Machine Learning Studio (Classic). Tento kurz je první částí série kurzů se třemi částmi.  Ukazuje, jak vytvořit pracovní prostor, nahrát data a vytvořit experiment.
 keywords: úvěrové riziko,řešení prediktivní analýzy,posouzení rizika
 author: sdgilley
@@ -10,14 +9,17 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 59874387b6dfc23fddbd6c6eed89263a54389649
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b8e2d0cd0d9aa567cfab9e2fef66ad6363e59d53
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87048008"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324892"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Kurz 1: předpověď úvěrového rizika – Azure Machine Learning Studio (Classic)
+
+**platí pro:** ![ žádná](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasická) 
+
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -38,7 +40,7 @@ V této části kurzu:
 
 Pak můžete tento experiment použít k [proškolování modelů v části 2](tutorial-part2-credit-risk-train.md) a pak [je nasadit v části 3](tutorial-part3-credit-risk-deploy.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto kurzu se předpokládá, že jste předtím používali Machine Learning Studio (Classic) alespoň jednou a že máte zkušenosti s koncepty machine learningu. Bere ale v úvahu, že nejste odborníkem ani na jedno.
 

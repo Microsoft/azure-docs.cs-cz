@@ -2,27 +2,48 @@
 title: Nasazení prostředků do skupiny pro správu
 description: V této části najdete popis postupu nasazení prostředků v oboru skupiny pro správu v šabloně Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.openlocfilehash: 863d1330412fa238b820eb0f1f05351fc723de6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/27/2020
+ms.openlocfilehash: a17387aef4d35c042d1fe0b02f1c6fd447e4a918
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79460309"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321798"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>Vytváření prostředků na úrovni skupiny pro správu
 
-V případě, že vaše organizace bude vyspělá, možná budete muset definovat a přiřazovat [zásady](../../governance/policy/overview.md) nebo [řízení přístupu na základě rolí](../../role-based-access-control/overview.md) pro skupinu pro správu. Šablony na úrovni skupiny pro správu umožňují deklarativní použití zásad a přiřazování rolí na úrovni skupiny pro správu.
+V případě zralosti vaší organizace můžete nasadit šablonu Azure Resource Manager (šablonu ARM) a vytvořit prostředky na úrovni skupiny pro správu. Například může být nutné definovat a přiřadit [zásady](../../governance/policy/overview.md) nebo [řízení přístupu na základě rolí](../../role-based-access-control/overview.md) pro skupinu pro správu. Šablony na úrovni skupiny pro správu umožňují deklarativní použití zásad a přiřazování rolí na úrovni skupiny pro správu.
 
 ## <a name="supported-resources"></a>Podporované prostředky
 
-Na úrovni skupiny pro správu můžete nasadit následující typy prostředků:
+Ne všechny typy prostředků lze nasadit do úrovně skupiny pro správu. V této části jsou uvedeny typy prostředků, které jsou podporovány.
 
-* [nasazení](/azure/templates/microsoft.resources/deployments) – pro vnořené šablony, které se nasazují do předplatných nebo skupin prostředků.
+Pro plány Azure použijte:
+
+* [artefakty](/azure/templates/microsoft.blueprint/blueprints/artifacts)
+* [podrobné plány](/azure/templates/microsoft.blueprint/blueprints)
+* [blueprintAssignments](/azure/templates/microsoft.blueprint/blueprintassignments)
+* [zachovávaných](/azure/templates/microsoft.blueprint/blueprints/versions)
+
+Pro zásady Azure použijte:
+
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
+* [nápravy](/azure/templates/microsoft.policyinsights/remediations)
+
+Pro řízení přístupu na základě role použijte:
+
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 * [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
+
+U vnořených šablon, které se nasazují do předplatných nebo skupin prostředků, použijte:
+
+* [nasazení](/azure/templates/microsoft.resources/deployments)
+
+Pro správu prostředků použijte:
+
+* [značky](/azure/templates/microsoft.resources/tags)
 
 ### <a name="schema"></a>Schéma
 
@@ -74,6 +95,95 @@ Můžete zadat název nasazení nebo použít výchozí název nasazení. Výcho
 
 Pro každý název nasazení je umístění neměnné. Nasazení nelze vytvořit v jednom umístění, pokud existuje existující nasazení se stejným názvem v jiném umístění. Pokud se zobrazí kód chyby `InvalidDeploymentLocation` , použijte jiný název nebo stejné umístění jako předchozí nasazení pro tento název.
 
+## <a name="deployment-scopes"></a>Obory nasazení
+
+Při nasazování do skupiny pro správu můžete cílit na skupinu pro správu zadanou v příkazu nasazení nebo v jiných skupinách pro správu v tenantovi. V rámci skupiny pro správu můžete také cílit na předplatná nebo skupiny prostředků. Uživatel, který šablonu nasazuje, musí mít přístup k zadanému oboru.
+
+Prostředky definované v části Resources v šabloně jsou aplikovány na skupinu pro správu z příkazu nasazení.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        management-group-level-resources
+    ],
+    "outputs": {}
+}
+```
+
+Chcete-li cílit na jinou skupinu pro správu, přidejte vnořené nasazení a zadejte `scope` vlastnost.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "mgName": {
+            "type": "string"
+        }
+    },
+    "variables": {
+        "mgId": "[concat('Microsoft.Management/managementGroups/', parameters('mgName'))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2019-10-01",
+            "name": "nestedDeployment",
+            "scope": "[variables('mgId')]",
+            "location": "eastus",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    nested-template
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
+Chcete-li cílit na předplatné v rámci skupiny pro správu, použijte vnořené nasazení a `subscriptionId` vlastnost. Pokud chcete cílit na skupinu prostředků v rámci tohoto předplatného, přidejte další vnořené nasazení a `resourceGroup` vlastnost.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-06-01",
+      "name": "nestedSub",
+      "location": "westus2",
+      "subscriptionId": "00000000-0000-0000-0000-000000000000",
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "resources": [
+            {
+              "type": "Microsoft.Resources/deployments",
+              "apiVersion": "2020-06-01",
+              "name": "nestedRG",
+              "resourceGroup": "rg2",
+              "properties": {
+                "mode": "Incremental",
+                "template": {
+                  nested-template
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+```
+
 ## <a name="use-template-functions"></a>Použití funkcí šablon
 
 V případě nasazení skupin pro správu existují při používání funkcí šablon důležité důležité informace:
@@ -95,7 +205,7 @@ V případě nasazení skupin pro správu existují při používání funkcí �
   /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   ```
 
-## <a name="create-policies"></a>Vytvoření zásad
+## <a name="azure-policy"></a>Azure Policy
 
 ### <a name="define-policy"></a>Definovat zásady
 
@@ -165,9 +275,85 @@ Následující příklad přiřadí existující definici zásady ke skupině pr
 }
 ```
 
-## <a name="template-sample"></a>Ukázka šablony
+## <a name="deploy-to-subscription-and-resource-group"></a>Nasazení do předplatného a skupiny prostředků
 
-* [Vytvořte skupinu prostředků, zásadu a přiřazení zásad](https://github.com/Azure/azure-docs-json-samples/blob/master/management-level-deployment/azuredeploy.json).
+Z nasazení na úrovni skupiny pro správu můžete cílit na předplatné v rámci skupiny pro správu. Následující příklad vytvoří skupinu prostředků v rámci předplatného a nasadí účet úložiště do této skupiny prostředků.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "nestedsubId": {
+      "type": "string"
+    },
+    "nestedRG": {
+      "type": "string"
+    },
+    "storageAccountName": {
+      "type": "string"
+    },
+    "nestedLocation": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-06-01",
+      "name": "nestedSub",
+      "location": "[parameters('nestedLocation')]",
+      "subscriptionId": "[parameters('nestedSubId')]",
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+          },
+          "variables": {
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Resources/resourceGroups",
+              "apiVersion": "2020-06-01",
+              "name": "[parameters('nestedRG')]",
+              "location": "[parameters('nestedLocation')]",
+            },
+            {
+              "type": "Microsoft.Resources/deployments",
+              "apiVersion": "2020-06-01",
+              "name": "nestedSubRG",
+              "resourceGroup": "[parameters('nestedRG')]",
+              "dependsOn": [
+                "[parameters('nestedRG')]"
+              ],
+              "properties": {
+                "mode": "Incremental",
+                "template": {
+                  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                  "contentVersion": "1.0.0.0",
+                  "resources": [
+                    {
+                      "type": "Microsoft.Storage/storageAccounts",
+                      "apiVersion": "2019-04-01",
+                      "name": "[parameters('storageAccountName')]",
+                      "location": "[parameters('nestedLocation')]",
+                      "sku": {
+                        "name": "Standard_LRS"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+```
 
 ## <a name="next-steps"></a>Další kroky
 

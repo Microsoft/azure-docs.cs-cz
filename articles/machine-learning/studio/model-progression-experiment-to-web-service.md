@@ -1,6 +1,5 @@
 ---
-title: Způsob, jakým se model bude webové služby
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (Classic): způsob, jakým se model stal webovou službou – Azure'
 description: Přehled mechanismu způsobu, jakým model Azure Machine Learning Studio (klasický) postupuje z experimentu vývoje na webovou službu.
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: 4d7ab5cada77ccebc214e09b43fbb70b3ad8bb59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a02ac6db7e560fcb90a87b7bc96284c279c1654
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84117187"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324994"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>Způsob, jakým model Machine Learning Studio (klasický) postupuje z experimentu na webovou službu
+
+**platí pro:** ![ žádná](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasická) 
+
 
 Azure Machine Learning Studio (Classic) poskytuje interaktivní plátno, které umožňuje vyvíjet, spouštět, testovat a iterovat ***experiment*** , který představuje model prediktivní analýzy. K dispozici je celá řada modulů, které mohou:
 

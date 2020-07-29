@@ -1,6 +1,6 @@
 ---
 title: Připojit data syslogu ke službě Azure Sentinel | Microsoft Docs
-description: Připojte jakékoli místní zařízení, které podporuje syslog, do Azure Sentinel pomocí agenta v počítači se systémem Linux mezi zařízením a Sentinel. 
+description: Připojte libovolný počítač nebo zařízení, které podporuje syslog, do Azure Sentinel pomocí agenta na počítači se systémem Linux mezi zařízením a Sentinel. 
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -12,66 +12,90 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/30/2019
+ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 38e47469723d767561dd778b8f175780ab181fd4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 27c1ad4907b0b16ce6830a6fe787b78f6129eadd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076256"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322835"
 ---
-# <a name="connect-your-external-solution-using-syslog"></a>Připojení externího řešení pomocí protokolu syslog
+# <a name="collect-data-from-linux-based-sources-using-syslog"></a>Shromažďování dat ze zdrojů se systémem Linux pomocí protokolu syslog
 
-Můžete připojit libovolné místní zařízení, které podporuje syslog, do Azure Sentinel. K tomu je potřeba použít agenta založeného na počítači se systémem Linux mezi zařízením a službou Sentinel Azure. Pokud je váš počítač se systémem Linux v Azure, můžete streamovat protokoly z vašeho zařízení nebo aplikace do vyhrazeného pracovního prostoru vytvořeného v Azure a připojit ho. Pokud Váš počítač se systémem Linux není v Azure, můžete streamovat protokoly ze zařízení na vyhrazený místní virtuální počítač nebo počítač, na který instalujete agenta pro Linux. 
+Pomocí agenta Log Analytics pro Linux (dřív označovaného jako agent OMS) můžete streamovat události z počítačů nebo zařízení s podporou systému Linux, které podporují protokol syslog, do Azure Sentinel. To můžete provést pro libovolný počítač, který umožňuje nainstalovat agenta Log Analytics přímo na počítači. Nativní démon procesu Syslog počítače bude shromažďovat místní události zadaných typů a přesměrovat je místně do agenta, který je bude zasílat do vašeho pracovního prostoru Log Analytics.
 
 > [!NOTE]
-> Pokud vaše zařízení podporuje syslog CEF, připojení je více dokončeno a měli byste zvolit tuto možnost a postupovat podle pokynů v tématu [připojení dat z CEF](connect-common-event-format.md).
+> - Pokud vaše zařízení podporuje **CEF (Common Event Format) přes SYSLOG**, shromáždí se více kompletních datových sad a data se analyzují v kolekci. Tuto možnost byste měli zvolit a postupovat podle pokynů v tématu [připojení vašich externích řešení pomocí CEF](connect-common-event-format.md).
+>
+> - Log Analytics podporuje shromažďování zpráv odesílaných démony **rsyslog** nebo **syslog-ng** , kde je výchozí rsyslog. Výchozí démon procesu Syslog ve verzi 5 Red Hat Enterprise Linux (RHEL), CentOS a verze Oracle Linux (**sysklog**) není pro shromažďování událostí syslog podporován. Aby bylo možné shromažďovat data syslog z této verze těchto distribucí, je třeba nainstalovat démona rsyslog a nakonfigurovat tak, aby nahradila sysklog.
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Syslog je protokol protokolování událostí, který je společný pro Linux. Aplikace budou odesílat zprávy, které mohou být uloženy v místním počítači nebo doručeny do kolekce syslog. Pokud je nainstalován agent Log Analytics pro Linux, nakonfiguruje místní démon syslog, aby předal zprávy agentovi. Agent potom zprávu pošle Azure Monitor, kde se vytvoří odpovídající záznam.
+**SYSLOG** je protokol protokolování událostí, který je společný pro Linux. Když je na VIRTUÁLNÍm počítači nebo zařízení nainstalovaný **agent Log Analytics pro Linux** , rutina instalace nakonfiguruje místní démon syslog, aby předal zprávy agentovi na portu TCP 25224. Agent pak pošle zprávu do vašeho pracovního prostoru Log Analytics přes HTTPS, kde se analyzuje do položky protokolu událostí v tabulce syslog v **protokolech služby Azure Sentinel >**.
 
 Další informace najdete v tématu [zdroje dat syslog v Azure monitor](../azure-monitor/platform/data-sources-syslog.md).
 
-> [!NOTE]
-> - Agent může shromažďovat protokoly z více zdrojů, ale musí být nainstalovaný na vyhrazeném proxy počítači.
-> - Pokud chcete podporovat konektory pro CEF i syslog na jednom virtuálním počítači, postupujte podle následujících kroků, abyste se vyhnuli duplicitování dat:
->    1. Postupujte podle pokynů pro [připojení CEF](connect-common-event-format.md).
->    2. Pokud chcete data protokolu syslog připojit, použijte **Nastavení**  >  **pracovní prostor**nastavení  >  **Upřesnit nastavení**  >  **data**  >  **syslog** a nastavte zařízení a jejich priority tak, aby nepoužívaly stejné možnosti a vlastnosti, které jste použili v konfiguraci CEF. <br></br>Pokud **na moje počítače vyberete použít**, použije se tato upravena vlastním nastavením na všechny virtuální počítače připojené k tomuto pracovnímu prostoru.
+## <a name="configure-syslog-collection"></a>Konfigurovat shromažďování syslog
 
-
-## <a name="connect-your-syslog-appliance"></a>Připojení zařízení syslog
+### <a name="configure-your-linux-machine-or-appliance"></a>Konfigurace počítače se systémem Linux nebo zařízení
 
 1. V Azure Sentinel vyberte **datové konektory** a pak vyberte konektor **syslog** .
 
-2. V okně **syslog** vyberte **otevřít stránku konektoru**.
+1. V okně **syslog** vyberte **otevřít stránku konektoru**.
 
-3. Nainstalujte agenta pro Linux:
+1. Nainstalujte agenta pro Linux. V části **zvolit umístění pro instalaci agenta:**
     
-    - Pokud je váš virtuální počítač se systémem Linux v Azure, vyberte **Stáhnout a nainstalovat agenta na virtuálním počítači Azure Linux**. V okně **virtuální počítače** vyberte virtuální počítače, pro které chcete nainstalovat agenta, a pak klikněte na **připojit**.
-    - Pokud počítač se systémem Linux není v Azure, vyberte **Stáhnout a nainstalovat agenta na počítači se systémem Linux mimo Azure**. V okně **přímý agent** zkopírujte příkaz pro **Stažení a zprovoznění agenta pro Linux** a spusťte ho na svém počítači. 
+    **Pro virtuální počítač Azure Linux:**
+      
+    1. Vyberte **nainstalovat agenta na virtuálním počítači Azure Linux**.
+    
+    1. Klikněte na tlačítko **stáhnout & nainstalovat agenta pro virtuální počítače se systémem Azure Linux >** odkaz. 
+    
+    1. V okně **virtuální počítače** klikněte na virtuální počítač, na který chcete nainstalovat agenta, a pak klikněte na **připojit**. Tento krok opakujte pro každý virtuální počítač, ke kterému se chcete připojit.
+    
+    **Pro jakýkoli jiný počítač se systémem Linux:**
+
+    1. Výběr **instalace agenta na počítači, který není na platformě Azure**
+
+    1. Klikněte na **stáhnout & instalovat agenta pro počítače, které nejsou na platformě Azure Linux >** odkaz. 
+
+    1. V okně **Správa agentů** klikněte na kartu **servery se systémem Linux** a potom zkopírujte příkaz pro **Stažení a zprovoznění agenta pro Linux** a spusťte jej na počítači se systémem Linux. 
     
    > [!NOTE]
    > Ujistěte se, že pro tyto počítače nakonfigurujete nastavení zabezpečení podle zásad zabezpečení vaší organizace. Můžete třeba nakonfigurovat nastavení sítě tak, aby odpovídalo zásadám zabezpečení sítě ve vaší organizaci, a změnit porty a protokoly v procesu démona tak, aby odpovídaly požadavkům na zabezpečení.
 
-4. Vyberte **otevřít konfiguraci rozšířeného nastavení v pracovním prostoru**.
+### <a name="configure-the-log-analytics-agent"></a>Konfigurace agenta Log Analytics
 
-5. V okně **Upřesnit nastavení** vyberte **data**  >  **syslog**. Pak přidejte zařízení, aby se konektor mohl shromažďovat.
+1. V dolní části okna konektoru syslog klikněte na odkaz **otevřít konfiguraci rozšířených nastavení v pracovním prostoru >** .
+
+1. V okně **Upřesnit nastavení** vyberte **data**  >  **syslog**. Pak přidejte zařízení, aby se konektor mohl shromažďovat.
     
-    Přidejte do svých hlaviček protokolů zařízení, která vaše zařízení syslog zahrnuje. Tuto konfiguraci můžete zobrazit v zařízení syslog ve složce **syslog-d** `/etc/rsyslog.d/security-config-omsagent.conf` a v **r-syslog** z `/etc/syslog-ng/security-config-omsagent.conf` .
+    - Přidejte do svých hlaviček protokolů zařízení, která vaše zařízení syslog zahrnuje. 
     
-    Pokud chcete použít zjišťování přihlášení neobvyklé SSH s daty, která shromáždíte, přidejte **auth** a **authpriv**. Další podrobnosti najdete v [následující části](#configure-the-syslog-connector-for-anomalous-ssh-login-detection) .
+    - Pokud chcete použít zjišťování přihlášení neobvyklé SSH s daty, která shromáždíte, přidejte **auth** a **authpriv**. Další podrobnosti najdete v [následující části](#configure-the-syslog-connector-for-anomalous-ssh-login-detection) .
 
-6. Po přidání všech zařízení, která chcete monitorovat, a upravení všech možností závažnosti pro každé z nich zaškrtněte políčko **použít pro tyto počítače níže uvedenou konfiguraci**.
+1. Po přidání všech zařízení, která chcete monitorovat, a upravení všech možností závažnosti pro každé z nich zaškrtněte políčko **použít pro tyto počítače níže uvedenou konfiguraci**.
 
-7. Vyberte **Uložit**. 
+1. Vyberte **Uložit**. 
 
-8. V zařízení syslog se ujistěte, že posíláte zařízení, která jste zadali.
+1. Na svém VIRTUÁLNÍm počítači nebo zařízení se ujistěte, že posíláte zařízení, která jste zadali.
 
-9. Chcete-li použít příslušné schéma v Azure Monitor pro protokoly syslog, vyhledejte protokol **SYSLOG**.
+1. Chcete-li zadat dotaz na data protokolu syslog v **protokolech**, zadejte `Syslog` do okna dotazu.
 
-10. Pomocí funkce Kusto popsané v tématu [použití funkcí v Azure Monitorch dotazech protokolu](../azure-monitor/log-query/functions.md) můžete analyzovat zprávy syslog. Pak je můžete uložit jako novou funkci Log Analytics k použití jako nového datového typu.
+1. Pomocí parametrů dotazu popsaných v tématu [použití funkcí v Azure Monitorch](../azure-monitor/log-query/functions.md) dotazech protokolu můžete analyzovat zprávy syslog. Dotaz pak můžete uložit jako novou funkci Log Analytics a použít ji jako nový datový typ.
+
+> [!NOTE]
+>
+> Existující [počítač pro přeposílání protokolů CEF](connect-cef-agent.md) můžete použít ke shromažďování a posílání protokolů z jednoduchých zdrojů syslog. K tomu, abyste se vyhnuli posílání událostí v obou formátech do služby Azure Sentinel, je nutné provést následující kroky, protože výsledkem bude duplikace událostí.
+>
+>    Již jste nastavili [shromažďování dat z vašich CEF zdrojů](connect-common-event-format.md)a nakonfigurovali jste agenta Log Analytics, jak je uvedeno výše:
+>
+> 1. V každém počítači, který odesílá protokoly ve formátu CEF, je nutné upravit konfigurační soubor syslog a odebrat tak zařízení, která se používají k odesílání zpráv CEF. Zařízení, která jsou odesílána v CEF, nebudou také odesílána ve službě syslog. Podrobné pokyny k tomu, jak to udělat, najdete v tématu [Konfigurace protokolu syslog v agentovi Linux](../azure-monitor/platform/data-sources-syslog.md#configure-syslog-on-linux-agent) .
+>
+> 1. Pokud chcete zakázat synchronizaci agenta s konfigurací syslog v Azure Sentinel, musíte na těchto počítačích spustit následující příkaz. Tím se zajistí, že se změna konfigurace, kterou jste provedli v předchozím kroku, nepřepíše.<br>
+> `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
+
 
 ### <a name="configure-the-syslog-connector-for-anomalous-ssh-login-detection"></a>Konfigurace konektoru syslog pro detekci přihlášení neobvyklé SSH
 
@@ -87,7 +111,7 @@ Azure Sentinel může použít Machine Learning (ML) na data syslog k identifika
  
 Tato detekce vyžaduje specifickou konfiguraci konektoru dat syslog: 
 
-1. V kroku 5 v předchozím postupu se ujistěte, že jsou jako zařízení, která chcete monitorovat, vybraná možnost **auth** i **authpriv** . U možností závažnosti nechte výchozí nastavení tak, aby byly všechny vybrané. Příklad:
+1. V kroku 5 v předchozím postupu se ujistěte, že jsou jako zařízení, která chcete monitorovat, vybraná možnost **auth** i **authpriv** . U možností závažnosti nechte výchozí nastavení tak, aby byly všechny vybrané. Například:
     
     > [!div class="mx-imgBorder"]
     > ![Zařízení požadovaná pro detekci přihlášení neobvyklé SSH](./media/connect-syslog/facilities-ssh-detection.png)

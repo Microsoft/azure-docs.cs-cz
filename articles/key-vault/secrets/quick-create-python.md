@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: tracking-python
-ms.openlocfilehash: bb73df659e3910002378b8417596b7b957022b43
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 135ad450f7b0491200aeafd470e7a551d577e96a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074541"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285543"
 ---
 # <a name="quickstart-azure-key-vault-secrets-client-library-for-python"></a>Rychlý Start: Klientská knihovna Azure Key Vault tajných klíčů pro Python
 
@@ -29,7 +29,7 @@ Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče použ
 
 [Referenční dokumentace k](/python/api/overview/azure/keyvault-secrets-readme?view=azure-python)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault)  |  [Balíček (index balíčku Pythonu)](https://pypi.org/project/azure-keyvault/)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Python 2,7, 3.5.3 nebo novější
@@ -156,7 +156,7 @@ from azure.keyvault.secrets import SecretClient
 from azure.identity import DefaultAzureCredential
 
 keyVaultName = os.environ["KEY_VAULT_NAME"]
-KVUri = "https://" + keyVaultName + ".vault.azure.net"
+KVUri = f"https://{keyVaultName}.vault.azure.net"
 
 credential = DefaultAzureCredential()
 client = SecretClient(vault_url=KVUri, credential=credential)
@@ -166,7 +166,7 @@ secretName = "mySecret"
 print("Input the value of your secret > ")
 secretValue = raw_input()
 
-print("Creating a secret in " + keyVaultName + " called '" + secretName + "' with the value '" + secretValue + "` ...")
+print(f"Creating a secret in {keyVaultName} called '{secretName}' with the value '{secretValue}` ...")
 
 client.set_secret(secretName, secretValue)
 
@@ -174,14 +174,14 @@ print(" done.")
 
 print("Forgetting your secret.")
 secretValue = ""
-print("Your secret is '" + secretValue + "'.")
+print(f"Your secret is {secretValue}.")
 
-print("Retrieving your secret from " + keyVaultName + ".")
+print(f"Retrieving your secret from {keyVaultName}.")
 
 retrieved_secret = client.get_secret(secretName)
 
-print("Your secret is '" + retrieved_secret.value + "'.")
-print("Deleting your secret from " + keyVaultName + " ...")
+print(f"Your secret is '{retrieved_secret.value}'.")
+print(f"Deleting your secret from {keyVaultName} ...")
 
 client.delete_secret(secretName)
 

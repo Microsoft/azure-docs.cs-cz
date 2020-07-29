@@ -3,11 +3,12 @@ title: Řídicí panel přehled služby Azure Application Insights | Microsoft D
 description: Sledujte aplikace s využitím Azure Application Insights a přehled funkcí řídicího panelu.
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: e5188972d9058b85a9765c7d33f6209b37245d7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c8aa4460a545f032eaa60560de00efff27ae1ef
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669892"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322529"
 ---
 # <a name="application-insights-overview-dashboard"></a>Řídicí panel přehledu Application Insights
 
@@ -56,6 +57,7 @@ Pokud vyberete **Konfigurovat nastavení dlaždic** a nastavíte vlastní časov
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Trychtýře](../../azure-monitor/app/usage-funnels.md)
-- [Uchovávání](../../azure-monitor/app/usage-retention.md)
-- [Toky uživatele](../../azure-monitor/app/usage-flows.md)
+- [Trychtýře](./usage-funnels.md)
+- [Uchovávání](./usage-retention.md)
+- [Toky uživatele](./usage-flows.md)
+

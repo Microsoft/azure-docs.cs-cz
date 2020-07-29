@@ -9,13 +9,14 @@ editor: ''
 ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 04/18/2020
+ms.custom: devx-track-java
 ms.author: lcozzens
-ms.openlocfilehash: 69b9733f4d79f5fc42fe86ca0f8a97305205aeef
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 51052994a4d00995910a85546cce57867b6143f6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085055"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324773"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace s pružinou v jazyce Java pomocí konfigurace aplikace Azure
 
@@ -31,11 +32,11 @@ V tomto rychlém startu zařadíte konfiguraci aplikace Azure do aplikace v pru�
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Vyberte možnost **Průzkumník** > konfigurace **+ vytvořit** > **klíč-hodnota** a přidejte následující páry klíč-hodnota:
+6. Vyberte možnost **Průzkumník konfigurace**  >  **+ vytvořit**  >  **klíč-hodnota** a přidejte následující páry klíč-hodnota:
 
-    | Key | Hodnota |
+    | Klíč | Hodnota |
     |---|---|
-    | /application/config.message | Dobrý den |
+    | /application/config.message | Hello (Nazdar) |
 
     V tuto chvíli ponechat **popisek** a **typ obsahu** prázdné.
 
@@ -45,7 +46,7 @@ V tomto rychlém startu zařadíte konfiguraci aplikace Azure do aplikace v pru�
 
 Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt pro spuštění pružiny.
 
-1. Přejděte na <https://start.spring.io/>.
+1. Přejděte na adresu <https://start.spring.io/>.
 
 1. Zadejte následující možnosti:
 
@@ -58,9 +59,9 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
 
 ## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
 
-1. Po extrahování souborů v místním systému je vaše jednoduchá aplikace pro spouštění pomocí pružiny připravená k úpravám. V kořenovém adresáři vaší aplikace vyhledejte soubor *pom. XML* .
+1. Po extrahování souborů v místním systému je vaše jednoduchá aplikace pro spouštění pomocí pružiny připravená k úpravám. Vyhledejte soubor *pom.xml* v kořenovém adresáři aplikace.
 
-1. V textovém editoru otevřete soubor *pom. XML* a přidejte jarní cloudovou konfiguraci Azure config Starter do seznamu `<dependencies>`:
+1. V textovém editoru otevřete soubor *pom.xml* a přidejte do seznamu tento příkaz: jarní cloud Azure config Starter `<dependencies>`
 
     **Jarní Cloud 1.1. x**
 

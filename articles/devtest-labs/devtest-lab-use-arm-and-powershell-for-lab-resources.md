@@ -3,12 +3,12 @@ title: Vytvoření nebo úprava cvičení pomocí šablon Azure Resource Manager
 description: Naučte se používat šablony Azure Resource Manager s PowerShellem k automatickému vytváření nebo úpravě testovacích prostředí v DevTest laboratoři.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: af225e8cfade30a64aa1f4cf747e2a4d8d3f895f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 645f1d0717514d2c7e7b16844513327127e4e1a8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483172"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87272636"
 ---
 # <a name="create-or-modify-labs-automatically-using-azure-resource-manager-templates-and-powershell"></a>Automatické vytváření a úpravy testovacích prostředí pomocí šablon Azure Resource Manager a PowerShellu
 
@@ -20,12 +20,12 @@ Tento článek vám pomůže s procesem použití těchto šablon a skriptů k a
 Předem připravené [šablony Azure Resource Manager](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates) a [skripty PowerShellu](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts) najdete v našem veřejném [úložišti GitHub](https://github.com/Azure/azure-devtestlab). Můžete je použít tak, jak jsou, nebo si je přizpůsobit podle svých potřeb a ukládat je do vlastního [privátního úložiště Git](devtest-lab-add-artifact-repo.md).
 
 ## <a name="step-2-modify-your-azure-resource-manager-template"></a>Krok 2: Úprava šablony Azure Resource Manager
-Pokud jste šablonu nikdy předtím nevytvořili, můžete postupovat podle kroků v části [Vytvoření první šablony Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template) .
+Pokud jste šablonu nikdy předtím nevytvořili, můžete postupovat podle kroků v části [Vytvoření první šablony Azure Resource Manager](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) .
 
-Kromě toho [osvědčené postupy pro vytváření šablon Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices) nabízí mnoho pokynů a návrhů, které vám pomohou vytvořit Azure Resource Manager šablony, které jsou spolehlivé a snadno použitelné. Obvykle použijete variaci jednoho z uvedených přístupů nebo příkladů a upravíte šablonu podle svých potřeb.
+Kromě toho [osvědčené postupy pro vytváření šablon Azure Resource Manager](../azure-resource-manager/templates/template-best-practices.md) nabízí mnoho pokynů a návrhů, které vám pomohou vytvořit Azure Resource Manager šablony, které jsou spolehlivé a snadno použitelné. Obvykle použijete variaci jednoho z uvedených přístupů nebo příkladů a upravíte šablonu podle svých potřeb.
 
 ## <a name="step-3-deploy-resources-with-powershell"></a>Krok 3: nasazení prostředků pomocí PowerShellu
-Po přizpůsobení šablon a skriptů postupujte podle kroků nezbytných k [nasazení prostředků pomocí Správce prostředků šablon a Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy). V tomto článku najdete obecné informace o použití Azure PowerShell s Azure Resource Manager šablonami k nasazení prostředků do Azure.
+Po přizpůsobení šablon a skriptů postupujte podle kroků nezbytných k [nasazení prostředků pomocí Správce prostředků šablon a Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md). V tomto článku najdete obecné informace o použití Azure PowerShell s Azure Resource Manager šablonami k nasazení prostředků do Azure.
 
 
 ## <a name="common-tasks-you-can-perform-in-devtest-labs-using-powershell"></a>Běžné úlohy, které můžete provádět v DevTest Labs pomocí PowerShellu

@@ -5,12 +5,12 @@ ms.topic: reference
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/06/2020
-ms.openlocfilehash: ba7830cc1c0a3e6a563b4343b37ec07f7d508af4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2227facfcf469bc22034da0da504b390cc0deee1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087981"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324178"
 ---
 # <a name="dependency-auto-collection"></a>Automatické shromažďování závislostí
 
@@ -23,7 +23,7 @@ Níže je uveden aktuálně podporovaný seznam volání závislostí, která js
 | ASP.NET WebForms | 4.5 + |
 | ASP.NET MVC | 4 + |
 | ASP.NET WebAPI | 4.5 + |
-| Výsledek akce | 1.1 + |
+| Jádro ASP.NET | 1.1 + |
 | <b>Komunikační knihovny</b> |
 | [HttpClient](https://www.microsoft.com/net/) | 4.5 +, .NET Core 1.1 + |
 | [SqlClient](https://www.nuget.org/packages/System.Data.SqlClient) | .NET Core 1.0 +, NuGet 4.3.0 |
@@ -88,9 +88,10 @@ Níže je uveden aktuálně podporovaný seznam volání závislostí, která js
 
 ## <a name="next-steps"></a>Další kroky
 
-- Nastavte vlastní sledování závislostí pro [.NET](../../azure-monitor/app/asp-net-dependencies.md).
-- Nastavte vlastní sledování závislostí pro [Java](../../azure-monitor/app/java-agent.md).
-- Nastavte vlastní sledování závislostí pro [OpenCensus Python](../../azure-monitor/app/opencensus-python-dependency.md).
-- [Zápis vlastní telemetrie závislosti](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)
-- Viz [datový model](../../azure-monitor/app/data-model.md) pro typy Application Insights a datový model.
-- Podívejte se na [platformy](../../azure-monitor/app/platforms.md) podporované nástrojem Application Insights.
+- Nastavte vlastní sledování závislostí pro [.NET](./asp-net-dependencies.md).
+- Nastavte vlastní sledování závislostí pro [Java](./java-agent.md).
+- Nastavte vlastní sledování závislostí pro [OpenCensus Python](./opencensus-python-dependency.md).
+- [Zápis vlastní telemetrie závislosti](./api-custom-events-metrics.md#trackdependency)
+- Viz [datový model](./data-model.md) pro typy Application Insights a datový model.
+- Podívejte se na [platformy](./platforms.md) podporované nástrojem Application Insights.
+

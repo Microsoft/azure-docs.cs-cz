@@ -4,12 +4,12 @@ description: Začínáme s Application Insights. Analyzujte využití, dostupnos
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 2b93e7f0fdb909a40667b001fa99929b3cfe27ad
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d624286d214a86364fe85192bf5ede885d4b6a78
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014161"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323447"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Sledování výkonu webových aplikací
 
@@ -23,9 +23,9 @@ Na straně klienta Application Insights může převzít telemetrii z webových 
 ## <a name="set-up-performance-monitoring"></a><a name="setup"></a>Nastavení sledování výkonu
 Pokud jste ještě nepřidali Application Insights do projektu (tj. Pokud nemá ApplicationInsights.config), vyberte jeden z následujících způsobů, jak začít:
 
-* [Webové aplikace v ASP.NET](../../azure-monitor/app/asp-net.md)
-  * [Přidat monitorování výjimek](../../azure-monitor/app/asp-net-exceptions.md)
-  * [Přidat monitorování závislostí](../../azure-monitor/app/monitor-performance-live-website-now.md)
+* [Webové aplikace v ASP.NET](./asp-net.md)
+  * [Přidat monitorování výjimek](./asp-net-exceptions.md)
+  * [Přidat monitorování závislostí](./monitor-performance-live-website-now.md)
 * [Webové aplikace Java EE](./java-in-process-agent.md)
 
 ## <a name="exploring-performance-metrics"></a><a name="view"></a>Prozkoumávání metrik výkonu
@@ -106,7 +106,7 @@ Tady je několik tipů pro hledání a diagnostiku problémů s výkonem:
 
 ## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>Hledání a oprava slabých míst výkonu pomocí prostředí pro zkoumání výkonu
 
-Prostředí pro šetření výkonu můžete použít ke kontrole pomalých operací ve vaší webové aplikaci. Můžete rychle vybrat konkrétní pomalou operaci a použít [Profiler](../../azure-monitor/app/profiler.md) k hlavní příčině pomalé operace v kódu. Pomocí nové distribuce trvání zobrazené pro vybranou operaci můžete rychle na první pohled vyhodnotit, jak špatné je prostředí pro vaše zákazníky. Můžete zjistit, kolik vašich uživatelských interakcí bylo ovlivněno při každé pomalé operaci. V následujícím příkladu jsme se rozhodli, že se podíváme na možnosti získání zákazníků a podrobností. V rozdělení trvání vidíte, že existují tři špičky. Špička úplně vlevo je okolo 400 MS a představuje skvělé možnosti reakce. Střední špička je okolo 1,2 s a představuje mediocreé prostředí. Nakonec v 3,6 s máme další malý špičku, který představuje prostředí 99 percentilu, což pravděpodobně způsobí, že naši zákazníci odejdou nespokojenost. Toto prostředí je po deseti případech pomalejší než Skvělé prostředí pro stejnou operaci. 
+Prostředí pro šetření výkonu můžete použít ke kontrole pomalých operací ve vaší webové aplikaci. Můžete rychle vybrat konkrétní pomalou operaci a použít [Profiler](./profiler.md) k hlavní příčině pomalé operace v kódu. Pomocí nové distribuce trvání zobrazené pro vybranou operaci můžete rychle na první pohled vyhodnotit, jak špatné je prostředí pro vaše zákazníky. Můžete zjistit, kolik vašich uživatelských interakcí bylo ovlivněno při každé pomalé operaci. V následujícím příkladu jsme se rozhodli, že se podíváme na možnosti získání zákazníků a podrobností. V rozdělení trvání vidíte, že existují tři špičky. Špička úplně vlevo je okolo 400 MS a představuje skvělé možnosti reakce. Střední špička je okolo 1,2 s a představuje mediocreé prostředí. Nakonec v 3,6 s máme další malý špičku, který představuje prostředí 99 percentilu, což pravděpodobně způsobí, že naši zákazníci odejdou nespokojenost. Toto prostředí je po deseti případech pomalejší než Skvělé prostředí pro stejnou operaci. 
 
 ![ZÍSKAT zákazníky/podrobnosti tři špičky trvání](./media/web-monitor-performance/PerformanceTriageViewZoomedDistribution.png)
 
@@ -142,12 +142,13 @@ Prostředí pro zkoumání výkonu zobrazuje relevantní přehledy na straně uk
 
 <!--Link references-->
 
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[greenbrown]: ../../azure-monitor/app/asp-net.md
+[availability]: ./monitor-web-app-availability.md
+[diagnostic]: ./diagnostic-search.md
+[greenbrown]: ./asp-net.md
 [qna]: ../faq.md
-[redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[redfield]: ./monitor-performance-live-website-now.md
+[start]: ./app-insights-overview.md
 [usage]: usage-overview.md
-[livestream]: ../../azure-monitor/app/live-stream.md
-[snapshot]: ../../azure-monitor/app/snapshot-debugger.md
+[livestream]: ./live-stream.md
+[snapshot]: ./snapshot-debugger.md
+

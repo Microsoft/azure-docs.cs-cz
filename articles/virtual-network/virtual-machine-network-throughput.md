@@ -1,6 +1,6 @@
 ---
 title: Propustnost sítě virtuálních počítačů Azure | Microsoft Docs
-description: Přečtěte si o propustnosti sítě virtuálních počítačů Azure.
+description: Přečtěte si o propustnosti sítě virtuálních počítačů Azure, včetně způsobu přidělování šířky pásma virtuálnímu počítači.
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: 1cbec961f6249ebd59324dca1745bfd9e77f5388
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4fed883c8fa92df77af432e1e4a4b3acca72a0d2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088168"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87265110"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Šířka pásma sítě virtuálního počítače
 

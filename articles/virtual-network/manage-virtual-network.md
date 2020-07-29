@@ -1,7 +1,7 @@
 ---
 title: Vytvoření, změna nebo odstranění služby Azure Virtual Network
 titlesuffix: Azure Virtual Network
-description: Naučte se, jak vytvořit, změnit nebo odstranit virtuální síť v Azure.
+description: Vytvoření a odstranění virtuální sítě a změna nastavení, jako jsou servery DNS a adresní prostory IP adres pro existující virtuální síť.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 3f0060944a2733c31c3bef67aa005e5476778ce2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a35576435780ee43d9f2aa99167b736f90799ab
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710027"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87265241"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Vytvoření, změna nebo odstranění virtuální sítě
 
@@ -170,7 +171,7 @@ Virtuální síť můžete odstranit jenom v případě, že k ní nejsou připo
 
 Aby bylo možné provádět úlohy s virtuálními sítěmi, musí být váš účet přiřazen k roli [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) nebo k [vlastní](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) roli, která je přiřazena k příslušným akcím uvedeným v následující tabulce:
 
-| Akce                                  |   Name                                |
+| Akce                                  |   Název                                |
 |---------------------------------------- |   --------------------------------    |
 |Microsoft. Network/virtualNetworks/Read   |   Čtení virtuální sítě              |
 |Microsoft. Network/virtualNetworks/Write  |   Vytvoření nebo aktualizace virtuální sítě  |

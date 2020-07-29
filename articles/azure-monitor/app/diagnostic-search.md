@@ -3,18 +3,18 @@ title: Používání služby Search v Azure Application Insights | Microsoft Doc
 description: Hledání a filtrování nezpracovaných telemetrie odesílaných vaší webovou aplikací
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.openlocfilehash: 7a264f25f92bed1b93848c323fd59eafd7b09215
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f88e0fb8fbd7e9605635ede1e8f71b57de84b74e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033611"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324450"
 ---
 # <a name="using-search-in-application-insights"></a>Použití vyhledávání v Application Insights
 
-Hledání je funkce [Application Insights](../../azure-monitor/app/app-insights-overview.md) , kterou používáte k vyhledání a prohlížení jednotlivých položek telemetrie, jako jsou například zobrazení stránky, výjimky nebo webové požadavky. A můžete zobrazit protokol trasování a události, které jste nastavili.
+Hledání je funkce [Application Insights](./app-insights-overview.md) , kterou používáte k vyhledání a prohlížení jednotlivých položek telemetrie, jako jsou například zobrazení stránky, výjimky nebo webové požadavky. A můžete zobrazit protokol trasování a události, které jste nastavili.
 
-(Pro složitější dotazy přes vaše data použijte [Analytics](../../azure-monitor/log-query/get-started-portal.md).)
+(Pro složitější dotazy přes vaše data použijte [Analytics](../log-query/get-started-portal.md).)
 
 ## <a name="where-do-you-see-search"></a>Kde se zobrazuje hledání?
 
@@ -56,13 +56,13 @@ Otevřete rozevírací nabídku typy událostí a vyberte typy událostí, kter�
 
 Typy událostí:
 
-* **Trasování**  -  [Diagnostické protokoly](../../azure-monitor/app/asp-net-trace-logs.md) zahrnující volání TrackTrace, Log4Net, nLOG a System. Diagnostics. Trace.
+* **Trasování**  -  [Diagnostické protokoly](./asp-net-trace-logs.md) zahrnující volání TrackTrace, Log4Net, nLOG a System. Diagnostics. Trace.
 * Žádosti **o** požadavky HTTP přijaté serverovou aplikací, včetně stránek, skriptů, obrázků, souborů stylu a dat. Tyto události se používají k vytvoření grafů s přehledem požadavků a odpovědí.
-* **Zobrazení stránky**  -  [Telemetrie odesílaná webovým klientem](../../azure-monitor/app/javascript.md), která se používá k vytvoření sestav zobrazení stránky
-* **Vlastní událost** – Pokud jste vložili volání do TrackEvent (), aby bylo možné [monitorovat využití](../../azure-monitor/app/api-custom-events-metrics.md), můžete je vyhledat tady.
-* **Výjimka** – nezachycené [výjimky na serveru](../../azure-monitor/app/asp-net-exceptions.md)a ty, které se protokolují pomocí TrackException ().
-* **Závislost**  -  [Volání z vaší serverové aplikace](../../azure-monitor/app/asp-net-dependencies.md) do jiných služeb, jako jsou rozhraní REST API nebo databáze, a volání AJAX z [kódu klienta](../../azure-monitor/app/javascript.md).
-* **Dostupnost** – výsledky [testů dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md).
+* **Zobrazení stránky**  -  [Telemetrie odesílaná webovým klientem](./javascript.md), která se používá k vytvoření sestav zobrazení stránky
+* **Vlastní událost** – Pokud jste vložili volání do TrackEvent (), aby bylo možné [monitorovat využití](./api-custom-events-metrics.md), můžete je vyhledat tady.
+* **Výjimka** – nezachycené [výjimky na serveru](./asp-net-exceptions.md)a ty, které se protokolují pomocí TrackException ().
+* **Závislost**  -  [Volání z vaší serverové aplikace](./asp-net-dependencies.md) do jiných služeb, jako jsou rozhraní REST API nebo databáze, a volání AJAX z [kódu klienta](./javascript.md).
+* **Dostupnost** – výsledky [testů dostupnosti](./monitor-web-app-availability.md).
 
 ## <a name="filter-on-property-values"></a>Filtrovat hodnoty vlastností
 
@@ -81,10 +81,10 @@ Chcete-li najít všechny položky se stejnou hodnotou vlastnosti, buď je zadej
 ## <a name="search-the-data"></a>Hledání dat
 
 > [!NOTE]
-> Pokud chcete v horní části okna hledání zapisovat složitější dotazy, otevřete [**protokoly (Analytics)**](../../azure-monitor/log-query/get-started-portal.md) .
+> Pokud chcete v horní části okna hledání zapisovat složitější dotazy, otevřete [**protokoly (Analytics)**](../log-query/get-started-portal.md) .
 >
 
-Můžete hledat výrazy v jakékoli z hodnot vlastností. To je užitečné, pokud jste napsali [vlastní události](../../azure-monitor/app/api-custom-events-metrics.md) s hodnotami vlastností.
+Můžete hledat výrazy v jakékoli z hodnot vlastností. To je užitečné, pokud jste napsali [vlastní události](./api-custom-events-metrics.md) s hodnotami vlastností.
 
 Možná budete chtít nastavit časový rozsah, protože hledání v kratším rozsahu je rychlejší.
 
@@ -110,7 +110,7 @@ Tady jsou hledané výrazy, které můžete použít:
 
 Pokud vaše aplikace vygeneruje velké množství telemetrie (a používáte sadu SDK ASP.NET verze 2.0.0-beta3 nebo novější), modul adaptivního vzorkování automaticky zmenší svazek, který se pošle na portál, tím, že posílá jenom reprezentativní zlomek událostí. Nicméně události, které se vztahují ke stejné žádosti, se vyberou nebo odliší jako skupina, takže můžete přecházet mezi souvisejícími událostmi.
 
-[Další informace o vzorkování](../../azure-monitor/app/sampling.md).
+[Další informace o vzorkování](./sampling.md).
 
 ## <a name="create-work-item"></a>Vytvořit pracovní položku
 
@@ -128,24 +128,25 @@ Když to uděláte poprvé, zobrazí se výzva, abyste nakonfigurovali odkaz na 
 
 Kromě předem připravené telemetrie, kterou odesílá Application Insights SDK, můžete:
 
-* Zachyťte trasování protokolu z oblíbeného protokolovacího rozhraní v [rozhraní .NET](../../azure-monitor/app/asp-net-trace-logs.md) nebo [Java](../../azure-monitor/app/java-trace-logs.md). To znamená, že můžete procházet trasování protokolu a korelovat je s zobrazeními stránky, výjimkami a dalšími událostmi.
-* [Napíšete kód](../../azure-monitor/app/api-custom-events-metrics.md) pro odesílání vlastních událostí, zobrazení stránky a výjimek.
+* Zachyťte trasování protokolu z oblíbeného protokolovacího rozhraní v [rozhraní .NET](./asp-net-trace-logs.md) nebo [Java](./java-trace-logs.md). To znamená, že můžete procházet trasování protokolu a korelovat je s zobrazeními stránky, výjimkami a dalšími událostmi.
+* [Napíšete kód](./api-custom-events-metrics.md) pro odesílání vlastních událostí, zobrazení stránky a výjimek.
 
-[Naučte se, jak odesílat protokoly a vlastní telemetrii do Application Insights](../../azure-monitor/app/asp-net-trace-logs.md).
+[Naučte se, jak odesílat protokoly a vlastní telemetrii do Application Insights](./asp-net-trace-logs.md).
 
 ## <a name="q--a"></a><a name="questions"></a>OTÁZKA & A
 
 ### <a name="how-much-data-is-retained"></a><a name="limits"></a>Kolik dat se zachová?
 
-Podívejte se na [Souhrn omezení](../../azure-monitor/app/pricing.md#limits-summary).
+Podívejte se na [Souhrn omezení](./pricing.md#limits-summary).
 
 ### <a name="how-can-i-see-post-data-in-my-server-requests"></a>Jak se dá v žádostech na server zobrazit POST data?
 
-Data POST neprotokolují automaticky, ale můžete použít [TrackTrace nebo log Calling](../../azure-monitor/app/asp-net-trace-logs.md). Umístěte POST data do parametru zprávy. Zprávu nelze filtrovat stejným způsobem, jakým je možné filtrovat vlastnosti, ale omezení velikosti je delší.
+Data POST neprotokolují automaticky, ale můžete použít [TrackTrace nebo log Calling](./asp-net-trace-logs.md). Umístěte POST data do parametru zprávy. Zprávu nelze filtrovat stejným způsobem, jakým je možné filtrovat vlastnosti, ale omezení velikosti je delší.
 
 ## <a name="next-steps"></a><a name="add"></a>Další kroky
 
-* [Zápis složitých dotazů do analýz](../../azure-monitor/log-query/get-started-portal.md)
-* [Odeslání protokolů a vlastní telemetrie do Application Insights](../../azure-monitor/app/asp-net-trace-logs.md)
-* [Nastavení testů dostupnosti a odezvy](../../azure-monitor/app/monitor-web-app-availability.md)
+* [Zápis složitých dotazů do analýz](../log-query/get-started-portal.md)
+* [Odeslání protokolů a vlastní telemetrie do Application Insights](./asp-net-trace-logs.md)
+* [Nastavení testů dostupnosti a odezvy](./monitor-web-app-availability.md)
 * [Řešení potíží](../faq.md)
+

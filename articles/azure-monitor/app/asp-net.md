@@ -3,16 +3,16 @@ title: Nastavení analýzy webových aplikací pro ASP.NET pomocí Azure Applica
 description: Nakonfigurujte nástroje pro analýzu výkonu, dostupnosti a chování uživatelů pro váš web ASP.NET, který je hostovaný místně nebo v Azure.
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: 7dd60be0a3f2ee7e1a0d306fa007bed166746115
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e51fb43a9e088c991af2132b6a5d2257da8d78a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84886823"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324212"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Nastavení Application Insights pro web ASP.NET
 
-Tímto postupem je možné konfigurovat webovou aplikaci ASP.NET tak, aby odesílala telemetrická data do služby [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md). Funguje pro aplikace ASP.NET, které jsou hostované buď na vašem vlastním serveru služby IIS v místním prostředí, nebo v cloudu. Můžete získat grafy a výkonný dotazovací jazyk, který vám pomůže porozumět výkonu vaší aplikace a způsobu, jakým ji uživatelé používají, a také automatické výstrahy v případě selhání nebo problémů s výkonem. Celá řada vývojářů považuje tyto funkce za skvělé (a ony jsou), v případě potřeby ale můžete telemetrická data také rozšířit a přizpůsobit.
+Tímto postupem je možné konfigurovat webovou aplikaci ASP.NET tak, aby odesílala telemetrická data do služby [Azure Application Insights](./app-insights-overview.md). Funguje pro aplikace ASP.NET, které jsou hostované buď na vašem vlastním serveru služby IIS v místním prostředí, nebo v cloudu. Můžete získat grafy a výkonný dotazovací jazyk, který vám pomůže porozumět výkonu vaší aplikace a způsobu, jakým ji uživatelé používají, a také automatické výstrahy v případě selhání nebo problémů s výkonem. Celá řada vývojářů považuje tyto funkce za skvělé (a ony jsou), v případě potřeby ale můžete telemetrická data také rozšířit a přizpůsobit.
 
 Nastavení je otázkou několika kliknutí v sadě Visual Studio. Máte možnost vyhnout se placení poplatků, pokud objem telemetrických dat omezíte. Tato funkce umožňuje experimentovat a ladit nebo monitorovat lokalitu, která nemá mnoho uživatelů. Pokud se později rozhodnete, že chcete pokračovat a monitorovat svůj provozní server, můžete limit snadno zvýšit.
 
@@ -54,7 +54,7 @@ Pokud chcete nastavit skupinu prostředků nebo umístění, kde jsou vaše data
 
  Telemetrie se bude posílat na web [Azure Portal](https://portal.azure.com), jak během ladění aplikace, tak po jejím publikování.
 > [!NOTE]
-> Pokud během ladění nechcete na portál odesílat telemetrická data, stačí přidat do aplikace sadu SDK Application Insights, ale nekonfigurovat prostředek na portálu. Během ladění se telemetrická data zobrazují v sadě Visual Studio. Později se můžete na tuto stránku konfigurace vrátit, nebo počkat až po nasazení aplikace a [přepnout na telemetrie za běhu](../../azure-monitor/app/status-monitor-v2-overview.md).
+> Pokud během ladění nechcete na portál odesílat telemetrická data, stačí přidat do aplikace sadu SDK Application Insights, ale nekonfigurovat prostředek na portálu. Během ladění se telemetrická data zobrazují v sadě Visual Studio. Později se můžete na tuto stránku konfigurace vrátit, nebo počkat až po nasazení aplikace a [přepnout na telemetrie za běhu](./status-monitor-v2-overview.md).
 
 ## <a name="step-2-run-your-app"></a><a name="run"></a>Krok 2: spuštění aplikace
 Spusťte aplikaci pomocí F5. Otevřete různé stránky k vygenerování nějaké telemetrie.
@@ -77,7 +77,7 @@ V okně Visual Studio Application Insights Search se zobrazí telemetrie vygener
 > [!Tip]
 > Pokud se žádná data nezobrazí, ujistěte se, že je časový rozsah správný, a klikněte na ikonu Search.
 
-[Další informace týkající se nástrojů Application Insights v sadě Visual Studio](../../azure-monitor/app/visual-studio.md).
+[Další informace týkající se nástrojů Application Insights v sadě Visual Studio](./visual-studio.md).
 
 <a name="monitor"></a>
 ### <a name="see-telemetry-in-web-portal"></a>Zobrazení telemetrických dat na webovém portálu
@@ -93,20 +93,20 @@ Portál otevře zobrazení telemetrie z vaší aplikace.
 Po kliknutí na kteroukoli dlaždici nebo graf se zobrazí podrobnější údaje.
 
 ## <a name="step-4-publish-your-app"></a>Krok 4: Publikování aplikace
-Publikování aplikace na serveru služby IIS nebo do Azure. Sledujte [Živé vysílání metrik](../../azure-monitor/app/live-stream.md) a ověřte, zda vše běží hladce.
+Publikování aplikace na serveru služby IIS nebo do Azure. Sledujte [Živé vysílání metrik](./live-stream.md) a ověřte, zda vše běží hladce.
 
 Vaše telemetrie se vytváří na portálu Application Insights, kde můžete monitorovat metriky, prohledávat telemetrii. Můžete také použít výkonný [dotazovací jazyk Kusto](/azure/kusto/query/) k analýze využití a výkonu nebo k hledání konkrétních událostí.
 
-Můžete také dále analyzovat telemetrii v sadě [Visual Studio](../../azure-monitor/app/visual-studio.md) pomocí nástrojů jako vyhledávání diagnostiky a [Trendy](../../azure-monitor/app/visual-studio-trends.md).
+Můžete také dále analyzovat telemetrii v sadě [Visual Studio](./visual-studio.md) pomocí nástrojů jako vyhledávání diagnostiky a [Trendy](./visual-studio-trends.md).
 
 > [!NOTE]
-> Pokud vaše aplikace odesílá dostatek telemetrie k dosažení [limitů omezení](../../azure-monitor/app/pricing.md#limits-summary), zapne se automatické [vzorkování](../../azure-monitor/app/sampling.md). Vzorkování snižuje množství telemetrie odesílané z vaší aplikace při zachování korelovaných dat k diagnostickým účelům.
+> Pokud vaše aplikace odesílá dostatek telemetrie k dosažení [limitů omezení](./pricing.md#limits-summary), zapne se automatické [vzorkování](./sampling.md). Vzorkování snižuje množství telemetrie odesílané z vaší aplikace při zachování korelovaných dat k diagnostickým účelům.
 >
 >
 
 ## <a name="youre-all-set"></a><a name="land"></a>Všechno je nastavené.
 
-Gratulujeme! Nainstalovali jste do aplikace balíček Application Insights a nakonfigurovali jste pro ni odesílání telemetrických dat do služby Application Insights v Azure.
+Blahopřejeme! Nainstalovali jste do aplikace balíček Application Insights a nakonfigurovali jste pro ni odesílání telemetrických dat do služby Application Insights v Azure.
 
 Prostředek Azure, který přijímá telemetrická data aplikace, je určen *instrumentačním klíčem*. Tento klíč najdete v souboru ApplicationInsights.config.
 
@@ -120,27 +120,28 @@ Pokud jste provedli jakékoli úpravy souboru ApplicationInsights.config, před 
 
 K dispozici jsou i alternativní témata, na která se v případě zájmu můžete podívat:
 
-* [Instrumentace webové aplikace za běhu](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Azure Cloud Services](../../azure-monitor/app/cloudservices.md)
+* [Instrumentace webové aplikace za běhu](./monitor-performance-live-website-now.md)
+* [Azure Cloud Services](./cloudservices.md)
 
 ### <a name="more-telemetry"></a>Další telemetrická data
 
-* **[Údaje o prohlížečích a o načítání stránek](../../azure-monitor/app/javascript.md)** – Vložte do svých webových stránek fragment kódu.
-* **[Dosažení podrobnějšího monitorování závislostí a výjimek](../../azure-monitor/app/monitor-performance-live-website-now.md)** – Nainstalujte si na server Monitorování stavu.
-* **[Vlastní události kódu](../../azure-monitor/app/api-custom-events-metrics.md)** pro počet, čas nebo měření akcí uživatele.
-* **[Získání dat protokolu](../../azure-monitor/app/asp-net-trace-logs.md)** – Zjišťujte korelaci dat protokolu s telemetrickými daty.
+* **[Údaje o prohlížečích a o načítání stránek](./javascript.md)** – Vložte do svých webových stránek fragment kódu.
+* **[Dosažení podrobnějšího monitorování závislostí a výjimek](./monitor-performance-live-website-now.md)** – Nainstalujte si na server Monitorování stavu.
+* **[Vlastní události kódu](./api-custom-events-metrics.md)** pro počet, čas nebo měření akcí uživatele.
+* **[Získání dat protokolu](./asp-net-trace-logs.md)** – Zjišťujte korelaci dat protokolu s telemetrickými daty.
 
 ### <a name="analysis"></a>Analýza
 
-* **[Práce s Application Insights v sadě Visual Studio](../../azure-monitor/app/visual-studio.md)**<br/>Zahrnuje informace o ladění pomocí telemetrie, diagnostických hledáních a podrobném procházení kódem.
-* **[Analytics](../../azure-monitor/log-query/get-started-portal.md)** – Výkonný dotazovací jazyk.
+* **[Práce s Application Insights v sadě Visual Studio](./visual-studio.md)**<br/>Zahrnuje informace o ladění pomocí telemetrie, diagnostických hledáních a podrobném procházení kódem.
+* **[Analytics](../log-query/get-started-portal.md)** – Výkonný dotazovací jazyk.
 
 ### <a name="alerts"></a>Výstrahy
 
-* [Testy dostupnosti:](../../azure-monitor/app/monitor-web-app-availability.md) Vytvářejte testy, abyste ověřili viditelnost svého webu na internetu.
-* [Inteligentní diagnostika:](../../azure-monitor/app/proactive-diagnostics.md) Tyto testy se spouštějí automaticky, takže je nemusíte nijak nastavovat. Upozorní vás, pokud má aplikace nezvykle velký podíl neúspěšných požadavků.
-* [Výstrahy metriky](../../azure-monitor/platform/alerts-log.md): Nastavte výstrahy, které vás upozorní, pokud metrika překračuje prahovou hodnotu. Upozornění můžete nastavit u vlastních metrik, které v aplikaci naprogramujete.
+* [Testy dostupnosti:](./monitor-web-app-availability.md) Vytvářejte testy, abyste ověřili viditelnost svého webu na internetu.
+* [Inteligentní diagnostika:](./proactive-diagnostics.md) Tyto testy se spouštějí automaticky, takže je nemusíte nijak nastavovat. Upozorní vás, pokud má aplikace nezvykle velký podíl neúspěšných požadavků.
+* [Výstrahy metriky](../platform/alerts-log.md): Nastavte výstrahy, které vás upozorní, pokud metrika překračuje prahovou hodnotu. Upozornění můžete nastavit u vlastních metrik, které v aplikaci naprogramujete.
 
 ### <a name="automation"></a>Automation
 
-* [Automatizace vytvoření prostředku Application Insights](../../azure-monitor/app/powershell.md)
+* [Automatizace vytvoření prostředku Application Insights](./powershell.md)
+

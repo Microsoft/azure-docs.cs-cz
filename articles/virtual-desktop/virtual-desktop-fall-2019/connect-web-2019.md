@@ -1,6 +1,6 @@
 ---
-title: Připojení webového klienta pro virtuální počítače s Windows – Azure
-description: Jak se připojit k virtuálnímu počítači s Windows pomocí webového klienta.
+title: Připojení webového klienta Windows Virtual Desktop (Classic) – Azure
+description: Jak se připojit k virtuálnímu počítači s Windows (Classic) pomocí webového klienta.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e95498498fd15d7a6e73630e218f9bdd1b892f09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efe97c86ebfac8e130489b3105a97302866d6822
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204791"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270375"
 ---
-# <a name="connect-with-the-web-client"></a>Připojení k webovému klientovi
+# <a name="connect-to-windows-virtual-desktop-classic-with-the-web-client"></a>Připojení k virtuální ploše Windows (Classic) pomocí webového klienta
 
 >[!IMPORTANT]
->Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objekty virtuálních klientů Windows, které byly zavedeny v aktualizaci jarní 2020, přečtěte si [Tento článek](../connect-web.md).
+>Tento obsah se vztahuje na virtuální plochu Windows (Classic), která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objektů virtuálních klientů Windows, přečtěte si [Tento článek](../connect-web.md).
 
 Webový klient umožňuje přístup k prostředkům virtuálního počítače s Windows z webového prohlížeče bez procesu instalace.
 
@@ -42,7 +42,7 @@ I když by měl prohlížeč podporující technologii HTML5 fungovat, oficiáln
 V prohlížeči přejděte na webový klient pro virtuální počítače <https://rdweb.wvd.microsoft.com/webclient> s Windows a přihlaste se pomocí svého uživatelského účtu.
 
 >[!NOTE]
->Pokud používáte Azure Resource Managerovou integraci virtuálních 2020 počítačů s Windows pomocí služby Integration, připojte se <https://rdweb.wvd.microsoft.com/arm/webclient> místo toho k prostředkům.
+>Pokud používáte virtuální plochu Windows s Azure Resource Manager integrací, připojte se místo toho k prostředkům <https://rdweb.wvd.microsoft.com/arm/webclient> .
 
 >[!NOTE]
 >Pokud jste se už přihlásili pomocí jiného účtu Azure Active Directory, než který chcete použít pro virtuální plochu Windows, měli byste se buď odhlásit, nebo použít soukromé okno prohlížeče.

@@ -1,6 +1,6 @@
 ---
-title: Správa skupin aplikací pro virtuální počítače s Windows – Azure
-description: Popisuje, jak nastavit klienty virtuálních klientů Windows v Azure Active Directory.
+title: Správa skupin aplikací pro virtuální počítače s Windows (Classic) – Azure
+description: Popisuje, jak nastavit klienty virtuálních počítačů s Windows (Classic) v Azure Active Directory.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 55c2ed5f9066d85643588f77806bbd41e92dd16b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: fcf946c4bde89f3c14e78744305bc274ea67962f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614414"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284978"
 ---
-# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop"></a>Kurz: Správa skupin aplikací pro virtuální počítače s Windows
+# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-classic"></a>Kurz: Správa skupin aplikací pro virtuální počítače s Windows (Classic)
 
 >[!IMPORTANT]
->Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objekty virtuálních klientů Windows, které byly zavedeny v aktualizaci jarní 2020, přečtěte si [Tento článek](../manage-app-groups.md).
+>Tento obsah se vztahuje na virtuální plochu Windows (Classic), která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objektů virtuálních klientů Windows, přečtěte si [Tento článek](../manage-app-groups.md).
 
 Výchozí skupina aplikací vytvořená pro nový fond hostitelů virtuálních počítačů s Windows taky publikuje celou plochu. Kromě toho můžete vytvořit jednu nebo více skupin aplikací RemoteApp pro fond hostitelů. Podle tohoto kurzu vytvořte skupinu aplikací RemoteApp a publikujte jednotlivé aplikace v nabídce **Start** .
 
@@ -54,7 +54,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
    Get-RdsStartMenuApp <tenantname> <hostpoolname> <appgroupname>
    ```
    
-4. Spuštěním následující rutiny nainstalujte aplikaci na základě `AppAlias`. `AppAlias`se zobrazí, když spustíte výstup z kroku 3.
+4. Spuštěním následující rutiny nainstalujte aplikaci na základě `AppAlias` . `AppAlias`se zobrazí, když spustíte výstup z kroku 3.
 
    ```powershell
    New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -AppAlias <appalias>

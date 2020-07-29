@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
 ms.custom: tracking-python
-ms.openlocfilehash: 15f5ac1da6d24feceed3a9106b990ae31e3571e3
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 8d33756e1c28247c48d0b4c0a734e604c4e9eab0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851622"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280813"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Kurz: nastavení globální distribuce Azure Cosmos DB pomocí rozhraní SQL API
 
@@ -28,34 +28,35 @@ Tento článek se zabývá následujícími úkony:
 <a id="portal"></a>
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
-
 ## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a><a id="preferred-locations"></a>Připojení k preferované oblasti pomocí rozhraní SQL API
 
-Aby mohly využívat [globální distribuci](distribute-data-globally.md), můžou mít klientské aplikace určený seřazený seznam preferovaných oblastí, které se mají použít k provádění operací s dokumenty. To je možné provést nastavením zásady připojení. V závislosti na konfiguraci účtu služby Azure Cosmos DB, aktuální regionální dostupnosti a zadaného seznamu preferencí zvolí sada SQL SDK optimální koncový bod, který bude provádět operace čtení a zápisu.
+Aby mohly využívat [globální distribuci](distribute-data-globally.md), můžou mít klientské aplikace určený seřazený seznam preferovaných oblastí, které se mají použít k provádění operací s dokumenty. V závislosti na konfiguraci účtu služby Azure Cosmos DB, aktuální regionální dostupnosti a zadaného seznamu preferencí zvolí sada SQL SDK optimální koncový bod, který bude provádět operace čtení a zápisu.
 
-Tento seznam preferencí se zadává při inicializaci připojení pomocí sad SQL SDK. Sady SDK přijímají volitelný parametr PreferredLocations, což je seřazený seznam oblastí Azure.
+Tento seznam preferencí se zadává při inicializaci připojení pomocí sad SQL SDK. Sady SDK přijímají volitelný parametr `PreferredLocations` , který je uspořádaný seznam oblastí Azure.
 
-Sada SDK bude automaticky odesílat všechny operace zápisu do aktuální oblasti pro zápis.
+Sada SDK bude automaticky odesílat všechny operace zápisu do aktuální oblasti pro zápis. Všechna čtení budou odeslána do první dostupné oblasti v seznamu upřednostňovaná umístění. Pokud požadavek selže, klient neprojde seznam do další oblasti.
 
-Všechny operace čtení se budou odesílat do první dostupné oblasti v seznamu PreferredLocations. Pokud požadavek selže, klient přejde k další oblasti v seznamu atd.
+Sada SDK se bude pokoušet pouze číst z oblastí určených v upřednostňovaných umístěních. Pokud je například účet Azure Cosmos k dispozici ve čtyřech oblastech, ale klient v rámci nástroje určuje pouze dvě oblasti čtení (bez zápisu), `PreferredLocations` pak žádné čtení nebudou obsluhovány z oblasti čtení, která není určena v `PreferredLocations` . Pokud oblasti čtení zadané v seznamu nejsou `PreferredLocations` k dispozici, budou načteny mimo oblast zápisu.
 
-Sady SDK se budou pokoušet číst pouze z oblastí uvedených v seznamu PreferredLocations. Takže pokud je například účet databáze dostupný ve čtyřech oblastech, ale v seznamu PreferredLocations klienta jsou uvedené pouze dvě oblasti pro čtení (nikoli zápis), z oblastí, které nejsou uvedené v seznamu PreferredLocations, se číst nebude. V případě nedostupnosti oblastí pro čtení uvedených v seznamu PreferredLocations se čtení bude provádět z oblasti pro zápis.
+Aplikace může ověřit aktuální koncový bod zápisu a číst koncový bod vybraný sadou SDK, a to kontrolou dvou vlastností `WriteEndpoint` a `ReadEndpoint` dostupných v sadě SDK verze 1,8 a vyšší. Pokud `PreferredLocations` vlastnost není nastavena, všechny požadavky budou obsluhovány z aktuální oblasti pro zápis.
 
-Aplikace může ověřit aktuální koncový bod pro čtení a koncový bod pro zápis, které sada SDK zvolila, kontrolou dvou vlastností WriteEndpoint a ReadEndpoint, které jsou dostupné v sadě SDK verze 1.8 a novější.
-
-Pokud vlastnost PreferredLocations není nastavená, všechny požadavky se budou obsluhovat z aktuální oblasti pro zápis.
+Pokud nezadáte upřednostňovaná umístění, ale použili jste `setCurrentLocation` metodu, sada SDK automaticky naplní upřednostňovaná umístění na základě aktuální oblasti, ve které je spuštěný klient nástroje. Sada SDK řadí oblasti na základě blízkosti oblasti v aktuální oblasti.
 
 ## <a name="net-sdk"></a>.NET SDK
+
 Sadu SDK můžete využívat bez jakýchkoli změn kódu. V tomto případě sada SDK automaticky směruje operace čtení i zápisu do aktuální oblasti pro zápis.
 
-V sadě .NET SDK verze 1.8 a novější má parametr ConnectionPolicy pro konstruktor DocumentClient vlastnost Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations. Tato vlastnost je typu Kolekce `<string>` a měla by obsahovat seznam názvů oblastí. Řetězcové hodnoty se formátují podle sloupce Název oblasti na stránce [Oblasti Azure][regions] a před prvním ani za posledním znakem nejsou žádné mezery.
+V sadě .NET SDK verze 1.8 a novější má parametr ConnectionPolicy pro konstruktor DocumentClient vlastnost Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations. Tato vlastnost je typu Kolekce `<string>` a měla by obsahovat seznam názvů oblastí. Řetězcové hodnoty jsou formátovány podle sloupce název oblasti na stránce [oblasti Azure][regions] , bez mezer před nebo za prvním a posledním znakem.
 
 Aktuální koncové body pro čtení a zápis jsou k dispozici ve vlastnostech DocumentClient.WriteEndpoint a DocumentClient.ReadEndpoint.
 
 > [!NOTE]
 > Adresy URL koncových bodů by se neměly považovat za dlouhodobé konstanty. Služba je může kdykoli aktualizovat. Sada SDK tuto změnu zpracuje automaticky.
 >
->
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
+
+Pokud používáte sadu .NET v2 SDK, použijte `PreferredLocations` vlastnost k nastavení upřednostňované oblasti.
 
 ```csharp
 // Getting endpoints from application settings or other configuration location
@@ -78,6 +79,54 @@ DocumentClient docClient = new DocumentClient(
 // connect to DocDB
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
+
+Alternativně můžete použít `SetCurrentLocation` vlastnost a nechat sadu SDK zvolit preferované umístění na základě blízkosti.
+
+```csharp
+// Getting endpoints from application settings or other configuration location
+Uri accountEndPoint = new Uri(Properties.Settings.Default.GlobalDatabaseUri);
+string accountKey = Properties.Settings.Default.GlobalDatabaseKey;
+  
+ConnectionPolicy connectionPolicy = new ConnectionPolicy();
+
+connectionPolicy.SetCurrentLocation("West US 2"); /
+
+// initialize connection
+DocumentClient docClient = new DocumentClient(
+    accountEndPoint,
+    accountKey,
+    connectionPolicy);
+
+// connect to DocDB
+await docClient.OpenAsync().ConfigureAwait(false);
+```
+
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
+
+Pokud používáte sadu .NET V3 SDK, použijte `ApplicationPreferredRegions` vlastnost k nastavení upřednostňované oblasti.
+
+```csharp
+
+CosmosClientOptions options = new CosmosClientOptions();
+options.ApplicationName = "MyApp";
+options.ApplicationPreferredRegions = new List<string> {Regions.WestUS, Regions.WestUS2};
+
+CosmosClient client = new CosmosClient(connectionString, options);
+
+```
+
+Alternativně můžete použít `ApplicationRegion` vlastnost a nechat sadu SDK zvolit preferované umístění na základě blízkosti.
+
+```csharp
+CosmosClientOptions options = new CosmosClientOptions();
+options.ApplicationName = "MyApp";
+// If the application is running in West US
+options.ApplicationRegion = Regions.WestUS;
+
+CosmosClient client = new CosmosClient(connectionString, options);
+```
+
+---
 
 ## <a name="nodejsjavascript"></a>Node.js/JavaScript
 

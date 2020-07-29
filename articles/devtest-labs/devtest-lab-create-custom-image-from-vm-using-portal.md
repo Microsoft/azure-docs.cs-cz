@@ -3,12 +3,12 @@ title: Vytvoření vlastní image Azure DevTest Labs z virtuálního počítače
 description: Naučte se, jak vytvořit vlastní image v Azure DevTest Labs ze zřízeného virtuálního počítače pomocí Azure Portal
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 597ef49b667cf613b721c645e09f8e6dcb157011
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad45ed6eb7f97e14ec0ca0bb89efb2967c90fc16
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476593"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87277023"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>Vytvoření vlastní image z virtuálního počítače
 
@@ -18,7 +18,7 @@ ms.locfileid: "85476593"
 
 Můžete vytvořit vlastní image ze zřízeného virtuálního počítače a následně ji pomocí této vlastní image vytvořit identické virtuální počítače. Následující kroky ukazují, jak vytvořit vlastní image z virtuálního počítače:
 
-1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 
@@ -43,7 +43,7 @@ Můžete vytvořit vlastní image ze zřízeného virtuálního počítače a n�
 
 ## <a name="related-blog-posts"></a>Související blogové příspěvky
 
-- [Vlastní obrázky nebo vzorce?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
+- [Vlastní obrázky nebo vzorce?](./devtest-lab-faq.md#blog-post)
 - [Kopírování vlastních imagí mezi Azure DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>Další kroky

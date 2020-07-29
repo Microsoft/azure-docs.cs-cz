@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 7f5ad0b493f925ce34ffe19892fa432322995a9c
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 45b535db9fccb41542ee74cb28845d49211e16ec
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125203"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281051"
 ---
 # <a name="what-is-azure-digital-twins"></a>Co je služba Azure Digital Twins?
 
-**Digitální vlákna Azure** je platforma IoT, která umožňuje vytváření komplexních digitálních modelů celých prostředí. Tato prostředí můžou být budovy, továrny, farmy, energetické sítě, železnice, Stadium a další – dokonce i celá města. Tyto digitální modely se dají využít k získání přehledů, které poskytují lepší produkty, optimalizované operace, snížené náklady a převratná prostředí pro zákazníky.
+**Digitální vlákna Azure** je nabídka typu platforma jako služba (PaaS), která umožňuje vytváření komplexních digitálních modelů celých prostředí. Tato prostředí můžou být budovy, továrny, farmy, energetické sítě, železnice, Stadium a další – dokonce i celá města. Tyto digitální modely se dají využít k získání přehledů, které poskytují lepší produkty, optimalizované operace, snížené náklady a převratná prostředí pro zákazníky.
 
 Využijte své odbornosti v doméně na základě digitálních vláken Azure k vytvoření vlastních, propojených řešení, která:
 * Modelujte jakékoliv prostředí a přiveďte digitální vlákna do životně škálovatelného a bezpečného způsobu.

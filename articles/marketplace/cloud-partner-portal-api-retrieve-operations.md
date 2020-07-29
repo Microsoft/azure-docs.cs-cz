@@ -4,15 +4,15 @@ description: Rozhraní API pro načtení všech operací na této nabídce nebo 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 90ff7c4a85fd9e48ac3aa49ace99f43eb0244603
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cb44d977407a7e854603e6bbacf3591752b109c2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520285"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87271939"
 ---
 # <a name="retrieve-operations"></a>Načtení operací
 
@@ -176,7 +176,7 @@ Načte všechny operace v nabídce nebo získá konkrétní operaci pro zadaný 
 |  createdDateTime             | Datum a čas UTC při vytvoření operace                                                       |
 |  lastActionDateTime          | Datum a čas UTC, kdy byla provedena poslední aktualizace na operaci                                       |
 |  status                      | Stav operace, buď `not started` \| `running` \| `failed` \| `completed` . V jednom okamžiku může být stav jenom jedna operace `running` . |
-|  error                       | Chybová zpráva pro neúspěšné operace                                                               |
+|  chyba                       | Chybová zpráva pro neúspěšné operace                                                               |
 |  |  |
 
 ### <a name="response-step-properties"></a>Vlastnosti kroku odpovědi
@@ -185,7 +185,7 @@ Načte všechny operace v nabídce nebo získá konkrétní operaci pro zadaný 
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 | estimatedTimeFrame | Odhadovaná doba trvání této operace |
 | id | Jedinečný identifikátor procesu kroku |
-| Popis | Popis kroku |
+| description | Popis kroku |
 | Step | Popisný název kroku |
 | status | Stav kroku, `notStarted` \| `running` \| `failed` buď \|`completed` |
 | cloud-zařízení | Všechna oznámení nebo upozornění zjištěná v průběhu tohoto kroku. Pole řetězců |

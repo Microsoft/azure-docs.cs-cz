@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
-ms.openlocfilehash: bb21bcefa0f9fb6f691ebfb578177c64543c1403
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46c219a82d45129ed0856d22d88be819938e5240
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549646"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325300"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>Vytvoření Service Manager webové aplikace pomocí automatizovaného skriptu
 
-K vytvoření webové aplikace pro instanci Service Manager použijte následující skript. Další informace o Service Manager připojení najdete tady: [Service Manager Web App](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
+K vytvoření webové aplikace pro instanci Service Manager použijte následující skript. Další informace o Service Manager připojení najdete tady: [Service Manager Web App](./itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
 
 Spusťte skript zadáním následujících požadovaných podrobností:
 
@@ -318,4 +318,5 @@ if(!$err)
 ```
 
 ## <a name="next-steps"></a>Další kroky
-[Nakonfigurujte hybridní připojení](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection).
+[Nakonfigurujte hybridní připojení](./itsmc-connections.md#configure-the-hybrid-connection).
+

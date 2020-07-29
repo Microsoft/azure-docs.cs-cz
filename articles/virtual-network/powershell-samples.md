@@ -1,6 +1,6 @@
 ---
 title: Ukázky Azure PowerShellu pro virtuální síť
-description: Ukázky Azure PowerShellu pro virtuální síť.
+description: Přečtěte si o ukázkách Azure PowerShell pro správu virtuálních sítí, včetně ukázky pro vytvoření virtuální sítě pro vícevrstvé aplikace.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 1e1bac855ef943bdddcc82966ff3b824bcbe2ad0
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: b3107d521fb79e3ea6cfe190abd2ec3fb7859cb3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232215"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288235"
 ---
 # <a name="azure-powershell-samples-for-virtual-network"></a>Ukázky Azure PowerShellu pro virtuální síť
 
 Následující tabulka obsahuje odkazy na skripty Azure PowerShellu:
 
-| Skript | Description |
+| Skript | Popis |
 |----|----|
 | [Vytvoření virtuální sítě pro vícevrstvé aplikace](./scripts/virtual-network-powershell-sample-multi-tier-application.md) | Vytvoří virtuální síť s front-endovou a back-endovou podsítí. Provoz do front-endové podsítě je omezený na HTTP, zatímco provoz do back-endové podsítě je omezený na SQL na portu 1433. |
 | [Vytvoření partnerského vztahu mezi dvěma virtuálními sítěmi](./scripts/virtual-network-powershell-sample-peer-two-virtual-networks.md) | Vytvoří a propojí dvě virtuální sítě ve stejné oblasti. |

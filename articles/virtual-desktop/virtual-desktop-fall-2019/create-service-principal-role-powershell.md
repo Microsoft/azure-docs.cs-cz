@@ -1,6 +1,6 @@
 ---
-title: Přiřazení role instančního objektu služby virtuálních klientů Windows – Azure
-description: Vytvoření instančních objektů a přiřazení rolí pomocí prostředí PowerShell ve virtuálním počítači s Windows.
+title: Přiřazení role instančního objektu virtuální plochy Windows (Classic) – Azure
+description: Vytvoření instančních objektů a přiřazení rolí pomocí prostředí PowerShell ve virtuální ploše Windows (Classic).
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ad78fe2ce66511cb75e23a28a30c44b173da9020
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 015d0e0208b83cff3db3995383ce93ed6362ee49
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117728"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270086"
 ---
-# <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Kurz: vytvoření instančních objektů a přiřazení rolí pomocí PowerShellu
+# <a name="tutorial-create-service-principals-and-role-assignments-with-powershell-in-windows-virtual-desktop-classic"></a>Kurz: vytvoření instančních objektů a přiřazení rolí pomocí PowerShellu ve virtuálním počítači s Windows (Classic)
 
 >[!IMPORTANT]
->Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows.
+>Tento obsah se vztahuje na virtuální plochu Windows (Classic), která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows.
 
 Instanční objekty jsou identity, které můžete vytvořit v Azure Active Directory k přiřazení rolí a oprávnění pro konkrétní účel. Na virtuálním počítači s Windows můžete vytvořit instanční objekt pro:
 

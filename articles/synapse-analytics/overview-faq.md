@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 43f0dfa5fd413d201eb8c63aa752a6fd8db68f6c
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: ba6f79fffe5287be7574d422f026489d4da2795e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807872"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287495"
 ---
 # <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Nejčastější dotazy ke službě Azure synapse Analytics (pracovní prostory ve verzi Preview)
 
@@ -32,6 +32,8 @@ Odpověď: Azure synapse je integrovaná datová platforma pro BI, AI a nepřetr
 - Snadno Sledujte a rychle Optimalizujte, reagují a ladíte události, které probíhají v aktivitách pracovního prostoru v libovolné vrstvě.
 - Spravujte svá metadata napříč moduly. Vytvoří tabulku Spark a bude automaticky dostupná ve vašich databázích Azure synapse.
 - Interakci s daty prostřednictvím jednotného uživatelského prostředí. Synapse Studio přináší vývojářům pro velké objemy dat, datové inženýry, specializující, analytiky dat a odborníky na data na stejné platformě.
+
+Další informace najdete v tématu [co je Azure synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics/overview-what-is).
 
 ### <a name="q-what-are-the-main-components-of-azure-synapse-analytics"></a>Otázka: Jaké jsou hlavní součásti Azure synapse Analytics
 

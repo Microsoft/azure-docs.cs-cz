@@ -7,18 +7,19 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 84709c022631543101889f784231158ebb96b6f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c315cc8c9dfcfa66999ff263fab95f414061e54e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77662260"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321254"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Odesílat vlastní metriky pro prostředek Azure do úložiště metrik Azure Monitor pomocí REST API
 
 V tomto článku se dozvíte, jak odesílat vlastní metriky pro prostředky Azure do úložiště Azure Monitor metriky prostřednictvím REST API. Až budou metriky v Azure Monitor, můžete s nimi provádět všechny akce, které se budou používat se standardními metrikami. Příklady jsou grafy, výstrahy a směrování do jiných externích nástrojů.  
 
 >[!NOTE]  
->REST API povoluje pouze odesílání vlastních metrik pro prostředky Azure. Pokud chcete odesílat metriky pro prostředky v různých prostředích nebo v místním prostředí, můžete použít [Application Insights](../../azure-monitor/app/api-custom-events-metrics.md).    
+>REST API povoluje pouze odesílání vlastních metrik pro prostředky Azure. Pokud chcete odesílat metriky pro prostředky v různých prostředích nebo v místním prostředí, můžete použít [Application Insights](../app/api-custom-events-metrics.md).    
 
 
 ## <a name="create-and-authorize-a-service-principal-to-emit-metrics"></a>Vytvoření a autorizace instančního objektu pro vygenerování metrik 
@@ -92,13 +93,13 @@ Pokud se vám v některé části procesu zobrazí chybová zpráva, vezměte v 
 1. Nemůžete vystavovat metriky pro předplatné nebo skupinu prostředků jako prostředek Azure. 
 1. Nemůžete vložit metriku do úložiště, které je starší než 20 minut. Úložiště metrik je optimalizované pro upozorňování a vytváření grafů v reálném čase. 
 2. Počet názvů dimenzí by měl odpovídat hodnotám a naopak. Ověřte hodnoty. 
-2. Můžete vysílat metriky v oblasti, která nepodporuje vlastní metriky. Viz [podporované oblasti](../../azure-monitor/platform/metrics-custom-overview.md#supported-regions). 
+2. Můžete vysílat metriky v oblasti, která nepodporuje vlastní metriky. Viz [podporované oblasti](./metrics-custom-overview.md#supported-regions). 
 
 
 
 ## <a name="view-your-metrics"></a>Zobrazit vaše metriky 
 
-1. Přihlaste se k portálu Azure. 
+1. Přihlaste se k webu Azure Portal. 
 
 1. V nabídce na levé straně vyberte **monitor**. 
 
@@ -116,5 +117,5 @@ Pokud se vám v některé části procesu zobrazí chybová zpráva, vezměte v 
 
  
 ## <a name="next-steps"></a>Další kroky
-- Přečtěte si další informace o [vlastních metrikách](../../azure-monitor/platform/metrics-custom-overview.md).
+- Přečtěte si další informace o [vlastních metrikách](./metrics-custom-overview.md).
 

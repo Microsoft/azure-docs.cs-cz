@@ -8,15 +8,15 @@ ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.date: 05/28/2020
-ms.custom: seodec18
-ms.openlocfilehash: 11bb692027d8a2e5033c7bdaf8eb2c565d1562b0
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 950f258e7380d7fbd25e1a5fe2dd4673ba122c52
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205691"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321577"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>Featurization v automatizovaném strojovém učení
 
@@ -64,7 +64,7 @@ Následující tabulka shrnuje techniky, které jsou automaticky aplikovány na 
 | ------------- | ------------- |
 |**Přetáhnout vysokou mohutnost nebo žádné funkce odchylky*** |Tyto funkce přetáhněte ze sady školení a ověření. Platí pro funkce se všemi chybějícími hodnotami, se stejnou hodnotou ve všech řádcích nebo s vysokou mohutnou (například hodnoty hash, ID nebo identifikátory GUID).|
 |**Imputace – chybějící hodnoty*** |Pro číselné funkce imputace s průměrem hodnot ve sloupci.<br/><br/>V případě funkcí kategorií se imputac s nejčastější hodnotou.|
-|**Generování dalších funkcí*** |Pro funkce DateTime: rok, měsíc, den, den v týdnu, den roku, čtvrtletí, týden v roce, hodina, minuta, sekunda.<br/><br/>Pro funkce textu: četnost termínů založená na unigrams, bigrams a trigrams.|
+|**Generování dalších funkcí*** |Pro funkce DateTime: rok, měsíc, den, den v týdnu, den roku, čtvrtletí, týden v roce, hodina, minuta, sekunda.<br/><br/>Pro funkce textu: četnost termínů založená na unigrams, bigrams a trigrams. Přečtěte si další informace o [tom, jak to uděláte pomocí Bert.](#bert-integration)|
 |**Transformace a kódování***|Transformujte číselné funkce, které mají v kategorií funkce několik jedinečných hodnot.<br/><br/>Pro funkce kategorií s nízkou mohutnou se používá kódování One-Hot. Kódování One-Hot-hash se používá pro funkce kategorií s vysokou mohutnosti.|
 |**Vkládání slov**|Text featurizer převede vektory textových tokenů na vektory věty pomocí předvýukového modelu. Vektory vložení každého slova v dokumentu jsou agregovány s využitím zbytku pro vytvoření vektoru funkce dokumentu.|
 |**Cílová kódování**|V případě funkcí kategorií tento krok mapuje každou kategorii s průměrnou cílovou hodnotou pro regresní problémy a pravděpodobností třídy pro jednotlivé třídy pro problémy s klasifikací. Pro snížení přeložení mapování a šumu způsobených kategoriemi zhuštěných dat se aplikují váhy založené na kmitočtech a k skládání k.|
@@ -138,6 +138,50 @@ featurization_config.add_transformer_params('Imputer', ['engine-size'], {"strate
 featurization_config.add_transformer_params('Imputer', ['city-mpg'], {"strategy": "median"})
 featurization_config.add_transformer_params('Imputer', ['bore'], {"strategy": "most_frequent"})
 featurization_config.add_transformer_params('HashOneHotEncoder', [], {"number_of_bits": 3})
+```
+
+## <a name="bert-integration"></a>Integrace BERT 
+[Bert](https://techcommunity.microsoft.com/t5/azure-ai/how-bert-is-integrated-into-azure-automated-machine-learning/ba-p/1194657) se používá v Featurization vrstvě automatizovaného ml. V této vrstvě zjistíme, jestli sloupec obsahuje bezplatný text nebo jiné typy dat, jako jsou například časová razítka nebo jednoduchá čísla, a my zpracování odpovídajícím způsobem. V případě, že pro BERT vyladíme a naučíte model pomocí uživatelsky definovaných popisků, pak výstupy dokumentů (pro BERT se jedná o finální skrytý stav přidružený ke speciálnímu tokenu [CLS]) jako funkce společně s dalšími funkcemi, jako jsou funkce založené na časových razítkech (např. den v týdnu) nebo čísla, která mnoho typických datových sad obsahuje. 
+
+Pokud chcete povolit BERT, měli byste pro školení použít výpočetní prostředí GPU. Pokud se použije výpočetní výkon procesoru, pak se místo BERT AutoML povolí BiLSTM DNN featurizer. Aby bylo možné vyvolat BERT, je třeba nastavit "enable_dnn: true" v automl_settings a použít výpočetní prostředky GPU (např. vm_size = "STANDARD_NC6" nebo vyšší GPU). Příklad najdete v [tomto poznámkovém bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb).
+
+AutoML provádí následující kroky pro případ BERT (Všimněte si, že musíte nastavit "enable_dnn: true" v automl_settings pro tyto položky):
+
+1. Předzpracování, včetně tokenizace všech textových sloupců (v souhrnu featurization finálního modelu se zobrazí "StringCast" transformátor. Podívejte se na [Tento Poznámkový blok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb) , kde vidíte příklad, jak vystavit souhrn featurization modelu pomocí `get_featurization_summary()` metody.
+
+```python
+text_transformations_used = []
+for column_group in fitted_model.named_steps['datatransformer'].get_featurization_summary():
+    text_transformations_used.extend(column_group['Transformations'])
+text_transformations_used
+```
+
+2. Zřetězí všechny textové sloupce do jednoho textového sloupce, takže se v konečném modelu zobrazí text "StringConcatTransformer". 
+
+> [!NOTE]
+> Naše implementace BERT omezuje celkovou délku textu školicích ukázek na 128 tokeny. To znamená, že všechny textové sloupce, pokud jsou zřetězené, by ideálně měly mít maximálně 128 tokenů. V ideálním případě, pokud je k dispozici více sloupců, každý sloupec by měl být vyhodnocen tak, aby byl tento stav splněn. Například pokud existují dva textové sloupce v datech, měly by být oba textové sloupce vyřazeny na 64 tokeny (za předpokladu, že chcete, aby oba sloupce byly stejně reprezentovány v konečném zřetězeném textovém sloupci) předtím, než data dostanou do AutoML. Pro zřetězené sloupce délky >128 tokeny provádějících tokenizaci vrstva BERT zkrátí tento vstup na 128 tokeny.
+
+3. V kroku pro mazání funkcí AutoML porovnává BERT se směrným plánem (penalta slov obsahuje funkce + předpracované vkládání slov) na ukázku dat a určuje, jestli BERT by poskytovala vylepšení přesnosti. Pokud se zjistí, že BERT vykonává lepší hodnotu než standardní hodnoty, AutoML potom použije BERT pro text featurization jako optimální strategii featurization a pokračuje s featurizing celými daty. V takovém případě se v konečném modelu zobrazí "PretrainedTextDNNTransformer".
+
+AutoML v současné době podporuje kolem jazyků 100 a v závislosti na jazyku datové sady AutoML zvolí příslušný model BERT. Pro německé údaje používáme model německého BERT. V anglickém jazyce používáme BERT model English. Pro všechny ostatní jazyky používáme model vícejazyčného BERT.
+
+V následujícím kódu se aktivuje německý model BERT, protože jazyk datové sady je určený jako DEU, kód jazyka 3 pro němčinu podle [klasifikace ISO](https://iso639-3.sil.org/code/hbs):
+
+```python
+from azureml.automl.core.featurization import FeaturizationConfig
+
+featurization_config = FeaturizationConfig(dataset_language='deu')
+
+automl_settings = {
+    "experiment_timeout_minutes": 120,
+    "primary_metric": 'accuracy', 
+# All other settings you want to use 
+    "featurization": featurization_config,
+    
+  "enable_dnn": True, # This enables BERT DNN featurizer
+    "enable_voting_ensemble": False,
+    "enable_stack_ensemble": False
+}
 ```
 
 ## <a name="next-steps"></a>Další kroky

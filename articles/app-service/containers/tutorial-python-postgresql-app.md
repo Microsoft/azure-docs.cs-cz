@@ -10,12 +10,12 @@ ms.custom:
 - seo-python-october2019
 - cli-validate
 - tracking-python
-ms.openlocfilehash: b4968d16f9ec2e034bde653215677ad40c6b983f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 718c9a62cc867e5d65cc3c79e78ce3282f1037c7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073850"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285845"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Kurz: nasazení webové aplikace v Django s PostgreSQL v Azure App Service
 
@@ -132,7 +132,7 @@ az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --
 
 - Nahraďte *\<postgres-server-name>* názvem, který je jedinečný v rámci všech Azure (koncový bod serveru je `https://\<postgres-server-name>.postgres.database.azure.com` ). Dobrým vzorem je použití kombinace názvu vaší společnosti a jiné jedinečné hodnoty.
 - V případě *\<admin-username>* a *\<admin-password>* Zadejte přihlašovací údaje pro vytvoření uživatele správce pro tento server Postgres.
-- [Cenová úroveň](/postgresql/concepts-pricing-tiers) B_Gen4_1 (Basic, COMPUTE GEN4 –, 1 jádro), která se tady používá, je nejlevnější. V případě produkčních databází vynechejte `--sku-name` místo toho argument pro použití úrovně GP_Gen5_2 (pro obecné účely, Gen 5, 2 jader).
+- [Cenová úroveň](../../postgresql/concepts-pricing-tiers.md) B_Gen4_1 (Basic, COMPUTE GEN4 –, 1 jádro), která se tady používá, je nejlevnější. V případě produkčních databází vynechejte `--sku-name` místo toho argument pro použití úrovně GP_Gen5_2 (pro obecné účely, Gen 5, 2 jader).
 
 Tento příkaz provede následující akce, což může trvat několik minut:
 

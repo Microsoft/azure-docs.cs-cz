@@ -3,12 +3,12 @@ title: Přehled funkcí – Azure Event Hubs | Microsoft Docs
 description: Tento článek obsahuje podrobné informace o funkcích a terminologii Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 034983074ddc6faf324d70a18a9a49b8df659649
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2de83be023c32df067712146937f880092025a44
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537305"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87172108"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Funkce a terminologie ve službě Azure Event Hubs
 
@@ -118,7 +118,7 @@ Při připojování k oddílům je běžné použití mechanismu leasingu ke koo
 - [EventProcessorClient](/dotnet/api/azure.messaging.eventhubs.eventprocessorclient) pro .NET
 - [EventProcessorClient](/java/api/com.azure.messaging.eventhubs.eventprocessorclient) pro jazyk Java
 - [EventHubConsumerClient](/python/api/azure-eventhub/azure.eventhub.aio.eventhubconsumerclient) pro Python
-- [EventHubSoncumerClient](/javascript/api/@azure/event-hubs/eventhubconsumerclient) pro JavaScript/TypeScript
+- [EventHubConsumerClient](/javascript/api/@azure/event-hubs/eventhubconsumerclient) pro JavaScript/TypeScript
 
 #### <a name="read-events"></a>Čtení událostí
 

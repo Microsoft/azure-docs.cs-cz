@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: overview
 ms.date: 03/18/2020
 ms.author: victorh
-ms.openlocfilehash: 28cf8d9fd60cc6fc158812aa0a1dff3a4b0dced1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d56c57a12995e0ea94c10f371bf09a3b3f9733ba
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80754298"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87278620"
 ---
 # <a name="azure-web-application-firewall-on-azure-content-delivery-network"></a>Firewall webových aplikací Azure v Azure Content Delivery Network
 
@@ -45,7 +45,7 @@ Webová aplikace hostovaná v Azure CDN může k ní být přidružená jenom je
 
 Zásady WAF je možné nakonfigurovat tak, aby běžely v následujících dvou režimech:
 
-- *Detekční režim*: při spuštění v režimu detekce neprovádí WAF žádné jiné jiné akce než monitory a zaznamená požadavek a odpovídající WAF pravidlo na WAF protokoly. Diagnostiku protokolování můžete zapnout pro přední dveře. Když použijete portál, přejdete do části **Diagnostika** .
+- *Detekční režim*: při spuštění v režimu detekce neprovádí WAF žádné jiné jiné akce než monitory a zaznamená požadavek a odpovídající WAF pravidlo na WAF protokoly. Diagnostiku protokolování pro CDN můžete zapnout. Když použijete portál, přejdete do části **Diagnostika** .
 
 - *Režim prevence*: v režimu prevence převezme WAF zadanou akci, pokud požadavek odpovídá pravidlu. Pokud je nalezena shoda, nejsou vyhodnocována žádná další pravidla s nižší prioritou. V protokolech WAF se zaznamenávají i všechny odpovídající požadavky.
 

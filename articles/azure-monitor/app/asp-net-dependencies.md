@@ -3,16 +3,16 @@ title: Sledování závislostí v Azure Application Insights | Microsoft Docs
 description: Monitorování volání závislostí z vaší místní nebo Microsoft Azure webové aplikace s využitím Application Insights.
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 9980db352e5d2c342131e0d6a2cd1248adb10810
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a7f42c19c835e4f5c49f4d7aa91504b606a09f5b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067723"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321373"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Sledování závislostí v Azure Application Insights 
 
-*Závislost* je komponenta, která je volána vaší aplikací. Obvykle se jedná o službu volanou pomocí HTTP, databázi nebo systém souborů. [Application Insights](../../azure-monitor/app/app-insights-overview.md) měří dobu trvání volání závislostí, bez ohledu na to, jestli se nedaří, nebo ne, spolu s dalšími informacemi, jako je název závislosti a tak dále. Můžete prozkoumat konkrétní volání závislosti a korelovat je s požadavky a výjimkami.
+*Závislost* je komponenta, která je volána vaší aplikací. Obvykle se jedná o službu volanou pomocí HTTP, databázi nebo systém souborů. [Application Insights](./app-insights-overview.md) měří dobu trvání volání závislostí, bez ohledu na to, jestli se nedaří, nebo ne, spolu s dalšími informacemi, jako je název závislosti a tak dále. Můžete prozkoumat konkrétní volání závislosti a korelovat je s požadavky a výjimkami.
 
 ## <a name="automatically-tracked-dependencies"></a>Automaticky sledované závislosti
 
@@ -154,7 +154,7 @@ Tady budete moct zobrazit počet neúspěšných závislostí. Pokud chcete zís
 
 ## <a name="logs-analytics"></a>Protokoly (analýza)
 
-Závislosti můžete sledovat v [dotazovacím jazyku Kusto](/azure/kusto/query/). Tady je několik příkladů.
+Závislosti můžete sledovat v [dotazovacím jazyku Kusto](/azure/kusto/query/). Tady je pár příkladů.
 
 * Vyhledání všech neúspěšných volání závislostí:
 
@@ -202,6 +202,7 @@ Stejně jako každý Application Insights SDK je modul pro shromažďování zá
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Výjimky](../../azure-monitor/app/asp-net-exceptions.md)
-* [Data stránky uživatele &](../../azure-monitor/app/javascript.md)
-* [Dostupnost](../../azure-monitor/app/monitor-web-app-availability.md)
+* [Výjimky](./asp-net-exceptions.md)
+* [Data stránky uživatele &](./javascript.md)
+* [Dostupnost](./monitor-web-app-availability.md)
+

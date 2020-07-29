@@ -109,11 +109,9 @@
       href: concept-recognizing-text.md
     - name: Detekce obsahu pro dospělé
       href: concept-detecting-adult-content.md
-- name: Návody
+- name: Containers
   items:
-    - name: Volání rozhraní API pro počítačové zpracování obrazu
-      href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
-    - name: Použití kontejnerů
+    - name: Kontejner s rozhraním API pro čtení
       items:
         - name: Instalace a spuštění kontejnerů
           href: computer-vision-how-to-install-containers.md
@@ -127,6 +125,10 @@
         - name: Použití instancí kontejneru
           href: deploy-computer-vision-on-container-instances.md
           displayName: 'container instances, container, containers, images'
+- name: Návody
+  items:
+    - name: Volání rozhraní API pro počítačové zpracování obrazu
+      href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
     - name: Analýza videa v reálném čase
       href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
 - name: Referenční informace
@@ -135,6 +137,8 @@
       href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
     - name: Azure PowerShell
       href: 'https://aka.ms/azure-powershell-cognitiveservices'
+    - name: Rozhraní API pro počítačové zpracování obrazu v3.1-preview.1
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005'
     - name: Rozhraní API pro počítačové zpracování obrazu v3.0
       href: 'https://aka.ms/computer-vision-v3-ref'
     - name: Rozhraní API pro počítačové zpracování obrazu v2.1

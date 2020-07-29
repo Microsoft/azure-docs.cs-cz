@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.subservice: alerts
-ms.openlocfilehash: b535cda8fe7d98748eb0657a599a61ed1f8549d2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c040958d9518485bc5d583fc01aedd50d5c6e57a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045369"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321118"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Vytváření, zobrazení a správa upozornění na metriky pomocí služby Azure Monitor
 
@@ -32,7 +32,7 @@ Následující postup popisuje, jak vytvořit pravidlo upozornění na metriku v
 
 3. Klikněte na **vybrat cíl**a v kontextovém podokně, které se načte, vyberte cílový prostředek, na kterém chcete upozornit. Pro vyhledání prostředku, který chcete monitorovat, použijte rozevírací seznam pro **předplatné** a **typ prostředku** . K vyhledání prostředku můžete použít také panel hledání.
 
-4. Pokud u vybraného prostředku existují metriky, na které můžete vytvářet výstrahy, budou **dostupné signály** v pravém dolním rohu obsahovat metriky. Úplný seznam typů prostředků podporovaných pro výstrahy metrik v tomto [článku](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)si můžete prohlédnout.
+4. Pokud u vybraného prostředku existují metriky, na které můžete vytvářet výstrahy, budou **dostupné signály** v pravém dolním rohu obsahovat metriky. Úplný seznam typů prostředků podporovaných pro výstrahy metrik v tomto [článku](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)si můžete prohlédnout.
 
 5. Po výběru cílového prostředku klikněte na **Přidat podmínku**.
 
@@ -136,7 +136,8 @@ Předchozí části popisují, jak vytvářet, zobrazovat a spravovat pravidla u
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vytvářejte výstrahy metriky pomocí šablon Azure Resource Manager](../../azure-monitor/platform/alerts-metric-create-templates.md).
+- [Vytvářejte výstrahy metriky pomocí šablon Azure Resource Manager](./alerts-metric-create-templates.md).
 - [Pochopte, jak fungují výstrahy metrik](alerts-metric-overview.md).
 - [Seznamte se s tím, jak výstrahy metrik s podmínkou dynamického prahu fungují](alerts-dynamic-thresholds.md)
-- [Princip schématu webového zavěšení pro výstrahy metrik](../../azure-monitor/platform/alerts-metric-near-real-time.md#payload-schema)
+- [Princip schématu webového zavěšení pro výstrahy metrik](./alerts-metric-near-real-time.md#payload-schema)
+

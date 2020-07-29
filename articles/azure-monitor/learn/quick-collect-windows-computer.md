@@ -13,20 +13,20 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: d13a7cf87ba22dce96992c362f8b800ba79f6976
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 12d87d6d458d6cda21ca581337012e800a3d4bce
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539631"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324314"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Shromažďování dat z počítače s Windows v hybridním prostředí pomocí Azure Monitor
 
-[Azure monitor](../overview.md) může shromažďovat data přímo z vašich fyzických nebo virtuálních počítačů s Windows ve vašem prostředí do pracovního prostoru Log Analytics a získat tak podrobnou analýzu a korelaci. Instalace [agenta Log Analytics](../platform/log-analytics-agent.md) umožňuje Azure monitor shromažďovat data z datového centra nebo jiného cloudového prostředí. Tento rychlý start ukazuje, jak v několik snadných krocích nakonfigurovat počítač s Windows a shromažďovat z něj data. Informace o virtuálních počítačích Azure s Windows najdete v tématu [shromažďování dat o virtuálních počítačích Azure](../../azure-monitor/learn/quick-collect-azurevm.md).  
+[Azure monitor](../overview.md) může shromažďovat data přímo z vašich fyzických nebo virtuálních počítačů s Windows ve vašem prostředí do pracovního prostoru Log Analytics a získat tak podrobnou analýzu a korelaci. Instalace [agenta Log Analytics](../platform/log-analytics-agent.md) umožňuje Azure monitor shromažďovat data z datového centra nebo jiného cloudového prostředí. Tento rychlý start ukazuje, jak v několik snadných krocích nakonfigurovat počítač s Windows a shromažďovat z něj data. Informace o virtuálních počítačích Azure s Windows najdete v tématu [shromažďování dat o virtuálních počítačích Azure](./quick-collect-azurevm.md).  
 
-Další informace o podporované konfiguraci najdete v tématu [podporované operační systémy Windows](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) a [Konfigurace brány firewall sítě](../../azure-monitor/platform/log-analytics-agent.md#network-requirements).
+Další informace o podporované konfiguraci najdete v tématu [podporované operační systémy Windows](../platform/log-analytics-agent.md#supported-windows-operating-systems) a [Konfigurace brány firewall sítě](../platform/log-analytics-agent.md#network-requirements).
  
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -166,3 +166,4 @@ Pokud se chcete dozvědět, jak zobrazit a analyzovat data, přejděte k kurzu:
 
 > [!div class="nextstepaction"]
 > [Zobrazení nebo analýza dat v Log Analytics](../log-query/get-started-portal.md)
+

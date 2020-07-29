@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2019
-ms.openlocfilehash: 1dda2df64dc116a950498aaf581ec39a86db72bb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 080af271870362e6e0633aaf590820f2fadb6144
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505733"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325385"
 ---
 # <a name="azure-monitor-log-queries"></a>Dotazy na protokoly Azure Monitor
 
@@ -26,15 +26,15 @@ Protokoly Azure Monitor jsou založené na službě Azure Průzkumník dat a Azu
 
 ## <a name="concepts"></a>Koncepty
 
-- [Analýza dat protokolu v Azure monitor](../../azure-monitor/log-query/log-query-overview.md) poskytuje stručný přehled dotazů protokolu a popisuje, jak se strukturují data protokolu Azure monitor.
+- [Analýza dat protokolu v Azure monitor](./log-query-overview.md) poskytuje stručný přehled dotazů protokolu a popisuje, jak se strukturují data protokolu Azure monitor.
 - [Zobrazení a analýza dat protokolu v Azure monitor](./log-query-overview.md) vysvětluje portály, ve kterých vytváříte a spouštíte dotazy protokolu.
 
-## <a name="reference"></a>Odkaz
+## <a name="reference"></a>Referenční informace
 
 - [Odkaz na jazyk dotazů](/azure/kusto/query) je úplný referenční příručka jazyka pro dotazovací jazyk Kusto.
 - [Rozdíly v jazyce Azure monitor protokolu dotazů](data-explorer-difference.md) popisují rozdíly mezi verzemi dotazovacího jazyka Kusto.
-- [Standardní vlastnosti v Azure monitor záznamy protokolu](../../azure-monitor/platform/log-standard-properties.md) popisují vlastnosti, které jsou standardní pro všechna Azure monitor data protokolu.
-- [Provádění dotazů protokolu meziprostředků v Azure monitor](../../azure-monitor/log-query/cross-workspace-query.md) popisuje, jak zapisovat dotazy protokolů, které používají data z více Log Analytics pracovních prostorů a Application Insights aplikací.
+- [Standardní vlastnosti v Azure monitor záznamy protokolu](../platform/log-standard-properties.md) popisují vlastnosti, které jsou standardní pro všechna Azure monitor data protokolu.
+- [Provádění dotazů protokolu meziprostředků v Azure monitor](./cross-workspace-query.md) popisuje, jak zapisovat dotazy protokolů, které používají data z více Log Analytics pracovních prostorů a Application Insights aplikací.
 
 ## <a name="examples"></a>Příklady
 
@@ -58,3 +58,4 @@ Protokoly Azure Monitor jsou založené na službě Azure Průzkumník dat a Azu
 ## <a name="next-steps"></a>Další kroky
 
 - Přístup k kompletní [dokumentaci k odkazům pro dotazovací jazyk Kusto](/azure/kusto/query/).
+

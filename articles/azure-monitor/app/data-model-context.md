@@ -4,11 +4,12 @@ description: Model dat kontextu telemetrie Application Insights
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 8a2e3296643b13a54c4fceb11f044a2808cf2877
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25ff7d92da5ea0a6aba84aad1cfc98e5295e151e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671859"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322665"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>Kontext telemetrie: Application Insights datový model
 
@@ -38,14 +39,14 @@ Maximální délka: 64
 
 ## <a name="operation-id"></a>ID operace
 
-Jedinečný identifikátor kořenové operace. Tento identifikátor umožňuje seskupit telemetrii mezi více komponentami. Podrobnosti najdete v tématu [korelace telemetrie](../../azure-monitor/app/correlation.md) . ID operace se vytváří buď pomocí žádosti, nebo zobrazením stránky. Všechny ostatní telemetrie nastaví toto pole na hodnotu obsahujícího zobrazení žádosti nebo stránky. 
+Jedinečný identifikátor kořenové operace. Tento identifikátor umožňuje seskupit telemetrii mezi více komponentami. Podrobnosti najdete v tématu [korelace telemetrie](./correlation.md) . ID operace se vytváří buď pomocí žádosti, nebo zobrazením stránky. Všechny ostatní telemetrie nastaví toto pole na hodnotu obsahujícího zobrazení žádosti nebo stránky. 
 
 Maximální délka: 128
 
 
 ## <a name="parent-operation-id"></a>ID nadřazené operace
 
-Jedinečný identifikátor bezprostředního nadřazeného prvku položky telemetrie Podrobnosti najdete v tématu [korelace telemetrie](../../azure-monitor/app/correlation.md) .
+Jedinečný identifikátor bezprostředního nadřazeného prvku položky telemetrie Podrobnosti najdete v tématu [korelace telemetrie](./correlation.md) .
 
 Maximální délka: 128
 
@@ -75,7 +76,7 @@ Maximální délka: 64
 
 ID anonymního uživatele Představuje koncového uživatele aplikace. Při odesílání telemetrie ze služby je uživatelský kontext o uživateli, který operaci zahájil ve službě.
 
-[Vzorkování](../../azure-monitor/app/sampling.md) je jedním z postupů pro minimalizaci množství shromážděné telemetrie. Algoritmus vzorkování se pokusí buď vzorkovat v rámci celé korelační telemetrie, nebo na ně. Pro generování skóre vzorkování se používá anonymní ID uživatele. Takže ID anonymního uživatele by mělo být náhodným množstvím hodnoty. 
+[Vzorkování](./sampling.md) je jedním z postupů pro minimalizaci množství shromážděné telemetrie. Algoritmus vzorkování se pokusí buď vzorkovat v rámci celé korelační telemetrie, nebo na ně. Pro generování skóre vzorkování se používá anonymní ID uživatele. Takže ID anonymního uživatele by mělo být náhodným množstvím hodnoty. 
 
 Použití anonymního uživatelského ID k uložení uživatelského jména je zneužití pole. Použijte ID ověřeného uživatele.
 
@@ -126,6 +127,7 @@ Maximální délka: 256
 
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se, jak můžete [zvětšit a filtrovat telemetrii](../../azure-monitor/app/api-filtering-sampling.md).
+- Naučte se, jak můžete [zvětšit a filtrovat telemetrii](./api-filtering-sampling.md).
 - Viz [datový model](data-model.md) pro typy Application Insights a datový model.
-- Podívejte se na standardní [konfiguraci](../../azure-monitor/app/configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)kolekce vlastností kontextu.
+- Podívejte se na standardní [konfiguraci](./configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)kolekce vlastností kontextu.
+

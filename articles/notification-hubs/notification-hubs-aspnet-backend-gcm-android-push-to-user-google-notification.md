@@ -12,17 +12,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-java
 ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: b96f337b27e40c5eaec88e220ca3fee6904df905
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 27a56a45845c1515b500a71528d3449b63c3f869
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022272"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323957"
 ---
 # <a name="tutorial-send-push-notification-to-specific-android-users-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Kurz: odeslání nabízeného oznámení konkrétním uživatelům Androidu pomocí Azure Notification Hubs a Google Cloud Messaging (zastaralé)
 
@@ -40,7 +40,7 @@ V tomto kurzu provedete následující kroky:
 > * Aktualizace aplikace pro Android
 > * Otestování aplikace
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete tento kurz, dokončete [kurz Zasílání nabízených oznámení do zařízení s Androidem službami Azure Notification Hubs a Google Cloud Messaging](notification-hubs-android-push-notification-google-gcm-get-started.md).
 

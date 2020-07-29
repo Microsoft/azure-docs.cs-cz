@@ -11,12 +11,12 @@ ms.author: tracych
 author: tracychms
 ms.date: 07/16/2020
 ms.custom: Build2020, tracking-python
-ms.openlocfilehash: 23fe2704cb74a5dc1411d5556dd6f3bbbac8937a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 475c5b3073b25c79b57a2ab507af642a8af3547f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047984"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288877"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Spuštění dávkového odvozování pro velké objemy dat pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,15 +27,15 @@ S ParallelRunStep je jednoduché škálovat offline oddělení na velké cluster
 
 V tomto článku se seznámíte s následujícími úlohami:
 
-> * Nastavte prostředky strojového učení.
-> * Nakonfigurujte vstupy a výstupy dat o odvození dávky.
-> * Připravte předem vyškolený model klasifikace imagí na základě datové sady [mnist ručně zapsaných](https://publicdataset.azurewebsites.net/dataDetail/mnist/) . 
-> * Napište svůj skript pro odvození.
-> * Vytvořte [kanál strojového učení](concept-ml-pipelines.md) obsahující ParallelRunStep a spusťte odvození dávky na mnist ručně zapsaných testovacích imagí. 
-> * Opětovné odeslání odvozeného odvození dávky s novým vstupem a parametry dat 
-> * Zkontrolujte výsledky.
+> 1. Nastavte prostředky strojového učení.
+> 1. Nakonfigurujte vstupy a výstupy dat o odvození dávky.
+> 1. Připravte předem vyškolený model klasifikace imagí na základě datové sady [mnist ručně zapsaných](https://publicdataset.azurewebsites.net/dataDetail/mnist/) . 
+> 1.  Napište svůj skript pro odvození.
+> 1. Vytvořte [kanál strojového učení](concept-ml-pipelines.md) obsahující ParallelRunStep a spusťte odvození dávky na mnist ručně zapsaných testovacích imagí. 
+> 1. Opětovné odeslání odvozeného odvození dávky s novým vstupem a parametry dat 
+> 1. Zkontrolujte výsledky.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
@@ -205,16 +205,16 @@ model = Model.register(model_path="models/",
 Skript *musí obsahovat* dvě funkce:
 - `init()`: Tuto funkci použijte pro veškerou nákladný nebo běžnou přípravu pro pozdější odvození. Můžete ji například použít k načtení modelu do globálního objektu. Tato funkce bude volána pouze jednou na začátku procesu.
 -  `run(mini_batch)`: Funkce se spustí pro každou `mini_batch` instanci.
-    -  `mini_batch`: ParallelRunStep vyvolá metodu Run a předá buď seznam, nebo PANDAS datový rámec jako argument metody. Každá položka v mini_batch bude – cesta k souboru, pokud je vstupem datová sada, PANDAS dataframe, pokud je vstupem TabularDataset.
-    -  `response`: metoda Run () by měla vracet PANDAS dataframe nebo Array. Pro append_row output_action jsou tyto vrácené prvky připojeny do společného výstupního souboru. V případě summary_only se obsah prvků ignoruje. U všech výstupních akcí každý vrácený element Output označuje jedno úspěšné spuštění vstupního prvku ve vstupní Mini-Batch. Ujistěte se, že je ve výsledku spuštění k dispozici dostatek dat pro mapování vstupu na výsledek výstupu. Výstup spuštění se zapíše do výstupního souboru a nebude zaručit, že bude v pořádku, abyste ho namapovali na vstup, měli byste použít nějaký klíč ve výstupu.
+    -  `mini_batch`: `ParallelRunStep` vyvolá metodu Run a předá `DataFrame` jako argument metody seznam nebo PANDAS. Každá položka v mini_batch bude cestou k souboru, pokud je vstupem `FileDataset` nebo PANDAS, `DataFrame` Pokud je vstupem `TabularDataset` .
+    -  `response`: metoda Run () by měla vracet PANDAS `DataFrame` nebo Array. Pro append_row output_action jsou tyto vrácené prvky připojeny do společného výstupního souboru. V případě summary_only se obsah prvků ignoruje. U všech výstupních akcí každý vrácený element Output označuje jedno úspěšné spuštění vstupního prvku ve vstupní Mini-Batch. Ujistěte se, že je ve výsledku spuštění k dispozici dostatek dat pro mapování vstupu na výsledek výstupu. Výstup spuštění se zapíše do výstupního souboru a nebude zaručit, že bude v pořádku, abyste ho namapovali na vstup, měli byste použít nějaký klíč ve výstupu.
 
 ```python
+%%writefile digit_identification.py
 # Snippets from a sample script.
 # Refer to the accompanying digit_identification.py
 # (https://aka.ms/batch-inference-notebooks)
 # for the implementation script.
 
-%%writefile digit_identification.py
 import os
 import numpy as np
 import tensorflow as tf
@@ -289,7 +289,7 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 
 `ParallelRunConfig`je hlavní konfigurací `ParallelRunStep` instance v rámci Azure Machine Learning kanálu. Použijete ho k zabalení skriptu a ke konfiguraci nezbytných parametrů, včetně všech následujících položek:
 - `entry_script`: Uživatelský skript jako cesta k místnímu souboru, který bude spuštěn paralelně na více uzlech. Pokud `source_directory` je k dispozici, použijte relativní cestu. V opačném případě použijte jakoukoli cestu, která je přístupná v počítači.
-- `mini_batch_size`: Velikost malé dávky předaná jednomu `run()` volání. (volitelné; výchozí hodnota je `10` soubory pro datovou sadu souborů a `1MB` pro TabularDataset.)
+- `mini_batch_size`: Velikost malé dávky předaná jednomu `run()` volání. (volitelné; výchozí hodnota je `10` soubory pro `FileDataset` a `1MB` pro `TabularDataset` .)
     - V případě je `FileDataset` to počet souborů s minimální hodnotou `1` . Můžete zkombinovat více souborů do jedné Mini-dávky.
     - Pro `TabularDataset` je to velikost dat. Příklady hodnot jsou `1024` , `1024KB` , `10MB` a `1GB` . Doporučená hodnota je `1MB` . Ze zkrácené dávky `TabularDataset` nebude nikdy mezi hranicemi souborů. Například pokud máte soubory. csv s různými velikostmi, nejmenší soubor je 100 KB a největší je 10 MB. Pokud nastavíte `mini_batch_size = 1MB` , budou se soubory s velikostí menší než 1 MB považovat za jednu miniickou dávku. Soubory o velikosti větší než 1 MB budou rozděleny do několika Mini-dávek.
 - `error_threshold`: Počet selhání záznamu `TabularDataset` a selhání souborů pro `FileDataset` , které by měly být během zpracování ignorovány. Pokud se počet chyb pro celý vstup překročí k této hodnotě, bude úloha přerušena. Prahová hodnota chyby je pro celý vstup a nikoli pro jednotlivé Mini-dávky odeslané do `run()` metody. Rozsah je `[-1, int.max]` . `-1`Část indikuje ignorování všech selhání během zpracování.
@@ -306,7 +306,7 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 - `run_invocation_timeout`: `run()` Časový limit volání metody v sekundách. (volitelné; výchozí hodnota je `60` )
 - `run_max_try`: Maximální počet testovaných položek `run()` pro Mini-Batch. V `run()` případě, že dojde k výjimce, se nezdařila nebo není vrácena žádná hodnota, pokud `run_invocation_timeout` je dosaženo (volitelné; výchozí hodnota je `3` ). 
 
-Můžete zadat `mini_batch_size` , `node_count` ,, `process_count_per_node` `logging_level` , `run_invocation_timeout` a `run_max_try` jako, aby `PipelineParameter` při opakovaném odesílání kanálu mohli doladit hodnoty parametrů. V tomto příkladu použijete PipelineParameter pro `mini_batch_size` a `Process_count_per_node` a pak změníte tyto hodnoty, když znovu odešlete spustit později. 
+Můžete zadat `mini_batch_size` , `node_count` ,, `process_count_per_node` `logging_level` , `run_invocation_timeout` a `run_max_try` jako, aby `PipelineParameter` při opakovaném odesílání kanálu mohli doladit hodnoty parametrů. V tomto příkladu použijete `PipelineParameter` pro `mini_batch_size` a `Process_count_per_node` a tyto hodnoty změníte, pokud je znovu spustíte později. 
 
 V tomto příkladu se předpokládá, že používáte `digit_identification.py` skript, který jste si poznamenali dříve. Pokud používáte vlastní skript, změňte `source_directory` `entry_script` parametry a odpovídajícím způsobem.
 
@@ -396,7 +396,7 @@ pipeline_run_2.wait_for_completion(show_output=True)
 ```
 ## <a name="view-the-results"></a>Zobrazení výsledků
 
-Výsledky z výše uvedeného běhu jsou zapsány do úložiště dat určeného v objektu PipelineData jako výstupní data, která jsou v tomto případě označována jako *odvozená*. Výsledky jsou uložené ve výchozím kontejneru objektů blob, můžete přejít k účtu úložiště a zobrazit ho prostřednictvím Průzkumník služby Storage, cesta k souboru je AzureML-SAS-*GUID*/AzureML/*RunId* / *output_dir*.
+Výsledky z výše uvedeného běhu jsou zapsány do `DataStore` zadaného `PipelineData` objektu v objektu jako výstupní data, která jsou v tomto případě označována jako *odvozená*. Výsledky jsou uložené ve výchozím kontejneru objektů blob, můžete přejít k účtu úložiště a zobrazit ho prostřednictvím Průzkumník služby Storage, cesta k souboru je AzureML-SAS-*GUID*/AzureML/*RunId* / *output_dir*.
 
 Můžete si také stáhnout tato data a zobrazit výsledky. Níže je ukázkový kód pro zobrazení prvních 10 řádků.
 

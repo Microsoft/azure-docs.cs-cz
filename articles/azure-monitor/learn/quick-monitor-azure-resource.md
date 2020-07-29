@@ -6,12 +6,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 597b12a584e7b4c17ec21635e18368f897ad168a
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: 0e29b25f5d846cae1563ea90271cf007d02e248c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85443872"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324263"
 ---
 # <a name="quickstart-monitor-an-azure-resource-with-azure-monitor"></a>Rychlý Start: monitorování prostředku Azure pomocí Azure Monitor
 [Azure monitor](../overview.md) spustí shromažďování dat z prostředků Azure okamžikem, kdy se vytváří. V tomto rychlém startu najdete Stručný návod k datům, která se automaticky shromažďují pro určitý prostředek, a o tom, jak je zobrazit v Azure Portal pro konkrétní prostředek. Později můžete přidat konfiguraci pro shromažďování dalších dat a můžete přejít do nabídky Azure Monitor a použít stejné nástroje pro přístup k datům shromážděným pro všechny prostředky v rámci vašeho předplatného.
@@ -70,4 +70,5 @@ Metriky jsou číselné hodnoty, které popisují určitý aspekt prostředku v 
 V tomto rychlém startu jste si prohlíželi protokol aktivit a metriky pro prostředek Azure, které se automaticky shromažďují pomocí Azure Monitor. Pokračujte dalším rychlým startem, který vám ukáže, jak shromažďovat protokol aktivit do Log Analytics pracovního prostoru, kde je lze analyzovat pomocí [dotazů protokolu](../log-query/log-query-overview.md).
 
 > [!div class="nextstepaction"]
-> [Odeslání protokolu aktivit Azure do pracovního prostoru Log Analytics](quick-monitor-azure-resource.md)
+> [Odeslání protokolu aktivit Azure do pracovního prostoru Log Analytics]()
+

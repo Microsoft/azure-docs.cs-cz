@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 2343de97d06abdefed2c2977a7341aa411429319
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98ef2b416c809789307f946ed90fb3138d9a20c1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80520745"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325368"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Řešení potíží s agentem Log Analytics pro Linux 
 
@@ -43,7 +43,7 @@ Pokud žádný z těchto kroků nefunguje za vás, jsou k dispozici i tyto kaná
  Další konfigurace | `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/*.conf`
 
  >[!NOTE]
- >Pokud je kolekce nakonfigurovaná z [nabídky data Log Analytics Upřesnit nastavení](../../azure-monitor/platform/agent-data-sources.md#configuring-data-sources) v Azure Portal pro váš pracovní prostor, upraví se konfigurační soubory pro čítače výkonu a syslog se přepíše. Chcete-li zakázat konfiguraci pro všechny agenty, zakažte shromažďování z Log Analytics **Upřesnit nastavení** nebo pro jednoho agenta spusťte následující příkaz:  
+ >Pokud je kolekce nakonfigurovaná z [nabídky data Log Analytics Upřesnit nastavení](./agent-data-sources.md#configuring-data-sources) v Azure Portal pro váš pracovní prostor, upraví se konfigurační soubory pro čítače výkonu a syslog se přepíše. Chcete-li zakázat konfiguraci pro všechny agenty, zakažte shromažďování z Log Analytics **Upřesnit nastavení** nebo pro jednoho agenta spusťte následující příkaz:  
 > `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
 
 ## <a name="installation-error-codes"></a>Kódy chyb instalace
@@ -53,7 +53,7 @@ Pokud žádný z těchto kroků nefunguje za vás, jsou k dispozici i tyto kaná
 | NOT_DEFINED | Vzhledem k tomu, že nezbytné závislosti nejsou nainstalovány, modul plug-in auoms audit nebude nainstalován. | Instalace auoms selhala, nainstalujte balíček audited. |
 | 2 | Pro sadu prostředí se dala zadat neplatná možnost. Spustit `sudo sh ./omsagent-*.universal*.sh --help` pro použití |
 | 3 | Sada Shell neposkytla žádnou možnost. Spustit `sudo sh ./omsagent-*.universal*.sh --help` pro použití. |
-| 4 | Neplatný typ balíčku nebo neplatné nastavení proxy serveru; balíčky omsagent-*ot*. sh lze instalovat pouze na systémy na bázi ot./min. a balíčky omsagent-*deb*. sh lze instalovat pouze v systémech založených na Debian. Doporučuje se použít univerzální instalační program z [nejnovější verze](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux). Přečtěte si také téma ověření nastavení proxy serveru. |
+| 4 | Neplatný typ balíčku nebo neplatné nastavení proxy serveru; balíčky omsagent-*ot*. sh lze instalovat pouze na systémy na bázi ot./min. a balíčky omsagent-*deb*. sh lze instalovat pouze v systémech založených na Debian. Doporučuje se použít univerzální instalační program z [nejnovější verze](../learn/quick-collect-linux-computer.md#install-the-agent-for-linux). Přečtěte si také téma ověření nastavení proxy serveru. |
 | 5 | Sada prostředí musí být spuštěná jako kořenová nebo během připojování se vrátila 403 chyba. Spusťte příkaz pomocí příkazu `sudo` . |
 | 6 | Během připojování se vrátila Neplatná architektura balíčku nebo došlo k chybě 200. balíčky omsagent-*x64.sh lze instalovat pouze v systémech 64 a balíčky omsagent-* x86.sh lze instalovat pouze na 32 systémy. Stáhněte si správný balíček pro vaši architekturu z [nejnovější verze](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest). |
 | 17 | Instalace balíčku OMS se nezdařila. Prohlédněte si výstup příkazu pro kořenovou chybu. |
@@ -228,7 +228,7 @@ K chybám souvisejícím s výkonem nedojde po celou dobu a jejich reprodukován
 * Počet zpráv předávaných za sekundu je moc velký, aby se základní konfigurace agenta Log Analytics pro systém Linux mohla zpracovat.
 
 ### <a name="resolution"></a>Řešení
-* Ověřte, že konfigurace v pracovním prostoru Log Analytics pro syslog má všechna zařízení a správné úrovně protokolu. Přečtěte si téma [Konfigurace kolekce syslog v Azure Portal](../../azure-monitor/platform/data-sources-syslog.md#configure-syslog-in-the-azure-portal)
+* Ověřte, že konfigurace v pracovním prostoru Log Analytics pro syslog má všechna zařízení a správné úrovně protokolu. Přečtěte si téma [Konfigurace kolekce syslog v Azure Portal](./data-sources-syslog.md#configure-syslog-in-the-azure-portal)
 * Ověřte, jestli se v nativním procesu pro zasílání zpráv syslog ( `rsyslog` , `syslog-ng` ) můžou přijímat předané zprávy.
 * Zkontrolujte nastavení brány firewall na serveru syslog, abyste zajistili, že se zprávy neblokují.
 * Simulace zprávy syslog pro Log Analytics pomocí `logger` příkazu
@@ -422,7 +422,7 @@ Po použití možnosti můžete pokračovat v reonboard. `--purge`
 ### <a name="resolution"></a>Řešení 
 Problém vyřešíte provedením následujících kroků.
 1. Odebere rozšíření z Azure Portal.
-2. Nainstalujte agenta podle [pokynů](../../azure-monitor/learn/quick-collect-linux-computer.md).
+2. Nainstalujte agenta podle [pokynů](../learn/quick-collect-linux-computer.md).
 3. Restartujte agenta spuštěním následujícího příkazu: `sudo /opt/microsoft/omsagent/bin/service_control restart` .
 * Počkejte několik minut a stav zřizování se změní na **zřizování bylo úspěšné**.
 
@@ -444,3 +444,4 @@ Problém vyřešíte provedením následujících kroků.
     ```
 
 3. Upgradujte balíčky spuštěním příkazu `sudo sh ./omsagent-*.universal.x64.sh --upgrade` .
+

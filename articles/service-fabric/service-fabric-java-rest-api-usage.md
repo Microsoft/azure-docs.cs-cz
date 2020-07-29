@@ -4,13 +4,14 @@ description: Generování a použití Service Fabric rozhraní API klienta Java 
 author: rapatchi
 ms.topic: conceptual
 ms.date: 11/27/2017
+ms.custom: devx-track-java
 ms.author: rapatchi
-ms.openlocfilehash: c093958b9a8c5a21cb6996db891705ec8c3d21ab
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 24ee4a3d8109626bf93e01fbd10c00140762c9c6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246278"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324620"
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Klientská rozhraní API pro Azure Service Fabric Java
 

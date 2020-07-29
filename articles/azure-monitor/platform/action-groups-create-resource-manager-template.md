@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: a97fd56f1dc3409666ad86e81a7ac74fee076fa1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5c02812d4c97b94667fcddcb275243e7a9b36b29
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505682"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321900"
 ---
 # <a name="create-an-action-group-with-a-resource-manager-template"></a>Vytvoření skupiny akcí s Správce prostředků šablonou
 V tomto článku se dozvíte, jak použít [šablonu Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) ke konfiguraci skupin akcí. Pomocí šablon můžete automaticky nastavit skupiny akcí, které se dají znovu použít v určitých typech výstrah. Tyto skupiny akcí zajistí, že při aktivaci výstrahy budou všechny správné strany upozorněny.
@@ -163,6 +163,7 @@ Chcete-li vytvořit skupinu akcí pomocí šablony Správce prostředků, vytvo�
 
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si další informace o [skupinách akcí](../../azure-monitor/platform/action-groups.md).
+* Přečtěte si další informace o [skupinách akcí](./action-groups.md).
 * Přečtěte si další informace o [výstrahách](alerts-overview.md).
-* Naučte se přidávat [výstrahy pomocí šablony Správce prostředků](../../azure-monitor/platform/alerts-activity-log.md).
+* Naučte se přidávat [výstrahy pomocí šablony Správce prostředků](./alerts-activity-log.md).
+

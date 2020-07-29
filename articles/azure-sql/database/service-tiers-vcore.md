@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 07/21/2020
-ms.openlocfilehash: c54979efbbd164a11614b92d9a337a86e2f221fd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 24c7e0a3c9a7d3c28823db0418e17cb94bc101ec
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87007737"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325062"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Přehled modelu vCore – Azure SQL Database a Azure SQL Managed instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -83,7 +83,7 @@ Oblasti, ve kterých je COMPUTE GEN4 –/Gen5 k dispozici, najdete v tématu [do
 - V závislosti na zatížení může Fsv2-Series doručovat větší výkon procesoru na vCore než Gen5 a velikost vCore 72 může poskytovat větší výkon procesoru pro méně nákladů než 80 virtuální jádra v Gen5. 
 - Fsv2 poskytuje méně paměti a databázi tempdb na vCore než jiný hardware, takže zatížení citlivá na tato omezení mohou místo toho brát v úvahu Gen5 nebo M-Series.  
 
-Fsv2-Series se podporuje jenom na úrovni Pro obecné účely. Oblasti, ve kterých je Fsv2-Series k dispozici, najdete v tématu [dostupnost Fsv2-Series](#fsv2-series).
+Fsv2-Series se podporuje jenom na úrovni Pro obecné účely. Oblasti, ve kterých je Fsv2-Series k dispozici, najdete v tématu [dostupnost Fsv2-Series](#fsv2-series-1).
 
 
 ### <a name="m-series"></a>Řada M
@@ -91,7 +91,7 @@ Fsv2-Series se podporuje jenom na úrovni Pro obecné účely. Oblasti, ve kter�
 - Řada M-Series je hardwarově optimalizovaná možnost hardwaru pro úlohy, které přidávají větší nároky na paměť a vyšší výpočetní limity než služba Gen5.
 - Řada M-Series poskytuje 29 GB na vCore a až 128 virtuální jádra, což zvyšuje limit paměti vzhledem k Gen5, 8rychlostní až skoro 4 TB.
 
-Řada M-Series je podporována pouze v Pro důležité obchodní informace vrstvě a nepodporuje redundanci zóny.  Předplatné musí být placeného typu nabídky, včetně průběžných plateb nebo smlouva Enterprise (EA). V oblastech, kde je dostupná řada M-Series, najdete informace v tématu [dostupnost řady m-Series](#m-series).
+Řada M-Series je podporována pouze v Pro důležité obchodní informace vrstvě a nepodporuje redundanci zóny.  Předplatné musí být placeného typu nabídky, včetně průběžných plateb nebo smlouva Enterprise (EA). V oblastech, kde je dostupná řada M-Series, najdete informace v tématu [dostupnost řady m-Series](#m-series-1).
 
 <!--
 To enable M-series hardware for a subscription and region, a support request must be opened. The subscription must be a paid offer type including Pay-As-You-Go or Enterprise Agreement (EA).  If the support request is approved, then the selection and provisioning experience of M-series follows the same pattern as for other hardware generations. For regions where M-series is available, see [M-series availability](#m-series).

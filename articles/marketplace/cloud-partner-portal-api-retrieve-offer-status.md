@@ -4,15 +4,15 @@ description: Rozhraní API pro načtení aktuálního stavu nabídky
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 5652e7b6123a9836c574059e83101a073eea56ea
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 336f23f83c33bcee1887d0e41710e686b794a663
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86535871"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87272007"
 ---
 # <a name="retrieve-offer-status"></a>Načtení stavu nabídky
 
@@ -126,7 +126,7 @@ Načte aktuální stav nabídky.
 |  estimatedTimeFrame   | Odhad doby provedení tohoto kroku v popisném formátu                       |
 |  id                   | Identifikátor kroku                                                                         |
 |  Step             | Název kroku                                                                               |
-|  Popis          | Popis kroku                                                                        |
+|  description          | Popis kroku                                                                        |
 |  status               | Stav kroku. Seznam možných hodnot najdete v tématu [stav kroku](#step-status) níže.    |
 |  cloud-zařízení             | Pole zpráv souvisejících s krokem                                                          |
 |  processPercentage    | Procentuální podíl dokončení kroku                                                              |

@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 06/11/2020
+ms.date: 07/27/2020
 ms.author: aahi
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: c475c17e5d196c0eedf38df83f782309143ad979
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: f31ac8b36134548c3a7ecc4b0bf37d28a8ab7e4b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735534"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291684"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Rychlý Start: použití klientské knihovny Analýza textu
 
@@ -26,9 +26,9 @@ Začněte s klientskou knihovnou Analýza textu. Pomocí těchto kroků nainstal
 Použijte klientskou knihovnu Analýza textu k provedení těchto akcí:
 
 * Analýza mínění
-* Rozpoznávání jazyka
-* Rozpoznávání entit
-* Extrakce klíčových frází
+* rozpoznávání jazyka,
+* rozpoznávání entit,
+* extrakce klíčových frází,
 
 ::: zone pivot="programming-language-csharp"
 
@@ -83,7 +83,7 @@ Pokud jste na tuto kartu klikli, pravděpodobně jste v oblíbeném programovac�
 | Jazyk | Dostupná verze | 
 |----------|------------------------|
 | Ruby     | [Verze 2,1](ruby-sdk.md) | 
-| Go       | [Verze 2,1](go-sdk.md) | 
+| Přejít       | [Verze 2,1](go-sdk.md) | 
 
 ::: zone-end
 
@@ -99,8 +99,8 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 > [!div class="nextstepaction"]
 > [Prozkoumat řešení](../text-analytics-user-scenarios.md#analyze-recorded-inbound-customer-calls)
 
-* [Přehled Analýza textu](../overview.md)
+* [Přehled analýzy textu](../overview.md)
 * [Analýza mínění](../how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Rozpoznávání entit](../how-tos/text-analytics-how-to-entity-linking.md)
-* [Zjištění jazyka](../how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Rozpoznání jazyka](../how-tos/text-analytics-how-to-keyword-extraction.md)
 * [Rozpoznávání jazyka](../how-tos/text-analytics-how-to-language-detection.md)

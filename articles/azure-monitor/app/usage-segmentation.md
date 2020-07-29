@@ -6,16 +6,16 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0d605286df70988852d1650be58cfb2c395de814
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d11b12ba37d543ec21985c52c4ffb3399bfc56d1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539801"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323515"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Uživatelé, relace a analýza událostí v Application Insights
 
-Zjistěte, kdy uživatelé používají vaši webovou aplikaci, jaké stránky mají nejvíc zajímat, kde se nacházejí vaši uživatelé a jaké prohlížeče a operační systémy používají. Analýza firemních a využití telemetrie pomocí [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
+Zjistěte, kdy uživatelé používají vaši webovou aplikaci, jaké stránky mají nejvíc zajímat, kde se nacházejí vaši uživatelé a jaké prohlížeče a operační systémy používají. Analýza firemních a využití telemetrie pomocí [Azure Application Insights](./app-insights-overview.md).
 
 ![Snímek obrazovky Application Insights uživatelů](./media/usage-segmentation/0001-users.png)
 
@@ -29,9 +29,9 @@ Tři okna použití používají stejný nástroj k řezání telemetrie z vaš�
 
 * **Nástroj pro uživatele**: kolik lidí používalo vaši aplikaci a její funkce.  Uživatelům se počítá pomocí anonymních ID uložených v souborech cookie prohlížeče. Jedna osoba, která používá jiné prohlížeče nebo počítače, se bude počítat jako více než jeden uživatel.
 * **Session Tool**: kolik relací aktivity uživatelů zahrnovalo určité stránky a funkce vaší aplikace. Relace se počítá po půl hodiny neaktivity uživatele nebo po 24 hodinách nepřetržitém používání.
-* **Nástroj Events (události**): jak často se používají určité stránky a funkce vaší aplikace. Zobrazení stránky se počítá, když prohlížeč načte stránku z vaší aplikace za předpokladu, že jste [ho instrumentoval](../../azure-monitor/app/javascript.md). 
+* **Nástroj Events (události**): jak často se používají určité stránky a funkce vaší aplikace. Zobrazení stránky se počítá, když prohlížeč načte stránku z vaší aplikace za předpokladu, že jste [ho instrumentoval](./javascript.md). 
 
-    Vlastní událost představuje jeden výskyt něčeho, co se děje v aplikaci, často se jedná o interakci uživatele, jako je kliknutí na tlačítko nebo dokončení některé úlohy. Do své aplikace vložíte kód, abyste mohli [generovat vlastní události](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
+    Vlastní událost představuje jeden výskyt něčeho, co se děje v aplikaci, často se jedná o interakci uživatele, jako je kliknutí na tlačítko nebo dokončení některé úlohy. Do své aplikace vložíte kód, abyste mohli [generovat vlastní události](./api-custom-events-metrics.md#trackevent).
 
 ## <a name="querying-for-certain-users"></a>Dotazování na konkrétní uživatele
 
@@ -62,5 +62,6 @@ V části **splnění uživatelů** se zobrazí informace o pěti ukázkových u
     - [Trychtýře](usage-funnels.md)
     - [Uchovávání](usage-retention.md)
     - [Toky uživatele](usage-flows.md)
-    - [Sešity](../../azure-monitor/platform/workbooks-overview.md)
+    - [Workbooks](../platform/workbooks-overview.md)
     - [Přidat kontext uživatele](usage-send-user-context.md)
+

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 70ffe0bb98e89babe2f5998ee66666dd5368f7f2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9371feb527bbb2d94d43072bb8a44a6705b45055
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518041"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280218"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrace do služby Azure Kubernetes (AKS)
 
@@ -23,6 +23,7 @@ Tento dokument se dá použít k podpoře následujících scénářů:
 * Migrace z [Azure Container Service (ACS) – vyřazení z 31. ledna 2020](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/) do AKS
 * Migrace z [modulu AKS](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908) na AKS
 * Migrace z clusterů Kubernetes založených na jiných než Azure na AKS
+* Přesun existujících prostředků do jiné oblasti
 
 Při migraci zajistěte, aby vaše cílová verze Kubernetes byla v podporovaném okně pro AKS. Pokud používáte starší verzi, nemusí být v podporovaném rozsahu a vyžadovat, aby byly upgradované verze AKS podporovány. Další informace najdete v tématu [podporované verze Kubernetes pro AKS](./supported-kubernetes-versions.md) .
 

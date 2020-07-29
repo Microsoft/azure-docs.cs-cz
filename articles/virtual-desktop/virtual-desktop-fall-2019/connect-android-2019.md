@@ -1,6 +1,6 @@
 ---
-title: Připojení k virtuálnímu počítači s Windows klesnout na 2019 z Androidu – Azure
-description: Jak se připojit k virtuálnímu počítači s Windows pomocí klienta pro Android.
+title: Připojení k virtuálnímu počítači s Windows (Classic) z Androidu – Azure
+description: Jak se připojit k virtuálnímu počítači s Windows (Classic) pomocí klienta Androidu.
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ccea4e39146500cb9d3796c4ca99725e2e2ac429
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fd319c7a6b356052f91e779e2f2a67eff4c4b6de
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087148"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270749"
 ---
-# <a name="connect-with-the-android-client"></a>Práce s klientem Android
+# <a name="connect-to-windows-virtual-desktop-classic-with-the-android-client"></a>Připojení k virtuálnímu počítači s Windows (Classic) pomocí klienta pro Android
 
 > Platí pro: Android 4,1 a novější, Chromebooks s ChromeOS 53 a novějším.
 
 >[!IMPORTANT]
->Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objekty virtuálních klientů Windows, které byly zavedeny v aktualizaci jarní 2020, přečtěte si [Tento článek](../connect-android.md).
+>Tento obsah se vztahuje na virtuální plochu Windows (Classic), která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objektů virtuálních klientů Windows, přečtěte si [Tento článek](../connect-android.md).
 
 >[!NOTE]
 > Možnost přístupu k prostředkům virtuálního počítače s Windows z klienta pro Android je aktuálně dostupná ve verzi Preview.

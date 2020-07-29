@@ -9,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 8252c9bf899811163193c9ed21f1f81c9fd0502f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1b7b94f88653621c895ba8365651b78dcbf9d59f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080801"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325011"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>Začínáme s Azure Machine Learning Studio (Classic) v R
+
+**platí pro:** ![ žádná](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasická) 
+
 
 <!-- Stephen F Elston, Ph.D. -->
 V tomto kurzu se naučíte, jak pomocí ML Studio (Classic) vytvořit, otestovat a spustit kód R. Na konci budete mít kompletní řešení předpovědi.  
@@ -1335,7 +1338,7 @@ RStudio je poměrně dobře zdokumentovaná. Tady jsou některé odkazy na klí�
 Tento kurz programování v R se zabývá základními informacemi o tom, co potřebujete k používání jazyka R s Azure Machine Learning Studio (Classic). Pokud R neznáte, jsou v CRAN k dispozici dva úvody:
 
 * [R pro začátečníky](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) by Emmanuel Paradis je dobrým místem, kde začít.  
-* [Úvod do jazyka R](https://cran.r-project.org/doc/manuals/R-intro.html) pomocí W. N. Venables et VŠ. přejde do trochu větší hloubky.
+* [Úvod do jazyka R](https://cran.r-project.org/doc/manuals/R-intro.html) pomocí W. N. Venables et al. přejde do trochu větší hloubky.
 
 K dispozici je mnoho knih v jazyce R, které vám pomůžou začít. Tady je několik užitečných:
 

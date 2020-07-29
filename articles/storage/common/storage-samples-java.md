@@ -2,17 +2,18 @@
 title: Ukázky Azure Storage pomocí Java | Microsoft Docs
 description: Zobrazit, stáhnout a spustit vzorový kód a aplikace pro Azure Storage. Seznamte se s úvodními ukázkami objektů blob, front, tabulek a souborů pomocí klientských knihoven pro úložiště Java.
 author: mhopkins-msft
+ms.custom: devx-track-java
 ms.author: mhopkins
 ms.date: 02/13/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 26fe0538548e13933e112e83bae6e6131f2a030d
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: b0e0588810fcac239a3647f9b750dd036341ab9f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594635"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322223"
 ---
 # <a name="azure-storage-samples-using-v12-java-client-libraries"></a>Azure Storage ukázky pomocí klientských knihoven Java V12
 
@@ -23,7 +24,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 
 ## <a name="blob-samples"></a>Ukázky objektů BLOB
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 :::row:::
    :::column span="":::
@@ -85,7 +86,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
    :::column-end:::
 :::row-end:::
 
-### <a name="blob"></a>Objekt blob
+### <a name="blob"></a>Blob
 
 :::row:::
    :::column span="":::
@@ -191,7 +192,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
    :::column-end:::
 :::row-end:::
 
-### <a name="file"></a>File
+### <a name="file"></a>Soubor
 
 :::row:::
    :::column span="":::
@@ -213,7 +214,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 
 ## <a name="azure-file-samples"></a>Ukázky souborů Azure
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 :::row:::
    :::column span="2":::
@@ -299,7 +300,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
    :::column-end:::
 :::row-end:::
 
-### <a name="file"></a>File
+### <a name="file"></a>Soubor
 
 :::row:::
    :::column span="":::
@@ -326,7 +327,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 
 ## <a name="queue-samples"></a>Ukázky front
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 :::row:::
    :::column span="2":::
@@ -397,7 +398,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 
 :::row:::
    :::column span="":::
-      [Vytvořit tabulku](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L50)
+      [Vytvoření tabulky](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L50)
    :::column-end:::
    :::column span="":::
       [Odstranit entitu/tabulku](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L109)
@@ -451,5 +452,5 @@ Informace o ukázkách pro jiné jazyky:
 
 * .NET: [Azure Storage ukázky pomocí .NET](storage-samples-dotnet.md)
 * Python: [Azure Storage ukázky pomocí Pythonu](storage-samples-python.md)
-* JavaScript/Node. js: [Azure Storage ukázky pomocí JavaScriptu](storage-samples-javascript.md)
+* JavaScript/Node.js: [ukázky Azure Storage pomocí JavaScriptu](storage-samples-javascript.md)
 * Všechny ostatní jazyky: [ukázky Azure Storage](storage-samples.md)

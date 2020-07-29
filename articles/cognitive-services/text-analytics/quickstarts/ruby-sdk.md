@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 02/26/2020
+ms.date: 07/27/2020
 ms.author: aahi
-ms.openlocfilehash: 039a52c9ab0bfc460116e48086c854f4d7e8efb4
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 8afceb19af0d177415d0b68b5d38f19d18835af5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996967"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291760"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-for-ruby"></a>Rychlý Start: použití klientské knihovny Analýza textu pro Ruby
 
@@ -24,9 +24,9 @@ Začněte s klientskou knihovnou Analýza textu. Pomocí těchto kroků nainstal
 Použijte klientskou knihovnu Analýza textu k provedení těchto akcí:
 
 * Analýza mínění
-* Rozpoznávání jazyka
-* Rozpoznávání entit
-* Extrakce klíčových frází
+* rozpoznávání jazyka,
+* rozpoznávání entit,
+* extrakce klíčových frází,
 
 > [!NOTE]
 > Tento rychlý Start platí pouze pro Analýza textu verze 2,1. V současné době není k dispozici Klientská knihovna v3 pro Ruby.
@@ -37,7 +37,7 @@ Použijte klientskou knihovnu Analýza textu k provedení těchto akcí:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/) .
+* Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * Aktuální verze [Ruby](https://www.ruby-lang.org/)
 * Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" vytvořte prostředek analýza textu vytvoření prostředku "  target="_blank"> Analýza textu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. 
     * K připojení aplikace k rozhraní API pro analýzu textu budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Provedete to později v rychlém startu.
@@ -140,7 +140,7 @@ Document ID: 4 , Sentiment Score: 1.00
 
 <a name="LanguageDetection"></a>
 
-## <a name="language-detection"></a>Rozpoznávání jazyka
+## <a name="language-detection"></a>rozpoznávání jazyka,
 
 V objektu klienta vytvořte funkci `DetectLanguage()` s názvem, která převezme seznam vstupních dokumentů, které budou vytvořeny později. Zavolejte `detect_language()` funkci klienta a získejte výsledek. Pak Projděte výsledky a vytiskněte identifikátor každého dokumentu a zjištěné jazyky.
 
@@ -167,7 +167,7 @@ Document ID: 3 , Language: Chinese_Simplified
 
 <a name="EntityRecognition"></a>
 
-## <a name="entity-recognition"></a>Rozpoznávání entit
+## <a name="entity-recognition"></a>rozpoznávání entit,
 
 V objektu klienta vytvořte funkci `RecognizeEntities()` s názvem, která převezme seznam vstupních dokumentů, které budou vytvořeny později. Zavolejte `entities()` funkci klienta a získejte výsledek. Pak Projděte výsledky a vytiskněte ID každého dokumentu a rozpoznané entity.
 
@@ -225,7 +225,7 @@ Document ID: 2
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
+## <a name="key-phrase-extraction"></a>extrakce klíčových frází,
 
 V objektu klienta vytvořte funkci `ExtractKeyPhrases()` s názvem, která převezme seznam vstupních dokumentů, které budou vytvořeny později. Zavolejte `key_phrases()` funkci klienta a získejte výsledek. Potom Iterujte výsledky a vytiskněte ID každého dokumentu a extrahované klíčové fráze.
 

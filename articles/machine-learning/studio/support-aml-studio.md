@@ -1,6 +1,5 @@
 ---
-title: Získání podpory & školení
-titleSuffix: ML Studio (classic) - Azure
+title: Kurz pro ML Studio (Classic) podpora & školení – Azure
 description: Získejte podporu a školení a poskytněte zpětnou vazbu k Azure Machine Learning Studio (Classic)
 services: machine-learning
 ms.service: machine-learning
@@ -9,13 +8,17 @@ ms.topic: troubleshooting
 author: peterclu
 ms.author: peterlu
 ms.date: 01/18/2019
-ms.openlocfilehash: 708f337ebc627f863f632a677a2186a9d7fe99f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84aff48ad1313939761ad23b14c41d31313ebd36
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213172"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324909"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>Získání podpory a školení pro Azure Machine Learning Studio (Classic)
+
+**platí pro:** ![ žádná](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasická) 
+
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 

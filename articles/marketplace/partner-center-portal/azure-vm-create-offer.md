@@ -4,15 +4,15 @@ description: Naučte se, jak vytvořit virtuální počítač v Azure Marketplac
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: emuench
-ms.author: mingshen
+author: iqshahmicrosoft
+ms.author: iqshah
 ms.date: 07/17/2020
-ms.openlocfilehash: 6df1620f2d1097ac23e5dfa3903fefc74d13fa65
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8da76650f9cc3da0ff8f79a9d3df7a00cdd01a24
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012021"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324688"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Vytvoření nabídky virtuálních počítačů Azure na Azure Marketplace
 
@@ -41,7 +41,7 @@ Pokud jste to ještě neudělali, Projděte si [příručku pro publikování na
 - Kurzy
   - [Virtuální počítače s Linuxem](../../virtual-machines/linux/tutorial-manage-vm.md)
   - [Virtuální počítače s Windows](../../virtual-machines/windows/tutorial-manage-vm.md)
-- Ukázky
+- ukázky
   - [Ukázky v Azure CLI pro virtuální počítače se systémem Linux](../../virtual-machines/linux/cli-samples.md)
   - [Azure PowerShell pro virtuální počítače se systémem Linux](../../virtual-machines/linux/powershell-samples.md)
   - [Ukázky v Azure CLI pro virtuální počítače s Windows](../../virtual-machines/windows/cli-samples.md)

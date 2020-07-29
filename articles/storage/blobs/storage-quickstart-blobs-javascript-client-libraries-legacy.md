@@ -6,15 +6,15 @@ author: mhopkins-msft
 ms.custom: mvc
 ms.service: storage
 ms.author: mhopkins
-ms.date: 01/24/2020
+ms.date: 07/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 920d3d6c1cfc928efa5daa2d6c0aa3a6b4e81375
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0db110d02211323f64e7ffe795f72e3a5003ec91
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82161121"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282037"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -22,11 +22,14 @@ ms.locfileid: "82161121"
 
 V tomto rychlém startu se naučíte spravovat objekty BLOB pomocí kódu JavaScriptu, který běží zcela v prohlížeči. Objekty blob jsou objekty, které mohou obsahovat velké objemy textových nebo binárních dat, včetně obrázků, dokumentů, datových proudů médií a dat archivu. Pro zajištění chráněného přístupu k účtu úložiště objektů BLOB budete používat požadovaná bezpečnostní opatření.
 
+> [!NOTE]
+> V tomto rychlém startu se používá starší verze klientské knihovny pro úložiště objektů BLOB v Azure. Pokud chcete začít používat nejnovější verzi, přečtěte si téma [rychlý Start: Správa objektů BLOB pomocí JavaScriptu V12 SDK v prohlížeči](quickstart-blobs-javascript-browser.md).
+
 ## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Účet služby Azure Storage. [Vytvořte účet úložiště](../common/storage-account-create.md).
-- Místní webový server. Tento článek používá [Node. js](https://nodejs.org) k otevření základního serveru.
+- Místní webový server. Tento článek používá [Node.js](https://nodejs.org) k otevření základního serveru.
 - [Visual Studio Code](https://code.visualstudio.com).
 - Rozšíření VS Code pro ladění prohlížeče, jako je například [ladicí program pro Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome) nebo [ladicí program pro Microsoft Edge](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-edge).
 
@@ -87,18 +90,18 @@ Několik hodnot uvedených za jednotlivými parametry je možná trochu nesrozum
 | *resource-types* | sco     | Tento SAS ovlivňuje prostředky *service* (služba), *container* (kontejner) a *object* (objekt). |
 | *orgány*       | b       | Tento SAS ovlivňuje službu *Blob* Service. |
 
-Teď, když se SAS vygeneruje, zkopírujte vrácenou hodnotu a uložte ji někam pro použití v nadcházejícím kroku. Pokud jste vygenerovali SAS pomocí jiné metody než Azure CLI, bude nutné odebrat počáteční `?` , pokud je k dispozici. Tento znak je oddělovač adres URL, který je již poskytnutý v šabloně adresy URL dále v tomto tématu, kde se používá SAS.
+Teď, když se SAS vygeneruje, zkopírujte vrácenou hodnotu a uložte ji někam pro použití v nadcházejícím kroku. Pokud jste vygenerovali SAS pomocí jiné metody než Azure CLI, bude nutné odebrat počáteční, `?` Pokud je k dispozici. Tento znak je oddělovač adres URL, který je již poskytnutý v šabloně adresy URL dále v tomto tématu, kde se používá SAS.
 
 > [!IMPORTANT]
 > V produkčním prostředí vždy předejte tokeny SAS pomocí protokolu TLS. Kromě toho by se tokeny SAS měly generovat na serveru a odesílat na stránku HTML, která je předá zpět do služby Azure Blob Storage. Jedním z přístupů, které můžete zvážit, je generování tokenů SAS pomocí funkce bez serveru. Azure Portal obsahuje šablony funkcí, které zahrnují možnost generovat SAS pomocí funkce JavaScriptu.
 
 ## <a name="implement-the-html-page"></a>Implementace stránky HTML
 
-V této části vytvoříte základní webovou stránku a nakonfigurujete VS Code pro spuštění a ladění stránky. Než budete moct spustit, budete muset použít Node. js k spuštění místního webového serveru a obsloužit stránku, když si ji prohlížeč požádá. V dalším kroku přidáte kód JavaScriptu pro volání různých rozhraní API služby Blob Storage a výsledky zobrazíte na stránce. Výsledky těchto volání můžete zobrazit také v [Azure Portal](https://portal.azure.com), [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer)a [rozšíření Azure Storage](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage) pro vs Code.
+V této části vytvoříte základní webovou stránku a nakonfigurujete VS Code pro spuštění a ladění stránky. Než budete moct spustit, budete muset použít Node.js ke spuštění místního webového serveru a obsloužit stránku, když si ji prohlížeč požádá. V dalším kroku přidáte kód JavaScriptu pro volání různých rozhraní API služby Blob Storage a výsledky zobrazíte na stránce. Výsledky těchto volání můžete zobrazit také v [Azure Portal](https://portal.azure.com), [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer)a [rozšíření Azure Storage](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage) pro vs Code.
 
 ### <a name="set-up-the-web-application"></a>Nastavení webové aplikace
 
-Nejdřív vytvořte novou složku s názvem *Azure-BLOBs-JavaScript* a otevřete ji v vs Code. Pak v VS Code vytvořte nový soubor, přidejte následující kód HTML a uložte ho jako soubor *index. html* ve složce *Azure-BLOBs-JavaScript* .
+Nejdřív vytvořte novou složku s názvem *Azure-BLOBs-JavaScript* a otevřete ji v vs Code. Pak v VS Code vytvořte nový soubor, přidejte následující kód HTML a uložte ho jako *index.html* do složky *Azure-BLOBs-JavaScript* .
 
 ```html
 <!DOCTYPE html>
@@ -124,9 +127,9 @@ Nejdřív vytvořte novou složku s názvem *Azure-BLOBs-JavaScript* a otevřete
 
 ### <a name="configure-the-debugger"></a>Konfigurace ladicího programu
 
-Chcete-li nastavit rozšíření ladicího programu v VS Code, vyberte možnost **ladění > Přidat konfiguraci...** pak vyberte možnost **Chrome** nebo **Edge**v závislosti na tom, které rozšíření jste dříve nainstalovali v části požadavky. Tato akce vytvoří soubor *Launch. JSON* a otevře se v editoru.
+Chcete-li nastavit rozšíření ladicího programu v VS Code, vyberte možnost **ladění > Přidat konfiguraci...** pak vyberte možnost **Chrome** nebo **Edge**v závislosti na tom, které rozšíření jste dříve nainstalovali v části požadavky. Tato akce vytvoří *launch.js* v souboru a otevře se v editoru.
 
-Dále upravte soubor *Launch. JSON* tak, aby obsahoval `url` `/index.html` hodnotu, jak je uvedeno níže:
+V dalším kroku upravte *launch.jsv* souboru tak, aby `url` obsahovala hodnotu, `/index.html` jak je znázorněno níže:
 
 ```json
 {
@@ -150,7 +153,7 @@ Tato konfigurace oznamuje VS Code, který prohlížeč se má spustit, a adresu 
 
 ### <a name="launch-the-web-server"></a>Spustit webový server
 
-Chcete-li spustit místní webový server Node. js, vyberte možnost **zobrazit > terminálu** a otevřete okno konzoly v rámci vs Code a potom zadejte následující příkaz.
+Pokud chcete spustit místní Node.js webový server, vyberte **zobrazit > terminálu** a otevřete tak okno konzoly v rámci vs Code a potom zadejte následující příkaz.
 
 ```console
 npx http-server
@@ -160,17 +163,17 @@ Tento příkaz nainstaluje balíček *http-Server* a spustí server a zpřístup
 
 ### <a name="start-debugging"></a>Spustit ladění
 
-Pokud chcete spustit *index. html* v prohlížeči pomocí připojeného ladicího programu vs Code, vyberte **ladit > spustit ladění** nebo stiskněte klávesu F5 v vs Code.
+Pokud chcete spustit *index.html* v prohlížeči pomocí připojeného ladicího programu vs Code, vyberte **ladit > spustit ladění** nebo stiskněte klávesu F5 v vs Code.
 
 Zobrazené uživatelské rozhraní ještě nic nedělá, ale v následující části přidáte JavaScriptový kód, který implementuje jednotlivé zobrazené funkce. Pak můžete nastavit zarážky a interagovat s ladicím programem, když je pozastaven na vašem kódu.
 
-Když provedete změny v souboru *index. html*, nezapomeňte znovu načíst stránku, abyste viděli změny v prohlížeči. V VS Code můžete také vybrat možnost **ladění > restartovat ladění** nebo stisknout kombinaci kláves CTRL + SHIFT + F5.
+Když provedete změny *index.html*, nezapomeňte znovu načíst stránku, abyste viděli změny v prohlížeči. V VS Code můžete také vybrat možnost **ladění > restartovat ladění** nebo stisknout kombinaci kláves CTRL + SHIFT + F5.
 
 ### <a name="add-the-blob-storage-client-library"></a>Přidání klientské knihovny pro úložiště objektů BLOB
 
-Pokud chcete povolit volání rozhraní API služby Blob Storage, nejdřív [Stáhněte sadu Azure Storage SDK for JavaScript – Klientská knihovna objektů BLOB](https://aka.ms/downloadazurestoragejsblob), extrahujte obsah souboru zip a umístěte soubor *Azure-Storage-BLOB. js* do složky *Azure-BLOBs-JavaScript* .
+Pokud chcete povolit volání rozhraní API služby Blob Storage, napřed [si stáhněte Azure Storage SDK pro JavaScriptový klientskou knihovnu objektů BLOB](https://aka.ms/downloadazurestoragejsblob), rozbalte obsah souboru zip a umístěte soubor *azure-storage-blob.js* do složky *Azure-BLOBs-JavaScript* .
 
-Dále vložte následující kód HTML do souboru *index. html* za `</body>` uzavírací značku a nahraďte zástupný komentář.
+Dále vložte následující kód HTML do *index.html* za `</body>` uzavírací značku a nahraďte zástupný komentář.
 
 ```html
 <script src="azure-storage-blob.js" charset="utf-8"></script>
@@ -180,11 +183,11 @@ Dále vložte následující kód HTML do souboru *index. html* za `</body>` uza
 </script>
 ```
 
-Tento kód přidá odkaz na soubor skriptu a poskytne místo pro váš vlastní kód JavaScriptu. Pro účely tohoto rychlého startu používáme soubor skriptu *Azure-Storage-BLOB. js* , abyste ho mohli otevřít v vs Code, číst jeho obsah a nastavovat zarážky. V produkčním prostředí byste měli použít soubor kompaktnější *Azure-Storage. blob. min. js* , který je také k dispozici v souboru ZIP.
+Tento kód přidá odkaz na soubor skriptu a poskytne místo pro váš vlastní kód JavaScriptu. Pro účely tohoto rychlého startu používáme soubor skriptu *azure-storage-blob.js* , abyste ho mohli otevřít v vs Code, číst jeho obsah a nastavovat zarážky. V produkčním prostředí byste měli použít kompaktnější *azure-storage.blob.min.js* soubor, který je také k dispozici v souboru ZIP.
 
-Další informace o jednotlivých funkcích služby Blob Storage najdete v [referenční dokumentaci](https://docs.microsoft.com/javascript/api/%40azure/storage-blob/index). Všimněte si, že některé funkce v sadě SDK jsou k dispozici pouze v Node. js nebo pouze k dispozici v prohlížeči.
+Další informace o jednotlivých funkcích služby Blob Storage najdete v [referenční dokumentaci](https://docs.microsoft.com/javascript/api/%40azure/storage-blob/index). Všimněte si, že některé funkce v sadě SDK jsou k dispozici pouze v Node.js nebo pouze k dispozici v prohlížeči.
 
-Kód v *Azure-Storage-BLOB. js* exportuje globální proměnnou s názvem `azblob`, kterou použijete v kódu JavaScriptu pro přístup k rozhraním API služby Blob Storage.
+Kód v *azure-storage-blob.js* exportuje globální proměnnou s názvem `azblob` , kterou použijete v kódu JavaScriptu pro přístup k rozhraním API služby Blob Storage.
 
 ### <a name="add-the-initial-javascript-code"></a>Přidání počátečního kódu JavaScriptu
 
@@ -206,7 +209,7 @@ const reportStatus = message => {
 }
 ```
 
-Tento kód vytvoří pole pro každý prvek jazyka HTML, který bude použit v následujícím kódu, a `reportStatus` implementuje funkci pro zobrazení výstupu.
+Tento kód vytvoří pole pro každý prvek jazyka HTML, který bude použit v následujícím kódu, a implementuje `reportStatus` funkci pro zobrazení výstupu.
 
 V následujících částech přidejte všechny nové bloky kódu JavaScriptu za předchozí blok.
 
@@ -318,9 +321,9 @@ selectButton.addEventListener("click", () => fileInput.click());
 fileInput.addEventListener("change", uploadFiles);
 ```
 
-Tento kód propojí tlačítko **Vybrat a odeslat soubory** do skrytého `file-input` prvku. Tímto způsobem událost tlačítka `click` aktivuje událost vstupu `click` souboru a zobrazí nástroj pro výběr souboru. Po výběru souborů a zavření dialogového okna dojde k `input` události a zavolá se `uploadFiles` funkce. Tato funkce volá funkci [uploadBrowserDataToBlockBlob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/blockblobclient#uploadbrowserdata-blob---arraybuffer---arraybufferview--blockblobparalleluploadoptions-) pouze pro prohlížeč pro každý vybraný soubor. Každé volání vrátí příslib, který je přidán do seznamu tak, aby bylo možné všechny očekávat najednou, což způsobí, že se soubory budou nahrávat paralelně.
+Tento kód propojí tlačítko **Vybrat a odeslat soubory** do skrytého `file-input` prvku. Tímto způsobem `click` Událost tlačítka aktivuje událost vstupu souboru `click` a zobrazí nástroj pro výběr souboru. Po výběru souborů a zavření dialogového okna `input` dojde k události a `uploadFiles` zavolá se funkce. Tato funkce volá funkci [uploadBrowserDataToBlockBlob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/blockblobclient#uploadbrowserdata-blob---arraybuffer---arraybufferview--blockblobparalleluploadoptions-) pouze pro prohlížeč pro každý vybraný soubor. Každé volání vrátí příslib, který je přidán do seznamu tak, aby bylo možné všechny očekávat najednou, což způsobí, že se soubory budou nahrávat paralelně.
 
-### <a name="delete-blobs"></a>Odstranění objektů blob
+### <a name="delete-blobs"></a>Odstraňovat objekty blob
 
 V dalším kroku přidejte kód pro odstranění souborů z kontejneru úložiště při stisknutí tlačítka **Odstranit vybrané soubory** .
 

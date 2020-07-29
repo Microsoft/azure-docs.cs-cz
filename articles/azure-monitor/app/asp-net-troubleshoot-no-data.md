@@ -3,20 +3,20 @@ title: Řešení potíží s chybějícími daty v nástroji Application Insight
 description: Nezobrazuje se data v Azure Application Insights? Zkuste to prosím tady.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 351ef145ab65fee8397034912f9a6ce295f1f909
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6d0141b29a3ce4b6739f8a8aab078573c7c00ad0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517164"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324195"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Řešení potíží bez Application Insights dat pro .NET/.NET Core
 
 ## <a name="some-of-my-telemetry-is-missing"></a>Chybí některé moje telemetrie.
 *V Application Insights se zobrazuje jenom zlomek událostí, které aplikace generuje.*
 
-* Pokud se stále zobrazuje stejný zlomek, je pravděpodobně v důsledku adaptivního [vzorkování](../../azure-monitor/app/sampling.md). Potvrďte to tak, že otevřete hledání (z okna Přehled) a podíváte se na instanci žádosti nebo jinou událost. V dolní části oddílu Vlastnosti klikněte na... získat podrobnosti o úplných vlastnostech. Pokud se počet žádostí > 1, bude vzorkování v provozu.
-* V opačném případě je možné, že jste u cenového plánu dosáhli [limitu](../../azure-monitor/app/pricing.md#limits-summary) přenosové rychlosti. Tato omezení se aplikují za minutu.
+* Pokud se stále zobrazuje stejný zlomek, je pravděpodobně v důsledku adaptivního [vzorkování](./sampling.md). Potvrďte to tak, že otevřete hledání (z okna Přehled) a podíváte se na instanci žádosti nebo jinou událost. V dolní části oddílu Vlastnosti klikněte na... získat podrobnosti o úplných vlastnostech. Pokud se počet žádostí > 1, bude vzorkování v provozu.
+* V opačném případě je možné, že jste u cenového plánu dosáhli [limitu](./pricing.md#limits-summary) přenosové rychlosti. Tato omezení se aplikují za minutu.
 
 *Dochází k náhodnému výpadku dat.*
 
@@ -31,17 +31,17 @@ ms.locfileid: "86517164"
 ## <a name="no-data-from-my-server"></a>Žádná data z mého serveru
 *Mám aplikaci nainstalovanou na mém webovém serveru a teď mi nevidím žádnou telemetrii. V mém vývojovém počítači se pracovalo v pořádku.*
 
-* Pravděpodobně se jedná o problém s bránou firewall. [Nastavte výjimky brány firewall pro Application Insights pro odesílání dat](../../azure-monitor/app/ip-addresses.md).
+* Pravděpodobně se jedná o problém s bránou firewall. [Nastavte výjimky brány firewall pro Application Insights pro odesílání dat](./ip-addresses.md).
 * V serveru IIS chybí některé předpoklady: rozšiřitelnost rozhraní .NET 4,5 a ASP.NET 4,5.
 
-*Nainstaloval (a) jsem [monitorování stavu](../../azure-monitor/app/monitor-performance-live-website-now.md) na mém webovém serveru, aby se sledovaly stávající aplikace. Nezobrazují se žádné výsledky.*
+*Nainstaloval (a) jsem [monitorování stavu](./monitor-performance-live-website-now.md) na mém webovém serveru, aby se sledovaly stávající aplikace. Nezobrazují se žádné výsledky.*
 
-* Další informace najdete v tématu [řešení potíží s monitorování stavu](../../azure-monitor/app/monitor-performance-live-website-now.md#troubleshoot).
+* Další informace najdete v tématu [řešení potíží s monitorování stavu](./monitor-performance-live-website-now.md#troubleshoot).
 
 ## <a name="no-add-application-insights-option-in-visual-studio"></a><a name="q01"></a>V aplikaci Visual Studio není možnost Přidat Application Insights.
 *Když kliknu pravým tlačítkem na existující projekt v Průzkumník řešení, nevidím žádné možnosti Application Insights.*
 
-* V nástrojích nejsou podporovány všechny typy projektů .NET. Webové a WCF projekty jsou podporovány. Pro jiné typy projektů, jako jsou například aplikace pro stolní nebo služby, můžete [Přidat sadu Application Insights SDK do projektu ručně](../../azure-monitor/app/windows-desktop.md).
+* V nástrojích nejsou podporovány všechny typy projektů .NET. Webové a WCF projekty jsou podporovány. Pro jiné typy projektů, jako jsou například aplikace pro stolní nebo služby, můžete [Přidat sadu Application Insights SDK do projektu ručně](./windows-desktop.md).
 * Ujistěte se, že máte [Visual Studio 2013 Update 3 nebo novější](/visualstudio/releasenotes/vs2013-update3-rtm-vs). Je součástí předinstalovaného nástroje pro vývojáře, které poskytují sadu Application Insights SDK.
 * Vyberte **nástroje**, **rozšíření a aktualizace** a ověřte, že je nainstalovaná a povolená **Developer Analytics Tools** . Pokud ano, kliknutím na **aktualizace** ověřte, zda je k dispozici aktualizace.
 * Otevřete dialogové okno Nový projekt a vyberte ASP.NET webová aplikace. Pokud se zobrazí možnost Application Insights, jsou nástroje nainstalovány. V takovém případě zkuste odinstalovat a znovu nainstalovat Developer Analytics Tools.
@@ -53,13 +53,13 @@ Pravděpodobná příčina:
 
 * Komunikace s portálem Application Insights se nezdařila; ani
 * Došlo k nějakému problému s vaším účtem Azure;
-* Máte [přístup jen pro čtení k předplatnému nebo skupině, ve které jste se pokusili vytvořit nový prostředek](../../azure-monitor/app/resources-roles-access-control.md).
+* Máte [přístup jen pro čtení k předplatnému nebo skupině, ve které jste se pokusili vytvořit nový prostředek](./resources-roles-access-control.md).
 
 Opravit
 
 * Ověřte, že jste pro správný účet Azure zadali přihlašovací údaje pro přihlášení.
 * V prohlížeči ověřte, zda máte přístup k [Azure Portal](https://portal.azure.com). Otevřete nastavení a podívejte se, jestli existuje nějaké omezení.
-* [Přidejte Application Insights do existujícího projektu](../../azure-monitor/app/asp-net.md): v Průzkumník řešení klikněte pravým tlačítkem na projekt a vyberte Přidat Application Insights.
+* [Přidejte Application Insights do existujícího projektu](./asp-net.md): v Průzkumník řešení klikněte pravým tlačítkem na projekt a vyberte Přidat Application Insights.
 
 ## <a name="i-get-an-error-instrumentation-key-cannot-be-empty"></a><a name="emptykey"></a>Zobrazila se chybová zpráva klíč instrumentace nemůže být prázdný.
 Vypadá to, že při instalaci Application Insights nebo možná protokolovacího adaptéru došlo k chybě.
@@ -91,11 +91,11 @@ V opačném případě váš typ projektu není přímo podporován analytickým
 ## <a name="access-denied-on-opening-application-insights-from-visual-studio"></a>Přístup byl odepřen při otevírání Application Insights ze sady Visual Studio.
 *Příkaz nabídky otevřít Application Insights přejde na Azure Portal, ale zobrazí se chybová zpráva přístup byl odepřen.*
 
-Přihlášení Microsoftu, které jste naposledy použili ve výchozím prohlížeči, nemá přístup k [prostředku, který byl vytvořen při přidání Application Insights do této aplikace](../../azure-monitor/app/asp-net.md). Existují dva nejpravděpodobnější důvody:
+Přihlášení Microsoftu, které jste naposledy použili ve výchozím prohlížeči, nemá přístup k [prostředku, který byl vytvořen při přidání Application Insights do této aplikace](./asp-net.md). Existují dva nejpravděpodobnější důvody:
 
-* Máte více než jednu účet Microsoft – možná pracovní a osobní účet Microsoft? Přihlášení, které jste naposledy použili ve výchozím prohlížeči, bylo pro jiný účet, než je ten, který má přístup k [přidání Application Insights do projektu](../../azure-monitor/app/asp-net.md).
+* Máte více než jednu účet Microsoft – možná pracovní a osobní účet Microsoft? Přihlášení, které jste naposledy použili ve výchozím prohlížeči, bylo pro jiný účet, než je ten, který má přístup k [přidání Application Insights do projektu](./asp-net.md).
   * Oprava: klikněte na své jméno v pravém horním rohu okna prohlížeče a odhlaste se. Pak se přihlaste pomocí účtu, který má přístup. Pak na levém navigačním panelu klikněte na Application Insights a vyberte svou aplikaci.
-* Někdo jiný přidal do projektu Application Insights a zapomněl vám mu udělit [přístup ke skupině prostředků](../../azure-monitor/app/resources-roles-access-control.md) , ve které byl vytvořen.
+* Někdo jiný přidal do projektu Application Insights a zapomněl vám mu udělit [přístup ke skupině prostředků](./resources-roles-access-control.md) , ve které byl vytvořen.
   * Oprava: Pokud používali účet organizace, může vás přidat do týmu. nebo vám může udělit individuální přístup ke skupině prostředků.
 
 ## <a name="asset-not-found-on-opening-application-insights-from-visual-studio"></a>Asset nebyl nalezen při otevírání Application Insights ze sady Visual Studio.
@@ -116,7 +116,7 @@ Opravit
 ## <a name="where-do-i-find-my-telemetry"></a>Kde najdu telemetrii?
 *Jsem jste přihlášeni k [portál Microsoft Azure](https://portal.azure.com)a na domovském řídicím panelu Azure se díváte. Kde najdu Application Insights data?*
 
-* V levém navigačním panelu klikněte na Application Insights a pak na název vaší aplikace. Pokud nemáte žádné projekty, je nutné [Přidat nebo nakonfigurovat Application Insights ve webovém projektu](../../azure-monitor/app/asp-net.md).  
+* V levém navigačním panelu klikněte na Application Insights a pak na název vaší aplikace. Pokud nemáte žádné projekty, je nutné [Přidat nebo nakonfigurovat Application Insights ve webovém projektu](./asp-net.md).  
   Zobrazí se některé souhrnné grafy. Kliknutím na ně můžete zobrazit další podrobnosti.
 * V aplikaci Visual Studio při ladění aplikace klikněte na tlačítko Application Insights.
 
@@ -125,7 +125,7 @@ Opravit
 
 * Spusťte aplikaci v režimu ladění v aplikaci Visual Studio (F5). Použijte aplikaci, aby se vygenerovala nějaká telemetrie. Zkontrolujte, zda jsou události zaznamenané v okně výstup sady Visual Studio.  
   ![Snímek obrazovky, který ukazuje spuštění aplikace v režimu ladění v aplikaci Visual Studio.](./media/asp-net-troubleshoot-no-data/output-window.png)
-* Na portálu Application Insights otevřete [diagnostické vyhledávání](../../azure-monitor/app/diagnostic-search.md). Data se obvykle zobrazují jako první.
+* Na portálu Application Insights otevřete [diagnostické vyhledávání](./diagnostic-search.md). Data se obvykle zobrazují jako první.
 * Klikněte na tlačítko Aktualizovat. Okno se pravidelně aktualizuje, ale můžete ho také provést ručně. Interval aktualizace je delší pro větší časové rozsahy.
 * Ověřte, zda se klíče instrumentace shodují. V hlavním okně aplikace na portále Application Insights v rozevíracím seznamu **základy** vyhledejte **klíč instrumentace**. Potom v projektu v aplikaci Visual Studio otevřete ApplicationInsights.config a vyhledejte `<instrumentationkey>` . Ověřte, zda jsou oba klíče stejné. Pokud ne:  
   * Na portálu klikněte na Application Insights a vyhledejte prostředek aplikace se správným klíčem. ani
@@ -133,27 +133,27 @@ Opravit
   * Pokud nemůžete najít odpovídající klíče, ověřte, že používáte stejné přihlašovací údaje pro přihlášení v aplikaci Visual Studio jako v portálu.
 * Na [řídicím panelu domů Microsoft Azure](https://portal.azure.com)se podívejte na mapu Service Health. Pokud se zobrazí upozornění, počkejte, až se vrátí do OK, a pak zavřete a znovu otevřete okno aplikace Application Insights.
 * Projděte si také [náš stavový blog](https://techcommunity.microsoft.com/t5/azure-monitor-status/bg-p/AzureMonitorStatusBlog).
-* Napsali jste jakýkoliv kód pro [sadu SDK na straně serveru](../../azure-monitor/app/api-custom-events-metrics.md) , která by mohla změnit klíč instrumentace v `TelemetryClient` instancích nebo v `TelemetryContext` ? Nebo jste napsali [konfiguraci filtru nebo vzorkování](../../azure-monitor/app/api-filtering-sampling.md) , které by mohly vyfiltrovat příliš mnoho?
-* Pokud jste ApplicationInsights.config upravovali, pečlivě zkontrolujte konfiguraci [TelemetryInitializers a TelemetryProcessors](../../azure-monitor/app/api-filtering-sampling.md). Nesprávně pojmenovaný typ nebo parametr může způsobit, že sada SDK neposílá žádná data.
+* Napsali jste jakýkoliv kód pro [sadu SDK na straně serveru](./api-custom-events-metrics.md) , která by mohla změnit klíč instrumentace v `TelemetryClient` instancích nebo v `TelemetryContext` ? Nebo jste napsali [konfiguraci filtru nebo vzorkování](./api-filtering-sampling.md) , které by mohly vyfiltrovat příliš mnoho?
+* Pokud jste ApplicationInsights.config upravovali, pečlivě zkontrolujte konfiguraci [TelemetryInitializers a TelemetryProcessors](./api-filtering-sampling.md). Nesprávně pojmenovaný typ nebo parametr může způsobit, že sada SDK neposílá žádná data.
 
 ## <a name="no-data-on-page-views-browsers-usage"></a><a name="q04"></a>Žádná data v zobrazeních stránky, v prohlížečích, použití
 *Zobrazují se data v grafech doba odezvy serveru a požadavky na server, ale neexistují žádná data v době načítání zobrazení stránky nebo v okně prohlížeče nebo použití.*
 
 Data pocházejí ze skriptů na webových stránkách. 
 
-* Pokud jste přidali Application Insights k existujícímu webovému projektu, [je nutné přidat skripty ručně](../../azure-monitor/app/javascript.md).
+* Pokud jste přidali Application Insights k existujícímu webovému projektu, [je nutné přidat skripty ručně](./javascript.md).
 * Ujistěte se, že aplikace Internet Explorer nezobrazuje web v režimu kompatibility.
 * Použijte funkci ladění v prohlížeči (F12 na některých prohlížečích a pak zvolte síť), abyste ověřili, že se data odesílají do `dc.services.visualstudio.com` .
 
 ## <a name="no-dependency-or-exception-data"></a>Žádná data o závislostech nebo výjimkách
-Viz [telemetrie závislostí](../../azure-monitor/app/asp-net-dependencies.md) a [telemetrie výjimek](asp-net-exceptions.md).
+Viz [telemetrie závislostí](./asp-net-dependencies.md) a [telemetrie výjimek](asp-net-exceptions.md).
 
 ## <a name="no-performance-data"></a>Žádná data o výkonu
-Údaje o výkonu (CPU, rychlost v/v a tak dále) jsou k dispozici pro [webové služby Java](../../azure-monitor/app/java-collectd.md), [desktopové aplikace Windows](../../azure-monitor/app/windows-desktop.md), [webové aplikace a služby IIS, pokud nainstalujete monitorování stavu](../../azure-monitor/app/monitor-performance-live-website-now.md)a [Azure Cloud Services](../../azure-monitor/app/app-insights-overview.md). najdete ho v části nastavení, servery.
+Údaje o výkonu (CPU, rychlost v/v a tak dále) jsou k dispozici pro [webové služby Java](./java-collectd.md), [desktopové aplikace Windows](./windows-desktop.md), [webové aplikace a služby IIS, pokud nainstalujete monitorování stavu](./monitor-performance-live-website-now.md)a [Azure Cloud Services](./app-insights-overview.md). najdete ho v části nastavení, servery.
 
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>Žádná data (serveru) od publikování aplikace na mém serveru
 * Ověřte, že jste ve skutečnosti zkopírovali všechny společnosti Microsoft. ApplicationInsights knihovny DLL do serveru společně s Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll
-* V bráně firewall možná budete muset [otevřít některé porty TCP](../../azure-monitor/app/ip-addresses.md).
+* V bráně firewall možná budete muset [otevřít některé porty TCP](./ip-addresses.md).
 * Pokud k odeslání z vaší podnikové sítě používáte proxy server, nastavte [defaultProxy](/previous-versions/dotnet/netframework-1.1/aa903360(v=vs.71)) v Web.config
 * Windows Server 2008: Ujistěte se, že máte nainstalované následující aktualizace: [KB2468871](https://support.microsoft.com/kb/2468871), [KB2533523](https://support.microsoft.com/kb/2533523), [KB2600217](https://support.microsoft.com/kb/2600217).
 
@@ -161,7 +161,7 @@ Viz [telemetrie závislostí](../../azure-monitor/app/asp-net-dependencies.md) a
 * Dosáhli jste měsíční kvóty datových bodů? Pokud chcete zjistit, otevřete nastavení/kvótu a ceny. Pokud ano, můžete upgradovat svůj plán nebo platit za další kapacitu. Podívejte se na téma [cenové schéma](https://azure.microsoft.com/pricing/details/application-insights/).
 
 ## <a name="i-dont-see-all-the-data-im-expecting"></a>Nezobrazují se všechna data, která očekávám
-Pokud vaše aplikace odešle velké množství dat a používáte sadu Application Insights SDK pro ASP.NET verze 2.0.0-beta3 nebo novější, může funkce [adaptivního vzorkování](../../azure-monitor/app/sampling.md) fungovat a odesílat pouze procento telemetrie.
+Pokud vaše aplikace odešle velké množství dat a používáte sadu Application Insights SDK pro ASP.NET verze 2.0.0-beta3 nebo novější, může funkce [adaptivního vzorkování](./sampling.md) fungovat a odesílat pouze procento telemetrie.
 
 Můžete ho zakázat, ale nedoporučuje se to. Vzorkování je navrženo tak, aby související telemetrie byla správně odeslána pro účely diagnostiky.
 
@@ -257,7 +257,8 @@ dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsight
 
 ## <a name="how-to-remove-application-insights"></a>Jak odebrat Application Insights
 
-Naučte se, jak odebrat Application Insights v aplikaci Visual Studio podle kroků uvedených v [článku](../../azure-monitor/app/remove-application-insights.md)o odebrání.
+Naučte se, jak odebrat Application Insights v aplikaci Visual Studio podle kroků uvedených v [článku](./remove-application-insights.md)o odebrání.
 
 ## <a name="still-not-working"></a>Pořád nepracujeme...
 * [Microsoft Q&Stránka s otázkou pro Application Insights](/answers/topics/azure-monitor.html)
+
