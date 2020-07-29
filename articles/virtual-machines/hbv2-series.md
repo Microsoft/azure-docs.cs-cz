@@ -4,14 +4,15 @@ description: Specifikace pro virtuální počítače řady HBv2-Series.
 author: vermagit
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: amverma
-ms.openlocfilehash: 730065333fde7431b7018ef0a6e614e12727d7ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9717105c9241777d72a8943e87f33ab31c8038c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84673849"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288480"
 ---
 # <a name="hbv2-series"></a>Řada HBv2
 
@@ -33,8 +34,8 @@ Aktualizace pro zachování paměti: nepodporováno
 ## <a name="other-sizes"></a>Jiné velikosti
 
 - [Obecné účely](sizes-general.md)
-- [Optimalizované z hlediska paměti](sizes-memory.md)
-- [Optimalizované z hlediska úložiště](sizes-storage.md)
+- [Optimalizované pro paměť](sizes-memory.md)
+- [Optimalizované pro úložiště](sizes-storage.md)
 - [Optimalizované z hlediska GPU](sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 - [Předchozí generace](sizes-previous-gen.md)

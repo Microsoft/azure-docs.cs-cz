@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: ebbf83e1abe6140614a45bfa89570cdf19283f8f
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: caa73b5a86c5c245aefd18de9b60ec49616b3b84
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169752"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281544"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Správa snímků s využitím služby Azure NetApp Files
 
@@ -46,6 +46,9 @@ Snímky svazků můžete vytvářet na vyžádání.
 ## <a name="manage-snapshot-policies"></a>Správa zásad snímků
 
 Pomocí zásad snímku můžete naplánovat, aby se snímky svazků automaticky provedly. Podle potřeby můžete také upravit zásady snímků nebo odstranit zásadu snímku, kterou už nepotřebujete.  
+
+> [!IMPORTANT] 
+> Použití funkce zásad snímků vyžaduje přidávání do seznamu povolených. Vyžádejte si e-mail anffeedback@microsoft.com s ID předplatného, abyste mohli požádat o tuto funkci.
 
 ### <a name="create-a-snapshot-policy"></a>Vytvoření zásady snímku 
 

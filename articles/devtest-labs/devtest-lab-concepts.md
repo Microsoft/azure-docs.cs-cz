@@ -3,12 +3,12 @@ title: Koncepty DevTest Labs | Microsoft Docs
 description: Přečtěte si o základních konceptech DevTest Labs a o tom, jak usnadňuje vytváření, správu a monitorování virtuálních počítačů Azure.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8f82f0484caf23d20092318b5bc2a32b0e6b1f1d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 43d62d637686a785cafd29aa311ccf20cb942721
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074960"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283839"
 ---
 # <a name="devtest-labs-concepts"></a>Koncepce DevTest Labs
 ## <a name="overview"></a>Přehled
@@ -20,7 +20,7 @@ Testovací prostředí je infrastruktura, která zahrnuje skupinu prostředků, 
 ## <a name="virtual-machine"></a>Virtuální počítač
 Virtuální počítač Azure je jedním z několika typů [škálovatelných výpočetních prostředků na vyžádání](/azure/architecture/guide/technology-choices/compute-decision-tree) , které Azure nabízí. Virtuální počítače Azure vám poskytnou flexibilitu virtualizace bez nutnosti koupit a udržovat fyzický hardware, na kterém běží, i když ho budete potřebovat k údržbě určitých úloh, jako je třeba konfigurace, opravy a instalace softwaru, který na něm běží.
 
-[Přehled virtuálních počítačů s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-overview) vám poskytne informace o tom, co byste měli zvážit před vytvořením virtuálního počítače, jak ho vytvořit a jak ho spravovat.
+[Přehled virtuálních počítačů s Windows v Azure](../virtual-machines/windows/overview.md) vám poskytne informace o tom, co byste měli zvážit před vytvořením virtuálního počítače, jak ho vytvořit a jak ho spravovat.
 
 ## <a name="claimable-vm"></a>Vynucený virtuální počítač
 Virtuální počítač s nárokem na Azure je virtuální počítač, který je dostupný pro každého uživatele testovacího prostředí s oprávněními. Správce testovacího prostředí může připravit virtuální počítače se specifickými základními imagemi a artefakty a uložit je do sdíleného fondu. Uživatel testovacího prostředí pak může vyžádat pracovní virtuální počítač z fondu, když ho potřebují s touto konkrétní konfigurací.
@@ -28,7 +28,7 @@ Virtuální počítač s nárokem na Azure je virtuální počítač, který je 
 Virtuální počítač, který je vynucený, se zpočátku nepřiřazuje žádnému konkrétnímu uživateli, ale zobrazí se v seznamu všech uživatelů v části "vynucené virtuální počítače". Až uživatel požadavek na virtuální počítač vyžádá, přesune se do oblasti moje virtuální počítače a už ho nebude moct používat žádný jiný uživatel.
 
 ## <a name="environment"></a>Prostředí
-V DevTest Labs prostředí odkazuje na kolekci prostředků Azure v testovacím prostředí. [Tento Blogový příspěvek](https://blogs.msdn.microsoft.com/devtestlab/2016/11/16/connect-2016-news-for-azure-devtest-labs-azure-resource-manager-template-based-environments-vm-auto-shutdown-and-more/) popisuje, jak vytvořit prostředí s více virtuálními počítači ze šablon Azure Resource Manager.
+V DevTest Labs prostředí odkazuje na kolekci prostředků Azure v testovacím prostředí. [Tento Blogový příspěvek](./devtest-lab-faq.md#blog-post) popisuje, jak vytvořit prostředí s více virtuálními počítači ze šablon Azure Resource Manager.
 
 ## <a name="base-images"></a>Základní image
 Základní image jsou image virtuálních počítačů s předinstalovanými nástroji a nastavení, které jsou předinstalované a nakonfigurované pro rychlé vytvoření virtuálního počítače. Virtuální počítač můžete zřídit tak, že vybíráte stávající základnu a přidáte artefakt pro instalaci testovacího agenta. Zřízený virtuální počítač pak můžete uložit jako základní, aby bylo možné použít základ bez nutnosti přeinstalovat testovacího agenta pro každé zřizování virtuálního počítače.
@@ -74,7 +74,7 @@ Vzhledem k tomu, že obory jsou hierarchicky, když má uživatel oprávnění v
 ## <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
 Všechny koncepty popsané v tomto článku se dají nakonfigurovat pomocí Azure Resource Manager šablon, které vám umožní definovat infrastrukturu a konfiguraci řešení Azure a opakovaně ho nasadit v konzistentním stavu.
 
-[Pochopení struktury a syntaxe šablon Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates#template-format) popisuje strukturu Azure Resource Manager šablony a vlastností, které jsou k dispozici v různých částech šablony.
+[Pochopení struktury a syntaxe šablon Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md#template-format) popisuje strukturu Azure Resource Manager šablony a vlastností, které jsou k dispozici v různých částech šablony.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

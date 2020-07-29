@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: c305a2513a5ace241fe697766b851cd2851e8b78
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 029883ea1ac85bdd1ea256caaa711d6537c06a76
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536023"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287887"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Výhody vašeho komerčního tržiště
 
@@ -41,7 +41,7 @@ Podrobné popisy všech výhod programu najdete v této [prezentaci programu Mar
 Začínáme je snadné:
 
 1. Publikování nabídky buď Microsoft AppSource, nebo Azure Marketplace.
-2. Projděte si [ceny na webu Marketplace](https://partner.microsoft.com/en-us/dashboard/mpn/program/commercialmarketplace) v partnerském centru a vyberte možnost **registrovat v programu Marketplace**.
+2. Projděte si [ceny na webu Marketplace](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace) v partnerském centru a vyberte možnost **registrovat v programu Marketplace**.
 3. Pokud chcete aktivovat prodejní a marketingové výhody, přiřaďte firemní marketingový kontakt. Tato kontaktní osoba následně bude dostávat zprávy ohledně programu Marketplace Rewards.
 4. Pokud chcete přidat nebo aktualizovat svoje marketingové kontaktní údaje, přejděte na stránku s výhodami prodeje a marketingu na stránce výhody Marketplace a pak vyberte **Přidat, aktualizovat nebo změnit**.  Dále postupujte následovně:
 

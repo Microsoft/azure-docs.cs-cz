@@ -3,12 +3,12 @@ title: Zálohování virtuálního počítače Azure z nastavení virtuálního 
 description: V tomto článku se dozvíte, jak zálohovat jeden virtuální počítač Azure nebo několik virtuálních počítačů Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 580cb1ad5f611991212bc8cdb48c66339f14d8e8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 722c24ce87edc692156a86338521aa3b2f9c7562
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538883"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286713"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Zálohování virtuálního počítače Azure z nastavení virtuálního počítače
 
@@ -24,14 +24,14 @@ Tento článek vysvětluje, jak zálohovat virtuální počítače Azure pomocí
 
 ### <a name="azure-vm-agent-installation"></a>Instalace agenta virtuálního počítače Azure
 
-Aby bylo možné zálohovat virtuální počítače Azure, Azure Backup nainstaluje rozšíření na agenta virtuálního počítače spuštěného v počítači. Pokud byl váš virtuální počítač vytvořený z image Azure Marketplace, Agent se spustí. V některých případech například vytvoříte vlastní virtuální počítač nebo migrujete počítač z místního prostředí. je možné, že budete muset agenta nainstalovat ručně.
+Aby bylo možné zálohovat virtuální počítače Azure, Azure Backup nainstaluje rozšíření na agenta virtuálního počítače spuštěného v počítači. Pokud byl váš virtuální počítač vytvořen z bitové kopie Azure Marketplace, Agent bude spuštěn. V některých případech například vytvoříte vlastní virtuální počítač nebo migrujete počítač z místního prostředí. je možné, že budete muset agenta nainstalovat ručně.
 
 - Pokud potřebujete agenta virtuálního počítače nainstalovat ručně, postupujte podle pokynů pro virtuální počítače se [systémem Windows](../virtual-machines/extensions/agent-windows.md) nebo [Linux](../virtual-machines/extensions/agent-linux.md) .
 - Po instalaci agenta se při povolení zálohování Azure Backup nainstaluje rozšíření zálohování agenta. Aktualizuje a opraví rozšíření bez zásahu uživatele.
 
 ## <a name="back-up-from-azure-vm-settings"></a>Zálohování z nastavení virtuálního počítače Azure
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Klikněte na **všechny služby** a ve filtru zadejte **virtuální počítače**a potom klikněte na **virtuální počítače**.
 3. V seznamu virtuálních počítačů vyberte virtuální počítač, který chcete zálohovat.
 4. V nabídce VM (virtuální počítač) klikněte na **zálohovat**.
@@ -39,15 +39,15 @@ Aby bylo možné zálohovat virtuální počítače Azure, Azure Backup nainstal
    - Pokud už máte trezor, klikněte na **Vybrat existující**a vyberte trezor.
    - Pokud nemáte trezor, klikněte na **vytvořit nový**. Zadejte název trezoru. Vytvoří se ve stejné oblasti a skupině prostředků jako virtuální počítač. Tato nastavení nemůžete změnit, když povolíte zálohování přímo z nastavení virtuálního počítače.
 
-   ![Průvodce povolením zálohování](./media/backup-azure-vms-first-look-arm/vm-menu-enable-backup-small.png)
+        ![Průvodce povolením zálohování](./media/backup-azure-vms-first-look-arm/vm-menu-enable-backup-small.png)
 
-6. V části **zvolit zásadu zálohování**udělejte toto:
+6. V části **zvolit zásadu zálohování**proveďte jednu z následujících akcí:
 
    - Ponechte výchozí zásadu. Tím se virtuální počítač zálohuje jednou denně v zadaném čase a zachovává zálohy v trezoru po dobu 30 dnů.
    - Vyberte existující zásadu zálohování, pokud ji máte.
    - Vytvořte novou zásadu a definujte nastavení zásad.  
 
-   ![Výběr zásady zálohování](./media/backup-azure-vms-first-look-arm/set-backup-policy.png)
+       ![Výběr zásady zálohování](./media/backup-azure-vms-first-look-arm/set-backup-policy.png)
 
 7. Klikněte na **Povolit zálohování**. Tím se přidruží zásady zálohování k virtuálnímu počítači.
 

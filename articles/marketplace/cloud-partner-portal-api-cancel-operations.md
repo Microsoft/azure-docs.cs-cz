@@ -4,15 +4,15 @@ description: Rozhraní API pro zrušení aktuálně probíhající operace v nab
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: emuench
+author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 462ca525be9cf46c87acdf4025223a98afaf8e3b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 095d9cf68374ee81cafdb6e7a32df29a57d122cb
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520370"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287929"
 ---
 # <a name="cancel-operation"></a>Zrušit operaci
 
@@ -46,7 +46,7 @@ Toto rozhraní API zruší aktuálně probíhající operaci na této nabídce. 
 ## <a name="body-example"></a>Příklad textu
 ------------
 
-### <a name="request"></a>Request
+### <a name="request"></a>Žádost
 
 ``` json
 {

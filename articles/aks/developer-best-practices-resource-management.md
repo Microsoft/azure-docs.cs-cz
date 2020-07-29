@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: d3fab2515bb15cce35070de9326cd6afcc034b20
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9f5fcbda93e4a31b4d328bffe4689a47a4eb89ff
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517738"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281561"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro vývojáře aplikací pro správu prostředků ve službě Azure Kubernetes Service (AKS)
 
@@ -35,7 +35,7 @@ Hlavním způsobem správy výpočetních prostředků v rámci clusteru AKS je 
     * Když se Plánovač Kubernetes pokusí umístit uzel pod na uzel, používají se k určení, který uzel má dostatek dostupných zdrojů pro plánování, použít žádosti pod.
     * Požadavek na hodnotu pod se nastaví jako výchozí pro definovaný limit.
     * Pro úpravu těchto požadavků je velmi důležité monitorovat výkon vaší aplikace. Pokud nejsou k dispozici žádné požadavky, může vaše aplikace obdržet snížený výkon z důvodu naplánování uzlu. Pokud jsou požadavky přehodnoceny, může být vaše aplikace zvýšena o naplánovaných potížích.
-* **Omezení počtu procesorů a paměti** jsou maximální množství procesorů a paměti, které může použít pod. Tato omezení vám pomůžou určit, které lusky by se měly ukončit v případě nestability uzlu kvůli nedostatečným prostředkům. Bez správných limitů se bude ukončit až do chvíle, kdy je zatížení prostředku zrušeno.
+* **Omezení počtu procesorů a paměti** jsou maximální množství procesorů a paměti, které může použít pod. Omezení paměti usnadňují definování, které lusky by měly být ukončeny v případě nestability uzlu kvůli nedostatečným prostředkům. Bez správných limitů se bude ukončit až do chvíle, kdy je zatížení prostředku zrušeno. Část pod může nebo nemusí být schopná překročit limit procesoru po určitou dobu, ale v seznamu nebude ukončený za překročení limitu procesoru. 
     * Omezení pod vám pomůžou definovat, kdy došlo ke ztrátě řízení spotřeby prostředků pod. Při překročení limitu je pole pod prioritou pro usmrcování, aby udržoval stav uzlu a minimalizoval dopad na lusky sdílející uzel.
     * Při nastavení limitu na hodnotu pod se výchozí hodnota nastaví na nejvyšší dostupnou hodnotu na daném uzlu.
     * Nenastavujte limit na hodnotu pod vyšší než vaše uzly můžou podporovat. Každý uzel AKS rezervuje pro základní komponenty Kubernetes nastavenou velikost procesoru a paměti. Vaše aplikace se může pokusit spotřebovat příliš mnoho prostředků v uzlu, aby bylo možné ostatní lusky úspěšně spustit.
