@@ -12,12 +12,12 @@ ms.date: 07/01/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9aae292d97457ebe1d36a839b779b9233037ea60
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 53c4e3e3e3b6aaca2f861a8c5aba528541dc4854
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055201"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322189"
 ---
 # <a name="what-is-application-management"></a>Co je správa aplikací?
 
@@ -93,8 +93,6 @@ Pro aplikace zaměřené na lidské zdroje nebo jiné aplikace s velkou sadou u�
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Zobrazení aplikací, které jsou už ve vašem tenantovi Azure AD nakonfigurované](view-applications-portal.md)
-- [Rychlý Start: Přidání aplikace Galerie do tenanta Azure AD](add-application-portal.md)
-- [Přidání aplikace Galerie do vaší organizace Azure AD](add-gallery-app.md)
+- [Série rychlý Start v App Managemement ve službě Azure AD](view-applications-portal.md)
 - [Začínáme s integrací aplikací](plan-an-application-integration.md)
 - [Informace o automatizaci zřizování](../app-provisioning/user-provisioning.md)

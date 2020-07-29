@@ -3,16 +3,16 @@ title: Konfigurace LVM a RAID na šifrovaných zařízeních – Azure Disk Encr
 description: Tento článek poskytuje pokyny pro konfiguraci LVM a RAID na šifrovaných zařízeních pro virtuální počítače se systémem Linux.
 author: jofrance
 ms.service: security
-ms.topic: article
+ms.topic: how-to
 ms.author: jofrance
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3be8863d86fd1525e6f64b46ddf5ca3c702ecdea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 746243336d74aefc55df48872fe9dd21e9cd99a5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029225"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87268216"
 ---
 # <a name="configure-lvm-and-raid-on-encrypted-devices"></a>Konfigurace LVM a RAID na šifrovaných zařízeních
 

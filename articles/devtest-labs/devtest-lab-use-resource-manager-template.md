@@ -3,12 +3,12 @@ title: Zobrazení a použití šablony Azure Resource Manager virtuálního poč
 description: Naučte se používat Azure Resource Manager šablonu z virtuálního počítače k vytvoření dalších virtuálních počítačů.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a53a6ad44cac59bd925e6d200ca50074a2fcd963
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e58b54d61653f1edba3c3893edb902a94fbf9f2b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476610"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87272687"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Vytváření virtuálních počítačů pomocí šablony Azure Resource Manager 
 
@@ -35,7 +35,7 @@ Existují dva způsoby, jak vytvořit virtuální počítače v DevTest Labs pom
 
 Zbývající část tohoto článku se zabývá Správce prostředkůmi šablonami, které používají Microsoft. DevTestLab/Labs/VirtualMachines. Používají je správci testovacího prostředí k automatizaci vytváření virtuálních počítačů testovacího prostředí (například s nárokem na virtuální počítače) nebo při generování zlatých imagí (například objekt pro vytváření imagí).
 
-[Osvědčené postupy pro vytváření šablon Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices) nabízí mnoho pokynů a návrhů, které vám pomůžou vytvořit Azure Resource Manager šablony, které jsou spolehlivé a snadno použitelné.
+[Osvědčené postupy pro vytváření šablon Azure Resource Manager](../azure-resource-manager/templates/template-best-practices.md) nabízí mnoho pokynů a návrhů, které vám pomůžou vytvořit Azure Resource Manager šablony, které jsou spolehlivé a snadno použitelné.
 
 ## <a name="view-and-save-a-virtual-machines-resource-manager-template"></a>Zobrazení a uložení šablony Správce prostředků virtuálního počítače
 1. Pokud chcete začít vytvářet virtuální počítač, postupujte podle kroků v části [Vytvoření prvního virtuálního počítače v testovacím prostředí](tutorial-create-custom-lab.md#add-a-vm-to-the-lab) .

@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 771cfa11375e97f2f6a94fc65cbd72306b12cd7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64884f07bc59e5ff2b29eac645ddb469ef3db465
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84803974"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325181"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>Dotazování protokolů z Azure Monitor pro virtuální počítače
 
-Azure Monitor pro virtuální počítače shromažďuje metriky výkonu a připojení, data inventáře počítače a procesu a informace o stavu a předávají je do pracovního prostoru Log Analytics v Azure Monitor.  Tato data jsou k dispozici pro [dotazy](../../azure-monitor/log-query/log-query-overview.md) v Azure monitor. Tato data můžete použít ve scénářích, které zahrnují plánování migrace, analýzu kapacity, zjišťování a řešení potíží s výkonem na vyžádání.
+Azure Monitor pro virtuální počítače shromažďuje metriky výkonu a připojení, data inventáře počítače a procesu a informace o stavu a předávají je do pracovního prostoru Log Analytics v Azure Monitor.  Tato data jsou k dispozici pro [dotazy](../log-query/log-query-overview.md) v Azure monitor. Tato data můžete použít ve scénářích, které zahrnují plánování migrace, analýzu kapacity, zjišťování a řešení potíží s výkonem na vyžádání.
 
 ## <a name="map-records"></a>Mapování záznamů
 
@@ -55,7 +55,7 @@ Pro správu nákladů a složitost nepředstavuje záznam o připojení jednotli
 |SourceIp |IP adresa zdroje |
 |DestinationIp |IP adresa cíle |
 |DestinationPort |Číslo portu cílového umístění |
-|Protocol (Protokol) |Protokol použitý pro připojení  Hodnoty jsou *TCP*. |
+|Protokol |Protokol použitý pro připojení  Hodnoty jsou *TCP*. |
 
 Informace o počtu skupinových fyzických připojení, které se mají přihlédnout k dopadu seskupení, najdete v následujících vlastnostech záznamu:
 
@@ -112,7 +112,7 @@ Každá vlastnost RemoteIp v tabulce *VMConnection* je kontrolována na základ�
 |:--|:--|
 |MaliciousIp |Adresa RemoteIp |
 |IndicatorThreadType |Zjištěného indikátoru hrozby je jedna z následujících hodnot: *botnetu*, *C2*, *CryptoMining*, *adres darknetu*, *DDos*, *MaliciousUrl*, *malware*, *phishing*, *proxy*, *PUA*, *seznamu ke zhlédnutí*.   |
-|Description |Popis pozorované hrozby. |
+|Popis |Popis pozorované hrozby. |
 |TLPLevel |Úroveň TLP (provoz Light Protocol) je jedna z definovaných hodnot, *bílá*, *zelená*, *oranžová*a *červená*. |
 |Spolehlivost |Hodnoty jsou *0 – 100*. |
 |Severity |Hodnoty jsou *0 – 5*, přičemž *5* je nejzávažnější a *0* není u sebe závažná. Výchozí hodnota je *3*.  |
@@ -133,7 +133,7 @@ Každý záznam v VMBoundPort je určený následujícími poli:
 |Proces | Identita procesu (nebo skupin procesů), ke kterým je port přidružen|
 |IP | IP adresa portu (může to být zástupný znak IP, *0.0.0.0*) |
 |Port |Číslo portu |
-|Protocol (Protokol) | Protokol.  Příklad: *TCP* nebo *UDP* (v současné době se podporuje jenom *TCP* ).|
+|Protokol | Protokol.  Příklad: *TCP* nebo *UDP* (v současné době se podporuje jenom *TCP* ).|
  
 Identita, kterou port je odvozený z výše uvedených pěti polí a je uložený ve vlastnosti identifikátor portid. Tato vlastnost slouží k rychlému vyhledání záznamů pro určitý port v čase. 
 
@@ -159,14 +159,14 @@ Záznamy s typem *VMComputer* mají data inventáře pro servery s agentem závi
 | Vlastnost | Popis |
 |:--|:--|
 |TenantId | Jedinečný identifikátor pracovního prostoru |
-|SourceSystem | *Insights* | 
+|SourceSystem | *Přehledy* | 
 |TimeGenerated | Časové razítko záznamu (UTC) |
 |Počítač | Plně kvalifikovaný název domény počítače | 
 |ID agenta | Jedinečné ID agenta Log Analytics |
 |Počítač | Název prostředku Azure Resource Manager pro počítač vystavený pomocí ServiceMap. Má formu *m-{GUID}*, kde *GUID* je stejný identifikátor GUID jako ID agenta. | 
-|DisplayName | Zobrazované jméno | 
+|DisplayName | Zobrazovaný název | 
 |FullDisplayName | Úplné zobrazované jméno | 
-|HostName | Název počítače bez názvu domény |
+|Název hostitele | Název počítače bez názvu domény |
 |BootTime | Čas spuštění počítače (UTC) |
 |TimeZone | Normalizované časové pásmo |
 |VirtualizationState | *virtuální*, *hypervisor*, *fyzický* |
@@ -221,7 +221,7 @@ Záznamy s typem *VMProcess* mají data inventáře pro procesy připojené k pr
 | Vlastnost | Popis |
 |:--|:--|
 |TenantId | Jedinečný identifikátor pracovního prostoru |
-|SourceSystem | *Insights* | 
+|SourceSystem | *Přehledy* | 
 |TimeGenerated | Časové razítko záznamu (UTC) |
 |Počítač | Plně kvalifikovaný název domény počítače | 
 |ID agenta | Jedinečné ID agenta Log Analytics |
@@ -233,7 +233,7 @@ Záznamy s typem *VMProcess* mají data inventáře pro procesy připojené k pr
 |Skupina | Název skupiny procesů Procesy ve stejné skupině jsou logicky související, například součást stejné produktové nebo systémové komponenty. |
 |StartTime | Čas spuštění fondu procesů |
 |FirstPid | První PID ve fondu procesů |
-|Description | Popis procesu |
+|Popis | Popis procesu |
 |CompanyName | Název společnosti |
 |Vnitřní | Interní název |
 |ProductName | Název produktu |
@@ -243,7 +243,7 @@ Záznamy s typem *VMProcess* mají data inventáře pro procesy připojené k pr
 |CommandLine | Příkazový řádek |
 |WorkingDirectory | Pracovní adresář |
 |Služby | Pole služeb, na kterých se proces provádí |
-|UserName | Účet, pod kterým se proces spouští |
+|Uživatelské jméno | Účet, pod kterým se proces spouští |
 |UserDomain | Doména, pod kterou je prováděn proces |
 |_ResourceId | Jedinečný identifikátor procesu v pracovním prostoru |
 
@@ -437,12 +437,12 @@ Záznamy s typem *InsightsMetrics* mají údaje o výkonu z hostovaného operač
 | Vlastnost | Popis |
 |:--|:--|
 |TenantId | Jedinečný identifikátor pracovního prostoru |
-|SourceSystem | *Insights* | 
+|SourceSystem | *Přehledy* | 
 |TimeGenerated | Čas, kdy byla hodnota shromážděna (UTC) |
 |Počítač | Plně kvalifikovaný název domény počítače | 
 |Zdroj | *vm.azm.ms* |
 |Obor názvů | Kategorie čítače výkonu | 
-|Name | Název čítače výkonu |
+|Název | Název čítače výkonu |
 |Počítává | Shromážděná hodnota | 
 |Značky | Související podrobnosti o záznamu Značky používané s různými typy záznamů najdete v následující tabulce.  |
 |ID agenta | Jedinečný identifikátor pro každého agenta počítače |
@@ -451,10 +451,10 @@ Záznamy s typem *InsightsMetrics* mají údaje o výkonu z hostovaného operač
 
 Čítače výkonu, které jsou aktuálně shromážděny do tabulky *InsightsMetrics* , jsou uvedeny v následující tabulce:
 
-| Obor názvů | Name | Description | Jednotka | Značky |
+| Obor názvů | Název | Popis | Jednotka | Značky |
 |:---|:---|:---|:---|:---|
-| Počítač    | Prezenční signál             | Prezenční signál počítače                        | | |
-| Memory (Paměť)      | AvailableMB           | Bajty dostupné paměti                    | Megabajty      | memorySizeMB – celková velikost paměti|
+| Počítač    | Tep             | Prezenční signál počítače                        | | |
+| Paměť      | AvailableMB           | Bajty dostupné paměti                    | Megabajty      | memorySizeMB – celková velikost paměti|
 | Síť     | WriteBytesPerSecond   | Bajty zápisu v síti za sekundu            | BytesPerSecond | NetworkDeviceId-ID zařízení<br>bajty-celkový počet odeslaných bajtů |
 | Síť     | ReadBytesPerSecond    | Počet bajtů přečtených v síti za sekundu             | BytesPerSecond | networkDeviceId-ID zařízení<br>Bajty celkem přijatých bajtů |
 | Procesor   | UtilizationPercentage | Procento využití procesoru          | Procento        | totalCpus – celkový počet procesorů |
@@ -473,6 +473,7 @@ Záznamy s typem *InsightsMetrics* mají údaje o výkonu z hostovaného operač
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokud s psaním dotazů protokolu v Azure Monitor začínáte, přečtěte si téma [použití Log Analytics](../../azure-monitor/log-query/get-started-portal.md) v Azure Portal k zápisu dotazů protokolu.
+* Pokud s psaním dotazů protokolu v Azure Monitor začínáte, přečtěte si téma [použití Log Analytics](../log-query/get-started-portal.md) v Azure Portal k zápisu dotazů protokolu.
 
-* Přečtěte si informace o [zápisu vyhledávacích dotazů](../../azure-monitor/log-query/search-queries.md).
+* Přečtěte si informace o [zápisu vyhledávacích dotazů](../log-query/search-queries.md).
+

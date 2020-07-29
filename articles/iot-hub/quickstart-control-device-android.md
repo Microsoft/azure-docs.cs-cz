@@ -10,14 +10,15 @@ ms.topic: quickstart
 ms.custom:
 - mvc
 - mqtt
+- devx-track-java
 ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: 3e5afae9421d13d986ad6c891c8e889f590f04a2
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2a12c916b6f81f21574c4b9dc748a279c22f199f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044715"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87315593"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Rychlý Start: řízení zařízení připojeného ke centru IoT (Android)
 
@@ -43,7 +44,7 @@ V tomto rychlém startu použijete přímou metodu k řízení simulovaného za�
 
 ### <a name="add-azure-iot-extension"></a>Přidat rozšíření Azure IoT
 
-Spuštěním následujícího příkazu přidejte do instance služby Cloud Shell Microsoft Azure rozšíření IoT pro rozhraní příkazového řádku Azure. Rozšíření IoT přidá do Azure CLI příkazy určené pro služby IoT Hub, IoT Edge a IoT Device Provisioning Service (DPS).
+Spuštěním následujícího příkazu přidejte do instance služby Cloud Shell Microsoft Azure rozšíření IoT pro rozhraní příkazového řádku Azure. Rozšíření IoT přidá do Azure CLI příkazy specifické pro IoT Hub, IoT Edge a IoT Device Provisioning Service (DPS).
 
 ```azurecli-interactive
 az extension add --name azure-iot
@@ -57,7 +58,7 @@ Pokud jste dokončili předchozí [rychlý Start: odeslání telemetrie ze zař�
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-device"></a>Registrování zařízení
+## <a name="register-a-device"></a>Registrace zařízení
 
 Pokud jste dokončili předchozí [rychlý Start: odeslání telemetrie ze zařízení do služby IoT Hub](quickstart-send-telemetry-android.md), můžete tento krok přeskočit a použít stejné zařízení, které je zaregistrované v předchozím rychlém startu.
 
@@ -85,7 +86,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
       --output table
     ```
 
-    Poznamenejte si připojovací řetězec zařízení, který vypadá nějak takto:
+    Poznamenejte si připojovací řetězec zařízení, který vypadá takto:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyAndroidDevice;SharedAccessKey={YourSharedAccessKey}`
 
@@ -137,7 +138,7 @@ Ukázkovou aplikaci sady SDK pro zařízení můžete spustit na fyzickém zař�
 
 Tato aplikace musí být při spuštění ukázky sady SDK v provozu na fyzickém zařízení nebo emulátoru, aby se interval telemetrie aktualizoval během doby běhu.
 
-## <a name="read-the-telemetry-from-your-hub"></a>Čtení telemetrických dat z centra
+## <a name="read-the-telemetry-from-your-hub"></a>Čtení telemetrie z centra
 
 V této části použijete Azure Cloud Shell s [rozšířením IoT](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) k monitorování zpráv odesílaných zařízením s Androidem.
 

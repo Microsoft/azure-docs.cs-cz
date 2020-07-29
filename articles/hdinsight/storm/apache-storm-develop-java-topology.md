@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020
+ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020,devx-track-java
 ms.date: 04/27/2020
-ms.openlocfilehash: 69342e59e99dd588b2c2cee9d02af5370ddb3af2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b928ea8b0d05b9e1eac3c9429ec4c0ce8f88bb22
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086938"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322869"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Vytvoření topologie Apache Storm v jazyce Java
 
@@ -219,7 +219,7 @@ Tato část slouží k přidání modulů plug-in, prostředků a dalších mož
 
 ### <a name="configure-resources"></a>Konfigurace prostředků
 
-V části Resources (prostředky) můžete zahrnout nekódové zdroje, jako jsou třeba konfigurační soubory, které jsou potřeba součástmi v topologii. V tomto příkladu přidejte následující text do `<resources>` části `pom.xml` souboru. Pak tento soubor uložte a zavřete.
+V části Resources (prostředky) můžete zahrnout nekódové zdroje, jako jsou třeba konfigurační soubory, které jsou potřeba součástmi v topologii. V tomto příkladu přidejte následující text do `<resources>` části `pom.xml` souboru. Pak soubor uložte a zavřete ho.
 
 ```xml
 <resource>

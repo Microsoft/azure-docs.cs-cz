@@ -3,15 +3,16 @@ title: Dotazování protokolů z Azure Monitor pro kontejnery | Microsoft Docs
 description: Azure Monitor pro kontejnery shromažďuje metriky a data protokolů a tento článek popisuje záznamy a obsahuje vzorové dotazy.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 392aac8f81ac3894fca8b6f70570834a5af16ade
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12c32c84f2c2aef5d6d0817c11e1ef010f30ffcb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84298299"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320285"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Postup dotazování protokolů z Azure Monitor pro kontejnery
 
-Azure Monitor pro kontejnery shromažďují metriky výkonu, data inventáře a informace o stavu z hostitelů a kontejnerů kontejnerů. Data se shromažďují každé tři minuty a předávají se do pracovního prostoru Log Analytics v Azure Monitor. Tato data jsou k dispozici pro [dotazy](../../azure-monitor/log-query/log-query-overview.md) v Azure monitor. Tato data můžete použít ve scénářích, které zahrnují plánování migrace, analýzu kapacity, zjišťování a řešení potíží s výkonem na vyžádání.
+Azure Monitor pro kontejnery shromažďují metriky výkonu, data inventáře a informace o stavu z hostitelů a kontejnerů kontejnerů. Data se shromažďují každé tři minuty a předávají se do pracovního prostoru Log Analytics v Azure Monitor. Tato data jsou k dispozici pro [dotazy](../log-query/log-query-overview.md) v Azure monitor. Tato data můžete použít ve scénářích, které zahrnují plánování migrace, analýzu kapacity, zjišťování a řešení potíží s výkonem na vyžádání.
 
 ## <a name="container-records"></a>Záznamy kontejneru
 
@@ -47,7 +48,7 @@ Výstup protokolu kontejnerů, který se předává do vašeho pracovního prost
 
 Často je užitečné vytvářet dotazy, které začínají s příkladem nebo dvěma, a pak je upravit tak, aby vyhovovaly vašim požadavkům. Pro lepší sestavování pokročilejších dotazů můžete experimentovat s následujícími ukázkovými dotazy:
 
-| Dotaz | Description | 
+| Dotaz | Popis | 
 |-------|-------------|
 | ContainerInventory<br> &#124; projektový počítač, název, obrázek, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime<br> &#124; vykreslit tabulku | Vypsat všechny informace o životním cyklu kontejneru| 
 | KubeEvents_CL<br> &#124;, kde ne (neprázdné (Namespace_s))<br> &#124; seřadit podle TimeGenerated DESC<br> &#124; vykreslit tabulku | Události Kubernetes|
@@ -111,3 +112,4 @@ Výstup zobrazuje výsledky podobné následujícímu příkladu:
 ## <a name="next-steps"></a>Další kroky
 
 Azure Monitor pro kontejnery neobsahují předdefinovanou sadu výstrah. Přečtěte si téma [vytvoření výstrah výkonu s Azure monitor pro kontejnery](container-insights-alerts.md) , kde se dozvíte, jak vytvořit Doporučené výstrahy pro zajištění vysokého využití procesoru a paměti, aby podporovaly vaše DevOps nebo provozní procesy a postupy. 
+

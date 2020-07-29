@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 07/24/2020
 ms.author: jingwang
-ms.openlocfilehash: d37a9bd4cc29ee60f9833ffbcb5a2701a19bbaa7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bac673f5c8c8d6a4e2b368938a0c08c893518022
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416830"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171268"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopírování dat z a do Oracle pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -68,7 +68,7 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Propojená služba Oracle podporuje následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type musí být nastavena na hodnotu **Oracle**. | Ano |
 | připojovací řetězec | Určuje informace potřebné pro připojení k instanci Oracle Database. <br/>Můžete také vložit heslo do Azure Key Vault a z `password` připojovacího řetězce si vyžádat konfiguraci. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje uložené v Azure Key Vault](store-credentials-in-key-vault.md) . <br><br>**Podporovaný typ připojení**: k identifikaci databáze můžete použít název **Oracle SID** nebo **Oracle** :<br>– Pokud používáte identifikátor SID:`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>– Pokud použijete název služby:`Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;`<br>V případě pokročilých možností nativního připojení Oracle se můžete rozhodnout přidat položku v [souboru Tnsnames. ORA](http://www.orafaq.com/wiki/Tnsnames.ora) soubor na serveru Oracle a v propojené službě ADF Oracle vyberte použít typ připojení název služby Oracle a nakonfigurujte odpovídající název služby. | Ano |
@@ -76,6 +76,8 @@ Propojená služba Oracle podporuje následující vlastnosti:
 
 >[!TIP]
 >Pokud se zobrazí chyba, "ORA-01025: parametr UPI je mimo rozsah", a vaše verze Oracle je 8i, přidejte `WireProtocolMode=1` do svého připojovacího řetězce. Pak to zkuste znovu.
+
+Pokud máte více instancí Oracle pro převzetí služeb při selhání, můžete vytvořit propojenou službu Oracle a vyplnit primární hostitele, port, uživatelské jméno, heslo atd. a přidat nové "**Další vlastnosti připojení**" s názvem vlastnosti jako `AlternateServers` a hodnotou `(HostName=<secondary host>:PortNumber=<secondary port>:ServiceName=<secondary service name>)` – nepřijít do závorek a věnovat pozornost dvojtečkám ( `:` ) jako oddělovač. Například následující hodnota alternativních serverů definuje dva alternativní databázové servery pro převzetí služeb při selhání připojení: `(HostName=AccountingOracleServer:PortNumber=1521:SID=Accounting,HostName=255.201.11.24:PortNumber=1522:ServiceName=ABackup.NA.MyCompany)` .
 
 Další vlastnosti připojení můžete nastavit v připojovacím řetězci pro váš případ:
 
@@ -124,7 +126,7 @@ Pokud chcete povolit šifrování u připojení Oracle, máte dvě možnosti:
     3.  Umístěte `truststore` soubor na místně hostovaný počítač IR. Soubor umístěte například na C:\MyTrustStoreFile.
     4.  V Azure Data Factory nakonfigurujte připojovací řetězec Oracle pomocí `EncryptionMethod=1` a odpovídající `TrustStore` / `TrustStorePassword` hodnoty. Například, `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;EncryptionMethod=1;TrustStore=C:\\MyTrustStoreFile;TrustStorePassword=<trust_store_password>`.
 
-**Příklad:**
+**Případě**
 
 ```json
 {
@@ -173,14 +175,14 @@ V této části najdete seznam vlastností podporovaných datovou sadou Oracle. 
 
 Chcete-li kopírovat data z a do Oracle, nastavte vlastnost typ datové sady na `OracleTable` . Podporovány jsou následující vlastnosti.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type datové sady musí být nastavena na hodnotu `OracleTable` . | Ano |
-| XSD | Název schématu. |Ne pro zdroj, Ano pro jímku  |
-| tabulka | Název tabulky/zobrazení |Ne pro zdroj, Ano pro jímku  |
+| schema | Název schématu. |Ne pro zdroj, Ano pro jímku  |
+| table | Název tabulky/zobrazení |Ne pro zdroj, Ano pro jímku  |
 | tableName | Název tabulky nebo zobrazení se schématem. Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro nové úlohy použijte `schema` a `table` . | Ne pro zdroj, Ano pro jímku |
 
-**Příklad:**
+**Případě**
 
 ```json
 {
@@ -212,7 +214,7 @@ V této části najdete seznam vlastností podporovaných zdrojem a jímkou Orac
 
 Chcete-li kopírovat data z Oracle, nastavte typ zdroje v aktivitě kopírování na `OracleSource` . V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type zdroje aktivity kopírování musí být nastavena na hodnotu `OracleSource` . | Ano |
 | oracleReaderQuery | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM MyTable"`.<br>Pokud povolíte rozdělené zatížení, musíte v dotazu připojit všechny odpovídající předdefinované parametry oddílu. Příklady najdete v části [paralelní kopírování z Oracle](#parallel-copy-from-oracle) . | Ne |
@@ -259,14 +261,14 @@ Chcete-li kopírovat data z Oracle, nastavte typ zdroje v aktivitě kopírován�
 
 Chcete-li kopírovat data do Oracle, nastavte typ jímky v aktivitě kopírování na `OracleSink` . V části **jímka** aktivity kopírování jsou podporovány následující vlastnosti.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type jímky aktivity kopírování musí být nastavena na `OracleSink` . | Ano |
 | writeBatchSize | Při dosažení velikosti vyrovnávací paměti vloží data do tabulky SQL `writeBatchSize` .<br/>Povolené hodnoty jsou celé číslo (počet řádků). |Ne (výchozí hodnota je 10 000) |
 | writeBatchTimeout | Doba čekání na dokončení operace dávkového vložení před vypršením časového limitu.<br/>Povolené hodnoty jsou TimeSpan. Příklad je 00:30:00 (30 minut). | Ne |
 | preCopyScript | Zadejte dotaz SQL pro aktivitu kopírování, která se má spustit před zápisem dat do Oracle při každém spuštění. Tuto vlastnost můžete použít k vyčištění předem načtených dat. | Ne |
 
-**Příklad:**
+**Případě**
 
 ```json
 "activities":[

@@ -3,12 +3,12 @@ title: Monitorování aplikací Docker v Azure Application Insights | Microsoft 
 description: Čítače výkonu Docker, události a výjimky lze zobrazit v Application Insights společně s telemetrie z kontejnerových aplikací.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 6af39db68c2020e578fe6fbd39870b2e00a16e07
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1cbb2968fec68eb750ce3c9b6cac09f23a1d36c5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539920"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324416"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>Monitorovat aplikace Docker v Application Insights (zastaralé)
 
@@ -23,15 +23,15 @@ Když na hostiteli Docker spustíte [Application Insights image](https://hub.doc
 
 * Telemetrie životního cyklu o všech kontejnerech spuštěných na hostiteli – spuštění, zastavení a tak dále.
 * Čítače výkonu pro všechny kontejnery. Využití procesoru, paměti, sítě a dalších.
-* Pokud jste [nainstalovali sadu Application Insights SDK pro jazyk Java](../../azure-monitor/app/java-get-started.md) v aplikacích spuštěných v kontejnerech, budou mít všechny telemetrie těchto aplikací další vlastnosti identifikující kontejner a hostitelský počítač. Pokud například máte instance aplikace spuštěné na více než jednom hostiteli, můžete snadno filtrovat telemetrie aplikací podle hostitele.
+* Pokud jste [nainstalovali sadu Application Insights SDK pro jazyk Java](./java-get-started.md) v aplikacích spuštěných v kontejnerech, budou mít všechny telemetrie těchto aplikací další vlastnosti identifikující kontejner a hostitelský počítač. Pokud například máte instance aplikace spuštěné na více než jednom hostiteli, můžete snadno filtrovat telemetrie aplikací podle hostitele.
 
 ## <a name="set-up-your-application-insights-resource"></a>Nastavení prostředku Application Insights
 
-1. Přihlaste se [portál Microsoft Azure](https://azure.com) a otevřete Application Insights prostředek pro vaši aplikaci. nebo [vytvořte novou](../../azure-monitor/app/create-new-resource.md ). 
+1. Přihlaste se [portál Microsoft Azure](https://azure.com) a otevřete Application Insights prostředek pro vaši aplikaci. nebo [vytvořte novou](./create-new-resource.md). 
    
-    *Který prostředek mám použít?* Pokud aplikace, které spouštíte na hostiteli, byly vyvinuty někým jiným, je nutné [vytvořit nový prostředek Application Insights](../../azure-monitor/app/create-new-resource.md ). Tady můžete zobrazit a analyzovat telemetrii. (Pro typ aplikace vyberte "Obecné".)
+    *Který prostředek mám použít?* Pokud aplikace, které spouštíte na hostiteli, byly vyvinuty někým jiným, je nutné [vytvořit nový prostředek Application Insights](./create-new-resource.md). Tady můžete zobrazit a analyzovat telemetrii. (Pro typ aplikace vyberte "Obecné".)
    
-    Ale pokud jste vývojářem aplikací, doufáme, že jste do každého z nich [přidali Application Insights SDK](../../azure-monitor/app/java-get-started.md) . Pokud se jedná o všechny vlastněné komponenty jedné obchodní aplikace, můžete je nakonfigurovat tak, aby odesílaly telemetrii k jednomu prostředku. stejný prostředek pak použijete k zobrazení životního cyklu Docker a údajů o výkonu. 
+    Ale pokud jste vývojářem aplikací, doufáme, že jste do každého z nich [přidali Application Insights SDK](./java-get-started.md) . Pokud se jedná o všechny vlastněné komponenty jedné obchodní aplikace, můžete je nakonfigurovat tak, aby odesílaly telemetrii k jednomu prostředku. stejný prostředek pak použijete k zobrazení životního cyklu Docker a údajů o výkonu. 
    
     Třetím scénářem je, že jste vytvořili většinu aplikací, ale používáte samostatné prostředky k zobrazení telemetrie. V takovém případě pravděpodobně budete chtít vytvořit samostatný prostředek pro data Docker.
 
@@ -54,7 +54,7 @@ Teď, když jste se dostali k zobrazení telemetrie, můžete nastavit kontejner
 Pro hostitele Docker je vyžadován pouze jeden Application Insights obrázek. Pokud je vaše aplikace nasazená na více hostitelích Docker, pak tento příkaz opakujte na každém hostiteli.
 
 ## <a name="update-your-app"></a>Aktualizace aplikace
-Pokud je aplikace instrumentovaná pomocí [sady Application Insights SDK pro jazyk Java](../../azure-monitor/app/java-get-started.md), přidejte následující řádek do souboru ApplicationInsights.xml v projektu v rámci `<TelemetryInitializers>` elementu:
+Pokud je aplikace instrumentovaná pomocí [sady Application Insights SDK pro jazyk Java](./java-get-started.md), přidejte následující řádek do souboru ApplicationInsights.xml v projektu v rámci `<TelemetryInitializers>` elementu:
 
 ```xml
 
@@ -73,7 +73,7 @@ Za chvíli uvidíte, že se data přicházejí z aplikace Docker, a to zejména 
 ### <a name="docker-container-events"></a>Události kontejneru Docker
 ![příklad](./media/docker/13.png)
 
-Chcete-li prozkoumat jednotlivé události, klikněte na tlačítko [Hledat](../../azure-monitor/app/diagnostic-search.md). Hledáním a filtrováním Najděte požadované události. Podrobnější informace získáte kliknutím na libovolnou událost.
+Chcete-li prozkoumat jednotlivé události, klikněte na tlačítko [Hledat](./diagnostic-search.md). Hledáním a filtrováním Najděte požadované události. Podrobnější informace získáte kliknutím na libovolnou událost.
 
 ### <a name="exceptions-by-container-name"></a>Výjimky podle názvu kontejneru
 ![příklad](./media/docker/14.png)
@@ -90,7 +90,7 @@ Telemetrie žádostí odeslanou z aplikace instrumentovaná pomocí AI SDK je ob
 
 *Návody získat telemetrii přímo z aplikace?*
 
-* Nainstalujte do aplikace sadu Application Insights SDK. Naučte se: [Java Web Apps](../../azure-monitor/app/java-get-started.md), [Windows Web Apps](../../azure-monitor/app/asp-net.md).
+* Nainstalujte do aplikace sadu Application Insights SDK. Naučte se: [Java Web Apps](./java-get-started.md), [Windows Web Apps](./asp-net.md).
 
 ## <a name="video"></a>Video
 
@@ -98,6 +98,7 @@ Telemetrie žádostí odeslanou z aplikace instrumentovaná pomocí AI SDK je ob
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Application Insights pro jazyk Java](../../azure-monitor/app/java-get-started.md)
-* [Application Insights pro Node.js](../../azure-monitor/app/nodejs.md)
-* [Application Insights pro ASP.NET](../../azure-monitor/app/asp-net.md)
+* [Application Insights pro jazyk Java](./java-get-started.md)
+* [Application Insights pro Node.js](./nodejs.md)
+* [Application Insights pro ASP.NET](./asp-net.md)
+

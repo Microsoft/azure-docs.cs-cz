@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: d71201da0c4af35720a309fe0dfa068cd2c69630
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7daba35b9247443c84cedad03f252ea6858da236
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081606"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327340"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Monitorování služby úložiště pomocí Azure Monitor pro úložiště
 
@@ -46,7 +46,7 @@ Z Azure Monitor můžete zobrazit podrobnosti o transakcích, latencích a kapac
 
 Pokud chcete zobrazit využití a dostupnost účtů úložiště ve všech předplatných, proveďte následující kroky.
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 2. V Azure Portal v levém podokně vyberte **monitor** a v části **přehledy** vyberte **účty úložiště**.
 
@@ -226,7 +226,7 @@ V tomto příkladu pracujeme se sešitem kapacity účtu úložiště a demonstr
 
 7. Na panelu příkazů vyberte **Uložit jako** a uložte kopii sešitu s vlastními úpravami a potom kliknutím na **hotové úpravy** vraťte do režimu čtení.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Obecné pokyny k odstraňování potíží najdete v článku věnovaném [řešení problémů](troubleshoot-workbooks.md)na základě vyhrazeného sešitu.
 
@@ -242,7 +242,7 @@ Počet vybraných účtů úložiště má limit 200, bez ohledu na počet vybra
 
 ### <a name="how-to-change-the-coloring-and-threshold-for-availability"></a>Jak změnit barvy a prahovou hodnotu dostupnosti?
 
-Podrobné pokyny, jak změnit barvy a prahové hodnoty dostupnosti, najdete v části [Úprava prahové hodnoty dostupnosti](storage-insights-overview.md#modify-the-availability-threshold) .
+Podrobné pokyny, jak změnit barvy a prahové hodnoty dostupnosti, najdete v části [Úprava prahové hodnoty dostupnosti](#modify-the-availability-threshold) .
 
 ### <a name="how-to-analyze-and-troubleshoot-the-data-shown-in-azure-monitor-for-storage"></a>Jak analyzovat a řešit potíže s daty zobrazenými v Azure Monitor pro úložiště?
 
@@ -274,3 +274,4 @@ Každý sešit je uložený v účtu úložiště, ve kterém jste ho uložili. 
 * Seznamte se s scénáři, které jsou navržené tak, aby podporovaly, vytváření nových a přizpůsobení existujících sestav a další informace najdete v tématu [vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../platform/workbooks-overview.md).
 
 * Podrobný návod k používání Analýza úložiště a dalších nástrojů k identifikaci, diagnostice a odstraňování potíží souvisejících s Azure Storage najdete v tématu [monitorování, diagnostika a řešení potíží s Microsoft Azure Storage](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md).
+

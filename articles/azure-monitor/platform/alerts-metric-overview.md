@@ -4,16 +4,16 @@ description: Získejte přehled o tom, co můžete dělat s výstrahami metrik a
 ms.date: 07/16/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 05e25a67279786ef4679552503e577b1b1a382ea
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9ac034eb144e5873f8f73ab7b1d7459394ce4775
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539427"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327136"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Principy fungování upozornění na metriky ve službě Azure Monitor
 
-Výstrahy metrik v Azure Monitor pracují na multidimenzionálních metrikách. Tyto metriky můžou být [metrikami platforem](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [vlastní metriky](../../azure-monitor/platform/metrics-custom-overview.md), [Oblíbené protokoly z Azure monitor převedené na metriky](../../azure-monitor/platform/alerts-metric-logs.md) a Application Insights metriky. Výstrahy metriky jsou vyhodnocovány v pravidelných intervalech, aby bylo možné zjistit, zda jsou splněné podmínky na jedné nebo více metrik časových řad, a upozorňovat na to, až budou vyhodnocení splněna. Upozornění na metriku jsou stavová, to znamená, že odesílají oznámení pouze při změně stavu.
+Výstrahy metrik v Azure Monitor pracují na multidimenzionálních metrikách. Tyto metriky můžou být [metrikami platforem](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [vlastní metriky](./metrics-custom-overview.md), [Oblíbené protokoly z Azure monitor převedené na metriky](./alerts-metric-logs.md) a Application Insights metriky. Výstrahy metriky jsou vyhodnocovány v pravidelných intervalech, aby bylo možné zjistit, zda jsou splněné podmínky na jedné nebo více metrik časových řad, a upozorňovat na to, až budou vyhodnocení splněna. Upozornění na metriku jsou stavová, to znamená, že odesílají oznámení pouze při změně stavu.
 
 ## <a name="how-do-metric-alerts-work"></a>Jak fungují výstrahy metrik?
 
@@ -137,10 +137,10 @@ Tato funkce se v současné době podporuje pro metriky platforem (ne pro vlastn
 
 | Služba | Veřejné Azure | Státní správa | Čína |
 |:--------|:--------|:--------|:--------|
-| Virtuální počítače  | **Ano** | No | No |
-| Databáze systému SQL Server | **Ano** | **Ano** | No |
-| Elastické fondy SQL serveru | **Ano** | **Ano** | No |
-| Hraniční zařízení datového boxu | **Ano** | **Ano** | No |
+| Virtuální počítače  | **Ano** | Ne | Ne |
+| Databáze systému SQL Server | **Ano** | **Ano** | Ne |
+| Elastické fondy SQL serveru | **Ano** | **Ano** | Ne |
+| Hraniční zařízení datového boxu | **Ano** | **Ano** | Ne |
 
 Můžete určit rozsah monitorování jedním pravidlem výstrahy metriky jedním ze tří způsobů. Například u virtuálních počítačů můžete obor zadat jako:  
 
@@ -152,7 +152,7 @@ Můžete určit rozsah monitorování jedním pravidlem výstrahy metriky jední
 >
 > Obor pravidla upozornění na více prostředků musí obsahovat alespoň jeden prostředek vybraného typu prostředku.
 
-Vytváření pravidel upozornění na metriky, které monitorují více prostředků, je jako [Vytvoření jakékoli jiné výstrahy metriky](alerts-metric.md) , která monitoruje jeden prostředek. Jediným rozdílem je, že byste vybrali všechny prostředky, které chcete monitorovat. Tato pravidla můžete také vytvořit prostřednictvím [šablon Azure Resource Manager](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources). U každého monitorovaného prostředku budete dostávat jednotlivá oznámení.
+Vytváření pravidel upozornění na metriky, které monitorují více prostředků, je jako [Vytvoření jakékoli jiné výstrahy metriky](alerts-metric.md) , která monitoruje jeden prostředek. Jediným rozdílem je, že byste vybrali všechny prostředky, které chcete monitorovat. Tato pravidla můžete také vytvořit prostřednictvím [šablon Azure Resource Manager](./alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources). U každého monitorovaného prostředku budete dostávat jednotlivá oznámení.
 
 > [!NOTE]
 >
@@ -164,12 +164,13 @@ V případě výstrah metriky se obvykle během 5 minut zobrazí upozornění, p
 
 ## <a name="supported-resource-types-for-metric-alerts"></a>Podporované typy prostředků pro výstrahy metriky
 
-Úplný seznam podporovaných typů prostředků najdete v tomto [článku](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
+Úplný seznam podporovaných typů prostředků najdete v tomto [článku](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
 
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Naučte se vytvářet, zobrazovat a spravovat upozornění na metriky v Azure.](alerts-metric.md)
-- [Naučte se nasazovat výstrahy metrik pomocí šablon Azure Resource Manager.](../../azure-monitor/platform/alerts-metric-create-templates.md)
+- [Naučte se nasazovat výstrahy metrik pomocí šablon Azure Resource Manager.](./alerts-metric-create-templates.md)
 - [Další informace o skupinách akcí](action-groups.md)
 - [Další informace o typu podmínky dynamického prahového hodnoty](alerts-dynamic-thresholds.md)
+

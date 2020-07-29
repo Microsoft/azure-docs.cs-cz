@@ -8,15 +8,15 @@ ms.author: roastala
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
-ms.topic: how-to
 ms.date: 06/04/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 3e78634001c5ef1b11d6add8f02208cfa9cacf07
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: ea26e1861d1e3916302563a27389763ebc4c450c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012293"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326694"
 ---
 # <a name="track-model-metrics-and-deploy-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>Sledujte metriky modelu a nasaďte modely ML pomocí MLflow a Azure Machine Learning (Preview).
 
@@ -53,13 +53,13 @@ Následující diagram znázorňuje, že se sledováním MLflow sledujete metrik
 | Použití úložišť dat  |   | ✓ | ✓ | |
 | Metriky protokolu      | ✓ | ✓ |   | |
 | Nahrání artefaktů | ✓ | ✓ |   | |
-| Zobrazení metrik     | ✓ | ✓ | ✓ | ✓ |
+| Zobrazit metriky     | ✓ | ✓ | ✓ | ✓ |
 | Správa výpočetních služeb   |   | ✓ | ✓ | ✓ |
 | Modely nasazení    | ✓ | ✓ | ✓ | ✓ |
 |Monitorování výkonu modelu||✓|  |   |
 | Zjišťování odchylek dat |   | ✓ |   | ✓ |
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Nainstalujte MLflow.](https://mlflow.org/docs/latest/quickstart.html)
 * [Nainstalujte sadu Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) do místního počítače, kterou sada SDK poskytuje pro přístup k vašemu pracovnímu prostoru pro MLflow.

@@ -3,16 +3,16 @@ title: 'Rychlý Start: knihovna úložiště objektů BLOB v Azure V12-JavaScrip
 description: V tomto rychlém startu se dozvíte, jak používat klientskou knihovnu Azure Blob Storage verze 12 pro JavaScript v prohlížeči. Vytvoříte kontejner a objekt v úložišti objektů BLOB. V dalším kroku se dozvíte, jak zobrazit seznam všech objektů BLOB v kontejneru. Nakonec se naučíte, jak odstranit objekty BLOB a odstranit kontejner.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 04/18/2020
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: f884e6d3cbc2e1f3127b251818f4617fccb6a999
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 039aea76e5e59d43078c2fa884e192922ec50035
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011324"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87276988"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -25,12 +25,9 @@ Další prostředky:
 * [Referenční dokumentace k rozhraní API](/javascript/api/@azure/storage-blob)
 * [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
 * [Balíček (npm)](https://www.npmjs.com/package/@azure/storage-blob)
-* [Ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+* [ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
-> [!NOTE]
-> Informace o tom, jak začít s předchozí verzí sady SDK, najdete [v tématu rychlý Start: Správa objektů BLOB pomocí sady JavaScript v10 za účelem SDK v Node.js](storage-quickstart-blobs-nodejs-legacy.md).
-
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Účet Azure s aktivním předplatným](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 * [Účet Azure Storage](../common/storage-account-create.md)

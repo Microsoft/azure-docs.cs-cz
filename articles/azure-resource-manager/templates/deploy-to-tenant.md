@@ -2,13 +2,13 @@
 title: Nasazení prostředků do tenanta
 description: Popisuje postup nasazení prostředků v oboru tenanta v šabloně Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 05/08/2020
-ms.openlocfilehash: 45541bcbea5a80e55dbc9f80e1eae8e17189bf6e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/27/2020
+ms.openlocfilehash: a6523ff70dc7307713bb6aecf90e2ea9f8e2bfdd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945439"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321747"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>Vytváření prostředků na úrovni tenanta
 
@@ -16,15 +16,32 @@ V případě, že vaše organizace bude vyspělá, možná budete muset v tenant
 
 ## <a name="supported-resources"></a>Podporované prostředky
 
-Na úrovni tenanta můžete nasadit následující typy prostředků:
+Ne všechny typy prostředků se dají nasadit na úrovni tenanta. V této části jsou uvedeny typy prostředků, které jsou podporovány.
 
-* [nasazení](/azure/templates/microsoft.resources/deployments) – pro vnořené šablony, které se nasazují do skupin pro správu nebo předplatných.
-* [managementGroups](/azure/templates/microsoft.management/managementgroups)
+Pro zásady Azure použijte:
+
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
+
+Pro řízení přístupu na základě role použijte:
+
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 * [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
+
+U vnořených šablon, které se nasazují do skupin pro správu, předplatných nebo skupin prostředků, použijte:
+
+* [nasazení](/azure/templates/microsoft.resources/deployments)
+
+Pro vytváření skupin pro správu použijte:
+
+* [managementGroups](/azure/templates/microsoft.management/managementgroups)
+
+Pro správu nákladů použijte:
+
+* [billingProfiles](/azure/templates/microsoft.billing/billingaccounts/billingprofiles)
+* [pokynů](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/instructions)
+* [invoiceSections](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/invoicesections)
 
 ### <a name="schema"></a>Schéma
 
@@ -94,6 +111,56 @@ Můžete zadat název nasazení nebo použít výchozí název nasazení. Výcho
 
 Pro každý název nasazení je umístění neměnné. Nasazení nelze vytvořit v jednom umístění, pokud existuje existující nasazení se stejným názvem v jiném umístění. Pokud se zobrazí kód chyby `InvalidDeploymentLocation` , použijte jiný název nebo stejné umístění jako předchozí nasazení pro tento název.
 
+## <a name="deployment-scopes"></a>Obory nasazení
+
+Při nasazování do tenanta můžete cílit na tenanta nebo skupiny pro správu, předplatná a skupiny prostředků v tenantovi. Uživatel, který šablonu nasazuje, musí mít přístup k zadanému oboru.
+
+Prostředky definované v části Resources v šabloně se aplikují na tenanta.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        tenant-level-resources
+    ],
+    "outputs": {}
+}
+```
+
+Chcete-li cílit na skupinu pro správu v rámci tenanta, přidejte vnořené nasazení a zadejte `scope` vlastnost.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "mgName": {
+            "type": "string"
+        }
+    },
+    "variables": {
+        "mgId": "[concat('Microsoft.Management/managementGroups/', parameters('mgName'))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            "name": "nestedMG",
+            "scope": "[variables('mgId')]",
+            "location": "eastus",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    nested-template
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
 ## <a name="use-template-functions"></a>Použití funkcí šablon
 
 Pro nasazení klientů existují při použití funkcí šablon důležité důležité informace:
@@ -141,7 +208,7 @@ Pro nasazení klientů existují při použití funkcí šablon důležité důl
 }
 ```
 
-## <a name="assign-role"></a>Přiřadit roli
+## <a name="assign-role"></a>Přiřazení role
 
 [Následující šablona](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/tenant-role-assignment) přiřadí roli v oboru tenanta.
 

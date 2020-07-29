@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e6257311473987ee053caeade6bfe14533353b73
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: f73d20c19e8fc26c553490772f5374e8a88a77b2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134448"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289305"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Navrácení služeb po obnovení virtuálního počítače Azure mezi oblastmi Azure
 
@@ -58,7 +58,7 @@ Po opětovném zapnutí ochrany virtuálních počítačů můžete v případě
     ![Virtuální počítač v primárních a sekundárních oblastech](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
 
 > [!NOTE]
-> Pro počítače, na kterých běží rozšíření Site Recovery 9.28. x. x, [kumulativní aktualizace 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) Site Recovery vyčistí počítače v sekundární oblasti zotavení po havárii, po dokončení navrácení služeb po obnovení a opětovné ochraně virtuálních počítačů. Nemusíte ručně odstraňovat virtuální počítače a síťové adaptéry v sekundární oblasti. Pokud po převzetí služeb při selhání dojde k úplnému vypnutí replikace, Site Recovery kromě virtuálních počítačů a síťových karet vyčistí disky v oblasti zotavení po havárii.
+> Pro počítače, které používají spravované disky a verze rozšíření Site Recovery 9.28. x. x. x. x. [kumulativní aktualizace 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) Site Recovery vyčistí počítače v sekundární oblasti zotavení po havárii, po dokončení navrácení služeb po obnovení a virtuální počítače budou znovu chráněny. Nemusíte ručně odstraňovat virtuální počítače a síťové adaptéry v sekundární oblasti. Upozorňujeme, že virtuální počítače s nespravovanými disky se nevyčistí. Pokud po převzetí služeb při selhání dojde k úplnému vypnutí replikace, Site Recovery kromě virtuálních počítačů a síťových karet vyčistí disky v oblasti zotavení po havárii.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,19 +7,19 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: ca8aa62c4119b9b0b7bbed53cf722c694696ef5b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9ea98df4b6cd8572412e7082b451feac3736919c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073564"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327068"
 ---
 # <a name="application-insights-log-based-metrics"></a>Application Insights metriky založené na protokolu
 
 Application Insights metriky založené na protokolu vám umožní analyzovat stav monitorovaných aplikací, vytvářet výkonné řídicí panely a konfigurovat výstrahy. Existují dva typy metrik:
 
-* [Metriky založené na protokolu](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) na pozadí jsou přeloženy do [dotazů Kusto](/azure/kusto/query/) z uložených událostí.
-* [Standardní metriky](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics) se ukládají jako předem agregované časové řady.
+* [Metriky založené na protokolu](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) na pozadí jsou přeloženy do [dotazů Kusto](/azure/kusto/query/) z uložených událostí.
+* [Standardní metriky](../app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics) se ukládají jako předem agregované časové řady.
 
 Vzhledem k tomu, že *Standardní metriky* jsou během shromažďování předem shrnuty, mají lepší výkon v době dotazu. Díky tomu je lepší volbou pro řídicí panely a výstrahy v reálném čase. *Metriky založené na protokolech* mají více dimenzí, díky kterým jsou nadřazené volbou pro analýzu dat a pro diagnostiku ad-hoc. [Selektor oboru názvů](metrics-getting-started.md#create-your-first-metric-chart) použijte k přepínání mezi standardními metrikami založenými na protokolech v [Průzkumníkovi metrik](metrics-getting-started.md).
 
@@ -38,11 +38,11 @@ Když vykreslíte stejnou metriku v [Průzkumníkovi metrik](metrics-getting-sta
 - Vybraná dimenze **rozděleného grafu** se převede na další vlastnost Shrnutí. Například pokud rozdělíte graf podle *umístění*a sekreslíte pomocí členitosti s časem 5 minut, je shrnuta klauzule *Shrnutí* *... po přihrádce (časové razítko, 5 m), umístění*.
 
 > [!NOTE]
-> Pokud začínáte s dotazovacím jazykem Kusto, začnete zkopírováním a vložením příkazů Kusto do podokna dotazu Log Analytics bez provedení jakýchkoli úprav. Kliknutím na tlačítko **Spustit** zobrazíte základní graf. Jak začínáte pochopit syntaxi dotazovacího jazyka, můžete začít provádět malé úpravy a vidět dopad změny. Seznámení s vlastními daty představuje skvělý způsob, jak začít s plným výkonem [Log Analytics](../../azure-monitor/log-query/get-started-portal.md) a [Azure monitor](../../azure-monitor/overview.md).
+> Pokud začínáte s dotazovacím jazykem Kusto, začnete zkopírováním a vložením příkazů Kusto do podokna dotazu Log Analytics bez provedení jakýchkoli úprav. Kliknutím na tlačítko **Spustit** zobrazíte základní graf. Jak začínáte pochopit syntaxi dotazovacího jazyka, můžete začít provádět malé úpravy a vidět dopad změny. Seznámení s vlastními daty představuje skvělý způsob, jak začít s plným výkonem [Log Analytics](../log-query/get-started-portal.md) a [Azure monitor](../overview.md).
 
 ## <a name="availability-metrics"></a>Metriky dostupnosti
 
-Metriky v kategorii dostupnosti umožňují zobrazit stav webové aplikace, jak je zjištěno od bodů po celém světě. [Nakonfigurujte testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) tak, aby se v této kategorii spouštěly všechny metriky.
+Metriky v kategorii dostupnosti umožňují zobrazit stav webové aplikace, jak je zjištěno od bodů po celém světě. [Nakonfigurujte testy dostupnosti](../app/monitor-web-app-availability.md) tak, aby se v této kategorii spouštěly všechny metriky.
 
 ### <a name="availability-availabilityresultsavailabilitypercentage"></a>Dostupnost (availabilityResults/availabilityPercentage)
 Metrika *dostupnosti* zobrazuje procento běhů webového testu, u kterých nebyly zjištěny žádné problémy. Nejnižší možná hodnota je 0, což znamená, že všechny spuštěné webové testy se nezdařily. Hodnota 100 znamená, že všechna spuštění webového testu prošla ověřovacími kritérii.
@@ -59,7 +59,7 @@ availabilityResults
 
 ### <a name="availability-test-duration-availabilityresultsduration"></a>Doba trvání testu dostupnosti (availabilityResults/Duration)
 
-Metrika *doby trvání testu dostupnosti* ukazuje, kolik času trvalo spuštění webového testu. U [webových testů s více kroky](../../azure-monitor/app/availability-multistep.md)odráží metrika celkovou dobu provádění všech kroků.
+Metrika *doby trvání testu dostupnosti* ukazuje, kolik času trvalo spuštění webového testu. U [webových testů s více kroky](../app/availability-multistep.md)odráží metrika celkovou dobu provádění všech kroků.
 
 |Jednotka měření|Podporované agregace|Podporované dimenze|
 |---|---|---|---|---|---|
@@ -92,7 +92,7 @@ availabilityResults
 Metriky prohlížeče jsou shromažďovány sadou Application Insights JavaScript SDK z reálných prohlížečů pro koncové uživatele. Poskytují skvělé přehledy o zkušenostech uživatelů s vaší webovou aplikací. Metriky prohlížeče nejsou většinou vzorkované, což znamená, že poskytují vyšší přesnost čísel využití ve srovnání se metrikami na straně serveru, která může být vydělena vzorkováním.
 
 > [!NOTE]
-> Aby bylo možné shromažďovat metriky prohlížeče, musí být aplikace instrumentovaná pomocí [Application Insights JavaScript SDK](../../azure-monitor/app/javascript.md).
+> Aby bylo možné shromažďovat metriky prohlížeče, musí být aplikace instrumentovaná pomocí [Application Insights JavaScript SDK](../app/javascript.md).
 
 ### <a name="browser-page-load-time-browsertimingstotalduration"></a>Doba načítání stránky v prohlížeči (browserTimings/totalDuration)
 
@@ -210,7 +210,7 @@ dependencies
 
 ### <a name="exceptions-exceptionscount"></a>Výjimky (výjimky/počet)
 
-Pokaždé, když zaznamenáte výjimku pro Application Insights, dojde k volání [metody trackException ()](../../azure-monitor/app/api-custom-events-metrics.md#trackexception) sady SDK. Metrika výjimek zobrazuje počet protokolovaných výjimek.
+Pokaždé, když zaznamenáte výjimku pro Application Insights, dojde k volání [metody trackException ()](../app/api-custom-events-metrics.md#trackexception) sady SDK. Metrika výjimek zobrazuje počet protokolovaných výjimek.
 
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|Poznámky|
 |---|---|---|---|
@@ -224,7 +224,7 @@ exceptions
 
 ### <a name="failed-requests-requestsfailed"></a>Neúspěšné žádosti (požadavky/neúspěšné)
 
-Počet sledovaných požadavků serveru, které byly označeny jako *neúspěšné*. Ve výchozím nastavení sada Application Insights SDK automaticky označí každou žádost serveru, která vrátila kód odpovědi HTTP 5xx nebo 4xx jako neúspěšný požadavek. Tuto logiku můžete přizpůsobit úpravou vlastnosti *úspěch* položky telemetrie žádosti ve [vlastním inicializátoru telemetrie](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer).
+Počet sledovaných požadavků serveru, které byly označeny jako *neúspěšné*. Ve výchozím nastavení sada Application Insights SDK automaticky označí každou žádost serveru, která vrátila kód odpovědi HTTP 5xx nebo 4xx jako neúspěšný požadavek. Tuto logiku můžete přizpůsobit úpravou vlastnosti *úspěch* položky telemetrie žádosti ve [vlastním inicializátoru telemetrie](../app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer).
 
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|Poznámky|
 |---|---|---|---|
@@ -254,7 +254,7 @@ exceptions
 
 ## <a name="performance-counters"></a>Čítače výkonu
 
-Pomocí metrik v kategorii **čítače výkonu** můžete získat přístup k [čítačům výkonu systému shromážděným pomocí Application Insights](../../azure-monitor/app/performance-counters.md).
+Pomocí metrik v kategorii **čítače výkonu** můžete získat přístup k [čítačům výkonu systému shromážděným pomocí Application Insights](../app/performance-counters.md).
 
 ### <a name="available-memory-performancecountersavailablememory"></a>Dostupná paměť (čítače výkonu/availableMemory)
 
@@ -492,3 +492,4 @@ union traces, requests, pageViews, dependencies, customEvents, availabilityResul
 | summarize dcount(user_AuthenticatedId) by bin(timestamp, 1h)
 | render barchart
 ```
+

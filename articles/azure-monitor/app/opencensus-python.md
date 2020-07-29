@@ -7,20 +7,20 @@ ms.author: lechen
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
 ms.custom: tracking-python
-ms.openlocfilehash: 35d56c5318046a0f9ffc52f61fac886c473cf0bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eec4a46596b9cd39a43b6bb1f8969d41e99916b6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024363"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322546"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Nastavení Azure Monitor pro aplikaci Python
 
 Azure Monitor podporuje distribuované trasování, shromažďování metrik a protokolování aplikací Pythonu prostřednictvím integrace s [OpenCensus](https://opencensus.io). Tento článek vás provede procesem nastavení OpenCensus pro Python a odeslání dat monitorování do Azure Monitor.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 - Instalace Pythonu Tento článek používá [Python 3.7.0](https://www.python.org/downloads/release/python-370/), i když jiné verze budou nejspíš fungovat s menšími změnami. Sada SDK podporuje pouze Python v 2.7 a v 3.4-v 3.7.
 - Vytvořte [prostředek](./create-new-resource.md)Application Insights. K vašemu prostředku budete mít přiřazený vlastní klíč instrumentace (ikey).
 
@@ -474,13 +474,14 @@ Podrobnější informace o používání dotazů a protokolů najdete [v tématu
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Sledování příchozích požadavků](./../../azure-monitor/app/opencensus-python-dependency.md)
-* [Sledování požadavků](./../../azure-monitor/app/opencensus-python-request.md)
-* [Mapa aplikace](./../../azure-monitor/app/app-map.md)
-* [Monitorování výkonu na konci](./../../azure-monitor/learn/tutorial-performance.md)
+* [Sledování příchozích požadavků](./opencensus-python-dependency.md)
+* [Sledování požadavků](./opencensus-python-request.md)
+* [Mapa aplikace](./app-map.md)
+* [Monitorování výkonu na konci](../learn/tutorial-performance.md)
 
 ### <a name="alerts"></a>Výstrahy
 
-* [Testy dostupnosti:](../../azure-monitor/app/monitor-web-app-availability.md) Vytvářejte testy, abyste ověřili viditelnost svého webu na internetu.
-* [Inteligentní diagnostika:](../../azure-monitor/app/proactive-diagnostics.md) Tyto testy se spouštějí automaticky, takže je nemusíte nijak nastavovat. Upozorní vás, pokud má aplikace nezvykle velký podíl neúspěšných požadavků.
-* [Výstrahy metriky](../../azure-monitor/platform/alerts-log.md): Nastavte výstrahy, které vás upozorní, pokud metrika překračuje prahovou hodnotu. Upozornění můžete nastavit u vlastních metrik, které v aplikaci naprogramujete.
+* [Testy dostupnosti:](./monitor-web-app-availability.md) Vytvářejte testy, abyste ověřili viditelnost svého webu na internetu.
+* [Inteligentní diagnostika:](./proactive-diagnostics.md) Tyto testy se spouštějí automaticky, takže je nemusíte nijak nastavovat. Upozorní vás, pokud má aplikace nezvykle velký podíl neúspěšných požadavků.
+* [Výstrahy metriky](../platform/alerts-log.md): Nastavte výstrahy, které vás upozorní, pokud metrika překračuje prahovou hodnotu. Upozornění můžete nastavit u vlastních metrik, které v aplikaci naprogramujete.
+

@@ -1,6 +1,6 @@
 ---
-title: Prostředí PowerShell pro virtuální počítače s Windows (2019) – Azure
-description: Jak řešit problémy s PowerShellem při nastavování prostředí klienta pro virtuální počítače s Windows (klesnout 2019).
+title: Virtuální počítač s Windows (klasický) PowerShell – Azure
+description: Řešení potíží s PowerShellem při nastavování klientského prostředí pro virtuální počítače s Windows (Classic)
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3171cc54de57b70a18a3f1b9ee3317cf29f79d4b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 04ef12d6de8820740be687bd09ffaa5a8e69eb86
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085805"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87269610"
 ---
-# <a name="windows-virtual-desktop-powershell-fall-2019-release"></a>Prostředí PowerShell pro virtuální plochu Windows (verze 2019)
+# <a name="windows-virtual-desktop-classic-powershell"></a>PowerShell pro virtuální počítače s Windows (Classic)
 
 >[!IMPORTANT]
->Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objekty virtuálních klientů Windows, které byly zavedeny v aktualizaci jarní 2020, přečtěte si [Tento článek](../troubleshoot-powershell.md).
+>Tento obsah se vztahuje na virtuální plochu Windows (Classic), která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objektů virtuálních klientů Windows, přečtěte si [Tento článek](../troubleshoot-powershell.md).
 
 Pomocí tohoto článku můžete vyřešit chyby a problémy při používání PowerShellu s virtuálním počítačem s Windows. Další informace o PowerShellu služby Vzdálená plocha najdete v tématu [prostředí PowerShell pro virtuální počítače s Windows](/powershell/module/windowsvirtualdesktop/).
 

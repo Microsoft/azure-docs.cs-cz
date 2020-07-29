@@ -7,13 +7,13 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 04/09/2020
-ms.openlocfilehash: a9c9dee94dd50462109a8864ffb413ce991c8dbd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/27/2020
+ms.openlocfilehash: a71b4096e791221057fdcc5d14351ceccab720fb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072392"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87307195"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Označení obrázků v projektu s popisem 
 
@@ -24,7 +24,7 @@ Poté, co správce projektu [vytvoří projekt označování](https://docs.micro
 > * Nástroje pro označování
 > * Jak používat nástroje pro konkrétní úkoly označování
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Účet Microsoft](https://account.microsoft.com/account) nebo účet Azure Active Directory pro organizaci a projekt
 * Přístup na úrovni přispěvatele k pracovnímu prostoru, který obsahuje projekt značení.
@@ -37,11 +37,9 @@ Poté, co správce projektu [vytvoří projekt označování](https://docs.micro
 
 1. Na levé straně vyberte **data** , na které se má projekt najít.  
 
-1. V seznamu vyberte název projektu.
-
 ## <a name="understand-the-labeling-task"></a>Pochopení úlohy označování
 
-Po výběru projektu vyberte v horní části stránky možnost **Data popisku**.
+V tabulce s popisky dat vyberte **odkaz popisek** pro váš projekt.
 
 Zobrazí se pokyny, které jsou specifické pro váš projekt. Vysvětlují typ dat, na které máte přístup, jak byste měli učinit rozhodnutí a další důležité informace. Po přečtení těchto informací v horní části stránky vyberte **úlohy**.  Nebo v dolní části stránky vyberte možnost **Spustit popis**.
 

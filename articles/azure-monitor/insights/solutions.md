@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/12/2020
-ms.openlocfilehash: 2da00b44be7018bef80e466231efb75a8eb99754
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a2ece33974e5bb4d8cb6257d3ca68a258f9b8c81
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081538"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325997"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Monitorování řešení v Azure Monitor
 
@@ -125,7 +125,7 @@ az monitor log-analytics solution list --resource-group MyResourceGroup
 
 ### <a name="install-a-solution-with-the-azure-cli"></a>Instalace řešení pomocí Azure CLI
 
-Když nainstalujete řešení, musíte vybrat [Log Analytics pracovní prostor](/azure/azure-monitor/platform/manage-access) , kde se bude řešení instalovat a kde se budou shromažďovat jeho data.  Pomocí Azure CLI můžete pracovní prostory spravovat pomocí příkazů [AZ monitor Log-Analytics pracovní prostor](/cli/azure/monitor/log-analytics/workspace) .  Pokud chcete propojit pracovní prostor a účet, postupujte podle kroků popsaných v [Log Analytics pracovního prostoru a účtu Automation](#log-analytics-workspace-and-automation-account) .
+Když nainstalujete řešení, musíte vybrat [Log Analytics pracovní prostor](../platform/manage-access.md) , kde se bude řešení instalovat a kde se budou shromažďovat jeho data.  Pomocí Azure CLI můžete pracovní prostory spravovat pomocí příkazů [AZ monitor Log-Analytics pracovní prostor](/cli/azure/monitor/log-analytics/workspace) .  Pokud chcete propojit pracovní prostor a účet, postupujte podle kroků popsaných v [Log Analytics pracovního prostoru a účtu Automation](#log-analytics-workspace-and-automation-account) .
 
 K instalaci řešení monitorování použijte [řešení AZ monitor Log-Analytics Create](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution) .  Parametry v hranatých závorkách jsou volitelné.
 
@@ -192,6 +192,7 @@ az monitor log-analytics solution delete --name
 
 ## <a name="next-steps"></a>Další kroky
 
-* Získejte [seznam řešení monitorování od Microsoftu](solutions-inventory.md).
+* Získejte [seznam řešení monitorování od Microsoftu](/azure/azure-monitor/monitor-reference).
 * Naučte se [vytvářet dotazy](../log-query/log-query-overview.md) k analýze dat shromažďovaných monitorovacími řešeními.
 * Podívejte se [na všechny příkazy rozhraní příkazového řádku Azure pro Azure monitor](/cli/azure/azure-cli-reference-for-monitor).
+

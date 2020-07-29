@@ -6,18 +6,18 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: tracking-python
-ms.openlocfilehash: e99ea1d5a90455a4c470346fbbe5d1095c426e81
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c5f78535a3bd5ab93d3020d14a6242257c492297
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499456"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321288"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>Sledování závislostí pomocí OpenCensus Pythonu
 
 Závislost je externí komponenta volaná vaší aplikací. Data závislostí se shromažďují pomocí OpenCensus Pythonu a jejich různých integrací. Data se pak odešlou do Application Insights v části Azure Monitor jako `dependencies` telemetrie.
 
-Nejdřív Instrumentujte svou aplikaci v Pythonu pomocí nejnovější [OpenCensus Python SDK](../../azure-monitor/app/opencensus-python.md).
+Nejdřív Instrumentujte svou aplikaci v Pythonu pomocí nejnovější [OpenCensus Python SDK](./opencensus-python.md).
 
 ## <a name="in-process-dependencies"></a>Závislosti v procesu
 
@@ -170,8 +170,9 @@ config_integration.trace_integrations(['sqlalchemy'])
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Mapa aplikace](../../azure-monitor/app/app-map.md)
-* [Dostupnost](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Vyhledávání](../../azure-monitor/app/diagnostic-search.md)
-* [Dotaz na protokol (Analytics)](../../azure-monitor/log-query/log-query-overview.md)
-* [Diagnostika transakcí](../../azure-monitor/app/transaction-diagnostics.md)
+* [Mapa aplikace](./app-map.md)
+* [Dostupnost](./monitor-web-app-availability.md)
+* [Vyhledávání](./diagnostic-search.md)
+* [Dotaz na protokol (Analytics)](../log-query/log-query-overview.md)
+* [Diagnostika transakcí](./transaction-diagnostics.md)
+

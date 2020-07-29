@@ -6,27 +6,27 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: bfd25c2572e91c2984f2845e08941614fff65570
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 77684ffef6be988dbb6b7057ba8c56f5227007b6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539767"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326065"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Používání řešení Service Map v Azure
 
 Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Service Map zobrazuje vaše servery tak, jak o nich přemýšlíte, tzn. jako propojené systémy, které zajišťují důležité služby. Service Map zobrazuje propojení serverů, procesů, latenci příchozích a odchozích připojení a porty v libovolné architektuře propojené protokolem TCP. Kromě instalace agenta se nevyžaduje žádná konfigurace.
 
-Tento článek popisuje podrobnosti o připojování a používání Service Map. Informace o konfiguraci požadavků pro toto řešení najdete v tématu [Povolení přehledu Azure monitor pro virtuální počítače](vminsights-enable-overview.md#prerequisites). Pro Shrnutí budete potřebovat následující:
+Tento článek popisuje podrobnosti o připojování a používání Service Map. Požadavky řešení jsou následující:
 
-* Log Analytics pracovní prostor pro povolení tohoto řešení.
+* Pracovní prostor Log Analytics v [podporované oblasti](vminsights-configure-workspace.md#supported-regions).
 
-* Agent Log Analytics nainstalovaný na počítači s Windows nebo na serveru Linux nakonfigurovaný tak, aby nahlásil stejný pracovní prostor, ve kterém jste řešení povolili.
+* [Agent Log Analytics](vminsights-enable-overview.md#agents) nainstalovaný na počítači s Windows nebo na Linux serveru, který je připojený ke stejnému pracovnímu prostoru, pomocí kterého jste řešení povolili.
 
-* Agent závislostí nainstalovaný na počítači s Windows nebo na serveru se systémem Linux.
+* [Agent závislostí](vminsights-enable-overview.md#agents) nainstalovaný na počítači s Windows nebo na serveru se systémem Linux.
 
 >[!NOTE]
->Pokud jste už nasadili Service Map, můžete teď také zobrazit vaše mapy v Azure Monitor pro virtuální počítače, které obsahují další funkce pro monitorování stavu a výkonu virtuálních počítačů. Další informace najdete v tématu [přehled Azure monitor pro virtuální počítače](../../azure-monitor/insights/vminsights-overview.md). Další informace o rozdílech mezi funkcí Service Map řešení a mapa Azure Monitor pro virtuální počítače najdete v následujících [nejčastějších dotazech](../faq.md#azure-monitor-for-vms).
+>Pokud jste už nasadili Service Map, můžete teď také zobrazit vaše mapy v Azure Monitor pro virtuální počítače, které obsahují další funkce pro monitorování stavu a výkonu virtuálních počítačů. Další informace najdete v tématu [přehled Azure monitor pro virtuální počítače](./vminsights-overview.md). Další informace o rozdílech mezi funkcí Service Map řešení a mapa Azure Monitor pro virtuální počítače najdete v následujících [nejčastějších dotazech](../faq.md#azure-monitor-for-vms).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -34,7 +34,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 ## <a name="enable-service-map"></a>Povolit Service Map
 
-1. Povolte řešení Service Map z [webu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview) nebo pomocí procesu popsaného v tématu [Přidání řešení monitorování z galerie řešení](solutions.md).
+1. Povolte řešení Service Map z [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview) nebo pomocí postupu popsaného v tématu [Přidání řešení monitorování z galerie řešení](solutions.md).
 1. [Nainstalujte agenta závislostí do systému Windows](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows) nebo [nainstalujte agenta závislostí na Linux](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux) do každého počítače, kde chcete získat data. Závislý agent dokáže monitorovat připojení k bezprostředním sousedům, takže nepotřebujete mít agenta na každém počítači.
 
 Přístup k Service Map v Azure Portal z pracovního prostoru Log Analytics a v levém podokně vyberte **řešení** možností.<br><br> ![V pracovním prostoru vyberte možnost řešení ](./media/service-map/select-solution-from-workspace.png) .<br> V seznamu řešení vyberte **ServiceMap (pracovní prostor)** a na stránce přehled řešení Service map klikněte na dlaždici Service map souhrn.<br><br> ![Dlaždice souhrnu Service Map ](./media/service-map/service-map-summary-tile.png)
@@ -304,7 +304,7 @@ Podokno **aktualizace počítače** zobrazuje data z řešení Update Management
 
 ## <a name="log-analytics-records"></a>Záznamy služby Log Analytics
 
-Data inventáře Service Map počítačů a procesů jsou k dispozici pro [vyhledávání](../../azure-monitor/log-query/log-query-overview.md) v Log Analytics. Tato data můžete použít ve scénářích, které zahrnují plánování migrace, analýzu kapacity, zjišťování a řešení potíží s výkonem na vyžádání.
+Data inventáře Service Map počítačů a procesů jsou k dispozici pro [vyhledávání](../log-query/log-query-overview.md) v Log Analytics. Tato data můžete použít ve scénářích, které zahrnují plánování migrace, analýzu kapacity, zjišťování a řešení potíží s výkonem na vyžádání.
 
 Jeden záznam je vygenerován za hodinu pro každý jedinečný počítač a proces, kromě záznamů, které jsou generovány při spuštění nebo zprovoznění procesu nebo počítače na Service Map. Tyto záznamy obsahují vlastnosti v následujících tabulkách. Pole a hodnoty v událostech ServiceMapComputer_CL se mapují na pole prostředku počítače v rozhraní API pro Azure Resource Manager ServiceMap. Pole a hodnoty v ServiceMapProcess_CLch událostech se mapují na pole prostředku procesu v rozhraní API pro Azure Resource Manager ServiceMap. Pole ResourceName_s se shoduje s polem název v odpovídajícím prostředku Správce prostředků. 
 
@@ -550,7 +550,7 @@ Další informace o shromažďování a používání dat naleznete v tématu [p
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [hledání v protokolu](../../azure-monitor/log-query/log-query-overview.md) v Log Analytics k načtení dat shromažďovaných pomocí Service map.
+Přečtěte si další informace o [hledání v protokolu](../log-query/log-query-overview.md) v Log Analytics k načtení dat shromažďovaných pomocí Service map.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
@@ -603,3 +603,4 @@ Podívejte se na `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log f
 ## <a name="suggestions"></a>Návrhy
 
 Máte pro nás informace o Service Map nebo této dokumentaci?  Navštivte naši [hlasovou stránku uživatele](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), kde můžete navrhovat funkce nebo hlasovat o stávajících návrzích.
+

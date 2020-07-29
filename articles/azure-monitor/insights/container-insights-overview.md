@@ -3,12 +3,12 @@ title: Přehled Azure Monitor pro kontejnery | Microsoft Docs
 description: Tento článek popisuje Azure Monitor pro kontejnery, které monitorují řešení AKS Container Insights a hodnotu, kterou zajišťuje, pomocí monitorování stavu clusterů AKS a Container Instances v Azure.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: c5fcdd3bfc42e298791e1ab761fa4db432a93dd7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 85adae1b79609f13be6bb73eb4e57000beda6d77
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091160"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320268"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Přehled služby Azure Monitor pro kontejnery
 
@@ -66,8 +66,9 @@ K Azure Monitor kontejnerů můžete přistupovat dvěma způsoby, od Azure Moni
 
 ![Přehled metod pro přístup k Azure Monitor pro kontejnery](./media/container-insights-overview/azmon-containers-experience.png)
 
-Pokud vás zajímá monitorování a Správa hostitelů kontejnerů pro Docker a Windows, kteří používají mimo AKS k zobrazení konfigurace, auditu a využití prostředků, prostudujte si [řešení pro monitorování kontejnerů](../../azure-monitor/insights/containers.md).
+Pokud vás zajímá monitorování a Správa hostitelů kontejnerů pro Docker a Windows, kteří používají mimo AKS k zobrazení konfigurace, auditu a využití prostředků, prostudujte si [řešení pro monitorování kontejnerů](./containers.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 Pokud chcete začít monitorovat cluster Kubernetes, přečtěte si, [Jak povolit Azure monitor kontejnerů](container-insights-onboard.md) pro pochopení požadavků a dostupných metod, které umožňují monitorování.
+

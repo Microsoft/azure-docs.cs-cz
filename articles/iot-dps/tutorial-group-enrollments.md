@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
-ms.custom: mvc
-ms.openlocfilehash: d6cb3af134ff272d79cfc440047a3d90733ee9e8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-java
+ms.openlocfilehash: 43ae9bd0e844a23adabf52e7fbb4b8cd077d23bd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74976804"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326711"
 ---
 # <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>Kurz: vytvoření a zřízení simulovaného zařízení X. 509 pomocí sady Java Device and Service SDK a registrace skupin pro IoT Hub Device Provisioning Service
 
@@ -52,7 +52,7 @@ Než budete pokračovat, nezapomeňte dokončit kroky v tématu [Nastavení slu�
 
         1. Vyberte nově vytvořený certifikát:
             - Klikněte na **Vygenerovat ověřovací kód**. Zkopírujte vygenerovaný kód.
-            - Proveďte krok ověření. Zadejte nebo klikněte pravým tlačítkem a vložte _ověřovací kód_ do spuštěného okna PowerShellu.  Stiskněte **Enter**.
+            - Proveďte krok ověření. Zadejte nebo klikněte pravým tlačítkem a vložte _ověřovací kód_ do spuštěného okna PowerShellu.   Stiskněte **Enter**.
             - Na webu Azure Portal vyberte nově vytvořený soubor **_verifyCert4.pem_**. Klikněte na **Ověřit**.
 
               ![Ověření certifikátu](./media/tutorial-group-enrollments/validate-certificate.png)
@@ -170,7 +170,7 @@ Než budete pokračovat, nezapomeňte dokončit kroky v tématu [Nastavení slu�
     private static final String leafPrivateKey = "<Your Private PEM Key here>";
     ```
 
-1. Aktualizujte `leafPublicPem` proměnné `leafPrivateKey` a pomocí certifikátů veřejného a soukromého zařízení.
+1. Aktualizujte `leafPublicPem` `leafPrivateKey` proměnné a pomocí certifikátů veřejného a soukromého zařízení.
 
     Pokud jste vygenerovali certifikáty zařízení pomocí PowerShellu, soubory mojezařízení * obsahují veřejný klíč, privátní klíč a PFX pro zařízení.
 
@@ -200,7 +200,7 @@ Než budete pokračovat, nezapomeňte dokončit kroky v tématu [Nastavení slu�
         "-----END RSA PRIVATE KEY-----\n";
     ```
 
-1. Pro zprostředkující certifikát přidejte novou proměnnou `leafPrivateKey` hned níže. Pojmenujte tuto `intermediateKey`novou proměnnou. Zadejte hodnotu pro zprostředkující podpisový certifikát.
+1. Pro zprostředkující certifikát přidejte novou proměnnou hned níže `leafPrivateKey` . Pojmenujte tuto novou proměnnou `intermediateKey` . Zadejte hodnotu pro zprostředkující podpisový certifikát.
 
     Pokud jste vygenerovali certifikáty zařízení pomocí prostředí bash, soubor *./certs/Azure-IoT-test-Only.Intermediate.CERT.pem* obsahuje klíč zprostředkujícího certifikátu. Pokud se vaše certifikáty vygenerovaly pomocí PowerShellu, *./Intermediate1.pem* bude soubor zprostředkujícího certifikátu.
 
@@ -214,7 +214,7 @@ Než budete pokračovat, nezapomeňte dokončit kroky v tématu [Nastavení slu�
         "-----END CERTIFICATE-----\n";
     ```
 
-1. Ve `main` funkci přidejte `intermediateKey` do `signerCertificates` kolekce před inicializací. `securityProviderX509`
+1. Ve `main` funkci přidejte do `intermediateKey` `signerCertificates` kolekce před inicializací `securityProviderX509` .
 
     ```java
     public static void main(String[] args) throws Exception

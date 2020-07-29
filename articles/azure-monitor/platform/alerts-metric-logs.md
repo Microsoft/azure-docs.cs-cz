@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.subservice: alerts
-ms.openlocfilehash: 53ea43213a48cb712eb6ce685f03b733b83948b1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b8e2f580bb21d2f432ce5dcbc3e06c15ba6f380b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045537"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327204"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Vytváření upozornění na metriky pro protokoly v Azure Monitor
 
@@ -19,16 +19,16 @@ ms.locfileid: "87045537"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Azure Monitor podporuje [Typ výstrahy metriky](../../azure-monitor/platform/alerts-metric-near-real-time.md) , který má oproti [klasickým výstrahám](../../azure-monitor/platform/alerts-classic-portal.md)výhody. K dispozici jsou metriky pro [velký seznam služeb Azure](../../azure-monitor/platform/metrics-supported.md). Tento článek vysvětluje použití podmnožiny (tj.) pro prostředek – `Microsoft.OperationalInsights/workspaces` .
+Azure Monitor podporuje [Typ výstrahy metriky](./alerts-metric-near-real-time.md) , který má oproti [klasickým výstrahám](./alerts-classic-portal.md)výhody. K dispozici jsou metriky pro [velký seznam služeb Azure](./metrics-supported.md). Tento článek vysvětluje použití podmnožiny (tj.) pro prostředek – `Microsoft.OperationalInsights/workspaces` .
 
 Výstrahy metriky můžete použít u oblíbených protokolů Log Analytics extrahovaných jako metriky v rámci metriky od protokolů, včetně prostředků v Azure nebo v místním prostředí. Podporovaná řešení Log Analytics jsou uvedená níže:
 
-- [Čítače výkonu](../../azure-monitor/platform/data-sources-performance-counters.md) pro počítače se systémem Windows & Linux
-- [Záznamy prezenčního signálu pro Agent Health](../../azure-monitor/insights/solution-agenthealth.md)
+- [Čítače výkonu](./data-sources-performance-counters.md) pro počítače se systémem Windows & Linux
+- [Záznamy prezenčního signálu pro Agent Health](../insights/solution-agenthealth.md)
 - [Aktualizovat záznamy správy](../../automation/automation-update-management.md)
-- Protokoly [dat událostí](../../azure-monitor/platform/data-sources-windows-events.md)
+- Protokoly [dat událostí](./data-sources-windows-events.md)
 
-Existuje mnoho výhod používání **Upozornění metrik pro protokoly** přes [výstrahy protokolu](../../azure-monitor/platform/alerts-log.md) založené na dotazech v Azure. Některé z nich jsou uvedeny níže:
+Existuje mnoho výhod používání **Upozornění metrik pro protokoly** přes [výstrahy protokolu](./alerts-log.md) založené na dotazech v Azure. Některé z nich jsou uvedeny níže:
 
 - Výstrahy metriky nabízejí možnosti monitorování téměř v reálném čase a výstrahy metriky pro protokoly rozvětvení dat ze zdroje protokolů, aby bylo zajištěno stejné.
 - Upozornění na metriku jsou stavová oznámení, jenom když se aktivuje výstraha a když se výstraha vyřeší; na rozdíl od výstrah protokolu, které jsou bezstavové, a udržujte je v každém intervalu, pokud je splněna podmínka výstrahy.
@@ -39,10 +39,10 @@ Existuje mnoho výhod používání **Upozornění metrik pro protokoly** přes 
 
 ## <a name="metrics-and-dimensions-supported-for-logs"></a>Metriky a dimenze podporované pro protokoly
 
- Výstrahy metrik podporují upozorňování na metriky, které používají dimenze. Dimenze můžete použít k filtrování metriky na správnou úroveň. Zobrazí se úplný seznam metrik podporovaných pro protokoly z [log Analyticsch pracovních prostorů](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces) . v podporovaných řešeních.
+ Výstrahy metrik podporují upozorňování na metriky, které používají dimenze. Dimenze můžete použít k filtrování metriky na správnou úroveň. Zobrazí se úplný seznam metrik podporovaných pro protokoly z [log Analyticsch pracovních prostorů](./metrics-supported.md#microsoftoperationalinsightsworkspaces) . v podporovaných řešeních.
 
 > [!NOTE]
-> Chcete-li zobrazit podporovanou metriku extrahovanou z Log Analytics pracovního prostoru prostřednictvím [metriky Azure monitor](../../azure-monitor/platform/metrics-charts.md), je nutné vytvořit výstrahu metriky pro protokol v této konkrétní metrikě. Dimenze zvolené v upozornění metriky pro protokoly – budou zobrazeny pouze pro průzkum prostřednictvím metrik Azure Monitor.
+> Chcete-li zobrazit podporovanou metriku extrahovanou z Log Analytics pracovního prostoru prostřednictvím [metriky Azure monitor](./metrics-charts.md), je nutné vytvořit výstrahu metriky pro protokol v této konkrétní metrikě. Dimenze zvolené v upozornění metriky pro protokoly – budou zobrazeny pouze pro průzkum prostřednictvím metrik Azure Monitor.
 
 ## <a name="creating-metric-alert-for-log-analytics"></a>Vytváření upozornění na metriku pro Log Analytics
 
@@ -53,14 +53,14 @@ Níže jsou uvedené prostředky pro vytvoření výstrahy metriky pro protokoly
 
 Předtím, než bude metrika pro protokoly shromážděná na Log Analytics fungovat, musí být nastavená a dostupná:
 
-1. **Pracovní prostor Active Log Analytics**: musí být přítomen platný a aktivní Log Analytics pracovní prostor. Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../azure-monitor/learn/quick-create-workspace.md).
-2. **Agent je nakonfigurovaný pro Log Analytics pracovní prostor**: Agent musí být nakonfigurovaný pro virtuální počítače Azure (a/nebo), aby odesílal data do pracovního prostoru Log Analytics, který jste používali v předchozím kroku. Další informace najdete v tématu [Log Analytics – přehled agenta](../../azure-monitor/platform/agents-overview.md).
-3. **Jsou nainstalována podporovaná řešení Log Analytics**: Log Analytics řešení by mělo být nakonfigurované a odesílat data do Log Analytics řešení podporovaná v pracovním prostoru jsou [čítače výkonu pro systém Windows & Linux](../../azure-monitor/platform/data-sources-performance-counters.md), [záznamy prezenčních signálů pro Agent Health](../../azure-monitor/insights/solution-agenthealth.md), [správu aktualizací](../../automation/automation-update-management.md)a [data událostí](../../azure-monitor/platform/data-sources-windows-events.md).
-4. **Log Analytics řešení nakonfigurovaných pro odesílání protokolů**: Log Analytics řešení by mělo mít požadované protokoly/data odpovídající [metrikám podporovaným pro Log Analytics pracovní prostory](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces) . Například pro čítač *% dostupné paměti* je třeba nejprve nakonfigurovat v řešení [čítače výkonu](../../azure-monitor/platform/data-sources-performance-counters.md) .
+1. **Pracovní prostor Active Log Analytics**: musí být přítomen platný a aktivní Log Analytics pracovní prostor. Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../learn/quick-create-workspace.md).
+2. **Agent je nakonfigurovaný pro Log Analytics pracovní prostor**: Agent musí být nakonfigurovaný pro virtuální počítače Azure (a/nebo), aby odesílal data do pracovního prostoru Log Analytics, který jste používali v předchozím kroku. Další informace najdete v tématu [Log Analytics – přehled agenta](./agents-overview.md).
+3. **Jsou nainstalována podporovaná řešení Log Analytics**: Log Analytics řešení by mělo být nakonfigurované a odesílat data do Log Analytics řešení podporovaná v pracovním prostoru jsou [čítače výkonu pro systém Windows & Linux](./data-sources-performance-counters.md), [záznamy prezenčních signálů pro Agent Health](../insights/solution-agenthealth.md), [správu aktualizací](../../automation/automation-update-management.md)a [data událostí](./data-sources-windows-events.md).
+4. **Log Analytics řešení nakonfigurovaných pro odesílání protokolů**: Log Analytics řešení by mělo mít požadované protokoly/data odpovídající [metrikám podporovaným pro Log Analytics pracovní prostory](./metrics-supported.md#microsoftoperationalinsightsworkspaces) . Například pro čítač *% dostupné paměti* je třeba nejprve nakonfigurovat v řešení [čítače výkonu](./data-sources-performance-counters.md) .
 
 ## <a name="configuring-metric-alert-for-logs"></a>Konfigurace upozornění na metriky pro protokoly
 
- Výstrahy metriky se dají vytvářet a spravovat pomocí Azure Portal, Správce prostředků šablon, REST API, PowerShellu a rozhraní příkazového řádku Azure CLI. Vzhledem k tomu, že výstrahy metriky pro protokoly, je variantou výstrahy metriky – po dokončení požadovaných součástí se dá pro zadaný Log Analytics pracovní prostor vytvořit upozornění na metriky pro protokoly. Všechny charakteristiky a funkce upozornění na [metriky](../../azure-monitor/platform/alerts-metric-near-real-time.md) se budou uplatňovat i na výstrahy metriky pro protokoly. včetně schématu datové části, platných omezení kvót a fakturované ceny.
+ Výstrahy metriky se dají vytvářet a spravovat pomocí Azure Portal, Správce prostředků šablon, REST API, PowerShellu a rozhraní příkazového řádku Azure CLI. Vzhledem k tomu, že výstrahy metriky pro protokoly, je variantou výstrahy metriky – po dokončení požadovaných součástí se dá pro zadaný Log Analytics pracovní prostor vytvořit upozornění na metriky pro protokoly. Všechny charakteristiky a funkce upozornění na [metriky](./alerts-metric-near-real-time.md) se budou uplatňovat i na výstrahy metriky pro protokoly. včetně schématu datové části, platných omezení kvót a fakturované ceny.
 
 Podrobné informace a ukázky – viz [vytváření a Správa upozornění na metriky](https://aka.ms/createmetricalert). Konkrétně pro výstrahy metrik pro protokoly – postupujte podle pokynů pro správu výstrah metrik a zajistěte následující:
 
@@ -688,5 +688,6 @@ az group deployment create --resource-group myRG --template-file metricfromLogsA
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o [výstrahách metriky](alerts-metric.md).
-- Přečtěte si informace o [upozorněních protokolu v Azure](../../azure-monitor/platform/alerts-unified-log.md).
+- Přečtěte si informace o [upozorněních protokolu v Azure](./alerts-unified-log.md).
 - Přečtěte si o [výstrahách v Azure](alerts-overview.md).
+

@@ -6,11 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/17/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 09c1899004bd93d0f2365c3bbc000c37459e8d89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a81c4f32385cf06238f36ca0162923f93d682807
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797830"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323719"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Zjistěte, jak zákazníci používají vaši aplikaci s Application Insights trychtýři.
 
@@ -36,7 +37,7 @@ Následující snímek obrazovky ukazuje příklad druhu dat, které nástroj tr
 ### <a name="funnels-features"></a>Funkce trychtýře
 Předchozí snímek obrazovky obsahuje pět zvýrazněných oblastí. Jedná se o funkce trychtýřů. Následující seznam vysvětluje více o všech odpovídajících oblastech na snímku obrazovky:
 1. Pokud je vaše aplikace Navzorkovaná, zobrazí se nápis vzorkování. Výběrem nápisu se otevře podokno kontextu, které vysvětluje, jak zapnout vzorkování. 
-2. Filtr můžete vyexportovat do [Power BI](../../azure-monitor/app/export-power-bi.md ).
+2. Filtr můžete vyexportovat do [Power BI](./export-power-bi.md).
 3. Kliknutím na krok zobrazíte další podrobnosti na pravé straně. 
 4. Graf s historickým převodem zobrazuje míry převodu za posledních 90 dní. 
 5. Přístup k nástroji pro uživatele vám umožní lépe pochopit uživatele. V každém kroku můžete použít filtry. 
@@ -45,7 +46,7 @@ Předchozí snímek obrazovky obsahuje pět zvýrazněných oblastí. Jedná se 
   * [Přehled využití](usage-overview.md)
   * [Uživatelé, relace a události](usage-segmentation.md)
   * [Uchovávání](usage-retention.md)
-  * [Workbooks](../../azure-monitor/platform/workbooks-overview.md)
+  * [Workbooks](../platform/workbooks-overview.md)
   * [Přidat kontext uživatele](usage-send-user-context.md)
-  * [Export do Power BI](../../azure-monitor/app/export-power-bi.md )
+  * [Export do Power BI](./export-power-bi.md)
 

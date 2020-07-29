@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: 9f8850b83b2af7f0d3007cd716f9e077361a02e2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 409a119804354b85e3af380d33a4801549ef8133
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091109"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325283"
 ---
 # <a name="log-analytics-agent-overview"></a>Přehled agenta Log Analytics
 Agent Azure Log Analytics byl vyvinut pro komplexní správu napříč virtuálními počítači v jakémkoli cloudu, v místních počítačích a monitorované pomocí [System Center Operations Manager](/system-center/scom/). Agenti systému Windows a Linux odesílají shromážděná data z různých zdrojů do vašeho pracovního prostoru Log Analytics v Azure Monitor a také všechny jedinečné protokoly nebo metriky, jak jsou definovány v řešení monitorování. Agent Log Analytics také podporuje přehledy a další služby v Azure Monitor, jako jsou [Azure monitor pro virtuální počítače](../insights/vminsights-enable-overview.md), [Azure Security Center](../../security-center/index.yml)a [Azure Automation](../../automation/automation-intro.md).
@@ -72,15 +72,15 @@ Existuje několik metod, jak nainstalovat agenta Log Analytics a připojit poč�
 
 |Zdroj | Metoda | Popis|
 |-------|-------------|-------------|
-|Virtuální počítač Azure| [Ručně z Azure Portal](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json) | Zadejte virtuální počítače, které chcete nasadit z pracovního prostoru Log Analytics. |
+|Virtuální počítač Azure| [Ručně z Azure Portal](../learn/quick-collect-azurevm.md?toc=%2fazure%2fazure-monitor%2ftoc.json) | Zadejte virtuální počítače, které chcete nasadit z pracovního prostoru Log Analytics. |
 | | Log Analytics rozšíření virtuálního počítače pro [Windows](../../virtual-machines/extensions/oms-windows.md) nebo [Linux](../../virtual-machines/extensions/oms-linux.md) pomocí Azure CLI nebo šablony Azure Resource Manager | Rozšíření nainstaluje agenta Log Analytics na virtuální počítače Azure a zaregistruje je do existujícího pracovního prostoru Azure Monitor. |
 | | [Azure Monitor pro virtuální počítače](../insights/vminsights-enable-overview.md) | Když povolíte monitorování pomocí Azure Monitor pro virtuální počítače, nainstaluje se rozšíření Log Analytics a agent. |
 | | [Azure Security Center Automatické zřizování](../../security-center/security-center-enable-data-collection.md) | Azure Security Center může zřídit agenta Log Analytics na všech podporovaných virtuálních počítačích Azure a všech nově vytvořených, pokud ji povolíte pro monitorování ohrožení zabezpečení a hrozeb. Pokud je povoleno, budou zřízeny všechny nové nebo existující virtuální počítače bez nainstalovaného agenta. |
 | Hybridní počítač s Windows| [Ruční instalace](agent-windows.md) | Nainstalujte agenta Microsoft Monitoring Agent z příkazového řádku. |
 | | [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation) | Automatizujte instalaci pomocí Azure Automation DSC. |
 | | [Správce prostředků šablonu s Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) | Pokud jste nasadili Microsoft Azure Stack ve svém datovém centru, použijte šablonu Azure Resource Manager.| 
-| Hybridní počítač s Linuxem| [Ruční instalace](../../azure-monitor/learn/quick-collect-linux-computer.md)|Nainstalujte agenta pro Linux volání skriptu obálky hostovaného na GitHubu. | 
-| System Center Operations Manager|[Integrace Operations Manager s Log Analytics](../../azure-monitor/platform/om-agents.md) | Umožňuje konfigurovat integraci mezi protokoly Operations Manager a Azure Monitor a předávat shromážděná data z počítačů s Windows, která se vytvářejí do skupiny pro správu.|  
+| Hybridní počítač s Linuxem| [Ruční instalace](../learn/quick-collect-linux-computer.md)|Nainstalujte agenta pro Linux volání skriptu obálky hostovaného na GitHubu. | 
+| System Center Operations Manager|[Integrace Operations Manager s Log Analytics](./om-agents.md) | Umožňuje konfigurovat integraci mezi protokoly Operations Manager a Azure Monitor a předávat shromážděná data z počítačů s Windows, která se vytvářejí do skupiny pro správu.|  
 
 
 ## <a name="supported-windows-operating-systems"></a>Podporované operační systémy Windows
@@ -189,10 +189,10 @@ Následující tabulka uvádí informace o konfiguraci proxy serveru a brány fi
 
 |Prostředek agenta|Porty |Směr |Obejít kontrolu protokolu HTTPS|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Port 443 |Odchozí|Yes |  
-|*.oms.opinsights.azure.com |Port 443 |Odchozí|Yes |  
-|*.blob.core.windows.net |Port 443 |Odchozí|Yes |
-|*.azure-automation.net |Port 443 |Odchozí|Yes |
+|*.ods.opinsights.azure.com |Port 443 |Odchozí|Ano |  
+|*.oms.opinsights.azure.com |Port 443 |Odchozí|Ano |  
+|*.blob.core.windows.net |Port 443 |Odchozí|Ano |
+|*.azure-automation.net |Port 443 |Odchozí|Ano |
 
 Informace o bráně firewall požadované pro Azure Government najdete v tématu [správa Azure Government](../../azure-government/compare-azure-government-global-azure.md#azure-monitor-logs). 
 
@@ -229,3 +229,4 @@ Příklad: `https://user01:password@proxy01.contoso.com:30443`
 * Projděte si [zdroje dat](agent-data-sources.md) , abyste porozuměli zdrojům dat, které jsou k dispozici pro shromažďování dat ze systému Windows nebo Linux. 
 * Přečtěte si o [dotazech protokolů](../log-query/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení. 
 * Přečtěte si o [řešeních monitorování](../insights/solutions.md) , která přidávají funkce pro Azure monitor a také shromažďovat data do pracovního prostoru Log Analytics.
+

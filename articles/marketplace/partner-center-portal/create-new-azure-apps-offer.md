@@ -4,15 +4,15 @@ description: Přečtěte si postup a požadavky pro vytvoření nové nabídky a
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: qianw211
-ms.author: dsindona
+author: AarathiN
+ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: 6789e32cbbb1257a668e7be87a8b73a0511b6fb0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f9d7e88e78800df07dfe82d7336324eef38b92d5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127430"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326664"
 ---
 # <a name="create-an-azure-application-offer"></a>Vytvoření nabídky aplikací Azure
 
@@ -38,7 +38,7 @@ Projděte si následující zdroje při přípravě nabídky aplikací Azure pro
 
 * Rychlá zprovoznění:
 
-    * [Šablony pro rychlý Start Azure](https://azure.microsoft.com/documentation/templates/)
+    * [Šablony Azure pro rychlé zprovoznění](https://azure.microsoft.com/documentation/templates/)
     * [Příručka k osvědčeným postupům pro šablony Azure](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)
     * [Publikování definice aplikace](../../managed-applications/publish-service-catalog-app.md)
     * [Nasazení aplikace katalogu služeb](../../managed-applications/deploy-service-catalog-quickstart.md)
@@ -187,7 +187,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 4. Podmínky použití
 5. Adresa zásad ochrany osobních údajů (odkaz)
 6. Název nabídky
-7. Shrnutí
+7. Souhrn
 8. Popis
 9. Snímky obrazovky a videa
 

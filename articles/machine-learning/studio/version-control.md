@@ -1,6 +1,5 @@
 ---
-title: Správa životního cyklu aplikací
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (Classic): Správa životního cyklu aplikací – Azure'
 description: Použití osvědčených postupů pro správu životního cyklu aplikací v Azure Machine Learning Studio (Classic)
 services: machine-learning
 ms.service: machine-learning
@@ -9,14 +8,17 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 10/27/2016
-ms.openlocfilehash: 2eb5f3acc07f04ba2102ea25fbad89d73514444a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47f72e1844f6fe34f129d40130a3dba0383dd094
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84705912"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326286"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Správa životního cyklu aplikací v Azure Machine Learning Studio (Classic)
+
+**platí pro:** ![ žádná](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasická) 
+
 
 Azure Machine Learning Studio (Classic) je nástroj pro vývoj experimentů strojového učení, které jsou provozované na cloudové platformě Azure. Vypadá to, že integrované vývojové prostředí (IDE) sady Visual Studio a Škálovatelná cloudová služba se sloučí do jediné platformy. Můžete začlenit standardní postupy správy životního cyklu aplikací (ALM) od různých prostředků k automatizovanému spouštění a nasazování do Azure Machine Learning Studio (Classic). Tento článek popisuje některé z možností a přístupů.
 

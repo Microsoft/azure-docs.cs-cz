@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 08c7a5b977534e6c2852f8095ce14c44bda71bf1
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: 15b96a8bb5460064d6f50f81809f7e3850b30a4c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331530"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281918"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Technický přehled funkcí Azure Active Directory B2C
 
@@ -75,7 +75,7 @@ Můžete nakonfigurovat Azure AD B2C, aby se uživatelé mohli přihlašovat k a
 
 S externím federačním zprostředkovatelem identity můžete svým spotřebitelům nabídnout možnost se přihlásit pomocí svých stávajících sociálních nebo podnikových účtů, aniž byste museli vytvořit nový účet jenom pro vaši aplikaci.
 
-Na přihlašovací stránce nebo na přihlašovací stránce Azure AD B2C prezentuje seznam externích zprostředkovatelů identity, které může uživatel zvolit pro přihlášení. Jakmile vyberete jednoho z externích zprostředkovatelů identity, přijímají se (přesměrované) na web vybraného poskytovatele, aby se dokončil proces přihlašování. Až se uživatel úspěšně přihlásí, vrátí se zpátky do Azure AD B2C pro ověřování účtu ve vaší aplikaci.
+Na přihlašovací stránce nebo na přihlašovací stránce Azure AD B2C prezentuje seznam externích zprostředkovatelů identity, které může uživatel zvolit pro přihlášení. Jakmile vyberete jednoho z externích zprostředkovatelů identity, přijímají se (přesměrované) na web vybraného poskytovatele, aby se dokončil proces přihlašování. Jakmile se uživatel úspěšně přihlásí, vrátí se Azure AD B2C pro ověřování účtu ve vaší aplikaci.
 
 ![Příklad mobilního přihlášení pomocí účtu sociální sítě (Facebook)](media/technical-overview/external-idp.png)
 
@@ -115,7 +115,7 @@ Přečtěte si další informace o toku uživatelů v [toku uživatelů v Azure 
 
 Vlastní zásady odemkněte přístup k celému výkonu modulu pro orchestraci identit v architektuře IEF (identity Experience Framework). Díky vlastním zásadám můžete využít IEF k sestavení téměř všech ověřování, registrace uživatelů nebo možností úprav profilů, které si můžete představit.
 
-Rozhraní identity Experience Framework poskytuje možnost vytvářet cesty uživatelů pomocí libovolné kombinace kroků. Příklad:
+Rozhraní identity Experience Framework poskytuje možnost vytvářet cesty uživatelů pomocí libovolné kombinace kroků. Například:
 
 * Federovat s jinými zprostředkovateli identity
 * První a další výzvy k Multi-Factor Authentication (MFA) třetích stran

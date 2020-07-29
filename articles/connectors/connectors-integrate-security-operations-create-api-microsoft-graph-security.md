@@ -9,21 +9,22 @@ ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: b4f51b192d1a7c0ee14a769321793753e8217dea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 337ecc6069211942a809f2bf3d793c5bccc08387
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77598829"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87277226"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Zvyšte ochranu před hrozbami integrací operací zabezpečení pomocí Microsoft Graph zabezpečení & Azure Logic Apps
 
-Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a konektoru [zabezpečení Microsoft Graph](https://docs.microsoft.com/graph/security-concept-overview) můžete vylepšit způsob, jakým aplikace detekuje hrozby, chrání je a reaguje na ně tím, že vytvoří automatizované pracovní postupy pro integraci produktů, služeb a partnerů Microsoftu. Můžete například vytvořit [Azure Security Center playbooky](../security-center/security-center-playbooks.md) a monitorovat a spravovat Microsoft Graph entit zabezpečení, jako jsou výstrahy. Tady je několik scénářů, které podporuje Microsoft Graph Security Connector:
+Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a konektoru [zabezpečení Microsoft Graph](/graph/security-concept-overview) můžete vylepšit způsob, jakým aplikace detekuje hrozby, chrání je a reaguje na ně tím, že vytvoří automatizované pracovní postupy pro integraci produktů, služeb a partnerů Microsoftu. Můžete například vytvořit [Azure Security Center playbooky](../security-center/workflow-automation.md) a monitorovat a spravovat Microsoft Graph entit zabezpečení, jako jsou výstrahy. Tady je několik scénářů, které podporuje Microsoft Graph Security Connector:
 
 * Získejte výstrahy na základě dotazů nebo ID výstrahy. Můžete například získat seznam, který obsahuje upozornění s vysokou závažností.
 
 * Aktualizujte výstrahy. Můžete například aktualizovat přiřazení výstrah, přidat komentáře k výstrahám nebo výstrahy značek.
 
-* Monitorování při vytváření nebo změně výstrah vytvořením [odběrů výstrah (Webhooky)](https://docs.microsoft.com/graph/api/resources/webhooks).
+* Monitorování při vytváření nebo změně výstrah vytvořením [odběrů výstrah (Webhooky)](/graph/api/resources/webhooks).
 
 * Spravujte své odběry výstrah. Můžete například získat aktivní odběry, zvětšit dobu vypršení platnosti předplatného nebo odstranit odběry.
 
@@ -90,12 +91,12 @@ Tento příklad ukazuje, jak můžete spustit pracovní postup aplikace logiky, 
 
 1.  V aktivační události zadejte informace o výstrahách, které chcete monitorovat. Pro další vlastnosti otevřete seznam **Přidat nový parametr** a vyberte parametr pro přidání této vlastnosti aktivační události.
 
-   | Vlastnost | Property (JSON) | Požaduje se | Typ | Description |
+   | Vlastnost | Property (JSON) | Požaduje se | Typ | Popis |
    |----------|-----------------|----------|------|-------------|
-   | **Doba** | `interval` | Yes | Integer | Kladné celé číslo, které popisuje, jak často se pracovní postup spouští na základě frekvence. Tady jsou minimální a maximální intervaly: <p><p>-Month: 1-16 měsíců <br>Denní: 1-500 dní <br>-Hodina: 1 – 12000 hodin <br>-Minute: 1 – 72000 minut <br>-Sekunda: 1 – 9999999 sekund <p>Pokud má například interval hodnotu 6 a frekvence je "Month" (měsíc), opakování je každých 6 měsíců. |
-   | **Frekvence** | `frequency` | Yes | Řetězec | Jednotka času pro opakování: **sekunda**, **minuta**, **hodina**, **den**, **týden**nebo **měsíc** |
-   | **Časové pásmo** | `timeZone` | No | Řetězec | Platí pouze v případě, že zadáte čas spuštění, protože tato aktivační událost nepřijímá [posun UTC](https://en.wikipedia.org/wiki/UTC_offset). Vyberte časové pásmo, které chcete použít. |
-   | **Čas spuštění** | `startTime` | No | Řetězec | Zadejte počáteční datum a čas v tomto formátu: <p><p>RRRR-MM-DDThh: mm: SS Pokud vyberete časové pásmo <p>-nebo- <p>RRRR-MM-DDThh: mm: ssZ, pokud nevyberete časové pásmo <p>Pokud například požadujete 18. září 2017 na 2:00 odp., zadejte "2017-09-18T14:00:00" a vyberte časové pásmo, například Tichomoří (běžný čas). Případně zadejte "2017-09-18T14:00:00Z" bez časového pásma. <p>**Poznámka:** Tento počáteční čas má v budoucnosti maximálně 49 let a musí následovat za [specifikací data a času ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) ve [formátu data](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)a času UTC, ale bez [posunu UTC](https://en.wikipedia.org/wiki/UTC_offset). Pokud nevyberete časové pásmo, je nutné na konci přidat písmeno "Z" bez mezer. Tento "Z" odkazuje na ekvivalentní [námořní čas](https://en.wikipedia.org/wiki/Nautical_time). <p>V případě jednoduchých plánů je počáteční čas prvním výskytem, ale u složitých plánů se Trigger neaktivuje dříve, než je čas spuštění. [*Jaké jsou způsoby, jak můžu použít počáteční datum a čas?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
+   | **Interval** | `interval` | Ano | Celé číslo | Kladné celé číslo, které popisuje, jak často se pracovní postup spouští na základě frekvence. Tady jsou minimální a maximální intervaly: <p><p>-Month: 1-16 měsíců <br>Denní: 1-500 dní <br>-Hodina: 1 – 12000 hodin <br>-Minute: 1 – 72000 minut <br>-Sekunda: 1 – 9999999 sekund <p>Pokud má například interval hodnotu 6 a frekvence je "Month" (měsíc), opakování je každých 6 měsíců. |
+   | **Frekvence** | `frequency` | Ano | Řetězec | Jednotka času pro opakování: **sekunda**, **minuta**, **hodina**, **den**, **týden**nebo **měsíc** |
+   | **Časové pásmo** | `timeZone` | Ne | Řetězec | Platí pouze v případě, že zadáte čas spuštění, protože tato aktivační událost nepřijímá [posun UTC](https://en.wikipedia.org/wiki/UTC_offset). Vyberte časové pásmo, které chcete použít. |
+   | **Čas spuštění** | `startTime` | Ne | Řetězec | Zadejte počáteční datum a čas v tomto formátu: <p><p>RRRR-MM-DDThh: mm: SS Pokud vyberete časové pásmo <p>-nebo- <p>RRRR-MM-DDThh: mm: ssZ, pokud nevyberete časové pásmo <p>Pokud například požadujete 18. září 2017 na 2:00 odp., zadejte "2017-09-18T14:00:00" a vyberte časové pásmo, například Tichomoří (běžný čas). Případně zadejte "2017-09-18T14:00:00Z" bez časového pásma. <p>**Poznámka:** Tento počáteční čas má v budoucnosti maximálně 49 let a musí následovat za [specifikací data a času ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) ve [formátu data](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)a času UTC, ale bez [posunu UTC](https://en.wikipedia.org/wiki/UTC_offset). Pokud nevyberete časové pásmo, je nutné na konci přidat písmeno "Z" bez mezer. Tento "Z" odkazuje na ekvivalentní [námořní čas](https://en.wikipedia.org/wiki/Nautical_time). <p>V případě jednoduchých plánů je počáteční čas prvním výskytem, ale u složitých plánů se Trigger neaktivuje dříve, než je čas spuštění. [*Jaké jsou způsoby, jak můžu použít počáteční datum a čas?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    ||||||
 
 1.  Až budete hotovi, na panelu nástrojů návrháře vyberte **Uložit**.
@@ -108,52 +109,52 @@ Tady najdete konkrétnější podrobnosti o používání různých akcí, kter�
 
 ### <a name="manage-alerts"></a>Správa výstrah
 
-Pokud chcete filtrovat, seřadit nebo získat nejnovější výsledky, zadejte *jenom* [parametry dotazu OData podporované Microsoft Graph](https://docs.microsoft.com/graph/query-parameters). *Nezadávejte* úplnou základní adresu URL nebo akci HTTP, například `https://graph.microsoft.com/v1.0/security/alerts` , nebo `GET` `PATCH` . Tady je konkrétní příklad, který zobrazuje parametry pro akci **získat výstrahy** , když chcete zobrazit seznam s výstrahami s vysokou závažností:
+Pokud chcete filtrovat, seřadit nebo získat nejnovější výsledky, zadejte *jenom* [parametry dotazu OData podporované Microsoft Graph](/graph/query-parameters). *Nezadávejte* úplnou základní adresu URL nebo akci HTTP, například `https://graph.microsoft.com/v1.0/security/alerts` , nebo `GET` `PATCH` . Tady je konkrétní příklad, který zobrazuje parametry pro akci **získat výstrahy** , když chcete zobrazit seznam s výstrahami s vysokou závažností:
 
 `Filter alerts value as Severity eq 'high'`
 
-Další informace o dotazech, které můžete použít s tímto konektorem, najdete v [referenční dokumentaci k výstrahám zabezpečení Microsoft Graph](https://docs.microsoft.com/graph/api/alert-list). Pokud chcete s tímto konektorem vytvářet vylepšená prostředí, přečtěte si další informace o [vlastnostech schématu výstrahy](https://docs.microsoft.com/graph/api/resources/alert) , které konektor podporuje.
+Další informace o dotazech, které můžete použít s tímto konektorem, najdete v [referenční dokumentaci k výstrahám zabezpečení Microsoft Graph](/graph/api/alert-list). Pokud chcete s tímto konektorem vytvářet vylepšená prostředí, přečtěte si další informace o [vlastnostech schématu výstrahy](/graph/api/resources/alert) , které konektor podporuje.
 
-| Akce | Description |
+| Akce | Popis |
 |--------|-------------|
-| **Získat výstrahy** | Získejte filtrované výstrahy na základě jedné nebo více [vlastností výstrahy](https://docs.microsoft.com/graph/api/resources/alert), například `Provider eq 'Azure Security Center' or 'Palo Alto Networks'` . | 
+| **Získat výstrahy** | Získejte filtrované výstrahy na základě jedné nebo více [vlastností výstrahy](/graph/api/resources/alert), například `Provider eq 'Azure Security Center' or 'Palo Alto Networks'` . | 
 | **Získat upozornění podle ID** | Získat konkrétní výstrahu na základě ID výstrahy. | 
-| **Aktualizovat upozornění** | Aktualizace konkrétní výstrahy na základě ID výstrahy. Chcete-li se ujistit, že jste v žádosti předávali požadované a upravitelné vlastnosti, přečtěte si téma [upravitelné vlastnosti výstrah](https://docs.microsoft.com/graph/api/alert-update). Chcete-li například přiřadit upozornění analytikovi zabezpečení, aby bylo možné je prozkoumat, můžete aktualizovat vlastnost **přiřazeno pro** výstrahu. |
+| **Aktualizovat upozornění** | Aktualizace konkrétní výstrahy na základě ID výstrahy. Chcete-li se ujistit, že jste v žádosti předávali požadované a upravitelné vlastnosti, přečtěte si téma [upravitelné vlastnosti výstrah](/graph/api/alert-update). Chcete-li například přiřadit upozornění analytikovi zabezpečení, aby bylo možné je prozkoumat, můžete aktualizovat vlastnost **přiřazeno pro** výstrahu. |
 |||
 
 ### <a name="manage-alert-subscriptions"></a>Správa odběrů výstrah
 
-Microsoft Graph podporuje [*odběry*](https://docs.microsoft.com/graph/api/resources/subscription)nebo [*Webhooky*](https://docs.microsoft.com/graph/api/resources/webhooks). Chcete-li získat, aktualizovat nebo odstranit odběry, zadejte [parametry dotazu OData podporované Microsoft Graph](https://docs.microsoft.com/graph/query-parameters) do konstruktoru entity Microsoft Graph a zahrňte a `security/alerts` pak dotaz OData. *Nezahrnujte základní* adresu URL, například `https://graph.microsoft.com/v1.0` . Místo toho použijte formát v tomto příkladu:
+Microsoft Graph podporuje [*odběry*](/graph/api/resources/subscription)nebo [*Webhooky*](/graph/api/resources/webhooks). Chcete-li získat, aktualizovat nebo odstranit odběry, zadejte [parametry dotazu OData podporované Microsoft Graph](/graph/query-parameters) do konstruktoru entity Microsoft Graph a zahrňte a `security/alerts` pak dotaz OData. *Nezahrnujte základní* adresu URL, například `https://graph.microsoft.com/v1.0` . Místo toho použijte formát v tomto příkladu:
 
 `security/alerts?$filter=status eq 'New'`
 
-| Akce | Description |
+| Akce | Popis |
 |--------|-------------|
-| **Vytvoření předplatných** | [Vytvořte předplatné](https://docs.microsoft.com/graph/api/subscription-post-subscriptions) , které vás upozorní na jakékoli změny. Toto předplatné můžete filtrovat pro konkrétní typy výstrah, které chcete. Můžete například vytvořit předplatné, které vás upozorní na upozornění s vysokou závažností. |
-| **Získat aktivní odběry** | [Získání neplatných odběrů](https://docs.microsoft.com/graph/api/subscription-list) | 
-| **Aktualizovat předplatné** | [Aktualizujte předplatné](https://docs.microsoft.com/graph/api/subscription-update) ZADÁNÍm ID předplatného. Pokud třeba chcete prodloužení předplatného, můžete aktualizovat vlastnost předplatného `expirationDateTime` . | 
-| **Odstranění předplatného** | [Odstraňte předplatné](https://docs.microsoft.com/graph/api/subscription-delete) ZADÁNÍm ID předplatného. | 
+| **Vytvoření předplatných** | [Vytvořte předplatné](/graph/api/subscription-post-subscriptions) , které vás upozorní na jakékoli změny. Toto předplatné můžete filtrovat pro konkrétní typy výstrah, které chcete. Můžete například vytvořit předplatné, které vás upozorní na upozornění s vysokou závažností. |
+| **Získat aktivní odběry** | [Získání neplatných odběrů](/graph/api/subscription-list) | 
+| **Aktualizovat předplatné** | [Aktualizujte předplatné](/graph/api/subscription-update) ZADÁNÍm ID předplatného. Pokud třeba chcete prodloužení předplatného, můžete aktualizovat vlastnost předplatného `expirationDateTime` . | 
+| **Odstranění předplatného** | [Odstraňte předplatné](/graph/api/subscription-delete) ZADÁNÍm ID předplatného. | 
 ||| 
 
 ### <a name="manage-threat-intelligence-indicators"></a>Spravovat indikátory logiky hrozeb
 
-Pokud chcete filtrovat, seřadit nebo získat nejnovější výsledky, zadejte *jenom* [parametry dotazu OData podporované Microsoft Graph](https://docs.microsoft.com/graph/query-parameters). *Nezadávejte* úplnou základní adresu URL nebo akci HTTP, například `https://graph.microsoft.com/beta/security/tiIndicators` , nebo `GET` `PATCH` . Tady je konkrétní příklad, který zobrazuje parametry pro akci **Get tiIndicators** , když chcete zobrazit seznam s `DDoS` typem hrozby:
+Pokud chcete filtrovat, seřadit nebo získat nejnovější výsledky, zadejte *jenom* [parametry dotazu OData podporované Microsoft Graph](/graph/query-parameters). *Nezadávejte* úplnou základní adresu URL nebo akci HTTP, například `https://graph.microsoft.com/beta/security/tiIndicators` , nebo `GET` `PATCH` . Tady je konkrétní příklad, který zobrazuje parametry pro akci **Get tiIndicators** , když chcete zobrazit seznam s `DDoS` typem hrozby:
 
 `Filter threat intelligence indicator value as threatType eq 'DDoS'`
 
-Další informace o dotazech, které můžete použít s tímto konektorem, najdete [v části "volitelné parametry dotazu" v tématu Referenční dokumentace k nástroji Microsoft Graph Security Threat Intelligence](https://docs.microsoft.com/graph/api/tiindicators-list?view=graph-rest-beta&tabs=http). Pokud chcete s tímto konektorem sestavovat vylepšená prostředí, přečtěte si další informace o [vlastnostech schématu – indikátor analýzy hrozeb](https://docs.microsoft.com/graph/api/resources/tiindicator?view=graph-rest-beta) , který konektor podporuje.
+Další informace o dotazech, které můžete použít s tímto konektorem, najdete [v části "volitelné parametry dotazu" v tématu Referenční dokumentace k nástroji Microsoft Graph Security Threat Intelligence](/graph/api/tiindicators-list?tabs=http&view=graph-rest-beta). Pokud chcete s tímto konektorem sestavovat vylepšená prostředí, přečtěte si další informace o [vlastnostech schématu – indikátor analýzy hrozeb](/graph/api/resources/tiindicator?view=graph-rest-beta) , který konektor podporuje.
 
-| Akce | Description |
+| Akce | Popis |
 |--------|-------------|
-| **Získat indikátory pro analýzu hrozeb** | Získání tiIndicators filtrovaných na základě jedné nebo více [tiIndicator vlastností](https://docs.microsoft.com/graph/api/resources/tiindicator?view=graph-rest-beta), například`threatType eq 'MaliciousUrl' or 'DDoS'` |
+| **Získat indikátory pro analýzu hrozeb** | Získání tiIndicators filtrovaných na základě jedné nebo více [tiIndicator vlastností](/graph/api/resources/tiindicator?view=graph-rest-beta), například`threatType eq 'MaliciousUrl' or 'DDoS'` |
 | **Získat indikátor analýzy hrozeb podle ID** | Získá konkrétní tiIndicator na základě ID tiIndicator. | 
-| **Vytvořit indikátor analýzy hrozeb** | Vytvořte nový tiIndicator publikováním do kolekce tiIndicators. Chcete-li se ujistit, že jste v žádosti předávali požadované vlastnosti, přečtěte si téma [požadované vlastnosti pro vytváření tiIndicator](https://docs.microsoft.com/graph/api/tiindicators-post?view=graph-rest-beta&tabs=http). |
-| **Odeslání více ukazatelů analýzy hrozeb** | Vytvořte více nových tiIndicators publikováním kolekce tiIndicators. Chcete-li se ujistit, že jste v žádosti předávali požadované vlastnosti, přečtěte si téma [požadované vlastnosti pro odeslání více tiIndicators](https://docs.microsoft.com/graph/api/tiindicator-submittiindicators?view=graph-rest-beta&tabs=http). |
-| **Aktualizovat indikátor analýzy hrozeb** | Aktualizujte konkrétní tiIndicator na základě ID tiIndicator. Abyste se ujistili, že jste v žádosti předávali požadované a upravitelné vlastnosti, přečtěte si téma [upravitelné vlastnosti pro tiIndicator](https://docs.microsoft.com/graph/api/tiindicator-update?view=graph-rest-beta&tabs=http). Chcete-li například aktualizovat akci, která má být použita, pokud se ukazatel shoduje v rámci nástroje zabezpečení targetProduct, můžete aktualizovat vlastnost **Action** tiIndicator. |
-| **Aktualizace více ukazatelů analýzy hrozeb** | Aktualizace více tiIndicators Abyste se ujistili, že jste v žádosti předávali požadované vlastnosti, přečtěte si téma [požadované vlastnosti pro aktualizaci více tiIndicators](https://docs.microsoft.com/graph/api/tiindicator-updatetiindicators?view=graph-rest-beta&tabs=http). |
+| **Vytvořit indikátor analýzy hrozeb** | Vytvořte nový tiIndicator publikováním do kolekce tiIndicators. Chcete-li se ujistit, že jste v žádosti předávali požadované vlastnosti, přečtěte si téma [požadované vlastnosti pro vytváření tiIndicator](/graph/api/tiindicators-post?tabs=http&view=graph-rest-beta). |
+| **Odeslání více ukazatelů analýzy hrozeb** | Vytvořte více nových tiIndicators publikováním kolekce tiIndicators. Chcete-li se ujistit, že jste v žádosti předávali požadované vlastnosti, přečtěte si téma [požadované vlastnosti pro odeslání více tiIndicators](/graph/api/tiindicator-submittiindicators?tabs=http&view=graph-rest-beta). |
+| **Aktualizovat indikátor analýzy hrozeb** | Aktualizujte konkrétní tiIndicator na základě ID tiIndicator. Abyste se ujistili, že jste v žádosti předávali požadované a upravitelné vlastnosti, přečtěte si téma [upravitelné vlastnosti pro tiIndicator](/graph/api/tiindicator-update?tabs=http&view=graph-rest-beta). Chcete-li například aktualizovat akci, která má být použita, pokud se ukazatel shoduje v rámci nástroje zabezpečení targetProduct, můžete aktualizovat vlastnost **Action** tiIndicator. |
+| **Aktualizace více ukazatelů analýzy hrozeb** | Aktualizace více tiIndicators Abyste se ujistili, že jste v žádosti předávali požadované vlastnosti, přečtěte si téma [požadované vlastnosti pro aktualizaci více tiIndicators](/graph/api/tiindicator-updatetiindicators?tabs=http&view=graph-rest-beta). |
 | **Odstranit indikátor analýzy hrozeb podle ID** | Odstraňte konkrétní tiIndicator na základě ID tiIndicator. |
-| **Odstranění více ukazatelů analýzy hrozeb podle ID** | Odstraňte více tiIndicators podle jejich ID. Abyste se ujistili, že jste v žádosti předávali požadované vlastnosti, přečtěte si [požadované vlastnosti pro odstranění více tiIndicators podle ID](https://docs.microsoft.com/graph/api/tiindicator-deletetiindicators?view=graph-rest-beta&tabs=http). |
-| **Odstranění více indikátorů analýzy hrozeb podle externích ID** | Odstraňte více tiIndicators externích ID. Abyste se ujistili, že jste v žádosti předávali požadované vlastnosti, přečtěte si [požadované vlastnosti pro odstranění více tiIndicators podle externích ID](https://docs.microsoft.com/graph/api/tiindicator-deletetiindicatorsbyexternalid?view=graph-rest-beta&tabs=http). |
+| **Odstranění více ukazatelů analýzy hrozeb podle ID** | Odstraňte více tiIndicators podle jejich ID. Abyste se ujistili, že jste v žádosti předávali požadované vlastnosti, přečtěte si [požadované vlastnosti pro odstranění více tiIndicators podle ID](/graph/api/tiindicator-deletetiindicators?tabs=http&view=graph-rest-beta). |
+| **Odstranění více indikátorů analýzy hrozeb podle externích ID** | Odstraňte více tiIndicators externích ID. Abyste se ujistili, že jste v žádosti předávali požadované vlastnosti, přečtěte si [požadované vlastnosti pro odstranění více tiIndicators podle externích ID](/graph/api/tiindicator-deletetiindicatorsbyexternalid?tabs=http&view=graph-rest-beta). |
 |||
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
@@ -163,3 +164,4 @@ Technické podrobnosti o aktivačních událostech, akcích a omezeních, které
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)
+

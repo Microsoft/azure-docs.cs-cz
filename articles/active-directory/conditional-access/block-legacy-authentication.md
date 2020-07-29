@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd66bc742d0832cba5d6f302bfe30c85e2d82716
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d3df4eee14e5ce2f0638058efde0f80d0e5b051
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253337"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87275475"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Postupy: blokování staršího ověřování ve službě Azure AD pomocí podmíněného přístupu   
 
@@ -84,7 +85,7 @@ Než budete moct v adresáři zablokovat starší verze ověřování, musíte n
 
 1. Přejděte do **Azure Portal**  >  **Azure Active Directory**  >  **přihlášení**.
 1. Pokud není zobrazený, klikněte na **sloupce**  >  **klientská aplikace**a přidejte sloupec aplikace klienta.
-1. **Přidat filtry**  >  **Klientská aplikace** > vybrat všechny starší protokoly pro ověřování a kliknout na **použít**.
+1. **Přidat filtry**  >  **Klientská aplikace** > vybrat všechny starší protokoly pro ověřování. Vyberte mimo dialogové okno filtrování Blox a použijte výběr a zavřete dialogové okno.
 
 Filtrování zobrazí jenom ty pokusy o přihlášení, které udělaly starší protokoly ověřování. Kliknutím na každý jednotlivý pokus o přihlášení zobrazíte další podrobnosti. V poli **klientská aplikace** na kartě **základní informace** se určí, který starší verze ověřovacího protokolu se použil.
 

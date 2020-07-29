@@ -6,12 +6,12 @@ ms.author: dukek
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
-ms.openlocfilehash: f592c42bc06c6bcd33ce6e10c506f8af0d8e0cf2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f6d5cbfc8d781e96a4d348f31f4a5d175ebd5a3d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008383"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321883"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Postup aktivace složitých akcí s výstrahami Azure Monitor
 
@@ -19,7 +19,7 @@ V tomto článku se dozvíte, jak nastavit a aktivovat aplikaci logiky pro vytvo
 
 ## <a name="overview"></a>Přehled
 
-Když se aktivuje výstraha Azure Monitor, zavolá [skupinu akcí](../../azure-monitor/platform/action-groups.md). Skupiny akcí umožňují aktivovat jednu nebo více akcí, aby bylo možné upozornit ostatní na výstrahu a zároveň ji opravit.
+Když se aktivuje výstraha Azure Monitor, zavolá [skupinu akcí](./action-groups.md). Skupiny akcí umožňují aktivovat jednu nebo více akcí, aby bylo možné upozornit ostatní na výstrahu a zároveň ji opravit.
 
 Obecný proces:
 
@@ -294,6 +294,7 @@ Proces vytvoření upozornění na metriku se podobá [Vytvoření upozornění 
 Logic Apps má řadu různých konektorů, které umožňují aktivovat akce v široké škále aplikací a databází. Časová rezerva, SQL Server, Oracle, Salesforce, jsou jenom příklady. Další informace o konektorech najdete v tématu [konektory Logic](../../connectors/apis-list.md)Apps.  
 
 ## <a name="next-steps"></a>Další kroky
-* Získejte [Přehled výstrah protokolu aktivit Azure](../../azure-monitor/platform/alerts-overview.md) a Naučte se přijímat výstrahy.  
+* Získejte [Přehled výstrah protokolu aktivit Azure](./alerts-overview.md) a Naučte se přijímat výstrahy.  
 * Naučte se [konfigurovat výstrahy, když se publikuje oznámení Azure Service Health](../../service-health/alerts-activity-log-service-notifications-portal.md).
-* Přečtěte si další informace o [skupinách akcí](../../azure-monitor/platform/action-groups.md).
+* Přečtěte si další informace o [skupinách akcí](./action-groups.md).
+

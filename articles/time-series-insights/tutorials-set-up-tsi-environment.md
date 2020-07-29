@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 07/07/2020
+ms.date: 07/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8db3a5292af2d53945c60a7b4ec1eb3c78381b9b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 83cf8ca47774713ca8dbfd493d7aa16bf65fb6b7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101500"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286457"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>Kurz: nastavení prostředí Azure Time Series Insights Gen2
 
@@ -36,7 +36,7 @@ V tomto kurzu se naučíte:
 
 Zaregistrujte si [bezplatné předplatné Azure](https://azure.microsoft.com/free/) , pokud ho ještě nemáte.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Minimálně musíte mít roli **přispěvatele** pro předplatné Azure. Další informace najdete v článku [Správa přístupu pomocí řízení přístupu na základě role a Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
@@ -48,7 +48,7 @@ V této části vytvoříte tři simulovaná zařízení, která odesílají dat
 
    [![Stránka akcelerátory řešení Azure IoT.](media/v2-update-provision/iot-solution-accelerators-landing-page.png)](media/v2-update-provision/iot-solution-accelerators-landing-page.png#lightbox)
 
-1. Na další stránce vyberte **vyzkoušet nyní**. Pak na stránce **řešení pro vytvoření simulace zařízení** zadejte požadované parametry.
+1. Zadejte předplatné, ve kterém chcete vytvořit simulaci zařízení.
 
    Parametr|Popis
    ---|---
@@ -61,7 +61,7 @@ V této části vytvoříte tři simulovaná zařízení, která odesílají dat
 
    [![Zřídit řešení pro simulaci zařízení.](media/v2-update-provision/iot-solution-accelerators-configuration.png)](media/v2-update-provision/iot-solution-accelerators-configuration.png#lightbox)
 
-1. Po dokončení zřizování se zobrazí dvě oznámení oznamující, že stav nasazení se přesunul ze **zřizování** na **připraveno**. 
+1. Po dokončení zřizování se zobrazí dvě oznámení oznamující, že stav nasazení se přesunul ze **zřizování** na **připraveno**.
 
    >[!IMPORTANT]
    > Ještě nezadávejte akcelerátor řešení. Tuto webovou stránku nechte otevřenou, protože se k ní vrátíte později.
@@ -76,9 +76,9 @@ V této části vytvoříte tři simulovaná zařízení, která odesílají dat
 
 Tato část popisuje, jak vytvořit prostředí Azure Time Series Insights Gen2 a připojit ho ke službě IoT Hub vytvořené pomocí akcelerátoru řešení IoT pomocí [Azure Portal](https://portal.azure.com/).
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí svého účtu předplatného Azure. 
-1. Vlevo nahoře vyberte **+ Vytvořit prostředek**. 
-1. Vyberte kategorii **Internet věcí** a pak vyberte **Time Series Insights**. 
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí svého účtu předplatného Azure.
+1. Vlevo nahoře vyberte **+ Vytvořit prostředek**.
+1. Vyberte kategorii **Internet věcí** a pak vyberte **Time Series Insights**.
 
    [![Vyberte prostředek prostředí Time Series Insights.](media/v2-update-provision/tsi-create-new-environment.png)](media/v2-update-provision/tsi-create-new-environment.png#lightbox)
 
@@ -91,14 +91,14 @@ Tato část popisuje, jak vytvořit prostředí Azure Time Series Insights Gen2 
     | **Skupina prostředků** | Vyberte existující skupinu prostředků nebo vytvořte novou skupinu prostředků pro prostředek prostředí Azure Time Series Insights Gen2. Skupina prostředků představuje kontejner prostředků Azure. Osvědčeným postupem je použití stejné skupiny prostředků jako u jiných prostředků IoT, které jsou vytvořené simulátorem zařízení. |
     | **Umístění** | Vyberte oblast datového centra pro prostředí Azure Time Series Insights Gen2. Abyste se vyhnuli další latenci, je nejlepší vytvořit prostředí Azure Time Series Insights Gen2 ve stejné oblasti, ve které se služba IoT Hub vytvořila simulátorem zařízení. |
     | **Úroveň** |  Vyberte **Gen2 (L1)**. Toto je SKU pro produkt Azure Time Series Insights Gen2. |
-    | **Název vlastnosti** | Zadejte hodnotu, která jedinečně identifikuje vaši instanci časové řady. Hodnotu, kterou zadáte v poli **ID vlastnosti** , nelze později změnit. Pro tento kurz zadejte ***iothub-Connection-Device-ID***. Pokud se chcete dozvědět víc o ID časových řad, přečtěte si [osvědčené postupy pro výběr ID časové řady](./time-series-insights-update-how-to-id.md). |
+    | **Název vlastnosti Time Series ID** | Zadejte název vlastnosti, která obsahuje hodnoty, které jedinečně identifikují instance časových řad. Hodnota, kterou zadáte do pole **název vlastnosti** jako časový interval, se nedá později změnit. Pro tento kurz zadejte ***iothub-Connection-Device-ID***. Pokud chcete získat další informace o ID časové řady včetně ID složené časové řady, přečtěte si [osvědčené postupy pro výběr ID časové řady](./time-series-insights-update-how-to-id.md). |
     | **Název účtu úložiště** | Zadejte globálně jedinečný název nového účtu úložiště.|
     | **Druh účtu úložiště** | Vyberte druh úložiště pro nový účet úložiště. Doporučujeme StorageV2|
-    | **Replikace účtu úložiště** | Vyberte druh úložiště pro nový účet úložiště. Na základě vašeho výběru polohy si můžete vybrat z LRS, GRS a ZRS. Pro tento tuorial můžete vybrat LRS|
-    | **Hierarchické obor názvů** |Tato možnost se dá vybrat, když vyberete druh úložiště, který se má StorageV2. Ve výchozím nastavení je zakázaný. V tomto kurzu ho můžete nechat ve výchozím stavu *zakázáno* .|
-    |**Povolit teplé úložiště**|Vyberte **Ano** , pokud chcete povolit teplé úložiště. Můžete se později vrátit a povolit nebo zakázat toto nastavení. |
+    | **Replikace účtu úložiště** | Vyberte druh úložiště pro nový účet úložiště. Na základě vašeho výběru polohy si můžete vybrat z LRS, GRS a ZRS. Pro tento kurz můžete vybrat LRS|
+    | **Hierarchický obor názvů** |Tato možnost se dá vybrat, když vyberete druh úložiště, který se má StorageV2. Ve výchozím nastavení je zakázaný. V tomto kurzu ho můžete nechat ve výchozím stavu *zakázáno* .|
+    |**Povolit teplé úložiště**|Vyberte **Ano** , pokud chcete povolit teplé úložiště. Toto nastavení se dá zakázat a po vytvoření prostředí taky znovu povolit. |
     |**Uchovávání dat (ve dnech)**|Vyberte výchozí možnost 7 dní. |
-    
+
     [![Nová konfigurace Time Series Insights prostředí.](media/v2-update-provision/tsi-environment-configuration.png)](media/v2-update-provision/tsi-environment-configuration.png#lightbox)
 
 1. Vyberte **Další: zdroj události**.
@@ -133,7 +133,7 @@ Tato část popisuje, jak vytvořit prostředí Azure Time Series Insights Gen2 
 
 1. Pokud jste vlastníkem předplatného Azure, máte přístup k prostředí Azure Time Series Insights Gen2 ve výchozím nastavení. Ověřte, že máte přístup:
 
-   1. Vyhledejte skupinu prostředků a potom vyberte své nově vytvořené Azure Time Series Insights Gen2 prostředí. 
+   1. Vyhledejte skupinu prostředků a potom vyberte své nově vytvořené Azure Time Series Insights Gen2 prostředí.
 
       [![Vyberte a zobrazte své prostředí.](media/v2-update-provision/verify-tsi-resource-in-group.png)](media/v2-update-provision/verify-tsi-resource-in-group.png#lightbox)
 
@@ -157,7 +157,7 @@ Teď, když máte nasazené prostředí Azure Time Series Insights Gen2, začně
 
    [![Vyjádření souhlasu webové aplikace s simulací zařízení](media/v2-update-provision/sawa-signin-consent.png)](media/v2-update-provision/sawa-signin-consent.png#lightbox)
 
-1. Vyberte **+ Nová simulace**. 
+1. Vyberte **+ Nová simulace**.
 
     1. Po načtení stránky **Nastavení simulace** zadejte požadované parametry.
 
@@ -222,7 +222,7 @@ V této části použijete model ke strukturování dat. Pro dokončení modelu 
     | **Název** | Zadat **výtah** |
     | **Popis** | Zadejte **Toto je definice typu pro výtah** . |
 
-1. V dalším kroku vyberte kartu **proměnné** . 
+1. V dalším kroku vyberte kartu **proměnné** .
 
     1. Vyberte **+ přidat proměnnou** a vyplňte následující hodnoty pro první proměnnou typu výtahu. Budete vytvářet tři proměnné celkem.
 
@@ -260,19 +260,19 @@ V této části použijete model ke strukturování dat. Pro dokončení modelu 
         [![Po přidání typu si ho přečtěte v zobrazení modelu.](media/v2-update-provision/tsi-add-type-and-view.png)](media/v2-update-provision/tsi-add-type-and-view.png#lightbox)
 
 1. Vyberte kartu **hierarchie** . Pak vyberte **+ Přidat**.
-   
+
    1. V podokně **Upravit hierarchii** nastavte následující parametry:
 
         | Parametr | Akce |
         | --- | ---|
         | **Název** | Zadejte **hierarchii umístění**. |
-        |**Úrovně**| Jako název první úrovně zadejte **Country (země** ). <br> Vybrat **+ Přidat úroveň** <br> Zadejte **město** druhé úrovně a pak vyberte **+ Přidat úroveň** . <br> Jako název třetí a poslední úrovně zadejte **sestavování** . |
+        |**Úrovně**| Jako název první úrovně zadejte **Country (země** ). <br /> Vybrat **+ Přidat úroveň** <br /> Zadejte **město** druhé úrovně a pak vyberte **+ Přidat úroveň** . <br /> Jako název třetí a poslední úrovně zadejte **sestavování** . |
 
-    1. Vyberte **Uložit**.
+   1. Vyberte **Uložit**.
 
         [![Zobrazit novou hierarchii v zobrazení modelu.](media/v2-update-provision/tsi-add-hierarchy-and-view.png)](media/v2-update-provision/tsi-add-hierarchy-and-view.png#lightbox)
 
-1. Přejděte na **instance**. 
+1. Přejděte na **instance**.
 
     1. V části **Akce** úplně vpravo vyberte ikonu tužky a upravte první instanci s následujícími hodnotami:
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2019
-ms.openlocfilehash: 07c38cbd2d77a3cca594acd974705af35d8189b9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7718bd5cbc3c3fc3c9632818f769c05cd1617361
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516341"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321866"
 ---
 # <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants-legacy"></a>Shromažďování protokolů aktivit Azure do Azure Monitor napříč klienty Azure Active Directory (starší verze)
 
@@ -340,4 +340,5 @@ Posledním krokem je kontrola pracovního prostoru služby Log Analytics a ově�
 V tomto článku jste vytvořili aplikaci logiky, která načte protokoly aktivit Azure z centra událostí a pošle je do pracovního prostoru Log Analytics k analýze. Další informace o vizualizaci dat v pracovním prostoru, včetně vytváření řídicích panelů, najdete v kurzu vizualizace dat.
 
 > [!div class="nextstepaction"]
-> [Kurz vizualizace dat prohledávání protokolů](./../../azure-monitor/learn/tutorial-logs-dashboards.md)
+> [Kurz vizualizace dat prohledávání protokolů](../learn/tutorial-logs-dashboards.md)
+

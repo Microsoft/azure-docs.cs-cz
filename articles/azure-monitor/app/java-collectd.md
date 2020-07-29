@@ -3,21 +3,22 @@ title: Monitorování výkonu webové aplikace Java v systému Linux – Azure |
 description: Rozšířené monitorování výkonu aplikace vašeho webu Java pomocí shromážděného modulu plug-in pro Application Insights.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 62a723dad7e9f6c2bfdabde159968d507d2d5d41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 648d0e5adc289dfeb83a54c3dcb9ab7d25fc1cc4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537521"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322597"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>shromažďováno: metriky výkonu Linux v Application Insights
 
 
-Pokud chcete prozkoumat metriky výkonu systému Linux v [Application Insights](../../azure-monitor/app/app-insights-overview.md), [nainstalujte společně](https://collectd.org/)s modulem plug-in Application Insights. Toto open source řešení shromažďuje různé statistiky systému a sítě.
+Pokud chcete prozkoumat metriky výkonu systému Linux v [Application Insights](./app-insights-overview.md), [nainstalujte společně](https://collectd.org/)s modulem plug-in Application Insights. Toto open source řešení shromažďuje různé statistiky systému a sítě.
 
 V případě, že jste již [svou webovou službu Java][java]nastavili Application Insights, obvykle budete používat Collect. Poskytuje vám další data, která vám pomůžou vylepšit výkon a diagnostikovat problémy vaší aplikace. 
 
 ## <a name="get-your-instrumentation-key"></a>Získat klíč instrumentace
-V [portál Microsoft Azure](https://portal.azure.com)otevřete prostředek [Application Insights](../../azure-monitor/app/app-insights-overview.md) , ve kterém chcete zobrazit data. (Nebo [vytvořte nový prostředek](../../azure-monitor/app/create-new-resource.md ).)
+V [portál Microsoft Azure](https://portal.azure.com)otevřete prostředek [Application Insights](./app-insights-overview.md) , ve kterém chcete zobrazit data. (Nebo [vytvořte nový prostředek](./create-new-resource.md).)
 
 Poznamenejte si kopii klíče instrumentace, který identifikuje prostředek.
 
@@ -93,7 +94,7 @@ Vyloučení dat z konkrétních modulů plug-in nebo zdrojů dat:
 * Upravte konfigurační soubor. 
 * V `<Plugin ApplicationInsightsWriter>` přidejte řádky direktivy takto:
 
-| Směrnici | Efekt |
+| Směrnici | Účinek |
 | --- | --- |
 | `Exclude disk` |Vyloučit všechna data shromažďovaná `disk` modulem plug-in |
 | `Exclude disk:read,write` |Vylučte ze zdrojů s názvem `read` a `write` z `disk` modulu plug-in. |
@@ -104,7 +105,7 @@ Oddělte direktivy novým řádkem.
 *Na portálu se nezobrazují data*
 
 * Otevřete [vyhledávání][diagnostic] a zjistěte, jestli nezpracované události byly doručeny. Někdy trvá i déle, než se objeví v Průzkumníku metrik.
-* [Pro odchozí data možná budete muset nastavit výjimky brány firewall](../../azure-monitor/app/ip-addresses.md) .
+* [Pro odchozí data možná budete muset nastavit výjimky brány firewall](./ip-addresses.md) .
 * Povolte trasování v modulu plug-in Application Insights. Přidat tento řádek do `<Plugin ApplicationInsightsWriter>` :
   * `SDKLogger true`
 * Otevřete terminál a spusťte shromažďování v podrobném režimu, aby se zobrazily případné problémy, které hlásí:
@@ -120,13 +121,12 @@ Alternativní řešení: vylučte data shromážděná potížemi s zápisem mod
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[apiexceptions]: ../../azure-monitor/app/api-custom-events-metrics.md#track-exception
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
+[api]: ./api-custom-events-metrics.md
+[apiexceptions]: ./api-custom-events-metrics.md#track-exception
+[availability]: ./monitor-web-app-availability.md
+[diagnostic]: ./diagnostic-search.md
 [eclipse]: app-insights-java-eclipse.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../../azure-monitor/platform/metrics-charts.md
-
+[metrics]: ../platform/metrics-charts.md
 

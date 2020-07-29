@@ -6,27 +6,27 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: 0b18c34f8c0378d22d138b865d72fa4f351d7b8f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 80e87d6fdab6ecf15c241581f8c19d36b30d7e30
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073643"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327102"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Řešení pro správu Application Insights Connector (zastaralé)
 
 ![Symbol Application Insights](./media/app-insights-connector/app-insights-connector-symbol.png)
 
 >[!NOTE]
-> S podporou [dotazů mezi prostředky](../../azure-monitor/log-query/cross-workspace-query.md)už řešení pro správu Application Insights Connector není potřeba. Už se nepoužívá a odebírá se z Azure Marketplace společně s portálem OMS, který byl oficiálně zastaralý od 15. ledna 2019 pro komerční cloud Azure. Vyřadí se od 30. března 2019 pro státní správu Azure USA.
+> S podporou [dotazů mezi prostředky](../log-query/cross-workspace-query.md)už řešení pro správu Application Insights Connector není potřeba. Už se nepoužívá a odebírá se z Azure Marketplace společně s portálem OMS, který byl oficiálně zastaralý od 15. ledna 2019 pro komerční cloud Azure. Vyřadí se od 30. března 2019 pro státní správu Azure USA.
 >
 >Stávající připojení budou fungovat i do 30. června 2019.  V případě zastaralého portálu OMS neexistuje způsob, jak nakonfigurovat a odebrat existující připojení z portálu. Pokud chcete pomocí PowerShellu odebrat existující připojení, přečtěte si téma [Odebrání konektoru pomocí PowerShellu](#removing-the-connector-with-powershell) .
 >
->Pokyny k dotazování na data protokolu Application Insights pro více aplikací najdete v tématu [sjednocení více Azure Monitorch Application Insightsch prostředků](../log-query/unify-app-resource-data.md). Další informace o zastaralých portálech OMS najdete v tématu [Přesun portálu OMS do Azure](../../azure-monitor/platform/oms-portal-transition.md).
+>Pokyny k dotazování na data protokolu Application Insights pro více aplikací najdete v tématu [sjednocení více Azure Monitorch Application Insightsch prostředků](../log-query/unify-app-resource-data.md). Další informace o zastaralých portálech OMS najdete v tématu [Přesun portálu OMS do Azure](./oms-portal-transition.md).
 >
 > 
 
-Řešení konektoru služby Application Insights pomáhá diagnostikovat problémy s výkonem a porozumět tomu, co uživatelé s vaší aplikací dělají při monitorování pomocí [Application Insights](../../azure-monitor/app/app-insights-overview.md). Zobrazení stejné telemetrie aplikace, kterou vývojáři uvidí v Application Insights, jsou k dispozici v Log Analytics. Když ale aplikace Application Insights integruje s Log Analytics, je lepší viditelnost vašich aplikací tím, že bude mít data o provozu a aplikacích na jednom místě. Stejná zobrazení vám umožní spolupracovat s vývojáři vaší aplikace. Běžné pohledy můžou zkrátit čas na detekci a řešení problémů s aplikacemi i platformou.
+Řešení konektoru služby Application Insights pomáhá diagnostikovat problémy s výkonem a porozumět tomu, co uživatelé s vaší aplikací dělají při monitorování pomocí [Application Insights](../app/app-insights-overview.md). Zobrazení stejné telemetrie aplikace, kterou vývojáři uvidí v Application Insights, jsou k dispozici v Log Analytics. Když ale aplikace Application Insights integruje s Log Analytics, je lepší viditelnost vašich aplikací tím, že bude mít data o provozu a aplikacích na jednom místě. Stejná zobrazení vám umožní spolupracovat s vývojáři vaší aplikace. Běžné pohledy můžou zkrátit čas na detekci a řešení problémů s aplikacemi i platformou.
 
 Při použití řešení můžete:
 
@@ -44,12 +44,12 @@ Na rozdíl od většiny ostatních Log Analytics řešení nejsou shromažďová
 
 | Připojený zdroj | Podporováno | Popis |
 | --- | --- | --- |
-| [Agenti systému Windows](../../azure-monitor/platform/agent-windows.md) | No | Řešení neshromažďuje informace od agentů systému Windows. |
-| [Agenti systému Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | No | Řešení neshromažďuje informace od agentů systému Linux. |
-| [Skupina pro správu SCOM](../../azure-monitor/platform/om-agents.md) | No | Řešení neshromažďuje informace od agentů v připojené skupině pro správu systému SCOM. |
-| [Účet úložiště Azure](./resource-logs.md#send-to-log-analytics-workspace) | No | Řešení neumožňuje shromažďování informací z Azure Storage. |
+| [Agenti systému Windows](./agent-windows.md) | Ne | Řešení neshromažďuje informace od agentů systému Windows. |
+| [Agenti systému Linux](../learn/quick-collect-linux-computer.md) | Ne | Řešení neshromažďuje informace od agentů systému Linux. |
+| [Skupina pro správu SCOM](./om-agents.md) | Ne | Řešení neshromažďuje informace od agentů v připojené skupině pro správu systému SCOM. |
+| [Účet úložiště Azure](./resource-logs.md#send-to-log-analytics-workspace) | Ne | Řešení neumožňuje shromažďování informací z Azure Storage. |
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pokud chcete získat přístup k informacím o Application Insights Connector, musíte mít předplatné Azure.
 - Musíte mít minimálně jeden nakonfigurovaný prostředek Application Insights.
@@ -57,7 +57,7 @@ Na rozdíl od většiny ostatních Log Analytics řešení nejsou shromažďová
 
 ## <a name="configuration"></a>Konfigurace
 
-1. Povolte řešení Azure Web Apps Analytics z [webu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) nebo pomocí procesu popsaného v tématu [Přidání Log Analytics řešení z galerie řešení](../../azure-monitor/insights/solutions.md).
+1. Povolte řešení Azure Web Apps Analytics z [webu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) nebo pomocí procesu popsaného v tématu [Přidání Log Analytics řešení z galerie řešení](../insights/solutions.md).
 2. Přejděte na [Azure Portal](https://portal.azure.com). Pro otevření Application Insights vyberte **všechny služby** . Pak vyhledejte Application Insights. 
 3. V části **předplatná**vyberte předplatné, které má Application Insights prostředky, a pak v části **název**vyberte jednu nebo více aplikací.
 4. Klikněte na **Uložit**.
@@ -144,7 +144,7 @@ Chcete-li vytvořit kontingenční tabulku, klikněte na tlačítko se třemi te
 
 ### <a name="sample-corrected-data"></a>Ukázka – opravená data
 
-Application Insights poskytuje *[opravu vzorkování](../../azure-monitor/app/sampling.md)* , která pomůže snížit provoz telemetrie. Když povolíte vzorkování v aplikaci Application Insights, získáte omezený počet záznamů v Application Insights i v Log Analytics. I když se konzistence dat zachová na **Application Insights Connector** stránce a perspektivách, měli byste ručně opravit ukázková data pro vlastní dotazy.
+Application Insights poskytuje *[opravu vzorkování](../app/sampling.md)* , která pomůže snížit provoz telemetrie. Když povolíte vzorkování v aplikaci Application Insights, získáte omezený počet záznamů v Application Insights i v Log Analytics. I když se konzistence dat zachová na **Application Insights Connector** stránce a perspektivách, měli byste ručně opravit ukázková data pro vlastní dotazy.
 
 Tady je příklad opravy vzorkování v dotazu prohledávání protokolu:
 
@@ -163,8 +163,8 @@ Vzorkování ovlivní pouze celkový počet položek, které aplikace generuje. 
 - Dostupnost
 - Výjimky
 - Žádosti
-- Zobrazení stránek – pro váš pracovní prostor, abyste mohli přijímat zobrazení stránek, musíte nakonfigurovat aplikace, aby tyto informace shromáždily. Další informace najdete v tématu [PageViews](../../azure-monitor/app/api-custom-events-metrics.md#page-views).
-- Vlastní události – chcete-li, aby váš pracovní prostor přijímal vlastní události, je nutné aplikace nakonfigurovat tak, aby tyto informace shromáždily. Další informace najdete v tématu [TrackEvent](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
+- Zobrazení stránek – pro váš pracovní prostor, abyste mohli přijímat zobrazení stránek, musíte nakonfigurovat aplikace, aby tyto informace shromáždily. Další informace najdete v tématu [PageViews](../app/api-custom-events-metrics.md#page-views).
+- Vlastní události – chcete-li, aby váš pracovní prostor přijímal vlastní události, je nutné aplikace nakonfigurovat tak, aby tyto informace shromáždily. Další informace najdete v tématu [TrackEvent](../app/api-custom-events-metrics.md#trackevent).
 
 Data jsou přijímána Log Analytics z Application Insights, jakmile budou k dispozici.
 
@@ -245,13 +245,13 @@ Záznam s *typem* *ApplicationInsights* se vytvoří pro každý typ vstupních 
 | Vlastnost | Popis |
 | --- | --- |
 | Typ | ApplicationInsights |
-| TelemetryType | Request |
+| TelemetryType | Žádost |
 | ResponseCode | Odpověď HTTP se odeslala klientovi. |
 | RequestSuccess | Označuje úspěch nebo neúspěch. True nebo false |
 | ID požadavku | ID pro jednoznačnou identifikaci žádosti |
 | Žádost o zadání | Základ pro GET/POST + URL |
 | RequestDuration | Doba trvání žádosti v sekundách |
-| Adresa URL | Adresa URL požadavku, který nezahrnuje hostitele |
+| URL | Adresa URL požadavku, který nezahrnuje hostitele |
 | Hostitel | Hostitel webového serveru |
 | URLBase | Úplná adresa URL požadavku |
 | ApplicationProtocol | Typ protokolu používaného aplikací |
@@ -318,4 +318,5 @@ ApplicationInsights | summarize by ApplicationName
 
 ## <a name="next-steps"></a>Další kroky
 
-- K zobrazení podrobných informací o aplikacích Application Insights použijte [hledání v protokolu](../../azure-monitor/log-query/log-query-overview.md) .
+- K zobrazení podrobných informací o aplikacích Application Insights použijte [hledání v protokolu](../log-query/log-query-overview.md) .
+

@@ -8,11 +8,14 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: wesmc
-ms.openlocfilehash: 03f9d58cab725335b0f4090ac1a7289c32c0af7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- 'Role: Cloud Development'
+ms.openlocfilehash: 5b86803b763039846e2101b9caf0232aafa4fa24
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81640550"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327459"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Připojit malinu pi k Azure IoT Hub (C)
 
@@ -44,13 +47,13 @@ Připojte malinu PI ke službě IoT Hub, kterou vytvoříte. Pak spustíte ukáz
 
 * Jak odesílat data ze senzorů do služby IoT Hub.
 
-## <a name="what-you-need"></a>Co potřebujete
+## <a name="what-you-need"></a>Co budete potřebovat
 
-![Co potřebujete](./media/iot-hub-raspberry-pi-kit-c-get-started/0-starter-kit.png)
+![Co budete potřebovat](./media/iot-hub-raspberry-pi-kit-c-get-started/0-starter-kit.png)
 
 * Deska Malina Pi 2 nebo malin PI 3.
 
-* Aktivní předplatné Azure. Pokud účet Azure nemáte, [Vytvořte si bezplatný zkušební účet Azure](https://azure.microsoft.com/free/) během několika minut.
+* Musíte mít aktivní předplatné Azure. Pokud účet Azure nemáte, [Vytvořte si bezplatný zkušební účet Azure](https://azure.microsoft.com/free/) během několika minut.
 
 * Monitor, klávesnice USB a myš, které se připojují k Pi.
 

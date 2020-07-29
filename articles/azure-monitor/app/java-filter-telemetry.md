@@ -3,11 +3,12 @@ title: Filtrování telemetrie Azure Application Insights ve webové aplikaci Ja
 description: Zmenšení provozu telemetrie filtrováním událostí, které nepotřebujete monitorovat.
 ms.topic: conceptual
 ms.date: 3/14/2019
-ms.openlocfilehash: 020e54132e0ca0a9f9ccf0236f94515877015637
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd53a0e02eb43bdf7cde4952ed4835c6d1cdd126
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77659913"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322580"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Filtrování telemetrie ve webové aplikaci Java
 
@@ -22,7 +23,7 @@ Filtry dodané po box zahrnují:
 
 > [!NOTE]
 > Filtry zkosí metriky vaší aplikace. Můžete se třeba rozhodnout, že při diagnostice pomalých odpovědí nastavíte filtr, který zahodí dobu rychlé odezvy. Je ale nutné si uvědomit, že průměrné doby odezvy hlášené nástrojem Application Insights budou pomalejší než skutečná rychlost a počet požadavků bude menší než skutečný počet.
-> Pokud se to týká, použijte místo toho [vzorkování](../../azure-monitor/app/sampling.md) .
+> Pokud se to týká, použijte místo toho [vzorkování](./sampling.md) .
 
 ## <a name="setting-filters"></a>Nastavení filtrů
 
@@ -151,7 +152,7 @@ Odfiltrovat telemetrii pro konkrétní syntetické zdroje:
 
 ### <a name="telemetry-event-filter"></a>Filtr událostí telemetrie
 
-Filtruje vlastní události (protokolované pomocí [TrackEvent ()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)).
+Filtruje vlastní události (protokolované pomocí [TrackEvent ()](./api-custom-events-metrics.md#trackevent)).
 
 
 ```XML
@@ -167,7 +168,7 @@ Filtruje vlastní události (protokolované pomocí [TrackEvent ()](../../azure-
 
 ### <a name="trace-telemetry-filter"></a>Trasovat filtr telemetrie
 
-Filtruje trasování protokolů (protokolované pomocí [TrackTrace ()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) nebo [kolektoru rozhraní protokolování](java-trace-logs.md)).
+Filtruje trasování protokolů (protokolované pomocí [TrackTrace ()](./api-custom-events-metrics.md#tracktrace) nebo [kolektoru rozhraní protokolování](java-trace-logs.md)).
 
 ```XML
 
@@ -267,4 +268,5 @@ Budete muset vytvořit vlastní parametry filtru v nástroji `application.proper
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vzorkování](../../azure-monitor/app/sampling.md) – zvažte vzorkování jako alternativu, která nezkosí vaše metriky.
+* [Vzorkování](./sampling.md) – zvažte vzorkování jako alternativu, která nezkosí vaše metriky.
+

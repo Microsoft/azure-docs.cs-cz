@@ -4,14 +4,15 @@ description: Specifikace pro virtuální počítače řady H-Series.
 author: ju-shim
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: jushiman
-ms.openlocfilehash: f79dcb8886985d60a1ed82e1a77d231cf7d3ad24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34f89656fc56b27edafeff0e60874a00139266dd
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678677"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87268947"
 ---
 # <a name="h-series"></a>H-series
 
@@ -89,8 +90,8 @@ Azure Marketplace má mnoho distribucí systému Linux, které podporují připo
 ## <a name="other-sizes"></a>Jiné velikosti
 
 - [Obecné účely](sizes-general.md)
-- [Optimalizované z hlediska paměti](sizes-memory.md)
-- [Optimalizované z hlediska úložiště](sizes-storage.md)
+- [Optimalizované pro paměť](sizes-memory.md)
+- [Optimalizované pro úložiště](sizes-storage.md)
 - [Optimalizované z hlediska GPU](sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 - [Předchozí generace](sizes-previous-gen.md)

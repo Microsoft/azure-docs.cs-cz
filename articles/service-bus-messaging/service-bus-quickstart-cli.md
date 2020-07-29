@@ -6,12 +6,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: ed09a72fd5eed72e7a07fefed53bf010a543b658
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.custom: devx-track-java
+ms.openlocfilehash: 26748b6847ab7061b0038ef9ca18f1b721d320e0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85337389"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320761"
 ---
 # <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>Rychlý Start: použití rozhraní příkazového řádku Azure k vytvoření fronty Service Bus
 V tomto rychlém startu se dozvíte, jak odesílat a přijímat zprávy pomocí Service Bus pomocí rozhraní příkazového řádku Azure a knihovny Java v Service Bus. Pokud vás zajímají techničtější podrobnosti, můžete si [přečíst vysvětlení](#understand-the-sample-code) klíčových prvků vzorového kódu.

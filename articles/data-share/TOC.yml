@@ -54,7 +54,7 @@
     - name: REST API
       href: /rest/api/datashare
     - name: Azure CLI
-      href: azure-cli-references-for-data-share.md
+      href: 'https://docs.microsoft.com/cli/azure/azure-cli-reference-for-data-share?view=azure-cli-latest'
 - name: Zdroje a prostředky
   items:
     - name: Stránka s dotazy na Microsoft Q&A

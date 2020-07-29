@@ -4,12 +4,14 @@ description: Tento článek popisuje, jak vytvářet, nasazovat a ladit aplikace
 author: peterpogorski
 ms.topic: article
 ms.date: 06/29/2018
+ms.custom: devx-track-java
 ms.author: pepogors
-ms.openlocfilehash: 999dbb8c36c4e0413f287b2a73cf39ab4acd15f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc65deb924a9f3367c2ea1d7c71544743ccf2697
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75610042"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327357"
 ---
 # <a name="develop-java-service-fabric-applications-with-visual-studio-code"></a>Vývoj aplikací Service Fabric Java pomocí Visual Studio Code
 
@@ -91,7 +93,7 @@ Přidejte komentář na řádek 6 (použijte ' # ') a přidejte do dolní část
 
    ![Ikona ladění v pracovním prostoru VS Code](./media/service-fabric-develop-java-applications-with-vs-code/debug-icon-workspace.png)
 
-3. V launch.jsv souboru nastavte hodnotu portu v konfiguraci s názvem **Debug (připojit)** na **8001**. Uložte soubor.
+3. V launch.jsv souboru nastavte hodnotu portu v konfiguraci s názvem **Debug (připojit)** na **8001**. Soubor uložte.
 
    ![Konfigurace ladění pro launch.jsv](./media/service-fabric-develop-java-applications-with-vs-code/launch-json-java.png)
 

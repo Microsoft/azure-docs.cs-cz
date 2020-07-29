@@ -2,13 +2,13 @@
 title: Označení prostředků, skupin prostředků a předplatných pro logickou organizaci
 description: Ukazuje, jak použít značky k uspořádání prostředků Azure k fakturaci a správě.
 ms.topic: conceptual
-ms.date: 07/01/2020
-ms.openlocfilehash: 9dd025818a64a8ece1f4218a8341a40ecc617829
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.date: 07/27/2020
+ms.openlocfilehash: fa56fac79855b438a0cd1c10ed1008d69ca3e2fe
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056918"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323872"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Použití značek k uspořádání prostředků Azure a hierarchie správy
 
@@ -438,7 +438,7 @@ Pokud chcete uložit mnoho hodnot v jedné značce, použijte řetězec JSON, kt
 
 ### <a name="apply-tags-from-resource-group"></a>Použít značky ze skupiny prostředků
 
-Chcete-li použít značky ze skupiny prostředků na prostředek, použijte funkci [Resource](../templates/template-functions-resource.md#resourcegroup) . Při získávání hodnoty značky použijte `tags[tag-name]` syntaxi namísto `tags.tag-name` syntaxe, protože některé znaky nejsou v zápisu tečky správně analyzovány.
+Chcete-li použít značky ze skupiny prostředků na prostředek, použijte funkci [Resource ()](../templates/template-functions-resource.md#resourcegroup) . Při získávání hodnoty značky použijte `tags[tag-name]` syntaxi namísto `tags.tag-name` syntaxe, protože některé znaky nejsou v zápisu tečky správně analyzovány.
 
 ```json
 {
@@ -578,7 +578,7 @@ Značky použité pro skupinu prostředků nebo odběr nejsou děděny prostřed
 
 Můžete je použít třeba k seskupení údajů o fakturaci. Pokud například používáte odlišný virtuální počítač pro každou organizační složku, můžete pomocí značek seskupit údaje o využití podle nákladových středisek. Značky lze použít také ke kategorizaci nákladů podle prostředí modulu spuštění, jako je například fakturované využití virtuálních počítačů běžících v produkčním prostředí.
 
-Můžete načítat informace o značkách prostřednictvím [rozhraní API pro využití prostředků Azure a ratecard](../../cost-management-billing/manage/usage-rate-card-overview.md) nebo souborů hodnot oddělených čárkami (CSV). Soubor využití si můžete stáhnout z [centrum účtů Azure](https://account.azure.com/Subscriptions) nebo Azure Portal. Další informace najdete v tématech [stažení nebo zobrazení fakturačních faktur Azure a dat o denním využití](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md). Při stahování souboru využití z Centrum účtů Azure vyberte možnost **verze 2**. Pro služby, které podporují značky s fakturací, se značky zobrazí ve sloupci **značky** .
+Můžete načíst informace o značkách prostřednictvím [rozhraní API pro využití prostředků Azure a sazebních karet](../../cost-management-billing/manage/usage-rate-card-overview.md) nebo souboru hodnot oddělených čárkami (CSV). Soubor využití si můžete stáhnout z [centrum účtů Azure](https://account.azure.com/Subscriptions) nebo Azure Portal. Další informace najdete v tématech [stažení nebo zobrazení fakturačních faktur Azure a dat o denním využití](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md). Při stahování souboru využití z Centrum účtů Azure vyberte možnost **verze 2**. Pro služby, které podporují značky s fakturací, se značky zobrazí ve sloupci **značky** .
 
 Informace o REST API operacích najdete v [referenčních informacích o fakturačních REST API Azure](/rest/api/billing/).
 
@@ -596,6 +596,8 @@ Na značky se vztahují následující omezení:
    > V současné době Azure DNS zóny a služby Traffic Manager také nedovolují použití mezer ve značce.
    >
    > Přední dveře Azure nepodporují použití `#` v názvu značky.
+   >
+   > Azure Automation a Azure CDN podporují pouze 15 značek u prostředků.
 
 ## <a name="next-steps"></a>Další kroky
 

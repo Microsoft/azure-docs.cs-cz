@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: d7c3613a0ddce217e9d07c3fc2eba55b78c53a1b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7421162ed68a879d9f935a3efd5c6267e159a648
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516511"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324297"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Vytvoření pracovního prostoru Log Analytics pomocí Azure CLI 2,0
 
@@ -24,8 +24,8 @@ Azure CLI 2.0 slouží k vytváření a správě prostředků Azure z příkazov
 
 Další zdroje, jako jsou virtuální počítače Azure a virtuální počítače s Windows nebo Linux ve vašem prostředí, najdete v následujících tématech:
 
-* [Shromažďování dat z virtuálních počítačů Azure](../learn/quick-collect-azurevm.md)
-* [Shromažďování dat z hybridního počítače se systémem Linux](../learn/quick-collect-linux-computer.md)
+* [Shromažďování dat z virtuálních počítačů Azure](./quick-collect-azurevm.md)
+* [Shromažďování dat z hybridního počítače se systémem Linux](./quick-collect-linux-computer.md)
 * [Shromažďování dat z hybridního počítače s Windows](quick-collect-windows-computer.md)
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
@@ -133,3 +133,4 @@ Teď, když máte dostupný pracovní prostor, můžete nakonfigurovat shromaž�
 * Přidejte [System Center Operations Manager jako zdroj dat](../platform/om-agents.md) , abyste mohli shromažďovat data z agentů, kteří hlásí skupinu pro správu Operations Manager, a uložit je do pracovního prostoru Log Analytics.  
 * Připojte [Configuration Manager](../platform/collect-sccm.md) k importu počítačů, které jsou členy kolekcí v hierarchii.  
 * Projděte si dostupná [řešení pro monitorování](../insights/solutions.md) a postup přidání nebo odebrání řešení z pracovního prostoru.
+

@@ -7,12 +7,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 07/3/2019
 ms.custom: mvc
-ms.openlocfilehash: caf8b1899cad95ade6297e78e8f2cf35939ef189
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a08e00b2debce970bdbd385b785806c8636e5946
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77661630"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318415"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Vytváření vlastních řídicích panelů klíčového ukazatele výkonu pomocí Azure Application Insights
 
@@ -31,7 +31,7 @@ Můžete vytvořit více řídicích panelů na portálu Azure Portal, aby každ
 
 Pro absolvování tohoto kurzu potřebujete:
 
-- Nasadit do Azure aplikaci .NET a [povolit sadu Application Insights SDK](../../azure-monitor/app/asp-net.md).
+- Nasadit do Azure aplikaci .NET a [povolit sadu Application Insights SDK](../app/asp-net.md).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
@@ -57,7 +57,7 @@ Jeden řídicí panel může obsahovat prostředky z více aplikací, skupin pro
 
 
 1. Vyberte prostředek **Application Insights** na domovské obrazovce.
-2. V podokně **Přehled** klikněte na ikonu](media/tutorial-app-dashboards/pushpin.png) připnout ikonu ![připnutí a přidejte dlaždici na poslední prohlížený řídicí panel.  
+2. V podokně **Přehled** klikněte na ![ ikonu Připnout ikonu připnutí ](media/tutorial-app-dashboards/pushpin.png) a přidejte dlaždici na poslední prohlížený řídicí panel.  
  
 3. V pravém horním rohu se zobrazí oznámení o tom, že se dlaždice připnula na váš řídicí panel. Klikněte na tlačítko **připnuté na řídicí panel** v oznámení a vraťte se na řídicí panel nebo použijte podokno řídicí panel.
 4. Tato dlaždice se teď přidá na řídicí panel. Chcete-li změnit umístění dlaždice, vyberte možnost **Upravit** . Klikněte na něj a přetáhněte ho na místo a pak klikněte na **hotové přizpůsobení**. Na řídicím panelu teď máte dlaždici s užitečnými informacemi.
@@ -127,4 +127,5 @@ Vzhledem k tomu, že Azure Application Insights log (Analytics) je samostatná s
 Teď, když jste se naučili vytvářet vlastní řídicí panely, podívejte se na zbytek dokumentace Application Insights včetně případové studie.
 
 > [!div class="nextstepaction"]
-> [Hloubková diagnostika](../../azure-monitor/app/devops.md)
+> [Hloubková diagnostika](../app/devops.md)
+

@@ -4,12 +4,12 @@ description: Naučte se, jak povolit monitorování pro nový cluster Azure Kube
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 86ace49ea60bf1bd11633b5a883401f678ecaf8d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7706df4f457167f5bb4d17f1d506594615364380
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516630"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320319"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>Povolit monitorování nového clusteru Azure Kubernetes Service (AKS)
 
@@ -29,7 +29,7 @@ Pokud chcete povolit monitorování nového clusteru AKS vytvořeného pomocí A
 
 ## <a name="enable-using-terraform"></a>Povolit pomocí Terraformu
 
-Pokud [nasazujete nový cluster AKS pomocí terraformu](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md), zadáte argumenty požadované v profilu [k vytvoření pracovního prostoru Log Analytics](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html) , pokud se nerozhodnete zadat existující. 
+Pokud [nasazujete nový cluster AKS pomocí terraformu](/azure/developer/terraform/create-k8s-cluster-with-tf-and-aks), zadáte argumenty požadované v profilu [k vytvoření pracovního prostoru Log Analytics](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html) , pokud se nerozhodnete zadat existující. 
 
 >[!NOTE]
 >Pokud se rozhodnete používat Terraformu, musíte mít spuštěného poskytovatele Terraformu Azure RM verze 1.17.0 nebo vyšší.
@@ -118,3 +118,4 @@ Po několika minutách se příkaz dokončí a vrátí informace o řešení ve 
 * Pokud při pokusu o připojení řešení dochází k problémům, přečtěte si [příručku k odstraňování potíží](container-insights-troubleshoot.md) .
 
 * Díky monitorování s povoleným shromažďováním informací o stavu a využití prostředků v clusteru AKS a úlohách, které se na nich běží, se naučíte, [Jak používat](container-insights-analyze.md) Azure monitor pro kontejnery.
+

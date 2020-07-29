@@ -12,17 +12,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-java
 ms.date: 09/11/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: 16191dfd33d5211fbd082bc1f7e458a238bb2138
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: fae8e4d57f8b0fc1b89309d68bf7e21dce86f3fa
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224210"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317514"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-android-apps-using-azure-notification-hubs"></a>Kurz: odesílání nabízených oznámení do konkrétních aplikací pro Android pomocí Azure Notification Hubs
 
@@ -35,9 +35,9 @@ V tomto kurzu provedete následující kroky:
 > [!div class="checklist"]
 > * Vytvoření projektu back-endového webového rozhraní API pro ověřování uživatelů  
 > * Aktualizace aplikace pro Android
-> * Testování aplikace
+> * Otestování aplikace
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před provedením tohoto kurzu dokončete [kurz: nabízená oznámení na zařízení s Androidem pomocí služby Azure Notification Hubs a Firebase cloudového zasílání zpráv](notification-hubs-android-push-notification-google-fcm-get-started.md) .
 
@@ -261,7 +261,7 @@ Dalším krokem je aktualizovat aplikaci pro Android vytvořenou v [kurzu: nabí
     ```
 
     Tato součást implementuje volání REST potřebné ke kontaktování back-endu aplikace za účelem registrace nabízených oznámení. Kromě toho místně ukládá *ID registrací* vytvořená centrem oznámení, jak je podrobně popsáno v tématu popisujícím [registraci z back-endu aplikace](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend). Když kliknete na tlačítko **Přihlásit** , použije se autorizační token uložený v místním úložišti.
-4. Ve své `MainActivity` třídě a přidejte pole pro `RegisterClient` třídu a řetězec pro koncový bod back-endu ASP.NET. Nezapomeňte nahradit `<Enter Your Backend Endpoint>` skutečným koncovým bodem vašeho back-endu, který jste předtím získali. Například `http://mybackend.azurewebsites.net`.
+4. Ve své `MainActivity` třídě a přidejte pole pro `RegisterClient` třídu a řetězec pro koncový bod back-endu ASP.NET. Nezapomeňte nahradit `<Enter Your Backend Endpoint>` skutečným koncovým bodem vašeho back-endu, který jste předtím získali. Například, `http://mybackend.azurewebsites.net`.
 
     ```java
     private RegisterClient registerClient;
@@ -481,7 +481,7 @@ Dalším krokem je aktualizovat aplikaci pro Android vytvořenou v [kurzu: nabí
     ```
 14. Sestavte projekt.
 
-## <a name="test-the-app"></a>Testování aplikace
+## <a name="test-the-app"></a>Otestování aplikace
 
 1. Pomocí Android Studia spusťte aplikaci na zařízení nebo v emulátoru.
 2. V aplikaci pro Android zadejte uživatelské jméno a heslo. Oba řetězce musí mít stejnou hodnotu a nesmí obsahovat mezery ani speciální znaky.

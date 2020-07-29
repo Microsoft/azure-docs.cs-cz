@@ -6,13 +6,14 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: b0ae621791fb989fbb1fdab6a045bc8e9707bc74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 989399bcc86547b914deb442fa9793f6d79d0606
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83846524"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325317"
 ---
-# <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Propojení Azure s nástroji ITSM s využitím ITSM konektoru
+# <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Připojení Azure k nástrojům ITSM pomocí konektoru ITSM
 
 ![Symbol IT Service Management Connectoru](media/itsmc-overview/itsmc-symbol.png)
 
@@ -77,10 +78,10 @@ Pro vytvoření připojení budete muset nástroj ITSM použít k tomu, aby bylo
 
 V závislosti na ITSM produktu, ke kterému se připojujete, použijte následující postup:
 
-- [System Center Service Manager (SCSM)](../../azure-monitor/platform/itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
-- [ServiceNow](../../azure-monitor/platform/itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
-- [Prov](../../azure-monitor/platform/itsmc-connections.md#connect-provance-to-it-service-management-connector-in-azure)  
-- [Cherwell](../../azure-monitor/platform/itsmc-connections.md#connect-cherwell-to-it-service-management-connector-in-azure)
+- [System Center Service Manager (SCSM)](./itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
+- [ServiceNow](./itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
+- [Prov](./itsmc-connections.md#connect-provance-to-it-service-management-connector-in-azure)  
+- [Cherwell](./itsmc-connections.md#connect-cherwell-to-it-service-management-connector-in-azure)
 
 Jakmile budete mít připravenou nástroje ITSM, vytvořte připojení pomocí následujících kroků:
 
@@ -93,7 +94,7 @@ Jakmile budete mít připravenou nástroje ITSM, vytvořte připojení pomocí n
 
    ![Přidat připojení ITSM](media/itsmc-overview/add-new-itsm-connection.png)
 
-4. Zadejte nastavení připojení, jak je popsáno v [tématu Konfigurace připojení ITSMC k článku ITSM Products/Services](../../azure-monitor/platform/itsmc-connections.md).
+4. Zadejte nastavení připojení, jak je popsáno v [tématu Konfigurace připojení ITSMC k článku ITSM Products/Services](./itsmc-connections.md).
 
    > [!NOTE]
    >
@@ -150,13 +151,13 @@ Data incidentu a žádosti o změnu lze vizuálně vylepšovat pomocí řídicí
 
 Můžete také vizualizovat incidenty synchronizované s ovlivněnými počítači v rámci řešení Service Map.
 
-Service Map automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikaci mezi službami. Umožňuje zobrazit servery přirozeným způsobem – jako propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy a porty v jakékoli architektuře propojené pomocí protokolu TCP a nevyžaduje přitom žádnou konfiguraci kromě instalace agenta. [Další informace](../../azure-monitor/insights/service-map.md).
+Service Map automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikaci mezi službami. Umožňuje zobrazit servery přirozeným způsobem – jako propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy a porty v jakékoli architektuře propojené pomocí protokolu TCP a nevyžaduje přitom žádnou konfiguraci kromě instalace agenta. [Přečtěte si další informace](../insights/service-map.md).
 
 Pokud používáte řešení Service Map, můžete zobrazit položky oddělení služeb vytvořené v řešeních ITSM, jak je znázorněno v následujícím příkladu:
 
 ![Log Analytics obrazovce](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-Další informace: [Service map](../../azure-monitor/insights/service-map.md)
+Další informace: [Service map](../insights/service-map.md)
 
 
 ## <a name="additional-information"></a>Další informace
@@ -227,7 +228,7 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 - Plánované koncové datum
 - Datum zahájení práce
 - Datum ukončení práce
-- Description
+- Popis
 - Počítač
 
 ## <a name="output-data-for-a-servicenow-incident"></a>Výstupní data pro incident ServiceNow
@@ -274,7 +275,7 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 | PlannedEndDate_t  |   Plánované koncové datum |
 | WorkStartDate_t  | Skutečné datum zahájení |
 | WorkEndDate_t | Skutečné datum ukončení|
-| Description_s | Description |
+| Description_s | Popis |
 | Počítač  | Položka konfigurace |
 
 
@@ -284,7 +285,7 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
    - Ujistěte se, že jste správně zadali uživatelské jméno, heslo, ID klienta a tajný klíč klienta pro každé připojení.  
    - Zkontrolujte, jestli máte v odpovídajícím ITSM produktu dostatečná oprávnění pro vytvoření připojení.  
    - Pro Service Manager připojení,  
-   - Zajistěte, aby byla webová aplikace úspěšně nasazena a vytvořilo se hybridní připojení. Pokud chcete ověřit, že se připojení úspěšně navázalo na místním Service Manager počítači, přejděte na adresu URL webové aplikace, jak je popsáno v dokumentaci pro vytvoření [hybridního připojení](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection).  
+   - Zajistěte, aby byla webová aplikace úspěšně nasazena a vytvořilo se hybridní připojení. Pokud chcete ověřit, že se připojení úspěšně navázalo na místním Service Manager počítači, přejděte na adresu URL webové aplikace, jak je popsáno v dokumentaci pro vytvoření [hybridního připojení](./itsmc-connections.md#configure-the-hybrid-connection).  
 
 2. Pokud se data z ServiceNow nesynchronizují Log Analytics, ujistěte se, že instance ServiceNow není v režimu spánku. Instance pro vývoj v ServiceNow se někdy po dlouhou dobu nečinným přechodem do režimu spánku. Jinak nahlaste problém.
 3. Pokud se Log Analytics výstrahy aktivují, ale pracovní položky se nevytvoří v produktu ITSM nebo položky konfigurace nejsou vytvořené/propojené s pracovními položkami nebo pro jiné obecné informace, podívejte se do následujících umístění:
@@ -294,7 +295,7 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Řešení potíží s nasazením Service Manager Web App
 1.  V případě jakýchkoli problémů s nasazením webové aplikace se ujistěte, že máte dostatečná oprávnění v předplatném, zmíněné pro vytváření a nasazování prostředků.
 2.  Pokud se při spuštění [skriptu](itsmc-service-manager-script.md)zobrazí chyba **"odkaz na objekt není nastaven na instanci objektu"** , ujistěte se, že jste zadali platné hodnoty v části **Konfigurace uživatele** .
-3.  Pokud se vám nepodaří vytvořit obor názvů služby Service Bus Relay, zajistěte, aby byl v předplatném zaregistrován požadovaný poskytovatel prostředků. Pokud není zaregistrován, ručně vytvořte obor názvů služby Service Bus Relay z Azure Portal. Můžete ho také vytvořit při [vytváření hybridního připojení](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection) z Azure Portal.
+3.  Pokud se vám nepodaří vytvořit obor názvů služby Service Bus Relay, zajistěte, aby byl v předplatném zaregistrován požadovaný poskytovatel prostředků. Pokud není zaregistrován, ručně vytvořte obor názvů služby Service Bus Relay z Azure Portal. Můžete ho také vytvořit při [vytváření hybridního připojení](./itsmc-connections.md#configure-the-hybrid-connection) z Azure Portal.
 
 
 ## <a name="contact-us"></a>Kontaktujte nás
@@ -302,4 +303,5 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 Pokud máte jakékoli dotazy nebo připomínky ke konektoru pro IT služby IT, kontaktujte nás na adrese [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com) .
 
 ## <a name="next-steps"></a>Další kroky
-[Přidejte ITSM produkty/služby do konektoru správy služeb IT](../../azure-monitor/platform/itsmc-connections.md).
+[Přidejte ITSM produkty/služby do konektoru správy služeb IT](./itsmc-connections.md).
+

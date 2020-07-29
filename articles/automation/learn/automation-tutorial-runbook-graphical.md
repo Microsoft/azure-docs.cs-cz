@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: 53031efa831f788fe0fe58146496b427f4cfb4db
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: fa92cd4f4cba63eee09714813954af9fa9c9c4ea
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185530"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290958"
 ---
 # <a name="tutorial-create-a-graphical-runbook"></a>Kurz: Vytvoření grafického Runbooku
 
@@ -25,13 +25,14 @@ V tomto kurzu se naučíte:
 > * Spuštění a sledování stavu úlohy Runbooku
 > * Aktualizace Runbooku na spuštění virtuálního počítače Azure s parametry Runbooku a podmíněnými odkazy
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
 * Předplatné Azure. Pokud ještě žádné nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Účet Automation](../index.yml), abyste si mohli runbook podržet a mohli ověřovat prostředky Azure. Tento účet musí mít oprávnění ke spuštění a zastavení virtuálního počítače.
 * Virtuální počítač Azure. Vzhledem k tomu, že tento počítač zastavíte a spustíte, neměli by se jednat o produkční virtuální počítač.
+* V případě potřeby [importujte moduly Azure](../shared-resources/modules.md) nebo [moduly pro aktualizaci](../automation-update-azure-modules.md) na základě používaných rutin.
 
 ## <a name="step-1---create-runbook"></a>Krok 1 – vytvoření runbooku
 

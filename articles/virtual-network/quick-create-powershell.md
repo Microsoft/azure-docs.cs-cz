@@ -1,7 +1,7 @@
 ---
 title: Vytvoření virtuální sítě – rychlý Start – Azure PowerShell
 titlesuffix: Azure Virtual Network
-description: V tomto rychlém startu zjistíte, jak vytvořit virtuální síť pomocí webu Azure Portal. Virtuální síť umožňuje prostředkům Azure, jako jsou virtuální počítače, komunikovat soukromě mezi sebou a s internetem.
+description: V tomto rychlém startu vytvoříte virtuální síť pomocí Azure Portal. Virtuální síť umožňuje prostředkům Azure komunikovat mezi sebou a s internetem.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: kumud
-ms.openlocfilehash: 1d30b35264707c59c899cc3a224e4affa2a4696e
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: e547da3d1a26a7dcc110a8349dbae3c7e3f29e0b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84707459"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291931"
 ---
 # <a name="quickstart-create-a-virtual-network-using-powershell"></a>Rychlý start: Vytvoření virtuální sítě pomocí PowerShellu
 

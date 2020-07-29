@@ -7,13 +7,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 07/17/2017
+ms.custom: devx-track-java
 ms.author: cynthn
-ms.openlocfilehash: 6f73abe108ca9c33a8ec6865a760400d16393e51
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d4ad1c46aa023f30a2d33ef11e576aa29607b273
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508487"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325419"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Vytváření a správa virtuálních počítačů s Windows v Azure pomocí Java
 
@@ -106,7 +107,7 @@ Provedení těchto kroků trvá přibližně 20 minut.
     </dependency>
     ```
 
-3. Uložte soubor.
+3. Soubor uložte.
 
 ## <a name="create-credentials"></a>Vytvořit pověření
 
@@ -129,7 +130,7 @@ Než začnete tento krok, ujistěte se, že máte přístup k [instančnímu obj
 
     Nahraďte ** &lt; ID &gt; ** předplatného identifikátorem vašeho předplatného, ** &lt; ID &gt; aplikace** s identifikátorem aplikace služby Active ** &lt; &gt; ** Directory, klíčem pro ověřování a klíčovým klíčem aplikace a ** &lt; ID &gt; tenanta** s identifikátorem tenanta.
 
-2. Uložte soubor.
+2. Soubor uložte.
 3. V prostředí nastavte proměnnou prostředí s názvem AZURE_AUTH_LOCATION s úplnou cestou k ověřovacímu souboru.
 
 ### <a name="create-the-management-client"></a>Vytvořit klienta pro správu

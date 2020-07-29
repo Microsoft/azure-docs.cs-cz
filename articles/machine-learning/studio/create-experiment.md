@@ -1,6 +1,5 @@
 ---
-title: 'Rychlý Start: vytvoření experimentu pro datové vědy'
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (Classic): rychlý Start: vytvoření experimentu pro datové vědy – Azure'
 description: Tento rychlý Start Machine Learning vás provede jednoduchým experimentem pro datové vědy. Pomocí regresního algoritmu předpovíme cenu automobilu.
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: f8984b3b712d591b64c383dabb723ba5afc61efc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 99332a8716ae137b8ea5fe69a53c7f8e4c46f095
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965140"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282547"
 ---
-# <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>Rychlý Start: vytvoření prvního experimentu pro datové vědy v Azure Machine Learning Studio (Classic)
+# <a name="quickstart-create-your-first-data-science-experiment-in-machine-learning-studio-classic"></a>Rychlý Start: vytvoření prvního experimentu pro datové vědy v Machine Learning Studio (Classic)
+
+**platí pro:** ![ žádná](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasická) 
+
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 

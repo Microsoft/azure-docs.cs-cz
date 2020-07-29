@@ -7,26 +7,26 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: tracking-python
-ms.openlocfilehash: 432ff655ef072d491227d297e620612203f73d3f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b4facaee44a0bc5c7d64376ca80e5aaf8d0768d0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092979"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323158"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v Application Insights
 
-V celém světě mikroslužeb vyžaduje každá Logická operace provedení práce v různých součástech služby. Jednotlivé komponenty můžete monitorovat samostatně pomocí [Application Insights](../../azure-monitor/app/app-insights-overview.md). Application Insights podporuje korelaci distribuované telemetrie, kterou použijete k detekci, která komponenta zodpovídá za selhání nebo snížení výkonu.
+V celém světě mikroslužeb vyžaduje každá Logická operace provedení práce v různých součástech služby. Jednotlivé komponenty můžete monitorovat samostatně pomocí [Application Insights](./app-insights-overview.md). Application Insights podporuje korelaci distribuované telemetrie, kterou použijete k detekci, která komponenta zodpovídá za selhání nebo snížení výkonu.
 
 Tento článek vysvětluje datový model používaný Application Insights ke korelaci telemetrie odesílaného více komponentami. Zahrnuje postupy a protokoly šíření kontextu. Zahrnuje také implementaci korelace taktiku v různých jazycích a platformách.
 
 ## <a name="data-model-for-telemetry-correlation"></a>Datový model pro korelaci telemetrie
 
-Application Insights definuje [datový model](../../azure-monitor/app/data-model.md) pro korelaci distribuovaných telemetrie. Pro přidružení telemetrie k logické operaci má každá položka telemetrie kontextové pole s názvem `operation_Id` . Tento identifikátor je sdílen všemi položkami telemetrie v distribuovaném trasování. Takže i v případě, že dojde ke ztrátě telemetrie z jedné vrstvy, můžete stále přidružit telemetrii nahlášenou jinými komponentami.
+Application Insights definuje [datový model](./data-model.md) pro korelaci distribuovaných telemetrie. Pro přidružení telemetrie k logické operaci má každá položka telemetrie kontextové pole s názvem `operation_Id` . Tento identifikátor je sdílen všemi položkami telemetrie v distribuovaném trasování. Takže i v případě, že dojde ke ztrátě telemetrie z jedné vrstvy, můžete stále přidružit telemetrii nahlášenou jinými komponentami.
 
-Distribuovaná Logická operace se typicky skládá ze sady menších operací, které jsou požadavky zpracovávané jednou z komponent. Tyto operace jsou definovány [telemetrie požadavků](../../azure-monitor/app/data-model-request-telemetry.md). Každá položka telemetrie požadavků má svou vlastní `id` identifikaci jedinečnou a globálně. A všechny položky telemetrie (například trasování a výjimky), které jsou přidruženy k žádosti, by měly být nastaveny na `operation_parentId` hodnotu požadavku `id` .
+Distribuovaná Logická operace se typicky skládá ze sady menších operací, které jsou požadavky zpracovávané jednou z komponent. Tyto operace jsou definovány [telemetrie požadavků](./data-model-request-telemetry.md). Každá položka telemetrie požadavků má svou vlastní `id` identifikaci jedinečnou a globálně. A všechny položky telemetrie (například trasování a výjimky), které jsou přidruženy k žádosti, by měly být nastaveny na `operation_parentId` hodnotu požadavku `id` .
 
-Každá odchozí operace, jako je volání HTTP jiné součásti, je reprezentována [telemetrie závislosti](../../azure-monitor/app/data-model-dependency-telemetry.md). Telemetrie závislostí definuje také vlastní `id` globálně jedinečný. Požadavek telemetrie, iniciované tímto voláním závislosti, používá `id` jako svůj `operation_parentId` .
+Každá odchozí operace, jako je volání HTTP jiné součásti, je reprezentována [telemetrie závislosti](./data-model-dependency-telemetry.md). Telemetrie závislostí definuje také vlastní `id` globálně jedinečný. Požadavek telemetrie, iniciované tímto voláním závislosti, používá `id` jako svůj `operation_parentId` .
 
 Můžete sestavit zobrazení distribuované logické operace pomocí `operation_Id` , a `operation_parentId` `request.id` s `dependency.id` . Tato pole také definují pořadí volání telemetrie.
 
@@ -216,7 +216,7 @@ Datové modely [OpenTracing a specifikace datového modelu](https://opentracing.
 | `Operation_Id`                         | `TraceId`                                           |
 | `Operation_ParentId`                   | `Reference`typu `ChildOf` (nadřazený rozsah)     |
 
-Další informace najdete v tématu [Application Insights datovém modelu telemetrie](../../azure-monitor/app/data-model.md).
+Další informace najdete v tématu [Application Insights datovém modelu telemetrie](./data-model.md).
 
 Definice konceptů OpenTracing najdete v tématu [specifikace](https://github.com/opentracing/specification/blob/master/specification.md) OpenTracing a [sémantické konvence](https://github.com/opentracing/specification/blob/master/semantic_conventions.md).
 
@@ -372,10 +372,11 @@ Možná budete chtít přizpůsobit způsob, jakým se názvy komponent zobrazuj
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zápis [vlastní telemetrie](../../azure-monitor/app/api-custom-events-metrics.md).
+- Zápis [vlastní telemetrie](./api-custom-events-metrics.md).
 - Pokročilé scénáře korelace v ASP.NET Core a ASP.NET najdete v tématu [sledování vlastních operací](custom-operations-tracking.md).
-- Přečtěte si další informace o [nastavení cloud_RoleName](../../azure-monitor/app/app-map.md#set-cloud-role-name) pro jiné sady SDK.
-- Připojte všechny komponenty mikroslužby na Application Insights. Podívejte se na [podporované platformy](../../azure-monitor/app/platforms.md).
-- Seznamte se s [datovým modelem](../../azure-monitor/app/data-model.md) pro Application Insights typy.
-- Naučte se, jak můžete [zvětšit a filtrovat telemetrii](../../azure-monitor/app/api-filtering-sampling.md).
+- Přečtěte si další informace o [nastavení cloud_RoleName](./app-map.md#set-cloud-role-name) pro jiné sady SDK.
+- Připojte všechny komponenty mikroslužby na Application Insights. Podívejte se na [podporované platformy](./platforms.md).
+- Seznamte se s [datovým modelem](./data-model.md) pro Application Insights typy.
+- Naučte se, jak můžete [zvětšit a filtrovat telemetrii](./api-filtering-sampling.md).
 - Přečtěte si [referenční informace o konfiguraci Application Insights](configuration-with-applicationinsights-config.md).
+

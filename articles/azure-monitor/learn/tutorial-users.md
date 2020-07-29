@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2017
 ms.custom: mvc
-ms.openlocfilehash: ae4a7335394f0e2f0bd0e3ac47c36b1f61026428
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ce9bf6fe6d130cf8511db2b2351c0de01b753d81
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079583"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318398"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Použití Azure Application Insights k pochopení, jakým způsobem zákazníci používají vaši aplikaci
 
@@ -28,7 +28,7 @@ Azure Application Insights shromažďuje informace o využití a pomáhá pochop
 > * Prozkoumání způsobu, jakým uživatelé procházejí vaši aplikaci
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -36,8 +36,8 @@ Pro absolvování tohoto kurzu potřebujete:
     - Vývoj pro ASP.NET a web
     - Vývoj pro Azure
 - Stáhnout a nainstalovat [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger).
-- Nasadit do Azure aplikaci .NET a [povolit sadu Application Insights SDK](../../azure-monitor/app/asp-net.md). 
-- [Odesílat z aplikace telemetrii](../../azure-monitor/app/usage-overview.md#send-telemetry-from-your-app) umožňující přidání vlastních zobrazení událostí a stránek.
+- Nasadit do Azure aplikaci .NET a [povolit sadu Application Insights SDK](../app/asp-net.md). 
+- [Odesílat z aplikace telemetrii](../app/usage-overview.md#send-telemetry-from-your-app) umožňující přidání vlastních zobrazení událostí a stránek.
 - Odesílat [kontext uživatele](../app/usage-send-user-context.md) umožňující sledovat aktivity uživatele v průběhu času a naplno využívat funkce využití.
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
@@ -164,4 +164,5 @@ Zatímco předchozí panely se zaměřovaly na to, co prováděli uživatelé va
 Teď, když jste zjistili, jak analyzovat uživatele, přejděte k dalšímu kurzu, ve kterém se dozvíte, jak vytvářet vlastní řídicí panely, které tyto informace kombinují s dalšími užitečnými daty o vaší aplikaci.
 
 > [!div class="nextstepaction"]
-> [Vytváření vlastních řídicích panelů](../../azure-monitor/learn/tutorial-app-dashboards.md)
+> [Vytváření vlastních řídicích panelů](./tutorial-app-dashboards.md)
+

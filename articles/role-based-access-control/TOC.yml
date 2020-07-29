@@ -37,6 +37,11 @@
       href: best-practices.md
     - name: Podmíněný přístup pro správu Azure
       href: conditional-access-azure-management.md
+    - name: Zabezpečení
+      items:
+        - name: Mechanismy zabezpečení služby Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
 - name: Návody
   items:
     - name: Zobrazení seznamu definic rolí

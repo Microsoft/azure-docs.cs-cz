@@ -1,6 +1,6 @@
 ---
-title: Přiřazení na osobním počítači s Windows Virtual Desktop (2019) – Azure
-description: Naučte se konfigurovat typ přiřazení pro virtuální počítač s Windows (verze 2019), který hostuje fond hostitelů osobní plochy.
+title: Typ přiřazení na osobním počítači s Windows (Classic) – Azure
+description: Postup konfigurace typu přiřazení pro fond hostitelů osobních desktopů v systému Windows (Classic)
 services: virtual-desktop
 author: HeidiLohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 05/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 036e144922fcb49c486813b8668d944dd771536e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 76b68ba0a51d250e4ce143314c9126597133e97f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087182"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87271038"
 ---
-# <a name="configure-the-personal-desktop-host-pool-assignment-type-fall-2019-release"></a>Konfigurace typu přiřazení fondu hostitelů osobní plochy (vydání 2019)
+# <a name="configure-the-personal-desktop-host-pool-assignment-type-for-windows-virtual-desktop-classic"></a>Konfigurace typu přiřazení fondu hostitelů osobní plochy pro virtuální plochu Windows (Classic)
 
 >[!IMPORTANT]
->Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objekty virtuálních klientů Windows, které byly zavedeny v aktualizaci jarní 2020, přečtěte si [Tento článek](../configure-host-pool-personal-desktop-assignment-type.md).
+>Tento obsah se vztahuje na virtuální plochu Windows (Classic), která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objektů virtuálních klientů Windows, přečtěte si [Tento článek](../configure-host-pool-personal-desktop-assignment-type.md).
 
 Typ přiřazení fondu hostitelů osobní plochy můžete nakonfigurovat tak, aby se upravilo prostředí virtuálních počítačů s Windows, aby lépe vyhovovalo vašim potřebám. V tomto tématu vám ukážeme, jak nakonfigurovat automatické nebo přímé přiřazení pro vaše uživatele.
 

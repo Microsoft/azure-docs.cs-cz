@@ -7,15 +7,15 @@ author: NilsPohlmann
 ms.author: nilsp
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.date: 01/16/2020
-ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 6a4a32db18b881b702aacf7bb669ffa14f9d103e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: c2218d9ec641f1edba4caff09666436fc8928558
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201239"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326337"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>Shromažďování souborů protokolu kanálu Machine Learning v Application Insights pro výstrahy a ladění
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ V případě, že se vaše protokoly nacházejí v jednom místě, budete mít k
   ```
 * Vytvoření [instance Application Insights](../azure-monitor/app/opencensus-python.md) (Tento dokument obsahuje také informace o získání připojovacího řetězce pro prostředek)
 
-## <a name="getting-started"></a>Začínáme
+## <a name="getting-started"></a>začínáme
 
 V této části je Úvod specifický pro použití OpenCensus z kanálu Azure Machine Learning. Podrobný kurz najdete v tématu [OpenCensus Azure monitor vývozců](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure) .
 

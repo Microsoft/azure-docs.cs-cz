@@ -8,11 +8,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
-ms.openlocfilehash: 5e27cf51d50b3094adca6ce8d3846ef358f78482
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- 'Role: Cloud Development'
+- 'Role: Data Analytics'
+ms.openlocfilehash: 6a8f39ae5d73bade2c86a7e15efe75956c2aed24
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83201531"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327561"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Vizualizace dat snímačů v reálném čase z Azure IoT Hub ve webové aplikaci
 
@@ -34,7 +38,7 @@ V tomto kurzu se naučíte vizualizovat data ze senzorů v reálném čase, kter
 * Otevřete webovou stránku pro zobrazení teploty a dat vlhkosti v reálném čase ze služby IoT Hub.
 * Volitelné Použití Azure CLI k hostování vaší webové aplikace v Azure App Service
 
-## <a name="what-you-need"></a>Co potřebujete
+## <a name="what-you-need"></a>Co budete potřebovat
 
 * Dokončete kurz [online simulátoru malin](iot-hub-raspberry-pi-web-simulator-get-started.md) . nebo v některém z kurzů zařízení; například [Malina Pi s node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Tyto požadavky se týkají následujících požadavků:
 
@@ -123,7 +127,7 @@ set IotHubConnectionString=YourIoTHubConnectionString
 set EventHubConsumerGroup=YourConsumerGroupName
 ```
 
-## <a name="run-the-web-app"></a>Spuštění webové aplikace
+## <a name="run-the-web-app"></a>Spusťte webovou aplikaci
 
 1. Ujistěte se, že vaše zařízení běží a odesílá data.
 

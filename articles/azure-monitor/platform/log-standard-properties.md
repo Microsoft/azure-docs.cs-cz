@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
-ms.openlocfilehash: b0ec666f2cfadc3a1571f3ed1d26c92bcbbca3a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c7e6733a9149008f6ed98ae7a7e0103f92f79f5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83196238"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325266"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Standardní vlastnosti v protokolech Azure Monitor
 Data v Azure Monitor protokoly se [ukládají jako sada záznamů v pracovním prostoru Log Analytics nebo v Application Insights aplikaci](../log-query/logs-structure.md), z nichž každý má konkrétní datový typ, který má jedinečnou sadu vlastností. Mnoho datových typů bude mít standardní vlastnosti, které jsou společné napříč různými typy. Tento článek popisuje tyto vlastnosti a poskytuje příklady, jak je můžete používat v dotazech.
@@ -210,5 +211,6 @@ union withsource = tt *
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o tom, jak [se ukládají data protokolu Azure monitor](../log-query/log-query-overview.md).
-- Získejte lekci k [zápisu dotazů protokolu](../../azure-monitor/log-query/get-started-queries.md).
-- Získejte lekci o [spojování tabulek v protokolových dotazech](../../azure-monitor/log-query/joins.md).
+- Získejte lekci k [zápisu dotazů protokolu](../log-query/get-started-queries.md).
+- Získejte lekci o [spojování tabulek v protokolových dotazech](../log-query/joins.md).
+

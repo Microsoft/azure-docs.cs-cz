@@ -3,14 +3,14 @@ title: 'Rychlý Start: získání odpovědi z znalostní báze – REST, Java-Qn
 description: Tento rychlý Start založený na REST Java vás provede tím, že vám umožní získat odpověď ze znalostní báze prostřednictvím kódu programu.
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
-ms.custom: RESTCURL2020FEB27
+ms.custom: RESTCURL2020FEB27, devx-track-java
 ms.topic: how-to
-ms.openlocfilehash: f162276044e63c9deb46a60033ffe9904366f777
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 3b193473ea20880c4efcf8747a129680008e3c9f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342795"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325929"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-java"></a>Rychlý Start: získání odpovědí na otázku ze znalostní báze pomocí Java
 

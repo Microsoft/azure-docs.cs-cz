@@ -11,15 +11,17 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: a67d90a0888c39938f07c294f8e161ce98fd945a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+- 'Role: Cloud Development'
+ms.openlocfilehash: a5707ef266f3d49bdcbff9793a0b90e6c3f4cb68
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81732503"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327646"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reakce na události IoT Hub pomocí Event Grid k aktivaci akcí
 
-Služba Azure IoT Hub se integruje s Azure Event Grid, takže můžete posílat oznámení o událostech ostatním službám a aktivovat navazující procesy. Nakonfigurujte obchodní aplikace tak, aby naslouchaly událostem IoT Hub, abyste mohli reagovat na kritické události spolehlivým, škálovatelným a zabezpečeným způsobem.Například sestavíte aplikaci, která aktualizuje databázi, vytvoří pracovní lístek a doručí e-mailové oznámení pokaždé, když se do služby IoT Hub zaregistruje nové zařízení IoT.
+Azure IoT Hub se může integrovat s Azure Event Gridem, abyste mohli posílat oznámení o událostech jiným službám a aktivovat podřízené procesy. Nakonfigurujte obchodní aplikace na naslouchání událostem IoT Hubu, abyste mohli reagovat na kritické události a současně zajistili spolehlivost, škálovatelnost a zabezpečení.Například sestavíte aplikaci, která aktualizuje databázi, vytvoří pracovní lístek a doručí e-mailové oznámení pokaždé, když se do vašeho centra IoT (neboli IoT Hubu) zaregistruje nové zařízení IoT.
 
 [Azure Event Grid](../event-grid/overview.md) je plně spravovaná služba Směrování událostí, která používá model publikování a odběru. Event Grid má integrovanou podporu pro služby Azure, jako je [Azure Functions](../azure-functions/functions-overview.md) a [Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md), a může doručovat výstrahy událostí na služby mimo Azure pomocí webhooků. Úplný seznam obslužných rutin událostí, které Event Grid podporuje, najdete v [úvodu k Azure Event Grid](../event-grid/overview.md).
 
@@ -33,19 +35,19 @@ Integrace Event Grid je dostupná pro centra IoT umístěná v oblastech, kde je
 
 IoT Hub zveřejňují následující typy událostí:
 
-| Typ události | Description |
+| Typ události | Popis |
 | ---------- | ----------- |
-| Microsoft. Devices. DeviceCreated | Publikováno, když je zařízení zaregistrované do služby IoT Hub. |
-| Microsoft. Devices. DeviceDeleted | Publikováno při odstranění zařízení ze služby IoT Hub. |
-| Microsoft. Devices. DeviceConnected | Publikováno, když je zařízení připojené ke IoT Hub. |
-| Microsoft. Devices. DeviceDisconnected | Publikováno, když se zařízení odpojí od služby IoT Hub. |
-| Microsoft. Devices. DeviceTelemetry | Publikováno po odeslání zprávy telemetrie zařízení do služby IoT Hub |
+| Microsoft.Devices.DeviceCreated | Publikováno, když je zařízení zaregistrované do služby IoT Hub. |
+| Microsoft.Devices.DeviceDeleted | Publikováno při odstranění zařízení ze služby IoT Hub. |
+| Microsoft.Devices.DeviceConnected | Publikováno, když je zařízení připojené ke IoT Hub. |
+| Microsoft.Devices.DeviceDisconnected | Publikováno, když se zařízení odpojí od služby IoT Hub. |
+| Microsoft.Devices.DeviceTelemetry | Publikuje se při odeslání zprávy s telemetrií zařízení do centra IoT (IoT Hub). |
 
 Pomocí Azure Portal nebo rozhraní příkazového řádku Azure můžete nakonfigurovat, které události se mají publikovat z každého centra IoT Hub. Například zkuste kurz [Odeslat e-mailová oznámení o událostech Azure IoT Hub pomocí Logic Apps](../event-grid/publish-iot-hub-events-to-logic-apps.md).
 
 ## <a name="event-schema"></a>Schéma událostí
 
-IoT Hub události obsahují všechny informace, které potřebujete k reakci na změny v životním cyklu zařízení. Událost IoT Hub můžete identifikovat tak, že zkontrolujete, že vlastnost eventType začíná na **Microsoft. Devices**. Další informace o tom, jak používat Event Grid vlastností události, najdete v tématu [Event Grid schématu událostí](../event-grid/event-schema.md).
+IoT Hub události obsahují všechny informace, které potřebujete k reakci na změny v životním cyklu zařízení. Událost IoT Hubu můžete identifikovat tak, že se podíváte, jestli vlastnost eventType začíná textem **Microsoft.Devices**. Další informace o tom, jak používat Event Grid vlastností události, najdete v tématu [Event Grid schématu událostí](../event-grid/event-schema.md).
 
 ### <a name="device-connected-schema"></a>Schéma připojené k zařízení
 
@@ -192,15 +194,15 @@ Odkaz D2C je otevřený, Pokud posíláte telemetrii.
 
 Pokud je připojení zařízení blikáním, což znamená, že zařízení se často připojuje a odpojuje, nebudeme odesílat každý stav jednoho připojení, ale aktuální stav připojení se v pravidelném snímku publikuje, dokud se blikání nepokračuje. Když se přijme stejná událost stavu připojení s různými čísly sekvence nebo s různými událostmi stavu připojení, znamená to, že došlo ke změně stavu připojení zařízení.
 
-## <a name="tips-for-consuming-events"></a>Tipy pro náročné události
+## <a name="tips-for-consuming-events"></a>Tipy pro využívání událostí
 
-Aplikace, které zpracovávají IoT Hub události, by měly postupovat podle těchto doporučených postupů:
+Aplikace, které zpracovávají události IoT Hubu, by měly fungovat v souladu s následujícími doporučenými postupy:
 
-* Více předplatných lze nakonfigurovat pro směrování událostí do stejné obslužné rutiny události, proto Nepředpokládáme, že události jsou z konkrétního zdroje. Vždy zkontrolujte téma zprávy a ujistěte se, že pochází ze služby IoT Hub, kterou očekáváte.
+* Je možné nakonfigurovat více odběrů na směrování událostí na stejnou obslužnou rutinu událostí, takže nepředpokládejte, že události pocházejí z konkrétního zdroje. Vždy zkontrolujte téma zprávy, abyste zajistili, že pochází z očekávaného centra IoT (IoT Hub).
 
-* Nepředpokládáme, že všechny události, které obdržíte, jsou typy, které očekáváte. Před zpracováním zprávy vždy kontrolujte typ eventType.
+* Nepředpokládejte, že všechny přijímané události představují typ, který očekáváte. Před zpracováním zprávy vždy kontrolujte typ eventType.
 
-* Zprávy mohou být doručeny mimo pořadí nebo po zpoždění. Pomocí pole ETag můžete zjistit, jestli jsou informace o objektech pro události vytvořené nebo odstraněné zařízení aktuální.
+* Zprávy se můžou doručovat v odlišném pořadí nebo se zpožděním. Pomocí pole ETag můžete zjistit, jestli jsou informace o objektech pro události vytvořené nebo odstraněné zařízení aktuální.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: řízení zařízení z Azure IoT (Node. js)'
+title: 'Rychlý Start: řízení zařízení z Azure IoT (Node.js)'
 description: V tomto rychlém startu spustíte dvě ukázkové aplikace Node.js. První aplikace je back-endová aplikace, která může vzdáleně řídit zařízení připojená k vašemu centru. Druhá aplikace simuluje zařízení připojené k vašemu centru, které je možné řídit vzdáleně.
 author: wesmc7777
 manager: philmea
@@ -13,27 +13,28 @@ ms.custom:
 - seo-javascript-september2019
 - seo-javascript-october2019
 - mqtt
+- 'Role: Cloud Development'
 ms.date: 06/21/2019
-ms.openlocfilehash: 39d136815e3808c907e190773b9303075a5093e6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d8e63ccae81b7de41a38f362c55309729243d9cb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81769367"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87315147"
 ---
-# <a name="quickstart-use-nodejs-to-control-a-device-connected-to-an-azure-iot-hub"></a>Rychlý Start: použití Node. js k řízení zařízení připojeného ke službě Azure IoT Hub
+# <a name="quickstart-use-nodejs-to-control-a-device-connected-to-an-azure-iot-hub"></a>Rychlý Start: použití Node.js k řízení zařízení připojeného ke službě Azure IoT Hub
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
-V tomto rychlém startu použijete přímou metodu k řízení simulovaného zařízení připojeného k Azure IoT Hub. IoT Hub je služba Azure, která umožňuje spravovat zařízení IoT z cloudu a ingestovat velké objemy telemetrie zařízení do cloudu za účelem uložení nebo zpracování. Přímé metody můžete použít k provádění vzdálených změn chování zařízení připojeného k centru IoT. V tomto rychlém startu se používají dvě aplikace Node. js: aplikace simulovaného zařízení, která reaguje na přímé metody volané z back-endové aplikace a back-endové aplikace, která volá přímé metody na simulovaném zařízení.
+V tomto rychlém startu použijete přímou metodu k řízení simulovaného zařízení připojeného k Azure IoT Hub. IoT Hub je služba Azure, která umožňuje spravovat zařízení IoT z cloudu a ingestovat velké objemy telemetrie zařízení do cloudu za účelem uložení nebo zpracování. Přímé metody můžete použít k provádění vzdálených změn chování zařízení připojeného k centru IoT. V tomto rychlém startu se používají dvě Node.js aplikace: aplikace simulovaného zařízení, která reaguje na přímé metody volané z back-endové aplikace a back-endové aplikace, která volá přímé metody na simulovaném zařízení.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-* [Node. js 10 +](https://nodejs.org)
+* [Node.js 10 +](https://nodejs.org).
 
-* [Ukázkový projekt Node. js](https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip)
+* [Vzorový Node.js projekt](https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip).
 
 * Port 8883 otevřete v bráně firewall. Ukázka zařízení v tomto rychlém startu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
@@ -47,7 +48,7 @@ node --version
 
 ### <a name="add-azure-iot-extension"></a>Přidat rozšíření Azure IoT
 
-Spuštěním následujícího příkazu přidejte do instance služby Cloud Shell Microsoft Azure rozšíření IoT pro rozhraní příkazového řádku Azure. Rozšíření IoT přidá do Azure CLI příkazy určené pro služby IoT Hub, IoT Edge a IoT Device Provisioning Service (DPS).
+Spuštěním následujícího příkazu přidejte do instance služby Cloud Shell Microsoft Azure rozšíření IoT pro rozhraní příkazového řádku Azure. Rozšíření IoT přidá do Azure CLI příkazy specifické pro IoT Hub, IoT Edge a IoT Device Provisioning Service (DPS).
 
 ```azurecli-interactive
 az extension add --name azure-iot
@@ -61,7 +62,7 @@ Pokud jste dokončili předchozí [Rychlý start: Odesílání telemetrických d
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-device"></a>Registrování zařízení
+## <a name="register-a-device"></a>Registrace zařízení
 
 Pokud jste dokončili předchozí [Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT](quickstart-send-telemetry-node.md), můžete tento krok přeskočit.
 
@@ -89,7 +90,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
       --output table
     ```
 
-    Poznamenejte si připojovací řetězec zařízení, který vypadá nějak takto:
+    Poznamenejte si připojovací řetězec zařízení, který vypadá takto:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
 
@@ -119,7 +120,7 @@ Aplikace simulovaného zařízení se připojí ke koncovému bodu v centru IoT 
 
 2. V libovolném textovém editoru otevřete soubor **SimulatedDevice.js**.
 
-    Nahraďte hodnotu `connectionString` proměnné připojovacím řetězcem zařízení, který jste si poznamenali dříve. Potom uložte změny do souboru **SimulatedDevice. js**.
+    Nahraďte hodnotu `connectionString` proměnné připojovacím řetězcem zařízení, který jste si poznamenali dříve. Pak změny uložte do **SimulatedDevice.js**.
 
 3. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované knihovny a spusťte aplikaci simulovaného zařízení:
 
@@ -140,7 +141,7 @@ Back-endová aplikace se připojí ke koncovému bodu vašeho centra IoT na stra
 
 2. V libovolném textovém editoru otevřete soubor **BackEndApplication.js**.
 
-    Nahraďte hodnotu `connectionString` proměnné připojovacím řetězcem služby, který jste si poznamenali v předchozím kroku. Potom uložte změny do souboru **BackEndApplication. js**.
+    Nahraďte hodnotu `connectionString` proměnné připojovacím řetězcem služby, který jste si poznamenali v předchozím kroku. Pak změny uložte do **BackEndApplication.js**.
 
 3. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované knihovny a spusťte back-endovou aplikaci:
 

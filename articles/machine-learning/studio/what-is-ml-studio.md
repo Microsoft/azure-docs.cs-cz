@@ -1,6 +1,5 @@
 ---
-title: Co je ML Studio (Classic)
-titleSuffix: Azure
+title: Co je ML Studio (Classic) – Azure
 description: Azure Machine Learning Studio (Classic) je nástroj pro přetahování, který umožňuje rychle vytvářet modely z připravené knihovny algoritmů a modulů.
 services: machine-learning
 author: likebupt
@@ -11,14 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 03/24/2020
-ms.openlocfilehash: c1772ceb514e46542129759711f2d45db39abf82
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0b0e09cfe855e017c297cbad1667eef81726d3da
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80371966"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326201"
 ---
 # <a name="what-is-machine-learning-studio-classic"></a>Co je Machine Learning Studio (Classic)?
+
+**platí pro:** ![ žádná](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasická) 
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -30,7 +31,7 @@ Machine Learning Studio (Classic) je místo, kde se doplňují datové vědy, pr
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Chcete-li vytvořit model prediktivní analýzy, obvykle používáte data z jednoho nebo více zdrojů, transformovat a analyzovat tato data prostřednictvím různých funkcí pro manipulaci s daty a statistické funkce a vygenerujeme sadu výsledků. Vývoj takového modelu je iterativní proces. Úpravou různých funkcí a jejich parametrů se výsledky zpřesňují, dokud nebudete přesvědčeni, že máte natrénován efektivní model.
+Chcete-li vytvořit model prediktivní analýzy, obvykle používáte data z jednoho nebo více zdrojů, transformovat a analyzovat tato data prostřednictvím různých funkcí pro manipulaci s daty a statistické funkce a vygenerujeme sadu výsledků. Vývoj podobného modelu, jako je tento, je iterativní proces. Úpravou různých funkcí a jejich parametrů se výsledky zpřesňují, až budete mít trénovaný a účinný model, se kterým budete spokojeni.
 
 Azure Machine Learning Studio (Classic) poskytuje interaktivní a vizuální pracovní prostor pro snadné sestavování, testování a iteraci v modelu prediktivní analýzy. ***Datové sady*** a ***moduly*** pro analýzu můžete přetahovat na interaktivní plátno, čímž je spojíte dohromady, abyste mohli vytvořit ***experiment***, který spustíte v Machine Learning Studio (Classic). Iterace návrhu modelu probíhá tak, že experiment upravíte, v případě potřeby uložíte kopii, a spustíte jej znovu. Až budete připraveni, můžete ***výukový experiment*** převést na ***prediktivní experiment*** a publikovat jej jako ***webovou službu***, aby k vašemu modelu měli přístup i jiní uživatelé.
 
@@ -41,8 +42,8 @@ Není nutné žádné programování, vizuálně propojit datové sady a moduly 
 ## <a name="download-the-machine-learning-studio-classic-overview-diagram"></a>Stáhnout diagram s přehledem Machine Learning Studio (Classic)
 Stáhněte si diagram s **přehledem možností Microsoft Azure Machine Learning Studio (Classic)** a získejte nejdůležitější pohled na možnosti Machine Learning Studio (Classic). Pokud ho chcete mít po ruce, můžete si ho vytisknout ve velikosti tabloid (11 × 17 palců).
 
-**Tento diagram si můžete stáhnout tady: Přehled [možností](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)**
-![Microsoft Azure Machine Learning Studio (Classic) Microsoft Azure Machine Learning Studio (Classic) Přehled možností.](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)
+**Tento diagram si můžete stáhnout tady: [přehled](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf) ** 
+ ![ možností Microsoft Azure Machine Learning Studio (Classic). Přehled možností Microsoft Azure Machine Learning Studio (Classic)](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)
 
 
 ## <a name="components-of-a-studio-classic--experiment"></a>Komponenty experimentu studia (Classic)
