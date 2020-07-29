@@ -3,16 +3,17 @@ title: Monitorování služeb Node.js pomocí Azure Application Insights | Dokum
 description: Monitorujte výkon a diagnostikujte problémy ve službách Node.js pomocí Application Insights.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 80b4c4336a3e253e38790520a7eb4458ca36ff30
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: c6a1a030829f128c4369e99efcd56a416390afc6
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024380"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371613"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Monitorování služeb a aplikací Node.js pomocí Application Insights
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) po nasazení monitorovat vaše back-end služby a komponenty, které vám pomůžou zjistit a rychle diagnostikovat výkon a další problémy. Application Insights můžete použít pro Node.js služby, které jsou hostované ve vašem datovém centru, virtuálních počítačích Azure a webových aplikací, a dokonce i v jiných veřejných cloudech.
+[Application Insights](./app-insights-overview.md) po nasazení monitorovat vaše back-end služby a komponenty, které vám pomůžou zjistit a rychle diagnostikovat výkon a další problémy. Application Insights můžete použít pro Node.js služby, které jsou hostované ve vašem datovém centru, virtuálních počítačích Azure a webových aplikací, a dokonce i v jiných veřejných cloudech.
 
 Pokud chcete přijímat, ukládat a prozkoumávat data monitorování, vložte do svého kódu sadu SDK a pak v Azure nastavte odpovídající prostředek Application Insights. Sada SDK do tohoto prostředku odesílá data pro další analýzy a prozkoumávání.
 
@@ -24,7 +25,7 @@ Pomocí rozhraní TelemetryClient API můžete ručně instrumentovat a monitoro
 
 Proveďte následující úlohy a nastavte monitorování pro aplikaci nebo službu.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že máte předplatné Azure nebo [zdarma získejte nové předplatné][azure-free-offer]. Pokud vaše organizace již má předplatné Azure, správce vás do něj může přidat pomocí [těchto pokynů][add-aad-user].
 
@@ -33,7 +34,7 @@ Než začnete, ujistěte se, že máte předplatné Azure nebo [zdarma získejte
 
 ### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a>Nastavení prostředku Application Insights
 
-1. Přihlaste se na portál [Azure Portal][portal].
+1. Přihlaste se na [Azure Portal][portal].
 2. [Vytvoření prostředku Application Insights](create-new-resource.md)
 
 ### <a name="set-up-the-nodejs-sdk"></a><a name="sdk"></a>Nastavení sady Node.js SDK
@@ -80,8 +81,8 @@ Vzhledem k tomu, že sada SDK seskupuje data do dávek pro odesílání, může 
 
 * Pokračujte v používání aplikace. Proveďte více akcí pro vygenerování další telemetrie.
 * V zobrazení prostředku na portálu klikněte na **Aktualizovat**. Grafy se samy pravidelně aktualizují, ale ruční aktualizace vynutí jejich okamžitou aktualizaci.
-* Ověřte, že jsou otevřené [požadované výchozí porty](../../azure-monitor/app/ip-addresses.md).
-* Pomocí [Vyhledávání](../../azure-monitor/app/diagnostic-search.md) vyhledejte konkrétní události.
+* Ověřte, že jsou otevřené [požadované výchozí porty](./ip-addresses.md).
+* Pomocí [Vyhledávání](./diagnostic-search.md) vyhledejte konkrétní události.
 * Projděte si [Nejčastější dotazy][FAQ].
 
 ## <a name="basic-usage"></a>Základní využití
@@ -216,7 +217,7 @@ appInsights
 
 ## <a name="telemetryclient-api"></a>TelemetryClient API
 
-Úplný popis rozhraní TelemetryClient API najdete v tématu [Rozhraní API Application Insights pro vlastní události a metriky](../../azure-monitor/app/api-custom-events-metrics.md).
+Úplný popis rozhraní TelemetryClient API najdete v tématu [Rozhraní API Application Insights pro vlastní události a metriky](./api-custom-events-metrics.md).
 
 Pomocí sady Application Insights Node.js SDK můžete sledovat jakékoli požadavky, události, metriky nebo výjimky. Následující příklad kódu ukazuje některá z rozhraní API, která můžete použít:
 
@@ -373,7 +374,7 @@ appInsights.defaultClient.addTelemetryProcessor(removeStackTraces);
 
 Můžete vytvořit několik prostředků Application Insights a do každého odeslat různá data pomocí příslušných klíčů instrumentace ("ikey").
 
- Příklad:
+ Například:
 
 ```javascript
 let appInsights = require("applicationinsights");
@@ -414,10 +415,11 @@ Tyto vlastnosti jsou specifické pro konkrétního klienta, takže je můžete n
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Monitorování vaší telemetrie na portálu](../../azure-monitor/app/overview-dashboard.md)
-* [Zápis analytických dotazů nad telemetrií](../../azure-monitor/log-query/get-started-portal.md)
+* [Monitorování vaší telemetrie na portálu](./overview-dashboard.md)
+* [Zápis analytických dotazů nad telemetrií](../log-query/get-started-portal.md)
 
 <!--references-->
 
 [portal]: https://portal.azure.com/
 [FAQ]: ../faq.md
+

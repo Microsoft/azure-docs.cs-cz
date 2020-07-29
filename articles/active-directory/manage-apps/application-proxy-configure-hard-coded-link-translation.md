@@ -16,13 +16,14 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e8d6f97870699cea7f55abe42290acdc82c385e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 563e5e811eec907ba286bdfb264fc51d32137e96
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764838"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282921"
 ---
-# <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Přesměrování pevně zakódované odkazů pro aplikace publikované pomocí Azure Proxy aplikací služby AD
+# <a name="redirect-hard-coded-links-for-apps-published-with-azure-ad-application-proxy"></a>Přesměrování pevně zakódovaných odkazů pro aplikace publikované s Azure Proxy aplikací služby AD
 
 Azure Proxy aplikací služby AD zpřístupňuje vaše místní aplikace uživatelům, kteří jsou na vzdálených nebo na svých zařízeních. Některé aplikace se ale vyvinuly s místními odkazy, které jsou vložené v HTML. Tyto odkazy nefungují správně, když se aplikace používá vzdáleně. Když máte několik místních aplikací navzájem, je třeba, že uživatelé budou mít odkazy na práci, i když nejsou v kanceláři. 
 
@@ -34,11 +35,11 @@ Pokud ve vašem tenantovi nemůžete použít vlastní domény, existuje několi
 > [!NOTE]
 > Překlad propojení není podporován pro pevně zakódované interní adresy URL vygenerované prostřednictvím JavaScriptu.
 
-**Možnost 1: použijte Managed Browser nebo Microsoft Edge** – toto řešení je možné použít pouze v případě, že plánujete doporučit nebo vyžadovat, aby uživatelé měli přístup k aplikaci přes Intune Managed Browser nebo prohlížeč Microsoft Edge. Zpracuje všechny publikované adresy URL. 
+**Možnost 1: použití Microsoft Edge** – toto řešení je vhodné jenom v případě, že plánujete doporučit nebo vyžadovat, aby uživatelé měli přístup k aplikaci přes prohlížeč Microsoft Edge. Zpracuje všechny publikované adresy URL. 
 
 **Možnost 2: použití rozšíření MyApp** – toto řešení vyžaduje, aby uživatelé nainstalovali rozšíření prohlížeče na straně klienta, ale budou zpracovávat všechny publikované adresy URL a fungují s nejoblíbenějšími prohlížeči. 
 
-**Možnost 3: použití nastavení překladu propojení** – Toto je nastavení na straně správce, které je pro uživatele neviditelné. Zpracuje ale jenom adresy URL v HTML a CSS.   
+**Možnost 3: použití nastavení překladu propojení** – Toto je nastavení na straně správce, které je pro uživatele neviditelné. Zpracuje ale adresy URL pouze v HTML a CSS.   
 
 Díky těmto třem funkcím budou vaše odkazy fungovat bez ohledu na to, kde jsou vaši uživatelé. Pokud máte aplikace, které přímo odkazují na interní koncové body nebo porty, můžete tyto interní adresy URL namapovat na publikované adresy URL proxy externích aplikací. 
 
@@ -49,11 +50,11 @@ Díky těmto třem funkcím budou vaše odkazy fungovat bez ohledu na to, kde js
 > Nebo pokud je aplikace, kterou potřebujete nakonfigurovat s překladem odkazů, SharePoint, přečtěte si téma [Konfigurace mapování alternativních adres pro SharePoint 2013](https://technet.microsoft.com/library/cc263208.aspx) pro další přístup k mapování odkazů. 
 
  
-### <a name="option-1-intune-managed-browser-and-microsoft-edge-integration"></a>Možnost 1: Intune Managed Browser a Microsoft Edge Integration 
+### <a name="option-1-microsoft-edge-integration"></a>Možnost 1: integrace Microsoft Edge 
 
-K další ochraně aplikace a obsahu můžete použít Intune Managed Browser nebo Microsoft Edge. Chcete-li použít toto řešení, je nutné vyžadovat nebo doporučit uživatelům přístup k aplikaci prostřednictvím Intune Managed Browser. Všechny interní adresy URL publikované s proxy aplikací budou rozpoznány Managed Browser a přesměrovány na odpovídající externí adresu URL. Tím se zajistí, že všechny pevně zakódované interní adresy URL fungují a když uživatel přejde do prohlížeče a přímo zadá interní adresu URL, funguje i v případě, že je uživatel vzdálený.  
+K další ochraně aplikace a obsahu můžete použít Microsoft Edge. Chcete-li použít toto řešení, je nutné vyžadovat nebo doporučit uživatelům přístup k aplikaci prostřednictvím Microsoft Edge. Všechny interní adresy URL publikované s proxy aplikací budou rozpoznány pomocí Edge a přesměrovány na odpovídající externí adresu URL. Tím se zajistí, že všechny pevně zakódované interní adresy URL fungují a když uživatel přejde do prohlížeče a přímo zadá interní adresu URL, funguje i v případě, že je uživatel vzdálený.  
 
-Další informace, včetně postupu konfigurace této možnosti, najdete v dokumentaci k [Managed Browser](https://docs.microsoft.com/intune/app-configuration-managed-browser) .  
+Další informace, včetně postupu konfigurace této možnosti, najdete v dokumentaci ke [správě webového přístupu pomocí Edge pro iOS a Android s Microsoft Intune](https://docs.microsoft.com/mem/intune/apps/manage-microsoft-edge) .  
 
 ### <a name="option-2-myapps-browser-extension"></a>Možnost 2: rozšíření prohlížeče aplikace Mojeapl 
 
@@ -72,7 +73,7 @@ Pokud je povolen překlad propojení, služba proxy aplikací prohledává publi
 
 ## <a name="how-link-translation-works"></a>Jak funguje Překlad propojení
 
-Po ověření, když proxy server předá data aplikace uživateli, proxy aplikace prohledá aplikaci pro odkazy pevně zakódované a nahradí je jejich příslušnými, publikovanými externími adresami URL.
+Po ověření, když proxy server předá data aplikace uživateli, proxy aplikace prohledá aplikaci pro pevně zakódované odkazy a nahradí je jejich příslušnými, publikovanými externími adresami URL.
 
 Proxy aplikací předpokládá, že jsou aplikace kódované v kódování UTF-8. V takovém případě zadejte typ kódování v hlavičce odpovědi HTTP, například `Content-Type:text/html;charset=utf-8` .
 
@@ -83,10 +84,10 @@ Funkce překladu odkazů hledá pouze odkazy, které jsou v těle aplikace. Prox
 Existují dva běžné typy interních propojení v místních aplikacích:
 
 - **Relativní interní odkazy** , které odkazují na sdílený prostředek v místní struktuře souborů, jako je `/claims/claims.html` . Tyto odkazy automaticky fungují v aplikacích, které jsou publikovány prostřednictvím proxy aplikace, a fungují i bez překladu propojení. 
-- **Pevně zakódované interní odkazy** na jiné místní aplikace, jako jsou `http://expenses` nebo publikované soubory `http://expenses/logo.jpg` . Funkce překladu propojení funguje na interních odkazech pevně zakódované a mění je tak, aby odkazovaly na externí adresy URL, ke kterým musí přejít vzdálení uživatelé.
+- **Pevně zakódované interní odkazy** na jiné místní aplikace, jako jsou `http://expenses` nebo publikované soubory `http://expenses/logo.jpg` . Funkce překladu propojení funguje na pevně zakódovaných interních odkazech a mění je tak, aby odkazovaly na externí adresy URL, ke kterým musí přejít vzdálení uživatelé.
 
 Úplný seznam značek kódu HTML, na kterých proxy aplikací podporuje překlad odkazů pro zahrnutí:
-* a
+* pro
 * kazet
 * base
 * .
@@ -102,7 +103,7 @@ Existují dva běžné typy interních propojení v místních aplikacích:
 * propojit
 * MenuItem
 * meta
-* odkazy objektů
+* object
 * script
 * source
 * track

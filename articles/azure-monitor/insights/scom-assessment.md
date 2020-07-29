@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: b71c6d8e0890bde377fae761f4486803229ceff4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 97d7d21374062462248e1b86f2bde2fef2d25331
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045693"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326048"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimalizace prostředí s využitím řešení System Center Operations Manager Health Check (Preview)
 
@@ -203,7 +203,7 @@ Každé doporučení obsahuje pokyny k tomu, proč je důležité. Pomocí těch
 
 ## <a name="use-health-check-focus-area-recommendations"></a>Použít doporučení oblasti pro kontrolu stavu
 
-Než budete moct v Log Analytics použít řešení kontroly stavu, musíte mít nainstalované řešení. Další informace o instalaci řešení najdete v tématu [instalace řešení pro správu](../../azure-monitor/insights/solutions.md). Po instalaci můžete zobrazit souhrn doporučení pomocí dlaždice System Center Operations Manager Health Check na stránce **Přehled** pro váš pracovní prostor v Azure Portal.
+Než budete moct v Log Analytics použít řešení kontroly stavu, musíte mít nainstalované řešení. Další informace o instalaci řešení najdete v tématu [instalace řešení pro správu](./solutions.md). Po instalaci můžete zobrazit souhrn doporučení pomocí dlaždice System Center Operations Manager Health Check na stránce **Přehled** pro váš pracovní prostor v Azure Portal.
 
 Podívejte se na souhrnná vyhodnocení dodržování předpisů pro vaši infrastrukturu a pak na doporučení pro přechod k podrobnostem.
 
@@ -229,7 +229,7 @@ Pokud máte doporučení, která chcete ignorovat, můžete vytvořit textový s
     ```
 
     >[!NOTE]
-    > Pokud byl váš pracovní prostor upgradován na [Nový dotazovací jazyk Log Analytics](../../azure-monitor/log-query/log-query-overview.md), pak se výše uvedený dotaz změní na následující.
+    > Pokud byl váš pracovní prostor upgradován na [Nový dotazovací jazyk Log Analytics](../log-query/log-query-overview.md), pak se výše uvedený dotaz změní na následující.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -254,7 +254,7 @@ Pokud máte doporučení, která chcete ignorovat, můžete vytvořit textový s
     ```
 
     >[!NOTE]
-    > Pokud byl váš pracovní prostor upgradován na [Nový dotazovací jazyk Log Analytics](../../azure-monitor/log-query/log-query-overview.md), pak se výše uvedený dotaz změní na následující.
+    > Pokud byl váš pracovní prostor upgradován na [Nový dotazovací jazyk Log Analytics](../log-query/log-query-overview.md), pak se výše uvedený dotaz změní na následující.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Ignore" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -295,4 +295,5 @@ Pokud máte doporučení, která chcete ignorovat, můžete vytvořit textový s
 
 ## <a name="next-steps"></a>Další kroky
 
-- V [protokolech hledání](../../azure-monitor/log-query/log-query-overview.md) zjistíte, jak analyzovat podrobná System Center Operations Manager Health Checká data a doporučení.
+- V [protokolech hledání](../log-query/log-query-overview.md) zjistíte, jak analyzovat podrobná System Center Operations Manager Health Checká data a doporučení.
+

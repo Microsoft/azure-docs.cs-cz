@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: e24dcdc2de94fe73f6bb83dcc03bbd1139503784
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 42a76a2cf583a57ae5b38fe051ee48d16d705dd2
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120751"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319962"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>Strategie ověřování služby měření na Marketplace
 
@@ -42,7 +44,7 @@ Další informace o těchto tokenech naleznete v tématu [Azure Active Directory
 
 #### <a name="http-method"></a>HTTP – metoda
 
-**SPUŠTĚNÍ**
+**POST**
 
 #### <a name="request-url"></a>*Adresa URL požadavku*
 
@@ -52,27 +54,27 @@ Další informace o těchto tokenech naleznete v tématu [Azure Active Directory
 
 |  **Název parametru** |  **Požadováno**  |  **Popis**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `tenantId`         |   True         | ID tenanta registrované aplikace služby Azure AD   |
+|  `tenantId`         |   Ano         | ID tenanta registrované aplikace služby Azure AD   |
 | | | |
 
 #### <a name="request-header"></a>*Hlavička žádosti*
 
 |  **Název hlavičky**    |  **Požadováno**  |  **Popis**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `Content-Type`     |   True         | Typ obsahu přidružený k žádosti Výchozí hodnota je `application/x-www-form-urlencoded`.  |
+|  `Content-Type`     |   Ano         | Typ obsahu přidružený k žádosti Výchozí hodnota je `application/x-www-form-urlencoded`.  |
 | | | |
 
 #### <a name="request-body"></a>*Text žádosti*
 
 |  **Název vlastnosti**  |  **Požadováno**  |  **Popis**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `Grant_type`       |   True         | Typ udělení Použijte `client_credentials`. |
-|  `Client_id`        |   True         | Identifikátor klienta nebo aplikace přidružený k aplikaci Azure AD|
-|  `client_secret`    |   True         | Tajný kód přidružený k aplikaci Azure AD.  |
-|  `Resource`         |   True         | Cílový prostředek, pro který je požadován token. Použijte `20e940b3-4c77-4b0b-9a53-9e16a1b010a7`. |
+|  `Grant_type`       |   Ano         | Typ udělení Použijte `client_credentials`. |
+|  `Client_id`        |   Ano         | Identifikátor klienta nebo aplikace přidružený k aplikaci Azure AD|
+|  `client_secret`    |   Ano         | Tajný kód přidružený k aplikaci Azure AD.  |
+|  `Resource`         |   Ano         | Cílový prostředek, pro který je požadován token. Použijte `20e940b3-4c77-4b0b-9a53-9e16a1b010a7`. |
 | | | |
 
-#### <a name="response"></a>*Základě*
+#### <a name="response"></a>*Response* (Odpověď)
 
 |  **Název**    |  **Typ**  |  **Popis**          |
 |  ------------------ |--------------- | ----------------------  |

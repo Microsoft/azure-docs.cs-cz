@@ -4,15 +4,15 @@ description: Přečtěte si o oblastech pro spouštění virtuálních počíta�
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/28/2019
-ms.openlocfilehash: 5cff97e7fea2cf9ef4da87e2d2ec700678d1d39b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 44370b378899228949aa1bddcc92570ad282fe92
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531258"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284723"
 ---
 # <a name="regions-for-virtual-machines-in-azure"></a>Oblasti pro virtuální počítače v Azure
 
@@ -75,8 +75,8 @@ V následující tabulce najdete stručný přehled rozdílů jednotlivých typ�
 
 | Strategie replikace | LRS | ZRS | GRS | RA-GRS |
 |:--- |:--- |:--- |:--- |:--- |
-| Data se replikují napříč různými zařízeními. |No |Ano |Ano |Ano |
-| Data je možné načíst ze sekundárního i primárního umístění. |No |No |No |Ano |
+| Data se replikují napříč různými zařízeními. |Ne |Ano |Ano |Ano |
+| Data je možné načíst ze sekundárního i primárního umístění. |Ne |Ne |Ne |Ano |
 | Počet kopií dat uchovávaných na samostatných uzlech |3 |3 |6 |6 |
 
 Další informace o [možnostech replikace služby Azure Storage najdete tady](../storage/common/storage-redundancy.md). Další informace o spravovaných discích najdete v tématu [Přehled služby Azure Managed Disks](./windows/managed-disks-overview.md).

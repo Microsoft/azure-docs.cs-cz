@@ -4,12 +4,12 @@ description: Přehled upozorňování v Azure. Výstrahy, klasické výstrahy a 
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: 37980f3cebdee2754a9741a8a45ec6932e7e98ce
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e0741a23d7e5ece0898d83c53782afc353d9a7e5
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327119"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371596"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Přehled upozornění v Microsoft Azure 
 
@@ -178,7 +178,7 @@ Stránka Podrobnosti výstrahy obsahuje následující části:
 
 ## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>Řízení přístupu na základě role (RBAC) pro instance upozornění
 
-Spotřeba a Správa instancí výstrah vyžaduje, aby uživatel měl předdefinované role RBAC buď [monitorování přispěvatele](../../role-based-access-control/built-in-roles.md#monitoring-contributor) , nebo [čtečka monitorování](../../role-based-access-control/built-in-roles.md#monitoring-reader). Tyto role jsou podporované v jakémkoli oboru Azure Resource Manager, z úrovně předplatného až po podrobná přiřazení na úrovni prostředků. Pokud má například uživatel pouze oprávnění Přispěvatel monitorování pro virtuální počítač `ContosoVM1` , může tento uživatel využívat a spravovat pouze výstrahy vygenerované v `ContosoVM1` .
+Spotřeba a Správa instancí výstrah vyžaduje, aby uživatel měl předdefinované role pro [monitorování přispěvatele](../../role-based-access-control/built-in-roles.md#monitoring-contributor) nebo [sledovacího čtecího modulu](../../role-based-access-control/built-in-roles.md#monitoring-reader)Azure. Tyto role jsou podporované v jakémkoli oboru Azure Resource Manager, z úrovně předplatného až po podrobná přiřazení na úrovni prostředků. Pokud má například uživatel pouze oprávnění Přispěvatel monitorování pro virtuální počítač `ContosoVM1` , může tento uživatel využívat a spravovat pouze výstrahy vygenerované v `ContosoVM1` .
 
 ## <a name="manage-your-alert-instances-programmatically"></a>Spravujte instance výstrah programově
 
@@ -212,4 +212,3 @@ Pomocí [REST API Alert Management](https://aka.ms/alert-management-api) můžet
 - [Správa instancí upozornění v Azure](https://aka.ms/managing-alert-instances)
 - [Správa inteligentních skupin](https://aka.ms/managing-smart-groups)
 - [Další informace o cenách Azure Alerts](https://azure.microsoft.com/pricing/details/monitor/)
-

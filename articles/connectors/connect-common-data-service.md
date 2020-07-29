@@ -7,15 +7,16 @@ ms.reviewer: jdaly, logicappspm
 ms.topic: conceptual
 ms.date: 05/08/2020
 tags: connectors
-ms.openlocfilehash: 98da7e959e4b59ad2d0f3f3f79364391b4ceddbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8cce90a8a65a7f070459e220e6d92ef0be57e909
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82997097"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284111"
 ---
 # <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>Vytváření a Správa záznamů v Common Data Service pomocí Azure Logic Apps
 
-Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [konektoru Common data Service](https://docs.microsoft.com/connectors/commondataservice/)můžete vytvářet automatizované pracovní postupy, které spravují záznamy v databázi [Common data Service](https://docs.microsoft.com/powerapps/maker/common-data-service/data-platform-intro) . Tyto pracovní postupy mohou vytvářet záznamy, aktualizovat záznamy a provádět jiné operace. Můžete také získat informace z databáze Common Data Service a zpřístupnit výstup ostatním akcím pro použití v aplikaci logiky. Například při aktualizaci záznamu ve vaší databázi Common Data Service můžete odeslat e-mail pomocí konektoru Office 365 Outlook.
+Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [konektoru Common data Service](/connectors/commondataservice/)můžete vytvářet automatizované pracovní postupy, které spravují záznamy v databázi [Common data Service](/powerapps/maker/common-data-service/data-platform-intro) . Tyto pracovní postupy mohou vytvářet záznamy, aktualizovat záznamy a provádět jiné operace. Můžete také získat informace z databáze Common Data Service a zpřístupnit výstup ostatním akcím pro použití v aplikaci logiky. Například při aktualizaci záznamu ve vaší databázi Common Data Service můžete odeslat e-mail pomocí konektoru Office 365 Outlook.
 
 Tento článek ukazuje, jak můžete vytvořit aplikaci logiky, která při každém vytvoření záznamu nového zájemce vytvoří záznam úkolu.
 
@@ -23,10 +24,10 @@ Tento článek ukazuje, jak můžete vytvořit aplikaci logiky, která při kaž
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-* [Prostředí Common data Service](https://docs.microsoft.com/power-platform/admin/environments-overview), což je místo, kde vaše organizace ukládá, spravuje a sdílí obchodní data a databázi Common data Service. Další informace najdete v těchto zdrojích:<p>
+* [Prostředí Common data Service](/power-platform/admin/environments-overview), což je místo, kde vaše organizace ukládá, spravuje a sdílí obchodní data a databázi Common data Service. Další informace najdete v těchto zdrojích:<p>
 
-  * [Další informace: Začínáme s Common Data Service](https://docs.microsoft.com/learn/modules/get-started-with-powerapps-common-data-service/)
-  * [Power Platform – Přehled prostředí](https://docs.microsoft.com/power-platform/admin/environments-overview)
+  * [Další informace: Začínáme s Common Data Service](/learn/modules/get-started-with-powerapps-common-data-service/)
+  * [Power Platform – Přehled prostředí](/power-platform/admin/environments-overview)
 
 * Základní informace o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) a aplikace logiky, ze kterých chcete získat přístup k záznamům ve vaší databázi Common data Service. Pokud chcete spustit aplikaci logiky pomocí Common Data Service triggeru, budete potřebovat prázdnou aplikaci logiky. Pokud s Azure Logic Apps začínáte, Projděte si [rychlý Start: vytvoření prvního pracovního postupu pomocí Azure Logic Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -50,9 +51,9 @@ V tomto příkladu přidejte Trigger Common Data Service, který se aktivuje př
 
    | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Prostředí** | Yes | Prostředí, které se má monitorovat, například "prodejní výroba Fabrikam". Další informace najdete v tématu [Power Platform – Přehled prostředí](https://docs.microsoft.com/power-platform/admin/environments-overview). |
-   | **Název entity** | Yes | Entita, která se má monitorovat například "Zájemci" |
-   | **Rozsah** | Yes | Zdroj, který vytvořil nový záznam, například uživatel ve vaší obchodní jednotce nebo libovolný uživatel ve vaší organizaci. V tomto příkladu se používá "obchodní jednotka". |
+   | **Prostředí** | Ano | Prostředí, které se má monitorovat, například "prodejní výroba Fabrikam". Další informace najdete v tématu [Power Platform – Přehled prostředí](/power-platform/admin/environments-overview). |
+   | **Název entity** | Ano | Entita, která se má monitorovat například "Zájemci" |
+   | **Rozsah** | Ano | Zdroj, který vytvořil nový záznam, například uživatel ve vaší obchodní jednotce nebo libovolný uživatel ve vaší organizaci. V tomto příkladu se používá "obchodní jednotka". |
    ||||
 
 ## <a name="add-common-data-service-action"></a>Přidat Common Data Service akci
@@ -71,9 +72,9 @@ Nyní přidejte Common Data Service akci, která vytvoří záznam úkolu pro no
 
    | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Název organizace** | Yes | Prostředí, ve kterém chcete záznam vytvořit, takže v triggeru nemusí být stejné prostředí, ale v tomto příkladu se jedná o prodejní produkci Fabrikam. |
-   | **Název entity** | Yes | Entita, ve které chcete záznam vytvořit, například "úkoly" |
-   | **Subjekt** | Ano, na základě entity vybrané v tomto příkladu | Krátký popis cíle pro tuto úlohu |
+   | **Název organizace** | Ano | Prostředí, ve kterém chcete záznam vytvořit, takže v triggeru nemusí být stejné prostředí, ale v tomto příkladu se jedná o prodejní produkci Fabrikam. |
+   | **Název entity** | Ano | Entita, ve které chcete záznam vytvořit, například "úkoly" |
+   | **Předmět** | Ano, na základě entity vybrané v tomto příkladu | Krátký popis cíle pro tuto úlohu |
    ||||
 
    1. Jako vlastnost **subject (předmět** ) zadejte tento text s koncovým místem:
@@ -86,7 +87,7 @@ Nyní přidejte Common Data Service akci, která vytvoří záznam úkolu pro no
 
       ![Vyberte výstupy triggerů, které se mají použít v záznamu úlohy.](./media/connect-common-data-service/create-new-record-action-select-trigger-outputs.png)
 
-      | Výstup triggeru | Description |
+      | Výstup triggeru | Popis |
       |----------------|-------------|
       | **Jméno** | Křestní jméno z záznamu zájemce pro použití jako primární kontakt v záznamu úkolu |
       | **Příjmení** | Příjmení ze záznamu zájemce, které se má použít jako primární kontakt v záznamu úkolu |
@@ -97,7 +98,7 @@ Nyní přidejte Common Data Service akci, která vytvoří záznam úkolu pro no
 
    ![Dokončila se akce vytvořit nový záznam.](./media/connect-common-data-service/finished-create-record-action-details.png)
 
-1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
+1. Uložte aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
 1. Pokud chcete aplikaci logiky spustit ručně, na panelu nástrojů návrháře vyberte **Spustit**. K otestování aplikace logiky vytvořte nový záznam "zájem".
 
@@ -125,7 +126,7 @@ U akcí, které vracejí záznamy, jako je například akce **seznam záznamů**
 
    ![Zadejte dotaz filtru ODATA pro filtrování záznamů.](./media/connect-common-data-service/list-records-action-filter-query-value.png)
 
-Další informace o `$filter` možnostech systémových dotazů naleznete v tématu [Common data Service-Filter Results](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#filter-results).
+Další informace o `$filter` možnostech systémových dotazů naleznete v tématu [Common data Service-Filter Results](/powerapps/developer/common-data-service/webapi/query-data-web-api#filter-results).
 
 ## <a name="list-records-based-on-an-order"></a>Vypsání záznamů na základě objednávky
 
@@ -139,7 +140,7 @@ U akcí, které vracejí záznamy, jako je například akce **seznam záznamů**
 
    ![Zadejte dotaz filtru ODATA pro řazení záznamů.](./media/connect-common-data-service/list-records-action-order-by-value.png)
 
-Další informace o `$orderby` možnostech systémových dotazů naleznete v tématu [Common data Service-Order Results](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#order-results).
+Další informace o `$orderby` možnostech systémových dotazů naleznete v tématu [Common data Service-Order Results](/powerapps/developer/common-data-service/webapi/query-data-web-api#order-results).
 
 ## <a name="field-data-types"></a>Datové typy polí
 
@@ -147,7 +148,7 @@ Bez ohledu na to, zda ručně zadáte hodnotu nebo vyberete hodnotu ze seznamu d
 
 Tato tabulka popisuje některé typy polí a typy dat, které tato pole vyžadují pro jejich hodnoty.
 
-| Pole | Datový typ | Description |
+| Pole | Datový typ | Popis |
 |-------|-----------|-------------|
 | Textové pole | Jeden řádek textu | Vyžaduje buď jeden řádek textu nebo dynamický obsah, který má datový typ text, například tyto vlastnosti: <p><p>- **Název** <br>- **Kategorií** |
 | Pole celé číslo | Celé číslo | Vyžaduje buď celočíselný nebo dynamický obsah, který má datový typ integer, například tyto vlastnosti: <p><p>- **Procento dokončení** <br>- **Úkolu** |
@@ -165,7 +166,7 @@ Tento příklad ukazuje, jak akce **vytvořit nový záznam** vytvoří nový z�
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Technické informace na základě popisu Swagger konektoru, jako jsou triggery, akce, omezení a další podrobnosti, najdete na [referenční stránce konektoru](https://docs.microsoft.com/connectors/commondataservice/).
+Technické informace na základě popisu Swagger konektoru, jako jsou triggery, akce, omezení a další podrobnosti, najdete na [referenční stránce konektoru](/connectors/commondataservice/).
 
 ## <a name="next-steps"></a>Další kroky
 

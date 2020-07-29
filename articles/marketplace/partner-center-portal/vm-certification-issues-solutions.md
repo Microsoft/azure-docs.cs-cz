@@ -4,15 +4,15 @@ description: Tento článek vysvětluje běžné chybové zprávy pro image virt
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
-author: v-miegge
-ms.author: v-krmall
+author: iqshahmicrosoft
+ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: e73ff612aa07016f69c717a74678d5d1923e87b8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 594a47f397ca78476ed987ac0e06a3cacc79ec3b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120649"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319894"
 ---
 # <a name="issues-and-solutions-during-virtual-machine-certification"></a>Problémy a řešení během certifikace virtuálních počítačů 
 
@@ -45,7 +45,7 @@ Pokud chcete povolit rozšíření virtuálních počítačů, udělejte toto:
 1. Pomocí aktualizace **účtu úložiště**povolte základní matice.
 1. Vyberte **Uložit**.
 
-   ![Povolit sledování na úrovni hosta.](./media/vm-certification-issues-solutions-1.png)
+   ![Povolení sledování na úrovni hosta](./media/vm-certification-issues-solutions-1.png)
 
 Pokud chcete ověřit, jestli jsou rozšíření virtuálních počítačů správně aktivované, udělejte toto:
 
@@ -94,7 +94,7 @@ Stáhněte si [sadu nástrojů Microsoft Certification Toolkit](azure-vm-image-c
 
 V následující tabulce jsou uvedeny testovací případy pro Linux, které sada nástrojů spustí. Ověření testu je uvedeno v popisu.
 
-|Scénář|Testovací případ|Description|
+|Scénář|Testovací případ|Popis|
 |---|---|---|
 |1|Bash historii|Před vytvořením image virtuálního počítače by se měly vymazat soubory historie bash.|
 |2|Verze agenta pro Linux|Je potřeba nainstalovat agenta Azure Linux 2.2.41 nebo novější.|
@@ -122,7 +122,7 @@ V následující tabulce jsou uvedeny běžné chyby, které byly nalezeny při 
 
 V následující tabulce jsou uvedeny testovací případy systému Windows, které sada nástrojů spustí, spolu s popisem ověření testu:
 
-|Scénář |Testovací případy|Description|
+|Scénář |Testovací případy|Popis|
 |---|---|---|---|
 |1|Architektura operačního systému|Azure podporuje jenom 64 operačních systémů.|
 |2|Závislost uživatelského účtu|Spuštění aplikace by nemělo být závislé na účtu správce.|
@@ -186,7 +186,7 @@ Verzi souboru bitové kopie lze ověřit z `C:\windows\system32\drivers\srv.sys`
 |Windows Server 2012|6.2.9200.22099|
 |Windows Server 2012 R2|6.3.9600.18604|
 |Windows Server 2016|10.0.14393.953|
-|Windows Server 2019|NA|
+|Windows Server 2019|Není k dispozici|
 
 ## <a name="sack-vulnerability-patch-verification"></a>Ověření opravy ohrožení zabezpečení pro parametr
 

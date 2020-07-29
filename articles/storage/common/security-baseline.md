@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: cd7e7df5c789743cf6bd84c6150fd901490bdedd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e10843eab8ac2ccbda3d6876f51c88a598d7139
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751634"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371681"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Základní hodnoty zabezpečení Azure pro Azure Storage
 
@@ -240,7 +240,7 @@ Také pro svůj účet Azure Storage povolit rozšířenou ochranu před interne
 
 - [Upozornění na data protokolu Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
 
-- [Protokolování analýz služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+- [Protokolování Analýzy úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -428,7 +428,7 @@ Jedním z efektivních způsobů, jak snížit riziko přístupu k nepodezřelé
 
 Vytvořte nastavení diagnostiky pro Azure Active Directory uživatelských účtů a odešlete protokoly auditu a protokoly přihlášení do pracovního prostoru Log Analytics. Požadované výstrahy můžete nakonfigurovat v pracovním prostoru Log Analytics. Pokud chcete monitorovat selhání ověřování u účtů Azure Storage, můžete vytvořit upozornění, která vás upozorní, když se dosáhne určitých prahových hodnot pro metriky prostředků úložiště. Kromě toho použijte Azure Monitor k upozornění na anonymní přístup k účtům úložiště pomocí podmínky anonymního ověřování.
 
-- [Protokolování analýz služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+- [Protokolování Analýzy úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
 
 - [Jak integrovat protokoly aktivit Azure do Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
@@ -534,7 +534,7 @@ Kromě toho můžete pomocí zásad koncového bodu služby virtuální sítě v
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
-**Doprovodné**materiály: Azure Active Directory (Azure AD) autorizuje přístupová práva k zabezpečeným prostředkům prostřednictvím řízení přístupu na základě role (RBAC). Azure Storage definuje sadu předdefinovaných rolí RBAC, které zahrnují společné sady oprávnění používané pro přístup k datům objektů BLOB nebo front. 
+**Doprovodné**materiály: Azure Active Directory (Azure AD) autorizuje přístupová práva k zabezpečeným prostředkům prostřednictvím řízení přístupu na základě role (RBAC). Azure Storage definuje sadu předdefinovaných rolí Azure, které zahrnují společné sady oprávnění používané pro přístup k datům objektů BLOB nebo front. 
 
 - [Postup přiřazení rolí RBAC pro Azure Storage účet](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal#assign-rbac-roles-using-the-azure-portal)
 
@@ -574,7 +574,7 @@ Kromě toho můžete pomocí zásad koncového bodu služby virtuální sítě v
 
 - [Vytvoření upozornění pro události protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
 
-- [Protokolování analýz služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+- [Protokolování Analýzy úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
 
 - [Jak nakonfigurovat výstrahy metrik pro účty Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account)
 
@@ -689,7 +689,7 @@ K detekci neautorizovaných prostředků Azure taky použijte rozšířenou ochr
 
 **Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad: 
 
- - Nepovolené typy prostředků 
+ - Žádné povolené typy prostředků 
  - Povolené typy prostředků 
 
 Kromě toho můžete pomocí grafu prostředků Azure dotazovat nebo zjišťovat prostředky v rámci předplatných. To může pomáhat v prostředích s vysokým zabezpečením, jako jsou ta s účty úložiště. 
@@ -732,7 +732,7 @@ Kromě toho můžete pomocí grafu prostředků Azure dotazovat nebo zjišťovat
 
 **Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad: 
 
-- Nepovolené typy prostředků 
+- Žádné povolené typy prostředků 
 - Povolené typy prostředků 
 
 - [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)

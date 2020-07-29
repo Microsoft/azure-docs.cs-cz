@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
-ms.openlocfilehash: 7ca106e076bc789e8435b9e67d6bffa20af8a635
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 901ad08440cf1cfbbbab4779a08a87c89a72cc59
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539172"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281493"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Úrovně služby v nákupním modelu založeném na DTU
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -59,7 +59,7 @@ Výběr úrovně služeb závisí hlavně na požadavcích na provozní kontinui
 
 Velikosti výpočetních hodnot se vyjadřují v souvislosti s jednotkami DTU (Database Transaction units) pro izolované databáze a jednotkami elastické databázové transakce (eDTU) pro elastické fondy. Další informace o DTU a eDTU najdete v tématu [nákupní model založený na DTU](purchasing-models.md#dtu-based-purchasing-model).
 
-|Basic|Standard|Premium|
+||Basic|Standard|Premium|
 | :-- | --: | --: | --: |
 | Maximální velikost úložiště | 2 GB | 1 TB | 4 TB  |
 | Maximální DTU | 5 | 3000 | 4000 | 
@@ -70,7 +70,7 @@ Velikosti výpočetních hodnot se vyjadřují v souvislosti s jednotkami DTU (D
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Omezení eDTU elastického fondu, úložiště a databáze ve fondu
 
-| **Basic** | **Standard** | **Premium** |
+|| **Basic** | **Standard** | **Premium** |
 | :-- | --: | --: | --: |
 | Maximální velikost úložiště na databázi  | 2 GB | 1 TB | 1 TB |
 | Maximální velikost úložiště na fond | 156 GB | 4 TB | 4 TB |

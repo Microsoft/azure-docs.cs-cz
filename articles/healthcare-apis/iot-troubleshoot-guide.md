@@ -8,18 +8,18 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: jasteppe
-ms.openlocfilehash: e74e3475256858955a5ab0dc99e7b858548e2485
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eff1272318413da7855134b0a8a44dd0a0711a6c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097475"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285573"
 ---
-# <a name="iot-connector-preview-troubleshooting-guide-and-how-to"></a>Průvodce odstraňováním potíží s konektorem IoT Connector (Preview) a postupy
+# <a name="iot-connector-preview-troubleshooting-guide"></a>Průvodce odstraňováním potíží konektoru IoT Connector (Preview)
 
-V tomto článku se dozvíte, jak řešit běžné chybové zprávy a podmínky konektoru IoT Connector (Preview).
+Tento článek popisuje kroky pro řešení běžných chybových zpráv a podmínek služby IoT Connector (Preview).  
 
-Naučíte se také, jak vytvořit kopie mapování formátu JSON pro IoT Connector (Preview).
+Naučíte se také, jak vytvořit kopie souborů mapování služby IoT Connector (Preview) pro úpravy a archivaci mimo Azure Portal.
 
 ## <a name="error-messages-and-fixes"></a>Chybové zprávy a opravy
 
@@ -63,7 +63,7 @@ Naučíte se také, jak vytvořit kopie mapování formátu JSON pro IoT Connect
 
    :::image type="content" source="media/iot-troubleshoot/map-files-select-device-json-with-box.png" alt-text="Konektor IoT" lightbox="media/iot-troubleshoot/map-files-select-device-json-with-box.png":::
 
-5. Proveďte operaci vložení (například: vyberte CTRL + v) do nového souboru v editoru (například: Visual Studio Code, Poznámkový blok) a uložte soubor s příponou *. JSON.
+5. Proveďte operaci vložení (například: vyberte CTRL + v) do nového souboru v editoru (například Visual Studio Code, Poznámkový blok) a uložte soubor s příponou *. JSON.
 
 > [!TIP]
 > Pokud otevřete lístek [technické podpory Azure](https://azure.microsoft.com/support/create-ticket/) pro konektor IoT, nezapomeňte zahrnout kopie souborů mapování, které vám pomůžou s procesem řešení potíží.

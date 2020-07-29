@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: 675391a92c991f80faadf8b75abc79dcb4cd19d7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: bee22391664250888816dc2b4bbb93622cab7942
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322954"
+ms.locfileid: "87335558"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenční kvóty a omezení IoT Hub
 
@@ -30,9 +30,9 @@ Každé centrum IoT se zřizuje s určitým počtem jednotek na konkrétní úro
 
 Vrstva také určuje omezení omezování, která IoT Hub vynutila pro všechny operace.
 
-### <a name="iot-plug-and-play"></a>IoT Plug and Play
+## <a name="iot-plug-and-play"></a>IoT Plug and Play
 
-Během veřejné verze Preview zařízení IoT technologie Plug and Play odesílají samostatné zprávy na jedno rozhraní, což může zvýšit počet zpráv započítaných do vaší kvóty zpráv.
+Zařízení IoT technologie Plug and Play odesílají pro každé rozhraní alespoň jednu zprávu telemetrie, včetně kořene, což může zvýšit počet zpráv započítaných do vaší kvóty zpráv.
 
 ## <a name="operation-throttles"></a>Omezení operací
 

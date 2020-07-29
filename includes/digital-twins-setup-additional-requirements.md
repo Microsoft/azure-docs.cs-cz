@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/22/2020
 ms.author: baanders
-ms.openlocfilehash: b490b4304dd74d8266b24d0ea5af58726b14d747
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 57be62d0f74f19e35eedf8720e2a6f5cbd3b45d4
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125770"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87335749"
 ---
 Je možné, že vaše organizace vyžaduje další akce od vlastníků předplatného, aby se úspěšně nastavila registrace aplikace (a v důsledku toho se dokončí nastavení použitelné instance digitálního vlákna Azure). Požadované kroky se můžou lišit v závislosti na konkrétním nastavení vaší organizace.
 
@@ -21,7 +21,6 @@ Tady jsou některé běžné potenciální aktivity, které může vlastník pot
   - Pokud byl souhlas udělen úspěšně, měla by položka pro digitální vlákna Azure zobrazit hodnotu *stavu* _udělenou pro **(vaše společnost)** _ .
    
     :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/granted-admin-consent.png" alt-text="Zobrazení portálu souhlasu správce udělené pro společnost pod oprávněními rozhraní API":::
-  - Vlastník může tento proces opakovat pro každou vytvořenou registraci aplikace nebo to udělat znovu a vytvořit jedinou sdílenou aplikaci pro všechny instance digitálních vláken Azure v předplatném, které se mají použít. Ve druhém scénáři by měl vlastník sdílet *ID klienta* a *ID tenanta* pro registraci aplikace u vývojářů, kteří budou muset použít registraci aplikace. (To je to, jak se provádí v rámci vlastního tenanta Microsoftu).
 * Aktivace přístupu veřejného klienta
 * Nastavit konkrétní adresy URL odpovědí pro přístup k webu a desktopu
 * Povolení pro toky implicitního ověřování OAuth2
