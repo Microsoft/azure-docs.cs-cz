@@ -6,18 +6,18 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 05/28/2020
+ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 6e240a0c5d5d77489c92862238c2e5041bdeabe3
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 6d805dfc15264a34abe1f177f688dae96d4a49f7
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171330"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369415"
 ---
-Pomocí klientské knihovny pro vytváření Language Understanding (LUIS) pro Node. js proveďte tyto kroky:
+Pomocí klientské knihovny pro vytváření Language Understanding (LUIS) Node.js na:
 
 * Vytvořte aplikaci.
 * Přidejte záměry, entity a příklad projevy.
@@ -25,7 +25,7 @@ Pomocí klientské knihovny pro vytváření Language Understanding (LUIS) pro N
 * Výuka a publikování aplikace
 * Odstranit aplikaci
 
-[Referenční dokumentace](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-authoring)  |  [Vytváření balíčků (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring), [ukázek balíčku za běhu (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)  |  [Samples](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/luis_authoring_quickstart.js)
+[Referenční dokumentace](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-authoring)  |  [Vytváření balíčků (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring), [ukázek balíčku za běhu (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)  |  [Samples](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/node-sdk-authoring-prediction/luis_authoring_quickstart.js)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -36,46 +36,7 @@ Pomocí klientské knihovny pro vytváření Language Understanding (LUIS) pro N
 
 ### <a name="get-your-language-understanding-luis-starter-key"></a>Získání spouštěcího klíče pro Language Understanding (LUIS)
 
-Získejte [počáteční klíč](../luis-how-to-azure-subscription.md#starter-key) vytvořením prostředku pro vytváření Luis. Zachovejte klíč a koncový bod klíče pro další krok.
-
-### <a name="create-an-environment-variable"></a>Vytvoření proměnné prostředí
-
-Pomocí klíče a oblasti pro klíč vytvořte dvě proměnné prostředí pro ověřování:
-
-* `LUIS_AUTHORING_KEY`– Klíč prostředku pro ověření vašich požadavků.
-* `LUIS_AUTHORING_ENDPOINT`– Koncový bod přidružený k vašemu klíči.
-
-Použijte pokyny pro váš operační systém.
-
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-```console
-setx LUIS_AUTHORING_KEY <replace-with-your-luis-authoring-key
-setx LUIS_AUTHORING_ENDPOINT <replace-with-your-luis-authoring-endpoint>
-```
-
-Po přidání proměnné prostředí restartujte okno konzoly.
-
-#### <a name="linux"></a>[Linux](#tab/linux)
-
-```bash
-export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key>
-export LUIS_AUTHORING_ENDPOINT=<replace-with-your-luis-authoring-endpoint>
-```
-
-Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source ~/.bashrc`, aby se změny projevily.
-
-#### <a name="macos"></a>[macOS](#tab/unix)
-
-Upravte `.bash_profile` a přidejte proměnnou prostředí:
-
-```bash
-export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key>
-export LUIS_AUTHORING_ENDPOINT=<replace-with-your-luis-authoring-endpoint>
-```
-
-Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source .bash_profile`, aby se změny projevily.
-***
+Vytvořte svůj [klíč](../luis-how-to-azure-subscription.md) pro vytváření obsahu vytvořením prostředku pro vytváření Luis. Zachovejte klíč a koncový bod klíče, je nutné přidat tyto řetězce v horní části souboru kódu.
 
 ### <a name="install-the-npm-library-for-luis-authoring"></a>Instalace knihovny NPM pro vytváření obsahu LUIS
 
@@ -102,7 +63,7 @@ Po vytvoření klienta použijte tohoto klienta k přístupu k funkcím, včetn�
 
 ## <a name="code-examples"></a>Příklady kódu
 
-Tyto fragmenty kódu ukazují, jak provést následující akce pomocí klientské knihovny pro vytváření Language Understanding (LUIS) pro Node. js:
+Tyto fragmenty kódu ukazují, jak provést následující akce pomocí klientské knihovny pro vytváření Language Understanding (LUIS) pro Node.js:
 
 * [Vytvoření aplikace](#create-a-luis-app)
 * [Přidání entit](#create-entities-for-the-app)
@@ -118,8 +79,6 @@ Tyto fragmenty kódu ukazují, jak provést následující akce pomocí klientsk
 Vytvořte nový textový soubor v preferovaném editoru nebo integrovaném vývojovém prostředí (IDE) s názvem `luis_authoring_quickstart.js` . Pak přidejte následující závislosti.
 
 [!code-javascript[Create a new application in your preferred editor or IDE.](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_authoring_quickstart.js?name=Dependencies)]
-
-Vytvořte proměnné pro koncový bod a klíč Azure prostředku. Pokud jste po spuštění aplikace vytvořili proměnnou prostředí, budete muset zavřít a znovu otevřít Editor, rozhraní IDE nebo prostředí, na kterém je spuštěný, abyste měli přístup k této proměnné.
 
 [!code-javascript[Create variables for your resource's Azure endpoint and key.](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_authoring_quickstart.js?name=Variables)]
 
@@ -163,7 +122,7 @@ Aby bylo možné určit záměr utterance a extrahovat entity, aplikace potřebu
 
 Přidejte příklad projevy vytvořením seznamu objektů [ExampleLabelObject](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/examplelabelobject?view=azure-node-latest) , jeden objekt pro každý příklad utterance. Každý příklad by měl označit všechny entity pomocí slovníku dvojic název-hodnota a hodnota entity. Hodnota entity by měla být přesně tak, jak se zobrazuje v textu příkladu utterance.
 
-[Příklady volání. Batch](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/examples?view=azure-node-latest#batch-string--string--examplelabelobject----msrest-requestoptionsbase-) s ID aplikace, ID verze a seznam příkladů. Volání odpoví seznamem výsledků. Je potřeba zkontrolovat výsledek každého příkladu, abyste se ujistili, že se úspěšně přidal do modelu.
+Zavolejte [examples.batch](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/examples?view=azure-node-latest#batch-string--string--examplelabelobject----msrest-requestoptionsbase-) s ID aplikace, ID verze a seznamem příkladů. Volání odpoví seznamem výsledků. Je potřeba zkontrolovat výsledek každého příkladu, abyste se ujistili, že se úspěšně přidal do modelu.
 
 [!code-javascript[Add example utterance to intent](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_authoring_quickstart.js?name=AuthoringBatchAddUtterancesForIntent&highlight=52-56)]
 

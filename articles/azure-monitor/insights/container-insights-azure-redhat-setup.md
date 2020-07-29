@@ -3,12 +3,12 @@ title: Konfigurace Azure Red Hat OpenShift v3. x s Azure Monitor for Containers 
 description: Tento článek popisuje, jak nakonfigurovat monitorování clusteru Kubernetes s Azure Monitor hostovaným na Azure Red Hat OpenShift verze 3 a vyšší.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 438a0513b6aceb876df4f9e3d0f4510c7cf8235e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aac70ccc40da15318dd2dece17e429bb091e1860
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092894"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317973"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Konfigurace Azure Red Hat OpenShift V3 pomocí Azure Monitor for Containers
 
@@ -30,7 +30,7 @@ Azure Monitor for Containers podporuje monitorování Azure Red Hat OpenShift, j
 - Živá data (Preview)
 - [Shromážděte metriky](container-insights-update-metrics.md) z uzlů clusteru a lusky a ukládají je do databáze Azure Monitorch metrik.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Log Analytics pracovní prostor](../platform/design-logs-deployment.md).
 
@@ -159,7 +159,7 @@ Provedením následujících kroků povolíte monitorování clusteru Azure Red 
 
 ### <a name="from-the-azure-portal"></a>Pomocí webu Azure Portal
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 2. V nabídce Azure Portal nebo na domovské stránce vyberte možnost **Azure monitor**. V části **přehledy** vyberte **kontejnery**.
 
@@ -173,7 +173,7 @@ Provedením následujících kroků povolíte monitorování clusteru Azure Red 
     ![Povolit monitorování pro nemonitorované clustery](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >Pokud chcete vytvořit nový pracovní prostor Log Analytics pro uložení dat monitorování z clusteru, postupujte podle pokynů v tématu [Vytvoření pracovního prostoru Log Analytics](../../azure-monitor/learn/quick-create-workspace.md). Nezapomeňte vytvořit pracovní prostor ve stejném předplatném, ke kterému je nasazený cluster RedHat OpenShift.
+    >Pokud chcete vytvořit nový pracovní prostor Log Analytics pro uložení dat monitorování z clusteru, postupujte podle pokynů v tématu [Vytvoření pracovního prostoru Log Analytics](../learn/quick-create-workspace.md). Nezapomeňte vytvořit pracovní prostor ve stejném předplatném, ke kterému je nasazený cluster RedHat OpenShift.
 
 Po povolení monitorování může trvat přibližně 15 minut, než budete moct zobrazit metriky stavu clusteru.
 
@@ -244,3 +244,4 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
 - Pokud si chcete vyřadit a analyzovat metriky Prometheus z clusteru, přečtěte si téma Konfigurace vyřazení [metrik Prometheus](container-insights-prometheus-integration.md) .
 
 - Informace o tom, jak zastavit monitorování clusteru pomocí Azure Monitor pro kontejnery, najdete v tématu [Postup zastavení monitorování clusteru Azure Red Hat OpenShift](./container-insights-optout-openshift-v3.md).
+

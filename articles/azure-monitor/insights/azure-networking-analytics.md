@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 96df96fd6145d1c6e58eb5dfc672ec324da75202
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ccdf5885dd1199ff8ed8000e5feaf80662aae42a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041606"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318058"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Řešení monitorování sítě Azure v Azure Monitor
 
@@ -79,7 +79,7 @@ Pro aplikační brány se podporují následující metriky:
 ### <a name="install-and-configure-the-solution"></a>Instalace a konfigurace řešení
 K instalaci a konfiguraci řešení Azure Application Gateway Analytics použijte následující pokyny:
 
-1. Povolte řešení Azure Application Gateway Analytics z [webu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) nebo pomocí procesu popsaného v tématu [Přidání Azure Monitor řešení z galerie řešení](../../azure-monitor/insights/solutions.md).
+1. Povolte řešení Azure Application Gateway Analytics z [webu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) nebo pomocí procesu popsaného v tématu [Přidání Azure Monitor řešení z galerie řešení](./solutions.md).
 2. Povolte protokolování diagnostiky pro [aplikační brány](../../application-gateway/application-gateway-diagnostics.md) , které chcete monitorovat.
 
 #### <a name="enable-azure-application-gateway-diagnostics-in-the-portal"></a>Povolení diagnostiky Azure Application Gateway na portálu
@@ -150,7 +150,7 @@ Pro skupiny zabezpečení sítě jsou podporovány následující protokoly:
 ### <a name="install-and-configure-the-solution"></a>Instalace a konfigurace řešení
 K instalaci a konfiguraci řešení Azure Networking Analytics použijte následující pokyny:
 
-1. Pomocí postupu popsaného v tématu [přidání Azure monitor řešení z galerie řešení](../../azure-monitor/insights/solutions.md)povolte řešení Azure Network Security Group Analytics.
+1. Pomocí postupu popsaného v tématu [přidání Azure monitor řešení z galerie řešení](./solutions.md)povolte řešení Azure Network Security Group Analytics.
 2. Povolte protokolování diagnostiky pro prostředky [skupiny zabezpečení sítě](../../virtual-network/virtual-network-nsg-manage-log.md) , které chcete monitorovat.
 
 ### <a name="enable-azure-network-security-group-diagnostics-in-the-portal"></a>Povolení diagnostiky skupiny zabezpečení sítě Azure na portálu
@@ -225,8 +225,9 @@ Použití aktualizovaných řešení:
 
 Data shromážděná před změnou nejsou v novém řešení viditelná. Můžete pokračovat v dotazování na tato data pomocí starého názvu typu a pole.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>Další kroky
 * K zobrazení podrobných dat diagnostiky Azure použijte [dotazy protokolu v Azure monitor](../log-query/log-query-overview.md) .
+

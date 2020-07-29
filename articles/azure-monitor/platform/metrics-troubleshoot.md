@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: e1ad4e53596b8228bdef5beb18aa250a9512c49f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2f7e45c7f6092566314e6e4867bc0345683e4eb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77659658"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318381"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Řešení potíží s grafy metrik
 
@@ -67,7 +68,7 @@ Některé prostředky negenerují metriky neustále. Azure například neshroma�
 
 Abyste mohli shromažďovat metriky **hostitelského operačního systému**, musíte nakonfigurovat rozšíření Azure Diagnostics nebo ho povolit na panelu **Nastavení diagnostiky** pro váš prostředek.
 
-**Řešení:** Pokud je povolené rozšíření Azure Diagnostics, ale stále nemůžete zobrazit metriky, postupujte podle kroků popsaných v [Průvodci odstraňováním potíží s rozšířením Azure Diagnostics](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal). Další informace najdete v tématu řešení potíží s [oborem názvů a metrikami hostovaného operačního systému](metrics-troubleshoot.md#cannot-pick-guest-os-namespace-and-metrics) .
+**Řešení:** Pokud je povolené rozšíření Azure Diagnostics, ale stále nemůžete zobrazit metriky, postupujte podle kroků popsaných v [Průvodci odstraňováním potíží s rozšířením Azure Diagnostics](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal). Další informace najdete v tématu řešení potíží s [oborem názvů a metrikami hostovaného operačního systému](#cannot-pick-guest-os-namespace-and-metrics) .
 
 ## <a name="error-retrieving-data-message-on-dashboard"></a>Chybová zpráva při načítání dat na řídicím panelu
 
@@ -105,7 +106,7 @@ Metriky hostovaného operačního systému se ve výchozím nastavení ukládaj�
     > [!WARNING]
     > K odesílání metrik **hostovaného operačního systému** do účtu úložiště není možné použít [agenta Log Analytics](agents-overview.md#log-analytics-agent) (označuje se také jako Microsoft Monitoring Agent nebo MMA).
 
-1. Ujistěte se, že je [pro vaše předplatné zaregistrovaný](metrics-troubleshoot.md#microsoftinsights-resource-provider-isnt-registered-for-your-subscription)poskytovatel prostředků **Microsoft. Insights** .
+1. Ujistěte se, že je [pro vaše předplatné zaregistrovaný](#microsoftinsights-resource-provider-isnt-registered-for-your-subscription)poskytovatel prostředků **Microsoft. Insights** .
 
 1. Ověřte, že účet úložiště není chráněný bránou firewall. Azure Portal potřebuje přístup k účtu úložiště, aby mohl načítat data metrik a vykreslovat grafy.
 
@@ -117,3 +118,4 @@ Metriky hostovaného operačního systému se ve výchozím nastavení ukládaj�
 * [Další informace o rozšířených funkcích Průzkumníka metrik](metrics-charts.md)
 * [Seznam dostupných metrik pro služby Azure](metrics-supported.md)
 * [Příklady nakonfigurovaných grafů](metric-chart-samples.md)
+

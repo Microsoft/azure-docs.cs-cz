@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: d52138f5b23a6a0ac8ff8c585e6aed0edd92eaf0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ee5aec2e483f41c73d57fc1d91427e5657bda3e7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499541"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317990"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>Plánování kapacity virtuálních počítačů Hyper-V pomocí řešení Capacity and Performance (zastaralé)
 
@@ -41,12 +41,12 @@ Následující tabulka popisuje připojené zdroje, které toto řešení podpor
 
 | Připojený zdroj | Podpora | Popis |
 |---|---|---|
-| [Agenti systému Windows](../../azure-monitor/platform/agent-windows.md) | Ano | Řešení shromažďuje informace o kapacitě a datech o výkonu od agentů systému Windows. |
-| [Agenti systému Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | No    | Řešení neshromažďuje informace o kapacitě a datech výkonu z přímých agentů systému Linux.|
-| [Skupina pro správu SCOM](../../azure-monitor/platform/om-agents.md) | Ano |Řešení shromažďuje data o kapacitě a výkonu od agentů v připojené skupině pro správu systému SCOM. Přímé připojení od agenta SCOM k Log Analytics není vyžadováno.|
-| [Účet úložiště Azure](../platform/resource-logs.md#send-to-log-analytics-workspace) | No | Služba Azure Storage neobsahuje data o kapacitě a výkonu.|
+| [Agenti systému Windows](../platform/agent-windows.md) | Ano | Řešení shromažďuje informace o kapacitě a datech o výkonu od agentů systému Windows. |
+| [Agenti systému Linux](../learn/quick-collect-linux-computer.md) | Ne | Řešení neshromažďuje informace o kapacitě a datech výkonu z přímých agentů systému Linux.|
+| [Skupina pro správu SCOM](../platform/om-agents.md) | Ano |Řešení shromažďuje data o kapacitě a výkonu od agentů v připojené skupině pro správu systému SCOM. Přímé připojení od agenta SCOM k Log Analytics není vyžadováno.|
+| [Účet úložiště Azure](../platform/resource-logs.md#send-to-log-analytics-workspace) | Ne | Služba Azure Storage neobsahuje data o kapacitě a výkonu.|
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Agenti Windows nebo Operations Manager musí být nainstalovaná na Windows Serveru 2012 nebo vyšších hostitelích Hyper-V, ne na virtuálních počítačích.
 
@@ -55,7 +55,7 @@ Následující tabulka popisuje připojené zdroje, které toto řešení podpor
 
 Chcete-li přidat řešení Capacity and Performance do pracovního prostoru, proveďte následující krok.
 
-- Přidejte Capacity and Performance řešení do svého pracovního prostoru Log Analytics pomocí postupu popsaného v tématu [přidání Log Analytics řešení ze galerie řešení](../../azure-monitor/insights/solutions.md).
+- Přidejte Capacity and Performance řešení do svého pracovního prostoru Log Analytics pomocí postupu popsaného v tématu [přidání Log Analytics řešení ze galerie řešení](./solutions.md).
 
 ## <a name="management-packs"></a>Sady Management Pack
 
@@ -72,7 +72,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 Když se aktualizuje řešení Capacity and Performance, číslo verze se změní.
 
-Další informace o způsobu, jakým se aktualizují sady pro správu řešení, najdete v tématu [Připojení Operations Manageru ke službě Log Analytics](../../azure-monitor/platform/om-agents.md).
+Další informace o způsobu, jakým se aktualizují sady pro správu řešení, najdete v tématu [Připojení Operations Manageru ke službě Log Analytics](../platform/om-agents.md).
 
 ## <a name="using-the-solution"></a>Použití řešení
 
@@ -117,7 +117,7 @@ V rámci sumarizace řešení shromažďuje data o kapacitě a výkonu z nejrůz
 V následující tabulce najdete ukázková hledání v protokolech pro data o kapacitě a výkonu shromážděná a vypočtená tímto řešením.
 
 
-| Dotazy | Popis |
+| Dotaz | Popis |
 |:--- |:--- |
 | Všechny konfigurace paměti hostitele | &#124; výkonu, kde ObjectName = = "Capacity and Performance" a CounterName = = "hostovaná paměť MB" &#124; sumarizaci MB = AVG (CounterValue) podle InstanceName |
 | Všechny konfigurace paměti virtuálního počítače | &#124; výkonu, kde ObjectName = = "Capacity and Performance" a CounterName = = "virtuální počítač přiřadil MB" &#124; sumarizaci MB = AVG (CounterValue) pomocí InstanceName |
@@ -129,4 +129,5 @@ V následující tabulce najdete ukázková hledání v protokolech pro data o k
 
 
 ## <a name="next-steps"></a>Další kroky
-* Pomocí [prohledávání protokolů v Log Analytics](../../azure-monitor/log-query/log-query-overview.md) můžete zobrazit podrobná data Capacity and Performance.
+* Pomocí [prohledávání protokolů v Log Analytics](../log-query/log-query-overview.md) můžete zobrazit podrobná data Capacity and Performance.
+

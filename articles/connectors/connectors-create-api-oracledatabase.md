@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
-ms.openlocfilehash: f4bca70fbec5cf847a6bb5c0b97ed3496d6c2f8c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 988d1efd348fe8e85dd33fbe35cc8dc9362c081b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039993"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290603"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Začínáme s konektorem Oracle Database
 
@@ -30,7 +30,7 @@ Tento konektor nepodporuje následující položky:
 
 V tomto článku se dozvíte, jak používat konektor Oracle Database v aplikaci logiky.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Podporované verze Oracle: 
     * Oracle 9 a novější
@@ -122,10 +122,11 @@ Zobrazit všechny triggery a akce definované v Swagger a také zobrazit omezen�
 
 ## <a name="get-some-help"></a>Získat nápovědu
 
-[Microsoft Q&Stránka s otázkou pro Azure Logic Apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html) je skvělé místo pro pokladení otázek, odpovědi na dotazy a informace o tom, co dělají jiní uživatelé Logic Apps. 
+[Microsoft Q&Stránka s otázkou pro Azure Logic Apps](/answers/topics/azure-logic-apps.html) je skvělé místo pro pokladení otázek, odpovědi na dotazy a informace o tom, co dělají jiní uživatelé Logic Apps. 
 
 Můžete pomoci vylepšit Logic Apps a konektory hlasováním a odesláním nápadů na [https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish) . 
 
 
 ## <a name="next-steps"></a>Další kroky
 [Vytvořte aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)a Prozkoumejte dostupné konektory v Logic Apps v [seznamu rozhraní API](apis-list.md).
+

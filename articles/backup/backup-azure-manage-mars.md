@@ -4,12 +4,12 @@ description: Naučte se spravovat a monitorovat zálohy agenta Microsoft Azure R
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 376e2d53165ab822f75e635b42106e1fe13282a9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 096f47ba4a3d8d490c9cfaf43f4dafec4faf10f9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054988"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317344"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Správa záloh agenta Microsoft Azure Recovery Services (MARS) pomocí služby Azure Backup
 
@@ -112,7 +112,7 @@ Existují dva způsoby, jak zabránit ochraně zálohování souborů a složek:
 1. V části **pozastavit naplánované zálohování**zkontrolujte informace a klikněte na **Dokončit**.
 
     ![Upravte nebo zastavte naplánované zálohování.](./media/backup-azure-manage-mars/pause-schedule-backup.png)
-1. V nabídce **upravit proces zálohování**ověřte, že je v plánu úspěšné ukončení zálohování, a klikněte na **Zavřít** .
+1. V nabídce **Upravit průběh zálohování**ověřte, že je pozastavení zálohování plánu v úspěšném stavu, a kliknutím na **Zavřít** dokončete akci.
 
 ### <a name="stop-protection-and-delete-backup-data"></a>Zastavení ochrany a odstranění zálohovaných dat
 

@@ -5,18 +5,18 @@ description: Naučte se, jak a kde nasadit modely Azure Machine Learning, včetn
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2020
-ms.custom: seoapril2019, tracking-python
-ms.openlocfilehash: ee116d668b9c351ecf5b130a39e418a3da8fc053
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: f592e265cafc3e56dc0616e6eeb748c851084c32
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536381"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317871"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Nasazování modelů pomocí služby Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,12 @@ Pracovní postup je podobný bez ohledu na [to, kam model nasazujete](#target) :
 
 Další informace o konceptech, které jsou součástí pracovního postupu nasazení, najdete v tématu [Správa, nasazení a monitorování modelů pomocí Azure Machine Learning](concept-model-management-and-deployment.md).
 
-## <a name="prerequisites"></a>Předpoklady
+> [!IMPORTANT]
+> Důrazně doporučujeme ladit místně před nasazením do webové služby, další informace najdete v tématu [ladění místně](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally) .
+>
+> Můžete se také podívat na Azure Machine Learning – [nasazení do místního poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local) .
+
+## <a name="prerequisites"></a>Požadavky
 
 - Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
@@ -610,9 +615,9 @@ Následující tabulka popisuje různé stavy služby:
 
 | Stav WebService | Popis | Konečný stav?
 | ----- | ----- | ----- |
-| Přechod | Služba je v procesu nasazení. | No |
-| Není v pořádku | Služba je nasazená, ale v tuto chvíli není dostupná.  | No |
-| Unschedulable | Službu nyní nelze nasadit z důvodu nedostatku prostředků. | No |
+| Přechod | Služba je v procesu nasazení. | Ne |
+| Není v pořádku | Služba je nasazená, ale v tuto chvíli není dostupná.  | Ne |
+| Unschedulable | Službu nyní nelze nasadit z důvodu nedostatku prostředků. | Ne |
 | Neúspěšný | Nasazení služby se nezdařilo z důvodu chyby nebo selhání. | Ano |
 | V pořádku | Služba je v pořádku a koncový bod je k dispozici. | Ano |
 
@@ -1004,7 +1009,7 @@ package = Model.package(ws, [model], inference_config)
 package.wait_for_creation(show_output=True)
 ```
 
-Po vytvoření balíčku můžete použít `package.pull()` k načtení image do místního prostředí Docker. Výstup tohoto příkazu zobrazí název obrázku. Příklad: 
+Po vytvoření balíčku můžete použít `package.pull()` k načtení image do místního prostředí Docker. Výstup tohoto příkazu zobrazí název obrázku. Například: 
 
 `Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. 
 

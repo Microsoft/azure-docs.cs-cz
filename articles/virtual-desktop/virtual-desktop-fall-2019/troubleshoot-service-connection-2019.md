@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s připojením služby Virtual Desktop Windows na úrovni 2019 – Azure
-description: Řešení problémů při nastavování připojení klienta v prostředí klienta virtuální plochy Windows
+title: Řešení potíží s virtuálním počítačem s Windows s připojením služby (Classic) – Azure
+description: Řešení problémů při nastavování připojení klienta v klientském prostředí virtuálních počítačů s Windows (Classic)
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 05/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ad5e740a2874d398f3947fe755024bedc897ec73
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 213f7843e4896f8c7c9234e2c94433afbed1d565
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085788"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292509"
 ---
-# <a name="troubleshoot-windows-virtual-desktop-service-connections"></a>Řešení potíží s připojením služby Virtual Desktop systému Windows
+# <a name="windows-virtual-desktop-classic-service-connections"></a>Připojení služby Virtual Desktop (Classic) Windows
 
 >[!IMPORTANT]
->Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objekty virtuálních klientů Windows, které byly zavedeny v aktualizaci jarní 2020, přečtěte si [Tento článek](../troubleshoot-service-connection.md).
+>Tento obsah se vztahuje na virtuální plochu Windows (Classic), která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objektů virtuálních klientů Windows, přečtěte si [Tento článek](../troubleshoot-service-connection.md).
 
 Pomocí tohoto článku můžete vyřešit problémy s připojením klienta k virtuální ploše Windows.
 

@@ -4,14 +4,15 @@ description: Specifikace pro virtuální počítače s Dv3 a Dsv3-Series.
 author: joelpelley
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 85b38b58884c05f9f6ced938df1b7e4f51bb9d09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1dae05987c067ec3c724f60985e7ead84be817f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84694616"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291189"
 ---
 # <a name="dv3-and-dsv3-series"></a>Řada Dv3 a DSv3
 
@@ -37,15 +38,15 @@ Migrace za provozu: podporováno
 
 Aktualizace pro zachování paměti: podporováno
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště: IOPS/čtení MB/s/zápis MB/s | Maximální počet síťových karet/šířka pásma sítě |
-|---|---|---|---|---|---|---|
-| Standard_D2_v3  | 2  | 8   | 50   | 4  | 3 000 / 46 / 23     | 2/1000  |
-| Standard_D4_v3  | 4  | 16  | 100  | 8  | 6 000 / 93 / 46     | 2/2000  |
-| Standard_D8_v3  | 8  | 32  | 200  | 16 | 12 000 / 187 / 93   | 4/4000  |
-| Standard_D16_v3 | 16 | 64  | 400  | 32 | 24 000 / 375 / 187  | 8/8000  |
-| Standard_D32_v3 | 32 | 128 | 800  | 32 | 48 000 / 750 / 375  | 8/16000 |
-| Standard_D48_v3 | 48 | 192 | 1200 | 32 | 96 000 / 1 000 / 500 | 8/24000 |
-| Standard_D64_v3 | 64 | 256 | 1600 | 32 | 96 000 / 1 000 / 500 | 8/30000 |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště: IOPS/čtení MB/s/zápis MB/s | Maximální počet síťových karet|Šířka pásma sítě |
+|---|---|---|---|---|---|---|---|
+| Standard_D2_v3  | 2  | 8   | 50   | 4  | 3 000 / 46 / 23     | 2|1000  |
+| Standard_D4_v3  | 4  | 16  | 100  | 8  | 6 000 / 93 / 46     | 2|2000  |
+| Standard_D8_v3  | 8  | 32  | 200  | 16 | 12 000 / 187 / 93   | 4|4000  |
+| Standard_D16_v3 | 16 | 64  | 400  | 32 | 24 000 / 375 / 187  | 8|8000  |
+| Standard_D32_v3 | 32 | 128 | 800  | 32 | 48 000 / 750 / 375  | 8|16000 |
+| Standard_D48_v3 | 48 | 192 | 1200 | 32 | 96 000 / 1 000 / 500 | 8|24000 |
+| Standard_D64_v3 | 64 | 256 | 1600 | 32 | 96 000 / 1 000 / 500 | 8|30000 |
 
 ## <a name="dsv3-series"></a>Dsv3-series
 
@@ -63,26 +64,30 @@ Migrace za provozu: podporováno
 
 Aktualizace pro zachování paměti: podporováno
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
-|---|---|---|---|---|---|---|---|
-| Standard_D2s_v3  | 2  | 8   | 16  | 4  | 4000/32 (50)       | 3200/48    | 2/1000  |
-| Standard_D4s_v3  | 4  | 16  | 32  | 8  | 8000/64 (100)      | 6400/96    | 2/2000  |
-| Standard_D8s_v3  | 8  | 32  | 64  | 16 | 16000/128 (200)    | 12800/192  | 4/4000  |
-| Standard_D16s_v3 | 16 | 64  | 128 | 32 | 32000/256 (400)    | 25600/384  | 8/8000  |
-| Standard_D32s_v3 | 32 | 128 | 256 | 32 | 64000/512 (800)    | 51200/768  | 8/16000 |
-| Standard_D48s_v3 | 48 | 192 | 384 | 32 | 96000/768 (1200)   | 76800/1152 | 8/24000 |
-| Standard_D64s_v3 | 64 | 256 | 512 | 32 | 128000/1024 (1600) | 80000/1200 | 8/30000 |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet|Očekávaná šířka pásma sítě (MB/s) |
+|---|---|---|---|---|---|---|---|---|
+| Standard_D2s_v3  | 2  | 8   | 16  | 4  | 4000/32 (50)       | 3200/48    | 2|1000  |
+| Standard_D4s_v3  | 4  | 16  | 32  | 8  | 8000/64 (100)      | 6400/96    | 2|2000  |
+| Standard_D8s_v3  | 8  | 32  | 64  | 16 | 16000/128 (200)    | 12800/192  | 4|4000  |
+| Standard_D16s_v3 | 16 | 64  | 128 | 32 | 32000/256 (400)    | 25600/384  | 8|8000  |
+| Standard_D32s_v3 | 32 | 128 | 256 | 32 | 64000/512 (800)    | 51200/768  | 8|16000 |
+| Standard_D48s_v3 | 48 | 192 | 384 | 32 | 96000/768 (1200)   | 76800/1152 | 8|24000 |
+| Standard_D64s_v3 | 64 | 256 | 512 | 32 | 128000/1024 (1600) | 80000/1200 | 8|30000 |
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-## <a name="other-sizes"></a>Jiné velikosti
+## <a name="other-sizes-and-information"></a>Další velikosti a informace
 
 - [Obecné účely](sizes-general.md)
-- [Optimalizované z hlediska paměti](sizes-memory.md)
-- [Optimalizované z hlediska úložiště](sizes-storage.md)
+- [Optimalizované pro paměť](sizes-memory.md)
+- [Optimalizované pro úložiště](sizes-storage.md)
 - [Optimalizované z hlediska GPU](sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 - [Předchozí generace](sizes-previous-gen.md)
+
+Cenová kalkulačka: [Cenová Kalkulačka](https://azure.microsoft.com/pricing/calculator/)
+
+Další informace o typech disků: [typy disků](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
 
 ## <a name="next-steps"></a>Další kroky
 

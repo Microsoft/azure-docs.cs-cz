@@ -10,11 +10,12 @@ ms.date: 06/22/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: has-adal-ref
-ms.openlocfilehash: ddb079051414168b125ce2e42e8badd55580f0c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 949347d07fe120c6900f49499e78595b540718a7
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212615"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87368995"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Získání tokenu z Azure AD pro autorizaci žádostí z klientské aplikace
 
@@ -26,7 +27,7 @@ Přehled toku udělení kódu OAuth 2,0 najdete v tématu [autorizace přístupu
 
 ## <a name="assign-a-role-to-an-azure-ad-security-principal"></a>Přiřazení role k objektu zabezpečení služby Azure AD
 
-Pokud chcete ověřit objekt zabezpečení z vaší aplikace Azure Storage, nejdřív nakonfigurujte nastavení řízení přístupu na základě role (RBAC) pro daný objekt zabezpečení. Azure Storage definuje předdefinované role RBAC, které zahrnují oprávnění pro kontejnery a fronty. Když je role RBAC přiřazená k objektu zabezpečení, je tomuto objektu zabezpečení udělen přístup k tomuto prostředku. Další informace najdete v tématu [Správa přístupových práv k objektům blob Azure a zařazování dat do fronty pomocí RBAC](storage-auth-aad-rbac.md).
+Pokud chcete ověřit objekt zabezpečení z vaší aplikace Azure Storage, nejdřív nakonfigurujte nastavení řízení přístupu na základě role (RBAC) pro daný objekt zabezpečení. Azure Storage definuje předdefinované role Azure, které zahrnují oprávnění pro kontejnery a fronty. Když je role RBAC přiřazená k objektu zabezpečení, je tomuto objektu zabezpečení udělen přístup k tomuto prostředku. Další informace najdete v tématu [Správa přístupových práv k objektům blob Azure a zařazování dat do fronty pomocí RBAC](storage-auth-aad-rbac.md).
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>Registrace aplikace pomocí tenanta Azure AD
 
@@ -280,7 +281,7 @@ CloudBlockBlob blob = new CloudBlockBlob(
 
 ### <a name="enable-implicit-grant-flow"></a>Povolit tok implicitního udělení
 
-Pokud chcete ukázku spustit, možná budete muset nakonfigurovat tok implicitního udělení pro registraci vaší aplikace. Postupujte následovně:
+Pokud chcete ukázku spustit, možná budete muset nakonfigurovat tok implicitního udělení pro registraci vaší aplikace. Postupujte takto:
 
 1. Přejděte k registraci vaší aplikace v Azure Portal.
 1. V části **Spravovat** vyberte nastavení **ověřování** .

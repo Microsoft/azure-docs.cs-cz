@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: aahi
-ms.openlocfilehash: 4cdf58974cd8fa9d7813df7e970caea260409225
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 79bbdd109d005b7c6de293aebf50433fb7ea1d91
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78251311"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291643"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>Obsah komunitního externího & pro službu pro rozpoznávání Analýza textu
 
@@ -23,7 +23,7 @@ ms.locfileid: "78251311"
 
 ## <a name="blogs"></a>Blogy
 
-+ [Rozhraní API pro analýzu textu původní oznámení (blog Azure)](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/)
++ [Rozhraní API pro analýzu textu původní oznámení (blog Azure)](https://azure.microsoft.com/blog/using-text-analytics-in-call-centers/)
 
 + [Použití Analýza textu klíčových frází Cognitive Services API z PowerShellu (blog AutomationNext)](https://automationnext.wordpress.com/tag/text-analytics/)
 
@@ -51,7 +51,7 @@ ms.locfileid: "78251311"
 
 Hledáte informace o funkci nebo případu použití, které nepokrýváme? V [UserVoice](https://cognitive.uservoice.com/forums/555922-text-analytics)si můžete vyžádat nebo hlasovat. 
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
  [StackOverflow: Azure rozhraní API pro analýzu textu](https://stackoverflow.com/questions/tagged/text-analytics-api)   
  [StackOverflow: Azure Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

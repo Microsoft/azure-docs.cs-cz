@@ -1,7 +1,7 @@
 ---
 title: Vytvoření, změna nebo odstranění tabulky směrování Azure
 titlesuffix: Azure Virtual Network
-description: Naučte se, jak vytvořit, změnit nebo odstranit směrovací tabulku.
+description: Naučte se, jak najít informace o směrování provozu virtuální sítě a jak vytvořit, změnit nebo odstranit směrovací tabulku.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: kumud
-ms.openlocfilehash: e694f29bb6f8e7c78c36ad2b8ee90d507529444f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 664e3851370be812cd7a0e58cf9beb1fddb5d991
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708259"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290993"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Vytvoření, změna nebo odstranění směrovací tabulky
 
@@ -41,7 +41,7 @@ Pokud ho nemáte, nastavte účet Azure s aktivním předplatným. [Vytvořte si
 
 Existuje omezení počtu směrovacích tabulek, které můžete vytvořit pro každé umístění a předplatné Azure. Podrobnosti najdete v tématu [omezení sítě – Azure Resource Manager](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-1. V nabídce [Azure Portal](https://portal.azure.com) nebo na **domovské** stránce vyberte **vytvořit prostředek**.
+1. V nabídce webu [Azure Portal](https://portal.azure.com) nebo na **domovské stránce** vyberte **Vytvořit prostředek**.
 
 1. Do vyhledávacího pole zadejte *směrovací tabulku*. Pokud se ve výsledcích hledání zobrazí **tabulka směrování** , vyberte ji.
 
@@ -333,7 +333,7 @@ Po krátkém čekání vám Azure ukáže typ dalšího segmentu směrování a 
 
 Aby bylo možné provádět úlohy s směrovacími tabulkami a trasami, musí být váš účet přiřazen k [roli Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) nebo k [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , která je přiřazená k příslušným akcím uvedeným v následující tabulce:
 
-| Akce                                                          |   Name                                                  |
+| Akce                                                          |   Název                                                  |
 |--------------------------------------------------------------   |   -------------------------------------------           |
 | Microsoft. Network/routeTables/Read                              |   Čtení směrovací tabulky                                    |
 | Microsoft. Network/routeTables/Write                             |   Vytvoří nebo aktualizuje směrovací tabulku.                        |

@@ -10,21 +10,21 @@ ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/12/2019
 ms.author: cynthn
-ms.openlocfilehash: cc442886c4c4c26db5f5cde908ea647e2ee2f1bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7d9d7ff9c9a54b74e3160b9de3df1f08a81e6531
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059008"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291078"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Instalace a konfigurace vzdálené plochy pro připojení k virtuálnímu počítači se systémem Linux v Azure
 Virtuální počítače se systémem Linux v Azure jsou obvykle spravovány z příkazového řádku pomocí připojení Secure Shell (SSH). Když je novinkou pro Linux nebo rychlé řešení potíží, může být používání vzdálené plochy jednodušší. Tento článek podrobně popisuje, jak nainstalovat a nakonfigurovat desktopové prostředí ([desktop Xfce](https://www.xfce.org)) a vzdálenou plochu ([xrdp](http://xrdp.org)) pro virtuální počítač se systémem Linux pomocí modelu nasazení Správce prostředků.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Tento článek vyžaduje existující virtuální počítač s Ubuntu 18,04 LTS v Azure. Pokud potřebujete vytvořit virtuální počítač, použijte jednu z následujících metod:
 
 - Rozhraní příkazového [řádku Azure](quick-create-cli.md)
@@ -105,7 +105,7 @@ Po ověření se desktop Xfce desktopové prostředí načte a bude vypadat podo
 Pokud Váš místní klient RDP používá ověřování na úrovni sítě (NLA), možná budete muset toto nastavení připojení zakázat. XRDP v současné době nepodporuje NLA. Můžete se také podívat na alternativní řešení protokolu RDP, která podporují NLA, například [FreeRDP](https://www.freerdp.com).
 
 
-## <a name="troubleshoot"></a>Odstranit potíže
+## <a name="troubleshoot"></a>Řešení potíží
 Pokud se k VIRTUÁLNÍmu počítači se systémem Linux nemůžete připojit pomocí klienta vzdálené plochy, pomocí nástroje `netstat` na virtuálním počítači se systémem Linux ověřte, zda váš virtuální počítač naslouchá připojením RDP následujícím způsobem:
 
 ```bash

@@ -6,23 +6,23 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 05/28/2020
+ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 8aeb6b964ab38a68a6d8681a4e5c93e1650c6a69
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: db866da43310f5407ce4daae1cade2c7512b91ea
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171263"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369243"
 ---
 Pro Python použijte Language Understanding (LUIS) předvídání klientské knihovny pro:
 
 * Získat předpovědi podle slotu
 * Získat předpovědi podle verze
 
-[Referenční dokumentace](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis)  |  [Balíček předpovědi pro modul runtime (PyPi)](https://pypi.org/project/azure-cognitiveservices-language-luis/)  |  [Ukázky](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/LUIS)
+[Referenční dokumentace](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis)  |  [Balíček předpovědi pro modul runtime (PyPi)](https://pypi.org/project/azure-cognitiveservices-language-luis/)  |  [Ukázky](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -35,8 +35,6 @@ Pro Python použijte Language Understanding (LUIS) předvídání klientské kni
 ### <a name="get-your-language-understanding-luis-runtime-key"></a>Získat klíč běhu Language Understanding (LUIS)
 
 Získejte [klíč za běhu](../luis-how-to-azure-subscription.md) vytvořením prostředku modulu runtime Luis. Zachovejte klíč a koncový bod klíče pro další krok.
-
-[!INCLUDE [Set up environment variables for prediction quickstart](sdk-prediction-environment-variables.md)]
 
 ### <a name="create-a-new-python-file"></a>Vytvořit nový soubor Pythonu
 
@@ -73,20 +71,16 @@ V adresáři projektu otevřete `prediction_quickstart.py` soubor v preferované
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
-1. Vytvořte proměnné pro vlastní požadované informace LUIS:
-
-    Přidejte proměnné pro správu vašeho klíč předpovědi načtený z proměnné prostředí s názvem `LUIS_RUNTIME_KEY` . Pokud jste po spuštění aplikace vytvořili proměnnou prostředí, bude nutné editor, rozhraní IDE nebo prostředí, které je spuštěno, zavřít a znovu načíst pro přístup k proměnné. Metody budou vytvořeny později.
-
-    Vytvořte proměnnou pro uložení názvu prostředku `LUIS_RUNTIME_ENDPOINT` .
+1. Vytvořte proměnné pro vlastní požadované informace LUIS: klíč předpovědi a koncový bod.
 
     [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py?name=AuthorizationVariables)]
 
-1. Vytvořte proměnnou pro ID aplikace jako proměnnou prostředí s názvem `LUIS_APP_ID` . Nastavte proměnnou prostředí na veřejnou aplikaci IoT, **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`** . Vytvořte proměnnou pro nastavení `production` publikované přihrádky.
+1. Vytvořte proměnnou pro ID aplikace nastavenou na veřejnou aplikaci IoT, **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`** . Vytvořte proměnnou pro nastavení `production` publikované přihrádky.
 
     [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py?name=OtherVariables)]
 
 
-1. Vytvořte objekt s přihlašovacími údaji klíče a použijte ho u svého koncového bodu k vytvoření objektu [LUISRuntimeClientConfiguration] https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.luisruntimeclientconfiguration?view=azure-python() .
+1. Vytvořte objekt s přihlašovacími údaji klíče a použijte ho u svého koncového bodu k vytvoření objektu [LUISRuntimeClientConfiguration](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.luisruntimeclientconfiguration?view=azure-python) .
 
     [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py?name=Client)]
 

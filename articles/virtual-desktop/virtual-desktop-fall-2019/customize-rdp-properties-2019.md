@@ -1,6 +1,6 @@
 ---
-title: Přizpůsobení vlastností protokolu RDP pomocí prostředí PowerShell spadají do 2019 – Azure
-description: Postup přizpůsobení vlastností protokolu RDP pro virtuální počítače s Windows pomocí rutin prostředí PowerShell.
+title: Přizpůsobení vlastností protokolu RDP pomocí virtuálního počítače s Windows PowerShellu (Classic) – Azure
+description: Postup přizpůsobení vlastností protokolu RDP pro virtuální plochu Windows (Classic) pomocí rutin prostředí PowerShell.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 844c59c6e5ea6d730c64fea5fb2dee51f602c382
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3ed7e8b8348ae87e676ec4585bce42a1ac389e23
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527621"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291265"
 ---
-# <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) pro fond hostitelů
+# <a name="customize-remote-desktop-protocol-properties-for-a--windows-virtual-desktop-classic-host-pool"></a>Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) fondu hostitelů pro virtuální počítače s Windows (Classic)
 
 >[!IMPORTANT]
->Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objekty virtuálních klientů Windows, které byly zavedeny v aktualizaci jarní 2020, přečtěte si [Tento článek](../customize-rdp-properties.md).
+>Tento obsah se vztahuje na virtuální plochu Windows (Classic), která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objektů virtuálních klientů Windows, přečtěte si [Tento článek](../customize-rdp-properties.md).
 
 Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) (RDP) fondu hostitelů, jako je například prostředí pro více monitorů a přesměrování zvuku, umožňuje poskytovat optimální prostředí pro uživatele podle svých potřeb. Vlastnosti protokolu RDP můžete přizpůsobit ve virtuální ploše Windows pomocí parametru **-CustomRdpProperty** v rutině **set-RdsHostPool** .
 

@@ -3,16 +3,16 @@ title: Použití nástrojů pro automatizaci infrastruktury
 description: Naučte se používat nástroje pro automatizaci infrastruktury, jako je Ansible, Puppet, Terraformu a balírna, k vytváření a správě virtuálních počítačů v Azure.
 author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: 31a0d9d4eac731836812c438a71541885863c8de
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5567274fd9ee2cfaf41f9ff4c6e71bb2faab7b1d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097374"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292379"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Použití nástrojů pro automatizaci infrastruktury s virtuálními počítači v Azure
 

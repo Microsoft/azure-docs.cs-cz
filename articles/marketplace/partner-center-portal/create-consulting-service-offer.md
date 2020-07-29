@@ -1,18 +1,18 @@
 ---
 title: Vytvoření nabídky konzultační služby – Microsoft Commercial Marketplace
 description: Naučte se publikovat konzultační nabídku služby buď Microsoft AppSource nebo Azure Marketplace pomocí partnerského centra.
-author: anbene
-ms.author: mingshen
+author: Microsoft-BradleyWright
+ms.author: brwrigh
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: a06f0838f25e771a90fb6dc6f4fcd3bd9bdeda87
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 11f4091489a8ef8c980ece0589945c8e1c7dc8b8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203804"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317769"
 ---
 # <a name="create-a-consulting-service-offer"></a>Vytvoření nabídky konzultačních služeb
 
@@ -100,7 +100,7 @@ Tato stránka umožňuje nastavit primární produkt, který vaše konzultační
 
     - Analýzy
     - Modernizace aplikací
-    - Archive
+    - Archiv
     - AI a Machine Learning
     - Backup
     - Velký objem dat
@@ -138,9 +138,9 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 1. Logo
 2. Cena
 3. Oblasti řešení
-4. Odvětví
+4. Obory
 5. Název nabídky
-6. Shrnutí
+6. Souhrn
 7. Popis
 8. Snímky obrazovky a videa
 
@@ -153,12 +153,12 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 1. Logo
 2. Cena
 3. Produkty
-4. Odvětví
+4. Obory
 5. Název nabídky
-6. Shrnutí
+6. Souhrn
 7. Popis
 8. Snímky obrazovky a videa
-9. dokumenty.
+9. Dokumenty
 
 ### <a name="name"></a>Název
 

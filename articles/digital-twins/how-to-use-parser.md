@@ -7,41 +7,24 @@ ms.author: cschorm
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5a6f05835362dbcde36b1ab9cc3782b172b43f7c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5245e3740773c2be7973b26a4785982e0daa56c9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079138"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291623"
 ---
-# <a name="dtdl-client-side-parser-library"></a>Knihovna analyzátorů DTDL na straně klienta
+# <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>Analýza a ověření modelů pomocí knihovny analyzátoru DTDL
 
-[Modely](concepts-models.md) v digitálních prostředníkech Azure se definují pomocí jazyka DTDL (Digital nenáročné na digitální vlákna JSON). V případech, kdy je užitečné analyzovat vaše modely, je v NuGet.org k dispozici knihovna analýzy DTDL jako knihovna na straně klienta: [Microsoft. Azure. DigitalTwins. Parser](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/).
+[Modely](concepts-models.md) v digitálních prostředníkech Azure se definují pomocí jazyka DTDL (Digital nenáročné na digitální vlákna JSON). **Před odesláním do instance digitálního vlákna Azure doporučujeme vaše modely ověřit offline.**
 
-Tato knihovna poskytuje model přístup k definicím DTDL, který v podstatě funguje jako ekvivalent jazyka C# pro DTDL. Tato knihovna se dá použít nezávisle na jakékoli [sadě SDK pro digitální vlákna Azure](how-to-use-apis-sdks.md), zejména pro ověřování DTDL ve vizuálním nebo textovém editoru. Je vhodné zajistit, aby byly soubory definice modelu platné, než se pokusíte je odeslat do služby.
-
-Chcete-li použít knihovnu analyzátoru, zadejte ji se sadou dokumentů DTDL. Obvykle byste tyto modelové dokumenty načetli ze služby, ale můžete je také zpřístupnit místně, pokud byl váš klient zodpovědný za jejich nahrání do služby na prvním místě. 
-
-Tady je obecný pracovní postup pro použití analyzátoru:
-1. Načte některé nebo všechny dokumenty DTDL ze služby.
-2. Předejte vracené dokumenty DTDL v paměti do analyzátoru.
-3. Analyzátor ověří sadu předaných dokumentů a vrátí podrobné informace o chybě. Tato možnost je užitečná ve scénářích editoru.
-4. Použijte rozhraní API analyzátoru pro pokračování v analýze modelů obsažených v sadě dokumentů. 
-
-Mezi schopnosti analyzátoru patří:
-* Získat všechna implementovaná rozhraní modelu (obsah `extends` oddílu rozhraní).
-* Získá všechny vlastnosti, telemetrie, příkazy, komponenty a vztahy deklarované v modelu. Tento příkaz také získá všechna metadata zahrnutá v těchto definicích a bere v `extends` úvahu dědičnost (oddíly).
-* Získat všechny definice komplexního modelu
-* Určete, zda lze model přiřadit z jiného modelu.
-
-> [!NOTE]
-> Zařízení [IoT technologie Plug and Play (PnP)](../iot-pnp/overview-iot-plug-and-play.md) používají k popisu jejich funkce malou variantu syntaxe. Tato varianta syntaxe je sémanticky kompatibilní podmnožinou DTDL, která se používá v digitálních Vlákenách Azure. Při použití knihovny analyzátoru nemusíte znát, která varianta syntaxe se použila k vytvoření DTDL pro digitální vlákna. Analyzátor bude ve výchozím nastavení vždycky vracet stejný model pro syntaxi digitálního vlákna PnP a Azure.
+Abychom to mohli udělat, je k dispozici knihovna pro analýzu DTDL na straně klienta .NET na webu NuGet: [**Microsoft. Azure. DigitalTwins. Parser**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/). Knihovnu analyzátoru můžete použít přímo v kódu C# nebo pomocí ukázkového projektu Language-nezávislá Code, který je založen na knihovně analyzátoru: [**DTDL validátor**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator).
 
 ## <a name="use-the-dtdl-validator-sample"></a>Použití ukázky validátoru DTDL
 
-K dispozici je ukázkový kód, který může ověřit modelové dokumenty a ujistit se, že je DTDL platný. Je postavená na knihovně analyzátorů DTDL a je to Language-nezávislá. Najdete ho tady: [Ukázka validátoru DTDL](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator).
+[**Validátor DTDL**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) je ukázkový projekt, který umožňuje ověřit modelové dokumenty, aby bylo zajištěno, že DTDL je platný. Je postavená na knihovně analyzátoru .NET a je to Language-nezávislá. Můžete ji získat pomocí tlačítka *Stáhnout ZIP* na ukázkovém odkazu.
 
-Ukázku validátoru lze použít jako nástroj příkazového řádku k ověření stromu adresářů souborů DTDL. Poskytuje také interaktivní režim. Zdrojový kód ukazuje příklady použití knihovny analyzátoru.
+Zdrojový kód ukazuje příklady použití knihovny analyzátoru. Můžete použít ukázku validátoru jako nástroj příkazového řádku k ověření stromu adresářových souborů DTDL. Poskytuje také interaktivní režim.
 
 Informace o tom, jak balíček ukázek do samostatného spustitelného souboru zabalit, najdete ve složce DTDL validátoru pro ověřování v souboru *Readme.MD* .
 
@@ -65,9 +48,30 @@ DTDLValidator -i
 
 Další informace o této ukázce naleznete v tématu zdrojový kód nebo spustit `DTDLValidator --help` .
 
-## <a name="use-the-parser-library-in-code"></a>Použití knihovny analyzátorů v kódu
+## <a name="use-the-net-parser-library"></a>Použití knihovny analyzátoru .NET 
 
-Knihovnu analyzátoru můžete také použít přímo pro věci, jako je ověřování modelů ve vaší vlastní aplikaci nebo pro generování dynamického, modelem řízených uživatelských rozhraní, řídicích panelů a sestav.
+Knihovna [**Microsoft. Azure. DigitalTwins. Parser**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) poskytuje modelový přístup k definicím DTDL, který v podstatě funguje jako ekvivalent pro reflexi jazyka C# pro DTDL. Tato knihovna se dá použít nezávisle na jakékoli [sadě SDK pro digitální vlákna Azure](how-to-use-apis-sdks.md), zejména pro ověřování DTDL ve vizuálním nebo textovém editoru. Je vhodné zajistit, aby byly soubory definice modelu platné, než se pokusíte je odeslat do služby.
+
+Chcete-li použít knihovnu analyzátoru, zadejte ji se sadou dokumentů DTDL. Obvykle byste tyto modelové dokumenty načetli ze služby, ale můžete je také zpřístupnit místně, pokud byl váš klient zodpovědný za jejich nahrání do služby na prvním místě. 
+
+Tady je obecný pracovní postup pro použití analyzátoru:
+1. Načte některé nebo všechny dokumenty DTDL ze služby.
+2. Předejte vracené dokumenty DTDL v paměti do analyzátoru.
+3. Analyzátor ověří sadu předaných dokumentů a vrátí podrobné informace o chybě. Tato možnost je užitečná ve scénářích editoru.
+4. Použijte rozhraní API analyzátoru pro pokračování v analýze modelů obsažených v sadě dokumentů. 
+
+Mezi schopnosti analyzátoru patří:
+* Získat všechna implementovaná rozhraní modelu (obsah `extends` oddílu rozhraní).
+* Získá všechny vlastnosti, telemetrie, příkazy, komponenty a vztahy deklarované v modelu. Tento příkaz také získá všechna metadata zahrnutá v těchto definicích a bere v `extends` úvahu dědičnost (oddíly).
+* Získat všechny definice komplexního modelu
+* Určete, zda lze model přiřadit z jiného modelu.
+
+> [!NOTE]
+> Zařízení [IoT technologie Plug and Play (PnP)](../iot-pnp/overview-iot-plug-and-play.md) používají k popisu jejich funkce malou variantu syntaxe. Tato varianta syntaxe je sémanticky kompatibilní podmnožinou DTDL, která se používá v digitálních Vlákenách Azure. Při použití knihovny analyzátoru nemusíte znát, která varianta syntaxe se použila k vytvoření DTDL pro digitální vlákna. Analyzátor bude ve výchozím nastavení vždycky vracet stejný model pro syntaxi digitálního vlákna PnP a Azure.
+
+### <a name="code-with-the-parser-library"></a>Kód pomocí knihovny analyzátoru
+
+Knihovnu analyzátoru můžete použít přímo pro věci, jako je ověřování modelů ve vaší vlastní aplikaci nebo pro generování dynamických, modelem řízených uživatelských rozhraní, řídicích panelů a sestav.
 
 Pro podporu níže uvedeného příkladu kódu analyzátoru zvažte několik modelů definovaných v instanci digitálních vláken Azure:
 

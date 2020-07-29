@@ -11,16 +11,16 @@ keywords: Izolace virtuálních počítačů, izolovaný virtuální počítač,
 ms.assetid: ''
 ms.service: virtual-machines
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: bf2b4ac189e0e1eff77c2aae98a1fb53268821ab
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ed49f5299129d16ecdd31f537064e67a4e8965a4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509309"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289725"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Paměťově optimalizované velikosti virtuálních počítačů
 
@@ -49,7 +49,7 @@ Azure COMPUTE nabízí velikosti virtuálních počítačů, které jsou izolova
 - [Obecné účely](sizes-general.md)
 - [Optimalizované pro výpočty](sizes-compute.md)
 - [Optimalizované pro úložiště](sizes-storage.md)
-- [Optimalizované z hlediska GPU.](sizes-gpu.md)
+- [Optimalizované z hlediska GPU](sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 - [Předchozí generace](sizes-previous-gen.md)
 

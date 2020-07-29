@@ -10,20 +10,20 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: c7c74bc8bd92e2d210c8fe5deaff30d55a36bb5e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: afa48c07e628eaeb013c24fa38fcda1adea2555a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127209"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87368964"
 ---
 # <a name="use-azure-cli-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Přiřazení role RBAC pro přístup k datům objektů BLOB a front pomocí Azure CLI
 
-Azure Active Directory (Azure AD) autorizuje přístupová práva k zabezpečeným prostředkům prostřednictvím [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md). Azure Storage definuje sadu předdefinovaných rolí RBAC, které zahrnují společné sady oprávnění používané pro přístup k datům objektů BLOB nebo front.
+Azure Active Directory (Azure AD) autorizuje přístupová práva k zabezpečeným prostředkům prostřednictvím [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md). Azure Storage definuje sadu předdefinovaných rolí Azure, které zahrnují společné sady oprávnění používané pro přístup k datům objektů BLOB nebo front.
 
 Když je role RBAC přiřazená k objektu zabezpečení Azure AD, poskytuje Azure přístup k těmto prostředkům pro daný objekt zabezpečení. Přístup může být vymezený na úrovni předplatného, skupiny prostředků, účtu úložiště nebo jednotlivého kontejneru nebo fronty. Objekt zabezpečení Azure AD může být uživatelem, skupinou, instančním objektem služby nebo [spravovanou identitou pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 
-Tento článek popisuje, jak pomocí Azure CLI vypsat předdefinované role RBAC a přiřadit je uživatelům. Další informace o použití Azure CLI najdete v tématu [rozhraní příkazového řádku (CLI) Azure](/cli/azure).
+Tento článek popisuje, jak pomocí Azure CLI vypsat předdefinované role Azure a přiřadit je uživatelům. Další informace o použití Azure CLI najdete v tématu [rozhraní příkazového řádku (CLI) Azure](/cli/azure).
 
 ## <a name="rbac-roles-for-blobs-and-queues"></a>Role RBAC pro objekty BLOB a fronty
 
@@ -35,7 +35,7 @@ Tento článek popisuje, jak pomocí Azure CLI vypsat předdefinované role RBAC
 
 ## <a name="list-available-rbac-roles"></a>Výpis dostupných rolí RBAC
 
-Pokud chcete zobrazit seznam dostupných integrovaných rolí RBAC pomocí Azure CLI, použijte příkaz [AZ role definition list](/cli/azure/role/definition#az-role-definition-list) :
+Pokud chcete zobrazit seznam dostupných předdefinovaných rolí Azure pomocí Azure CLI, použijte příkaz [AZ role definition list](/cli/azure/role/definition#az-role-definition-list) :
 
 ```azurecli-interactive
 az role definition list --out table

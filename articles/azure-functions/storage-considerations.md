@@ -2,13 +2,13 @@
 title: Požadavky na úložiště pro Azure Functions
 description: Seznamte se s požadavky na úložiště Azure Functions a o šifrování uložených dat.
 ms.topic: conceptual
-ms.date: 01/21/2020
-ms.openlocfilehash: 2efd583b319e3f3b1fa3db307ea4a3cf53710165
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/27/2020
+ms.openlocfilehash: aefd9a35235a09d94973f383603349f6862bbdd9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079600"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318177"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Požadavky na úložiště pro Azure Functions
 
@@ -18,12 +18,12 @@ Azure Functions vyžaduje účet Azure Storage při vytváření instance aplika
 |Služba úložiště  | Využití funkcí  |
 |---------|---------|
 | [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)     | Zachovat stav vazeb a klíče funkcí  <br/>Používá se také pro [centra úloh v Durable Functions](durable/durable-functions-task-hubs.md). |
-| [Azure Files](../storage/files/storage-files-introduction.md)  | Sdílená složka používaná k ukládání a spouštění kódu aplikace Function App v [plánu spotřeby](functions-scale.md#consumption-plan). |
+| [Soubory Azure](../storage/files/storage-files-introduction.md)  | Sdílená složka používaná k ukládání a spouštění kódu aplikace Function App v [plánu spotřeby](functions-scale.md#consumption-plan) a [plánu Premium](functions-scale.md#premium-plan). |
 | [Úložiště front Azure](../storage/queues/storage-queues-introduction.md)     | Používá [se pro centra úloh v Durable Functions](durable/durable-functions-task-hubs.md).   |
 | [Azure Table storage](../storage/tables/table-storage-overview.md)  |  Používá [se pro centra úloh v Durable Functions](durable/durable-functions-task-hubs.md).       |
 
 > [!IMPORTANT]
-> Pokud použijete plán hostování Consumption, kód vaší funkce a vázané konfigurační soubory se ukládají ve službě Azure File Storage v hlavním účtu úložiště. Když odstraníte hlavní účet úložiště, tento obsah se odstraní a není možné ho obnovit.
+> Při použití plánu hostování v rámci spotřeby/Premium se kód funkce a konfigurační soubory vazby ukládají do služby Azure File Storage v hlavním účtu úložiště. Když odstraníte hlavní účet úložiště, tento obsah se odstraní a není možné ho obnovit.
 
 ## <a name="storage-account-requirements"></a>Požadavky na účet úložiště
 

@@ -3,12 +3,12 @@ title: Nejčastější dotazy k Azure DevTest Labs | Microsoft Docs
 description: Tento článek obsahuje odpovědi na některé nejčastější dotazy týkající se Azure DevTest Labs.
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: 707b66fadab482a31ac02f10460d581997931a0b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3f36b8238ccb69b3b1f14166b522e47d5debe54e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537477"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289366"
 ---
 # <a name="azure-devtest-labs-faq"></a>Nejčastější dotazy k Azure DevTest Labs
 Získejte odpovědi na některé z nejběžnějších otázek o Azure DevTest Labs.
@@ -36,7 +36,7 @@ Váš popisovač Twitteru:[@azlabservices](https://twitter.com/azlabservices)
 Pokud tady uvedený dotaz není, sdělte nám, abychom vám pomohli najít odpověď.
 
 - Na konci těchto nejčastějších dotazů si vystavte otázku.
-- Pokud chcete oslovit širší cílovou skupinu, pošlete dotaz na [stránku s dotazem na Microsoft Q&Azure DevTest Labs](https://docs.microsoft.com/answers/topics/azure-devtestlabs.html). Zapojte se do týmu Azure DevTest Labs a dalších členů komunity.
+- Pokud chcete oslovit širší cílovou skupinu, pošlete dotaz na [stránku s dotazem na Microsoft Q&Azure DevTest Labs](/answers/topics/azure-devtestlabs.html). Zapojte se do týmu Azure DevTest Labs a dalších členů komunity.
 - V případě žádostí o funkce odešlete žádosti a nápady [Azure DevTest Labs uživatelského hlasu](https://feedback.azure.com/forums/320373-azure-devtest-labs).
 
 ### <a name="what-is-a-microsoft-account"></a>Co je účet Microsoft?
@@ -277,7 +277,7 @@ K automatickému nahrávání souborů VHD pro vytváření vlastních imagí m�
 
 Pokud chcete najít cílový účet úložiště, který je přidružený k vašemu testovacímu prostředí:
 
-1.  Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1.  Přihlaste se na [Azure Portal](https://portal.azure.com).
 2.  V nabídce vlevo vyberte **skupiny prostředků**.
 3.  Vyhledejte a vyberte skupinu prostředků, která je přidružená k vašemu testovacímu prostředí.
 4.  V části **Přehled**vyberte jeden z účtů úložiště.

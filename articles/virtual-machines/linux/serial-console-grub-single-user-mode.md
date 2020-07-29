@@ -4,16 +4,16 @@ description: Použití sériové konzoly pro grub na virtuálních počítačíc
 services: virtual-machines-linux
 author: asinn826
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: d594f4d8019a7c23da79506cd702adbe9f25038d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: da7e558464c82db9d71132c4b1f53f9892d2d653
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028936"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292239"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Použití sériové konzoly pro přístup ke GRUB a režimu jednoho uživatele
 GRUB je celkový jednotný zaváděcí program pro spouštění. Z GRUB můžete změnit konfiguraci spouštění tak, aby se spouštěla do režimu jednoho uživatele, mimo jiné.

@@ -5,14 +5,15 @@ services: virtual-machines
 ms.subservice: sizes
 author: ayshakeen
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: 6e7411f30ac0ef03ecd621f4cf6db5cd9350201b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3a5d2228074ed358244b49bdf283c09f777ddee
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678541"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292073"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Velikosti virtuálních počítačů řady B-Series
 
@@ -30,9 +31,9 @@ Aktualizace pro zachování paměti: podporováno
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Základní výkon procesoru virtuálního počítače | Maximální výkon procesoru virtuálního počítače | Počáteční kredity | Kredity v bance za hodinu | Maximální počet bank kreditů | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Standard_B1ls<sup>1</sup> | 1  | 0,5 | 4   | 5 %   | 100 %  | 30  | 3   | 72   | 2  | 200/10    | 160/10    | 2  |
-| Standard_B1s              | 1  | 1   | 4   | 10 %  | 100 %  | 30  | 6   | 144  | 2  | 400/10    | 320/10    | 2  |
-| Standard_B1ms             | 1  | 2   | 4   | 20 %  | 100 %  | 30  | 12  | 288  | 2  | 800/10    | 640/10    | 2  |
+| Standard_B1ls<sup>1</sup> | 1  | 0,5 | 4   | 5 %   | 100 %  | 30  | 3   | 72   | 2  | 200/10    | 160/10    | 2  |
+| Standard_B1s              | 1  | 1   | 4   | 10 %  | 100 %  | 30  | 6   | 144  | 2  | 400/10    | 320/10    | 2  |
+| Standard_B1ms             | 1  | 2   | 4   | 20 %  | 100 %  | 30  | 12  | 288  | 2  | 800/10    | 640/10    | 2  |
 | Standard_B2s              | 2  | 4   | 8   | 40 %  | 200 %  | 60  | 24  | 576  | 4  | 1600/15   | 1280/15   | 3  |
 | Standard_B2ms             | 2  | 8   | 16  | 60 %  | 200 %  | 60  | 36  | 864  | 4  | 2400/22.5 | 1920 – 22.5 | 3  |
 | Standard_B4ms             | 4  | 16  | 32  | 90 %  | 400%  | 120 | 54  | 1296 | 8  | 3600/35   | 2880/35   | 4  |
@@ -134,14 +135,18 @@ Odpověď **: když** je virtuální počítač "REDPLOYED" a virtuální počí
 
 Odpověď **: B1ls** podporuje pouze systémy Linux a pokud nasazujete jinou bitovou kopii operačního systému, nebudete mít nejlepší prostředí pro zákazníky.
 
-## <a name="other-sizes"></a>Jiné velikosti
+## <a name="other-sizes-and-information"></a>Další velikosti a informace
 
 - [Obecné účely](sizes-general.md)
-- [Optimalizované z hlediska výpočetních služeb](sizes-compute.md)
-- [Optimalizované z hlediska paměti](sizes-memory.md)
-- [Optimalizované z hlediska úložiště](sizes-storage.md)
+- [Optimalizované pro výpočty](sizes-compute.md)
+- [Optimalizované pro paměť](sizes-memory.md)
+- [Optimalizované pro úložiště](sizes-storage.md)
 - [Optimalizované z hlediska GPU](sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
+
+Cenová kalkulačka: [Cenová Kalkulačka](https://azure.microsoft.com/pricing/calculator/)
+
+Další informace o typech disků: [typy disků](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
 
 ## <a name="next-steps"></a>Další kroky
 

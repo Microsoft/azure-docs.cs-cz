@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 939a2e67d6d2c215f7a575b6b9bd08660fc03b27
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3a6afd42c12a523523b45861b38b323fa680ecab
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008196"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317280"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Návrh nasazení protokolů služby Azure Monitor
 
@@ -47,12 +47,12 @@ IT organizace jsou v současnosti modelované v rámci centralizované, decentra
 
 Při použití agentů Log Analytics ke shromažďování dat je potřeba pochopit následující informace, aby bylo možné naplánovat nasazení agenta:
 
-* Chcete-li shromažďovat data z agentů systému Windows, můžete [nakonfigurovat každého agenta tak, aby se nahlásily do jednoho nebo více pracovních prostorů](../../azure-monitor/platform/agent-windows.md), a to i v případě, že se hlásí do skupiny pro správu System Center Operations Manager Agent pro Windows může hlásit až čtyři pracovní prostory.
+* Chcete-li shromažďovat data z agentů systému Windows, můžete [nakonfigurovat každého agenta tak, aby se nahlásily do jednoho nebo více pracovních prostorů](./agent-windows.md), a to i v případě, že se hlásí do skupiny pro správu System Center Operations Manager Agent pro Windows může hlásit až čtyři pracovní prostory.
 * Agent pro Linux nepodporuje více domovských stránek a může nahlásit pouze jeden pracovní prostor.
 
 Pokud používáte System Center Operations Manager 2012 R2 nebo novější:
 
-* Každá skupina pro správu Operations Manager může být [připojená pouze k jednomu pracovnímu prostoru](../platform/om-agents.md). 
+* Každá skupina pro správu Operations Manager může být [připojená pouze k jednomu pracovnímu prostoru](./om-agents.md). 
 * Počítače se systémem Linux vykazující skupinu pro správu musí být nakonfigurovány tak, aby nahlásily přímo do Log Analytics pracovního prostoru. Pokud již počítače se systémem Linux hlásí přímo do pracovního prostoru a chcete je monitorovat pomocí Operations Manager, postupujte podle těchto kroků a [nahlaste se skupině pro správu Operations Manager](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group). 
 * Log Analytics agenta pro Windows můžete nainstalovat do počítače s Windows a podávat ho do obou Operations Manager integrovaných v pracovním prostoru a v jiném pracovním prostoru.
 
@@ -166,3 +166,4 @@ Při plánování migrace do tohoto modelu Vezměte v úvahu následující skut
 ## <a name="next-steps"></a>Další kroky
 
 Chcete-li implementovat oprávnění zabezpečení a ovládací prvky doporučené v této příručce, přečtěte si téma [Správa přístupu k protokolům](manage-access.md).
+

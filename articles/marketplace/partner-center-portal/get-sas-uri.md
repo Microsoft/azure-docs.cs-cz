@@ -4,15 +4,15 @@ description: Vygenerujte identifikátor URI sdíleného přístupového podpisu 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: anbene
-ms.author: mingshen
+author: iqshahmicrosoft
+ms.author: iqshah
 ms.date: 07/14/2020
-ms.openlocfilehash: 569d9ce04422230c1d6b9ebb0957f01c320c5ba0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f3589fb9ae176e04f727f516cca7c18c87dad9e0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536143"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317497"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>Získat identifikátor URI sdíleného přístupového podpisu pro vaši image virtuálního počítače
 

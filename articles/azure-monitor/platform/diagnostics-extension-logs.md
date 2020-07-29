@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: a367e819ab9f12d9adcb448848c80eaeea73d113
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 095fd0b534c0dffaf80d2464fb9734f295335b84
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008026"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317174"
 ---
 # <a name="collect-data-from-azure-diagnostics-extension-to-azure-monitor-logs"></a>Shromažďovat data z rozšíření diagnostiky Azure do protokolů Azure Monitor
 Rozšíření Azure Diagnostics je [Agent v Azure monitor](agents-overview.md) , který shromažďuje data monitorování z hostovaného operačního systému výpočetních prostředků Azure, včetně virtuálních počítačů. Tento článek popisuje, jak shromažďovat data shromážděná diagnostickým rozšířením z Azure Storage do Azure Monitor protokolů.
@@ -24,13 +24,13 @@ Rozšíření diagnostiky Azure ukládá data do účtu Azure Storage. Protokoly
 
 | Typ protokolu | Typ prostředku | Umístění |
 | --- | --- | --- |
-| Protokoly IIS |Virtual Machines <br> Webové role <br> Role pracovního procesu |WAD – IIS – soubory protokolu (Blob Storage) |
-| Syslog |Virtual Machines |LinuxsyslogVer2v0 (Table Storage) |
+| Protokoly IIS |Virtuální počítače <br> Webové role <br> Role pracovního procesu |WAD – IIS – soubory protokolu (Blob Storage) |
+| Syslog |Virtuální počítače |LinuxsyslogVer2v0 (Table Storage) |
 | Service Fabric provozní události |Uzly Service Fabric |WADServiceFabricSystemEventTable |
 | Service Fabric spolehlivých událostí objektu actor |Uzly Service Fabric |WADServiceFabricReliableActorEventTable |
 | Service Fabric spolehlivých událostí služby |Uzly Service Fabric |WADServiceFabricReliableServiceEventTable |
-| Protokoly událostí systému Windows |Uzly Service Fabric <br> Virtual Machines <br> Webové role <br> Role pracovního procesu |WADWindowsEventLogsTable (Table Storage) |
-| Protokoly ETW systému Windows |Uzly Service Fabric <br> Virtual Machines <br> Webové role <br> Role pracovního procesu |WADETWEventTable (Table Storage) |
+| Protokoly událostí systému Windows |Uzly Service Fabric <br> Virtuální počítače <br> Webové role <br> Role pracovního procesu |WADWindowsEventLogsTable (Table Storage) |
+| Protokoly ETW systému Windows |Uzly Service Fabric <br> Virtuální počítače <br> Webové role <br> Role pracovního procesu |WADETWEventTable (Table Storage) |
 
 ## <a name="data-types-not-supported"></a>Datové typy nejsou podporovány.
 
@@ -64,5 +64,6 @@ Za přibližně 30 minut budete moci zobrazit data z účtu úložiště v praco
 ## <a name="next-steps"></a>Další kroky
 
 * [Shromážděte protokoly a metriky pro služby Azure](./resource-logs.md#send-to-log-analytics-workspace) pro podporované služby Azure.
-* [Povolte řešení](../../azure-monitor/insights/solutions.md) a poskytněte vám tak přehled o datech.
-* Data můžete analyzovat [pomocí vyhledávacích dotazů](../../azure-monitor/log-query/log-query-overview.md) .
+* [Povolte řešení](../insights/solutions.md) a poskytněte vám tak přehled o datech.
+* Data můžete analyzovat [pomocí vyhledávacích dotazů](../log-query/log-query-overview.md) .
+

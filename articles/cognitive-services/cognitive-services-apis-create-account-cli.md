@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 10/04/2019
+ms.date: 07/27/2020
 ms.author: aahi
-ms.openlocfilehash: 72b00d78d19ed0e963b4dad01b82033c659e1efd
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: b77d69248059a494d823afcd149382dd52b0e49d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84704705"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317123"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Vytvoření prostředku Cognitive Services pomocí rozhraní příkazového řádku Azure (CLI)
 
@@ -32,7 +32,7 @@ V tomto rychlém startu se dozvíte, jak se zaregistrovat k Azure Cognitive Serv
 
 ## <a name="install-the-azure-cli-and-sign-in"></a>Instalace rozhraní příkazového řádku Azure a přihlášení 
 
-Nainstalujte [rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). K místní instalaci rozhraní příkazového řádku se přihlaste spuštěním příkazu [AZ Login](https://docs.microsoft.com/cli/azure/reference-index#az-login) :
+Nainstalujte rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). K místní instalaci rozhraní příkazového řádku se přihlaste spuštěním příkazu [AZ Login](https://docs.microsoft.com/cli/azure/reference-index#az-login) :
 
 ```azurecli-interactive
 az login
@@ -84,18 +84,18 @@ Při vytváření nového prostředku budete muset znát "druh" služby, kterou 
 > [!NOTE]
 > Mnohé z Cognitive Services níže mají bezplatnou úroveň, kterou můžete použít k vyzkoušení služby. Pokud chcete používat úroveň Free, použijte `F0` jako SKU pro váš prostředek.
 
-### <a name="vision"></a>Obraz
+### <a name="vision"></a>Zrak
 
 | Služba                    | Druh                      |
 |----------------------------|---------------------------|
-| Počítačové zpracování obrazu            | `ComputerVision`          |
+| Computer Vision            | `ComputerVision`          |
 | Custom Vision – předpověď | `CustomVision.Prediction` |
 | Custom Vision – školení   | `CustomVision.Training`   |
-| Rozpoznávání tváře                       | `Face`                    |
+| Tvář                       | `Face`                    |
 | Rozpoznávání formulářů            | `FormRecognizer`          |
 | Rozpoznávání rukopisu             | `InkRecognizer`           |
 
-### <a name="search"></a>Hledat
+### <a name="search"></a>Search
 
 | Služba            | Druh                  |
 |--------------------|-----------------------|
@@ -109,7 +109,7 @@ Při vytváření nového prostředku budete muset znát "druh" služby, kterou 
 
 | Služba            | Druh                 |
 |--------------------|----------------------|
-| Služby Speech    | `SpeechServices`     |
+| Hlasové služby    | `SpeechServices`     |
 | Rozpoznávání řeči | `SpeakerRecognition` |
 
 ### <a name="language"></a>Jazyk
@@ -151,6 +151,8 @@ az cognitiveservices account create \
     --location westus2 \
     --yes
 ```
+
+[!INCLUDE [Register Azure resource for subscription](./includes/register-resource-subscription.md)]
 
 ## <a name="get-the-keys-for-your-resource"></a>Získat klíče pro svůj prostředek
 
@@ -198,7 +200,7 @@ Pokud chcete odebrat skupinu prostředků a její přidružené prostředky, pou
 az group delete --name cognitive-services-resource-group
 ```
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 * [Ověřování požadavků do Azure Cognitive Services](authentication.md)
 * [Co je Azure Cognitive Services?](Welcome.md)

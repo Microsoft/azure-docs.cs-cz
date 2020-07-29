@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 92f35968156e787b844d28f866a832940cc8ef64
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: d3630b631944befaf8a8c3d32e90e775dd6d63fc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171606"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292873"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Zálohování a obnovení v Azure Database for PostgreSQL – jeden server
 
@@ -32,19 +32,15 @@ Pro servery, které podporují až 4 TB maximálního úložiště, se k úplný
 
 #### <a name="servers-with-up-to-16-tb-storage"></a>Servery s až 16 TB úložiště
 
-V podmnožině [oblastí Azure](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage)můžou všechny nově zřízené servery podporovat úložiště až o 16 TB. Zálohy na těchto velkých serverech úložiště jsou založené na snímcích. První úplné zálohování snímku je naplánováno ihned po vytvoření serveru. Tato první úplná záloha snímku se uchová jako základní záloha serveru. Následné zálohy snímků jsou jenom rozdílové zálohy. 
-
-Rozdílové zálohování snímků se vyskytuje alespoň jednou denně. Rozdílové zálohování snímků se nevyskytuje u pevného plánu. Rozdílové zálohování snímků probíhá každých 24 hodin, pokud transakční protokol (binlog v MySQL) překračuje 50 GB od poslední rozdílové zálohy. Za den je povolený maximálně šest rozdílových snímků. 
-
-K zálohování protokolu transakcí dochází každých pět minut. 
+V podmnožině [oblastí Azure](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage)můžou všechny nově zřízené servery podporovat úložiště až o 16 TB. Zálohy na těchto velkých serverech úložiště jsou založené na snímcích. První úplné zálohování snímku je naplánováno ihned po vytvoření serveru. Tato první úplná záloha snímku se uchová jako základní záloha serveru. Následné zálohy snímků jsou jenom rozdílové zálohy. Rozdílové zálohování snímků se nevyskytuje u pevného plánu. Za den se provádí tři rozdílové zálohy snímků. K zálohování protokolu transakcí dochází každých pět minut. 
 
 ### <a name="backup-retention"></a>Uchování záloh
 
 Zálohy se uchovávají na základě nastavení období uchovávání záloh na serveru. Můžete vybrat dobu uchování 7 až 35 dní. Výchozí doba uchování je 7 dní. Dobu uchování během vytváření serveru nebo později můžete nastavit tak, že aktualizujete konfiguraci zálohování pomocí [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal#set-backup-configuration) nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-restore-server-cli#set-backup-configuration). 
 
 Doba uchovávání záloh určuje, jak daleko se obnovení k určitému bodu v čase dá načíst, protože je založené na dostupných zálohách. Období uchovávání záloh lze také považovat za okno obnovení z perspektivy obnovení. Všechny zálohy potřebné k provedení obnovení k určitému bodu v čase v rámci období uchovávání záloh jsou uchovávány v úložišti záloh. Pokud je například doba uchování zálohy nastavená na 7 dní, okno obnovení se považuje za posledních 7 dní. V tomto scénáři jsou zachovány všechny zálohy potřebné k obnovení serveru za posledních 7 dní. Okno uchování zálohy po dobu sedmi dnů:
-- Starší servery s úložištěm se 4 TB budou uchovávat až 2 úplné zálohy databáze, všechny rozdílové zálohy a zálohy transakčního protokolu byly provedeny od nejstarší úplné zálohy databáze.
--   Servery s velkým úložištěm (16 TB) uchovávají úplný snímek databáze, všechny rozdílové snímky a zálohy protokolů transakcí za posledních 8 dní.
+- Servery s úložištěm až 4 TB budou uchovávat až 2 úplné zálohy databáze, všechny rozdílové zálohy a zálohy transakčního protokolu byly provedeny od nejstarší úplné zálohy databáze.
+-   Servery s až 16 TB úložiště uchovávají úplný snímek databáze, všechny rozdílové snímky a zálohy protokolů transakcí za posledních 8 dní.
 
 ### <a name="backup-redundancy-options"></a>Možnosti redundance zálohy
 
