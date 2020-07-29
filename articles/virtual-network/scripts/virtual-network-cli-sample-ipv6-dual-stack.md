@@ -1,7 +1,7 @@
 ---
 title: Ukázkový skript Azure CLI – konfigurace front-endu IPv6
 titlesuffix: Azure Virtual Network
-description: Povolení koncových bodů IPv6 pomocí rozhraní příkazového řádku Azure v Azure Virtual Network
+description: Ke konfiguraci koncových bodů IPv6 a nasazení aplikace Dual Stack (IPv4 + IPv6) v Azure použijte ukázkový skript Azure CLI.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/23/2019
 ms.author: kumud
-ms.openlocfilehash: 1ef8742bc4f8de2d08d9bb4fc98b3df6f9420737
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5f5e741e972015820af2e0e33372eb41c9e78210
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80235026"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281595"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>Ukázka konfigurace koncových bodů IPv6 v ukázce skriptu virtuální sítě (Preview)
 

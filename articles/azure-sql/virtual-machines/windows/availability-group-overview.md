@@ -3,7 +3,7 @@ title: Přehled skupin dostupnosti Always On SQL Server
 description: Tento článek představuje SQL Server skupiny dostupnosti Always On na Azure Virtual Machines.
 services: virtual-machines
 documentationCenter: na
-author: MikeRayMSFT
+author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.assetid: 601eebb1-fc2c-4f5b-9c05-0e6ffd0e5334
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/13/2017
-ms.author: mikeray
+ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 50be33bf0cb89c7baff58e5f8e4a2a23b9a1ecef
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0e676e1c97c0039490137aa12b06fc88e457646f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073285"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286826"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Představení skupin dostupnosti Always On SQL Server v Azure Virtual Machines
 
@@ -41,8 +41,8 @@ Aby bylo možné zvýšit redundanci a vysokou dostupnost, musí být virtuáln�
 
 |  | Verze Windows serveru | Verze SQL Server | Edice SQL Server | Konfigurace kvora služby WSFC | DR s více oblastmi | Podpora více podsítí | Podpora pro existující službu AD | DR se stejnou oblastí ve více zónách | Podpora balíčku DIST-AG bez domény AD | Podpora balíčku DIST-AG bez clusteru |  
 | :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|
-| **[VIRTUÁLNÍ POČÍTAČ CLI SQL](availability-group-az-cli-configure.md)** | 2016 | 2017 </br>2016   | Rozlehlé | Disk s kopií cloudu | No | Ano | Ano | Ano | No | No |
-| **[Šablony pro rychlý Start](availability-group-quickstart-template-configure.md)** | 2016 | 2017</br>2016  | Rozlehlé | Disk s kopií cloudu | No | Ano | Ano | Ano | No | No |
+| **[VIRTUÁLNÍ POČÍTAČ CLI SQL](availability-group-az-cli-configure.md)** | 2016 | 2017 </br>2016   | Rozlehlé | Disk s kopií cloudu | Ne | Ano | Ano | Ano | Ne | Ne |
+| **[Šablony pro rychlý Start](availability-group-quickstart-template-configure.md)** | 2016 | 2017</br>2016  | Rozlehlé | Disk s kopií cloudu | Ne | Ano | Ano | Ano | Ne | Ne |
 | **[Ruční](availability-group-manually-configure-prerequisites-tutorial.md)** | Vše | Vše | Vše | Vše | Ano | Ano | Ano | Ano | Ano | Ano |
 
 Šablona **SQL Serverho clusteru AlwaysOn (Preview)** byla odebrána z Azure Marketplace a již není k dispozici. 

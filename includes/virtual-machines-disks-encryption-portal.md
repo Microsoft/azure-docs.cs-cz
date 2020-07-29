@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/23/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a8702f14bfb9aed5a3595203dde1d86ea56a151b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 950fd82e14902c3a7a94fddb44d50ac372ebe119
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133807"
+ms.locfileid: "87177011"
 ---
 [!INCLUDE [virtual-machines-disks-encryption-create-key-vault-portal](virtual-machines-disks-encryption-create-key-vault-portal.md)]
 
@@ -42,7 +42,7 @@ Proces nasazení virtuálního počítače se podobá standardnímu procesu nasa
 1. Přejděte do virtuálního počítače, který je ve stejné oblasti jako jedna ze sad pro šifrování disků.
 1. Otevřete virtuální počítač a vyberte **zastavit**.
 
-    ![Snímek obrazovky s hlavním překryvem pro ukázkový virtuální počítač Se zvýrazněným tlačítkem STOP](media/virtual-machines-disk-encryption-portal/server-side-encryption-stop-vm-to-encrypt-disk-fix.png)
+    ![Snímek obrazovky hlavního překryvu pro ukázkový virtuální počítač se zvýrazněným tlačítkem STOP](media/virtual-machines-disk-encryption-portal/server-side-encryption-stop-vm-to-encrypt-disk-fix.png)
 
 1. Po ukončení činnosti virtuálního počítače vyberte **disky** a pak vyberte disk, který chcete zašifrovat.
 

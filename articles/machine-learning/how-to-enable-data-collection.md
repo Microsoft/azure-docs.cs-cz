@@ -5,18 +5,18 @@ description: Naučte se shromažďovat data z nasazeného Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.reviewer: sgilley
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 07/14/2020
-ms.custom: seodec18
-ms.openlocfilehash: 9ae1ec7eb566871402d44a0f24878b4ea92197f6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 3ece750ab63c2c8e33fbfb46739eec55de4f5d07
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090225"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320183"
 ---
 # <a name="collect-data-from-models-in-production"></a>Shromažďování dat z modelů v produkčním prostředí
 

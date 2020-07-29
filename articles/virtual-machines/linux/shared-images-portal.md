@@ -5,17 +5,17 @@ author: cynthn
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.subservice: imaging
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 28cdc96020d085c6f44c8b6818aa76dd7eb29891
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d49bbebe4d38783342170693bd06f0dfc645f34d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82788979"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288397"
 ---
 # <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>Vytvoření galerie sdílených imagí Azure pomocí portálu
 

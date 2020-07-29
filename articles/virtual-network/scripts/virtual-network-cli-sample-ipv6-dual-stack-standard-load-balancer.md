@@ -1,7 +1,7 @@
 ---
 title: Ukázkový skript Azure CLI – konfigurace front-endu IPv6-Standard Load Balancer
 titlesuffix: Azure Virtual Network
-description: Povolení koncových bodů IPv6 pomocí rozhraní příkazového řádku Azure v Azure Virtual Network
+description: Naučte se konfigurovat koncové body IPv6 v ukázce skriptu virtuální sítě pomocí Standard Load Balancer.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 5f5856a89a04b58b138ee23a5f289ceff0915acf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2509034abb37c7dc90b65569d14f228eadb746c8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80235038"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281612"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-using-standard-load-balancerpreview"></a>Konfigurace koncových bodů IPv6 v ukázce skriptu virtuální sítě pomocí Standard Load Balancer (Preview)
 

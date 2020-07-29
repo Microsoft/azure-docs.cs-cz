@@ -3,15 +3,15 @@ title: Použití Docker Compose
 description: Jak nainstalovat a používat Docker a vytvořit na virtuálních počítačích se systémem Linux pomocí Azure CLI.
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/14/2019
 ms.author: cynthn
-ms.openlocfilehash: a56ad3fd5999600dfc576f0a0e34ff7221267934
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1e28ea47f0f99d3690fdfcf8b5d4370fcbb334e0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502448"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289809"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Začínáme s Docker a seznámení s definováním a spuštěním aplikace s více kontejnery v Azure
 Při [psaní](https://github.com/docker/compose)použijete jednoduchý textový soubor k definování aplikace sestávající z více kontejnerů Docker. Pak aplikaci vyvoláte v jediném příkazu, který provede všechno k nasazení definovaného prostředí. V tomto článku se dozvíte, jak rychle vytvořit blog WordPress s back-end MariaDB SQL Database na virtuálním počítači s Ubuntu. K nastavení složitějších aplikací můžete použít také možnost vytvořit.

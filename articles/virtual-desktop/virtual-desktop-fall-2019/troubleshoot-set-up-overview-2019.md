@@ -1,6 +1,6 @@
 ---
-title: Přehled řešení potíží s virtuálním počítačem s Windows – spadají do 2019 – Azure
-description: Přehled řešení potíží při nastavování prostředí klienta virtuální plochy Windows.
+title: Přehled řešení potíží s virtuálními počítači s Windows (Classic) – Azure
+description: Přehled řešení potíží při nastavování klientského prostředí pro virtuální počítače s Windows (Classic)
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 82ac5a8178973396c4c1975cb1c84d23e61430f7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: efcdc203884a5aaff3b02e730f1dddb7fff66e95
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87069931"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289823"
 ---
-# <a name="troubleshooting-overview-feedback-and-support"></a>Přehled řešení potíží, zpětná vazba a podpora
+#  <a name="windows-virtual-desktop-classic-troubleshooting-overview-feedback-and-support"></a>Přehled řešení potíží s virtuálními počítači s Windows (Classic), zpětná vazba a podpora
 
 >[!IMPORTANT]
->Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objekty virtuálních klientů Windows, které byly zavedeny v aktualizaci jarní 2020, přečtěte si [Tento článek](../troubleshoot-set-up-overview.md).
+>Tento obsah se vztahuje na virtuální plochu Windows (Classic), která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objektů virtuálních klientů Windows, přečtěte si [Tento článek](../troubleshoot-set-up-overview.md).
 
 Tento článek poskytuje přehled o problémech, se kterými se můžete setkat při nastavování prostředí tenanta virtuálních počítačů s Windows, a poskytuje způsoby, jak tyto problémy vyřešit.
 
