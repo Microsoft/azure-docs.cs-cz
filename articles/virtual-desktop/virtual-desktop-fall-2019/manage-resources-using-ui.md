@@ -1,6 +1,6 @@
 ---
 title: Nasazení nástroje pro správu pomocí šablony Azure Resource Manager – Azure
-description: Jak nainstalovat nástroj uživatelského rozhraní se šablonou Azure Resource Manager pro správu prostředků virtuálních klientů Windows
+description: Jak nainstalovat nástroj uživatelského rozhraní se šablonou Azure Resource Manager pro správu prostředků virtuálních ploch Windows (Classic).
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3c3e93cf711d4dadfdc2354a297b0588fb637c80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf9fff614f638aec9519c11b2bb558cc77b94814
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514225"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284944"
 ---
-# <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>Nasazení nástroje pro správu pomocí šablony Azure Resource Manager
+# <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-an-azure-resource-manager-template"></a>Nasazení nástroje pro správu virtuálních ploch Windows (Classic) pomocí šablony Azure Resource Manager
 
 >[!IMPORTANT]
->Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows.
+>Tento obsah se vztahuje na virtuální plochu Windows (Classic), která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows.
 
 Pokyny v tomto článku vám sdělí, jak nasadit uživatelské rozhraní pomocí šablony Azure Resource Manager.
 

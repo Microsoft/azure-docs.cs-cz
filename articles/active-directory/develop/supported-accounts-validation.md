@@ -10,12 +10,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 82b721d14d114b358939bebecff00bc762b075a6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e794e277f6731c7b6e57a4710eea437f65be0340
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058328"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87336340"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>Rozdíly v ověřování podle podporovaných typů účtů (signInAudience)
 
@@ -41,7 +41,7 @@ V následující tabulce jsou uvedeny rozdíly v ověřování různých vlastno
 | Identifikátory URI pro přesměrování ( `replyURLs` ) | Další informace najdete v tématu [omezení a omezení adresy URL pro přesměrování/adresa URL pro odpověď](reply-url.md) . | | | 
 | Oprávnění rozhraní API ( `requiredResourceAccess` ) | Bez omezení * | Bez omezení * | Maximální počet 50 prostředků na aplikaci a 30 oprávnění na prostředek (např. Microsoft Graph). Celkový limit 200 na aplikaci (prostředky × oprávnění). | 
 | Obory definované tímto rozhraním API ( `oauth2Permissions` ) | Maximální délka názvu rozsahu 120 znaků <br><br> Bez omezení * počtu definovaných oborů | Maximální délka názvu rozsahu 120 znaků <br><br> Bez omezení * počtu definovaných oborů |  Maximální délka názvu rozsahu 40 znaků <br><br> Je definovaných maximálně 100 oborů. | 
-| Autorizované klientské aplikace ( `preautorizedApplications` ) | Bez omezení * | Bez omezení * | Celkem maximum 500 <br><br> Je definovaných maximálně 100 klientských aplikací. <br><br> Maximálně 30 oborů definovaných na klienta | 
+| Autorizované klientské aplikace ( `preAuthorizedApplications` ) | Bez omezení * | Bez omezení * | Celkem maximum 500 <br><br> Je definovaných maximálně 100 klientských aplikací. <br><br> Maximálně 30 oborů definovaných na klienta | 
 | appRoles | Podporováno <br> Bez omezení * | Podporováno <br> Bez omezení * | Nepodporováno | 
 | Odhlašovací adresa URL | http://localhostje povoleno <br><br> Maximální délka 255 znaků | http://localhostje povoleno <br><br> Maximální délka 255 znaků | <br><br> https://localhostje povoleno, http://localhost pro MSA se nezdařila <br><br> Maximální délka 255 znaků <br><br> Schéma HTTP není povolené. <br><br> Zástupné znaky se nepodporují. | 
 

@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: amishu
-zone_pivot_groups: programming-languages-set-twelve
-ms.openlocfilehash: 13cb35ffa650661da2855787279c4bdc37126ac9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+zone_pivot_groups: programming-languages-set-twenty-two
+ms.openlocfilehash: 14f87dff680fb72654d1d3e20fe2f0516f9709aa
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585011"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282725"
 ---
 # <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>Použití komprimovaného zvukového vstupu kodeku se sadou Speech SDK
 
 Rozhraní API pro **komprimovaný zvuk vstupního streamu** v sadě Speech Service poskytuje způsob, jak streamovat komprimovaný zvuk do služby Speech Service pomocí `PullStream` nebo `PushStream` .
 
-Pro jazyky C#, C++, Java ve Windows se aktuálně podporuje streamování komprimovaných zvukovým proudem (aplikace UWP nejsou podporované) a Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 7/8, CentOS 7/8). Podporuje se taky pro Java v Androidu a v cíli C na platformě iOS.
+V současné době se pro jazyky C#, C++, Java a Python v systému Windows podporuje streamování komprimovaného vstupu (aplikace UWP nejsou podporované) a Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 7/8, CentOS 7/8). Podporuje se i pro Java v Androidu.
 * Pro RHEL 8 a CentOS 8 se vyžaduje sada Speech SDK verze 1.10.0 nebo novější.
 * Pro systém Windows je vyžadována sada Speech SDK verze 1.11.0 nebo novější.
 
@@ -42,8 +42,8 @@ Pro jazyky C#, C++, Java ve Windows se aktuálně podporuje streamování kompri
 [!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/java/prerequisites.md)]
 ::: zone-end
 
-::: zone pivot="programming-language-objectivec"
-[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/objectivec/prerequisites.md)]
+::: zone pivot="programming-language-python"
+[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/python/prerequisites.md)]
 ::: zone-end
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Příklad kódu pomocí komprimovaného zvukového vstupu kodeku
@@ -60,8 +60,8 @@ Pro jazyky C#, C++, Java ve Windows se aktuálně podporuje streamování kompri
 [!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/java/examples.md)]
 ::: zone-end
 
-::: zone pivot="programming-language-objectivec"
-[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/objectivec/examples.md)]
+::: zone pivot="programming-language-python"
+[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/python/examples.md)]
 ::: zone-end
 
 ## <a name="next-steps"></a>Další kroky

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/07/2020
 ms.author: memildin
-ms.openlocfilehash: f12a137d4cf182837e2f2212923b97cb7dc5f34a
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: d1a11ac42a7fb280ba96229f0f67b9c45999b310
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057768"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285369"
 ---
 # <a name="reference-list-of-azure-domains-not-comprehensive"></a>Odkaz na seznam domén Azure (není vyčerpávající)
 
@@ -48,5 +48,5 @@ Tato stránka je částečný seznam domén Azure, které se používají. Někt
 |[Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) a [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/)|*.azureedge.net|
 |[Azure Table Storage](https://docs.microsoft.com/azure/storage/tables/table-storage-overview)|*. table.core.windows.net|
 |[Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview)|*. trafficmanager.net|
-|[Azure websites](https://azure.microsoft.com/resources/videos/playlists/websites/)|*. azurewebsites.net|
+|[Azure websites](https://azure.microsoft.com/resources/videos/home/)|*. azurewebsites.net|
 |[Visual Studio Codespaces](https://visualstudio.microsoft.com/services/visual-studio-codespaces/)|*.visualstudio.com|
