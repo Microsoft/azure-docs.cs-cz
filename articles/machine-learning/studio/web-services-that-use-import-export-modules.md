@@ -1,6 +1,5 @@
 ---
-title: Import/Export dat ve webových službách
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (Classic): data importu/exportu ve webových službách – Azure'
 description: Naučte se, jak používat importovaná data a exportovat datové moduly pro posílání a přijímání dat z webové služby.
 services: machine-learning
 author: likebupt
@@ -11,14 +10,17 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: how-to
 ms.date: 03/28/2017
-ms.openlocfilehash: b844a18a5acbd7a631bfe3b650dfa155d0e064ba
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 2e1395e23ec8fa3bbd787b5b12a810f6e9720392
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076653"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326218"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Nasazení webových služeb Azure Machine Learning Studio (Classic), které používají moduly importu a exportu dat
+
+**platí pro:** ![ žádná](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasická) 
+
 
 Při vytváření prediktivní experimentu obvykle přidáte vstup a výstup webové služby. Při nasazení experimentu mohou uživatelé odesílat a přijímat data z webové služby prostřednictvím vstupů a výstupů. U některých aplikací mohou být data spotřebitele k dispozici z datového kanálu nebo již nacházejí v externím zdroji dat, jako je například úložiště objektů BLOB v Azure. V těchto případech nepotřebují číst a zapisovat data pomocí vstupů a výstupů webové služby. Můžou místo toho použít službu Batch Execution Service (BES) ke čtení dat ze zdroje dat pomocí modulu import dat a zápis výsledků bodování do jiného umístění dat pomocí modulu export dat.
 
@@ -115,7 +117,7 @@ Nasazení jako klasické webové služby a vytvoření aplikace pro její využ�
         }
     };
     ```
-10. Spusťte aplikaci.
+10. Aplikaci spusťte.
 
 Po dokončení spuštění je do databáze obsahující výsledky bodování přidána nová tabulka.
 
@@ -148,5 +150,5 @@ Nasazení jako nové webové služby a vytvoření aplikace pro její využívá
         }
     };
     ```
-10. Spusťte aplikaci.
+10. Aplikaci spusťte.
 

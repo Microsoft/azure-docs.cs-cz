@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: b1756bd72dc78bfafc8959c4ff1c8f95d255c931
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 049c30613c358bf22616eaa2042a7fd6e42b9f61
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067561"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326031"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>Integrace System Center Operations Manager s funkcí map Azure Monitor pro virtuální počítače
 
@@ -20,7 +20,7 @@ V Azure Monitor pro virtuální počítače můžete zobrazit zjištěné souč�
 >[!NOTE]
 >Pokud jste již nasadili Service Map, můžete zobrazit vaše mapy v Azure Monitor pro virtuální počítače, které obsahují další funkce pro monitorování stavu a výkonu virtuálních počítačů. Funkce map Azure Monitor pro virtuální počítače je určena k nahrazení samostatného řešení Service Map. Další informace najdete v tématu [přehled Azure monitor pro virtuální počítače](vminsights-overview.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * System Center Operations Manager skupina pro správu (2012 R2 nebo novější).
 * Pracovní prostor Log Analytics nakonfigurovaný pro podporu Azure Monitor pro virtuální počítače.
@@ -139,9 +139,10 @@ Aktuální návrh přináší následující problémy a omezení:
 Oficiální dokumentaci k Azure o vytváření instančního objektu najdete v těchto tématech:
 
 * [Vytvoření instančního objektu pomocí PowerShellu](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)
-* [Vytvoření instančního objektu pomocí Azure CLI](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
+* [Vytvoření instančního objektu pomocí Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)
 * [Vytvoření instančního objektu pomocí služby Azure Portal](../../active-directory/develop/howto-create-service-principal-portal.md)
 
 ### <a name="suggestions"></a>Návrhy
 
 Máte jakoukoli zpětnou vazbu pro nás o integraci s funkcí Azure Monitor pro virtuální počítače map nebo s touto dokumentací? Navštivte naši [hlasovou stránku uživatele](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), kde můžete navrhovat funkce nebo hlasovat o stávajících návrzích.
+

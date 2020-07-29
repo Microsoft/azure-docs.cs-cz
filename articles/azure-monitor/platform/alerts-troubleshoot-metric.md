@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: reference
 ms.date: 07/21/2020
 ms.subservice: alerts
-ms.openlocfilehash: 98cd7a4d31f4d7053426f44dd02a876759688cc7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b4a2329640387ab1c3cda93d18c6cb22c7d511cd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045230"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327476"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Řešení potíží s výstrahami Azure Monitor metriky 
 
@@ -108,7 +108,7 @@ Výstrahy metriky jsou ve výchozím stavu stav, a proto se další výstrahy ne
 
 ## <a name="define-an-alert-rule-on-a-custom-metric-that-isnt-emitted-yet"></a>Definovat pravidlo výstrahy pro vlastní metriku, která ještě nebyla vygenerována
 
-Při vytváření pravidla upozornění na metriky je název metriky ověřený proti [rozhraní API definice metriky](https://docs.microsoft.com/rest/api/monitor/metricdefinitions/list) , aby se zajistilo, že existuje. V některých případech byste chtěli vytvořit pravidlo upozornění pro vlastní metriky, dokonce i před tím, než se vygeneruje. Například při vytváření (pomocí šablony ARM) Application Insights prostředek, který vygeneruje vlastní metriku spolu s pravidlem výstrahy, které monitoruje tuto metriku.
+Při vytváření pravidla upozornění na metriky je název metriky ověřený proti [rozhraní API definice metriky](/rest/api/monitor/metricdefinitions/list) , aby se zajistilo, že existuje. V některých případech byste chtěli vytvořit pravidlo upozornění pro vlastní metriky, dokonce i před tím, než se vygeneruje. Například při vytváření (pomocí šablony ARM) Application Insights prostředek, který vygeneruje vlastní metriku spolu s pravidlem výstrahy, které monitoruje tuto metriku.
 
 Aby nedošlo k selhání nasazení při pokusu o ověření definice vlastní metriky, můžete použít parametr *skipMetricValidation* v části kritéria pro pravidlo výstrahy, což způsobí přeskočení ověření metriky. Podívejte se na následující příklad, jak použít tento parametr v šabloně ARM (pro vytváření pravidel upozornění metriky v tématu úplné ukázky šablon [ARM).]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)
 
@@ -236,7 +236,7 @@ Při použití dimenzí v pravidle výstrahy, které obsahuje více podmínek, v
 - V rámci každé podmínky můžete vybrat jenom jednu hodnotu na dimenzi.
 - Nemůžete použít možnost vybrat všechny aktuální a budoucí hodnoty (vybrat \* ).
 - Pokud metriky, které jsou konfigurovány v různých podmínkách, podporují stejnou dimenzi, pak musí být nakonfigurovaná hodnota dimenze explicitně nastavena stejným způsobem pro všechny tyto metriky (v příslušných podmínkách).
-Příklad:
+Například:
     - Vezměte v úvahu pravidlo upozornění metriky, které je definováno v účtu úložiště, a monitorujte dvě podmínky:
         * Celkový počet **transakcí** > 5
         * Průměrná **SuccessE2ELatency** > 250 ms
@@ -247,3 +247,4 @@ Příklad:
 ## <a name="next-steps"></a>Další kroky
 
 - Obecné informace o řešení potíží s výstrahami a oznámeními najdete v tématu [řešení potíží v Azure monitor výstrahy](alerts-troubleshoot.md).
+

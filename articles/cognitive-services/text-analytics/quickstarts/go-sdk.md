@@ -8,28 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 02/26/2020
+ms.date: 07/27/2020
 ms.author: aahi
-ms.openlocfilehash: ff1b35ec036996dfa452d92632c8fc6ede22d82f
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 6849046211ae4216f181dd8ef0ca391c2876363c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203251"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291777"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-for-go"></a>Rychlý Start: použití klientské knihovny Analýza textu pro přejít
 
 - [Referenční dokumentace](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics)
 - [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-go/blob/090dc0ee4d8d2d60e2a9525774d967a4111a2b0c/services/cognitiveservices/v2.1/textanalytics/client.go)
 - [Balíček (GitHub)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics)
-- [Ukázky](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
+- [ukázky](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
 
 > [!NOTE]
 > Tento rychlý Start platí pouze pro Analýza textu verze 2,1. V současné době není k dispozici Klientská knihovna v3 pro příkaz Přejít.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/) .
+* Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * Nejnovější verze nástroje [Přejít](https://golang.org/dl/)
 * Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" vytvořte prostředek analýza textu vytvoření prostředku "  target="_blank"> Analýza textu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. 
     * K připojení aplikace k rozhraní API pro analýzu textu budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Provedete to později v rychlém startu.
@@ -96,9 +96,9 @@ Tyto fragmenty kódu ukazují, jak provést následující akce pomocí klientsk
 
 * [Ověření klienta](#authenticate-the-client)
 * [Analýza mínění](#sentiment-analysis)
-* [rozpoznávání jazyka,](#language-detection)
-* [rozpoznávání entit,](#entity-recognition)
-* [extrakce klíčových frází,](#key-phrase-extraction)
+* [Rozpoznávání jazyka](#language-detection)
+* [Rozpoznávání entit](#entity-recognition)
+* [Extrakce klíčových frází](#key-phrase-extraction)
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 

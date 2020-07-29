@@ -11,11 +11,14 @@ ms.date: 08/29/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e9d5eae4ef926a5c05265b91526d03a17ca57781
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: 675f25107a2e4f0ddedf468dc06afea36ffc6151
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84674950"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327748"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Vysvětlení registru identit ve službě IoT Hub
 
@@ -109,7 +112,7 @@ Vlastnosti: vlastnosti systému zprávy jsou předpony s `$` symbolem.
 
 Zpráva oznámení pro zařízení:
 
-| Name | Hodnota |
+| Název | Hodnota |
 | --- | --- |
 |$content – typ | application/json |
 |$iothub – enqueuedtime |  Čas odeslání oznámení |
@@ -121,7 +124,7 @@ Zpráva oznámení pro zařízení:
 |operationTimestamp | ISO8601 časové razítko operace |
 |iothub-Message-Schema | deviceLifecycleNotification |
 
-Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identity zařízení. Třeba
+Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identity zařízení. Příklad:
 
 ```json
 {
@@ -145,7 +148,7 @@ Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identi
 ```
 Zpráva oznámení pro modul:
 
-| Name | Hodnota |
+| Název | Hodnota |
 | --- | --- |
 $content – typ | application/json |
 $iothub – enqueuedtime |  Čas odeslání oznámení |
@@ -157,7 +160,7 @@ moduleId | ID modulu |
 operationTimestamp | ISO8601 časové razítko operace |
 iothub-Message-Schema | moduleLifecycleNotification |
 
-Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identity modulu. Třeba
+Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identity modulu. Příklad:
 
 ```json
 {
@@ -185,7 +188,7 @@ Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identi
 
 Identity zařízení se reprezentují jako dokumenty JSON s následujícími vlastnostmi:
 
-| Vlastnost | Možnosti | Description |
+| Vlastnost | Možnosti | Popis |
 | --- | --- | --- |
 | deviceId |požadováno, jen pro čtení v aktualizacích |Řetězec s rozlišováním velkých a malých písmen (maximálně 128 znaků dlouhý) alfanumerických znaků ASCII a některé speciální znaky: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | generationId |požadováno, jen pro čtení |Řetězec s rozlišováním velikosti písmen, který je v IoT Hub generovaný, je dlouhý až 128 znaků. Tato hodnota se používá k rozlišení zařízení se stejným **deviceId**, kdy byly odstraněny a znovu vytvořeny. |
@@ -209,7 +212,7 @@ Identity zařízení se reprezentují jako dokumenty JSON s následujícími vla
 
 Identity modulů jsou reprezentovány jako dokumenty JSON s následujícími vlastnostmi:
 
-| Vlastnost | Možnosti | Description |
+| Vlastnost | Možnosti | Popis |
 | --- | --- | --- |
 | deviceId |požadováno, jen pro čtení v aktualizacích |Řetězec s rozlišováním velkých a malých písmen (maximálně 128 znaků dlouhý) alfanumerických znaků ASCII a některé speciální znaky: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | moduleId |požadováno, jen pro čtení v aktualizacích |Řetězec s rozlišováním velkých a malých písmen (maximálně 128 znaků dlouhý) alfanumerických znaků ASCII a některé speciální znaky: `- . + % _ # * ? ! ( ) , : = @ $ '` . |

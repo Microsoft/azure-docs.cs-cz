@@ -10,13 +10,13 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: pafarley
-ms.custom: seodec18
-ms.openlocfilehash: bbd41c147b582eac2a28fdcf73a7d4dbc725f3b5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: seodec18, devx-track-java
+ms.openlocfilehash: 2ef95af333bad96e443821e1bc039ef2614593f5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538084"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327221"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-java"></a>Rychlý Start: extrakce vytištěného textu a ručního textu pomocí Počítačové zpracování obrazu REST API a Java
 
@@ -67,7 +67,7 @@ Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 1. Nahraďte `Main` veřejnou třídu následujícím kódem.
 1. V případě potřeby nahraďte hodnotu `imageToAnalyze` adresou URL jiného obrázku, ze kterého chcete extrahovat text.
 1. Uložte a sestavte projekt Java.
-1. Pokud používáte integrované vývojové prostředí, spusťte `Main`. V opačném případě otevřete okno příkazového řádku a potom pomocí příkazu `java` spusťte zkompilovanou třídu. Například `java Main`.
+1. Pokud používáte integrované vývojové prostředí, spusťte `Main`. V opačném případě otevřete okno příkazového řádku a potom pomocí příkazu `java` spusťte zkompilovanou třídu. Například, `java Main`.
 
 ```java
 

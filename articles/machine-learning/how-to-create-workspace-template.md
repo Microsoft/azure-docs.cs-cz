@@ -5,17 +5,17 @@ description: Naučte se používat šablonu Azure Resource Manager k vytvoření
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: larryfr
 author: Blackmist
-ms.date: 07/09/2020
-ms.custom: seoapril2019
-ms.openlocfilehash: 49a1b190ece4ae4e937757e88af325a29f4825c5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/27/2020
+ms.openlocfilehash: db0b87787e34796e9dd7c91d6e4b53738145a25a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031112"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326371"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Použití šablony Azure Resource Manager k vytvoření pracovního prostoru pro Azure Machine Learning
 
@@ -26,7 +26,7 @@ V tomto článku se dozvíte několik způsobů, jak vytvořit pracovní prostor
 
 Další informace najdete v tématu [nasazení aplikace pomocí šablony Azure Resource Manager](../azure-resource-manager/templates/deploy-powershell.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure** Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 
@@ -118,6 +118,9 @@ New-AzResourceGroupDeployment `
 ---
 
 Ve výchozím nastavení jsou všechny prostředky vytvořené jako součást šablony nové. Můžete ale také využít možnost použít stávající prostředky. Zadáním dalších parametrů do šablony můžete použít stávající prostředky. Pokud třeba chcete použít existující účet úložiště, nastavte hodnotu **storageAccountOption** na **stávající** a v parametru **storageAccountName** zadejte název svého účtu úložiště.
+
+> [!IMPORTANT]
+> Pokud chcete použít existující účet Azure Storage, nemůže to být účet Premium (Premium_LRS a Premium_GRS). Nemůže mít také hierarchický obor názvů (používá se s Azure Data Lake Storage Gen2). Ve výchozím účtu úložiště pracovního prostoru není podporován ani obor názvů Premium Storage ani hierarchický obor názvů.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -374,7 +377,7 @@ Nastavením `vnetOption` hodnoty parametru na buď `new` nebo `existing` můžet
 
 ### <a name="only-deploy-workspace-behind-private-endpoint"></a>Nasadit jenom pracovní prostor za privátním koncovým bodem
 
-Pokud vaše přidružené prostředky nejsou za virtuální sítí, můžete nastavit parametr **privateEndpointType** na `AutoAproval` nebo `ManualApproval` pro nasazení pracovního prostoru za soukromým koncovým bodem.
+Pokud vaše přidružené prostředky nejsou za virtuální sítí, můžete nastavit parametr **privateEndpointType** na `AutoAproval` nebo `ManualApproval` pro nasazení pracovního prostoru za soukromým koncovým bodem. To se dá udělat pro nové i existující pracovní prostory. Když aktualizujete existující pracovní prostor, vyplňte parametry šablony informacemi z existujícího pracovního prostoru.
 
 > [!IMPORTANT]
 > Nasazení je platné pouze v oblastech, které podporují soukromé koncové body.
@@ -650,7 +653,7 @@ New-AzResourceGroupDeployment `
 
 Další informace najdete v tématu [nasazení prostředků z vlastní šablony](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="resource-provider-errors"></a>Chyby poskytovatele prostředků
 
@@ -753,3 +756,4 @@ Chcete-li se tomuto problému vyhnout, doporučujeme jeden z následujících p�
 
 * [Nasazení prostředků pomocí Správce prostředků šablon a Správce prostředků REST API](../azure-resource-manager/templates/deploy-rest.md).
 * [Vytvoření a nasazení skupin prostředků Azure pomocí sady Visual Studio](../azure-resource-manager/templates/create-visual-studio-deployment-project.md).
+* [Další šablony týkající se Azure Machine Learning najdete v části úložiště šablon Azure pro rychlý Start.](https://github.com/Azure/azure-quickstart-templates)

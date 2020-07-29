@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 68e88ec90625f34e5bc8ae1b70c75e3cfe9a53ad
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e87ddd243aa248b896a26e6389ac1a219579a06d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515525"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325572"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor datovou platformu
 
@@ -36,7 +36,7 @@ Prostředky Azure generují významné množství dat monitorování. Azure Moni
 
 Metriky v Azure Monitor jsou uloženy v databázi časových řad, která je optimalizována pro analýzu časových údajů s časovým razítkem. Díky tomu jsou metriky zvláště vhodné pro upozorňování a rychlé zjišťování problémů. Můžou vám sdělit, jak systém funguje, ale obvykle se musí kombinovat s protokoly, aby identifikoval hlavní příčinu problémů.
 
-Metriky jsou k dispozici pro interaktivní analýzu v Azure Portal s využitím [Azure Průzkumník metrik](../platform/metrics-getting-started.md). Můžete je přidat do [řídicího panelu Azure](../learn/tutorial-app-dashboards.md) pro vizualizaci v kombinaci s ostatními daty a používat pro [výstrahy](alerts-metric.md)téměř v reálném čase.
+Metriky jsou k dispozici pro interaktivní analýzu v Azure Portal s využitím [Azure Průzkumník metrik](./metrics-getting-started.md). Můžete je přidat do [řídicího panelu Azure](../learn/tutorial-app-dashboards.md) pro vizualizaci v kombinaci s ostatními daty a používat pro [výstrahy](alerts-metric.md)téměř v reálném čase.
 
 Přečtěte si další informace o Azure Monitor metrikách, včetně jejich zdrojů dat v [metrikách v Azure monitor](data-platform-metrics.md).
 
@@ -70,7 +70,7 @@ Následující tabulka porovnává metriky a protokoly v Azure Monitor.
 | Výhody | Odlehčené a schopné scénáře téměř v reálném čase, jako jsou například výstrahy. Ideální pro rychlé zjišťování problémů. | Analyzováno pomocí bohatých dotazovacích jazyků. Ideální pro hloubkovou analýzu a identifikaci hlavní příčiny. |
 | Data | Pouze číselné hodnoty | Textová nebo číselná data |
 | Struktura | Standardní sada vlastností včetně času vzorkování, monitorovaného prostředku a číselné hodnoty Některé metriky obsahují více dimenzí pro další definice. | Jedinečná sada vlastností v závislosti na typu protokolu. |
-| Shromažďování | Shromažďováno v pravidelných intervalech. | Může být shromažďována občas, protože události spouštějí záznam, který se má vytvořit. |
+| Kolekce | Shromažďováno v pravidelných intervalech. | Může být shromažďována občas, protože události spouštějí záznam, který se má vytvořit. |
 | Zobrazení na webu Azure Portal | Průzkumník metrik | Log Analytics |
 | Zdroje dat zahrnují | Metriky platformy shromážděné z prostředků Azure.<br>Aplikace monitorované pomocí Application Insights.<br>Vlastní definuje aplikace nebo rozhraní API. | Protokoly aplikací a prostředků.<br>Monitorování řešení.<br>Agenti a rozšíření virtuálních počítačů.<br>Žádosti a výjimky aplikace<br>Azure Security Center.<br>Rozhraní API kolekce dat. |
 
@@ -90,3 +90,4 @@ Kromě používání nástrojů v Azure k analýze dat monitorování je možné
 - Přečtěte si další informace o [metrikách v Azure monitor](data-platform-metrics.md).
 - Přečtěte si další informace o [protokolech v Azure monitor](data-platform-logs.md).
 - Přečtěte si o [dostupných datech monitorování](data-sources.md) různých prostředků v Azure.
+

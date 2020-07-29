@@ -5,17 +5,17 @@ description: Naučte se používat Python v Návrháři Azure Machine Learning (
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 02/28/2020
-ms.custom: designer, tracking-python
-ms.openlocfilehash: 61086bf8c215a09e457e931ffed157559b339a9b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.topic: conceptual
+ms.custom: how-to, designer, tracking-python
+ms.openlocfilehash: c798fa3bdb6754b2d8b955efe49e208ea954f80a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206800"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326966"
 ---
 # <a name="run-python-code-in-azure-machine-learning-designer"></a>Spuštění kódu Pythonu v Návrháři Azure Machine Learning
 
@@ -26,6 +26,8 @@ Můžete použít vestavěný editor kódu k rychlému přidání jednoduché lo
 Výchozí prostředí pro spouštění používá Anacondasou distribuci Pythonu. Úplný seznam předinstalovaných balíčků najdete na stránce [spuštění referenčního modulu skriptu Pythonu](algorithm-module-reference/execute-python-script.md) .
 
 ![Spustit vstupní mapu Pythonu](media/how-to-designer-python/execute-python-map.png)
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="execute-python-written-in-the-designer"></a>Spuštění jazyka Python napsaného v Návrháři
 

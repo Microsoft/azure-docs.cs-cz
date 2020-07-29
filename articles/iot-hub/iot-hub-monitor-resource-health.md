@@ -7,12 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/21/2020
 ms.author: robinsh
-ms.custom: amqp
-ms.openlocfilehash: d00e3dc5e43eb6978f6835ac4b7d101e4a42a226
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- amqp
+- 'Role: Cloud Development'
+- 'Role: Technical Support'
+ms.openlocfilehash: 140bbc698db773f851cf03d80e8e51be9c2a21c3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84792013"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327544"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Monitorování stavu služby Azure IoT Hub a rychlá diagnostika potíží
 
@@ -347,9 +351,9 @@ IoT Hub zaznamenává tento protokol, když se do IoT Hub dorazí zpráva obsahu
 
 V tomto případě `durationMs` se nepočítá, protože hodiny IoT Hub nemusejí být synchronizované s hodinami zařízení, takže výpočet doby trvání může být zavádějící. `properties`Pro zachycení špičky v latenci v rámci zařízení do cloudu doporučujeme napsat logiku pomocí časových razítek v části.
 
-| Vlastnost | Typ | Description |
+| Vlastnost | Typ | Popis |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **messageSize** | Integer | Velikost zprávy typu zařízení-Cloud v bajtech |
+| **messageSize** | Celé číslo | Velikost zprávy typu zařízení-Cloud v bajtech |
 | **deviceId** | Řetězec alfanumerických alfanumerických znaků ASCII | Identita zařízení |
 | **callerLocalTimeUtc** | Časové razítko UTC | Čas vytvoření zprávy, jak je uvedeno v místních hodinách zařízení |
 | **calleeLocalTimeUtc** | Časové razítko UTC | Čas doručení zprávy na bránu IoT Hub, jak je uvedeno v IoT Hub hodiny na straně služby |
@@ -381,7 +385,7 @@ IoT Hub zaznamenává tento protokol, pokud zpráva obsahující platné vlastno
 
 V `properties` části Tento protokol obsahuje další informace o příchozím přenosu zpráv.
 
-| Vlastnost | Typ | Description |
+| Vlastnost | Typ | Popis |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **isRoutingEnabled** | Řetězec | Hodnota true nebo false označuje, zda je v IoT Hub povoleno směrování zpráv. |
 | **parentSpanId** | Řetězec | [Identifikátor rozsahu](https://w3c.github.io/trace-context/#parent-id) nadřazené zprávy, který by byl trasováním zpráv D2C v tomto případě |
@@ -413,7 +417,7 @@ IoT Hub zaznamenává tento protokol, pokud je povoleno [Směrování](iot-hub-d
 
 V `properties` části Tento protokol obsahuje další informace o příchozím přenosu zpráv.
 
-| Vlastnost | Typ | Description |
+| Vlastnost | Typ | Popis |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **koncový bod** | Řetězec | Název koncového bodu směrování |
 | **endpointType** | Řetězec | Typ koncového bodu směrování |
@@ -544,7 +548,7 @@ Azure IoT Hub indikuje stav na regionální úrovni. Pokud oblastní výpadek ov
 
 Pokud chcete zjistit stav vašich Center IoT, postupujte takto:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 2. Přejděte na **Service Health**  >  **Resource Health**.
 

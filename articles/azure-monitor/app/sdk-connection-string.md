@@ -6,12 +6,12 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 81e27c0f62e921eb468c78521e426c8917da250a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 56438389ea8a371335facd3cfd0b2d4161b421c3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014134"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326558"
 ---
 # <a name="connection-strings"></a>Připojovací řetězce
 
@@ -57,7 +57,7 @@ Připojení má maximální podporovanou délku 4096 znaků.
 
 Připojovací řetězec se skládá ze seznamu nastavení reprezentovaného jako páry klíč-hodnota oddělených středníkem:`key1=value1;key2=value2;key3=value3`
 
-#### <a name="syntax"></a>Syntax
+#### <a name="syntax"></a>Syntaxe
 
 - `InstrumentationKey`(např.: 00000000-0000-0000-0000-000000000000)  Připojovací řetězec je **povinné** pole.
 - `Authorization`(např.: ikey) (Toto nastavení je volitelné, protože dnes podporujeme jenom autorizaci ikey.)
@@ -274,14 +274,15 @@ tracer = Tracer(exporter=AzureExporter(connection_string='InstrumentationKey=000
 
 Začínáme při spuštění:
 
-* [Virtuální počítače Azure a škálování sady virtuálních počítačů Azure – aplikace hostované službou IIS](../../azure-monitor/app/azure-vm-vmss-apps.md)
-* [Server IIS](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Azure Web Apps](../../azure-monitor/app/azure-web-apps.md)
+* [Virtuální počítače Azure a škálování sady virtuálních počítačů Azure – aplikace hostované službou IIS](./azure-vm-vmss-apps.md)
+* [Server IIS](./monitor-performance-live-website-now.md)
+* [Azure Web Apps](./azure-web-apps.md)
 
 Začínáme při vývoji:
 
-* [ASP.NET](../../azure-monitor/app/asp-net.md)
-* [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
-* [Java](../../azure-monitor/app/java-get-started.md)
-* [Node.js](../../azure-monitor/app/nodejs.md)
-* [Python](../../azure-monitor/app/opencensus-python.md)
+* [ASP.NET](./asp-net.md)
+* [ASP.NET Core](./asp-net-core.md)
+* [Java](./java-get-started.md)
+* [Node.js](./nodejs.md)
+* [Python](./opencensus-python.md)
+

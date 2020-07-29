@@ -1,6 +1,5 @@
 ---
-title: Parametry webové služby
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (Classic): parametry webové služby – Azure'
 description: Jak používat Azure Machine Learning parametry webové služby pro úpravu chování modelu při použití webové služby.
 services: machine-learning
 author: likebupt
@@ -12,14 +11,17 @@ ms.subservice: studio
 ms.workload: data-services
 ms.topic: how-to
 ms.date: 01/12/2017
-ms.openlocfilehash: c274579e756b3c22920023d68501981d5b4a8b01
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de3fb4a0dab08a13327c910d1e09ecbf0afcec8c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84705861"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326252"
 ---
 # <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>Použít parametry webové služby Azure Machine Learning Studio (Classic)
+
+**platí pro:** ![ žádná](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasická) 
+
 
 Webová služba Azure Machine Learning je vytvořena publikováním experimentu obsahujícího moduly s konfigurovatelnými parametry. V některých případech můžete chtít změnit chování modulu, když je webová služba spuštěná. Tento úkol vám umožní použít *parametry webové služby* . 
 
@@ -53,7 +55,7 @@ Předpokládejme například, že máme experiment s modulem [exportu dat][write
    * V části zadejte **typ ověřování**vyberte účet.
    * Zadejte informace o účtu pro úložiště objektů BLOB v Azure. 
 
-3. Klikněte na ikonu napravo od **cesty k objektu BLOB počínaje parametrem kontejneru**. Vypadá to takhle:
+3. Klikněte na ikonu napravo od **cesty k objektu BLOB počínaje parametrem kontejneru**. Vypadá takto:
    
    ![Ikona parametru webové služby](./media/web-service-parameters/icon.png)
    

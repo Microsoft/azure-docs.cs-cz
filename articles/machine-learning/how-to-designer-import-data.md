@@ -5,17 +5,17 @@ description: Naučte se importovat data do návrháře Azure Machine Learning (P
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
-ms.custom: designer
-ms.openlocfilehash: 7a204310454cb636e26e6366d4ff7375f4faea8d
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.topic: conceptual
+ms.custom: how-to, designer
+ms.openlocfilehash: 92568ceb9c7f0a428189647f259a3f84278eb612
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207524"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327000"
 ---
 # <a name="import-data-into-azure-machine-learning-designer-preview"></a>Import dat do návrháře Azure Machine Learning (Preview)
 
@@ -23,6 +23,8 @@ V tomto článku se dozvíte, jak v Návrháři importovat vlastní data, abyste
 
 * **Azure Machine Learning DataSets** – zaregistrujete datové [sady](concept-data.md#datasets) v Azure Machine Learning a povolíte tak pokročilé funkce, které vám pomůžou se správou vašich dat.
 * **Importovat modul dat** – pomocí modulu [Import dat](algorithm-module-reference/import-data.md) můžete získat přímý přístup k datům z online zdrojů dat.
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="use-azure-machine-learning-datasets"></a>Použití Azure Machine Learning datových sad
 
@@ -74,12 +76,12 @@ Návrhář podporuje tabulkové datové sady vytvořené z následujících zdro
  * Soubory Parquet
  * Dotazy SQL
 
-## <a name="data-types"></a>Datové typy
+## <a name="data-types"></a>Typy dat
 
 Návrhář interně rozpoznává následující typy dat:
 
 * Řetězec
-* Integer
+* Celé číslo
 * Desetinné číslo
 * Logická hodnota
 * Datum

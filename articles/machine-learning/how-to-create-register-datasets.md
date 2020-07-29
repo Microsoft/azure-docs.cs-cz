@@ -5,18 +5,19 @@ description: Naučte se vytvářet Azure Machine Learning datové sady pro pří
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 06/29/2020
-ms.openlocfilehash: c082c74ab448fda0926b5aab52088bf00fb719bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a220a7279cbb5ba75c8aa803cb4bd709442a52fe
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031146"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326388"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Vytváření Azure Machine Learning datových sad
 
@@ -32,7 +33,7 @@ S Azure Machine Learningmi datovými sadami můžete:
 
 * Sdílejte data a spolupracujte s ostatními uživateli.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K vytváření a práci s datovými sadami potřebujete:
 
@@ -53,7 +54,7 @@ Hlavní faktor je způsob, jakým je velká sada dat v paměti, tj. jako datový
  
 Pokud používáte PANDAS, neexistuje žádný důvod, proč byste měli mít více než 1 vCPU, protože to je všechno, co bude používat. V případě potřeby můžete snadno paralelizovat na mnoho vCPU na jednom Azure Machine Learning výpočetní instanci nebo uzel pomocí Modin a dAsK/ray a v případě potřeby škálovat na velký cluster, a to tak, že jednoduše změníte `import pandas as pd` na `import modin.pandas as pd` . 
  
-Pokud nemůžete pro data získat dostatek paměti, máte dvě možnosti: použijte rozhraní, jako je Spark nebo dAsK, k provedení zpracování dat mimo paměť, tj. datový rámec je načten do oddílu RAM podle oddílů a zpracován, přičemž konečný výsledek bude shromážděn na konci. Pokud je to příliš pomalé, Spark nebo dAsK umožňuje horizontální navýšení kapacity na cluster, který je stále možné používat interaktivně. 
+Pokud pro data nemůžete získat dostatek virtuálních počítačů, máte dvě možnosti: pomocí architektury, jako je Spark nebo dAsK, proveďte zpracování dat mimo paměť, tj. datový rámec je načten do oddílu RAM podle oddílů a zpracovaných výsledků, přičemž konečný výsledek bude shromážděn na konci. Pokud je to příliš pomalé, Spark nebo dAsK umožňuje horizontální navýšení kapacity na cluster, který je stále možné používat interaktivně. 
 
 ## <a name="dataset-types"></a>Typy datových sad
 
@@ -82,7 +83,7 @@ Vytvoření datových sad z [úložiště Azure DataStore](how-to-access-data.md
 
 #### <a name="create-a-tabulardataset"></a>Vytvoření TabularDataset
 
-Pomocí [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-) metody `TabularDatasetFactory` třídy můžete číst soubory ve formátu. csv nebo. TSV a vytvořit neregistrované TabularDataset. Pokud načítáte z více souborů, výsledky budou shrnuty do jednoho tabulkového znázornění. 
+Pomocí [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory) metody `TabularDatasetFactory` třídy můžete číst soubory ve formátu. csv nebo. TSV a vytvořit neregistrované TabularDataset. Pokud načítáte z více souborů, výsledky budou shrnuty do jednoho tabulkového znázornění. 
 
 Následující kód získá existující pracovní prostor v pracovním prostoru a požadované úložiště dat podle názvu. A poté předává úložiště dat a umístění souborů do `path` parametru pro vytvoření nového TabularDataset `weather_ds` .
 
@@ -124,9 +125,9 @@ titanic_ds.take(3).to_pandas_dataframe()
 
 |Indexovacím|PassengerId|Zachované|Pclass|Název|Sex|Stáří|SibSp|Parch|Ticket (Lístek)|Vozov|Posádk|Nastoupilo
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
-0|1|Nepravda|3|Braund, Mr. Owen Harris|male (muž)|22,0|1|0|A/5 21171|7,2500||S
-1|2|Pravda|1|Cumings, paní Jan Bradley (Florencie Briggs th...|female (žena)|38,0|1|0|POČÍTAČ 17599|71,2833|C85|C
-2|3|Pravda|3|Heikkinen, chybíš. Laina|female (žena)|26,0|0|0|STON/O2. 3101282|7,9250||S
+0|1|Ne|3|Braund, Mr. Owen Harris|male (muž)|22,0|1|0|A/5 21171|7,2500||S
+1|2|Ano|1|Cumings, paní Jan Bradley (Florencie Briggs th...|female (žena)|38,0|1|0|POČÍTAČ 17599|71,2833|C85|C
+2|3|Ano|3|Heikkinen, chybíš. Laina|female (žena)|26,0|0|0|STON/O2. 3101282|7,9250||S
 
 Chcete-li vytvořit datovou sadu z datového rámce v PANDAS paměti, zapište data do místního souboru, třeba do sdíleného svazku clusteru, a vytvořte datovou sadu z tohoto souboru. Následující kód demonstruje tento pracovní postup.
 

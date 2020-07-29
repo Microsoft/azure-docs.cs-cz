@@ -4,13 +4,14 @@ description: Aktualizace starších aplikací v Javě, které používaly Servic
 author: rapatchi
 ms.topic: conceptual
 ms.date: 08/23/2017
+ms.custom: devx-track-java
 ms.author: rapatchi
-ms.openlocfilehash: 0e8154039dde3de571e7960b244ab1d43cc764c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f65194cde25deac8c03d6ddc3a7c0b928aaca171
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82204283"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327306"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Aktualizace předchozí aplikace Java Service Fabric pro načtení knihoven Javy z Mavenu
 Service Fabric binární soubory Java se přesunuly z Service Fabric Java SDK na Maven hosting. Pomocí **mavencentral** můžete načíst nejnovější závislosti Service Fabric Java. Tato příručka vám pomůže aktualizovat existující aplikace Java vytvořené pro sadu Service Fabric Java SDK, aby byly kompatibilní se sestavením založeným na Maven, a to pomocí šablony Yeoman nebo zatmění.
