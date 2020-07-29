@@ -1,6 +1,5 @@
 ---
-title: Galerie Azure AI
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (Classic): Azure AI Gallery – Azure'
 description: Sdílení a zjišťování prostředků analýzy a další informace v Azure AI Gallery. Přečtěte si od ostatních a udělejte své vlastní příspěvky komunitě.
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: cf483dadb9e27020095329d948698807a14012af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4bbece33d443139c9f1b1384c1a9e0b3c4da0d08
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84709024"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318551"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Sdílení a zjišťování prostředků v Azure AI Gallery
+
+**platí pro:** ![ žádná](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasická) 
+
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
@@ -25,7 +28,7 @@ Galerie má řadu prostředků, které můžete použít k vývoji vlastních an
 
 ## <a name="what-can-i-find-in-the-gallery"></a>Co můžu najít v galerii?
 
-Azure AI Gallery obsahuje řadu různých prostředků, které přispěla společnost Microsoft a členové komunity pro vědu v oblasti dat. Tady jsou některé z nich:
+Azure AI Gallery obsahuje řadu různých prostředků, které přispěla společnost Microsoft a členové komunity pro vědu v oblasti dat. Mezi ně patří:
 
 * **Experimenty** – galerie obsahuje širokou škálu experimentů, které byly vyvinuty v Azure Machine Learning Studio (Classic). Tyto experimenty jsou z rychlých experimentů v rámci konceptu, které ukazují konkrétní technika strojového učení, k plně vyvinutým řešením pro složité problémy strojového učení.
 * **Kurzy** – k dispozici je řada kurzů, které vás provedou pomocí technologií a konceptů strojového učení, případně popisují pokročilé metody řešení různých problémů strojového učení.
@@ -95,7 +98,7 @@ A můžete se přihlásit pomocí nástroje pro diskuzi, jako je Disqus, a dost�
    * Snímek obrazovky s grafem experimentu
    * Zdroje dat a vysvětlení
    * Zpracování dat
-   * Návrh funkcí
+   * Příprava atributů
    * Popis modelu
    * Výsledky a vyhodnocení výkonu modelu
 
@@ -200,6 +203,6 @@ Po zadání značky zadejte jinou značku a stiskněte klávesu Tabulátor.
 
 Chceme, aby Galerie byla řízena našimi uživateli a pro naše uživatele. Použijte emotikonu vpravo a řekněte nám, co se vám na galerii líbí nebo nenávist.  
 
-![Váš názor](./media/gallery-how-to-use-contribute-publish/feedback.png)
+![Zpětná vazba](./media/gallery-how-to-use-contribute-publish/feedback.png)
 
 **[PŘEJÍT NA >>GALERIE](https://gallery.azure.ai)**

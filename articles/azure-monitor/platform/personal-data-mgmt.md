@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 7d8998b450613e097230d7692a8ad1990830993b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 64c461c5d3e1bb34f480e5173621f8753eadbbd8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539325"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318313"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Doprovodné materiály k osobním údajům uloženým v Log Analytics a Application Insights
 
@@ -48,7 +48,7 @@ Log Analytics je flexibilní úložiště, které při stanovení schématu pro 
     ```
   Nezapomeňte se podívat nejen na uživatelsky čitelné uživatelské jméno, ale také identifikátory GUID, které se dají přímo trasovat na konkrétního uživatele.
 * *ID zařízení*: jako ID uživatelů se někdy považují ID zařízení za "soukromé". Použijte stejný přístup, jak je uvedeno výše pro ID uživatelů, a Identifikujte tak tabulky, kde se to může týkat. 
-* *Vlastní data*: Log Analytics umožňuje shromažďování v různých metodách: vlastní protokoly a vlastní pole, [rozhraní API kolekce dat http](../../azure-monitor/platform/data-collector-api.md) a vlastní data shromážděná jako součást protokolů systémových událostí. Všechny tyto jsou náchylné k obsahující privátní data a měli byste je prozkoumat, abyste ověřili, jestli taková data existují.
+* *Vlastní data*: Log Analytics umožňuje shromažďování v různých metodách: vlastní protokoly a vlastní pole, [rozhraní API kolekce dat http](./data-collector-api.md) a vlastní data shromážděná jako součást protokolů systémových událostí. Všechny tyto jsou náchylné k obsahující privátní data a měli byste je prozkoumat, abyste ověřili, jestli taková data existují.
 * *Zachycená data řešení*: vzhledem k tomu, že mechanismus řešení je otevřený – ukončený, doporučujeme zkontrolovat všechny tabulky vygenerované řešeními, abyste zajistili dodržování předpisů.
 
 ### <a name="application-data"></a>Data aplikací
@@ -102,7 +102,7 @@ Po přiřazení role Azure Resource Manager jsou k dispozici dvě nové cesty ro
 #### <a name="log-data"></a>Protokolování dat
 
 * [Post](/rest/api/loganalytics/workspacepurge/purge) Return-převezme objekt určující parametry dat, které se mají odstranit, a vrátí identifikátor GUID odkazu. 
-* ZÍSKAT stav vyčištění – volání po vyprázdnění vrátí hlavičku x-MS-status-Location, která bude obsahovat adresu URL, kterou můžete zavolat k určení stavu rozhraní API pro vyprázdnění. Příklad:
+* ZÍSKAT stav vyčištění – volání po vyprázdnění vrátí hlavičku x-MS-status-Location, která bude obsahovat adresu URL, kterou můžete zavolat k určení stavu rozhraní API pro vyprázdnění. Například:
 
     ```
     x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.OperationalInsights/workspaces/[WorkspaceName]/operations/purge-[PurgeOperationId]?api-version=2015-03-20
@@ -114,7 +114,7 @@ Po přiřazení role Azure Resource Manager jsou k dispozici dvě nové cesty ro
 #### <a name="application-data"></a>Data aplikací
 
 * [Post](/rest/api/application-insights/components/purge) Return-převezme objekt určující parametry dat, které se mají odstranit, a vrátí identifikátor GUID odkazu.
-* ZÍSKAT stav vyčištění – volání po vyprázdnění vrátí hlavičku x-MS-status-Location, která bude obsahovat adresu URL, kterou můžete zavolat k určení stavu rozhraní API pro vyprázdnění. Příklad:
+* ZÍSKAT stav vyčištění – volání po vyprázdnění vrátí hlavičku x-MS-status-Location, která bude obsahovat adresu URL, kterou můžete zavolat k určení stavu rozhraní API pro vyprázdnění. Například:
 
    ```
    x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/microsoft.insights/components/[ComponentName]/operations/purge-[PurgeOperationId]?api-version=2015-05-01
@@ -124,5 +124,6 @@ Po přiřazení role Azure Resource Manager jsou k dispozici dvě nové cesty ro
 >  I když velká většina operací vyprázdnění může dokončit mnohem rychlejší, než je smlouva SLA, vzhledem k jejich těžkému dopadu na datovou platformu, kterou používá Application Insights, **je formální smlouva SLA pro dokončení operací vyprázdnění nastavená na 30 dnů**.
 
 ## <a name="next-steps"></a>Další kroky
-- Další informace o tom, jak se shromažďují, zpracovávají a zabezpečují Log Analytics data, najdete v článku [Log Analytics zabezpečení dat](../../azure-monitor/platform/data-security.md).
-- Další informace o tom, jak se shromažďují, zpracovávají a zabezpečují Application Insights data, najdete v článku [Application Insights zabezpečení dat](../../azure-monitor/app/data-retention-privacy.md).
+- Další informace o tom, jak se shromažďují, zpracovávají a zabezpečují Log Analytics data, najdete v článku [Log Analytics zabezpečení dat](./data-security.md).
+- Další informace o tom, jak se shromažďují, zpracovávají a zabezpečují Application Insights data, najdete v článku [Application Insights zabezpečení dat](../app/data-retention-privacy.md).
+

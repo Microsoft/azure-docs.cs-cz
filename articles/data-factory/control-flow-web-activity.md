@@ -11,11 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 150ee15adb042841f74ffbf3b75338b2dd569333
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95cbb509beba82a14b9f8f8a11c603a6d7b8689d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84017655"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280796"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Aktivita webu v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -24,9 +25,9 @@ ms.locfileid: "84017655"
 Webová aktivita slouží k volání vlastního koncového bodu REST z kanálu služby Data Factory. Můžete předávat datové sady a propojené služby, které má aktivita používat a ke kterým má mít přístup.
 
 > [!NOTE]
-> Aktivita webu může volat pouze veřejně vystavené adresy URL. Pro adresy URL, které jsou hostované v privátní virtuální síti, se nepodporuje.
+> Aktivita webu je podporována pro vyvolání adres URL, které jsou hostovány v privátní virtuální síti, a to díky využití prostředí Integration runtime v místním prostředí. Prostředí Integration runtime by mělo mít na koncovém bodu adresy URL přímí dohled. 
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Syntaxe
 
 ```json
 {
@@ -35,6 +36,10 @@ Webová aktivita slouží k volání vlastního koncového bodu REST z kanálu s
    "typeProperties":{
       "method":"Post",
       "url":"<URLEndpoint>",
+      "connectVia": {
+          "referenceName": "<integrationRuntimeName>",
+          "type": "IntegrationRuntimeReference"
+      }
       "headers":{
          "Content-Type":"application/json"
       },
@@ -65,17 +70,18 @@ Webová aktivita slouží k volání vlastního koncového bodu REST z kanálu s
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povolené hodnoty | Vyžadováno
+Vlastnost | Popis | Povolené hodnoty | Povinné
 -------- | ----------- | -------------- | --------
-name | Název aktivity webu | Řetězec | Yes
-typ | Musí být nastavená na **aktivitu webactivity**. | Řetězec | Yes
-method | Metoda rozhraní REST API pro cílový koncový bod | Řetězec. <br/><br/>Podporované typy: "GET", "POST", "PUT" | Yes
-url | Cílový koncový bod a cesta | Řetězec (nebo výraz s hodnotou resultType řetězce). Pokud tato aktivita neobdrží odpověď od koncového bodu, bude časový limit 1 minuty s chybou. | Yes
+name | Název aktivity webu | Řetězec | Ano
+typ | Musí být nastavená na **aktivitu webactivity**. | Řetězec | Ano
+method | Metoda rozhraní REST API pro cílový koncový bod | Řetězec. <br/><br/>Podporované typy: "GET", "POST", "PUT" | Ano
+url | Cílový koncový bod a cesta | Řetězec (nebo výraz s hodnotou resultType řetězce). Pokud tato aktivita neobdrží odpověď od koncového bodu, bude časový limit 1 minuty s chybou. | Ano
 záhlaví | Hlavičky, které se odesílají do žádosti Například pro nastavení jazyka a typu na žádost: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` . | Řetězec (nebo výraz s hodnotou resultType řetězce) | Ano, hlavička Content-Type je povinná. `"headers":{ "Content-Type":"application/json"}`
 text | Představuje datovou část, která je odeslána do koncového bodu.  | Řetězec (nebo výraz s hodnotou resultType řetězce). <br/><br/>Podívejte se na schéma datové části požadavku v části [schéma datové části požadavku](#request-payload-schema) . | Vyžadováno pro metody POST/PUT.
-ověřování | Metoda ověřování používaná pro volání koncového bodu. Podporované typy jsou "Basic" nebo ClientCertificate ". Další informace najdete v části [ověřování](#authentication) . Pokud není vyžadováno ověření, vylučte tuto vlastnost. | Řetězec (nebo výraz s hodnotou resultType řetězce) | No
-datové sady | Seznam datových sad předaných do koncového bodu. | Pole odkazů na datovou sadu Může být prázdné pole. | Yes
-linkedServices | Seznam propojených služeb předaných koncovému bodu | Pole odkazů na propojené služby Může být prázdné pole. | Yes
+ověřování | Metoda ověřování používaná pro volání koncového bodu. Podporované typy jsou "Basic" nebo ClientCertificate ". Další informace najdete v části [ověřování](#authentication) . Pokud není vyžadováno ověření, vylučte tuto vlastnost. | Řetězec (nebo výraz s hodnotou resultType řetězce) | Ne
+datové sady | Seznam datových sad předaných do koncového bodu. | Pole odkazů na datovou sadu Může být prázdné pole. | Ano
+linkedServices | Seznam propojených služeb předaných koncovému bodu | Pole odkazů na propojené služby Může být prázdné pole. | Ano
+connectVia | [Prostředí Integration runtime](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime) , které se má použít pro připojení k úložišti dat. Můžete použít prostředí Azure Integration runtime nebo místní prostředí Integration runtime (Pokud je vaše úložiště dat v privátní síti). Pokud tato vlastnost není zadaná, služba použije výchozí prostředí Azure Integration runtime. | Referenční informace o prostředí Integration runtime. | Ne 
 
 > [!NOTE]
 > Koncové body REST, které vyvolává webová aktivita, musí vracet odpověď typu JSON. Pokud tato aktivita neobdrží odpověď od koncového bodu, bude časový limit 1 minuty s chybou.
@@ -84,9 +90,9 @@ V následující tabulce jsou uvedeny požadavky na obsah JSON:
 
 | Typ hodnoty | Text požadavku | Text odpovědi |
 |---|---|---|
-|Objekt JSON | Podporuje se | Podporuje se |
-|Pole JSON | Podporuje se <br/>(V současné době pole JSON nefungují v důsledku chyby. Probíhá oprava.) | Nepodporované |
-| Hodnota JSON | Podporuje se | Nepodporované |
+|Objekt JSON | Podporováno | Podporováno |
+|Pole JSON | Podporováno <br/>(V současné době pole JSON nefungují v důsledku chyby. Probíhá oprava.) | Nepodporované |
+| Hodnota JSON | Podporováno | Nepodporované |
 | Typ jiný než JSON | Nepodporované | Nepodporované |
 ||||
 
@@ -94,7 +100,7 @@ V následující tabulce jsou uvedeny požadavky na obsah JSON:
 
 Níže jsou uvedené podporované typy ověřování v aktivitě webu.
 
-### <a name="none"></a>Žádná
+### <a name="none"></a>Žádné
 
 Pokud není vyžadováno ověřování, nezahrnujte vlastnost "ověřování".
 

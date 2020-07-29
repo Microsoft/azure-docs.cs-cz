@@ -1,6 +1,6 @@
 ---
 title: Vytvoření, změna nebo odstranění partnerského vztahu virtuální sítě Azure | Microsoft Docs
-description: Přečtěte si, jak vytvořit, změnit nebo odstranit partnerský vztah virtuální sítě.
+description: Vytvoření, změna nebo odstranění partnerského vztahu virtuální sítě. S partnerským vztahem virtuální sítě propojíte virtuální sítě ve stejné oblasti a v oblastech.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: altambaw
-ms.openlocfilehash: d38b164e95b1791971f88f62e7eccfee8a59bd71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb59d30079c830ad7d6f3dbd5fb8d48e6cd06c67
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711098"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291862"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Vytvoření, změna nebo odstranění partnerského vztahu virtuální sítě
 
@@ -146,7 +146,7 @@ Pokud chcete, aby virtuální sítě mohly někdy komunikovat, ale ne vždy, mí
 
 Pokud váš účet není přiřazený k jedné z předchozích rolí, musí být přiřazený k [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , která je přiřazená k potřebným akcím z následující tabulky:
 
-| Akce                                                          | Name |
+| Akce                                                          | Název |
 |---                                                              |---   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | Vyžaduje se vytvoření partnerského vztahu z virtuální sítě A do virtuální sítě B. virtuální síť musí být virtuální síť (Správce prostředků).          |
 | Microsoft. Network/virtualNetworks/peer/Action                   | Vyžaduje se k vytvoření partnerského vztahu z virtuální sítě B (Správce prostředků) k virtuální síti.                                                       |

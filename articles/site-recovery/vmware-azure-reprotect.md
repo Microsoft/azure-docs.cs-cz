@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: mayg
-ms.openlocfilehash: 976888f57269cc9fe6107a38e30d78c73eb5c124
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8a78ed25be80cbf083467209f764109a26782278
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037844"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292792"
 ---
 # <a name="reprotect-from-azure-to-on-premises"></a>Zpětná replikace z Azure do místního prostředí
 
@@ -33,7 +33,7 @@ Po [převzetí služeb při selhání](site-recovery-failover.md) místních vir
     - Pokud používáte buď bezplatnou edici ESXi 5,5 nebo edici hypervisoru vSphere 6. Upgradujte na jinou verzi.
     - Pokud máte fyzický server se systémem Windows Server 2008 R2 SP1.
     - Virtuální počítače VMware se nemůžou navrátit zpátky do Hyper-V.
-    - Virtuální počítače, které byly [migrovány](migrate-overview.md#what-do-we-mean-by-migration).
+    - Virtuální počítače, které byly migrovány.
     - Virtuální počítač, který se přesunul do jiné skupiny prostředků.
     - Replika virtuálního počítače Azure, který se odstranil.
     - Replika virtuálního počítače Azure, která není chráněná (replikuje se na místní lokalitu).

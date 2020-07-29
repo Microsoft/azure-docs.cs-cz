@@ -12,13 +12,13 @@ keywords: SQL Server Cloud, SQL Server v cloudu, databázi PaaS, cloudové SQL S
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/27/2020
-ms.openlocfilehash: 7a4f26b11911caaa7bce40b77570331b492ceb9d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 07/27/2020
+ms.openlocfilehash: ff8dd9d10bf5970a5a96080beb51e2c111d481e3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080172"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280847"
 ---
 # <a name="what-is-azure-sql"></a>Co je Azure SQL? 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -110,12 +110,12 @@ Obecně může SQL Database a SQL Managed instance významně zvýšit počet da
 | Azure SQL Database | Spravovaná instance Azure SQL | SQL Server na virtuálním počítači Azure |
 | :--- | :--- | :--- |
 |Podporuje většinu místních funkcí na úrovni databáze. K dispozici jsou nejčastěji používané SQL Server funkce.<br/>je zaručeno 99,995% dostupnosti.<br/>Předdefinované zálohy, opravy a obnovení.<br/>Nejnovější stabilní verze databázového stroje.<br/>Možnost přiřazení nezbytných prostředků (CPU/úložiště) k jednotlivým databázím.<br/>Integrovaná Pokročilá logika a zabezpečení<br/>Online Změna prostředků (CPU/Storage).| Podporuje téměř všechny místní funkce na úrovni instance a databáze. Vysoká kompatibilita s SQL Server.<br/>je zaručeno 99,99% dostupnosti.<br/>Předdefinované zálohy, opravy a obnovení.<br/>Nejnovější stabilní verze databázového stroje.<br/>Snadná migrace z SQL Server.<br/>Privátní IP adresa v rámci Azure Virtual Network.<br/>Integrovaná Pokročilá logika a zabezpečení<br/>Online Změna prostředků (CPU/Storage).| Máte plnou kontrolu nad SQL Server modulem. Podporuje všechny místní funkce.<br/>Až 99,99% dostupnost.<br/>Úplná parita se stejnou verzí místních SQL Server.<br/>Opravená, dobře známá verze databázového stroje.<br/>Snadná migrace z SQL Server.<br/>Privátní IP adresa v rámci Azure Virtual Network.<br/>Máte možnost nasazovat aplikace nebo služby na hostitele, kde je umístěn SQL Server.|
-|Migrace z SQL Server může být náročná.<br/>Některé funkce SQL Server nejsou k dispozici.<br/>Žádná záruka přesné doby údržby (ale skoro transparentní).<br/>Kompatibilitu s SQL Server verzí lze dosáhnout pouze pomocí úrovní kompatibility databáze.<br/>Privátní IP adresu nelze přiřadit (přístup můžete omezit pomocí pravidel brány firewall).|Stále je k dispozici nějaký minimální počet funkcí SQL Server, které nejsou k dispozici.<br/>Žádná záruka přesné doby údržby (ale skoro transparentní).<br/>Kompatibilitu s SQL Server verzí lze dosáhnout pouze pomocí úrovní kompatibility databáze.|Musíte spravovat zálohy a opravy.<br>Musíte implementovat vlastní řešení s vysokou dostupností.<br/>Při změně prostředků (CPU/úložiště) dochází k výpadku.|
+|Migrace z SQL Server může být náročná.<br/>Některé funkce SQL Server nejsou k dispozici.<br/>Žádná záruka přesné doby údržby (ale skoro transparentní).<br/>Kompatibilitu s SQL Server verzí lze dosáhnout pouze pomocí úrovní kompatibility databáze.<br/>Podpora privátních IP adres pomocí [privátního propojení Azure](database/private-endpoint-overview.md).|Stále je k dispozici nějaký minimální počet funkcí SQL Server, které nejsou k dispozici.<br/>Žádná záruka přesné doby údržby (ale skoro transparentní).<br/>Kompatibilitu s SQL Server verzí lze dosáhnout pouze pomocí úrovní kompatibility databáze.|Musíte spravovat zálohy a opravy.<br>Musíte implementovat vlastní řešení s vysokou dostupností.<br/>Při změně prostředků (CPU/úložiště) dochází k výpadku.|
 | Databáze o až 100 TB. | Až 8 TB. | Instance SQL Server s až 256 TB úložiště. Instance může podporovat tolik databází, kolik je potřeba. |
 | Místní aplikace má přístup k datům v Azure SQL Database. | [Implementace nativní virtuální sítě](managed-instance/vnet-existing-add-subnet.md) a připojení k místnímu prostředí pomocí Azure Express Route nebo VPN Gateway. | S virtuálními počítači SQL můžete mít aplikace, které běží částečně v cloudu, a částečně místně. Můžete si například rozšířit místní síť a služby Active Directory Domain do cloudu přes [Azure Virtual Network](../virtual-network/virtual-networks-overview.md). Další informace o hybridních cloudových řešeních najdete v tématu [rozšíření místních datových řešení do cloudu](https://docs.microsoft.com/azure/architecture/data-guide/scenarios/hybrid-on-premises-and-cloud). |
 
 
-## <a name="cost"></a>Náklady
+## <a name="cost"></a>Cost
 
 Bez ohledu na to, jestli jste spuštění Strapped pro hotovost nebo tým v zřízené společnosti, který pracuje s přísnými rozpočtovými omezeními, je při rozhodování, jak hostovat vaše databáze, často omezené finanční ovladače. V této části se dozvíte o základech fakturace a licencování v Azure přidružených k rodině služeb Azure SQL.  Zjistíte také, jak vypočítat celkové náklady na aplikaci.
 

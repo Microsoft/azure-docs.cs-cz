@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 5dc603a890a112cf475e6ceafb79145dec5a56ea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2f8f1cceb5cfee4bf910674ecd50c7fba1d5c021
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077224"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318364"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Jednotné upozorňování & monitorování v Azure Monitor nahrazuje klasické výstrahy & monitorování
 
@@ -28,7 +28,7 @@ S novou platformou monitorování a upozorňování Azure vyřadíme monitorová
 Doporučujeme začít a znovu vytvořit upozornění v nové platformě. Pro zákazníky, kteří mají velký počet výstrah, se zavedeme [ve fázích](alerts-understand-migration.md#rollout-phases)– [dobrovolný migrační nástroj](alerts-using-migration-tool.md) pro přesun stávajících klasických výstrah do nového systému výstrah bez přerušení nebo zvýšení nákladů.
 
 > [!IMPORTANT]
-> Pravidla pro klasické výstrahy vytvořená v protokolu aktivit nebudou zastaralá ani migrována. Všechna pravidla pro klasické výstrahy vytvořená v protokolu aktivit jsou k dispozici a budou se používat jako z nových Azure Monitor – výstrahy. Další informace najdete v tématu [Vytvoření, zobrazení a správa výstrah protokolu aktivit pomocí Azure monitor](../../azure-monitor/platform/alerts-activity-log.md). Podobně jsou k dispozici výstrahy na Service Health, které jsou k dispozici v nové Service Health oddílu. Podrobnosti najdete v tématu [výstrahy týkající se oznámení o stavu služby](../../service-health/alerts-activity-log-service-notifications-portal.md).
+> Pravidla pro klasické výstrahy vytvořená v protokolu aktivit nebudou zastaralá ani migrována. Všechna pravidla pro klasické výstrahy vytvořená v protokolu aktivit jsou k dispozici a budou se používat jako z nových Azure Monitor – výstrahy. Další informace najdete v tématu [Vytvoření, zobrazení a správa výstrah protokolu aktivit pomocí Azure monitor](./alerts-activity-log.md). Podobně jsou k dispozici výstrahy na Service Health, které jsou k dispozici v nové Service Health oddílu. Podrobnosti najdete v tématu [výstrahy týkající se oznámení o stavu služby](../../service-health/alerts-activity-log-service-notifications-portal.md).
 
 ## <a name="unified-metrics-and-alerts-in-application-insights"></a>Sjednocení metrik a výstrah v Application Insights
 
@@ -36,29 +36,29 @@ Azure Monitor novější metriky teď budou monitorovat napájení od Applicatio
 
 Nové sjednocené monitorování a upozorňování na Application Insights bude zahrnovat:
 
-- **Application Insights metriky platforem** , které poskytují populární předem připravené metriky z Application Insights produktu. Další informace najdete v tomto článku o používání [metrik platforem pro Application Insights v nových Azure monitor](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics).
-- **Application Insights dostupnost a webový test** , což vám umožní vyhodnotit odezvu a dostupnost vaší webové aplikace nebo serveru. Další informace najdete v tomto článku o použití [testů dostupnosti a výstrah pro Application Insights v nových Azure monitor](../../azure-monitor/app/monitor-web-app-availability.md).
-- **Application Insights vlastní metriky** – díky čemuž můžete definovat a generovat vlastní metriky pro monitorování a výstrahy. Další informace najdete v tomto článku o použití [vlastní metriky pro Application Insights pro nové Azure monitor](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation).
+- **Application Insights metriky platforem** , které poskytují populární předem připravené metriky z Application Insights produktu. Další informace najdete v tomto článku o používání [metrik platforem pro Application Insights v nových Azure monitor](../app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics).
+- **Application Insights dostupnost a webový test** , což vám umožní vyhodnotit odezvu a dostupnost vaší webové aplikace nebo serveru. Další informace najdete v tomto článku o použití [testů dostupnosti a výstrah pro Application Insights v nových Azure monitor](../app/monitor-web-app-availability.md).
+- **Application Insights vlastní metriky** – díky čemuž můžete definovat a generovat vlastní metriky pro monitorování a výstrahy. Další informace najdete v tomto článku o použití [vlastní metriky pro Application Insights pro nové Azure monitor](../app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation).
 - **Application Insights anomálií selhání (součást inteligentní detekce)** – což vás automaticky upozorní téměř v reálném čase, pokud se ve vaší webové aplikaci nejedná o abnormální nárůst frekvence neúspěšných požadavků HTTP nebo volání závislostí. Další informace najdete v tomto článku o používání [inteligentní detekce – anomálie selhání](../app/proactive-failure-diagnostics.md).
 
 ## <a name="unified-metrics-and-alerts-for-other-azure-resources"></a>Sjednocení metrik a upozornění pro jiné prostředky Azure
 
-Od března 2018 byly k dispozici další generace výstrah a multidimenzionální monitorování prostředků Azure. Teď je novější metrika a upozorňování rychlejší díky možnostem téměř v reálném čase. Důležitější je, že novější výstrahy na platformě metrik poskytují větší členitost, protože novější platforma zahrnuje možnost dimenzí, což vám umožňuje rozdělit a filtrovat na konkrétní kombinaci hodnot, podmínku nebo operaci. Stejně jako všechny výstrahy v novém Azure Monitor jsou novější výstrahy metrik více rozšiřitelné s využitím ActionGroups – umožňuje oznámení rozšiřovat mimo e-mail nebo Webhook do služby SMS, hlasu, funkce Azure Functions, sady Automation Runbook a dalších funkcí. Další informace najdete v tématu [Vytvoření, zobrazení a správa výstrah metrik pomocí Azure monitor](../../azure-monitor/platform/alerts-metric.md).
+Od března 2018 byly k dispozici další generace výstrah a multidimenzionální monitorování prostředků Azure. Teď je novější metrika a upozorňování rychlejší díky možnostem téměř v reálném čase. Důležitější je, že novější výstrahy na platformě metrik poskytují větší členitost, protože novější platforma zahrnuje možnost dimenzí, což vám umožňuje rozdělit a filtrovat na konkrétní kombinaci hodnot, podmínku nebo operaci. Stejně jako všechny výstrahy v novém Azure Monitor jsou novější výstrahy metrik více rozšiřitelné s využitím ActionGroups – umožňuje oznámení rozšiřovat mimo e-mail nebo Webhook do služby SMS, hlasu, funkce Azure Functions, sady Automation Runbook a dalších funkcí. Další informace najdete v tématu [Vytvoření, zobrazení a správa výstrah metrik pomocí Azure monitor](./alerts-metric.md).
 Novější metriky pro prostředky Azure jsou k dispozici jako:
 
-- **Azure monitor standardní metriky platforem** – což nabízí populární předem vyplněnou metriku z různých služeb a produktů Azure. Další informace najdete v tomto článku o [podporovaných metrikách na Azure monitor](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported) a [podpoře upozornění na metriky v Azure monitor](../../azure-monitor/platform/alerts-metric-overview.md#supported-resource-types-for-metric-alerts).
-- **Azure monitor vlastní metriky** , které poskytují metriky ze zdrojů řízených uživatelem včetně agenta Azure Diagnostics. Další informace najdete v tomto článku o [vlastních metrikách v Azure monitor](../../azure-monitor/platform/metrics-custom-overview.md). Pomocí vlastních metrik můžete také publikovat metriky shromážděné agentem [Windows Azure Diagnostics agentem](../../azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vm.md) a [agentem InfluxData telegraf](../../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md).
+- **Azure monitor standardní metriky platforem** – což nabízí populární předem vyplněnou metriku z různých služeb a produktů Azure. Další informace najdete v tomto článku o [podporovaných metrikách na Azure monitor](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported) a [podpoře upozornění na metriky v Azure monitor](./alerts-metric-overview.md#supported-resource-types-for-metric-alerts).
+- **Azure monitor vlastní metriky** , které poskytují metriky ze zdrojů řízených uživatelem včetně agenta Azure Diagnostics. Další informace najdete v tomto článku o [vlastních metrikách v Azure monitor](./metrics-custom-overview.md). Pomocí vlastních metrik můžete také publikovat metriky shromážděné agentem [Windows Azure Diagnostics agentem](./collect-custom-metrics-guestos-resource-manager-vm.md) a [agentem InfluxData telegraf](./collect-custom-metrics-linux-telegraf.md).
 
 ## <a name="retirement-of-classic-monitoring-and-alerting-platform"></a>Vyřazení klasického monitorování a platformy pro výstrahy
 
-Jak je uvedeno výše, klasická platforma monitorování a upozorňování, která je aktuálně použitelná z [oddílu výstrahy (Classic)](../../azure-monitor/platform/alerts-classic.overview.md) v Azure Portal, bude v nadcházejících měsících vyřazením za použití novějšího systému.
+Jak je uvedeno výše, klasická platforma monitorování a upozorňování, která je aktuálně použitelná z [oddílu výstrahy (Classic)](./alerts-classic.overview.md) v Azure Portal, bude v nadcházejících měsících vyřazením za použití novějšího systému.
 Starší verze klasického monitorování a upozorňování se vyřadí do 31. srpna 2019; zahrnuje uzavírání souvisejících rozhraní API, Azure Portal rozhraní a služeb. Konkrétně tyto funkce budou zastaralé:
 
-- Starší (Classic) metriky a výstrahy pro prostředky Azure, které jsou aktuálně dostupné prostřednictvím Azure Portal v [části výstrahy (Classic)](../../azure-monitor/platform/alerts-classic.overview.md) . dostupné jako prostředek [Microsoft. Insights/alertrules](/rest/api/monitor/alertrules)
-- Starší (Classic) platforma a vlastní metriky pro Application Insights a také výstrahy, jak jsou aktuálně dostupné prostřednictvím [části výstrahy (Classic)](../../azure-monitor/platform/alerts-classic.overview.md) Azure Portal a přístupné jako prostředek [Microsoft. Insights/alertrules](/rest/api/monitor/alertrules)
-- Starší (Classic) upozornění na anomálii v současnosti je aktuálně k dispozici jako [inteligentní zjišťování v rámci Application Insights](../../azure-monitor/app/proactive-diagnostics.md) Azure Portal; s nakonfigurovanými výstrahami zobrazenými v [části výstrahy (klasické)](../../azure-monitor/platform/alerts-classic.overview.md) Azure Portal
+- Starší (Classic) metriky a výstrahy pro prostředky Azure, které jsou aktuálně dostupné prostřednictvím Azure Portal v [části výstrahy (Classic)](./alerts-classic.overview.md) . dostupné jako prostředek [Microsoft. Insights/alertrules](/rest/api/monitor/alertrules)
+- Starší (Classic) platforma a vlastní metriky pro Application Insights a také výstrahy, jak jsou aktuálně dostupné prostřednictvím [části výstrahy (Classic)](./alerts-classic.overview.md) Azure Portal a přístupné jako prostředek [Microsoft. Insights/alertrules](/rest/api/monitor/alertrules)
+- Starší (Classic) upozornění na anomálii v současnosti je aktuálně k dispozici jako [inteligentní zjišťování v rámci Application Insights](../app/proactive-diagnostics.md) Azure Portal; s nakonfigurovanými výstrahami zobrazenými v [části výstrahy (klasické)](./alerts-classic.overview.md) Azure Portal
 
-Všechny klasické systémy monitorování a upozorňování, včetně odpovídajících [rozhraní API](/rest/api/monitor/alertrules), [PowerShellu](../../azure-monitor/platform/alerts-classic-portal.md), rozhraní příkazového [řádku](../../azure-monitor/platform/alerts-classic-portal.md), [Azure Portal stránky](../../azure-monitor/platform/alerts-classic-portal.md)a [šablony prostředků](../../azure-monitor/platform/alerts-enable-template.md) , zůstanou použitelné až do konce srpna 2019. 
+Všechny klasické systémy monitorování a upozorňování, včetně odpovídajících [rozhraní API](/rest/api/monitor/alertrules), [PowerShellu](./alerts-classic-portal.md), rozhraní příkazového [řádku](./alerts-classic-portal.md), [Azure Portal stránky](./alerts-classic-portal.md)a [šablony prostředků](./alerts-enable-template.md) , zůstanou použitelné až do konce srpna 2019. 
 
 Na konci srpna 2019 v Azure Monitor:
 
@@ -75,7 +75,7 @@ Tento článek se průběžně aktualizuje pomocí odkazů & podrobnostmi týkaj
 
 ## <a name="pricing-for-migrated-alert-rules"></a>Ceny pro migrovaná pravidla výstrah
 
-Zavádíme Nástroj pro migraci, který vám umožní migrovat [výstrahy Azure monitor Classic](../../azure-monitor/platform/alerts-classic.overview.md) na nové prostředí výstrah. Migrovaná pravidla výstrah a odpovídající migrované skupiny akcí (e-mail, Webhook nebo LogicApp) zůstanou zadarmo. Funkce, které jste používali s klasickými výstrahami včetně možnosti upravit prahovou hodnotu, typ agregace a členitosti agregace, budou nadále k dispozici zdarma s vaším pravidlem upozornění na migraci. Pokud však pravidlo migrované výstrahy upravíte tak, aby používalo některou z nových funkcí a oznámení z nové platformy pro upozornění, budou platit odpovídající poplatky. Další informace o cenách pro pravidla a oznámení výstrah najdete v tématu [Azure monitor ceny](https://azure.microsoft.com/pricing/details/monitor/).
+Zavádíme Nástroj pro migraci, který vám umožní migrovat [výstrahy Azure monitor Classic](./alerts-classic.overview.md) na nové prostředí výstrah. Migrovaná pravidla výstrah a odpovídající migrované skupiny akcí (e-mail, Webhook nebo LogicApp) zůstanou zadarmo. Funkce, které jste používali s klasickými výstrahami včetně možnosti upravit prahovou hodnotu, typ agregace a členitosti agregace, budou nadále k dispozici zdarma s vaším pravidlem upozornění na migraci. Pokud však pravidlo migrované výstrahy upravíte tak, aby používalo některou z nových funkcí a oznámení z nové platformy pro upozornění, budou platit odpovídající poplatky. Další informace o cenách pro pravidla a oznámení výstrah najdete v tématu [Azure monitor ceny](https://azure.microsoft.com/pricing/details/monitor/).
 
 Následují příklady případů, kdy se vám za pravidlo výstrahy účtují poplatky:
 
@@ -88,5 +88,6 @@ Následují příklady případů, kdy se vám za pravidlo výstrahy účtují p
 
 ## <a name="next-steps"></a>Další kroky
 
-* Seznamte se s [novými sjednocenými Azure monitor](../../azure-monitor/overview.md).
-* Přečtěte si další informace o nových [výstrahách Azure](../../azure-monitor/platform/alerts-overview.md).
+* Seznamte se s [novými sjednocenými Azure monitor](../overview.md).
+* Přečtěte si další informace o nových [výstrahách Azure](./alerts-overview.md).
+

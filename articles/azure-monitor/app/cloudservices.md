@@ -3,19 +3,19 @@ title: Application Insights pro Azure Cloud Services | Microsoft Docs
 description: Efektivní sledování webových rolí a rolí pracovních procesů s využitím Application Insights
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.openlocfilehash: bf75bb145a3b0d7c861d3c92af972b39de11bcdf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2adcdcdc36fdd41b1f871acbea386beb1d7a9451
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075419"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318432"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights pro Azure Cloud Services
 [Application Insights][start] můžou monitorovat [aplikace cloudových služeb Azure](https://azure.microsoft.com/services/cloud-services/) kvůli dostupnosti, výkonu, selhání a využití díky kombinování dat ze Application Insights sad SDK s [Azure Diagnosticsmi](../platform/diagnostics-extension-overview.md) daty z vašich cloudových služeb. Na základě zpětné vazby ohledně výkonu a efektivity vaší aplikace při běžném používání můžete informovaně rozhodovat o směrování návrhu v každé fázi vývoje.
 
 ![Řídicí panel přehled](./media/cloudservices/overview-graphs.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Než začnete, budete potřebovat:
 
 * Předplatné [Azure](https://azure.com) . Přihlaste se pomocí účet Microsoft pro Windows, Xbox Live nebo jiné cloudové služby Microsoftu. 
@@ -31,9 +31,9 @@ Tato možnost zobrazí aplikaci za běhu a poskytne vám veškerou telemetrii, k
 
 Pokud potřebujete tuto možnost, jste hotovi. 
 
-Vaše další kroky [zobrazují metriky z vaší aplikace](../../azure-monitor/platform/metrics-charts.md)a [dotazují se na data s analýzou](../log-query/log-query-overview.md). 
+Vaše další kroky [zobrazují metriky z vaší aplikace](../platform/metrics-charts.md)a [dotazují se na data s analýzou](../log-query/log-query-overview.md). 
 
-Chcete-li monitorovat výkon v prohlížeči, můžete také chtít nastavit [testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) a [přidat kód na webové stránky](../../azure-monitor/app/javascript.md).
+Chcete-li monitorovat výkon v prohlížeči, můžete také chtít nastavit [testy dostupnosti](./monitor-web-app-availability.md) a [přidat kód na webové stránky](./javascript.md).
 
 Další části obsahují následující další možnosti:
 
@@ -51,9 +51,9 @@ Telemetrie z vaší aplikace se ukládají, analyzují a zobrazují v prostředk
 Každý prostředek patří do skupiny prostředků. Skupiny prostředků se používají ke správě nákladů, k udělení přístupu členům týmu a k nasazení aktualizací v jedné koordinované transakci. Můžete například [napsat skript, který nasadí](../../azure-resource-manager/templates/deploy-powershell.md) cloudovou službu Azure a její Application Insights monitorování prostředků v jedné operaci.
 
 ### <a name="resources-for-components"></a>Prostředky pro komponenty
-Pro každou komponentu aplikace doporučujeme vytvořit samostatný prostředek. To znamená, že vytvoříte prostředek pro každou webovou roli a roli pracovního procesu. Jednotlivé komponenty můžete analyzovat samostatně, ale můžete vytvořit [řídicí panel](../../azure-monitor/app/overview-dashboard.md) , který spojuje klíčové grafy ze všech komponent, abyste je mohli porovnat a monitorovat společně v jednom zobrazení. 
+Pro každou komponentu aplikace doporučujeme vytvořit samostatný prostředek. To znamená, že vytvoříte prostředek pro každou webovou roli a roli pracovního procesu. Jednotlivé komponenty můžete analyzovat samostatně, ale můžete vytvořit [řídicí panel](./overview-dashboard.md) , který spojuje klíčové grafy ze všech komponent, abyste je mohli porovnat a monitorovat společně v jednom zobrazení. 
 
-Alternativním přístupem je odeslat telemetrii z více než jedné role ke stejnému prostředku, ale do každé položky telemetrie, která identifikuje její zdrojovou roli, [přidejte vlastnost Dimension](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) . V tomto přístupu grafy metrik, jako jsou například výjimky, obvykle zobrazují agregaci počtů z různých rolí, ale v případě potřeby můžete graf rozdělit podle identifikátoru role. Můžete také filtrovat hledání podle stejné dimenze. Tato alternativa usnadňuje zobrazení všeho ve stejnou chvíli, ale může také vést k nejasnostem mezi rolemi.
+Alternativním přístupem je odeslat telemetrii z více než jedné role ke stejnému prostředku, ale do každé položky telemetrie, která identifikuje její zdrojovou roli, [přidejte vlastnost Dimension](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) . V tomto přístupu grafy metrik, jako jsou například výjimky, obvykle zobrazují agregaci počtů z různých rolí, ale v případě potřeby můžete graf rozdělit podle identifikátoru role. Můžete také filtrovat hledání podle stejné dimenze. Tato alternativa usnadňuje zobrazení všeho ve stejnou chvíli, ale může také vést k nejasnostem mezi rolemi.
 
 Telemetrická data prohlížeče jsou obvykle součástí stejného prostředku jako u příslušné serverové webové role.
 
@@ -68,7 +68,7 @@ Chcete-li odeslat telemetrii do příslušných prostředků, můžete nastavit 
 
 ## <a name="create-an-application-insights-resource-for-each-role"></a>Vytvoření prostředku Application Insights pro každou roli
 
-Pokud jste se rozhodli vytvořit samostatný prostředek pro každou roli a případně pro každou konfiguraci sestavení samostatnou sadu, je nejjednodušší je vytvořit na portálu Application Insights. Pokud vytvoříte velké množství prostředků, můžete [proces automatizovat](../../azure-monitor/app/powershell.md).
+Pokud jste se rozhodli vytvořit samostatný prostředek pro každou roli a případně pro každou konfiguraci sestavení samostatnou sadu, je nejjednodušší je vytvořit na portálu Application Insights. Pokud vytvoříte velké množství prostředků, můžete [proces automatizovat](./powershell.md).
 
 1. V [Azure Portal][portal]vyberte možnost **nové**  >  **služby pro vývojáře**  >  **Application Insights**.  
 
@@ -92,7 +92,7 @@ Pokud jste se rozhodli použít samostatný prostředek Application Insights pro
 
 To má vliv na vložení klíčů instrumentace Application Insights do souborů s názvem *ServiceConfiguration. \* . cscfg*. Zde je [ukázkový kód](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).
 
-Pokud chcete změnit úroveň diagnostických informací, které se odesílají do Application Insights, můžete to provést tak, že [přímo upravíte soubory *. cscfg* ](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
+Pokud chcete změnit úroveň diagnostických informací, které se odesílají do Application Insights, můžete to provést tak, že [přímo upravíte soubory *. cscfg* ](../platform/diagnostics-extension-to-application-insights.md).
 
 ## <a name="install-the-sdk-in-each-project"></a><a name="sdk"></a>Instalace sady SDK v každém projektu
 Pomocí této možnosti můžete přidat vlastní obchodní telemetrii k libovolné roli. Možnost poskytuje užší analýzu způsobu použití a provádění vaší aplikace.
@@ -165,7 +165,7 @@ Tento krok je nutný pouze v případě, že chcete zachytit úplné dotazy SQL 
 
 1. Otevřete Application Insights prostředky, které jste vytvořili.
 
-   V [Průzkumníku metrik](../../azure-monitor/platform/metrics-charts.md)se zobrazí jednotlivé datové [body a][diagnostic]agregovaná data se zobrazí.
+   V [Průzkumníku metrik](../platform/metrics-charts.md)se zobrazí jednotlivé datové [body a][diagnostic]agregovaná data se zobrazí.
 
 1. Přidejte další telemetrii (podívejte se na další části) a pak publikujte aplikaci, abyste získali živou diagnostiku a používání zpětné vazby. 
 
@@ -184,11 +184,11 @@ Informace o [Azure Diagnostics](../platform/diagnostics-extension-overview.md) v
 * Protokoly událostí systému Windows se zobrazují jako trasování a vlastní události.
 * Protokoly aplikací, protokoly trasování událostí pro Windows a veškeré protokoly infrastruktury diagnostiky se zobrazují jako trasování.
 
-Chcete-li zobrazit čítače výkonu a počty událostí, otevřete [Průzkumník metrik](../../azure-monitor/platform/metrics-charts.md) a přidejte následující graf:
+Chcete-li zobrazit čítače výkonu a počty událostí, otevřete [Průzkumník metrik](../platform/metrics-charts.md) a přidejte následující graf:
 
 ![Data Azure Diagnostics](./media/cloudservices/23-wad.png)
 
-Pokud chcete hledat v různých protokolech trasování odesílaných pomocí Azure Diagnostics, použijte [vyhledávací](../../azure-monitor/app/diagnostic-search.md) dotaz nebo [dotaz Analytics](../../azure-monitor/log-query/get-started-portal.md). Předpokládejme například, že máte neošetřenou výjimku, která způsobila selhání a recyklaci role. Tyto informace se zobrazují v kanálu Aplikace protokolu událostí systému Windows. Pomocí služby Search můžete zobrazit chybu protokolu událostí systému Windows a získat úplné trasování zásobníku pro výjimku. V takovém případě vám pomůže najít hlavní příčinu problému.
+Pokud chcete hledat v různých protokolech trasování odesílaných pomocí Azure Diagnostics, použijte [vyhledávací](./diagnostic-search.md) dotaz nebo [dotaz Analytics](../log-query/get-started-portal.md). Předpokládejme například, že máte neošetřenou výjimku, která způsobila selhání a recyklaci role. Tyto informace se zobrazují v kanálu Aplikace protokolu událostí systému Windows. Pomocí služby Search můžete zobrazit chybu protokolu událostí systému Windows a získat úplné trasování zásobníku pro výjimku. V takovém případě vám pomůže najít hlavní příčinu problému.
 
 ![Hledání Azure Diagnostics](./media/cloudservices/25-wad.png)
 
@@ -205,7 +205,7 @@ Podívejte se na dvě ukázkové role pracovních procesů, které jsou instrume
 * [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)
 
 ## <a name="exceptions"></a>Výjimky
-Informace o tom, jak shromažďovat neošetřené výjimky z různých typů webových aplikací, naleznete [v tématu výjimky monitorování v Application Insights](../../azure-monitor/app/asp-net-exceptions.md).
+Informace o tom, jak shromažďovat neošetřené výjimky z různých typů webových aplikací, naleznete [v tématu výjimky monitorování v Application Insights](./asp-net-exceptions.md).
 
 Ukázková webová role obsahuje kontrolery rozhraní MVC5 a Web API 2. Nezpracované výjimky z nich jsou zachyceny pomocí následujících obslužných rutin:
 
@@ -255,11 +255,11 @@ Chcete-li získat telemetrii založenou na prohlížeči, jako je počet zobraze
 Chcete-li zajistit, aby vaše aplikace zůstala živá a reagovat, [nastavte webové testy][availability].
 
 ## <a name="display-everything-together"></a>Zobrazení všeho najednou
-Pro celkový přehled systému můžete na jednom [řídicím panelu](../../azure-monitor/app/overview-dashboard.md)Zobrazit klíčové grafy monitorování. Můžete například připnout počty požadavků a selhání pro jednotlivé role. 
+Pro celkový přehled systému můžete na jednom [řídicím panelu](./overview-dashboard.md)Zobrazit klíčové grafy monitorování. Můžete například připnout počty požadavků a selhání pro jednotlivé role. 
 
 Pokud váš systém používá jiné služby Azure, například Stream Analytics, zahrňte také jejich sledovací grafy. 
 
-Pokud máte mobilní klientskou aplikaci, použijte [App Center](../../azure-monitor/learn/mobile-center-quickstart.md). V [Analytics](../log-query/log-query-overview.md) můžete vytvářet dotazy pro zobrazení počtu událostí a můžete je připnout na řídicí panel.
+Pokud máte mobilní klientskou aplikaci, použijte [App Center](../learn/mobile-center-quickstart.md). V [Analytics](../log-query/log-query-overview.md) můžete vytvářet dotazy pro zobrazení počtu událostí a můžete je připnout na řídicí panel.
 
 ## <a name="example"></a>Příklad
 V [příkladu](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) se monitoruje služba s webovou rolí a dvěma rolemi pracovních procesů.
@@ -272,18 +272,19 @@ Vytvořili jste sestavení pro .NET 4.6? Rozhraní .NET 4,6 se v rolích Azure C
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>Další kroky
-* [Konfigurace odesílání diagnostiky Azure do Application Insights](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
-* [Automatické vytváření Application Insightsch prostředků](../../azure-monitor/app/powershell.md)
-* [Automatizace Azure Diagnostics](../../azure-monitor/app/powershell-azure-diagnostics.md)
+* [Konfigurace odesílání diagnostiky Azure do Application Insights](../platform/diagnostics-extension-to-application-insights.md)
+* [Automatické vytváření Application Insightsch prostředků](./powershell.md)
+* [Automatizace Azure Diagnostics](./powershell-azure-diagnostics.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample)
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[azure]: ../../azure-monitor/app/app-insights-overview.md
-[client]: ../../azure-monitor/app/javascript.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[netlogs]: ../../azure-monitor/app/asp-net-trace-logs.md
+[api]: ./api-custom-events-metrics.md
+[availability]: ./monitor-web-app-availability.md
+[azure]: ./app-insights-overview.md
+[client]: ./javascript.md
+[diagnostic]: ./diagnostic-search.md
+[netlogs]: ./asp-net-trace-logs.md
 [portal]: https://portal.azure.com/
 [qna]: ../faq.md
-[redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[redfield]: ./monitor-performance-live-website-now.md
+[start]: ./app-insights-overview.md
+

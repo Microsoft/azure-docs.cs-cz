@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: e49f9caaeb1b16daa49fabb217b6fc40fff17f53
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 766fb9fbe50f8a138eae020082680204872a653a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081470"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87315441"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Protokoly Azure Monitor pro poskytovatele služeb
 
@@ -19,7 +19,7 @@ Log Analytics pracovní prostory v Azure Monitor mohou pomáhat poskytovatelům 
 
 Velké podniky sdílí spoustu podobností s poskytovateli služeb, zejména v případě, že existuje centralizovaný tým IT, který je zodpovědný za jeho správu v mnoha různých obchodních jednotkách. Pro zjednodušení tento dokument používá *poskytovatele služeb* , ale stejné funkce jsou dostupné i pro podniky a další zákazníky.
 
-Pro partnery a poskytovatele služeb, kteří jsou součástí programu [Cloud Solution Provider (CSP)](https://partner.microsoft.com/en-US/membership/cloud-solution-provider) , je Log Analytics v Azure monitor jedna ze služeb Azure dostupných v předplatných Azure CSP.
+Pro partnery a poskytovatele služeb, kteří jsou součástí programu [Cloud Solution Provider (CSP)](https://partner.microsoft.com/membership/cloud-solution-provider) , je Log Analytics v Azure monitor jedna ze služeb Azure dostupných v předplatných Azure CSP.
 
 Log Analytics v Azure Monitor může také používat poskytovatel služeb, který spravuje prostředky zákazníka prostřednictvím funkce správy delegovaných prostředků Azure v [Azure Lighthouse](../../lighthouse/overview.md).
 
@@ -36,7 +36,7 @@ V této architektuře je pracovní prostor nasazený v tenantovi zákazníka, kt
 Existují dva způsoby, jak můžou správci poskytovatele služeb získat přístup k pracovnímu prostoru Log Analytics v tenantovi zákazníka:
 
 - Zákazník může přidat jednotlivé uživatele od poskytovatele služeb jako [Azure Active Directory uživatelů typu Host (B2B)](../../active-directory/b2b/what-is-b2b.md). Správci poskytovatele služeb se budou muset přihlásit ke všem adresářům zákazníka v Azure Portal, aby měli přístup k těmto pracovním prostorům. To také vyžaduje, aby zákazníci mohli spravovat individuální přístup pro každého správce služby Service Provider.
-- Pro zajištění větší škálovatelnosti a flexibility můžou poskytovatelé služeb využít možnost [správy delegovaných prostředků Azure](../../lighthouse/concepts/azure-delegated-resource-management.md) ve [službě Azure Lighthouse](../../lighthouse/overview.md) pro přístup k tenantovi zákazníka. Pomocí této metody jsou správci poskytovatele služeb zahrnuti do skupiny uživatelů Azure AD v tenantovi poskytovatele služeb a tato skupina má přístup k této skupině během procesu připojování pro každého zákazníka. Tito správci pak můžou přístup k pracovním prostorům každého zákazníka z vlastního tenanta poskytovatele služeb, ale nemusí se přihlašovat jednotlivě k tenantovi jednotlivých zákazníků. Přístup k prostředkům pracovních prostorů Log Analytics vašich zákazníků tímto způsobem omezuje práci na straně zákazníka a usnadňuje shromažďování a analýzu dat napříč několika zákazníky spravovanými stejným poskytovatelem služeb prostřednictvím nástrojů, jako jsou například [sešity Azure monitor](../..//azure-monitor/platform/workbooks-overview.md). Další informace najdete v tématu [monitorování zákaznických prostředků ve velkém měřítku](../../lighthouse/how-to/monitor-at-scale.md).
+- Pro zajištění větší škálovatelnosti a flexibility můžou poskytovatelé služeb využít možnost [správy delegovaných prostředků Azure](../../lighthouse/concepts/azure-delegated-resource-management.md) ve [službě Azure Lighthouse](../../lighthouse/overview.md) pro přístup k tenantovi zákazníka. Pomocí této metody jsou správci poskytovatele služeb zahrnuti do skupiny uživatelů Azure AD v tenantovi poskytovatele služeb a tato skupina má přístup k této skupině během procesu připojování pro každého zákazníka. Tito správci pak můžou přístup k pracovním prostorům každého zákazníka z vlastního tenanta poskytovatele služeb, ale nemusí se přihlašovat jednotlivě k tenantovi jednotlivých zákazníků. Přístup k prostředkům pracovních prostorů Log Analytics vašich zákazníků tímto způsobem omezuje práci na straně zákazníka a usnadňuje shromažďování a analýzu dat napříč několika zákazníky spravovanými stejným poskytovatelem služeb prostřednictvím nástrojů, jako jsou například [sešity Azure monitor](./workbooks-overview.md). Další informace najdete v tématu [monitorování zákaznických prostředků ve velkém měřítku](../../lighthouse/how-to/monitor-at-scale.md).
 
 Mezi výhody distribuované architektury patří:
 
@@ -75,18 +75,19 @@ Třetí architektura je kombinací obou možností. Vychází z první distribuo
 
 Existují dvě možnosti implementace protokolů v centrálním umístění:
 
-1. Centrální pracovní prostor: poskytovatel služeb může ve svém tenantovi vytvořit pracovní prostor a použít skript, který využívá [rozhraní API pro dotazování](https://dev.loganalytics.io/) s [rozhraním API pro shromažďování dat](../../azure-monitor/platform/data-collector-api.md) k přenesení dat z různých pracovních prostorů do tohoto centrálního umístění. Další možností je jiný než skript, je použít [Azure Logic Apps](../../logic-apps/logic-apps-overview.md).
+1. Centrální pracovní prostor: poskytovatel služeb může ve svém tenantovi vytvořit pracovní prostor a použít skript, který využívá [rozhraní API pro dotazování](https://dev.loganalytics.io/) s [rozhraním API pro shromažďování dat](./data-collector-api.md) k přenesení dat z různých pracovních prostorů do tohoto centrálního umístění. Další možností je jiný než skript, je použít [Azure Logic Apps](../../logic-apps/logic-apps-overview.md).
 
-2. Power BI jako centrální umístění: Power BI se může chovat jako centrální umístění, když různé pracovní prostory exportují data do tohoto prostředí pomocí integrace mezi Log Analyticsm a [Power BIm](../../azure-monitor/platform/powerbi.md).
+2. Power BI jako centrální umístění: Power BI se může chovat jako centrální umístění, když různé pracovní prostory exportují data do tohoto prostředí pomocí integrace mezi Log Analyticsm a [Power BIm](./powerbi.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 * Automatizace vytváření a konfigurace pracovních prostorů pomocí [šablon Správce prostředků](template-workspace-configuration.md)
 
-* Automatizace vytváření pracovních prostorů pomocí [PowerShellu](../../azure-monitor/platform/powershell-workspace-configuration.md)
+* Automatizace vytváření pracovních prostorů pomocí [PowerShellu](./powershell-workspace-configuration.md)
 
-* Integrace s existujícími systémy pomocí [výstrah](../../azure-monitor/platform/alerts-overview.md)
+* Integrace s existujícími systémy pomocí [výstrah](./alerts-overview.md)
 
-* Generování souhrnných sestav pomocí [Power BI](../../azure-monitor/platform/powerbi.md)
+* Generování souhrnných sestav pomocí [Power BI](./powerbi.md)
 
 * Zaveďte zákazníky do [správy delegovaných prostředků Azure](../../lighthouse/concepts/azure-delegated-resource-management.md).
+

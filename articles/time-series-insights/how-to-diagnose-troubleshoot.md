@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: fcd73a5bb6de162fc258d93398b7d00044429588
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d9a4f7aa270aa4ed2b02e61da984e14379a241a9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097577"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289927"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>Diagnostika a řešení potíží s prostředím Azure Time Series Insights Gen2
 
@@ -121,7 +121,7 @@ Pokud není explicitně zadaná vlastnost timestamp, použije se jako výchozí 
 
 ## <a name="problem-all-my-instances-in-the-gen2-explorer-lack-a-parent"></a>Problém: všechny moje instance v Průzkumníkovi Gen2 nemají nadřazený objekt.
 
-K tomuto problému může dojít, pokud vaše prostředí nemá definovánu hierarchii modelu časové řady. Další informace najdete v článku o [práci s modely časových řad](./time-series-insights-update-how-to-tsm.md).
+K tomuto problému může dojít, pokud vaše prostředí nemá definovánu hierarchii modelu časové řady. Další informace najdete v článku o [práci s modely časových řad](/azure/time-series-insights/time-series-insights-overview).
 
   [![Nenadřazené instance zobrazí upozornění.](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
 
@@ -135,7 +135,7 @@ K tomuto problému může dojít, pokud v Power BI Desktop nepoužíváte nejnov
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si informace o tom, jak [pracovat s modely časových řad](./time-series-insights-update-how-to-tsm.md).
+- Přečtěte si informace o tom, jak [pracovat s modely časových řad](/azure/time-series-insights/time-series-insights-overview).
 
 - Přečtěte si o [podporovaných tvarech JSON](./how-to-shape-query-json.md).
 

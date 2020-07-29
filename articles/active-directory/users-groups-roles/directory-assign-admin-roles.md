@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8b94d195ea1f31d228505f01c2a77a299e63c0a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 487177b4a114ba7537ac4f1aa74a4e2472455d4b
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518092"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369556"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -87,7 +87,7 @@ Uživatelé s touto rolí můžou pro některé uživatele nastavit nebo resetov
 Role [správce privilegovaného ověřování](#privileged-authentication-administrator) má oprávnění k vynucení opakované registrace a ověřování Multi-Factor Authentication pro všechny uživatele.
 
 > [!IMPORTANT]
-> Uživatelé s touto rolí můžou měnit přihlašovací údaje pro uživatele, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna přihlašovacích údajů uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
+> Uživatelé s touto rolí můžou měnit přihlašovací údaje pro uživatele, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna přihlašovacích údajů uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Například:
 >
 >- Registrace aplikace a vlastníci podnikových aplikací, kteří můžou spravovat přihlašovací údaje aplikací, které vlastní. Tyto aplikace můžou mít privilegovaná oprávnění ve službě Azure AD a jinde nejsou udělená správcům ověřování. Prostřednictvím této cesty může správce ověřování předpokládat identitu vlastníka aplikace a následně převzít identitu privilegované aplikace tím, že aktualizuje přihlašovací údaje pro aplikaci.
 >- Vlastníci předplatného Azure, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci v Azure.
@@ -273,7 +273,7 @@ Uživatelé s touto rolí můžou měnit hesla, zrušit platnost tokenů aktuali
 * Čtečka sestav
 
 > [!IMPORTANT]
-> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
+> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Například:
 >
 >- Registrace aplikace a vlastníci podnikových aplikací, kteří můžou spravovat přihlašovací údaje aplikací, které vlastní. Tyto aplikace můžou mít privilegovaná oprávnění ve službě Azure AD a jinde nejsou udělená správcům helpdesku. Prostřednictvím této cesty může správce helpdesku předpokládat identitu vlastníka aplikace a následně převzít identitu privilegované aplikace tím, že aktualizuje přihlašovací údaje pro aplikaci.
 >- Vlastníci předplatného Azure, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci v Azure.
@@ -288,6 +288,12 @@ Tato role se dřív nazývala "správce hesel" ve [Azure Portal](https://portal.
 ### <a name="hybrid-identity-administrator"></a>[Správce hybridní identity](#hybrid-identity-administrator-permissions)
 
 Uživatelé v této roli můžou povolit, konfigurovat a spravovat služby a nastavení související s povolením hybridní identity ve službě Azure AD. Tato role umožňuje nakonfigurovat Azure AD na jednu ze tří podporovaných metod ověřování, synchronizace hodnot hash hesel (KOSMETICE), předávacího ověřování (PTA) nebo federace (AD FS nebo poskytovatel federačních služeb od jiného výrobce) a nasadit související místní infrastrukturu a povolit je. Infrastruktura on-Prem zahrnuje zřizování a PTA agenty. Tato role uděluje možnost Povolit bezproblémové jednotné přihlašování (S-SSO) k zajištění bezproblémového ověřování na zařízeních s jiným systémem než Windows 10 nebo na počítačích s jiným systémem než Windows Server 2016. Kromě toho tato role uděluje možnost Zobrazit protokoly přihlášení a přístup ke stavům a analýzám pro účely monitorování a řešení potíží. 
+
+### <a name="insights-administrator"></a>[Správce Insights](#insights-administrator-permissions)
+Uživatelé v této roli mají přístup k plné sadě možností správy v [aplikaci M365 Insights](https://go.microsoft.com/fwlink/?linkid=2129521). Tato role má možnost číst informace o adresáři, monitorovat stav služby, lístky podpory souborů a přistupovat k aspektům nastavení pro správu Insights.
+
+### <a name="insights-business-leader"></a>[Vedoucí firmy pro Insights](#insights-business-leader-permissions)
+Uživatelé v této roli mají přístup k sadě řídicích panelů a přehledů prostřednictvím [aplikace M365 Insights](https://go.microsoft.com/fwlink/?linkid=2129521). To zahrnuje plný přístup ke všem řídicím panelům a prezentovaným přehledům a funkcím průzkumu dat. Uživatelé v této roli nemají přístup k nastavení konfigurace produktu, což je zodpovědnost role správce Insights.
 
 ### <a name="intune-administrator"></a>[Správce Intune](#intune-service-administrator-permissions)
 
@@ -314,22 +320,22 @@ Uživatelé v této roli můžou monitorovat všechna oznámení v centru zpráv
 
 Uživatelé v této roli můžou monitorovat oznámení a poradenské aktualizace stavu v [centru zpráv Office 365](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093) pro jejich organizaci na konfigurovaných službách, jako je Exchange, Intune a Microsoft Teams. Čtečky centra zpráv obdrží týdenní e-mailové zprávy o příspěvcích, aktualizacích a můžou sdílet příspěvky centra zpráv v Office 365. Uživatelé přiřazení k této roli ve službě Azure AD budou mít přístup jen pro čtení ke službám Azure AD, jako jsou uživatelé a skupiny. Tato role nemá přístup k zobrazení, vytvoření nebo správě lístků podpory.
 
-### <a name="modern-commerce-administrator"></a>[Moderní obchodní správce](#modern-commerce-administrator-permissions)
+### <a name="modern-commerce-user"></a>[Moderní uživatel pro obchodování](#modern-commerce-user-permissions)
 
 Nepoužívat. Tato role se automaticky přiřadí z obchodu a není určená ani podporovaná pro jiné použití. Níže najdete podrobnosti.
 
-Role moderního správce obchodu poskytuje určitým uživatelům oprávnění k přístupu k centru pro správu Microsoft 365 a zobrazení levého navigačního panelu pro **domovskou stránku**, **fakturaci**a **podporu**. Obsah, který je dostupný v těchto oblastech, se řídí [rolemi specifickými pro obchod](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-mca-roles) , které jsou přiřazené uživatelům pro správu produktů, které si koupili pro sebe nebo vaši organizaci. To může zahrnovat úkoly, jako jsou platby za účty, nebo přístup k fakturačním účtům a profilům fakturace. 
+Role uživatele moderního obchodování poskytuje určitým uživatelům oprávnění k přístupu k centru pro správu Microsoft 365 a zobrazení levého navigačního panelu pro **domovskou stránku**, **fakturaci**a **podporu**. Obsah, který je dostupný v těchto oblastech, se řídí [rolemi specifickými pro obchod](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-mca-roles) , které jsou přiřazené uživatelům pro správu produktů, které si koupili pro sebe nebo vaši organizaci. To může zahrnovat úkoly, jako jsou platby za účty, nebo přístup k fakturačním účtům a profilům fakturace. 
 
-Uživatelé s rolí moderního správce obchodu mají obvykle oprávnění správce v dalších nákupních systémech Microsoftu, ale nemají role globálního správce nebo správce fakturace používané pro přístup do centra pro správu. 
+Uživatelé s uživatelskou rolí moderního obchodování mají obvykle oprávnění správce v dalších nákupních systémech Microsoftu, ale nemají role globálního správce nebo správce fakturace používané pro přístup do centra pro správu. 
 
-**Kdy je přiřazena role moderního správce obchodu?**
+**Kdy je role uživatele moderního obchodování přiřazená?**
 
-* **Nákup samoobslužných služeb v centru pro správu Microsoft 365** – nákup samoobslužných služeb dává uživatelům možnost vyzkoušet si nové produkty, a to tak, že si je zakoupí nebo zaregistrují sami. Tyto produkty se spravují v centru pro správu. Uživatelům, kteří si přidávají samoobslužné nákupy, se přiřadí role v systému pro obchodování a moderní role správce obchodování, aby mohli spravovat své nákupy v centru pro správu. Správci můžou blokovat nákupy samoobslužných služeb (pro Power BI, Power Apps, Power Automate) prostřednictvím [PowerShellu](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell?view=o365-worldwide). Další informace najdete v [nejčastějších dotazech k samoobslužnému nákupu](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/self-service-purchase-faq?view=o365-worldwide).  
-* **Nákupy od komerčního tržiště Microsoftu** – podobně jako při nákupu samoobslužných služeb, když uživatel koupí produkt nebo službu z Microsoft AppSource nebo Azure Marketplace, bude role moderního správce obchodu přiřazená, pokud nemá roli globálního správce nebo správce fakturace. V některých případech je možné, že uživatelé můžou tyto nákupy zablokovat. Další informace najdete v tématu [komerční tržiště Microsoftu](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase).
-* **Návrhy od Microsoftu** – návrh je formální nabídka Microsoftu, která vaší organizaci koupí produkty a služby Microsoftu. Když osoba, která přijímá návrh, nemá roli globálního správce nebo správce fakturace ve službě Azure AD, přiřadí se mu role specifická pro obchod pro dokončení návrhu a role moderního správce obchodu pro přístup k centru pro správu. Když přistupují k centru pro správu, můžou používat jenom funkce, které jsou autorizované v rámci své obchodní role.
-* **Role specifické pro obchod** – někteří uživatelé mají přiřazeny role specifické pro obchod. Pokud uživatel není globálním správcem nebo správcem fakturace, získá moderní roli správce obchodu, aby mohli získat přístup k centru pro správu.  
+* **Nákup samoobslužných služeb v centru pro správu Microsoft 365** – nákup samoobslužných služeb dává uživatelům možnost vyzkoušet si nové produkty, a to tak, že si je zakoupí nebo zaregistrují sami. Tyto produkty se spravují v centru pro správu. Uživatelům, kteří si zakoupí samoobslužné služby, se přiřadí role v systému pro obchodování a moderní obchodní role, aby mohli spravovat své nákupy v centru pro správu. Správci můžou blokovat nákupy samoobslužných služeb (pro Power BI, Power Apps, Power Automate) prostřednictvím [PowerShellu](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell?view=o365-worldwide). Další informace najdete v [nejčastějších dotazech k samoobslužnému nákupu](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/self-service-purchase-faq?view=o365-worldwide).  
+* **Nákupy od komerčního tržiště Microsoftu** – podobně jako při nákupu samoobslužných služeb, když uživatel koupí produkt nebo službu z Microsoft AppSource nebo Azure Marketplace, přiřadí se moderní obchodní role uživatele, pokud nemají roli globálního správce nebo správce fakturace. V některých případech je možné, že uživatelé můžou tyto nákupy zablokovat. Další informace najdete v tématu [komerční tržiště Microsoftu](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase).
+* **Návrhy od Microsoftu** – návrh je formální nabídka Microsoftu, která vaší organizaci koupí produkty a služby Microsoftu. Když osoba, která přijímá návrh, nemá roli globálního správce nebo správce fakturace ve službě Azure AD, přiřadí se mu role specifická pro obchod pro dokončení návrhu a role uživatele moderního obchodování pro přístup k centru pro správu. Když přistupují k centru pro správu, můžou používat jenom funkce, které jsou autorizované v rámci své obchodní role.
+* **Role specifické pro obchod** – někteří uživatelé mají přiřazeny role specifické pro obchod. Pokud uživatel není globálním správcem nebo správcem fakturace, získá uživatel moderní obchodní role, aby mohl získat přístup k centru pro správu.  
 
-Pokud je role moderního správce obchodu Nepřiřazená uživateli, ztratí přístup k centru pro správu Microsoft 365. Pokud by nějaké produkty spravovaly buď pro sebe, nebo pro vaši organizaci, nebudou je moct spravovat. To může zahrnovat přiřazení licencí, změnu způsobů platby, placení účtů nebo jiné úlohy pro správu předplatných.
+Pokud je role uživatele moderního obchodování Nepřiřazená uživateli, ztratí přístup k centru pro správu Microsoft 365. Pokud by nějaké produkty spravovaly buď pro sebe, nebo pro vaši organizaci, nebudou je moct spravovat. To může zahrnovat přiřazení licencí, změnu způsobů platby, placení účtů nebo jiné úlohy pro správu předplatných.
 
 ### <a name="network-administrator"></a>[Správce sítě](#network-administrator-permissions)
 
@@ -503,7 +509,7 @@ Uživatelé s touto rolí můžou vytvářet uživatele a spravovat všechny asp
 | Pouze pro uživatele, kteří nejsou správci, nebo v některé z následujících rolí s omezeným oprávněním správce:<ul><li>Čtečky adresářů<li>Pozvánka hosta<li>Správce helpdesku<li>Čtenář centra zpráv<li>Čtečka sestav<li>Správce uživatele|<p>Odstranění a obnovení</p><p>Zakázat a povolit</p><p>Zrušit platnost obnovovacích tokenů</p><p>Spravovat všechny vlastnosti uživatele včetně hlavního názvu uživatele</p><p>Resetování hesla</p><p>Aktualizace (FIDO) – klíče zařízení</p>|
 
 > [!IMPORTANT]
-> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
+> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Například:
 >
 >- Registrace aplikace a vlastníci podnikových aplikací, kteří můžou spravovat přihlašovací údaje aplikací, které vlastní. Tyto aplikace můžou mít privilegovaná oprávnění ve službě Azure AD a jinde nejsou udělená správcům uživatelů. Prostřednictvím této cesty může správce uživatelů předpokládat identitu vlastníka aplikace a pak dále předpokládat identitu privilegované aplikace tím, že aktualizuje přihlašovací údaje pro aplikaci.
 >- Vlastníci předplatného Azure, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci v Azure.
@@ -1224,6 +1230,27 @@ Umožňuje povolit, nasadit, konfigurovat, spravovat, monitorovat a řešit pot�
 | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečtěte si a nakonfigurujte Office 365 Service Health. |
 | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
 
+### <a name="insights-administrator-permissions"></a>Přehledy oprávnění správce
+
+Má přístup k sdministrative v aplikaci M365 Insights. 
+
+| **Akce** | **Popis** |
+| --- | --- |
+| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
+| Microsoft. Insights/allEntities/allTasks | Spravujte všechny aspekty přehledů. |
+| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečtěte si a nakonfigurujte Office 365 Service Health. |
+| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+
+### <a name="insights-business-leader-permissions"></a>Oprávnění pro vedoucí firmy pro Insights
+
+Může zobrazit a sdílet řídicí panely a přehledy prostřednictvím aplikace M365 Insights.
+
+| **Akce** | **Popis** |
+| --- | --- |
+| Microsoft. Insights/sestavy/číst | Zobrazte si sestavy a řídicí panel v aplikaci Insights. |
+| Microsoft. Insights/programy/aktualizace | Nasaďte a spravujte programy v aplikaci Insights. |
 
 ### <a name="intune-service-administrator-permissions"></a>Oprávnění správce služby Intune
 
@@ -1338,7 +1365,7 @@ Může číst zprávy a aktualizace pro svou organizaci jenom v centru zpráv Of
 | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 | Microsoft. Office 365. messageCenter/Messages/Read | Přečte zprávy v Microsoft. Office 365. messageCenter. |
 
-### <a name="modern-commerce-administrator-permissions"></a>Moderní oprávnění pro správce obchodování
+### <a name="modern-commerce-user-permissions"></a>Oprávnění pro moderní obchodní uživatele
 Může spravovat komerční nákupy pro firmu, oddělení nebo tým. 
 
 > [!NOTE]
@@ -1619,24 +1646,26 @@ Může číst informace o zabezpečení a sestavy a spravovat konfiguraci v Azur
 
 | **Akce** | **Popis** |
 | --- | --- |
+| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
 | Microsoft. Directory/aplikace/zásady/aktualizace | Aktualizuje vlastnost Applications. policies v Azure Active Directory. |
 | Microsoft. Directory/auditLogs/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na auditLogs v Azure Active Directory. |
 | Microsoft. Directory/Devices/bitLockerRecoveryKeys/Read | Číst vlastnost Devices. bitLockerRecoveryKeys v Azure Active Directory. |
+| Microsoft. Directory/identityProtection/allProperties/Read | Načte všechny prostředky v Microsoft. aad. identityProtection. |
+| Microsoft. Directory/identityProtection/allProperties/Update | Aktualizuje všechny prostředky v Microsoft. aad. identityProtection. |
 | Microsoft. Directory/policies/Basic/Update | Aktualizuje základní vlastnosti zásad v Azure Active Directory. |
 | Microsoft. Directory/policies/Create | Vytvořte zásady v Azure Active Directory. |
 | Microsoft. Directory/policies/DELETE | Odstraňte zásady v Azure Active Directory. |
 | Microsoft. Directory/policies/Owners/Update | V Azure Active Directory vlastnost Update policies. Owners. |
 | Microsoft. Directory/policies/tenantDefault/Update | Aktualizuje vlastnost policies. tenantDefault v Azure Active Directory. |
+| Microsoft. Directory/privilegedIdentityManagement/allProperties/Read | Načte všechny prostředky v Microsoft. aad. privilegedIdentityManagement. |
 | Microsoft. Directory/servicePrincipals/policies/Update | Aktualizujte vlastnost servicePrincipals. policies v Azure Active Directory. |
 | Microsoft. Directory/signInReports/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na signInReports v Azure Active Directory. |
-| Microsoft. aad. identityProtection/allEntities/Read | Načte všechny prostředky v Microsoft. aad. identityProtection. |
-| Microsoft. aad. identityProtection/allEntities/Update | Aktualizuje všechny prostředky v Microsoft. aad. identityProtection. |
-| Microsoft. aad. privilegedIdentityManagement/allEntities/Read | Načte všechny prostředky v Microsoft. aad. privilegedIdentityManagement. |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 | Microsoft. Office 365. protectionCenter/allEntities/Read | Přečtěte si všechny aspekty centra ochrany Office 365. |
 | Microsoft. Office 365. protectionCenter/allEntities/Update | Aktualizuje všechny prostředky v Microsoft. Office 365. protectionCenter. |
 | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečtěte si a nakonfigurujte Office 365 Service Health. |
+| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="security-operator-permissions"></a>Oprávnění operátora zabezpečení
 
@@ -1649,12 +1678,13 @@ Vytvoří a spravuje události zabezpečení.
 
 | **Akce** | **Popis** |
 | --- | --- |
-| Microsoft. aad. cloudAppSecurity/allEntities/allTasks | Čtení a konfigurace Microsoft Cloud App Security. |
-| Microsoft. aad. identityProtection/allEntities/Read | Načte všechny prostředky v Microsoft. aad. identityProtection. |
-| Microsoft. aad. privilegedIdentityManagement/allEntities/Read | Načte všechny prostředky v Microsoft. aad. privilegedIdentityManagement. |
 | Microsoft. Azure. advancedThreatProtection/allEntities/Read | Čtení a konfigurace rozšířené ochrany před internetovými útoky Azure AD |
+| Microsoft. Directory/cloudAppSecurity/allProperties/allTasks | Čtení a konfigurace Microsoft Cloud App Security. |
+| Microsoft. Directory/identityProtection/allProperties/Read | Načte všechny prostředky v Microsoft. aad. identityProtection. |
+| Microsoft. Directory/privilegedIdentityManagement/allProperties/Read | Načte všechny prostředky v Microsoft. aad. privilegedIdentityManagement. |
 | Microsoft. Intune/allEntities/allTasks | Spravujte všechny aspekty Intune. |
 | Microsoft. Office 365. securityComplianceCenter/allEntities/allTasks | Přečtěte si a nakonfigurujte & Security Center pro dodržování předpisů. |
+| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
 | Microsoft. Windows. defenderAdvancedThreatProtection/allEntities/Read | Čtení a konfigurace rozšířené ochrany před internetovými útoky v programu Windows Defender |
 
 ### <a name="security-reader-permissions"></a>Oprávnění čtenáře zabezpečení
@@ -1872,13 +1902,15 @@ Správce skupin | Správce skupin | fdd7a751-b60b-444a-984c-02652fe8fa1c
 Pozvánka hosta | Pozvánka hosta | 95e79109-95c0-4d8e-aee3-d01accf2d47b
 Správce helpdesku | Správce helpdesku | 729827e3-9c14-49f7-bb1b-9608f156bbb8
 Správce hybridní identity | Správce hybridní identity | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2
+Správce Insights | Správce Insights | eb1f4a8d-243a-41f0-9fbd-c7cdf6c5ef7c
+Vedoucí firmy pro Insights | Vedoucí firmy pro Insights | 31e939ad-9672-4796-9c2e-873181342d2d
 Správce služby Intune | Správce Intune | 3a2c62db-5318-420d-8d74-23affee5d9d5
 Správce Kaizala | Správce Kaizala | 74ef975b-6605-40af-a5d2-b9539d836353
 Správce licencí | Správce licencí | 4d6ac14f-3453-41d0-bef9-a3e0c569773a
 Správce služby Lync | Správce Skypu pro firmy | 75941009-915a-4869-abe7-691bff18279e
 Čtenář ochrany osobních údajů centra zpráv | Čtenář ochrany osobních údajů centra zpráv | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 Čtenář centra zpráv | Čtenář centra zpráv | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
-Moderní obchodní správce | Moderní obchodní správce | d24aef57-1500-4070-84db-2666f29cf966
+Moderní uživatel pro obchodování | Moderní uživatel pro obchodování | d24aef57-1500-4070-84db-2666f29cf966
 Správce sítě | Správce sítě | d37c8bed-0711-4417-ba38-b4abe66ce4c2
 Správce aplikací Office | Správce aplikací Office | 2b745bdf-0803-4d80-aa65-822c4493daac
 Podpora partnerů Tier1 | Nezobrazeno, protože by neměl být použit | 4ba39ca4-527c-499a-b93d-d9b492c50246

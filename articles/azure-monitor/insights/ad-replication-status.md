@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: 65ced5021305dce15236ded59cf79a6578e7372a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c33e9105be1eb080025922ff9e612771a4f021cd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516783"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318075"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Monitorovat stav replikace služby Active Directory pomocí Azure Monitor
 
@@ -26,7 +26,7 @@ Active Directory je klíčová součást podnikového IT prostředí. Pro zajiš
 ## <a name="installing-and-configuring-the-solution"></a>Instalace a konfigurace řešení
 K instalaci a konfiguraci řešení můžete použít následující informace.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 * Řešení AD Replication Status vyžaduje, aby na každém počítači, který má Log Analytics agenta pro Windows, byla nainstalovaná podporovaná verze .NET Framework 4.6.2 nebo novější (označovaná taky jako Microsoft Monitoring Agent (MMA)).  Agent používá System Center 2016-Operations Manager, Operations Manager 2012 R2 a Azure Monitor.
 * Řešení podporuje řadiče domény se systémy Windows Server 2008 a 2008 R2, Windows Server 2012 a 2012 R2 a Windows Server 2016.
@@ -34,13 +34,13 @@ K instalaci a konfiguraci řešení můžete použít následující informace.
 
 
 ### <a name="install-agents-on-domain-controllers"></a>Instalace agentů na řadičích domény
-Musíte nainstalovat agenty na řadiče domény, které jsou členy domény k vyhodnocení. Nebo musíte nainstalovat agenty na členské servery a nakonfigurovat agenty tak, aby odesílali data replikace AD na Azure Monitor. Informace o tom, jak připojit počítače s Windows k Azure Monitor najdete v tématu [připojení počítačů s Windows k Azure monitor](../../azure-monitor/platform/agent-windows.md). Pokud je váš řadič domény už součástí stávajícího System Center Operations Manager prostředí, ke kterému se chcete připojit Azure Monitor, přečtěte si téma [připojení Operations Manager k Azure monitor](../../azure-monitor/platform/om-agents.md).
+Musíte nainstalovat agenty na řadiče domény, které jsou členy domény k vyhodnocení. Nebo musíte nainstalovat agenty na členské servery a nakonfigurovat agenty tak, aby odesílali data replikace AD na Azure Monitor. Informace o tom, jak připojit počítače s Windows k Azure Monitor najdete v tématu [připojení počítačů s Windows k Azure monitor](../platform/agent-windows.md). Pokud je váš řadič domény už součástí stávajícího System Center Operations Manager prostředí, ke kterému se chcete připojit Azure Monitor, přečtěte si téma [připojení Operations Manager k Azure monitor](../platform/om-agents.md).
 
 ### <a name="enable-non-domain-controller"></a>Povolit jiný řadič než řadič domény
 Pokud nechcete, aby se žádné řadiče domény připojovaly přímo k Azure Monitor, můžete použít jakýkoli jiný počítač ve vaší doméně, který je připojený k Azure Monitor ke shromažďování dat pro AD Replication Status balíček řešení a jeho odeslání.
 
 1. Ověřte, zda je počítač členem domény, kterou chcete monitorovat pomocí řešení AD Replication Status.
-2. [Připojte počítač se systémem Windows, aby se Azure monitor](../../azure-monitor/platform/om-agents.md) , nebo [ho propojte pomocí stávajícího Operations Manager prostředí s Azure monitor](../../azure-monitor/platform/om-agents.md), pokud ještě není připojený.
+2. [Připojte počítač se systémem Windows, aby se Azure monitor](../platform/om-agents.md) , nebo [ho propojte pomocí stávajícího Operations Manager prostředí s Azure monitor](../platform/om-agents.md), pokud ještě není připojený.
 3. V tomto počítači nastavte následující klíč registru:<br>Klíč: **HKEY_LOCAL_MACHINE \System\currentcontrolset\services\healthservice\parameters\management skupiny \<ManagementGroupName> \Solutions\ADReplication**<br>Hodnota: **cíl**<br>Údaj hodnoty: **true**
 
    > [!NOTE]
@@ -110,7 +110,7 @@ Když kliknete na libovolnou položku v seznamu, zobrazí se další podrobnosti
 
 ![Chyby stavu replikace AD ve výsledcích dotazu](./media/ad-replication-status/oms-ad-replication-search-details.png)
 
-Odsud můžete filtrovat další, upravovat dotaz protokolu a tak dále. Další informace o používání dotazů protokolu v Azure Monitor najdete v tématu [Analýza dat protokolu v Azure monitor](../../azure-monitor/log-query/log-query-overview.md).
+Odsud můžete filtrovat další, upravovat dotaz protokolu a tak dále. Další informace o používání dotazů protokolu v Azure Monitor najdete v tématu [Analýza dat protokolu v Azure monitor](../log-query/log-query-overview.md).
 
 V poli **HelpLink** se zobrazuje adresa URL stránky TechNet s dalšími podrobnostmi o této konkrétní chybě. Můžete zkopírovat a vložit tento odkaz do okna prohlížeče, abyste viděli informace o řešení potíží a opravení chyby.
 
@@ -150,9 +150,10 @@ O: jsou dostatečná standardní uživatelská oprávnění ke službě Active D
 ## <a name="troubleshoot-data-collection-problems"></a>Řešení problémů se shromažďováním dat
 Aby bylo možné shromažďovat data, AD Replication Status sada řešení vyžaduje, aby byl k pracovnímu prostoru Log Analytics připojen alespoň jeden řadič domény. Dokud nepřipojíte řadič domény, zobrazí se zpráva oznamující, že **se data stále shromažďují**.
 
-Pokud potřebujete pomoc s připojením k jednomu z řadičů domény, můžete zobrazit dokumentaci v části [připojení počítačů se systémem Windows k Azure monitor](../../azure-monitor/platform/om-agents.md). Případně, pokud je váš řadič domény už připojený k existujícímu System Center Operations Manager prostředí, můžete zobrazit dokumentaci na adrese [připojení System Center Operations Manager a Azure monitor](../../azure-monitor/platform/om-agents.md).
+Pokud potřebujete pomoc s připojením k jednomu z řadičů domény, můžete zobrazit dokumentaci v části [připojení počítačů se systémem Windows k Azure monitor](../platform/om-agents.md). Případně, pokud je váš řadič domény už připojený k existujícímu System Center Operations Manager prostředí, můžete zobrazit dokumentaci na adrese [připojení System Center Operations Manager a Azure monitor](../platform/om-agents.md).
 
 Pokud nechcete, aby se žádné řadiče domény připojovaly přímo k Azure Monitor nebo System Center Operations Manager, přečtěte si téma [povolení jiného řadiče](#enable-non-domain-controller)domény.
 
 ## <a name="next-steps"></a>Další kroky
-* K zobrazení podrobných dat o stavu replikace služby Active Directory použijte [dotazy protokolu v Azure monitor](../../azure-monitor/log-query/log-query-overview.md) .
+* K zobrazení podrobných dat o stavu replikace služby Active Directory použijte [dotazy protokolu v Azure monitor](../log-query/log-query-overview.md) .
+

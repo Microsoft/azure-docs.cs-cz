@@ -11,106 +11,142 @@ ms.topic: how-to
 ms.date: 06/23/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 7799e873afb117481cebafd982df59a3267f4405
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3c3706cc3a15a8832cec3d799ea551810c849379
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051573"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87313604"
 ---
 # <a name="on-demand-provisioning"></a>Zřizování na vyžádání
-Zřizování na vyžádání umožňuje zřídit uživatele v aplikaci během několika sekund. Tuto možnost můžete využít k rychlému řešení potíží s konfigurací, ověřování výrazů, které jste definovali, filtrům rozsahu testů a mnohem více. 
+Pomocí zřizování na vyžádání můžete zřídit uživatele v aplikaci během několika sekund. Mimo jiné můžete tuto možnost využít k těmto účelům:
 
-## <a name="how-to-use-on-demand-provisioning"></a>Jak používat zřizování na vyžádání 
+* Rychlé řešení potíží s konfigurací
+* Ověřte výrazy, které jste definovali.
+* Otestuje filtry rozsahu.
+
+## <a name="how-to-use-on-demand-provisioning"></a>Jak používat zřizování na vyžádání
 
 1. Přihlaste se na **Azure Portal**.
-2. Přejděte k **podnikovým aplikacím**.
-3. Vyberte svou aplikaci a přejděte na stránku konfigurace zřizování.
+2. Přejít na **všechny služby**v  >  **podnikových aplikacích**.
+3. Vyberte svou aplikaci a pak klikněte na stránku konfigurace zřizování.
 4. Nakonfigurujte zřizování poskytnutím přihlašovacích údajů správce.
-5. Klikněte na **zřídit na vyžádání**.
-6. Vyhledat uživatele podle křestního jména, příjmení, zobrazovaného jména, hlavního názvu uživatele nebo e-mailu.
-7. V dolní části stránky vyberte zřídit.
+5. Vyberte **zřídit na vyžádání**.
+6. Vyhledat uživatele podle křestního jména, příjmení, zobrazovaného jména, hlavního názvu uživatele nebo e-mailové adresy.
+7. V dolní části stránky vyberte **zřídit** .
 
-:::image type="content" source="media/provision-on-demand/on-demand-provision-user.jpg" alt-text="Na vyžádání zřídí uživatele.":::
+:::image type="content" source="media/provision-on-demand/on-demand-provision-user.jpg" alt-text="Snímek obrazovky, který zobrazuje uživatelské rozhraní Azure Portal pro zřizování uživatele na vyžádání.":::
 
-## <a name="understanding-the-provisioning-steps"></a>Porozumění krokům zřizování
-Funkce zřizování na vyžádání se pokusí zobrazit kroky, které služba zřizování provádí při zřizování uživatele. K zřizování uživatele se obvykle používá pět kroků a jeden nebo více kroků níže se zobrazí v prostředí pro zřizování na vyžádání.
+## <a name="understand-the-provisioning-steps"></a>Pochopení kroků zřizování
+
+Proces zřizování na vyžádání se pokusí zobrazit kroky, které služba zřizování potřebuje při zřizování uživatele. Pro zřízení uživatele je obvykle k dispozici pět kroků. Jeden nebo více kroků, které jsou vysvětleny v následujících částech, se zobrazí během zřizování na vyžádání.
 
 ### <a name="step-1-test-connection"></a>Krok 1: testování připojení
-Služba zřizování se pokusí o autorizaci přístupu k cílové aplikaci tím, že vytvoří žádost o "testovacího uživatele". Služba zřizování očekává odezvu, která znamená, že je ověřená, aby pokračovala v postupu zřizování. Tento krok se zobrazí jenom v případě, že v kroku dojde k selhání. Po úspěšném provedení tohoto kroku se v prostředí pro zřizování na vyžádání nezobrazuje. 
 
-**Tipy pro řešení potíží**
-* Ujistěte se, že jste do cílové aplikace zadali platné přihlašovací údaje, jako je například tajný token a adresa URL tenanta. Požadovaná pověření se liší podle aplikace. Podrobné kurzy konfigurace najdete [tady](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list). 
-* Zajistěte, aby cílová aplikace podporovala filtrování u odpovídající atributů definovaných v okně mapování atributů. Možná budete muset ověřit dokumentaci k rozhraní API, kterou poskytuje vývojář aplikace, a porozumět tak filtrům, které podporují.  
-* U aplikací SCIM můžete použít nástroj, jako je například post, a zajistit tak, že aplikace odpoví na žádosti o autorizaci, jak služba Azure AD Provisioning očekává. Příklad žádosti najdete [tady](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#request-3).
+Služba zřizování se pokusí o autorizaci přístupu k cílové aplikaci tím, že vytvoří žádost o "testovacího uživatele". Služba zřizování očekává odpověď, která indikuje, že služba s oprávněním pro pokračování kroků zřizování. Tento krok je zobrazen pouze v případě, že se nezdařil. Po úspěšném provedení tohoto kroku se tento krok nezobrazuje během zřizování na vyžádání.
+
+#### <a name="troubleshooting-tips"></a>Rady pro řešení potíží
+
+* Ujistěte se, že jste do cílové aplikace zadali platné přihlašovací údaje, jako je například tajný token a adresa URL tenanta. Požadovaná pověření se liší podle aplikace. Podrobné kurzy konfigurace najdete v [seznamu kurzů](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list). 
+* Ujistěte se, že cílová aplikace podporuje filtrování na odpovídající atributy definované v podokně **mapování atributů** . Je možné, že budete muset v dokumentaci k rozhraní API poskytnutým vývojářem aplikace zjistit podporované filtry.
+* V případě aplikací pro správu identit mezi doménami (SCIM) můžete použít nástroj, jako je například post. Tyto nástroje vám pomůžou zajistit, že aplikace reaguje na požadavky na autorizaci způsobem, který služba zřizování služby Azure Active Directory (Azure AD) očekává. Podívejte se na [příklad žádosti](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#request-3).
 
 ### <a name="step-2-import-user"></a>Krok 2: import uživatele
-V dalším kroku služba zřizování načte uživatele ze zdrojového systému. Atributy uživatele, které služba načítá, se později použijí k vyhodnocení toho, jestli je uživatel v oboru pro zřizování, kontrolu cílového systému pro existujícího uživatele a určení uživatelských atributů pro export do cílového systému. 
 
-**Zobrazit podrobnosti**
+V dalším kroku služba zřizování načte uživatele ze zdrojového systému. Atributy uživatele, které služba načítá, se použijí později:
 
-V části zobrazení podrobností se zobrazují vlastnosti uživatele importované ze zdrojového systému (např. Azure AD).
+* Vyhodnoťte, jestli je uživatel v oboru pro zřizování.
+* Ověřte cílový systém pro stávajícího uživatele.
+* Určení uživatelských atributů pro export do cílového systému.
 
-**Tipy pro řešení potíží**
-* Import uživatele může selhat, pokud v objektu uživatele ve zdrojovém systému chybí atribut pro hledání. Tuto chybu můžete vyřešit tak, že aktualizujete objekt uživatele o hodnotu pro atribut odpovídajícího atributu nebo změníte atribut odpovídajícího v konfiguraci zřizování.  
-* Pokud v importovaném seznamu chybí atribut, který jste očekávali, ujistěte se, že má atribut hodnotu objektu uživatele ve zdrojovém systému. Služba zřizování aktuálně nepodporuje zřizování atributů s hodnotou null. 
-* Ujistěte se, že stránka mapování konfiguračního atributu zřizování obsahuje atribut, který očekáváte. 
+#### <a name="view-details"></a>Zobrazit podrobnosti
+
+
+V části **zobrazení podrobností** se zobrazují vlastnosti uživatele importované ze zdrojového systému (například Azure AD).
+
+#### <a name="troubleshooting-tips"></a>Rady pro řešení potíží
+
+* Import uživatele může selhat, pokud v objektu uživatele ve zdrojovém systému chybí atribut pro hledání. Chcete-li tuto chybu vyřešit, vyzkoušejte jeden z těchto přístupů:
+
+  * Aktualizujte objekt uživatele hodnotou pro atribut pro porovnání.
+  * Změňte atribut Matching v konfiguraci zřizování.
+
+* Pokud v importovaném seznamu chybí atribut, který jste očekávali, ujistěte se, že atribut má hodnotu objektu uživatele ve zdrojovém systému. Služba zřizování aktuálně nepodporuje zřizování atributů s hodnotou null.
+* Ujistěte se, že stránka **mapování atributů** vaší konfigurace zřizování obsahuje atribut, který očekáváte.
 
 ### <a name="step-3-determine-if-user-is-in-scope"></a>Krok 3: určení, jestli je uživatel v oboru
-Dále služba zřizování určí, jestli je uživatel v [oboru](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#scoping) pro zřizování. Služba bude uvažovat o aspektech, jako je třeba to, jestli je uživatel přiřazený k aplikaci, jestli je nastavená synchronizace přiřazená nebo synchronizovaná, a filtry oborů definované v konfiguraci zřizování.  
 
-**Zobrazit podrobnosti**
+Dále služba zřizování určí, jestli je uživatel v [oboru](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#scoping) pro zřizování. Služba zohledňuje následující aspekty:
 
-V části zobrazení podrobností se zobrazují podmínky oboru, které byly vyhodnoceny. Může se zobrazit jedna z následujících vlastností:
-* **Aktivní ve zdrojovém systému** znamená, že uživatel má vlastnost ve službě Azure AD nastavenou na hodnotu true.
+* Určuje, zda je uživatel přiřazen k aplikaci.
+* Určuje, zda je obor nastaven na možnost **synchronizace byla přiřazena** nebo **synchronizována**.
+* Filtry oborů definované v konfiguraci zřizování.  
+
+#### <a name="view-details"></a>Zobrazit podrobnosti
+
+V části **zobrazení podrobností** se zobrazují podmínky oboru, které byly vyhodnoceny. Může se zobrazit jedna nebo více následujících vlastností:
+
+* **Aktivní ve zdrojovém systému** znamená, že uživatel má vlastnost `IsActive` nastavenou na **hodnotu true** ve službě Azure AD.
 * **Přiřazeno k aplikaci** indikuje, že je uživatel přiřazený k aplikaci ve službě Azure AD.
 * **Obor synchronizace vše** označuje, že nastavení oboru umožňuje všem uživatelům a skupinám v tenantovi.
 * **Uživatel má požadovanou roli** , která indikuje, že uživatel má v aplikaci potřebné role, které se mají zřídit. 
-* **Filtry oborů** se zobrazí také v případě, že jste definovali filtry oborů pro vaši aplikaci. Filtr se zobrazí v následujícím formátu: {název filtru rozsahu} {atribut oboru filtru} {obor filtru Hodnota} {Rozsah filtru Value}. 
+* Pokud jste definovali filtry oborů pro vaši aplikaci, zobrazí se také **filtry oborů** . Filtr se zobrazí v následujícím formátu: {obor filtru název} {atribut oboru filtru} {obor filtru Hodnota} {Rozsah filtru Value}.
 
-**Tipy pro řešení potíží**
-* Ujistěte se, že jste definovali platnou roli oboru. Nepoužívejte například operátor ["větší než"](https://docs.microsoft.com/azure/active-directory/app-provisioning/define-conditional-rules-for-provisioning-user-accounts#create-a-scoping-filter) s hodnotou, která není celočíselná. 
-* Pokud uživatel nemá nezbytnou roli, přečtěte si tipy popsané [tady](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-no-users-provisioned#provisioning-users-assigned-to-the-default-access-role). 
+#### <a name="troubleshooting-tips"></a>Rady pro řešení potíží
+
+* Ujistěte se, že jste definovali platnou roli oboru. Nepoužívejte například [operátor Greater_Than](https://docs.microsoft.com/azure/active-directory/app-provisioning/define-conditional-rules-for-provisioning-user-accounts#create-a-scoping-filter) s hodnotou, která není typu Integer.
+* Pokud uživatel nemá nezbytnou roli, přečtěte si [tipy pro zřizování uživatelů přiřazených k výchozí roli přístupu](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-no-users-provisioned#provisioning-users-assigned-to-the-default-access-role).
 
 ### <a name="step-4-match-user-between-source-and-target"></a>Krok 4: vyhledání uživatele mezi zdrojem a cílem
-V tomto kroku. Služba se pokusí porovnat uživatele, který byl načten v kroku importu, s uživatelem v cílovém systému. 
 
-**Zobrazit podrobnosti**
+V tomto kroku se služba pokusí porovnat uživatele, který byl načten v kroku importu, s uživatelem v cílovém systému.
 
-Stránky zobrazit podrobnosti zobrazují vlastnosti uživatelů, které byly spárovány v cílovém systému. Vlastnosti, které vidíte v podokně kontextu, se budou lišit takto:
+#### <a name="view-details"></a>Zobrazit podrobnosti
+
+Stránka **Zobrazit podrobnosti** zobrazuje vlastnosti uživatelů, které byly spárovány v cílovém systému. Vlastnosti, které vidíte v podokně v kontextu, se liší následujícím způsobem:
+
 * Pokud v cílovém systému neodpovídají žádní uživatelé, nezobrazí se žádné vlastnosti.
 * Pokud v cílovém systému odpovídá jeden uživatel, zobrazí se vlastnosti odpovídajícího uživatele z cílového systému.
 * Pokud se shodují více uživatelů, zobrazí se vlastnosti obou odpovídajících uživatelů.
-* Pokud je více odpovídajících atributů součástí mapování atributů, každý odpovídající atribut se vyhodnotí postupně a odpovídajícím uživatelům se zobrazí. 
+* Pokud je více odpovídajících atributů součástí mapování atributů, každý odpovídající atribut je vyhodnocen postupně a odpovídajícími uživateli pro daný atribut jsou zobrazeny.
 
-**Podrobnosti o řešení potíží**
-* Služba zřizování nemůže jedinečně odpovídat uživateli ve zdroji s uživatelem v cíli. To lze vyřešit zajištěním, že je shodný atribut jedinečný. 
-* Zajistěte, aby cílová aplikace podporovala filtrování u atributu definovaného jako odpovídající atribut.  
+#### <a name="troubleshooting-tips"></a>Rady pro řešení potíží
+
+* Služba zřizování nemusí být schopná najít uživatele ve zdrojovém systému jedinečně s uživatelem v cíli. Tento problém vyřešíte tak, že zaručíte, že odpovídající atribut je jedinečný.
+* Ujistěte se, že cílová aplikace podporuje filtrování u atributu, který je definován jako odpovídající atribut.  
 
 ### <a name="step-5-perform-action"></a>Krok 5: provedení akce
-Služba zřizování nakonec provede akci, jako je vytvoření, aktualizace, odstranění nebo přeskočení uživatele. 
 
-:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="Bylo úspěšné zřízení uživatele.":::
+Služba zřizování pak provede akci, jako je například vytvoření, aktualizace, odstranění nebo přeskočení uživatele.
 
-**Zobrazit podrobnosti**
+Tady je příklad toho, co se může zobrazit po úspěšném zřízení uživatele na vyžádání:
 
-V části Zobrazit podrobnosti se zobrazí atributy, které byly v cílové aplikaci změněny. To představuje konečný výstup aktivity zřizování služby a exportovaných atributů. Pokud se tento krok nezdaří, zobrazené atributy reprezentují atributy, které služba zřizování provedla při pokusu o změnu.  
+:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="Snímek obrazovky, který ukazuje úspěšné zřízení uživatele na vyžádání.":::
 
-**Tipy pro řešení potíží**
-* Selhání pro export změn se může značně lišit. Běžné chyby najdete v [dokumentaci](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs#error-codes) k protokolům zřizování.
+#### <a name="view-details"></a>Zobrazit podrobnosti
 
+V části **Zobrazit podrobnosti** se zobrazí atributy, které byly v cílové aplikaci změněny. Toto zobrazení představuje konečný výstup aktivity zřizování služby a exportovaných atributů. Pokud se tento krok nezdaří, zobrazené atributy reprezentují atributy, které služba zřizování provedla při pokusu o změnu.
+
+#### <a name="troubleshooting-tips"></a>Rady pro řešení potíží
+
+* Selhání při exportu změn se může značně lišit. V [dokumentaci k protokolům zřizování](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs#error-codes) najdete běžné chyby.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
-**Potřebujete zapnout zřizování, abyste mohli používat zřizování na vyžádání?** Pro aplikace, které pro autorizaci používají dlouhý nosný token nebo uživatelské jméno a heslo, nejsou nutné žádné další kroky. Aplikace, které používají OAuth pro autorizaci: aktuálně vyžadují, aby se úloha zřizování zastavila před použitím zřizování na vyžádání. Do této kategorie patří aplikace, jako je například G Suite, box, pracoviště po Facebooku a časová rezerva. Práce probíhá, aby bylo možné spouštět zřizování na vyžádání pro všechny aplikace, aniž byste museli zastavovat zřizování. 
 
-**Jak dlouho trvá zřizování na vyžádání?** Obvykle trvá méně než 30 sekund. 
+* **Potřebujete zapnout zřizování, abyste mohli používat zřizování na vyžádání?** Pro aplikace, které používají dlouhý nosný token nebo uživatelské jméno a heslo k autorizaci, nejsou nutné žádné další kroky. Aplikace, které používají OAuth pro autorizaci: aktuálně vyžadují, aby se úloha zřizování zastavila před použitím zřizování na vyžádání. Do této kategorie patří aplikace, jako je například G Suite, box, pracoviště po Facebooku a časová rezerva. V práci probíhá podpora zřizování na vyžádání pro všechny aplikace, aniž byste museli zastavovat úlohy zřizování.
+
+* **Jak dlouho trvá zřizování na vyžádání?** Zřizování na vyžádání obvykle trvá méně než 30 sekund.
 
 ## <a name="known-limitations"></a>Známá omezení
-V současné době existuje několik známých omezení. Uveďte prosím [hlas uživatele](https://aka.ms/appprovisioningfeaturerequest) , abychom mohli lépe určit, jaká vylepšení se mají udělat dál. Pamatujte na to, že tato omezení jsou specifická pro schopnost zřizování na vyžádání. konkrétní informace o tom, jestli aplikace podporuje zřizování skupin, odstranění atd., najdete v kurzu použití aplikace. 
 
-* Aplikace Workday, AWS a SuccessFactors nepodporují zřizování na vyžádání.
+Pro zřizování na vyžádání je aktuálně k dispozici několik známých omezení. Vystavte své [návrhy a zpětnou vazbu](https://aka.ms/appprovisioningfeaturerequest) , abychom mohli lépe určit, která vylepšení se mají udělat dál.
+
+> [!NOTE]
+> Následující omezení jsou specifická pro možnost zřizování na vyžádání. Informace o tom, jestli aplikace podporuje zřizování skupin, odstranění nebo dalších možností, najdete v kurzu této aplikace.
+
+* Aplikace v Workday, Amazon Web Services (AWS) a SuccessFactors nepodporují zřizování na vyžádání. 
 * Zřizování skupin a rolí na vyžádání se nepodporuje.
-* Zřizování na vyžádání podporuje zakázání uživatelů, kteří byli z aplikace nepřiřazeni, ale nepodporuje zakázání nebo odstranění uživatelů, kteří byli zakázáni nebo odstraněni z Azure Active Directory (uživatelé se při hledání uživatele nezobrazují).
+* Zřizování na vyžádání podporuje zakázání uživatelů, kteří byli z aplikace nepřiřazeni. Nepodporuje ale zakázání nebo odstranění uživatelů, kteří jsou zakázané nebo odstraněné ze služby Azure AD. Uživatelé se nebudou při hledání uživatele zobrazovat.
 
 ## <a name="next-steps"></a>Další kroky
 

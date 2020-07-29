@@ -1,6 +1,5 @@
 ---
-title: Spouštění skriptů Pythonu
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (Classic): spouštění skriptů Pythonu – Azure'
 description: Naučte se používat modul spouštěného skriptu Pythonu pro použití kódu Pythonu v Machine Learning Studio (klasických) experimentech a webových službách.
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: tracking-python, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 4afb6dca94642ab9b908a4f07ff5de56677626f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2652e3b5be108985557427b99fa7841b88bf28ef
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696299"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318602"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Spouštění skriptů strojového učení v jazyce Python v Azure Machine Learning Studio (Classic)
+
+**platí pro:** ![ žádná](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasická) 
+
 
 Python je cenným nástrojem v nástroji pro řadu vědeckých dat. Používá se v každé fázi typických pracovních postupů strojového učení, včetně průzkumu dat, extrakce funkcí, školení modelů a ověřování a nasazení.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 218ec6a5beab32729e106a7397d58ebaa2a30123
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: adc0d63a51535b27b42abbe0115ff25594eb2b4f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086921"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292481"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Nejčastější dotazy k Windows 10 Enterprise pro více relací
 
@@ -102,6 +102,6 @@ Zakázání aplikace pro Store:
 
 Další informace o virtuálních počítačích s Windows a Windows 10 Enterprise s více relacemi:
 
-- Přečtěte si [dokumentaci k virtuálnímu počítači s Windows ve verzi Preview](overview.md)
+- Přečtěte si [dokumentaci k virtuálním plochám Windows](overview.md)
 - Navštívit naši [TechCommunity virtuálního počítače s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)
 - Kurzy k instalaci virtuálních klientských počítačů s Windows pomocí [kurzů pro virtuální počítače s Windows](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)

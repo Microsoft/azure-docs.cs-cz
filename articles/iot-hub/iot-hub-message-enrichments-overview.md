@@ -8,11 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: c3dbd01faf61c164c88f09b0da03c07be4abd187
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08eb5fd4d28421105988d64b99afb441a0b824f4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75429123"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290300"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Rozšíření zpráv pro zprávy ze zařízení na Cloud IoT Hub
 
@@ -63,7 +64,7 @@ Rozšíření lze konfigurovat pomocí následujících metod:
 | ----- | -----| 
 | Portál | [Azure Portal](https://portal.azure.com) | Viz [kurz pro rozšíření zpráv](tutorial-message-enrichments.md) . | 
 | Azure CLI   | [AZ IoT Hub Message-obohacení](https://docs.microsoft.com/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
-| Azure PowerShell | [Add-AzIotHubMessageEnrichment](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubmessageenrichment?view=azps-2.8.0) |
+| Azure PowerShell | [Add-AzIotHubMessageEnrichment](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubmessageenrichment) |
 
 Přidání rozšíření zprávy nepřidá latenci do směrování zpráv.
 

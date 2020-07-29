@@ -1,6 +1,6 @@
 ---
-title: Delegovaný přístup ve Windows Virtual desktopu je 2019 – Azure
-description: Jak delegovat možnosti správy pro nasazení virtuálních klientů s Windows, včetně příkladů.
+title: Delegovaný přístup ve virtuální ploše Windows (klasický) – Azure
+description: Jak delegovat možnosti správy v nasazení virtuálních počítačů s Windows (Classic), včetně příkladů.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 91be20de49f549f3530e6c817906f1abf8f106b6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fbb8c6e100a9f72c20bcfaba7049b6724ee458b2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527553"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292523"
 ---
-# <a name="delegated-access-in-windows-virtual-desktop-fall-2019"></a>Delegovaný přístup ve virtuálním počítači s Windows poklesl na 2019.
+# <a name="delegated-access-in-windows-virtual-desktop-classic"></a>Delegovaný přístup ve virtuální ploše Windows (klasický)
 
 >[!IMPORTANT]
->Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objekty virtuálních klientů Windows, které byly zavedeny v aktualizaci jarní 2020, přečtěte si [Tento článek](../delegated-access-virtual-desktop.md).
+>Tento obsah se vztahuje na virtuální plochu Windows (Classic), která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objektů virtuálních klientů Windows, přečtěte si [Tento článek](../delegated-access-virtual-desktop.md).
 
 Virtuální klient Windows má delegovaný přístupový model, který umožňuje definovat množství přístupu, které může určitý uživatel přiřadit roli. Přiřazení role má tři součásti: objekt zabezpečení, definice role a obor. Model delegovaného přístupu k virtuálním plochám Windows je založený na modelu Azure RBAC. Další informace o konkrétních přiřazeních rolí a jejich součástech najdete v tématu [Přehled řízení přístupu na základě role v Azure](../../role-based-access-control/built-in-roles.md).
 

@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 47b1a3a44c494560dde9ffdab004ea576f434ffe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8a8f5cb792f524354754b4368c0b68d5f9d40699
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091296"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291383"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Povolení služby Azure Multi-Factor Authentication pro službu Windows Virtual Desktop
 
 >[!IMPORTANT]
-> Pokud navštívíte tuto stránku z dokumentace ke 2019., ujistěte se, že jste po dokončení [vrátili do dokumentace ke 2019](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md) .
+> Pokud navštívíte tuto stránku z dokumentace k virtuálním plochám Windows (Classic), nezapomeňte po dokončení [vrátit se do dokumentace k virtuální ploše Windows (Classic)](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md) .
 
 Klient Windows pro virtuální počítače s Windows je vynikající volbou pro integraci virtuálního klienta s Windows s vaším místním počítačem. Když ale konfigurujete účet virtuální plochy Windows na klienta Windows, budete muset provést určitá opatření, abyste měli jistotu, že sami a uživatelé budou v bezpečí.
 
@@ -26,7 +26,7 @@ Po prvním přihlášení si klient vyžádá vaše uživatelské jméno, heslo 
 
 I když je zapamatování přihlašovacích údajů pohodlné, může také provádět nasazení v podnikových scénářích nebo na osobních zařízeních méně zabezpečená. Pokud chcete chránit své uživatele, musíte se ujistit, že klient uchovává dotaz na přihlašovací údaje pro Azure Multi-Factor Authentication (MFA). V tomto článku se dozvíte, jak nakonfigurovat zásady podmíněného přístupu pro virtuální plochu Windows, aby toto nastavení bylo povolené.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tady je přehled toho, co budete potřebovat k zahájení práce:
 
@@ -50,10 +50,10 @@ Tady je postup, jak vytvořit zásadu podmíněného přístupu, která při př
 7. Vyberte **Hotovo**.
 8. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **vybrat aplikace**.
 9. Vyberte jednu z následujících skupin aplikací na základě používané verze virtuálního počítače s Windows.
-   - Pokud používáte verzi spadající do 2019, vyberte tyto dvě aplikace:
+   - Pokud používáte virtuální plochu Windows (Classic), vyberte tyto dvě aplikace:
        - **Virtuální desktop Windows** (ID aplikace 5a0aa725-4958-4b0c-80a9-34562e23f3b7)
        - **Klient virtuální plochy Windows** (ID aplikace fa4345a4-a730-4230-84a8-7d9651b86739)
-   - Pokud používáte vydání jarní 2020, vyberte místo toho tyto dvě aplikace:
+   - Pokud používáte virtuální počítač s Windows, vyberte místo toho tyto dvě aplikace:
        -  **Virtuální desktop Windows** (ID aplikace 9cdead84-a844-4324-93f2-b2e6bb768d07)
        -  **Klient virtuální plochy Windows** (ID aplikace a85cf173-4192-42f8-81fa-777a763e6e2c)
 

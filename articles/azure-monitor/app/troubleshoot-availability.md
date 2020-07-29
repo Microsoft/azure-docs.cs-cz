@@ -6,14 +6,14 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 04/28/2020
 ms.reviewer: sdash
-ms.openlocfilehash: 8544ad292d9e8982e236566fb53189c70922232c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0ac8dd189bee1c1d4f5a7a4d0f7de68b085fbc56
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041379"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318143"
 ---
-# <a name="troubleshooting"></a>Poradce při potížích
+# <a name="troubleshooting"></a>Řešení potíží
 
 Tento článek vám pomůže vyřešit běžné problémy, ke kterým může dojít při použití monitorování dostupnosti.
 
@@ -81,7 +81,7 @@ Chyba („Porušení protokolu... Znak CR musí být následován znakem LF.“)
 
 ### <a name="i-dont-see-any-related-server-side-telemetry-to-diagnose-test-failures"></a>Nezobrazuje se žádná související telemetrie na straně serveru pro diagnostiku selhání testu? *
 
-Pokud máte pro aplikaci na straně serveru nastavenou službu Application Insights, může být důvodem to, že právě probíhá [vzorkování](../../azure-monitor/app/sampling.md). Vyberte jiný výsledek dostupnosti.
+Pokud máte pro aplikaci na straně serveru nastavenou službu Application Insights, může být důvodem to, že právě probíhá [vzorkování](./sampling.md). Vyberte jiný výsledek dostupnosti.
 
 ### <a name="can-i-call-code-from-my-web-test"></a>Mohu volat kód z mého webového testu?
 
@@ -96,7 +96,7 @@ Významy těchto dvou výrazů jsou zaměnitelné. Testy dostupnosti jsou obecn�
 
    Existují dvě možná řešení:
 
-   * Nakonfigurujte bránu firewall, aby povolovala příchozí požadavky z [IP adres našich agentů webového testu](../../azure-monitor/app/ip-addresses.md).
+   * Nakonfigurujte bránu firewall, aby povolovala příchozí požadavky z [IP adres našich agentů webového testu](./ip-addresses.md).
    * Napište vlastní kód, který pravidelně testuje interní server. Spusťte kód na testovacím serveru jako proces na pozadí za vaší bránou firewall. Testovací proces můžete odesílat své výsledky do Application Insights pomocí rozhraní API [TrackAvailability()](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) v balíčku Core SDK. To vyžaduje, aby měl váš testovací server odchozí přístup ke koncovému bodu ingestování Application Insights, ale to je mnohem menší riziko zabezpečení než případné povolení příchozích požadavků. Výsledky se zobrazí v oknech webové testy dostupnosti, i když se prostředí mírně zjednoduší z toho, co je k dispozici pro testy vytvořené prostřednictvím portálu. Vlastní testy dostupnosti se také zobrazí jako výsledky dostupnosti v analýzách, vyhledávání a metrikách.
 
 ### <a name="uploading-a-multi-step-web-test-fails"></a>Nahrávání vícekrokového webového testu se nezdaří
@@ -134,3 +134,4 @@ Pokud potřebujete upozornit uživatele na základě jejich rolí, použijte nov
 
 * [Testování webu ve více krocích](availability-multistep.md)
 * [Testy adresy URL pro příkazy URL](monitor-web-app-availability.md)
+

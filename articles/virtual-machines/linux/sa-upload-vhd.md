@@ -4,16 +4,16 @@ description: Vytvoření a nahrání virtuálního pevného disku (VHD) do Azure
 author: cynthn
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/10/2017
 ms.author: cynthn
 ms.custom: storage accounts
-ms.openlocfilehash: dcc7c69809ae623606bd091821c5f2fc661f6c8b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 288a697339fc6f8b001b445840e3fa98ab92f9a4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088746"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292259"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Nahrání a vytvoření virtuálního počítače se systémem Linux z vlastního disku pomocí Azure CLI
 

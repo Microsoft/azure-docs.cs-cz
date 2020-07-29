@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe, jmprieur
-ms.custom: aaddev
+ms.custom: aaddev, devx-track-java
 ROBOTS: NOINDEX
-ms.openlocfilehash: 67378cd363e22351198389f4480e3f6792e885bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d1faf7aed5cf4c4975925c7a56d169dc99a7bd5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85383678"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87313587"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Postupy: povolení jednotného přihlašování mezi aplikacemi v Androidu pomocí ADAL
 

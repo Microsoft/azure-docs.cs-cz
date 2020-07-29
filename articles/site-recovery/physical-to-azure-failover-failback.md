@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/17/2019
 ms.author: raynew
-ms.openlocfilehash: ea5893f45962d67f4b6f3e9a261c65aa0ec926bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2994f68e4159c7c4aa7d82bef7a5891deb5055a0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75497854"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292817"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Převzetí služeb při selhání a obnovení fyzických serverů replikovaných do Azure
 
@@ -83,7 +84,7 @@ Po převzetí služeb při selhání do Azure můžete znovu nastavit ochranu vi
 10. Ověřte následující scénáře, ve kterých nelze provést navrácení služeb po obnovení:
     - Pokud používáte buď bezplatnou edici ESXi 5,5 nebo edici hypervisoru vSphere 6. Upgradujte na jinou verzi.
     - Pokud máte fyzický server se systémem Windows Server 2008 R2 SP1.
-    - Virtuální počítače, které byly [migrovány](migrate-overview.md#what-do-we-mean-by-migration).
+    - Virtuální počítače, které byly migrovány.
     - Virtuální počítač, který se přesunul do jiné skupiny prostředků.
     - Replika virtuálního počítače Azure, který se odstranil.
     - Replika virtuálního počítače Azure, která není chráněná (replikuje se na místní lokalitu).

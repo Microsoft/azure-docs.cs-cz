@@ -1,18 +1,18 @@
 ---
 title: Vytvoření nabídky aplikace Power BI v Microsoft AppSource
 description: Naučte se, jak vytvořit a publikovat Power BI nabídku aplikace Microsoft AppSource.
-author: anbene
-ms.author: mingshen
+author: navits09
+ms.author: navits
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: fa8c08f5d6f49b12306ea1f4bb82c07747622f48
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1687224e796043af1f7c3d1ee6f0417465fb4959
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011936"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317632"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Vytvoření nabídky aplikace Power BI
 
@@ -53,7 +53,7 @@ Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
 Tato stránka zobrazuje vizuální znázornění kroků požadovaných k publikování této nabídky (dokončené i nadcházející) a jak dlouho by měly být jednotlivé kroky dokončeny.
 
-Obsahuje odkazy na provádění operací s touto nabídkou na základě vámi provedeného výběru. Příklad:
+Obsahuje odkazy na provádění operací s touto nabídkou na základě vámi provedeného výběru. Například:
 
 - Pokud je nabídka koncept – odstranění konceptu [nabídky](update-existing-offer.md#delete-a-draft-offer))
 - Pokud je nabídka živá, [přestanou prodávat nabídku](update-existing-offer.md#stop-selling-an-offer-or-plan).)
@@ -142,7 +142,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Microsoft AppSo
 6. Podmínky použití
 7. Zásady ochrany osobních údajů
 8. Název nabídky
-9. Shrnutí
+9. Souhrn
 10. Popis
 11. Snímky obrazovky a videa
 

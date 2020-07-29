@@ -4,12 +4,12 @@ description: Přečtěte si o partnerech Azure Monitor a o tom, jak můžete zí
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: f40d38d182e1a8c233b15f711fd557a5d72e8f30
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 994dfe0d7e252fd2aea489c363e76f0956715048
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077323"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318330"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor integrace partnerů
 
@@ -268,7 +268,7 @@ Turbonomic zajišťuje automatizaci úloh pro hybridní cloudy tím, že součas
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Další informace o Azure Monitor](../../azure-monitor/overview.md)
+- [Další informace o Azure Monitor](../overview.md)
 - [Přístup k metrikám pomocí REST API](rest-api-walkthrough.md)
 - [Streamování protokolu aktivit na službu, která není od Microsoftu](./activity-log.md#legacy-collection-methods)
 - [Streamování protokolů prostředků na službu od jiného výrobce než Microsoftu](./resource-logs.md#send-to-azure-event-hubs)
@@ -281,13 +281,13 @@ Turbonomic zajišťuje automatizaci úloh pro hybridní cloudy tím, že součas
 [atlassian-doc]: https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/
 [botmetric-doc]: https://www.botmetric.com/blog/announcing-botmetric-cost-governance-beta-microsoft-azure/ "Úvod do Botmetric"
 [circonus-doc]: https://docs.circonus.com/circonus/agents/cloud-agent/azure/ 
-[cloudhealth-doc]: https://www.cloudhealthtech.com/azure
+[cloudhealth-doc]: https://www.cloudhealthtech.com/products/azure-management
 [cloudmonix-doc]: https://cloudmonix.com/features/azure-management/ "Úvod do CloudMonix"
 [datadog-doc]: https://docs.datadoghq.com/integrations/azure/ "Dokumentaci k služby Datadog."
 [dynatrace-doc]: https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/ "Dokumentaci k dynaTrace."
 [elastic-doc]: https://www.elastic.co/guide/en/logstash/master/azure-module.html "Elastická dokumentace"
 [grafana-doc]: ./grafana-plugin.md "Azure Monitor integrace Grafana."
-[influxdata-doc]: ./../../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md "Azure Monitor telegraf inchladiče pro integraci dat."
+[influxdata-doc]: ./collect-custom-metrics-linux-telegraf.md "Azure Monitor telegraf inchladiče pro integraci dat."
 [logicmonitor-doc]: https://www.logicmonitor.com/lp/azure-monitoring/ "Dokumentace ke službě Logic monitor."
 [moogsoft-doc]: https://www.moogsoft.com/partners/microsoft-azure "Dokumentaci k Moogsoft."
 [newrelic-doc]: https://newrelic.com/azure "Dokumentaci k NewRelic."
@@ -302,3 +302,4 @@ Turbonomic zajišťuje automatizaci úloh pro hybridní cloudy tím, že součas
 [splunk-doc]: https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk "Dokumentaci k Splunk."
 [sumologic-doc]: https://www.sumologic.com/azure "Dokumentaci k SumoLogic."
 [turbonomic-doc]: https://turbonomic.com/ "Úvod do Turbonomic"
+

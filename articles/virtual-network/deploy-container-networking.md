@@ -1,6 +1,6 @@
 ---
 title: Nasazení síťových kontejnerů v síti Azure Virtual Network | Microsoft Docs
-description: Naučte se nasazovat v rozhraní Azure Virtual Network modul plug-in kontejnerového rozhraní CNI (container network interface) pro clustery Kubernetes, které nasadíte sami nebo pomocí modulu ACS-Engine, a pro kontejnery Docker.
+description: Přečtěte si, jak nasadit modul plug-in Azure Virtual Network Container Network Interface (CNI) pro clustery Kubernetes.
 services: virtual-network
 documentationcenter: na
 author: aanandr
@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 7cae4b579a933c03ec3a08a00ef032c57d15093f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09a0574666441138c143932e843080e8745f1b40
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710010"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289586"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>Nasazení modulu plug-in rozhraní CNI sítě Azure Virtual Network
 
@@ -30,7 +31,7 @@ Modul plug-in rozhraní CNI sítě Azure Virtual Network se instaluje na virtuá
 
 V modulu ACS-Engine se cluster Kubernetes nasadí pomocí šablony Azure Resource Manageru. Konfigurace clusteru se zadává v souboru JSON, který se předá nástroji při generování šablony. Podrobnosti k úplnému výčtu podporovaných nastavení clusteru včetně jejich popisu najdete v tématu [Modul služby Microsoft Azure Container Service – definice clusteru](https://github.com/Azure/acs-engine/blob/master/docs/clusterdefinition.md). Modul plug-in je výchozí síťový plug-in pro clustery vytvářené pomocí modulu ACS-Engine. Při konfiguraci modulu plug-in jsou důležitá následující nastavení konfigurace sítě:
 
-  | Nastavení                              | Description                                                                                                           |
+  | Nastavení                              | Popis                                                                                                           |
   |--------------------------------------|------------------------------------------------------------------------------------------------------                 |
   | firstConsecutiveStaticIP             | IP adresa přidělená k hlavnímu uzlu. Jedná se o povinné nastavení.                                     |
   | clusterSubnet v části kubernetesConfig | Blok CIDR podsítě virtuální sítě, kde je cluster nasazen a odkud se přidělují IP adresy jednotlivým kontejnerům Pod.   |
@@ -159,8 +160,8 @@ Konfigurační soubor sítě CNI je popsán ve formátu JSON. Ve výchozím nast
 - **cniVersion**: moduly plug-in Azure Virtual Network CNI podporují verze 0.3.0 a 0.3.1 [specifikace CNI](https://github.com/containernetworking/cni/blob/master/SPEC.md).
 - **name**: Název sítě. Tuto vlastnost lze nastavit na libovolnou jedinečnou hodnotu.
 - **type**: Název modulu plug-in sítě. Nastavte na *azure-vnet*.
-- **mode**: Provozní režim. Toto pole je nepovinné. Jediný podporovaný režim je režim síťového mostu. Další informace najdete v tématu [provozní režimy](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md).
-- **bridge**: Název mostu, který se použije k připojení kontejnerů k virtuální síti. Toto pole je nepovinné. Pokud ho nezadáte, modul plug-in automaticky zvolí jedinečný název podle indexu hlavního rozhraní.
+- **mode**: Provozní režim. Toto pole je volitelné. Jediný podporovaný režim je režim síťového mostu. Další informace najdete v tématu [provozní režimy](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md).
+- **bridge**: Název mostu, který se použije k připojení kontejnerů k virtuální síti. Toto pole je volitelné. Pokud ho nezadáte, modul plug-in automaticky zvolí jedinečný název podle indexu hlavního rozhraní.
 - **ipam type**: Name modulu plug-in správy IP adres. Vždy nastaveno na hodnotu *azure-vnet-ipam*.
 
 ## <a name="download-and-install-the-plug-in"></a>Stažení a instalace modulu plug-in

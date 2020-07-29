@@ -3,18 +3,18 @@ title: Příprava virtuálního pevného disku s Debian Linux
 description: Naučte se vytvářet Debian image VHD pro nasazení virtuálních počítačů v Azure.
 author: gbowerman
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/13/2018
 ms.author: guybo
-ms.openlocfilehash: 4c2edddb8eec4a2f8300077bb00df72d7e2b00de
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 80272896bd314a1f5f05094afa83568e077ab480
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510715"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87368196"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Příprava virtuálního pevného disku Debian pro Azure
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 V této části se předpokládá, že jste už nainstalovali operační systém Debian Linux ze souboru. ISO staženého z [webu Debian](https://www.debian.org/distrib/) na virtuální pevný disk. Pro vytváření souborů. VHD existuje víc nástrojů. Hyper-V je jenom jeden příklad. Pokyny k používání technologie Hyper-V najdete v tématu [instalace role Hyper-v a konfigurace virtuálního počítače](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11)).
 
 ## <a name="installation-notes"></a>Poznámky k instalaci

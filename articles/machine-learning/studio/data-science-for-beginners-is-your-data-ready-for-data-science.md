@@ -1,6 +1,5 @@
 ---
-title: Vyhodnocení dat
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (Classic): vyhodnocení dat – Azure'
 description: Čtyři kritéria, která vaše data musí splňovat, aby byla připravená pro datové vědy. Toto video obsahuje konkrétní příklady, které vám pomůžou se základním hodnocením dat.
 services: machine-learning
 ms.service: machine-learning
@@ -10,11 +9,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 8eb9c5a182c17815d4efcf171cc99b1e9f5bc89e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12e939b8fb66b3cffbee49a4b3bedd74b71d7232
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82930161"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318755"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Jsou data připravená pro vědecké zkoumání?
 ## <a name="video-2-data-science-for-beginners-series"></a>Video 2: řada pro datové vědy pro začátečníky

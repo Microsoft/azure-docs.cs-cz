@@ -4,12 +4,12 @@ description: Vyřazení metrik a automatické škálování klasických rozhran�
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: 65ce7a5c876c7a8e96f945d9d4db871c84f86a4e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 38a30f2adc0de7ccb9a9a3a4ba7ed53fd5fda3f7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505427"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317378"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Monitor vyřazení rozhraní API modelu nasazení Classic pro metriky a automatické škálování
 
@@ -21,7 +21,7 @@ Stejné operace byly podporovány prostřednictvím sady rozhraní API založen�
 
 Pokud spravujete automatické škálování prostřednictvím Azure Portal, [nové šablony Azure monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/), PowerShellu, CLI nebo správce prostředků nemusíte dělat nic.  
 
-Pokud používáte metriky prostřednictvím Azure Portal nebo prostřednictvím různých [partnerských monitorovacích služeb](../../azure-monitor/platform/partners.md), není nutná žádná akce. Microsoft pracuje s monitorováním partnerů k migraci na nová rozhraní API.
+Pokud používáte metriky prostřednictvím Azure Portal nebo prostřednictvím různých [partnerských monitorovacích služeb](./partners.md), není nutná žádná akce. Microsoft pracuje s monitorováním partnerů k migraci na nová rozhraní API.
 
 ## <a name="who-is-affected"></a>Kdo je ovlivněn
 
@@ -85,7 +85,8 @@ Oznámení o vyřazení bylo odesláno na e-mailové adresy následujících rol
 
 Pokud máte nějaké dotazy, kontaktujte nás na adrese MonitorClassicAPIhelp@microsoft.com .  
 
-## <a name="references"></a>Reference
+## <a name="references"></a>Odkazy
 
 - [Novější rozhraní REST API pro Azure Monitor](/rest/api/monitor/) 
 - [Novější sada Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)
+

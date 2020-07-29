@@ -1,6 +1,5 @@
 ---
-title: Položte dotaz na data, která můžou odpovědět
-titleSuffix: ML Studio (classic) - Azure
+title: Položte dotaz na data, která můžou odpovídat na ML Studio (Classic) – Azure
 description: Naučte se formulovat ostrost vědeckých otázek v oblasti datových věd pro začátečníky – video 3. Obsahuje porovnání otázek klasifikace a regrese.
 services: machine-learning
 ms.service: machine-learning
@@ -9,11 +8,12 @@ ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
-ms.openlocfilehash: 3f0a92b86a2c18863052249d401e70fa36e17a12
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff08af00649cf61134c3e27d07b329e40169ea66
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82930246"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318789"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>Položení otázky, na kterou lze odpovědět pomocí dat
 ## <a name="video-3-data-science-for-beginners-series"></a>Video 3: řada pro datové vědy pro začátečníky

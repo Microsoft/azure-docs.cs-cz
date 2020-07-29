@@ -4,21 +4,21 @@ description: Referenční informace o Azure Monitorch pochopit podporované slu�
 ms.subservice: logs
 ms.topic: reference
 ms.date: 06/03/2020
-ms.openlocfilehash: ceca6b0a230de6d3eeab47e60d90767b33b5ac59
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 81f79b81c03e7996d7f6d45b002d8160740c3c14
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515389"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318296"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Podporované kategorie pro protokoly prostředků Azure
 
 > [!NOTE]
 > Protokoly prostředků se dříve nazývaly diagnostické protokoly. Název se změnil v říjnu 2019, protože typy protokolů shromážděných Azure Monitor se posunuly tak, aby zahrnovaly víc než jenom prostředek Azure.
 
-[Protokoly prostředků Azure monitor](../../azure-monitor/platform/platform-logs-overview.md) jsou protokoly emitované službami Azure, které popisují fungování těchto služeb nebo prostředků. Všechny protokoly prostředků dostupné prostřednictvím Azure Monitor sdílejí společné schéma nejvyšší úrovně s flexibilitou pro každou službu, aby vygenerovala jedinečné vlastnosti pro vlastní události.
+[Protokoly prostředků Azure monitor](./platform-logs-overview.md) jsou protokoly emitované službami Azure, které popisují fungování těchto služeb nebo prostředků. Všechny protokoly prostředků dostupné prostřednictvím Azure Monitor sdílejí společné schéma nejvyšší úrovně s flexibilitou pro každou službu, aby vygenerovala jedinečné vlastnosti pro vlastní události.
 
-Kombinace typu prostředku (k dispozici ve `resourceId` Vlastnosti) a `category` jednoznačné určení schématu. Pro všechny protokoly prostředků s poli se specifickými službami se pak přidalo společné schéma pro různé kategorie protokolů. Další informace najdete v tématu [společné schéma a schéma specifické pro službu pro protokoly prostředků Azure](resource-logs-categories.md) .
+Kombinace typu prostředku (k dispozici ve `resourceId` Vlastnosti) a `category` jednoznačné určení schématu. Pro všechny protokoly prostředků s poli se specifickými službami se pak přidalo společné schéma pro různé kategorie protokolů. Další informace najdete v tématu [společné schéma a schéma specifické pro službu pro protokoly prostředků Azure]() .
 
 ## <a name="supported-log-categories-per-resource-type"></a>Podporované kategorie protokolů na typ prostředku
 
@@ -358,7 +358,7 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 |Kategorie|Zobrazovaný název kategorie|
 |---|---|
-|AuditLogs|Protokoly auditování|
+|AuditLogs|Protokoly auditu|
 
 
 ## <a name="microsoftinsightsautoscalesettings"></a>Microsoft. Insights/AutoscaleSettings
@@ -711,7 +711,8 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Další informace o protokolech prostředků](../../azure-monitor/platform/platform-logs-overview.md)
+* [Další informace o protokolech prostředků](./platform-logs-overview.md)
 * [**Event Hubs** protokolů prostředku prostředku streamování](./resource-logs.md#send-to-azure-event-hubs)
 * [Změna nastavení diagnostiky protokolu prostředků pomocí Azure Monitor REST API](/rest/api/monitor/diagnosticsettings)
 * [Analýza protokolů z Azure Storage pomocí Log Analytics](./resource-logs.md#send-to-log-analytics-workspace)
+

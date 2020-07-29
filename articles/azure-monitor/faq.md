@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: 5366166a31ee45c74c34b8af0e01da251bd7f7f0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ff7472b764b0e65d69d9b694603e145440e89c0d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499218"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318109"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor nejčastějších dotazech
 
@@ -394,7 +394,7 @@ Každá odeslaná položka nese `itemCount` vlastnost, která ukazuje, kolik pů
 ```
 
 
-### <a name="automation"></a>Automatizace
+### <a name="automation"></a>Automation
 
 #### <a name="configuring-application-insights"></a>Konfigurace Application Insights
 
@@ -655,7 +655,7 @@ Podívejte se na [požadavky na bránu firewall sítě](insights/container-insig
 Toto je seznam nejčastějších dotazů k Azure Monitor pro virtuální počítače. Pokud máte další dotazy týkající se řešení, navštivte [diskuzní fórum](https://feedback.azure.com/forums/34192--general-feedback) a publikujte své dotazy. V případě častého dotazu přidáme Tento článek do tohoto článku, aby ho bylo možné rychle a snadno najít.
 
 ### <a name="can-i-onboard-to-an-existing-workspace"></a>Můžu se připojit k existujícímu pracovnímu prostoru?
-Pokud jsou vaše virtuální počítače už připojené k pracovnímu prostoru Log Analytics, můžete tento pracovní prostor i nadále používat při připojování k Azure Monitor pro virtuální počítače za předpokladu, že je v některé z podporovaných oblastí, které jsou [tady](insights/vminsights-enable-overview.md#prerequisites)uvedené.
+Pokud jsou vaše virtuální počítače už připojené k pracovnímu prostoru Log Analytics, můžete tento pracovní prostor i nadále používat při připojování k Azure Monitor pro virtuální počítače za předpokladu, že je v některé z [podporovaných oblastí](insights/vminsights-configure-workspace.md#supported-regions).
 
 
 ### <a name="can-i-onboard-to-a-new-workspace"></a>Můžu se připojit k novému pracovnímu prostoru? 

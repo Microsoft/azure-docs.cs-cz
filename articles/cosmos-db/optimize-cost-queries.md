@@ -5,26 +5,29 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.openlocfilehash: dd75ad4ed1024292868f113e474fe8b8b73679b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/24/2020
+ms.openlocfilehash: e1c60542ec16ca19d26a77c1b9fb9676cf875e3d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75445134"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318262"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>Optimalizace nákladů na dotazování ve službě Azure Cosmos DB
 
-Azure Cosmos DB nabízí bohatou sadu databázových operací, včetně relačních a hierarchických dotazů, které pracují s položkami v rámci kontejneru. Náklady spojené s jednotlivými operacemi se liší v závislosti na procesoru, V/V a paměti, které jsou potřeba k dokončení operace. Místo posuzování a správy hardwarových prostředků můžete jako jedno opatření pro prostředky požadované k provádění různých databázových operací při plnění požadavku použít jednotku žádosti (RU). Tento článek popisuje, jak vyhodnotit poplatky za jednotky žádostí pro dotazy a jak optimalizovat dotazy z hlediska výkonu a nákladů. 
+Azure Cosmos DB nabízí bohatou sadu databázových operací, včetně relačních a hierarchických dotazů, které pracují s položkami v rámci kontejneru. Náklady spojené s jednotlivými operacemi se liší v závislosti na procesoru, V/V a paměti, které jsou potřeba k dokončení operace. Místo posuzování a správy hardwarových prostředků můžete jako jedno opatření pro prostředky požadované k provádění různých databázových operací při plnění požadavku použít jednotku žádosti (RU). Tento článek popisuje, jak vyhodnotit poplatky za jednotky žádostí pro dotazy a jak optimalizovat dotazy z hlediska výkonu a nákladů.
 
-Dotazy v Azure Cosmos DB jsou obvykle seřazené z nejrychlejší/nejefektivnější na pomalejší/méně efektivní z hlediska propustnosti, jak je znázorněno níže:  
+Čtení v Azure Cosmos DB jsou obvykle seřazené od nejrychlejší/nejefektivnější až po pomalejší/méně efektivní z hlediska propustnosti, jak je znázorněno níže:  
 
-* Operace GET pro klíč klíče a položky s jedním oddílem
+* Čtení bodů (vyhledávání klíč/hodnota na jednom ID položky a klíči oddílu).
 
 * Dotaz s klauzulí Filter v rámci jednoho klíče oddílu
 
 * Dotaz bez klauzule filtru rovnosti nebo rozsahu u jakékoli vlastnosti
 
 * Dotaz bez filtrů
+
+Vzhledem k tomu, že vyhledávání klíč/hodnota u ID položky je nejúčinnějším druhem čtení, je třeba mít jistotu, že ID položky má smysluplnou hodnotu.
 
 Dotazy, které čtou data z jednoho nebo více oddílů, vybírají větší latenci a spotřebovávají větší počet jednotek žádostí. Vzhledem k tomu, že každý oddíl má automatické indexování pro všechny vlastnosti, může být dotaz efektivně obsluhován z indexu. Dotazy, které používají více oddílů, můžete provádět rychleji pomocí možností paralelismu. Další informace o dělení a klíčích oddílů najdete v tématu [dělení v Azure Cosmos DB](partitioning-overview.md).
 
@@ -35,7 +38,7 @@ Po uložení dat do kontejnerů Azure Cosmos můžete pomocí Průzkumník dat v
 Náklady na dotazy můžete také získat programově pomocí sad SDK. Pokud chcete změřit režii jakékoli operace, jako je vytvoření, aktualizace nebo odstranění, zkontrolujte `x-ms-request-charge` hlavičku při použití REST API. Pokud používáte rozhraní .NET nebo Java SDK, `RequestCharge` vlastnost je ekvivalentní vlastnost pro získání poplatků za požadavek a tato vlastnost je k dispozici v rámci ResourceResponse nebo FeedResponse.
 
 ```csharp
-// Measure the performance (request units) of writes 
+// Measure the performance (request units) of writes
 ResourceResponse<Document> response = await client.CreateDocumentAsync(collectionSelfLink, myDocument); 
 
 Console.WriteLine("Insert of an item consumed {0} request units", response.RequestCharge); 

@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2020
 ms.author: aschhab
-ms.openlocfilehash: 7926e3b8aedde63c3a1a5a57c42b3d4f29cb9797
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-java
+ms.openlocfilehash: 35e2e86f68e1f53febabc75fcc537dbdd4481882
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076232"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369029"
 ---
 # <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>Migrujte stávající aplikace JMS (Java Message Service) 2,0 z Apache ActiveMQ na Azure Service Bus
 
@@ -83,7 +84,7 @@ Service Bus podporuje komunikaci přes protokol AMQP. Pro tento účel povolte k
 
 ### <a name="set-up-enterprise-configurations"></a>Nastavení podnikových konfigurací
 
-Service Bus umožňuje různé funkce pro podnikové zabezpečení a vysokou dostupnost. Další informace najdete tady: 
+Service Bus umožňuje různé funkce pro podnikové zabezpečení a vysokou dostupnost. Další informace naleznete v tématu: 
 
   * [Koncové body služby pro virtuální síť](service-bus-service-endpoints.md)
   * [Brána firewall](service-bus-ip-filtering.md)

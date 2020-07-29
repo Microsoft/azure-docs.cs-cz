@@ -1,6 +1,5 @@
 ---
-title: Vědecké zpracování dat pro začátečníky
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (Classic): datové vědy pro začátečníky – Azure'
 description: Data vědy pro začátečníky nabízí základní koncepty v pěti krátkých videích, od 5 otázek pro datové vědy. Z Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,15 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 350363641056802e09eea90c85b4ccf8e33d9051
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0c99c05701c7f2d64fcfc2f70081f2d7475ce5f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82930144"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318721"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Vědecké zkoumání dat pro začátečníky – Video 1: 5 otázek, na které odpovídá vědecké zkoumání dat
+
 Získejte rychlý Úvod k datovému vědy z *oblasti datové vědy pro začátečníky* v pěti krátkých videích od horního odborníka na data. Tato videa jsou základní, ale užitečná, ať už se zajímáte o práci s daty nebo pracujete s odborníky na data.
 
 Toto první video se týká druhů otázek, které může data vědy zodpovědět. Pokud chcete získat maximum z řady, Sledujte je vše. [Přejít na seznam videí](#other-videos-in-this-series)
@@ -65,7 +66,7 @@ Tato rodina algoritmů se nazývá klasifikace se dvěma třídami.
 
 Je vhodný pro všechny otázky, které mají jenom dvě možné odpovědi.
 
-Příklad:
+Například:
 
 * Netire se toto selhání za dalších 1 000 mil: Ano nebo ne?
 * Který přináší větší zákazníky: $5 kupón nebo 25% sleva?
@@ -123,7 +124,7 @@ Pro automatizované systémy, které musí provádět velké množství malých 
 
 ![Posílení výukových algoritmů: co dál mám udělat?](./media/data-science-for-beginners-the-5-questions-data-science-answers/reinforcement-learning-algorithms.png)
 
-Otázky, na které odpovíte, jsou vždycky informace o tom, jaká akce by se měla provést – většinou se jedná o počítač nebo robot. Můžete například:
+Otázky, na které odpovíte, jsou vždycky informace o tom, jaká akce by se měla provést – většinou se jedná o počítač nebo robot. Příklady:
 
 * Pokud jsem systém kontroly teploty pro dům: Upravte teplotu nebo ponechte ji tam, kde je?  
 * Pokud jsem vlastní hnací auto: žluté světlo, brzdu nebo zrychlit?  

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: 97e687acba0c94f72ca571c498fb54531118714b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 286d8d8c202a4fc59a18501eff16a569e2d09047
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096986"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318041"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Řešení Azure Key Vault Analytics v Azure Monitor
 
@@ -34,7 +34,7 @@ Abyste mohli řešení používat, musíte povolit protokolování diagnostiky A
 ## <a name="install-and-configure-the-solution"></a>Instalace a konfigurace řešení
 Pro instalaci a konfiguraci řešení Azure Key Vault použijte následující pokyny:
 
-1. Pomocí postupu popsaného v tématu [přidání Azure monitor řešení z galerie řešení](../../azure-monitor/insights/solutions.md) přidejte řešení Azure Key Vault do pracovního prostoru Log Analytics.
+1. Pomocí postupu popsaného v tématu [přidání Azure monitor řešení z galerie řešení](./solutions.md) přidejte řešení Azure Key Vault do pracovního prostoru Log Analytics.
 2. Povolení protokolování diagnostiky pro prostředky Key Vault ke sledování pomocí [portálu](#enable-key-vault-diagnostics-in-the-portal) nebo [PowerShellu](#enable-key-vault-diagnostics-using-powershell)
 
 ### <a name="enable-key-vault-diagnostics-in-the-portal"></a>Povolení diagnostiky Key Vault na portálu
@@ -132,7 +132,7 @@ V lednu 2017 se podporuje možnost posílání protokolů z Key Vault do Log Ana
 Použití aktualizovaného řešení:
 
 1. [Konfigurace diagnostiky, která se pošle přímo do Log Analytics pracovního prostoru z Key Vault](#enable-key-vault-diagnostics-in-the-portal)  
-2. Povolte řešení Azure Key Vault pomocí procesu popsaného v tématu [přidání Azure monitor řešení z galerie řešení](../../azure-monitor/insights/solutions.md)
+2. Povolte řešení Azure Key Vault pomocí procesu popsaného v tématu [přidání Azure monitor řešení z galerie řešení](./solutions.md)
 3. Aktualizovat všechny uložené dotazy, řídicí panely nebo výstrahy, aby používaly nový datový typ
    + Typ se změní z: trezory klíčů na AzureDiagnostics. Pomocí prostředku ResourceType můžete filtrovat Key Vault protokolů.
    + Místo: `KeyVaults` , použijte`AzureDiagnostics | where ResourceType'=="VAULTS"`
@@ -145,8 +145,9 @@ Použití aktualizovaného řešení:
 
 Data shromážděná před změnou nejsou v novém řešení viditelná. Můžete pokračovat v dotazování na tato data pomocí starého názvu typu a pole.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>Další kroky
-* Použijte [dotazy protokolu v Azure monitor](../../azure-monitor/log-query/log-query-overview.md) k zobrazení podrobných dat Azure Key Vault.
+* Použijte [dotazy protokolu v Azure monitor](../log-query/log-query-overview.md) k zobrazení podrobných dat Azure Key Vault.
+

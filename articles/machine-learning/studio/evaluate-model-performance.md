@@ -1,6 +1,5 @@
 ---
-title: Vyhodnotit & modely pro křížové ověřování
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (Classic): vyhodnotit & křížově ověřené modely – Azure'
 description: Přečtěte si informace o metrikách, které můžete použít k monitorování výkonu modelu v Azure Machine Learning Studio (Classic).
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: bd6c291cd703d56f86dc26c041eb39023bba0578
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2308b57859a7f8eb0aa6519246fbb52ffdf9e81
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945099"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318636"
 ---
 # <a name="evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Vyhodnotit výkon modelu v Azure Machine Learning Studio (Classic)
+
+**platí pro:** ![ žádná](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasická) 
+
 
 V tomto článku najdete informace o metrikách, které můžete použít k monitorování výkonu modelu v Azure Machine Learning Studio (Classic).  Vyhodnocení výkonu modelu je jedním z hlavních fází procesu zpracování dat. Označuje, jak úspěšné je hodnocení (předpovědi) datové sady vyškolený model. Azure Machine Learning Studio (Classic) podporuje hodnocení modelu prostřednictvím dvou z hlavních modulů strojového učení: 
 + [Vyhodnocení modelu][evaluate-model] 

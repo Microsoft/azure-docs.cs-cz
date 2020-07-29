@@ -6,77 +6,37 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 02/14/2020
+ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 2ba136cd479da0cd394b5e5afe6ebe7c22b539d5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 4bf86c616420bb049e1d7a82ad0e942e6eb7b36f
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732099"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369244"
 ---
 Použijte Language Understanding (LUIS) předpovědi klienta pro .NET pro:
 
 * Získat předpovědi podle slotu
 * Předpověď podle verze
 
-[Reference documentation](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet) | Ukázky knihovny dokumentace pro předpověď[zdrojového kódu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.LUIS.Runtime) | v knihovně[(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/) | [C#](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/LanguageUnderstanding/predict-with-sdk-3x)
+[Referenční dokumentace](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.LUIS.Runtime)  |  [Předpředpověď runtime – balíček (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)  |  [Ukázky jazyka C#](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/LanguageUnderstanding/predict-with-sdk-3x)
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Účet portálu Language Understanding (LUIS) – [Vytvořte si ho zdarma](https://www.luis.ai) .
 * Aktuální verze [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
-* ID aplikace LUIS – používá veřejné ID aplikace IoT `df67dcdb-c37d-46af-88e1-8b97951ca1c2`. Dotaz uživatele použitý v kódu pro rychlý Start je specifický pro danou aplikaci.
+* ID aplikace LUIS – používá veřejné ID aplikace IoT `df67dcdb-c37d-46af-88e1-8b97951ca1c2` . Dotaz uživatele použitý v kódu pro rychlý Start je specifický pro danou aplikaci.
 
 ## <a name="setting-up"></a>Nastavení
-
-### <a name="create-an-environment-variable"></a>Vytvoření proměnné prostředí
-
-Pomocí klíče a názvu prostředku vytvořte dvě proměnné prostředí pro ověřování:
-
-* `LUIS_PREDICTION_KEY`– Klíč prostředku pro ověření vašich požadavků.
-* `LUIS_ENDPOINT_NAME`– Název prostředku, který je přidružený k vašemu klíči.
-
-Použijte pokyny pro váš operační systém.
-
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-```console
-setx LUIS_PREDICTION_KEY <replace-with-your-resource-key>
-setx LUIS_ENDPOINT_NAME <replace-with-your-resource-name>
-```
-
-Po přidání proměnné prostředí restartujte okno konzoly.
-
-#### <a name="linux"></a>[Linux](#tab/linux)
-
-```bash
-export LUIS_PREDICTION_KEY=<replace-with-your-resource-key>
-export LUIS_ENDPOINT_NAME=<replace-with-your-resource-name>
-```
-
-Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source ~/.bashrc`, aby se změny projevily.
-
-#### <a name="macos"></a>[macOS](#tab/unix)
-
-`.bash_profile`Upravte a přidejte proměnnou prostředí:
-
-```bash
-export LUIS_PREDICTION_KEY=<replace-with-your-resource-key>
-export LUIS_ENDPOINT_NAME=<replace-with-your-resource-name>
-```
-
-Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source .bash_profile`, aby se změny projevily.
-
----
 
 ### <a name="create-a-new-c-application"></a>Vytvoření nové aplikace v C#
 
 Vytvořte novou aplikaci .NET Core v upřednostňovaném editoru nebo integrovaném vývojovém prostředí (IDE).
 
-1. V okně konzoly (například cmd, PowerShell nebo bash) vytvořte pomocí příkazu dotnet `new` novou konzolovou aplikaci s názvem. `language-understanding-quickstart` Tento příkaz vytvoří jednoduchý projekt C# "Hello World" s jedním zdrojovým souborem: `Program.cs`.
+1. V okně konzoly (například cmd, PowerShell nebo bash) `new` vytvořte pomocí příkazu dotnet novou konzolovou aplikaci s názvem `language-understanding-quickstart` . Tento příkaz vytvoří jednoduchý projekt C# "Hello World" s jedním zdrojovým souborem: `Program.cs` .
 
     ```dotnetcli
     dotnet new console -n language-understanding-quickstart
@@ -134,13 +94,7 @@ V adresáři projektu otevřete soubor *program.cs* v preferovaném editoru nebo
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
-1. Vytvořte proměnné pro klíč, název a ID aplikace:
-
-    Proměnné pro správu vašeho klíč předpovědi načtené z proměnné prostředí s názvem `LUIS_PREDICTION_KEY`. Pokud jste po spuštění aplikace vytvořili proměnnou prostředí, bude nutné editor, rozhraní IDE nebo prostředí, které je spuštěno, zavřít a znovu načíst pro přístup k proměnné. Metody budou vytvořeny později.
-
-    Vytvořte proměnnou pro uložení názvu `LUIS_ENDPOINT_NAME`prostředku.
-
-    Vytvořte proměnnou pro ID aplikace jako proměnnou prostředí s názvem `LUIS_APP_ID`. Nastavte proměnnou prostředí na veřejnou aplikaci IoT:
+1. Vytvořte proměnné pro klíč, název prostředku, ID aplikace a slot pro publikování. Nastavte ID aplikace na veřejnou aplikaci IoT:
 
     **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`**
 

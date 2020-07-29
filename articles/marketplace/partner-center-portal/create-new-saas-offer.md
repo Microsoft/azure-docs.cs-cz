@@ -5,16 +5,21 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 2c5394dce503a6fa00e2a3e6ff73a683d3d2e76f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 61592ee8ad5991c9540f5b418cafe2441ab4d3ea
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012089"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317709"
 ---
 # <a name="create-a-saas-offer"></a>Vytvoření nabídky SaaS
 
 Pokud chcete začít vytvářet nabídky software jako služba (SaaS) na komerčním webu Marketplace, ujistěte se, že jste nejdřív [vytvořili účet partnerského centra](./create-account.md) a otevřete [řídicí panel komerčního tržiště](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)s vybraným **přehledem** .
+
+> [!NOTE]
+> Pokud vytváříte SaaS nabídku s podporou transakcí, ujistěte se, že jste implementovali integraci s [rozhraními API pro plnění SaaS](./pc-saas-fulfillment-apis.md).  Integrace s rozhraními API je jediným způsobem, jak správně pracovat na webu Marketplace. Musíte také zajistit, aby vaše aplikace používala ověřování Azure AD s jednotným přihlašováním (SSO). Podívejte [se na obchod s SaaS nabídkami Azure AD a s podporou transakcí na komerčním webu Marketplace](../azure-ad-saas.md).
 
 ## <a name="create-a-new-offer"></a>Vytvoření nové nabídky
 
@@ -40,10 +45,6 @@ Zadejte **alias nabídky**. Toto je název, který se používá pro nabídku v 
 - Tento název se na webu Marketplace nepoužívá a liší se od názvu nabídky a dalších hodnot, které se zákazníkům zobrazují.
 - Po zvolení možnost **vytvořit**se alias nabídky nedá změnit.
 
-<!---
-![Offer overview on Partner Center](./media/commercial-marketplace-offer-overview.png)
--->
-
 Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
 ## <a name="offer-overview"></a>Přehled nabídky
@@ -62,8 +63,8 @@ Nabídka **Přehled** nabídky obsahuje seznam odkazů pro provádění operací
 Na této stránce se zobrazí informace o následujících informacích.
 
 - **Chtěli byste prodávat přes Microsoft?** (Ano/ne)
-    - **Ano**, chci prodávat přes Microsoft a mít za ně hostitelské transakce Microsoftu
-    - **Ne**, chtěl bych jenom zobrazit nabídku moje nabídka prostřednictvím Marketplace a zpracovávat transakce nezávisle.
+  - **Ano**, chci prodávat přes Microsoft a mít za ně hostitelské transakce Microsoftu
+  - **Ne**, chtěl bych jenom zobrazit nabídku moje nabídka prostřednictvím Marketplace a zpracovávat transakce nezávisle.
 
 ### <a name="sell-through-microsoft"></a>Prodej prostřednictvím Microsoftu
 
@@ -102,8 +103,6 @@ Toto je ukázkový rozpis nákladů a výběrů za účelem předvedení modelu 
 
 Vytvořte seznam na webu Marketplace a zvyšte své podnikání pomocí Microsoftu. Výběrem této nabídky zobrazíte pouze seznam a nikoli transakční prostřednictvím Microsoftu znamená, že se společnost Microsoft neúčastní přímo v transakcích licencí na software. Není k dispozici žádný přidružený transakční poplatek a vydavatel udržuje 100% jakýchkoli licenčních poplatků za software shromážděných od zákazníka. Vydavatel je však zodpovědný za podporu všech aspektů licenčních transakcí softwaru, mimo jiné: splnění objednávek, měření, fakturace, fakturace, platby a shromažďování.
 
-<!-- - **How do you want potential customers to interact with this listing offer?** -->
-
 #### <a name="get-it-now-free"></a>Získat hned (zdarma)
 
 Seznamte se svým zákazníkům zdarma tím, že poskytnete platnou adresu (počínaje *protokolem HTTP* nebo *https*), kde můžou získat zkušební verzi prostřednictvím [ověřování jedním kliknutím pomocí Azure Active Directory (Azure AD)](../marketplace-saas-applications-technical-publishing-guide.md#using-azure-active-directory-to-enable-trials)). Například, `https://contoso.com/saas-app`.
@@ -121,8 +120,6 @@ Shromažďovat kontaktní údaje zákazníka propojením systému pro správu vz
 
 #### <a name="example-marketplace-offer-listing"></a>Příklad nabídky na marketplace
 
-<!-- ![Example marketplace offer listing with notes](./media/marketplace-offer.svg) -->
-
 Tady je příklad toho, jak se zobrazují informace o nabídce v Microsoft AppSource:
 
 :::image type="content" source="media/example-appsource-saas.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje v Microsoft AppSource.":::
@@ -136,7 +133,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Microsoft AppSo
 5. Podmínky použití
 6. Zásady ochrany osobních údajů
 7. Název nabídky
-8. Shrnutí
+8. Souhrn
 9. Popis
 10. Snímky obrazovky a videa
 11. Dokumenty
@@ -278,19 +275,19 @@ Toto pole je vyžadováno.
 
 - **Kontakty** – pro každého kontaktního zákazníka zadejte **jméno**zaměstnance, **telefonní číslo**a **e-mailovou** adresu ( *nebudou* veřejně zobrazeni). Pro skupinu **kontaktů podpory** se vyžaduje **Adresa URL podpory** (ta *se* zobrazí veřejně).
 
-    - **Kontakt podpory** (povinné) – pro obecné dotazy týkající se podpory.
-    - Technický **kontakt** (povinný) – pro technické dotazy.
-    - **Kontakt Správce kanálů** (povinné) – pro otázky prodejců související s programem CSP.
+  - **Kontakt podpory** (povinné) – pro obecné dotazy týkající se podpory.
+  - Technický **kontakt** (povinný) – pro technické dotazy.
+  - **Kontakt Správce kanálů** (povinné) – pro otázky prodejců související s programem CSP.
 
 #### <a name="files-and-images"></a>Soubory a image
 
 - **Dokumenty** (povinné) – přidejte související marketingové dokumenty pro vaši nabídku ve formátu PDF aspoň jeden a až tři dokumenty na nabídku.
 - **Obrázky** (volitelné) – existuje několik míst, kde se na webu Marketplace můžou zobrazit obrázky loga vaší nabídky, a to s vyžadováním následujících velikostí pixelů ve formátu PNG:
 
-    - **Malý** (48 × 48, požadováno)
-    - **Střední** (90 × 90, požadováno)
-    - **Velký** (216 × 216, požadováno)
-    - **Roztažitelné** (255 × 115)
+  - **Malý** (48 × 48, požadováno)
+  - **Střední** (90 × 90, požadováno)
+  - **Velký** (216 × 216, požadováno)
+  - **Roztažitelné** (255 × 115)
 
 - **Snímky obrazovky** (povinné) – přidejte maximálně pět snímků obrazovky, které demonstrují vaši nabídku. velikost je 1280 x 720 pixelů. Všechny obrázky musí být v. Formát PNG.
 - **Videa** (volitelné) – přidejte odkazy na videa, která demonstrují vaši nabídku. Můžete použít odkazy na videa YouTube nebo Vimeo, která se zobrazí spolu s vaší nabídkou pro zákazníky. Budete taky muset zadat miniaturu videa, ve formátu PNG se velikost nastaví na 1280 x 720 pixelů. Můžete zobrazit maximálně čtyři videa na jednu nabídku.
@@ -322,32 +319,32 @@ Než budete pokračovat, vyberte **Uložit koncept** .
 
 ## <a name="technical-configuration"></a>Technická konfigurace
 
-Karta **Technická konfigurace** definuje technické podrobnosti používané na webu Marketplace ke komunikaci se službou SaaS. Toto připojení nám umožňuje zřídit vaši nabídku pro koncového zákazníka, pokud se rozhodne získat a spravovat. 
+Karta **Technická konfigurace** definuje technické podrobnosti používané na webu Marketplace ke komunikaci se službou SaaS. Toto připojení nám umožňuje zřídit vaši nabídku pro koncového zákazníka, pokud se rozhodne získat a spravovat.
 
->[!Note]
->Před konfigurací těchto podrobností v podrobnostech nabídky je nutné implementovat integraci s [rozhraními API pro plnění SaaS](./pc-saas-fulfillment-api-v2.md) .
+>[!NOTE]
+>Před konfigurací těchto podrobností v podrobnostech nabídky je nutné implementovat integraci s [rozhraními API pro plnění SaaS](./pc-saas-fulfillment-api-v2.md) . Musíte také vytvořit cílovou stránku a vaše aplikace musí používat ověřování Azure AD s jednotným přihlašováním (SSO). Další informace najdete v tématu [Azure AD a SaaS nabídky na komerčním webu Marketplace](../azure-ad-saas.md).
 
 Diagramy a podrobná vysvětlení popisující použití shromážděných polí jsou k dispozici v dokumentaci pro [rozhraní API](./pc-saas-fulfillment-api-v2.md).
 
 - **Adresa URL cílové stránky** (požadováno) – definujte adresu URL webu SaaS (například `https://contoso.com/signup` ), kterou budou koncoví zákazníci uvádět po získání nabídky z webu Marketplace a aktivaci procesu konfigurace z nově vytvořeného předplatného SaaS.  Tato adresa URL bude volána parametrem identifikačního tokenu nákupu na webu Marketplace, který jednoznačně identifikuje konkrétní nákup SaaS zákazníka.  Tento token musíte vyměňovat pro příslušné podrobnosti o předplatném SaaS pomocí rozhraní [Resolve](./pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) API.  Tyto podrobnosti a všechny ostatní, které chcete shromažďovat, by se měly používat jako součást interaktivní webové stránky zákazníka, která je integrovaná s vaším prostředím, k dokončení registrace koncových zákazníků a k aktivaci jejich nákupu.  Na této stránce by se měl uživatel zaregistrovat přes ověřování jedním kliknutím pomocí Azure Active Directory (Azure AD). <br> <br> Tato adresa URL s parametrem identifikačního tokenu nákupu na webu Marketplace bude taky volána, když koncový zákazník spustí spravované prostředí SaaS Azure Portal z centra pro správu M365. Oba toky byste měli zpracovávat, když se token poskytne poprvé po nákupu pro nové zákazníky a když je poskytnutý pro stávající zákazníky, kteří spravují jeho SaaS. <br> <br> Cílová stránka, kterou zde nakonfigurujete, by měla být spuštěná a musí běžet 24/7. Toto je jediný způsob, jakým se dozvíte o nových nákupech nabídek SaaS provedených na webu Marketplace nebo o požadavcích na konfiguraci aktivního předplatného nabídky.
 
-- **Webhook připojení** (povinné) – pro všechny asynchronní události, které Microsoft potřebuje odeslat (například předplatné SaaS se zrušilo), budeme potřebovat zadat adresu URL Webhooku připojení. Budeme zavolat tuto adresu URL a upozorníme vás na událost. <br> <br> Webhook, který zadáte, by měl být v provozu a musí běžet 24/7, protože se jedná o jediný způsob, jakým se dozvíte o aktualizacích předplatných SaaS vašich zákazníků prostřednictvím Marketplace. Pokud ještě nemáte systém Webhooku, nejjednodušší konfigurace bude mít aplikaci logiky koncového bodu HTTP, která bude naslouchat všem událostem, které jsou do ní odesílány, a pak je správně zpracovat (například `https://prod-1westus.logic.azure.com:443/work` ). Další informace najdete v tématu [pracovní postupy volání, triggeru nebo vnoření pracovních postupů s koncovými body HTTP v Logic Apps](../../logic-apps/logic-apps-http-endpoint.md).
+- **Webhook připojení** (povinné) – pro všechny asynchronní události, které Microsoft potřebuje odeslat (například předplatné SaaS se zrušilo), budeme potřebovat zadat adresu URL Webhooku připojení. Budeme zavolat tuto adresu URL a upozorníme vás na událost. <br> <br> Webhook, který zadáte, by měl být v provozu a musí běžet 24/7, protože se jedná o jediný způsob, jakým se dozvíte o aktualizacích předplatných SaaS vašich zákazníků prostřednictvím Marketplace.  Pokud ještě nemáte systém Webhooku, nejjednodušší konfigurace bude mít aplikaci logiky koncového bodu HTTP, která bude naslouchat všem událostem, které jsou do ní odesílány, a pak je správně zpracovat (například `https://prod-1westus.logic.azure.com:443/work` ). Další informace najdete v tématu [pracovní postupy volání, triggeru nebo vnoření pracovních postupů s koncovými body HTTP v Logic Apps](../../logic-apps/logic-apps-http-endpoint.md).
 
 - **ID tenanta Azure AD** (povinné) – uvnitř Azure Portal musíme [vytvořit aplikaci Azure Active Directory (AD)](../../active-directory/develop/howto-create-service-principal-portal.md) , abyste mohli ověřit, že připojení mezi našimi dvěma službami je za ověřenou komunikací. [ID tenanta](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)zjistíte tak, že přejdete na Azure Active Directory a vyberete **vlastnosti**a pak vyhledáte uvedené číslo **ID adresáře** (například 50c464d3-4930-494c-963c-1e951d15360e).
 
 - **ID aplikace Azure AD** (požadováno) – budete také potřebovat [ID aplikace](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in). Pokud chcete získat jeho hodnotu, vyberte Azure Active Directory a vyberte **Registrace aplikací**a vyhledejte číslo **ID aplikace** uvedené (například `50c464d3-4930-494c-963c-1e951d15360e` ).
 
->[!Note]
->ID aplikace Azure AD je přidruženo k vašemu ID vydavatele v účtu partnerského centra. Ujistěte se, že používáte stejné ID aplikace ve všech vašich nabídkách.
+>[!NOTE]
+>ID aplikace Azure AD je přidruženo k vašemu ID vydavatele v účtu partnerského centra.  Ujistěte se, že se stejné ID aplikace používá ve všech vašich nabídkách.
 
->[!Note]
+>[!NOTE]
 >Pokud má Vydavatel v partnerském centru dva nebo více různých účtů, měla by se použít nejméně jedno jiné ID aplikace Azure AD, každé pro jeden z účtů. Každý partnerský účet v partnerském centru by měl používat jedinečné ID aplikace Azure AD pro všechny nabídky SaaS, které jsou publikovány prostřednictvím tohoto účtu.
 
 Než budete pokračovat, vyberte **Uložit koncept** .
 
 ## <a name="plan-overview"></a>Přehled plánu
 
-Tato stránka vám umožní v rámci stejné nabídky poskytnout nejrůznější možnosti plánu. Tyto plány (dříve nazývané SKU) se můžou lišit podle verze, finanční zhodnocení nebo vrstev služby. Musíte nastavit aspoň jeden plán pro prodej vaší nabídky na webu Marketplace.
+Tato stránka vám umožní v rámci stejné nabídky poskytnout nejrůznější možnosti plánu. Tyto plány (někdy označované jako SKU) se mohou lišit v souvislosti s verzemi, finanční zhodnocení a úrovněmi služby. Aby bylo možné nabídku prodávat na webu Marketplace, musíte nastavit aspoň jeden plán.
 
 Po vytvoření se zobrazí vaše názvy plánů, ID, cenové modely, dostupnost (veřejné nebo soukromé), aktuální stav publikování a všechny dostupné akce.
 
@@ -380,7 +377,7 @@ Tato stránka vám umožní nakonfigurovat trhy, které tento plán bude k dispo
 
 #### <a name="markets-optional"></a>Trhy (volitelné)
 
-Každý plán musí být k dispozici alespoň v jednom trhu. Vyberte **Upravit trhy** a zaškrtněte políčko pro jakékoli místo na trhu, kde byste chtěli tento plán zpřístupnit. Tato stránka obsahuje vyhledávací pole a možnost výběru ["Vypoukázaného" země/oblastí](tax-details-paid-transactions.md), kde společnost Microsoft za vás zavazuje prodej a používání daně.
+Každý plán musí být k dispozici alespoň v jednom trhu. Vyberte **Upravit trhy** a zaškrtněte políčko pro jakékoli místo na trhu, kde byste chtěli tento plán zpřístupnit. Tato stránka obsahuje vyhledávací pole a možnost výběru "vypoukázaného" země/oblastí, kde společnost Microsoft za vás zavazuje prodej a používání daně.
 
 Pokud jste už pro svůj plán nastavili ceny v USA dolary (USD) a přidáte další místo na trhu, cena za nový trh se vypočítá podle aktuálních směnných kurzů. Před publikováním si přečtěte cenu za každý trh. Prohlédněte si ceny pomocí odkazu exportovat ceny (XLSX) po uložení změn.
 
@@ -462,8 +459,6 @@ Než budete pokračovat, vyberte **Uložit koncept** .
 1. Název plánu
 2. Popis plánu
 
-<br>
-
 ## <a name="cloud-solution-provider-csp-reseller-audience"></a>Cílová skupina pro prodejce řešení Cloud Solution Provider (CSP)
 
 Pokud chcete, aby vaše nabídka byla k dispozici v programu CSP, umožní poskytovatelům cloudového řešení prodávat vaše produkty jako součást řešení svým zákazníkům. Další informace najdete v tématu [Poskytovatelé cloudových řešení](https://go.microsoft.com/fwlink/?linkid=2111109).
@@ -477,12 +472,12 @@ Až dokončíte všechny požadované části nabídky, vyberte **zkontrolovat a
 Pokud tuto nabídku publikujete poprvé, můžete:
 
 - Podívejte se na téma stav dokončení pro jednotlivé části nabídky.
-    - **Nezahájeno** – oddíl se nedotkl a musí se dokončit.
-    - **Nedokončeno** – oddíl obsahuje chyby, které je potřeba opravit, nebo vyžaduje, aby se poskytly další informace. Budete se muset vrátit k oddílu a aktualizovat ho.
-    - **Complete** – část je dokončena, byla zadána všechna požadovaná data a nejsou k dispozici žádné chyby. Aby bylo možné nabídku odeslat, musí být všechny oddíly nabídky v úplném stavu.
+  - **Nezahájeno** – oddíl se nedotkl a musí se dokončit.
+  - **Nedokončeno** – oddíl obsahuje chyby, které je potřeba opravit, nebo vyžaduje, aby se poskytly další informace. Budete se muset vrátit k oddílu a aktualizovat ho.
+  - **Complete** – část je dokončena, byla zadána všechna požadovaná data a nejsou k dispozici žádné chyby. Aby bylo možné nabídku odeslat, musí být všechny oddíly nabídky v úplném stavu.
 - Poskytněte pokyny pro testování certifikačního týmu, aby se zajistilo správné testování vaší aplikace, a to spolu s případnými doplňkovými poznámkami, které jsou užitečné pro porozumění vaší aplikaci.
 - Kliknutím na **Odeslat**nabídku pro publikování odešlete. Pošleme vám e-mail s oznámením, že je k dispozici verze Preview vaší nabídky, kterou si můžete prohlédnout a schválit. Vraťte se do partnerského centra a výběrem možnosti **Přejít do provozu** publikujte vaši nabídku na veřejném (nebo v případě soukromé nabídky pro soukromou cílovou skupinu).
 
-## <a name="next-step"></a>Další krok
+## <a name="next-steps"></a>Další kroky
 
 - [Aktualizace stávající nabídky na komerčním marketplace](./update-existing-offer.md)
