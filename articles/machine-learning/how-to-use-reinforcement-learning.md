@@ -5,17 +5,17 @@ description: Naučte se používat Azure Machine Learning posílení učení (Pr
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 95a404fd71c79842976bf5f01994f06c04856476
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: 7a9c367c1669aab18da5a7cb1f7d732f9b8aee9e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047937"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319061"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Posílení učení (Preview) s Azure Machine Learning
 
@@ -36,7 +36,7 @@ V tomto článku se dozvíte, jak:
 
 Tento článek je založený na [příkladu RLlib pong](https://aka.ms/azureml-rl-pong) , který najdete v [úložišti GitHubu](https://aka.ms/azureml-rl-notebooks)poznámkového bloku Azure Machine Learning.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento kód spusťte v jednom z následujících prostředí. Doporučujeme, abyste si vyzkoušeli Azure Machine Learning výpočetní instance pro nejrychlejší úvodní prostředí. K dispozici jsou ukázkové poznámkové bloky pro rychlé klonování a spouštění Azure Machine Learning výpočetní instance.
 

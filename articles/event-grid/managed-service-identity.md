@@ -3,12 +3,12 @@ title: Doručování událostí s identitou spravované služby
 description: Tento článek popisuje, jak povolit identitu spravované služby pro téma Azure Event Grid. Použijte ji k přeposílání událostí do podporovaných cílů.
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: 5138a89101a7e6c1770952028de9c3d478bc3852
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c05eb2e78595e962494a60b1ffa8ead899aa0109
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119187"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371256"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>Doručování událostí se spravovanou identitou
 Tento článek popisuje, jak povolit [identitu spravované služby](../active-directory/managed-identities-azure-resources/overview.md) pro témata a domény služby Azure Event Grid. Slouží k přeposílání událostí do podporovaných cílů, jako jsou Service Bus fronty a témata, centra událostí a účty úložiště.
@@ -42,7 +42,7 @@ V předchozí části jste zjistili, jak povolit systémově spravovanou identit
 ### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 Následující postup ukazuje, jak v tématu Povolit identitu spravovanou systémem. Postup pro povolení identity pro doménu je podobný. 
 
-1. Přejít na [Azure Portal](https://portal.azure.com).
+1. Přejděte na [Azure Portal](https://portal.azure.com).
 2. V horní části panelu hledání vyhledejte **témata Event gridu** .
 3. Vyberte **téma** , pro které chcete spravovanou identitu povolit. 
 4. Přepněte na kartu **Identita** . 
@@ -70,8 +70,8 @@ V současné době Azure Event Grid podporuje témata nebo domény nakonfigurova
 
 | Cíl | Role RBAC | 
 | ----------- | --------- | 
-| Service Bus fronty a témata | [Azure Service Bus odesílatel dat](../service-bus-messaging/authenticate-application.md#built-in-rbac-roles-for-azure-service-bus) |
-| Azure Event Hubs | [Odesilatel dat Event Hubs Azure](../event-hubs/authorize-access-azure-active-directory.md#built-in-rbac-roles-for-azure-event-hubs) | 
+| Service Bus fronty a témata | [Azure Service Bus odesílatel dat](../service-bus-messaging/authenticate-application.md#azure-built-in-roles-for-azure-service-bus) |
+| Azure Event Hubs | [Odesilatel dat Event Hubs Azure](../event-hubs/authorize-access-azure-active-directory.md#azure-built-in-roles-for-azure-event-hubs) | 
 | Azure Blob Storage | [Přispěvatel dat objektu BLOB služby Storage](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues) |
 | Azure Queue Storage |[Odesílatel zprávy s daty ve frontě úložiště](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues) | 
 

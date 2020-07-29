@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
-ms.openlocfilehash: ce43472c808c8c74e72e4bb373e60f90d6df5fbd
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.custom: devx-track-java
+ms.openlocfilehash: 9ff006b74b6202b02a2767aee4d853b1206ce60d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86182385"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87304475"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>Odeslání e-mailu pomocí SendGrid z Java
 Tato příručka ukazuje, jak provádět běžné programovací úlohy pomocí e-mailové služby SendGrid v Azure. Ukázky jsou napsané v jazyce Java. Mezi zahrnuté scénáře patří **vytváření e-mailů**, **posílání e-mailů**, **přidávání příloh**, **používání filtrů**a **aktualizace vlastností**. Další informace o SendGrid a odesílání e-mailů najdete v části [Další kroky](#next-steps) .

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 34453dacd763b8b6a2bff3d977a7bc9b2ab78ca9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ef8c4754afc921eaeb68a84fbd8147f336a4940c
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089324"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87370270"
 ---
 # <a name="azure-security-baseline-for-synapse-analytics"></a>Základní plán zabezpečení Azure pro synapse Analytics
 
@@ -314,7 +314,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel.
 
 Při prvním nasazení Azure SQL zadejte přihlašovací jméno správce a přidružené heslo pro toto přihlášení. Tento účet správce se nazývá správce serveru. Účty správců pro databázi můžete identifikovat tak, že otevřete Azure Portal a přejdete na kartu vlastnosti vašeho serveru nebo spravované instance. Můžete také nakonfigurovat účet správce Azure AD s úplnými oprávněními pro správu, který je nutný, pokud chcete povolit Azure Active Directory ověřování.
 
-Pro operace správy použijte předdefinované role řízení přístupu na základě role Azure (Azure RBAC), které se musí explicitně přiřadit. Pomocí modulu Azure AD PowerShell můžete provádět dotazy ad hoc a zjišťovat účty, které jsou členy skupin pro správu.
+Pro operace správy použijte předdefinované role Azure, které se musí explicitně přiřadit. Pomocí modulu Azure AD PowerShell můžete provádět dotazy ad hoc a zjišťovat účty, které jsou členy skupin pro správu.
 
 * [Ověřování pro SQL Database](https://docs.microsoft.com/azure/azure-sql/database/security-overview#authentication)
 
@@ -328,7 +328,7 @@ Pro operace správy použijte předdefinované role řízení přístupu na zák
 
 * [Správa stávajících přihlašovacích údajů a účtů správců v Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#existing-logins-and-user-accounts-after-creating-a-new-database)
 
-* [Předdefinované role Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
+* [Předdefinované role Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1026,7 +1026,7 @@ Předem prohledejte veškerý obsah, který se nahrává do nevýpočetních pro
 
 Pokud k šifrování šifrovacího klíče databáze používáte klíč spravovaný zákazníkem, ujistěte se, že je váš klíč zálohovaný.
 
-* [Zálohování a obnovení ve fondu SQL Azure synapse](https://docs.microsoft.coms/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [Zálohování a obnovení ve fondu SQL Azure synapse](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
 
 * [Postup zálohování klíčů Azure Key Vault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 

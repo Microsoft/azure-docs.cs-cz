@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: e2113df2db89e204fd5d2c0a62234e0c1f7b16cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c107789fe4a88b3cd73a2f290871016b95cae19
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85125664"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371392"
 ---
 # <a name="introduction-to-azure-security"></a>Seznámení se zabezpečením Azure
 ## <a name="overview"></a>Přehled
@@ -142,7 +142,7 @@ V konzoli Application Diagnostics lze zobrazit události seskupené následují
 V části najdete další informace týkající se klíčových funkcí zabezpečení Azure Storage a souhrnné informace o těchto funkcích.
 
 ### <a name="role-based-access-control-rbac"></a>Řízení přístupu na základě role (RBAC)
-Svůj účet úložiště můžete zabezpečit pomocí Access Control na základě rolí (RBAC). Omezení přístupu na základě [potřebných znalostí](https://en.wikipedia.org/wiki/Need_to_know) a [minimálních](https://en.wikipedia.org/wiki/Principle_of_least_privilege) principů zabezpečení oprávnění je nezbytné pro organizace, které chtějí vynutilit zásady zabezpečení pro přístup k datům. Tato přístupová práva jsou udělována přiřazením příslušné role RBAC do skupin a aplikací v určitém rozsahu. K přiřazení oprávnění uživatelům můžete použít [předdefinované role RBAC](../../role-based-access-control/built-in-roles.md), jako je Přispěvatel účtu úložiště. Přístup k klíčům úložiště pro účet úložiště pomocí modelu [Azure Resource Manager](../../storage/blobs/security-recommendations.md) můžete ovládat pomocí Access Control na základě rolí (RBAC).
+Svůj účet úložiště můžete zabezpečit pomocí Access Control na základě rolí (RBAC). Omezení přístupu na základě [potřebných znalostí](https://en.wikipedia.org/wiki/Need_to_know) a [minimálních](https://en.wikipedia.org/wiki/Principle_of_least_privilege) principů zabezpečení oprávnění je nezbytné pro organizace, které chtějí vynutilit zásady zabezpečení pro přístup k datům. Tato přístupová práva jsou udělována přiřazením příslušné role RBAC do skupin a aplikací v určitém rozsahu. K přiřazení oprávnění uživatelům můžete použít [předdefinované role Azure](../../role-based-access-control/built-in-roles.md), jako je Přispěvatel účtu úložiště. Přístup k klíčům úložiště pro účet úložiště pomocí modelu [Azure Resource Manager](../../storage/blobs/security-recommendations.md) můžete ovládat pomocí Access Control na základě rolí (RBAC).
 
 ### <a name="shared-access-signature"></a>Sdílený přístupový podpis
 [Sdílený přístupový podpis (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) poskytuje delegovaný přístup k prostředkům ve vašem účtu úložiště. SAS znamená, že můžete klientovi udělit omezená oprávnění k objektům ve vašem účtu úložiště po určitou dobu a se zadanou sadou oprávnění. Tato omezená oprávnění můžete udělit bez nutnosti sdílení přístupových klíčů k účtu.
@@ -155,7 +155,7 @@ Svůj účet úložiště můžete zabezpečit pomocí Access Control na základ
 
 -   Šifrování na straně klienta, aby se data zašifroval před přenosem do úložiště a dešifrují data poté, co se přenesou z úložiště.
 
-### <a name="encryption-at-rest"></a>Šifrování v klidovém stavu
+### <a name="encryption-at-rest"></a>Šifrování neaktivních uložených dat
 V případě mnoha organizací je šifrování dat v klidovém případě povinný krok k ochraně dat, dodržování předpisů a suverenity dat. Existují tři funkce zabezpečení služby Azure Storage, které poskytují šifrování dat v klidovém znění:
 
 -   [Šifrování služby Storage](../../storage/common/storage-service-encryption.md) umožňuje požádat, aby služba úložiště při zápisu do Azure Storage automaticky zašifroval data.
@@ -239,10 +239,10 @@ Poskytuje převzetí služeb při selhání, směrování výkonu požadavků HT
 
 Aplikace poskytuje mnoho funkcí kontroleru doručování aplikací (ADC), včetně vyrovnávání zatížení protokolu HTTP, spřažení relace na základě souborů cookie, [přesměrování zpracování TLS](../../application-gateway/tutorial-restrict-web-traffic-powershell.md), vlastních sond stavu, podpory více webů a mnoha dalších.
 
-### <a name="web-application-firewall"></a>Firewall webových aplikací
+### <a name="web-application-firewall"></a>Web Application Firewall (Brána firewall webových aplikací)
 Firewall webových aplikací je funkce služby [Azure Application Gateway](../../application-gateway/overview.md) , která poskytuje ochranu webových aplikací, které používají Aplikační bránu pro standardní funkce řízení doručování aplikací (ADC). Firewall webových aplikací chrání webové aplikace před většinou z 10 nejčastějších webových hrozeb podle OWASP.
 
-![Firewall webových aplikací](./media/overview/azure-security-fig1.png)
+![Web Application Firewall (Brána firewall webových aplikací)](./media/overview/azure-security-fig1.png)
 
 -   Ochrana před útoky prostřednictvím injektáže SQL.
 
@@ -263,7 +263,7 @@ Microsoft [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview
 
 Traffic Manager poskytuje řadu metod směrování provozu, které vyhovují různým potřebám aplikací, [monitorování](../../traffic-manager/traffic-manager-monitoring.md)stavu koncových bodů a automatickému převzetí služeb při selhání. Služba Traffic Manager je odolná vůči selhání, a to i selhání celé oblasti Azure.
 
-### <a name="azure-load-balancer"></a>Nástroj pro vyrovnávání zatížení Azure
+### <a name="azure-load-balancer"></a>Azure Load Balancer
 [Azure Load Balancer](../../load-balancer/load-balancer-overview.md) zajišťuje vysokou dostupnost a výkon sítě pro vaše aplikace. Jedná se o nástroj pro vyrovnávání zatížení vrstvy 4 (TCP, UDP), který distribuuje příchozí provoz mezi zdravými instancemi služeb definovaných v sadě s vyrovnáváním zatížení. Azure Load Balancer lze nakonfigurovat na:
 
 -   Vyrovnávání zatížení příchozího internetového provozu do virtuálních počítačů. Tato konfigurace se označuje jako [veřejné vyrovnávání zatížení](../../load-balancer/components.md#frontend-ip-configurations).

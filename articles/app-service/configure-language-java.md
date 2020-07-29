@@ -8,13 +8,13 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: aa6e3edf2c02cad34cbe9b1f9ac82517823caa8e
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.custom: seodec18, devx-track-java
+ms.openlocfilehash: d0850b2192df1392a245f27588ffcb8ddb337347
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130548"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319333"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Konfigurace aplikace pro Windows Java pro Azure App Service
 
@@ -228,7 +228,7 @@ V této části se dozvíte, jak připojit aplikace Java nasazené na Azure App 
 
 Tyto pokyny platí pro všechna databázová připojení. Zástupné symboly budete muset vyplnit pomocí názvu třídy ovladače zvolené databáze a souboru JAR. Poskytuje se tabulka s názvy tříd a stahování ovladačů pro běžné databáze.
 
-| databáze   | Název třídy ovladače                             | Ovladač JDBC                                                                      |
+| Databáze   | Název třídy ovladače                             | Ovladač JDBC                                                                      |
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [Stáhnout](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [Stáhnout](https://dev.mysql.com/downloads/connector/j/) (vyberte "nezávislé na platformě") |

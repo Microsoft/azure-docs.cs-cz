@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 6a51da4f4685d7d7b1c597d8a9b9dd78270f29b1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0fa0b0d5e3620fc45a104ea31fd3bcbedd673da1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499269"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318942"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Nasazení agenta Azure Monitor Application Insights pro místní servery
 
@@ -76,13 +76,14 @@ Každá z těchto možností je popsaná v [podrobných pokynech](status-monitor
 
 Zobrazení telemetrických dat:
 
-* [Prozkoumejte metriky](../../azure-monitor/platform/metrics-charts.md) pro monitorování výkonu a využití.
-* [Prohledejte události a protokoly](../../azure-monitor/app/diagnostic-search.md) a Diagnostikujte problémy.
+* [Prozkoumejte metriky](../platform/metrics-charts.md) pro monitorování výkonu a využití.
+* [Prohledejte události a protokoly](./diagnostic-search.md) a Diagnostikujte problémy.
 * K pokročilejším dotazům [použijte Analytics](../log-query/log-query-overview.md) .
-* [Vytváření řídicích panelů](../../azure-monitor/app/overview-dashboard.md).
+* [Vytváření řídicích panelů](./overview-dashboard.md).
 
 Přidání další telemetrie:
 
 * [Vytvoření webových testů](monitor-web-app-availability.md) a ověření, jestli web zůstává živý.
-* [Přidejte telemetrii webového klienta](../../azure-monitor/app/javascript.md) pro zobrazení výjimek z kódu webové stránky a umožnění volání trasování.
-* [Přidejte sadu Application Insights SDK do kódu](../../azure-monitor/app/asp-net.md) , abyste mohli vložit trasování a protokolování volání.
+* [Přidejte telemetrii webového klienta](./javascript.md) pro zobrazení výjimek z kódu webové stránky a umožnění volání trasování.
+* [Přidejte sadu Application Insights SDK do kódu](./asp-net.md) , abyste mohli vložit trasování a protokolování volání.
+

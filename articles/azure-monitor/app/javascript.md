@@ -5,12 +5,13 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: 4b3d489477a0ee0cc201d4383b5ed960de515c7d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 8cd0c7c73ac4f5c531d91d7e458300ab1b0ad1af
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517106"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371477"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
 
@@ -240,7 +241,7 @@ Vyberte **prohlížeč** a pak zvolte **selhání** nebo **výkon**.
 
 ![Snímek obrazovky se stránkou Performance (výkon) v Application Insights znázorňující grafické zobrazení metrik závislostí pro webovou aplikaci.](./media/javascript/performance-dependencies.png)
 
-### <a name="analytics"></a>Analýza
+### <a name="analytics"></a>Analýzy
 
 Chcete-li zadat dotaz na telemetrii shromážděnou sadou JavaScript SDK, vyberte tlačítko **Zobrazit v protokolech (Analytics)** . Přidáním `where` příkazu `client_Type == "Browser"` se zobrazí pouze data z sady JavaScript SDK a všechny telemetrie na straně serveru shromážděné jinými sadami SDK budou vyloučeny.
  

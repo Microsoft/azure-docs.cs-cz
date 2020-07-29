@@ -6,17 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/28/2019
-ms.openlocfilehash: 5984cbf8cf618a938ee85638d981f7867c6ec8b5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6d6431aa26637e4b956d5c334a2862f689f845bf
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539359"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319316"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Připojit Configuration Manager k Azure Monitor
 Prostředí Microsoft Endpoint Configuration Manager můžete připojit, aby se Azure Monitor synchronizovaná data kolekce zařízení a odkazovala na tyto kolekce v Azure Monitor a Azure Automation.  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Azure Monitor podporuje Configuration Manager aktuální větev verze 1606 a vyšší.
 
@@ -41,7 +41,7 @@ Následující kroky shrnují postup konfigurace Configuration Manager integrace
 
 ## <a name="grant-configuration-manager-with-permissions-to-log-analytics"></a>Udělení Configuration Manager s oprávněním Log Analytics
 
-V následujícím postupu udělíte roli *Přispěvatel* v pracovním prostoru Log Analytics k aplikacím a instančnímu objektu služby AD, který jste vytvořili dříve pro Configuration Manager. Pokud ještě nemáte pracovní prostor, přečtěte si téma [Vytvoření pracovního prostoru v Azure monitor](../../azure-monitor/learn/quick-create-workspace.md) než budete pokračovat. To umožňuje Configuration Manager ověřovat a připojovat se k pracovnímu prostoru Log Analytics.  
+V následujícím postupu udělíte roli *Přispěvatel* v pracovním prostoru Log Analytics k aplikacím a instančnímu objektu služby AD, který jste vytvořili dříve pro Configuration Manager. Pokud ještě nemáte pracovní prostor, přečtěte si téma [Vytvoření pracovního prostoru v Azure monitor](../learn/quick-create-workspace.md) než budete pokračovat. To umožňuje Configuration Manager ověřovat a připojovat se k pracovnímu prostoru Log Analytics.  
 
 > [!NOTE]
 > Pro Configuration Manager je nutné zadat oprávnění v pracovním prostoru Log Analytics. V opačném případě se zobrazí chybová zpráva, když použijete Průvodce konfigurací v nástroji Configuration Manager.
@@ -139,14 +139,15 @@ Po dokončení počáteční konfigurace pro import kolekcí zařízení z vaš�
 
 ## <a name="view-data-from-configuration-manager"></a>Zobrazit data z Configuration Manager
 
-Po přidání Log Analytics připojení Configuration Manager a instalaci agenta do počítače se spuštěnou rolí systému lokality spojovacího bodu služby Configuration Manager služba se data z agenta odesílají do Log Analytics pracovního prostoru v Azure Monitor. V Azure Monitor se kolekce Configuration Manager zobrazí jako [skupiny počítačů](../../azure-monitor/platform/computer-groups.md). Skupiny můžete zobrazit na stránce **Configuration Manager** v části **skupiny Settings\Computer**.
+Po přidání Log Analytics připojení Configuration Manager a instalaci agenta do počítače se spuštěnou rolí systému lokality spojovacího bodu služby Configuration Manager služba se data z agenta odesílají do Log Analytics pracovního prostoru v Azure Monitor. V Azure Monitor se kolekce Configuration Manager zobrazí jako [skupiny počítačů](./computer-groups.md). Skupiny můžete zobrazit na stránce **Configuration Manager** v části **skupiny Settings\Computer**.
 
 Po importu kolekcí můžete zjistit, kolik počítačů s členstvím v kolekci bylo zjištěno. Můžete také zobrazit počet importovaných kolekcí.
 
 ![Skupiny počítačů – karta SCCM](./media/collect-sccm/sccm-computer-groups02.png)
 
-Když kliknete na jeden, otevře se Editor dotazů protokolů, ve kterém se zobrazí všechny importované skupiny nebo všechny počítače, které patří do jednotlivých skupin. Pomocí [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md)můžete provádět podrobnější analýzu dat členství v kolekci.
+Když kliknete na jeden, otevře se Editor dotazů protokolů, ve kterém se zobrazí všechny importované skupiny nebo všechny počítače, které patří do jednotlivých skupin. Pomocí [prohledávání protokolů](../log-query/log-query-overview.md)můžete provádět podrobnější analýzu dat členství v kolekci.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pomocí [prohledávání protokolu](../../azure-monitor/log-query/log-query-overview.md) můžete zobrazit podrobné informace o datech Configuration Manager.
+Pomocí [prohledávání protokolu](../log-query/log-query-overview.md) můžete zobrazit podrobné informace o datech Configuration Manager.
+

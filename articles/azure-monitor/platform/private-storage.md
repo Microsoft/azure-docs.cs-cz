@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: 78cdf1798d9176c9d3c7b3705a11dccde5e47e67
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a14f7ca3e5a7b291e430db6ea536edc5396b5448
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077109"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318891"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Účty úložiště vlastněné zákazníkem pro přijímání protokolů v Azure Monitor
 
@@ -54,7 +54,7 @@ Jedinou metodou, kterou je možné vytvořit a odebrat, je REST API. Podrobnosti
 ## <a name="command-line-and-rest-api"></a>Příkazový řádek a REST API
 
 ### <a name="command-line"></a>Příkazový řádek
-Pokud chcete vytvořit a spravovat propojené účty úložiště, použijte příkaz [AZ monitor Log-Analytics pracovní prostor propojený-Storage](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage). Tento příkaz může propojit účty úložiště a odpojit je od pracovního prostoru a zobrazit seznam propojených účtů úložiště.
+Pokud chcete vytvořit a spravovat propojené účty úložiště, použijte příkaz [AZ monitor Log-Analytics pracovní prostor propojený-Storage](/cli/azure/monitor/log-analytics/workspace/linked-storage). Tento příkaz může propojit účty úložiště a odpojit je od pracovního prostoru a zobrazit seznam propojených účtů úložiště.
 
 ### <a name="request-and-cli-values"></a>Hodnoty požadavků a CLI
 
@@ -236,3 +236,4 @@ Pokud je registrovaný účet úložiště pracovního prostoru v jiné oblasti,
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace o nastavení privátního odkazu najdete v tématu [použití privátního odkazu Azure k bezpečnému připojení sítí k Azure monitor](private-link-security.md)
+

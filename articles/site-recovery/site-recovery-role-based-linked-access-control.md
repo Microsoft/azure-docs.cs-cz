@@ -6,18 +6,18 @@ ms.date: 04/08/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: ce389f9281b02662f87353f00c9bca92cdf86937
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 877545eb22331e724520102814ec8a00b2c205e5
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847900"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87370814"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Správa přístupu Site Recovery pomocí řízení přístupu na základě role (RBAC)
 
 Řízení přístupu na základě role (RBAC) v Azure umožňuje jemně odstupňovanou správu přístupu pro Azure. Pomocí RBAC můžete oddělit zodpovědnosti v rámci svého týmu a k provádění konkrétních úloh udělit uživatelům pouze konkrétní přístupová oprávnění.
 
-Azure Site Recovery poskytuje 3 předdefinované role pro řízení operací správy Site Recovery. Další informace o [předdefinovaných rolích Azure RBAC](../role-based-access-control/built-in-roles.md)
+Azure Site Recovery poskytuje 3 předdefinované role pro řízení operací správy Site Recovery. Další informace o [předdefinovaných rolích Azure](../role-based-access-control/built-in-roles.md)
 
 * [Přispěvatel Site Recovery](../role-based-access-control/built-in-roles.md#site-recovery-contributor) – Tato role má všechna oprávnění potřebná ke správě operací Azure Site Recovery v trezoru služby Recovery Services. Uživatel s touto rolí však nemůže vytvořit ani odstranit trezor služby Recovery Services ani přiřadit přístup jiným uživatelům. Tato role je nejvhodnější pro správce zotavení po havárii, kteří můžou povolit a spravovat zotavení po havárii pro aplikace nebo celé organizace, a to v případě, že je to možné.
 * [Operátor Site Recovery](../role-based-access-control/built-in-roles.md#site-recovery-operator) – Tato role má oprávnění provádět a spravovat operace převzetí služeb při selhání a navrácení služeb po obnovení. Uživatel s touto rolí nemůže povolit ani zakázat replikaci, vytvořit nebo odstranit trezory, registrovat novou infrastrukturu nebo přiřazovat přístupová práva jiným uživatelům. Tato role je nejvhodnější pro operátor zotavení po havárii, který může převzít služby při selhání virtuálních počítačů nebo aplikací na základě pokynů pro vlastníky aplikací a správce IT ve skutečné nebo simulované situaci, jako je například zotavení po havárii. Po vyřešení havárie může operátor DR znovu nastavit ochranu a navrátit služby po obnovení virtuálních počítačů.

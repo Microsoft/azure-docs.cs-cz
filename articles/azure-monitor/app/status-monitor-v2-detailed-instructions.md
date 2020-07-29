@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 2faf33fdd58090a335804f084ef2d1f180a9754a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a8a27a782d5e05b5febda659009284c22d3608c0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499320"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318976"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Agent Application Insights (dřív pojmenovaný Monitorování stavu v2): podrobné pokyny
 
@@ -231,17 +231,18 @@ Podrobný popis způsobu použití této rutiny najdete v [referenčních inform
 
  Zobrazení telemetrických dat:
 
-- [Prozkoumejte metriky](../../azure-monitor/platform/metrics-charts.md) pro monitorování výkonu a využití.
-- [Prohledejte události a protokoly](../../azure-monitor/app/diagnostic-search.md) a Diagnostikujte problémy.
+- [Prozkoumejte metriky](../platform/metrics-charts.md) pro monitorování výkonu a využití.
+- [Prohledejte události a protokoly](./diagnostic-search.md) a Diagnostikujte problémy.
 - K pokročilejším dotazům [použijte Analytics](../log-query/log-query-overview.md) .
-- [Vytváření řídicích panelů](../../azure-monitor/app/overview-dashboard.md).
+- [Vytváření řídicích panelů](./overview-dashboard.md).
 
  Přidání další telemetrie:
 
 - [Vytvoření webových testů](monitor-web-app-availability.md) a ověření, jestli web zůstává živý.
-- [Přidejte telemetrii webového klienta](../../azure-monitor/app/javascript.md) pro zobrazení výjimek z kódu webové stránky a umožnění volání trasování.
-- [Přidejte sadu Application Insights SDK do kódu](../../azure-monitor/app/asp-net.md) , abyste mohli vložit trasování a protokolování volání.
+- [Přidejte telemetrii webového klienta](./javascript.md) pro zobrazení výjimek z kódu webové stránky a umožnění volání trasování.
+- [Přidejte sadu Application Insights SDK do kódu](./asp-net.md) , abyste mohli vložit trasování a protokolování volání.
 
 Další Application Insights agenta:
 
 - Pomocí naší příručky můžete [řešit potíže s](status-monitor-v2-troubleshoot.md) agentem Application Insights.
+

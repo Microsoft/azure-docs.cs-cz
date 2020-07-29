@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: fa4610c925429ea59eae7399094230c1370bf2a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f5b6bfdb523a22fc4dd9593bfec556da7493aa9
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096997"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371188"
 ---
 # <a name="tutorial-for-configuring-lexisnexis-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci LexisNexis s využitím Azure Active Directory B2C
 
@@ -27,7 +27,7 @@ Tato integrace provádí profilaci na základě několika informací o uživatel
 - Telefonní číslo
 - Informace o profilaci shromážděné z počítače uživatele
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli začít, budete potřebovat:
 
@@ -147,7 +147,7 @@ V tomto [dokumentu](https://docs.microsoft.com/azure/active-directory-b2c/custom
 
 6. Projděte si tok přihlášení.  
 
-7. Po zadání **pokračování**se zobrazí Crosscore skládanky.
+7. Po zadání **pokračování**se zobrazí ThreatMetrix skládanky.
 
 ## <a name="next-steps"></a>Další kroky
 

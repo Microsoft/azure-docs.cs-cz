@@ -4,12 +4,14 @@ Description: Pokud chcete získat peníze z nabídky prodejů na komerčním web
 ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: marketplace
-ms.openlocfilehash: 493043c43cf8dbac94bd33a907c91291fc51bf6c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 9d75f210ed0547a001ad1dd35f8abfffd31c82a4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109123"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87304203"
 ---
 # <a name="set-up-your-payout-account-and-tax-forms"></a>Nastavení platebního účtu a daňových formulářů
 

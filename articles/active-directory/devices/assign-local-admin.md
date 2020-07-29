@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a76d9ccbf7b83ea28de3ef5bb1d140caa7201ebd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6b04a59da78abc81f7749300dfe34ca176c75c4
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386364"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371171"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Jak spravovat místní skupinu Administrators na zařízeních připojených k Azure AD
 
@@ -67,6 +67,21 @@ Správci zařízení mají přiřazená všechna zařízení připojená k Azure
 >[!NOTE]
 > Výše uvedené akce se nevztahují na uživatele, kteří předtím nebyli přihlášení k příslušnému zařízení. V takovém případě se oprávnění správce uplatní hned po prvním přihlášení k zařízení. 
 
+## <a name="manage-administrator-privileges-using-azure-ad-groups-preview"></a>Správa oprávnění správce pomocí skupin Azure AD (Preview)
+
+>[!NOTE]
+> Tato funkce je aktuálně ve verzi Preview.
+
+Počínaje aktualizací Windows 10 2004 můžete pomocí skupin Azure AD spravovat oprávnění správce na zařízeních připojených k Azure AD pomocí zásad skupiny [Restricted] (Windows/Client-Management/MDM/Policy-CSP-restrictedgroups) MDM. Tato zásada vám umožní přiřadit jednotlivé uživatele nebo skupiny Azure AD k místní skupině Administrators na zařízení připojeném k Azure AD a poskytnout tak členitost pro konfiguraci samostatných správců pro různé skupiny zařízení. 
+
+V současné době není v Intune žádné uživatelské rozhraní pro správu těchto zásad a je potřeba je nakonfigurovat pomocí [vlastní nastavení OMA-URI] (mem/Intune/Configuration/Custom-Settings-Windows-10). Několik důležitých informací pro tyto zásady: 
+
+- Přidání skupin Azure AD prostřednictvím zásad vyžaduje identifikátor SID skupiny, který se dá získat spuštěním rozhraní API skupin. Identifikátor SID je definován vlastností `securityIdentifier` v rozhraní API skupin.
+- Když se vynutila zásada skupin s omezeným přístupem, všechny aktuální členy skupiny, které nejsou v seznamu členů, se odeberou. Aby tyto zásady vynutily nové členy nebo skupiny, odstraní stávající správce konkrétně uživatele, který se připojil k zařízení, roli Správce zařízení a roli globálního správce ze zařízení. Chcete-li se vyhnout odebrání stávajících členů, je třeba je nakonfigurovat jako součást seznamu členů v zásadě skupiny s omezeným přístupem. 
+- Tyto zásady platí jenom pro následující známé skupiny na zařízeních s Windows 10 – správci, uživatelé, hosty, Power Users, Uživatelé vzdálené plochy a uživatelé vzdálené správy. 
+- Správa místních správců pomocí zásad omezených skupin není platná pro připojené k hybridní službě Azure AD nebo k zařízením registrovaným v Azure AD.
+- Zásady skupin s omezeným přístupem existovaly před aktualizací Windows 10 2004, ale nepodporují skupiny Azure AD jako členy místní skupiny správců zařízení. 
+
 ## <a name="manage-regular-users"></a>Správa běžných uživatelů
 
 Ve výchozím nastavení Azure AD přidá uživatele, který provádí službu Azure AD JOIN, do skupiny správců v zařízení. Pokud chcete běžným uživatelům zabránit v tom, aby se stali místními správci, máte následující možnosti:
@@ -85,7 +100,7 @@ Kromě toho můžete přidat uživatele také pomocí příkazového řádku:
 - Pokud jsou vaši uživatelé klienta synchronizováni z místní služby Active Directory, použijte `net localgroup administrators /add "Contoso\username"` .
 - Pokud jsou vaši uživatelé tenanta vytvořeni ve službě Azure AD, použijte`net localgroup administrators /add "AzureAD\UserUpn"`
 
-## <a name="considerations"></a>Důležité informace 
+## <a name="considerations"></a>Požadavky 
 
 Nelze přiřadit skupiny k roli Správce zařízení, pouze jednotliví uživatelé jsou povoleni.
 

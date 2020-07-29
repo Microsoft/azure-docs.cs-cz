@@ -1,6 +1,5 @@
 ---
-title: Nasazení a spotřeba
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (Classic): nasazení a spotřeba – Azure'
 description: K nasazení pracovních postupů a modelů machine learningu jako webových služeb můžete použít Azure Machine Learning Studio (Classic). Tyto webové služby pak můžete použít k volání modelů strojového učení z aplikací přes Internet, aby se předpovědi v reálném čase nebo v režimu dávky.
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 5077e71eda42aa3b48cda2b39b60efc19bddd8a5
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 4c6c73d29e04889b390bc071511eef8591da1543
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985529"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318687"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Webové služby Azure Machine Learning Studio (Classic): nasazení a spotřeba
+
+**platí pro:** ![ žádná](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasická) 
 
 K nasazení pracovních postupů a modelů machine learningu jako webových služeb můžete použít Azure Machine Learning Studio (Classic). Tyto webové služby pak můžete použít k volání modelů strojového učení z aplikací přes Internet, aby se předpovědi v reálném čase nebo v režimu dávky. Vzhledem k tomu, že webové služby jsou RESTful, můžete je volat z různých programovacích jazyků a platforem, jako je například .NET a Java, a z aplikací, jako je například aplikace Excel.
 

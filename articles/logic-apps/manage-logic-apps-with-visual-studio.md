@@ -7,12 +7,12 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.custom: mvc
 ms.date: 04/29/2020
-ms.openlocfilehash: 9cf964b8b5ebbfe5f790a1e325b48cd4179cf4ee
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: cde8db5310e3ede2721ba327b28c789ccd0b7dd0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127668"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280762"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Správa aplikací logiky s využitím sady Visual Studio
 
@@ -25,7 +25,7 @@ I když můžete vytvářet, upravovat, spravovat a nasazovat Logic Apps v [Azur
 
 <a name="requirements"></a>
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -71,7 +71,7 @@ V aplikaci Visual Studio můžete najít všechny aplikace logiky, které jsou p
 
 1. Otevřete sadu Visual Studio. V nabídce **zobrazení** vyberte **Průzkumník cloudu**.
 
-1. V Průzkumníku cloudu vyberte ikonu **Správa účtů** . Vyberte předplatné Azure přidružené k vašim Logic Apps a vyberte **použít**. Příklad:
+1. V Průzkumníku cloudu vyberte ikonu **Správa účtů** . Vyberte předplatné Azure přidružené k vašim Logic Apps a vyberte **použít**. Například:
 
    ![Vyberte Správa účtů.](./media/manage-logic-apps-with-visual-studio/account-management-select-Azure-subscription.png)
 
@@ -100,7 +100,7 @@ V aplikaci Visual Studio můžete otevřít aplikace logiky, které byly dříve
 
 ## <a name="download-from-azure"></a>Stáhnout z Azure
 
-Můžete si stáhnout Logic Apps z [Azure Portal](https://portal.azure.com) a uložit je jako šablonu [Azure Resource Manager](../azure-resource-manager/management/overview.md) . Pak můžete místně upravit šablony pomocí sady Visual Studio a přizpůsobit Logic Apps pro různá prostředí nasazení.  Automatické stahování aplikací logiky *parameterizes* jejich definice v [šablonách správce prostředků](../azure-resource-manager/templates/overview.md), které také používají JavaScript Object Notation (JSON).
+Můžete [si stáhnout](../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource) Logic apps z [Azure Portal](https://portal.azure.com) a uložit je jako šablonu [Azure Resource Manager](../azure-resource-manager/management/overview.md) . Pak můžete místně upravit šablony pomocí sady Visual Studio a přizpůsobit Logic Apps pro různá prostředí nasazení.  Automatické stahování aplikací logiky *parameterizes* jejich definice v [šablonách správce prostředků](../azure-resource-manager/templates/overview.md), které také používají JavaScript Object Notation (JSON).
 
 1. V aplikaci Visual Studio pomocí Průzkumníka cloudu [otevřete aplikaci logiky, kterou chcete stáhnout z Azure](#open-designer).
 
@@ -230,7 +230,7 @@ Chcete-li zkontrolovat stav a diagnostikovat problémy s spuštěním aplikace l
 
    ![Otevření historie spuštění aplikace logiky](./media/manage-logic-apps-with-visual-studio/open-run-history-for-logic-app.png)
 
-1. Chcete-li zobrazit podrobnosti o konkrétním spuštění, dvakrát klikněte na spuštění. Příklad:
+1. Chcete-li zobrazit podrobnosti o konkrétním spuštění, dvakrát klikněte na spuštění. Například:
 
    ![Zobrazit informace o konkrétním běhu](./media/manage-logic-apps-with-visual-studio/view-run-history-details.png)
   
@@ -267,7 +267,7 @@ Pokud chcete aplikaci logiky odstranit z Azure Portal, v Průzkumníku cloudu ot
 > Pokud odstraníte a znovu vytvoříte podřízenou aplikaci logiky, musíte znovu uložit nadřazenou aplikaci logiky. Znovu vytvořená podřízená aplikace bude mít odlišná metadata.
 > Pokud neuložíte znovu nadřazenou aplikaci logiky po opětovném vytvoření podřízené aplikace, vaše volání podřízené aplikace logiky se nezdaří s chybou "Neautorizováno". Toto chování se vztahuje na aplikace logiky nadřazeného a podřízeného objektu, například na ty, které používají artefakty v integračních účtech nebo volají službu Azure Functions.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Když otevřete projekt aplikace logiky v Návrháři Logic Apps, nebudete mít možnost pro výběr vašeho předplatného Azure. Místo toho se aplikace logiky otevře s předplatným Azure, které není ten, který chcete použít. K tomuto chování dochází, protože po otevření souboru. JSON aplikace logiky Visual Studio uloží první vybrané předplatné do mezipaměti pro budoucí použití. Chcete-li tento problém vyřešit, zkuste jeden z následujících kroků:
 

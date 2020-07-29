@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/22/2020
 ms.author: baanders
-ms.openlocfilehash: 3f19674c0e25ebf5cddc2dfb45580a15d04fad46
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dcc616dd8d30bfadb751df9ba24d71d72675428a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096901"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371446"
 ---
 >[!NOTE]
 >Tyto operace mají být dokončeny uživatelem s rolí *vlastníka* v předplatném Azure. I když některé části je možné dokončit bez těchto oprávnění zvýšené úrovně, bude se muset spolupracovat vlastník, aby se úplně nastavila použitelná instance. Další informace najdete v části [*požadavky: požadovaná oprávnění*](#prerequisites-permission-requirements) níže.
@@ -38,6 +38,6 @@ Pokud jste vlastníkem, `roleDefinitionName` je hodnota ve výstupu *vlastníkem
 
 :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/owner-role.png" alt-text="Cloud Shell okno zobrazující výstup příkazu AZ role Assignment list":::
 
-Pokud zjistíte, že je hodnota *Přispěvatel* nebo jinou než *vlastník*, můžete se obrátit na vlastníka předplatného a pokračovat jedním z následujících způsobů:
-* Žádost, aby vlastník dokončil kroky v tomto článku vaším jménem
-* Požádejte vlastníka, aby na předplatné nastavil taky oprávnění, abyste mohli pokračovat sami. To, jestli je to vhodné, závisí na vaší organizaci a vaší roli.
+Pokud zjistíte, že hodnota je *Přispěvatel* nebo jiná než *vlastník*, můžete pokračovat jedním z následujících způsobů:
+* Obraťte se na vlastníka předplatného a požádejte ho o dokončení kroků v tomto článku vaším jménem.
+* Obraťte se na vlastníka předplatného nebo na uživatele s rolí správce přístupu uživatele v daném předplatném a požádejte ho, aby vám přistoupili k předplatnému, abyste měli oprávnění, abyste mohli pokračovat sami. To, jestli je to vhodné, závisí na vaší organizaci a vaší roli.

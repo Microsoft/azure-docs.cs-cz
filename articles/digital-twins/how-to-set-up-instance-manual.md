@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8d0e965360caab704bcf6c8f7d29e7bba421207e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d2d5ce0bc988badc6f25726206a953d87de7eaa2
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125883"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371447"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-manual"></a>Nastavení instance a ověřování pro digitální vlákna Azure (ruční)
 
@@ -35,7 +35,7 @@ V této části **vytvoříte novou instanci digitálních vláken Azure** pomoc
     az group create --location <region> --name <name-for-your-resource-group>
     ```
 * Oblast pro nasazení. Pokud chcete zjistit, které oblasti podporují digitální vlákna Azure, přejděte na [*produkty Azure dostupné v jednotlivých oblastech*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
-* Název vaší instance. Název nové instance musí být v rámci oblasti jedinečný (to znamená, že pokud se zvolený název už používá v jiné instanci digitálních vláken Azure v této oblasti, zobrazí se výzva k výběru jiného názvu).
+* Název vaší instance. Název nové instance musí být v rámci vašeho předplatného jedinečný (to znamená, že pokud má vaše předplatné jinou instanci digitálních vláken Azure v oblasti, která už používá zvolený název, zobrazí se výzva k výběru jiného názvu).
 
 Pomocí těchto hodnot v následujícím příkazu vytvořte instanci:
 
@@ -68,9 +68,8 @@ V této části se dozvíte, jak vytvořit přiřazení role pro uživatele v in
 
 Pokud chcete uživatelům udělit oprávnění ke správě instance digitálních vláken Azure, musíte jim přiřadit roli _**vlastník Azure Digital Realiass (Preview)**_ v rámci této instance. 
 
-Všimněte si, že tato role se liší od...
-* role *vlastníka* v celém předplatném Azure. *Vlastník digitálních vláken Azure (Preview)* je role v rámci digitálních vláken Azure a je vymezená na tuto jednotlivou instanci digitálních vláken Azure.
-* role *vlastníka* v digitálních prozdvojeních Azure. Jedná se o dvě odlišná role správy digitálních vláken Azure a *vlastník Azure Digital autoguards (Preview)* je role, která se má použít ke správě ve verzi Preview.
+> [!NOTE]
+> Všimněte si, že se tato role liší od role *vlastníka* Azure AD, kterou je také možné přiřadit v oboru instance digitálních vláken Azure. Jedná se o dvě odlišné role správy a *vlastník* Azure AD neuděluje přístup k funkcím roviny dat, které jsou uděleny s *vlastníkem digitálních vláken Azure (Preview)*.
 
 K přiřazení této role použijte následující příkaz (musí být spuštěný vlastníkem předplatného Azure):
 
@@ -100,7 +99,7 @@ Po nastavení instance digitálního vlákna Azure je běžné pracovat s touto 
 V této registraci aplikace nakonfigurujete přístupová oprávnění k [rozhraním API pro digitální vlákna Azure](how-to-use-apis-sdks.md). Později se klientská aplikace ověří proti registraci aplikace a v důsledku toho se jim přidělí nakonfigurovaná přístupová oprávnění k rozhraním API.
 
 >[!TIP]
-> Jako vlastník předplatného můžete chtít nastavit novou registraci aplikace pro každou novou instanci digitálních vláken Azure *nebo* to udělat jenom jednou a vytvořit jednu registraci aplikace, která se bude sdílet mezi všemi instancemi digitálních vláken Azure v předplatném. To je to, jak se provádí v rámci vlastního tenanta Microsoftu.
+> Jako vlastník předplatného můžete chtít nastavit novou registraci aplikace pro každou novou instanci digitálních vláken Azure *nebo* to udělat jenom jednou a vytvořit jednu registraci aplikace, která se bude sdílet mezi všemi instancemi digitálních vláken Azure v předplatném.
 
 ### <a name="create-the-registration"></a>Vytvořit registraci
 

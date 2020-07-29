@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 05527ff456c70290a925befc9d30fb1eaf177199
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 66b0ba083dc05c10dbf001eebcbbdfa269285c2e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008230"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318959"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Začínáme s agentem Azure Monitor Application Insights pro místní servery
 
@@ -20,7 +20,7 @@ Tyto příkazy podporují parametr prostředí PowerShell `-Proxy` .
 
 Vysvětlení těchto příkazů, pokyny k přizpůsobení a informace o řešení potíží najdete v [podrobných pokynech](status-monitor-v2-detailed-instructions.md).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="download-and-install-via-powershell-gallery"></a>Stažení a instalace prostřednictvím Galerie prostředí PowerShell
 
@@ -71,18 +71,19 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx
 
  Zobrazení telemetrických dat:
 
-- [Prozkoumejte metriky](../../azure-monitor/platform/metrics-charts.md) pro monitorování výkonu a využití.
-- [Prohledejte události a protokoly](../../azure-monitor/app/diagnostic-search.md) a Diagnostikujte problémy.
+- [Prozkoumejte metriky](../platform/metrics-charts.md) pro monitorování výkonu a využití.
+- [Prohledejte události a protokoly](./diagnostic-search.md) a Diagnostikujte problémy.
 - K pokročilejším dotazům [použijte Analytics](../log-query/log-query-overview.md) .
-- [Vytváření řídicích panelů](../../azure-monitor/app/overview-dashboard.md).
+- [Vytváření řídicích panelů](./overview-dashboard.md).
 
  Přidání další telemetrie:
 
 - [Vytvoření webových testů](monitor-web-app-availability.md) a ověření, jestli web zůstává živý.
-- [Přidejte telemetrii webového klienta](../../azure-monitor/app/javascript.md) pro zobrazení výjimek z kódu webové stránky a umožnění volání trasování.
-- [Přidejte sadu Application Insights SDK do kódu](../../azure-monitor/app/asp-net.md) , abyste mohli vložit trasování a protokolování volání.
+- [Přidejte telemetrii webového klienta](./javascript.md) pro zobrazení výjimek z kódu webové stránky a umožnění volání trasování.
+- [Přidejte sadu Application Insights SDK do kódu](./asp-net.md) , abyste mohli vložit trasování a protokolování volání.
 
 Další Application Insights agenta:
 
 - Přečtěte si [podrobné pokyny](status-monitor-v2-detailed-instructions.md) pro vysvětlení příkazů, které najdete tady.
 - Pomocí naší příručky můžete [řešit potíže s](status-monitor-v2-troubleshoot.md) agentem Application Insights.
+

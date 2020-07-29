@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: 45f9c56fce0c843d9f1ed069abf7d1ed6e2fa604
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76eee4b0b029714a75b57e5d44e097a36de3181f
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565911"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371409"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Správa služeb pro Azure Kognitivní hledání v Azure Portal
 
@@ -123,7 +123,7 @@ I když při přidávání replik funguje propustnost dotazů, při přidáván�
 
 Je běžnější přidat repliky, ale pokud je úložiště omezené, můžete přidat oddíly, abyste získali větší kapacitu. Úroveň, na které jste zřídili službu, určuje, jestli je možné přidat oddíly. Úroveň Basic je uzamčena v jednom oddílu. Úrovně Standard a vyšší podporují další oddíly.
 
-Oddíly se přidávají v násobcích 12 (konkrétně 1, 2, 3, 4, 6 nebo 12). Toto je artefakt horizontálního dělení. Index se vytvoří v 12 horizontálních oddílů, který se dá uložit na 1 oddíl nebo rovnoměrně rozdělit do 2, 3, 4, 6 nebo 12 oddílů (jeden horizontálních oddílů na oddíl).
+Oddíly se přidávají v děliteli 12 (konkrétně 1, 2, 3, 4, 6 nebo 12). Toto je artefakt horizontálního dělení. Index se vytvoří v 12 horizontálních oddílů, který se dá uložit na 1 oddíl nebo rovnoměrně rozdělit do 2, 3, 4, 6 nebo 12 oddílů (jeden horizontálních oddílů na oddíl).
 
 ### <a name="remove-replicas"></a>Odebrat repliky
 

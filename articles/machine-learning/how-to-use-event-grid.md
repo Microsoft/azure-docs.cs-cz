@@ -5,21 +5,22 @@ description: V Azure Machine Learning nastavte aplikace řízené událostmi, pr
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 5c4eae49b849b7dc5dbf7c27d50e241b2a4f36e4
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 3b6f115e27b5cf956a524bd1a610797c689b5d6c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135964"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319486"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Aktivovat aplikace, procesy nebo pracovní postupy CI/CD na základě Azure Machine Learningch událostí (Preview)
 
-V tomto článku se dozvíte, jak nastavit aplikace řízené událostmi, procesy nebo postupy CI/CD na základě Azure Machine Learningch událostí, jako jsou například e-maily s oznámením o selhání nebo spuštění kanálu ML, pokud jsou v [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/)zjištěny určité podmínky. 
+V tomto článku se dozvíte, jak nastavit aplikace řízené událostmi, procesy nebo postupy CI/CD na základě Azure Machine Learningch událostí, jako jsou například e-maily s oznámením o selhání nebo spuštění kanálu ML, pokud jsou v [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/)zjištěny určité podmínky.
 
 Azure Machine Learning spravuje celý životní cyklus procesu strojového učení, včetně školení modelů, nasazení modelů a monitorování. Event Grid můžete použít k reakci na Azure Machine Learning události, jako je dokončení školicích běhů, registrace a nasazení modelů a detekce posunu dat pomocí moderních architektur bez serveru. Pak se můžete přihlásit k odběru a spotřebovávat události, jako je například změna stavu spuštění, dokončení běhu, registrace modelu, nasazení modelu a detekce posunování dat v pracovním prostoru.
 
@@ -47,7 +48,7 @@ Další informace o zdrojích událostí a obslužných rutinách událostí naj
 
 Azure Machine Learning poskytuje události v různých místech životního cyklu machine learningu: 
 
-| Typ události | Description |
+| Typ události | Popis |
 | ---------- | ----------- |
 | `Microsoft.MachineLearningServices.RunCompleted` | Vyvoláno, když je dokončeno spuštění experimentu machine learningu. |
 | `Microsoft.MachineLearningServices.ModelRegistered` | Vyvolá se v případě, že je model strojového učení zaregistrován v pracovním prostoru. |

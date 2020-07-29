@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 07/28/2020
 ms.author: aahi
-ms.openlocfilehash: 3d9fb7f3fa01c06cc778e4062dd1d136e9c6e342
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f2ce8f300ae7586fc16fd9170ec290b19875d01c
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103394"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371120"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Co je nového v rozhraní API pro analýzu textu?
 
@@ -23,7 +23,7 @@ Rozhraní API pro analýzu textu se aktualizuje průběžně. V tomto článku n
 
 ## <a name="july-2020"></a>Červenec 2020
 
-### <a name="text-analytics-for-health-container-public-gated-preview"></a>Analýza textu pro veřejný ověřovaný náhled kontejneru stavu
+### <a name="text-analytics-for-health-container---public-gated-preview"></a>Analýza textu pro kontejner stavu – veřejná ověřovaná verze Preview
 
 Analýza textu pro kontejner Health je nyní ve veřejné službě gated Preview, která umožňuje extrakci informací z nestrukturovaného textu v angličtině v klinických dokumentech, jako jsou například formuláře pro příjem pacientů, lékařské poznámky, výzkumné doklady a souhrny vypouštění. V současné době se vám nebudou účtovat Analýza textu pro využití kontejneru stavů. 
 

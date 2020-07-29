@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
-ms.openlocfilehash: da59c0d54fa08194f9d77fc79754cbfbaca1a1e8
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 645d92a214f88985e1427ab24d350a6f85c0a076
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128399"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371375"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Osvědčené postupy pro zabezpečení webových a mobilních aplikací PaaS pomocí Azure Storage
 V tomto článku se zabýváme kolekcí Azure Storage osvědčených postupů zabezpečení pro zabezpečení vašich webových a mobilních aplikací PaaS (Platform as a Service). Tyto osvědčené postupy se odvozují z našich zkušeností s Azure a zkušeností zákazníků, jako je sami.
@@ -58,7 +58,7 @@ Další informace o sdíleném přístupovém podpisu najdete v tématu [použit
 ## <a name="use-role-based-access-control"></a>Použití řízení přístupu na základě rolí
 Dalším způsobem, jak spravovat přístup, je použití [řízení přístupu na základě role](/azure/role-based-access-control/overview) (RBAC). Pomocí RBAC se zaměříte na to, aby zaměstnanci měli přesně potřebná oprávnění, a to na základě nutnosti znát a nejnižší principy zabezpečení oprávnění. Příliš mnoho oprávnění může zpřístupnit účet pro útočníky. Příliš málo oprávnění znamená, že zaměstnanci nemůžou svou práci efektivně dělat. RBAC pomáhá vyřešit tento problém tím, že nabízí jemně odstupňovanou správu přístupu pro Azure. To je nezbytné pro organizace, které chtějí vyhovět zásadám zabezpečení pro přístup k datům.
 
-K přiřazení oprávnění uživatelům můžete použít předdefinované role RBAC v Azure. Například použijte Přispěvatel účtu úložiště pro operátory cloudu, kteří potřebují spravovat účty úložiště a roli Přispěvatel klasických účtů úložiště pro správu klasických účtů úložiště. Pro operátory cloudu, které potřebují spravovat virtuální počítače, ale ne virtuální síť nebo účet úložiště, ke kterým jsou připojené, je můžete přidat do role Přispěvatel virtuálních počítačů.
+K přiřazení oprávnění uživatelům můžete použít předdefinované role Azure v Azure. Například použijte Přispěvatel účtu úložiště pro operátory cloudu, kteří potřebují spravovat účty úložiště a roli Přispěvatel klasických účtů úložiště pro správu klasických účtů úložiště. Pro operátory cloudu, které potřebují spravovat virtuální počítače, ale ne virtuální síť nebo účet úložiště, ke kterým jsou připojené, je můžete přidat do role Přispěvatel virtuálních počítačů.
 
 Organizace, které vynutily řízení přístupu k datům pomocí možností, jako je RBAC, můžou udělit větší oprávnění, než je potřeba pro své uživatele. To může vést k ohrožení dat tím, že některým uživatelům umožní přístup k datům, která by neměla mít na prvním místě.
 

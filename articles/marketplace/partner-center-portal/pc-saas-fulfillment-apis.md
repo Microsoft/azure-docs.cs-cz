@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 218a0624f7e4adc1aa188dbd62db217bf79202f8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: d9413deb99ce938429d05f7c6348c5914e7dd2b1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109293"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87304135"
 ---
 # <a name="saas-fulfillment-apis-in-microsoft-commercial-marketplace"></a>Rozhraní API pro plnění SaaS na komerčním webu Microsoft Marketplace
 
@@ -45,7 +47,7 @@ Ve scénáři prodejce (CSP) si poskytovatel CSP koupí nabídku SaaS jménem ko
 
 Vydavatel není vyžadován pro implementaci jakýchkoli toků volání rozhraní API v tomto scénáři jinak.
 
-Další informace o CSP najdete v tématu https://partner.microsoft.com/en-us/licensing .
+Další informace o CSP najdete v tématu https://partner.microsoft.com/licensing .
 
 >[!Warning]
 >Aktuální verze tohoto rozhraní API je verze 2, která by se měla používat pro všechny nové nabídky SaaS. Verze 1 rozhraní API je zastaralá a udržuje se tak, aby podporovala stávající nabídky.

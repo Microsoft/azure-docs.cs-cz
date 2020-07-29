@@ -4,16 +4,16 @@ description: Tento článek je dodatek pro Microsoft Azure šifrování disku pr
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
-ms.topic: article
+ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5e7b22a8010d7dfbdeeaeae623a55c1aff9c006c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ab6ef302d2ac3cbca8bb91c05f994c1ddf19bd1e
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510493"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87370253"
 ---
 # <a name="azure-disk-encryption-sample-scripts-for-linux-vms"></a>Azure Disk Encryption ukázkové skripty pro virtuální počítače se systémem Linux
 
@@ -49,9 +49,9 @@ Následující tabulka ukazuje, které parametry lze použít ve skriptu prostř
 |$keyVaultName|Název trezoru klíčů, do kterého se mají umístit šifrovací klíče Pokud jeden z nich neexistuje, vytvoří se nový trezor s tímto názvem.| Ano|
 |$location|Umístění trezoru klíčů. Zajistěte, aby byl Trezor klíčů a virtuální počítače zašifrované ve stejném umístění. Seznam umístění získáte pomocí rutiny `Get-AzLocation`.|Ano|
 |$subscriptionId|Identifikátor předplatného Azure, který se má použít  Své ID předplatného můžete získat pomocí rutiny `Get-AzSubscription`.|Ano|
-|$aadAppName|Název aplikace služby Azure AD, která bude použita k zápisu tajných kódů do trezoru klíčů. Pokud aplikace se zadaným názvem neexistuje, vytvoří se nová. Pokud tato aplikace již existuje, předejte do skriptu parametr aadClientSecret.|Nepravda|
-|$aadClientSecret|Tajný kód klienta aplikace Azure AD, který byl vytvořen dříve.|Nepravda|
-|$keyEncryptionKeyName|Název volitelného šifrovacího klíče klíče v trezoru klíčů. Pokud neexistuje, vytvoří se nový klíč s tímto názvem.|Nepravda|
+|$aadAppName|Název aplikace služby Azure AD, která bude použita k zápisu tajných kódů do trezoru klíčů. Pokud aplikace se zadaným názvem neexistuje, vytvoří se nová. Pokud tato aplikace již existuje, předejte do skriptu parametr aadClientSecret.|Ne|
+|$aadClientSecret|Tajný kód klienta aplikace Azure AD, který byl vytvořen dříve.|Ne|
+|$keyEncryptionKeyName|Název volitelného šifrovacího klíče klíče v trezoru klíčů. Pokud neexistuje, vytvoří se nový klíč s tímto názvem.|Ne|
 
 
 ### <a name="encrypt-or-decrypt-vms-without-an-azure-ad-app"></a>Šifrování nebo dešifrování virtuálních počítačů bez aplikace Azure AD
@@ -227,7 +227,7 @@ Nakonfigurujte šifrování pro práci s Azure pomocí následujících kroků:
     fi
    ```
 
-2. Změňte konfiguraci nešifrovaných oznámení v */etc/crypttab*. Mělo by to vypadat takto:
+2. Změňte konfiguraci nešifrovaných oznámení v */etc/crypttab*. Měl by vypadat takto:
    ```
     xxx_crypt uuid=xxxxxxxxxxxxxxxxxxxxx none luks,discard,keyscript=/usr/local/sbin/azure_crypt_key.sh
     ```

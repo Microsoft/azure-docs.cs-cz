@@ -3,12 +3,12 @@ title: Režimy nasazení
 description: Popisuje, jak určit, jestli se má použít kompletní nebo přírůstkový režim nasazení s Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: f20f41e989e1a994b7806aecf6e7cee5a4c27014
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e584acd4af1dc6adb5f5d383acd5d16da0815f32
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040433"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371579"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Režimy nasazení Azure Resource Manager
 
@@ -29,7 +29,7 @@ Pokud vaše šablona obsahuje prostředek, který není nasazený, protože [Pod
 
 Použití kompletního režimu s [kopírováním smyček](copy-resources.md)vám bude opatrní. Všechny prostředky, které nejsou zadány v šabloně po vyřešení smyčky kopírování, jsou odstraněny.
 
-Pokud nasadíte do [více než jedné skupiny prostředků v šabloně](cross-resource-group-deployment.md), prostředky ve skupině prostředků zadané v rámci operace nasazení mají nárok na odstranění. Prostředky v sekundárních skupinách prostředků se neodstraňují.
+Pokud nasadíte do [více než jedné skupiny prostředků v šabloně](cross-scope-deployment.md), prostředky ve skupině prostředků zadané v rámci operace nasazení mají nárok na odstranění. Prostředky v sekundárních skupinách prostředků se neodstraňují.
 
 Existují určité rozdíly ve způsobu, jakým typy prostředků zpracovávají kompletní odstranění režimu. Nadřazené prostředky se odstraní automaticky, když nejsou v šabloně, která je nasazena v úplném režimu. Některé podřízené prostředky nejsou automaticky odstraněny, pokud nejsou v šabloně. Tyto podřízené prostředky se ale odstraní, pokud se odstraní nadřazený prostředek.
 

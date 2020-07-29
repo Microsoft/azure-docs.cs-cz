@@ -6,14 +6,15 @@ author: nibaccam
 ms.author: nibaccam
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 9aec584271975982e1d58cc3525faee0d403e1af
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 05ecce2d6ef0f8a3f241570ba9364c5e38682f3e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87048077"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319435"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>Vytvoření a zkoumání Azure Machine Learning datové sady s popisky
 
@@ -23,7 +24,7 @@ V tomto článku se dozvíte, jak exportovat popisky dat z Azure Machine Learnin
 
 Azure Machine Learning datové sady s popisky jsou [TabularDatasets](how-to-create-register-datasets.md#dataset-types) s vlastností Label, budeme na ně odkazovat jako na datové sady s popisky. Tyto konkrétní typy TabularDatasets jsou vytvořeny pouze jako výstup Azure Machine Learning projektů pro označování dat. Pomocí [těchto kroků](how-to-create-labeling-projects.md)vytvořte projekt pro označování dat. Machine Learning podporuje popisky dat pro klasifikaci obrázků, a to buď s více popisky, nebo s více třídami, a identifikacemi objektů společně s ohraničenými poli.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree) před tím, než začnete.
 * [Sada SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)nebo přístup k [Azure Machine Learning Studiu](https://ml.azure.com/).

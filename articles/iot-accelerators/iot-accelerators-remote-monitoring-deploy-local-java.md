@@ -3,17 +3,18 @@ title: Nasazení řešení vzdáleného monitorování místně – IntelliJ IDE
 description: V této příručce se dozvíte, jak nasadit akcelerátor řešení vzdáleného monitorování do místního počítače pomocí IntelliJ pro testování a vývoj.
 author: v-krghan
 manager: dominicbetts
+ms.custom: devx-track-java
 ms.author: v-krghan
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: b201200ebf6807d7301dfd8c52e3137a29784eb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7554843db247ade1cddff78902430a5d84debe1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82187207"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319163"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>Nasazení akcelerátoru řešení vzdáleného monitorování místně – IntelliJ
 
@@ -199,7 +200,7 @@ Chcete-li získat přístup ke stavu služeb, přejděte na následující adres
 
 Pomocí následujících kroků spusťte úlohu Stream Analytics:
 
-1. Přejít na [Azure Portal](https://portal.azure.com).
+1. Přejděte na [Azure Portal](https://portal.azure.com).
 1. Přejít na **skupinu prostředků** vytvořenou pro vaše řešení. Název skupiny prostředků je název, který jste zvolili pro vaše řešení při spuštění skriptu **Start. cmd** .
 1. V seznamu prostředků vyberte **úlohu Stream Analytics** .
 1. Na stránce **Přehled** úlohy Stream Analytics vyberte tlačítko **Start** a potom výběrem tlačítka **Spustit** spusťte úlohu.

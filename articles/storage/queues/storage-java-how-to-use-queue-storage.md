@@ -2,18 +2,19 @@
 title: Používání úložiště Queue z Azure Storage Java
 description: Naučte se používat úložiště Queue k vytváření a odstraňování front a vkládání, získávání a odstraňování zpráv pomocí Azure Storage klientské knihovny pro Java.
 author: mhopkins-msft
+ms.custom: devx-track-java
 ms.author: mhopkins
 ms.date: 12/08/2016
 ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: a0c94f3c9af9220bb3cf6476c50799d1f3313ffc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17e5a542bc951df5b40144490f05e41aec1a09e8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809247"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319418"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>Používání úložiště Queue z Javy
 

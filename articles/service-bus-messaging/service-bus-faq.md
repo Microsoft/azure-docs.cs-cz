@@ -3,12 +3,12 @@ title: Nejčastější dotazy k Azure Service Bus | Microsoft Docs
 description: Tento článek obsahuje odpovědi na některé nejčastější dotazy týkající se Azure Service Bus.
 ms.topic: article
 ms.date: 07/15/2020
-ms.openlocfilehash: 01d7869a158a3c2b5418f38f2a5d88fc161796c4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 04ff12d28be1dd232c5666b17d8a121f8020ca89
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083850"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371239"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure Service Bus (FAQ)
 
@@ -78,7 +78,7 @@ Pokud používáte redundanci zóny pro svůj obor názvů, musíte provést ně
 3. Spusťte nástroj nslookup pro každý z nich s příponami S1, S2 a S3 k získání IP adres všech tří instancí spuštěných ve třech zónách dostupnosti. 
 
 ### <a name="where-can-i-find-the-ip-address-of-the-client-sendingreceiving-messages-tofrom-a-namespace"></a>Kde najdu IP adresu klienta odesílajícího/přijímaného zprávy do/z oboru názvů? 
-Nebudeme protokolovat IP adresy klientů odesílajících nebo přijímaných zpráv do a z vašeho oboru názvů. Znovu vygenerujte klíče, aby se u všech stávajících klientů nepovedlo ověřit a zkontrolovat nastavení řízení přístupu na základě rolí ([RBAC](authenticate-application.md#built-in-rbac-roles-for-azure-service-bus)), aby se zajistilo, že přístup k oboru názvů má jenom povolený uživatel nebo aplikace. 
+Nebudeme protokolovat IP adresy klientů odesílajících nebo přijímaných zpráv do a z vašeho oboru názvů. Znovu vygenerujte klíče, aby se u všech stávajících klientů nepovedlo ověřit a zkontrolovat nastavení řízení přístupu na základě rolí ([RBAC](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)), aby se zajistilo, že přístup k oboru názvů má jenom povolený uživatel nebo aplikace. 
 
 Pokud používáte obor názvů **Premium** , omezte přístup k oboru názvů pomocí [filtrování IP adres](service-bus-ip-filtering.md), [koncových bodů služby virtuální sítě](service-bus-service-endpoints.md)a [privátních koncových bodů](private-link-service.md) . 
 
@@ -124,7 +124,7 @@ Seznam limitů a kvót Service Bus najdete v tématu [Přehled kvót Service Bus
 ### <a name="how-to-handle-messages-of-size--1-mb"></a>Jak zpracovávat zprávy o velikosti > 1 MB?
 Služba Service Bus Messaging Services (fronty a témata/odběry) umožňuje aplikaci posílat zprávy o velikosti až 256 KB (úroveň Standard) nebo 1 MB (úroveň Premium). Pokud pracujete se zprávami o velikosti větší než 1 MB, použijte vzor kontroly deklarací identity popsaný v [tomto blogovém příspěvku](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern).
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 ### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Proč nemůžu vytvořit obor názvů po jeho odstranění z jiného předplatného? 
 Když odstraníte obor názvů z předplatného, počkejte 4 hodiny, než ho znovu vytvoříte se stejným názvem v jiném předplatném. V opačném případě se může zobrazit následující chybová zpráva: `Namespace already exists` . 
 

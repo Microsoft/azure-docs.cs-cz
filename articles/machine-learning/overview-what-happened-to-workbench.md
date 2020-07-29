@@ -5,16 +5,18 @@ description: Přečtěte si o tom, co je možné bez aplikace Workbench a jak se
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 03/05/2020
-ms.openlocfilehash: 53f8fb79e965c09ad59ada085b9cfd27014bd140
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa9b99f1ad2a81e7edac4574324d9f883effe19c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84433066"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318806"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Co se stalo s aplikací Azure Machine Learning Workbench?
 
@@ -66,7 +68,7 @@ Spusťte školení modelů a sledování historií spuštění pomocí nových r
 
 Neztratíte žádný kód ani práci. Ve starší verzi jsou projekty cloudové entity s místním adresářem. V nejnovější verzi se místní adresáře připojovat k Azure Machine Learningmu pracovnímu prostoru pomocí místního konfiguračního souboru. Podívejte se na [diagram nejnovější architektury](concept-azure-machine-learning-architecture.md).
 
-Většina obsahu projektu již byla na vašem místním počítači. Takže stačí vytvořit konfigurační soubor v tomto adresáři a odkázat ho na něj v kódu, abyste se připojili k vašemu pracovnímu prostoru. Chcete-li pokračovat v používání místního adresáře, který obsahuje soubory a skripty, zadejte název adresáře v příkazu ["experiment. Submit"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) v Pythonu nebo pomocí `az ml project attach` příkazu CLI.  Příklad:
+Většina obsahu projektu již byla na vašem místním počítači. Takže stačí vytvořit konfigurační soubor v tomto adresáři a odkázat ho na něj v kódu, abyste se připojili k vašemu pracovnímu prostoru. Chcete-li pokračovat v používání místního adresáře, který obsahuje soubory a skripty, zadejte název adresáře v příkazu ["experiment. Submit"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) v Pythonu nebo pomocí `az ml project attach` příkazu CLI.  Například:
 ```python
 run = exp.submit(source_directory=script_folder,
                  script='train.py', run_config=run_config_system_managed)

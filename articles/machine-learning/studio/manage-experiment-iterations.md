@@ -1,6 +1,5 @@
 ---
-title: Zobrazit & opakované experimenty
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (Classic): zobrazení & opětovného spuštění experimentů – Azure'
 description: Spravujte experimenty v Azure Machine Learning Studio (Classic). Předchozí běhy experimentů můžete kdykoli projít, abyste mohli vyvolávat výzvu, znovu přejít a nakonec buď potvrdit nebo Upřesnit předchozí předpoklady.
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: 0e6d4312850dc16b76e248c9bbceacd8b5311d5a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc7858010ea43f676a43f8bf16e228c8248805bf
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687391"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318517"
 ---
 # <a name="manage-experiment-runs-in-azure-machine-learning-studio-classic"></a>Správa experimentů v Azure Machine Learning Studio (Classic)
+
+**platí pro:** ![ žádná](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasická) 
+
 
 Vývoj modelu prediktivní analýzy je iterativní proces – při úpravě různých funkcí a parametrů experimentu se vaše výsledky konvergují, dokud nebudete přesvědčeni, že máte vyškolený a efektivní model. Klíč k tomuto procesu sleduje různé iterace parametrů experimentu a konfigurací.
 
@@ -42,7 +45,7 @@ Předpokládejme například, že vytvoříte experiment s modulem [lineární r
 | 0.1 |9/11/2014 4:18:58 ODP. |
 | 0.2 |9/11/2014 4:24:33 ODP. |
 | 0.4 |9/11/2014 4:28:36 odp. |
-| 0,5 |9/11/2014 4:33:31 ODP. |
+| 0.5 |9/11/2014 4:33:31 ODP. |
 
 Pokud kliknete na **Zobrazit historii spuštění**, zobrazí se seznam všech těchto spuštění:
 

@@ -3,12 +3,12 @@ title: Přehled funkcí zabezpečení
 description: Seznamte se s možnostmi zabezpečení v Azure Backup, které vám pomůžou chránit data záloh a splňovat požadavky vaší firmy na zabezpečení.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 750ad7b10969ef5f83e0b5058e350066d3f97351
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 944ef2e86ad8e56501692b29d0958bc4fc19bf0a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87062595"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319299"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Přehled funkcí zabezpečení v Azure Backup
 
@@ -42,13 +42,17 @@ Pomocí [privátních koncových bodů](../private-link/private-endpoint-overvie
 
 [Tady](./private-endpoints.md)si můžete přečíst další informace o privátních koncových bodech pro Azure Backup.
 
-## <a name="encryption-of-data-in-transit-and-at-rest"></a>Šifrování dat při přenosu a v klidovém režimu
+## <a name="encryption-of-data"></a>Šifrování dat
 
-Šifrování chrání vaše data a pomáhá splnit závazky zabezpečení a dodržování předpisů vaší organizace. V rámci Azure jsou data přenášená mezi službou Azure Storage a trezorem chráněná protokolem HTTPS. Tato data zůstávají v páteřní síti Azure.
+Šifrování chrání vaše data a pomáhá splnit závazky zabezpečení a dodržování předpisů vaší organizace. K šifrování dat dochází v mnoha fázích Azure Backup:
 
-* Zálohovaná data se automaticky šifrují pomocí klíčů spravovaných Microsoftem. Pomocí [zákaznických klíčů](backup-encryption.md#encryption-of-backup-data-using-customer-managed-keys) uložených v Azure Key Vault můžete také zašifrovat zálohované virtuální počítače se spravovanými disky v úložišti Recovery Services. K povolení tohoto šifrování nemusíte provádět žádnou explicitní akci. Platí pro všechny úlohy, které se zálohují do vašeho trezoru Recovery Services.
+* V rámci Azure jsou data přenášená mezi službou Azure Storage a trezorem [chráněná protokolem HTTPS](backup-support-matrix.md#network-traffic-to-azure). Tato data zůstávají v páteřní síti Azure.
 
-* Azure Backup podporuje zálohování a obnovení virtuálních počítačů Azure, které mají svoje disky s operačním systémem nebo daty šifrované pomocí Azure Disk Encryption (ADE). [Přečtěte si další informace o šifrovaných virtuálních počítačích Azure a Azure Backup](./backup-azure-vms-encryption.md).
+* Zálohovaná data se automaticky šifrují pomocí [klíčů spravovaných Microsoftem](backup-encryption.md#encryption-of-backup-data-using-platform-managed-keys)a vy nemusíte provádět žádnou explicitní akci, abyste ji mohli povolit. Zálohovaná data můžete také šifrovat pomocí [zákaznických spravovaných klíčů](encryption-at-rest-with-cmk.md) uložených v Azure Key Vault. Platí pro všechny úlohy, které se zálohují do vašeho trezoru Recovery Services.
+
+* Azure Backup podporuje zálohování a obnovení virtuálních počítačů Azure, které mají svoje disky s operačním systémem nebo daty zašifrované pomocí [Azure Disk Encryption (ADE)](backup-encryption.md#backup-of-vms-encrypted-using-ade) a [virtuálních počítačů s CMK šifrovanými disky](backup-encryption.md#backup-of-managed-disk-vms-encrypted-using-customer-managed-keys). Další informace najdete v informacích [o šifrovaných virtuálních počítačích Azure a Azure Backup](./backup-azure-vms-encryption.md).
+
+* Když se data zálohují z místních serverů s agentem MARS, data se před odesláním do Azure Backup a dešifrují až po stažení z Azure Backup pomocí hesla. Přečtěte si další informace o [funkcích zabezpečení, které vám pomůžou chránit hybridní zálohy](#security-features-to-help-protect-hybrid-backups).
 
 ## <a name="protection-of-backup-data-from-unintentional-deletes"></a>Ochrana zálohovaných dat před neúmyslnými odstraněními
 

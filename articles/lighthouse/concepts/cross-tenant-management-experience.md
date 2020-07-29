@@ -1,14 +1,14 @@
 ---
 title: Prostředí pro správu napříč tenanty
 description: Správa delegovaných prostředků v Azure umožňuje prostředí pro správu mezi klienty.
-ms.date: 07/17/2020
+ms.date: 07/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: be4f9581e8a276b4296faedb65691232dee2ea95
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 979891a3ebea8070c6882fff62ed4a7954041d3e
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090412"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371034"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
@@ -82,6 +82,7 @@ Většinu úkolů a služeb je možné provádět na delegovaných prostředcíc
 - Zobrazit podrobnosti protokolu aktivit pro delegované odběry
 - Log Analytics: dotazování dat ze vzdálených pracovních prostorů zákazníka ve více klientech
 - Vytváření výstrah v klientech zákazníka, kteří spouštějí automatizaci, například Azure Automation Runbooky nebo Azure Functions v tenantovi poskytovatele služeb prostřednictvím webhooků
+- Pro úlohy SAP [Sledujte metriky řešení SAP s agregovaným zobrazením napříč klienty zákazníka](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293) .
 
 [Sítě Azure](../../networking/networking-overview.md):
 

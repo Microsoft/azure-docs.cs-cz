@@ -3,15 +3,16 @@ title: Připojení k Office 365 Outlooku
 description: Automatizace úloh a pracovních postupů, které spravují e-maily, kontakty a kalendáře v Office 365 Outlooku pomocí Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: article
-ms.date: 01/08/2020
+ms.date: 07/27/2020
 tags: connectors
-ms.openlocfilehash: b0f2b8b9c369fdb42c7e0e7f77fc090424ae3729
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa5be3d58ee1a0a40d0b817e1f5999ccd4bc423d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75732665"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319231"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>Správa e-mailů, kontaktů a kalendářů v Office 365 Outlooku s využitím Azure Logic Apps
 
@@ -28,9 +29,9 @@ Libovolný Trigger můžete použít ke spuštění pracovního postupu, napří
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Účet Office 365](https://www.office.com/)
+* Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
-* Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
+* [Účet Office 365](https://www.office.com/)
 
 * Aplikace logiky, ke které chcete získat přístup k účtu Office 365 Outlook. Abyste mohli pracovní postup spustit pomocí triggeru Office 365 Outlooku, musíte mít [prázdnou aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Chcete-li do pracovního postupu přidat akci sady Office 365 Outlook, aplikace logiky musí mít již Trigger.
 
@@ -45,6 +46,9 @@ Libovolný Trigger můžete použít ke spuštění pracovního postupu, napří
    ![Výběr triggeru pro spuštění aplikace logiky](./media/connectors-create-api-office365-outlook/office365-trigger.png)
 
 1. Pokud se zobrazí výzva k přihlášení, zadejte přihlašovací údaje pro Office 365, aby se vaše aplikace logiky mohla připojit k vašemu účtu. V opačném případě, pokud vaše připojení již existuje, zadejte informace o vlastnostech triggeru.
+
+   > [!NOTE]
+   > Vaše připojení nevyprší, dokud nebude zrušeno, a to ani v případě, že změníte přihlašovací údaje pro přihlášení. Další informace najdete v tématu [konfigurovatelné životnosti tokenů v Azure Active Directory](../active-directory/active-directory-configurable-token-lifetimes.md).
 
    V tomto příkladu se vybere kalendář, který Trigger kontroluje, například:
 
@@ -76,6 +80,9 @@ Teď přidejte akci, která se spustí po aktivování triggeru. Můžete např�
 
 1. Pokud se zobrazí výzva k přihlášení, zadejte přihlašovací údaje pro Office 365, aby se vaše aplikace logiky mohla připojit k vašemu účtu. V opačném případě, pokud vaše připojení již existuje, zadejte informace o vlastnostech akce.
 
+   > [!NOTE]
+   > Vaše připojení nevyprší, dokud nebude zrušeno, a to ani v případě, že změníte přihlašovací údaje pro přihlášení. Další informace najdete v tématu [konfigurovatelné životnosti tokenů v Azure Active Directory](../active-directory/active-directory-configurable-token-lifetimes.md).
+
    V tomto příkladu se vybere složka kontaktů, kde akce vytvoří nový kontakt, například:
 
    ![Konfigurace vlastností akce](./media/connectors-create-api-office365-outlook/select-contacts-folder.png)
@@ -84,9 +91,9 @@ Teď přidejte akci, která se spustí po aktivování triggeru. Můžete např�
 
 1. Na panelu nástrojů návrháře vyberte **Uložit**.
 
-## <a name="connector-specific-details"></a>Podrobnosti specifické pro spojnici
+## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Technické podrobnosti o aktivačních událostech, akcích a omezeních, jak je popsáno v souboru Swagger konektoru, najdete na [referenční stránce konektoru](/connectors/office365connector/). 
+Technické podrobnosti o této spojnici, jako jsou triggery, akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete na [referenční stránce konektoru](/connectors/office365/). 
 
 ## <a name="next-steps"></a>Další kroky
 

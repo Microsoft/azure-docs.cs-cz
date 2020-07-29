@@ -3,12 +3,12 @@ title: Ověření aplikace pro přístup k prostředkům Azure Event Hubs
 description: Tento článek poskytuje informace o ověřování aplikace s Azure Active Directory pro přístup k prostředkům Azure Event Hubs.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 56c9033d5b44fde50ebac25bf194cbea486ad387
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 1def026b1f188eba85ad5a86bf963ba1964b768a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131935"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371528"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Ověření aplikace s Azure Active Directory pro přístup k prostředkům Event Hubs
 Microsoft Azure poskytuje integrované řízení přístupu pro prostředky a aplikace založené na Azure Active Directory (Azure AD). Klíčovou výhodou použití Azure AD s Azure Event Hubs je, že už nemusíte ukládat přihlašovací údaje do kódu. Místo toho můžete požádat o přístupový token OAuth 2,0 z platformy Microsoft Identity Platform. Název prostředku pro vyžádání tokenu `https://eventhubs.azure.net/` (pro klienty Kafka je prostředek k vyžádání tokenu `https://<namespace>.servicebus.windows.net` ). Azure AD ověřuje objekt zabezpečení (uživatel, skupina nebo instanční objekt), který spouští aplikaci. Pokud je ověření úspěšné, služba Azure AD vrátí přístupový token do aplikace a aplikace pak může pomocí přístupového tokenu autorizovat požadavky na prostředky Azure Event Hubs.
@@ -19,7 +19,7 @@ Když je role přiřazená k objektu zabezpečení Azure AD, poskytuje Azure př
 > Definice role je kolekce oprávnění. Řízení přístupu na základě role (RBAC) řídí způsob, jakým se tato oprávnění uplatňují prostřednictvím přiřazení role. Přiřazení role se skládá ze tří prvků: objekt zabezpečení, definice role a obor. Další informace najdete v tématu [porozumění různým rolím](../role-based-access-control/overview.md).
 
 ## <a name="built-in-roles-for-azure-event-hubs"></a>Předdefinované role pro Azure Event Hubs
-Azure poskytuje následující předdefinované role RBAC pro autorizaci přístupu k Event Hubs datům pomocí Azure AD a OAuth:
+Azure poskytuje následující předdefinované role Azure pro autorizaci přístupu k Event Hubs datům pomocí Azure AD a OAuth:
 
 - [Vlastník dat Event Hubs Azure](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner): pomocí této role získáte úplný přístup k prostředkům Event Hubs.
 - [Datový odesílatel Azure Event Hubs](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender): tuto roli použijte, pokud chcete udělit přístup k prostředkům Event Hubs.
@@ -98,7 +98,7 @@ Po zaregistrování aplikace a udělení oprávnění IT k posílání a přijí
 
 Seznam scénářů, pro které se podporují tokeny, najdete v části [scénáře](https://aka.ms/msal-net-scenarios) v [knihovně Microsoft Authentication Library (MSAL) pro](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) úložiště GitHub .NET.
 
-## <a name="samples"></a>Ukázky
+## <a name="samples"></a>ukázky
 - [Ukázky Microsoft. Azure. EventHubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac) 
     
     Tyto ukázky používají starou knihovnu **Microsoft. Azure. EventHubs** , ale můžete ji snadno aktualizovat tak, aby používala nejnovější knihovnu **Azure. Messaging. EventHubs** . Postup přesunutí ukázky z použití staré knihovny do nové verze najdete v [Průvodci migrací z Microsoft. Azure. EventHubs do Azure. Messaging. EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md).

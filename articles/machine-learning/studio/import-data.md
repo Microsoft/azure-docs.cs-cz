@@ -1,6 +1,5 @@
 ---
-title: Import trénovacích dat
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (Classic): import školicích dat – Azure'
 description: Jak importovat data do Azure Machine Learning Studio (Classic) z různých zdrojů dat. Zjistěte, jaké datové typy a datové formáty jsou podporovány.
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: fa031e6e23c218ff2ca8e2ef3e778768fabb1ebb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b04c9c1796491622a76e2c2a2fbfcdcc0c624dda
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321471"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318534"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>Import školicích dat do Azure Machine Learning Studio (Classic) z různých zdrojů dat
+
+**platí pro:** ![ žádná](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasická) 
+
 
 Pokud chcete používat vlastní data v Machine Learning Studio (Classic) k vývoji a výukovém řešení prediktivní analýzy, můžete použít data z: 
 
@@ -65,8 +67,8 @@ Můžete explicitně zadat nebo změnit záhlaví a datové typy pro sloupce pom
 Studio (Classic) rozpozná následující typy dat:
 
 * Řetězec
-* Integer
-* Double
+* Celé číslo
+* dvojité
 * Logická hodnota
 * Datum a čas
 * TimeSpan
@@ -134,7 +136,7 @@ Pomocí modulu [Import dat][import-data] můžete získat přístup k datům z j
 * Hadoop pomocí HiveQL
 * Azure Blob Storage
 * Tabulka Azure
-* Azure SQL Database. Spravovaná instance SQL nebo SQL Server
+* Azure SQL Database Spravovaná instance SQL nebo SQL Server
 * Zprostředkovatel datového kanálu, OData aktuálně
 * Azure Cosmos DB
 
@@ -155,7 +157,7 @@ Online zdroje dat, které jsou podporovány, jsou vypsány v následující tabu
 ### <a name="supported-online-data-sources"></a>Podporované online zdroje dat
 Modul **Import dat** Azure Machine Learning Studio (Classic) podporuje následující zdroje dat:
 
-| Zdroj dat | Description | Parametry |
+| Zdroj dat | Popis | Parametry |
 | --- | --- | --- |
 | Webová adresa URL přes HTTP |Čte data v hodnotách oddělených čárkami (CSV), hodnot oddělených tabulátory (TSV), formát souboru relací atributů (ARFF) a podporují formáty vektorových počítačů (SVM-Light) z libovolné webové adresy URL, která používá protokol HTTP. |<b>Adresa URL</b>: Určuje úplný název souboru včetně adresy URL webu a názvu souboru s libovolným rozšířením. <br/><br/><b>Formát dat</b>: Určuje jeden z podporovaných formátů dat: CSV, TSV, arff nebo SVM-Light. Pokud data obsahují řádek záhlaví, slouží k přiřazení názvů sloupců. |
 | Hadoop/HDFS |Načte data z distribuovaného úložiště v Hadoop. Požadovaná data určíte pomocí HiveQL dotazovacího jazyka, který se podobá jazyku SQL. HiveQL lze také použít k agregaci dat a filtrování dat před přidáním dat do studia (Classic). |<b>Dotaz na databázi podregistru</b>: určuje dotaz na podregistr použitý k vygenerování dat.<br/><br/><b>Identifikátor URI serveru HCatalog</b> : zadali jste název vašeho clusteru ve formátu * &lt; název vašeho clusteru &gt; . azurehdinsight.NET.*<br/><br/><b>Název uživatelského účtu Hadoop</b>: Určuje název uživatelského účtu Hadoop, který se používá k zřízení clusteru.<br/><br/><b>Heslo uživatelského účtu Hadoop</b> : Určuje přihlašovací údaje, které se použijí při zřizování clusteru. Další informace najdete v tématu [vytváření clusterů Hadoop ve službě HDInsight](/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters).<br/><br/><b>Umístění výstupních dat</b>: Určuje, jestli jsou data uložená v systému Hadoop Distributed File System (HDFS) nebo v Azure. <br/><ul>Pokud ukládáte výstupní data do HDFS, zadejte identifikátor URI serveru HDFS. (Nezapomeňte použít název clusteru HDInsight bez předpony HTTPS://). <br/><br/>Pokud ukládáte výstupní data do Azure, musíte zadat název účtu úložiště Azure, přístupový klíč úložiště a název kontejneru úložiště.</ul> |

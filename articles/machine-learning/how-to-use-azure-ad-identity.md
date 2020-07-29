@@ -8,20 +8,21 @@ author: BlackMist
 ms.reviewer: aashishb
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.date: 02/10/2020
-ms.openlocfilehash: aa434a4e19321e88e388661ccb488f15c98d3a0f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: f76e149339e80ddeba8431afffbd677a4b595ec3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078077"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319469"
 ---
 # <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>Použití identity Azure AD s webovou službou Machine Learning ve službě Azure Kubernetes
 
 V tomto postupu se dozvíte, jak přiřadit identitu služby Azure Active Directory (AAD) k nasazenému modelu Machine Learning ve službě Azure Kubernetes. Projekt [AAD pod identitou](https://github.com/Azure/aad-pod-identity) umožňuje aplikacím zabezpečeně přistupovat ke cloudovým prostředkům pomocí AAD pomocí [spravovaných identit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) a Kubernetes primitiv. Díky tomu může vaše webová služba zabezpečeně přistupovat k prostředkům Azure bez nutnosti vkládat přihlašovací údaje nebo spravovat tokeny přímo ve vašem `score.py` skriptu. Tento článek popisuje kroky pro vytvoření a instalaci identity Azure v clusteru služby Azure Kubernetes a přiřazení identity k nasazené webové službě.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Rozšíření Azure CLI pro službu Machine Learning](reference-azure-machine-learning-cli.md), [sadu Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)nebo [rozšíření Azure Machine Learning Visual Studio Code](tutorial-setup-vscode-extension.md).
 

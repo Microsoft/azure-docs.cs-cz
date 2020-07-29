@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: tamram
-ms.openlocfilehash: 4ade2c2e60373298eecf4e85df7fffeae4f45207
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79712c50a5ad46d7d435868606011f458fe48e2e
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82176616"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87370747"
 ---
 # <a name="manage-storage-account-access-keys"></a>Správa přístupových klíčů účtu úložiště
 
@@ -65,7 +65,7 @@ az storage account keys list \
 
 Pro přístup k Azure Storage můžete použít kterýkoli ze dvou klíčů, ale obecně je dobrým zvykem použít první klíč a při střídání klíčů rezervovat použití druhého klíče.
 
-Chcete-li zobrazit nebo číst přístupové klíče účtu, musí být uživatel buď správcem služby, nebo musí být přiřazena role RBAC, která zahrnuje **Microsoft. Storage/storageAccounts/klíče listkey/Action**. Mezi předdefinované role RBAC, které zahrnují tuto akci, patří role **vlastníka**, **přispěvatele**a **role služby operátora klíče účtu úložiště** . Další informace o roli správce služby najdete v tématu [role správců pro klasický odběr, role Azure RBAC a role Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md). Podrobné informace o předdefinovaných rolích pro Azure Storage najdete v části **úložiště** v [předdefinovaných rolích Azure pro službu Azure RBAC](../../role-based-access-control/built-in-roles.md#storage).
+Chcete-li zobrazit nebo číst přístupové klíče účtu, musí být uživatel buď správcem služby, nebo musí být přiřazena role RBAC, která zahrnuje **Microsoft. Storage/storageAccounts/klíče listkey/Action**. Některé předdefinované role Azure, které zahrnují tuto akci, jsou role **vlastníka**, **přispěvatele**a **role služby operátora klíče účtu úložiště** . Další informace o roli správce služby najdete v tématu [role správců pro klasický odběr, role Azure RBAC a role Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md). Podrobné informace o předdefinovaných rolích pro Azure Storage najdete v části **úložiště** v [předdefinovaných rolích Azure pro službu Azure RBAC](../../role-based-access-control/built-in-roles.md#storage).
 
 ## <a name="use-azure-key-vault-to-manage-your-access-keys"></a>Správa přístupových klíčů pomocí Azure Key Vault
 
@@ -92,7 +92,7 @@ K otočení přístupových klíčů účtu úložiště v Azure Portal:
 1. V části **Nastavení** vyberte **Přístupové klíče**.
 1. Pokud chcete znovu vygenerovat primární přístupový klíč pro účet úložiště, vyberte tlačítko **znovu vygenerovat** vedle primárního přístupového klíče.
 1. Aktualizujte připojovací řetězce v kódu tak, aby odkazovaly na nový primární přístupový klíč.
-1. Stejným způsobem pak opětovně vygenerujte sekundární přístupový klíč.
+1. Stejným způsobem pak znovu vygenerujte sekundární přístupový klíč.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -108,7 +108,7 @@ Postup při otáčení přístupových klíčů k účtu úložiště pomocí Po
     ```
 
 1. Aktualizujte připojovací řetězce v kódu tak, aby odkazovaly na nový primární přístupový klíč.
-1. Stejným způsobem pak opětovně vygenerujte sekundární přístupový klíč. Chcete-li znovu vygenerovat sekundární klíč, použijte `key2` jako název klíče místo `key1` .
+1. Stejným způsobem pak znovu vygenerujte sekundární přístupový klíč. Chcete-li znovu vygenerovat sekundární klíč, použijte `key2` jako název klíče místo `key1` .
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -125,14 +125,14 @@ K otočení přístupových klíčů účtu úložiště pomocí Azure CLI:
     ```
 
 1. Aktualizujte připojovací řetězce v kódu tak, aby odkazovaly na nový primární přístupový klíč.
-1. Stejným způsobem pak opětovně vygenerujte sekundární přístupový klíč. Chcete-li znovu vygenerovat sekundární klíč, použijte `key2` jako název klíče místo `key1` .
+1. Stejným způsobem pak znovu vygenerujte sekundární přístupový klíč. Chcete-li znovu vygenerovat sekundární klíč, použijte `key2` jako název klíče místo `key1` .
 
 ---
 
 > [!NOTE]
 > Microsoft doporučuje používat ve všech aplikacích současně jenom jeden z klíčů. Pokud na některých místech a v dalších klíčích 2 použijete klíč 1, nebudete moct tyto klíče otočit, aniž by aplikace ztratila přístup.
 
-Pro otočení přístupových klíčů účtu musí uživatel být buď správce služby, nebo musí být přiřazená role RBAC, která zahrnuje **Microsoft. Storage/storageAccounts/RegenerateKey/Action**. Mezi předdefinované role RBAC, které zahrnují tuto akci, patří role **vlastníka**, **přispěvatele**a **role služby operátora klíče účtu úložiště** . Další informace o roli správce služby najdete v tématu [role správců pro klasický odběr, role Azure RBAC a role Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md). Podrobné informace o integrovaných rolích RBAC pro Azure Storage najdete v části **úložiště** v [předdefinovaných rolích Azure pro službu Azure RBAC](../../role-based-access-control/built-in-roles.md#storage).
+Pro otočení přístupových klíčů účtu musí uživatel být buď správce služby, nebo musí být přiřazená role RBAC, která zahrnuje **Microsoft. Storage/storageAccounts/RegenerateKey/Action**. Některé předdefinované role Azure, které zahrnují tuto akci, jsou role **vlastníka**, **přispěvatele**a **role služby operátora klíče účtu úložiště** . Další informace o roli správce služby najdete v tématu [role správců pro klasický odběr, role Azure RBAC a role Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md). Podrobné informace o předdefinovaných rolích Azure pro Azure Storage najdete v části **úložiště** v [předdefinovaných rolích Azure pro službu Azure RBAC](../../role-based-access-control/built-in-roles.md#storage).
 
 ## <a name="next-steps"></a>Další kroky
 

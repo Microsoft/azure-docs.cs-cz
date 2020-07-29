@@ -5,27 +5,27 @@ description: AutoMLStep umožňuje používat automatizované strojové učení 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: laobri
 author: lobrien
 manager: cgronlun
 ms.date: 06/15/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 1b8dfa37047113d84470f86cd67c601ebf48f793
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: 698fdf1295ec38fc7eca9a58e681d7fe13ec32fc
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078097"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319503"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Použití automatizovaného ML v kanálu Azure Machine Learning v Pythonu
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Funkce automatizovaného škálování na základě Azure Machine Learning vám pomůže zjistit modely s vysokým výkonem bez nutnosti opětovné implementace každého možného přístupu. V kombinaci s Azure Machine Learning kanály můžete vytvářet nasaditelné pracovní postupy, které umožňují rychle zjistit algoritmus, který je pro vaše data nejvhodnější. V tomto článku se dozvíte, jak efektivně připojit krok přípravy dat k automatizovanému kroku ML. Automatizovaná ML může rychle zjistit algoritmus, který je pro vaše data nejvhodnější, a přitom vás zavede na cestách, aby MLOps a modeloval provozní životní cyklus s kanály.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).  
 

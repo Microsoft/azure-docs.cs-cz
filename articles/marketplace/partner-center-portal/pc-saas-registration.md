@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 85bd6f4192f5c1f47856851ab53521a101340007
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 52427cbaa418e0335797fe0a98c26c3fb84cf670
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109259"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87304169"
 ---
 # <a name="register-a-saas-application"></a>Registrace aplikace SaaS
 
@@ -24,7 +26,7 @@ Další informace o službě Azure AD (Active Directory) najdete v tématu [co j
 
 Všechny aplikace, které chtějí využívat možnosti Azure AD, musí být nejdřív zaregistrované v tenantovi Azure AD. Tento proces registrace zahrnuje poskytnutí některých podrobností o vaší aplikaci Azure AD. Chcete-li zaregistrovat novou aplikaci pomocí Azure Portal, proveďte následující kroky:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Pokud vám váš účet poskytne přístup k více než jednomu, klikněte na svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
 3. V levém navigačním podokně klikněte na službu **Azure Active Directory** , klikněte na **Registrace aplikací**a pak klikněte na **Nová registrace aplikace**.
 
@@ -68,26 +70,26 @@ Příspěvek<br>
 
 |  Název parametru    |  Povinné         |  Popis |
 |  ---------------   |  ---------------  | ------------ |
-|  `tenantId`        |  True      |  ID tenanta registrované aplikace AAD |
+|  `tenantId`        |  Ano      |  ID tenanta registrované aplikace AAD |
 
 ##### <a name="request-header"></a>*Hlavička žádosti*
 
 |  Název hlavičky       |  Povinné         |  Popis |
 |  ---------------   |  ---------------  | ------------ |
-|  `content-type`    |  True      |  Typ obsahu přidružený k žádosti Výchozí hodnota je `application/x-www-form-urlencoded`. |
+|  `content-type`    |  Ano      |  Typ obsahu přidružený k žádosti Výchozí hodnota je `application/x-www-form-urlencoded`. |
 
 ##### <a name="request-body"></a>*Text žádosti*
 
 |  Název vlastnosti     |  Povinné         |  Popis |
 |  ---------------   |  ---------------  | ------------ |
-|  `grant-type`      |  True      |  Typ udělení Použijte `"client_credentials"`. |
-|  `client_id`       |  True      |  Identifikátor klienta nebo aplikace přidružený k aplikaci Azure AD |
-|  `client_secret`   |  True      |  Tajný kód přidružený k aplikaci Azure AD. |
-|  `resource`        |  True      |  Cílový prostředek, pro který je požadován token. Použijte, `20e940b3-4c77-4b0b-9a53-9e16a1b010a7` protože rozhraní SaaS API pro Marketplace je v tomto případě vždy cílovým prostředkem. |
+|  `grant-type`      |  Ano      |  Typ udělení Použijte `"client_credentials"`. |
+|  `client_id`       |  Ano      |  Identifikátor klienta nebo aplikace přidružený k aplikaci Azure AD |
+|  `client_secret`   |  Ano      |  Tajný kód přidružený k aplikaci Azure AD. |
+|  `resource`        |  Ano      |  Cílový prostředek, pro který je požadován token. Použijte, `20e940b3-4c77-4b0b-9a53-9e16a1b010a7` protože rozhraní SaaS API pro Marketplace je v tomto případě vždy cílovým prostředkem. |
 
-##### <a name="response"></a>*Základě*
+##### <a name="response"></a>*Response* (Odpověď)
 
-|  Name     |  Typ         |  Description |
+|  Název     |  Typ         |  Description |
 |  ------   |  ---------------  | ------------ |
 |  200 OK   |  TokenResponse    |  Požadavek byl úspěšný. |
 

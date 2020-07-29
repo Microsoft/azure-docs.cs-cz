@@ -1,6 +1,5 @@
 ---
-title: Předpověď odpovědí pomocí regresních modelů
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (Classic): předpověď odpovědí pomocí regresních modelů – Azure'
 description: Jak vytvořit jednoduchý regresní model pro předpověď ceny v oblasti datové vědy pro začátečníky – video 4. Zahrnuje lineární regresi s cílovými daty.
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,16 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: ac9f4262d614b1e413f4283d3c459e60fc6634e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cfe617ab424fbb29e2866cd98d4b8c390f306c9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82930229"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318738"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>Předpovídání odpovědi pomocí jednoduchého modelu
+
+
 ## <a name="video-4-data-science-for-beginners-series"></a>Video 4: řada pro datové vědy pro začátečníky
 Naučte se vytvořit jednoduchý regresní model pro předpověď ceny kosočtverce v oblasti datové vědy pro začátečníky – video 4. Nakreslíme regresní model s cílovými daty.
 

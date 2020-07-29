@@ -10,16 +10,16 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: e0278329ff6b6946c4107ea048367753eaccbfd8
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 160833817150332b240ec17b2b700fbcb7a4456b
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124982"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87370644"
 ---
-# <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Přiřazení role RBAC pro přístup k datům BLOB a Queue pomocí Azure Portal
+# <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Přiřazení role RBAC pro přístup k datům objektů blob a front pomocí webu Azure Portal
 
-Azure Active Directory (Azure AD) autorizuje přístupová práva k zabezpečeným prostředkům prostřednictvím [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md). Azure Storage definuje sadu předdefinovaných rolí RBAC, které zahrnují společné sady oprávnění používané pro přístup k datům objektů BLOB nebo front.
+Azure Active Directory (Azure AD) autorizuje přístupová práva k zabezpečeným prostředkům prostřednictvím [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md). Azure Storage definuje sadu předdefinovaných rolí Azure, které zahrnují společné sady oprávnění používané pro přístup k datům objektů BLOB nebo front.
 
 Když je role RBAC přiřazená k objektu zabezpečení Azure AD, poskytuje Azure přístup k těmto prostředkům pro daný objekt zabezpečení. Přístup může být vymezený na úrovni předplatného, skupiny prostředků, účtu úložiště nebo jednotlivého kontejneru nebo fronty. Objekt zabezpečení Azure AD může být uživatelem, skupinou, instančním objektem služby nebo [spravovanou identitou pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 
@@ -48,7 +48,7 @@ Následující části popisují všechny tyto kroky podrobněji.
 >
 > Pokud má váš účet úložiště povolený hierarchický obor názvů, nemůžete přiřadit obor rolí k kontejneru nebo frontě.
 
-### <a name="assign-a-built-in-rbac-role"></a>Přiřazení předdefinované role RBAC
+### <a name="assign-an-azure-built-in-role"></a>Přiřazení předdefinované role Azure
 
 Předtím, než přiřadíte roli objektu zabezpečení, nezapomeňte zvážit rozsah oprávnění, která udělujete. Projděte si část [určení rozsahu prostředků](#determine-resource-scope) a určete příslušný obor.
 

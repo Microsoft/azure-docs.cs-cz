@@ -4,16 +4,16 @@ description: Postup přizpůsobení kanálů telemetrie v Azure Application Insi
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6f9e93d477efeee7e1d8a0b0d8704f9c83d2a4f7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b5ae1ee1e4bf9f64eb4587f0ceb76972a4571b2e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539784"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318925"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Kanály telemetrie v Application Insights
 
-Kanály telemetrie jsou nedílnou součástí [sad Azure Application Insights SDK](../../azure-monitor/app/app-insights-overview.md). Spravují ukládání do vyrovnávací paměti a přenos telemetrie do služby Application Insights. Verze sady SDK pro .NET a .NET Core mají dva vestavěné kanály telemetrie: `InMemoryChannel` a `ServerTelemetryChannel` . Tento článek podrobně popisuje jednotlivé kanály, včetně postupu přizpůsobení chování kanálu.
+Kanály telemetrie jsou nedílnou součástí [sad Azure Application Insights SDK](./app-insights-overview.md). Spravují ukládání do vyrovnávací paměti a přenos telemetrie do služby Application Insights. Verze sady SDK pro .NET a .NET Core mají dva vestavěné kanály telemetrie: `InMemoryChannel` a `ServerTelemetryChannel` . Tento článek podrobně popisuje jednotlivé kanály, včetně postupu přizpůsobení chování kanálu.
 
 ## <a name="what-are-telemetry-channels"></a>Co jsou kanály telemetrie?
 
@@ -39,7 +39,7 @@ Sady SDK Application Insights .NET a .NET Core jsou dodávány se dvěma integro
 
 Kanál telemetrie nakonfigurujete nastavením na aktivní konfiguraci telemetrie. V případě aplikací ASP.NET zahrnuje konfigurace nastavení instance kanálu telemetrie na `TelemetryConfiguration.Active` nebo úpravou `ApplicationInsights.config` . Pro ASP.NET Core aplikace konfigurace zahrnuje přidání kanálu do kontejneru vkládání závislostí.
 
-V následujících částech jsou uvedeny příklady konfigurace `StorageFolder` Nastavení kanálu v různých typech aplikací. `StorageFolder`je pouze jedním z konfigurovatelných nastavení. Úplný seznam nastavení konfigurace najdete v [části nastavení](telemetry-channels.md#configurable-settings-in-channels) dále v tomto článku.
+V následujících částech jsou uvedeny příklady konfigurace `StorageFolder` Nastavení kanálu v různých typech aplikací. `StorageFolder`je pouze jedním z konfigurovatelných nastavení. Úplný seznam nastavení konfigurace najdete v [části nastavení](#configurable-settings-in-channels) dále v tomto článku.
 
 ### <a name="configuration-by-using-applicationinsightsconfig-for-aspnet-applications"></a>Konfigurace pomocí ApplicationInsights.config pro aplikace ASP.NET
 
@@ -166,5 +166,6 @@ Stejně jako u každé sady SDK pro Application Insights jsou kanály open sourc
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vzorkování](../../azure-monitor/app/sampling.md)
-* [Řešení potíží s SDK](../../azure-monitor/app/asp-net-troubleshoot-no-data.md)
+* [Vzorkování](./sampling.md)
+* [Řešení potíží s SDK](./asp-net-troubleshoot-no-data.md)
+

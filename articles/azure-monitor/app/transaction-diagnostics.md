@@ -4,11 +4,12 @@ description: Application Insights komplexní diagnostiku transakcí
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 39c4c51a1bc84e06efac3674b1ee5b487f9e6729
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 552e80d6c90a18180ab41dce72e995b6804a91bc
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671133"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318908"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Sjednocená Diagnostika transakcí mezi komponentami
 
@@ -63,7 +64,7 @@ V tomto sbalitelném podokně se zobrazují další výsledky, které splňují 
 
 ## <a name="profiler-and-snapshot-debugger"></a>Profiler a Snapshot Debugger
 
-[Application Insights Profiler](../../azure-monitor/app/profiler.md) nebo [program Snapshot Debugger](snapshot-debugger.md) vám pomůžou diagnostikovat problémy s výkonem a selháním na úrovni kódu. Díky tomuto prostředí můžete zobrazit trasování a snímky profileru z jakékoli komponenty jediným kliknutím.
+[Application Insights Profiler](./profiler.md) nebo [program Snapshot Debugger](snapshot-debugger.md) vám pomůžou diagnostikovat problémy s výkonem a selháním na úrovni kódu. Díky tomuto prostředí můžete zobrazit trasování a snímky profileru z jakékoli komponenty jediným kliknutím.
 
 Pokud nemůžete získat funkční profil, kontaktujte prosím **serviceprofilerhelp \@ Microsoft.com**
 
@@ -94,3 +95,4 @@ V tuto chvíli se zobrazuje volání odchozí závislosti oddělené od přícho
 *Proč v novém prostředí chybí většina dotazů souvisejících položek?*
 
 Toto chování je úmyslné. Všechny související položky napříč všemi komponentami jsou již na levé straně (v horních a dolních částech) k dispozici. Nové prostředí obsahuje dvě související položky, které levá strana nepokrývá: všechny telemetrie od pěti minut před a po této události a časovou osu uživatele.
+

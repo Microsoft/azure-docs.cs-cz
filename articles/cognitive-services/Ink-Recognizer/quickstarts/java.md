@@ -10,12 +10,13 @@ ms.subservice: ink-recognizer
 ms.topic: quickstart
 ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: bc7dfcef45917081ec9ea1e97f4c36e4348dd9e7
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.custom: devx-track-java
+ms.openlocfilehash: 902d8a592893a70b8a694ab888bb3c22c6c9670a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985271"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371545"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>Rychlý Start: rozpoznávání digitálního inkoustu pomocí nástroje pro rozpoznávání rukopisu REST API a Java
 
@@ -86,7 +87,7 @@ Vytvořte metodu volanou `recognizeInk()` pro rozpoznání dat tahu perem. Zavol
 
 ## <a name="run-the-application-and-view-the-response"></a>Spuštění aplikace a zobrazení odpovědi
 
-Spusťte aplikaci. Ve formátu JSON se vrátí úspěšná odpověď. Můžete také najít odpověď JSON na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/InkRecognition/quickstart/example-response.json).
+Aplikaci spusťte. Ve formátu JSON se vrátí úspěšná odpověď. Můžete také najít odpověď JSON na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/InkRecognition/quickstart/example-response.json).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: cb9214dcd79e45b4c587c7ab47e425f2fdd8714c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6fbfc7dced59580e91c3beceb6054f223a0a17d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564426"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319044"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>Obohacení AI v Azure Kognitivní hledání
 
@@ -59,7 +59,7 @@ Kromě toho můžete zvážit přidání vlastní dovednosti, pokud máte otevř
 
 Vlastní dovednosti můžou podporovat složitější scénáře, jako je rozpoznávání formulářů nebo detekce vlastních entit pomocí modelu, který zadáte a zabalíte do [vlastního webového rozhraní s dovednostmi](cognitive-search-custom-skill-interface.md). Mezi vlastní dovednosti patří i [Nástroj pro rozpoznávání formulářů](/azure/cognitive-services/form-recognizer/overview), integraci [rozhraní API Bingu pro vyhledávání entit](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example)a [rozpoznávání vlastních entit](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
 
-<a name="enrichment-steps">Počet kroků v kanálu rozšíření</a>
+## <a name="steps-in-an-enrichment-pipeline"></a>Kroky v kanálu rozšíření<a name="enrichment-steps"></a>
 
 Kanál pro rozšíření je založený na [*indexerech*](search-indexer-overview.md). Indexery naplní index založený na mapování polí mezi indexem a zdrojem dat pro trhliny dokumentů. Dovednosti, teď připojené k indexerům, zachytit a rozšířit dokumenty podle definovaných dovednostiů. Po indexování můžete k obsahu přistupovat pomocí požadavků na hledání prostřednictvím všech [typů dotazů podporovaných službou Azure kognitivní hledání](search-query-overview.md).  Pokud s indexery začínáte, Tato část vás provede jednotlivými kroky.
 

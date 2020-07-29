@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 06/18/2020
-ms.openlocfilehash: 2fb1f22fd555e8ddbdc04842906cddb990956fb5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 6d0a778dee31d93244479c08c7bb7b6f37cf49cb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044511"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319350"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>Řešení potíží s Azure Stream Analytics pomocí protokolů prostředků
 
@@ -59,7 +59,7 @@ Protokoly aktivit jsou ve výchozím nastavení zapnuté a poskytují podrobné 
 
 Důrazně doporučujeme zapnout protokoly prostředků a odesílat je do protokolů Azure Monitor. Ve výchozím nastavení jsou **vypnuté** . Pokud je chcete zapnout, proveďte tyto kroky:
 
-1.  [Vytvořte pracovní prostor Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) , pokud ho ještě nemáte. Doporučuje se, aby byl váš pracovní prostor Log Analytics ve stejné oblasti jako vaše úloha Stream Analytics.
+1.  Vytvořte pracovní prostor Log Analytics, pokud ho ještě nemáte. Doporučuje se, aby byl váš pracovní prostor Log Analytics ve stejné oblasti jako vaše úloha Stream Analytics.
 
 2.  Přihlaste se k Azure Portal a přejděte do Stream Analytics úlohy. V části **monitorování**vyberte **diagnostické protokoly**. Pak vyberte **zapnout diagnostiku**.
 
@@ -94,7 +94,7 @@ Azure Stream Analytics zachycuje dvě kategorie protokolů prostředků:
 
 Všechny protokoly jsou uložené ve formátu JSON. Každá položka má následující obecná pole řetězců:
 
-Name | Description
+Název | Popis
 ------- | -------
 time | Časové razítko (v UTC) protokolu
 resourceId | ID prostředku, na kterém byla operace provedena, v horním případě. Obsahuje ID předplatného, skupinu prostředků a název úlohy. Například **/Subscriptions/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/my-Resource-Group/Providers/Microsoft. STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**.
@@ -112,7 +112,7 @@ Protokoly spouštění obsahují informace o událostech, ke kterým došlo běh
 
 Všechny chyby, ke kterým dojde během zpracování úlohy, jsou v této kategorii protokolů. Tyto protokoly se nejčastěji vytvářejí během operací čtení, serializace a zápisu dat. Tyto protokoly nezahrnují chyby připojení. Chyby připojení se považují za obecné události. Můžete si přečíst další informace o příčině různých [vstupních a výstupních chybových dat](https://docs.microsoft.com/azure/stream-analytics/data-errors).
 
-Name | Description
+Název | Popis
 ------- | -------
 Zdroj | Název vstupu nebo výstupu úlohy, kde došlo k chybě
 Zpráva | Zpráva přidružená k chybě
@@ -133,17 +133,14 @@ V závislosti na hodnotě **OperationName** mají chyby dat následující sché
 
 Obecné události se týkají všech ostatních.
 
-Name | Description
+Název | Popis
 -------- | --------
 Chyba | volitelné Informace o chybě. Obvykle se jedná o výjimku, pokud je k dispozici.
 Zpráva| Zpráva protokolu
 Typ | Typ zprávy Provede mapování na interní kategorizaci chyb. Například **JobValidationError** nebo **BlobOutputAdapterInitializationFailure**.
-ID korelace | [Identifikátor GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) , který jedinečně identifikuje provádění úlohy. Všechny položky protokolu spuštění od okamžiku spuštění úlohy, dokud úloha přestane mít stejnou hodnotu **ID korelace** .
+ID korelace | Identifikátor GUID, který jedinečně identifikuje provádění úlohy. Všechny položky protokolu spuštění od okamžiku spuštění úlohy, dokud úloha přestane mít stejnou hodnotu **ID korelace** .
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Úvod do Stream Analytics](stream-analytics-introduction.md)
-* [Začínáme se Stream Analytics](stream-analytics-real-time-fraud-detection.md)
-* [Škálování úloh Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční dokumentace jazyka Stream Analytics dotazů](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Chyby Stream Analytics dat](https://docs.microsoft.com/azure/stream-analytics/data-errors)
+* [Referenční dokumentace jazyka Stream Analytics dotazů](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
