@@ -9,6 +9,7 @@ ms.date: 06/17/2019
 keywords: Prometheus, ARO, OpenShift, metriky, Red Hat
 ms.openlocfilehash: 7f22df587f51af735e0ea663e53f6eef14d60692
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "80886884"
