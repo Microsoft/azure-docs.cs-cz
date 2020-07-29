@@ -485,7 +485,7 @@
             - name: Zobrazení oznámení
               href: ../service-health/service-notifications.md
             - name: Konfigurace upozornění pro události oznámení
-              href: platform/alerts-activity-log-service-notifications.md
+              href: ../service-health/alerts-activity-log-service-notifications-portal.md
         - name: Oznámení a akce
           items:
             - name: Pravidla akcí (Preview)
@@ -905,18 +905,24 @@
           href: insights/vminsights-ga-release-faq.md
         - name: Nejčastější dotazy
           href: faq.md#azure-monitor-for-vms
-        - name: Povolení monitorování
+        - name: Konfigurace pracovního prostoru
+          href: insights/vminsights-configure-workspace.md
+        - name: Instalace agentů
           items:
-            - name: Povolení přehledu monitorování
+            - name: Přehled
               href: insights/vminsights-enable-overview.md
-            - name: Povolení pro jeden virtuální počítač Azure
-              href: insights/vminsights-enable-single-vm.md
-            - name: Povolení s využitím Azure Policy
-              href: insights/vminsights-enable-at-scale-policy.md
-            - name: Povolení s využitím Azure Powershellu
-              href: insights/vminsights-enable-at-scale-powershell.md
-            - name: Povolení pro hybridní prostředí
-              href: insights/vminsights-enable-hybrid-cloud.md
+            - name: portál Azure
+              href: insights/vminsights-enable-portal.md
+            - name: Azure PowerShell
+              href: insights/vminsights-enable-powershell.md
+            - name: Šablony ARM
+              href: insights/vminsights-enable-resource-manager.md
+            - name: Azure Policy
+              href: insights/vminsights-enable-policy.md
+            - name: Hybridní virtuální počítače
+              href: insights/vminsights-enable-hybrid.md
+            - name: Upgrade agenta závislostí
+              href: insights/vminsights-dependency-agent-maintenance.md
         - name: Závislosti map
           href: insights/vminsights-maps.md
         - name: Monitorování výkonu
@@ -927,8 +933,6 @@
           href: insights/vminsights-workbooks.md
         - name: Vytváření pravidel upozornění
           href: insights/vminsights-alerts.md
-        - name: Upgrade agenta závislostí
-          href: insights/vminsights-dependency-agent-maintenance.md
         - name: Zákaz monitorování
           href: insights/vminsights-optout.md
     - name: Azure Monitor pro kontejnery

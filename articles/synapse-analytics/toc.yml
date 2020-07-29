@@ -32,9 +32,9 @@
       href: release-notes.md
 - name: Rychlé starty
   items:
-    - name: Vytvoření pracovního prostoru Azure Synapse
+    - name: Vytvoření pracovního prostoru Synapse
       href: quickstart-create-workspace.md
-    - name: Používání funkce Azure Synapse Studio
+    - name: Použití sady Synapse Studio
       href: quickstart-synapse-studio.md
     - name: Propojení pracovního prostoru Power BI
       href: quickstart-power-bi.md

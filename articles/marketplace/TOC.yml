@@ -169,6 +169,14 @@
               href: ./partner-center-portal/offer-creation-checklist.md
             - name: Vytvoření nabídky SaaS
               href: ./partner-center-portal/create-new-saas-offer.md
+            - name: Ověřování Azure AD pro SaaS
+              items:
+                - name: Přehled Azure AD a SaaS
+                  href: ./azure-ad-saas.md
+                - name: Vstupní stránka pro nabídky s možností transakcí
+                  href: ./azure-ad-transactable-saas-landing-page.md
+                - name: Vstupní stránka pro bezplatné nebo zkušební nabídky
+                  href: ./azure-ad-free-or-trial-landing-page.md
             - name: Rozhraní API naplnění SaaS
               href: ./partner-center-portal/pc-saas-fulfillment-apis.md
               items:

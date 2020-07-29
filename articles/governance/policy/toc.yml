@@ -228,6 +228,8 @@
           href: /azure/templates/microsoft.authorization/policysetdefinitions
 - name: Zdroje a prostředky
   items:
+    - name: Známé problémy
+      href: 'https://github.com/azure/azure-policy#known-issues'
     - name: GitHub – Ukázky Azure Policy
       href: 'https://github.com/Azure/azure-policy'
     - name: GitHub – úložiště zásad komunity
@@ -246,8 +248,8 @@
           href: 'https://www.youtube.com/watch?v=fbZBaxcjA-Y'
         - name: Úloha nápravy
           href: 'https://www.youtube.com/watch?v=URE4DUYMgmg'
-    - name: Video – Build 2018
-      href: 'https://channel9.msdn.com/events/Build/2018/THR2030'
+    - name: Video – Ignite 2019
+      href: 'https://myignite.techcommunity.microsoft.com/sessions/81584?source=sessions'
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Cenová kalkulačka
