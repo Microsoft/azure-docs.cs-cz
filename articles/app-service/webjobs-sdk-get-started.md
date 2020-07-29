@@ -8,6 +8,7 @@ ms.date: 02/18/2019
 ms.author: glenga
 ms.openlocfilehash: 287b58f85cad0082ac782a20cdfb0b9b9ea810e7
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "83743617"

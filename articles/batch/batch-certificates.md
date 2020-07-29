@@ -16,6 +16,7 @@ ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: 96a3ada98bb41ea007eaaae2a40983d2448b38c2
 ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/05/2020
 ms.locfileid: "85960822"
