@@ -10,6 +10,7 @@ ms.date: 04/20/2020
 ms.author: dech
 ms.openlocfilehash: 5d41f467efafa42bd73fce258ca97e4412a7cf48
 ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/07/2020
 ms.locfileid: "86026844"
