@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: 04c31a12348fe0059bcfd417682647676dbc8948
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: abc9a42c7ced6a71f93c00968eb825f28f720843
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84637553"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374717"
 ---
 V tomto rychlém startu se dozvíte, jak pomocí sady Speech Devices SDK pro Android vytvořit produkt s podporou řeči nebo ho použít jako zařízení [přepisující konverzaci](../conversation-transcription-service.md) .
 
@@ -35,7 +35,7 @@ Než začnete používat sadu Speech SDK pro zařízení, budete muset:
 
 - Pokud plánujete použít službu Speech k identifikaci záměrů (nebo akcí) od uživatele projevy, budete potřebovat předplatné [služby Language Understanding (Luis)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) . Další informace o LUIS a rozpoznávání záměrů najdete v tématu [rozpoznávání hlasových záměrů pomocí Luis, C#](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp).
 
-  Můžete [vytvořit jednoduchý model Luis](https://docs.microsoft.com/azure/cognitive-services/luis/) nebo použít ukázkový model Luis Luis-example. JSON. Vzorový model LUIS je k dispozici na [webu pro stažení sady Speech Devices SDK](https://aka.ms/sdsdk-luis). Pokud chcete nahrát soubor JSON modelu na [portál Luis](https://www.luis.ai/home), vyberte **importovat novou aplikaci**a pak vyberte soubor JSON.
+  Můžete [vytvořit jednoduchý model Luis](https://docs.microsoft.com/azure/cognitive-services/luis/) nebo použít Vzorový model Luis LUIS-example.jsv. Vzorový model LUIS je k dispozici na [webu pro stažení sady Speech Devices SDK](https://aka.ms/sdsdk-luis). Pokud chcete nahrát soubor JSON modelu na [portál Luis](https://www.luis.ai/home), vyberte **importovat novou aplikaci**a pak vyberte soubor JSON.
 
 - Na svůj počítač nainstalujte [Android Studio](https://developer.android.com/studio/) a [Vysor](https://vysor.io/download/) .
 
@@ -96,7 +96,7 @@ Chcete-li ověřit nastavení vývojové sady, sestavte a nainstalujte ukázkovo
     Aktualizujte **Build. Gradle (Module: App)** tak, že přidáte tento řádek do oddílu závislosti. 
     
     ```xml
-    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.12.1'
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.13.0'
     ```
     
 1. Přidejte klíč předplatného řeči do zdrojového kódu. Pokud chcete vyzkoušet rozpoznávání záměru, přidejte také klíč předplatného [služby Language Understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) a ID aplikace.
@@ -124,7 +124,7 @@ Chcete-li ověřit nastavení vývojové sady, sestavte a nainstalujte ukázkovo
    > [!TIP]
    > Můžete také [vytvořit vlastní klíčové slovo](../speech-devices-sdk-create-kws.md).
 
-   Chcete-li použít nové klíčové slovo, aktualizujte následující dva řádky v `MainActivity.java` a zkopírujte balíček klíčových slov do aplikace. Například pro použití klíčového slova ' Machine ' z klíčového slova Package KWS-Machine. zip:
+   Chcete-li použít nové klíčové slovo, aktualizujte následující dva řádky v `MainActivity.java` a zkopírujte balíček klíčových slov do aplikace. Například pro použití klíčového slova ' Machine ' z kws-machine.zip balíčku klíčového slova:
 
    - Zkopírujte balíček s klíčovým slovem do složky "C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\".
    - Aktualizujte `MainActivity.java` klíčové slovo pomocí klíčového slova a názvu balíčku:
@@ -177,6 +177,6 @@ Pokud se nemůžete připojit k zařízení pro rozpoznávání řeči. V okně 
 ```
 
 > [!NOTE]
-> Tento příkaz používá Android Debug Bridge, `adb.exe` , který je součástí instalace Android Studio. Tento nástroj je umístěný v umístění C:\Users \[ User name] \AppData\Local\Android\Sdk\platform-Tools. Tento adresář můžete přidat do své cesty, abyste ho mohli lépe vyvolávat `adb` . V opačném případě je nutné zadat úplnou cestu k instalaci souboru ADB. exe v každém příkazu, který vyvolá `adb` .
+> Tento příkaz používá Android Debug Bridge, `adb.exe` , který je součástí instalace Android Studio. Tento nástroj je umístěný v umístění C:\Users \[ User name] \AppData\Local\Android\Sdk\platform-Tools. Tento adresář můžete přidat do své cesty, abyste ho mohli lépe vyvolávat `adb` . V opačném případě je nutné zadat úplnou cestu k instalaci adb.exe v každém příkazu, který vyvolá `adb` .
 >
 > Pokud se zobrazí chyba, `no devices/emulators found` Zkontrolujte, zda je kabel USB připojen a zda je použit kabel s vysokou kvalitou.

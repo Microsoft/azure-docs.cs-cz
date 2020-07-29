@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e96fc9af0aa4f362256a5f0fee9465441a1c3928
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 62b969ebde1ab5d52968189a6f0865fdb646f6b2
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210605"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374129"
 ---
 # <a name="data-warehouse-units-dwus"></a>Jednotky datového skladu (DWU)
 
@@ -44,7 +44,7 @@ Zvyšování DWU:
 - Zvyšuje počet čtenářů a zapisovačů pro operace základního zatížení.
 - Zvyšuje maximální počet souběžných dotazů a souběžných slotů.
 
-## <a name="service-level-objective"></a>Service Level Objective (cíl úrovně služby)
+## <a name="service-level-objective"></a>Service Level Objective
 
 Cíl úrovně služeb (SLO) je nastavení škálovatelnosti, které určuje náklady a úroveň výkonu datového skladu. Úrovně služeb pro Gen2 se měří v jednotkách služby COMPUTE Data Warehouse (cDWU), například DW2000c. Úrovně služeb Gen1 se měří v DWU, například DW2000.
 
@@ -100,7 +100,7 @@ Pokud chcete zobrazit jeho skutečné možnosti pro škálování, zejména u v�
 
 Změna jednotek datového skladu vyžaduje oprávnění popsaná v [příkazu ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
-Předdefinované role pro prostředky Azure, jako je Přispěvatel databáze SQL a SQL Server přispěvatel, můžou měnit nastavení DWU.
+Předdefinované role Azure, jako je Přispěvatel databáze SQL a SQL Server přispěvatel, můžou měnit nastavení DWU.
 
 ## <a name="view-current-dwu-settings"></a>Zobrazit aktuální nastavení DWU
 
@@ -108,7 +108,7 @@ Chcete-li zobrazit aktuální nastavení DWU:
 
 1. Otevřete Průzkumník objektů systému SQL Server v aplikaci Visual Studio.
 2. Připojte se k hlavní databázi přidružené k logickému SQL serveru.
-3. Vyberte ze zobrazení dynamické správy sys. database_service_objectives. Zde naleznete příklad:
+3. Vyberte ze zobrazení dynamické správy sys. database_service_objectives. Tady je příklad:
 
 ```sql
 SELECT  db.name [Database]

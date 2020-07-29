@@ -5,12 +5,13 @@ author: rapatchi
 ms.topic: conceptual
 ms.date: 04/06/2018
 ms.author: rapatchi
-ms.openlocfilehash: d37c7be65eb0c03065c095196a6fec39a2509a3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 004fb022847432a9739e79f7063b80636f8dcf2b
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82193424"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374231"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Modul plug-in Service Fabric pro vývoj aplikací v Eclipse Javě
 Eclipse je jedním z nejčastěji používaných integrovaných vývojových prostředí (IDE) pro vývojáře v jazyce Java. V tomto článku probereme možnosti nastavení vývojového prostředí Eclipse pro práci s Azure Service Fabric. Zjistíte, jak v Eclipse nainstalovat modul plug-in Service Fabric, vytvořit aplikaci Service Fabric a nasadit ji do místního nebo vzdáleného clusteru Service Fabric. 
@@ -36,7 +37,7 @@ Nainstalujte Eclipse Neon nebo novější verzi z [webu Eclipse](https://www.ecl
 
 Nainstalujte modul plug-in Service Fabric, v části zatmění, přejít na adresu **usnadnění**  >  **instalace nového softwaru**.
 1. Do pole **work with (pracovat s** ) zadejte https: \/ /dl.Microsoft.com/Eclipse.
-2. Klikněte na tlačítko **Add** (Přidat).
+2. Klikněte na **Přidat**.
 
    ![Modul plug-in Service Fabric pro Eclipse][sf-eclipse-plugin-install]
 3. Vyberte modul plug-in Service Fabric a potom klikněte na **Další**.

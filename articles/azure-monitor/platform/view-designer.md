@@ -6,18 +6,28 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/10/2019
-ms.openlocfilehash: 6e351abeede6d1057a9b37ab1f1cfb9021ccd06e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c0af92bdec6248a38040f972734764fa1bc10226
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505086"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289098"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Vytváření vlastních zobrazení pomocí návrháře zobrazení v Azure Monitor
 Pomocí návrháře zobrazení v Azure Monitor můžete v Azure Portal vytvořit nejrůznější vlastní zobrazení, která vám pomůžou vizualizovat data v pracovním prostoru Log Analytics. Tento článek obsahuje přehled návrháře zobrazení a postupy pro vytváření a úpravy vlastních zobrazení.
 
 > [!IMPORTANT]
-> Zobrazení v Azure Monitor jsou postupně rozložená a nahrazena [sešity](workbooks-overview.md) , které poskytují další funkce. Podrobnosti o převodu stávajících zobrazení na sešity najdete v tématu [Průvodce přechodem Azure monitor návrháře zobrazení na sešity](view-designer-conversion-overview.md) .
+> Zobrazení v Azure Monitor jsou postupně rozložená a nahrazena [sešity](workbooks-overview.md) , které poskytují další funkce. Podrobnosti o převodu stávajících zobrazení na sešity najdete v tématu [Průvodce přechodem Azure monitor návrháře zobrazení na sešity](view-designer-conversion-overview.md) . V následující tabulce najdete postup, který bude provedený během několika dalších měsíců.
+> 
+> | Změnit | Co to znamená | Očekávané datum |
+> |:---|:---|:---|
+> | Zakáže vytváření nových zobrazení vytvořených prostřednictvím návrháře zobrazení. | V Azure Portal už nebudete moct vytvářet a ukládat nová vlastní zobrazení.| Listopadu 2020 |
+> | Zakáže funkci Edit pro existující zobrazení v Návrháři zobrazení. | Již nebudete moci upravovat a ukládat změny ve stávajících vlastních zobrazeních. | Listopadu 2020 |
+> | Zakázat nasazení zobrazení do Log Analytics pracovních prostorů | K Log Analytics pracovních prostorů už nebudete moct pomocí ARM nasazovat vlastní zobrazení. | Březen 2021 |
+> | Návrhář zobrazení již není k dispozici v Azure Portal | Prostředí portálu už nebude podporovat návrháře zobrazení. | Červeně 2021 |
+> | Souhrn vlastních zobrazení odebraných z pracovního prostoru | Už nebudete mít přístup k datům vlastních zobrazení. | Prosince 2021 |
+ 
+
 
 Další informace o návrháři zobrazení najdete v těchto tématech:
 

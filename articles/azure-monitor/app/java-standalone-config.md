@@ -3,12 +3,13 @@ title: Monitorování aplikací Java kdekoli – Azure Monitor Application Insig
 description: Monitorování výkonu aplikací bez kódu pro aplikace Java běžící v jakémkoli prostředí bez instrumentace aplikace. Najděte hlavní příčinu potíží d pomocí distribuovaného trasování a mapy aplikací.
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 3a01f2e9339f3ba4f8f50fc41617fabf9da9d8cd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-java
+ms.openlocfilehash: ca3094197deb7c74ba9b51422a78ee0f5d3687d2
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014197"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374282"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Možnosti konfigurace – samostatný agent Java pro Azure Monitor Application Insights
 

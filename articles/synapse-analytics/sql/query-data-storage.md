@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: a30874a14a1c2c44ec04b17b9ebddb52a9e9fb58
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8433242ffe44b8deab62314af386f1a82e2e0017
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020538"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374112"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Dotazování souborů úložiště pomocí prostředků SQL na vyžádání (ve verzi Preview) v synapse SQL
 
@@ -54,7 +54,7 @@ Příklady použití najdete v článku o [souborech dotazů Parquet](query-parq
 
 ## <a name="query-csv-files"></a>Dotazování na soubory CSV
 
-K dotazování na zdrojová data Parquet použijte formát = CSV. Schéma souboru CSV můžete zadat jako součást `OPENROWSET` funkce při dotazování na soubory CSV:
+Dotaz na zdrojová data sdíleného svazku clusteru získáte pomocí FORMAT = CSV. Schéma souboru CSV můžete zadat jako součást `OPENROWSET` funkce při dotazování na soubory CSV:
 
 ```sql
 SELECT * FROM
@@ -219,7 +219,7 @@ Můžete najít Ukázky dotazů pro přístup k elementům z opakujících se sl
 
 Můžete se dozvědět více o dotazování různých typů dat pomocí ukázkových dotazů.
 
-### <a name="tools"></a>Nástroje
+### <a name="tools"></a>nástroje
 
 Nástroje, které potřebujete k vydávání dotazů:
     - Azure synapse Studio (Preview)

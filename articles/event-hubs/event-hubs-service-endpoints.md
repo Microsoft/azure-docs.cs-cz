@@ -3,12 +3,12 @@ title: Koncové body služby Virtual Network – Azure Event Hubs | Microsoft Do
 description: Tento článek poskytuje informace o tom, jak přidat koncový bod služby Microsoft. EventHub do virtuální sítě.
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: 134e310e0859bb6c0a50630f467513e07e6ff390
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5d1f6bb8e1160a328c30cfd6ef1726e3cf011aee
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066703"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288012"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Použití koncových bodů služby Virtual Network s využitím Azure Event Hubs
 
@@ -25,7 +25,6 @@ Výsledkem je privátní a izolovaný vztah mezi úlohami vázanými na podsíť
 >
 > Běžné scénáře Azure, které nefungují s virtuálními sítěmi (Všimněte si, že seznam **není vyčerpávající)** –
 > - Azure Stream Analytics
-> - Integrace s Azure Event Grid
 > - Trasy k Azure IoT Hub
 > - Device Explorer Azure IoT
 >
@@ -60,7 +59,7 @@ V této části se dozvíte, jak pomocí Azure Portal přidat koncový bod služ
 2. V nabídce vlevo vyberte možnost **sítě** . Pokud vyberete možnost **všechny sítě** , centrum událostí akceptuje připojení z libovolné IP adresy. Toto nastavení odpovídá pravidlu, které přijímá rozsah IP adres 0.0.0.0/0. 
 
     ![Firewall – vybraná možnost všechny sítě](./media/event-hubs-firewall/firewall-all-networks-selected.png)
-1. Pokud chcete restrct přístup k určitým sítím, vyberte možnost **vybrané sítě** v horní části stránky.
+1. Chcete-li omezit přístup k určitým sítím, vyberte možnost **vybrané sítě** v horní části stránky.
 2. V části **Virtual Network** stránky vyberte možnost * * + Přidat existující virtuální síť * * *. Pokud chcete vytvořit novou virtuální síť, vyberte **+ vytvořit novou virtuální síť** . 
 
     ![Přidat existující virtuální síť](./media/event-hubs-tutorial-vnet-and-firewalls/add-vnet-menu.png)
@@ -85,9 +84,9 @@ Následující šablona Správce prostředků umožňuje přidání pravidla vir
 
 Parametry šablony:
 
-* **obor názvů**: Event Hubs obor názvů.
-* **vnetRuleName**: název pro pravidlo Virtual Network, které se má vytvořit.
-* **virtualNetworkingSubnetId**: plně kvalifikovaná cesta správce prostředků pro podsíť virtuální sítě; například `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` pro výchozí podsíť virtuální sítě.
+* `namespaceName`: Event Hubs obor názvů.
+* `vnetRuleName`: Název pro pravidlo Virtual Network, které se má vytvořit.
+* `virtualNetworkingSubnetId`: Plně kvalifikovaná cesta Správce prostředků pro podsíť virtuální sítě; například `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` pro výchozí podsíť virtuální sítě.
 
 > [!NOTE]
 > I když nejsou možná žádná pravidla odepření, má šablona Azure Resource Manager výchozí akci nastavenou na **Povolit** , což neomezuje připojení.

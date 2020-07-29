@@ -4,14 +4,15 @@ description: Řešení chyb při občasném připojení a souvisejících potí�
 author: v-miegge
 manager: barbkess
 ms.topic: troubleshooting
-ms.date: 03/24/2020
+ms.date: 07/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations
-ms.openlocfilehash: 704c6b026ab656ce52b34e5ac70ba7e2087ccbcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d337c9cff4b0d7dbfb18a7ba0cf213265286017
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252436"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289156"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Řešení chyb občasného odchozího připojení v Azure App Service
 
@@ -37,6 +38,8 @@ Když aplikace nebo funkce rychle otevřou nové připojení, můžou rychle vy�
 
 ## <a name="avoiding-the-problem"></a>Zamezení problému
 
+Pokud je vaším cílem služba Azure, která podporuje koncové body služby, můžete se vyhnout problémům s vyčerpáním portů SNAT pomocí služeb [Integrace virtuální](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet) sítě a koncových bodů služby. Při použití integrace virtuální sítě a umístění koncových bodů služby v integrační podsíti nebudou mít odchozí přenosy na tyto služby omezení portů SNAT.
+
 Vyloučení problému s portem SNAT znamená, že se vyhnete vytváření nových připojení opakovaně ke stejnému hostiteli a portu.
 
 Obecné strategie pro zmírnění vyčerpání portů SNAT jsou popsány v [části řešení problémů](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#problemsolving) v **odchozích připojeních ke službě Azure** Documentation. Tyto strategie platí pro aplikace a funkce hostované v Azure App Service.
@@ -49,7 +52,7 @@ Obecné strategie pro zmírnění vyčerpání portů SNAT jsou popsány v [čá
 
 Tady je kolekce odkazů pro implementaci sdružování připojení pomocí jiného zásobníku řešení.
 
-#### <a name="node"></a>Node
+#### <a name="node"></a>Uzel
 
 Ve výchozím nastavení nejsou připojení pro NodeJS udržována v neaktivním stavu. Níže jsou uvedené oblíbené databáze a balíčky pro sdružování připojení, které obsahují příklady pro jejich implementaci.
 
@@ -121,7 +124,7 @@ Pro další prostředí si projděte téma poskytovatel nebo dokumentace pro kon
 
 Vyloučení odchozích omezení TCP je snazší, protože limity jsou nastaveny podle velikosti pracovního procesu. Můžete si prohlédnout omezení pro [Číselná omezení mezi virtuálními počítači izolovaného prostoru (sandbox) – připojení TCP](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)
 
-|Název omezení|Description|Malé (a1)|Střední (a2)|Velký (a3)|Izolovaná úroveň (pomocného mechanismu)|
+|Název omezení|Popis|Malé (a1)|Střední (a2)|Velký (a3)|Izolovaná úroveň (pomocného mechanismu)|
 |---|---|---|---|---|---|
 |Připojení|Počet připojení napříč celým virtuálním počítačem|1920|3968|8064|16 000|
 
@@ -153,7 +156,7 @@ Připojení TCP a porty SNAT přímo nesouvisejí. Rozpoznávání využití př
 * Limit připojení TCP nastane na úrovni instance pracovního procesu. Služba Vyrovnávání zatížení sítě Azure nepoužívá metriku připojení TCP pro omezení portů SNAT.
 * Omezení připojení TCP jsou popsaná v části [Číselná omezení pro různé virtuální počítače izolovaného prostoru (sandbox) – připojení TCP](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)
 
-|Název omezení|Description|Malé (a1)|Střední (a2)|Velký (a3)|Izolovaná úroveň (pomocného mechanismu)|
+|Název omezení|Popis|Malé (a1)|Střední (a2)|Velký (a3)|Izolovaná úroveň (pomocného mechanismu)|
 |---|---|---|---|---|---|
 |Připojení|Počet připojení napříč celým virtuálním počítačem|1920|3968|8064|16 000|
 

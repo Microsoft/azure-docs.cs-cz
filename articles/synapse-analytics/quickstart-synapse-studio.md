@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 271fd77e519ce9d78e2fa4e4837004a77cf73522
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 8b35b281f6a70d5485004dc61563271132734a87
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276052"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374146"
 ---
 # <a name="quickstart-use-synapse-studio-preview"></a>Rychlý Start: použití synapse Studio (Preview)
 
@@ -24,9 +24,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na portál [Azure Portal](https://portal.azure.com/).
+Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [Vytvořte pracovní prostor Azure synapse a přidružený účet úložiště](quickstart-create-workspace.md).
 
@@ -49,7 +49,7 @@ Můžete vytvářet nové složky a nahrávat soubory pomocí odkazů na panelu 
 ## <a name="query-files-on-storage-account"></a>Dotazování souborů na účet úložiště
 
 > [!IMPORTANT]
-> Aby `Storage Blob Reader` bylo možné zadávat dotazy na soubory, musíte být členem role v základním úložišti. Přečtěte si, jak [přiřadit oprávnění RBAC pro nástroj **pro čtení dat objektů BLOB úložiště** nebo **přispěvatele úložiště** v Azure Storage](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role).
+> Aby `Storage Blob Reader` bylo možné zadávat dotazy na soubory, musíte být členem role v základním úložišti. Přečtěte si, jak [přiřadit oprávnění RBAC pro nástroj **pro čtení dat objektů BLOB úložiště** nebo **přispěvatele úložiště** v Azure Storage](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-an-azure-built-in-role).
 
 1. Nahrajte některé `PARQUET` soubory.
 2. Vyberte jeden nebo více souborů a pak vytvořte nový skript SQL nebo Poznámkový blok Spark pro zobrazení obsahu souborů. Pokud chcete vytvořit Poznámkový blok, budete muset vytvořit [fond Apache Spark v pracovních prostorech synapse](quickstart-create-apache-spark-pool-studio.md).
@@ -64,7 +64,7 @@ Můžete vytvářet nové složky a nahrávat soubory pomocí odkazů na panelu 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Umožněte uživatelům Azure AD dotazování souborů [přiřazením **čtecího modulu dat objektů BLOB úložiště** nebo **přispěvatele dat objektů BLOB úložiště** na Azure Storage](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)
+- Umožněte uživatelům Azure AD dotazování souborů [přiřazením **čtecího modulu dat objektů BLOB úložiště** nebo **přispěvatele dat objektů BLOB úložiště** na Azure Storage](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-an-azure-built-in-role)
 - [Dotazování souborů na Azure Storage pomocí SQL na vyžádání](sql/on-demand-workspace-overview.md)
 - [Vytvoření fondu úloh Apache Sparku pomocí webu Azure Portal](quickstart-create-apache-spark-pool-portal.md)
 - [Vytvoření sestavy Power BI u souborů uložených v Azure Storage](sql/tutorial-connect-power-bi-desktop.md)

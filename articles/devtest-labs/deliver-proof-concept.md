@@ -3,16 +3,16 @@ title: Poskytněte zkoušku konceptu – Azure DevTest Labs | Microsoft Docs
 description: Naučte se, jak doručovat koncept, aby se Azure DevTest Labs mohl úspěšně začlenit do podnikového prostředí.
 ms.topic: article
 ms.date: 06/2/2020
-ms.openlocfilehash: b0178d412154de556f25ab71bb30eed7be5e9ba6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c28cf9eebd8a39a2edce48e4fb8b96dc7608d80
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481353"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288019"
 ---
 # <a name="deliver-a-proof-of-concept"></a>Doručovat zkoušku konceptu 
 
-Jedním z klíčových scénářů pro Azure DevTest Labs je povolení prostředí pro vývoj a testování v cloudu. Mezi příklady patří:
+Jedním z klíčových scénářů pro Azure DevTest Labs je povolení prostředí pro vývoj a testování v cloudu. Příklady:
 
 * Vytváření desktopových ploch pro vývojáře v cloudu.
 * Konfigurace prostředí pro testování.
@@ -114,8 +114,8 @@ Očekáváme, že řešení má následující komponenty:
 
 Před vydáním kompletního řešení DevTest Labs musíte udělat nějaká důležitá rozhodnutí pro plánování a návrh. Činnost při práci na zkušebním konceptu vám může usnadnit provádění těchto rozhodnutí. Mezi další aspekty patří: 
 
-* **Topologie předplatného**: požadavky na podnikové úrovni pro prostředky v Azure můžou překračovat rámec [dostupných kvót v rámci jednoho předplatného](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits). To vyžaduje několik předplatných Azure a/nebo žádostí o služby, aby se zvýšily počáteční limity předplatného. Před distribucí prostředků mezi předplatnými je důležité se rozhodnout. Jedním z cenných prostředků je [Příručka pro rozhodování o předplatném](https://docs.microsoft.com/azure/architecture/cloud-adoption/decision-guides/subscriptions/) , protože později je obtížné přesunout prostředky do jiného předplatného. Testovací prostředí se například nedá po vytvoření přesunout do jiného předplatného.  
-* **Síťová topologie**: [Výchozí síťová infrastruktura](../app-service/networking-features.md) , kterou DevTest Labs automaticky vytvoří, nemusí být dostačující pro splnění požadavků a omezení pro podnikové uživatele. Je běžné, že [Azure ExpressRoute připojené virtuální sítě](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/), [centrum a paprsky](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) pro připojení mezi předplatnými a dokonce i [vynucené směrování](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) , aby se zajistilo jenom místní připojení. DevTest Labs umožňuje, aby se existující virtuální sítě připojovaly k testovacímu prostředí, které umožňuje jejich použití při vytváření nových virtuálních počítačů v testovacím prostředí. 
+* **Topologie předplatného**: požadavky na podnikové úrovni pro prostředky v Azure můžou překračovat rámec [dostupných kvót v rámci jednoho předplatného](../azure-resource-manager/management/azure-subscription-service-limits.md). To vyžaduje několik předplatných Azure a/nebo žádostí o služby, aby se zvýšily počáteční limity předplatného. Před distribucí prostředků mezi předplatnými je důležité se rozhodnout. Jedním z cenných prostředků je [Příručka pro rozhodování o předplatném](/azure/architecture/cloud-adoption/decision-guides/subscriptions/) , protože později je obtížné přesunout prostředky do jiného předplatného. Testovací prostředí se například nedá po vytvoření přesunout do jiného předplatného.  
+* **Síťová topologie**: [Výchozí síťová infrastruktura](../app-service/networking-features.md) , kterou DevTest Labs automaticky vytvoří, nemusí být dostačující pro splnění požadavků a omezení pro podnikové uživatele. Je běžné, že [Azure ExpressRoute připojené virtuální sítě](/azure/architecture/reference-architectures/hybrid-networking/), [centrum a paprsky](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) pro připojení mezi předplatnými a dokonce i [vynucené směrování](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) , aby se zajistilo jenom místní připojení. DevTest Labs umožňuje, aby se existující virtuální sítě připojovaly k testovacímu prostředí, které umožňuje jejich použití při vytváření nových virtuálních počítačů v testovacím prostředí. 
 * **Vzdálený přístup k virtuálním počítačům**: existuje spousta možností vzdáleného přístupu k virtuálním počítačům, které se nacházejí v DevTest Labs. Nejjednodušším způsobem je použít veřejné IP adresy nebo sdílené veřejné IP adresy. Toto jsou [nastavení, která jsou k dispozici v testovacím prostředí](devtest-lab-shared-ip.md). Pokud tyto možnosti nestačí, je použití brány vzdáleného přístupu také možnost. Tato možnost se zobrazuje v [referenční architektuře Enterprise DevTest Labs](devtest-lab-reference-architecture.md) a dále se popisuje v dokumentaci ke službě [Brána vzdálené plochy DevTest Labs](configure-lab-remote-desktop-gateway.md). Podniky můžou použít taky ExpressRoute nebo VPN typu Site-to-site pro připojení svých cvičení k místní síti. Tato možnost umožňuje přímé vzdálené plochy nebo připojení SSH k virtuálním počítačům na základě jejich privátní IP adresy bez vystavení pro Internet. 
 * **Oprávnění ke zpracování**: dvě klíčová oprávnění běžně používaná v DevTest Labs jsou [vlastníkem a uživatelem testovacího prostředí](devtest-lab-add-devtest-user.md). Je důležité se rozhodnout před tím, než DevTest laboratoře budou v podstatě, které budou pověřit každou úroveň přístupu v testovacím prostředí. Běžným modelem je vlastník rozpočtu (například vedoucí týmu) jako vlastník testovacího prostředí a členové týmu jako uživatelé testovacího prostředí. Tento model umožňuje osobě (vedoucí týmu) odpovědnost za rozpočet upravit nastavení zásad a udržovat tým v rámci rozpočtu.  
 

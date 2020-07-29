@@ -7,13 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/12/2020
+ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 76a752bc108158c998d13a548da535d5fb1d5ee2
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2edf5634b56fdfa6e1ed7dad9ee443ca588db583
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79503871"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87374986"
 ---
 V tomto rychlém startu můžete začít vyhledávat zprávy pomocí Vyhledávání zpráv Bingu klientské knihovny pro Java. I když Vyhledávání zpráv Bingu má REST API kompatibilní s většinou programovacích jazyků, Klientská knihovna poskytuje snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch).
 
@@ -52,7 +53,7 @@ import java.io.IOException;
 
 ## <a name="create-a-search-client-and-store-credentials"></a>Vytvoření vyhledávacího klienta a přihlašovacích údajů pro Store
 
-1. Vytvořte metodu s názvem `getClient()` , která vrátí nového `NewsSearchAPIImpl` klienta vyhledávání. Přidejte svůj koncový bod jako první parametr nového`NewsSearchAPIImpl` objektu a nový `ServiceClientCredentials` objekt pro uložení vašich přihlašovacích údajů. 
+1. Vytvořte metodu s názvem `getClient()` , která vrátí nového `NewsSearchAPIImpl` klienta vyhledávání. Přidejte svůj koncový bod jako první parametr nového `NewsSearchAPIImpl` objektu a nový `ServiceClientCredentials` objekt pro uložení vašich přihlašovacích údajů. 
 
     ```java
     public static NewsSearchAPIImpl getClient(final String subscriptionKey) {
@@ -62,7 +63,7 @@ import java.io.IOException;
     }
     ```
 
-2. Chcete-li `ServiceClientCredentials` vytvořit objekt, přepište `applyCredentialsFilter()` funkci. `OkHttpClient.Builder` Předat metodě a použít `addNetworkInterceptor()` metodu Tvůrce k vytvoření přihlašovacích údajů pro volání klientské knihovny.
+2. Chcete-li vytvořit `ServiceClientCredentials` objekt, přepište `applyCredentialsFilter()` funkci. Předat `OkHttpClient.Builder` metodě a použít `addNetworkInterceptor()` metodu Tvůrce k vytvoření přihlašovacích údajů pro volání klientské knihovny.
 
     ```java
     new ServiceClientCredentials() {

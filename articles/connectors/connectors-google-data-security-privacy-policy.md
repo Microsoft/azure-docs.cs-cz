@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: 384335898c7cd6b379c6107152b49e9931cf513a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b82b79d076871b961d5c496bc70beac1b5067b2d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194965"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288111"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps
 
-Od **1. května 2020**můžou změny v důsledku [zabezpečení a zásad ochrany osobních údajů](https://www.blog.google/technology/safety-security/project-strobe/) v Google ovlivnit pracovní postupy aplikace logiky, které používají [konektor Gmail](https://docs.microsoft.com/connectors/gmail/). Pokud vaše aplikace logiky používají konektor Gmail s účtem uživatele Gmail (e-mailová adresa, která končí @gmail.com @googlemail.com na nebo), vaše aplikace logiky můžou používat jenom konkrétní [triggery, akce a konektory schválené společností Google](#approved-connectors).
+Od **1. května 2020**můžou změny v důsledku [zabezpečení a zásad ochrany osobních údajů](https://www.blog.google/technology/safety-security/project-strobe/) v Google ovlivnit pracovní postupy aplikace logiky, které používají [konektor Gmail](/connectors/gmail/). Pokud vaše aplikace logiky používají konektor Gmail s účtem uživatele Gmail (e-mailová adresa, která končí @gmail.com @googlemail.com na nebo), vaše aplikace logiky můžou používat jenom konkrétní [triggery, akce a konektory schválené společností Google](#approved-connectors).
 
 > [!NOTE]
 > Pokud vaše aplikace logiky používají konektor Gmail s obchodním účtem G-Suite (e-mailová adresa s vlastní doménou), vaše aplikace logiky se nijak nedotýká a nebude mít k dispozici žádné omezení na používání konektoru gmail.
@@ -62,7 +62,7 @@ Tady je několik příkladů použití konektoru Gmail s integrovanými aktivač
 
   ![Aplikace logiky, které nedodržují předpisy – příklad 3](./media/connectors-google-data-security-privacy-policy/not-compliant-logic-app-3.png)
 
-Nejnovější informace najdete v [technické referenční dokumentaci konektoru Gmail](https://docs.microsoft.com/connectors/gmail/).
+Nejnovější informace najdete v [technické referenční dokumentaci konektoru Gmail](/connectors/gmail/).
 
 <a name="update-affected-workflows"></a>
 
@@ -74,11 +74,11 @@ Pokud musíte použít konektor Gmail s uživatelským účtem Gmail a neschvál
 
 1. V konektoru Gmail použijte ID klienta a hodnoty tajného klíče klienta z vaší klientské aplikace Google.
 
-Další informace najdete v [technické referenční dokumentaci konektoru Gmail](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application).
+Další informace najdete v [technické referenční dokumentaci konektoru Gmail](/connectors/gmail/#authentication-and-bring-your-own-application).
 
 ### <a name="create-google-client-app"></a>Vytvoření klientské aplikace Google
 
-Chcete-li nastavit projekt pro klientskou aplikaci, použijte [Průvodce konzolou rozhraní Google API](https://console.developers.google.com/start/api?id=gmail&credential=client_key) a postupujte podle pokynů. Pokud chcete zobrazit podrobné pokyny, přečtěte si pokyny v [dokumentaci k technickým odkazům ke konektoru Gmail](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application).
+Chcete-li nastavit projekt pro klientskou aplikaci, použijte [Průvodce konzolou rozhraní Google API](https://console.developers.google.com/start/api?id=gmail&credential=client_key) a postupujte podle pokynů. Pokud chcete zobrazit podrobné pokyny, přečtěte si pokyny v [dokumentaci k technickým odkazům ke konektoru Gmail](/connectors/gmail/#authentication-and-bring-your-own-application).
 
 Až budete hotovi, vaše obrazovka vypadá podobně jako v tomto příkladu, ale budete mít vlastní **ID klienta** a tajné hodnoty pro **klienta** , které později použijete ve své aplikaci logiky.
 
@@ -98,7 +98,7 @@ Pokud chcete použít ID klienta a tajný klíč klienta z vaší klientské apl
 
    ![Zadání informací o připojení](./media/connectors-google-data-security-privacy-policy/authentication-type-bring-your-own.png)
 
-   | Vlastnost | Hodnota | Description |
+   | Vlastnost | Hodnota | Popis |
    |----------|-------|-------------|
    | **Typ ověřování** | **Přineste si vlastní aplikaci** | Určuje, že budete používat vlastní klientskou aplikaci pro ověřování. |
    | **ID klienta** | <*ID klienta*> | ID klienta z klientské aplikace Google |
@@ -117,4 +117,5 @@ Pokud chcete použít ID klienta a tajný klíč klienta z vaší klientské apl
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o [konektoru Gmail](https://docs.microsoft.com/connectors/gmail/)
+Další informace o [konektoru Gmail](/connectors/gmail/)
+

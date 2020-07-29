@@ -10,26 +10,36 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 2ea850acf0ef581ea66733b0293ba044c87bb3a0
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 05b47a786fe845460177b66b5bd54cdb140c246e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362138"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289428"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>Vytvoření hlasového asistenta pomocí vlastních příkazů
 
 V tomto rychlém startu vytvoříte a otestujete základní aplikaci Custom Commands pomocí nástroje Speech Studio. K této aplikaci budete mít přístup taky z klientské aplikace pro Windows. **Vlastní příkazy** usnadňují vytváření bohatě bohatých aplikací pro hlasové příkazy optimalizovaných pro prostředí s prvními interakcemi hlasu. Poskytuje jednotné prostředí pro vytváření, automatický hostující model a poměrně nižší složitost, což vám pomůže soustředit se na vytváření nejlepšího řešení pro scénáře hlasových příkazů.
 
+## <a name="region-availability"></a>Dostupnost oblasti
+V současné době vlastní příkazy podporují odběry řeči vytvořené v těchto oblastech:
+* USA – západ
+* USA – západ 2
+* East US
+* USA – východ 2
+* Severní Evropa
+* West Europe
+* USA – středozápad
+* Indie – střed
+* Východní Asie
+* Southeast Asia
+
 ## <a name="prerequisites"></a>Požadavky
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Vytvořte prostředek řeči Azure v oblasti, která podporuje vlastní příkazy.<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Vytvořte prostředek řeči Azure v oblasti, která podporuje vlastní příkazy.<span class="docon docon-navigate-external x-hidden-focus"></span></a> Seznam podporovaných oblastí najdete výše v části **dostupnost oblasti** .
 > * Stáhněte si ukázkový soubor JSON pro [inteligentní místnost Lite](https://aka.ms/speech/cc-quickstart) .
 > * Stáhněte si nejnovější verzi [klienta Windows Voice Assistant](https://aka.ms/speech/va-samples-wvac).
-
-> [!NOTE]
-> V současné době vlastní příkazy podporují pouze odběry řeči v oblastech westus, westus2 a northeurope.
 
 ## <a name="go-to-the-speech-studio-for-custom-commands"></a>Přejít do sady Speech Studio pro vlastní příkazy
 

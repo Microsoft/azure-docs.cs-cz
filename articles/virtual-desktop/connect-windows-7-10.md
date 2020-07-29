@@ -8,27 +8,24 @@ ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1f813d0ada516f6090b97e5858cefab110636f90
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 88e325c5a743513baa5a580ae65005c545a07b78
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077602"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288783"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Připojení s desktopovým klientem Windows
 
 > Platí pro: Windows 7, Windows 10 a Windows 10 IoT Enterprise
 
 >[!IMPORTANT]
->Tento obsah se vztahuje na jarní 2020 aktualizaci s Azure Resource Manager objekty virtuálních klientů Windows. Pokud používáte virtuální plochu Windows na verzi 2019 bez Azure Resource Manager objektů, přečtěte si [Tento článek](./virtual-desktop-fall-2019/connect-windows-7-10-2019.md).
->
-> V současnosti je ve verzi Public Preview na jaře 2020 aktualizace virtuálních počítačů s Windows. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>Tento obsah se vztahuje na virtuální plochu Windows s Azure Resource Manager objekty virtuálních klientů Windows. Pokud používáte virtuální plochu Windows (Classic) bez Azure Resource Manager objektů, přečtěte si [Tento článek](./virtual-desktop-fall-2019/connect-windows-7-10-2019.md).
 
 K prostředkům virtuálních klientů Windows na zařízeních s Windows 7, Windows 10 a Windows 10 IoT Enterprise můžete přistupovat pomocí desktopového klienta Windows. Klient nepodporuje Window 8 ani Windows 8.1.
 
 >[!NOTE]
->Klient Windows automaticky nastaví výchozí hodnotu 2019 Release pro Windows Virtual Desktop. Pokud však klient zjistí, že uživatel má také prostředky Azure Resource Manager, automaticky přidá prostředky nebo upozorní uživatele, že jsou k dispozici.
+>Klient Windows se automaticky nastaví jako výchozí pro virtuální plochu Windows (Classic). Pokud však klient zjistí, že uživatel má také prostředky Azure Resource Manager, automaticky přidá prostředky nebo upozorní uživatele, že jsou k dispozici.
 
 > [!IMPORTANT]
 > Virtuální počítač s Windows nepodporuje klienta připojení k aplikacím RemoteApp a vzdálené ploše (RADC) ani klienta Připojení ke vzdálené ploše (MSTSC).
@@ -66,8 +63,8 @@ Existují dva způsoby, jak se můžete přihlásit k odběru pracovního prosto
 1. Na hlavní stránce klienta vyberte možnost **Přihlásit se k odběru pomocí adresy URL**.
 2. Zadejte adresu URL pracovního prostoru nebo svou e-mailovou adresu:
    - Pokud použijete **adresu URL pracovního prostoru**, použijte toho, kterého vám správce poskytl. Při přístupu k prostředkům z virtuálního počítače s Windows můžete použít jednu z těchto adres URL:
-     - Virtuální plocha Windows je 2019:`https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
-     - Jarní 2020 virtuálních počítačů s Windows:`https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
+     - Virtuální plocha Windows (Classic):`https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
+     - Virtuální počítač s Windows:`https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
    - Pokud místo toho použijete pole **e-mail** , zadejte svou e-mailovou adresu. To klientovi oznamuje, aby vyhledal adresu URL přidruženou k vaší e-mailové adrese, pokud váš správce nastavil [zjišťování e-mailů](/windows-server/remote/remote-desktop-services/rds-email-discovery).
 3. Vyberte **Další**.
 4. Po zobrazení výzvy se přihlaste pomocí svého uživatelského účtu.

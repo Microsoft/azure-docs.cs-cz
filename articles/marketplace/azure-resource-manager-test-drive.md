@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/19/2020
-ms.openlocfilehash: 401ffaaa0fa8c8e298a3a1891d93f2c9039d7820
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.author: keferna
+author: keferna
+ms.openlocfilehash: 92fd4d629585ed465e2891be2dce1c1bdc8c88e6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102935"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287941"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager testovacích jednotek
 
@@ -68,7 +70,7 @@ Pro parametry můžete použít libovolný platný název; testovací jednotka r
 
 ### <a name="accepted-parameter-metadata-types"></a>Přijaté typy metadat parametrů
 
-| Typ metadat   | Typ parametru  | Description     | Ukázková hodnota    |
+| Typ metadat   | Typ parametru  | Popis     | Ukázková hodnota    |
 |---|---|---|---|
 | **identifikátor**     | řetězec          | Základní identifikátor URI balíčku pro nasazení| `https:\//\<\..\>.blob.core.windows.net/\<\..\>` |
 | **jmen**    | řetězec          | Nové náhodné uživatelské jméno.| admin68876      |
@@ -102,7 +104,7 @@ Tento parametr použijte v rámci šablony, chcete-li vytvořit identifikátor U
 }
 ```
 
-#### <a name="username"></a>uživatelské jméno
+#### <a name="username"></a>username
 
 Test Drive Inicializuje tento parametr pomocí nového náhodného uživatelského jména:
 

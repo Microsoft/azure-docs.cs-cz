@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 34d2d96e28f90249ad25788f6994dac63f83b1f6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6a686f6915e332893f619e66944591999063a07c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261759"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288162"
 ---
-# <a name="add-a-bar-chart-layer"></a>Přidat vrstvu pruhového grafu
+# <a name="add-a-bar-chart-layer"></a>Přidání vrstvy pruhového grafu
 
-**Vrstva pruhového grafu** je užitečná pro přebírání dat do další dimenze tím, že umožňuje vizualizaci dat umístění jako prostorových pruhů nebo lahví na mapě. Podobně jako bublinová vrstva, pruhový graf později může snadno vizualizovat dvě metriky současně pomocí barvy a relativní výšky. Aby pruhy měly výšku, je nutné přidat míru do kontejneru **Size** v podokně **pole** . Není-li zadána míra, pruhy bez výšky jako ploché čtverce nebo kružnice v závislosti na možnosti **tvar pruhu** .
+**Vrstva pruhového grafu** je užitečná pro přebírání dat do další dimenze tím, že umožňuje vizualizaci dat umístění jako prostorových pruhů nebo lahví na mapě. Podobně jako bublinová vrstva, pruhový graf později může snadno vizualizovat dvě metriky současně pomocí barvy a relativní výšky. Aby pruhy měly výšku, je nutné přidat míru do kontejneru **Size** v podokně **pole** . Pokud není zadána míra, pruhy bez výšky se zobrazí jako ploché čtverce nebo kružnice v závislosti na možnosti **tvar pruhu** .
 
 > [!div class="mx-imgBorder"]
 > ![Mapa znázorňující data bodů pomocí vrstvy pruhového grafu](media/power-bi-visual/bar-chart-layer-styled.png)
@@ -60,13 +60,13 @@ Níže jsou všechna nastavení v podokně **Formát** , která jsou k dispozici
 Přidat k mapě další kontext:
 
 > [!div class="nextstepaction"]
-> [Přidat referenční vrstvu](power-bi-visual-add-reference-layer.md)
+> [Přidání referenční vrstvy](power-bi-visual-add-reference-layer.md)
 
 > [!div class="nextstepaction"]
 > [Přidání vrstvy dlaždic](power-bi-visual-add-tile-layer.md)
 
 > [!div class="nextstepaction"]
-> [Zobrazit provoz v reálném čase](power-bi-visual-show-real-time-traffic.md)
+> [Zobrazení provozu v reálném čase](power-bi-visual-show-real-time-traffic.md)
 
 Přizpůsobení vizuálu:
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/26/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 28ea1e68441a57d67fef1e78153e00eb1bd09211
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: dececd066597682e240e737727d3bcaf8f8f3619
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143916"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375309"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Musí mít uživatel k používání Azure Virtual WAN rozbočovač a paprsek se zařízeními SD-WAN/VPN?
 
@@ -139,7 +139,7 @@ Připojení z větve nebo zařízení VPN do Azure Virtual WAN není žádné, a
 
 ### <a name="can-the-on-premises-vpn-device-connect-to-multiple-hubs"></a>Může se místní zařízení VPN připojit k více rozbočovačům?
 
-Ano. Tok přenosů, když se začíná, pochází z místního zařízení do nejbližší hraniční sítě Microsoftu a pak do virtuálního centra.
+Yes. Tok přenosů, když se začíná, pochází z místního zařízení do nejbližší hraniční sítě Microsoftu a pak do virtuálního centra.
 
 ### <a name="are-there-new-resource-manager-resources-available-for-virtual-wan"></a>Jsou pro Virtual WAN k dispozici nějaké nové prostředky Resource Manageru?
   
@@ -163,7 +163,7 @@ Ano, BGP se podporuje. Při vytváření sítě VPN můžete zadat parametry pro
 
 ### <a name="is-there-any-licensing-or-pricing-information-for-virtual-wan"></a>Jsou pro Virtual WAN k dispozici nějaké informace o cenách nebo licencích?
 
-Ano. Prohlédněte si stránku s [cenami](https://azure.microsoft.com/pricing/details/virtual-wan/).
+Yes. Prohlédněte si stránku s [cenami](https://azure.microsoft.com/pricing/details/virtual-wan/).
 
 ### <a name="is-it-possible-to-construct-azure-virtual-wan-with-a-resource-manager-template"></a>Je možné vytvořit Azure Virtual WAN s využitím šablony Resource Manageru?
 
@@ -171,7 +171,7 @@ Jednoduchá konfigurace jedné virtuální sítě WAN s jedním rozbočovačem a
 
 ### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other-v2v-transit"></a>Můžou virtuální sítě připojení k virtuálnímu rozbočovači komunikovat mezi sebou (V2V tranzit)?
 
-Ano. Standard Virtual WAN podporuje přenosné připojení typu VNet-to-VNet přes virtuální síť WAN, ke které jsou virtuální sítě připojené. V terminologii virtuální sítě WAN se tyto cesty označují jako "místní virtuální síť WAN" pro virtuální sítě připojené k virtuálnímu rozbočovači WAN v rámci jedné oblasti a "globální virtuální síť WAN" pro virtuální sítě připojené prostřednictvím několika virtuálních rozbočovačů WAN ve dvou nebo více oblastech. V některých scénářích může být paprskový virtuální sítě také přímo navzájem partnerským vztahem s použitím [Virtual Network partnerských vztahů](../articles/virtual-network/virtual-network-peering-overview.md) kromě místního nebo globálního přenosu virtuální sítě WAN. V takovém případě má partnerský vztah virtuálních sítí přednost před přenosným připojením přes virtuální síť WAN.
+Yes. Standard Virtual WAN podporuje přenosné připojení typu VNet-to-VNet přes virtuální síť WAN, ke které jsou virtuální sítě připojené. V terminologii virtuální sítě WAN se tyto cesty označují jako "místní virtuální síť WAN" pro virtuální sítě připojené k virtuálnímu rozbočovači WAN v rámci jedné oblasti a "globální virtuální síť WAN" pro virtuální sítě připojené prostřednictvím několika virtuálních rozbočovačů WAN ve dvou nebo více oblastech. V některých scénářích může být paprskový virtuální sítě také přímo navzájem partnerským vztahem s použitím [Virtual Network partnerských vztahů](../articles/virtual-network/virtual-network-peering-overview.md) kromě místního nebo globálního přenosu virtuální sítě WAN. V takovém případě má partnerský vztah virtuálních sítí přednost před přenosným připojením přes virtuální síť WAN.
 
 ### <a name="is-branch-to-branch-connectivity-allowed-in-virtual-wan"></a>Jsou ve Virtual WAN povolené možnosti připojení mezi jednotlivými pobočkami?
 
@@ -179,7 +179,7 @@ Ano, možnosti připojení mezi jednotlivými pobočkami jsou ve Virtual WAN k d
 
 ### <a name="does-branch-to-branch-traffic-traverse-through-the-azure-virtual-wan"></a>Prochází provoz mezi větví přes Azure Virtual WAN?
 
-Ano.
+Yes.
 
 ### <a name="does-virtual-wan-require-expressroute-from-each-site"></a>Vyžaduje virtuální síť WAN ExpressRoute z každé lokality?
 
@@ -213,7 +213,7 @@ Provoz se řídí vzorem: síťová zařízení – >poskytovatel internetových
 
 ### <a name="in-this-model-what-do-you-need-at-each-site-just-an-internet-connection"></a>Co je při použití tohoto modelu potřeba na jednotlivých lokalitách? Jenom připojení k internetu?
 
-Ano. Připojení k Internetu a fyzické zařízení, které podporuje protokol IPsec, nejlépe z našich integrovaných [virtuálních partnerů WAN](../articles/virtual-wan/virtual-wan-locations-partners.md). Volitelně můžete ručně spravovat konfiguraci a připojení k Azure z preferovaného zařízení.
+Yes. Připojení k Internetu a fyzické zařízení, které podporuje protokol IPsec, nejlépe z našich integrovaných [virtuálních partnerů WAN](../articles/virtual-wan/virtual-wan-locations-partners.md). Volitelně můžete ručně spravovat konfiguraci a připojení k Azure z preferovaného zařízení.
 
 ### <a name="how-do-i-enable-default-route-00000-in-a-connection-vpn-expressroute-or-virtual-network"></a>Návody povolit výchozí trasu (0.0.0.0/0) v připojení (VPN, ExpressRoute nebo Virtual Network):
 
@@ -233,9 +233,17 @@ Pokud virtuální rozbočovač zjistí stejnou trasu z několika vzdálených ro
 
 Přenos mezi ER-to-ER je vždy prostřednictvím globálního dosahu. Brány virtuálních rozbočovačů se nasazují v oblastech DC nebo Azure. Pokud se dva okruhy ExpressRoute připojují prostřednictvím globálního dosahu, nepotřebujete, aby provoz dostal všechny možnosti od hraničních směrovačů do řadiče domény virtuálního rozbočovače.
 
-### <a name="is-there-a-concept-of-weight-in-azure-virtual-wan-circuits-or-vpn-connections"></a>Existuje koncept váhy v okruhech Azure Virtual WAN nebo připojeních k síti VPN.
+### <a name="is-there-a-concept-of-weight-in-azure-virtual-wan-expressroute-circuits-or-vpn-connections"></a>Existuje koncept váhy v okruhech Azure Virtual WAN ExpressRoute nebo připojení k síti VPN.
 
 Pokud je k virtuálnímu rozbočovači připojeno více okruhů ExpressRoute, váha směrování v připojení poskytuje mechanismus pro ExpressRoute ve virtuálním rozbočovači, který upřednostňuje jeden okruh přes druhý. Neexistuje žádný mechanismus pro nastavení váhy pro připojení VPN. Azure vždycky upřednostňuje připojení ExpressRoute přes připojení VPN v rámci jednoho rozbočovače.
+
+### <a name="does-virtual-wan-prefer-expressroute-over-vpn-for-traffic-egressing-azure"></a>Preferuje virtuální síť WAN ExpressRoute přes VPN pro výstup provozu Azure
+
+Ano 
+
+### <a name="when-a-virtual-wan-hub-has-an-expressroute-circuit-and-a-vpn-site-connected-to-it-what-would-cause-a-vpn-connection-route-to-be-prefered-over-expressroute"></a>Pokud má virtuální síť WAN okruh ExpressRoute a připojenou lokalitu VPN, co by mohlo způsobit, že bude trasa připojení VPN upřednostňovaná i přes ExpressRoute?
+
+Když je okruh ExpressRoute připojený k virtuálnímu rozbočovači, jsou směrovače Microsoft Edge prvním uzlem pro komunikaci mezi místním prostředím a Azure. Tyto hraniční směrovače komunikují s branami Virtual WAN ExpressRoute, které dále zjišťují trasy od směrovače virtuálního rozbočovače, který řídí všechny trasy mezi všemi branami ve virtuální síti WAN. Směrovače Microsoft Edge zpracovávají virtuální rozbočovač ExpressRoute trasy s vyšší prioritou přes směrování cest z místního prostředí. Vzhledem k jakýmkoli důvodům, kdy se připojení VPN stane primárním médiem pro virtuální rozbočovač, aby se zjistily trasy od (například scénáře převzetí služeb při selhání mezi ExpressRoute a VPN), pokud lokalita VPN nemá delší dobu jako délku cesty, bude virtuální rozbočovač dál sdílet trasy k síti VPN s bránou ExpressRoute, což způsobí, že směrovače Microsoft Edge upřednostňují trasy VPN v místních trasách. 
 
 ### <a name="when-two-hubs-hub-1-and-2-are-connected-and-there-is-an-expressroute-circuit-connected-as-a-bow-tie-to-both-the-hubs-what-is-the-path-for-a-vnet-connected-to-hub-1-to-reach-a-vnet-connected-in-hub-2"></a>Když jsou připojená dvě centra (centrum 1 a 2) a okruh ExpressRoute je připojený k oběma centrům jako motýlek, jaká je cesta k virtuální síti připojené k centru 1, aby se mohla připojit k virtuální síti připojené v centru 2?
 
@@ -244,6 +252,10 @@ Aktuální chování je preferovat cestu k okruhu ExpressRoute přes rozbočova�
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Je podpora protokolu IPv6 ve virtuální síti WAN podporovaná?
 
 Protokol IPv6 není podporován ve virtuálním centru sítě WAN a jeho branách. Pokud máte virtuální síť, která má podporu protokolu IPv6, a chcete připojit virtuální síť k virtuální síti WAN, tento scénář se momentálně nepodporuje.
+
+### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionality-"></a>Jaká je doporučená verze rozhraní API, kterou používají skripty, které automatizují různé funkce virtuálních sítí WAN?
+
+Vyžaduje se minimálně verze 05-01-2020 (květen 1 2020). 
 
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>Jaké jsou rozdíly mezi typy virtuálních sítí WAN (Basic a Standard)?
 

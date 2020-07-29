@@ -1,25 +1,19 @@
 ---
 title: Instalace Trend Micro hlubokého zabezpečení na virtuálním počítači
 description: Tento článek popisuje, jak nainstalovat a nakonfigurovat Trend Micro Security na virtuálním počítači vytvořeném pomocí modelu nasazení Classic v Azure.
-services: virtual-machines-windows
-documentationcenter: ''
 author: axayjo
-manager: gwallace
-editor: ''
 tags: azure-service-management
-ms.assetid: e991b635-f1e2-483f-b7ca-9d53e7c22e2a
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
-ms.openlocfilehash: c4a4f641283a9a4771a236ba844cfe296b31c28c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bed1d567aa48a11c01ae952e6a4a2028e260e6e0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082674"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288522"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Postup instalace a konfigurace Trend Micro hlubokého zabezpečení jako služby na virtuálním počítači s Windows
 
@@ -88,7 +82,7 @@ Spuštění agenta při jeho instalaci trvá několik minut. Potom je potřeba n
 * [Ukázkový skript prostředí Windows PowerShell](https://go.microsoft.com/fwlink/?LinkId=404100) pro konfiguraci virtuálního počítače
 * [Pokyny](https://go.microsoft.com/fwlink/?LinkId=404099) k ukázce
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 [Jak se přihlásit k virtuálnímu počítači s Windows serverem]
 
 [Rozšíření a funkce virtuálních počítačů Azure]
@@ -100,4 +94,4 @@ Spuštění agenta při jeho instalaci trvá několik minut. Potom je potřeba n
 
 <!-- Link references -->
 [Jak se přihlásit k virtuálnímu počítači s Windows serverem]:../windows/classic/connect-logon.md
-[Rozšíření a funkce virtuálních počítačů Azure]: https://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409
+[Rozšíření a funkce virtuálních počítačů Azure]: features-windows.md

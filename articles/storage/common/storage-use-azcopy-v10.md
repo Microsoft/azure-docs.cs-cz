@@ -4,15 +4,15 @@ description: AzCopy je nástroj příkazového řádku, který můžete použít
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/23/2019
+ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: bb18e2b0af6f04cee5b6be11afbb2d2aabdadb4b
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 08e70265399a67ee58ad66e06adffbfd30b20e10
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143002"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289231"
 ---
 # <a name="get-started-with-azcopy"></a>Začínáme s nástrojem AzCopy
 
@@ -57,7 +57,7 @@ Podrobné referenční dokumentaci k jednotlivým příkazům a parametrům př�
 > [!NOTE] 
 > Jako vlastník účtu Azure Storage nemáte automaticky přiřazená oprávnění pro přístup k datům. Než budete moct s AzCopy dělat něco smysluplného, budete se muset rozhodnout, jak zadáte přihlašovací údaje pro autorizaci službě úložiště. 
 
-## <a name="choose-how-youll-provide-authorization-credentials"></a>Vyberte způsob poskytování autorizačních přihlašovacích údajů.
+## <a name="choose-how-youll-provide-authorization-credentials"></a>Výběr způsobu zadávání přihlašovacích údajů pro autorizaci
 
 Autorizační přihlašovací údaje můžete zadat pomocí Azure Active Directory (AD) nebo pomocí tokenu sdíleného přístupového podpisu (SAS).
 
@@ -65,8 +65,8 @@ Tuto tabulku použijte jako vodítko:
 
 | Typ úložiště | Aktuálně podporovaná metoda autorizace |
 |--|--|
-|**Blob Storage** | & SAS pro Azure AD |
-|**Úložiště objektů BLOB (hierarchický obor názvů)** | & SAS pro Azure AD |
+|**Blob Storage** | Azure AD a SAS |
+|**Úložiště objektů BLOB (hierarchický obor názvů)** | Azure AD a SAS |
 |**File Storage** | Pouze SAS |
 
 ### <a name="option-1-use-azure-active-directory"></a>Možnost 1: použití Azure Active Directory
@@ -111,7 +111,7 @@ Po ověření, že byla identitě uživatele přidělena potřebná úroveň aut
 azcopy login
 ```
 
-Pokud patříte do více než jedné organizace, uveďte ID tenanta organizace, ke které patří účet úložiště.
+Pokud se zobrazí chyba, zkuste zahrnout ID tenanta organizace, ke které patří účet úložiště.
 
 ```azcopy
 azcopy login --tenant-id=<tenant-id>

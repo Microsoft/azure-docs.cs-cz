@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: a153a3735bbc46dbbce7e58374e1015ac1ec0bfb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: daf4eb4492f723b049dc62a16351e04ffc252337
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133176"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289243"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Konfigurace anonymního veřejného přístupu pro čtení pro kontejnery a objekty blob
 
-Azure Storage podporuje volitelný anonymní veřejný přístup pro čtení pro kontejnery a objekty blob. Ve výchozím nastavení se anonymní přístup k vašim datům nikdy nepovoluje. Pokud explicitně nepovolíte anonymní přístup, musí být všechny požadavky na kontejner a jeho objekty blob autorizované pomocí Azure Active Directory (Azure AD) nebo autorizace pomocí sdíleného klíče. Když nakonfigurujete nastavení úrovně veřejného přístupu kontejneru tak, aby povoloval anonymní přístup, můžou klienti číst data v tomto kontejneru bez autorizace této žádosti.
+Azure Storage podporuje volitelný anonymní veřejný přístup pro čtení pro kontejnery a objekty blob. Ve výchozím nastavení se anonymní přístup k vašim datům nikdy nepovoluje. Pokud explicitně nepovolíte anonymní přístup, musí být všechny požadavky na kontejner a jeho objekty blob autorizovány. Když nakonfigurujete nastavení úrovně veřejného přístupu kontejneru tak, aby povoloval anonymní přístup, můžou klienti číst data v tomto kontejneru bez autorizace této žádosti.
 
 > [!WARNING]
 > Pokud je pro veřejný přístup nakonfigurován kontejner, může kterýkoli klient číst data v tomto kontejneru. Veřejný přístup představuje potenciální bezpečnostní riziko, takže pokud to váš scénář nevyžaduje, Microsoft doporučuje, abyste ho zakázali pro účet úložiště. Další informace najdete v tématu [zabránění anonymnímu veřejnému přístupu pro čtení kontejnerů a objektů BLOB](anonymous-read-access-prevent.md).
@@ -41,7 +41,7 @@ Následující tabulka shrnuje, jak obě nastavení dohromady ovlivňují veřej
 
 ## <a name="allow-or-disallow-public-read-access-for-a-storage-account"></a>Povolit nebo zakázat veřejný přístup pro čtení pro účet úložiště
 
-Ve výchozím nastavení je veřejný přístup povolený pro jednotlivé kontejnery v účtu úložiště. Pokud je veřejný přístup povolený, může uživatel s příslušnými oprávněními upravit nastavení veřejného přístupu kontejneru a povolit tak anonymní veřejný přístup k datům v tomto kontejneru.
+Ve výchozím nastavení je účet úložiště nakonfigurovaný tak, aby umožňoval uživateli s příslušnými oprávněními povolit veřejný přístup ke kontejneru. Když je veřejný přístup povolený, může uživatel s příslušnými oprávněními upravit nastavení veřejného přístupu kontejneru a povolit tak anonymní veřejný přístup k datům v tomto kontejneru. Data objektů BLOB nejsou nikdy k dispozici pro veřejný přístup, pokud uživatel neprovede další krok, který explicitně nakonfiguruje nastavení veřejného přístupu kontejneru.
 
 Mějte na paměti, že veřejný přístup ke kontejneru je ve výchozím nastavení vždycky vypnutý a musí být explicitně nakonfigurovaný tak, aby povoloval anonymní požadavky. Bez ohledu na nastavení účtu úložiště nebudou vaše data nikdy k dispozici pro veřejný přístup, pokud uživatel s příslušnými oprávněními neudělá tento další krok, aby umožnil veřejný přístup ke kontejneru.
 

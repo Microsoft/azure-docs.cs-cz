@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 06/26/2020
-ms.openlocfilehash: 3d8bf23dcb9bfc390b9e165bcf38bf8feea5135f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc96cc704533c2b4fb5dc25b41a2440c66849b53
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833668"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289084"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Architektura připojení Azure SQL Database a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -80,16 +80,16 @@ Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních o
 | Central2 Austrálie   | 20.36.113.0 |
 | Austrálie – východ       | 13.75.149.87, 40.79.161.1, 13.70.112.9 |
 | Austrálie – jihovýchod | 191.239.192.109, 13.73.109.251 |
-| Brazílie – jih         | 104.41.11.5, 191.233.200.14 |
+| Brazil South         | 104.41.11.5, 191.233.200.14 |
 | Střední Kanada       | 40.85.224.249, 52.246.152.0, 20.38.144.1 |
 | Kanada – východ          | 40.86.226.166      |
-| USA – střed           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 |
+| Střední USA           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 |
 | Čína – východ           | 139.219.130.35     |
 | Čína – východ 2         | 40.73.82.1         |
 | Čína – sever          | 139.219.15.17      |
 | Čína – sever 2        | 40.73.50.0         |
 | Východní Asie            | 191.234.2.139, 52.175.33.150, 13.75.32.4 |
-| USA – východ              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
+| East US              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
 | USA – východ 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107, 104.208.150.3 |
 | Francie – střed       | 40.79.137.0, 40.79.129.1 |
 | Německo – střed      | 51.4.144.100       |
@@ -97,7 +97,7 @@ Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních o
 | Indie – střed        | 104.211.96.159     |
 | Indie – jih          | 104.211.224.146    |
 | Indie – západ           | 104.211.160.80     |
-| Japonsko – východ           | 13.78.61.196, 40.79.184.8, 13.78.106.224, 191.237.240.43, 40.79.192.5 |
+| Japan East           | 13.78.61.196, 40.79.184.8, 13.78.106.224, 191.237.240.43, 40.79.192.5 |
 | Japonsko – západ           | 104.214.148.156, 40.74.100.192, 191.238.68.11, 40.74.97.10 |
 | Jižní Korea – střed        | 52.231.32.42       |
 | Jižní Korea – jih          | 52.231.200.86      |
@@ -107,7 +107,7 @@ Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních o
 | Norsko – západ          | 51.120.216.0       |
 | Jižní Afrika – sever   | 102.133.152.0      |
 | Jižní Afrika – západ    | 102.133.24.0       |
-| USA – středojih     | 13.66.62.124, 23.98.162.75, 104.214.16.32   |
+| Středojižní USA     | 13.66.62.124, 23.98.162.75, 104.214.16.32, 20.45.121.1, 20.49.88.1   |
 | Jihovýchodní Asie      | 104.43.15.0, 23.100.117.95, 40.78.232.3   |
 | Švýcarsko – sever    | 51.107.56.0, 51.107.57.0 |
 | Švýcarsko – západ     | 51.107.152.0, 51.107.153.0 |
@@ -116,9 +116,9 @@ Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních o
 | Spojené království – jih             | 51.140.184.11      |
 | Spojené království – západ              | 51.141.8.11        |
 | USA – středozápad      | 13.78.145.25       |
-| Západní Evropa          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |
+| West Europe          | 40.68.37.158, 191.237.232.75, 104.40.168.105, 52.236.184.163  |
 | USA – západ              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |
-| USA – západ 2            | 13.66.226.202, 40.78.240.8  |
+| Západní USA 2            | 13.66.226.202, 40.78.240.8, 40.78.248.10  |
 |                      |                    |
 
 ## <a name="next-steps"></a>Další kroky

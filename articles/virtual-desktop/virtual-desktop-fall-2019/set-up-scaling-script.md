@@ -1,6 +1,6 @@
 ---
-title: Škálování hostitelů relací Azure Automation – Azure
-description: Automatické škálování hostitelů relací virtuálních počítačů s Windows pomocí Azure Automation.
+title: Škálování hostitelů relací Azure Automation virtuální plochy Windows (Classic) – Azure
+description: Jak automaticky škálovat hostitele relací virtuálních počítačů s Windows (Classic) pomocí Azure Automation.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 690f59c643f1fe8c8cfc74758a0f8f13b129f78a
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 4c09ce867a7d4dbc11c42485c39c40bd427fa451
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172068"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288638"
 ---
-# <a name="scale-session-hosts-using-azure-automation"></a>Škálování hostitelů relací pomocí Azure Automation
+# <a name="scale-windows-virtual-desktop-classic-session-hosts-using-azure-automation"></a>Škálování hostitelů relací virtuálních počítačů s Windows (Classic) pomocí Azure Automation
 
 >[!IMPORTANT]
->Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows.
+>Tento obsah se vztahuje na virtuální plochu Windows (Classic), která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows.
 
 Celkové náklady na nasazení virtuálních klientů s Windows můžete snížit tak, že změníte velikost virtuálních počítačů (VM). To znamená vypnutí a zrušení přidělení virtuálních počítačů hostitele relace v době mimo špičku a jejich opětovné zapnutí a přerozdělení během špičky.
 

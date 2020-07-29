@@ -3,12 +3,12 @@ title: Konfigurace testovacího prostředí pro použití Brána vzdálené ploc
 description: Naučte se, jak nakonfigurovat testovací prostředí v Azure DevTest Labs pomocí brány vzdálené plochy, která zajišťuje zabezpečený přístup k testovacím virtuálním počítačům bez nutnosti vystavit port RDP.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 68cb830c765a71b06f9732c4062be23d9e7f67d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc45a0c2953f8f84289fa01d4af72bf98544bd7f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483835"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288081"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Konfigurace testovacího prostředí v Azure DevTest Labs pro použití brány vzdálené plochy
 V Azure DevTest Labs můžete nakonfigurovat bránu vzdálené plochy pro testovací prostředí, aby se zajistil zabezpečený přístup k virtuálním počítačům testovacího prostředí, aniž by bylo nutné vystavit port protokolu RDP. Testovací prostředí poskytuje centrální místo pro uživatele testovacího prostředí pro zobrazení a připojení ke všem virtuálním počítačům, ke kterým mají přístup. Tlačítko **připojit** na stránce **virtuální počítač** vytvoří soubor RDP specifický pro počítač, který můžete otevřít pro připojení k počítači. Připojení RDP můžete dál upravovat a zabezpečovat tak, že testovací prostředí připojíte k bráně vzdálené plochy. 
@@ -36,7 +36,7 @@ Pro práci s funkcí ověřování tokenů DevTest Labs existuje několik požad
 ### <a name="requirements-for-remote-desktop-gateway-machines"></a>Požadavky na počítače brány vzdálené plochy
 - Certifikát TLS/SSL musí být nainstalovaný na počítači brány pro zpracování provozu HTTPS. Certifikát musí odpovídat plně kvalifikovanému názvu domény nástroje pro vyrovnávání zatížení pro farmu brány nebo plně kvalifikovaného názvu domény samotného počítače, pokud existuje pouze jeden počítač. Certifikáty TLS/SSL nefungují na zástupných kartách.  
 - Podpisový certifikát nainstalovaný na počítačích s bránou. Pomocí skriptu [Create-SigningCertificate.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1) vytvořte podpisový certifikát.
-- Nainstalujte modul pro [připojení](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273) k síti, který podporuje ověřování tokenu pro bránu Vzdálená plocha. Jedním z příkladů takového modulu je `RDGatewayFedAuth.msi` , který je součástí [System Center Virtual Machine Manager (VMM) imagí](/system-center/vmm/install-console?view=sc-vmm-1807). Další informace o produktu System Center najdete v [dokumentaci k nástroji System Center](https://docs.microsoft.com/system-center/) a v [podrobnostech o cenách](https://www.microsoft.com/cloud-platform/system-center-pricing).  
+- Nainstalujte modul pro [připojení](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273) k síti, který podporuje ověřování tokenu pro bránu Vzdálená plocha. Jedním z příkladů takového modulu je `RDGatewayFedAuth.msi` , který je součástí [System Center Virtual Machine Manager (VMM) imagí](/system-center/vmm/install-console?view=sc-vmm-1807). Další informace o produktu System Center najdete v [dokumentaci k nástroji System Center](/system-center/) a v [podrobnostech o cenách](https://www.microsoft.com/cloud-platform/system-center-pricing).  
 - Server brány může zpracovávat požadavky vytvořené na `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` .
 
     Brána-hostname je plně kvalifikovaný název domény nástroje pro vyrovnávání zatížení farmy brány nebo plně kvalifikovaný název domény samotného počítače, pokud existuje jenom jeden počítač. `{lab-machine-name}`Je název testovacího počítače, ke kterému se pokoušíte připojit, a `{port-number}` port, na kterém bude vytvořeno připojení.  Ve výchozím nastavení je to port 3389.  Pokud ale virtuální počítač používá funkci [sdílené IP adresy](devtest-lab-shared-ip.md) v DevTest Labs, port se liší.
@@ -65,7 +65,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 
 Nakonfigurujte testovací prostředí tak, aby používalo ověřování tokenu pomocí těchto kroků:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 1. V seznamu cvičení vyberte **testovací prostředí**.
 1. Na stránce testovacího prostředí vyberte **Konfigurace a zásady**.
@@ -159,5 +159,3 @@ Pomocí těchto kroků můžete nastavit ukázkové řešení pro farmu služby 
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o službě Vzdálená plocha najdete v následujícím článku. [dokumentace ke službě Vzdálená plocha](/windows-server/remote/remote-desktop-services/Welcome-to-rds)
-
-

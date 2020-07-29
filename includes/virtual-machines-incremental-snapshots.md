@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 09/15/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f30518c3bfc9876cbddaf8295ff9e8b667a70200
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0832672cc848495f3d95d308071e0a8359ae4f1
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74014557"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374854"
 ---
 ## <a name="overview"></a>Přehled
-Azure Storage poskytuje možnost pořizovat snímky objektů BLOB. Snímky zachycují stav objektu BLOB v daném časovém okamžiku. V tomto článku popisujeme scénář, ve kterém můžete uchovávat zálohy disků virtuálních počítačů pomocí snímků. Tuto metodologii můžete použít, pokud se rozhodnete nepoužívat Azure Backup a službu Recovery Services a chcete vytvořit vlastní strategii zálohování pro disky virtuálních počítačů.
+Azure Storage poskytuje možnost pořizovat snímky objektů BLOB. Snímky zachycují stav objektu BLOB v daném časovém okamžiku. V tomto článku popisujeme scénář, ve kterém můžete uchovávat zálohy disků virtuálních počítačů pomocí snímků. Tuto metodologii můžete použít, pokud se rozhodnete nepoužívat Azure Backup a službu Recovery Services a chcete vytvořit vlastní strategii zálohování pro disky virtuálních počítačů. Pro virtuální počítače, na kterých běží firemní nebo důležité úlohy, se doporučuje použít [Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction) jako součást strategie zálohování.  
 
 Disky virtuálních počítačů Azure se ukládají jako objekty blob stránky v Azure Storage. Vzhledem k tomu, že popisujeme strategii zálohování disků virtuálních počítačů v tomto článku, odkazujeme na snímky v kontextu objektů blob stránky. Další informace o snímcích najdete v tématu [vytvoření snímku objektu BLOB](https://docs.microsoft.com/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
 
@@ -57,7 +57,8 @@ Pokud jsou splněné následující podmínky,
 * Objekt BLOB byl vytvořen v lednu-1-2016 nebo novějším.
 * Objekt BLOB nebyl přepsán pomocí [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) nebo [objektu BLOB kopírování](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) mezi dvěma snímky.
 
-**Poznámka**: Tato funkce je dostupná pro objekty blob stránky Azure úrovně Premium a Standard.
+>[!NOTE]
+>Tato funkce je dostupná pro objekty blob stránky Azure úrovně Premium a Standard.
 
 Když máte vlastní strategii zálohování pomocí snímků, může být kopírování snímků z jednoho účtu úložiště do jiného pomalé a může spotřebovat mnohem úložné místo. Místo zkopírování celého snímku do účtu úložiště pro zálohování můžete rozdíl mezi po sobě jdoucí snímky zapsat do objektu BLOB záložní stránky. Tímto způsobem se výrazně sníží doba kopírování a místo pro uložení záloh.
 

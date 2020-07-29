@@ -4,15 +4,15 @@ description: Specifikace pro virtuální počítače řady Av2-Series.
 author: migerdes
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 1b5b77bb9bdf679fe0fd8bf73966dd45acc80155
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cdcc26a8a22e9a1dc7af75667cdb33bb044c7858
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085771"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288590"
 ---
 # <a name="av2-series"></a>Av2-series
 
@@ -28,7 +28,6 @@ Migrace za provozu: podporováno
 
 Aktualizace pro zachování paměti: podporováno
 
-Cenové kalkulačky a informace o dostupnosti oblastí: <a href="https://azure.microsoft.com/en-us/pricing/calculator/">Cenová Kalkulačka</a>
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS/čtení MB/s/zápis MB/s | Maximální počet datových disků/propustnost: IOPS | Maximální počet síťových karet | Očekávaná šířka pásma sítě (MB/s)
 |---|---|---|---|---|---|---|---|
@@ -47,13 +46,13 @@ Cenové kalkulačky a informace o dostupnosti oblastí: <a href="https://azure.m
 - [Obecné účely](sizes-general.md)
 - [Optimalizované pro paměť](sizes-memory.md)
 - [Optimalizované pro úložiště](sizes-storage.md)
-- [Optimalizované z hlediska GPU.](sizes-gpu.md)
+- [Optimalizované z hlediska GPU](sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 - [Předchozí generace](sizes-previous-gen.md)
 
-Cenové kalkulačky a informace o dostupnosti oblastí: <a href="https://azure.microsoft.com/en-us/pricing/calculator/">Cenová Kalkulačka</a>
+Cenová kalkulačka: [Cenová Kalkulačka](https://azure.microsoft.com/pricing/calculator/)
 
-Další informace o typech disků: <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/">typy disků</a>
+Další informace o typech disků: [typy disků](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
 
 ## <a name="next-steps"></a>Další kroky
 

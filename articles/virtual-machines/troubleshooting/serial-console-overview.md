@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 65679c900baaf0f98a21e4b1f6b1d350c4b945c4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 28c5a3085d84b25deb7c5ee09a9c9cc4d7a06819
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074334"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374061"
 ---
 # <a name="azure-serial-console"></a>Sériová konzola Azure
 
@@ -27,8 +27,7 @@ Konzola sériového portu v Azure Portal poskytuje přístup k textové konzole 
 
 Sériová konzola funguje stejným způsobem pro virtuální počítače a instance sady škálování virtuálních počítačů. V tomto dokumentu budou všechny zmínky k virtuálním počítačům implicitně zahrnovat instance sady škálování virtuálních počítačů, pokud není uvedeno jinak.
 
-> [!NOTE]
-> Konzola sériového portu je všeobecně dostupná v globálních oblastech Azure a ve veřejné verzi Preview v Azure Government. Ještě není k dispozici v cloudu Azure Čína.
+Konzola sériového portu je všeobecně dostupná v globálních oblastech Azure a ve verzi Public Preview v Azure Government. Ještě není k dispozici v cloudu Azure Čína.
 
 ## <a name="prerequisites-to-access-the-azure-serial-console"></a>Předpoklady pro přístup ke konzole sériového rozhraní Azure
 Pro přístup ke konzole sériového portu na virtuálním počítači nebo instanci sady škálování virtuálního počítače budete potřebovat následující:
@@ -36,9 +35,10 @@ Pro přístup ke konzole sériového portu na virtuálním počítači nebo inst
 - Pro virtuální počítač musí být povolená Diagnostika spouštění.
 - Uživatelský účet, který používá ověřování heslem, musí existovat v rámci virtuálního počítače. Uživatele založené na heslech můžete vytvořit pomocí funkce [resetovat heslo](../extensions/vmaccess.md#reset-password) rozšíření pro přístup k virtuálním počítačům. V části **Podpora a řešení potíží** vyberte **resetovat heslo** .
 - Účet Azure přistupující ke konzole sériového portu musí mít [roli Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) pro virtuální počítač i pro účet úložiště [diagnostiky spouštění](boot-diagnostics.md) .
+- Klasická nasazení nejsou podporovaná. Vaše virtuální počítač nebo instance sady škálování virtuálního počítače musí používat model nasazení Azure Resource Manager.
 
 > [!NOTE]
-> Klasická nasazení nejsou podporovaná. Vaše virtuální počítač nebo instance sady škálování virtuálního počítače musí používat model nasazení Azure Resource Manager.
+> Sériová konzola je aktuálně nekompatibilní se spravovaným účtem úložiště diagnostiky spouštění. Pokud chcete použít sériovou konzolu, ujistěte se, že používáte vlastní účet úložiště.
 
 ## <a name="get-started-with-the-serial-console"></a>Začínáme s konzolou sériového portu
 Konzola sériového portu pro virtuální počítače a sadu škálování virtuálního počítače je dostupná jenom prostřednictvím Azure Portal:
