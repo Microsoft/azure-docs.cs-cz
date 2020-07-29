@@ -7,11 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/09/2020
 tags: connectors
-ms.openlocfilehash: 23c6a555909d43f640fb5089fb60da8bac065886
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c7a0ddb80ba28548fc1821cc2063e500af0fa66
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609507"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286627"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Volání koncových bodů služby přes HTTP nebo HTTPS z Azure Logic Apps
 
@@ -39,11 +40,11 @@ Tento článek ukazuje, jak přidat Trigger nebo akci HTTP do pracovního postup
 
 Tato integrovaná aktivační událost provede volání HTTP na zadanou adresu URL pro koncový bod a vrátí odpověď.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
 
 1. V poli hledání návrháře vyberte možnost **předdefinované**. Do vyhledávacího pole zadejte `http` jako filtr. V seznamu **triggery** vyberte Trigger **http** .
 
-   ![Vybrat Trigger HTTP](./media/connectors-native-http/select-http-trigger.png)
+   ![Vyberte Aktivační událost HTTP.](./media/connectors-native-http/select-http-trigger.png)
 
    V tomto příkladu se aktivační událost přejmenuje na Trigger HTTP, aby měl krok výstižnější název. Dále tento příklad přidá akci HTTP a oba názvy musí být jedinečné.
 
@@ -68,7 +69,7 @@ Tato integrovaná aktivační událost provede volání HTTP na zadanou adresu U
 
 Tato Vestavěná akce provede volání HTTP na zadanou adresu URL pro koncový bod a vrátí odpověď.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Otevřete aplikaci logiky v návrháři aplikace logiky.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Otevřete aplikaci logiky v návrháři aplikace logiky.
 
    V tomto příkladu se jako první krok používá Trigger HTTP.
 
@@ -161,7 +162,7 @@ Tady je stejný příklad, který ukazuje definici JSON akce HTTP v základní d
 
 ## <a name="asynchronous-request-response-behavior"></a>Asynchronní chování požadavků a odpovědí
 
-Ve výchozím nastavení se všechny akce založené na protokolu HTTP v Azure Logic Apps řídí standardním [vzorem asynchronní operace](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply). Tento vzorec určuje, že po volání akce HTTP nebo odeslání požadavku koncovému bodu, službě, systému nebo rozhraní API příjemce okamžitě vrátí odpověď ["202 přijatý"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3) . Tento kód potvrdí, že příjemce požadavek přijal, ale nedokončil zpracování. Odpověď může obsahovat `location` záhlaví, které určuje adresu URL a ID aktualizace, které volající může použít k cyklickému dotazování nebo kontrolu stavu asynchronního požadavku, dokud příjemce neukončí zpracování a vrátí odpověď na úspěch ["200 OK"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) nebo jinou odpověď mimo 202. Volající ale nemusí čekat na dokončení zpracování žádosti a může pokračovat v běhu další akce. Další informace najdete v tématu [asynchronní integrace mikroslužeb vynutila autonomii](https://docs.microsoft.com/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging)mikroslužeb.
+Ve výchozím nastavení se všechny akce založené na protokolu HTTP v Azure Logic Apps řídí standardním [vzorem asynchronní operace](/azure/architecture/patterns/async-request-reply). Tento vzorec určuje, že po volání akce HTTP nebo odeslání požadavku koncovému bodu, službě, systému nebo rozhraní API příjemce okamžitě vrátí odpověď ["202 přijatý"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3) . Tento kód potvrdí, že příjemce požadavek přijal, ale nedokončil zpracování. Odpověď může obsahovat `location` záhlaví, které určuje adresu URL a ID aktualizace, které volající může použít k cyklickému dotazování nebo kontrolu stavu asynchronního požadavku, dokud příjemce neukončí zpracování a vrátí odpověď na úspěch ["200 OK"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) nebo jinou odpověď mimo 202. Volající ale nemusí čekat na dokončení zpracování žádosti a může pokračovat v běhu další akce. Další informace najdete v tématu [asynchronní integrace mikroslužeb vynutila autonomii](/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging)mikroslužeb.
 
 * V návrháři aplikace logiky, akce HTTP, ale ne Trigger, má nastavení **asynchronního vzoru** , které je ve výchozím nastavení povolené. Toto nastavení určuje, že volající nečeká na dokončení zpracování, a může přejít k další akci, ale pokračuje v kontrole stavu, dokud se zpracování nezastaví. Pokud je toto nastavení zakázáno, určuje, že volající čeká na dokončení zpracování, než přejde k další akci.
 
@@ -252,14 +253,14 @@ Další informace o parametrech Trigger a Action najdete v těchto částech:
 
 Zde jsou další informace o výstupech z triggeru nebo akce HTTP, které vrací tyto informace:
 
-| Vlastnost | Typ | Description |
+| Vlastnost | Typ | Popis |
 |----------|------|-------------|
 | `headers` | Objekt JSON | Hlavičky z požadavku |
 | `body` | Objekt JSON | Objekt s obsahem textu z požadavku |
-| `status code` | Integer | Stavový kód z požadavku |
+| `status code` | Celé číslo | Stavový kód z požadavku |
 |||
 
-| Stavový kód | Description |
+| Stavový kód | Popis |
 |-------------|-------------|
 | 200 | OK |
 | 202 | Přijato |
@@ -273,3 +274,4 @@ Zde jsou další informace o výstupech z triggeru nebo akce HTTP, které vrací
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)
+

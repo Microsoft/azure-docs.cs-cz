@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bc22cf5a21709ccacafe068a60541cc9990d1131
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 8c9fbf7bc45ed2070570faf0d1dfdb15b5fd98ee
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132258"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373262"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>Správa koncových bodů a tras v digitálních prozdvojeních Azure
 
@@ -184,7 +184,7 @@ Metriky směrování, jako je počet, latence a frekvence selhání, se dají zo
 
 Na domovské stránce portálu vyhledejte vaši instanci digitálních vláken Azure, abyste si vyčetli její podrobnosti. Výběrem možnosti **metriky** v nabídce instance digitálních vláken Azure zobrazíte stránku *metriky* .
 
-:::image type="content" source="media/how-to-manage-routes/metrics.png" alt-text="Stránka metriky instance digitálních vláken Azure v Azure Portal":::
+:::image type="content" source="media/how-to-view-metrics/azure-digital-twins-metrics.png" alt-text="Snímek obrazovky zobrazující stránku s metrikami pro digitální vlákna Azure":::
 
 Tady můžete zobrazit metriky pro vaši instanci a vytvořit vlastní zobrazení.
 

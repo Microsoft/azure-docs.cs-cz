@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: 6ffc81f7fc5cf36ff4e9bada8f72cfef013afcbc
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 94ffe2852380d238e9829a8ab0cc69ebe82b74fe
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982781"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373500"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>Povolit automatické ladění v Azure Portal pro monitorování dotazů a zlepšení výkonu úloh
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -77,7 +77,7 @@ Pokud chcete povolit automatické ladění pro izolovanou **databázi**, přejd�
 
 Jednotlivá nastavení automatického ladění je možné pro každou databázi nakonfigurovat samostatně. Můžete ručně nakonfigurovat jednotlivou možnost automatického ladění nebo určit, že nastavení zdědí ze serveru.
 
-![databáze](./media/automatic-tuning-enable/database.png)
+![Databáze](./media/automatic-tuning-enable/database.png)
 
 Upozorňujeme, že možnost DROP_INDEX v tuto chvíli není kompatibilní s aplikacemi, které používají přepínání oddílů a pomocné parametry indexu a neměly by být v těchto případech povolené.
 
@@ -117,7 +117,7 @@ Automatické ladění sleduje všechny akce, které v databázi provádí, a v n
 
 ## <a name="permissions"></a>Oprávnění
 
-Protože automatické ladění je funkcí Azure, budete muset použít předdefinované role RBAC v Azure. Použití pouze ověřování SQL nebude stačit k použití funkce z Azure Portal.
+Vzhledem k tomu, že automatické ladění je funkce Azure, budete muset použít předdefinované role Azure. Použití pouze ověřování SQL nebude stačit k použití funkce z Azure Portal.
 
 Chcete-li použít automatické ladění, je minimální požadovaná oprávnění k udělení uživateli předdefinovaná [SQL Database role přispěvatele](../../role-based-access-control/built-in-roles.md#sql-db-contributor) Azure. Můžete také zvážit použití vyšších rolí oprávnění, jako je SQL Server přispěvatel, přispěvatel spravované instance SQL, přispěvatel a vlastník.
 

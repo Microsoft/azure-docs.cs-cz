@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 77cbd5a3c293b137f49a11263580ef45407c6c2b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3dea4c0f63b6c4e76c2289e6c3d930ea32cf2880
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090463"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373211"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Správa klíčů účtu úložiště pomocí Key Vault a Azure PowerShell
 
@@ -47,9 +47,9 @@ Key Vault je aplikace Microsoftu, která je předem registrovaná ve všech klie
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Veřejný Azure | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
-| Jiné  | Libovolný | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Ostatní  | Libovolný | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li dokončit tuto příručku, je třeba nejprve provést následující akce:
 
@@ -99,7 +99,7 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -St
 
 ### <a name="give-key-vault-access-to-your-storage-account"></a>Zadejte Key Vault přístup k vašemu účtu úložiště.
 
-Předtím, než Key Vault mít přístup a spravovat klíče účtu úložiště, musíte autorizovat svůj přístup k vašemu účtu úložiště. Aplikace Key Vault vyžaduje oprávnění k *vypsání* a *obnovení* klíčů pro váš účet úložiště. Tato oprávnění se povolují prostřednictvím předdefinované role [služby klíčového operátoru klíče účtu úložiště](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)RBAC. 
+Předtím, než Key Vault mít přístup a spravovat klíče účtu úložiště, musíte autorizovat svůj přístup k vašemu účtu úložiště. Aplikace Key Vault vyžaduje oprávnění k *vypsání* a *obnovení* klíčů pro váš účet úložiště. Tato oprávnění se povolují prostřednictvím předdefinované role [služby klíčového operátoru klíče účtu úložiště](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)Azure. 
 
 Přiřaďte tuto roli k instančnímu objektu Key Vault, který omezí rozsah na svůj účet úložiště, pomocí rutiny Azure PowerShell [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment?view=azps-2.6.0) .
 

@@ -1,6 +1,5 @@
 ---
-title: Vytvoření & nasazení vlastních modulů R
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (Classic): vytvoření & nasazení vlastních modulů R – Azure'
 description: Naučte se vytvářet a nasazovat vlastní moduly R v ML Studio (Classic).
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 389290b01848d598ada9ca49bee932a764854088
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 4b4251a426d33c0a3b8cc7584d2bf6375dcd0f79
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957320"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287246"
 ---
-# <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Definování vlastních modulů R pro Azure Machine Learning Studio (Classic)
+# <a name="define-custom-r-modules-for-machine-learning-studio-classic"></a>Definování vlastních modulů R pro Machine Learning Studio (Classic)
+
+**platí pro:** ![ žádná](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasická) 
 
 Toto téma popisuje, jak vytvořit a nasadit vlastní R Studio (Classic). Vysvětluje, jaké vlastní moduly R jsou a jaké soubory se používají k jejich definování. Ukazuje, jak vytvořit soubory definující modul a jak zaregistrovat modul pro nasazení v pracovním prostoru Machine Learning. Elementy a atributy, které se používají v definici vlastního modulu, jsou pak popsány podrobněji. Pojednává také o použití pomocných funkcí a souborů a více výstupů. 
 
@@ -310,7 +312,7 @@ Parametr modulu je definován pomocí podřízeného prvku **arg** oddílu **arg
     * Vše
   * **výchozí** – platné výchozí možnosti pro výběr sloupce zahrnují: 
     
-    * Žádná
+    * Žádné
     * NumericFeature
     * NumericLabel
     * NumericScore

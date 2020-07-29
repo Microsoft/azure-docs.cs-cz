@@ -1,6 +1,6 @@
 ---
 title: Ukázky v Azure CLI pro Traffic Manager | Microsoft Docs
-description: Ukázky Azure CLI
+description: Přečtěte si o skriptu Azure CLI, který můžete použít k přímému směrování provozu napříč několika oblastmi a zajištěním vysoké dostupnosti aplikací.
 services: virtual-network
 documentationcenter: virtual-network
 author: rohinkoul
@@ -12,11 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: rohink
-ms.openlocfilehash: 3b14cf2058f425f650d827e10ef0ca77f1278b55
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb50c13817f10f74610db68121087c125a6f91f6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76938015"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286423"
 ---
 # <a name="azure-cli-samples-for-traffic-manager"></a>Ukázky v Azure CLI pro Traffic Manager
 

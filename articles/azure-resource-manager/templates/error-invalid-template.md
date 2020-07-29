@@ -3,12 +3,12 @@ title: Neplatné chyby šablony
 description: Popisuje způsob řešení neplatných chyb šablon při nasazení Azure Resource Manager šablon.
 ms.topic: troubleshooting
 ms.date: 05/22/2020
-ms.openlocfilehash: a3589f42f707240272a411a985adefd5e6c5539c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3e68d4634d0092d05222348ca0db0116422faec3
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118881"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373806"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Řešení chyb kvůli neplatné šabloně
 
@@ -130,7 +130,7 @@ Ověřte, že jsou v šabloně povolené hodnoty, a během nasazování ho zadej
 
 ## <a name="solution-4---too-many-target-resource-groups"></a>Řešení 4 – moc velký počet cílových skupin prostředků
 
-Tato chyba se může zobrazit v dřívějších nasazeních, protože jste v jednom nasazení omezili na pět cílových skupin prostředků. V květnu 2020 se toto omezení zvýšilo na 800 skupin prostředků. Další informace najdete v tématu [nasazení prostředků Azure do více než jednoho předplatného nebo skupiny prostředků](cross-resource-group-deployment.md).
+Tato chyba se může zobrazit v dřívějších nasazeních, protože jste v jednom nasazení omezili na pět cílových skupin prostředků. V květnu 2020 se toto omezení zvýšilo na 800 skupin prostředků. Další informace najdete v tématu [nasazení prostředků Azure do více než jednoho předplatného nebo skupiny prostředků](cross-scope-deployment.md).
 
 <a id="circular-dependency"></a>
 
@@ -150,7 +150,7 @@ Odebrání hodnot z vlastnosti **dependsOn** může způsobit chyby při nasazen
 
 Pokud tento přístup nevyřešil cyklickou závislost, zvažte přesunutí části logiky nasazení do podřízených prostředků (například rozšíření nebo nastavení konfigurace). Tyto podřízené prostředky nakonfigurujte tak, aby se nasadily po zapojení prostředků do cyklické závislosti. Předpokládejme například, že nasazujete dva virtuální počítače, ale musíte nastavit vlastnosti pro každý z nich, který odkazuje na druhý. Můžete je nasadit v tomto pořadí:
 
-1. VM1
+1. vm1
 2. VM2
 3. Přípona v VM1 závisí na VM1 a VM2. Rozšíření nastaví hodnoty na VM1, které získá z VM2.
 4. Přípona v VM2 závisí na VM1 a VM2. Rozšíření nastaví hodnoty na VM2, které získá z VM1.

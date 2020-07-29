@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ec681d0af132d11e18703dce6105352651a70180
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: bc6b3911ed6d04561d25ef166625f9e73023726d
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131612"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373279"
 ---
 # <a name="secure-azure-digital-twins-with-role-based-access-control"></a>Zabezpečení digitálních vláken Azure pomocí řízení přístupu na základě role
 
@@ -45,7 +45,7 @@ Se spravovanými identitami spravuje platforma Azure tuto identitu modulu runtim
 
 ### <a name="authorization-rbac-roles-for-azure-digital-twins"></a>Autorizace: role RBAC pro digitální vlákna Azure
 
-Azure poskytuje níže vestavěné role RBAC pro autorizaci přístupu k prostředku digitálních vláken Azure:
+Azure poskytuje níže vestavěné role Azure pro autorizaci přístupu k prostředku digitálních vláken Azure:
 * *Vlastník digitálních vláken Azure (Preview)* – pomocí této role můžete poskytnout úplný přístup k prostředkům Azure Digital Resources.
 * *Čtečka digitálních vláken Azure (Preview)* – tato role slouží k udělení přístupu k prostředkům digitálních vláken Azure, které jsou jen pro čtení.
 
@@ -71,7 +71,7 @@ Následující seznam popisuje úrovně, na kterých můžete přistoupit k pros
 * Digitální zdvojený vztah: akce pro tento prostředek definují kontrolu nad operacemi CRUD u [vztahů](concepts-twins-graph.md) mezi digitálními prvky v grafu s dvojitou závislostí.
 * Trasa události: akce pro tento prostředek určují oprávnění k [Směrování událostí](concepts-route-events.md) z digitálních vláken Azure do služby koncového bodu, jako [je centrum událostí](../event-hubs/event-hubs-about.md), [Event Grid](../event-grid/overview.md)nebo [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md).
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud se uživatel pokusí provést akci, kterou role nepovoluje, může se zobrazit chyba z čtení žádosti o službu `403 (Forbidden)` . Další informace a postup pro řešení potíží najdete v tématu [*řešení potíží: žádost o digitální vlákna Azure se nezdařila se stavem: 403 (zakázáno)*](troubleshoot-error-403.md).
 

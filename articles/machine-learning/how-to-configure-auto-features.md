@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 950f258e7380d7fbd25e1a5fe2dd4673ba122c52
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b01d6c36b31ef4f03522d03ca327439cfa31be8d
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321577"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373738"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>Featurization v automatizovaném strojovém učení
 
@@ -114,13 +114,13 @@ Guardrail|Status|Podmínka &nbsp; pro &nbsp; aktivační událost
 
 Nastavení featurization můžete přizpůsobit tak, aby se zajistilo, že data a funkce, které se použijí k tomu, aby využívaly svůj model ML, budou relevantní předpovědi.
 
-Chcete-li přizpůsobit featurizations, zadejte  `"featurization": FeaturizationConfig` v `AutoMLConfig` objektu. Pokud pro váš experiment používáte Azure Machine Learning Studio, přečtěte si článek s [postupem](how-to-use-automated-ml-for-ml-models.md#customize-featurization).
+Chcete-li přizpůsobit featurizations, zadejte  `"featurization": FeaturizationConfig` v `AutoMLConfig` objektu. Pokud pro váš experiment používáte Azure Machine Learning Studio, přečtěte si článek s [postupem](how-to-use-automated-ml-for-ml-models.md#customize-featurization). Postup přizpůsobení featurization pro prognózy typů úloh najdete v tématu Postup při [Prognózování](how-to-auto-train-forecast.md#customize-featurization).
 
 Mezi podporovaná přizpůsobení patří:
 
 |Přizpůsobení|Definice|
 |--|--|
-|**Aktualizace pro účely sloupce**|Přepište typ funkce pro zadaný sloupec.|
+|**Aktualizace pro účely sloupce**|Přepíše automaticky zjištěný typ funkce pro zadaný sloupec.|
 |**Aktualizace parametrů transformátoru** |Aktualizuje parametry pro zadaný transformátor. V současné době podporuje *imputac* (střední, nejčastější a medián) a *HashOneHotEncoder*.|
 |**Odkládací sloupce** |Určuje sloupce, které se mají odpustit z natrénuje.|
 |**Blokovat transformátory**| Určuje, že se mají v procesu featurization použít transformátory bloku.|

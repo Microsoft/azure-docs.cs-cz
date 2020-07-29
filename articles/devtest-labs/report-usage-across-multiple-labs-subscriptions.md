@@ -3,16 +3,16 @@ title: Azure DevTest Labs využití napříč několika cvičeními a předplatn
 description: Naučte se, jak ohlásit Azure DevTest Labs využití napříč několika cvičeními a předplatnými.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8650244df4c8eb08d4ccc87b1e23fe1e3d047c54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d2663113e929145308f5a5712b968f3551668c2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483427"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287279"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>Nahlášení využití Azure DevTest Labs napříč několika cvičeními a předplatnými
 
-Většina velkých organizací chce pomocí těchto prostředků sledovat trendy a odlehlé využití prostředků, aby bylo možné s těmito prostředky lépe zefektivnit. Na základě využití prostředků můžou vlastníci testovacího prostředí nebo manažeři přizpůsobit cvičení, aby [vylepšili využití prostředků a náklady](https://docs.microsoft.com/azure/billing/billing-getting-started). V Azure DevTest Labs můžete stáhnout využití prostředků na testovací prostředí, které vám umožní hlubší historický vzhled vzorců používání. Tyto vzorce používání můžou usnadnit změnu v vylepšení efektivity. Většina podniků má individuální využití testovacího prostředí a celkové využití v rámci [více cvičení a předplatných](https://docs.microsoft.com/azure/architecture/cloud-adoption/decision-guides/subscriptions/). 
+Většina velkých organizací chce pomocí těchto prostředků sledovat trendy a odlehlé využití prostředků, aby bylo možné s těmito prostředky lépe zefektivnit. Na základě využití prostředků můžou vlastníci testovacího prostředí nebo manažeři přizpůsobit cvičení, aby [vylepšili využití prostředků a náklady](../cost-management-billing/manage/getting-started.md). V Azure DevTest Labs můžete stáhnout využití prostředků na testovací prostředí, které vám umožní hlubší historický vzhled vzorců používání. Tyto vzorce používání můžou usnadnit změnu v vylepšení efektivity. Většina podniků má individuální využití testovacího prostředí a celkové využití v rámci [více cvičení a předplatných](/azure/architecture/cloud-adoption/decision-guides/subscriptions/). 
 
 Tento článek popisuje, jak zpracovávat informace o využití prostředků napříč několika cvičeními a předplatnými.
 
@@ -24,8 +24,8 @@ Tato část popisuje, jak exportovat využití prostředků v jednom testovacím
 
 Než budete moct exportovat využití prostředků DevTest Labs, musíte nastavit účet Azure Storage, aby bylo možné ukládat různé soubory, které obsahují data o využití. Existují dva běžné způsoby, jak spustit Export dat:
 
-* [REST API DevTest Labs](https://docs.microsoft.com/rest/api/dtl/labs/exportresourceusage) 
-* PowerShell AZ. Resource Module [Invoke-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction?view=azps-2.5.0&viewFallbackFrom=azps-2.3.2) s akcí `exportResourceUsage` , ID prostředku testovacího prostředí a potřebné parametry. 
+* [REST API DevTest Labs](/rest/api/dtl/labs/exportresourceusage) 
+* PowerShell AZ. Resource Module [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-2.5.0&viewFallbackFrom=azps-2.3.2) s akcí `exportResourceUsage` , ID prostředku testovacího prostředí a potřebné parametry. 
 
     Článek o [exportu nebo odstranění osobních údajů](personal-data-delete-export.md) obsahuje ukázkový skript prostředí PowerShell s podrobnými informacemi o exportovaných datech. 
 
@@ -48,8 +48,8 @@ Tyto soubory jsou uložené v kontejneru objektů BLOB *labresourceusage* v rám
 
 Pokud chcete exportovat informace o využití pro víc cvičení, zvažte použití 
 
-* [Azure Functions](https://docs.microsoft.com/azure/azure-functions/), k dispozici v mnoha jazycích, včetně PowerShellu nebo 
-* [Azure Automation sadu Runbook](https://docs.microsoft.com/azure/automation/), pomocí PowerShellu, Pythonu nebo vlastního grafického návrháře napište kód exportu.
+* [Azure Functions](../azure-functions/index.yml), k dispozici v mnoha jazycích, včetně PowerShellu nebo 
+* [Azure Automation sadu Runbook](../automation/index.yml), pomocí PowerShellu, Pythonu nebo vlastního grafického návrháře napište kód exportu.
 
 Pomocí těchto technologií můžete spustit jednotlivé exporty testovacího prostředí ve všech cvičeních v konkrétní datum a čas. 
 
@@ -69,13 +69,13 @@ Mezi běžná řešení úložiště patří: [SQL Server](https://azure.microso
 
 ## <a name="visualizing-data-and-gathering-insights"></a>Vizualizace dat a shromažďování přehledů
 
-Pomocí nástroje pro vizualizaci dat podle vlastního výběru se připojte k dlouhodobému úložišti, abyste mohli zobrazit data o využití a shromažďovat přehledy pro ověření efektivity využití. [Power BI](https://docs.microsoft.com/power-bi/power-bi-overview) lze například použít k uspořádání a zobrazení dat o využití. 
+Pomocí nástroje pro vizualizaci dat podle vlastního výběru se připojte k dlouhodobému úložišti, abyste mohli zobrazit data o využití a shromažďovat přehledy pro ověření efektivity využití. [Power BI](/power-bi/power-bi-overview) lze například použít k uspořádání a zobrazení dat o využití. 
 
 Pomocí [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) můžete vytvářet, propojovat a spravovat prostředky v rámci jednoho rozhraní umístění. Pokud je potřeba větší řízení, může se jednotlivé prostředky vytvořit v rámci jedné skupiny prostředků a spravovat nezávisle na službě Data Factory.  
 
 ## <a name="next-steps"></a>Další kroky
 
-Až se systém nastaví a data se přesunou do dlouhodobého úložiště, další krok se doplní otázkami, které data potřebují k zodpovězení. Příklad: 
+Až se systém nastaví a data se přesunou do dlouhodobého úložiště, další krok se doplní otázkami, které data potřebují k zodpovězení. Například: 
 
 -   Jaké je využití velikosti virtuálního počítače?
 

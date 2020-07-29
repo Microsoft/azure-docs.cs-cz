@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: 0e3d343c0a68dd527e4e8e8d23e5b3843a216a78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0a8680dc5c06bd1527b2cca732b58f484101a96
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84705368"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286491"
 ---
 # <a name="symmetric-key-attestation"></a>Osvědčení symetrického klíče
 
@@ -26,7 +26,7 @@ Zápisy symetrického klíče také poskytují skvělý způsob, jak používat 
 
 ## <a name="symmetric-key-creation"></a>Vytvoření symetrického klíče
 
-Ve výchozím nastavení služba Device Provisioning vytvoří nové symetrické klíče s výchozí délkou 32 bajtů, když se nové registrace uloží s povolenou možností **automaticky generovat klíče** .
+Ve výchozím nastavení služba Device Provisioning vytvoří nové symetrické klíče s výchozí délkou 64 bajtů, když se nové registrace uloží s povolenou možností **automaticky generovat klíče** .
 
 ![Automaticky generovat symetrické klíče](./media/concepts-symmetric-key-attestation/auto-generate-keys.png)
 
@@ -46,7 +46,7 @@ Tokeny SAS mají následující formát:
 
 Tady jsou komponenty každého tokenu:
 
-| Hodnota | Description |
+| Hodnota | Popis |
 | --- | --- |
 | označení |Řetězec pro podpis HMAC-SHA256. Pro jednotlivé registrace se tento podpis vytvoří pomocí symetrického klíče (primárního nebo sekundárního) k provedení hodnoty hash. Pro skupiny registrací se k provedení hodnoty hash používá klíč odvozený z klíče skupiny zápisu. Hodnota hash se provádí ve zprávě formuláře: `URL-encoded-resourceURI + "\n" + expiry` . **Důležité**: klíč musí být před použitím pro výpočet HMAC-SHA256 dekódovat z formátu base64. Výsledek signatury musí být také kódovaný pomocí adresy URL. |
 | resourceUri |Identifikátor URI koncového bodu registrace, ke kterému má být přístup s tímto tokenem, počínaje ID oboru pro instanci služby Device Provisioning. Například `{Scope ID}/registrations/{Registration ID}`. |

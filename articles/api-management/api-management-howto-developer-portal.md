@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/15/2020
+ms.date: 07/28/2020
 ms.author: apimpm
-ms.openlocfilehash: 7d479f18e8764a69cdc81f99d723534e4895b0e4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f5f4df58a4b147ccb73c7d69f5307a8328803442
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025077"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373143"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Přehled portálu pro vývojáře Azure API Management
 
@@ -105,7 +105,19 @@ Můžete programově přistupovat k obsahu portálu pro vývojáře a spravovat 
 
 Rozhraní API je popsané v [části wiki úložiště GitHubu][2]. Dá se použít k automatizaci migrace obsahu portálu mezi prostředími – například z testovacího prostředí do produkčního prostředí. Další informace o tomto procesu najdete [v tomto článku v dokumentaci](https://aka.ms/apimdocs/migrateportal) na GitHubu.
 
+### <a name="how-do-i-move-from-the-managed-to-the-self-hosted-version"></a>Návody se přesunout ze spravovaného na místně hostovanou verzi?
+
+Informace najdete v podrobném článku v [části wiki v úložišti portálu pro vývojáře na GitHubu][2].
+
+### <a name="can-i-have-multiple-developer-portals-in-one-api-management-service"></a>Můžu mít v jedné API Management službě víc portálů pro vývojáře?
+
+Můžete mít jeden spravovaný portál a několik samoobslužných portálů. Obsah všech portálů je uložený ve stejné API Management službě, takže budou identické. Pokud chcete odlišit vzhled a funkčnost portálů, můžete je sami hostovat s vlastními widgety, které dynamicky přizpůsobují stránky za běhu, například na základě adresy URL.
+
 ### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>Podporuje portál Azure Resource Manager šablony nebo je kompatibilní se sadou API Management DevOps Resource Kit?
+
+Ne.
+
+### <a name="is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management"></a>Je obsah portálu uložený s funkcí zálohování a obnovení v API Management?
 
 Ne.
 
@@ -205,7 +217,7 @@ Selhání volání může být způsobeno také certifikátem TLS/SSL, který je
 | Apple Safari                | Ano<sup>1</sup> |
 | Google Chrome               | Ano<sup>1</sup> |
 | Microsoft Edge              | Ano<sup>1</sup> |
-| Microsoft Internet Explorer | No              |
+| Microsoft Internet Explorer | Ne              |
 | Mozilla Firefox             | Ano<sup>1</sup> |
 
  <small><sup>1</sup> podporuje se v obou nejnovějších produkčních verzích.</small>

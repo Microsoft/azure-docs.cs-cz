@@ -8,15 +8,15 @@ ms.author: jmartens
 ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: troubleshooting
-ms.custom: contperfq4
+ms.topic: conceptual
+ms.custom: troubleshooting, contperfq4
 ms.date: 03/31/2020
-ms.openlocfilehash: 56acddda2cf5ae2ef2a94353ec11c3ddf6990e1c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8f58fcef1a35494053803d98b43ce97fed7205e0
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536109"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373687"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Známé problémy a řešení potíží v Azure Machine Learning
 
@@ -368,6 +368,12 @@ Pokud provádíte operaci správy na výpočetním cíli ze vzdálené úlohy, z
 ```
 
 Například se zobrazí chyba, pokud se pokusíte vytvořit nebo připojit výpočetní cíl z kanálu ML, který je odeslán pro vzdálené spuštění.
+
+## <a name="missing-user-interface-items-in-studio"></a>Chybějící položky uživatelského rozhraní v studiu
+
+Řízení přístupu na základě role v Azure je možné použít k omezení akcí, které můžete provádět s Azure Machine Learning. Tato omezení můžou zabránit tomu, aby se položky uživatelského rozhraní zobrazovaly v Azure Machine Learning Studiu. Například pokud máte přiřazenou roli, která nemůže vytvořit výpočetní instanci, možnost vytvoření instance COMPUTE se v studiu nezobrazí.
+
+Další informace najdete v tématu [Správa uživatelů a rolí](how-to-assign-roles.md).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,12 +9,12 @@ ms.date: 07/21/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 8f4ef046221ae50d2b05525d6cea2d268282551c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d3907967572b22e7a70316080b08a4368a9805ce
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097608"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372905"
 ---
 # <a name="mount-blob-storage-on-linux-using-the-network-file-system-nfs-30-protocol-preview"></a>Připojení úložiště objektů BLOB v systému Linux pomocí protokolu NFS (Network File System) 3,0 (Preview)
 
@@ -107,13 +107,13 @@ Můžete přijmout výchozí hodnoty pro všechna ostatní nastavení.
 
 Vytvořte kontejner v účtu úložiště pomocí některé z těchto nástrojů nebo sad SDK:
 
-|Nástroje|Sady SDK|
+|nástroje|Sady SDK|
 |---|---|
 |[Azure Storage Explorer](data-lake-storage-explorer.md#create-a-container)|[.NET](data-lake-storage-directory-file-acl-dotnet.md#create-a-container)|
 |[AzCopy](../common/storage-use-azcopy-blobs.md#create-a-container)|[Java](data-lake-storage-directory-file-acl-java.md#create-a-container)|
 |[PowerShell](data-lake-storage-directory-file-acl-powershell.md#create-a-container)|[Python](data-lake-storage-directory-file-acl-python.md#create-a-container)|
 |[Azure CLI](data-lake-storage-directory-file-acl-cli.md#create-a-container)|[JavaScript](data-lake-storage-directory-file-acl-javascript.md)|
-||[REST](https://docs.microsoft.com/rest/api/storageservices/create-container)|
+|[Azure Portal](https://portal.azure.com)|[REST](https://docs.microsoft.com/rest/api/storageservices/create-container)|
 
 ## <a name="step-7-mount-the-container"></a>Krok 7: připojení kontejneru
 
@@ -139,9 +139,8 @@ Vytvořte kontejner v účtu úložiště pomocí některé z těchto nástrojů
 |---|---|
 |`Access denied by server while mounting`|Ujistěte se, že váš klient běží v podporované podsíti. Podívejte se na [podporovaná síťová umístění](network-file-system-protocol-support.md#supported-network-connections).|
 |`No such file or directory`| Ujistěte se, že je kontejner, který připojujete, vytvořený po ověření, že byla funkce zaregistrovaná. Viz [Krok 2: ověření, zda je funkce zaregistrována](#step-2-verify-that-the-feature-is-registered). Nezapomeňte taky zadat příkaz Mount a jeho parametry přímo do terminálu. Pokud zkopírujete a vložíte jakoukoli část tohoto příkazu do terminálu z jiné aplikace, může to způsobit, že se tato chyba zobrazí v kopírovaných znacích v vkládaných informacích.|
-|Soubory, které se nahrály pomocí nástrojů, které nejsou v systému souborů NFS 3,0, nejsou v adresáři viditelné. | Zrušte připojení kontejneru a pak znovu připojte kontejner. |
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 [Podpora protokolů systému souborů NFS (Network File System) 3,0 v úložišti objektů BLOB v Azure (Preview)](network-file-system-protocol-support.md)
 

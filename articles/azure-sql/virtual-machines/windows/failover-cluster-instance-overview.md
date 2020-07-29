@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: a40c5512da40ede84251ec16345a3957c391bb71
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 00c9482eab74003f6a667d52440d4cb6dd21fcfc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965534"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287366"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Instance clusteru s podporou převzetí služeb při selhání s SQL Server v Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -48,11 +48,11 @@ SQL Server na virtuálních počítačích Azure nabízí různé možnosti jako
 
 ||[Sdílené disky Azure](../../../virtual-machines/windows/disks-shared.md)|[Soubory ke sdílení souborů úrovně Premium](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[Prostory úložiště s přímým přístupem (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
 |---------|---------|---------|---------|
-|**Minimální verze operačního systému**| Windows Server 2016|Windows Server 2012|Windows Server 2016|
-|**Minimální verze SQL Server**|SQL Server 2019|SQL Server 2012|SQL Server 2016|
+|**Minimální verze operačního systému**| Vše |Windows Server 2012|Windows Server 2016|
+|**Minimální verze SQL Server**|Vše|SQL Server 2012|SQL Server 2016|
 |**Podporovaná dostupnost virtuálního počítače** |Skupiny dostupnosti se skupinami umístění blízkých souborů |Skupiny dostupnosti a zóny dostupnosti|Skupiny dostupnosti |
-|**Podporuje FileStream**|No|No|Ano |
-|**Mezipaměť objektů BLOB v Azure**|No|No|Ano|
+|**Podporuje FileStream**|Ano|Ne|Ano |
+|**Mezipaměť objektů BLOB v Azure**|Ne|Ne|Ano|
 
 Zbytek této části obsahuje seznam výhod a omezení jednotlivých možností úložiště, které jsou dostupné pro SQL Server na virtuálních počítačích Azure. 
 
@@ -60,18 +60,18 @@ Zbytek této části obsahuje seznam výhod a omezení jednotlivých možností 
 
 [Sdílené disky Azure](../../../virtual-machines/windows/disks-shared.md) jsou funkcí služby [Azure Managed disks](../../../virtual-machines/windows/managed-disks-overview.md). Clustering s podporou převzetí služeb při selhání ve Windows serveru podporuje použití sdílených disků Azure s instancí clusteru s podporou převzetí 
 
-**Podporovaný operační systém**: Windows Server 2019   
-**Podporovaná verze SQL**: SQL Server 2019   
+**Podporovaný operační systém**: vše   
+**Podporovaná verze SQL**: vše     
 
 **Výhody**: 
 - Užitečné pro aplikace, které se chtějí migrovat do Azure a současně zachovat jejich architekturu s vysokou dostupností a zotavení po havárii (HADR). 
 - Může migrovat clusterové aplikace do Azure, protože je to kvůli podpoře trvalých rezervací SCSI (SCSI PR). 
 - Podporuje sdílené SSD úrovně Premium Azure pro všechny verze SQL Server a sdílené Azure Ultra Disk Storage pro SQL Server 2019. 
 - Může použít jeden sdílený disk nebo rozkládat více sdílených disků k vytvoření sdíleného fondu úložiště. 
+- Podporuje FileStream.
 
 
 **Omezení**: 
-- K dispozici pouze pro SQL Server 2019 a Windows Server 2019 ve verzi Preview. 
 - Virtuální počítače musí být umístěné ve stejné skupině dostupnosti a skupině umístění blízkosti.
 - Zóny dostupnosti se nepodporují.
 - Mezipaměť SSD úrovně Premium disku není podporována.
@@ -166,7 +166,7 @@ V Azure Virtual Machines není služba MSDTC podporovaná pro Windows Server 201
 
 Projděte si [osvědčené postupy konfigurace clusteru](hadr-cluster-best-practices.md)a potom můžete [připravit SQL Server virtuální počítač pro FCI](failover-cluster-instance-prepare-vm.md). 
 
-Další informace naleznete v tématech: 
+Další informace naleznete v tématu: 
 
 - [Technologie clusterů Windows](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server instancí clusteru s podporou převzetí služeb při selhání](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

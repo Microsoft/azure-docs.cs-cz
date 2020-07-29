@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 34a02de8a6789a028c776e784ea4aa9692f53d9d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 867c32203d8f780b307ede2ba2916ad4e82e1136
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079165"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373232"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Použití rozhraní API a sad SDK služby Azure Digital Twins
 
@@ -284,7 +284,7 @@ Metriky API, jako jsou požadavky, latence a frekvence selhání, se dají zobra
 
 Na domovské stránce portálu vyhledejte vaši instanci digitálních vláken Azure, abyste si vyčetli její podrobnosti. Výběrem možnosti **metriky** v nabídce instance digitálních vláken Azure zobrazíte stránku *metriky* .
 
-:::image type="content" source="media/how-to-use-apis-sdks/metrics.png" alt-text="Stránka metriky instance digitálních vláken Azure v Azure Portal":::
+:::image type="content" source="media/how-to-view-metrics/azure-digital-twins-metrics.png" alt-text="Snímek obrazovky zobrazující stránku s metrikami pro digitální vlákna Azure":::
 
 Tady můžete zobrazit metriky pro vaši instanci a vytvořit vlastní zobrazení.
 

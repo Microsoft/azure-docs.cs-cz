@@ -2,13 +2,13 @@
 title: Zálohování virtuálních počítačů Azure v trezoru Recovery Services
 description: Popisuje, jak zálohovat virtuální počítače Azure v Recovery Services trezoru pomocí Azure Backup
 ms.topic: conceptual
-ms.date: 04/03/2019
-ms.openlocfilehash: 88e7be7e2238637f1e6d5ac84abebdca0b9e1674
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/28/2020
+ms.openlocfilehash: c4fbafc63ce063159d0524ddf26bb936c53328df
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497926"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373856"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Zálohování virtuálních počítačů Azure v trezoru Recovery Services
 
@@ -35,35 +35,9 @@ V tomto článku získáte informace o těchto tématech:
 
 Kromě toho je možné, že v některých případech budete muset udělat několik věcí:
 
-* **Instalace agenta virtuálního počítače na virtuální počítač**: Azure Backup zálohuje virtuální počítače Azure tím, že nainstaluje rozšíření na agenta virtuálního počítače Azure, který běží na počítači. Pokud byl váš virtuální počítač vytvořený z image Azure Marketplace, Agent se nainstaluje a spustí. Pokud vytvoříte vlastní virtuální počítač nebo migrujete místní počítač, možná budete muset [agenta nainstalovat ručně](#install-the-vm-agent).
+* **Instalace agenta virtuálního počítače na virtuální počítač**: Azure Backup zálohuje virtuální počítače Azure tím, že nainstaluje rozšíření na agenta virtuálního počítače Azure, který běží na počítači. Pokud byl váš virtuální počítač vytvořen z bitové kopie Azure Marketplace, je agent nainstalovaný a spuštěný. Pokud vytvoříte vlastní virtuální počítač nebo migrujete místní počítač, možná budete muset [agenta nainstalovat ručně](#install-the-vm-agent).
 
-## <a name="create-a-vault"></a>Vytvoření trezoru
-
- Trezor ukládá zálohy a body obnovení vytvořené v průběhu času a ukládá zásady zálohování přidružené k zálohovaným počítačům. Vytvořte Trezor následujícím způsobem:
-
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
-2. Do Hledat zadejte **Recovery Services**. V části **služby**klikněte na **Recovery Services trezory**.
-
-     ![Hledat trezory Recovery Services](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png)
-
-3. V nabídce **Recovery Services trezory** klikněte na **+ Přidat**.
-
-     ![Vytvoření trezoru Recovery Services – krok 2](./media/backup-azure-arm-vms-prepare/rs-vault-menu.png)
-
-4. V **Recovery Services trezoru**zadejte popisný název pro identifikaci trezoru.
-    * Název musí být jedinečný v rámci předplatného Azure.
-    * Může obsahovat 2 až 50 znaků.
-    * Musí začínat písmenem a může obsahovat jenom písmena, číslice a spojovníky.
-5. Vyberte předplatné Azure, skupinu prostředků a geografickou oblast, ve které se má Trezor vytvořit. Pak klikněte na **Create** (Vytvořit).
-    * Vytvoření trezoru může chvíli trvat.
-    * Sledujte oznámení o stavu v pravé horní části portálu.
-
-Po vytvoření trezoru se zobrazí v seznamu Recovery Services trezory. Pokud váš trezor nevidíte, vyberte **aktualizovat**.
-
-![Seznam trezorů záloh](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
-
->[!NOTE]
-> Azure Backup teď umožňuje přizpůsobení názvu skupiny prostředků vytvořeného službou Azure Backup. Další informace najdete v tématu [Azure Backup skupiny prostředků pro Virtual Machines](backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines).
+[!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
 ### <a name="modify-storage-replication"></a>Úprava replikace úložiště
 
@@ -74,11 +48,10 @@ Ve výchozím nastavení trezory používají [geograficky redundantní úloži�
 
 Typ replikace úložiště upravte takto:
 
-1. V novém trezoru klikněte na **vlastnosti** v části **Nastavení** .
-2. V části **vlastnosti**v části **Konfigurace zálohování**klikněte na **aktualizovat**.
-3. Vyberte typ replikace úložiště a klikněte na **Uložit**.
-
-      ![Nastavení konfigurace úložiště pro nový trezor](./media/backup-try-azure-backup-in-10-mins/full-blade.png)
+1. V novém trezoru vyberte v části **Nastavení** možnost **vlastnosti** .
+2. V části **vlastnosti**v části **Konfigurace zálohování**vyberte **aktualizovat**.
+3. Vyberte typ replikace úložiště a vyberte **Uložit**.
+s ![ nastavte konfiguraci úložiště pro nový trezor.](./media/backup-azure-arm-vms-prepare/full-blade.png)
 
 > [!NOTE]
    > Po nastavení trezoru a obsahujícího zálohované položky nemůžete upravit typ replikace úložiště. Pokud to chcete udělat, musíte znovu vytvořit trezor.
@@ -87,21 +60,26 @@ Typ replikace úložiště upravte takto:
 
 Nakonfigurujte zásady zálohování pro trezor.
 
-1. V trezoru klikněte v části **Přehled** na **+ zálohovat** .
+1. V trezoru v části **Přehled** vyberte **+ Backup** .
 
    ![Tlačítko zálohovat](./media/backup-azure-arm-vms-prepare/backup-button.png)
 
-2. V **cíli zálohování**  >  **, kde je spuštěná vaše úloha?** vyberte **Azure**. V **Možnosti co chcete zálohovat?** vyberte **virtuální počítač**  >   **OK**. Tím se registruje rozšíření virtuálního počítače v trezoru.
+1. V **cíli zálohování**  >  **, kde je spuštěná vaše úloha?** vyberte **Azure**. V **Možnosti co chcete zálohovat?** vyberte **virtuální počítač**  >   **OK**. Tím se registruje rozšíření virtuálního počítače v trezoru.
 
    ![Podokna zálohování a cíle zálohování](./media/backup-azure-arm-vms-prepare/select-backup-goal-1.png)
 
-3. V části **zásady zálohování**vyberte zásadu, kterou chcete přidružit k trezoru.
+1. V části **zásady zálohování**vyberte zásadu, kterou chcete přidružit k trezoru.
     * Výchozí zásada zálohuje virtuální počítač jednou denně. Denní zálohy se uchovávají po dobu 30 dnů. Snímky okamžitého obnovení se uchovávají po dobu dvou dnů.
-    * Pokud nechcete používat výchozí zásady, vyberte **vytvořit novou**a vytvořte vlastní zásadu, jak je popsáno v následujícím postupu.
 
       ![Výchozí zásady zálohování](./media/backup-azure-arm-vms-prepare/default-policy.png)
 
-4. V části **Vybrat virtuální počítače**vyberte virtuální počítače, které chcete pomocí zásad zálohovat. Pak klikněte na **OK**.
+    * Pokud nechcete používat výchozí zásady, vyberte **vytvořit novou**a vytvořte vlastní zásadu, jak je popsáno v následujícím postupu.
+
+1. V části **Virtual Machines**vyberte **Přidat**.
+
+      ![Přidat virtuální počítače](./media/backup-azure-arm-vms-prepare/add-virtual-machines.png)
+
+1. Otevře se podokno **Výběr virtuálních počítačů** . Pomocí zásad vyberte virtuální počítače, které chcete zálohovat. Pak vyberte **OK**.
 
    * Vybrané virtuální počítače jsou ověřené.
    * Virtuální počítače můžete vybrat jenom ve stejné oblasti jako trezor.
@@ -110,11 +88,9 @@ Nakonfigurujte zásady zálohování pro trezor.
      ![Podokno vybrat virtuální počítače](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
     >[!NOTE]
-    > Pro konfiguraci zálohování budou dostupné jenom virtuální počítače ve stejné oblasti a předplatném jako trezor.
+    > Pro konfiguraci zálohování jsou k dispozici všechny virtuální počítače ve stejné oblasti a předplatném, které jsou v trezoru. Při konfiguraci zálohování můžete přejít na název virtuálního počítače a jeho skupinu prostředků, i když nemáte požadovaná oprávnění k těmto virtuálním počítačům.  
 
-5. V **zálohování**klikněte na **Povolit zálohování**. Tím se tyto zásady nasadí do trezoru a do virtuálních počítačů a nainstaluje se rozšíření zálohování na agenta virtuálního počítače spuštěného na virtuálním počítači Azure.
-
-     ![Tlačítko Povolit zálohování](./media/backup-azure-arm-vms-prepare/vm-validated-click-enable.png)
+1. V **zálohování**vyberte **Povolit zálohování**. Tím se tyto zásady nasadí do trezoru a do virtuálních počítačů a nainstaluje se rozšíření zálohování na agenta virtuálního počítače spuštěného na virtuálním počítači Azure.
 
 Po povolení zálohování:
 
@@ -122,8 +98,8 @@ Po povolení zálohování:
 * Počáteční zálohování se spustí podle plánu zálohování.
 * Po spuštění zálohování si všimněte, že:
   * Virtuální počítač, který je spuštěný, má největší šanci na zachycení bodu obnovení konzistentního vzhledem k aplikacím.
-  * Ale i v případě, že je virtuální počítač vypnutý, je zálohovaný. Takový virtuální počítač se označuje jako offline virtuální počítač. V takovém případě bude bod obnovení konzistentní vzhledem k selháním.
-* K povolení zálohování virtuálních počítačů Azure se nevyžaduje explicitní odchozí připojení.
+  * Nicméně i v případě, že je virtuální počítač vypnutý, je zálohovaný. Takový virtuální počítač se označuje jako offline virtuální počítač. V takovém případě bude bod obnovení konzistentní vzhledem k selháním.
+* Aby bylo možné zálohovat virtuální počítače Azure, není nutné explicitní odchozí připojení.
 
 ### <a name="create-a-custom-policy"></a>Vytvoření vlastní zásady
 
@@ -135,8 +111,8 @@ Pokud jste vybrali vytvoření nové zásady zálohování, vyplňte nastavení 
     * Při obnovení se zálohované disky virtuálních počítačů zkopírují z úložiště napříč sítí do umístění úložiště pro obnovení. Při okamžitém obnovení můžete využít místně uložené snímky, které se provedou během úlohy zálohování, aniž byste čekali na přenos zálohovaných dat do trezoru.
     * Snímky pro okamžité obnovení můžete uchovávat po dobu mezi 1 a pěti dny. Výchozím nastavením je dva dny.
 4. V **oblasti uchovávání**zadejte, jak dlouho chcete zachovat denní nebo týdenní body zálohování.
-5. V části **uchování měsíčního bodu zálohy**určete, jestli chcete zachovat měsíční zálohu denních nebo týdenních záloh.
-6. Zásadu uložíte kliknutím na **OK** .
+5. V části **uchování měsíčního bodu zálohy** a **uchování ročního bodu zálohy**určete, jestli chcete uchovávat měsíční nebo roční zálohu denních nebo týdenních záloh.
+6. Kliknutím na **OK** zásadu uložte.
 
     ![Nové zásady zálohování](./media/backup-azure-arm-vms-prepare/new-policy.png)
 
@@ -147,11 +123,11 @@ Pokud jste vybrali vytvoření nové zásady zálohování, vyplňte nastavení 
 
 Počáteční zálohování se spustí podle plánu, ale můžete ho spustit hned takto:
 
-1. V nabídce trezoru klikněte na položku **zálohované položky**.
-2. V nabídce **zálohované položky**klikněte na **virtuální počítač Azure**.
-3. V seznamu **zálohované položky** klikněte na tři tečky (...).
-4. Klikněte na **Zálohovat nyní**.
-5. V části **Zálohovat nyní**pomocí ovládacího prvku kalendáře vyberte poslední den, kdy se má bod obnovení zachovat. Pak klikněte na **OK**.
+1. V nabídce trezoru vyberte **zálohované položky**.
+2. V položku **zálohované položky**vyberte **virtuální počítač Azure**.
+3. V seznamu **zálohované položky** vyberte tři tečky (...).
+4. Vyberte **Zálohovat nyní**.
+5. V části **Zálohovat nyní**pomocí ovládacího prvku kalendáře vyberte poslední den, kdy se má bod obnovení zachovat. Pak vyberte **OK**.
 6. Monitorujte oznámení na portálu. Průběh úlohy můžete monitorovat na řídicím panelu trezoru > probíhající **úlohy zálohování**  >  **In progress**. V závislosti na velikosti virtuálního počítače může vytváření prvotní zálohy chvíli trvat.
 
 ## <a name="verify-backup-job-status"></a>Ověřit stav úlohy zálohování
@@ -161,7 +137,7 @@ Fáze snímkování zaručuje dostupnost bodu obnovení uloženého spolu s disk
 
   ![Stav úlohy zálohování](./media/backup-azure-arm-vms-prepare/backup-job-status.png)
 
-Existují dva **dílčí úkoly** spuštěné v back-endu, jednu pro úlohu front-end zálohování, kterou je možné zkontrolovat v okně Podrobnosti **úlohy zálohování** , jak je uvedeno níže:
+Existují dva **dílčí úkoly** spuštěné v back-endu, jednu pro úlohu front-end zálohování, kterou lze zkontrolovat v podokně podrobností **úlohy zálohování** , jak je uvedeno níže:
 
   ![Stav úlohy zálohování](./media/backup-azure-arm-vms-prepare/backup-job-phase.png)
 
@@ -171,13 +147,13 @@ Stav úlohy se může lišit v závislosti na následujících scénářích:
 
 **Snímek** | **Přenos dat do trezoru** | **Stav úlohy**
 --- | --- | ---
-Dokončeno | Rozpracované | Rozpracované
+Dokončeno | Probíhá | Probíhá
 Dokončeno | Přeskočeno | Dokončeno
 Dokončeno | Dokončeno | Dokončeno
 Dokončeno | Neúspěšný | Dokončeno s upozorněním
 Neúspěšný | Neúspěšný | Neúspěšný
 
-Díky této funkci se můžou dvě zálohy spustit paralelně, ale v obou fázích (snímky, přenos dat do trezoru) může běžet jenom jedna dílčí úloha. Takže v rámci scénářů skončila úloha zálohování v průběhu příštího dne neúspěšného zálohování v této funkci odpojuje se. V dalších dnech můžou být snímky dokončené **, zatímco přenos dat do trezoru** se přeskočil, pokud probíhá úloha zálohování staršího dne.
+Díky této funkci se můžou dvě zálohy spustit paralelně, ale v obou fázích (snímky, přenos dat do trezoru) může běžet jenom jedna dílčí úloha. Takže ve scénářích, kdy skončila úloha zálohování v průběhu příštího dne, selže zálohování v příštím dni, bude tato funkce oddálení zabráněno. Zálohy v dalších dnech můžou mít hotový snímek, zatímco **přenos dat do trezoru** se přeskočí, pokud probíhá úloha zálohování staršího dne.
 Přírůstkový bod obnovení vytvořený v trezoru bude zachytit všechny změny z posledního bodu obnovení vytvořeného v trezoru. Na uživatele není žádný vliv na náklady.
 
 ## <a name="optional-steps"></a>Volitelné kroky
@@ -196,7 +172,7 @@ Azure Backup zálohuje virtuální počítače Azure tím, že nainstaluje rozš
 >
 >V současné době Azure Backup podporuje zálohování všech disků (operačního systému a dat) na virtuálním počítači společně s využitím řešení zálohování virtuálních počítačů. Díky funkci vyloučení disku získáte možnost zálohovat jeden nebo několik datových disků ve virtuálním počítači. To poskytuje efektivní a nákladově efektivní řešení pro potřeby zálohování a obnovení. Každý bod obnovení obsahuje data disků zahrnutých v operaci zálohování, která dále umožňuje mít v průběhu operace obnovení podmnožinu disků obnovených z daného bodu obnovení. To platí pro obnovení ze snímku i z trezoru.
 >
->**Pokud si chcete zaregistrovat verzi Preview, napište nám naAskAzureBackupTeam@microsoft.com**
+>Pokud si chcete zaregistrovat verzi Preview, napište nám naAskAzureBackupTeam@microsoft.com
 
 ## <a name="next-steps"></a>Další kroky
 

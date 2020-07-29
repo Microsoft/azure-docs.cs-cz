@@ -3,12 +3,12 @@ title: Spravovat zásady pro automatické vypínání v Azure DevTest Labs | Mic
 description: Naučte se, jak nastavit zásady automatického vypnutí pro testovací prostředí, aby se virtuální počítače automaticky vypnuly, když se nepoužívají.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a865d178bd4bcf9715cefc7c5a01b31a6d6a9435
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a30070470f9a75ec5c56d448cd09ca82dd0cbce7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482730"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287542"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Konfigurace automatické vypnutí testovacího prostředí a virtuálních počítačů COMPUTE v Azure DevTest Labs
 
@@ -31,7 +31,7 @@ Zásady pro automatické vypínání pomáhají minimalizovat odpadní laborato�
 
 Chcete-li zobrazit (a změnit) zásady pro testovací prostředí, postupujte podle následujících kroků:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 3. V seznamu cvičení vyberte požadované testovací prostředí.   
 4. Vyberte **Konfigurace a zásady**.
@@ -71,7 +71,7 @@ Jakmile se automatické vypnutí nastaví vlastníkem testovacího prostředí, 
 - Přeskočit automatické vypínání pro tentokrát
 - Automatické vypnutí se odhlásí po hodinu nebo 2 hodinách, aby mohli na virtuálním počítači dál pracovat.
 
-Oznámení se odesílá prostřednictvím nakonfigurovaného koncového bodu webového zavěšení nebo e-mailové adresy zadané vlastníky testovacího prostředí v nastavení automatické vypnutí. Webhooky umožňují vytvářet nebo nastavovat integrace, které se přihlásí k odběru určitých událostí. Když se aktivuje jedna z těchto událostí, DevTest Labs pošle datovou část HTTP POST do konfigurované adresy URL Webhooku. Další informace o webhookech najdete v tématu [Vytvoření Webhooku nebo rozhraní API Azure Function](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
+Oznámení se odesílá prostřednictvím nakonfigurovaného koncového bodu webového zavěšení nebo e-mailové adresy zadané vlastníky testovacího prostředí v nastavení automatické vypnutí. Webhooky umožňují vytvářet nebo nastavovat integrace, které se přihlásí k odběru určitých událostí. Když se aktivuje jedna z těchto událostí, DevTest Labs pošle datovou část HTTP POST do konfigurované adresy URL Webhooku. Další informace o webhookech najdete v tématu [Vytvoření Webhooku nebo rozhraní API Azure Function](../azure-functions/functions-bindings-http-webhook.md). 
 
 Doporučujeme používat Webhooky, protože jsou široce podporované různými aplikacemi (například časová rezerva, Azure Logic Apps a tak dále) a umožňují vám implementovat vlastní způsob odesílání oznámení. Tento článek vás seznámí s postupem, jak získat oznámení o automatickém vypnutí z e-mailů pomocí Azure Logic Apps. Nejdřív se rychle provedeme základními kroky, které vám umožní oznámení o automatickém vypnutí v testovacím prostředí.   
 
@@ -211,4 +211,3 @@ Po aktualizaci nastavení automatické vypnutí se zobrazí aktivita zaznamenan�
 
 ## <a name="next-steps"></a>Další kroky
 Informace o tom, jak nastavit všechny zásady, najdete v tématu [Definování zásad testovacího prostředí v Azure DevTest Labs](devtest-lab-set-lab-policy.md).
-

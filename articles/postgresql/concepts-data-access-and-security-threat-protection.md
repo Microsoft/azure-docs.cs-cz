@@ -6,11 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 3d86c76472580567c95d285924761e1714465d6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 390f44ffebb6531fde2f819fad0d4e9399cba218
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74768737"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287509"
 ---
 # <a name="advanced-threat-protection-in-azure-database-for-postgresql---single-server"></a>Rozšířená ochrana před internetovými útoky v Azure Database for PostgreSQL – jeden server
 
@@ -19,7 +20,7 @@ Advanced Threat Protection pro službu Azure Database for PostgreSQL detekuje ne
 > [!NOTE]
 > Rozšířená ochrana před internetovými útoky je ve verzi Public Preview.
 
-Ochrana před hrozbami je součástí nabídky rozšířené ochrany před internetovými útoky (ATP), což je jednotný balíček pro pokročilé funkce zabezpečení. Rozšířená ochrana před internetovými útoky je dostupná a spravovaná prostřednictvím [Azure Portal](https://portal.azure.com) nebo pomocí [REST API](/rest/api/postgresql/serversecurityalertpolicies). Tato funkce je k dispozici pro Pro obecné účely a paměťově optimalizované servery.
+Ochrana před hrozbami je součástí nabídky rozšířené ochrany před internetovými útoky (ATP), což je jednotný balíček pro pokročilé funkce zabezpečení. Rozšířená ochrana před internetovými útoky je dostupná a spravovaná prostřednictvím [Azure Portal](https://portal.azure.com) nebo pomocí [REST API](/rest/api/postgresql). Tato funkce je k dispozici pro Pro obecné účely a paměťově optimalizované servery.
 
 > [!NOTE]
 > Funkce rozšířené ochrany před internetovými útoky **není dostupná v** těchto oblastech cloudu Azure a v svrchovaném cloudu: US Gov – Texas, US Gov – Arizona, US gov – Iowa, US, gov) – virginia, US DoD – východ, US DoD – střed, Německo Central, Německo – sever, Čína – východ, Čína – východ 2. Pokud chcete získat obecnou dostupnost produktu, navštivte prosím [produkty dostupné v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/) .

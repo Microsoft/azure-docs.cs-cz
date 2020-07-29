@@ -8,11 +8,12 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 2dc2143619594c8fd46fa4e838b97a3ecde95653
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 069bce6f2f8e46679cbc82dd92c9fd73bfecde85
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027711"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373517"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace ASP.NET Core s využitím konfigurace aplikace Azure
 
@@ -241,6 +242,8 @@ Pokud pracujete na Azure Cloud Shell, klikněte na tlačítko *Náhled webu* a p
 ![Najít tlačítko Náhled webu](./media/quickstarts/cloud-shell-web-preview.png)
 
 Po zobrazení výzvy ke konfiguraci portu pro verzi Preview zadejte ' 5000 ' a vyberte *otevřít a procházet*.  Webová stránka načte data z konfigurace aplikace Azure.
+
+![Spouští se aplikace pro rychlý Start.](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

@@ -10,15 +10,15 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: e9bf1f06b1ec1f99da1ce653b4bc72f4638ba451
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 22bfab5b9f00a392054fa1aef6a93195180fd968
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084949"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373483"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database migrace provozu na novější brány
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Díky tomu, že se infrastruktura Azure zlepšuje, Microsoft pravidelně aktualizuje hardware, aby bylo zajištěno, že budeme poskytovat nejlepší možné prostředí pro zákazníky. V nadcházejících měsících plánujeme přidat brány postavené na novějších generacích hardwaru, migrovat provoz na ně a nakonec vyřadit brány z provozu na starší hardware v některých oblastech.  
 
@@ -26,7 +26,20 @@ Zákazníci budou upozorňováni e-mailem a v Azure Portal předem o jakékoli z
 
 ## <a name="status-updates"></a>Aktualizace stavu
 
-# <a name="in-progress"></a>[Rozpracované](#tab/in-progress-ip)
+# <a name="in-progress"></a>[Probíhá](#tab/in-progress-ip)
+### <a name="september-2020"></a>Září 2020
+
+Nové brány SQL se přidávají do následujících oblastí:
+
+- Severní Evropa: 13.74.104.113 
+- Západ USA 2:40.78.248.10 
+- Západní Evropa: 52.236.184.163 
+- Střed USA – jih: 20.45.121.1, 20.49.88.1 
+
+Stávající brány SQL začnou přijímat přenosy v následujících oblastech:
+- Japonsko – východ: 40.79.184.8, 40.79.192.5
+
+Tyto brány SQL začnou přijímat zákaznická data od 1. září 2020. 
 
 ### <a name="august-2020"></a>Srpen 2020
 
@@ -43,17 +56,17 @@ Tyto brány SQL začnou přijímat provoz zákazníků 10. srpna 2020.
 Následující migrace brány jsou dokončené: 
 
 ### <a name="october-2019"></a>Říjen 2019
-- Brazílie – jih
+- Brazil South
 - USA – západ
-- Západní Evropa
-- USA – východ
-- USA – střed
+- West Europe
+- East US
+- Střední USA
 - Jihovýchodní Asie
-- USA – středojih
+- Středojižní USA
 - Severní Evropa
 - USA – středosever
 - Japonsko – západ
-- Japonsko – východ
+- Japan East
 - USA – východ 2
 - Východní Asie
 

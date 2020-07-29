@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/05/2019
-ms.openlocfilehash: 1b508a6b4fa8a541381ea8b74046adb2f79034d3
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 4d0ee48a42814ab2c4229c5f8f239aa1a1c28544
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044137"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87314216"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics a Power BI: řídicí panel analýzy v reálném čase pro streamovaná data
 
@@ -27,7 +27,7 @@ Můžete se podívat [na video](https://www.youtube.com/watch?v=SGUpT-a99MA) , k
 
 Než začnete, ujistěte se, že jste provedli následující akce:
 
-* Účet Azure.
+* Účet Azure:
 * Účet pro Power BI Pro. Můžete použít pracovní účet nebo školní účet.
 * Dokončená verze kurzu [zjišťování podvodů v reálném čase](stream-analytics-real-time-fraud-detection.md) . Kurz obsahuje aplikaci, která generuje fiktivní metadata telefonního hovoru. V tomto kurzu vytvoříte centrum událostí a odešlete data o telefonních hovorech streamování do centra událostí. Napíšete dotaz, který detekuje falešná volání (volání ze stejného čísla současně v různých umístěních). 
 
@@ -157,7 +157,7 @@ Vaše úloha Stream Analytics začne hledat falešná volání v příchozím da
 
     ![Podrobnosti vizualizace pro novou dlaždici](./media/stream-analytics-power-bi-dashboard/add-fraudulent-calls-tile.png)
 
-7. Klikněte na **Další**.
+7. Klikněte na **Next** (Další).
 
 8. Vyplňte podrobnosti dlaždice jako název a podnadpis.
 
@@ -184,16 +184,6 @@ Vaše úloha Stream Analytics začne hledat falešná volání v příchozím da
 
      ![Dokončený Power BI řídicí panel ukazující dvě dlaždice pro podvodné hovory](./media/stream-analytics-power-bi-dashboard/pbi-dashboard-fraudulent-calls-finished.png)
 
-
-## <a name="learn-more-about-power-bi"></a>Další informace o Power BI
-
-Tento kurz ukazuje, jak vytvořit pouze několik druhů vizualizací pro datovou sadu. Power BI vám může pomáhat s vytvářením dalších nástrojů pro zákaznické business intelligence ve vaší organizaci. Další nápady najdete v následujících zdrojích informací:
-
-* Další příklad řídicího panelu Power BI můžete sledovat [Začínáme s Power BI](https://youtu.be/L-Z_6P56aas?t=1m58s) videem.
-* Další informace o konfiguraci výstupu úlohy Stream Analytics do Power BI a používání skupin Power BI najdete v části [Power BI](stream-analytics-define-outputs.md#power-bi) článku [Stream Analytics výstupy](stream-analytics-define-outputs.md) . 
-* Informace o použití Power BI všeobecně najdete v tématu [řídicí panely v Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/).
-
-
 ## <a name="learn-about-limitations-and-best-practices"></a>Další informace o omezeních a osvědčených postupech
 V současné době je možné Power BI volat zhruba jednou za sekundu. Vizuály streamování podporují pakety o 15 KB. Kromě toho se vizuály streamování nezdaří (ale i nadále funguje). Z důvodu těchto omezení Power BI sami přirozeně zapůjčení do případů, kdy Azure Stream Analytics významným omezením zatížení dat. Doporučujeme použít bubnové okno nebo skákající okno, aby bylo zajištěno, že nabízení dat je nejvýše jedna nabízená oznámení za sekundu a že váš dotaz je v rámci požadavků na propustnost.
 
@@ -201,7 +191,7 @@ Pomocí následující rovnice můžete vypočítat hodnotu a poskytnout tak okn
 
 ![Rovnice k výpočtu hodnoty za účelem poskytnutí okna v sekundách](./media/stream-analytics-power-bi-dashboard/compute-window-seconds-equation.png)  
 
-Příklad:
+Například:
 
 * Máte 1 000 zařízení odesílajících data v sekundách za sekundu.
 * Používáte Power BI Pro SKU, který podporuje 1 000 000 řádků za hodinu.
@@ -234,12 +224,9 @@ Podobně platí, že pokud se úloha spustí po vypršení platnosti tokenu, doj
 
 Po obnovení autorizace pomocí Power BI se v oblasti autorizace zobrazí Zelená výstraha, která odráží, že byl problém vyřešen.
 
-## <a name="get-help"></a>Získání pomoci
-Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
-
 ## <a name="next-steps"></a>Další kroky
 * [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
-* [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
+* [Výstupy Stream Analytics](stream-analytics-define-outputs.md)
 * [Referenční dokumentace jazyka Azure Stream Analytics dotazů](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Referenční informace o REST API správy Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)

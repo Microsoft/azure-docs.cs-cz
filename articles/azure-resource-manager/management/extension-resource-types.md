@@ -2,12 +2,13 @@
 title: Typy prostředků rozšíření
 description: Obsahuje seznam typů prostředků Azure, pomocí kterých se rozšiřuje schopnost dalších typů prostředků.
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: 3a3fbc531750bec4b16e38f1fe79f613c1b94f5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/28/2020
+ms.openlocfilehash: 84de9b66f9001985b8c7b92882f03ff8c7cbf431
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80754867"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374010"
 ---
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>Typy prostředků, které rozšiřuje možnosti jiných prostředků
 
@@ -27,7 +28,9 @@ Prostředek rozšíření je prostředek, který se přidává do možností jin
 - Microsoft. Authorization/oprávnění
 - Microsoft. Authorization/policyAssignments
 - Microsoft. Authorization/policyDefinitions
+- Microsoft. Authorization/policyExemptions
 - Microsoft. Authorization/policySetDefinitions
+- Microsoft. Authorization/privateLinkAssociations
 - Microsoft. Authorization/roleAssignments
 - Microsoft. Authorization/roleAssignmentsUsageMetrics
 - Microsoft. Authorization/roleDefinitions
@@ -38,6 +41,7 @@ Prostředek rozšíření je prostředek, který se přidává do možností jin
 - Microsoft. fakturace/createBillingRoleAssignment
 - Microsoft. Details/blueprintAssignments
 - Microsoft. Details/modrotisky
+- Microsoft. ChangeAnalysis/resourceChanges
 - Microsoft. spotřeb/AggregatedCost
 - Microsoft. spotřeb/bilance
 - Microsoft. spotřeba/rozpočty
@@ -49,6 +53,7 @@ Prostředek rozšíření je prostředek, který se přidává do možností jin
 - Microsoft. spotřeb/stav operationstatus
 - Microsoft. spotřeb/Pricesheets
 - Microsoft. spotřeb/ReservationDetails
+- Microsoft. spotřeb/ReservationRecommendationDetails
 - Microsoft. spotřeb/ReservationRecommendations
 - Microsoft. spotřeb/ReservationSummaries
 - Microsoft. spotřeb/ReservationTransactions
@@ -63,6 +68,7 @@ Prostředek rozšíření je prostředek, který se přidává do možností jin
 - Microsoft. ContainerInstance/serviceAssociationLinks
 - Microsoft. CostManagement/Alerts
 - Microsoft. CostManagement/rozpočty
+- Microsoft. CostManagement/costAllocationRules
 - Microsoft. CostManagement/Dimensions
 - Microsoft. CostManagement/EXPORTS
 - Microsoft. CostManagement/ExternalSubscriptions
@@ -70,8 +76,8 @@ Prostředek rozšíření je prostředek, který se přidává do možností jin
 - Microsoft. CostManagement/dotaz
 - Microsoft. CostManagement/Reportconfigs
 - Microsoft. CostManagement/Reports
-- Microsoft. CostManagement/zobrazení
 - Microsoft. CostManagement/showbackRules
+- Microsoft. CostManagement/zobrazení
 - Microsoft. CustomProviders/Associations
 - Microsoft. EventGrid/eventSubscriptions
 - Microsoft. EventGrid/extensionTopics
@@ -107,12 +113,13 @@ Prostředek rozšíření je prostředek, který se přidává do možností jin
 - Microsoft. ManagedServices/registrationDefinitions
 - Microsoft. OperationalInsights/storageInsightConfigs
 - Microsoft. OperationsManagement/managementassociations
+- Microsoft. PolicyInsights/Attestation
 - Microsoft. PolicyInsights/policyEvents
 - Microsoft. PolicyInsights/policyStates
 - Microsoft. PolicyInsights/policyTrackedResources
 - Microsoft. PolicyInsights/nápravy
 - Microsoft. RecoveryServices/backupProtectedItems
-- Microsoft. RecoveryServices/replicationEligibilityResults    
+- Microsoft. RecoveryServices/replicationEligibilityResults
 - Microsoft. ResourceHealth/availabilityStatuses
 - Microsoft. ResourceHealth/childAvailabilityStatuses
 - Microsoft. ResourceHealth/childResources
@@ -130,11 +137,12 @@ Prostředek rozšíření je prostředek, který se přidává do možností jin
 - Microsoft. Security/complianceResults
 - Microsoft. Security/dataCollectionAgents
 - Microsoft. Security/deviceSecurityGroups
-- Microsoft. Security/networkData
+- Microsoft. Security/jitPolicies
 - Microsoft. Security/serverVulnerabilityAssessments
 - Microsoft. SecurityInsights/agregace
 - Microsoft. SecurityInsights/alertRuleTemplates
 - Microsoft. SecurityInsights/alertRules
+- Microsoft. SecurityInsights/automationRules
 - Microsoft. SecurityInsights/záložky
 - Microsoft. SecurityInsights/případy
 - Microsoft. SecurityInsights/dataconnects
@@ -144,6 +152,7 @@ Prostředek rozšíření je prostředek, který se přidává do možností jin
 - Microsoft. SecurityInsights/incidenty
 - Microsoft. SecurityInsights/officeConsents
 - Microsoft. SecurityInsights/Settings
+- Microsoft. SecurityInsights/threatIntelligence
 - Microsoft. SoftwarePlan/hybridUseBenefits
 - Microsoft. Subscription/CreateSubscription
 - Microsoft. support/supporttickets

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 07/28/2020
 ms.author: aahi
-ms.openlocfilehash: cbc950647dc2f7102f20766c22f434526ab66639
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: dbd0699924268b38d69bc576a5886e8d31fa1208
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122276"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373466"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Postupy: použití Analýza textu pro stav (Preview)
 
@@ -23,7 +23,7 @@ ms.locfileid: "86122276"
 > Analýza textu pro stav je funkce ve verzi Preview, která je k dispozici, a se všemi CHYBAmi. V takovém případě **by analýza textu pro stav (Preview) neměly být implementovány ani nasazeny v jakémkoli provozním provozu.** Analýza textu pro stav není zamýšlené ani nedostupné pro použití jako lékařské zařízení, klinická podpora, diagnostický nástroj nebo jiná technologie určená k použití v oblasti diagnostiky, udělení, zmírnění nebo prevence nákazy a jiných podmínek a společnost Microsoft neuděluje licenci ani právo k používání této možnosti pro tyto účely. Tato funkce není navržená ani implementovaná jako náhrada pro profesionální lékařské poradenství nebo zdravotní stanovisko, diagnostiku, zpracování nebo klinické rozsudky odborníka na zdravotní péči a neměla by se používat jako takový. Zákazník je výhradně zodpovědný za jakékoliv použití Analýza textu pro stav. Společnost Microsoft neopravňuje k tomu, aby Analýza textu pro zdraví nebo materiály poskytované v souvislosti s schopností byly dostatečné pro jakékoli lékařské účely nebo jinak splňovaly zdravotní a lékařské požadavky jakékoli osoby. 
 
 
-Azure Analýza textu pro stav je kontejnerová služba, která extrahuje a označí štítky relevantní lékařské informace z nestrukturovaných textů, jako jsou například poznámky lékaře, souhrny vypuštění, klinické dokumenty a elektronické záznamy o stavu.  
+Analýza textu pro stav je kontejnerová služba, která extrahuje a označí štítky relevantní lékařské informace z nestrukturovaných textů, jako jsou například poznámky lékaře, souhrny vypouštěných položek, klinické dokumenty a elektronické záznamy o stavu.  
 
 ## <a name="features"></a>Funkce
 
@@ -62,7 +62,7 @@ Význam lékařského obsahu je vysoce ovlivněn modifikátory, jako je napřík
 
 ---
 
-Úplný seznam podporovaných entit najdete v tématu [kategorie entit](../named-entity-types.md?tabs=health) vrácené analýza textu pro zdravotnictví.
+Úplný seznam podporovaných entit najdete v tématu [kategorie entit](../named-entity-types.md?tabs=health) vrácené funkcí analýza textu pro stav.
 
 ## <a name="supported-languages"></a>Podporované jazyky
 
@@ -80,8 +80,8 @@ Vyplňte a odešlete [formulář žádosti o Cognitive Services kontejnery](http
 
 Existuje několik způsobů, jak můžete nainstalovat a spustit kontejner. 
 
-1. Pomocí [Azure Portal](text-analytics-how-to-install-containers.md?tabs=healthcare) vytvořit prostředek analýza textu a pomocí Docker získat kontejner.
-2. Pomocí níže uvedených skriptů PowerShell a [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) můžete automatizovat konfiguraci kontejneru nasazení prostředků.
+- Použijte [Azure Portal](text-analytics-how-to-install-containers.md?tabs=healthcare) k vytvoření prostředku analýza textu a k získání kontejneru použijte Docker.
+- K automatizaci konfigurace kontejneru nasazení prostředků použijte následující skripty PowerShell a [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) .
 
 ### <a name="install-the-container-using-azure-web-app-for-containers"></a>Instalace kontejneru pomocí Azure Web App for Containers
 
@@ -223,7 +223,7 @@ Další informace najdete v dokumentaci k NGINX o [ukončení Nginx SSL](https:/
 
 
 ## <a name="example-api-request"></a>Příklad požadavku rozhraní API
-Kontejner poskytuje rozhraní API koncového bodu předpovědi založené na REST.
+Kontejner poskytuje rozhraní API prediktivního koncového bodu pro dotazy založené na REST.
 
 Použijte níže uvedený příklad žádosti o vytvoření dotazu do kontejneru, který jste nasadili, a nahraďte `serverURL` proměnnou odpovídající hodnotou.
 
@@ -404,8 +404,8 @@ Následující JSON je příkladem Analýza textu pro tělo odpovědi rozhraní 
     ...
 ```
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
-* [Přehled Analýza textu](../overview.md)
+* [Přehled analýzy textu](../overview.md)
 * [Kategorie pojmenovaných entit](../named-entity-types.md)
 * [Co je nového](../whats-new.md)

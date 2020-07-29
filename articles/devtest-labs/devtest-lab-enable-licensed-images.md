@@ -3,12 +3,12 @@ title: Povolte ve svém testovacím prostředí licencovaný obraz v Azure DevTe
 description: Naučte se, jak povolit licencovanou image v Azure DevTest Labs pomocí Azure Portal
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6a4023a0107acf5aa4cabc2178d17f7be40301f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a043679e27580254c56fe118838dd355be5a58de
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481013"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286508"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>Povolte ve svém testovacím prostředí licencovaný obraz v Azure DevTest Labs
 
@@ -17,7 +17,7 @@ V Azure DevTest Labs je licencovaná image taková, která zahrnuje podmínky a 
 ## <a name="determining-whether-a-licensed-image-is-available-to-users"></a>Zjištění, jestli je k dispozici licencovaná image pro uživatele
 Prvním krokem, který uživatelům umožňuje vytvářet virtuální počítače z licencované image, je zajistit, aby byly podmínky a ujednání přijaté pro licencovanou bitovou kopii. Následující kroky ukazují, jak můžete zobrazit stav nabídky licencované image a v případě potřeby přijmout podmínky a ujednání.
 
-1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 
@@ -50,7 +50,7 @@ Pomocí následujícího postupu můžete povolit programové nasazení pro lice
     ![Konfigurovat okno programového nasazení](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-licensed-images.png)
 
    > [!NOTE]
-   > Virtuální počítače pro datové vědy jsou image virtuálních počítačů Azure, předem nainstalované, nakonfigurované a testované pomocí několika oblíbených nástrojů, které se běžně používají pro analýzu dat, strojové učení a školení AI. [Úvod do Azure Data Science Virtual Machine pro Linux a Windows](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview) přináší skvělé informace o DSVMs.
+   > Virtuální počítače pro datové vědy jsou image virtuálních počítačů Azure, předem nainstalované, nakonfigurované a testované pomocí několika oblíbených nástrojů, které se běžně používají pro analýzu dat, strojové učení a školení AI. [Úvod do Azure Data Science Virtual Machine pro Linux a Windows](../machine-learning/data-science-virtual-machine/overview.md) přináší skvělé informace o DSVMs.
    >
    >
 
@@ -78,7 +78,7 @@ Pomocí následujícího postupu můžete povolit programové nasazení pro lice
 
 ## <a name="related-blog-posts"></a>Související blogové příspěvky
 
-- [Vlastní obrázky nebo vzorce?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
+- [Vlastní obrázky nebo vzorce?](./devtest-lab-faq.md#blog-post)
 - [Kopírování vlastních imagí mezi Azure DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>Další kroky

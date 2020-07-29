@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: 6d82446a915863e6aa95cc79a421f86b8c4dd3a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/25/2020
+ms.openlocfilehash: bc7410325bbcf3086c4ac2054b7bc663629a29e5
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252640"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373109"
 ---
 # <a name="connect-and-query-azure-sql-edge-preview"></a>Připojení a dotazování na Azure SQL Edge (Preview)
 
@@ -29,7 +29,7 @@ Po nasazení kontejneru v Azure SQL Edge se můžete připojit k databázovému 
 
 Můžete se připojit k instanci instance Azure SQL Edge z kteréhokoli z těchto běžných nástrojů:
 
-* [Sqlcmd](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools): nástroje klienta Sqlcmd jsou již zahrnuty v imagi kontejneru Azure SQL Edge. Pokud se připojíte ke spuštěnému kontejneru pomocí interaktivního prostředí bash, můžete spouštět nástroje místně.
+* [Sqlcmd](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools): nástroje klienta Sqlcmd jsou již zahrnuty v imagi kontejneru Azure SQL Edge. Pokud se připojíte ke spuštěnému kontejneru pomocí interaktivního prostředí bash, můžete spouštět nástroje místně. Klientské nástroje SQL nejsou na platformě ARM64 k dispozici, protože nejsou zahrnuté ve verzi ARM64 kontejnerů SQL Edge. 
 * [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms)
 * [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)
 * [Visual Studio Code](https://docs.microsoft.com/sql/visual-studio-code/sql-server-develop-use-vscode)
@@ -55,7 +55,7 @@ Pokud se chcete připojit k databázovému stroji Azure SQL Edge ze síťového 
 
 ## <a name="connect-to-the-database-engine-from-within-the-container"></a>Připojení k databázovému stroji v rámci kontejneru
 
-[Nástroje příkazového řádku SQL Server](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) jsou zahrnuté v imagi kontejneru Azure SQL Edge. Pokud se k kontejneru připojíte pomocí interaktivního příkazového řádku, můžete spustit nástroje místně.
+[Nástroje příkazového řádku SQL Server](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) jsou zahrnuté v imagi kontejneru Azure SQL Edge. Pokud se k kontejneru připojíte pomocí interaktivního příkazového řádku, můžete spustit nástroje místně. Klientské nástroje SQL nejsou na platformě ARM64 k dispozici, protože nejsou zahrnuté ve verzi ARM64 kontejnerů SQL Edge. 
 
 1. Pomocí `docker exec -it` příkazu spusťte interaktivní prostředí bash v běžícím kontejneru. V následujícím příkladu `e69e056c702d` je ID kontejneru.
 

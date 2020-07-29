@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/06/2020
-ms.openlocfilehash: 8474b49e3e6b12a613de19df055cbf6e43fb0aa2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5a09a30bafa5bc9ef052b14cad29e000bbd09a48
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503778"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287380"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Změny v dokumentaci pro SQL Server v Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,7 +37,7 @@ Azure umožňuje nasadit virtuální počítač s imagí SQL Server vestavěnou.
 | Změny | Podrobnosti |
 | --- | --- |
 | **Název distribuované sítě (DNN)** | SQL Server 2019 v systému Windows Server 2016 + nyní používá náhled pro směrování provozu do instance clusteru s podporou převzetí služeb při selhání (FCI) pomocí [názvu distribuované sítě](hadr-distributed-network-name-dnn-configure.md) namísto použití Azure Load Balancer. Tato podpora zjednodušuje a zjednodušuje připojení k řešení vysoké dostupnosti (HA) v Azure. | 
-| **FCI se sdílenými disky Azure** | Je teď možné nasadit [instanci clusteru s podporou převzetí služeb při selhání (FCI)](failover-cluster-instance-overview.md) pomocí [sdílených disků Azure](failover-cluster-instance-azure-shared-disks-manually-configure.md) s SQL Server 2019 na virtuálním počítači s Windows serverem 2016 +. |
+| **FCI se sdílenými disky Azure** | Je teď možné nasadit [instanci clusteru s podporou převzetí služeb při selhání (FCI)](failover-cluster-instance-overview.md) pomocí [sdílených disků Azure](failover-cluster-instance-azure-shared-disks-manually-configure.md). |
 | **Znovu uspořádané dokumenty FCI** | Dokumentace k [instancím clusteru s podporou převzetí služeb při selhání se SQL Server na virtuálních počítačích Azure](failover-cluster-instance-overview.md) se přepsala a reorganizovat pro přehlednost. Rozdělili jsme část konfiguračního obsahu, jako jsou [Doporučené postupy konfigurace clusteru](hadr-cluster-best-practices.md), jak připravit [virtuální počítač na SQL Server FCI](failover-cluster-instance-prepare-vm.md)a jak nakonfigurovat [Azure Load Balancer](hadr-vnn-azure-load-balancer-configure.md). | 
 | &nbsp; | &nbsp; |
 

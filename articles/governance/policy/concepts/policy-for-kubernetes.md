@@ -3,12 +3,12 @@ title: Preview – informace Azure Policy Kubernetes
 description: Přečtěte si, jak Azure Policy používá Rego a Open Agent zásad ke správě clusterů se systémem Kubernetes v Azure nebo místním prostředí. Tato funkce je ve verzi Preview.
 ms.date: 06/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: a044ea33f1a7710c4bb97d30cf8f11d4de2838b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 461dd467ecda2764c6753ed6eeee0405f8420bbc
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85373620"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373755"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Vysvětlení Azure Policy pro clustery Kubernetes (Preview)
 
@@ -203,7 +203,7 @@ Před instalací doplňku Azure Policy nebo povolením kterékoli funkce služby
 
 1. Otevřete porty pro doplněk. Azure Policy doplněk používá tyto domény a porty k načtení definic zásad a přiřazení a nahlášení kompatibility clusteru zpátky do Azure Policy.
 
-   |Domain (Doména) |Port |
+   |Doména |Port |
    |---|---|
    |`gov-prod-policy-data.trafficmanager.net` |`443` |
    |`raw.githubusercontent.com` |`443` |
@@ -371,9 +371,9 @@ Struktura Azure Policy jazyka pro správu Kubernetes se řídí existujícími d
 
 Jako součást _Details. constraintTemplate_ a _Details._ properties v definici zásad Azure Policy předá do doplňku identifikátory URI těchto [CustomResourceDefinitions](https://github.com/open-policy-agent/gatekeeper#constraint-templates) (CRD). Rego je jazyk, který podporuje NEPRŮ a gatekeeper, aby ověřil požadavek na cluster Kubernetes. Díky podpoře stávajícího standardu pro správu Kubernetes Azure Policy umožňuje znovu použít stávající pravidla a párovat je Azure Policy pro jednotné prostředí generování sestav dodržování předpisů cloudu. Další informace najdete v tématu [co je Rego?](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego).
 
-## <a name="assign-a-built-in-policy-definition"></a>Přiřazení předdefinované definice zásady
+## <a name="assign-a-built-in-policy-definition"></a>Přiřazení definice předdefinované zásady
 
-K přiřazení definice zásady ke clusteru Kubernetes je nutné přiřadit příslušné operace přiřazení zásad řízení přístupu na základě role (RBAC). Tyto operace mají integrovanou roli **Přispěvatel zásad prostředků** a jejich **vlastníkem** . Další informace najdete v tématu [oprávnění RBAC v Azure Policy](../overview.md#rbac-permissions-in-azure-policy).
+K přiřazení definice zásady ke clusteru Kubernetes je nutné přiřadit příslušné operace přiřazení zásad řízení přístupu na základě role (RBAC). Tyto operace mají v předdefinovaných rolích **zásady prostředků Přispěvatel** a **vlastník** Azure. Další informace najdete v tématu [oprávnění RBAC v Azure Policy](../overview.md#rbac-permissions-in-azure-policy).
 
 V následujících krocích najdete předdefinované definice zásad pro správu clusteru pomocí Azure Portal:
 
@@ -430,7 +430,7 @@ Každých 15 minut doplněk volá úplnou kontrolu clusteru. Po shromáždění 
 > [!NOTE]
 > Každá sestava dodržování předpisů v Azure Policy pro clustery Kubernetes zahrnuje všechna porušení během posledních 45 minut. Časové razítko indikuje, kdy došlo k porušení.
 
-## <a name="logging"></a>protokolování
+## <a name="logging"></a>Protokolování
 
 Jako Kubernetes Controller nebo kontejner se v clusteru Kubernetes udržují protokoly _Azure-Policy_ i _gatekeeper_ . Protokoly se dají zveřejnit na stránce **Přehled** v clusteru Kubernetes.
 Další informace najdete v tématu [monitorování výkonu clusteru Kubernetes s využitím Azure monitor pro kontejnery](../../../azure-monitor/insights/container-insights-analyze.md).

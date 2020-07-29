@@ -4,12 +4,12 @@ description: Popisuje řešení běžných chyb při nasazení prostředků do A
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 06/25/2020
-ms.openlocfilehash: 9914cf8267624cd05db860e7dd8eb8d8c5831f7e
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 652e4ec3c7f0de982b973733d75d736949b97bcc
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055660"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373993"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Řešení běžných problémů s nasazením v Azure při použití Azure Resource Manageru
 
@@ -78,7 +78,7 @@ Pokud hledáte informace o kódu chyby a tyto informace nejsou v tomto článku 
 | SubnetsNotInSameVnet | Virtuální počítač může mít jenom jednu virtuální síť. Při nasazování několika síťových adaptérů se ujistěte, že patří do stejné virtuální sítě. | [Více síťových karet](../../virtual-machines/windows/multiple-nics.md) |
 | SubscriptionNotRegistered | Při nasazování síťových prostředků se poskytovatel prostředků Microsoft. Network automaticky zaregistruje v předplatném. V některých případech se automatická registrace nedokončila v čase. Chcete-li se vyhnout této občasné chybě, zaregistrujte poskytovatele prostředků Microsoft. Network před nasazením. | [Vyřešit registraci](error-register-resource-provider.md) |
 | TemplateResourceCircularDependency | Odeberte zbytečné závislosti. | [Vyřešit cyklické závislosti](error-invalid-template.md#circular-dependency) |
-| TooManyTargetResourceGroups | Snižte počet skupin prostředků pro jedno nasazení. | [Nasazení napříč skupinami prostředků](cross-resource-group-deployment.md) |
+| TooManyTargetResourceGroups | Snižte počet skupin prostředků pro jedno nasazení. | [Nasazení mezi různými obory](cross-scope-deployment.md) |
 
 ## <a name="find-error-code"></a>Najít kód chyby
 
