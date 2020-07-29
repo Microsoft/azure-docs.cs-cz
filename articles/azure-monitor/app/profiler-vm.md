@@ -6,21 +6,21 @@ author: cweining
 ms.author: cweining
 ms.date: 11/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8beb1d60ca8dcc18978ffeb523a7d63f90ca6c01
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f514dd7b54ac091535aeab43a8a7d2a645b50a09
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049798"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87315814"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Profilování webových aplikací běžících na virtuálním počítači Azure nebo v sadě škálování virtuálního počítače pomocí Application Insights Profiler
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Azure Application Insights Profiler můžete nasadit i na tyto služby:
-* [Azure App Service](../../azure-monitor/app/profiler.md?toc=/azure/azure-monitor/toc.json)
+* [Azure App Service](./profiler.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
-* [Azure Service Fabric](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Service Fabric](?toc=%2fazure%2fazure-monitor%2ftoc.json)
 
 ## <a name="deploy-profiler-on-a-virtual-machine-or-a-virtual-machine-scale-set"></a>Nasazení profileru na virtuálním počítači nebo v sadě škálování virtuálního počítače
 V tomto článku se dozvíte, jak můžete Application Insights Profiler spustit na virtuálním počítači Azure nebo v sadě škálování virtuálních počítačů Azure. Profiler se instaluje s rozšířením Azure Diagnostics pro virtuální počítače. Nakonfigurujte rozšíření pro spuštění profileru a Sestavte sadu Application Insights SDK do své aplikace.
@@ -67,7 +67,7 @@ V tomto článku se dozvíte, jak můžete Application Insights Profiler spustit
 
 1. Pokud zamýšlená aplikace běží prostřednictvím [služby IIS](https://www.microsoft.com/web/downloads/platform.aspx), povolte `IIS Http Tracing` funkci Windows.
 
-   a. Navažte vzdálený přístup k prostředí a pak použijte okno [Přidat funkce systému Windows]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) . Nebo spusťte následující příkaz v PowerShellu (jako správce):  
+   a. Navažte vzdálený přístup k prostředí a pak použijte okno [Přidat funkce systému Windows](/iis/configuration/system.webserver/tracing/) . Nebo spusťte následující příkaz v PowerShellu (jako správce):  
 
     ```powershell
     Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All
@@ -117,3 +117,4 @@ Neplánujeme vám podporovat Application Insights Profiler pro místní servery.
 [resourceexplorerput]: ./media/profiler-vm/resource-explorer-put.png
 [resourceexplorersinksconfig]: ./media/profiler-vm/resource-explorer-sinks-config.png
 [wadextension]: ./media/profiler-vm/wad-extension.png
+

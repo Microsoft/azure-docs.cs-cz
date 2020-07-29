@@ -7,12 +7,12 @@ ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 108a7940084e99348dc8fdfa0143d5c6855599df
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 554079ddec3332ced2817d18ea55ce1260d68817
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097367"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291608"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Datová část telemetrie, vlastností a příkazů
 
@@ -30,6 +30,9 @@ Tento článek nepopisuje všechny možné typy telemetrie, vlastností a datov�
 
 Každý příklad ukazuje fragment kódu z modelu funkce zařízení (DCM), který definuje typ a ukázkovou datovou část JSON pro ilustraci, jak by mělo zařízení pracovat s aplikací IoT Central.
 
+> [!NOTE]
+> IoT Central akceptuje platný JSON, ale může se použít jenom pro vizualizace, pokud se shoduje s definicí v DCM. Data, která se neshodují s definicí, můžete exportovat v tématu [Export dat IoT do cílových umístění v Azure](howto-export-data.md).
+
 Soubor JSON, který definuje DCM, používá [digitální DTDL (digitald Definition Language) V1](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v1-preview/dtdlv1.md). Tato specifikace zahrnuje definici `@id` formátu vlastnosti.
 
 Vzorový kód zařízení, který zobrazuje některé z těchto používaných datových částí, najdete v tématu věnovaném [Vytvoření a připojení klientské aplikace do aplikace azure IoT Central (Node.js)](tutorial-connect-device-nodejs.md) a [Vytvoření a připojení klientské aplikace k vašim kurzům pro Azure IoT Central aplikace (Python)](tutorial-connect-device-python.md) .
@@ -43,9 +46,8 @@ IoT Central umožňuje zobrazit nezpracovaná data, která zařízení odesílá
 1. Vyberte kartu **nezpracovaná data** :
 
     :::image type="content" source="media/concepts-telemetry-properties-commands/raw-data.png" alt-text="Zobrazení nezpracovaných dat":::
-    
-    V tomto zobrazení můžete vybrat sloupce, které chcete zobrazit, a nastavit časový rozsah, který chcete zobrazit. Sloupec **nemodelovaná data** zobrazuje data ze zařízení, která neodpovídají žádné definici vlastnosti nebo telemetrie v šabloně zařízení.
 
+    V tomto zobrazení můžete vybrat sloupce, které chcete zobrazit, a nastavit časový rozsah, který chcete zobrazit. Sloupec **nemodelovaná data** zobrazuje data ze zařízení, která neodpovídají žádné definici vlastnosti nebo telemetrie v šabloně zařízení.
 
 ## <a name="telemetry"></a>Telemetrie
 

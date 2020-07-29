@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: ad5ed2b45a182c1f33f33ca1f6d4e3212c61b6a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4507b3f3338dccbf51f7342081997549e62f13fe
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82791727"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290087"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL migrace a partneři pro vývoj aplikací
 
@@ -26,7 +26,6 @@ Z NoSQL migrace do vývoje aplikací si můžete vybrat z nejrůznějších part
 |[Altoros Development LLC](https://www.altoros.com/)  |  IoT, maloobchodní prodej (inventář), architektury bez serveru NoSQL migrace, vývoj aplikací|   USA |
 |[Avanade](https://www.avanade.com/) | IoT, Retail (inventarizace), architektura bez serveru, vývoj aplikací | Rakousko, Německo, Švýcarsko, Itálie, Norsko, Španělsko, Spojené království a Kanada |
 |[Accenture](https://www.accenture.com/) | IoT, Retail (inventarizace), architektura bez serveru, vývoj aplikací |Globální|
-|[Společnosti BlueMetal](https://www.bluemetal.com/)     |  IoT, maloobchodní prodej (inventář), provozní analýza pro Enterprise & SMC, anotace obrázku AI, řízení prostředků, migrace NoSQL, vývoj aplikací     |    Severní Amerika, Asie a Tichomoří     |
 |[Capax Global LLC](https://www.capaxglobal.com/) | IoT, přizpůsobení, maloobchodní (inventář), Operational Analytics (Spark), architektura bez serveru, vývoj aplikací|    USA     |  
 | [Capgemini](https://www.capgemini.com/) | Maloobchodní (inventář), IoT, Operational Analytics (Spark), vývoj aplikací | USA, Francie, Spojené království, Nizozemsko, Finsko  |
 | [Společnost Cognizant](https://www.cognizant.com/) | IoT, přizpůsobení, maloobchodní (inventář), Operational Analytics (Spark), vývoj aplikací |USA, Kanada, Spojené království, Dánsko, Nizozemsko, Švýcarsko, Austrálie, Japonsko |
@@ -51,13 +50,12 @@ Z NoSQL migrace do vývoje aplikací si můžete vybrat z nejrůznějších part
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o některých dalších partnerech Microsoftu najdete na [partnerském webu Microsoftu](https://partner.microsoft.com/en-US/).
+Další informace o některých dalších partnerech Microsoftu najdete na [partnerském webu Microsoftu](https://partner.microsoft.com/).
 
 <!--Image references-->
 [2]: ./media/partners-migration-cosmosdb/striim_logo.png
 [3]: ./media/partners-migration-cosmosdb/altoros_logo.png
 [4]: ./media/partners-migration-cosmosdb/attunix_logo.png
-[5]: ./media/partners-migration-cosmosdb/bluemetal_logo.png
 [6]: ./media/partners-migration-cosmosdb/capaxglobal_logo.png
 [7]: ./media/partners-migration-cosmosdb/coeo_logo.png
 [8]: ./media/partners-migration-cosmosdb/infosys_logo.png

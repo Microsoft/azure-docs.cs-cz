@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: fbcec1ace45927561c56449cd8ca0c8d3306b3bd
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 8408025478e2776423b0d1f10cc70828e408f87e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986279"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290094"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Autorizace přístupu k databázi SQL Database, spravované instanci SQL a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -110,7 +110,7 @@ V tuto chvíli je váš server nebo spravovaná instance nakonfigurovaný jenom 
   V hlavní databázi vytvořte přihlašovací údaje SQL. Pak vytvořte uživatelský účet v každé databázi, ke které uživatel potřebuje přístup, a přiřaďte k tomuto přihlašovacímu účtu uživatelský účet. Tento přístup je preferovaný, když uživatel musí mít přístup k několika databázím a chcete uchovat hesla synchronizované. Tento přístup ale má při použití s geografickou replikací složité, protože přihlašovací jméno musí být vytvořené na primárním i sekundárním serveru. Další informace najdete v tématu [Konfigurace a Správa zabezpečení Azure SQL Database pro geografické obnovení nebo převzetí služeb při selhání](active-geo-replication-security-configure.md).
 - **Vytvoření uživatelského účtu**
 
-  Vytvořte uživatelský účet v databázi, ke kterému uživatel potřebuje přístup (označovaný také jako [zahrnutý uživatel](/sql/relational-databases/security/contained-database-users-making-your-database-portable).
+  Vytvořte uživatelský účet v databázi, ke kterému uživatel potřebuje přístup (označovaný také jako [zahrnutý uživatel](/sql/relational-databases/security/contained-database-users-making-your-database-portable)).
 
   - Pomocí SQL Database můžete tento typ uživatelského účtu vždycky vytvořit.
   - Pomocí spravované instance SQL podporující [objekty zabezpečení serveru Azure AD](authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities)můžete vytvářet uživatelské účty pro ověřování ve spravované instanci SQL, aniž by bylo nutné vytvořit uživatele databáze jako uživatel databáze s omezením.

@@ -8,11 +8,12 @@ ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 0eb5d9cd86be05e5ad69bc9543231987e3c1dd2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1dd6bdc66146eb7dfe155e7d1091eee5cca450a0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85799261"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290920"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Diagnostika a řešení potíží při používání sady .NET SDK služby Azure Cosmos DB
 
@@ -48,27 +49,40 @@ Podívejte se na [část problémy GitHubu](https://github.com/Azure/azure-cosmo
 * V důsledku nedostatku prostředků na klientském počítači se můžete setkat s problémy s připojením nebo dostupností. Doporučujeme monitorovat využití CPU na uzlech, na kterých běží klient Azure Cosmos DB, a při vysokém zatížení se škálováním na více instancí.
 
 ### <a name="check-the-portal-metrics"></a>Kontrolovat metriky portálu
-Kontrola [metrik portálu](monitor-accounts.md) vám pomůže určit, jestli se jedná o problém na straně klienta, nebo jestli došlo k potížím se službou. Pokud například metriky obsahují vysokou míru omezeného počtu požadavků (kód stavu HTTP 429), což znamená, že požadavek je omezený, zkontrolujte, že je [Počet požadavků příliš velký] . 
+Kontrola [metrik portálu](monitor-accounts.md) vám pomůže určit, jestli se jedná o problém na straně klienta, nebo jestli došlo k potížím se službou. Pokud například metriky obsahují vysokou míru omezeného počtu požadavků (kód stavu HTTP 429), což znamená, že požadavek je omezený, zkontrolujte, že je [Počet požadavků příliš velký](troubleshoot-request-rate-too-large.md) . 
 
-### <a name="requests-timeouts"></a><a name="request-timeouts"></a>Vypršení časových limitů požadavků
-K RequestTimeout obvykle dochází při použití Direct/TCP, ale může se stát v režimu brány. Tyto chyby jsou běžné známé příčiny a návrhy, jak problém vyřešit.
+## <a name="common-error-status-codes"></a>Běžné chybové kódy stavu<a id="error-codes"></a>
 
-* Využití procesoru je vysoké, což způsobí latenci nebo časový limit požadavku. Zákazník může škálovat hostitelský počítač, aby získal více prostředků, nebo může být zatížení distribuováno do více počítačů.
-* Dostupnost soketu/portu může být nízká. Při spuštění v Azure můžou klienti, kteří používají .NET SDK, dosáhnout vyčerpání portů Azure SNAT (PAT). Chcete-li snížit riziko, že se na tento problém zasáhne, použijte nejnovější verzi 2. x nebo 3. x sady .NET SDK. Toto je příklad, proč se doporučuje vždy spustit nejnovější verzi sady SDK.
-* Vytvoření více instancí DocumentClient může vést k potížím s vypršením sporů a s časovým limitem. Postupujte podle [tipů ke zvýšení výkonu](performance-tips.md)a v celém procesu použijte jednu instanci DocumentClient.
-* Uživatelům se někdy zobrazuje zvýšené latence nebo časový limit požadavku, protože jejich kolekce jsou nedostatečně zřízené, požadavky na omezení back-endu a interní opakované pokusy klienta. Ověřte [metriky portálu](monitor-accounts.md).
-* Azure Cosmos DB distribuuje celkovou zřízenou propustnost rovnoměrně napříč fyzickými oddíly. Zkontrolujte metriky portálu, abyste zjistili, jestli úloha nenalezne [klíč oddílu](partition-data.md)s příchodem. Tato akce způsobí, že agregovaná spotřebovaný propustnost (RU/s) bude pravděpodobně pod zřízeným Ruem, ale propustnost (RU/s), která byla využita v jednom oddílu, bude přesáhnout zřízenou propustnost. 
-* Sada SDK 2,0 navíc přidává sémantiku kanálu k přímým nebo TCP připojením. Jedno připojení TCP se používá pro více požadavků současně. To může v určitých případech vést k dvěma problémům:
-    * Vysoká míra souběžnosti může vést k kolizí na kanálu.
-    * Velké žádosti nebo odpovědi mohou vést k blokování na úrovni řádků a exacerbate, a to i s poměrně nízkou mírou souběžnosti.
-    * Pokud případ spadá do některé z těchto dvou kategorií (nebo pokud je podezření na vysoké využití procesoru), jsou to možné zmírnění:
-        * Zkuste aplikaci škálovat nebo zmenšit.
-        * Kromě toho se protokoly SDK dají zachytit prostřednictvím [naslouchacího procesu trasování](https://github.com/Azure/azure-cosmosdb-dotnet/blob/master/docs/documentdb-sdk_capture_etl.md) a získat tak další podrobnosti.
+| Stavový kód | Popis | 
+|----------|-------------|
+| 400 | Chybný požadavek (závisí na chybové zprávě)| 
+| 401 | [Neautorizováno](troubleshoot-unauthorized.md) | 
+| 404 | [Prostředek se nenašel.](troubleshoot-not-found.md) |
+| 408 | [Vypršel časový limit žádosti.](troubleshoot-dot-net-sdk-request-timeout.md) |
+| 409 | Selhání konfliktu nastane, pokud je ID poskytnuté pro prostředek operace zápisu pořízeno existujícím prostředkem. K vyřešení tohoto problému použijte jiné ID prostředku, protože ID musí být jedinečné ve všech dokumentech se stejnou hodnotou klíče oddílu. |
+| 410 | Zmizely výjimky (přechodná chyba, která by neměla porušovat smlouvu SLA) |
+| 412 | Podmínkou chyby je, že operace určila eTag, která se liší od verze, která je k dispozici na serveru. Je to optimistická chyba souběžnosti. Po načtení nejnovější verze prostředku a aktualizaci značky ETag v požadavku zkuste požadavek zopakovat.
+| 413 | [Entita požadavku je příliš velká.](concepts-limits.md#per-item-limits) |
+| 429 | [Příliš mnoho žádostí](troubleshoot-request-rate-too-large.md) |
+| 449 | Přechodná chyba, ke které dochází pouze při operacích zápisu a je bezpečné ji opakovat |
+| 500 | Operace se nezdařila z důvodu neočekávané chyby služby. Obraťte se na podporu. Viz část podání [problému podpory Azure](https://aka.ms/azure-support). |
+| 503 | [Nedostupná služba](troubleshoot-service-unavailable.md) | 
+
+### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Vyčerpání portů Azure SNAT (PAT)
+
+Pokud je vaše aplikace nasazená v [Azure Virtual Machines bez veřejné IP adresy](../load-balancer/load-balancer-outbound-connections.md), ve výchozím nastavení [porty Azure SNAT](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) naváže připojení ke koncovému bodu mimo váš virtuální počítač. Počet připojení povolených z virtuálního počítače do koncového bodu Azure Cosmos DB je omezen [konfigurací Azure SNAT](../load-balancer/load-balancer-outbound-connections.md#preallocatedports). Tato situace může vést k omezení připojení, ukončení připojení nebo výše uvedeným [časovým limitům požadavků](troubleshoot-dot-net-sdk-request-timeout.md).
+
+ Porty Azure SNAT se používají jenom v případě, že váš virtuální počítač má privátní IP adresu, která se připojuje k veřejné IP adrese. Omezení Azure SNAT (za předpokladu, že už v celé aplikaci používáte jednu instanci klienta) se vyhnete dvěma řešením:
+
+* Přidejte koncový bod služby Azure Cosmos DB do podsítě vaší virtuální sítě Azure Virtual Machines. Další informace najdete v tématu [koncové body služby Azure Virtual Network](../virtual-network/virtual-network-service-endpoints-overview.md). 
+
+    Pokud je povolen koncový bod služby, žádosti již nejsou odesílány z veřejné IP adresy do Azure Cosmos DB. Místo toho se pošle identita virtuální sítě a podsítě. Tato změna může vést k poklesu brány firewall, pokud jsou povolené jenom veřejné IP adresy. Pokud používáte bránu firewall a povolíte koncový bod služby, přidejte do brány firewall podsíť pomocí [Virtual Network ACL](../virtual-network/virtual-networks-acl.md).
+* Přiřaďte [k virtuálnímu počítači Azure veřejnou IP adresu](../load-balancer/troubleshoot-outbound-connection.md#assignilpip).
 
 ### <a name="high-network-latency"></a><a name="high-network-latency"></a>Vysoká latence sítě
 Vysoká latence sítě se dá identifikovat pomocí [diagnostického řetězce](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?view=azure-dotnet) v sadě v2 SDK nebo v [Diagnostics](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?view=azure-dotnet#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics) v sadě V3 SDK.
 
-Pokud nejsou k dispozici žádné [časové limity](#request-timeouts) a diagnostika zobrazí jednotlivé požadavky, u kterých je vysoká latence zřejmá na rozdíl mezi `ResponseTime` a `RequestStartTime` , například (>300 milisekund v tomto příkladu):
+Pokud nejsou k dispozici žádné [časové limity](troubleshoot-dot-net-sdk-request-timeout.md) a diagnostika zobrazí jednotlivé požadavky, u kterých je vysoká latence zřejmá na rozdíl mezi `ResponseTime` a `RequestStartTime` , například (>300 milisekund v tomto příkladu):
 
 ```bash
 RequestStartTime: 2020-03-09T22:44:49.5373624Z, RequestEndTime: 2020-03-09T22:44:49.9279906Z,  Number of regions attempted:1
@@ -84,59 +98,18 @@ Tato latence může mít několik příčin:
     * Povolí [akcelerované síťové služby na stávajícím virtuálním počítači](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms).
     * Zvažte použití [vyššího koncového virtuálního počítače](../virtual-machines/windows/sizes.md).
 
-### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Vyčerpání portů Azure SNAT (PAT)
-
-Pokud je vaše aplikace nasazená v [Azure Virtual Machines bez veřejné IP adresy](../load-balancer/load-balancer-outbound-connections.md), ve výchozím nastavení [porty Azure SNAT](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) naváže připojení ke koncovému bodu mimo váš virtuální počítač. Počet připojení povolených z virtuálního počítače do koncového bodu Azure Cosmos DB je omezen [konfigurací Azure SNAT](../load-balancer/load-balancer-outbound-connections.md#preallocatedports). Tato situace může vést k omezení připojení, ukončení připojení nebo výše uvedeným [časovým limitům požadavků](#request-timeouts).
-
- Porty Azure SNAT se používají jenom v případě, že váš virtuální počítač má privátní IP adresu, která se připojuje k veřejné IP adrese. Omezení Azure SNAT (za předpokladu, že už v celé aplikaci používáte jednu instanci klienta) se vyhnete dvěma řešením:
-
-* Přidejte koncový bod služby Azure Cosmos DB do podsítě vaší virtuální sítě Azure Virtual Machines. Další informace najdete v tématu [koncové body služby Azure Virtual Network](../virtual-network/virtual-network-service-endpoints-overview.md). 
-
-    Pokud je povolen koncový bod služby, žádosti již nejsou odesílány z veřejné IP adresy do Azure Cosmos DB. Místo toho se pošle identita virtuální sítě a podsítě. Tato změna může vést k poklesu brány firewall, pokud jsou povolené jenom veřejné IP adresy. Pokud používáte bránu firewall a povolíte koncový bod služby, přidejte do brány firewall podsíť pomocí [Virtual Network ACL](../virtual-network/virtual-networks-acl.md).
-* Přiřaďte [k virtuálnímu počítači Azure veřejnou IP adresu](../load-balancer/troubleshoot-outbound-connection.md#assignilpip).
-
-### <a name="http-proxy"></a>Proxy server HTTP
-Pokud používáte proxy server HTTP, ujistěte se, že může podporovat počet připojení nakonfigurovaných v sadě SDK `ConnectionPolicy` .
-Jinak čelíte problémům s připojením.
-
-### <a name="request-rate-too-large"></a><a name="request-rate-too-large"></a>Příliš velký počet požadavků
-"Počet požadavků je moc velký" nebo kód chyby 429 označuje, že vaše požadavky jsou omezené, protože spotřebované propustnosti (RU/s) překročila [zřízenou propustnost](set-throughput.md). Sada SDK bude automaticky opakovat požadavky na základě zadaných [zásad opakování](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions?view=azure-dotnet). Pokud se toto selhání často dostanou, zvažte zvýšení propustnosti kolekce. Zkontrolujte [metriky na portálu](use-metrics.md) , abyste viděli, jestli se vám zobrazují chyby 429. Zkontrolujte [klíč oddílu](partitioning-overview.md#choose-partitionkey) a ujistěte se, že je výsledkem ještě distribuce úložiště a objemu požadavků. 
-
 ### <a name="slow-query-performance"></a>Pomalý výkon dotazů
 [Metrika dotazu](sql-api-query-metrics.md) vám pomůže určit, kde je dotaz ve většině případů útrat. Z metriky dotazu vidíte, kolik z nich je stráveno na back-endu a klientovi.
 * Pokud se back-end dotaz rychle vrátí, a při kontrole zatížení počítače stráví na klientovi velký čas. Pravděpodobně není dostatek prostředků a sada SDK čeká, až budou prostředky k dispozici pro zpracování odpovědi.
 * Pokud je back-endové dotaz pomalý, zkuste [optimalizovat dotaz](optimize-cost-queries.md) a podívat se na aktuální [zásady indexování](index-overview.md) . 
 
-### <a name="http-401-the-mac-signature-found-in-the-http-request-is-not-the-same-as-the-computed-signature"></a>HTTP 401: podpis MAC nalezený v požadavku HTTP není stejný jako vypočítaný podpis.
-Pokud se vám zobrazila následující chybová zpráva 401: Podpis MAC v požadavku HTTP neodpovídá vypočítanému podpisu, může to být způsobeno následujícími scénáři.
+## <a name="next-steps"></a>Další kroky
 
-1. Došlo k obměně klíče, která se neřídila [osvědčenými postupy](secure-access-to-data.md#key-rotation). Toto je obvyklá příčina. Obměna klíčů účtu Cosmos DB může v závislosti na velikosti účtu Cosmos DB trvat od několika sekund až po několik dnů.
-   1. K chybě 401 kvůli podpisu MAC dochází krátce po obměně klíčů a nakonec k ní přestane docházet bez nutnosti provádět jakékoli změny. 
-1. Klíč je v aplikaci chybně nakonfigurovaný, takže neodpovídá účtu.
-   1. K problému s chybou 401 kvůli podpisu MAC bude docházet konzistentně u všech volání.
-1. Aplikace používá [klíče jen pro čtení](secure-access-to-data.md#master-keys) pro operace zápisu.
-   1. K problému s chybou 401 kvůli podpisu MAC dojde pouze tehdy, když aplikace bude odesílat požadavky na zápis, ale požadavky na čtení proběhnou úspěšně.
-1. Při vytváření kontejneru dochází ke konfliktu časování. Instance aplikace se pokouší získat přístup ke kontejneru před dokončením jeho vytváření. Nejběžnějším scénářem je, když je aplikace spuštěná a přitom dojde k odstranění kontejneru a jeho opětovnému vytvoření se stejným názvem. Sada SDK se pokusí použít nový kontejner, ale vytváření kontejneru stále probíhá, takže nemá klíče.
-   1. K problému s chybou 401 kvůli podpisu MAC dochází krátce po vytvoření kontejneru a trvá pouze do dokončení vytváření kontejneru.
- 
- ### <a name="http-error-400-the-size-of-the-request-headers-is-too-long"></a>Chyba protokolu HTTP 400. Velikost hlaviček požadavku je příliš dlouhá.
- Velikost záhlaví se zvětšila na velkou a překračuje maximální povolenou velikost. Vždycky se doporučuje použít nejnovější sadu SDK. Ujistěte se, že používáte aspoň verzi [3. x](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/changelog.md) nebo [2. x](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/changelog.md), která do zprávy výjimky přidá trasování velikosti hlavičky.
-
-Mít
- 1. Token relace se zvětšil příliš velký. Token relace roste jako počet oddílů, které se v kontejneru zvyšují.
- 2. Token pro pokračování byl nárůst na velká. Různé dotazy budou mít různé velikosti tokenů pro pokračování.
- 3. Je to způsobeno kombinací tokenu relace a tokenu pokračování.
-
-Řešení:
-   1. Postupujte podle [tipů k výkonu](performance-tips.md) a převeďte aplikaci na režim připojení Direct + TCP. Přímý a TCP nemá omezení velikosti záhlaví, jako je HTTP, což tomuto problému zabrání.
-   2. Pokud je token relace příčinou, pak je dočasné zmírnění restartování aplikace. Restartování instance aplikace obnoví token relace. Pokud se výjimky zastaví po restartu, potvrdí to příčinu tokenu relace. Nakonec se zvětší zpátky na velikost, která způsobí výjimku.
-   3. Pokud aplikace nemůže být převedena na přímý + TCP a token relace je příčinou, je možné zmírnit jejich zmírnění změnou [úrovně konzistence](consistency-levels.md)klienta. Token relace se používá pouze pro konzistenci relací, což je výchozí hodnota pro Cosmos DB. Žádná jiná úroveň konzistence nebude používat token relace. 
-   4. Pokud aplikaci nelze převést na přímý + TCP a token pro pokračování je příčinou, pak zkuste nastavit možnost ResponseContinuationTokenLimitInKb. Možnost lze najít v FeedOptions pro v2 nebo QueryRequestOptions v v3.
+* Informace o zásadách výkonu pro [.NET V3](performance-tips-dotnet-sdk-v3-sql.md) a [.NET v2](performance-tips.md)
+* Další informace o sadách [Java SDK založených na reaktorech](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md)
 
  <!--Anchors-->
 [Common issues and workarounds]: #common-issues-workarounds
 [Enable client SDK logging]: #logging
-[Příliš velký počet požadavků]: #request-rate-too-large
-[Request Timeouts]: #request-timeouts
 [Azure SNAT (PAT) port exhaustion]: #snat
 [Production check list]: #production-check-list

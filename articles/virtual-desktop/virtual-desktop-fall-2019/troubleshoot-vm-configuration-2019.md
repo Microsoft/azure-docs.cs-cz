@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s hostitelem relace virtuálních počítačů s Windows je 2019 – Azure
-description: Jak vyřešit problémy při konfiguraci virtuálních počítačů hostitele relace virtuálních počítačů s Windows.
+title: Řešení potíží s hostitelem relace virtuálních počítačů s Windows (Classic) – Azure
+description: Jak vyřešit problémy při konfiguraci virtuálních počítačů hostitelů relací Windows Virtual Desktop (Classic)
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b2f4a288ab83ca9f20434c55a180c2d9b30be5d4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0155c9cf6b5d9df8a6a8831896093c4c6b074cd6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527655"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291261"
 ---
-# <a name="troubleshoot-session-host-virtual-machine-configuration"></a>Řešení potíží s konfigurací virtuálního počítače hostitele relace
+# <a name="windows-virtual-desktop-classic-session-host-virtual-machine-configuration"></a>Konfigurace virtuálního počítače hostitele relace virtuálních počítačů s Windows (Classic)
 
 >[!IMPORTANT]
->Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objekty virtuálních klientů Windows, které byly zavedeny v aktualizaci jarní 2020, přečtěte si [Tento článek](../troubleshoot-vm-configuration.md).
+>Tento obsah se vztahuje na virtuální plochu Windows (Classic), která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objektů virtuálních klientů Windows, přečtěte si [Tento článek](../troubleshoot-vm-configuration.md).
 
 Tento článek použijte k řešení problémů, které máte při konfiguraci virtuálních počítačů hostitele relace virtuálních počítačů (VM) Windows.
 

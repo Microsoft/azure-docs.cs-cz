@@ -4,12 +4,12 @@ description: Nejčastější dotazy týkající se Service Fabric, včetně mož
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 056ff2475e0ae8c78887e24e07a3e33f12d7df88
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1655a8ed03b1f678cc5dba0a165e0bcca1d2517a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258936"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292853"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Nejčastější dotazy ke službě Service Fabric
 
@@ -28,7 +28,7 @@ Pokud váš cluster stále využívá vlastnost s klasickým kryptografickým ot
 
 ### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions-or-my-own-datacenters"></a>Můžu vytvořit cluster, který zahrnuje několik oblastí Azure nebo vlastní datová centra?
 
-Ano. 
+Yes. 
 
 Technologie clusteringu na základní Service Fabric se dá použít ke kombinování počítačů běžících kdekoli na světě, pokud mají navzájem připojení k síti. Sestavení a spuštění takového clusteru ale může být složité.
 
@@ -36,7 +36,7 @@ Pokud vás zajímá tento scénář, doporučujeme vám, abyste se dostali v kon
 
 Zvažte několik věcí, které je potřeba vzít v úvahu: 
 
-1. Prostředek clusteru Service Fabric v Azure je dnes regionální, jako je služba Virtual Machine Scale Sets, na které je cluster integrovaný. To znamená, že v případě regionálního selhání může dojít ke ztrátě schopnosti spravovat cluster prostřednictvím Azure Resource Manager nebo Azure Portal. K tomu může dojít i v případě, že cluster zůstává spuštěný a vy budete moct s ním pracovat přímo. Kromě toho Azure ještě nenabízí možnost mít jednu virtuální síť, která je použitelná v různých oblastech. To znamená, že cluster s více oblastmi v Azure vyžaduje buď [veřejné IP adresy pro každý virtuální počítač ve VM Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) nebo [bráně Azure VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md). Tyto možnosti sítě mají různé dopady na náklady, výkon a určitý návrh aplikace, takže je nutné provést pečlivou analýzu a plánování před tím, než takové prostředí sestaví.
+1. Prostředek clusteru Service Fabric v Azure je dnes regionální, jako je služba Virtual Machine Scale Sets, na které je cluster integrovaný. To znamená, že v případě regionálního selhání může dojít ke ztrátě schopnosti spravovat cluster prostřednictvím Azure Resource Manager nebo Azure Portal. K tomu může dojít i v případě, že cluster zůstává spuštěný a vy budete moct s ním pracovat přímo. Kromě toho Azure ještě nenabízí možnost mít jednu virtuální síť, která je použitelná v různých oblastech. To znamená, že cluster s více oblastmi v Azure vyžaduje buď [veřejné IP adresy pro každý virtuální počítač ve službě Virtual Machine Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) nebo [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md). Tyto možnosti sítě mají různé dopady na náklady, výkon a určitý návrh aplikace, takže je nutné provést pečlivou analýzu a plánování před tím, než takové prostředí sestaví.
 2. Údržba, Správa a monitorování těchto počítačů se můžou stát složitě, _zejména v případě_ , že jsou rozložená mezi různými poskytovateli cloudu nebo mezi místními prostředky a Azure. Před spuštěním produkčních úloh v takovém prostředí je třeba dbát na to, aby se zajistilo, že upgrady, monitorování, Správa a diagnostika jsou srozumitelné pro cluster i aplikace. Pokud již máte zkušenosti s řešením těchto problémů v Azure nebo v rámci vašich vlastních Datacenter, je pravděpodobně vhodné použít stejná řešení při sestavování nebo spouštění clusteru Service Fabric. 
 
 ### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Budou uzly Service Fabric automaticky dostávat aktualizace operačního systému?
@@ -59,7 +59,7 @@ V tuto chvíli existují další problémy s velkými sadami škálování virtu
 
 Minimální podporovaná velikost pro Service Fabric cluster s produkčními úlohami je pět uzlů. Pro scénáře vývoje podporujeme jeden uzel (optimalizovaný pro rychlé vývojové prostředí v rámci sady Visual Studio) a pět clusterů uzlů.
 
-Pro následující tři důvody potřebujeme, aby měl provozní cluster minimálně 5 uzlů:
+Pro následující tři důvody potřebujeme, aby měl provozní cluster aspoň pět uzlů:
 1. I když nejsou spuštěny žádné uživatelské služby, Cluster Service Fabric spouští sadu stavových služeb, včetně služby pojmenování a služby správce převzetí služeb při selhání. Tyto systémové služby jsou nezbytné pro to, aby cluster zůstal v provozu.
 2. Vždycky ukládáme jednu repliku služby na uzel, takže velikost clusteru je horním limitem počtu replik, které služba (ve skutečnosti oddíl) může mít.
 3. Vzhledem k tomu, že upgrade clusteru bude obsahovat alespoň jeden uzel, chceme mít vyrovnávací paměť aspoň jeden uzel. proto chceme, aby měl provozní cluster *kromě* minimálního minima aspoň dva uzly. Minimální hodnota je velikost kvora systémové služby, jak je vysvětleno níže.  
@@ -84,7 +84,7 @@ U produkčních úloh musíte být odolné vůči současnému selhání minimá
 
 ### <a name="can-i-turn-off-my-cluster-at-nightweekends-to-save-costs"></a>Můžu svůj cluster vypnout v noci nebo víkendech, abyste ušetřili náklady?
 
-Obecně to možné není. Service Fabric ukládá stav na místních, dočasných discích, což znamená, že pokud se virtuální počítač přesune na jiného hostitele, data se s ním nepřesunou. Při běžném provozu to není problém, protože nový uzel je aktualizován jinými uzly. Pokud ale zastavíte všechny uzly a později je restartujete, je důležité mít možnost, že většina uzlů začíná na nových hostitelích a systém nemůže obnovit.
+Obecně to možné není. Service Fabric ukládá stav na místních, dočasných discích, což znamená, že pokud se virtuální počítač přesune na jiného hostitele, data se s ním nepřesunou. Nejedná se o problém, protože nový uzel je v normálním provozu v aktuálním stavu podle jiných uzlů. Pokud ale zastavíte všechny uzly a později je restartujete, je důležité mít možnost, že většina uzlů začíná na nových hostitelích a systém nemůže obnovit.
 
 Pokud chcete vytvořit clustery pro testování aplikace před jejím nasazením, doporučujeme tyto clustery dynamicky vytvářet jako součást [kanálu průběžné integrace nebo průběžného nasazování](service-fabric-tutorial-deploy-app-with-cicd-vsts.md).
 
@@ -94,7 +94,7 @@ Pokud chcete vytvořit clustery pro testování aplikace před jejím nasazením
 V současné době pracujeme na vylepšeném prostředí, ale zodpovídáte za upgrade. Bitovou kopii operačního systému musíte upgradovat na virtuálních počítačích clusteru na jednom virtuálním počítači v daném okamžiku. 
 
 ### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>Můžu šifrovat připojené datové disky v typu uzlu clusteru (sada škálování virtuálního počítače)?
-Ano.  Další informace najdete v tématu [Vytvoření clusteru s připojenými datovými disky](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks) a [Azure Disk Encryption pro Virtual Machine Scale Sets](../virtual-machine-scale-sets/disk-encryption-overview.md).
+Yes.  Další informace najdete v tématu [Vytvoření clusteru s připojenými datovými disky](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks) a [Azure Disk Encryption pro Virtual Machine Scale Sets](../virtual-machine-scale-sets/disk-encryption-overview.md).
 
 ### <a name="can-i-use-low-priority-vms-in-a-cluster-node-type-virtual-machine-scale-set"></a>Je možné použít virtuální počítače s nízkou prioritou v typu uzlu clusteru (sada škálování virtuálního počítače)?
 Ne. Virtuální počítače s nízkou prioritou se nepodporují. 
@@ -122,11 +122,11 @@ Ne. Virtuální počítače s nízkou prioritou se nepodporují.
 | FabricRM.exe |
 | FileStoreService.exe |
  
-### <a name="how-can-my-application-authenticate-to-keyvault-to-get-secrets"></a>Jak se dá aplikace ověřovat do trezoru klíčů, aby získala tajné kódy?
-Níže jsou uvedené možnosti pro vaši aplikaci k získání přihlašovacích údajů pro ověřování do trezoru klíčů:
+### <a name="how-can-my-application-authenticate-to-key-vault-to-get-secrets"></a>Jak se má aplikace ověřit, aby Key Vaulta získání tajných kódů?
+Níže jsou uvedené možnosti pro vaši aplikaci k získání přihlašovacích údajů pro ověřování Key Vault:
 
-A. Během sestavování/balení vaší aplikace můžete načíst certifikát do balíčku dat aplikace SF a použít ho k ověření do trezoru klíčů.
-B. Pro hostitele s podporou MSI sady škálování pro virtuální počítače můžete vyvinout jednoduché prostředí PowerShell SetupEntryPoint pro vaši aplikaci SF a získat [přístupový token z koncového bodu MSI](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)a pak [načíst tajné kódy z trezoru klíčů](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret).
+A. Během sestavování/balení vaší aplikace můžete načíst certifikát do balíčku dat aplikace SF a použít ho k ověření Key Vault.
+B. Pro hostitele s podporou MSI sady škálování pro virtuální počítače můžete vyvinout jednoduché prostředí PowerShell SetupEntryPoint pro vaši aplikaci SF a získat [přístupový token z koncového bodu MSI](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)a pak [načíst tajné kódy z Key Vault](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret).
 
 ## <a name="application-design"></a>Návrh aplikace
 
@@ -155,7 +155,7 @@ Předpokládejme například, že máte v rámci služby spolehlivou kolekci s 1
 
 Mějte na paměti, že každý objekt musí být uložen třikrát (jedna primární a druhá replika), měli byste mít dostatek paměti pro přibližně 35 000 000 objektů v kolekci, pokud pracujete s plnou kapacitou. Doporučujeme však, abyste nepřišli o souběžnou ztrátu domény selhání a upgradovací domény, která představuje přibližně 1/3 kapacity a snížila číslo přibližně na 23 000 000.
 
-Všimněte si, že tento výpočet také předpokládá:
+Tento výpočet také předpokládá:
 
 - Rozdělení dat mezi oddíly je zhruba rovnoměrné nebo že se metriky zatížení hlásí do clusteru Správce prostředků. Ve výchozím nastavení Service Fabric načítá rovnováhu na základě počtu replik. V předchozím příkladu by se do každého uzlu v clusteru vložily 10 primárních replik a 20 sekundárních replik. To funguje dobře pro zatížení, které je rovnoměrně distribuováno napříč oddíly. Pokud zatížení ještě není, musíte vykázat zatížení, aby Správce prostředků mohl zabalit menší repliky společně a umožnit větším replikám využívat více paměti na jednotlivých uzlech.
 
@@ -166,6 +166,12 @@ Všimněte si, že tento výpočet také předpokládá:
 ### <a name="how-much-data-can-i-store-in-an-actor"></a>Kolik dat je možné uložit v objektu actor?
 
 Stejně jako u spolehlivých služeb je množství dat, které můžete ukládat ve službě objektu actor, omezené jenom z celkového místa na disku a paměti dostupné napříč uzly v clusteru. Jednotlivé objekty actor jsou však nejefektivnější, pokud jsou použity k zapouzdření malého množství stavu a přidružené obchodní logiky. V rámci obecného pravidla by měl mít jednotlivec actor stav, který se měří v kilobajtech.
+
+
+### <a name="where-does-azure-service-fabric-resource-provider-store-customer-data"></a>Kam poskytovatel prostředků Azure Service Fabric ukládá zákaznická data?
+
+Poskytovatel prostředků Azure Service Fabric nepřesouvá ani neukládá zákaznická data mimo oblast, ve které je nasazená.
+
 
 ## <a name="other-questions"></a>Další dotazy
 

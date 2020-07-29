@@ -4,16 +4,16 @@ description: Tento článek poskytuje pokyny k povolení Microsoft Azureho šifr
 author: msmbaldwin
 ms.service: virtual-machines-windows
 ms.subservice: security
-ms.topic: article
+ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: edc52198208aa86772704bde7637a2801688da59
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b2a8d552a2b9a1d6d3bb02bf02be95af031a5e4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036127"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291968"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Scénáře služby Azure Disk Encryption na virtuálních počítačích s Windows
 
@@ -140,6 +140,33 @@ V následující tabulce jsou uvedeny parametry šablon Správce prostředků pr
 | resizeOSDisk | Měl by se změnit velikost oddílu operačního systému tak, aby zabírala plný virtuální pevný disk s operačním systémem, než se rozdělí systémový svazek. |
 | location | Umístění pro všechny prostředky |
 
+## <a name="enable-encryption-on-nvme-disks-for-lsv2-vms"></a>Povolení šifrování na discích s NVMe pro virtuální počítače s Lsv2
+
+Tento scénář popisuje povolení Azure Disk Encryption na discích s NVMe pro virtuální počítače Lsv2 Series.  Lsv2-Series nabízí místní úložiště NVMe. Místní disky NVMe jsou dočasné a data se na těchto discích ztratí, když virtuální počítač zastavíte nebo zrušíte jeho přidělení (viz: [Lsv2-Series](../lsv2-series.md)).
+
+Povolení šifrování na NVMe discích:
+
+1. Inicializujte disky NVMe a vytvořte svazky NTFS.
+1. Povolte na virtuálním počítači šifrování s parametrem VolumeType nastaveným na vše. Tím se povolí šifrování pro všechny disky s operačním systémem a datové disky, včetně svazků zálohovaných NVMe disky. Informace najdete v tématu [povolení šifrování na stávajícím nebo spuštěném virtuálním počítači s Windows](#enable-encryption-on-an-existing-or-running-windows-vm).
+
+Šifrování na discích s NVMe bude zachováno v následujících situacích:
+- Restartování virtuálního počítače
+- VMSS obnovení obrazu
+- Prohození operačního systému
+
+NVMe disky budou neinicializované v následujících scénářích:
+
+- Spustit virtuální počítač po zrušení přidělení
+- Služba – opravit
+- Backup
+
+V těchto scénářích je potřeba inicializovat disky NVMe po spuštění virtuálního počítače. Pokud chcete povolit šifrování na discích NVMe, spusťte příkaz, který povolí Azure Disk Encryption znovu po inicializaci disků NVMe.
+
+Kromě scénářů uvedených v části [nepodporované scénáře](#unsupported-scenarios) není šifrování disků NVMe podporováno pro:
+
+- Virtuální počítače zašifrované pomocí Azure Disk Encryption s AAD (předchozí verze)
+- NVMe disky s prostory úložiště
+- Azure Site Recovery SKU s disky NVMe (viz [matice podpory pro zotavení po havárii virtuálních počítačů Azure mezi oblastmi Azure: replikované počítače – úložiště](../../site-recovery/azure-to-azure-support-matrix.md#replicated-machines---storage)).
 
 ## <a name="new-iaas-vms-created-from-customer-encrypted-vhd-and-encryption-keys"></a>Nové virtuální počítače s IaaS vytvořené z VHD a šifrovacích klíčů šifrovaných zákazníkem
 
@@ -236,7 +263,6 @@ Azure Disk Encryption nefunguje v následujících scénářích, funkcích a te
 - Přesunutí šifrovaných virtuálních počítačů do jiného předplatného nebo oblasti.
 - Vytvoření bitové kopie nebo snímku šifrovaného virtuálního počítače a jeho použití k nasazení dalších virtuálních počítačů.
 - Virtuální počítače s Gen2 (viz: [Podpora pro virtuální počítače 2. generace v Azure](generation-2.md#generation-1-vs-generation-2-capabilities))
-- Virtuální počítače řady Lsv2 (viz: [Lsv2-Series](../lsv2-series.md))
 - Virtuální počítače řady M-Series s Akcelerátor zápisu disky.
 - Použití ADE na virtuální počítač, který má datový disk zašifrovaný pomocí [klíčů spravovaných zákazníkem](disk-encryption.md) (SSE + CMK), nebo použití SSE + CMK na datový disk na virtuálním počítači zašifrovaném pomocí ADE.
 - Migrace virtuálního počítače zašifrovaného přes ADE na [serveru pomocí klíčů spravovaných zákazníkem](disk-encryption.md).

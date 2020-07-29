@@ -1,7 +1,7 @@
 ---
 title: Ukázka skriptu Azure PowerShell – konfigurace front-endu IPv6 s Standard Load Balancer (Preview)
 titlesuffix: Azure Virtual Network
-description: Povolení koncových bodů IPv6 pomocí prostředí PowerShell v Azure Virtual Network
+description: Seznamte se s konfigurací front-endu IPv6 ve virtuální síťové skriptu pomocí Standard Load Balancer.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 2de93f66bdb2647bcc612322d90eb9197e0ad63e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 24057c494d76cf9435ed60ecf2a13db4eab36fbf
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068676"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291894"
 ---
 # <a name="configure-ipv6-frontend-in-virtual-network-script-sample-with-standard-load-balancerpreview"></a>Ukázka konfigurace protokolu IPv6 front-endu ve virtuální síťové skriptu pomocí Standard Load Balancer (Preview)
 
@@ -26,7 +26,7 @@ Skript můžete spustit ve službě Azure [Cloud Shell](https://shell.azure.com/
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Před nasazením duální aplikace stacku do Azure musíte nakonfigurovat předplatné jenom jednou pro tuto funkci verze Preview pomocí následujících Azure PowerShell:
 
 Zaregistrujte se následujícím způsobem:

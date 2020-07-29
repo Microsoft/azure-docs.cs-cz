@@ -1,6 +1,6 @@
 ---
 title: DPDK na virtuálním počítači Azure Linux | Microsoft Docs
-description: Přečtěte si, jak nastavit DPDK na virtuálním počítači se systémem Linux.
+description: Seznamte se s výhodami DPDK (data Development Kit) a jak nastavit DPDK na virtuálním počítači se systémem Linux.
 services: virtual-network
 documentationcenter: na
 author: laxmanrb
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: ec117172a367d014f634106b5d2405892b80ffa7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 20f22825e6954f32d7f020dd160f36c3c1859c86
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689261"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287712"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Nastavení DPDK na virtuálním počítači se systémem Linux
 
@@ -250,7 +251,7 @@ Následující příkazy pravidelně tisknou statistiku paketů za sekundu:
 
 Pokud spouštíte předchozí příkazy na virtuálním počítači, změňte *IP_SRC_ADDR* a *IP_DST_ADDR* v systému `app/test-pmd/txonly.c` tak, aby odpovídaly skutečné IP adrese virtuálních počítačů před kompilací. V opačném případě jsou pakety vyřazeny před tím, než se dostane do serveru pro předání. Nebudete mít přístup k přesměrovanému provozu z jiného počítače, protože server pro přeposílání *testpmd* nemění adresy vrstvy 3, Pokud neprovedete nějaké změny kódu.
 
-## <a name="references"></a>Reference
+## <a name="references"></a>Odkazy
 
 * [EAL možnosti](https://dpdk.org/doc/guides/testpmd_app_ug/run_app.html#eal-command-line-options)
 * [Příkazy Testpmd](https://dpdk.org/doc/guides/testpmd_app_ug/run_app.html#testpmd-command-line-options)

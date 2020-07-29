@@ -11,12 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/31/2017
-ms.author: mikeray
-ms.openlocfilehash: d697f9edf8d5e57f051c23eaa2807704b2f7771e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: mathoma
+ms.openlocfilehash: 0b90f61bcf2698c200e16eb6f6d3fe98cc05d827
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669186"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87293076"
 ---
 # <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>Pro SQL Server zálohování a obnovení použít Azure Storage
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -46,7 +47,7 @@ Následující dvě části představují službu Azure Blob Storage, včetně p
 ## <a name="azure-blob-storage-components"></a>Komponenty služby Azure Blob Storage
 Při zálohování do úložiště objektů BLOB v Azure se použijí následující komponenty Azure.
 
-| Součást | Description |
+| Komponenta | Popis |
 | --- | --- |
 | **Účet úložiště** |Účet úložiště je výchozím bodem pro všechny služby úložiště. Pokud chcete získat přístup k úložišti objektů BLOB v Azure, vytvořte nejdřív účet Azure Storage. Další informace o službě Azure Blob Storage najdete v tématu [Jak používat úložiště objektů BLOB v Azure](https://azure.microsoft.com/develop/net/how-to-guides/blob-storage/). |
 | **Kontejner** |Kontejner poskytuje seskupení sady objektů BLOB a může ukládat neomezený počet objektů BLOB. Pokud chcete zapsat SQL Server zálohu do úložiště objektů BLOB v Azure, musíte mít vytvořený aspoň kořenový kontejner. |
@@ -55,9 +56,9 @@ Při zálohování do úložiště objektů BLOB v Azure se použijí následuj�
 ## <a name="sql-server-components"></a>SQL Server komponenty
 Při zálohování do úložiště objektů BLOB v Azure se použijí následující SQL Server komponenty.
 
-| Součást | Description |
+| Komponenta | Popis |
 | --- | --- |
-| **URL** |Adresa URL určuje identifikátor URI (Uniform Resource Identifier) pro jedinečný záložní soubor. Adresa URL slouží k poskytnutí umístění a názvu souboru zálohy SQL Server. Adresa URL musí ukazovat na skutečný objekt blob, nikoli jenom na kontejner. Pokud objekt BLOB neexistuje, vytvoří se. Pokud je zadaný existující objekt blob, zálohování se nepovede, pokud se nezadá možnost > WITH FORMAT. Následuje příklad adresy URL, kterou byste zadali v příkazu BACKUP: **http [s]://[storageaccount]. blob. Core. Windows. NET/[kontejner]/[filename. bak]**. Protokol HTTPS se doporučuje, ale není povinný. |
+| **Adresa URL** |Adresa URL určuje identifikátor URI (Uniform Resource Identifier) pro jedinečný záložní soubor. Adresa URL slouží k poskytnutí umístění a názvu souboru zálohy SQL Server. Adresa URL musí ukazovat na skutečný objekt blob, nikoli jenom na kontejner. Pokud objekt BLOB neexistuje, vytvoří se. Pokud je zadaný existující objekt blob, zálohování se nepovede, pokud se nezadá možnost > WITH FORMAT. Následuje příklad adresy URL, kterou byste zadali v příkazu BACKUP: **http [s]://[storageaccount]. blob. Core. Windows. NET/[kontejner]/[filename. bak]**. Protokol HTTPS se doporučuje, ale není povinný. |
 | **Přihlašovací údaj** |Informace, které se vyžadují pro připojení a ověření ve službě Azure Blob Storage, se ukládají jako přihlašovací údaje. Aby bylo možné SQL Server zapisovat zálohy do objektu blob Azure nebo je z něj obnovit, je nutné vytvořit SQL Server přihlašovací údaje. Další informace najdete v tématu [SQL Server přihlašovacích údajů](https://msdn.microsoft.com/library/ms189522.aspx). |
 
 > [!NOTE]

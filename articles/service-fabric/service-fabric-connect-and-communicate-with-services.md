@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: a873a32aa8c12b535c06711ea7dc7a4aa920a27f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5081ad813d871db0f60284bca4a0c53ee5bbf6b2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257761"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287755"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Připojení a komunikace se službami v Service Fabric
 V Service Fabric se služba spouští někde v clusteru Service Fabric, který se obvykle distribuuje napříč několika virtuálními počítači. Dá se přesunout z jednoho místa na jiný, buď podle vlastníka služby, nebo automaticky pomocí Service Fabric. Služby nejsou staticky vázané na konkrétní počítač nebo adresu.
@@ -58,7 +58,7 @@ Reverzní proxy adresují služby v clusteru, které zpřístupňují koncové b
 Další informace o tom, jak používat reverzní službu proxy, najdete [v článku reverzní proxy v Azure Service Fabric](service-fabric-reverseproxy.md) .
 
 ## <a name="connections-from-external-clients"></a>Připojení z externích klientů
-Služby, které se vzájemně připojují v rámci clusteru, můžou mít přímý přístup k koncovým bodům jiných služeb, protože uzly v clusteru jsou ve stejné místní síti. V některých prostředích se ale cluster může nacházet za nástrojem pro vyrovnávání zatížení, který směruje externí příchozí přenos prostřednictvím omezené sady portů. V těchto případech mohou služby vzájemně komunikovat a řešit adresy pomocí Naming Service, ale je nutné provést další kroky, aby se externí klienti mohli připojovat ke službám.
+Služby, které se vzájemně připojují v rámci clusteru, můžou mít přímý přístup k koncovým bodům jiných služeb, protože uzly v clusteru jsou ve stejné místní síti. V některých prostředích se ale cluster může nacházet za nástrojem pro vyrovnávání zatížení, který směruje příchozí přenos dat prostřednictvím omezené sady portů. V těchto případech mohou služby vzájemně komunikovat a řešit adresy pomocí Naming Service, ale je nutné provést další kroky, aby se externí klienti mohli připojovat ke službám.
 
 ## <a name="service-fabric-in-azure"></a>Service Fabric v Azure
 Cluster Service Fabric v Azure je umístěn za Azure Load Balancer. Veškerý externí provoz do clusteru musí projít nástrojem pro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení automaticky přenese příchozí provoz na daný port do náhodného *uzlu* , který má stejný port otevřený. Azure Load Balancer zná jenom porty otevřené v *uzlech*, neví o portech otevřených jednotlivými *službami*.

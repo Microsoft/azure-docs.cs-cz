@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 8a951a4920f2f80a4b9738317bdb2da96c613d53
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8d94acabb434d0e722e352de46197a86e994e145
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87013041"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290038"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Co je Automated Machine Learning (AutoML)?
 
@@ -136,7 +136,7 @@ Povolit toto nastavení pomocí:
 
 + Azure Machine Learning Studio: v části **Zobrazit další konfiguraci** povolte **Automatické featurization** [pomocí těchto kroků](how-to-use-automated-ml-for-ml-models.md#customize-featurization).
 
-+ Python SDK: zadejte `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` v objektu [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) . Přečtěte si další informace o [povolení featurization] ((postupy-konfigurace-auto-features.md). 
++ Python SDK: zadejte `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` v objektu [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) . Přečtěte si další informace o [Povolení featurization](how-to-configure-auto-features.md). 
 
 ## <a name="ensemble-models"></a><a name="ensemble"></a>Modely kompletování
 

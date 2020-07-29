@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 6452a826cfb6f7ceb65e6e89cdd42d683ee463b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9520369861623e60a0118baa20a7871437433a4b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682712"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290708"
 ---
 # <a name="technical-guide-to-the-solution-template-for-predictive-maintenance-in-aerospace"></a>Technický průvodce řešením pro prediktivní údržbu v programu Aerospace
 
@@ -57,7 +58,7 @@ Služba [centra událostí Azure](https://azure.microsoft.com/services/event-hub
 Pomocí [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) můžete poskytnout analýzy téměř v reálném čase pro vstupní datový proud ze služby [Azure Event hub](#azure-event-hub) . Výsledky pak publikujete na řídicí panel [Power BI](https://powerbi.microsoft.com) a také archivujte všechny nezpracované příchozí události do služby [Azure Storage](https://azure.microsoft.com/services/storage/) pro pozdější zpracování službou [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) .
 
 ### <a name="hdinsight-custom-aggregation"></a>Vlastní agregace HDInsight
-Spouštějte skripty pro [podregistr](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) (Orchestrované pomocí Azure Data Factory) pomocí HDInsight k poskytnutí agregací nezpracovaných událostí archivovaných pomocí prostředku Azure Stream Analytics.
+Spouštějte skripty pro [podregistr](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) (Orchestrované pomocí Azure Data Factory) pomocí HDInsight k poskytnutí agregací nezpracovaných událostí archivovaných pomocí prostředku Azure Stream Analytics.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 Předpovědi se na zbývající užitečnou životnost (RUL) konkrétního leteckého motoru pomocí vstupů přijatých ve [službě Azure Machine Learning Service](https://azure.microsoft.com/services/machine-learning/) (Orchestrované pomocí Azure Data Factory). 
@@ -112,22 +113,22 @@ Tato část popisuje potřebné [kanály a aktivity](../../data-factory/concepts
 
 ![Azure Data Factory](./media/predictive-maintenance-technical-guide/azure-data-factory.png)
 
-Dva z těchto kanálů tohoto objektu [Factory obsahují skripty](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) pro oddíly, které se používají k dělení a agregaci dat. V případě popsaných se skripty nacházejí v účtu [Azure Storage](https://azure.microsoft.com/services/storage/) vytvořeném při instalaci. Jejich umístění je: maintenancesascript \\ \\ \\ \\ podregistr Script \\ \\ (nebo https://[název vašeho řešení]. blob. Core. Windows. NET/maintenancesascript).
+Dva z těchto kanálů tohoto objektu [Factory obsahují skripty](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) pro oddíly, které se používají k dělení a agregaci dat. V případě popsaných se skripty nacházejí v účtu [Azure Storage](https://azure.microsoft.com/services/storage/) vytvořeném při instalaci. Jejich umístění je: maintenancesascript \\ \\ \\ \\ podregistr Script \\ \\ (nebo https://[název vašeho řešení]. blob. Core. Windows. NET/maintenancesascript).
 
-Podobně jako u [Azure Stream Analytics](#azure-stream-analytics-1) dotazů mají skripty v [podregistru](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) implicitní znalosti formátu příchozích dat a musí se měnit v závislosti na vašem datovém formátu.
+Podobně jako u [Azure Stream Analytics](#azure-stream-analytics-1) dotazů mají skripty v [podregistru](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) implicitní znalosti formátu příchozích dat a musí se měnit v závislosti na vašem datovém formátu.
 
 #### <a name="aggregateflightinfopipeline"></a>*AggregateFlightInfoPipeline*
-Tento [kanál](../../data-factory/concepts-pipelines-activities.md) obsahuje jednu aktivitu aktivity [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) pomocí [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , která spouští skript [podregistru](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) , který umožňuje rozdělit data vložená do [Azure Storage](https://azure.microsoft.com/services/storage/) během [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) úlohy.
+Tento [kanál](../../data-factory/concepts-pipelines-activities.md) obsahuje jednu aktivitu aktivity [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) pomocí [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , která spouští skript [podregistru](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) , který umožňuje rozdělit data vložená do [Azure Storage](https://azure.microsoft.com/services/storage/) během [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) úlohy.
 
-Skript [podregistru](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) pro tento úkol dělení na oddíly je ***AggregateFlightInfo. HQL.***
+Skript [podregistru](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) pro tento úkol dělení na oddíly je ***AggregateFlightInfo. HQL.***
 
 #### <a name="mlscoringpipeline"></a>*MLScoringPipeline*
 Tento [kanál](../../data-factory/concepts-pipelines-activities.md) obsahuje několik aktivit, jejichž konečný výsledek je předpovědi skóre z [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) experimentu přidruženého k této šabloně řešení.
 
 Mezi zahrnuté aktivity patří:
 
-* [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) aktivitu pomocí [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , který spouští skript v [podregistru](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) , aby prováděl agregace a funkce pro vývoj funkcí, které jsou nezbytné pro [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) experimentování.
-  Skript [podregistru](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) pro tento úkol dělení na oddíly je ***PrepareMLInput. HQL***.
+* [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) aktivitu pomocí [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , který spouští skript v [podregistru](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) , aby prováděl agregace a funkce pro vývoj funkcí, které jsou nezbytné pro [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) experimentování.
+  Skript [podregistru](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) pro tento úkol dělení na oddíly je ***PrepareMLInput. HQL***.
 * Aktivita [kopírování](https://msdn.microsoft.com/library/azure/dn835035.aspx) , která přesouvá výsledky z aktivity [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) do jediného objektu BLOB [Azure Storage](https://azure.microsoft.com/services/storage/) , k němuž přistupovala aktivita [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) .
 * Aktivita [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) zavolá [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) experiment s výsledky, které jsou umístěny v jednom [Azure Storage](https://azure.microsoft.com/services/storage/) objektu BLOB.
 

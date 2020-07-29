@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0efff05f84bf02908dfc8b966b80539d309f491d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f91e68ec2bd4b0b5400ee3e8e380d91ea6f31f36
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059131"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291320"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>Řešení potíží s klientem vzdálené plochy
 
@@ -64,7 +64,7 @@ Pokud se v prohlížeči spustí nebo přestane pracovat, když používáte web
 
 Nejdřív se podívejte na účet Azure Active Directory, který používáte. Pokud jste se už přihlásili pomocí jiného účtu Azure Active Directory, než který chcete použít pro virtuální počítač s Windows, měli byste buď podepsat, nebo použít soukromé okno prohlížeče.
 
-Pokud používáte verzi Windows Virtual Desktop, která je 2019, připojte se k prostředkům pomocí odkazu webový klient v [tomto článku](./virtual-desktop-fall-2019/connect-web-2019.md) .
+Pokud používáte virtuální plochu Windows (Classic), připojte se k prostředkům pomocí odkazu webový klient v [tomto článku](./virtual-desktop-fall-2019/connect-web-2019.md) .
 
 ## <a name="web-client-stops-responding-or-disconnects"></a>Webový klient přestane reagovat nebo odpojení.
 

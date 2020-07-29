@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 04a25b6b0b243744cc81c8b71a1f03e7c7375a68
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4ad0cdedfa28e5b46f77d5e87f5bd48e25f11cc4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102557"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292406"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Vysvětlení restartování virtuálních počítačů – údržba vs. výpadek
 Existují tři scénáře, které mohou vést k ovlivnění virtuálního počítače v Azure: neplánovaná údržba hardwaru, neočekávané výpadky a plánovaná údržba.
@@ -32,7 +32,7 @@ Pokud chcete snížit dopad výpadků kvůli jedné nebo několika takovým udá
 
 * [Konfigurace více virtuálních počítačů ve skupině dostupnosti pro zajištění redundance]
 * [Použití spravovaných disků pro virtuální počítače ve skupině dostupnosti]
-* [Použití naplánovaných událostí k proaktivní reakci na události s vlivem na virtuální počítače](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
+* [Použití naplánovaných událostí k proaktivní reakci na události s vlivem na virtuální počítače](../articles/virtual-machines/linux/scheduled-events.md)
 * [Konfigurace jednotlivých vrstev aplikace na samostatné skupiny dostupnosti]
 * [Kombinování Load Balancer se skupinami dostupnosti]
 * [Použití zón dostupnosti k ochraně před chybami na úrovni datacentra]
@@ -95,7 +95,7 @@ Pokud máte v úmyslu používat virtuální počítače s nespravovanými disky
 
 ## <a name="use-scheduled-events-to-proactively-respond-to-vm-impacting-events"></a>Použití naplánovaných událostí k proaktivní reakci na události s vlivem na virtuální počítače
 
-Když se přihlásíte k odběru [plánovaných událostí](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events), váš virtuální počítač se upozorní na nadcházející události údržby, které můžou mít vliv na váš virtuální počítač. Po povolení naplánovaných událostí se vašemu virtuálnímu počítači přidává minimální doba před provedením aktivity údržby. Například aktualizace operačního systému hostitele, které by mohly mít vliv na váš virtuální počítač, se zařadí do fronty jako události, které určují dopad, a také čas, kdy se údržba provede, když se neprovede žádná akce. Pokud Azure zjistí bezprostřední selhání hardwaru, které by mohlo mít vliv na váš virtuální počítač, můžete také zařadit do fronty plánované události. to vám umožní určit, kdy se má opravit. Zákazníci mohou tuto událost použít k provádění úkolů před údržbou, jako je například ukládání stavu, selhání při selhání do sekundárního a tak dále. Po dokončení logiky pro řádné zpracování události údržby můžete schválit nedokončené plánované události a povolit, aby platforma pokračovala s údržbou.
+Když se přihlásíte k odběru [plánovaných událostí](../articles/virtual-machines/linux/scheduled-events.md), váš virtuální počítač se upozorní na nadcházející události údržby, které můžou mít vliv na váš virtuální počítač. Po povolení naplánovaných událostí se vašemu virtuálnímu počítači přidává minimální doba před provedením aktivity údržby. Například aktualizace operačního systému hostitele, které by mohly mít vliv na váš virtuální počítač, se zařadí do fronty jako události, které určují dopad, a také čas, kdy se údržba provede, když se neprovede žádná akce. Pokud Azure zjistí bezprostřední selhání hardwaru, které by mohlo mít vliv na váš virtuální počítač, můžete také zařadit do fronty plánované události. to vám umožní určit, kdy se má opravit. Zákazníci mohou tuto událost použít k provádění úkolů před údržbou, jako je například ukládání stavu, selhání při selhání do sekundárního a tak dále. Po dokončení logiky pro řádné zpracování události údržby můžete schválit nedokončené plánované události a povolit, aby platforma pokračovala s údržbou.
 
 
 ## <a name="combine-a-load-balancer-with-availability-zones-or-sets"></a>Kombinování nástroje pro vyrovnávání zatížení se zónami nebo sadami dostupnosti

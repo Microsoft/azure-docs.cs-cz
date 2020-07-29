@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 07/20/2020
 ms.author: amsriva
 ms.topic: conceptual
-ms.openlocfilehash: b3e6bc6d2dd5568dcc11a37c6ab44bd3b4089c66
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 23f76f18256ecadcbef59a498292222ea358008f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067907"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290987"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Hostování více webů ve službě Application Gateway
 
@@ -40,12 +40,8 @@ Pomocí zástupného znaku v názvu hostitele můžete vyhledat více názvů ho
 >[!NOTE]
 > Tato funkce je ve verzi Preview a je dostupná jenom pro Standard_v2 a WAF_v2 SKU Application Gateway. Další informace o verzi Preview najdete v tématu věnovaném [podmínkám použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-V [Azure Portal](create-multiple-sites-portal.md)je můžete definovat v samostatných textových polích, jak je znázorněno na snímku obrazovky níže.
-
-:::image type="content" source="./media/multiple-site-overview/wildcard-listener-example.png" alt-text="Příklad konfigurace pro naslouchací proces se zástupnými znaky":::
-
 >[!NOTE]
->Pokud vytváříte nový naslouchací proces pro více webů nebo přidáte více názvů hostitelů do stávajícího naslouchacího procesu pro více webů z Azure Portal, bude ve výchozím nastavení přidána do `HostNames` parametru konfigurace naslouchacího procesu, který do stávajícího `HostName` parametru v konfiguraci přidá více možností.
+>Tato funkce je aktuálně dostupná jenom prostřednictvím [Azure PowerShell](tutorial-multiple-sites-powershell.md) a [Azure CLI](tutorial-multiple-sites-cli.md). Už brzy bude dostupná podpora portálu.
 
 V [Azure PowerShell](tutorial-multiple-sites-powershell.md)je nutné použít `-HostNames` místo `-HostName` . U názvů hostitelů můžete uvést až 5 názvů hostitelů jako hodnot oddělených čárkami a použít zástupné znaky. Například `-HostNames "*.contoso.com,*.fabrikam.com"`.
 
@@ -77,7 +73,7 @@ V rozhraní příkazového [řádku Azure](tutorial-multiple-sites-cli.md)je nut
 *   Vlastnosti "hostname" přebírají jako vstup jeden řetězec, kde můžete uvést pouze jeden název domény bez zástupných znaků a "názvy hostitelů" přebírají pole řetězců jako vstup, kde můžete uvést až 5 názvů domén se zástupnými znaky. Současně však nelze současně použít obě vlastnosti.
 *   Pomocí cílového naslouchacího procesu, který používá zástupný znak nebo více názvů hostitelů, nelze vytvořit pravidlo [přesměrování](redirect-overview.md) .
 
-Podrobný průvodce konfigurací názvů hostitelů se zástupnými znaky v rámci naslouchacího procesu pro více webů najdete v tématu [vytvoření více lokalit pomocí Azure Portal](create-multiple-sites-portal.md) nebo [použití Azure PowerShell](tutorial-multiple-sites-powershell.md) nebo [pomocí Azure CLI](tutorial-multiple-sites-cli.md) .
+Podrobný průvodce konfigurací názvů hostitelů se zástupnými znaky v rámci naslouchacího procesu pro více webů najdete v tématu [vytvoření více lokalit pomocí Azure PowerShell](tutorial-multiple-sites-powershell.md) nebo použití rozhraní příkazového [řádku Azure CLI](tutorial-multiple-sites-cli.md) .
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>Hlavičky hostitele a Identifikace názvu serveru (SNI)
 
@@ -95,6 +91,9 @@ Služba Application Gateway se při hostování více než jednoho webu na stejn
 
 ## <a name="next-steps"></a>Další kroky
 
-Po získání informací o hostování více webů si přečtěte téma [vytvoření více lokalit pomocí Azure Portal](create-multiple-sites-portal.md) nebo [pomocí Azure PowerShell](tutorial-multiple-sites-powershell.md) nebo pomocí rozhraní příkazového [řádku Azure](tutorial-multiple-sites-cli.md) , kde najdete podrobné pokyny k vytvoření Application Gateway pro hostování více webů.
+Přečtěte si, jak nakonfigurovat hostování více webů v Application Gateway
+* [Pomocí webu Azure Portal](create-multiple-sites-portal.md)
+* [Použití Azure Powershell](tutorial-multiple-sites-powershell.md) 
+* [Použití Azure CLI](tutorial-multiple-sites-cli.md)
 
 Na stránce [Šablona Resource Manageru používající hostování více webů](https://github.com/Azure/azure-quickstart-templates/blob/master/201-application-gateway-multihosting) najdete kompletní nasazení založené na šabloně.

@@ -6,18 +6,18 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: d819eaa5c90e304a642efd3a6f2458cab4eefe7f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 7572e5c5621b514c375e44ca44ddfc4102f5d714
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81422242"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87298766"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete:
 
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?pivots=programming-language-python" target="_blank">Nainstalujte sadu Speech SDK pro vývojové prostředí a vytvořte prázdný ukázkový projekt<span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?pivots=programming-language-python" target="_blank">Nainstalujte sadu Speech SDK pro vývojové prostředí a vytvořte prázdný ukázkový projekt <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>Vytvoření aplikace v LUIS pro rozpoznávání záměrů
 
@@ -26,7 +26,7 @@ Než začnete:
 ## <a name="open-your-project"></a>Otevřete projekt
 
 1. Otevřete preferované integrované vývojové prostředí (IDE).
-2. Vytvořte nový projekt a vytvořte soubor s názvem `quickstart.py`a otevřete ho.
+2. Vytvořte nový projekt a vytvořte soubor s názvem a `quickstart.py` otevřete ho.
 
 ## <a name="start-with-some-boilerplate-code"></a>Začínáme s některým často používaným kódem
 
@@ -36,9 +36,9 @@ Pojďme přidat kód, který funguje jako kostra pro náš projekt.
 
 ## <a name="create-a-speech-configuration"></a>Vytvoření konfigurace řeči
 
-Předtím, než budete moci `IntentRecognizer` inicializovat objekt, je nutné vytvořit konfiguraci, která používá klíč a umístění prostředku předpovědi Luis.
+Předtím, než budete moci inicializovat `IntentRecognizer` objekt, je nutné vytvořit konfiguraci, která používá klíč a umístění prostředku předpovědi Luis.
 
-Vložte tento kód do `quickstart.py`. Ujistěte se, že tyto hodnoty aktualizujete:
+Vložte tento kód do `quickstart.py` . Ujistěte se, že tyto hodnoty aktualizujete:
 
 * Nahraďte `"YourLanguageUnderstandingSubscriptionKey"` klíčem předpovědi Luis.
 * Nahraďte `"YourLanguageUnderstandingServiceRegion"` umístěním Luis. Použít **identifikátor oblasti** z [oblasti](https://aka.ms/speech/sdkregion)
@@ -54,7 +54,7 @@ Sada Speech SDK bude standardně rozpoznána pomocí en-US pro daný jazyk. info
 
 ## <a name="initialize-an-intentrecognizer"></a>Inicializovat IntentRecognizer
 
-Teď vytvoříme `IntentRecognizer`. Vložte tento kód přímo pod konfiguraci řeči.
+Teď vytvoříme `IntentRecognizer` . Vložte tento kód přímo pod konfiguraci řeči.
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=15)]
 
@@ -62,12 +62,14 @@ Teď vytvoříme `IntentRecognizer`. Vložte tento kód přímo pod konfiguraci 
 
 Je potřeba přidružit k `LanguageUnderstandingModel` nástroji pro rozpoznávání záměrů a přidat záměry, které chcete rozpoznat. Budeme používat záměry z předem připravené domény pro automatizaci domů.
 
-Vložte tento kód pod `IntentRecognizer`. Ujistěte se, že jste `"YourLanguageUnderstandingAppId"` nahradili ID aplikace Luis. 
+Vložte tento kód pod `IntentRecognizer` . Ujistěte se, že jste nahradili `"YourLanguageUnderstandingAppId"` ID aplikace Luis. 
 
 >[!TIP]
 > Pokud potřebujete nápovědu najít tuto hodnotu, přečtěte si téma [Vytvoření aplikace v Luis pro rozpoznávání záměrů](#create-a-luis-app-for-intent-recognition).
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=19-27)]
+
+Tento příklad používá `add_intents()` funkci k přidání seznamu explicitně definovaných záměrů. Pokud chcete přidat všechny záměry z modelu, použijte `add_all_intents(model)` a předejte model.
 
 ## <a name="recognize-an-intent"></a>Rozpoznávání záměru
 
@@ -81,7 +83,7 @@ Vložte tento kód pod model.
 
 Když Služba rozpoznávání řeči vrátí výsledek rozpoznávání, budete s ním chtít něco dělat. My to Zjednodušme a vytiskneme výsledek do konzoly.
 
-Pod voláním `recognize_once()`přidejte tento kód.
+Pod voláním `recognize_once()` přidejte tento kód.
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=38-47)]
 

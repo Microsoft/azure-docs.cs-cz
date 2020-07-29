@@ -13,19 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/14/2019
 ms.author: kumud
-ms.openlocfilehash: 67bc7994d2628790e84d3b3752f894a36486ca86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c224332eec31b343bdc53564ef4075a0620ac340
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707510"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289575"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-standard-internal-load-balancer-in-azure---powershell-preview"></a>Nasazení duální aplikace s protokolem IPv6 pomocí standardních interních Load Balancer v Azure – PowerShell (Preview)
 
 V tomto článku se dozvíte, jak v Azure nasadit aplikaci duálního zásobníku (IPv4 + IPv6), která zahrnuje virtuální síť s duálním zásobníkem a podsíť, standardní interní Load Balancer se dvěma konfiguracemi front-end (IPv4 + IPv6), virtuální počítače se síťovými kartami, které mají konfiguraci s duálním protokolem IP, skupinu zabezpečení sítě a veřejné IP adresy.
-
-> [!Important]
-> Podpora protokolu IPv6 pro Azure Virtual Network je momentálně ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Postup vytvoření interního Load Balancer podporujícího protokol IPv6 je skoro stejný jako proces pro vytvoření internetového Load Balancer IPv6 popsané [tady](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md). Jediné rozdíly při vytváření interního nástroje pro vyrovnávání zatížení jsou v konfiguraci front-endu, jak je znázorněno v následujícím příkladu PowerShellu:
 

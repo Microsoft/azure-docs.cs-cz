@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 77b64f09b7fd1429eb23c4407c729dfc0aafdf2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b77eb136b8415e5a6e4596dc0b192ea426f378f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60460983"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292829"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>Nastavení zotavení po havárii VMware v prostředí s více tenantůmi pomocí programu Cloud Solution Provider (CSP)
 
-[Program CSP](https://partner.microsoft.com/en-US/cloud-solution-provider) podporuje lepší scénáře pro cloudové služby Microsoftu, včetně Office 365, Enterprise Mobility Suite a Microsoft Azure. U CSP vznikne klient s koncovými vztahy se zákazníky a stane se primárním kontaktním bodem vztahu. Partneři můžou nasazovat předplatná Azure pro zákazníky a kombinovat předplatná s vlastními přidanými nabídkami přizpůsobených hodnot.
+[Program CSP](https://partner.microsoft.com/cloud-solution-provider) podporuje lepší scénáře pro cloudové služby Microsoftu, včetně Office 365, Enterprise Mobility Suite a Microsoft Azure. U CSP vznikne klient s koncovými vztahy se zákazníky a stane se primárním kontaktním bodem vztahu. Partneři můžou nasazovat předplatná Azure pro zákazníky a kombinovat předplatná s vlastními přidanými nabídkami přizpůsobených hodnot.
 
 S [Azure Site Recovery](site-recovery-overview.md)můžou jako partneři spravovat zotavení po havárii pro zákazníky přímo prostřednictvím CSP. Alternativně můžete použít CSP k nastavení Site Recovery prostředí a zákazníkům umožnit správu vlastních potřeb pro zotavení po havárii v samoobslužné službě. V obou scénářích jsou partneři spojení mezi Site Recovery a jejich zákazníky. Partneři vyplní vztah zákazníka a účtují zákazníky za využití Site Recovery.
 

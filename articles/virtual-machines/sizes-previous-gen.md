@@ -4,16 +4,16 @@ description: Uvádí předchozí generace velikostí dostupné pro virtuální p
 services: virtual-machines
 ms.subservice: sizes
 author: mimckitt
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 6ebd13317940d131facfb36987fb37358260ec05
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6fb5c384d5e9489c4213277a43d5be0ed14afb6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119218"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289703"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Předchozí generace velikostí virtuálních počítačů
 
@@ -96,7 +96,7 @@ Ukládání Premium Storage do mezipaměti: nepodporováno
 
 Velikosti úrovně Basic jsou primárně určeny pro úlohy související s vývojem a další aplikace, pro které se nevyžaduje vyrovnávání zatížení, automatické škálování nebo používání virtuálních počítačů s vysokými nároky na paměť.
 
-| Velikost – Velikost\Název | Virtuální procesory | Memory (Paměť)|Síťové karty (Max.)| Max. velikost dočasného disku | Max. datové disky (1023 GB)| Max. IOPS (300 na disk) |
+| Velikost – Velikost\Název | Virtuální procesory | Paměť|Síťové karty (Max.)| Max. velikost dočasného disku | Max. datové disky (1023 GB)| Max. IOPS (300 na disk) |
 |---|---|---|---|---|---|---|
 | A0\Basic_A0 | 1 | 768 MB  | 2 | 20 GB  | 1  | 1×300  |
 | A1\Basic_A1 | 1 | 1,75 GB | 2 | 40 GB  | 2  | 2×300  |
@@ -129,7 +129,7 @@ Ukládání Premium Storage do mezipaměti: nepodporováno
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (HDD): GiB | Max. datových disků | Maximální propustnost datového disku: IOPS | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_A0 &nbsp; <sup>1</sup> | 1 | 0,768 | 20 | 1 | 1×500 | 2/100 |
-| Standard_A1 | 1 | 1,75 | 70  | 2  | 2×500  | 2/500  |
+| Standard_A1 | 1 | 1.75 | 70  | 2  | 2×500  | 2/500  |
 | Standard_A2 | 2 | 3,5  | 135 | 4  | 4×500  | 2/500  |
 | Standard_A3 | 4 | 7    | 285 | 8  | 8×500  | 2/1000 |
 | Standard_A4 | 8 | 14   | 605 | 16 | 16×500 | 4/2000 |
@@ -371,9 +371,9 @@ Aktualizace pro zachování paměti: nepodporováno
 ## <a name="other-sizes"></a>Jiné velikosti
 
 * [Obecné účely](sizes-general.md)
-* [Optimalizované z hlediska výpočetních služeb](sizes-compute.md)
-* [Optimalizované z hlediska paměti](sizes-memory.md)
-* [Optimalizované z hlediska úložiště](sizes-storage.md)
+* [Optimalizované pro výpočty](sizes-compute.md)
+* [Optimalizované pro paměť](sizes-memory.md)
+* [Optimalizované pro úložiště](sizes-storage.md)
 * [GPU](sizes-gpu.md)
 * [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 

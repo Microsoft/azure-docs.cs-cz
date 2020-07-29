@@ -1,7 +1,19 @@
 ---
- title: Popis zahrnutého souboru: include File Author: rothja MS. Service: Azure-Resource-Manager MS. téma: include MS. Date: 05/18/2018 MS. Author: jroth MS. Custom: include File
+title: zahrnout soubor
+description: zahrnout soubor
+author: rothja
+ms.service: azure-resource-manager
+ms.topic: include
+ms.date: 05/18/2018
+ms.author: jroth
+ms.custom: include file
+ms.openlocfilehash: db822722b12921ab98b3e5cae67e28f4ca7ede04
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87298759"
 ---
-
 | Prostředek | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
 | vCPU na [předplatné](../articles/billing-buy-sign-up-azure-subscription.md)<sup>1</sup> |20 |10 000 |

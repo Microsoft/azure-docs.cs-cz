@@ -3,12 +3,12 @@ title: Správa zásad testovacího prostředí v Azure DevTest Labs | Microsoft 
 description: Naučte se definovat zásady testovacího prostředí, jako jsou velikosti virtuálních počítačů, maximální počet virtuálních počítačů na uživatele a automatizace vypnutí.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 95d91cfc70d603187543e308d2b1355c549c88f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ab2e2b1905a515d3a85339099f02d93d8e5c0424
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483393"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290424"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Správa všech zásad pro testovací prostředí v Azure DevTest Labs
 
@@ -70,7 +70,7 @@ Zásady automatického vypínání pomáhají minimalizovat testovací odpad tí
 
 1. Zadejte **hodnotu yes** nebo **No** pro možnost odeslání oznámení 15 minut před zadaným časem automatického vypnutí. Pokud zvolíte **Ano**, zadejte koncový bod adresy URL Webhooku nebo e-mailovou adresu, která určuje, kam chcete oznámení publikovat nebo odeslat. Uživatel obdrží oznámení a získá možnost odložit vypnutí.
 
-   Další informace o webhookech najdete v tématu [Vytvoření Webhooku nebo rozhraní API Azure Function](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
+   Další informace o webhookech najdete v tématu [Vytvoření Webhooku nebo rozhraní API Azure Function](../azure-functions/functions-bindings-http-webhook.md). 
 
 1. Vyberte **Uložit**.
 
@@ -129,4 +129,3 @@ Po definování a použití různých nastavení zásad virtuálních počítač
 * [Vytvořit vlastní image](devtest-lab-create-template.md) – když vytvoříte virtuální počítač, zadáte základ, který může být buď vlastní image, nebo Image na webu Marketplace. Tento článek ukazuje, jak vytvořit vlastní image ze souboru VHD.
 * [Konfigurace imagí Marketplace](devtest-lab-configure-marketplace-images.md) – Azure DevTest Labs podporuje vytváření virtuálních počítačů na základě Azure Marketplace imagí. V tomto článku se naučíte, jak určit, které Azure Marketplace image se můžou použít při vytváření virtuálních počítačů v testovacím prostředí.
 * [Vytvoření virtuálního počítače v testovacím prostředí](devtest-lab-add-vm.md) – ukazuje, jak vytvořit virtuální počítač ze základní Image (ať už vlastní nebo tržiště) a jak pracovat s artefakty ve vašem virtuálním počítači.
-

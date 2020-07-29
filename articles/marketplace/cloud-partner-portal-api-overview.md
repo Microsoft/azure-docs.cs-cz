@@ -4,15 +4,15 @@ description: Popis, předpoklady k použití a seznam operací rozhraní API Mar
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 51c8b91ccf85087f965d632dee9296076aba0d86
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bfb6e9cb510f5fe887f108dfdea5932406aafe0d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011954"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292928"
 ---
 # <a name="cloud-partner-portal-api-reference"></a>Reference k rozhraní API portál partnerů cloudu
 
@@ -63,6 +63,6 @@ Tato reference odkazuje na rozhraní API, aby prováděla následující běžn�
 
 - [Nastavení cen pro nabídky virtuálních počítačů](./cloud-partner-portal-api-setting-price.md)
 
-### <a name="troubleshooting"></a>Poradce při potížích
+### <a name="troubleshooting"></a>Řešení potíží
 
 - [Řešení potíží s chybami ověřování](./cloud-partner-portal-api-troubleshooting-authentication-errors.md)

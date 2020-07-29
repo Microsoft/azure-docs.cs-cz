@@ -8,26 +8,23 @@ ms.topic: troubleshooting
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1010f89057d83a11fb2e156f01509e909270b044
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4622e64b585d3d4795b11d29e7bffdf9991203c6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083568"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292552"
 ---
 # <a name="troubleshooting-overview-feedback-and-support-for-windows-virtual-desktop"></a>Řešení potíží s přehledem, zpětnou vazbou a podporou pro virtuální počítače s Windows
 
 >[!IMPORTANT]
->Tento obsah se vztahuje na jarní 2020 aktualizaci s Azure Resource Manager objekty virtuálních klientů Windows. Pokud používáte virtuální plochu Windows na verzi 2019 bez Azure Resource Manager objektů, přečtěte si [Tento článek](./virtual-desktop-fall-2019/troubleshoot-set-up-overview-2019.md).
->
-> V současnosti je ve verzi Public Preview na jaře 2020 aktualizace virtuálních počítačů s Windows. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. 
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>Tento obsah se vztahuje na virtuální plochu Windows s Azure Resource Manager objekty virtuálních klientů Windows. Pokud používáte virtuální plochu Windows (Classic) bez Azure Resource Manager objektů, přečtěte si [Tento článek](./virtual-desktop-fall-2019/troubleshoot-set-up-overview-2019.md).
 
 Tento článek poskytuje přehled o problémech, se kterými se můžete setkat při nastavování prostředí virtuálních počítačů s Windows, a poskytuje způsoby, jak tyto problémy vyřešit.
 
-## <a name="report-issues-during-public-preview"></a>Nahlásit problémy během veřejné verze Preview
+## <a name="report-issues"></a>Nahlášení potíží
 
-Pokud chcete ohlásit problémy nebo navrhnout funkce během veřejné verze Preview pro vydání jarní 2020, navštivte [technickou komunitu pro virtuální počítače s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop). Pomocí odborné komunity můžete diskutovat na osvědčené postupy nebo navrhnout a hlasovat o nových funkcích. Když nahlásíte problém týkající se vydání verze Public Preview, nezapomeňte typ problému označit jako **jarní 2020 Update (Preview)**.
+Pokud chcete ohlásit problémy nebo navrhnout funkce pro virtuální počítače s Windows pomocí integrace s Azure Resource Manager, navštivte [technickou komunitu pro virtuální počítače s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop). Pomocí odborné komunity můžete diskutovat na osvědčené postupy nebo navrhnout a hlasovat o nových funkcích.
 
 Když vytvoříte příspěvek s žádostí o nápovědu nebo navrhujete novou funkci, ujistěte se, že jste téma popsali co nejvíce podrobností. Podrobné informace mohou ostatním uživatelům pomáhat s zodpovězením vaší otázky nebo porozumět funkci, pro kterou navrhujete hlasovat.
 

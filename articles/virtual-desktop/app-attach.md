@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 76edc88f127d7e52514ab72539f7212ac982b5e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f8e20f97ae19a33674631e4dee18901d54462b3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204468"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291515"
 ---
 # <a name="set-up-msix-app-attach"></a>Nastavení připojení aplikace MSIX
 
@@ -29,7 +29,7 @@ V tomto tématu se dozvíte, jak nastavit připojení aplikace MSIX v prostřed�
 Než začnete, je potřeba nakonfigurovat připojení aplikace MSIX:
 
 - Přístup k portálu Windows Insider pro získání verze Windows 10 s podporou aplikace MSIX připojit rozhraní API.
-- Funkční nasazení virtuálních počítačů s Windows. Pokud chcete zjistit, jak nasadit virtuální plochu Windows na verzi 2019, přečtěte si téma [Vytvoření tenanta ve virtuálním počítači s Windows](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Další informace o nasazení vydaných verzí Windows Virtual Desktop na jaře 2020 najdete v tématu [Vytvoření fondu hostitelů s Azure Portal](./create-host-pools-azure-marketplace.md).
+- Funkční nasazení virtuálních počítačů s Windows. Informace o tom, jak nasadit virtuální plochu Windows (Classic), najdete v tématu [Vytvoření tenanta ve virtuálním počítači s Windows](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Informace o tom, jak nasadit virtuální plochu Windows s Azure Resource Manager integrací, najdete v tématu [Vytvoření fondu hostitelů pomocí Azure Portal](./create-host-pools-azure-marketplace.md).
 - Nástroj pro vytváření balíčků MSIX
 - Síťová sdílená složka v rámci nasazení virtuálního počítače se systémem Windows, kde bude uložen balíček MSIX.
 
@@ -213,8 +213,8 @@ Pokud vaše aplikace používá certifikát, který není veřejný nebo podepsa
 
 Připojení aplikace MSIX má čtyři samostatné fáze, které je potřeba provést v uvedeném pořadí:
 
-1. Krok
-2. Registrovat
+1. Fáze
+2. Zaregistrovat
 3. Zrušení registrace
 4. Depříprava
 

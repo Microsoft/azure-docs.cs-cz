@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 9d6b912229b1365dd7bd8d466af18d1e81b5aa8e
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: f6c47d4cbfe6311333d95b07c0553afa2b3bb15c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132146"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287739"
 ---
 # <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
 
@@ -42,7 +42,7 @@ K registraci konfiguračního serveru pomocí služeb Azure Site Recovery musít
     - Ověřte, zda je role vývojář aplikace přiřazena uživateli. Pokud ne, použijte uživatele s tímto oprávněním nebo se obraťte na [správce, aby oprávnění povolil](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md#assign-roles).
     
 2. Pokud se role vývojáře aplikace nedá přiřadit, ujistěte se, že příznak **Uživatelé můžou registrovat aplikace** nastavené na **hodnotu true** , aby uživatel mohl vytvořit identitu. Povolení těchto oprávnění:
-    - Přihlaste se k portálu Azure.
+    - Přihlaste se k webu Azure Portal.
     - Přejít na **Azure Active Directory**  >  **nastavení uživatele**.
     - V **App registrations**části registrace aplikací **můžou uživatelé registrovat aplikace**, vyberte **Ano**.
 
@@ -66,7 +66,7 @@ K registraci konfiguračního serveru pomocí služeb Azure Site Recovery musít
 
 ## <a name="import-the-template-in-vmware"></a>Import šablony do VMware
 
-1. Pomocí klientské konzoly VMware vSphere Client se přihlaste k VMware vCenter Serveru nebo hostiteli vSphere ESXi.
+1. Přihlaste se k serveru VMware vCenter nebo vSphere hostitele ESXi pomocí klienta VMware vSphere.
 2. V nabídce **soubor** vyberte **nasadit šablonu OVF** a spusťte průvodce **nasazením šablony OVF** .
 
      ![Nasadit šablonu OVF](./media/vmware-azure-deploy-configuration-server/vcenter-wizard.png)
@@ -98,7 +98,7 @@ Pokud chcete přidat další síťovou kartu ke konfiguračnímu serveru, přide
 
 ## <a name="register-the-configuration-server-with-azure-site-recovery-services"></a>Registrace konfiguračního serveru pomocí služby Azure Site Recovery Services
 
-1. Z klientské konzole VMware vSphere Client zapněte požadovaný virtuální počítač.
+1. Z konzoly klienta VMware vSphere zapněte virtuální počítač.
 2. Virtuální počítač se spustí do instalačního prostředí Windows Serveru 2016. Přijměte licenční smlouvu a zadejte heslo správce.
 3. Po dokončení instalace se přihlaste k virtuálnímu počítači jako správce.
 4. Při prvním přihlášení se spustí nástroj pro konfiguraci Azure Site Recovery, a to během několika sekund.
@@ -123,8 +123,8 @@ Pokud chcete přidat další síťovou kartu ke konfiguračnímu serveru, přide
 
     |Scénář   |Postup při sledování  |
     |---------|---------|
-    |Můžu si MySQL stáhnout a nainstalovat ručně?     |  Ano. Stáhněte si aplikaci MySQL, umístěte ji do složky **C:\Temp\ASRSetup**a pak ji nainstalujte ručně. Jakmile souhlasíte s podmínkami a vyberete **Stáhnout a nainstalovat**, portál už říká, že je *nainstalovaný*. Můžete přejít k dalšímu kroku.       |
-    |Můžu se vyhnout stažení MySQL online?     |   Ano. Uložte aplikaci pro instalaci MySQL do složky **C:\Temp\ASRSetup**. Přijměte podmínky, vyberte **Stáhnout a nainstalovat**a portál použije instalační program, který jste přidali k instalaci aplikace. Až se instalace dokončí, přejděte k dalšímu kroku.    |
+    |Můžu si MySQL stáhnout a nainstalovat ručně?     |  Yes. Stáhněte si aplikaci MySQL, umístěte ji do složky **C:\Temp\ASRSetup**a pak ji nainstalujte ručně. Jakmile souhlasíte s podmínkami a vyberete **Stáhnout a nainstalovat**, portál už říká, že je *nainstalovaný*. Můžete přejít k dalšímu kroku.       |
+    |Můžu se vyhnout stažení MySQL online?     |   Yes. Uložte aplikaci pro instalaci MySQL do složky **C:\Temp\ASRSetup**. Přijměte podmínky, vyberte **Stáhnout a nainstalovat**a portál použije instalační program, který jste přidali k instalaci aplikace. Až se instalace dokončí, přejděte k dalšímu kroku.    |
     |Chci stáhnout a nainstalovat MySQL prostřednictvím Azure Site Recovery.    |  Přijměte licenční smlouvu a vyberte **Stáhnout a nainstalovat**. Až se instalace dokončí, přejděte k dalšímu kroku.       |
 
 5. Před pokračováním ověřte, že je v **nastavení ověřit konfiguraci zařízení**nutné ověřit požadavky.
@@ -160,7 +160,7 @@ Aby nedošlo k přerušení probíhající replikace, ujistěte se, že po regis
     Ne. Po zaregistrování trezoru na konfiguračním serveru ho nelze změnit.
 * Můžu použít stejný konfigurační server k ochraně fyzických i virtuálních počítačů?
 
-    Ano. Stejný konfigurační server lze použít pro replikaci fyzických a virtuálních počítačů. Fyzický počítač se však může vrátit zpět pouze k VIRTUÁLNÍmu počítači VMware.
+    Yes. Stejný konfigurační server lze použít pro replikaci fyzických a virtuálních počítačů. Fyzický počítač se však může vrátit zpět pouze k VIRTUÁLNÍmu počítači VMware.
 * Jaký je účel konfiguračního serveru a kde se používá?
 
     Další informace o konfiguračním serveru a jeho funkcích najdete v tématu [Architektura replikace z VMware do Azure](vmware-azure-architecture.md).
