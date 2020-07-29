@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
-ms.openlocfilehash: 7774ea5138e6d77547e386531e573457cd6d2862
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5353bad3ff631fd7baa5d9892d38449ba622ea46
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525938"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284672"
 ---
 # <a name="linux-vm-boots-to-grub-rescue"></a>Spuštění virtuálního počítače se systémem Linux pro grub záchranu
 
@@ -35,7 +35,7 @@ Postupujte podle následujících kroků pro zmírnění rizika v závislosti na
 * Pokud se vám zobrazuje chyba **Neznámý systém**souborů, může tato chyba způsobit poškození systému souborů ve spouštěcím oddílu nebo nesprávnou konfiguraci jádra.
 
    * V případě problémů se systémem souborů postupujte podle kroků v článku [obnovení ze systému Linux: z důvodu chyb systému souborů (fsck, uzlů inode) nelze provést SSH pro virtuální počítač se systémem Linux](/archive/blogs/linuxonazure/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes).
-   * V případě problémů s jádrem postupujte podle kroků v článku obnovení ze systému [Linux: Ruční oprava potíží s nespouštěním souvisejících s problémy jádra](/archive/blogs/linuxonazure/linux-recovery-manually-fixing-non-boot-issues-related-to-kernel-problems)nebo [Obnovení systému Linux: Oprava potíží s nespouštěním, které souvisí s problémy jádra pomocí chroot](/archive/blogs/linuxonazure/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot).
+   * V případě problémů s jádrem postupujte podle kroků v článku obnovení ze systému [Linux: Ruční oprava potíží s nespouštěním souvisejících s problémy jádra](http://linuxonazure.azurewebsites.net/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/)nebo [Obnovení systému Linux: Oprava potíží s nespouštěním, které souvisí s problémy jádra pomocí chroot](http://linuxonazure.azurewebsites.net/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/).
    
 ### <a name="error---file-not-found"></a>Chyba – soubor nebyl nalezen.
 

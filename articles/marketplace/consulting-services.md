@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 4a45239836779fc83aa2e3927c6e3ff752c87182
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: Microsoft-BradleyWright
+ms.author: brwrigh
+ms.openlocfilehash: 5cea220b44618787e34ce2297921d715476b7f14
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103751"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280949"
 ---
 # <a name="consulting-service-offers"></a>Konzultační nabídky služeb
 
@@ -56,7 +58,7 @@ V případě AppSource jsou způsobilé kompetence uvedené v následující tab
 | Dynamics 365 Sales<br>Dynamics 365 marketing<br>Zákaznická služba Dynamics 365<br>Služba pole Dynamics 365<br>Lidské zdroje pro Dynamics 365 |   V [cloudu Business Applications kompetenci](https://partner.microsoft.com/membership/cloud-business-applications-competency) pro možnost zapojení zákazníka musí být certifikováno Gold nebo stříbrné.    | 
 | Dynamics 365 – finance<br>Správa dodavatelských řetězců Dynamics 365<br>Dynamics 365 – obchod<br>Lidské zdroje pro Dynamics 365<br>Automatizace služby projektu Dynamics 365 |  V [cloudu Business Applications kompetenci](https://partner.microsoft.com/membership/cloud-business-applications-competency) pro možnost sjednocení operací musí být certifikováno Gold nebo stříbrné.       |
 | Dynamics 365 Customer Insights | Musí mít alespoň jednu úspěšnou implementaci v produkčním prostředí [Dynamics 365 Customer Insights](https://dynamics.microsoft.com/ai/customer-insights/)s aspoň pěti mírami a pěti segmenty. |
-| Dynamics 365 Business Central | Musí se jednat o Gold nebo stříbrné certifikaci v rámci [kompetence plánování podnikových zdrojů](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)a musí se jednat o poskytovatele Cloud Solution Provider minimálně pro tři obchodní centrální zákazníky.<br><br>nebo <br><br>V AppSource musí být publikována [aplikace Business Central](https://appsource.microsoft.com/). |
+| Dynamics 365 Business Central | Musí se jednat o Gold nebo stříbrné certifikaci v rámci [kompetence plánování podnikových zdrojů](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)a musí se jednat o poskytovatele Cloud Solution Provider minimálně pro tři obchodní centrální zákazníky.<br><br>– nebo – <br><br>V AppSource musí být publikována [aplikace Business Central](https://appsource.microsoft.com/). |
 | Power BI | Musí být uvedený na [Power BI prezentující Partnerská](https://powerbi.microsoft.com/partner-showcase/?term=&country=&industry=&department=).|
 |Power Apps | Musí mít nárok na pokročilé výhody v [programu Power Apps pro partnerství](https://aka.ms/PowerAppsPartner) (PDF). |
 ||
@@ -148,12 +150,12 @@ Příklady:
 
 Jakmile tým přezkoumání obsahu zkontroluje popisy vaší nabídky a nabídne souhrny, uplatní následující kritéria:
 
-|Typ nabídky  |Vyžadováno |Doporučené  |
+|Typ nabídky  |Povinné |Doporučeno  |
 |---------|---------|---------|
 |**Posouzení**    |   Zahrňte podrobný agendu pro posouzení na více dní nebo více týdnů a vyjadřují, co může zákazník očekávat.      |    Optimalizujte souhrn své nabídky pomocí vašich hlavních klíčových slov SEO.     |
 |**Briefingu**    |   Vyjadřují, co může zákazník očekávat. Pamatujte si, že je třeba poskytnout *přehlednou* osobu. Pokud poskytujete virtuální službu, vyberte jiný typ nabídky.    |  Optimalizujte souhrn své nabídky pomocí vašich hlavních klíčových slov SEO.       |
 |**Implementace**    |  Zahrňte detailní agendu pro implementace na více dní nebo více týdnů a vyjadřují, jaké technické změny, technické artefakty nebo jiné artefakty může zákazník očekávat jako výsledek zapojení.       |    Optimalizujte souhrn své nabídky pomocí vašich hlavních klíčových slov SEO.     |
-|**Ověření konceptu**    |    Vyjadřují, jaké technické změny, technické artefakty nebo jiné artefakty může zákazník očekávat jako výsledek zapojení.     | Optimalizujte souhrn své nabídky pomocí vašich hlavních klíčových slov SEO.        |
+|**Testování konceptu**    |    Vyjadřují, jaké technické změny, technické artefakty nebo jiné artefakty může zákazník očekávat jako výsledek zapojení.     | Optimalizujte souhrn své nabídky pomocí vašich hlavních klíčových slov SEO.        |
 |**Dílně**    |   V závislosti na době trvání vaší nabídky uveďte podrobné agendy denně, týdně nebo měsíčně. Vyjadřují studijní cíle nebo jiné dodávky vaší dílny.     |   Optimalizujte souhrn své nabídky pomocí vašich hlavních klíčových slov SEO.      |
 ||
 

@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.custom: codepen
-ms.openlocfilehash: ce2891201331ee1efd861d2f13cec78c0551b6ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: 05e21e63b104a21757c63b9ad8d2954ed778d4b8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80804567"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285743"
 ---
 # <a name="clustering-point-data"></a>Data bodu clusteringu
 
@@ -47,7 +48,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 Tady jsou další metody, které `DataSource` Třída poskytuje pro clusteringu:
 
-| Metoda | Návratový typ | Description |
+| Metoda | Návratový typ | Popis |
 |--------|-------------|-------------|
 | getClusterChildren (clusterId: Number) | &lt;Geometrie funkce pole promise &lt; &lt; , libovolný &gt; \| tvar&gt;&gt; | Načte podřízené objekty daného clusteru na další úrovni přiblížení. Tyto podřízené položky mohou být kombinací tvarů a podclusterů. Podclustery budou funkcemi s vlastnostmi, které odpovídají ClusteredProperties. |
 | getClusterExpansionZoom (clusterId: Number) | Číslo promise &lt;&gt; | Vypočítá úroveň přiblížení, při které se cluster začne zvětšovat nebo rozdělovat. |
@@ -91,9 +92,9 @@ Podívejte se na CodePen () na () <a href='https://codepen.io/azuremaps/pen/VRJr
 
 Pokud dojde k událostem myši na vrstvě, která obsahuje seskupené datové body, vrátí se clusterový datový bod do události jako objekt funkce bodu injson. Tato funkce Point bude mít následující vlastnosti:
 
-| Název vlastnosti             | Typ    | Description   |
+| Název vlastnosti             | Typ    | Popis   |
 |---------------------------|---------|---------------|
-| `cluster`                 | Boolean | Indikuje, že funkce představuje cluster. |
+| `cluster`                 | boolean | Indikuje, že funkce představuje cluster. |
 | `cluster_id`              | řetězec  | Jedinečné ID clusteru, které lze použít s `getClusterExpansionZoom` `getClusterChildren` metodami DataSource, a `getClusterLeaves` . |
 | `point_count`             | číslo  | Počet bodů, které cluster obsahuje.  |
 | `point_count_abbreviated` | řetězec  | Řetězec, který zkracuje hodnotu, `point_count` Pokud je Long. (například 4 000 se bude 4K)  |

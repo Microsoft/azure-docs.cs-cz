@@ -5,17 +5,17 @@ description: Naučte se vytvářet, zobrazovat a odstraňovat Azure Machine Lear
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
-ms.custom: seodec18
-ms.openlocfilehash: 71bb85c5812a3e779570cdd87c5092e5b0de52f9
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: dccf8b2e9608de4f22f9782eb9f3cdb489e18be3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045701"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319707"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Vytváření a Správa pracovních prostorů Azure Machine Learning v Azure Portal
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -24,7 +24,7 @@ V tomto článku vytvoříte, zobrazíte a odstraníte [**Azure Machine Learning
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 
-K vytvoření pracovního prostoru potřebujete předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+K vytvoření pracovního prostoru potřebujete předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí přihlašovacích údajů předplatného Azure. 
 
@@ -40,7 +40,7 @@ K vytvoření pracovního prostoru potřebujete předplatné Azure. Pokud ješt�
 
 1. Zadáním následujících informací nakonfigurujte nový pracovní prostor:
 
-   Pole|Description 
+   Pole|Popis 
    ---|---
    Název pracovního prostoru |Zadejte jedinečný název, který identifikuje váš pracovní prostor. V tomto příkladu používáme **docs-WS**. Názvy musí být v rámci skupiny prostředků jedinečné. Použijte název, který se dá snadno vyvolat a odlišit z pracovních prostorů vytvořených jinými uživateli. V názvu pracovního prostoru se nerozlišují malá a velká písmena.
    Předplatné |Vyberte předplatné Azure, které chcete použít.
@@ -90,7 +90,7 @@ Pracovní prostor můžete upgradovat ze sady Basic Edition na Enterprise Editio
 
 ## <a name="find-a-workspace"></a><a name="view"></a>Najít pracovní prostor
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. Do pole nejvyšší hledání zadejte **Machine Learning**.  
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: d20ac5964ef70618d4d7dc2d4a7fe7d7d01284ce
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: de773bb2188f09822cae59ce42924a9a49f8087e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965533"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285624"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Osvědčené postupy konfigurace clusteru (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,27 +42,26 @@ Technicky, cluster se třemi uzly může předržet jednu ztrátu uzlu (na dvou 
 
 Prostředek kvora chrání cluster proti jednomu z těchto problémů. 
 
-Ke konfiguraci prostředku kvora s SQL Server na virtuálních počítačích Azure můžete použít tyto typy kopií: 
+V následující tabulce jsou uvedené možnosti kvora, které jsou k dispozici v pořadí doporučeném pro použití s virtuálním počítačem Azure, přičemž určující disk má upřednostňovanou volbu: 
 
 
 ||[Disk s kopií clusteru](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |[Disk s kopií cloudu](/windows-server/failover-clustering/deploy-cloud-witness)  |[Určující sdílená složka](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |
 |---------|---------|---------|---------|
 |**Podporovaný operační systém**| Vše |Windows Server 2016 +| Windows Server 2012 +|
-|**Podporovaná verze SQL Server**|SQL Server 2019|SQL Server 2016 +|SQL Server 2016 +|
+
 
 
 
 ### <a name="disk-witness"></a>Disk s kopií clusteru
 
-Disk s kopií clusteru je malý clusterovaný disk ve skupině úložišť dostupných v clusteru. Tento disk je vysoce dostupný a může převzít služby při selhání mezi uzly. Obsahuje kopii clusterové databáze s výchozí velikostí, která je obvykle menší než 1 GB. 
+Disk s kopií clusteru je malý clusterovaný disk ve skupině úložišť dostupných v clusteru. Tento disk je vysoce dostupný a může převzít služby při selhání mezi uzly. Obsahuje kopii clusterové databáze s výchozí velikostí, která je obvykle menší než 1 GB. Disk s kopií clusteru je upřednostňovanou možností kvora pro virtuální počítač Azure, protože dokáže vyřešit problém oddílu v čase, na rozdíl od sdílené složky cloudu a určující sdílené složky. 
 
 Nakonfigurujte sdílený disk Azure jako určující disk. 
 
 Informace o tom, jak začít, najdete v tématu [Konfigurace určujícího disku](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum).
 
 
-**Podporovaný operační systém**: vše    
-**Podporovaná verze SQL**: SQL Server 2019   
+**Podporovaný operační systém**: vše   
 
 
 ### <a name="cloud-witness"></a>Disk s kopií cloudu
@@ -73,21 +72,18 @@ Informace o tom, jak začít, najdete v tématu [Konfigurace určujícího cloud
 
 
 **Podporovaný operační systém**: Windows Server 2016 a novější   
-**Podporovaná verze SQL**: SQL Server 2016 a novější     
 
 
 ### <a name="file-share-witness"></a>Určující sdílená složka
 
 Určující sdílená složka je sdílená složka SMB, která je obvykle nakonfigurovaná na souborovém serveru se systémem Windows Server. Udržuje informace o clusteringu v souboru. log, ale neukládá kopii databáze clusteru. V Azure můžete [sdílenou složku Azure](../../../storage/files/storage-how-to-create-file-share.md) nakonfigurovat tak, aby se používala jako určující sdílená složka, nebo můžete použít sdílenou složku na samostatném virtuálním počítači.
 
-Pokud budete používat jinou sdílenou složku Azure, můžete ji připojit se stejným procesem, který slouží k [připojení sdílené složky Premium](failover-cluster-instance-premium-file-share-manually-configure.md#mount-premium-file-share). 
+Pokud budete používat sdílenou složku Azure, můžete ji připojit ke stejnému procesu, který jste použili k [připojení sdílené složky Premium](failover-cluster-instance-premium-file-share-manually-configure.md#mount-premium-file-share). 
 
 Informace o tom, jak začít, najdete v tématu [Konfigurace určující sdílené složky](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum).
 
 
 **Podporovaný operační systém**: Windows Server 2012 a novější   
-**Podporovaná verze SQL**: SQL Server 2016 a novější   
-
 
 ## <a name="connectivity"></a>Připojení
 

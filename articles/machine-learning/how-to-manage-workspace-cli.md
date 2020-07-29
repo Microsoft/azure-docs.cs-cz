@@ -5,16 +5,17 @@ description: Naučte se používat rozhraní příkazového řádku Azure a vytv
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: larryfr
 author: Blackmist
 ms.date: 06/25/2020
-ms.openlocfilehash: 64963bfc28921d195d9ed0f96b2673a9c9e4aa2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 1cc280dc12fcb462e11a568910eef053e4bdac50
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392705"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319690"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Vytvoření pracovního prostoru pro Azure Machine Learning pomocí Azure CLI
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -23,7 +24,7 @@ V tomto článku se dozvíte, jak vytvořit pracovní prostor Azure Machine Lear
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Předplatné Azure**. Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
+* **Předplatné Azure** Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 
 * Pokud chcete v tomto dokumentu použít příkazy rozhraní příkazového řádku z vašeho **místního prostředí**, potřebujete [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -59,7 +60,13 @@ az extension add -n azure-cli-ml
 Pracovní prostor Azure Machine Learning spoléhá na tyto služby nebo entity Azure:
 
 > [!IMPORTANT]
-> Pokud nezadáte existující službu Azure, vytvoří se během vytváření pracovního prostoru automaticky. Vždy je nutné zadat skupinu prostředků. Při připojování vlastního účtu úložiště se ujistěte, že má zapnuté funkce Azure Blob i Azure File a že hierarchický obor názvů (ADLS Gen 2) je zakázaný. Vlastní účet úložiště můžete kdykoli připojit později, až bude pracovní prostor vytvořen jako úložiště dat.
+> Pokud nezadáte existující službu Azure, vytvoří se během vytváření pracovního prostoru automaticky. Vždy je nutné zadat skupinu prostředků. Při připojování vlastního účtu úložiště se ujistěte, že splňuje následující kritéria:
+>
+> * Účet _úložiště není účtem_ premium (Premium_LRS a Premium_GRS).
+> * Funkce Azure Blob a Azure File jsou povolené.
+> * Hierarchický obor názvů (ADLS Gen 2) je zakázaný.
+>
+> Tyto požadavky jsou určené jenom pro _výchozí_ účet úložiště, který používá pracovní prostor.
 
 | Služba | Parametr pro určení existující instance |
 | ---- | ---- |
@@ -147,6 +154,9 @@ Pokud chcete vytvořit pracovní prostor, který používá stávající prostř
     Odpověď z tohoto příkazu je podobná následujícímu textu a je ID účtu úložiště:
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>"`
+
+    > [!IMPORTANT]
+    > Pokud chcete použít existující účet Azure Storage, nemůže to být účet Premium (Premium_LRS a Premium_GRS). Nemůže mít také hierarchický obor názvů (používá se s Azure Data Lake Storage Gen2). Ve _výchozím_ účtu úložiště pracovního prostoru není podporován ani obor názvů Premium Storage ani hierarchický obor názvů. Můžete použít Storage úrovně Premium nebo hierarchický obor názvů s účty úložiště, _které nejsou výchozí_ .
 
 + **Application Insights Azure**:
 

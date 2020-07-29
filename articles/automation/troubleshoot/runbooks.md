@@ -2,19 +2,16 @@
 title: Řešení potíží s Azure Automation Runbook
 description: Tento článek popisuje, jak řešit problémy s Azure Automation Runbooky a řešit problémy.
 services: automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 01/24/2019
+ms.date: 07/28/2020
 ms.topic: conceptual
 ms.service: automation
-manager: carmonm
 ms.custom: has-adal-ref
-ms.openlocfilehash: e0665a6aa55b998d54d076013a25e2efadaa2b06
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 9bf04ae6985ac2ce0e20bf70b3d7c003bbddca69
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187179"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337292"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Řešení problémů s runbooky
 
@@ -511,6 +508,24 @@ Pokud chcete použít více než 500 minut zpracování za měsíc, změňte př
 1. Vyberte **Nastavení**a pak vyberte **ceny**.
 1. Vyberte **Povolit** na stránce dole a upgradujte svůj účet na úroveň Basic.
 
+## <a name="scenario-runbook-output-stream-greater-than-1-mb"></a><a name="output-stream-greater-1mb"></a>Scénář: výstupní datový proud Runbooku větší než 1 MB
+
+### <a name="issue"></a>Problém
+
+Sada Runbook spuštěná v izolovaném prostoru Azure se nezdařila s následující chybou:
+
+```error
+The runbook job failed due to a job stream being larger than 1MB, this is the limit supported by an Azure Automation sandbox.
+```
+
+### <a name="cause"></a>Příčina
+
+K této chybě dochází, protože se Runbook pokusil zapsat příliš mnoho dat výjimky do výstupního datového proudu.
+
+### <a name="resolution"></a>Řešení
+
+Výstupní datový proud úlohy má omezení 1 MB. Zajistěte, aby sada Runbook zahrnovala volání spustitelného souboru nebo podprocesu pomocí `try` `catch` bloků a. Pokud operace vyvolávají výjimku, kód zapíše zprávu z výjimky do proměnné Automation. Tato technika zabrání v zápisu zprávy do výstupního datového proudu úlohy. U spuštěných úloh Hybrid Runbook Worker se výstupní datový proud zkrátil na 1 MB, ale nezobrazí se žádná chybová zpráva.
+
 ## <a name="scenario-runbook-job-start-attempted-three-times-but-fails-to-start-each-time"></a><a name="job-attempted-3-times"></a>Scénář: došlo k pokusu o spuštění úlohy Runbooku třikrát, ale nespustí se pokaždé, když se nezdaří.
 
 ### <a name="issue"></a>Problém
@@ -526,20 +541,22 @@ The job was tried three times but it failed
 K této chybě dochází z důvodu některého z následujících problémů:
 
 * **Limit paměti.** Úloha může selhat, pokud používá více než 400 MB paměti. Dokumentované limity paměti přidělené izolovanému prostoru (sandbox) najdete v části [omezení služby Automation](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits). 
+
 * **Síťové sokety.** Izolované prostory Azure jsou omezené na 1 000 současných síťových soketů. Další informace najdete v tématu [omezení služby Automation](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits).
+
 * **Modul je nekompatibilní.** Závislosti modulu nemusí být správné. V takovém případě sada Runbook obvykle vrátí `Command not found` zprávu nebo `Cannot bind parameter` .
+
 * **Žádné ověřování pomocí služby Active Directory pro izolovaný prostor (sandbox)** Váš Runbook se pokusil zavolat spustitelný nebo podproces, který běží v izolovaném prostoru Azure. Konfigurace sad Runbook pro ověřování pomocí Azure AD pomocí knihovny Azure Active Directory Authentication Library (ADAL) není podporována.
-* **Příliš mnoho dat výjimky.** Runbook se pokusil zapsat příliš mnoho dat výjimky do výstupního datového proudu.
 
 ### <a name="resolution"></a>Řešení
 
 * **Limit paměti, síťové sokety.** Navrhované způsoby práce s omezeními paměti jsou rozdělení zatížení mezi více sad Runbook, zpracování méně dat v paměti, vyhněte se zbytečným výstupům z vašich runbooků a vezměte v úvahu, kolik kontrolních bodů se zapisuje do runbooků PowerShellového pracovního postupu. Použijte metodu Clear, například `$myVar.clear` , pro vymazání proměnných a použití `[GC]::Collect` pro okamžité spuštění uvolňování paměti. Tyto akce snižují nároky na paměť Runbooku během běhu.
+
 * **Modul je nekompatibilní.** Aktualizujte moduly Azure pomocí následujících kroků v tématu [Postup aktualizace Azure PowerShellch modulů v Azure Automation](../automation-update-azure-modules.md).
+
 * **Žádné ověřování pomocí služby Active Directory pro izolovaný prostor (sandbox)** Při ověřování ve službě Azure AD pomocí Runbooku se ujistěte, že je modul Azure AD dostupný v účtu Automation. Ujistěte se, že jste účtu Spustit jako udělili potřebná oprávnění k provádění úloh, které sada Runbook automatizuje.
 
   Pokud vaše sada Runbook nemůže volat spustitelný soubor nebo podproces spuštěný v izolovaném prostoru Azure, použijte sadu Runbook na [Hybrid Runbook Worker](../automation-hrw-run-runbooks.md). Hybridní procesy nejsou omezeny omezeními paměti a sítě, které mají Azure Sandbox.
-
-* **Příliš mnoho dat výjimky.** Výstupní datový proud úlohy má omezení 1 MB. Zajistěte, aby sada Runbook zahrnovala volání spustitelného souboru nebo podprocesu pomocí `try` `catch` bloků a. Pokud operace vyvolávají výjimku, kód zapíše zprávu z výjimky do proměnné Automation. Tato technika zabrání v zápisu zprávy do výstupního datového proudu úlohy.
 
 ## <a name="scenario-powershell-job-fails-with-cannot-invoke-method-error-message"></a><a name="cannot-invoke-method"></a>Scénář: úloha PowerShellu se nezdařila s chybovou zprávou "nelze vyvolat metodu"
 

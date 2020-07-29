@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: d1440bf2b8af85b81355dbc43b695a85994e4b8d
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d6c82b1070f76cedcd84b8cd8a0a7bb6f683110d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124132"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285318"
 ---
 # <a name="azure-identity-management-security-overview"></a>Přehled zabezpečení služby Azure Identity Management
 
@@ -91,10 +91,10 @@ Další informace:
 
 RBAC je systém autorizace založený na Azure Resource Manageru, který poskytuje přesnou správu přístupu k prostředkům v Azure. RBAC umožňuje podrobné řízení úrovně přístupu uživatelů. Můžete například omezit uživatele tak, aby spravovali jenom virtuální sítě a jiného uživatele a spravovali všechny prostředky ve skupině prostředků. Azure obsahuje několik předdefinovaných rolí, které můžete využít. V následujícím seznamu najdete čtyři základní předdefinované role. První tři se vztahují ke všem typům prostředků.
 
-- [Owner (vlastník](/azure/role-based-access-control/built-in-roles.md#owner) ) – má úplný přístup ke všem prostředkům, včetně práva delegovat přístup ostatním uživatelům. 
-- [Přispěvatel](/azure/role-based-access-control/built-in-roles.md#contributor) – může vytvářet a spravovat všechny typy prostředků Azure, ale nemůže udělovat přístup jiným uživatelům.
-- [Čtenář](/azure/role-based-access-control/built-in-roles.md#reader) – může zobrazit existující prostředky Azure.
-- [Správce přístupu uživatele](/azure/role-based-access-control/built-in-roles.md#administrator) – umožňuje spravovat přístup uživatelů k prostředkům Azure.
+- [Owner (vlastník](/azure/role-based-access-control/built-in-roles#owner) ) – má úplný přístup ke všem prostředkům, včetně práva delegovat přístup ostatním uživatelům. 
+- [Přispěvatel](/azure/role-based-access-control/built-in-roles#contributor) – může vytvářet a spravovat všechny typy prostředků Azure, ale nemůže udělovat přístup jiným uživatelům.
+- [Čtenář](/azure/role-based-access-control/built-in-roles#reader) – může zobrazit existující prostředky Azure.
+- [Správce přístupu uživatele](/azure/role-based-access-control/built-in-roles#user-access-administrator) – umožňuje spravovat přístup uživatelů k prostředkům Azure.
 
 Další informace:
 

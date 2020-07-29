@@ -1,24 +1,26 @@
 ---
-author: baanders
-ms.author: baanders
+author: dominicbetts
+ms.author: dominicbetts
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/15/2019
-ms.openlocfilehash: d88d166e001e71cabdabc3a3d344adc4da19aa8c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6cd983b6421fc821853aa22d4dc2c297f672d292
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75453702"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87336887"
 ---
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud máte v úmyslu pokračovat v dalších článcích technologie Plug and Play IoT, můžete všechny prostředky, které jste použili v rámci tohoto rychlého startu, zachovat a znovu použít. Jinak můžete odstranit prostředky, které jste vytvořili v rámci tohoto rychlého startu, abyste se vyhnuli dalším poplatkům.
+Pokud máte v úmyslu pokračovat v dalších článcích technologie Plug and Play IoT, můžete všechny prostředky, které jste použili v tomto článku, zachovat a znovu použít. V opačném případě můžete odstranit prostředky, které jste vytvořili v tomto článku, abyste se vyhnuli dalším poplatkům.
 
-Pomocí tohoto příkazu pro rozhraní příkazového řádku Azure můžete odstranit jak centrum, tak i registrované zařízení najednou, a to tak, že odstraníte celou skupinu prostředků. (Nepoužívejte to ale v případě, že tyto prostředky sdílí skupinu prostředků s jinými prostředky, které máte k různým účelům.)
+Pomocí následujícího příkazu rozhraní příkazového řádku Azure můžete odstranit jak centrum, tak i registrované zařízení najednou. Tento příkaz nepoužívejte, pokud tyto prostředky sdílí skupinu prostředků s jinými prostředky, které chcete zachovat.
 
 ```azurecli-interactive
 az group delete --name <YourResourceGroupName>
 ```
+
 Pokud chcete odstranit jenom službu IoT Hub, spusťte následující příkaz pomocí Azure CLI:
 
 ```azurecli-interactive

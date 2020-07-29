@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: d85cd05ee6b40b6b660958330145ed0c61b1b0a3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 45a10ddce165626bfbadb0ba0b3d68b81709c3bb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539665"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326133"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Nejčastější dotazy k řešení Network Performance Monitor
 
@@ -19,7 +19,7 @@ ms.locfileid: "86539665"
 
 Tento článek zachycuje Nejčastější dotazy týkající se Network Performance Monitor (NPM) v Azure.
 
-[Network Performance Monitor](../../networking/network-monitoring-overview.md) je cloudové řešení [monitorování hybridní sítě](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md) , které vám pomůže monitorovat výkon sítě mezi různými body v infrastruktuře vaší sítě. Pomůže vám taky monitorovat síťové připojení ke [koncovým bodům služby a aplikace](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md) a [monitorovat výkon Azure ExpressRoute](../../azure-monitor/insights/network-performance-monitor-expressroute.md). 
+[Network Performance Monitor](../../networking/network-monitoring-overview.md) je cloudové řešení [monitorování hybridní sítě](./network-performance-monitor-performance-monitor.md) , které vám pomůže monitorovat výkon sítě mezi různými body v infrastruktuře vaší sítě. Pomůže vám taky monitorovat síťové připojení ke [koncovým bodům služby a aplikace](./network-performance-monitor-service-connectivity.md) a [monitorovat výkon Azure ExpressRoute](./network-performance-monitor-expressroute.md). 
 
 Network Performance Monitor detekuje problémy se sítí, jako jsou přenosy dat blackholing, chyby směrování a problémy, které nedokáže detekovat konvenční metody monitorování sítě. Toto řešení generuje výstrahy a upozorní vás, když u síťové linky dojde k překročení prahové hodnoty. Zajišťuje také včasné zjištění problémů s výkonem sítě a lokalizuje příčinu problému na konkrétní segment sítě nebo zařízení. 
 
@@ -40,7 +40,7 @@ Možnost monitorování sítí pomocí uzlů se systémem Linux je aktuálně ve
 Aby bylo možné spustit řešení NPM na virtuálních počítačích uzlů pro monitorování sítí, musí mít uzly alespoň 500 MB paměti a jednu jádro. Nemusíte používat samostatné uzly pro používání NPM. Řešení může běžet na uzlech, na kterých běží jiné úlohy. Řešení má možnost zastavit proces monitorování, pokud používá více než 5% CPU.
 
 ### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>Pokud chcete použít NPM, mám uzly připojit jako přímý agent nebo prostřednictvím System Center Operations Manager?
-Monitorování výkonu i možnosti monitorování připojení služby podporují uzly [připojené jako přímí agenti](../../azure-monitor/platform/agent-windows.md) a [připojení prostřednictvím Operations Manager](../../azure-monitor/platform/om-agents.md).
+Monitorování výkonu i možnosti monitorování připojení služby podporují uzly [připojené jako přímí agenti](../platform/agent-windows.md) a [připojení prostřednictvím Operations Manager](../platform/om-agents.md).
 
 Pro funkci monitorování ExpressRoute by uzly Azure měly být připojené pouze jako přímí agenti. Uzly Azure, které jsou připojené prostřednictvím Operations Manager, se nepodporují. U místních uzlů se pro monitorování okruhu ExpressRoute podporují uzly připojené jako přímí agenti a prostřednictvím Operations Manager.
 
@@ -49,12 +49,12 @@ Pokud sledujete síť pomocí uzlů založených na Windows serveru, doporučuje
 
 Protokol ICMP se doporučuje u klientských počítačů s operačním systémem Windows nebo klientských uzlů. Tato platforma neumožňuje odesílat data TCP přes nezpracované sokety, které NPM používá ke zjišťování síťové topologie.
 
-Můžete získat další podrobnosti o relativních výhodách [jednotlivých protokolů.](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md#choose-the-protocol)
+Můžete získat další podrobnosti o relativních výhodách [jednotlivých protokolů.](./network-performance-monitor-performance-monitor.md#choose-the-protocol)
 
 ### <a name="how-can-i-configure-a-node-to-support-monitoring-using-tcp-protocol"></a>Jak můžu nakonfigurovat uzel pro podporu monitorování pomocí protokolu TCP?
 Pro uzel, který podporuje monitorování pomocí protokolu TCP: 
 * Ujistěte se, že platforma Node je Windows Server (2008 SP1 nebo novější).
-* Spusťte [EnableRules.ps1](https://aka.ms/npmpowershellscript) skriptu PowerShellu na uzlu. Další podrobnosti najdete v [pokynech](../../azure-monitor/insights/network-performance-monitor.md#configure-log-analytics-agents-for-monitoring) .
+* Spusťte [EnableRules.ps1](https://aka.ms/npmpowershellscript) skriptu PowerShellu na uzlu. Další podrobnosti najdete v [pokynech](./network-performance-monitor.md#configure-log-analytics-agents-for-monitoring) .
 
 
 ### <a name="how-can-i-change-the-tcp-port-being-used-by-npm-for-monitoring"></a>Jak můžu změnit port TCP používaný službou NPM ke sledování?
@@ -182,15 +182,15 @@ NetworkMonitoring
 ```
 
 ### <a name="which-regions-are-supported-for-npms-performance-monitor"></a>Které oblasti jsou podporovány pro monitor výkonu NPM?
-NPM může monitorovat propojení mezi sítěmi v jakékoli části světa, od pracovního prostoru hostovaného v některé z [podporovaných oblastí](../../azure-monitor/insights/network-performance-monitor.md#supported-regions) .
+NPM může monitorovat propojení mezi sítěmi v jakékoli části světa, od pracovního prostoru hostovaného v některé z [podporovaných oblastí](./network-performance-monitor.md#supported-regions) .
 
 ### <a name="which-regions-are-supported-for-npms-service-connectivity-monitor"></a>Které oblasti jsou podporovány pro monitorování připojení služby NPM?
-NPM může monitorovat připojení ke službám v jakékoli části světa, od pracovního prostoru hostovaného v některé z [podporovaných oblastí](../../azure-monitor/insights/network-performance-monitor.md#supported-regions) .
+NPM může monitorovat připojení ke službám v jakékoli části světa, od pracovního prostoru hostovaného v některé z [podporovaných oblastí](./network-performance-monitor.md#supported-regions) .
 
 ### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>Které oblasti se podporují pro monitor ExpressRoute v NPM?
 NPM dokáže monitorovat vaše ExpressRoute okruhy, které jsou umístěné v libovolné oblasti Azure. K připojení do NPM budete potřebovat pracovní prostor Log Analytics, který musí být hostovaný v některé z [podporovaných oblastí](../../expressroute/how-to-npm.md) .
 
-## <a name="troubleshoot"></a>Odstraňování potíží
+## <a name="troubleshoot"></a>Řešení potíží
 
 ### <a name="why-are-some-of-the-hops-marked-as-unidentified-in-the-network-topology-view"></a>Proč jsou některé z směrování označeny jako neidentifikované v zobrazení síťové topologie?
 NPM používá upravenou verzi traceroute ke zjištění topologie ze zdrojového agenta do cíle. Neidentifikovaný skok znamená, že směrování sítě nereagovalo na žádost traceroute zdrojového agenta. Pokud tři po sobě jdoucí síťové segmenty nereagují na traceroute agenta, toto řešení označí nereagující chmel jako neidentifikovaný a nepokusí se zjistit další segmenty směrování.
@@ -299,4 +299,5 @@ NPM zaokrouhlí čísla latence v uživatelském rozhraní a v milisekundách. S
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o Network Performance Monitor odkazem na [řešení Network Performance Monitor v Azure](../../azure-monitor/insights/network-performance-monitor.md).
+- Přečtěte si další informace o Network Performance Monitor odkazem na [řešení Network Performance Monitor v Azure](./network-performance-monitor.md).
+

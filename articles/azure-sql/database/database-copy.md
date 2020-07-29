@@ -10,25 +10,23 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 02/24/2020
-ms.openlocfilehash: d92882014f66234be8a8b1d7063dae866ec6f230
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/27/2020
+ms.openlocfilehash: 4dd27a5d3bca5ca1c0395feb049d5a814211c539
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84045295"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87309252"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Kopírování přetransakční kopie databáze v Azure SQL Database
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Azure SQL Database poskytuje několik metod pro vytvoření reakční konzistence kopie existující [databáze](single-database-overview.md) na stejném nebo jiném serveru. Databázi můžete kopírovat pomocí Azure Portal, PowerShellu nebo T-SQL.
+Azure SQL Database poskytuje několik metod pro vytvoření kopie existující [databáze](single-database-overview.md) na stejném nebo jiném serveru. Databázi můžete kopírovat pomocí Azure Portal, PowerShellu, rozhraní příkazového řádku Azure nebo T-SQL.
 
 ## <a name="overview"></a>Přehled
 
-Kopie databáze je snímek zdrojové databáze v době žádosti o zkopírování. Můžete vybrat stejný server nebo jiný server. Můžete také zvolit, že se má zachovat vrstva služby a výpočetní velikost, nebo použít jinou výpočetní velikost v rámci stejné úrovně služby (edice). Po dokončení kopírování se tato kopie bude plně funkční a nezávislá databáze. V tuto chvíli můžete upgradovat nebo downgradovat na libovolnou edici. Přihlašovací jména, uživatele a oprávnění se dají spravovat nezávisle. Kopie se vytvoří pomocí technologie geografické replikace a po dokončení osazení se odkaz geografická replikace automaticky ukončí. Všechny požadavky na použití geografické replikace se vztahují na operaci kopírování databáze. Podrobnosti najdete v tématu [Aktivní geografická replikace – přehled](active-geo-replication-overview.md) .
-
-> [!NOTE]
-> [Automatizované zálohy databáze](automated-backups-overview.md) se používají při vytváření kopie databáze.
+Kopie databáze je nekonzistentně konzistentní snímek zdrojové databáze k určitému bodu v čase po zahájení žádosti o zkopírování. Pro kopii můžete vybrat stejný server nebo jiný server. Také se můžete rozhodnout zachovat úroveň služby a výpočetní velikost zdrojové databáze nebo použít jinou výpočetní velikost v rámci stejné nebo jiné úrovně služby. Po dokončení kopírování se tato kopie bude plně funkční a nezávislá databáze. Přihlašovací jména, uživatele a oprávnění ve zkopírované databázi jsou spravovány nezávisle na zdrojové databázi. Kopie se vytvoří pomocí technologie geografické replikace. Po dokončení počátečního dokončování repliky se připojení geografické replikace automaticky ukončí. Všechny požadavky na použití geografické replikace se vztahují na operaci kopírování databáze. Podrobnosti najdete v tématu [Aktivní geografická replikace – přehled](active-geo-replication-overview.md) .
 
 ## <a name="logins-in-the-database-copy"></a>Přihlašovací údaje v kopii databáze
 
@@ -170,7 +168,7 @@ Další informace o správě uživatelů a přihlášení po zkopírování data
 
 Při kopírování databáze v Azure SQL Database může dojít k následujícím chybám. Další informace najdete v tématu [Kopírování databáze služby Azure SQL Database](database-copy.md).
 
-| Kód chyby | Severity | Description |
+| Kód chyby | Závažnost | Popis |
 | ---:| ---:|:--- |
 | 40635 |16 |Klient s IP adresou%. &#x2a;LS je dočasně zakázaný. |
 | 40637 |16 |Vytvoření kopie databáze je aktuálně zakázané. |

@@ -9,14 +9,15 @@ ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.author: ryanwi
-ms.reviewer: hirsin
+ms.author: kenwith
+ms.reviewer: paulgarn
 ms.custom: aaddev
-ms.openlocfilehash: 1cd79b1f9e4cd3afadee250da0c184c0c5b8ac07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d745ddcf7b1d5bd7976a0ca8461c13d8ae3c849
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80886173"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282377"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft Identity Platform a OAuth 2,0 – tok kontrolního výrazu SAML
 Tok kontrolního výrazu SAML 2,0 OAuth vám umožní požádat o přístupový token OAuth pomocí kontrolního výrazu SAML, když klient potřebuje použít stávající vztah důvěryhodnosti. Signatura použitá pro kontrolní výraz SAML zajišťuje ověřování autorizované aplikace. Kontrolní výraz SAML je token zabezpečení XML vydaný zprostředkovatelem identity a spotřebovaný poskytovatelem služeb. Poskytovatel služeb spoléhá na jeho obsah, aby identifikoval Předmět kontrolního výrazu pro účely související se zabezpečením.

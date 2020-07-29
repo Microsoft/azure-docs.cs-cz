@@ -5,12 +5,12 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
-ms.openlocfilehash: ec516ac1cd9c2a6201bfc77bd1169bcd8ea83e44
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1f64c7aa45b748bdb8174bd69dbfc25f43329c10
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091500"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285335"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>Replikace virtuálních počítačů Azure běžících ve skupinách umístění s blízkými změnami do jiné oblasti
 
@@ -28,14 +28,21 @@ V typickém scénáři můžete mít virtuální počítače běžící ve skupi
 -  Pokud je skupina dostupnosti připnuté do skupiny umístění blízkosti a během virtuálních počítačů s podporou převzetí služeb při selhání/navrácení služeb po obnovení mají v sadě dostupnosti omezení přidělení, vytvoří se virtuální počítače mimo skupinu dostupnosti a umístění blízkosti.
 -  U nespravovaných disků není podporováno Site Recovery pro skupiny umístění blízkosti.
 
-> [!Note]
+> [!NOTE]
 > Azure Site Recovery nepodporuje navrácení služeb po obnovení ze spravovaných disků pro scénáře Hyper-V do Azure. Z tohoto důvodu není podporováno navrácení služeb po obnovení ze skupiny umístění v Azure do technologie Hyper-V.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. Ujistěte se, že máte Azure PowerShell AZ Module. Pokud potřebujete nainstalovat nebo upgradovat Azure PowerShell, postupujte podle pokynů v tomto [Průvodci a nainstalujte a nakonfigurujte Azure PowerShell](/powershell/azure/install-az-ps).
+2. Minimální Azure PowerShell AZ verze by měl být 4.1.0. Chcete-li zjistit aktuální verzi, použijte následující příkaz –
+    ```
+    Get-InstalledModule -Name Az
+    ```
 
 ## <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>Nastavit Site Recovery pro Virtual Machines ve skupině umístění blízkosti
+
+> [!NOTE]
+> Ujistěte se, že máte jedinečné ID cílové skupiny umístění blízkosti. Pokud vytváříte novou skupinu umístění pro Proximity, zkontrolujte [následující](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#create-a-proximity-placement-group) příkaz a pokud používáte existující skupinu umístění do blízkosti, použijte tento [příkaz.](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#list-proximity-placement-groups)
 
 ### <a name="azure-to-azure"></a>Azure do Azure
 
@@ -48,7 +55,7 @@ V typickém scénáři můžete mít virtuální počítače běžící ve skupi
 7. Pomocí [těchto](./azure-to-azure-powershell.md#create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container) kroků a mapování kontejneru ochrany pro navrácení služeb po obnovení vytvořte mapování kontejnerů ochrany mezi primárním kontejnerem a ochranou kontejneru ochrany, jak je uvedeno [zde](./azure-to-azure-powershell.md#create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover).
 8. Pomocí [následujících kroků vytvořte](./azure-to-azure-powershell.md#create-cache-storage-account-and-target-storage-account) účet úložiště mezipaměti.
 9. Vytvořte požadovaná mapování sítě, jak je uvedeno [zde](./azure-to-azure-powershell.md#create-network-mappings).
-10. Pokud chcete replikovat virtuální počítač Azure se spravovanými disky, použijte níže uvedenou rutinu prostředí PowerShell – 
+10. Pokud chcete replikovat virtuální počítač Azure se spravovanými disky, použijte níže uvedenou rutinu PowerShellu.
 
 ```azurepowershell
 #Get the resource group that the virtual machine must be created in when failed over.
@@ -77,7 +84,7 @@ $diskconfigs += $OSDiskReplicationConfig, $DataDisk1ReplicationConfig
 
 #Start replication by creating replication protected item. Using a GUID for the name of the replication protected item to ensure uniqueness of name.
 
-$TempASRJob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryProximityPlacementGroupId $recPpg.Id
+$TempASRJob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryProximityPlacementGroupId $targetPpg.Id
 ```
 Po úspěšném dokončení operace spuštění replikace se data virtuálního počítače replikují do oblasti obnovení.
 
@@ -85,7 +92,7 @@ Proces replikace začíná prvním vynásobením kopie replikačních disků vir
 
 Po dokončení počáteční replikace se replikace přesune do fáze rozdílové synchronizace. V tuto chvíli je virtuální počítač chráněný a na něm může být prováděna operace testovacího převzetí služeb při selhání. Stav replikace replikované položky představující virtuální počítač přejde do chráněného stavu po dokončení počáteční replikace.
 
-Sledujte stav replikace a stav replikace pro virtuální počítač tím, že získáte podrobné informace o položce chráněné replikace, která je pro ni odpovídající. 
+Sledujte stav replikace a stav replikace pro virtuální počítač tím, že získáte podrobné informace o položce chráněné replikace, která je pro ni odpovídající.
 
 ```azurepowershell
 Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $PrimaryProtContainer | Select FriendlyName, ProtectionState, ReplicationHealth
@@ -130,7 +137,7 @@ $VM1 = Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $Protection
 
 # Enable replication for virtual machine CentOSVM1 using the Az.RecoveryServices module 2.0.0 onwards to replicate to managed disks
 # The name specified for the replicated item needs to be unique within the protection container. Using a random GUID to ensure uniqueness
-$Job_EnableReplication1 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM1 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -logStorageAccountId $LogStorageAccount.Id -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1" -RecoveryProximityPlacementGroupId $recPpg.Id
+$Job_EnableReplication1 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM1 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -logStorageAccountId $LogStorageAccount.Id -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1" -RecoveryProximityPlacementGroupId $targetPpg.Id
 ```
 8. Stav replikace a stav replikace virtuálního počítače můžete zjistit pomocí rutiny Get-ASRReplicationProtectedItem.
 
@@ -161,7 +168,7 @@ Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Protecti
     
     ```azurepowershell
     $OSType = "Windows"          # "Windows" or "Linux"
-    $DRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping -RecoveryAzureStorageAccountId   $StorageAccountID -OSDiskName $OSDiskNameList[$i] -OS $OSType -RecoveryResourceGroupId $ResourceGroupID -RecoveryProximityPlacementGroupId $recPpg.Id
+    $DRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping -RecoveryAzureStorageAccountId   $StorageAccountID -OSDiskName $OSDiskNameList[$i] -OS $OSType -RecoveryResourceGroupId $ResourceGroupID -RecoveryProximityPlacementGroupId $targetPpg.Id
     ```
     c. Počkejte, až virtuální počítače dostanou chráněný stav po počáteční replikaci. To může nějakou dobu trvat, v závislosti na faktorech, jako je třeba množství dat, která se mají replikovat, a dostupné nadřazené šířky pásma do Azure. Pokud je chráněný stav na místě, aktualizují se stav úlohy a StateDescription následujícím způsobem: 
     

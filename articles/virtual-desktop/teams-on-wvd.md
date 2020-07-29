@@ -5,20 +5,20 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 05/29/2020
+ms.date: 07/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: baab0160247e17556f0928f12f26a5ecca767210
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f6185cbb871d63cfdf5a4c336944158593b63e4a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129300"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372837"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Použití Microsoft Teams na virtuálním počítači s Windows
 
 >[!IMPORTANT]
->Optimalizace médií pro Microsoft Teams je aktuálně ve verzi Public Preview. Před nasazením týmů pro produkční úlohy doporučujeme vyhodnotit uživatelské prostředí optimalizované týmy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
+>Optimalizace médií pro týmy není podporovaná Microsoft 365mi státními prostředími.
 
 >[!NOTE]
 >Optimalizace médií pro Microsoft Teams je k dispozici pouze pro stolního klienta Windows na počítačích s Windows 10. Optimalizace médií vyžadují desktopový klient Windows verze 1.2.1026.0 nebo novější.
@@ -27,7 +27,7 @@ Microsoft Teams na virtuálním počítači s Windows podporuje chat a spoluprá
 
 Díky optimalizaci médií pro Microsoft Teams klient pro stolní počítače s Windows zpracovává zvuk a video místně pro volání a schůzky týmů. Na virtuálním počítači s Windows můžete dál používat Microsoft Teams s ostatními klienty bez optimalizovaného volání a schůzek. Týmy a funkce pro spolupráci jsou podporované na všech platformách. Pokud chcete přesměrovat místní zařízení ve vzdálené relaci, přečtěte si [Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) pro fond hostitelů](#customize-remote-desktop-protocol-properties-for-a-host-pool).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete moct používat Microsoft Teams na virtuálním počítači s Windows, musíte provést tyto akce:
 
@@ -53,15 +53,21 @@ Pokud chcete povolit optimalizaci médií pro týmy, nastavte na hostiteli násl
 
 ### <a name="install-the-teams-websocket-service"></a>Instalace služby WebSocket pro týmy
 
-Nainstalujte do image virtuálního počítače [službu WebSocket](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj0i) . Pokud dojde k chybě instalace, nainstalujte [nejnovější Microsoft Visual C++ Distribuovatelný](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) a zkuste to znovu.
+Na image virtuálního počítače nainstalujte nejnovější [službu WebSocket](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4AQBt) . Pokud dojde k chybě instalace, nainstalujte [nejnovější Microsoft Visual C++ Distribuovatelný](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) a zkuste to znovu.
 
 #### <a name="latest-websocket-service-versions"></a>Nejnovější verze služby WebSocket
 
-V následující tabulce jsou uvedeny aktuální verze, které jsou k dispozici pro jednotlivé skupiny uživatelů:
+V následující tabulce jsou uvedeny nejnovější verze služby WebSocket Service:
 
-|Verze    |Datum vydání  |
-|-----------|--------------|
-|0.11.0     |05/29/2020    |
+|Verze        |Datum vydání  |
+|---------------|--------------|
+|1.0.2006.11001 |07/28/2020    |
+|0.11.0         |05/29/2020    |
+
+#### <a name="updates-for-version-10200611001"></a>Aktualizace pro 1.0.2006.11001 verze
+
+- Opravili jsme problém, kdy se minimalizuje aplikace Teams během volání nebo setkání způsobilo vyřazení příchozího videa.
+- Přidání podpory pro výběr jednoho monitorování pro sdílení v relacích s více monitory.
 
 ### <a name="install-microsoft-teams"></a>Instalace Microsoft Teams
 
@@ -117,7 +123,7 @@ Po instalaci služby WebSocket a desktopové aplikace Teams použijte následuj�
 
 3. Vyberte svůj obrázek profilu uživatele a pak vyberte **Nastavení**.
 
-      Pokud se načtou optimalizace médií, budou se zvuková zařízení a kamery dostupné místně zobrazit v nabídce zařízení. Pokud se v nabídce zobrazuje **vzdálené zvuky**, ukončete aplikaci teams a zkuste to znovu. Pokud se zařízení v nabídce ještě nezobrazují, vraťte se zpátky k [instalaci Microsoft Teams](#install-microsoft-teams) a ujistěte se, že jste dokončili proces instalace.
+      Pokud se načtou optimalizace médií, budou se zvuková zařízení a kamery dostupné místně zobrazit v nabídce zařízení. Pokud se v nabídce zobrazuje **vzdálené zvuky**, ukončete aplikaci teams a zkuste to znovu. Pokud se zařízení v nabídce ještě nezobrazí, podívejte se na nastavení ochrany osobních údajů na místním počítači. Ujistěte se, že **Nastavení**  >  **Privacy**  >  **oprávnění aplikace** soukromí nastavení **povoluje aplikacím přístup k vašemu mikrofonu** **zapnuté**. Odpojte se od vzdálené relace a pak znovu připojte a znovu zkontrolujte zvuková zařízení a videa. Pokud chcete spojit volání a schůzky s videem, musíte taky udělit oprávnění aplikacím pro přístup k vaší kameře.
 
 ## <a name="known-issues-and-limitations"></a>Známé problémy a omezení
 
@@ -133,9 +139,7 @@ Použití týmů ve virtualizovaném prostředí se liší od použití týmů v
 ### <a name="calls-and-meetings"></a>Volání a schůzky
 
 - Desktopový klient pro týmy v prostředích virtuálních ploch Windows nepodporuje živé události. Prozatím doporučujeme připojit živé události od [webového klienta Teams](https://teams.microsoft.com) ve vzdálené relaci.
-- Minimalizace aplikace Teams během volání nebo schůzky může vést k tomu, že při rozbalení aplikace dojde k nezobrazení příchozího informačního kanálu videa.
 - Volání nebo schůzky aktuálně nepodporují sdílení aplikací. Relace plochy podporují sdílení plochy.
-- Když se v nastavení s více monitory sdílí Desktop, sdílí se všechna monitorování.
 - Poskytněte řízení a převzít řízení, které se v tuto chvíli nepodporují.
 - Týmy na virtuálním počítači s Windows podporují jenom jeden příchozí vstup videa. To znamená, že když se někdo pokusí sdílet svoji obrazovku, zobrazí se jejich obrazovka místo na obrazovce vedoucího ovládacího prvku schůzky.
 - V důsledku omezení WebRTC je řešení příchozího a odchozího streamování videa omezené na 720p.

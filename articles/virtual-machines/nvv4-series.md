@@ -5,15 +5,15 @@ services: virtual-machines
 ms.subservice: sizes
 author: vikancha-MSFT
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: e12124ee2d87a14c6e7cb1704fbe50c6300c1240
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 3eaaad036403cf8e5285f3345b52be976e381dd6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045718"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284740"
 ---
 # <a name="nvv4-series"></a>Řada NVv4 
 
@@ -49,8 +49,8 @@ Ruční instalace ovladačů AMD GPU najdete v tématu [instalace ovladačů AMD
 ## <a name="other-sizes"></a>Jiné velikosti
 
 - [Obecné účely](sizes-general.md)
-- [Optimalizované z hlediska paměti](sizes-memory.md)
-- [Optimalizované z hlediska úložiště](sizes-storage.md)
+- [Optimalizované pro paměť](sizes-memory.md)
+- [Optimalizované pro úložiště](sizes-storage.md)
 - [Optimalizované z hlediska GPU](sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 - [Předchozí generace](sizes-previous-gen.md)

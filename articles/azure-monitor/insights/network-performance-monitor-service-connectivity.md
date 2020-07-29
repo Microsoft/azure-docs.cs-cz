@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 0ba93db3e692a34de42849b469978cea4459c6fc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dd8dcbe136558e997ca16a2d9754cbf1c4e7620b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498861"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326099"
 ---
 # <a name="service-connectivity-monitor"></a>Monitorování připojení služby
 
@@ -75,7 +75,7 @@ Začněte vytvářet testy pro monitorování síťového připojení k koncový
 
 
 
-## <a name="walkthrough"></a>Návod 
+## <a name="walkthrough"></a>Názorný postup 
 
 Přejít do zobrazení řídicího panelu Network Performance Monitor. Chcete-li získat souhrn stavu různých testů, které jste vytvořili, podívejte se na stránku **monitorování připojení služby** . 
 
@@ -133,4 +133,5 @@ Pro oblast) – Virginia pro státní správu USA jsou integrované NPMy jenom a
 | MS Teams | gov.teams.microsoft.us | 
 
 ## <a name="next-steps"></a>Další kroky
-V [protokolech hledání](../../azure-monitor/log-query/log-query-overview.md) zobrazíte podrobné záznamy dat o výkonu sítě.
+V [protokolech hledání](../log-query/log-query-overview.md) zobrazíte podrobné záznamy dat o výkonu sítě.
+

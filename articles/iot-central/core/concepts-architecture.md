@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 12ad231d81b6c134ebb8d4902b3f95c978e9622d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e4b81f2350795b1244289119d714e99bc06ba6f
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695330"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337139"
 ---
 # <a name="azure-iot-central-architecture"></a>Architektura služby Azure IoT Central
 
@@ -29,7 +30,7 @@ Zařízení vyměňují data v aplikaci Azure IoT Central. Zařízení může:
 - Odesílejte měření, jako je telemetrie.
 - Synchronizujte nastavení s vaší aplikací.
 
-V Azure IoT Central se data, která zařízení můžou vyměňovat s vaší aplikací, zadává v šabloně zařízení. Další informace o šablonách zařízení najdete v tématu [Správa metadat](#metadata-management).
+V Azure IoT Central se data, která si zařízení může vyměňovat s vaší aplikací, zadávají v šabloně zařízení. Další informace o šablonách zařízení najdete v tématu [Správa metadat](#metadata-management).
 
 Další informace o tom, jak se zařízení připojují k aplikaci Azure IoT Central, najdete v tématu [připojení zařízení](concepts-get-connected.md).
 
@@ -134,7 +135,7 @@ V aplikaci IoT Central Azure definují šablony zařízení chování a možnost
 
 V šabloně zařízení IoT Central aplikace obsahuje:
 
-- **Modely schopností zařízení** určují možnosti zařízení, jako je například telemetrie, kterou posílá, vlastnosti, které definují stav zařízení, a příkazy, na které zařízení reaguje. Možnosti zařízení jsou uspořádány do jednoho nebo více rozhraní. Další informace o modelech schopností zařízení najdete v dokumentaci k [IoT technologie Plug and Play (Preview)](../../iot-pnp/overview-iot-plug-and-play.md) .
+- **Modely schopností zařízení** určují možnosti zařízení, jako je například telemetrie, kterou posílá, vlastnosti, které definují stav zařízení, a příkazy, na které zařízení reaguje. Možnosti zařízení jsou uspořádány do jednoho nebo více rozhraní.
 - **Vlastnosti cloudu** určují vlastnosti IoT Central úložišť pro zařízení. Tyto vlastnosti jsou uloženy pouze v IoT Central a nejsou nikdy odesílány do zařízení.
 - **Zobrazení** určují řídicí panely a formuláře, které tvůrce vytvoří, aby mohl obsluhu monitorovat a spravovat zařízení.
 - **Přizpůsobení** umožní tvůrci přepsat některé definice v modelu schopností zařízení, aby byly lépe relevantní pro IoT Central aplikace.

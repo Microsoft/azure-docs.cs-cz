@@ -8,14 +8,15 @@ ms.author: luquinta
 ms.reviewer: luquinta
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.date: 07/09/2020
-ms.openlocfilehash: 2deb939745647636cc04ae124d1e843db0bef7f6
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 5ec6af894f434f8d1f7df34b2ed0c2514ab88cc4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206499"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87306141"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>Správa prostředků Azure Machine Learning s rozšířením VS Code (Preview)
 
@@ -23,7 +24,7 @@ Naučte se spravovat Azure Machine Learning prostředky s rozšířením VS Code
 
 ![Rozšíření Azure Machine Learning VS Code](media/how-to-manage-resources-vscode/azure-machine-learning-vscode-extension.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud ho ještě nemáte, zaregistrujte se a vyzkoušejte si [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 - Visual Studio Code. Pokud ho nemáte, [nainstalujte ho](https://code.visualstudio.com/docs/setup/setup-overview).

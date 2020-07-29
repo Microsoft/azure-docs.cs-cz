@@ -10,12 +10,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 34ffa7a9fe9bd129fa3fd572bc8ef4d80b43ab9b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4ff61687f2fa045b51dfcb69488d1fbd87b65f75
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322971"
+ms.locfileid: "87336493"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Syntaxe dotazu směrování zpráv IoT Hubu
 
@@ -59,9 +59,10 @@ Vlastnosti systému vám pomůžou identifikovat obsah a zdroj zpráv.
 | contentEncoding | řetězec | Uživatel Určuje typ kódování zprávy. Povolené hodnoty jsou UTF-8, UTF-16, UTF-32, pokud je contentType nastavený na Application/JSON. |
 | iothub-ID zařízení-připojení | řetězec | Tato hodnota je nastavena IoT Hub a identifikuje ID zařízení. K dotazování použijte `$connectionDeviceId` . |
 | iothub – enqueuedtime | řetězec | Tato hodnota je nastavena IoT Hub a představuje skutečný čas enqueuing zprávy ve standardu UTC. K dotazování použijte `enqueuedTime` . |
-| iothub – název rozhraní | řetězec | Tato hodnota je nastavena uživatelem a představuje název digitálního vlákna, které implementuje zprávu telemetrie. K dotazování použijte `$interfaceName` . Tato funkce je k dispozici jako součást [IoT technologie Plug and Play Public Preview](../iot-pnp/overview-iot-plug-and-play.md). |
+| DT-DataSchema | řetězec |  Tuto hodnotu nastavuje služba IoT Hub pro zprávy ze zařízení do cloudu. Obsahuje ID modelu zařízení nastavené v připojení zařízení. Tato funkce je k dispozici jako součást [IoT technologie Plug and Play Public Preview](../iot-pnp/overview-iot-plug-and-play.md). K dotazování použijte `$dt-dataschema` . |
+| DT – předmět | řetězec | Název součásti odesílající zprávy typu zařízení-Cloud. Tato funkce je k dispozici jako součást [IoT technologie Plug and Play Public Preview](../iot-pnp/overview-iot-plug-and-play.md). K dotazování použijte `$dt-subject` . |
 
-Jak je popsáno v [IoT Hub zprávy](iot-hub-devguide-messages-construct.md), ve zprávě jsou další vlastnosti systému. Kromě **ContentType**, **contentEncoding**a **EnqueuedTime**lze také zadat dotaz **connectionDeviceId** a **connectionModuleId** .
+Jak je popsáno v [IoT Hub zprávy](iot-hub-devguide-messages-construct.md), ve zprávě jsou další vlastnosti systému. Kromě výše uvedených vlastností v předchozí tabulce můžete také zadat dotaz na **connectionDeviceId**, **connectionModuleId**.
 
 ### <a name="application-properties"></a>Vlastnosti aplikace
 

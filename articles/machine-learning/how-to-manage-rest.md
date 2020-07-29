@@ -7,15 +7,15 @@ ms.author: laobri
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.date: 01/31/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 90ad8cc87f1d6a1893b96f6201a4260c03c94fee
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: 8aebcfc2a46de3922dbc41942e63e71844de6e83
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072202"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319741"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Vytváření, spouštění a odstraňování prostředků Azure ML pomocí REST
 
@@ -33,7 +33,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Použití požadavků DELETE k vyčištění prostředků 
 > * Použití autorizace na základě klíčů k určení skóre nasazených modelů
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - **Předplatné Azure** , pro které máte práva správce. Pokud nemáte takové předplatné, vyzkoušejte [bezplatné nebo placené osobní předplatné](https://aka.ms/AMLFree) .
 - [Pracovní prostor Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
@@ -204,8 +204,8 @@ Všimněte si, že pokud chcete zobrazit seznam experimentů, na které začín�
 
 |Oblast|Cesta|
 |-|-|
-|Artifacts|artefakt/v 2.0/|
-|Úložiště dat|úložiště dat/v 1.0/|
+|Artifacts|/rest/api/azureml|
+|Úložiště dat|/azure/machine-learning/how-to-access-data|
 |Ladění hyperparametrů|Hyperdrive/v 1.0/|
 |Modely|modelmanagement/v 1.0/|
 |Historie spuštění|provádění/v 1.0/a historie/v 1.0/|
@@ -403,7 +403,7 @@ providers/Microsoft.Storage/storageAccounts/{your-storage-account-name}"
 
 Měli byste obdržet `202 Accepted` odpověď a v vrácených hlavičkách `Location` identifikátor URI. Tento identifikátor URI můžete získat pro informace o nasazení, včetně užitečných ladicích informací, pokud dojde k potížím s některým závislými prostředky (například pokud jste zapomněli povolit přístup správce k vašemu registru kontejneru). 
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="resource-provider-errors"></a>Chyby poskytovatele prostředků
 

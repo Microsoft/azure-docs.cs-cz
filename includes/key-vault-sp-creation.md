@@ -4,12 +4,12 @@ ms.service: key-vault
 ms.topic: include
 ms.date: 07/20/2020
 ms.author: msmbaldwin
-ms.openlocfilehash: 07f856994b57e415ece063050b76dcd891698943
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c6a9f17d46ef8feb571c0ecc7a0a93a169f74725
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87013089"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285542"
 ---
 Nejjednodušší způsob, jak ověřit cloudovou aplikaci v Pythonu, je spravovaná identita; Podrobnosti najdete v tématu [použití spravované identity App Service pro přístup k Azure Key Vault](/azure/key-vault/general/managed-identity) . 
 
@@ -18,7 +18,7 @@ V zájmu zjednodušení ale v tomto rychlém startu se vytvoří desktopová apl
 Vytvořte instanční objekt pomocí příkazu Azure CLI [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) :
 
 ```azurecli
-az ad sp create-for-rbac -n "http://&lt;my-unique-service-principal-name&gt;" --sdk-auth
+az ad sp create-for-rbac -n "http://<my-unique-service-principal-name>" --sdk-auth
 ```
 
 Tato operace vrátí řadu párů klíč/hodnota.

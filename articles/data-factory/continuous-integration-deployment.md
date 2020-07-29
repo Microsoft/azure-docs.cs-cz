@@ -11,11 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: d997c6d4eae93290cbb1e4cafe6c7ad662a65933
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c12cfc21668a13586d94089a7049f6f0d6066d7
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85336866"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87336918"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Průběžná integrace a doručování v Azure Data Factory
 
@@ -48,7 +49,7 @@ Níže najdete ukázkový Přehled životního cyklu CI/CD v objektu pro vytvá�
 
 1.  Po schválení žádosti o přijetí změn a jejich sloučení do hlavní větve se změny publikují do továrny pro vývoj.
 
-1.  Když je tým připraven k nasazení změn do testu nebo UAT továrny, tým přejde na jejich Azure Pipelines vydání a nasadí požadovanou verzi vývojové továrny do UAT. Toto nasazení probíhá v rámci úlohy Azure Pipelines a k použití příslušné konfigurace používá Správce prostředků parametrů šablony.
+1.  Když je tým připraven k nasazení změn do objektu test nebo UAT (testování přijetí uživateli), tým přejde na jejich Azure Pipelines vydání a nasadí požadovanou verzi vývojového objektu UAT. Toto nasazení probíhá v rámci úlohy Azure Pipelines a k použití příslušné konfigurace používá Správce prostředků parametrů šablony.
 
 1.  Po ověření změn v továrně testu proveďte nasazení do produkčního továrny pomocí další úlohy vydání kanálů.
 
@@ -304,7 +305,7 @@ Tady je příklad toho, co může šablona Parametrizace vypadat jako:
 ```
 Zde je vysvětlení, jak je předchozí šablona vytvořena, rozdělená podle typu prostředku.
 
-#### <a name="pipelines"></a>Pipelines
+#### <a name="pipelines"></a>Kanály
     
 * Vlastnost v cestě `activities/typeProperties/waitTimeInSeconds` je parametrizovaná. Všechny aktivity v kanálu, které mají vlastnost na úrovni kódu s názvem `waitTimeInSeconds` (například `Wait` aktivita), jsou parametrizované jako číslo s výchozím názvem. V šabloně Správce prostředků ale nebude mít výchozí hodnotu. Během nasazení Správce prostředků se bude jednat o povinný vstup.
 * Podobně je vlastnost s názvem `headers` (například v `Web` aktivitě) Parametrizovaná s typem `object` (JObject). Má výchozí hodnotu, která je stejná jako hodnota zdrojové továrny.
@@ -313,7 +314,7 @@ Zde je vysvětlení, jak je předchozí šablona vytvořena, rozdělená podle t
 
 * Všechny vlastnosti v cestě `typeProperties` jsou parametrizované s příslušnými výchozími hodnotami. Například existují dvě vlastnosti v části `IntegrationRuntimes` vlastnosti typu: `computeProperties` a `ssisProperties` . Oba typy vlastností jsou vytvořeny s příslušnými výchozími hodnotami a typy (Object).
 
-#### <a name="triggers"></a>Aktivační události
+#### <a name="triggers"></a>Aktivační procedury
 
 * V rámci `typeProperties` jsou parametrizované dvě vlastnosti. První z nich je `maxConcurrency` , který má mít výchozí hodnotu a je typu `string` . Má výchozí název parametru `<entityName>_properties_typeProperties_maxConcurrency` .
 * `recurrence`Vlastnost také je parametrizovaná. V takovém případě jsou všechny vlastnosti na dané úrovni parametrizované jako řetězce s výchozími hodnotami a názvy parametrů. Výjimka je `interval` vlastnost, která je parametrizovaná jako typ `number` . Název parametru je s příponou `<entityName>_properties_typeProperties_recurrence_triggerSuffix` . Podobně tato `freq` vlastnost je řetězec a je parametrizovaná jako řetězec. `freq`Vlastnost je však Parametrizovaná bez výchozí hodnoty. Název je zkrácen a přípona. Například, `<entityName>_freq`.

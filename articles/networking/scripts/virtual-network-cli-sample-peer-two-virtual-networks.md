@@ -1,6 +1,6 @@
 ---
 title: Ukázkový skript Azure CLI – partnerských dvou virtuálních sítí | Microsoft Docs
-description: Ukázkový skript Azure CLI – partnerských dvou virtuálních sítí
+description: Pomocí ukázkového skriptu Azure CLI můžete vytvořit a propojit dvě virtuální sítě ve stejné oblasti prostřednictvím sítě Azure.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
-ms.openlocfilehash: c301c66c3b668ae48314c4d1eb06657d8573209c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a4c3c353e87ad88d7bae10ae011bdd59e7992309
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87030398"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282088"
 ---
 # <a name="use-an-azure-cli-sample-script-to-connect-two-virtual-networks"></a>Připojení dvou virtuálních sítí pomocí ukázkového skriptu Azure CLI
 

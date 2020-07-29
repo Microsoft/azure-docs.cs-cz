@@ -7,11 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e1ba623a00c84a7b83afe778c808251e49c7008e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 072fa659d6f5cf55da4dfc99cfed38220be70812
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515348"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337343"
 ---
 # <a name="deploy-azure-file-sync"></a>Nasazení Synchronizace souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -29,7 +30,7 @@ Před dokončením kroků popsaných v tomto článku důrazně doporučujeme, a
     $PSVersionTable.PSVersion
     ```
 
-    Pokud je hodnota PSVersion menší než 5,1. \* , stejně jako se jedná o případ s nejnovějšími instalacemi systému Windows Server 2012 R2, můžete snadno upgradovat stažením a instalací [rozhraní Windows Management Framework (WMF) 5,1](https://www.microsoft.com/download/details.aspx?id=54616). Příslušný balíček ke stažení a instalaci pro Windows Server 2012 R2 je **Win 8.1 andw2k12r2-KB \* \* \* \* \* \* \* -x64. msu**. 
+    Pokud je hodnota **PSVersion** menší než 5,1. \* , stejně jako se jedná o případ s nejnovějšími instalacemi systému Windows Server 2012 R2, můžete snadno upgradovat stažením a instalací [rozhraní Windows Management Framework (WMF) 5,1](https://www.microsoft.com/download/details.aspx?id=54616). Příslušný balíček ke stažení a instalaci pro Windows Server 2012 R2 je **Win 8.1 andw2k12r2-KB \* \* \* \* \* \* \* -x64. msu**. 
 
     PowerShell 6 + se dá použít s libovolným podporovaným systémem a dá se stáhnout přes jeho [stránku GitHubu](https://github.com/PowerShell/PowerShell#get-powershell). 
 
@@ -214,6 +215,8 @@ Registrací vašeho Windows Serveru ve službě synchronizace úložiště se vy
 
 > [!Note]
 > Registrace serveru používá vaše přihlašovací údaje Azure k vytvoření důvěryhodného vztahu mezi službou synchronizace úložiště a vaším Windows serverem, ale server vytvoří a použije svou vlastní identitu, která je platná, dokud server zůstane zaregistrovaný a že je platný token sdíleného přístupového podpisu (SAS úložiště). Po zrušení registrace serveru nejde na server vydat nový token SAS, takže odeberete možnost serveru pro přístup ke sdíleným složkám Azure a zastavte synchronizaci.
+
+Správce, který registruje Server, musí být členem role pro správu **vlastníka** nebo **přispěvatele** pro danou službu synchronizace úložiště. Tato možnost se dá nakonfigurovat v části **Access Control (IAM)** v Azure Portal pro službu synchronizace úložiště.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 Uživatelské rozhraní pro registraci serveru by se mělo po instalaci agenta Azure File Sync otevřít automaticky. Pokud ne, můžete ho otevřít ručně z umístění jeho souboru: C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe. Po otevření uživatelského rozhraní registrace serveru vyberte možnost **Přihlásit** se a začněte.

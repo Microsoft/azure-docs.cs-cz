@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 03/27/2020
-ms.openlocfilehash: d8da5bb32836ff50240bf6b781227fde8839be5c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/27/2020
+ms.openlocfilehash: 00efa3ea6fcd299dcdc51b3002d6b0459edf2ec4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087998"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281153"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Konfigurace a Správa ověřování Azure AD pomocí Azure SQL
 
@@ -75,7 +75,7 @@ Při použití Azure Active Directory s geografickou replikací musí být sprá
 
 Vaše spravovaná instance SQL potřebuje oprávnění ke čtení služby Azure AD, aby bylo možné úspěšně provádět úlohy, jako je například ověřování uživatelů prostřednictvím členství ve skupině zabezpečení nebo vytváření nových uživatelů. Aby to fungovalo, musíte pro čtení Azure AD udělit oprávnění ke spravované instanci SQL. Můžete to provést pomocí Azure Portal nebo PowerShellu.
 
-### <a name="azure-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 Pokud chcete vašemu účtu SQL Managed instance udělit oprávnění ke čtení Azure AD pomocí Azure Portal, přihlaste se jako globální správce nebo jako správce společnosti ve službě Azure AD a proveďte tyto kroky:
 
@@ -234,11 +234,9 @@ Další informace o příkazech rozhraní příkazového řádku najdete v téma
 
 Následující dva postupy vám ukážou, jak zřídit správce Azure Active Directory pro váš server v Azure Portal a pomocí PowerShellu.
 
-### <a name="azure-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 1. V [Azure Portal](https://portal.azure.com/)v pravém horním rohu výběrem svého připojení vyrozevíracíte seznam možných aktivních adresářů. Vyberte správnou službu Active Directory jako výchozí službu Azure AD. Tento krok propojí službu Active Directory přidruženou k předplatnému se serverem, aby se zajistilo, že se stejné předplatné používá pro Azure AD i server.
-
-    ! [Volba-AD] 8
 
 2. Vyhledejte a vyberte **SQL Server**.
 
@@ -538,8 +536,11 @@ Pokyny k řešení problémů s ověřováním Azure AD najdete na následujíc�
 - Další informace o objektech zabezpečení databáze najdete v tématu [Objekty zabezpečení](https://msdn.microsoft.com/library/ms181127.aspx).
 - Další informace o databázových rolích najdete v tématu věnovaném [databázovým rolím](https://msdn.microsoft.com/library/ms189121.aspx).
 - Další informace o pravidlech brány firewall pro SQL Database najdete v tématu [Pravidla brány firewall služby SQL Database](firewall-configure.md).
+- Informace o tom, jak nastavit uživatele hosta Azure AD jako správce Azure AD, najdete v tématu [Vytvoření uživatelů hosta Azure AD a nastavení jako správce Azure AD](authentication-aad-guest-users.md).
+- Informace o instančních objektech se službou Azure SQL najdete v tématu [Vytvoření uživatelů Azure AD pomocí aplikací Azure AD](authentication-aad-service-principal-tutorial.md) .
 
 <!--Image references-->
+
 [11]: ./media/authentication-aad-configure/active-directory-integrated.png
 [12]: ./media/authentication-aad-configure/12connect-using-pw-auth2.png
 [13]: ./media/authentication-aad-configure/13connect-to-db2.png

@@ -3,15 +3,15 @@ title: Vytvoření a nahrání virtuálního pevného disku se systémem Linux
 description: Naučte se vytvořit a nahrát virtuální pevný disk Azure (VHD), který obsahuje operační systém Linux.
 author: gbowerman
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: guybo
-ms.openlocfilehash: fc18c278754afd4bb08d564a2f82680fd94bf866
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a80cc29f318cff8e5a4c665cd07ba1829d25d66d
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082575"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373381"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Informace pro neschválené distribuce
 

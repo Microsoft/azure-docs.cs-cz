@@ -7,12 +7,12 @@ ms.date: 05/21/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 7e90a4e9ec88e074ec7b30d78bc99cfa8bf39ba2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1eab1022e9b0f03597c108c3c927909aa9bb2712
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002348"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337105"
 ---
 # <a name="what-are-device-templates"></a>Co jsou šablony zařízení?
 
@@ -28,6 +28,9 @@ Tvůrce řešení přidá šablony zařízení do aplikace IoT Central. Vývojá
 - _Vlastnosti cloudu_. Tato část šablony zařízení umožňuje vývojáři řešení určit jakákoli metadata zařízení, která se mají uložit. Vlastnosti cloudu se nesynchronizují se zařízeními a v aplikaci existují jenom. Vlastnosti cloudu neovlivňují kód, který vývojář zařízení zapisuje k implementaci DCM.
 - _Vlastní nastavení_. Tato část šablony zařízení umožňuje vývojáři řešení přepsat některé definice v DCM. Vlastní nastavení jsou užitečná, pokud vývojář řešení chce upřesnit způsob, jakým aplikace zpracovává hodnotu, jako je například Změna zobrazovaného názvu pro vlastnost nebo barva použitou k zobrazení hodnoty telemetrie. Přizpůsobení neovlivňují kód, který vývojář zařízení zapisuje k implementaci DCM.
 - _Zobrazení_. Tato část šablony zařízení umožňuje vývojářům řešení definovat vizualizace pro zobrazení dat ze zařízení a formulářů pro správu a řízení zařízení. Zobrazení používají DCM, vlastnosti cloudu a přizpůsobení. Zobrazení neovlivňují kód, který vývojář zařízení zapisuje k implementaci DCM.
+
+> [!NOTE]
+> [Verze iot technologie Plug and Play Public Preview](../../iot-pnp/overview-iot-plug-and-play.md) slouží vývojářům zařízení a výrobcům OEM, aby mohli začít sestavovat zařízení, která můžou certifikovat pro IoT technologie Plug and Play před spuštěním GA.
 
 ## <a name="device-capability-models"></a>Modely funkcí zařízení
 

@@ -4,12 +4,12 @@ description: Pomocí Access Control na základě rolí můžete spravovat přís
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: dd6930a0228829f376140d515a3035afebad0f27
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 89e5cf7c6b46d63b10bd358fc078f8f87db689c8
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032421"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371698"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Pro správu Azure Backup bodů obnovení použít Access Control na základě rolí
 
@@ -18,7 +18,7 @@ ms.locfileid: "87032421"
 > [!IMPORTANT]
 > Role, které poskytuje Azure Backup, jsou omezené na akce, které se dají provádět v Azure Portal nebo REST API prostřednictvím rutiny PowerShellu nebo Recovery Servicesho prostředí PowerShellu nebo rozhraní příkazového řádku. Akce prováděné v uživatelském rozhraní klienta agenta Azure Backup nebo v uživatelském rozhraní nástroje System Center Data Protection Manager nebo v uživatelském rozhraní Azure Backup Server nejsou pod kontrolou těchto rolí.
 
-Azure Backup poskytuje tři předdefinované role pro řízení operací správy zálohování. Další informace o [předdefinovaných rolích Azure RBAC](../role-based-access-control/built-in-roles.md)
+Azure Backup poskytuje tři předdefinované role pro řízení operací správy zálohování. Další informace o [předdefinovaných rolích Azure](../role-based-access-control/built-in-roles.md)
 
 * [Přispěvatel zálohování](../role-based-access-control/built-in-roles.md#backup-contributor) – tato role má všechna oprávnění k vytváření a správě zálohování s výjimkou odstranění Recovery Servicesho trezoru a udělení přístupu jiným uživatelům. Představte si tuto roli jako správce správy zálohování, který může provádět každou operaci správy zálohování.
 * [Operátor zálohování](../role-based-access-control/built-in-roles.md#backup-operator) – tato role má oprávnění ke všem přispěvatelům s výjimkou odebrání zálohování a správy zásad zálohování. Tato role je rovnocenná přispěvateli, ale nemůže provádět destruktivní operace, jako je zastavení zálohování s odstraňováním dat, nebo odebrání místních prostředků.
@@ -62,7 +62,7 @@ Následující tabulka zachycuje akce správy zálohování a odpovídající mi
 
 Následující tabulka zachycuje akce správy zálohování a odpovídající roli nutnou k provedení operace Azure File Share.
 
-| Operace správy | Je vyžadována role. | Prostředky |
+| Operace správy | Je vyžadována role. | Zdroje a prostředky |
 | --- | --- | --- |
 | Povolení zálohování sdílených složek Azure | Přispěvatel zálohování |Trezor služby Recovery Services |
 | |Účet úložiště | Prostředek účtu úložiště pro přispěvatele |

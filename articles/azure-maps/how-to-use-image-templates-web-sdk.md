@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.custom: codepen
-ms.openlocfilehash: 12c407ecacdce6b9052ca70ef70a2ae87928b6c2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: 2942ae25e3ac84ae6f91ebbba08581eb87bcd169
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064700"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285675"
 ---
 # <a name="how-to-use-image-templates"></a>Používání šablon obrázků
 
@@ -106,7 +106,7 @@ Podívejte se na <a href='https://codepen.io/azuremaps/pen/EqQvzq/'>značku HTML
 
 
 > [!TIP]
-> Šablony obrázků lze použít i mimo mapu. GetImageTemplate atanh vrátí řetězec SVG, který obsahuje zástupné symboly; `{color}`, `{secondaryColor}`, `{scale}`, `{text}`. Chcete-li vytvořit platný řetězec SVG, nahraďte tyto zástupné hodnoty. Pak můžete buď přidat řetězec SVG přímo do modelu DOM HTML, nebo ho převést na identifikátor URI dat a vložit ho do značky obrázku. Příklad:
+> Šablony obrázků lze použít i mimo mapu. GetImageTemplate atanh vrátí řetězec SVG, který obsahuje zástupné symboly; `{color}`, `{secondaryColor}`, `{scale}`, `{text}`. Chcete-li vytvořit platný řetězec SVG, nahraďte tyto zástupné hodnoty. Pak můžete buď přidat řetězec SVG přímo do modelu DOM HTML, nebo ho převést na identifikátor URI dat a vložit ho do značky obrázku. Například:
 > ```JavaScript
 > //Retrieve an SVG template and replace the placeholder values.
 > var svg = atlas.getImageTemplate('marker').replace(/{color}/, 'red').replace(/{secondaryColor}/, 'white').replace(/{text}/, '').replace(/{scale}/, 1);

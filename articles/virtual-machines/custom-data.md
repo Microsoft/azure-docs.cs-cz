@@ -4,15 +4,15 @@ description: Podrobnosti o používání vlastních dat a aplikace Cloud-init v 
 services: virtual-machines
 author: mimckitt
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: 1dcba7da09cff3b7123521a4daf1028ab17e199a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2924caaac5fb8c512100d9e897f7f153af9a3b3e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029140"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284910"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Vlastní data a Cloud-init v Azure Virtual Machines
 
@@ -80,7 +80,7 @@ Pokud chcete řešit potíže s vlastním prováděním dat, přečtěte si */va
 Řešení potíží s vlastním prováděním dat najdete v [dokumentaci k](./linux/using-cloud-init.md#troubleshooting-cloud-init)řešení problémů.
 
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 ### <a name="can-i-update-custom-data-after-the-vm-has-been-created"></a>Můžu aktualizovat vlastní data po vytvoření virtuálního počítače?
 Pro jednotlivé virtuální počítače se vlastní data v modelu virtuálních počítačů nedají aktualizovat, ale pro VMSS můžete aktualizovat vlastní data VMSS prostřednictvím [REST API](/rest/api/compute/virtualmachinescalesets/update) (neplatí pro PS nebo AZ CLI Clients). Když aktualizujete vlastní data v modelu VMSS:
 * Existující instance v VMSS nezískají aktualizované vlastní data, až do doby, než se obnoví z image.

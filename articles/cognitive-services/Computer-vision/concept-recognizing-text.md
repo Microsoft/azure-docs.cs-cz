@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: t-bebon
 ms.custom: seodec18
-ms.openlocfilehash: 6bc118145bec30085c2d9fbf726c40a20b312430
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 83e76cd96e09b0e136d2bfbe2e5863b289724bdd
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207036"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284247"
 ---
-# <a name="optical-character-recognition-ocr"></a>optické rozpoznávání znaků (OCR),
+# <a name="optical-character-recognition-ocr"></a>Optické rozpoznávání znaků (OCR)
 
 Rozhraní API pro počítačové zpracování obrazu Microsoftu zahrnuje funkce optického rozpoznávání znaků (OCR), které extrahují vytištěný nebo rukou psaný text z obrázků a dokumentů PDF. Rozhraní API pro optické rozpoznávání písma extrahují text z obou obdobných dokumentů (obrázky, naskenované dokumenty) a dokumentů s více číslicemi. Můžete extrahovat text z obrázků v nevolném formátu, například fotografie z licenčních desek nebo kontejnerů se sériovými čísly a také z dokumentů – faktury, Bill, finanční sestavy, články a další. Nové rozhraní API pro čtení s ROZPOZNÁVÁNÍm je dostupné jako součást spravované služby v cloudu nebo místně (kontejnerech). Také podporuje virtuální sítě a soukromé koncové body, aby splňovaly požadavky na dodržování předpisů a ochranu osobních údajů vaší organizace.
 
 ## <a name="read-api"></a>Rozhraní API pro čtení 
 
-[Rozhraní API pro čtení](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) počítačové zpracování obrazu je nejnovější technologie OCR od Microsoftu, která extrahuje vytištěný text (sedm jazyků), psaný text (jenom v angličtině), číslice a symboly měny z obrázků a VÍCESTRÁNKOVÉ dokumenty PDF. Je optimalizovaná pro extrakci textu z textu ve velkém a vícestránkovém dokumentu PDF se smíšenými jazyky. Podporuje detekci vytištěného a rukopisného textu (jenom v angličtině) ve stejném obrázku nebo dokumentu. Podívejte se na stránku úplný seznam [podporovaných jazyků s podporou OCR](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) .
+[Rozhraní API pro čtení](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) počítačové zpracování obrazu je nejnovější technologie OCR od Microsoftu, která extrahuje vytištěný text v několika jazycích, psaný text (jenom v angličtině), číslice a symboly měny z obrázků a VÍCESTRÁNKOVÉ dokumenty PDF. Je optimalizovaná pro extrakci textu z textu ve velkém a vícestránkovém dokumentu PDF se smíšenými jazyky. Podporuje detekci vytištěného a rukopisného textu (jenom v angličtině) ve stejném obrázku nebo dokumentu. Podívejte se na stránku úplný seznam [podporovaných jazyků s podporou OCR](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) .
 
 ### <a name="how-ocr-works"></a>Jak funguje optické rozpoznávání znaků
 
@@ -123,7 +123,7 @@ Nyní operace čtení podporuje extrakci rukopisného textu výhradně v anglič
 
 ### <a name="printed-text-in-supported-languages"></a>Vytištěný text v podporovaných jazycích
 
-Rozhraní API pro čtení podporuje extrakci vytištěného textu v angličtině, španělštině, němčině, francouzštině, italštině, portugalštině a dánských jazycích. Pokud váš scénář vyžaduje podporu více jazyků, přečtěte si téma Přehled rozhraní OCR v tomto dokumentu. Podívejte se na seznam všech [jazyků podporovaných OCR](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) .
+Rozhraní API pro čtení 3,0 podporuje extrakci vytištěného textu v angličtině, španělštině, němčině, francouzštině, italštině, portugalštině a nizozemských jazycích. [Readme 3,1-Preview. 1 rozhraní API Public Preview](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005) přidává podporu pro zjednodušenou čínštinu. Pokud váš scénář vyžaduje podporu více jazyků, přečtěte si téma Přehled rozhraní OCR v tomto dokumentu. Podívejte se na seznam všech [jazyků podporovaných OCR](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) .
 
 ![Otočení obrázku a jeho přečtení a vymezený text](./Images/supported-languages-example.png)
 
@@ -137,7 +137,7 @@ Rozhraní API pro čtení podporuje obrázky a dokumenty s více jazyky, které 
 
 Stejně jako u všech služeb rozpoznávání by měli vývojáři, kteří používají službu čtení, informace o zásadách Microsoftu pro zákaznická data. Další informace najdete na stránce Cognitive Services v [Centru zabezpečení Microsoftu](https://www.microsoft.com/en-us/trust-center/product-overview) .
 
-### <a name="deploy-on-premises"></a>Nasazení na místě
+### <a name="containers-for-on-premise-deployment"></a>Kontejnery pro místní nasazení
 
 Čtení je také k dispozici jako kontejner Docker (Preview), který vám umožní nasadit nové funkce OCR ve vlastním prostředí. Kontejnery jsou skvělé pro specifické požadavky zabezpečení a zásad správného řízení dat. Viz [Jak nainstalovat a spustit čtení kontejnerů.](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers)
 
@@ -149,4 +149,5 @@ Stejně jako u všech služeb rozpoznávání by měli vývojáři, kteří pou�
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si o [REST API pro čtení 3,0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005).
+- Přečtěte si informace o [Read 3,1-Preview. 1 REST API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005) s přidanou podporou pro zjednodušenou čínštinu.
 - Postupujte podle pokynů v rychlém startu pro [extrakci textu](./QuickStarts/CSharp-hand-text.md) a IMPLEMENTUJTE rozpoznávání OCR pomocí jazyků C#, Java, JavaScript nebo Python spolu s REST API.

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 68be8d08939464d200da588c481447f8206c9117
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 720a768679cdbd45224e5c9a05b8f8d0c9b9ea81
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117193"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326082"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Řešení Network Performance Monitor v Azure
 
@@ -113,7 +113,7 @@ Network Performance Monitor používá syntetické transakce k monitorování v�
 
 ### <a name="configure-the-solution"></a>Konfigurace řešení 
 
-1. Přidejte řešení Network Performance Monitor do svého pracovního prostoru z [webu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). Můžete také použít proces popsaný v tématu [přidání Azure monitor řešení z galerie řešení](../../azure-monitor/insights/solutions.md). 
+1. Přidejte řešení Network Performance Monitor do svého pracovního prostoru z [webu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). Můžete také použít proces popsaný v tématu [přidání Azure monitor řešení z galerie řešení](./solutions.md). 
 2. Otevřete pracovní prostor Log Analytics a vyberte dlaždici s **přehledem** . 
 3. Vyberte dlaždici **Network Performance Monitor** s řešením zpráv *vyžaduje další konfiguraci*.
 
@@ -291,3 +291,4 @@ Informace o cenách jsou k dispozici [online](network-performance-monitor-pricin
 
 ## <a name="next-steps"></a>Další kroky 
 Přečtěte si další informace o [monitorování výkonu](network-performance-monitor-performance-monitor.md), [monitorování připojení služby](network-performance-monitor-performance-monitor.md)a [monitorování ExpressRoute](network-performance-monitor-expressroute.md). 
+

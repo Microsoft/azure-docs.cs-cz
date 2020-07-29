@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d6539a233fbb8038d82a8ea41da2c9e79745324
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15e3c5ba72ff7b97e03cd7aa2b68eeffb2aa7882
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83995186"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283006"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>Podmíněný přístup: blokovat starší verze ověřování
 
@@ -32,12 +33,12 @@ Následující kroky vám pomůžou vytvořit zásady podmíněného přístupu,
 1. V části **přiřazení**vyberte **Uživatelé a skupiny** .
    1. V části **Zahrnout**vyberte **Všichni uživatelé**.
    1. V části **vyloučit**vyberte **Uživatelé a skupiny** a zvolte všechny účty, které musí udržovat možnost používat starší verze ověřování. Vyloučením alespoň jednoho účtu zabráníte jeho uzamknutí. Pokud nevylučujete žádný účet, nebudete moct vytvořit tuto zásadu.
-   1. Vyberte **Done** (Hotovo).
+   1. Vyberte **Hotovo**.
 1. V části **cloudové aplikace nebo akce**vyberte **všechny cloudové aplikace**.
-   1. Vyberte **Done** (Hotovo).
-1. V části **podmínky**  >  **klientské aplikace (Preview)** nastavte **Konfigurovat** na **Ano**.
+   1. Vyberte **Hotovo**.
+1. V části **podmínky**  >  **klientské aplikace (Preview)** v části **Vyberte klientské aplikace, na které se bude tato zásada vztahovat**:
    1. Zaškrtněte políčka pouze **mobilní aplikace a klienti klasické pracovní plochy**  >  **ostatní klienti**.
-   1. Vyberte **Done** (Hotovo).
+   1. Vyberte **Hotovo**.
 1. V části **řízení přístupu**  >  **udělit**vyberte **blokovat přístup**.
    1. Vyberte **Vybrat**.
 1. Potvrďte nastavení a nastavte **možnost povolit zásady** na **pouze sestavy**.

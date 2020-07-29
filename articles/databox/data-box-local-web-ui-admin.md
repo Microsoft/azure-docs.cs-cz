@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/10/2020
+ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 34b1ce42850fcefcc2b0d146e7f33d720fd8062d
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a99499110951ccbc0458b5ce848930fed9205dad
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202535"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371998"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Použití místního webového uživatelského rozhraní ke správě Data Box a Data Box Heavy
 
@@ -35,7 +35,7 @@ Tento článek obsahuje následující návody:
 
 Pokud budete mít se zařízením jakékoliv problémy, můžete vytvořit ze systémových protokolů balíček pro podporu. Podpora Microsoftu používá tento balíček k řešení příslušných potíží. Chcete-li vytvořit balíček pro podporu, proveďte následující kroky:
 
-1. V místním webovém uživatelském rozhraní přejděte na **Kontaktovat podporu** a klikněte na **Vytvořit balíček pro podporu**.
+1. V místním webovém uživatelském rozhraní klikněte na **kontaktovat podporu** a vyberte **vytvořit balíček pro podporu**.
 
     ![Vytvoření balíčku pro podporu 1](media/data-box-local-web-ui-admin/create-support-package-1.png)
 
@@ -43,14 +43,13 @@ Pokud budete mít se zařízením jakékoliv problémy, můžete vytvořit ze sy
 
     ![Vytvoření balíčku pro podporu 2](media/data-box-local-web-ui-admin/create-support-package-2.png)
 
-3. Po dokončení vytváření balíčku pro podporu klikněte na **Stáhnout balíček pro podporu**. 
+3. Po dokončení vytváření balíčku podpory vyberte **Stáhnout balíček pro podporu**.
 
     ![Vytvoření balíčku pro podporu 4](media/data-box-local-web-ui-admin/create-support-package-4.png)
 
 4. Přejděte k umístění pro stahování a vyberte ho. Otevřete složku a zobrazte obsah.
 
     ![Vytvoření balíčku pro podporu 5](media/data-box-local-web-ui-admin/create-support-package-5.png)
-
 
 ## <a name="shut-down-or-restart-your-device"></a>Vypnutí nebo restartování zařízení
 
@@ -59,7 +58,7 @@ Zařízení můžete vypnout nebo restartovat pomocí místního webového uživ
 Pokud chcete zařízení vypnout, proveďte následující kroky.
 
 1. V místním webovém uživatelském rozhraní přejděte na **Vypnout nebo restartovat**.
-2. Klikněte na **Vypnout**.
+2. Vyberte **vypnout**.
 
     ![Vypnutí Data Boxu 1](media/data-box-local-web-ui-admin/shut-down-local-web-ui-1.png)
 
@@ -72,11 +71,11 @@ Zařízení po vypnutí zapněte tlačítkem napájení na předním panelu.
 Při restartování Data Boxu postupujte podle následujících pokynů.
 
 1. V místním webovém uživatelském rozhraní přejděte na **Vypnout nebo restartovat**.
-2. Klikněte na **Restartovat**.
+2. Vyberte **restartovat**.
 
     ![Restartování Data Boxu 1](media/data-box-local-web-ui-admin/restart-local-web-ui-1.png)
 
-3. Po zobrazení výzvy k potvrzení pokračujte kliknutím na **OK**.
+3. Po zobrazení výzvy k potvrzení pokračujte výběrem **OK** .
 
    Zařízení se vypne a restartuje.
 
@@ -90,9 +89,9 @@ Než začnete, ujistěte se, že se v zařízení dokončilo **Příprava k odes
 
     ![Zařízení připravené k dodání](media/data-box-portal-admin/ready-to-ship.png)
 
-2. Klikněte na **Stáhnout seznam souborů** a Stáhněte si seznam souborů, které jste zkopírovali v data box.
+2. Vyberte **Stáhnout seznam souborů** a Stáhněte si seznam souborů, které jste zkopírovali v data box.
 
-    ![Klikněte na Stáhnout seznam souborů.](media/data-box-portal-admin/download-list-of-files.png)
+    ![Vybrat seznam souborů ke stažení](media/data-box-portal-admin/download-list-of-files.png)
 
 3. V Průzkumníkovi souborů uvidíte, že se v závislosti na protokolu používaném pro připojení k zařízení a používaném typu Azure Storage generují samostatné seznamy souborů.
 
@@ -104,7 +103,7 @@ Než začnete, ujistěte se, že se v zařízení dokončilo **Příprava k odes
     |---------|---------|---------|
     |databoxe2etest_BlockBlob.txt     |Objekty blob bloku         |SMB/NFS         |
     |databoxe2etest_PageBlob.txt     |Objekty blob stránky         |SMB/NFS         |
-    |databoxe2etest_AzFile-BOM.txt    |Azure Files         |SMB/NFS         |
+    |databoxe2etest_AzFile-BOM.txt    |Soubory Azure         |SMB/NFS         |
     |databoxe2etest_PageBlock_Rest-BOM.txt     |Objekty blob stránky         |REST        |
     |databoxe2etest_BlockBlock_Rest-BOM.txt    |Objekty blob bloku         |REST         |
     |mydbmdrg1_MDisk-BOM.txt    |Spravovaný disk         |SMB/NFS         |
@@ -179,10 +178,51 @@ Důrazně doporučujeme kontrolní součet nezakazovat, pokud to výrazně neovl
     ![Zakázání kontrolních součtů](media/data-box-local-web-ui-admin/disable-checksum.png)
 
 2. **Zakázání** ověření kontrolního součtu
-3. Klikněte na **Použít**.
+3. Vyberte **Použít**.
 
 > [!NOTE]
 > Možnost přeskočit výpočet kontrolního součtu je k dispozici, pouze pokud je Azure Data Box odemčená. Tato možnost se nezobrazuje, když je zařízení zamčené.
 
-- Naučte se [spravovat data box a data box Heavy prostřednictvím Azure Portal](data-box-portal-admin.md).
+## <a name="enable-smb-signing"></a>Povolit podepisování SMB
 
+Podepisování SMB (Server Message Block) je funkce, prostřednictvím které se komunikace pomocí protokolu SMB může digitálně podepsat na úrovni paketů. Toto podepisování zabraňuje útokům, které mění pakety SMB při přenosu.
+
+Další informace týkající se podepisování protokolu SMB najdete v tématu [Přehled podepisování bloků zpráv serveru](https://support.microsoft.com/help/887429/overview-of-server-message-block-signing).
+
+Povolení podepisování SMB v zařízení Azure:
+
+1. V pravém horním rohu místního webového uživatelského rozhraní vašeho zařízení vyberte **Nastavení**.
+
+    ![Otevřít nastavení](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+
+2. **Povolit** Podepisování SMB.
+
+    ![Povolit podepisování SMB](media/data-box-local-web-ui-admin/data-box-smb-signing-1.png)
+
+3. Vyberte **Použít**.
+4. V místním webovém uživatelském rozhraní přejděte na **Vypnout nebo restartovat**.
+5. Vyberte **restartovat**.
+
+## <a name="enable-tls-11"></a>Povolit TLS 1,1
+
+Ve výchozím nastavení používá Azure Data Box k šifrování protokol TLS (Transport Layer Security) 1,2, protože je bezpečnější než TSL 1,1. Pokud ale vy nebo vaši klienti používáte prohlížeč pro přístup k datům, která nepodporují protokol TLS 1,2, můžete povolit TLS 1,1.
+
+Další informace související s protokolem TLS najdete v tématu [Azure Data box Gateway Security](../databox-online/data-box-gateway-security.md).
+
+Povolení TLS 1,1 v zařízení Azure:
+
+1. V pravém horním rohu místního webového uživatelského rozhraní vašeho zařízení vyberte **Nastavení**.
+
+    ![Otevřít nastavení](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+
+2. **Povolit** TLS 1,1.
+
+    ![Povolit TLS 1,1](media/data-box-local-web-ui-admin/data-box-tls-1-1.png)
+
+3. Vyberte **Použít**.
+4. V místním webovém uživatelském rozhraní přejděte na **Vypnout nebo restartovat**.
+5. Vyberte **restartovat**.
+
+## <a name="next-steps"></a>Další kroky
+
+- Naučte se [spravovat data box a data box Heavy prostřednictvím Azure Portal](data-box-portal-admin.md).

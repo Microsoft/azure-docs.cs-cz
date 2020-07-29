@@ -1,6 +1,6 @@
 ---
-title: Nástroj pro správu virtuálních počítačů s Windows – Azure
-description: Řešení potíží s nástrojem pro správu virtuálních počítačů s Windows
+title: Nástroj pro správu virtuálních ploch Windows (klasický) – Azure
+description: Řešení potíží s nástrojem pro správu virtuálního počítače (Classic) ve Windows
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bb9206d2c2c15c036b0cf1184b79ed126966eb3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 442cdce2ebb6c1a3e38932411dfa2b081a44ef9f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82614795"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283363"
 ---
-# <a name="troubleshoot-the-windows-virtual-desktop-management-tool"></a>Řešení potíží s nástrojem pro správu Windows Virtual Desktopu
+# <a name="troubleshoot-the-windows-virtual-desktop-classic-management-tool"></a>Řešení potíží s nástrojem pro správu virtuálních počítačů s Windows (Classic)
 
 >[!IMPORTANT]
->Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows.
+>Tento obsah se vztahuje na virtuální plochu Windows (Classic), která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows.
 
 Tento článek popisuje problémy, které mohou nastat při nasazení nástroje pro správu virtuálních počítačů s Windows a jejich řešení.
 

@@ -1,6 +1,6 @@
 ---
-title: Windows Virtual Desktop Diagnostic Log Analytics (2019) – Azure
-description: Naučte se používat Log Analytics s funkcí diagnostiky Virtual desktopu (verze 2019).
+title: Diagnostika Log Analytics pro virtuální počítače s Windows (Classic) – Azure
+description: Jak používat Log Analytics s funkcí diagnostiky virtuálního počítače (Classic) Windows
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c4c59268f63252813c7e08608d5d8ee499b11f53
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 500758839b426143650707d3d77d78e8a064533e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077622"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285063"
 ---
-# <a name="use-log-analytics-for-the-diagnostics-feature-fall-2019-release"></a>Použití Log Analytics pro diagnostickou funkci (verze 2019.)
+# <a name="use-log-analytics-for-the-diagnostics-feature-in-windows-virtual-desktop-classic"></a>Použití Log Analytics pro diagnostické funkce ve virtuální ploše Windows (Classic)
 
 >[!IMPORTANT]
->Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objekty virtuálních klientů Windows, které byly zavedeny v aktualizaci jarní 2020, přečtěte si [Tento článek](../diagnostics-log-analytics.md).
+>Tento obsah se vztahuje na virtuální plochu Windows (Classic), která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objektů virtuálních klientů Windows, přečtěte si [Tento článek](../diagnostics-log-analytics.md).
 
 Virtuální plocha Windows nabízí diagnostické funkce, které správci umožňují identifikovat problémy přes jedno rozhraní. Tato funkce zaznamená diagnostické informace vždy, když někdo přiřazená role virtuálního klienta Windows používá službu. Každý protokol obsahuje informace o tom, která role virtuálního počítače s Windows se v aktivitě účastnila, všechny chybové zprávy, které se zobrazí během relace, informace o tenantovi a informace o uživateli. Funkce diagnostiky vytvoří protokoly aktivit pro uživatele i pro akce správy. Každý protokol aktivit spadá do tří hlavních kategorií:
 

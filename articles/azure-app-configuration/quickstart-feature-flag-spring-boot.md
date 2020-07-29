@@ -6,12 +6,13 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
-ms.openlocfilehash: a0d3c23f8f53b8ddfbd3fbd1cb1744a47664ce08
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.custom: devx-track-java
+ms.openlocfilehash: 2340e728933cc230fb53b9581f4b02b41a9438b6
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774022"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372055"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace na jaře Boot
 
@@ -40,7 +41,7 @@ Knihovny pro správu funkcí pružiny rozšiřuje rámec s kompletní podporou p
 
 Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt pro spuštění pružiny.
 
-1. Přejděte na <https://start.spring.io/>.
+1. Přejděte na adresu <https://start.spring.io/>.
 
 1. Zadejte následující možnosti:
 
@@ -53,9 +54,9 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
 
 ## <a name="add-feature-management"></a>Přidat správu funkcí
 
-1. Po extrahování souborů v místním systému je vaše aplikace pro spouštění pružiny připravená k úpravám. V kořenovém adresáři vaší aplikace vyhledejte *pom. XML* .
+1. Po extrahování souborů v místním systému je vaše aplikace pro spouštění pružiny připravená k úpravám. Vyhledejte *pom.xml* v kořenovém adresáři aplikace.
 
-1. V textovém editoru otevřete soubor *pom. XML* a přidejte následující text do seznamu `<dependencies>` :
+1. V textovém editoru otevřete soubor *pom.xml* a přidejte následující text do seznamu `<dependencies>` :
 
     **Jarní Cloud 1.1. x**
 
@@ -184,7 +185,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
     }
     ```
 
-1. V adresáři templates vaší aplikace vytvořte nový soubor HTML s názvem *Welcome. html* .
+1. V adresáři templates vaší aplikace vytvořte nový soubor HTML s názvem *welcome.html* .
 
     ```html
     <!DOCTYPE html>
@@ -289,9 +290,9 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
 
 1. Na portálu konfigurace aplikace vyberte **správce funkcí**a změňte stav **beta** klíče na **zapnuto**:
 
-    | Klíč | State |
+    | Klíč | Stav |
     |---|---|
-    | Beta | Zapnout |
+    | Beta | Zapnuto |
 
 1. Aktualizujte stránku prohlížeče, aby se zobrazilo nové nastavení konfigurace.
 

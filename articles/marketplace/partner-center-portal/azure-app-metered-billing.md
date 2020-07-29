@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: d1ed294412e44c79fc1eb8cbc01bf134f08a953f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.author: mingshen
+author: mingshen-ms
+ms.openlocfilehash: 07779769dae4c43148bbf4a8205feceea85ed363
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118932"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320047"
 ---
 # <a name="managed-application-metered-billing"></a>Spravovaná fakturace podle objemu spravované aplikace 
 
@@ -65,7 +67,7 @@ Fakturační dimenze se sdílejí napříč všemi plány nabídky. Některé at
 Atributy, které definují vlastní dimenzi, jsou sdíleny ve všech plánech nabídky. Před publikováním této nabídky ovlivní změna těchto atributů z kontextu libovolného plánu definici dimenze ve všech plánech. Po publikování této nabídky již nebude možné tyto atributy upravovat. Atributy jsou:
 
 * Identifikátor
-* Name
+* Název
 * Jednotka měření
 
 Ostatní atributy dimenze jsou specifické pro každý plán a můžou mít různé hodnoty od plánu k plánování.  Před publikováním plánu můžete tyto hodnoty upravit a bude to mít vliv pouze na tento plán. Po publikování plánu už tyto atributy nebude možné upravovat. Atributy jsou:
@@ -91,7 +93,7 @@ Dimenze použitá v rámci služby měření na webu Marketplace představuje po
 Po publikování nabídky s dimenzí již nelze změnit podrobnosti na úrovni nabídky pro tuto dimenzi:
 
 * Identifikátor
-* Name
+* Název
 * Jednotka měření
 
 Po publikování plánu se podrobnosti na úrovni plánu už nedají změnit:
@@ -109,21 +111,13 @@ Maximální počet dimenzí, které lze konfigurovat pro jednu nabídku, je 18 j
 
 ## <a name="get-support"></a>Získání podpory
 
-Pokud platí jeden z následujících případů, můžete otevřít lístek podpory.
+Pokud máte některý z následujících problémů, můžete otevřít lístek podpory.
 
 * Technické problémy s rozhraním API služby pro měření na webu Marketplace
 * Problém, který je potřeba eskalovat z důvodu chyby nebo chyby na vaší straně (např. nesprávná událost použití)
 * Jakékoli další problémy související s měřením podle objemu.
 
-Použijte následující postup, chcete-li odeslat lístek podpory:
-
-1. Přejít na [stránku podpory](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff). Prvních několik rozevíracích nabídek je pro vás automaticky vyplněné. V případě podpory na webu Marketplace Identifikujte produktovou rodinu jako **cloudové a online služby**, produkt jako **Vydavatel webu Marketplace**. Neměňte výběry předem vyplněných rozevíracích nabídek.
-2. V části vybrat verzi produktu vyberte **živá nabídka Správa**.
-3. V části vyberte kategorii, která nejlépe popisuje problém, zvolte **nabídka aplikace Azure**.
-4. V části vyberte problém, který nejlépe popisuje problém, vyberte **účtované podle objemu**.
-5. Když vyberete tlačítko **Další** , budete přesměrováni na stránku **Podrobnosti o problému** , kde můžete zadat další podrobnosti o problému.
-
-Další možnosti podpory vydavatelů najdete [v tématu Podpora programu komerčního tržiště v partnerském centru](support.md).
+Postupujte podle pokynů v [části Podpora programu komerčního tržiště v partnerském centru](./support.md) , abyste pochopili možnosti podpory vydavatele a otevřeli lístek podpory s Microsoftem.
 
 ## <a name="next-steps"></a>Další kroky
 

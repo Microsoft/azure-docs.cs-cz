@@ -3,12 +3,12 @@ title: 'Rychlý Start: nasazení aplikace pomocí portálu LUIS'
 description: V tomto rychlém startu se dozvíte, jak nasadit aplikaci vytvořením prostředku koncového bodu předpovědi, přiřazení prostředku, školení a publikování aplikace.
 ms.topic: quickstart
 ms.date: 05/06/2020
-ms.openlocfilehash: 743c2fe311eeeabad5a3e957319be3a6e372e74f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3d12fa2956f962fe7a05b9639c1d32a7069635f9
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653232"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87336360"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Rychlý Start: nasazení aplikace na portálu LUIS
 
@@ -19,7 +19,7 @@ V tomto rychlém startu se naučíte nasadit aplikaci. Vytvoříte prostředek k
 ## <a name="prerequisites"></a>Požadavky
 
 * Získejte [předplatné Azure](https://azure.microsoft.com/free).
-* Dokončete [předchozí portál pro rychlý Start](get-started-portal-build-app.md) nebo [si stáhněte a importujte aplikaci](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json).
+* Dokončete [předchozí portál pro rychlý Start](get-started-portal-build-app.md) nebo [si stáhněte a importujte aplikaci](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/portal-build-app.json).
 * Pokud máte aplikace, které předem nastavily ověřování prostředků Azure, [migrujte na prostředek Azure](luis-migration-authoring.md). Některé stránky portálu při ověřování e-mailu vypadají jinak.
 
 <a name="create-the-endpoint-resource"></a>

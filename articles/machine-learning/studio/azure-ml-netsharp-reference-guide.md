@@ -1,6 +1,5 @@
 ---
-title: 'NET # vlastní neuronové sítě'
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (Classic): NET # Custom neuronové Networks – Azure'
 description: 'Průvodce syntaxí pro jazyk specifikace NET # neuronové Networks Naučte se vytvářet vlastní neuronové síťové modely v Azure Machine Learning Studio (Classic).'
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: b297a3f975450b7459895ce7c0abc79e9b2fcdea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92fd68be6f2611b01be7f2b262de53597c452596
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85129513"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282564"
 ---
-# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Příručka k jazyku .NET # neuronové Network Specification pro Azure Machine Learning Studio (Classic)
+# <a name="guide-to-net-neural-network-specification-language-for-machine-learning-studio-classic"></a>Příručka k jazyku .NET # neuronové Network Specification pro Machine Learning Studio (Classic)
+
+**platí pro:** ![ žádná](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasická) 
 
 NET # je jazyk vyvinutý Microsoftem, který se používá k definování složitých neuronové síťových architektur, jako jsou například hluboké neuronové sítě nebo konvoluce libovolných dimenzí. Složité struktury můžete použít ke zlepšení učení o datech, jako je obrázek, video nebo zvuk.
 
@@ -89,17 +90,17 @@ Například následující příkaz definuje konstantu `x` :
 
 `Const X = 28;`
 
-Pro definování dvou nebo více konstant současně vložte názvy identifikátorů a hodnot do složených závorek a oddělte je pomocí středníků. Příklad:
+Pro definování dvou nebo více konstant současně vložte názvy identifikátorů a hodnot do složených závorek a oddělte je pomocí středníků. Například:
 
 `Const { X = 28; Y = 4; }`
 
-Pravá strana každého výrazu přiřazení může být celé číslo, reálné číslo, logická hodnota (true nebo false) nebo matematický výraz. Příklad:
+Pravá strana každého výrazu přiřazení může být celé číslo, reálné číslo, logická hodnota (true nebo false) nebo matematický výraz. Například:
 
 `Const { X = 17 * 2; Y = true; }`
 
 ## <a name="layer-declaration"></a>Deklarace vrstvy
 
-Deklarace vrstvy je povinná. Definuje velikost a zdroj vrstvy, včetně jejích sad připojení a atributů. Příkaz deklarace začíná názvem vrstvy (vstup, skrytý nebo výstup) následovaný rozměry vrstvy (řazené kolekce členů s kladnými celými čísly). Příklad:
+Deklarace vrstvy je povinná. Definuje velikost a zdroj vrstvy, včetně jejích sad připojení a atributů. Příkaz deklarace začíná názvem vrstvy (vstup, skrytý nebo výstup) následovaný rozměry vrstvy (řazené kolekce členů s kladnými celými čísly). Například:
 
 ```Net#
 input Data auto;

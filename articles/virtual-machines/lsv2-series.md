@@ -4,14 +4,15 @@ description: Specifikace pro virtuální počítače řady Lsv2-Series.
 author: sasha-melamed
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 9db5f391635505c18c7fe7c868431a0abc943730
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cedb5899b392cb111f9c1bb76949e940ef837252
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675974"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284808"
 ---
 # <a name="lsv2-series"></a>Řada Lsv2
 
@@ -36,14 +37,14 @@ Migrace za provozu: nepodporováno
 
 Aktualizace pro zachování paměti: nepodporováno
 
-| Velikost | Virtuální procesory | Paměť (GiB) | Dočasný disk<sup>1</sup> (GIB) | Disky NVMe<sup>2</sup> | Propustnost disku NVMe<sup>3</sup> (čtení za sekundu/s) | Propustnost datového disku neuloženého v mezipaměti (IOPs/MB/s)<sup>4</sup> | Maximální propustnost datového disku neuloženého shluku (IOPs/MB/s)<sup>5</sup>| Maximální počet datových disků | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
-|---|---|---|---|---|---|---|---|---|---|
-| Standard_L8s_v2   |  8 |  64 |  80 |  1x 1.92 TB  | 400000/2000  | 8000/160   | 8000/1280 | 16 | 2 / 3200   |
-| Standard_L16s_v2  | 16 | 128 | 160 |  2x 1.92 TB  | 800000/4000  | 16000/320  | 16000/1280 | 32 | 4 / 6400   |
-| Standard_L32s_v2  | 32 | 256 | 320 |  4x 1.92 TB  | 1,5 m/8000    | 32000/640  | 32000/1280 | 32 | 8 / 12800  |
-| Standard_L48s_v2  | 48 | 384 | 480 |  6x 1.92 TB  | 2,2 m/14000   | 48000/960  | 48000/2000 | 32 | 8/16000 + |
-| Standard_L64s_v2  | 64 | 512 | 640 |  8rychlostní 1.92 TB  | 2.9 m/16000   | 64000/1280 | 64000/2000 | 32 | 8/16000 + |
-| Standard_L80s_v2<sup>6</sup> | 80 | 640 | 800 | 10x 1.92 TB | 3.8 m/20000 | 80000/1400 | 80000/2000 | 32 | 8/16000 + |
+| Velikost | Virtuální procesory | Paměť (GiB) | Dočasný disk<sup>1</sup> (GIB) | Disky NVMe<sup>2</sup> | Propustnost disku NVMe<sup>3</sup> (čtení za sekundu/s) | Propustnost datového disku neuloženého v mezipaměti (IOPs/MB/s)<sup>4</sup> | Maximální propustnost datového disku neuloženého shluku (IOPs/MB/s)<sup>5</sup>| Maximální počet datových disků | Maximální počet síťových karet | Očekávaná šířka pásma sítě (MB/s) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Standard_L8s_v2   |  8 |  64 |  80 |  1x 1.92 TB  | 400000/2000  | 8000/160   | 8000/1280 | 16 | 2 | 3200   |
+| Standard_L16s_v2  | 16 | 128 | 160 |  2x 1.92 TB  | 800000/4000  | 16000/320  | 16000/1280 | 32 | 4 | 6400   |
+| Standard_L32s_v2  | 32 | 256 | 320 |  4x 1.92 TB  | 1,5 m/8000    | 32000/640  | 32000/1280 | 32 | 8 | 12800  |
+| Standard_L48s_v2  | 48 | 384 | 480 |  6x 1.92 TB  | 2,2 m/14000   | 48000/960  | 48000/2000 | 32 | 8 | 16000 + |
+| Standard_L64s_v2  | 64 | 512 | 640 |  8rychlostní 1.92 TB  | 2.9 m/16000   | 64000/1280 | 64000/2000 | 32 | 8 | 16000 + |
+| Standard_L80s_v2<sup>6</sup> | 80 | 640 | 800 | 10x 1.92 TB | 3.8 m/20000 | 80000/1400 | 80000/2000 | 32 | 8 | 16000 + |
 
 <sup>1</sup> virtuální počítače řady Lsv2-Series mají na disku dočasnou jednotku na bázi SCSI pro použití stránkovacího nebo stránkovacího souboru operačního systému (D: ve Windows,/dev/sdb v Linux). Tento disk poskytuje 80 GiB úložiště, 4 000 IOPS 80 a MB/s přenosovou rychlostí pro každých 8 vCPU (např. Standard_L80s_v2 poskytuje 800 GiB při 40 000 IOPS a 800 MB/s). To zajistí, že NVMe jednotky mohou být plně vyhrazené pro použití aplikací. Tento disk je dočasný a veškerá data budou ztracena při zastavení nebo zrušení přidělení.
 
@@ -73,6 +74,21 @@ Aktualizace pro zachování paměti: nepodporováno
 - Propustnost disku se měří v počtu V/V operací za sekundu (IOPS) a v MB/s, kde 1 MB/s = 10^6 bajtů/s.
 - Pokud chcete dosáhnout nejlepšího výkonu pro vaše virtuální počítače, měli byste omezit počet datových disků na 2 disky na vCPU.
 - **Očekávaná šířka pásma sítě** je maximální agregovaná [Šířka pásma přidělená pro každý typ virtuálního počítače](../virtual-network/virtual-machine-network-throughput.md) v rámci všech síťových adaptérů pro všechna umístění. Horní omezení nejsou garantována, ale slouží jako vodítko pro výběr správného typu virtuálního počítače pro příslušnou aplikaci. Skutečný výkon sítě bude záviset na řadě faktorů, včetně zahlcení sítě, zatížení aplikací a nastavení sítě. Informace o optimalizaci propustnosti sítě najdete v tématu [Optimalizace propustnosti sítě pro Windows a Linux](../virtual-network/virtual-network-optimize-network-bandwidth.md). Pro dosažení očekávaného výkonu sítě na Linuxu nebo ve Windows může být nutné vybrat konkrétní verzi nebo optimalizovat virtuální počítač. Další informace najdete v tématu [Spolehlivé testování propustnosti virtuálního počítače](../virtual-network/virtual-network-bandwidth-testing.md).
+
+
+## <a name="other-sizes-and-information"></a>Další velikosti a informace
+
+- [Obecné účely](sizes-general.md)
+- [Optimalizované pro paměť](sizes-memory.md)
+- [Optimalizované pro úložiště](sizes-storage.md)
+- [Optimalizované z hlediska GPU](sizes-gpu.md)
+- [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
+- [Předchozí generace](sizes-previous-gen.md)
+
+Cenová kalkulačka: [Cenová Kalkulačka](https://azure.microsoft.com/pricing/calculator/)
+
+Další informace o typech disků: [typy disků](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+
 
 ## <a name="next-steps"></a>Další kroky
 

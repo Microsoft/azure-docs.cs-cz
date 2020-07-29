@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 1ba9edba97ce89cede54287076e50eb587af10f3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4a57719ec9e7b22ed81ee6f07a568a993846de42
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242470"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374316"
 ---
 # <a name="drawing-package-requirements"></a>Požadavky balíčku pro kreslení
 
 [Služba Azure Maps Conversion](https://docs.microsoft.com/rest/api/maps/conversion) umožňuje převést nahrané balíčky výkresu na data mapy. Tento článek popisuje požadavky balíčku pro vykreslování pro rozhraní API pro převod. Pokud chcete zobrazit ukázkový balíček, můžete si stáhnout vzorový [balíček pro kreslení](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Balíček pro kreslení obsahuje kresby uložené ve formátu DWG, což je nativní formát souboru pro software Autodesk® pro AutoCAD, a [ochranná známka společnosti Autodesk, Inc](https://www.autodesk.com/company/legal-notices-trademarks/trademarks/guidelines-for-use#section12).
 
@@ -32,7 +32,7 @@ Glosář termínů používaných v tomto dokumentu.
 | Označení  | Definice |
 |:-------|:------------|
 | Vrstva | Vrstva DWG AutoCADu.|
-| Level | Oblast budovy se zvýšenou úrovní oprávnění. Například podlaha budovy. |
+| Úroveň | Oblast budovy se zvýšenou úrovní oprávnění. Například podlaha budovy. |
 | Odkazy XREF  |Soubor ve formátu DWG AutoCADu (. dwg) připojený k primárnímu výkresu jako externí odkaz.  |
 | Funkce | Objekt, který kombinuje geometrii s dalšími informacemi o metadatech. |
 | Třídy funkcí | Běžný podrobný plán pro funkce. Například jednotka je třída funkce a kancelář je funkce. |
@@ -208,7 +208,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 `buildingLevels`Objekt obsahuje pole s JSON úrovněmi budov.
 
-| Vlastnost  | Typ | Vyžadováno | Popis |
+| Vlastnost  | Typ | Povinné | Popis |
 |-----------|------|----------|-------------|
 |levelName    |řetězec    |true |    Název popisné úrovně Například: patra 1, předsálí, modré zaparkování, Basement a tak dále.|
 |řadový | celé číslo |    true | Pořadové číslo se používá k určení svislého pořadí úrovní. Každé zařízení musí mít úroveň s pořadovým číslem 0. |
@@ -218,7 +218,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 ### <a name="georeference"></a>informace o mikroodkazech
 
-| Vlastnost  | Typ | Vyžadováno | Popis |
+| Vlastnost  | Typ | Povinné | Popis |
 |-----------|------|----------|-------------|
 |připojí    | numerické |    true |    Desítková reprezentace stupně zeměpisné šířky v počátku kreslení zařízení. Souřadnice zdroje musí být v WGS84 web Mercator ( `EPSG:3857` ).|
 |lon    |numerické|    true|    Desítková reprezentace ve stupních délky v počátku kreslení zařízení Souřadnice zdroje musí být v WGS84 web Mercator ( `EPSG:3857` ). |
@@ -226,7 +226,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 ### <a name="dwglayers"></a>dwgLayers
 
-| Vlastnost  | Typ | Vyžadováno | Popis |
+| Vlastnost  | Typ | Povinné | Popis |
 |-----------|------|----------|-------------|
 |zpětný    |Pole řetězců|    true|    Názvy vrstev, které definují vnější profil budovy.|
 |unit|    Pole řetězců|    true|    Názvy vrstev, které definují jednotky.|
@@ -240,7 +240,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 `unitProperties`Objekt obsahuje pole s vlastnostmi jednotky ve formátu JSON.
 
-| Vlastnost  | Typ | Vyžadováno | Popis |
+| Vlastnost  | Typ | Povinné | Popis |
 |-----------|------|----------|-------------|
 |jednotka    |řetězec    |true    |Název jednotky, která se má přidružit k tomuto `unitProperty` záznamu. Tento záznam je platný pouze v případě, že `unitName` se v vrstvách nachází shodný popisek `unitLabel` . |
 |categoryName|    řetězec|    false (nepravda)    |Název kategorie Úplný seznam kategorií najdete v tématu [kategorie](https://aka.ms/pa-indoor-spacecategories). |
@@ -260,7 +260,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 `zoneProperties`Objekt obsahuje pole JSON vlastností zóny.
 
-| Vlastnost  | Typ | Vyžadováno | Popis |
+| Vlastnost  | Typ | Povinné | Popis |
 |-----------|------|----------|-------------|
 |Název_zóny        |řetězec    |true    |Název zóny, která se má přidružit k `zoneProperty` záznamu Tento záznam je platný pouze v případě, že `zoneName` se v vrstvě zóny nachází shodný popisek `zoneLabel` .  |
 |categoryName|    řetězec|    false (nepravda)    |Název kategorie Úplný seznam kategorií najdete v tématu [kategorie](https://aka.ms/pa-indoor-spacecategories). |
@@ -279,7 +279,7 @@ Níže je ukázkový soubor manifestu ukázkového balíčku pro kreslení. Poku
     "version": "1.1", 
     "directoryInfo": { 
         "name": "Contoso Building", 
-        "streetAddresss": "Contoso Way", 
+        "streetAddress": "Contoso Way", 
         "unit": "1", 
         "locality": "Contoso eastside", 
         "postalCode": "98052", 

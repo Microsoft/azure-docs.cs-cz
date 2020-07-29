@@ -10,11 +10,12 @@ ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 41f39c7e60e79e034d4c855a77bfee0f6fa2094d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ce3ab92be33b378aeb6694efe181ee19da5d3f4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669507"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284349"
 ---
 # <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>Zřízení virtuálního počítače se systémem Linux běžícího SQL Server v Azure Portal
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -33,11 +34,11 @@ V tomto kurzu rychlý Start použijete Azure Portal k vytvoření virtuálního 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
 
 ## <a name="create-a-linux-vm-with-sql-server-installed"></a><a id="create"></a>Vytvoření virtuálního počítače s Linuxem a nainstalovaným SQL Serverem
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. V levém podokně vyberte **Vytvořit prostředek**.
 
@@ -71,7 +72,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 1. Pak zadejte nebo vyberte následující hodnoty:
    * **Oblast**: Vyberte oblast Azure, která je pro vás nejvhodnější.
    * **Možnosti dostupnosti**: vyberte možnost dostupnost a redundance, která je pro vaše aplikace a data nejvhodnější.
-   * **Změnit velikost**: tuto možnost vyberte, pokud chcete vybrat velikost počítače a po dokončení klikněte na **Vybrat**. Další informace o velikostech virtuálních počítačů Azure najdete v tématu [Velikosti virtuálních počítačů s Linuxem](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes).
+   * **Změnit velikost**: tuto možnost vyberte, pokud chcete vybrat velikost počítače a po dokončení klikněte na **Vybrat**. Další informace o velikostech počítačů virtuálních počítačů najdete v tématu [velikosti virtuálních počítačů](../../../virtual-machines/sizes.md).
 
      ![Výběr velikosti virtuálního počítače](./media/sql-vm-create-portal-quickstart/vmsizes.png)
 
@@ -81,7 +82,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
    * **Typ ověřování**: vyberte **veřejný klíč SSH**.
 
      > [!Note]
-     > U ověřování máte na výběr mezi používáním veřejného klíče SSH nebo hesla. SSH je bezpečnější. Pokyny k vygenerování klíče SSH najdete v tématu [Vytvoření klíčů SSH v Linuxu a na Macu pro virtuální počítače s Linuxem v Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys).
+     > U ověřování máte na výběr mezi používáním veřejného klíče SSH nebo hesla. SSH je bezpečnější. Pokyny k vygenerování klíče SSH najdete v tématu [Vytvoření klíčů SSH v Linuxu a na Macu pro virtuální počítače s Linuxem v Azure](../../../virtual-machines/linux/mac-create-ssh-keys.md).
 
    * **Uživatelské jméno**: Zadejte jméno správce pro virtuální počítač.
    * **Veřejný klíč SSH**: Zadejte svůj veřejný klíč RSA.
@@ -121,7 +122,7 @@ Pokud používáte Windows a nemáte prostředí BASH, nainstalujte klienta SSH,
 
 1. Vyberte **otevřít** a na výzvy zadejte své uživatelské jméno a heslo.
 
-Další informace o připojení k virtuálním počítačům s Linuxem najdete v tématu [Vytvoření virtuálního počítače s Linuxem v Azure pomocí portálu](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal).
+Další informace o připojení k virtuálním počítačům s Linuxem najdete v tématu [Vytvoření virtuálního počítače s Linuxem v Azure pomocí portálu](../../../virtual-machines/linux/quick-create-portal.md).
 
 > [!NOTE]
 > Pokud se zobrazí výstraha zabezpečení výstupů na klíč hostitele serveru, který není uložen do mezipaměti v registru, vyberte z následujících možností. Pokud tomuto hostiteli důvěřujete, vyberte **Ano** a přidejte klíč do mezipaměti pro výstup a pokračujte v připojování. Chcete-li provést připojení pouze jednou, aniž byste museli přidat klíč do mezipaměti, vyberte možnost **ne**. Pokud tomuto hostiteli nedůvěřujete, vyberte **Zrušit** , aby se připojení zrušilo.

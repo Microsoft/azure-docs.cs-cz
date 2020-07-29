@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 727653314104ee1b2a27a1342de9824d8f303e23
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: de381b4200e2ec3381f452ac0ec32e61a055a6ec
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539733"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326167"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Monitorování prostředků Azure pomocí Azure Monitor
 Pokud máte důležité aplikace a obchodní procesy spoléhající se na prostředky Azure, budete chtít tyto prostředky sledovat pro jejich dostupnost, výkon a provoz. Tento článek popisuje data monitorování vygenerovaná prostředky Azure a o tom, jak můžete pomocí funkcí Azure Monitor analyzovat tato data a upozorňovat na ně.
@@ -96,7 +96,7 @@ Mnoho služeb bude obsahovat data monitorování na stránce s **přehledem** ja
 
 
 ### <a name="insights-and-solutions"></a>Přehledy a řešení 
-Některé služby budou poskytovat nástroje nad rámec standardních funkcí Azure Monitor. [Přehledy](../insights/insights-overview.md) poskytují přizpůsobené prostředí pro monitorování založené na Azure monitor datovou platformu a standardní funkce. [Řešení](../insights/solutions.md) poskytují předdefinované logiky monitorování založené na protokolech Azure monitor. 
+Některé služby budou poskytovat nástroje nad rámec standardních funkcí Azure Monitor. [Přehledy](./insights-overview.md) poskytují přizpůsobené prostředí pro monitorování založené na Azure monitor datovou platformu a standardní funkce. [Řešení](./solutions.md) poskytují předdefinované logiky monitorování založené na protokolech Azure monitor. 
 
 Pokud má služba Azure Monitor přehled, můžete k ní přistupovat z **monitorování** v nabídce každého prostředku. Přístup ke všem přehledům a řešením z nabídky **Azure monitor** .
 
@@ -164,3 +164,4 @@ Pomocí **Upozornění** z nabídky prostředku můžete zobrazit výstrahy a sp
 ## <a name="next-steps"></a>Další kroky
 
 * Podrobnosti o protokolech prostředků pro různé služby Azure najdete v tématu [podporované služby, schémata a kategorie pro protokoly prostředků Azure](../platform/resource-logs-schema.md) .  
+

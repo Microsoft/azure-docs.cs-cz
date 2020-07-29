@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 9a96db0e9a834dcddbb5f247953fa1bbf0dc39ce
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 294c93242a3fee5db14f5919ebb367aebcca3a80
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539699"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326184"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Monitorování virtuálních počítačů Azure pomocí Azure Monitor
 Tento článek popisuje, jak pomocí Azure Monitor shromažďovat a analyzovat data monitorování z virtuálních počítačů Azure a udržovat jejich stav. Virtuální počítače je možné monitorovat z hlediska dostupnosti a výkonu pomocí Azure Monitor jako u jakéhokoli [jiného prostředku Azure](monitor-azure-resource.md), ale jsou jedinečné od jiných prostředků, protože potřebujete také monitorovat hostovaný operační systém a systémy a úlohy, které jsou v něm spuštěné. 
@@ -134,7 +134,7 @@ Jakmile nakonfigurujete shromažďování dat monitorování pro virtuální po�
 |:---|:---|
 | Přehled | Zobrazí [metriky platforem](../platform/data-platform-metrics.md) pro hostitele virtuálního počítače. Pokud chcete s těmito daty pracovat v [Průzkumníkovi metrik](../platform/metrics-getting-started.md), klikněte na graf. |
 | Protokol aktivit | Položky [protokolu aktivit](../platform/activity-log.md#view-the-activity-log) filtrované pro aktuální virtuální počítač. |
-| Insights | Otevře [Azure monitor pro virtuální počítače](../insights/vminsights-overview.md) s mapou pro vybraný aktuální virtuální počítač. |
+| Insights | Otevře [Azure monitor pro virtuální počítače](./vminsights-overview.md) s mapou pro vybraný aktuální virtuální počítač. |
 | Výstrahy | Zobrazí [výstrahy](../platform/alerts-overview.md) pro aktuální virtuální počítač.  |
 | Metriky | Otevřete [Průzkumníka metrik](../platform/metrics-getting-started.md) s oborem nastaveným na aktuální virtuální počítač. |
 | Nastavení diagnostiky | Povolí a nakonfiguruje [diagnostické rozšíření](../platform/diagnostics-extension-overview.md) pro aktuální virtuální počítač. |
@@ -242,3 +242,4 @@ Podrobnosti o připojení existující skupiny pro správu SCOM ke svému pracov
 
 * [Naučte se analyzovat data v protokolech Azure Monitor pomocí dotazů protokolu.](../log-query/get-started-queries.md)
 * [Seznamte se s výstrahami pomocí metrik a protokolů v Azure Monitor.](../platform/alerts-overview.md)
+

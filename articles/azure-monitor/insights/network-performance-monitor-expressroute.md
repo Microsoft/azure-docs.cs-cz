@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
-ms.openlocfilehash: 6ac610d7dcf9849b6b439741957684867b9d01aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9f268e5080a5c04c5cdb4767f2db5fd2d77cd3c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77660746"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326150"
 ---
 # <a name="expressroute-monitor"></a>Monitorování ExpressRoute
 
@@ -108,7 +109,7 @@ Network Performance Monitor pomáhá diagnostikovat několik problémů s připo
 
 Můžete zobrazit kódy oznámení a nastavit výstrahy na nich prostřednictvím **LogAnalytics**. Na stránce **Diagnostika npm** uvidíte popisy každé aktivované zprávy diagnostiky.
 
-| Kód oznámení (protokoly) | Description |
+| Kód oznámení (protokoly) | Popis |
 | --- | --- |
 | 5501 | Nejde procházet sekundárním připojením okruhu ExpressRoute. |
 | 5502 | Primární připojení okruhu ExpressRoute se nedá Procházet. |
@@ -139,4 +140,5 @@ Můžete zobrazit kódy oznámení a nastavit výstrahy na nich prostřednictví
  
 
 ## <a name="next-steps"></a>Další kroky
-V [protokolech hledání](../../azure-monitor/log-query/log-query-overview.md) zobrazíte podrobné záznamy dat o výkonu sítě.
+V [protokolech hledání](../log-query/log-query-overview.md) zobrazíte podrobné záznamy dat o výkonu sítě.
+

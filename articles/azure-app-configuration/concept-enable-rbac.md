@@ -6,11 +6,12 @@ ms.author: lcozzens
 ms.date: 02/13/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: c2812219e689cb42fd871f85300239a10ab0da0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d417fa4d6b444f4932338059e2ad499c12d6273e
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84116722"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371834"
 ---
 # <a name="authorize-access-to-azure-app-configuration-using-azure-active-directory"></a>Autorizace přístupu ke konfiguraci aplikace Azure pomocí Azure Active Directory
 Kromě použití kódu HMAC (hash-based Message Authentication Code) podporuje konfigurace aplikací Azure používání služby Azure Active Directory (Azure AD) k autorizaci požadavků na instance konfigurace aplikace.  Azure AD umožňuje použít řízení přístupu na základě role (RBAC) k udělení oprávnění objektu zabezpečení.  Objekt zabezpečení může být uživatel, [spravovaná identita](../active-directory/managed-identities-azure-resources/overview.md) nebo [instanční objekt aplikace](../active-directory/develop/app-objects-and-service-principals.md).  Další informace o rolích a přiřazení rolí najdete v tématu [porozumění různým rolím](../role-based-access-control/overview.md).
@@ -22,15 +23,15 @@ Kromě použití kódu HMAC (hash-based Message Authentication Code) podporuje k
 
 Krok ověřování vyžaduje, aby žádost o aplikaci obsahovala přístupový token OAuth 2,0 za běhu.  Pokud je aplikace spuštěná v rámci entity Azure, jako je Azure Functions aplikace, Webová aplikace Azure nebo virtuální počítač Azure, může k přístupu k prostředkům použít spravovanou identitu.  Informace o tom, jak ověřit požadavky provedené spravovanou identitou do konfigurace aplikace Azure, najdete v tématu [ověření přístupu k prostředkům konfigurace aplikace Azure pomocí Azure Active Directory a spravovaných identit pro prostředky Azure](howto-integrate-azure-managed-service-identity.md).
 
-Autorizační krok vyžaduje, aby se k objektu zabezpečení přiřadila jedna nebo více rolí RBAC. Konfigurace aplikací Azure poskytuje role RBAC, které zahrnují sady oprávnění pro prostředky konfigurace aplikací. Role, které jsou přiřazeny objektu zabezpečení, určují oprávnění poskytnutá objektu zabezpečení. Další informace o rolích RBAC najdete v tématu [předdefinované role RBAC pro konfiguraci aplikací Azure](#built-in-rbac-roles-for-azure-app-configuration). 
+Autorizační krok vyžaduje, aby se k objektu zabezpečení přiřadila jedna nebo více rolí RBAC. Konfigurace aplikací Azure poskytuje role RBAC, které zahrnují sady oprávnění pro prostředky konfigurace aplikací. Role, které jsou přiřazeny objektu zabezpečení, určují oprávnění poskytnutá objektu zabezpečení. Další informace o rolích RBAC najdete v tématu [předdefinované role Azure pro konfiguraci aplikací Azure](#azure-built-in-roles-for-azure-app-configuration). 
 
 ## <a name="assign-rbac-roles-for-access-rights"></a>Přiřazení rolí RBAC pro přístupová práva
 Azure Active Directory (Azure AD) autorizuje přístupová práva k zabezpečeným prostředkům prostřednictvím [řízení přístupu na základě role (RBAC)](../role-based-access-control/overview.md).
 
 Když je role RBAC přiřazená k objektu zabezpečení Azure AD, poskytuje Azure přístup k těmto prostředkům pro daný objekt zabezpečení. Přístup je omezený na prostředek konfigurace aplikace. Objekt zabezpečení služby Azure AD může být uživatel nebo instanční objekt nebo [spravovaná identita pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md).
 
-## <a name="built-in-rbac-roles-for-azure-app-configuration"></a>Předdefinované role RBAC pro konfiguraci aplikací Azure
-Azure poskytuje následující předdefinované role RBAC pro autorizaci přístupu ke konfiguračním datům aplikací pomocí Azure AD a OAuth:
+## <a name="azure-built-in-roles-for-azure-app-configuration"></a>Předdefinované role Azure pro konfiguraci aplikací Azure
+Azure poskytuje následující předdefinované role Azure pro autorizaci přístupu ke konfiguračním datům aplikací pomocí Azure AD a OAuth:
 
 - **Vlastník konfiguračních dat aplikací**: pomocí této role můžete k datům konfigurace aplikace udělit přístup pro čtení, zápis a odstranění. Tím se neudělí přístup k prostředku konfigurace aplikace.
 - **Čtečka dat konfigurace aplikace**: tuto roli použijte, pokud chcete udělit přístup pro čtení k datům konfigurace aplikace. Tím se neudělí přístup k prostředku konfigurace aplikace.

@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 34294bf29ec861d7bbb954ece7016de37769a332
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 7818ae36c785311466d2fb26ce45dcf50983145d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232691"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283482"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Vývoj zabezpečených aplikací v Azure
 V tomto článku jsou uvedeny bezpečnostní aktivity a ovládací prvky, které je potřeba vzít v úvahu při vývoji aplikací pro Cloud. Pojednává o bezpečnostních otázkách a konceptech, které je potřeba vzít v úvahu během fáze implementace a ověření v rámci služby [SDL (Microsoft Security Development Lifecycle)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) . Cílem je pomáhat vám definovat aktivity a služby Azure, které můžete použít k vývoji bezpečnější aplikace.
@@ -62,7 +62,7 @@ Proveďte tuto činnost na serveru, nikoli na straně klienta (nebo na straně s
 
 ### <a name="verify-your-applications-outputs"></a>Ověření výstupů aplikace
 
-Jakýkoli výstup, který prezentujete vizuálně nebo v dokumentu, by měl být vždy kódovaný a řídicí. [Uvozovací znaky](https://www.owasp.org/index.php/Injection_Theory#Escaping_.28aka_Output_Encoding.29), označované také jako *výstupní kódování*, slouží k zajištění, že nedůvěryhodná data nejsou vozidlo pro útok na injektáže. Uvozovací znaky kombinované s ověřováním dat poskytují vrstvenou obranu za účelem zvýšení zabezpečení systému jako celku.
+Jakýkoli výstup, který prezentujete vizuálně nebo v dokumentu, by měl být vždy kódovaný a řídicí. [Uvozovací znaky](https://owasp.org/www-community/Injection_Theory#Escaping_.28aka_Output_Encoding.29), označované také jako *výstupní kódování*, slouží k zajištění, že nedůvěryhodná data nejsou vozidlo pro útok na injektáže. Uvozovací znaky kombinované s ověřováním dat poskytují vrstvenou obranu za účelem zvýšení zabezpečení systému jako celku.
 
 Uvozovací znaky zajistí, že se všechny zobrazují jako *výstup.* Uvozovací znaky také umožňuje Překladači zjistit, že data nejsou určena ke spuštění, a tím zabráníte útokům v práci. Toto je další běžná technika útoku označovaná jako *skriptování mezi weby* (XSS).
 

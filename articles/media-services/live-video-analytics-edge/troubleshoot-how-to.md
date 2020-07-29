@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 05/24/2020
-ms.openlocfilehash: 62163217862f586be7ed5c0a6000693f8e7fcdd6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ca41a403f789fd529ac65c21799d3d3e7f3becf6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043194"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285454"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Řešení potíží se službou Live video Analytics na IoT Edge
 
@@ -265,6 +265,9 @@ Doporučujeme *, abyste přímé metody nevolali* paralelně. Zavolejte je sekve
 ### <a name="collect-logs-for-submitting-a-support-ticket"></a>Shromažďovat protokoly pro odeslání lístku podpory
 
 Když kroky pro řešení potíží s vlastním průvodcem nevyřeší váš problém, přečtěte si Azure Portal a [otevřete lístek podpory](../../azure-portal/supportability/how-to-create-azure-support-request.md).
+
+> [!WARNING]
+> Protokoly mohou obsahovat identifikovatelné osobní údaje (PII), jako je například vaše IP adresa. Všechny místní kopie protokolů se odstraní hned po dokončení jejich prověření a uzavření lístku podpory.  
 
 Pokud chcete shromáždit příslušné protokoly, které by se měly přidat k lístku, postupujte podle pokynů v dalších částech. Soubory protokolu můžete nahrát v podokně **podrobností** žádosti o podporu.
 

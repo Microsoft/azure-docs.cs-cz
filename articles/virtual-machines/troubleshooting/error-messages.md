@@ -12,11 +12,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
-ms.openlocfilehash: f5639d1cf94c77d699dc6de9841698b045ac1f96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e35772e81329e112aac361b6a533c559154f03f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76543014"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284689"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>Vysvětlení běžných chybových zpráv při správě virtuálních počítačů v Azure
 
@@ -175,7 +176,7 @@ V této části jsou uvedené běžné chybové zprávy, se kterými se můžete
 |  OSProvisioningClientError  |  Uživatelské jméno zadané pro virtuální počítač je pro tuto distribuci systému Linux neplatné. Podrobnosti o chybě: {0} .  |
 |  OSProvisioningInternalError  |  Zřizování operačního systému se pro virtuální počítač nepovedlo {0} kvůli vnitřní chybě.  |
 |  OSProvisioningTimedOut  |  Zřizování operačního systému pro virtuální počítač se {0} nedokončilo ve vymezeném čase. Virtuální počítač se přesto může úspěšně dokončit. Zkontrolujte prosím stav zřizování později.  |
-|  OSProvisioningTimedOut  |  Zřizování operačního systému pro virtuální počítač se {0} nedokončilo ve vymezeném čase. Virtuální počítač se přesto může úspěšně dokončit. Zkontrolujte prosím stav zřizování později. Také se ujistěte, že je bitová kopie správně připravená (zobecněná).   <ul><li>Pokyny pro Windows:https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Pokyny pro Linux:https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
+|  OSProvisioningTimedOut  |  Zřizování operačního systému pro virtuální počítač se {0} nedokončilo ve vymezeném čase. Virtuální počítač se přesto může úspěšně dokončit. Zkontrolujte prosím stav zřizování později. Také se ujistěte, že je bitová kopie správně připravená (zobecněná).   <ul><li>Pokyny pro [Windows]( ../windows/upload-image.md).</li><li> Pokyny pro [Linux](../linux/capture-image.md)</li></ul>  |
 |  OSProvisioningTimedOut  |  Zřizování operačního systému pro virtuální počítač se {0} nedokončilo ve vymezeném čase. Agent hosta virtuálního počítače se ale zjistil jako spuštěný. To naznačuje, že hostovaný operační systém nebyl správně připravený pro použití jako image virtuálního počítače (s CreateOption = FromImage). Tento problém vyřešíte tak, že virtuální pevný disk použijete s CreateOption = připojit nebo ho Připravte správně, aby bylo možné ho použít jako obrázek:   <ul><li>Pokyny pro Windows:https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Pokyny pro Linux:https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
 |  OverConstrainedAllocationRequest  |  Požadovaná velikost virtuálního počítače není aktuálně k dispozici ve vybraném umístění.  |
 |  ResourceUpdateBlockedOnPlatformUpdate  |  Prostředek nejde v tuto chvíli aktualizovat z důvodu probíhající aktualizace platformy. Zkuste to později.  |

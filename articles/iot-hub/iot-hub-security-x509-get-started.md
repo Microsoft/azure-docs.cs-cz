@@ -8,15 +8,18 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.custom: amqp
-ms.openlocfilehash: ac45cf42ed174d3e9423b4ea39cadf16b84897ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- amqp
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: e9fd4308f89873183e4f5f57cee56887ce181fae
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759646"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87307280"
 ---
-# <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Nastavení zabezpečení X.509 ve službě Azure IoT Hub
+# <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Nastavení zabezpečení X.509 v Azure IoT Hubu
 
 V tomto kurzu se dozvíte o krocích, které potřebujete k zabezpečení služby Azure IoT Hub pomocí *ověřování certifikátu X. 509*. Pro účely ilustrace používáme open source nástroj OpenSSL k vytváření certifikátů místně na vašem počítači s Windows. Doporučujeme použít tento kurz pouze pro účely testování. V produkčním prostředí byste měli koupit certifikáty od kořenové certifikační *autority (CA)*.
 
@@ -95,7 +98,7 @@ V dalším kroku vám ukážeme, jak vytvořit aplikaci v jazyce C#, která simu
 
 1. V Průzkumník řešení klikněte pravým tlačítkem na projekt **SimulateX509Device** a pak vyberte **Spravovat balíčky NuGet**.
 
-1. V okně **Správce balíčků NuGet**vyberte **Procházet** a vyhledejte a vyberte **Microsoft. Azure. Devices. Client**. Vyberte **Nainstalovat**.
+1. V okně **Správce balíčků NuGet**vyberte **Procházet** a vyhledejte a vyberte **Microsoft. Azure. Devices. Client**. Vyberte **Install** (Nainstalovat).
 
    ![Přidat balíček NuGet sady SDK pro zařízení v sadě Visual Studio](./media/iot-hub-security-x509-get-started/device-sdk-nuget.png)
 

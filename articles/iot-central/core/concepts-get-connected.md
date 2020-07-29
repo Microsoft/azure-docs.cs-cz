@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: a66613406de66cf9478b90d4ad58c115a30fdf5d
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 82d797189096994e02c77e9d342c00b13dfa187d
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224731"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337088"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Připojení ke službě Azure IoT Central
 
@@ -213,13 +213,13 @@ Jednou z klíčových funkcí IoT Central je možnost přidružit šablony zař�
 
 Následující fragmenty kódu ukazují formát další datové části, kterou musí zařízení poslat během výzvy k registraci DPS, aby se automatické přidružení fungovalo.
 
-Jedná se o formát zařízení, která používají všeobecně dostupnou sadu SDK pro zařízení, která nepodporuje technologie Plug and Play IoT:
+Jedná se o formát zařízení, která používají všeobecně dostupnou sadu SDK pro zařízení:
 
 ```javascript
     iotcModelId: '< this is the URN for the capability model>';
 ```
 
-Jedná se o formát zařízení, která používají sadu SDK pro sadu Public Preview, která podporuje technologie Plug and Play IoT:
+Jedná se o formát zařízení pomocí sady SDK pro zařízení s veřejnou sadou Preview:
 
 ```javascript
 '__iot:interfaces': {
@@ -280,8 +280,6 @@ Následující tabulka shrnuje, jak se funkce IoT Central zařízení Azure nama
 | Vlastnost | Nedokončené hlášené vlastnosti zařízení |
 | Vlastnost (zapisovatelná) | Požadované a hlášené vlastnosti vlákna zařízení |
 | Příkaz | Přímé metody |
-
-Další informace o používání sad SDK pro zařízení najdete v tématu [připojení zařízení IoT DevKit MXChip k vaší aplikaci Azure IoT Central](howto-connect-devkit.md) , například Code.
 
 ### <a name="protocols"></a>Protokoly
 

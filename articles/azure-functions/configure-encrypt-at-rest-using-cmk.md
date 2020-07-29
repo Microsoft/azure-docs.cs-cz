@@ -3,19 +3,19 @@ title: Šifrování zdroje aplikace v klidovém umístění
 description: Zašifrujte data aplikace v Azure Storage a nasaďte je jako soubor balíčku.
 ms.topic: article
 ms.date: 03/06/2020
-ms.openlocfilehash: 6dfb56a5ef6b1ab3cfbd0762bf7816e37ce0aa39
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1dd0d11baa16a325a22a501d40e22e5bad6adb21
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081878"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282326"
 ---
 # <a name="encrypt-your-application-data-at-rest-using-customer-managed-keys"></a>Šifrování dat vaší aplikace v klidovém formátu pomocí klíčů spravovaných zákazníkem
 
 Šifrování dat aplikace Function App v klidovém prostředí vyžaduje účet Azure Storage a Azure Key Vault. Tyto služby se používají při spuštění aplikace z balíčku pro nasazení.
 
   - [Azure Storage poskytuje šifrování v klidovém umístění](../storage/common/storage-service-encryption.md). Můžete použít klíče poskytované systémem nebo vlastní klíče spravované zákazníkem. V takovém případě se data vaší aplikace ukládají, když nejsou spuštěná v aplikaci Function App v Azure.
-  - [Spuštěné z balíčku pro nasazení] ((run-functions-from-deployment-package.md) je funkce nasazení App Service. Umožňuje nasadit obsah webu z Azure Storage účtu pomocí adresy URL sdíleného přístupového podpisu (SAS).
+  - [Spuštění z balíčku pro nasazení](run-functions-from-deployment-package.md) je funkce nasazení App Service. Umožňuje nasadit obsah webu z Azure Storage účtu pomocí adresy URL sdíleného přístupového podpisu (SAS).
   - [Odkazy na Key Vault](../app-service/app-service-key-vault-references.md) jsou funkcí zabezpečení App Service. Umožňuje import tajných kódů za běhu jako nastavení aplikace. Použijte k zašifrování adresy URL SAS vašeho účtu Azure Storage.
 
 ## <a name="set-up-encryption-at-rest"></a>Nastavení šifrování v klidovém umístění
@@ -99,7 +99,7 @@ Pokud se klíč SAS pro účet úložiště otočí, aplikace Function App už n
 
 Přístup aplikace Function App k datům webu můžete odvolat tím, že zakážete přístup aplikace Function App k Key Vault. Uděláte to tak, že odeberete zásady přístupu pro identitu aplikace Function App. Jedná se o stejnou identitu, kterou jste vytvořili dříve při konfiguraci odkazů na Trezor klíčů.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Soubory vaší aplikace jsou teď ve vašem účtu úložiště zašifrované v klidovém stavu. Po spuštění aplikace Function App načte adresu URL SAS z vašeho trezoru klíčů. Nakonec aplikace Function App načte soubory aplikace z účtu úložiště. 
 

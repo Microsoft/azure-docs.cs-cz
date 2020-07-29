@@ -1,79 +1,117 @@
 ---
 title: Implementace zjišťování modelu IoT technologie Plug and Play Preview | Microsoft Docs
-description: Jako vývojář řešení se dozvíte, jak můžete ve vašem řešení implementovat zjišťování modelu IoT technologie Plug and Play.
-author: Philmea
-ms.author: philmea
-ms.date: 12/26/2019
+description: Jako tvůrce řešení se dozvíte, jak implementovat zjišťování modelu IoT technologie Plug and Play ve vašem řešení.
+author: prashmo
+ms.author: prashmo
+ms.date: 07/23/2020
 ms.topic: conceptual
-ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-manager: philmea
-ms.openlocfilehash: 74eb38269a3c7fbdc6d95554a8a8cef14eb0b787
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 364b85a8ead09858b97d5d7e6ca8c130b9960b2c
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81770473"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337377"
 ---
 # <a name="implement-iot-plug-and-play-preview-model-discovery-in-an-iot-solution"></a>Implementace zjišťování modelu IoT technologie Plug and Play Preview v řešení IoT
 
-Tento článek popisuje, jak jako vývojář řešení můžete implementovat zjišťování modelu IoT technologie Plug and Play Preview v řešení IoT.  Zjišťování modelu IoT technologie Plug and Play je způsob, jakým zařízení technologie Plug and Play IoT identifikují své podporované modely a rozhraní schopností a jak řešení IoT načítá tyto modely a rozhraní schopností.
+Tento článek popisuje, jak jako tvůrce řešení můžete implementovat zjišťování modelu IoT technologie Plug and Play Preview v řešení IoT. Zjišťování modelů popisuje, jak:
 
-Existují dvě široké kategorie řešení IoT: účelově vytvořená řešení, která pracují se známou sadou IoT technologie Plug and Play zařízení a modelem řízená řešení, která fungují s jakýmkoli zařízením IoT technologie Plug and Play.
+- Zařízení IoT technologie Plug and Play registrují ID modelu.
+- Řešení IoT načte rozhraní implementovaná zařízením.
 
-Tento článek konceptu popisuje, jak implementovat zjišťování modelu v obou typech řešení.
+Existují dvě široké kategorie řešení IoT:
+
+- *Účelově vytvořené řešení IoT* funguje se známou sadou technologie Plug and Playch modelů zařízení IoT.
+
+- *Řešení IoT řízené modelem* může pracovat s jakýmkoli zařízením IoT technologie Plug and Play. Sestavování řešení založeného na modelu je složitější, ale výhoda spočívá v tom, že vaše řešení funguje se všemi zařízeními přidanými v budoucnu.
+
+    Chcete-li vytvořit modelem řízené řešení IoT, je nutné vytvořit logiku proti primitivním rozhraním technologie Plug and Play IoT: telemetrie, vlastnosti a příkazy. Logika vašeho řešení představuje zařízení s kombinací více možností telemetrie, vlastností a příkazů.
+
+Tento článek popisuje, jak implementovat zjišťování modelu v obou typech řešení.
 
 ## <a name="model-discovery"></a>Zjišťování modelů
 
-Když se zařízení IoT technologie Plug and Play poprvé připojí ke službě IoT Hub, pošle zprávu o modelu informace o telemetrie. Tato zpráva obsahuje ID rozhraní, které zařízení implementuje. Aby vaše řešení fungovalo se zařízením, musí tyto identifikátory vyřešit a načíst definice pro každé rozhraní.
+Chcete-li zjistit model, který zařízení implementuje, řešení může získat ID modelu pomocí zjišťování založeného na událostech nebo vyhledávání na základě vlákna:
 
-Tady jsou kroky, které zařízení IoT technologie Plug and Play přijímá, když používá službu Device Provisioning (DPS) pro připojení k centru:
+### <a name="event-based-discovery"></a>Zjišťování založené na událostech
 
-1. Když je zařízení zapnuté, připojí se ke globálnímu koncovému bodu pro DPS a ověří se pomocí jedné z povolených metod.
-1. DPS pak ověří zařízení a vyhledá pravidlo, které oznamuje, ke kterému centru IoT se má zařízení přiřadit. DPS pak zařízení zaregistruje do tohoto centra.
-1. DPS vrátí IoT Hub připojovací řetězec k zařízení.
-1. Zařízení pak pošle zprávu o telemetrie zjišťování do vašeho IoT Hub. Zpráva telemetrie zjišťování obsahuje ID rozhraní, které zařízení implementuje.
-1. Zařízení IoT technologie Plug and Play je teď připravené k práci s řešením, které používá vaše centrum IoT.
+Když se zařízení IoT technologie Plug and Play připojuje k IoT Hub, zaregistruje model, který implementuje. Výsledkem této registrace je oznámení [události změny digitálního vlákna](concepts-digital-twin.md#digital-twin-change-events) . Informace o tom, jak povolit směrování pro digitální události s dvojitou událostmi, najdete v tématu [použití IoT Hub směrování zpráv pro posílání zpráv ze zařízení do cloudu do různých koncových bodů](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events).
 
-Pokud se zařízení připojuje přímo ke službě IoT Hub, připojuje se pomocí připojovacího řetězce, který je vložený v kódu zařízení. Zařízení pak pošle zprávu o telemetrie zjišťování do vašeho IoT Hub.
+Řešení může použít událost uvedenou v následujícím fragmentu kódu k získání informací o IoT technologie Plug and Play zařízení, které se připojuje a získání jeho ID modelu:
 
-Další informace o zprávě modelu informace o telemetrie najdete v rozhraní [ModelInformation](concepts-common-interfaces.md) .
+```json
+iothub-connection-device-id:sample-device
+iothub-enqueuedtime:7/22/2020 8:02:27 PM
+iothub-message-source:digitalTwinChangeEvents
+correlation-id:100f322dc2c5
+content-type:application/json-patch+json
+content-encoding:utf-8
+[
+  {
+    "op": "replace",
+    "path": "/$metadata/$model",
+    "value": "dtmi:com:example:TemperatureController;1"
+  }
+]
+```
 
-### <a name="purpose-built-iot-solutions"></a>Účelově vytvořená řešení IoT
+Tato událost se aktivuje při přidání nebo aktualizaci ID modelu zařízení.
 
-Účelově sestavené řešení IoT funguje se známou sadou IoT technologie Plug and Play modely a rozhraními schopností zařízení.
+### <a name="twin-based-discovery"></a>Zjišťování na základě vlákna
 
-Budete mít k dispozici model schopností a rozhraní pro zařízení, která se budou k vašemu řešení připojovat předem. K přípravě svého řešení použijte následující postup:
+Pokud řešení potřebuje znát informace o možnostech daného zařízení, může k načtení informací použít rozhraní API [získat digitální](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin/getdigitaltwin) práci.
 
-1. Soubory JSON rozhraní uložte do [úložiště modelu](./howto-manage-models.md) , kde je vaše řešení může číst.
-1. V řešení IoT založeném na očekávaných modelech a rozhraních schopností služby IoT technologie Plug and Play zapište logiku.
-1. Přihlaste se k odběru oznámení ze služby IoT Hub, které vaše řešení používá.
+V následujícím digitálním fragmentu vlákna `$metadata.$model` obsahuje ID modelu zařízení technologie Plug and Play IoT:
 
-Když obdržíte oznámení o novém připojení zařízení, postupujte takto:
+```json
+{
+    "$dtId": "sample-device",
+    "$metadata": {
+        "$model": "dtmi:com:example:TemperatureController;1",
+        "serialNumber": {
+            "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
+        }
+    }
+}
+```
 
-1. Přečtěte si zprávu telemetrie zjišťování, která načte ID modelu schopností a rozhraní implementovaná zařízením.
-1. Porovnejte ID modelu schopností s ID modelů schopností, které jste si uložili před časem.
-1. Nyní víte, jaký typ zařízení se připojil. Pomocí logiky, kterou jste napsali dříve, umožníte uživatelům správně pracovat se zařízením.
+Řešení lze také použít k načtení ID modelu **z vlákna zařízení** , jak je znázorněno v následujícím fragmentu kódu:
 
-### <a name="model-driven-solutions"></a>Modelem řízená řešení
+```json
+{
+    "deviceId": "sample-device",
+    "etag": "AAAAAAAAAAc=",
+    "deviceEtag": "NTk0ODUyODgx",
+    "status": "enabled",
+    "statusUpdateTime": "0001-01-01T00:00:00Z",
+    "connectionState": "Disconnected",
+    "lastActivityTime": "2020-07-17T06:12:26.8402249Z",
+    "cloudToDeviceMessageCount": 0,
+    "authenticationType": "sas",
+    "x509Thumbprint": {
+        "primaryThumbprint": null,
+        "secondaryThumbprint": null
+    },
+    "modelId": "dtmi:com:example:TemperatureController;1",
+    "version": 15,
+    "properties": {...}
+    }
+}
+```
 
-Řešení IoT řízené modelem může pracovat s jakýmkoli zařízením IoT technologie Plug and Play. Sestavování řešení IoT řízené modelem je složitější, ale výhoda spočívá v tom, že vaše řešení funguje se všemi zařízeními přidanými v budoucnu.
+## <a name="model-resolution"></a>Rozlišení modelu
 
-Chcete-li vytvořit modelem řízené řešení IoT, je nutné vytvořit logiku proti primitivním rozhraním technologie Plug and Play IoT: telemetrie, vlastnosti a příkazy. Logika vašeho řešení IoT představuje zařízení tak, že kombinuje více možností telemetrie, vlastností a příkazů.
+Řešení používá rozlišení modelu pro získání přístupu k rozhraním, která tvoří model z ID modelu. 
 
-Vaše řešení se taky musí přihlásit k odběru oznámení ze služby IoT Hub, které používá.
-
-Když vaše řešení obdrží oznámení pro nové připojení zařízení, postupujte podle těchto kroků:
-
-1. Přečtěte si zprávu telemetrie zjišťování, která načte ID modelu schopností a rozhraní implementovaná zařízením.
-1. Pro každé ID si přečtěte úplný soubor JSON, ve kterém najdete funkce zařízení.
-1. Zkontrolujte, jestli se každé rozhraní nachází v mezipamětech, které jste vytvořili pro ukládání souborů JSON načtených dříve v rámci vašeho řešení.
-1. Potom zkontrolujte, zda se v úložišti veřejného modelu nachází rozhraní s tímto ID. Další informace najdete v tématu [úložiště veřejného modelu](howto-manage-models.md).
-1. Pokud rozhraní není k dispozici v úložišti veřejného modelu, zkuste ho vyhledat v jakýchkoli úložištích modelů společnosti známých ve vašem řešení. Potřebujete připojovací řetězec pro přístup k úložišti podnikového modelu. Další informace najdete v tématu [úložiště modelu společnosti](howto-manage-models.md).
-1. Pokud nemůžete najít všechna rozhraní buď v úložišti veřejného modelu, nebo v úložišti podnikového modelu, můžete zjistit, jestli zařízení může definici rozhraní poskytnout. Zařízení může implementovat standardní rozhraní [ModelDefinition](concepts-common-interfaces.md) pro publikování informací o tom, jak načítat soubory rozhraní pomocí příkazu.
-1. Pokud jste našli soubory JSON pro každé rozhraní implementované zařízením, můžete vytvořit výčet možností zařízení. Pomocí logiky, kterou jste napsali dříve, můžete uživatelům umožnit interakci se zařízením.
-1. V každém okamžiku můžete zavolat rozhraní API digitálního vlákna a načíst ID modelu schopností a ID rozhraní pro dané zařízení.
+- Řešení se můžou rozhodnout ukládat tato rozhraní jako soubory do místní složky. 
+- Řešení můžou používat [úložiště modelu](concepts-model-repository.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se dozvěděli o zjišťování modelů v řešení IoT, se dozvíte víc o [platformě Azure IoT](overview-iot-plug-and-play.md) , která využívá další možnosti pro vaše řešení.
+Teď, když jste se dozvěděli o zjišťování modelů v řešení IoT, se dozvíte víc o [platformě Azure IoT](overview-iot-plug-and-play.md) , která pro vaše řešení používá další funkce.
+
+- [Interakce se zařízením z vašeho řešení](quickstart-service-node.md)
+- [Digitální zdvojené REST API IoT](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
+- [Průzkumník Azure IoT](howto-use-iot-explorer.md)

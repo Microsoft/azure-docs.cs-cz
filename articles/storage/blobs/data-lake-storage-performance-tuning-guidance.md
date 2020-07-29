@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: bf22ce87ed3d535a7c1bd03a8d7f747bee3ab13a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f38dc72a45d84b549baa17c34f2c64ac35b83e3e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106386"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285386"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>Optimalizuje Azure Data Lake Storage Gen2 pro výkon.
 
@@ -47,7 +47,7 @@ Po vyřešení výše uvedených slabých míst zdrojového hardwaru a síťové
 |--------------------|------------------------------------------------------|------------------------------|
 | DistCp            | -m (mapovač)   | [Odkaz](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
 | Azure Data Factory| parallelCopies    | [Odkaz](../../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | FS. Azure. Block. Size,-m (Mapper)    |   [Odkaz](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)        |
+| Sqoop           | FS. Azure. Block. Size,-m (Mapper)    |   [Odkaz](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>Struktura sady dat
 
@@ -138,5 +138,5 @@ Kromě obecných pokynů uvedených v každé aplikaci jsou k dispozici různé 
 | [MapReduce ve službě HDInsight](data-lake-storage-performance-tuning-mapreduce.md) | <ul><li>MapReduce. map. Memory</li><li>MapReduce. job. Maps</li><li>MapReduce. zmenšení paměti</li><li>MapReduce. job. redukuje</li></ul> |
 | [Storm v HDInsightu](data-lake-storage-performance-tuning-storm.md)| <ul><li>Počet pracovních procesů</li><li>Počet instancí prováděcího modulu Spout</li><li>Počet instancí vykonavatele šroubů </li><li>Počet úloh Spout</li><li>Počet úloh šroubů</li></ul>|
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 * [Přehled Azure Data Lake Storage Gen2](data-lake-storage-introduction.md)

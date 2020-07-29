@@ -1,6 +1,6 @@
 ---
-title: Publikování integrovaných aplikací ve virtuálním počítači s Windows spadají do 2019 – Azure
-description: Publikování integrovaných aplikací ve virtuálním počítači s Windows
+title: Publikování integrovaných aplikací ve virtuálním počítači s Windows (Classic) – Azure
+description: Publikování integrovaných aplikací ve virtuálním počítači s Windows (Classic)
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e20d2ca8f2f0ef2b8c0290702a2b9e91cc22bb09
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5f204bc6d2595e7f18e59bae15ff35d49e1801e0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020369"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284927"
 ---
-# <a name="publish-built-in-apps-in-windows-virtual-desktop---fall-2019"></a>Publikování integrovaných aplikací na virtuálním počítači s Windows – spadají do 2019
+# <a name="publish-built-in-apps-in-windows-virtual-desktop-classic"></a>Publikování integrovaných aplikací ve virtuálním počítači s Windows (Classic)
 
 >[!IMPORTANT]
->Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objekty virtuálních klientů Windows, které byly zavedeny v aktualizaci jarní 2020, přečtěte si [Tento článek](../publish-apps.md).
+>Tento obsah se vztahuje na virtuální plochu Windows (Classic), která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objektů virtuálních klientů Windows, přečtěte si [Tento článek](../publish-apps.md).
 
 V tomto článku se dozvíte, jak publikovat aplikace v prostředí virtuálních počítačů s Windows.
 

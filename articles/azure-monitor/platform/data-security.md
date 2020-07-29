@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/04/2019
-ms.openlocfilehash: 540e824f301c402e1f65f6186b26ad1672e21d37
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ef34dbfd3af326dbf2d82e09a4c5c8c8e4a91a84
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539342"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319792"
 ---
 # <a name="log-analytics-data-security"></a>Zabezpečení dat Log Analytics
 Účelem tohoto dokumentu je poskytnout informace, které jsou specifické pro Log Analytics, což je funkce Azure Monitor, která doplní informace na [Centrum zabezpečení Azure](https://www.microsoft.com/en-us/trust-center?rtc=1).  
@@ -148,7 +148,7 @@ Pro Operations Manager skupina pro správu Operations Manager naváže spojení 
 
 Veškerá komunikace mezi připojenými systémy a službou Log Analytics je zašifrovaná. Protokol TLS (HTTPS) se používá k šifrování.  Za tímto účelem se zaručí, že Log Analytics je aktuální s nejnovějšími zálohami v kryptografických protokolech.
 
-Každý typ agenta shromažďuje data pro Log Analytics. Typ shromažďovaných dat závisí na typech používaných řešení. Souhrn shromažďování dat můžete zobrazit v tématu [přidání Log Analytics řešení z galerie řešení](../../azure-monitor/insights/solutions.md). Pro většinu řešení jsou k dispozici také podrobnější informace o kolekci. Řešení je sada předdefinovaných zobrazení, vyhledávací dotazy protokolů, pravidla shromažďování dat a logika zpracování. K importu řešení můžou použít Log Analytics jenom správci. Po importu řešení se přesune na Operations Manager servery pro správu (Pokud se používají) a potom na všechny vámi zvolené agenty. Následně agenti shromažďují data.
+Každý typ agenta shromažďuje data pro Log Analytics. Typ shromažďovaných dat závisí na typech používaných řešení. Souhrn shromažďování dat můžete zobrazit v tématu [přidání Log Analytics řešení z galerie řešení](../insights/solutions.md). Pro většinu řešení jsou k dispozici také podrobnější informace o kolekci. Řešení je sada předdefinovaných zobrazení, vyhledávací dotazy protokolů, pravidla shromažďování dat a logika zpracování. K importu řešení můžou použít Log Analytics jenom správci. Po importu řešení se přesune na Operations Manager servery pro správu (Pokud se používají) a potom na všechny vámi zvolené agenty. Následně agenti shromažďují data.
 
 ## <a name="2-send-data-from-agents"></a>2. odeslání dat z agentů
 Všechny typy agentů zaregistrujete pomocí registračního klíče a mezi agentem a službou Log Analytics se vytvoří zabezpečené připojení pomocí ověřování založeného na certifikátech a TLS s portem 443. Log Analytics používá úložiště tajného kódu ke generování a údržbě klíčů. Privátní klíče se otočí každých 90 dní a ukládají se v Azure a spravují se pomocí operací Azure, které dodržují přísné zákonné postupy a postupy dodržování předpisů.
@@ -172,6 +172,7 @@ Doba uchování shromážděných dat uložených v databázi závisí na zvolen
 Pokud chcete získat přístup k pracovnímu prostoru Log Analytics, přihlaste se k Azure Portal pomocí účtu organizace nebo účet Microsoft, které jste dříve nastavili. Veškerý provoz mezi portálem a službou Log Analytics se odesílá přes zabezpečený kanál HTTPS. Při používání portálu se v klientském počítači (webovém prohlížeči) generuje ID relace a data se ukládají do místní mezipaměti, dokud se relace neukončí. Po ukončení se mezipaměť odstraní. Soubory cookie na straně klienta, které neobsahují identifikovatelné osobní údaje, se automaticky neodeberou. Soubory cookie relací jsou označeny jako HTTPOnly a jsou zabezpečené. Po předem určené době nečinnosti se Azure Portal relace ukončí.
 
 ## <a name="next-steps"></a>Další kroky
-* Naučte se shromažďovat data pomocí Log Analytics pro virtuální počítače Azure po [rychlém startu virtuálního počítače Azure](../../azure-monitor/learn/quick-collect-azurevm.md).  
+* Naučte se shromažďovat data pomocí Log Analytics pro virtuální počítače Azure po [rychlém startu virtuálního počítače Azure](../learn/quick-collect-azurevm.md).  
 
-*  Pokud chcete shromažďovat data z fyzických nebo virtuálních počítačů se systémem Windows nebo Linux ve vašem prostředí, přečtěte si [rychlý Start pro počítače](../../azure-monitor/learn/quick-collect-linux-computer.md) se systémem Linux nebo [rychlý Start pro počítače se systémem Windows](../../azure-monitor/learn/quick-collect-windows-computer.md) .
+*  Pokud chcete shromažďovat data z fyzických nebo virtuálních počítačů se systémem Windows nebo Linux ve vašem prostředí, přečtěte si [rychlý Start pro počítače](../learn/quick-collect-linux-computer.md) se systémem Linux nebo [rychlý Start pro počítače se systémem Windows](../learn/quick-collect-windows-computer.md) .
+

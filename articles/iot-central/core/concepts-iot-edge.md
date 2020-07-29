@@ -7,11 +7,12 @@ ms.date: 12/12/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 89d068fbd835a5b4f8886a2ed77691f94a701bb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8660cb18f5e7ac5f3695eb15475570b107bf25c
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759106"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337071"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Připojení zařízení Azure IoT Edge k aplikaci Azure IoT Central
 
@@ -57,7 +58,7 @@ V Azure IoT Central můžete importovat manifest nasazení a vytvořit šablonu 
 
 ![Vývojový diagram životního cyklu manifestu nasazení](./media/concepts-iot-edge/dmflow.png)
 
-IoT technologie Plug and Play (Preview) modeluje IoT Edge zařízení následujícím způsobem:
+IoT Central modeluje IoT Edge zařízení následujícím způsobem:
 
 * Každá šablona zařízení IoT Edge má model schopností zařízení.
 * Pro každý vlastní modul uvedený v manifestu nasazení je vygenerován model schopností modulu.

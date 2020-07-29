@@ -4,17 +4,17 @@ description: Popisuje způsob, jakým funguje detekce anomálií, když se odes�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: anbene
 ms.author: mingshen
+author: mingshen-ms
 ms.date: 06/10/2020
-ms.openlocfilehash: becd15ceea41e40b35848f46f9657c501acf659a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: cb134c82f231eb8b6329b1acafb181032edd6936
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122026"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320081"
 ---
-# <a name="anomaly-detection-service-for-metered-billing"></a>Služba pro detekci anomálií pro účtované měřené platby
+# <a name="anomaly-detection-service-for-metered-billing"></a>Služba detekce anomálií pro fakturaci na základě měření
 
 [Služba měření na webu Marketplace](marketplace-metering-service-apis-faq.md) umožňuje vytvářet nabídky v programu komerčního tržiště, které se účtují podle nestandardních jednotek. S měřením fakturace odesíláte do Microsoftu události využití vašeho zákazníka a na základě tohoto využití připravujeme fakturaci.
 
@@ -58,9 +58,9 @@ Pokud ověříte, že zjištěné anomálie jsou normálním využitím, nemusí
 
 ## <a name="when-and-how-to-get-support"></a>Kdy a jak získat podporu
 
-Pokud jste společnosti Microsoft poslali nesprávné používání a tato akce vznikla, nebo bude mít za následek, že je zákazníkem účtováno jako podplatně, nevystaví se zákazníkovi žádné poplatky za použití, nebo za toto použití platíte. Je nutné, abyste si ztratili ztrátu z důvodu nahlášení.
+Pokud jste společnosti Microsoft poslali nesprávné používání a tato akce vznikla, nebo bude mít za následek, že je zákazníkem účtováno jako podplatně, nevystaví se zákazníkovi žádné poplatky za použití, nebo za toto použití platíte. Za ztrátu příjmů způsobenou nahlášením nižšího využití ponesete odpovědnost vy.
 
-Pokud platí jeden z následujících případů, můžete otevřít lístek podpory pro vyžádání náhrady nebo vyrovnání fakturace pro vaše zákazníky:
+Pokud se vás týká některý z následujících případů, můžete vytvořit lístek podpory s žádostí o refundaci nebo úpravu fakturace pro vaše zákazníky:
 
 - Potvrdili se, že jedna z anomálií, které jsme našli, je skutečný problém a nesprávné použití **overcharge** by vedlo k přečerpání zákazníka.
 - Zjistili jste, že nám jste poslali nesprávné použití, a nesprávné použití by vedlo **k** přečerpání zákazníka.

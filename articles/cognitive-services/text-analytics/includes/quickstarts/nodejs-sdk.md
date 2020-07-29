@@ -6,15 +6,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 06/11/2020
+ms.date: 07/27/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: 7f25c9c500615f376ffe2fee2483fbfbdc03f3b8
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: cc5db825771369d35b447232b58a9e42b14efb4f
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735535"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87375812"
 ---
 <a name="HOLTop"></a>
 
@@ -31,7 +31,7 @@ ms.locfileid: "84735535"
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * Aktuální verze [Node.js](https://nodejs.org/).
 * Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" vytvořte prostředek analýza textu vytvoření prostředku "  target="_blank"> Analýza textu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
     * K připojení aplikace k rozhraní API pro analýzu textu budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
@@ -61,7 +61,7 @@ npm init
 Instalace `@azure/ai-text-analytics` balíčků npm:
 
 ```console
-npm install --save @azure/ai-text-analytics@1.0.0
+npm install --save @azure/ai-text-analytics@5.0.0
 ```
 
 > [!TIP]
@@ -211,7 +211,7 @@ Spusťte kód `node index.js` v okně konzoly.
 
 ---
 
-## <a name="language-detection"></a>Rozpoznávání jazyka
+## <a name="language-detection"></a>rozpoznávání jazyka,
 
 #### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
@@ -410,7 +410,7 @@ Document ID: 2
 
 ---
 
-## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
+## <a name="key-phrase-extraction"></a>extrakce klíčových frází,
 
 #### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 

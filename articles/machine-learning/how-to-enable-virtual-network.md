@@ -5,18 +5,18 @@ description: Použijte izolovaný Virtual Network Azure s Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 07/07/2020
-ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: fa99a5c78fb533d17cb7f70b3545aa9ef6439b32
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.custom: how-to, contperfq4, tracking-python
+ms.openlocfilehash: 79db00216ffb54b8c71ef78cc745ec37c353f1cc
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072624"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320166"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Izolace sítě během školení & odvození s privátními virtuálními sítěmi
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak zabezpečit životní cyklus strojového učen
 
 __Virtuální síť__ funguje jako hranice zabezpečení a izoluje prostředky Azure od veřejného Internetu. Virtuální síť Azure se taky můžete připojit k místní síti. Připojením sítí můžete bezpečně prosazovat modely a přistupovat k nasazeným modelům pro odvození.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + [Pracovní prostor](how-to-manage-workspace.md)Azure Machine Learning.
 
@@ -304,8 +304,8 @@ Pokud nechcete používat výchozí odchozí pravidla a chcete omezit odchozí p
 - Odmítne odchozí připojení k Internetu pomocí pravidel NSG.
 
 - V případě __výpočetní instance__ nebo __výpočetního clusteru__omezte odchozí provoz na následující položky:
-   - Azure Storage pomocí __označení služby__ __úložiště__.
-   - Azure Container Registry pomocí __označení služby__ __AzureContainerRegistry__.
+   - Azure Storage pomocí __označení služby__ __Storage. RegionName__. Kde `{RegionName}` je název oblasti Azure.
+   - Azure Container Registry pomocí __označení služby__ __AzureContainerRegistry. RegionName__. Kde `{RegionName}` je název oblasti Azure.
    - Azure Machine Learning pomocí __označení služby__ __AzureMachineLearning__
    - Azure Resource Manager pomocí __označení služby__ __AzureResourceManager__
    - Azure Active Directory pomocí __označení služby__ __azureactivedirectory selhala__

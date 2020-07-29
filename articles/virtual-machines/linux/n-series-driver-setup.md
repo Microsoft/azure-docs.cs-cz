@@ -4,16 +4,16 @@ description: Postup nastavení ovladačů NVIDIA GPU pro virtuální počítače
 services: virtual-machines-linux
 author: vikancha-MSFT
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: 4a6bf0499eb9ed6700111918c416f118414ae895
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 02fbe721f1bf5737ad1d10d656ea75ed1372b484
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085451"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284876"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Instalace ovladačů NVIDIA GPU pro virtuální počítače řady N-Series se systémem Linux
 
@@ -352,7 +352,7 @@ fi
 
 Pak vytvořte záznam pro skript pro aktualizaci v nástroji, `/etc/rc.d/rc3.d` aby se skript vyvolal jako kořenový při spuštění.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 * Můžete nastavit režim trvalosti pomocí `nvidia-smi` , takže výstup příkazu je rychlejší, když potřebujete zadat dotaz na karty. Chcete-li nastavit režim trvalosti, spusťte příkaz `nvidia-smi -pm 1` . Všimněte si, že pokud se virtuální počítač restartuje, nastavení režimu zmizí. Vždy můžete skriptovat nastavení režimu, které se spustí při spuštění.
 * Pokud jste ovladače NVIDIA CUDA aktualizovali na nejnovější verzi a zjistíte, že připojení RDMA už nefunguje, [přeinstalujte ovladače RDMA pro opětovné](#rdma-network-connectivity) vytvoření tohoto připojení. 

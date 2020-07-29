@@ -5,11 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit, references_regions
 ms.topic: article
 ms.date: 02/27/2020
-ms.openlocfilehash: 06507c75d486717a77676154818f2032b7e8c807
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: feea8c3cba170244be2ca3ec7a11c36a3c39f700
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195567"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281221"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Vytvoření clusteru služby Azure Kubernetes (AKS), který používá zóny dostupnosti
 
@@ -27,16 +28,16 @@ Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.76 nebo nově
 
 Clustery AKS se teď dají vytvářet pomocí zón dostupnosti v následujících oblastech:
 
-* USA – střed
+* Střední USA
 * USA – východ 2
-* USA – východ
+* East US
 * Francie – střed
-* Japonsko – východ
+* Japan East
 * Severní Evropa
 * Jihovýchodní Asie
 * Spojené království – jih
-* Západní Evropa
-* USA – západ 2
+* West Europe
+* Západní USA 2
 
 Při vytváření clusteru AKS pomocí zón dostupnosti platí následující omezení:
 
@@ -84,7 +85,7 @@ az aks create \
     --zones 1 2 3
 ```
 
-Vytvoření clusteru AKS trvá několik minut.
+Vytvoření clusteru AKS bude trvat několik minut.
 
 Při rozhodování o tom, do jaké zóny má nový uzel patřit, bude daný fond uzlů AKS používat [nejlepší vyrovnávání zóny, které nabízí základní Azure Virtual Machine Scale Sets][vmss-zone-balancing]. Daný fond uzlů AKS se považuje za vyvážený, pokud má každá zóna stejný počet virtuálních počítačů nebo + \- 1 virtuální počítač ve všech ostatních zónách pro sadu škálování.
 
@@ -98,7 +99,7 @@ Nejdřív Získejte přihlašovací údaje clusteru AKS pomocí příkazu [AZ AK
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-V dalším kroku pomocí příkazu [kubectl popsat][kubectl-describe] seznam uzlů v clusteru. Vyfiltrujte hodnotu *Failure-Domain.beta.Kubernetes.IO/Zone* , jak je znázorněno v následujícím příkladu:
+V dalším kroku použijte příkaz [kubectl popsat][kubectl-describe] pro výpis uzlů v clusteru a filtr na hodnotu *Failure-Domain.beta.Kubernetes.IO/Zone* . Následující příklad je pro prostředí bash.
 
 ```console
 kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"
@@ -130,7 +131,7 @@ az aks scale \
     --node-count 5
 ```
 
-Pokud se operace škálování dokončí po několika minutách, příkaz `kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"` by měl poskytnout výstup podobný této ukázce:
+Když se operace škálování dokončí po několika minutách, příkaz `kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"` v prostředí bash by měl poskytnout výstup podobný této ukázce:
 
 ```console
 Name:       aks-nodepool1-28993262-vmss000000
@@ -151,7 +152,7 @@ V zónách 1 a 2 teď máme dva další uzly. Můžete nasadit aplikaci, která 
 kubectl run nginx --image=nginx --replicas=3
 ```
 
-Zobrazením uzlů, kde jsou vaše lusky spuštěné, vidíte, že se na uzlech, které odpovídají třem různým zónám dostupnosti, spouštějí lusky. Například s příkazem byste `kubectl describe pod | grep -e "^Name:" -e "^Node:"` získali výstup podobný tomuto:
+Zobrazením uzlů, kde jsou vaše lusky spuštěné, vidíte, že se na uzlech, které odpovídají třem různým zónám dostupnosti, spouštějí lusky. Například s příkazem `kubectl describe pod | grep -e "^Name:" -e "^Node:"` v prostředí bash byste získali výstup podobný tomuto:
 
 ```console
 Name:         nginx-6db489d4b7-ktdwg
