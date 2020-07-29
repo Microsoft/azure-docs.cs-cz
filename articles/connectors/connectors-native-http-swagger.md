@@ -7,11 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: a5c00dc64dd39ba2fdbb734f4e9749fbe42e246e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf32938b534272a13af5891d6a31e64b8136a528
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83831921"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281459"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Volání koncových bodů REST pomocí Azure Logic Apps
 
@@ -27,11 +28,11 @@ Díky [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a integrovanému 
 
   * Soubor Swagger musí být hostovaný na adrese URL HTTPS, která je veřejně přístupná.
 
-  * Soubor Swagger musí mít povolený [sdílení prostředků mezi zdroji (CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) .
+  * Soubor Swagger musí mít povolený [sdílení prostředků mezi zdroji (CORS)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) .
 
   Chcete-li vytvořit odkaz na soubor Swagger, který není hostovaný nebo který nesplňuje požadavky na zabezpečení a více zdrojů, můžete [nahrát soubor Swagger do kontejneru objektů BLOB v účtu úložiště Azure](#host-swagger)a povolit pro tento účet úložiště CORS, abyste mohli soubor odkázat.
 
-  V příkladech v tomto tématu se používá [Cognitive Services Face API](https://docs.microsoft.com/azure/cognitive-services/face/overview), která vyžaduje [účet Cognitive Services a přístupový klíč](../cognitive-services/cognitive-services-apis-create-account.md).
+  V příkladech v tomto tématu se používá [Cognitive Services Face API](../cognitive-services/face/overview.md), která vyžaduje [účet Cognitive Services a přístupový klíč](../cognitive-services/cognitive-services-apis-create-account.md).
 
 * Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
@@ -41,7 +42,7 @@ Díky [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a integrovanému 
 
 Tato integrovaná aktivační událost pošle požadavek HTTP na adresu URL pro soubor Swagger, který popisuje REST API a vrátí odpověď obsahující obsah tohoto souboru.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
 
 1. V návrháři do vyhledávacího pole zadejte "Swagger" jako filtr. V seznamu **triggery** vyberte aktivační událost **http + Swagger** .
 
@@ -77,7 +78,7 @@ Tato integrovaná aktivační událost pošle požadavek HTTP na adresu URL pro 
 
 Tato Vestavěná akce vytvoří požadavek HTTP na adresu URL pro soubor Swagger, který popisuje REST API a vrátí odpověď obsahující obsah tohoto souboru.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Otevřete aplikaci logiky v návrháři aplikace logiky.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Otevřete aplikaci logiky v návrháři aplikace logiky.
 
 1. V kroku, kam chcete přidat akci HTTP + Swagger, vyberte **Nový krok**.
 
@@ -117,7 +118,7 @@ Tato Vestavěná akce vytvoří požadavek HTTP na adresu URL pro soubor Swagger
 
 Můžete odkazovat na soubor Swagger, který není hostovaný nebo který nesplňuje požadavky na zabezpečení a více zdrojů, odesláním tohoto souboru do kontejneru objektů BLOB v účtu úložiště Azure a povolením CORS v tomto účtu úložiště. Pokud chcete vytvářet, nastavovat a ukládat soubory Swagger v Azure Storage, postupujte podle následujících kroků:
 
-1. [Vytvořte účet úložiště Azure](../storage/common/storage-create-storage-account.md).
+1. [Vytvořte účet úložiště Azure](../storage/common/storage-account-create.md).
 
 1. Nyní povolte CORS pro objekt BLOB. V nabídce účtu úložiště vyberte **CORS**. Na kartě **BLOB Service** zadejte tyto hodnoty a pak vyberte **Uložit**.
 
@@ -144,10 +145,10 @@ Můžete odkazovat na soubor Swagger, který není hostovaný nebo který nespl�
 
 Zde jsou další informace o výstupech z triggeru HTTP + Swagger nebo akce. Volání HTTP + Swagger vrátí tyto informace:
 
-| Název vlastnosti | Typ | Description |
+| Název vlastnosti | Typ | Popis |
 |---------------|------|-------------|
-| záhlaví | odkazy objektů | Hlavičky z požadavku |
-| text | odkazy objektů | Objekt JSON | Objekt s obsahem textu z požadavku |
+| záhlaví | object | Hlavičky z požadavku |
+| text | object | Objekt JSON | Objekt s obsahem textu z požadavku |
 | stavový kód | int | Stavový kód z požadavku |
 |||
 
@@ -165,3 +166,4 @@ Zde jsou další informace o výstupech z triggeru HTTP + Swagger nebo akce. Vol
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)
+

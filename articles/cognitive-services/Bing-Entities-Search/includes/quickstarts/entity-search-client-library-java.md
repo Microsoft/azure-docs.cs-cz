@@ -7,13 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
+ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 8c987aa14e922573d01aa35fab609edf01e109b4
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: f69b9b989a93949f9a0441676c81af7480fb968f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79136771"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375827"
 ---
 Pomocí tohoto rychlého startu můžete začít vyhledávat entity pomocí Vyhledávání entit Bingu klientské knihovny pro Java. I když Vyhledávání entit Bingu má REST API kompatibilní s většinou programovacích jazyků, Klientská knihovna poskytuje snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingEntitySearch).
 
@@ -74,7 +75,7 @@ Nainstalujte závislosti Vyhledávání entit Bingu klientské knihovny pomocí 
     )};
     ```
 
-    K implementaci rozhraní `ServiceClientCredentials`použijte následující postup:
+    K implementaci rozhraní `ServiceClientCredentials` použijte následující postup:
 
    1. potlačí `applyCredentialsFilter()` funkci s `OkHttpClient.Builder` objektem jako parametr. 
         
@@ -88,7 +89,7 @@ Nainstalujte závislosti Vyhledávání entit Bingu klientské knihovny pomocí 
        //...
        ```
     
-   2. V `applyCredentialsFilter()`rámci volejte `builder.addNetworkInterceptor()`. Vytvořte nový `Interceptor` objekt a přepište jeho `intercept()` metodu pro převzetí objektu `Chain` zachytávací.
+   2. V rámci `applyCredentialsFilter()` volejte `builder.addNetworkInterceptor()` . Vytvořte nový `Interceptor` objekt a přepište jeho `intercept()` metodu pro převzetí `Chain` objektu zachytávací.
 
        ```java
        //...
@@ -102,7 +103,7 @@ Nainstalujte závislosti Vyhledávání entit Bingu klientské knihovny pomocí 
        ///...
        ```
 
-   3. V rámci `intercept` funkce vytvořte proměnné pro svůj požadavek. Použijte `Request.Builder()` k sestavení vaší žádosti. Přidejte do `Ocp-Apim-Subscription-Key` záhlaví klíč předplatného a vraťte `chain.proceed()` se k objektu Request.
+   3. V rámci `intercept` funkce vytvořte proměnné pro svůj požadavek. Použijte `Request.Builder()` k sestavení vaší žádosti. Přidejte do záhlaví klíč předplatného `Ocp-Apim-Subscription-Key` a vraťte `chain.proceed()` se k objektu Request.
             
        ```java
        //...
@@ -118,7 +119,7 @@ Nainstalujte závislosti Vyhledávání entit Bingu klientské knihovny pomocí 
        ```
 ## <a name="send-a-request-and-receive-a-response"></a>Odeslat žádost a přijmout odpověď
 
-1. Vytvořte novou instanci klienta Search s vaším klíčem předplatného. slouží `client.entities().search()` k odeslání žádosti o vyhledávání vyhledávacího dotazu `satya nadella`a získání odpovědi. 
+1. Vytvořte novou instanci klienta Search s vaším klíčem předplatného. slouží `client.entities().search()` k odeslání žádosti o vyhledávání vyhledávacího dotazu `satya nadella` a získání odpovědi. 
     
     ```java
     EntitySearchAPIImpl client = getClient(subscriptionKey);

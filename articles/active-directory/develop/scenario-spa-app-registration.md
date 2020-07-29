@@ -12,22 +12,24 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 238bcc6c706f2fab969c98b73ca879d064498693
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: efd51e90bb14f3d97b76eb6ac45b384192bb8da0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026505"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311564"
 ---
 # <a name="single-page-application-app-registration"></a>Jednostránkové aplikace: registrace aplikace
 
 K registraci jednostránkové aplikace (SPA) na platformě Microsoft Identity proveďte následující kroky. Registrační postup se liší od MSAL.js 1,0, který podporuje tok implicitního udělení a MSAL.js 2,0, který podporuje tok autorizačního kódu s PKCE.
 
+[!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
+
 ## <a name="create-the-app-registration"></a>Vytvoření registrace aplikace
 
 U aplikací založených na MSAL.js 1,0 a 2,0 začněte provedením následujících kroků a vytvořte prvotní registraci aplikace.
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com). Pokud má váš účet přístup k více klientům, v horní nabídce vyberte filtr **adresář + předplatné** a pak vyberte tenanta, který by měl obsahovat registraci aplikace, kterou chcete vytvořit.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Pokud má váš účet přístup k více klientům, v horní nabídce vyberte filtr **adresář + předplatné** a pak vyberte tenanta, který by měl obsahovat registraci aplikace, kterou chcete vytvořit.
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Registrace aplikací**.
 1. Vyberte **Nová registrace**, zadejte **název** aplikace a zvolte **podporované typy účtů** pro aplikaci. Nezadávejte **identifikátor URI přesměrování**. **NOT** Popis různých typů účtů najdete v tématu [Registrace nové aplikace pomocí Azure Portal](quickstart-register-app.md#register-a-new-application-using-the-azure-portal).
@@ -67,7 +69,7 @@ Pomocí těchto kroků přidejte identifikátor URI pro přesměrování pro jed
 
 Právě jste dokončili registraci jednostránkové aplikace (SPA) a nakonfigurovali identifikátor URI pro přesměrování, ke kterému bude klient přesměrován, a budou odeslány všechny tokeny zabezpečení. Výběrem jednoho nebo obou **tokenů ID** a **přístupových tokenů**jste povolili postup implicitního udělení.
 
-Další pokyny najdete v tomto [kurzu](tutorial-v2-javascript-spa.md) . 
+Další pokyny najdete v tomto [kurzu](tutorial-v2-javascript-spa.md) .
 
 ## <a name="note-about-authorization-flows"></a>Poznámka o autorizačních tocích
 

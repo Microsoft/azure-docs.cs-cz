@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2019
+ms.custom: devx-track-java
 ms.author: juliako
-ms.openlocfilehash: 2337a7543f84d7eba5f565d875129cf22e8b27ed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 098e1db7470124dc7c15b3ee65d6ab9cb3fadabd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001209"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319826"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>Připojení k Media Services V3 API – Java
 
@@ -26,7 +27,7 @@ V tomto článku se dozvíte, jak se připojit k sadě Azure Media Services V3 J
 
 V tomto článku se k vývoji ukázkové aplikace používá Visual Studio Code.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Po [napsání Java pomocí Visual Studio Code](https://code.visualstudio.com/docs/java/java-tutorial) nainstalujte:
 
@@ -119,7 +120,7 @@ Při spuštění příkazu se `pom.xml` `App.java` vytvoří soubory, a.
    ```
 1. Spusťte aplikaci.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 - [Media Services koncepty](concepts-overview.md)
 - [Java SDK](https://aka.ms/ams-v3-java-sdk)

@@ -6,17 +6,17 @@ manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 07/22/2019
 ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 4d33a47e0498c82dff967242cfbc12a89c94a3b5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: dd2b88d923d0398dc42362242b94b978ccd24252
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327731"
+ms.locfileid: "87336714"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Vytvoření a čtení zpráv IoT Hubu
 
@@ -61,6 +61,8 @@ Další informace o tom, jak zakódovat a dekódovat zprávy odeslané pomocí r
 | iothub-Connection-Module-ID |ID nastavené IoT Hub u zpráv ze zařízení do cloudu. Obsahuje **moduleId** zařízení, které zprávu odeslalo. | Ne | connectionModuleId |
 | iothub-Connection-auth-Generation-ID |ID nastavené IoT Hub u zpráv ze zařízení do cloudu. Obsahuje **connectionDeviceGenerationId** (podle [vlastností identity jednotlivých zařízení](iot-hub-devguide-identity-registry.md#device-identity-properties)) zařízení, které zprávu odeslalo. | Ne |connectionDeviceGenerationId |
 | iothub připojení-auth-Method |Metoda ověřování nastavená IoT Hub na zprávy ze zařízení do cloudu. Tato vlastnost obsahuje informace o metodě ověřování, která se používá k ověření zařízení odesílajícího zprávu.| Ne | connectionAuthMethod |
+| DT-DataSchema | Tuto hodnotu nastavuje služba IoT Hub pro zprávy ze zařízení do cloudu. Obsahuje ID modelu zařízení nastavené v připojení zařízení. Tato funkce je k dispozici jako součást [IoT technologie Plug and Play Public Preview](../iot-pnp/overview-iot-plug-and-play.md). | Ne | – |
+| DT – předmět | Název součásti odesílající zprávy typu zařízení-Cloud. Tato funkce je k dispozici jako součást [IoT technologie Plug and Play Public Preview](../iot-pnp/overview-iot-plug-and-play.md). | Ano | – |
 
 ## <a name="system-properties-of-c2d-iot-hub-messages"></a>Systémové vlastnosti zpráv **C2D** IoT Hub
 
@@ -89,8 +91,9 @@ Názvy systémových vlastností se liší v závislosti na koncovém bodu, na k
 |Třída|typ obsahu|Třída|Třída|iothub-Content-Type|
 |contentEncoding|kódování obsahu|contentEncoding|ContentEncoding|iothub – kódování obsahu|
 |iothub – enqueuedtime|iothub – enqueuedtime|enqueuedTime| – |iothub – enqueuedtime|
-|iothub – název rozhraní|iothub – název rozhraní|interfaceName|Iothub – název rozhraní|iothub – název rozhraní|
 |CorrelationId|correlation-id|correlationId|CorrelationId|correlation-id|
+|DT-DataSchema|DT-DataSchema|DT-DataSchema|DT-DataSchema|DT-DataSchema|
+|DT – předmět|DT – předmět|DT – předmět|DT – předmět|DT – předmět|
 
 ## <a name="message-size"></a>Velikost zpráv
 

@@ -6,19 +6,19 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 07/21/2020
-ms.openlocfilehash: 59d5c6c4a9c3af70eb08e9d5a05d516f4b8b8bdd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d85fe36bb948ae9a0c81fa25f87450c7f5fe93b7
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097637"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337258"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-preview"></a>Azure cache pro Redis s privátním propojením Azure (Preview)
 Privátní koncový bod Azure je síťové rozhraní, které se připojuje soukromě a bezpečně ke službě Azure cache pro Redis využívající privátní propojení Azure. 
 
 V tomto článku se dozvíte, jak vytvořit službu Azure cache, virtuální síť Azure a soukromý koncový bod pomocí Azure Portal.  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 
 > [!NOTE]
@@ -149,3 +149,9 @@ V této části vytvoříte privátní koncový bod a připojíte ho k mezipamě
 11. Vyberte **zkontrolovat + vytvořit**. Přejdete na kartu **Revize + vytvořit**   , kde Azure ověřuje vaši konfiguraci.
 
 12. Po zobrazení zeleného **ověření** se zobrazí zpráva vyberte **vytvořit**.
+
+
+## <a name="next-steps"></a>Další kroky
+
+Další informace o privátních odkazech najdete v [dokumentaci k privátním odkazům Azure](https://docs.microsoft.com/azure/private-link/private-link-overview). 
+

@@ -1,6 +1,6 @@
 ---
-title: Vyrovnávání zatížení fondu hostitelů virtuálních počítačů s Windows (2019) – Azure
-description: Přečtěte si informace o metodách vyrovnávání zatížení fondu hostitelů pro prostředí pro virtuální plochu s Windows (verze 2019).
+title: Vyrovnávání zatížení fondu hostitelů virtuálních počítačů (Classic) Windows – Azure
+description: Metody vyrovnávání zatížení fondu hostitelů pro prostředí virtuálních počítačů s Windows
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 50819fc6b1e13aeb1c0eddf306ecdfbe8147a44f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3854471b2e74bd7c3315ae622a36588af0270d8c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046272"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284995"
 ---
-# <a name="host-pool-load-balancing-methods-fall-2019-release"></a>Metody vyrovnávání zatížení fondu hostitelů (vydání 2019 verze)
+# <a name="host-pool-load-balancing-methods-in-windows-virtual-desktop-classic"></a>Metody vyrovnávání zatížení fondu hostitelů ve virtuální ploše Windows (Classic)
 
 >[!IMPORTANT]
->Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objekty virtuálních klientů Windows, které byly zavedeny v aktualizaci jarní 2020, přečtěte si [Tento článek](../host-pool-load-balancing.md).
+>Tento obsah se vztahuje na virtuální plochu Windows (Classic), která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objektů virtuálních klientů Windows, přečtěte si [Tento článek](../host-pool-load-balancing.md).
 
 Virtuální plocha Windows podporuje dvě metody vyrovnávání zatížení. Každá metoda určuje, který hostitel relace bude hostovat relaci uživatele, když se připojí k prostředku ve fondu hostitelů.
 

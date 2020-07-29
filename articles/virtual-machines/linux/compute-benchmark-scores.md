@@ -2,15 +2,15 @@
 title: Skóre srovnávacích testů pro virtuální počítače Azure Linux
 description: Porovnejte skóre CoreMark výpočetních testů pro virtuální počítače Azure se systémem Linux.
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/29/2020
 ms.reviewer: davberg
-ms.openlocfilehash: afe1bddd5822b506dcf2c177fc308b717ddc2129
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61deac4c94902dc392a23f05674e2b1fb3f3cf87
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82580441"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373415"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Hodnocení srovnávacích testů pro virtuální počítače se systémem Linux
 Následující výsledky srovnávacích testů CoreMark ukazují výpočetní výkon pro vysoce výkonné virtuální počítače Azure seznamu se systémem Ubuntu. Pro [virtuální počítače s Windows](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)jsou k dispozici také hodnocení srovnávacích testů.
@@ -151,12 +151,12 @@ Následující výsledky srovnávacích testů CoreMark ukazují výpočetní v�
 | Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | STD dev | Standardní vývoj% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_D2_v3 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 2 | 1 | 7.8 | 20 359 | 799 | 3,93% | 154 |
-| Standard_D2_v3 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 2 | 1 | 7.8 | 20 737 | 1 422 | 6,86% | 546 |
+| Standard_D2_v3 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 2 | 1 | 7.8 | 20 737 | 1,422 | 6,86% | 546 |
 | Standard_D4_v3 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 4 | 1 | 15,7 | 40 095 | 1 501 | 3,74% | 147 |
 | Standard_D4_v3 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 4 | 1 | 15,7 | 41 147 | 2 706 | 6,58% | 546 |
 | Standard_D8_v3 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 8 | 1 | 31,4 | 80 383 | 1 486 | 1,85% | 133 |
 | Standard_D8_v3 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 8 | 1 | 31,4 | 80 511 | 3 916 | 4,86% | 560 |
-| Standard_D16_v3 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 16 | 1 | 62,9 | 160 932 | 2 200 | 1,37% | 140 |
+| Standard_D16_v3 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 16 | 1 | 62,9 | 160 932 | 2 200 | 1,37% | 140 |
 | Standard_D16_v3 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 16 | 1 | 62,9 | 158 679 | 4 550 | 2,87% | 560 |
 | Standard_D32_v3 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 32 | 2 | 125,9 | 314 208 | 4 250 | 1,35% | 189 |
 | Standard_D32_v3 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 32 | 1 | 125,9 | 312 472 | 3 173 | 1,02% | 511 |
@@ -233,7 +233,7 @@ Následující výsledky srovnávacích testů CoreMark ukazují výpočetní v�
 
 | Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | STD dev | Standardní vývoj% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Standard_E2s_v3 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 2 | 1 | 15,7 | 20 957 | 1 200 | 5,73% | 672 |
+| Standard_E2s_v3 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 2 | 1 | 15,7 | 20 957 | 1 200 | 5,73% | 672 |
 | Standard_E4s_v3 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 4 | 1 | 31,4 | 40 420 | 1 993 | 4,93% | 672 |
 | Standard_E4 – 2s_v3 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 2 | 1 | 31,4 | 20 774 | 1 133 | 5,45% | 672 |
 | Standard_E8s_v3 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 8 | 1 | 62,9 | 80 153 | 3 308 | 4,13% | 665 |

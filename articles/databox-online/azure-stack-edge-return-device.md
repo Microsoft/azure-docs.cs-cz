@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 07/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 29ecd2e90812da533eb59db71a876b6d23f20918
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 018fe9b97b343bc07cf3c04a1d0e84edaf6cc7ac
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066994"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283856"
 ---
 # <a name="return-your-azure-stack-edge-device"></a>Vrácení zařízení Azure Stack Edge
 
@@ -117,14 +117,14 @@ Chcete-li naplánovat vyzvednutí, proveďte následující kroky.
 
 Po přijetí zařízení v datovém centru Azure se v zařízení zkontroluje poškození nebo jakékoli případné známky manipulace.
 
-- Pokud zařízení dorazí na nedotčené a je v dobrém tvaru, měřič účtování se zastaví pro daný prostředek. Podpora Microsoftu vás bude kontaktovat, abyste ověřili, že se zařízení vrátilo. Pak můžete odstranit prostředek přidružený k zařízení v Azure Portal.
+- Pokud zařízení dorazí na nedotčené a je v dobrém tvaru, měřič účtování se zastaví pro daný prostředek. Tým Azure Stack hraničních operací vás bude kontaktovat, abyste ověřili, že se zařízení vrátilo. Pak můžete odstranit prostředek přidružený k zařízení v Azure Portal.
 - Pokud zařízení dorazí k výraznému poškození, mohou se vztahovat pokuty. Podrobnosti najdete v [nejčastějších dotazech o ztracených nebo poškozených](https://azure.microsoft.com/pricing/details/databox/edge/) [licenčních službách](https://www.microsoft.com/licensing/product-licensing/products)zařízení a produktu.  
 
 
 Zařízení můžete v Azure Portal odstranit:
 
 - Po umístění objednávky a před tím, než je zařízení připraveno společností Microsoft.
-- Po tom, co zařízení vrátíte do Microsoftu, projde fyzickou kontrolu v datacentru Azure a podpora Microsoftu volání, která potvrdí, že se zařízení vrátilo.
+- Po tom, co zařízení vrátíte do Microsoftu, projde fyzickou kontrolu v datacentru Azure a zavolá Azure Stack hraničního týmu, aby se ověřilo, že se zařízení vrátilo.
 
 Pokud jste zařízení aktivovali v jiném předplatném nebo umístění, Microsoft přesune vaši objednávku na nové předplatné nebo umístění během jednoho pracovního dne. Po přesunutí objednávky můžete tento prostředek odstranit.
 

@@ -3,12 +3,12 @@ title: Export do SQL z Azure Application Insights | Microsoft Docs
 description: Průběžně exportujte Application Insights data do SQL pomocí Stream Analytics.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 4975d91cc20b81de302a1dd0cb7b3326878a96a1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9c559a61794b36ea1bc33abc14271151fbea9d4c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540090"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311224"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Návod: Export do jazyka SQL z Application Insights pomocí Stream Analytics
 Tento článek popisuje, jak přesunout data telemetrie z [Azure Application Insights][start] do Azure SQL Database pomocí [průběžného exportu][export] a [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
@@ -24,9 +24,9 @@ V tomto příkladu budeme používat data zobrazení stránky, ale stejný vzor 
 ## <a name="add-application-insights-to-your-application"></a>Přidání Application Insights do aplikace
 Jak začít:
 
-1. [Nastavte Application Insights pro své webové stránky](../../azure-monitor/app/javascript.md). 
+1. [Nastavte Application Insights pro své webové stránky](./javascript.md). 
    
-    (V tomto příkladu se zaměříme na zpracování dat zobrazení stránky z prohlížečů klienta, ale můžete také nastavit Application Insights na straně serveru aplikace [Java](../../azure-monitor/app/java-get-started.md) nebo [ASP.NET](../../azure-monitor/app/asp-net.md) a zpracovávat požadavky, závislosti a další telemetrie serveru.)
+    (V tomto příkladu se zaměříme na zpracování dat zobrazení stránky z prohlížečů klienta, ale můžete také nastavit Application Insights na straně serveru aplikace [Java](./java-get-started.md) nebo [ASP.NET](./asp-net.md) a zpracovávat požadavky, závislosti a další telemetrie serveru.)
 2. Publikujte aplikaci a sledujte data telemetrie v prostředku Application Insights.
 
 ## <a name="create-storage-in-azure"></a>Vytvoření úložiště v Azure
@@ -61,7 +61,7 @@ Průběžný export vždycky ukládá data do účtu Azure Storage, takže nejd�
     ![Výběr typů událostí](./media/code-sample-export-sql-stream-analytics/085-types.png)
 
 
-1. Nechte si shromažďovat data. Nasaďte se zpátky a umožněte lidem, aby na chvíli používali vaši aplikaci. Telemetrie se objeví v a v [diagnostickém vyhledávání](../../azure-monitor/app/diagnostic-search.md)uvidíte statistické grafy v [Průzkumníkovi metrik](../../azure-monitor/platform/metrics-charts.md) a jednotlivé události. 
+1. Nechte si shromažďovat data. Nasaďte se zpátky a umožněte lidem, aby na chvíli používali vaši aplikaci. Telemetrie se objeví v a v [diagnostickém vyhledávání](./diagnostic-search.md)uvidíte statistické grafy v [Průzkumníkovi metrik](../platform/metrics-charts.md) a jednotlivé události. 
    
     Data budou také exportována do vašeho úložiště. 
 2. Zkontrolujte exportovaná data, a to buď na portálu – zvolte **Procházet**, vyberte svůj účet úložiště a pak **kontejnery** – nebo v aplikaci Visual Studio. V aplikaci Visual Studio vyberte možnost **Zobrazit/Cloud Průzkumník**a otevřete Azure/úložiště. (Pokud nemáte tuto možnost nabídky, musíte nainstalovat sadu Azure SDK: otevřete dialogové okno Nový projekt a otevřete Visual C#/Cloud/získat Microsoft Azure SDK pro .NET.)
@@ -128,7 +128,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ![Vytvořit PageViewsTable](./media/code-sample-export-sql-stream-analytics/34-create-table.png)
 
-V této ukázce používáme data z zobrazení stránky. Pokud chcete zobrazit další dostupná data, zkontrolujte výstup JSON a podívejte se na [model exportu dat](../../azure-monitor/app/export-data-model.md).
+V této ukázce používáme data z zobrazení stránky. Pokud chcete zobrazit další dostupná data, zkontrolujte výstup JSON a podívejte se na [model exportu dat](./export-data-model.md).
 
 ## <a name="create-an-azure-stream-analytics-instance"></a>Vytvoření instance Azure Stream Analytics
 Z [Azure Portal](https://portal.azure.com/)vyberte službu Azure Stream Analytics a vytvořte novou Stream Analytics úlohu:
@@ -165,7 +165,7 @@ V tomto příkladu:
 
 * `webapplication27`je název prostředku Application Insights, a to **vše v malých malých písmenech**. 
 * `1234...`je klíč instrumentace prostředku Application Insights **s odebranými pomlčkami**. 
-* `PageViews`je typ dat, která chceme analyzovat. Dostupné typy závisí na filtru, který jste nastavili při průběžném exportu. Prohlédněte si exportovaná data a podívejte se na další dostupné typy a podívejte se na [model exportu dat](../../azure-monitor/app/export-data-model.md).
+* `PageViews`je typ dat, která chceme analyzovat. Dostupné typy závisí na filtru, který jste nastavili při průběžném exportu. Prohlédněte si exportovaná data a podívejte se na další dostupné typy a podívejte se na [model exportu dat](./export-data-model.md).
 * `/{date}/{time}`je vzor psaný doslova.
 
 Pokud chcete získat název a iKey prostředku Application Insights, otevřete na své stránce Přehled základní informace nebo otevřete nastavení.
@@ -215,7 +215,7 @@ Nahraďte výchozí dotaz:
 
 ```
 
-Všimněte si, že první pár vlastností je specifických pro data zobrazení stránky. Export dalších typů telemetrie bude mít různé vlastnosti. Informace o [typech a hodnotách vlastností najdete v referenčních informacích k datovému modelu.](../../azure-monitor/app/export-data-model.md)
+Všimněte si, že první pár vlastností je specifických pro data zobrazení stránky. Export dalších typů telemetrie bude mít různé vlastnosti. Informace o [typech a hodnotách vlastností najdete v referenčních informacích k datovému modelu.](./export-data-model.md)
 
 ## <a name="set-up-output-to-database"></a>Nastavit výstup do databáze
 Jako výstup vyberte SQL.
@@ -243,15 +243,16 @@ FROM [dbo].[PageViewsTable]
 ```
 
 ## <a name="related-articles"></a>Související články
-* [Export do Power BI pomocí Stream Analytics](../../azure-monitor/app/export-power-bi.md )
-* [Podrobný odkaz na datový model pro typy a hodnoty vlastností.](../../azure-monitor/app/export-data-model.md)
-* [Průběžný export v Application Insights](../../azure-monitor/app/export-telemetry.md)
+* [Export do Power BI pomocí Stream Analytics](./export-power-bi.md)
+* [podrobný odkaz na datový model pro typy a hodnoty vlastností.](./export-data-model.md)
+* [Průběžný export v Application Insights](./export-telemetry.md)
 * [Application Insights](https://azure.microsoft.com/services/application-insights/)
 
 <!--Link references-->
 
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[export]: ../../azure-monitor/app/export-telemetry.md
-[metrics]: ../../azure-monitor/platform/metrics-charts.md
+[diagnostic]: ./diagnostic-search.md
+[export]: ./export-telemetry.md
+[metrics]: ../platform/metrics-charts.md
 [portal]: https://portal.azure.com/
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[start]: ./app-insights-overview.md
+

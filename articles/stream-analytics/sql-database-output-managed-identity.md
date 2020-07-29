@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: 757dd7280867e9b31fdc0750fc0848de8f266770
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: fff44617a5621d4edd84bee8f9b1e6b6e6924cd8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045616"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305920"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>Použití spravovaných identit pro přístup k Azure SQL Database z úlohy Azure Stream Analytics (Preview)
 
@@ -102,7 +102,7 @@ Dále ve svém SQL Database vytvoříte uživatele databáze s omezením, který
 
 ## <a name="grant-stream-analytics-job-permissions"></a>Udělení oprávnění pro úlohy Stream Analytics
 
-Po vytvoření uživatele databáze s omezením a přístupu ke službám Azure na portálu, jak je popsáno v předchozí části, má vaše úloha Stream Analytics oprávnění ze spravované identity pro **připojení** k vašemu prostředku SQL Database prostřednictvím spravované identity. Doporučujeme udělit oprávnění k výběru a vložení do úlohy Stream Analytics, jak budou potřeba později v pracovním postupu Stream Analytics. Oprávnění **Select** umožňuje úloze otestovat připojení k tabulce v SQL Database. Oprávnění **Vložit** umožňuje testování koncových Stream Analytics dotazů po nakonfigurování vstupu a SQL Database výstupu. Tato oprávnění můžete udělit Stream Analytics úlohy pomocí SQL Server Management Studio. Další informace najdete v referenčních informacích o [grantu (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql?view=sql-server-ver15) .
+Po vytvoření uživatele databáze s omezením a přístupu ke službám Azure na portálu, jak je popsáno v předchozí části, má vaše úloha Stream Analytics oprávnění ze spravované identity pro **připojení** k vašemu prostředku SQL Database prostřednictvím spravované identity. Doporučujeme udělit oprávnění k výběru a vložení do úlohy Stream Analytics, jak budou potřeba později v pracovním postupu Stream Analytics. Oprávnění **Select** umožňuje úloze otestovat připojení k tabulce v SQL Database. Oprávnění **Vložit** umožňuje testování koncových Stream Analytics dotazů po nakonfigurování vstupu a SQL Database výstupu. Tato oprávnění můžete udělit Stream Analytics úlohy pomocí SQL Server Management Studio. Další informace najdete v referenčních informacích o GRANTu (Transact-SQL).
 
 Chcete-li udělit oprávnění pouze určitým tabulkám nebo objektům v databázi, použijte následující syntaxi T-SQL a spusťte dotaz. 
 

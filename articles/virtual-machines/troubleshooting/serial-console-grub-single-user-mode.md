@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: e31a10b1086679b7c2493f5a6d6b62f75e363dd4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3b074bb1d439a6d20ac476f4e10b6a26b7107be8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036467"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284706"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Použití sériové konzoly pro přístup k GRUB a jednomu uživatelskému režimu
 Při spouštění virtuálního počítače (VM) je pravděpodobně první věcí, kterou vidíte, při spuštění virtuálního počítače. Vzhledem k tomu, že se zobrazuje před spuštěním operačního systému, GRUB není přístupná přes SSH. V GRUB můžete upravit konfiguraci spouštění pro spuštění do režimu jednoho uživatele mimo jiné.
@@ -241,7 +241,7 @@ Pokud chcete povolit režim jednoho uživatele v Oracle Linux, postupujte podle 
 ## <a name="next-steps"></a>Další kroky
 Další informace o sériové konzole najdete v těchto tématech:
 * [Dokumentace k sériové konzole pro Linux](serial-console-linux.md)
-* [Použití sériové konzoly k povolení GRUB v různých distribucích](/archive/blogs/linuxonazure/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time)
+* [Použití sériové konzoly k povolení GRUB v různých distribucích](http://linuxonazure.azurewebsites.net/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)
 * [Použití sériové konzoly pro volání NMI a SysRq](serial-console-nmi-sysrq.md)
 * [Sériová Konzola pro virtuální počítače s Windows](serial-console-windows.md)
 * [Diagnostika spouštění](boot-diagnostics.md)

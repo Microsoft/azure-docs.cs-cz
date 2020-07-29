@@ -1,6 +1,6 @@
 ---
-title: Nasazení nástroje pro správu pro virtuální plochu Windows pomocí instančního objektu – Azure
-description: Postup nasazení nástroje pro správu pro virtuální plochu Windows pomocí prostředí PowerShell.
+title: Nasazení nástroje pro správu pro virtuální plochu Windows (Classic) pomocí instančního objektu – Azure
+description: Postup nasazení nástroje pro správu pro virtuální plochu Windows (Classic) pomocí prostředí PowerShell.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,16 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0ae3bb87bfee681aa518a4dfef064677ffa97119
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6947e5ebf91ee65145c7a5042fb1ee6968c19c9b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513392"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284961"
 ---
-# <a name="deploy-a-management-tool-with-powershell"></a>Nasazení nástroje pro správu pomocí PowerShellu
+# <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-powershell"></a>Nasazení nástroje pro správu virtuálních ploch Windows (Classic) pomocí PowerShellu
 
 >[!IMPORTANT]
->Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows.
+>Tento obsah se vztahuje na virtuální plochu Windows (Classic), která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows.
 
 Tento článek vám ukáže, jak nasadit nástroj pro správu pomocí PowerShellu.
 

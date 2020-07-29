@@ -3,15 +3,15 @@ title: Inteligentní zjišťování v Azure Application Insights | Microsoft Doc
 description: Application Insights provádí automatickou hloubkovou analýzu telemetrie aplikací a upozorňuje na potenciální problémy.
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: ad6580a0a62d331a7851c47d71b46d3ea6c81468
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 24ed8eefb7e07930cbd123fbe4081d555f0c27c3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516868"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305869"
 ---
 # <a name="smart-detection-in-application-insights"></a>Inteligentní zjišťování v Application Insights
- Inteligentní zjišťování vás automaticky upozorní na potenciální problémy s výkonem a anomálie při selhání ve vaší webové aplikaci. Provádí proaktivní analýzu telemetrie, kterou vaše aplikace odesílá [Application Insights](../../azure-monitor/app/app-insights-overview.md). Pokud dojde k náhlému nárůstu sazeb za selhání nebo abnormálních vzorů v výkonu klienta nebo serveru, zobrazí se upozornění. Tato funkce nepotřebuje žádnou konfiguraci. Funguje, pokud vaše aplikace posílá dostatek telemetrie.
+ Inteligentní zjišťování vás automaticky upozorní na potenciální problémy s výkonem a anomálie při selhání ve vaší webové aplikaci. Provádí proaktivní analýzu telemetrie, kterou vaše aplikace odesílá [Application Insights](./app-insights-overview.md). Pokud dojde k náhlému nárůstu sazeb za selhání nebo abnormálních vzorů v výkonu klienta nebo serveru, zobrazí se upozornění. Tato funkce nepotřebuje žádnou konfiguraci. Funguje, pokud vaše aplikace posílá dostatek telemetrie.
 
 K detekcím vydaným inteligentním zjišťováním můžete přistupovat z e-mailů, které obdržíte, a v okně inteligentní zjišťování.
 
@@ -32,8 +32,8 @@ Výběrem detekce zobrazíte její podrobnosti.
 ## <a name="what-problems-are-detected"></a>Jaké problémy se zjišťují?
 Inteligentní zjišťování detekuje a upozorňuje na nejrůznější problémy, například:
 
-* [Inteligentní zjišťování – anomálie selhání](../../azure-monitor/app/proactive-failure-diagnostics.md). Machine Learning používáme k nastavení očekávané míry neúspěšných žádostí pro vaši aplikaci a koreluje se zatížením a dalšími faktory. Pokud je míra selhání mimo očekávanou obálku, pošleme vám upozornění.
-* [Inteligentní zjišťování – anomálie výkonu](../../azure-monitor/app/proactive-performance-diagnostics.md). Obdržíte oznámení v případě, že doba odezvy operace nebo trvání závislosti zpomaluje v porovnání s historickým směrným plánem nebo pokud identifikujeme vzor neobvyklé v době odezvy nebo v době načítání stránky.   
+* [Inteligentní zjišťování – anomálie selhání](./proactive-failure-diagnostics.md). Machine Learning používáme k nastavení očekávané míry neúspěšných žádostí pro vaši aplikaci a koreluje se zatížením a dalšími faktory. Pokud je míra selhání mimo očekávanou obálku, pošleme vám upozornění.
+* [Inteligentní zjišťování – anomálie výkonu](./proactive-performance-diagnostics.md). Obdržíte oznámení v případě, že doba odezvy operace nebo trvání závislosti zpomaluje v porovnání s historickým směrným plánem nebo pokud identifikujeme vzor neobvyklé v době odezvy nebo v době načítání stránky.   
 * Obecné degradace a problémy, jako je například [degradace trasování](./proactive-trace-severity.md), [nevracení paměti](./proactive-potential-memory-leak.md), [neobvyklé zvýšení objemu výjimek](./proactive-exception-volume.md) a [antipatterny zabezpečení](./proactive-application-security-detection-pack.md).
 
 (Odkazy na Help v jednotlivých oznámeních vás převezmou na příslušné články.)
@@ -53,11 +53,12 @@ Alternativně můžete změnit konfiguraci pomocí Azure Resource Manager šablo
 ## <a name="next-steps"></a>Další kroky
 Tyto diagnostické nástroje vám pomůžou zkontrolovat telemetrii z vaší aplikace:
 
-* [Průzkumník metrik](../../azure-monitor/platform/metrics-charts.md)
-* [Průzkumník vyhledávání](../../azure-monitor/app/diagnostic-search.md)
-* [Analýza – výkonný dotazovací jazyk](../../azure-monitor/log-query/get-started-portal.md)
+* [Průzkumník metrik](../platform/metrics-charts.md)
+* [Průzkumník vyhledávání](./diagnostic-search.md)
+* [Analýza – výkonný dotazovací jazyk](../log-query/get-started-portal.md)
 
 Inteligentní zjišťování je zcela automatické. Možná byste ale chtěli nastavit ještě nějaké další výstrahy?
 
-* [Ručně nakonfigurované výstrahy metriky](../../azure-monitor/platform/alerts-log.md)
-* [Testy dostupnosti webu](../../azure-monitor/app/monitor-web-app-availability.md) 
+* [Ručně nakonfigurované výstrahy metriky](../platform/alerts-log.md)
+* [Testy dostupnosti webu](./monitor-web-app-availability.md) 
+

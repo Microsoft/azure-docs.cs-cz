@@ -1,6 +1,6 @@
 ---
-title: Problémy s diagnostikou virtuálních počítačů s Windows – klesnout 2019 – Azure
-description: Jak používat funkci diagnostiky virtuálních klientských počítačů Windows k diagnostice problémů.
+title: Windows Virtual Desktop (Classic) Diagnostika problémů – Azure
+description: Jak používat diagnostické funkce pro virtuální počítače s Windows (Classic) k diagnostice problémů.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0aad1c780c6695c771d3cfea04509acde65c051e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 257ad5aa11bfaece70f676b452119d7800e2d1e2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085856"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285046"
 ---
-# <a name="identify-and-diagnose-issues"></a>Identifikace a diagnostika problémů
+# <a name="identify-and-diagnose-issues-in-windows-virtual-desktop-classic"></a>Identifikace a Diagnostika problémů s virtuálním počítačem s Windows (Classic)
 
 >[!IMPORTANT]
->Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objekty virtuálních klientů Windows, které byly zavedeny v aktualizaci jarní 2020, přečtěte si [Tento článek](../diagnostics-role-service.md).
+>Tento obsah se vztahuje na virtuální plochu Windows (Classic), která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objektů virtuálních klientů Windows, přečtěte si [Tento článek](../diagnostics-role-service.md).
 
 Virtuální plocha Windows nabízí diagnostické funkce, které správci umožňují identifikovat problémy přes jedno rozhraní. Role virtuálních klientů Windows protokolují diagnostické aktivity pokaždé, když uživatel komunikuje se systémem. Každý protokol obsahuje relevantní informace, jako jsou například role virtuálních klientských počítačů s Windows, které jsou součástí transakce, chybové zprávy, informace o tenantovi a informace o uživateli. Diagnostické aktivity jsou vytvářeny pomocí akcí koncového uživatele i správy a lze je rozdělit do tří hlavních intervalů:
 

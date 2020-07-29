@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 9363f400754a38d4cc6efd29ac48d7a0476de66f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0ed237debc2395ed307658b2d57a541574f9478a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524297"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284145"
 ---
 # <a name="add-parameters-to-commands"></a>Přidání parametrů do příkazů
 
 V tomto článku se dozvíte, jak přidat parametry do vlastních příkazů. Parametry jsou informace vyžadované příkazy k dokončení úkolu. Ve složitých scénářích lze také pomocí parametrů definovat podmínky, které aktivují vlastní akce.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 > [!div class="checklist"]
 > * [Postupy: vytváření aplikací pomocí jednoduchých příkazů](./how-to-custom-commands-create-application-with-simple-commands.md)
@@ -47,25 +47,24 @@ V tomto článku se dozvíte, jak přidat parametry do vlastních příkazů. Pa
        > [!div class="mx-imgBorder"]
        > ![Vytvořit požadovanou odpověď parametru](media/custom-commands/add-required-on-off-parameter-response.png)
    
-   1. Teď nakonfigurujeme vlastnosti parametrů. Vysvětlení všech vlastností konfigurace příkazu naleznete v [odkazech](./custom-commands-references.md). Nastavte zbývající vlastnosti parametru následujícím způsobem:
+   1. Teď nakonfigurujeme vlastnosti parametrů. Vysvětlení všech vlastností konfigurace příkazu naleznete v [odkazech](./custom-commands-references.md). Nakonfigurujte vlastnosti parametru následujícím způsobem:
       
 
        | Konfigurace      | Navrhovaná hodnota     | Popis                                                      |
        | ------------------ | ----------------| ---------------------------------------------------------------------|
        | Název               | `OnOff`           | Popisný název pro parametr                                                                           |
        | Je globální          | unchecked       | Zaškrtávací políčko označující, zda je hodnota pro tento parametr globálně použita pro všechny příkazy v aplikaci|
-       | Vyžadováno           | checked         | Zaškrtávací políčko, které určuje, zda je před dokončením příkazu nutné zadat hodnotu pro tento parametr |
+       | Povinné           | checked         | Zaškrtávací políčko, které určuje, zda je před dokončením příkazu nutné zadat hodnotu pro tento parametr |
        | Odpověď na povinný parametr      |Jednoduchý editor >`On or Off?`      | Výzva k zadání hodnoty tohoto parametru, pokud není známa |
        | Typ               | Řetězec          | Typ parametru, jako je číslo, řetězec, datum a čas nebo zeměpis   |
        | Konfigurace      | Přijměte předdefinované vstupní hodnoty z interního katalogu. | V případě řetězců to omezuje vstupy na sadu možných hodnot. |
        | Předdefinované vstupní hodnoty     | `on`, `off`           | Sada možných hodnot a jejich aliasů         |
        
         
-   1. Pokud chcete přidat předdefinované vstupní hodnoty, vyberte **přidat předdefinované zadání** a v okně **Nová položka** zadejte **název** , jak je uvedeno v tabulce výše. V tomto případě nepoužíváme aliasy, takže je můžete nechat prázdné. 
-
-    > [!div class="mx-imgBorder"]
-
-    > ![Vytvořit parametr](media/custom-commands/create-on-off-parameter.png)
+   1. Pokud chcete přidat předdefinované vstupní hodnoty, vyberte **přidat předdefinované zadání** a v okně **Nová položka** zadejte **název** , jak je uvedeno v tabulce výše. V tomto případě nepoužíváme aliasy, takže je můžete nechat prázdné.
+   
+      > [!div class="mx-imgBorder"]
+      > ![Vytvořit parametr](media/custom-commands/create-on-off-parameter.png)
 
    1. Vyberte **Uložit** a uložte všechny konfigurace parametru.
  
@@ -78,7 +77,7 @@ V tomto článku se dozvíte, jak přidat parametry do vlastních příkazů. Pa
        | ------------------ | --------------------- |
        | Název               | `SubjectDevice`         |
        | Je globální          | unchecked             |
-       | Vyžadováno           | checked               |
+       | Povinné           | checked               |
        | Odpověď na povinný parametr     | Jednoduchý editor >`Which device do you want to control?`    | 
        | Typ               | Řetězec                |          |
        | Konfigurace      | Přijměte předdefinované vstupní hodnoty z interního katalogu. | 
@@ -89,7 +88,7 @@ V tomto článku se dozvíte, jak přidat parametry do vlastních příkazů. Pa
 
 ### <a name="modify-example-sentences"></a>Upravit ukázkové věty
 
-Pro příkazy s parametry je užitečné přidat ukázkové věty, které pokrývají všechny možné kombinace. Příklad:
+Pro příkazy s parametry je užitečné přidat ukázkové věty, které pokrývají všechny možné kombinace. Například:
 
 * Úplné informace o parametrech –`turn {OnOff} the {SubjectDevice}`
 * Informace o částečném parametru –`turn it {OnOff}`
@@ -118,6 +117,7 @@ Upravte stávající pravidlo dokončení **ConfirmationResponse**.
 
 1. V části **podmínky** vyberte **Přidat podmínku**.
 1. V okně **Nová podmínka** v seznamu **typ** vyberte **požadované parametry**. V níže uvedeném seznamu pro kontrolu proveďte kontrolu **(OnOff)** i **SubjectDevice**.
+1. Ponechte nezaškrtnuté políčko- **globální** .
 1. Vyberte **Vytvořit**.
 1. V části **Akce** upravte existující akci **Odeslat hlasovou odpověď** ukázáním na akci a výběrem tlačítka upravit. Tentokrát Využijte nově vytvořené parametry **(OnOff)** a **SubjectDevice** .
 
@@ -127,7 +127,7 @@ Upravte stávající pravidlo dokončení **ConfirmationResponse**.
 1. Vyberte **Uložit**.
 
 ### <a name="try-it-out"></a>Vyzkoušet
-1. Vyberte ikonu **výuky** v pravém horním rohu okna.
+1. V pravém podokně vyberte ikonu **výuky** .
 
 1. Po dokončení školení vyberte **test**. Zobrazí se okno **test aplikace** .
  Zkuste pár interakcí.
@@ -150,7 +150,7 @@ Přidat novou **teplotu** parametrů s následující konfigurací
 | Konfigurace      | Navrhovaná hodnota     |
 | ------------------ | ----------------|
 | Název               | `Temperature`           |
-| Vyžadováno           | checked         |
+| Povinné           | checked         |
 | Odpověď na povinný parametr      | Jednoduchý editor >`What temperature would you like?`
 | Typ               | Číslo          |
 
@@ -187,7 +187,7 @@ Přidejte parametr s názvem **DateTime** s následující konfigurací.
    | Nastavení                           | Navrhovaná hodnota                     | 
    | --------------------------------- | ----------------------------------------|
    | Název                              | `DateTime`                               |
-   | Vyžadováno                          | checked                                 |
+   | Povinné                          | checked                                 |
    | Odpověď na povinný parametr   | Jednoduchý editor >`For what time?`            | 
    | Typ                              | DateTime                                |
    | Výchozí hodnoty data                     | Pokud datum chybí, použijte dnešní den.            |

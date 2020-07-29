@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 9c927015114bb0e7230dcb96cd16a81e7763f64d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ad34195e003e0ca2d73000d3482cc79c3dbe3ee0
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325878"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372106"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Nasazení modelu do clusteru služby Azure Kubernetes
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,6 +34,8 @@ Při nasazování do služby Azure Kubernetes nasadíte do clusteru AKS, který 
 
 * Vytvořte cluster AKS pomocí sady Azure Machine Learning SDK, Machine Learning CLI nebo [Azure Machine Learning Studio](https://ml.azure.com). Tento proces automaticky připojí cluster k pracovnímu prostoru.
 * Připojte existující cluster AKS k pracovnímu prostoru Azure Machine Learning. Cluster se dá připojit pomocí Azure Machine Learning SDK, Machine Learning CLI nebo Azure Machine Learning studia.
+
+Cluster AKS a pracovní prostor AML můžou být v různých skupinách prostředků.
 
 > [!IMPORTANT]
 > Proces vytvoření nebo přílohy je jednorázovým úkolem. Jakmile je cluster AKS připojený k pracovnímu prostoru, můžete ho použít pro nasazení. Cluster AKS můžete odpojit nebo odstranit, pokud ho už nepotřebujete. Až se odpojíte nebo odstraníte, nebudete už moct nasadit do clusteru.
@@ -61,11 +63,28 @@ Při nasazování do služby Azure Kubernetes nasadíte do clusteru AKS, který 
 
 - Fragmenty rozhraní příkazového __řádku__ v tomto článku předpokládají, že jste vytvořili `inferenceconfig.json` dokument. Další informace o vytváření tohoto dokumentu najdete v tématu [jak a kde nasadit modely](how-to-deploy-and-where.md).
 
+- Pokud připojíte cluster AKS, který má [povolený povolený rozsah IP adres pro přístup k serveru rozhraní API](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges), povolte rozsahy IP adres AML contol pro cluster AKS. Rovina ovládacího prvku AML se nasadí mezi spárované oblasti a nasadí Inferencing lusky do clusteru AKS. Bez přístupu k serveru rozhraní API se Inferencing lusky nedají nasadit. Při povolování rozsahů IP adres v clusteru AKS použijte [rozsahy IP adres](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519) pro obě [spárované oblasti]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions) .
+ 
+ - Název výpočtu musí být v rámci pracovního prostoru jedinečný.
+   - Název je povinný a musí mít délku 3 až 24 znaků.
+   - Platné znaky jsou velká a malá písmena, číslice a znak-znaku.
+   - Název musí začínat písmenem.
+   - Název musí být jedinečný v rámci všech stávajících výpočtů v oblasti Azure. Pokud zvolený název není jedinečný, zobrazí se upozornění.
+   
+ - Pokud chcete nasadit modely do uzlů GPU nebo FPGAch uzlů (nebo jakékoli konkrétní SKU), musíte vytvořit cluster s konkrétní SKU. Neexistuje žádná podpora pro vytváření fondu sekundárních uzlů v existujícím clusteru a nasazování modelů do fondu sekundárních uzlů.
+ 
+ - Pokud v clusteru potřebujete nasadit Standard Load Balancer (SLB) místo základního Load Balancer (BLB), vytvořte prosím cluster na portálu AKS/CLI/SDK a pak ho připojte k pracovnímu prostoru AML. 
+
+
+
 ## <a name="create-a-new-aks-cluster"></a>Vytvoření nového clusteru AKS
 
-**Časový odhad**: přibližně 20 minut.
+**Časový odhad**: přibližně 10 minut.
 
 Vytvoření nebo připojení clusteru AKS je jednorázový proces pro váš pracovní prostor. Tento cluster můžete použít pro více nasazení. Pokud odstraníte cluster nebo skupinu prostředků, která ho obsahuje, musíte při příštím nasazení vytvořit nový cluster. K vašemu pracovnímu prostoru můžete připojit více clusterů AKS.
+ 
+Azure Machine Learning teď podporuje používání služby Azure Kubernetes s povoleným privátním odkazem.
+Pokud chcete vytvořit privátní cluster AKS, postupujte podle dokumentů [zde](https://docs.microsoft.com/azure/aks/private-clusters) .
 
 > [!TIP]
 > Pokud chcete svůj cluster AKS zabezpečit pomocí Virtual Network Azure, musíte nejdřív vytvořit virtuální síť. Další informace najdete v tématu [zabezpečené experimenty a odvozování pomocí Azure Virtual Network](how-to-enable-virtual-network.md#aksvnet).

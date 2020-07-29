@@ -6,17 +6,18 @@ ms.author: jtoland
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 7f922275e5541baabc77a1efb19e48fa8be4c5ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f325280cb4b18def603410464a06fddaed09c78a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76289420"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285403"
 ---
 # <a name="azure-database-for-mysql-migration-partners"></a>Azure Database for MySQL partneři migrace
 Pro rozsáhlou podporu Azure Database for MySQL řešení si můžete vybrat z široké škály špičkových partnerů a nástrojů. V tomto článku se zvýrazňují partneři Microsoftu s řešeními pro migraci, která podporují Azure Database for MySQL.
 
 ## <a name="migration-partners"></a>Partneři migrace
-| Partner | Description | Odkazy | Videa |
+| Partner | Popis | Odkazy | Videa |
 | --- | --- | --- | --- |
 | ![Technologie SNP][1] |**Technologie SNP**<br>Technologie SNP je pouze cloudový poskytovatel služeb, který vytváří bezpečná a spolehlivá řešení pro firmy v budoucnosti. Společnost se domnívá při generování reálné hodnoty pro vaši firmu. Z myšlenky, technologie SNP sdílí společný účel s klienty, aby bylo možné svou investici do výhody zaměnit.|[Web][snp_website]<br>[Twitter][snp_twitter]<br>[Kontakt][snp_contact] | |
 | ![Nejlepší technologie DB, LLC][2] |**Nejlepší technologie DB, LLC**<br>DB nejlépe pomáhá zákazníkům získat z spravované služby Azure Database na maximum. Společnost nabízí několik způsobů, jak můžete začít, včetně [návrhu architektury budoucího stavu](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.dbbest.com%2Fservices%2Ffuture-state-architectural-design%2F&data=02%7C01%7Cjtoland%40microsoft.com%7C7311aa2024894a80eff208d5cfd45696%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636643433261194557&sdata=SCr3kseFvcU7mI1%2FZt7K2elXAqLY%2FyL6AO944QiWoLg%3D&reserved=0), [Správa dat optimalizace pro datové platformy Microsoft](https://www.dbbest.com/services/data-management-optimization-for-microsoft-data-platform/), [služby plánování Microsoft Azure nasazení](https://www.dbbest.com/services/microsoft-azure-deployment-planning-services)a [školení připravenosti na datovou platformu Azure](https://www.dbbest.com/services/azure-data-platform-readiness-training).|[Web][dbbest_website]<br>[Twitter][dbbest_twitter]<br>[YouTube][dbbest_youtube]<br>[Kontakt][dbbest_contact] | |
@@ -26,7 +27,7 @@ Pro rozsáhlou podporu Azure Database for MySQL řešení si můžete vybrat z �
 | ![Pactera][6] |**Pactera**<br>Pactera je globální společnost, která nabízí poradenské a digitální, technologické a provozní služby pro špičkové podniky světa. Od svých kořenů v technické analýze až po nejnovější digitální transformaci poskytují zákazníkům konkurenční hraniční oddělení. Osvědčené metodologie a nástroje zajistí, aby vaše data byla zabezpečená, platná a přesná.|[Web][pactera_website]<br>[Twitter][pactera_twitter]<br>[Kontakt][pactera_contact] | |
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o některých dalších partnerech Microsoftu najdete na [partnerském webu Microsoftu](https://partner.microsoft.com/en-US/).
+Další informace o některých dalších partnerech Microsoftu najdete na [partnerském webu Microsoftu](https://partner.microsoft.com/).
 
 <!--Image references-->
 [1]: ./media/partner-migration-mysql/SNP_Logo.png

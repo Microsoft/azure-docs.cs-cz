@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b431cee3b8e5fc168dec2766442d6f6b9869d1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 450f04c7de68bf6db282577fbc8e841f1f3c93fc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74900377"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284400"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Identita zařízení a virtualizace plochy
 
@@ -40,22 +41,22 @@ Tento článek pokryje správcům Microsoftu informace o podpoře identity zař�
 
 Než nakonfigurujete identity zařízení ve službě Azure AD pro vaše prostředí VDI, Seznamte se s podporovanými scénáři. Následující tabulka ukazuje, které scénáře zřizování jsou podporované. Zřizování v tomto kontextu předpokládá, že správce může konfigurovat identitu zařízení ve velkém měřítku bez nutnosti zásahu koncového uživatele.
 
-| Typ identity zařízení | Infrastruktura identity | Zařízení s Windows | Verze platformy VDI | Podporuje se |
+| Typ identity zařízení | Infrastruktura identity | Zařízení s Windows | Verze platformy VDI | Podporováno |
 | --- | --- | --- | --- | --- |
-| k hybridní službě Azure AD. | Federované | Aktuální Windows * * * * a Windows nižší úrovně * * * * | Trvalý | Yes |
-|   |   | Aktuální Windows | Bez trvalého přihlášení | No |
-|   |   | Windows nižší úrovně | Bez trvalého přihlášení | Yes |
-|   | Spravované * * | Aktuální Windows a Windows nižší úrovně | Trvalý | Yes |
-|   |   | Aktuální Windows | Bez trvalého přihlášení | No |
-|   |   | Windows nižší úrovně | Bez trvalého přihlášení | Yes |
-| Připojené k Azure AD | Federovaní | Aktuální Windows | Trvalý | No |
-|   |   |   | Bez trvalého přihlášení | No |
-|   | Spravované | Aktuální Windows | Trvalý | No |
-|   |   |   | Bez trvalého přihlášení | No |
-| Registrováno v Azure AD | Federovaní | Aktuální Windows | Trvalý | No |
-|   |   |   | Bez trvalého přihlášení | No |
-|   | Spravované | Aktuální Windows | Trvalý | No |
-|   |   |   | Bez trvalého přihlášení | No |
+| k hybridní službě Azure AD. | Federované | Aktuální Windows * * * * a Windows nižší úrovně * * * * | Trvalý | Ano |
+|   |   | Aktuální Windows | Bez trvalého přihlášení | Ne |
+|   |   | Windows nižší úrovně | Bez trvalého přihlášení | Ano |
+|   | Spravované * * | Aktuální Windows a Windows nižší úrovně | Trvalý | Ano |
+|   |   | Aktuální Windows | Bez trvalého přihlášení | Ne |
+|   |   | Windows nižší úrovně | Bez trvalého přihlášení | Ano |
+| Připojené k Azure AD | Federovaní | Aktuální Windows | Trvalý | Ne |
+|   |   |   | Bez trvalého přihlášení | Ne |
+|   | Spravované | Aktuální Windows | Trvalý | Ne |
+|   |   |   | Bez trvalého přihlášení | Ne |
+| Registrováno v Azure AD | Federovaní | Aktuální Windows | Trvalý | Neuvedeno |
+|   |   |   | Bez trvalého přihlášení | Ne |
+|   | Spravované | Aktuální Windows | Trvalý | Neuvedeno |
+|   |   |   | Bez trvalého přihlášení | Ne |
 
 \***Federované** prostředí infrastruktury identit představuje prostředí s poskytovatelem identity, jako je AD FS nebo jiné IDP třetí strany.
 

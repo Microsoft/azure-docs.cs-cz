@@ -7,11 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: 1cfc53dcd730262101c0e879e0419ba3f2db4d38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9989d0ebd95bfe5ee49be2ba76b73e07630b519a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80657001"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283941"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>Odeslání e-mailu z účtu SMTP pomocí Azure Logic Apps
 
@@ -50,12 +51,12 @@ Pomocí Azure Logic Apps a konektoru SMTP (Simple Mail Transfer Protocol) může
 
    | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Název připojení** | Yes | Název připojení k serveru SMTP | 
-   | **Adresa serveru SMTP** | Yes | Adresa serveru SMTP | 
-   | **Uživatelské jméno** | Yes | Vaše uživatelské jméno pro váš účet SMTP | 
-   | **Heslo** | Yes | Heslo pro váš účet SMTP | 
-   | **Port serveru SMTP** | No | Konkrétní port na serveru SMTP, který chcete použít | 
-   | **Povolit SSL?** | No | Zapněte nebo vypněte šifrování TLS/SSL. | 
+   | **Název připojení** | Ano | Název připojení k serveru SMTP | 
+   | **Adresa serveru SMTP** | Ano | Adresa serveru SMTP | 
+   | **Uživatelské jméno** | Ano | Vaše uživatelské jméno pro váš účet SMTP | 
+   | **Heslo** | Ano | Heslo pro váš účet SMTP | 
+   | **Port serveru SMTP** | Ne | Konkrétní port na serveru SMTP, který chcete použít | 
+   | **Povolit SSL?** | Ne | Zapněte nebo vypněte šifrování TLS/SSL. | 
    |||| 
 
 1. Zadejte potřebné podrobnosti pro vybranou akci. 
@@ -64,7 +65,7 @@ Pomocí Azure Logic Apps a konektoru SMTP (Simple Mail Transfer Protocol) může
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Další technické podrobnosti o této spojnici, jako jsou triggery, akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete na [referenční stránce konektoru](https://docs.microsoft.com/connectors/smtpconnector/).
+Další technické podrobnosti o této spojnici, jako jsou triggery, akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete na [referenční stránce konektoru](/connectors/smtpconnector/).
 
 > [!NOTE]
 > V případě Logic Apps v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Tato verze konektoru ISE-Label používá místo toho [omezení zpráv ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .

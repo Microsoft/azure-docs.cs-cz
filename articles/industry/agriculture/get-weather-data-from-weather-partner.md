@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: 51a25b66968f43facddb9187a6793b2e39e0fdbd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e6678eb2e738c206bbe67151361b594679d97b35
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536619"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281017"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>Získat data o počasí od partnerů počasí
 
@@ -26,7 +26,7 @@ Pokud chcete získat data o počasí, ujistěte se, že máte [nainstalovanou Fa
 
 Jak začít získávat data o počasí na FarmBeats DataHub:
 
-1. Přejít na FarmBeats DataHub [Swagger](https://farmbeatswebsite-api.azurewebsites.net/swagger).
+1. Přejít na FarmBeats DataHub Swagger `https://farmbeatswebsite-api.azurewebsites.net/swagger` .
 
 2. Přejít na rozhraní API/partner a pak vytvořit žádost POST. Použijte následující vstupní datovou část:
 
@@ -147,7 +147,7 @@ Dotazování dat o počasí pomocí REST API FarmBeats:
 
 1. V nástroji FarmBeats DataHub [Swagger](https://yourdatahub.azurewebsites.net/swagger), navštivte rozhraní/WeatherDataLocation API a vytvořte žádost o získání. Odpověď zahrnuje objekty/WeatherDataLocation vytvořené pro umístění (zeměpisná šířka a délka), které úloha zadala. Poznamenejte si **ID** a **weatherDataModelId** objektů.
 
-2. Vytvořte si požadavek GET/{ID} na rozhraní/WeatherDataModel API pro **weatherDataModelId** , jak jste to provedli dříve. Datový model počasí zobrazuje všechna metadata a podrobnosti o přijatých datech o počasí. Například v objektu datového modelu počasí, míra počasí podrobně popisuje, jaké informace o počasí jsou podporovány a v jakých typech a jednotkách. Příklad:
+2. Vytvořte si požadavek GET/{ID} na rozhraní/WeatherDataModel API pro **weatherDataModelId** , jak jste to provedli dříve. Datový model počasí zobrazuje všechna metadata a podrobnosti o přijatých datech o počasí. Například v objektu datového modelu počasí, míra počasí podrobně popisuje, jaké informace o počasí jsou podporovány a v jakých typech a jednotkách. Například:
 
    ```json
    {
@@ -223,7 +223,7 @@ Pokud chcete řešit problémy s chybami úloh, [Podívejte se do protokolů úl
 | DockerDetails - partnerCredentials | Přihlašovací údaje pro volání partnerského rozhraní API v Docker Partner poskytuje tyto informace na základě podporovaného autorizačního mechanismu; například uživatelské jméno a heslo nebo klíče rozhraní API. |
 | partnerType | "Počasí". Další typy partnerů v FarmBeats jsou "senzor" a "satelitní".  |
 |  name   |   Požadovaný název partnera v systému FarmBeats.   |
-|  Popis |  Popis   |
+|  description |  Popis   |
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,7 +1,7 @@
 ---
 title: Vytvoření, změna nebo odstranění skupiny zabezpečení sítě Azure
 titlesuffix: Azure Virtual Network
-description: Naučte se, jak vytvořit, změnit nebo odstranit skupinu zabezpečení sítě.
+description: Zjistěte, kde najdete informace o pravidlech zabezpečení a o tom, jak vytvořit, změnit nebo odstranit skupinu zabezpečení sítě.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 38fe9582595969ac92d3468b3b7e8c0a9d793c0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfb6426ec4e75f6484df37008522b966ebc3af6f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708276"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281255"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Vytvoření, změna nebo odstranění skupiny zabezpečení sítě
 
@@ -46,7 +46,7 @@ Můžete vytvořit, [Zobrazit všechny](#view-all-network-security-groups), [Zob
 
 Existuje omezení, kolik skupin zabezpečení sítě, které můžete vytvořit pro každé umístění a předplatné Azure. Další informace najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-1. V nabídce [Azure Portal](https://portal.azure.com) nebo na **domovské** stránce vyberte **vytvořit prostředek**.
+1. V nabídce webu [Azure Portal](https://portal.azure.com) nebo na **domovské stránce** vyberte **Vytvořit prostředek**.
 
 2. Vyberte **sítě**a pak vyberte **Skupina zabezpečení sítě**.
 
@@ -57,7 +57,7 @@ Existuje omezení, kolik skupin zabezpečení sítě, které můžete vytvořit 
     | **Předplatné** | Zvolte vaše předplatné. |
     | **Skupina prostředků** | Zvolte existující skupinu prostředků nebo vyberte **vytvořit novou** a vytvořte novou skupinu prostředků. |
     | **Název** | Zadejte jedinečný textový řetězec v rámci skupiny prostředků. |
-    | **Věřitel** | Vyberte umístění, které chcete. |
+    | **Oblast** | Vyberte umístění, které chcete. |
 
 4. Vyberte **Zkontrolovat a vytvořit**.
 
@@ -172,7 +172,7 @@ U každého umístění Azure a předplatného můžete vytvořit omezení počt
     | **Značka cílové služby** | Značka služby z rozevíracího seznamu | Toto volitelné nastavení se zobrazí, pokud změníte **cíl** na **tag Service** pro pravidlo odchozího zabezpečení. Označení služby je předdefinovaný identifikátor pro kategorii IP adres. Další informace o dostupných značkách služby a o tom, co jednotlivé značky představují, najdete v tématu [značky služeb](security-overview.md#service-tags). |
     | **Cílová skupina zabezpečení aplikace** | Existující skupina zabezpečení aplikace | Toto nastavení se zobrazí, pokud nastavíte **cíl** na **skupinu zabezpečení aplikace**. Vyberte skupinu zabezpečení aplikace, která existuje ve stejné oblasti jako síťové rozhraní. Naučte se [vytvořit skupinu zabezpečení aplikace](#create-an-application-security-group). |
     | **Rozsahy cílových portů** | Jedna z těchto:<ul><li>Jeden port, například`80`</li><li>Rozsah portů, například`1024-65535`</li><li>Čárkami oddělený seznam jednotlivých portů nebo rozsahů portů, například`80, 1024-65535`</li><li>Hvězdička ( `*` ) pro povolení provozu na jakémkoli portu</li></ul> | Stejně jako u **rozsahů zdrojového portu**můžete zadat jeden nebo několik portů a rozsahů. K dispozici jsou omezení pro číslo, které můžete zadat. Další podrobnosti najdete v tématu [omezení Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). |
-    | **Protocol (Protokol)** | **Libovolný**, **TCP**, **UDP**nebo **ICMP** | Můžete omezit pravidlo protokolu TCP (Transmission Control Protocol), protokolu UDP (User Datagram Protocol) nebo protokolu ICMP (Internet Control Message Protocol). Ve výchozím nastavení platí, že pravidlo platí pro všechny protokoly. |
+    | **Protokol** | **Libovolný**, **TCP**, **UDP**nebo **ICMP** | Můžete omezit pravidlo protokolu TCP (Transmission Control Protocol), protokolu UDP (User Datagram Protocol) nebo protokolu ICMP (Internet Control Message Protocol). Ve výchozím nastavení platí, že pravidlo platí pro všechny protokoly. |
     | **Akce** | **Povolit** nebo **zamítnout** | Toto nastavení určuje, zda toto pravidlo povolí nebo odepře přístup pro zadanou konfiguraci zdroje a cíle. |
     | **Priorita** | Hodnota mezi 100 a 4096, která je jedinečná pro všechna pravidla zabezpečení v rámci skupiny zabezpečení sítě | Azure zpracovává pravidla zabezpečení v pořadí podle priority. Čím nižší číslo, tím vyšší Priorita. Při vytváření pravidel, jako je například 100, 200 a 300, doporučujeme ponechat mezi čísly priority mezeru. Ponechání mezer usnadňuje přidávání pravidel do budoucna, aby bylo možné jim zvýšit nebo snížit prioritu než stávající pravidla. |
     | **Název** | Jedinečný název pro pravidlo v rámci skupiny zabezpečení sítě | Název může mít až 80 znaků. Musí začínat písmenem nebo číslicí a musí končit písmenem, číslicí nebo podtržítkem. Název může obsahovat jenom písmena, číslice, podtržítka, tečky nebo spojovníky. |
@@ -262,7 +262,7 @@ Skupina zabezpečení aplikace obsahuje nula nebo více síťových rozhraní. D
 
 ### <a name="create-an-application-security-group"></a>Vytvořit skupinu zabezpečení aplikace
 
-1. V nabídce [Azure Portal](https://portal.azure.com) nebo na **domovské** stránce vyberte **vytvořit prostředek**.
+1. V nabídce webu [Azure Portal](https://portal.azure.com) nebo na **domovské stránce** vyberte **Vytvořit prostředek**.
 
 2. Do vyhledávacího pole zadejte *skupinu zabezpečení aplikace*.
 
@@ -275,7 +275,7 @@ Skupina zabezpečení aplikace obsahuje nula nebo více síťových rozhraní. D
     | **Předplatné** | Zvolte vaše předplatné. |
     | **Skupina prostředků** | Zvolte existující skupinu prostředků nebo vyberte **vytvořit novou** a vytvořte novou skupinu prostředků. |
     | **Název** | Zadejte jedinečný textový řetězec v rámci skupiny prostředků. |
-    | **Věřitel** | Vyberte umístění, které chcete. |
+    | **Oblast** | Vyberte umístění, které chcete. |
 
 5. Vyberte **Zkontrolovat a vytvořit**.
 
@@ -355,7 +355,7 @@ Aby bylo možné provádět úlohy se skupinami zabezpečení sítě, pravidly z
 
 ### <a name="network-security-group"></a>Skupina zabezpečení sítě
 
-| Akce                                                        |   Name                                                                |
+| Akce                                                        |   Název                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft. Network/networkSecurityGroups/Read                  |   Získat skupinu zabezpečení sítě                                          |
 | Microsoft. Network/networkSecurityGroups/Write                 |   Vytvořit nebo aktualizovat skupinu zabezpečení sítě                             |
@@ -364,7 +364,7 @@ Aby bylo možné provádět úlohy se skupinami zabezpečení sítě, pravidly z
 
 ### <a name="network-security-group-rule"></a>Pravidlo skupiny zabezpečení sítě
 
-| Akce                                                        |   Name                                                                |
+| Akce                                                        |   Název                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft. Network/networkSecurityGroups/securityRules/Read            |   Získat pravidlo                                                            |
 | Microsoft. Network/networkSecurityGroups/securityRules/Write           |   Vytvořit nebo aktualizovat pravidlo                                               |
@@ -372,7 +372,7 @@ Aby bylo možné provádět úlohy se skupinami zabezpečení sítě, pravidly z
 
 ### <a name="application-security-group"></a>Skupina zabezpečení aplikace
 
-| Akce                                                                     | Name                                                     |
+| Akce                                                                     | Název                                                     |
 | --------------------------------------------------------------             | -------------------------------------------              |
 | Microsoft. Network/applicationSecurityGroups/joinIpConfiguration/Action     | Připojení konfigurace protokolu IP ke skupině zabezpečení aplikace|
 | Microsoft. Network/applicationSecurityGroups/joinNetworkSecurityRule/Action | Připojit pravidlo zabezpečení ke skupině zabezpečení aplikace    |

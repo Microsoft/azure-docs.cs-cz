@@ -1,6 +1,6 @@
 ---
-title: Nasazení diagnostického nástroje pro virtuální počítače s Windows – Azure
-description: Jak nasadit nástroj pro diagnostiku diagnostiky pro virtuální počítač s Windows
+title: Nasazení diagnostického nástroje pro virtuální plochu Windows (Classic) – Azure
+description: Postup nasazení nástroje Diagnostika UX pro virtuální plochu Windows (Classic)
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 544610f4011f7ad12d5b311aab3afd4bc1373ac5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf05d495442a39b42fddf5f373fb2616bf0c6fbe
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362335"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285097"
 ---
-# <a name="deploy-the-diagnostics-tool"></a>Nasazení diagnostických nástrojů
+# <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Nasazení diagnostického nástroje pro virtuální počítače s Windows (Classic)
 
 >[!IMPORTANT]
->Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows.
+>Tento obsah se vztahuje na virtuální plochu Windows (Classic), která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows.
 
 >[!IMPORTANT]
 >Od 16. března 2020 jsme dočasně vypnuli diagnostické dotazy, které ovlivnily uživatelské prostředí kvůli zvýšené poptávce na službě. Tím dojde k tomu, že nástroj přestane fungovat, protože spoléhá na to, jaké dotazy mají fungovat. Tento článek aktualizujeme, až budou diagnostické dotazy znovu k dispozici.

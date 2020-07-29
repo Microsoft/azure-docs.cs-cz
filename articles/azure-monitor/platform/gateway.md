@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 550b4fb7ba17d911618e0b60d16c0a9f9d1f2cfa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 94c668e7ffaff81fed9c2e511bc38239069fa43e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077275"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305206"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Připojení počítačů bez přístupu k Internetu pomocí Log Analytics brány v Azure Monitor
 
@@ -89,7 +89,7 @@ Brána Log Analytics je dostupná v těchto jazycích:
 
 Brána Log Analytics podporuje pouze TLS (Transport Layer Security) 1,0, 1,1 a 1,2.  Nepodporuje SSL (Secure Sockets Layer) (SSL).  Aby se zajistila bezpečnost dat při přenosu do Log Analytics, nakonfigurujte bránu tak, aby používala aspoň protokol TLS 1,2. Jsou ohrožené starší verze TLS nebo SSL. I když v současné době umožňují zpětnou kompatibilitu, nepoužívejte je.  
 
-Další informace najdete v [zabezpečeném posílání dat pomocí TLS 1,2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
+Další informace najdete v [zabezpečeném posílání dat pomocí TLS 1,2](./data-security.md#sending-data-securely-using-tls-12). 
 
 ### <a name="supported-number-of-agent-connections"></a>Podporovaný počet připojení agenta
 
@@ -114,7 +114,7 @@ Pokud chcete bránu Log Analytics z Azure Portal získat, postupujte takto:
  
    ![Snímek obrazovky s postupem, jak stáhnout bránu Log Analytics](./media/gateway/download-gateway.png)
 
-nebo 
+– nebo – 
 
 1. V okně pracovního prostoru v části **Nastavení**vyberte **Upřesnit nastavení**.
 1. Přejít na **připojené zdroje**  >  **Windows servery** a vyberte **Stáhnout Log Analytics bránu**.
@@ -340,7 +340,7 @@ Chyba v kroku 3 znamená, že modul nebyl naimportován. K této chybě může d
 | `Remove-OMSGatewayAllowedClientCertificate` |Subject (povinné) |Odebere klientský certifikát ze seznamu povolených. |`Remove-OMSGatewayAllowed` <br> `ClientCertificate` <br> `-Subject mycert` |  
 | `Get-OMSGatewayAllowedClientCertificate` | |Získá aktuálně povolené předměty klientského certifikátu (jenom místně konfigurovaná povolená témata, ale nestahují automaticky povolené subjekty). |`Get-`<br>`OMSGatewayAllowed`<br>`ClientCertificate` |  
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud chcete shromažďovat události zaznamenané bránou, měli byste mít nainstalovaného agenta Log Analytics.
 
@@ -350,7 +350,7 @@ Pokud chcete shromažďovat události zaznamenané bránou, měli byste mít nai
 
 Následující tabulka ukazuje ID událostí a popisy pro události protokolu Log Analytics brány.
 
-| **ÚČET** | **Popis** |
+| **ID** | **Popis** |
 | --- | --- |
 | 400 |Jakákoli chyba aplikace, která nemá žádné konkrétní ID. |
 | 401 |Nesprávná konfigurace Například listenPort = "text" místo Integer. |
@@ -388,4 +388,5 @@ Pokud chcete získat nápovědu, vyberte ikonu otazníku v pravém horním rohu 
 
 ## <a name="next-steps"></a>Další kroky
 
-[Přidejte zdroje dat](../../azure-monitor/platform/agent-data-sources.md) pro shromažďování dat z připojených zdrojů a data uložte do svého pracovního prostoru Log Analytics.
+[Přidejte zdroje dat](./agent-data-sources.md) pro shromažďování dat z připojených zdrojů a data uložte do svého pracovního prostoru Log Analytics.
+

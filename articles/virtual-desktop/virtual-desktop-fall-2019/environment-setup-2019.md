@@ -1,6 +1,6 @@
 ---
-title: Prostředí virtuálních počítačů s Windows (2019) – Azure
-description: Seznamte se se základními prvky prostředí virtuálního počítače s Windows (2019 verze), jako jsou klienti a fondy hostitelů.
+title: Prostředí virtuálních počítačů (Classic) Windows – Azure
+description: Základní prvky prostředí virtuálních počítačů s Windows (Classic).
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8cb41b4f94b14a94c79b490e38889825fd9d8d1a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2c019dd187c0ccd7a63f71c0373a0388135afda9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082643"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285012"
 ---
-# <a name="windows-virtual-desktop-environment-fall-2019-release"></a>Prostředí virtuálních počítačů s Windows (verze 2019)
+# <a name="windows-virtual-desktop-classic-environment"></a>Prostředí virtuálních klientů Windows (klasické)
 
 >[!IMPORTANT]
->Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objekty virtuálních klientů Windows, které byly zavedeny v aktualizaci jarní 2020, přečtěte si [Tento článek](../environment-setup.md).
+>Tento obsah se vztahuje na virtuální plochu Windows (Classic), která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objektů virtuálních klientů Windows, přečtěte si [Tento článek](../environment-setup.md).
 
 Virtuální plocha Windows je služba, která uživatelům poskytuje snadný a zabezpečený přístup ke svým virtualizovaným plochám a aplikacím RemoteApp. V tomto tématu se dozvíte další informace o obecné struktuře prostředí virtuálních počítačů s Windows.
 

@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6583a2fe5abd0193f37502e07c7b3fa0ee58ba9d
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: a31ab24b96fa44787d08801a0680f94ff98bb5a2
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963415"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87309265"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Analýza uživatelských vzorů navigace pomocí Toky uživatelů v Application Insights
 
@@ -27,7 +27,7 @@ Nástroj Toky uživatelů vizualizuje, jak uživatelé pohybují mezi stránkami
 Nástroj Toky uživatelů začíná od počátečního zobrazení stránky, vlastní události nebo výjimky, kterou zadáte. Při této počáteční události Toky uživatelů zobrazuje události, ke kterým došlo před a následně během uživatelských relací. Řádky s různou tloušťkou ukazují, kolikrát byly jednotlivé cesty následovány uživateli. V uzlech, které jsou **spuštěny** jinak, se zobrazí, kde následující uzly zahájily relaci. Uzly **ukončení relace** ukazují, kolik uživatelů neodeslalo žádné zobrazení stránky nebo vlastní události za předchozím uzlem a zvýrazní, kde uživatelé pravděpodobně webový server opustí.
 
 > [!NOTE]
-> Váš Application Insights prostředek musí obsahovat zobrazení stránky nebo vlastní události pro použití nástroje Toky uživatelů. [Naučte se, jak nastavit aplikaci tak, aby automaticky shromáždila zobrazení stránek pomocí Application Insights JavaScript SDK](../../azure-monitor/app/javascript.md).
+> Váš Application Insights prostředek musí obsahovat zobrazení stránky nebo vlastní události pro použití nástroje Toky uživatelů. [Naučte se, jak nastavit aplikaci tak, aby automaticky shromáždila zobrazení stránek pomocí Application Insights JavaScript SDK](./javascript.md).
 >
 >
 
@@ -52,7 +52,7 @@ Pokud chybí zobrazení stránky nebo vlastní události, které očekáváte, �
 * V nabídce **Upravit** se podívejte na část **vyloučené události** .
 * Pomocí tlačítek plus v **ostatních** uzlech zahrňte do vizualizace méně časté události.
 * Pokud uživatelé neočekávají zobrazení stránky nebo vlastní událost, zkuste zvýšit časový rozsah vizualizace v nabídce **Upravit** .
-* Ujistěte se, že zobrazení stránky, vlastní událost nebo výjimka, které očekáváte, se shromažďují sadou Application Insights SDK ve zdrojovém kódu vašeho webu. [Přečtěte si další informace o shromažďování vlastních událostí.](../../azure-monitor/app/api-custom-events-metrics.md)
+* Ujistěte se, že zobrazení stránky, vlastní událost nebo výjimka, které očekáváte, se shromažďují sadou Application Insights SDK ve zdrojovém kódu vašeho webu. [Přečtěte si další informace o shromažďování vlastních událostí.](./api-custom-events-metrics.md)
 
 Pokud chcete zobrazit další kroky ve vizualizaci, použijte v rozevíracích seznamech **předchozí kroky** a **Další kroky** nad vizualizací.
 
@@ -92,4 +92,5 @@ Použijte možnosti **rozdělit podle** v nabídce **Upravit** :
 * [Přehled využití](usage-overview.md)
 * [Uživatelé, relace a události](usage-segmentation.md)
 * [Uchovávání](usage-retention.md)
-* [Přidání vlastních událostí do aplikace](../../azure-monitor/app/api-custom-events-metrics.md)
+* [Přidání vlastních událostí do aplikace](./api-custom-events-metrics.md)
+

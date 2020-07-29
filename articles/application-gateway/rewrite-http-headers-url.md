@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: surmb
-ms.openlocfilehash: 46cb4d0d099cd21db3ce51c337d3b059206bb425
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2ee34e1a7959aafa5db949b443fd58cca58719c6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097416"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281187"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>Přepsat hlavičky a adresu URL protokolu HTTP pomocí Application Gateway
 
@@ -109,25 +109,25 @@ Application Gateway podporuje následující proměnné serveru:
 | add_x_forwarded_for_proxy | Pole hlavičky žádosti klienta s přesměrováním do `client_ip` proměnné (viz vysvětlení později v této tabulce), ke kterému se připojuje ve formátu IP1, IP2, IP3 a tak dále. Pokud pole s přesměrováním X není v hlavičce žádosti klienta, `add_x_forwarded_for_proxy` proměnná je rovna `$client_ip` proměnné.   Tato proměnná je užitečná hlavně v případě, že chcete přepsat hlavičku, kterou předáváte X-pro nastavenou Application Gateway tak, aby hlavička obsahovala jenom IP adresu bez informací o portu. |
 | ciphers_supported         | Seznam šifr podporovaných klientem.               |
 | ciphers_used              | Řetězec šifr používaných pro navázáné připojení TLS. |
-| client_ip                 | IP adresa klienta, ze kterého služba Application Gateway přijala požadavek. Pokud před aplikační bránou a původním klientem dojde k reverznímu proxy serveru, *client_ip* vrátí IP adresu reverzního proxy serveru. |
+| client_ip                 | IP adresa klienta, ze kterého služba Application Gateway přijala požadavek. Pokud před aplikační bránou a původním klientem dojde k reverznímu proxy serveru, `client_ip` vrátí IP adresu reverzního proxy serveru. |
 | client_port               | Port klienta.                                             |
 | client_tcp_rtt            | Informace o připojení TCP klienta. K dispozici v systémech, které podporují možnost soketu TCP_INFO. |
 | client_user               | Když se použije ověřování protokolem HTTP, uživatelské jméno zadané pro ověřování. |
-| Hostitel                      | V tomto pořadí priorit: název hostitele z řádku žádosti, název hostitele z pole Hlavička požadavku hostitele nebo název serveru, který odpovídá požadavku. Příklad: *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* hodnota host bude v požadavku *contoso.com* |
+| Hostitel                      | V tomto pořadí priorit: název hostitele z řádku žádosti, název hostitele z pole Hlavička požadavku hostitele nebo název serveru, který odpovídá požadavku. Příklad: v požadavku `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` bude hodnota hostitele`contoso.com` |
 | *název* cookie_             | *Název* souboru cookie.                                           |
 | http_method               | Metoda použitá pro vytvoření žádosti adresy URL Například GET nebo POST. |
 | http_status               | Stav relace. Například 200, 400 nebo 403.           |
 | http_version              | Protokol žádosti. Obvykle HTTP/1.0, HTTP/1.1 nebo HTTP/2.0. |
-| query_string              | Seznam párů proměnných/hodnot, které následují po "?" v požadované adrese URL. Příklad: v požadavku se *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* QUERY_STRING hodnota *ID = 123&title = Fabrikam* |
+| query_string              | Seznam párů proměnných/hodnot, které následují po "?" v požadované adrese URL. Příklad: v požadavku se `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` QUERY_STRING hodnota`id=123&title=fabrikam` |
 | received_bytes            | Délka požadavku (včetně řádku žádosti, hlavičky a textu žádosti) |
 | request_query             | Argumenty na řádku požadavku.                           |
 | request_scheme            | Schéma žádosti: http nebo HTTPS.                           |
-| request_uri               | Úplný identifikátor URI původní žádosti (s argumenty). Příklad: v požadavku se *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* REQUEST_URI hodnota */article.aspx? ID = 123&title = Fabrikam* |
+| request_uri               | Úplný identifikátor URI původní žádosti (s argumenty). Příklad: v požadavku se `http://contoso.com:8080/article.aspx?id=123&title=fabrikam*` REQUEST_URI hodnota`/article.aspx?id=123&title=fabrikam` |
 | sent_bytes                | Počet bajtů odeslaných klientovi.                        |
 | server_port               | Port serveru, který přijal požadavek.              |
 | ssl_connection_protocol   | Protokol vytvořeného připojení TLS.               |
 | ssl_enabled               | "On", pokud připojení funguje v režimu TLS. V opačném případě prázdný řetězec. |
-| uri_path                  | Identifikuje konkrétní prostředek v hostiteli, ke kterému chce webový klient získat přístup. Toto je část identifikátoru URI požadavku bez argumentů. Příklad: v požadavku se *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* hodnota uri_path */article.aspx* |
+| uri_path                  | Identifikuje konkrétní prostředek v hostiteli, ke kterému chce webový klient získat přístup. Toto je část identifikátoru URI požadavku bez argumentů. Příklad: v požadavku se `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` uri_path hodnota`/article.aspx` |
 
  
 
@@ -230,7 +230,7 @@ Když teď uživatel požaduje *contoso.com/listing?Category=any*, pak se porovn
 
 Vezměte v úvahu scénář nákupního webu, ve kterém by měl být viditelný odkaz uživatele jednoduchý a čitelný, ale back-end server potřebuje k zobrazení správného obsahu parametry řetězce dotazu.
 
-V takovém případě Application Gateway může zachytit parametry z adresy URL a přidat páry klíč-hodnota řetězce dotazu z adresy URL. Řekněme například, že uživatel chce přezapisovat https://www.contoso.com/fashion/shirts do https://www.contoso.com/buy.aspx?category=fashion&product=shirts , dá se dosáhnout pomocí následující konfigurace přepsání adresy URL.
+V takovém případě Application Gateway může zachytit parametry z adresy URL a přidat páry klíč-hodnota řetězce dotazu z adresy URL. Řekněme například, že uživatel chce přezapisovat `https://www.contoso.com/fashion/shirts` do `https://www.contoso.com/buy.aspx?category=fashion&product=shirts` , dá se dosáhnout pomocí následující konfigurace přepsání adresy URL.
 
 **Podmínka** – Pokud se proměnná serveru `uri_path` rovná vzoru`/(.+)/(.+)`
 
