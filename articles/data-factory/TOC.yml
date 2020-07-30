@@ -732,6 +732,8 @@
           href: connector-troubleshoot-guide.md
         - name: Toky dat
           href: data-flow-troubleshoot-guide.md
+        - name: Nástroj pro kopírování dat
+          href: copy-data-tool-troubleshoot-guide.md
         - name: Místní prostředí Integration Runtime
           href: self-hosted-integration-runtime-troubleshoot-guide.md
         - name: Prostředí Azure-SSIS Integration Runtime

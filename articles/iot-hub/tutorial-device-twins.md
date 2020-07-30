@@ -13,12 +13,13 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: fe93344005e2676046bd6b73f9d51b617100a961
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+- devx-track-javascript
+ms.openlocfilehash: f3dad81a5cba9dd817e0d4e75590d374fe059358
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325895"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424099"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -41,7 +42,7 @@ V tomto kurzu provedete následující úlohy:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Dvě ukázkové aplikace, které spustíte v tomto rychlém startu, jsou napsány pomocí Node.js. Ve vývojovém počítači potřebujete Node.js v10 za účelem. x. x nebo novější.
 

@@ -43,8 +43,6 @@
           href: tutorial-connect-device-nodejs.md
         - name: Připojení zařízení (Python)
           href: tutorial-connect-device-python.md
-        - name: Připojení zařízení Plug and Play (Preview)
-          href: tutorial-connect-pnp-device.md
         - name: Vytvoření šablony zařízení brány
           href: tutorial-define-gateway-device-type.md
         - name: Připojení zařízení IoT Edge
@@ -79,8 +77,6 @@
       items:
         - name: Nastavení šablony zařízení
           href: howto-set-up-template.md
-        - name: Příprava a připojení sady MXChip IoT DevKit
-          href: howto-connect-devkit.md
         - name: Příprava a připojení sady Azure Sphere DevKit
           href: howto-connect-sphere.md
         - name: Příprava a připojení zařízení RuuviTag
