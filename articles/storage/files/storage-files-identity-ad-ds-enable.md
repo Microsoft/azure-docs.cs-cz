@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 4c374e62c0807269d1457bfe46d3df4260acd45c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2f38daea40f89e73422ca8115f2425758be81a4
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510459"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87413098"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Část 1: povolení ověřování služba AD DS pro sdílené složky Azure 
 
@@ -53,7 +53,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
 #Import AzFilesHybrid module
 Import-Module -Name AzFilesHybrid
 
-#Login with an Azure AD credential that has either storage account owner or contributer RBAC assignment
+#Login with an Azure AD credential that has either storage account owner or contributer Azure role assignment
 Connect-AzAccount
 
 #Define parameters
@@ -85,7 +85,7 @@ Pokud jste už dříve úspěšně spustili `Join-AzStorageAccountForAuth` skrip
 
 ### <a name="checking-environment"></a>Kontroluje se prostředí.
 
-Nejdřív je potřeba, abyste zkontrolovali stav svého prostředí. Konkrétně je nutné ověřit, zda je [Služba Active Directory PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/?view=win10-ps) nainstalována a zda je prostředí spuštěno s oprávněními správce. Potom zkontrolujte, zda je nainstalován [modul AZ. Storage 2,0](https://www.powershellgallery.com/packages/Az.Storage/2.0.0) a nainstalujte jej, pokud není. Po dokončení těchto kontrol zkontrolujte služba AD DS a podívejte se, jestli je k dispozici buď [účet počítače](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (výchozí), nebo [účet přihlášení služby](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) , který už je vytvořený pomocí SPN nebo UPN, jako "CIFS/Your-Storage-Account-Name-tady. File. Core. Windows. NET". Pokud účet neexistuje, vytvořte ho tak, jak je popsáno v následující části.
+Nejdřív je potřeba, abyste zkontrolovali stav svého prostředí. Konkrétně je nutné ověřit, zda je [Služba Active Directory PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/?view=win10-ps) nainstalována a zda je prostředí spuštěno s oprávněními správce. Pak zkontrolujte, jestli je nainstalovaný [modul Az.Storage 2.0](https://www.powershellgallery.com/packages/Az.Storage/2.0.0), a pokud ne, nainstalujte ho. Po dokončení těchto kontrol zkontrolujte služba AD DS a podívejte se, jestli je k dispozici buď [účet počítače](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (výchozí), nebo [účet přihlášení služby](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) , který už je vytvořený pomocí SPN nebo UPN, jako "CIFS/Your-Storage-Account-Name-tady. File. Core. Windows. NET". Pokud účet neexistuje, vytvořte ho tak, jak je popsáno v následující části.
 
 ### <a name="creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>Ruční vytvoření identity představující účet úložiště ve službě AD
 

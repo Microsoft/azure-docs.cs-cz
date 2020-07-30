@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 072fa659d6f5cf55da4dfc99cfed38220be70812
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: c3933e9165160c16a9e533bf8bf95f1533dff1cc
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337343"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386686"
 ---
 # <a name="deploy-azure-file-sync"></a>Nasazení Synchronizace souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
 
 Před dokončením kroků popsaných v tomto článku důrazně doporučujeme, abyste si přečetli [Plánování nasazení souborů Azure](storage-files-planning.md) a [Plánování nasazení Azure File Sync](storage-sync-files-planning.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Sdílená složka Azure ve stejné oblasti, kterou chcete nasadit Azure File Sync. Další informace najdete v tématech:
     - [Dostupnost oblasti](storage-sync-files-planning.md#azure-file-sync-region-availability) pro Azure File Sync.
     - [Vytvořte sdílenou složku](storage-how-to-create-file-share.md) , kde najdete podrobný popis postupu vytvoření sdílené složky.
@@ -218,6 +218,13 @@ Registrací vašeho Windows Serveru ve službě synchronizace úložiště se vy
 
 Správce, který registruje Server, musí být členem role pro správu **vlastníka** nebo **přispěvatele** pro danou službu synchronizace úložiště. Tato možnost se dá nakonfigurovat v části **Access Control (IAM)** v Azure Portal pro službu synchronizace úložiště.
 
+Je taky možné odlišit správce, kteří můžou registrovat servery z těch, které mají povoleno také konfigurovat synchronizaci v rámci služby synchronizace úložiště. V takovém případě byste museli vytvořit vlastní roli, kde můžete uvést seznam správců, kteří mají povoleno pouze registrovat servery, a přidělit vlastní roli následujícím oprávněním:
+
+* "Microsoft. StorageSync/storageSyncServices/registeredServers/Write"
+* "Microsoft. StorageSync/storageSyncServices/Read"
+* "Microsoft. StorageSync/storageSyncServices/Workflows/Read"
+* "Microsoft. StorageSync/storageSyncServices/Workflows/Operations/Read"
+
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 Uživatelské rozhraní pro registraci serveru by se mělo po instalaci agenta Azure File Sync otevřít automaticky. Pokud ne, můžete ho otevřít ručně z umístění jeho souboru: C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe. Po otevření uživatelského rozhraní registrace serveru vyberte možnost **Přihlásit** se a začněte.
 
@@ -245,6 +252,8 @@ Koncový bod cloudu je ukazatel na sdílenou složku Azure. Všechny koncové bo
 
 > [!Important]  
 > Můžete provádět změny libovolného koncového bodu cloudu nebo koncového bodu serveru ve skupině synchronizace a nechat soubory synchronizované s ostatními koncovými body ve skupině synchronizace. Pokud provedete přímo změnu koncového bodu cloudu (sdílená složka Azure), je třeba nejprve zjistit změny Azure File Sync úlohy zjišťování změn. Úloha detekce změn se iniciuje pro koncový bod cloudu jenom jednou za 24 hodin. Další informace najdete v [nejčastějších dotazech k souborům Azure](storage-files-faq.md#afs-change-detection).
+
+Správce vytvářející koncový bod cloudu musí být členem **vlastníka** role správy pro účet úložiště, který obsahuje sdílenou složku Azure, na kterou koncový bod cloudu odkazuje. To se dá nakonfigurovat v části **Access Control (IAM)** v Azure Portal pro účet úložiště.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 Skupinu synchronizace vytvoříte tak, že v [Azure Portal](https://portal.azure.com/)přejdete do své služby synchronizace úložiště a pak vyberete **+ Skupina synchronizace**:

@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: Kontrola pravopisu pomocí REST API a Node. js – Kontrola pravopisu Bingu'
+title: 'Rychlý Start: Kontrola pravopisu pomocí REST API a Node.js-Kontrola pravopisu Bingu'
 titleSuffix: Azure Cognitive Services
 description: Začněte používat REST API Kontrola pravopisu Bingu pro kontrolu pravopisu a gramatiky pomocí tohoto rychlého startu.
 services: cognitive-services
@@ -10,22 +10,23 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: f35c2ebc4cd6e31fe59ad715d4f317e650bca52e
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: aaaa571928556a6972d3136ef4cacaa3bd4cb798
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995951"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405003"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>Rychlý Start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API a Node. js
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>Rychlý Start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API a Node.js
 
 V tomto rychlém startu můžete provést první volání REST API Kontrola pravopisu Bingu. Tato jednoduchá aplikace JavaScriptu pošle požadavek do rozhraní API a vrátí seznam navrhovaných oprav. 
 
 I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód této aplikace je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingSpellCheckv7.js).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* [Node. js 6](https://nodejs.org/en/download/) nebo novější.
+* [Node.js 6](https://nodejs.org/en/download/) nebo novější.
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 

@@ -1,18 +1,18 @@
 ---
 title: Vytvoření nabídky virtuálních počítačů Azure na Azure Marketplace
-description: Naučte se, jak vytvořit virtuální počítač v Azure Marketplace s požadovaným plánem.
+description: Naučte se publikovat nabídku virtuálního počítače pro Azure Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
-author: iqshahmicrosoft
-ms.author: iqshah
-ms.date: 07/17/2020
-ms.openlocfilehash: 8da76650f9cc3da0ff8f79a9d3df7a00cdd01a24
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.topic: how-to
+author: emuench
+ms.author: mingshen
+ms.date: 07/28/2020
+ms.openlocfilehash: 9db6fbe002492c0db6e9e0e5e0a23ca1946759a5
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324688"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386431"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Vytvoření nabídky virtuálních počítačů Azure na Azure Marketplace
 
@@ -352,7 +352,7 @@ V této části nakonfigurujete podrobnosti o seznamu plánu. V tomto podokně s
 
 #### <a name="plan-name"></a>Název plánu
 
-Toto pole se vyplní názvem, který jste přiřadili k vašemu plánu při jeho vytvoření. Tento název se zobrazí v Azure Marketplace jako název tohoto plánu. Je omezený na 100 znaků.
+Toto pole je automaticky vyplněno názvem, který jste přiřadili vašemu plánu při jeho vytvoření. Tento název se zobrazí v Azure Marketplace jako název tohoto plánu. Je omezený na 100 znaků.
 
 #### <a name="plan-summary"></a>Souhrn plánu
 
@@ -368,7 +368,7 @@ Než budete pokračovat, vyberte **Uložit koncept** .
 
 V tomto podokně nakonfigurujete:
 
-- Trhy, kde je tento plán k dispozici.
+- Trhy, kde je tento plán k dispozici. Každý plán musí být k dispozici alespoň v jednom [trhu](../marketplace-geo-availability-currencies.md).
 - Cena za hodinu
 - Zda má být plán viditelný pro všechny uživatele nebo pouze pro konkrétní zákazníky (soukromá cílová skupina).
 

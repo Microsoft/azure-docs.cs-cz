@@ -3,12 +3,12 @@ title: Architektura zotavení po havárii fyzického serveru v Azure Site Recove
 description: Tento článek poskytuje přehled komponent a architektury používaných při zotavení po havárii místních fyzických serverů do Azure pomocí služby Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: 089d981284986a2b6eb0ee7f1dbd401fc7ce4fcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2184654a8169cb353fb40fa76f0a7fe9b3df6f6
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77162833"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422653"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii fyzického serveru do Azure
 
@@ -28,6 +28,25 @@ Následující tabulka a grafika obsahují podrobný pohled na součásti použ�
 **Architektura replikace z fyzických prostředků do Azure**
 
 ![Komponenty](./media/physical-azure-architecture/arch-enhanced.png)
+
+## <a name="set-up-outbound-network-connectivity"></a>Nastavení odchozího připojení k síti
+
+Aby mohla Site Recovery fungovat podle očekávání, musíte upravit odchozí síťové připojení, aby bylo možné prostředí replikovat.
+
+> [!NOTE]
+> Site Recovery nepodporuje připojení k síti pomocí ověřovacího proxy serveru.
+
+### <a name="outbound-connectivity-for-urls"></a>Odchozí připojení pro adresy URL
+
+Pokud k řízení odchozího připojení používáte proxy server brány firewall založený na adrese URL, povolte přístup k těmto adresám URL:
+
+| **Název**                  | **Komerční**                               | **Státní správa**                                 | **Popis** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | Umožňuje zápis dat z virtuálního počítače do účtu úložiště mezipaměti ve zdrojové oblasti. |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Zajišťuje autorizaci a ověřování pro adresy URL služby Site Recovery. |
+| Replikace               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Umožňuje komunikaci virtuálního počítače se službou Site Recovery. |
+| Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Umožňuje virtuálnímu počítači zapisovat data monitorování a diagnostiky Site Recovery. |
+
 
 ## <a name="replication-process"></a>Proces replikace
 

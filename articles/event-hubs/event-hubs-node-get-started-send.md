@@ -3,12 +3,13 @@ title: Odesílání a příjem událostí z Azure Event Hubs pomocí JavaScriptu
 description: Tento článek poskytuje návod pro vytvoření aplikace JavaScriptu, která odesílá a přijímá události do a z Azure Event Hubs pomocí starého balíčku Azure/Event-hub verze 2.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 548276b4bcbdd514c37a19375154923ad9f3f9a4
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.custom: devx-track-javascript
+ms.openlocfilehash: ffa6b821d617731bd6ee5cbb9bec8bd6d856a7a6
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85314514"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87414118"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-javascript-azureevent-hubs-version-2"></a>Rychlý Start: odeslání událostí do nebo příjem událostí z Azure Event Hubs pomocí JavaScriptu ( @azure/event-hubs verze 2)
 V tomto rychlém startu se dozvíte, jak vytvořit aplikace JavaScriptu pro odesílání událostí do a příjem událostí z centra událostí pomocí balíčku Azure/Event-Centre verze 2 JavaScriptu. 
@@ -17,7 +18,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit aplikace JavaScriptu pro odes
 > V tomto rychlém startu se používá starý balíček Azure/Event-Centers verze 2. Rychlý Start, který používá nejnovější **verzi 5** balíčku, najdete v tématu [posílání a přijímání událostí pomocí Azure/eventhubs verze 5](get-started-node-send-v2.md). Chcete-li přesunout aplikaci z části použití starého balíčku na nový, přečtěte si [příručku k migraci z Azure/eventhubs verze 1 na verzi 5](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md). 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud s Azure Event Hubs teprve začínáte, přečtěte si téma [přehled Event Hubs](event-hubs-about.md) před provedením tohoto rychlého startu. 
 
@@ -81,7 +82,7 @@ V této části se dozvíte, jak vytvořit aplikaci JavaScriptu, která odesíl�
 3. Zadejte připojovací řetězec a název vašeho centra událostí ve výše uvedeném kódu.
 4. Potom spuštěním příkazu na `node send.js` příkazovém řádku spusťte tento soubor. Tato akce odešle 100 událostí do centra událostí.
 
-Gratulujeme! Nyní jste odeslali události do centra událostí.
+Blahopřejeme! Nyní jste odeslali události do centra událostí.
 
 
 ## <a name="receive-events"></a>Příjem událostí
@@ -125,7 +126,7 @@ V této části se dozvíte, jak vytvořit aplikaci JavaScriptu, která přijím
 3. Do výše uvedeného kódu zadejte připojovací řetězec a název vašeho centra událostí.
 4. Potom spuštěním příkazu na `node receive.js` příkazovém řádku spusťte tento soubor. Tím se v centru událostí dostanou události z jednoho z oddílů výchozí skupiny příjemců.
 
-Gratulujeme! Nyní jste přijali události z centra událostí.
+Blahopřejeme! Nyní jste přijali události z centra událostí.
 
 ## <a name="receive-events-using-event-processor-host"></a>Příjem událostí pomocí třídy EventProcessorHost
 
@@ -180,7 +181,7 @@ V této části se dozvíte, jak přijímat události z centra událostí pomoc�
 3. Zadejte připojovací řetězec a název vašeho centra událostí ve výše uvedeném kódu spolu s připojovacím řetězcem pro Azure Blob Storage
 4. Potom spuštěním příkazu na `node receiveAll.js` příkazovém řádku spusťte tento soubor.
 
-Gratulujeme! Nyní jste dostali události z centra událostí pomocí služby Event Processor Host. Tím se dostanou události ze všech oddílů výchozí skupiny příjemců v centru událostí.
+Blahopřejeme! Nyní jste dostali události z centra událostí pomocí služby Event Processor Host. Tím se dostanou události ze všech oddílů výchozí skupiny příjemců v centru událostí.
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si následující články:

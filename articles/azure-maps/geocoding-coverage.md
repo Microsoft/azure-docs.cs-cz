@@ -1,26 +1,29 @@
 ---
-title: Pokrytí geografického kódování | Mapy Microsoft Azure
-description: Proces převodu adresy umístění na zeměpisnou šířku a délky souřadnic se označuje jako geografické kódování. V tomto článku se dozvíte o oblastech s pokrytím geografického kódování v Microsoft Azure Maps.
+title: Pokrytí geografické kódování ve službě Microsoft Azure Maps Search Service
+description: V tomto článku se dozvíte o Microsoft Azure mapování rozsahu geografického kódování v různých zemích nebo oblastech.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/31/2019
+ms.date: 07/28/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
-ms.openlocfilehash: 52c6cda800b535109d906fd6e6ae1aa8c709f23f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+manager: philmea
+ms.openlocfilehash: 6014cb4dda18a68b9149206adf034536161eb08e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132802"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386907"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps pokrytí geografické kódování
 
-Když vyhledáte umístění pomocí Azure Maps, vyhledávací služba, například [získat adresu hledání](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress), převezme hledané výrazy a vrátí souřadnice zeměpisné šířky a délky. Tento proces se nazývá geografické kódování. Azure Maps ale nemá stejnou úroveň informací a přesnost pro všechny oblasti a země. V tomto článku zjistíte, jaký druh umístění můžete spolehlivě Hledat v každé oblasti. 
+Služba Azure Maps [Search](https://docs.microsoft.com/rest/api/maps/search) podporuje geografické kódování, což znamená, že vaše žádost o rozhraní API může mít hledané výrazy, jako je adresa nebo název místa, a výsledek vrátí jako souřadnice zeměpisné šířky a délky. Například [rozhraní API pro hledání adres](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) v Azure Maps obdrží dotazy, které obsahují informace o poloze, a vrátí výsledky jako souřadnice zeměpisné šířky a délky.
 
-Schopnost geografického kódu v zemi nebo oblasti je závislá na pokrytí dat a přesnosti geografického kódování ve službě geografické kódování. Následující kategorizace se používají k určení úrovně podpory geografického kódování v každé zemi nebo oblasti.
-* **Adresované body** – data adres se dají přeložit na souřadnici zeměpisné šířky a délky v rámci adresního pozemku (hranice vlastnosti). Někdy označované jako "Rooftop". Toto je nejvyšší úroveň přesnosti, která je k dispozici pro adresy. 
+[Služba Azure Maps Search](https://docs.microsoft.com/rest/api/maps/search) však nemá stejnou úroveň informací a přesnost pro všechny oblasti a země. V tomto článku zjistíte, jaký druh umístění můžete spolehlivě Hledat v každé oblasti.
+
+Schopnost geografického kódu v zemi nebo oblasti závisí na rozsahu dat a přesnosti geografického kódování ve službě geografické kódování. Následující kategorizace se používají k určení úrovně podpory geografického kódování v každé zemi nebo oblasti.
+
+* **Adresované body** – data adresy lze přeložit na souřadnice zeměpisné šířky a délky v rámci třídy Address parcela (hranice vlastnosti). Adresní body se často označují jako "Rooftop", což je nejvyšší úroveň přesnosti dostupné pro adresy.
 * **Čísla domů** – adresy se interpolují na ulici a zeměpisnou délku.
 * Adresa na **úrovni ulice** se přeloží na souřadnici zeměpisné šířky a délky ulice, která obsahuje adresu. Číslo domu nesmí být zpracováno.
 * **Úroveň města** – názvy míst měst jsou podporovány.
@@ -214,7 +217,6 @@ Schopnost geografického kódu v zemi nebo oblasti je závislá na pokrytí dat 
 | Uzbekistán                                          |                 |                |              |      ✓     |          ✓         |
 | Vatikán                                        |                 |                |       ✓      |      ✓     |          ✓         |
 
-
 ## <a name="middle-east-and-africa"></a>Střední východ a Afrika
 
 | Země/oblast                                      | Adresní body |Čísla domu | Úroveň ulice | Úroveň města | Body zájmu |
@@ -295,11 +297,8 @@ Schopnost geografického kódu v zemi nebo oblasti je závislá na pokrytí dat 
 | Zambie                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Zimbabwe                                            |                 |                |       ✓      |      ✓     |          ✓         |
 
-
-
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure Maps geografické kódování naleznete na referenčních stránkách [hledání](https://docs.microsoft.com/rest/api/maps/search) .
-
-Přečtěte si o [oblastech pokrytí pro službu Maps (Maps) Service](traffic-coverage.md). 
-
+Další informace o Azure Maps geografické kódování:
+> [!div class="nextstepaction"]
+> [Služba Azure Maps Search](https://docs.microsoft.com/rest/api/maps/search)

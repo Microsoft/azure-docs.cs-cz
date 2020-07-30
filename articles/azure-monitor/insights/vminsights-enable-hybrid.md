@@ -6,20 +6,20 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 7a6105e8742a4cb3d2f113c6ef723f6171baf4d9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ccf4ad960abfd737a9a05d8fdc77a8bb1ea92d2d
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328197"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87417110"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-virtual-machine"></a>Povolit Azure Monitor pro virtuální počítače pro hybridní virtuální počítač
 Tento článek popisuje, jak povolit Azure Monitor pro virtuální počítače pro virtuální počítač mimo Azure, včetně místních a dalších cloudových prostředí.
 
 > [!IMPORTANT]
-> Doporučenou metodou povolení hybridních virtuálních počítačů je nejprve povolit [pro servery Azure ARC](/azure-arc/servers/overview.md) , aby bylo možné virtuální počítače povolit Azure monitor pro virtuální počítače pomocí procesů podobných virtuálním počítačům Azure. Tento článek popisuje, jak připojit hybridní virtuální počítače, pokud se rozhodnete nepoužívat ARC Azure.
+> Doporučenou metodou povolení hybridních virtuálních počítačů je nejprve povolit [pro servery Azure ARC](../../azure-arc/servers/overview.md) , aby bylo možné virtuální počítače povolit Azure monitor pro virtuální počítače pomocí procesů podobných virtuálním počítačům Azure. Tento článek popisuje, jak připojit hybridní virtuální počítače, pokud se rozhodnete nepoužívat ARC Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Vytvořte a nakonfigurujte Log Analytics pracovní prostor](vminsights-configure-workspace.md).
 - V části [podporované operační systémy](vminsights-enable-overview.md#supported-operating-systems) se ujistěte, že je podporovaný operační systém virtuálního počítače nebo sady škálování virtuálních počítačů, které chcete povolit. 
@@ -31,7 +31,7 @@ Virtuální počítače mimo Azure vyžadují stejného agenta Log Analytics age
 Podrobnosti o nasazení Log Analytics agenta najdete v tématu [připojení počítačů s Windows k Azure monitor](../platform/agent-windows.md) nebo [připojení počítačů se systémem Linux k Azure monitor](../platform/agent-linux.md) . Podrobnosti o agentovi závislostí jsou uvedeny v tomto článku. 
 
 ## <a name="firewall-requirements"></a>Požadavky na bránu firewall
-Požadavky na bránu firewall pro agenta Log Analytics jsou k dispozici v článku [Přehled agenta Log Analytics](..//platform/log-analytics-agent.md#network-requirements). Agent závislostí Azure Monitor pro virtuální počítače neodesílá žádná data a nevyžaduje žádné změny bran firewall nebo portů. Data mapy jsou vždy přenášena agentem Log Analytics do služby Azure Monitor, a to buď přímo, nebo prostřednictvím [brány Operations Management Suite](../../azure-monitor/platform/gateway.md) , pokud zásady zabezpečení IT nedovolují počítačům v síti připojení k Internetu.
+Požadavky na bránu firewall pro agenta Log Analytics jsou k dispozici v článku [Přehled agenta Log Analytics](../platform/log-analytics-agent.md#network-requirements). Agent závislostí Azure Monitor pro virtuální počítače neodesílá žádná data a nevyžaduje žádné změny bran firewall nebo portů. Data mapy jsou vždy přenášena agentem Log Analytics do služby Azure Monitor, a to buď přímo, nebo prostřednictvím [brány Operations Management Suite](../../azure-monitor/platform/gateway.md) , pokud zásady zabezpečení IT nedovolují počítačům v síti připojení k Internetu.
 
 
 ## <a name="dependency-agent"></a>Agent závislostí

@@ -3,14 +3,14 @@ title: 'Rychlý Start: získání záměru pomocí rozhraní REST API – LUIS'
 description: V tomto REST API rychlého startu pomocí dostupné veřejné aplikace LUIS určete záměr uživatele z konverzačního textu.
 ms.topic: quickstart
 ms.date: 05/18/2020
-ms.custom: tracking-python
+ms.custom: tracking-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 5d43a1aee9e3f355a3cfcab927d87571798677e7
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 0274cf1ac6a6d0cb37d2321f6fd02f98c784318f
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608549"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405262"
 ---
 # <a name="quickstart-get-intent-with-rest-apis"></a>Rychlý Start: získání záměru pomocí rozhraní REST API
 

@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 75e2ffcad4caeb6500f05ce3801797084c18a043
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 63e2ba93ecdc1131be6bd291fe436b42a2a2d19c
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321645"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407026"
 ---
 # <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>Použít pracovní prostor za Azure Firewall Azure Machine Learning
 
@@ -60,9 +60,9 @@ Hostitelé v této části se používají k instalaci balíčků Pythonu. Jsou 
 
 | **Název hostitele** | **Účel** |
 | ---- | ---- |
-| **anaconda.com** | Používá se při instalaci balíčků conda. |
-| **pypi.org** | Používá se při instalaci balíčků PIP. |
-
+| **anaconda.com** | Používá se k instalaci výchozích balíčků. |
+| **\*. anaconda.org** | Slouží k získání dat úložiště. |
+| **pypi.org** | Slouží k vypsání závislostí z výchozího indexu, pokud existují, a index není přepsán uživatelským nastavením. Pokud je index přepsán, je nutné také povolte ** \* . pythonhosted.org**. |
 
 ## <a name="r-hosts"></a>Hostitelé R
 

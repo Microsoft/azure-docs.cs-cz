@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 9891cdb59c757035afd17339b052d5587ac99b0c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 80671a40b5933a89962fa07b267d7e99e475657f
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74109977"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406686"
 ---
 # <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>Postupy: Výběr zvukového vstupního zařízení pomocí sady Speech SDK
 
@@ -46,11 +47,11 @@ audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
 ```
 
 > [!Note]
-> Používání mikrofonu není k dispozici pro JavaScript běžící v Node. js.
+> Používání mikrofonu není k dispozici pro JavaScript běžící v Node.js
 
 ## <a name="audio-device-ids-on-windows-for-desktop-applications"></a>ID zvukových zařízení ve Windows pro aplikace klasické pracovní plochy
 
-[Řetězce ID koncového bodu](/windows/desktop/CoreAudio/endpoint-id-strings) zvukového zařízení lze načíst [`IMMDevice`](/windows/desktop/api/mmdeviceapi/nn-mmdeviceapi-immdevice) z objektu ve Windows pro aplikace klasické pracovní plochy.
+[Řetězce ID koncového bodu](/windows/desktop/CoreAudio/endpoint-id-strings) zvukového zařízení lze načíst z [`IMMDevice`](/windows/desktop/api/mmdeviceapi/nn-mmdeviceapi-immdevice) objektu ve Windows pro aplikace klasické pracovní plochy.
 
 Následující ukázka kódu ukazuje, jak ho použít k zobrazení výčtu zvukových zařízení v jazyce C++:
 
@@ -171,11 +172,11 @@ namespace ConsoleApp
 }
 ```
 
-ID ukázkového zařízení je `{0.0.1.00000000}.{5f23ab69-6181-4f4a-81a4-45414013aac8}`.
+ID ukázkového zařízení je `{0.0.1.00000000}.{5f23ab69-6181-4f4a-81a4-45414013aac8}` .
 
 ## <a name="audio-device-ids-on-uwp"></a>ID zvukových zařízení na UWP
 
-Na Univerzální platforma Windows (UWP) lze pomocí `Id()` vlastnosti odpovídajícího [`DeviceInformation`](/uwp/api/windows.devices.enumeration.deviceinformation) objektu získat vstupní zvuková zařízení.
+Na Univerzální platforma Windows (UWP) lze pomocí vlastnosti odpovídajícího objektu získat vstupní zvuková zařízení `Id()` [`DeviceInformation`](/uwp/api/windows.devices.enumeration.deviceinformation) .
 
 Následující ukázky kódu ukazují, jak to provést v jazyce C++ a C#:
 
@@ -222,22 +223,22 @@ namespace helloworld {
 }
 ```
 
-ID ukázkového zařízení je `\\\\?\\SWD#MMDEVAPI#{0.0.1.00000000}.{5f23ab69-6181-4f4a-81a4-45414013aac8}#{2eef81be-33fa-4800-9670-1cd474972c3f}`.
+ID ukázkového zařízení je `\\\\?\\SWD#MMDEVAPI#{0.0.1.00000000}.{5f23ab69-6181-4f4a-81a4-45414013aac8}#{2eef81be-33fa-4800-9670-1cd474972c3f}` .
 
 ## <a name="audio-device-ids-on-linux"></a>ID zvukových zařízení v systému Linux
 
 ID zařízení se vyberou pomocí standardních ID zařízení ALSA.
 
-ID vstupů připojených k systému jsou obsažena ve výstupu příkazu `arecord -L`.
+ID vstupů připojených k systému jsou obsažena ve výstupu příkazu `arecord -L` .
 Alternativně je lze získat pomocí [knihovny jazyka C ALSA](https://www.alsa-project.org/alsa-doc/alsa-lib/).
 
-ID vzorků jsou `hw:1,0` a `hw:CARD=CC,DEV=0`.
+ID vzorků jsou `hw:1,0` a `hw:CARD=CC,DEV=0` .
 
 ## <a name="audio-device-ids-on-macos"></a>ID zvukových zařízení v macOS
 
 Následující funkce implementovaná v cíli – C vytvoří seznam názvů a ID zvukových zařízení připojených k počítači Mac.
 
-`deviceUID` Řetězec se používá k identifikaci zařízení v sadě Speech SDK pro MacOS.
+`deviceUID`Řetězec se používá k identifikaci zařízení v sadě Speech SDK pro MacOS.
 
 ```objc
 #import <Foundation/Foundation.h>
@@ -361,7 +362,7 @@ CFArrayRef CreateInputDeviceArray()
 }
 ```
 
-Například UID vestavěného mikrofonu je `BuiltInMicrophoneDevice`.
+Například UID vestavěného mikrofonu je `BuiltInMicrophoneDevice` .
 
 ## <a name="audio-device-ids-on-ios"></a>ID zvukových zařízení v iOS
 
@@ -378,14 +379,14 @@ Povolí použití sluchátek s mikrofonem Bluetooth pro aplikaci s podporou ře�
 
 ## <a name="audio-device-ids-in-javascript"></a>ID zvukových zařízení v JavaScriptu
 
-V JavaScriptu lze pomocí metody [MediaDevices. enumerateDevices ()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) vytvořit výčet mediálních zařízení a vyhledat ID zařízení, které se má předat `fromMicrophone(...)`.
+V JavaScriptu lze pomocí metody [MediaDevices. enumerateDevices ()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) vytvořit výčet mediálních zařízení a vyhledat ID zařízení, které se má předat `fromMicrophone(...)` .
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Prozkoumejte naše ukázky na GitHubu](https://aka.ms/csspeech/samples)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 - [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)
 - [Přizpůsobení jazykových modelů](how-to-customize-language-model.md)

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 8433242ffe44b8deab62314af386f1a82e2e0017
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 7ef7a771442dba5c7f82196a13b77cb28b0d1ed8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374112"
+ms.locfileid: "87386652"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Dotazování souborů úložiště pomocí prostředků SQL na vyžádání (ve verzi Preview) v synapse SQL
 
@@ -186,7 +186,7 @@ Ve výchozím nastavení `OPENROWSET` funkce odpovídá názvu a cestě zdrojov�
 - Pokud vlastnost nebyla nalezena v zadaném column_name, funkce vrátí chybu.
 - Pokud vlastnost nelze nalézt v zadaném column_path v závislosti na [režimu cesty](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#PATHMODE), funkce vrátí chybu v režimu Strict nebo null v režimu Lax.
 
-V případě ukázek dotazů si přečtěte část přístupové prvky z vnořených sloupců v článku [dotaz Parquet nesteded Types](query-parquet-nested-types.md#access-elements-from-nested-columns) .
+V případě ukázek dotazů si přečtěte část přístupové prvky z vnořených sloupců v článku [dotaz Parquet nesteded Types](query-parquet-nested-types.md#read-properties-from-nested-object-columns) .
 
 #### <a name="access-elements-from-repeated-columns"></a>Přístup k prvkům z opakujících se sloupců
 
@@ -219,7 +219,7 @@ Můžete najít Ukázky dotazů pro přístup k elementům z opakujících se sl
 
 Můžete se dozvědět více o dotazování různých typů dat pomocí ukázkových dotazů.
 
-### <a name="tools"></a>nástroje
+### <a name="tools"></a>Nástroje
 
 Nástroje, které potřebujete k vydávání dotazů:
     - Azure synapse Studio (Preview)

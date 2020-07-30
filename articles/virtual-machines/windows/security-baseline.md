@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: abdf84a4266b0bc57d74f2219fdaece8dd193086
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 10802cd141e0b10e30cb01d3d1dc385aedf7fc1e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133023"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387009"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Základní hodnoty zabezpečení Azure pro Windows Virtual Machines
 
@@ -1091,7 +1091,7 @@ Pokud používáte Azure Disk Encryption, můžete virtuální počítač Azure 
 
 * [Obnovitelné odstranění pro virtuální počítače](../../backup/soft-delete-virtual-machines.md)
 
-* [Přehled obnovitelného odstranění ve službě Azure Key Vault](../../key-vault/general/overview-soft-delete.md)
+* [Přehled obnovitelného odstranění ve službě Azure Key Vault](../../key-vault/general/soft-delete-overview.md)
 
 **Monitorování Azure Security Center**: Ano
 

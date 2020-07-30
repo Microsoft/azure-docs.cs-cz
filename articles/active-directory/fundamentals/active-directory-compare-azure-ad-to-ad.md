@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 02/26/2020
 ms.author: martinco
-ms.openlocfilehash: 5075ae57df6a7306f0c860690931c846e52c2a89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31fde1b80a1646a92688a0fcc1fa221cf01ba0a9
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78926888"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87418861"
 ---
 # <a name="compare-active-directory-to-azure-active-directory"></a>Porovnat službu Active Directory s Azure Active Directory
 
@@ -42,7 +42,7 @@ Většina správců IT je obeznámená s Active Directory Domain Services koncep
 | Služby střední vrstvy/démona|Služby běžící v místních prostředích obvykle používají účty služby AD nebo skupinové účty spravované služby (gMSA) ke spuštění. Tyto aplikace pak zdědí oprávnění k účtu služby.| Azure AD poskytuje [spravované identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/index) pro spouštění dalších úloh v cloudu. Životní cyklus těchto identit spravuje Azure AD a je vázaný na poskytovatele prostředků se nedá použít k získání přístupu zadní vrátka k jiným účelům.|
 | **Zařízení**|||
 | Mobilní|Služba Active Directory nativně nepodporuje mobilní zařízení bez řešení třetích stran.| Řešení správy mobilních zařízení od Microsoftu, Microsoft Intune, je integrováno se službou Azure AD. Microsoft Intune poskytuje systému identit informace o stavu zařízení k vyhodnocení během ověřování. |
-| Stolní počítače se systémem Windows|Služba Active Directory umožňuje připojit zařízení s Windows k doméně a spravovat je pomocí Zásady skupiny, System Center Configuration Manager nebo jiných řešení třetích stran.|Zařízení s Windows je možné [připojit ke službě Azure AD](https://docs.microsoft.com/azure/active-directory/devices/). Podmíněný přístup může v rámci procesu ověřování zjistit, jestli je zařízení připojené k Azure AD. Zařízení s Windows je taky možné spravovat pomocí [Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune). V takovém případě podmíněný přístup před povolením přístupu k aplikacím bere v úvahu, jestli má zařízení stížnost (třeba aktualizované opravy zabezpečení a signatury virů).|
+| Stolní počítače se systémem Windows|Služba Active Directory umožňuje připojit zařízení s Windows k doméně a spravovat je pomocí Zásady skupiny, System Center Configuration Manager nebo jiných řešení třetích stran.|Zařízení s Windows je možné [připojit ke službě Azure AD](https://docs.microsoft.com/azure/active-directory/devices/). Podmíněný přístup může v rámci procesu ověřování zjistit, jestli je zařízení připojené k Azure AD. Zařízení s Windows je taky možné spravovat pomocí [Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune). V takovém případě podmíněný přístup zvažte, jestli zařízení dodržuje předpisy (například aktualizované opravy zabezpečení a signatury virů) ještě před tím, než povolí přístup k aplikacím.|
 | Windows servery| Služba Active Directory poskytuje silné možnosti správy místních serverů Windows pomocí Zásady skupiny nebo jiných řešení pro správu.| Virtuální počítače s Windows serverem v Azure je možné spravovat pomocí [Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/). [Spravované identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/index) se dají použít, když virtuální počítače potřebují přístup k prostředkům nebo adresářům systému identit.|
 | Úlohy Linux/UNIX|Služba Active Directory není nativně podporována bez řešení jiných výrobců, i když počítače se systémem Linux lze konfigurovat pro ověřování pomocí služby Active Directory jako sféru protokolu Kerberos.|Virtuální počítače se systémem Linux/UNIX můžou k přístupu k systémům identit a prostředkům používat [spravované identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/index) . Některé organizace migrují tyto úlohy do cloudových kontejnerových technologií, které můžou používat i spravované identity.|
 

@@ -3,12 +3,13 @@ title: Příjem událostí z Azure Event Grid do koncového bodu HTTP
 description: Popisuje, jak ověřit koncový bod HTTP a pak přijímat a deserializovat události z Azure Event Grid
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 460efc15c7b85821f422c9964eb246df883a849f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 3e79d292dfcbed9f572c88e913bc76d47e6ee37f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108188"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87415104"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Příjem událostí pro koncový bod HTTP
 
@@ -17,7 +18,7 @@ Tento článek popisuje, jak [ověřit koncový bod HTTP](webhook-event-delivery
 > [!NOTE]
 > **Důrazně** doporučujeme použít [aktivační událost Event Grid](../azure-functions/functions-bindings-event-grid.md) při aktivaci funkce Azure pomocí Event Grid. Použití obecného triggeru Webhooku je tady demonstrované.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Budete potřebovat aplikaci Function App s funkcí aktivovanou protokolem HTTP.
 

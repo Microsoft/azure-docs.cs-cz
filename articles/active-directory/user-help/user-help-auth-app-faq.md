@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/15/2020
+ms.date: 07/16/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 4e21edd662649238b16cf7e7df9d9904f3f17752
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 34720a10796a1a215d541baef9f2c225857d3bc0
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015897"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423622"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Nejčastější dotazy k aplikaci Microsoft Authenticator
 
@@ -30,6 +30,7 @@ Aplikace Microsoft Authenticator nahradila Azure Authenticator aplikaci a při p
 | Otázka | Odpověď |
 | -------- | ------ |
 | Registruje se zařízení, které souhlasíte s tím, že společnosti nebo službě poskytnete přístup k zařízení? | Registrace zařízení umožňuje vašemu zařízení přístup ke službám vaší organizace a neumožňuje vaší organizaci přístup k vašemu zařízení. |
+| Co je zámek aplikace a jak ho můžu použít k lepšímu zabezpečení? | Zámek aplikace pomáhá lépe zabezpečit vaše jednorázové heslo, informace o aplikaci a nastavení aplikace. Když je povolen zámek aplikace, budete požádáni o ověření pomocí PIN kódu zařízení nebo biometriky pokaždé, když otevřete ověřovací data. Zámek aplikace také pomáhá zajistit, že jste jediným z nich, kdo může schvalovat oznámení pomocí výzvy k zadání kódu PIN nebo biometriky, kdykoli schválíte oznámení o přihlášení. Můžete zapnout nebo vypnout zámek aplikace na stránce nastavení ověřovatele. Ve výchozím nastavení je zámek aplikace zapnutý při nastavení PIN nebo biometriky na vašem zařízení.<br><br>Bohužel není nijak zaručeno, že zámek aplikace zabrání někomu v přístupu k ověřovacím údajům. Důvodem je, že k registraci zařízení může docházet v jiných umístěních mimo ověřovatel, například v nastavení účtu Android nebo v aplikaci Portál společnosti. |
 | Mám mobilní zařízení se systémem Windows a Microsoft Authenticator ve Windows Mobile se už nepoužívá. Můžu pokračovat v ověřování pomocí aplikace? | Všechna ověřování pomocí Microsoft Authenticator ve Windows Mobile budou vycházet po 15. červenci 2020. Důrazně doporučujeme použít alternativní metodu ověřování, abyste se vyhnuli uzamčení účtů.<br>Mezi alternativní možnosti pro podnikové uživatele patří:<br><ul><li>Nastavuje se Microsoft Authenticator pro [Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) nebo [iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458).</li><li>[Nastavení serveru SMS](multi-factor-authentication-setup-phone-number.md) pro příjem ověřovacích kódů.</li><li>Nastavení telefonního čísla pro příjem [telefonních hovorů pro ověření jejich identity](multi-factor-authentication-setup-office-phone.md).</li></ul><br>Mezi alternativní možnosti pro uživatele osobních účet Microsoft patří:<br><ul><li>Nastavuje se Microsoft Authenticator pro [Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) nebo [iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458).</li><li>Nastavení alternativní metody přihlašování (SMS nebo e-mailu) prostřednictvím aktualizace bezpečnostních údajů ze [stránky zabezpečení účtu Microsoft](https://account.microsoft.com/security/).</li></ul> |
 | Můžu v ověřovacích zařízeních s Androidem pořizovat snímky obrazovky pro můj kód jednorázového hesla? | Od verze 6.2003.1704 programu Authenticator pro Android se ve výchozím nastavení všechny kódy jednorázového hesla skryjí, kdykoli se povede snímek obrazovky s ověřovacími daty. Pokud si chcete zobrazit kódy jednorázového hesla na snímcích obrazovky nebo pokud chcete, aby ostatní aplikace zachytí obrazovku ověřovatele, můžete. Stačí zapnout nastavení **zachycení obrazovky** v ověřovateli a restartovat aplikaci. |
 | Jaká data uchovává úložiště ověřovatelů a jak je můžu odstranit? | Ověřovací aplikace shromažďuje tři typy informací:<ul><li>Informace o účtu, které poskytnete při přidávání účtu. Tato data můžete odebrat odebráním účtu.</li><li>Data diagnostického protokolu, která zůstávají jenom v aplikaci, dokud nevyberete možnost **Odeslat protokoly** pro odeslání protokolů do Microsoftu v nabídce **help** aplikace. Tyto protokoly můžou obsahovat osobní údaje, jako jsou e-mailové adresy, adresy serveru nebo IP adresy. Můžou taky obsahovat data zařízení, jako je název zařízení a verze operačního systému. Všechny Shromažďované osobní údaje jsou omezené na informace potřebné k řešení problémů s aplikacemi. V aplikaci můžete kdykoli procházet tyto soubory protokolů, aby se zobrazily shromažďované informace. Pokud odesíláte soubory protokolů, budou je technici aplikace ověřování používat jenom k řešení problémů hlášených zákazníky.</li><li>Data o využití, která nejsou osobně identifikovatelná, například Začínáme přidat účet nebo úspěšně přidaný účet, nebo schválená oznámení Tato data jsou nedílnou součástí našich rozhodnutí o technickém rozhodování. Vaše využití nám pomáhá určit, kde můžeme aplikace vylepšit tak, jak jsou pro vás důležité. Při prvním použití aplikace se zobrazí oznámení o této kolekci dat. Informuje o tom, že je možné ho vypnout na stránce **Nastavení** aplikace. Toto nastavení můžete kdykoli zapnout nebo vypnout.</li></ul> |

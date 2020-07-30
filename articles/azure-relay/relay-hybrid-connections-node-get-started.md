@@ -3,12 +3,13 @@ title: Azure Relay Hybrid Connections – WebSockets v uzlu
 description: Napište konzolovou aplikaci v Node.js pro WebSockety Azure Relay Hybrid Connections.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 86897c0a752e4203537135dbac68cc0b4c1da44c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 8dc52c93d4b5cd6d50b66338350a41cf0e24daa0
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316918"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386295"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-nodejs"></a>Začínáme se službou Relay Hybrid Connections WebSockets v Node.js
 
@@ -24,7 +25,7 @@ V tomto rychlém startu proveďte následující kroky:
 4. Napíšeme konzolovou aplikaci klienta (odesílatele) pro odesílání zpráv.
 5. Spusťte aplikace. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Node.js](https://nodejs.org/en/).
 - Předplatné Azure. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.

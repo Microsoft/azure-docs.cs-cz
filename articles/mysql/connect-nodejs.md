@@ -1,27 +1,27 @@
 ---
-title: Připojení pomocí Node. js – Azure Database for MySQL
+title: Připojení pomocí Node.js-Azure Database for MySQL
 description: V tomto rychlém startu najdete několik vzorových kódů Node.js, které můžete použít k připojení a dotazování dat ze služby Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 38ac57ca49608a528b8f810dac7967562f83d7d0
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 9d3e2d744c4800c06503483c6e7270ad1ca60e2c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870158"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423180"
 ---
-# <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rychlý Start: použití Node. js k připojení a dotazování dat v Azure Database for MySQL
+# <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rychlý Start: použití Node.js k připojení a dotazování dat v Azure Database for MySQL
 
-V tomto rychlém startu se připojíte k Azure Database for MySQL pomocí Node. js. Pak použijete příkazy SQL k dotazování, vkládání, aktualizaci a odstraňování dat v databázi z platforem Mac, Ubuntu Linux a Windows. 
+V tomto rychlém startu se připojíte k Azure Database for MySQL pomocí Node.js. Pak použijete příkazy SQL k dotazování, vkládání, aktualizaci a odstraňování dat v databázi z platforem Mac, Ubuntu Linux a Windows. 
 
-V tomto tématu se předpokládá, že máte zkušenosti s vývojem pomocí Node. js, ale začínáte pracovat s Azure Database for MySQL.
+V tomto tématu se předpokládá, že máte zkušenosti s vývojem pomocí Node.js, ale začínáte pracovat s Azure Database for MySQL.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Server Azure Database for MySQL. [Vytvořte Azure Database for MySQL server pomocí Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md) nebo [Vytvořte Azure Database for MySQL server pomocí Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md).
@@ -31,7 +31,7 @@ V tomto tématu se předpokládá, že máte zkušenosti s vývojem pomocí Node
 
 ## <a name="install-nodejs-and-the-mysql-connector"></a>Instalace Node.js a konektoru MySQL
 
-V závislosti na vaší platformě nainstalujte [Node. js](https://nodejs.org)podle pokynů v příslušné části. Pomocí npm nainstalujte balíček [MySQL](https://www.npmjs.com/package/mysql) a jeho závislosti do složky projektu.
+V závislosti na vaší platformě nainstalujte [Node.js](https://nodejs.org)podle pokynů v příslušné části. Pomocí npm nainstalujte balíček [MySQL](https://www.npmjs.com/package/mysql) a jeho závislosti do složky projektu.
 
 ### <a name="windows"></a>**Windows**
 

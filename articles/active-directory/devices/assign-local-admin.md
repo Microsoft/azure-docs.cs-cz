@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6b04a59da78abc81f7749300dfe34ca176c75c4
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 5d3082e3dc45102bc8700c7d1285ef832d09712a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371171"
+ms.locfileid: "87419814"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Jak spravovat místní skupinu Administrators na zařízeních připojených k Azure AD
 
@@ -72,9 +72,9 @@ Správci zařízení mají přiřazená všechna zařízení připojená k Azure
 >[!NOTE]
 > Tato funkce je aktuálně ve verzi Preview.
 
-Počínaje aktualizací Windows 10 2004 můžete pomocí skupin Azure AD spravovat oprávnění správce na zařízeních připojených k Azure AD pomocí zásad skupiny [Restricted] (Windows/Client-Management/MDM/Policy-CSP-restrictedgroups) MDM. Tato zásada vám umožní přiřadit jednotlivé uživatele nebo skupiny Azure AD k místní skupině Administrators na zařízení připojeném k Azure AD a poskytnout tak členitost pro konfiguraci samostatných správců pro různé skupiny zařízení. 
+Počínaje aktualizací Windows 10 2004 můžete pomocí skupin Azure AD spravovat oprávnění správce na zařízeních připojených k Azure AD pomocí zásad [skupiny s omezeným přístupem](/windows/client-management/mdm/policy-csp-restrictedgroups) (MDM). Tato zásada vám umožní přiřadit jednotlivé uživatele nebo skupiny Azure AD k místní skupině Administrators na zařízení připojeném k Azure AD a poskytnout tak členitost pro konfiguraci samostatných správců pro různé skupiny zařízení. 
 
-V současné době není v Intune žádné uživatelské rozhraní pro správu těchto zásad a je potřeba je nakonfigurovat pomocí [vlastní nastavení OMA-URI] (mem/Intune/Configuration/Custom-Settings-Windows-10). Několik důležitých informací pro tyto zásady: 
+V současné době není v Intune žádné uživatelské rozhraní pro správu této zásady a je potřeba je nakonfigurovat pomocí [vlastního nastavení OMA-URI](/mem/intune/configuration/custom-settings-windows-10). Několik důležitých informací pro tyto zásady: 
 
 - Přidání skupin Azure AD prostřednictvím zásad vyžaduje identifikátor SID skupiny, který se dá získat spuštěním rozhraní API skupin. Identifikátor SID je definován vlastností `securityIdentifier` v rozhraní API skupin.
 - Když se vynutila zásada skupin s omezeným přístupem, všechny aktuální členy skupiny, které nejsou v seznamu členů, se odeberou. Aby tyto zásady vynutily nové členy nebo skupiny, odstraní stávající správce konkrétně uživatele, který se připojil k zařízení, roli Správce zařízení a roli globálního správce ze zařízení. Chcete-li se vyhnout odebrání stávajících členů, je třeba je nakonfigurovat jako součást seznamu členů v zásadě skupiny s omezeným přístupem. 

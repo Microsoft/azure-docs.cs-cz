@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 406b122fd3f4d5ab13e9747a29bb4f6e4d2a4174
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a5ec79538ef4358552405eb4357c6304c4f8a675
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87294731"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87388148"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-blogin"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s BlogIn
 
@@ -32,7 +32,7 @@ V tomto kurzu se dozvíte, jak integrovat BlogIn s Azure Active Directory (Azure
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -82,7 +82,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
+1. Pokud chcete nakonfigurovat aplikaci v režimu, který je v **IDP** inicializovaném, zadejte v části **základní konfigurace SAML** hodnoty následujících polí:
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<SUBDOMAIN>.blogin.co/`
 
@@ -93,7 +93,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<SUBDOMAIN>.blogin.co/`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta BlogIn](mailto:support@blogin.co) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Přesné hodnoty pro tato pole můžete získat na stránce **Nastavení** na BlogIn (karta**uživatelské ověřování** > **nakonfigurovat jednotné přihlašování a zřizování uživatelů**). Případně můžete kontaktovat [tým podpory klienta BlogIn](mailto:support@blogin.co) , aby tyto hodnoty získal. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 1. BlogIn aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
@@ -142,7 +142,18 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-blogin-sso"></a>Konfigurace jednotného přihlašování BlogIn
 
-Pokud chcete nakonfigurovat jednotné přihlašování na straně **BlogIn** , musíte odeslat **adresu URL federačních metadat aplikace** [týmu podpory BlogIn](mailto:support@blogin.co). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Pokud chcete nakonfigurovat jednotné přihlašování při přihlášení na straně **BlogIn** k vašemu účtu BlogIn, postupujte takto:
+
+1. Přejít na **Nastavení**  >  **ověřování uživatelů**  >  **Konfigurace jednotného přihlašování & zřizování uživatelů**.
+2. Na další obrazovce změňte stav jednotného přihlašování na **zapnuto** a jako tlačítko pro přihlášení SSO klikněte na vlastní název, který se zobrazí na přihlašovací obrazovce.
+
+3. Pokud jste v posledním kroku předchozí části uložili **adresu URL federačních metadat aplikace** , vyberte **adresu URL metadat** metody konfigurace a vložte **adresu URL federačních METADAT aplikace** do pole Adresa URL metadat. Jinak změňte metodu konfigurace na **Ruční**, ručně naplňte **adresu URL jednotného přihlašování zprostředkovatele identity (přihlašovací adresu URL)** a **vystavitele zprostředkovatele identity (ID entity)** a nahrajte **certifikát (Base64)**,   který jste získali ze služby Azure AD.
+
+4. Vyberte výchozí roli uživatele pro nové uživatele připojující se k BlogIn pomocí jednotného přihlašování.
+
+5. Vyberte **Uložit změny**.
+
+Podrobnější vysvětlení nastavení jednotného přihlašování v BlogIn najdete v tématu [jak nastavit jednotné přihlašování pro Microsoft Azure AD v BlogIn](https://blogin.co/blog/how-to-set-up-single-sign-on-sso-for-microsoft-azure-active-directory-azure-ad-267/). Pokud máte nějaké dotazy nebo potřebujete pomoc, obraťte se na [tým podpory BlogIn](mailto:support@blogin.co) kdykoli.
 
 ### <a name="create-blogin-test-user"></a>Vytvořit testovacího uživatele BlogIn
 

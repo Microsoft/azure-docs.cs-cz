@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 71176c87ee805eb4a634dd6c2f344922fc13c4f3
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 8396ffa958e41e12e9258766483310baef0cabbe
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132712"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421429"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Řešení potíží s připojením k síti virtuálních počítačů z Azure do Azure
 
@@ -18,12 +18,12 @@ Tento článek popisuje běžné problémy související s připojením k síti 
 
 Aby mohla replikace Site Recovery fungovat, z virtuálního počítače se vyžaduje odchozí připojení ke konkrétním adresám URL nebo rozsahům IP adres. Pokud je váš virtuální počítač za bránou firewall nebo používá pravidla skupiny zabezpečení sítě (NSG) k řízení odchozího připojení, můžete se setkat s jedním z těchto problémů.
 
-| URL | Podrobnosti |
-|---|---|
-| `*.blob.core.windows.net` | Vyžaduje se, aby se data mohla zapsat do účtu úložiště mezipaměti ve zdrojové oblasti z virtuálního počítače. Pokud znáte všechny účty úložiště mezipaměti pro vaše virtuální počítače, můžete použít seznam povolených adres pro konkrétní adresy URL účtu úložiště. Například `cache1.blob.core.windows.net` a `cache2.blob.core.windows.net` místo `*.blob.core.windows.net` . |
-| `login.microsoftonline.com` | Vyžaduje se pro autorizaci a ověřování adres URL služby Site Recovery. |
-| `*.hypervrecoverymanager.windowsazure.com` | Vyžaduje se, aby na virtuálním počítači mohla probíhat komunikace služby Site Recovery. Pokud proxy server firewall podporuje IP adresy, můžete použít odpovídající _Site Recovery IP adresu_ . |
-| `*.servicebus.windows.net` | Požadováno, aby se z virtuálního počítače mohla zapisovat data monitorování Site Recovery a diagnostická data. Pokud proxy server firewall podporuje IP adresy, můžete použít odpovídající _IP adresu monitorování Site Recovery_ . |
+| **Název**                  | **Komerční**                               | **Státní správa**                                 | **Popis** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Vyžaduje se, aby se data mohla zapsat do účtu úložiště mezipaměti ve zdrojové oblasti z virtuálního počítače. Pokud znáte všechny účty úložiště mezipaměti pro vaše virtuální počítače, můžete použít seznam povolených adres pro konkrétní adresy URL účtu úložiště. Například `cache1.blob.core.windows.net` a `cache2.blob.core.windows.net` místo `*.blob.core.windows.net` . |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Vyžaduje se pro autorizaci a ověřování adres URL služby Site Recovery. |
+| Replikace               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Vyžaduje se, aby na virtuálním počítači mohla probíhat komunikace služby Site Recovery. Pokud proxy server firewall podporuje IP adresy, můžete použít odpovídající _Site Recovery IP adresu_ . |
+| Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Požadováno, aby se z virtuálního počítače mohla zapisovat data monitorování Site Recovery a diagnostická data. Pokud proxy server firewall podporuje IP adresy, můžete použít odpovídající _IP adresu monitorování Site Recovery_ . |
 
 ## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Odchozí připojení pro adresy URL Site Recovery nebo rozsahy IP adres (kód chyby 151037 nebo 151072)
 
@@ -84,7 +84,7 @@ Tento příklad ukazuje, jak nakonfigurovat NSG pravidla pro replikaci virtuáln
 
    | Umístění | Site Recovery IP adresa | IP adresa monitorování Site Recovery |
    | --- | --- | --- |
-   | USA – střed | 40.69.144.231 | 52.165.34.144 |
+   | Střední USA | 40.69.144.231 | 52.165.34.144 |
 
 #### <a name="nsg-rules---central-us"></a>Pravidla NSG – Střed USA
 
@@ -104,7 +104,7 @@ V tomto příkladu jsou potřeba tato pravidla NSG, aby bylo možné replikaci z
 
    | Umístění | Site Recovery IP adresa | IP adresa monitorování Site Recovery |
    | --- | --- | --- |
-   | USA – východ | 13.82.88.226 | 104.45.147.24 |
+   | East US | 13.82.88.226 | 104.45.147.24 |
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>Problém 3: Konfigurace Site Recovery se nezdařila (151197)
 

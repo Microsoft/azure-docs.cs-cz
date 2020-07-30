@@ -12,12 +12,12 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7b2a75bff21825a47f4364a8936ee7d5f122c1a
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 5b641437b7e15334d59c544b95d5be0f20f2a8df
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223886"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387536"
 ---
 # <a name="what-is-single-sign-on-sso"></a>Co je jednotné přihlašování (SSO)?
 
@@ -71,9 +71,9 @@ Jednotné přihlašování založené na SAML je podporované u aplikací, kter�
 - SAML 2.0
 - WS-Federation
 
-Konfigurace aplikace SaaS pro jednotné přihlašování založené na SAML najdete v tématu [Konfigurace jednotného přihlašování založené na SAML](configure-single-sign-on-non-gallery-applications.md). Mnoho aplikací SaaS (software jako služba) navíc obsahuje [kurz specifický pro aplikaci](../saas-apps/tutorial-list.md) , který vás provede konfigurací jednotného přihlašování založeného na SAML.
+Konfigurace aplikace SaaS pro jednotné přihlašování založené na SAML najdete v tématu [Konfigurace jednotného přihlašování založené na SAML](configure-saml-single-sign-on.md). Mnoho aplikací SaaS (software jako služba) navíc obsahuje [kurz specifický pro aplikaci](../saas-apps/tutorial-list.md) , který vás provede konfigurací jednotného přihlašování založeného na SAML.
 
-Pokud chcete nakonfigurovat aplikaci pro WS-Federation, řiďte se stejnými pokyny pro konfiguraci aplikace pro jednotné přihlašování založené na SAML, viz téma [Konfigurace jednotného přihlašování založené na SAML](configure-single-sign-on-non-gallery-applications.md). V kroku konfigurace aplikace tak, aby používala Azure AD, budete muset nahradit přihlašovací adresu URL Azure AD pro koncový bod WS-Federation `https://login.microsoftonline.com/<tenant-ID>/wsfed` .
+Pokud chcete nakonfigurovat aplikaci pro WS-Federation, postupujte podle stejných pokynů ke konfiguraci aplikace pro jednotné přihlašování založené na SAML. V kroku konfigurace aplikace tak, aby používala Azure AD, budete muset nahradit přihlašovací adresu URL Azure AD pro koncový bod WS-Federation `https://login.microsoftonline.com/<tenant-ID>/wsfed` .
 
 Pokud chcete nakonfigurovat místní aplikaci pro jednotné přihlašování založené na SAML, přečtěte si téma [jednotné přihlašování SAML pro místní aplikace s proxy aplikací](application-proxy-configure-single-sign-on-on-premises-apps.md).
 
@@ -198,8 +198,8 @@ Vzhledem k tomu, že tento scénář je nabízený prostřednictvím partnerstv�
 Další informace najdete v tématu [Azure Active Directory edice](../fundamentals/active-directory-whatis.md).
 
 ## <a name="related-articles"></a>Související články
+* [Série rychlý Start při správě aplikací](view-applications-portal.md)
 * [Kurzy integrace aplikací SaaS s Azure Active Directory](../saas-apps/tutorial-list.md)
-* [Konfigurace jednotného přihlašování založeného na SAML](configure-single-sign-on-non-gallery-applications.md)
 * [Konfigurace jednotného přihlašování založeného na heslech](configure-password-single-sign-on-non-gallery-applications.md)
 * [Konfigurace propojených přihlášení](configure-linked-sign-on.md)
 * [Seznámení se správou přístupu k aplikacím](what-is-access-management.md)

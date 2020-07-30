@@ -3,12 +3,13 @@ title: 'Rychlý Start: váš první dotaz v jazyce JavaScript'
 description: V tomto rychlém startu budete postupovat podle pokynů pro povolení knihovny grafu prostředků pro JavaScript a spuštění prvního dotazu.
 ms.date: 06/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 6b2c8e17bb92dfcc91e8a65e5c113c0a72021a41
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.custom: devx-track-javascript
+ms.openlocfilehash: fc9809dbe615950b4f5c9e4dc66cefcd054f5ebf
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323525"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87415920"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-javascript"></a>Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí JavaScriptu
 
@@ -16,7 +17,7 @@ Tento rychlý Start vás provede procesem přidávání knihoven do instalace Ja
 
 Na konci tohoto procesu jste přidali knihovny do instalace JavaScriptu a spustíte svůj první dotaz na graf prostředku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 

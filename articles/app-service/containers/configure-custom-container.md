@@ -3,12 +3,12 @@ title: Konfigurace vlastního kontejneru Linux
 description: Přečtěte si, jak nakonfigurovat vlastní kontejner Linux v Azure App Service. Tento článek ukazuje nejběžnější konfigurační úlohy.
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: df766c289ac9ece4c1dc1fbdc65d49ae1306a592
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9a3e360270ac388d0f8434a9184d39d602c98e9e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008587"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422772"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Konfigurace vlastního kontejneru Linux pro Azure App Service
 
@@ -155,10 +155,6 @@ Následující seznamy obsahují podporované a nepodporované možnosti konfigu
 
 > [!NOTE]
 > Všechny další možnosti, které nejsou explicitně vyvolány, jsou v Public Preview ignorovány.
-
-## <a name="configure-vnet-integration"></a>Konfigurace integrace virtuální sítě
-
-Použití vlastního kontejneru s integrací virtuální sítě může vyžadovat další konfiguraci kontejneru. Viz [integrace aplikace s Virtual Network Azure](../web-sites-integrate-with-vnet.md).
 
 [!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 

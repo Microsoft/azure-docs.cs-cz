@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 029883ea1ac85bdd1ea256caaa711d6537c06a76
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8aa9fa1701f41c6fd1adacc264b811e0d9849ab5
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287887"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87408114"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Výhody vašeho komerčního tržiště
 
@@ -106,9 +106,15 @@ Vydavatelé [seznamů a zkušebních verzí](determine-your-listing-type.md) se 
 Společnost Microsoft si vyhrazuje právo odvolat a zrušit výhody, které můžou využít pro vydavatele, kteří: 
 
 * Zapojte se do neplatného aktivity pomocí jejich výpisu na webu Marketplace.
+* Získejte nákup, který se známý nebo považuje za podvodný.
 * Jsou označeny z komerčního tržiště. 
 * Pomocí své nabídky můžete zobrazit marketing nebo jiný obsah, který porušuje zákony o autorských právech nebo ochranných známkách.
 * Porušuje zásady [programu pro sponzorství Azure](https://azure.microsoft.com/offers/ms-azr-0036p/), včetně, ale ne omezeného, pomocí financování Azure sponzorství pro své vlastní interní operace nebo Bitcoin dolování.
+
+Společnost Microsoft si vyhrazuje právo tyto ceny odvolat a ukončit na webu Marketplace v těchto případech:
+
+* Zákazník, který zakoupí, byl omylem a chce zrušit nákup. 
+* Zákazník se zruší před použitím produktu partnera.
 
 ### <a name="offer-availability"></a>Dostupnost nabídky
 

@@ -3,12 +3,12 @@ title: Uspořádání prostředků pomocí skupin pro správu – zásady správ
 description: Další informace o skupinách pro správu, fungování jejich oprávnění a způsobu jejich využití
 ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: 1856b2d6f8fafb18757d547d0117f584fb2abb24
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 8c8c254b2156a6f710c7130503b7c2a18d7168b0
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132921"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420511"
 ---
 # <a name="what-are-azure-management-groups"></a>Co jsou skupiny pro správu Azure?
 
@@ -38,7 +38,7 @@ Dalším scénářem, kde by se skupiny pro správu použily, je poskytnutí už
 
 ## <a name="root-management-group-for-each-directory"></a>Kořenová skupina pro správu pro jednotlivé adresáře
 
-Každý adresář obdrží jednu skupinu pro správu nejvyšší úrovně, která se označuje jako kořenová skupina pro správu. Tato kořenová skupina pro správu je integrovaná do hierarchie tak, aby pod ní spadaly všechny skupiny pro správu a všechna předplatná. Tato kořenová skupina pro správu umožňuje používání globálních zásad a přiřazení RBAC na úrovni adresáře. [Globální správce Azure AD musí sám sobě zvýšit oprávnění](../../role-based-access-control/elevate-access-global-admin.md), aby v počátečním nastavení měl pro tuto kořenovou skupinu roli správce uživatelského přístupu. Po zvýšení úrovně přístupu může správce v rámci správy hierarchie přiřadit ostatním skupinám nebo uživatelům adresáře libovolnou roli RBAC. Jako správce můžete jako vlastníka kořenové skupiny pro správu nastavit svůj vlastní účet.
+Každý adresář obdrží jednu skupinu pro správu nejvyšší úrovně, která se označuje jako kořenová skupina pro správu. Tato kořenová skupina pro správu je integrovaná do hierarchie tak, aby pod ní spadaly všechny skupiny pro správu a všechna předplatná. Tato kořenová skupina pro správu umožňuje použití globálních zásad a přiřazení rolí Azure na úrovni adresáře. [Globální správce Azure AD musí sám sobě zvýšit oprávnění](../../role-based-access-control/elevate-access-global-admin.md), aby v počátečním nastavení měl pro tuto kořenovou skupinu roli správce uživatelského přístupu. Po zvýšení úrovně přístupu může správce v rámci správy hierarchie přiřadit ostatním skupinám nebo uživatelům adresáře libovolnou roli RBAC. Jako správce můžete jako vlastníka kořenové skupiny pro správu nastavit svůj vlastní účet.
 
 ### <a name="important-facts-about-the-root-management-group"></a>Důležité informace o kořenových skupinách pro správu
 

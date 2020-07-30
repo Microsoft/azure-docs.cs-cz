@@ -4,12 +4,12 @@ description: V tomto kurzu se naučíte, jak vytvořit trezor Recovery Services,
 ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: af1a869c9253a9037c5ee38313de60311acb1e10
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7a8849bba51939a0c40cba81925e1b4b4a6e3826
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87277837"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372548"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Zálohování několika virtuálních počítačů pomocí webu Azure Portal
 
@@ -98,7 +98,7 @@ Po vytvoření trezoru služby Recovery Services je dalším krokem konfigurace 
 
      Po vytvoření zásady zálohování tuto zásadu přidružte k virtuálním počítačům.
 
-1. V části **Virtual Machines**vyberte * * Přidat.
+1. V části **Virtual Machines**vyberte **Přidat**.
 
      ![Přidat virtuální počítače](./media/tutorial-backup-vm-at-scale/add-virtual-machines.png)
 

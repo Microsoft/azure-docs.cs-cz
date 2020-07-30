@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: a9c2cee1478bc64c63b0d7ad09eec386b59678ae
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cacb517c783416994fa95bd0f6a6d15a95a52ab4
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509014"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423452"
 ---
 # <a name="azure-serial-console-for-linux"></a>Azure Serial Console for Linux
 
@@ -26,11 +26,12 @@ Konzola sériového portu v Azure Portal poskytuje přístup k textové konzole 
 
 Sériová konzola funguje stejným způsobem pro virtuální počítače a instance sady škálování virtuálních počítačů. V tomto dokumentu budou všechny zmínky k virtuálním počítačům implicitně zahrnovat instance sady škálování virtuálních počítačů, pokud není uvedeno jinak.
 
+Konzola sériového portu je všeobecně dostupná v globálních oblastech Azure a ve verzi Public Preview v Azure Government. Ještě není k dispozici v cloudu Azure Čína.
+
 Dokumentaci k sériové konzole pro Windows najdete v tématu [sériová Konzola pro Windows](./serial-console-windows.md).
 
 > [!NOTE]
-> Konzola sériového portu je všeobecně dostupná v globálních oblastech Azure a ve veřejné verzi Preview v Azure Government. Ještě není k dispozici v cloudu Azure Čína.
-
+> Sériová konzola je aktuálně nekompatibilní se spravovaným účtem úložiště diagnostiky spouštění. Pokud chcete použít sériovou konzolu, ujistěte se, že používáte vlastní účet úložiště.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -98,7 +99,7 @@ Přístup ke konzole sériového portu je omezený na uživatele, kteří mají 
 ### <a name="channel-security"></a>Zabezpečení kanálu
 Všechna data, která se odesílají zpátky a zpátky, se šifrují na lince.
 
-### <a name="audit-logs"></a>Protokoly auditování
+### <a name="audit-logs"></a>Protokoly auditu
 Veškerý přístup ke konzole sériového portu je aktuálně přihlášený k protokolům [diagnostiky spouštění](./boot-diagnostics.md) virtuálního počítače. Přístup k těmto protokolům jsou vlastněné a řízené správcem virtuálního počítače Azure.
 
 > [!CAUTION]
@@ -110,7 +111,7 @@ Pokud je uživatel připojen ke konzole sériového portu a jiný uživatel úsp
 > [!CAUTION]
 > To znamená, že odpojený uživatel nebude odhlášen. Možnost vymáhat odhlášení po odpojení (pomocí SIGHUP nebo podobného mechanismu) je stále v plánu. Pro systém Windows je povolen automatický časový limit ve speciální konzole pro správu (SAC); pro Linux ale můžete nakonfigurovat nastavení časový limit terminálu. Chcete-li to provést, přidejte `export TMOUT=600` do souboru *. bash_profile* nebo *. profil* pro uživatele, který používáte k přihlášení do konzoly. Toto nastavení vyprší časový limit relace po 10 minutách.
 
-## <a name="accessibility"></a>Usnadnění
+## <a name="accessibility"></a>Přístupnost
 Přístupnost je klíčovým fokusem pro konzolu sériového rozhraní Azure. Za tímto účelem jsme zajistili, že sériová konzola je plně přístupná.
 
 ### <a name="keyboard-navigation"></a>Navigace přes klávesnici

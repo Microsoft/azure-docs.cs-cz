@@ -4,14 +4,14 @@ description: Tento článek poskytuje informace o tom, jak přidat koncový bod 
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 48d7f1783f197804e12a8c2d20a0c46b6efd2160
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4518f7faedb44631c76c6d8b42ff9cca0dc3e08c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071323"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422942"
 ---
-# <a name="configure-virtual-network-service-endpoints-for-azure-service-bus"></a>Konfigurace koncových bodů služby virtuální sítě pro Azure Service Bus
+# <a name="allow-access-to-azure-service-bus-namespace-from-specific-virtual-networks"></a>Povolení přístupu k oboru názvů Azure Service Bus z konkrétních virtuálních sítí
 
 Integrace Service Bus s [koncovými body služby Virtual Network (VNET)][vnet-sep] umožňuje zabezpečenému přístupu k funkcím zasílání zpráv z úloh, jako jsou virtuální počítače, které jsou svázané s virtuálními sítěmi, a cestu síťového provozu, která je zabezpečená na obou koncích.
 
@@ -58,11 +58,20 @@ Pravidlo virtuální sítě je přidružení oboru názvů Service Bus k podsít
 V této části se dozvíte, jak pomocí Azure Portal přidat koncový bod služby virtuální sítě. Chcete-li omezit přístup, je nutné integrovat koncový bod služby virtuální sítě pro tento Event Hubs obor názvů.
 
 1. V [Azure Portal](https://portal.azure.com)přejděte do **oboru názvů Service Bus** .
-2. V nabídce vlevo vyberte možnost **sítě** . Ve výchozím nastavení je vybraná možnost **všechny sítě** . Váš obor názvů přijímá připojení z libovolné IP adresy. Toto výchozí nastavení odpovídá pravidlu, které přijímá rozsah IP adres 0.0.0.0/0. 
+2. V nabídce vlevo vyberte v části **Nastavení**možnost **sítě** .  
 
-    ![Firewall – vybraná možnost všechny sítě](./media/service-endpoints/firewall-all-networks-selected.png)
-1. Vyberte možnost **vybrané sítě** v horní části stránky.
-2. V části **Virtual Network** stránky vyberte **+ Přidat existující virtuální síť**. 
+    > [!NOTE]
+    > Karta **síť** se zobrazí jenom pro obory názvů úrovně **Premium** .  
+    
+    Ve výchozím nastavení je vybraná možnost **vybrané sítě** . Pokud na tuto stránku nepřidáte aspoň jedno pravidlo firewallu protokolu IP nebo virtuální síť, můžete k oboru názvů přistupovat přes veřejný Internet (pomocí přístupového klíče).
+
+    :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="Stránka sítě – výchozí" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
+    
+    Pokud vyberete možnost **všechny sítě** , obor názvů Service Bus akceptuje připojení z libovolné IP adresy. Toto výchozí nastavení odpovídá pravidlu, které přijímá rozsah IP adres 0.0.0.0/0. 
+
+    ![Firewall – vybraná možnost všechny sítě](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
+2. Pokud chcete omezit přístup k určitým virtuálním sítím, vyberte možnost **vybrané sítě** , pokud už není vybraná.
+1. V části **Virtual Network** stránky vyberte **+ Přidat existující virtuální síť**. 
 
     ![Přidat existující virtuální síť](./media/service-endpoints/add-vnet-menu.png)
 3. V seznamu virtuálních sítí vyberte virtuální síť a pak vyberte **podsíť**. Před přidáním virtuální sítě do seznamu musíte povolit koncový bod služby. Pokud koncový bod služby není povolený, portál vás vyzve, abyste ho povolili.
@@ -78,6 +87,9 @@ V této části se dozvíte, jak pomocí Azure Portal přidat koncový bod služ
 6. Nastavení uložte kliknutím na **Uložit** na panelu nástrojů. Počkejte několik minut, než se potvrzení zobrazí v oznámeních na portálu. Tlačítko **Uložit** by mělo být zakázáno. 
 
     ![Uložit síť](./media/service-endpoints/save-vnet.png)
+
+    > [!NOTE]
+    > Pokyny k povolení přístupu z konkrétních IP adres nebo rozsahů najdete v tématu [Povolení přístupu z konkrétních IP adres nebo rozsahů](service-bus-ip-filtering.md).
 
 ## <a name="use-resource-manager-template"></a>Použití šablony Resource Manageru
 Následující šablona Správce prostředků umožňuje přidání pravidla virtuální sítě do existujícího oboru názvů Service Bus.

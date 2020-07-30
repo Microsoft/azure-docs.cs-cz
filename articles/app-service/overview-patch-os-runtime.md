@@ -4,12 +4,12 @@ description: Přečtěte si, jak Azure App Service aktualizovat operační syst�
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 597964914f4022899ab027b735ec6932105497b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93716ab36bc475b092542d1eef40cfe9d75ad819
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78273626"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87414934"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Opravy operačního systému a modulu runtime v Azure App Service
 
@@ -78,7 +78,7 @@ Následující tabulka ukazuje, jak verze Windows, tak jazykového modulu runtim
 | Informace | Kde ji najít | 
 |-|-|
 | Verze systému Windows | Viz `https://<appname>.scm.azurewebsites.net/Env.cshtml` (informace o systému) |
-| Verze .NET | V `https://<appname>.scm.azurewebsites.net/DebugConsole` Spusťte na příkazovém řádku následující příkaz: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
+| Verze .NET | V `https://<appname>.scm.azurewebsites.net/DebugConsole` Spusťte na příkazovém řádku následující příkaz: <br>`reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full"` |
 | Verze .NET Core | V `https://<appname>.scm.azurewebsites.net/DebugConsole` Spusťte na příkazovém řádku následující příkaz: <br> `dotnet --version` |
 | Verze PHP | V `https://<appname>.scm.azurewebsites.net/DebugConsole` Spusťte na příkazovém řádku následující příkaz: <br> `php --version` |
 | Výchozí verze Node.js | V [Cloud Shell](../cloud-shell/overview.md)spusťte následující příkaz: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |

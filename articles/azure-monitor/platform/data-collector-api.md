@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/14/2020
-ms.openlocfilehash: 80ad9475eb9b3724e09fb450787adfa079896bed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 40f688d6acd1714999210e67567d25faa14c5d6e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075321"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384850"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Odeslání dat protokolu do Azure Monitor pomocí rozhraní API kolekce dat HTTP (Public Preview)
 V tomto článku se dozvíte, jak pomocí rozhraní API kolekce dat HTTP odesílat data protokolu Azure Monitor z klienta REST API.  Popisuje, jak formátovat data shromážděná vaším skriptem nebo aplikací, jak je zahrnout do žádosti a které vyžadují autorizaci Azure Monitor.  Příklady jsou k dispozici pro PowerShell, C# a Python.
@@ -210,7 +210,7 @@ V následujících částech najdete ukázky, jak odesílat data do Azure Monito
 Pro každou ukázku proveďte tyto kroky a nastavte proměnné pro autorizační hlavičku:
 
 1. V Azure Portal Najděte pracovní prostor Log Analytics.
-2. Vyberte **Rozšířená nastavení** a potom **připojené zdroje**.
+2. Vyberte **Správa agentů**.
 2. Napravo od **ID pracovního prostoru**, vyberte ikonu kopírování a vložte ID jako hodnotu proměnné **ID zákazníka** .
 3. Napravo od **primárního klíče**vyberte ikonu kopírování a vložte ID jako hodnotu proměnné **sdíleného klíče** .
 

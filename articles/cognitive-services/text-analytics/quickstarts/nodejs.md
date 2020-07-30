@@ -10,13 +10,13 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: aahi
-ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 0cdd837f6c618846587878fac5145cb846dd8d36
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.custom: seo-javascript-september2019, devx-track-javascript
+ms.openlocfilehash: fe9877649d850796b03e9f1c3554a1b9aa7344c3
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027968"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407740"
 ---
 # <a name="quickstart-use-nodejs-to-call-the-text-analytics-cognitive-service"></a>Rychlý Start: použití Node.js k volání služby pro rozpoznávání Analýza textu  
 <a name="HOLTop"></a>
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak [detekovat jazyk](#Detect), [analyzovat míně
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
@@ -464,7 +464,7 @@ get_entities(documents);
 > [!div class="nextstepaction"]
 > [Analýza textu s Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>Viz také 
+## <a name="see-also"></a>Viz také: 
 
- [Přehled Analýza textu](../overview.md)  
+ [Přehled analýzy textu](../overview.md)  
  [Nejčastější dotazy](../text-analytics-resource-faq.md)

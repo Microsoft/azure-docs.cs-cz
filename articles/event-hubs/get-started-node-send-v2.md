@@ -3,12 +3,13 @@ title: Posílání a přijímání událostí z Azure Event Hubs pomocí JavaScr
 description: Tento článek poskytuje návod pro vytvoření aplikace JavaScriptu, která odesílá a přijímá události z Azure Event Hubs pomocí nejnovějšího balíčku Azure/Event-hub verze 5.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 7ec97d07843a9844387ad1038c075ed55e304a2c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 098e9e4ff6da199c48acf8956049336049e8a58c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521883"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421208"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>Odesílání událostí do a příjem událostí z Center událostí pomocí JavaScriptu (Azure/Event-hub verze 5)
 V tomto rychlém startu se dozvíte, jak odesílat události do centra událostí a přijímat z něj události pomocí balíčku **Azure/Event-hub verze 5** JavaScriptu. 
@@ -16,7 +17,7 @@ V tomto rychlém startu se dozvíte, jak odesílat události do centra událost�
 > [!IMPORTANT]
 > V tomto rychlém startu se používá nejnovější balíček Azure/Event-Centers verze 5. Rychlý Start, který používá starý balíček Azure/Event-hub verze 2, najdete v tématu [posílání a přijímání událostí pomocí Azure/Event – Center verze 2](event-hubs-node-get-started-send.md). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud s Azure Event Hubs teprve začínáte, přečtěte si téma [přehled Event Hubs](event-hubs-about.md) před provedením tohoto rychlého startu. 
 
 K dokončení tohoto rychlého startu potřebujete následující požadavky:
@@ -112,7 +113,7 @@ V této části obdržíte události z centra událostí pomocí úložiště ko
 ### <a name="create-an-azure-storage-account-and-a-blob-container"></a>Vytvoření účtu služby Azure Storage a kontejneru objektů BLOB
 Pokud chcete vytvořit účet úložiště Azure a kontejner objektů BLOB v něm, proveďte následující akce:
 
-1. [Vytvoření účtu úložiště Azure](../storage/common/storage-account-create.md?tabs=azure-portal)  
+1. [Vytvoření účtu služby Azure Storage](../storage/common/storage-account-create.md?tabs=azure-portal)  
 2. [Vytvoření kontejneru objektů blob v účtu úložiště](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)  
 3. [Získání připojovacího řetězce k účtu úložiště](../storage/common/storage-configure-connection-string.md)
 

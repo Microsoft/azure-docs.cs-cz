@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/12/2020
-ms.openlocfilehash: 234217b6571307db04941cc0b9989d3438cde1b7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bb213776d41c07238fcaba1ccdd4e06f5d5bbb5f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090174"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420885"
 ---
 # <a name="train-wide--deep-recommender"></a>Pro vlak v široké & Doporučené
 Tento článek popisuje, jak v nástroji Azure Machine Learning Designer (Preview) použít modul pro **výuku široké & hloubky** , který vám umožní naučit model doporučení. Tento modul je založený na širokém & hlubokou výuku, který navrhuje Google.
@@ -105,7 +105,7 @@ Například typická sada funkcí položek může vypadat takto:
 
     Tento parametr představuje velikost kroku v každém výukovém kroku při přesunu směrem k funkci minimální ztráty. Příliš velká míra učení může způsobit, že se bude přecházet na minima, zatímco příliš malá rychlost učení může způsobit problémy s konvergencí.
 
-7.  **Dimenze překřížených funkcí**: zadejte dimenzi identifikátorů ID více uživatelů a ID položek. 
+7.  **Dimenze překřížených funkcí**: zadejte dimenzi zadáním požadovaných ID uživatelů a funkcí ID položek. 
 
     Ve výchozím nastavení provádí v rámci široké škály & ve výchozím nastavení transformaci mezi produkty přes ID uživatele a funkce ID položek. Výsledkem překročení výsledku bude hodnota hash podle tohoto čísla, aby se zajistila dimenze.
 

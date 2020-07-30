@@ -5,12 +5,12 @@ author: tugup
 ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: tugup
-ms.openlocfilehash: b106061805ea5485893df292c40974d3ee9bcadb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a39aecf16d1c3303c0a590b389ba2aa69d4472f2
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258826"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405122"
 ---
 # <a name="azure-service-fabric-hosting-lifecycle"></a>Životní cyklus hostování Azure Service Fabric
 Tento článek poskytuje přehled událostí, ke kterým dochází, když se aplikace aktivuje na uzlu a v různých konfiguracích clusteru používaných k řízení chování.
@@ -83,7 +83,7 @@ Service Fabric vždy používá lineární regresi, když při stahování dojde
 
 * Pokud CodePackage zachová chybu a vrátí se zpět, ServiceType se zakáže. Pokud ale konfigurace aktivace funguje tak, že má rychlé restartování, může se CodePackage několikrát zobrazit, než uvidí zakázaný ServiceType. Příklad: Předpokládejme, že se váš CodePackage zaregistruje, zaregistruje ServiceType pomocí Service Fabric a pak dojde k chybě. V takovém případě Jakmile hostitel obdrží registraci typu, **ServiceTypeDisableGraceInterval** období se zruší. To se může opakovat, dokud se CodePackage nevrátí na hodnotu větší než **ServiceTypeDisableGraceInterval** a pak se na uzlu deaktivuje serviceType. To znamená, že před zakázáním ServiceType v uzlu může to chvíli trvat.
 
-* V případě aktivací, když Service Fabric systém musí umístit repliku na uzel, RA (ReconfigurationAgent) požádá o aktivaci aplikace a znovu zkusí požadavek na aktivaci každých 15 sekund (**RAPMessageRetryInterval**). Aby systém Service Fabric zjistil, že je ServiceType zakázaný, operace aktivace v hostování musí být živá po delší dobu než interval opakování a **ServiceTypeDisableGraceInterval**. Například: Umožněte, aby cluster **ActivationMaxFailureCount** konfigurační nastavení na hodnotu 5 a **ActivationRetryBackoffInterval** nastaveno na hodnotu 1 s. To znamená, že operace aktivace se poskytne po (0 + 1 + 2 + 3 + 4) = 10 sec (první pokus je okamžitý) a po tomto hostování se bude opakovat. V tomto případě se operace aktivace dokončí a nebude se opakovat po 15 sekundách. K ní došlo, protože Service Fabric vyčerpala všechny opakované pokusy během 15 sekund. Každý pokus z ReconfigurationAgent proto vytvoří novou operaci aktivace v hostitelském subsystému a vzor se zachová opakujícím se a ServiceType se v uzlu nikdy nevypne. Vzhledem k tomu, že ServiceType nebude zakázán na komponentě FailoverManager (uzel SF systému), nebude replika přesunuta do jiného uzlu.
+* V případě aktivací, když Service Fabric systém musí umístit repliku na uzel, RA (ReconfigurationAgent) požádá o aktivaci aplikace a znovu zkusí požadavek na aktivaci každých 15 sekund (**RAPMessageRetryInterval**). Aby systém Service Fabric zjistil, že je ServiceType zakázaný, operace aktivace v hostování musí být živá po delší dobu než interval opakování a **ServiceTypeDisableGraceInterval**. Například: Umožněte, aby cluster **ActivationMaxFailureCount** konfigurační nastavení na hodnotu 5 a **ActivationRetryBackoffInterval** nastaveno na hodnotu 1 s. To znamená, že operace aktivace se poskytne po (0 + 1 + 2 + 3 + 4) = 10 sec (první pokus je okamžitý) a po tomto hostování se bude opakovat. V tomto případě se operace aktivace dokončí a nebude se opakovat po 15 sekundách. K ní došlo, protože Service Fabric vyčerpala všechny opakované pokusy během 15 sekund. Každý pokus z ReconfigurationAgent proto vytvoří novou operaci aktivace v hostitelském subsystému a vzor se zachová opakujícím se a ServiceType se v uzlu nikdy nevypne. Vzhledem k tomu, že se ServiceType nebude na uzlu zakázaný, nepřesunou se replika komponenty SF systému (FailoverManager) do jiného uzlu.
 > 
 
 ## <a name="deactivation"></a>Deaktivaci

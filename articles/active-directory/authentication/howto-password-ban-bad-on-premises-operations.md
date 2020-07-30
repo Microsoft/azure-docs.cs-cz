@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ee0f3d89d48b23db48e3bf4b78203b09fbcbdbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e4797c3e089e0ae9d15cc604e9f93605978b36c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80652622"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419763"
 ---
 # <a name="enable-on-premises-azure-active-directory-password-protection"></a>Povolení ochrany heslem v místní Azure Active Directory
 
@@ -40,7 +40,7 @@ V tomto článku se dozvíte, jak povolit ochranu heslem Azure AD pro místní p
 1. Doporučuje se nejdřív nastavit **režim** na *audit*. Až budete s funkcí spokojeni a dopad na uživatele ve vaší organizaci, můžete **režim** přepnout do *vymáhání*. Další informace najdete v následující části o [režimech provozu](#modes-of-operation).
 1. Až budete připraveni, vyberte **Uložit**.
 
-    [![](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords-cropped.png "Enable on-premises password protection under Authentication Methods in the Azure portal")](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords.png#lightbox)
+    [![Povolte místní ochranu heslem v části metody ověřování v Azure Portal](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords-cropped.png)](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords.png#lightbox)
 
 ## <a name="modes-of-operation"></a>Režimy činností
 

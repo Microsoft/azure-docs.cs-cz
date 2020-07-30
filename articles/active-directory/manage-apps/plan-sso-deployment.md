@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 75e3f7fc98072957f571937a1627247cdc4a9e7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ee138ac41557554ae4b8fde8c9178336fd8d5db
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374436"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387774"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Plánování nasazení jednotného přihlašování
 
@@ -55,12 +55,12 @@ Existují dva základní způsoby, kterými můžete uživatelům umožnit jedno
 ### <a name="considerations-for-federation-based-sso"></a>Pokyny pro jednotné přihlašování na základě federace
 
 - **Pomocí OpenID Connect a OAuth** – Pokud aplikace, ke které se připojujete, používá metodu OIDC/OAuth 2,0 k povolení jednotného přihlašování k této aplikaci. Tato metoda vyžaduje méně konfigurace a umožňuje bohatší uživatelské prostředí. Další informace najdete v tématu [OAuth 2,0](../develop/v2-oauth2-auth-code-flow.md), [OpenID Connect 1,0](../develop/v2-protocols-oidc.md)a [Azure Active Directory příručka pro vývojáře](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
-- **Konfigurace koncových bodů pro jednotné přihlašování založené na SAML** – Pokud použijete SAML, vývojáři budou před konfigurací aplikace potřebovat konkrétní informace. Další informace najdete v tématu [Úprava základní konfigurace SAML](configure-single-sign-on-non-gallery-applications.md).
+- **Konfigurace koncových bodů pro jednotné přihlašování založené na SAML** – Pokud použijete SAML, vývojáři budou před konfigurací aplikace potřebovat konkrétní informace. Další informace najdete v tématu [Konfigurace jednotného přihlašování založeného na SAML](configure-saml-single-sign-on.md).
 - **Správa certifikátů pro jednotné přihlašování založené na SAML** – Pokud pro svou aplikaci povolíte federované jednotné přihlašování (SSO), Azure AD vytvoří certifikát, který je ve výchozím nastavení platný po dobu tří let. V případě potřeby můžete upravit datum vypršení platnosti tohoto certifikátu. Ujistěte se, že máte zavedené procesy pro obnovení certifikátů před jejich vypršením platnosti. Další informace najdete v tématu [Správa certifikátů v Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-sso-certs).
 
 ### <a name="considerations-for-password-based-sso"></a>Pokyny pro jednotné přihlašování založené na heslech
 
-Použití Azure AD pro jednotné přihlašování pomocí hesla vyžaduje nasazení rozšíření prohlížeče, které bude bezpečně získávat přihlašovací údaje a vyplní přihlašovací formuláře. Definujte mechanismus nasazení rozšíření ve velkém měřítku s využitím [podporovaných prohlížečů](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction). Mezi možnosti patří:
+Použití Azure AD pro jednotné přihlašování pomocí hesla vyžaduje nasazení rozšíření prohlížeče, které bude bezpečně získávat přihlašovací údaje a vyplní přihlašovací formuláře. Definujte mechanismus nasazení rozšíření ve velkém měřítku s využitím [podporovaných prohlížečů](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction). Vaše možnosti jsou:
 
 - [Zásady skupiny pro Internet Explorer](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
 - [Configuration Manager pro Internet Explorer](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
@@ -235,11 +235,11 @@ Vždy používejte roli s nejmenším oprávněním, která jsou k dispozici k p
 
 | Nežádoucí| Role | Role Azure AD (v případě potřeby) |
 |--------|-------|-----------------------------|
-| Správce helpdesku | Podpora vrstvy 1 | Žádná |
+| Správce helpdesku | Podpora vrstvy 1 | Žádné |
 | Správce identit | Konfigurace a ladění v případě problémů ovlivňujících službu Azure AD | Globální správce |
-| Správce aplikace | Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním | Žádná |
+| Správce aplikace | Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním | Žádné |
 | Správci infrastruktury | Vlastník změna certifikátu | Globální správce |
-| Vlastník/účastník společnosti | Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním | Žádná |
+| Vlastník/účastník společnosti | Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním | Žádné |
 
 Pro správu rolí doporučujeme použít [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) (PIM) a zajistit tak další auditování, řízení a kontrolu přístupu pro uživatele s oprávněními k adresáři.
 

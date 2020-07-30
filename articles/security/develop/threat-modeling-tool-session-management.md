@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.custom: has-adal-ref
-ms.openlocfilehash: 7ddc8c3016487ce56bc1a54d74aa94064cef24e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: has-adal-ref, devx-track-javascript
+ms.openlocfilehash: 7f9eb18e72c12a8585ea8bcd42d8d720af43dbaf
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83198866"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420545"
 ---
 # <a name="security-frame-session-management"></a>Rámec zabezpečení: Správa relací
 | Produkt/služba | Článek |
@@ -32,7 +32,7 @@ ms.locfileid: "83198866"
 | **ADFS** | <ul><li>[Implementace správného odhlášení pomocí metod WsFederation při použití ADFS](#wsfederation-logout)</li></ul> |
 | **Server identit** | <ul><li>[Implementace správného odhlášení při použití serveru identity](#proper-logout)</li></ul> |
 | **Webová aplikace** | <ul><li>[Aplikace dostupné přes HTTPS musí používat zabezpečené soubory cookie.](#https-secure-cookies)</li><li>[Všechny aplikace založené na protokolu HTTP by měly určovat pouze http pro definici souboru cookie.](#cookie-definition)</li><li>[Zmírnění útoků proti útokům přes CSRF (site-to Request) na webových stránkách ASP.NET](#csrf-asp)</li><li>[Nastavte relaci pro dobu neaktivity.](#inactivity-lifetime)</li><li>[Implementace správného odhlášení z aplikace](#proper-app-logout)</li></ul> |
-| **Webové rozhraní API** | <ul><li>[Zmírnění útoků na webové rozhraní API v ASP.NET proti útokům přes lokalitu (CSRF)](#csrf-api)</li></ul> |
+| **Web API** | <ul><li>[Zmírnění útoků na webové rozhraní API v ASP.NET proti útokům přes lokalitu (CSRF)](#csrf-api)</li></ul> |
 
 ## <a name="implement-proper-logout-using-adal-methods-when-using-azure-ad"></a><a id="logout-adal"></a>Implementace správného odhlášení pomocí metod ADAL při použití Azure AD
 
@@ -41,9 +41,9 @@ ms.locfileid: "83198866"
 | **Komponenta**               | Azure AD | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Reference**              | Není k dispozici  |
-| **Uvedené** | Pokud aplikace spoléhá na přístupový token vydaný službou Azure AD, měla by obslužná rutina události odhlášení zavolat. |
+| **Atributy**              | –  |
+| **Odkazy**              | –  |
+| **Kroky** | Pokud aplikace spoléhá na přístupový token vydaný službou Azure AD, měla by obslužná rutina události odhlášení zavolat. |
 
 ### <a name="example"></a>Příklad
 ```csharp
@@ -76,9 +76,9 @@ Měla by také zničit relaci uživatele voláním metody Session. Abandon (). N
 | **Komponenta**               | Zařízení IoT | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Reference**              | Není k dispozici  |
-| **Uvedené** | Tokeny SaS generované pro ověřování v Azure IoT Hub by měly mít omezenou dobu vypršení platnosti. Ponechte životnost tokenů SaS minimální, aby se omezila doba, kterou je možné znovu přehrát v případě ohrožení bezpečnosti tokenů.|
+| **Atributy**              | –  |
+| **Odkazy**              | –  |
+| **Kroky** | Tokeny SaS generované pro ověřování v Azure IoT Hub by měly mít omezenou dobu vypršení platnosti. Ponechte životnost tokenů SaS minimální, aby se omezila doba, kterou je možné znovu přehrát v případě ohrožení bezpečnosti tokenů.|
 
 ## <a name="use-minimum-token-lifetimes-for-generated-resource-tokens"></a><a id="resource-tokens"></a>Použití minimální životnosti tokenů pro vygenerované tokeny prostředků
 
@@ -87,9 +87,9 @@ Měla by také zničit relaci uživatele voláním metody Session. Abandon (). N
 | **Komponenta**               | Azure Document DB | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Reference**              | Není k dispozici  |
-| **Uvedené** | Snižte časový rozsah tokenu prostředku na minimální požadovanou hodnotu. Tokeny prostředků mají výchozí časový interval pro 1 hodinu.|
+| **Atributy**              | –  |
+| **Odkazy**              | –  |
+| **Kroky** | Snižte časový rozsah tokenu prostředku na minimální požadovanou hodnotu. Tokeny prostředků mají výchozí časový interval pro 1 hodinu.|
 
 ## <a name="implement-proper-logout-using-wsfederation-methods-when-using-adfs"></a><a id="wsfederation-logout"></a>Implementace správného odhlášení pomocí metod WsFederation při použití ADFS
 
@@ -98,9 +98,9 @@ Měla by také zničit relaci uživatele voláním metody Session. Abandon (). N
 | **Komponenta**               | ADFS | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Reference**              | Není k dispozici  |
-| **Uvedené** | Pokud aplikace spoléhá na token STS vydaný službou AD FS, obslužná rutina události odhlášení by měla zavolat metodu WSFederationAuthenticationModule. FederatedSignOut (), která uživatele odhlásí. Aktuální relace by měla být také zničena a hodnota tokenu relace by měla být resetována a nullified.|
+| **Atributy**              | –  |
+| **Odkazy**              | –  |
+| **Kroky** | Pokud aplikace spoléhá na token STS vydaný službou AD FS, obslužná rutina události odhlášení by měla zavolat metodu WSFederationAuthenticationModule. FederatedSignOut (), která uživatele odhlásí. Aktuální relace by měla být také zničena a hodnota tokenu relace by měla být resetována a nullified.|
 
 ### <a name="example"></a>Příklad
 ```csharp
@@ -147,9 +147,9 @@ Měla by také zničit relaci uživatele voláním metody Session. Abandon (). N
 | **Komponenta**               | Server identit | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Reference**              | [IdentityServer3 – federované odhlašování](https://identityserver.github.io/Documentation/docsv2/advanced/federated-signout.html) |
-| **Uvedené** | IdentityServer podporuje možnost federovat s externími zprostředkovateli identity. Když se uživatel odhlásí od nadřazeného poskytovatele identity, může se v závislosti na použitém protokolu zobrazit oznámení, když se uživatel odhlásí. Umožňuje IdentityServer upozorňování svých klientů, aby mohli uživatele také odhlásit. Podrobnosti o implementaci najdete v dokumentaci v části odkazy.|
+| **Atributy**              | –  |
+| **Odkazy**              | [IdentityServer3 – federované odhlašování](https://identityserver.github.io/Documentation/docsv2/advanced/federated-signout.html) |
+| **Kroky** | IdentityServer podporuje možnost federovat s externími zprostředkovateli identity. Když se uživatel odhlásí od nadřazeného poskytovatele identity, může se v závislosti na použitém protokolu zobrazit oznámení, když se uživatel odhlásí. Umožňuje IdentityServer upozorňování svých klientů, aby mohli uživatele také odhlásit. Podrobnosti o implementaci najdete v dokumentaci v části odkazy.|
 
 ## <a name="applications-available-over-https-must-use-secure-cookies"></a><a id="https-secure-cookies"></a>Aplikace dostupné přes HTTPS musí používat zabezpečené soubory cookie.
 
@@ -159,8 +159,8 @@ Měla by také zničit relaci uživatele voláním metody Session. Abandon (). N
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | EnvironmentType – OnPrem |
-| **Reference**              | [httpCookies – element (schéma nastavení ASP.NET)](https://msdn.microsoft.com/library/ms228262(v=vs.100).aspx), [vlastnost HttpCookie. Secure](https://msdn.microsoft.com/library/system.web.httpcookie.secure.aspx) |
-| **Uvedené** | Soubory cookie jsou obvykle přístupné pouze pro doménu, pro kterou byly vymezeny. Definice "doména" ale nezahrnuje protokol, takže soubory cookie, které jsou vytvořené přes protokol HTTPS, jsou přístupné přes HTTP. Atribut "Secure" označuje prohlížeč, že by měl být soubor cookie zpřístupněn pouze přes protokol HTTPS. Zajistěte, aby všechny soubory cookie nastavené přes protokol HTTPS používaly **zabezpečený** atribut. Požadavek lze vyhovět v souboru web.config nastavením atributu vlastnost requireSSL na hodnotu true. Je to preferovaný přístup, protože vygeneruje **zabezpečený** atribut pro všechny aktuální a budoucí soubory cookie, aniž by bylo potřeba provádět další změny kódu.|
+| **Odkazy**              | [httpCookies – element (schéma nastavení ASP.NET)](https://msdn.microsoft.com/library/ms228262(v=vs.100).aspx), [vlastnost HttpCookie. Secure](https://msdn.microsoft.com/library/system.web.httpcookie.secure.aspx) |
+| **Kroky** | Soubory cookie jsou obvykle přístupné pouze pro doménu, pro kterou byly vymezeny. Definice "doména" ale nezahrnuje protokol, takže soubory cookie, které jsou vytvořené přes protokol HTTPS, jsou přístupné přes HTTP. Atribut "Secure" označuje prohlížeč, že by měl být soubor cookie zpřístupněn pouze přes protokol HTTPS. Zajistěte, aby všechny soubory cookie nastavené přes protokol HTTPS používaly **zabezpečený** atribut. Požadavek lze vyhovět v souboru web.config nastavením atributu vlastnost requireSSL na hodnotu true. Je to preferovaný přístup, protože vygeneruje **zabezpečený** atribut pro všechny aktuální a budoucí soubory cookie, aniž by bylo potřeba provádět další změny kódu.|
 
 ### <a name="example"></a>Příklad
 ```csharp
@@ -178,8 +178,8 @@ Nastavení se vynutilo i v případě, že se pro přístup k aplikaci použív�
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Webové formuláře, MVC5 |
 | **Atributy**              | EnvironmentType – OnPrem |
-| **Reference**              | Není k dispozici  |
-| **Uvedené** | Když je webová aplikace předávající stranou a IdP je server ADFS, zabezpečený atribut tokenu FedAuth lze nakonfigurovat nastavením vlastnost requireSSL na hodnotu true v `system.identityModel.services` části web.config:|
+| **Odkazy**              | –  |
+| **Kroky** | Když je webová aplikace předávající stranou a IdP je server ADFS, zabezpečený atribut tokenu FedAuth lze nakonfigurovat nastavením vlastnost requireSSL na hodnotu true v `system.identityModel.services` části web.config:|
 
 ### <a name="example"></a>Příklad
 ```csharp
@@ -199,9 +199,9 @@ Nastavení se vynutilo i v případě, že se pro přístup k aplikaci použív�
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Reference**              | [Atribut zabezpečeného souboru cookie](https://en.wikipedia.org/wiki/HTTP_cookie#Secure_cookie) |
-| **Uvedené** | Aby bylo možné zmírnit riziko odhalení informací pomocí útoku skriptování mezi weby (XSS), byl do souborů cookie zaveden nový atribut-httpOnly-, který je podporovaný všemi hlavními prohlížeči. Atribut určuje, že soubor cookie není přístupný prostřednictvím skriptu. Díky použití souborů cookie HttpOnly může webová aplikace omezit možnost odcizení citlivých informací obsažených v souboru cookie prostřednictvím skriptu a odeslání na web útočníka. |
+| **Atributy**              | –  |
+| **Odkazy**              | [Atribut zabezpečeného souboru cookie](https://en.wikipedia.org/wiki/HTTP_cookie#Secure_cookie) |
+| **Kroky** | Aby bylo možné zmírnit riziko odhalení informací pomocí útoku skriptování mezi weby (XSS), byl do souborů cookie zaveden nový atribut-httpOnly-, který je podporovaný všemi hlavními prohlížeči. Atribut určuje, že soubor cookie není přístupný prostřednictvím skriptu. Díky použití souborů cookie HttpOnly může webová aplikace omezit možnost odcizení citlivých informací obsažených v souboru cookie prostřednictvím skriptu a odeslání na web útočníka. |
 
 ### <a name="example"></a>Příklad
 Všechny aplikace založené na protokolu HTTP, které používají soubory cookie, by měly v definici souboru cookie určovat HttpOnly implementací následující konfigurace v web.config:
@@ -220,9 +220,9 @@ Všechny aplikace založené na protokolu HTTP, které používají soubory cook
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | webové formuláře |
-| **Atributy**              | Není k dispozici  |
-| **Reference**              | [FormsAuthentication. vlastnost RequireSSL – vlastnost](https://msdn.microsoft.com/library/system.web.security.formsauthentication.requiressl.aspx) |
-| **Uvedené** | Hodnota vlastnosti vlastnost RequireSSL je nastavena v konfiguračním souboru pro aplikaci ASP.NET pomocí atributu vlastnost requireSSL konfiguračního elementu. Můžete zadat v souboru Web.config pro vaši aplikaci ASP.NET, jestli je pro vrácení souboru cookie s ověřováním pomocí formulářů SSL (Secure Sockets Layer) (vlastnost requireSSL) na serveru potřeba, aby se na server vrátil soubor cookie s ověřováním pomocí formulářů, a to tak, že nastaví atribut.|
+| **Atributy**              | –  |
+| **Odkazy**              | [FormsAuthentication. vlastnost RequireSSL – vlastnost](https://msdn.microsoft.com/library/system.web.security.formsauthentication.requiressl.aspx) |
+| **Kroky** | Hodnota vlastnosti vlastnost RequireSSL je nastavena v konfiguračním souboru pro aplikaci ASP.NET pomocí atributu vlastnost requireSSL konfiguračního elementu. Můžete zadat v souboru Web.config pro vaši aplikaci ASP.NET, jestli je pro vrácení souboru cookie s ověřováním pomocí formulářů SSL (Secure Sockets Layer) (vlastnost requireSSL) na serveru potřeba, aby se na server vrátil soubor cookie s ověřováním pomocí formulářů, a to tak, že nastaví atribut.|
 
 ### <a name="example"></a>Příklad 
 Následující příklad kódu nastaví atribut vlastnost requireSSL v souboru Web.config.
@@ -238,8 +238,8 @@ Následující příklad kódu nastaví atribut vlastnost requireSSL v souboru W
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | MVC5 |
 | **Atributy**              | EnvironmentType – OnPrem |
-| **Reference**              | [Konfigurace Windows Identity Foundation (WIF) – část II](https://blogs.msdn.microsoft.com/alikl/2011/02/01/windows-identity-foundation-wif-configuration-part-ii-cookiehandler-chunkedcookiehandler-customcookiehandler/) |
-| **Uvedené** | Chcete-li nastavit atribut httpOnly pro soubory cookie FedAuth, měla by být hodnota atributu hideFromCsript nastavena na hodnotu true. |
+| **Odkazy**              | [Konfigurace Windows Identity Foundation (WIF) – část II](https://blogs.msdn.microsoft.com/alikl/2011/02/01/windows-identity-foundation-wif-configuration-part-ii-cookiehandler-chunkedcookiehandler-customcookiehandler/) |
+| **Kroky** | Chcete-li nastavit atribut httpOnly pro soubory cookie FedAuth, měla by být hodnota atributu hideFromCsript nastavena na hodnotu true. |
 
 ### <a name="example"></a>Příklad
 Následující konfigurace zobrazuje správnou konfiguraci:
@@ -262,18 +262,18 @@ Následující konfigurace zobrazuje správnou konfiguraci:
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Reference**              | Není k dispozici  |
-| **Uvedené** | Padělání žádostí mezi weby (CSRF nebo XSRF) je typ útoku, ve kterém může útočník provést akce v kontextu zabezpečení navázané relace jiného uživatele na webu. Cílem je upravit nebo odstranit obsah, pokud cílový web spoléhá na přijatý požadavek výhradně na soubory cookie relace. Útočník by mohl zneužít tuto chybu zabezpečení tím, že získá jiný uživatel, který načte adresu URL pomocí příkazu z zranitelné lokality, ve které je uživatel již přihlášen. Existuje mnoho způsobů, jak útočník to udělat, například hostováním jiného webu, který načte prostředek z ohroženého serveru, nebo když uživatel klikne na odkaz. Útok může být znemožněn, pokud server odešle klientovi další token, vyžaduje, aby klient tento token zahrnul do všech budoucích požadavků a ověří, že všechny budoucí požadavky obsahují token, který se vztahuje k aktuální relaci, například pomocí ASP.NET AntiForgeryToken nebo ViewState. |
+| **Atributy**              | –  |
+| **Odkazy**              | –  |
+| **Kroky** | Padělání žádostí mezi weby (CSRF nebo XSRF) je typ útoku, ve kterém může útočník provést akce v kontextu zabezpečení navázané relace jiného uživatele na webu. Cílem je upravit nebo odstranit obsah, pokud cílový web spoléhá na přijatý požadavek výhradně na soubory cookie relace. Útočník by mohl zneužít tuto chybu zabezpečení tím, že získá jiný uživatel, který načte adresu URL pomocí příkazu z zranitelné lokality, ve které je uživatel již přihlášen. Existuje mnoho způsobů, jak útočník to udělat, například hostováním jiného webu, který načte prostředek z ohroženého serveru, nebo když uživatel klikne na odkaz. Útok může být znemožněn, pokud server odešle klientovi další token, vyžaduje, aby klient tento token zahrnul do všech budoucích požadavků a ověří, že všechny budoucí požadavky obsahují token, který se vztahuje k aktuální relaci, například pomocí ASP.NET AntiForgeryToken nebo ViewState. |
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | MVC5, MVC6 |
-| **Atributy**              | Není k dispozici  |
-| **Reference**              | [Prevence XSRF/CSRF v ASP.NET MVC a na webových stránkách](https://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) |
-| **Uvedené** | CSRF a ASP.NET MVC Forms – použijte `AntiForgeryToken` pomocnou metodu pro zobrazení; vložte `Html.AntiForgeryToken()` do formuláře, například|
+| **Atributy**              | –  |
+| **Odkazy**              | [Prevence XSRF/CSRF v ASP.NET MVC a na webových stránkách](https://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) |
+| **Kroky** | CSRF a ASP.NET MVC Forms – použijte `AntiForgeryToken` pomocnou metodu pro zobrazení; vložte `Html.AntiForgeryToken()` do formuláře, například|
 
 ### <a name="example"></a>Příklad
 ```csharp
@@ -357,9 +357,9 @@ void ValidateRequestHeader(HttpRequestMessage request)
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | webové formuláře |
-| **Atributy**              | Není k dispozici  |
-| **Reference**              | [Využijte výhod integrovaných funkcí ASP.NET k Fendí webových útoků.](https://msdn.microsoft.com/library/ms972969.aspx#securitybarriers_topic2) |
-| **Uvedené** | Útoky CSRF v aplikacích založených na webformách je možné zmírnit nastavením ViewStateUserKey na náhodný řetězec, který se u každého uživatele změní na ID uživatele nebo je ještě lepší, ID relace. Z řady technických a sociálních důvodů je ID relace mnohem lepší, protože ID relace je nepředvídatelné, má časový limit a liší se podle jednotlivých uživatelů.|
+| **Atributy**              | –  |
+| **Odkazy**              | [Využijte výhod integrovaných funkcí ASP.NET k Fendí webových útoků.](https://msdn.microsoft.com/library/ms972969.aspx#securitybarriers_topic2) |
+| **Kroky** | Útoky CSRF v aplikacích založených na webformách je možné zmírnit nastavením ViewStateUserKey na náhodný řetězec, který se u každého uživatele změní na ID uživatele nebo je ještě lepší, ID relace. Z řady technických a sociálních důvodů je ID relace mnohem lepší, protože ID relace je nepředvídatelné, má časový limit a liší se podle jednotlivých uživatelů.|
 
 ### <a name="example"></a>Příklad
 Tady je kód, který musíte mít na všech stránkách:
@@ -377,9 +377,9 @@ void Page_Init (object sender, EventArgs e) {
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Reference**              | [HttpSessionState. Timeout – vlastnost](https://msdn.microsoft.com/library/system.web.sessionstate.httpsessionstate.timeout(v=vs.110).aspx) |
-| **Uvedené** | Časový limit relace představuje událost, když uživatel neprovede žádnou akci na webu během intervalu (definovaného webovým serverem). Událost na straně serveru mění stav uživatelské relace na neplatnou (například již nepoužito) a vydá pokyn webovému serveru, aby ho zničil (odstraní všechna data, která jsou v něm obsažená). Následující příklad kódu nastaví atribut relace Timeout na 15 minut v souboru Web.config.|
+| **Atributy**              | –  |
+| **Odkazy**              | [HttpSessionState. Timeout – vlastnost](https://msdn.microsoft.com/library/system.web.sessionstate.httpsessionstate.timeout(v=vs.110).aspx) |
+| **Kroky** | Časový limit relace představuje událost, když uživatel neprovede žádnou akci na webu během intervalu (definovaného webovým serverem). Událost na straně serveru mění stav uživatelské relace na neplatnou (například již nepoužito) a vydá pokyn webovému serveru, aby ho zničil (odstraní všechna data, která jsou v něm obsažená). Následující příklad kódu nastaví atribut relace Timeout na 15 minut v souboru Web.config.|
 
 ### <a name="example"></a>Příklad
 ```XML 
@@ -397,9 +397,9 @@ void Page_Init (object sender, EventArgs e) {
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | webové formuláře |
-| **Atributy**              | Není k dispozici  |
-| **Reference**              | [Element Forms pro ověřování (schéma nastavení ASP.NET)](https://msdn.microsoft.com/library/1d3t3c61(v=vs.100).aspx) |
-| **Uvedené** | Nastavte časový limit souboru cookie lístku pro ověřování formulářů na 15 minut.|
+| **Atributy**              | –  |
+| **Odkazy**              | [Element Forms pro ověřování (schéma nastavení ASP.NET)](https://msdn.microsoft.com/library/1d3t3c61(v=vs.100).aspx) |
+| **Kroky** | Nastavte časový limit souboru cookie lístku pro ověřování formulářů na 15 minut.|
 
 ### <a name="example"></a>Příklad
 ```XML
@@ -413,8 +413,8 @@ void Page_Init (object sender, EventArgs e) {
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Webové formuláře, MVC5 |
 | **Atributy**              | EnvironmentType – OnPrem |
-| **Reference**              | [asdeqa](https://skf.azurewebsites.net/Mitigations/Details/wefr) |
-| **Uvedené** | Když je webová aplikace předávající stranou a služba AD FS je STS, doba života souborů cookie ověřování – FedAuth tokeny-lze nastavit pomocí následující konfigurace v web.config:|
+| **Odkazy**              | [asdeqa](https://skf.azurewebsites.net/Mitigations/Details/wefr) |
+| **Kroky** | Když je webová aplikace předávající stranou a služba AD FS je STS, doba života souborů cookie ověřování – FedAuth tokeny-lze nastavit pomocí následující konfigurace v web.config:|
 
 ### <a name="example"></a>Příklad
 ```XML
@@ -447,29 +447,29 @@ Set-ADFSRelyingPartyTrust -TargetName "<RelyingPartyWebApp>" -ClaimsProviderName
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Reference**              | Není k dispozici  |
-| **Uvedené** | Když uživatel stiskne tlačítko Odhlásit se, provede se správným odhlášením z aplikace. Po odhlášení aplikace by měla zničit uživatelskou relaci a také resetovat a nezruší hodnotu cookie relace, společně s resetováním a hodnotou souboru cookie pro ověřování nullifying. Pokud je více relací svázáno s identitou jednoho uživatele, musí být souhrnně ukončeny na straně serveru v časovém limitu nebo odhlášení. Nakonec zajistěte, aby byly funkce odhlášení k dispozici na každé stránce. |
+| **Atributy**              | –  |
+| **Odkazy**              | –  |
+| **Kroky** | Když uživatel stiskne tlačítko Odhlásit se, provede se správným odhlášením z aplikace. Po odhlášení aplikace by měla zničit uživatelskou relaci a také resetovat a nezruší hodnotu cookie relace, společně s resetováním a hodnotou souboru cookie pro ověřování nullifying. Pokud je více relací svázáno s identitou jednoho uživatele, musí být souhrnně ukončeny na straně serveru v časovém limitu nebo odhlášení. Nakonec zajistěte, aby byly funkce odhlášení k dispozici na každé stránce. |
 
 ## <a name="mitigate-against-cross-site-request-forgery-csrf-attacks-on-aspnet-web-apis"></a><a id="csrf-api"></a>Zmírnění útoků na webové rozhraní API v ASP.NET proti útokům přes lokalitu (CSRF)
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Webové rozhraní API | 
+| **Komponenta**               | Web API | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Reference**              | Není k dispozici  |
-| **Uvedené** | Padělání žádostí mezi weby (CSRF nebo XSRF) je typ útoku, ve kterém může útočník provést akce v kontextu zabezpečení navázané relace jiného uživatele na webu. Cílem je upravit nebo odstranit obsah, pokud cílový web spoléhá na přijatý požadavek výhradně na soubory cookie relace. Útočník by mohl zneužít tuto chybu zabezpečení tím, že získá jiný uživatel, který načte adresu URL pomocí příkazu z zranitelné lokality, ve které je uživatel již přihlášen. Existuje mnoho způsobů, jak útočník to udělat, například hostováním jiného webu, který načte prostředek z ohroženého serveru, nebo když uživatel klikne na odkaz. Útok může být znemožněn, pokud server odešle klientovi další token, vyžaduje, aby klient tento token zahrnul do všech budoucích požadavků a ověří, že všechny budoucí požadavky obsahují token, který se vztahuje k aktuální relaci, například pomocí ASP.NET AntiForgeryToken nebo ViewState. |
+| **Atributy**              | –  |
+| **Odkazy**              | –  |
+| **Kroky** | Padělání žádostí mezi weby (CSRF nebo XSRF) je typ útoku, ve kterém může útočník provést akce v kontextu zabezpečení navázané relace jiného uživatele na webu. Cílem je upravit nebo odstranit obsah, pokud cílový web spoléhá na přijatý požadavek výhradně na soubory cookie relace. Útočník by mohl zneužít tuto chybu zabezpečení tím, že získá jiný uživatel, který načte adresu URL pomocí příkazu z zranitelné lokality, ve které je uživatel již přihlášen. Existuje mnoho způsobů, jak útočník to udělat, například hostováním jiného webu, který načte prostředek z ohroženého serveru, nebo když uživatel klikne na odkaz. Útok může být znemožněn, pokud server odešle klientovi další token, vyžaduje, aby klient tento token zahrnul do všech budoucích požadavků a ověří, že všechny budoucí požadavky obsahují token, který se vztahuje k aktuální relaci, například pomocí ASP.NET AntiForgeryToken nebo ViewState. |
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Webové rozhraní API | 
+| **Komponenta**               | Web API | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | MVC5, MVC6 |
-| **Atributy**              | Není k dispozici  |
-| **Reference**              | [Prevence útoků na CSRF (site-to-site Request) ve webovém rozhraní API ASP.NET](https://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks) |
-| **Uvedené** | Anti-CSRF a AJAX: token formuláře může být problémem pro požadavky AJAX, protože požadavek AJAX může odesílat data JSON, nikoli data formuláře HTML. Jedním z řešení je odeslat tokeny ve vlastní hlavičce protokolu HTTP. Následující kód používá syntaxe Razor k vygenerování tokenů a následně přidá tokeny do požadavku AJAX. |
+| **Atributy**              | –  |
+| **Odkazy**              | [Prevence útoků na CSRF (site-to-site Request) ve webovém rozhraní API ASP.NET](https://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks) |
+| **Kroky** | Anti-CSRF a AJAX: token formuláře může být problémem pro požadavky AJAX, protože požadavek AJAX může odesílat data JSON, nikoli data formuláře HTML. Jedním z řešení je odeslat tokeny ve vlastní hlavičce protokolu HTTP. Následující kód používá syntaxe Razor k vygenerování tokenů a následně přidá tokeny do požadavku AJAX. |
 
 ### <a name="example"></a>Příklad
 ```Javascript
@@ -551,12 +551,12 @@ Filtr autorizace, který kontroluje:
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Webové rozhraní API | 
+| **Komponenta**               | Web API | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | MVC5, MVC6 |
 | **Atributy**              | Zprostředkovatel identity – ADFS, zprostředkovatel identity – Azure AD |
-| **Reference**              | [Zabezpečení webového rozhraní API pomocí individuálních účtů a místního přihlášení v ASP.NET Web API 2,2](https://www.asp.net/web-api/overview/security/individual-accounts-in-web-api) |
-| **Uvedené** | Pokud je webové rozhraní API zabezpečené pomocí OAuth 2,0, očekává se token nosiče v hlavičce autorizační žádosti a udělí přístup k žádosti jenom v případě, že je token platný. Na rozdíl od ověřování na základě souborů cookie nepřipojují tokeny nosičům požadavky. Žádající klient musí explicitně připojit nosný token v hlavičce požadavku. Proto pro ASP.NET webová rozhraní API chráněná pomocí OAuth 2,0 jsou nosné tokeny považovány za obranu před útoky CSRF. Upozorňujeme, že pokud v části MVC aplikace používáte ověřování pomocí formulářů (tj. používá soubory cookie), musí webové aplikace MVC používat tokeny pro ochranu proti padělání. |
+| **Odkazy**              | [Zabezpečení webového rozhraní API pomocí individuálních účtů a místního přihlášení v ASP.NET Web API 2,2](https://www.asp.net/web-api/overview/security/individual-accounts-in-web-api) |
+| **Kroky** | Pokud je webové rozhraní API zabezpečené pomocí OAuth 2,0, očekává se token nosiče v hlavičce autorizační žádosti a udělí přístup k žádosti jenom v případě, že je token platný. Na rozdíl od ověřování na základě souborů cookie nepřipojují tokeny nosičům požadavky. Žádající klient musí explicitně připojit nosný token v hlavičce požadavku. Proto pro ASP.NET webová rozhraní API chráněná pomocí OAuth 2,0 jsou nosné tokeny považovány za obranu před útoky CSRF. Upozorňujeme, že pokud v části MVC aplikace používáte ověřování pomocí formulářů (tj. používá soubory cookie), musí webové aplikace MVC používat tokeny pro ochranu proti padělání. |
 
 ### <a name="example"></a>Příklad
 Webové rozhraní API je potřeba informovat, aby se mohlo spoléhat jenom na tokeny nosiče a ne na soubory cookie. To lze provést pomocí následující konfigurace v `WebApiConfig.Register` metodě:

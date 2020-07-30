@@ -3,12 +3,12 @@ title: Modely sítě pro Azure Service Fabric
 description: Popisuje běžné síťové vzory pro Service Fabric a vytváření clusterů pomocí síťových funkcí Azure.
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 0c3664d1890fd318aa1bff508a51cb227bdcc01d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 20bd5e931307725016c3e2ad69dae91214b2caab
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258531"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421463"
 ---
 # <a name="service-fabric-networking-patterns"></a>Modely Service Fabric sítě
 Svůj cluster Azure Service Fabric můžete integrovat s dalšími síťovými funkcemi Azure. V tomto článku vám ukážeme, jak vytvořit clustery, které používají následující funkce:
@@ -99,6 +99,8 @@ V příkladech v tomto článku používáme Service Fabric template.jsna. K sta
                 "defaultValue": "10.0.0.0/24"
             },*/
     ```
+
+   Můžete také zadat komentář k parametru s názvem "virtualNetworkName", takže se nezobrazí výzva k zadání názvu virtuální sítě dvakrát v okně nasazení clusteru v Azure Portal.
 
 2. Odkomentujte `nicPrefixOverride` atribut `Microsoft.Compute/virtualMachineScaleSets` , protože používáte existující podsíť a tuto proměnnou jste v kroku 1 zakázali.
 

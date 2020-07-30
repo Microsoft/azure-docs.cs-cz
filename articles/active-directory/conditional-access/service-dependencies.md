@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00b23a845002f5a92128917d81fdadf5a647d798
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 578f1e97c8a53604edca7b803933139362a763a7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253184"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419729"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Jaké jsou závislosti služby v Azure Active Directory podmíněný přístup? 
 
@@ -51,6 +51,7 @@ Následující tabulka uvádí další závislosti služby, ve kterých musí kl
 |                     | SharePoint                                  | S časnou vazbou |
 | Microsoft Teams     | Výměna                                    | S časnou vazbou |
 |                     | MS Planner                                  | S pozdní vazbou  |
+|                     | Microsoft Stream                            | S pozdní vazbou  |
 |                     | SharePoint                                  | S časnou vazbou |
 |                     | Online Skype pro firmy                   | S časnou vazbou |
 | Portál Office       | Výměna                                    | S pozdní vazbou  |

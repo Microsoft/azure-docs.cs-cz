@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 5f159ffcea0aa88f354ae503be96a5c571c10adb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26df3c49e44dd79d87a1e0a982ceb8133f425447
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85806828"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423316"
 ---
 # <a name="partitioning-in-azure-cosmos-db-cassandra-api"></a>Vytváření oddílů v Azure Cosmos DB rozhraní API Cassandra
 
@@ -31,7 +31,7 @@ Apache Cassandra doporučuje omezení 100 MB na velikost dat, která se dají ul
 
 V Azure Cosmos DB se každý fyzický oddíl skládá ze sady replik, označovaných také jako sady replik, které mají alespoň 4 repliky na oddíl. To je na rozdíl od Apache Cassandra, kde je možné nastavit faktor replikace 1. To však vede k nízké dostupnosti, pokud dojde k výpadku jediného uzlu s daty. V rozhraní API Cassandra je vždy faktor replikace 4 (kvorum 3). Azure Cosmos DB automaticky spravuje sady replik, ale je potřeba je spravovat pomocí různých nástrojů v Apache Cassandra. 
 
-Apache Cassandra má koncept tokenů, což jsou hodnoty hash klíčů oddílů. Tokeny jsou založené na bajtové hodnotě hash murmur3 64 s hodnotami od-2 ^ 63 do-2 ^ 63-1. Tento rozsah se obvykle označuje jako "token ring" v Apache Cassandra. Token Ring se distribuuje do rozsahů tokenů a tyto rozsahy se rozdělí mezi uzly přítomné v nativním clusteru Apache Cassandra. Dělení pro Azure Cosmos DB je implementováno podobným způsobem, s výjimkou, že používá jiný algoritmus hash a má větší okruh tokenů. 
+Apache Cassandra má koncept tokenů, což jsou hodnoty hash klíčů oddílů. Tokeny jsou založené na bajtové hodnotě hash murmur3 64 s hodnotami od-2 ^ 63 do-2 ^ 63-1. Tento rozsah se obvykle označuje jako "token ring" v Apache Cassandra. Token Ring se distribuuje do rozsahů tokenů a tyto rozsahy se rozdělí mezi uzly přítomné v nativním clusteru Apache Cassandra. Dělení pro Azure Cosmos DB je implementováno podobným způsobem, s výjimkou toho, že používá jiný algoritmus hash a má větší interní token ring. Externě ale zveřejňujeme stejný rozsah tokenů jako Apache Cassandra, tj.-2 ^ 63 až-2 ^ 63-1.
 
 
 ## <a name="primary-key"></a>Primární klíč

@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41329f2f5500db35ee76c9880bdbef984413004b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f603623e2b47a8ac1a8530880e10c919f63b66c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057889"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423605"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Hromadné vytvoření uživatelů v Azure Active Directory
 
@@ -60,7 +60,7 @@ Stáhněte si a vyplňte šablonu CSV hromadného nahrání, která vám umožn�
 
 1. Otevřete soubor CSV a přidejte řádek pro každého uživatele, který chcete vytvořit. Jedinými požadovanými hodnotami jsou **jméno**, **hlavní název uživatele**, **počáteční heslo** a **zablokování přihlášení (ano/ne)**. Pak soubor uložte.
 
-   [![](media/users-bulk-add/add-csv-file.png "The CSV file contains names and IDs of the users to create")](media/users-bulk-add/add-csv-file.png#lightbox)
+   [![Soubor CSV obsahuje jména a ID uživatelů, které se mají vytvořit.](media/users-bulk-add/add-csv-file.png)](media/users-bulk-add/add-csv-file.png#lightbox)
 
 1. Na stránce **hromadně vytvořit uživatele** v části nahrát soubor CSV přejděte k souboru. Když vyberete soubor a kliknete na **Odeslat**, spustí se ověření souboru CSV.
 1. Po ověření obsahu souboru uvidíte, že se **soubor úspěšně nahrál**. Pokud dojde k chybám, musíte je opravit předtím, než budete moct úlohu odeslat.
@@ -73,7 +73,7 @@ Pokud dojde k chybám, můžete si stáhnout a zobrazit soubor výsledků na str
 
 Na stránce **výsledků hromadných operací** můžete zobrazit stav všech vašich nevyřízených hromadných požadavků.
 
-   [![](media/users-bulk-add/bulk-center.png "Check create status in the Bulk Operations Results page")](media/users-bulk-add/bulk-center.png#lightbox)
+   [![Na stránce výsledků hromadných operací se podívejte na vytvořit stav.](media/users-bulk-add/bulk-center.png)](media/users-bulk-add/bulk-center.png#lightbox)
 
 Potom můžete zjistit, že uživatelé, které jste vytvořili, existují v organizaci Azure AD, a to buď v Azure Portal, nebo pomocí PowerShellu.
 

@@ -2,13 +2,13 @@
 title: Azure Service Bus úrovně Premium a Standard
 description: Tento článek popisuje úrovně Standard a Premium Azure Service Bus. Porovná tyto úrovně a poskytuje technické rozdíly.
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: eb2d3dda18eb08809a5c8f1020490acdb1e9a21c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/28/2020
+ms.openlocfilehash: 82f8dbce7c48cb6efea67de4297239915e46eac8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337418"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386346"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Úrovně zasílání zpráv Service Bus Premium a Standard
 
@@ -23,8 +23,8 @@ V následující tabulce je zvýrazněno několik nejvýraznějších rozdílů.
 | Vysoká propustnost |Variabilní propustnost |
 | Předvídatelný výkon |Variabilní latence |
 | Pevné ceny |Variabilní průběžná cena  |
-| Možnost vertikálně navýšit a snížit kapacitu |Není k dispozici |
-| Velikost zprávy do 1 MB |Velikost zprávy do 256 kB |
+| Možnost vertikálně navýšit a snížit kapacitu |– |
+| Velikost zprávy je až 1 MB. Toto omezení může být vyvoláno v budoucnu. Nejnovější důležité aktualizace této služby najdete v tématu [zasílání zpráv na blogu Azure](https://techcommunity.microsoft.com/t5/messaging-on-azure/bg-p/MessagingonAzureBlog). |Velikost zprávy do 256 kB |
 
 **Zasílání zpráv Service Bus Premium** zajišťuje izolaci prostředků na úrovni CPU a paměti, takže každá úloha zákazníka běží izolovaně. Kontejner prostředků se nazývá *jednotka zasílání zpráv*. Každému prémiovému obor názvů se přiřadí aspoň jedna jednotka zasílání zpráv. Pro každý obor názvů Service Bus Premium si můžete koupit 1, 2, 4 nebo 8 jednotek zasílání zpráv. Jedna úloha nebo entita může zabírat několik jednotek zasílání zpráv a počet jednotek zasílání zpráv se dá změnit na. Výsledkem je předvídatelný a opakovatelný výkon vašeho řešení postaveného na Service Bus.
 
@@ -36,11 +36,11 @@ V následujících částech je uvedeno několik rozdílů mezi úrovněmi zasí
 
 ### <a name="partitioned-queues-and-topics"></a>Dělené fronty a témata
 
-V Zasílání zpráv na úrovni Premium se dělené fronty a témata nepodporují. Další informace o dělení najdete v oddílu [Dělené fronty a témata](service-bus-partitioning.md).
+Dělené fronty a témata nejsou v zasílání zpráv na úrovni Premium podporované. Další informace o dělení najdete v oddílu [Dělené fronty a témata](service-bus-partitioning.md).
 
 ### <a name="express-entities"></a>Expresní entity
 
-Protože zasílání zpráv úrovně Premium běží v kompletně izolovaném prostředí, nejsou expresní entity v oborech názvů úrovně Premium podporované. Další informace o expresní funkci najdete v popisu vlastnosti [QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress).
+Protože zasílání zpráv na úrovni Premium běží v izolovaném prostředí, nejsou expresní entity v oborech názvů úrovně Premium podporované. Další informace o expresní funkci najdete v popisu vlastnosti [QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress).
 
 Pokud je váš kód spuštěný v rámci zasílání zpráv úrovně Standard a chcete přejít na úroveň Premium, ověřte, že vlastnost [EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) je nastavena na hodnotu **false** (výchozí hodnota).
 
@@ -51,7 +51,7 @@ Obecně platí, že jakákoli operace s entitou může způsobit využití proce
 - Běhové operace (odesílání a příjem zpráv)
 - Monitorování operací a výstrah
 
-Další využití procesoru a paměti se navíc neúčtují. U úrovně zasílání zpráv na úrovni Premium má jednotka zprávy jednu cenu.
+Další využití procesoru a paměti se navíc neúčtují. U úrovně zasílání zpráv na úrovni Premium má jednotka pro zprávy jednu cenu.
 
 Využití CPU a paměti se sleduje a zobrazí se vám z následujících důvodů: 
 
@@ -72,7 +72,7 @@ Při rozhodování o počtu jednotek zasílání zpráv pro vaši architekturu j
     - Pokud je využití procesoru ***menší než 20%***, možná budete moci ***škálovat*** počet jednotek zasílání zpráv přidělených vašemu oboru názvů.
     - Pokud je využití procesoru ***nad 70%***, bude vaše aplikace využívat ***škálování*** počtu jednotek zasílání zpráv, které jsou přiděleny vašemu oboru názvů.
 
-Proces škálování prostředků, které jsou přidělené oborům názvů Service Bus, se dá automatizovat pomocí [Azure Automation sad Runbook](../automation/automation-quickstart-create-runbook.md).
+Proces škálování prostředků přidělených oboru názvů Service Bus lze automatizovat pomocí [Azure Automation sad Runbook](../automation/automation-quickstart-create-runbook.md).
 
 > [!NOTE]
 > **Škálování** prostředků přidělených oboru názvů může být buď přepnuto, nebo reaktivní.

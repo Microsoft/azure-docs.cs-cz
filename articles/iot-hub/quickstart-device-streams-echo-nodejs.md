@@ -1,36 +1,36 @@
 ---
-title: Komunikace s aplikací zařízení v Node. js s využitím streamování zařízení v Azure IoT Hub
-description: V tomto rychlém startu spustíte aplikaci Node. js na straně služby, která komunikuje se zařízením IoT přes datový proud zařízení.
+title: Komunikace s aplikací zařízení v Node.js s využitím streamování zařízení Azure IoT Hub
+description: V tomto rychlém startu spustíte Node.js aplikaci na straně služby, která komunikuje se zařízením IoT přes datový proud zařízení.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, devx-track-javascript
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 0757c5eb8639e4a864b049adc92c97a7cf69adba
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d398e450175c9f97c419b397266cda0a52e7e21c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78675509"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87416090"
 ---
-# <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>Rychlý Start: komunikace s aplikací zařízení v Node. js prostřednictvím IoT Hub datových proudů zařízení (Preview)
+# <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>Rychlý Start: komunikace s aplikací zařízení v Node.js prostřednictvím datových proudů zařízení IoT Hub (Preview)
 
 [!INCLUDE [iot-hub-quickstarts-3-selector](../../includes/iot-hub-quickstarts-3-selector.md)]
 
-V tomto rychlém startu spustíte aplikaci na straně služby a nastavíte komunikaci mezi zařízením a službou pomocí datových proudů zařízení. Datové proudy zařízení v Azure IoT Hub umožňují aplikacím služeb a zařízením komunikovat zabezpečeným způsobem a bránou firewall. Během veřejné verze Preview sada Node. js SDK podporuje pouze datové proudy zařízení na straně služby. V důsledku toho se v tomto rychlém startu vztahují jenom na pokyny ke spuštění aplikace na straně služby.
+V tomto rychlém startu spustíte aplikaci na straně služby a nastavíte komunikaci mezi zařízením a službou pomocí datových proudů zařízení. Datové proudy zařízení v Azure IoT Hub umožňují aplikacím služeb a zařízením komunikovat zabezpečeným způsobem a bránou firewall. Během veřejné verze Preview podporuje Node.js SDK na straně služby pouze datové proudy zařízení. V důsledku toho se v tomto rychlém startu vztahují jenom na pokyny ke spuštění aplikace na straně služby.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Dokončíní [komunikace s aplikacemi zařízení v C prostřednictvím IoT Hub datových proudů zařízení](./quickstart-device-streams-echo-c.md) nebo [komunikace s aplikacemi zařízení v jazyce C# prostřednictvím IoT Hub datových proudů zařízení](./quickstart-device-streams-echo-csharp.md).
 
 * Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-* [Node. js 10 +](https://nodejs.org)
+* [Node.js 10 +](https://nodejs.org).
 
-* [Ukázkový projekt Node. js](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip)
+* [Vzorový Node.js projekt](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip).
 
 Aktuální verzi Node.js na počítači používaném pro vývoj můžete ověřit pomocí následujícího příkazu:
 
@@ -43,7 +43,7 @@ Microsoft Azure IoT Hub aktuálně podporuje streamy zařízení jako [funkci ve
 > [!IMPORTANT]
 > Verze Preview datových proudů zařízení je momentálně podporovaná jenom pro centra IoT vytvořená v následujících oblastech:
 >
-> * USA – střed
+> * Střední USA
 > * Střed USA EUAP
 > * Severní Evropa
 > * Jihovýchodní Asie
@@ -66,7 +66,7 @@ Pokud jste dokončili předchozí [Rychlý start: Odesílání telemetrických d
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-device"></a>Registrování zařízení
+## <a name="register-a-device"></a>Registrace zařízení
 
 Pokud jste dokončili předchozí [Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT](quickstart-send-telemetry-node.md), můžete tento krok přeskočit.
 
@@ -100,7 +100,7 @@ V této části spustíte jak aplikaci na straně zařízení, tak aplikaci na s
 
 ### <a name="run-the-device-side-application"></a>Spuštění aplikace na straně zařízení
 
-Jak bylo zmíněno dříve, IoT Hub Node. js SDK podporuje pouze datové proudy zařízení na straně služby. V případě aplikace na straně zařízení použijte jeden z doprovodných programů zařízení, které jsou dostupné v těchto rychlých startech:
+Jak bylo zmíněno dříve, IoT Hub Node.js SDK podporuje pouze datové proudy zařízení na straně služby. V případě aplikace na straně zařízení použijte jeden z doprovodných programů zařízení, které jsou dostupné v těchto rychlých startech:
 
 * [Komunikace s aplikacemi pro zařízení v C prostřednictvím datových proudů zařízení IoT Hub](./quickstart-device-streams-echo-c.md)
 
@@ -110,14 +110,14 @@ Než budete pokračovat k dalšímu kroku, ujistěte se, že je spuštěná apli
 
 ### <a name="run-the-service-side-application"></a>Spuštění aplikace na straně služby
 
-Aplikace Node. js na straně služby v tomto rychlém startu má následující funkce:
+Aplikace Node.js na straně služby v tomto rychlém startu má následující funkce:
 
 * Vytvoří datový proud zařízení pro zařízení IoT.
 * Přečte vstup z příkazového řádku a pošle ho do aplikace zařízení, která ho vrátí zpátky.
 
 Kód ukáže proces iniciace datového proudu zařízení a také způsob, jak ho použít k posílání a přijímání dat.
 
-Za předpokladu, že je spuštěna aplikace na straně zařízení, použijte následující postup v místním okně terminálu ke spuštění aplikace na straně služby v Node. js:
+Za předpokladu, že je aplikace na straně zařízení spuštěná, postupujte podle následujících kroků v místním okně terminálu a spusťte aplikaci na straně služby v Node.js:
 
 * Zadejte své přihlašovací údaje služby a ID zařízení jako proměnné prostředí.
  

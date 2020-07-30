@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 04/20/2020
+ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: 878fbb81e05db058aa015f8b4a7eae42e8cfea2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da00d77138eb3ff737c26d7fa52ab0bb56ec6ae4
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83742209"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422402"
 ---
 # <a name="what-is-the-my-account-portal"></a>Co je portál Můj účet?
 
@@ -33,7 +33,7 @@ Můžete získat přístup k portálu **můj účet** ( https://myaccount.micros
 ![Portál Můj účet, stránka přehled](media/my-account-portal/my-account-portal-overview.png)
 
 >[!Important]
->Tento článek je určený pro uživatele, kteří se pokoušejí získat na portál Můj účet, aby aktualizovali své bezpečnostní údaje, informace o zařízení, heslo, připojené organizace, soukromí nebo předchozí přihlašovací údaje. Pokud jste správcem a hledáte informace o tom, jak zapnout ověřování a další funkce Azure Active Directory (Azure AD) pro vaše zaměstnance a jiné účely, přečtěte si téma [dokumentace k Azure AD pro správce](https://docs.microsoft.com/azure/active-directory/).
+>Tento článek je určený pro uživatele, kteří se pokoušejí získat na portál Můj účet, aby aktualizovali své bezpečnostní údaje, informace o zařízení, heslo, připojené organizace, nastavení jazyka, ochranu osobních údajů nebo předchozí přihlašovací údaje. Pokud jste správcem a hledáte informace o tom, jak zapnout ověřování a další funkce Azure Active Directory (Azure AD) pro vaše zaměstnance a jiné účely, přečtěte si téma [dokumentace k Azure AD pro správce](https://docs.microsoft.com/azure/active-directory/).
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -46,6 +46,8 @@ Můžete získat přístup k portálu **můj účet** ( https://myaccount.micros
 - Zobrazení [přihlašovací aktivity](my-account-portal-sign-ins-page.md)
 
 - Podívejte se, jak vaše organizace [používá data týkající se ochrany osobních údajů](my-account-portal-privacy-page.md) .
+
+- Změna [nastavení portálu moje účet](my-account-portal-settings.md)
 
 ## <a name="related-microsoft-office-content"></a>Související obsah systém Microsoft Office
 

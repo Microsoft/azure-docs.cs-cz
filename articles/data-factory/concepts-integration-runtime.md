@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: 0da3a0bec79ab6f60b1e69c490124e95a4b7c365
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e8e900e410f1a41c8c98f5cec00631cfb5f275de
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497637"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407689"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Prostředí Integration Runtime v Azure Data Factory 
 
@@ -45,13 +45,10 @@ Následující tabulka obsahuje informace o podpoře funkcí a sítí pro každ�
 
 Typ prostředí IR | Veřejná síť | Privátní síť
 ------- | -------------- | ---------------
-Azure | Data Flow<br/>Přesuny dat<br/>Odesílání aktivit | &nbsp;
+Azure | Data Flow<br/>Přesuny dat<br/>Odesílání aktivit | Data Flow<br/>Přesuny dat<br/>Odesílání aktivit
 V místním prostředí | Přesuny dat<br/>Odesílání aktivit | Přesuny dat<br/>Odesílání aktivit
 Azure-SSIS | Spouštění balíčků služby SSIS | Spouštění balíčků služby SSIS
 
-Následující diagram znázorňuje, jak se dají různá prostředí Integration Runtime používat v kombinaci, aby nabízela bohaté funkce integrace dat a podporu sítí:
-
-![Různé typy prostředí Integration Runtime](media/concepts-integration-runtime/different-integration-runtimes.png)
 
 ## <a name="azure-integration-runtime"></a>Prostředí Azure Integration Runtime
 
@@ -63,7 +60,7 @@ Prostředí Azure Integration runtime může:
 
 ### <a name="azure-ir-network-environment"></a>Síťové prostředí Azure IR
 
-Azure Integration Runtime podporuje připojení k úložištím dat a výpočetní služby s veřejnými dostupnými koncovými body. Pro prostředí Azure Virtual Network používejte prostředí Integration Runtime v místním prostředí.
+Azure Integration Runtime podporuje připojení k úložištím dat a výpočetní služby s veřejnými dostupnými koncovými body. Povolení spravovaných Virtual Network Azure Integration Runtime podporuje připojení k úložištím dat pomocí služby privátního propojení v prostředí privátní sítě.
 
 ### <a name="azure-ir-compute-resource-and-scaling"></a>Výpočetní prostředky a škálování prostředí Azure IR
 Prostředí Azure Integration Runtime poskytuje v rámci Azure plně spravované výpočetní prostředí bez serveru.  Nemusíte si dělat starosti se zřizováním infrastruktury, instalací softwaru, opravami nebo škálováním kapacity.  Kromě toho platíte jenom po dobu, kdy prostředí opravdu používáte.
@@ -136,7 +133,7 @@ Umístění prostředí IR určuje umístění výpočetního prostředí back-e
 
 Můžete nastavit určité umístění Azure IR. v takovém případě se spuštění nebo odeslání aktivity provede v konkrétní oblasti.
 
-Pokud se rozhodnete použít Azure IR automaticky vyřešit, což je výchozí nastavení,
+Pokud se rozhodnete použít Azure IR automatického řešení ve veřejné síti, což je výchozí nastavení,
 
 - V případě aktivity kopírování bude ADF vysílat automatické rozpoznávání umístění úložiště dat jímky a pak bude používat IR v obou oblastech, pokud je k dispozici, nebo co nejblíže ve stejné geografické oblasti. Pokud oblast úložiště dat jímky není zjistitelná, použije se jako alternativa možnost IR v oblasti Datové továrny.
 
@@ -154,6 +151,8 @@ Pokud se rozhodnete použít Azure IR automaticky vyřešit, což je výchozí n
 
   > [!TIP] 
   > Dobrým postupem je zajistit, aby tok dat běžel ve stejné oblasti jako vaše odpovídající úložiště dat (Pokud je to možné). Toho můžete dosáhnout buď automatickým přeložením Azure IR (Pokud je umístění úložiště dat stejné jako Data Factory umístění), nebo vytvořením nové instance Azure IR ve stejné oblasti jako úložiště dat a následným spuštěním toku dat. 
+
+Pokud povolíte možnost spravované Virtual Network pro automatické řešení Azure IR, ADF používá v oblasti Datové továrny IR. 
 
 V zobrazení monitorování aktivit kanálu v uživatelském rozhraní nebo datové části monitorování aktivit můžete monitorovat, které umístění prostředí IR se při provádění aktivit použije.
 

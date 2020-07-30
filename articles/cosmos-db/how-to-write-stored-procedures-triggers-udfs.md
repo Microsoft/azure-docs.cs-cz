@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
-ms.openlocfilehash: e9ebd8de956437273246d08821fc87838089a256
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 17cde20d69fbf7d135fe48c9e285ccf348b4b58c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262867"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420154"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Postup zápisu uložených procedur, triggerů a uživatelsky definovaných funkcí v Azure Cosmos DB
 
@@ -385,7 +386,7 @@ function tax(income) {
 
 Příklady, jak registrovat a používat uživatelsky definovanou funkci, najdete [v tématu použití uživatelsky definovaných funkcí v Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md#udfs) článku.
 
-## <a name="logging"></a>protokolování 
+## <a name="logging"></a>Protokolování 
 
 Při použití uložené procedury, triggerů nebo uživatelsky definovaných funkcí můžete pomocí příkazu zaprotokolovat kroky `console.log()` . Tento příkaz zachová řetězec pro ladění, pokud `EnableScriptLogging` je nastaven na hodnotu true, jak je znázorněno v následujícím příkladu:
 

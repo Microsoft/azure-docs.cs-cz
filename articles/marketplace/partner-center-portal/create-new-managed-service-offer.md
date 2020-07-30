@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 07/07/2020
-ms.openlocfilehash: 193781e078f12dec553d98c15699c7e665966a87
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8546e5fde51ddc8a29a852a2c5dbcd25fffad287
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326613"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405241"
 ---
 # <a name="create-a-managed-service-offer"></a>Vytvoření nabídky spravované služby
 
@@ -194,6 +194,9 @@ Potom zadejte **Popis** , který poskytuje podrobnější vysvětlení plánu.
 V současné době je k dispozici pouze jeden model cenového modelu, který lze použít pro nabídku spravované služby: **Přineste si vlastní licenci (BYOL)**. To znamená, že vaše zákazníky budete fakturovat přímo za náklady související s touto nabídkou a Microsoft vám nebude účtovat žádné poplatky.
 
 V části **plán – přehled** můžete určit, jestli má být tento plán [soukromý](../../marketplace/private-offers.md). Pokud necháte toto políčko **privátního plánu** nezaškrtnuté, váš plán nebude omezen na konkrétní zákazníky (nebo na určitý počet zákazníků).
+
+> [!NOTE]
+> U předplatných vytvořených prostřednictvím prodejce programu Cloud Solution Provider (CSP) se nepodporují privátní plány.
 
 Pokud chcete, aby byl tento plán dostupný jenom pro konkrétní zákazníky, vyberte **Ano**. Když to uděláte, budete muset zákazníky identifikovat tak, že zadáte jejich ID předplatného. Můžete je zadat jednou (až pro 10 odběry) nebo nahráním souboru. CSV (maximálně 10 000 odběrů ve všech plánech). Nezapomeňte sem zahrnout vlastní odběry, abyste mohli otestovat a ověřit nabídku.
 

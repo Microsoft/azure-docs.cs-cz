@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 648ec2d9fea3e4e112e65cec44a0518b653ddbea
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8694b766d98c6240d7745b814d13358debe714e8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119969"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387043"
 ---
 # <a name="best-practices-for-creating-assessments"></a>Osvědčené postupy pro vytváření hodnocení
 
@@ -67,15 +67,15 @@ Dodržujte tyto osvědčené postupy pro posouzení serverů importovaných do A
  
 ### <a name="ftt-sizing-parameters-for-avs-assessments"></a>FTT parametry změny velikosti pro posouzení služby AVS
 
-Modul úložiště používaný v rozhraní AVS je síti vSAN. zásady úložiště síti vSAN definují požadavky na úložiště pro virtuální počítače. Tyto zásady zaručují potřebnou úroveň služby pro vaše virtuální počítače, protože určují, jak je úložiště přidělené k virtuálnímu počítači. Toto jsou dostupné kombinace FTT-RAID: 
+Modul úložiště používaný v rozhraní AVS je síti vSAN. Zásady úložiště vSAN definují požadavky na úložiště pro vaše virtuální počítače. Tyto zásady pro vaše virtuální počítače zaručují požadovanou úroveň služeb, protože určují, jak se virtuálním počítačům přiděluje úložiště. Tady jsou dostupné kombinace FTT a RAID: 
 
-**Neúspěšné tolerování (FTT)** | **Konfigurace RAID** | **Minimální požadovaná hostitelé** | **Aspekt velikosti**
+**Tolerované chyby (FTT)** | **Konfigurace RAID** | **Minimální požadovaný počet hostitelů** | **Důležité informace o nastavení velikosti**
 --- | --- | --- | --- 
-1 | RAID-1 (zrcadlení) | 3 | 100 GB virtuální počítač spotřebuje 200 GB.
-1 | RAID-5 (mazání kódu) | 4 | Virtuální počítač 100 GB spotřebuje 133.33 GB.
-2 | RAID-1 (zrcadlení) | 5 | Virtuální počítač 100 GB spotřebuje 300 GB.
-2 | RAID-6 (mazání kódu) | 6 | 100 GB virtuální počítač spotřebuje 150 GB.
-3 | RAID-1 (zrcadlení) | 7 | Virtuální počítač s 100 GB by spotřebuje 400 GB.
+1 | RAID-1 (zrcadlení) | 3 | Virtuální počítač o velikosti 100 GB spotřebuje 200 GB.
+1 | RAID-5 (kódování pro případ vymazaní) | 4 | Virtuální počítač o velikosti 100 GB spotřebuje 133,33 GB.
+2 | RAID-1 (zrcadlení) | 5 | Virtuální počítač o velikosti 100 GB spotřebuje 300 GB.
+2 | RAID-6 (kódování pro případ vymazaní) | 6 | Virtuální počítač o velikosti 100 GB spotřebuje 150 GB.
+3 | RAID-1 (zrcadlení) | 7 | Virtuální počítač o velikosti 100 GB spotřebuje 400 GB.
 
 
 ## <a name="best-practices-for-confidence-ratings"></a>Osvědčené postupy pro hodnocení spolehlivosti
@@ -131,9 +131,9 @@ Posouzení nemusí mít všechny datové body z několika důvodů:
 
 ### <a name="migration-tool-guidance-for-avs-assessments"></a>Pokyny k nástroji pro migraci pro posouzení služby AVS
 
-V sestavě připravenosti Azure pro posouzení řešení Azure VMware (AVS) můžete vidět následující navrhované nástroje: 
+V sestavě připravenosti pro Azure pro hodnocení služby Azure VMware Solution (AVS) uvidíte následující navrhované nástroje: 
 - **VMware HCX nebo Enterprise**: pro počítače VMware je řešení Azure Hybrid Cloud Extension (HCX) navrhovaným nástrojem pro migraci, který vaše místní úlohy migruje do privátního cloudu řešení Azure VMware (AVS). [Další informace](../azure-vmware/hybrid-cloud-extension-installation.md)
-- **Neznámé**: u počítačů importovaných prostřednictvím souboru CSV není výchozí nástroj pro migraci známý. Ale u počítačů VMware se doporučuje použít řešení VMWare Hybrid Cloud Extension (HCX).
+- **Neznámý:** V případě počítačů importovaných prostřednictvím souboru CSV je výchozí nástroj pro migraci neznámý. Ale u počítačů VMware se doporučuje použít řešení VMware Hybrid Cloud Extension (HCX).
 
 
 ## <a name="next-steps"></a>Další kroky

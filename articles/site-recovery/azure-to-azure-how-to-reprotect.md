@@ -2,18 +2,18 @@
 title: Znovu nastavte ochranu virtuálních počítačů Azure do primární oblasti pomocí Azure Site Recovery | Microsoft Docs
 description: Popisuje, jak znovu chránit virtuální počítače Azure po převzetí služeb při selhání, sekundární do primární oblasti, pomocí Azure Site Recovery.
 services: site-recovery
-author: rajani-janaki-ram
-manager: gauravd
+author: Rajeswari-Mamilla
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
-ms.author: rajanaki
-ms.openlocfilehash: 9883065993f35054338079c8b9647a8420574414
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: ramamill
+ms.openlocfilehash: da740909cedb8e2bb78f5f70e062481395a5c181
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82738061"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422075"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Opětovné zapnutí ochrany virtuálních počítačů Azure v primární oblasti
 
@@ -22,7 +22,7 @@ Při [převzetí služeb při selhání](site-recovery-failover.md) virtuálníc
 1. Znovu nastavte ochranu virtuálních počítačů v sekundární oblasti, aby se začaly replikovat do primární oblasti.
 1. Po dokončení ochrany a replikaci virtuálních počítačů můžete převzít služby při selhání ze sekundární do primární oblasti.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Převzetí služeb virtuálního počítače při selhání z primární do sekundární oblasti musí být potvrzené.
 - Primární cílový webový server by měl být dostupný a měl by být přístupný nebo vytvářet prostředky v této oblasti.
@@ -95,10 +95,6 @@ Následující podmínky určují, kolik dat se replikuje:
 |Zdrojová oblast má 1 virtuální počítač s 1 TB Premium diskem.<br/>Používá se jenom 20 GB dat a zbytek disku je prázdný.<br/>Typ disku je Premium s propustností 200 MB/s.<br/>Počáteční data na disku hned po převzetí služeb při selhání byly 15 GB. Po převzetí služeb při selhání se změnila 5 GB dat. Celková naplněná data jsou tedy 20 GB.| Přibližná doba: 30-45 minut.<br/>Vzhledem k tomu, že data naplněná na disku jsou menší než 10% velikosti disku, provádíme kompletní počáteční replikaci.<br/>Rychlost přenosu je přibližně 16% propustnosti nebo 32MBps. Proto se doba přenosu aplikuje na změny 20 GB, což je 20 GB/32 MB/s, přibližně 11 minut.<br/>Site Recovery k automatickému škálování vyžaduje určitý čas režie, přibližně 20-30 minut. |
 
 Pokud je virtuální počítač po převzetí služeb při selhání zpátky do primární oblasti (tj. Pokud je virtuální počítač znovu chráněný z primární oblasti na oblast zotavení po havárii), odstraní se cílový virtuální počítač a přidružené síťové karty.
-
-Když je virtuální počítač znovu chráněn z oblasti zotavení po havárii do primární oblasti, neodstraníme primární virtuální počítač Erstwhile a přidružené síťové karty (y).
-
-Pokud je virtuální počítač po převzetí služeb při selhání zpátky do primární oblasti (tj. Pokud je virtuální počítač znovu chráněný z primární oblasti na oblast zotavení po havárii), odstraní se cílový virtuální počítač a přidružené síťové karty. 
 
 Když je virtuální počítač znovu chráněn z oblasti zotavení po havárii do primární oblasti, neodstraníme primární virtuální počítač Erstwhile a přidružené síťové karty (y).
 

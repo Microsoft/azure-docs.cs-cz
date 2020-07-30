@@ -9,12 +9,12 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: 42c6ad7f77d1b42c02f57f161874eadb75387dc2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 196577741ae1560232f8ae193aacd51a446431c8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496005"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385530"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Sdílená databáze Azure synapse Analytics
 
@@ -34,7 +34,7 @@ Pomocí Sparku můžete spravovat databáze Spark vytvořené. Můžete ho např
 
 Při vytváření objektů v databázi Spark vytvořené pomocí SQL na vyžádání nebo při pokusu o vyřazení databáze bude operace úspěšná. Původní databáze Spark se ale nemění.
 
-## <a name="handling-of-name-conflicts"></a>Zpracování konfliktů názvů
+## <a name="how-name-conflicts-are-handled"></a>Jak se zpracovávají konflikty názvů
 
 Pokud název databáze Spark koliduje s názvem existující databáze SQL na vyžádání, připojí se k databázi Spark přípona v SQL na vyžádání. Přípona v SQL na vyžádání je `_<workspace name>-ondemand-DefaultSparkConnector` .
 
@@ -57,7 +57,7 @@ Pokud objekt zabezpečení vyžaduje možnost vytvářet objekty nebo vyřadit o
 
 ## <a name="examples"></a>Příklady
 
-### <a name="create--connect-to-spark-database---sql-on-demand"></a>Vytvoření & připojení k databázi Spark – SQL na vyžádání
+### <a name="create-and-connect-to-spark-database-with-sql-on-demand"></a>Vytvoření a připojení k databázi Spark pomocí SQL na vyžádání
 
 Nejdřív vytvořte novou databázi Spark s názvem `mytestdb` pomocí clusteru Spark, který jste už vytvořili v pracovním prostoru. Toho můžete dosáhnout například pomocí poznámkového bloku Spark C# s následujícím příkazem .NET for Spark:
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/19/2020
 ms.author: yelevin
-ms.openlocfilehash: ded28ef872bbc3147793ea3d68c94f8dde35f74e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 44a2c0c1b4bc9b4e6fc1247497640b261d1d0fa1
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83674177"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387910"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Nastavení klíče spravovaného zákazníkem Sentinel Azure
 
@@ -64,9 +64,9 @@ Při zřizování CMK postupujte takto: 
 
 1.  [Zapnout možnosti obnovení:](../key-vault/general/best-practices.md#turn-on-recovery-options)
 
-    -   Ujistěte se, že je zapnuté [obnovitelné odstranění](../key-vault/general/overview-soft-delete.md) .
+    -   Ujistěte se, že je zapnuté [obnovitelné odstranění](../key-vault/general/soft-delete-overview.md) .
 
-    -   Zapněte funkci [vyprázdnění ochrany](../key-vault/general/overview-soft-delete.md#purge-protection) pro ochranu proti vynucenému odstranění tajného nebo trezoru i po obnovitelném odstranění.
+    -   Zapněte funkci [vyprázdnění ochrany](../key-vault/general/soft-delete-overview.md#purge-protection) pro ochranu proti vynucenému odstranění tajného nebo trezoru i po obnovitelném odstranění.
 
 ### <a name="step-2-enable-cmk-on-your-log-analytics-workspace"></a>Krok 2: povolení CMK v pracovním prostoru Log Analytics
 

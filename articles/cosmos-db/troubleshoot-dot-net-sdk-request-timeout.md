@@ -3,19 +3,34 @@ title: Řešení potíží s Azure Cosmos DB HTTP 408 nebo vyžádat problémy s
 description: Jak diagnostikovat a opravit výjimku pro časový limit požadavku .NET SDK
 author: j82w
 ms.service: cosmos-db
-ms.date: 07/13/2020
+ms.date: 07/29/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 29b0c6237ae04ea5da9ec496498fc7c20890b173
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3d6fed539581b2d1add87ade92e34bcf2e1913e8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87294159"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87417603"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-net-sdk-request-timeout"></a>Diagnostika a řešení potíží s Azure Cosmos DB časový limit požadavku .NET SDK
 K chybě HTTP 408 dojde v případě, že sada SDK nemohla dokončit požadavek předtím, než dojde k vypršení časového limitu.
+
+## <a name="customizing-the-timeout-on-the-azure-cosmos-net-sdk"></a>Přizpůsobení časového limitu pro sadu Azure Cosmos .NET SDK
+
+Sada SDK obsahuje dvě odlišné alternativy k řízení časových limitů, z nichž každý má jiný obor.
+
+### <a name="requesttimeout"></a>RequestTimeout
+
+`CosmosClientOptions.RequestTimeout`Konfigurace (nebo `ConnectionPolicy.RequestTimeout` pro sadu SDK v2) umožňuje nastavit časový limit, který ovlivňuje jednotlivé požadavky sítě.  Operace spuštěná uživatelem může zahrnovat více síťových požadavků (například může být omezeno) a tato konfigurace by se měla použít pro každý požadavek sítě při opakovaném pokusu. Toto není časový limit požadavku na koncovou operaci.
+
+### <a name="cancellationtoken"></a>CancellationToken
+
+Všechny asynchronní operace v sadě SDK mají volitelný parametr CancellationToken. Tento [CancellationToken](https://docs.microsoft.com/dotnet/standard/threading/how-to-listen-for-cancellation-requests-by-polling) se používá v celé operaci v rámci všech síťových požadavků. V-mezi síťovými požadavky může být CancellationToken zkontrolováno a operace byla zrušena, pokud vypršela platnost souvisejícího tokenu. CancellationToken by měla být použita k definování přibližného očekávaného časového limitu oboru operace.
+
+> [!NOTE]
+> CancellationToken je mechanismus, ve kterém bude knihovna kontrolovat zrušení, pokud to [nezpůsobí neplatnost stavu](https://devblogs.microsoft.com/premier-developer/recommended-patterns-for-cancellationtoken/). Operace se nemusí zrušit přesně tehdy, když je čas definovaný ve zrušení, ale po uplynutí času se zruší, až to bude bezpečné.
 
 ## <a name="troubleshooting-steps"></a>Postup při řešení potíží
 Následující seznam obsahuje známé příčiny a řešení pro výjimky časového limitu požadavku.

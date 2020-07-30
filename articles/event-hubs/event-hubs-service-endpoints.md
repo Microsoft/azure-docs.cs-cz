@@ -2,15 +2,15 @@
 title: Koncové body služby Virtual Network – Azure Event Hubs | Microsoft Docs
 description: Tento článek poskytuje informace o tom, jak přidat koncový bod služby Microsoft. EventHub do virtuální sítě.
 ms.topic: article
-ms.date: 07/16/2020
-ms.openlocfilehash: 5d1f6bb8e1160a328c30cfd6ef1726e3cf011aee
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 07/29/2020
+ms.openlocfilehash: 15778c85f28300df3d5af34e2940b3854d814c66
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288012"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420446"
 ---
-# <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Použití koncových bodů služby Virtual Network s využitím Azure Event Hubs
+# <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-virtual-networks"></a>Povolení přístupu k oborům názvů Azure Event Hubs z konkrétních virtuálních sítí 
 
 Integrace Event Hubs s [koncovými body služby Virtual Network (VNET)][vnet-sep] umožňuje zabezpečenému přístupu k funkcím zasílání zpráv z úloh, jako jsou virtuální počítače, které jsou svázané s virtuálními sítěmi, a cestu síťového provozu, která je zabezpečená na obou koncích.
 
@@ -56,10 +56,19 @@ Pravidlo virtuální sítě je přidružení oboru názvů Event Hubs k podsíti
 V této části se dozvíte, jak pomocí Azure Portal přidat koncový bod služby virtuální sítě. Chcete-li omezit přístup, je nutné integrovat koncový bod služby virtuální sítě pro tento Event Hubs obor názvů.
 
 1. V [Azure Portal](https://portal.azure.com)přejděte do **oboru názvů Event Hubs** .
-2. V nabídce vlevo vyberte možnost **sítě** . Pokud vyberete možnost **všechny sítě** , centrum událostí akceptuje připojení z libovolné IP adresy. Toto nastavení odpovídá pravidlu, které přijímá rozsah IP adres 0.0.0.0/0. 
+4. V části **Nastavení** v nabídce vlevo vyberte **sítě** . 
+
+    > [!NOTE]
+    > Karta **síť** se zobrazí jenom pro **standardní** nebo **vyhrazené** obory názvů. 
+
+    Ve výchozím nastavení je vybraná možnost **vybrané sítě** . Pokud nezadáte pravidlo brány firewall protokolu IP nebo na tuto stránku přidáte virtuální síť, bude přístup k oboru názvů ze všech sítí včetně veřejného Internetu (pomocí přístupového klíče). 
+
+    :::image type="content" source="./media/event-hubs-firewall/selected-networks.png" alt-text="Karta sítě – volba vybraných sítí" lightbox="./media/event-hubs-firewall/selected-networks.png":::    
+
+    Pokud vyberete možnost **všechny sítě** , centrum událostí přijme připojení z libovolné IP adresy (pomocí přístupového klíče). Toto nastavení odpovídá pravidlu, které přijímá rozsah IP adres 0.0.0.0/0. 
 
     ![Firewall – vybraná možnost všechny sítě](./media/event-hubs-firewall/firewall-all-networks-selected.png)
-1. Chcete-li omezit přístup k určitým sítím, vyberte možnost **vybrané sítě** v horní části stránky.
+1. Pokud chcete omezit přístup k určitým sítím, vyberte možnost **vybrané sítě** v horní části stránky, pokud už není vybraná.
 2. V části **Virtual Network** stránky vyberte možnost * * + Přidat existující virtuální síť * * *. Pokud chcete vytvořit novou virtuální síť, vyberte **+ vytvořit novou virtuální síť** . 
 
     ![Přidat existující virtuální síť](./media/event-hubs-tutorial-vnet-and-firewalls/add-vnet-menu.png)
@@ -77,6 +86,8 @@ V této části se dozvíte, jak pomocí Azure Portal přidat koncový bod služ
 
     ![Uložit síť](./media/event-hubs-tutorial-vnet-and-firewalls/save-vnet.png)
 
+    > [!NOTE]
+    > Pokud chcete omezit přístup ke konkrétním IP adresám nebo rozsahům, přečtěte si téma [Povolení přístupu z konkrétních IP adres nebo rozsahů](event-hubs-ip-filtering.md).
 
 ## <a name="use-resource-manager-template"></a>Použití šablony Resource Manageru
 

@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: tracking-python
-ms.openlocfilehash: e6965cef0257ee472c08b19e3a9b1c2ec2860128
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: e97671e9722051674e3760f11e784ab3291283c7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116906"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87415036"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Použití spravovaných identit pro App Service a Azure Functions
 
@@ -176,6 +176,15 @@ Když je web vytvořen, má následující další vlastnosti:
 ```
 
 Vlastnost tenantId určuje, do kterého tenanta Azure AD patří identita. PrincipalId je jedinečný identifikátor pro novou identitu aplikace. V rámci služby Azure AD má instanční objekt stejný název, jaký jste zadali App Service nebo Azure Functions instanci.
+
+Pokud potřebujete na tyto vlastnosti odkazovat v pozdější fázi šablony, můžete tak učinit prostřednictvím [ `reference()` funkce šablony](../azure-resource-manager/templates/template-functions-resource.md#reference) s `'Full'` příznakem, jako v tomto příkladu:
+
+```json
+{
+    "tenantId": "[reference(resourceId('Microsoft.Web/sites', variables('appName')), '2018-02-01', 'Full').identity.tenantId]",
+    "objectId": "[reference(resourceId('Microsoft.Web/sites', variables('appName')), '2018-02-01', 'Full').identity.principalId]",
+}
+```
 
 ## <a name="add-a-user-assigned-identity"></a>Přidání uživatelsky přiřazené identity
 

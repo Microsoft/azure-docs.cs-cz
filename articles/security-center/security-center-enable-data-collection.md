@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: f7aca2820e599c4f3dad364f1ea14eadc634a548
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c6a779deef3ed1dc0a4d5e83c38f483776adf6fe
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519710"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387366"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Shromažďování dat v Azure Security Center
 Security Center shromažďuje data z vašich virtuálních počítačů Azure, virtuálních počítačů a kontejnerů IaaS a jiných než Azure (včetně místních) počítačů, které monitorují chyby zabezpečení a hrozby. Data se shromažďují pomocí Log Analytics agenta, který čte různé konfigurace a protokoly událostí související se zabezpečením z počítače a kopíruje data do pracovního prostoru pro účely analýzy. Příklady takových dat: typ a verze operačního systému, protokoly operačního systému (protokoly událostí systému Windows), spuštěné procesy, název počítače, IP adresy a přihlášený uživatel.
@@ -211,15 +211,17 @@ Security Center nainstaluje rozšíření agenta Log Analytics vedle sebe na st�
     - Pokud máte prostředí, ve kterém je agent Log Analytics nainstalovaný na klientských pracovních stanicích a vytváření sestav do existujícího pracovního prostoru Log Analytics, Projděte si seznam [operačních systémů podporovaných Azure Security Center](security-center-os-coverage.md) , abyste se ujistili, že je váš operační systém podporovaný. Další informace najdete v tématu [existující zákazníci Log Analytics](./faq-azure-monitor-logs.md).
  
 ### <a name="turn-off-automatic-provisioning"></a>Vypnout automatické zřizování<a name="offprovisioning"></a>
-Automatické zřizování z prostředků můžete kdykoli vypnout vypnutím tohoto nastavení v zásadách zabezpečení. 
+Vypnutí automatického zřizování agenta Log Analytics:
 
+1. V nabídce Security Center na portálu vyberte **cenové & nastavení**.
+2. Vyberte příslušné předplatné.
 
-1. Vraťte se do hlavní nabídky Security Center a vyberte zásady zabezpečení.
-2. Na řádku předplatného, pro které chcete zakázat Automatické zřizování, klikněte na **Upravit nastavení** .
-3. Na stránce **zásady zabezpečení – shromažďování dat** v části **Automatické zřizování** vyberte **vypnuto**.
-4. Vyberte **Uložit**.
+   ![Výběr předplatného][7]
 
-   ![Zakázat Automatické zřizování][6]
+3. Vyberte **shromažďování dat**.
+4. V části **Automatické zřizování**vyberte **vypnuto** a zakažte Automatické zřizování.
+5. Vyberte **Uložit**. 
+
 
 Pokud je Automatické zřizování zakázané (vypnuté), výchozí oddíl konfigurace pracovního prostoru se nezobrazí.
 

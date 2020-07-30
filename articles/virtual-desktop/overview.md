@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 07/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 26be41361a861795a9897442d9a0cc8bb14c1450
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6ff1f20314d79c507c696325d19c83e10ec4513f
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292590"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386568"
 ---
-# <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop? 
+# <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop?
 
 Virtuální plocha Windows je služba virtualizace plochy a aplikací, která běží v cloudu.
 
@@ -78,7 +78,7 @@ K podpoře virtuálního klienta Windows potřebuje vaše infrastruktura tyto v�
   * Azure AD Connect (pro hybridní organizace)
   * Azure AD Domain Services (pro hybridní nebo cloudové organizace)
 * Předplatné Azure, které obsahuje virtuální síť, která buď obsahuje nebo je připojená k Windows serveru Active Directory
-  
+
 Virtuální počítače Azure, které vytvoříte pro virtuální počítače s Windows, musí být:
 
 * [Standardní](../active-directory-domain-services/active-directory-ds-comparison.md) služba AD připojená k doméně nebo k ní [připojená](../active-directory/devices/hybrid-azuread-join-plan.md). Virtuální počítače nemůžou být připojené k Azure AD.
@@ -105,7 +105,7 @@ Virtuální plocha Windows podporuje následující klienti vzdálené plochy:
 * [Web](connect-web.md)
 * [macOS](connect-macos.md)
 * [iOS](connect-ios.md)
-* [Android (Preview)](connect-android.md)
+* [Android](connect-android.md)
 
 > [!IMPORTANT]
 > Virtuální počítač s Windows nepodporuje klienta připojení k aplikacím RemoteApp a vzdálené ploše (RADC) ani klienta Připojení ke vzdálené ploše (MSTSC).
@@ -128,7 +128,7 @@ Virtuální počítač s Windows podporuje následující image operačních sys
 
 Virtuální počítač s Windows nepodporuje image operačního systému x86 (32-bit), Windows 10 Enterprise N nebo Windows 10 Enterprise KN. Windows 7 také nepodporuje žádná profilová řešení založená na VHD nebo VHDX, která jsou hostovaná na spravovaných Azure Storage z důvodu omezení velikosti sektoru.
 
-Dostupné možnosti automatizace a nasazení závisí na tom, který operační systém a jakou verzi si zvolíte, jak je znázorněno v následující tabulce: 
+Dostupné možnosti automatizace a nasazení závisí na tom, který operační systém a jakou verzi si zvolíte, jak je znázorněno v následující tabulce:
 
 |Operační systém|Galerie imagí Azure|Ruční nasazení virtuálního počítače|Integrace šablon Azure Resource Manager|Zřizování fondů hostitelů na Azure Marketplace|
 |--------------------------------------|:------:|:------:|:------:|:------:|

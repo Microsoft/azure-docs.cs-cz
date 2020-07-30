@@ -9,16 +9,16 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 219d2b972089f9d3b7f84caa8b527474ac241c4f
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a1f977cef614a52853407c0d0665399f1a249c53
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374163"
+ms.locfileid: "87422058"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>Přechod na metriky v Azure Monitor
 
-Azure Storage teď integruje metriky do Azure Monitor platformy. Od **31. srpna 2023** analýza úložiště metriky, označované také jako *klasické metriky* , budou vyřazeny. Pokud používáte klasické metriky, nezapomeňte přejít na metriky v Azure Monitor před tímto datem. Tento článek vám pomůže provést přechod.
+Azure Storage teď integruje metriky do Azure Monitor platformy. Tento článek vám pomůže provést přechod.
 
 ## <a name="steps-to-complete-the-transition"></a>Postup dokončení přechodu
 

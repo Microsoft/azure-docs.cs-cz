@@ -4,19 +4,19 @@ description: Tato stránka popisuje některé běžné limity prostředků DTU p
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
-ms.custom: references_regions
+ms.custom: seo-lt-2019 sqldbrb=1 references_regions
 ms.devlang: ''
 ms.topic: conceptual
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
-ms.date: 04/17/2020
-ms.openlocfilehash: 4377be82dfdb66ab7186d4472c8b1f5453b47809
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 07/28/2020
+ms.openlocfilehash: 0fd875b2c02f5d61663339ac523fd6733732ad01
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325113"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420987"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>Omezení prostředků pro elastické fondy pomocí modelu nákupu DTU
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -38,9 +38,11 @@ V případě Azure SQL Database elastických fondů se v následujících tabulk
 > [!IMPORTANT]
 > Pokyny a požadavky pro škálování najdete v tématu [škálování elastického fondu](elastic-pool-scale.md) .
 
+Limity prostředků jednotlivých databází v elastických fondech jsou obecně stejné jako pro izolované databáze mimo fondy založené na DTU a vrstvě služeb. Například maximální počet souběžných pracovních procesů pro databázi S2 je 120 pracovních procesů. Maximální počet souběžných pracovních procesů pro databázi ve fondu Standard je tedy 120 pracovních procesů, pokud je maximální počet DTU na databázi ve fondu 50 DTU (což je ekvivalentem S2).
+ 
+Prostředky poskytované elastickému fondu můžou přesáhnout prostředky poskytované do izolované databáze mimo elastický fond pro stejný počet DTU. To znamená, že využití eDTU elastického fondu může být menší než součet využití DTU napříč databázemi v rámci fondu v závislosti na vzorech úloh. Například v extrémním případě s pouze jednou databází v elastickém fondu, kde využití DTU databáze je 100%, je možné, že využití eDTU fondu činí 50% pro určité vzory úloh. K tomu může dojít i v případě, že nebyla nastavena žádná explicitní maximální DTU na databázi. V takovém případě je spotřeba DTU databáze ve fondu omezená stejným způsobem jako využití DTU izolované databáze s odpovídajícím cílem služby.
+
 > [!NOTE]
-> Limity prostředků jednotlivých databází v elastických fondech jsou obecně stejné jako pro izolované databáze mimo fondy založené na DTU a vrstvě služeb. Například maximální počet souběžných pracovních procesů pro databázi S2 je 120 pracovních procesů. Maximální počet souběžných pracovních procesů pro databázi ve fondu Standard je tedy 120 pracovních procesů, pokud je maximální počet DTU na databázi ve fondu 50 DTU (což je ekvivalentem S2).
->
 > Omezení počtu prostředků úložiště na jeden fond v každé z následujících tabulek nezahrnuje úložiště tempdb a log.
 
 ### <a name="basic-elastic-pool-limits"></a>Základní limity elastického fondu

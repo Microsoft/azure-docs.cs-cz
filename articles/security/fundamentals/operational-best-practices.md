@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: ec4d91d90a952805781d6d38a0fc8a8fcef84f39
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 496d99b3d871c66e2557e1f384bb4480cd8b0831
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283465"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423146"
 ---
 # <a name="azure-operational-security-best-practices"></a>Osvědčené postupy pro provozní zabezpečení Azure
 Tento článek poskytuje sadu provozních osvědčených postupů pro ochranu vašich dat, aplikací a dalších prostředků v Azure.
@@ -55,7 +55,7 @@ Na portálu pro registraci Azure můžete zajistit, aby kontaktní údaje správ
 ## <a name="organize-azure-subscriptions-into-management-groups"></a>Uspořádání předplatných Azure do skupin pro správu
 Pokud má vaše organizace mnoho předplatných, můžete potřebovat způsob, jak efektivně u těchto předplatných spravovat přístup, zásady a dodržování předpisů. [Skupiny pro správu Azure](/azure/governance/management-groups/create) poskytují úroveň rozsahu, který je nad rámec předplatných. Své odběry uspořádáte do kontejnerů označovaných jako skupiny pro správu a podmínky zásad správného řízení se vztahují na skupiny pro správu. Všechna předplatná v rámci skupiny pro správu automaticky dědí podmínky, které se na příslušnou skupinu pro správu vztahují.
 
-Můžete vytvořit flexibilní strukturu skupin pro správu a odběrů do adresáře. Každému adresáři je přiřazena jedna skupina pro správu nejvyšší úrovně s názvem kořenová skupina pro správu. Tato kořenová skupina pro správu je integrovaná do hierarchie tak, aby pod ní spadaly všechny skupiny pro správu a všechna předplatná. Kořenová skupina pro správu umožňuje použití globálních zásad a přiřazení RBAC na úrovni adresáře.
+Můžete vytvořit flexibilní strukturu skupin pro správu a odběrů do adresáře. Každému adresáři je přiřazena jedna skupina pro správu nejvyšší úrovně s názvem kořenová skupina pro správu. Tato kořenová skupina pro správu je integrovaná do hierarchie tak, aby pod ní spadaly všechny skupiny pro správu a všechna předplatná. Kořenová skupina pro správu umožňuje použití globálních zásad a přiřazení rolí Azure na úrovni adresáře.
 
 Zde jsou některé osvědčené postupy pro používání skupin pro správu:
 
