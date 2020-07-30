@@ -3,15 +3,15 @@ title: Zobrazení nákupu rezervací Azure a transakcí refundace
 description: Zjistěte, jak zobrazit nákup rezervací Azure a transakce refundace.
 author: yashesvi
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 05/14/2020
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 0767ec7b4815fa7aadfef2bd6204627c30173993
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 988dd057834f6eb19dfd75a868c2893aefb61435
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715345"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290771"
 ---
 # <a name="view-reservation-purchase-and-refund-transactions"></a>Zobrazení nákupu rezervací a transakcí refundace
 

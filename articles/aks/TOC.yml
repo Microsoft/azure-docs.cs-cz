@@ -52,8 +52,12 @@
     - name: Přístup a identita
       href: concepts-identity.md
     - name: Zabezpečení
-      href: concepts-security.md
-      items: null
+      items:
+        - name: Zabezpečení pro aplikace a clustery
+          href: concepts-security.md
+        - name: Mechanismy zabezpečení služby Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
     - name: Sítě
       href: concepts-network.md
     - name: Storage

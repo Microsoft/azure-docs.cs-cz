@@ -14,6 +14,13 @@
           href: ./kubernetes/policy-samples.md
         - name: Servery s podporou služby Arc
           href: ./servers/policy-samples.md
+- name: Koncepty
+  items:
+    - name: Zabezpečení
+      items:
+        - name: Mechanismy zabezpečení služby Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./servers/security-controls-policy.md
 - name: Návody
   items:
     - name: Kubernetes s podporou služby Arc
