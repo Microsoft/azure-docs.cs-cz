@@ -2,19 +2,21 @@
 title: Kvóty služeb a dostupnost oblastí
 description: Kvóty, omezení a dostupnost oblastí služby Azure Container Instances.
 ms.topic: article
-ms.date: 03/01/2019
-ms.openlocfilehash: b3e7f2f67d806bd2fca74f58d446b0de9a4b8f44
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/22/2020
+ms.openlocfilehash: eaaa8e0b2d72aaea546a1bc351da40932c1deb14
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77117905"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384820"
 ---
 # <a name="quotas-and-limits-for-azure-container-instances"></a>Kvóty a omezení pro Azure Container Instances
 
 Všechny služby Azure zahrnují určitá výchozí omezení a kvóty pro prostředky a funkce. Tento článek podrobně popisuje výchozí kvóty a omezení pro Azure Container Instances.
 
 Dostupnost výpočetních prostředků, paměti a prostředků úložiště pro Azure Container Instances se liší podle oblasti a operačního systému. Podrobnosti najdete v tématu [dostupnost prostředků pro Azure Container Instances](container-instances-region-availability.md).
+
+Pomocí rozhraní API pro [využití seznamu](/rest/api/container-instances/location/listusage) můžete zkontrolovat aktuální využití kvóty v oblasti pro předplatné.
 
 ## <a name="service-quotas-and-limits"></a>Kvóty a omezení služeb
 
