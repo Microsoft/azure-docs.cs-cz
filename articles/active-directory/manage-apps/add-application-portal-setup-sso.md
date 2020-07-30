@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b19427070d982918584c13c25518cffe55497000
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 2f8f19e6b98143bb48430decdd51f5626e72d422
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223325"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387281"
 ---
 # <a name="quickstart-set-up-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Rychlý Start: nastavení jednotného přihlašování (SSO) pro aplikaci ve vašem tenantovi Azure Active Directory (Azure AD)
 
@@ -55,6 +55,8 @@ Nastavení jednotného přihlašování pro aplikaci:
 
 1. Proces konfigurace aplikace pro použití Azure AD pro jednotné přihlašování založené na SAML se liší v závislosti na aplikaci. K dispozici je odkaz na pokyny pro GitHub. Pokyny pro další aplikace najdete v tématu [kurzy pro integraci SaaSch aplikací s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/).
 1. Postupujte podle pokynů průvodce pro nastavení jednotného přihlašování pro aplikaci. Mnoho aplikací má specifické požadavky na odběr pro funkce jednotného přihlašování. Například GitHub vyžaduje předplatné Enterprise.
+    > [!TIP]
+    > Další informace o možnostech konfigurace SAML najdete v tématu [Konfigurace jednotného přihlašování založeného na SAML](configure-saml-single-sign-on.md).
 
     :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="Snímek obrazovky s možností jednotného přihlašování v podnikovém předplatném na stránce s cenami GitHubu.":::
 
