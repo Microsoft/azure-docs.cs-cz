@@ -7,13 +7,13 @@ ms.date: 07/07/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.custom: mqtt
-ms.openlocfilehash: 08df3bce9d1ecce4d4b0cdfc3034355feef6a4ba
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mqtt, devx-track-javascript
+ms.openlocfilehash: 92b28b89d181de368ef1e39eb695be2e1fad6c37
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003368"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423518"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>Kurz: vytvoření a připojení klientské aplikace k aplikaci Azure IoT Central (Node.js)
 
@@ -337,7 +337,6 @@ Můžete zjistit, jak zařízení reaguje na příkazy a aktualizace vlastností
 
 Jako vývojář zařízení teď jste se seznámili se základy vytváření zařízení pomocí Node.js, což je několik navrhovaných dalších kroků:
 
-* Naučte se, jak připojit reálné zařízení k IoT Central v tématu [připojení zařízení IoT DevKit k vaší aplikaci Azure IoT Central](./howto-connect-devkit.md) .
 * Přečtěte si, [co jsou šablony zařízení?](./concepts-device-templates.md) Další informace o roli šablon zařízení při implementaci kódu zařízení.
 * Další informace o registraci zařízení pomocí IoT Central a o tom, jak IoT Central zabezpečují připojení zařízení, najdete v tématu věnovaném [připojení k Azure IoT Central](./concepts-get-connected.md) .
 
