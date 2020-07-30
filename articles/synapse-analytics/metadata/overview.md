@@ -9,12 +9,12 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: c41c3346d04dd1fc00a7ddb9e7fea66f619995e6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c11a0ccb08f03775a07716e6c547d849cda347dd
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496042"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387332"
 ---
 # <a name="azure-synapse-analytics-shared-metadata"></a>Sdílená metadata Azure synapse Analytics
 
@@ -40,7 +40,7 @@ Model Shared metadata podporuje následující vzor pro moderní datové sklady 
 
 Synchronizace objektů probíhá asynchronně. Objekty budou mít mírné zpoždění v průběhu několika sekund, dokud se nezobrazí v kontextu SQL. Jakmile se zobrazí, můžou se dotazovat, ale ne aktualizovat ani měnit moduly SQL, které k nim mají přístup.
 
-## <a name="which-metadata-objects-are-shared"></a>Které objekty metadat se sdílejí
+## <a name="shared-metadata-objects"></a>Sdílené objekty metadat
 
 Spark umožňuje vytvářet databáze, externí tabulky, spravované tabulky a zobrazení. Vzhledem k tomu, že zobrazení Spark vyžadují pro zpracování definování příkazu Spark SQL modul Spark, a nemůže je zpracovat modulem SQL, sdílí se s modulem SQL pracovního prostoru jenom databáze a jejich obsažené externí a spravované tabulky, které používají formát úložiště Parquet. Zobrazení Spark se sdílí jenom mezi instancemi fondů Spark.
 
