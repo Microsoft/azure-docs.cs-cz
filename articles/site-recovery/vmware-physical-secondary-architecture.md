@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: b0a46dcf8fe298494a53713f122b1bda8ce07e5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b16a0edc1549a1b4d8ef5ba53d8b795f6d74e07
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73954572"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87418317"
 ---
 # <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>Architektura pro replikaci VMware/fyzických serverů do sekundární místní lokality
 
@@ -30,6 +30,24 @@ Tento článek popisuje architekturu a procesy používané při nastavení repl
 **Hlavní cílový server** | Umístěný v sekundární lokalitě | Na hlavní cílový server se ukládají replikovaná data. Přijímá data z procesního serveru, vytváří repliku počítače v sekundární lokalitě a ukládá body pro uchovávání dat.<br/><br/> Počet hlavních cílových serverů, které potřebujete, závisí na počtu počítačů, které chráníte.<br/><br/> Pokud chcete po obnovení vrátit služby do primární lokality, potřebujete hlavní cílový server i tam. Na tento server je třeba nainstalovat Unified Agent.
 **VMware ESX/ESXi a server vCenter** |  Virtuální počítače jsou hostované na hostitelích ESX nebo ESXi. Hostitelé se spravují pomocí serveru vCenter. | Pro replikaci virtuálních počítačů VMware budete potřebovat infrastrukturu VMware.
 **Virtuální počítače / fyzické servery** |  Nástroj Unified Agent nainstalovaný na virtuálních počítačích nebo fyzických serverech VMware, které chcete replikovat. | Agent funguje jako zprostředkovatel komunikace mezi všemi součástmi.
+
+## <a name="set-up-outbound-network-connectivity"></a>Nastavení odchozího připojení k síti
+
+Aby mohla Site Recovery fungovat podle očekávání, musíte upravit odchozí síťové připojení, aby bylo možné prostředí replikovat.
+
+> [!NOTE]
+> Site Recovery nepodporuje připojení k síti pomocí ověřovacího proxy serveru.
+
+### <a name="outbound-connectivity-for-urls"></a>Odchozí připojení pro adresy URL
+
+Pokud k řízení odchozího připojení používáte proxy server brány firewall založený na adrese URL, povolte přístup k těmto adresám URL:
+
+| **Název**                  | **Komerční**                               | **Státní správa**                                 | **Popis** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Umožňuje zápis dat z virtuálního počítače do účtu úložiště mezipaměti ve zdrojové oblasti. |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Zajišťuje autorizaci a ověřování pro adresy URL služby Site Recovery. |
+| Replikace               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Umožňuje komunikaci virtuálního počítače se službou Site Recovery. |
+| Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Umožňuje virtuálnímu počítači zapisovat data monitorování a diagnostiky Site Recovery. |
 
 ## <a name="replication-process"></a>Proces replikace
 

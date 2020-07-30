@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0339d9d47752c194eeda96cd2df4859d6b97518b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9d4f293f3835e26def97aa2f52dd0c42d9137c7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338285"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421718"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Správa účtů pro nouzový přístup v Azure AD
 
@@ -56,7 +56,7 @@ Nejméně jeden z účtů pro nouzový přístup by však neměl mít stejný me
 
 ### <a name="exclude-at-least-one-account-from-conditional-access-policies"></a>Vyloučení aspoň jednoho účtu ze zásad podmíněného přístupu
 
-V naléhavosti nechcete, aby zásada pro odstranění problému mohla blokovat váš přístup. Ze všech zásad podmíněného přístupu by se měl vyloučit aspoň jeden účet pro nouzový přístup. Pokud jste povolili [základní zásady](../conditional-access/baseline-protection.md), měli byste vyloučit účty pro nouzový přístup.
+V naléhavosti nechcete, aby zásada pro odstranění problému mohla blokovat váš přístup. Ze všech zásad podmíněného přístupu by se měl vyloučit aspoň jeden účet pro nouzový přístup.
 
 ## <a name="federation-guidance"></a>Pokyny federace
 
@@ -72,7 +72,7 @@ Pokud používáte hesla, ujistěte se, že účty obsahují silná hesla, kter�
 
 Organizace by měly monitorovat aktivitu přihlášení a auditu z mimořádných účtů a aktivovat oznámení ostatním správcům. Když monitorete aktivitu na účtech s oddělovači, můžete ověřit, že tyto účty jsou používány pouze pro účely testování nebo k skutečným mimořádným událostem. Pomocí služby Azure Log Analytics můžete monitorovat protokoly přihlášení a aktivovat e-maily a upozornění serveru SMS vašim správcům, když se přihlásí účty se systémem Break.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 1. [Odešlete přihlašovací protokoly služby Azure AD](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics) , aby se Azure monitor.
 
@@ -109,14 +109,14 @@ Organizace by měly monitorovat aktivitu přihlášení a auditu z mimořádnýc
 
         ![logika výstrahy](./media/directory-emergency-access/alert-image2.png)
 
-    1. Vyberte **Done** (Hotovo). Nyní můžete zobrazit Odhadované měsíční náklady na tuto výstrahu.
+    1. Vyberte **Hotovo**. Nyní můžete zobrazit Odhadované měsíční náklady na tuto výstrahu.
 1. Vyberte skupinu akcí, které má výstraha informovat. Pokud ho chcete vytvořit, přečtěte si téma [Vytvoření skupiny akcí](#create-an-action-group).
 1. Chcete-li upravit e-mailové oznámení odeslané členům skupiny akcí, vyberte akce v části **vlastní akce**.
 1. V části **Podrobnosti o výstraze**zadejte název pravidla výstrahy a přidejte volitelný popis.
 1. Nastavte **úroveň závažnosti** události. Doporučujeme, abyste ji nastavili na **kritickou (závažnost 0)**.
 1. V části **Povolit pravidlo při vytváření**ponechte nastavenou **hodnotu Ano**.
 1. Chcete-li vypnout výstrahy pro určitou dobu, zaškrtněte políčko **potlačit výstrahy** a zadejte dobu čekání před opětovným odesláním výstrahy a potom vyberte **Uložit**.
-1. Klikněte na **vytvořit pravidlo výstrahy**.
+1. Klikněte na **Vytvořit pravidlo upozornění**.
 
 ### <a name="create-an-action-group"></a>Vytvoření skupiny akcí
 

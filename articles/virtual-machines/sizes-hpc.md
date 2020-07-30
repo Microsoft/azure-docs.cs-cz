@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: c347f637083d8dfdf39cbd032df97bc52973465f
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: c02b0d63db3a761f52c9ea15e6fc6ba3356cd4be
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372565"
+ms.locfileid: "87421361"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>Vysoce výkonné výpočetní velikosti virtuálních počítačů
 
@@ -46,9 +46,9 @@ Toto rozhraní umožňuje, aby instance s podporou RDMA komunikovaly přes síť
 
 - **Ovladače InfiniBand a RDMA** – na virtuálních počítačích s povolenou InfiniBand jsou k povolení RDMA potřeba příslušné ovladače. V systému Linux jsou image virtuálních počítačů CentOS-HPC na webu Marketplace předem nakonfigurované s příslušnými ovladači. Image virtuálních počítačů s Ubuntu se dají nakonfigurovat pomocí správných ovladačů podle [pokynů uvedených tady](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351). U virtuálních počítačů s podporou SR-IOV a N-Series je možné pomocí [rozšíření INFINIBANDDRIVERLINUX VM](./extensions/hpc-compute-infiniband-linux.md) nainstalovat ovladače Mellanox OFED a povolit InfiniBand. Přečtěte si další informace o povolení InfiniBand pro úlohy prostředí [HPC](./workloads/hpc/overview.md)s podporou RDMA.
 
-V systému Windows [rozšíření virtuálního počítače InfiniBandDriverWindows](./extensions/hpc-compute-infiniband-windows.md) nainstaluje ovladače síťové technologie Windows (na virtuálních počítačích bez SR-IOV) nebo ovladače Mellanox OFED (na virtuálních počítačích s SR-IOV) pro připojení RDMA. V některých nasazeních instancí A8 a A8 se rozšíření HpcVmDrivers přidá automaticky. Všimněte si, že rozšíření virtuálního počítače HpcVmDrivers je zastaralé; nebude aktualizován.
+   V systému Windows [rozšíření virtuálního počítače InfiniBandDriverWindows](./extensions/hpc-compute-infiniband-windows.md) nainstaluje ovladače síťové technologie Windows (na virtuálních počítačích bez SR-IOV) nebo ovladače Mellanox OFED (na virtuálních počítačích s SR-IOV) pro připojení RDMA. V některých nasazeních instancí A8 a A8 se rozšíření HpcVmDrivers přidá automaticky. Všimněte si, že rozšíření virtuálního počítače HpcVmDrivers je zastaralé; nebude aktualizován.
 
-Pokud chcete přidat rozšíření virtuálního počítače do virtuálního počítače, můžete použít rutiny [Azure PowerShell](/powershell/azure/) . Další informace najdete v tématu [rozšíření a funkce virtuálních počítačů](./extensions/overview.md). Můžete také pracovat s rozšířeními pro virtuální počítače nasazené v [modelu nasazení Classic](/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic).
+   Pokud chcete přidat rozšíření virtuálního počítače do virtuálního počítače, můžete použít rutiny [Azure PowerShell](/powershell/azure/) . Další informace najdete v tématu [rozšíření a funkce virtuálních počítačů](./extensions/overview.md). Můžete také pracovat s rozšířeními pro virtuální počítače nasazené v [modelu nasazení Classic](/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic).
 
 - **MPI** – velikosti virtuálních počítačů s povoleným rozhraním SR-IOV v Azure (HBv2,, HC, NCv3, NDv2) umožňují téměř jakýkoli charakter MPI pro použití s Mellanox OFED.
 V případě virtuálních počítačů s podporou SR-IOV podporované implementace MPI používají ke komunikaci mezi virtuálními počítači rozhraní Microsoft Network Direct (ND). Proto jsou podporovány pouze verze Microsoft MPI (MS-MPI) 2012 R2 nebo novější a Intel MPI 5. x. Novější verze (2017, 2018) běhové knihovny Intel MPI mohou nebo nemusí být kompatibilní s ovladači Azure RDMA.
@@ -98,6 +98,6 @@ Azure poskytuje několik možností pro vytváření clusterů virtuálních po�
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o optimalizaci aplikace HPC pro Azure a některých příkladů v [úlohách HPC](./workloads/hpc/overview.md) 
+- Přečtěte si další informace o optimalizaci aplikací HPC pro Azure a některých příkladů v [úlohách HPC](./workloads/hpc/overview.md).
 
-- Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.
+- Přečtěte si o nejnovějších oznámeních a některých příkladech HPC a výsledcích na [blogu Azure COMPUTE tech Community](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).

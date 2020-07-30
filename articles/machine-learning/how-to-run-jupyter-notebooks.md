@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: c794b87a88cec20b75923e1f251c1e309a43ef1c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 861fcabbfca07cb342fda42ea2425fa290a1598e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319588"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386448"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Spouštění poznámkových bloků Jupyter ve vlastním pracovním prostoru
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,7 +30,7 @@ Podívejte se, jak můžete:
 * Změna prostředí poznámkového bloku
 * Vyhledání podrobností o výpočetních instancích použitých ke spouštění vašich poznámkových bloků
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://aka.ms/AMLFree).
 * Machine Learning pracovní prostor. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
@@ -185,11 +185,20 @@ Tyto akce resetují stav poznámkového bloku a obnoví všechny proměnné v po
 Poznámkový blok automaticky vyhledá všechny jádra Jupyter nainstalované na připojené výpočetní instanci.  Přidání jádra do výpočetní instance:
 
 1. Na panelu nástrojů poznámkového bloku vyberte [**otevřít terminál**](#terminal) .
-1. Pomocí okna terminálu vytvořte nové prostředí.
+1. Pomocí okna terminálu vytvořte nové prostředí.  Například kód uvedený níže vytvoří `newenv` :
+    ```shell
+    conda create --name newenv
+    ```
 1. Aktivujte prostředí.  Například po vytvoření `newenv` :
 
     ```shell
-    source activate newenv
+    conda activate newenv
+    ```
+1. Instalace balíčku PIP a ipykernel do nového prostředí a vytvoření jádra pro tento conda ENV
+
+    ```shell
+    conda install pip
+    conda install ipykernel
     python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
     ```
 

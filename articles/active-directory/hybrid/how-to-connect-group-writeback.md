@@ -11,12 +11,12 @@ ms.date: 06/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7992563bdfb318867e963ed4f371998bafbbbcdb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8c8fb54261f51d74f02b7b79c27f7a2043426686
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019909"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385139"
 ---
 # <a name="azure-ad-connect-group-writeback"></a>Zpětný zápis skupin Azure AD Connect
 
@@ -40,7 +40,7 @@ Pokud chcete povolit zpětný zápis skupin, použijte následující postup:
 6. Na **stránce zpětný zápis**vyberte organizační jednotku (OU) služby Active Directory pro ukládání objektů synchronizovaných ze sady Office 365 do vaší místní organizace a potom klikněte na tlačítko **Další**.
 7. Na stránce **připraveno** ke konfiguraci klikněte na **Konfigurovat**.
 8. Po dokončení průvodce klikněte na tlačítko **ukončit** na stránce Konfigurace byla dokončena.
-9. Otevřete Windows PowerShell na serveru Azure Active Directory Connect a spusťte následující příkazy.
+9. Otevřete Windows PowerShell jako správce na serveru Azure Active Directory Connect a spusťte následující příkazy.
 
 ```Powershell
 $AzureADConnectSWritebackAccountDN =  <MSOL_ account DN>

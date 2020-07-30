@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9b6753a0aa9e79624b9b972264611fd31f2bba8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c706de8a7638c16f3778d0d5295069c13b79d98
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764821"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387264"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>Jednotné přihlašování SAML pro místní aplikace s proxy aplikací
 
@@ -47,7 +47,7 @@ Níže uvedené diagramy protokolu popisují posloupnost jednotného přihlašov
 
 4. Jako metodu jednotného přihlašování vyberte **SAML** .
 
-5. Nejdřív nastavte jednotné přihlašování SAML pro práci v podnikové síti. Na stránce **nastavit jednotné přihlašování pomocí SAML** otevřete záhlaví **základní konfigurace SAML** a vyberte jeho ikonu pro **Úpravy** (tužka). Použijte postup v části [zadání základní konfigurace SAML](configure-single-sign-on-non-gallery-applications.md#step-1-edit-the-basic-saml-configuration) pro konfiguraci ověřování založeného na SAML pro aplikaci.
+5. Nejdřív nastavte jednotné přihlašování SAML pro práci v podnikové síti, v části základní konfigurace SAML v tématu [Konfigurace jednotného přihlašování založeného na](configure-saml-single-sign-on.md) SAML pro konfiguraci ověřování založeného na SAML pro aplikaci.
 
 6. Přidejte do aplikace alespoň jednoho uživatele a ujistěte se, že testovací účet má přístup k aplikaci. Když jste připojení k podnikové síti, použijte testovací účet a zjistěte, jestli máte k aplikaci jednotné přihlašování. 
 

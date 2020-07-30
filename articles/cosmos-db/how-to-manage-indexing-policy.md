@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 04/28/2020
 ms.author: tisande
-ms.custom: tracking-python
-ms.openlocfilehash: 8b41a92f16fe7d71c17b6460289db76bf02c62ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: tracking-python, devx-track-javascript
+ms.openlocfilehash: 02e9dff4b00fb3ad3ecd4d12c4a7f17a03ed048d
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261507"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422194"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Správa zásad indexování ve službě Azure Cosmos DB
 
@@ -350,7 +350,7 @@ V Azure Cosmos DB můžete zásady indexování aktualizovat pomocí kterékoli 
 
 Kontejnery Azure Cosmos ukládají své zásady indexování jako dokument JSON, který vám Azure Portal umožňuje přímo upravit.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. Vytvořte nový účet Azure Cosmos nebo vyberte existující účet.
 
@@ -752,4 +752,4 @@ response = database_client.replace_container(container_client, container['partit
 Další informace o indexování najdete v následujících článcích:
 
 - [Přehled indexování](index-overview.md)
-- [Zásady indexování](index-policy.md)
+- [Zásada indexování](index-policy.md)

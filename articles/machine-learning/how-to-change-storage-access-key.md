@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: 1cb9600393fe50226da1efcef550cbb8b26f7f14
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c6b8f9d7f99d49f65a45d0e09623ef2f0e1217f2
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321585"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387060"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Znovu vygenerovat přístupové klíče účtu úložiště
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,9 +26,9 @@ Naučte se, jak změnit přístupové klávesy pro účty Azure Storage použív
 Z bezpečnostních důvodů možná budete muset změnit přístupové klávesy pro účet Azure Storage. Po opětovném vygenerování přístupového klíče je nutné aktualizovat Azure Machine Learning, aby používala nový klíč. Azure Machine Learning může používat účet úložiště pro úložiště modelů i jako úložiště dat.
 
 > [!IMPORTANT]
-> Přihlašovací údaje registred s úložištěm dat se ukládají do vašich Azure Key Vault přidružených k pracovnímu prostoru. Pokud máte u svého Key Vault povolené [obnovitelné odstranění](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete) , nezapomeňte při aktualizaci přihlašovacích údajů postupovat podle tohoto článku. Zrušení registrace úložiště dat a jeho opětovné registrace za stejným názvem se nezdaří.
+> Přihlašovací údaje registred s úložištěm dat se ukládají do vašich Azure Key Vault přidružených k pracovnímu prostoru. Pokud máte u svého Key Vault povolené [obnovitelné odstranění](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview) , nezapomeňte při aktualizaci přihlašovacích údajů postupovat podle tohoto článku. Zrušení registrace úložiště dat a jeho opětovné registrace za stejným názvem se nezdaří.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v článku o [Vytvoření pracovního prostoru](how-to-manage-workspace.md) .
 

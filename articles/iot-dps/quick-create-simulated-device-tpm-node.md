@@ -1,6 +1,6 @@
 ---
-title: Rychlé zprovoznění – zřízení simulovaného zařízení TPM pro Azure IoT Hub pomocí Node. js
-description: Rychlý Start – vytvoření a zřízení simulovaného zařízení TPM pomocí sady Node. js SDK pro zařízení pro Azure IoT Hub Device Provisioning Service (DPS). V tomto rychlém startu se používají jednotlivé registrace.
+title: Rychlé zprovoznění – zřízení simulovaného zařízení TPM do Azure IoT Hub pomocí Node.js
+description: Rychlý Start – vytvoření a zřízení simulovaného zařízení TPM pomocí sady Node.js SDK pro zařízení pro Azure IoT Hub Device Provisioning Service (DPS). V tomto rychlém startu se používají jednotlivé registrace.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2018
@@ -11,25 +11,26 @@ ms.custom:
 - mvc
 - amqp
 - mqtt
-ms.openlocfilehash: 45e6fac971d7ccf57d6f9bae96a08ccaee023df3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+- devx-track-javascript
+ms.openlocfilehash: 58adb3e8216fdda1f276760b103e02bf7de6e12e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81687248"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422126"
 ---
-# <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Rychlý Start: vytvoření a zřízení simulovaného zařízení TPM pomocí sady SDK pro zařízení Node. js pro IoT Hub Device Provisioning Service
+# <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Rychlý Start: vytvoření a zřízení simulovaného zařízení TPM pomocí sady Node.js SDK pro zařízení pro IoT Hub Device Provisioning Service
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-tpm](../../includes/iot-dps-selector-quick-create-simulated-device-tpm.md)]
 
-V tomto rychlém startu vytvoříte simulované zařízení IoT na počítači s Windows. Simulované zařízení zahrnuje simulátor čipu TPM jako modul hardwarového zabezpečení (HSM). Pomocí ukázkového kódu zařízení Node. js můžete propojit toto simulované zařízení se službou IoT Hub s využitím individuální registrace ve službě Device Provisioning (DPS).
+V tomto rychlém startu vytvoříte simulované zařízení IoT na počítači s Windows. Simulované zařízení zahrnuje simulátor čipu TPM jako modul hardwarového zabezpečení (HSM). Pomocí ukázkového kódu zařízení Node.js můžete propojit toto simulované zařízení se službou IoT Hub s využitím individuální registrace ve službě Device Provisioning (DPS).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Přečtěte si [Koncepty automatického zřizování](concepts-auto-provisioning.md).
 - Dokončení [nastavení IoT Hub Device Provisioning Service s Azure Portal](./quick-setup-auto-provision.md).
 - Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Node. js v 4.0 +](https://nodejs.org).
+- [Node.js v 4.0 +](https://nodejs.org).
 - [Git](https://git-scm.com/download/).
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]

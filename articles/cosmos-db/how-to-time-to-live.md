@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 03/27/2020
 ms.author: anfeldma
-ms.openlocfilehash: d145892c1fa0d71b462c5aab42ba89685d7a91a9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-javascript
+ms.openlocfilehash: e4ab560366a2d00773f9b186663831321b18566f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282292"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87416515"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Konfigurace času na živé v Azure Cosmos DB
 
@@ -201,7 +202,7 @@ Kromě nastavení výchozí hodnoty TTL (Time to Live) na kontejneru můžete na
 
 * Pokud je hodnota TTL na úrovni kontejneru zakázaná, bude pole TTL u této položky ignorováno, dokud nebude hodnota TTL znovu povolena v kontejneru.
 
-### <a name="azure-portal"></a><a id="portal-set-ttl-item"></a>portál Azure
+### <a name="azure-portal"></a><a id="portal-set-ttl-item"></a>Azure Portal
 
 Chcete-li povolit dobu provozu na položce, použijte následující postup:
 

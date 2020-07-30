@@ -4,12 +4,13 @@ description: Nasazení a konfigurace Ethereemé sítě konsorcia Ethereem pro v�
 ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: d75b5348c49728d2a796257fa4000f6c3a36831d
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f0b7d056d37ffb11945a5c50e2705b5d74402007
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124920"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386108"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Nasazení šablony řešení Ethereem pro kontrolu pravopisu pro účely úřadu v Azure
 
@@ -29,7 +30,7 @@ Než se rozhodnete použít šablonu řešení Ethereem pro kontrolu pravopisu, 
 Možnost | Model služby | Běžný případ použití
 -------|---------------|-----------------
 Šablony řešení | IaaS | Šablony řešení jsou Azure Resource Manager šablony, pomocí kterých můžete zřídit plně nakonfigurovanou topologii sítě blockchain. Šablony nasazují a konfigurují Microsoft Azure COMPUTE, sítě a služby úložiště pro daný typ sítě blockchain. Šablony řešení jsou poskytovány bez smlouvy o úrovni služeb. Pro podporu použijte [stránku s otázkou Microsoft Q&](/answers/topics/azure-blockchain-workbench.html) .
-[Azure Blockchain Service](../service/overview.md) | PaaS | Služba Azure blockchain ve verzi Preview zjednodušuje vytváření, správu a řízení sítí konsorcia blockchain. Využijte Azure blockchain Service pro řešení, která vyžadují PaaS, správu konsorcia nebo jejich soukromí a transakce.
+[Služba Azure Blockchain](../service/overview.md) | PaaS | Služba Azure blockchain ve verzi Preview zjednodušuje vytváření, správu a řízení sítí konsorcia blockchain. Využijte Azure blockchain Service pro řešení, která vyžadují PaaS, správu konsorcia nebo jejich soukromí a transakce.
 [Azure Blockchain Workbench](../workbench/overview.md) | IaaS a PaaS | Azure blockchain Workbench Preview je kolekce služeb a funkcí Azure, které vám pomůžou vytvářet a nasazovat aplikace blockchain pro sdílení obchodních procesů a dat s jinými organizacemi. Využijte Azure blockchain Workbench pro vytváření prototypů řešení blockchain nebo blockchain aplikace pro zkoušku konceptu. Azure Blockchain Workbench se poskytuje bez smlouvy o úrovni služeb. Pro podporu použijte [stránku s otázkou Microsoft Q&](/answers/topics/azure-blockchain-workbench.html) .
 
 ## <a name="solution-architecture"></a>Architektura řešení
@@ -149,7 +150,7 @@ Parametr | Popis | Příklad hodnoty
 ID člena konsorcia | ID přidružené ke každému členovi zapojenému do sítě konsorcia. Slouží ke konfiguraci adresních prostorů IP adres, aby se zabránilo kolizi. V případě privátní sítě by ID člena mělo být jedinečné v různých organizacích ve stejné síti.  Jedinečné ID člena je nutné i v případě, že je stejná organizace nasazena do více oblastí. Poznamenejte si hodnotu tohoto parametru, protože ho budete potřebovat sdílet s ostatními členy, abyste se ujistili, že nedochází k žádné kolizi. Platný rozsah je 0 až 255. | 0
 ID sítě | ID sítě pro nasazování sítě konsorcia Ethereem Každá Ethereem síť má své vlastní ID sítě, přičemž 1 je identifikátor veřejné sítě. Platný rozsah je 5 až 999 999 999. | 10101010
 Adresa Ethereem správce | Adresa účtu Ethereem, která se používá pro účast ve správě PoA. Pomocí MetaMask můžete vygenerovat Ethereem adresu. |
-Rozšířené možnosti | Rozšířené možnosti pro nastavení Ethereem | Povolit
+Rozšířené možnosti | Rozšířené možnosti pro nastavení Ethereem | Povolení
 Nasazení pomocí veřejné IP adresy | Pokud je vybraná privátní virtuální síť, síť se nasadí za bránu virtuální sítě a odebere přístup partnerských vztahů. U privátní virtuální sítě musí všichni členové používat bránu virtuální sítě, aby připojení bylo kompatibilní. | Veřejná IP adresa
 Limit bloku plynů | Počáteční limit bloku plynů sítě. | 50000000
 Zablokovat dobu trvání uzávěrky (s) | Frekvence, s níž budou vytvořeny prázdné bloky, pokud v síti nejsou žádné transakce. Vyšší frekvence bude mít rychlejší, ale zvýšené náklady na úložiště. | 15
@@ -165,7 +166,7 @@ Monitorování umožňuje nakonfigurovat prostředek protokolu pro vaši síť. 
 
 Parametr | Popis | Příklad hodnoty
 ----------|-------------|--------------
-Monitorování | Možnost povolení monitorování | Povolit
+Monitorování | Možnost povolení monitorování | Povolení
 Připojit k existujícím protokolům Azure Monitor | Možnost vytvoření nové instance protokolu Azure Monitor nebo připojení k existující instanci | Vytvořit nový
 Umístění | Oblast, ve které je nasazena nová instance | East US
 Existující ID pracovního prostoru Log Analytics (připojit k existujícím protokolům Azure Monitor = připojit existující)|ID pracovního prostoru existující instance protokolu Azure Monitor||Není k dispozici
@@ -173,7 +174,7 @@ Existující primární klíč Log Analytics (Připojte se k existujícím proto
 
 Vyberte **OK**.
 
-### <a name="summary"></a>Shrnutí
+### <a name="summary"></a>Souhrn
 
 Kliknutím na Souhrn zkontrolujte zadané vstupy a spusťte základní ověřování před nasazením. Před nasazením si můžete stáhnout šablonu a parametry.
 
@@ -686,7 +687,7 @@ Teď, když je vaše inteligentní smlouva nasazená, můžete odeslat transakci
 
 Podpora WebAssembly je už povolená na nově nasazených sítích PoA. Umožňuje vývoj inteligentních kontraktů v jakémkoli jazyce, který předává do webového sestavení (Rust, C, C++). Další informace najdete v tématech [Přehled parity WebAssembly](https://wiki.parity.io/WebAssembly-Home) a [tutorial z parity tech](https://github.com/paritytech/pwasm-tutorial) .
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 ### <a name="i-notice-there-are-many-transactions-on-the-network-that-i-didnt-send-where-are-these-coming-from"></a>Všimněte si, že síť obsahuje mnoho transakcí, které jsem neodeslal. Odkud pocházejí?
 

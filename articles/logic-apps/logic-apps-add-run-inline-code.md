@@ -6,12 +6,13 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: article
 ms.date: 05/14/2019
-ms.openlocfilehash: f7a134fd026b42d1666b8310b3fb0c10642c7bb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: a1c3828a4b1899ff4b22c0a9520f676add21fe02
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75453497"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420120"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Přidat a spustit fragmenty kódu pomocí vloženého kódu v Azure Logic Apps
 
@@ -32,7 +33,7 @@ V tomto článku se ukázková aplikace logiky aktivuje při přijetí nového e
 
 ![Příklad přehledu](./media/logic-apps-add-run-inline-code/inline-code-example-overview.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -205,7 +206,7 @@ V tomto tématu `workflowContext` má objekt tyto vlastnosti, ke kterým může 
 
 <a name="add-parameters"></a>
 
-## <a name="add-parameters"></a>Přidat parametry
+## <a name="add-parameters"></a>Přidání parametrů
 
 V některých případech může být nutné explicitně vyžadovat, aby akce **vloženého kódu** zahrnovala výsledky triggeru nebo konkrétní akce, které váš kód odkazuje jako závislosti, přidáním parametrů **Trigger** nebo **Actions** . Tato možnost je užitečná v případech, kdy se odkazované výsledky nenašly v době běhu.
 
@@ -216,7 +217,7 @@ Předpokládejme například, že máte kód, který odkazuje na výsledek **Sel
 
 Chcete-li přidat tyto parametry, otevřete seznam **Přidat nový parametr** a vyberte požadované parametry:
 
-   ![Přidat parametry](./media/logic-apps-add-run-inline-code/inline-code-action-add-parameters.png)
+   ![Přidání parametrů](./media/logic-apps-add-run-inline-code/inline-code-action-add-parameters.png)
 
    | Parametr | Popis |
    |-----------|-------------|

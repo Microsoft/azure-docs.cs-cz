@@ -8,19 +8,19 @@ ms.service: load-balancer
 ms.topic: overview
 ms.date: 07/07/2020
 ms.author: allensu
-ms.openlocfilehash: 7fe7c1473579c62b110548a2c5e98f9bdfaf6bf9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 1ab0fd2ff4a2105cdfc4a19b7307cd9817878156
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131459"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421786"
 ---
 # <a name="backend-pool-management"></a>Správa fondu back-endu
 Back-end fond je kritickou součástí nástroje pro vyrovnávání zatížení. Back-end fond definuje skupinu prostředků, které budou obsluhovat provoz pro dané pravidlo vyrovnávání zatížení.
 
 Existují dva způsoby konfigurace fondu back-endu:
 * Síťová karta (NIC)
-* ID prostředku kombinované IP adresy a Virtual Network (VNET)
+* Kombinace ID prostředku IP adresy a Virtual Network (VNET)
 
 Nakonfigurujte svůj fond back-end podle síťových adaptérů při použití existujících virtuálních počítačů a služby Virtual Machine Scale Sets. Tato metoda vytváří nejpřímější propojení mezi vaším prostředkem a back-end fondem. 
 

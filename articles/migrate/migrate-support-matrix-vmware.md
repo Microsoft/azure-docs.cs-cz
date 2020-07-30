@@ -3,12 +3,12 @@ title: Podpora pro vyhodnocení VMware v Azure Migrate
 description: Přečtěte si o podpoře vyhodnocení virtuálních počítačů VMware pomocí posouzení serveru Azure Migrate.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 9c981306b7e026dcc811618302ecbd3e80b6486d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9c9b1f7687d1ab1af36ac603501ecbaa7affd9b6
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321424"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387026"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Matice podpory pro vyhodnocení VMware 
 
@@ -82,7 +82,7 @@ Kromě zjišťování počítačů může posouzení serveru zjišťovat aplikac
 
 **Požadavek** | **Podrobnosti**
 --- | --- 
-**Před nasazením** | Měli byste mít Azure Migrate projekt, pomocí nástroje pro vyhodnocení serveru přidaný do projektu.<br/><br/>  Vizualizace závislostí nasadíte po nastavení zařízení Azure Migrate pro zjišťování místních počítačů VMWare.<br/><br/> [Naučte](create-manage-projects.md) se, jak poprvé vytvořit projekt.<br/> [Přečtěte si, jak](how-to-assess.md) přidat nástroj pro vyhodnocení do existujícího projektu.<br/> [Přečtěte si, jak](how-to-set-up-appliance-vmware.md) nastavit zařízení Azure Migrate pro posouzení virtuálních počítačů VMware.
+**Před nasazením** | Měli byste mít Azure Migrate projekt, pomocí nástroje pro vyhodnocení serveru přidaný do projektu.<br/><br/>  Vizualizace závislostí nasadíte po nastavení zařízení Azure Migrate pro zjišťování místních počítačů VMware.<br/><br/> [Naučte](create-manage-projects.md) se, jak poprvé vytvořit projekt.<br/> [Přečtěte si, jak](how-to-assess.md) přidat nástroj pro vyhodnocení do existujícího projektu.<br/> [Přečtěte si, jak](how-to-set-up-appliance-vmware.md) nastavit zařízení Azure Migrate pro posouzení virtuálních počítačů VMware.
 **Podporované počítače** | Aktuálně se podporuje jenom pro virtuální počítače VMware.
 **Virtuální počítače s Windows** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64 bitů).
 **vCenter Server přihlašovací údaje** | Vizualizace závislosti vyžaduje účet vCenter Server s přístupem jen pro čtení a oprávnění povolená pro operace hosta Virtual Machines >.

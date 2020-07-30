@@ -3,14 +3,13 @@ title: Mapa aplikace v Azure Application Insights | Microsoft Docs
 description: Monitorování složitých topologií aplikace s mapou aplikace
 ms.topic: conceptual
 ms.date: 03/15/2019
-ms.custom: devx-track-javascript
 ms.reviewer: sdash
-ms.openlocfilehash: 7e4035e382aaa3f8b5d2327054a50a5360c60bfa
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b99998a7b1bcb2348a1a73696661de7cf8b44b85
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367006"
+ms.locfileid: "87421293"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikace: třídění distribuovaných aplikací
 
@@ -82,9 +81,12 @@ Chcete-li zobrazit aktivní výstrahy a podkladová pravidla, která způsobují
 
 ![Snímek obrazovky s možností analýzy](media/app-map/alerts-view.png)
 
-## <a name="set-cloud-role-name"></a>Nastavit název cloudové role
+## <a name="set-or-override-cloud-role-name"></a>Nastavení nebo přepsání názvu cloudové role
 
-Mapa aplikace používá vlastnost **název cloudové role** k identifikaci komponent na mapě. Sada Application Insights SDK automaticky přidá vlastnost název cloudové role do telemetrie emitované součástmi. Sada SDK například přidá název webu nebo název role služby do vlastnosti název cloudové role. Existují však případy, kdy je vhodné přepsat výchozí hodnotu. Přepsání názvu cloudové role a změna toho, co se zobrazí na mapě aplikace:
+Mapa aplikace používá vlastnost **název cloudové role** k identifikaci komponent na mapě. Ruční nastavení nebo přepsání názvu cloudové role a změna toho, co se zobrazí na mapě aplikace:
+
+> [!NOTE]
+> Sada Application Insights SDK nebo Agent automaticky přidá vlastnost název cloudové role do telemetrie emitované součástmi v prostředí Azure App Service.
 
 # <a name="netnetcore"></a>[.NET/. NetCore](#tab/net)
 
@@ -266,7 +268,7 @@ Pokud máte potíže s tím, jak mapa aplikace funguje podle očekávání, zkus
 
 3. Pokud používáte Azure Functions s jazykem C#, upgradujte na [Functions v2](../../azure-functions/functions-versions.md).
 
-4. Ověřte, že je [název cloudové role](#set-cloud-role-name) správně nakonfigurovaný.
+4. Ověřte, že je [název cloudové role](#set-or-override-cloud-role-name) správně nakonfigurovaný.
 
 5. Pokud vám chybí závislost, ujistěte se, že je v seznamu [automaticky shromažďovaných závislostí](./auto-collect-dependencies.md). Pokud ne, můžete ji stále najít ručně pomocí [volání TrackDependency](./api-custom-events-metrics.md#trackdependency).
 
@@ -282,7 +284,7 @@ Pokud to chcete opravit, budete muset změnit instrumentaci a správně nastavit
 
 * Typ závislosti by měl představovat logický typ závislosti. Například protokol HTTP, SQL nebo Azure Blob jsou typické typy závislostí. Neměl by obsahovat jedinečné identifikátory.
 
-* Název cloudové role je popsaný v [části výše](#set-cloud-role-name).
+* Název cloudové role je popsaný v [části výše](#set-or-override-cloud-role-name).
 
 ## <a name="portal-feedback"></a>Váš názor na portál
 

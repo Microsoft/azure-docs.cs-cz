@@ -3,18 +3,18 @@ title: 'Rychlý Start: odesílání vlastních událostí do webového koncovéh
 description: 'Rychlý Start: použijte Azure Event Grid a Azure Portal k publikování vlastního tématu a přihlášení k odběru událostí pro toto téma. Události jsou zpracovávány webovou aplikací.'
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 21c3d043925d328c671de19444b0fed1c6950bf1
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 592e2d6b7393da8cb55a457b022d6c2358048cfe
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115226"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421038"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>Rychlý Start: směrování vlastních událostí na webový koncový bod pomocí Azure Portal a Event Grid
 
 Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku vytvoříte pomocí webu Azure Portal vlastní téma, přihlásíte se k jeho odběru a aktivujete událost, abyste viděli výsledek. Obvykle odesíláte události do koncového bodu, který data události zpracuje a provede akce. Pro zjednodušení tohoto článku však budete události odesílat do webové aplikace, která shromažďuje a zobrazuje zprávy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [event-grid-register-provider-portal.md](../../includes/event-grid-register-provider-portal.md)]
@@ -44,7 +44,8 @@ Téma Event Gridu poskytuje uživatelsky definovaný koncový bod, do kterého o
 5. Po úspěšném nasazení zadejte **Event Grid témata** na panelu hledání a v rozevíracím seznamu vyberte **Event Grid témata** , jako jste to předtím. 
 6. Ze seznamu vyberte téma, které jste vytvořili. 
 
-    :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topic.png" alt-text="Vyberte své téma ze seznamu.":::  
+    :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topic.png" alt-text="Vyberte své téma ze seznamu.":::
+
 7. Zobrazí se stránka **Event Grid téma** pro vaše téma. Tuto stránku nechte otevřenou. Použijete ji později v rychlém startu. 
 
     :::image type="content" source="./media/custom-event-quickstart-portal/event-grid-topic-home-page.png" alt-text="Domovská stránka Event Gridho tématu":::
@@ -54,7 +55,7 @@ Před vytvořením předplatného pro vlastní téma vytvořte koncový bod pro 
 
 1. Na stránce článek vyberte **nasadit do Azure** a nasaďte řešení do svého předplatného. Na webu Azure Portal zadejte hodnoty pro parametry.
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"  alt="Button to Deploy to Aquent." /></a>
 1. Dokončení nasazení může trvat několik minut. Po úspěšném nasazení si webovou aplikaci prohlédněte, abyste se ujistili, že funguje. Ve webovém prohlížeči přejděte na: `https://<your-site-name>.azurewebsites.net`
 
     V případě neúspěšného nasazení si přečtěte chybovou zprávu. Důvodem může být to, že název webu je již obsazený. Znovu nasaďte šablonu a vyberte jiný název lokality. 

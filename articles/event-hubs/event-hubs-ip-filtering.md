@@ -3,14 +3,14 @@ title: Pravidla brány firewall pro Azure Event Hubs | Microsoft Docs
 description: Pomocí pravidel brány firewall povolte připojení z konkrétních IP adres do Azure Event Hubs.
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: 2b886aaaf40e5c82d9c7ac3ce5abeda8f54cad3b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a27c5981bb14c2ff98dfcb74692cf9db19a55137
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288045"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421497"
 ---
-# <a name="configure-ip-firewall-rules-for-an-azure-event-hubs-namespace"></a>Konfigurace pravidel brány firewall protokolu IP pro Azure Event Hubs obor názvů
+# <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>Povolení přístupu k oborům názvů Azure Event Hubs z konkrétních IP adres nebo rozsahů
 Ve výchozím nastavení jsou Event Hubs obory názvů přístupné z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na více než jenom na sadu IPv4 adres nebo rozsahů IPv4 adres v [CIDR (směrování mezi doménami bez třídy)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
 
 Tato funkce je užitečná ve scénářích, ve kterých by měl být Azure Event Hubs dostupný jenom z určitých dobře známých lokalit. Pravidla brány firewall umožňují konfigurovat pravidla pro příjem provozu pocházejících z konkrétních IPv4 adres. Pokud například používáte Event Hubs s využitím [Azure Express Route][express-route], můžete vytvořit **pravidlo brány firewall** , které umožní provoz jenom z vašich místních IP adres infrastruktury. 
@@ -37,20 +37,28 @@ Pravidla brány firewall protokolu IP se používají na úrovni oboru názvů E
 V této části se dozvíte, jak pomocí Azure Portal vytvořit pravidla brány firewall protokolu IP pro Event Hubs obor názvů. 
 
 1. V [Azure Portal](https://portal.azure.com)přejděte do **oboru názvů Event Hubs** .
-2. V nabídce vlevo vyberte možnost **sítě** . Pokud vyberete možnost **všechny sítě** , centrum událostí akceptuje připojení z libovolné IP adresy. Toto nastavení odpovídá pravidlu, které přijímá rozsah IP adres 0.0.0.0/0. 
+4. V části **Nastavení** v nabídce vlevo vyberte **sítě** . 
+
+    > [!NOTE]
+    > Karta **síť** se zobrazí jenom pro **standardní** nebo **vyhrazené** obory názvů. 
+
+    Ve výchozím nastavení je vybraná možnost **vybrané sítě** . Pokud nezadáte pravidlo brány firewall protokolu IP nebo přidáte virtuální síť na této stránce, přístup k oboru názvů se dá získat prostřednictvím veřejného Internetu (pomocí přístupového klíče). 
+
+    :::image type="content" source="./media/event-hubs-firewall/selected-networks.png" alt-text="Karta sítě – volba vybraných sítí" lightbox="./media/event-hubs-firewall/selected-networks.png":::    
+
+    Pokud vyberete možnost **všechny sítě** , centrum událostí přijme připojení z libovolné IP adresy (pomocí přístupového klíče). Toto nastavení odpovídá pravidlu, které přijímá rozsah IP adres 0.0.0.0/0. 
 
     ![Firewall – vybraná možnost všechny sítě](./media/event-hubs-firewall/firewall-all-networks-selected.png)
-1. Pokud chcete omezit přístup k určitým sítím a IP adresám, vyberte možnost **vybrané sítě** . V části **Brána firewall** postupujte podle následujících kroků:
+1. Pokud chcete omezit přístup ke konkrétním IP adresám, potvrďte, že je vybraná možnost **vybraná síť** . V části **Brána firewall** postupujte podle následujících kroků:
     1. Vyberte možnost **Přidat IP adresu klienta** a poskytněte vaší aktuální IP adrese přístup k oboru názvů. 
     2. Pro **Rozsah adres**zadejte konkrétní IPv4 adresu nebo rozsah adres IPv4 v zápisu CIDR. 
     3. Určete, zda chcete, aby **důvěryhodné služby společnosti Microsoft vynechal tuto bránu firewall**. 
 
-        > [!WARNING]
-        > Pokud zvolíte možnost **vybrané sítě** a nezadáte IP adresu nebo rozsah adres, bude služba umožňovat provoz ze všech sítí. 
-
         ![Firewall – vybraná možnost všechny sítě](./media/event-hubs-firewall/firewall-selected-networks-trusted-access-disabled.png)
 3. Nastavení uložte kliknutím na **Uložit** na panelu nástrojů. Počkejte několik minut, než se potvrzení zobrazí v oznámeních na portálu.
 
+    > [!NOTE]
+    > Pokud chcete omezit přístup k určitým virtuálním sítím, přečtěte si téma [Povolení přístupu z konkrétních sítí](event-hubs-service-endpoints.md).
 
 ## <a name="use-resource-manager-template"></a>Použití šablony Resource Manageru
 

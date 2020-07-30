@@ -9,18 +9,18 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7b844bcf45417fefc7dd78a26d5dae0b2ce03249
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8307f01e690536a71d98d5d5ca99f8f7a77a433f
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82982900"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87383915"
 ---
-# <a name="ingesting-data-into-azure-data-lake-storage-gen2"></a>Ingestování dat do Azure Data Lake Storage Gen2 
+# <a name="ingest-data-into-azure-data-lake-storage-gen2"></a>Ingestování dat do Azure Data Lake Storage Gen2 
 
 V tomto článku se dozvíte, jak ingestovat data z jednoho umístění do druhého v účtu úložiště Azure Data Lake Gen 2 (Azure Data Lake Gen 2) pomocí služby Azure synapse Analytics.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet Azure Storage**: Azure Data Lake Gen 2 použijete jako *zdrojové* úložiště dat. Pokud nemáte účet úložiště, přečtěte si článek [vytvoření Azure Storage účtu](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , kde najdete kroky pro jeho vytvoření.

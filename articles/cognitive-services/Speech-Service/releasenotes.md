@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 152907908f12a41679b3161e0c4b39348926399e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: f2aebee24c4de8a1bd92ad3db8e5d110184cbaee
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373789"
+ms.locfileid: "87415019"
 ---
 # <a name="speech-service-release-notes"></a>Poznámky k verzi služby Speech Service
 
@@ -28,20 +28,20 @@ ms.locfileid: "87373789"
 - **C#**: Přidání podpory pro přepis asynchronní konverzace. Další informace [najdete v dokumentaci.](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-async-conversation-transcription)  
 - **JavaScript**: přidání podpory rozpoznávání mluvčího pro [prohlížeč](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/browser/speaker-recognition) i [node.js](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/speaker-recognition).
 - **JavaScript**: Přidání podpory pro automatické rozpoznání jazyka/ID jazyka. Další informace [najdete v dokumentaci.](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-javascript)
-- **Cíl-C**: Přidali jsme podporu pro konverzaci s více zařízeními a Přepisy konverzace. 
+- **Cíl-C**: Přidali jsme podporu pro [konverzaci s více zařízeními](https://docs.microsoft.com/azure/cognitive-services/speech-service/multi-device-conversation) a [přepisy konverzace](https://docs.microsoft.com/azure/cognitive-services/speech-service/conversation-transcription). 
 - **Python**: Přidání komprimované zvukové podpory pro Python v systému Windows a Linux. Další informace [najdete v dokumentaci.](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams) 
 
 **Opravy chyb**
 - **Vše**: Opravili jsme problém, který způsobil, že se KeywordRecognizer po rozpoznávání nepřesunuly proudy vpřed.
 - **Vše**: Opravili jsme problém, který způsobil, že datový proud získaný z KeywordRecognitionResult neobsahuje klíčové slovo.
 - **Vše**: Opravili jsme problém, který SendMessageAsync skutečně neposílá zprávu po skončení čekání na tento kabel.
-- **Vše**: Opravili jsme chybu v rozhraních API rozpoznávání mluvčího, když uživatelé spouštějí několik VoiceProfileClient:: SpeakerRecEnrollProfileAsync a nečekali na jejich dokončení.
+- **All**: Opravili jsme chybu v rozhraních API rozpoznávání mluvčího, když uživatelé volají metodu VoiceProfileClient:: SpeakerRecEnrollProfileAsync víckrát a nečekali na dokončení volání.
 - **All**: pevný povolit protokolování souborů v třídách VoiceProfileClient a SpeakerRecognizer.
 - **JavaScript**: byl vyřešen [problém](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/74) s omezením při minimalizaci prohlížeče.
 - **JavaScript**: byl opraven [problém](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/78) s nevrácenou pamětí v datových proudech.
 - **JavaScript**: přidání do mezipaměti odpovědí protokolu OCSP z NodeJS.
 - **Java**: Opravili jsme problém, který způsobil, že pole BigInteger vždycky vrátí hodnotu 0.
-- **iOS**: opraveno a [problém](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/702) s publikováním aplikací založených na sadě Speech SDK v iOS App Storu.
+- **iOS**: Opravili jsme [problém](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/702) s publikováním aplikací založených na sadě Speech SDK v iOS App Storu.
 
 **ukázky**
 - **C++**: [sem](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/cpp/windows/console/samples/speaker_recognition_samples.cpp)přidejte vzorový kód pro rozpoznávání mluvčího.

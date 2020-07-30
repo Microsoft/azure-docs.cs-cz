@@ -1,6 +1,6 @@
 ---
-title: Registrace zařízení TPM do služby Azure Device Provisioning pomocí Node. js
-description: Rychlý Start – registrace zařízení TPM do Azure IoT Hub Device Provisioning Service (DPS) pomocí sady SDK služby pro Node. js V tomto rychlém startu se používají jednotlivé registrace.
+title: Registrace zařízení TPM do služby Azure Device Provisioning pomocí Node.js
+description: Rychlý Start – registrace zařízení TPM do Azure IoT Hub Device Provisioning Service (DPS) pomocí sady SDK služby Node.js V tomto rychlém startu se používají jednotlivé registrace.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -8,25 +8,25 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
-ms.custom: mvc
-ms.openlocfilehash: e21aaa20edf6d3a2f690bf9f77e8c9973a7b1c52
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: b0928b81ebf585e51eb9275c81df29918aa5e6a0
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77604924"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421939"
 ---
-# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-nodejs-service-sdk"></a>Rychlý Start: registrace zařízení TPM k IoT Hub Device Provisioning Service pomocí sady SDK služby pro Node. js
+# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-nodejs-service-sdk"></a>Rychlý Start: registrace zařízení TPM pro IoT Hub Device Provisioning Service pomocí sady SDK služby Node.js
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
-V tomto rychlém startu jste programově vytvořili jednotlivou registraci pro zařízení TPM ve službě Azure IoT Hub Device Provisioning Service pomocí sady SDK služby Node. js a ukázkové aplikace Node. js. Volitelně můžete simulované zařízení TPM zaregistrovat do služby zřizování pomocí této položky jednotlivé registrace.
+V tomto rychlém startu jste programově vytvořili jednotlivou registraci pro zařízení TPM ve službě Azure IoT Hub Device Provisioning Service pomocí sady SDK služby Node.js a ukázkové Node.js aplikace. Volitelně můžete simulované zařízení TPM zaregistrovat do služby zřizování pomocí této položky jednotlivé registrace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Dokončení [nastavení IoT Hub Device Provisioning Service pomocí Azure Portal](./quick-setup-auto-provision.md).
 - Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Node. js v 4.0 +](https://nodejs.org). V tomto rychlém startu se nainstaluje [sada SDK služby Node. js](https://github.com/Azure/azure-iot-sdk-node) níže.
+- [Node.js v 4.0 +](https://nodejs.org). V tomto rychlém startu se nainstaluje [sadaNode.js Service SDK](https://github.com/Azure/azure-iot-sdk-node) níže.
 - Ověřovací klíč (volitelné). Postupujte podle kroků v části [Vytvoření a zřízení simulovaného zařízení](quick-create-simulated-device.md) , dokud nezískáte klíč. Nevytvářejte jednotlivé registrace pomocí Azure Portal.
 
 ## <a name="create-the-individual-enrollment-sample"></a>Vytvoření ukázky jednotlivé registrace 
@@ -76,7 +76,7 @@ V tomto rychlém startu jste programově vytvořili jednotlivou registraci pro z
        ![Získání připojovacího řetězce služby zřizování z portálu](./media/quick-enroll-device-tpm-node/get-service-connection-string.png) 
 
 
-2. Potřebujete také ověřovací klíč pro vaše zařízení. Pokud jste vytvořili simulované zařízení TPM pomocí postupu v rychlém startu [Vytvoření a zřízení simulovaného zařízení](quick-create-simulated-device.md), použijte klíč vytvořený pro toto zařízení. V opačném případě můžete vytvořit ukázkový jednotlivý zápis pomocí následujícího ověřovacího klíče, který je součástí [sady SDK služby Node. js](https://github.com/Azure/azure-iot-sdk-node):
+2. Potřebujete také ověřovací klíč pro vaše zařízení. Pokud jste vytvořili simulované zařízení TPM pomocí postupu v rychlém startu [Vytvoření a zřízení simulovaného zařízení](quick-create-simulated-device.md), použijte klíč vytvořený pro toto zařízení. Jinak, pokud chcete vytvořit ukázkový jednotlivý zápis, můžete použít následující ověřovací klíč, který je k dispozici v sadě [Node.js Service SDK](https://github.com/Azure/azure-iot-sdk-node):
 
     ```
     AToAAQALAAMAsgAgg3GXZ0SEs/gakMyNRqXXJP1S124GUgtk8qHaGzMUaaoABgCAAEMAEAgAAAAAAAEAxsj2gUScTk1UjuioeTlfGYZrrimExB+bScH75adUMRIi2UOMxG1kw4y+9RW/IVoMl4e620VxZad0ARX2gUqVjYO7KPVt3dyKhZS3dkcvfBisBhP1XH9B33VqHG9SHnbnQXdBUaCgKAfxome8UmBKfe+naTsE5fkvjb/do3/dD6l4sGBwFCnKRdln4XpM03zLpoHFao8zOwt8l/uP3qUIxmCYv9A7m69Ms+5/pCkTu/rK4mRDsfhZ0QLfbzVI6zQFOKF/rwsfBtFeWlWtcuJMKlXdD8TXWElTzgh7JS4qhFzreL0c1mI0GCj+Aws0usZh7dLIVPnlgZcBhgy1SSDQMQ==
@@ -99,7 +99,7 @@ V tomto rychlém startu jste programově vytvořili jednotlivou registraci pro z
 Právě jste vytvořili jednotlivou registraci pro zařízení TPM. Pokud chcete zaregistrovat simulované zařízení, můžete pokračovat ve zbývajících krocích v tématu [Vytvoření a zřízení simulovaného zařízení](quick-create-simulated-device.md). Nezapomeňte přeskočit kroky k vytvoření jednotlivé registrace pomocí Azure Portal v tomto rychlém startu.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud plánujete prozkoumat ukázky služeb Node. js, neprovádějte čištění prostředků vytvořených v rámci tohoto rychlého startu. Pokud pokračovat nechcete, pomocí následujícího postupu odstraňte všechny prostředky vytvořené tímto rychlým startem.
+Pokud plánujete prozkoumat ukázky služby Node.js, neprovádějte čištění prostředků vytvořených v rámci tohoto rychlého startu. Pokud pokračovat nechcete, pomocí následujícího postupu odstraňte všechny prostředky vytvořené tímto rychlým startem.
 
 1. Zavřete na svém počítači okno výstupu ukázky v Node.js.
 1. Pokud jste vytvořili simulované zařízení TPM, zavřete okno simulátoru TPM.

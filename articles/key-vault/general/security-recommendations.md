@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 28b768e421ac72be363ab187312e52ba15d34970
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c541c848290988bb1f358f045abb2d0cd221de7
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83872994"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386754"
 ---
 # <a name="security-recommendations-for-azure-key-vault"></a>Doporučení k zabezpečení služby Azure Key Vault
 
@@ -30,7 +30,7 @@ Některá doporučení obsažená v tomto článku můžete automaticky monitoro
 
 | Doporučení | Komentáře | Security Center |
 |-|----|--|
-|Povolit obnovitelné odstranění | [Obnovitelné odstranění](overview-soft-delete.md) umožňuje obnovit odstraněné trezory a objekty trezoru. |  - |
+|Povolit obnovitelné odstranění | [Obnovitelné odstranění](soft-delete-overview.md) umožňuje obnovit odstraněné trezory a objekty trezoru. |  - |
 | Omezení přístupu k datům trezoru  | Sledujte princip nejnižších oprávnění a omezte, kteří členové vaší organizace mají přístup k datům trezoru. |  - |
 
 ## <a name="identity-and-access-management"></a>Správa identit a přístupu

@@ -1,16 +1,14 @@
 ---
 title: Možnosti sítí Azure Functions
 description: Přehled všech možností sítě, které jsou k dispozici v Azure Functions.
-author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
-ms.author: alkarche
-ms.openlocfilehash: 5a88570805a9fc23904bfe82f91813b3460d0b10
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 60258ef4aa3bbbbab69acd4f5106c774caa6f46f
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045950"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385938"
 ---
 # <a name="azure-functions-networking-options"></a>Možnosti sítí Azure Functions
 
@@ -134,13 +132,13 @@ Omezení odchozích IP adres jsou k dispozici v plánu Premium, App Service plá
 
 Když integrujete aplikaci funkcí v plánu Premium nebo App Service plánu s virtuální sítí, může aplikace ve výchozím nastavení dál provádět odchozí volání do Internetu. Přidáním nastavení aplikace `WEBSITE_VNET_ROUTE_ALL=1` vynutíte odeslání veškerého odchozího provozu do vaší virtuální sítě, kde je možné použít pravidla skupiny zabezpečení sítě k omezení provozu.
 
-## <a name="automation"></a>Automation
+## <a name="automation"></a>Automatizace
 Následující rozhraní API vám umožní programově spravovat integrace místní virtuální sítě:
 
 + **Azure CLI**: použijte [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) příkazy k přidání, výpisu nebo odebrání integrace místní virtuální sítě.  
 + **Šablony ARM**: integraci regionální virtuální sítě lze povolit pomocí šablony Azure Resource Manager. Úplný příklad najdete v tématu [Šablona pro rychlý Start pro funkce](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/).
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 [!INCLUDE [app-service-web-vnet-troubleshooting](../../includes/app-service-web-vnet-troubleshooting.md)]
 

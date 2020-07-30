@@ -8,13 +8,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.custom: mqtt
-ms.openlocfilehash: a7814970d4ffb051ab54c965d27394f925d79e59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mqtt, devx-track-javascript
+ms.openlocfilehash: 45637a093361a177de880788bb7eda69f365dad2
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81732326"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420800"
 ---
 # <a name="get-started-with-device-management-nodejs"></a>Začínáme se správou zařízení (Node.js)
 
@@ -34,7 +34,7 @@ Na konci tohoto kurzu máte dvě Node.js konzolové aplikace:
 
 * **dmpatterns_getstarted_service.js**, která volá přímou metodu v aplikaci simulovaného zařízení, zobrazuje odpověď a zobrazuje aktualizované hlášené vlastnosti.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Node.js verze 10.0. x nebo novější. [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) popisuje, jak nainstalovat Node.js pro tento kurz v systému Windows nebo Linux.
 

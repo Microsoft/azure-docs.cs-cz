@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: 02207f8b5cf8628c3b2bbb72ab8d38ca9a4a5731
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0e6229e38674651f3db068d30f68ef4c7e293c0a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504216"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386839"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Co je Synchronizace dat SQL pro Azure?
 
@@ -78,10 +78,10 @@ Synchronizace dat není preferovaným řešením pro následující scénáře:
 
 ## <a name="compare-with-transactional-replication"></a>Porovnání s transakční replikací
 
-| Synchronizace dat | Transakční replikace |
+| | Synchronizace dat | Transakční replikace |
 |---|---|---|
-| Výhody | – Aktivní – aktivní podpora<br/>– Obousměrné mezi místními a Azure SQL Database | – Nižší latence<br/>– Transakční konzistence<br/>-Opětovné použití existující topologie po migraci <br/>– Podpora spravované instance Azure SQL |
-| Nevýhody | – 5 min nebo větší latence<br/>-Žádná transakční konzistence<br/>– Vyšší dopad na výkon | -Nelze publikovat z Azure SQL Database <br/>– Náklady vysoké údržby |
+| **Výhody** | – Aktivní – aktivní podpora<br/>– Obousměrné mezi místními a Azure SQL Database | – Nižší latence<br/>– Transakční konzistence<br/>-Opětovné použití existující topologie po migraci <br/>– Podpora spravované instance Azure SQL |
+| **Nevýhody** | – 5 min nebo větší latence<br/>-Žádná transakční konzistence<br/>– Vyšší dopad na výkon | -Nelze publikovat z Azure SQL Database <br/>– Náklady vysoké údržby |
 
 ## <a name="get-started"></a>Začínáme 
 

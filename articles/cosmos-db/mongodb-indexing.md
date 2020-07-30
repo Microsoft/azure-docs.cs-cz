@@ -8,12 +8,13 @@ ms.topic: how-to
 ms.date: 06/16/2020
 author: timsander1
 ms.author: tisande
-ms.openlocfilehash: e0b14eefcc0b484c92faf1148ae2972f51b04d31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 473bc8677c5369833928eb4648f32bb146e83e65
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260691"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420647"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Správa indexování v rozhraní Azure Cosmos DB API pro MongoDB
 
@@ -23,7 +24,7 @@ Rozhraní API pro Azure Cosmos DB MongoDB využívá základní možnosti správ
 
 Rozhraní Azure Cosmos DB API pro MongoDB Server verze 3,6 automaticky indexuje `_id` pole, které nejde vyřadit. Automaticky vynutila jedinečnost `_id` pole na horizontálních oddílů klíč. V rozhraní Azure Cosmos DB API pro MongoDB, horizontálního dělení a indexování jsou oddělené koncepty. Nemusíte indexovat svůj horizontálních oddílů klíč. Pokud se ale u všech dalších vlastností v dokumentu jedná o společný filtr v dotazech, doporučujeme indexovat klíč horizontálních oddílů.
 
-Chcete-li indexovat další pole, použijte příkazy pro správu indexů MongoDB. Stejně jako v Azure Cosmos DB MongoDB rozhraní API pro MongoDB automaticky indexuje `_id` pole. Tato výchozí zásada indexování se liší od Azure Cosmos DB rozhraní SQL API, které ve výchozím nastavení indexuje všechna pole.
+Pokud chcete indexovat další pole, můžete použít příkazy MongoDB index-management. Stejně jako v Azure Cosmos DB MongoDB rozhraní API pro MongoDB automaticky indexuje `_id` pole. Tyto výchozí zásady indexování se liší od rozhraní SQL API služby Azure Cosmos DB, které ve výchozím nastavení indexuje všechna pole.
 
 Chcete-li použít řazení pro dotaz, je nutné vytvořit index pro pole použitá v operaci řazení.
 
@@ -134,7 +135,7 @@ Při zahájení vývoje může být užitečné vytvořit index zástupného zna
 Indexy zástupných znaků nepodporují žádné z následujících typů indexů nebo vlastností:
 
 - Kombinovanou
-- Hodnota TTL
+- TTL
 - Jedinečná
 
 Na **rozdíl od MongoDB**v rozhraní API služby Azure Cosmos DB pro MongoDB **nemůžete** použít indexy zástupných znaků pro:

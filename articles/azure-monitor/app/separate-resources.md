@@ -3,18 +3,18 @@ title: Jak navrhnout nasazení Application Insights – jeden vs mnoho prostřed
 description: Přímá telemetrie na různé prostředky pro vývoj, testování a produkční razítka.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 159a1c5554c0ac017bc9eeb2e9df65fddba334ba
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4f539862432fcdc67632e91caadf71d6584fbc3e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326541"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420562"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Kolik prostředků Application Insights mám nasadit
 
-Při vývoji další verze webové aplikace nechcete kombinovat [Application Insights](./app-insights-overview.md) telemetrii od nové verze a již vydané verze. Chcete-li předejít nejasnostem, zasílejte telemetrii z různých fází vývoje a oddělte Application Insights prostředky se samostatnými klíči instrumentace (instrumentační klíče). Aby bylo snazší změnit klíč instrumentace, protože verze se přesouvá z jedné fáze na jinou, může být užitečné nastavit ikey v kódu místo v konfiguračním souboru.
+Při vývoji další verze webové aplikace nechcete kombinovat [Application Insights](../../azure-monitor/app/app-insights-overview.md) telemetrii od nové verze a již vydané verze. Chcete-li předejít nejasnostem, zasílejte telemetrii z různých fází vývoje a oddělte Application Insights prostředky se samostatnými klíči instrumentace (instrumentační klíče). Aby bylo snazší změnit klíč instrumentace, protože verze se přesouvá z jedné fáze na jinou, může být užitečné nastavit ikey v kódu místo v konfiguračním souboru.
 
-(Pokud je váš systém cloudová služba Azure, existuje [Další metoda nastavení samostatné instrumentační klíče](./cloudservices.md).)
+(Pokud je váš systém cloudová služba Azure, existuje [Další metoda nastavení samostatné instrumentační klíče](../../azure-monitor/app/cloudservices.md).)
 
 ## <a name="about-resources-and-instrumentation-keys"></a>O prostředcích a klíčích instrumentace
 
@@ -35,7 +35,7 @@ Každý Application Insights prostředek obsahuje metriky, které jsou k dispozi
 
 ### <a name="other-things-to-keep-in-mind"></a>Další věci, které je potřeba vzít v úvahu
 
--   Je možné, že budete muset přidat vlastní kód, abyste zajistili, že jsou smysluplné hodnoty nastaveny do atributu [Cloud_RoleName](./app-map.md?tabs=net#set-cloud-role-name) . Bez smysluplných hodnot nastavených pro tento atribut nebudou fungovat *žádné* ze zkušeností portálu.
+-   Je možné, že budete muset přidat vlastní kód, abyste zajistili, že jsou smysluplné hodnoty nastaveny do atributu [Cloud_RoleName](./app-map.md?tabs=net#set-or-override-cloud-role-name) . Bez smysluplných hodnot nastavených pro tento atribut nebudou fungovat *žádné* ze zkušeností portálu.
 - V případě aplikací Service Fabric a klasických cloudových služeb sada SDK automaticky načte z prostředí role Azure a nastaví je. U všech ostatních typů aplikací je pravděpodobně budete muset nastavit explicitně.
 -   Prostředí živé metriky nepodporuje rozdělování podle názvu role.
 
@@ -58,7 +58,7 @@ protected void Application_Start()
 V tomto příkladu jsou instrumentační klíče pro různé prostředky umístěny v různých verzích konfiguračního souboru webu. Výměna konfiguračního souboru webu, který můžete provést jako součást skriptu pro vydání, zahodí cílový prostředek.
 
 ### <a name="web-pages"></a>Webové stránky
-IKey se také používá na webových stránkách vaší aplikace ve [skriptu, který jste získali v podokně rychlý Start](./javascript.md). Místo toho, aby se do skriptu nahlásilo, vygeneruje ho ze stavu serveru. Například v aplikaci ASP.NET:
+IKey se také používá na webových stránkách vaší aplikace ve [skriptu, který jste získali v podokně rychlý Start](../../azure-monitor/app/javascript.md). Místo toho, aby se do skriptu nahlásilo, vygeneruje ho ze stavu serveru. Například v aplikaci ASP.NET:
 
 ```javascript
 <script type="text/javascript">
@@ -86,14 +86,14 @@ Budete potřebovat klíče instrumentace všech prostředků, na které bude va�
 ## <a name="filter-on-build-number"></a>Filtrovat podle čísla sestavení
 Když publikujete novou verzi aplikace, budete chtít být schopni oddělit telemetrii od různých sestavení.
 
-Vlastnost verze aplikace můžete nastavit tak, aby bylo možné filtrovat výsledky [hledání](./diagnostic-search.md) a [Průzkumníka metrik](../platform/metrics-charts.md) .
+Vlastnost verze aplikace můžete nastavit tak, aby bylo možné filtrovat výsledky [hledání](../../azure-monitor/app/diagnostic-search.md) a [Průzkumníka metrik](../../azure-monitor/platform/metrics-charts.md) .
 
 Vlastnost verze aplikace se nastavuje několika různými způsoby.
 
 * Nastavit přímo:
 
     `telemetryClient.Context.Component.Version = typeof(MyProject.MyClass).Assembly.GetName().Version;`
-* Zabalte tento řádek do [inicializátoru telemetrie](./api-custom-events-metrics.md#defaults) , aby se zajistilo, že všechny instance TelemetryClient jsou nastavené konzistentně.
+* Zabalte tento řádek do [inicializátoru telemetrie](../../azure-monitor/app/api-custom-events-metrics.md#defaults) , aby se zajistilo, že všechny instance TelemetryClient jsou nastavené konzistentně.
 * [ASP.NET] Nastavte verzi v `BuildInfo.config` . Webový modul vybere z uzlu BuildLabel verzi. Zahrňte tento soubor do projektu a nezapomeňte nastavit vlastnost kopírovat vždy v Průzkumník řešení.
 
     ```XML
@@ -132,15 +132,14 @@ Pokud chcete sledovat verzi aplikace, ujistěte se, že proces Microsoft Build E
 </PropertyGroup>
 ```
 
-Pokud obsahuje informace o sestavení, webový modul Application Insights automaticky přidá položku **Verze aplikace** jako vlastnost pro každý předmět telemetrie. Díky tomu můžete při provádění [diagnostických hledání](./diagnostic-search.md) nebo při [zkoumání metrik](../platform/metrics-charts.md) filtrovat podle verze.
+Pokud obsahuje informace o sestavení, webový modul Application Insights automaticky přidá položku **Verze aplikace** jako vlastnost pro každý předmět telemetrie. Díky tomu můžete při provádění [diagnostických hledání](../../azure-monitor/app/diagnostic-search.md) nebo při [zkoumání metrik](../../azure-monitor/platform/metrics-charts.md) filtrovat podle verze.
 
 Všimněte si však, že číslo verze sestavení je generováno pouze pomocí Microsoft Build Engine, nikoli vývojářem Build ze sady Visual Studio.
 
 ### <a name="release-annotations"></a>Poznámky k verzi
-Pokud používáte Azure DevOps, můžete při každém vydání nové verze [získat značku poznámky](./annotations.md) přidanou do vašich grafů. 
+Pokud používáte Azure DevOps, můžete při každém vydání nové verze [získat značku poznámky](../../azure-monitor/app/annotations.md) přidanou do vašich grafů. 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Sdílené prostředky pro více rolí](./app-map.md)
-* [Vytvoření inicializátoru telemetrie pro odlišení typu | B – varianty](./api-filtering-sampling.md#add-properties)
-
+* [Sdílené prostředky pro více rolí](../../azure-monitor/app/app-map.md)
+* [Vytvoření inicializátoru telemetrie pro odlišení typu | B – varianty](../../azure-monitor/app/api-filtering-sampling.md#add-properties)

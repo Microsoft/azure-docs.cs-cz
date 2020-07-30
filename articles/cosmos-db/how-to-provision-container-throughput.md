@@ -6,20 +6,21 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/13/2019
 ms.author: mjbrown
-ms.openlocfilehash: 9167df9c763f4004324a3435ba1a2b0fd0171ac4
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.custom: devx-track-javascript
+ms.openlocfilehash: e02b169cbaf515217b0a9fdbaa844b9022fb4e12
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851677"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422160"
 ---
 # <a name="provision-standard-manual-throughput-on-an-azure-cosmos-container"></a>Zřízení standardní (ruční) propustnosti v kontejneru Azure Cosmos
 
 Tento článek vysvětluje, jak zřídit standardní (ruční) propustnost na kontejneru (kolekci, grafu nebo tabulky) v Azure Cosmos DB. Můžete zřídit propustnost v jednom kontejneru nebo [zřídit propustnost databáze](how-to-provision-database-throughput.md) a sdílet ji mezi kontejnery v rámci databáze. Propustnost můžete zřídit na kontejneru pomocí Azure Portal, rozhraní příkazového řádku Azure nebo sady Azure Cosmos DB SDK.
 
-## <a name="azure-portal"></a>portál Azure
+## <a name="azure-portal"></a>Azure Portal
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-sql-api-dotnet.md#create-account)nebo vyberte existující účet Azure Cosmos.
 

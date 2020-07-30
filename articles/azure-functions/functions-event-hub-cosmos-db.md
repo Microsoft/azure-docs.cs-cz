@@ -5,12 +5,13 @@ author: KarlErickson
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
-ms.openlocfilehash: d93d11f32ba5db9b0be38757d0f1456fc137a9ef
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-java
+ms.openlocfilehash: ef2b774195f522be3520850d2e6e7193e70dd4fb
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083051"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372446"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>Kurz: vytvoření funkce v Java pomocí triggeru centra událostí a výstupní vazby Azure Cosmos DB
 

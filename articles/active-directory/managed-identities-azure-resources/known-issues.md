@@ -17,12 +17,12 @@ ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: d8aa6cc7894b13789fe196e32c401128572346bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9b97edeb34e5d245d3bcf9018399f18b096b56f4
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019059"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420494"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Nejčastější dotazy a známé problémy se spravovanými identitami pro prostředky Azure
 
@@ -76,7 +76,7 @@ Hranice zabezpečení identity je prostředek, ke kterému je připojen. Napří
 
 ### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>Budou spravované identity znovu automaticky vytvořeny při přesunu předplatného do jiného adresáře?
 
-Ne. Pokud přesunete předplatné do jiného adresáře, budete ho muset ručně znovu vytvořit a znovu udělit přiřazení role Azure RBAC.
+Ne. Pokud přesunete předplatné do jiného adresáře, budete ho muset ručně znovu vytvořit a znovu udělit přiřazení rolí Azure.
 - Pro spravované identity přiřazené systémem: zakažte a znovu povolte. 
 - Pro spravované identity přiřazené uživateli: Odstraňte, znovu ho vytvořte a znovu připojte k potřebným prostředkům (např. virtuální počítače).
 

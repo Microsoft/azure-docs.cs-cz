@@ -1,16 +1,14 @@
 ---
 title: OpenAPI metadata v Azure Functions
 description: Přehled podpory OpenAPI v Azure Functions
-author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 03/23/2017
-ms.author: alkarche
-ms.openlocfilehash: 59425456d6d8f4dc426a20deef7b866b3eaa1df4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 499d4f685e3802fcc37c8a3050ae367207f192d2
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083064"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385819"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Podpora metadat OpenAPI 2,0 v Azure Functions (Preview)
 Podpora metadat OpenAPI 2,0 (dříve Swagger) v Azure Functions je funkce verze Preview, kterou můžete použít k zápisu definice OpenAPI 2,0 do aplikace Function App. Tento soubor pak můžete hostovat pomocí aplikace Function App.

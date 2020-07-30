@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: sudbalas
-ms.openlocfilehash: 76ceba11ffeb5569e250fab6bc47fe8faf019361
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 668154b5e54ed4d496d272e33e8fc7f378e75e8a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521101"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386261"
 ---
 # <a name="azure-key-vault-backup"></a>Zálohování Azure Key Vault
 
@@ -27,7 +27,7 @@ Azure Key Vault automaticky poskytuje funkce, které vám pomůžou zachovat dos
 
 Key Vault udržuje dostupnost ve scénářích havárií a automaticky převezme požadavky na spárované oblasti bez zásahu uživatele. Další informace najdete v tématu [Azure Key Vault dostupnost a redundance](https://docs.microsoft.com/azure/key-vault/general/disaster-recovery-guidance).
 
-Pokud chcete chránit před náhodným nebo škodlivým odstraněním tajných kódů, nakonfigurujte funkce ochrany obnovitelného odstranění a vyprázdnění v trezoru klíčů. Další informace najdete v tématu [přehled Azure Key Vaultho obnovitelného odstranění](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete).
+Pokud chcete chránit před náhodným nebo škodlivým odstraněním tajných kódů, nakonfigurujte funkce ochrany obnovitelného odstranění a vyprázdnění v trezoru klíčů. Další informace najdete v tématu [přehled Azure Key Vaultho obnovitelného odstranění](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview).
 
 ## <a name="limitations"></a>Omezení
 
@@ -39,7 +39,7 @@ Vezměte v úvahu také následující důsledky:
 * Při zálohování se vytvoří snímek v daném časovém okamžiku. Tajné kódy se můžou během zálohování prodloužit, což způsobilo neshodu šifrovacích klíčů.
 * Pokud překročíte omezení služby trezoru klíčů pro žádosti za sekundu, váš Trezor klíčů bude omezený a zálohování se nezdaří.
 
-## <a name="design-considerations"></a>Co vzít v úvahu při návrhu
+## <a name="design-considerations"></a>Aspekty návrhu
 
 Při zálohování objektu trezoru klíčů, jako je tajný klíč, klíč nebo certifikát, bude operace zálohování stahovat objekt jako zašifrovaný objekt BLOB. Tento objekt BLOB není možné dešifrovat mimo Azure. Pokud chcete získat použitelná data z tohoto objektu blob, musíte obnovit objekt blob do trezoru klíčů v rámci stejného předplatného Azure a [geografické oblasti Azure](https://azure.microsoft.com/global-infrastructure/geographies/).
 

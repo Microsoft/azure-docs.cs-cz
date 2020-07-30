@@ -6,16 +6,15 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 07/14/2020
-ms.openlocfilehash: 68416fa91f6b75fb3ef2b91c1297f13d84f2bdab
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 07/29/2020
+ms.openlocfilehash: dba47073a6676b17c091af048f583ca3e7712999
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292948"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420222"
 ---
-<a name="create-or-modify-an-offer"></a>Vytvoření nebo úprava nabídky
-=========================
+# <a name="create-or-modify-an-offer"></a>Vytvoření nebo úprava nabídky
 
 > [!NOTE]
 > Rozhraní API pro portál partnerů cloudu jsou integrovaná s a budou pokračovat v práci v partnerském centru. Přechod přináší malé změny. Projděte si změny uvedené v části [portál partnerů cloudu rozhraní API](./cloud-partner-portal-api-overview.md) , abyste zajistili, že kód pokračuje v práci po přechodu do partnerského centra. Rozhraní API CPP by se mělo používat jenom pro existující produkty, které už jsou integrované před přechodem do partnerského centra; nové produkty by měly používat rozhraní API pro odesílání v partnerském centru.
@@ -24,9 +23,7 @@ Toto volání aktualizuje konkrétní nabídku v rámci oboru názvů vydavatele
 
   `PUT https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>?api-version=2017-10-31`
 
-
-<a name="uri-parameters"></a>Parametry identifikátoru URI
---------------
+## <a name="uri-parameters"></a>Parametry identifikátoru URI
 
 |  **Název**         |  **Popis**                      |  **Datový typ**  |
 |  --------         |  ----------------                     |  -------------  |
@@ -35,8 +32,7 @@ Toto volání aktualizuje konkrétní nabídku v rámci oboru názvů vydavatele
 | verze-api       |  Nejnovější verze rozhraní API            |   Datum           |
 |  |  |  |
 
-<a name="header"></a>Hlavička
-------
+## <a name="header"></a>Hlavička
 
 |  **Název**        |  **Hodnota**               |
 |  ---------       |  ----------              | 
@@ -44,9 +40,7 @@ Toto volání aktualizuje konkrétní nabídku v rámci oboru názvů vydavatele
 | Autorizace    | `Bearer YOUR_TOKEN`      |
 |  |  |
 
-
-<a name="body-example"></a>Příklad textu
-------------
+## <a name="body-example"></a>Příklad textu
 
 Následující příklad vytvoří nabídku s hodnotami OfferId `contosovirtualmachine` .
 
@@ -143,7 +137,6 @@ Následující příklad vytvoří nabídku s hodnotami OfferId `contosovirtualm
       "version": 5
   }
 ```
-
 
 ### <a name="response"></a>Odpověď
 
@@ -268,7 +261,6 @@ Následující příklad vytvoří nabídku s hodnotami OfferId `contosovirtualm
 > [!NOTE]
 > Pokud chcete tuto nabídku upravit, přidejte do výše uvedené žádosti záhlaví **If-Match** nastavené na *. Použijte stejný text žádosti, jak je uvedeno výše, ale upravte hodnoty podle potřeby. 
 
-
 ### <a name="response-status-codes"></a>Stavové kódy odpovědí
 
 | **Kód**  |  **Popis**                                                                            |
@@ -281,8 +273,275 @@ Následující příklad vytvoří nabídku s hodnotami OfferId `contosovirtualm
 |  412      | Server nesplňuje jednu z podmínek, které žadatel zadal v žádosti. Klient by měl kontrolovat ETAG odeslaný s požadavkem. |
 |  |  |
 
-
-<a name="uploading-artifacts"></a>Nahrávají se artefakty.
--------------------
+## <a name="uploading-artifacts"></a>Nahrávají se artefakty.
 
 Artefakty, jako jsou obrázky a loga, byste měli sdílet tak, že je nahrajete do přístupného umístění na webu, a pak každý jako identifikátor URI v žádosti PUT, jako v předchozím příkladu. Systém zjistí, že tyto soubory nejsou k dispozici ve Azure Marketplacem úložišti, a tyto soubory Stáhněte do úložiště.  V důsledku toho zjistíte, že budoucí požadavky GET vrátí adresu URL služby Azure Marketplace pro tyto soubory.
+
+## <a name="categories-and-industries"></a>Kategorie a odvětví
+
+Při vytváření nové nabídky musíte na webu Marketplace zadat kategorii pro vaši nabídku. Volitelně můžete pro některé typy nabídek zadat také obory. Na základě typu nabídky poskytněte kategorie/obory, které se vztahují na nabídku, pomocí specifických klíčových hodnot z následujících tabulek.
+
+### <a name="azure-marketplace-categories"></a>Azure Marketplace kategorie
+
+Tyto kategorie a jejich příslušné klíče platí pro aplikace Azure, Virtual Machines, základní Virtual Machines, kontejnery, aplikace kontejneru, IoT Edge moduly a typy nabídky SaaS. Položky tučnou kurzívou (jako je ***Analytics***) jsou kategorie a standardní textové položky (jako data-přehledy) jsou podkategoriemi pod nimi. Používejte přesné hodnoty klíčů bez změny mezer nebo velkých a malých písmen.
+
+| Kategorie | SaaS klíče | Klíče aplikací Azure | Virtuální počítač, kontejnery, aplikace kontejneru, IoT Edge modul, klíče základního virtuálního počítače |
+| --- | --- | --- | --- |
+| ***Analýzy*** | ***Analytics*** | ***analýzy – Azure – aplikace*** | ***Analýza – amp*** |
+| Přehledy dat | data – přehledy | data – přehledy | data – přehledy |
+| Datové analýzy | data – analýza | data – analýza | data – analýza |
+| Velký objem dat | velké objemy dat | bigData | velké objemy dat |
+| Prediktivní analýza | prediktivní analýza | prediktivní analýza | prediktivní analýza |
+| Analýzy v reálném čase/streamování | streamování v reálném čase – analýza | streamování v reálném čase – analýza | streamování v reálném čase – analýza |
+| Ostatní | ostatní | jiné – analýza | ostatní |
+| ***AI a Machine Learning*** | ***ArtificialIntelligence*** | ***AI – plus – Machine – učení*** | ***AI – plus – Machine – učení*** |
+| Služby robota | Robot – služby | Robot – služby | Robot – služby |
+| Cognitive Services | rozpoznávání – služby | rozpoznávání – služby | rozpoznávání – služby |
+| Služba ML | ml – služba | ml – služba | ml – služba |
+| Automatizované strojové učení | automatizované – ml | automatizované – ml | automatizované – ml |
+| Automatizace obchodních procesů | Business-robot-Process – automatizace | Business-robot-Process – automatizace | Business-robot-Process – automatizace |
+| Označování dat | označování dat | označování dat | označování dat |
+| Příprava dat | Příprava dat | Příprava dat | Příprava dat |
+| Dolování znalostí | znalostní báze knowledgeing – dolování | znalostní báze knowledgeing – dolování | znalostní báze knowledgeing – dolování |
+| Operace ML | ml – operace | ml – operace | ml – operace |
+| Ostatní | ostatní – AI a strojové učení | ostatní | ostatní |
+| ***Blockchain*** | ***Blockchain*** | ***Blockchain*** | ***Blockchain*** |
+| Akcelerátory aplikací | akcelerátory aplikací | akcelerátory aplikací | akcelerátory aplikací |
+| Hlavní kniha s jedním uzlem | jeden uzel – hlavní kniha | jeden uzel – hlavní kniha | jeden uzel – hlavní kniha |
+| Hlavní kniha s více uzly | více uzlů – hlavní kniha | více uzlů – hlavní kniha | více uzlů – hlavní kniha |
+| Nástroje | tools | tools | tools |
+| Ostatní | ostatní | ostatní | ostatní |
+| ***Výpočetní služby*** | ***COMPUTE – SaaS*** | ***COMPUTE – Azure – aplikace*** | ***výpočetní*** |
+| Aplikační infrastruktura | appInfra | appInfrastructure | aplikační infrastruktura |
+| Operační systémy | clientOS | clientOS | operační systémy |
+| Mezipaměť | cache | cache | cache |
+| Ostatní | jiné – COMPUTE | jiné – COMPUTE | ostatní |
+| ***Containers*** | ***kontejnery*** | ***kontejnery*** | ***kontejnery*** |
+| Aplikace kontejneru | kontejner – aplikace | kontejner – aplikace | kontejner – aplikace |
+| Image kontejneru | kontejner – image | kontejner – image | kontejner – image |
+| Začínáme s kontejnery | Začínáme s kontejnery | Začínáme s kontejnery | Začínáme s kontejnery |
+| Ostatní | ostatní | ostatní | ostatní |
+| ***Databáze*** | ***databáze – SaaS*** | ***databáze*** | ***databáze*** |
+| Databáze NoSQL | NoSQL – databáze | NoSQL – databáze | NoSQL – databáze |
+| Relační databáze | relační databáze | relační databáze | relační databáze |
+| Hlavní kniha a databáze blockchain | Hlavní kniha – blockchain – databáze | Hlavní kniha – blockchain – databáze | Hlavní kniha – blockchain – databáze |
+| Datová jezera | data – jezera | data – jezera | data – jezera |
+| Datový sklad | datový sklad | datový sklad | datový sklad |
+| Ostatní | ostatní databáze | ostatní databáze | ostatní |
+| ***Vývojářské nástroje*** | ***Vývojářské nástroje – SaaS*** | ***Developer – nástroje – Azure – aplikace*** | ***Vývojářské nástroje*** |
+| Nástroje | nástroje – Developer – Tools | nástroje – Developer – Tools | nástroje – Developer – Tools |
+| Scripts | skripty | skripty | skripty |
+| Služba pro vývojáře | devService | devService | Vývojář – služba |
+| Ostatní | ostatní – Developer Tools | ostatní – Developer Tools | ostatní |
+| ***DevOps*** | ***DevOps*** | ***DevOps*** | ***DevOps*** |
+| Ostatní | ostatní | ostatní | ostatní |
+| ***Identita*** | ***odcizen*** | ***odcizen*** | ***odcizen*** |
+| Správa přístupu | Správa přístupu | Správa přístupu | Správa přístupu |
+| Ostatní | ostatní | ostatní | ostatní |
+| ***Integrace*** | ***spolupráci*** | ***spolupráci*** | ***spolupráci*** |
+| Zasílání zpráv | zprávy | zprávy | zprávy |
+| Ostatní | ostatní | ostatní | ostatní |
+| ***Internet věcí*** | ***IoT*** | ***Internet věcí – Azure-Apps*** | ***Internet věcí*** |
+| Služby IoT Core | – | IoT – Core – služby | IoT – Core – služby |
+| Moduly IoT Edge | – | IoT – Edge – moduly | IoT – Edge – moduly |
+| Řešení IoT | IoT – řešení | IoT – řešení | IoT – řešení |
+| Vizualizace & analýzy dat | data-analýza a vizualizace | data-analýza a vizualizace | data-analýza a vizualizace |
+| Připojení IoT | IoT – konektivita | IoT – konektivita | IoT – konektivita |
+| Ostatní | ostatní – Internet věcí | ostatní – Internet věcí | ostatní |
+| ***Nástroje pro správu IT &*** | ***ITandAdministration*** | ***IT a Správa – nástroje – Azure-Apps*** | ***nástroje pro IT a správu*** |
+| Řešení pro správu | Správa – řešení | Správa – řešení | Správa – řešení |
+| Podnikové aplikace | businessApplication | businessApplication | obchodní aplikace |
+| Ostatní | Správa jiných IT nástrojů | Správa jiných IT nástrojů | ostatní |
+| ***Monitorování diagnostiky &*** | ***monitorování a diagnostika*** | ***monitorování a diagnostika*** | ***monitorování a diagnostika*** |
+| Ostatní | ostatní | ostatní | ostatní |
+| ***Média*** | ***média*** | ***média*** | ***média*** |
+| Media Services | media-services | media-services | media-services |
+| Content Protection | Ochrana obsahu | Ochrana obsahu | Ochrana obsahu |
+| Live & streamování na vyžádání | Živé streamování a streamování na vyžádání | Živé streamování a streamování na vyžádání | Živé streamování a streamování na vyžádání |
+| Ostatní | ostatní | ostatní | ostatní |
+| ***Migrace*** | ***migrace*** | ***migrace*** | ***migrace*** |
+| Migrace dat | migrace dat | migrace dat | migrace dat |
+| Ostatní | ostatní | ostatní | ostatní |
+| ***Smíšená realita*** | ***Mixed – realita*** | ***Mixed – realita*** | ***Mixed – realita*** |
+| Ostatní | ostatní | ostatní | ostatní |
+| ***Sítě*** | ***sítě*** | ***sítě*** | ***sítě*** |
+| Správci zařízení | zařízení – správci | zařízení – správci | zařízení – správci |
+| Připojení | připojení | připojení | připojení |
+| brány firewall, | brány firewall | brány firewall | brány firewall |
+| Nástroje pro vyrovnávání zatížení | nástroje pro vyrovnávání zatížení | nástroje pro vyrovnávání zatížení | nástroje pro vyrovnávání zatížení |
+| Ostatní | ostatní | ostatní | ostatní |
+| ***Zabezpečení*** | ***bezpečnost*** | ***bezpečnost*** | ***bezpečnost*** |
+| Správa identit & přístupu | Správa identit a přístupu | Správa identit a přístupu | Správa identit a přístupu |
+| Ochrana před hrozbami | Ochrana před hrozbami | Ochrana před hrozbami | Ochrana před hrozbami |
+| Information Protection | Ochrana informací | Ochrana informací | Ochrana informací |
+| Ostatní | ostatní | ostatní | ostatní |
+| ***Storage*** | ***úložiště – SaaS*** | ***Storage – Azure – aplikace*** | ***pamì*** |
+| Zálohování & obnovení | zálohování | zálohování | zálohování a obnovení |
+| Hybridní úložiště pro podniky | podnik – hybridní úložiště | podnik – hybridní úložiště | podnik – hybridní úložiště |
+| Sdílení souborů | sdílení souborů | sdílení souborů | sdílení souborů |
+| Správa životního cyklu dat | data – Správa životního cyklu | data – Správa životního cyklu | data – Správa životního cyklu |
+| Ostatní | jiné úložiště | jiné úložiště | ostatní |
+| ***Web*** | ***webovém*** | ***webovém*** | ***webovém*** |
+| Blogy & CMS | Blogy – a – CMS | Blogy – a – CMS | Blogy – a – CMS |
+| Úvodní Web Apps | úvodní web – aplikace | úvodní web – aplikace | úvodní web – aplikace |
+| Elektronického obchodování | elektronického obchodování | elektronického obchodování | elektronického obchodování |
+| Web Apps architektury | webové aplikace – architektury | webové aplikace – architektury | webové aplikace – architektury |
+| Web Apps | webové aplikace | webové aplikace | webové aplikace |
+| Ostatní | ostatní | ostatní | ostatní |
+||||
+
+### <a name="microsoft-appsource-categories"></a>Microsoft AppSource kategorie
+
+Tyto kategorie a jejich příslušné klíče platí pro SaaS, aplikaci PowerBI, Dynamics 365 Business Central, Dynamics 365 for Customer Engagement a Dynamics 365 for Operations Offer Types. Položky tučně kurzívou (jako je ***Analytics***) jsou kategorie a standardní textové položky (jako rozšířené analýzy) jsou podkategoriemi pod nimi. Používejte přesné hodnoty klíčů bez změny mezer nebo velkých a malých písmen.
+
+| Kategorie | SaaS klíče | Dynamics 365 Business Central, Dynamics 365 for Customer Engagement, Dynamics 365 pro klíče operací | Klíče aplikace PowerBI |
+| --- | --- | --- | --- |
+| ***Analýzy*** | ***Analytics*** | ***Analýzy*** | ***Analýzy*** |
+| Pokročilá analýza | Pokročilá analýza | Pokročilá analýza | Pokročilá analýza |
+| Vytváření sestav & vizualizace | vizualizace – vytváření sestav | vizualizace – vytváření sestav | vizualizace – vytváření sestav |
+| Ostatní | ostatní | jiné – analýza | jiné – analýza |
+| ***AI a Machine Learning*** | ***ArtificialIntelligence*** | ***AI-plus-Machine-Learning-Dynamics*** | ***AI-plus-Machine-Learning – appsource*** |
+| AI pro firmy | AI pro firmy | AI pro firmy | AI pro firmy |
+| Robot – aplikace | Robot – aplikace | Robot – aplikace | Robot – aplikace |
+| Ostatní | ostatní – AI a strojové učení | ostatní – AI a strojové učení | ostatní – AI a strojové učení |
+| ***Spolupráce*** | ***Spolupráce*** | ***Spolupráce*** | ***prostřednictvím*** |
+| Kontaktování & lidí | kontaktní osoby | kontaktní osoby | kontakty a osoby |
+| Správa schůzek | Správa schůzek | Správa schůzek | Správa schůzek |
+| Správa & pro návrh webu | Správa návrhu lokality | Správa návrhu lokality | Lokalita – návrh a Správa |
+| Úkol & řízení projektu | úkol – Správa projektů | úkol – Správa projektů | Správa úloh a projektů |
+| Videokonference pro hlasové & | Hlasová – videokonference | Hlasová – videokonference | videohovory a videokonference |
+| Ostatní | jiná spolupráce | jiná spolupráce | ostatní |
+| ***Dodržování předpisů & právní*** | ***dodržování*** | ***dodržování*** | ***dodržování předpisů a právní předpisy*** |
+| Audit daňových & | daň – audit | daň – audit | daň a audit |
+| Právní informace | Právní informace | Právní informace | legalit |
+| Data, zásady správného řízení & ochrany osobních údajů | řízení dat – ochrana osobních údajů | řízení dat – ochrana osobních údajů | data-zásady správného řízení a ochrany osobních údajů |
+| Bezpečnost & stavu | zdravotní zabezpečení | zdravotní zabezpečení | stav a bezpečnost |
+| Ostatní | jiné dodržování předpisů – právní | jiné dodržování předpisů – právní | ostatní |
+| ***Customer Service*** | ***CustomerService*** | ***CustomerService*** | ***zákazník-služba*** |
+| Kontaktní centrum | kontakt – centrum | kontakt – centrum | kontakt – centrum |
+| Tvář na službu obličeje | tvář – služba | tvář – služba | tvář – služba |
+| Zpětná služba Office & Employee Service | Back-Office-Employee-Service | Back-Office-Employee-Service | Back-Office-a-Employee-Service |
+| Správa případů znalostní & | znalostní báze – Správa malých a velkých písmen | znalostní báze – Správa malých a velkých písmen | znalostní báze a správa malých a velkých písmen |
+| Zapojení sociálních médií & Omnichannel | sociální média – omnichannel-Engagement | sociální média – omnichannel-Engagement | Social-Media-a-omnichannel-Engagement |
+| Ostatní | jiný zákazník – služba | jiný zákazník – služba | ostatní |
+| ***Finance*** | ***Finance*** | ***Finance*** | ***financování*** |
+| Účetnictví | accounting (účetnictví) | accounting (účetnictví) | accounting (účetnictví) |
+| Správa aktiv | Správa prostředků | Správa prostředků | Správa prostředků |
+| Analýzy, konsolidace & vytváření sestav | analýzy – konsolidace – vytváření sestav | analýzy – konsolidace – vytváření sestav | analýzy – konsolidace a vytváření sestav |
+| Kolekce & kreditů | kredit – kolekce | kredit – kolekce | kredity a kolekce |
+| Řízení rizik & dodržování předpisů | dodržování předpisů – Správa rizik | dodržování předpisů – Správa rizik | dodržování předpisů a Správa rizik |
+| Ostatní | ostatní – finance | ostatní – finance | ostatní |
+| ***Human Resources*** | ***Lidskézdroje*** | ***Lidskézdroje*** | ***lidské zdroje*** |
+| Získání talentů | talentů – získání | talentů – získání | talentů – získání |
+| Správa talentů | talentů – Správa | talentů – Správa | talentů – Správa |
+| Operace HR | HR – operace | HR – operace | HR – operace |
+| Plánování zaměstnanců & Analytics | pracovní síly – plánování – analýza | pracovní síly – plánování – analýza | pracovní síly – plánování a analýza |
+| Ostatní | jiné – lidské zdroje | jiné – lidské zdroje | ostatní |
+| ***Internet věcí*** | ***IoT*** | ***Internet věcí – Dynamics*** | ***Internet věcí – appsource*** |
+| Operace & správy prostředků | Správa prostředků – operace | Správa prostředků – operace | Správa prostředků a operací |
+| Připojené produkty | připojené – produkty | připojené – produkty | připojené – produkty |
+| Inteligentní dodavatelský řetězec | Inteligentní-dodavatelský řetězec | Inteligentní-dodavatelský řetězec | Inteligentní-dodavatelský řetězec |
+| Prediktivní údržba | prediktivní údržba | prediktivní údržba | prediktivní údržba |
+| Vzdálené monitorování | vzdálené monitorování | vzdálené monitorování | vzdálené monitorování |
+| Bezpečnostní & zabezpečení | bezpečnost – zabezpečení | bezpečnost – zabezpečení | bezpečnost a zabezpečení |
+| Prostředky & inteligentní infrastruktury | inteligentní infrastruktura – prostředky | inteligentní infrastruktura – prostředky | inteligentní infrastruktura a prostředky |
+| Prostředky & mobility | vozidla – mobilita | vozidla – mobilita | vozidla a mobilita |
+| Ostatní | ostatní – Internet věcí | ostatní – Internet věcí | ostatní |
+| ***Nástroje pro správu IT &*** | ***ITandAdministration*** | ***ITandAdministration*** | ***nástroje pro IT a správu*** |
+| Řešení pro správu | Správa – řešení | Správa – řešení | Správa – řešení |
+| Podnikové aplikace | businessApplication | businessApplication | obchodní aplikace |
+| Ostatní | Správa jiných IT nástrojů | Správa jiných IT nástrojů | ostatní |
+| ***Marketing*** | ***Marketing*** | ***Marketing*** | ***obchodních*** |
+| Reklamní | reklamní | reklamní | reklamní |
+| Analýzy | analýzy – marketing | analýzy – marketing | analýzy – marketing |
+| Automatizace & správy kampaní | Správa kampaně – automatizace | Správa kampaně – automatizace | Správa kampaně-a – automatizace |
+| E-mail marketingu | e-mail – marketing | e-mail – marketing | e-mail – marketing |
+| L2 – události & Správa prostředků | události – Správa prostředků | události – Správa prostředků | události a Správa prostředků |
+| Analýza & výzkumu | výzkum – analýza | výzkum – analýza | výzkum a analýza |
+| Sociální sítě | sociální média | sociální média | sociální média |
+| Ostatní | jiný marketing | jiný marketing | ostatní |
+| ***Operace & zásobovacího řetězce*** | ***OperationsSupplyChain*** | ***OperationsSupplyChain*** | ***operace – řetězení a zadávání*** |
+| Správa produkčního prostředí Asset & | Asset – Správa v produkčním prostředí | Asset – Správa v produkčním prostředí | Správa prostředků a výroby |
+| Prognózování poptávky | Prognózování poptávky | Prognózování poptávky | Prognózování poptávky |
+| Správa informací & připojení | Správa informací – připojení | Správa informací – připojení | Správa informací a připojení |
+| Plánování, nákup & vytváření sestav | plánování – nákup – vytváření sestav | plánování – nákup – vytváření sestav | plánování – nákup a vytváření sestav |
+| Správa kvality & služeb | kvalita – Správa služeb | kvalita – Správa služeb | Správa kvality a služeb |
+| Správa objednávek prodejních & | prodejní objednávka – Správa | prodejní objednávka – Správa | Správa prodeje a objednávek |
+| Správa datového skladu pro dopravu & | přeprava – Správa skladu | přeprava – Správa skladu | Správa přenosu a skladu |
+| Ostatní | jiné operace – dodavatelský řetězec | jiné operace – dodavatelský řetězec | ostatní |
+| ***Produktivita*** | ***Produktivita*** | ***Produktivita*** | ***produktivitu*** |
+| Vytváření & správy obsahu | vytváření obsahu – Správa | vytváření obsahu – Správa | vytváření obsahu a Správa |
+| Překlad jazyka & | Jazykové překlady | Jazykové překlady | jazyk a překlad |
+| Document Management | Správa dokumentů | Správa dokumentů | Správa dokumentů |
+| Správa e-mailů | Správa e-mailů | Správa e-mailů | Správa e-mailů |
+| Hledat & reference | hledání – referenční informace | hledání – referenční informace | hledání a reference |
+| Ostatní | jiné – produktivita | jiné – produktivita | ostatní |
+| Gamifikace | Gamifikace | Gamifikace | gamifikační |
+| ***Sales*** (Prodej) | ***Sales*** (Prodej) | ***Sales*** (Prodej) | ***Sales*** (Prodej) |
+| Prodej | prodej | prodej | prodej |
+| Konfigurace, Price, Quota (CPQ) | Konfigurace – cenová nabídka | Konfigurace – cenová nabídka | Konfigurace – cenová nabídka |
+| Správa smluv | Správa smluv | Správa smluv | Správa smluv |
+| APLIKACE | crm | crm | crm |
+| Elektronický obchod | elektronický obchod | elektronický obchod | elektronický obchod |
+| Obohacení obchodních dat | podnikání – obohacení dat | podnikání – obohacení dat | podnikání – obohacení dat |
+| Povolení prodeje | prodej – povolení | prodej – povolení | prodej – povolení |
+| Ostatní | Ostatní – prodej | Ostatní – prodej | Ostatní – prodej |
+| ***Geografická poloha*** | ***Zeměpisná poloha*** | ***Zeměpisná poloha*** | ***Zeměpisná poloha*** |
+| Maps | maps | maps | maps |
+| Novinky & počasí | Novinky a počasí | Novinky a počasí | Novinky a počasí |
+| Ostatní | jiné zeměpisné umístění | jiné zeměpisné umístění | jiné zeměpisné umístění |
+||||
+
+### <a name="microsoft-appsource-industries"></a>Microsoft AppSourcech odvětví
+
+Tyto obory a jejich příslušné klíče platí pro SaaS, aplikaci PowerBI, Dynamics 365 Business Central, Dynamics 365 for Customer Engagement a Dynamics 365 pro typy nabídek operací. Položky tučně kurzívou (například ***automobil***) jsou kategorie a standardní textové položky (například AutomotiveL2) jsou podkategoriemi pod nimi. Používejte přesné hodnoty klíčů bez změny mezer nebo velkých a malých písmen.
+
+| Obor | SaaS, Dynamics 365 Business Central, Dynamics 365 for Customer Engagement, Dynamics 365 pro klíče operací | Klávesy aplikací PowerBI |
+| --- | --- | --- |
+| ***Automobilový průmysl*** | ***Automobilový průmysl*** | ***automobilový průmysl*** |
+| Automobilový průmysl | AutomotiveL2 | AutomotiveL2 |
+| ***Zemědělství*** | ***Zemědělství*** | ***zemědělství*** |
+| Jiné – nesegmentované | \_OtherUnsegmented zemědělství | jiné – nesegmentované |
+| ***Distribuce*** | ***Distribuce*** | ***šíření*** |
+| Hromadné | Hromadné | hromadné |
+| Odeslání balíčku & balíčků | ParcelAndPackageShipping | přepravování balíčků a balení |
+| ***Vzdělávání*** | ***Vzdělávání*** | ***školení*** |
+| Vyšší vzdělávání | HigherEducation | vyšší vzdělávání |
+| Sekundární vzdělávání primárního &/K-12 | PrimaryAndSecondaryEducationK12 | primární a sekundární – vzdělávání |
+| Knihovny & muzeí | LibrariesAndMuseums | knihovny a-muzeí |
+| ***Finanční služby*** | ***FinancialServices*** | ***finanční služby*** |
+| Bankovní & kapitálové trhy | BankingAndCapitalMarkets | bankovní a kapitálové trhy |
+| Pojišťovací | Pojišťovací | pojišťovací |
+| ***Státní správa*** | ***Státní správa*** | ***schod*** |
+| Obrana & Intelligence | DefenseAndIntelligence | Obrana a – Intelligence |
+| Veřejné zabezpečení & spravedlnosti | PublicSafetyAndJustice | veřejné zabezpečení a spravedlnosti |
+| Civilní samospráva | CivilianGovernment | civilní instituce |
+| ***Zdravotnictví*** | ***HealthCareandLifeSciences*** | ***zdravotní*** |
+| Plátce stavu | HealthPayor | Stav – plátce |
+| Poskytovatel stavu | HealthProvider | poskytovatel stavu |
+| Pharmaceuticals | Pharmaceuticals | Pharmaceuticals |
+| ***Prostředky výrobního &*** | ***Výroba*** | ***Výroba a prostředky*** |
+| Chemický & Agrochemical | ChemicalAndAgrochemical | chemikálie a agrochemical |
+| Diskrétní výroba | DiscreteManufacturing | diskrétní – výroba |
+| Energetický sektor | Energetický sektor | energy |
+| ***Maloobchodní & spotřební zboží*** | ***RetailandConsumerGoods*** | ***maloobchodní prodej a spotřební zboží*** |
+| Spotřební zboží | ConsumerGoods | spotřebitel – zboží |
+| Maloobchodní | Maloobchodní | maloobchodní |
+| ***Komunikace s médii &*** | ***MediaAndCommunications*** | ***média a komunikace*** |
+| Media & Entertainment | MediaandEntertainment | média a zábava |
+| Telekomunikace | Telekomunikace | telekomunikace |
+| ***Profesionální služby*** | ***ProfessionalServices*** | ***profesionální služby*** |
+| Právní informace | Právní informace | legalit |
+| Profesionální služby partnerů | PartnerProfessionalServices | partner – profesionální služby |
+| ***Architektura & konstrukce*** | ***ArchitectureAndConstruction*** | ***Architektura a konstrukce*** |
+| Jiné – nesegmentované | ArchitectureAndConstruction \_ OtherUnsegmented | jiné – nesegmentované |
+| ***Pohostinství & cestování*** | ***HospitalityandTravel*** | ***pohostinství a cestování*** |
+|    Hotely & volný čas | HotelsAndLeisure | Hotely a-volný čas |
+| Cestovní & Transport | TravelAndTransportation | cestovné a přeprava |
+| Restaurace & potravinové služby | RestaurantsAndFoodServices | Restaurace a stravování – služby |
+| ***Ostatní odvětví veřejného sektoru*** | ***OtherPublicSectorIndustries*** | ***ostatní – veřejný sektor – odvětví*** |
+| Lesní & rybolov | ForestryAndFishing | lesnictví a rybolov |
+| Neziskové organizace | Neziskové organizace | neziskové organizace |
+| ***Real Estate*** | ***RealEstate*** | ***reálné nemovitosti*** |
+| Jiné – nesegmentované | RealEstate \_ OtherUnsegmented | jiné – nesegmentované |
+|||

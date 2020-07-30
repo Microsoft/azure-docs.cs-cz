@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 879138d882913b8ab43c5689ff72a40e6987c104
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 7d1cd032f6042f57a096c5c8e7624f66a4b01355
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223036"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419593"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Kontrola událostí auditu zabezpečení v Azure Active Directory Domain Services používání sešitů Azure Monitor
 
@@ -75,7 +75,7 @@ Pro přístup k šabloně sešitu pro sestavu přehledu zabezpečení proveďte 
 
 1. Dolní část sestavy přehledu zabezpečení pod grafem pak rozdělí vybraný typ aktivity. Můžete filtrovat podle uživatelských jmen, která jsou zapojená na pravé straně, jak je znázorněno v následujícím příkladu sestavy:
 
-    [![](./media/use-azure-monitor-workbooks/account-lockout-details-cropped.png "Details of account lockouts in Azure Monitor Workbooks")](./media/use-azure-monitor-workbooks/account-lockout-details.png#lightbox)
+    [![Podrobnosti o uzamčení účtu v sešitech Azure Monitor.](./media/use-azure-monitor-workbooks/account-lockout-details-cropped.png)](./media/use-azure-monitor-workbooks/account-lockout-details.png#lightbox)
 
 ## <a name="use-the-account-activity-report-workbook"></a>Použití sešitu sestavy aktivity účtu
 
@@ -93,7 +93,7 @@ Chcete-li získat přístup k šabloně sešitu pro sestavu aktivita účtu, pro
 
     Můžete filtrovat podle **uživatelského jména účtu**, jako je například *Felix*, jak je znázorněno v následujícím příkladu sestavy:
 
-    [![](./media/use-azure-monitor-workbooks/account-activity-report-cropped.png "Account activity report in Azure Monitor Workbooks")](./media/use-azure-monitor-workbooks/account-activity-report.png#lightbox)
+    [![Sestava aktivity účtu v sešitech Azure Monitor.](./media/use-azure-monitor-workbooks/account-activity-report-cropped.png)](./media/use-azure-monitor-workbooks/account-activity-report.png#lightbox)
 
     V oblasti pod grafem se zobrazují individuální přihlašovací události spolu s informacemi, jako je například výsledek aktivity a zdrojová pracovní stanice. Tyto informace vám pomohou určit opakované zdroje událostí přihlášení, které mohou způsobit uzamčení účtu nebo naznačovat potenciální útok.
 

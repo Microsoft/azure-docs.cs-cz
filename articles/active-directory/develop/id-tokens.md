@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 07/29/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: af554b2055102b12a8c0e89c6301400f76021ede
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e242e6ce59c715cf3a9ca95523a9a9eda274407a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87313332"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87418912"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Tokeny ID platformy Microsoft identity
 
@@ -71,7 +71,7 @@ V tomto seznamu jsou uvedeny deklarace identity JWT, které jsou ve výchozím n
 |`nbf` |  int, časové razítko systému UNIX | Deklarace "NBF" (ne dřív) určuje dobu, po jejímž uplynutí nesmí být požadavek JWT přijat ke zpracování.|
 |`exp` |  int, časové razítko systému UNIX | Deklarace "EXP" (čas vypršení platnosti) identifikuje dobu vypršení platnosti nebo po jejímž uplynutí může být požadavek JWT přijat ke zpracování.  Je důležité si uvědomit, že prostředek může před touto dobou odmítat token, a to například v případě, že se vyžaduje změna v ověřování nebo že bylo zjištěno odvolání tokenu. |
 | `c_hash`| Řetězec |Hodnota hash kódu je obsažena v tokenech ID pouze v případě, že je token ID vydán pomocí autorizačního kódu OAuth 2,0. Dá se použít k ověření pravosti autorizačního kódu. Podrobnosti o tom, jak provést toto ověření, najdete v tématu [specifikace OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html). |
-|`at_hash`| Řetězec |Hodnota hash přístupového tokenu je obsažena v tokenech ID pouze v případě, že je token ID vydán pomocí přístupového tokenu OAuth 2,0. Dá se použít k ověření pravosti přístupového tokenu. Podrobnosti o tom, jak provést toto ověření, najdete v tématu [specifikace OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html). |
+|`at_hash`| Řetězec |Hodnota hash přístupového tokenu je obsažena v tokenech ID pouze v případě, že je token ID vydán z `/authorize` koncového bodu pomocí přístupového tokenu OAuth 2,0. Dá se použít k ověření pravosti přístupového tokenu. Podrobnosti o tom, jak provést toto ověření, najdete v tématu [specifikace OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken). To se v tokenech ID z `/token` koncového bodu nevrací. |
 |`aio` | Neprůhledný řetězec | Interní deklarace, kterou používá služba Azure AD k záznamu dat pro opakované použití tokenu By měla být ignorována.|
 |`preferred_username` | Řetězec | Primární uživatelské jméno, které představuje uživatele. Může to být e-mailová adresa, telefonní číslo nebo obecné uživatelské jméno bez zadaného formátu. Jeho hodnota je proměnlivá a může se v průběhu času měnit. Protože je proměnlivá, nesmí se tato hodnota použít k rozhodování o autorizaci. `profile`Pro příjem této deklarace je vyžadován rozsah.|
 |`email` | Řetězec | `email`Deklarace identity je ve výchozím nastavení k dispozici pro účty hosta, které mají e-mailovou adresu.  Vaše aplikace může požádat o e-mailovou deklaraci identity pro spravované uživatele (ze stejného tenanta jako prostředku), a to pomocí `email` [volitelné deklarace identity](active-directory-optional-claims.md).  V koncovém bodě verze 2.0 může aplikace požádat o `email` obor OpenID Connect – nemusíte požadovat žádnou volitelnou deklaraci identity a obor pro získání deklarace identity.  Deklarace e-mailu podporuje pouze adresovatelné pošty z informací o profilu uživatele. |

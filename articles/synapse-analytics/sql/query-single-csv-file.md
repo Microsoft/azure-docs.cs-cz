@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 628631fb7fddbc07dcb865e3d3badbfb608ad097
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d033a904087bf8ff32721372209820a64090502
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214447"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87383881"
 ---
 # <a name="query-csv-files"></a>Dotazování na soubory CSV
 
@@ -27,7 +27,73 @@ V tomto článku se dozvíte, jak zadat dotaz na jeden soubor CSV pomocí SQL na
 
 Všechny výše uvedené variace budou uvedené níže.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="quickstart-example"></a>Příklad rychlého startu
+
+`OPENROWSET`funkce umožňuje číst obsah souboru CSV zadáním adresy URL souboru.
+
+### <a name="reading-csv-file"></a>Čtení souboru CSV
+
+Nejjednodušší způsob, jak zobrazit obsah `CSV` souboru, je poskytnout URL souboru pro `OPENROWSET` funkci, zadat csv `FORMAT` a 2,0 `PARSER_VERSION` . Pokud je soubor veřejně dostupný nebo pokud vaše identita Azure AD může získat přístup k tomuto souboru, měli byste být schopni zobrazit obsah souboru pomocí dotazu, jako je ten, který je znázorněn v následujícím příkladu:
+
+```sql
+select top 10 *
+from openrowset(
+    bulk 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.csv',
+    format = 'csv',
+    parser_version = '2.0',
+    firstrow = 2 ) as rows
+```
+
+Možnost `firstrow` slouží k přeskočení prvního řádku v souboru CSV, který představuje hlavičku v tomto případě. Ujistěte se, že máte přístup k tomuto souboru. Pokud je soubor chráněný klíčem SAS nebo vlastní identitou, bude potřeba nastavit [přihlašovací údaje na úrovni serveru pro přihlášení SQL](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential).
+
+### <a name="using-data-source"></a>Používání zdroje dat
+
+Předchozí příklad používá úplnou cestu k souboru. Jako alternativu můžete vytvořit externí zdroj dat s umístěním, které odkazuje na kořenovou složku úložiště:
+
+```sql
+create external data source covid
+with ( location = 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases' );
+```
+
+Po vytvoření zdroje dat můžete tento zdroj dat a relativní cestu k souboru ve `OPENROWSET` funkci použít:
+
+```sql
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.csv',
+        data_source = 'covid',
+        format = 'csv',
+        parser_version ='2.0',
+        firstrow = 2
+    ) as rows
+```
+
+Pokud je zdroj dat chráněný pomocí klíče SAS nebo vlastní identity, můžete nakonfigurovat [zdroj dat s použitím přihlašovacích údajů s rozsahem databáze](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#database-scoped-credential).
+
+### <a name="explicitly-specify-schema"></a>Explicitně zadat schéma
+
+`OPENROWSET`umožňuje explicitně určit sloupce, které chcete číst z klauzule File using `WITH` :
+
+```sql
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.csv',
+        data_source = 'covid',
+        format = 'csv',
+        parser_version ='2.0',
+        firstrow = 2
+    ) with (
+        date_rep date 1,
+        cases int 5,
+        geo_id varchar(6) 8
+    ) as rows
+```
+
+Čísla po datovém typu v `WITH` klauzuli reprezentují index sloupce v souboru CSV.
+
+V následujících částech se můžete podívat, jak se dotazovat na různé typy souborů CSV.
+
+## <a name="prerequisites"></a>Předpoklady
 
 Prvním krokem je **Vytvoření databáze** , ve které budou vytvořeny tabulky. Pak inicializujte objekty spuštěním [instalačního skriptu](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) v této databázi. Tento instalační skript vytvoří zdroje dat, přihlašovací údaje v oboru databáze a formáty externích souborů, které jsou použity v těchto ukázkách.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 5a454d04701160492539f5c9caba57c9e617401e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dca320168805e9f7c8f6336b39c4f9394255f9b8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067487"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87416311"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Optimalizace dotazů protokolu v Azure Monitor
 Protokoly Azure Monitor používají k ukládání dat protokolu službu [Azure Průzkumník dat (ADX)](/azure/data-explorer/) a spouštějí dotazy k analýze těchto dat. Vytváří, spravuje a udržuje clustery ADX za vás a optimalizuje je pro vaši úlohu analýzy protokolů. Když spustíte dotaz, bude optimalizován a směrován do příslušného clusteru ADX, který ukládá data pracovního prostoru. Protokoly Azure Monitor a Azure Průzkumník dat využívají řadu automatických mechanismů optimalizace dotazů. I když automatické optimalizace poskytují výrazné zvýšení, jsou v některých případech, kdy můžete výrazně vylepšit výkon dotazů. V tomto článku se dozvíte o požadavcích na výkon a o některých technikech jejich řešení.
@@ -98,14 +98,14 @@ Například následující dotazy vytvářejí přesně stejný výsledek, ale d
 Heartbeat 
 | extend IPRegion = iif(RemoteIPLongitude  < -94,"WestCoast","EastCoast")
 | where IPRegion == "WestCoast"
-| summarize count() by Computer
+| summarize count(), make_set(IPRegion) by Computer
 ```
 ```Kusto
 //more efficient
 Heartbeat 
 | where RemoteIPLongitude  < -94
 | extend IPRegion = iif(RemoteIPLongitude  < -94,"WestCoast","EastCoast")
-| summarize count() by Computer
+| summarize count(), make_set(IPRegion) by Computer
 ```
 
 ### <a name="use-effective-aggregation-commands-and-dimensions-in-summarize-and-join"></a>Použití efektivních příkazů agregace a dimenzí v souhrnu a spojování
@@ -433,7 +433,7 @@ Chování dotazů, které může snížit paralelismus, zahrnuje:
 - Použití funkcí serializace a okno, jako je například [operátor serializace](/azure/kusto/query/serializeoperator), [Next ()](/azure/kusto/query/nextfunction), [předchozí ()](/azure/kusto/query/prevfunction)a funkce [řádku](/azure/kusto/query/rowcumsumfunction) . V některých případech je možné použít časové řady a funkce uživatelsky Analytics. Neefektivní serializace se může vyskytnout také v případě, že na konci dotazu nejsou použity následující operátory: [Rozsah](/azure/kusto/query/rangeoperator), [řazení](/azure/kusto/query/sortoperator), [pořadí](/azure/kusto/query/orderoperator), [horní](/azure/kusto/query/topoperator), [horní – hitters](/azure/kusto/query/tophittersoperator), [GetSchema](/azure/kusto/query/getschemaoperator).
 -    Použití agregační funkce [DCount ()](/azure/kusto/query/dcount-aggfunction) vynutí, aby systém měl centrální kopii jedinečných hodnot. V případě vysoké škály dat zvažte použití volitelných parametrů funkce DCOUNT pro snížení přesnosti.
 -    V mnoha případech operátor [Join](/azure/kusto/query/joinoperator?pivots=azuremonitor) snižuje celkový paralelismus. Pokud je výkon problematický, prověřte náhodné spojení jako alternativu.
--    V dotazech v oboru prostředků se kontroly RBAC před provedením můžou omezit v situacích, kdy existuje velký počet přiřazení RBAC. To může vést k delším kontrolám, které by způsobily nižší paralelismus. Například dotaz se spustí v předplatném, kde jsou tisíce prostředků a každý prostředek má mnoho přiřazení rolí na úrovni prostředků, nikoli na předplatném nebo skupině prostředků.
+-    V dotazech v oboru prostředků se kontroly RBAC před provedením můžou omezit v situacích, kdy existuje velký počet přiřazení rolí Azure. To může vést k delším kontrolám, které by způsobily nižší paralelismus. Například dotaz se spustí v předplatném, kde jsou tisíce prostředků a každý prostředek má mnoho přiřazení rolí na úrovni prostředků, nikoli na předplatném nebo skupině prostředků.
 -    Pokud dotaz zpracovává malé bloky dat, jeho paralelismus bude nízký, protože systém nebude rozložen mezi mnoho výpočetních uzlů.
 
 

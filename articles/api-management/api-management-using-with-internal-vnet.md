@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: apimpm
-ms.openlocfilehash: fd7ca6bdfa7626707af9efa20d76dab633dc16fd
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ac9554ae5ca151a377395d3b16598f7070c87d10
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249526"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386040"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Použití služby Azure API Management s interní virtuální sítí
 S Azure Virtual Networks může Azure API Management spravovat rozhraní API, která nejsou přístupná na internetu. K vytvoření připojení je k dispozici řada technologií sítě VPN. API Management lze nasadit ve dvou hlavních režimech v rámci virtuální sítě:
@@ -81,7 +81,7 @@ Připojení k virtuální síti můžete taky povolit pomocí rutin PowerShellu.
 * Aktualizace stávajícího nasazení API Management služby ve virtuální síti: pomocí rutiny [Update-AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion) můžete přesunout existující službu API Management v rámci virtuální sítě a nakonfigurovat ji tak, aby používala interní typ virtuální sítě.
 
 ## <a name="dns-configuration"></a><a name="apim-dns-configuration"></a>Konfigurace DNS
-Když je API Management v režimu externí virtuální sítě, služba DNS se spravuje pomocí Azure. V případě režimu interní virtuální sítě musíte spravovat vlastní směrování.
+Když je API Management v režimu externí virtuální sítě, služba DNS se spravuje pomocí Azure. V případě režimu interní virtuální sítě musíte spravovat vlastní DNS.
 
 > [!NOTE]
 > Služba API Management neposlouchá požadavky přicházející z IP adres. Reaguje jenom na žádosti na název hostitele nakonfigurované na svých koncových bodech služby. Mezi tyto koncové body patří brána, Azure Portal a portál pro vývojáře, přímý koncový bod správy a git.

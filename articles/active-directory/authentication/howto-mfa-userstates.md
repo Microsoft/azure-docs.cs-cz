@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 860616cbea598e40494155e250254b3c607c1173
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2bd688a9e488c1206b0c8531698b061f650e2afe
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027491"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87417926"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Povolení vícefaktorového ověřování Azure pro jednotlivé uživatele za účelem zabezpečení událostí přihlášení
 
@@ -38,7 +38,7 @@ Uživatelské účty v Azure Multi-Factor Authentication mají následující t�
 
 | Status | Popis | Neprohlížečové aplikace ovlivněny | Ovlivněné aplikace v prohlížeči | Moderní ověřování ovlivněno |
 |:---:| --- |:---:|:--:|:--:|
-| Zakázáno | Výchozí stav nového uživatele, který není zaregistrovaný v Azure Multi-Factor Authentication. | No | No | No |
+| Zakázáno | Výchozí stav nového uživatele, který není zaregistrovaný v Azure Multi-Factor Authentication. | Ne | Ne | Ne |
 | Povoleno | Uživatel je zaregistrovaný ve službě Azure Multi-Factor Authentication, ale nezaregistroval metody ověřování. Obdrží výzvu k registraci při příštím přihlášení. | Ne.  Budou dál fungovat, dokud se proces registrace nedokončí. | Yes. Po vypršení platnosti relace se vyžaduje registrace služby Azure Multi-Factor Authentication.| Yes. Po vypršení platnosti přístupového tokenu se vyžaduje registrace Azure Multi-Factor Authentication. |
 | Vynuceno | Uživatel je zaregistrovaný a dokončil proces registrace pro Azure Multi-Factor Authentication. | Yes. Aplikace vyžadují hesla aplikací. | Yes. Při přihlášení se vyžaduje Azure Multi-Factor Authentication. | Yes. Při přihlášení se vyžaduje Azure Multi-Factor Authentication. |
 
@@ -55,7 +55,7 @@ Následující postup použijte pro přístup k Azure Portal stránce, kde můž
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce.
 1. Vyhledejte a vyberte *Azure Active Directory*a pak vyberte **Uživatelé**  >  **Všichni uživatelé**.
-1. Vyberte **Multi-Factor Authentication**. Pokud chcete zobrazit tuto možnost nabídky, možná se budete muset posunout doprava. Kliknutím na ukázkový snímek obrazovky zobrazíte celé Azure Portal okno a umístění nabídky:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Výběr Multi-Factor Authentication v okně uživatelé ve službě Azure AD")](media/howto-mfa-userstates/selectmfa.png#lightbox)
+1. Vyberte **Multi-Factor Authentication**. Pokud chcete zobrazit tuto možnost nabídky, možná se budete muset posunout doprava. Kliknutím na ukázkový snímek obrazovky zobrazíte celé Azure Portal okno a umístění nabídky: [ ![ Vyberte Multi-Factor Authentication z okna uživatelé ve službě Azure AD.](media/howto-mfa-userstates/selectmfa-cropped.png)](media/howto-mfa-userstates/selectmfa.png#lightbox)
 1. Otevře se nová stránka, která zobrazí stav uživatele, jak je znázorněno v následujícím příkladu.
    ![Snímek obrazovky, který ukazuje ukázkové informace o stavu uživatele pro Azure Multi-Factor Authentication](./media/howto-mfa-userstates/userstate1.png)
 

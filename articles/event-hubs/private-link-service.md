@@ -1,16 +1,16 @@
 ---
 title: Integrace služby Azure Event Hubs se službou privátního propojení Azure
 description: Naučte se integrovat Azure Event Hubs se službou Azure Private Link.
-ms.date: 06/23/2020
+ms.date: 07/29/2020
 ms.topic: article
-ms.openlocfilehash: a07204615c4d81373d744e83862e6de14c7f8165
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 66753e51fd1e918e5659e219c5ebbe471705b3ee
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287954"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421093"
 ---
-# <a name="integrate-azure-event-hubs-with-azure-private-link"></a>Integrace Azure Event Hubs s privátním propojením Azure
+# <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>Povolení přístupu k oborům názvů Azure Event Hubs prostřednictvím privátních koncových bodů 
 Služba privátního propojení Azure umožňuje přístup ke službám Azure (například k Azure Event Hubs, Azure Storage a Azure Cosmos DB) a hostovaným zákaznickým a partnerským službám Azure prostřednictvím **privátního koncového bodu** ve vaší virtuální síti.
 
 Privátní koncový bod je síťové rozhraní, které se připojuje soukromě a bezpečně ke službě využívající privátní propojení Azure. Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě a efektivně ho přinášejí do vaší virtuální sítě. Veškerý provoz do služby se dá směrovat prostřednictvím privátního koncového bodu, takže se nevyžadují žádné brány, zařízení NAT, ExpressRoute, připojení VPN ani veřejné IP adresy. Provoz mezi vaší virtuální sítí a službou prochází přes páteřní síť Microsoftu a eliminuje rizika vystavení na veřejném internetu. Můžete se připojit k instanci prostředku Azure, která poskytuje nejvyšší úroveň členitosti v řízení přístupu.
@@ -36,13 +36,13 @@ Další informace najdete v tématu [co je privátní propojení Azure?](../priv
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Přidání privátního koncového bodu pomocí Azure Portal
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 K integraci oboru názvů Event Hubs s privátním propojením Azure budete potřebovat následující entity nebo oprávnění:
 
 - Event Hubs obor názvů.
 - Virtuální síť Azure.
-- Podsíť ve virtuální síti.
+- Podsíť ve virtuální síti. Můžete použít **výchozí** podsíť. 
 - Oprávnění vlastníka nebo přispěvatele pro obor názvů i virtuální síť.
 
 Váš privátní koncový bod a virtuální síť musí být ve stejné oblasti. Když vyberete oblast pro soukromý koncový bod pomocí portálu, automaticky se vyfiltrují jenom virtuální sítě, které jsou v této oblasti. Váš obor názvů může být v jiné oblasti.
@@ -55,10 +55,15 @@ Pokud již máte obor názvů Event Hubs, můžete vytvořit připojení k priv�
 1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
 2. Na panelu hledání zadejte do pole **centra událostí**.
 3. V seznamu vyberte **obor názvů** , do kterého chcete přidat privátní koncový bod.
-4. V části **Nastavení**vyberte kartu **síť** .
+4. V části **Nastavení** v nabídce vlevo vyberte **sítě** .
 
     > [!NOTE]
     > Karta **síť** se zobrazí jenom pro **standardní** nebo **vyhrazené** obory názvů. 
+
+    :::image type="content" source="./media/private-link-service/selected-networks-page.png" alt-text="Karta sítě – volba vybraných sítí" lightbox="./media/private-link-service/selected-networks-page.png":::    
+
+    > [!NOTE]
+    > Ve výchozím nastavení je vybraná možnost **vybrané sítě** . Pokud nezadáte pravidlo brány firewall protokolu IP nebo přidáte virtuální síť, bude k oboru názvů možné přistupovat prostřednictvím veřejného Internetu. 
 1. V horní části stránky vyberte kartu **připojení privátního koncového bodu** . 
 1. V horní části stránky vyberte tlačítko **+ soukromý koncový bod** .
 

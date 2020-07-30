@@ -2,18 +2,18 @@
 title: Navrácení služeb po obnovení virtuálních počítačů Hyper-V z Azure pomocí Azure Site Recovery
 description: Postup při navrácení služeb virtuálních počítačů Hyper-V do místní lokality z Azure pomocí Azure Site Recovery.
 services: site-recovery
-author: rajani-janaki-ram
-manager: gauravd
+author: Rajeswari-Mamilla
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
 ms.date: 09/12/2019
-ms.author: rajanaki
-ms.openlocfilehash: 4b005ae308576db6fd26fcf079161430b266ec3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: ramamill
+ms.openlocfilehash: a31a28728dd0521262bd0518cc49a385f4314302
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710248"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87416226"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>Spuštění navrácení služeb po obnovení pro virtuální počítače Hyper-V
 
@@ -29,7 +29,7 @@ Tento článek popisuje, jak navrátit služby po obnovení virtuálních počí
 2. Zajistěte, aby virtuální počítače Azure používaly účet úložiště, a ne spravované disky. Navrácení služeb po obnovení virtuálních počítačů Hyper-V replikovaných pomocí spravovaných disků se nepodporuje.
 3. Ověřte, jestli je místní Hostitel Hyper-V (nebo server VMM System Center, pokud používáte s Site Recovery) spuštěný a připojený k Azure. 
 4. Ujistěte se, že jsou pro virtuální počítače dokončené převzetí služeb při selhání a potvrzení. Nemusíte nastavovat žádné konkrétní součásti Site Recovery pro navrácení služeb po obnovení virtuálních počítačů Hyper-V z Azure.
-5. Čas potřebný k dokončení synchronizace dat a spuštění místního virtuálního počítače bude záviset na řadě faktorů. Chcete-li urychlit stahování dat, můžete nakonfigurovat agenta Microsoft Recovery Services, aby používal více vláken k paralelizovat stahování. [Další informace](https://support.microsoft.com/help/3056159/how-to-manage-on-premises-to-azure-protection-network-bandwidth-usage).
+5. Čas potřebný k dokončení synchronizace dat a spuštění místního virtuálního počítače bude záviset na řadě faktorů. Chcete-li urychlit stahování dat, můžete nakonfigurovat agenta Microsoft Recovery Services, aby používal více vláken k paralelizovat stahování. [Přečtěte si další informace](https://support.microsoft.com/help/3056159/how-to-manage-on-premises-to-azure-protection-network-bandwidth-usage).
 
 
 ## <a name="fail-back-to-the-original-location"></a>Navrácení služeb po obnovení do původního umístění

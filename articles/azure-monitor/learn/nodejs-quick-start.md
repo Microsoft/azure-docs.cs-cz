@@ -6,13 +6,13 @@ ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
-ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: f82eec5979bd1642e30e52bf6325f7b8f210371c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
+ms.openlocfilehash: af75afb2840d2bc14e1fa46310f76f662efa2a54
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325657"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384782"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Rychlý Start: zahájení monitorování webové aplikace v Node.js s využitím Azure Application Insights
 
@@ -20,7 +20,7 @@ V tomto rychlém startu přidáte sadu Application Insights SDK verze 0,22 pro N
 
 Služba Azure Application Insights umožňuje monitorovat webové aplikace z hlediska dostupnosti, výkonu a využití. Můžete také rychle identifikovat a diagnostikovat chyby ve vaší aplikaci a nečekat na to, až je nahlásí uživatelé. Pomocí sady SDK verze 0.20 a novější můžete monitorovat běžné balíčky třetích stran, včetně MongoDB, MySQL a Redis.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * Funkční aplikace Node.js.

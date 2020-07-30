@@ -16,12 +16,12 @@ ms.date: 05/11/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e3791da8f8a990f62de0052e1662fd6037e936b
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 6792fdc405d539a662c8dc20c04b2891fd036704
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849278"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421905"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>PowerShell pro role Azure AD v Privileged Identity Management
 
@@ -140,7 +140,7 @@ Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "ResourceId eq
 
 Nastavení obsahuje čtyři hlavní objekty. PIM používá jenom tři z těchto objektů. UserMemberSettings jsou nastavení aktivace, AdminEligibleSettings jsou nastavení přiřazení pro oprávněná přiřazení a AdminmemberSettings jsou nastavení přiřazení pro aktivní přiřazení.
 
-[![](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png "Get and update role settings")](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png#lightbox)
+[![Získá a aktualizuje nastavení role.](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png)](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png#lightbox)
 
 Chcete-li aktualizovat nastavení role, je nutné získat existující objekt nastavení pro určitou roli a provést změny v něm:
 

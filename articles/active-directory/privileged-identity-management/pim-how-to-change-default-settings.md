@@ -14,12 +14,12 @@ ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 334f239ea8382a67add9655d4a25f98d254567d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3a42cdfbf251e24ed2b59adca1a73b4dfe427a7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743945"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420001"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Konfigurace nastavení role Azure AD v Privileged Identity Management
 
@@ -32,7 +32,7 @@ Od listopadu 2019 se v části Privileged Identity Management role Azure AD aktu
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí uživatele, který je v roli [správce privilegované role](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
 1. Otevřete **Azure AD Privileged Identity Management**. Pokud máte banner v horní části stránky s přehledem, postupujte podle pokynů na kartě **Nová verze** v tomto článku. Jinak postupujte podle pokynů na kartě **předchozí verze** .
 
-  [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
+  [![Vyberte Azure AD > Privileged Identity Management.](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 Podle kroků v tomto článku můžete schvalovat nebo odmítat žádosti pro role Azure AD.
 

@@ -3,12 +3,12 @@ title: Dotazy týkající se zjišťování, hodnocení a analýzy závislostí 
 description: Získejte odpovědi na běžné dotazy týkající se zjišťování, hodnocení a analýzy závislostí v Azure Migrate.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 7b26d4442f9a84375205e7778ae037b565f53438
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e2aa0f5c2dae33cd995b30d84e7406da9b501e8f
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118830"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385717"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Analýzy zjišťování, hodnocení a závislostí – běžné otázky
 
@@ -29,30 +29,30 @@ Projděte si podporované oblasti pro [veřejný cloud](migrate-support-matrix.m
 
 Můžete zjistit až 10 000 virtuálních počítačů VMware, až 5 000 virtuálních počítačů Hyper-V a až 1000 fyzických serverů pomocí jediného zařízení. Pokud máte více počítačů, přečtěte si o [škálování posouzení technologie Hyper-V](scale-hyper-v-assessment.md), [škálování vyhodnocení VMware](scale-vmware-assessment.md)nebo [škálování posouzení fyzického serveru](scale-physical-assessment.md).
 
-## <a name="how-do-i-choose-the-assessment-type"></a>Návody zvolit typ posouzení?
+## <a name="how-do-i-choose-the-assessment-type"></a>Jaký zvolit typ hodnocení?
 
 - **Posouzení virtuálních počítačů Azure** použijte, když chcete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md), [virtuální počítače Hyper-V](how-to-set-up-appliance-hyper-v.md)a [fyzické servery](how-to-set-up-appliance-physical.md) pro migraci na virtuální počítače Azure. [Další informace](concepts-assessment-calculation.md)
 
 - Posouzení **Řešení Azure VMware (AVS)** použijte, když chcete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md) pro migraci do [Řešení Azure VMware (AVS)](../azure-vmware/introduction.md) pomocí tohoto typu posouzení. [Další informace](concepts-azure-vmware-solution-assessment-calculation.md)
 
-- Společnou skupinu s počítači VMware můžete použít jenom ke spouštění obou typů posouzení. Všimněte si, že pokud spouštíte posouzení služby AVS v Azure Migrate poprvé, je vhodné vytvořit novou skupinu počítačů VMware.
+- Ke spuštění obou typů hodnocení můžete použít společnou skupinu pouze s počítači VMware. Poznámka: Pokud ve službě Azure Migrate spouštíte hodnocení služby AVS poprvé, doporučujeme vytvořit novou skupinu počítačů VMware.
 
 ## <a name="i-cant-see-some-groups-when-i-am-creating-an-azure-vmware-solution-avs-assessment"></a>Při vytváření posouzení řešení Azure VMware (AVS) nejde zobrazit některé skupiny
 
-- Posouzení pro funkci AVS lze provést u skupin, které mají pouze počítače VMware. Pokud máte v úmyslu provést vyhodnocování služby AVS, odeberte ze skupiny všechny počítače, které nepoužívají VMware.
-- Pokud používáte hodnocení služby AVS v Azure Migrate poprvé, je vhodné vytvořit novou skupinu počítačů VMware.
+- Hodnocení služby AVS je možné provádět pouze pro skupiny, které obsahují pouze počítače VMware. Pokud chcete provést hodnocení služby AVS, odeberte ze skupiny všechny jiné počítače než VMware.
+- Pokud ve službě Azure Migrate spouštíte hodnocení služby AVS poprvé, doporučujeme vytvořit novou skupinu počítačů VMware.
 
 ## <a name="how-do-i-select-ftt-raid-level-in-avs-assessment"></a>Návody vybrat úroveň FTT-RAID v hodnocení AVS?
 
-Modul úložiště používaný v rozhraní AVS je síti vSAN. zásady úložiště síti vSAN definují požadavky na úložiště pro virtuální počítače. Tyto zásady zaručují potřebnou úroveň služby pro vaše virtuální počítače, protože určují, jak je úložiště přidělené k virtuálnímu počítači. Toto jsou dostupné kombinace FTT-RAID: 
+Modul úložiště používaný v rozhraní AVS je síti vSAN. Zásady úložiště vSAN definují požadavky na úložiště pro vaše virtuální počítače. Tyto zásady pro vaše virtuální počítače zaručují požadovanou úroveň služeb, protože určují, jak se virtuálním počítačům přiděluje úložiště. Tady jsou dostupné kombinace FTT a RAID: 
 
-**Neúspěšné tolerování (FTT)** | **Konfigurace RAID** | **Minimální požadovaná hostitelé** | **Aspekt velikosti**
+**Tolerované chyby (FTT)** | **Konfigurace RAID** | **Minimální požadovaný počet hostitelů** | **Důležité informace o nastavení velikosti**
 --- | --- | --- | --- 
-1 | RAID-1 (zrcadlení) | 3 | 100 GB virtuální počítač spotřebuje 200 GB.
-1 | RAID-5 (mazání kódu) | 4 | Virtuální počítač 100 GB spotřebuje 133.33 GB.
-2 | RAID-1 (zrcadlení) | 5 | Virtuální počítač 100 GB spotřebuje 300 GB.
-2 | RAID-6 (mazání kódu) | 6 | 100 GB virtuální počítač spotřebuje 150 GB.
-3 | RAID-1 (zrcadlení) | 7 | Virtuální počítač s 100 GB by spotřebuje 400 GB.
+1 | RAID-1 (zrcadlení) | 3 | Virtuální počítač o velikosti 100 GB spotřebuje 200 GB.
+1 | RAID-5 (kódování pro případ vymazaní) | 4 | Virtuální počítač o velikosti 100 GB spotřebuje 133,33 GB.
+2 | RAID-1 (zrcadlení) | 5 | Virtuální počítač o velikosti 100 GB spotřebuje 300 GB.
+2 | RAID-6 (kódování pro případ vymazaní) | 6 | Virtuální počítač o velikosti 100 GB spotřebuje 150 GB.
+3 | RAID-1 (zrcadlení) | 7 | Virtuální počítač o velikosti 100 GB spotřebuje 400 GB.
 
 ## <a name="i-cant-see-some-vm-types-in-azure-government"></a>V Azure Government nevidím některé typy virtuálních počítačů.
 
@@ -113,12 +113,12 @@ Posouzení virtuálních počítačů Azure založené na importech jsou vyhodno
 
 ## <a name="why-is-the-suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>Proč je navrhovaný Nástroj pro migraci v rámci vyhodnocení pro funkci AVS na základě importu označený jako neznámý?
 
-V případě počítačů importovaných prostřednictvím souboru CSV není výchozí nástroj pro migraci v posouzení služby AVS známý. U počítačů VMware se ale doporučuje použít řešení VMWare Hybrid Cloud Extension (HCX). [Další informace](../azure-vmware/hybrid-cloud-extension-installation.md)
+V případě počítačů importovaných prostřednictvím souboru CSV není výchozí nástroj pro migraci v posouzení služby AVS známý. U počítačů VMware se ale doporučuje použít řešení VMware Hybrid Cloud Extension (HCX). [Další informace](../azure-vmware/hybrid-cloud-extension-installation.md)
 
 
 ## <a name="what-is-dependency-visualization"></a>Co je Vizualizace závislostí?
 
-Vizualizace závislostí vám může posuzovat skupiny virtuálních počítačů, které se budou migrovat s větší jistotou. Vizualizace závislostí křížově kontroluje závislosti počítačů před spuštěním posouzení. Pomáhá zajistit, aby nic nezůstalo a při migraci do Azure pomáhá zabránit neočekávanému výpadku. Azure Migrate používá řešení Service Map v Azure Monitor k povolení Vizualizace závislostí. [Další informace](concepts-dependency-visualization.md).
+Vizualizace závislostí vám může posuzovat skupiny virtuálních počítačů, které se budou migrovat s větší jistotou. Vizualizace závislostí křížově kontroluje závislosti počítačů před spuštěním posouzení. Pomáhá zajistit, aby nic nezůstalo a při migraci do Azure pomáhá zabránit neočekávanému výpadku. Azure Migrate používá řešení Service Map v Azure Monitor k povolení Vizualizace závislostí. [Přečtěte si další informace](concepts-dependency-visualization.md).
 
 > [!NOTE]
 > Analýza závislostí na základě agenta není v Azure Government k dispozici. Můžete použít analýzu závislostí bez agentů.
@@ -131,8 +131,8 @@ Rozdíly mezi vizualizacemi bez agentů a vizualizací na základě agentů jsou
 --- | --- | ---
 Podpora | Tato možnost je momentálně ve verzi Preview a je dostupná jenom pro virtuální počítače VMware. [Zkontrolujte](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) podporované operační systémy. | Obecně dostupná (GA).
 Agent | Není nutné instalovat agenty na počítačích, které chcete křížově kontrolovat. | Agenti, kteří se mají nainstalovat na každý místní počítač, který chcete analyzovat: [Microsoft Monitoring Agent (MMA)](../azure-monitor/platform/agent-windows.md)a [Agent závislostí](../azure-monitor/platform/agents-overview.md#dependency-agent). 
-Požadavky | [Projděte si](concepts-dependency-visualization.md#agentless-analysis) požadavky a požadavky na nasazení. | [Projděte si](concepts-dependency-visualization.md#agent-based-analysis) požadavky a požadavky na nasazení.
-Log Analytics | Nepožadováno. | Azure Migrate používá řešení [Service map](../azure-monitor/insights/service-map.md) v [protokolech Azure monitor](../azure-monitor/log-query/log-query-overview.md) pro vizualizaci závislostí. [Další informace](concepts-dependency-visualization.md#agent-based-analysis).
+Předpoklady | [Projděte si](concepts-dependency-visualization.md#agentless-analysis) požadavky a požadavky na nasazení. | [Projděte si](concepts-dependency-visualization.md#agent-based-analysis) požadavky a požadavky na nasazení.
+Log Analytics | Nepožadováno. | Azure Migrate používá řešení [Service map](../azure-monitor/insights/service-map.md) v [protokolech Azure monitor](../azure-monitor/log-query/log-query-overview.md) pro vizualizaci závislostí. [Přečtěte si další informace](concepts-dependency-visualization.md#agent-based-analysis).
 Jak to funguje | Zachycuje data připojení TCP na počítačích, které jsou povoleny pro vizualizaci závislostí. Po zjištění se data shromáždí v intervalech po pěti minutách. | Agenti Service Map nainstalovaná na počítači shromažďují data o procesech TCP a příchozích a odchozích připojeních pro jednotlivé procesy.
 Data | Název zdrojového počítačového serveru, proces, název aplikace<br/><br/> Název cílového počítačového serveru, proces, název aplikace a port. | Název zdrojového počítačového serveru, proces, název aplikace<br/><br/> Název cílového počítačového serveru, proces, název aplikace a port.<br/><br/> Pro Log Analytics dotazy se shromažďují a k dispozici informace o počtu připojení, latenci a přenosu dat. 
 Vizualizace | Mapa závislostí jednoho serveru se dá zobrazit po dobu od 1 hodiny do 30 dnů. | Mapa závislostí pro jeden server.<br/><br/> Mapu lze zobrazit pouze za hodinu.<br/><br/> Mapa závislostí skupiny serverů.<br/><br/> Přidejte nebo odeberte servery ve skupině z zobrazení mapy.

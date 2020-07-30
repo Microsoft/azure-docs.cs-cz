@@ -1,20 +1,20 @@
 ---
-title: Ukázky Azure Azure CLI pro Redis
-description: 'Ukázky v Azure CLI pro službu Azure cache pro Redis: Vytvořte mezipaměť, odstraňte mezipaměť, Získejte podrobnosti mezipaměti, název hostitele, porty a klíče a připojte webovou aplikaci.'
+title: Správa Azure cache pro Redis pomocí Azure CLI
+description: 'Ukázky v Azure CLI pro správu mezipaměti Azure pro Redis: Vytvořte mezipaměť, odstraňte mezipaměť, Získejte podrobnosti mezipaměti, název hostitele, porty a klíče a připojte webovou aplikaci.'
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 04/14/2017
-ms.openlocfilehash: 43a986f884d621f257de2e9c305a0bcc59092d3d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 345fd0272e0cfe9b4d7329f004e628ea7820c2d9
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033661"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421236"
 ---
-# <a name="azure-cli-samples-for-azure-cache-for-redis"></a>Ukázky v Azure CLI pro Azure cache pro Redis
+# <a name="manage-azure-cache-for-redis-with-azure-cli"></a>Správa Azure cache pro Redis pomocí Azure CLI
 
 Následující tabulka obsahuje odkazy na skripty Bash vytvořené pomocí Azure CLI.
 

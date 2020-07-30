@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: e0fd3a6bc62feeb3728fa88b4aad56c8713bce11
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 6dfa162de02174ac4a1a8251457249bd5ea4d766
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134920"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87416328"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii Hyper-V do Azure
 
@@ -30,7 +30,7 @@ Následující tabulka a grafika obsahují podrobný pohled na součásti použ�
 **Komponenta** | **Požadavek** | **Podrobnosti**
 --- | --- | ---
 **Azure** | Předplatné Azure, účet úložiště Azure a síť Azure. | Replikovaná data z místních úloh virtuálních počítačů se ukládají v účtu úložiště. Virtuální počítače Azure se vytvářejí s daty replikovaných úloh, když dojde k převzetí služeb při selhání z vaší místní lokality.<br/><br/> Virtuální počítače Azure se připojí k virtuální síti Azure po svém vytvoření.
-**Technologie Hyper-V** | Během nasazení Site Recovery shromažďujete hostitele a clustery Hyper-V do lokalit technologie Hyper-V. Na každého samostatného hostitele Hyper-V nebo na každém uzlu clusteru Hyper-V nainstalujete poskytovatele Azure Site Recovery a agenta Recovery Services. | Zprostředkovatel orchestruje replikaci pomocí služby Site Recovery přes internet. Agent Recovery Services se stará o replikaci dat.<br/><br/> Komunikace z poskytovatele i agenta je zabezpečená a šifrovaná. Šifrují se rovněž replikovaná data v úložišti Azure.
+**Hyper-V** | Během nasazení Site Recovery shromažďujete hostitele a clustery Hyper-V do lokalit technologie Hyper-V. Na každého samostatného hostitele Hyper-V nebo na každém uzlu clusteru Hyper-V nainstalujete poskytovatele Azure Site Recovery a agenta Recovery Services. | Zprostředkovatel orchestruje replikaci pomocí služby Site Recovery přes internet. Agent Recovery Services se stará o replikaci dat.<br/><br/> Komunikace z poskytovatele i agenta je zabezpečená a šifrovaná. Šifrují se rovněž replikovaná data v úložišti Azure.
 **Virtuální počítače Hyper-V** | Jeden nebo více virtuálních počítačů běžících na technologii Hyper-V. | Na virtuálních počítačích není nutné explicitně instalovat žádné požadavky.
 
 
@@ -55,6 +55,23 @@ Následující tabulka a grafika obsahují podrobný pohled na součásti použ�
 
 ![Komponenty](./media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)
 
+## <a name="set-up-outbound-network-connectivity"></a>Nastavení odchozího připojení k síti
+
+Aby mohla Site Recovery fungovat podle očekávání, musíte upravit odchozí síťové připojení, aby bylo možné prostředí replikovat.
+
+> [!NOTE]
+> Site Recovery nepodporuje připojení k síti pomocí ověřovacího proxy serveru.
+
+### <a name="outbound-connectivity-for-urls"></a>Odchozí připojení pro adresy URL
+
+Pokud k řízení odchozího připojení používáte proxy server brány firewall založený na adrese URL, povolte přístup k těmto adresám URL:
+
+| **Název**                  | **Komerční**                               | **Státní správa**                                 | **Popis** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Umožňuje zápis dat z virtuálního počítače do účtu úložiště mezipaměti ve zdrojové oblasti. |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Zajišťuje autorizaci a ověřování pro adresy URL služby Site Recovery. |
+| Replikace               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Umožňuje komunikaci virtuálního počítače se službou Site Recovery. |
+| Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Umožňuje virtuálnímu počítači zapisovat data monitorování a diagnostiky Site Recovery. |
 
 
 ## <a name="replication-process"></a>Proces replikace

@@ -3,12 +3,12 @@ title: Nejčastější dotazy k zálohování Souborů Azure
 description: V tomto článku najdete odpovědi na běžné otázky týkající se ochrany sdílených složek Azure pomocí služby Azure Backup.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 134d9520a3c2348b23ec27c6e14eb56468f2002d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6c2ef95a6303fd061b1ce486e893ba9812b83e14
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054969"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87382708"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Dotazy týkající se zálohování Souborů Azure
 
@@ -34,13 +34,13 @@ Yes. Ochrana sdílených složek Azure připojených ke skupinám synchronizace 
 
 Při pokusu o zálohování vyberte účet úložiště, ve kterém se budou objevovat sdílené složky. zaregistruje účet úložiště s trezorem, ze kterého se tato akce provádí. Pokud se rozhodnete chránit sdílené složky pomocí jiného trezoru, [zrušte registraci](manage-afs-backup.md#unregister-a-storage-account) zvoleného účtu úložiště z tohoto trezoru.
 
+### <a name="why-cant-i-change-the-vault-to-configure-backup-for-the-file-share"></a>Proč nemohu změnit trezor, aby se nakonfigurovala záloha pro sdílenou složku?
+
+Pokud je účet úložiště už zaregistrovaný v trezoru nebo jiné sdílené složky v účtu úložiště jsou chráněné pomocí trezoru, nebudete mít možnost ho změnit, protože všechny sdílené složky v účtu úložiště je možné chránit jenom pomocí stejného trezoru. V případě, že chcete změnit trezor, budete muset [Zastavit ochranu všech sdílených složek v účtu úložiště](manage-afs-backup.md#stop-protection-on-a-file-share) z připojeného trezoru, zrušit [registraci](manage-afs-backup.md#unregister-a-storage-account) účtu úložiště a pak zvolit jiný trezor pro ochranu.
+
 ### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Můžu změnit trezor, do kterého zálohujte své sdílené složky?
 
 Yes. Z připojeného trezoru ale budete muset [Zastavit ochranu sdílené složky](manage-afs-backup.md#stop-protection-on-a-file-share) , zrušit [registraci](manage-afs-backup.md#unregister-a-storage-account) tohoto účtu úložiště a pak ho chránit z jiného trezoru.
-
-### <a name="how-many-azure-file-shares-can-i-protect-in-a-vault"></a>Kolik sdílených složek Azure můžu chránit v jednom trezoru?
-
-Sdílené složky Azure můžete chránit od až 50 účtů úložiště na jeden trezor. Zároveň můžete v jednom trezoru chránit až 200 sdílených složek Azure.
 
 ### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>Můžu chránit dvě různé sdílené složky ze stejného účtu úložiště v jiných trezorech?
 

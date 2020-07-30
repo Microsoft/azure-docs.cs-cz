@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b510326b6683ae48b6521483118367f36e0dc58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 159a14b30113a251c6ac61c4c04a2a3c4d69d3e5
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85387010"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385207"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Udělení přístupu k místním aplikacím uživatelům B2B v Azure AD
 
@@ -28,7 +28,7 @@ Pokud vaše místní aplikace používá ověřování založené na SAML, můž
 
 Je nutné provést následující akce:
 
-- Integrujte aplikaci SAML pomocí šablony aplikace mimo galerii, jak je popsáno v tématu [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](../manage-apps/configure-single-sign-on-non-gallery-applications.md). Nezapomeňte si uvědomit, co používáte pro hodnotu **adresy URL pro přihlášení** .
+- Integrujte aplikaci pomocí jazyka SAML, jak je popsáno v tématu [Konfigurace jednotného přihlašování založeného na SAML](../manage-apps/configure-saml-single-sign-on.md). Nezapomeňte si uvědomit, co používáte pro hodnotu **adresy URL pro přihlášení** .
 -  Použijte Azure Proxy aplikací služby AD k publikování místní aplikace s **Azure Active Directory** nakonfigurovaným jako zdroj ověřování. Pokyny najdete v tématu [publikování aplikací pomocí Azure proxy aplikací služby AD](../manage-apps/application-proxy-publish-azure-portal.md). 
 
    Při konfiguraci nastavení **interní adresy URL** použijte přihlašovací adresu URL, kterou jste zadali v šabloně aplikace mimo galerii. Tímto způsobem můžou uživatelé získat přístup k aplikaci mimo hranice organizace. Proxy aplikace provádí jednotné přihlašování SAML pro místní aplikaci.

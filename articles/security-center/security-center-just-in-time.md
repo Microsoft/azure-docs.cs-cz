@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 78f5a34b64736808ac03771dcd8b5380482ab341
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a077e1dfd166051ad1cf16e42d11e8eeb61d2c91
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089750"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419848"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Zabezpečení portů pro správu pomocí přístupu za běhu
 
@@ -35,7 +35,8 @@ Tato stránka vás učí, jak do programu zabezpečení zahrnout JIT. Dozvíte s
 - Ceny: **úroveň Standard**. [Další informace o cenách](/azure/security-center/security-center-pricing)
 - Požadované role a oprávnění:
     - Role **Čtenář** a **SecurityReader** můžou zobrazovat stav a parametry JIT.
-    - Chcete-li vytvořit vlastní role, které mohou pracovat s JIT, přečtěte si téma [jaká oprávnění jsou nutná ke konfiguraci a používání JIT?](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit).
+    - Chcete-li vytvořit vlastní role, které mohou pracovat s JIT, přečtěte si téma [jaká oprávnění jsou nutná ke konfiguraci a používání JIT?](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit)
+    - Chcete-li vytvořit roli s nejnižšími oprávněními pro uživatele, kteří potřebují vyžadovat přístup JIT k virtuálnímu počítači a provádět žádné jiné operace JIT, použijte [skript set-JitLeastPrivilegedRole](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role) ze stránky komunity GitHub Security Center.
 - Podporované virtuální počítače: 
     - ✔ Virtuální počítače nasazené prostřednictvím Azure Resource Manager.
     - ✘ Virtuální počítače nasazené s klasickými modely nasazení. [Přečtěte si další informace o těchto modelech nasazení](../azure-resource-manager/management/deployment-models.md).

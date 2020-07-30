@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
-ms.openlocfilehash: 901ad08440cf1cfbbbab4779a08a87c89a72cc59
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b7354a921950daec5cc429fa07318213c8924264
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281493"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87382691"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Úrovně služby v nákupním modelu založeném na DTU
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,15 +36,14 @@ Výběr úrovně služeb závisí hlavně na požadavcích na provozní kontinui
 
 ||Basic|Standard|Premium|
 | :-- | --: |--:| --:|
-|Cílové zatížení|Vývoj a produkce|Vývoj a produkce|Vývoj a produkce|
-|Smlouva SLA pro dobu provozu|99,99 %|99,99 %|99,99 %|
-|Maximální uchovávání záloh|7 dní|35 dní|35 dní|
-|Procesor|Nízké|Nízká, střední, vysoká|Střední, vysoká|
-|Propustnost vstupně-výstupních operací (přibližná) |1-5 IOPS na DTU| 1-5 IOPS na DTU | 25 IOPS na DTU|
-|Latence v/v (přibližná)|5 ms (čtení), 10 ms (zápis)|5 ms (čtení), 10 ms (zápis)|2 ms (čtení a zápis)|
-|Indexování columnstore |–|S3 a vyšší|Podporováno|
-|OLTP v paměti|–|–|Podporováno|
-|||||
+|**Cílové zatížení**|Vývoj a produkce|Vývoj a produkce|Vývoj a produkce|
+|**Smlouva SLA pro dobu provozu**|99,99 %|99,99 %|99,99 %|
+|**Maximální uchovávání záloh**|7 dní|35 dní|35 dní|
+|**Procesor**|Nízké|Nízká, střední, vysoká|Střední, vysoká|
+|**Propustnost vstupně-výstupních operací (přibližná)** |1-5 IOPS na DTU| 1-5 IOPS na DTU | 25 IOPS na DTU|
+|**Latence v/v (přibližná)**|5 ms (čtení), 10 ms (zápis)|5 ms (čtení), 10 ms (zápis)|2 ms (čtení a zápis)|
+|**Indexování columnstore** |–|S3 a vyšší|Podporováno|
+|**OLTP v paměti**|–|–|Podporováno|
 
 > [!IMPORTANT]
 > Úrovně služeb Basic, Standard S0, S1 a S2 poskytují méně než jeden vCore (CPU).  Pro úlohy náročné na procesor se doporučuje úroveň služby S3 nebo vyšší. 
@@ -61,9 +60,8 @@ Velikosti výpočetních hodnot se vyjadřují v souvislosti s jednotkami DTU (D
 
 ||Basic|Standard|Premium|
 | :-- | --: | --: | --: |
-| Maximální velikost úložiště | 2 GB | 1 TB | 4 TB  |
-| Maximální DTU | 5 | 3000 | 4000 | 
-|||||
+| **Maximální velikost úložiště** | 2 GB | 1 TB | 4 TB  |
+| **Maximální DTU** | 5 | 3000 | 4000 |
 
 > [!IMPORTANT]
 > Za určitých okolností může být nutné zmenšit databázi a uvolnit nevyužité místo. Další informace najdete v tématu [Správa prostoru souborů v Azure SQL Database](file-space-manage.md).
@@ -72,12 +70,11 @@ Velikosti výpočetních hodnot se vyjadřují v souvislosti s jednotkami DTU (D
 
 || **Basic** | **Standard** | **Premium** |
 | :-- | --: | --: | --: |
-| Maximální velikost úložiště na databázi  | 2 GB | 1 TB | 1 TB |
-| Maximální velikost úložiště na fond | 156 GB | 4 TB | 4 TB |
-| Maximální počet eDTU na databázi | 5 | 3000 | 4000 |
-| Maximální počet eDTU na fond | 1600 | 3000 | 4000 |
-| Maximální počet databází na fond | 500  | 500 | 100 |
-|||||
+| **Maximální velikost úložiště na databázi**  | 2 GB | 1 TB | 1 TB |
+| **Maximální velikost úložiště na fond** | 156 GB | 4 TB | 4 TB |
+| **Maximální počet eDTU na databázi** | 5 | 3000 | 4000 |
+| **Maximální počet eDTU na fond** | 1600 | 3000 | 4000 |
+| **Maximální počet databází na fond** | 500  | 500 | 100 |
 
 > [!IMPORTANT]
 > Ve všech oblastech je aktuálně k dispozici více než 1 TB úložiště na úrovni Premium s výjimkou: Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, Středozápadní USA, US DoD oblasti a státní správy USA – střed. V těchto oblastech je maximální velikost úložiště na úrovni Premium omezená na 1 TB.  Další informace najdete v tématu [aktuální omezení P11-P15](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  

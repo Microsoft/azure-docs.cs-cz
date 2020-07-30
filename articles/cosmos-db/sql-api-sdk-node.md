@@ -8,12 +8,13 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 67b85c34c72d8c4b4dc7cecaeb74a9b164133702
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 64bc8e76a4dcce963251219528bd93dd786f01cf
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391957"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419610"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK pro SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -36,8 +37,8 @@ ms.locfileid: "85391957"
 |---------|---------|
 |Stáhnout sadu SDK  |   [NPM](https://www.npmjs.com/package/@azure/cosmos) 
 |Dokumentace k rozhraní API  |  [Referenční dokumentace sady JavaScript SDK](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
-|Pokyny k instalaci sady SDK  |  [Pokyny k instalaci](https://github.com/Azure/azure-cosmos-js#installation)
-|Přispívání do sady SDK | [GitHubu](https://github.com/Azure/azure-cosmos-js/tree/master)
+|Pokyny k instalaci sady SDK  |  [Pokyny k instalaci](https://github.com/Azure/azure-sdk-for-js)
+|Přispívání do sady SDK | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
 | ukázky | [Ukázky kóduNode.js](sql-api-nodejs-samples.md)
 | Úvodní kurz | [Začínáme se sadou JavaScript SDK](sql-api-nodejs-get-started.md)
 | Kurz webové aplikace | [Vytvoření Node.js webové aplikace pomocí Azure Cosmos DB](sql-api-nodejs-application.md)
@@ -479,6 +480,6 @@ Všechny žádosti o Cosmos DB používání vyřazené sady SDK budou službou 
 ## <a name="faq"></a>Nejčastější dotazy
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 Další informace o Cosmos DB najdete na stránce služby [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) .
 

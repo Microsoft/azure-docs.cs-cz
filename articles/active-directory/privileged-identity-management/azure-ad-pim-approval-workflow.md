@@ -16,12 +16,12 @@ ms.date: 02/07/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 848723f256327190aefd3c4921784240c6c4d46a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24471ff5a085be905f9316f1af3c95c3a7912bf1
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743180"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421531"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Schválení nebo zamítnutí žádostí o role Azure AD v Privileged Identity Management
 
@@ -34,7 +34,7 @@ Od listopadu 2019 se v části Privileged Identity Management role Azure AD aktu
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí uživatele, který je v roli [správce privilegované role](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
 1. Otevřete **Azure AD Privileged Identity Management**. Pokud máte banner v horní části stránky s přehledem, postupujte podle pokynů na kartě **Nová verze** v tomto článku. Jinak postupujte podle pokynů na kartě **předchozí verze** .
 
-    [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
+    [![Vyberte Azure AD > Privileged Identity Management.](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 Podle kroků v tomto článku můžete schvalovat nebo odmítat žádosti pro role Azure AD.
 
@@ -44,7 +44,7 @@ Podle kroků v tomto článku můžete schvalovat nebo odmítat žádosti pro ro
 
 Jako delegovaný schvalovatel obdržíte e-mailové oznámení, když požadavek role Azure AD čeká na vaše schválení. Tyto nedokončené žádosti můžete zobrazit v Privileged Identity Management.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. Otevřete **Azure AD Privileged Identity Management**.
 
@@ -94,7 +94,7 @@ Tady jsou některé informace o oznámeních pracovního postupu:
 
 Jako delegovaný schvalovatel obdržíte e-mailové oznámení, když požadavek role Azure AD čeká na vaše schválení. Tyto nedokončené žádosti můžete zobrazit v Privileged Identity Management.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. Otevřete **Azure AD Privileged Identity Management**.
 

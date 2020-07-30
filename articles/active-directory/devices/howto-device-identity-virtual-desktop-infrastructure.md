@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 450f04c7de68bf6db282577fbc8e841f1f3c93fc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a43538ec7fa17764e8d9d53aad305480bd3ab4f5
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284400"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419797"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Identita zařízení a virtualizace plochy
 
@@ -54,9 +54,9 @@ Než nakonfigurujete identity zařízení ve službě Azure AD pro vaše prostř
 |   | Spravované | Aktuální Windows | Trvalý | Ne |
 |   |   |   | Bez trvalého přihlášení | Ne |
 | Registrováno v Azure AD | Federovaní | Aktuální Windows | Trvalý | Neuvedeno |
-|   |   |   | Bez trvalého přihlášení | Ne |
+|   |   |   | Bez trvalého přihlášení | Neuvedeno |
 |   | Spravované | Aktuální Windows | Trvalý | Neuvedeno |
-|   |   |   | Bez trvalého přihlášení | Ne |
+|   |   |   | Bez trvalého přihlášení | Neuvedeno |
 
 \***Federované** prostředí infrastruktury identit představuje prostředí s poskytovatelem identity, jako je AD FS nebo jiné IDP třetí strany.
 

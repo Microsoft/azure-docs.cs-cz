@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: 17ac29de243f4abfff1cfc83fc6424799978bf0e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bc7891e157bbffa386396a352fd1d48e4559ecdc
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74978147"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386384"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Kurz: návrh databáze s více klienty pomocí Azure Database for PostgreSQL – Citus (škálování)
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte, jak používat Azure Database for PostgreSQL-Citus (
 > * Sdílení dat mezi klienty
 > * Přizpůsobení schématu pro jednotlivé klienty
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
@@ -130,7 +130,7 @@ Víceklientské aplikace můžou vymáhat jedinečnost jenom pro každého tenan
 
 Nasazení v rámci škálování ukládá řádky tabulky na různých uzlech na základě hodnoty uživatelem označeného sloupce. Tento "distribuční sloupec" označuje, ve kterém tenantovi vlastní řádky.
 
-Pojďme nastavit distribuční sloupec jako ID společnosti\_, identifikátor tenanta. V psql spusťte tyto funkce:
+Pojďme nastavit distribuční sloupec jako \_ ID společnosti, identifikátor tenanta. V psql spusťte tyto funkce:
 
 ```sql
 SELECT create_distributed_table('companies',   'id');
@@ -139,6 +139,8 @@ SELECT create_distributed_table('ads',         'company_id');
 SELECT create_distributed_table('clicks',      'company_id');
 SELECT create_distributed_table('impressions', 'company_id');
 ```
+
+[!INCLUDE [azure-postgresql-hyperscale-dist-alert](../../includes/azure-postgresql-hyperscale-dist-alert.md)]
 
 ## <a name="ingest-sample-data"></a>Ingestace ukázkových dat
 
@@ -185,7 +187,7 @@ ORDER BY a.campaign_id, n_impressions desc;
 
 ## <a name="share-data-between-tenants"></a>Sdílení dat mezi klienty
 
-Až do chvíle, kdy byly všechny tabulky `company_id`distribuovány, ale některá data nejsou přirozeně "patřila" do jakéhokoli klienta, konkrétně a lze je sdílet. Například všechny společnosti v ukázkové platformě služby AD mohou chtít získat geografické informace pro svou cílovou skupinu na základě IP adres.
+Až do chvíle, kdy byly všechny tabulky distribuovány `company_id` , ale některá data nejsou přirozeně "patřila" do jakéhokoli klienta, konkrétně a lze je sdílet. Například všechny společnosti v ukázkové platformě služby AD mohou chtít získat geografické informace pro svou cílovou skupinu na základě IP adres.
 
 Vytvořte tabulku pro ukládání sdílených geografických informací. V psql spusťte následující příkazy:
 
@@ -211,7 +213,7 @@ Načtěte ho s ukázkovými daty. Nezapomeňte spustit tento příkaz v psql zev
 \copy geo_ips from 'geo_ips.csv' with csv
 ```
 
-Spojování tabulky kliknutí s geografickými\_IP adresami je efektivní na všech uzlech.
+Spojování tabulky kliknutí s geografickými \_ IP adresami je efektivní na všech uzlech.
 Tady je spojení, kde najdete umístění všech uživatelů, kteří na reklamu klikli.
 290. Zkuste spustit dotaz v psql.
 
@@ -227,7 +229,7 @@ SELECT c.id, clicked_at, latlon
 
 Každý tenant může potřebovat ukládat speciální informace, které jiné nevyžadují. Všichni klienti ale sdílejí společnou infrastrukturu se stejným schématem databáze. Kde může další data přejít?
 
-Jedním z zdvihů je použití typu otevřeného a koncového sloupce, jako je PostgreSQL JSONB.  Naše schéma má `clicks` VOLANÉ `user_data`pole JSONB.
+Jedním z zdvihů je použití typu otevřeného a koncového sloupce, jako je PostgreSQL JSONB.  Naše schéma má volané pole JSONB `clicks` `user_data` .
 Společnost (vyslovit pět firem) může pomocí sloupce sledovat, jestli je uživatel v mobilním zařízení.
 
 Tady je dotaz, který zjistí, kdo klikne na další: mobilní nebo tradiční Návštěvníci.

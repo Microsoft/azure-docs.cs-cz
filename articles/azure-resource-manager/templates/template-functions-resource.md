@@ -490,7 +490,7 @@ Při sestavování plně kvalifikovaného odkazu na prostředek, pořadí pro ko
 
 **{Resource-Provider-Namespace}/{Parent-Resource-Type}/{Parent-Resource-Name} [/{Child-Resource-Type}/{Child-Resource-Name}]**
 
-Například:
+Příklad:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt`je správné, není `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` správné.
 

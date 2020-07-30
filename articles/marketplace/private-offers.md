@@ -7,12 +7,12 @@ ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 07/01/2020
-ms.openlocfilehash: aea093cbbb59824973c351f6df23113e1b51ab69
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7e93772a77ac1edb88c8e1a56c8db216c6e9fbd3
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319860"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420103"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Soukromé nabídky na komerčním webu Microsoft Marketplace
 
@@ -43,6 +43,9 @@ Soukromé plány jsou komponenty nabídky a jsou viditelné pouze cílovými zá
 
 Pro *nové nabídky, které zahrnují pouze soukromé plány*, mohou vydavatelé vytvořit své nabídky jako jakoukoli jinou nabídku a pak označit plány jako soukromé. Nabídky, které mají pouze privátní plány, nebudou zjistitelné nebo přístupné prostřednictvím komerčního webu Microsoft Marketplace nebo [Azure Portal](https://azure.microsoft.com/features/azure-portal/) zákazníky, kteří nejsou přidruženi k této nabídce.
 
+>[!NOTE]
+>Nabídka, která obsahuje pouze soukromé plány, nebude viditelná ve veřejném Azure Marketplace nebo AppSource.
+
 ## <a name="targeting-customers-with-private-offers"></a>Cílení na zákazníky pomocí soukromých nabídek
 
 Pro nové i stávající soukromé nabídky můžou vydavatelé cílit na zákazníky pomocí identifikátorů předplatného. Vydavatelé, kteří používají virtuální počítač nebo nabídku aplikací Azure, můžou omezit dostupnost privátního plánu na individuální ID předplatného Azure nebo nahrát CSV s až 20 000 ID předplatných Azure. Při použití soukromé nabídky aplikace SaaS můžou vydavatelé přidružit buď ID tenanta, aby se omezila dostupnost privátního plánu, a to buď pomocí manuálního, nebo přístupu pro nahrávání ve formátu CSV.
@@ -61,6 +64,7 @@ Ve výsledcích hledání se zobrazí také soukromé nabídky. Stačí vyhledat
 
 >[!Note]
 >Soukromé nabídky nejsou podporovány u předplatných vytvořených prostřednictvím prodejce programu Cloud Solution Provider (CSP).
+
 
 <!---
 ## Next steps

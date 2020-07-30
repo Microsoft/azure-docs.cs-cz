@@ -13,13 +13,14 @@ ms.custom:
 - seo-javascript-september2019
 - mqtt
 - 'Role: Cloud Development'
+- devx-track-javascript
 ms.date: 06/21/2019
-ms.openlocfilehash: 7492374364826519857ad66a52e01851c22da3bb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ea15c0d810f0ce51a52bc883ee44a4a90391b1d3
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320455"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420936"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-nodejs"></a>Rychlý Start: odeslání telemetrie ze zařízení do služby IoT Hub a jejich čtení pomocí back-endové aplikace (Node.js)
 
@@ -27,7 +28,7 @@ ms.locfileid: "87320455"
 
  V tomto rychlém startu odešlete telemetrii z aplikace simulovaného zařízení prostřednictvím Azure IoT Hub do back-endové aplikace ke zpracování. IoT Hub je služba Azure, která umožňuje ingestovat velké objemy telemetrických dat ze zařízení IoT do cloudu pro účely uložení nebo zpracování. Tento rychlý Start používá dvě předem napsané Node.js aplikace: jeden pro odeslání telemetrie a jednu pro přečtení telemetrie z centra. Před spuštěním těchto dvou aplikací vytvoříte centrum IoT a zaregistrujete v tomto centru zařízení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 

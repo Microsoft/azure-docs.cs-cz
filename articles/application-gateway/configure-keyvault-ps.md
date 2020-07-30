@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 05/26/2020
 ms.author: victorh
-ms.openlocfilehash: 5e0cb1a5c5c115aa1aaf9697e19631e2142853a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a872bc63be33ebed0a8ba9d89383cdfc9feef28
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808067"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386278"
 ---
 # <a name="configure-tls-termination-with-key-vault-certificates-using-azure-powershell"></a>Konfigurace ukončení TLS pomocí Key Vault certifikátů pomocí Azure PowerShell
 
@@ -25,9 +25,9 @@ V tomto článku se dozvíte, jak pomocí skriptu Azure PowerShell integrovat Tr
 
 Tento článek vyžaduje modul Azure PowerShell verze 1.0.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud chcete spustit příkazy v tomto článku, musíte taky vytvořit připojení k Azure spuštěním `Connect-AzAccount` .
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, musíte mít nainstalovaný modul ManagedServiceIdentity:
 
@@ -73,7 +73,7 @@ $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
 ```
 > [!NOTE]
-> Aby ukončení protokolu TLS fungovalo správně, musí být použit příznak-EnableSoftDelete. Pokud konfigurujete [Key Vault obnovitelného odstranění prostřednictvím portálu](../key-vault/general/overview-soft-delete.md#soft-delete-behavior), musí se doba uchování uchovávat v 90 dnech, což je výchozí hodnota. Application Gateway ještě nepodporuje jiné období uchování. 
+> Aby ukončení protokolu TLS fungovalo správně, musí být použit příznak-EnableSoftDelete. Pokud konfigurujete [Key Vault obnovitelného odstranění prostřednictvím portálu](../key-vault/general/soft-delete-overview.md#soft-delete-behavior), musí se doba uchování uchovávat v 90 dnech, což je výchozí hodnota. Application Gateway ještě nepodporuje jiné období uchování. 
 
 ### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 

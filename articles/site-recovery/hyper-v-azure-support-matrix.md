@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 268d8f3b43809e02476757cfe36b1ee52d4eaef1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 53967ab0bec9488691ff60cdabb8fedbb6b9730e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317480"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386703"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Matice podpory pro zotavení po havárii místních virtuálních počítačů Hyper-V do Azure
 
@@ -32,8 +32,8 @@ Hyper-V bez Virtual Machine Manager | V Azure můžete provést zotavení po hav
 
 **Server** | **Požadavky** | **Podrobnosti**
 --- | --- | ---
-Hyper-V (běžící bez Virtual Machine Manager) |  Windows Server 2019, Windows Server 2016, Windows Server 2012 R2 s nejnovějšími aktualizacemi (včetně instalace jádra serveru těchto operačních systémů) | Pokud jste už nakonfigurovali Windows Server 2012 R2 s/nebo SCVMM 2012 R2 s Azure Site Recovery a plánujete upgradovat operační systém, postupujte podle pokynů v [dokumentaci.](upgrade-2012R2-to-2016.md)
-Hyper-V (běžící s Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 (včetně instalace jádra serveru těchto operačních systémů s výjimkou Virtual Machine Manager 2019) | Pokud se používá Virtual Machine Manager, hostitelé Windows serveru 2019 by měli být spravováni v Virtual Machine Manager 2019. Podobně by hostitelé systému Windows Server 2016 měli být spravováni v Virtual Machine Manager 2016.
+Hyper-V (běžící bez Virtual Machine Manager) |  Windows Server 2019, Windows Server 2016, Windows Server 2012 R2 s nejnovějšími aktualizacemi <br/><br/> **Poznámka:** Instalace jádra serveru těchto operačních systémů je taky podporovaná. | Pokud jste už nakonfigurovali Windows Server 2012 R2 s/nebo SCVMM 2012 R2 s Azure Site Recovery a plánujete upgradovat operační systém, postupujte podle pokynů v [dokumentaci.](upgrade-2012R2-to-2016.md)
+Hyper-V (běžící s Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 <br/><br/> **Poznámka:** Instalace jádra serveru těchto operačních systémů je taky podporovaná.  | Pokud se používá Virtual Machine Manager, hostitelé Windows serveru 2019 by měli být spravováni v Virtual Machine Manager 2019. Podobně by hostitelé systému Windows Server 2016 měli být spravováni v Virtual Machine Manager 2016.
 
 > [!NOTE]
 > Zajistěte, aby na místním serveru existovala .NET Framework 4.6.2 nebo vyšší.

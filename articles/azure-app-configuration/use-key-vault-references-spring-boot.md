@@ -13,13 +13,13 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 6a5bc947c3ea414f197df9cfcdd5f233e4654cbc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-java
+ms.openlocfilehash: 31aaa0134ffe34d0424868221f01b68b64e4b088
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085021"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371154"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Kurz: použití odkazů Key Vault v aplikaci Java pružiny
 
@@ -41,7 +41,7 @@ V tomto kurzu se naučíte:
 > * Vytvořte konfigurační klíč aplikace, který odkazuje na hodnotu uloženou v Key Vault.
 > * Přístup k hodnotě tohoto klíče z jarní aplikace Java.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * Podporovaná [sada Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk) s verzí 8.
@@ -82,11 +82,11 @@ Pokud chcete do trezoru přidat tajný klíč, musíte provést několik další
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Přidat odkaz Key Vault do konfigurace aplikace
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a pak vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a pak vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 1. Vyberte **Průzkumník konfigurace**.
 
-1. Vyberte **+ vytvořit** > **odkaz na Trezor klíčů**a pak zadejte následující hodnoty:
+1. Vyberte **+ vytvořit**  >  **odkaz na Trezor klíčů**a pak zadejte následující hodnoty:
     * **Klíč**: vyberte **/Application/config.keyvaultmessage**
     * **Popisek**: Nechte tuto hodnotu prázdnou.
     * **Předplatné**, **Skupina prostředků**a **Trezor klíčů**: zadejte hodnoty odpovídající hodnotám v trezoru klíčů, který jste vytvořili v předchozí části.

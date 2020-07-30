@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 7e1432cf74dc741a6e2f5d561e9dc203df95007c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a7cc135555db2673225d857bf6a21e57de3e3f6b
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072683"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386159"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Nastavení klíčů spravovaných zákazníkem k šifrování dat v klidovém prostředí pro prostředí ISEs (Integration Service Environment) v Azure Logic Apps
 
@@ -39,7 +39,7 @@ V tomto tématu se dozvíte, jak nastavit a zadat vlastní šifrovací klíč, k
 
 * Trezor klíčů Azure s povolenými vlastnostmi **obnovitelného odstranění** a **nevyprázdnění**
 
-  Další informace o tom, jak tyto vlastnosti povolit, najdete v tématu [Azure Key Vault obnovitelné odstranění – přehled](../key-vault/general/overview-soft-delete.md) a [konfigurace klíčů spravovaných zákazníkem pomocí Azure Key Vault](../storage/common/storage-encryption-keys-portal.md). Pokud s Azure Key Vault začínáte, přečtěte si, [jak vytvořit Trezor klíčů](../key-vault/secrets/quick-create-portal.md#create-a-vault) pomocí Azure Portal nebo pomocí příkazu Azure PowerShell [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault).
+  Další informace o tom, jak tyto vlastnosti povolit, najdete v tématu [Azure Key Vault obnovitelné odstranění – přehled](../key-vault/general/soft-delete-overview.md) a [konfigurace klíčů spravovaných zákazníkem pomocí Azure Key Vault](../storage/common/storage-encryption-keys-portal.md). Pokud s Azure Key Vault začínáte, přečtěte si, [jak vytvořit Trezor klíčů](../key-vault/secrets/quick-create-portal.md#create-a-vault) pomocí Azure Portal nebo pomocí příkazu Azure PowerShell [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault).
 
 * V trezoru klíčů se vytvoří klíč, který je vytvořený pomocí těchto hodnot vlastností:
 
@@ -47,7 +47,7 @@ V tomto tématu se dozvíte, jak nastavit a zadat vlastní šifrovací klíč, k
   |----------|-------|
   | **Typ klíče** | RSA |
   | **Velikost klíče RSA** | 2 048 |
-  | **Povoleno** | Yes |
+  | **Povoleno** | Ano |
   |||
 
   ![Vytvoření šifrovacího klíče spravovaného zákazníkem](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)

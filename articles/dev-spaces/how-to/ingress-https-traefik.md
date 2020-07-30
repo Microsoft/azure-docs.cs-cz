@@ -5,18 +5,19 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Naučte se nakonfigurovat Azure Dev Spaces k použití vlastního kontroleru traefik příchozího přenosu dat a konfiguraci HTTPS pomocí tohoto kontroleru příchozího přenosu dat.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
-ms.openlocfilehash: fd11b3bbd3f90b75203084ff0753c1485d57a35b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: e6c50dd8d27af8276ddbf47f7a3719ab59d87a7d
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80155425"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421582"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Použití vlastního kontroleru traefik příchozího přenosu dat a konfigurace HTTPS
 
 V tomto článku se dozvíte, jak nakonfigurovat Azure Dev Spaces, aby používaly vlastní kontroler příchozího přenosu dat (traefik). Tento článek také ukazuje, jak nakonfigurovat tento vlastní kontroler příchozích dat na používání protokolu HTTPS.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud žádné nemáte, můžete si vytvořit [bezplatný účet][azure-account-create].
 * [Nainstalované rozhraní Azure CLI][az-cli]

@@ -3,12 +3,12 @@ title: Podpora pro vyhodnocení technologie Hyper-V v Azure Migrate
 description: Další informace o podpoře pro vyhodnocení technologie Hyper-V s Azure Migrate posouzení serveru
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: 2cf13904a3642b8b91d61c84bb1c51cbb97f0846
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 563a98162a2453ac1c96baf9f04500ee880e0ce5
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324807"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420953"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Matice podpory pro posouzení technologie Hyper-V
 
@@ -34,7 +34,7 @@ Pokud chcete nastavit posouzení virtuálního počítače Hyper-V, vytvořte pr
 
 | **Podpora**                | **Podrobnosti**               
 | :-------------------       | :------------------- |
-| **Hostitel Hyper-V**       | Hostitel Hyper-V může být samostatný nebo nasazený v clusteru.<br/><br/> Hostitel Hyper-V může používat Windows Server 2019, Windows Server 2016 nebo Windows Server 2012 R2.<br/> Virtuální počítače na hostitelích Hyper-V s Windows Serverem 2012 hodnotit nemůžete.
+| **Hostitel Hyper-V**       | Hostitel Hyper-V může být samostatný nebo nasazený v clusteru.<br/><br/> Hostitel Hyper-V může používat Windows Server 2019, Windows Server 2016 nebo Windows Server 2012 R2. Podporuje se i instalace jádra serveru systému Windows Server 2016 a Windows Server 2012 R2. <br/>Virtuální počítače na hostitelích Hyper-V s Windows Serverem 2012 hodnotit nemůžete.
 | **Oprávnění**           | Na hostiteli Hyper-V potřebujete oprávnění správce. <br/> Pokud nechcete přiřazovat oprávnění správce, vytvořte místní účet nebo uživatelský účet domény a přidejte do těchto skupin uživatelský účet – Uživatelé vzdálené správy, Správci technologie Hyper-V a uživatelé nástroje Performance Monitor. |
 | **Vzdálená komunikace PowerShellu**   | Na každém hostiteli Hyper-V musí být povolená [Vzdálená komunikace PowerShellu](/powershell/module/microsoft.powershell.core/enable-psremoting?view=powershell-7) . |
 | **Replika technologie Hyper-V**       | Pokud používáte repliku technologie Hyper-V (nebo máte více virtuálních počítačů se stejnými identifikátory virtuálních počítačů) a zjistíte jak původní, tak replikované virtuální počítače pomocí Azure Migrate, hodnocení vygenerované Azure Migrate nemusí být přesné. |

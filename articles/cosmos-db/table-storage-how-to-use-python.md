@@ -36,7 +36,7 @@ Tato ukázka předvádí použití [sady Table SDK služby Azure Cosmos DB pro P
 
 Při procházení scénářů v této ukázce můžete využít [referenční informace k sadě SDK služby Azure Cosmos DB pro rozhraní Python API](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro úspěšné dokončení této ukázky potřebujete následující položky:
 

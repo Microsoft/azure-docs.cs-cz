@@ -3,12 +3,12 @@ title: Nastavení zařízení Azure Migrate pro VMware
 description: Naučte se, jak nastavit zařízení Azure Migrate pro vyhodnocení a migraci virtuálních počítačů VMware.
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: 272481640db739a458a19a2c9383ff45b54974b5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 24ba978d776da375b417fb67823651727836cb22
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112812"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386737"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>Nastavení zařízení pro virtuální počítače VMware
 
@@ -34,7 +34,7 @@ K nastavení zařízení pomocí šablony vajíček:
 ## <a name="download-the-ova-template"></a>Stažení šablony pro VAJÍČKy
 
 1. V Azure Migrate **cíle migrace**  >  na**servery**  >  **: vyhodnocování serveru**klikněte na **zjistit**.
-2. V nabídce **zjistit**počítače  >  **jsou vaše počítače virtualizované?** klikněte na **Ano a hypervisor VMware vSphere**.
+2. V nabídce **zjistit**počítače  >  **jsou vaše počítače virtualizované?** klikněte na **Ano, pomocí VMware vSphere hypervisoru**.
 3. Pokud si chcete stáhnout soubor šablony .OVA, klikněte na **Stáhnout**.
 
   ![Výběry pro stažení souboru vajíček](./media/tutorial-assess-vmware/download-ova.png)
@@ -89,7 +89,7 @@ Nastavte zařízení poprvé. Pokud zařízení nasadíte pomocí skriptu místo
         - Podporuje se jen proxy protokolu HTTP.
     - **Časová synchronizace**: čas je ověřený. Čas na zařízení by měl být synchronizovaný s internetovým časem, aby zjišťování fungovalo správně.
     - **Instalovat aktualizace**: Azure Migrate kontroluje, jestli jsou nainstalované nejnovější aktualizace zařízení.
-    - **Instalace VDDK**: Azure Migrate kontroluje, jestli je nainstalovaná sada Virtual disks Development Kit (VDDK) VMware vSphere.
+    - **Instalace VDDK**: Azure Migrate kontroluje, jestli je nainstalovaná VMware vSphere sada Virtual disk Development Kit (VDDK).
         - Migrace do Azure používá VDDK k replikaci počítačů během migrace do Azure.
         - Stáhněte si VDDK 6,7 z VMware a Extrahujte stažený obsah zip do zadaného umístění na zařízení.
 
@@ -111,7 +111,7 @@ Aby bylo možné zjistit konfiguraci a údaje o výkonu virtuálních počítač
 
 ### <a name="specify-vcenter-server-details"></a>Zadání podrobností vCenter Serveru
 1. V části **zadat vCenter Server podrobnosti**zadejte název (FQDN) nebo IP adresu vCenter Server. Můžete ponechat výchozí port nebo zadat vlastní port, na kterém vCenter Server naslouchá.
-2. V části **uživatelské jméno** a **heslo**zadejte přihlašovací údaje účtu jen pro čtení, které zařízení použije ke zjištění virtuálních počítačů na serveru vCenter. Rozsah zjišťování můžete omezit omezením přístupu k účtu vCenter. [Další informace](set-discovery-scope.md).
+2. V části **uživatelské jméno** a **heslo**zadejte přihlašovací údaje účtu jen pro čtení, které zařízení použije ke zjištění virtuálních počítačů na serveru vCenter. Rozsah zjišťování můžete omezit omezením přístupu k účtu vCenter. [Přečtěte si další informace](set-discovery-scope.md).
 3. Klikněte na **ověřit připojení** a ujistěte se, že se zařízení může připojit k vCenter Server.
 
 ### <a name="specify-vm-credentials"></a>Zadat přihlašovací údaje virtuálního počítače
@@ -124,7 +124,7 @@ Pro zjišťování aplikací, rolí a funkcí a vizualizací závislostí virtu�
 2. Vyberte **operační systém**.
 3. Zadejte popisný název přihlašovacích údajů.
 4. V části **uživatelské jméno** a **heslo**zadejte účet, který má alespoň přístup k hostům na virtuálních počítačích.
-5. Klikněte na tlačítko **Add** (Přidat).
+5. Klikněte na **Přidat**.
 
 Po zadání vCenter Server a přihlašovacích údajů k virtuálnímu počítači (volitelné) klikněte na **Uložit a spusťte zjišťování** a spusťte zjišťování místního prostředí.
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55e64fad910aba25354d8d7829fc1189b744ca16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8360eae71ddd41d3105dbd037f273139262727ad
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550485"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419559"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>Konfigurace a povolení ověřování na základě serveru SMS pomocí Azure Active Directory (Preview)
 
@@ -31,7 +31,7 @@ V tomto článku se dozvíte, jak povolit ověřování pomocí serveru SMS pro 
 
 K dokončení tohoto článku potřebujete následující prostředky a oprávnění:
 
-* Aktivní předplatné Azure.
+* Musíte mít aktivní předplatné Azure.
     * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Tenant Azure Active Directory přidružený k vašemu předplatnému.
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
@@ -65,7 +65,7 @@ Nejdřív pro vašeho tenanta Azure AD povolíme ověřování pomocí SMS.
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V navigační nabídce na levé straně okna Azure Active Directory vyberte **metody ověřování > zabezpečení > zásady metody ověřování (Preview)**.
 
-    [![](media/howto-authentication-sms-signin/authentication-method-policy-cropped.png "Browse to and select the Authentication method policy (preview) window in the Azure portal")](media/howto-authentication-sms-signin/authentication-method-policy.png#lightbox)
+    [![Vyhledejte a vyberte v Azure Portal okno zásady ověřování (Preview).](media/howto-authentication-sms-signin/authentication-method-policy-cropped.png)](media/howto-authentication-sms-signin/authentication-method-policy.png#lightbox)
 
 1. V seznamu dostupných metod ověřování vyberte **text zpráva**.
 1. Nastavte **Povolit** na *Ano*.
@@ -81,7 +81,7 @@ Při ověřování pomocí serveru SMS ve vašem tenantovi Azure AD teď vyberte
 1. V okně zásady ověřování textové zprávy nastavte **cíl** na *Vybrat uživatele*.
 1. Zvolte možnost **Přidat uživatele nebo skupiny**a pak vyberte testovacího uživatele nebo skupinu, například *uživatele contoso* nebo *Contoso SMS*.
 
-    [![](media/howto-authentication-sms-signin/add-users-or-groups-cropped.png "Choose users or groups to enable for SMS-based authentication in the Azure portal")](media/howto-authentication-sms-signin/add-users-or-groups.png#lightbox)
+    [![Vyberte možnost Uživatelé nebo skupiny a povolte ověřování pomocí serveru SMS v Azure Portal.](media/howto-authentication-sms-signin/add-users-or-groups-cropped.png)](media/howto-authentication-sms-signin/add-users-or-groups.png#lightbox)
 
 1. Když vyberete uživatele nebo skupiny, klikněte na **Vybrat**a **uložte** aktualizované zásady metody ověřování.
 

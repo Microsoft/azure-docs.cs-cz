@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, divswa, logicappspm
 ms.topic: article
 ms.date: 07/28/2020
-ms.openlocfilehash: a9ebc6b0cdbaa05c36383fa5126c2672fb19b69c
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 675d4bdb0b8c0aa8e034d5a85dc027f642705fa9
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87370950"
+ms.locfileid: "87386176"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Připojení k místním zdrojům dat z Azure Logic Apps
 
@@ -50,15 +50,15 @@ Místní brána dat v Azure Logic Apps podporuje místní [konektory](../connect
 
 Azure Logic Apps podporuje operace čtení a zápisu přes bránu dat. Nicméně tyto operace mají [omezení velikosti datové části](/data-integration/gateway/service-gateway-onprem#considerations). I když samotné brány neúčtují další náklady, [Logic Apps cenový model](../logic-apps/logic-apps-pricing.md) se vztahuje na tyto konektory a další operace v Azure Logic Apps.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* [Místní brána dat je už v místním počítači nainstalovaná](../logic-apps/logic-apps-gateway-install.md).
+* [Místní brána dat je už v místním počítači nainstalovaná](../logic-apps/logic-apps-gateway-install.md). Aby bylo možné vytvořit prostředek brány, který odkazuje na tuto instalaci, musí tato instalace brány existovat.
 
-* Máte [stejný účet a předplatné Azure](../logic-apps/logic-apps-gateway-install.md#requirements) , které jste použili pro instalaci brány. Tento účet Azure musí patřit jenom do jednoho [tenanta Azure Active Directory (Azure AD) nebo adresáře](../active-directory/fundamentals/active-directory-whatis.md#terminology). K vytvoření prostředku brány v Azure potřebujete stejný účet a předplatné Azure, protože prostředek brány v Azure může vytvořit jenom Správce brány. Instanční objekty se aktuálně nepodporují.
+* Máte [stejný účet a předplatné Azure](../logic-apps/logic-apps-gateway-install.md#requirements) , které jste použili pro instalaci brány. Tento účet Azure musí patřit jenom do jednoho [tenanta Azure Active Directory (Azure AD) nebo adresáře](../active-directory/fundamentals/active-directory-whatis.md#terminology). Pokud chcete vytvořit prostředek brány v Azure, musíte použít stejný účet Azure a předplatné, protože prostředek brány v Azure může vytvořit jenom Správce brány. Instanční objekty se aktuálně nepodporují.
 
-  * Když vytvoříte prostředek brány v Azure, vyberete instalaci brány, která se použije u svého prostředku brány, a jenom tento prostředek brány. Každý prostředek brány se může propojit jenom s jednou instalací brány, která se může propojit jenom s jedním účtem Azure a předplatným. Proto nemůžete vybrat instalaci brány, která je už přidružená k jinému prostředku brány.
+  * Při vytváření prostředku brány v Azure vyberete instalaci brány, která se připojí k vašemu prostředku brány, a jenom tento prostředek brány. Každý prostředek brány se může propojit jenom s jednou instalací brány. Nemůžete vybrat instalaci brány, která už je přidružená k jinému prostředku brány.
   
-  * Vaše aplikace logiky a prostředek brány nemusí existovat ve stejném předplatném Azure. Pokud máte přístup k předplatnému, můžete v aktivačních událostech a akcích, které mají přístup k místním zdrojům dat, vybrat si z různých předplatných Azure, která jsou přidružená k jinému prostředku brány.
+  * Vaše aplikace logiky a prostředek brány nemusí existovat ve stejném předplatném Azure. Pokud máte přístup k předplatnému v aktivačních událostech a akcích, které mají přístup k místním zdrojům dat, můžete vybrat další předplatná Azure, která mají prostředky brány.
 
 <a name="create-gateway-resource"></a>
 
@@ -152,7 +152,7 @@ Pokud chcete vytvořit jiný prostředek brány, propojte instalaci brány s jin
 
 1. Pokud jste to ještě neučinili, vyberte v nabídce prostředku brány místní **bránu dat**. Na panelu nástrojů prostředek brány vyberte **Odstranit**.
 
-   Například:
+   Příklad:
 
    ![Odstranění prostředku brány v Azure](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway.png)
 

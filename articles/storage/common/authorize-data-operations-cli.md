@@ -10,12 +10,12 @@ ms.date: 02/26/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: b4af9c23e2599ad666908763720a5f01303b8d50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e0b3890c50a476e4c3b3247db435c6032bf9bbc
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805484"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87417297"
 ---
 # <a name="authorize-access-to-blob-or-queue-data-with-azure-cli"></a>Autorizace přístupu k datům objektů BLOB nebo front pomocí Azure CLI
 
@@ -57,7 +57,7 @@ Následující příklad ukazuje, jak vytvořit kontejner z Azure CLI pomocí va
 1. Než vytvoříte kontejner, přiřaďte roli [Přispěvatel dat objektů BLOB úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) sami sobě. I když jste vlastníkem účtu, potřebujete explicitní oprávnění k provádění operací s daty v účtu úložiště. Další informace o přiřazování rolí RBAC najdete [v tématu udělení přístupu k datům objektů blob Azure a frontě pomocí RBAC v Azure Portal](storage-auth-aad-rbac.md).
 
     > [!IMPORTANT]
-    > Rozšiřování přiřazení rolí RBAC může trvat několik minut.
+    > Rozšiřování přiřazení rolí Azure může trvat několik minut.
 
 1. Zavolejte pomocí příkazu [AZ Storage Container Create](/cli/azure/storage/container#az-storage-container-create) s `--auth-mode` parametrem nastaveným na `login` , aby se vytvořil kontejner pomocí vašich přihlašovacích údajů Azure AD. Nezapomeňte nahradit zástupné hodnoty v lomených závorkách vlastními hodnotami:
 
@@ -97,7 +97,7 @@ az storage container create \
 
 Můžete zadat parametry autorizace v proměnných prostředí, aby se zabránilo jejich zahrnutí při každém volání operace Azure Storage data. Následující tabulka popisuje dostupné proměnné prostředí.
 
-| Proměnná prostředí                  | Description                                                                                                                                                                                                                                                                                                                                                                     |
+| Proměnná prostředí                  | Popis                                                                                                                                                                                                                                                                                                                                                                     |
 |---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |    AZURE_STORAGE_ACCOUNT              |    Název účtu úložiště. Tato proměnná by se měla používat ve spojení s klíčem účtu úložiště nebo tokenem SAS. Pokud žádná není, Azure CLI se pokusí získat přístupový klíč účtu úložiště pomocí ověřeného účtu Azure AD. Pokud se spustí velký počet příkazů najednou, může být dosaženo limitu omezování Azure Storage poskytovatele prostředků. Další informace o omezeních poskytovatele prostředků najdete v tématu [škálovatelnost a výkonnostní cíle pro poskytovatele prostředků Azure Storage](scalability-targets-resource-provider.md).             |
 |    AZURE_STORAGE_KEY                  |    Klíč účtu úložiště. Tato proměnná se musí používat ve spojení s názvem účtu úložiště.                                                                                                                                                                                                                                                                          |

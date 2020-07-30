@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: ed49f5299129d16ecdd31f537064e67a4e8965a4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 688508df8b13e00b21da78c1274400ea4b18484a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289725"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421327"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Paměťově optimalizované velikosti virtuálních počítačů
 
@@ -56,3 +56,5 @@ Azure COMPUTE nabízí velikosti virtuálních počítačů, které jsou izolova
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.
+
+Další informace o tom, jak Azure vyjmenovává své virtuální počítače, najdete v tématu zásady [vytváření názvů virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).

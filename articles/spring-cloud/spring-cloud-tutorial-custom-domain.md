@@ -7,15 +7,15 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 426336802f55b5f68d8c3e04cdb932b984c2adc7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d6e4b77c6eba976de052295e4a0001924ad90644
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037215"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374197"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Mapování stávající vlastní domény na jarní cloud Azure
-Služba DNS (Distributed Name Service) je technika pro ukládání názvů síťových uzlů v síti. Tento kurz namapuje doménu, například www.contoso.com, pomocí záznamu CNAME. Zabezpečuje vlastní doménu s certifikátem a ukazuje, jak vymáhat protokol TLS (Transport Layer Security), označovaný také jako SSL (Secure Sockets Layer) (SSL). 
+Služba DNS (Domain Name Service) je technika pro ukládání názvů síťových uzlů v síti. Tento kurz namapuje doménu, například www.contoso.com, pomocí záznamu CNAME. Zabezpečuje vlastní doménu s certifikátem a ukazuje, jak vymáhat protokol TLS (Transport Layer Security), označovaný také jako SSL (Secure Sockets Layer) (SSL). 
 
 Certifikáty šifrují webový provoz. Tyto certifikáty TLS/SSL můžou být uložené v Azure Key Vault. 
 
@@ -170,7 +170,7 @@ az spring-cloud app update -name <app-name> --https-only <true|false> -g <resour
 
 Po dokončení operace přejděte na libovolnou adresu URL HTTPS, která odkazuje na vaši aplikaci. Upozorňujeme, že adresy URL HTTP nefungují.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 * [Co je Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
 * [Import certifikátu](https://docs.microsoft.com/azure/key-vault/certificate-scenarios#import-a-certificate)
 * [Spusťte svoji jarní cloudovou aplikaci pomocí Azure CLI.](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli)

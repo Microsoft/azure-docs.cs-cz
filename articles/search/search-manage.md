@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: 76eee4b0b029714a75b57e5d44e097a36de3181f
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 721848b996bc4887370b77404e3d571975815624
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371409"
+ms.locfileid: "87421888"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Správa služeb pro Azure Kognitivní hledání v Azure Portal
 
@@ -58,7 +58,7 @@ Pro přístup ke koncovému bodu má přístup kdokoli s přístupem k adrese UR
 
 Práva na zařízení pro zřizování služby se udělují prostřednictvím přiřazení rolí. [Řízení přístupu na základě role (RBAC)](../role-based-access-control/overview.md) je autorizační systém založený na [Azure Resource Manager](../azure-resource-manager/management/overview.md) pro zřizování prostředků Azure. 
 
-V kontextu Azure Kognitivní hledání určí [přiřazení rolí RBAC](search-security-rbac.md) , kdo může provádět úlohy bez ohledu na to, jestli používají [portál](search-manage.md), [PowerShell](search-manage-powershell.md)nebo [rozhraní REST API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api):
+V kontextu Azure Kognitivní hledání určí [přiřazení rolí Azure](search-security-rbac.md) , kdo může provádět úlohy bez ohledu na to, jestli používají [portál](search-manage.md), [PowerShell](search-manage-powershell.md)nebo [rozhraní REST API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api):
 
 * Vytvoření nebo odstranění služby
 * Škálování služby

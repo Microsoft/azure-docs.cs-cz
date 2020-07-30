@@ -7,18 +7,19 @@ ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: zhshang
-ms.openlocfilehash: e947864633bf66005a39c89e7d81aef0c96c93e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 3f1051b81666a036203eb1c810875d837ef9816f
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85829580"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386873"
 ---
 # <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Rychlý Start: použití JavaScriptu k vytvoření chatovací místnosti s Azure Functions a službou signalizace
 
 Služba signalizace Azure umožňuje snadno přidat do aplikace funkce v reálném čase a Azure Functions je platforma bez serveru, která umožňuje spuštění kódu bez nutnosti spravovat infrastrukturu. V tomto rychlém startu pomocí JavaScriptu sestavíte aplikaci Chat bez serveru, která používá službu a funkce signalizace v reálném čase.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Editor kódu, například [Visual Studio Code](https://code.visualstudio.com/)
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
@@ -55,7 +56,7 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
 
 1. Přejmenujte soubor *local.settings.sample.json* na *local.settings.json*.
 
-1. V souboru **local.settings.json** vložte připojovací řetězec do hodnoty nastavení **AzureSignalRConnectionString**. Uložte soubor.
+1. V souboru **local.settings.json** vložte připojovací řetězec do hodnoty nastavení **AzureSignalRConnectionString**. Soubor uložte.
 
 1. Funkce JavaScriptu jsou uspořádané do složek. V každé složce jsou dva soubory. Soubor *function.json* definuje vazby, které se používají ve funkci, a soubor *index.js* je tělo funkce. Tato aplikace funkcí zahrnuje dvě funkce aktivované protokolem HTTP:
 

@@ -6,25 +6,28 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 07/21/2020
-ms.openlocfilehash: d85fe36bb948ae9a0c81fa25f87450c7f5fe93b7
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 5db756b60330cdac4e43e13bfe29d9397f87af50
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337258"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421650"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-preview"></a>Azure cache pro Redis s privátním propojením Azure (Preview)
 Privátní koncový bod Azure je síťové rozhraní, které se připojuje soukromě a bezpečně ke službě Azure cache pro Redis využívající privátní propojení Azure. 
 
 V tomto článku se dozvíte, jak vytvořit službu Azure cache, virtuální síť Azure a soukromý koncový bod pomocí Azure Portal.  
 
-## <a name="prerequisites"></a>Požadavky
+> [!IMPORTANT]
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) verze Preview. 
+> 
+
+## <a name="prerequisites"></a>Předpoklady
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 
 > [!NOTE]
-  > Tato funkce je aktuálně ve verzi Preview – Pokud vás zajímáte, [kontaktujte nás](mailto:azurecache@microsoft.com) .
-  >
-
+> Tato funkce je aktuálně ve verzi Preview – Pokud vás zajímáte, [kontaktujte nás](mailto:azurecache@microsoft.com) .
+>
 
 ## <a name="create-a-cache"></a>Vytvoření mezipaměti
 1. Pokud chcete vytvořit mezipaměť, přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **vytvořit prostředek**. 

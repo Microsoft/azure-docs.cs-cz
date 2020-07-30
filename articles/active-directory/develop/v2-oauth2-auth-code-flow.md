@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/22/2020
+ms.date: 07/29/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 42356ec4277c8441b4833560f431740e9e2f56c8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 945d6ac15c3cb0b3f98ebb14e6b859b8f356b944
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311343"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419831"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity Platform a tok autorizačního kódu OAuth 2,0
 
@@ -187,9 +187,9 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `access_token`  | Požadovaný přístupový token Aplikace může tento token použít k ověření zabezpečeného prostředku, jako je například webové rozhraní API.  |
 | `token_type`    | Určuje hodnotu typu tokenu. Jediný typ, který podporuje Azure AD, je nosič. |
 | `expires_in`    | Jak dlouho je přístupový token platný (v sekundách). |
-| `scope`         | Rozsahy, pro které je access_token platný. |
+| `scope`         | Rozsahy, pro které je access_token platný. Volitelné – Toto je nestandardní. Pokud je tento parametr vynechán, bude tento token pro rozsahy požadované při počátečním navýšení toku. |
 | `refresh_token` | Obnovovací token OAuth 2,0. Aplikace může tento token použít k získání dalších přístupových tokenů po vypršení platnosti aktuálního přístupového tokenu. Refresh_tokens jsou dlouhodobé a dají se použít k uchování přístupu k prostředkům po delší dobu. Další podrobnosti o aktualizaci přístupového tokenu najdete v [níže uvedené části](#refresh-the-access-token). <br> **Poznámka:** Zadáno pouze v případě `offline_access` , že byl požadován obor. |
-| `id_token`      | JSON Web Token (JWT). Aplikace může dekódovat segmenty tohoto tokenu a vyžádat si informace o uživateli, který se přihlásil. Aplikace může hodnoty ukládat do mezipaměti a zobrazovat je, ale nemělo by je spoléhat na jakékoli autorizace nebo hranice zabezpečení. Další informace o id_tokens najdete v tématu [`id_token reference`](id-tokens.md) . <br> **Poznámka:** Zadáno pouze v případě `openid` , že byl požadován obor. |
+| `id_token`      | JSON Web Token (JWT). Aplikace může dekódovat segmenty tohoto tokenu a vyžádat si informace o uživateli, který se přihlásil. Aplikace může hodnoty ukládat do mezipaměti a zobrazovat je a důvěrní klienti můžou tuto možnost použít k autorizaci. Další informace o id_tokens najdete v tématu [`id_token reference`](id-tokens.md) . <br> **Poznámka:** Zadáno pouze v případě `openid` , že byl požadován obor. |
 
 ### <a name="error-response"></a>Chybová odezva
 
@@ -227,8 +227,9 @@ Chybové odpovědi budou vypadat takto:
 | `invalid_client` | Ověření klienta se nezdařilo.  | Pověření klienta nejsou platná. Chcete-li opravit, správce aplikace aktualizuje pověření.   |
 | `unsupported_grant_type` | Autorizační Server nepodporuje typ udělení autorizace. | Změňte typ udělení v žádosti. Tento typ chyby by měl nastat pouze během vývoje a zjištěn při počátečním testování. |
 | `invalid_resource` | Cílový prostředek není platný, protože neexistuje, služba Azure AD ho nemůže najít nebo není správně nakonfigurovaná. | To znamená, že pokud tento prostředek existuje, není v tenantovi nakonfigurovaný. Aplikace může uživatele vyzvat k instalaci aplikace a jejímu přidání do Azure AD.  |
-| `interaction_required` | Požadavek vyžaduje zásah uživatele. Například je vyžadován další krok ověřování. | Opakujte požadavek se stejným prostředkem.  |
-| `temporarily_unavailable` | Server je dočasně zaneprázdněný pro zpracování žádosti. | Opakujte požadavek. Klientská aplikace může vysvětlit uživateli, že jeho odpověď je zpožděna z důvodu dočasné podmínky. |
+| `interaction_required` | Nestandardní, protože specifikace OIDC volá pouze pro tento `/authorize` koncový bod. Požadavek vyžaduje zásah uživatele. Například je vyžadován další krok ověřování. | Opakujte `/authorize` požadavek se stejnými obory. |
+| `temporarily_unavailable` | Server je dočasně zaneprázdněný pro zpracování žádosti. | Opakujte požadavek po krátké prodlevě. Klientská aplikace může vysvětlit uživateli, že jeho odpověď je zpožděna z důvodu dočasné podmínky. |
+|`consent_required` | Požadavek vyžaduje souhlas uživatele. Tato chyba je nestandardní, protože se obvykle vrací jenom pro `/authorize` specifikace Endpoint na OIDC Specification. Vrátí se, když se `scope` v toku pro uplatnění kódu použil parametr, ke kterému klientská aplikace nemá oprávnění pro vyžádání.  | Klient by měl poslat uživateli zpátky do `/authorize` koncového bodu se správným oborem, aby mohl aktivovat souhlas. |
 
 > [!NOTE]
 > U jednostránkovéch aplikací se může zobrazit `invalid_request` Chyba s oznámením, že je povolená možnost uplatnění tokenu mezi zdroji jenom pro typ klienta s jednou stránkou.  To znamená, že identifikátor URI přesměrování použitý k vyžádání tokenu nebyl označen jako `spa` identifikátor URI přesměrování.  Projděte si [Postup registrace aplikace](#redirect-uri-setup-required-for-single-page-apps) , jak povolit tento tok.

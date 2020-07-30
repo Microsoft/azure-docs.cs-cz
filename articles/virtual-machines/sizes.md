@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 07/21/2020
 ms.author: jushiman
-ms.openlocfilehash: f6ed5fee8e6d4f1f0575df733b8b95d1d6990513
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 99419a73386f39492d78ee93aeb61f432ac9c690
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289696"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421055"
 ---
 # <a name="sizes-for-virtual-machines-in-azure"></a>Velikosti virtuálních počítačů v Azure
 
@@ -22,7 +22,7 @@ Tento článek popisuje dostupné velikosti a možnosti pro virtuální počíta
 | Typ | Velikosti | Popis |
 |------|-------|-------------|
 | [Obecné účely](sizes-general.md)   | B, Dsv3, Dv3, Dasv4, Dav4, DSv2, Dv2, Av2, DC, DCv2, dv4, Dsv4, Ddv4, Ddsv4  | Poměr vyrovnaných PROCESORů k paměti. Tato možnost je ideální pro testování a vývoj, malé až střední databáze a webové servery s nízkým až středním provozem. |
-| [Optimalizované pro výpočty](sizes-compute.md) | Fsv2 | Vysoký poměr PROCESORů k paměti. Vhodné pro webové servery se středním provozem, síťová zařízení, dávkové procesy a aplikační servery. |
+| [Optimalizované pro výpočty](sizes-compute.md) | F, FS, Fsv2 | Vysoký poměr PROCESORů k paměti. Vhodné pro webové servery se středním provozem, síťová zařízení, dávkové procesy a aplikační servery. |
 | [Optimalizované pro paměť](sizes-memory.md) | Esv3, Ev3, Easv4, Eav4, Ev4, Esv4, Edv4, Edsv4, Mv2, M, DSv2, Dv2 | Vysoký poměr paměti k procesoru. Jsou velmi vhodné pro servery s relační databází, střední a velké mezipaměti a analýzu v paměti.                 |
 | [Optimalizované pro úložiště](sizes-storage.md) | Lsv2 | Vysoká propustnost disku a vstupně-výstupní operace jsou ideální pro velké objemy dat, SQL, databáze NoSQL, datové sklady a velké transakční databáze.  |
 | [GPU](sizes-gpu.md) | NC, NCv2, NCv3, ND, NDv2 (Preview), NV, NVv3, NVv4 | Specializované virtuální počítače určené pro náročné vykreslování grafiky a úpravy videa a také školení modelů a Inferencing (ND) s hloubkovým učením. K dispozici s jedním nebo více grafickými procesory. |
@@ -31,9 +31,7 @@ Tento článek popisuje dostupné velikosti a možnosti pro virtuální počíta
 - Informace o cenách různých velikostí najdete na stránkách s cenami pro [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux) nebo [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows).
 - Dostupnost velikostí virtuálních počítačů v oblastech Azure najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/regions/services/).
 - Obecné omezení virtuálních počítačů Azure najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md).
-
-> [!NOTE]
-  > Další informace o tom, jak Azure vyjmenovává své virtuální počítače, najdete v tématu zásady [vytváření názvů virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
+- Další informace o tom, jak Azure vyjmenovává své virtuální počítače, najdete v tématu zásady [vytváření názvů virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
 
 ## <a name="rest-api"></a>REST API
 

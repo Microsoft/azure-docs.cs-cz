@@ -9,12 +9,13 @@ ms.devlang: nodejs
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: bd64faf46f91c3b73d58f7c226748cd0ac083701
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 043d5224c9bfefb189e36c0f4b744c93b376ace0
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85562153"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420851"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v Node.js pomocí rozhraní REST API
 > [!div class="op_single_selector"]
@@ -27,9 +28,9 @@ ms.locfileid: "85562153"
 
 Vytvořte aplikaci Node.js, která vytvoří, načte a zadá dotaz na index Azure Kognitivní hledání. Tento článek ukazuje, jak vytvořit aplikaci krok za krokem. Alternativně můžete [stáhnout zdrojový kód a data](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/) a spustit aplikaci z příkazového řádku.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro sestavování a testování tohoto rychlého startu jsme použili následující software a služby:
 
@@ -692,7 +693,7 @@ Celkové chování `run` funkce je odstranit index služby Azure kognitivní hle
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás můžou stát peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
+Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 

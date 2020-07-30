@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2b01d88a097b8b05188242109c27c696be179eb5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9b9a7a5b3d92833a0f24f6bc646b19110dcfd66a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282224"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386074"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Jak používat obnovitelné odstranění Key Vaultu s využitím PowerShellu
 
@@ -23,7 +23,7 @@ Funkce obnovitelného odstranění Azure Key Vault umožňuje obnovení odstran�
 - Podpora obnovitelného odstranění trezoru klíčů
 - Podpora obnovitelného mazání objektů trezoru klíčů; klíče, tajné klíče a certifikáty
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -285,5 +285,5 @@ Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 
 ## <a name="other-resources"></a>Další prostředky
 
-- Přehled funkce obnovitelného odstranění Key Vault najdete v článku [přehled Azure Key Vault obnovitelného odstranění](overview-soft-delete.md)).
+- Přehled funkce obnovitelného odstranění Key Vault najdete v článku [přehled Azure Key Vault obnovitelného odstranění](soft-delete-overview.md)).
 - Obecný přehled využití Azure Key Vault najdete v tématu [co je Azure Key Vault?](overview.md)).

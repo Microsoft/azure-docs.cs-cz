@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 588e63e630caa4746b493d4530e301f72e5ccb5f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b3dcb3a74e9341981af7e6eddb4be7454aaf429b
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282938"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419780"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlášení k virtuálnímu počítači s Windows v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -69,7 +69,7 @@ Pokud chcete povolit ověřování Azure AD pro virtuální počítače s Window
 
 ## <a name="enabling-azure-ad-login-in-for-windows-vm-in-azure"></a>Povolení přihlášení Azure AD pro virtuální počítač s Windows v Azure
 
-Pokud chcete používat přihlášení Azure AD pro virtuální počítače s Windows v Azure, musíte nejdřív povolit možnost přihlášení Azure AD pro virtuální počítač s Windows a pak musíte nakonfigurovat přiřazení rolí RBAC pro uživatele, kteří mají oprávnění k přihlášení k virtuálnímu počítači.
+Pokud chcete používat přihlášení Azure AD pro virtuální počítače s Windows v Azure, musíte nejdřív povolit možnost přihlášení Azure AD pro virtuální počítač s Windows a pak musíte nakonfigurovat přiřazení rolí Azure pro uživatele, kteří mají oprávnění k přihlášení k virtuálnímu počítači.
 Přihlášení Azure AD pro virtuální počítač s Windows můžete povolit několika způsoby:
 
 - Použití prostředí Azure Portal při vytváření virtuálního počítače s Windows

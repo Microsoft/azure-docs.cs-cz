@@ -4,12 +4,12 @@ description: Upozorňuje na neobvyklé změny v rychlosti neúspěšných požad
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: 30bb95c4c47c02fe6b3d31d6e6763656aa96fdec
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a093d5d6bdb96aa6f0a8a92fea48835971aebe16
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87315933"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420205"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Inteligentní zjišťování – anomálie selhání
 [Application Insights](./app-insights-overview.md) vás automaticky upozorní téměř v reálném čase, pokud vaše webová aplikace působí abnormální nárůst frekvence neúspěšných žádostí. Detekuje neobvyklé zvýšení rychlosti požadavků HTTP nebo volání závislostí, která jsou hlášena jako neúspěšná. V případě požadavků mají neúspěšné požadavky obvykle kódy odpovědí 400 nebo vyšší. V podrobnostech výstrahy jsou k dispozici analýzy vlastností selhání a souvisejících dat aplikací, které vám pomůžou při třídění a diagnostikování problému. K dispozici jsou také odkazy na portál Application Insights pro další diagnostiku. Tato funkce nevyžaduje žádné nastavení ani konfiguraci, protože používá algoritmy strojového učení pro předpověď běžné míry selhání.
@@ -20,7 +20,7 @@ Po nastavení [Application Insights projektu](./app-insights-overview.md), a pok
 
 Tady je ukázka výstrahy:
 
-[![](./media/proactive-failure-diagnostics/013.png "Sample smart detection alert showing cluster analysis around failure")](./media/proactive-failure-diagnostics/013.png#lightbox)
+:::image type="content" source="./media/proactive-failure-diagnostics/013.png" alt-text="Ukázka výstrahy inteligentního zjišťování, která zobrazuje analýzu clusteru okolo selhání." lightbox="./media/proactive-failure-diagnostics/013.png":::
 
 Podrobnosti výstrahy vám sdělí:
 
@@ -72,11 +72,11 @@ Toto pravidlo upozornění se vytvoří s přidruženou [skupinou akcí](../plat
 
 Otevřete stránku výstrahy. Pravidla výstrah upozorňující na chyby jsou zahrnuta společně se všemi výstrahami, které jste nastavili ručně, a vidíte, zda je aktuálně ve stavu výstrahy.
 
-[![](./media/proactive-failure-diagnostics/021.png "On the Application Insights resource page, click 'Alerts' tile, then 'Manage alert rules'")](./media/proactive-failure-diagnostics/021.png#lightbox)
+:::image type="content" source="./media/proactive-failure-diagnostics/021.png" alt-text="Na stránce Application Insights prostředek klikněte na dlaždice výstrahy a pak na Spravovat pravidla výstrah." lightbox="./media/proactive-failure-diagnostics/021.png":::
 
 Kliknutím na výstrahu ji nakonfigurujte.
 
-[![](./media/proactive-failure-diagnostics/032.png "Rule configuration screen")](./media/proactive-failure-diagnostics/032.png#lightbox)
+:::image type="content" source="./media/proactive-failure-diagnostics/032.png" alt-text="Obrazovka konfigurace pravidla" lightbox="./media/proactive-failure-diagnostics/032.png":::
 
 Všimněte si, že můžete zakázat nebo odstranit pravidlo upozornění na anomálie při selhání, ale nemůžete ho vytvořit na stejném Application Insights prostředku.
 
@@ -298,7 +298,7 @@ Můžete také otevřít [Azure Portal](https://portal.azure.com), přejít k pr
 
 Kliknutím na Diagnostika selhání získáte další podrobnosti a vyřešte problém.
 
-[![](./media/proactive-failure-diagnostics/051.png "Diagnostic search")](./media/proactive-failure-diagnostics/051.png#lightbox)
+:::image type="content" source="./media/proactive-failure-diagnostics/051.png" alt-text="Diagnostické vyhledávání." lightbox="./media/proactive-failure-diagnostics/051.png#lightbox":::
 
 V procentech požadavků a počtu ovlivněných uživatelů se můžete rozhodnout, jak naléhavě je problém. V předchozím příkladu je míra selhání 78,5% porovnávána s normální sazbou 2,2%, což znamená, že probíhá něco špatného. Na druhé straně byly zasaženy jenom 46 uživatelů. Pokud by to byla vaše aplikace, měli byste posoudit, jak závažná je.
 
@@ -306,13 +306,13 @@ V mnoha případech bude možné problém rychle diagnostikovat z názvu žádos
 
 V tomto příkladu se vyskytla výjimka z SQL Database z důvodu dosažení limitu požadavků.
 
-[![](./media/proactive-failure-diagnostics/052.png "Failed request details")](./media/proactive-failure-diagnostics/052.png#lightbox)
+:::image type="content" source="./media/proactive-failure-diagnostics/052.png" alt-text="Podrobnosti o neúspěšné žádosti" lightbox="./media/proactive-failure-diagnostics/052.png":::
 
 ## <a name="review-recent-alerts"></a>Zkontrolovat nedávné výstrahy
 
 Kliknutím na **výstrahy** na stránce Application Insights prostředku se dostanete k nejnovějším výstrahám aktivovaném:
 
-[![](./media/proactive-failure-diagnostics/070.png "Alerts summary")](./media/proactive-failure-diagnostics/070.png#lightbox)
+:::image type="content" source="./media/proactive-failure-diagnostics/070.png" alt-text="Souhrn výstrah" lightbox="./media/proactive-failure-diagnostics/070.png":::
 
 ## <a name="whats-the-difference-"></a>Jaký je rozdíl...
 Inteligentní zjišťování anomálií selhání doplňuje jiné podobné, ale odlišné funkce Application Insights.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: b06deadae15a8176a49bed88a53884df2b71e473
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e538299dfc9c9406b519d888d1a92c5c643bb03
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82189458"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421735"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Řešení potíží s omezeními & Azure Cloud Shell
 
@@ -122,7 +122,7 @@ Cloud Shell podporuje nejnovější verze následujících prohlížečů:
 
 [!INCLUDE [copy-paste](../../includes/cloud-shell-copy-paste.md)]
 
-### <a name="usage-limits"></a>Omezení využití
+### <a name="usage-limits"></a>Limity využití
 
 Cloud Shell je určena pro interaktivní případy použití. V důsledku toho jsou všechny dlouho běžící neinteraktivní relace ukončeny bez upozornění.
 
@@ -141,26 +141,6 @@ Při úpravách. bashrc buďte opatrní. v takovém případě může dojít k n
 ### <a name="preview-version-of-azuread-module"></a>Verze Preview modulu AzureAD
 
 V současné době `AzureAD.Standard.Preview` je k dispozici verze Preview modulu založeného na .NET Standard. Tento modul nabízí stejné funkce jako `AzureAD` .
-
-### <a name="sqlserver-module-functionality"></a>`SqlServer`funkce modulu
-
-`SqlServer`Modul zahrnutý v Cloud Shell má pouze předprodejní podporu pro PowerShell Core. Konkrétně není `Invoke-SqlCmd` zatím k dispozici.
-
-### <a name="default-file-location-when-created-from-azure-drive"></a>Výchozí umístění souboru při vytvoření z jednotky Azure
-
-Pomocí rutin PowerShellu uživatelé nemůžou vytvářet soubory v rámci jednotky Azure. Když uživatelé vytvoří nové soubory pomocí jiných nástrojů, jako je například vim nebo nano, soubory se `$HOME` ve výchozím nastavení uloží do.
-
-### <a name="tab-completion-can-throw-psreadline-exception"></a>Doplňování tabulátoru může vyvolat výjimku PSReadline.
-
-Pokud je PSReadline EditMode uživatele nastaven na hodnotu (Emacs), uživatel se pokusí zobrazit všechny možnosti prostřednictvím záložky doplňování a velikost okna je příliš malá, aby zobrazila všechny možnosti. PSReadline vyvolá neošetřenou výjimku.
-
-### <a name="large-gap-after-displaying-progress-bar"></a>Velká mezera po zobrazení indikátoru průběhu
-
-Pokud se na základě příkazu nebo uživatele zobrazí indikátor průběhu, na které se v jednotce dokončuje karta `Azure:` , pak je možné, že se kurzor nenastaví správně a mezera se zobrazí tam, kde byl indikátor průběhu dříve.
-
-### <a name="random-characters-appear-inline"></a>Náhodné znaky se zobrazí jako vložené
-
-V uživatelském vstupu se například mohou objevit kódy sekvence pozice kurzoru `5;13R` . Znaky lze ručně odebrat.
 
 ## <a name="personal-data-in-cloud-shell"></a>Osobní údaje v Cloud Shell
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 5d0808b93d0c9c7b49d1fd394d2b776c008bc594
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: e5daf318088cb71b6a1819db71e3c597a9fa94db
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135867"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421446"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii Azure do Azure
 
@@ -128,14 +128,14 @@ Pokud povolíte replikaci pro virtuální počítač Azure, dojde k následujíc
 
 Pokud se odchozí přístup pro virtuální počítače ovládá pomocí adres URL, povolte tyto adresy URL.
 
-| **URL** | **Podrobnosti** |
-| ------- | ----------- |
-| *.blob.core.windows.net | Umožňuje zápis dat z virtuálního počítače do účtu úložiště mezipaměti ve zdrojové oblasti. |
-| login.microsoftonline.com | Zajišťuje autorizaci a ověřování pro adresy URL služby Site Recovery. |
-| *.hypervrecoverymanager.windowsazure.com | Umožňuje komunikaci virtuálního počítače se službou Site Recovery. |
-| *.servicebus.windows.net | Umožňuje virtuálnímu počítači zapisovat data monitorování a diagnostiky Site Recovery. |
-| *.vault.azure.net | Umožňuje přístup k povolení replikace pro virtuální počítače s podporou ADE přes portál.
-| *. automation.ext.azure.com | Umožňuje povolit automatický upgrade agenta mobility pro replikovanou položku prostřednictvím portálu.
+| **Název**                  | **Komerční**                               | **Státní správa**                                 | **Popis** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | Umožňuje zápis dat z virtuálního počítače do účtu úložiště mezipaměti ve zdrojové oblasti. |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Zajišťuje autorizaci a ověřování pro adresy URL služby Site Recovery. |
+| Replikace               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`     | Umožňuje komunikaci virtuálního počítače se službou Site Recovery. |
+| Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Umožňuje virtuálnímu počítači zapisovat data monitorování a diagnostiky Site Recovery. |
+| Key Vault                 | `*.vault.azure.net`                        | `*.vault.usgovcloudapi.net`                  | Umožňuje přístup k povolení replikace pro virtuální počítače s podporou ADE přes portál. |
+| Azure Automation          | `*.automation.ext.azure.com`               | `*.azure-automation.us`                      | Umožňuje povolit automatický upgrade agenta mobility pro replikovanou položku prostřednictvím portálu. |
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>Odchozí připojení pro rozsahy IP adres
 

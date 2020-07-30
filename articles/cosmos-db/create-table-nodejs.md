@@ -8,12 +8,13 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: sngun
-ms.openlocfilehash: bbb6ac60c28635371760987b7a55ae7344dd73fb
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 2243ff73f72666013fa4d01cbc6b1cabe02c8c41
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85115029"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87418657"
 ---
 # <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>Rychlý start: Sestavení aplikace Table API pomocí Node.js a Azure Cosmos DB
 
@@ -26,7 +27,7 @@ ms.locfileid: "85115029"
 
 V tomto rychlém startu vytvoříte účet Azure Cosmos DB rozhraní API pro tabulky a pomocí Průzkumník dat a Node.js aplikace naklonované z GitHubu vytvoříte tabulky a entity. Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure. [Emulátor Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) můžete použít také s identifikátorem URI `https://localhost:8081` a klíčem `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` .
 - [Node.js 0.10.29 +](https://nodejs.org/) .

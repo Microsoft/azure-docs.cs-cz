@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: d6c82b1070f76cedcd84b8cd8a0a7bb6f683110d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6abfcaac06dd82be79c9136718878f801ca241cc
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285318"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384527"
 ---
 # <a name="azure-identity-management-security-overview"></a>Přehled zabezpečení služby Azure Identity Management
 
@@ -64,7 +64,7 @@ Další informace:
 
 * [Přehled jednotného přihlašování](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../../active-directory/manage-apps/what-is-single-sign-on.md)
-* [Integrace Azure Active Directory jednotného přihlašování s aplikacemi SaaS](../../active-directory/manage-apps/configure-single-sign-on-non-gallery-applications.md)
+* [Série rychlý Start při správě aplikací](../../active-directory/manage-apps/view-applications-portal.md)
 
 ## <a name="reverse-proxy"></a>Reverzní proxy server
 

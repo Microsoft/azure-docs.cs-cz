@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 2edf1574784ec93448495086fdd05c988a3e55a7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4c28299758150f56e3f47156382d8a6245a0cf52
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090531"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386210"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Průvodce vývojáře pro službu Azure Key Vault
 
@@ -122,7 +122,7 @@ Tyto články se týkají dalších scénářů a služeb, které používají n
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault přehledy a koncepty
 
-- [Key Vault chování při obnovitelném odstranění](overview-soft-delete.md)) popisuje funkci, která umožňuje obnovení odstraněných objektů bez ohledu na to, zda došlo k náhodnému nebo úmyslnému odstranění.
+- [Key Vault chování při obnovitelném odstranění](soft-delete-overview.md)) popisuje funkci, která umožňuje obnovení odstraněných objektů bez ohledu na to, zda došlo k náhodnému nebo úmyslnému odstranění.
 - [Key Vault omezení klienta](overview-throttling.md) vás orientuje na základní koncepty omezování a nabízí přístup k vaší aplikaci.
 - [Přehled klíčů účtu úložiště Key Vault](../secrets/overview-storage-keys.md)) Popisuje klíče Key Vault Integration Azure Storage accounts.
 - [Key Vault Security světů](overview-security-worlds.md) popisuje vztahy mezi oblastmi a oblastmi zabezpečení.

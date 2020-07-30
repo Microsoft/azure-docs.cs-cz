@@ -1,6 +1,6 @@
 ---
-title: Zřízení simulovaného zařízení X. 509 pro Azure IoT Hub pomocí Node. js
-description: Vytvoření a zřízení simulovaného zařízení X. 509 pomocí sady Node. js SDK pro zařízení pro Azure IoT Hub Device Provisioning Service (DPS). V tomto rychlém startu se používají jednotlivé registrace.
+title: Zřizování simulovaného zařízení X. 509 do Azure IoT Hub pomocí Node.js
+description: Vytvoření a zřízení simulovaného zařízení X. 509 pomocí sady SDK pro Node.js zařízení pro Azure IoT Hub Device Provisioning Service (DPS). V tomto rychlém startu se používají jednotlivé registrace.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2018
@@ -8,26 +8,26 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
-ms.custom: mvc
-ms.openlocfilehash: 746f4adbf616f95c21874d7c1c48881f88c38d34
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: 844a174e8cd3208e071db165a31d6c82dd1af3b1
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77605401"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422109"
 ---
-# <a name="quickstart-create-and-provision-an-x509-simulated-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Rychlý Start: vytvoření a zřízení simulovaného zařízení X. 509 pomocí sady SDK pro zařízení Node. js pro IoT Hub Device Provisioning Service
+# <a name="quickstart-create-and-provision-an-x509-simulated-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Rychlý Start: vytvoření a zřízení simulovaného zařízení X. 509 pomocí sady SDK pro Node.js zařízení pro IoT Hub Device Provisioning Service
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
-V tomto rychlém startu vytvoříte simulované zařízení X. 509 na počítači se systémem Windows. Pomocí ukázkového kódu zařízení Node. js můžete propojit toto simulované zařízení se službou IoT Hub s využitím individuální registrace ve službě Device Provisioning (DPS).
+V tomto rychlém startu vytvoříte simulované zařízení X. 509 na počítači se systémem Windows. Pomocí ukázkového kódu zařízení Node.js můžete propojit toto simulované zařízení se službou IoT Hub s využitím individuální registrace ve službě Device Provisioning (DPS).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Přečtěte si [Koncepty automatického zřizování](concepts-auto-provisioning.md).
 - Dokončení [nastavení IoT Hub Device Provisioning Service s Azure Portal](./quick-setup-auto-provision.md).
 - Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Node. js v 4.0 +](https://nodejs.org).
+- [Node.js v 4.0 +](https://nodejs.org).
 - [Git](https://git-scm.com/download/).
 - [OpenSSL](https://www.openssl.org/).
 

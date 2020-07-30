@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/28/2020
 ms.author: lbosq
-ms.openlocfilehash: 7879793cbbb029468e84b14f8e8eee793cf4c530
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 7b0ac1e301705b24d706638deb3ee0a15d49c87b
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260725"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87415087"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Použití příkazů rozšíření MongoDB ke správě dat uložených v rozhraní API Azure Cosmos DB pro MongoDB 
 
@@ -212,8 +213,8 @@ Následující tabulka popisuje parametry v rámci příkazu:
 
 | **Pole** | **Typ** | **Požadováno** | **Popis** |
 |---------|---------|---------|---------|
-| `customAction` | `string` | Vyžadováno | Název vlastního příkazu Musí být "Vytvořitcollection".|
-| `collection` | `string` | Vyžadováno | Název kolekce Nejsou povoleny žádné speciální znaky ani mezery.|
+| `customAction` | `string` | Povinné | Název vlastního příkazu Musí být "Vytvořitcollection".|
+| `collection` | `string` | Povinné | Název kolekce Nejsou povoleny žádné speciální znaky ani mezery.|
 | `offerThroughput` | `int` | Volitelné | Zřízená propustnost pro nastavení databáze. Pokud tento parametr není zadán, bude výchozí hodnota minimálně 400 RU/s. * Pokud chcete zadat propustnost přesahující 10 000 RU/s, `shardKey` parametr je povinný.|
 | `shardKey` | `string` | Vyžadováno pro kolekce s velkou propustností | Cesta k horizontálních oddílůmu klíči pro kolekci horizontálně dělené Tento parametr je vyžadován, pokud nastavíte více než 10 000 RU/s v `offerThroughput` .  Pokud je zadáno, budou všechny vložené dokumenty vyžadovat tento klíč a hodnotu. |
 | `autoScaleSettings` | `Object` | Vyžaduje se pro [režim automatického škálování](provision-throughput-autoscale.md) . | Tento objekt obsahuje nastavení přidružená k režimu kapacity automatického škálování. Můžete nastavit `maxThroughput` hodnotu, která popisuje nejvyšší množství jednotek požadavků, na které se kolekce zvyšuje dynamicky. |

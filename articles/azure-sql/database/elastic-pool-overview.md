@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
-ms.date: 04/09/2020
-ms.openlocfilehash: 5a246288eb3c4063a85935c20abec5c86467d340
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 07/28/2020
+ms.openlocfilehash: 33f87bf6f030adb48f2c4f8eb45027c1b298d812
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042369"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419712"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>Elastické fondy vám pomůžou se správou a škálováním více databází v Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -35,16 +35,16 @@ Elastické fondy tento problém řeší tím, že zajistí, že databáze získa
 > [!IMPORTANT]
 > Pro elastické fondy se neúčtují žádné poplatky za databázi. Fakturuje se vám každá hodina existence fondu na nejvyšší eDTU nebo virtuální jádra, bez ohledu na využití nebo na to, jestli byl fond aktivní kratší dobu než hodinu.
 
-Elastické fondy umožňují vývojářům koupit prostředky pro fond sdílený více databázemi a zajistit tak nepředvídatelné doby využití jednotlivými databázemi. Prostředky pro fond můžete nakonfigurovat na základě [nákupního modelu založeného na DTU](service-tiers-dtu.md) nebo [nákupního modelu založeného na Vcore](service-tiers-vcore.md). Požadavek na prostředky pro fond je určen agregovaným využitím jeho databází. Množství prostředků, které jsou k dispozici pro fond, řídí rozpočet pro vývojáře. Vývojář jednoduše do fondu přidá databáze, nastaví minimální a maximální prostředky pro databáze (minimální a maximální DTU nebo minimální nebo maximální virtuální jádra v závislosti na zvoleném modelu Resource) a pak nastaví prostředky fondu na základě jejich rozpočtu. Vývojáři mohou fondy využít k tomu, aby zajistili elegantní růst svých služeb od úsporného startupu až po zralé podnikání, a to ve stále se zvětšujícím měřítku.
+Elastické fondy umožňují vývojářům koupit prostředky pro fond sdílený více databázemi a zajistit tak nepředvídatelné doby využití jednotlivými databázemi. Prostředky pro fond můžete nakonfigurovat na základě [nákupního modelu založeného na DTU](service-tiers-dtu.md) nebo [nákupního modelu založeného na Vcore](service-tiers-vcore.md). Požadavek na prostředky pro fond je určen agregovaným využitím jeho databází. Množství prostředků, které jsou k dispozici pro fond, řídí rozpočet pro vývojáře. Vývojář jednoduše do fondu přidá databáze, volitelně nastaví minimální a maximální prostředky pro databáze (buď minimální a maximální DTU, nebo minimální nebo maximální virtuální jádra v závislosti na zvoleném modelu resourceing), a pak nastaví prostředky fondu na základě jejich rozpočtu. Vývojáři mohou fondy využít k tomu, aby zajistili elegantní růst svých služeb od úsporného startupu až po zralé podnikání, a to ve stále se zvětšujícím měřítku.
 
-V rámci fondu disponují jednotlivé databáze flexibilní možností automatického škálování v rámci stanovených parametrů. V případě velkého zatížení může databáze spotřebovávat více prostředků, aby splnila požadavky. Databáze v rámci světelné zátěže spotřebovávají méně a databáze bez zatížení nevyužívají žádné prostředky. Zřizováním prostředků pro celý fond, a nikoli pro jednotlivé databáze, se úkoly správy zjednodušují. Navíc máte předvídatelný rozpočet pro fond. Do existujícího fondu je možné přidat další prostředky bez výpadku databáze, s výjimkou případů, kdy je nutné databáze přesunout, aby bylo možné poskytnout další výpočetní prostředky pro novou rezervaci eDTU. Podobně platí, že pokud už další prostředky nepotřebujete, můžete je v jakémkoli okamžiku kdykoli odebrat z existujícího fondu. Navíc můžete databáze do fondu přidávat nebo je z něj odebírat. Pokud databáze podle předpokladu nedostatečně využívá prostředky, odeberte ji.
+V rámci fondu disponují jednotlivé databáze flexibilní možností automatického škálování v rámci stanovených parametrů. V případě velkého zatížení může databáze spotřebovávat více prostředků, aby splnila požadavky. Databáze v rámci světelné zátěže spotřebovávají méně a databáze bez zatížení nevyužívají žádné prostředky. Zřizováním prostředků pro celý fond, a nikoli pro jednotlivé databáze, se úkoly správy zjednodušují. Navíc máte předvídatelný rozpočet pro fond. Do existujícího fondu je možné přidat další prostředky s minimálními výpadky. Podobně platí, že pokud už další prostředky nepotřebujete, můžete je v jakémkoli okamžiku kdykoli odebrat z existujícího fondu. A můžete přidat nebo odebrat databáze z fondu. Pokud databáze podle předpokladu nedostatečně využívá prostředky, odeberte ji.
 
 > [!NOTE]
 > Při přesunu databází do elastického fondu nebo z něj nedochází k výpadku, s výjimkou krátkého časového období (v řádu sekund) na konci operace při zahození připojení databáze.
 
 ## <a name="when-should-you-consider-a-sql-database-elastic-pool"></a>Kdy byste měli zvážit SQL Database elastický fond
 
-Fondy jsou vhodné pro velký počet databází s konkrétními vzory využití. Pro danou databázi je tento vzor charakterizován nízkou mírou průměrného využití s relativně málo častými nárůsty využití.
+Fondy jsou vhodné pro velký počet databází s konkrétními vzory využití. Pro danou databázi je tento vzor charakterizován nízkou mírou průměrného využití s relativně málo častými nárůsty využití. Naopak více databází, které mají trvalé střední-vysoké využití, by nemělo být umístěno do stejného elastického fondu.
 
 Čím více databází je možné do fondu přidat, tím větší budou vaše úspory. V závislosti na způsobu využití vaší aplikace je možné vidět úspory s malým počtem databází S3.
 
@@ -82,16 +82,13 @@ Následující pravidla, která souvisí s počtem databází a s využitím dat
 
 Pokud je agregovaná velikost prostředků pro izolované databáze větší než 1,5 ×, který je pro fond potřebný, pak je elastický fond cenově výhodnější.
 
-***Příklad nákupního modelu založeného na DTU***<br>
-Minimálně dvě databáze S3 nebo nejméně 15 databází S0 je potřeba, aby fond 100 eDTU byl cenově výhodnější než použití výpočetních velikostí pro izolované databáze.
+***Příklad nákupního modelu založeného na DTU*** Minimálně dvě databáze S3 nebo nejméně 15 databází S0 je potřeba, aby fond 100 eDTU byl cenově výhodnější než použití výpočetních velikostí pro izolované databáze.
 
 ### <a name="maximum-number-of-concurrently-peaking-databases"></a>Maximální počet databází se souběžnými špičkami
 
 Když sdílíte prostředky, ne všechny databáze ve fondu, můžou současně využívat prostředky až do limitu dostupného pro jednotlivé databáze. Čím méně databází má současně špičku, tím nižší je možné nastavení prostředků fondu a tím i cenově úsporného fondu. Obecně platí, že ne více než 2/3 (nebo 67%) databáze ve fondu by se měly současně vymezit omezením jejich prostředků.
 
-***Příklad nákupního modelu založeného na DTU***
-
-Aby bylo možné snížit náklady pro tři databáze S3 ve fondu s 200 jednotkami eDTU, mohou nejvýše dvě z těchto databází dosahovat špičky svého využití současně. Pokud současně dosahují špičky více než dvě z těchto čtyř databází S3, bylo by nutné velikost fondu nastavit na více než 200 jednotek eDTU. Pokud se velikost fondu změní na více než 200 eDTU, je potřeba do fondu přidat další databáze S3, aby náklady zůstaly méně než výpočetní velikosti pro izolované databáze.
+***Příklad nákupního modelu založeného na DTU*** Aby se snížily náklady na tři databáze S3 ve fondu eDTU 200, může většina dvou z těchto databází současně využít špičku jejich využití. Pokud současně dosahují špičky více než dvě z těchto čtyř databází S3, bylo by nutné velikost fondu nastavit na více než 200 jednotek eDTU. Pokud se velikost fondu změní na více než 200 eDTU, je potřeba do fondu přidat další databáze S3, aby náklady zůstaly méně než výpočetní velikosti pro izolované databáze.
 
 Poznámka: Tento příklad nebere v úvahu využití jiných databází ve fondu. Pokud se v libovolném konkrétním časovém okamžiku do určité míry využívají všechny databáze, může méně než 2/3 (nebo 67 %) z nich dosahovat špičky současně.
 
@@ -99,13 +96,13 @@ Poznámka: Tento příklad nebere v úvahu využití jiných databází ve fondu
 
 Velký rozdíl mezi maximálním a průměrným využitím databáze ukazuje na delší doby nízkého využití a krátká období vysokého využití. Tento vzor využití je ideální pro sdílení prostředků mezi databázemi. Použití fondu pro databázi byste měli zvážit, pokud je její využití ve špičce přibližně 1,5krát větší než průměrné využití.
 
-**Příklad nákupního modelu založený na DTU**: databáze S3, která je ve špičce 100 DTU a v průměru používá 67 DTU nebo méně, je vhodným kandidátem na sdílení eDTU ve fondu. Databáze S1, která ve špičce využívá 20 DTU a průměrně využívá 13 DTU nebo méně, je vhodným kandidátem pro fond.
+***Příklad nákupního modelu založeného na DTU*** Databáze S3, která je ve špičce 100 DTU a v průměru používá 67 DTU nebo méně, je vhodným kandidátem na sdílení eDTU ve fondu. Databáze S1, která ve špičce využívá 20 DTU a průměrně využívá 13 DTU nebo méně, je vhodným kandidátem pro fond.
 
 ## <a name="how-do-i-choose-the-correct-pool-size"></a>Návody zvolit správnou velikost fondu.
 
 Nejlepší velikost pro fond závisí na agregovaných zdrojích potřebných pro všechny databáze ve fondu. To zahrnuje určení následujících možností:
 
-- Maximální počet prostředků využívaných všemi databázemi ve fondu (buď maximálně DTU nebo maximální virtuální jádra, v závislosti na zvoleném modelu resourceing).
+- Maximální počet prostředků využívaných všemi databázemi ve fondu (maximálně DTU nebo maximální virtuální jádra v závislosti na vašem výběru nákupního modelu).
 - Maximální počet bajtů úložiště využitých všemi databázemi ve fondu
 
 Dostupné úrovně služeb a omezení pro každý model prostředků najdete v tématu [nákupní model založený na DTU](service-tiers-dtu.md) nebo v [nákupním modelu založeném na Vcore](service-tiers-vcore.md).
@@ -114,11 +111,13 @@ Následující kroky vám pomůžou odhadnout, jestli je fond cenově výhodněj
 
 1. Odhadované eDTU nebo virtuální jádra, které jsou potřeba pro fond, následujícím způsobem:
 
-   Pro nákupní model založený na DTU: MAX (<*Celkový počet databáze* X *průměrné využití DTU na databázi*>,<br>  
-   <*počet databází se souběžnou špičkou* X *využití DTU ve špičce na databázi*)
+Pro nákupní model založený na DTU:
 
-   Pro nákupní model založený na vCore: MAX (<*Celkový počet databáze* X *průměrného využití vCore na DB*>,<br>  
-   <*Počet současně se špičkou databáze* X *Vcore využití ve špičce na databázi*)
+MAX (<*Celkový počet databáze* x *průměrné využití dtu na databázi*>, <*počet souběžných* *využití DTU ve špičce databáze X na databázi*)
+
+Pro nákupní model založený na vCore:
+
+MAX (<*Celkový počet databáze* x *průměrného využití vCore na db*>, <*počet souběžných* zvýšení *využití ve špičce databáze X na databázi*)
 
 2. Odhadněte potřebnou velikost úložiště pro fond (sečtěte počet bajtů potřebných pro všechny databáze ve fondu). Potom určete velikost fondu v jednotkách eDTU, která toto úložiště poskytuje.
 3. V případě nákupního modelu založeného na DTU Vezměte v úvahu větší z odhadů eDTU z kroku 1 a krok 2. U nákupního modelu založeného na vCore proveďte odhad vCore z kroku 1.

@@ -12,12 +12,12 @@ ms.date: 07/01/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53c4e3e3e3b6aaca2f861a8c5aba528541dc4854
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 28b04828bc778a2b9076c9ea1970ce80f231fbe3
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322189"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386006"
 ---
 # <a name="what-is-application-management"></a>Co je správa aplikací?
 
@@ -63,7 +63,7 @@ Existují čtyři hlavní typy aplikací, které můžete přidat do **podnikov�
 
 - **Vlastní aplikace vyvíjené** – při vytváření vlastních obchodních aplikací je můžete integrovat se službou Azure AD a podporovat jednotné přihlašování. Díky registraci aplikace ve službě Azure AD máte kontrolu nad zásadami ověřování pro aplikaci. Další informace najdete v tématu [doprovodné materiály pro vývojáře](developer-guidance-for-integrating-applications.md).
 
-- **Aplikace mimo galerii** – Přineste si vlastní aplikace! Podpora jednotného přihlašování pro jiné aplikace jejich přidáním do služby Azure AD. Existuje několik způsobů, jak integrovat aplikaci, některé z nich jsou uvedeny níže. Další informace najdete v tématu [Konfigurace jednotného přihlašování pro aplikace mimo galerii](configure-single-sign-on-non-gallery-applications.md).
+- **Aplikace mimo galerii** – Přineste si vlastní aplikace! Podpora jednotného přihlašování pro jiné aplikace jejich přidáním do služby Azure AD. Existuje několik způsobů, jak integrovat aplikaci, některé z nich jsou uvedeny níže. Další informace najdete v tématu [Konfigurace jednotného přihlašování SAML](configure-saml-single-sign-on.md).
 
 >[!TIP]
 >Službu Azure AD můžete integrovat s aplikací i v případě, že ještě není předem nakonfigurovaná a v galerii aplikací. **Službu Azure AD můžete integrovat s některým** z následujících způsobů:
@@ -93,6 +93,6 @@ Pro aplikace zaměřené na lidské zdroje nebo jiné aplikace s velkou sadou u�
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Série rychlý Start v App Managemement ve službě Azure AD](view-applications-portal.md)
+- [Série rychlý Start při správě aplikací ve službě Azure AD](view-applications-portal.md)
 - [Začínáme s integrací aplikací](plan-an-application-integration.md)
 - [Informace o automatizaci zřizování](../app-provisioning/user-provisioning.md)

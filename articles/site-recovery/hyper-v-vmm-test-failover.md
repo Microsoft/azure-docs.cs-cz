@@ -1,18 +1,18 @@
 ---
 title: Spuštění postupu zotavení po havárii NHyper-V na sekundární lokalitu pomocí Azure Site Recovery
 description: Přečtěte si, jak spustit postup zotavení po havárii pro virtuální počítače Hyper-V v cloudech VMM do sekundárního místního datacentra pomocí Azure Site Recovery.
-author: rajani-janaki-ram
-manager: rochakm
+author: sideeksh
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: rajanaki
-ms.openlocfilehash: 0b6055cdf930c93ba096a21ebc0b74c204540a79
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: sideeksh
+ms.openlocfilehash: 569af28f5773d843f49dd9c8143b45e308ae142e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076076"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420409"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>Spuštění postupu zotavení po havárii pro virtuální počítače Hyper-V do sekundární lokality
 

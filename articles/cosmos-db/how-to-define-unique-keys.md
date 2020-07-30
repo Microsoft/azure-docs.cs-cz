@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.custom: tracking-python
-ms.openlocfilehash: 056cd77104fe73f19588f3d13e11dc06fd93c3f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: tracking-python, devx-track-javascript
+ms.openlocfilehash: c2319bdaf80df25025a1af4d6572dd9a86694bb5
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261541"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420664"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Definování jedinečných klíčů pro kontejner Azure Cosmos
 
@@ -20,7 +20,7 @@ Tento článek nabízí různé způsoby definování [jedinečných klíčů](u
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-sql-api-dotnet.md#create-account) nebo vyberte nějaký existující.
 

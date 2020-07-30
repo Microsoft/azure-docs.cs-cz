@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 06/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 84f2ef1fc318e53914b1510870d0399cfbfa87e9
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: a3f48c9f15d12fbfc41ac8baf589f8579f259377
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185275"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421480"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>Správa účtu Azure Automation spustit jako
 
@@ -174,7 +174,8 @@ Můžete určit, jestli instanční objekt používaný účtem spustit jako je 
 2. Vyberte **účet Spustit jako pro Azure**. 
 3. Vyberte **role** pro vyhledání používané definice role.
 
-[![](media/manage-runas-account/verify-role.png "Verify the Run As Account role")](media/manage-runas-account/verify-role-expanded.png#lightbox)
+:::image type="content" source="media/manage-runas-account/verify-role.png" alt-text="Ověřte roli účtu Spustit jako." lightbox="media/manage-runas-account/verify-role-expanded.png":::
+
 
 Můžete také určit definici role používané účty Spustit jako pro více předplatných nebo účtů Automation. Použijte k tomu skript [Check-AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug5) v Galerie prostředí PowerShell.
 

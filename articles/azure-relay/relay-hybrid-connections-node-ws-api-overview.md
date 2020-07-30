@@ -3,12 +3,13 @@ title: Přehled rozhraní API uzlů Azure Relay | Microsoft Docs
 description: Tento článek poskytuje přehled rozhraní Node.js API pro službu Azure Relay. Také ukazuje, jak použít balíček uzlu hyco-WS.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 71faa2ee143488483aff4300152aab6d1e2b2a88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 67d818a95d63b3097f81f799a287fb4c48a1cfb7
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316729"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386244"
 ---
 # <a name="relay-hybrid-connections-node-api-overview"></a>Přehled rozhraní API pro přenos Hybrid Connections uzlů
 
@@ -141,7 +142,7 @@ function(socket)
 Vygenerováno při přijetí nového připojení pomocí protokolu WebSocket. Objekt je typu `ws.WebSocket` stejný jako u základního balíčku.
 
 
-##### <a name="error"></a>error
+##### <a name="error"></a>chyba
 
 ```JavaScript
 function(error)

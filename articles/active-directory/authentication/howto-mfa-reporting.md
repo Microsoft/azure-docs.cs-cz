@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9bf76729c3b5844918659283a65eeb347c4237d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8584ca84efc889afebe6758e254bda845912316
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83639846"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87418232"
 ---
 # <a name="use-the-sign-ins-report-to-review-azure-multi-factor-authentication-events"></a>Použití sestavy přihlášení ke kontrole událostí Azure Multi-Factor Authentication
 
@@ -44,7 +44,7 @@ Chcete-li zobrazit sestavu aktivity přihlašování v [Azure Portal](https://po
 
     Na kartě *Podrobnosti o ověřování* nebo *podmíněný přístup* v podrobnostech události se zobrazí stavový kód nebo tato zásada aktivovala výzvu MFA.
 
-    [![](media/howto-mfa-reporting/sign-in-report-cropped.png "Screenshot of example Azure Active Directory sign-ins report in the Azure portal")](media/howto-mfa-reporting/sign-in-report.png#lightbox)
+    [![Snímek obrazovky s příkladem sestavy přihlášení Azure Active Directory v Azure Portal](media/howto-mfa-reporting/sign-in-report-cropped.png)](media/howto-mfa-reporting/sign-in-report.png#lightbox)
 
 Pokud je k dispozici, zobrazí se ověřování, například textová zpráva, Microsoft Authenticator oznámení aplikace nebo telefonní hovor.
 
@@ -118,7 +118,7 @@ Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalNam
 
 Následující tabulka může pomoct řešit události pomocí stažené verze sestavy aktivity z předchozích kroků portálu nebo příkazů PowerShellu. Tyto kódy výsledku se nezobrazí přímo v Azure Portal.
 
-| Výsledek volání | Description | Obecný popis |
+| Výsledek volání | Popis | Obecný popis |
 | --- | --- | --- |
 | SUCCESS_WITH_PIN | Zadán kód PIN | Uživatel zadal kód PIN. Pokud ověření proběhlo úspěšně, zadali jste správný PIN kód. Pokud je ověřování odepřeno, zadali jste nesprávný kód PIN nebo je uživatel nastaven na standardní režim. |
 | SUCCESS_NO_PIN | Pouze zadání # | Pokud je uživatel nastavený na režim připnutí a ověřování je odepřeno, znamená to, že uživatel nezadal PIN kód a zadali jste jenom #.  Pokud je uživatel nastavený na standardní režim a ověřování je úspěšné, znamená to, že uživatel zadal jenom #, což je správné nastavení v režimu Standard. |
@@ -170,7 +170,7 @@ Následující tabulka může pomoct řešit události pomocí stažené verze s
 
 K dispozici jsou následující další informace a sestavy pro události MFA, včetně těch pro MFA Server:
 
-| Sestava | Umístění | Description |
+| Sestava | Umístění | Popis |
 |:--- |:--- |:--- |
 | Historie blokovaného uživatele | Azure AD > Security > MFA > blokování nebo odblokování uživatelů | Zobrazuje historii požadavků na blokování nebo odblokování uživatelů. |
 | Využití pro místní součásti | Zpráva o aktivitě > > MFA služby Azure AD > Security | Poskytuje informace o celkovém využití MFA serveru prostřednictvím rozšíření NPS, ADFS a MFA serveru. |

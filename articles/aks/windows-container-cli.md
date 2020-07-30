@@ -4,12 +4,12 @@ description: Naučte se rychle vytvořit cluster Kubernetes a nasadit aplikaci v
 services: container-service
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: 5baa4f807002cc39428eb46e5a86cf59bd022cb2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ff7fc00c8de5b4d577770c140d356d7f9da1b7e7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015625"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421225"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Vytvoření kontejneru Windows serveru v clusteru služby Azure Kubernetes (AKS) pomocí rozhraní příkazového řádku Azure
 
@@ -19,7 +19,7 @@ Služba Azure Kubernetes Service (AKS) je spravovaná služba Kubernetes, která
 
 V tomto článku se předpokládá základní znalost konceptů Kubernetes. Další informace najdete v tématu [základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)][kubernetes-concepts].
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -94,8 +94,7 @@ az aks create \
 ```
 
 > [!NOTE]
-> Pokud se zobrazí chyba ověřování hesla, zkuste vytvořit skupinu prostředků v jiné oblasti.
-> Pak zkuste cluster vytvořit s novou skupinou prostředků.
+> Pokud se zobrazí chyba ověřování hesla, ověřte, že parametr *Windows-Admin-Password* splňuje [požadavky na heslo pro Windows Server][windows-server-password]. Pokud vaše heslo splňuje požadavky, zkuste vytvořit skupinu prostředků v jiné oblasti. Pak zkuste cluster vytvořit s novou skupinou prostředků.
 
 Po několika minutách se příkaz dokončí a vrátí informace o clusteru ve formátu JSON. Může se stát, že cluster zřídí déle než několik minut. V těchto případech můžete trvat až 10 minut.
 

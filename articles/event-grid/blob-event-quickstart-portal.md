@@ -3,12 +3,12 @@ title: 'Rychlý Start: odeslání událostí služby Blob Storage do webového k
 description: 'Rychlý Start: pomocí Azure Event Grid a Azure Portal vytvořte účet úložiště objektů BLOB a přihlaste se k odběru jeho událostí. Odešle události do Webhooku.'
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: fe942a4daa877088bd354352aa994e4e283f9be5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 46cd88558334239a1a9971c63b8b2608def3c4d3
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103615"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421599"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Rychlý Start: směrování událostí služby Blob Storage do webového koncového bodu pomocí Azure Portal
 
@@ -50,7 +50,7 @@ Před přihlášením k odběru událostí úložiště objektů blob vytvořím
 
 1. Vyberte **Nasadit do Azure** a nasaďte řešení do svého předplatného. 
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Aquent." /></a>
 2. Na stránce **vlastní nasazení** proveďte následující kroky: 
     1. V poli **Skupina prostředků**vyberte skupinu prostředků, kterou jste vytvořili při vytváření účtu úložiště. Až budete s kurzem hotovi, budete ho moct vyčistit tím, že odstraníte skupinu prostředků.  
     2. Jako **název lokality**zadejte název webové aplikace.
