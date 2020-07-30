@@ -5,12 +5,12 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: e1ddff9a416b55c22fcd2bfaedff32666414e4bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4338f4ce1fe60a3a9002be93feab134dd2601720
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057243"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406499"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Ověření pomocí Azure Container Registry ze služby Azure Kubernetes Service
 
@@ -60,7 +60,7 @@ Dokončení tohoto kroku může trvat několik minut.
 Integrujte stávající ACR s existujícími clustery AKS zadáním platných hodnot pro **ACR-Name** nebo **ACR-Resource-ID** , jak je uvedeno níže.
 
 ```azurecli
-az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acrName>
+az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-name>
 ```
 
 ani
@@ -72,10 +72,10 @@ az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-resource-id>
 Integraci mezi ACR a clusterem AKS taky můžete odebrat pomocí následujících kroků:
 
 ```azurecli
-az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acrName>
+az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acr-name>
 ```
 
-nebo
+– nebo –
 
 ```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acr-resource-id>
@@ -89,7 +89,7 @@ Naimportujte image z Docker Hub do svého ACR spuštěním následujícího post
 
 
 ```azurecli
-az acr import  -n <myContainerRegistry> --source docker.io/library/nginx:latest --image nginx:v1
+az acr import  -n <acr-name> --source docker.io/library/nginx:latest --image nginx:v1
 ```
 
 ### <a name="deploy-the-sample-image-from-acr-to-aks"></a>Nasazení ukázkové image z ACR do AKS
@@ -100,7 +100,7 @@ Ujistěte se, že máte správné přihlašovací údaje AKS.
 az aks get-credentials -g myResourceGroup -n myAKSCluster
 ```
 
-Vytvořte soubor s názvem **ACR-Nginx. yaml** , který obsahuje následující:
+Vytvořte soubor s názvem **ACR-Nginx. yaml** , který obsahuje následující. Nahraďte název svého registru názvem **ACR**. Příklad: *myContainerRegistry*.
 
 ```yaml
 apiVersion: apps/v1
@@ -121,7 +121,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: <replace this image property with you acr login server, image and tag>
+        image: <acr-name>.azurecr.io/nginx:v1
         ports:
         - containerPort: 80
 ```
@@ -146,7 +146,7 @@ nginx0-deployment-669dfc4d4b-x74kr   1/1     Running   0          20s
 nginx0-deployment-669dfc4d4b-xdpd6   1/1     Running   0          20s
 ```
 
-### <a name="troubleshooting"></a>Poradce při potížích
+### <a name="troubleshooting"></a>Řešení potíží
 * Další informace o [diagnostice ACR](../container-registry/container-registry-diagnostics-audit-logs.md)
 * Další informace o [stavu ACR](../container-registry/container-registry-check-health.md)
 

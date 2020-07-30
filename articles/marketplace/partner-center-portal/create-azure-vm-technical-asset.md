@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 04/13/2020
-ms.openlocfilehash: 69458a7a3f2555a301c1266addfe7c49cb111ef6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 532a2ce429899d3674a8f6d8308188e9b1f737b1
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317752"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407944"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>Vytvoření technických prostředků virtuálního počítače Azure
 
@@ -282,4 +282,4 @@ Pokud jste narazili na potíže s vytvářením nového virtuálního pevného d
 
 V opačném případě:
 
-* Certifikace [vaší image virtuálního počítače](get-sas-uri.md) vysvětluje, jak otestovat a odeslat image virtuálního počítače pro Azure Marketplace certifikace, včetně toho, kde získat nástroj *pro testování certifikace pro nástroj pro certifikaci Azure* a jak ho použít k certifikaci vaší image virtuálního počítače.
+* [Testovací virtuální počítač nasazený z VHD](azure-vm-image-certification.md) vysvětluje, jak otestovat a odeslat image virtuálního počítače pro Azure Marketplace certifikace, včetně toho, kde získat nástroj *certifikace pro certifikaci pro Azure Certified* a jak ho použít k certifikaci vaší image virtuálního počítače.

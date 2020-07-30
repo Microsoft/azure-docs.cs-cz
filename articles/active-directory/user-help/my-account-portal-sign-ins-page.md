@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: 0b3b0d686ae10f9b376c977bf165eccddda32239
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 738e6507a1642a1ab76938eeaf3294668bcea964
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744513"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422282"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-preview-page"></a>Zobrazení a hledání poslední přihlašovací aktivity na stránce moje přihlášení (Preview)
 
@@ -73,3 +73,5 @@ Po zobrazení nedávné přihlašovací aktivity můžete:
 - Umožňuje zobrazit nebo spravovat vaše [organizace](my-account-portal-organizations-page.md).
 
 - Podívejte se, jak vaše organizace [používá data týkající se ochrany osobních údajů](my-account-portal-privacy-page.md).
+
+- Změna [nastavení portálu moje účet](my-account-portal-settings.md)

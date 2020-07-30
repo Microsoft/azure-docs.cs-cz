@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b5dbf26bc636107576af15a0217eb16302f63f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5022dfc5811f3db59774a46a7034ff14c4dcf4a8
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601628"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428025"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Povolení přihlášení bez hesla pomocí aplikace Microsoft Authenticator (Preview)
 
@@ -29,7 +29,7 @@ Namísto zobrazení výzvy k zadání hesla po zadání uživatelského jména s
 > [!NOTE]
 > Tato funkce byla v aplikaci Microsoft Authenticator od března 2017, takže pokud je zásada pro adresář povolená, můžou se uživatelé setkat okamžitě a zobrazit chybovou zprávu, pokud je zásada nepovolila. Mějte na paměti informace a připravte uživatele na tuto změnu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Azure Multi-Factor Authentication s nabízenými oznámeními povolenými jako metoda ověřování 
 - Na zařízeních se systémem iOS 8,0 nebo vyšším je nainstalovaná nejnovější verze Microsoft Authenticator nebo Android 6,0 nebo novější.
@@ -45,7 +45,7 @@ Funkce registrace pro metody ověřování nevyužívající hesla se spoléhaj�
 
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>Povolit metody ověřování přihlašování bezheslem pro telefonování
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu **globálního správce** .
 1. Vyhledejte a vyberte *Azure Active Directory*. Vybrat **Security**  >  zásady**ověřování metody**ověřování zabezpečení  >  **(Preview)**
 1. V části **přihlášení bez hesla pro telefonování**vyberte následující možnosti.
    1. **Povolit** – Ano nebo ne

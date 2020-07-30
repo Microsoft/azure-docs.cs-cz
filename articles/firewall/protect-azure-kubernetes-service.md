@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 07/02/2020
+ms.date: 07/29/2020
 ms.author: victorh
-ms.openlocfilehash: 81d65954197c0ebe0de77dc2fea63239d4c3f17b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 602671f1052de2d9446f32946271cea2f9995044
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056663"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87412945"
 ---
 # <a name="use-azure-firewall-to-protect-azure-kubernetes-service-aks-deployments"></a>Použití Azure Firewall k ochraně nasazení služby Azure Kubernetes Service (AKS)
 
@@ -24,7 +24,7 @@ Pro účely správy a provozu musí uzly v clusteru AKS přistupovat k určitým
 
 Postupujte podle pokynů v tomto článku a poskytněte vám dodatečnou ochranu pro cluster Azure Kubernetes pomocí Azure Firewall.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Nasazený cluster Azure Kubernetes se spuštěnou aplikací.
 
@@ -50,7 +50,9 @@ Azure Firewall poskytuje značku plně kvalifikovaného názvu domény AKS pro z
       Pokud chcete být konkrétnější, přečtěte si **. HCP. <location> azmk8s.io* a adresy v následující tabulce.
    - Port UDP 123 pro synchronizaci času NTP (Network Time Protocol) (uzly Linux).
    - Port UDP 53 pro DNS se vyžaduje i v případě, že máte k dispozici přímý přístup k serveru rozhraní API.
-- Nakonfigurujte AzureMonitor a značky služby úložiště. Azure Monitor přijímá data Log Analytics. 
+
+   Další informace najdete v tématu [řízení odchozího provozu pro uzly clusteru ve službě Azure Kubernetes Service (AKS)](../aks/limit-egress-traffic.md).
+- Nakonfigurujte AzureMonitor a značky služby úložiště. Azure Monitor přijímá data Log Analytics.
 
    Adresu URL pracovního prostoru můžete také nechat individuálně: `<worksapceguid>.ods.opinsights.azure.com` a `<worksapceguid>.oms.opinsights.azure.com` . Můžete to vyřešit jedním z následujících způsobů:
 

@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 12/04/2018
-ms.openlocfilehash: 6a8770cfaf5acedcf3549d92f1365948acda8bc7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/28/2020
+ms.openlocfilehash: a23330bb00fb06a3ed9d3dfe28666e8f27dae4fa
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344641"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405037"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Návrh globálně dostupných služeb pomocí Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -58,7 +58,13 @@ Pokud dojde k výpadku v oblasti B, proces replikace mezi primární a sekundár
 > Pro zotavení po havárii doporučujeme, aby konfigurace s nasazením aplikace byla omezená na dvě oblasti. Je to proto, že většina geografických oblastí Azure má pouze dvě oblasti. Tato konfigurace nechrání vaši aplikaci před současným závažným selháním obou oblastí. V nepravděpodobném případě takového selhání můžete databáze obnovit ve třetí oblasti pomocí [operace geografického obnovení](disaster-recovery-guidance.md#recover-using-geo-restore).
 >
 
- Po zmírnění výpadku se sekundární databáze automaticky znovu synchronizuje s primárním. Během synchronizace může být ovlivněn výkon primární. Konkrétní dopad závisí na množství dat, které nově získal od převzetí služeb při selhání. Následující diagram znázorňuje výpadek v sekundární oblasti:
+ Po zmírnění výpadku se sekundární databáze automaticky znovu synchronizuje s primárním. Během synchronizace může být ovlivněn výkon primární. Konkrétní dopad závisí na množství dat, které nově získal od převzetí služeb při selhání. 
+
+> [!NOTE]
+> Po omezení výpadku bude Traffic Manager začít směrovat připojení k aplikaci v oblasti A jako koncový bod s vyšší prioritou. Pokud máte v úmyslu zachovat primární oblast B v oblasti B, měli byste odpovídajícím způsobem změnit tabulku priorit v profilu přenosů Manager. 
+>
+ 
+ Následující diagram znázorňuje výpadek v sekundární oblasti:
 
 ![Scénář 1. Konfigurace po výpadku v sekundární oblasti.](./media/designing-cloud-solutions-for-disaster-recovery/scenario1-c.png)
 
@@ -153,7 +159,7 @@ Existují však některé **kompromisy**:
 
 Vaše konkrétní strategie cloudového zotavení po havárii může tyto vzory návrhu zkombinovat nebo roztáhnout tak, aby co nejlépe splňovala požadavky vaší aplikace.  Jak už bylo zmíněno dříve, strategie, kterou zvolíte, je založená na smlouvě SLA, kterou chcete nabídnout vašim zákazníkům a topologii nasazení aplikace. Následující tabulka porovnává tyto možnosti podle rozhodnutí bodu obnovení (RPO) a odhadované doby obnovení (ERT), které vám pomůžou s vaším rozhodnutím.
 
-| Vzor | Cíl bodu obnovení | ERT |
+| Vzor | RPO | ERT |
 |:--- |:--- |:--- |
 | Aktivní – pasivní nasazení pro zotavení po havárii s společně umístěným přístupem k databázi |Přístup pro čtení i zápis < 5 sec |Čas detekce selhání + hodnota TTL systému DNS |
 | Aktivní – aktivní nasazení pro vyrovnávání zatížení aplikace |Přístup pro čtení i zápis < 5 sec |Čas detekce selhání + hodnota TTL systému DNS |

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 007763d65021b0730c6e4e81ada33790d3cf4c02
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b80cd2e40e54837682e72837cf0d1a9058f3a7fc
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025774"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428384"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Kurz: Ruční konfigurace hybridních zařízení připojených k Azure Active Directory
 
@@ -59,6 +59,9 @@ Ujistěte se, že jsou následující adresy URL přístupné z počítačů v s
 * `https://login.microsoftonline.com`
 * `https://device.login.microsoftonline.com`
 * Služba STS vaší organizace (pro federované domény), která by měla být zahrnutá v nastavení místního intranetu uživatele
+
+> [!WARNING]
+> Pokud vaše organizace používá proxy servery, které zachycují provoz SSL pro scénáře, jako je prevence ztráty dat nebo omezení tenanta Azure AD, zajistěte, aby byl provoz do ' https://device.login.microsoftonline.com ' vyloučený z přerušení TLS a prověřený. Vyloučení se nepovedlo https://device.login.microsoftonline.com , může způsobit rušení s ověřováním klientským certifikátem a způsobuje problémy s registrací zařízení a podmíněným přístupem na základě zařízení.
 
 Pokud vaše organizace plánuje použití bezproblémového jednotného přihlašování, musí být přístupná z počítačů v rámci vaší organizace, aby byla dostupná následující adresa URL. Musí se taky přidat do zóny Místní intranet uživatele.
 

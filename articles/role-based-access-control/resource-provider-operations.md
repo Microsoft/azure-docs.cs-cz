@@ -1,5 +1,5 @@
 ---
-title: Operace poskytovatelů prostředků Azure
+title: Operace poskytovatele prostředků Azure
 description: Obsahuje seznam operací pro poskytovatele prostředků Azure.
 services: active-directory
 ms.service: role-based-access-control
@@ -8,14 +8,14 @@ ms.workload: identity
 author: rolyon
 ms.author: rolyon
 ms.date: 07/16/2020
-ms.openlocfilehash: 0fc2039805b155535eeac1d653fc9ecb9e576d5d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d28f852ad4159472b7fcb3289a322db54be8af1e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496940"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387383"
 ---
-# <a name="azure-resource-providers-operations"></a>Operace poskytovatelů prostředků Azure
+# <a name="azure-resource-provider-operations"></a>Operace poskytovatele prostředků Azure
 
 V této části jsou uvedené operace pro poskytovatele prostředků Azure, které se používají ve vestavěných rolích. Tyto operace můžete použít ve vlastních [rolích Azure](custom-roles.md) a zajistit tak podrobné řízení přístupu k prostředkům v Azure. Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat nejnovější operace, použijte seznam operací [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) nebo [AZ Provider](/cli/azure/provider/operation#az-provider-operation-list).
 
@@ -120,7 +120,7 @@ Seznam operací zobrazíte kliknutím na název poskytovatele prostředků v ná
 | [Microsoft. DevTestLab](#microsoftdevtestlab) |
 | [Microsoft. LabServices](#microsoftlabservices) |
 | [Microsoft. VisualStudio](#microsoftvisualstudio) |
-| **Migrate** |
+| **Migrace** |
 | [Microsoft. migruje](#microsoftmigrate) |
 | [Microsoft. OffAzure](#microsoftoffazure) |
 | **Monitorování** |
@@ -2524,7 +2524,7 @@ Služba Azure: [App Service](../app-service/index.yml), [Azure Functions](../azu
 > | Microsoft. Web/staticSites/customdomains/ověřit/akce | Ověření, jestli se vlastní doména dá přidat ke statické lokalitě |
 > | Microsoft. Web/staticSites/Functions/Read | Seznam funkcí pro statický Web |
 
-## <a name="containers"></a>Kontejnery
+## <a name="containers"></a>Containers
 
 ### <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
 
@@ -4139,7 +4139,7 @@ Služba Azure: [SQL Server v azure Virtual Machines](../azure-sql/virtual-machin
 > | Microsoft. SqlVirtualMachine/sqlVirtualMachines/Write | Vytvořit nové nebo změnit vlastnosti stávajícího virtuálního počítače SQL |
 > | Microsoft. SqlVirtualMachine/sqlVirtualMachines/DELETE | Odstranit stávající virtuální počítač s SQL |
 
-## <a name="analytics"></a>Analýza
+## <a name="analytics"></a>Analýzy
 
 ### <a name="microsoftanalysisservices"></a>Microsoft. AnalysisServices
 
@@ -6607,7 +6607,7 @@ Služba Azure: [Azure DevOps](https://docs.microsoft.com/azure/devops/)
 > | Microsoft. VisualStudio/Project/DELETE | Odstranit projekt |
 > | Microsoft. VisualStudio/Project/Read | Přečíst projekt |
 
-## <a name="migrate"></a>Migrate
+## <a name="migrate"></a>Migrace
 
 ### <a name="microsoftmigrate"></a>Microsoft. migruje
 
@@ -8612,7 +8612,7 @@ Služba Azure: přehledy monitorování Microsoftu
 > | Microsoft. Intune/diagnosticsettings/DELETE | Odstranění nastavení diagnostiky |
 > | Microsoft. Intune/diagnosticsettingscategories/Read | Čtení kategorií nastavení diagnostiky |
 
-## <a name="other"></a>Další
+## <a name="other"></a>Ostatní
 
 ### <a name="microsoftbingmaps"></a>Microsoft. BingMaps
 

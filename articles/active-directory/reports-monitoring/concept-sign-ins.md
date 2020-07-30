@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2910933e2c57a8bc80a220726462b02915c4a8eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81daa7696c645c1353cdd5e6d3cbca90ac4f03da
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80246513"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87388114"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit přihlašování na portálu Azure Active Directory
 
@@ -37,7 +37,7 @@ Architektura vytváření sestav ve službě Azure Active Directory (Azure AD) s
 
 Tento článek obsahuje přehled sestavy přihlášení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
 
@@ -117,7 +117,7 @@ Nejprve zajistěte zúžení hlášených dat na úroveň, která vám bude vyho
  
 **Stav** – stav přihlášení, o který máte starosti:
 
-- Úspěch
+- Success
 
 - Selhání
 
@@ -146,7 +146,7 @@ Nejprve zajistěte zúžení hlášených dat na úroveň, která vám bude vyho
 ![Filtr klientských aplikací](./media/concept-sign-ins/client-app-filter.png)
 
 
-|Name|Moderní ověřování|Popis|
+|Název|Moderní ověřování|Popis|
 |---|:-:|---|
 |Ověřený protokol SMTP| |Používá se pro odesílání e-mailových zpráv klientem POP a IMAP.|
 |Automatického| |Používá se klienty Outlook a EAS k vyhledání a připojení k poštovním schránkám v Exchangi Online.|
@@ -184,7 +184,7 @@ Nejprve zajistěte zúžení hlášených dat na úroveň, která vám bude vyho
 
 - **Úspěch**: jedna nebo více zásad podmíněného přístupu použitých pro uživatele a aplikaci (ale ne nutně i v ostatních podmínkách) během přihlašování. 
 
-- **Chyba**: minimálně jedna zásada podmíněného přístupu se použila a nebyla během přihlašování splněna.
+- **Selhání**: přihlášení splnilo podmínku pro uživatele a aplikaci alespoň pro jednu zásadu podmíněného přístupu a udělení těchto ovládacích prvků není splněno nebo je nastaveno pro blokování přístupu.
 
 
 

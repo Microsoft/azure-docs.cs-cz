@@ -10,12 +10,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: bbb30c0ad41babca4158391c9e4e5c5d4d25cbf9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0673732bd657b237ed0f4b4db276b8bf9a3a2b5
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81432057"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424371"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Kódy chyb Azure Key Vault REST API
  
@@ -134,7 +134,7 @@ K protokolu HTTP 403 dochází často tehdy, když aplikace zákazníka nepouž�
 
 ### <a name="troubleshooting-403"></a>Řešení potíží 403
 
-Nejdříve zapněte protokolování. Pokyny k tomu, jak to udělat, najdete v tématu [Azure Key Vault Logging](logging.md)).
+Nejdříve zapněte protokolování. Pokyny k tomu, jak to udělat, najdete v tématu [protokolování Azure Key Vault](logging.md).
 
 Jakmile je protokolování zapnuté, můžete zjistit, jestli je 403 v důsledku zásad přístupu nebo zásad brány firewall.
 

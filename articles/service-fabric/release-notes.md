@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 118e83016a0c27383a1f138d27397a01f7cd3916
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 08808fa0577077b642d0f21e3995931726d4d8a3
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246618"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423537"
 ---
 # <a name="service-fabric-releases"></a>Verze Service Fabric
 
@@ -18,7 +18,7 @@ ms.locfileid: "86246618"
 - <a href="https://github.com/Azure/service-fabric-issues" target="blank">Sledování problémů</a> 
 - <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-support" target="blank">Možnosti podpory</a> 
 - <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-versions" target="blank">Podporované verze</a> 
-- <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">Vzorky kódu</a>
+- <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">Ukázky kódu</a>
 
 V tomto článku najdete další informace o nejnovějších vydáních a aktualizacích Service Fabric runtime a sadách SDK.
 
@@ -69,9 +69,11 @@ Jsme rádi, že oznamujeme další vydání Service Fabric. Tato verze je nahran
     - Opravit poškození dat
                  
 ### <a name="service-fabric-71-releases"></a>Verze Service Fabric 7,1
-| Datum vydání | Vydaná verze | Další informace |
+| Datum vydání | Vydat | Další informace |
 |---|---|---|
 | 20. dubna 2020 | [Azure Service Fabric 7,1](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-1-release/ba-p/1311373)  | [Zpráva k vydání verze](https://github.com/microsoft/service-fabric/tree/master/release_notes/Service-Fabric-71-releasenotes.md)|
+| 16. června 2020 | [Microsoft Azure Service Fabric 7,1 nejdřív aktualizovat](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-1-first-refresh-release/ba-p/1466517) | [Zpráva k vydání verze](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-71CU1-releasenotes.md)
+| 20. července 2020 | [Microsoft Azure Service Fabric druhá aktualizace 7,1](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-1-second-refresh-release/ba-p/1534246) | [Zpráva k vydání verze](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-71CU2-releasenotes.md)
 
 
 ### <a name="service-fabric-70"></a>Service Fabric 7,0
@@ -103,7 +105,7 @@ Kromě toho tato verze obsahuje další nové funkce, opravy chyb a vylepšení 
 
 ### <a name="service-fabric-70-releases"></a>Verze Service Fabric 7,0
 
-| Datum vydání | Vydaná verze | Další informace |
+| Datum vydání | Vydat | Další informace |
 |---|---|---|
 | 18. listopadu 2019 | [Azure Service Fabric 7,0](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Service-Fabric-7-0-Release/ba-p/1015482)  | [Zpráva k vydání verze](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_70.md)|
 | 30. ledna 2020 | [Vydání aktualizace pro Azure Service Fabric 7,0](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-0-second-refresh-release/ba-p/1137690)  | [Zpráva k vydání verze](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-70CU2-releasenotes.md)|
@@ -141,7 +143,7 @@ Další podrobnosti najdete v [poznámkách k verzi pro Service Fabric 6,5](http
 
 ### <a name="service-fabric-65-releases"></a>Verze Service Fabric 6,5
 
-| Datum vydání | Vydaná verze | Další informace |
+| Datum vydání | Vydat | Další informace |
 |---|---|---|
 | 11. června 2019 | [Azure Service Fabric 6,5](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)  | [Zpráva k vydání verze](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65.pdf)|
 | 2\. července 2019 | [Vydání aktualizace pro Azure Service Fabric 6,5](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)  | [Zpráva k vydání verze](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU1.pdf)  |
@@ -154,7 +156,7 @@ Další podrobnosti najdete v [poznámkách k verzi pro Service Fabric 6,5](http
 
 ### <a name="service-fabric-64-releases"></a>Verze Service Fabric 6,4
 
-| Datum vydání | Vydaná verze | Další informace |
+| Datum vydání | Vydat | Další informace |
 |---|---|---|
 | 30. listopadu 2018 | [Azure Service Fabric 6,4](https://blogs.msdn.microsoft.com/azureservicefabric/2018/11/30/azure-service-fabric-6-4-release/)  | [Zpráva k vydání verze](https://msdnshared.blob.core.windows.net/media/2018/12/Service-Fabric-6.4-Release.pdf)|
 | 12. prosince 2018 | [Azure Service Fabric 6,4 aktualizace pro clustery Windows ve verzi](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)  | [Zpráva k vydání verze](https://msdnshared.blob.core.windows.net/media/2018/12/Links.pdf)  |

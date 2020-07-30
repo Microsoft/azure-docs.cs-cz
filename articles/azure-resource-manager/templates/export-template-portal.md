@@ -2,13 +2,13 @@
 title: Exportovat šablonu v Azure Portal
 description: Pomocí Azure Portal můžete exportovat šablonu Azure Resource Manager z prostředků v rámci vašeho předplatného.
 ms.topic: conceptual
-ms.date: 12/12/2019
-ms.openlocfilehash: dbdcaa6e6db4a7a4a958f1be2e9977a14e092663
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.date: 07/29/2020
+ms.openlocfilehash: 0262517df11f0d91920fd7e44f96ff532ffbe63f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057700"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423231"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Export jednoho a více prostředků do šablony v Azure Portal
 
@@ -52,6 +52,8 @@ Při exportu ze skupiny prostředků nebo prostředku se vyexportovaná šablona
 Funkce Exportovat šablonu nepodporuje export Azure Data Factorych prostředků. Další informace o tom, jak můžete exportovat Data Factory prostředky, najdete [v tématu kopírování nebo klonování datové továrny v Azure Data Factory](https://aka.ms/exportTemplateViaAdf).
 
 Chcete-li exportovat prostředky vytvořené prostřednictvím modelu nasazení Classic, je nutné [je migrovat do modelu nasazení Správce prostředků](https://aka.ms/migrateclassicresourcetoarm).
+
+Pokud se zobrazí upozornění při exportu šablony, která indikuje, že se typ prostředku neexportoval, můžete stále zjistit vlastnosti daného prostředku. Další informace o různých možnostech zobrazení vlastností prostředků najdete v tématu věnovaném [zjištění vlastností prostředku](view-resources.md). Můžete se také podívat na [REST API Azure](/rest/api/azure/) pro daný typ prostředku.
 
 ## <a name="export-template-from-a-resource-group"></a>Exportovat šablonu ze skupiny prostředků
 

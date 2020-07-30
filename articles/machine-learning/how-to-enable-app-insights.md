@@ -11,12 +11,12 @@ author: blackmist
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 2bc3eb72ff0c5d29fd72de848abf87dfe84e2a01
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 88a122a9af4a5edac45a3189df5ffb78fb2ce271
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320217"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423809"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Monitorování a shromažďování dat z koncových bodů webové služby ML
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ Kromě shromažďování výstupních dat a odpovědí koncového bodu můžete 
 [Přečtěte si další informace o Azure Application Insights](../azure-monitor/app/app-insights-overview.md). 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
@@ -128,6 +128,8 @@ Pokud chcete protokolovat vlastní trasování, postupujte podle standardního p
 
 3. Sestavte image a nasaďte ji na [AKS nebo ACI](how-to-deploy-and-where.md).
 
+Další informace o protokolování a shromažďování dat najdete v tématu [Povolení přihlášení Azure Machine Learning](how-to-enable-logging.md) a [shromažďování dat z modelů v produkčním](how-to-enable-data-collection.md)prostředí.
+
 ### <a name="disable-tracking-in-python"></a>Zakázat sledování v Pythonu
 
 Pokud chcete zakázat službu Azure Application Insights, použijte následující kód:
@@ -166,7 +168,7 @@ Zobrazení:
 
     [![Najít adresu URL Application Insights](./media/how-to-enable-app-insights/appinsightsloc.png)](././media/how-to-enable-app-insights/appinsightsloc.png#lightbox)
 
-1. V Isights aplikace na kartě **Přehled** nebo v části __monitorování__ v levém seznamu vyberte __protokoly__.
+1. V Application Insights na kartě **Přehled** nebo v části __monitorování__ v levém seznamu vyberte __protokoly__.
 
     [![Karta Přehled monitorování](./media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 

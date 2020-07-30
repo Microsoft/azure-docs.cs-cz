@@ -3,12 +3,12 @@ title: Jak chránit hierarchii prostředků – zásady správného řízení Az
 description: Naučte se chránit svoji hierarchii prostředků pomocí nastavení hierarchie, která zahrnují nastavení výchozí skupiny pro správu.
 ms.date: 05/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2f8d3d7ff85552fe18a49137450aefe91d0d02c9
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: cdaad59d136e89c595a6a42a9760c73523a977c0
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87366768"
+ms.locfileid: "87422823"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Jak chránit hierarchii prostředků
 
@@ -29,7 +29,7 @@ Tyto operace umožňují uživateli číst a aktualizovat nastavení hierarchie.
 
 Ve výchozím nastavení je nové předplatné přidané v rámci tenanta přidáno jako člen skupiny pro správu root. Pokud jsou přiřazování zásad, řízení přístupu na základě role (RBAC) a další konstruktory zásad správného řízení přiřazeny ke skupině root management, tyto nové odběry se okamžitě projeví. Z tohoto důvodu mnoho organizací tyto konstrukce nepoužije v kořenové skupině pro správu, a to i v případě, že je to požadované místo pro jejich přiřazení. V ostatních případech je pro nové odběry žádoucí přísnější sada ovládacích prvků, ale neměla by být přiřazena ke všem předplatným. Toto nastavení podporuje jak případy použití.
 
-Díky tomu, že je možné definovat výchozí skupinu pro správu pro nové odběry, můžete použít konstrukce zásad správného řízení v rámci organizace v kořenové skupině pro správu a vytvořit samostatnou skupinu pro správu s přiřazením zásad nebo přiřazením RBAC více možností pro nové předplatné.
+Díky tomu, že je možné definovat výchozí skupinu pro správu pro nové odběry, můžete použít konstrukty zásad správného řízení v rámci organizace v kořenové skupině pro správu a použít samostatnou skupinu pro správu s přiřazením zásad nebo přiřazení rolí Azure, které jsou víc vhodné k novému předplatnému.
 
 Pro konfiguraci tohoto nastavení se zavolá [Nastavení hierarchie](/rest/api/resources/hierarchysettings) REST API koncový bod. K tomu použijte následující REST API identifikátor URI a formát textu. Nahraďte `{rootMgID}` ID vaší kořenové skupiny pro správu a `{defaultGroupID}` ID skupiny pro správu, která se má stát výchozí skupinou pro správu:
 

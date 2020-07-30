@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: provedení hledání zpráv pomocí Node. js – Vyhledávání zpráv Bingu REST API'
+title: 'Rychlý Start: provedení hledání zpráv pomocí Node.js-Vyhledávání zpráv Bingu REST API'
 titleSuffix: Azure Cognitive Services
-description: Pomocí tohoto rychlého startu můžete odeslat žádost do Vyhledávání zpráv Bingu REST API pomocí Node. js a přijmout odpověď JSON.
+description: Pomocí tohoto rychlého startu můžete odeslat žádost Vyhledávání zpráv Bingu REST API pomocí Node.js a přijmout odpověď JSON.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,23 +10,23 @@ ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 24dd1e719b9eb401038d47c4d1c42139258f36f9
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.custom: seodec2018, devx-track-javascript
+ms.openlocfilehash: d0ed69aecf03e5c8e3a65e3ac532c02c89b65ba8
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872055"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406601"
 ---
-# <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Rychlý Start: Proveďte hledání zpráv pomocí Node. js a Vyhledávání zpráv Bingu REST API
+# <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Rychlý Start: provedení hledání zpráv pomocí Node.js a Vyhledávání zpráv Bingu REST API
 
 V tomto rychlém startu můžete provést první volání rozhraní API Bingu pro vyhledávání zpráv. Tato jednoduchá aplikace JavaScriptu pošle vyhledávací dotaz do rozhraní API a zobrazí odpověď JSON.
 
-I když je tato aplikace napsaná v jazyce JavaScript a běží v Node. js, je rozhraní API webová služba RESTful kompatibilní s většinou programovacích jazyků.
+I když je tato aplikace napsaná v jazyce JavaScript a běží v Node.js, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingNewsSearchv7.js).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nejnovější verze [Node.js](https://nodejs.org/en/download/)
 * [Knihovna požadavků JavaScriptu](https://github.com/request/request)

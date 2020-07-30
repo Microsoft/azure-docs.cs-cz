@@ -1,15 +1,14 @@
 ---
 title: Zálohy virtuálních počítačů se systémem Linux konzistentní vzhledem k aplikacím
 description: Vytvářejte zálohy virtuálních počítačů s konzistentním vzhledem k aplikacím do Azure. V tomto článku se dozvíte, jak nakonfigurovat rozhraní skriptů pro zálohování virtuálních počítačů Linux nasazených v Azure. Tento článek také obsahuje informace o řešení potíží.
-ms.reviewer: anuragm
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.openlocfilehash: 8d578df45235b3bef314245e4eb7a0976c4d48d6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1ebf1b4148c43b07c0fddee67970abe8381e4c30
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054846"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407094"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Zálohování virtuálních počítačů Azure s Linuxem konzistentní vzhledem k aplikacím
 
@@ -55,19 +54,19 @@ Předběžné skripty vyvolávají nativní aplikační rozhraní API, které ne
 
     - **preScriptNoOfRetries**: nastavte počet opakovaných pokusů o opakování skriptu, pokud před ukončením dojde k chybě. Nula znamená pouze jeden pokus a bez opakování, pokud dojde k selhání.
 
-    - **postScriptNoOfRetries**: nastavte počet opakovaných pokusů, kolikrát se má po skriptu opakovat, pokud dojde k chybě před ukončením. Nula znamená pouze jeden pokus a bez opakování, pokud dojde k selhání.
+    - **postScriptNoOfRetries**: nastavte počet opakovaných pokusů, které by se měl opakovat po ukončení skriptu, pokud dojde k chybě. Nula znamená pouze jeden pokus a bez opakování, pokud dojde k selhání.
 
     - **timeoutInSeconds**: zadejte jednotlivé časové limity pro předzálohovací skript a po skript (maximální hodnota může být 1800).
 
-    - **continueBackupOnFailure**: tuto hodnotu nastavte na **true** , pokud chcete, aby se Azure Backup přechodem k zálohování konzistentnímu se systémem souborů nebo selháním v případě, že se nepovede nebo pozálohovací skript selže. Když se tato možnost nastaví na **false** , selže zálohování v případě selhání skriptu (s výjimkou případů, kdy máte virtuální počítač s jedním diskem, který se vrátí do zálohy konzistentní bez ohledu na toto nastavení).
+    - **continueBackupOnFailure**: tuto hodnotu nastavte na **true** , pokud chcete, aby se Azure Backup přechodem k zálohování konzistentnímu se systémem souborů nebo selháním v případě, že se nepovede nebo pozálohovací skript selže. Když se tato možnost nastaví na **false** , zálohování selže, pokud dojde k selhání skriptu (kromě případu, kdy máte virtuální počítač s jedním diskem, který se vrátí do zálohy konzistentní bez ohledu na toto nastavení). Pokud je hodnota **continueBackupOnFailure** nastavena na hodnotu false, bude pokus o zálohování znovu proveden na základě logiky opakování ve službě (pro stanovený počet pokusů).
 
     - **fsFreezeEnabled**: Určete, jestli by se měla volat Linux fsfreeze při přebírání snímku virtuálního počítače, aby se zajistila konzistence systému souborů. Doporučujeme ponechat toto nastavení nastavené na **hodnotu true** , pokud vaše aplikace nezávisí na zakázání fsfreeze.
 
     - **ScriptsExecutionPollTimeSeconds**: Nastavte dobu, po kterou má rozšíření při každém cyklickém dotazování na spuštění skriptu přejít do režimu spánku. Například pokud je hodnota 2, rozšíření ověří, zda bylo provedeno předběžné/následné spuštění skriptu každé 2 sekundy. Minimální a maximální hodnota, kterou může trvat, je 1 a 5 v uvedeném pořadí. Hodnota by měla být výhradně celé číslo.
 
-6. Rozhraní Script Framework je nyní nakonfigurováno. Pokud je zálohování virtuálního počítače už nakonfigurované, další záloha vyvolá skripty a spustí zálohování konzistentní s aplikacemi. Pokud není zálohování virtuálních počítačů nakonfigurované, nakonfigurujte ho pomocí [zálohování virtuálních počítačů Azure do trezorů Recovery Services.](./backup-azure-vms-first-look-arm.md)
+6. Rozhraní Script Framework je nyní nakonfigurováno. Pokud je zálohování virtuálního počítače už nakonfigurované, další záloha vyvolá skripty a spustí zálohování konzistentní s aplikacemi. Pokud zálohování virtuálního počítače není nakonfigurované, nakonfigurujte ho pomocí [zálohování virtuálních počítačů Azure do trezorů Recovery Services.](./backup-azure-vms-first-look-arm.md)
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Nezapomeňte přidat vhodné protokolování při psaní předzálohovacího skriptu a následného skriptu a zkontrolujte protokoly skriptu a opravte případné problémy se skripty. Pokud stále máte problémy se spouštěním skriptů, další informace najdete v následující tabulce.
 

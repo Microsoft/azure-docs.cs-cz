@@ -6,12 +6,13 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: f238a2a3c499cf1e36f5e7c40e087375b7db0a70
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: c8497d50f86155ef7df0de995864e74753542750
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81726456"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422619"
 ---
 # <a name="url-rewriter"></a>Přepisovač adres URL #
 
@@ -23,7 +24,7 @@ Ve výchozím nastavení Azure Media Player přepíše zadanou adresu URL z Azur
     </video>
 ```
 
-Pokud ale chcete přepsat adresu URL, můžete to udělat tak, že do parametru přidáte `disableUrlRewriter` vlastnost. To znamená, že všechny informace, které jsou předány do zdrojů, jsou přímo předány do přehrávače beze změny.  Tady je příklad přidání dvou zdrojů do přehrávače, na PŘERUŠOVANém a jednom HLADKÉm streamování.
+Pokud ale chcete přepsat adresu URL, můžete to udělat tak, že `disableUrlRewriter` do parametru přidáte vlastnost. To znamená, že všechny informace, které jsou předány do zdrojů, jsou přímo předány do přehrávače beze změny.  Tady je příklad přidání dvou zdrojů do přehrávače, na PŘERUŠOVANém a jednom HLADKÉm streamování.
 
 ```html
     <video id="vid1" class="azuremediaplayer amp-default-skin">
@@ -41,7 +42,7 @@ Pokud ale chcete přepsat adresu URL, můžete to udělat tak, že do parametru 
     ]);
 ```
 
-Pokud chcete, můžete také zadat konkrétní formáty streamování, které chcete přepsat, aby bylo možné tento `streamingFormats` parametr Azure Media Player použít. Mezi možnosti `DASH`patří `SMOOTH`, `HLSv3`, `HLSv4`, `HLS`,. Rozdíl mezi HLS a HLSv3 & v4 je v tom, že formát HLS podporuje přehrávání FairPlay obsahu. Verze v3 a v4 nepodporují FairPlay. To je užitečné, pokud nemáte zásady doručování pro konkrétní protokol k dispozici.  Tady je příklad, kdy není pro váš Asset povolený protokol typu SPOJOVNÍK.
+Pokud chcete, můžete také zadat konkrétní formáty streamování, které chcete přepsat, aby bylo možné tento parametr Azure Media Player použít `streamingFormats` . Mezi možnosti patří `DASH` , `SMOOTH` ,, `HLSv3` `HLSv4` , `HLS` . Rozdíl mezi HLS a HLSv3 & v4 je v tom, že formát HLS podporuje přehrávání FairPlay obsahu. Verze v3 a v4 nepodporují FairPlay. To je užitečné, pokud nemáte zásady doručování pro konkrétní protokol k dispozici.  Tady je příklad, kdy není pro váš Asset povolený protokol typu SPOJOVNÍK.
 
 ```html
     <video id="vid1" class="azuremediaplayer amp-default-skin">

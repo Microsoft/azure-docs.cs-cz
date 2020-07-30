@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/25/2020
 ms.author: mahain
-ms.openlocfilehash: a4d2e810144e7c3d36545cb1e965aec40980c1d2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 84798dbcd158b62ce6714bf73494a9e85bf932a8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118813"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387944"
 ---
 # <a name="avs-assessments-in-azure-migrate-server-assessment"></a>Posuzování pro funkci AVS v Azure Migrate: posouzení serveru
 
@@ -128,7 +128,7 @@ Co je je součástí posouzení služby AVS při vyhodnocování serveru:
 **Percentilové využití** | Určuje hodnotu percentilu sady ukázek výkonu, která má být považována za správné určení velikosti. Tato vlastnost je platná pouze v případě, že je velikost na základě výkonu.
 **Faktor komfortu** | Vyhodnocování Azure Migrate serveru během posuzování považuje vyrovnávací paměť (faktor komfortu). Tato rezerva se použije nad rámec dat o využití počítače pro virtuální počítače (procesor, paměť, disk a síť). Důvodem použití faktoru komfortu jsou problémy, jako jsou sezónní využití, krátká historie výkonu a pravděpodobný růst budoucího využití.<br/><br/> Například z virtuálního počítače s 10 jádry a 20% využitím je normálně ve výsledku virtuální počítač se 2 jádry. S faktorem komfortu 2,0× je však výsledkem virtuální počítač se 4 jádry. 
 **Nabídka** | Zobrazí [nabídku Azure](https://azure.microsoft.com/support/legal/offer-details/) , kterou jste si zaregistrovali. Azure Migrate odhadne náklady odpovídajícím způsobem.
-**Měna** | Zobrazuje fakturační měnu vašeho účtu. 
+**Měně** | Zobrazuje fakturační měnu vašeho účtu. 
 **Sleva (%)** | Obsahuje seznam všech slev specifických pro předplatné, které obdržíte nad nabídkou Azure. Výchozí nastavení je 0 %. 
 **Zvýhodněné hybridní využití Azure** | Určuje, jestli máte program Software Assurance a máte nárok na [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-use-benefit/). I když nemá žádný vliv na ceny řešení Azure VMware z důvodu ceny založené na uzlu, zákazníci můžou dál používat místní licence na operační systém (na základě Microsoftu) v prostředí AVS pomocí hybridních výhod Azure. Ostatní dodavatelé softwaru pro operační systémy budou muset zadat vlastní licenční podmínky, například RHEL. 
 **vCPU – předplatné** | Určuje poměr počtu virtuálních jader vázaných k jednomu fyzickému jádru v uzlu AVS. Výchozí hodnota ve výpočtech je 4 vCPU: 1 fyzická jádro v funkci AVS. <br/><br/> Uživatelé rozhraní API můžou tuto hodnotu nastavit jako celé číslo. Všimněte si, že vCPU > 4:1 může mít dopad na úlohy v závislosti na využití procesoru. 
@@ -152,7 +152,7 @@ Posouzení serveru zkontroluje následující vlastnost místního virtuálního
 
 | **Vlastnost** | **Podrobnosti** | **Stav připravenosti na funkci AVS** 
 | - | - | - 
-| **Internet Protocol** | Služba AVS aktuálně nepodporuje internetové adresování s protokolem IPv6.<br/><br/> Pokud se zjistíte v počítači s protokolem IPv6, kontaktujte svůj místní tým MSFT AVS GBB, kde najdete pokyny k nápravě.| Podmíněně připravené Internet Protocol
+| **Internet Protocol** | AVS v současné době nepodporuje používání internetových adres IPv6.<br/><br/> Pokud se na vašem počítači zjistí používání protokolu IPv6 a potřebujete pokyny k nápravě, obraťte se na místní tým MSFT AVS GBB.| Podmíněně připravené Internet Protocol
 
 
 ### <a name="guest-operating-system"></a>Hostovaný operační systém
@@ -172,15 +172,15 @@ Když je počítač označený jako připravený pro funkci AVS, hodnocení slu�
 
 ### <a name="ftt-sizing-parameters"></a>Parametry změny velikosti FTT
 
-Modul úložiště používaný v rozhraní AVS je síti vSAN. zásady úložiště síti vSAN definují požadavky na úložiště pro virtuální počítače. Tyto zásady zaručují potřebnou úroveň služby pro vaše virtuální počítače, protože určují, jak je úložiště přidělené k virtuálnímu počítači. Dostupné kombinace FTT-RAID jsou: 
+Modul úložiště používaný v rozhraní AVS je síti vSAN. zásady úložiště síti vSAN definují požadavky na úložiště pro virtuální počítače. Tyto zásady pro vaše virtuální počítače zaručují požadovanou úroveň služeb, protože určují, jak se virtuálním počítačům přiděluje úložiště. Dostupné kombinace FTT-RAID jsou: 
 
-**Neúspěšné tolerování (FTT)** | **Konfigurace RAID** | **Minimální požadovaná hostitelé** | **Aspekt velikosti**
+**Tolerované chyby (FTT)** | **Konfigurace RAID** | **Minimální požadovaný počet hostitelů** | **Důležité informace o nastavení velikosti**
 --- | --- | --- | --- 
-1 | RAID-1 (zrcadlení) | 3 | 100 GB virtuální počítač spotřebuje 200 GB.
-1 | RAID-5 (mazání kódu) | 4 | Virtuální počítač 100 GB spotřebuje 133.33 GB.
-2 | RAID-1 (zrcadlení) | 5 | Virtuální počítač 100 GB spotřebuje 300 GB.
-2 | RAID-6 (mazání kódu) | 6 | 100 GB virtuální počítač spotřebuje 150 GB.
-3 | RAID-1 (zrcadlení) | 7 | Virtuální počítač s 100 GB by spotřebuje 400 GB.
+1 | RAID-1 (zrcadlení) | 3 | Virtuální počítač o velikosti 100 GB spotřebuje 200 GB.
+1 | RAID-5 (kódování pro případ vymazaní) | 4 | Virtuální počítač o velikosti 100 GB spotřebuje 133,33 GB.
+2 | RAID-1 (zrcadlení) | 5 | Virtuální počítač o velikosti 100 GB spotřebuje 300 GB.
+2 | RAID-6 (kódování pro případ vymazaní) | 6 | Virtuální počítač o velikosti 100 GB spotřebuje 150 GB.
+3 | RAID-1 (zrcadlení) | 7 | Virtuální počítač o velikosti 100 GB spotřebuje 400 GB.
 
 ### <a name="performance-based-sizing"></a>Změny velikosti na základě výkonu
 
@@ -197,11 +197,11 @@ Po určení efektivní hodnoty využití se velikost úložiště, sítě a výp
 
 **Velikost úložiště**: Azure Migrate jako parametr výpočtu používá celkové místo na disku virtuálního počítače, aby bylo možné kromě nastavení FTT vybraného pro zákazníka určit taky požadavky na úložiště AVS síti vSAN. FTT – při nedodržení možnosti minimální počet uzlů na FTT se určí celkové úložiště síti vSAN, které se v kombinaci s požadavky na disk virtuálního počítače vyžadují.
 
-**Velikost sítě**: posouzení serveru v současné době nebere v úvahu žádná nastavení sítě pro posouzení služby AVS.
+**Určování velikosti sítě:** Nástroj Hodnocení serverů v současné době při hodnoceních služby AVS nebere v úvahu žádné nastavení sítě.
 
 **Výpočet velikosti**: po výpočtu požadavků na úložiště posuzuje vyhodnocení serveru požadavky na procesor a paměť a určí počet uzlů vyžadovaných pro funkci AVS na základě typu uzlu.
 
-- Na základě kritérií pro změnu velikosti vyhledá server hodnocení buď data virtuálních počítačů na základě výkonu nebo místní konfiguraci virtuálních počítačů. Nastavení faktoru pohodlí umožňuje určit faktor růstu clusteru. Ve výchozím nastavení je povoleno vytvoření vlákna a proto budou mít uzly 36 Core 72 virtuální jádra. 4 virtuální jádra na fyzický se používají k určení prahových hodnot procesoru na cluster pomocí standardu VMware, který nepřekračuje 80% využití, aby bylo možné provádět údržbu nebo selhání bez narušení dostupnosti clusteru. V tuto chvíli není k dispozici žádné přepsání ke změně hodnot nadplatku a v budoucích verzích ho můžeme použít.
+- Na základě kritérií pro změnu velikosti vyhledá server hodnocení buď data virtuálních počítačů na základě výkonu nebo místní konfiguraci virtuálních počítačů. Nastavení faktoru pohodlí umožňuje určit faktor růstu clusteru. V současné době je ve výchozím nastavení povolená technologie Hyper-Threading, a proto uzly s 36 jádry mají 72 virtuálních jader. K určení prahových hodnot CPU na cluster se používají 4 virtuální jádra na fyzický uzel za použití standardu VMware, který zajišťuje, že nedojde k překročení 80% využití, aby bylo možné provádět údržbu nebo zpracování selhání bez ohrožení dostupnosti clusteru. V tuto chvíli není k dispozici žádné přepsání ke změně hodnot nadplatku a v budoucích verzích ho můžeme použít.
 
 ### <a name="as-on-premises-sizing"></a>Podle velikosti v místním prostředí
 
@@ -255,9 +255,9 @@ Všimněte si, že jako Azure VMware Solution (AVS) je ve verzi Preview, ceny za
 
 ## <a name="migration-tool-guidance"></a>Pokyny k nástroji pro migraci
 
-V sestavě připravenosti Azure pro posouzení řešení Azure VMware (AVS) můžete vidět následující navrhované nástroje: 
+V sestavě připravenosti pro Azure pro hodnocení služby Azure VMware Solution (AVS) uvidíte následující navrhované nástroje: 
 - **VMware HCX nebo Enterprise**: pro počítače VMware je řešení Azure Hybrid Cloud Extension (HCX) navrhovaným nástrojem pro migraci, který vaše místní úlohy migruje do privátního cloudu řešení Azure VMware (AVS). [Další informace](../azure-vmware/hybrid-cloud-extension-installation.md)
-- **Neznámé**: u počítačů importovaných prostřednictvím souboru CSV není výchozí nástroj pro migraci známý. I když používáte počítače VMware, doporučuje se použít řešení VMWare Hybrid Cloud Extension (HCX).
+- **Neznámý:** V případě počítačů importovaných prostřednictvím souboru CSV je výchozí nástroj pro migraci neznámý. I když používáte počítače VMware, doporučuje se použít řešení VMware Hybrid Cloud Extension (HCX).
 
 ## <a name="next-steps"></a>Další kroky
 

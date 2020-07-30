@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2020
 ms.author: allensu
-ms.openlocfilehash: 0b025b3e017c8a7702b411e9d91cbdf22f915aba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 983a3e04921bb3d8e804430948013a1b51802727
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549634"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424064"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Navrhování virtuálních sítí pomocí prostředků brány NAT
 
@@ -28,7 +28,7 @@ Prostředky brány NAT jsou součástí [Virtual Network NAT](nat-overview.md) a
 
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction1.svg" width="256" title="Virtual Network překlad adres (NAT) pro odchozí připojení do Internetu">
+  <img src="media/nat-overview/flow-direction1.svg" alt="Figure depicts a NAT gateway resource that consumes all IP addresses for a public IP prefix and directs that traffic to and from two subnets of virtual machines and a virtual machine scale set." width="256" title="Virtual Network překlad adres (NAT) pro odchozí připojení do Internetu">
 </p>
 
 *Obrázek: Virtual Network NAT pro odchozí připojení do Internetu*
@@ -51,10 +51,10 @@ Trasy definované uživatelem nejsou nutné.
 
 Prostředek je navržený tak, aby byl jednoduchý, jak můžete vidět v následujícím příkladu Azure Resource Manager ve formátu podobném šabloně.  Tento formát podobný tomuto: slouží k znázornění konceptů a struktury.  Upravte příklad podle svých potřeb.  Tento dokument není určený jako kurz.
 
-Následující diagram znázorňuje zapisovatelné odkazy mezi různými Azure Resource Manager prostředky.  Šipka označuje směr odkazu, který pochází z místa, odkud je možné zapisovat. Revize 
+Následující diagram znázorňuje zapisovatelné odkazy mezi různými Azure Resource Manager prostředky.  Šipka označuje směr odkazu, který pochází z místa, odkud je možné zapisovat. Opakování 
 
 <p align="center">
-  <img src="media/nat-overview/flow-map.svg" width="256" title="Virtual Network objektového modelu NAT">
+  <img src="media/nat-overview/flow-map.svg" alt="Figure depicts a NAT receiving traffic from internal subnets and directing it to a public IP and an IP prefix." width="256" title="Virtual Network objektového modelu NAT">
 </p>
 
 *Obrázek: Virtual Network objektového modelu NAT*
@@ -119,7 +119,7 @@ Brána NAT je kompatibilní s:
 Při vývoji nového nasazení začněte se standardními SKU Standard.
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction1.svg" width="256" title="Virtual Network překlad adres (NAT) pro odchozí připojení do Internetu">
+  <img src="media/nat-overview/flow-direction1.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network." width="256" title="Virtual Network překlad adres (NAT) pro odchozí připojení do Internetu">
 </p>
 
 *Obrázek: Virtual Network NAT pro odchozí připojení do Internetu*
@@ -129,7 +129,7 @@ Scénář jenom pro odchozí připojení k Internetu poskytovaný bránou NAT se
 #### <a name="nat-and-vm-with-instance-level-public-ip"></a>NAT a virtuální počítač s veřejnou IP adresou na úrovni instance
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction2.svg" width="300" title="Virtual Network NAT a virtuální počítač s veřejnou IP adresou na úrovni instance">
+  <img src="media/nat-overview/flow-direction2.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network and inbound traffic with an instance-level public IP." width="300" title="Virtual Network NAT a virtuální počítač s veřejnou IP adresou na úrovni instance">
 </p>
 
 *Obrázek: Virtual Network NAT a virtuální počítač s veřejnou IP adresou na úrovni instance*
@@ -144,7 +144,7 @@ Virtuální počítač bude používat bránu NAT pro odchozí připojení.  Př
 #### <a name="nat-and-vm-with-public-load-balancer"></a>NAT a virtuální počítač s veřejným Load Balancer
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction3.svg" width="350" title="Virtual Network NAT a virtuální počítač s veřejným Load Balancer">
+  <img src="media/nat-overview/flow-direction3.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network and inbound traffic with a public load balancer." width="350" title="Virtual Network NAT a virtuální počítač s veřejným Load Balancer">
 </p>
 
 *Obrázek: Virtual Network NAT a virtuální počítač s veřejným Load Balancer*
@@ -159,7 +159,7 @@ Jakákoli odchozí konfigurace z pravidla vyrovnávání zatížení nebo odchoz
 #### <a name="nat-and-vm-with-instance-level-public-ip-and-public-load-balancer"></a>NAT a virtuální počítač s veřejnou IP adresou na úrovni instance a veřejnými Load Balancer
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction4.svg" width="425" title="Virtual Network NAT a virtuální počítač s veřejnou IP adresou na úrovni instance a veřejnými Load Balancer">
+  <img src="media/nat-overview/flow-direction4.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network and inbound traffic with an instance-level public IP and a public load balancer." width="425" title="Virtual Network NAT a virtuální počítač s veřejnou IP adresou na úrovni instance a veřejnými Load Balancer">
 </p>
 
 *Obrázek: Virtual Network NAT a virtuální počítač s veřejnou IP adresou na úrovni instance a veřejným Load Balancer*
@@ -182,7 +182,7 @@ Brány NAT mají přednost před odchozími scénáři podsítě. Základní ná
 #### <a name="zone-isolation-with-zonal-stacks"></a>Izolace zóny pomocí plošných zásobníků
 
 <p align="center">
-  <img src="media/nat-overview/az-directions.svg" width="425" title="Virtual Network překlad adres (NAT) s izolací zóny, vytváření více "zonal stacks"">
+  <img src="media/nat-overview/az-directions.svg" alt="Figure depicts three zonal stacks, each of which contains a NAT gateway and a subnet." width="425" title="Virtual Network překlad adres (NAT) s izolací zóny, vytváření více "zonal stacks"">
 </p>
 
 *Obrázek: Virtual Network překlad adres (NAT) s izolací zóny, vytvoření několika "plošných zásobníků"*
@@ -210,7 +210,7 @@ Pokud váš scénář vyžaduje vstupní koncové body, máte dvě možnosti:
 #### <a name="cross-zone-outbound-scenarios-not-supported"></a>Odchozí scénáře mezi zónami nejsou podporovány.
 
 <p align="center">
-  <img src="media/nat-overview/az-directions2.svg" width="425" title="Virtual Network NAT není kompatibilní s podsítí pokrývání zón.">
+  <img src="media/nat-overview/az-directions2.svg" alt="Figure depicts three zonal stacks, each of which contains a NAT gateway and a subnet, with the connections between to of the gateways and their subnets broken." width="425" title="Virtual Network NAT není kompatibilní s podsítí pokrývání zón.">
 </p>
 
 *Obrázek: Virtual Network NAT není kompatibilní s podsítí pokrývání zóny*
@@ -268,7 +268,7 @@ SNAT, kterou poskytuje překlad adres (NAT), se liší od [Load Balancer](../loa
 NAT poskytuje porty SNAT na vyžádání pro nové toky odchozího provozu. Všechny dostupné porty SNAT v inventáři používá libovolný virtuální počítač v podsítích konfigurovaných pomocí překladu adres (NAT). 
 
 <p align="center">
-  <img src="media/nat-overview/lb-vnnat-chart.svg" width="550" title="Odchozí SNAT na vyžádání Virtual Network překladu adres (NAT)">
+  <img src="media/nat-overview/lb-vnnat-chart.svg" alt="Figure depicts inventory of all available SNAT ports used by any virtual machine on subnets configured with N A T." width="550" title="Odchozí SNAT na vyžádání Virtual Network překladu adres (NAT)">
 </p>
 
 *Obrázek: Virtual Network NAT na vyžádání odchozí SNAT*
@@ -276,7 +276,7 @@ NAT poskytuje porty SNAT na vyžádání pro nové toky odchozího provozu. Vše
 Jakákoli konfigurace IP virtuálního počítače může v případě potřeby vytvářet odchozí toky na vyžádání.  Plánování předběžného přidělování za instance, včetně nadměrného zřízení případných případů, se nevyžaduje.  
 
 <p align="center">
-  <img src="media/nat-overview/exhaustion-threshold.svg" width="550" title="Rozdíly ve scénářích vyčerpání">
+  <img src="media/nat-overview/exhaustion-threshold.svg" alt="Figure depicts inventory of all available SNAT ports used by any virtual machine on subnets configured with N A T with exhaustion threshold." width="550" title="Rozdíly ve scénářích vyčerpání">
 </p>
 
 *Obrázek: rozdíly ve scénářích vyčerpání*
