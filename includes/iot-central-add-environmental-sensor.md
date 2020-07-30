@@ -5,15 +5,15 @@ services: iot-central
 author: dominicbetts
 ms.service: iot-central
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 07/07/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 0381418f20e126f94060b9f495fe1fe8b54e713b
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: b32465091f82fec0aeae288ee9bfd5540bfe8b9d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85378423"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002015"
 ---
 ## <a name="create-a-device-template"></a>Vytvoření šablony zařízení
 
@@ -79,12 +79,11 @@ V aplikaci Azure IoT Central přidejte reálné zařízení do šablony zaříze
 
 1. Na stránce **zařízení** vyberte šablonu zařízení **snímače životního prostředí** .
 
-    > [!TIP]
-    > Nezapomeňte vybrat šablonu, kterou chcete použít, než vyberete **+ Nový**. v opačném případě vytvoříte nepřidružené zařízení.
-
 1. Vyberte **+ Nový**.
 
-1. Ujistěte se, **že je** **simulovaná** . Potom vyberte **Vytvořit**.
+1. V dialogu **vytvořit nové zařízení** se ujistěte, že je **senzor životního prostředí** typu šablony a že **Toto zařízení simuluje?** je nastavené na **ne**.
+
+1. Potom vyberte **Vytvořit**.
 
 Klikněte na název zařízení a pak vyberte **připojit**. Poznamenejte si informace o připojení zařízení na stránce **připojení zařízení** – **Rozsah ID**, **ID zařízení**a **primární klíč**. Tyto hodnoty budete potřebovat při vytváření kódu zařízení:
 

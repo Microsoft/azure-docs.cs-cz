@@ -49,6 +49,8 @@
       href: synchronization.md
     - name: Jak funguje synchronizace hodnot hash hesel
       href: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
+    - name: Požadavky na virtuální síť
+      href: network-considerations.md
     - name: Výhody migrace klasického nasazení
       href: concepts-migration-benefits.md
     - name: Představení služby Azure Active Directory
@@ -65,10 +67,6 @@
           href: create-ou.md
         - name: Vytvoření skupinového účtu spravované služby (gMSA)
           href: create-gmsa.md
-    - name: Plán pro Azure AD DS
-      items:
-        - name: Požadavky na virtuální síť
-          href: network-considerations.md
     - name: Správa Azure AD DS
       items:
         - name: Správa zásad skupiny

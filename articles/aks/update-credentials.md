@@ -5,12 +5,12 @@ description: Přečtěte si, jak aktualizovat nebo resetovat přihlašovací úd
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: a9cc19184cc39975cce18d17a6047bedf5915555
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a824606bc0e77ba069b6b54725645ee3f348de27
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251022"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386924"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Aktualizace nebo otočení přihlašovacích údajů pro službu Azure Kubernetes (AKS)
 
@@ -26,10 +26,12 @@ Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.65 nebo nově
 
 ## <a name="update-or-create-a-new-service-principal-for-your-aks-cluster"></a>Aktualizace nebo vytvoření nového instančního objektu pro cluster AKS
 
-Pokud chcete aktualizovat přihlašovací údaje pro cluster AKS, můžete se rozhodnout:
+Pokud chcete aktualizovat přihlašovací údaje pro cluster AKS, můžete zvolit jednu z těchto akcí:
 
-* Aktualizujte přihlašovací údaje pro existující instanční objekt používaný clusterem nebo
-* Vytvořte instanční objekt a aktualizujte cluster tak, aby používal tyto nové přihlašovací údaje.
+* Aktualizujte přihlašovací údaje pro existující instanční objekt.
+* Vytvořte nový instanční objekt a aktualizujte cluster tak, aby používal tyto nové přihlašovací údaje. 
+
+> ! Upozornění Pokud se rozhodnete vytvořit *Nový* instanční objekt, může trvat delší dobu, než se dokončí aktualizace velkého clusteru AKS na použití těchto přihlašovacích údajů.
 
 ### <a name="check-the-expiration-date-of-your-service-principal"></a>Kontroluje datum vypršení platnosti instančního objektu.
 
@@ -41,7 +43,7 @@ SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
 az ad sp credential list --id $SP_ID --query "[].endDate" -o tsv
 ```
 
-### <a name="reset-existing-service-principal-credential"></a>Resetovat existující pověření instančního objektu
+### <a name="reset-the-existing-service-principal-credential"></a>Resetovat existující přihlašovací údaje instančního objektu
 
 Pokud chcete aktualizovat přihlašovací údaje pro existující instanční objekt, Získejte ID objektu služby vašeho clusteru pomocí příkazu [AZ AKS show][az-aks-show] . Následující příklad získá ID pro cluster s názvem *myAKSCluster* ve skupině prostředků *myResourceGroup* . ID instančního objektu se nastaví jako proměnná s názvem *SP_ID* pro použití v dalším příkazu. Tyto příkazy používají syntaxi bash.
 
@@ -90,6 +92,9 @@ Teď pokračujte a [aktualizujte cluster AKS pomocí nových přihlašovacích �
 
 ## <a name="update-aks-cluster-with-new-service-principal-credentials"></a>Aktualizovat cluster AKS pomocí nových přihlašovacích údajů instančního objektu
 
+> [!IMPORTANT]
+> U velkých clusterů může dokončení aktualizace clusteru AKS s novým instančním objektem trvat delší dobu.
+
 Bez ohledu na to, jestli jste se rozhodli aktualizovat přihlašovací údaje pro existující instanční objekt nebo vytvořit instanční objekt, teď cluster AKS aktualizujete pomocí nových přihlašovacích údajů pomocí příkazu [AZ AKS Update-Credentials][az-aks-update-credentials] . Používají se proměnné pro *--Service-Principal* a *--Client-tajné* :
 
 ```azurecli-interactive
@@ -101,11 +106,11 @@ az aks update-credentials \
     --client-secret "$SP_SECRET"
 ```
 
-Aktualizace přihlašovacích údajů instančního objektu ve službě AKS chvíli trvá.
+V případě malých a středně velkých clusterů chvíli trvá, než se přihlašovací údaje instančního objektu aktualizují ve službě AKS.
 
 ## <a name="update-aks-cluster-with-new-aad-application-credentials"></a>Aktualizovat cluster AKS s novými přihlašovacími údaji aplikace AAD
 
-Pomocí [kroků integrace AAD][create-aad-app]můžete vytvořit nové servery a klientské aplikace AAD. Nebo obnovte stávající aplikace AAD [podle stejné metody jako u resetování instančního objektu](#reset-existing-service-principal-credential). Až budete muset aktualizovat přihlašovací údaje vaší aplikace AAD clusteru pomocí stejného příkazu [AZ AKS Update-Credentials][az-aks-update-credentials] , ale použijte proměnné *--reset-AAD* .
+Pomocí [kroků integrace AAD][create-aad-app]můžete vytvořit nové servery a klientské aplikace AAD. Nebo obnovte stávající aplikace AAD [podle stejné metody jako u resetování instančního objektu](#reset-the-existing-service-principal-credential). Až budete muset aktualizovat přihlašovací údaje vaší aplikace AAD clusteru pomocí stejného příkazu [AZ AKS Update-Credentials][az-aks-update-credentials] , ale použijte proměnné *--reset-AAD* .
 
 ```azurecli-interactive
 az aks update-credentials \

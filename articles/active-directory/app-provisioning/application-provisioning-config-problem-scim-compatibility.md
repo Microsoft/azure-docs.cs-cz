@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/03/2018
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: ae08589785d8a482801c71ce3641ba0d66d11133
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 441d830c7512b7d06c5d4f3e64dc59844b764453
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782258"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387162"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Známé problémy a řešení s dodržováním předpisů protokolu SCIM 2,0 ve službě Azure AD pro zřizování uživatelů
 
@@ -33,22 +33,22 @@ Tento článek popisuje aktuální a minulé problémy se službou zřizování 
 
 | **Problém dodržování předpisů pro SCIM 2,0** |  **Určí?** | **Opravit datum**  |  
 |---|---|---|
-| Azure AD vyžaduje, aby "/SCIM" v kořenu adresy URL koncového bodu SCIM aplikace.  | Yes  |  18. prosince 2018 | 
-| Atributy rozšíření používají tečku "." před názvy atributů namísto dvojtečky ":" Notation. |  Yes  | 18. prosince 2018  | 
-|  Žádosti o opravu atributů s více hodnotami obsahují neplatnou syntaxi filtru cesty. | Yes  |  18. prosince 2018  | 
-|  Žádosti o vytvoření skupiny obsahují neplatný identifikátor URI schématu. | Yes  |  18. prosince 2018  |  
+| Azure AD vyžaduje, aby "/SCIM" v kořenu adresy URL koncového bodu SCIM aplikace.  | Ano  |  18. prosince 2018 | 
+| Atributy rozšíření používají tečku "." před názvy atributů namísto dvojtečky ":" Notation. |  Ano  | 18. prosince 2018  | 
+|  Žádosti o opravu atributů s více hodnotami obsahují neplatnou syntaxi filtru cesty. | Ano  |  18. prosince 2018  | 
+|  Žádosti o vytvoření skupiny obsahují neplatný identifikátor URI schématu. | Ano  |  18. prosince 2018  |  
 
 ## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>Byly opravy služeb popsané automaticky u stávající aplikace SCIM?
 
 Ne. Vzhledem k tomu, že by šlo o zásadní změnu aplikací SCIM, které byly kódované pro práci se starším chováním, se změny automaticky nepoužily u existujících aplikací.
 
-Změny se aplikují na všechny nové [aplikace SCIM bez Galerie](../manage-apps/configure-single-sign-on-non-gallery-applications.md) nakonfigurované v Azure Portal po datu opravy.
+Změny se aplikují na všechny nové aplikace SCIM bez Galerie nakonfigurované v Azure Portal po datu opravy.
 
 Informace o tom, jak migrovat existující úlohu zřizování uživatelů tak, aby zahrnovala nejnovější opravy, najdete v další části.
 
 ## <a name="can-i-migrate-an-existing-scim-based-user-provisioning-job-to-include-the-latest-service-fixes"></a>Můžu migrovat existující úlohu zřizování uživatelů založenou na SCIM, aby zahrnovala nejnovější opravy služeb?
 
-Ano. Pokud už tuto instanci aplikace používáte pro jednotné přihlašování a potřebujete migrovat existující úlohu zřizování, aby zahrnovala nejnovější opravy, postupujte podle níže uvedeného postupu. Tento postup popisuje, jak pomocí rozhraní Microsoft Graph API a Microsoft Graph API Exploreru odebrat starou úlohu zřizování z vaší stávající aplikace SCIM a vytvořit novou, která bude vykazovat nové chování.
+Yes. Pokud už tuto instanci aplikace používáte pro jednotné přihlašování a potřebujete migrovat existující úlohu zřizování, aby zahrnovala nejnovější opravy, postupujte podle níže uvedeného postupu. Tento postup popisuje, jak pomocí rozhraní Microsoft Graph API a Microsoft Graph API Exploreru odebrat starou úlohu zřizování z vaší stávající aplikace SCIM a vytvořit novou, která bude vykazovat nové chování.
 
 > [!NOTE]
 > Pokud je vaše aplikace stále ve vývoji a ještě nebyla nasazena pro jednotné přihlašování nebo zřizování uživatelů, nejjednodušší řešení je odstranit položku aplikace v části **Azure Active Directory > podnikové aplikace** v Azure Portal a jednoduše přidat novou položku pro aplikaci pomocí možnosti **vytvořit aplikaci > mimo galerii** . Toto je alternativa ke spuštění níže uvedeného postupu.
@@ -91,7 +91,7 @@ Ano. Pokud už tuto instanci aplikace používáte pro jednotné přihlašován�
 
 ## <a name="can-i-add-a-new-non-gallery-app-that-has-the-old-user-provisioning-behavior"></a>Můžu přidat novou aplikaci mimo galerii, která má staré chování při zřizování uživatelů?
 
-Ano. Pokud jste nasadili aplikaci na staré chování, které existovalo před opravami, a potřebujete nasadit novou instanci této služby, postupujte podle níže uvedeného postupu. Tento postup popisuje, jak pomocí rozhraní Microsoft Graph API a Microsoft Graph API Exploreru vytvořit úlohu zřizování SCIM, která se projeví ve starém chování.
+Yes. Pokud jste nasadili aplikaci na staré chování, které existovalo před opravami, a potřebujete nasadit novou instanci této služby, postupujte podle níže uvedeného postupu. Tento postup popisuje, jak pomocí rozhraní Microsoft Graph API a Microsoft Graph API Exploreru vytvořit úlohu zřizování SCIM, která se projeví ve starém chování.
  
 1. Přihlaste se k Azure Portal na https://portal.azure.com .
 2. v části **Azure Active Directory > podnikové aplikace > vytvořit aplikaci** v Azure Portal vytvořte novou aplikaci **mimo galerii** .

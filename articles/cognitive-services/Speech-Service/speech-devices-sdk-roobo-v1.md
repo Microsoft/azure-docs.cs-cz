@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 9add5b063b67ddcc4cd5bf93e7f5b570b004e5ca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1a32e485dfc9cd465f6dd6d50abdb166737dc3aa
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74815589"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387978"
 ---
 # <a name="device-roobo-smart-audio-dev-kit"></a>Zařízení: Roobo Smart audio dev Kit
 
@@ -52,9 +52,9 @@ Tento článek popisuje informace specifické pro zařízení pro sadu Roobo Sma
    ```
 
     > [!NOTE]
-    > Tyto příkazy používají Android Debug Bridge, `adb.exe`, který je součástí instalace Android Studio. Tento nástroj je umístěný v umístění\[C:\Users User name] \AppData\Local\Android\Sdk\platform-Tools. Tento adresář můžete přidat do své cesty, abyste ho mohli lépe vyvolávat `adb`. V opačném případě je nutné zadat úplnou cestu k instalaci souboru ADB. exe v každém příkazu, který vyvolá `adb`.
+    > Tyto příkazy používají Android Debug Bridge, `adb.exe` , který je součástí instalace Android Studio. Tento nástroj je umístěný v umístění C:\Users \[ User name] \AppData\Local\Android\Sdk\platform-Tools. Tento adresář můžete přidat do své cesty, abyste ho mohli lépe vyvolávat `adb` . V opačném případě je nutné zadat úplnou cestu k instalaci adb.exe v každém příkazu, který vyvolá `adb` .
     >
-    > Pokud se zobrazí chyba `no devices/emulators found` , zkontrolujte, zda je kabel USB připojen a je kabelem vysoké kvality. Můžete použít `adb devices` ke kontrole, jestli počítač může komunikovat s vývojovou sadou, protože vrátí seznam zařízení.
+    > Pokud se zobrazí chyba, `no devices/emulators found` Zkontrolujte, zda je kabel USB připojen a je kabelem vysoké kvality. Můžete použít `adb devices` ke kontrole, jestli počítač může komunikovat s vývojovou sadou, protože vrátí seznam zařízení.
     >
     > [!TIP]
     > Ztlumení mikrofonu a mluvčího počítače, abyste měli jistotu, že pracujete s mikrotelefony na vývojové sadě. Tímto způsobem nebudete náhodně aktivovat zařízení pomocí zvuku z počítače.
@@ -69,7 +69,7 @@ Další informace o vývoji najdete v [příručce pro vývoj Roobo](http://dwn.
 
 ## <a name="audio"></a>Zvuk
 
-Roobo poskytuje nástroj, který zachycuje všechny zvuky do paměti Flash. Může pomoct při odstraňování problémů se zvukem. K dispozici je verze nástroje pro každou konfiguraci sady Development Kit. Na [webu Roobo](https://ddk.roobo.com/)vyberte své zařízení a potom v dolní části stránky vyberte odkaz **nástroje Roobo** .
+Roobo poskytuje nástroj, který zachycuje všechny zvuky do paměti Flash. Může pomoct při odstraňování problémů se zvukem. K dispozici je verze nástroje pro každou konfiguraci sady Development Kit. Na [webu Roobo](http://ddk.roobo.com/)vyberte své zařízení a potom v dolní části stránky vyberte odkaz **nástroje Roobo** .
 
 ## <a name="next-steps"></a>Další kroky
 

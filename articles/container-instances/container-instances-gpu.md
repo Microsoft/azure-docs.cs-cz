@@ -2,13 +2,13 @@
 title: Nasazení instance kontejneru s podporou GPU
 description: Naučte se nasazovat služby Azure Container Instances pro spouštění kontejnerových aplikací náročných na výpočetní prostředky pomocí prostředků GPU.
 ms.topic: article
-ms.date: 07/02/2020
-ms.openlocfilehash: 3ddeb7da2667b774724fe05227cefeec5227101a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/22/2020
+ms.openlocfilehash: 19240560baa0cebdb6777d7b63d8c91832b12e1a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076861"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387081"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Nasazení instancí kontejnerů, které používají prostředky GPU
 
@@ -33,9 +33,6 @@ Podpora bude v průběhu času přidána pro další oblasti.
 
 ## <a name="about-gpu-resources"></a>O prostředcích GPU
 
-> [!IMPORTANT]
-> Prostředky GPU jsou k dispozici pouze na vyžádání. Pokud chcete požádat o přístup k prostředkům GPU, odešlete prosím [žádost o podporu Azure][azure-support].
-
 ### <a name="count-and-sku"></a>Počet a SKU
 
 Chcete-li použít GPU v instanci kontejneru, zadejte *prostředek GPU* s následujícími informacemi:
@@ -52,6 +49,9 @@ Chcete-li použít GPU v instanci kontejneru, zadejte *prostředek GPU* s násle
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
 
 Při nasazování prostředků GPU nastavte prostředky procesoru a paměti, které jsou vhodné pro zatížení, až do maximálních hodnot uvedených v předchozí tabulce. Tyto hodnoty jsou aktuálně větší než prostředky procesoru a paměti dostupné ve skupinách kontejnerů bez prostředků GPU.  
+
+> [!IMPORTANT]
+> Výchozí [limity předplatného](container-instances-quotas.md) (kvóty) pro prostředky GPU se liší podle SKU. Výchozí limity procesoru pro skladové položky P100 a V100 jsou zpočátku nastavené na 0. Pokud si chcete vyžádat zvýšení dostupné oblasti, odešlete [žádost o podporu Azure][azure-support].
 
 ### <a name="things-to-know"></a>Co je potřeba vědět
 

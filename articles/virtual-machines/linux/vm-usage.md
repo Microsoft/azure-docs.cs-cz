@@ -3,24 +3,19 @@ title: Principy využití virtuálních počítačů Azure
 description: Vysvětlení podrobností o využití virtuálních počítačů
 services: virtual-machines
 documentationcenter: ''
-author: mmccrory
-manager: gwallace
-editor: ''
-tags: azure-virtual-machine
-ms.assetid: ''
+author: mimckitt
+ms.author: mimckitt
 ms.service: virtual-machines-linux
-ms.devlang: ''
 ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
-ms.date: 12/04/2017
-ms.author: memccror
-ms.openlocfilehash: 9abb6948a91545439b429316dc2b71c14a1792d2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 07/28/2020
+ms.openlocfilehash: 30d665cc1d573ec47681599f2bde6a40864796c9
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284825"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387706"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Principy využití virtuálních počítačů Azure
 Analýzou dat o využití Azure je možné získat výkonné přehledy o spotřebě – přehledy, které umožňují lepší správu nákladů a přidělování v celé organizaci. Tento dokument poskytuje podrobné podrobně k podrobnostem o spotřebě Azure Compute. Další informace o obecném využití Azure najdete v podrobnostech k [porozumění vaší faktuře](../../cost-management-billing/understand/review-individual-bill.md).
@@ -29,87 +24,86 @@ Analýzou dat o využití Azure je možné získat výkonné přehledy o spotře
 Začněte [stažením podrobností o použití](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal). Následující tabulka poskytuje definice a příklady hodnot použití Virtual Machines nasazených prostřednictvím Azure Resource Manager. Tento dokument neobsahuje podrobné informace o virtuálních počítačích nasazených prostřednictvím našeho klasického modelu.
 
 
-| Fields (Pole)             | Význam                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Příklady hodnot                                                                                                                                                                                                                                                                                                                                                   |
-|--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Datum využití         | Datum, kdy byl prostředek použit.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |  "11/23/2017"                                                                                                                                                                                                                                                                                                                                                     |
-| Meter ID           | Identifikuje službu nejvyšší úrovně, pro kterou toto použití patří.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | "Virtual Machines"                                                                                                                                                                                                                                                                                                                                               |
-| Meter Sub-Category | Identifikátor fakturovaného měření. <ul><li>Pro využití výpočetních hodin je měřičem jednotlivých velikostí virtuálních počítačů a OS (Windows, non-Windows) + region.</li><li>V případě využívání softwaru úrovně Premium existuje měřič pro každý typ softwaru. Většina softwarových imagí úrovně Premium má různé měřiče pro jednotlivé základní velikosti. Další informace najdete na stránce s [cenami za výpočetní výkon.](https://azure.microsoft.com/pricing/details/virtual-machines/)</li></ul>                                                                                                                                                                                                                                                                                                                                         | "2005544f-659d-49c9-9094-8e0aea1be3a5"                                                                                                                                                                                                                                                                                                                           |
-| Meter Name         | To je specifické pro každou službu v Azure. U výpočetních prostředků je vždycky "Výpočetní hodiny".                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | "Výpočetní hodiny"                                                                                                                                                                                                                                                                                                                                                  |
-| Meter Region       | Určuje polohu datového centra. U některých služeb vycházejí ceny z umístění datového centra.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |  "Japonsko – východ"                                                                                                                                                                                                                                                                                                                                                       |
-| Jednotka               | Určuje jednotku, po které se služba účtuje. Výpočetní prostředky se účtují za hodinu.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Hodin                                                                                                                                                                                                                                                                                                                                                          |
-| Spotřebované           | Množství prostředku spotřebovaného za tento den. U výpočetních prostředků účtujeme za každou minutu, po kterou se virtuální počítač spustil po určitou hodinu (až 6 desetinných míst přesnosti).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |    "1", "0,5"                                                                                                                                                                                                                                                                                                                                                    |
-| Resource Location  | Určuje datové centrum, ve kterém prostředek běží.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | "Japonsko – východ"                                                                                                                                                                                                                                                                                                                                                        |
-| Consumed Service   | Služba platformy Azure, kterou jste použili.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Microsoft. COMPUTE                                                                                                                                                                                                                                                                                                                                              |
-| Skupina prostředků     | Skupina prostředků, ve které nasazený prostředek běží. Další informace najdete v tématu [přehled Azure Resource Manager.]()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |    MyRG                                                                                                                                                                                                                                                                                                                                                        |
-| Instance ID        | Identifikátor prostředku. Tento identifikátor obsahuje název prostředku, který jste zadali při jeho vytváření. Pro virtuální počítače bude ID instance obsahovat SubscriptionId, ResourceGroupName a VMName (nebo název sady škálování pro použití sady škálování).                                                                                                                                                                                                                                                                                                                                                                                                                    | "/Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyRG/Providers/Microsoft. COMPUTE/virtualMachines/MyVM1"<br><br>– nebo –<br><br>"/Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyRG/Providers/Microsoft. COMPUTE/virtualMachineScaleSets/MyVMSS1"                                                                                           |
-| Značky               | Značka, kterou přiřadíte prostředku. Značky můžete použít k seskupení fakturačních záznamů. Naučte se, jak [označit Virtual Machines.](tag.md) To je dostupné jenom pro Správce prostředků virtuální počítače.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | "{" myDepartment ":" RD "," myUser ":" jmeno "}"                                                                                                                                                                                                                                                                                                                        |
-| Další informace    | Metadata konkrétních služeb. V případě virtuálních počítačů v poli Další informace vyplníme následující data: <ul><li>Obrázek konkrétního typu obrázku, který jste spustili. Úplný seznam podporovaných řetězců najdete níže v části typy imagí.</li><li>Typ služby: velikost, kterou jste nasadili.</li><li>VMName: název vašeho virtuálního počítače. Toto pole se naplní jenom pro virtuální počítače sady škálování. Pokud potřebujete název virtuálního počítače pro virtuální počítače sady škálování, najdete ho ve výše uvedeném řetězci ID instance.</li><li>Položku UsageType: Určuje typ použití, který představuje.<ul><li>ComputeHR je využití výpočetních hodin pro příslušný virtuální počítač, jako je Standard_D1_v2.</li><li>ComputeHR_SW je poplatek za software Premium, pokud virtuální počítač používá software Premium, například Microsoft R Server.</li></ul></li></ul>    | Virtual Machines {"ImageType": "kanonické", "ServiceType": "Standard_DS1_v2", "VMName": "", "položku UsageType": "ComputeHR"}<br><br>Virtual Machine Scale Sets {"ImageType": "kanonické", "ServiceType": "Standard_DS1_v2", "VMName": "myVM1", "položku UsageType": "ComputeHR"}<br><br>Premium software {"ImageType": "", "ServiceType": "Standard_DS1_v2", "VMName": "", "položku UsageType": "ComputeHR_SW"} |
+| Fields (Pole) | Význam | Příklady hodnot | 
+|---|---|---|
+| Datum využití | Datum, kdy byl prostředek použit | `11/23/2017` |
+| Meter ID | Identifikuje službu nejvyšší úrovně, pro kterou toto použití patří.| `Virtual Machines`|
+| Meter Sub-Category | Identifikátor fakturovaného měření. <br><br> Pro využití výpočetních hodin je měřičem jednotlivých velikostí virtuálních počítačů a OS (Windows, non-Windows) + region. <br><br> V případě využívání softwaru úrovně Premium existuje měřič pro každý typ softwaru. Většina softwarových imagí úrovně Premium má různé měřiče pro jednotlivé základní velikosti. Další informace najdete na stránce s [cenami COMPUTE](https://azure.microsoft.com/pricing/details/virtual-machines/) .</li></ul>| `2005544f-659d-49c9-9094-8e0aea1be3a5`|
+| Meter Name| To je specifické pro každou službu v Azure. U výpočetních prostředků je vždycky "Výpočetní hodiny".| `Compute Hours`|
+| Meter Region| Určuje polohu datového centra. U některých služeb vycházejí ceny z umístění datového centra.|  `JA East`|
+| Jednotka| Určuje jednotku, po které se služba účtuje. Výpočetní prostředky se účtují za hodinu.| `Hours`|
+| Spotřebované| Množství prostředku spotřebovaného za tento den. U výpočetních prostředků účtujeme za každou minutu, po kterou se virtuální počítač spustil po určitou hodinu (až 6 desetinných míst přesnosti).| `1, 0.5`|
+| Resource Location  | Určuje datové centrum, ve kterém prostředek běží.| `JA East`|
+| Consumed Service | Služba platformy Azure, kterou jste použili.| `Microsoft.Compute`|
+| Skupina prostředků | Skupina prostředků, ve které nasazený prostředek běží. Další informace najdete v tématu [přehled Azure Resource Manager.](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)|`MyRG`|
+| Instance ID | Identifikátor prostředku. Tento identifikátor obsahuje název prostředku, který jste zadali při jeho vytváření. Pro virtuální počítače bude ID instance obsahovat SubscriptionId, ResourceGroupName a VMName (nebo název sady škálování pro použití sady škálování).| `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM1`<br><br>– nebo –<br><br>`/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachineScaleSets/MyVMSS1`|
+| Značky| Značka, kterou přiřadíte prostředku. Značky můžete použít k seskupení fakturačních záznamů. Naučte se, jak [označit Virtual Machines.](tag.md) To je dostupné jenom pro Správce prostředků virtuální počítače.| `{"myDepartment":"RD","myUser":"myName"}`|
+| Další informace | Metadata konkrétních služeb. V případě virtuálních počítačů v poli Další informace vyplníme následující data: <br><br> Obrázek konkrétního typu obrázku, který jste spustili. Úplný seznam podporovaných řetězců najdete níže v části typy imagí.<br><br> Typ služby: velikost, kterou jste nasadili.<br><br> VMName: název vašeho virtuálního počítače. Toto pole se naplní jenom pro virtuální počítače sady škálování. Pokud potřebujete název virtuálního počítače pro virtuální počítače sady škálování, najdete ho ve výše uvedeném řetězci ID instance.<br><br> Položku UsageType: Určuje typ použití, který představuje.<br><br> ComputeHR je využití výpočetních hodin pro příslušný virtuální počítač, jako je Standard_D1_v2.<br><br> ComputeHR_SW je poplatek za software Premium, pokud virtuální počítač používá software Premium, například Microsoft R Server. | Virtual Machines<br>`{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR"}`<br><br>Virtual Machine Scale Sets<br> `{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"myVM1", "UsageType":"ComputeHR"}`<br><br>Software Premium<br> `{"ImageType":"","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR_SW"}` |
 
 ## <a name="image-type"></a>Typ obrázku
 V případě některých imagí v galerii Azure se typ obrázku vyplní v poli Další informace. To umožňuje uživatelům pochopit a sledovat, co mají na svém virtuálním počítači nasazené. Následující hodnoty, které jsou vyplněny v tomto poli na základě bitové kopie, kterou jste nasadili:
-  - BitRock 
-  - Canonical 
-  - FreeBSD 
-  - Otevřít logiku 
-  - Oracle 
-  - SLES pro SAP 
-  - SQL Server 14 Preview na Windows Serveru 2012 R2 Preview 
-  - SUSE
-  - SUSE Premium
-  - StorSimple Cloud Appliance 
-  - Red Hat
-  - Red Hat pro SAP Business Applications     
-  - Red Hat pro SAP HANA 
-  - BYOL klienta Windows 
-  - BYOL Windows serveru 
-  - Verze Preview Windows serveru 
+- BitRock 
+- Kanonický FreeBSD 
+- Otevřít logiku 
+- Oracle 
+- SLES pro SAP 
+- SQL Server 14 Preview na Windows Serveru 2012 R2 Preview 
+- SUSE
+- SUSE Premium
+- StorSimple Cloud Appliance 
+- Red Hat
+- Red Hat pro SAP Business Applications     
+- Red Hat pro SAP HANA 
+- BYOL klienta Windows 
+- BYOL Windows serveru 
+- Verze Preview Windows serveru 
 
 ## <a name="service-type"></a>Typ služby
-Pole typ služby v poli Další informace odpovídá konkrétní velikosti virtuálního počítače, kterou jste nasadili. Ceny virtuálních počítačů služby Premium Storage (založené na jednotkách SSD) a virtuálních počítačů bez úrovně Premium (založené na hard) se účtují stejně. Pokud nasadíte velikost založenou na SSD, jako je třeba standard \_ DS2 \_ v2, zobrazí se velikost non-SSD ( \_ standardní \_ virtuální počítač D2 v2) ve sloupci měřič-kategorie a velikost SSD (standard \_ DS2 \_ v2) v poli Další informace.
+Pole typ služby v poli Další informace odpovídá konkrétní velikosti virtuálního počítače, kterou jste nasadili. Ceny virtuálních počítačů služby Premium Storage (založené na jednotkách SSD) a virtuálních počítačů bez úrovně Premium (založené na hard) se účtují stejně. Pokud nasadíte velikost založenou na SSD, jako je třeba standard \_ DS2 \_ v2, uvidíte ve `Standard\_D2\_v2 VM` sloupci dílčí kategorie měřiče () hodnotu non-SSD () a v `Standard\_DS2\_v2` poli Další informace velikost SSD ().
 
 ## <a name="region-names"></a>Názvy oblastí
 Název oblasti naplněný v poli umístění prostředku v podrobnostech o použití se liší od názvu oblasti používaného v Azure Resource Manager. Tady je mapování mezi hodnotami oblastí:
 
-|    **Název oblasti Správce prostředků**       |    **Umístění prostředku v podrobnostech o využití**    |
-|--------------------------|------------------------------------------|
-|    australiaeast         |    Austrálie – východ                               |
-|    australiasoutheast    |    Austrálie – jihovýchod                          |
-|    brazilsouth           |    Brazílie – jih                              |
-|    CanadaCentral         |    Kanada – střed                            |
-|    CanadaEast            |    Kanada – východ                               |
-|    CentralIndia          |    Indie – střed                            |
-|    centralus             |    Střední USA                            |
-|    chinaeast             |    Čína – východ                            |
-|    chinanorth            |    Čína – sever                           |
-|    eastasia              |    Východní Asie                             |
-|    eastus                |    East US                               |
-|    eastus2               |    USA – východ 2                             |
-|    GermanyCentral        |    Německo – střed                            |
-|    GermanyNortheast      |    DE severovýchod                          |
-|    japaneast             |    Japonsko – východ                               |
-|    japanwest             |    Japonsko – západ                               |
-|    KoreaCentral          |    Korea – střed                            |
-|    KoreaSouth            |    Korea – jih                              |
-|    northcentralus        |    USA – středosever                      |
-|    northeurope           |    Severní Evropa                          |
-|    southcentralus        |    Středojižní USA                      |
-|    southeastasia         |    Southeast Asia                        |
-|    SouthIndia            |    Indie – jih                              |
-|    UKNorth               |    USA – sever                              |
-|    uksouth               |    Spojené království – jih                              |
-|    UKSouth2              |    Velká Británie – jih 2                            |
-|    ukwest                |    Spojené království – západ                               |
-|    USDoDCentral          |    US DoD – střed                        |
-|    USDoDEast             |    US DoD – východ                           |
-|    USGovArizona          |    USGov Arizona                         |
-|    usgoviowa             |    USGov Iowa                            |
-|    USGovTexas            |    USGov Texas                           |
-|    usgovvirginia         |    USGov Virginie                        |
-|    Středozápadní USA         |    USA – středozápad                       |
-|    westeurope            |    West Europe                           |
-|    WestIndia             |    Indie – západ                               |
-|    westus                |    USA – západ                               |
-|    westus2               |    USA – západ 2                             |
+| **Název oblasti Správce prostředků** | **Umístění prostředku v podrobnostech o využití** |
+|---|---|
+| australiaeast |Austrálie – východ|
+| australiasoutheast | Austrálie – jihovýchod|
+| brazilsouth | Brazílie – jih|
+| CanadaCentral | Kanada – střed|
+| CanadaEast | Kanada – východ|
+| CentralIndia | Indie – střed|
+| centralus | Střední USA|
+| chinaeast | Čína – východ|
+| chinanorth | Čína – sever|
+| eastasia | Východní Asie|
+| eastus | East US|
+| eastus2 | USA – východ 2|
+| GermanyCentral | Německo – střed|
+| GermanyNortheast | DE severovýchod|
+| japaneast | Japonsko – východ|
+| japanwest | Japonsko – západ|
+| KoreaCentral | Korea – střed|
+| KoreaSouth | Korea – jih|
+| northcentralus | USA – středosever|
+| northeurope | Severní Evropa|
+| southcentralus | Středojižní USA|
+| southeastasia | Southeast Asia|
+| SouthIndia | Indie – jih|
+| UKNorth | USA – sever|
+| uksouth | Spojené království – jih|
+| UKSouth2 | Velká Británie – jih 2|
+| ukwest | Spojené království – západ|
+| USDoDCentral | US DoD – střed|
+| USDoDEast | US DoD – východ|
+| USGovArizona | USGov Arizona|
+| usgoviowa | USGov Iowa|
+| USGovTexas | USGov Texas|
+| usgovvirginia | USGov Virginie|
+| Středozápadní USA | USA – středozápad|
+| westeurope | West Europe|
+| WestIndia | Indie – západ|
+| westus | USA – západ|
+| westus2 | USA – západ 2|
 
 
 ## <a name="virtual-machine-usage-faq"></a>Nejčastější dotazy k využití virtuálních počítačů

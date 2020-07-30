@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7c7cf8ec7297b3c0ef855936becc3c06a5120a38
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1ce127dbfd9984b3fb18e518701cbbd3a87f5988
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496073"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387233"
 ---
-# <a name="securing-a-linked-service-with-private-links"></a>Zabezpečení propojené služby pomocí privátních odkazů 
+# <a name="secure-a-linked-service-with-private-links"></a>Zabezpečení propojené služby pomocí privátních odkazů 
 
 V tomto článku se dozvíte, jak zabezpečit propojenou službu v synapse pomocí privátního koncového bodu.
 
@@ -52,7 +52,7 @@ Pokud jste v případě testování výše uvedeného připojení nepoužili odk
 1. Vyberte **Vytvořit**.
 1. Měli byste vidět, že se po chvíli čekání na vytvoření privátního odkazu vyžaduje schválení.
 
-## <a name="approval-of-a-private-link"></a>Schválení privátního odkazu
+## <a name="private-link-approval"></a>Schválení privátního odkazu
 1. Vyberte privátní koncový bod, který jste vytvořili výše. Můžete se podívat na hypertextový odkaz, který vám umožní schválit privátní koncový bod na úrovni účtu úložiště. *Alternativou je přejít přímo na účet úložiště Azure Portal a přejít do okna **připojení privátního koncového bodu** .*
 1. Zaznačte si privátní koncový bod, který jste vytvořili v nástroji Studio, a vyberte **schválit**.
 1. Přidejte popis a klikněte na **Ano** .
