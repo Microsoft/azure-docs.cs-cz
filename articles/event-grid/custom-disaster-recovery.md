@@ -3,12 +3,12 @@ title: Zotavení po havárii pro vlastní témata v Azure Event Grid
 description: Tento kurz vás provede postupem nastavení architektury událostí pro obnovení, pokud služba Event Grid v oblasti není v pořádku.
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.openlocfilehash: 1ee9c9566a70ba104f6c12866a631061672cb0c0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: da796a9ac4d03f7ad6999b8fa4530fddfb60cbfe
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115076"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420256"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Vytvoření vlastního zotavení po havárii pro vlastní témata v Event Grid
 Zotavení po havárii se zaměřuje na obnovení z vážné ztráty funkčnosti aplikace. V tomto kurzu se dozvíte, jak nastavit architekturu událostí pro obnovení, pokud služba Event Grid v konkrétní oblasti nebude v pořádku.
@@ -26,7 +26,7 @@ Chcete-li zjednodušit testování, nasaďte [předem vytvořenou webovou aplika
 
 1. Vyberte **Nasadit do Azure** a nasaďte řešení do svého předplatného. Na webu Azure Portal zadejte hodnoty pro parametry.
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Aquent." /></a>
 
 1. Dokončení nasazení může trvat několik minut. Po úspěšném nasazení si webovou aplikaci prohlédněte, abyste se ujistili, že funguje. Ve webovém prohlížeči přejděte na: `https://<your-site-name>.azurewebsites.net`
 Nezapomeňte tuto adresu URL poznamenat, protože ji budete potřebovat později.
@@ -42,7 +42,7 @@ Nezapomeňte tuto adresu URL poznamenat, protože ji budete potřebovat později
 
 Nejprve vytvořte dvě Event Grid témata. Tato témata budou fungovat jako primární a sekundární. Ve výchozím nastavení budou vaše události procházet vaším primárním tématem. Pokud v primární oblasti dojde k výpadku služby, vaše sekundární převezme.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
 
 1. V levém horním rohu hlavní nabídky Azure zvolte **všechny služby** > vyhledejte **Event Grid** > vyberte **Event Grid témata**.
 
@@ -182,7 +182,7 @@ namespace EventGridFailoverPublisher
 }
 ```
 
-### <a name="try-it-out"></a>Vyzkoušejte si to.
+### <a name="try-it-out"></a>Vyzkoušet
 
 Teď, když máte všechny vaše komponenty, můžete otestovat implementaci převzetí služeb při selhání. Spusťte výše uvedený příklad v nástroji Visual Studio Code nebo ve vašem oblíbeném prostředí. Nahraďte následující čtyři hodnoty koncovými body a klíči z těchto témat:
 

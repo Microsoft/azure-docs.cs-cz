@@ -8,12 +8,13 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: b85a70b6d2feba68ed5a766ad05bc6aa22f597f8
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 9554fa63d13c5da465653064d69d7950d91f0300
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114686"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421871"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Kurz: vytvoření Node.js webové aplikace pomocí sady JavaScript SDK pro správu účtu rozhraní SQL API v Azure Cosmos DB 
 
@@ -37,11 +38,11 @@ Tento kurz se zabývá následujícími úkony:
 > * Připojení aplikace ke službě Azure Cosmos DB
 > * Spuštění a nasazení aplikace v Azure
 
-## <a name="prerequisites"></a><a name="_Toc395783176"></a>Požadavky
+## <a name="prerequisites"></a><a name="_Toc395783176"></a>Předpoklady
 
 Než budete postupovat podle pokynů v tomto článku, ujistěte se, že máte následující prostředky:
 
-* Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete. 
+* Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 

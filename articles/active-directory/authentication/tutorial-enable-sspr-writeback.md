@@ -11,12 +11,12 @@ author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 70a73cb1f855840831f2e1107baa94dfd54868a5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f4687a98bfb58db8ed5e8a853fa0db2207f435e8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518483"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419644"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Kurz: povolení zpětného zápisu pro Samoobslužné resetování hesla Azure Active Directory do místního prostředí
 
@@ -40,7 +40,7 @@ V tomto kurzu se naučíte:
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
-* Funkční tenant Azure AD s povolenou aspoň Azure AD Premium zkušební licencí P1.
+* Funkční tenant Azure AD s povolenou aspoň Azure AD Premium P1 nebo zkušební licencí.
     * V případě potřeby [ho vytvořte zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
     * Další informace najdete v tématu [licenční požadavky pro Azure AD SSPR](concept-sspr-licensing.md).
 * Účet s oprávněními *globálního správce* .
@@ -81,7 +81,7 @@ Chcete-li nastavit příslušná oprávnění ke zpětnému zápisu hesla, prove
     * **Zápis lockoutTime**
     * **Zápis pwdLastSet**
 
-    [![](media/tutorial-enable-sspr-writeback/set-ad-ds-permissions-cropped.png "Set the appropriate permissions in Active Users and Computers for the account that is used by Azure AD Connect")](media/tutorial-enable-sspr-writeback/set-ad-ds-permissions.png#lightbox)
+    [![Nastavte příslušná oprávnění v aktivních uživatelích a počítačích pro účet, který používá Azure AD Connect ](media/tutorial-enable-sspr-writeback/set-ad-ds-permissions-cropped.png)](media/tutorial-enable-sspr-writeback/set-ad-ds-permissions.png#lightbox)
 
 1. Až budete připraveni, použijte možnost **použít/ok** , aby se změny projevily, a zavřete všechna otevřená dialogová okna.
 
@@ -131,7 +131,7 @@ Pokud chcete povolit zpětný zápis hesla v SSPR, proveďte následující krok
 
 Pokud už nechcete používat funkci zpětného zápisu SSPR, kterou jste nakonfigurovali v rámci tohoto kurzu, proveďte následující kroky:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Vyhledejte a vyberte **Azure Active Directory**, vyberte **resetování hesla**a pak zvolte místní **integrace**.
 1. Nastavte možnost pro **zápis hesel zpátky do místního adresáře?** na *ne*.
 1. Nastavte možnost *,* aby **Uživatelé odemkli účty bez resetování hesla?**

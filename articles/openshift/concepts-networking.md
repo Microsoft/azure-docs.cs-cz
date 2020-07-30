@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 06/22/2020
-ms.openlocfilehash: fa39fe3e065c230f7e06ee443d2aa56227dc6f31
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: fb81405e85d6e2653e0cf6c007c363493992161a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965698"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419967"
 ---
 # <a name="networking-in-azure-red-hat-on-openshift-4"></a>Sítě v Azure Red Hat na OpenShift 4
 
@@ -70,7 +70,7 @@ Následující seznam obsahuje důležité koncové body v clusteru Azure Red Ha
         * Jen pro čtení.
         * K tomuto registru dojde prostřednictvím koncového bodu služby (interní připojení mezi službami Azure).
         * Tento interní registr není ve výchozím nastavení k dispozici mimo cluster.
-* **Private Link**
+* **Privátní propojení**
     * Umožňuje síťové připojení z roviny správy do clusteru pro správu clusteru.
     * Technici pro spolehlivost Microsoftu a Red Hat vám pomůžou se správou clusteru.
 
@@ -101,8 +101,8 @@ V Azure Red Hat OpenShift 4 jsou k dispozici následující nastavení sítě:
     * "Veřejné" trasy budou ve výchozím nastavení veřejné služby Azure Standard Load Balancer (může být změněno).
     * "Soukromé" trasy budou výchozím nastavením interního nástroje pro vyrovnávání zatížení (Tento stav může být změněn).
 
-## <a name="network-security-groups"></a>Skupiny zabezpečení sítě
-Skupiny zabezpečení sítě se vytvoří v uzlu skupiny prostředků, která je uzamčená. Skupiny zabezpečení sítě se přiřazují přímo k podsítím, které nejsou na síťových kartách uzlu. Skupiny zabezpečení sítě jsou neměnné, což znamená, že nemáte oprávnění je měnit. 
+## <a name="network-security-groups"></a>skupiny zabezpečení sítě,
+Skupiny zabezpečení sítě se vytvoří ve skupině prostředků uzlu, která je uzamčená. Skupiny zabezpečení sítě se přiřazují přímo k podsítím, nikoli na síťových kartách uzlu. Skupiny zabezpečení sítě jsou neměnné, což znamená, že nemáte oprávnění je měnit. 
 
 S veřejně viditelným serverem API ale nemůžete vytvářet skupiny zabezpečení sítě a přiřazovat je k síťovým kartám.
 

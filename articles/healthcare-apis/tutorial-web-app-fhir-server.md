@@ -9,12 +9,13 @@ ms.reviewer: mihansen
 ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
-ms.openlocfilehash: fcad9356f87e76b14e0ef636389c11fd4290e12a
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.custom: devx-track-javascript
+ms.openlocfilehash: bf47ec0ca88d409c91b8acad25506c1cc8958e86
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "84872663"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422789"
 ---
 # <a name="deploy-javascript-app-to-read-data-from-fhir-service"></a>Nasazení aplikace JavaScriptu pro čtení dat ze služby FHIR
 V tomto kurzu nasadíte malou JavaScriptovou aplikaci, která čte data ze služby FHIR. Postup v tomto kurzu:
@@ -23,7 +24,7 @@ V tomto kurzu nasadíte malou JavaScriptovou aplikaci, která čte data ze služ
 1. Otestování přístupu k aplikaci
 1. Vytvoření webové aplikace, která přečte tato FHIR data
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Před zahájením této sady kurzů budete potřebovat následující položky:
 1. Předplatné Azure
 1. Tenanta Azure Active Directory.

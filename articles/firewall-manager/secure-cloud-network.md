@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 07/17/2020
+ms.date: 07/29/2020
 ms.author: victorh
-ms.openlocfilehash: 7634effd5d1ac46955addd723ee7c992eb820a57
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 458ebe14e77c7b190a5c4cdd9b408396589d5d27
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084700"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420817"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>Kurz: zabezpečení virtuálního centra pomocí správce Azure Firewall
 
@@ -52,7 +52,7 @@ Tyto dvě virtuální sítě budou mít v nich Server úloh a budou chráněny b
 3. Vyberte **Přidat podsíť**.
 4. Zadejte **úlohu-01-SN**.
 5. Jako **Rozsah adres podsítě**zadejte **10.1.1.0/24**.
-6. Vyberte **Přidat**.
+6. Vyberte možnost **Přidat**.
 1. Vyberte **Zkontrolovat a vytvořit**.
 2. Vyberte **Vytvořit**.
 
@@ -108,7 +108,7 @@ Opakujte pro připojení k virtuální síti **paprske-02** : název připojení
 
 ### <a name="configure-the-hub-and-spoke-routing"></a>Konfigurace směrování centra a paprsků
 
-Z Azure Portal otevřete Cloud Shell a spusťte následující Azure PowerShell ke konfiguraci požadovaného směrování centra a paprsků.
+Z Azure Portal otevřete Cloud Shell a spusťte následující Azure PowerShell ke konfiguraci požadovaného směrování centra a paprsků. Připojení s partnerským paprskem/větví musí nastavovat rozšíření na **žádné**. To brání komunikaci mezi paprsky a místo toho směruje provoz do brány firewall pomocí výchozí trasy.
 
 ```azurepowershell
 $noneRouteTable = Get-AzVHubRouteTable -ResourceGroupName fw-manager `
@@ -182,7 +182,7 @@ Zásady brány firewall definují kolekce pravidel pro směrování provozu na j
 10. V případě **protokolu**zadejte **http, https**.
 11. Ujistěte se, že **cílový typ** je **plně kvalifikovaný název domény**.
 12. Pro **cíl**zadejte ** \* . Microsoft.com**.
-13. Vyberte **Přidat**.
+13. Vyberte možnost **Přidat**.
 
 Přidejte pravidlo DNAT, abyste mohli připojit vzdálenou plochu k virtuálnímu počítači **SRV-úlohy-01** .
 
@@ -199,7 +199,7 @@ Přidejte pravidlo DNAT, abyste mohli připojit vzdálenou plochu k virtuálním
 11. Do pole **cíl**zadejte veřejnou IP adresu brány firewall, kterou jste si poznamenali dříve.
 12. Pro **přeloženou adresu**zadejte privátní IP adresu pro **SRV-úlohu-01** , kterou jste si poznamenali dříve.
 13. Do pole **Přeložený port** zadejte **3389**.
-14. Vyberte **Přidat**.
+14. Vyberte možnost **Přidat**.
 
 Přidejte pravidlo sítě, abyste mohli připojit vzdálenou plochu z **SRV-úlohy-01** do služby **SRV – úloha-02**.
 
@@ -214,7 +214,7 @@ Přidejte pravidlo sítě, abyste mohli připojit vzdálenou plochu z **SRV-úlo
 9. V případě **cílových portů**zadejte **3389**.
 9. Jako **typ cíle**vyberte **IP adresa**.
 10. Do pole **cíl**zadejte privátní IP adresu **SRV-úlohy-02** , kterou jste si poznamenali dříve.
-11. Vyberte **Přidat**.
+11. Vyberte možnost **Přidat**.
 1. Vyberte **Další: Analýza hrozeb**.
 2. Vyberte **Další: rozbočovače**.
 3. Na kartě **centra** vyberte **přidružit virtuální rozbočovače**.
