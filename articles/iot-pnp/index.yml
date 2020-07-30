@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Dokumentace k IoT Plug and Play Preview
-summary: IoT Plug and Play Preview vám umožní definovat model zařízení, který umožňuje cloudovým řešením automaticky pochopit vaše zařízení a začít s ním spolupracovat, a to vše bez psaní jakéhokoli kódu zařízení.
+title: Dokumentace k IoT Plug and Play Preview Refresh
+summary: IoT Plug and Play vám umožní definovat model zařízení, který umožňuje cloudovým řešením automaticky pochopit vaše zařízení a začít s ním spolupracovat.
 metadata:
-  title: Dokumentace k IoT Plug and Play Preview
-  description: IoT Plug and Play Preview vám umožní definovat model zařízení, který umožňuje cloudovým řešením automaticky pochopit vaše zařízení a začít s ním spolupracovat, a to vše bez psaní jakéhokoli kódu zařízení.
+  title: Architektura IoT Plug and Play Preview
+  description: IoT technologie Plug and Play Preview umožňuje tvůrcům řešení integrovat zařízení do řešení bez nutnosti ruční konfigurace. Tento článek ukazuje klíčové prvky architektury, které tento postup umožňují.
   services: iot-pnp
   ms.service: iot-pnp
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   ms.author: dobett
   manager: philmea
   ms.date: 10/31/2019
-  ms.openlocfilehash: 9469adb901c2da5f814088aa8eb59121889a0b78
-  ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+  ms.openlocfilehash: 6fe77d059974bcc37fb0b0bbc6a171d371a93478
+  ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/09/2020
-  ms.locfileid: "80998295"
+  ms.lasthandoff: 07/28/2020
+  ms.locfileid: "87337360"
 landingContent:
 - title: Informace o IoT Plug and Play
   linkLists:
@@ -24,51 +24,41 @@ landingContent:
     links:
     - text: Co je IoT Plug and Play?
       url: overview-iot-plug-and-play.md
-  - linkListType: video
-    links:
-    - text: Seznámení s technologií IoT Plug and Play
-      url: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Introduction-to-IoT-Plug-and-Play/player
-- title: Vývoj zařízení
+    - text: Aktualizace Preview Refresh 2020
+      url: overview-iot-plug-and-play-preview-updates.md
+- title: Sestavování zařízení
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Připojení ukázkového zařízení ke službě IoT Hub
-      url: quickstart-connect-pnp-device-c-windows.md
-    - text: Připojení ukázkového zařízení ke službě IoT Central
-      url: ../iot-central/core/tutorial-connect-pnp-device.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
-    - text: Vytvoření zařízení pomocí modelu funkcí zařízení
-      url: quickstart-create-pnp-device-windows.md
-  - linkListType: tutorial
-    links:
-    - text: Vytvoření a otestování modelu funkcí zařízení s využitím editoru Visual Studio Code
-      url: tutorial-pnp-visual-studio-code.md
-    - text: Sestavení zařízení připraveného k certifikaci
-      url: tutorial-build-device-certification.md
-    - text: Certifikace vašeho zařízení
-      url: tutorial-certification-test.md
-  - linkListType: how-to-guide
-    links:
-    - text: Použití Azure IoT Tools pro Visual Studio Code
-      url: howto-develop-with-vs-vscode.md
-    - text: Nasazení do portálu Azure Certified for IoT
-      url: howto-onboard-portal.md
+    - text: Připojení ukázkového zařízení ke službě IoT Hub (C)
+      url: quickstart-connect-device-c.md
+    - text: Připojení ukázkového zařízení ke službě IoT Hub (C#)
+      url: quickstart-connect-device-csharp.md
+    - text: Připojení ukázkového zařízení ke službě IoT Hub (Java)
+      url: quickstart-connect-device-java.md
+    - text: Připojení ukázkového zařízení ke službě IoT Hub (Node.js)
+      url: quickstart-connect-device-node.md
+    - text: Připojení ukázkového zařízení ke službě IoT Hub (Python)
+      url: quickstart-connect-device-python.md
   - linkListType: concept
     links:
-    - text: Běžná rozhraní
-      url: concepts-common-interfaces.md
+    - text: Příručka pro vývojáře
+      url: concepts-developer-guide.md
+    - text: Konvence IoT Plug and Play
+      url: concepts-convention.md
+    - text: Komponenty
+      url: concepts-components.md
 - title: Vytváření řešení
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Interakce se zařízením, které je připojené k vašemu řešení
-      url: quickstart-connect-pnp-device-solution-node.md
+    - text: Interakce se zařízením z vašeho řešení (Node. js)
+      url: quickstart-service-node.md
+    - text: Interakce se zařízením z vašeho řešení (Python)
+      url: quickstart-service-python.md
   - linkListType: concept
     links:
-    - text: Zjišťování modelů
-      url: concepts-model-discovery.md
-    - text: Běžná rozhraní
-      url: concepts-common-interfaces.md
-  - linkListType: how-to-guide
-    links:
-    - text: Připojení k zařízením z vašeho řešení
-      url: howto-develop-solution.md
+    - text: Architektura
+      url: concepts-architecture.md
+    - text: Digitální dvojčata
+      url: concepts-digital-twin.md
