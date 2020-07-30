@@ -11,15 +11,16 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
+- devx-track-javascript
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: e26c3fc9ec420596a4ec152f7f176e44acc7b4c3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 68ea8122164856b09558d9154abb523233f16cb7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321662"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424490"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Kurz: Použití simulovaného zařízení k otestování připojení k IoT Hubu
 
@@ -36,7 +37,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Skripty rozhraní příkazového řádku spouštěné v tomto kurzu využívají [rozšíření Microsoft Azure IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md). Toto rozšíření nainstalujete zadáním následujícího příkazu do příkazového řádku:
 
