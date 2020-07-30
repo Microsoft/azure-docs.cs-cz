@@ -10,12 +10,13 @@ ms.subservice: bing-web-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 085bfd51ae6eabfc26201897a124a6272e0221fa
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 6d958cd2fa95cd3c3747afc80b47c17f55e4248a
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85603583"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405530"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Kurz: Vytvoření jednostránkové aplikace pomocí rozhraní API Bingu pro vyhledávání na webu
 
@@ -32,7 +33,7 @@ Tato ukázková aplikace může provádět následující akce:
 
 Abyste mohli použít tuto aplikaci, potřebujete [účet služby Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s rozhraními API Bingu pro vyhledávání.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tady je pár věcí, které budete potřebovat ke spuštění aplikace:
 
@@ -287,7 +288,7 @@ function handleBingResponse() {
 
 Velká část kódu v obou předchozích funkcích je vyhrazená zpracování chyb. V následujících fázích můžou nastat chyby:
 
-| Krok | Potenciální chyby | Čím se zpracují |
+| Fáze | Potenciální chyby | Čím se zpracují |
 |-------|--------------------|------------|
 | Vytváření objektu žádosti | Neplatná adresa URL | Blok `try` / `catch` |
 | Provedení žádosti | Chyby sítě, přerušená připojení | Obslužné rutiny událostí `error` a `abort` |

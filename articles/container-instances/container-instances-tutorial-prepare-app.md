@@ -3,13 +3,13 @@ title: Kurz – Příprava image kontejneru pro nasazení
 description: Azure Container Instances kurzu – část 1 ze 3 – Příprava aplikace v imagi kontejneru pro nasazení do Azure Container Instances
 ms.topic: tutorial
 ms.date: 03/21/2018
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 487dca97dc47bf214bedf38f44b2d29a71567cbb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: seodec18, mvc, devx-track-javascript
+ms.openlocfilehash: 3a73d68f99c7e2ec4c71e408abbdbc7eec7ee95d
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74533342"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407162"
 ---
 # <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>Kurz: vytvoření image kontejneru pro nasazení do Azure Container Instances
 
@@ -24,7 +24,7 @@ V tomto článku, který je první částí série, se naučíte:
 
 V druhé a třetím kurzu nahrajete svou image do služby Azure Container Registry a potom ji nasadíte do služby Azure Container Instances.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [container-instances-tutorial-prerequisites](../../includes/container-instances-tutorial-prerequisites.md)]
 

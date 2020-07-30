@@ -2,18 +2,18 @@
 title: Přesunutí úložiště Azure Site Recovery do jiné oblasti
 description: Popisuje, jak přesunout Recovery Services trezor (Azure Site Recovery) do jiné oblasti Azure.
 services: site-recovery
-author: rajani-janaki-ram
+author: Sharmistha-Rai
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 07/31/2019
-ms.author: rajanaki
+ms.author: sharrai
 ms.custom: MVC
-ms.openlocfilehash: 32dff9a165125ab1949560ce36438ae266cd3036
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a8cb5ec782b5932c13e321b2ba2d6513597fef52
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74090294"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422636"
 ---
 # <a name="move-a-recovery-services-vault-and-azure-site-recovery-configuration-to-another-azure-region"></a>Přesunutí trezoru Recovery Services a konfigurace Azure Site Recovery do jiné oblasti Azure
 
@@ -33,7 +33,7 @@ V tomto dokumentu budete:
 > [!IMPORTANT]
 > V současné době neexistuje žádný první způsob, jak přesunout Recovery Services trezor a konfiguraci zotavení po havárii, protože se jedná o jinou oblast. Tento článek vás provede procesem zakázání replikace a její nastavení v nové oblasti.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Před pokusem o přesunutí virtuálních počítačů Azure do jiné oblasti nezapomeňte odebrat a odstranit konfiguraci zotavení po havárii. 
 
@@ -45,7 +45,7 @@ V tomto dokumentu budete:
 ## <a name="identify-the-resources-that-were-used-by-azure-site-recovery"></a>Identifikujte prostředky, které používal Azure Site Recovery
 Doporučujeme, abyste provedli tento krok předtím, než přejdete k dalšímu. Při replikaci virtuálních počítačů je snazší identifikovat relevantní prostředky.
 
-Pro každý virtuální počítač Azure, který se právě replikuje, můžete přejít na **chráněné položky** > **vlastnosti** **replikované položky** > a určit následující prostředky:
+Pro každý virtuální počítač Azure, který se právě replikuje, můžete přejít na **chráněné položky**  >  vlastnosti**replikované položky**  >  **Properties** a určit následující prostředky:
 
 - Cílová skupina prostředků
 - Účet úložiště mezipaměti
@@ -56,7 +56,7 @@ Pro každý virtuální počítač Azure, který se právě replikuje, můžete 
 ## <a name="disable-the-existing-disaster-recovery-configuration"></a>Zakázat existující konfiguraci zotavení po havárii
 
 1. Přejít do trezoru Recovery Services.
-2. V části **chráněné položky** > **replikované**položky klikněte pravým tlačítkem na počítač a vyberte **Zakázat replikaci**.
+2. V části **chráněné položky**  >  **replikované**položky klikněte pravým tlačítkem na počítač a vyberte **Zakázat replikaci**.
 3. Tento krok opakujte pro všechny virtuální počítače, které chcete přesunout.
 
 > [!NOTE]

@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1df88e26284dc868267cbc79e27df6f0e25f1250
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5aa84faea43846a2f930373529769e62f76e5bbf
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035056"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419542"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-multi-factor-authentication"></a>Kurz: zabezpečení událostí přihlašování uživatelů pomocí Azure Multi-Factor Authentication
 
@@ -39,7 +39,7 @@ Co se v tomto kurzu naučíte:
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
-* Funkční tenant Azure AD s povoleným Azure AD Premium nebo zkušební licencí.
+* Funkční tenant Azure AD s povolenou aspoň Azure AD Premium P1 nebo zkušební licencí.
     * V případě potřeby [ho vytvořte zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Účet s oprávněními *globálního správce* .
 * Uživatel bez oprávnění správce s heslem, které znáte, například *testuser*. Pomocí tohoto účtu v tomto kurzu otestujete prostředí Azure Multi-Factor Authentication pro koncové uživatele.
@@ -65,7 +65,7 @@ Nejdřív vytvořte zásadu podmíněného přístupu a přiřaďte svou testova
 1. Zaškrtněte políčko pro **uživatele a skupiny**a pak **Vyberte možnost** procházení dostupných uživatelů a skupin Azure AD.
 1. Vyhledejte a vyberte skupinu Azure AD, například *MFA-test-Group*, a pak zvolte **Vybrat**.
 
-    [![](media/tutorial-enable-azure-mfa/select-group-for-conditional-access-cropped.png "Select your Azure AD group to use with the Conditional Access policy")](media/tutorial-enable-azure-mfa/select-group-for-conditional-access.png#lightbox)
+    [![Vyberte skupinu Azure AD, kterou chcete použít se zásadami ](media/tutorial-enable-azure-mfa/select-group-for-conditional-access-cropped.png) podmíněného přístupu.](media/tutorial-enable-azure-mfa/select-group-for-conditional-access.png#lightbox)
 
 1. Pokud chcete pro skupinu použít zásady podmíněného přístupu, vyberte **Hotovo**.
 
@@ -118,7 +118,7 @@ Teď se přihlaste k Azure Portal. Protože Azure Portal byl nakonfigurován v z
 
 Pokud už nechcete zásady podmíněného přístupu povolit, aby se Azure Multi-Factor Authentication nakonfiguroval jako součást tohoto kurzu, odstraňte tyto zásady pomocí následujících kroků:
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Vyhledejte a vyberte **Azure Active Directory**a pak v nabídce na levé straně zvolte **zabezpečení** .
 1. Vyberte **podmíněný přístup**a pak vyberte zásadu, kterou jste vytvořili, jako je například *MFA pilot* .
 1. Zvolte **Odstranit**a pak potvrďte, že chcete zásadu odstranit.
